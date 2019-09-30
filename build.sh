@@ -5,6 +5,9 @@
 # Published under MIT License
 
 
+CMD="JEKYLL_ENV=production bundle exec jekyll b"
+DEST=$(realpath '_site')
+
 help() {
    echo "Usage:"
    echo
@@ -25,18 +28,14 @@ init() {
   fi
 
   if [[ -d _site ]]; then
-    rm -rf _site
+    jekyll clean
   fi
 
-  if [[ -d ../.chirpy-cache ]]; then
-    rm -rf ../.chirpy-cache
-  fi
+  temp=$(mktemp -d)
+  cp -r * $temp
+  cp -r .git $temp
+  mv $temp .container
 
-  mkdir ../.chirpy-cache
-  cp -r *   ../.chirpy-cache
-  cp -r .git ../.chirpy-cache
-
-  mv ../.chirpy-cache .container
 }
 
 
@@ -48,9 +47,6 @@ check_unset() {
   fi
 }
 
-
-CMD="JEKYLL_ENV=production bundle exec jekyll b"
-DEST=`realpath "./_site"`
 
 while [[ $# -gt 0 ]]
 do
@@ -72,10 +68,7 @@ do
       ;;
     -d|--destination)
       check_unset $2
-      if [[ -d $2 ]]; then
-        rm -rf $2
-      fi
-      DEST=$2
+      DEST=$(realpath $2)
       shift;
       shift;
       ;;
@@ -90,6 +83,7 @@ do
   esac
 done
 
+
 init
 
 cd .container
@@ -97,10 +91,19 @@ cd .container
 echo "$ cd $(pwd)"
 python _scripts/py/init_all.py
 
-CMD+=" -d $DEST"
+CMD+=" -d ${DEST}"
 echo "\$ $CMD"
 eval $CMD
+echo -e "\nBuild success, the site files placed in '${DEST}'."
 
-echo "$(date) - Build success, the Site files placed in _site."
+if [[ -d ${DEST}/.git ]]; then
+
+  if [[ ! -z $(git -C $DEST status -s) ]]; then
+    git -C $DEST add .
+    git -C $DEST commit -m "[Automation] Update site files." -q
+    echo -e "\nPlease push the changes of '$(realpath $DEST)' to remote master branch.\n"
+  fi
+
+fi
 
 cd .. && rm -rf .container
