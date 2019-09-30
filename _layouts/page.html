@@ -1,0 +1,29 @@
+---
+layout: default
+# The page layout
+# © 2017-2019 Cotes Chung
+# MIT License
+---
+
+<div class="col-12 col-lg-11 col-xl-8">
+  <div id="page" class="post pb-5 pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 pl-xl-3">
+
+  {% if page.dynamic_title %}
+
+    <h1 class="dynamic-title">{{ page.title }}</h1>
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+  {% else %}
+
+    {{ content }}
+
+  {% endif %}
+
+  </div> <!-- #page -->
+</div><!-- end .col-12 -->
+
+<div id="panel-wrap" class="col-xl-3 pl-2">
+  {% include panel.html %}
+</div>

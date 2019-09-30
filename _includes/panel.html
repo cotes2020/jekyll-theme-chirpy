@@ -1,0 +1,72 @@
+<!--
+  The Pannel on right side (Desktop views)
+  © 2017-2019 Cotes Chung
+  MIT License
+-->
+
+<div class="panel-group">
+
+  {% assign lastmod_list = "" | split: "" %}
+
+  {% for post in site.posts %}
+    {% if post.date >= post.seo.date_modified or post.seo.date_modified == nil %}
+      {% continue %}
+    {% endif%}
+    {% capture item %}
+      {{ post.seo.date_modified }}::{{ post.title }}::{{ post.url }}
+    {% endcapture %}
+    {% assign lastmod_list = lastmod_list | push: item %}
+  {% endfor %}
+
+  {% if lastmod_list.size > 0 %}
+  <div id="panel-update" class="post mb-4"">
+    <h3 data-toc-skip>
+      {{ site.data.label.panel.lastmod }}
+    </h3>
+    <ul class="post-content pl-0 mt-2 pb-1">
+    {% assign MAX_SIZE = 5 %}
+    {% assign sum = 0 %}
+    {% assign sorted_posts = lastmod_list | sort | reverse %}
+    {% for post in sorted_posts %}
+      {% assign meta = post | split: "::" %}
+      <li><a href="{{ meta[2] | prepend: site.baseurl }}">{{ meta[1] }}</a></li>
+      {% assign sum = sum | plus: 1 %}
+      {% if sum >= MAX_SIZE %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </div><!-- #panel-update -->
+  {% endif %}
+
+  <div id="panel-tags">
+    <h3 data-toc-skip>
+      {{ site.data.label.panel.trending_tags }}
+    </h3>
+    <div class="d-flex flex-wrap mt-2 pb-1 pr-3">
+      {% capture tags_array %}
+        {% for tag in site.tags %}
+          {{ tag[1] | size }}:{{ tag[0] | replace: ' ', '-' }}
+        {% endfor %}
+      {% endcapture %}
+
+      {% assign MAX = 10 %}
+      {% assign count = 0 %}
+      {% assign trends = tags_array | split: " " | sort | reverse %}
+
+      <div>
+      <!-- <p>tags_array->{{ tags_array }}</p> -->
+      {% for trend in trends %}
+        {% assign count = count | plus: 1 %}
+        {% assign tag = trend | split: ":" | last  %}
+        <a class="post-tag" href="{{ site.baseurl }}/tags/{{ tag | downcase }}/">{{ tag | replace: '-', ' ' }}</a>
+        {% if count >= MAX %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      </div>
+
+    </div>
+  </div><!-- #panel-tags -->
+
+</div>

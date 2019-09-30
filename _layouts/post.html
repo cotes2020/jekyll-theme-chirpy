@@ -1,0 +1,117 @@
+---
+layout: default
+# The posts' layout
+# © 2017-2019 Cotes Chung
+# MIT Licensed
+---
+
+{% include date-format.html %}
+
+<div class="col-12 col-lg-11 col-xl-8">
+  <div id="post-wrap" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 pl-xl-3">
+    <div class="post">
+      <h1 data-toc-skip>{{ page.title }}</h1>
+      <div class="post-meta text-muted d-flex flex-column">
+        <!-- Published Date and Categoreis -->
+        <div>
+          <span class="timeago" data-toggle="tooltip" title="{{ page.date | date: TOOLTIP_DATE }}">
+            {{ page.date | date: POST_DATE }}
+            <i class="hidden">{{ page.date | date_to_xmlschema }}</i>
+          </span>
+        {% if page.categories.size > 0 %}on{% endif %}
+        {% for category in page.categories %}
+          <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase }}/'>{{ category }}</a>
+          {%- unless forloop.last -%}, {%- endunless -%}
+        {% endfor %}
+        </div>
+        <!-- lastmod -->
+        {% if page.seo.date_modified > page.date %}
+        <div>
+          Updated
+          <span class="timeago lastmod" data-toggle="tooltip" title="{{ page.seo.date_modified | date: TOOLTIP_DATE }}">
+            {{ page.seo.date_modified | date: POST_DATE }}
+            <i class="hidden">{{ page.seo.date_modified | date_to_xmlschema}}</i>
+          </span>
+        </div>
+        {% endif %}
+        <!-- page views -->
+        {% if site.google_analytics.pv %}
+        <div>
+          <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin"></i></span> views
+        </div>
+        {% endif %}
+      </div> <!-- .post-meta -->
+
+      <div class="post-content">
+        {% if page.image %}
+        <img src="{{ page.image }}" class="img-rounded">
+        {% endif %}
+        {{ content }}
+      </div><!-- .post-content -->
+
+      <div class="post-tail text-muted">
+        <!-- Tags -->
+        {% if page.tags.size > 0 %}
+        <div class="mb-2">
+          {% for tag in page.tags %}
+          <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase }}/"
+            class="post-tag no-text-decoration" >
+            {{- tag -}}
+          </a>{%- if forloop.last != true -%}&ensp;{%- endif -%}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div><!-- endof .post-tail -->
+
+    </div> <!-- .post -->
+
+    <div class="post-pager d-flex justify-content-between">
+    {% if page.previous.url %}
+      <a href="{{ site.baseurl }}{{page.previous.url}}" class="btn btn-outline-primary">
+    {% else %}
+      <a href="javascript:;" class="btn btn-outline-primary disabled">
+    {% endif %}
+        <i class="fas fa-angle-left mr-1"></i>
+        OLDER POST
+      </a>
+
+    {% if page.next.url %}
+      <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary">
+    {% else %}
+      <a href="javascript:;" class="btn btn-outline-primary disabled">
+    {% endif %}
+      NEWER POST
+      <i class="fas fa-angle-right ml-1"></i>
+      </a>
+    </div> <!-- end .post-pager -->
+
+    {% if site.disqus.comments and page.comments %}
+      {% include disqus.html %}
+    {% else %}
+      <br>
+    {% endif %}
+
+  </div> <!-- #post-wrap -->
+</div> <!-- div.col-12..col-lg-11.col-xl-8 -->
+
+<div id="post-panel" class="col-xl-3 pl-2">
+  {% include panel.html %}
+  {% if site.toc and page.toc %}
+  <div id="toc-wrap" class="topbar-down pr-4">
+    <h3 data-toc-skip class="pl-3 pt-2">
+      {{ site.data.label.panel.toc }}
+    </h3>
+    <nav id="toc" data-toggle="toc"></nav>
+  </div>
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
+  <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script>
+  {% endif %}
+</div> <!-- #post-panel -->
+
+<script src="{{ site.baseurl }}/assets/js/dist/timeago.min.js"></script>
+
+{% if site.google_analytics.pv %}
+<script src="{{ site.baseurl }}/assets/js/dist/countUp.min.js" async></script>
+<script src="{{ site.baseurl }}/assets/js/dist/pageviews.min.js" async></script>
+{% endif %}
