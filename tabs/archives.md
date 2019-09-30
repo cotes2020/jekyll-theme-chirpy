@@ -20,28 +20,6 @@ title: Archives
       <div>
         {% capture this_day %}{{ post.date | date: "%d" }}{% endcapture %}
         {% capture this_month %}{{ post.date | date: "%b" }}{% endcapture %}
-
-        {% comment %}
-        {% if last_day and last_day == this_day %}
-          {% assign same_day = true %}
-        {% else %}
-          {% assign last_day = this_day %}
-          {% assign same_day = false %}
-        {% endif %}
-
-        {% if last_month and last_month == this_month %}
-          {% assign same_month = true %}
-        {% else %}
-          {% assign last_month = this_month %}
-          {% assign same_month = false %}
-        {% endif %}
-
-        <span class="date day {% if same_day and same_month %}text-white{% endif %}">{{ this_day }}</span>
-        <span class="date month small {% if same_day and same_month %}text-white{% else %}text-muted{% endif %}">
-          {{ this_month }}
-        </span>
-        {% endcomment %}
-
         <span class="date day">{{ this_day }}</span>
         <span class="date month small text-muted">{{ this_month }}</span>
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
