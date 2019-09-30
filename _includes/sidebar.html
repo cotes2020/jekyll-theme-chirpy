@@ -1,0 +1,65 @@
+<!--
+  The Side Bar
+  © 2017-2019 Cotes Chung
+  MIT License
+-->
+
+<div id="nav-wrap">
+  <div id="profile-wrap" class="d-flex justify-content-center">
+    <div id="profile">
+      <a href="{{ site.baseurl }}/" alt="profile-photo">
+        {% assign profile_img = site.logo %}
+        {% if profile_img | slice: 0 == '/' %}
+          {% assign profile_img = profile_img | prepend: site.baseurl %}
+        {% endif %}
+        <img src="{{ profile_img }}"></img>
+      </a>
+    </div>
+  </div>
+  <div id="site-title" class="d-flex justify-content-center align-items-center">
+    <a href="{{ site.baseurl }}/">{{- site.title -}}</a>
+  </div>
+  <div id="site-subtitle" class="font-italic">{{ site.description }}</div>
+  <ul class="nav flex-column">
+
+  {% assign page_urls = page.url | split: "/" %}
+
+  {% for item in site.data.label.tabs %}
+    {% assign ref = site.baseurl | append: "/" %}
+
+    {% if item.path %}
+      {% assign ref = ref | append: item.path | append: "/" %}
+      {% if item.url %}
+        {% assign ref = ref | append: item.url | append: "/" %}
+      {% endif %}
+    {% endif %}
+
+    <li class="nav-item d-flex justify-content-center
+      {% if item.url == page_urls.last or
+        item.name == "Home" and page.layout == "home" %}active{% endif %}">
+      <a href="{{ ref }}" class="nav-link d-flex justify-content-center align-items-center w-100"><!-- <i class="{{ item.icon }}"></i> -->
+      {{ item.name | upcase }}
+      </a>
+    </li> <!-- .nav-item -->
+  {% endfor %}
+
+    <span class="cursor"></span>
+  </ul> <!-- ul.nav.flex-column -->
+
+</div><!-- #nav-wrap -->
+
+<div class="contact d-flex justify-content-around mt-3">
+  <a href="https://github.com/{{ site.github.username }}" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="https://twitter.com/{{ site.twitter.username }}" target="_blank">
+    <i class="fab fa-twitter"></i>
+  </a>
+  {% assign email = site.social.email | split: '@' %}
+  <a href="javascript:window.open('mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@'))">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a href="{{ site.baseurl }}/feed.xml" target="_blank">
+    <i class="fas fa-rss"></i>
+  </a>
+</div>

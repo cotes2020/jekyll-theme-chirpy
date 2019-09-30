@@ -1,0 +1,44 @@
+---
+layout: compress
+# Default layout
+# © 2017-2019 Cotes Chung
+# MIT Licensed
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body data-spy="scroll" data-target="#toc">
+    <div id="sidebar" class="d-flex flex-column">
+      {% include sidebar.html %}
+    </div>
+    <div id="main-wrap">
+      {% include topbar.html %}
+      <div id="main">
+        <div class="row justify-content-center bg-white">
+
+        {% capture _content %}
+          {{ content }}
+        {% endcapture %}
+
+        {% include fixlinenos.html %}
+        {{ _content }}
+
+        </div>
+        {% include footer.html %}
+      </div>
+      {% include search-results.html %}
+    </div>
+
+    <div id="mask"></div>
+
+    {% include search.html %}
+
+    <a id="back-to-top" href="#" class="btn btn-lg btn-box-shadow" role="button">
+      <i class="fas fa-angle-up"></i>
+    </a>
+  </body>
+
+</html>
