@@ -1,0 +1,17 @@
+# The label text of site.
+# © 2017-2019 Cotes Chung
+# MIT Licensed
+
+tabs:
+  - { name: "Home" }
+  - { name: "Categories", path: tabs, url: categories }
+  - { name: "Tags", path: tabs, url: tags }
+  - { name: "Archives", path: tabs, url: archives }
+  - { name: "About", path: tabs, url: about }
+
+panel:
+  lastmod: "Recent Update"
+  trending_tags: "Trending Tags"
+  toc: "Contents"
+
+search_hint: "Search"   # text show on search bar

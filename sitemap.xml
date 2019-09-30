@@ -1,0 +1,77 @@
+---
+layout: compress
+# The Sitemap template
+# © 2017-2019 Cotes Chung
+# MIT License
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for post in site.posts %}
+  {% unless post.published == false %}
+
+    {% capture lastmod %}
+      {% if post.lastmod %}
+        {{ post.lastmod }}
+      {% elsif post.date %}
+          {{ post.date }}
+        {% else %}
+          {{ site.time }}
+        {% endif %}
+      {% endcapture %}
+
+  <url>
+    <loc>{{ site.url | append: site.baseurl | append: post.url }}</loc>
+    <lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>
+
+    {% if post.sitemap.changefreq %}
+      <changefreq>{{ post.sitemap.changefreq }}</changefreq>
+    {% else %}
+      <changefreq>monthly</changefreq>
+    {% endif %}
+
+    {% if post.sitemap.priority %}
+      <priority>{{ post.sitemap.priority }}</priority>
+    {% else %}
+      <priority>0.5</priority>
+    {% endif %}
+  </url>
+  {% endunless %}
+{% endfor %}
+
+{% for page in site.pages %}
+
+  {% if site.sitemap_exclude contains page.url %}
+    {% continue %}
+  {% endif %}
+
+  {% capture lastmod %}
+    {% if page.lastmod %}
+      {{ page.lastmod }}
+    {% elsif page.date %}
+      {{ page.date }}
+    {% else %}
+      {{ site.time }}
+    {% endif %}
+  {% endcapture %}
+
+   <url>
+    <loc>{{ site.url | append: site.baseurl | append: page.url | remove: "index.html" }}</loc>
+    <lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>
+
+    {% if page.sitemap.changefreq %}
+      <changefreq>{{ page.sitemap.changefreq }}</changefreq>
+    {% else %}
+      <changefreq>monthly</changefreq>
+    {% endif %}
+
+    {% if page.sitemap.priority %}
+      <priority>{{ page.sitemap.priority }}</priority>
+    {% else %}
+      <priority>0.3</priority>
+    {% endif %}
+  </url>
+
+{% endfor %}
+
+</urlset>
