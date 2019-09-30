@@ -10,7 +10,7 @@ tags: [usage]
 
 First of all, follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/)  to complete the basic environment (Ruby, RubyGem, Bundler and Jekyll)  installation.
 
-In addition, the [python](https://www.python.org/downloads/) and [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) are also required.
+In addition, the [Python](https://www.python.org/downloads/) and [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) are also required.
 
 ## Configuration
 
@@ -24,7 +24,7 @@ The Atom feed url of your site will be:
 <site_url>/feed.xml
 ```
 
-The `site_url` was defined by variable **url** in `_config.yml`.
+The `site_url` was defined by variable `url` in file `_config.yml`.
 
 ## Install Jekyll Plugins
 
@@ -49,11 +49,11 @@ Open the brower and visit [http://127.0.0.1:4000](http://127.0.0.1:4000)
 
 ##  Deploying to GitHub Pages
 
-### Option 1: Build locally
+### Option 1: Local Build
 
 For security reasons, GitHub Pages runs on `safe` mode, which means the third-party Jekyll plugins or custom scripts will not work. If you want to use any another third-party Jekyll plugins, **your have to build locally rather than on GitHub Pages**.
 
-**1**. On GitHub website, create a new blank repository named `<username>.github.io`.
+**1**. On GitHub website, create a brand new repository with name `<username>.github.io`, then clone it locally.
 
 **2**. Build your site by:
 
@@ -68,7 +68,7 @@ The build results will be stored in the root directory of `<username>.github.io`
 **4**. Visit `https://<username>.github.io` and enjoy.
 
 
-### Option 2: Build by GitHub Pages
+### Option 2: Built by GitHub Pages
 
 By deploying your site in this way, you can push the source code to GitHub repository directly.
 
