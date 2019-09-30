@@ -221,7 +221,7 @@ body {
   left: 260px; /* same as sidebar width */
   right: 0;
   transition: top 0.2s ease-in-out;
-  z-index: 1;
+  z-index: 99;
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.05);
 }
@@ -965,16 +965,16 @@ a.tag:hover {
   font-size: 1.5rem;
   font-family: 'Oswald', sans-serif;
   position: relative;
-  left: 5px;
+  left: 8px;
 }
 
 #archives span.lead:not(:first-child) {
   position: relative;
-  left: 3px;
+  left: 4px;
 }
 
 #archives span.lead:not(:first-child)::after {
-  left: 65px;
+  left: 67px;
 }
 
 #archives span.lead::after { /* Year dot */
@@ -984,13 +984,15 @@ a.tag:hover {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   top: -26px;
   left: 63px;
-  border: 2px solid;
+  border: 3px solid;
   background-color: #ffffff;
-  border-color: #9e9e9e;
+  border-color: #c2c6cc;
+  box-shadow: 0 0 2px 0 #c2c6cc;
+  z-index: 1;
 }
 
 #archives .date {
@@ -1001,7 +1003,6 @@ a.tag:hover {
   width: 1.4rem;
   text-align: center;
   font-family: 'Oswald', sans-serif;
-  // background: yellowgreen;
 }
 
 #archives .date.day {
@@ -1012,7 +1013,6 @@ a.tag:hover {
   width: 1.2rem;
   position: relative;
   left: -.15rem;
-  // background: aquamarine;
 }
 
 #archives ul>li>div>a {
@@ -1022,7 +1022,7 @@ a.tag:hover {
   top: .1rem;
 }
 
-#archives .date.month~a::before {
+#archives .date.month ~ a::before {
   /* A dot for Month and Day */
   content: "";
   display: inline-block;
@@ -1030,42 +1030,40 @@ a.tag:hover {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   float: left;
-  top: 20px;
-  left: 68px;
-  background-color: #9e9e9e;
+  top: 1.35rem;
+  left: 69px;
+  background-color: #c2c6cc;
+  box-shadow: 0 0 3px 0 #c2c6cc;
+  z-index: 1;
+}
+
+/* timeline for date */
+#archives ul>li::after,
+#archives ul>li:first-child::before {
+  content: "";
+  width: 4px;
+  left: 75px;
+  display: inline-block;
+  float: left;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.075);
 }
 
 #archives ul>li::after {
-  /* timeline for date */
-  content: "";
-  height: 39px;
-  top: -19px;
-  left: 72px;
-  display: inline-block;
-  float: left;
-  position: relative;
-  background-color: #ffffff;
-  border: 1px dashed silver;
+  height: 2.8rem;
+  top: -1.3rem;
 }
 
 #archives ul>li:first-child::before {
-  content: "";
-  width: 2px;
-  height: 44px;
-  top: -24px;
-  left: 72px;
-  display: inline-block;
-  float: left;
-  position: relative;
-  background-color: #ffffff;
-  border: 1px dashed silver;
+  height: 3.06rem;
+  top: -1.61rem;
 }
 
 #archives ul:not(:last-child)>li:last-child::after {
-  height: 50px;
+  height: 3.4rem;
 }
 
 #archives ul:last-child>li:last-child::after {
