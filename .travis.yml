@@ -1,0 +1,36 @@
+language: ruby
+rvm: 2.5.3
+
+before_install:
+  - pyenv global 3.7.1
+
+install:
+  - pip install --upgrade pip
+  - pip install ruamel.yaml
+
+script:
+  - >-
+    git clone https://${GH_TOKEN}@github.com/cotes2020/blog-builder.git
+    ../blog-builder --depth=1 -q
+  - cp -r ../blog-builder/framework/* .
+  - bash _cibuild.sh
+
+branches:
+  only: master
+
+git:
+  depth: false # for posts lastmod
+
+cache:
+  directories:
+    - vendor/bundle
+
+notifications:
+  email:
+    recipients:
+      - secure: "GdZFhI2fu6MHwHeGkI9AI8NJexfT+cncJKoOTBxrMPywxvfm6HZ1vZTOwLD9mwG4XZUSznruD4NwRiXMBKs/94n8Z2f0QagCp2is/TuQWBVDUn1bowTbx1S7da6I3qTBGyIHvQWySwFgJuK9/uUeHdQF9ojMejESKZWfc6NjlgYie3Us3ax+Lygq6o4x+8+YPqlC/XwEKUUMUpXZT8Yubxg+s1mLwY9zmp2kJwB1snf6u498FPCWtCuQdGc91HEL4McfUfevnkNKttJQFwdE+mFkLoLn1FcXN0WQ8hPVTQvD/5TaCvACuB1oQ4dm4cnnoIRC5iuQntkP2Am7jPLnHLwxHDqB8vLDNxi1phbfGTk89ffY4n5FirF7DiYIn7hDDbDBlE4++9Pv/i7xgLp9+NzAzz25tdcfKZfXujrwE6b/2NbtXer/eWXyi7d6V/qWO6x8m7/IerX2/VrbXyQIgTvIDe2sSAraM77MMIiQ2KS6yhPIfjyCsC1sokFNRqUWut2UkqMFKOmAnSi/jTQY6/t1aOXGHtVRwgjFoyvBTk9F9NElxt3mseK26Mad3yAv5xLqhqHPFZJbVHJ8dP6RQvWwuvMK1uSqobTl+t0qBvvdSbt1/Oc/ubN1T2clObx1faF2luoMFhRtN+H5s7wfEMrO+sJAuSZnAHuDRpDIwCs="
+    on_success: never
+
+env:
+  global:
+    - secure: "QNAqDoDQ+mF/3DFxKbc7fnYa5+FysJTX9Vs4XneH6iH63MS2lNtHfC7uT/M0/sRJaygK9eAdb+RaIeADE7CAMzqP3qdWx7l2N6qWab/kyK9KujUBsvoTGX6lDQTwC2Z+zlr5uUScHfLOhqHh6dbm6glziy2NB4dn9pVBXQrmBn09Rf9LImRT2u2h8gzmdl19hZ9TsW1/ROOb/1Soc3JElGRPrIxKI7ufHLQZt0UzZkYXGejQJwtstEEkRSmhfkJjlASeaeuyOFBvkWXjL1nKPsElwEKsAR+4II98JKA83YVqa9TJT2YSnXeLEFIhYDVSG6RLAMEU4rrITzRYC/hWKBKje4G0PDEM/cpnytk9Xhq+7oUFRmXCq3ZQgTQgzWhzl1kExC8b96hiWmQ+lVCw+Q2BG6+NloEEuOHOM839CTXfiitjRJ8KYUdLgW6IaruaingySBsbh1Vl+Dhu73QZ5H40KLdIH6woLXWAgtxkjpaL6DTeWDO6xMiwDreBa/2CJRT5R1tiG45CurZ+AkQ+yAAfSOEwGtE29oZl0sWeWMwVTaAClc0IJaG1+h8jxIVuQqHvK3fzd5RdlDtShrfCCVvQD0n29wXrdeNEg90F92kvdtmw8XgKc2P/Cl5uNzvVeTbFF3ZIHYpCVV4LW4Hn8clgYu+WUa/w4pVrBSdQOUw="
