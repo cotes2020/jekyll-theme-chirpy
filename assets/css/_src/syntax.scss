@@ -76,17 +76,18 @@ figure.highlight,
 
 .highlight {
   overflow: auto;
-  -moz-box-shadow: inset 0 0 2px #e9ecef;
-  -webkit-box-shadow: inset 0 0 2px #e9ecef;
-  box-shadow: inset 0 0 2px #e9ecef;
+  -moz-box-shadow: inset 0 0 2px #c2c6cc;
+  -webkit-box-shadow: inset 0 0 2px #c2c6cc;
+  box-shadow: inset 0 0 2px #c2c6cc;
 }
 
 .highlight .lineno {
-  padding: .8rem .5rem;
-  min-width: 2rem;
+  margin: .8rem 0rem;
+  padding: 0 .5rem;
+  min-width: 2.2rem;
   text-align: right;
-  color: rgba(140, 134, 126, 0.67);
-  background: rgb(234, 236, 242);
+  color: #c2c6cc;
+  border-right: 1px solid #e9ecef;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
