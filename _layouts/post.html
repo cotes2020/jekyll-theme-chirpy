@@ -100,12 +100,13 @@ layout: default
   {% if site.toc and page.toc %}
   <div id="toc-wrap" class="topbar-down pr-4">
     <h3 data-toc-skip class="pl-3 pt-2">
-      {{ site.data.label.panel.toc }}
+      {{- site.data.label.panel.toc -}}
     </h3>
     <nav id="toc" data-toggle="toc"></nav>
   </div>
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
   <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/dist/toc.min.js"></script>
   {% endif %}
 </div> <!-- #post-panel -->
 
