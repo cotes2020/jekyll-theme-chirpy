@@ -16,7 +16,12 @@ Wait a moment for the website to generate icons of various sizes automatically.
 
 ![download-icons]({{ site.baseurl }}/assets/img/sample/download-icons.png)
 
-Download the generated package and extract to override the files in directory `assets/img/favicons`.
+Download the generated package and extract the contents to cover all files in folder `assets/img/favicons`, but except the following two:
+
+- browserconfig.xml
+- manifest.json
+
+
 
 At last, rebuild the site so that the icon becomes your custom edition.
 
