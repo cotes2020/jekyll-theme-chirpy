@@ -12,22 +12,17 @@ Whit a square image (PNG, JPG or GIF) in hand, open the site [*Favicon & App Ico
 
 ![upload-image]({{ site.baseurl }}/assets/img/sample/upload-image.png)
 
-Wait a moment for the website to generate icons of various sizes automatically.
+Click button <kbd>Create Favicon</kbd> and wait a moment for the website to generate the icons of various sizes automatically.
 
 ![download-icons]({{ site.baseurl }}/assets/img/sample/download-icons.png)
 
-Download the generated package and extract the contents to cover all files in folder `assets/img/favicons`, but except the following two:
+Download the generated package and extract, then remove the following two of them:
 
 - browserconfig.xml
 - manifest.json
+ 
+Now, copy the rest (`.PNG` and `.ICO`) to cover the original files in folder `assets/img/favicons`.
 
+In the end, rebuild your site so that the icon becomes your custom edition.
 
-
-At last, rebuild the site so that the icon becomes your custom edition.
-
-## See Also
-
-* [Getting Started]({{ site.baseurl }}/posts/getting-started/)
-* [Write a new post]({{ site.baseurl }}/posts/write-a-new-post/)
-* [Text and Typography]({{ site.baseurl }}/posts/text-and-typography/)
 
