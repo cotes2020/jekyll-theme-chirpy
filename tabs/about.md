@@ -28,7 +28,7 @@ You can fork this project from the [Homepage](https://github.com/cotes2020/jekyl
 
 ## Usage
 
-Follow the [tutorial posts]({{ site.baseurl }}/categories/tutorial/), it will help you build a site quickly.
+Follow the [tutorial posts]({{ site.baseurl }}/categories/tutorial/), they will help you build a site quickly.
 
 ## License
 
