@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Initial the categories/tags pages and for posts.
+# Initial the Categories/Tags pages and Lastmod for posts.
 # © 2019 Cotes Chung
 # Published under MIT License
 
@@ -19,11 +19,13 @@ fi
 
 python _scripts/py/init_all.py
 
+find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+
 msg="Updated"
 
 if [[ ! -z $(git status categories -s) ]]; then
   git add categories/
-  msg+=" Categories' pages"
+  msg+=" the Categories"
   CATEGORIES=true
 fi
 
@@ -31,16 +33,20 @@ fi
 if [[ ! -z $(git status tags -s) ]]; then
   git add tags/
   if [[ $CATEGORIES = true ]]; then
-    msg+=" and"
+    msg+=","
+  else
+    msg+=" the"
   fi
-  msg+=" Tags' pages"
+  msg+=" Tags"
   TAGS=true
 fi
 
 if [[ ! -z $(git status _posts -s) ]]; then
   git add _posts/
   if [[ $CATEGORIES = true || $TAGS = true ]]; then
-    msg+=" and"
+    msg+=","
+  else
+    msg+=" the"
   fi
   msg+=" Lastmod"
   LASTMOD=true
