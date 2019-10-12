@@ -36,10 +36,14 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 #--------------------------
 
-# Change to your Google Analytics ID
+# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
+timezone: Asia/Shanghai
+
 google_analytics:
+  # Change to your Google Analytics ID
   id: 'UA-*********-*'
-  # Switch for Google Analytics pageviews. DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
+  # The Google Analytics pageviews switch.
+  # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
   pv: false
 
 disqus:
@@ -124,13 +128,11 @@ defaults:
       path: tabs
     values:
       layout: page
-      dynamic_title: true    # hide title in mobile screens.
+      dynamic_title: true    # Hide title in mobile screens.
       breadcrumb:
         -
           label: Home
           url: /
-
-timezone: Asia/Shanghai
 
 sass:
   sass_dir: /assets/css
@@ -146,7 +148,7 @@ compress_html:
     envs: []
 
 exclude:
-  - vendor/       # Avoid Jekyll mistakenly read the vender directory in Travis-CI's VM .
+  - vendor/       # Avoid Jekyll mistakenly read the vender directory on Travis-CI's VM .
   - Gemfile.lock
   - Gemfile
   - run.sh
