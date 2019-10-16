@@ -1,5 +1,5 @@
 ---
-title: "Write a new Post"
+title: "Write a New Post"
 date: 2019-08-08 14:10:00 +0800
 categories: [Blogging, Tutorial]
 tags: [writting]
@@ -24,22 +24,13 @@ tags: [TAG]
 
 > **Note**: The posts' ***layout*** has been set to `post` by default, so there is no need to add the variable ***layout*** in Front Matter block.
 
-### Categories and Tags
+- **The TimeZone of Date**
 
-The pages for all the categories and tags are placed in the `categoreis` and `tags` respectively.
+    To ensure that the posts' release date matches the city you live in, please modify the value of `timezone` in the file `_config.yml`. A list of all available values can be found on [TimezoneConverter](http://www.timezoneconverter.com/cgi-bin/findzone/findzone) or [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
-Let's say there is a post with title `The Beautify Rose`, it's Front Matter as follow:
+- **Categories and Tags**
 
-```yaml
----
-title: "The Beautify Rose"
-categories: [Plant]
-tags: [flower]
----
-```
-
-> **Note**: `categories` is designed to contain up to two elements.
-
+    The `categories` of each post is designed to contain up to two elements, and the number of elements in `tag` can be zero or infinite.
 
 ## Table of Contents
 
@@ -101,8 +92,3 @@ If you want to display the **Liquid** snippet, surround the liquid code with `{%
 ## Learn More
 For more knowledge about Jekyll posts, visit the [Jekyll Docs: Posts](https://jekyllrb.com/docs/posts/).
 
-## See Also
-
-* [Getting Started]({{ site.baseurl }}/posts/getting-started/)
-* [Text and Typography]({{ site.baseurl }}/posts/text-and-typography/)
-* [Customize the Favicon]({{ site.baseurl }}/posts/customize-the-favicon/)
