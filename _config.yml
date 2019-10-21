@@ -15,7 +15,7 @@ url: 'https://www.example.com'
 
 author: Chirpy                          # change to your full name
 
-logo: /assets/img/sample/profile.jpg    # Support network resources.
+avatar: /assets/img/sample/avatar.jpg   # Support network resources.
 
 github:
   username: github_username             # change to your github username
