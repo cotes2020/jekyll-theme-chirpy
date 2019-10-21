@@ -6,13 +6,13 @@
 
 <div id="nav-wrap">
   <div id="profile-wrap" class="d-flex justify-content-center">
-    <div id="profile">
-      <a href="{{ site.baseurl }}/" alt="profile-photo">
-        {% assign profile_img = site.logo %}
-        {% if profile_img | slice: 0 == '/' %}
-          {% assign profile_img = profile_img | prepend: site.baseurl %}
+    <div id="avatar">
+      <a href="{{ site.baseurl }}/" alt="avatar">
+        {% assign avatar = site.avatar %}
+        {% if avatar | slice: 0 == '/' %}
+          {% assign avatar = avatar | prepend: site.baseurl %}
         {% endif %}
-        <img src="{{ profile_img }}"></img>
+        <img src="{{ avatar }}"></img>
       </a>
     </div>
   </div>
