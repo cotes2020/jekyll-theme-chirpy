@@ -6,10 +6,10 @@ title: Tags
 # MIT License
 ---
 
-{%comment%}
+{% comment %}
   'site.tags' looks like a Map, e.g. site.tags.MyTag.[ Post0, Post1, ... ]
   Print the {{ site.tags }} will help you to understand it.
-{%endcomment%}
+{% endcomment %}
 <div id="tags" class="d-flex flex-wrap">
 {% assign tags = "" | split: "" %}
 {% for t in site.tags %}
