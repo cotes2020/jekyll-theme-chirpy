@@ -52,7 +52,7 @@ layout: default
       <div class="post-tail text-muted">
         <!-- Tags -->
         {% if page.tags.size > 0 %}
-        <div class="mb-2">
+        <div class="mb-4">
           {% for tag in page.tags %}
           <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase }}/"
             class="post-tag no-text-decoration" >
@@ -61,10 +61,11 @@ layout: default
           {% endfor %}
         </div>
         {% endif %}
-
       </div><!-- endof .post-tail -->
 
     </div> <!-- .post -->
+
+    {% include related-posts.html %}
 
     <div class="post-pager d-flex justify-content-between">
     {% if page.previous.url %}

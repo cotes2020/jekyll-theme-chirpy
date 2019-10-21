@@ -1,0 +1,71 @@
+<!--
+ The related posts of current post.
+ Placed in the bottom of every single post.
+ © 2019 Cotes Chung
+ Published under the MIT License
+-->
+
+{% assign MAX_SIZE = 3 %}
+{% assign TAG_SCORE = 1 %}
+{% assign CATEGORY_SCORE = 0.5 %}
+
+{% assign score_list = "" | split: "" %}
+{% assign post_index = 0 %}
+
+{% for post in site.posts %}
+  {% if post.url != page.url %}
+    {% assign score = 0 %}
+
+    {% for tag in post.tags %}
+      {% if page.tags contains tag %}
+        {% assign score = score | plus: TAG_SCORE %}
+      {% endif %}
+    {% endfor %}
+
+    {% for category in post.categories %}
+      {% if page.categories contains category %}
+        {% assign score = score | plus: CATEGORY_SCORE %}
+      {% endif %}
+    {% endfor %}
+
+    {% if score > 0 %}
+      {% capture score_item %}{{ score }}:{{ post_index }}{% endcapture %}
+      {% assign score_list = score_list | push: score_item %}
+    {% endif %}
+
+  {% endif %}
+  {% assign post_index = post_index | plus: 1 %}
+{% endfor %}
+
+{% unless score_list.size == 0 %}
+  {% assign score_list = score_list | sort | reverse %}
+  {% assign count = 0 %}
+  <div id="related-posts" class="mt-4 mb-4 pb-3">
+    <h3 class="pt-2 mt-1 mb-4" data-toc-skip>Related Posts</h3>
+    <div class="card-deck mb-4">
+    {% for score_item in score_list %}
+      {% assign data = score_item | split: ":" %}
+      {% assign index = data[1] | plus: 0 %}
+      {% assign post = site.posts[index] %}
+      <div class="card btn-box-shadow">
+        <a href="{{ post.url }}">
+          <div class="card-body">
+            <span class="timeago text-muted small">
+                {{ post.date | date: POST_DATE }}
+                <i class="hidden">{{ page.date | date_to_xmlschema }}</i>
+            </span>
+            <h3 class="pt-0 mt-2 mb-3" data-toc-skip>{{ post.title }}</h3>
+            <div class="text-muted small">
+              <p>{{ post.content | markdownify | strip_html | truncate: 100 }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% assign count = count | plus: 1 %}
+      {% if count >= MAX_SIZE %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    </div><!-- .card-deck -->
+  </div>
+{% endunless %}
