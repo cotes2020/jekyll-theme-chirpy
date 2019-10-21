@@ -128,7 +128,7 @@ body {
   padding-bottom: 1rem;
 }
 
-#profile {
+#avatar {
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
@@ -140,11 +140,11 @@ body {
   transition: border-color 0.35s ease-in-out;
 }
 
-#profile:hover {
+#avatar:hover {
   border-color: #fff;
 }
 
-#profile img {
+#avatar img {
   width: 100%;
   height: 100%;
   display: block;
@@ -155,7 +155,7 @@ body {
   transition: all .5s !important;
 }
 
-#profile img:hover {
+#avatar img:hover {
   -ms-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -webkit-transform: scale(1.2);
