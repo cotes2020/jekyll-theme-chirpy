@@ -7,15 +7,16 @@
 <div class="panel-group">
 
   {% assign lastmod_list = "" | split: "" %}
+  {% assign index = 0 %}
 
   {% for post in site.posts %}
-    {% if post.date >= post.seo.date_modified or post.seo.date_modified == nil %}
-      {% continue %}
-    {% endif%}
-    {% capture item %}
-      {{ post.seo.date_modified }}::{{ post.title }}::{{ post.url }}
-    {% endcapture %}
-    {% assign lastmod_list = lastmod_list | push: item %}
+    {% if post.seo.date_modified > post.date and post.seo.date_modified != nil %}
+      {% capture item %}
+        {{ post.seo.date_modified }}::{{ index }}
+      {% endcapture %}
+      {% assign lastmod_list = lastmod_list | push: item %}
+    {% endif %}
+    {% assign index = index | plus: 1 %}
   {% endfor %}
 
   {% if lastmod_list.size > 0 %}
@@ -23,13 +24,14 @@
     <h3 data-toc-skip>
       {{ site.data.label.panel.lastmod }}
     </h3>
-    <ul class="post-content pl-0 mt-2 pb-1">
+    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
     {% assign MAX_SIZE = 5 %}
     {% assign sum = 0 %}
-    {% assign sorted_posts = lastmod_list | sort | reverse %}
-    {% for post in sorted_posts %}
-      {% assign meta = post | split: "::" %}
-      <li><a href="{{ meta[2] | prepend: site.baseurl }}">{{ meta[1] }}</a></li>
+    {% assign lastmod_list = lastmod_list | sort | reverse %}
+    {% for item in lastmod_list %}
+      {% assign index = item | split: "::" | last | plus: 0 %}
+      {% assign post = site.posts[index] %}
+      <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
       {% assign sum = sum | plus: 1 %}
       {% if sum >= MAX_SIZE %}
         {% break %}
@@ -55,7 +57,6 @@
       {% assign trends = tags_array | split: " " | sort | reverse %}
 
       <div>
-      <!-- <p>tags_array->{{ tags_array }}</p> -->
       {% for trend in trends %}
         {% assign count = count | plus: 1 %}
         {% assign tag = trend | split: ":" | last  %}

@@ -443,18 +443,6 @@ footer .license a {
   list-style: none;
 }
 
-#panel-update ul>li::before {
-  background: #999;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  display: inline-block;
-  content: "";
-  position: relative;
-  bottom: .2rem;
-  margin-right: .4rem;
-}
-
 #panel-update ul a {
   color: #6c757d;
 }
