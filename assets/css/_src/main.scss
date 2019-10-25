@@ -71,31 +71,36 @@ body {
 
 #sidebar ul > li.active:nth-child(1) ~ li:last-child::after,
 #sidebar ul > li.nav-item:nth-child(1):hover ~ li:last-child::after {
-  top: calc(-400% + (26px / 2));
+  // top: calc(-400% + (26px / 2));
+  top: -195px;
   visibility: visible;
 }
 
 #sidebar ul > li.active:nth-child(2) ~ li:last-child::after,
 #sidebar ul > li.nav-item:nth-child(2):hover ~ li:last-child::after {
-  top: calc(-300% + (26px / 2));
+  // top: calc(-300% + (26px / 2));
+  top: -143px;
   visibility: visible;
 }
 
 #sidebar ul > li.active:nth-child(3) ~ li:last-child::after,
 #sidebar ul > li.nav-item:nth-child(3):hover ~ li:last-child::after {
-  top: calc(-200% + (26px / 2));
+  // top: calc(-200% + (26px / 2));
+  top:  -91px;
   visibility: visible;
 }
 
 #sidebar ul > li.active:nth-child(4) ~ li:last-child::after,
 #sidebar ul > li.nav-item:nth-child(4):hover ~ li:last-child::after {
-  top: calc(-100% + (26px / 2));
+  // top: calc(-100% + (26px / 2));
+  top: -39px;
   visibility: visible;
 }
 
 #sidebar ul > li.active:nth-child(5):last-child::after,
 #sidebar ul > li.nav-item:nth-child(5):last-child:hover::after {
-  top: calc(26px / 2);
+  // top: calc(26px / 2);
+  top: 13px;
   visibility: visible;
 }
 
