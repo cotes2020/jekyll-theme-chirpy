@@ -37,7 +37,7 @@
   {% assign post_index = post_index | plus: 1 %}
 {% endfor %}
 
-{% unless score_list.size == 0 %}
+{% if score_list.size > 0 %}
   {% assign score_list = score_list | sort | reverse %}
   {% assign count = 0 %}
   <div id="related-posts" class="mt-4 mb-4 pb-3">
@@ -47,16 +47,16 @@
       {% assign data = score_item | split: ":" %}
       {% assign index = data[1] | plus: 0 %}
       {% assign post = site.posts[index] %}
-      <div class="card btn-box-shadow">
+      <div class="card">
         <a href="{{ post.url }}">
           <div class="card-body">
-            <span class="timeago text-muted small">
+            <span class="timeago small">
                 {{ post.date | date: POST_DATE }}
                 <i class="hidden">{{ page.date | date_to_xmlschema }}</i>
             </span>
             <h3 class="pt-0 mt-2 mb-3" data-toc-skip>{{ post.title }}</h3>
             <div class="text-muted small">
-              <p>{{ post.content | markdownify | strip_html | truncate: 100 }}</p>
+              <p>{{ post.content | markdownify | strip_html | truncate: 200 }}</p>
             </div>
           </div>
         </a>
@@ -66,6 +66,6 @@
         {% break %}
       {% endif %}
     {% endfor %}
-    </div><!-- .card-deck -->
+    </div> <!-- .card-deck -->
   </div>
-{% endunless %}
+{% endif %}
