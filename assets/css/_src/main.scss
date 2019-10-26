@@ -383,7 +383,7 @@ footer .license a {
   position: sticky;
   top: 2rem;
   transition: top 0.2s ease-in-out;
-  padding-right: 1.5rem;
+  margin-right: 1.5rem;
   margin-top: 3rem;
   margin-bottom: 6rem;
   color: #6c757d;
@@ -859,14 +859,24 @@ table tbody td {
 }
 
 #related-posts .card {
-  border: none;
-  -webkit-transition: all .5s ease-in-out;;
-  -moz-transition: all .5s ease-in-out;;
-  transition: all .5s ease-in-out;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 5px 0 rgba(234, 234, 234, 0.7686274509803922);
+  -webkit-transition: all .3s ease-in-out;;
+  -moz-transition: all .3s ease-in-out;;
+  transition: all .3s ease-in-out;
+}
+
+#related-posts .card:hover {
+  -webkit-transform: translate3d(0, -8px, 0);
+  transform: translate3d(0, -8px, 0);
 }
 
 #related-posts .card h3 {
   color: #353a3d;
+}
+
+#related-posts .timeago {
+  color: rgba(30,55,70,.4);
 }
 
 #related-posts p {
@@ -881,10 +891,6 @@ table tbody td {
 
 #related-posts a:hover {
   text-decoration: none;
-}
-
-#related-posts .card:hover {
-  transform: scale(1.05);
 }
 
 #related-posts ul {
