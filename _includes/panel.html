@@ -21,32 +21,34 @@
   {% endfor %}
 
   {% if lastmod_list.size > 0 %}
-  <div id="access-lastmod" class="post mb-4"">
-    <h3 data-toc-skip>
-      {{ site.data.label.panel.lastmod }}
-    </h3>
-    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
+    <div id="access-lastmod" class="post mb-4"">
+      <h3 data-toc-skip>
+        {{- site.data.label.panel.lastmod -}}
+      </h3>
+      <ul class="post-content pl-0 pb-1 ml-1 mt-2">
     {% assign MAX_SIZE = 5 %}
     {% assign sum = 0 %}
     {% assign lastmod_list = lastmod_list | sort | reverse %}
     {% for item in lastmod_list %}
       {% assign index = item | split: "::" | last | plus: 0 %}
       {% assign post = site.posts[index] %}
-      <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+        <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
       {% assign sum = sum | plus: 1 %}
       {% if sum >= MAX_SIZE %}
         {% break %}
       {% endif %}
     {% endfor %}
-    </ul>
-  </div><!-- #panel-update -->
+      </ul>
+    </div><!-- #access-lastmod -->
   {% endif %}
 
-  <div id="access-tags">
-    <h3 data-toc-skip>
-      {{ site.data.label.panel.trending_tags }}
-    </h3>
-    <div class="d-flex flex-wrap mt-2 pb-1 pr-3">
+    <div id="access-tags">
+
+      <h3 data-toc-skip>
+        {{- site.data.label.panel.trending_tags -}}
+      </h3>
+
+      <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
       {% capture tags_array %}
         {% for tag in site.tags %}
           {{ tag[1] | size }}:{{ tag[0] | replace: ' ', '-' }}
@@ -57,7 +59,6 @@
       {% assign count = 0 %}
       {% assign trends = tags_array | split: " " | sort | reverse %}
 
-      <div>
       {% for trend in trends %}
         {% assign count = count | plus: 1 %}
         {% assign tag = trend | split: ":" | last  %}
@@ -66,19 +67,20 @@
           {% break %}
         {% endif %}
       {% endfor %}
-      </div>
 
-    </div>
-  </div><!-- #panel-tags -->
-</div>
+      </div> <!-- div.d-flex.flex-wrap -->
 
-{% if page.layout == 'post' and site.toc and page.toc %}
-<div id="toc-wrap" class="pl-0 pr-4">
+    </div> <!-- #access-tags -->
+
+  </div> <!-- .access -->
+
+  {% if page.layout == 'post' and site.toc and page.toc %}
+  <div id="toc-wrap" class="pl-0 pr-4">
     <h3 data-toc-skip class="pl-3 pt-2">
       {{- site.data.label.panel.toc -}}
     </h3>
     <nav id="toc" data-toggle="toc"></nav>
   </div>
-{% endif %}
+  {% endif %}
 
 </div> <!-- #panel-wrap -->
