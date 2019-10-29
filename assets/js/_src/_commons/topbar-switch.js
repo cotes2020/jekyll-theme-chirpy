@@ -38,8 +38,8 @@ $(function() {
         $('#toc-wrap').removeClass('topbar-down');
       }
 
-      if ( $('.panel-group').length > 0) {
-        $('.panel-group').removeClass('topbar-down');
+      if ( $('.access').length > 0) {
+        $('.access').removeClass('topbar-down');
       }
 
       if ($('#search-input').is(':focus')) {
@@ -53,8 +53,8 @@ $(function() {
         if ( $('#toc-wrap').length > 0) {
           $('#toc-wrap').addClass('topbar-down');
         }
-        if ( $('.panel-group').length > 0) {
-          $('.panel-group').addClass('topbar-down');
+        if ( $('.access').length > 0) {
+          $('.access').addClass('topbar-down');
         }
       }
     }

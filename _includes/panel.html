@@ -4,8 +4,9 @@
   MIT License
 -->
 
-<div class="panel-group">
+<div id="panel-wrap" class="col-xl-3 pl-2 topbar-down">
 
+  <div class="access">
   {% assign lastmod_list = "" | split: "" %}
   {% assign index = 0 %}
 
@@ -20,7 +21,7 @@
   {% endfor %}
 
   {% if lastmod_list.size > 0 %}
-  <div id="panel-update" class="post mb-4"">
+  <div id="access-lastmod" class="post mb-4"">
     <h3 data-toc-skip>
       {{ site.data.label.panel.lastmod }}
     </h3>
@@ -41,7 +42,7 @@
   </div><!-- #panel-update -->
   {% endif %}
 
-  <div id="panel-tags">
+  <div id="access-tags">
     <h3 data-toc-skip>
       {{ site.data.label.panel.trending_tags }}
     </h3>
@@ -69,5 +70,15 @@
 
     </div>
   </div><!-- #panel-tags -->
-
 </div>
+
+{% if page.layout == 'post' and site.toc and page.toc %}
+<div id="toc-wrap" class="pl-0 pr-4">
+    <h3 data-toc-skip class="pl-3 pt-2">
+      {{- site.data.label.panel.toc -}}
+    </h3>
+    <nav id="toc" data-toggle="toc"></nav>
+  </div>
+{% endif %}
+
+</div> <!-- #panel-wrap -->
