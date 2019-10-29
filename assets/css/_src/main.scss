@@ -378,9 +378,7 @@ footer .license a {
 
 
 /*--- Panels ---*/
-.panel-group {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
+.access {
   top: 2rem;
   transition: top 0.2s ease-in-out;
   margin-right: 1.5rem;
@@ -389,20 +387,25 @@ footer .license a {
   color: #6c757d;
 }
 
-.panel-group.topbar-down {
+.access:only-child {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+}
+
+.access.topbar-down {
   top: 6rem;
 }
 
-.panel-group>div {
+.access>div {
   padding-left: 1rem;
   border-left: 1px solid rgba(158, 158, 158, 0.17);
 }
 
-.panel-group>div:not(:first-child) {
+.access>div:not(:first-child) {
   margin-top: 4rem;
 }
 
-.panel-group h3 {
+.access h3 {
   padding-top: .5rem;
   padding-bottom: .5rem;
   margin-top: 0;
@@ -412,15 +415,15 @@ footer .license a {
   font-family: 'Oswald', sans-serif;
 }
 
-.panel-group .post-content {
+.access .post-content {
   font-size: .9rem;
 }
 
-#panel-tags>div.post-content>div {
+#access-tags>div.post-content>div {
   max-width: 80%;
 }
 
-#panel-tags .post-tag {
+#access-tags .post-tag {
   display: inline-block;
   line-height: 1rem;
   font-size: 0.85rem;
@@ -431,14 +434,14 @@ footer .license a {
   margin-bottom: .3rem;
 }
 
-#panel-tags .post-tag:hover {
+#access-tags .post-tag:hover {
   background-color: #2a408e;
   border-color: #2a408e;
   color: #fff;
   transition: none;
 }
 
-#panel-update ul>li {
+#access-lastmod ul>li {
   height: 1.8rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -448,7 +451,7 @@ footer .license a {
   list-style: none;
 }
 
-#panel-update ul a {
+#access-lastmod ul a {
   color: #6c757d;
 }
 
@@ -585,7 +588,7 @@ p>a, span>a,
 }
 
 .categories a,
-.panel-group a,
+.access a,
 #archives a,
 #page-tag a,
 #page-category a,
@@ -606,7 +609,7 @@ p>a, span>a,
 footer a:hover,
 #post-wrap .post-content a:hover,
 #page .post-content a:hover,
-#panel-update a:hover {
+#access-lastmod a:hover {
   color: #d2603a;
   border-bottom: 1px solid #d2603a;
   text-decoration: none;
@@ -817,10 +820,6 @@ table tbody td {
   max-width: 100%;
   height: auto;
   filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.08));
-}
-
-#post-panel .panel-group {
-  position: static;
 }
 
 #toc-wrap {
@@ -1164,7 +1163,7 @@ a.tag:hover {
 
 #page-category a:hover,
 #page-tag a:hover,
-#panel-update a:hover {
+#access-lastmod a:hover {
   margin-bottom: -1px;  // Avoid jumping
 }
 
@@ -1497,12 +1496,12 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
 /* Pannel hidden */
 @media all and (max-width: 1200px) {
-  #post-list {
-    padding-right: 0;
+  #panel-wrap {
+    display: none;
   }
 
-  #panel-wrap, #post-panel {
-    display: none;
+  #post-list {
+    padding-right: 0;
   }
 
   .pagination {

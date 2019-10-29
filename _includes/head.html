@@ -6,11 +6,11 @@
 
 <head>
   <title>
-    {%- if page.layout == "home" -%}
-      {{- site.title -}}
-    {%- else -%}
-      {{ page.title }} | {{ site.title }}
-    {%- endif -%}
+  {%- if page.layout == "home" -%}
+    {{- site.title -}}
+  {%- else -%}
+    {{ page.title }} | {{ site.title }}
+  {%- endif -%}
   </title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,6 +48,20 @@
 
   {% if jekyll.environment == 'production' %}
     {% include google-analytics.html %}
+  {% endif %}
+
+  {% if page.layout == 'home' or page.layout == 'post' %}
+    <script src="{{ site.baseurl }}/assets/js/dist/timeago.min.js"></script>
+    {% if site.google_analytics.pv %}
+      <script src="{{ site.baseurl }}/assets/js/dist/countUp.min.js" async></script>
+      <script src="{{ site.baseurl }}/assets/js/dist/pageviews.min.js" async></script>
+    {% endif %}
+  {% endif %}
+
+  {% if page.layout == 'post' and site.toc and page.toc %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
+    <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/dist/toc.min.js"></script>
   {% endif %}
 
 </head>
