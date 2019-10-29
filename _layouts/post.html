@@ -96,24 +96,4 @@ layout: default
   </div> <!-- #post-wrap -->
 </div> <!-- div.col-12..col-lg-11.col-xl-8 -->
 
-<div id="post-panel" class="col-xl-3 pl-2">
-  {% include panel.html %}
-  {% if site.toc and page.toc %}
-  <div id="toc-wrap" class="topbar-down pr-4">
-    <h3 data-toc-skip class="pl-3 pt-2">
-      {{- site.data.label.panel.toc -}}
-    </h3>
-    <nav id="toc" data-toggle="toc"></nav>
-  </div>
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
-  <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script>
-  <script src="{{ site.baseurl }}/assets/js/dist/toc.min.js"></script>
-  {% endif %}
-</div> <!-- #post-panel -->
-
-<script src="{{ site.baseurl }}/assets/js/dist/timeago.min.js"></script>
-
-{% if site.google_analytics.pv %}
-<script src="{{ site.baseurl }}/assets/js/dist/countUp.min.js" async></script>
-<script src="{{ site.baseurl }}/assets/js/dist/pageviews.min.js" async></script>
-{% endif %}
+{% include panel.html %}
