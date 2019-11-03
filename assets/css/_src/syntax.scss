@@ -148,11 +148,15 @@ td.rouge-code {
   border-radius: 5px;
 }
 
-
-/* Hide line numbers for code snippets without specific language */
-div[class^='highlighter-rouge'] pre.lineno {
+/* Hide line numbers for defualt, console, and terminal code snippets */
+div[class^='highlighter-rouge'] pre.lineno,
+div.language-console.highlighter-rouge pre.lineno,
+div.language-terminal.highlighter-rouge pre.lineno {
   display: none;
 }
-div[class^='highlighter-rouge'] td.rouge-code {
+
+div[class^='highlighter-rouge'] td.rouge-code,
+div.language-console.highlighter-rouge td.rouge-code,
+div.language-terminal.highlighter-rouge td.rouge-code {
   padding: .8rem 1rem;
 }
