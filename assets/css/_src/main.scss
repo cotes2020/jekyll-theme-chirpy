@@ -1011,6 +1011,12 @@ a.tag:hover {
   background-image: linear-gradient(to left, #fff, #fbfbfb, #fbfbfb, #fbfbfb, #fff);
 }
 
+#archives li>div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 #archives span.lead {
   font-size: 1.5rem;
   font-family: 'Oswald', sans-serif;
@@ -1255,12 +1261,6 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
   #archives ul {
     letter-spacing: 0;
-  }
-
-  #archives li>div {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   #page-tag ul>li>a,
