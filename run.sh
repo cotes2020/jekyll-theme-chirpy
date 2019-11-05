@@ -1,56 +1,77 @@
 #!/bin/bash
-#
+
 # Run jekyll site at http://127.0.0.1:4000
+#
+# Requirement:
+#   fswatch › http://emcrisostomo.github.io/fswatch/
+#
 # © 2019 Cotes Chung
 # Published under MIT License
 
 
+WORK_DIR=$PWD
+CONTAINER=.container
+SYNC_TOOL=_scripts/sh/sync_monitor.sh
+
+cmd="bundle exec jekyll s"
+
 help() {
-   echo "Usage:"
-   echo
-   echo "   bash run.sh [options]"
-   echo
-   echo "Options:"
-   echo "     -H, --host    <HOST>    Host to bind to"
-   echo "     -P, --port    <PORT>    Port to listen on"
-   echo "     -b, --baseurl <URL>     The site relative url that start with slash, e.g. '/project'"
-   echo "     -h, --help              Print the help information"
+  echo "Usage:"
+  echo
+  echo "   bash run.sh [options]"
+  echo
+  echo "Options:"
+  echo "     -H, --host    <HOST>    Host to bind to"
+  echo "     -P, --port    <PORT>    Port to listen on"
+  echo "     -b, --baseurl <URL>     The site relative url that start with slash, e.g. '/project'"
+  echo "     -h, --help              Print the help information"
+  echo "     -t, --trace             Show the full backtrace when an error occurs"
+
 }
 
 
 cleanup() {
-   cd ../
-   rm -rf .container
+  cd $WORK_DIR
+  rm -rf $CONTAINER
+  ps aux | grep fswatch | awk '{print $2}' | xargs kill -9 > /dev/null 2>&1
 }
 
 
 init() {
-
   set -eu
 
-  if [[ -d .container ]]; then
-    rm -rf .container
+  if [[ -d $CONTAINER ]]; then
+    rm -rf $CONTAINER
   fi
 
   temp=$(mktemp -d)
   cp -r * $temp
   cp -r .git $temp
-  mv $temp .container
+  mv $temp $CONTAINER
 
   trap cleanup INT
 }
 
 
 check_unset() {
-  if [[ -z ${1:+unset} ]]
-  then
+  if [[ -z ${1:+unset} ]]; then
     help
     exit 1
   fi
 }
 
 
-cmd="bundle exec jekyll s"
+main() {
+  init
+
+  cd $CONTAINER
+  python _scripts/py/init_all.py
+  fswatch -0 -e "\\$CONTAINER" -e "\.git" ${WORK_DIR} | xargs -0 -I {} bash ./${SYNC_TOOL} {} $WORK_DIR . &
+
+  echo "\$ $cmd"
+  eval $cmd
+}
+
 
 while (( $# ))
 do
@@ -80,6 +101,10 @@ do
       shift
       shift
       ;;
+    -t|--trace)
+      cmd+=" -t"
+      shift
+      ;;
     -h|--help)
       help
       exit 0
@@ -92,10 +117,4 @@ do
   esac
 done
 
-init
-
-cd .container
-python _scripts/py/init_all.py
-
-echo "\$ $cmd"
-eval $cmd
+main
