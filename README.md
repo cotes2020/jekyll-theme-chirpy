@@ -6,7 +6,7 @@
 
 ![devices-mockup](assets/img/sample/devices-mockup.png)
 
-A Jekyll theme with responsive web design that focuses on text presentation. [Live Demo »](https://chirpy.cotes.info)
+A Jekyll theme with responsive web design that focuses on text presentation. Hope you like it! [Live Demo »](https://chirpy.cotes.info)
 
 ## Features
 
@@ -23,7 +23,7 @@ A Jekyll theme with responsive web design that focuses on text presentation. [Li
 
 ## Quick start
 
-First of all, complete the installation of the following environment dependencies:
+Complete the installation of the following environment dependencies:
 
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
 - [RubyGem](https://rubygems.org/pages/download)
@@ -31,10 +31,9 @@ First of all, complete the installation of the following environment dependencie
 - [Jekyll](https://jekyllrb.com/)
 - [Python](https://www.python.org/downloads/) 
 - [ruamel.yaml](https://pypi.org/project/ruamel.yaml/)
+- [fswatch](http://emcrisostomo.github.io/fswatch/getting.html)
 
-Clone the repository locally, but to prevent losing the latest features, consider using **Fork** instead of cloning. 
-
-Install the Jekyll plugins:
+Next, [**fork**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) this project and rename as `<username>.github.io`, then clone the replicated repository locally. Go to the root directory and install the Jekyll plugins:
 
 ```
 $ bundle install
@@ -48,7 +47,9 @@ $ bash run.sh
 
 Now, open your favorite brower and visit <http://127.0.0.1:4000>
 
-Please refer to the [documentation](https://chirpy.cotes.info/posts/getting-started/) for more details. Hope you like it.
+## Documentation
+
+For more details, please check the [tutorial](https://chirpy.cotes.info/posts/getting-started/). BTW, a copy of the tutorial is also available on the [Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
 
 
 ## License
