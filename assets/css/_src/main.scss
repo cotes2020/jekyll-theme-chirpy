@@ -117,10 +117,15 @@ body {
   height: 26px;
   background: #fcfcfc;;
   pointer-events: none;
-  -webkit-transition: top .5s ease;
-  -moz-transition: top .5s ease;
-  -o-transition: top .5s ease;
-  transition: top .5s ease;
+}
+
+@media (hover: hover) {
+  #sidebar ul>li:last-child::after {
+    -webkit-transition: top .5s ease;
+    -moz-transition: top .5s ease;
+    -o-transition: top .5s ease;
+    transition: top .5s ease;
+  }
 }
 
 #nav-wrap {
@@ -897,7 +902,7 @@ table tbody td {
   padding-inline-start: 1.5rem;
 }
 
-#related-posts ul > li::before {
+#related-posts ul>li::before {
   background: #c2c9d4;
   width: 5px;
   height: 5px;
@@ -1136,8 +1141,8 @@ a.tag:hover {
   padding: .6rem 0;
 }
 
-#page-category ul > li::before,
-#page-tag ul > li::before {
+#page-category ul>li::before,
+#page-tag ul>li::before {
   background: #999;
   width: 5px;
   height: 5px;
