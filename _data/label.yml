@@ -3,11 +3,11 @@
 # MIT Licensed
 
 tabs:
-  - { name: "Home" }
-  - { name: "Categories", path: tabs, url: categories }
-  - { name: "Tags", path: tabs, url: tags }
-  - { name: "Archives", path: tabs, url: archives }
-  - { name: "About", path: tabs, url: about }
+  - { name: "Home", icon: 'fas fa-home' }
+  - { name: "Categories", path: tabs, url: categories, icon: 'fas fa-stream' }
+  - { name: "Tags", path: tabs, url: tags, icon: 'fas fa-tags' }
+  - { name: "Archives", path: tabs, url: archives, icon: 'fas fa-archive'}
+  - { name: "About", path: tabs, url: about, icon: 'fas fa-info'}
 
 panel:
   lastmod: "Recent Update"
