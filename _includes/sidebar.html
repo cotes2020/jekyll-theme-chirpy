@@ -5,8 +5,8 @@
 -->
 
 <div id="nav-wrap">
-  <div id="profile-wrap" class="d-flex justify-content-center">
-    <div id="avatar">
+  <div id="profile-wrap" class="d-flex flex-column">
+    <div id="avatar" class="d-flex justify-content-center">
       <a href="{{ site.baseurl }}/" alt="avatar">
         {% assign avatar = site.avatar %}
         {% if avatar | slice: 0 == '/' %}
@@ -15,13 +15,16 @@
         <img src="{{ avatar }}"></img>
       </a>
     </div>
-  </div>
-  <div id="site-title" class="d-flex justify-content-center align-items-center">
-    <a href="{{ site.baseurl }}/">{{- site.title -}}</a>
-  </div>
-  <div id="site-subtitle" class="font-italic">{{ site.description }}</div>
-  <ul class="nav flex-column">
 
+    <div class="profile-text mt-3">
+      <div id="site-title">
+        <a href="{{ site.baseurl }}/">{{- site.title -}}</a>
+      </div>
+      <div id="site-subtitle" class="font-italic">{{ site.description }}</div>
+    </div>
+  </div>
+
+  <ul class="nav flex-column">
   {% assign page_urls = page.url | split: "/" %}
 
   {% for item in site.data.label.tabs %}
@@ -37,8 +40,9 @@
     <li class="nav-item d-flex justify-content-center
       {% if item.url == page_urls.last or
         item.name == "Home" and page.layout == "home" %}active{% endif %}">
-      <a href="{{ ref }}" class="nav-link d-flex justify-content-center align-items-center w-100"><!-- <i class="{{ item.icon }}"></i> -->
-      {{ item.name | upcase }}
+      <a href="{{ ref }}" class="nav-link d-flex justify-content-center align-items-center w-100">
+        <i class="fa-fw {{ item.icon }} ml-3 mr-4 hidden"></i>
+        <span>{{ item.name | upcase }}</span>
       </a>
     </li> <!-- .nav-item -->
   {% endfor %}
@@ -47,9 +51,9 @@
 
 </div><!-- #nav-wrap -->
 
-<div class="contact d-flex justify-content-around mt-3">
+<div class="contact d-flex justify-content-around mt-4">
   <a href="https://github.com/{{ site.github.username }}" target="_blank">
-    <i class="fab fa-github"></i>
+    <i class="fab fa-github-alt"></i>
   </a>
   <a href="https://twitter.com/{{ site.twitter.username }}" target="_blank">
     <i class="fab fa-twitter"></i>

@@ -37,6 +37,8 @@ body {
   z-index: 99;
   transition: transform 0.4s ease;
   -webkit-transition: transform 0.4s ease;
+  background: rgb(42, 30, 107);
+  background: radial-gradient(circle, rgba(42, 30, 107, 1) 0%, rgba(35, 37, 46, 1) 100%);
 }
 
 #sidebar a {
@@ -134,11 +136,11 @@ body {
 }
 
 #profile-wrap {
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+  margin-top: 2rem;
 }
 
-#avatar {
+#avatar>a {
+  display: block;
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
@@ -150,7 +152,7 @@ body {
   transition: border-color 0.35s ease-in-out;
 }
 
-#avatar:hover {
+#avatar:hover>a {
   border-color: #fff;
 }
 
@@ -172,6 +174,10 @@ body {
   transform: scale(1.2);
 }
 
+#site-title {
+  text-align: center;
+}
+
 #site-title a {
   color: #b6b6b6;
   font-weight: 900;
@@ -190,7 +196,7 @@ body {
   color: #828282;
   line-height: 1.2rem;
   word-spacing: 1px;
-  padding: .6rem 1.5rem 2rem 1.5rem;
+  margin: .5rem 1.5rem 2rem 1.5rem;
 }
 
 .sidebar-expand {
@@ -216,7 +222,7 @@ body {
 
 .contact {
   font-size: 1.2rem;
-  padding: 2rem 2.5rem;
+  margin: 2rem 2.5rem;
   flex-shrink: 0;
   -webkit-flex-shrink: 0;
   -ms-flex-shrink: 0;
@@ -236,7 +242,7 @@ body {
   left: 260px; /* same as sidebar width */
   right: 0;
   transition: top 0.2s ease-in-out;
-  z-index: 99;
+  z-index: 50;
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.05);
 }
@@ -1477,8 +1483,8 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
   #site-subtitle {
     font-size: 90%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .contact a {
@@ -1541,32 +1547,142 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     right: 4.3rem;
   }
 
+  #search-wrap {
+    width: 22%;
+  }
+
   #search-input {
-    width: 15rem;
+    width: 100%;
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
   }
 
-  #search-input:focus {
-    width: 20rem;
-  }
-
 }
 
-@media all and (min-width: 1441px) {
-  #topbar-main {
-    max-width: 73%;
+@media all and (min-width: 1650px) {
+
+  #main-wrap {
+    margin-left: 350px;
   }
 
   #main>div.row .col-xl-8 {
-    max-width: 60%;
+    padding-left: 0px;
+    padding-right: 1.5rem;
+    margin-left: -4rem;
+    max-width: 65%;
   }
 
   #main-wrap .col-xl-3 {
-    max-width: 18%;
+    max-width: 20%;
+  }
+
+  #topbar {
+    left: 350px;
+  }
+
+  #topbar-main {
+    max-width: 90%;
+  }
+
+  #search-wrap {
+    margin-right: 5%;
+  }
+
+  #sidebar {
+    width: 350px;
+  }
+
+  #profile-wrap {
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+    -ms-flex-direction: column!important;
+    flex-direction: row!important;
+  }
+
+  #avatar {
+    margin-left: 2.5rem;
+  }
+
+  #avatar>a {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .profile-text {
+    margin-top: 0!important;
+    /* .d-flex */
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
+    /* .flex-wrap */
+    -ms-flex-wrap: wrap!important;
+    flex-wrap: wrap!important;
+    /* .align-content-center */
+    -ms-flex-line-pack: center!important;
+    align-content: center!important;
+  }
+
+  #site-title a {
+    letter-spacing: 1px;
+  }
+
+  #site-title, #site-subtitle {
+    text-align: left;
+    margin-left: 1.1rem;
+  }
+
+  #site-subtitle {
+    word-spacing: 0;
+    margin-top: .3rem;
+    margin-bottom: 0;
+  }
+
+  #sidebar ul>li>a {
+    padding-left: 2.5rem;
+    -webkit-box-pack: start!important;
+    -ms-flex-pack: start!important;
+    justify-content: flex-start!important;
+  }
+
+  #sidebar .nav-link>span {
+    letter-spacing: 3px;
+  }
+
+  #sidebar .nav-link>i {
+    border: 1px solid;
+    border-radius: 50%;
+    width: 1.65rem;
+    height: 1.65rem;
+    line-height: 1rem;
+    font-size: .6rem;
+    padding: .5em 0 0 .1em;
+    display: inline-block!important;
+  }
+
+  .contact {
+    margin-left: 2.5rem;
+    margin-right: 4.5rem;
+    font-size: 1.3rem;
+    padding-bottom: 1rem;
+  }
+
+  .contact a {
+    border: 1px solid;
+    border-radius: 50%;
+    font-size: 1rem;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+  }
+
+  .contact a>i {
+    text-align: center;
+    width: 1.25em;
+    padding-top: .45rem;
   }
 
   footer>div.d-flex {
-    width: 70%;
+    width: 88%;
   }
+
 }
