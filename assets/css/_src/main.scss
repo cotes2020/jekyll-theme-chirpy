@@ -159,7 +159,6 @@ body {
 #avatar img {
   width: 100%;
   height: 100%;
-  display: block;
   background-size: cover;
   background-repeat: no-repeat;
   -webkit-transition: all .5s !important;
@@ -1244,6 +1243,16 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
   #main-wrap {
     padding-bottom: 10rem; /* footer height */
+  }
+
+  #avatar>a {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  #site-subtitle {
+    margin-left: 1.8rem;
+    margin-right: 1.8rem;
   }
 
   #post-wrap h1 {
