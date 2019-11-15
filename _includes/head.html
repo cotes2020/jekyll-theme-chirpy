@@ -28,8 +28,28 @@
     integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ="
     crossorigin="anonymous">
 
-  <link rel="stylesheet"
-    href="{{ site.baseurl }}/assets/css/styles.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+
+  {% if page.layout == 'home' %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/home.css">
+  {% endif %}
+
+  {% if page.title == 'Categories' and page.layout == 'page' %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/categories.css">
+  {% endif %}
+
+  {% if page.title == 'Tags' and page.layout == 'page' %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tags.css">
+  {% endif %}
+
+  {% if page.layout == 'category' or page.layout == 'tag' %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/category-tag.css">
+  {% endif %}
+
+  {% if page.title == 'Archives' and page.layout == 'page' %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/archives.css">
+  {% endif %}
+
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -58,10 +78,13 @@
     {% endif %}
   {% endif %}
 
-  {% if page.layout == 'post' and site.toc and page.toc %}
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
-    <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/dist/toc.min.js"></script>
+  {% if page.layout == 'post' %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post.css">
+    {% if site.toc and page.toc %}
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
+      <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script>
+      <script src="{{ site.baseurl }}/assets/js/dist/toc.min.js"></script>
+    {% endif %}
   {% endif %}
 
 </head>

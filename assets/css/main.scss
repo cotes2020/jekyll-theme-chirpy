@@ -1,8 +1,15 @@
+---
+---
+
 /*!
 * The main styles.
 * © 2018-2019 Cotes Chung
 * MIT Licensed
 */
+
+@import "_typograph/syntax";
+@import "_typograph/fonts";
+
 
 html, body {
   height: 100%;
@@ -657,95 +664,6 @@ table tbody td {
   font-size: 95%;
 }
 
-
-/*--- Home page ---*/
-
-#post-list {
-  margin-top: 1rem;
-  padding-right: .5rem;
-}
-
-.pagination {
-  font-size: 1rem;
-}
-
-.pagination a:hover {
-  text-decoration: none;
-}
-
-.post-preview {
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(158, 158, 158, 0.17);
-}
-
-.post-preview>h1 {
-  font-size: 1.4rem;
-  margin: 0;
-}
-
-.post-preview i.far {
-  /* fontawesome icons */
-  font-size: 86%;
-}
-
-.post-preview .post-content {
-  margin-top: .6rem;
-  margin-bottom: .6rem;
-  color: dimgray;
-}
-
-/* Make preview shorter in Home page*/
-.post-preview .post-content>p {
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.page-item .page-link {
-  color: #555555;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0;
-  text-align: center;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  border-radius: 50%;
-  border: 1px solid #f1f1f1;
-  font-family: 'Lato', sans-serif;
-}
-
-.page-item.active .page-link {
-  background-color: #2a408e;
-  box-shadow: 0 0 8px 0 #4b92d2 !important;
-  color: #f8f8f8;
-}
-
-.page-item.disabled .page-link {
-  color: rgba(108, 117, 125, 0.57);
-  border-color: #f1f1f1;
-}
-
-.page-item.disabled {
-  cursor: not-allowed;
-}
-
-.page-item:first-child .page-link,
-.page-item:last-child .page-link {
-  border-radius: 50%;
-}
-
-.page-item:not(:last-child) {
-  margin-right: 0.6rem;
-}
-
 /*--- post ---*/
 
 .post-meta {
@@ -768,10 +686,6 @@ table tbody td {
   margin-top: 2rem;
   overflow-wrap: break-word;
   word-wrap: break-word;
-}
-
-#post-list .post-meta i:not(:first-child) { // post-meta icons on HOME
-  margin-left: 1.5rem;
 }
 
 .post-tail {
@@ -832,362 +746,6 @@ table tbody td {
   filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.08));
 }
 
-#toc-wrap {
-  border-left: 1px solid rgba(158, 158, 158, 0.17);
-  position: -webkit-sticky;
-  position: sticky;
-  top: 2rem;
-  transition: top 0.2s ease-in-out;
-}
-
-#toc-wrap.topbar-down {
-  top: 6rem;
-}
-
-#toc-wrap>h3 {
-  font-size: 1rem;
-  font-family: 'Oswald', sans-serif;
-  color: gray;
-}
-
-#toc li>a {
-  padding-top: 0;
-}
-
-
-/*--- Related Posts ---*/
-
-#related-posts {
-  border-bottom: 1px double #e9ecef;
-}
-
-#related-posts>h3 {
-  color: gray;
-  font-size: 1.1rem;
-  font-family: 'Oswald', sans-serif;
-}
-
-#related-posts .card {
-  border: 1px solid #f1f1f1;
-  box-shadow: 0 0 5px 0 rgba(234, 234, 234, 0.7686274509803922);
-  -webkit-transition: all .3s ease-in-out;;
-  -moz-transition: all .3s ease-in-out;;
-  transition: all .3s ease-in-out;
-}
-
-#related-posts .card:hover {
-  -webkit-transform: translate3d(0, -8px, 0);
-  transform: translate3d(0, -8px, 0);
-}
-
-#related-posts .card h3 {
-  color: #353a3d;
-}
-
-#related-posts .timeago {
-  color: rgba(30,55,70,.4);
-}
-
-#related-posts p {
-  font-size: .9rem;
-  margin-bottom: .5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-#related-posts a:hover {
-  text-decoration: none;
-}
-
-#related-posts ul {
-  list-style-type: none;
-  padding-inline-start: 1.5rem;
-}
-
-#related-posts ul>li::before {
-  background: #c2c9d4;
-  width: 5px;
-  height: 5px;
-  border-radius: 1px;
-  display: block;
-  content: "";
-  position: relative;
-  top: 1rem;
-  right: 1rem;
-}
-
-
-/*--- Tab Categories ---*/
-
-.categories {
-  margin-bottom: 2rem;
-}
-
-.categories .card-header {
-  padding-right: 12px;
-}
-
-.categories .card-header>span>i:first-child,
-.categories .list-group-item>i {
-  color: gray;
-}
-
-.categories .list-group-item {
-  border-left: none;
-  border-right: none;
-  padding-left: 2rem;
-}
-
-.categories .collapsing .list-group-item:first-child,
-.categories .collapse .list-group-item:first-child {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
-.categories i.far,
-.categories i.fas { // fontawesome icons
-  font-size: 86%;
-}
-
-.category-trigger {
-  width: 1.7rem;
-  height: 1.7rem;
-  border-radius: 50%;
-  text-align: center;
-  color: #6c757d!important;
-}
-
-@media (hover: hover) { // only works on desktop
-  .category-trigger:hover {
-    background-color: #e9ecef;
-  }
-}
-
-.category-trigger>i.fas.fa-angle-up {
-  position: relative;
-  bottom: 8%;
-  transition: 300ms ease all;
-}
-
-.disabled {
-  color: rgb(206, 196, 196);
-  pointer-events: auto;
-  cursor: not-allowed;
-}
-
-.hide-border-bottom {
-  border-bottom: none!important;
-}
-
-
-/*--- Tab Tags and Tag-Page ---*/
-
-.tag {
-  border-radius: 0.7em;
-  padding: 6px 8px 7px;
-  margin-right: .8rem;
-  line-height: 3rem;
-  letter-spacing: 0;
-  border: 1px solid #dee2e6 !important;
-  box-shadow: 0 0 3px 0 #e9ecef;
-}
-
-.tag span {
-  margin-left: 0.6em;
-  font-size: 0.7em;
-  font-family: 'Oswald', sans-serif;
-}
-
-a.tag:hover {
-  text-decoration: none;
-}
-
-/*--- Tab Archives --*/
-
-#archives {
-  letter-spacing: 0.03rem;
-}
-
-#archives li {
-  font-size: 1.1rem;
-  line-height: 3rem;
-}
-
-#archives li:nth-child(odd) {
-  background-color: #fff;
-  background-image: linear-gradient(to left, #fff, #fbfbfb, #fbfbfb, #fbfbfb, #fff);
-}
-
-#archives li>div {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-#archives span.lead {
-  font-size: 1.5rem;
-  font-family: 'Oswald', sans-serif;
-  position: relative;
-  left: 8px;
-}
-
-#archives span.lead:not(:first-child) {
-  position: relative;
-  left: 4px;
-}
-
-#archives span.lead:not(:first-child)::after {
-  left: 67px;
-}
-
-#archives span.lead::after { /* Year dot */
-  content: "";
-  display: block;
-  position: relative;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  width: 12px;
-  height: 12px;
-  top: -26px;
-  left: 63px;
-  border: 3px solid;
-  background-color: #ffffff;
-  border-color: #c2c6cc;
-  box-shadow: 0 0 2px 0 #c2c6cc;
-  z-index: 1;
-}
-
-#archives .date {
-  white-space: nowrap;
-  display: inline-block;
-}
-
-#archives .date.month {
-  width: 1.4rem;
-  text-align: center;
-  font-family: 'Oswald', sans-serif;
-}
-
-#archives .date.day {
-  font-size: 85%;
-  font-family: sans-serif;
-  text-align: center;
-  margin-right: -2px;
-  width: 1.2rem;
-  position: relative;
-  left: -.15rem;
-}
-
-#archives ul>li>div>a {
-/* post title in Archvies */
-  margin-left: 2.5rem;
-  position: relative;
-  top: .1rem;
-}
-
-#archives .date.month ~ a::before {
-  /* A dot for Month and Day */
-  content: "";
-  display: inline-block;
-  position: relative;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  width: 8px;
-  height: 8px;
-  float: left;
-  top: 1.35rem;
-  left: 69px;
-  background-color: #c2c6cc;
-  box-shadow: 0 0 3px 0 #c2c6cc;
-  z-index: 1;
-}
-
-/* timeline for date */
-#archives ul>li::after,
-#archives ul>li:first-child::before {
-  content: "";
-  width: 4px;
-  left: 75px;
-  display: inline-block;
-  float: left;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.075);
-}
-
-#archives ul>li::after {
-  height: 2.8rem;
-  top: -1.3rem;
-}
-
-#archives ul>li:first-child::before {
-  height: 3.06rem;
-  top: -1.61rem;
-}
-
-#archives ul:not(:last-child)>li:last-child::after {
-  height: 3.4rem;
-}
-
-#archives ul:last-child>li:last-child::after {
-  display: none;
-}
-
-
-/*--- Page Category and Tag ---*/
-
-#page-category ul>li,
-#page-tag ul>li {
-  line-height: 1.5rem;
-  padding: .6rem 0;
-}
-
-#page-category ul>li::before,
-#page-tag ul>li::before {
-  background: #999;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  display: block;
-  content: "";
-  position: relative;
-  top: .6rem;
-  margin-right: .5rem;
-}
-
-#page-tag ul>li>a,
-#page-category ul>li>a, { /* post's title */
-  font-size: 1.1rem;
-}
-
-#page-category ul>li>span:last-child,
-#page-tag ul>li>span:last-child { /* post's date */
-  white-space: nowrap;
-}
-
-#page-tag h1>i { // tag icon
-  font-size: 1.2rem;
-}
-
-#page-category h1>i {
-  font-size: 1.25rem;
-}
-
-#page-category a:hover,
-#page-tag a:hover,
-#access-lastmod a:hover {
-  margin-bottom: -1px;  // Avoid jumping
-}
-
-.dash {
-  margin: 0 .5rem .6rem .5rem;
-  border-bottom: 2px dotted silver;
-}
-
 
 /* --- Effects classes --- */
 
@@ -1232,6 +790,16 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   max-width: 220px;
 }
 
+.disabled {
+  color: rgb(206, 196, 196);
+  pointer-events: auto;
+  cursor: not-allowed;
+}
+
+.hide-border-bottom {
+  border-bottom: none!important;
+}
+
 
 /*--- Responsive Design ---*/
 
@@ -1260,10 +828,6 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     font-size: 1.55rem;
   }
 
-  #post-list .post-meta>span i:not(:first-child) {
-    margin-left: 1rem;
-  }
-
   .post-content {
     font-size: 1.08rem;
   }
@@ -1273,21 +837,6 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     width: 100%;
     table-layout: fixed;
     word-wrap: break-word;
-  }
-
-  #archives {
-    margin-top: -1rem;
-  }
-
-  #archives ul {
-    letter-spacing: 0;
-  }
-
-  #page-tag ul>li>a,
-  #page-category ul>li>a {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   /* footer and #main-wrap expand vertical */
@@ -1518,14 +1067,6 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 @media all and (max-width: 1200px) {
   #panel-wrap {
     display: none;
-  }
-
-  #post-list {
-    padding-right: 0;
-  }
-
-  .pagination {
-    justify-content: center;
   }
 
   #topbar-main {
