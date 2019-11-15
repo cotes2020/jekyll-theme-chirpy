@@ -1,0 +1,57 @@
+---
+---
+/*!
+  Style for Tab Categories
+  © 2019 Cotes Chung
+  MIT License
+*/
+
+.categories {
+  margin-bottom: 2rem;
+}
+
+.categories .card-header {
+  padding-right: 12px;
+}
+
+.categories .card-header>span>i:first-child,
+.categories .list-group-item>i {
+  color: gray;
+}
+
+.categories .list-group-item {
+  border-left: none;
+  border-right: none;
+  padding-left: 2rem;
+}
+
+.categories .collapsing .list-group-item:first-child,
+.categories .collapse .list-group-item:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.categories i.far,
+.categories i.fas { // fontawesome icons
+  font-size: 86%;
+}
+
+.category-trigger {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  text-align: center;
+  color: #6c757d!important;
+}
+
+@media (hover: hover) { // only works on desktop
+  .category-trigger:hover {
+    background-color: #e9ecef;
+  }
+}
+
+.category-trigger>i.fas.fa-angle-up {
+  position: relative;
+  bottom: 8%;
+  transition: 300ms ease all;
+}
