@@ -1,0 +1,64 @@
+---
+---
+/*!
+  Style for page Category and Tag
+  © 2019 Cotes Chung
+  MIT License
+*/
+
+#page-category ul>li,
+#page-tag ul>li {
+  line-height: 1.5rem;
+  padding: .6rem 0;
+}
+
+#page-category ul>li::before,
+#page-tag ul>li::before {
+  background: #999;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: block;
+  content: "";
+  position: relative;
+  top: .6rem;
+  margin-right: .5rem;
+}
+
+#page-tag ul>li>a,
+#page-category ul>li>a, { /* post's title */
+  font-size: 1.1rem;
+}
+
+#page-category ul>li>span:last-child,
+#page-tag ul>li>span:last-child { /* post's date */
+  white-space: nowrap;
+}
+
+#page-tag h1>i { // tag icon
+  font-size: 1.2rem;
+}
+
+#page-category h1>i {
+  font-size: 1.25rem;
+}
+
+#page-category a:hover,
+#page-tag a:hover,
+#access-lastmod a:hover {
+  margin-bottom: -1px;  // Avoid jumping
+}
+
+.dash {
+  margin: 0 .5rem .6rem .5rem;
+  border-bottom: 2px dotted silver;
+}
+
+@media all and (max-width: 576px) {
+  #page-tag ul>li>a,
+  #page-category ul>li>a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

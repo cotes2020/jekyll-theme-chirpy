@@ -1,0 +1,148 @@
+---
+---
+/*!
+  Style for Archives
+  © 2019 Cotes Chung
+  MIT License
+*/
+
+#archives {
+  letter-spacing: 0.03rem;
+}
+
+#archives li {
+  font-size: 1.1rem;
+  line-height: 3rem;
+}
+
+#archives li:nth-child(odd) {
+  background-color: #fff;
+  background-image: linear-gradient(to left, #fff, #fbfbfb, #fbfbfb, #fbfbfb, #fff);
+}
+
+#archives li>div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#archives span.lead {
+  font-size: 1.5rem;
+  font-family: 'Oswald', sans-serif;
+  position: relative;
+  left: 8px;
+}
+
+#archives span.lead:not(:first-child) {
+  position: relative;
+  left: 4px;
+}
+
+#archives span.lead:not(:first-child)::after {
+  left: 67px;
+}
+
+#archives span.lead::after { /* Year dot */
+  content: "";
+  display: block;
+  position: relative;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  top: -26px;
+  left: 63px;
+  border: 3px solid;
+  background-color: #ffffff;
+  border-color: #c2c6cc;
+  box-shadow: 0 0 2px 0 #c2c6cc;
+  z-index: 1;
+}
+
+#archives .date {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+#archives .date.month {
+  width: 1.4rem;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+}
+
+#archives .date.day {
+  font-size: 85%;
+  font-family: sans-serif;
+  text-align: center;
+  margin-right: -2px;
+  width: 1.2rem;
+  position: relative;
+  left: -.15rem;
+}
+
+#archives ul>li>div>a {
+/* post title in Archvies */
+  margin-left: 2.5rem;
+  position: relative;
+  top: .1rem;
+}
+
+#archives .date.month ~ a::before {
+  /* A dot for Month and Day */
+  content: "";
+  display: inline-block;
+  position: relative;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  float: left;
+  top: 1.35rem;
+  left: 69px;
+  background-color: #c2c6cc;
+  box-shadow: 0 0 3px 0 #c2c6cc;
+  z-index: 1;
+}
+
+/* timeline for date */
+#archives ul>li::after,
+#archives ul>li:first-child::before {
+  content: "";
+  width: 4px;
+  left: 75px;
+  display: inline-block;
+  float: left;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+#archives ul>li::after {
+  height: 2.8rem;
+  top: -1.3rem;
+}
+
+#archives ul>li:first-child::before {
+  height: 3.06rem;
+  top: -1.61rem;
+}
+
+#archives ul:not(:last-child)>li:last-child::after {
+  height: 3.4rem;
+}
+
+#archives ul:last-child>li:last-child::after {
+  display: none;
+}
+
+@media all and (max-width: 576px) {
+
+  #archives {
+    margin-top: -1rem;
+  }
+
+  #archives ul {
+    letter-spacing: 0;
+  }
+}

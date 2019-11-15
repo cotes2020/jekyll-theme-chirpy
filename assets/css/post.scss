@@ -1,0 +1,95 @@
+---
+---
+
+/*!
+  Individual styles for Post
+  © 2019 Cotes Chung
+  MIT License
+*/
+
+#toc-wrap {
+  border-left: 1px solid rgba(158, 158, 158, 0.17);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2rem;
+  transition: top 0.2s ease-in-out;
+}
+
+#toc-wrap.topbar-down {
+  top: 6rem;
+}
+
+#toc-wrap>h3 {
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+  color: gray;
+}
+
+#toc li>a {
+  padding-top: 0;
+}
+
+
+/*--- Related Posts ---*/
+
+#related-posts {
+  border-bottom: 1px double #e9ecef;
+}
+
+#related-posts>h3 {
+  color: gray;
+  font-size: 1.1rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+#related-posts .card {
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 5px 0 rgba(234, 234, 234, 0.7686274509803922);
+  -webkit-transition: all .3s ease-in-out;;
+  -moz-transition: all .3s ease-in-out;;
+  transition: all .3s ease-in-out;
+}
+
+#related-posts .card:hover {
+  -webkit-transform: translate3d(0, -8px, 0);
+  transform: translate3d(0, -8px, 0);
+}
+
+#related-posts .card h3 {
+  color: #353a3d;
+}
+
+#related-posts .timeago {
+  color: rgba(30,55,70,.4);
+}
+
+#related-posts p {
+  font-size: .9rem;
+  margin-bottom: .5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+#related-posts a:hover {
+  text-decoration: none;
+}
+
+#related-posts ul {
+  list-style-type: none;
+  padding-inline-start: 1.5rem;
+}
+
+#related-posts ul>li::before {
+  background: #c2c9d4;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  display: block;
+  content: "";
+  position: relative;
+  top: 1rem;
+  right: 1rem;
+}
