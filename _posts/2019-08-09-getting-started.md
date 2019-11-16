@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Getting started
 date: 2019-08-09 20:55:00 +0800
 categories: [Blogging, Tutorial]
 tags: [getting started]
@@ -7,7 +7,7 @@ tags: [getting started]
 
 ## Preparation
 
-First of all, follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (Ruby, RubyGem, Bundler and Jekyll). In addition, to use the funny script tools, we also need to install [Python](https://www.python.org/downloads/)(version 3.5 or abover), [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) and [fswatch](http://emcrisostomo.github.io/fswatch/getting.html).
+Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (Ruby, RubyGem, Bundler and Jekyll). In addition, to use the funny script tools, we also need to install [Python](https://www.python.org/downloads/)(version 3.5 or abover), [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) and [fswatch](http://emcrisostomo.github.io/fswatch/getting.html).
 
 Next, [fork Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy/fork) and then clone the replicated repository locally.
 
@@ -85,7 +85,7 @@ Open a brower and visit <http://127.0.0.1:4000>
 
 ##  Deploying to GitHub Pages
 
-Before the deployment begins, rename your project as `<username>.github.io` and ensure the `url` in `_config.yml` has been set to `https://<username>.github.io`.
+Before the deployment begins, ensure the `url` in `_config.yml` has been set to `https://<username>.github.io`.
 
 ### Option 1: Built by GitHub Pages
 
@@ -112,7 +112,7 @@ It will automatically generates the *Latest Modified Date* and *Categories / Tag
 
 For security reasons, GitHub Pages runs on `safe` mode, which means the third-party Jekyll plugins or custom scripts will not work. If you want to use any another third-party Jekyll plugins, **your have to build locally rather than on GitHub Pages**.
 
-**1**. On GitHub website, create a brand new repository with name `<username>.github.io`, then clone it locally.
+**1**. On GitHub website, create a brand new repository with name `<username>.github.io` and then clone it locally.
 
 **2**. Build your site by:
 
