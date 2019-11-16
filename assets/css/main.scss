@@ -274,29 +274,34 @@ body {
   display: none;
 }
 
-#search-wrap i {
+#search-wrap i.fas {
   position: relative;
   top: 1rem;
   left: .5rem;
   z-index: 2;
   font-size: .9rem;
-  color: #c2c6cc!important;
+  color: #c2c6cc;
 }
 
 #search-input {
   position: relative;
   top: -.86rem;
   background: #f5f5f5;
-  border-color: #e9ecef;
+  border-color: #fff;
   border-radius: 0.9rem;
   padding: .18rem .75rem .18rem 2rem;
-  color: #797878;
 }
 
 #search-input:focus {
   box-shadow: none;
   background: center;
+  border-color: #e9ecef;
 }
+
+#search-input:focus.form-control::-webkit-input-placeholder { opacity: 0.6; }
+#search-input:focus.form-control::-moz-placeholder { opacity: 0.6; }
+#search-input:focus.form-control:-ms-input-placeholder { opacity: 0.6; }
+#search-input:focus.form-control::placeholder { opacity: 0.6; }
 
 #topbar-title {
   display: none;
