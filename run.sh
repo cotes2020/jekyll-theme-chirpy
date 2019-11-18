@@ -3,7 +3,7 @@
 # Run jekyll site at http://127.0.0.1:4000
 #
 # Requirement:
-#   fswatch › http://emcrisostomo.github.io/fswatch/
+#   Option '-r, --realtime' needs fswatch › http://emcrisostomo.github.io/fswatch/
 #
 # © 2019 Cotes Chung
 # Published under MIT License
@@ -14,6 +14,7 @@ CONTAINER=.container
 SYNC_TOOL=_scripts/sh/sync_monitor.sh
 
 cmd="bundle exec jekyll s"
+realtime=false
 
 help() {
   echo "Usage:"
@@ -26,7 +27,7 @@ help() {
   echo "     -b, --baseurl <URL>     The site relative url that start with slash, e.g. '/project'"
   echo "     -h, --help              Print the help information"
   echo "     -t, --trace             Show the full backtrace when an error occurs"
-
+  echo "     -r, --realtime          Make the modified content updated in real time"
 }
 
 
@@ -61,12 +62,24 @@ check_unset() {
 }
 
 
+check_command() {
+  if [[ -z $(command -v $1) ]]; then
+    echo "Error: command '$1' not found !"
+    echo "Hint: Get '$1' on <$2>"
+    exit 1
+  fi
+}
+
+
 main() {
   init
 
   cd $CONTAINER
   python _scripts/py/init_all.py
-  fswatch -0 -e "\\$CONTAINER" -e "\.git" ${WORK_DIR} | xargs -0 -I {} bash ./${SYNC_TOOL} {} $WORK_DIR . &
+
+  if [[ $realtime = true ]]; then
+    fswatch -0 -e "\\$CONTAINER" -e "\.git" ${WORK_DIR} | xargs -0 -I {} bash ./${SYNC_TOOL} {} $WORK_DIR . &
+  fi
 
   echo "\$ $cmd"
   eval $cmd
@@ -103,6 +116,11 @@ do
       ;;
     -t|--trace)
       cmd+=" -t"
+      shift
+      ;;
+    -r|--realtime)
+      check_command fswatch 'http://emcrisostomo.github.io/fswatch/'
+      realtime=true
       shift
       ;;
     -h|--help)
