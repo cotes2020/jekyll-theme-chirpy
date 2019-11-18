@@ -1,5 +1,5 @@
 ---
-title: Getting started
+title: Getting Started
 date: 2019-08-09 20:55:00 +0800
 categories: [Blogging, Tutorial]
 tags: [getting started]
@@ -7,12 +7,12 @@ tags: [getting started]
 
 ## Preparation
 
-Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (Ruby, RubyGem, Bundler and Jekyll). In addition, to use the funny script tools, we also need to install [Python](https://www.python.org/downloads/)(version 3.5 or abover), [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) and [fswatch](http://emcrisostomo.github.io/fswatch/getting.html).
+Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (Ruby, RubyGem, Bundler and Jekyll). In addition, to use the funny script tools, we also need to install [Python](https://www.python.org/downloads/)(version 3.5 or abover) and [ruamel.yaml](https://pypi.org/project/ruamel.yaml/).
 
-Next, [fork Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy/fork) and then clone the replicated repository locally.
+Next, [fork](https://github.com/cotes2020/jekyll-theme-chirpy/fork) **Chirpy** and then clone your replicated repository locally.
 
 
-## Install Jekyll plugins
+## Install Jekyll Plugins
 
 Go to root directory of the repository and run the following:
 
@@ -23,7 +23,7 @@ $ bundle install
 `bundle` will install all the dependent Jekyll Plugins listed in file `Gemfile` automatically.
 
 
-## File structure
+## File Structure
 
 The main files and related brief introductions are listed below.
 
@@ -72,16 +72,19 @@ The Atom feed url of your site will be:
 The `SITE_URL` was defined by variable `url` in file `_config.yml`.
 
 
-##  Run locally
+##  Run Locally
 
 You may want to preview the site before publishing, so just run the script tool:
 
 ```terminal
 $ bash run.sh
 ```
->**Note**: Because the *Recent Update* required the latest git-log date of posts, so make sure the changes of `_posts` have been committed before running this command.
 
-Open a brower and visit <http://127.0.0.1:4000>
+>**Note**: The *Recent Update* list requires the latest git-log date of posts, thus make sure the changes in `_posts` have been committed before running this command.
+
+Open a brower and visit <http://localhost:4000>.
+
+Few days later, you may find that the file changes does not refresh in real time by using `run.sh`. Don't worry, the advanced option `-r` (or `--realtime`) will solve this problem, but it requires [**fswatch**](http://emcrisostomo.github.io/fswatch/) to be installed on your machine.
 
 ##  Deploying to GitHub Pages
 
@@ -108,7 +111,7 @@ It will automatically generates the *Latest Modified Date* and *Categories / Tag
 **4**. Visit `https://<username>.github.io` and enjoy.
 
 
-### Option 2: Build locally
+### Option 2: Build Locally
 
 For security reasons, GitHub Pages runs on `safe` mode, which means the third-party Jekyll plugins or custom scripts will not work. If you want to use any another third-party Jekyll plugins, **your have to build locally rather than on GitHub Pages**.
 
