@@ -5,11 +5,11 @@
 # © 2019 Cotes Chung
 # MIT Licensed
 
-# $1 -> the origin filen with absolute path.
+# $1 -> the origin file with absolute path.
 # $2 -> the origin sync directory
 # $3 -> the destination sync direcotry
 
-# Pass the system temp file
+# Omit the system temp file
 if [[ ! -f $1 ]]; then
   exit 0
 fi
@@ -32,5 +32,6 @@ if [[ -f "$1" ]]; then
 fi
 
 if [[ $related_dir == "_posts" ]]; then
-  python $3/_scripts/py/pages_generator.py
+  python $3/_scripts/py/init_all.py
+  python $3/_scripts/py/update_posts_lastmod.py -f "$dest/$(basename $1)" -t fs
 fi
