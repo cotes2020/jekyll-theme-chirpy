@@ -259,7 +259,7 @@ body {
 #breadcrumb {
   font-size: 1rem;
   color: gray;
-  padding-left: 1rem;
+  padding-left: .5rem;
 }
 
 #breadcrumb span:not(:last-child)::after {
@@ -360,6 +360,10 @@ body {
   min-height: calc(100vh - 3rem - 6rem); /* 3rem for topbar, 6rem for footer */
 }
 
+#main-wrap .col-xl-3 {
+  max-width: 300px;
+}
+
 #topbar.row,
 #main>.row,
 #search-result-wrap>.row {
@@ -380,6 +384,7 @@ footer {
 footer>div.d-flex {
   line-height: 1.2rem;
   width: 90%;
+  max-width: 1035px;
 }
 
 footer a:link,
@@ -1076,24 +1081,24 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   #topbar-main {
     padding: 0;
   }
-
-  footer>div.d-flex {
-    width: 95%;
-  }
-
 }
 
 
 /*--- Large screens ---*/
-
 @media all and (min-width: 1200px) {
 
   #main>div.row .col-xl-8 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 75%;
     flex: 0 0 75%;
-    max-width: 75%;
-    padding-left: 3.5rem;
+    max-width: 850px;
+    padding-left: 3%;
+  }
+
+  #breadcrumb { padding-left: 0; }
+
+  #topbar-main {
+    padding: 0 calc((100% - 1150px) / 2)!important;
   }
 
   #back-to-top {
@@ -1103,6 +1108,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
   #search-wrap {
     width: 22%;
+    margin-right: 1rem;
   }
 
   #search-input {
@@ -1115,19 +1121,17 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
 @media all and (min-width: 1650px) {
 
+  #main>div.row .col-xl-8 {
+    padding-left: 0px;
+    max-width: 850px;
+  }
+
   #main-wrap {
     margin-left: 350px;
   }
 
-  #main>div.row .col-xl-8 {
-    padding-left: 0px;
-    padding-right: 1.5rem;
-    margin-left: -4rem;
-    max-width: 65%;
-  }
-
   #main-wrap .col-xl-3 {
-    max-width: 20%;
+    margin-left: calc((100% - 1150px) / 10);
   }
 
   #topbar {
@@ -1135,11 +1139,11 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   }
 
   #topbar-main {
-    max-width: 90%;
+    padding: 0 calc((100% - 1150px - 8%) / 2) !important;
   }
 
   #search-wrap {
-    margin-right: 5%;
+    margin-right: 3%;
   }
 
   #sidebar {
@@ -1236,7 +1240,39 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   }
 
   footer>div.d-flex {
-    width: 88%;
+    max-width: 1130px;
+  }
+
+}
+
+@media all and (min-width: 1700px) {
+
+  #topbar-main {
+    padding: 0 calc((100% - 1150px - 10%) / 2) !important;
+  }
+
+  #topbar {
+    padding-right: calc(100% - 350px - 1570px) /* 100% - 350px - (1920px - 350px); */
+  }
+
+  #main>div.row {
+    padding-right: calc(100% - 1570px); /* 100% - (1920px - 350px) */
+  }
+
+  #main-wrap .col-xl-3 {
+    margin-left: calc((100% - 1150px) / 8);
+  }
+
+  footer {
+    padding-right: calc(100% - 350px - 1180px);
+  }
+
+  footer>div.d-flex {
+    max-width: calc(1130px + 1%);
+  }
+
+  #back-to-top {
+    right: calc(100% - 1920px + 15rem);
   }
 
 }
