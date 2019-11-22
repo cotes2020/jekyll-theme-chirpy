@@ -103,6 +103,18 @@
   }
 }
 
+/* Sidebar is visable */
+@media all and (min-width: 831px) {
+  .pagination {
+    font-size: .85rem;
+  }
+
+  .page-item .page-link {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
+
 /* Pannel hidden */
 @media all and (max-width: 1200px) {
   #post-list {
