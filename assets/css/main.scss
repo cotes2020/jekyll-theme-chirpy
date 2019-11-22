@@ -784,12 +784,6 @@ table tbody td {
   top: -3rem !important; /* same as topbar height. */
 }
 
-.flip {
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Safari 3-8 */
-  transform: rotate(180deg);
-}
-
 .no-text-decoration {
   text-decoration: none;
 }
