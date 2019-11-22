@@ -49,9 +49,9 @@ title: Categories
       <!-- arrow -->
       <a href="#l_{{ category_name }}" data-toggle="collapse" aria-expanded="true" class="category-trigger hide-border-bottom">
         {% if sub_categories_size > 0%}
-        <i class="fas fa-angle-up"></i>
+        <i class="fas fa-fw fa-angle-down"></i>
         {% else %}
-        <i class="fas fa-angle-down disabled"></i>
+        <i class="fas fa-fw fa-angle-right disabled"></i>
         {% endif %}
       </a>
 

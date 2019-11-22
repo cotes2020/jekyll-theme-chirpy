@@ -50,8 +50,15 @@
   }
 }
 
-.category-trigger>i.fas.fa-angle-up {
+.category-trigger>i.fas {
   position: relative;
-  bottom: 8%;
+  height: .7rem;
+  width: 1rem;
   transition: 300ms ease all;
+}
+
+.rotate {
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Safari 3-8 */
+  transform: rotate(-90deg);
 }
