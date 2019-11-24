@@ -7,12 +7,26 @@
   MIT License
 */
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    position: relative;
+    top: 2rem;
+  }
+  to {
+    opacity: 1;
+    position: relative;
+    top: 0;
+  }
+}
+
 #toc-wrap {
   border-left: 1px solid rgba(158, 158, 158, 0.17);
   position: -webkit-sticky;
   position: sticky;
   top: 2rem;
   transition: top 0.2s ease-in-out;
+  animation: fade-up .8s;
 }
 
 #toc-wrap.topbar-down {
