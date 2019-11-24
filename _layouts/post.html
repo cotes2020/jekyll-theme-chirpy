@@ -42,12 +42,21 @@ layout: default
         {% endif %}
       </div> <!-- .post-meta -->
 
+      {% capture post_content %}
       <div class="post-content">
         {% if page.image %}
         <img src="{{ page.image }}" class="img-rounded">
         {% endif %}
         {{ content }}
-      </div><!-- .post-content -->
+      </div>
+      {% endcapture %}
+
+      <!-- Add lozad class into image tags. see: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+      {% if post_content contains '<img src=' %}
+        {{ post_content | replace: '<img src=', '<img class="lozad" data-src=' }}
+      {% else %}
+        {{ post_content }}
+      {% endif %}
 
       <div class="post-tail text-muted">
         <!-- Tags -->
@@ -97,3 +106,9 @@ layout: default
 </div> <!-- div.col-12..col-lg-11.col-xl-8 -->
 
 {% include panel.html %}
+
+<!-- image lazy load -->
+<script type="text/javascript">
+  const observer = lozad();
+  observer.observe();
+</script>
