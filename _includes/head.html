@@ -19,6 +19,27 @@
 
   {% include favicons.html %}
 
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+  <!-- ga -->
+  {% if jekyll.environment == 'production' %}
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    {% if site.google_analytics.proxy_url and site.google_analytics.pv %}
+      <link rel="preconnect" href="{{ site.google_analytics.proxy_url }}" crossorigin="use-credentials">
+      <link rel="dns-prefetch" href="{{ site.google_analytics.proxy_url }}">
+    {% endif %}
+  {% endif %}
+
+  <link rel="preconnect" href="cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="cdn.jsdelivr.net">
+
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous">
@@ -55,25 +76,21 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
   <script>
-    document.jQuery || document.write('<script src="{{ site.baseurl }}/assets/lib/jquery-3.4.1.min.js"><\/script>');
+    document.jQuery || document.write("<script src=\"{{ site.baseurl }}/assets/lib/jquery-3.4.1.min.js\"><\/script>");
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.15.0/dist/umd/popper.min.js"
-    integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
+    integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous" async></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha256-5+02zu5UULQkO7w1GIr6vftCgMfFdZcAHeDtFnKZsBs=" crossorigin="anonymous"></script>
+    integrity="sha256-5+02zu5UULQkO7w1GIr6vftCgMfFdZcAHeDtFnKZsBs=" crossorigin="anonymous" async></script>
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 
   <script src="{{ site.baseurl }}/assets/js/dist/commons.js" async></script>
 
-  {% if jekyll.environment == 'production' %}
-    {% include google-analytics.html %}
-  {% endif %}
-
   {% if page.layout == 'home' or page.layout == 'post' %}
-    <script src="{{ site.baseurl }}/assets/js/dist/timeago.min.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/dist/timeago.min.js" async></script>
     {% if site.google_analytics.pv %}
       <script src="{{ site.baseurl }}/assets/js/dist/countUp.min.js" async></script>
       <script src="{{ site.baseurl }}/assets/js/dist/pageviews.min.js" async></script>

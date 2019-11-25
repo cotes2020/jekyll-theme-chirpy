@@ -352,16 +352,13 @@ body {
   -webkit-transition: transform 0.4s ease;
 }
 
-#main>div.row>div {
+#main>div.row>div:nth-child(1),
+#main>div.row>div:nth-child(2) {
   margin-top: 3rem; /* same as the height of topbar */
 }
 
 #main>div.row>div:first-child {
   min-height: calc(100vh - 3rem - 6rem); /* 3rem for topbar, 6rem for footer */
-}
-
-#main-wrap .col-xl-3 {
-  max-width: 300px;
 }
 
 #topbar.row,
@@ -972,7 +969,8 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     top: 0 !important;
   }
 
-  #main>div.row>div {
+  #main>div.row>div:nth-child(1),
+  #main>div.row>div:nth-child(2) {
     margin-top: 0;
   }
 
@@ -1083,10 +1081,11 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 }
 
 
-/*--- Large screens ---*/
-@media all and (min-width: 1200px) {
+/*--- Large screens, both sidebar and panel are visable ---*/
 
-  #main>div.row .col-xl-8 {
+@media all and (min-width: 1201px) {
+
+  #main>div.row>div.col-xl-8 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 75%;
     flex: 0 0 75%;
@@ -1094,7 +1093,13 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     padding-left: 3%;
   }
 
-  #breadcrumb { padding-left: 0; }
+  #panel-wrap {
+    max-width: 300px;
+  }
+
+  #breadcrumb {
+    padding-left: 0;
+  }
 
   #topbar-main {
     padding: 0 calc((100% - 1150px) / 2)!important;
@@ -1120,7 +1125,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
 @media all and (min-width: 1650px) {
 
-  #main>div.row .col-xl-8 {
+  #main>div.row>div.col-xl-8 {
     padding-left: 0px;
     max-width: 850px;
   }
@@ -1129,7 +1134,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     margin-left: 350px;
   }
 
-  #main-wrap .col-xl-3 {
+  #panel-wrap {
     margin-left: calc((100% - 1150px) / 10);
   }
 
@@ -1258,7 +1263,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     padding-right: calc(100% - 1570px); /* 100% - (1920px - 350px) */
   }
 
-  #main-wrap .col-xl-3 {
+  #panel-wrap {
     margin-left: calc((100% - 1150px) / 8);
   }
 
