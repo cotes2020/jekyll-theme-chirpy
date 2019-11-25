@@ -10,7 +10,7 @@ title: Chirpy
 
 description: 'A text-based Jekyll theme.'
 
-# Replace with your domain, e.g. "https://username.github.io"
+# Replace with your domain, e.g. 'https://username.github.io'
 url: 'https://www.example.com'
 
 author: your_full_name                  # change to your full name
@@ -51,13 +51,13 @@ google_analytics:
   proxy_url: ''
 
 disqus:
-  shortname: 'disqus'   # Change to your Disqus shortname.
-  comments: true        # boolean type, the gobal switch of posts' comments.
+  shortname: 'disqus'   # Change to your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+  comments: true        # boolean type, the global switch for posts comments.
 
 # The year your website was first run.
 first_run: 2019
 
-# boolean type, gobal switch for ToC in posts.
+# boolean type, global switch for ToC in posts.
 toc: true
 
 
