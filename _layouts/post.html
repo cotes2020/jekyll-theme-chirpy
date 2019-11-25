@@ -5,11 +5,11 @@ layout: default
 # MIT Licensed
 ---
 
-{% include date-format.html %}
+<div class="row d-flex justify-content-center bg-white">
+  {% include date-format.html %}
 
-<div class="col-12 col-lg-11 col-xl-8">
-  <div id="post-wrap" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 pl-xl-3">
-    <div class="post">
+  <div id="post-wrap" class="col-12 col-lg-11 col-xl-8">
+    <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 pl-xl-3">
       <h1 data-toc-skip>{{ page.title }}</h1>
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published Date and Categoreis -->
@@ -18,12 +18,13 @@ layout: default
             {{ page.date | date: POST_DATE }}
             <i class="hidden">{{ page.date | date_to_xmlschema }}</i>
           </span>
-        {% if page.categories.size > 0 %}on{% endif %}
-        {% for category in page.categories %}
-          <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase }}/'>{{ category }}</a>
-          {%- unless forloop.last -%}, {%- endunless -%}
-        {% endfor %}
+          {% if page.categories.size > 0 %}on{% endif %}
+          {% for category in page.categories %}
+            <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase }}/'>{{ category }}</a>
+            {%- unless forloop.last -%}, {%- endunless -%}
+          {% endfor %}
         </div>
+
         <!-- lastmod -->
         {% if page.seo.date_modified > page.date %}
         <div>
@@ -34,12 +35,14 @@ layout: default
           </span>
         </div>
         {% endif %}
+
         <!-- page views -->
         {% if site.google_analytics.pv %}
         <div>
           <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin"></i></span> views
         </div>
         {% endif %}
+
       </div> <!-- .post-meta -->
 
       {% capture post_content %}
@@ -68,44 +71,46 @@ layout: default
             {{- tag -}}
           </a>{%- if forloop.last != true -%}&ensp;{%- endif -%}
           {% endfor %}
-        </div>
+          </div>
         {% endif %}
-      </div><!-- endof .post-tail -->
+      </div><!-- div.post-tail -->
+
+      {% include related-posts.html %}
+
+      <div class="post-pager d-flex justify-content-between">
+      {% if page.previous.url %}
+        <a href="{{ site.baseurl }}{{page.previous.url}}" class="btn btn-outline-primary">
+      {% else %}
+        <a href="javascript:;" class="btn btn-outline-primary disabled">
+      {% endif %}
+          <i class="fas fa-angle-left mr-1"></i>
+          OLDER POST
+        </a>
+
+      {% if page.next.url %}
+        <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary">
+      {% else %}
+        <a href="javascript:;" class="btn btn-outline-primary disabled">
+      {% endif %}
+        NEWER POST
+        <i class="fas fa-angle-right ml-1"></i>
+        </a>
+      </div> <!-- div.post-pager -->
 
     </div> <!-- .post -->
+  </div> <!-- #post-wrap -->
 
-    {% include related-posts.html %}
+  {% include panel.html %}
 
-    <div class="post-pager d-flex justify-content-between">
-    {% if page.previous.url %}
-      <a href="{{ site.baseurl }}{{page.previous.url}}" class="btn btn-outline-primary">
-    {% else %}
-      <a href="javascript:;" class="btn btn-outline-primary disabled">
-    {% endif %}
-        <i class="fas fa-angle-left mr-1"></i>
-        OLDER POST
-      </a>
-
-    {% if page.next.url %}
-      <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary">
-    {% else %}
-      <a href="javascript:;" class="btn btn-outline-primary disabled">
-    {% endif %}
-      NEWER POST
-      <i class="fas fa-angle-right ml-1"></i>
-      </a>
-    </div> <!-- end .post-pager -->
-
+  <div id="comment-wrap" class="col-12 col-lg-11 col-xl-8">
+    <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 pl-xl-3">
     {% if site.disqus.comments and page.comments %}
       {% include disqus.html %}
-    {% else %}
-      <br>
     {% endif %}
+    </div>
+  </div>
 
-  </div> <!-- #post-wrap -->
-</div> <!-- div.col-12..col-lg-11.col-xl-8 -->
-
-{% include panel.html %}
+</div> <!-- .row -->
 
 <!-- image lazy load -->
 <script type="text/javascript">

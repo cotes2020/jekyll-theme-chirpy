@@ -42,11 +42,13 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 timezone: Asia/Shanghai
 
 google_analytics:
-  # Change to your Google Analytics ID
-  id: 'UA-*********-*'
+  # Fill with your Google Analytics ID
+  id: ''
   # The Google Analytics pageviews switch.
   # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
   pv: false
+  # superProxy Url, only valid when `google_analytics.pv` is set to 'true'
+  proxy_url: ''
 
 disqus:
   shortname: 'disqus'   # Change to your Disqus shortname.
