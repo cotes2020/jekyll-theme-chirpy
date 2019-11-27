@@ -75,6 +75,17 @@ layout: default
         {% endif %}
       </div><!-- div.post-tail -->
 
+    </div> <!-- .post -->
+  </div> <!-- #post-wrap -->
+
+  {% include panel.html %}
+
+</div> <!-- .row -->
+
+<div class="row d-flex justify-content-center bg-white">
+  <div id="post-extend-wrap" class="col-12 col-lg-11 col-xl-8">
+
+    <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 pl-xl-3">
       {% include related-posts.html %}
 
       <div class="post-pager d-flex justify-content-between">
@@ -97,18 +108,13 @@ layout: default
         </a>
       </div> <!-- div.post-pager -->
 
-    </div> <!-- .post -->
-  </div> <!-- #post-wrap -->
-
-  {% include panel.html %}
-
-  <div id="comment-wrap" class="col-12 col-lg-11 col-xl-8">
-    <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 pl-xl-3">
     {% if site.disqus.comments and page.comments %}
       {% include disqus.html %}
     {% endif %}
-    </div>
-  </div>
+
+    </div> <!-- .pl-1 pr-1 -->
+
+  </div> <!-- wrap -->
 
 </div> <!-- .row -->
 

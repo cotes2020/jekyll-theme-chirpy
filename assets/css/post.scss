@@ -108,33 +108,33 @@
   right: 1rem;
 }
 
-#comment-wrap {
+#post-extend-wrap {
   min-height: 2rem;
 }
 
 /*
-  The following resposive design aim to make #comment-wrap margin-right same as pannel's width
+  The following resposive design aim to make #post-extend-wrap margin-right same as pannel's width
 */
 @media all and (min-width: 1201px) {
-  #comment-wrap {
+  #post-extend-wrap {
     margin-right: 25%;
   }
 }
 
 @media all and (min-width: 1460px) {
-  #comment-wrap {
+  #post-extend-wrap {
     margin-right: 300px;
   }
 }
 
 @media all and (min-width: 1650px) {
-  #comment-wrap {
+  #post-extend-wrap {
     margin-right: calc((100% - 1150px) / 10 + 300px);
   }
 }
 
 @media all and (min-width: 1700px) {
-  #comment-wrap {
+  #post-extend-wrap {
     margin-right: calc((100% - 1150px) / 8 + 300px);
   }
 }
