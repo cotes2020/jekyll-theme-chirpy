@@ -352,12 +352,12 @@ body {
   -webkit-transition: transform 0.4s ease;
 }
 
-#main>div.row>div:nth-child(1),
-#main>div.row>div:nth-child(2) {
+#main>div.row:first-child>div:nth-child(1),
+#main>div.row:first-child>div:nth-child(2) {
   margin-top: 3rem; /* same as the height of topbar */
 }
 
-#main>div.row>div:first-child {
+#main>div.row:first-child>div:first-child {
   min-height: calc(100vh - 3rem - 6rem); /* 3rem for topbar, 6rem for footer */
 }
 
@@ -806,7 +806,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
 @media all and (max-width: 576px) {
 
-  #main>div.row>div:first-child {
+  #main>div.row:first-child>div:first-child {
     min-height: calc(100vh - 3rem - 10rem); /* topbar is 3rem and footer is 10rem */
   }
 
@@ -969,8 +969,8 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     top: 0 !important;
   }
 
-  #main>div.row>div:nth-child(1),
-  #main>div.row>div:nth-child(2) {
+  #main>div.row:first-child>div:nth-child(1),
+  #main>div.row:first-child>div:nth-child(2) {
     margin-top: 0;
   }
 
