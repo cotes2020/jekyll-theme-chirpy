@@ -358,7 +358,13 @@ body {
 }
 
 #main>div.row:first-child>div:first-child {
-  min-height: calc(100vh - 3rem - 6rem); /* 3rem for topbar, 6rem for footer */
+  /* 3rem for topbar, 6rem for footer */
+  min-height: calc(100vh - 3rem - 6rem);
+}
+
+#post-wrap {
+  /* 350px for post extended block  */
+  min-height: calc(100vh - 3rem - 6rem - 470px) !important;
 }
 
 #topbar.row,
@@ -806,12 +812,16 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
 @media all and (max-width: 576px) {
 
+  #main-wrap {
+    padding-bottom: 10rem; /* footer height */
+  }
+
   #main>div.row:first-child>div:first-child {
     min-height: calc(100vh - 3rem - 10rem); /* topbar is 3rem and footer is 10rem */
   }
 
-  #main-wrap {
-    padding-bottom: 10rem; /* footer height */
+  #post-wrap {
+    min-height: calc(100vh - 3rem - 10rem - 470px) !important;
   }
 
   #avatar>a {
