@@ -1026,7 +1026,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 }
 
 /* Compact icons in sidebar & TOC hidden */
-@media all and (min-width: 832px) and (max-width: 1200px) {
+@media all and (min-width: 832px) and (max-width: 1199px) {
 
   #sidebar {
     width: 210px;
@@ -1070,7 +1070,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 }
 
 /* Pannel hidden */
-@media all and (max-width: 1200px) {
+@media all and (max-width: 1199px) {
   #panel-wrap {
     display: none;
   }
@@ -1078,27 +1078,29 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   #topbar-main {
     padding: 0;
   }
+
+  #main>div.row {
+    -webkit-box-pack: center!important;
+    -ms-flex-pack: center!important;
+    justify-content: center!important;
+  }
 }
 
 
 /*--- desktop mode, both sidebar and panel are visible ---*/
 
-@media all and (min-width: 1201px) {
+@media all and (min-width: 1200px) {
 
   #main>div.row>div.col-xl-8 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 75%;
     flex: 0 0 75%;
-    max-width: 850px;
+    max-width: 75%;
     padding-left: 3%;
   }
 
   #panel-wrap {
     max-width: 300px;
-  }
-
-  #breadcrumb {
-    padding-left: 0;
   }
 
   #topbar-main {
@@ -1123,11 +1125,30 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
 }
 
-@media all and (min-width: 1650px) {
+@media all and (min-width: 1400px) {
+
+  #main>div.row {
+    padding-left: calc((100% - 1150px) / 2);
+  }
 
   #main>div.row>div.col-xl-8 {
-    padding-left: 0px;
     max-width: 850px;
+  }
+}
+
+@media all and (min-width: 1650px) {
+
+  #breadcrumb {
+    padding-left: 0;
+  }
+
+  #main>div.row>div.col-xl-8 {
+    padding-left: 0;
+  }
+
+  #main>div.row>div.col-xl-8>div:first-child {
+    padding-left: .55rem !important;
+    padding-right: 1.9rem !important;
   }
 
   #main-wrap {
@@ -1260,11 +1281,11 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   }
 
   #main>div.row {
-    padding-right: calc(100% - 1570px); /* 100% - (1920px - 350px) */
+    padding-left: calc((100% - 1150px - 2%) / 2);
   }
 
   #panel-wrap {
-    margin-left: calc((100% - 1150px) / 8);
+    margin-left: 3%;
   }
 
   footer {
@@ -1279,4 +1300,15 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     right: calc(100% - 1920px + 15rem);
   }
 
+}
+
+
+@media (min-width: 1920px) {
+  #main>div.row {
+    padding-left: 190px;
+  }
+
+  #panel-wrap {
+    margin-left: 41px;
+  }
 }
