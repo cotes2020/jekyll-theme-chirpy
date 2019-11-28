@@ -69,7 +69,7 @@ layout: default
           <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase }}/"
             class="post-tag no-text-decoration" >
             {{- tag -}}
-          </a>{%- if forloop.last != true -%}&ensp;{%- endif -%}
+          </a>
           {% endfor %}
           </div>
         {% endif %}
