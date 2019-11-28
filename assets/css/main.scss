@@ -551,24 +551,29 @@ kbd {
 }
 
 h2, h3, h4, sup {
-  padding-top: 4rem;
+  padding-top: 3.5rem;
   margin-top: -2.5rem;
 }
 
-div.footnotes>ol {
+.footnotes ol {
   padding-inline-start: 2rem;
   margin-top: .5rem;
 }
 
-div.footnotes>ol>li>p {
+.footnotes ol>li {
+  padding-top: .2rem;
+  margin-top: -0.2rem;
+}
+
+.footnotes ol>li>p {
   padding-left: .2em;
 }
 
-div.footnotes>ol>li:not(:last-child) {
+.footnotes ol>li:not(:last-child) {
   margin-bottom: -.8rem;
 }
 
-div.footnotes>ol>li:target>p {
+.footnotes ol>li:target>p {
   background-color: lightcyan;
   width: fit-content;
   -webkit-transition: background-color 1.5s ease-in-out; /* Safari prior 6.1 */
@@ -1025,12 +1030,12 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     padding-top: 3.4rem;
   }
 
-  div.footnotes>ol>li {
+  .footnotes ol>li {
     padding-top: 3.5rem;
     margin-top: -4.3rem;
   }
 
-  div.footnotes>ol>li:first-child {
+  .footnotes ol>li:first-child {
     margin-top: -3.5rem;
   }
 }
@@ -1144,6 +1149,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   #main>div.row>div.col-xl-8 {
     max-width: 850px;
   }
+
 }
 
 @media all and (min-width: 1650px) {
