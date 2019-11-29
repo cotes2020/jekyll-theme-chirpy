@@ -1224,12 +1224,12 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   }
 
   #site-title a {
-    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
-  #site-title, #site-subtitle {
-    text-align: left;
-    margin-left: 1.1rem;
+  .profile-text>div {
+    text-align: left !important;
+    margin-left: .8rem !important;
   }
 
   #site-subtitle {
