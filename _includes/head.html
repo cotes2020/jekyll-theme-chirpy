@@ -71,6 +71,10 @@
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/archives.css">
   {% endif %}
 
+  {% if page.title == 'About' and page.layout == 'page' %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/syntax.css">
+  {% endif %}
+
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -99,6 +103,7 @@
 
   {% if page.layout == 'post' %}
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/syntax.css">
     {% if site.toc and page.toc %}
       <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
       <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js" async></script>
