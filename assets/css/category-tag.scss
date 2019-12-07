@@ -55,10 +55,17 @@
 }
 
 @media all and (max-width: 576px) {
+
+  #page-category ul>li::before,
+  #page-tag ul>li::before {
+    margin: 0 .5rem;
+  }
+
   #page-tag ul>li>a,
   #page-category ul>li>a {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
 }
