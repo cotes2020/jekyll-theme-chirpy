@@ -77,8 +77,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
   <script>
-    document.jQuery || document.write("<script src=\"{{ site.baseurl }}/assets/lib/jquery-3.4.1.min.js\"><\/script>");
+    window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/lib/jquery-3.4.1.min.js"><\/script>');
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.15.0/dist/umd/popper.min.js"
