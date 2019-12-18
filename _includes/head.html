@@ -31,9 +31,9 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-    {% if site.google_analytics.proxy_url and site.google_analytics.pv %}
-      <link rel="preconnect" href="{{ site.google_analytics.proxy_url }}" crossorigin="use-credentials">
-      <link rel="dns-prefetch" href="{{ site.google_analytics.proxy_url }}">
+    {% if site.google_analytics.proxy_baseurl and site.google_analytics.pv %}
+      <link rel="preconnect" href="{{ site.google_analytics.proxy_baseurl }}" crossorigin="use-credentials">
+      <link rel="dns-prefetch" href="{{ site.google_analytics.proxy_baseurl }}">
     {% endif %}
   {% endif %}
 
