@@ -40,10 +40,14 @@ function countPV(path, rows) {
   return count;
 }
 
-function displayPageviews(rows, hasInit) {
-  if (rows === undefined) {
+
+function displayPageviews(data) {
+  if (data === undefined) {
     return;
   }
+
+  var hasInit = getInitStatus();
+  var rows = data.rows;
 
   if ($("#post-list").length > 0) { // the Home page
     $(".post-preview").each(function() {
@@ -78,29 +82,35 @@ function displayPageviews(rows, hasInit) {
 
 }
 
+
+var getInitStatus = (function() {
+  var hasInit = false;
+  return function() {
+    if (hasInit) {
+      return true;
+    } else {
+      hasInit = true;
+      return false;
+    }
+  }
+})();
+
+
 $(function() {
   // load pageview if this page has .pageviews
   if ($('.pageviews').length > 0) {
-    var hasInit = false;
 
     // Get data from daily cache.
-    $.getJSON('/assets/data/pageviews.json', function(data) {
-      displayPageviews(data.rows, hasInit);
-      hasInit = true;
-    });
+    $.getJSON('/assets/data/pageviews.json', displayPageviews);
 
-    $.getJSON('/assets/data/proxy.json', function(data) {
+    $.getJSON('/assets/data/proxy.json', function(meta) {
       $.ajax({
-        url: data.proxyUrl,
+        type: 'GET',
+        url: meta.proxyUrl,
         dataType: 'jsonp',
-        timeout: 2000,
-        success: function(data) {
-          displayPageviews(data.rows, hasInit);
-        },
-        error: function(xhr, status, err) {
-          console.log("Failed to load pageviews from proxy server.");
-          xhr.abort();
-          return;
+        jsonpCallback: "displayPageviews",
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log("Failed to load pageviews from proxy server: " + errorThrown);
         }
       });
 
