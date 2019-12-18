@@ -47,8 +47,10 @@ google_analytics:
   # The Google Analytics pageviews switch.
   # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
   pv: false
-  # superProxy Url, only valid when `google_analytics.pv` is set to 'true'
+  # superProxy baseURL and URL, only valid when `google_analytics.pv` is set to 'true'
+  proxy_baseurl: ''
   proxy_url: ''
+
 
 disqus:
   shortname: 'disqus'   # Change to your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
