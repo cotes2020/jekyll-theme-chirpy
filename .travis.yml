@@ -9,11 +9,7 @@ install:
   - pip install ruamel.yaml
 
 script:
-  - >-
-    git clone https://${GH_TOKEN}@github.com/cotes2020/blog-builder.git
-    ../blog-builder --depth=1 -q
-  - cp -r ../blog-builder/framework/* .
-  - bash _cibuild.sh
+  - bash _scripts/travis/cibuild.sh
 
 branches:
   only: master
