@@ -103,6 +103,13 @@
   }
 }
 
+/* Hide SideBar and TOC */
+@media all and (max-width: 830px) {
+  .pagination {
+    justify-content: center;
+  }
+}
+
 /* Sidebar is visible */
 @media all and (min-width: 831px) {
   .pagination {
@@ -119,9 +126,5 @@
 @media all and (max-width: 1200px) {
   #post-list {
     padding-right: 0;
-  }
-
-  .pagination {
-    justify-content: center;
   }
 }
