@@ -872,6 +872,12 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
 }
 
+@media all and (min-width: 577px) and (max-width: 830px) {
+  footer .license {
+    padding-left: 1rem;
+  }
+}
+
 @media all and (max-width: 768px) {
   .post img {
     max-width: calc(100% + 1rem);
