@@ -15,7 +15,7 @@ layout: page
     </h1>
     <div class="post-content">
       <p>
-      {{ post.content | strip_html | truncate: 200 }}
+      {{ post.content | strip_html | truncate: 200 | replace: '&', '&amp;' }}
       </p>
     </div>
 

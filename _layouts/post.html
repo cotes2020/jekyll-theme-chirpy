@@ -48,7 +48,7 @@ layout: default
       {% capture post_content %}
       <div class="post-content">
         {% if page.image %}
-        <img src="{{ page.image }}" class="img-rounded">
+        <img src="{{ page.image }}">
         {% endif %}
         {{ content }}
       </div>
@@ -56,7 +56,7 @@ layout: default
 
       <!-- Add lozad class into image tags. see: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
       {% if post_content contains '<img src=' %}
-        {{ post_content | replace: '<img src=', '<img class="lozad" data-src=' }}
+        {{ post_content | replace: '<img src=', '<img class="lozad" src="/assets/img/commons/loading.png" data-src=' }}
       {% else %}
         {{ post_content }}
       {% endif %}
