@@ -56,7 +56,7 @@
             </span>
             <h3 class="pt-0 mt-2 mb-3" data-toc-skip>{{ post.title }}</h3>
             <div class="text-muted small">
-              <p>{{ post.content | markdownify | strip_html | truncate: 200 }}</p>
+              <p>{{ post.content | markdownify | strip_html | truncate: 200 | replace: '&', '&amp;' }}</p>
             </div>
           </div>
         </a>
