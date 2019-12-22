@@ -12,7 +12,7 @@
         {% if avatar | slice: 0 == '/' %}
           {% assign avatar = avatar | prepend: site.baseurl %}
         {% endif %}
-        <img src="{{ avatar }}"></img>
+        <img src="{{ avatar }}">
       </a>
     </div>
 
