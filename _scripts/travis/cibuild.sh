@@ -17,12 +17,22 @@ if [[ $TRAVIS_PULL_REQUEST = "false" ]]; then # triggered by author
 
 else # triggered by Pull Request
 
+  SAFE_DOMAIN=cdn.jsdelivr.net
+
   bundle install --path vendor/bundle --quiet
+
   python _scripts/py/init_all.py
 
   build_cmd="JEKYLL_ENV=production bundle exec jekyll build"
 
   echo "\$ $build_cmd"
   eval $build_cmd
+
+  bundle exec htmlproofer --disable-external \
+            --check-html \
+            --empty_alt_ignore \
+            --allow_hash_href \
+            --url_ignore $SAFE_DOMAIN \
+            _site/
 
 fi
