@@ -706,12 +706,6 @@ table tbody td {
   word-wrap: break-word;
 }
 
-.post-tail {
-  margin-top: 3.5rem;
-  border-bottom: 1px double #e9ecef;
-  font-size: 0.85rem;
-}
-
 .post-tag {
   display: inline-block;
   min-width: 2rem;
@@ -735,38 +729,6 @@ table tbody td {
   text-decoration: none;
   color: #d2603a;
 }
-
-.post-pager {
-  margin: 1rem 0 2rem;
-}
-
-.post-pager .btn,
-.post-pager .btn.disabled {
-  color: #2a408e;
-  border-color: #2a408e;
-}
-
-.post-pager .btn:hover {
-  background: #2a408e;
-  color: #fff;
-}
-
-.post-pager a.btn.disabled {
-  pointer-events: auto;
-  cursor: not-allowed;
-  background: none;
-  color: gray;
-  border-color: gray;
-}
-
-.post img {
-  margin-top: .5rem;
-  margin-bottom: 1.5rem;
-  max-width: 100%;
-  height: auto;
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.08));
-}
-
 
 /* --- Effects classes --- */
 
@@ -878,28 +840,6 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   }
 }
 
-@media all and (max-width: 768px) {
-  .post img {
-    max-width: calc(100% + 1rem);
-  }
-}
-
-@media all and (min-width: 768px) {
-  .post .post-meta>div:not(:first-child)::before {
-    content: "\2022";
-    color: rgba(158, 158, 158, 0.8);
-    font-weight: bold;
-    padding-left: .5rem;
-    padding-right: .3rem;
-  }
-
-  .post .post-meta.flex-column {
-    -webkit-box-orient: horizontal!important;
-    -webkit-box-direction: normal!important;
-    -ms-flex-direction: row!important;
-    flex-direction: row!important;
-  }
-}
 
 @media all and (min-width: 831px) {
   /* button 'back-to-Top' position */
@@ -929,13 +869,6 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     -ms-flex: 0 0 96%;
     flex: 0 0 96%;
     max-width: 96%;
-  }
-}
-
-
-@media all and (min-width: 768px) and (max-width: 830px) {
-  .post img {
-    max-width: calc(100% + 2rem);
   }
 }
 
@@ -996,14 +929,6 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   #main>div.row:first-child>div:nth-child(1),
   #main>div.row:first-child>div:nth-child(2) {
     margin-top: 0;
-  }
-
-  .post img {
-    position: relative;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
   }
 
   #topbar-title,
