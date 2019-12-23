@@ -45,21 +45,17 @@ layout: default
 
       </div> <!-- .post-meta -->
 
-      {% capture post_content %}
       <div class="post-content">
         {% if page.image %}
         <img src="{{ page.image }}">
         {% endif %}
-        {{ content }}
+        <!-- Add lozad class into image tags. see: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+        {% if content contains '<img src=' %}
+          {{ content | replace: '<img src=', '<img class="lozad" src="/assets/img/commons/loading.png" data-src=' }}
+        {% else %}
+          {{ content }}
+        {% endif %}
       </div>
-      {% endcapture %}
-
-      <!-- Add lozad class into image tags. see: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-      {% if post_content contains '<img src=' %}
-        {{ post_content | replace: '<img src=', '<img class="lozad" src="/assets/img/commons/loading.png" data-src=' }}
-      {% else %}
-        {{ post_content }}
-      {% endif %}
 
       <div class="post-tail text-muted">
         <!-- Tags -->
