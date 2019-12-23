@@ -6,6 +6,43 @@
   MIT License
 */
 
+.post img {
+  margin-top: .5rem;
+  margin-bottom: 1.5rem;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.08));
+}
+
+.post-tail {
+  margin-top: 3.5rem;
+  border-bottom: 1px double #e9ecef;
+  font-size: 0.85rem;
+}
+
+.post-pager {
+  margin: 1rem 0 2rem;
+}
+
+.post-pager .btn,
+.post-pager .btn.disabled {
+  color: #2a408e;
+  border-color: #2a408e;
+}
+
+.post-pager .btn:hover {
+  background: #2a408e;
+  color: #fff;
+}
+
+.post-pager a.btn.disabled {
+  pointer-events: auto;
+  cursor: not-allowed;
+  background: none;
+  color: gray;
+  border-color: gray;
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -109,6 +146,47 @@
 
 #post-extend-wrap {
   min-height: 2rem;
+}
+
+
+@media all and (max-width: 768px) {
+  .post img {
+    max-width: calc(100% + 1rem);
+  }
+}
+
+@media all and (min-width: 768px) {
+  .post .post-meta>div:not(:first-child)::before {
+    content: "\2022";
+    color: rgba(158, 158, 158, 0.8);
+    font-weight: bold;
+    padding-left: .5rem;
+    padding-right: .3rem;
+  }
+
+  .post .post-meta.flex-column {
+    -webkit-box-orient: horizontal!important;
+    -webkit-box-direction: normal!important;
+    -ms-flex-direction: row!important;
+    flex-direction: row!important;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 830px) {
+  .post img {
+    max-width: calc(100% + 2rem);
+  }
+}
+
+/* Hide SideBar and TOC */
+@media all and (max-width: 830px) {
+  .post img {
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
 }
 
 /*
