@@ -7,6 +7,7 @@ before_install:
 install:
   - pip install --upgrade pip
   - pip install ruamel.yaml
+  - bundle install --path vendor/bundle --quiet
 
 addons:
   apt:
