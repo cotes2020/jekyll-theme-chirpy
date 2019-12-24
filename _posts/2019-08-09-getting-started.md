@@ -34,11 +34,12 @@ jekyll-theme-chirpy/
 ├── _layouts
 ├── _posts          # posts stay here
 ├── _scripts
+│   └── travis      # CI stuff, remove it
+├── .travis.yml     # remove it, too
 ├── assets      
 ├── tabs
 │   └── about.md    # the ABOUT page
 ├── .gitignore
-├── .travis.yml     # remove it
 ├── 404.html
 ├── Gemfile
 ├── LICENSE
