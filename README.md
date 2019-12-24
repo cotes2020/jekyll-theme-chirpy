@@ -6,7 +6,7 @@
 
 ![devices-mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)
 
-A Jekyll theme with responsive web design that focuses on text presentation. Hope you like it! [Live Demo »](https://chirpy.cotes.info)
+A minimal, portfolio, sidebar, Bootstrap Jekyll theme with responsive web design and focuses on text presentation. Hope you like it! [Live Demo »](https://chirpy.cotes.info)
 
 ## Features
 
@@ -52,11 +52,12 @@ jekyll-theme-chirpy/
 ├── _layouts
 ├── _posts          # posts stay here
 ├── _scripts
+│   └── travis      # CI stuff, remove it
+├── .travis.yml     # remove it, too
 ├── assets      
 ├── tabs
 │   └── about.md    # the ABOUT page
 ├── .gitignore
-├── .travis.yml     # remove it
 ├── 404.html
 ├── Gemfile
 ├── LICENSE
