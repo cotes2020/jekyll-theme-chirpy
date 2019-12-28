@@ -20,7 +20,7 @@ layout: default
           </span>
           {% if page.categories.size > 0 %}on{% endif %}
           {% for category in page.categories %}
-            <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase }}/'>{{ category }}</a>
+            <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase | url_encode }}/'>{{ category }}</a>
             {%- unless forloop.last -%}, {%- endunless -%}
           {% endfor %}
         </div>
@@ -62,7 +62,7 @@ layout: default
         {% if page.tags.size > 0 %}
         <div class="mb-4">
           {% for tag in page.tags %}
-          <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase }}/"
+          <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase | url_encode }}/"
             class="post-tag no-text-decoration" >
             {{- tag -}}
           </a>
