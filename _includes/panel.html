@@ -4,7 +4,7 @@
   MIT License
 -->
 
-<div id="panel-wrap" class="col-xl-3 pl-2 topbar-down">
+<div id="panel-wrapper" class="col-xl-3 pl-2 topbar-down">
 
   <div class="access">
   {% assign lastmod_list = "" | split: "" %}
@@ -43,37 +43,18 @@
   {% endif %}
 
     <div id="access-tags">
-
       <h3 data-toc-skip>
         {{- site.data.label.panel.trending_tags -}}
       </h3>
-
       <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
-      {% capture tags_array %}
-        {% for tag in site.tags %}
-          {{ tag[1] | size }}:{{ tag[0] | replace: ' ', '-' }}
-        {% endfor %}
-      {% endcapture %}
+       {% include trending-tags.html %}
+      </div>
+    </div>
 
-      {% assign MAX = 10 %}
-      {% assign count = 0 %}
-      {% assign trends = tags_array | split: " " | sort | reverse %}
-
-      {% for trend in trends %}
-        {% assign count = count | plus: 1 %}
-        {% assign tag = trend | split: ":" | last %}
-        <a class="post-tag" href="{{ site.baseurl }}/tags/{{ tag | downcase | url_encode }}/">{{ tag | replace: '-', ' ' }}</a>
-        {% if count >= MAX %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-
-      </div> <!-- div.d-flex.flex-wrap -->
-    </div> <!-- #access-tags -->
   </div> <!-- .access -->
 
   {% if page.layout == 'post' and site.toc and page.toc %}
-  <div id="toc-wrap" class="pl-0 pr-4 mb-5">
+  <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
     <h3 data-toc-skip class="pl-3 pt-2">
       {{- site.data.label.panel.toc -}}
     </h3>
@@ -81,4 +62,4 @@
   </div>
   {% endif %}
 
-</div> <!-- #panel-wrap -->
+</div> <!-- #panel-wrapper -->

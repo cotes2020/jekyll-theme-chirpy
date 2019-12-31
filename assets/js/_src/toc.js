@@ -6,8 +6,8 @@
  */
 
 $(function() {
-  if ($("#post-wrap .post-content h1").length == 0
-      && $("#post-wrap .post-content h2").length == 0) {
-    $("#toc-wrap").addClass("hidden");
+  if ($("#post-wrapper .post-content h1").length == 0
+      && $("#post-wrapper .post-content h2").length == 0) {
+    $("#toc-wrapper").addClass("unloaded");
   }
 });
