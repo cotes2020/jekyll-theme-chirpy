@@ -16,12 +16,14 @@
 </div>
 {% endcapture %}
 
+{% capture not_found %}<p class="mt-5">Oops! No result founds.</p>{% endcapture %}
+
 <script>
 SimpleJekyllSearch({
   searchInput: document.getElementById('search-input'),
   resultsContainer: document.getElementById('search-results'),
   json: '{{ site.baseurl }}/search.json',
   searchResultTemplate: '{{ result_elem }}',
-  noResultsText: '<p class="mt-5">Oops! No result founds.</p>'
+  noResultsText: '{{ not_found }}'
 });
 </script>
