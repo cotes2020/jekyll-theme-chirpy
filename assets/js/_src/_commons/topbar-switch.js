@@ -8,7 +8,7 @@ $(function() {
   var didScroll;
   var lastScrollTop = 0;
   var delta = 5;
-  var topbarHeight = $('#topbar').outerHeight();
+  var topbarHeight = $('#topbar-wrapper').outerHeight();
 
   $(window).scroll(function(event) {
     if ($("#topbar-title").is(":hidden")) { // Not in small screens
@@ -32,10 +32,10 @@ $(function() {
 
     if (st > lastScrollTop && st > topbarHeight) {
       // Scroll Down
-      $('#topbar').removeClass('topbar-down').addClass('topbar-up');
+      $('#topbar-wrapper').removeClass('topbar-down').addClass('topbar-up');
 
-      if ( $('#toc-wrap').length > 0) {
-        $('#toc-wrap').removeClass('topbar-down');
+      if ( $('#toc-wrapper').length > 0) {
+        $('#toc-wrapper').removeClass('topbar-down');
       }
 
       if ( $('.access').length > 0) {
@@ -49,9 +49,9 @@ $(function() {
     } else {
       // Scroll Up
       if (st + $(window).height() < $(document).height()) {
-        $('#topbar').removeClass('topbar-up').addClass('topbar-down');
-        if ( $('#toc-wrap').length > 0) {
-          $('#toc-wrap').addClass('topbar-down');
+        $('#topbar-wrapper').removeClass('topbar-up').addClass('topbar-down');
+        if ( $('#toc-wrapper').length > 0) {
+          $('#toc-wrapper').addClass('topbar-down');
         }
         if ( $('.access').length > 0) {
           $('.access').addClass('topbar-down');

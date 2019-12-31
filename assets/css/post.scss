@@ -56,7 +56,7 @@
   }
 }
 
-#toc-wrap {
+#toc-wrapper {
   border-left: 1px solid rgba(158, 158, 158, 0.17);
   position: -webkit-sticky;
   position: sticky;
@@ -65,11 +65,11 @@
   animation: fade-up .8s;
 }
 
-#toc-wrap.topbar-down {
+#toc-wrapper.topbar-down {
   top: 6rem;
 }
 
-#toc-wrap>h3 {
+#toc-wrapper>h3 {
   font-size: 1rem;
   font-family: 'Oswald', sans-serif;
   color: gray;
@@ -144,7 +144,7 @@
   right: 1rem;
 }
 
-#post-extend-wrap {
+#post-extend-wrapper {
   min-height: 2rem;
 }
 
@@ -190,28 +190,28 @@
 }
 
 /*
-  The following resposive design aim to make #post-extend-wrap margin-right same as pannel's width
+  The following resposive design aim to make #post-extend-wrapper margin-right same as pannel's width
 */
 @media all and (min-width: 1200px) {
-  #post-extend-wrap {
+  #post-extend-wrapper {
     margin-right: 25%;
   }
 }
 
 @media all and (min-width: 1460px) {
-  #post-extend-wrap {
+  #post-extend-wrapper {
     margin-right: 300px;
   }
 }
 
 @media all and (min-width: 1650px) {
-  #post-extend-wrap {
+  #post-extend-wrapper {
     margin-right: calc((100% - 1150px) / 10 + 300px);
   }
 }
 
 @media all and (min-width: 1700px) {
-  #post-extend-wrap {
+  #post-extend-wrapper {
     margin-right: calc((100% - 1150px) / 8 + 300px);
   }
 }

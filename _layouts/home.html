@@ -24,7 +24,7 @@ layout: page
       <i class="far fa-clock fa-fw"></i>
       <span class="timeago" data-toggle="tooltip" title="{{ post.date | date: TOOLTIP_DATE }}">
       {{ post.date | date: POST_DATE }}
-      <i class="hidden">{{ post.date | date_to_xmlschema }}</i>
+      <i class="unloaded">{{ post.date | date_to_xmlschema }}</i>
       </span>
       <!-- page views -->
       {% if site.google_analytics.pv %}
