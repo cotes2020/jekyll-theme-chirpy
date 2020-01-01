@@ -35,7 +35,8 @@ jekyll-theme-chirpy/
 ├── _posts          # posts stay here
 ├── _scripts
 │   └── travis      # CI stuff, remove it
-├── .travis.yml     # remove it, too
+├── .travis.yml     # remove this, too
+├── .github         # remove
 ├── assets      
 ├── tabs
 │   └── about.md    # the ABOUT page
@@ -45,14 +46,10 @@ jekyll-theme-chirpy/
 ├── LICENSE
 ├── README.md
 ├── _config.yml     # configuration file
-├── build.sh        # script tool
-├── run.sh          # script tool
-├── init.sh         # script tool
-├── pv.sh           
+├── tools           # script tools
 ├── feed.xml
 ├── index.html
 ├── robots.txt
-├── search.json
 └── sitemap.xml
 ```
 
@@ -78,7 +75,7 @@ The `SITE_URL` was defined by variable `url` in file `_config.yml`.
 You may want to preview the site before publishing, so just run the script tool:
 
 ```terminal
-$ bash run.sh
+$ bash tools/run.sh
 ```
 
 >**Note**: The *Recent Update* list requires the latest git-log date of posts, thus make sure the changes in `_posts` have been committed before running this command.
@@ -102,7 +99,7 @@ By deploying your site in this way, you can push the source code to GitHub repos
 **2**. Commit the changes of your repository, then run the initialization script:
 
 ```console
-$ bash init.sh
+$ bash tools/init.sh
 ```
 
 It will automatically generates the *Latest Modified Date* and *Categories / Tags* page for the posts.
@@ -121,7 +118,7 @@ For security reasons, GitHub Pages runs on `safe` mode, which means the third-pa
 **2**. Build your site by:
 
 ```console
-$ bash build.sh -d /path/to/<username>.github.io/
+$ bash tools/build.sh -d /path/to/<username>.github.io/
 ```
 
 The build results will be stored in the root directory of `<username>.github.io` and don't forget to push the changes of `<username>.github.io` to branch `master` on GitHub.

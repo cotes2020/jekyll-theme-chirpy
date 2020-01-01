@@ -11,10 +11,12 @@
 # MIT Licensed
 
 
-URL_FILE=assets/data/proxy.json
-PV_CACHE=assets/data/pageviews.json
-
 set -eu
+
+WORK_DIR=$(dirname $(dirname $(realpath "$0")))
+URL_FILE=${WORK_DIR}/assets/data/proxy.json
+PV_CACHE=${WORK_DIR}/assets/data/pageviews.json
+
 
 PROXY_URL=$(jq -r '.proxyUrl' $URL_FILE)
 
