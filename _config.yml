@@ -160,12 +160,16 @@ exclude:
   - tools
 
 sitemap_exclude:  # Sitemap will exclude the following items.
-  - /norobots/
-  - /assets/
-  - /tabs/
-  - /categories/
-  - /tags/
-  - /posts/
-  - /404.html
-  - /redirects.json
-  - /search.json
+  fuzzy:
+    - /assets/
+  accurate:
+    - /norobots/
+    - /tabs/
+    - /categories/
+    - /tags/
+    - /posts/
+    - 404.html
+    - feed.xml
+    - sitemap.xml
+    - robots.txt
+    - redirects.json
