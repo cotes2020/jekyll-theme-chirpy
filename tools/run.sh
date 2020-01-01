@@ -8,13 +8,16 @@
 # © 2019 Cotes Chung
 # Published under MIT License
 
+set -eu
 
-WORK_DIR=$PWD
+WORK_DIR=$(dirname $(dirname $(realpath "$0")))
+
 CONTAINER=.container
 SYNC_TOOL=_scripts/sh/sync_monitor.sh
 
 cmd="bundle exec jekyll s"
 realtime=false
+
 
 help() {
   echo "Usage:"
@@ -32,23 +35,21 @@ help() {
 
 
 cleanup() {
-  cd $WORK_DIR
-  rm -rf $CONTAINER
+  rm -rf ${WORK_DIR}/${CONTAINER}
   ps aux | grep fswatch | awk '{print $2}' | xargs kill -9 > /dev/null 2>&1
 }
 
 
 init() {
-  set -eu
 
-  if [[ -d $CONTAINER ]]; then
-    rm -rf $CONTAINER
+  if [[ -d ${WORK_DIR}/${CONTAINER} ]]; then
+    rm -rf ${WORK_DIR}/${CONTAINER}
   fi
 
   temp=$(mktemp -d)
-  cp -r * $temp
-  cp -r .git $temp
-  mv $temp $CONTAINER
+  cp -r ${WORK_DIR}/* $temp
+  cp -r ${WORK_DIR}/.git $temp
+  mv $temp ${WORK_DIR}/${CONTAINER}
 
   trap cleanup INT
 }
@@ -74,7 +75,7 @@ check_command() {
 main() {
   init
 
-  cd $CONTAINER
+  cd ${WORK_DIR}/${CONTAINER}
   python _scripts/py/init_all.py
 
   if [[ $realtime = true ]]; then
