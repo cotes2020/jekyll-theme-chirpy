@@ -1,5 +1,6 @@
 ---
 layout: compress
+#
 # The Sitemap template
 # © 2017-2019 Cotes Chung
 # MIT License
@@ -41,7 +42,30 @@ layout: compress
 
 {% for page in site.pages %}
 
-  {% if site.sitemap_exclude contains page.url %}
+  {% assign pass = false %}
+
+  {% for fuzzy in site.sitemap_exclude.fuzzy %}
+    {% if page.url contains fuzzy %}
+      {% assign pass = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% unless pass %}
+    {% for accurate in site.sitemap_exclude.accurate %}
+      {% assign len = accurate | size %}
+      {% capture beg %}{{ 0 | minus: len }}{% endcapture %}
+      {% capture tail %}{{ page.url | slice: beg, len }}{% endcapture %}
+
+      {% if tail == accurate %}
+        {% assign pass = true %}
+        {% break %}
+      {% endif %}
+
+    {% endfor %}
+  {% endunless %}
+
+  {% if pass %}
     {% continue %}
   {% endif %}
 
