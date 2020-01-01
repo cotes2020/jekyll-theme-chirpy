@@ -8,7 +8,7 @@
 
 title: Chirpy
 
-description: 'A text-based Jekyll theme.'
+description: 'A text-focused Jekyll theme.'
 
 # Replace with your domain, e.g. 'https://username.github.io'
 url: 'https://www.example.com'
@@ -56,7 +56,7 @@ disqus:
   shortname: 'disqus'   # Change to your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   comments: true        # boolean type, the global switch for posts comments.
 
-# The year your website was first run.
+# The year your website first ran.
 first_run: 2019
 
 # boolean type, global switch for ToC in posts.
@@ -154,13 +154,10 @@ compress_html:
     envs: []
 
 exclude:
-  - vendor/       # Avoid Jekyll mistakenly read the vender directory on Travis-CI's VM .
+  - vendor        # Avoid Jekyll mistakenly read the vender directory on Travis-CI's VM .
   - Gemfile.lock
   - Gemfile
-  - run.sh
-  - build.sh
-  - init.sh
-  - pv.sh
+  - tools
 
 sitemap_exclude:  # Sitemap will exclude the following items.
   - /norobots/
