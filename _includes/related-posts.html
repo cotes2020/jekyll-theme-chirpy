@@ -42,7 +42,7 @@
 {% if score_list.size > 0 %}
   {% assign score_list = score_list | sort | reverse %}
   {% assign count = 0 %}
-  <div id="related-posts" class="mt-4 mb-4 pb-3">
+  <div id="related-posts" class="mt-4 mb-2 mb-sm-4 pb-2">
     <h3 class="pt-2 mt-1 mb-4" data-toc-skip>Related Posts</h3>
     <div class="card-deck mb-4">
     {% for score_item in score_list %}
