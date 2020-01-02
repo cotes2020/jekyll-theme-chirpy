@@ -101,8 +101,9 @@
 }
 
 #related-posts .card:hover {
-  -webkit-transform: translate3d(0, -8px, 0);
-  transform: translate3d(0, -8px, 0);
+  -webkit-transform: translate3d(0, -3px, 0);
+  transform: translate3d(0, -3px, 0);
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.08));
 }
 
 #related-posts .card h3 {
