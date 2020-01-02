@@ -23,11 +23,15 @@
 }
 
 .post-pager {
-  margin: 1rem 0 2rem;
+  border-top: 1px double #e9ecef;
+  border-bottom: 1px double #e9ecef;
+  padding: 1rem .2rem;
+  margin-bottom: 2rem;
 }
 
 .post-pager .btn,
 .post-pager .btn.disabled {
+  width: calc(50% - .5rem);
   color: #2a408e;
   border-color: #2a408e;
 }
@@ -43,6 +47,27 @@
   background: none;
   color: gray;
   border-color: gray;
+}
+
+.post-pager a > p {
+  font-weight: 600;
+  line-height: 1.2rem;
+  margin-top: .3rem;
+  white-space: normal;
+}
+
+.post-pager a::before {
+  color: gray;
+  font-size: .85rem;
+  text-transform: uppercase;
+}
+
+.post-pager a:first-child::before {
+  content: "previous";
+}
+
+.post-pager a:last-child::before {
+  content: "next";
 }
 
 @keyframes fade-up {
@@ -84,11 +109,7 @@
 
 /*--- Related Posts ---*/
 
-#related-posts {
-  border-bottom: 1px double #e9ecef;
-}
-
-#related-posts>h3 {
+#related-posts > h3 {
   color: gray;
   font-size: 1.1rem;
   font-family: 'Oswald', sans-serif;
@@ -135,7 +156,7 @@
   padding-inline-start: 1.5rem;
 }
 
-#related-posts ul>li::before {
+#related-posts ul > li::before {
   background: #c2c9d4;
   width: 5px;
   height: 5px;
@@ -159,7 +180,7 @@
 }
 
 @media all and (min-width: 768px) {
-  .post .post-meta>div:not(:first-child)::before {
+  .post .post-meta > div:not(:first-child)::before {
     content: "\2022";
     color: rgba(158, 158, 158, 0.8);
     font-weight: bold;
@@ -189,6 +210,11 @@
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
+  }
+
+  .post-pager {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
