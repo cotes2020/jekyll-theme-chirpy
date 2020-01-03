@@ -22,52 +22,69 @@
   font-size: 0.85rem;
 }
 
-.post-pager {
-  border-top: 1px double #e9ecef;
-  border-bottom: 1px double #e9ecef;
+.post-navigation {
   padding: 1rem .2rem;
   margin-bottom: 2rem;
 }
 
-.post-pager .btn,
-.post-pager .btn.disabled {
-  width: calc(50% - .5rem);
+.post-navigation .btn,
+.post-navigation .btn.disabled {
+  width: 50%;
+  position: relative;
   color: #2a408e;
+  border-color: #e9ecef;
+}
+
+.post-navigation .btn:hover {
+  background: #2a408e;
+  color: #fff;
   border-color: #2a408e;
 }
 
-.post-pager .btn:hover {
-  background: #2a408e;
-  color: #fff;
-}
-
-.post-pager a.btn.disabled {
+.post-navigation a.btn.disabled {
   pointer-events: auto;
   cursor: not-allowed;
   background: none;
   color: gray;
-  border-color: gray;
+  border-color: #e9ecef;
 }
 
-.post-pager a > p {
+.post-navigation a.btn.btn-outline-primary.disabled:focus {
+  box-shadow: none;
+}
+
+.post-navigation a > p {
+  font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.2rem;
   margin-top: .3rem;
   white-space: normal;
 }
 
-.post-pager a::before {
+.post-navigation a:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  left: .5px;
+}
+
+.post-navigation a:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  right: .5px;
+}
+
+.post-navigation a::before {
   color: gray;
-  font-size: .85rem;
+  font-size: .65rem;
   text-transform: uppercase;
 }
 
-.post-pager a:first-child::before {
-  content: "previous";
+.post-navigation a:first-child::before {
+  content: "Older";
 }
 
-.post-pager a:last-child::before {
-  content: "next";
+.post-navigation a:last-child::before {
+  content: "Newer";
 }
 
 @keyframes fade-up {
@@ -212,7 +229,7 @@
     transform: translateX(-50%);
   }
 
-  .post-pager {
+  .post-navigation {
     padding-left: 0;
     padding-right: 0;
   }
