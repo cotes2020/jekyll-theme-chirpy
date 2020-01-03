@@ -1249,24 +1249,30 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     width: 350px;
   }
 
+  #sidebar ul {
+    margin-left: 5%;
+  }
+
   #profile-wrapper {
     margin-top: 4rem;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
+    padding-left: 18%;
     -ms-flex-direction: column!important;
-    flex-direction: row!important;
   }
 
   #avatar {
-    margin-left: 2.5rem;
+    -webkit-box-pack: normal !important;
+    -ms-flex-pack: normal !important;
+    justify-content: normal !important;
   }
 
-  #avatar>a {
-    width: 5rem;
-    height: 5rem;
+  #avatar > a {
+    width: 6.2rem;
+    height: 6.2rem;
   }
 
   .profile-text {
-    margin-top: 0!important;
+    padding-left: .5rem;
     /* .d-flex */
     display: -webkit-box!important;
     display: -ms-flexbox!important;
@@ -1280,18 +1286,19 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   }
 
   #site-title a {
-    text-transform: uppercase;
+    font-size: 1.7rem;
+    letter-spacing: 1px;
   }
 
   .profile-text>div {
     text-align: left !important;
-    margin-left: .8rem !important;
+    width: 100%;
   }
 
   #site-subtitle {
     word-spacing: 0;
-    margin-top: .3rem;
-    margin-bottom: 0;
+    padding-right: 3rem;
+    margin: .3rem 0 0 0;
   }
 
   #sidebar ul>li>a {
@@ -1317,7 +1324,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   }
 
   .contact {
-    margin-left: 2.5rem;
+    margin-left: 3.5rem;
     margin-right: 4.5rem;
     font-size: 1.3rem;
     padding-bottom: 1rem;
