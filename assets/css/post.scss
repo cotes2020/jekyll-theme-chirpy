@@ -13,7 +13,12 @@
   margin-bottom: 1.5rem;
   max-width: 100%;
   height: auto;
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.08));
+  // filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.08));
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .post-tail {
