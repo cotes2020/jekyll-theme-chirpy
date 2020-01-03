@@ -1,0 +1,85 @@
+/*!
+* The syntax dark mode styles
+* v2.0
+* https://github.com/cotes2020/jekyll-theme-chirpy
+* © 2018-2019 Cotes Chung
+* MIT Licensed
+*/
+
+@media (prefers-color-scheme: dark) {
+  html {
+    /* syntax highlight colors from https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css */
+    --highlight-pre-bg: #272822;
+    --highlight-hll-bg: #272822;
+    --highlight-c: #75715e; /* Comment */
+    --highlight-err: #960050; /* Error */
+    --highlight-err-bg: #1e0010; /* Error background */
+    --highlight-k: #66d9ef; /* Keyword */
+    --highlight-l: #ae81ff; /* Literal */
+    --highlight-n: #f8f8f2; /* Name */
+    --highlight-o: #f92672; /* Operator */
+    --highlight-p: #f8f8f2; /* Punctuation */
+    --highlight-cm: #75715e; /* Comment.Multiline */
+    --highlight-cp: #75715e; /* Comment.Preproc */
+    --highlight-c1: #75715e; /* Comment.Single */
+    --highlight-cs: #75715e; /* Comment.Special */
+    --highlight-kc: #66d9ef; /* Keyword.Constant */
+    --highlight-kd: #66d9ef; /* Keyword.Declaration */
+    --highlight-kn: #f92672; /* Keyword.Namespace */
+    --highlight-kp: #66d9ef; /* Keyword.Pseudo */
+    --highlight-kr: #66d9ef; /* Keyword.Reserved */
+    --highlight-kt: #66d9ef; /* Keyword.Type */
+    --highlight-ld: #e6db74; /* Literal.Date */
+    --highlight-m: #ae81ff; /* Literal.Number */
+    --highlight-s: #e6db74; /* Literal.String */
+    --highlight-na: #a6e22e; /* Name.Attribute */
+    --highlight-nb: #f8f8f2; /* Name.Builtin */
+    --highlight-nc: #a6e22e; /* Name.Class */
+    --highlight-no: #66d9ef; /* Name.Constant */
+    --highlight-nd: #a6e22e; /* Name.Decorator */
+    --highlight-ni: #f8f8f2; /* Name.Entity */
+    --highlight-ne: #a6e22e; /* Name.Exception */
+    --highlight-nf: #a6e22e; /* Name.Function */
+    --highlight-nl: #f8f8f2; /* Name.Label */
+    --highlight-nn: #f8f8f2; /* Name.Namespace */
+    --highlight-nx: #a6e22e; /* Name.Other */
+    --highlight-py: #f8f8f2; /* Name.Property */
+    --highlight-nt: #f92672; /* Name.Tag */
+    --highlight-nv: #f8f8f2; /* Name.Variable */
+    --highlight-ow: #f92672; /* Operator.Word */
+    --highlight-w: #f8f8f2; /* Text.Whitespace */
+    --highlight-mf: #ae81ff; /* Literal.Number.Float */
+    --highlight-mh: #ae81ff; /* Literal.Number.Hex */
+    --highlight-mi: #ae81ff; /* Literal.Number.Integer */
+    --highlight-mo: #ae81ff; /* Literal.Number.Oct */
+    --highlight-sb: #e6db74; /* Literal.String.Backtick */
+    --highlight-sc: #e6db74; /* Literal.String.Char */
+    --highlight-sd: #e6db74; /* Literal.String.Doc */
+    --highlight-s2: #e6db74; /* Literal.String.Double */
+    --highlight-se: #ae81ff; /* Literal.String.Escape */
+    --highlight-sh: #e6db74; /* Literal.String.Heredoc */
+    --highlight-si: #e6db74; /* Literal.String.Interpol */
+    --highlight-sx: #e6db74; /* Literal.String.Other */
+    --highlight-sr: #e6db74; /* Literal.String.Regex */
+    --highlight-s1: #e6db74; /* Literal.String.Single */
+    --highlight-ss: #e6db74; /* Literal.String.Symbol */
+    --highlight-bp: #f8f8f2; /* Name.Builtin.Pseudo */
+    --highlight-vc: #f8f8f2; /* Name.Variable.Class */
+    --highlight-vg: #f8f8f2; /* Name.Variable.Global */
+    --highlight-vi: #f8f8f2; /* Name.Variable.Instance */
+    --highlight-il: #ae81ff; /* Literal.Number.Integer.Long */
+
+    // --highlight-gh: none; /* Generic Heading & Diff Header */
+    --highlight-gu: #75715e; /* Generic.Subheading & Diff Unified/Comment? */
+    --highlight-gd: #f92672; /* Generic.Deleted & Diff Deleted */
+
+    /* My styles */
+    --highlight-lineno: #6c6c6d;
+    --highlight-lineno-border: #3c4042;
+  }
+
+  pre {
+    color: #818c96; /* override Bootstrap */
+  }
+
+}
