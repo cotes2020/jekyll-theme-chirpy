@@ -86,7 +86,7 @@ layout: default
     <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
       {% include related-posts.html %}
 
-      <div class="post-pager d-flex justify-content-between">
+      <div class="post-navigation d-flex justify-content-between">
       {% if page.previous.url %}
         <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary">
           <p>{{ page.previous.title }}</p>
@@ -104,7 +104,7 @@ layout: default
           <p>-</p>
       {% endif %}
         </a>
-      </div> <!-- div.post-pager -->
+      </div> <!-- div.post-navigation -->
 
     {% if site.disqus.comments and page.comments %}
       {% include disqus.html %}
