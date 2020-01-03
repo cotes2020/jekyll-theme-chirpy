@@ -1,0 +1,53 @@
+/*!
+* The main dark mode styles
+* v2.0
+* https://github.com/cotes2020/jekyll-theme-chirpy
+* © 2018-2019 Cotes Chung
+* MIT Licensed
+*/
+
+@media (prefers-color-scheme: dark) {
+  html {
+    /* framework */
+    --main-wrapper-bg: rgb(27, 27, 30);
+    --topbar-wrapper-bg: rgb(39, 40, 43);
+    --search-wrapper-bg: rgb(34, 34, 39);
+    --search-icon: rgb(100, 102, 105);
+    --input-focus-border: rgb(112, 114, 115);
+    --footer-bg: rgb(31, 30, 30);
+    --footer-border: rgb(44, 45, 45);
+    --mask-bg: rgb(68, 69, 70);
+
+    /* sidebar */
+    --nav-cursor: rgb(183, 182, 182);
+    --sidebar-bg: radial-gradient(circle, #231c4c 0%, #1d1f27 100%);
+
+    /* common color */
+    --text-color: rgb(175, 176, 177);
+    --link-color: rgb(138, 180, 248);
+    --main-border: rgb(63, 65, 68);
+    --button-bg: rgb(39, 40, 33);
+    --blockquote-border: rgb(93, 95, 82);
+    --blockquote-text: rgb(96, 125, 139);
+
+    --card-bg: rgb(39, 40, 33);
+    --card-header-bg: rgb(51, 50, 50);
+    --relate-post-title: rgb(164, 175, 181);
+
+    /* posts */
+    --toc-highlight: rgb(116, 178, 243);
+    --tag-bg: rgb(41, 40, 40);
+    --tag-hover: rgb(43, 56, 62);
+    --tb-odd-bg: rgb(50, 51, 41); /* posts' table odd line */
+
+    /* tags */
+    --tag-border: rgb(59, 79, 88);
+    --tag-shadow: rgb(32, 33, 33);
+
+    /* categories */
+    --categories-hover-bg: rgb(73, 75, 76);
+
+    /* archives */
+    --timeline-node-bg: rgb(150, 152, 156);
+  }
+}

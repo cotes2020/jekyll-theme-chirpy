@@ -48,7 +48,7 @@
 
 @media (hover: hover) { // only works on desktop
   .category-trigger:hover {
-    background-color: #e9ecef;
+    background-color: var(--categories-hover-bg, #e9ecef);
   }
 }
 
@@ -63,4 +63,22 @@
   -ms-transform: rotate(-90deg); /* IE 9 */
   -webkit-transform: rotate(-90deg); /* Safari 3-8 */
   transform: rotate(-90deg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .categories.card,
+  .list-group-item {
+    background-color: var(--card-bg);
+  }
+
+  .categories .card-header {
+    background-color: var(--card-header-bg);
+  }
+
+  .categories .list-group-item {
+    border-left: none;
+    border-right: none;
+    padding-left: 2rem;
+    border-color: var(--main-border);
+  }
 }
