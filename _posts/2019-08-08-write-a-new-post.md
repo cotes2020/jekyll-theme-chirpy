@@ -24,10 +24,6 @@ tags: [TAG]
 
 > **Note**: The posts' ***layout*** has been set to `post` by default, so there is no need to add the variable ***layout*** in Front Matter block.
 
-- **The TimeZone of Date**
-
-    To ensure that the posts' release date matches the city you live in, please modify the value of `timezone` in the file `_config.yml`. A list of all available values can be found on [TimezoneConverter](http://www.timezoneconverter.com/cgi-bin/findzone/findzone) or [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-
 - **Categories and Tags**
 
     The `categories` of each post is designed to contain up to two elements, and the number of elements in `tag` can be zero or infinite.
