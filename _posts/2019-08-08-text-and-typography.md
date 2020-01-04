@@ -58,7 +58,7 @@ Click the hook will locate the footnote[^footnote].
 
 ## Image
 
-![Desktop View](/assets/img/sample/mockup.png)
+![Desktop View]({{ "/assets/img/sample/mockup.png" | relative_url }})
 
 
 ## Inline code
