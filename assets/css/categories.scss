@@ -81,4 +81,8 @@
     padding-left: 2rem;
     border-color: var(--main-border);
   }
+
+  .categories .list-group-item:last-child {
+    border-bottom-color: var(--card-bg);
+  }
 }
