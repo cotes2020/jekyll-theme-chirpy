@@ -53,7 +53,9 @@ layout: default
         {% endif %}
         <!-- Add lozad class into image tags. see: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
         {% if content contains '<img src=' %}
-          {{ content | replace: '<img src=', '<img class="lozad" src="/assets/img/commons/loading.png" data-src=' }}
+          {% capture loading %}{{ "/assets/img/commons/loading.png" | relative_url }}{% endcapture %}
+          {% assign replacement = '<img class="lozad" src=' | append: loading | append: ' data-src=' %}
+          {{ content | replace: '<img src=', replacement }}
         {% else %}
           {{ content }}
         {% endif %}
