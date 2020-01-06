@@ -79,7 +79,7 @@
 }
 
 .post-navigation a::before {
-  color: gray;
+  color: var(--text-muted-color, gray);
   font-size: .65rem;
   text-transform: uppercase;
 }
@@ -157,7 +157,7 @@
 }
 
 #related-posts .timeago {
-  color: rgba(30,55,70,.4);
+  color: var(--text-muted-color, rgba(30,55,70,.4));
 }
 
 #related-posts p {
