@@ -55,7 +55,7 @@
 }
 
 .page-item .page-link {
-  color: #555555;
+  color: var(--text-color, #555555);
   width: 2.5rem;
   height: 2.5rem;
   padding: 0;
@@ -73,7 +73,8 @@
 }
 
 .page-item.active .page-link {
-  background-color: #2a408e;
+  background-color: var(--btn-active-bg, #2a408e);
+  border-color: var(--btn-active-border-color, #007bff);
   box-shadow: 0 0 8px 0 var(--main-wrapper-bg, #4b92d2) !important;
   color: var(--text-color, #f8f8f8);
 }
@@ -130,12 +131,5 @@
 @media all and (max-width: 1200px) {
   #post-list {
     padding-right: 0;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .page-item.active .page-link {
-    background-color: #203a96;
-    border-color: #0252a9;
   }
 }

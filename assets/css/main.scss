@@ -23,7 +23,7 @@ html {
 
 body {
   line-height: 1.75rem;
-  background: #fafafa;
+  background: var(--main-wrapper-bg, #fafafa);
   color: var(--text-color, #212529);
   -webkit-font-smoothing: antialiased;
   font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
@@ -291,7 +291,7 @@ body {
 }
 
 #search-wrapper+a { /* 'Cancel' link */
-  color: #2a408e;
+  color: var(--link-color, #2a408e);
   margin-left: 1rem;
   display: none;
 }
@@ -553,7 +553,7 @@ footer .license a {
   cursor: pointer;
   position: fixed;
   background: var(--button-bg, #fff);
-  color: #686868;
+  color: var(--text-color, #686868);
   height: 2.6em;
   width: 2.7em;
   border-radius: 50%;
@@ -662,7 +662,7 @@ a.reversefootnote {
 
 .post-content a {
   color: var(--link-color, #2a408e);
-  border-bottom: 1px dotted var(--link-color, #c2c6cc);
+  border-bottom: 1px dotted var(--link-underline-color, #c2c6cc);
 }
 
 p>a, span>a,
@@ -749,7 +749,7 @@ table tbody td {
 
 .post-meta a {
   color: var(--link-color, #2a408e);
-  border-bottom: 1px dotted var(--link-color, #c2c6cc);
+  border-bottom: 1px dotted var(--link-underline-color, #c2c6cc);
 }
 
 .post-meta a:not(:last-child) {
@@ -821,7 +821,7 @@ table tbody td {
 }
 
 .btn-box-shadow {
-  box-shadow: 0 0 8px 0 var(--button-bg, #eaeaea) !important;
+  box-shadow: 0 0 8px 0 var(--main-wrapper-bg, #eaeaea) !important;
 }
 
 .topbar-up {
