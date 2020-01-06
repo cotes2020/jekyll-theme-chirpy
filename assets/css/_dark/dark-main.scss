@@ -20,11 +20,13 @@
 
     /* sidebar */
     --nav-cursor: rgb(183, 182, 182);
-    --sidebar-bg: radial-gradient(circle, #231c4c 0%, #1d1f27 100%);
+    --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
 
     /* common color */
     --text-color: rgb(175, 176, 177);
+    --text-muted-color: rgb(107, 116, 124);
     --link-color: rgb(138, 180, 248);
+    --link-underline-color: rgb(99, 131, 182);
     --main-border: rgb(63, 65, 68);
     --button-bg: rgb(39, 40, 33);
     --blockquote-border: rgb(93, 95, 82);
@@ -33,6 +35,10 @@
     --card-bg: rgb(39, 40, 33);
     --card-header-bg: rgb(51, 50, 50);
     --relate-post-title: rgb(164, 175, 181);
+
+    /* Home page */
+    --btn-active-bg: #1c345e;
+    --btn-active-border-color: #8ab4f8;
 
     /* posts */
     --toc-highlight: rgb(116, 178, 243);
