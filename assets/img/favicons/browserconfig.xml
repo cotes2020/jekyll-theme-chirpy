@@ -1,10 +1,11 @@
 ---
+layout: compress
+
 # A part of the Favicons
 # v2.0
 # https://github.com/cotes2020/jekyll-theme-chirpy
 # © 2019 Cotes Chung
 # MIT License
-layout: compress
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <browserconfig>
