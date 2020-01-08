@@ -140,6 +140,12 @@ defaults:
         -
           label: Home
           url: /
+  -
+    scope:
+      path: assets/data
+    values:
+      layout: compress
+
 
 sass:
   sass_dir: /assets/css
