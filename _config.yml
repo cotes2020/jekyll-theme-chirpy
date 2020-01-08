@@ -8,16 +8,19 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: Chirpy
+title: Chirpy                          # the main title
 
-description: 'A text-focused Jekyll theme.'
+tagline: A text-focused Jekyll theme.  # it will display as the sub-title
+
+description: >-                        # used by seo meta and the atom feed
+  A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation.
 
 # Replace with your domain, e.g. 'https://username.github.io'
-url: 'https://www.example.com'
+url: 'protocol://domain'
 
 author: your_full_name                  # change to your full name
 
-avatar: /assets/img/sample/avatar.jpg   # Support network resources.
+avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
 github:
   username: github_username             # change to your github username
