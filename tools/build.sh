@@ -86,7 +86,6 @@ main() {
     case $opt in
       -b|--baseurl)
         check_unset $2
-
         if [[ $2 == \/* ]]
         then
           CMD+=" -b $2"
@@ -94,7 +93,6 @@ main() {
           help
           exit 1
         fi
-
         shift
         shift
         ;;
@@ -116,9 +114,7 @@ main() {
   done
 
   init
-
   build
 }
 
-
-main
+main "$@"
