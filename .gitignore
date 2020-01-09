@@ -10,8 +10,5 @@ _site
 # Jeykll Gemfile.lock
 Gemfile.lock
 
-# yui-compressor
-*.jar
-
 # bundle cache
 vendor
