@@ -7,9 +7,21 @@ tags: [getting started]
 
 ## Preparation
 
-Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (Ruby, RubyGem, Bundler and Jekyll). In addition, to use the funny script tools, we also need to install [Python](https://www.python.org/downloads/)(version 3.5 or abover) and [ruamel.yaml](https://pypi.org/project/ruamel.yaml/).
+Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (Ruby, RubyGem, Bundler and Jekyll). In order to use the script tools to save time, we also need to install [Python](https://www.python.org/downloads/)(version 3.5 or abover) and [ruamel.yaml](https://pypi.org/project/ruamel.yaml/).
 
-Next, [fork](https://github.com/cotes2020/jekyll-theme-chirpy/fork) **Chirpy** and then clone your forked repo locally.
+In addition, if your machine is running Debian or macOS, make sure you have the [GNU coreutils](https://www.gnu.org/software/coreutils/) installed. Otherwise, get it by:
+
+* Debian
+
+```console
+$ sudo apt-get install coreutils
+```
+
+* macOS
+
+```console
+$ brew install coreutils
+```
 
 
 ## Install Jekyll Plugins
@@ -73,16 +85,6 @@ Customize the variables in file `_config.yml` as needed.
 
     To ensure that the posts' release date matches the city you live in, please modify the field `timezone` correctly. A list of all available values can be found on [TimezoneConverter](http://www.timezoneconverter.com/cgi-bin/findzone/findzone) or [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
-* Atom Feed
-
-    The Atom feed url of your site will be:
-
-    ```
-    <SITE_URL>/feed.xml
-    ```
-
-    The `SITE_URL` was defined by variable `url` of `_config.yml`.
-
 
 ##  Run Locally
 
@@ -91,8 +93,6 @@ You may want to preview the site before publishing, so just run the script tool:
 ```terminal
 $ bash tools/run.sh
 ```
-
->**Note**: The *Recent Update* list requires the latest git-log date of posts, thus make sure the changes in `_posts` have been committed before running this command.
 
 Open a brower and visit <http://localhost:4000>.
 
@@ -121,6 +121,8 @@ By deploying the site in this way, you're allowed to push the source code direct
 ```console
 $ bash tools/init.sh
 ```
+
+> Please note that the *Recent Update* list requires the latest git-log date of posts, thus make sure the changes in `_posts` have been committed before running this command.
 
 it will automatically generates the *Latest Modified Date* and *Categories / Tags* page for the posts.
 
