@@ -922,6 +922,11 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
 /* Sidebar is visibal */
 @media all and (min-width: 831px) {
+
+  #profile-wrapper {
+    margin-top: 3rem;
+  }
+
   #search-wrapper {
     width: 22%;
     min-width: 150px;
