@@ -722,7 +722,11 @@ table thead {
   border-bottom: solid 2px rgba(210, 215, 217, 0.75);
 }
 
-table thead+tbody tr {
+table thead+tbody tr:nth-child(2n) {
+  background-color: var(--tb-even-bg);
+}
+
+table thead+tbody tr:last-child:nth-child(2n) {
   border-bottom: solid 1px var(--tb-odd-bg, rgba(210, 215, 217, 0.75));
 }
 

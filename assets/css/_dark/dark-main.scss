@@ -44,7 +44,8 @@
     --toc-highlight: rgb(116, 178, 243);
     --tag-bg: rgb(41, 40, 40);
     --tag-hover: rgb(43, 56, 62);
-    --tb-odd-bg: rgb(50, 51, 41); /* posts' table odd line */
+    --tb-odd-bg: rgba(52, 53, 42, 0.52); /* odd rows of the posts' table */
+    --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
 
     /* tags */
     --tag-border: rgb(59, 79, 88);
