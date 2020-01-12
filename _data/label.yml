@@ -16,4 +16,7 @@ panel:
   trending_tags: "Trending Tags"
   toc: "Contents"
 
+post:
+  relate_posts: "Further Reading"
+
 search_hint: "Search"   # text show on search bar
