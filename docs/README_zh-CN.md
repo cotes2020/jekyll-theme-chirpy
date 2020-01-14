@@ -30,14 +30,14 @@ Language: [English](../README.md) | 简体中文
 
 ## 目录
 
-* [开始](#开始)
+* [安装](#安装)
 * [运行指南](#运行指南)
 * [参与贡献](#参与贡献)
 * [感谢](#感谢)
 * [赞助](#赞助)
 * [许可证书](#许可证书)
 
-## 开始
+## 安装
 
 ### 准备工作
 
@@ -146,7 +146,7 @@ $ bash tools/run.sh
 
 ###  部署到 GitHub Pages
 
-部署开始前，把  `_config.yml` 的 `url` 改为 `https://<username>.github.io`(或者你的私有域名，如：`https://yourdomain.com`).
+部署开始前，把  `_config.yml` 的 `url` 改为 `https://<username>.github.io`(或者你的私有域名，如：`https://yourdomain.com`)。另外，如果你想使用 [Project 类型网站](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites)，修改配置文件的 `baseurl` 为项目名称，以斜杠开头，如：`/project`。
 
 #### 方法 1: 由 GitHub Pages 生成站点
 
@@ -200,8 +200,6 @@ $ bash tools/init.sh
 $ bash tools/build.sh -d /path/to/local/project/
 ```
 > `project` 为新仓库名称。
-
-如果你想使用 Project 网站，修改配置文件的 `baseurl` 为项目名称，以斜杠开头，如：`/project`。或者，在上述命令行后面加参数`-b /project`，`project` 替换为新仓库名称。
 
 生成的静态文件将会在 `/path/to/local/project`. 把新仓库的修改提交并推送到远端 `master` 分支.
 
