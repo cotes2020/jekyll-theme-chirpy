@@ -100,7 +100,7 @@ Few days later, you may find that the file changes does not refresh in real time
 
 ##  Deploying to GitHub Pages
 
-Before the deployment begins, ensure the `url` in file `_config.yml` has been set to `https://<username>.github.io`(or the custom domain, if you have. e.g. `https://yourdomain.com`).
+Before the deployment begins, ensure the `url` in file `_config.yml` has been set to `https://<username>.github.io`(or the custom domain, if you have. e.g. `https://yourdomain.com`). What's more, if you prefer to the [Project site](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites), change `baseurl` of file `_config.yml` to your project name, starting with a slash. e.g. `/project`.
 
 
 ### Option 1: Built by GitHub Pages
@@ -154,8 +154,6 @@ and clone it.
 ```console
 $ bash tools/build.sh -d /path/to/local/project/
 ```
-
-> If you prefer to the Project site, change `baseurl` of file `_config.yml` to your project name, starting with a slash. e.g. `/project`. Or, simply add argument `-b /project` behide the command above.
 
 The generated static files will be placed in the root of `/path/to/local/project`. Commit and push the changes to the `master` branch on GitHub.
 
