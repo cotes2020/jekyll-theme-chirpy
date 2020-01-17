@@ -59,6 +59,11 @@ google_analytics:
   proxy_baseurl: ''
   proxy_url: ''
 
+valine_comment:
+  enable: true
+  leancloud_appid: oip6cvm7CO6OeBtyghYeBJJe-gzGzoHsz
+  leancloud_appkey: iLS9tFGX3LvOp2HMCH2C49Ch
+  placeholder: Just go go
 
 disqus:
   comments: false  # boolean type, the global switch for posts comments.

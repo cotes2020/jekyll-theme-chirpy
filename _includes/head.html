@@ -26,6 +26,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
+  <!-- Valine Comment -->
+  {% if site.valine_comment.enable and page.comments == true %}
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//cdn.jsdelivr.net/npm/valine@1.1.7/dist/Valine.min.js'></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  {% endif %}
+
   <!-- ga -->
   {% if jekyll.environment == 'production' %}
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">

@@ -1,0 +1,13 @@
+<div id="comments" class="pt-2 pb-4">
+  <p class="font-italic text-muted small">Comments powered by <a href="https://valine.js.org/">Valine</a>.</p>
+</div>
+
+<script>
+    new Valine({
+        av: AV,
+        el: '#comments',
+        app_id: '{{ site.valine_comment.leancloud_appid }}',
+        app_key: '{{ site.valine_comment.leancloud_appkey }}',
+        placeholder:'{{ site.valine_comment.placeholder }}'
+    });
+</script>
