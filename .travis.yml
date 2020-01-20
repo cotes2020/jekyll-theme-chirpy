@@ -1,12 +1,14 @@
+os: linux
+dist: bionic
+
 language: ruby
-rvm: 2.5.3
+rvm: 2.6.5
 
 before_install:
-  - pyenv global 3.7.1
+  - pyenv global 3.7.5
 
 install:
-  - pip install --upgrade pip
-  - pip install ruamel.yaml
+  - pip install -r _scripts/py/requirements.txt
   - bundle install --path vendor/bundle --quiet
 
 addons:
@@ -26,15 +28,13 @@ git:
 cache:
   directories:
     - $TRAVIS_BUILD_DIR/vendor/bundle
-    - $TRAVIS_BUILD_DIR/tmp/.htmlproofer
 
 notifications:
   email:
     recipients:
-      - secure: "GdZFhI2fu6MHwHeGkI9AI8NJexfT+cncJKoOTBxrMPywxvfm6HZ1vZTOwLD9mwG4XZUSznruD4NwRiXMBKs/94n8Z2f0QagCp2is/TuQWBVDUn1bowTbx1S7da6I3qTBGyIHvQWySwFgJuK9/uUeHdQF9ojMejESKZWfc6NjlgYie3Us3ax+Lygq6o4x+8+YPqlC/XwEKUUMUpXZT8Yubxg+s1mLwY9zmp2kJwB1snf6u498FPCWtCuQdGc91HEL4McfUfevnkNKttJQFwdE+mFkLoLn1FcXN0WQ8hPVTQvD/5TaCvACuB1oQ4dm4cnnoIRC5iuQntkP2Am7jPLnHLwxHDqB8vLDNxi1phbfGTk89ffY4n5FirF7DiYIn7hDDbDBlE4++9Pv/i7xgLp9+NzAzz25tdcfKZfXujrwE6b/2NbtXer/eWXyi7d6V/qWO6x8m7/IerX2/VrbXyQIgTvIDe2sSAraM77MMIiQ2KS6yhPIfjyCsC1sokFNRqUWut2UkqMFKOmAnSi/jTQY6/t1aOXGHtVRwgjFoyvBTk9F9NElxt3mseK26Mad3yAv5xLqhqHPFZJbVHJ8dP6RQvWwuvMK1uSqobTl+t0qBvvdSbt1/Oc/ubN1T2clObx1faF2luoMFhRtN+H5s7wfEMrO+sJAuSZnAHuDRpDIwCs="
+      - secure: "fFLqX7uOzFA8RE2AUFlU1mmxMw+rdV6DnODJ/1Gl+3ecNtrv5LeH3c5a4a5ShQqYTrx9BPfD40VRN7UB+lzOdXiWLI9yDGRPPxGG26/WfrKpdQPZilc8zAOEeDnLAJeGZLsUvgmNb3KCXW6S8NPqqh34CfWcTIzjCARhRgO33wcs8X5wP5cugtNqO5Ew/pUcfWcmiuXNX0GNT6l+nL5A7yN+IO5mRHqSRmlfYd5EHhGMTIL4La+Cd1CNv1m4Dl0Ah2cDeJwi5wLnVbqAgunLhAYmDtxIOCVYMTBrP37UiNe/7QeFelyJfODsmMg1mx3WCykbXydC753WVoAlTg6nNoeeI9fmK+/tuLK+sx/KnYfTVGBXQYq39DyV/2o/IfCzEAKImlzFKGD8R13+ddu4B5UML+cby5KBvhTKIGaC5tKoe39z/31UPpy11/EHMCof2BUOzIgu5Hsv4OSNJlw3oRE31oOPn8xP4e7uWR8bRUhAgzN0Cn0ht+UfpemfGAXrp0M3IXQdc9L4azEFqxRhivMTLK/P6INay7IM+DJ30Ht2dWylGw/sxcRTqyNm3YomJQnXIO4xeqTSLulWr80FFHTys3JEDJYrcKvJmpwLFEAOZtwKsZ6ZShrOIA4LE5fgQtakH3ZLJG9a7jVSlMcNIfaSKgjdDQOe6CoRQL7KouA="
     on_success: never
 
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-    - secure: "QNAqDoDQ+mF/3DFxKbc7fnYa5+FysJTX9Vs4XneH6iH63MS2lNtHfC7uT/M0/sRJaygK9eAdb+RaIeADE7CAMzqP3qdWx7l2N6qWab/kyK9KujUBsvoTGX6lDQTwC2Z+zlr5uUScHfLOhqHh6dbm6glziy2NB4dn9pVBXQrmBn09Rf9LImRT2u2h8gzmdl19hZ9TsW1/ROOb/1Soc3JElGRPrIxKI7ufHLQZt0UzZkYXGejQJwtstEEkRSmhfkJjlASeaeuyOFBvkWXjL1nKPsElwEKsAR+4II98JKA83YVqa9TJT2YSnXeLEFIhYDVSG6RLAMEU4rrITzRYC/hWKBKje4G0PDEM/cpnytk9Xhq+7oUFRmXCq3ZQgTQgzWhzl1kExC8b96hiWmQ+lVCw+Q2BG6+NloEEuOHOM839CTXfiitjRJ8KYUdLgW6IaruaingySBsbh1Vl+Dhu73QZ5H40KLdIH6woLXWAgtxkjpaL6DTeWDO6xMiwDreBa/2CJRT5R1tiG45CurZ+AkQ+yAAfSOEwGtE29oZl0sWeWMwVTaAClc0IJaG1+h8jxIVuQqHvK3fzd5RdlDtShrfCCVvQD0n29wXrdeNEg90F92kvdtmw8XgKc2P/Cl5uNzvVeTbFF3ZIHYpCVV4LW4Hn8clgYu+WUa/w4pVrBSdQOUw="
