@@ -17,7 +17,11 @@ addons:
     - libcurl4-openssl-dev # required to avoid SSL error (for htmlproofer)
 
 script:
-  - bash _scripts/travis/cibuild.sh
+  - >-
+    git clone https://${GH_PAT}@github.com/${GH_USER}/${BUILDER_REPO}.git
+    ${HOME}/${BUILDER_REPO} --depth=1 -q
+  - cp -r ${HOME}/${BUILDER_REPO}/framework/* .
+  - bash _cibuild.sh
 
 branches:
   only: master

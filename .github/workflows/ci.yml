@@ -1,0 +1,81 @@
+name: build
+on:
+  push:
+    paths-ignore:
+    - 'docs/**'
+    - 'README.md'
+    - 'LICENSE'
+    - '.travis.yml'
+  pull_request:
+    paths:
+    - "**"
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.7.6
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Bundle Caching
+        id: bundle-cache
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Pip caching
+        id: pip-cache
+        uses: actions/cache@v1
+        with:
+          # the path from: pip show pip | grep Location
+          path: ${{ runner.tool_cache }}/Python/3.7.6/x64/lib/python3.7/site-packages
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install gnu-coreutils for macOS
+        if: runner.os == 'macOS'
+        run: |
+          brew install coreutils
+
+      - name: Bundle config
+        run: |
+          bundle config path vendor/bundle
+
+      - name: Bundle Install
+        if: steps.bundle-cache.outputs.cache-hit != 'true'
+        run: |
+          bundle install
+
+      - name: Bundle Install locally
+        if: steps.bundle-cache.outputs.cache-hit == 'true'
+        run: |
+          bundle install --local
+
+      - name: Pip installing
+        if: steps.pip-cache.outputs.cache-hit != 'true'
+        run: |
+          pip install -r _scripts/py/requirements.txt
+
+      - name: Build Site
+        run: |
+          bash tools/build.sh
+
+      - name: Test Site
+        run: |
+          bash tools/test.sh
