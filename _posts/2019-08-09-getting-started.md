@@ -46,9 +46,8 @@ jekyll-theme-chirpy/
 ├── _layouts
 ├── _posts          # posts stay here
 ├── _scripts
-│   └── travis      # CI stuff, remove it
-├── .travis.yml     # remove this, too
-├── .github         # remove it
+├── .travis.yml     # remove it
+├── .github         # remove this, too
 ├── assets      
 ├── tabs
 │   └── about.md    # the ABOUT page
@@ -70,7 +69,6 @@ As mentioned above, some files or directories should be removed from your repo:
 
 - .travis.yml
 - .github
-- _scripts/travis
 
 
 ## Configuration
