@@ -20,11 +20,11 @@ jobs:
     steps:
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6
+          ruby-version: '2.6.x'
 
       - uses: actions/setup-python@v1
         with:
-          python-version: 3.7.6
+          python-version: '3.7.x'
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -38,12 +38,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      - id: get-pip-cache-path
+        run: |
+          echo "::set-output name=path::`pip show pip | grep "Location" | awk '{print $2}'`"
+
       - name: Pip caching
         id: pip-cache
         uses: actions/cache@v1
         with:
-          # the path from: pip show pip | grep Location
-          path: ${{ runner.tool_cache }}/Python/3.7.6/x64/lib/python3.7/site-packages
+          path: ${{ steps.get-pip-cache-path.outputs.path }}
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
