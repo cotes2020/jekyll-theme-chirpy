@@ -60,7 +60,7 @@
 
 .post-navigation a > p {
   font-size: 1.1rem;
-  line-height: 1.2rem;
+  line-height: 1.5rem;
   margin-top: .3rem;
   white-space: normal;
 }
@@ -238,6 +238,8 @@
   .post-navigation {
     padding-left: 0;
     padding-right: 0;
+    margin-left: -.5rem;
+    margin-right: -.5rem;
   }
 }
 
