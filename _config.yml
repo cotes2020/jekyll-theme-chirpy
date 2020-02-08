@@ -113,6 +113,7 @@ defaults:
     scope:
       path: tags
     values:
+      tab_active: Tags
       location: Tag
       breadcrumb:
         -
@@ -125,6 +126,7 @@ defaults:
     scope:
       path: categories
     values:
+      tab_active: Categories
       location: Category
       breadcrumb:
         -
