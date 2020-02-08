@@ -792,6 +792,13 @@ table tbody td {
   color: #d2603a;
 }
 
+/* --- buttons --- */
+.btn-lang {
+  border: 1px solid !important;
+  padding: 0 3px 1px 3px;
+  border-radius: 3px;
+}
+
 /* --- Effects classes --- */
 
 .loaded {
@@ -1068,6 +1075,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     margin-top: -3.5rem;
   }
 }
+
 
 /* Compact icons in sidebar & TOC hidden */
 @media all and (min-width: 832px) and (max-width: 1199px) {
