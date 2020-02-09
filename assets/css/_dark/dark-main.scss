@@ -6,55 +6,65 @@
 * MIT Licensed
 */
 
+@mixin darkScheme() {
+  /* framework */
+  --main-wrapper-bg: rgb(27, 27, 30);
+  --topbar-wrapper-bg: rgb(39, 40, 43);
+  --search-wrapper-bg: rgb(34, 34, 39);
+  --search-icon: rgb(100, 102, 105);
+  --input-focus-border: rgb(112, 114, 115);
+  --footer-bg: rgb(31, 30, 30);
+  --footer-border: rgb(44, 45, 45);
+  --mask-bg: rgb(68, 69, 70);
+
+  /* sidebar */
+  --nav-cursor: rgb(183, 182, 182);
+  --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
+
+  /* common color */
+  --text-color: rgb(175, 176, 177);
+  --text-muted-color: rgb(107, 116, 124);
+  --link-color: #3db5c2;
+  --link-underline-color: #3db5c2;
+  --main-border: rgb(63, 65, 68);
+  --button-bg: rgb(39, 40, 33);
+  --blockquote-border: rgb(66, 66, 66);
+  --blockquote-text: rgb(117, 117, 117);
+
+  --card-bg: rgb(39, 40, 33);
+  --card-header-bg: rgb(51, 50, 50);
+  --relate-post-title: rgb(164, 175, 181);
+
+  /* Home page */
+  --btn-active-bg: #1c345e;
+  --btn-active-border-color: #8ab4f8;
+
+  /* posts */
+  --toc-highlight: rgb(116, 178, 243);
+  --tag-bg: rgb(41, 40, 40);
+  --tag-hover: rgb(43, 56, 62);
+  --tb-odd-bg: rgba(52, 53, 42, 0.52); /* odd rows of the posts' table */
+  --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
+
+  /* tags */
+  --tag-border: rgb(59, 79, 88);
+  --tag-shadow: rgb(32, 33, 33);
+
+  /* categories */
+  --categories-hover-bg: rgb(73, 75, 76);
+
+  /* archives */
+  --timeline-node-bg: rgb(150, 152, 156);
+}
+
 @media (prefers-color-scheme: dark) {
-  html {
-    /* framework */
-    --main-wrapper-bg: rgb(27, 27, 30);
-    --topbar-wrapper-bg: rgb(39, 40, 43);
-    --search-wrapper-bg: rgb(34, 34, 39);
-    --search-icon: rgb(100, 102, 105);
-    --input-focus-border: rgb(112, 114, 115);
-    --footer-bg: rgb(31, 30, 30);
-    --footer-border: rgb(44, 45, 45);
-    --mask-bg: rgb(68, 69, 70);
+  body:not(.color-scheme-light) {
+    @include darkScheme();
+  }
+}
 
-    /* sidebar */
-    --nav-cursor: rgb(183, 182, 182);
-    --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
-
-    /* common color */
-    --text-color: rgb(175, 176, 177);
-    --text-muted-color: rgb(107, 116, 124);
-    --link-color: rgb(138, 180, 248);
-    --link-underline-color: rgb(99, 131, 182);
-    --main-border: rgb(63, 65, 68);
-    --button-bg: rgb(39, 40, 33);
-    --blockquote-border: rgb(66, 66, 66);
-    --blockquote-text: rgb(117, 117, 117);
-
-    --card-bg: rgb(39, 40, 33);
-    --card-header-bg: rgb(51, 50, 50);
-    --relate-post-title: rgb(164, 175, 181);
-
-    /* Home page */
-    --btn-active-bg: #1c345e;
-    --btn-active-border-color: #8ab4f8;
-
-    /* posts */
-    --toc-highlight: rgb(116, 178, 243);
-    --tag-bg: rgb(41, 40, 40);
-    --tag-hover: rgb(43, 56, 62);
-    --tb-odd-bg: rgba(52, 53, 42, 0.52); /* odd rows of the posts' table */
-    --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
-
-    /* tags */
-    --tag-border: rgb(59, 79, 88);
-    --tag-shadow: rgb(32, 33, 33);
-
-    /* categories */
-    --categories-hover-bg: rgb(73, 75, 76);
-
-    /* archives */
-    --timeline-node-bg: rgb(150, 152, 156);
+@media not (prefers-color-scheme: dark) {
+  body.color-scheme-dark {
+    @include darkScheme();
   }
 }
