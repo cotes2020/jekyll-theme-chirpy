@@ -6,7 +6,7 @@
 * MIT Licensed
 */
 
-@mixin darkScheme() {
+@mixin dark-scheme {
   /* framework */
   --main-wrapper-bg: rgb(27, 27, 30);
   --topbar-wrapper-bg: rgb(39, 40, 43);
@@ -24,8 +24,8 @@
   /* common color */
   --text-color: rgb(175, 176, 177);
   --text-muted-color: rgb(107, 116, 124);
-  --link-color: #3db5c2;
-  --link-underline-color: #3db5c2;
+  --link-color: rgb(138, 180, 248);
+  --link-underline-color: rgb(99, 131, 182);
   --main-border: rgb(63, 65, 68);
   --button-bg: rgb(39, 40, 33);
   --blockquote-border: rgb(66, 66, 66);
@@ -57,59 +57,65 @@
   --timeline-node-bg: rgb(150, 152, 156);
 }
 
-
 /* Light scheme prefered (= dark scheme not prefered)
- * -> dark scheme triggered with <body class="color-scheme-dark">
+ * -> dark scheme triggered with <html class="dark-mode">
  */
-body.color-scheme-dark{
+html.dark-mode {
   /* Dark scheme */
-  @include darkScheme();
+  @include dark-scheme;
+
   // Hide element in dark color scheme
   // (visible in light scheme)
-  .color-scheme-dark-hidden {
+  .dark-mode-hidden {
     display: none;
   }
-  .color-scheme-light-hidden {
+
+  .light-mode-hidden {
     display: initial;
   }
 }
-body:not(.color-scheme-dark) {
-  /* Light scheme */
+
+html:not(.dark-mode) {
   // Hide element in dark color scheme
   // (visible in light scheme)
-  .color-scheme-light-hidden {
+  .light-mode-hidden {
     display: none;
   }
-  .color-scheme-dark-hidden {
+
+  .dark-mode-hidden {
     display: initial;
   }
 }
+
 
 @media (prefers-color-scheme: dark) {
   /* Dark scheme prefered
-   * -> light scheme triggered with <body class="color-scheme-light">
+   * -> light scheme triggered with <html class="light-mode">
    */
-  body:not(.color-scheme-light) {
+  html:not(.light-mode) {
     /* Dark scheme */
-    @include darkScheme();
+    @include dark-scheme;
     // Hide element in dark color scheme
     // (visible in light scheme)
-    .color-scheme-dark-hidden {
+    .dark-mode-hidden {
       display: none;
     }
-    .color-scheme-light-hidden {
+
+    .light-mode-hidden {
       display: initial;
     }
   }
-  body.color-scheme-light {
+
+  html.light-mode {
     /* Light scheme */
     // Hide element in dark color scheme
     // (visible in light scheme)
-    .color-scheme-light-hidden {
+    .light-mode-hidden {
       display: none;
     }
-    .color-scheme-dark-hidden {
+    .dark-mode-hidden {
       display: initial;
     }
   }
+
 }
