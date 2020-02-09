@@ -6,8 +6,7 @@
 * MIT Licensed
 */
 
-@mixin darkSchemeHighlight() {
-
+@mixin dark-sheme {
   /* syntax highlight colors from https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css */
   --highlight-pre-bg: #272822;
   --highlight-hll-bg: #272822;
@@ -87,13 +86,13 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  body:not(.color-scheme-light) {
-    @include darkSchemeHighlight();
+  html:not(.light-mode) {
+    @include dark-sheme;
   }
 }
 
-@media not (prefers-color-scheme: dark) {
-  body.color-scheme-dark {
-    @include darkSchemeHighlight();
+@media (prefers-color-scheme: light) {
+  html.dark-mode {
+    @include dark-sheme;
   }
 }
