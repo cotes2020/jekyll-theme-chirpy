@@ -57,14 +57,59 @@
   --timeline-node-bg: rgb(150, 152, 156);
 }
 
-@media (prefers-color-scheme: dark) {
-  body:not(.color-scheme-light) {
-    @include darkScheme();
+
+/* Light scheme prefered (= dark scheme not prefered)
+ * -> dark scheme triggered with <body class="color-scheme-dark">
+ */
+body.color-scheme-dark{
+  /* Dark scheme */
+  @include darkScheme();
+  // Hide element in dark color scheme
+  // (visible in light scheme)
+  .color-scheme-dark-hidden {
+    display: none;
+  }
+  .color-scheme-light-hidden {
+    display: initial;
+  }
+}
+body:not(.color-scheme-dark) {
+  /* Light scheme */
+  // Hide element in dark color scheme
+  // (visible in light scheme)
+  .color-scheme-light-hidden {
+    display: none;
+  }
+  .color-scheme-dark-hidden {
+    display: initial;
   }
 }
 
-@media not (prefers-color-scheme: dark) {
-  body.color-scheme-dark {
+@media (prefers-color-scheme: dark) {
+  /* Dark scheme prefered
+   * -> light scheme triggered with <body class="color-scheme-light">
+   */
+  body:not(.color-scheme-light) {
+    /* Dark scheme */
     @include darkScheme();
+    // Hide element in dark color scheme
+    // (visible in light scheme)
+    .color-scheme-dark-hidden {
+      display: none;
+    }
+    .color-scheme-light-hidden {
+      display: initial;
+    }
+  }
+  body.color-scheme-light {
+    /* Light scheme */
+    // Hide element in dark color scheme
+    // (visible in light scheme)
+    .color-scheme-light-hidden {
+      display: none;
+    }
+    .color-scheme-dark-hidden {
+      display: initial;
+    }
   }
 }
