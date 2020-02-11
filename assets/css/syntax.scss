@@ -165,7 +165,7 @@ div.language-terminal.highlighter-rouge td.rouge-code {
   padding: .8rem 1rem;
 }
 
-@media (prefers-color-scheme: light) {
+@mixin light-syntax-base {
   .highlight {
     -moz-box-shadow: inset 0 0 2px #c2c6cc;
     -webkit-box-shadow: inset 0 0 2px #c2c6cc;
@@ -178,5 +178,17 @@ div.language-terminal.highlighter-rouge td.rouge-code {
 
   code.highlighter-rouge {
     border: 1px solid #e9ecef;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html:not(.dark-mode) {
+    @include light-syntax-base;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html.light-mode {
+    @include light-syntax-base;
   }
 }

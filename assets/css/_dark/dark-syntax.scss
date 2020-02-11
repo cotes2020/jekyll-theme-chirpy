@@ -86,7 +86,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not(.light-mode) {
+  html:not(.light-mode) { /* could be html.dark-mode */
     @include dark-sheme;
   }
 }

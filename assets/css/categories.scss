@@ -64,25 +64,3 @@
   -webkit-transform: rotate(-90deg); /* Safari 3-8 */
   transform: rotate(-90deg);
 }
-
-@media (prefers-color-scheme: dark) {
-  .categories.card,
-  .list-group-item {
-    background-color: var(--card-bg);
-  }
-
-  .categories .card-header {
-    background-color: var(--card-header-bg);
-  }
-
-  .categories .list-group-item {
-    border-left: none;
-    border-right: none;
-    padding-left: 2rem;
-    border-color: var(--main-border);
-  }
-
-  .categories .list-group-item:last-child {
-    border-bottom-color: var(--card-bg);
-  }
-}
