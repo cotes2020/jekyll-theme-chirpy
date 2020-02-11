@@ -1,0 +1,101 @@
+<!--
+  Switch the mode between dark and light.
+
+  v2.1
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT License
+-->
+
+<i id="mode-toggle"></i>
+
+<script type="text/javascript">
+
+  class ModeToggle {
+    static get MODE_KEY() { return "mode"; }
+    static get DARK_MODE() { return "dark"; }
+    static get LIGHT_MODE() { return "light"; }
+
+    constructor() {
+      if (this.isSysDarkMode) {
+        ModeToggle.setLightIcon();
+      } else {
+        ModeToggle.setDarkIcon();
+      }
+
+      if (this.mode != null) {
+        if (this.mode == ModeToggle.DARK_MODE) {
+          ModeToggle.setDark();
+        } else if (this.mode == ModeToggle.LIGHT_MODE) {
+          ModeToggle.setLight();
+        }
+      }
+
+      var self = this;
+
+      /* always follow system prefers */
+      this.sysDarkPrefers.addListener(function() {
+        if (self.isSysDarkMode) {
+          ModeToggle.setDark();
+        } else {
+          ModeToggle.setLight();
+        }
+        ModeToggle.clearMode();
+      });
+
+    } /* constructor() */
+
+    static setDarkIcon() {
+      $("#mode-toggle").removeClass("fas fa-sun").addClass("fas fa-moon");
+    }
+
+    static setLightIcon() {
+      $("#mode-toggle").removeClass("fas fa-moon").addClass("fas fa-sun");
+    }
+
+    static setDark() {
+      ModeToggle.setLightIcon();
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+      $('html').removeClass('light-mode').addClass('dark-mode');
+    }
+
+    static setLight() {
+      ModeToggle.setDarkIcon();
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+      $('html').removeClass('dark-mode').addClass('light-mode');
+    }
+
+    static clearMode() {
+      sessionStorage.removeItem(ModeToggle.MODE_KEY);
+    }
+
+    get sysDarkPrefers() {
+      return window.matchMedia("(prefers-color-scheme: dark)");
+    }
+
+    get isSysDarkMode() {
+      return this.sysDarkPrefers.matches;
+    }
+
+    get mode() {
+      return sessionStorage.getItem(ModeToggle.MODE_KEY);
+    }
+
+    flipMode() {
+      if ((this.mode == null && this.isSysDarkMode) ||
+          this.mode == ModeToggle.DARK_MODE) {
+        ModeToggle.setLight();
+      } else { /* light mode or default-light */
+        ModeToggle.setDark();
+      }
+    }
+
+  } /* ModeToggle */
+
+  let toggle = new ModeToggle();
+
+  $("#mode-toggle").click(function() {
+    toggle.flipMode();
+  });
+
+</script>
