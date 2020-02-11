@@ -46,6 +46,38 @@
   --tb-odd-bg: rgba(52, 53, 42, 0.52); /* odd rows of the posts' table */
   --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
 
+  /* posts' toc */
+  nav[data-toggle=toc] .nav-link.active,
+  nav[data-toggle=toc] .nav-link.active:focus,
+  nav[data-toggle=toc] .nav-link.active:hover,
+  nav[data-toggle=toc] .nav>li>a:focus,
+  nav[data-toggle=toc] .nav>li>a:hover {
+    /* Override BS */
+    color: var(--toc-highlight)!important;
+    border-left-color: var(--toc-highlight)!important;
+  }
+
+  /* categories */
+  .categories.card,
+  .list-group-item {
+    background-color: var(--card-bg);
+  }
+
+  .categories .card-header {
+    background-color: var(--card-header-bg);
+  }
+
+  .categories .list-group-item {
+    border-left: none;
+    border-right: none;
+    padding-left: 2rem;
+    border-color: var(--main-border);
+  }
+
+  .categories .list-group-item:last-child {
+    border-bottom-color: var(--card-bg);
+  }
+
   /* tags */
   --tag-border: rgb(59, 79, 88);
   --tag-shadow: rgb(32, 33, 33);
@@ -55,67 +87,27 @@
 
   /* archives */
   --timeline-node-bg: rgb(150, 152, 156);
+
+  #archives li:nth-child(odd) {
+    background-image: linear-gradient(to left,
+      rgb(26, 26, 30), rgb(39, 39, 45), rgb(39, 39, 45), rgb(39, 39, 45), rgb(26, 26, 30));
+  }
+
 }
 
 /* Light scheme prefered (= dark scheme not prefered)
  * -> dark scheme triggered with <html class="dark-mode">
  */
 html.dark-mode {
-  /* Dark scheme */
   @include dark-scheme;
-
-  // Hide element in dark color scheme
-  // (visible in light scheme)
-  .dark-mode-hidden {
-    display: none;
-  }
-
-  .light-mode-hidden {
-    display: initial;
-  }
-}
-
-html:not(.dark-mode) {
-  // Hide element in dark color scheme
-  // (visible in light scheme)
-  .light-mode-hidden {
-    display: none;
-  }
-
-  .dark-mode-hidden {
-    display: initial;
-  }
 }
 
 
 @media (prefers-color-scheme: dark) {
   /* Dark scheme prefered
-   * -> light scheme triggered with <html class="light-mode">
+   *  -> light scheme triggered with <html class="light-mode">
    */
   html:not(.light-mode) {
-    /* Dark scheme */
     @include dark-scheme;
-    // Hide element in dark color scheme
-    // (visible in light scheme)
-    .dark-mode-hidden {
-      display: none;
-    }
-
-    .light-mode-hidden {
-      display: initial;
-    }
   }
-
-  html.light-mode {
-    /* Light scheme */
-    // Hide element in dark color scheme
-    // (visible in light scheme)
-    .light-mode-hidden {
-      display: none;
-    }
-    .dark-mode-hidden {
-      display: initial;
-    }
-  }
-
 }

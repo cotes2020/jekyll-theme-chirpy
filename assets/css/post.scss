@@ -269,15 +269,3 @@
     margin-right: calc((100% - 1150px) / 8 + 300px);
   }
 }
-
-@media (prefers-color-scheme: dark) {
-  nav[data-toggle=toc] .nav-link.active,
-  nav[data-toggle=toc] .nav-link.active:focus,
-  nav[data-toggle=toc] .nav-link.active:hover,
-  nav[data-toggle=toc] .nav>li>a:focus,
-  nav[data-toggle=toc] .nav>li>a:hover {
-    /* Override BS */
-    color: var(--toc-highlight)!important;
-    border-left-color: var(--toc-highlight)!important;
-  }
-}
