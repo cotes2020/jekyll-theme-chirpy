@@ -649,7 +649,7 @@ h2, h3, h4, sup {
 }
 
 .footnotes ol>li:target>p {
-  background-color: lightcyan;
+  background-color: var(--footnote-target-bg, lightcyan);
   width: fit-content;
   -webkit-transition: background-color 1.5s ease-in-out; /* Safari prior 6.1 */
   transition: background-color 1.5s ease-in-out;
@@ -657,14 +657,14 @@ h2, h3, h4, sup {
 
 a.footnote {
   margin: 0 .2em;
+  border-bottom-style: none !important;
   -webkit-transition: background-color 1.5s ease-in-out; /* Safari prior 6.1 */
   transition: background-color 1.5s ease-in-out;
 }
 
 sup:target>a.footnote {
-  background-color: lightcyan;
+  background-color: var(--footnote-target-bg, lightcyan);
   padding: 0 2px;
-  outline: thin dotted;
 }
 
 a.reversefootnote {
