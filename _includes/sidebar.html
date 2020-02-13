@@ -56,6 +56,11 @@
 </div><!-- #nav-wrapper -->
 
 <div class="contact d-flex justify-content-around mt-4">
+
+  <span id="mode-toggle-wrapper" class="d-flex justify-content-center align-items-center">
+    {% include dark-mode-toggle.html %}
+  </span>
+
   <a href="https://github.com/{{ site.github.username }}" target="_blank">
     <i class="fab fa-github-alt"></i>
   </a>
@@ -69,4 +74,5 @@
   <a href="{{ site.baseurl }}/feed.xml" target="_blank">
     <i class="fas fa-rss"></i>
   </a>
+
 </div>
