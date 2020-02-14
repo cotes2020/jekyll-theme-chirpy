@@ -57,9 +57,11 @@
 
 <div class="sidebar-bottom d-flex justify-content-around mt-4">
 
+  {% if site.theme_mode == "dual" %}
   <span id="mode-toggle-wrapper" class="d-flex justify-content-center align-items-center">
     {% include mode-toggle.html %}
   </span>
+  {% endif %}
 
   <a href="https://github.com/{{ site.github.username }}" target="_blank">
     <i class="fab fa-github-alt"></i>
