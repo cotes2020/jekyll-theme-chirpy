@@ -100,19 +100,43 @@
 
 }
 
-/* Light scheme prefered (= dark scheme not prefered)
- * -> dark scheme triggered with <html class="dark-mode">
- */
-html.dark-mode {
-  @include dark-scheme;
+
+@mixin light-mode-invisible {
+  *[light-mode-invisible] {
+      display: none;
+  }
 }
+
+@mixin dark-mode-invisible {
+  *[dark-mode-invisible] {
+      display: none;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+
+  html:not([mode]), html[mode=light] {
+    @include light-mode-invisible;
+  }
+
+  html[mode=dark] {
+    @include dark-scheme;
+    @include dark-mode-invisible;
+  }
+
+} // light prefers
 
 
 @media (prefers-color-scheme: dark) {
-  /* Dark scheme prefered
-   *  -> light scheme triggered with <html class="light-mode">
-   */
-  html:not(.light-mode) {
+
+  html:not([mode]), html[mode=dark] {
     @include dark-scheme;
+    @include dark-mode-invisible;
   }
-}
+
+  html[mode=light] {
+    @include light-mode-invisible;
+  }
+
+} // dark prefers
+
