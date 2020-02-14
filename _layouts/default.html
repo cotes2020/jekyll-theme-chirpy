@@ -8,7 +8,14 @@ layout: compress
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+
+{% capture prefer_mode %}
+  {% if site.theme_mode != "dual" %}
+    mode="{{ site.theme_mode }}"
+  {% endif %}
+{% endcapture %}
+
+<html lang="en" {{ prefer_mode }} >
 
   {% include head.html %}
 
