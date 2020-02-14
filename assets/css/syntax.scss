@@ -182,13 +182,13 @@ div.language-terminal.highlighter-rouge td.rouge-code {
 }
 
 @media (prefers-color-scheme: light) {
-  html:not(.dark-mode) {
+  html:not([mode=dark]) {
     @include light-syntax-base;
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  html.light-mode {
+  html[mode=light] {
     @include light-syntax-base;
   }
 }
