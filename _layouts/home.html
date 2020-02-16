@@ -24,7 +24,7 @@ layout: page
     <div class="post-meta text-muted pt-1">
       <!-- posted date -->
       <i class="far fa-clock fa-fw"></i>
-      <span class="timeago" data-toggle="tooltip" title="{{ post.date | date: TOOLTIP_DATE }}">
+      <span class="timeago" data-toggle="tooltip" data-placement="auto" title="{{ post.date | date: TOOLTIP_DATE }}">
       {{ post.date | date: POST_DATE }}
       <i class="unloaded">{{ post.date | date_to_xmlschema }}</i>
       </span>
