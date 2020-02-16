@@ -11,6 +11,19 @@
 @import "_fonts";
 @import "_dark/dark-main";
 
+@mixin sidebar-icon {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.35s ease-in-out;
+  user-select: none;
+}
+
+@mixin icon-round($diameter) {
+  border: 1px solid;
+  border-radius: 50%;
+  width: $diameter;
+  height: $diameter;
+}
+
 html, body {
   height: 100%;
   font-size: 16px;
@@ -49,8 +62,7 @@ body {
 }
 
 #sidebar a {
-  color: rgba(255, 255, 255, 0.5);
-  transition: color 0.35s ease-in-out;
+  @include sidebar-icon;
 }
 
 #sidebar .nav-item {
@@ -237,17 +249,20 @@ body {
 }
 
 #mode-toggle-wrapper {
-  color: rgb(103, 107, 109);
+  @include sidebar-icon;
   font-size: 1.05rem;
-  user-select: none;
-  transition: color 0.35s ease-in-out;
+  text-align: center;
 }
 
-#sidebar #mode-toggle-wrapper>i::after {
+#mode-toggle-wrapper::after {
   content: "";
-  color: #525354;
-  border-right: 1px solid;
-  padding-left: .6rem;
+  background: #525354;
+  width: 1px;
+  height: 8px;
+  margin-left: 7px;
+  margin-right: -6px;
+  margin-bottom: 3px;
+  display: inline-block;
 }
 
 
@@ -1370,10 +1385,7 @@ table tbody td {
   }
 
   #sidebar .nav-link>i {
-    border: 1px solid;
-    border-radius: 50%;
-    width: 1.65rem;
-    height: 1.65rem;
+    @include icon-round(1.65rem);
     line-height: 1rem;
     font-size: .6rem;
     padding: .5em 0 0 .1em;
@@ -1382,7 +1394,7 @@ table tbody td {
 
   .sidebar-bottom {
     margin-left: 3.5rem;
-    margin-right: 4.5rem;
+    margin-right: 3rem;
     font-size: 1.3rem;
     padding-bottom: 1rem;
   }
@@ -1403,7 +1415,17 @@ table tbody td {
   }
 
   #mode-toggle-wrapper {
-    font-size: 1.6rem;
+    font-size: .9rem;
+  }
+
+  #mode-toggle-wrapper>i {
+    @include icon-round(2rem);
+    padding-top: 0.5rem;
+  }
+
+  #mode-toggle-wrapper::after {
+    height: 14px;
+    margin-bottom: 0;
   }
 
   footer>div.d-flex {
