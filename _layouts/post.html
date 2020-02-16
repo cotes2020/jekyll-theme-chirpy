@@ -66,10 +66,11 @@ layout: default
         {% endif %}
       </div>
 
-      <div class="post-tail text-muted">
+      <div class="post-tail-wrapper text-muted">
+
         <!-- Tags -->
         {% if page.tags.size > 0 %}
-        <div class="mb-4">
+        <div class="pt-5">
           {% for tag in page.tags %}
           <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase | url_encode }}/"
             class="post-tag no-text-decoration" >
@@ -78,9 +79,31 @@ layout: default
           {% endfor %}
           </div>
         {% endif %}
+
+        <div class="post-tail-bottom
+          d-flex justify-content-between align-items-center pt-5 pb-2">
+
+          {% if site.data.license.type %}
+          <div class="license-wrapper">
+            <span class="license-text ml-1 mr-1">This post is licensed under
+              <a href="{{ site.data.license.link }}">
+              {{ site.data.license.type }}
+              {% for icon in site.data.license.icons %}
+                <i class="{{ icon }}"></i>
+              {% endfor %}
+              </a>
+            </span>
+          </div>
+          {% endif %}
+
+          {% include post-sharing.html %}
+
+        </div><!-- .post-tail-bottom -->
+
       </div><!-- div.post-tail -->
 
     </div> <!-- .post -->
+
   </div> <!-- #post-wrapper -->
 
   {% include panel.html %}
@@ -91,31 +114,14 @@ layout: default
   <div id="post-extend-wrapper" class="col-12 col-lg-11 col-xl-8">
 
     <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+
       {% include related-posts.html %}
 
-      <div class="post-navigation d-flex justify-content-between">
-      {% if page.previous.url %}
-        <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary">
-          <p>{{ page.previous.title }}</p>
-      {% else %}
-        <a href="javascript:;" class="btn btn-outline-primary disabled">
-          <p>-</p>
-      {% endif %}
-        </a>
+      {% include post-nav.html %}
 
-      {% if page.next.url %}
-        <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary">
-          <p>{{ page.next.title }}</p>
-      {% else %}
-        <a href="javascript:;" class="btn btn-outline-primary disabled">
-          <p>-</p>
+      {% if site.disqus.comments and page.comments %}
+        {% include disqus.html %}
       {% endif %}
-        </a>
-      </div> <!-- div.post-navigation -->
-
-    {% if site.disqus.comments and page.comments %}
-      {% include disqus.html %}
-    {% endif %}
 
     </div> <!-- .pl-1 pr-1 -->
 

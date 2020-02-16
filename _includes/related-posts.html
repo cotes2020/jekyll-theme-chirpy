@@ -43,7 +43,7 @@
   {% assign score_list = score_list | sort | reverse %}
   {% assign count = 0 %}
   <div id="related-posts" class="mt-4 mb-2 mb-sm-4 pb-2">
-    <h3 class="pt-2 mt-1 mb-4" data-toc-skip>{{ site.data.label.post.relate_posts }}</h3>
+    <h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>{{ site.data.label.post.relate_posts }}</h3>
     <div class="card-deck mb-4">
     {% for score_item in score_list %}
       {% assign data = score_item | split: ":" %}
