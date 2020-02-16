@@ -214,13 +214,13 @@ and enjoy!
 
 #### Option 3: Build with Docker
 
-If you don't want to install the Python and Ruby dependencies, you can run and build inside a Docker container.
+If you don't want to install the Python and Ruby dependencies, you can run and build the website inside a Docker container.
 
 1. To build the Docker image, run `Docker build -t chirpy-build .`
 
 2. To run locally, just type `Docker run --rm -v ${PWD}:/app chirpy-build tools/run.sh`
 
-3. To build locally, type `Docker run --rm -v ${PWD}:/app chirpy-build tools/build.sh`
+3. To build locally, type `Docker run --rm -v ${PWD}:/app chirpy-build tools/build.sh`. The resulting files are in the _site folder
 
 ### Documentation
 
