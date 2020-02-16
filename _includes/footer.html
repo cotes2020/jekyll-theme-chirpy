@@ -7,20 +7,26 @@
 -->
 
 <footer class="d-flex w-100 justify-content-center">
-  <div class="d-flex justify-content-between  align-items-center">
-    <div class="copyright">
-      {% assign first = site.first_run | plus: 0 %}
-      {% assign last = 'now' | date: "%Y" | plus: 0 %}
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="footer-left">
       <p class="mb-0">
-        © {% if last > first %}{{ first }}-{% endif %}{{-last-}}
-        <a href="{{ site.social.links[0] }}" class="ml-1">{{ site.social.name }}</a>.
-        <br>Powered by <a href="https://jekyllrb.com" target="_blank">Jekyll</a> with theme <a href="https://github.com/cotes2020/jekyll-theme-chirpy/">Chirpy</a>.
+        © {{ 'now' | date: "%Y" }}
+        <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
+        {% if site.data.license.statment %}
+        <span data-toggle="tooltip" data-placement="top"
+          title="{{ site.data.license.statment }}">Some rights reserved</span>.
+        {% endif %}
       </p>
     </div>
-    <div class="license">
+
+    <div class="footer-right">
       <p class="mb-0">
-        The blog posts on this site are licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+        Powered by
+        <a href="https://jekyllrb.com" target="_blank">Jekyll</a>
+        with theme
+        <a href="https://github.com/cotes2020/jekyll-theme-chirpy/">Chirpy</a>.
       </p>
     </div>
+
   </div> <!-- div.d-flex -->
 </footer>
