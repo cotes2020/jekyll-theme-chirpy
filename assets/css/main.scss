@@ -720,6 +720,7 @@ p>a, span>a,
 .post a:hover code,
 footer a:hover,
 #post-wrapper .post-content a:hover,
+.license-wrapper .license-text a:hover,
 #page .post-content a:hover,
 #access-lastmod a:hover {
   color: #d2603a;
@@ -798,9 +799,12 @@ table tbody td {
   background: var(--tag-bg, rgba(0, 0, 0, 0.075));
   border-radius: .34rem;
   padding: 0 .4rem;
-  margin: 0 .1rem;
   color: #818182;
   line-height: 1.6rem;
+}
+
+.post-tag:not(:first-child) {
+  margin-left: .2rem;
 }
 
 .tag:hover,

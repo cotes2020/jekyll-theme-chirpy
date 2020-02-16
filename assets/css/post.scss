@@ -21,7 +21,7 @@
   transform: translateX(-50%);
 }
 
-.post-tail {
+.post-tail-wrapper {
   margin-top: 3.5rem;
   border-bottom: 1px double var(--main-border, #e9ecef);
   font-size: 0.85rem;
@@ -196,6 +196,80 @@
   min-height: 2rem;
 }
 
+.post-tail-bottom a {
+  color: inherit;
+}
+
+.share-wrapper a:hover,
+.share-wrapper i:hover {
+  text-decoration: none;
+  color: var(--link-color, #2a408e)!important;
+}
+
+.share-wrapper {
+  vertical-align: middle;
+  user-select: none;
+}
+
+.share-label {
+  font-family: 'Oswald', sans-serif;
+}
+
+.share-label::after {
+  content: ":";
+}
+
+.share-wrapper .share-icon {
+  font-size: 1.2rem;
+}
+
+.share-wrapper .share-icon .fab.fa-twitter {
+  color: var(--btn-sharing, rgba(29,161,242,1.00));
+}
+
+.share-wrapper .share-icon .fab.fa-facebook-square {
+  color: var(--btn-sharing, rgb(66, 95, 156));
+}
+
+.share-wrapper .share-icon .fab.fa-telegram {
+  color: var(--btn-sharing, rgb(39, 159, 217));
+}
+
+.share-wrapper .share-icon .fab.fa-weibo {
+  color: var(--btn-sharing, rgb(229, 20, 43));
+}
+
+.share-wrapper .fas.fa-link {
+  color: var(--btn-sharing, rgb(171, 171, 171));
+}
+
+.license-wrapper .license-text>a {
+  font-weight: 600;
+}
+
+.license-wrapper {
+  line-height: 1.2rem;
+}
+
+.license-wrapper i {
+  font-weight: 400;
+}
+
+.license-wrapper span:last-child {
+  font-size: .85rem;
+}
+
+@media all and (max-width: 576px) {
+  .post-tail-bottom {
+    -ms-flex-wrap: wrap!important;
+    flex-wrap: wrap!important;
+  }
+
+  .post-tail-bottom>div:first-child {
+    margin-bottom: 1rem;
+  }
+}
+
 @media all and (max-width: 768px) {
   .post img {
     max-width: calc(100% + 1rem);
@@ -241,6 +315,7 @@
     margin-left: -.5rem;
     margin-right: -.5rem;
   }
+
 }
 
 /*
