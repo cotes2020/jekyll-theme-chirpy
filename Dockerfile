@@ -15,5 +15,3 @@ RUN gem install jekyll -v3.8
 RUN bundle install
 
 CMD ["/bin/sh"]
-
-ENTRYPOINT ["./tools/run.sh", ""]

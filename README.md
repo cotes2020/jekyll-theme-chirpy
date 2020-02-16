@@ -212,6 +212,16 @@ The generated static files will be placed in the root of `/path/to/local/project
 
 and enjoy!
 
+#### Option 3: Build with Docker
+
+If you don't want to install the Python and Ruby dependencies, you can run and build inside a Docker container.
+
+1. To build the Docker image, run `Docker build -t chirpy-build .`
+
+2. To run locally, just type `Docker run --rm -v ${PWD}:/app chirpy-build tools/run.sh`
+
+3. To build locally, type `Docker run --rm -v ${PWD}:/app chirpy-build tools/build.sh`
+
 ### Documentation
 
 For more details and the better reading experience, please check out the [tutorial in demo site](https://chirpy.cotes.info/categories/tutorial/). In the meanwhile, a copy of the tutorial is also available on the [Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
