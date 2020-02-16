@@ -6,5 +6,5 @@
  * MIT License
 */
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip({placement: "auto"});
+  $('[data-toggle="tooltip"]').tooltip();
 })
