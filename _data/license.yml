@@ -1,0 +1,18 @@
+#  License data.
+#
+#  v2.1
+#  https://github.com/cotes2020/jekyll-theme-chirpy
+#  © 2020 Cotes Chung
+#  MIT Licensed
+
+icons:
+  - "fab fa-creative-commons"
+  - "fab fa-creative-commons-by"
+
+type: "CC BY 4.0"
+
+statment: >-
+  The blog posts on this site are licensed
+  under the Creative Commons Attribution 4.0 International (CC BY 4.0) License.
+
+link: "https://creativecommons.org/licenses/by/4.0/"
