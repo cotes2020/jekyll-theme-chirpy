@@ -16,7 +16,8 @@ layout: default
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published Date and Categoreis -->
         <div>
-          <span class="timeago" data-toggle="tooltip" title="{{ page.date | date: TOOLTIP_DATE }}">
+          <span class="timeago" data-toggle="tooltip" data-placement="auto"
+           title="{{ page.date | date: TOOLTIP_DATE }}">
             {{ page.date | date: POST_DATE }}
             <i class="unloaded">{{ page.date | date_to_xmlschema }}</i>
           </span>
@@ -31,7 +32,9 @@ layout: default
         {% if page.seo.date_modified > page.date %}
         <div>
           Updated
-          <span class="timeago lastmod" data-toggle="tooltip" title="{{ page.seo.date_modified | date: TOOLTIP_DATE }}">
+          <span class="timeago lastmod"
+            data-toggle="tooltip" data-placement="auto"
+             title="{{ page.seo.date_modified | date: TOOLTIP_DATE }}">
             {{ page.seo.date_modified | date: POST_DATE }}
             <i class="unloaded">{{ page.seo.date_modified | date_to_xmlschema}}</i>
           </span>
@@ -53,7 +56,9 @@ layout: default
         {% endif %}
         <!-- Add lozad class into image tags. see: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
         {% if content contains '<img src=' %}
-          {% capture loading %}{{ "/assets/img/commons/loading.png" | relative_url }}{% endcapture %}
+          {% capture loading %}
+           {{ "/assets/img/commons/loading.png" | relative_url }}
+          {% endcapture %}
           {% assign replacement = '<img class="lozad" src=' | append: loading | append: ' data-src=' %}
           {{ content | replace: '<img src=', replacement }}
         {% else %}
