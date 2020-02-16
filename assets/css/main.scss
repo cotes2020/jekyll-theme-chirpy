@@ -415,11 +415,13 @@ body {
 
 /*--- main wrapper ---*/
 
+$footer-height: 5rem;
+
 #main-wrapper {
-  background-color: var(--main-wrapper-bg, white);//rgb(27, 27, 30);
+  background-color: var(--main-wrapper-bg, white);
   position: relative;
   min-height: 100%;
-  padding-bottom: 6rem; /* equals to or greatter than footer's height */
+  padding-bottom: $footer-height;
   padding-left: 0;
   padding-right: 0;
   margin-left: 260px;
@@ -452,18 +454,20 @@ body {
 footer {
   position: absolute;
   bottom: 0;
-  height: 6rem; /* see the height of #main-wrapper */
-  padding: 1rem;
+  padding: 0 1rem;
+  height: $footer-height; /* see the height of #main-wrapper */
   font-size: 0.8rem;
   color: #7a7b7d;
-  background-color: var(--footer-bg, #f3f3f3);
-  border-top: 1px solid var(--footer-border, #f3f3f3);
+  background-color: var(--main-wrapper-bg, #ffffff);
 }
+
 
 footer>div.d-flex {
   line-height: 1.2rem;
   width: 95%;
   max-width: 1035px;
+  border-top: 1px solid var(--footer-border, #f3f3f3);
+  margin-bottom: 1rem;
 }
 
 footer a:link,
@@ -475,12 +479,15 @@ footer>.d-flex>div {
   width: 350px;
 }
 
-footer .copyright a,
-footer .license a {
+footer .footer-left a,
+footer .footer-right a {
   font-weight: 600;
-  color: inherit;
+  color: var(---footer-link, inherit);
 }
 
+footer .footer-right {
+  text-align: right;
+}
 
 /*--- Panels ---*/
 
@@ -859,9 +866,10 @@ table tbody td {
   text-decoration: none;
 }
 
-div.tooltip-inner { /* Overrided BS4 Tooltip */
+.tooltip-inner { /* Overrided BS4 Tooltip */
   font-size: .7rem;
   max-width: 220px;
+  text-align: left;
 }
 
 .disabled {
@@ -883,10 +891,6 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 /*--- Responsive Design ---*/
 
 @media all and (max-width: 576px) {
-
-  #main-wrapper {
-    padding-bottom: 10rem; /* footer height */
-  }
 
   #main>div.row:first-child>div:first-child {
     min-height: calc(100vh - 3rem - 10rem); /* topbar is 3rem and footer is 10rem */
@@ -922,20 +926,31 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
     word-wrap: break-word;
   }
 
-  /* footer and #main-wrapper expand vertical */
+  $footer-height: 6rem;
+
+  #main-wrapper {
+    padding-bottom: $footer-height;
+  }
+
   footer {
-    height: 10rem;
+    height: $footer-height;
   }
 
   footer>div.d-flex {
+    width: 90%;
+    padding: 1.5rem;
     flex-wrap: wrap;
     justify-content: left!important;
     -ms-flex-pack: distribute!important;
     justify-content: space-around!important;
   }
 
-}
+  footer .footer-left,
+  footer .footer-right {
+    text-align: center;
+  }
 
+}
 
 /* Sidebar is visibal */
 @media all and (min-width: 831px) {
@@ -1388,7 +1403,7 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
   }
 
   footer>div.d-flex {
-    max-width: 1130px;
+    max-width: 1150px;
   }
 
   #search-result-wrapper {
@@ -1417,10 +1432,6 @@ div.tooltip-inner { /* Overrided BS4 Tooltip */
 
   footer {
     padding-right: calc(100% - 350px - 1180px);
-  }
-
-  footer>div.d-flex {
-    max-width: 1150px;
   }
 
   #back-to-top {
