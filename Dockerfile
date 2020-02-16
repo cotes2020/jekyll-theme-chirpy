@@ -16,4 +16,4 @@ RUN bundle install
 
 CMD ["/bin/sh"]
 
-ENTRYPOINT ["./tools/run.sh", "-h"]
+ENTRYPOINT ["./tools/run.sh", ""]
