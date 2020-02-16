@@ -30,7 +30,7 @@
   <ul class="nav flex-column">
   {% assign page_urls = page.url | split: "/" %}
 
-  {% for item in site.data.label.tabs %}
+  {% for item in site.data.tabs %}
     {% assign ref = site.baseurl | append: "/" %}
 
     {% if item.path %}
