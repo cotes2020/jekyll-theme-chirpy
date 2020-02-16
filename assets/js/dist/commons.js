@@ -10,3 +10,4 @@
 {% include_relative _commons/topbar-switch.min.js %}
 {% include_relative _commons/topbar-title.min.js %}
 {% include_relative _commons/tooltip.min.js %}
+{% include_relative _commons/copy-link.min.js %}

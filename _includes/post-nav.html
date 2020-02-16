@@ -1,0 +1,28 @@
+<!--
+  Navigation buttons at the bottom of the post.
+
+  v2.1
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT License
+-->
+
+<div class="post-navigation d-flex justify-content-between">
+  {% if page.previous.url %}
+  <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary">
+    <p>{{ page.previous.title }}</p>
+  {% else %}
+  <a href="javascript:;" class="btn btn-outline-primary disabled">
+    <p>-</p>
+  {% endif %}
+  </a>
+
+  {% if page.next.url %}
+  <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary">
+    <p>{{ page.next.title }}</p>
+  {% else %}
+    <a href="javascript:;" class="btn btn-outline-primary disabled">
+    <p>-</p>
+  {% endif %}
+  </a>
+</div>
