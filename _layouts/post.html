@@ -28,19 +28,6 @@ layout: default
           {% endfor %}
         </div>
 
-        <!-- lastmod -->
-        {% if page.seo.date_modified > page.date %}
-        <div>
-          Updated
-          <span class="timeago lastmod"
-            data-toggle="tooltip" data-placement="auto"
-             title="{{ page.seo.date_modified | date: TOOLTIP_DATE }}">
-            {{ page.seo.date_modified | date: POST_DATE }}
-            <i class="unloaded">{{ page.seo.date_modified | date_to_xmlschema}}</i>
-          </span>
-        </div>
-        {% endif %}
-
         <!-- page views -->
         {% if site.google_analytics.pv %}
         <div>
@@ -68,9 +55,22 @@ layout: default
 
       <div class="post-tail-wrapper text-muted">
 
+        <!-- lastmod -->
+        {% if page.seo.date_modified > page.date %}
+        <div>
+          Updated
+          <span class="timeago lastmod"
+            data-toggle="tooltip" data-placement="auto"
+             title="{{ page.seo.date_modified | date: TOOLTIP_DATE }}">
+            {{ page.seo.date_modified | date: POST_DATE }}
+            <i class="unloaded">{{ page.seo.date_modified | date_to_xmlschema}}</i>
+          </span>
+        </div>
+        {% endif %}
+
         <!-- Tags -->
         {% if page.tags.size > 0 %}
-        <div class="pt-5">
+        <div class="pt-3">
           {% for tag in page.tags %}
           <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase | url_encode }}/"
             class="post-tag no-text-decoration" >
@@ -115,13 +115,13 @@ layout: default
 
     <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
 
-      {% include related-posts.html %}
-
       {% include post-nav.html %}
 
       {% if site.disqus.comments and page.comments %}
         {% include disqus.html %}
       {% endif %}
+
+      {% include related-posts.html %}
 
     </div> <!-- .pl-1 pr-1 -->
 
