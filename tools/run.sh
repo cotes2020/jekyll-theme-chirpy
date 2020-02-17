@@ -37,6 +37,10 @@ help() {
 
 
 cleanup() {
+  if [[ -d _site || -d .jekyll-cache ]]; then
+    jekyll clean
+  fi
+
   rm -rf ${WORK_DIR}/${CONTAINER}
   ps aux | grep fswatch | awk '{print $2}' | xargs kill -9 > /dev/null 2>&1
 }
