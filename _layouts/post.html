@@ -83,14 +83,15 @@ layout: default
         <div class="post-tail-bottom
           d-flex justify-content-between align-items-center pt-5 pb-2">
 
-          {% if site.data.license.type %}
+          {% if site.data.right.license %}
           <div class="license-wrapper">
-            <span class="license-text ml-1 mr-1">This post is licensed under
-              <a href="{{ site.data.license.link }}">
-              {{ site.data.license.type }}
-              {% for icon in site.data.license.icons %}
+            <span class="license-text ml-1 mr-1">
+              {{ site.data.right.license.prompt }}
+              <a href="{{ site.data.right.license.link }}">
+                {{ site.data.right.license.name }}
+                {% for icon in site.data.right.license.icons %}
                 <i class="{{ icon }}"></i>
-              {% endfor %}
+                {% endfor %}
               </a>
             </span>
           </div>
