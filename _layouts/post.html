@@ -16,7 +16,7 @@ layout: default
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published Date and Categoreis -->
         <div>
-          <span class="timeago" data-toggle="tooltip" data-placement="auto"
+          <span class="timeago" data-toggle="tooltip" data-placement="bottom"
            title="{{ page.date | date: TOOLTIP_DATE }}">
             {{ page.date | date: POST_DATE }}
             <i class="unloaded">{{ page.date | date_to_xmlschema }}</i>
@@ -60,7 +60,7 @@ layout: default
         <div>
           Updated
           <span class="timeago lastmod"
-            data-toggle="tooltip" data-placement="auto"
+            data-toggle="tooltip" data-placement="top"
              title="{{ page.seo.date_modified | date: TOOLTIP_DATE }}">
             {{ page.seo.date_modified | date: POST_DATE }}
             <i class="unloaded">{{ page.seo.date_modified | date_to_xmlschema}}</i>
