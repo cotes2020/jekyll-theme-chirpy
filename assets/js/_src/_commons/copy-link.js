@@ -6,8 +6,9 @@
 * MIT License
 */
 
-function copyLink() {
-  var url = window.location.href;
+function copyLink(url) {
+  if (!url || 0 === url.length)
+  url = window.location.href;
   var $temp = $("<input>");
 
   $("body").append($temp);
