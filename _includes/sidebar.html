@@ -55,12 +55,13 @@
 
 </div><!-- #nav-wrapper -->
 
-<div class="sidebar-bottom d-flex justify-content-around mt-4">
+<div class="sidebar-bottom d-flex flex-wrap justify-content-around mt-4">
 
   {% if site.theme_mode == "dual" %}
   <span id="mode-toggle-wrapper">
     {% include mode-toggle.html %}
   </span>
+  <span class="icon-border"></span>
   {% endif %}
 
   <a href="https://github.com/{{ site.github.username }}" target="_blank">

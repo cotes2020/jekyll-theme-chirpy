@@ -15,6 +15,7 @@
   color: rgba(255, 255, 255, 0.5);
   transition: color 0.35s ease-in-out;
   user-select: none;
+  margin: 0 .25rem;
 }
 
 @mixin icon-round($diameter) {
@@ -63,6 +64,10 @@ body {
 
 #sidebar a {
   @include sidebar-icon;
+}
+
+#sidebar .sidebar-bottom .icon-border+a { // the icon behide mode-toggle
+  margin-left: .1rem;
 }
 
 #sidebar .nav-item {
@@ -234,35 +239,38 @@ body {
   margin-top: 2rem;
 }
 
-.sidebar-bottom {
+
+#sidebar .sidebar-bottom {
   font-size: 1.2rem;
-  margin: 2rem 2.5rem;
-  flex-shrink: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-shrink: 0;
-  /*box-shadow: inset 0 0 0.25em 0 rgba(0, 0, 0, 0.22);*/
-}
+  margin: 2rem 2.5rem 1.6rem;
 
-#sidebar .sidebar-bottom a:hover,
-#sidebar #mode-toggle-wrapper:hover {
-  color: #fff;
-}
+  a {
+    margin-bottom: .5rem; // icons may have multi lines
+  }
 
-#mode-toggle-wrapper {
-  @include sidebar-icon;
-  font-size: 1.05rem;
-  text-align: center;
-}
+  a:hover, #mode-toggle-wrapper>i:hover {
+    color: #fff;
+  }
 
-#mode-toggle-wrapper::after {
-  content: "";
-  background: #525354;
-  width: 1px;
-  height: 8px;
-  margin-left: 7px;
-  margin-right: -6px;
-  margin-bottom: 3px;
-  display: inline-block;
+  #mode-toggle-wrapper {
+    i {
+      @include sidebar-icon;
+      margin-right: 0;
+      font-size: 1.05rem;
+      text-align: center;
+      position: relative;
+      bottom: 1px;
+    }
+  }
+
+  .icon-border {
+    background: #525354;
+    width: 1px;
+    height: 8px;
+    margin-top: .6rem;
+    margin-left: .25rem;
+    margin-right: .25rem;
+  }
 }
 
 
@@ -1154,12 +1162,10 @@ table tbody td {
     margin-right: 1rem;
   }
 
-  .sidebar-bottom a {
-    padding: 0 0.6rem;
-  }
+  #sidebar .sidebar-bottom {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 
-  #mode-toggle-wrapper {
-    padding-left: 1.2rem;
   }
 
   #main-wrapper {
@@ -1392,27 +1398,23 @@ table tbody td {
     display: inline-block!important;
   }
 
-  .sidebar-bottom {
+  #sidebar .sidebar-bottom {
     margin-left: 3.5rem;
     margin-right: 3rem;
     font-size: 1.3rem;
-    padding-bottom: 1rem;
-  }
-
-  .sidebar-bottom a {
-    border: 1px solid;
-    border-radius: 50%;
-    font-size: 1rem;
-    width: 2rem;
-    height: 2rem;
-    text-align: center;
-  }
-
-  .sidebar-bottom a>i {
-    text-align: center;
-    width: 1.25em;
-    padding-top: .45rem;
-  }
+    a {
+      border: 1px solid;
+      border-radius: 50%;
+      font-size: 1rem;
+      width: 2rem;
+      height: 2rem;
+      text-align: center;
+      i {
+        text-align: center;
+        width: 1.25em;
+        padding-top: .45rem;
+      }
+    }
 
   #mode-toggle-wrapper {
     font-size: .9rem;
@@ -1421,12 +1423,21 @@ table tbody td {
   #mode-toggle-wrapper>i {
     @include icon-round(2rem);
     padding-top: 0.5rem;
+    bottom: 0;
   }
 
-  #mode-toggle-wrapper::after {
-    height: 14px;
-    margin-bottom: 0;
+  .icon-border {
+      height: 14px;
+      margin-left: .2rem;
+      margin-right: .2rem;
+      margin-bottom: 0;
+    }
+
+    .icon-border+a {
+      margin-left: 0;
+    }
   }
+
 
   footer>div.d-flex {
     max-width: 1150px;
