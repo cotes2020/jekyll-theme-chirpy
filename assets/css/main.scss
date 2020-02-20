@@ -1413,21 +1413,20 @@ table tbody td {
       i {
         text-align: center;
         width: 1.25em;
-        padding-top: .45rem;
+        padding-top: .44rem;
       }
     }
 
-  #mode-toggle-wrapper {
-    font-size: .9rem;
-  }
+    #mode-toggle-wrapper {
+      font-size: .9rem;
+      i {
+        @include icon-round(2rem);
+        padding-top: .44rem;
+        bottom: 0;
+      }
+    }
 
-  #mode-toggle-wrapper>i {
-    @include icon-round(2rem);
-    padding-top: 0.5rem;
-    bottom: 0;
-  }
-
-  .icon-border {
+    .icon-border {
       margin-left: .2rem;
       margin-right: .2rem;
       margin-top: .85rem;
@@ -1436,7 +1435,7 @@ table tbody td {
     .icon-border+a {
       margin-left: 0;
     }
-  }
+  } // #sidebar .sidebar-bottom
 
 
   footer>div.d-flex {
