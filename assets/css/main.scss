@@ -487,7 +487,7 @@ footer {
 footer>div.d-flex {
   line-height: 1.2rem;
   width: 95%;
-  max-width: 1035px;
+  max-width: 1045px;
   border-top: 1px solid var(--footer-border, #f3f3f3);
   margin-bottom: 1rem;
 }
@@ -964,7 +964,8 @@ table tbody td {
 
   footer>div.d-flex {
     width: 90%;
-    padding: 1.5rem;
+    padding: 1.5rem 0;
+    margin-bottom: .3rem;
     flex-wrap: wrap;
     justify-content: left!important;
     -ms-flex-pack: distribute!important;
@@ -1257,6 +1258,10 @@ table tbody td {
     right: 24.3%;
   }
 
+  footer>div.d-felx {
+    width: 85%;
+  }
+
 }
 
 @media all and (min-width: 1400px) {
@@ -1437,9 +1442,9 @@ table tbody td {
     }
   } // #sidebar .sidebar-bottom
 
-
   footer>div.d-flex {
-    max-width: 1150px;
+    width: 87%;
+    max-width: 1140px;
   }
 
   #search-result-wrapper {
@@ -1467,6 +1472,7 @@ table tbody td {
   }
 
   footer {
+    padding-left: 0;
     padding-right: calc(100% - 350px - 1180px);
   }
 
