@@ -8,17 +8,19 @@ layout: default
 ---
 
 <div class="row">
-  {% include date-format.html %}
 
   <div id="post-wrapper" class="col-12 col-lg-11 col-xl-8">
+
     <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+
       <h1 data-toc-skip>{{ page.title }}</h1>
+
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published Date and Categoreis -->
         <div>
           <span class="timeago" data-toggle="tooltip" data-placement="bottom"
-           title="{{ page.date | date: TOOLTIP_DATE }}">
-            {{ page.date | date: POST_DATE }}
+           title="{{ page.date | date: site.data.date_format.tooltip }}">
+            {{ page.date | date: site.data.date_format.post }}
             <i class="unloaded">{{ page.date | date_to_xmlschema }}</i>
           </span>
           {% if page.categories.size > 0 %}on{% endif %}
@@ -61,8 +63,8 @@ layout: default
           Updated
           <span class="timeago lastmod"
             data-toggle="tooltip" data-placement="top"
-             title="{{ page.seo.date_modified | date: TOOLTIP_DATE }}">
-            {{ page.seo.date_modified | date: POST_DATE }}
+             title="{{ page.seo.date_modified | date: site.data.date_format.tooltip }}">
+            {{ page.seo.date_modified | date: site.data.date_format.post }}
             <i class="unloaded">{{ page.seo.date_modified | date_to_xmlschema}}</i>
           </span>
         </div>
