@@ -11,18 +11,21 @@
   {% if page.previous.url %}
   <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary">
     <p>{{ page.previous.title }}</p>
-  {% else %}
-  <a href="javascript:;" class="btn btn-outline-primary disabled">
-    <p>-</p>
-  {% endif %}
   </a>
+  {% else %}
+  <span class="btn btn-outline-primary disabled">
+    <p>-</p>
+  </span>
+  {% endif %}
 
   {% if page.next.url %}
   <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary">
     <p>{{ page.next.title }}</p>
-  {% else %}
-    <a href="javascript:;" class="btn btn-outline-primary disabled">
-    <p>-</p>
-  {% endif %}
   </a>
+  {% else %}
+  <span class="btn btn-outline-primary disabled">
+    <p>-</p>
+  </span>
+  {% endif %}
+
 </div>

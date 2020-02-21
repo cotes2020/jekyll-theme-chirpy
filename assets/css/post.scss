@@ -27,69 +27,77 @@
   font-size: 0.85rem;
 }
 
+$prompt-older: "Older";
+$prompt-newer: "Newer";
+
 .post-navigation {
   padding-top: 3rem;
   padding-bottom: 2rem;
+
+  .btn, .btn.disabled {
+    width: 50%;
+    position: relative;
+    color: var(--link-color, #2a408e);
+    border-color: var(--main-border, #e9ecef);
+  }
+
+  .btn:hover {
+    background: #2a408e;
+    color: #fff;
+    border-color: #2a408e;
+  }
+
+  .btn.disabled {
+    pointer-events: auto;
+    cursor: not-allowed;
+    background: none;
+    color: gray;
+    // border-color: var(--main-border, #e9ecef);
+  }
+
+  .btn.btn-outline-primary.disabled:focus {
+    box-shadow: none;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    margin-top: .3rem;
+    white-space: normal;
+  }
+
+  a::before,
+  span::before {
+    color: var(--text-muted-color, gray);
+    font-size: .65rem;
+    text-transform: uppercase;
+  }
+
+  a:first-child,
+  span:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    left: .5px;
+  }
+
+  a:last-child,
+  span:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    right: .5px;
+  }
+
+  a:first-child::before,
+  span:first-child::before {
+    content: $prompt-older
+  }
+
+  a:last-child::before,
+  span:last-child::before {
+    content: $prompt-newer
+  }
 }
 
-.post-navigation .btn,
-.post-navigation .btn.disabled {
-  width: 50%;
-  position: relative;
-  color: var(--link-color, #2a408e);
-  border-color: var(--main-border, #e9ecef);
-}
-
-.post-navigation .btn:hover {
-  background: #2a408e;
-  color: #fff;
-  border-color: #2a408e;
-}
-
-.post-navigation a.btn.disabled {
-  pointer-events: auto;
-  cursor: not-allowed;
-  background: none;
-  color: gray;
-  border-color: var(--main-border, #e9ecef);
-}
-
-.post-navigation a.btn.btn-outline-primary.disabled:focus {
-  box-shadow: none;
-}
-
-.post-navigation a > p {
-  font-size: 1.1rem;
-  line-height: 1.5rem;
-  margin-top: .3rem;
-  white-space: normal;
-}
-
-.post-navigation a:first-child {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  left: .5px;
-}
-
-.post-navigation a:last-child {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  right: .5px;
-}
-
-.post-navigation a::before {
-  color: var(--text-muted-color, gray);
-  font-size: .65rem;
-  text-transform: uppercase;
-}
-
-.post-navigation a:first-child::before {
-  content: "Older";
-}
-
-.post-navigation a:last-child::before {
-  content: "Newer";
-}
 
 @keyframes fade-up {
   from {
