@@ -27,8 +27,8 @@
   font-size: 0.85rem;
 }
 
-$prompt-older: "Older";
-$prompt-newer: "Newer";
+$prompt-older: "{{ site.data.label.post.button.previous }}";
+$prompt-newer: "{{ site.data.label.post.button.next }}";
 
 .post-navigation {
   padding-top: 3rem;
