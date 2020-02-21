@@ -10,7 +10,7 @@ $(function() {
 
   var btnSbTrigger = $('#sidebar-trigger');
   var btnSearchTrigger = $('#search-trigger');
-  var btnCancel = $('#search-wrapper + a');
+  var btnCancel = $('#search-cancel');
   var btnClear = $('#search-cleaner');
 
   var main = $('#main');
