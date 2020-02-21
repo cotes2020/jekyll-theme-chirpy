@@ -328,7 +328,7 @@ body {
   visibility: hidden;
 }
 
-#search-wrapper+a { /* 'Cancel' link */
+#search-cancel { /* 'Cancel' link */
   color: var(--link-color, #2a408e);
   margin-left: 1rem;
   display: none;
