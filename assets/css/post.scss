@@ -1,12 +1,15 @@
 ---
 ---
 /*!
-  Individual styles for Post
+  Post-specific style
   v2.0
   https://github.com/cotes2020/jekyll-theme-chirpy
   © 2019 Cotes Chung
   MIT License
 */
+
+$prompt-older: "{{ site.data.label.post.button.previous }}";
+$prompt-newer: "{{ site.data.label.post.button.next }}";
 
 .post img {
   margin-top: .5rem;
@@ -27,18 +30,19 @@
   font-size: 0.85rem;
 }
 
-$prompt-older: "{{ site.data.label.post.button.previous }}";
-$prompt-newer: "{{ site.data.label.post.button.next }}";
-
 .post-navigation {
   padding-top: 3rem;
   padding-bottom: 2rem;
 
-  .btn, .btn.disabled {
+  @mixin post-nav-btn {
     width: 50%;
     position: relative;
-    color: var(--link-color, #2a408e);
     border-color: var(--main-border, #e9ecef);
+  }
+
+  .btn {
+    @include post-nav-btn;
+    color: var(--link-color, #2a408e);
   }
 
   .btn:hover {
@@ -48,11 +52,15 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   }
 
   .btn.disabled {
+    @include post-nav-btn;
     pointer-events: auto;
     cursor: not-allowed;
     background: none;
     color: gray;
-    // border-color: var(--main-border, #e9ecef);
+  }
+
+  .btn.disabled:hover {
+    border-color: none;
   }
 
   .btn.btn-outline-primary.disabled:focus {
@@ -146,58 +154,59 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   font-family: 'Oswald', sans-serif;
 }
 
-#related-posts .card {
-  border: 1px solid var(--main-wrapper-bg, #f1f1f1);
-  background-color: var(--card-bg);
-  box-shadow: 0 0 5px 0 var(--main-wrapper-bg, rgba(234, 234, 234, 0.7686274509803922));
-  -webkit-transition: all .3s ease-in-out;;
-  -moz-transition: all .3s ease-in-out;;
-  transition: all .3s ease-in-out;
-}
+#related-posts {
+  .card {
+    border: 1px solid var(--main-wrapper-bg, #f1f1f1);
+    background-color: var(--card-bg);
+    box-shadow: 0 0 5px 0 var(--main-wrapper-bg, rgba(234, 234, 234, 0.7686274509803922));
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    h3 {
+      color: var(--relate-post-title, #353a3d);
+    }
+  }
 
-#related-posts .card:hover {
-  -webkit-transform: translate3d(0, -3px, 0);
-  transform: translate3d(0, -3px, 0);
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.08));
-}
+  .card:hover {
+    -webkit-transform: translate3d(0, -3px, 0);
+    transform: translate3d(0, -3px, 0);
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
+  }
 
-#related-posts .card h3 {
-  color: var(--relate-post-title, #353a3d);
-}
+  .timeago {
+    color: var(--text-muted-color, rgba(30, 55, 70, .4));
+  }
 
-#related-posts .timeago {
-  color: var(--text-muted-color, rgba(30,55,70,.4));
-}
+  p {
+    font-size: .9rem;
+    margin-bottom: .5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
 
-#related-posts p {
-  font-size: .9rem;
-  margin-bottom: .5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
+  a:hover {
+    text-decoration: none;
+  }
 
-#related-posts a:hover {
-  text-decoration: none;
-}
+  ul {
+    list-style-type: none;
+    padding-inline-start: 1.5rem;
+  }
 
-#related-posts ul {
-  list-style-type: none;
-  padding-inline-start: 1.5rem;
-}
-
-#related-posts ul > li::before {
-  background: #c2c9d4;
-  width: 5px;
-  height: 5px;
-  border-radius: 1px;
-  display: block;
-  content: "";
-  position: relative;
-  top: 1rem;
-  right: 1rem;
+  ul>li::before {
+    background: #c2c9d4;
+    width: 5px;
+    height: 5px;
+    border-radius: 1px;
+    display: block;
+    content: "";
+    position: relative;
+    top: 1rem;
+    right: 1rem;
+  }
 }
 
 #post-extend-wrapper {
@@ -208,16 +217,42 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   color: inherit;
 }
 
-.share-wrapper a:hover,
-.share-wrapper i:hover {
-  text-decoration: none;
-  color: var(--link-color, #2a408e)!important;
-}
-
 .share-wrapper {
   vertical-align: middle;
   user-select: none;
-}
+
+  a:hover,
+  i:hover {
+    text-decoration: none;
+    color: var(--link-color, #2a408e)!important;
+  }
+
+  .share-icon {
+    font-size: 1.2rem;
+
+    .fab.fa-twitter {
+      color: var(--btn-sharing, rgba(29, 161, 242, 1.00));
+    }
+
+    .fab.fa-facebook-square {
+      color: var(--btn-sharing, rgb(66, 95, 156));
+    }
+    .fab.fa-telegram {
+      color: var(--btn-sharing, rgb(39, 159, 217));
+    }
+
+    .fab.fa-weibo {
+      color: var(--btn-sharing, rgb(229, 20, 43));
+    }
+
+  } // .share-icon
+
+  .fas.fa-link {
+    color: var(--btn-sharing, rgb(171, 171, 171));
+  }
+
+} // .share-wrapper
+
 
 .share-label {
   font-family: 'Oswald', sans-serif;
@@ -227,45 +262,22 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   content: ":";
 }
 
-.share-wrapper .share-icon {
-  font-size: 1.2rem;
-}
-
-.share-wrapper .share-icon .fab.fa-twitter {
-  color: var(--btn-sharing, rgba(29,161,242,1.00));
-}
-
-.share-wrapper .share-icon .fab.fa-facebook-square {
-  color: var(--btn-sharing, rgb(66, 95, 156));
-}
-
-.share-wrapper .share-icon .fab.fa-telegram {
-  color: var(--btn-sharing, rgb(39, 159, 217));
-}
-
-.share-wrapper .share-icon .fab.fa-weibo {
-  color: var(--btn-sharing, rgb(229, 20, 43));
-}
-
-.share-wrapper .fas.fa-link {
-  color: var(--btn-sharing, rgb(171, 171, 171));
-}
-
-.license-wrapper .license-text>a {
-  font-weight: 600;
-}
-
 .license-wrapper {
   line-height: 1.2rem;
-}
 
-.license-wrapper i {
-  font-weight: 400;
-}
+  .license-text>a {
+    font-weight: 600;
+  }
 
-.license-wrapper span:last-child {
-  font-size: .85rem;
-}
+  i {
+    font-weight: 400;
+  }
+
+  span:last-child {
+    font-size: .85rem;
+  }
+} // .license-wrapper
+
 
 @media all and (max-width: 576px) {
   .post-tail-bottom {
@@ -327,7 +339,8 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 }
 
 /*
-  The following resposive design aim to make #post-extend-wrapper margin-right same as pannel's width
+  The following resposive design aim to
+  make #post-extend-wrapper margin-right same as pannel's width
 */
 @media all and (min-width: 1200px) {
   #post-extend-wrapper {
