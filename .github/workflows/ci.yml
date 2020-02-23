@@ -2,10 +2,13 @@ name: build
 on:
   push:
     paths-ignore:
+    - '.github/**'
+    - '!.github/workflows/**'
+    - '.travis.yml'
+    - '.gitignore'
     - 'docs/**'
     - 'README.md'
     - 'LICENSE'
-    - '.travis.yml'
   pull_request:
     paths:
     - "**"
