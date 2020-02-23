@@ -1,7 +1,7 @@
 ---
 name: Feature Request
 about: Suggest an idea for this project
-labels: feature-suggestion
+labels: enhancement
 ---
 
 <!-- Please make sure your request does not appear in other existing issues (including closed ones). Thanks for your cooperation. Now, I can't wait to listen your idea! -->
