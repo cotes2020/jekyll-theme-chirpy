@@ -17,14 +17,9 @@
   letter-spacing: 0;
   border: 1px solid var(--tag-border, #dee2e6) !important;
   box-shadow: 0 0 3px 0 var(--tag-shadow, #e9ecef);
-}
-
-.tag span {
-  margin-left: 0.6em;
-  font-size: 0.7em;
-  font-family: 'Oswald', sans-serif;
-}
-
-a.tag:hover {
-  text-decoration: none;
+  span {
+    margin-left: 0.6em;
+    font-size: 0.7em;
+    font-family: 'Oswald', sans-serif;
+  }
 }

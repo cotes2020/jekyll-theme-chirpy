@@ -77,68 +77,77 @@
 
 /*-- Codes Snippet --*/
 
-div.highlight,
-figure.highlight,
-.highlighter-rouge {
+%highlight-pre-bg {
   background: var(--highlight-pre-bg, #f7f7f7)
 }
 
-.highlight {
-  overflow: auto;
+%code-snippet-radius {
+  border-radius: 5px;
 }
 
-.highlight .lineno {
-  margin: .8rem 0rem;
-  padding: 0 .5rem;
-  min-width: 2.2rem;
-  text-align: right;
-  color: var(--highlight-lineno, #c2c6cc);
-  border-right: 1px solid var(--highlight-lineno-border, #e9ecef);
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-.highlight table {
-  padding: 0;
-  border: 0;
-}
-
-.highlight td {
-  padding: 0;
-  border: 0;
-}
-
-.highlight pre {
-  margin-bottom: 0;
-  font-size: .85rem;
-  line-height: 1.4rem;
-  word-wrap: normal;  /* Fixed Safari overflow-x */
-}
-
-.highlight table td pre {
-  overflow: visible;  /* Fixed iOS safari overflow-x */
-  word-break: normal; /* Fixed iOS safari linenos code break */
-}
-
-/* Override BS Inline-code style */
 .highlighter-rouge {
-  margin-bottom: 1.2em;
+  @extend %highlight-pre-bg;
+  @extend %code-snippet-radius;
+  margin-bottom: 1.2em; /* Override BS Inline-code style */
 }
+
+.highlight {
+  @extend %code-snippet-radius;
+  @at-root div#{&} {
+    @extend %highlight-pre-bg;
+  }
+  @at-root figure#{&} {
+    @extend %highlight-pre-bg;
+  }
+  overflow: auto;
+
+  .lineno {
+    margin: .8rem 0rem;
+    padding: 0 .5rem;
+    min-width: 2.2rem;
+    text-align: right;
+    color: var(--highlight-lineno, #c2c6cc);
+    border-right: 1px solid var(--highlight-lineno-border, #e9ecef);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+  table {
+    padding: 0;
+    border: 0;
+    td pre {
+      overflow: visible;  /* Fixed iOS safari overflow-x */
+      word-break: normal; /* Fixed iOS safari linenos code break */
+    }
+  }
+  td {
+    padding: 0;
+    border: 0;
+  }
+  pre {
+    margin-bottom: 0;
+    font-size: .85rem;
+    line-height: 1.4rem;
+    word-wrap: normal;
+    /* Fixed Safari overflow-x */
+  }
+
+} // .highlight
 
 code {
   -webkit-hyphens: none;
   -ms-hyphens: none;
   -moz-hyphens: none;
   hyphens: none;
-}
 
-code.highlighter-rouge {
-  padding: 2px 4px;
-  margin: 0 .3rem;
-  border-radius: 4px;
+  &.highlighter-rouge {
+    padding: 2px 4px;
+    margin: 0 .3rem;
+    border-radius: 4px;
+  }
 }
 
 td.rouge-code {
@@ -146,11 +155,6 @@ td.rouge-code {
   padding-right: 1rem;
 }
 
-/* code snippet radius */
-.highlighter-rouge,
-.highlight {
-  border-radius: 5px;
-}
 
 /* Hide line numbers for defualt, console, and terminal code snippets */
 div[class^='highlighter-rouge'] pre.lineno,
@@ -171,11 +175,9 @@ div.language-terminal.highlighter-rouge td.rouge-code {
     -webkit-box-shadow: inset 0 0 2px #c2c6cc;
     box-shadow: inset 0 0 2px #c2c6cc;
   }
-
   .highlighter-rouge {
     color: black;
   }
-
   code.highlighter-rouge {
     border: 1px solid #e9ecef;
   }

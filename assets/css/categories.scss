@@ -8,35 +8,43 @@
   MIT License
 */
 
-.categories {
-  margin-bottom: 2rem;
-}
-
-.categories .card-header {
-  padding-right: 12px;
-}
-
-.categories .card-header>span>i:first-child,
-.categories .list-group-item>i {
+%category-icon-color {
   color: gray;
 }
 
-.categories .list-group-item {
-  border-left: none;
-  border-right: none;
-  padding-left: 2rem;
-}
+.categories {
+  margin-bottom: 2rem;
+  .card-header {
+    padding-right: 12px;
+  }
+  .list-group-item {
+    border-left: none;
+    border-right: none;
+    padding-left: 2rem;
+  }
 
-.categories .collapsing .list-group-item:first-child,
-.categories .collapse .list-group-item:first-child {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
+  .card-header>span>i:first-child {
+    @extend %category-icon-color;
+  }
 
-.categories i.far,
-.categories i.fas { // fontawesome icons
-  font-size: 86%;
-}
+  .list-group-item {
+    >i {
+      @extend %category-icon-color;
+    }
+    .collapsing &:first-child,
+    .collapse &:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  i {
+    &.far, &.fas {
+      font-size: 86%; // fontawesome icons
+    }
+  }
+
+} // .categories
 
 .category-trigger {
   width: 1.7rem;
@@ -44,19 +52,18 @@
   border-radius: 50%;
   text-align: center;
   color: #6c757d!important;
+  >i.fas {
+    position: relative;
+    height: .7rem;
+    width: 1rem;
+    transition: 300ms ease all;
+  }
 }
 
 @media (hover: hover) { // only works on desktop
   .category-trigger:hover {
     background-color: var(--categories-hover-bg, #e9ecef);
   }
-}
-
-.category-trigger>i.fas {
-  position: relative;
-  height: .7rem;
-  width: 1rem;
-  transition: 300ms ease all;
 }
 
 .rotate {
