@@ -106,42 +106,39 @@
 } // dark-scheme
 
 
-@mixin light-mode-invisible {
-  *[light-mode-invisible] {
-      display: none;
+@mixin set-visible($light-display, $dark-display) {
+  [light-mode-invisible] {
+    display: $light-display;
+  }
+
+  [dark-mode-invisible] {
+    display: $dark-display;
   }
 }
 
-@mixin dark-mode-invisible {
-  *[dark-mode-invisible] {
-      display: none;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-
-  html:not([mode]), html[mode=light] {
-    @include light-mode-invisible;
-  }
-
-  html[mode=dark] {
+@mixin mode-toggle($dark-mode: false) {
+  @if $dark-mode {
+    @include set-visible(inline-block, none);
     @include dark-scheme;
-    @include dark-mode-invisible;
+  } @else {
+    @include set-visible(none, inline-block);
   }
+}
 
-} // light prefers
+html:not([mode]), html[mode=light] {
+  @include mode-toggle();
+}
 
+html[mode=dark] {
+  @include mode-toggle(true);
+}
 
 @media (prefers-color-scheme: dark) {
-
   html:not([mode]), html[mode=dark] {
-    @include dark-scheme;
-    @include dark-mode-invisible;
+    @include mode-toggle(true);
   }
 
   html[mode=light] {
-    @include light-mode-invisible;
+    @include mode-toggle();
   }
-
-} // dark prefers
-
+}

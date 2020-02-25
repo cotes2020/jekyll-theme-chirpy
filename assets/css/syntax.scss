@@ -88,6 +88,7 @@
 .highlighter-rouge {
   @extend %highlight-pre-bg;
   @extend %code-snippet-radius;
+  color: var(--highlighter-rouge, black);
   margin-bottom: 1.2em; /* Override BS Inline-code style */
 }
 
@@ -100,7 +101,7 @@
     @extend %highlight-pre-bg;
   }
   overflow: auto;
-
+  @include box-shadow(inset 0 0 2px #c2c6cc);
   .lineno {
     margin: .8rem 0rem;
     padding: 0 .5rem;
@@ -142,11 +143,11 @@ code {
   -ms-hyphens: none;
   -moz-hyphens: none;
   hyphens: none;
-
   &.highlighter-rouge {
     padding: 2px 4px;
     margin: 0 .3rem;
     border-radius: 4px;
+    border: 1px solid var(--highlight-pre-bg, #e9ecef);
   }
 }
 
@@ -154,7 +155,6 @@ td.rouge-code {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-
 
 /* Hide line numbers for defualt, console, and terminal code snippets */
 div[class^='highlighter-rouge'] pre.lineno,
@@ -169,28 +169,12 @@ div.language-terminal.highlighter-rouge td.rouge-code {
   padding: .8rem 1rem;
 }
 
-@mixin light-syntax-base {
-  .highlight {
-    -moz-box-shadow: inset 0 0 2px #c2c6cc;
-    -webkit-box-shadow: inset 0 0 2px #c2c6cc;
-    box-shadow: inset 0 0 2px #c2c6cc;
-  }
-  .highlighter-rouge {
-    color: black;
-  }
-  code.highlighter-rouge {
-    border: 1px solid #e9ecef;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  html:not([mode=dark]) {
-    @include light-syntax-base;
-  }
+html[mode=dark] {
+  @include dark-syntax-scheme;
 }
 
 @media (prefers-color-scheme: dark) {
-  html[mode=light] {
-    @include light-syntax-base;
+  html:not([mode]), html[mode=dark] {
+    @include dark-syntax-scheme;
   }
 }
