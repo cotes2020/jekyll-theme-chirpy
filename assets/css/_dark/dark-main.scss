@@ -47,6 +47,19 @@
   --footnote-target-bg: rgb(63, 81, 181);
   --btn-sharing: #6c757d;
 
+  /* tags */
+  --tag-border: rgb(59, 79, 88);
+  --tag-shadow: rgb(32, 33, 33);
+
+  /* categories */
+  --categories-hover-bg: rgb(73, 75, 76);
+
+  /* archives */
+  --timeline-node-bg: rgb(150, 152, 156);
+
+  /* Footer */
+  ---footer-link: rgb(146, 146, 146);
+
   hr {
     border-color: var(--main-border);
   }
@@ -68,40 +81,29 @@
     background-color: var(--card-bg);
   }
 
-  .categories .card-header {
-    background-color: var(--card-header-bg);
+  .categories {
+    .card-header {
+      background-color: var(--card-header-bg);
+    }
+    .list-group-item {
+      // @extend %category-bg;
+      border-left: none;
+      border-right: none;
+      padding-left: 2rem;
+      border-color: var(--main-border);
+      &:last-child {
+        border-bottom-color: var(--card-bg);
+      }
+    }
   }
 
-  .categories .list-group-item {
-    border-left: none;
-    border-right: none;
-    padding-left: 2rem;
-    border-color: var(--main-border);
-  }
-
-  .categories .list-group-item:last-child {
-    border-bottom-color: var(--card-bg);
-  }
-
-  /* tags */
-  --tag-border: rgb(59, 79, 88);
-  --tag-shadow: rgb(32, 33, 33);
-
-  /* categories */
-  --categories-hover-bg: rgb(73, 75, 76);
-
-  /* archives */
-  --timeline-node-bg: rgb(150, 152, 156);
 
   #archives li:nth-child(odd) {
     background-image: linear-gradient(to left,
       rgb(26, 26, 30), rgb(39, 39, 45), rgb(39, 39, 45), rgb(39, 39, 45), rgb(26, 26, 30));
   }
 
-  /* Footer */
-  ---footer-link: rgb(146, 146, 146);
-
-}
+} // dark-scheme
 
 
 @mixin light-mode-invisible {
