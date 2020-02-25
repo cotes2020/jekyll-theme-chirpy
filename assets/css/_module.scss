@@ -1,0 +1,84 @@
+/*
+* Mainly scss modules, only imported to `assets/css/main.scss`
+*
+* v2.1
+* https://github.com/cotes2020/jekyll-theme-chirpy
+* © 2020 Cotes Chung
+* MIT Licensed
+*/
+
+/*---------- scss placeholder ---------*/
+
+%tag-hover {
+  background: var(--tag-hover, rgb(222, 226, 230));
+  transition: background 0.35s ease-in-out;
+}
+
+%table-cell {
+  padding: .35rem .8rem;
+  font-size: 95%;
+}
+
+%link-hover {
+  color: #d2603a!important;
+  border-bottom: 1px solid #d2603a;
+  text-decoration: none;
+}
+
+%link-color {
+  color: var(--link-color, #2a408e);
+}
+
+%no-bottom-border {
+  border-bottom: none;
+}
+
+%section {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+%anchor {
+  padding-top: 3.5rem;
+  margin-top: -2.5rem;
+}
+
+%footer-content {
+  font-weight: 600;
+  color: var(---footer-link, inherit);
+}
+
+
+/*---------- scss mixin ---------*/
+
+@mixin no-text-decoration {
+  text-decoration: none;
+}
+
+@mixin sidebar-icon {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.35s ease-in-out;
+  user-select: none;
+  margin: 0 .25rem;
+}
+
+@mixin icon-round($diameter) {
+  border: 1px solid;
+  border-radius: 50%;
+  width: $diameter;
+  height: $diameter;
+}
+
+@mixin ml-mr($value) {
+  margin-left: $value;
+  margin-right: $value;
+}
+
+@mixin pl-pr($val) {
+  padding-left: $val;
+  padding-right: $val;
+}
+
+@mixin input-placeholder {
+  opacity: 0.6;
+}
