@@ -6,7 +6,13 @@
 * MIT Licensed
 */
 
-@mixin dark-scheme {
+@mixin box-shadow($val) {
+  -moz-box-shadow: $val;
+  -webkit-box-shadow: $val;
+  box-shadow: $val;
+}
+
+@mixin dark-syntax-scheme {
   /* syntax highlight colors from https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css */
   --highlight-pre-bg: #272822;
   --highlight-hll-bg: #272822;
@@ -75,6 +81,7 @@
   /* My styles */
   --highlight-lineno: #6c6c6d;
   --highlight-lineno-border: #3c4042;
+  --highlighter-rouge: #de6b18;
 
   pre {
     color: #818c96; /* override Bootstrap */
@@ -83,16 +90,9 @@
   kbd {
     background-color: black;
   }
-}
 
-@media (prefers-color-scheme: dark) {
-  html:not([mode]), html[mode=dark] {
-    @include dark-scheme;
+  .highlight {
+    @include box-shadow(none);
   }
-}
 
-@media (prefers-color-scheme: light) {
-  html[mode=dark] {
-    @include dark-scheme;
-  }
-}
+} // mixin dark-syntax-scheme
