@@ -5,7 +5,7 @@ language: ruby
 rvm: 2.6.5
 
 before_install:
-  - pyenv global 3.7.5
+  - pyenv global 3.7.6
 
 install:
   - pip install -r _scripts/py/requirements.txt
