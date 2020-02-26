@@ -32,6 +32,10 @@ body {
 
 /*--- sidebar layout ---*/
 
+$tab-height: 3.3rem;
+$tab-cursor-height: 1.6rem;
+$tab-count: {{ site.data.tabs | size }};
+
 #sidebar {
   @include pl-pr(0);
   position: fixed;
@@ -46,11 +50,9 @@ body {
   background: rgb(42, 30, 107);
   background: var(--sidebar-bg,
   radial-gradient(circle, rgba(42, 30, 107, 1) 0%, rgba(35, 37, 46, 1) 100%));
-
   a {
     @include sidebar-icon;
   }
-
   .sidebar-bottom {
     .icon-border+a { // the icon behide mode-toggle
       margin-left: .1rem;
@@ -63,7 +65,7 @@ body {
     letter-spacing: 1px;
   }
   .nav-item {
-    height: 20%;
+    height: $tab-height;
     &:hover {
       .nav-link {
         color: #f8f9facf;
@@ -75,17 +77,58 @@ body {
       }
     }
   }
-
   ul {
-    height: 16.5rem;
+    height: $tab-height * $tab-count;
     display: -webkit-box;
     display: -ms-flexbox;
-  }
+
+    >li:last-child {
+      >a {
+        margin-right: -3px;
+        max-width: calc(100% - 3px);
+      }
+      &::after { // the cursor
+        visibility: hidden;
+        content: "";
+        position: relative;
+        right: 1px;
+        width: 3px;
+        height: $tab-cursor-height;
+        background-color: var(--nav-cursor, #fcfcfc);
+        pointer-events: none;
+      }
+    }
+
+    @mixin fix-cursor($top) {
+      top: $top;
+      visibility: visible;
+    }
+
+    @for $i from 1 through $tab-count {
+      $offset: $tab-count - $i;
+      $top: -$offset * $tab-height + $tab-cursor-height / 2;
+
+      @if $i < $tab-count {
+        >li.active:nth-child(#{$i}),
+        >li.nav-item:nth-child(#{$i}):hover {
+          ~li:last-child::after {
+            @include fix-cursor($top);
+          }
+        }
+      } @else {
+        >li.active:nth-child(#{$i}):last-child::after,
+        >li.nav-item:nth-child(#{$i}):last-child:hover::after {
+          @include fix-cursor($top);
+        }
+      }
+
+    } // @for
+
+  } // ul
 
   .sidebar-bottom {
     font-size: 1.2rem;
     margin: 2rem 2.5rem 1.6rem;
-
     a {
       margin-bottom: .5rem; // icons may have multi lines
     }
@@ -113,60 +156,7 @@ body {
       margin-top: .75rem;
     }
   }
-
 } // #sidebar
-
-#sidebar ul > li.active:nth-child(1) ~ li:last-child::after,
-#sidebar ul > li.nav-item:nth-child(1):hover ~ li:last-child::after {
-  // top: calc(-400% + (26px / 2));
-  top: -195px;
-  visibility: visible;
-}
-
-#sidebar ul > li.active:nth-child(2) ~ li:last-child::after,
-#sidebar ul > li.nav-item:nth-child(2):hover ~ li:last-child::after {
-  // top: calc(-300% + (26px / 2));
-  top: -143px;
-  visibility: visible;
-}
-
-#sidebar ul > li.active:nth-child(3) ~ li:last-child::after,
-#sidebar ul > li.nav-item:nth-child(3):hover ~ li:last-child::after {
-  // top: calc(-200% + (26px / 2));
-  top:  -91px;
-  visibility: visible;
-}
-
-#sidebar ul > li.active:nth-child(4) ~ li:last-child::after,
-#sidebar ul > li.nav-item:nth-child(4):hover ~ li:last-child::after {
-  // top: calc(-100% + (26px / 2));
-  top: -39px;
-  visibility: visible;
-}
-
-#sidebar ul > li.active:nth-child(5):last-child::after,
-#sidebar ul > li.nav-item:nth-child(5):last-child:hover::after {
-  // top: calc(26px / 2);
-  top: 13px;
-  visibility: visible;
-}
-
-#sidebar ul>li:last-child {
-  >a {
-    margin-right: -3px;
-    max-width: calc(100% - 3px);
-  }
-  &::after {
-    visibility: hidden;
-    content: "";
-    position: relative;
-    right: 1px;
-    width: 3px;
-    height: 26px;
-    background-color: var(--nav-cursor, #fcfcfc);
-    pointer-events: none;
-  }
-}
 
 @media (hover: hover) {
   #sidebar ul>li:last-child::after {
@@ -259,7 +249,6 @@ body {
     margin-top: 2rem;
   }
 }
-
 
 /*--- top-bar ---*/
 
