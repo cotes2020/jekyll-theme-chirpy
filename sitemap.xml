@@ -14,8 +14,8 @@ layout: compress
   {% unless post.published == false %}
 
     {% capture lastmod %}
-      {% if post.lastmod %}
-        {{ post.lastmod }}
+      {% if post.seo.date_modified %}
+        {{ post.seo.date_modified }}
       {% elsif post.date %}
           {{ post.date }}
         {% else %}
@@ -39,7 +39,9 @@ layout: compress
       <priority>0.5</priority>
     {% endif %}
   </url>
+
   {% endunless %}
+
 {% endfor %}
 
 {% for page in site.pages %}
