@@ -51,7 +51,7 @@ a:hover {
 
 .dash {
   margin: 0 .5rem .6rem .5rem;
-  border-bottom: 2px dotted var(--main-border, silver);
+  border-bottom: 2px dotted var(--dash-color);
 }
 
 @media all and (max-width: 576px) {

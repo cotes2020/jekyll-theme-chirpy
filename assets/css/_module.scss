@@ -10,7 +10,7 @@
 /*---------- scss placeholder ---------*/
 
 %tag-hover {
-  background: var(--tag-hover, rgb(222, 226, 230));
+  background: var(--tag-hover);
   transition: background 0.35s ease-in-out;
 }
 
@@ -26,7 +26,7 @@
 }
 
 %link-color {
-  color: var(--link-color, #2a408e);
+  color: var(--link-color);
 }
 
 %no-bottom-border {
@@ -45,7 +45,7 @@
 
 %footer-content {
   font-weight: 600;
-  color: var(---footer-link, inherit);
+  color: var(---footer-link);
 }
 
 

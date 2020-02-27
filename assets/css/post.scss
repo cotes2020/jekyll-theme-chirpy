@@ -7,22 +7,23 @@
   © 2019 Cotes Chung
   MIT License
 */
+@import "_variables";
 
 $prompt-older: "{{ site.data.label.post.button.previous }}";
 $prompt-newer: "{{ site.data.label.post.button.next }}";
 
 @mixin btn-sharing-color($light-color, $important: false) {
   @if $important {
-    color: var(--btn-sharing, $light-color)!important;
+    color: var(--btn-share-color, $light-color)!important;
   } @else {
-    color: var(--btn-sharing, $light-color);
+    color: var(--btn-share-color, $light-color);
   }
 }
 
 @mixin btn-post-nav {
   width: 50%;
   position: relative;
-  border-color: var(--main-border, #e9ecef);
+  border-color: var(--btn-border-color);
 }
 
 .post img {
@@ -40,7 +41,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
 .post-tail-wrapper {
   margin-top: 5rem;
-  border-bottom: 1px double var(--main-border, #e9ecef);
+  border-bottom: 1px double var(--main-border-color);
   font-size: 0.85rem;
 }
 
@@ -50,7 +51,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
   .btn {
     @include btn-post-nav;
-    color: var(--link-color, #2a408e);
+    color: var(--link-color);
     &:hover {
       background: #2a408e;
       color: #fff;
@@ -80,7 +81,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
   a, span {
     &::before {
-      color: var(--text-muted-color, gray);
+      color: var(--text-muted-color);
       font-size: .65rem;
       text-transform: uppercase;
     }
@@ -149,14 +150,14 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     font-family: 'Oswald', sans-serif;
   }
   .card {
-    border: 1px solid var(--main-wrapper-bg, #f1f1f1);
+    border: 1px solid var(--card-border-color);
     background-color: var(--card-bg);
-    box-shadow: 0 0 5px 0 var(--main-wrapper-bg, rgba(234, 234, 234, 0.7686274509803922));
+    box-shadow: 0 0 5px 0 var(--card-box-shadow);
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     h3 {
-      color: var(--relate-post-title, #353a3d);
+      color: var(--label-relate-post);
     }
     &:hover {
       -webkit-transform: translate3d(0, -3px, 0);
@@ -166,7 +167,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   }
 
   .timeago {
-    color: var(--text-muted-color, rgba(30, 55, 70, .4));
+    color: var(--relate-post-date);
   }
 
   p {
@@ -208,18 +209,24 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   color: inherit;
 }
 
+%btn-share-hovor {
+  color: var(--btn-share-hover-color)!important;
+}
+
 .share-wrapper {
   vertical-align: middle;
   user-select: none;
-
-  a:hover,
-  i:hover {
-    @include btn-sharing-color(#2a408e, true);
-    text-decoration: none;
-  }
-
   .share-icon {
     font-size: 1.2rem;
+    a:hover {
+      text-decoration: none;
+      >i {
+        @extend %btn-share-hovor;
+      }
+    }
+    i:hover {
+      @extend %btn-share-hovor;
+    }
     .fab {
       &.fa-twitter {
         @include btn-sharing-color(rgba(29, 161, 242, 1.00));

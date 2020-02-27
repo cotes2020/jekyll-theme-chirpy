@@ -8,8 +8,6 @@
   MIT License
 */
 
-$dot-color: #c2c6cc;
-
 %date-timeline {
   content: "";
   width: 4px;
@@ -17,7 +15,7 @@ $dot-color: #c2c6cc;
   display: inline-block;
   float: left;
   position: relative;
-  background-color: var(--main-border, rgba(0, 0, 0, 0.075));
+  background-color: var(--timeline-color);
 }
 
 #archives {
@@ -27,7 +25,8 @@ $dot-color: #c2c6cc;
     line-height: 3rem;
     &:nth-child(odd) {
       background-color: var(--main-wrapper-bg, #fff);
-      background-image: linear-gradient(to left, #fff, #fbfbfb, #fbfbfb, #fbfbfb, #fff);
+      background-image: linear-gradient(
+        to left, #fff, #fbfbfb, #fbfbfb, #fbfbfb, #fff);
     }
     >div {
       white-space: nowrap;
@@ -63,9 +62,9 @@ $dot-color: #c2c6cc;
       top: -26px;
       left: 63px;
       border: 3px solid;
-      background-color: var(--main-border, #ffffff);
-      border-color: var(--timeline-node-bg, $dot-color);
-      box-shadow: 0 0 2px 0 $dot-color;
+      background-color: var(--timeline-year-dot-color);
+      border-color: var(--timeline-node-bg);
+      box-shadow: 0 0 2px 0 #c2c6cc;
       z-index: 1;
     }
   } // #archives span.lead
@@ -90,8 +89,8 @@ $dot-color: #c2c6cc;
         float: left;
         top: 1.35rem;
         left: 69px;
-        background-color: var(--timeline-node-bg, $dot-color);
-        box-shadow: 0 0 3px 0 $dot-color;
+        background-color: var(--timeline-node-bg);
+        box-shadow: 0 0 3px 0 #c2c6cc;
         z-index: 1;
       }
     }
