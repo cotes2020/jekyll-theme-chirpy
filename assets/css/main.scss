@@ -9,9 +9,48 @@
 */
 
 @import "_fonts";
-@import "_dark/dark-main";
 @import "_module";
 @import "_variables";
+@import "_colors/light-typography";
+@import "_colors/dark-typography";
+
+@mixin set-visible($light-display, $dark-display) {
+  [light-mode-invisible] {
+    display: $light-display;
+  }
+
+  [dark-mode-invisible] {
+    display: $dark-display;
+  }
+}
+
+@mixin mode-toggle($dark-mode: false) {
+  @if $dark-mode {
+    @include set-visible(inline-block, none);
+    @include dark-scheme;
+  } @else {
+    @include set-visible(none, inline-block);
+    @include light-scheme;
+  }
+}
+
+html:not([mode]), html[mode=light] {
+  @include mode-toggle();
+}
+
+html[mode=dark] {
+  @include mode-toggle(true);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([mode]), html[mode=dark] {
+    @include mode-toggle(true);
+  }
+
+  html[mode=light] {
+    @include mode-toggle();
+  }
+}
 
 html, body {
   height: 100%;
@@ -25,8 +64,8 @@ html {
 
 body {
   line-height: 1.75rem;
-  background: var(--main-wrapper-bg, #fafafa);
-  color: var(--text-color, #212529);
+  background: var(--body-bg);
+  color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
 }
@@ -49,8 +88,7 @@ $tab-count: {{ site.data.tabs | size }};
   -webkit-transition: transform 0.4s ease;
   transition: transform 0.4s ease;
   background: rgb(42, 30, 107);
-  background: var(--sidebar-bg,
-  radial-gradient(circle, rgba(42, 30, 107, 1) 0%, rgba(35, 37, 46, 1) 100%));
+  background: var(--sidebar-bg);
   a {
     @include sidebar-icon;
   }
@@ -95,7 +133,7 @@ $tab-count: {{ site.data.tabs | size }};
         right: 1px;
         width: 3px;
         height: $tab-cursor-height;
-        background-color: var(--nav-cursor, #fcfcfc);
+        background-color: var(--nav-cursor-color);
         pointer-events: none;
       }
     }
@@ -263,7 +301,7 @@ $tab-count: {{ site.data.tabs | size }};
   z-index: 50;
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.05);
-  background-color: var(--topbar-wrapper-bg, white);
+  background-color: var(--topbar-wrapper-bg);
 }
 
 #topbar i { // icons
@@ -296,14 +334,14 @@ $tab-count: {{ site.data.tabs | size }};
   display: flex;
   width: 95%;
   border-radius: 1rem;
-  border: 1px solid var(--search-wrapper-bg, #fff);
-  background: var(--search-wrapper-bg, #f5f5f5);
+  border: 1px solid var(--search-wrapper-bg);
+  background: var(--search-wrapper-bg);
   padding: 0 .5rem;
   transition: background-color .15s ease-in-out,border-color .15s ease-in-out;
   i {
     z-index: 2;
     font-size: .9rem;
-    color: var(--search-icon, #c2c6cc);
+    color: var(--search-icon-color);
   }
   .fa-times-circle { /* button 'clean up' */
     visibility: hidden;
@@ -311,7 +349,7 @@ $tab-count: {{ site.data.tabs | size }};
 }
 
 #search-cancel { /* 'Cancel' link */
-  color: var(--link-color, #2a408e);
+  color: var(--link-color);
   margin-left: 1rem;
   display: none;
 }
@@ -343,7 +381,7 @@ $tab-count: {{ site.data.tabs | size }};
     display: inline-block;
     line-height: 1rem;
     font-size: 1rem;
-    background: var(--tag-bg, #f8f9fa);
+    background: var(--search-tag-bg);
     border: none;
     padding: .5rem;
     margin: 0 1rem 1rem 0;
@@ -390,7 +428,7 @@ $tab-count: {{ site.data.tabs | size }};
   font-size: 1.1rem;
   font-weight: 600;
   font-family: sans-serif;
-  color: var(--text-color, rgb(78, 78, 78));
+  color: var(--topbar-text-color);
   text-align: center;
   width: 70%;
   overflow: hidden;
@@ -408,7 +446,7 @@ $tab-count: {{ site.data.tabs | size }};
   left: 0;
   height: 100%;
   width: 100%;
-  background: var(--mask-bg, #c1c3c5);
+  background: var(--mask-bg);
   opacity: 0.5;
   z-index: 1;
   @at-root .sidebar-expand~& {
@@ -419,7 +457,7 @@ $tab-count: {{ site.data.tabs | size }};
 /*--- main wrapper ---*/
 
 #main-wrapper {
-  background-color: var(--main-wrapper-bg, white);
+  background-color: var(--main-wrapper-bg);
   position: relative;
   min-height: 100%;
   padding-bottom: $footer-height;
@@ -462,12 +500,12 @@ footer {
   height: $footer-height;
   font-size: 0.8rem;
   color: #7a7b7d;
-  background-color: var(--main-wrapper-bg, #ffffff);
+  background-color: var(--footer-bg-color);
   >div.d-flex {
     line-height: 1.2rem;
     width: 95%;
     max-width: 1045px;
-    border-top: 1px solid var(--footer-border, #f3f3f3);
+    border-top: 1px solid var(--main-border-color);
     margin-bottom: 1rem;
     >div {
       width: 350px;
@@ -511,7 +549,7 @@ footer {
   }
   >div {
     padding-left: 1rem;
-    border-left: 1px solid rgba(158, 158, 158, 0.17);
+    border-left: 1px solid var(--main-border-color);
     &:not(:first-child) {
       margin-top: 4rem;
     }
@@ -540,7 +578,7 @@ footer {
     line-height: 1rem;
     font-size: 0.85rem;
     background: none;
-    border: 1px solid var(--main-border, #e9ecef);
+    border: 1px solid var(--btn-border-color);
     border-radius: .8rem;
     padding: .3rem .5rem;
     margin: 0 .35rem .5rem 0;
@@ -584,12 +622,12 @@ footer {
   z-index: 1;
   cursor: pointer;
   position: fixed;
-  background: var(--button-bg, #fff);
-  color: var(--text-color, #686868);
+  background: var(--button-bg);
+  color: var(--btn-backtotop-color);
   height: 2.6em;
   width: 2.7em;
   border-radius: 50%;
-  border: 1px solid var(--main-border, #f1f1f1);
+  border: 1px solid var(--btn-backtotop-border-color);
   transition: 0.2s ease-out;
   -webkit-transition: 0.2s ease-out;
 }
@@ -630,12 +668,12 @@ h5 {
 }
 
 blockquote {
-  border-left: 5px solid var(--blockquote-border, #eee);
+  border-left: 5px solid var(--blockquote-border-color);
   padding-left: 1rem;
-  color: var(--blockquote-text, #9a9a9a);
+  color: var(--blockquote-text-color);
   .post-content & {
     a {
-      color: var(--link-color, #2a408e);
+      color: var(--link-color);
     }
   }
 }
@@ -660,7 +698,7 @@ sup {
       margin-bottom: -.8rem;
     }
     &:target>p {
-      background-color: var(--footnote-target-bg, lightcyan);
+      background-color: var(--footnote-target-bg);
       width: fit-content;
       -webkit-transition: background-color 1.5s ease-in-out;
       /* Safari prior 6.1 */
@@ -677,7 +715,7 @@ sup {
     transition: background-color 1.5s ease-in-out;
   }
   @at-root sup:target>a#{&} {
-    background-color: var(--footnote-target-bg, lightcyan);
+    background-color: var(--footnote-target-bg);
     padding: 0 2px;
   }
 }
@@ -768,10 +806,10 @@ table {
         background-color: var(--tb-even-bg);
       }
       &:last-child:nth-child(2n) {
-        border-bottom: solid 1px var(--tb-odd-bg, rgba(210, 215, 217, 0.75));
+        border-bottom: solid 1px var(--tb-even-border-color);
       }
       &:nth-child(2n + 1) {
-        background-color: var(--tb-odd-bg, #f8f9fa);
+        background-color: var(--tb-odd-bg);
       }
     }
     th {
@@ -796,8 +834,8 @@ table {
   font-size: 0.85rem;
   word-spacing: 1px;
   a {
-    color: var(--link-color, #2a408e);
-    border-bottom: 1px dotted var(--link-underline-color, #c2c6cc);
+    color: var(--link-color);
+    border-bottom: 1px dotted var(--link-underline-color);
     &:not(:last-child) {
       margin-right: 2px;
     }
@@ -815,7 +853,7 @@ table {
   word-wrap: break-word;
   a {
     @extend %link-color;
-    border-bottom: 1px dotted var(--link-underline-color, #c2c6cc);
+    border-bottom: 1px dotted var(--link-underline-color);
     &:hover {
       @extend %link-hover;
     }
@@ -830,7 +868,7 @@ table {
   display: inline-block;
   min-width: 2rem;
   text-align: center;
-  background: var(--tag-bg, rgba(0, 0, 0, 0.075));
+  background: var(--tag-bg);
   border-radius: .34rem;
   padding: 0 .4rem;
   color: #818182;
@@ -885,7 +923,7 @@ table {
 }
 
 .btn-box-shadow {
-  box-shadow: 0 0 8px 0 var(--main-wrapper-bg, #eaeaea) !important;
+  box-shadow: 0 0 8px 0 var(--btn-box-shadow)!important;
 }
 
 .topbar-up {
@@ -914,7 +952,7 @@ table {
 
 .input-focus {
   box-shadow: none;
-  border-color: var(--input-focus-border, #e9ecef) !important;
+  border-color: var(--input-focus-border-color) !important;
   background: center !important;
 }
 
