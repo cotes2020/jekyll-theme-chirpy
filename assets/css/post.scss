@@ -7,7 +7,7 @@
   © 2019 Cotes Chung
   MIT License
 */
-@import "_variables";
+@import "_addon/variables";
 
 $prompt-older: "{{ site.data.label.post.button.previous }}";
 $prompt-newer: "{{ site.data.label.post.button.next }}";
