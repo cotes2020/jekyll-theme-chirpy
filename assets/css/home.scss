@@ -8,6 +8,7 @@
   MIT License
 */
 
+
 #post-list {
   margin-top: 1rem;
   padding-right: .5rem;
@@ -28,7 +29,7 @@
 .post-preview {
   padding-top: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(158, 158, 158, 0.17);
+  border-bottom: 1px solid var(--main-border-color);
   >h1 {
     font-size: 1.4rem;
     margin: 0;
@@ -39,7 +40,7 @@
   .post-content {
     margin-top: .6rem;
     margin-bottom: .6rem;
-    color: var(--text-color, dimgray);
+    color: var(--post-list-text-color);
     >p { /* Make preview shorter in Home page*/
       margin: 0;
       overflow: hidden;
@@ -53,7 +54,7 @@
 
 .page-item {
   .page-link {
-    color: var(--text-color, #555555);
+    color: var(--btn-patinator-text-color);
     width: 2.5rem;
     height: 2.5rem;
     padding: 0;
@@ -65,23 +66,23 @@
     -webkit-box-align: center;
     align-items: center;
     border-radius: 50%;
-    border: 1px solid var(--main-border, #f1f1f1);
+    border: 1px solid var(--btn-paginator-border-color);
     font-family: 'Lato', sans-serif;
     background-color: var(--button-bg);
   }
   &.active {
     .page-link {
-      background-color: var(--btn-active-bg, #2a408e);
-      border-color: var(--btn-active-border-color, #007bff);
-      box-shadow: 0 0 8px 0 var(--main-wrapper-bg, #4b92d2) !important;
-      color: var(--text-color, #f8f8f8);
+      background-color: var(--btn-active-bg);
+      border-color: var(--btn-active-border-color);
+      box-shadow: 0 0 8px 0 var(--btn-paginator-shadow) !important;
+      color: var(--btn-text-color);
     }
   }
   &.disabled {
     cursor: not-allowed;
     .page-link {
       color: rgba(108, 117, 125, 0.57);
-      border-color: var(--main-border, #f1f1f1);
+      border-color: var(--btn-paginator-border-color);
       background-color: var(--button-bg);
     }
   }

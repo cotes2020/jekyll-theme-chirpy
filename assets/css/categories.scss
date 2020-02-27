@@ -62,7 +62,7 @@
 
 @media (hover: hover) { // only works on desktop
   .category-trigger:hover {
-    background-color: var(--categories-hover-bg, #e9ecef);
+    background-color: var(--categories-hover-bg);
   }
 }
 

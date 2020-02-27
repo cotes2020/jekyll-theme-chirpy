@@ -9,68 +9,94 @@
 @mixin dark-scheme {
   /* framework */
   --main-wrapper-bg: rgb(27, 27, 30);
+  --body-bg: var(--main-wrapper-bg);
   --topbar-wrapper-bg: rgb(39, 40, 43);
   --search-wrapper-bg: rgb(34, 34, 39);
-  --search-icon: rgb(100, 102, 105);
-  --input-focus-border: rgb(112, 114, 115);
-  --footer-border: rgb(44, 45, 45);
+  --search-icon-color: rgb(100, 102, 105);
+  --input-focus-border-color: rgb(112, 114, 115);
   --mask-bg: rgb(68, 69, 70);
-
-  /* sidebar */
-  --nav-cursor: rgb(183, 182, 182);
-  --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
+  --footer-bg-color: var(--main-wrapper-bg);
 
   /* common color */
   --text-color: rgb(175, 176, 177);
   --text-muted-color: rgb(107, 116, 124);
   --link-color: rgb(138, 180, 248);
   --link-underline-color: rgb(99, 131, 182);
-  --main-border: rgb(63, 65, 68);
+  --main-border-color: rgb(44, 45, 45);
   --button-bg: rgb(39, 40, 33);
-  --blockquote-border: rgb(66, 66, 66);
-  --blockquote-text: rgb(117, 117, 117);
+  --blockquote-border-color: rgb(66, 66, 66);
+  --blockquote-text-color: rgb(117, 117, 117);
+
+  --btn-border-color: rgb(63, 65, 68);
+  --btn-backtotop-color: var(--text-color);
+  --btn-backtotop-border-color: var(--btn-border-color);
+  --btn-box-shadow: var(--main-wrapper-bg);
 
   --card-bg: rgb(39, 40, 33);
   --card-header-bg: rgb(51, 50, 50);
-  --relate-post-title: rgb(164, 175, 181);
+  --label-relate-post: rgb(164, 175, 181);
+
+  /* Sidebar */
+  --nav-cursor-color: rgb(183, 182, 182);
+  --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
+
+  /* Top Bar */
+  --topbar-text-color: var(--text-color);
 
   /* Home page */
-  --btn-active-bg: #1c345e;
-  --btn-active-border-color: #8ab4f8;
+  --post-list-text-color: rgb(175, 176, 177);
+  --btn-patinator-text-color: var(--text-color);
+  --btn-active-bg: rgba(28, 52, 94, 1);
+  --btn-active-border-color: rgb(66, 94, 138);
+  --btn-text-color: var(--text-color);
+  --btn-paginator-border-color: var(--btn-border-color);
+  --btn-paginator-shadow: var(--main-wrapper-bg);
 
-  /* posts */
+  /* Posts */
   --toc-highlight: rgb(116, 178, 243);
   --tag-bg: rgb(41, 40, 40);
   --tag-hover: rgb(43, 56, 62);
   --tb-odd-bg: rgba(52, 53, 42, 0.52); /* odd rows of the posts' table */
   --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
+  --tb-even-border-color: var(--tb-odd-bg);
+  --tb-even-border-color: var(--tb-odd-bg);
   --footnote-target-bg: rgb(63, 81, 181);
-  --btn-sharing: #6c757d;
+  --btn-share-color: #6c757d;
+  --btn-share-hover-color: #bfc1ca;
+  --relate-post-date: var(--text-muted-color);
+  --card-border-color: var(--main-wrapper-bg);
+  --card-box-shadow: var(--main-wrapper-bg);
 
   /* tags */
   --tag-border: rgb(59, 79, 88);
   --tag-shadow: rgb(32, 33, 33);
+  --search-tag-bg: var(--tag-bg);
+
+  --dash-color: rgb(63, 65, 68);
 
   /* categories */
+  --categories-border: rgb(64, 66, 69);
   --categories-hover-bg: rgb(73, 75, 76);
 
   /* archives */
   --timeline-node-bg: rgb(150, 152, 156);
+  --timeline-color: rgb(63, 65, 68);
+  --timeline-year-dot-color: var(--timeline-color);
 
   /* Footer */
   ---footer-link: rgb(146, 146, 146);
 
+
   hr {
-    border-color: var(--main-border);
+    border-color: var(--main-border-color);
   }
 
-  /* posts' toc */
+  /* posts' toc, override BS */
   nav[data-toggle=toc] .nav-link.active,
   nav[data-toggle=toc] .nav-link.active:focus,
   nav[data-toggle=toc] .nav-link.active:hover,
   nav[data-toggle=toc] .nav>li>a:focus,
   nav[data-toggle=toc] .nav>li>a:hover {
-    /* Override BS */
     color: var(--toc-highlight)!important;
     border-left-color: var(--toc-highlight)!important;
   }
@@ -86,17 +112,15 @@
       background-color: var(--card-header-bg);
     }
     .list-group-item {
-      // @extend %category-bg;
       border-left: none;
       border-right: none;
       padding-left: 2rem;
-      border-color: var(--main-border);
+      border-color: var(--categories-border);
       &:last-child {
         border-bottom-color: var(--card-bg);
       }
     }
   }
-
 
   #archives li:nth-child(odd) {
     background-image: linear-gradient(to left,
@@ -104,41 +128,3 @@
   }
 
 } // dark-scheme
-
-
-@mixin set-visible($light-display, $dark-display) {
-  [light-mode-invisible] {
-    display: $light-display;
-  }
-
-  [dark-mode-invisible] {
-    display: $dark-display;
-  }
-}
-
-@mixin mode-toggle($dark-mode: false) {
-  @if $dark-mode {
-    @include set-visible(inline-block, none);
-    @include dark-scheme;
-  } @else {
-    @include set-visible(none, inline-block);
-  }
-}
-
-html:not([mode]), html[mode=light] {
-  @include mode-toggle();
-}
-
-html[mode=dark] {
-  @include mode-toggle(true);
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not([mode]), html[mode=dark] {
-    @include mode-toggle(true);
-  }
-
-  html[mode=light] {
-    @include mode-toggle();
-  }
-}
