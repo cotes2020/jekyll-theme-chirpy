@@ -23,7 +23,7 @@
   {% endfor %}
 
   {% if lastmod_list.size > 0 %}
-    <div id="access-lastmod" class="post mb-4">
+    <div id="access-lastmod" class="post">
       <h3 data-toc-skip>
         {{- site.data.label.panel.lastmod -}}
       </h3>
@@ -57,7 +57,7 @@
 
   {% if page.layout == 'post' and site.toc and page.toc %}
   <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
-    <h3 data-toc-skip class="pl-3 pt-2">
+    <h3 data-toc-skip class="pl-3 pt-2 mb-3">
       {{- site.data.label.panel.toc -}}
     </h3>
     <nav id="toc" data-toggle="toc"></nav>
