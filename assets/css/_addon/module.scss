@@ -29,18 +29,27 @@
   color: var(--link-color);
 }
 
+%link-underline {
+  border-bottom: 1px solid var(--link-underline-color);
+}
+
 %no-bottom-border {
   border-bottom: none;
 }
 
 %section {
-  line-height: 1.2;
-  margin-bottom: 1rem;
+  #post-wrapper & {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
 }
 
 %anchor {
-  padding-top: 3.5rem;
-  margin-top: -2.5rem;
+  #post-wrapper &,
+  #page & {
+    padding-top: 3.5rem;
+    margin-top: -2.5rem;
+  }
 }
 
 %footer-content {
