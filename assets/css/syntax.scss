@@ -107,7 +107,13 @@ code {
     padding: 2px 4px;
     margin: 0 .3rem;
     border-radius: 4px;
-    border: 1px solid var(--code-highlighter-rouge); //var(--highlight-pre-bg, #e9ecef);
+    border: 1px solid var(--code-highlighter-rouge);
+  }
+  @at-root a>&.highlighter-rouge {
+    padding-bottom: 0; // show link's underlinke
+  }
+  @at-root a:hover>&.highlighter-rouge {
+    border-bottom: none;
   }
 }
 

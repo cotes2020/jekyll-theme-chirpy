@@ -7,6 +7,7 @@
   © 2019 Cotes Chung
   MIT License
 */
+@import "_addon/module";
 
 #page-category, #page-tag {
   ul>li {
@@ -25,6 +26,7 @@
     }
     >a { /* post's title */
       font-size: 1.1rem;
+      @extend %no-bottom-border;
     }
     >span:last-child {
       white-space: nowrap;
