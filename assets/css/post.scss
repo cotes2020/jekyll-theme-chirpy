@@ -216,16 +216,24 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 .share-wrapper {
   vertical-align: middle;
   user-select: none;
-  .share-icon {
+  .share-icons {
     font-size: 1.2rem;
-    a:hover {
-      text-decoration: none;
-      >i {
-        @extend %btn-share-hovor;
+    a {
+      &:not(:last-child) {
+        margin-right: .25rem;
+      }
+      &:hover {
+        text-decoration: none;
+        >i {
+          @extend %btn-share-hovor;
+        }
       }
     }
-    i:hover {
-      @extend %btn-share-hovor;
+    >i {
+      padding-top: .35rem;
+      &:hover {
+        @extend %btn-share-hovor;
+      }
     }
     .fab {
       &.fa-twitter {
@@ -242,7 +250,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
       }
     }
 
-  } // .share-icon
+  } // .share-icons
 
   .fas.fa-link {
     @include btn-sharing-color(rgb(171, 171, 171));
