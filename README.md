@@ -122,13 +122,27 @@ As mentioned above, some files or directories should be removed from your repo:
 
 Basically, go to `_config.yml` and customize the variables as needed, some of them are typical options:
 
-* Avatar
-    
-    `avatar` defines the source image location. The sample image is `/assets/img/sample/avatar.jpg`. It should be replaced by your own one. Notice that a huge image file will increase the load time of your site, so keep your avatar size as samll as possible(may be *<https://tinypng.com/>* will help).
+* `url`
+	
+	Set to your website domain and there should be no slash symbol at the tail.
 
-* TimeZone
+
+* `avatar`
+    
+    It defines the image file location of avatar. The sample image is `/assets/img/sample/avatar.jpg`, and should be replaced by your own one(a square image). Notice that a huge image file will increase the load time of your site, so keep your avatar image size as samll as possible(may be *<https://tinypng.com/>* will help).
+
+* `timezone`
 
     To ensure that the posts' release date matches the city you live in, please modify the field `timezone` correctly. A list of all available values can be found on [TimezoneConverter](http://www.timezoneconverter.com/cgi-bin/findzone/findzone) or [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
+* `theme_mode`
+  
+	There are three options for the theme color scheme:
+	
+	- **dual** 	- The default color scheme will follow the system settings, but if the system does not support dark mode, or the browser does not support `Media Queries Level 5`, the theme will be displayed as `light` mode by default. Anyway, the bottom left corner of the Sidebar will provide a button for users to switch color schemes.
+
+	- **dark**	- Always show dark mode.
+	- **light**	- Always show light mode.
 
 
 ###  Run Locally
@@ -168,7 +182,17 @@ $ bash tools/init.sh
 
 >**Note**: The *Recent Update* requires the posts' latest git-log date, so make sure the changes in `_posts` have been committed before running this command.
 
-it will automatically generates the *Latest Modified Date* and *Categories / Tags* page for the posts.
+it will automatically generates the *Latest Modified Date* and *Categories / Tags* page for the posts and submit a commit. Its output is similar to the following log:
+
+```terminal
+[INFO] Success to update lastmod for 4 post(s).
+[INFO] Succeed! 3 category-pages created.
+[INFO] Succeed! 4 tag-pages created.
+[Automation] Updated the Categories, Tags, Lastmod for post(s).
+ 11 files changed, 46 insertions(+), 3 deletions(-)
+ ...
+Updated the Categories, Tags, Lastmod for post(s).
+```
 
 **3**. Push the changes to `origin/master` then go to GitHub website and enable GitHub Pages service for the repo.
 
