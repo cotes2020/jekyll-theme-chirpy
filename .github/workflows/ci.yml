@@ -1,17 +1,21 @@
 name: build
 on:
   push:
+    branches-ignore:
+      - stable
+    tags-ignore:
+      - '*'
     paths-ignore:
-    - '.github/**'
-    - '!.github/workflows/**'
-    - '.travis.yml'
-    - '.gitignore'
-    - 'docs/**'
-    - 'README.md'
-    - 'LICENSE'
+      - '.github/**'
+      - '!.github/workflows/**'
+      - '.travis.yml'
+      - '.gitignore'
+      - 'docs/**'
+      - 'README.md'
+      - 'LICENSE'
   pull_request:
     paths:
-    - "**"
+      - "**"
 
 jobs:
   ci:
