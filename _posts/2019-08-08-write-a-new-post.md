@@ -7,7 +7,7 @@ tags: [writing]
 
 ## Naming and Path
 
-Create a new file name with the format `YYYY-MM-DD-title.md` then put it into `_post` of the root directory.
+Create a new file named with the format `YYYY-MM-DD-title.md` then put it into `_post` of the root directory.
 
 ## Front Matter
 
@@ -18,15 +18,57 @@ Basically, you need to fill the [Front Matter](https://jekyllrb.com/docs/front-m
 title: TITLE
 date: YYYY-MM-DD HH:MM:SS +/-TTTT
 categories: [TOP_CATEGORIE, SUB_CATEGORIE]
-tags: [TAG]
+tags: [TAG]     # TAG names should always be lowercase
 ---
 ```
 
 > **Note**: The posts' ***layout*** has been set to `post` by default, so there is no need to add the variable ***layout*** in Front Matter block.
 
+- **Timezone of date**
+
+    In order to accurately record the release date of a post, you should not only setup the `timezone` of `_config.yml` but also provide the the post's timezone in field `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
+
 - **Categories and Tags**
 
-    The `categories` of each post is designed to contain up to two elements, and the number of elements in `tag` can be zero or infinite.
+    The `categories` of each post is designed to contain up to two elements, and the number of elements in `tags` can be zero to infinity.
+
+    The list of posts belonging to the same category/tag is recorded on a separate page. The number of such *category*/*tag* type pages is equal to the number of `categories`/`tags` for all posts, they must match perfectly. 
+
+    let's say there is a post with front matter:
+```yaml
+categories: [Animal, Insect]
+tags: bee
+```
+
+    then we should have two *category* type pages placed in folder `categories` of root and one *tag* type page placed in folder `tags`  of root:
+```terminal
+jekyll-theme-chirpy
+├── categories
+│   ├── animal.html
+│   └── tutorial.html
+├── tags
+│   └── bee.html
+```
+    
+    and the content of a *category* type page is
+```yaml
+---
+layout: category
+title: CATEGORY_NAME        # e.g. Insect
+category: CATEGORY_NAME     # e.g. Insect
+---
+```
+
+    the content of a *tag* type page is
+```yaml
+---
+layout: tag
+title: TAG_NAME             # e.g. bee
+category: TAG_NAME          # e.g. bee
+---
+```
+
+    With the increasing number of posts, the number of categories and tags will increase several times!  If we still manually create these *category*/*tag* type files, it will obviously be a super time-consuming job, and it is very likely to miss some of them(i.e. when you click on the missing `category` or `tag` link from a post or somewhere, it will complain to you '404'). The good news is that we got a lovely script tool to finish the pages creation stuff: `tools/init.sh`. See its usage [here]({{ "/posts/getting-started/#option-1-built-by-github-pages" | relative_url }}).
 
 ## Table of Contents
 
