@@ -14,7 +14,7 @@ If you are willing to improve some of the existing code, such as performance opt
 
 ## Feature Request
 
-Basically, it is recommended to first submit a `Feature Request` issue to discuss whether your idea fits the project. Once the discussion is complete and the request is approved, fork this project, complete the development of new features, and submit a Pull Request. What's more, the PR should be merged into `master` branch without conflict.
+Basically, to ensure that the blog design is not confused, we do not accept suggestions for design changes, such as colors scheme, fonts, typography, etc. As long as your request is not a design issue, it is recommended to first submit a `Feature Request` issue to discuss whether your idea fits the project. Once the discussion is complete and the request is approved, fork this project, complete the development of new features, and submit a `Pull Request`. What's more, the PR should be merged into `master` branch without conflict.
 
 
 ---
