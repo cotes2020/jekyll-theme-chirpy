@@ -21,21 +21,18 @@
     border-left: none;
     border-right: none;
     padding-left: 2rem;
+    >i {
+      @extend %category-icon-color;
+    }
+    &:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
   }
 
   .card-header>span>i:first-child {
     @extend %category-icon-color;
-  }
-
-  .list-group-item {
-    >i {
-      @extend %category-icon-color;
-    }
-    .collapsing &:first-child,
-    .collapse &:first-child {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
   }
 
   i {
