@@ -121,7 +121,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   border-left: 1px solid rgba(158, 158, 158, 0.17);
   position: -webkit-sticky;
   position: sticky;
-  top: 2rem;
+  top: 4rem;
   transition: top 0.2s ease-in-out;
   animation: fade-up .8s;
   &.topbar-down {
