@@ -8,7 +8,7 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: Chirpy                          # the main title
+title: Lê Công Tráng                          # the main title
 
 tagline: A text-focused Jekyll theme.  # it will display as the sub-title
 
@@ -18,9 +18,9 @@ description: >-                        # used by seo meta and the atom feed
   and focuses on text presentation.
 
 # Replace with your domain, e.g. 'https://username.github.io'
-url: 'protocol://domain'
+url: 'protocol://tranglc.github.io'
 
-author: your_full_name                  # change to your full name
+author: Lê Công Tráng                  # change to your full name
 
 avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
