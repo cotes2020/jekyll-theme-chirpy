@@ -28,3 +28,8 @@
   icon: "fas fa-info"
   path: tabs
   url: about
+-
+  name: "Gallery"
+  icon: "fas fa-info"
+  path: tabs
+  url: gallery
