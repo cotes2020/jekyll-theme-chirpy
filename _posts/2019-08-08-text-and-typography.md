@@ -150,7 +150,14 @@ fi;
   </div>
 </div>
 ```
+```c
+#include<stdio.h>
 
+int main(void){
+  printf("Hello World!);
+  return 0;
+}
+```
 
 ## Reverse Footnote
 
