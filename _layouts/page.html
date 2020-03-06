@@ -25,14 +25,14 @@ layout: default
 
 </div>
 
+{% if site.disqus.comments and page.comments %}
 <div class="row">
   <div class="col-12 col-lg-11 col-xl-8">
     <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
 
-      {% if site.disqus.comments and page.comments %}
-        {% include disqus.html %}
-      {% endif %}
+    {% include disqus.html %}
 
     </div> <!-- .pl-1 pr-1 -->
   </div> <!-- .col-12 -->
 </div> <!-- .row -->
+{% endif %}
