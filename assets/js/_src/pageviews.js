@@ -11,9 +11,9 @@
  * MIT License
  */
 
-function countUp(min, max, dest) {
+function countUp(min, max, destId) {
   if (min < max) {
-    var numAnim = new CountUp(dest, min, max);
+    var numAnim = new CountUp(destId, min, max);
     if (!numAnim.error) {
       numAnim.start();
     } else {
@@ -21,6 +21,7 @@ function countUp(min, max, dest) {
     }
   }
 }
+
 
 function countPV(path, rows) {
   /* path permalink looks like: '/posts/post-title/' */
@@ -43,6 +44,21 @@ function countPV(path, rows) {
 }
 
 
+function tacklePV(rows, path, elem, hasInit) {
+  var count = countPV(path, rows);
+  count = (count == 0 ? 1 : count);
+
+  if (!hasInit) {
+    elem.text(new Intl.NumberFormat().format(count));
+  } else {
+    var initCount = parseInt(elem.text().replace(/,/g, ''));
+    if (count > initCount) {
+      countUp(initCount, count, elem.attr('id'));
+    }
+  }
+}
+
+
 function displayPageviews(data) {
   if (data === undefined) {
     return;
@@ -54,32 +70,12 @@ function displayPageviews(data) {
   if ($("#post-list").length > 0) { // the Home page
     $(".post-preview").each(function() {
       var path = $(this).children("h1").children("a").attr("href");
-      var count = countPV(path, rows);
-      count = (count == 0 ? 1 : count);
-
-      if (!hasInit) {
-        $(this).find('.pageviews').text(count);
-      } else {
-        var initCount = parseInt($(this).find('.pageviews').text());
-        if (count > initCount) {
-          countUp(initCount, count, $(this).find('.pageviews').attr('id'));
-        }
-      }
+      tacklePV(rows, path, $(this).find('.pageviews'), hasInit);
     });
 
   } else if ($(".post").length > 0) { // the post
     var path = window.location.pathname;
-    var count = countPV(path, rows);
-    count = (count == 0 ? 1 : count);
-
-    if (!hasInit) {
-      $('#pv').text(count);
-    } else {
-      var initCount = parseInt($('#pv').text());
-      if (count > initCount) {
-        countUp(initCount, count, 'pv');
-      }
-    }
+    tacklePV(rows, path, $('#pv'), hasInit);
   }
 
 }
@@ -119,5 +115,4 @@ $(function() {
     });
 
   } // endif
-
 });
