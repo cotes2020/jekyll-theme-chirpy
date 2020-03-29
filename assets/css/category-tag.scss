@@ -47,6 +47,7 @@ a:hover {
   #page-category &,
   #page-tag &,
   #access-lastmod & {
+    @extend %link-hover;
     margin-bottom: -1px; // Avoid jumping
   }
 }
