@@ -17,7 +17,7 @@ description: >-                        # used by seo meta and the atom feed
   bootstrap Jekyll theme with responsive web design
   and focuses on text presentation.
 
-# Replace with your domain, e.g. 'https://username.github.io'
+# Replace with the website url, e.g. 'https://username.github.io'
 url: 'protocol://domain'
 
 author: your_full_name                  # change to your full name

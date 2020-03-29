@@ -77,7 +77,7 @@ Basically, go to `_config.yml` and customize the variables as needed, some of th
 
 * `url`
     
-    Set to your website domain and there should be no slash symbol at the tail.
+    Set to your website url and there should be no slash symbol at the tail. Format: `<protocol>://<domain>`.
 
 
 * `avatar`
