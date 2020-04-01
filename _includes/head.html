@@ -34,9 +34,9 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-    {% if site.google_analytics.proxy_baseurl and site.google_analytics.pv %}
-      <link rel="preconnect" href="{{ site.google_analytics.proxy_baseurl }}" crossorigin="use-credentials">
-      <link rel="dns-prefetch" href="{{ site.google_analytics.proxy_baseurl }}">
+    {% if site.google_analytics.pv.proxy_url and site.google_analytics.pv.enabled %}
+      <link rel="preconnect" href="{{ site.google_analytics.pv.proxy_url }}" crossorigin="use-credentials">
+      <link rel="dns-prefetch" href="{{ site.google_analytics.pv.proxy_url }}">
     {% endif %}
   {% endif %}
 
@@ -122,7 +122,8 @@
 
   {% if page.layout == 'home' or page.layout == 'post' %}
     <script src="{{ site.baseurl }}/assets/js/dist/timeago.min.js" async></script>
-    {% if site.google_analytics.pv %}
+    {% if site.google_analytics.pv.enabled %}
+      <script src="{{ site.baseurl }}/assets/data/pv-data.json"></script>
       <script src="{{ site.baseurl }}/assets/lib/countUp.min.js" async></script>
       <script src="{{ site.baseurl }}/assets/js/dist/pageviews.min.js" async></script>
     {% endif %}
