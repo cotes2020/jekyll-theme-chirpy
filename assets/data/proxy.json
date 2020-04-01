@@ -1,6 +1,0 @@
----
----
-
-{
-  "proxyUrl": "{{ site.google_analytics.proxy_url }}"
-}

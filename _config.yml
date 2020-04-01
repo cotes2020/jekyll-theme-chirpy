@@ -55,12 +55,14 @@ google_analytics:
   # Fill with your Google Analytics ID
   id: ''
   # The Google Analytics pageviews switch.
-  # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
-  pv: false
-  # superProxy baseURL and URL, only valid when `google_analytics.pv` is set to 'true'
-  proxy_baseurl: ''
-  proxy_url: ''
 
+  pv:
+    # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
+    enabled: false
+    # the next options only valid when `google_analytics.pv` is enabled.
+    proxy_url: ''
+    proxy_endpoint: ''
+    cache: false  # pv data local cache, good for the users from GFW area.
 
 disqus:
   comments: false  # boolean type, the global switch for posts comments.
