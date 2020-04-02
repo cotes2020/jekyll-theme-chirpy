@@ -16,13 +16,13 @@ MIT License
 
 
 import os
-import glob
 import shutil
 import sys
 import subprocess
 
 from ruamel.yaml import YAML
 from utils.common import get_yaml
+from utils.common import get_makrdown_files
 from utils.common import check_py_version
 
 
@@ -64,7 +64,10 @@ def get_categories():
 
     for dir in POSTS_DIR:
         path = get_path(dir)
-        for file in glob.glob(os.path.join(path, '*.md')):
+        posts = get_makrdown_files(path)
+
+        for file in posts:
+
             meta = yaml.load(get_yaml(file)[0])
 
             if 'category' in meta:
@@ -98,6 +101,10 @@ def get_categories():
 
 def generate_category_pages(is_verbose):
     categories = get_categories()
+
+    if len(categories) <= 0:
+        return
+
     path = get_path(CATEGORIES_DIR)
 
     if os.path.exists(path):
@@ -129,7 +136,9 @@ def get_all_tags():
 
     for dir in POSTS_DIR:
         path = get_path(dir)
-        for file in glob.glob(os.path.join(path, '*.md')):
+        posts = get_makrdown_files(path)
+
+        for file in posts:
             meta = yaml.load(get_yaml(file)[0])
 
             if 'tags' in meta:
@@ -145,6 +154,10 @@ def get_all_tags():
 
 def generate_tag_pages(is_verbose):
     all_tags = get_all_tags()
+
+    if len(all_tags) <= 0:
+        return
+
     tag_path = get_path(TAG_DIR)
 
     if os.path.exists(tag_path):
