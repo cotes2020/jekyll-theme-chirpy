@@ -16,7 +16,6 @@ Licensed under MIT
 """
 
 import sys
-import glob
 import os
 import getopt
 import subprocess
@@ -28,6 +27,7 @@ from enum import Enum
 from ruamel.yaml import YAML
 
 from utils.common import get_yaml
+from utils.common import get_makrdown_files
 from utils.common import check_py_version
 
 
@@ -48,11 +48,11 @@ def help():
           "'git' for git-log, 'fs' for filesystem, default to 'git'.\n")
 
 
-def update_lastmod(path, verbose, date):
+def update_lastmod(posts, verbose, date):
     count = 0
     yaml = YAML()
 
-    for post in glob.glob(path):
+    for post in posts:
 
         lastmod = ''
 
@@ -127,7 +127,8 @@ def update_lastmod(path, verbose, date):
 def main(argv):
     check_py_version()
 
-    path = os.path.join(POSTS_PATH, "*.md")
+    specific = False
+    posts = []
     verbose = False
     date = Date.GIT
 
@@ -145,10 +146,12 @@ def main(argv):
             sys.exit()
 
         elif opt == '-f' or opt == '--file':
-            path = arg
+            posts.append(arg)
+            specific = True
 
         elif opt == '-d' or opt == '--dir':
-            path = os.path.join(arg, "*.md")
+            posts = get_makrdown_files(arg)
+            specific = True
 
         elif opt == '-v' or opt == '--verbose':
             verbose = True
@@ -162,7 +165,10 @@ def main(argv):
                 help()
                 sys.exit(2)
 
-    update_lastmod(path, verbose, date)
+    if not specific:
+        posts = get_makrdown_files(POSTS_PATH)
+
+    update_lastmod(posts, verbose, date)
 
 
 main(sys.argv[1:])

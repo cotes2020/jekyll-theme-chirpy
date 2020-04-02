@@ -15,9 +15,9 @@ LASTMOD=false
 WORK_DIR=$(dirname $(dirname $(realpath "$0")))
 
 check_status() {
-  if [[ ! -z $(git status -s) ]]; then
-    echo "Warning: Commit the changes of the repository first."
-    git status -s
+  if [[ ! -z $(git status _posts -s) ]]; then
+    echo "Warning: Commit the changes of the directory '_posts' first."
+    git status -s | grep '_posts'
     exit 1
   fi
 }
