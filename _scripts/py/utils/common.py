@@ -11,6 +11,8 @@ MIT License
 '''
 
 import sys
+import os
+import glob
 
 
 def get_yaml(path):
@@ -35,6 +37,16 @@ def get_yaml(path):
             yaml += line
 
     return yaml, num
+
+
+def get_makrdown_files(path):
+    MD_EXTENSIONS = ["md", "markdown", "markdn", "mdown"]
+    ret_files = []
+
+    for extension in MD_EXTENSIONS:
+        ret_files.extend(glob.glob(os.path.join(path, "*." + extension)))
+
+    return ret_files
 
 
 def check_py_version():
