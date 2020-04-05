@@ -77,7 +77,6 @@
 
   /*-----  My styles ------*/
 
-  --code-highlighter-rouge: #272822;
   --highlight-bg-color: #272822;
   --highlighter-rouge-color: #de6b18;
 
@@ -85,7 +84,6 @@
   --highlight-lineno-border-color: #3c4042;
 
   .highlight {
-    @include highlight-box-shadow(none);
     .gp { color: #818c96; }
   }
   pre { color: #818c96 } /* override Bootstrap */
