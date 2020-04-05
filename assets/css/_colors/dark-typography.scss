@@ -58,8 +58,7 @@
   --tag-hover: rgb(43, 56, 62);
   --tb-odd-bg: rgba(52, 53, 42, 0.52); /* odd rows of the posts' table */
   --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
-  --tb-even-border-color: var(--tb-odd-bg);
-  --tb-even-border-color: var(--tb-odd-bg);
+  --tb-border-color: var(--tb-odd-bg);
   --footnote-target-bg: rgb(63, 81, 181);
   --btn-share-color: #6c757d;
   --btn-share-hover-color: #bfc1ca;
