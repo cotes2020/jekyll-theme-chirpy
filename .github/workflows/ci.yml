@@ -45,7 +45,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
-      - id: get-pip-cache-path
+      - name: Get pip cache path
+        id: get-pip-cache-path
         run: |
           echo "::set-output name=path::`pip show pip | grep "Location" | awk '{print $2}'`"
 
