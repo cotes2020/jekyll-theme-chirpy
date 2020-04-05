@@ -1,10 +1,10 @@
-# Jekyll Theme Chirpy
+# Chirpy
+
+语言: [English](../README.md) | **简体中文**
 
 [![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=event%3Apush)
 [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
 [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
-
-选择语言: [English](../README.md) | 简体中文
 
 一个不一样的 Jekyll 主题（内附神秘工具），采用响应式设计，方便记录、管理、分享你的知识和经验。
 
@@ -24,8 +24,7 @@
 * SEO 优化
 * 网站性能优化
 
-
-[![devices-mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
+[![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
 
 ## 目录
 
