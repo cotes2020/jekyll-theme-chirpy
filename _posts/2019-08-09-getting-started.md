@@ -73,7 +73,7 @@ As mentioned above, some files or directories should be removed from your repo:
 
 ## Configuration
 
-Basically, go to `_config.yml` and customize the variables as needed, some of them are typical options:
+Basically, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
 
 * `url`
     
@@ -112,7 +112,7 @@ Few days later, you may find that the file changes does not refresh in real time
 
 ##  Deploying to GitHub Pages
 
-Before the deployment begins, ensure the `url` in file `_config.yml` has been set to `https://<username>.github.io`(or the custom domain, if you have. e.g. `https://yourdomain.com`). What's more, if you prefer to the [Project site](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites), change `baseurl` of file `_config.yml` to your project name, starting with a slash. e.g. `/project`.
+Before the deployment begins, checkout the file `_config.yml` and make sure that the `url` has been configured. What's more, if you prefer the [Project site on GitHub](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and also use the default domain `<username>.github.io`, remember to change the `baseurl` to your project name that starting with a slash. For example, `/project`.
 
 
 ### Option 1: Built by GitHub Pages
@@ -126,7 +126,7 @@ By deploying the site in this way, you're allowed to push the source code direct
 |Site Type | Repo's Name|
 |:---|:---|
 |User or Organization | `<username>.github.io`|
-|Project| any one except `<username>.github.io`, let's say `project`|
+|Project| Any one except `<username>.github.io`, let's say `project`|
 
 **2**. Commit the changes of the repo first, then run the initialization script:
 
@@ -168,7 +168,7 @@ For security reasons, GitHub Pages runs on `safe` mode, which means the third-pa
 |Site Type | Repo's Name|
 |:---|:---|
 |User or Organization | `<username>.github.io`|
-|Project| any one except `<username>.github.io`, let's say `project`|
+|Project| Any one except `<username>.github.io`, let's say `project`|
 
 and clone it.
 
@@ -189,4 +189,6 @@ The generated static files will be placed in the root of `/path/to/local/project
 |User or Organization | `https://<username>.github.io/`|
 |Project| `https://<username>.github.io/project/`|
 
-and enjoy!
+### Finishing work
+
+No matter which way you choose to deploy the website on GitHub, please enforce the `HTTPS` for it. See official docs: [Configuring a publishing source for your GitHub Pages site](https://help.github.com/en/github/working-with-github-pages/securing-your-github-pages-site-with-https).
