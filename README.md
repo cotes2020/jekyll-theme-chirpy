@@ -1,30 +1,29 @@
-# Jekyll Theme Chirpy
+# Chirpy
+
+Language: **English** | [简体中文](docs/README_zh-CN.md)
 
 [![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=event%3Apush)
 [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
 [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-Language: English | [简体中文](docs/README_zh-CN.md)
-
-A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text exhibition. It will help you easily record and share your knowledge. 
+A minimal, sidebar, responsive web design Jekyll theme, focusing on text presentation. Aim to help you easily record and share your knowledge.
 
 **Features**
 
-* Auto Dark Mode
-* Posts' Last Modified Date
+* Configurable theme mode
+* Two-level Categories
+* Last modified date for posts
 * Table of Contents
-* Automatically Recommend Related Posts
+* Automatically recommend related posts
 * Syntax highlighting
-* Two Level Categories
 * Search
 * Atom Feeds
 * Disqus Comments
 * Google Analytics
-* GA Pageviews (Advanced)
-* SEO Tag
-* Performance Optimization
+* GA Pageviews reporting (Advanced)
+* SEO and Performance Optimization
 
-[![devices-mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
+[![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
 
 ## Table of Contents
 
@@ -118,7 +117,7 @@ As mentioned above, some files or directories should be removed from your repo:
 
 ### Customization
 
-Basically, go to `_config.yml` and customize the variables as needed, some of them are typical options:
+Basically, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
 
 * `url`
 	
@@ -157,7 +156,7 @@ Few days later, you may find that the file modification(e.g. edits to a post) do
 
 ###  Deploying to GitHub Pages
 
-Before the deployment begins, ensure the `url` in file `_config.yml` has been set to `https://<username>.github.io`(or the custom domain, if you have. e.g. `https://yourdomain.com`). What's more, if you prefer to the [Project site](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites), change `baseurl` of file `_config.yml` to your project name, starting with a slash. e.g. `/project`.
+Before the deployment begins, checkout the file `_config.yml` and make sure that the `url` has been configured. What's more, if you prefer the [Project site on GitHub](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and also use the default domain `<username>.github.io`, remember to change the `baseurl` to your project name that starting with a slash. For example, `/project`.
 
 #### Option 1: Built by GitHub Pages
 
@@ -170,7 +169,7 @@ By deploying the site in this way, you're allowed to push the source code direct
 |Site Type | Repo's Name|
 |:---|:---|
 |User or Organization | `<username>.github.io`|
-|Project| any one except `<username>.github.io`, let's say `project`|
+|Project| Any one except `<username>.github.io`, let's say `project`|
 
 **2**. Commit the changes of the repo first, then run the initialization script:
 
@@ -211,7 +210,7 @@ For security reasons, GitHub Pages runs on `safe` mode, which means the third-pa
 |Site Type | Repo's Name|
 |:---|:---|
 |User or Organization | `<username>.github.io`|
-|Project| any one except `<username>.github.io`, let's say `project`|
+|Project| Any one except `<username>.github.io`, let's say `project`|
 
 and clone it.
 
@@ -232,7 +231,10 @@ The generated static files will be placed in the root of `/path/to/local/project
 |User or Organization | `https://<username>.github.io/`|
 |Project| `https://<username>.github.io/project/`|
 
-and enjoy!
+#### Finishing work
+
+No matter which way you choose to deploy the website on GitHub, please enforce the `HTTPS` for it. See official docs: [Configuring a publishing source for your GitHub Pages site](https://help.github.com/en/github/working-with-github-pages/securing-your-github-pages-site-with-https).
+
 
 ### Documentation
 
@@ -240,7 +242,7 @@ For more details and the better reading experience, please check out the [tutori
 
 ## Contributing
 
-The old saying: "Two heads are better than one. Five heads are better than two." So, welcome to report bugs, improve code quality or submit a new feature. For more information, see [contributing guidelines](.github/CONTRIBUTING.md).
+The old saying, "Two heads are better than one." Consequently, welcome to report bugs, improve code quality or submit a new feature. For more information, see [contributing guidelines](.github/CONTRIBUTING.md).
 
 
 ## Credits
