@@ -791,11 +791,11 @@ table {
       &:nth-child(2n) {
         background-color: var(--tb-even-bg);
       }
-      &:last-child:nth-child(2n) {
-        border-bottom: solid 1px var(--tb-even-border-color);
-      }
       &:nth-child(2n + 1) {
         background-color: var(--tb-odd-bg);
+      }
+      & {
+        border-bottom: 1px solid var(--tb-border-color);
       }
     }
     th {
