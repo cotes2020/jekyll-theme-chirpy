@@ -1475,6 +1475,10 @@ table {
      - (1920px - #{$sidebar-width-large}) ) /* 100% - 350px - (1920px - 350px); */
   }
 
+  #topbar {
+    max-width: calc(#{$main-content-max-width} + 20px)
+  }
+
   #main>div.row {
     padding-left: calc((100% - #{$main-content-max-width} - 2%) / 2);
   }
