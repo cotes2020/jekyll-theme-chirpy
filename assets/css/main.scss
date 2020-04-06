@@ -752,9 +752,6 @@ a {
       @extend %no-bottom-border;
     }
   }
-  .license-wrapper .license-text &:hover {
-    @extend %link-hover;
-  }
 
 } // a
 
@@ -857,13 +854,14 @@ table {
   min-width: 2rem;
   text-align: center;
   background: var(--tag-bg);
-  border-radius: .34rem;
+  border-radius: .3rem;
   padding: 0 .4rem;
   color: #818182;
-  line-height: 1.6rem;
-  &:not(:first-child) {
-    margin-left: .2rem;
+  line-height: 1.3rem;
+  &:not(:last-child) {
+    margin-right: .2rem;
   }
+
   &:hover {
     @extend %tag-hover;
     border-bottom: none;
