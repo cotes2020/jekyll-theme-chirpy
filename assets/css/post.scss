@@ -8,6 +8,7 @@
   MIT License
 */
 @import "_addon/variables";
+@import "_addon/module";
 
 $prompt-older: "{{ site.data.label.post.button.previous }}";
 $prompt-newer: "{{ site.data.label.post.button.next }}";
@@ -26,6 +27,10 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   border-color: var(--btn-border-color);
 }
 
+.author {
+  font-weight: 600;
+}
+
 .post img {
   margin-top: .5rem;
   margin-bottom: 1.5rem;
@@ -40,9 +45,13 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 }
 
 .post-tail-wrapper {
-  margin-top: 5rem;
+  margin-top: 4rem;
   border-bottom: 1px double var(--main-border-color);
   font-size: 0.85rem;
+}
+
+.post-tags {
+  line-height: 2rem;
 }
 
 .post-navigation {
@@ -268,8 +277,11 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
 .license-wrapper {
   line-height: 1.2rem;
-  .license-text>a {
+  >a {
     font-weight: 600;
+    &:hover {
+      @extend %link-hover;
+    }
   }
   i {
     font-weight: 400;
@@ -282,10 +294,11 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
 @media all and (max-width: 576px) {
   .post-tail-bottom {
-    -ms-flex-wrap: wrap!important;
-    flex-wrap: wrap!important;
+    -ms-flex-wrap: wrap-reverse!important;
+    flex-wrap: wrap-reverse!important;
     >div:first-child {
-      margin-bottom: 1rem;
+      width: 100%;
+      margin-top: 1rem;
     }
   }
 }

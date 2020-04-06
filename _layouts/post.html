@@ -16,24 +16,42 @@ layout: default
       <h1 data-toc-skip>{{ page.title }}</h1>
 
       <div class="post-meta text-muted d-flex flex-column">
-        <!-- Published Date and Categoreis -->
+        <!-- Published date and author -->
         <div>
+          Posted
           <span class="timeago" data-toggle="tooltip" data-placement="bottom"
            title="{{ page.date | date: site.data.date_format.tooltip }}">
             {{ page.date | date: site.data.date_format.post }}
             <i class="unloaded">{{ page.date | date_to_xmlschema }}</i>
           </span>
-          {% if page.categories.size > 0 %}on{% endif %}
-          {% for category in page.categories %}
-            <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase | url_encode }}/'>{{ category }}</a>
-            {%- unless forloop.last -%}, {%- endunless -%}
-          {% endfor %}
+          by
+          <span class="author">
+          {% if page.author %}
+            {{ page.author }}
+          {% else%}
+            {{ site.author }}
+          {% endif %}
+          </span>
         </div>
+
+        <!-- lastmod -->
+        {% if page.seo.date_modified > page.date %}
+        <div>
+          Updated
+          <span class="timeago lastmod"
+            data-toggle="tooltip" data-placement="bottom"
+             title="{{ page.seo.date_modified | date: site.data.date_format.tooltip }}">
+            {{ page.seo.date_modified | date: site.data.date_format.post }}
+            <i class="unloaded">{{ page.seo.date_modified | date_to_xmlschema}}</i>
+          </span>
+        </div>
+        {% endif %}
 
         <!-- page views -->
         {% if site.google_analytics.pv.enabled %}
         <div>
-          <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span> views
+          <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span>
+          views
         </div>
         {% endif %}
 
@@ -57,22 +75,21 @@ layout: default
 
       <div class="post-tail-wrapper text-muted">
 
-        <!-- lastmod -->
-        {% if page.seo.date_modified > page.date %}
-        <div>
-          Updated
-          <span class="timeago lastmod"
-            data-toggle="tooltip" data-placement="top"
-             title="{{ page.seo.date_modified | date: site.data.date_format.tooltip }}">
-            {{ page.seo.date_modified | date: site.data.date_format.post }}
-            <i class="unloaded">{{ page.seo.date_modified | date_to_xmlschema}}</i>
-          </span>
+        <!-- categories -->
+        {% if page.categories.size > 0 %}
+        <div class="post-meta mb-3">
+          <i class="far fa-folder-open fa-fw mr-1"></i>
+          {% for category in page.categories %}
+            <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase | url_encode }}/'>{{ category }}</a>
+            {%- unless forloop.last -%}, {%- endunless -%}
+          {% endfor %}
         </div>
         {% endif %}
 
-        <!-- Tags -->
+        <!-- tags -->
         {% if page.tags.size > 0 %}
-        <div class="pt-3">
+        <div class="post-tags">
+          <i class="fa fa-tags fa-fw mr-1"></i>
           {% for tag in page.tags %}
           <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase | url_encode }}/"
             class="post-tag no-text-decoration" >
@@ -84,18 +101,11 @@ layout: default
 
         <div class="post-tail-bottom
           d-flex justify-content-between align-items-center pt-5 pb-2">
-
-          {% if site.data.right.license %}
+          {% if site.data.rights.license %}
           <div class="license-wrapper">
-            <span class="license-text ml-1 mr-1">
-              {{ site.data.right.license.prompt }}
-              <a href="{{ site.data.right.license.link }}">
-                {{ site.data.right.license.name }}
-                {% for icon in site.data.right.license.icons %}
-                <i class="{{ icon }}"></i>
-                {% endfor %}
-              </a>
-            </span>
+            This post is licensed under
+            <a href="{{ site.data.rights.license.link }}">{{ site.data.rights.license.name }}</a>
+            by the author.
           </div>
           {% endif %}
 
