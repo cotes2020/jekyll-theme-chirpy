@@ -146,8 +146,8 @@ def get_all_tags():
                     if tag not in all_tags:
                         all_tags.append(tag)
             else:
-                raise Exception("Didn't find 'tags' in \
-                  post '{}' !".format(file))
+                raise Exception("Didn't find 'tags' in post '{}' !"
+                                .format(file))
 
     return all_tags
 
