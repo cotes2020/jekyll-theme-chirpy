@@ -37,6 +37,10 @@
   border-bottom: none;
 }
 
+%heading {
+  font-family: 'Lato', 'Microsoft Yahei', sans-serif;
+}
+
 %section {
   #post-wrapper & {
     line-height: 1.2;
@@ -45,18 +49,12 @@
 }
 
 %anchor {
-  #post-wrapper &,
+  .post-content &,
   #page & {
     padding-top: 3.5rem;
     margin-top: -2.5rem;
   }
 }
-
-%footer-content {
-  font-weight: 600;
-  color: var(---footer-link);
-}
-
 
 /*---------- scss mixin ---------*/
 
@@ -90,4 +88,15 @@
 
 @mixin input-placeholder {
   opacity: 0.6;
+}
+
+@mixin semi-bold {
+  font-weight: 600;
+}
+
+@mixin label($font-size: 1rem, $font-weight: 600, $color: var(--label-color)) {
+  color: $color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  font-family: 'Roboto Condensed', 'Microsoft Yahei', sans-serif;
 }
