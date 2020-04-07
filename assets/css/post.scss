@@ -28,7 +28,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 }
 
 .author {
-  font-weight: 600;
+  @include semi-bold;
 }
 
 .post img {
@@ -137,9 +137,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     top: 6rem;
   }
   >h3 {
-    font-size: 1rem;
-    font-family: 'Oswald', sans-serif;
-    color: gray;
+    @include label(inherit, 600);
   }
 }
 
@@ -154,9 +152,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
 #related-posts {
   >h3 {
-    color: gray;
-    font-size: 1.1rem;
-    font-family: 'Oswald', sans-serif;
+    @include label(1.1rem, 600);
   }
   .card {
     border: 1px solid var(--card-border-color);
@@ -166,7 +162,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     -moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     h3 {
-      color: var(--label-relate-post);
+      color: var(--text-color);
     }
     &:hover {
       -webkit-transform: translate3d(0, -3px, 0);
@@ -269,7 +265,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
 
 .share-label {
-  font-family: 'Oswald', sans-serif;
+  @include label(inherit, 400, inherit);
   &::after {
     content: ":";
   }
