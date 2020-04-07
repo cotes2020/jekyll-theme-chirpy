@@ -18,6 +18,10 @@
   background-color: var(--timeline-color);
 }
 
+%date-font {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
 #archives {
   letter-spacing: 0.03rem;
   li {
@@ -37,7 +41,7 @@
 
   span.lead {
     font-size: 1.5rem;
-    font-family: 'Oswald', sans-serif;
+    @extend %date-font;
     position: relative;
     left: 8px;
 
@@ -75,7 +79,7 @@
     &.month {
       width: 1.4rem;
       text-align: center;
-      font-family: 'Oswald', sans-serif;
+      @extend %date-font;
       ~a::before {
         /* A dot for Month and Day */
         content: "";
@@ -96,7 +100,7 @@
     }
     &.day {
       font-size: 85%;
-      font-family: sans-serif;
+      font-family: 'Lato', sans-serif;
       text-align: center;
       margin-right: -2px;
       width: 1.2rem;

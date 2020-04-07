@@ -398,8 +398,8 @@ $tab-count: {{ site.data.tabs | size }};
   a {
     @extend %link-color;
     @extend %no-bottom-border;
+    @extend %heading;
     font-size: 1.4rem;
-    font-weight: 400;
     line-height: 2.5rem;
     &:hover {
       @extend %link-hover;
@@ -513,6 +513,8 @@ footer {
     }
   }
   a {
+    @include semi-bold;
+    color: var(---footer-link);
     &:link {
       @include no-text-decoration;
     }
@@ -521,14 +523,8 @@ footer {
       @include no-text-decoration;
     }
   }
-  .footer-left a {
-    @extend %footer-content;
-  }
   .footer-right {
     text-align: right;
-    a {
-      @extend %footer-content;
-    }
   }
 }
 
@@ -540,7 +536,6 @@ footer {
   margin-right: 1.5rem;
   margin-top: 3rem;
   margin-bottom: 4rem;
-  color: #6c757d;
   &:only-child {
     position: -webkit-sticky; /* Safari */
     position: sticky;
@@ -561,8 +556,7 @@ footer {
     margin-top: 0;
     margin-bottom: 0;
     letter-spacing: -0.02em;
-    font-size: 1rem;
-    font-family: 'Oswald', sans-serif;
+    @include label(inherit, 600);
   }
   .post-content {
     font-size: .9rem;
@@ -641,29 +635,35 @@ footer {
 /*--- Typography ---*/
 
 h1 {
+  @extend %heading;
   font-size: 1.8rem;
-  font-weight: 400;
 }
 
 h2 {
+  @extend %heading;
   @extend %section;
   @extend %anchor;
-  font-size: 1.35rem;
+  font-size: 1.4rem;
 }
 
 h3 {
+  @extend %heading;
   @extend %section;
   @extend %anchor;
   font-size: 1.25rem;
 }
 
 h4 {
+  @extend %heading;
   @extend %section;
   @extend %anchor;
   font-size: 1.15rem;
 }
 
 h5 {
+  @extend %heading;
+  @extend %section;
+  @extend %anchor;
   font-size: 1.1rem;
 }
 
@@ -856,7 +856,7 @@ table {
   background: var(--tag-bg);
   border-radius: .3rem;
   padding: 0 .4rem;
-  color: #818182;
+  color: inherit;
   line-height: 1.3rem;
   &:not(:last-child) {
     margin-right: .2rem;
