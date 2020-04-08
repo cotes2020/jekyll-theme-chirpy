@@ -186,6 +186,7 @@ exclude:
   - Gemfile
   - tools
   - docs
+  - README.md
 
 sitemap_exclude:  # Sitemap will exclude the following items.
   fuzzy:
