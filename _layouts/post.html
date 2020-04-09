@@ -35,14 +35,20 @@ layout: default
         </div>
 
         <!-- lastmod -->
-        {% if page.seo.date_modified > page.date %}
+        {%- capture filename -%}
+          {{ page.url | split: "/" | last }}
+        {%- endcapture -%}
+
+        {% assign record = site.data.updates | where: "filename", filename | first %}
+
+        {% if record %}
         <div>
           Updated
           <span class="timeago lastmod"
             data-toggle="tooltip" data-placement="bottom"
-             title="{{ page.seo.date_modified | date: site.data.date_format.tooltip }}">
-            {{ page.seo.date_modified | date: site.data.date_format.post }}
-            <i class="unloaded">{{ page.seo.date_modified | date_to_xmlschema}}</i>
+             title="{{ record.lastmod | date: site.data.date_format.tooltip }}">
+            {{ record.lastmod | date: site.data.date_format.post }}
+            <i class="unloaded">{{ record.lastmod | date_to_xmlschema}}</i>
           </span>
         </div>
         {% endif %}
