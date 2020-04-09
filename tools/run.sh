@@ -21,7 +21,7 @@ cmd="bundle exec jekyll s"
 realtime=false
 
 
-help() {
+_help() {
   echo "Usage:"
   echo
   echo "   bash run.sh [options]"
@@ -36,7 +36,7 @@ help() {
 }
 
 
-cleanup() {
+_cleanup() {
   if [[ -d _site || -d .jekyll-cache ]]; then
     jekyll clean
   fi
@@ -46,7 +46,7 @@ cleanup() {
 }
 
 
-init() {
+_init() {
 
   if [[ -d ${WORK_DIR}/${CONTAINER} ]]; then
     rm -rf ${WORK_DIR}/${CONTAINER}
@@ -57,19 +57,19 @@ init() {
   cp -r ${WORK_DIR}/.git $temp
   mv $temp ${WORK_DIR}/${CONTAINER}
 
-  trap cleanup INT
+  trap _cleanup INT
 }
 
 
-check_unset() {
+_check_unset() {
   if [[ -z ${1:+unset} ]]; then
-    help
+    _help
     exit 1
   fi
 }
 
 
-check_command() {
+_check_command() {
   if [[ -z $(command -v $1) ]]; then
     echo "Error: command '$1' not found !"
     echo "Hint: Get '$1' on <$2>"
@@ -79,10 +79,11 @@ check_command() {
 
 
 main() {
-  init
+  _init
 
   cd ${WORK_DIR}/${CONTAINER}
-  python _scripts/py/init_all.py
+  bash _scripts/sh/create_pages.sh
+  bash _scripts/sh/dump_lastmod.sh
 
   if [[ $realtime = true ]]; then
     fswatch -0 -e "\\$CONTAINER" -e "\.git" ${WORK_DIR} | xargs -0 -I {} bash ./${SYNC_TOOL} {} $WORK_DIR . &
@@ -98,24 +99,24 @@ do
   opt="$1"
   case $opt in
     -H|--host)
-      check_unset $2
+      _check_unset $2
       cmd+=" -H $2"
       shift # past argument
       shift # past value
       ;;
     -P|--port)
-      check_unset $2
+      _check_unset $2
       cmd+=" -P $2"
       shift
       shift
       ;;
     -b|--baseurl)
-      check_unset $2
+      _check_unset $2
       if [[ $2 == \/* ]]
       then
         cmd+=" -b $2"
       else
-        help
+        _help
         exit 1
       fi
       shift
@@ -126,20 +127,21 @@ do
       shift
       ;;
     -r|--realtime)
-      check_command fswatch 'http://emcrisostomo.github.io/fswatch/'
+      _check_command fswatch 'http://emcrisostomo.github.io/fswatch/'
       realtime=true
       shift
       ;;
     -h|--help)
-      help
+      _help
       exit 0
       ;;
     *)
       # unknown option
-      help
+      _help
       exit 1
       ;;
   esac
 done
+
 
 main

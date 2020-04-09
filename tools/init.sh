@@ -15,16 +15,26 @@ LASTMOD=false
 WORK_DIR=$(dirname $(dirname $(realpath "$0")))
 
 check_status() {
-  if [[ ! -z $(git status _posts -s) ]]; then
-    echo "Warning: Commit the changes of the directory '_posts' first."
-    git status -s | grep '_posts'
-    exit 1
-  fi
+  local _watching_dirs=(
+    "_post"
+    "_data")
+
+  for i in "${!_watching_dirs[@]}"
+  do
+    local _dir=${_watching_dirs[${i}]}
+    if [[ ! -z $(git status $_dir -s) ]]; then
+      echo "Warning: Commit the changes of the directory '$_dir' first."
+      git status -s | grep $_dir
+      exit 1
+    fi
+  done
 }
 
 
 update_files() {
-  python _scripts/py/init_all.py
+  bash _scripts/sh/create_pages.sh
+  bash _scripts/sh/dump_lastmod.sh
+
   find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 }
 
@@ -49,8 +59,8 @@ commit() {
     TAGS=true
   fi
 
-  if [[ ! -z $(git status _posts -s) ]]; then
-    git add _posts/
+  if [[ ! -z $(git status _data -s) ]]; then
+    git add _data
     if [[ $CATEGORIES = true || $TAGS = true ]]; then
       msg+=","
     else
