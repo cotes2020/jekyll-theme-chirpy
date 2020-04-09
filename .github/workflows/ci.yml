@@ -29,12 +29,10 @@ jobs:
         with:
           ruby-version: '2.6.x'
 
-      - uses: actions/setup-python@v1
-        with:
-          python-version: '3.7.x'
-
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Bundle Caching
         id: bundle-cache
@@ -45,21 +43,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
-      - name: Get pip cache path
-        id: get-pip-cache-path
-        run: |
-          echo "::set-output name=path::`pip show pip | grep "Location" | awk '{print $2}'`"
-
-      - name: Pip caching
-        id: pip-cache
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.get-pip-cache-path.outputs.path }}
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install gnu-coreutils for macOS
+      - name: Install GNU-Coreutils(for macOS)
         if: runner.os == 'macOS'
         run: |
           brew install coreutils
@@ -77,11 +61,6 @@ jobs:
         if: steps.bundle-cache.outputs.cache-hit == 'true'
         run: |
           bundle install --local
-
-      - name: Pip installing
-        if: steps.pip-cache.outputs.cache-hit != 'true'
-        run: |
-          pip install -r _scripts/py/requirements.txt
 
       - name: Build Site
         run: |

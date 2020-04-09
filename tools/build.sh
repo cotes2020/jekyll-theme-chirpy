@@ -17,7 +17,7 @@ CONTAINER=${WORK_DIR}/.container
 DEST=${WORK_DIR}/_site
 
 
-help() {
+_help() {
   echo "Usage:"
   echo
   echo "   bash build.sh [options]"
@@ -29,7 +29,7 @@ help() {
 }
 
 
-init() {
+_init() {
   cd $WORK_DIR
 
   if [[ -d $CONTAINER ]]; then
@@ -40,18 +40,19 @@ init() {
     jekyll clean
   fi
 
-  temp=$(mktemp -d)
-  cp -r * $temp
-  cp -r .git $temp
-  mv $temp $CONTAINER
+  local _temp=$(mktemp -d)
+  cp -r * $_temp
+  cp -r .git $_temp
+  mv $_temp $CONTAINER
 }
 
 
-build() {
+_build() {
   cd $CONTAINER
-
   echo "$ cd $(pwd)"
-  python _scripts/py/init_all.py
+
+  bash _scripts/sh/create_pages.sh
+  bash _scripts/sh/dump_lastmod.sh
 
   CMD+=" -d ${DEST}"
   echo "\$ $CMD"
@@ -70,10 +71,10 @@ build() {
 }
 
 
-check_unset() {
+_check_unset() {
   if [[ -z ${1:+unset} ]]
   then
-    help
+    _help
     exit 1
   fi
 }
@@ -85,36 +86,36 @@ main() {
     opt="$1"
     case $opt in
       -b|--baseurl)
-        check_unset $2
+        _check_unset $2
         if [[ $2 == \/* ]]
         then
           CMD+=" -b $2"
         else
-          help
+          _help
           exit 1
         fi
         shift
         shift
         ;;
       -d|--destination)
-        check_unset $2
+        _check_unset $2
         DEST=$(realpath $2)
         shift;
         shift;
         ;;
       -h|--help)
-        help
+        _help
         exit 0
         ;;
       *) # unknown option
-        help
+        _help
         exit 1
         ;;
     esac
   done
 
-  init
-  build
+  _init
+  _build
 }
 
 main "$@"

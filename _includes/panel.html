@@ -9,40 +9,51 @@
 <div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down">
 
   <div class="access">
-  {% assign lastmod_list = "" | split: "" %}
-  {% assign index = 0 %}
 
-  {% for post in site.posts %}
-    {% if post.seo.date_modified > post.date and post.seo.date_modified != nil %}
-      {% capture item %}
-        {{ post.seo.date_modified }}::{{ index }}
+  {% if site.data.updates %}
+    {% assign MAX_SIZE = 5 %}
+    {% assign sum = 0 %}
+    {% assign sort_list = "" | split: "" %}
+
+    {% for entry in site.data.updates %}
+      {% capture elem %}
+        {{- entry.lastmod -}}::{{- entry.filename -}}
       {% endcapture %}
-      {% assign lastmod_list = lastmod_list | push: item %}
-    {% endif %}
-    {% assign index = index | plus: 1 %}
-  {% endfor %}
+      {% assign sort_list = sort_list | push: elem %}
+    {% endfor %}
 
-  {% if lastmod_list.size > 0 %}
+    {% assign sort_list = sort_list | sort | reverse %}
+
+    {% if sort_list.size > 0 %}
+
     <div id="access-lastmod" class="post">
       <h3 data-toc-skip>
         {{- site.data.label.panel.lastmod -}}
       </h3>
       <ul class="post-content pl-0 pb-1 ml-1 mt-2">
-    {% assign MAX_SIZE = 5 %}
-    {% assign sum = 0 %}
-    {% assign lastmod_list = lastmod_list | sort | reverse %}
-    {% for item in lastmod_list %}
-      {% assign index = item | split: "::" | last | plus: 0 %}
-      {% assign post = site.posts[index] %}
-        <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
-      {% assign sum = sum | plus: 1 %}
-      {% if sum >= MAX_SIZE %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
+
+      {% for item in sort_list %}
+        {% assign post_url = item | split: "::" | last | prepend: "/posts/" | append: "/" %}
+        {% assign post = site.posts | where: "url", post_url | first %}
+
+        {% if post %}
+          {% assign url = post.url | prepend: site.baseurl %}
+
+          <li><a href="{{ url }}">{{ post.title }}</a></li>
+
+          {% assign sum = sum | plus: 1 %}
+          {% if sum >= MAX_SIZE %} {% break %} {% endif %}
+
+        {% endif %}
+
+      {% endfor %}
+
       </ul>
     </div><!-- #access-lastmod -->
-  {% endif %}
+
+    {% endif %}
+
+  {% endif %} <!-- site.data.updates -->
 
     <div id="access-tags">
       <h3 data-toc-skip>
