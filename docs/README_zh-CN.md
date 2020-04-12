@@ -1,14 +1,26 @@
 # Chirpy
 
-语言: [English](../README.md) | **简体中文**
+🌏 [English](../README.md) • 简体中文
 
 [![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=event%3Apush)
 [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
 [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-一个不一样的 Jekyll 主题（内附神秘工具），采用响应式设计，方便记录、管理、分享你的知识和经验。
+一个不一样的响应式设计 Jekyll 主题（内附神秘工具），采用响应式设计，方便记录、管理、分享你的知识和经验。
 
-**功能一览**
+[![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
+
+## 目录
+
+* [功能预览](#功能预览)
+* [安装](#安装)
+* [运行指南](#运行指南)
+* [参与贡献](#参与贡献)
+* [感谢](#感谢)
+* [赞助](#赞助)
+* [许可证书](#许可证书)
+
+## 功能预览
 
 * 自动暗夜模式
 * 文章最后修改日期
@@ -24,24 +36,14 @@
 * SEO 优化
 * 网站性能优化
 
-[![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
-
-## 目录
-
-* [安装](#安装)
-* [运行指南](#运行指南)
-* [参与贡献](#参与贡献)
-* [感谢](#感谢)
-* [赞助](#赞助)
-* [许可证书](#许可证书)
 
 ## 安装
 
 ### 准备工作
 
-按照 [Jekyll 官方文档](https://jekyllrb.com/docs/installation/) 完成基础环境的安装 (Ruby，RubyGem，Bundler 和 Jekyll)。为了使用项目内免费提供的脚本工具，你还需要安装 [Python](https://www.python.org/downloads/)( >= 3.5) 和 [ruamel.yaml](https://pypi.org/project/ruamel.yaml/)。
+按照 [Jekyll 官方文档](https://jekyllrb.com/docs/installation/) 完成基础环境的安装 (Ruby，RubyGem，Bundler 和 Jekyll)。
 
-如果你的机器系统是 Debian 或者 macOS，则需要确保安装了 [GNU coreutils](https://www.gnu.org/software/coreutils/)。否则，通过以下方式获得：
+为了使用项目内免费提供的脚本工具提升你的写作体验，如果你的机器系统是 Debian 或者 macOS，则需要确保安装了 [GNU coreutils](https://www.gnu.org/software/coreutils/)。否则，通过以下方式获得：
 
 * Debian
 
@@ -58,16 +60,16 @@
 接着，[fork](https://github.com/cotes2020/jekyll-theme-chirpy/fork) 一份代码，然后克隆你 Fork 的仓库到本地机器上。
 
 ```console
-$ git clone git@github.com:USER/jekyll-theme-chirpy.git
+$ git clone git@github.com:USER/jekyll-theme-chirpy.git -b master
 ```
 
-`USER` 替换为你的 GitHub username。
+把上述的`USER` 替换为你的 GitHub username。
 
 
 
 ### 安装 Jekyll 插件
 
-在根目录下运行:
+本地首次运行或编译，请在项目根目录下运行:
 
 ```terminal
 $ bundle install

@@ -6,11 +6,11 @@ categories: [Blogging, Tutorial]
 tags: [getting started]
 ---
 
-## Preparation
+## Prerequisites
 
-Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (Ruby, RubyGem, Bundler and Jekyll). In order to use the script tools to save time, we also need to install [Python](https://www.python.org/downloads/)(version 3.5 or abover) and [ruamel.yaml](https://pypi.org/project/ruamel.yaml/).
+Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (`Ruby `, `RubyGems` and `Bundler`). 
 
-In addition, if your machine is running Debian or macOS, make sure you have the [GNU coreutils](https://www.gnu.org/software/coreutils/) installed. Otherwise, get it by:
+To improve the writing experience, we need to use some script tools. If your machine is running Debian or macOS, make sure that [GNU coreutils](https://www.gnu.org/software/coreutils/) is installed. Otherwise, install by:
 
 * Debian
 
@@ -25,18 +25,26 @@ $ brew install coreutils
 ```
 
 
-## Install Jekyll Plugins
+## Jekyll Plugins
 
-Go to the root of repo and run:
+[Fork **Chirpy** from GitHub](https://github.com/cotes2020/jekyll-theme-chirpy/fork), then clone your forked repo to local:
+
+```console
+$ git clone git@github.com:USER/jekyll-theme-chirpy.git -b master
+```
+
+and replace the `USER` above to your GitHub username.
+
+The first time you run or build the project on local machine, perform the installation of Jekyll plugins. Go to the root of repo and run:
 
 ```terminal
 $ bundle install
 ```
 
-`bundle` will install all the dependent Jekyll Plugins listed in file `Gemfile` automatically.
+`bundle` will automatically install all the dependent Jekyll Plugins that listed in the `Gemfile`.
 
 
-## File Structure
+## Directory Structure
 
 The main files and related brief introductions are listed below.
 
@@ -74,7 +82,7 @@ As mentioned above, some files or directories should be removed from your repo:
 
 ## Configuration
 
-Basically, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
+Generally, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
 
 * `url`
     
@@ -101,7 +109,7 @@ Basically, go to `_config.yml` and configure the variables as needed. Some of th
 
 ##  Run Locally
 
-You may want to preview the site before publishing, so just run the script tool:
+You may want to preview the site content before publishing, so just run the script tool:
 
 ```terminal
 $ bash tools/run.sh
