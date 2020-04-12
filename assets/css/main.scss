@@ -253,7 +253,7 @@ $tab-count: {{ site.data.tabs | size }};
 #site-title {
   text-align: center;
   a {
-    color: #b6b6b6;
+    color: var(--site-title-color);
     font-weight: 900;
     font-size: 1.5rem;
     letter-spacing: .5px;
