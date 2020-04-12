@@ -37,6 +37,7 @@
   --label-color: rgb(108, 117, 125);
 
   /* Sidebar */
+  --site-title-color: rgba(255, 255, 255, 0.5);
   --nav-cursor-color: rgb(183, 182, 182);
   --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
 
@@ -85,6 +86,9 @@
   /* Footer */
   ---footer-link: rgb(146, 146, 146);
 
+  img {
+    filter: brightness(90%);
+  }
 
   hr {
     border-color: var(--main-border-color);
