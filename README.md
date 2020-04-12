@@ -1,14 +1,26 @@
 # Chirpy
 
-Language: **English** | [简体中文](docs/README_zh-CN.md)
+🌏 English • [简体中文](docs/README_zh-CN.md)
 
 [![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=event%3Apush)
 [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
 [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-A minimal, sidebar, responsive web design Jekyll theme, focusing on text presentation. Aim to help you easily record and share your knowledge.
+A minimal, sidebar, responsive web design Jekyll theme, focusing on text presentation, aim to help you easily record and share your knowledge. [Live Demo »](https://chirpy.cotes.info)
 
-**Features**
+[![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
+
+## Table of Contents
+
+* [Features](#features)
+* [Installing](#installing)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [Credits](#credits)
+* [Support](#support)
+* [License](#license)
+
+## Features
 
 * Configurable theme mode
 * Two-level Categories
@@ -23,25 +35,13 @@ A minimal, sidebar, responsive web design Jekyll theme, focusing on text present
 * GA Pageviews reporting (Advanced)
 * SEO and Performance Optimization
 
-[![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
-
-## Table of Contents
-
-* [Installing](#installing)
-* [Usage](#usage)
-* [Contributing](#contributing)
-* [Credits](#credits)
-* [Support](#support)
-* [License](#license)
-
-
 ## Installing
 
 ### Prerequisites
 
-Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (`Ruby `, `RubyGems` and `Bundler`). In order to use the script tools to save time, we also need to install [Python](https://www.python.org/downloads/)(version 3.5 or abover) and [ruamel.yaml](https://pypi.org/project/ruamel.yaml/).
+Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (`Ruby `, `RubyGems` and `Bundler`). 
 
-In addition, if your machine is running Debian or macOS, make sure the [GNU coreutils](https://www.gnu.org/software/coreutils/) is installed. Otherwise, get it by:
+To improve the writing experience, we need to use some script tools. If your machine is running Debian or macOS, make sure that [GNU coreutils](https://www.gnu.org/software/coreutils/) is installed. Otherwise, install by:
 
 * Debian
 
@@ -61,12 +61,12 @@ $ brew install coreutils
 [Fork **Chirpy** from GitHub](https://github.com/cotes2020/jekyll-theme-chirpy/fork), then clone your forked repo to local:
 
 ```console
-$ git clone git@github.com:USER/jekyll-theme-chirpy.git
+$ git clone git@github.com:USER/jekyll-theme-chirpy.git -b master
 ```
 
-replace the `USER` above to your GitHub username.
+and replace the `USER` above to your GitHub username.
 
-The first time you run or build the project on your machine, perform the installation of Jekyll plugins. Go to the root of repo and run:
+The first time you run or build the project on local machine, perform the installation of Jekyll plugins. Go to the root of repo and run:
 
 ```terminal
 $ bundle install
@@ -115,9 +115,9 @@ As mentioned above, some files or directories should be removed from your repo:
 - .github
 
 
-### Customization
+### Configuration
 
-Basically, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
+Generally, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
 
 * `url`
 	
@@ -144,7 +144,7 @@ Basically, go to `_config.yml` and configure the variables as needed. Some of th
 
 ###  Run Locally
 
-You may want to preview the site before publishing, so just run the script tool:
+You may want to preview the site content before publishing, so just run the script tool:
 
 ```terminal
 $ bash tools/run.sh
