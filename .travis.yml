@@ -4,8 +4,11 @@ dist: bionic
 language: ruby
 rvm: 2.6.5
 
+before_install:
+  - bundle config path 'vendor/bundle'
+
 install:
-  - bundle install --path vendor/bundle --quiet
+  - bundle install --quiet
 
 addons:
   apt:
