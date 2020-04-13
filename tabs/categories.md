@@ -13,17 +13,19 @@ title: Categories
 {% for category in sort_categories %}
   {% assign category_name = category | first %}
   {% assign posts_of_category = category | last %}
-  {% assign first_post = posts_of_category[0] %}
+  {% assign first_post = posts_of_category | first %}
 
   {% if category_name == first_post.categories[0] %}
-    {% assign sub_categories = "" %}
+    {% assign sub_categories = "" | split: "" %}
+
     {% for post in posts_of_category %}
-      {% if post.categories.size > 1 %}
-        {% assign sub_categories = sub_categories | append: post.categories[1] | append: "|" %}
-      {% endif %}
+      {% assign second_category = post.categories[1] %}
+      {% unless sub_categories contains second_category %}
+        {% assign sub_categories = sub_categories | push: second_category %}
+      {% endunless %}
     {% endfor %}
 
-    {% assign sub_categories = sub_categories | split: "|" | uniq | sort %}
+    {% assign sub_categories = sub_categories | sort %}
     {% assign sub_categories_size = sub_categories | size %}
 
   <div class="card categories">
@@ -35,10 +37,11 @@ title: Categories
       {% else %}
         <i class="far fa-folder fa-fw"></i>
       {% endif %}
-        <a href="{{ site.baseurl }}/categories/{{ category_name | replace: ' ', '-' | downcase | url_encode }}/">{{ category_name }}</a>
+        <a href="{{ site.baseurl }}/categories/{{ category_name | replace: ' ', '-' | downcase | url_encode }}/"
+          class="ml-1 mr-2">{{ category_name }}</a>
         <!-- content count -->
         {% assign top_posts_size = site.categories[category_name] | size %}
-        <span class="text-muted small font-weight-light pl-2">
+        <span class="text-muted small font-weight-light">
         {% if sub_categories_size > 0 %}
           {{ sub_categories_size }}
           {% if sub_categories_size > 1 %}categories{% else %}category{% endif %},
@@ -65,9 +68,11 @@ title: Categories
       <ul class="list-group">
         {% for sub_category in sub_categories %}
         <li class="list-group-item">
-          <i class="far fa-folder fa-fw"></i>&nbsp;<a href="{{ site.baseurl }}/categories/{{ sub_category | replace: ' ', '-' | downcase | url_encode }}/">{{ sub_category }}</a>
+          <i class="far fa-folder fa-fw"></i>
+          <a href="{{ site.baseurl }}/categories/{{ sub_category | replace: ' ', '-' | downcase | url_encode }}/"
+            class="ml-1 mr-2">{{ sub_category }}</a>
           {% assign posts_size = site.categories[sub_category] | size %}
-          <span class="text-muted small font-weight-light pl-2">{{ posts_size }}
+          <span class="text-muted small font-weight-light">{{ posts_size }}
             post{% if posts_size > 1 %}s{% endif %}
           </span>
         </li>
