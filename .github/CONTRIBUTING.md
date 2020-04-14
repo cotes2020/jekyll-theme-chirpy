@@ -2,19 +2,13 @@
 
 I want to thank you for sparing a time to improve this project! Here are some guidelines for contributing：
 
-## Bug Reporting
+To ensure that the blog design is not confused, this project do not accept suggestions for design changes, such as colors scheme, fonts, typography, etc. If your request is about enhancement, it is recommended to first submit a `Feature Request` type issue to discuss whether your idea fits the project. 
 
-If you found a bug, please ensure it doesn't appear in other existing [issues](https://github.com/cotes2020/jekyll-theme-chirpy/issues). After that, [create a new issues](https://github.com/cotes2020/jekyll-theme-chirpy/issues/new/choose) with template `Bug Report` and follow it's illustration to describe the situation.
+Generally, contribute to the project by:
 
-
-## Code Optimization
-
-If you are willing to improve some of the existing code, such as performance optimization, code simplification, or even correct spelling errors of variable names, please submit a new PR to help us.
-
-
-## Feature Request
-
-Basically, to ensure that the blog design is not confused, we do not accept suggestions for design changes, such as colors scheme, fonts, typography, etc. As long as your request is not a design issue, it is recommended to first submit a `Feature Request` issue to discuss whether your idea fits the project. Once the discussion is complete and the request is approved, fork this project, complete the development of new features, and submit a `Pull Request`. What's more, the PR should be merged into `master` branch without conflict.
+1. Fork this project.
+2. Create a new branch `my-new-freature`(or `fix-a-bug`), then complete the development, commit and push.
+3. Submit a new `Pull Request`.
 
 
 ---
