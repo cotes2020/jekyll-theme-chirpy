@@ -53,13 +53,7 @@ html[mode=dark] {
 }
 
 html, body {
-  height: 100%;
   font-size: 16px;
-}
-
-/* Solved jumping scrollbar */
-html {
-  overflow-y: scroll;
 }
 
 body {
@@ -76,6 +70,8 @@ $tab-height: 3.3rem;
 $tab-cursor-height: 1.6rem;
 $tab-count: {{ site.data.tabs | size }};
 
+$sidebar-display: "sidebar-display";
+
 #sidebar {
   @include pl-pr(0);
   position: fixed;
@@ -85,8 +81,6 @@ $tab-count: {{ site.data.tabs | size }};
   overflow-y: auto;
   width: $sidebar-width-medium;
   z-index: 99;
-  -webkit-transition: transform 0.4s ease;
-  transition: transform 0.4s ease;
   background: rgb(42, 30, 107);
   background: var(--sidebar-bg);
   a {
@@ -273,10 +267,6 @@ $tab-count: {{ site.data.tabs | size }};
   margin: .5rem 1.5rem 2rem 1.5rem;
 }
 
-.sidebar-expand {
-  box-shadow: 4px 0 8px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19) !important;
-}
-
 #search-result-wrapper {
   display: none;
   position: fixed;
@@ -447,10 +437,8 @@ $tab-count: {{ site.data.tabs | size }};
   left: 0;
   height: 100%;
   width: 100%;
-  background: var(--mask-bg);
-  opacity: 0.5;
   z-index: 1;
-  @at-root .sidebar-expand~& {
+  @at-root [#{$sidebar-display}] & {
     display: block!important;
   }
 }
@@ -460,12 +448,9 @@ $tab-count: {{ site.data.tabs | size }};
 #main-wrapper {
   background-color: var(--main-wrapper-bg);
   position: relative;
-  min-height: 100%;
+  min-height: 100vh;
   padding-bottom: $footer-height;
   @include pl-pr(0);
-  margin-left: 260px;
-  transition: transform 0.4s ease;
-  -webkit-transition: transform 0.4s ease;
 }
 
 #main>div.row:first-child>div {
@@ -902,11 +887,6 @@ table {
   visibility: hidden !important;
 }
 
-.no-scroll {
-  position: fixed;
-  width: 100%;
-}
-
 .flex-grow-1 {
   -ms-flex-positive: 1!important;
   flex-grow: 1!important;
@@ -1003,62 +983,38 @@ table {
 
 }
 
-/* Sidebar is visibal */
-@media all and (min-width: 831px) {
 
-  #profile-wrapper {
-    margin-top: 3rem;
-  }
-
-  #search-wrapper {
-    width: 22%;
-    min-width: 150px;
-  }
-
-  /* button 'back-to-Top' position */
-  #back-to-top {
-    bottom: 5.5rem;
-    right: 1.2rem;
-  }
-
-  .topbar-up {
-    box-shadow: none !important;
-  }
-
-  #topbar-title {
-    text-align: left;
-  }
-
-  footer>div.d-flex {
-    width: 92%;
-  }
-
-}
-
-/* iPad 9.7" horizontal */
-@media all and (min-width: 992px) and (max-width: 1024px) {
-  #main-wrapper .col-lg-11 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 96%;
-    flex: 0 0 96%;
-    max-width: 96%;
-  }
-}
-
-
-/* Hide SideBar and TOC */
+/* Hide Sidebar and TOC */
 @media all and (max-width: 830px) {
+  %slide {
+    -webkit-transition: transform 0.4s ease;
+    transition: transform 0.4s ease;
+  }
 
-  .sidebar-expand {
-    transform: translateX(0) !important;
-    ~#main-wrapper {
-      transform: translateX(#{$sidebar-width-medium}) !important;
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  [#{$sidebar-display}] {
+
+    #sidebar {
+      transform: translateX(0);
     }
+
+    #topbar-wrapper,
+    #main-wrapper {
+      transform: translateX(#{$sidebar-width-medium});
+    }
+
   }
 
   #sidebar {
+    @extend %slide;
+
     transform: translateX(-#{$sidebar-width-medium}); // hide
     -webkit-transform: translateX(-#{$sidebar-width-medium});
+
     .cursor {
       -webkit-transition: none;
       -moz-transition: none;
@@ -1066,8 +1022,13 @@ table {
     }
   }
 
+  #topbar-wrapper {
+    @extend %slide;
+  }
+
   #main-wrapper {
-    margin-left: 0;
+    @extend %slide;
+    padding-top: $topbar-height;
   }
 
   #search-result-wrapper {
@@ -1087,8 +1048,6 @@ table {
   }
 
   #topbar-wrapper {
-    position: -webkit-sticky;
-    position: sticky;
     left: 0;
   }
 
@@ -1156,6 +1115,57 @@ table {
   }
 }
 
+
+/* Sidebar visible */
+@media all and (min-width: 831px) {
+
+  /* Solved jumping scrollbar */
+  html {
+    overflow-y: scroll;
+  }
+
+  #main-wrapper {
+    margin-left: $sidebar-width-medium;
+  }
+
+  #profile-wrapper {
+    margin-top: 3rem;
+  }
+
+  #search-wrapper {
+    width: 22%;
+    min-width: 150px;
+  }
+
+  /* button 'back-to-Top' position */
+  #back-to-top {
+    bottom: 5.5rem;
+    right: 1.2rem;
+  }
+
+  .topbar-up {
+    box-shadow: none !important;
+  }
+
+  #topbar-title {
+    text-align: left;
+  }
+
+  footer>div.d-flex {
+    width: 92%;
+  }
+
+}
+
+/* iPad 9.7" horizontal */
+@media all and (min-width: 992px) and (max-width: 1024px) {
+  #main-wrapper .col-lg-11 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 96%;
+    flex: 0 0 96%;
+    max-width: 96%;
+  }
+}
 
 /* Compact icons in sidebar & TOC hidden */
 @media all and (min-width: 832px) and (max-width: 1199px) {
