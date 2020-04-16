@@ -5,52 +5,30 @@
  * © 2018-2019 Cotes Chung
  * MIT License
  */
-$(function(){
 
-  var isExpanded = false;
+$(function() {
 
-  $("#sidebar-trigger").click(function() {
-    if (isExpanded == false) {
-      $("#sidebar").addClass("sidebar-expand");
-      openModal();
-      isExpanded = true;
-    }
-  });
+  var sidebarUtil = (function() {
+    const ATTR_DISPLAY = "sidebar-display";
+    var isExpanded = false;
+    var body = $('body');
 
-  $("#mask").click(function() {
-    $("#sidebar").removeClass("sidebar-expand");
-    closeModal();
-    isExpanded = false;
-  });
-
-  /**
-  * ModalHelper helpers resolve the modal scrolling issue on mobile devices
-  * https://github.com/twbs/bootstrap/issues/15852
-  * requires document.scrollingElement polyfill https://github.com/yangg/scrolling-element
-  */
-  var ModalHelper = (function(bodyCls) {
-    var scrollTop;
     return {
-      afterOpen: function() {
-        scrollTop = document.scrollingElement.scrollTop;
-        document.body.classList.add(bodyCls);
-        document.body.style.top = -scrollTop + 'px';
-      },
-      beforeClose: function() {
-        document.body.classList.remove(bodyCls);
-        // scrollTop lost after set position:fixed, restore it back.
-        document.scrollingElement.scrollTop = scrollTop;
-        document.body.style.top = '';
+      toggle: function() {
+        if (isExpanded == false) {
+          body.attr(ATTR_DISPLAY, '');
+        } else {
+          body.removeAttr(ATTR_DISPLAY);
+        }
+
+        isExpanded = !isExpanded;
       }
-    };
-  })('no-scroll');
+    }
 
-  function openModal() {
-    ModalHelper.afterOpen();
-  }
+  })();
 
-  function closeModal() {
-    ModalHelper.beforeClose();
-  }
+  $("#sidebar-trigger").click(sidebarUtil.toggle);
+
+  $('#mask').click(sidebarUtil.toggle);
 
 });
