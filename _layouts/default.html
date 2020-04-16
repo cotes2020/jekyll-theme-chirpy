@@ -20,11 +20,14 @@ layout: compress
   {% include head.html %}
 
   <body data-spy="scroll" data-target="#toc">
+
     <div id="sidebar" class="d-flex flex-column">
       {% include sidebar.html %}
     </div>
+
+    {% include topbar.html %}
+
     <div id="main-wrapper">
-      {% include topbar.html %}
       <div id="main">
 
         {% capture _content %}
@@ -37,7 +40,8 @@ layout: compress
         {% include footer.html %}
       </div>
       {% include search-results.html %}
-    </div>
+
+    </div> <!-- #main-wrapper -->
 
     <div id="mask"></div>
 

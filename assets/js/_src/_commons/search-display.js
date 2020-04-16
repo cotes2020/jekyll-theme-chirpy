@@ -29,10 +29,8 @@ $(function() {
     return {
       block: function() {
         offset = $(window).scrollTop();
-        $('body').addClass('no-scroll');
       },
       release: function() {
-        $('body').removeClass('no-scroll');
         $('html,body').scrollTop(offset);
       },
       getOffset: function() {
