@@ -20,7 +20,7 @@
 {% for trend in trends %}
   {% assign count = count | plus: 1 %}
   {% assign tag = trend | split: ":" | last  %}
-  <a class="post-tag" href="{{ site.baseurl }}/tags/{{ tag | downcase }}/">{{ tag | replace: '-', ' ' }}</a>
+  <a class="post-tag" href="{{ site.baseurl }}/tags/{{ tag | downcase | url_encode }}/">{{ tag | replace: '-', ' ' }}</a>
   {% if count >= MAX %}
     {% break %}
   {% endif %}
