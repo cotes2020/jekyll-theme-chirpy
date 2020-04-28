@@ -64,19 +64,13 @@ layout: default
       </div> <!-- .post-meta -->
 
       <div class="post-content">
+
         {% if page.image %}
-        <img src="{{ page.image }}">
+          <img src="{{ page.image }}">
         {% endif %}
-        <!-- Add lozad class into image tags. see: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-        {% if content contains '<img src=' %}
-          {% capture loading %}
-           {{ "/assets/img/commons/loading.png" | relative_url }}
-          {% endcapture %}
-          {% assign replacement = '<img class="lozad" src=' | append: loading | append: ' data-src=' %}
-          {{ content | replace: '<img src=', replacement }}
-        {% else %}
-          {{ content }}
-        {% endif %}
+
+        {{ content }}
+
       </div>
 
       <div class="post-tail-wrapper text-muted">
