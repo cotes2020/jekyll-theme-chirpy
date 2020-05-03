@@ -1,6 +1,4 @@
----
----
-/*!
+/*
 * The main styles.
 * v2.0
 * https://github.com/cotes2020/jekyll-theme-chirpy
@@ -66,8 +64,6 @@ body {
 
 /*--- sidebar layout ---*/
 
-$tab-height: 3.3rem;
-$tab-cursor-height: 1.6rem;
 $tab-count: {{ site.data.tabs | size }};
 
 $sidebar-display: "sidebar-display";
