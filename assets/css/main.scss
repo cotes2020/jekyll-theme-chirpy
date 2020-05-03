@@ -1075,6 +1075,10 @@ table {
     }
   }
 
+  #search-results>div {
+    max-width: 100% !important;
+  }
+
   #search-input {
     margin-left: 0;
     width: 95%;
