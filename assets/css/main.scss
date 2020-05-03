@@ -396,6 +396,7 @@ $sidebar-display: "sidebar-display";
     }
   }
   >div {
+    max-width: 100%;
     &:not(:last-child) {
       margin-bottom: 1rem;
     }
@@ -1075,10 +1076,6 @@ table {
     }
   }
 
-  #search-results>div {
-    max-width: 100% !important;
-  }
-
   #search-input {
     margin-left: 0;
     width: 95%;
@@ -1192,6 +1189,10 @@ table {
     width: calc(100% - 210px);
   }
 
+  #search-results>div {
+    max-width: 700px;
+  }
+
   #site-title {
     font-size: 1.3rem;
     margin-left: 0!important;
@@ -1230,10 +1231,6 @@ table {
     -webkit-box-pack: center!important;
     -ms-flex-pack: center!important;
     justify-content: center!important;
-  }
-
-  #search-results>div {
-    max-width: 700px;
   }
 }
 
