@@ -53,8 +53,6 @@
     integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ="
     crossorigin="anonymous">
 
-  <link rel="preload" as="style" href="{{ site.baseurl }}/assets/css/main.css">
-
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous">
@@ -64,37 +62,45 @@
     integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ="
     crossorigin="anonymous">
 
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
-
   {% if page.layout == 'home' %}
     <link rel="preload" href="{{ site.baseurl }}/assets/css/home.css" as="style">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/home.css">
+
+  {% elsif page.layout == 'page' %}
+
+    {% if page.title == 'Categories' %}
+      <link rel="preload" href="{{ site.baseurl }}/assets/css/categories.css" as="style">
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/categories.css">
+
+    {% elsif page.title == 'Tags' %}
+      <link rel="preload" href="{{ site.baseurl }}/assets/css/tags.css" as="style">
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tags.css">
+
+    {% elsif page.title == 'Archives' %}
+      <link rel="preload" href="{{ site.baseurl }}/assets/css/archives.css" as="style">
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/archives.css">
+
+    {% else %}
+      <link rel="preload" href="{{ site.baseurl }}/assets/css/page.css" as="style">
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page.css">
+
+    {% endif %}
+
+  {% elsif page.layout == 'category' or page.layout == 'tag' %}
+      <link rel="preload" href="{{ site.baseurl }}/assets/css/category-tag.css" as="style">
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/category-tag.css">
+
+  {% elsif page.layout == 'post' %}
+    <link rel="preload" as="style" href="{{ site.baseurl }}/assets/css/post.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post.css">
+
+    {% if site.toc and page.toc %}
+      <link rel="preload" as="style" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css">
+      <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
+    {% endif %}
+
   {% endif %}
 
-  {% if page.title == 'Categories' and page.layout == 'page' %}
-    <link rel="preload" href="{{ site.baseurl }}/assets/css/categories.css" as="style">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/categories.css">
-  {% endif %}
-
-  {% if page.title == 'Tags' and page.layout == 'page' %}
-    <link rel="preload" href="{{ site.baseurl }}/assets/css/tags.css" as="style">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tags.css">
-  {% endif %}
-
-  {% if page.layout == 'category' or page.layout == 'tag' %}
-    <link rel="preload" href="{{ site.baseurl }}/assets/css/category-tag.css" as="style">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/category-tag.css">
-  {% endif %}
-
-  {% if page.title == 'Archives' and page.layout == 'page' %}
-    <link rel="preload" href="{{ site.baseurl }}/assets/css/archives.css" as="style">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/archives.css">
-  {% endif %}
-
-  {% if page.title == 'About' and page.layout == 'page' %}
-    <link rel="preload" href="{{ site.baseurl }}/assets/css/syntax.css" as="style">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/syntax.css">
-  {% endif %}
 
   <!-- jquery -->
   <link rel="preload" as="script"
@@ -130,22 +136,10 @@
     {% endif %}
   {% endif %}
 
-  {% if page.layout == 'post' %}
-    <link rel="preload" as="style" href="{{ site.baseurl }}/assets/css/post.css">
-    <link rel="preload" as="style" href="{{ site.baseurl }}/assets/css/syntax.css">
-
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post.css">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/syntax.css">
-
-    {% if site.toc and page.toc %}
-      <link rel="preload" as="style" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css">
-      <link rel="preload" as="script" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js">
-
-      <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
-      <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js" async></script>
-      <script src="{{ site.baseurl }}/assets/js/dist/toc.min.js" async></script>
-    {% endif %}
-
+  {% if site.toc and page.toc and page.layout == 'post' %}
+    <link rel="preload" as="script" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js">
+    <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js" async></script>
+    <script src="{{ site.baseurl }}/assets/js/dist/toc.min.js" async></script>
   {% endif %}
 
   <script src="{{ site.baseurl }}/assets/js/dist/tooltip-loader.min.js" async></script>
