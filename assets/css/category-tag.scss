@@ -1,13 +1,13 @@
 ---
+# Style for page Category and Tag
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2019 Cotes Chung
+# MIT License
 ---
-/*!
-  Style for page Category and Tag
-  v2.0
-  https://github.com/cotes2020/jekyll-theme-chirpy
-  © 2019 Cotes Chung
-  MIT License
-*/
-@import "_addon/module";
+
+
+{% include_relative _addon/main.scss %}
 
 #page-category, #page-tag {
   ul>li {
