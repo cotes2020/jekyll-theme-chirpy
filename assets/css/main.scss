@@ -384,6 +384,7 @@ $sidebar-display: "sidebar-display";
 }
 
 #search-results {
+  word-break: break-word;
   padding-bottom: 6rem;
   a {
     @extend %link-color;
