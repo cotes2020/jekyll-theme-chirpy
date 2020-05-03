@@ -384,7 +384,6 @@ $sidebar-display: "sidebar-display";
 }
 
 #search-results {
-  word-break: break-word;
   padding-bottom: 6rem;
   a {
     @extend %link-color;
@@ -1074,6 +1073,10 @@ table {
     .fa-times-circle {
       right: 5.2rem;
     }
+  }
+
+  #search-results>div {
+    max-width: 100% !important;
   }
 
   #search-input {
