@@ -1,14 +1,14 @@
 ---
+# Post-specific style
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2019 Cotes Chung
+# MIT License
 ---
-/*!
-  Post-specific style
-  v2.0
-  https://github.com/cotes2020/jekyll-theme-chirpy
-  © 2019 Cotes Chung
-  MIT License
-*/
-@import "_addon/variables";
-@import "_addon/module";
+
+
+{% include_relative _addon/main.scss %}
+{% include_relative _addon/syntax.scss %}
 
 $prompt-older: "{{ site.data.label.post.button.previous }}";
 $prompt-newer: "{{ site.data.label.post.button.next }}";
