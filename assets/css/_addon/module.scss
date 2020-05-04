@@ -62,8 +62,8 @@
   text-decoration: none;
 }
 
-@mixin sidebar-icon {
-  color: rgba(255, 255, 255, 0.5);
+@mixin sidebar-links($color: rgba(255, 255, 255, 0.5)) {
+  color: $color;
   transition: color 0.35s ease-in-out;
   user-select: none;
   margin: 0 .25rem;
