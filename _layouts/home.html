@@ -15,7 +15,9 @@ layout: page
     </h1>
     <div class="post-content">
       <p>
-      {{ post.content | strip_html | truncate: 200 | replace: '&', '&amp;' }}
+      {% assign _content = post.content %}
+      {% include no-linenos.html %}
+      {{ _content | markdownify | strip_html | truncate: 200 }}
       </p>
     </div>
 
