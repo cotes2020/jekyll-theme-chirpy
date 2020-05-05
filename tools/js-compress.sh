@@ -58,6 +58,11 @@ function compress() {
     if [[ -d "$src" ]]; then
       compress $src $2 $item   # recursion
     else
+
+      if [[ -z $(git status $src -s) ]]; then
+        continue
+      fi
+
       if [[ ! -d "$2/${sub_dir}" ]]; then
         mkdir -p $2/${sub_dir}
       fi
