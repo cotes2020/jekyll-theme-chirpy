@@ -1,0 +1,21 @@
+{% comment %}
+  Get the last 5 post from lastmod list.
+  v2.2
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT License
+{% endcomment %}
+
+{% assign MAX_SIZE = 5 %}
+{% assign sum = 0 %}
+{% assign update_list = "" | split: "" %}
+
+{% for entry in site.data.updates %}
+  {% capture elem %}
+    {{- entry.lastmod -}}::{{- entry.filename -}}
+  {% endcapture %}
+
+  {% assign update_list = update_list | push: elem %}
+{% endfor %}
+
+{% assign update_list = update_list | sort | reverse %}

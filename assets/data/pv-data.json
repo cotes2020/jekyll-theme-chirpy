@@ -1,5 +1,4 @@
 ---
-layout: compress
 ---
 
 const proxyData = '{"url": "{{ site.google_analytics.pv.proxy_endpoint }}"}';
