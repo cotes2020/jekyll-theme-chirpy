@@ -11,20 +11,10 @@
   <div class="access">
 
   {% if site.data.updates %}
-    {% assign MAX_SIZE = 5 %}
-    {% assign sum = 0 %}
-    {% assign sort_list = "" | split: "" %}
 
-    {% for entry in site.data.updates %}
-      {% capture elem %}
-        {{- entry.lastmod -}}::{{- entry.filename -}}
-      {% endcapture %}
-      {% assign sort_list = sort_list | push: elem %}
-    {% endfor %}
+    {% include update_list.html %}
 
-    {% assign sort_list = sort_list | sort | reverse %}
-
-    {% if sort_list.size > 0 %}
+    {% if update_list.size > 0 %}
 
     <div id="access-lastmod" class="post">
       <h3 data-toc-skip>
@@ -32,7 +22,7 @@
       </h3>
       <ul class="post-content pl-0 pb-1 ml-1 mt-2">
 
-      {% for item in sort_list %}
+      {% for item in update_list %}
         {% assign post_url = item | split: "::" | last | prepend: "/posts/" | append: "/" %}
         {% assign post = site.posts | where: "url", post_url | first %}
 
@@ -60,7 +50,11 @@
         {{- site.data.label.panel.trending_tags -}}
       </h3>
       <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
-       {% include trending-tags.html %}
+      {% include trending-tags.html %}
+      {% for tag in trending_tags %}
+        {% capture url %}/tags/{{ tag | downcase | url_encode }}/{% endcapture %}
+        <a class="post-tag" href="{{ url | relative_url }}">{{ tag | replace: '-', ' ' }}</a>
+       {% endfor %}
       </div>
     </div>
 
