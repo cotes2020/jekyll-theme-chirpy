@@ -6,7 +6,7 @@
 # MIT Licensed
 ---
 
-var cacheList = [
+const include = [
 
   /*--- CSS ---*/
 
@@ -99,7 +99,6 @@ var cacheList = [
   /*--- Others ---*/
 
   {% if site.google_analytics.pv.enabled %}
-    '{{ "/assets/data/pv-data.json" | relative_url }}',
     '{{ "/assets/lib/countUp.min.js" | relative_url }}',
     '{{ "/assets/js/dist/pageviews.min.js" | relative_url }}',
   {% endif %}
@@ -109,4 +108,9 @@ var cacheList = [
 
   '{{ "/app.js" | relative_url }}',
   '{{ "/sw.js" | relative_url }}'
+];
+
+const exclude = [
+  '/assets/data/pv-data.json',
+  '/img.shields.io/'
 ];
