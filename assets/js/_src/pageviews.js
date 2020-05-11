@@ -184,12 +184,12 @@ $(function() {
 
   if ($('.pageviews').length > 0) {
 
-    let originPvData = pageviews ? JSON.parse(pageviews) : undefined;
     let cache = PvCache.getData();
 
     if (cache) {
       if (PvCache.isExpired()) {
         if (PvCache.isProxyCache() ) {
+          let originPvData = pageviews ? JSON.parse(pageviews) : undefined;
           if (originPvData) {
             if (PvCache.newerThan(originPvData)) {
               displayPageviews(cache);
@@ -215,6 +215,7 @@ $(function() {
       }
 
     } else {
+      let originPvData = pageviews ? JSON.parse(pageviews) : undefined;
       fetchOriginPageviews(originPvData);
       fetchProxyPageviews();
     }
