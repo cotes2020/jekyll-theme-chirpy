@@ -20,9 +20,11 @@ title: Categories
 
     {% for post in posts_of_category %}
       {% assign second_category = post.categories[1] %}
-      {% unless sub_categories contains second_category %}
-        {% assign sub_categories = sub_categories | push: second_category %}
-      {% endunless %}
+      {% if second_category %}
+        {% unless sub_categories contains second_category %}
+          {% assign sub_categories = sub_categories | push: second_category %}
+        {% endunless %}
+      {% endif %}
     {% endfor %}
 
     {% assign sub_categories = sub_categories | sort %}
