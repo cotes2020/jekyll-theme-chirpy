@@ -145,6 +145,8 @@
   <script src="{{ site.baseurl }}/assets/js/dist/tooltip-loader.min.js" async></script>
 
   <!-- PWA -->
-  <script src="{{ '/app.js' | relative_url }}" defer></script>
+  {% if jekyll.environment == 'production' %}
+    <script src="{{ '/app.js' | relative_url }}" defer></script>
+  {% endif %}
 
 </head>
