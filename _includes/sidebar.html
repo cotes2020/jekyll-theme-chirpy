@@ -64,18 +64,27 @@
   <span class="icon-border"></span>
   {% endif %}
 
-  <a href="https://github.com/{{ site.github.username }}" target="_blank">
-    <i class="fab fa-github-alt"></i>
-  </a>
-  <a href="https://twitter.com/{{ site.twitter.username }}" target="_blank">
-    <i class="fab fa-twitter"></i>
-  </a>
-  {% assign email = site.social.email | split: '@' %}
-  <a href="javascript:window.open('mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@'))">
-    <i class="fas fa-envelope"></i>
-  </a>
-  <a href="{{ site.baseurl }}/feed.xml" target="_blank">
-    <i class="fas fa-rss"></i>
-  </a>
+  {% for entry in site.data.contact %}
+    {% capture url %}
+      {%- if entry.type == 'github' -%}
+        https://github.com/{{ site.github.username }}
+      {%- elsif entry.type == 'twitter' -%}
+        https://twitter.com/{{ site.twitter.username }}
+      {%- elsif entry.type == 'email' -%}
+        {% assign email = site.social.email | split: '@' %}
+        javascript:window.open('mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@'))
+      {%- elsif entry.type == 'rss' -%}
+        {{ "/feed.xml" | relative_url }}
+      {%- else -%}
+        {{ entry.url }}
+      {%- endif -%}
+    {% endcapture %}
+
+    {% if url != '' %}
+    <a href="{{ url }}" {% unless entry.noblank %}target="_blank"{% endunless %}>
+      <i class="{{ entry.icon }}"></i>
+    </a>
+    {% endif %}
+  {% endfor %}
 
 </div>
