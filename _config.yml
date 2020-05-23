@@ -27,6 +27,9 @@ avatar: /assets/img/sample/avatar.jpg   # support internet resources
 github:
   username: github_username             # change to your github username
 
+linkedin:
+  username: linkedin_username           # change to your linkedin username
+
 twitter:
   username: twitter_username            # change to your twitter username
 
