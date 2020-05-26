@@ -6,7 +6,7 @@ categories: [Blogging, Demo]
 tags: [typography]
 ---
 
-This Jekyll template totally compatible with Markdown syntax. Now, let's take a look for the text and typography in this theme.
+This Jekyll template totally compatible with Markdown syntax. Now, let's take a look for the text and typography in here.
 
 ## Titles
 
@@ -49,7 +49,7 @@ Fluttering and dancing in the breeze.
 
 ## Link
 
-[http://127.0.0.1:4000](http://127.0.0.1:4000)
+<http://127.0.0.1:4000>
 
 
 ## Footnote
@@ -66,6 +66,15 @@ Click the hook will locate the footnote[^footnote].
 
 This is an example of `Inline Code`.
 
+## Mathematics
+
+The mathematics powered by [**MathJax**](https://www.mathjax.org/):
+
+$$ \sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6} $$
+
+When \\(a \ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
+
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
 ## Code Snippet
 
