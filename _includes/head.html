@@ -100,14 +100,18 @@
       <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
     {% endif %}
 
-  {% endif %}
+    {% if page.math %}
+      <!-- MathJax -->
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    {% endif %}
 
+  {% endif %}
 
   <link rel="preload" as="script"
     href="https://cdn.jsdelivr.net/combine/npm/jquery@3.4.1,npm/popper.js@1.15.0,npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin>
 
   <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.4.1,npm/popper.js@1.15.0,npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
-
 
   <script src="{{ site.baseurl }}/assets/js/dist/commons.js" async></script>
 
