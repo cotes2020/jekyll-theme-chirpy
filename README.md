@@ -28,6 +28,7 @@ A minimal, sidebar, responsive web design Jekyll theme, focusing on text present
 * Table of Contents
 * Automatically recommend related posts
 * Syntax highlighting
+* Mathematical expressions
 * Search
 * Atom Feeds
 * Disqus Comments
@@ -39,7 +40,7 @@ A minimal, sidebar, responsive web design Jekyll theme, focusing on text present
 
 ### Prerequisites
 
-Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (`Ruby `, `RubyGems` and `Bundler`). 
+Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (`Ruby`, `RubyGems` and `Bundler`). 
 
 To improve the writing experience, we need to use some script tools. If your machine is running Debian or macOS, make sure that [GNU coreutils](https://www.gnu.org/software/coreutils/) is installed. Otherwise, install by:
 

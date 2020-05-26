@@ -113,6 +113,17 @@ comments: false
 ```
 
 
+## Mathematics
+
+For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
+
+```yaml
+---
+math: true
+---
+```
+
+
 ## Code Block
 
 Markdown symbols <code class="highlighter-rouge">```</code> can easily create a code block as following examples.
@@ -136,7 +147,7 @@ items:
       quantity:  4
 ```
 
-#### Liquid codes
+#### Liquid Codes
 
 If you want to display the **Liquid** snippet, surround the liquid code with `{% raw %}{%{% endraw %} raw {%raw%}%}{%endraw%}` and `{% raw %}{%{% endraw %} endraw {%raw%}%}{%endraw%}` .
 
@@ -148,6 +159,8 @@ If you want to display the **Liquid** snippet, surround the liquid code with `{%
 ```
 {% endraw %}
 
+
 ## Learn More
+
 For more knowledge about Jekyll posts, visit the [Jekyll Docs: Posts](https://jekyllrb.com/docs/posts/).
 
