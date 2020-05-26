@@ -71,8 +71,8 @@
 
   .highlight .gh { } /* Generic Heading & Diff Header */
   .highlight .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
-  .highlight .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
-  .highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
+  .highlight .gd { color: #f92672; background-color: #561c08 } /* Generic.Deleted & Diff Deleted */
+  .highlight .gi { color: #a6e22e; background-color: #0b5858 } /* Generic.Inserted & Diff Inserted */
 
 
   /*-----  My styles ------*/
