@@ -16,7 +16,7 @@ layout: page
   <ul class="post-content pl-0">
     {% for post in site.tags[page.tag] %}
     <li class="d-flex justify-content-between pl-md-3 pr-md-3">
-      <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       <span class="dash flex-grow-1"></span>
       <span class="text-muted small">{{ post.date | date: site.data.date_format.post }}</span>
     </li>
