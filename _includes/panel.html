@@ -27,7 +27,7 @@
         {% assign post = site.posts | where: "url", post_url | first %}
 
         {% if post %}
-          {% assign url = post.url | prepend: site.baseurl %}
+          {% assign url = post.url | relative_url %}
 
           <li><a href="{{ url }}">{{ post.title }}</a></li>
 

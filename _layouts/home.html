@@ -11,7 +11,7 @@ layout: page
   {% for post in paginator.posts %}
   <div class="post-preview">
     <h1>
-      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
     </h1>
     <div class="post-content">
       <p>
