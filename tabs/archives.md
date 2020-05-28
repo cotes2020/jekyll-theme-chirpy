@@ -24,7 +24,7 @@ title: Archives
         {% capture this_month %}{{ post.date | date: "%b" }}{% endcapture %}
         <span class="date day">{{ this_day }}</span>
         <span class="date month small text-muted">{{ this_month }}</span>
-        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       </div>
     </li>
   {% if forloop.last %}
