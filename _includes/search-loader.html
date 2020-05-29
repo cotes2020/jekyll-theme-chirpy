@@ -5,7 +5,6 @@
   © 2017-2019 Cotes Chung
   MIT License
 -->
-<script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js" integrity="sha256-qcLR00zq6pJk4je3MLgAri8Nn+ZumUlXgTKR2H/xCY0=" crossorigin="anonymous"></script>
 
 {% capture result_elem %}
 <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0">
@@ -20,11 +19,13 @@
 
 {% capture not_found %}<p class="mt-5">Oops! No result founds.</p>{% endcapture %}
 
+<script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script>
+
 <script>
 SimpleJekyllSearch({
   searchInput: document.getElementById('search-input'),
   resultsContainer: document.getElementById('search-results'),
-  json: '{{ site.baseurl }}/assets/data/search.json',
+  json: '{{ site.baseurl }}/assets/js/data/search.json',
   searchResultTemplate: '{{ result_elem | strip_newlines }}',
   noResultsText: '{{ not_found }}'
 });

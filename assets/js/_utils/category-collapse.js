@@ -10,8 +10,8 @@ $(function() {
   var child_prefix = "l_";
   var parent_prefix = "h_";
 
-  // close up top-category
-  $(".collapse").on("hide.bs.collapse", function() { // Bootstrap collapse events.
+  /* close up top-category */
+  $(".collapse").on("hide.bs.collapse", function() { /* Bootstrap collapse events. */
     var parent_id = parent_prefix + $(this).attr('id').substring(child_prefix.length);
     if (parent_id) {
       $("#" + parent_id + " .far.fa-folder-open").attr("class", "far fa-folder fa-fw");
@@ -20,7 +20,7 @@ $(function() {
     }
   });
 
-  // expand the top category
+  /* expand the top category */
   $(".collapse").on("show.bs.collapse", function() {
     var parent_id = parent_prefix + $(this).attr('id').substring(child_prefix.length);
     if (parent_id) {
