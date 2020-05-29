@@ -1,4 +1,4 @@
-name: build
+name: 'Continuous Integration'
 on:
   push:
     branches-ignore:
