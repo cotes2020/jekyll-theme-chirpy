@@ -35,7 +35,7 @@ function countPV(path, rows) {
     if (gaPath == path ||
       gaPath == _v2_url ||
       gaPath.concat('/') == _v2_url ||
-      gaPath.slice(gaPath.lastIndexOf('/') + 1) === fileName) { // old permalink record
+      gaPath.slice(gaPath.lastIndexOf('/') + 1) === fileName) { /* old permalink record */
       count += parseInt(rows[i][1]);
     }
   }
@@ -67,13 +67,13 @@ function displayPageviews(data) {
   var hasInit = getInitStatus();
   var rows = data.rows;
 
-  if ($("#post-list").length > 0) { // the Home page
+  if ($("#post-list").length > 0) { /* the Home page */
     $(".post-preview").each(function() {
       var path = $(this).children("h1").children("a").attr("href");
       tacklePV(rows, path, $(this).find('.pageviews'), hasInit);
     });
 
-  } else if ($(".post").length > 0) { // the post
+  } else if ($(".post").length > 0) { /* the post */
     var path = window.location.pathname;
     tacklePV(rows, path, $('#pv'), hasInit);
   }
@@ -133,12 +133,12 @@ var PvCache = (function() {
     isExpired: function() {
       if (PvCache.isOriginCache() ) {
         let date = new Date(get(KEY_CREATION));
-        date.setDate(date.getDate() + 1); // fetch origin-data every day
+        date.setDate(date.getDate() + 1); /* fetch origin-data every day */
         return Date.now() >= date.getTime();
 
       } else if (PvCache.isProxyCache() ) {
         let date = new Date(get(KEY_CREATION) );
-        date.setHours(date.getHours() + 1); // proxy-data is updated every hour
+        date.setHours(date.getHours() + 1); /* proxy-data is updated every hour */
         return Date.now() >= date.getTime();
       }
       return false;
@@ -151,7 +151,7 @@ var PvCache = (function() {
     }
   };
 
-})(); // PvCache
+})(); /* PvCache */
 
 
 function fetchOriginPageviews(pvData) {
@@ -164,7 +164,7 @@ function fetchOriginPageviews(pvData) {
 
 
 function fetchProxyPageviews() {
-  let proxy = JSON.parse(proxyData); // see file '/assets/data/pv-data.json'
+  let proxy = JSON.parse(proxyData); /* see file '/assets/data/pv-data.json' */
   $.ajax({
     type: 'GET',
     url: proxy.url,
@@ -205,7 +205,7 @@ $(function() {
           fetchProxyPageviews();
         }
 
-      } else { // still valid
+      } else { /* still valid */
         displayPageviews(cache);
 
         if (PvCache.isOriginCache() ) {

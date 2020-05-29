@@ -11,22 +11,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-  {%- if page.layout == "home" -%}
-    {{- site.title -}}
-  {%- else -%}
-    {{ page.title }} | {{ site.title }}
-  {%- endif -%}
+  {%- unless page.layout == "home" -%}
+    {{ page.title | append: " | "}}
+  {%- endunless -%}
+    {{ site.title }}
   </title>
 
   {% seo title=false %}
 
   {% include favicons.html %}
 
-  <!-- google fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
-  <!-- ga -->
+  <!-- GA -->
   {% if jekyll.environment == 'production' %}
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
@@ -40,9 +39,11 @@
     {% endif %}
   {% endif %}
 
-  <!-- jsdelivr CDN -->
+  <!-- jsDelivr CDN -->
   <link rel="preconnect" href="cdn.jsdelivr.net">
   <link rel="dns-prefetch" href="cdn.jsdelivr.net">
+
+  <!-- Bootstrap -->
 
   <link rel="preload" as="style"
     href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -51,6 +52,8 @@
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
 
   <link rel="preload" as="style"
     href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"
@@ -100,41 +103,18 @@
       <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
     {% endif %}
 
-    {% if page.math %}
-      <!-- MathJax -->
-      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-    {% endif %}
-
   {% endif %}
 
-  <link rel="preload" as="script"
-    href="https://cdn.jsdelivr.net/combine/npm/jquery@3.4.1,npm/popper.js@1.15.0,npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin>
+  <!-- JavaScripts -->
 
-  <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.4.1,npm/popper.js@1.15.0,npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+  <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/jquery@3.4.1"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
 
-  <script src="{{ site.baseurl }}/assets/js/dist/commons.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-  {% if page.layout == 'home' or page.layout == 'post' %}
-    <script src="{{ site.baseurl }}/assets/js/dist/timeago.min.js" async></script>
-    {% if site.google_analytics.pv.enabled %}
-      <script src="{{ site.baseurl }}/assets/data/pv-data.json"></script>
-      <script src="{{ site.baseurl }}/assets/lib/countUp.min.js" async></script>
-      <script src="{{ site.baseurl }}/assets/js/dist/pageviews.min.js" async></script>
-    {% endif %}
-  {% endif %}
+  <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" async></script>
 
-  {% if site.toc and page.toc and page.layout == 'post' %}
-    <link rel="preload" as="script" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js">
-    <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js" async></script>
-    <script src="{{ site.baseurl }}/assets/js/dist/toc.min.js" async></script>
-  {% endif %}
-
-  <script src="{{ site.baseurl }}/assets/js/dist/tooltip-loader.min.js" async></script>
-
-  <!-- PWA -->
-  {% if jekyll.environment == 'production' %}
-    <script src="{{ '/app.js' | relative_url }}" defer></script>
-  {% endif %}
+  {% include js-selector.html %}
 
 </head>

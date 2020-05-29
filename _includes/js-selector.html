@@ -1,0 +1,45 @@
+<!--
+  JS selector for site.
+  Chirpy v2.3
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT Licensed
+-->
+
+{% if page.layout == 'home' %}
+
+  <script src="{{ '/assets/js/home.min.js' | relative_url }}" async></script>
+
+{% elsif page.layout == 'post' %}
+
+  {% if site.toc and page.toc %}
+    <script src="{{ '/assets/js/post-toc.min.js' | relative_url }}" async></script>
+  {% else %}
+    <script src="{{ '/assets/js/post.min.js' | relative_url }}" async></script>
+  {% endif %}
+
+  {% if page.math %}
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  {% endif %}
+
+{% elsif page.layout == 'page' %}
+
+  {% if page.title == 'Categories' %}
+    <script src="{{ '/assets/js/categories.min.js' | relative_url }}" async></script>
+  {% else %}
+    <script src="{{ '/assets/js/page.min.js' | relative_url }}" async></script>
+  {% endif %}
+
+{% else %}
+
+  <script src="{{ '/assets/js/page.min.js' | relative_url }}" async></script>
+
+{% endif %}
+
+
+<!-- PWA -->
+{% if jekyll.environment == 'production' %}
+  <script src="{{ '/app.js' | relative_url }}" defer></script>
+{% endif %}
