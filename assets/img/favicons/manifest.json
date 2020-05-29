@@ -8,7 +8,7 @@ layout: compress
 # MIT License
 ---
 
-{% assign icon_url = "/assets/img/favicons/" | relative_url %}
+{% assign icon_url = "/assets/img/favicons" | relative_url %}
 
 {
   "name": "{{ site.title }}",
