@@ -1,4 +1,6 @@
 ---
+layout: compress
+
 # The list to be cached by PWA
 # Chirpy v2.2
 # https://github.com/cotes2020/jekyll-theme-chirpy
@@ -17,15 +19,14 @@ const include = [
   '{{ "/assets/css/page.css" | relative_url }}',
   '{{ "/assets/css/post.css" | relative_url }}',
   '{{ "/assets/css/category-tag.css" | relative_url }}',
-  '{{ "/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" | relative_url }}',
+  '{{ "/assets/css/lib/bootstrap-toc.min.css" | relative_url }}',
 
   /*--- Javascripts ---*/
 
-  '{{ "/assets/js/dist/commons.js" | relative_url }}',
-  '{{ "/assets/js/dist/timeago.min.js" | relative_url }}',
-  '{{ "/assets/js/dist/category-collapse.min.js" | relative_url }}',
-  '{{ "/assets/js/dist/toc.min.js" | relative_url }}',
-  '{{ "/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js" | relative_url }}',
+  '{{ "/assets/js/home.min.js" | relative_url }}',
+  '{{ "/assets/js/page.min.js" | relative_url }}',
+  '{{ "/assets/js/post.min.js" | relative_url }}',
+  '{{ "/assets/js/post-toc.min.js" | relative_url }}',
 
   /*--- HTML ---*/
 
@@ -98,12 +99,7 @@ const include = [
 
   /*--- Others ---*/
 
-  {% if site.google_analytics.pv.enabled %}
-    '{{ "/assets/lib/countUp.min.js" | relative_url }}',
-    '{{ "/assets/js/dist/pageviews.min.js" | relative_url }}',
-  {% endif %}
-
-  '{{ "/assets/data/search.json" | relative_url }}',
+  '{{ "/assets/js/data/search.json" | relative_url }}',
   '{{ "/404.html" | relative_url }}',
 
   '{{ "/app.js" | relative_url }}',
@@ -111,6 +107,6 @@ const include = [
 ];
 
 const exclude = [
-  '/assets/data/pv-data.json',
+  '/assets/js/data/pv-data.js',
   '/img.shields.io/'
 ];

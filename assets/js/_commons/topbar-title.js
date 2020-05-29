@@ -5,7 +5,8 @@
  * © 2018-2019 Cotes Chung
  * MIT License
 */
-$(function(){
+
+$(function() {
 
   var DEFAULT = $("#topbar-title").text().trim();
   var title = ($("div.post>h1").length > 0) ?
@@ -18,12 +19,12 @@ $(function(){
     }
   }
 
-  // Replace topbar title while scroll screens.
+  /* Replace topbar title while scroll screens. */
   $(window).scroll(function () {
-    if ($("#post-list").length // in Home page
-      || $("div.post>h1").is(":hidden") // is tab pages
-      || $("#topbar-title").is(":hidden") // not mobile screens
-      || $("#sidebar.sidebar-expand").length) { // when the sidebar trigger is clicked
+    if ($("#post-list").length /* in Home page */
+      || $("div.post>h1").is(":hidden") /* is tab pages */
+      || $("#topbar-title").is(":hidden") /* not mobile screens */
+      || $("#sidebar.sidebar-expand").length) { /* when the sidebar trigger is clicked */
       return false;
     }
 
@@ -36,9 +37,9 @@ $(function(){
         $("#topbar-title").text(DEFAULT);
       }
     }
-  })
+  });
 
-  // Click title remove hover effect.
+  /* Click title remove hover effect. */
   $('#topbar-title').click(function() {
     $('body,html').animate({scrollTop: 0}, 800);
   });

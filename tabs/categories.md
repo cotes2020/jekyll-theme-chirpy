@@ -87,5 +87,3 @@ title: Categories
 
   {% endif %}
 {% endfor %}
-
-<script src="{{ site.baseurl }}/assets/js/dist/category-collapse.min.js" async></script>

@@ -5,6 +5,7 @@
  * © 2018-2019 Cotes Chung
  * MIT License
  */
+
 $(function() {
 
   var didScroll;
@@ -13,7 +14,7 @@ $(function() {
   var topbarHeight = $('#topbar-wrapper').outerHeight();
 
   $(window).scroll(function(event) {
-    if ($("#topbar-title").is(":hidden")) { // Not in small screens
+    if ($("#topbar-title").is(":hidden")) { /* Not in small screens */
       didScroll = true;
     }
   });
@@ -28,12 +29,12 @@ $(function() {
   function hasScrolled() {
     var st = $(this).scrollTop();
 
-    // Make sure they scroll more than delta
+    /* Make sure they scroll more than delta */
     if (Math.abs(lastScrollTop - st) <= delta)
       return;
 
     if (st > lastScrollTop && st > topbarHeight) {
-      // Scroll Down
+      /* Scroll Down */
       $('#topbar-wrapper').removeClass('topbar-down').addClass('topbar-up');
 
       if ( $('#toc-wrapper').length > 0) {
@@ -45,11 +46,11 @@ $(function() {
       }
 
       if ($('#search-input').is(':focus')) {
-        $('#search-input').blur(); // remove focus
+        $('#search-input').blur(); /* remove focus */
       }
 
     } else {
-      // Scroll Up
+      /* Scroll Up */
       if (st + $(window).height() < $(document).height()) {
         $('#topbar-wrapper').removeClass('topbar-up').addClass('topbar-down');
         if ( $('#toc-wrapper').length > 0) {
