@@ -44,7 +44,6 @@
   <link rel="dns-prefetch" href="cdn.jsdelivr.net">
 
   <!-- Bootstrap -->
-
   <link rel="preload" as="style"
     href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin>
@@ -54,56 +53,12 @@
     integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous">
 
   <!-- Font Awesome -->
-
-  <link rel="preload" as="style"
-    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"
-    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ="
-    crossorigin="anonymous">
-
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"
     integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ="
     crossorigin="anonymous">
 
-
-  {% if page.layout == 'home' %}
-    <link rel="preload" href="{{ site.baseurl }}/assets/css/home.css" as="style">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/home.css">
-
-  {% elsif page.layout == 'page' %}
-
-    {% if page.title == 'Categories' %}
-      <link rel="preload" href="{{ site.baseurl }}/assets/css/categories.css" as="style">
-      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/categories.css">
-
-    {% elsif page.title == 'Tags' %}
-      <link rel="preload" href="{{ site.baseurl }}/assets/css/tags.css" as="style">
-      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tags.css">
-
-    {% elsif page.title == 'Archives' %}
-      <link rel="preload" href="{{ site.baseurl }}/assets/css/archives.css" as="style">
-      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/archives.css">
-
-    {% else %}
-      <link rel="preload" href="{{ site.baseurl }}/assets/css/page.css" as="style">
-      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page.css">
-
-    {% endif %}
-
-  {% elsif page.layout == 'category' or page.layout == 'tag' %}
-      <link rel="preload" href="{{ site.baseurl }}/assets/css/category-tag.css" as="style">
-      <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/category-tag.css">
-
-  {% elsif page.layout == 'post' %}
-    <link rel="preload" as="style" href="{{ site.baseurl }}/assets/css/post.css">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/post.css">
-
-    {% if site.toc and page.toc %}
-      <link rel="preload" as="style" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css">
-      <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
-    {% endif %}
-
-  {% endif %}
+  {% include css-selector.html %}
 
   <!-- JavaScripts -->
 
