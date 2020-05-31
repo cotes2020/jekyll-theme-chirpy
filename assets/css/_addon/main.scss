@@ -77,11 +77,34 @@ $sidebar-display: "sidebar-display";
   overflow-y: auto;
   width: $sidebar-width-medium;
   z-index: 99;
-  background: rgb(42, 30, 107);
   background: var(--sidebar-bg);
   a {
     @include sidebar-links;
   }
+
+  .site-title {
+    text-align: center;
+    a {
+      // color: var(--site-title-color);
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: .5px;
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .site-subtitle {
+    font-size: 95%;
+    text-align: center;
+    color: #828282;
+    line-height: 1.2rem;
+    word-spacing: 1px;
+    margin: .5rem 1.5rem 2rem 1.5rem;
+  }
+
   .sidebar-bottom {
     .icon-border+a { // the icon behide mode-toggle
       margin-left: .1rem;
@@ -238,29 +261,6 @@ $sidebar-display: "sidebar-display";
     }
   }
 } // #avatar
-
-#site-title {
-  text-align: center;
-  a {
-    // color: var(--site-title-color);
-    font-weight: 900;
-    font-size: 1.5rem;
-    letter-spacing: .5px;
-    &:hover {
-      color: #fff;
-      text-decoration: none;
-    }
-  }
-}
-
-#site-subtitle {
-  font-size: 95%;
-  text-align: center;
-  color: #828282;
-  line-height: 1.2rem;
-  word-spacing: 1px;
-  margin: .5rem 1.5rem 2rem 1.5rem;
-}
 
 #search-result-wrapper {
   display: none;
@@ -946,7 +946,7 @@ table {
     height: 5rem;
   }
 
-  #site-subtitle {
+  .site-subtitle {
     @include ml-mr(1.8rem);
   }
 
@@ -1188,12 +1188,12 @@ table {
     max-width: 700px;
   }
 
-  #site-title {
+  .site-title {
     font-size: 1.3rem;
     margin-left: 0!important;
   }
 
-  #site-subtitle {
+  .site-subtitle {
     font-size: 90%;
     @include ml-mr(1rem);
   }
@@ -1352,56 +1352,54 @@ table {
   }
 
   #profile-wrapper {
-    margin-top: 4rem;
-    margin-bottom: 3rem;
-    padding-left: 18%;
+    margin: 4rem 2rem 3rem 4rem;
     -ms-flex-direction: column!important;
-  }
 
-  #avatar {
-    -webkit-box-pack: normal !important;
-    -ms-flex-pack: normal !important;
-    justify-content: normal !important;
-    >a {
-      width: 6.2rem;
-      height: 6.2rem;
+    #avatar {
+      -webkit-box-pack: normal !important;
+      -ms-flex-pack: normal !important;
+      justify-content: normal !important;
+      >a {
+        width: 6.2rem;
+        height: 6.2rem;
+      }
     }
-  }
 
-  .profile-text {
-    padding-left: .5rem;
-    /* .d-flex */
-    display: -webkit-box!important;
-    display: -ms-flexbox!important;
-    display: flex!important;
-    /* .flex-wrap */
-    -ms-flex-wrap: wrap!important;
-    flex-wrap: wrap!important;
-    /* .align-content-center */
-    -ms-flex-line-pack: center!important;
-    align-content: center!important;
-  }
-
-  #site-title a {
-    font-size: 1.7rem;
-    letter-spacing: 1px;
-  }
-
-  .profile-text>div {
-    text-align: left !important;
-    width: 100%;
-  }
-
-  #site-subtitle {
-    word-spacing: 0;
-    padding-right: 3rem;
-    margin: .3rem 0 0 0;
+    .profile-text {
+      margin-left: .5rem;
+      /* .d-flex */
+      display: -webkit-box!important;
+      display: -ms-flexbox!important;
+      display: flex!important;
+      /* .flex-wrap */
+      -ms-flex-wrap: wrap!important;
+      flex-wrap: wrap!important;
+      /* .align-content-center */
+      -ms-flex-line-pack: center!important;
+      align-content: center!important;
+      >div {
+        text-align: left !important;
+        width: 100%;
+      }
+    }
   }
 
   #sidebar {
     width: $sidebar-width-large;
+
+    .site-title a {
+      font-size: 1.7rem;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    .site-subtitle {
+      word-spacing: 0;
+      margin: .3rem 0 0 0;
+    }
+
     ul {
-      margin-left: 5%;
+      margin-left: 3%;
       >li>a {
         padding-left: 2.5rem;
         -webkit-box-pack: start!important;
@@ -1457,10 +1455,8 @@ table {
           margin-left: 0;
         }
       }
-
     } // .sidebar-bottom
   } // #sidebar
-
   footer>div.d-flex {
     width: 87%;
     max-width: 1140px;
@@ -1474,6 +1470,7 @@ table {
   }
 
 } // min-width: 1650px
+
 
 @media all and (min-width: 1700px) {
   #topbar-wrapper {
