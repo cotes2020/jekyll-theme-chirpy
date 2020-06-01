@@ -45,18 +45,22 @@
 
   {% endif %} <!-- site.data.updates -->
 
+  {% include trending_tags.html %}
+
+  {% if trending_tags.size > 0 %}
     <div id="access-tags">
       <h3 data-toc-skip>
         {{- site.data.label.panel.trending_tags -}}
       </h3>
       <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
-      {% include trending-tags.html %}
+
       {% for tag in trending_tags %}
         {% capture url %}/tags/{{ tag | downcase | url_encode }}/{% endcapture %}
         <a class="post-tag" href="{{ url | relative_url }}">{{ tag | replace: '-', ' ' }}</a>
        {% endfor %}
       </div>
     </div>
+  {% endif %}
 
   </div> <!-- .access -->
 

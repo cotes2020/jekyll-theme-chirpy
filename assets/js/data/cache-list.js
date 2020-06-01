@@ -65,7 +65,7 @@ const include = [
   {% endfor %}
 
   /* Trending tags */
-  {% include trending-tags.html %}
+  {% include trending_tags.html %}
   {% for tag in trending_tags %}
     {% capture tag_url %}/tags/{{ tag | downcase | url_encode }}/{% endcapture %}
     '{{ tag_url | relative_url }}',
