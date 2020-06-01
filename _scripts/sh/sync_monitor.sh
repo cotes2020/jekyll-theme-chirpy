@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Files sync monitoer
+# Files sync monitor
 # v2.0
 # https://github.com/cotes2020/jekyll-theme-chirpy
 # © 2019 Cotes Chung
@@ -8,7 +8,7 @@
 
 # $1 -> the origin file with absolute path.
 # $2 -> the origin sync directory
-# $3 -> the destination sync direcotry
+# $3 -> the destination sync directory
 
 # Omit the system temp file
 if [[ ! -f $1 ]]; then
