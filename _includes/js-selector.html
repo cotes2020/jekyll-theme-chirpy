@@ -12,11 +12,7 @@
 
 {% elsif page.layout == 'post' %}
 
-  {% if site.toc and page.toc %}
-    <script src="{{ '/assets/js/post-toc.min.js' | relative_url }}" async></script>
-  {% else %}
-    <script src="{{ '/assets/js/post.min.js' | relative_url }}" async></script>
-  {% endif %}
+  <script src="{{ '/assets/js/post.min.js' | relative_url }}" async></script>
 
   {% if page.math %}
     <!-- MathJax -->
