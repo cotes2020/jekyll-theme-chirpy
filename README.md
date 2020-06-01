@@ -40,7 +40,7 @@ A minimal, sidebar, responsive web design Jekyll theme, focusing on text present
 
 ### Prerequisites
 
-Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (`Ruby`, `RubyGems` and `Bundler`). 
+Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of basic environment (`Ruby`, `RubyGems` and `Bundler`). 
 
 To improve the writing experience, we need to use some script tools. If your machine is running Debian or macOS, make sure that [GNU coreutils](https://www.gnu.org/software/coreutils/) is installed. Otherwise, install by:
 
@@ -127,7 +127,7 @@ Generally, go to `_config.yml` and configure the variables as needed. Some of th
 
 * `avatar`
     
-    It defines the image file location of avatar. The sample image is `/assets/img/sample/avatar.jpg`, and should be replaced by your own one(a square image). Notice that a huge image file will increase the load time of your site, so keep your avatar image size as samll as possible(may be *<https://tinypng.com/>* will help).
+    It defines the image file location of avatar. The sample image is `/assets/img/sample/avatar.jpg`, and should be replaced by your own one(a square image). Notice that a huge image file will increase the load time of your site, so keep your avatar image size as small as possible(may be *<https://tinypng.com/>* will help).
 
 * `timezone`
 
@@ -151,7 +151,7 @@ You may want to preview the site content before publishing, so just run the scri
 $ bash tools/run.sh
 ```
 
-Open a modern brower and visit at <http://localhost:4000>.
+Open a modern browser and visit at <http://localhost:4000>.
 
 Few days later, you may find that the file modification(e.g. edits to a post) does not refresh in real time by using `run.sh`. Don't worry, the advanced option `-r` (or `--realtime`) will solve this problem, but it requires [**fswatch**](http://emcrisostomo.github.io/fswatch/) to be installed on your machine. Type `-h` for more information.
 
