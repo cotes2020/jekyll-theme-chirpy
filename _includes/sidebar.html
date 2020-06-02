@@ -15,7 +15,7 @@
         {% if start == '/' %}
           {% assign avatar_url = avatar_url | prepend: site.baseurl %}
         {% endif %}
-        <img src="{{ avatar_url }}" alt="avatar">
+        <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
       </a>
     </div>
 
