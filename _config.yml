@@ -45,18 +45,18 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 #--------------------------
 
-# if your site type is Project Pages site, change below value to '/projectname'
+
+# Only if your site type is GitHub Project sites and doesn't have a custom domain,
+# change below value to '/projectname'.
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Asia/Shanghai
 
 google_analytics:
-  # Fill with your Google Analytics ID
-  id: ''
-  # The Google Analytics pageviews switch.
-
+  id: ''          # Fill with your Google Analytics ID
   pv:
+    # The Google Analytics pageviews switch.
     # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
     enabled: false
     # the next options only valid when `google_analytics.pv` is enabled.
@@ -101,6 +101,8 @@ kramdown:
       line_numbers: true
       start_line: 1
 
+# DO NOT change this unless you're a Pro user on Jekyll and Web development,
+# or you think you're smart enough to change other relevant URLs within this template.
 permalink: /posts/:title/
 
 defaults:
