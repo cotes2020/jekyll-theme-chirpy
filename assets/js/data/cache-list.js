@@ -52,7 +52,7 @@ const include = [
     {% endif %}
   {% endfor %}
 
-  {% include update_list.html %}
+  {% include update-list.html %}
   {% for item in update_list %}
     {% assign url = item | split: "::" | last | prepend: "/posts/" | append: "/" %}
     {% assign post_list = post_list | push: url %}
@@ -65,7 +65,7 @@ const include = [
   {% endfor %}
 
   /* Trending tags */
-  {% include trending_tags.html %}
+  {% include trending-tags.html %}
   {% for tag in trending_tags %}
     {% capture tag_url %}/tags/{{ tag | downcase | url_encode }}/{% endcapture %}
     '{{ tag_url | relative_url }}',
