@@ -69,7 +69,7 @@ function displayPageviews(data) {
 
   if ($("#post-list").length > 0) { /* the Home page */
     $(".post-preview").each(function() {
-      var path = $(this).children("h1").children("a").attr("href");
+      var path = $(this).children("div").children("h1").children("a").attr("href");
       tacklePV(rows, path, $(this).find('.pageviews'), hasInit);
     });
 

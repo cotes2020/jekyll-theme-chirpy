@@ -29,7 +29,7 @@
   padding-top: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--main-border-color);
-  >h1 {
+  h1 {
     font-size: 1.4rem;
     margin: 0;
   }
@@ -48,6 +48,9 @@
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
     }
+  }
+  .pinned {
+    transform: rotate(45deg);
   }
 }
 
