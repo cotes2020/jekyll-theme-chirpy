@@ -53,7 +53,7 @@ layout: page
 {% for post in posts %}
 
   <div class="post-preview">
-    <div class="d-flex justify-content-between align-items-center pr-2">
+    <div class="d-flex justify-content-between align-items-center pr-xl-2">
       <h1><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
       {% if post.pin %}
         <i class="fas fa-thumbtack fa-fw fa-sm text-muted pinned" data-toggle="tooltip" data-placement="top"

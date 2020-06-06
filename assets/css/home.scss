@@ -11,93 +11,100 @@
 #post-list {
   margin-top: 1rem;
   padding-right: .5rem;
-  .post-meta {
-    i:not(:first-child) { // post-meta icons on HOME
-      margin-left: 1.5rem;
+
+  .post-preview {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--main-border-color);
+
+    h1 {
+      font-size: 1.4rem;
+      margin: 0;
     }
-  }
-}
+
+    i.far { /* fontawesome icons */
+      font-size: 86%;
+    }
+
+    .post-meta {
+      i:not(:first-child) { // post-meta icons on the homepage
+        margin-left: 1.5rem;
+      }
+    }
+
+    .post-content {
+      margin-top: .6rem;
+      margin-bottom: .6rem;
+      color: var(--post-list-text-color);
+      >p {
+        /* Make preview shorter on the homepage */
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+    .pinned {
+      transform: rotate(45deg);
+    }
+
+  } // .post-preview
+
+} // #post-list
 
 .pagination {
   font-size: 1rem;
   a:hover {
     text-decoration: none;
   }
-}
 
-.post-preview {
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--main-border-color);
-  h1 {
-    font-size: 1.4rem;
-    margin: 0;
-  }
-  i.far { /* fontawesome icons */
-    font-size: 86%;
-  }
-  .post-content {
-    margin-top: .6rem;
-    margin-bottom: .6rem;
-    color: var(--post-list-text-color);
-    >p { /* Make preview shorter in Home page*/
-      margin: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
+  .page-item {
+    .page-link {
+      color: var(--btn-patinator-text-color);
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      text-align: center;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
-  }
-  .pinned {
-    transform: rotate(45deg);
-  }
-}
-
-.page-item {
-  .page-link {
-    color: var(--btn-patinator-text-color);
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 0;
-    text-align: center;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    border-radius: 50%;
-    border: 1px solid var(--btn-paginator-border-color);
-    font-family: 'Lato', sans-serif;
-    background-color: var(--button-bg);
-  }
-  &.active {
-    .page-link {
-      background-color: var(--btn-active-bg);
-      border-color: var(--btn-active-border-color);
-      box-shadow: 0 0 8px 0 var(--btn-paginator-shadow) !important;
-      color: var(--btn-text-color);
-    }
-  }
-  &.disabled {
-    cursor: not-allowed;
-    .page-link {
-      color: rgba(108, 117, 125, 0.57);
-      border-color: var(--btn-paginator-border-color);
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--btn-paginator-border-color);
+      font-family: 'Lato', sans-serif;
       background-color: var(--button-bg);
     }
-  }
-  &:first-child .page-link,
-  &:last-child .page-link {
-    border-radius: 50%;
-  }
-  &:not(:last-child) {
-    margin-right: 0.6rem;
-  }
+    &.active {
+      .page-link {
+        background-color: var(--btn-active-bg);
+        border-color: var(--btn-active-border-color);
+        box-shadow: 0 0 8px 0 var(--btn-paginator-shadow) !important;
+        color: var(--btn-text-color);
+      }
+    }
+    &.disabled {
+      cursor: not-allowed;
+      .page-link {
+        color: rgba(108, 117, 125, 0.57);
+        border-color: var(--btn-paginator-border-color);
+        background-color: var(--button-bg);
+      }
+    }
+    &:first-child .page-link,
+    &:last-child .page-link {
+      border-radius: 50%;
+    }
+    &:not(:last-child) {
+      margin-right: 0.7rem;
+    }
+  } // .page-item
 
-} // .page-item
-
+} // .pagination
 
 @media all and (max-width: 576px) {
   #post-list .post-meta>span i:not(:first-child) {
@@ -121,12 +128,12 @@
 
   .pagination {
     font-size: .85rem;
+    .page-item .page-link {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
   }
 
-  .page-item .page-link {
-    width: 2.2rem;
-    height: 2.2rem;
-  }
 }
 
 /* Pannel hidden */
