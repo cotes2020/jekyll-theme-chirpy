@@ -22,8 +22,9 @@ A minimal, sidebar, responsive web design Jekyll theme, focusing on text present
 
 ## Features
 
+* Pinned Posts
 * Configurable theme mode
-* Two-level Categories
+* Double-level Categories
 * Last modified date for posts
 * Table of Contents
 * Automatically recommend related posts
