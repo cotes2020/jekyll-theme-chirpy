@@ -238,7 +238,7 @@ $ bash tools/build.sh -d /path/to/local/project/
 
 #### 结束工作
 
-无论你选择了哪种方式部署网站到 GitHub Pages, 请开启 `HTTPS` 功能。具体细节参考官方说明：[Configuring a publishing source for your GitHub Pages site](https://help.github.com/en/github/working-with-github-pages/securing-your-github-pages-site-with-https)。
+无论你选择了哪种方式部署网站到 GitHub Pages, 请开启 `HTTPS` 功能。具体细节参考官方说明：[Securing your GitHub Pages site with HTTPS](https://help.github.com/en/github/working-with-github-pages/securing-your-github-pages-site-with-https)。
 
 ### 文档
 

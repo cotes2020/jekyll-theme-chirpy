@@ -201,4 +201,4 @@ The generated static files will be placed in the root of `/path/to/local/project
 
 ### Finishing work
 
-No matter which way you choose to deploy the website on GitHub, please enforce the `HTTPS` for it. See official docs: [Configuring a publishing source for your GitHub Pages site](https://help.github.com/en/github/working-with-github-pages/securing-your-github-pages-site-with-https).
+No matter which way you choose to deploy the website on GitHub, please enforce the `HTTPS` for it. See official docs: [Securing your GitHub Pages site with HTTPS](https://help.github.com/en/github/working-with-github-pages/securing-your-github-pages-site-with-https).
