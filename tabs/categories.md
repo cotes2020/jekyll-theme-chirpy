@@ -8,6 +8,9 @@ title: Categories
 # MIT License
 ---
 
+{% assign HEAD_PREFIX = "h_" %}
+{% assign LIST_PREFIX = "l_" %}
+
 {% assign sort_categories = site.categories | sort %}
 
 {% for category in sort_categories %}
@@ -32,41 +35,48 @@ title: Categories
 
   <div class="card categories">
     <!-- top-category -->
-    <div class="card-header d-flex justify-content-between hide-border-bottom" id="h_{{ category_name }}">
+    <div class="card-header d-flex justify-content-between hide-border-bottom"
+        id="{{ HEAD_PREFIX }}{{ category_name }}">
       <span>
-      {% if sub_categories_size > 0 %}
-        <i class="far fa-folder-open fa-fw"></i>
-      {% else %}
-        <i class="far fa-folder fa-fw"></i>
-      {% endif %}
-        <a href="{{ site.baseurl }}/categories/{{ category_name | replace: ' ', '-' | downcase | url_encode }}/"
-          class="ml-1 mr-2">{{ category_name }}</a>
+        {% if sub_categories_size > 0 %}
+          <i class="far fa-folder-open fa-fw"></i>
+        {% else %}
+          <i class="far fa-folder fa-fw"></i>
+        {% endif %}
+          <a href="{{ site.baseurl }}/categories/{{ category_name | replace: ' ', '-' | downcase | url_encode }}/"
+              class="ml-1 mr-2">
+            {{ category_name }}
+          </a>
+
         <!-- content count -->
         {% assign top_posts_size = site.categories[category_name] | size %}
-        <span class="text-muted small font-weight-light">
-        {% if sub_categories_size > 0 %}
-          {{ sub_categories_size }}
-          {% if sub_categories_size > 1 %}categories{% else %}category{% endif %},
-        {% endif %}
-          {{ top_posts_size }}
-          post{% if top_posts_size > 1 %}s{% endif %}
-        </span>
+          <span class="text-muted small font-weight-light">
+          {% if sub_categories_size > 0 %}
+            {{ sub_categories_size }}
+            {% if sub_categories_size > 1 %}categories{% else %}category{% endif %},
+          {% endif %}
+            {{ top_posts_size }}
+            post{% if top_posts_size > 1 %}s{% endif %}
+          </span>
       </span>
 
       <!-- arrow -->
-      <a href="#l_{{ category_name }}" data-toggle="collapse" aria-expanded="true" class="category-trigger hide-border-bottom">
-        {% if sub_categories_size > 0%}
-        <i class="fas fa-fw fa-angle-down"></i>
-        {% else %}
-        <i class="fas fa-fw fa-angle-right disabled"></i>
-        {% endif %}
-      </a>
+      {% if sub_categories_size > 0%}
+        <a href="#{{ LIST_PREFIX }}{{ category_name }}" data-toggle="collapse" aria-expanded="true"
+            class="category-trigger hide-border-bottom">
+          <i class="fas fa-fw fa-angle-down"></i>
+        </a>
+      {% else %}
+        <span data-toggle="collapse" class="category-trigger hide-border-bottom disabled">
+          <i class="fas fa-fw fa-angle-right"></i>
+        </span>
+      {% endif %}
 
     </div> <!-- .card-header -->
 
     <!-- Sub-categories -->
     {% if sub_categories_size > 0 %}
-    <div id="l_{{ category_name }}" class="collapse show" aria-expanded="true">
+    <div id="{{ LIST_PREFIX }}{{ category_name }}" class="collapse show" aria-expanded="true">
       <ul class="list-group">
         {% for sub_category in sub_categories %}
         <li class="list-group-item">
