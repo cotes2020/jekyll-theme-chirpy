@@ -20,15 +20,17 @@
     h1 {
       font-size: 1.4rem;
       margin: 0;
-    }
-
-    i.far { /* fontawesome icons */
-      font-size: 86%;
+      ~i { // pinned icon
+        font-size: .86rem;
+      }
     }
 
     .post-meta {
-      i:not(:first-child) { // post-meta icons on the homepage
-        margin-left: 1.5rem;
+      i {
+        font-size: .73rem;
+        &:not(:first-child) { // post-meta icons on the homepage
+          margin-left: 1.5rem;
+        }
       }
     }
 
