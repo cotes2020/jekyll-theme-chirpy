@@ -23,10 +23,11 @@ Please select the desired item checkbox and change it to "[x]", then delete opti
 Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
 -->
 
-- [ ] Test A
-- [ ] Test B
+- [ ] I have run `bash ./tools/build.sh && bash ./tools/test.sh` (at the root of the project) locally and passed
+- [ ] I have tested this feature in the browser
 
-**Test Configuration**:
+## Test Configuration
+
 * Browerser type & version:
 * Operating system:
 * Bundler version:
@@ -36,11 +37,10 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 # Checklist:
 <!-- Select checkboxes by change the "[ ]" to "[x]" -->
-- [ ] My code follows the style guidelines of this project
+- [ ] My code follows the [Google style guidelines](https://google.github.io/styleguide/)
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] I have made corresponding changes to the documentation
 - [ ] My changes generate no new warnings
 - [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
 - [ ] Any dependent changes have been merged and published in downstream modules
