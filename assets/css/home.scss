@@ -76,6 +76,9 @@
       border: 1px solid var(--btn-paginator-border-color);
       font-family: 'Lato', sans-serif;
       background-color: var(--button-bg);
+      &:hover {
+        background-color: var(--btn-paginator-hover-color)
+      }
     }
     &.active {
       .page-link {
