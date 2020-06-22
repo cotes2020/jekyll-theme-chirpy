@@ -39,7 +39,7 @@ html[mode=dark] {
 }
 
 .highlighter-rouge {
-  background: var(--highlight-bg-color);
+  background-color: var(--highlight-bg-color);
   @extend %code-snippet-radius;
   color: var(--highlighter-rouge-color);
   margin-bottom: 1.2em; /* Override BS Inline-code style */
@@ -94,15 +94,20 @@ code {
   -moz-hyphens: none;
   hyphens: none;
   &.highlighter-rouge {
-    padding: 2px 4px;
+    padding: 3px 5px;
     margin: 0 .15rem;
     border-radius: 4px;
+    background-color: var(--inline-code-bg);
   }
   @at-root a>&.highlighter-rouge {
     padding-bottom: 0; // show link's underlinke
+    color: inherit;
   }
   @at-root a:hover>&.highlighter-rouge {
     border-bottom: none;
+  }
+  blockquote &.highlighter-rouge {
+    color: inherit;
   }
 }
 
