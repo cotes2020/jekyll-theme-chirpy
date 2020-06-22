@@ -83,6 +83,8 @@
   --highlight-lineno-color: #6c6c6d;
   --highlight-lineno-border-color: #3c4042;
 
+  --inline-code-bg: var(--highlight-bg-color);
+
   .highlight {
     .gp { color: #818c96; }
   }
