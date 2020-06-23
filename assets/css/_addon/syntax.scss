@@ -119,6 +119,7 @@ td.rouge-code {
 /* Hide line numbers for default, console, and terminal code snippets */
 div {
   &[class^='highlighter-rouge'],
+  &.language-plaintext.highlighter-rouge,
   &.language-console.highlighter-rouge,
   &.language-terminal.highlighter-rouge {
     pre.lineno {
