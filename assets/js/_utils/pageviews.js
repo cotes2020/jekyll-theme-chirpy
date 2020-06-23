@@ -94,8 +94,8 @@ var getInitStatus = (function() {
 
 var PvCache = (function() {
   const KEY_PV = "pv";
-  const KEY_CREATION = "pv-created-date";
-  const KEY_PV_TYPE = "pv-type";
+  const KEY_CREATION = "pv_created_date";
+  const KEY_PV_TYPE = "pv_type";
 
   var PvType = {
     ORIGIN: "origin",
@@ -148,6 +148,13 @@ var PvCache = (function() {
     },
     newerThan: function(pv) {
       return PvCache.getAllPagevies() > pv.totalsForAllResults["ga:pageviews"];
+    },
+    inspectKeys: function() {
+      if (localStorage.getItem(KEY_PV) == null
+        || localStorage.getItem(KEY_PV_TYPE) == null
+        || localStorage.getItem(KEY_CREATION) == null) {
+        localStorage.clear();
+      }
     }
   };
 
@@ -183,6 +190,8 @@ function fetchProxyPageviews() {
 $(function() {
 
   if ($('.pageviews').length > 0) {
+
+    PvCache.inspectKeys();
 
     let cache = PvCache.getData();
 
