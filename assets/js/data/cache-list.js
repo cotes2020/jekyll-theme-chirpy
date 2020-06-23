@@ -106,6 +106,6 @@ const include = [
 ];
 
 const exclude = [
-  '/assets/js/data/pv-data.js',
+  '/assets/js/data/pv-cache.js',
   '/img.shields.io/'
 ];

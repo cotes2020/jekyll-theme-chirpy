@@ -1,9 +1,0 @@
-const proxyData = '{"url": "{{ site.google_analytics.pv.proxy_endpoint }}"}';
-
-{%- capture pv_data -%}
-  {%- if site.google_analytics.pv.cache and site.google_analytics.pv.enabled -%}
-    {% include_relative data/_pageviews.json %}
-  {%- endif -%}
-{%- endcapture -%}
-
-const pageviews = '{{ pv_data }}';

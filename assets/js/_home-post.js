@@ -13,7 +13,7 @@
 
 {% if site.google_analytics.pv.enabled %}
 
-  {% include_relative data/pv-data.js %}
+  const proxyData = '{"url": "{{ site.google_analytics.pv.proxy_endpoint }}"}';
 
   {% include_relative _utils/pageviews.js %}
 
