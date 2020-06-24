@@ -755,6 +755,8 @@ a {
 div.post-content {
   >table, li>table {
     min-width: 60%;
+    display: block;
+    overflow-x: auto;
     border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 1.5rem;
