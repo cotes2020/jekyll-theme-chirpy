@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# Initial the Categories/Tags pages and Lastmod for posts.
+# Initial the Categories/Tags pages and Lastmod for posts and then push to remote
+#
 # v2.0
 # https://github.com/cotes2020/jekyll-theme-chirpy
 # © 2019 Cotes Chung
@@ -15,19 +16,13 @@ LASTMOD=false
 WORK_DIR=$(dirname $(dirname $(realpath "$0")))
 
 check_status() {
-  local _watching_dirs=(
-    "_post"
-    "_data")
+  local _change=$(git status . -s)
 
-  for i in "${!_watching_dirs[@]}"
-  do
-    local _dir=${_watching_dirs[${i}]}
-    if [[ ! -z $(git status $_dir -s) ]]; then
-      echo "Warning: Commit the changes of the directory '$_dir' first."
-      git status -s | grep $_dir
-      exit 1
-    fi
-  done
+  if [[ ! -z ${_change} ]]; then
+    echo "Warning: Commit the changes of the changes first:"
+    echo "$_change"
+    exit 1
+  fi
 }
 
 
@@ -72,12 +67,17 @@ commit() {
 
   if [[ $CATEGORIES = true || $TAGS = true || $LASTMOD = true ]]; then
     msg+=" for post(s)."
-    git commit -m "[Automation] $msg"
+    git commit -m "[Automation] $msg" -q
   else
     msg="Nothing changed."
   fi
 
-  echo $msg
+}
+
+
+push() {
+  git push origin master -q
+  echo "[INFO] Published successfully!"
 }
 
 
@@ -90,6 +90,9 @@ main() {
   update_files
 
   commit
+
+  push
 }
+
 
 main
