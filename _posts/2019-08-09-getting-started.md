@@ -138,28 +138,24 @@ By deploying the site in this way, you're allowed to push the source code direct
 |User or Organization | `<username>.github.io`|
 |Project| Any one except `<username>.github.io`, let's say `project`|
 
-**2**. Commit the changes of the repo first, then run the initialization script:
+**2**. Commit the changes of the repo first, then run the publish script:
 
 ```console
-$ bash tools/init.sh
+$ bash tools/publish.sh
 ```
 
 > Please note that the *Recent Update* list requires the latest git-log date of posts, thus make sure the changes in `_posts` have been committed before running this command.
 
-it will automatically generates the *Latest Modified Date* and *Categories / Tags* page for the posts and submit a commit. Its output is similar to the following log:
+it will automatically generates the *Latest Modified Date* and *Categories / Tags* page for the posts and submit a commit, and then push to `origin/master`. Its output is similar to the following log:
 
 ```terminal
 [INFO] Success to update lastmod for 4 post(s).
 [INFO] Succeed! 3 category-pages created.
 [INFO] Succeed! 4 tag-pages created.
-[Automation] Updated the Categories, Tags, Lastmod for post(s).
- 11 files changed, 46 insertions(+), 3 deletions(-)
- ...
-Updated the Categories, Tags, Lastmod for post(s).
+[INFO] Published successfully!
 ```
 
-
-**3**. Push the changes to `origin/master` then go to GitHub website and enable GitHub Pages service for the repo.
+**3**. Go to GitHub website and enable GitHub Pages service for the repo.
 
 **4**. Check it out:
 

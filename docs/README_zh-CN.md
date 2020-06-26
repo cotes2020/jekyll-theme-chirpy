@@ -177,25 +177,21 @@ $ bash tools/run.sh
 **2**. 提交本地更改，然后运行:
 
 ```console
-$ bash tools/init.sh
+$ bash tools/publish.sh
 ```
 
 >**注**: *最后更新* 列表根据文章的 git 修改记录生成，所以运行前先把 `_posts` 目录的修改提交。
 
-它会自动生成文章的 *最后修改日期* 和 *分类 / 标签* 页面，并自动提交一个 commit。输出日志类似如下：
+它会自动生成文章的 *最后修改日期* 和 *分类 / 标签* 页面，并自动提交一个 commit 并推送到 `origin/master` 。输出日志类似如下：
 
 ```terminal
 [INFO] Success to update lastmod for 4 post(s).
 [INFO] Succeed! 3 category-pages created.
 [INFO] Succeed! 4 tag-pages created.
-[Automation] Updated the Categories, Tags, Lastmod for post(s).
- 11 files changed, 46 insertions(+), 3 deletions(-)
- ...
-Updated the Categories, Tags, Lastmod for post(s).
+[INFO] Published successfully!
 ```
 
-
-**3**. 推送到 `origin/master` 然后到 GitHub 网页为该项目开启 Pages 服务。
+**3**. 到 GitHub 网页为该项目开启 Pages 服务。
 
 **4**. 网站将运行在：
 
