@@ -30,7 +30,7 @@
 
 {% elsif page.layout == 'page' %}
 
-  {% if page.title == 'Categories' %}
+  {% if page.type == 'categories' %}
     <script src="{{ '/assets/js/categories.min.js' | relative_url }}" async></script>
   {% else %}
     <script src="{{ '/assets/js/page.min.js' | relative_url }}" async></script>
