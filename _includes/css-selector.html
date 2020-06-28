@@ -12,17 +12,17 @@
 
 {% elsif page.layout == 'page' %}
 
-  {% if page.title == 'Categories' %}
+  {% if page.type == 'categories' %}
 
     <link rel="preload" href="{{ '/assets/css/categories.css' | relative_url }}" as="style">
     <link rel="stylesheet" href="{{ '/assets/css/categories.css' | relative_url }}">
 
-  {% elsif page.title == 'Tags' %}
+  {% elsif page.type == 'tags' %}
 
     <link rel="preload" href="{{ '/assets/css/tags.css' | relative_url }}" as="style">
     <link rel="stylesheet" href="{{ '/assets/css/tags.css' | relative_url }}">
 
-  {% elsif page.title == 'Archives' %}
+  {% elsif page.type == 'archives' %}
 
     <link rel="preload" href="{{ '/assets/css/archives.css' | relative_url }}" as="style">
     <link rel="stylesheet" href="{{ '/assets/css/archives.css' | relative_url }}">
