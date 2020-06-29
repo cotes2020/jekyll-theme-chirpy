@@ -132,11 +132,10 @@ create_pages() {
 main() {
   init
 
-  for _file in $(ls "_posts")
+  for _file in $(find "_posts" -type f)
   do
-    local _path="_posts/$_file"
-    local _categories=$(read_categories "$_path")
-    local _tags=$(read_tags "$_path")
+    local _categories=$(read_categories "$_file")
+    local _tags=$(read_tags "$_file")
 
     create_pages "$_categories" $TYPE_CATEGORY
     create_pages "$_tags" $TYPE_TAG
