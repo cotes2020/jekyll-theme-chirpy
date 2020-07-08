@@ -15,12 +15,8 @@ labels: question
 
 
 ## I don't understand what the ReadMe/Wiki says
-<!-- 
-Point out the parts that are hard for you to understand. 
--->
+<!-- Point out the parts that are hard for you to understand. -->
 
 
 ## I have other questions
-<!-- 
-Please describe your question.
--->
+<!-- Please describe your question. -->
