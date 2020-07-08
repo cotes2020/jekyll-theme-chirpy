@@ -114,10 +114,11 @@ jekyll-theme-chirpy/
 ```
 
 
-你需要将以下文件或目录删除:
+如备注所述，部分文件或目录需要被删除:
 
-- .travis.yml
-- .github
+```terminal
+$ rm -rf .travis.yml .github _posts/* 
+```
 
 
 ### 配置文件
