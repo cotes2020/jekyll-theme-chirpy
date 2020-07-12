@@ -8,17 +8,9 @@
 
 {% if page.layout == 'home' %}
 
-  {% if site.google_analytics.pv.cache and site.google_analytics.pv.enabled %}
-    <script src="{{ '/assets/js/data/pv-cache.js' | relative_url }}"></script>
-  {% endif %}
-
   <script src="{{ '/assets/js/home.min.js' | relative_url }}" async></script>
 
 {% elsif page.layout == 'post' %}
-
-  {% if site.google_analytics.pv.cache and site.google_analytics.pv.enabled %}
-    <script src="{{ '/assets/js/data/pv-cache.js' | relative_url }}"></script>
-  {% endif %}
 
   <script src="{{ '/assets/js/post.min.js' | relative_url }}" async></script>
 
