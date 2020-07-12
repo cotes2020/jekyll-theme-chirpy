@@ -106,6 +106,9 @@ const include = [
 ];
 
 const exclude = [
-  '/assets/js/data/pv-cache.js',
+  {%- if site.google_analytics.pv.proxy_url and site.google_analytics.pv.enabled -%}
+    '{{ site.google_analytics.pv.proxy_url }}',
+  {%- endif -%}
+  '/assets/js/data/pageviews.json',
   '/img.shields.io/'
 ];
