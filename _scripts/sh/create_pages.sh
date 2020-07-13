@@ -45,12 +45,17 @@ read_tags() {
 
 
 init() {
+
   if [[ -d categories ]]; then
     rm -rf categories
   fi
 
   if [[ -d tags ]]; then
     rm -rf tags
+  fi
+
+  if [[ ! -d _posts ]]; then
+    exit 0
   fi
 
   mkdir categories tags
@@ -130,6 +135,7 @@ create_pages() {
 
 
 main() {
+
   init
 
   for _file in $(ls "_posts")

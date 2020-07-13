@@ -19,6 +19,7 @@ OUTPUT_FILE=updates.yml
 
 
 _init() {
+
   if [[ ! -d "$OUTPUT_DIR" ]]; then
     mkdir "$OUTPUT_DIR"
   fi
@@ -27,7 +28,9 @@ _init() {
     rm -f "$OUTPUT_DIR/$OUTPUT_FILE"
   fi
 
-  touch "$OUTPUT_DIR/$OUTPUT_FILE"
+  if [[ ! -d $POST_DIR ]]; then
+    exit 0
+  fi
 }
 
 
@@ -54,6 +57,10 @@ _has_changed() {
 ###################################
 _dump() {
   local _lasmod="`git log -1 --pretty=%ad --date=iso $2`"
+
+  if [[ ! -f "$OUTPUT_DIR/$OUTPUT_FILE" ]]; then
+    touch "$OUTPUT_DIR/$OUTPUT_FILE"
+  fi
 
   echo "-" >> "$OUTPUT_DIR/$OUTPUT_FILE"
   echo "  filename: '$1'" >> "$OUTPUT_DIR/$OUTPUT_FILE"

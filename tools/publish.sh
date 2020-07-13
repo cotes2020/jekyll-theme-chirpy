@@ -19,7 +19,7 @@ check_status() {
   local _change=$(git status . -s)
 
   if [[ ! -z ${_change} ]]; then
-    echo "Warning: Commit the changes of the changes first:"
+    echo "Warning: Commit the following changes first:"
     echo "$_change"
     exit 1
   fi
