@@ -23,7 +23,7 @@
       <ul class="post-content pl-0 pb-1 ml-1 mt-2">
 
       {% for item in update_list %}
-        {% assign post_url = item | split: "::" | last | prepend: "/posts/" | append: "/" %}
+        {% assign post_url = item | split: "::" | last | url_encode | prepend: "/posts/" | append: "/" %}
         {% assign post = site.posts | where: "url", post_url | first %}
 
         {% if post %}
