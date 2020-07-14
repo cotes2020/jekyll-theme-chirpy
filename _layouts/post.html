@@ -39,16 +39,22 @@ layout: default
           {{ page.url | split: "/" | last }}
         {%- endcapture -%}
 
-        {% assign record = site.data.updates | where: "filename", filename | first %}
+        {% for item in site.data.updates %}
+          {% assign encode_filename = item.filename | url_encode %}
+          {% if filename == encode_filename %}
+            {% assign lastmod = item.lastmod %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
 
-        {% if record %}
+        {% if lastmod %}
         <div>
           Updated
           <span class="timeago lastmod"
             data-toggle="tooltip" data-placement="bottom"
-             title="{{ record.lastmod | date: site.data.date_format.tooltip }}">
-            {{ record.lastmod | date: site.data.date_format.post }}
-            <i class="unloaded">{{ record.lastmod | date_to_xmlschema}}</i>
+             title="{{ lastmod | date: site.data.date_format.tooltip }}">
+            {{ lastmod | date: site.data.date_format.post }}
+            <i class="unloaded">{{ lastmod | date_to_xmlschema}}</i>
           </span>
         </div>
         {% endif %}
