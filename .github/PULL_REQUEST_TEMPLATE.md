@@ -6,7 +6,7 @@ Please include a summary of the change and which issue is fixed. Please also inc
 
 e.g. Fixes #(issue)
 
-**Type of change**
+## Type of change
 
 <!-- 
 Please select the desired item checkbox and change it to "[x]", then delete options that are not relevant.
@@ -31,7 +31,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 * Operating system:
 * Bundler version:
 * Ruby version:
-* Jekyl version:
+* Jekyll version:
 
 
 ## Checklist:
