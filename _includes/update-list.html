@@ -7,15 +7,20 @@
 {% endcomment %}
 
 {% assign MAX_SIZE = 5 %}
-{% assign sum = 0 %}
-{% assign update_list = "" | split: "" %}
+
+{% assign all_list = "" | split: "" %}
 
 {% for entry in site.data.updates %}
   {% capture elem %}
     {{- entry.lastmod -}}::{{- entry.filename -}}
   {% endcapture %}
-
-  {% assign update_list = update_list | push: elem %}
+  {% assign all_list = all_list | push: elem %}
 {% endfor %}
 
-{% assign update_list = update_list | sort | reverse %}
+{% assign all_list = all_list | sort | reverse %}
+
+{% assign update_list = "" | split: "" %}
+
+{% for entry in all_list limit:MAX_SIZE %}
+  {% assign update_list = update_list | push: entry %}
+{% endfor %}
