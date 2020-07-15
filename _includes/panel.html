@@ -28,12 +28,7 @@
 
         {% if post %}
           {% assign url = post.url | relative_url %}
-
           <li><a href="{{ url }}">{{ post.title }}</a></li>
-
-          {% assign sum = sum | plus: 1 %}
-          {% if sum >= MAX_SIZE %} {% break %} {% endif %}
-
         {% endif %}
 
       {% endfor %}
