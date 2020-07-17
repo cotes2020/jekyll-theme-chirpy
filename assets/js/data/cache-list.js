@@ -42,14 +42,10 @@ const include = [
 
   /* The posts of first Home page and recent update list */
   {% assign post_list = "" | split: "" %}
-  {% assign sum = 0 %}
 
-  {% for post in site.posts %}
-    {% assign post_list = post_list | push: post.url %}
-    {% assign sum = sum | plus: 1 %}
-    {% if sum >= site.paginate %}
-      {% break %}
-    {% endif %}
+  {% for post in site.posts limit: site.paginate %}
+    {% capture post_url %}{{ post.url | relative_url }}{% endcapture %}
+    {% assign post_list = post_list | push: post_url %}
   {% endfor %}
 
   {% include update-list.html %}
