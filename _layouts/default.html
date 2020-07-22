@@ -36,15 +36,12 @@ layout: compress
     <div id="main-wrapper">
       <div id="main">
 
-        {% capture _content %}
-          {{ content }}
-        {% endcapture %}
-
-        {% include fixlinenos.html %}
-        {{ _content }}
+        {% include fixlinenos.html content=content %}
 
         {% include footer.html %}
+
       </div>
+
       {% include search-results.html %}
 
     </div> <!-- #main-wrapper -->
