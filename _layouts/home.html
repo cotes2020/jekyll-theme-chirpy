@@ -58,9 +58,8 @@ layout: page
     </div>
     <div class="post-content">
       <p>
-      {% assign _content = post.content %}
-      {% include no-linenos.html %}
-      {{ _content | markdownify | strip_html | truncate: 200 }}
+        {% include no-linenos.html content=post.content %}
+        {{ content | markdownify | strip_html | truncate: 200 }}
       </p>
     </div>
 
