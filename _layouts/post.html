@@ -19,11 +19,7 @@ layout: default
         <!-- Published date and author -->
         <div>
           Posted
-          <span class="timeago" data-toggle="tooltip" data-placement="bottom"
-           title="{{ page.date | date: site.data.date_format.tooltip }}">
-            {{ page.date | date: site.data.date_format.post }}
-            <i class="unloaded">{{ page.date | date_to_xmlschema }}</i>
-          </span>
+          {% include timeago.html date=page.date tooltip=true %}
           by
           <span class="author">
           {% if page.author %}
@@ -50,12 +46,7 @@ layout: default
         {% if lastmod %}
         <div>
           Updated
-          <span class="timeago lastmod"
-            data-toggle="tooltip" data-placement="bottom"
-             title="{{ lastmod | date: site.data.date_format.tooltip }}">
-            {{ lastmod | date: site.data.date_format.post }}
-            <i class="unloaded">{{ lastmod | date_to_xmlschema}}</i>
-          </span>
+          {% include timeago.html date=lastmod class="lastmod" tooltip=true %}
         </div>
         {% endif %}
 

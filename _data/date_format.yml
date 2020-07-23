@@ -6,4 +6,6 @@
 
 
 tooltip: "%a, %b %e, %Y, %l:%M %p %z"
-post: "%b %e, %Y"
+post:
+  long: "%b %e, %Y"
+  short: "%b %e"

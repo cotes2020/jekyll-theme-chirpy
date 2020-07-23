@@ -93,10 +93,7 @@
       <div class="card">
         <a href="{{ post.url | relative_url }}">
           <div class="card-body">
-            <span class="timeago small">
-                {{ post.date | date: site.data.date_format.post }}
-                <i class="unloaded">{{ post.date | date_to_xmlschema }}</i>
-            </span>
+            {% include timeago.html date=post.date class="small" %}
             <h3 class="pt-0 mt-1 mb-3" data-toc-skip>{{ post.title }}</h3>
             <div class="text-muted small">
               <p>
