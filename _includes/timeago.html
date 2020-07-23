@@ -1,0 +1,27 @@
+<!--
+  Date format snippet
+
+  v2.4.1
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT License
+-->
+<span class="timeago {% if include.class %}{{ include.class }}{% endif %}"
+  {% if include.tooltip %}
+    data-toggle="tooltip"
+    data-placement="bottom"
+    title="{{ include.date | date: site.data.date_format.tooltip }}"
+  {% endif %}>
+
+  {% assign this_year = site.time | date: "%Y" %}
+  {% assign post_year = include.date | date: "%Y" %}
+
+  {% if post_year == this_year %}
+    {{ include.date | date: site.data.date_format.post.short }}
+  {% else %}
+    {{ include.date | date: site.data.date_format.post.long }}
+  {% endif %}
+
+  <i class="unloaded">{{ include.date | date_to_xmlschema }}</i>
+
+</span>
