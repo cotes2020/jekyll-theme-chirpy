@@ -1,8 +1,6 @@
 name: 'Continuous Integration'
 on:
   push:
-    branches-ignore:
-      - stable
     tags-ignore:
       - '*'
     paths-ignore:
