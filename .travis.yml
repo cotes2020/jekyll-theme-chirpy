@@ -23,7 +23,7 @@ script:
   - bash _cibuild.sh
 
 branches:
-  only: stable
+  only: master
 
 git:
   depth: false # for posts lastmod
