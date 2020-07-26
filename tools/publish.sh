@@ -29,8 +29,6 @@ check_status() {
 update_files() {
   bash _scripts/sh/create_pages.sh
   bash _scripts/sh/dump_lastmod.sh
-
-  find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 }
 
 

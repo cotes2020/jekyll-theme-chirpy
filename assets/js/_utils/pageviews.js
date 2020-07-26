@@ -26,11 +26,13 @@ function countUp(min, max, destId) {
 function countPV(path, rows) {
   var count = 0;
 
-  for (var i = 0; i < rows.length; ++i) {
-    var gaPath = rows[i][0];
-    if (gaPath == path) { /* path format see: site.permalink */
-      count += parseInt(rows[i][1]);
-      break;
+  if (rows !== undefined ) {
+    for (var i = 0; i < rows.length; ++i) {
+      var gaPath = rows[i][0];
+      if (gaPath == path) { /* path format see: site.permalink */
+        count += parseInt(rows[i][1]);
+        break;
+      }
     }
   }
 
@@ -59,7 +61,7 @@ function displayPageviews(data) {
   }
 
   var hasInit = getInitStatus();
-  var rows = data.rows;
+  var rows = data.rows; /* could be undefined */
 
   if ($("#post-list").length > 0) { /* the Home page */
     $(".post-preview").each(function() {
