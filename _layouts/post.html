@@ -99,7 +99,7 @@ layout: default
         {% endif %}
 
         <div class="post-tail-bottom
-          d-flex justify-content-between align-items-center pt-5 pb-2">
+          d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
           {% if site.data.rights.license %}
           <div class="license-wrapper">
             This post is licensed under
@@ -116,6 +116,7 @@ layout: default
 
     </div> <!-- .post -->
 
+
   </div> <!-- #post-wrapper -->
 
   {% include panel.html %}
@@ -123,21 +124,20 @@ layout: default
 </div> <!-- .row -->
 
 <div class="row">
-  <div id="post-extend-wrapper" class="col-12 col-lg-11 col-xl-8">
+  <div class="col-12 col-lg-11 col-xl-8">
+    <div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
 
-    <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+    {% include related-posts.html %}
 
-      {% include post-nav.html %}
+    {% include post-nav.html %}
 
-      {% if site.disqus.comments and page.comments %}
-        {% include disqus.html %}
-      {% endif %}
+    {% if site.disqus.comments and page.comments %}
+      {% include disqus.html %}
+    {% endif %}
 
-      {% include related-posts.html %}
+    </div> <!-- #post-extend-wrapper -->
 
-    </div> <!-- .pl-1 pr-1 -->
-
-  </div> <!-- #post-extend-wrapper -->
+  </div> <!-- .col-* -->
 
 </div> <!-- .row -->
 
