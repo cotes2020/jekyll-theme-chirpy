@@ -1,6 +1,8 @@
 name: 'Continuous Integration'
 on:
   push:
+    branches:
+      - '*'
     tags-ignore:
       - '*'
     paths-ignore:
@@ -13,7 +15,7 @@ on:
       - 'LICENSE'
   pull_request:
     paths:
-      - "**"
+      - '**'
 
 jobs:
   ci:
