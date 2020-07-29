@@ -493,8 +493,7 @@ footer {
     }
   }
   a {
-    @include semi-bold;
-    color: var(---footer-link);
+    color: var(--footer-link);
     &:link {
       @include no-text-decoration;
     }
