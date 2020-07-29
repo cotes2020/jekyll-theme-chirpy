@@ -27,10 +27,6 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   border-color: var(--btn-border-color);
 }
 
-.author {
-  @include semi-bold;
-}
-
 .post {
   img {
     max-width: 100%;
