@@ -14,15 +14,15 @@
 
 ## 目录
 
-* [功能预览](#功能预览)
+* [功能一览](#功能一览)
 * [安装](#安装)
-* [运行指南](#运行指南)
+* [使用](#使用)
 * [参与贡献](#参与贡献)
 * [感谢](#感谢)
 * [赞助](#赞助)
 * [许可证书](#许可证书)
 
-## 功能预览
+## 功能一览
 
 * 文章置顶
 * 可配置的全局主题颜色
@@ -43,110 +43,76 @@
 
 ## 安装
 
-### 准备工作
+[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork)，然后克隆到本地：
 
-按照 [Jekyll 官方文档](https://jekyllrb.com/docs/installation/) 完成基础环境的安装 (`Ruby`，`RubyGem`，`Bundler`)。
-
-为了使用项目内免费提供的脚本工具增进写作体验，如果你的机器系统是 Debian 或者 macOS，则需要确保安装了 [GNU coreutils](https://www.gnu.org/software/coreutils/)。否则，通过以下方式获得：
-
-* Debian
-
- ```console
- $ sudo apt-get install coreutils
- ```
-
-* macOS
-
- ```console
- $ brew install coreutils
- ```
-
-接着，[fork](https://github.com/cotes2020/jekyll-theme-chirpy/fork) 一份代码，然后克隆你 Fork 的仓库到本地机器上。
-
-```console
-$ git clone git@github.com:USER/jekyll-theme-chirpy.git -b master
+```terminal
+$ git clone git@github.com:<username>/jekyll-theme-chirpy -b master --single-branch
 ```
 
-把上述的`USER` 替换为你的 GitHub username。
+### 设置本地环境
+
+如果你想在本地运行或构建, 参考 [Jekyll Docs](https://jekyllrb.com/docs/installation/)安装 `Ruby`， `RubyGems` 和 `Bundler`。
 
 
-### 安装 Jekyll 插件
-
-本地首次运行或编译，请在项目根目录下运行:
+首次运行或构建时, 请先安装 Jekyll plugins。在项目根目录运行：
 
 ```terminal
 $ bundle install
 ```
-`bundle` 命令会自动安装 `Gemfile` 内声明的依赖插件.
+
+`bundle` 会自动安装 `Gemfile` 内指定的依赖插件。
+
+另外，为了生成一些额外的文件（ Post 的分类、标签以及更新时间列表），需要用到一些脚本工具。如果你电脑的操作系统是 Debian 或者 macOS，请确保已经安装了[GNU coreutils](https://www.gnu.org/software/coreutils/)，否则，通过以下方式完成安装：
+
+* Debian
+
+  ```console
+  $ sudo apt-get install coreutils
+  ```
+
+* macOS
+
+  ```console
+  $ brew install coreutils
+  ```
 
 
+## 使用
 
-## 运行指南
+运行 [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/) 需要一些额外的文件, 它们不能通过 Jekyll 原生的命令生成，所以请严格依照下列说明去运行或部署此项目。
 
-### 文件目录
+### 初始化
 
-下面是主要的文件目录：
+在项目根目录，开始初始化:
 
-```sh
-jekyll-theme-chirpy/
-├── _data
-├── _includes      
-├── _layouts
-├── _posts          # posts stay here
-├── _scripts
-├── .travis.yml     # remove it
-├── .github         # remove this, too
-├── assets      
-├── tabs
-│   └── about.md    # the ABOUT page
-├── .gitignore
-├── 404.html
-├── Gemfile
-├── LICENSE
-├── README.md
-├── _config.yml     # configuration file
-├── tools           # script tools
-├── docs
-├── feed.xml
-├── index.html
-├── robots.txt
-└── sitemap.xml
+```console
+$ bash tools/init.sh
 ```
 
+> 如果你不打算部署到 GitHub Pages, 在上述命令后附加参数选项 `--no-gh`。
 
-如备注所述，部分文件或目录需要被删除:
+上述脚本完成了以下工作:
 
-```terminal
-$ rm -rf .travis.yml .github _posts/* 
-```
+1. 从你的仓库中删除了:
+    - `.travis.yml`
+    - `.github` 下的文件和目录
+    - `_posts` 下的文件
+    - `docs` 目录
 
+2. 配置了 GitHub Actions：把 `.github/workflows/` 的文件 `pages-deploy.yml.hook` 重命名为 `pages-deploy.yml`。
+
+3. 自动提交一个 Commit 以保存文件的更改。
 
 ### 配置文件
 
-根据个人需要去修改 `_config.yml` 的变量，大部分都有注释介绍用法。
+根据个人需要去修改 `_config.yml` 的变量，大部分都有注释介绍用法。典型的几个选项是：
 
 * `url`
-    
-    定义网站 URL，注意结尾不带 `/`。格式： `<protocol>://<domain>`.
-
 * `avatar`
-    
-    定义头像，示例的文件放置在：`/assets/img/sample/avatar.jpg`. 把它换成你自己的头像，路径不限定，越小越好。(压缩图像体积可上这个网站：*<https://tinypng.com/>* ).
-
 * `timezone`
-
-    定义时区 ，默认为 `亚洲/上海`，如果肉身翻墙要换城市可在此列表找到： [TimezoneConverter](http://www.timezoneconverter.com/cgi-bin/findzone/findzone) 或者 [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-
 * `theme_mode`
-  
-    定义颜色方案，有三种可选：:
-    
-    - **dual**  - 自动跟随系统的 `深色`/`浅色` 设置，当系统或者浏览器不支持深色模式，则默认显示为浅色模式。无论如何，侧边栏左下角都会显示一个颜色切换按钮。
-    - **dark**  - 全程深色模式。
-    - **light** - 全程浅色模式。
 
-
-###  本地运行
+### 本地运行
 
 使用以下工具可轻松运行:
 
@@ -158,24 +124,30 @@ $ bash tools/run.sh
 
 如果你想在本地服务运行后，把修改源文件的更改实时刷新，可使用选项 `-r` (或 `--realtime`)，不过要先安装依赖 [**fswatch**](http://emcrisostomo.github.io/fswatch/) 。
 
-###  部署到 GitHub Pages
+
+### 部署
 
 部署开始前，把  `_config.yml` 的 `url` 改为 `https://<username>.github.io`(或者你的私有域名，如：`https://yourdomain.com`)。另外，如果你想使用 [Project 类型网站](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites)，修改配置文件的 `baseurl` 为项目名称，以斜杠开头，如：`/project`。
 
-#### 方法 1: 由 GitHub Pages 生成站点
+假设你已经完成了 [初始化](#初始化)，现在你可以选择下列其中一个方式去站点部署。
 
-依照本方法，你可以直接把源码推送到远端仓库。
+#### 部署到 GitHub Pages
 
-> **注**: 如果你想使用任何不在这个[列表](https://pages.github.com/versions/)上的插件，越过此方法，直接看 [*方法 2: 本地构建*](#方法-2-本地构建).
+由于安全原因，GitHub Pages 的构建强制加了 `safe`参数，这导致了我们不能使用脚本工具去创建所需的附加页面。因此，我们可以使用 GitHub Actions 去构建站点，把站点文件存储在一个新分支上，再指定该分支作为 Pages 服务的源。
 
-**1**. 仓库改名为:
+1. 推送任意一个 commit 到 `origin/master` 以触发 GitHub Actions workflow。一旦 build 完毕，远端将会自动出现一个新分支 `gh-pages` 用来存储构建的站点文件。
 
-|站点类型 | 仓库名称|
-|:---|:---|
-|User or Organization | `<username>.github.io`|
-|Project| `<username>.github.io` 以外的名字，譬如 `project`|
+2. 除非你是使用 project 站点, 否则重命名你的仓库为 `<username>.github.io`。
 
-**2**. 提交本地更改，然后运行:
+3. 选择分支 `gh-pages` 作为 GitHub Pages 的源.
+
+4. 按照 GitHub 指示的地址去访问你的网站。
+
+#### 部署到其他 Pages 平台
+
+在 GitHub 之外的平台，例如 GitLab，就没法享受 **GitHub Actions** 的便利了。不过先别慌，可以通过工具来弥补这个遗憾。
+
+先把本地仓库的 upstream 改为新平台的仓库地址，推送一发。以后每次更新内容后，提交 commit ，然后运行:
 
 ```console
 $ bash tools/publish.sh
@@ -192,50 +164,17 @@ $ bash tools/publish.sh
 [INFO] Published successfully!
 ```
 
-**3**. 到 GitHub 网页为该项目开启 Pages 服务。
+最后，根据平台的说明文档为项目开启 Pages 服务。
 
-**4**. 网站将运行在：
+#### 部署到私人服务器
 
-|站点类型 | 网站 URL |
-|:---|:---|
-|User or Organization | `https://<username>.github.io/`|
-|Project| `https://<username>.github.io/project/`|
-
-
-#### 方法 2: 本地构建
-
-由于安全原因，GitHub Pages 不允许第三方插件运行，如果你想突破规则，就要本地构建站点内容。
-
-**1**. 到 GitHub 网页，创建一个新的仓库，根据以下规则命名: 
-
-|站点类型 | 仓库名称|
-|:---|:---|
-|User or Organization | `<username>.github.io`|
-|Project| `<username>.github.io` 以外的名字， 例如 `project`|
-
-然后 Clone 新仓库到本地。
-
-**2**. 构建站点:
+在项目更目录，运行:
 
 ```console
-$ bash tools/build.sh -d /path/to/local/project/
+$ bash tools/build.sh -d /path/to/site/
 ```
-> `project` 为新仓库名称。
 
-生成的静态文件将会在 `/path/to/local/project`. 把新仓库的修改提交并推送到远端 `master` 分支.
-
-**3**. 回到 GithHub 网页，为该仓库开启 Pages 服务。
-
-**4**. 网站将运行在:
-
-|站点类型 | 站点 URL |
-|:---|:---|
-|User or Organization | `https://<username>.github.io/`|
-|Project| `https://<username>.github.io/project/`|
-
-#### 结束工作
-
-无论你选择了哪种方式部署网站到 GitHub Pages, 请开启 `HTTPS` 功能。具体细节参考官方说明：[Securing your GitHub Pages site with HTTPS](https://help.github.com/en/github/working-with-github-pages/securing-your-github-pages-site-with-https)。
+生成的静态文件将会在 `/path/to/site/`， 把内部的文件上传到服务器即可。
 
 ### 文档
 
@@ -250,12 +189,12 @@ $ bash tools/build.sh -d /path/to/local/project/
 
 这个主题的开发主要基于 [Jekyll](https://jekyllrb.com/) 生态、[Bootstrap](https://getbootstrap.com/)、[Font Awesome](https://fontawesome.com/) 和其他一些出色的工具 (相关文件中可以找到这些工具的版权信息).
 
-:tada:感谢所有参与代码贡献的小伙伴, 他们的 GayHub ID 在这个[列表](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors)。 另外, 提交过 issues(或者未被合并 PR) 的高富帅和白富美也不会被遗忘,他/她们帮助报告 bug、分享新点子或者启发了我写出更通俗易懂的文档。
+:tada: 感谢所有参与代码贡献的小伙伴, 他们的 GayHub ID 在这个[列表](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors)。 另外, 提交过 issues(或者未被合并 PR) 的高富帅和白富美也不会被遗忘,他/她们帮助报告 bug、分享新点子或者启发了我写出更通俗易懂的文档。
 
 
 ## 赞助
 
-如果您喜欢这个主题或者它对您有帮助，请考虑打赏作者：在 [项目主页](https://github.com/cotes2020/jekyll-theme-chirpy) 点击按钮 <kbd>:heart:Sponsor</kbd> 选择适合的链接即可完成（国内一般选第二个链接，支付宝/微信赞助），您的打赏将会极大地鼓励作者，并帮助作者更好地维护项目！
+如果您喜欢这个主题或者它对您有帮助，请考虑打赏作者：在 [项目主页](https://github.com/cotes2020/jekyll-theme-chirpy) 点击按钮 <kbd>:heart: Sponsor</kbd> 选择适合的链接即可完成（国内一般选第二个链接，支付宝/微信赞助），您的打赏将会极大地鼓励作者，并帮助作者更好地维护项目！
 
 
 ## 许可证书
