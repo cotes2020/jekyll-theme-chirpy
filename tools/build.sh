@@ -86,14 +86,11 @@ main() {
     opt="$1"
     case $opt in
       -b|--baseurl)
-        _check_unset $2
-        if [[ $2 == \/* ]]
-        then
-          CMD+=" -b $2"
-        else
-          _help
-          exit 1
+        local _baseurl="$2"
+        if [[ -z "$_baseurl" ]]; then
+          _baseurl='""'
         fi
+        CMD+=" -b $_baseurl"
         shift
         shift
         ;;

@@ -27,10 +27,6 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   border-color: var(--btn-border-color);
 }
 
-.author {
-  @include semi-bold;
-}
-
 .post {
   img {
     max-width: 100%;
@@ -45,7 +41,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 }
 
 .post-tail-wrapper {
-  margin-top: 4rem;
+  margin-top: 6rem;
   border-bottom: 1px double var(--main-border-color);
   font-size: 0.85rem;
 }
@@ -209,6 +205,9 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
 #post-extend-wrapper {
   min-height: 2rem;
+  #disqus_thread {
+    margin-bottom: 2rem;
+  }
 }
 
 .post-tail-bottom a {
@@ -349,32 +348,4 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     margin-right: -.5rem;
   }
 
-}
-
-/*
-  The following resposive design aim to
-  make #post-extend-wrapper margin-right same as pannel's width
-*/
-@media all and (min-width: 1200px) {
-  #post-extend-wrapper {
-    margin-right: 25%;
-  }
-}
-
-@media all and (min-width: 1460px) {
-  #post-extend-wrapper {
-    margin-right: 300px;
-  }
-}
-
-@media all and (min-width: 1650px) {
-  #post-extend-wrapper {
-    margin-right: calc((100% - 1150px) / 10 + 300px);
-  }
-}
-
-@media all and (min-width: 1700px) {
-  #post-extend-wrapper {
-    margin-right: calc((100% - 1150px) / 8 + 300px);
-  }
 }

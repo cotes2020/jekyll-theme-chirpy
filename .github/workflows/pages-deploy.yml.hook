@@ -1,0 +1,99 @@
+name: 'Automatic build'
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '.gitignore'
+      - 'README.md'
+      - 'LICENSE'
+
+jobs:
+  build-n-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6.x'
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Bundle Caching
+        id: bundle-cache
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Bundle config
+        run: |
+          bundle config path vendor/bundle
+
+      - name: Bundle Install
+        if: steps.bundle-cache.outputs.cache-hit != 'true'
+        run: |
+          bundle install
+
+      - name: Bundle Install locally
+        if: steps.bundle-cache.outputs.cache-hit == 'true'
+        run: |
+          bundle install --local
+
+      - name: Build Site
+        run: |
+          bash tools/build.sh -b ""
+
+      - name: Test Site
+        run: |
+          bash tools/test.sh
+
+  deploy:
+    needs: build-n-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6.x'
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Bundle Caching
+        id: bundle-cache
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Bundle config
+        run: |
+          bundle config path vendor/bundle
+
+      - name: Bundle Install
+        if: steps.bundle-cache.outputs.cache-hit != 'true'
+        run: |
+          bundle install
+
+      - name: Bundle Install locally
+        if: steps.bundle-cache.outputs.cache-hit == 'true'
+        run: |
+          bundle install --local
+
+      - name: Build site
+        run: |
+          bash tools/build.sh
+
+      - name: Deploy
+        run: |
+          bash tools/deploy.sh
