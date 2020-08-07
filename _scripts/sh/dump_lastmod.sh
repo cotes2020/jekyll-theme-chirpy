@@ -76,7 +76,7 @@ main() {
 
   for _file in $(find ${POST_DIR} -type f \( -iname \*.md -o -iname \*.markdown \))
   do
-    _filename=$(basename $_file | sed 's/[0-9]\([0-9]*-\)//g;s/\..*//' ) # remove date and extension
+    _filename=$(basename $_file | sed 's/-\-\+/-/;s/[[:digit:]]\([[:digit:]]*-\)//g;s/\..*//' ) # remove date and extension
 
     if _has_changed "$_file"; then
       _dump "$_filename" "$_file"
