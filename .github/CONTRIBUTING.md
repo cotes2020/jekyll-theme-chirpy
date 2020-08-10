@@ -7,15 +7,9 @@ To ensure that the blog design is not confused, this project does not accept sug
 Generally, contribute to the project by:
 
 1. Fork this project on GitHub and clone it locally.
-2. Create a new branch named `feature/my-feature` (or `feature/fix-a-bug`), which branch from `develop`:
-
-    ```console
-    $ git checkout -b feature/<my-feature> develop
-    ```
-    > Please note that the new branch name must include the prefix `feature/`.
-
+2. Create a new branch from `master` and give it a descriptive name (e.g., `my-new-feature`, `fix-a-bug`).
 3. After completing the development, commit and push to remote.
-4. Submit a new **pull request** to the `develop` branch of upstream, i.e., `cotes2020/jekyll-theme-chirpy:develop`.
+4. Submit a new pull request.
 
 ---
 
