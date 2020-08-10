@@ -8,7 +8,7 @@ tags: [writing]
 
 ## Naming and Path
 
-Create a new file named `YYYY-MM-DD-TITLE.EXTENSION` and put it in the `_post/` of the root directory. The `EXTENSION` must be one of `md` and `markdown`. From `v2.4.1`, you can create sub-directories under `_posts/` to categorize posts.
+Create a new file named `YYYY-MM-DD-TITLE.EXTENSION` and put it in the `_post/` of the root directory. Please note that the `EXTENSION` must be one of `md` and `markdown`. From `v2.4.1`, you can create sub-directories under `_posts/` to categorize posts.
 
 ## Front Matter
 
@@ -146,7 +146,7 @@ This is a common code snippet, without syntax highlight and line number.
 
 ## Specific Language
 
-Using <code class="highlighter-rouge">```Language</code> you will get code snippets with line Numbers and syntax highlight.
+Using <code class="highlighter-rouge">```language</code> you will get code snippets with line Numbers and syntax highlight.
 
 > **Note**: The Jekyll style `{% raw %}{%{% endraw %} highlight LANGUAGE {% raw %}%}{% endraw %}` or `{% raw %}{%{% endraw %} highlight LANGUAGE linenos {% raw %}%}{% endraw %}` are not allowed to be used in this theme !
 

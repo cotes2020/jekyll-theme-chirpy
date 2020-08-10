@@ -91,11 +91,10 @@ What it does is:
 
 1. Remove some files or directories from your repository:
     - `.travis.yml`
-    - everything under `.github/`
-    - files under `_posts/`
-    - folder `docs/` 
+    - files under `_posts`
+    - folder `docs` 
 
-2. Unless the option `--no-gh` was enabled, setup the GitHub action workflow by renaming `pages-deploy.yml.hook` of directory `.github/workflows/` to `pages-deploy.yml`.
+2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`. 
 
 3. Automatically create a commit to save the changes.
 
@@ -134,7 +133,8 @@ For security reasons, GitHub Pages build runs on `safe` mode, which restricts us
 
 2. Unless you prefer to project sites, rename your repository to `<username>.github.io` on GitHub.
 
-3. Choose branch `gh-pages` as your GitHub Pages source.
+3. Choose branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) for your GitHub Pages site.
+
 
 4. Visit your website at the address indicated by GitHub.
 
