@@ -48,7 +48,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 # Only if your site type is GitHub Project sites and doesn't have a custom domain,
 # change below value to '/projectname'.
-baseurl: ''
+baseurl: '/jekyll-theme-chirpy'
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Asia/Shanghai
