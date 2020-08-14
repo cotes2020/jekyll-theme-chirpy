@@ -750,42 +750,41 @@ a {
 
 
 /*--- Begin of Markdown table style ---*/
+div.post-content .table-wrapper {
+  overflow-x: auto;
 
-div.post-content {
-  >table, li>table {
+  >table {
     min-width: 60%;
-    display: block;
     overflow-x: auto;
-    border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 1.5rem;
+
+    thead {
+      border-bottom: solid 2px rgba(210, 215, 217, 0.75);
+      th {
+        @extend %table-cell;
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(2n) {
+          background-color: var(--tb-even-bg);
+        }
+        &:nth-child(2n + 1) {
+          background-color: var(--tb-odd-bg);
+        }
+        & {
+          border-bottom: 1px solid var(--tb-border-color);
+        }
+        td {
+          @extend %table-cell;
+        }
+      }
+    }
   }
 }
 
-table {
-  thead {
-    border-bottom: solid 2px rgba(210, 215, 217, 0.75);
-    +tbody tr {
-      &:nth-child(2n) {
-        background-color: var(--tb-even-bg);
-      }
-      &:nth-child(2n + 1) {
-        background-color: var(--tb-odd-bg);
-      }
-      & {
-        border-bottom: 1px solid var(--tb-border-color);
-      }
-    }
-    th {
-      @extend %table-cell;
-    }
-  }
-
-  tbody td {
-    @extend %table-cell;
-  }
-
-} // table
 
 
 /*--- post ---*/
