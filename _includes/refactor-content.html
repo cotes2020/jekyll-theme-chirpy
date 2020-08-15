@@ -20,8 +20,8 @@
   https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
 -->
 {% if _content contains '<pre class="highlight">' %}
-  {% assign _content = _content | replace: '<pre class="highlight"><code', '<code' %}
-  {% assign _content = _content | replace: '</code></pre>', '</code>' %}
+  {% assign _content = _content | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight"><code' %}
+  {% assign _content = _content | replace: '</code></pre></div>', '</code></div>' %}
 {% endif %}
 
 {{ _content }}
