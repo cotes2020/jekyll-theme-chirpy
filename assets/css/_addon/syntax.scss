@@ -30,7 +30,7 @@ html[mode=dark] {
 
 /*-- Codes Snippet --*/
 
-%highlight-pre-bg {
+%code-snippet-bg {
   background: var(--highlight-bg-color);
 }
 
@@ -38,8 +38,12 @@ html[mode=dark] {
   border-radius: 5px;
 }
 
+%code-snippet-padding {
+  padding: .8rem 1rem;
+}
+
 .highlighter-rouge {
-  background-color: var(--highlight-bg-color);
+  @extend %code-snippet-bg;
   @extend %code-snippet-radius;
   color: var(--highlighter-rouge-color);
   margin-bottom: 1.2em; /* Override BS Inline-code style */
@@ -47,9 +51,9 @@ html[mode=dark] {
 
 .highlight {
   @extend %code-snippet-radius;
-  background: var(--highlight-bg-color);
+  @extend %code-snippet-bg;
   @at-root figure#{&} {
-    background: var(--highlight-bg-color);
+    @extend %code-snippet-bg;
   }
   overflow: auto;
   .lineno {
@@ -116,6 +120,12 @@ td.rouge-code {
   padding-right: 1rem;
 }
 
+div>pre {
+  @extend %code-snippet-bg;
+  @extend %code-snippet-radius;
+  @extend %code-snippet-padding;
+}
+
 /* Hide line numbers for default, console, and terminal code snippets */
 div {
   &[class^='highlighter-rouge'],
@@ -126,7 +136,7 @@ div {
       display: none;
     }
     td.rouge-code {
-      padding: .8rem 1rem;
+      @extend %code-snippet-padding;
     }
   }
 }
