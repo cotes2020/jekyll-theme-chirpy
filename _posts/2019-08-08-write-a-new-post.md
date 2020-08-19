@@ -33,7 +33,7 @@ In order to accurately record the release date of a post, you should not only se
 
 The `categories` of each post is designed to contain up to two elements, and the number of elements in `tags` can be zero to infinity.
 
-The list of posts belonging to the same _category_/_tag_ is recorded on a separate page. At the same time, the number of these _category_/_tag_ type pages is equal to the number of `categories` / `tags` elements for all posts, which means that the two number must be exactly the same.
+The list of posts belonging to the same *category*/*tag* is recorded on a separate page. At the same time, the number of these *category*/*tag* type pages is equal to the number of `categories` / `tags` elements for all posts, which means that the two number must be exactly the same.
 
 For instance, let's say there is a post with front matter:
 
@@ -42,7 +42,7 @@ categories: [Animal, Insect]
 tags: bee
 ```
 
-Then we should have two _category_ type pages placed in folder `categories` of root and one _tag_ type page placed in folder `tags`  of root:
+Then we should have two *category* type pages placed in folder `categories` of root and one *tag* type page placed in folder `tags`  of root:
 
 ```sh
 .
@@ -54,7 +54,7 @@ Then we should have two _category_ type pages placed in folder `categories` of r
 ...
 ```
     
-and the content of a _category_ type page is
+and the content of a *category* type page is
 
 ```yaml
 ---
@@ -64,7 +64,7 @@ category: CATEGORY_NAME     # e.g. Insect
 ---
 ```
 
-the content of a _tag_ type page is
+the content of a *tag* type page is
 
 ```yaml
 ---
@@ -74,7 +74,7 @@ tag: TAG_NAME               # e.g. bee
 ---
 ```
 
-With the increasing number of posts, the number of categories and tags will increase several times!  If we still manually create these *category*/_tag_ type files, it will obviously be a super time-consuming job, and it is very likely to miss some of them, i.e., when you click on the missing `category` or `tag` link from a post or somewhere, the browser will complain to you "404 Not Found". The good news is we got a lovely script tool `_scripts/sh/create_pages.sh` to finish the boring tasks. Basically we will use it via `run.sh`, `build.sh`, `deploy.sh` or `publish.sh` that placed in `tools/` instead of running it separately. Check out its use case [here]({{ "/posts/getting-started/#deployment" | relative_url }}).
+With the increasing number of posts, the number of categories and tags will increase several times!  If we still manually create these *category*/*tag* type files, it will obviously be a super time-consuming job, and it is very likely to miss some of them, i.e., when you click on the missing `category` or `tag` link from a post or somewhere, the browser will complain to you "404 Not Found". The good news is we got a lovely script tool `_scripts/sh/create_pages.sh` to finish the boring tasks. Basically we will use it via `run.sh`, `build.sh`, `deploy.sh` or `publish.sh` that placed in `tools/` instead of running it separately. Check out its use case [here]({{ "/posts/getting-started/#deployment" | relative_url }}).
 
 ## Last modified date
 
