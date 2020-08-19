@@ -108,9 +108,9 @@ function countPV(path, rows) {
 
   if (typeof rows !== "undefined" ) {
     for (var i = 0; i < rows.length; ++i) {
-      var gaPath = rows[i][0];
+      var gaPath = rows[parseInt(i, 10)][0];
       if (gaPath === path) { /* path format see: site.permalink */
-        count += parseInt(rows[i][1], 10);
+        count += parseInt(rows[parseInt(i, 10)][1], 10);
         break;
       }
     }
