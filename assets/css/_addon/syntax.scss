@@ -9,8 +9,8 @@
 @import "_colors/light-syntax";
 @import "_colors/dark-syntax";
 
-
-html:not([mode]), html[mode=light] {
+html:not([mode]),
+html[mode=light] {
   @include light-syntax;
 }
 
@@ -19,7 +19,8 @@ html[mode=dark] {
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not([mode]), html[mode=dark] {
+  html:not([mode]),
+  html[mode=dark] {
     @include dark-syntax;
   }
 
@@ -28,7 +29,7 @@ html[mode=dark] {
   }
 }
 
-/*-- Codes Snippet --*/
+/* -- Codes Snippet -- */
 
 %code-snippet-bg {
   background: var(--highlight-bg-color);
@@ -39,12 +40,19 @@ html[mode=dark] {
 }
 
 %code-snippet-padding {
-  padding: .8rem 1rem;
+  padding: 0.8rem 1rem;
+}
+
+div > pre {
+  @extend %code-snippet-bg;
+  @extend %code-snippet-radius;
+  @extend %code-snippet-padding;
 }
 
 .highlighter-rouge {
   @extend %code-snippet-bg;
   @extend %code-snippet-radius;
+
   color: var(--highlighter-rouge-color);
   margin-bottom: 1.2em; /* Override BS Inline-code style */
 }
@@ -52,13 +60,15 @@ html[mode=dark] {
 .highlight {
   @extend %code-snippet-radius;
   @extend %code-snippet-bg;
+
   @at-root figure#{&} {
     @extend %code-snippet-bg;
   }
+
   overflow: auto;
   .lineno {
-    margin: .8rem 0rem;
-    padding: 0 .5rem;
+    margin: 0.8rem 0;
+    padding: 0 0.5rem;
     min-width: 2.2rem;
     text-align: right;
     color: var(--highlight-lineno-color);
@@ -69,6 +79,12 @@ html[mode=dark] {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+  }
+  pre {
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    line-height: 1.4rem;
+    word-wrap: normal; /* Fixed Safari overflow-x */
   }
   table {
     padding: 0;
@@ -82,14 +98,6 @@ html[mode=dark] {
     padding: 0;
     border: 0;
   }
-  pre {
-    margin-bottom: 0;
-    font-size: .85rem;
-    line-height: 1.4rem;
-    word-wrap: normal;
-    /* Fixed Safari overflow-x */
-  }
-
 } //.highlight
 
 code {
@@ -97,19 +105,23 @@ code {
   -ms-hyphens: none;
   -moz-hyphens: none;
   hyphens: none;
+
   &.highlighter-rouge {
     padding: 3px 5px;
-    margin: 0 .15rem;
+    margin: 0 0.15rem;
     border-radius: 4px;
     background-color: var(--inline-code-bg);
   }
-  @at-root a>&.highlighter-rouge {
+
+  @at-root a > &.highlighter-rouge {
     padding-bottom: 0; // show link's underlinke
     color: inherit;
   }
-  @at-root a:hover>&.highlighter-rouge {
+
+  @at-root a:hover > &.highlighter-rouge {
     border-bottom: none;
   }
+
   blockquote &.highlighter-rouge {
     color: inherit;
   }
@@ -118,12 +130,6 @@ code {
 td.rouge-code {
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-div>pre {
-  @extend %code-snippet-bg;
-  @extend %code-snippet-radius;
-  @extend %code-snippet-padding;
 }
 
 /* Hide line numbers for default, console, and terminal code snippets */
