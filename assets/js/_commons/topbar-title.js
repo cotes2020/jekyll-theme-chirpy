@@ -13,9 +13,9 @@ $(function() {
           $("div.post>h1").text().trim() : $("h1").text().trim();
 
   if ($("#page-category").length || $("#page-tag").length) {
-    /* The title in Category or Tag page will be '<title> <count_of_posts>' */
+    /* The title in Category or Tag page will be "<title> <count_of_posts>" */
     if (/\s/.test(title)) {
-      title = title.replace(/[0-9]/g, '').trim();
+      title = title.replace(/[0-9]/g, "").trim();
     }
   }
 
@@ -29,19 +29,19 @@ $(function() {
     }
 
     if ($(this).scrollTop() >= 95) {
-      if ($("#topbar-title").text() != title) {
+      if ($("#topbar-title").text() !== title) {
         $("#topbar-title").text(title);
       }
     } else {
-      if ($("#topbar-title").text() != DEFAULT) {
+      if ($("#topbar-title").text() !== DEFAULT) {
         $("#topbar-title").text(DEFAULT);
       }
     }
   });
 
   /* Click title remove hover effect. */
-  $('#topbar-title').click(function() {
-    $('body,html').animate({scrollTop: 0}, 800);
+  $("#topbar-title").click(function() {
+    $("body,html").animate({scrollTop: 0}, 800);
   });
 
 });
