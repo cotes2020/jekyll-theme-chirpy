@@ -10,11 +10,11 @@ set -eu
 
 CMD="JEKYLL_ENV=production bundle exec jekyll b"
 
-WORK_DIR=$(dirname $(dirname $(realpath "$0")))
+WORK_DIR="$(dirname $(dirname $(realpath "$0")))"
 
-CONTAINER=${WORK_DIR}/.container
+CONTAINER="${WORK_DIR}/.container"
 
-DEST=${WORK_DIR}/_site
+DEST="${WORK_DIR}/_site"
 
 
 _help() {
@@ -30,44 +30,44 @@ _help() {
 
 
 _init() {
-  cd $WORK_DIR
+  cd "$WORK_DIR"
 
-  if [[ -d $CONTAINER ]]; then
-    rm -rf $CONTAINER
+  if [[ -d "$CONTAINER" ]]; then
+    rm -rf "$CONTAINER"
   fi
 
-  if [[ -d _site ]]; then
+  if [[ -d "_site" ]]; then
     jekyll clean
   fi
 
-  local _temp=$(mktemp -d)
-  cp -r * $_temp
-  cp -r .git $_temp
-  mv $_temp $CONTAINER
+  local _temp="$(mktemp -d)"
+  cp -r ./* "$_temp"
+  cp -r ./.git "$_temp"
+  mv "$_temp" "$CONTAINER"
 }
 
 
 _build() {
-  cd $CONTAINER
+  cd "$CONTAINER"
   echo "$ cd $(pwd)"
 
-  bash _scripts/sh/create_pages.sh
-  bash _scripts/sh/dump_lastmod.sh
+  bash "_scripts/sh/create_pages.sh"
+  bash "_scripts/sh/dump_lastmod.sh"
 
-  CMD+=" -d ${DEST}"
+  CMD+=" -d $DEST"
   echo "\$ $CMD"
-  eval $CMD
+  eval "$CMD"
   echo -e "\nBuild success, the site files have been placed in '${DEST}'."
 
-  if [[ -d ${DEST}/.git ]]; then
-    if [[ ! -z $(git -C $DEST status -s) ]]; then
-      git -C $DEST add .
-      git -C $DEST commit -m "[Automation] Update site files." -q
+  if [[ -d "${DEST}/.git" ]]; then
+    if [[ ! -z $(git -C "$DEST" status -s) ]]; then
+      git -C "$DEST" add .
+      git -C "$DEST" commit -m "[Automation] Update site files." -q
       echo -e "\nPlease push the changes of $DEST to remote master branch.\n"
     fi
   fi
 
-  cd .. && rm -rf $CONTAINER
+  cd .. && rm -rf "$CONTAINER"
 }
 
 
@@ -95,8 +95,8 @@ main() {
         shift
         ;;
       -d|--destination)
-        _check_unset $2
-        DEST=$(realpath $2)
+        _check_unset "$2"
+        DEST="$(realpath "$2")"
         shift;
         shift;
         ;;

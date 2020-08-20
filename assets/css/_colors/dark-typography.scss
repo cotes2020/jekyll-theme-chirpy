@@ -26,12 +26,10 @@
   --button-bg: rgb(39, 40, 43);
   --blockquote-border-color: rgb(66, 66, 66);
   --blockquote-text-color: rgb(117, 117, 117);
-
   --btn-border-color: rgb(63, 65, 68);
   --btn-backtotop-color: var(--text-color);
   --btn-backtotop-border-color: var(--btn-border-color);
   --btn-box-shadow: var(--main-wrapper-bg);
-
   --card-header-bg: rgb(51, 50, 50);
   --label-color: rgb(108, 117, 125);
 
@@ -71,7 +69,6 @@
   --tag-border: rgb(59, 79, 88);
   --tag-shadow: rgb(32, 33, 33);
   --search-tag-bg: var(--tag-bg);
-
   --dash-color: rgb(63, 65, 68);
 
   /* categories */
@@ -98,10 +95,10 @@
   nav[data-toggle=toc] .nav-link.active,
   nav[data-toggle=toc] .nav-link.active:focus,
   nav[data-toggle=toc] .nav-link.active:hover,
-  nav[data-toggle=toc] .nav>li>a:focus,
-  nav[data-toggle=toc] .nav>li>a:hover {
-    color: var(--toc-highlight)!important;
-    border-left-color: var(--toc-highlight)!important;
+  nav[data-toggle=toc] .nav > li > a:focus,
+  nav[data-toggle=toc] .nav > li > a:hover {
+    color: var(--toc-highlight) !important;
+    border-left-color: var(--toc-highlight) !important;
   }
 
   /* categories */
@@ -126,8 +123,13 @@
   }
 
   #archives li:nth-child(odd) {
-    background-image: linear-gradient(to left,
-      rgb(26, 26, 30), rgb(39, 39, 45), rgb(39, 39, 45), rgb(39, 39, 45), rgb(26, 26, 30));
+    background-image: linear-gradient(
+      to left,
+      rgb(26, 26, 30),
+      rgb(39, 39, 45),
+      rgb(39, 39, 45),
+      rgb(39, 39, 45),
+      rgb(26, 26, 30));
   }
 
 } // dark-scheme

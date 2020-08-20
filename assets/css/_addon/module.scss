@@ -7,7 +7,7 @@
 * MIT Licensed
 */
 
-/*---------- scss placeholder ---------*/
+/* ---------- scss placeholder --------- */
 
 %tag-hover {
   background: var(--tag-hover);
@@ -15,12 +15,12 @@
 }
 
 %table-cell {
-  padding: .4rem 1rem;
+  padding: 0.4rem 1rem;
   font-size: 95%;
 }
 
 %link-hover {
-  color: #d2603a!important;
+  color: #d2603a !important;
   border-bottom: 1px solid #d2603a;
   text-decoration: none;
 }
@@ -54,7 +54,7 @@
   margin-top: -2.5rem;
 }
 
-/*---------- scss mixin ---------*/
+/* ---------- scss mixin --------- */
 
 @mixin no-text-decoration {
   text-decoration: none;
@@ -64,7 +64,7 @@
   color: $color;
   transition: color 0.35s ease-in-out;
   user-select: none;
-  margin: 0 .25rem;
+  margin: 0 0.25rem;
 }
 
 @mixin icon-round($diameter) {
