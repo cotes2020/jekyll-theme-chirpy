@@ -11,16 +11,17 @@ This Jekyll template totally compatible with Markdown syntax. Now, let's take a 
 
 ## Titles
 
-***
+---
+
 # H1
 
 <h2 data-toc-skip>H2</h2>
 
 <h3 data-toc-skip>H3</h3>
 
-#### H4
+<h4>H4</h4>
 
-***
+---
 
 ## Paragraph
 
@@ -42,11 +43,11 @@ Fluttering and dancing in the breeze.
 
 ## Tables
 
-|Company|Contact|Country|
-|:---|:--|---:|
-|Alfreds Futterkiste | Maria Anders | Germany
-|Island Trading | Helen Bennett | UK
-|Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy
+| Company                      | contact          | Country |
+|:-----------------------------|:-----------------|--------:|
+| Alfreds Futterkiste          | Maria Anders     | Germany |
+| Island Trading               | Helen Bennett    | UK      |
+| Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy   |
 
 ## Link
 
@@ -60,7 +61,7 @@ Click the hook will locate the footnote[^footnote].
 
 ## Image
 
-![Desktop View]({{ "/assets/img/sample/mockup.png" | relative_url }})
+![Desktop View](/assets/img/sample/mockup.png)
 
 
 ## Inline code
