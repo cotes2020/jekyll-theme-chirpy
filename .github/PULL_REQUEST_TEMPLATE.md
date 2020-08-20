@@ -16,7 +16,7 @@ Please select the desired item checkbox and change it to "[x]", then delete opti
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] Documentation update
 
-## How has this been tested?
+## How has this been tested
 
 <!-- 
 Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
@@ -25,16 +25,15 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] I have run `bash ./tools/build.sh && bash ./tools/test.sh` (at the root of the project) locally and passed
 - [ ] I have tested this feature in the browser
 
-**Test Configuration**
+### Test Configuration
 
-* Browerser type & version:
-* Operating system:
-* Bundler version:
-* Ruby version:
-* Jekyll version:
+- Browerser type & version:
+- Operating system:
+- Bundler version:
+- Ruby version:
+- Jekyll version:
 
-
-## Checklist:
+### Checklist
 <!-- Select checkboxes by change the "[ ]" to "[x]" -->
 - [ ] My code follows the [Google style guidelines](https://google.github.io/styleguide/)
 - [ ] I have performed a self-review of my own code

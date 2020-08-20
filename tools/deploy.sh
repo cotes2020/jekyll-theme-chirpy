@@ -14,17 +14,18 @@ PAGES_BRANCH="gh-pages"
 
 _no_branch=false
 
-if [[ -z `git branch -av | grep $PAGES_BRANCH` ]]; then
+if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
   _no_branch=true
-  git checkout -b $PAGES_BRANCH
+  git checkout -b "$PAGES_BRANCH"
 else
-  git checkout $PAGES_BRANCH
+  git checkout "$PAGES_BRANCH"
 fi
 
 mv _site ../
 mv .git ../
 
-rm -rf * && rm -rf .[^.] .??*
+rm -rf ./*
+rm -rf .[^.] .??*
 
 mv ../_site/* .
 mv ../.git .

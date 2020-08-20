@@ -8,18 +8,18 @@
 
 $(function() {
 
-  var btnSbTrigger = $('#sidebar-trigger');
-  var btnSearchTrigger = $('#search-trigger');
-  var btnCancel = $('#search-cancel');
-  var btnClear = $('#search-cleaner');
+  var btnSbTrigger = $("#sidebar-trigger");
+  var btnSearchTrigger = $("#search-trigger");
+  var btnCancel = $("#search-cancel");
+  var btnClear = $("#search-cleaner");
 
-  var main = $('#main');
-  var topbarTitle = $('#topbar-title');
-  var searchWrapper = $('#search-wrapper');
-  var resultWrapper = $('#search-result-wrapper');
-  var results = $('#search-results');
-  var input = $('#search-input');
-  var hints = $('#search-hints');
+  var main = $("#main");
+  var topbarTitle = $("#topbar-title");
+  var searchWrapper = $("#search-wrapper");
+  var resultWrapper = $("#search-result-wrapper");
+  var results = $("#search-results");
+  var input = $("#search-input");
+  var hints = $("#search-hints");
 
 
   /*--- Actions in small screens (Sidebar unloaded) ---*/
@@ -27,75 +27,76 @@ $(function() {
   var scrollBlocker = (function() {
     var offset = 0;
     return {
-      block: function() {
+      block() {
         offset = $(window).scrollTop();
       },
-      release: function() {
-        $('html,body').scrollTop(offset);
+      release() {
+        $("html,body").scrollTop(offset);
       },
-      getOffset: function() {
+      getOffset() {
         return offset;
       }
-    }
-  })();
+    };
+  }());
 
   var mobileSearchBar = (function() {
     return {
-      on: function() {
-        btnSbTrigger.addClass('unloaded');
-        topbarTitle.addClass('unloaded');
-        btnSearchTrigger.addClass('unloaded');
-        searchWrapper.addClass('d-flex');
-        btnCancel.addClass('loaded');
+      on() {
+        btnSbTrigger.addClass("unloaded");
+        topbarTitle.addClass("unloaded");
+        btnSearchTrigger.addClass("unloaded");
+        searchWrapper.addClass("d-flex");
+        btnCancel.addClass("loaded");
       },
-      off: function() {
-        btnCancel.removeClass('loaded');
-        searchWrapper.removeClass('d-flex');
-        btnSbTrigger.removeClass('unloaded');
-        topbarTitle.removeClass('unloaded');
-        btnSearchTrigger.removeClass('unloaded');
+      off() {
+        btnCancel.removeClass("loaded");
+        searchWrapper.removeClass("d-flex");
+        btnSbTrigger.removeClass("unloaded");
+        topbarTitle.removeClass("unloaded");
+        btnSearchTrigger.removeClass("unloaded");
       }
-    }
-  })();
+    };
+  }());
 
   var resultSwitch = (function() {
     var visable = false;
 
     return {
-      on: function() {
+      on() {
         if (!visable) {
-          resultWrapper.removeClass('unloaded');
-          main.addClass('hidden');
+          resultWrapper.removeClass("unloaded");
+          main.addClass("hidden");
 
           visable = true;
           scrollBlocker.block();
         }
       },
-      off: function() {
+      off() {
         if (visable) {
           results.empty();
-          if (hints.hasClass('unloaded')) {
-            hints.removeClass('unloaded');
+          if (hints.hasClass("unloaded")) {
+            hints.removeClass("unloaded");
           }
-          resultWrapper.addClass('unloaded');
-          btnClear.removeClass('visable');
-          main.removeClass('hidden');
+          resultWrapper.addClass("unloaded");
+          btnClear.removeClass("visable");
+          main.removeClass("hidden");
 
-          input.val('');
+          input.val("");
           visable = false;
 
           scrollBlocker.release();
         }
       },
-      isVisable: function() {
+      isVisable() {
         return visable;
       }
-    }
-  })();
+    };
+
+  }());
 
 
   function isMobileView() {
-    return btnCancel.hasClass('loaded');
+    return btnCancel.hasClass("loaded");
   }
 
   btnSearchTrigger.click(function() {
@@ -110,45 +111,45 @@ $(function() {
   });
 
   input.focus(function() {
-    searchWrapper.addClass('input-focus');
+    searchWrapper.addClass("input-focus");
   });
 
   input.focusout(function() {
-    searchWrapper.removeClass('input-focus');
+    searchWrapper.removeClass("input-focus");
   });
 
-  input.on('keyup', function(e) {
-    if (e.keyCode == 8 && input.val() == '') {
+  input.on("keyup", function(e) {
+    if (e.keyCode === 8 && input.val() === "") {
       if (!isMobileView()) {
         resultSwitch.off();
       } else {
-        hints.removeClass('unloaded');
+        hints.removeClass("unloaded");
       }
     } else {
-      if (input.val() != '') {
+      if (input.val() !== "") {
         resultSwitch.on();
 
-        if (!btnClear.hasClass('visible')) {
-          btnClear.addClass('visable');
+        if (!btnClear.hasClass("visible")) {
+          btnClear.addClass("visable");
         }
 
         if (isMobileView()) {
-          hints.addClass('unloaded');
+          hints.addClass("unloaded");
         }
       }
     }
   });
 
-  btnClear.on('click', function() {
-    input.val('');
+  btnClear.on("click", function() {
+    input.val("");
     if (isMobileView()) {
-      hints.removeClass('unloaded');
+      hints.removeClass("unloaded");
       results.empty();
     } else {
       resultSwitch.off();
     }
     input.focus();
-    btnClear.removeClass('visable');
+    btnClear.removeClass("visable");
   });
 
 });
