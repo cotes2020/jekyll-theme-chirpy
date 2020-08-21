@@ -13,31 +13,30 @@ A minimal, sidebar, responsive web design Jekyll theme, focusing on text present
 
 ## Table of Contents
 
-* [Features](#features)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Contributing](#contributing)
-* [Credits](#credits)
-* [Support](#support)
-* [License](#license)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [Support](#support)
+- [License](#license)
 
 ## Features
 
-* Pinned Posts
-* Configurable theme mode
-* Double-level Categories
-* Last modified date for posts
-* Table of Contents
-* Automatically recommend related posts
-* Syntax highlighting
-* Mathematical expressions
-* Search
-* Atom Feeds
-* Disqus Comments
-* Google Analytics
-* GA Pageviews reporting (Advanced)
-* SEO and Performance Optimization
-
+- Pinned Posts
+- Configurable theme mode
+- Double-level Categories
+- Last modified date for posts
+- Table of Contents
+- Automatically recommend related posts
+- Syntax highlighting
+- Mathematical expressions
+- Search
+- Atom Feeds
+- Disqus Comments
+- Google Analytics
+- GA Pageviews reporting (Advanced)
+- SEO and Performance Optimization
 
 ## Installation
 
@@ -49,7 +48,7 @@ $ git clone git@github.com:<username>/jekyll-theme-chirpy -b master --single-bra
 
 ### Setting up the local envrionment
 
-If you would like to run or build the project on your local machine, please follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems` and `Bundler`.
+If you would like to run or build the project on your local machine, please follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems` and `Bundler`. 
 
 Before running or building for the first time, please complete the installation of the Jekyll plugins. Go to the root directory of project and run:
 
@@ -61,18 +60,17 @@ $ bundle install
 
 What's more, in order to generate some extra files (*categories*, *tags* and *last modified list*), we need to use some tool scripts. If your machine is running Debian or macOS, make sure that [GNU coreutils](https://www.gnu.org/software/coreutils/) is installed. Otherwise, install by:
 
-* Debian
+- Debian
 
   ```console
   $ sudo apt-get install coreutils
   ```
 
-* macOS
+- macOS
 
   ```console
   $ brew install coreutils
   ```
-
 
 ## Usage
 
@@ -91,11 +89,12 @@ $ bash tools/init.sh
 What it does is:
 
 1. Remove some files or directories from your repository:
-	* `.travis.yml`
-	* files under `_posts`
-	* folder `docs` 
 
-2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`.
+    - `.travis.yml`
+    - files under `_posts`
+    - folder `docs`
+
+2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`. 
 
 3. Automatically create a commit to save the changes.
 
@@ -103,11 +102,10 @@ What it does is:
 
 Generally, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
 
-* `url`
-* `avatar`
-* `timezone`
-* `theme_mode`
-
+- `url`
+- `avatar`
+- `timezone`
+- `theme_mode`
 
 ### Run Locally
 
@@ -177,18 +175,15 @@ For more details and the better reading experience, please check out the [tutori
 
 The old saying, "Two heads are better than one." Consequently, welcome to report bugs, improve code quality or submit a new feature. For more information, see [contributing guidelines](.github/CONTRIBUTING.md).
 
-
 ## Credits
 
 This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Bootstrap](https://getbootstrap.com/), [Font Awesome](https://fontawesome.com/) and some other wonderful tools (their copyright information can be found in the relevant files).
 
 :tada: Thanks to all the volunteers who contributed to this project, their GitHub IDs are on [this list](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors). Also, I won't forget those guys who submitted the issues or unmerged PR because they reported bugs, shared ideas or inspired me to write more readable documentation.
 
-
 ## Support
 
 If you enjoy this theme or find it helpful, please consider becoming my sponsor, I'd really appreciate it! Click the button <kbd>:heart: Sponsor</kbd> at the top of the [Home Page](https://github.com/cotes2020/jekyll-theme-chirpy) and choose a link that suits you to donate; this will encourage and help me better maintain the project.
-
 
 ## License
 

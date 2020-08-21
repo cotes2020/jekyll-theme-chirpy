@@ -5,9 +5,11 @@ date: 2019-08-08 11:33:00 +0800
 categories: [Blogging, Demo]
 tags: [typography]
 math: true
+image: /assets/img/sample/devices-mockup.png
 ---
 
-This Jekyll template totally compatible with Markdown syntax. Now, let's take a look for the text and typography in here.
+This Jekyll template totally compatible with Markdown syntax. Now, let's have a look at the text and typography.
+
 
 ## Titles
 
@@ -36,6 +38,22 @@ A host, of golden daffodils;
 Beside the lake, beneath the trees,
 
 Fluttering and dancing in the breeze.
+
+## List
+
+### Ordered list
+
+1. first item
+2. second item
+3. third item
+
+### Unordered list
+
+- item 1
+	- sub item 1
+	- sub item 2
+
+- item 2
 
 ## Block Quote
 

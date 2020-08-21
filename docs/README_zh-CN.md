@@ -15,31 +15,31 @@
 
 ## 目录
 
-* [功能一览](#功能一览)
-* [安装](#安装)
-* [使用](#使用)
-* [参与贡献](#参与贡献)
-* [感谢](#感谢)
-* [赞助](#赞助)
-* [许可证书](#许可证书)
+- [功能一览](#功能一览)
+- [安装](#安装)
+- [使用](#使用)
+- [参与贡献](#参与贡献)
+- [感谢](#感谢)
+- [赞助](#赞助)
+- [许可证书](#许可证书)
 
 ## 功能一览
 
-* 文章置顶
-* 可配置的全局主题颜色
-* 文章最后修改日期
-* 文章目录
-* 自动推荐相关文章
-* 语法高亮
-* 二级目录
-* 数学表达式
-* 搜索
-* Atom 订阅
-* Disqus 评论
-* Google 分析
-* GA 浏览报告（高级功能）
-* SEO 优化
-* 网站性能优化
+- 文章置顶
+- 可配置的全局主题颜色
+- 文章最后修改日期
+- 文章目录
+- 自动推荐相关文章
+- 语法高亮
+- 二级目录
+- 数学表达式
+- 搜索
+- Atom 订阅
+- Disqus 评论
+- Google 分析
+- GA 浏览报告（高级功能）
+- SEO 优化
+- 网站性能优化
 
 ## 安装
 
@@ -63,13 +63,13 @@ $ bundle install
 
 另外，为了生成一些额外的文件（ Post 的分类、标签以及更新时间列表），需要用到一些脚本工具。如果你电脑的操作系统是 Debian 或者 macOS，请确保已经安装了[GNU coreutils](https://www.gnu.org/software/coreutils/)，否则，通过以下方式完成安装：
 
-* Debian
+- Debian
 
   ```console
   $ sudo apt-get install coreutils
   ```
 
-* macOS
+- macOS
 
   ```console
   $ brew install coreutils
@@ -92,20 +92,23 @@ $ bash tools/init.sh
 上述脚本完成了以下工作:
 
 1. 从你的仓库中删除了:
-	* `.travis.yml`
-	* `_posts` 下的文件
-	* `docs` 目录
+
+	- `.travis.yml`
+	- `_posts` 下的文件
+	- `docs` 目录
+
 2. 如果使用了参数 `--no-gh`，则会怒删 `.github`。否则，将会配置 GitHub Actions：把 `.github/workflows/pages-deploy.yml.hook` 的后缀 `.hook` 去除，然后删除 `.github` 里的其他目录和文件。
+
 3. 自动提交一个 Commit 以保存上述文件的更改。
 
 ### 配置文件
 
 根据个人需要去修改 `_config.yml` 的变量，大部分都有注释介绍用法。典型的几个选项是：
 
-* `url`
-* `avatar`
-* `timezone`
-* `theme_mode`
+- `url`
+- `avatar`
+- `timezone`
+- `theme_mode`
 
 ### 本地运行
 

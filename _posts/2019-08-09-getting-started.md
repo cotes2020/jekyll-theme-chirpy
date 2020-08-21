@@ -30,13 +30,13 @@ $ bundle install
 
 What's more, in order to generate some extra files (*categories*, *tags* and *last modified list*), we need to use some tool scripts. If your machine is running Debian or macOS, make sure that [GNU coreutils](https://www.gnu.org/software/coreutils/) is installed. Otherwise, install by:
 
-* Debian
+- Debian
 
   ```console
   $ sudo apt-get install coreutils
   ```
 
-* macOS
+- macOS
 
   ```console
   $ brew install coreutils
@@ -59,19 +59,23 @@ $ bash tools/init.sh
 What it does is:
 
 1. Remove some files or directories from your repository:
-* `.travis.yml`
-* files under `_posts`
-* folder `docs` 
+
+    - `.travis.yml`
+    - files under `_posts`
+    - folder `docs`
+
 2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`. 
+
 3. Automatically create a commit to save the changes.
 
 ### Configuration
 
 Generally, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
-* `url`
-* `avatar`
-* `timezone`
-* `theme_mode`
+
+- `url`
+- `avatar`
+- `timezone`
+- `theme_mode`
 
 ### Run Locally
 
