@@ -124,6 +124,16 @@ math: true
 ---
 ```
 
+## Preview Image
+
+If you want to add an image to the top of the post contents, specify the url for the image by:
+
+```yaml
+---
+image: /path/to/image-file
+---
+```
+
 
 ## Pinned Posts
 
