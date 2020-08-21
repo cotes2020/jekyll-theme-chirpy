@@ -17,7 +17,7 @@ WORK_DIR=$(dirname $(dirname $(realpath "$0")))
 CONTAINER=.container
 SYNC_TOOL=_scripts/sh/sync_monitor.sh
 
-cmd="bundle exec jekyll s"
+cmd="bundle exec jekyll s -l -o"
 realtime=false
 
 
