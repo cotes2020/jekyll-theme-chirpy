@@ -52,6 +52,10 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
       margin: 1rem 0 0.8rem;
     }
   }
+  .post-preview-img {
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+  }
 }
 
 .post-tail-wrapper {
