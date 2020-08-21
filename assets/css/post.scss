@@ -27,7 +27,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   border-color: var(--btn-border-color);
 }
 
-.post {
+.post-content {
   img {
     max-width: 100%;
     margin-top: .5rem;
@@ -37,6 +37,20 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
+  }
+  > ol, > ul, > dl {
+    padding-left: 2rem;
+    li+li {
+      margin-top: 0.3rem;
+    }
+  }
+  li {
+    > ol, > ul, > dl { // sub list
+      padding-left: 2rem;
+    }
+    > p {
+      margin: 1rem 0 0.8rem;
+    }
   }
 }
 
