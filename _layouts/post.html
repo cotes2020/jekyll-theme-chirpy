@@ -61,9 +61,11 @@ layout: default
       </div> <!-- .post-meta -->
 
       <div class="post-content">
+
         {% if page.image %}
-          <img src="{{ page.image }}">
+        <img src="{{ page.image }}" class="post-preview-img">
         {% endif %}
+
         <!-- Using lozad. See: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
         {% if content contains '<img src=' %}
           {{ content | replace: '<img src=', '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src=' }}
