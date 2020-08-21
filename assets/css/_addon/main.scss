@@ -823,12 +823,8 @@ div.post-content .table-wrapper {
   p {
     font-size: 1.08rem;
   }
-  > ol, > ul {
-    > li {
-      margin-top: 0.5rem;
-    }
-  }
 }
+
 
 .tag:hover {
   @extend %tag-hover;
