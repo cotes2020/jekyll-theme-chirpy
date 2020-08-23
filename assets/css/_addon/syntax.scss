@@ -43,6 +43,8 @@ html[mode=dark] {
   padding: 0.8rem 1rem;
 }
 
+$code-font-size: 0.85rem;
+
 div > pre {
   @extend %code-snippet-bg;
   @extend %code-snippet-radius;
@@ -82,7 +84,7 @@ div > pre {
   }
   pre {
     margin-bottom: 0;
-    font-size: 0.85rem;
+    font-size: $code-font-size;
     line-height: 1.4rem;
     word-wrap: normal; /* Fixed Safari overflow-x */
   }
@@ -107,6 +109,7 @@ code {
   hyphens: none;
 
   &.highlighter-rouge {
+    font-size: $code-font-size;
     padding: 3px 5px;
     margin: 0 0.15rem;
     border-radius: 4px;
