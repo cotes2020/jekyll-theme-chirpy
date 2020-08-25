@@ -69,12 +69,12 @@
       {%- if entry.type == 'github' -%}
         https://github.com/{{ site.github.username }}
       {%- elsif entry.type == 'twitter' -%}
-        https://twitter.com/{{ site.twitter.username }}
+        https://https://www.linkedin.com/in/se-min-lee-149188105{{ site.linkedin.username }}
       {%- elsif entry.type == 'email' -%}
         {% assign email = site.social.email | split: '@' %}
         javascript:window.open('mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@'))
       {%- elsif entry.type == 'rss' -%}
-        {{ "/feed.xml" | relative_url }}
+        https://www.youtube.com/channel/UC7vfcymHOfzqP7DZEwnKsnQ
       {%- else -%}
         {{ entry.url }}
       {%- endif -%}
