@@ -8,38 +8,40 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: Chirpy                          # the main title
+title: Se Min Lee                          # the main title
 
-tagline: A text-focused Jekyll theme.  # it will display as the sub-title
+tagline: A goal-oriented Full-Stack developer  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  My portfolio showing my background,
+  what I can bring to you,
+  and who I am.
 
 # Replace with the website url, e.g. 'https://username.github.io'
-url: 'protocol://domain'
+url: 'http://Semin-lee.dev'
 
-author: your_full_name                  # change to your full name
+author: Se Min Lee                # change to your full name
 
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
+avatar: /images/profile_pic.jpeg   # support internet resources
 
 github:
-  username: github_username             # change to your github username
+  username: Seminlee94            # change to your github username
 
-twitter:
-  username: twitter_username            # change to your twitter username
+linkedIn:
+  username: seminlee            # change to your twitter username
 
 social:
-  name: your_full_name                  # it will shows as the copyright owner in Footer
-  email: example@doamin.com             # change to your email address
+  name: Se Min Lee               # it will shows as the copyright owner in Footer
+  email: seminlee2794@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    # - https://twitter.com/username      # change to your twitter homepage
+    - https://github.com/Seminlee94       # change to your github homepage
     # Uncomment below to add more social links
+    - https://medium.com/@mlsml94
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/seminlee
+    - https://www.youtube.com/channel/UC7vfcymHOfzqP7DZEwnKsnQ
 
 google_site_verification: google_meta_tag_verification # change to your verification string
 
@@ -48,10 +50,10 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 # Only if your site type is GitHub Project sites and doesn't have a custom domain,
 # change below value to '/projectname'.
-baseurl: ''
+baseurl: '/portfolio'
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: America/New_York
 
 google_analytics:
   id: ''          # Fill with your Google Analytics ID
