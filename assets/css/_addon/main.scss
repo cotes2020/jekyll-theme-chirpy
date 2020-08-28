@@ -824,6 +824,16 @@ div.post-content .table-wrapper {
   p {
     font-size: 1.08rem;
   }
+  img {
+    max-width: 100%;
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
 }
 
 
