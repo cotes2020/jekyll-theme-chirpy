@@ -86,7 +86,7 @@ main() {
   bash _scripts/sh/dump_lastmod.sh
 
   if [[ $realtime = true ]]; then
-    fswatch -0 -e "\\$CONTAINER" -e "\.git" "$WORK_DIR" | xargs -0 -I {} bash "./${SYNC_TOOL}" {} "$WORK_DIR" . &
+    fswatch -0 -e "/\..*" "$WORK_DIR" | xargs -0 -I {} bash "./${SYNC_TOOL}" {} "$WORK_DIR" . &
   fi
 
   echo "\$ $cmd"
