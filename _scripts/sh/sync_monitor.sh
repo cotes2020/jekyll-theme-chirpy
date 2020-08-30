@@ -15,7 +15,7 @@ if [[ ! -f "$1" ]]; then
   exit 0
 fi
 
-src_dir="$(dirname $(realpath "$1"))"
+src_dir="$(dirname "$(realpath "$1")")"
 
 dir_prefix="$(realpath "$2")/"
 

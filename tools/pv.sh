@@ -15,7 +15,7 @@
 
 set -eu
 
-WORK_DIR="$(dirname $(dirname $(realpath "$0")))"
+WORK_DIR="$(dirname "$(dirname "$(realpath "$0")")")"
 URL_FILE="${WORK_DIR}/_config.yml"
 PV_CACHE="${WORK_DIR}/assets/js/data/pageviews.json"
 

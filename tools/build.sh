@@ -10,7 +10,7 @@ set -eu
 
 CMD="JEKYLL_ENV=production bundle exec jekyll b"
 
-WORK_DIR="$(dirname $(dirname $(realpath "$0")))"
+WORK_DIR="$(dirname "$(dirname "$(realpath "$0")")")"
 
 CONTAINER="${WORK_DIR}/.container"
 

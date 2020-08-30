@@ -13,7 +13,8 @@ CATEGORIES=false
 TAGS=false
 LASTMOD=false
 
-WORK_DIR="$(dirname $(dirname $(realpath "$0")))"
+WORK_DIR="$(dirname "$(dirname "$(realpath "$0")")")"
+
 
 check_status() {
   local _change=$(git status . -s)
