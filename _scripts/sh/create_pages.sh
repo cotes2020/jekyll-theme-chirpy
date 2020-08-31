@@ -27,20 +27,20 @@ _read_yaml() {
 
 read_categories() {
   local _yaml="$(_read_yaml "$1")"
-  local _categories="$(echo "$_yaml" | grep "^categories:")"
-  local _category="$(echo "$_yaml" | grep "^category:")"
+  local _categories="$(echo "$_yaml" | grep "^categories *:")"
+  local _category="$(echo "$_yaml" | grep "^category *:")"
 
   if [[ ! -z "$_categories" ]]; then
-    echo "$_categories" | sed "s/categories: *//;s/\[//;s/\].*//;s/, */,/g;s/\"//g;s/'//g"
+    echo "$_categories" | sed "s/categories *: *//;s/\[//;s/\].*//;s/, */,/g;s/\"//g;s/'//g"
   elif [[ ! -z "_category" ]]; then
-    echo "$_category" | sed "s/category: *//;s/\[//;s/\].*//;s/, */,/g;s/\"//g;s/'//g"
+    echo "$_category" | sed "s/category *: *//;s/\[//;s/\].*//;s/, */,/g;s/\"//g;s/'//g"
   fi
 }
 
 
 read_tags() {
   local _yaml="$(_read_yaml "$1")"
-  echo "$_yaml" | grep "^tags:" | sed "s/tags: *//;s/\[//;s/\].*//;s/, */,/g;s/\"//g;s/'//g"
+  echo "$_yaml" | grep "^tags *:" | sed "s/tags *: *//;s/\[//;s/\].*//;s/, */,/g;s/\"//g;s/'//g"
 }
 
 
