@@ -20,7 +20,6 @@ SYNC_TOOL=_scripts/sh/sync_monitor.sh
 cmd="bundle exec jekyll s -l -o"
 realtime=false
 
-
 _help() {
   echo "Usage:"
   echo
@@ -35,7 +34,6 @@ _help() {
   echo "     -r, --realtime          Make the modified content updated in real time"
 }
 
-
 _cleanup() {
   if [[ -d _site || -d .jekyll-cache ]]; then
     jekyll clean
@@ -44,7 +42,6 @@ _cleanup() {
   rm -rf "${WORK_DIR}/${CONTAINER}"
   ps aux | grep fswatch | awk '{print $2}' | xargs kill -9 > /dev/null 2>&1
 }
-
 
 _init() {
 
@@ -60,14 +57,12 @@ _init() {
   trap _cleanup INT
 }
 
-
 _check_unset() {
   if [[ -z ${1:+unset} ]]; then
     _help
     exit 1
   fi
 }
-
 
 _check_command() {
   if [[ -z $(command -v "$1") ]]; then
@@ -77,7 +72,6 @@ _check_command() {
   fi
 }
 
-
 main() {
   _init
 
@@ -85,7 +79,7 @@ main() {
   bash _scripts/sh/create_pages.sh
   bash _scripts/sh/dump_lastmod.sh
 
-  if [[ $realtime = true ]]; then
+  if $realtime; then
     fswatch -0 -e "/\..*" "$WORK_DIR" | xargs -0 -I {} bash "./${SYNC_TOOL}" {} "$WORK_DIR" . &
   fi
 
@@ -93,27 +87,24 @@ main() {
   eval "$cmd"
 }
 
-
-while (( $# ))
-do
+while (($#)); do
   opt="$1"
   case $opt in
-    -H|--host)
+    -H | --host)
       _check_unset "$2"
       cmd+=" -H $2"
       shift # past argument
       shift # past value
       ;;
-    -P|--port)
+    -P | --port)
       _check_unset "$2"
       cmd+=" -P $2"
       shift
       shift
       ;;
-    -b|--baseurl)
+    -b | --baseurl)
       _check_unset "$2"
-      if [[ "$2" == \/* ]]
-      then
+      if [[ "$2" == \/* ]]; then
         cmd+=" -b $2"
       else
         _help
@@ -122,16 +113,16 @@ do
       shift
       shift
       ;;
-    -t|--trace)
+    -t | --trace)
       cmd+=" -t"
       shift
       ;;
-    -r|--realtime)
+    -r | --realtime)
       _check_command fswatch "http://emcrisostomo.github.io/fswatch/"
       realtime=true
       shift
       ;;
-    -h|--help)
+    -h | --help)
       _help
       exit 0
       ;;
@@ -142,6 +133,5 @@ do
       ;;
   esac
 done
-
 
 main
