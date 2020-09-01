@@ -30,7 +30,7 @@ read_categories() {
 
   if [[ -n $_categories ]]; then
     echo "$_categories" | sed "s/categories *: *//;s/\[//;s/\].*//;s/, */,/g;s/\"//g;s/'//g"
-  elif [[ -n "_category" ]]; then
+  elif [[ -n $_category ]]; then
     echo "$_category" | sed "s/category *: *//;s/\[//;s/\].*//;s/, */,/g;s/\"//g;s/'//g"
   fi
 }
