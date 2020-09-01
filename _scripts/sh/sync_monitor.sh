@@ -11,7 +11,7 @@
 # $3 -> the destination sync directory
 
 # Omit the system temp file
-if [[ ! -f "$1" ]]; then
+if [[ ! -f $1 ]]; then
   exit 0
 fi
 
@@ -21,18 +21,17 @@ dir_prefix="$(realpath "$2")/"
 
 related_dir="${src_dir:${#dir_prefix}}"
 
-
 dest="$(realpath "$3")/${related_dir}"
 
-if [[ ! -d "$dest" ]]; then
+if [[ ! -d $dest ]]; then
   mkdir -p "$dest"
 fi
 
-if [[ -f "$1" ]]; then
+if [[ -f $1 ]]; then
   cp "$1" "$dest"
 fi
 
-if [[ "$related_dir" == "_posts" ]]; then
+if [[ $related_dir == "_posts" ]]; then
   bash "$3"/_scripts/sh/create_pages.sh
   bash "$3"/_scripts/sh/dump_lastmod.sh
 fi

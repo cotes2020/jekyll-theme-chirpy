@@ -7,7 +7,6 @@
 # © 2020 Cotes Chung
 # Published under MIT License
 
-
 set -eu
 
 PAGES_BRANCH="gh-pages"
@@ -28,11 +27,11 @@ backup() {
   mv _site "$_backup_dir"
   mv .git "$_backup_dir"
 
-  # When adding custom domain from Github website, 
+  # When adding custom domain from Github website,
   # the CANME only exist on `gh-pages` branch
-  if [[ -f CNAME ]]; then 
+  if [[ -f CNAME ]]; then
     mv CNAME "$_backup_dir"
-  fi  
+  fi
 }
 
 flush() {
@@ -51,7 +50,7 @@ deoply() {
   git add -A
   git commit -m "[Automation] Site update No.${GITHUB_RUN_NUMBER}"
 
-  if [[ $_no_branch = true ]]; then
+  if $_no_branch; then
     git push -u origin "$PAGES_BRANCH"
   else
     git push -f

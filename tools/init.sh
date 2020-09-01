@@ -9,7 +9,6 @@
 
 set -eu
 
-
 ACTIONS_WORKFLOW=pages-deploy.yml
 
 help() {
@@ -26,24 +25,23 @@ check_init() {
   local _has_inited=false
 
   if [[ -d .github ]]; then
-    if [[ -f .github/workflows/$ACTIONS_WORKFLOW
-      && $(find .github/workflows/ -type f -name "*.yml" | wc -l) == 1 ]]; then
+    if [[ -f .github/workflows/$ACTIONS_WORKFLOW && \
+      $(find .github/workflows/ -type f -name "*.yml" | wc -l) == 1 ]]; then
       _has_inited=true
     fi
   else
     _has_inited=true
   fi
 
-  if [[ $_has_inited = true ]]; then
+  if $_has_inited; then
     echo "Already initialized."
     exit 0
   fi
 }
 
-
 init_files() {
 
-  if [[ $_no_gh = true ]]; then
+  if $_no_gh; then
     rm -rf .github
   else
     mv .github/workflows/$ACTIONS_WORKFLOW.hook .
@@ -55,34 +53,32 @@ init_files() {
   rm -f .travis.yml
   rm -rf _posts/* docs
 
-  git add -A  && git add .github -f
+  git add -A && git add .github -f
   git commit -m "[Automation] Initialize the environment." -q
 
   echo "[INFO] Initialization successful!"
 }
 
-
 check_init
 
 _no_gh=false
 
-while (( $# ))
-do
+while (($#)); do
   opt="$1"
   case $opt in
     --no-gh)
       _no_gh=true
       shift
       ;;
-    -h|--help)
+    -h | --help)
       help
       exit 0
       ;;
-  *)
-    # unknown option
-    help
-    exit 1
-    ;;
+    *)
+      # unknown option
+      help
+      exit 1
+      ;;
   esac
 done
 

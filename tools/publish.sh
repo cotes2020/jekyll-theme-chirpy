@@ -15,7 +15,6 @@ LASTMOD=false
 
 WORK_DIR="$(dirname "$(dirname "$(realpath "$0")")")"
 
-
 check_status() {
   local _change=$(git status . -s)
 
@@ -26,12 +25,10 @@ check_status() {
   fi
 }
 
-
 update_files() {
   bash _scripts/sh/create_pages.sh
   bash _scripts/sh/dump_lastmod.sh
 }
-
 
 commit() {
   msg="Updated"
@@ -44,7 +41,7 @@ commit() {
 
   if [[ ! -z $(git status tags -s) ]]; then
     git add tags/
-    if [[ $CATEGORIES = true ]]; then
+    if $CATEGORIES; then
       msg+=","
     else
       msg+=" the"
@@ -53,9 +50,9 @@ commit() {
     TAGS=true
   fi
 
-  if [[ ! -z $(git status _data -s) ]]; then
+  if [[ -n $(git status _data -s) ]]; then
     git add _data
-    if [[ $CATEGORIES = true || $TAGS = true ]]; then
+    if $CATEGORIES || $TAGS; then
       msg+=","
     else
       msg+=" the"
@@ -64,7 +61,7 @@ commit() {
     LASTMOD=true
   fi
 
-  if [[ $CATEGORIES = true || $TAGS = true || $LASTMOD = true ]]; then
+  if $CATEGORIES || $TAGS || $LASTMOD; then
     msg+=" for post(s)."
     git commit -m "[Automation] $msg" -q
   else
@@ -73,12 +70,10 @@ commit() {
 
 }
 
-
 push() {
   git push origin master -q
   echo "[INFO] Published successfully!"
 }
-
 
 main() {
 
@@ -92,6 +87,5 @@ main() {
 
   push
 }
-
 
 main
