@@ -13,32 +13,56 @@ set -eu
 PAGES_BRANCH="gh-pages"
 
 _no_branch=false
+_backup_dir="$(mktemp -d)"
 
-if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
-  _no_branch=true
-  git checkout -b "$PAGES_BRANCH"
-else
-  git checkout "$PAGES_BRANCH"
-fi
+init() {
+  if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
+    _no_branch=true
+    git checkout -b "$PAGES_BRANCH"
+  else
+    git checkout "$PAGES_BRANCH"
+  fi
+}
 
-mv _site ../
-mv .git ../
+backup() {
+  mv _site "$_backup_dir"
+  mv .git "$_backup_dir"
 
-rm -rf ./*
-rm -rf .[^.] .??*
+  # When adding custom domain from Github website, 
+  # the CANME only exist on `gh-pages` branch
+  if [[ -f CNAME ]]; then 
+    mv CNAME "$_backup_dir"
+  fi  
+}
 
-mv ../_site/* .
-mv ../.git .
+flush() {
+  rm -rf ./*
+  rm -rf .[^.] .??*
 
-git config --global user.name "GitHub Actions"
-git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+  shopt -s dotglob nullglob
+  mv "$_backup_dir"/* .
+}
 
-git update-ref -d HEAD
-git add -A
-git commit -m "[Automation] Site update No.${GITHUB_RUN_NUMBER}"
+deoply() {
+  git config --global user.name "GitHub Actions"
+  git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-if [[ $_no_branch = true ]]; then
-  git push -u origin $PAGES_BRANCH
-else
-  git push -f
-fi
+  git update-ref -d HEAD
+  git add -A
+  git commit -m "[Automation] Site update No.${GITHUB_RUN_NUMBER}"
+
+  if [[ $_no_branch = true ]]; then
+    git push -u origin "$PAGES_BRANCH"
+  else
+    git push -f
+  fi
+}
+
+main() {
+  init
+  backup
+  flush
+  deoply
+}
+
+main
