@@ -98,3 +98,11 @@
   font-weight: $font-weight;
   font-family: 'Roboto Condensed', 'Microsoft Yahei', sans-serif;
 }
+
+@mixin align-center {
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}

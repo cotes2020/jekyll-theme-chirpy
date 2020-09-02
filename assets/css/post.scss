@@ -45,6 +45,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   .post-preview-img {
     margin-top: 0;
     margin-bottom: 2.5rem;
+    @include align-center;
   }
 }
 
@@ -341,19 +342,10 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
 /* Hide SideBar and TOC */
 @media all and (max-width: 830px) {
-  .post img {
-    position: relative;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
-
   .post-navigation {
     padding-left: 0;
     padding-right: 0;
     margin-left: -.5rem;
     margin-right: -.5rem;
   }
-
 }
