@@ -1,11 +1,16 @@
 # hidden files
 .*
+!.gitkeep
+!.gitignore
 
 # python compiled files
 *.pyc
 
-# jekyll debug
+# jekyll debug and generated files
+_data/updates.yml
 _site
+categories
+tags
 
 # Jeykll Gemfile.lock
 Gemfile.lock
@@ -15,3 +20,6 @@ Gemfile.lock
 
 # bundle cache
 vendor
+
+# standard style
+!.editorconfig

@@ -22,10 +22,10 @@
 
 {% elsif page.layout == 'page' %}
 
+  <script src="{{ '/assets/js/page.min.js' | relative_url }}" async></script>
+
   {% if page.type == 'categories' %}
     <script src="{{ '/assets/js/categories.min.js' | relative_url }}" async></script>
-  {% else %}
-    <script src="{{ '/assets/js/page.min.js' | relative_url }}" async></script>
   {% endif %}
 
 {% else %}
@@ -37,5 +37,5 @@
 
 <!-- PWA -->
 {% if jekyll.environment == 'production' %}
-  <script src="{{ '/app.js' | relative_url }}" defer></script>
+  <script src="{{ '/sw-register.js' | relative_url }}" defer></script>
 {% endif %}

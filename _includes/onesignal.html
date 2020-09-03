@@ -1,0 +1,14 @@
+<!-- OneSignal snippet implementation -->
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+	var OneSignal = window.OneSignal || [];
+	OneSignal.push(function () {
+		OneSignal.init({
+			appId: "{{ site.onesignal.id }}",
+			notifyButton: {
+				enable: true,
+			},
+			subdomainName: "{{ site.onesignal.subdomain }}",
+		});
+	});
+</script>

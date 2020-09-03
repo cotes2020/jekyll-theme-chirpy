@@ -27,6 +27,8 @@
 
   <!-- GA -->
   {% if jekyll.environment == 'production' %}
+    {% include google-analytics.html %}
+
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
@@ -69,6 +71,8 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" async></script>
+
+  {% include onesignal.html %}
 
   {% include js-selector.html %}
 

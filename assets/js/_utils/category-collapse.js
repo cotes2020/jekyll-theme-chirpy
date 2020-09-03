@@ -11,7 +11,8 @@ $(function() {
   var parentPrefix = "h_";
 
   /* close up top-category */
-  $(".collapse").on("hide.bs.collapse", function() { /* Bootstrap collapse events. */
+  $(".collapse").on("hide.bs.collapse", function(e) { /* Bootstrap collapse events. */
+    e.stopPropagation();
     var parentId = parentPrefix + $(this).attr("id").substring(childPrefix.length);
     if (parentId) {
       $("#" + parentId + " .far.fa-folder-open").attr("class", "far fa-folder fa-fw");
@@ -21,7 +22,8 @@ $(function() {
   });
 
   /* expand the top category */
-  $(".collapse").on("show.bs.collapse", function() {
+  $(".collapse").on("show.bs.collapse", function(e) {
+    e.stopPropagation();
     var parentId = parentPrefix + $(this).attr("id").substring(childPrefix.length);
     if (parentId) {
       $("#" + parentId + " .far.fa-folder").attr("class", "far fa-folder-open fa-fw");

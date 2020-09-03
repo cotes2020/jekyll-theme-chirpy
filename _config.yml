@@ -68,6 +68,9 @@ disqus:
   comments: false  # boolean type, the global switch for posts comments.
   shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
+onesignal:
+  id: ''          # value with appId of OneSignal app account
+  subdomain: ''   # subdomain name of configured app
 
 # Prefer color scheme setting, available values:
 #
@@ -178,13 +181,15 @@ compress_html:
     envs: []
 
 exclude:
+  - .jekyll-cache
+  - .gitignore
   - vendor        # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
-  - Gemfile.lock
   - Gemfile
-  - tools
+  - Gemfile.lock
   - docs
-  - README.md
+  - tools
   - LICENSE
+  - README.md
 
 sitemap_exclude:  # Sitemap will exclude the following items.
   fuzzy:
@@ -200,3 +205,24 @@ sitemap_exclude:  # Sitemap will exclude the following items.
     - sitemap.xml
     - robots.txt
     - redirects.json
+
+plugins:
+  - jekyll-include-cache
+  - jekyll-paginate
+  - jekyll-pwa-plugin
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+
+pwa:
+  enabled: true # Optional
+  sw_src_filepath: service-worker.js # Optional
+  sw_dest_filename: service-worker.js # Optional
+  dest_js_directory: assets/js # Required
+  precache_recent_posts_num: 5 # Optional
+  precache_glob_directory: / # Optional
+  precache_glob_patterns: # Optional
+    - "{js,css,fonts}/**/*.{js,css,eot,svg,ttf,woff}"
+    - index.html
+  precache_glob_ignores: # Optional
+    - sw-register.js
+    - "fonts/**/*"
