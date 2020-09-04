@@ -24,13 +24,18 @@ help() {
 check_init() {
   local _has_inited=false
 
-  if [[ -d .github ]]; then
-    if [[ -f .github/workflows/$ACTIONS_WORKFLOW && \
-      $(find .github/workflows/ -type f -name "*.yml" | wc -l) == 1 ]]; then
-      _has_inited=true
+  if [[ ! -d docs ]]; then
+    if [[ ! -d .github ]]; then
+      _has_inited=true # --no-gh
+    else
+      if [[ -f .github/workflows/$ACTIONS_WORKFLOW ]]; then
+        # on BSD, the `wc` could contains blank
+        local _count="$(find .github/workflows/ -type f -name "*.yml" | wc -l)"
+        if [[ ${_count//[[:blank:]]/} == 1 ]]; then
+          _has_inited=true
+        fi
+      fi
     fi
-  else
-    _has_inited=true
   fi
 
   if $_has_inited; then
