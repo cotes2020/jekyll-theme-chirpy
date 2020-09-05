@@ -1,5 +1,7 @@
 # hidden files
 .*
+!.docker
+!.env.example
 
 # python compiled files
 *.pyc

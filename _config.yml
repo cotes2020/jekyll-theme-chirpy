@@ -178,13 +178,15 @@ compress_html:
     envs: []
 
 exclude:
-  - vendor        # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
-  - Gemfile.lock
-  - Gemfile
-  - tools
   - docs
-  - README.md
+  - tools
+  - vendor        # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
+  - docker-compose.yml
+  - Gemfile
+  - Gemfile.lock
   - LICENSE
+  - Makefile
+  - README.md
 
 sitemap_exclude:  # Sitemap will exclude the following items.
   fuzzy:

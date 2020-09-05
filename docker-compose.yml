@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+      args:
+        APP_PORT: "${APP_PORT}"
+        APP_TIMEZONE: "${APP_TIMEZONE}"
+    container_name: "${APP_NAME}"
+    volumes:
+      - ./:/app
+    ports:
+      - 35729:35729
+      - "${APP_PORT}:${APP_PORT}"
