@@ -8,40 +8,37 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: Chirpy                          # the main title
+title: DeadPackets' Blog                          # the main title
 
-tagline: A text-focused Jekyll theme.  # it will display as the sub-title
+tagline: CTF write-ups, security research, tutorials, software development and more.  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  Youssef Awad (DeadPackets)'s blog that contains CTF write-ups, security research, tutorials, software development and more.
 
 # Replace with the website url, e.g. 'https://username.github.io'
-url: 'protocol://domain'
+url: 'https://deadpackets.pw'
 
-author: your_full_name                  # change to your full name
-
+author: Youssef Awad (DeadPackets)
 avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
 github:
-  username: github_username             # change to your github username
+  username: DeadPackets             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: dead_packets            # change to your twitter username
 
 social:
-  name: your_full_name                  # it will shows as the copyright owner in Footer
-  email: example@doamin.com             # change to your email address
+  name: Youssef Awad (DeadPackets)                # it will shows as the copyright owner in Footer
+  email: deadpackets@protonmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/dead_packets      # change to your twitter homepage
+    - https://github.com/DeadPackets       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/youssef-awad
 
-google_site_verification: google_meta_tag_verification # change to your verification string
+google_site_verification: VHmTkfUYgmCtAqDev2LSABCkrWUvSsIWKk0uYnD_aPc # change to your verification string
 
 #--------------------------
 
@@ -51,10 +48,10 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Dubai
 
 google_analytics:
-  id: ''          # Fill with your Google Analytics ID
+  id: 'UA-153604875-2'          # Fill with your Google Analytics ID
   pv:
     # The Google Analytics pageviews switch.
     # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
@@ -65,8 +62,8 @@ google_analytics:
     cache: false  # pv data local cache, good for the users from GFW area.
 
 disqus:
-  comments: false  # boolean type, the global switch for posts comments.
-  shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+  comments: true  # boolean type, the global switch for posts comments.
+  shortname: 'deadpackets'    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 
 # Prefer color scheme setting, available values:
