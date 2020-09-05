@@ -19,7 +19,7 @@ description: >-                        # used by seo meta and the atom feed
 url: 'https://deadpackets.pw'
 
 author: Youssef Awad (DeadPackets)
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
+avatar: /assets/img/media/avatar.jpeg   # support internet resources
 
 github:
   username: DeadPackets             # change to your github username
@@ -34,8 +34,6 @@ social:
     # The first element serves as the copyright owner's link
     - https://twitter.com/dead_packets      # change to your twitter homepage
     - https://github.com/DeadPackets       # change to your github homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
     - https://www.linkedin.com/in/youssef-awad
 
 google_site_verification: VHmTkfUYgmCtAqDev2LSABCkrWUvSsIWKk0uYnD_aPc # change to your verification string
