@@ -661,10 +661,6 @@ kbd {
   margin: 0 .3rem;
 }
 
-sup {
-  @extend %anchor;
-}
-
 .footnotes ol {
   margin-top: .5rem;
   >li {
@@ -1099,10 +1095,6 @@ div.post-content .table-wrapper {
     -webkit-box-pack: center!important;
     -ms-flex-pack: center!important;
     justify-content: center!important;
-  }
-
-  sup {
-    padding-top: 3.4rem;
   }
 
   .footnotes ol > li {
