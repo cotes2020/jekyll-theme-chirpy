@@ -662,7 +662,11 @@ kbd {
 }
 
 sup {
-  @extend %anchor;
+  z-index: 1;
+  &:target {
+    @extend %anchor;
+    z-index: 0;
+  }
 }
 
 .footnotes ol {
@@ -1101,7 +1105,7 @@ div.post-content .table-wrapper {
     justify-content: center!important;
   }
 
-  sup {
+  sup:target {
     padding-top: 3.4rem;
   }
 
