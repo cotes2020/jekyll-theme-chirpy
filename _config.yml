@@ -9,12 +9,10 @@
 
 title: Poburi # the main title
 
-tagline: A text-focused Jekyll theme. # it will display as the sub-title
+tagline: 프론트개발자 포부리 👩🏻‍💻 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  front-developer, web-developer, web, javascript, react, react-native, 프론트개발자, 웹개발자, 자바스크립트, 리액트, 리액트네이티브
 
 # Replace with the website url, e.g. 'https://username.github.io'
 url: "https://poburi.github.io"
