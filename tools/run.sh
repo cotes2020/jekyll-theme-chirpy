@@ -80,7 +80,18 @@ main() {
   bash _scripts/sh/dump_lastmod.sh
 
   if $realtime; then
-    fswatch -0 -e "/\..*" "$WORK_DIR" | xargs -0 -I {} bash "./${SYNC_TOOL}" {} "$WORK_DIR" . &
+
+    exclude_regex="\/\..*"
+
+    if [[ $OSTYPE == "darwin"* ]]; then
+      exclude_regex="/\..*" # darwin gcc treat regex '/' as character '/'
+    fi
+
+    fswatch -e "$exclude_regex" -0 -r \
+      --event Created --event Removed \
+      --event Updated --event Renamed \
+      --event MovedFrom --event MovedTo \
+      "$WORK_DIR" | xargs -0 -I {} bash "./${SYNC_TOOL}" {} "$WORK_DIR" . &
   fi
 
   echo "\$ $cmd"
@@ -104,7 +115,7 @@ while (($#)); do
       ;;
     -b | --baseurl)
       _check_unset "$2"
-      if [[ "$2" == \/* ]]; then
+      if [[ $2 == \/* ]]; then
         cmd+=" -b $2"
       else
         _help
