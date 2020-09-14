@@ -1,0 +1,44 @@
+Looking for git in: git
+Using git 2.26.2 from git
+> git rev-parse --git-dir
+Open repository: /opt/jekyll-theme-chirpy
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/opt/jekyll-theme-chirpy/.git/refs/remotes/origin/master', is most likely packed.
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git show --textconv :_config.yml
+> git ls-files --stage -- /opt/jekyll-theme-chirpy/_config.yml
+> git cat-file -s 4287ed4e3f690840c5b2d159867d81b76c3c425f
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/opt/jekyll-theme-chirpy/.git/refs/remotes/origin/master', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/opt/jekyll-theme-chirpy/.git/refs/remotes/origin/master', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/opt/jekyll-theme-chirpy/.git/refs/remotes/origin/master', is most likely packed.
+> git config --get commit.template
