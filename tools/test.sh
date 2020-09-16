@@ -4,7 +4,7 @@
 #
 # Requirement: https://github.com/gjtorikian/html-proofer
 #
-# Usage: bash /path/to/test.sh
+# Usage: bash /path/to/test.sh [indicated path]
 #
 # v2.0
 # https://github.com/cotes2020/jekyll-theme-chirpy
@@ -13,6 +13,10 @@
 
 DEST=_site
 URL_IGNORE=cdn.jsdelivr.net
+
+if [[ -n $1 && -d $1 ]]; then
+  DEST=$1
+fi
 
 bundle exec htmlproofer $DEST \
   --disable-external \
