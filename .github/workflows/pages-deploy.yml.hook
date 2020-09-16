@@ -9,7 +9,7 @@ on:
       - 'LICENSE'
 
 jobs:
-  build-n-test:
+  continuous-delivery:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,14 +17,14 @@ jobs:
         with:
           ruby-version: '2.6.x'
 
-      - name: install tooling
-        run: |
-          brew install yq
-
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - name: Install yq 
+        run: |
+          brew install yq
 
       - name: Bundle Caching
         id: bundle-cache
@@ -48,59 +48,26 @@ jobs:
         if: steps.bundle-cache.outputs.cache-hit == 'true'
         run: |
           bundle install --local
+
+      - name: Check baseurl
+        run: |
+          baseurl="$(grep '^baseurl:' _config.yml | yq r - baseurl)"
+          if [[ -n $baseurl ]]; then
+            echo "::set-env name=SPEC_TEST::_site_no_baseurl"
+          fi
 
       - name: Build Site
         run: |
-          bash tools/build.sh -b ""
+          bash tools/build.sh
+
+          if [[ -n $SPEC_TEST ]]; then
+            # Bypass the defects of htmlproofer
+            bash tools/build.sh -b "" -d "$SPEC_TEST"
+          fi          
 
       - name: Test Site
         run: |
-          bash tools/test.sh
-
-  deploy:
-    needs: build-n-test
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.6.x'
-
-      - name: install tooling
-        run: |
-          brew install yq
-
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Bundle Caching
-        id: bundle-cache
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
-      - name: Bundle config
-        run: |
-          bundle config path vendor/bundle
-
-      - name: Bundle Install
-        if: steps.bundle-cache.outputs.cache-hit != 'true'
-        run: |
-          bundle install
-
-      - name: Bundle Install locally
-        if: steps.bundle-cache.outputs.cache-hit == 'true'
-        run: |
-          bundle install --local
-
-      - name: Build site
-        run: |
-          bash tools/build.sh
+          bash tools/test.sh "$SPEC_TEST"
 
       - name: Deploy
         run: |
