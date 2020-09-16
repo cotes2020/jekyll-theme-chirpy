@@ -29,6 +29,10 @@ jobs:
         with:
           ruby-version: '2.6.x'
 
+      - name: install tooling
+        run: |
+          brew install yq
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
