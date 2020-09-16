@@ -61,7 +61,7 @@ $ bundle install
 
 `bundle` 会自动安装 `Gemfile` 内指定的依赖插件。
 
-另外，为了生成一些额外的文件（ Post 的分类、标签以及更新时间列表），需要用到一些脚本工具。如果你电脑的操作系统是 Debian 或者 macOS，请确保已经安装了[GNU coreutils](https://www.gnu.org/software/coreutils/)，否则，通过以下方式完成安装：
+为了生成一些额外的文件（Post 的分类、标签以及更新时间列表），需要用到一些脚本工具。而它们需要安装依赖包 [yq](https://github.com/mikefarah/yq#install)。另外，如果你电脑的操作系统是 Debian 或者 macOS，还需安装 [GNU coreutils](https://www.gnu.org/software/coreutils/)：
 
 - Debian
 
