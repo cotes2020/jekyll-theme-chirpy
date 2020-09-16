@@ -28,7 +28,7 @@ $ bundle install
 
 `bundle` will automatically install all the dependencies specified by `Gemfile`.
 
-What's more, in order to generate some extra files (*categories*, *tags* and *last modified list*), we need to use some tool scripts. If your machine is running Debian or macOS, make sure that [GNU coreutils](https://www.gnu.org/software/coreutils/) is installed. Otherwise, install by:
+In order to generate some extra files (*categories*, *tags* and *last modified list*), we need to use some tool scripts. And they require dependency package [yq](https://github.com/mikefarah/yq#install) to be installed. What's more, if your machine is running Debian or macOS, you also need to install [GNU coreutils](https://www.gnu.org/software/coreutils/):
 
 - Debian
 
