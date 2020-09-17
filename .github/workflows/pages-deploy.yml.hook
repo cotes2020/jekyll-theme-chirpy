@@ -17,14 +17,17 @@ jobs:
         with:
           ruby-version: '2.6.x'
 
+      - name: Install tools
+        run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
+          sudo add-apt-repository ppa:rmescandon/yq
+          sudo apt update
+          sudo apt install yq -y
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - name: Install yq 
-        run: |
-          brew install yq
 
       - name: Bundle Caching
         id: bundle-cache
