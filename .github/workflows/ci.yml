@@ -29,8 +29,18 @@ jobs:
         with:
           ruby-version: '2.6.x'
 
-      - name: install tooling
+      - name: Install tools (for Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
         run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
+          sudo add-apt-repository ppa:rmescandon/yq
+          sudo apt update
+          sudo apt install yq -y
+
+      - name: Install tools (for macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install coreutils
           brew install yq
 
       - name: Checkout
@@ -46,11 +56,6 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-
-      - name: Install GNU-Coreutils(for macOS)
-        if: runner.os == 'macOS'
-        run: |
-          brew install coreutils
 
       - name: Bundle config
         run: |
