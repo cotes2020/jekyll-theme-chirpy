@@ -31,12 +31,16 @@
   {% assign page_urls = page.url | split: "/" %}
 
   {% for item in site.data.tabs %}
-    {% assign ref = site.baseurl | append: "/" %}
+    {% if item.absolute %}
+      {% assign ref = item.url %}
+    {% else %}
+      {% assign ref = site.baseurl | append: "/" %}
 
-    {% if item.path %}
-      {% assign ref = ref | append: item.path | append: "/" %}
-      {% if item.url %}
-        {% assign ref = ref | append: item.url | append: "/" %}
+      {% if item.path %}
+        {% assign ref = ref | append: item.path | append: "/" %}
+        {% if item.url %}
+          {% assign ref = ref | append: item.url | append: "/" %}
+        {% endif %}
       {% endif %}
     {% endif %}
 
@@ -44,7 +48,8 @@
       {% if item.url == page_urls.last
         or item.name == page.tab_active
         or item.name == "Home" and page.layout == "home" %}active{% endif %}">
-      <a href="{{ ref }}" class="nav-link d-flex justify-content-center align-items-center w-100">
+      <a href="{{ ref }}" class="nav-link d-flex justify-content-center align-items-center w-100"
+        {% if item.absolute %} target="_blank" {%endif%} >
         <i class="fa-fw {{ item.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
         <span>{{ item.name | upcase }}</span>
       </a>
