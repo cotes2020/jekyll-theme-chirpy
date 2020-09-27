@@ -74,7 +74,7 @@ tag: TAG_NAME               # e.g. bee
 ---
 ```
 
-With the increasing number of posts, the number of categories and tags will increase several times!  If we still manually create these *category*/*tag* type files, it will obviously be a super time-consuming job, and it is very likely to miss some of them, i.e., when you click on the missing `category` or `tag` link from a post or somewhere, the browser will complain to you "404 Not Found". The good news is we got a lovely script tool `_scripts/sh/create_pages.sh` to finish the boring tasks. Basically we will use it via `run.sh`, `build.sh`, `deploy.sh` or `publish.sh` that placed in `tools/` instead of running it separately. Check out its use case [here]({{ "/posts/getting-started/#deployment" | relative_url }}).
+With the increasing number of posts, the number of categories and tags will increase several times!  If we still manually create these *category*/*tag* type files, it will obviously be a super time-consuming job, and it is very likely to miss some of them, i.e., when you click on the missing `category` or `tag` link from a post or somewhere, the browser will complain to you "404 Not Found". The good news is we got a lovely script tool `_scripts/sh/create_pages.sh` to finish the boring tasks. Basically we will use it through `run.sh`, `build.sh` or `deploy.sh` that placed in `tools/` instead of running it separately. Check out its use case [here]({{ "/posts/getting-started/#deployment" | relative_url }}).
 
 ## Last modified date
 
@@ -134,7 +134,6 @@ image: /path/to/image-file
 ---
 ```
 
-
 ## Pinned Posts
 
 You can pin one or more posts to the top of the home page, and the fixed posts are sorted in reverse order according to their release date. Enable by:
@@ -144,7 +143,6 @@ You can pin one or more posts to the top of the home page, and the fixed posts a
 pin: true
 ---
 ```
-
 
 ## Code Block
 
@@ -156,7 +154,7 @@ This is a common code snippet, without syntax highlight and line number.
 
 ## Specific Language
 
-Using <code class="highlighter-rouge">```language</code> you will get code snippets with line Numbers and syntax highlight.
+Using <code class="highlighter-rouge">```language</code> you will get code snippets with line numbers and syntax highlight.
 
 > **Note**: The Jekyll style `{% raw %}{%{% endraw %} highlight LANGUAGE {% raw %}%}{% endraw %}` or `{% raw %}{%{% endraw %} highlight LANGUAGE linenos {% raw %}%}{% endraw %}` are not allowed to be used in this theme !
 
