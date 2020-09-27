@@ -43,10 +43,10 @@
 
 ## 安装
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork)，然后克隆到本地：
+[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork)，把仓库改名为 `USERNAME.github.io`（其中 `USERNAME` 是你的 GitHub 用户名）， 然后克隆到本地：
 
 ```terminal
-$ git clone git@github.com:<username>/jekyll-theme-chirpy -b master --single-branch
+$ git clone https://github.com/USERNAME/USERNAME.github.io.git -b master --single-branch
 ```
 
 ### 设置本地环境
@@ -61,7 +61,7 @@ $ bundle install
 
 `bundle` 会自动安装 `Gemfile` 内指定的依赖插件。
 
-为了生成一些额外的文件（Post 的分类、标签以及更新时间列表），需要用到一些脚本工具。而它们需要安装依赖包 [yq](https://github.com/mikefarah/yq#install)。另外，如果你电脑的操作系统是 Debian 或者 macOS，还需安装 [GNU coreutils](https://www.gnu.org/software/coreutils/)：
+为了生成一些额外的文件（Post 的 _分类_、_标签_ 以及 _更新时间列表_），需要用到一些脚本工具。而它们需要安装依赖包 [yq](https://github.com/mikefarah/yq#install)。另外，如果你电脑的操作系统是 Debian 或者 macOS，还需安装 [GNU coreutils](https://www.gnu.org/software/coreutils/)：
 
 - Debian
 
@@ -132,37 +132,19 @@ $ bash tools/run.sh
 
 由于安全原因，GitHub Pages 的构建强制加了 `safe`参数，这导致了我们不能使用脚本工具去创建所需的附加页面。因此，我们可以使用 GitHub Actions 去构建站点，把站点文件存储在一个新分支上，再指定该分支作为 Pages 服务的源。
 
-1. 推送任意一个 commit 到 `origin/master` 以触发 GitHub Actions workflow。一旦 build 完毕，远端将会自动出现一个新分支 `gh-pages` 用来存储构建的站点文件。
-2. 除非你是使用 project 站点, 否则重命名你的仓库为 `<username>.github.io`。
-3. 选择分支 `gh-pages` 作为 GitHub Pages 站点的[发布源](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
-4. 按照 GitHub 指示的地址去访问你的网站。
+1. 推送任意一个 commit 到 `origin/master` 以触发 GitHub Actions workflow。一旦 build 完毕并且成功，远端将会自动出现一个新分支 `gh-pages` 用来存储构建的站点文件。
+
+2. 回到 GitHub 上的仓库， 通过 _Settings_
+ → _Options_ → _GitHub Pages_ 选择分支 `gh-pages` 作为[_发布源_](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site):
+    ![gh-pages-sources](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/gh-pages-sources.png)
+
+3. 按照 GitHub 指示的地址去访问你的网站。
 
 #### 部署到其他 Pages 平台
 
-在 GitHub 之外的平台，例如 GitLab，就没法享受 **GitHub Actions** 的便利了。不过先别慌，可以通过工具来弥补这个遗憾。
+在 GitHub 之外的平台，例如 GitLab，就没法享受 **GitHub Actions** 的便利了。因此我们需要在本地构建站点（或者在其他第三方 CI 平台），然后推送站点文件到服务器上。
 
-先把本地仓库的 upstream 改为新平台的仓库地址，推送一发。以后每次更新内容后，提交 commit ，然后运行:
-
-```console
-$ bash tools/publish.sh
-```
-
->**注**: *最后更新* 列表根据文章的 git 修改记录生成，所以运行前先把 `_posts` 目录的修改提交。
-
-它会自动生成文章的 *最后修改日期* 和 *分类 / 标签* 页面，并自动提交一个 commit 并推送到 `origin/master` 。输出日志类似如下：
-
-```terminal
-[INFO] Success to update lastmod for 4 post(s).
-[INFO] Succeed! 3 category-pages created.
-[INFO] Succeed! 4 tag-pages created.
-[INFO] Published successfully!
-```
-
-最后，根据平台的说明文档为项目开启 Pages 服务。
-
-#### 部署到私人服务器
-
-在项目更目录，运行:
+在项目根目录，运行:
 
 ```console
 $ bash tools/build.sh -d /path/to/site/
@@ -178,7 +160,7 @@ $ bash tools/build.sh -d /path/to/site/
 
 三人行必有我师，欢迎提报告 bug, 帮助改进代码质量，或者提交新功能。具体操作规则请参考 [贡献指南](../.github/CONTRIBUTING.md)，谢谢 🙏。
 
-## 感谢
+## 鸣谢
 
 这个主题的开发主要基于 [Jekyll](https://jekyllrb.com/) 生态、[Bootstrap](https://getbootstrap.com/)、[Font Awesome](https://fontawesome.com/) 和其他一些出色的工具 (相关文件中可以找到这些工具的版权信息).
 
