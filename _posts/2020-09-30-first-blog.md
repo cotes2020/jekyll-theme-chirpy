@@ -22,9 +22,9 @@ pin: true
 
 <http://callmejaden.github.io/github_pages/2019/12/30/GP-04-tzinfo>
 
- 설명은 이해가 안되지만 하라는 데로 Gemfile에 들어가 해당명렁어를 붙여넣기했다
+ 설명은 이해가 안되지만 하라는 데로 Gemfile에 들어가 해당명렁어를 붙여넣기했다..
 
-![](/_posts/tzinfoerror.png)
+![](https://github.com/maldives0/juyoungjung.github.io/blob/master/_posts/tzinfoerror.png)
 
 
 
