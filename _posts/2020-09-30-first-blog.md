@@ -24,7 +24,7 @@ pin: true
 
  설명은 이해가 안되지만 하라는 데로 Gemfile에 들어가 해당명렁어를 붙여넣기했다..
 
-![](https://github.com/maldives0/juyoungjung.github.io/blob/master/_posts/tzinfoerror.png)
+![](../_posts/tzinfoerror.png)
 
 
 
