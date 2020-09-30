@@ -21,7 +21,7 @@ pin: true
 4. 우선 tzinfo는 이곳에서 도움을 받았다
  https://callmejaden.github.io/github_pages/2019/12/30/GP-04-tzinfo/
  설명은 이해가 안되지만 하라는 데로 Gemfile에 들어가 해당명렁어를 붙여넣기했다
- ![](http://)
+
 ![tzinfoerror.png](C:\blog\juyoungjung.github.io\_posts\tzinfoerror.png)
 
 
