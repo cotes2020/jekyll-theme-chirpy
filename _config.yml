@@ -10,7 +10,7 @@
 
 title: maldives0                          # the main title
 
-tagline: my develop history.  # it will display as the sub-title
+tagline: my developing history.  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
@@ -22,7 +22,7 @@ url: 'https://maldives0.github.io'
 
 author: juyoung jung                 # change to your full name
 
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
+avatar: /assets/img/happiness.jpeg   # support internet resources
 
 github:
   username: maldives0             # change to your github username
@@ -51,7 +51,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/seoul
 
 google_analytics:
   id: ''          # Fill with your Google Analytics ID
