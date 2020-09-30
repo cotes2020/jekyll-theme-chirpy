@@ -19,17 +19,15 @@ pin: true
 
 
 4. 우선 tzinfo는 이곳에서 도움을 받았다
-
  https://callmejaden.github.io/github_pages/2019/12/30/GP-04-tzinfo/
-
  설명은 이해가 안되지만 하라는 데로 Gemfile에 들어가 해당명렁어를 붙여넣기했다
- !
- [](http:/tzinfoerror.png](.\tzinfoerror.png)
+ ![](http://)
+![tzinfoerror.png](C:\blog\juyoungjung.github.io\_posts\tzinfoerror.png)
+
 
 
 5.sass의 경우 윈도우에 저장된 사용자 계정 이름이 한글로 되어 있는 것이 문제여서 
-원격 저장소를 C드라이브에서 다시 clone하여 문제를 해결했다. 
-https://tothefullest08.github.io/til/2019/02/11/TIL/
+원격 저장소를 C드라이브에서 다시 clone하여 문제를 해결했다. https://tothefullest08.github.io/til/2019/02/11/TIL/
 
 6.멀고 먼 길을 돌아 4시간만에 blog에 이렇게 글을 올리니 정말 기쁘다~ 오늘부터 github blog를 시작한다.
 
@@ -38,12 +36,8 @@ https://tothefullest08.github.io/til/2019/02/11/TIL/
 
 
 8.내가 본 글 중 가장 쉽게 따라할 수 있었던 곳을 남겨본다.
-
 https://recoveryman.tistory.com/323?category=635733
 https://brunch.co.kr/@maemi/28
 
-
-
 그리고 앞으로 blog 만들기에 도움이 될 것 같은 곳:)
-
 https://devinlife.com/howto%20github%20pages/blog-menu/
