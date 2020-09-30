@@ -18,14 +18,14 @@ description: >-                        # used by seo meta and the atom feed
   and focuses on text presentation.
 
 # Replace with the website url, e.g. 'https://username.github.io'
-url: 'protocol://domain'
+url: 'https://maldives0.github.io'
 
-author: your_full_name                  # change to your full name
+author: juyoung jung                 # change to your full name
 
 avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
 github:
-  username: github_username             # change to your github username
+  username: maldives0             # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
