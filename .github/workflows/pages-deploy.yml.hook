@@ -4,18 +4,21 @@ on:
     branches:
       - master
     paths-ignore:
-      - '.gitignore'
-      - 'README.md'
-      - 'LICENSE'
+      - .gitignore
+      - README.md
+      - LICENSE
 
 jobs:
   continuous-delivery:
     runs-on: ubuntu-latest
 
+    env:
+      GEMS_PATH: /tmp/bundle
+
     steps:
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.6.x'
+          ruby-version: 2.6.x
 
       - name: Install tools
         run: |
@@ -33,14 +36,14 @@ jobs:
         id: bundle-cache
         uses: actions/cache@v1
         with:
-          path: vendor/bundle
+          path: ${{ env.GEMS_PATH }}
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
           restore-keys: |
             ${{ runner.os }}-gems-
 
       - name: Bundle config
         run: |
-          bundle config path vendor/bundle
+          bundle config path ${{ env.GEMS_PATH }}
 
       - name: Bundle Install
         if: steps.bundle-cache.outputs.cache-hit != 'true'
