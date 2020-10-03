@@ -44,7 +44,7 @@ _ _ _
 <https://brunch.co.kr/@maemi/28>
 
 그리고 앞으로 blog 만들기에 도움이 될 것 같은 곳:)
-<https://devinlife.com/howto%20github%20pages/blog-menu>
+<https://devinlife.com/howto/>
 
 _ _ _
 
