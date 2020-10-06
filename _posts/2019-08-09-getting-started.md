@@ -103,7 +103,7 @@ For security reasons, GitHub Pages build runs on `safe` mode, which restricts us
 
 2. Browse to your repository on GitHub and choose the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_
  → _Options_ → _GitHub Pages_:
-    ![gh-pages-sources](/assets/img/sample/gh-pages-sources.png)
+    ![gh-pages-sources](/assets/img/sample/gh-pages-sources.png){: width="650"}
 
 3. Visit your website at the address indicated by GitHub.
 

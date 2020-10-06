@@ -15,7 +15,7 @@ With a square image (PNG, JPG or GIF) in hand, open the site [*Favicon & App Ico
 
 Click button <kbd>Create Favicon</kbd> and wait a moment for the website to generate the icons of various sizes automatically.
 
-![download-icons](/assets/img/sample/download-icons.png)
+![download-icons](/assets/img/sample/download-icons.png){: width="600"}
 
 Download the generated package, unzip and delete the following two from the extracted files:
 
