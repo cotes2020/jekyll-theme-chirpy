@@ -77,9 +77,22 @@ Fluttering and dancing in the breeze.
 Click the hook will locate the footnote[^footnote].
 
 
-## Image
+## Images
+
+By default, the image is centered and the image caption can be displayed at the bottom:
 
 ![Desktop View](/assets/img/sample/mockup.png)
+_Full screen width and center alignment_
+
+You can change the size of the picture:
+
+![Desktop View](/assets/img/sample/mockup.png){: width="400"}
+_400px image width_
+
+In addition, you can use custom styles to change the image position (do not use caption in this case):
+
+![Desktop View](/assets/img/sample/mockup.png){: width="200" style="float: left; margin: .75rem 1rem 1rem 0"}
+_A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space._
 
 
 ## Inline code

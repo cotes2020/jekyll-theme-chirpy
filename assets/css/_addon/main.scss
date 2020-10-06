@@ -461,11 +461,6 @@ $sidebar-display: "sidebar-display";
 #post-wrapper {
   min-height: calc(100vh - #{$topbar-height}
     - #{$footer-height} - #{$post-extend-min-height})!important;
-  .post-content {
-    a:hover {
-      @extend %link-hover;
-    }
-  }
 }
 
 #topbar-wrapper.row,
@@ -795,7 +790,6 @@ div.post-content .table-wrapper {
 }
 
 
-
 /*--- post ---*/
 
 .pageviews .fa-spinner {
@@ -832,11 +826,21 @@ div.post-content .table-wrapper {
   p {
     font-size: 1.08rem;
     > img {
-      margin-top: .5rem;
-      margin-bottom: 1.5rem;
-      @include align-center;
+      &:not([style]) {
+        margin: .5rem 0;
+        @include align-center;
+        + em {
+          display: block;
+          text-align: center;
+          font-style: normal;
+          font-size: 80%;
+          padding: 0;
+          margin-top: .7rem;
+          color: #6d6c6c;
+        }
+      }
     }
-  }
+  }// p
 }
 
 .tag:hover {
