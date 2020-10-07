@@ -10,6 +10,7 @@ on:
 
 jobs:
   continuous-delivery:
+
     runs-on: ubuntu-latest
 
     env:
@@ -59,7 +60,7 @@ jobs:
         run: |
           baseurl="$(grep '^baseurl:' _config.yml | yq r - baseurl)"
           if [[ -n $baseurl ]]; then
-            echo "::set-env name=SPEC_TEST::_site_no_baseurl"
+            echo "SPEC_TEST=_site_no_baseurl" >> $GITHUB_ENV
           fi
 
       - name: Build Site
