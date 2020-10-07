@@ -817,12 +817,24 @@ div.post-content .table-wrapper {
   overflow-wrap: break-word;
   word-wrap: break-word;
 
-  @mixin img {
+  @mixin img($caption: false) {
     > img {
       &:not([style]) {
-        margin: .5rem 0;
-        @include align-center;
-        @include img-caption;
+        &:not(.left):not(.right) {
+          margin: .5rem 0;
+          @include align-center;
+          @if $caption {
+            @include img-caption;
+          }
+        }
+        &.left {
+          float: left;
+          margin: .75rem 1rem 1rem 0;
+        }
+        &.right {
+          float: right;
+          margin: .75rem 0 1rem 1rem;
+        }
       }
     }
   }
@@ -854,7 +866,7 @@ div.post-content .table-wrapper {
 
   p {
     font-size: 1.08rem;
-    @include img;
+    @include img(true);
   }// p
 }
 
