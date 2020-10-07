@@ -816,30 +816,45 @@ div.post-content .table-wrapper {
   margin-top: 2rem;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  a {
-    @extend %link-color;
-    @extend %link-underline;
-    &:hover {
-      @extend %link-hover;
-    }
-  }
-  p {
-    font-size: 1.08rem;
+
+  @mixin img {
     > img {
       &:not([style]) {
         margin: .5rem 0;
         @include align-center;
-        + em {
-          display: block;
-          text-align: center;
-          font-style: normal;
-          font-size: 80%;
-          padding: 0;
-          color: #6d6c6c;
-        }
-
+        @include img-caption;
       }
     }
+  }
+
+  @mixin img-caption {
+    + em {
+      display: block;
+      text-align: center;
+      font-style: normal;
+      font-size: 80%;
+      padding: 0;
+      color: #6d6c6c;
+    }
+  }
+
+  a {
+    &:not(.img-hyperlink) {
+      @extend %link-color;
+      @extend %link-underline;
+      &:hover {
+        @extend %link-hover;
+      }
+    }
+    &.img-hyperlink {
+      @include img;
+      @include img-caption;
+    }
+  }
+
+  p {
+    font-size: 1.08rem;
+    @include img;
   }// p
 }
 
