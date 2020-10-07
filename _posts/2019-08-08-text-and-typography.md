@@ -8,7 +8,7 @@ math: true
 image: /assets/img/sample/devices-mockup.png
 ---
 
-This Jekyll template totally compatible with Markdown syntax. Now, let's have a look at the text and typography.
+This article is to show markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), you can also use it as an example of writing. Now, let's start looking at text and typography.
 
 
 ## Titles
@@ -89,11 +89,17 @@ You can change the size of the picture:
 ![Desktop View](/assets/img/sample/mockup.png){: width="400"}
 _400px image width_
 
-In addition, you can use custom styles to change the image position (do not use caption in this case):
+In addition, you can use class `left` or `right` to specify the image position (but in this case, the image caption is prohibited), for example:
 
-![Desktop View](/assets/img/sample/mockup.png){: width="200" style="float: left; margin: .75rem 1rem 1rem 0"}
-_A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space._
+- To the left
 
+  ![Desktop View](/assets/img/sample/mockup.png){: width="240" class="left"}
+  "A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space."
+
+- To the right
+
+  ![Desktop View](/assets/img/sample/mockup.png){: width="240" class="right"}
+  "A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space."
 
 ## Inline code
 
