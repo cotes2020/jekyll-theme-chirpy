@@ -16,19 +16,33 @@ CONTAINER="${WORK_DIR}/.container"
 
 DEST="${WORK_DIR}/_site"
 
+docker=false
+
 _help() {
   echo "Usage:"
   echo
   echo "   bash build.sh [options]"
   echo
   echo "Options:"
-  echo "   -b, --baseurl    <URL>      The site relative url that start with slash, e.g. '/project'"
-  echo "   -h, --help                  Print the help information"
-  echo "   -d, --destination <DIR>     Destination directory (defaults to ./_site)"
+  echo "   -b, --baseurl     <URL>      The site relative url that start with slash, e.g. '/project'"
+  echo "   -h, --help                   Print the help information"
+  echo "   -d, --destination <DIR>      Destination directory (defaults to ./_site)"
+  echo "       --docker                 Build site within docker"
+}
+
+_install_tools() {
+  # docker image `jekyll/jekyll` based on Apline Linux
+  echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+  apk update
+  apk add yq
 }
 
 _init() {
   cd "$WORK_DIR"
+
+  if [[ -f Gemfile.lock ]]; then
+    rm -f Gemfile.lock
+  fi
 
   if [[ -d $CONTAINER ]]; then
     rm -rf "$CONTAINER"
@@ -93,6 +107,10 @@ main() {
         shift
         shift
         ;;
+      --docker)
+        docker=true
+        shift
+        ;;
       -h | --help)
         _help
         exit 0
@@ -103,6 +121,10 @@ main() {
         ;;
     esac
   done
+
+  if $docker; then
+    _install_tools
+  fi
 
   _init
   _build
