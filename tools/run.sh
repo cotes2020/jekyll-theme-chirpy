@@ -17,8 +17,9 @@ WORK_DIR="$(dirname "$(dirname "$(realpath "$0")")")"
 CONTAINER=.container
 SYNC_TOOL=_scripts/sh/sync_monitor.sh
 
-cmd="bundle exec jekyll s -l -o"
+cmd="bundle exec jekyll s -l"
 realtime=false
+docker=false
 
 _help() {
   echo "Usage:"
@@ -32,6 +33,7 @@ _help() {
   echo "     -h, --help              Print the help information"
   echo "     -t, --trace             Show the full backtrace when an error occurs"
   echo "     -r, --realtime          Make the modified content updated in real time"
+  echo "         --docker            Run within docker"
 }
 
 _cleanup() {
@@ -44,6 +46,9 @@ _cleanup() {
 }
 
 _init() {
+  if [[ -f Gemfile.lock ]]; then
+    rm -f Gemfile.lock
+  fi
 
   if [[ -d "${WORK_DIR}/${CONTAINER}" ]]; then
     rm -rf "${WORK_DIR}/${CONTAINER}"
@@ -72,8 +77,19 @@ _check_command() {
   fi
 }
 
+_install_tools() {
+  # docker image `jekyll/jekyll` based on Apline Linux
+  echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+  apk update
+  apk add yq
+}
+
 main() {
   _init
+
+  if $docker; then
+    _install_tools
+  fi
 
   cd "${WORK_DIR}/${CONTAINER}"
   bash _scripts/sh/create_pages.sh
@@ -92,6 +108,12 @@ main() {
       --event Updated --event Renamed \
       --event MovedFrom --event MovedTo \
       "$WORK_DIR" | xargs -0 -I {} bash "./${SYNC_TOOL}" {} "$WORK_DIR" . &
+  fi
+
+  if ! $docker; then
+    cmd+=" -o"
+  else
+    cmd+=" -H 0.0.0.0"
   fi
 
   echo "\$ $cmd"
@@ -131,6 +153,10 @@ while (($#)); do
     -r | --realtime)
       _check_command fswatch "http://emcrisostomo.github.io/fswatch/"
       realtime=true
+      shift
+      ;;
+    --docker)
+      docker=true
       shift
       ;;
     -h | --help)
