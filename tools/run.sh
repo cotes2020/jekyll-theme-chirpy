@@ -14,10 +14,11 @@ set -eu
 
 WORK_DIR="$(dirname "$(dirname "$(realpath "$0")")")"
 
-CONTAINER=.container
+CONTAINER="${WORK_DIR}/.container"
 SYNC_TOOL=_scripts/sh/sync_monitor.sh
 
-cmd="bundle exec jekyll s -l"
+cmd="bundle exec jekyll s"
+
 realtime=false
 docker=false
 
@@ -37,12 +38,17 @@ _help() {
 }
 
 _cleanup() {
-  if [[ -d _site || -d .jekyll-cache ]]; then
-    jekyll clean
-  fi
-
-  rm -rf "${WORK_DIR}/${CONTAINER}"
+  rm -rf "$CONTAINER"
   ps aux | grep fswatch | awk '{print $2}' | xargs kill -9 > /dev/null 2>&1
+}
+
+_setup_docker() {
+  # docker image `jekyll/jekyll` based on Alpine Linux
+  echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+  apk update
+  apk add yq
+
+  chown -R jekyll:jekyll "$CONTAINER"
 }
 
 _init() {
@@ -50,14 +56,14 @@ _init() {
     rm -f Gemfile.lock
   fi
 
-  if [[ -d "${WORK_DIR}/${CONTAINER}" ]]; then
-    rm -rf "${WORK_DIR}/${CONTAINER}"
+  if [[ -d $CONTAINER ]]; then
+    rm -rf "$CONTAINER"
   fi
 
-  temp="$(mktemp -d)"
-  cp -r "$WORK_DIR"/* "$temp"
-  cp -r "${WORK_DIR}/.git" "$temp"
-  mv "$temp" "${WORK_DIR}/${CONTAINER}"
+  local temp="$(mktemp -d)"
+  cp -r ./* "$temp"
+  cp -r ./.git "$temp"
+  mv "$temp" "$CONTAINER"
 
   trap _cleanup INT
 }
@@ -77,21 +83,8 @@ _check_command() {
   fi
 }
 
-_install_tools() {
-  # docker image `jekyll/jekyll` based on Apline Linux
-  echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
-  apk update
-  apk add yq
-}
-
-main() {
-  _init
-
-  if $docker; then
-    _install_tools
-  fi
-
-  cd "${WORK_DIR}/${CONTAINER}"
+_run() {
+  cd "$CONTAINER"
   bash _scripts/sh/create_pages.sh
   bash _scripts/sh/dump_lastmod.sh
 
@@ -110,14 +103,24 @@ main() {
       "$WORK_DIR" | xargs -0 -I {} bash "./${SYNC_TOOL}" {} "$WORK_DIR" . &
   fi
 
-  if ! $docker; then
-    cmd+=" -o"
-  else
+  if $docker; then
     cmd+=" -H 0.0.0.0"
+  else
+    cmd+=" -l -o"
   fi
 
   echo "\$ $cmd"
   eval "$cmd"
+}
+
+main() {
+  _init
+
+  if $docker; then
+    _setup_docker
+  fi
+
+  _run
 }
 
 while (($#)); do
