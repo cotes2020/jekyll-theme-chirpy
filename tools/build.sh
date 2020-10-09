@@ -31,7 +31,7 @@ _help() {
 }
 
 _install_tools() {
-  # docker image `jekyll/jekyll` based on Apline Linux
+  # docker image `jekyll/jekyll` based on Alpine Linux
   echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
   apk update
   apk add yq
