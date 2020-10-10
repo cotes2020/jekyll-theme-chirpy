@@ -18,6 +18,7 @@ CONTAINER="${WORK_DIR}/.container"
 SYNC_TOOL=_scripts/sh/sync_monitor.sh
 
 cmd="bundle exec jekyll s"
+JEKYLL_DOCKER_HOME="/srv/jekyll"
 
 realtime=false
 docker=false
@@ -45,13 +46,15 @@ _cleanup() {
 _setup_docker() {
   # docker image `jekyll/jekyll` based on Alpine Linux
   echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+  ## CN Apline sources mirror
+  # sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
   apk update
   apk add yq
-
-  chown -R jekyll:jekyll "$CONTAINER"
 }
 
 _init() {
+  cd "$WORK_DIR"
+
   if [[ -f Gemfile.lock ]]; then
     rm -f Gemfile.lock
   fi
@@ -60,10 +63,19 @@ _init() {
     rm -rf "$CONTAINER"
   fi
 
-  local temp="$(mktemp -d)"
-  cp -r ./* "$temp"
-  cp -r ./.git "$temp"
-  mv "$temp" "$CONTAINER"
+  mkdir "$CONTAINER"
+  cp -r ./* "$CONTAINER"
+  cp -r ./.git "$CONTAINER"
+
+  if $docker; then
+    local _image_user=$(stat -c "%U" "$JEKYLL_DOCKER_HOME"/.)
+
+    if [[ $_image_user != $(whoami) ]]; then
+      # under Docker for Linux
+      chown -R "$(stat -c "%U:%G" "$JEKYLL_DOCKER_HOME"/.)" "$CONTAINER"
+    fi
+
+  fi
 
   trap _cleanup INT
 }
@@ -114,12 +126,11 @@ _run() {
 }
 
 main() {
-  _init
-
   if $docker; then
     _setup_docker
   fi
 
+  _init
   _run
 }
 
