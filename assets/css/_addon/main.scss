@@ -85,7 +85,6 @@ $sidebar-display: "sidebar-display";
   .site-title {
     text-align: center;
     a {
-      // color: var(--site-title-color);
       font-weight: 900;
       font-size: 1.5rem;
       letter-spacing: .5px;
@@ -818,24 +817,27 @@ div.post-content .table-wrapper {
   word-wrap: break-word;
 
   @mixin img($caption: false) {
-    > img {
-      &:not([style]) {
-        &:not(.left):not(.right) {
-          margin: .5rem 0;
-          @include align-center;
-          @if $caption {
-            @include img-caption;
-          }
-        }
-        &.left {
-          float: left;
-          margin: .75rem 1rem 1rem 0;
-        }
-        &.right {
-          float: right;
-          margin: .75rem 0 1rem 1rem;
+    >img:not([style]) {
+      margin: .5rem 0;
+
+      &:not(.normal):not(.left):not(.right) {
+        @include align-center;
+
+        @if $caption {
+          @include img-caption;
         }
       }
+
+      &.left {
+        float: left;
+        margin: .75rem 1rem 1rem 0;
+      }
+
+      &.right {
+        float: right;
+        margin: .75rem 0 1rem 1rem;
+      }
+
     }
   }
 

@@ -123,7 +123,7 @@ For security reasons, GitHub Pages build runs on `safe` mode, which restricts us
 1. Push any commit to `origin/master` to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
 
 2. Browse to your repository on GitHub and choose the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
-    ![gh-pages-sources](/assets/img/sample/gh-pages-sources.png){: width="650"}
+    ![gh-pages-sources](/assets/img/sample/gh-pages-sources.png){: width="650" class="normal"}
 
 3. Visit your website at the address indicated by GitHub.
 
