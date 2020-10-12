@@ -8,15 +8,17 @@
 
 set -eu
 
-CMD="JEKYLL_ENV=production bundle exec jekyll b"
-
 WORK_DIR="$(dirname "$(dirname "$(realpath "$0")")")"
 
 CONTAINER="${WORK_DIR}/.container"
 
-DEST="${WORK_DIR}/_site"
+dest="${WORK_DIR}/_site"
+
+cmd="JEKYLL_ENV=production bundle exec jekyll b"
 
 docker=false
+
+config=""
 
 _help() {
   echo "Usage:"
@@ -24,10 +26,11 @@ _help() {
   echo "   bash build.sh [options]"
   echo
   echo "Options:"
-  echo "   -b, --baseurl     <URL>      The site relative url that start with slash, e.g. '/project'"
-  echo "   -h, --help                   Print the help information"
-  echo "   -d, --destination <DIR>      Destination directory (defaults to ./_site)"
-  echo "       --docker                 Build site within docker"
+  echo "  -b, --baseurl     <URL>                  The site relative url that start with slash, e.g. '/project'"
+  echo "  -h, --help                               Print the help information"
+  echo "  -d, --destination <DIR>                  destination directory (defaults to ./_site)"
+  echo "      --docker                             Build site within docker"
+  echo "      --config      <CONFIG_a[,CONFIG_b]>  Specify config files"
 }
 
 _install_tools() {
@@ -48,7 +51,7 @@ _init() {
     rm -rf "$CONTAINER"
   fi
 
-  if [[ -d $DEST ]]; then
+  if [[ -d $dest ]]; then
     bundle exec jekyll clean
   fi
 
@@ -65,16 +68,21 @@ _build() {
   bash "_scripts/sh/create_pages.sh"
   bash "_scripts/sh/dump_lastmod.sh"
 
-  CMD+=" -d $DEST"
-  echo "\$ $CMD"
-  eval "$CMD"
-  echo -e "\nBuild success, the site files have been placed in '${DEST}'."
+  cmd+=" -d $dest"
 
-  if [[ -d "${DEST}/.git" ]]; then
-    if [[ -n $(git -C "$DEST" status -s) ]]; then
-      git -C "$DEST" add .
-      git -C "$DEST" commit -m "[Automation] Update site files." -q
-      echo -e "\nPlease push the changes of $DEST to remote master branch.\n"
+  if [[ -n $config ]]; then
+    cmd+=" --config $config"
+  fi
+
+  echo "\$ $cmd"
+  eval "$cmd"
+  echo -e "\nBuild success, the site files have been placed in '${dest}'."
+
+  if [[ -d "${dest}/.git" ]]; then
+    if [[ -n $(git -C "$dest" status -s) ]]; then
+      git -C "$dest" add .
+      git -C "$dest" commit -m "[Automation] Update site files." -q
+      echo -e "\nPlease push the changes of $dest to remote master branch.\n"
     fi
   fi
 
@@ -97,18 +105,24 @@ main() {
         if [[ -z $_baseurl ]]; then
           _baseurl='""'
         fi
-        CMD+=" -b $_baseurl"
+        cmd+=" -b $_baseurl"
         shift
         shift
         ;;
       -d | --destination)
         _check_unset "$2"
-        DEST="$(realpath "$2")"
+        dest="$(realpath "$2")"
         shift
         shift
         ;;
       --docker)
         docker=true
+        shift
+        ;;
+      --config)
+        _check_unset "$2"
+        config="$(realpath "$2")"
+        shift
         shift
         ;;
       -h | --help)
