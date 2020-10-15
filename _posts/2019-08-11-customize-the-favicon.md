@@ -22,6 +22,18 @@ Download the generated package, unzip and delete the following two from the extr
 - browserconfig.xml
 - manifest.json
  
-Now, copy the rest image files (`.PNG` and `.ICO`) to cover the original one in folder `assets/img/favicons/`.
+Now, copy the remaining image files (`.PNG` and `.ICO`) from the extracted `.zip` file to cover the original files in the folder `assets/img/favicons/`.
 
-Lastly, don't forget to rebuild your site so that the icon becomes your custom edition.
+The following table helps you understand the changes to the icon file:
+
+> ✓ means keep, ✗ means delete.
+
+| File(s)             | From Favicon & App Icon Generator | From Chirpy |
+|---------------------|:---------------------------------:|:-----------:|
+| `*.PNG`             | ✓                                 | ✗           |
+| `*.ICO`             | ✓                                 | ✗           |
+| `browserconfig.xml` | ✗                                 | ✓           |
+| `manifest.json`     | ✗                                 | ✓           |
+
+
+The next time you build the site, the icon will be replaced with a customized edition.
