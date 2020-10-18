@@ -77,7 +77,7 @@ $sidebar-display: "sidebar-display";
   overflow-y: auto;
   width: $sidebar-width-medium;
   z-index: 99;
-  background: var(--sidebar-bg);
+  background: #27292B;
   a {
     @include sidebar-links;
   }
@@ -285,7 +285,7 @@ $sidebar-display: "sidebar-display";
   z-index: 50;
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.05);
-  background-color: var(--topbar-wrapper-bg);
+  background-color: #27292B
 }
 
 #topbar i { // icons

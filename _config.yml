@@ -8,50 +8,43 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: Chirpy                          # the main title
+title: Programming With Wolfgang                      
 
-tagline: A text-focused Jekyll theme.  # it will display as the sub-title
+tagline: Let's talk programming 
 
-description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+description: >-                        
+  A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture.
 
 # Replace with the website url, e.g. 'https://username.github.io'
 url: 'protocol://domain'
 
-author: your_full_name                  # change to your full name
+author: Wolfgang Ofner
 
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
+avatar: /assets/img/author/wolfgang-small.jpg   #
 
 github:
-  username: github_username             # change to your github username
+  username: wolfgangofner             
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: wolfgang_ofner            
 
 social:
-  name: your_full_name                  # it will shows as the copyright owner in Footer
-  email: example@doamin.com             # change to your email address
+  name: Wolfgang Ofner
+  email: wolfgang@programmingwithwolfgang.com             
   links:
-    # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://twitter.com/wolfgang_ofner  
+    - https://github.com/wolfgangofner  
+    - https://www.linkedin.com/in/wolfgangofner
+    - https://www.xing.com/profile/Wolfgang_Ofner6
 
 google_site_verification: google_meta_tag_verification # change to your verification string
-
-#--------------------------
 
 
 # Only if your site type is GitHub Project sites and doesn't have a custom domain,
 # change below value to '/projectname'.
 baseurl: ''
 
-# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Europe/Zurich
 
 google_analytics:
   id: ''          # Fill with your Google Analytics ID
@@ -68,16 +61,6 @@ disqus:
   comments: false  # boolean type, the global switch for posts comments.
   shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
-
-# Prefer color scheme setting, available values:
-#
-#     dual   - Follow the system prefer color by default, and a toggle will display
-#              in the left bottom of Sidebar, which used for switch the theme between dark and light.
-#
-#     light  - Use the light color scheme
-#
-#     dark   - Use the dark color scheme
-#
 theme_mode: dual
 
 # boolean type, global switch for ToC in posts.
