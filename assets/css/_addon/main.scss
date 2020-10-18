@@ -449,7 +449,7 @@ $sidebar-display: "sidebar-display";
 
 #main > div.row:first-child > div {
   &:nth-child(1), &:nth-child(2) {
-    margin-top: $topbar-height; /* same as the height of topbar */
+    // margin-top: $topbar-height; /* same as the height of topbar */
   }
   &:first-child {
     /* 3rem for topbar, 6rem for footer */

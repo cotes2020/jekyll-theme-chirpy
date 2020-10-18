@@ -10,50 +10,48 @@ layout: compress
 <!DOCTYPE html>
 
 {% if site.lang %}
-  {% assign lang = site.lang | split: "_" | first %}
+{% assign lang = site.lang | split: "_" | first %}
 {% else %}
-  {% assign lang = 'en' %}
+{% assign lang = 'en' %}
 {% endif %}
 
 {% capture prefer_mode %}
-  {% if site.theme_mode != "dual" %}
-    mode="{{ site.theme_mode }}"
-  {% endif %}
+{% if site.theme_mode != "dual" %}
+mode="{{ site.theme_mode }}"
+{% endif %}
 {% endcapture %}
 
-<html lang="{{ lang }}" {{ prefer_mode }} >
+<html lang="{{ lang }}" {{ prefer_mode }}>
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body data-spy="scroll" data-target="#toc">
+<body data-spy="scroll" data-target="#toc">
 
-    <div id="sidebar" class="d-flex flex-column">
-      {% include sidebar.html %}
+  <div id="sidebar" class="d-flex flex-column">
+    {% include sidebar.html %}
+  </div>
+
+  <div id="main-wrapper">
+    <div id="main">
+
+      {% include refactor-content.html content=content %}
+
+      {% include footer.html %}
+
     </div>
 
-    {% include topbar.html %}
+    {% include search-results.html %}
 
-    <div id="main-wrapper">
-      <div id="main">
+  </div> <!-- #main-wrapper -->
 
-        {% include refactor-content.html content=content %}
+  <div id="mask"></div>
 
-        {% include footer.html %}
+  <a id="back-to-top" href="#" class="btn btn-lg btn-box-shadow" role="button">
+    <i class="fas fa-angle-up"></i>
+  </a>
 
-      </div>
+  {% include search-loader.html %}
 
-      {% include search-results.html %}
-
-    </div> <!-- #main-wrapper -->
-
-    <div id="mask"></div>
-
-    <a id="back-to-top" href="#" class="btn btn-lg btn-box-shadow" role="button">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    {% include search-loader.html %}
-
-  </body>
+</body>
 
 </html>
