@@ -173,7 +173,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     &:hover {
       -webkit-transform: translate3d(0, -3px, 0);
       transform: translate3d(0, -3px, 0);
-      filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
+      box-shadow: 0 20px 35px -4px rgba(0, 0, 0, 0.15);
     }
   }
 
