@@ -551,8 +551,8 @@ footer {
     padding: .3rem .5rem;
     margin: 0 .35rem .5rem 0;
     &:hover {
-      background-color: #2a408e;
-      border-color: #2a408e;
+      background-color: red;
+      border-color: red;
       color: #fff;
       transition: none;
     }
@@ -1176,7 +1176,7 @@ div.post-content .table-wrapper {
   }
 
   #search-wrapper {
-    width: 22%;
+    width: 80%;
     min-width: 150px;
   }
 
