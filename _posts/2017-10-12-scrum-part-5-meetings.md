@@ -2,7 +2,7 @@
 title: 'Scrum Part 5 - Meetings'
 date: 2017-10-12T22:16:42+02:00
 author: Wolfgang Ofner
-categories: [Agile]
+categories: [Miscellaneous]
 tags: [Agile, Scrum]
 ---
 Every Scrum meeting is time-boxed. But what does time-boxed mean? I will explain this term and afterwards, I will present all Scrum meetings.

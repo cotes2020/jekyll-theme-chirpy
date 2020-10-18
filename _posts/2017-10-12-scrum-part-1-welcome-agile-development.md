@@ -2,7 +2,7 @@
 title: Scrum Part 1 – Welcome to agile development
 date: 2017-10-12T21:10:00+02:00
 author: Wolfgang Ofner
-categories: [Agile]
+categories: [Miscellaneous]
 tags: [Agile, Scrum]
 ---
 Scrum is a framework which describes an agile approach on how to manage a project. It gives recommendations to teams on how to manage their work to achieve high team performance and support each other in the process.

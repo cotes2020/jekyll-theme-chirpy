@@ -3,7 +3,7 @@ title: Proxy Pattern in .NET Core
 date: 2020-06-27T18:25:18+02:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
-tags: [ASP.NET Core MVC, , 'C#', GRPC, software architecture]
+tags: [ASP.NET Core MVC, 'C#', GRPC, software architecture]
 ---
 The proxy pattern belongs to the group of structural patterns and is often used for cross cutting-concerns. Proxies can be used to control access, logging, and security features. Another advantage is separation of concern (SoC) and loose coupling of your components.
 

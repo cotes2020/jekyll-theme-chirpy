@@ -1,8 +1,8 @@
 ---
-title: 'Scrum part 2 &#8211; An overview of Scrum'
+title: 'Scrum part 2 - An overview of Scrum'
 date: 2017-10-12T21:15:13+02:00
 author: Wolfgang Ofner
-categories: [Agile]
+categories: [Miscellaneous]
 tags: [Agile, Scrum]
 ---
 As already mentioned, Scrum is a framework for how to manage work. It might be incomplete and neither does it solve the problems for you nor does it tell you how to write your code. Scrum only gives guidance on how to solve problems.

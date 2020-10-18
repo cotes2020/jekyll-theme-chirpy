@@ -1,5 +1,5 @@
 ---
-title: '.Net Core 3.0 - What's new'
+title: '.Net Core 3.0 - What''s new'
 date: 2019-12-07T11:14:37+01:00
 author: Wolfgang Ofner
 categories: [Programming]

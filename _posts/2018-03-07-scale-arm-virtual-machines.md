@@ -4,7 +4,7 @@ date: 2018-03-07T20:38:46+01:00
 author: Wolfgang Ofner
 layout: post
 categories: [Cloud]
-tags: [70-532, ,Azure, Certification, Exam, learning]
+tags: [70-532 ,Azure, Certification, Exam, learning]
 ---
 In Azure, it is possible to scale Azure Web Apps or Virtual Machines by increasing the size or the count of running instances. Azure also supports auto-scaling on the instance count. In this post, first I will talk about the difference between scale out and scale up. Then I will show how ARM VM Scale Sets are deployed and what they are used for and how to configure them for auto-scale.
 

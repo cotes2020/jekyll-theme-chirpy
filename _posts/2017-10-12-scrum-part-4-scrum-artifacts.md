@@ -2,7 +2,7 @@
 title: 'Scrum Part 4 - Scrum Artifacts'
 date: 2017-10-12T21:43:36+02:00
 author: Wolfgang Ofner
-categories: [Agile]
+categories: [Miscellaneous]
 tags: [Agile, Scrum]
 ---
 Scrum has a set of predefined Scrum artifacts. In this post, I will give you an overview of the different roles and talk about my own experience.

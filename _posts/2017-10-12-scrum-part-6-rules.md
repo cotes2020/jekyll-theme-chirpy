@@ -2,7 +2,7 @@
 title: 'Scrum Part 6 - Rules'
 date: 2017-10-12T22:18:36+02:00
 author: Wolfgang Ofner
-categories: [Agile]
+categories: [Miscellaneous]
 tags: [Agile, Scrum]
 ---
 Scrum has a set of predefined rules. In this last post about the Scrum fundamentals, I will give you an overview of the different rules.

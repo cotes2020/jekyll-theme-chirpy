@@ -3,7 +3,7 @@ title: Design and Implement DevOps
 date: 2018-08-09T22:22:12+02:00
 author: Wolfgang Ofner
 categories: [DevOps, Cloud]
-tags: [70-532, ,Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, learning]
 ---
 DevOps is a combination of development (Dev) and Operations (Ops). The ultimate goal of DevOps is automation and repeatability which allows for increased deployment frequency without the burden that manual deployments bring.
 

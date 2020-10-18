@@ -2,7 +2,7 @@
 title: 'Microservices - Getting Started'
 date: 2020-04-08T16:49:59+02:00
 author: Wolfgang Ofner
-categories: [Microservice]
+categories: [Design Pattern]
 tags: [docker, high availability, kubernetes, microservice]
 ---
 Many developers have heard about microservices and that it&#8217;s the next great thing. But for many developers I have talked to, microservices is just another buzzword like DevOps. I have been working on different projects using microservices for a bit more than a year and in this post, I want to talk about the theory and the ideas behind the concept. <a href="https://www.programmingwithwolfgang.com/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my next posts</a>, I will show how to implement a microservice using ASP .NET Core 3.1.

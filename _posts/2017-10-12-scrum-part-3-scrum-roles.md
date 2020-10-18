@@ -2,7 +2,7 @@
 title: 'Scrum Part 3 - Scrum Roles'
 date: 2017-10-12T21:26:50+02:00
 author: Wolfgang Ofner
-categories: [Agile]
+categories: [Miscellaneous]
 tags: [Agile, Scrum]
 ---
 Scrum knows only three different roles: the Product Owner, the Scrum Master and the development team.

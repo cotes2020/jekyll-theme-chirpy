@@ -3,7 +3,7 @@ title: Add Docker to an ASP .NET Core Microservice
 date: 2020-08-17T18:31:42+02:00
 author: Wolfgang Ofner
 categories: [Docker]
-tags: [.net core 3.1,, docker, microservice]
+tags: [.net core 3.1, docker, microservice]
 ---
 Microservices need to be deployed often and fast. To achieve this, they often run inside a Docker container. In this post, I will show how easy it is to add Docker support to a project using Visual Studio.
 
