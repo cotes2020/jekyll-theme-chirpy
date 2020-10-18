@@ -51,7 +51,7 @@ const include = [
   {% include update-list.html %}
 
   {% for item in update_list %}
-    {% assign url = item | split: "::" | last | url_encode | prepend: "/posts/" | append: "/" | relative_url %}
+    {% assign url = item | split: "::" | last | url_encode | prepend: "/" | append: "/" | relative_url %}
     {% assign post_list = post_list | push: url %}
   {% endfor %}
 

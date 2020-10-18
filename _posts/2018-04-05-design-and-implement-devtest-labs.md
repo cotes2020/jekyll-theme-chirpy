@@ -1,0 +1,625 @@
+---
+title: Design and implement DevTest Labs
+date: 2018-04-05T16:45:00+02:00
+author: Wolfgang Ofner
+categories: [Cloud]
+tags: [70-532, Azure, Certification, Exam, learning]
+---
+Azure DevTest Labs is a service designed to help developers and testers quickly spin up virtual machines (VMs) or complete environments in Azure, enabling rapid deployment and testing of applications. This allows you to easily spin up and tear down development and test resources, minimizing waste and providing better cost control. It is also useful to create pre-provisioned environments for demos and training.
+
+## Create DevTest Labs
+
+To add a new DevTest Lab, follow these steps:
+
+  1. In the Azure Portal select All services and search for DevTest Labs.
+  2. Click on DevTest Labs and select + Add.
+  3. Enter a Lab name, Subscription, Location and optionally add a Name and Value for tagging.
+  4. By default, the Auto-shutdown option is enabled. This feature can help you save costs. Click on it, if you want to disable it or if you want to change the time for the shutdown.
+
+<div id="attachment_1016" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1016" loading="lazy" class="wp-image-1016" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-DevTest-Lab.jpg" alt="Create a DevTest Lab" width="700" height="389" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-DevTest-Lab.jpg 889w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-DevTest-Lab-300x167.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-DevTest-Lab-768x427.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1016" class="wp-caption-text">
+    Create a DevTest Lab
+  </p>
+</div>
+
+<ol start="5">
+  <li>
+    Click on Create.
+  </li>
+</ol>
+
+The deployment process creates a new resource group with the following resources in it:
+
+  * The DevTest Lab instance
+  * A Key vault instance
+  * A Storage account
+  * A virtual network
+
+<div id="attachment_1017" style="width: 675px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Deployed-resources.jpg"><img aria-describedby="caption-attachment-1017" loading="lazy" class="size-full wp-image-1017" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Deployed-resources.jpg" alt="Deployed resources" width="665" height="218" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Deployed-resources.jpg 665w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Deployed-resources-300x98.jpg 300w" sizes="(max-width: 665px) 100vw, 665px" /></a>
+  
+  <p id="caption-attachment-1017" class="wp-caption-text">
+    Deployed resources
+  </p>
+</div>
+
+## Add a VM to your lab
+
+After the DevTest Lab is deployed, you can add a VM to it following these steps:
+
+  1. In your DevTest Lab, click +Add on the overview blade.
+  2. On the Choose a base blade, select your desired image for your VM.
+  3. Selecting an image opens the Virtual machine blade. Provide a machine name, user name, password, the size of your VM and optionally artifacts. Artifacts are third-party tools like Chrome or Git.
+
+<div id="attachment_1022" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1022" loading="lazy" class="wp-image-1022" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg" alt="Create a Windows 2016 Server for your DevTest Lab" width="700" height="493" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg 1483w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab-300x211.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab-768x541.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab-1024x722.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1022" class="wp-caption-text">
+    Create a Windows 2016 Server for your DevTest Lab
+  </p>
+</div>
+
+<ol start="4">
+  <li>
+    Click Create to start the deployment process.
+  </li>
+</ol>
+
+### Claim a VM
+
+After the VM is created, the ownership is assigned to the creator but it can be made claimable for others. To unclaim the VM,  follow these steps:
+
+  1. Click on the VM, you want to unclaim in your DevTest Lab.
+  2. On the top of the Overview blade click on unclaim.
+
+<div id="attachment_1021" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Unclaim-a-VM.jpg"><img aria-describedby="caption-attachment-1021" loading="lazy" class="wp-image-1021" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Unclaim-a-VM.jpg" alt="Unclaim a VM" width="700" height="161" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Unclaim-a-VM.jpg 937w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Unclaim-a-VM-300x69.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Unclaim-a-VM-768x176.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1021" class="wp-caption-text">
+    Unclaim a VM
+  </p>
+</div>
+
+Unclaiming a VM removes it from the My virtual machines area in the DevTest Lab and moves it to the Claimable virtual machines section.
+
+To claim a VM, open it and select Claim machine on the top of the Overview blade.
+
+## Create and manage custom images and formulas
+
+The difference between a custom image and a formula is that the custom image is an image based on a VHD, whereas formulas are base on a VHD with additional pre-configurations such VM size, virtual network, and artifacts. These pre-configured settings can be overridden during the deployment process.
+
+### Creating custom images
+
+Custom images provide a static, immutable way to create VMs from a configuration.
+
+Pros of using custom images:
+
+  * VMs created from the same image are identical
+  * The provisioning of the VM is fast
+
+Cons of using custom images:
+
+  * To update the image, it has to be recreated
+
+You can use the Azure Portal or PowerShell to create an image from an existing VM or create one from a VHD.
+
+### Create a custom image from a provisioned VM
+
+To create a custom image from a provisioned VM using the Azure Portal, follow these steps:
+
+  1. In your DevTest lab, select All virtual machines under the My Lab menu and then click on the VM, you want to use as a base for your image.
+
+<div id="attachment_1020" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1020" loading="lazy" class="wp-image-1020" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg" alt="All virtual machines in your DevTest Lab" width="700" height="411" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg 705w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/All-virtual-machines-in-your-DevTest-Lab-300x176.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1020" class="wp-caption-text">
+    All virtual machines in your DevTest Lab
+  </p>
+</div>
+
+<ol start="2">
+  <li>
+    After you selected a VM, click on Create custom image under the Operations menu.
+  </li>
+  <li>
+    On the Custom image blade, provide a name and select whether sysprep should be run.
+  </li>
+  <li>
+    Click OK to create the image.
+  </li>
+</ol>
+
+<div id="attachment_1023" style="width: 315px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-custom-image.jpg"><img aria-describedby="caption-attachment-1023" loading="lazy" class="size-full wp-image-1023" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-custom-image.jpg" alt="Create a custom image" width="305" height="400" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-custom-image.jpg 305w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-custom-image-229x300.jpg 229w" sizes="(max-width: 305px) 100vw, 305px" /></a>
+  
+  <p id="caption-attachment-1023" class="wp-caption-text">
+    Create a custom image
+  </p>
+</div>
+
+### Create a custom image from a VHD using the Azure Portal
+
+To create a custom image from a VHD using the Azure Portal follow these steps:
+
+  1. In your DevTest Lab instance, select Configuration and policies under the Settings tab.
+  2. On the Configuration and policies blade, select Custom images under the Virtual Machine Bases menu and click +Add.
+  3. Provide a name, the operating system type and select the VHD. If you don&#8217;t have any, you have to upload one first.
+  4. Click OK.
+
+###  Delete a custom image
+
+To delete a custom image, follow these steps:
+
+  1. In your DevTest Lab instance, select Configuration and policies under the Settings tab.
+  2. On the Configuration and policies blade, select Custom images under the Virtual Machine Bases menu and click the three dots next to the image which you want to delete.
+  3. Click delete and select Yes in the confirmation dialog.
+
+<div id="attachment_1024" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image.jpg"><img aria-describedby="caption-attachment-1024" loading="lazy" class="wp-image-1024" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image.jpg" alt="Delete a custom image" width="700" height="98" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image.jpg 1672w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image-300x42.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image-768x108.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image-1024x144.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1024" class="wp-caption-text">
+    Delete a custom image
+  </p>
+</div>
+
+## Formulas
+
+Formulas provide default property values and therefore offer a fast way to create VMs from a preconfigured state.
+
+Pros of using formulas:
+
+  * Formulas can define default setting that custom images can&#8217;t provide.
+  * The default settings from the formulas can be modified when creating a new VM.
+
+Cons of using custom images:
+
+  * Creating a new formula can be more time consuming than creating a VM from a custom image.
+
+There are two ways to create a formula:
+
+  1. From a base like a custom image or Marketplace image, use a base when you want to define all characteristics of the formula.
+  2. From an existing lab VM. Use this approach when you want to create a formula which is based on an existing VM.
+
+### Create a formula from a base
+
+To create a formula from a base, follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Formulas (reusable bases) under the Virtual Machine Bases menu and click + Add.
+  3. On the Choose a base blade, select an image to use for the formula, for example, Windows Server 2016 Datacenter.
+  4. Provide a Formula name and user name.
+  5. Select the disk type and the size of your VM.
+  6. Optionally add artifacts. Artifacts are third-party tools like Google Chrome or Docker which will be installed on your VM.
+  7. On the Advanced blade, you can configure the IP address and the automatic delete options.
+  8. After you are done with the configuration, click Create to create the formula.
+
+<div id="attachment_1027" style="width: 691px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula.jpg"><img aria-describedby="caption-attachment-1027" loading="lazy" class="wp-image-1027" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula.jpg" alt="Create a new formula" width="681" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula.jpg 892w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-292x300.jpg 292w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-768x790.jpg 768w" sizes="(max-width: 681px) 100vw, 681px" /></a>
+  
+  <p id="caption-attachment-1027" class="wp-caption-text">
+    Create a new formula
+  </p>
+</div>
+
+### Create a formula from a VM
+
+To create a formula from a VM, follow these steps:
+
+  1. In your DevTest Labs instance, on the Overview blade, select the VM from which you want to create the new formula.
+
+<div id="attachment_1028" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula.jpg"><img aria-describedby="caption-attachment-1028" loading="lazy" class="wp-image-1028" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula.jpg" alt="Select a VM for your formula" width="700" height="221" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula.jpg 1311w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula-300x95.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula-768x242.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula-1024x323.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1028" class="wp-caption-text">
+    Select a VM for your formula
+  </p>
+</div>
+
+<ol start="2">
+  <li>
+    On the VM&#8217;s blade, select Create formula (reusable base) under the Operations menu.
+  </li>
+  <li>
+    On the Create a formula blade, provide a name and optionally a description and click OK.
+  </li>
+</ol>
+
+<div id="attachment_1029" style="width: 326px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-from-a-VM.jpg"><img aria-describedby="caption-attachment-1029" loading="lazy" class="size-full wp-image-1029" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-from-a-VM.jpg" alt="Create a new formula from a VM" width="316" height="376" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-from-a-VM.jpg 316w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-from-a-VM-252x300.jpg 252w" sizes="(max-width: 316px) 100vw, 316px" /></a>
+  
+  <p id="caption-attachment-1029" class="wp-caption-text">
+    Create a new formula from a VM
+  </p>
+</div>
+
+### Modify a formula
+
+To modify the properties of an existing formula, follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Formulas (reusable bases) under the Virtual Machine Bases menu.
+  3. Select the formula you wish to modify.
+  4. Make your changes on the Update formula blade and select Update when you are finished.
+
+<div id="attachment_1030" style="width: 685px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-an-existing-formula.jpg"><img aria-describedby="caption-attachment-1030" loading="lazy" class="size-full wp-image-1030" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-an-existing-formula.jpg" alt="Modify an existing formula" width="675" height="650" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-an-existing-formula.jpg 675w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-an-existing-formula-300x289.jpg 300w" sizes="(max-width: 675px) 100vw, 675px" /></a>
+  
+  <p id="caption-attachment-1030" class="wp-caption-text">
+    Modify an existing formula
+  </p>
+</div>
+
+### Delete a formula
+
+To delete an existing formula, follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Formulas (reusable bases) under the Virtual Machine Bases menu.
+  3. Click on the ellipsis to the right of the formula you want to delete and click Delete in the context menu.
+
+<div id="attachment_1031" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula.jpg"><img aria-describedby="caption-attachment-1031" loading="lazy" class="wp-image-1031" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula.jpg" alt="Delete an existing formula" width="700" height="123" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula.jpg 1663w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula-300x53.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula-768x135.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula-1024x180.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1031" class="wp-caption-text">
+    Delete an existing formula
+  </p>
+</div>
+
+<ol start="4">
+  <li>
+    On the confirmation dialog click Yes.
+  </li>
+</ol>
+
+## Configure a lab to include policies and procedures
+
+For each lab you create, you can control cost and minimize your time waste by managing policies.
+
+### Configure allowed virtual machine sizes policy
+
+You can configure that the creation of only specific VM sizes is allowed. To do that follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Allowed virtual machines under the Settings menu.
+  3. On the Allowed virtual machine move the slider to On and then check each VM size which you want to be allowed to be created.
+  4. Click Save on the top of the blade when you are finished.
+
+<div id="attachment_1032" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg"><img aria-describedby="caption-attachment-1032" loading="lazy" class="wp-image-1032" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg" alt="Enable allowed virtual machine sizes policy" width="700" height="496" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg 1064w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy-300x213.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy-768x544.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy-1024x726.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1032" class="wp-caption-text">
+    Enable allowed virtual machine sizes policy
+  </p>
+</div>
+
+### Configure virtual machines per user policy
+
+It is also possible to limit the number of virtual machines an user can create. Additionally, you can limit the number of VMs using premium OS disks. To do that, follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Virtual machines per user under the Settings menu.
+  3. Move the slider to Yes to limit the number of virtual machines and/or the number of virtual machines using premium OS disks per user.
+  4. After you enabled a limitation, provide a number for the limit. The default value is 1.
+  5. Click Save.
+
+<div id="attachment_1033" style="width: 698px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg"><img aria-describedby="caption-attachment-1033" loading="lazy" class="size-full wp-image-1033" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg" alt="Limit the number of virtual machines and premium OS disks per user" width="688" height="373" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg 688w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user-300x163.jpg 300w" sizes="(max-width: 688px) 100vw, 688px" /></a>
+  
+  <p id="caption-attachment-1033" class="wp-caption-text">
+    Limit the number of virtual machines and premium OS disks per user
+  </p>
+</div>
+
+If a user has reached his maximum amount of VMs but tries to create another one, he will get an error message.
+
+### Configure virtual machines per lab policy
+
+To specify the maximum number of VMs that can be created in your current lab, follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Virtual machines per lab under the Settings menu.
+  3. Move the slider to Yes to limit the number of virtual machines and/or the number of virtual machines using premium OS disks per lab.
+  4. After you enabled a limitation, provide a number for the limit. The default value is 1.
+  5. Click Save.
+
+<div id="attachment_1034" style="width: 684px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg"><img aria-describedby="caption-attachment-1034" loading="lazy" class="size-full wp-image-1034" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg" alt="Limit the number of virtual machines and premium OS disks per lab" width="674" height="402" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg 674w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab-300x179.jpg 300w" sizes="(max-width: 674px) 100vw, 674px" /></a>
+  
+  <p id="caption-attachment-1034" class="wp-caption-text">
+    Limit the number of virtual machines and premium OS disks per lab
+  </p>
+</div>
+
+### Configure auto-shutdown policy
+
+The auto-shutdown is the most important policy for helping you to minimize cost control and also helps to prevent costs when the VMs are not in use. I always enable this policy when I do training because there is always at least one student who doesn&#8217;t turn off his VMs at the end of the day.
+
+To enable auto-shutdown, follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Auto-shutdown under the Schedules menu.
+  3. Move the slider to On to enable auto-shutdown.
+  4. Configure the shutdown time and optionally enable sending a notification and provide a webhook URL or an email address. The notification will be sent 15 minutes prior the shutdown.
+  5. Click Save.
+
+<div id="attachment_1035" style="width: 661px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy.jpg"><img aria-describedby="caption-attachment-1035" loading="lazy" class="size-full wp-image-1035" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy.jpg" alt="Configure auto-shutdown policy" width="651" height="593" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy.jpg 651w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-300x273.jpg 300w" sizes="(max-width: 651px) 100vw, 651px" /></a>
+  
+  <p id="caption-attachment-1035" class="wp-caption-text">
+    Configure auto-shutdown policy
+  </p>
+</div>
+
+Once configured, the auto-shutdown policy will be applied to all VMs in the lab. You also can adjust the auto-shutdown policy for specific VMs. To do that follow these steps:
+
+  1. In your DevTest Labs instance, select the VM you want to configure.
+  2. On the VM blade select Auto-shutdown under the Operations menu. There you can see the same attributes as before but if you change them here, you only change the settings for this VM.
+  3. After all changes are made, click Save.
+
+<div id="attachment_1036" style="width: 687px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg"><img aria-describedby="caption-attachment-1036" loading="lazy" class="size-full wp-image-1036" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg" alt="Configure auto-shutdown policy for an individual VM" width="677" height="448" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg 677w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM-300x199.jpg 300w" sizes="(max-width: 677px) 100vw, 677px" /></a>
+  
+  <p id="caption-attachment-1036" class="wp-caption-text">
+    Configure auto-shutdown policy for an individual VM
+  </p>
+</div>
+
+I like to disable the auto-shutdown policy on my VM, so I can prepare things for the next days training on the evening without getting interrupted by the shutdown.
+
+## Configure auto-start policy
+
+Besides auto-shutdown, you can also configure an auto-start policy. To do that follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Auto-start under the Schedules menu.
+  3. Move the slider to On and then configure the start time and on which days the VMs should start.
+  4. Click Save
+
+<div id="attachment_1037" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy.jpg"><img aria-describedby="caption-attachment-1037" loading="lazy" class="wp-image-1037" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy.jpg" alt="Configure auto-start policy" width="700" height="418" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy.jpg 1081w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy-300x179.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy-768x458.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy-1024x611.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1037" class="wp-caption-text">
+    Configure auto-start policy
+  </p>
+</div>
+
+## 
+
+Once configured, the auto-start policy will be applied to all VMs in the lab. You can Opt-out the auto-start policy for a specific VM. To do that follow these steps:
+
+  1. In your DevTest Labs instance, select the VM you want to configure.
+  2. On the VM blade select Auto-start under the Operations menu. There you can see move the slider to On or Off to enable or disable auto-start.
+  3. Click Save.
+
+<div id="attachment_1038" style="width: 652px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-auto-start-for-a-specific-VM.jpg"><img aria-describedby="caption-attachment-1038" loading="lazy" class="size-full wp-image-1038" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-auto-start-for-a-specific-VM.jpg" alt="Disable auto-start for a specific VM" width="642" height="441" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-auto-start-for-a-specific-VM.jpg 642w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-auto-start-for-a-specific-VM-300x206.jpg 300w" sizes="(max-width: 642px) 100vw, 642px" /></a>
+  
+  <p id="caption-attachment-1038" class="wp-caption-text">
+    Disable auto-start for a specific VM
+  </p>
+</div>
+
+### Set expiration date policy
+
+The expiration date policy ensures that VMs are automatically deleted at a specified date and time. To do that follow these steps:
+
+  1. When creating a new VM click on the Advanced settings.
+  2. On the Advanced blade click the calendar icon under Expiration date and select the date when the VM should be deleted. Next, select the time.
+  3. Click OK and then Create.
+
+<div id="attachment_1039" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy.jpg"><img aria-describedby="caption-attachment-1039" loading="lazy" class="wp-image-1039" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy.jpg" alt="Set the expiration date policy" width="700" height="538" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy.jpg 1209w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy-300x231.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy-768x590.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy-1024x787.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1039" class="wp-caption-text">
+    Set the expiration date policy
+  </p>
+</div>
+
+## Configure cost management
+
+Azure DevTest Labs was designed to manage your resources and costs effectively. Cost Management is a key feature and allows you to track to costs associated to your lab. It also enables you to view trends, set cost targets and configure alerts.
+
+To view your Cost trend chart, select Configuration and policies in your DevTest lab and then select Cost trend under the Cost Tracking menu.
+
+### Cost trend
+
+To view the monthly estimated cost trend chart follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Cost trend under the Cost Tracking menu.
+
+<div id="attachment_1052" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart.jpg"><img aria-describedby="caption-attachment-1052" loading="lazy" class="wp-image-1052" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart.jpg" alt="The Cost trend chart" width="700" height="334" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart.jpg 1588w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart-300x143.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart-768x367.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart-1024x489.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1052" class="wp-caption-text">
+    The Cost trend chart
+  </p>
+</div>
+
+To modify the Cost trend chart follow these steps:
+
+  1. On the Cost trend blade, click on Manage target.
+  2. On the Manage target blade, you can modify the date interval of the chart and also set a cost target threshold and notifications via webhook when a certain amount is reached.
+  3. Click OK to save your changes.
+
+<div id="attachment_1042" style="width: 596px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-the-cost-trend-chart.jpg"><img aria-describedby="caption-attachment-1042" loading="lazy" class="wp-image-1042" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-the-cost-trend-chart.jpg" alt="Modify the cost trend chart" width="586" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-the-cost-trend-chart.jpg 625w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-the-cost-trend-chart-251x300.jpg 251w" sizes="(max-width: 586px) 100vw, 586px" /></a>
+  
+  <p id="caption-attachment-1042" class="wp-caption-text">
+    Modify the cost trend chart
+  </p>
+</div>
+
+### Cost by resource
+
+With cost by resource, you get a breakdown of your costs of each resource. To do that follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Cost by resource under the Cost Tracking menu.
+  3. All your resources of the lab are listed on the Cost by resource blade.
+
+<div id="attachment_1053" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource.jpg"><img aria-describedby="caption-attachment-1053" loading="lazy" class="wp-image-1053" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource.jpg" alt="Your costs by resource" width="700" height="184" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource.jpg 1674w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource-300x79.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource-768x202.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource-1024x270.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1053" class="wp-caption-text">
+    Your costs by resource
+  </p>
+</div>
+
+## Secure access to labs
+
+The access to your DevTest Labs is determined by Azure Role-Based Access Control (RBAC). To understand how this works, you have to understand the difference between a permission, a role, and a scope defined by RBAC.
+
+  * Permission: Defines access to a specific action (for example, read-access to the storage account)
+  * Role: A set of permissions that can be grouped and assigned to a user. For example, the reader role can read all resources.
+  * Scope: A level within the hierarchy of an Azure resource, such as a resource group or a virtual machine.
+
+With RBAC, you can segregate duties within your team into roles where you grant only the amount of access necessary to users to perform their job. The three most relevant roles to Azure DevTest Labs are Owner, DevTest Labs User, and Contributor.
+
+### Add an owner or user at the lab level
+
+Owners and users can be added at the lab level via the Azure Portal. This also includes external users with a valid Microsoft account. To add an owner or user, follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Access control (IAM) under the Manage menu and click +Add.
+  3. On the Add permissions blade, select Owner or DevTest Labs user as the role.
+  4. Enter the name or email address and select the user.
+  5. Click Save.
+
+<div id="attachment_1043" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab.jpg"><img aria-describedby="caption-attachment-1043" loading="lazy" class="wp-image-1043" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab.jpg" alt="Add a user to the lab" width="700" height="307" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab.jpg 1667w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab-300x132.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab-768x337.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab-1024x449.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1043" class="wp-caption-text">
+    Add a user to the lab
+  </p>
+</div>
+
+### Add an external user to a lab using PowerShell
+
+Additionally to the Azure portal, you can add an external user to your Azure DevTest Labs using PowerShell. Before you can do that, you have to add the user as a gust to the Active Directory though. To do that follow these steps:
+
+  1. Open the Azure Active Directory and select Users under the Manage menu.
+  2. On the All users blade, click +New guest user on the top of the blade.
+  3. Enter the email of the user you want to add as a guest and optionally include a message for the invitation.
+
+<div id="attachment_1054" style="width: 326px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg"><img aria-describedby="caption-attachment-1054" loading="lazy" class="wp-image-1054 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg" alt="Add a user as a guest to your Active Directory" width="316" height="338" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg 316w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-as-guest-to-your-Active-Directory-280x300.jpg 280w" sizes="(max-width: 316px) 100vw, 316px" /></a>
+  
+  <p id="caption-attachment-1054" class="wp-caption-text">
+    Add a user as a guest to your Active Directory
+  </p>
+</div>
+
+<ol start="4">
+  <li>
+    After the invitation is sent, the user will show up in your Azure Active Directory.
+  </li>
+</ol>
+
+<div id="attachment_1055" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg"><img aria-describedby="caption-attachment-1055" loading="lazy" class="wp-image-1055" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg" alt="The Azure Active Directory with the new guest user" width="700" height="133" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg 1480w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user-300x57.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user-768x146.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user-1024x195.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1055" class="wp-caption-text">
+    The Azure Active Directory with the new guest user
+  </p>
+</div>
+
+&nbsp;
+
+Now, you can add the user to your lab using PowerShell, following these steps:
+
+  1. Create the following variables in PowerShell: 
+      * $subscriptionId = &#8220;<Enter Azure subscription ID here>&#8221;
+      * $labResourceGroup = &#8220;<Enter lab&#8217;s resource name here>&#8221;
+      * $labName = &#8220;<Enter lab name here>&#8221;
+      * $userDisplayName = &#8220;<Enter user&#8217;s display name here>&#8221;
+  2. Select your subscription (you only have to do this step if you have more than one subscription) 
+      * Select-AzureRmSubscription -SubscriptionId $subscriptionId
+  3. Get the user object 
+      * $adObject = Get-AzureRmADUser -SearchString $userDisplayName
+  4. Create the role assignment 
+      * $labId = (&#8216;/subscriptions/&#8217; + $subscriptionId + &#8216;/resourceGroups/&#8217; + $labResourceGroup + &#8216;/providers/Microsoft.DevTestLab/labs/&#8217; + $labName)
+      * Attention: You need a / in front of subscriptions. The Microsoft documentation doesn&#8217;t have the slash and therefore it won&#8217;t work.
+  5. Assign the role to the user: 
+      * New-AzureRmRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName &#8216;DevTest Labs User&#8217; -Scope $labId
+
+<div id="attachment_1056" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg"><img aria-describedby="caption-attachment-1056" loading="lazy" class="wp-image-1056" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg" alt="Add a user to your lab with PowerShell" width="700" height="296" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg 1831w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell-300x127.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell-768x325.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell-1024x433.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1056" class="wp-caption-text">
+    Add a user to your lab with PowerShell
+  </p>
+</div>
+
+After you are done, the user will appear in your lab&#8217;s Active Directory. To verify it go to your Azure DevTest Labs &#8211;> Configuration and policies &#8211;> Access control (IAM). There, you can see the previously added user with his assigned role.
+
+<div id="attachment_1057" style="width: 711px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg"><img aria-describedby="caption-attachment-1057" loading="lazy" class="wp-image-1057" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg" alt="Confirm that the user has been added to your lab" width="701" height="363" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg 1475w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab-300x155.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab-768x398.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab-1024x530.jpg 1024w" sizes="(max-width: 701px) 100vw, 701px" /></a>
+  
+  <p id="caption-attachment-1057" class="wp-caption-text">
+    Confirm that the user has been added to your lab
+  </p>
+</div>
+
+## Use lab settings to set access rights to the environment
+
+You can give your lab users Contributor access rights. This enables them to edit resources such as SQL Server, in the resource group that contains your lab environment. By default, lab users only have the Reader access rights. To modify the user&#8217;s rights, follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Lab settings under the Settings menu.
+  3. Select Contributor to give users the Contributor access rights.
+  4. Click Save
+
+<div id="attachment_1046" style="width: 477px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg"><img aria-describedby="caption-attachment-1046" loading="lazy" class="size-full wp-image-1046" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg" alt="Give users the Contributor or Reader access rights" width="467" height="239" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg 467w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Give-users-the-Contributor-or-Reader-access-rights-300x154.jpg 300w" sizes="(max-width: 467px) 100vw, 467px" /></a>
+  
+  <p id="caption-attachment-1046" class="wp-caption-text">
+    Give users the Contributor or Reader access rights
+  </p>
+</div>
+
+## Use environments in a lab
+
+You can use Azure Resource Manager (ARM) templates to spin up a complete environment in DevTest labs. These environments can contain multiple VMs, or a SharePoint farm.  <span class="fontstyle0">Following infrastructure-as-code and configuration-as-code best practices, environment templates are managed in source control. Azure DevTest Labs loads all ARM templates directly from your GitHub or VSTS Git repositories. As a result, Resource Manager templates can be used across the entire release cycle, from the test environment to the production environment.</span>
+
+### Configure an ARM template repository
+
+There are a couple of rules which you have to follow when organizing ARM templates in a repository:
+
+  1. The master template file must be named azuredeploy.json.
+  2. The parameter file must be named azuredeploy.parameters.json.
+  3. <span class="fontstyle0">You can use the parameters _artifactsLocation and _artifactsLocationSasToken to construct the parametersLink URI value, allowing DevTest Labs to automatically manage nested templates.</span>
+  4. <span class="fontstyle0">Metadata can be defined to specify the template display name and description. This metadata must be in a file named metadata.json. </span>
+
+<span class="fontstyle0">On the following example metadata file, you can see how to specify the display name and description:</span>
+
+{  
+&#8220;itemDisplayName&#8221;: &#8220;Your template name&#8221;,  
+&#8220;description&#8221;: &#8220;Your description&#8221;  
+}
+
+To add a repository to your Azure DevTest Labs using the Azure portal, follow these steps:
+
+  1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
+  2. On the Configuration and policies blade, select Repositories under the External Resources menu and click +Add.
+  3. Enter a name, the Git clone URI, your access token and optionally a branch.
+  4. Enter either a folder path that starts with / and is relative to your Git clone URI or your ARM template definition.
+  5. Click Save.
+
+<div id="attachment_1051" style="width: 587px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg"><img aria-describedby="caption-attachment-1051" loading="lazy" class="size-full wp-image-1051" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg" alt="Add a repository with templates to your Azure DevTest Labs" width="577" height="526" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg 577w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs-300x273.jpg 300w" sizes="(max-width: 577px) 100vw, 577px" /></a>
+  
+  <p id="caption-attachment-1051" class="wp-caption-text">
+    Add a repository with templates to your Azure DevTest Labs
+  </p>
+</div>
+
+After you added the Repository, you can use the templates when you add a new Resource on the Overview blade of your DevTest Labs.
+
+## Conclusion
+
+This post described the Azure DevTest Labs and showed what you can do with it and how it helps you to minimize the management tasks and also helps to keep your costs low. I talked about creating VMs, custom images, and formulas and how to apply policies like auto-shutdown to the resources within the lab. Furthermore, I showed how to add users to your lab and how to change their access permissions. The last topic was about setting up your own Git repository which helps you to create complete environments with a single deployment process.
+
+For more information about the 70-532 exam get the <a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener">Exam Ref book from Microsoft</a> and continue reading my blog posts. I am covering all topics needed to pass the exam. You can find an overview of all posts related to the 70-532 exam <a href="https://www.programmingwithwolfgang.com/prepared-for-the-70-532-exam/" target="_blank" rel="noopener">here</a>.

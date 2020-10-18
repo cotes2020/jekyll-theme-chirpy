@@ -1,0 +1,478 @@
+---
+title: Implement Azure SQL database
+date: 2018-04-26T21:52:05+02:00
+author: Wolfgang Ofner
+categories: [Cloud]
+tags: [70-532, Azure, Certification, Exam, learning]
+---
+Microsoft Azure offers with Azure SQL database a great alternative to an on-premise SQL database. In this post, I will talk about the advantages of having the database in the cloud, how to get data into the cloud and how to use Elastic pools to share resources between several databases. The last section will be about implementing graph functionality in an Azure SQL database.
+
+## Create an Azure SQL database
+
+To create an Azure SQL database in the Azure portal, follow these steps:
+
+  1. In the Azure portal go to SQL databases and click +Add.
+  2. On the SQL Database blade provide: 
+      * Name
+      * Subscription
+      * Resource group
+      * Source (Blank database, Demo database or a backup)
+      * Server
+      * Pricing tier
+  3. After you entered all information, click on Create.
+
+<div id="attachment_1158" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-SQL-database.jpg"><img aria-describedby="caption-attachment-1158" loading="lazy" class="wp-image-1158" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-SQL-database.jpg" alt="Create a new Azure SQL database" width="700" height="442" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-SQL-database.jpg 936w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-SQL-database-300x189.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-SQL-database-768x485.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1158" class="wp-caption-text">
+    Create a new Azure SQL database
+  </p>
+</div>
+
+## Choosing the appropriate database tier and performance level
+
+Azure offers three different pricing tiers to choose from. The major difference between them is in a measurement called database throughput units (DTUs). A DTU is a blended measure of CPU, memory, disk reads, and disk writes. SQL database is a shared resource with other Azure customers, sometimes performance is not stable or predictable. As you go up in performance tiers, you also get better predictability in performance.
+
+The three pricing tiers are:
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <tr>
+      <td>
+        Pricing tier
+      </td>
+      
+      <td>
+        Description
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Basic
+      </td>
+      
+      <td>
+        The Basic tier is meant for light workloads. I use this tier for testing and at the beginning of a new project.
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Standard
+      </td>
+      
+      <td>
+        The Standard tier is used for most production online transaction processing (OLTP) databases. The performance is more predictable than the basic tier. In addition, there are 13 performance levels under this tier, levels S0 to S12.
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Premium
+      </td>
+      
+      <td>
+        The Premium tier continues to scale at the same level as the Standard tier. In addition, performance is typically measured in seconds. For instance, the basic tier can handle 16,600 transactions per hour. The standard S2 level can handle 2,570 transactions per minute. The top tier premium of premium can handle 75,000 transactions per second.
+      </td>
+    </tr>
+  </table>
+</div>
+
+Each tier has a 99,99 percent up-time SLA, backup and restore capabilities, access to the same tooling, and the same database engine features.
+
+### Analyzing metrics
+
+To review the metrics of your Azure SQL database, follow these steps:
+
+  1. In the Azure portal go to your Azure SQL database.
+  2. On the Overview blade, click on the Resource graph.
+  3. This opens the Metrics blade. There select the desired metrics, you wish to analyze.
+
+<div id="attachment_1159" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-the-metrics-graph.jpg"><img aria-describedby="caption-attachment-1159" loading="lazy" class="wp-image-1159" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-the-metrics-graph.jpg" alt="Configure the metrics graph" width="700" height="616" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-the-metrics-graph.jpg 1012w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-the-metrics-graph-300x264.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-the-metrics-graph-768x676.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1159" class="wp-caption-text">
+    Configure the metrics graph
+  </p>
+</div>
+
+Note that there is nothing on the graph because I just created the database and haven&#8217;t used it yet.
+
+## Configure and performing point in time recovery
+
+Azure SQL database does a full backup every week, a differential backup each day, and an incremental log backup every five minutes. The incremental log backup allows for a point in time restore, which means the database can be restored to any specific time of the day. This means that if you accidentally delete a customer&#8217;s table from your database, you will be able to recover it with minimal data loss if you know the time frame to restore from that has the most recent copy.
+
+The further away you get from the last differential backup determines the longer the restore operation takes. When you restore a new database, the service tier stays the same, but the performance level changes to the minimum of that tier.
+
+The retention period of the backup depends on the pricing tier. Basic retains backups for 7 days, Standard and Premium for 35 days. A deleted database can be restored, as long as you are in within the retention period.
+
+### Restore an Azure SQL database
+
+To restore an Azure SQL database, follow these steps:
+
+  1. In the Azure portal, on the Overview blade of your database, click on Restore.
+  2. On the Restore blade, select a restore point, either Point-in-time or Long-term backup retention.
+  3. If you selected Point-in-time, select a date and time. If you selected Long-term backup retention, select the backup from the drop-down list.
+  4. Optionally change the Pricing tier.
+  5. Click on OK to restore the backup.
+
+<div id="attachment_1162" style="width: 324px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Restore-an-Azure-SQL-database.jpg"><img aria-describedby="caption-attachment-1162" loading="lazy" class="size-full wp-image-1162" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Restore-an-Azure-SQL-database.jpg" alt="Restore an Azure SQL database" width="314" height="554" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Restore-an-Azure-SQL-database.jpg 314w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Restore-an-Azure-SQL-database-170x300.jpg 170w" sizes="(max-width: 314px) 100vw, 314px" /></a>
+  
+  <p id="caption-attachment-1162" class="wp-caption-text">
+    Restore an Azure SQL database
+  </p>
+</div>
+
+### Restore a deleted Azure SQL database
+
+To restore a deleted Azure SQL database, follow these steps:
+
+  1. In the Azure portal, go to your SQL server and select the Deleted databases blade under the Setting menu.
+  2. On the Deleted databases blade, select the database, you want to restore.
+
+<div id="attachment_1161" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-deleted-Azure-SQL-database-to-restore.jpg"><img aria-describedby="caption-attachment-1161" loading="lazy" class="wp-image-1161" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-deleted-Azure-SQL-database-to-restore.jpg" alt="Select a deleted Azure SQL database to restore" width="700" height="167" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-deleted-Azure-SQL-database-to-restore.jpg 822w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-deleted-Azure-SQL-database-to-restore-300x72.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-deleted-Azure-SQL-database-to-restore-768x183.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1161" class="wp-caption-text">
+    Select a deleted Azure SQL database to restore
+  </p>
+</div>
+
+<ol start="3">
+  <li>
+    On the  Restore blade, change the database name if desired and click OK to restore the database.
+  </li>
+</ol>
+
+<div id="attachment_1160" style="width: 320px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Restore-the-deleted-Azure-SQL-database.jpg"><img aria-describedby="caption-attachment-1160" loading="lazy" class="size-full wp-image-1160" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Restore-the-deleted-Azure-SQL-database.jpg" alt="Restore the deleted Azure SQL database" width="310" height="275" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Restore-the-deleted-Azure-SQL-database.jpg 310w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Restore-the-deleted-Azure-SQL-database-300x266.jpg 300w" sizes="(max-width: 310px) 100vw, 310px" /></a>
+  
+  <p id="caption-attachment-1160" class="wp-caption-text">
+    Restore the deleted Azure SQL database
+  </p>
+</div>
+
+## Enable geo-replication
+
+By default, every Azure SQL database is copied three times across the datacenter. Additionally, you can configure geo-replication. The advantages of geo-replication are:
+
+  * <span class="fontstyle0">You can fail over to a different data center in the event of a natural disaster or other intentionally malicious act.</span>
+  * <span class="fontstyle0">Online secondary databases are readable, and they can be used as load balancers for read-only workloads such as reporting.</span>
+  * <span class="fontstyle0">With automatic asynchronous replication, after an online secondary database has been seeded, updates to the primary database are automatically copied to the secondary database.</span>
+
+### Create an online secondary database
+
+To enable geo-replication, follow these steps:
+
+  1. Go to your Azure SQL database in the Azure portal and click on Geo-Replication under the Settings menu.
+  2. Select the target region.
+  3. On the Create secondary blade, enter the server and pricing information.
+  4. Click on OK.
+
+<div id="attachment_1163" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-an-online-secondary-database.jpg"><img aria-describedby="caption-attachment-1163" loading="lazy" class="wp-image-1163" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-an-online-secondary-database.jpg" alt="Create an online secondary database" width="700" height="397" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-an-online-secondary-database.jpg 936w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-an-online-secondary-database-300x170.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-an-online-secondary-database-768x436.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1163" class="wp-caption-text">
+    Create an online secondary database
+  </p>
+</div>
+
+## Import and export schema and data
+
+To export the metadata and state data of a SQL server database, you can create a BACPAC file.
+
+### Export a BACPAC file from a SQL database
+
+To create a BACPAC file, follow these steps:
+
+  1. Open SQL Server Management Studio and connect to your database.
+  2. Right-click on the database, select Tasks and click on Export Data-tier Application.
+
+<div id="attachment_1168" style="width: 684px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Export-your-source-database.jpg"><img aria-describedby="caption-attachment-1168" loading="lazy" class="wp-image-1168" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Export-your-source-database.jpg" alt="Export your source database" width="674" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Export-your-source-database.jpg 721w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Export-your-source-database-289x300.jpg 289w" sizes="(max-width: 674px) 100vw, 674px" /></a>
+  
+  <p id="caption-attachment-1168" class="wp-caption-text">
+    Export your source database
+  </p>
+</div>
+
+<ol start="3">
+  <li>
+    In the Export Data-tier Application wizard, you can export the BACPAC file to Azure into a blob storage or to a local storage device.
+  </li>
+</ol>
+
+<div id="attachment_1170" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-location-for-the-export-file.jpg"><img aria-describedby="caption-attachment-1170" loading="lazy" class="wp-image-1170" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-location-for-the-export-file.jpg" alt="Select a location for the export file" width="700" height="632" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-location-for-the-export-file.jpg 837w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-location-for-the-export-file-300x271.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-location-for-the-export-file-768x694.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1170" class="wp-caption-text">
+    Select a location for the export file
+  </p>
+</div>
+
+<ol start="4">
+  <li>
+    After you selected the export destination, click Next and then Finish to export the file.
+  </li>
+</ol>
+
+<div id="attachment_1169" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Export-successful.jpg"><img aria-describedby="caption-attachment-1169" loading="lazy" class="wp-image-1169" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Export-successful.jpg" alt="Export successful" width="700" height="632" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Export-successful.jpg 837w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Export-successful-300x271.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Export-successful-768x694.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1169" class="wp-caption-text">
+    Export successful
+  </p>
+</div>
+
+### Import a BACPAC file into Azure SQL database
+
+To import a BACPAC file into your Azure SQL database, follow these steps:
+
+  1. Open SQL Server Management Studio and connect to your Azure SQL server. You can find the server name in the Azure Portal on your SQL server. Go to Properties under the Settings menu.
+  2. If you can&#8217;t connect to your server, you may have to allow your UP address in the firewall. Select Firewalls and virtual network under the Settings menu and enter your IP address or a range of IPs.
+
+<div id="attachment_1176" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-the-firewall-of-your-SQL-server.jpg"><img aria-describedby="caption-attachment-1176" loading="lazy" class="wp-image-1176" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-the-firewall-of-your-SQL-server.jpg" alt="Configure the firewall of your SQL server" width="700" height="394" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-the-firewall-of-your-SQL-server.jpg 855w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-the-firewall-of-your-SQL-server-300x169.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-the-firewall-of-your-SQL-server-768x432.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1176" class="wp-caption-text">
+    Configure the firewall of your SQL server
+  </p>
+</div>
+
+<ol start="3">
+  <li>
+    After you are connected to the server, right-click on the database folder and select Import Data-tier Application.
+  </li>
+</ol>
+
+<div id="attachment_1178" style="width: 361px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg"><img aria-describedby="caption-attachment-1178" loading="lazy" class="size-full wp-image-1178" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg" alt="Start the Import Data-tier Application wizard" width="351" height="280" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg 351w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Start-the-Import-Data-tier-Application-wizard-300x239.jpg 300w" sizes="(max-width: 351px) 100vw, 351px" /></a>
+  
+  <p id="caption-attachment-1178" class="wp-caption-text">
+    Start the Import Data-tier Application wizard
+  </p>
+</div>
+
+<ol start="4">
+  <li>
+    In the Import Data-tier Application wizard, select the BACPAC file from a local disk or from your Azure storage account.
+  </li>
+</ol>
+
+<div id="attachment_1179" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-your-BACPAC-file-for-the-import.jpg"><img aria-describedby="caption-attachment-1179" loading="lazy" class="wp-image-1179" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-your-BACPAC-file-for-the-import.jpg" alt="Select your BACPAC file for the import" width="700" height="637" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-your-BACPAC-file-for-the-import.jpg 823w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-your-BACPAC-file-for-the-import-300x273.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-your-BACPAC-file-for-the-import-768x699.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1179" class="wp-caption-text">
+    Select your BACPAC file for the import
+  </p>
+</div>
+
+<ol start="5">
+  <li>
+    On the Database Settings blade, enter a database name and the pricing tier.
+  </li>
+</ol>
+
+<div id="attachment_1180" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enter-a-database-name-and-select-the-pricing-tier.jpg"><img aria-describedby="caption-attachment-1180" loading="lazy" class="wp-image-1180" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enter-a-database-name-and-select-the-pricing-tier.jpg" alt="Enter a database name and select the pricing tier" width="700" height="637" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enter-a-database-name-and-select-the-pricing-tier.jpg 823w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enter-a-database-name-and-select-the-pricing-tier-300x273.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enter-a-database-name-and-select-the-pricing-tier-768x699.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1180" class="wp-caption-text">
+    Enter a database name and select the pricing tier
+  </p>
+</div>
+
+<ol start="6">
+  <li>
+    Click Next and then Finish.
+  </li>
+</ol>
+
+<div id="attachment_1181" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-summary-of-the-import-wizard.jpg"><img aria-describedby="caption-attachment-1181" loading="lazy" class="wp-image-1181" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-summary-of-the-import-wizard.jpg" alt="The summary of the import wizard" width="700" height="637" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-summary-of-the-import-wizard.jpg 823w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-summary-of-the-import-wizard-300x273.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-summary-of-the-import-wizard-768x699.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1181" class="wp-caption-text">
+    The summary of the import wizard
+  </p>
+</div>
+
+<ol start="7">
+  <li>
+    After the import process is finished, you can see the database in your SQL server in the Azure portal by selecting the SQL databases blade under the Settings menu.
+  </li>
+</ol>
+
+<div id="attachment_1182" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-database-got-created-by-the-imported-schema.jpg"><img aria-describedby="caption-attachment-1182" loading="lazy" class="wp-image-1182" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-database-got-created-by-the-imported-schema.jpg" alt="The database got created by the imported schema" width="700" height="462" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-database-got-created-by-the-imported-schema.jpg 846w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-database-got-created-by-the-imported-schema-300x198.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-database-got-created-by-the-imported-schema-768x507.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1182" class="wp-caption-text">
+    The database got created by the imported schema
+  </p>
+</div>
+
+## Scale Azure SQL databases {#ScaleAzureSQLdatabases}
+
+You can scale-up and scale-out your Azure SQL databases.
+
+Scaling-up means to add CPU, memory, and better disk i/o to handle the load. To do that click in the Azure portal on your database on Database size under the monitoring menu and move the slider to the right, or select a higher pricing tier.
+
+<div id="attachment_1164" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Scale-out-your-Azure-SQL-database.jpg"><img aria-describedby="caption-attachment-1164" loading="lazy" class="wp-image-1164" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Scale-out-your-Azure-SQL-database.jpg" alt="Scale-up your Azure SQL database" width="700" height="245" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Scale-out-your-Azure-SQL-database.jpg 1121w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Scale-out-your-Azure-SQL-database-300x105.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Scale-out-your-Azure-SQL-database-768x269.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Scale-out-your-Azure-SQL-database-1024x359.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1164" class="wp-caption-text">
+    Scale-up your Azure SQL database
+  </p>
+</div>
+
+Scaling-up will give you more DTUs.
+
+Scaling-out means breaking apart a database into smaller pieces. This is called sharding. Methods for sharding can be, for example, by function, by geo-location or by business unit.
+
+Another reason for sharding can be that the database is too large to be stored in a single Azure SQL database or that taking a backup takes too long due to the size of the database.
+
+To increase the performance, a shard map is used. This is usually a table or database that tells the application where data actually is and where to look for it. A shard map also keeps you from rewriting a big part of your application to handle sharding.
+
+Sharding is easily implemented in Azure Table Storage and Azure Cosmos DB but is way more difficult in a relational database. The complexity comes from being transactionally consistent, while having data available and spread throughout several databases.
+
+To help developers, Microsoft released a set of tools called Elastic Database Tools that are compatible with Azure SQL database.  <span class="fontstyle0">This client library can be used in your application to create sharded databases. It has a split-merge tool that will allow you to create new nodes or drop nodes without data loss. It also includes a tool that will keep schema consistent across all the nodes by running scripts on each node individually.</span>
+
+## Managed elastic pools, including DTUs and eDTUs
+
+A single SQL database server can have several databases on it. Those databases can each have their own size and pricing tier. This might work out well if you always know exactly how large each database will and how many DTUs are needed for each one. What happens if you don&#8217;t really know that? What if you want all your databases on one server to share their DTUs? The solution for this are Elastic pools.
+
+Elastic pools enable you to purchase elastic Database Transaction Units (eDTUs) for a pool of multiple databases. The user adds databases to the pool, sets the minimum and maximum eDTUs for each database, and sets the eDTU limit of the pool based on your budget. This means that within the pool, each database is given the ability to auto-scale in a set range.
+
+### Create an Elastic pool
+
+To create an Elastic pool, follow these steps:
+
+  1. Go to your SQL server in the Azure portal and click on +New pool on the Overview blade.
+  2. On the Elastic database pool blade, provide a name and select a pricing tier under the Configure pool setting.
+  3. On the Resource Configuration & Pricing blade, click on Databases and then +Add databases to add your databases.
+
+<div id="attachment_1165" style="width: 710px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Elastic-pool.jpg"><img aria-describedby="caption-attachment-1165" loading="lazy" class="wp-image-1165" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Elastic-pool.jpg" alt="Create a new Elastic pool" width="700" height="214" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Elastic-pool.jpg 1436w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Elastic-pool-300x92.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Elastic-pool-768x235.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Elastic-pool-1024x314.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  
+  <p id="caption-attachment-1165" class="wp-caption-text">
+    Create a new Elastic pool
+  </p>
+</div>
+
+<ol start="4">
+  <li>
+    Click OK to create your Elastic pool.
+  </li>
+</ol>
+
+## Implement Azure SQL Data Sync
+
+SQL Data Sync allows you to <span class="fontstyle0">bi-directionally</span> replicate data between two Azure SQL databases or between an Azure SQL database and an on-premise SQL server.
+
+Azure SQL Data Sync has the following attributes:
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <tr>
+      <td>
+        Attribute
+      </td>
+      
+      <td>
+        Description
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Sync Group
+      </td>
+      
+      <td>
+        A Sync Group is a group of databases that you want to synchronize using Azure SQL Data Sync.
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Sync Schema
+      </td>
+      
+      <td>
+        A Sync Schema is the data you want to synchronize.
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Sync Direction
+      </td>
+      
+      <td>
+        The Sync Direction allows you to synchronize data in either one direction or bi-directionally.
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Sync Interval
+      </td>
+      
+      <td>
+        Sync Interval controls how often synchronization occurs.
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Conflict Resolution Policy
+      </td>
+      
+      <td>
+        A Conflict Resolution Policy determines who wins if data conflicts with one another.
+      </td>
+    </tr>
+  </table>
+  
+  <p>
+    The following screenshot shows how a data sync infrastructure could look like.
+  </p>
+</div>
+
+<div id="attachment_1166" style="width: 665px" class="wp-caption aligncenter">
+  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Azure-Data-Sync-diagram.jpg"><img aria-describedby="caption-attachment-1166" loading="lazy" class="size-full wp-image-1166" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Azure-Data-Sync-diagram.jpg" alt="Azure Data Sync diagram" width="655" height="614" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Azure-Data-Sync-diagram.jpg 655w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Azure-Data-Sync-diagram-300x281.jpg 300w" sizes="(max-width: 655px) 100vw, 655px" /></a>
+  
+  <p id="caption-attachment-1166" class="wp-caption-text">
+    Azure Data Sync diagram (<a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener">Source</a>)
+  </p>
+</div>
+
+The hub database must always be an Azure SQL database. A member database can either be an Azure SQL database or an on-premise SQL server.
+
+It is important to note that this is a method of keeping data consistent across multiple databases, it is not an ETL (Extract, Transform and Load) tool. This should not be used to populate a data warehouse or to migrate an on-premise SQL server to the cloud. This can be used to populate a read-only version of the database for reporting, but only if the schema is 100% consistent.
+
+## Implement graph database functionality in Azure SQL database
+
+A graph database is a NoSQL solution and introduces two new vocabulary words: nodes and relationships.
+
+Nodes are entities in relational database terms and a relationship shows that a connection between nodes exists. The relationship in a graph database is hierarchical, where it is flat in a relational database.
+
+A graph is an abstract representation of a set of objects where nodes are linked with relationships in a hierarchy. A graph database is a database with an explicit and enforceable graph structure. Another key difference between a relational database and a graph database is that as the number of nodes increase, the performance cost stays the same. Joining tables will burden the relational database and is a common source of performance issues when scaling. Graph databases don&#8217;t suffer from that issue.
+
+Relational databases are optimized for aggregation, whereas graph databases are optimized for having plenty of connections between nodes.
+
+In Azure SQL database, graph-like capabilities are implemented through T-SQL. You can create graph objects in T-SQL with the following syntax:
+
+<span class="fontstyle0">Create Table Person(ID Integer Primary Key, Name Varchar(100)) As Node;<br /> Create Table kids (Birthdate date) As Edge;</span>
+
+A query can look like this:
+
+<span class="fontstyle0">SELECT Restaurant.name<br /> FROM Person, likes, Restaurant<br /> WHERE MATCH (Person-(likes)->Restaurant)<br /> AND Person.name = &#8216;Wolfgang&#8217;;</span>
+
+This query will give you every restaurant name which is liked by a person named Wolfgang.
+
+## Conclusion
+
+In this post, I showed how to create an Azure SQL database and how to export the schema and metadata from your on-premise database to move it into the cloud. After creating the database in the cloud, I talked about restoring a backup and enabling geo-replication to increase the data security. Next, I talked about leveraging Elastic pools to dynamically share the resources between several databases and by doing so keeping your costs low. The last section talked about implementing graph database functionality with your Azure SQL database.
+
+For more information about the 70-532 exam get the <a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener">Exam Ref book from Microsoft</a> and continue reading my blog posts. I am covering all topics needed to pass the exam. You can find an overview of all posts related to the 70-532 exam <a href="https://www.programmingwithwolfgang.com/prepared-for-the-70-532-exam/" target="_blank" rel="noopener">here</a>.
