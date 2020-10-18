@@ -20,7 +20,7 @@ url: 'protocol://domain'
 
 author: Wolfgang Ofner
 
-avatar: /assets/img/author/wolfgang-small.jpg   #
+avatar: /assets/img/author/wolfgang-small.jpg   
 
 github:
   username: wolfgangofner             
@@ -34,8 +34,6 @@ social:
   links:
     - https://twitter.com/wolfgang_ofner  
     - https://github.com/wolfgangofner  
-    - https://www.linkedin.com/in/wolfgangofner
-    - https://www.xing.com/profile/Wolfgang_Ofner6
 
 google_site_verification: google_meta_tag_verification # change to your verification string
 
