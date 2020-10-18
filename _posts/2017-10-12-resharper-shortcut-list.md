@@ -2,7 +2,7 @@
 title: Resharper Shortcut List
 date: 2017-10-12T08:53:15+02:00
 author: Wolfgang Ofner
-categories: [Tools]
+categories: [Miscellaneous]
 tags: [Efficiency, Resharper, Tools, Visual Studio]
 ---
 Resharper can help you to increase your performance to produce code faster and in higher quality. It is a great tool with many functions and shortcuts. Probably too many. Therefore I made my own list of shortcuts which I find useful and which I often use. I will update the list if I find a new useful shortcut.
