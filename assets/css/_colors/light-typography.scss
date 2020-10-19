@@ -16,7 +16,7 @@
   --text-color: #333333;
   --blockquote-border-color: #eee;
   --blockquote-text-color: #9a9a9a;
-  --link-color: red;
+  --link-color: #2a408e;
   --link-underline-color: #dee2e6;
   --text-muted-color: gray;
   --tb-odd-bg: #fbfcfd;
@@ -26,13 +26,6 @@
   --btn-backtotop-border-color: #f1f1f1; //--main-border-color,
   --btn-box-shadow: #eaeaea;
 
-  h1{
-    --link-color: #2a408e;
-  }
-
-  .tag{
-    --link-color: #2a408e;
-  }
   /* Sidebar */
   --sidebar-bg: radial-gradient(
     circle,
@@ -52,7 +45,7 @@
   --post-list-text-color: dimgray;
   --btn-patinator-text-color: #555555;
   --btn-paginator-hover-color: #e9ecef;
-  --btn-active-bg: red;
+  --btn-active-bg: #2a408e;
   --btn-active-border-color: #007bff;
   --btn-text-color: #f8f8f8;
   --btn-paginator-border-color: #f1f1f1;
