@@ -19,11 +19,8 @@ addons:
       - yq
 
 script:
-  - >-
-    git clone https://${GH_PAT}@github.com/${GH_USER}/${BUILDER_REPO}.git
-    ${HOME}/${BUILDER_REPO} --depth=1 -q
-  - cp -r ${HOME}/${BUILDER_REPO}/framework/* .
-  - bash _cibuild.sh
+  - git -C "$HOME" clone "$BUILDER_REPO" --depth=1 -q
+  - eval "$BUILD_CMD"
 
 branches:
   only: production
