@@ -238,7 +238,7 @@ Follow these steps:
   6. As Source type select None (empty disk) and provide your desired size.
 
 <div id="attachment_906" style="width: 864px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-disk-for-your-VM.jpg"><img aria-describedby="caption-attachment-906" loading="lazy" class="size-full wp-image-906" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-disk-for-your-VM.jpg" alt="Create a new disk for your VM" width="854" height="516" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-disk-for-your-VM.jpg 854w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-disk-for-your-VM-300x181.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-disk-for-your-VM-768x464.jpg 768w" sizes="(max-width: 854px) 100vw, 854px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-a-new-disk-for-your-VM.jpg"><img aria-describedby="caption-attachment-906" loading="lazy" class="size-full wp-image-906" src="/wp-content/uploads/2018/03/Create-a-new-disk-for-your-VM.jpg" alt="Create a new disk for your VM" width="854" height="516" /></a>
   
   <p id="caption-attachment-906" class="wp-caption-text">
     Create a new disk for your VM
@@ -255,7 +255,7 @@ Follow these steps:
 </ol>
 
 <div id="attachment_907" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Adding-disks-to-your-VM.jpg"><img aria-describedby="caption-attachment-907" loading="lazy" class="wp-image-907" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Adding-disks-to-your-VM.jpg" alt="Adding disks to your VM" width="700" height="470" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Adding-disks-to-your-VM.jpg 706w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Adding-disks-to-your-VM-300x201.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Adding-disks-to-your-VM.jpg"><img aria-describedby="caption-attachment-907" loading="lazy" class="wp-image-907" src="/wp-content/uploads/2018/03/Adding-disks-to-your-VM.jpg" alt="Adding disks to your VM" width="700" height="470" /></a>
   
   <p id="caption-attachment-907" class="wp-caption-text">
     Adding disks to your VM
@@ -271,7 +271,7 @@ Storage Pools enable you to group together a set of disks and then create a volu
   3. Click on File and Storage Services and then Storage Pools.
 
 <div id="attachment_901" style="width: 1010px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Adding-a-new-Storage-Pool-to-your-VM.jpg"><img aria-describedby="caption-attachment-901" loading="lazy" class="wp-image-901" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Adding-a-new-Storage-Pool-to-your-VM.jpg" alt="Adding a new Storage Pool to your VM" width="1000" height="173" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Adding-a-new-Storage-Pool-to-your-VM.jpg 1917w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Adding-a-new-Storage-Pool-to-your-VM-300x52.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Adding-a-new-Storage-Pool-to-your-VM-768x133.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Adding-a-new-Storage-Pool-to-your-VM-1024x177.jpg 1024w" sizes="(max-width: 1000px) 100vw, 1000px" /></a>
+  <a href="/wp-content/uploads/2018/03/Adding-a-new-Storage-Pool-to-your-VM.jpg"><img aria-describedby="caption-attachment-901" loading="lazy" class="wp-image-901" src="/wp-content/uploads/2018/03/Adding-a-new-Storage-Pool-to-your-VM.jpg" alt="Adding a new Storage Pool to your VM" width="1000" height="173" /></a>
   
   <p id="caption-attachment-901" class="wp-caption-text">
     Adding a new Storage Pool to your VM
@@ -288,7 +288,7 @@ Storage Pools enable you to group together a set of disks and then create a volu
 </ol>
 
 <div id="attachment_902" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-physical-disks-to-the-Storage-Pool.jpg"><img aria-describedby="caption-attachment-902" loading="lazy" class="wp-image-902" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-physical-disks-to-the-Storage-Pool.jpg" alt="Add the physical disks to the Storage Pool" width="700" height="395" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-physical-disks-to-the-Storage-Pool.jpg 1050w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-physical-disks-to-the-Storage-Pool-300x169.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-physical-disks-to-the-Storage-Pool-768x434.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-physical-disks-to-the-Storage-Pool-1024x578.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Add-the-physical-disks-to-the-Storage-Pool.jpg"><img aria-describedby="caption-attachment-902" loading="lazy" class="wp-image-902" src="/wp-content/uploads/2018/03/Add-the-physical-disks-to-the-Storage-Pool.jpg" alt="Add the physical disks to the Storage Pool" width="700" height="395" /></a>
   
   <p id="caption-attachment-902" class="wp-caption-text">
     Add the physical disks to the Storage Pool
@@ -306,7 +306,7 @@ Storage Pools enable you to group together a set of disks and then create a volu
   1. After the storage pool is created, right-click on it and select New Virtual Disk&#8230;
 
 <div id="attachment_904" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-virtual-disk-.jpg"><img aria-describedby="caption-attachment-904" loading="lazy" class="wp-image-904" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-virtual-disk-.jpg" alt="Create a new virtual disk" width="700" height="228" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-virtual-disk-.jpg 1307w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-virtual-disk--300x98.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-virtual-disk--768x250.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-virtual-disk--1024x333.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-a-new-virtual-disk-.jpg"><img aria-describedby="caption-attachment-904" loading="lazy" class="wp-image-904" src="/wp-content/uploads/2018/03/Create-a-new-virtual-disk-.jpg" alt="Create a new virtual disk" width="700" height="228" /></a>
   
   <p id="caption-attachment-904" class="wp-caption-text">
     Create a new virtual disk
@@ -353,7 +353,7 @@ Storage Pools enable you to group together a set of disks and then create a volu
 </ol>
 
 <div id="attachment_913" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/The-Windows-Explorer-with-the-new-mapped-disk.jpg"><img aria-describedby="caption-attachment-913" loading="lazy" class="wp-image-913" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/The-Windows-Explorer-with-the-new-mapped-disk.jpg" alt="The Windows Explorer with the new mapped disk" width="700" height="144" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/The-Windows-Explorer-with-the-new-mapped-disk.jpg 793w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/The-Windows-Explorer-with-the-new-mapped-disk-300x62.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/The-Windows-Explorer-with-the-new-mapped-disk-768x158.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/The-Windows-Explorer-with-the-new-mapped-disk.jpg"><img aria-describedby="caption-attachment-913" loading="lazy" class="wp-image-913" src="/wp-content/uploads/2018/03/The-Windows-Explorer-with-the-new-mapped-disk.jpg" alt="The Windows Explorer with the new mapped disk" width="700" height="144" /></a>
   
   <p id="caption-attachment-913" class="wp-caption-text">
     The Windows Explorer with the new mapped disk
@@ -384,7 +384,7 @@ To enable caching for your disk follow these steps:
   4. Select the Host Caching drop-down and set it to the desired configuration.
 
 <div id="attachment_910" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-disk-caching.jpg"><img aria-describedby="caption-attachment-910" loading="lazy" class="wp-image-910" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-disk-caching.jpg" alt="Enable disk caching" width="700" height="265" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-disk-caching.jpg 1336w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-disk-caching-300x114.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-disk-caching-768x291.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-disk-caching-1024x388.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Enable-disk-caching.jpg"><img aria-describedby="caption-attachment-910" loading="lazy" class="wp-image-910" src="/wp-content/uploads/2018/03/Enable-disk-caching.jpg" alt="Enable disk caching" width="700" height="265" /></a>
   
   <p id="caption-attachment-910" class="wp-caption-text">
     Enable disk caching
@@ -422,7 +422,7 @@ Before you can create a file share, you need to create a storage account. To do 
   3. On the Create storage account blade provide a name, Subscription, Resource group and Location. Enable Secure transfer required if you want to use https only.
 
 <div id="attachment_911" style="width: 299px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-storage-account.jpg"><img aria-describedby="caption-attachment-911" loading="lazy" class="wp-image-911" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-storage-account.jpg" alt="Create a new Azure storage account" width="289" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-storage-account.jpg 310w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-storage-account-124x300.jpg 124w" sizes="(max-width: 289px) 100vw, 289px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-a-new-storage-account.jpg"><img aria-describedby="caption-attachment-911" loading="lazy" class="wp-image-911" src="/wp-content/uploads/2018/03/Create-a-new-storage-account.jpg" alt="Create a new Azure storage account" width="289" height="700" /></a>
   
   <p id="caption-attachment-911" class="wp-caption-text">
     Create a new storage account
@@ -438,7 +438,7 @@ Before you can create a file share, you need to create a storage account. To do 
 With the storage account created, I can use PowerShell to create a file share. To do that I need the storage account name and the storage account key. To get this information open your storage account and click on Access keys under the Settings menu.
 
 <div id="attachment_915" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Keys-for-the-storage-account.jpg"><img aria-describedby="caption-attachment-915" loading="lazy" class="wp-image-915" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Keys-for-the-storage-account.jpg" alt="Keys for the storage account" width="700" height="422" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Keys-for-the-storage-account.jpg 907w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Keys-for-the-storage-account-300x181.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Keys-for-the-storage-account-768x463.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Keys-for-the-storage-account.jpg"><img aria-describedby="caption-attachment-915" loading="lazy" class="wp-image-915" src="/wp-content/uploads/2018/03/Keys-for-the-storage-account.jpg" alt="Keys for the storage account" width="700" height="422" /></a>
   
   <p id="caption-attachment-915" class="wp-caption-text">
     Keys for the storage account
@@ -448,7 +448,7 @@ With the storage account created, I can use PowerShell to create a file share. T
 To create a file share using PowerShell use: $context = New-AzureStorageContext -Storage-AccountName &#8220;YourStorageAccountName&#8221; and then New-AzureStorageShare &#8220;YourShareName&#8221; -Context $context. The share name must be a valid DNS name, lowercase and between 3 and 63 characters long.
 
 <div id="attachment_916" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-file-share-using-PowerShell.jpg"><img aria-describedby="caption-attachment-916" loading="lazy" class="wp-image-916" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-file-share-using-PowerShell.jpg" alt="Create a file share using PowerShell" width="700" height="126" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-file-share-using-PowerShell.jpg 1219w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-file-share-using-PowerShell-300x54.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-file-share-using-PowerShell-768x139.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-file-share-using-PowerShell-1024x185.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-a-file-share-using-PowerShell.jpg"><img aria-describedby="caption-attachment-916" loading="lazy" class="wp-image-916" src="/wp-content/uploads/2018/03/Create-a-file-share-using-PowerShell.jpg" alt="Create a file share using PowerShell" width="700" height="126" /></a>
   
   <p id="caption-attachment-916" class="wp-caption-text">
     Create a file share using PowerShell
@@ -465,7 +465,7 @@ To access the share follow these steps:
   4. Replace the values within <> with your credentials. You can find your credentials in the Azure Portal in your Storage Account.
 
 <div id="attachment_948" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-Azure-Storage-account-credentials-to-the-Windows-Credentials-Manager.jpg"><img aria-describedby="caption-attachment-948" loading="lazy" class="wp-image-948" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-Azure-Storage-account-credentials-to-the-Windows-Credentials-Manager.jpg" alt="Add the Azure Storage account credentials to the Windows Credentials Manager" width="700" height="64" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-Azure-Storage-account-credentials-to-the-Windows-Credentials-Manager.jpg 849w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-Azure-Storage-account-credentials-to-the-Windows-Credentials-Manager-300x28.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-Azure-Storage-account-credentials-to-the-Windows-Credentials-Manager-768x71.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Add-the-Azure-Storage-account-credentials-to-the-Windows-Credentials-Manager.jpg"><img aria-describedby="caption-attachment-948" loading="lazy" class="wp-image-948" src="/wp-content/uploads/2018/03/Add-the-Azure-Storage-account-credentials-to-the-Windows-Credentials-Manager.jpg" alt="Add the Azure Storage account credentials to the Windows Credentials Manager" width="700" height="64" /></a>
   
   <p id="caption-attachment-948" class="wp-caption-text">
     Add the Azure Storage account credentials to the Windows Credentials Manager
@@ -479,7 +479,7 @@ To access the share follow these steps:
 </ol>
 
 <div id="attachment_939" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Map-the-file-to-drive-letter-Z.jpg"><img aria-describedby="caption-attachment-939" loading="lazy" class="wp-image-939" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Map-the-file-to-drive-letter-Z.jpg" alt="Map the file to drive letter Z" width="700" height="75" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Map-the-file-to-drive-letter-Z.jpg 728w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Map-the-file-to-drive-letter-Z-300x32.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Map-the-file-to-drive-letter-Z.jpg"><img aria-describedby="caption-attachment-939" loading="lazy" class="wp-image-939" src="/wp-content/uploads/2018/03/Map-the-file-to-drive-letter-Z.jpg" alt="Map the file to drive letter Z" width="700" height="75" /></a>
   
   <p id="caption-attachment-939" class="wp-caption-text">
     Map the file to drive letter Z
@@ -493,7 +493,7 @@ To access the share follow these steps:
 </ol>
 
 <div id="attachment_940" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/The-mapped-file-share.jpg"><img aria-describedby="caption-attachment-940" loading="lazy" class="wp-image-940" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/The-mapped-file-share.jpg" alt="The mapped file share" width="700" height="224" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/The-mapped-file-share.jpg 849w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/The-mapped-file-share-300x96.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/The-mapped-file-share-768x246.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/The-mapped-file-share.jpg"><img aria-describedby="caption-attachment-940" loading="lazy" class="wp-image-940" src="/wp-content/uploads/2018/03/The-mapped-file-share.jpg" alt="The mapped file share" width="700" height="224" /></a>
   
   <p id="caption-attachment-940" class="wp-caption-text">
     The mapped file share
@@ -508,7 +508,7 @@ You can upload or download file to and from the file share using PowerShell. Bef
   2. To download a file to your current directory use Get-AzureStorageFileContent -ShareName <ShareName> -Path <PathToTheFileYouWantToDownload> -Context $variable.
 
 <div id="attachment_941" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Download-a-file-from-your-file-share-using-PowerShell.jpg"><img aria-describedby="caption-attachment-941" loading="lazy" class="wp-image-941" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Download-a-file-from-your-file-share-using-PowerShell.jpg" alt="Download a file from your file share using PowerShell" width="700" height="57" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Download-a-file-from-your-file-share-using-PowerShell.jpg 1210w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Download-a-file-from-your-file-share-using-PowerShell-300x24.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Download-a-file-from-your-file-share-using-PowerShell-768x62.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Download-a-file-from-your-file-share-using-PowerShell-1024x83.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Download-a-file-from-your-file-share-using-PowerShell.jpg"><img aria-describedby="caption-attachment-941" loading="lazy" class="wp-image-941" src="/wp-content/uploads/2018/03/Download-a-file-from-your-file-share-using-PowerShell.jpg" alt="Download a file from your file share using PowerShell" width="700" height="57" /></a>
   
   <p id="caption-attachment-941" class="wp-caption-text">
     Download a file from your file share using PowerShell
@@ -523,7 +523,7 @@ For this example, I create a new C# console application. Then follow these steps
   2. Add your storage account credentials to the app.config file.
 
 <div id="attachment_943" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-storage-connection-string-to-App.config.jpg"><img aria-describedby="caption-attachment-943" loading="lazy" class="wp-image-943" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-storage-connection-string-to-App.config.jpg" alt="Add the storage connection string to App.config" width="700" height="48" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-storage-connection-string-to-App.config.jpg 740w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Add-the-storage-connection-string-to-App.config-300x21.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Add-the-storage-connection-string-to-App.config.jpg"><img aria-describedby="caption-attachment-943" loading="lazy" class="wp-image-943" src="/wp-content/uploads/2018/03/Add-the-storage-connection-string-to-App.config.jpg" alt="Add the storage connection string to App.config" width="700" height="48" /></a>
   
   <p id="caption-attachment-943" class="wp-caption-text">
     Add the storage connection string to App.config
@@ -537,7 +537,7 @@ For this example, I create a new C# console application. Then follow these steps
 </ol>
 
 <div id="attachment_944" style="width: 552px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Connect-to-your-storage-account-and-get-the-reference-from-the-file-share.jpg"><img aria-describedby="caption-attachment-944" loading="lazy" class="size-full wp-image-944" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Connect-to-your-storage-account-and-get-the-reference-from-the-file-share.jpg" alt="Connect to your storage account and get the reference from the file share" width="542" height="136" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Connect-to-your-storage-account-and-get-the-reference-from-the-file-share.jpg 542w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Connect-to-your-storage-account-and-get-the-reference-from-the-file-share-300x75.jpg 300w" sizes="(max-width: 542px) 100vw, 542px" /></a>
+  <a href="/wp-content/uploads/2018/03/Connect-to-your-storage-account-and-get-the-reference-from-the-file-share.jpg"><img aria-describedby="caption-attachment-944" loading="lazy" class="size-full wp-image-944" src="/wp-content/uploads/2018/03/Connect-to-your-storage-account-and-get-the-reference-from-the-file-share.jpg" alt="Connect to your storage account and get the reference from the file share" width="542" height="136" /></a>
   
   <p id="caption-attachment-944" class="wp-caption-text">
     Connect to your storage account and get the reference from the file share
@@ -551,7 +551,7 @@ For this example, I create a new C# console application. Then follow these steps
 </ol>
 
 <div id="attachment_945" style="width: 434px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Get-a-reference-to-your-root-directory-and-to-the-file-you-want-to-download.jpg"><img aria-describedby="caption-attachment-945" loading="lazy" class="size-full wp-image-945" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Get-a-reference-to-your-root-directory-and-to-the-file-you-want-to-download.jpg" alt="Get a reference to your root directory and to the file you want to download" width="424" height="80" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Get-a-reference-to-your-root-directory-and-to-the-file-you-want-to-download.jpg 424w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Get-a-reference-to-your-root-directory-and-to-the-file-you-want-to-download-300x57.jpg 300w" sizes="(max-width: 424px) 100vw, 424px" /></a>
+  <a href="/wp-content/uploads/2018/03/Get-a-reference-to-your-root-directory-and-to-the-file-you-want-to-download.jpg"><img aria-describedby="caption-attachment-945" loading="lazy" class="size-full wp-image-945" src="/wp-content/uploads/2018/03/Get-a-reference-to-your-root-directory-and-to-the-file-you-want-to-download.jpg" alt="Get a reference to your root directory and to the file you want to download" width="424" height="80" /></a>
   
   <p id="caption-attachment-945" class="wp-caption-text">
     Get a reference to your root directory and to the file you want to download
@@ -565,7 +565,7 @@ For this example, I create a new C# console application. Then follow these steps
 </ol>
 
 <div id="attachment_946" style="width: 539px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Download-the-file-to-your-computer.jpg"><img aria-describedby="caption-attachment-946" loading="lazy" class="size-full wp-image-946" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Download-the-file-to-your-computer.jpg" alt="Download the file to your computer" width="529" height="27" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Download-the-file-to-your-computer.jpg 529w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Download-the-file-to-your-computer-300x15.jpg 300w" sizes="(max-width: 529px) 100vw, 529px" /></a>
+  <a href="/wp-content/uploads/2018/03/Download-the-file-to-your-computer.jpg"><img aria-describedby="caption-attachment-946" loading="lazy" class="size-full wp-image-946" src="/wp-content/uploads/2018/03/Download-the-file-to-your-computer.jpg" alt="Download the file to your computer" width="529" height="27" /></a>
   
   <p id="caption-attachment-946" class="wp-caption-text">
     Download the file to your computer
@@ -579,7 +579,7 @@ For this example, I create a new C# console application. Then follow these steps
 </ol>
 
 <div id="attachment_947" style="width: 649px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Upload-a-file-to-your-file-share.jpg"><img aria-describedby="caption-attachment-947" loading="lazy" class="size-full wp-image-947" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Upload-a-file-to-your-file-share.jpg" alt="Upload a file to your file share" width="639" height="43" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Upload-a-file-to-your-file-share.jpg 639w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Upload-a-file-to-your-file-share-300x20.jpg 300w" sizes="(max-width: 639px) 100vw, 639px" /></a>
+  <a href="/wp-content/uploads/2018/03/Upload-a-file-to-your-file-share.jpg"><img aria-describedby="caption-attachment-947" loading="lazy" class="size-full wp-image-947" src="/wp-content/uploads/2018/03/Upload-a-file-to-your-file-share.jpg" alt="Upload a file to your file share" width="639" height="43" /></a>
   
   <p id="caption-attachment-947" class="wp-caption-text">
     Upload a file to your file share
@@ -605,7 +605,7 @@ To register an app in the AAD follow these steps:
   3. On the Create blade, provide a name and Sign-on URL and click on Create.
 
 <div id="attachment_976" style="width: 321px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-an-application-registration.jpg"><img aria-describedby="caption-attachment-976" loading="lazy" class="size-full wp-image-976" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-an-application-registration.jpg" alt="Create an application registration" width="311" height="237" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-an-application-registration.jpg 311w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-an-application-registration-300x229.jpg 300w" sizes="(max-width: 311px) 100vw, 311px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-an-application-registration.jpg"><img aria-describedby="caption-attachment-976" loading="lazy" class="size-full wp-image-976" src="/wp-content/uploads/2018/03/Create-an-application-registration.jpg" alt="Create an application registration" width="311" height="237" /></a>
   
   <p id="caption-attachment-976" class="wp-caption-text">
     Create an application registration
@@ -619,7 +619,7 @@ To register an app in the AAD follow these steps:
 </ol>
 
 <div id="attachment_977" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Get-the-AAD-client-Id.jpg"><img aria-describedby="caption-attachment-977" loading="lazy" class="wp-image-977" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Get-the-AAD-client-Id.jpg" alt="Get the AAD client Id" width="700" height="212" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Get-the-AAD-client-Id.jpg 1272w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Get-the-AAD-client-Id-300x91.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Get-the-AAD-client-Id-768x233.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Get-the-AAD-client-Id-1024x311.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Get-the-AAD-client-Id.jpg"><img aria-describedby="caption-attachment-977" loading="lazy" class="wp-image-977" src="/wp-content/uploads/2018/03/Get-the-AAD-client-Id.jpg" alt="Get the AAD client Id" width="700" height="212" /></a>
   
   <p id="caption-attachment-977" class="wp-caption-text">
     Get the AAD client Id
@@ -642,7 +642,7 @@ To register an app in the AAD follow these steps:
 </ol>
 
 <div id="attachment_978" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-client-secret.jpg"><img aria-describedby="caption-attachment-978" loading="lazy" class="wp-image-978" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-client-secret.jpg" alt="Create a client secret" width="700" height="266" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-client-secret.jpg 990w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-client-secret-300x114.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-client-secret-768x292.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-a-client-secret.jpg"><img aria-describedby="caption-attachment-978" loading="lazy" class="wp-image-978" src="/wp-content/uploads/2018/03/Create-a-client-secret.jpg" alt="Create a client secret" width="700" height="266" /></a>
   
   <p id="caption-attachment-978" class="wp-caption-text">
     Create a client secret
@@ -659,7 +659,7 @@ To register an app in the AAD follow these steps:
   6. In the Key permissions drop-down list, select Wrap Key.
 
 <div id="attachment_979" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-key-vault-with-the-previously-created-application-registration.jpg"><img aria-describedby="caption-attachment-979" loading="lazy" class="wp-image-979" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-key-vault-with-the-previously-created-application-registration.jpg" alt="Create a new key vault with the previously created application registration" width="700" height="350" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-key-vault-with-the-previously-created-application-registration.jpg 945w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-key-vault-with-the-previously-created-application-registration-300x150.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-new-key-vault-with-the-previously-created-application-registration-768x384.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-a-new-key-vault-with-the-previously-created-application-registration.jpg"><img aria-describedby="caption-attachment-979" loading="lazy" class="wp-image-979" src="/wp-content/uploads/2018/03/Create-a-new-key-vault-with-the-previously-created-application-registration.jpg" alt="Create a new key vault with the previously created application registration" width="700" height="350" /></a>
   
   <p id="caption-attachment-979" class="wp-caption-text">
     Create a new key vault with the previously created application registration
@@ -682,7 +682,7 @@ To register an app in the AAD follow these steps:
 </ol>
 
 <div id="attachment_980" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-all-access-policies.jpg"><img aria-describedby="caption-attachment-980" loading="lazy" class="wp-image-980" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-all-access-policies.jpg" alt="Enable all access policies" width="700" height="516" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-all-access-policies.jpg 707w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-all-access-policies-300x221.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Enable-all-access-policies.jpg"><img aria-describedby="caption-attachment-980" loading="lazy" class="wp-image-980" src="/wp-content/uploads/2018/03/Enable-all-access-policies.jpg" alt="Enable all access policies" width="700" height="516" /></a>
   
   <p id="caption-attachment-980" class="wp-caption-text">
     Enable all access policies
@@ -699,7 +699,7 @@ To register an app in the AAD follow these steps:
 </ol>
 
 <div id="attachment_981" style="width: 308px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Give-your-user-all-key-permissions.jpg"><img aria-describedby="caption-attachment-981" loading="lazy" class="size-full wp-image-981" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Give-your-user-all-key-permissions.jpg" alt="Give your user all key permissions" width="298" height="564" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Give-your-user-all-key-permissions.jpg 298w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Give-your-user-all-key-permissions-159x300.jpg 159w" sizes="(max-width: 298px) 100vw, 298px" /></a>
+  <a href="/wp-content/uploads/2018/03/Give-your-user-all-key-permissions.jpg"><img aria-describedby="caption-attachment-981" loading="lazy" class="size-full wp-image-981" src="/wp-content/uploads/2018/03/Give-your-user-all-key-permissions.jpg" alt="Give your user all key permissions" width="298" height="564" /></a>
   
   <p id="caption-attachment-981" class="wp-caption-text">
     Give your user all key permissions
@@ -731,7 +731,7 @@ To encrypt your Windows VM using Powershell follow these steps:
  13. This starts the Encryption and takes around 10 -15 minutes. After the encryption is done, you can check, if your disks are encrypted with Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
 
 <div id="attachment_989" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Encrypt-a-Windows-VM-using-PowerShell.jpg"><img aria-describedby="caption-attachment-989" loading="lazy" class="wp-image-989" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Encrypt-a-Windows-VM-using-PowerShell.jpg" alt="Encrypt a Windows VM using PowerShell" width="700" height="515" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Encrypt-a-Windows-VM-using-PowerShell.jpg 1219w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Encrypt-a-Windows-VM-using-PowerShell-300x221.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Encrypt-a-Windows-VM-using-PowerShell-768x565.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Encrypt-a-Windows-VM-using-PowerShell-1024x753.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Encrypt-a-Windows-VM-using-PowerShell.jpg"><img aria-describedby="caption-attachment-989" loading="lazy" class="wp-image-989" src="/wp-content/uploads/2018/03/Encrypt-a-Windows-VM-using-PowerShell.jpg" alt="Encrypt a Windows VM using PowerShell" width="700" height="515" /></a>
   
   <p id="caption-attachment-989" class="wp-caption-text">
     Encrypt a Windows VM using PowerShell
@@ -743,7 +743,7 @@ To encrypt your Windows VM using Powershell follow these steps:
 Additionally to the PowerShell encryption can you encrypt your VM with a template. Go to <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm" target="_blank" rel="noopener noreferrer">GitHub</a> and then click on deploy to Azure. This opens the template in Azure. Enter the following values:
 
 <div id="attachment_982" style="width: 669px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-encryption-on-a-running-Windows-VM-template.jpg"><img aria-describedby="caption-attachment-982" loading="lazy" class="wp-image-982" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-encryption-on-a-running-Windows-VM-template.jpg" alt="Enable encryption on a running Windows VM template" width="659" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-encryption-on-a-running-Windows-VM-template.jpg 742w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Enable-encryption-on-a-running-Windows-VM-template-282x300.jpg 282w" sizes="(max-width: 659px) 100vw, 659px" /></a>
+  <a href="/wp-content/uploads/2018/03/Enable-encryption-on-a-running-Windows-VM-template.jpg"><img aria-describedby="caption-attachment-982" loading="lazy" class="wp-image-982" src="/wp-content/uploads/2018/03/Enable-encryption-on-a-running-Windows-VM-template.jpg" alt="Enable encryption on a running Windows VM template" width="659" height="700" /></a>
   
   <p id="caption-attachment-982" class="wp-caption-text">
     Enable encryption on a running Windows VM template
@@ -761,7 +761,7 @@ To demonstrate how to encrypt a Windows VM, I created a new Kali Linux VM with t
 Go to <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm" target="_blank" rel="noopener noreferrer">GitHub</a> and then click on deploy to Azure. This opens the template in Azure. Enter the following values:
 
 <div id="attachment_985" style="width: 630px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-encryption-on-a-running-Linux-VM-with-the-template.jpg"><img aria-describedby="caption-attachment-985" loading="lazy" class="wp-image-985" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-encryption-on-a-running-Linux-VM-with-the-template.jpg" alt="Create encryption on a running Linux VM with the template" width="620" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-encryption-on-a-running-Linux-VM-with-the-template.jpg 711w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-encryption-on-a-running-Linux-VM-with-the-template-266x300.jpg 266w" sizes="(max-width: 620px) 100vw, 620px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-encryption-on-a-running-Linux-VM-with-the-template.jpg"><img aria-describedby="caption-attachment-985" loading="lazy" class="wp-image-985" src="/wp-content/uploads/2018/03/Create-encryption-on-a-running-Linux-VM-with-the-template.jpg" alt="Create encryption on a running Linux VM with the template" width="620" height="700" /></a>
   
   <p id="caption-attachment-985" class="wp-caption-text">
     Create encryption on a running Linux VM with the template

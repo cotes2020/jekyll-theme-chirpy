@@ -17,7 +17,7 @@ Cosmos DB is a high-end NoSQL database that offers incredible speed and global d
 In the Azure Portal search for Azure Cosmos DB, select it and click on Create or select Azure Cosmos DB from the left panel and then click on Create Azure Cosmos DB account.
 
 <div id="attachment_2155" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2155" loading="lazy" class="wp-image-2155" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-Cosmos-DB.jpg" alt="Create a new Cosmos DB" width="700" height="368" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-Cosmos-DB.jpg 1203w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-Cosmos-DB-300x158.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-Cosmos-DB-1024x538.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-Cosmos-DB-768x403.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/06/Create-a-new-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2155" loading="lazy" class="wp-image-2155" src="/wp-content/uploads/2020/06/Create-a-new-Cosmos-DB.jpg" alt="Create a new Cosmos DB" width="700" height="368" /></a>
   
   <p id="caption-attachment-2155" class="wp-caption-text">
     Create a new Cosmos DB
@@ -27,7 +27,7 @@ In the Azure Portal search for Azure Cosmos DB, select it and click on Create or
 On the next page, select a resource group and make sure that the Free Tier Discount is applied. After filling out all information click on Review + create.
 
 <div id="attachment_2156" style="width: 632px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Set-up-the-free-tier-of-the-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2156" loading="lazy" class="wp-image-2156" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Set-up-the-free-tier-of-the-Cosmos-DB.jpg" alt="Set up the free tier of the Cosmos DB" width="622" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Set-up-the-free-tier-of-the-Cosmos-DB.jpg 763w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Set-up-the-free-tier-of-the-Cosmos-DB-266x300.jpg 266w" sizes="(max-width: 622px) 100vw, 622px" /></a>
+  <a href="/wp-content/uploads/2020/06/Set-up-the-free-tier-of-the-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2156" loading="lazy" class="wp-image-2156" src="/wp-content/uploads/2020/06/Set-up-the-free-tier-of-the-Cosmos-DB.jpg" alt="Set up the free tier of the Cosmos DB" width="622" height="700" /></a>
   
   <p id="caption-attachment-2156" class="wp-caption-text">
     Set up the free tier of the Cosmos DB
@@ -41,7 +41,7 @@ The deployment will take around ten minutes.
 After the deployment is finished, navigate to the Data Explorer tab in your Cosmos DB account. Click on New Container and a new tab is opened on the right side. There enter a Database id, Container id, and Partition key and click OK.
 
 <div id="attachment_2157" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2157" loading="lazy" class="wp-image-2157" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB.jpg" alt="Create a new database and container in the Azure Cosmos DB" width="700" height="400" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB.jpg 1480w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB-300x171.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB-1024x585.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB-768x439.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2157" loading="lazy" class="wp-image-2157" src="/wp-content/uploads/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB.jpg" alt="Create a new database and container in the Azure Cosmos DB" width="700" height="400" /></a>
   
   <p id="caption-attachment-2157" class="wp-caption-text">
     Create a new database and container in the Azure Cosmos DB
@@ -51,7 +51,7 @@ After the deployment is finished, navigate to the Data Explorer tab in your Cosm
 Open the newly created database and the Products container and click on New Item. This opens an editor where you can add your products as JSON.
 
 <div id="attachment_2158" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Add-data-to-the-container.jpg"><img aria-describedby="caption-attachment-2158" loading="lazy" class="wp-image-2158" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Add-data-to-the-container.jpg" alt="Add data to the container for your Free Website Hosting " width="700" height="242" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Add-data-to-the-container.jpg 1109w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Add-data-to-the-container-300x104.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Add-data-to-the-container-1024x355.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Add-data-to-the-container-768x266.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/06/Add-data-to-the-container.jpg"><img aria-describedby="caption-attachment-2158" loading="lazy" class="wp-image-2158" src="/wp-content/uploads/2020/06/Add-data-to-the-container.jpg" alt="Add data to the container for your Free Website Hosting " width="700" height="242" /></a>
   
   <p id="caption-attachment-2158" class="wp-caption-text">
     Add data to the container
@@ -83,7 +83,7 @@ _container = await database.CreateContainerIfNotExistsAsync("Products", "/Name",
 To connect to the Azure Cosmos DB container, you have to enter your URI and primary key. You can find them in the Keys tab of your Cosmos DB account.
 
 <div id="attachment_2159" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2159" loading="lazy" class="wp-image-2159" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB.jpg" alt="Get the Uri and Primary Key of the Cosmos DB for your Free Website Hosting " width="700" height="233" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB.jpg 921w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB-300x100.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB-768x255.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2159" loading="lazy" class="wp-image-2159" src="/wp-content/uploads/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB.jpg" alt="Get the Uri and Primary Key of the Cosmos DB for your Free Website Hosting " width="700" height="233" /></a>
   
   <p id="caption-attachment-2159" class="wp-caption-text">
     Get the Uri and Primary Key of the Cosmos DB
@@ -141,7 +141,7 @@ public string Description { get; set; }
 Start the Azure Function, enter the URL displayed in the command line and you will see your previously entered data.
 
 <div id="attachment_2160" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Test-the-Azure-Function-locally.jpg"><img aria-describedby="caption-attachment-2160" loading="lazy" class="wp-image-2160" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Test-the-Azure-Function-locally.jpg" alt="Test the Azure Function locally" width="700" height="118" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Test-the-Azure-Function-locally.jpg 1100w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Test-the-Azure-Function-locally-300x51.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Test-the-Azure-Function-locally-1024x173.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Test-the-Azure-Function-locally-768x130.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/06/Test-the-Azure-Function-locally.jpg"><img aria-describedby="caption-attachment-2160" loading="lazy" class="wp-image-2160" src="/wp-content/uploads/2020/06/Test-the-Azure-Function-locally.jpg" alt="Test the Azure Function locally" width="700" height="118" /></a>
   
   <p id="caption-attachment-2160" class="wp-caption-text">
     Test the Azure Function locally
@@ -151,7 +151,7 @@ Start the Azure Function, enter the URL displayed in the command line and you wi
 The last step is to deploy the Azure Function. In my last post, I already imported the publish profile. Since nothing has changed, I can right-click on my project, select Publish and then Publish again.
 
 <div id="attachment_2161" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Publish-the-Azure-Function.jpg"><img aria-describedby="caption-attachment-2161" loading="lazy" class="wp-image-2161" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Publish-the-Azure-Function.jpg" alt="Publish the Azure Function for your Free Website Hosting " width="700" height="233" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Publish-the-Azure-Function.jpg 914w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Publish-the-Azure-Function-300x100.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Publish-the-Azure-Function-768x255.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/06/Publish-the-Azure-Function.jpg"><img aria-describedby="caption-attachment-2161" loading="lazy" class="wp-image-2161" src="/wp-content/uploads/2020/06/Publish-the-Azure-Function.jpg" alt="Publish the Azure Function for your Free Website Hosting " width="700" height="233" /></a>
   
   <p id="caption-attachment-2161" class="wp-caption-text">
     Publish the Azure Function
@@ -163,7 +163,7 @@ The last step is to deploy the Azure Function. In my last post, I already import
 Open the URL of your Azure Static Web App and the data from the Cosmos DB will be displayed.
 
 <div id="attachment_2162" style="width: 468px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg"><img aria-describedby="caption-attachment-2162" loading="lazy" class="size-full wp-image-2162" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg" alt="The data from the database is displayed in the React app" width="458" height="434" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg 458w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-data-from-the-database-is-displayed-in-the-React-app-300x284.jpg 300w" sizes="(max-width: 458px) 100vw, 458px" /></a>
+  <a href="/wp-content/uploads/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg"><img aria-describedby="caption-attachment-2162" loading="lazy" class="size-full wp-image-2162" src="/wp-content/uploads/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg" alt="The data from the database is displayed in the React app" width="458" height="434" /></a>
   
   <p id="caption-attachment-2162" class="wp-caption-text">
     The data from the database is displayed in the React app

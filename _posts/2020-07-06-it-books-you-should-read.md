@@ -805,7 +805,7 @@ Demand more. Change lanes and find your explosive wealth accelerator. Hit the Fa
   * **Sharing of resources so everyone is able to benefit**
 
 <div id="attachment_2251" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/IT-Books-scaled.jpg"><img aria-describedby="caption-attachment-2251" loading="lazy" class="wp-image-2251" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/IT-Books-scaled.jpg" alt="IT Books" width="700" height="276" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/IT-Books-scaled.jpg 2560w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/IT-Books-300x118.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/IT-Books-1024x403.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/IT-Books-768x302.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/IT-Books-1536x605.jpg 1536w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/IT-Books-2048x806.jpg 2048w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/07/IT-Books-scaled.jpg"><img aria-describedby="caption-attachment-2251" loading="lazy" class="wp-image-2251" src="/wp-content/uploads/2020/07/IT-Books-scaled.jpg" alt="IT Books" width="700" height="276" /></a>
   
   <p id="caption-attachment-2251" class="wp-caption-text">
     IT Books

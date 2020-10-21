@@ -13,7 +13,7 @@ tags: [Azure Devops, CI, DevOps, docker, Docker Hub]
 Before I create the new CI Pipeline for building the Docker image, I set up a connection to Docker Hub to push my image to its repository. To do that in Azure DevOps, click on Project Settings &#8211;> Service connections &#8211;> New service connection.
 
 <div id="attachment_2371" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-a-new-service-connection.jpg"><img aria-describedby="caption-attachment-2371" loading="lazy" class="wp-image-2371" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-a-new-service-connection.jpg" alt="Create a new service connection" width="700" height="353" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-a-new-service-connection.jpg 1850w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-a-new-service-connection-300x151.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-a-new-service-connection-1024x516.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-a-new-service-connection-768x387.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-a-new-service-connection-1536x775.jpg 1536w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/09/Create-a-new-service-connection.jpg"><img aria-describedby="caption-attachment-2371" loading="lazy" class="wp-image-2371" src="/wp-content/uploads/2020/09/Create-a-new-service-connection.jpg" alt="Create a new service connection" width="700" height="353" /></a>
   
   <p id="caption-attachment-2371" class="wp-caption-text">
     Create a new service connection
@@ -23,7 +23,7 @@ Before I create the new CI Pipeline for building the Docker image, I set up a co
 This opens a pop-up where you select Docker Registry.
 
 <div id="attachment_2372" style="width: 478px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Select-Docker-Registry-for-your-service-connection.jpg"><img aria-describedby="caption-attachment-2372" loading="lazy" class="size-full wp-image-2372" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Select-Docker-Registry-for-your-service-connection.jpg" alt="Select Docker Registry for your service connection" width="468" height="287" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Select-Docker-Registry-for-your-service-connection.jpg 468w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Select-Docker-Registry-for-your-service-connection-300x184.jpg 300w" sizes="(max-width: 468px) 100vw, 468px" /></a>
+  <a href="/wp-content/uploads/2020/09/Select-Docker-Registry-for-your-service-connection.jpg"><img aria-describedby="caption-attachment-2372" loading="lazy" class="size-full wp-image-2372" src="/wp-content/uploads/2020/09/Select-Docker-Registry-for-your-service-connection.jpg" alt="Select Docker Registry for your service connection" width="468" height="287" /></a>
   
   <p id="caption-attachment-2372" class="wp-caption-text">
     Select Docker Registry for your service connection
@@ -33,7 +33,7 @@ This opens a pop-up where you select Docker Registry.
 On the next page, select Docker Hub as your Registry type, enter your Docker ID, password and set a name for your connection. Then click Verify and save.
 
 <div id="attachment_2373" style="width: 367px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Configure-the-service-connection.jpg"><img aria-describedby="caption-attachment-2373" loading="lazy" class="wp-image-2373" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Configure-the-service-connection.jpg" alt="Configure the service connection for the DevOps CI pipeline" width="357" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Configure-the-service-connection.jpg 480w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Configure-the-service-connection-153x300.jpg 153w" sizes="(max-width: 357px) 100vw, 357px" /></a>
+  <a href="/wp-content/uploads/2020/09/Configure-the-service-connection.jpg"><img aria-describedby="caption-attachment-2373" loading="lazy" class="wp-image-2373" src="/wp-content/uploads/2020/09/Configure-the-service-connection.jpg" alt="Configure the service connection for the DevOps CI pipeline" width="357" height="700" /></a>
   
   <p id="caption-attachment-2373" class="wp-caption-text">
     Configure the service connection
@@ -45,7 +45,7 @@ On the next page, select Docker Hub as your Registry type, enter your Docker ID,
 After setting up the service connection, create a new CI Pipeline. Select the source code location and then any template. After the yml file is created, delete its content. For more details on creating a Pipeline, see my post &#8220;<a href="https://www.programmingwithwolfgang.com/build-net-core-in-a-ci-pipeline-in-azure-devops/" target="_blank" rel="noopener noreferrer">Build .Net Core in a CI Pipeline in Azure DevOps</a>&#8220;.
 
 <div id="attachment_2367" style="width: 553px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-an-empty-Pipeline.jpg"><img aria-describedby="caption-attachment-2367" loading="lazy" class="wp-image-2367 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-an-empty-Pipeline.jpg" alt="Create an empty DevOps CI pipeline" width="543" height="187" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-an-empty-Pipeline.jpg 543w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Create-an-empty-Pipeline-300x103.jpg 300w" sizes="(max-width: 543px) 100vw, 543px" /></a>
+  <a href="/wp-content/uploads/2020/09/Create-an-empty-Pipeline.jpg"><img aria-describedby="caption-attachment-2367" loading="lazy" class="wp-image-2367 size-full" src="/wp-content/uploads/2020/09/Create-an-empty-Pipeline.jpg" alt="Create an empty DevOps CI pipeline" width="543" height="187" /></a>
   
   <p id="caption-attachment-2367" class="wp-caption-text">
     Create an empty Pipeline
@@ -106,7 +106,7 @@ buildContext: &#8216;.&#8217;
 You can either add the YAML code from above or click on the Docker task on the right side. You can also easily edit a task by clicking Settings right above the task. This will open the task on the right side.
 
 <div id="attachment_2374" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Edit-the-Docker-task.jpg"><img aria-describedby="caption-attachment-2374" loading="lazy" class="wp-image-2374" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Edit-the-Docker-task.jpg" alt="Edit the Docker task in the DevOps CI pipeline" width="700" height="532" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Edit-the-Docker-task.jpg 713w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Edit-the-Docker-task-300x228.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/09/Edit-the-Docker-task.jpg"><img aria-describedby="caption-attachment-2374" loading="lazy" class="wp-image-2374" src="/wp-content/uploads/2020/09/Edit-the-Docker-task.jpg" alt="Edit the Docker task in the DevOps CI pipeline" width="700" height="532" /></a>
   
   <p id="caption-attachment-2374" class="wp-caption-text">
     Edit the Docker task
@@ -187,7 +187,7 @@ You can also find the code of the CI pipeline on <a href="https://github.com/Wol
 Save the pipeline and run it. The build should succeed and a new image should be pushed to Docker Hub.
 
 <div id="attachment_2376" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-pipeline-ran-successfully.jpg"><img aria-describedby="caption-attachment-2376" loading="lazy" class="wp-image-2376" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-pipeline-ran-successfully.jpg" alt="The DevOps CI pipeline ran successfully" width="700" height="227" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-pipeline-ran-successfully.jpg 1165w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-pipeline-ran-successfully-300x97.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-pipeline-ran-successfully-1024x332.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-pipeline-ran-successfully-768x249.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/09/The-pipeline-ran-successfully.jpg"><img aria-describedby="caption-attachment-2376" loading="lazy" class="wp-image-2376" src="/wp-content/uploads/2020/09/The-pipeline-ran-successfully.jpg" alt="The DevOps CI pipeline ran successfully" width="700" height="227" /></a>
   
   <p id="caption-attachment-2376" class="wp-caption-text">
     The pipeline ran successfully
@@ -197,7 +197,7 @@ Save the pipeline and run it. The build should succeed and a new image should be
 The pipeline ran successfully and if I go to <a href="https://hub.docker.com/r/wolfgangofner/microservicedemo/tags" target="_blank" rel="noopener noreferrer">my repository on Docker Hub</a>, I should see a new image with the tag 232 there.
 
 <div id="attachment_2377" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-new-image-got-pushed-to-Docker-Hub.jpg"><img aria-describedby="caption-attachment-2377" loading="lazy" class="wp-image-2377" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-new-image-got-pushed-to-Docker-Hub.jpg" alt="The new image got pushed to Docker Hub" width="700" height="273" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-new-image-got-pushed-to-Docker-Hub.jpg 1296w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-new-image-got-pushed-to-Docker-Hub-300x117.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-new-image-got-pushed-to-Docker-Hub-1024x400.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/The-new-image-got-pushed-to-Docker-Hub-768x300.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/09/The-new-image-got-pushed-to-Docker-Hub.jpg"><img aria-describedby="caption-attachment-2377" loading="lazy" class="wp-image-2377" src="/wp-content/uploads/2020/09/The-new-image-got-pushed-to-Docker-Hub.jpg" alt="The new image got pushed to Docker Hub" width="700" height="273" /></a>
   
   <p id="caption-attachment-2377" class="wp-caption-text">
     The new image got pushed to Docker Hub

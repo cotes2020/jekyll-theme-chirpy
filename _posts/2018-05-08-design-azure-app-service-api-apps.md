@@ -20,7 +20,7 @@ To create a new API app, follow these steps:
   3. Click Create.
 
 <div id="attachment_1282" style="width: 315px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-API-App.jpg"><img aria-describedby="caption-attachment-1282" loading="lazy" class="size-full wp-image-1282" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-API-App.jpg" alt="Create a new API App" width="305" height="410" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-API-App.jpg 305w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-API-App-223x300.jpg 223w" sizes="(max-width: 305px) 100vw, 305px" /></a>
+  <a href="/wp-content/uploads/2018/05/Create-a-new-API-App.jpg"><img aria-describedby="caption-attachment-1282" loading="lazy" class="size-full wp-image-1282" src="/wp-content/uploads/2018/05/Create-a-new-API-App.jpg" alt="Create a new API App" width="305" height="410" /></a>
   
   <p id="caption-attachment-1282" class="wp-caption-text">
     Create a new API App
@@ -30,7 +30,7 @@ To create a new API app, follow these steps:
 After the API App is deployed, you can download a sample project in ASP.Net, NodeJs or Java by clicking on Quickstart under the Deployment menu.
 
 <div id="attachment_1283" style="width: 489px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Download-a-sample-project.jpg"><img aria-describedby="caption-attachment-1283" loading="lazy" class="size-full wp-image-1283" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Download-a-sample-project.jpg" alt="Download a sample project" width="479" height="295" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Download-a-sample-project.jpg 479w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Download-a-sample-project-300x185.jpg 300w" sizes="(max-width: 479px) 100vw, 479px" /></a>
+  <a href="/wp-content/uploads/2018/05/Download-a-sample-project.jpg"><img aria-describedby="caption-attachment-1283" loading="lazy" class="size-full wp-image-1283" src="/wp-content/uploads/2018/05/Download-a-sample-project.jpg" alt="Download a sample project" width="479" height="295" /></a>
   
   <p id="caption-attachment-1283" class="wp-caption-text">
     Download a sample project
@@ -42,7 +42,7 @@ After the API App is deployed, you can download a sample project in ASP.Net, Nod
 To create a new API App open Visual Studio 2017 and create a new ASP.NET project with the Azure API App template.
 
 <div id="attachment_1287" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg"><img aria-describedby="caption-attachment-1287" loading="lazy" class="wp-image-1287" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg" alt="Create a new ASP.Net application with the Azure API App template" width="700" height="457" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg 786w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template-300x196.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template-768x501.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg"><img aria-describedby="caption-attachment-1287" loading="lazy" class="wp-image-1287" src="/wp-content/uploads/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg" alt="Create a new ASP.Net application with the Azure API App template" width="700" height="457" /></a>
   
   <p id="caption-attachment-1287" class="wp-caption-text">
     Create a new ASP.Net application with the Azure API App template
@@ -71,7 +71,7 @@ Follow these steps to deploy your API App from Visual Studio:
 </li>
 
 <div id="attachment_1288" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-App-Service.jpg"><img aria-describedby="caption-attachment-1288" loading="lazy" class="wp-image-1288" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-App-Service.jpg" alt="Create App Service" width="700" height="525" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-App-Service.jpg 800w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-App-Service-300x225.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-App-Service-768x576.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Create-App-Service.jpg"><img aria-describedby="caption-attachment-1288" loading="lazy" class="wp-image-1288" src="/wp-content/uploads/2018/05/Create-App-Service.jpg" alt="Create App Service" width="700" height="525" /></a>
   
   <p id="caption-attachment-1288" class="wp-caption-text">
     Create App Service
@@ -101,7 +101,7 @@ To work with swagger, follow these steps:
   2. Click Explore and the available API endpoints will be displayed.
 
 <div id="attachment_1289" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/The-available-endpoints-of-your-API.jpg"><img aria-describedby="caption-attachment-1289" loading="lazy" class="wp-image-1289" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/The-available-endpoints-of-your-API.jpg" alt="The available endpoints of your API" width="700" height="364" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/The-available-endpoints-of-your-API.jpg 1465w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/The-available-endpoints-of-your-API-300x156.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/The-available-endpoints-of-your-API-768x399.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/The-available-endpoints-of-your-API-1024x533.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/The-available-endpoints-of-your-API.jpg"><img aria-describedby="caption-attachment-1289" loading="lazy" class="wp-image-1289" src="/wp-content/uploads/2018/05/The-available-endpoints-of-your-API.jpg" alt="The available endpoints of your API" width="700" height="364" /></a>
   
   <p id="caption-attachment-1289" class="wp-caption-text">
     The available endpoints of your API
@@ -124,7 +124,7 @@ To work with swagger, follow these steps:
 </ol>
 
 <div id="attachment_1291" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Test-your-API-with-swagger.jpg"><img aria-describedby="caption-attachment-1291" loading="lazy" class="wp-image-1291" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Test-your-API-with-swagger.jpg" alt="Test your API with swagger" width="700" height="271" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Test-your-API-with-swagger.jpg 1452w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Test-your-API-with-swagger-300x116.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Test-your-API-with-swagger-768x298.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Test-your-API-with-swagger-1024x397.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Test-your-API-with-swagger.jpg"><img aria-describedby="caption-attachment-1291" loading="lazy" class="wp-image-1291" src="/wp-content/uploads/2018/05/Test-your-API-with-swagger.jpg" alt="Test your API with swagger" width="700" height="271" /></a>
   
   <p id="caption-attachment-1291" class="wp-caption-text">
     Test your API with swagger
@@ -140,7 +140,7 @@ To enable CORS (Cross-Origin Resource Sharing), follow these steps:
   3. Click Save.
 
 <div id="attachment_1284" style="width: 512px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Enable-CORS.jpg"><img aria-describedby="caption-attachment-1284" loading="lazy" class="wp-image-1284 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Enable-CORS.jpg" alt="Enable CORS for your API Apps" width="502" height="537" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Enable-CORS.jpg 502w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Enable-CORS-280x300.jpg 280w" sizes="(max-width: 502px) 100vw, 502px" /></a>
+  <a href="/wp-content/uploads/2018/05/Enable-CORS.jpg"><img aria-describedby="caption-attachment-1284" loading="lazy" class="wp-image-1284 size-full" src="/wp-content/uploads/2018/05/Enable-CORS.jpg" alt="Enable CORS for your API Apps" width="502" height="537" /></a>
   
   <p id="caption-attachment-1284" class="wp-caption-text">
     Enable CORS
@@ -157,7 +157,7 @@ To generate client code for your API App that has Swagger API metadata, follow t
   2. On the API definition, copy the API definition.
 
 <div id="attachment_1293" style="width: 625px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Copy-the-API-definition.jpg"><img aria-describedby="caption-attachment-1293" loading="lazy" class="size-full wp-image-1293" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Copy-the-API-definition.jpg" alt="Copy the API definition" width="615" height="514" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Copy-the-API-definition.jpg 615w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Copy-the-API-definition-300x251.jpg 300w" sizes="(max-width: 615px) 100vw, 615px" /></a>
+  <a href="/wp-content/uploads/2018/05/Copy-the-API-definition.jpg"><img aria-describedby="caption-attachment-1293" loading="lazy" class="size-full wp-image-1293" src="/wp-content/uploads/2018/05/Copy-the-API-definition.jpg" alt="Copy the API definition" width="615" height="514" /></a>
   
   <p id="caption-attachment-1293" class="wp-caption-text">
     Copy the API definition
@@ -177,7 +177,7 @@ To generate client code for your API App that has Swagger API metadata, follow t
 </ol>
 
 <div id="attachment_1294" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Paste-the-API-definition-into-the-swagger-editor.jpg"><img aria-describedby="caption-attachment-1294" loading="lazy" class="wp-image-1294" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Paste-the-API-definition-into-the-swagger-editor.jpg" alt="Paste the API definition into the swagger editor" width="700" height="199" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Paste-the-API-definition-into-the-swagger-editor.jpg 988w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Paste-the-API-definition-into-the-swagger-editor-300x85.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Paste-the-API-definition-into-the-swagger-editor-768x218.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Paste-the-API-definition-into-the-swagger-editor.jpg"><img aria-describedby="caption-attachment-1294" loading="lazy" class="wp-image-1294" src="/wp-content/uploads/2018/05/Paste-the-API-definition-into-the-swagger-editor.jpg" alt="Paste the API definition into the swagger editor" width="700" height="199" /></a>
   
   <p id="caption-attachment-1294" class="wp-caption-text">
     Paste the API definition into the swagger editor
@@ -194,7 +194,7 @@ To generate client code for your API App that has Swagger API metadata, follow t
 </ol>
 
 <div id="attachment_1295" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Download-the-client-application-for-your-desired-language.jpg"><img aria-describedby="caption-attachment-1295" loading="lazy" class="wp-image-1295" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Download-the-client-application-for-your-desired-language.jpg" alt="Download the client application for your desired language" width="700" height="589" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Download-the-client-application-for-your-desired-language.jpg 795w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Download-the-client-application-for-your-desired-language-300x252.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Download-the-client-application-for-your-desired-language-768x646.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Download-the-client-application-for-your-desired-language.jpg"><img aria-describedby="caption-attachment-1295" loading="lazy" class="wp-image-1295" src="/wp-content/uploads/2018/05/Download-the-client-application-for-your-desired-language.jpg" alt="Download the client application for your desired language" width="700" height="589" /></a>
   
   <p id="caption-attachment-1295" class="wp-caption-text">
     Download the client application for your desired language

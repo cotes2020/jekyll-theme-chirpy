@@ -30,7 +30,7 @@ To keep it simple, I will use an in-memory database. During the implementation, 
 I created a solution for each microservice. You can see the structure of the microservices on the following screenshot.
 
 <div id="attachment_1867" style="width: 264px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Structure-of-the-Order-Microservice.jpg"><img aria-describedby="caption-attachment-1867" loading="lazy" class="wp-image-1867 size-full" title="Structure of the Order Microservice" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Structure-of-the-Order-Microservice.jpg" alt="Structure of the Order Microservice" width="254" height="212" /></a>
+  <a href="/wp-content/uploads/2020/04/Structure-of-the-Order-Microservice.jpg"><img aria-describedby="caption-attachment-1867" loading="lazy" class="wp-image-1867 size-full" title="Structure of the Order Microservice" src="/wp-content/uploads/2020/04/Structure-of-the-Order-Microservice.jpg" alt="Structure of the Order Microservice" width="254" height="212" /></a>
   
   <p id="caption-attachment-1867" class="wp-caption-text">
     Structure of the Order Microservice
@@ -110,7 +110,7 @@ RuleFor(x => x.Age)
 In the Startup.cs, I register my services, validators and configure other parts of the application like AutoMapper, the database context or Swagger. This part should be self-explanatory and I will talk about <a href="https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">Swagger</a> or <a href="https://www.programmingwithwolfgang.com/rabbitmq-in-an-asp-net-core-3-1-microservice" target="_blank" rel="noopener noreferrer">RabbitMQ</a> later.
 
 <div id="attachment_2475" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Register-the-classes-and-configure-the-services.jpg"><img aria-describedby="caption-attachment-2475" loading="lazy" class="wp-image-2475" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Register-the-classes-and-configure-the-services.jpg" alt="Register the classes and configure the services" width="700" height="439" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Register-the-classes-and-configure-the-services.jpg 774w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Register-the-classes-and-configure-the-services-300x188.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Register-the-classes-and-configure-the-services-768x481.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/04/Register-the-classes-and-configure-the-services.jpg"><img aria-describedby="caption-attachment-2475" loading="lazy" class="wp-image-2475" src="/wp-content/uploads/2020/04/Register-the-classes-and-configure-the-services.jpg" alt="Register the classes and configure the services" width="700" height="439" /></a>
   
   <p id="caption-attachment-2475" class="wp-caption-text">
     Register the classes and configure the services
@@ -361,7 +361,7 @@ This line would register a background service that listens to change in the queu
 After you made the changes to both APIs, you can start them. This should display the Swagger GUI which gives you information about all actions and models and also lets you send requests. The GUI should be self-explanatory but <a href="https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">I will talk more about it in my next post</a>.
 
 <div id="attachment_1881" style="width: 556px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg"><img aria-describedby="caption-attachment-1881" loading="lazy" class="size-full wp-image-1881" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg" alt="The Swagger GUI with the available actions and models" width="546" height="627" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg 546w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/The-Swagger-GUI-with-the-available-actions-and-models-261x300.jpg 261w" sizes="(max-width: 546px) 100vw, 546px" /></a>
+  <a href="/wp-content/uploads/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg"><img aria-describedby="caption-attachment-1881" loading="lazy" class="size-full wp-image-1881" src="/wp-content/uploads/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg" alt="The Swagger GUI with the available actions and models" width="546" height="627" /></a>
   
   <p id="caption-attachment-1881" class="wp-caption-text">
     The Swagger GUI with the available actions and models

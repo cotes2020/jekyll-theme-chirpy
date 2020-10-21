@@ -21,7 +21,7 @@ The Facade pattern is often used without the programmer knowing that he uses it.
 
 ## UML Diagram
 
-[<img loading="lazy" class="aligncenter wp-image-489" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Facade-pattern-UML-diagram.jpg" alt="Facade pattern UML diagram" width="700" height="349" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Facade-pattern-UML-diagram.jpg 1420w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Facade-pattern-UML-diagram-300x150.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Facade-pattern-UML-diagram-768x383.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Facade-pattern-UML-diagram-1024x511.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" />](http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Facade-pattern-UML-diagram.jpg)
+[<img loading="lazy" class="aligncenter wp-image-489" src="/wp-content/uploads/2017/12/Facade-pattern-UML-diagram.jpg" alt="Facade pattern UML diagram" width="700" height="349" />](/wp-content/uploads/2017/12/Facade-pattern-UML-diagram.jpg)
 
 The UML diagram for the facade pattern is pretty empty. It only shows the facade which is called by a client and that it calls methods of subsystems. These subsystems can be classes within your own system but also third party libraries or calls to web services.
 
@@ -30,7 +30,7 @@ The UML diagram for the facade pattern is pretty empty. It only shows the facade
 In this example, I am implementing a fake API which provides information for books. The API has three methods: LookUpAuthor, LookUpPublisher and LookUpTitle. All three methods take the ISBN as string Parameter and also return a string. To get the information for a specific ISBN, every method has to be called.
 
 <div id="attachment_447" style="width: 538px" class="wp-caption aligncenter">
-  <a href="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/WithoutFacadePattern.jpg"><img aria-describedby="caption-attachment-447" loading="lazy" class="size-full wp-image-447" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/WithoutFacadePattern.jpg" alt="Implementation of API calls without the Facade Pattern" width="528" height="308" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/WithoutFacadePattern.jpg 528w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/WithoutFacadePattern-300x175.jpg 300w" sizes="(max-width: 528px) 100vw, 528px" /></a>
+  <a href="/wp-content/uploads/2017/12/WithoutFacadePattern.jpg"><img aria-describedby="caption-attachment-447" loading="lazy" class="size-full wp-image-447" src="/wp-content/uploads/2017/12/WithoutFacadePattern.jpg" alt="Implementation of API calls without the Facade Pattern" width="528" height="308" /></a>
   
   <p id="caption-attachment-447" class="wp-caption-text">
     Implementation of API calls without the Facade Pattern
@@ -48,7 +48,7 @@ To hide all the service calls, I implement a facade which takes the ISBN as Para
 Implementing a facade is pretty simple. I move all the service calls into a separate class called Book Service. This class exposes only one method, LookUpBookInformation which takes the ISBN as a parameter and returns a book object. Inside the LookUpBookInformation method, I implement all the service calls which were in the main method before. The return value of every service call is mapped to a property of the book object.
 
 <div id="attachment_448" style="width: 468px" class="wp-caption aligncenter">
-  <a href="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Implementation-of-the-BookService-class.jpg"><img aria-describedby="caption-attachment-448" loading="lazy" class="size-full wp-image-448" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Implementation-of-the-BookService-class.jpg" alt="Implementation of the BookService class" width="458" height="287" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Implementation-of-the-BookService-class.jpg 458w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Implementation-of-the-BookService-class-300x188.jpg 300w" sizes="(max-width: 458px) 100vw, 458px" /></a>
+  <a href="/wp-content/uploads/2017/12/Implementation-of-the-BookService-class.jpg"><img aria-describedby="caption-attachment-448" loading="lazy" class="size-full wp-image-448" src="/wp-content/uploads/2017/12/Implementation-of-the-BookService-class.jpg" alt="Implementation of the BookService class" width="458" height="287" /></a>
   
   <p id="caption-attachment-448" class="wp-caption-text">
     Implementation of the BookService class
@@ -58,7 +58,7 @@ Implementing a facade is pretty simple. I move all the service calls into a sepa
 With this implementation, i can tidy up the main method and end up with only one method call.
 
 <div id="attachment_449" style="width: 562px" class="wp-caption aligncenter">
-  <a href="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Invoking-the-BookService.jpg"><img aria-describedby="caption-attachment-449" loading="lazy" class="size-full wp-image-449" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Invoking-the-BookService.jpg" alt="Invoking the BookService" width="552" height="213" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Invoking-the-BookService.jpg 552w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Invoking-the-BookService-300x116.jpg 300w" sizes="(max-width: 552px) 100vw, 552px" /></a>
+  <a href="/wp-content/uploads/2017/12/Invoking-the-BookService.jpg"><img aria-describedby="caption-attachment-449" loading="lazy" class="size-full wp-image-449" src="/wp-content/uploads/2017/12/Invoking-the-BookService.jpg" alt="Invoking the BookService" width="552" height="213" /></a>
   
   <p id="caption-attachment-449" class="wp-caption-text">
     Invoking the BookService

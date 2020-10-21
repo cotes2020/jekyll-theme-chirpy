@@ -38,7 +38,7 @@ The last configuration is the centralized configuration. Here you have your conf
 In this simple example, I will write the configuration in the appsettings.json file of my .Net core web application and configure the Startup class to read the value. Afterward, I will change the title of my page, depending on the value of the toggle. I am calling my toggle in the appsettings.json FeatureToggle and set the IsEnabled property to true.
 
 <div id="attachment_1603" style="width: 202px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Enable-the-toggle-in-the-appsettings.jpg"><img aria-describedby="caption-attachment-1603" loading="lazy" class="size-full wp-image-1603" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Enable-the-toggle-in-the-appsettings.jpg" alt="Enable the toggle in the appsettings" width="192" height="187" /></a>
+  <a href="/wp-content/uploads/2019/02/Enable-the-toggle-in-the-appsettings.jpg"><img aria-describedby="caption-attachment-1603" loading="lazy" class="size-full wp-image-1603" src="/wp-content/uploads/2019/02/Enable-the-toggle-in-the-appsettings.jpg" alt="Enable the toggle in the appsettings" width="192" height="187" /></a>
   
   <p id="caption-attachment-1603" class="wp-caption-text">
     Enable the toggle in the appsettings.json file
@@ -48,7 +48,7 @@ In this simple example, I will write the configuration in the appsettings.json f
 Next, I enable Options in the Startup class to read the settings individually and then read my value into the MyFeatureToggleClass.
 
 <div id="attachment_1604" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Set-up-reading-the-appsettings-file.jpg"><img aria-describedby="caption-attachment-1604" loading="lazy" class="wp-image-1604" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Set-up-reading-the-appsettings-file.jpg" alt="Set up reading the appsettings file" width="700" height="259" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Set-up-reading-the-appsettings-file.jpg 789w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Set-up-reading-the-appsettings-file-300x111.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Set-up-reading-the-appsettings-file-768x284.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2019/02/Set-up-reading-the-appsettings-file.jpg"><img aria-describedby="caption-attachment-1604" loading="lazy" class="wp-image-1604" src="/wp-content/uploads/2019/02/Set-up-reading-the-appsettings-file.jpg" alt="Set up reading the appsettings file" width="700" height="259" /></a>
   
   <p id="caption-attachment-1604" class="wp-caption-text">
     Set up reading the appsettings file
@@ -58,7 +58,7 @@ Next, I enable Options in the Startup class to read the settings individually an
 I put the MyFeatureToggle class in a new folder called Toggles and its only property is a bool indicating whether it is enabled.
 
 <div id="attachment_1605" style="width: 306px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/The-feature-toggle-class.jpg"><img aria-describedby="caption-attachment-1605" loading="lazy" class="size-full wp-image-1605" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/The-feature-toggle-class.jpg" alt="The feature toggle class" width="296" height="108" /></a>
+  <a href="/wp-content/uploads/2019/02/The-feature-toggle-class.jpg"><img aria-describedby="caption-attachment-1605" loading="lazy" class="size-full wp-image-1605" src="/wp-content/uploads/2019/02/The-feature-toggle-class.jpg" alt="The feature toggle class" width="296" height="108" /></a>
   
   <p id="caption-attachment-1605" class="wp-caption-text">
     The feature toggle class
@@ -68,7 +68,7 @@ I put the MyFeatureToggle class in a new folder called Toggles and its only prop
 As a simple test if my set up is working, I read the value and if my toggle is enabled, I set the view title to &#8220;Toggle is enabled&#8221;. Otherwise, I display &#8220;Toggle is disabled&#8221;.
 
 <div id="attachment_1606" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Setting-the-title-depending-on-the-value-of-the-toggle.jpg"><img aria-describedby="caption-attachment-1606" loading="lazy" class="wp-image-1606" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Setting-the-title-depending-on-the-value-of-the-toggle.jpg" alt="Setting the title depending on the value of the toggle" width="700" height="117" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Setting-the-title-depending-on-the-value-of-the-toggle.jpg 739w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Setting-the-title-depending-on-the-value-of-the-toggle-300x50.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2019/02/Setting-the-title-depending-on-the-value-of-the-toggle.jpg"><img aria-describedby="caption-attachment-1606" loading="lazy" class="wp-image-1606" src="/wp-content/uploads/2019/02/Setting-the-title-depending-on-the-value-of-the-toggle.jpg" alt="Setting the title depending on the value of the toggle" width="700" height="117" /></a>
   
   <p id="caption-attachment-1606" class="wp-caption-text">
     Setting the title depending on the value of the toggle
@@ -78,7 +78,7 @@ As a simple test if my set up is working, I read the value and if my toggle is e
 Start the application and click the Privacy menu item. Now you will see that the toggle is enabled.
 
 <div id="attachment_1607" style="width: 667px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Test-the-enabled-feature-toggle.jpg"><img aria-describedby="caption-attachment-1607" loading="lazy" class="size-full wp-image-1607" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Test-the-enabled-feature-toggle.jpg" alt="Test the enabled feature toggle" width="657" height="220" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Test-the-enabled-feature-toggle.jpg 657w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Test-the-enabled-feature-toggle-300x100.jpg 300w" sizes="(max-width: 657px) 100vw, 657px" /></a>
+  <a href="/wp-content/uploads/2019/02/Test-the-enabled-feature-toggle.jpg"><img aria-describedby="caption-attachment-1607" loading="lazy" class="size-full wp-image-1607" src="/wp-content/uploads/2019/02/Test-the-enabled-feature-toggle.jpg" alt="Test the enabled feature toggle" width="657" height="220"  /></a>
   
   <p id="caption-attachment-1607" class="wp-caption-text">
     Test the enabled feature toggle

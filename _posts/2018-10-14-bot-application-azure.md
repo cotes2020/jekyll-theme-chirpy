@@ -14,7 +14,7 @@ You can create a bot application with Visual Studio or directly in the Azure Por
   1. In the Azure portal click on +Create a resource, search for Web App Bot and click Create.
 
 <div id="attachment_1439" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-a-Web-App-Bot-in-the-Azure-Portal.jpg"><img aria-describedby="caption-attachment-1439" loading="lazy" class="wp-image-1439" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-a-Web-App-Bot-in-the-Azure-Portal.jpg" alt="Create a Web App Bot in the Azure Portal" width="700" height="463" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-a-Web-App-Bot-in-the-Azure-Portal.jpg 1209w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-a-Web-App-Bot-in-the-Azure-Portal-300x198.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-a-Web-App-Bot-in-the-Azure-Portal-768x508.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-a-Web-App-Bot-in-the-Azure-Portal-1024x677.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/10/Create-a-Web-App-Bot-in-the-Azure-Portal.jpg"><img aria-describedby="caption-attachment-1439" loading="lazy" class="wp-image-1439" src="/wp-content/uploads/2018/10/Create-a-Web-App-Bot-in-the-Azure-Portal.jpg" alt="Create a Web App Bot in the Azure Portal" width="700" height="463" /></a>
   
   <p id="caption-attachment-1439" class="wp-caption-text">
     Create a Web App Bot in the Azure Portal
@@ -37,7 +37,7 @@ You can create a bot application with Visual Studio or directly in the Azure Por
 </ol>
 
 <div id="attachment_1440" style="width: 708px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-your-new-bot-application.jpg"><img aria-describedby="caption-attachment-1440" loading="lazy" class="wp-image-1440" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-your-new-bot-application.jpg" alt="Create your new bot application" width="698" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-your-new-bot-application.jpg 897w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-your-new-bot-application-150x150.jpg 150w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-your-new-bot-application-300x300.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Create-your-new-bot-application-768x770.jpg 768w" sizes="(max-width: 698px) 100vw, 698px" /></a>
+  <a href="/wp-content/uploads/2018/10/Create-your-new-bot-application.jpg"><img aria-describedby="caption-attachment-1440" loading="lazy" class="wp-image-1440" src="/wp-content/uploads/2018/10/Create-your-new-bot-application.jpg" alt="Create your new bot application" width="698" height="700" /></a>
   
   <p id="caption-attachment-1440" class="wp-caption-text">
     Create your new bot application
@@ -49,7 +49,7 @@ You can create a bot application with Visual Studio or directly in the Azure Por
 After the bot application is deployed, open it and select Test in Web Chat under the Bot management menu. Type in Hi and wait for a response. Sometimes you don&#8217;t get an answer on the first try. Then you have to enter a second message.
 
 <div id="attachment_1442" style="width: 501px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Test-your-bot.jpg"><img aria-describedby="caption-attachment-1442" loading="lazy" class="wp-image-1442" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Test-your-bot.jpg" alt="Test your bot" width="491" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Test-your-bot.jpg 632w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Test-your-bot-210x300.jpg 210w" sizes="(max-width: 491px) 100vw, 491px" /></a>
+  <a href="/wp-content/uploads/2018/10/Test-your-bot.jpg"><img aria-describedby="caption-attachment-1442" loading="lazy" class="wp-image-1442" src="/wp-content/uploads/2018/10/Test-your-bot.jpg" alt="Test your bot" width="491" height="700" /></a>
   
   <p id="caption-attachment-1442" class="wp-caption-text">
     Test your bot
@@ -67,7 +67,7 @@ In this section, I will show you how to edit existing answers of your bot and ho
 To edit the source code of your code, download it. Click on Download Bot source code on the Build blade under the Bot management menu.
 
 <div id="attachment_1443" style="width: 654px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Download-the-source-code-of-your-bot.jpg"><img aria-describedby="caption-attachment-1443" loading="lazy" class="size-full wp-image-1443" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Download-the-source-code-of-your-bot.jpg" alt="Download the source code of your bot" width="644" height="453" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Download-the-source-code-of-your-bot.jpg 644w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Download-the-source-code-of-your-bot-300x211.jpg 300w" sizes="(max-width: 644px) 100vw, 644px" /></a>
+  <a href="/wp-content/uploads/2018/10/Download-the-source-code-of-your-bot.jpg"><img aria-describedby="caption-attachment-1443" loading="lazy" class="size-full wp-image-1443" src="/wp-content/uploads/2018/10/Download-the-source-code-of-your-bot.jpg" alt="Download the source code of your bot" width="644" height="453" /></a>
   
   <p id="caption-attachment-1443" class="wp-caption-text">
     Download the source code of your bot
@@ -91,7 +91,7 @@ There are different ways to deploy your bot application to Azure. The simplest i
   4. Click OK.
 
 <div id="attachment_1444" style="width: 328px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Add-GitHub-as-your-deployment-source.jpg"><img aria-describedby="caption-attachment-1444" loading="lazy" class="size-full wp-image-1444" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Add-GitHub-as-your-deployment-source.jpg" alt="Add GitHub as your deployment source" width="318" height="382" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Add-GitHub-as-your-deployment-source.jpg 318w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Add-GitHub-as-your-deployment-source-250x300.jpg 250w" sizes="(max-width: 318px) 100vw, 318px" /></a>
+  <a href="/wp-content/uploads/2018/10/Add-GitHub-as-your-deployment-source.jpg"><img aria-describedby="caption-attachment-1444" loading="lazy" class="size-full wp-image-1444" src="/wp-content/uploads/2018/10/Add-GitHub-as-your-deployment-source.jpg" alt="Add GitHub as your deployment source" width="318" height="382" /></a>
   
   <p id="caption-attachment-1444" class="wp-caption-text">
     Add GitHub as your deployment source
@@ -108,7 +108,7 @@ There are different ways to deploy your bot application to Azure. The simplest i
 </ol>
 
 <div id="attachment_1445" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Sync-GitHub-with-Azure.jpg"><img aria-describedby="caption-attachment-1445" loading="lazy" class="wp-image-1445" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Sync-GitHub-with-Azure.jpg" alt="Sync GitHub with Azure" width="700" height="409" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Sync-GitHub-with-Azure.jpg 831w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Sync-GitHub-with-Azure-300x175.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Sync-GitHub-with-Azure-768x449.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/10/Sync-GitHub-with-Azure.jpg"><img aria-describedby="caption-attachment-1445" loading="lazy" class="wp-image-1445" src="/wp-content/uploads/2018/10/Sync-GitHub-with-Azure.jpg" alt="Sync GitHub with Azure" width="700" height="409" /></a>
   
   <p id="caption-attachment-1445" class="wp-caption-text">
     Sync GitHub with Azure
@@ -128,7 +128,7 @@ There are different ways to deploy your bot application to Azure. The simplest i
 </ol>
 
 <div id="attachment_1446" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Test-the-changes-in-your-bot-application.jpg"><img aria-describedby="caption-attachment-1446" loading="lazy" class="wp-image-1446" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Test-the-changes-in-your-bot-application.jpg" alt="Test the changes in your bot application" width="700" height="672" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Test-the-changes-in-your-bot-application.jpg 848w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Test-the-changes-in-your-bot-application-300x288.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/10/Test-the-changes-in-your-bot-application-768x737.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/10/Test-the-changes-in-your-bot-application.jpg"><img aria-describedby="caption-attachment-1446" loading="lazy" class="wp-image-1446" src="/wp-content/uploads/2018/10/Test-the-changes-in-your-bot-application.jpg" alt="Test the changes in your bot application" width="700" height="672" /></a>
   
   <p id="caption-attachment-1446" class="wp-caption-text">
     Test the changes in your bot application

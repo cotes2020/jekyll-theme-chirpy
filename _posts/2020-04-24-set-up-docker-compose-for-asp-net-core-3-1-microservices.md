@@ -56,7 +56,7 @@ You can find the code of  the finished demo on <a href="https://github.com/Wol
 To execute your compose file, open Powershel, and navigate to the location of your file. In my demo code, I am providing the compose file in the root folder. Once you navigated to your file, use the following command: docker-compose up -d. The -d parameter executes the command detached. This means that the containers run in the background and don&#8217;t block your Powershell window.
 
 <div id="attachment_1953" style="width: 692px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Start-multiple-container-with-docker-compose.jpg"><img aria-describedby="caption-attachment-1953" loading="lazy" class="size-full wp-image-1953" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Start-multiple-container-with-docker-compose.jpg" alt="Start multiple container with docker-compose" width="682" height="620" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Start-multiple-container-with-docker-compose.jpg 682w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Start-multiple-container-with-docker-compose-300x273.jpg 300w" sizes="(max-width: 682px) 100vw, 682px" /></a>
+  <a href="/wp-content/uploads/2020/04/Start-multiple-container-with-docker-compose.jpg"><img aria-describedby="caption-attachment-1953" loading="lazy" class="size-full wp-image-1953" src="/wp-content/uploads/2020/04/Start-multiple-container-with-docker-compose.jpg" alt="Start multiple container with docker-compose" width="682" height="620" /></a>
   
   <p id="caption-attachment-1953" class="wp-caption-text">
     Start multiple container with docker-compose
@@ -66,7 +66,7 @@ To execute your compose file, open Powershel, and navigate to the location of yo
 To prove that all three containers are running, use docker ps.
 
 <div id="attachment_1954" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Check-all-running-container.jpg"><img aria-describedby="caption-attachment-1954" loading="lazy" class="wp-image-1954" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Check-all-running-container.jpg" alt="Check all running container" width="700" height="84" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Check-all-running-container.jpg 1202w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Check-all-running-container-300x36.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Check-all-running-container-1024x123.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Check-all-running-container-768x92.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/04/Check-all-running-container.jpg"><img aria-describedby="caption-attachment-1954" loading="lazy" class="wp-image-1954" src="/wp-content/uploads/2020/04/Check-all-running-container.jpg" alt="Check all running container" width="700" height="84" /></a>
   
   <p id="caption-attachment-1954" class="wp-caption-text">
     Check all running container
@@ -128,7 +128,7 @@ depends_on:
 I named this file docker-compose.Build. You can use the -f parameter to specify the file in your docker-compose command: docker-compose -f docker-compose.Build.yml up -d.
 
 <div id="attachment_1956" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Build-images-with-docker-compose.jpg"><img aria-describedby="caption-attachment-1956" loading="lazy" class="wp-image-1956" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Build-images-with-docker-compose.jpg" alt="Build images with docker-compose" width="700" height="361" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Build-images-with-docker-compose.jpg 963w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Build-images-with-docker-compose-300x155.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/04/Build-images-with-docker-compose-768x396.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/04/Build-images-with-docker-compose.jpg"><img aria-describedby="caption-attachment-1956" loading="lazy" class="wp-image-1956" src="/wp-content/uploads/2020/04/Build-images-with-docker-compose.jpg" alt="Build images with docker-compose" width="700" height="361" /></a>
   
   <p id="caption-attachment-1956" class="wp-caption-text">
     Build images with docker-compose

@@ -22,7 +22,7 @@ To create a new App Service plan, follow these steps:
   3. Click Create.
 
 <div id="attachment_1267" style="width: 318px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-App-Service-plan.jpg"><img aria-describedby="caption-attachment-1267" loading="lazy" class="size-full wp-image-1267" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-App-Service-plan.jpg" alt="Create a new App Service plan" width="308" height="460" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-App-Service-plan.jpg 308w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-App-Service-plan-201x300.jpg 201w" sizes="(max-width: 308px) 100vw, 308px" /></a>
+  <a href="/wp-content/uploads/2018/05/Create-a-new-App-Service-plan.jpg"><img aria-describedby="caption-attachment-1267" loading="lazy" class="size-full wp-image-1267" src="/wp-content/uploads/2018/05/Create-a-new-App-Service-plan.jpg" alt="Create a new App Service plan" width="308" height="460" /></a>
   
   <p id="caption-attachment-1267" class="wp-caption-text">
     Create a new App Service plan
@@ -38,7 +38,7 @@ To create a new Web App, follow these steps:
   3. Click Create.
 
 <div id="attachment_1268" style="width: 577px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-Web-App.jpg"><img aria-describedby="caption-attachment-1268" loading="lazy" class="size-full wp-image-1268" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-Web-App.jpg" alt="Create a new Web App" width="567" height="459" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-Web-App.jpg 567w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Create-a-new-Web-App-300x243.jpg 300w" sizes="(max-width: 567px) 100vw, 567px" /></a>
+  <a href="/wp-content/uploads/2018/05/Create-a-new-Web-App.jpg"><img aria-describedby="caption-attachment-1268" loading="lazy" class="size-full wp-image-1268" src="/wp-content/uploads/2018/05/Create-a-new-Web-App.jpg" alt="Create a new Web App" width="567" height="459" /></a>
   
   <p id="caption-attachment-1268" class="wp-caption-text">
     Create a new Web App
@@ -52,7 +52,7 @@ After you have created a new App Service plan, you can change the settings, foll
   1. In the Azure portal, open your App Service plans. There you can see all your App Service plans, the number of apps deployed for each plan and its pricing tier.
 
 <div id="attachment_1269" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/An-overview-of-my-App-Service-plans.jpg"><img aria-describedby="caption-attachment-1269" loading="lazy" class="wp-image-1269" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/An-overview-of-my-App-Service-plans.jpg" alt="An overview of my App Service plans" width="700" height="171" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/An-overview-of-my-App-Service-plans.jpg 1209w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/An-overview-of-my-App-Service-plans-300x73.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/An-overview-of-my-App-Service-plans-768x188.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/An-overview-of-my-App-Service-plans-1024x251.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/An-overview-of-my-App-Service-plans.jpg"><img aria-describedby="caption-attachment-1269" loading="lazy" class="wp-image-1269" src="/wp-content/uploads/2018/05/An-overview-of-my-App-Service-plans.jpg" alt="An overview of my App Service plans" width="700" height="171" /></a>
   
   <p id="caption-attachment-1269" class="wp-caption-text">
     An overview of my App Service plans
@@ -92,7 +92,7 @@ To manage your Web App settings, follow these steps:
       * Chose the type of pipeline for IIS. Integrated is the more modern pipeline and Classic would only be used for legacy applications.
 
 <div id="attachment_1270" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Change-the-language-and-runtime-settings-of-your-application.jpg"><img aria-describedby="caption-attachment-1270" loading="lazy" class="wp-image-1270" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Change-the-language-and-runtime-settings-of-your-application.jpg" alt="Change the language and runtime settings of your application" width="700" height="536" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Change-the-language-and-runtime-settings-of-your-application.jpg 835w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Change-the-language-and-runtime-settings-of-your-application-300x230.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Change-the-language-and-runtime-settings-of-your-application-768x588.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Change-the-language-and-runtime-settings-of-your-application.jpg"><img aria-describedby="caption-attachment-1270" loading="lazy" class="wp-image-1270" src="/wp-content/uploads/2018/05/Change-the-language-and-runtime-settings-of-your-application.jpg" alt="Change the language and runtime settings of your application" width="700" height="536" /></a>
   
   <p id="caption-attachment-1270" class="wp-caption-text">
     Change the language and runtime settings of your application
@@ -106,7 +106,7 @@ To manage your Web App settings, follow these steps:
 </ol>
 
 <div id="attachment_1271" style="width: 561px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/ARR-Affinity-settings.jpg"><img aria-describedby="caption-attachment-1271" loading="lazy" class="size-full wp-image-1271" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/ARR-Affinity-settings.jpg" alt="ARR Affinity settings" width="551" height="124" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/ARR-Affinity-settings.jpg 551w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/ARR-Affinity-settings-300x68.jpg 300w" sizes="(max-width: 551px) 100vw, 551px" /></a>
+  <a href="/wp-content/uploads/2018/05/ARR-Affinity-settings.jpg"><img aria-describedby="caption-attachment-1271" loading="lazy" class="size-full wp-image-1271" src="/wp-content/uploads/2018/05/ARR-Affinity-settings.jpg" alt="ARR Affinity settings" width="551" height="124" /></a>
   
   <p id="caption-attachment-1271" class="wp-caption-text">
     ARR Affinity settings
@@ -123,7 +123,7 @@ To manage your Web App settings, follow these steps:
 </ol>
 
 <div id="attachment_1272" style="width: 486px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Remote-debugging.jpg"><img aria-describedby="caption-attachment-1272" loading="lazy" class="size-full wp-image-1272" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Remote-debugging.jpg" alt="Remote debugging" width="476" height="144" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Remote-debugging.jpg 476w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Remote-debugging-300x91.jpg 300w" sizes="(max-width: 476px) 100vw, 476px" /></a>
+  <a href="/wp-content/uploads/2018/05/Remote-debugging.jpg"><img aria-describedby="caption-attachment-1272" loading="lazy" class="size-full wp-image-1272" src="/wp-content/uploads/2018/05/Remote-debugging.jpg" alt="Remote debugging" width="476" height="144" /></a>
   
   <p id="caption-attachment-1272" class="wp-caption-text">
     Remote debugging
@@ -137,7 +137,7 @@ To manage your Web App settings, follow these steps:
 </ol>
 
 <div id="attachment_1273" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-and-connection-settings.jpg"><img aria-describedby="caption-attachment-1273" loading="lazy" class="wp-image-1273" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-and-connection-settings.jpg" alt="Application and connection settings" width="700" height="218" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-and-connection-settings.jpg 1030w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-and-connection-settings-300x93.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-and-connection-settings-768x239.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-and-connection-settings-1024x319.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Application-and-connection-settings.jpg"><img aria-describedby="caption-attachment-1273" loading="lazy" class="wp-image-1273" src="/wp-content/uploads/2018/05/Application-and-connection-settings.jpg" alt="Application and connection settings" width="700" height="218" /></a>
   
   <p id="caption-attachment-1273" class="wp-caption-text">
     Application and connection settings
@@ -172,7 +172,7 @@ To configure a custom domain, follow these steps:
   2. On the Custom domains blade, click on +Add hostname and enter your Hostname. Then choose if you want to set up an A record or CNAME record.
 
 <div id="attachment_1274" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Add-a-hostname-for-your-custom-domain.jpg"><img aria-describedby="caption-attachment-1274" loading="lazy" class="wp-image-1274" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Add-a-hostname-for-your-custom-domain.jpg" alt="Add a hostname for your custom domain" width="700" height="160" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Add-a-hostname-for-your-custom-domain.jpg 1694w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Add-a-hostname-for-your-custom-domain-300x69.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Add-a-hostname-for-your-custom-domain-768x175.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Add-a-hostname-for-your-custom-domain-1024x234.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Add-a-hostname-for-your-custom-domain.jpg"><img aria-describedby="caption-attachment-1274" loading="lazy" class="wp-image-1274" src="/wp-content/uploads/2018/05/Add-a-hostname-for-your-custom-domain.jpg" alt="Add a hostname for your custom domain" width="700" height="160" /></a>
   
   <p id="caption-attachment-1274" class="wp-caption-text">
     Add a hostname for your custom domain
@@ -361,7 +361,7 @@ To enable these diagnostic settings, follow these steps:
   5. Click Save.
 
 <div id="attachment_1275" style="width: 479px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Configure-logging-for-your-Web-App-application.jpg"><img aria-describedby="caption-attachment-1275" loading="lazy" class="wp-image-1275" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Configure-logging-for-your-Web-App-application.jpg" alt="Configure logging for your Web App application" width="469" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Configure-logging-for-your-Web-App-application.jpg 527w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Configure-logging-for-your-Web-App-application-201x300.jpg 201w" sizes="(max-width: 469px) 100vw, 469px" /></a>
+  <a href="/wp-content/uploads/2018/05/Configure-logging-for-your-Web-App-application.jpg"><img aria-describedby="caption-attachment-1275" loading="lazy" class="wp-image-1275" src="/wp-content/uploads/2018/05/Configure-logging-for-your-Web-App-application.jpg" alt="Configure logging for your Web App application" width="469" height="700" /></a>
   
   <p id="caption-attachment-1275" class="wp-caption-text">
     Configure logging for your Web App application
@@ -375,7 +375,7 @@ To enable these diagnostic settings, follow these steps:
 </ol>
 
 <div id="attachment_1276" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-log-stream.jpg"><img aria-describedby="caption-attachment-1276" loading="lazy" class="wp-image-1276" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-log-stream.jpg" alt="Application log stream" width="700" height="341" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-log-stream.jpg 1679w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-log-stream-300x146.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-log-stream-768x374.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Application-log-stream-1024x499.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Application-log-stream.jpg"><img aria-describedby="caption-attachment-1276" loading="lazy" class="wp-image-1276" src="/wp-content/uploads/2018/05/Application-log-stream.jpg" alt="Application log stream" width="700" height="341" /></a>
   
   <p id="caption-attachment-1276" class="wp-caption-text">
     Application log stream
@@ -403,7 +403,7 @@ To customize the shown metrics, follow these steps:
   3. Enter a title, select a chart type and set a time range.
 
 <div id="attachment_1277" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Customize-the-metrics-graph.jpg"><img aria-describedby="caption-attachment-1277" loading="lazy" class="wp-image-1277" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Customize-the-metrics-graph.jpg" alt="Customize the metrics graph" width="700" height="376" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Customize-the-metrics-graph.jpg 1679w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Customize-the-metrics-graph-300x161.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Customize-the-metrics-graph-768x413.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Customize-the-metrics-graph-1024x550.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Customize-the-metrics-graph.jpg"><img aria-describedby="caption-attachment-1277" loading="lazy" class="wp-image-1277" src="/wp-content/uploads/2018/05/Customize-the-metrics-graph.jpg" alt="Customize the metrics graph" width="700" height="376" /></a>
   
   <p id="caption-attachment-1277" class="wp-caption-text">
     Customize the metrics graph
@@ -434,7 +434,7 @@ To configure scaling for your web app, follow these steps.
   3. Select Scale out under the Settings blade and select the desired instance count to scale out to.
 
 <div id="attachment_1278" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Configure-scaling-out.jpg"><img aria-describedby="caption-attachment-1278" loading="lazy" class="wp-image-1278" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Configure-scaling-out.jpg" alt="Configure scaling out" width="700" height="335" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Configure-scaling-out.jpg 1180w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Configure-scaling-out-300x144.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Configure-scaling-out-768x368.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/05/Configure-scaling-out-1024x490.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/05/Configure-scaling-out.jpg"><img aria-describedby="caption-attachment-1278" loading="lazy" class="wp-image-1278" src="/wp-content/uploads/2018/05/Configure-scaling-out.jpg" alt="Configure scaling out" width="700" height="335" /></a>
   
   <p id="caption-attachment-1278" class="wp-caption-text">
     Configure scaling out

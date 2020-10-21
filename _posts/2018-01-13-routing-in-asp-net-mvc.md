@@ -15,7 +15,7 @@ Routes can be created by adding them to the RouteCollection or by decorating act
 
 The ASP.NET MVC framework comes out of the box with a default route. The template also displays the property names of the route attributes, so it is easier for a beginner to understand what&#8217;s going on. Let&#8217;s have a look at the default route:
 
-[<img loading="lazy" class="aligncenter size-full wp-image-536" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/1-Default-Route-implemented-by-MVC.jpg" alt="Default Route implemented by MVC" width="658" height="186" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/1-Default-Route-implemented-by-MVC.jpg 658w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/1-Default-Route-implemented-by-MVC-300x85.jpg 300w" sizes="(max-width: 658px) 100vw, 658px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/1-Default-Route-implemented-by-MVC.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-536" src="/wp-content/uploads/2018/01/1-Default-Route-implemented-by-MVC.jpg" alt="Default Route implemented by MVC" width="658" height="186" />](/wp-content/uploads/2018/01/1-Default-Route-implemented-by-MVC.jpg)
 
 Every route has a unique name. The name of the default route is Default. The url attribute describes the pattern of the url. The default pattern is Controller/Action/Id. The defaults property sets default properties for the controller, action and sets the id as optional. The default values are used when no values for the attribute is passed. Valid URLs for this route are for example:
 
@@ -34,7 +34,7 @@ Additionally to the default route, the ASP.NET template implements routes.Ignore
 
 Now it&#8217;s time to implement our own routes. The simplest route takes a controller and an action with no defaults or additional parameters.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-538" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/2-Simple-Route-Controller-Action.jpg" alt="Simple Route Controller - Action" width="458" height="40" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/2-Simple-Route-Controller-Action.jpg 458w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/2-Simple-Route-Controller-Action-300x26.jpg 300w" sizes="(max-width: 458px) 100vw, 458px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/2-Simple-Route-Controller-Action.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-538" src="/wp-content/uploads/2018/01/2-Simple-Route-Controller-Action.jpg" alt="Simple Route Controller - Action" width="458" height="40" />](/wp-content/uploads/2018/01/2-Simple-Route-Controller-Action.jpg)
 
 If the user types into his browser myurl.com/Home/Index the Index action in the Home controller is called. If the user only enters /Home the route won&#8217;t find a suiting action because no default action is defined.
 
@@ -42,7 +42,7 @@ If the user types into his browser myurl.com/Home/Index the Index action in the 
 
 ASP.NET MVC also offers the possibility of static route segments. This means that if the route contains a certain word that a specific controller and/or action are called.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-539" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/3-Fixed-and-variable-parts.jpg" alt="Fixed and variable parts" width="525" height="149" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/3-Fixed-and-variable-parts.jpg 525w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/3-Fixed-and-variable-parts-300x85.jpg 300w" sizes="(max-width: 525px) 100vw, 525px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/3-Fixed-and-variable-parts.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-539" src="/wp-content/uploads/2018/01/3-Fixed-and-variable-parts.jpg" alt="Fixed and variable parts" width="525" height="149" />](/wp-content/uploads/2018/01/3-Fixed-and-variable-parts.jpg)
 
 The screenshot above shows three different variations of a static segment in the route. The first route calls the ShowArchievePosts action in the Posts controller when the user enters /Blog/Archive. The second route calls an action entered in the Posts controller when the user enters/Blog/ActionName.
 
@@ -50,7 +50,7 @@ The third route is selected when the user input starts with /InternalBlog. If th
 
 Another possibility to add a static part to a route is to prefix the controller or action as part of its name.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-541" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4-prefix-controller.jpg" alt="Prefix controller" width="395" height="37" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4-prefix-controller.jpg 395w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4-prefix-controller-300x28.jpg 300w" sizes="(max-width: 395px) 100vw, 395px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4-prefix-controller.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-541" src="/wp-content/uploads/2018/01/4-prefix-controller.jpg" alt="Prefix controller" width="395" height="37" />](/wp-content/uploads/2018/01/4-prefix-controller.jpg)
 
 This route is matched when the controller begins with External. This means that the URL /ExternalHome/Index would call the Index action in the Home controller.
 
@@ -58,19 +58,19 @@ This route is matched when the controller begins with External. This means that 
 
 Now it gets a bit trickier. The routes are added to the RouteCollection as they appear in the RegisterRoutes method. After the user entered a URL, ASP.NET searches through the RouteCollection until it finds a fitting route. A fitting route does not mean that it leads to the result which the user expects.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-540" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4.5-Route-order.jpg" alt="Route order" width="630" height="141" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4.5-Route-order.jpg 630w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4.5-Route-order-300x67.jpg 300w" sizes="(max-width: 630px) 100vw, 630px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4.5-Route-order.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-540" src="/wp-content/uploads/2018/01/4.5-Route-order.jpg" alt="Route order" width="630" height="141" />](/wp-content/uploads/2018/01/4.5-Route-order.jpg)
 
 Let&#8217;s take a look at the two roots from above. The first route is the default route with a default controller and action and the second route has the static segment InternalBlog in front of the controller. What happens if the user enters &#8220;/InternalBlog/Posts/Display&#8221;? You might think that the second route is selected. But that&#8217;s not the case. The entered URL fits the first route where InternalBlog = controller, Posts = action, Display = id. If the application doesn&#8217;t have an InternalBlog controller with the Posts action, an error message is displayed.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-546" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4.6-Route-not-found-error.jpg" alt="Route not found error" width="1234" height="270" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4.6-Route-not-found-error.jpg 1234w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4.6-Route-not-found-error-300x66.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4.6-Route-not-found-error-768x168.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4.6-Route-not-found-error-1024x224.jpg 1024w" sizes="(max-width: 1234px) 100vw, 1234px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/4.6-Route-not-found-error.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-546" src="/wp-content/uploads/2018/01/4.6-Route-not-found-error.jpg" alt="Route not found error" width="1234" height="270" />](/wp-content/uploads/2018/01/4.6-Route-not-found-error.jpg)
 
 ### Custom segment variables
 
 The default route already showed that it is possible to add a variable after the action. For example, the route /Home/Index/123 call the Index action from the HomeController with the parameter 123. The parameter name of the action must match the variable name in the route. Otherwise, it will be null.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-547" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Default-Route.jpg" alt="Default Route" width="627" height="93" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Default-Route.jpg 627w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Default-Route-300x44.jpg 300w" sizes="(max-width: 627px) 100vw, 627px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Default-Route.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-547" src="/wp-content/uploads/2018/01/Default-Route.jpg" alt="Default Route" width="627" height="93" />](/wp-content/uploads/2018/01/Default-Route.jpg)
 
-[<img loading="lazy" class="aligncenter size-full wp-image-543" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/5.5-Custom-segment-controller-and-action.jpg" alt="Custom segment controller and action" width="312" height="140" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/5.5-Custom-segment-controller-and-action.jpg 312w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/5.5-Custom-segment-controller-and-action-300x135.jpg 300w" sizes="(max-width: 312px) 100vw, 312px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/5.5-Custom-segment-controller-and-action.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-543" src="/wp-content/uploads/2018/01/5.5-Custom-segment-controller-and-action.jpg" alt="Custom segment controller and action" width="312" height="140" />](/wp-content/uploads/2018/01/5.5-Custom-segment-controller-and-action.jpg)
 
 The default route sets the id as UrlParameter.Optional which means that this parameter is optional (what a surprise).
 
@@ -78,11 +78,11 @@ The default route sets the id as UrlParameter.Optional which means that this par
 
 Like params in C#, the routing in ASP.NET MVC offers a feature to take a variable amount of variables. To achieve that use the *catchall keyword.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-548" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Catchall.jpg" alt="Catchall" width="509" height="116" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Catchall.jpg 509w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Catchall-300x68.jpg 300w" sizes="(max-width: 509px) 100vw, 509px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Catchall.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-548" src="/wp-content/uploads/2018/01/Catchall.jpg" alt="Catchall" width="509" height="116" />](/wp-content/uploads/2018/01/Catchall.jpg)
 
 This allows the user to enable any amount of variables into the URL. A fitting URL would be for example /Home/Index/User/Detail/123. User/Detail/123 would be passed as catchall parameter to the Index action in the HomeController.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-549" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Catchall-action.jpg" alt="Catchall action" width="315" height="137" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Catchall-action.jpg 315w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Catchall-action-300x130.jpg 300w" sizes="(max-width: 315px) 100vw, 315px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Catchall-action.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-549" src="/wp-content/uploads/2018/01/Catchall-action.jpg" alt="Catchall action" width="315" height="137" />](/wp-content/uploads/2018/01/Catchall-action.jpg)
 
 The catchall string contains User/Detail/123.
 
@@ -90,7 +90,7 @@ The catchall string contains User/Detail/123.
 
 I already showed that it is possible to set default values for controller, actions and attributes in the route. It is also possible to set default values for attributes in the action.  This is done as in normal C# with variable = defaultValue, for example string id = &#8220;1&#8221;.
 
-### [<img loading="lazy" class="aligncenter size-full wp-image-550" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Default-attribute-in-action.jpg" alt="Default attribute in action" width="291" height="146" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Default-attribute-in-action.jpg)
+### [<img loading="lazy" class="aligncenter size-full wp-image-550" src="/wp-content/uploads/2018/01/Default-attribute-in-action.jpg" alt="Default attribute in action" width="291" height="146" />](/wp-content/uploads/2018/01/Default-attribute-in-action.jpg)
 
 ### Variable constraints
 
@@ -98,13 +98,13 @@ The routing in ASP.NET MVC enables you to restrict the data type and the range o
 
 To restrict a variable to a certain range, use the RangeRouteConstraint class, for example variable = new RangeRouteConstraint(min, max).
 
-[<img loading="lazy" class="aligncenter size-full wp-image-558" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Route-variable-constraints.jpg" alt="Route variable constraints" width="426" height="202" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Route-variable-constraints.jpg 426w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Route-variable-constraints-300x142.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Route-variable-constraints.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-558" src="/wp-content/uploads/2018/01/Route-variable-constraints.jpg" alt="Route variable constraints" width="426" height="202" />](/wp-content/uploads/2018/01/Route-variable-constraints.jpg)
 
 ### Restrict HTTP method
 
 Not only controller, actions and variables can be restricted, also the HTTP method can be restricted. To restrict a route to a certain HTTP method use httpMethod = new HttPMethodConstraint(&#8220;GET&#8221;). Instead of get, you could use any HTTP verb.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-559" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/HTTP-Method-constraint.jpg" alt="HTTP Method constraint" width="463" height="105" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/HTTP-Method-constraint.jpg 463w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/HTTP-Method-constraint-300x68.jpg 300w" sizes="(max-width: 463px) 100vw, 463px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/HTTP-Method-constraint.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-559" src="/wp-content/uploads/2018/01/HTTP-Method-constraint.jpg" alt="HTTP Method constraint" width="463" height="105" />](/wp-content/uploads/2018/01/HTTP-Method-constraint.jpg)
 
 ## Attribute Routing in ASP.NET MVC
 
@@ -114,11 +114,11 @@ Additionally, to creating routes it is possible to decorate controller and actio
 
 To enable attribute routing you have to add routes.MapMvcAttributeRoutes(); to the RegisterRoutes method. Next, you have to set the route attribute on an action and the desired route, for example [Route(&#8220;MyRoute&#8221;]). Now you can call your action with /MyRoute
 
-[<img loading="lazy" class="aligncenter size-full wp-image-553" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Enable-attribute-routing.jpg" alt="Enable attribute routing" width="416" height="73" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Enable-attribute-routing.jpg 416w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Enable-attribute-routing-300x53.jpg 300w" sizes="(max-width: 416px) 100vw, 416px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Enable-attribute-routing.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-553" src="/wp-content/uploads/2018/01/Enable-attribute-routing.jpg" alt="Enable attribute routing" width="416" height="73" />](/wp-content/uploads/2018/01/Enable-attribute-routing.jpg)
 
-[<img loading="lazy" class="aligncenter size-full wp-image-551" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-action.jpg" alt="Attribute routing action" width="247" height="154" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-action.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-551" src="/wp-content/uploads/2018/01/Attribute-routing-action.jpg" alt="Attribute routing action" width="247" height="154" />](/wp-content/uploads/2018/01/Attribute-routing-action.jpg)
 
-[<img loading="lazy" class="aligncenter size-full wp-image-552" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-result.jpg" alt="Attribute routing result" width="298" height="127" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-result.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-552" src="/wp-content/uploads/2018/01/Attribute-routing-result.jpg" alt="Attribute routing result" width="298" height="127" />](/wp-content/uploads/2018/01/Attribute-routing-result.jpg)
 
 It is also possible to decorate an action with several route attributes.
 
@@ -126,27 +126,27 @@ It is also possible to decorate an action with several route attributes.
 
 With attribute routes, it is also possible to add variables which can be processed in the action as parameters. To declare a variable wrap it in curly brackets. The name in the route must match the name of the parameter, otherwise, the parameter will be null.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-555" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-with-variables.jpg" alt="Attribute routing with variables" width="364" height="115" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-with-variables.jpg 364w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-with-variables-300x95.jpg 300w" sizes="(max-width: 364px) 100vw, 364px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-with-variables.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-555" src="/wp-content/uploads/2018/01/Attribute-routing-with-variables.jpg" alt="Attribute routing with variables" width="364" height="115" />](/wp-content/uploads/2018/01/Attribute-routing-with-variables.jpg)
 
 ### Constraints for route attributes
 
 The variables in the route attribute can be restricted to a certain data type. This would be useful for the id. Ids are usually int, so it makes sense to expect an int id. To do that you only have to add the data type after the variable name within the brackets, separated by a colon. Don&#8217;t forget to change the data type of the parameter, otherwise ASP.NET won&#8217;t match the variable with the parameter.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-556" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-with-variables-constraint.jpg" alt="Attribute routing with variables constraint" width="400" height="113" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-with-variables-constraint.jpg 400w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-with-variables-constraint-300x85.jpg 300w" sizes="(max-width: 400px) 100vw, 400px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Attribute-routing-with-variables-constraint.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-556" src="/wp-content/uploads/2018/01/Attribute-routing-with-variables-constraint.jpg" alt="Attribute routing with variables constraint" width="400" height="113" />](/wp-content/uploads/2018/01/Attribute-routing-with-variables-constraint.jpg)
 
 ## Routing Static Files
 
 If the user enters a path to a static file, for example, an image or a pdf file, the routing in ASP.NET MVC forwards the user to this file, if it exists.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-560" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Static-file.jpg" alt="Static file" width="371" height="94" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Static-file.jpg 371w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Static-file-300x76.jpg 300w" sizes="(max-width: 371px) 100vw, 371px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Static-file.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-560" src="/wp-content/uploads/2018/01/Static-file.jpg" alt="Static file" width="371" height="94" />](/wp-content/uploads/2018/01/Static-file.jpg)
 
 The mechanisms for routing in ASP.NET MVC searches first the path of the file. Only then it evaluates the routes. To prevent this behavior use set RouteExistingFiles to true.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-563" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Evaluate-routes-before-static-files.jpg" alt="Evaluate routes before static files" width="453" height="116" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Evaluate-routes-before-static-files.jpg 453w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Evaluate-routes-before-static-files-300x77.jpg 300w" sizes="(max-width: 453px) 100vw, 453px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Evaluate-routes-before-static-files.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-563" src="/wp-content/uploads/2018/01/Evaluate-routes-before-static-files.jpg" alt="Evaluate routes before static files" width="453" height="116" />](/wp-content/uploads/2018/01/Evaluate-routes-before-static-files.jpg)
 
 It is also possible to ignore the routing for a certain file type with routes.IgnoreRoute(path).
 
-[<img loading="lazy" class="aligncenter size-full wp-image-564" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Ignore-Route-for-all-html-files-in-staticcontent.jpg" alt="Ignore route for all html files in staticcontent" width="386" height="38" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Ignore-Route-for-all-html-files-in-staticcontent.jpg 386w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Ignore-Route-for-all-html-files-in-staticcontent-300x30.jpg 300w" sizes="(max-width: 386px) 100vw, 386px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Ignore-Route-for-all-html-files-in-staticcontent.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-564" src="/wp-content/uploads/2018/01/Ignore-Route-for-all-html-files-in-staticcontent.jpg" alt="Ignore route for all html files in staticcontent" width="386" height="38" />](/wp-content/uploads/2018/01/Ignore-Route-for-all-html-files-in-staticcontent.jpg)
 
 The example above shows that routing is ignored for all HTML files in the StaticContent folder. You can use {filename} as a variable for all file names in this directory.
 

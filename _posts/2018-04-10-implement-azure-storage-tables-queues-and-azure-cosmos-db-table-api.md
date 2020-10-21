@@ -29,7 +29,7 @@ This section will explain how to access table storage programmatically using C#.
   2. Add the following code to your app.config file:
 
 <div id="attachment_1135" style="width: 568px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1135" loading="lazy" class="size-full wp-image-1135" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" width="558" height="87" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account.jpg 558w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account-300x47.jpg 300w" sizes="(max-width: 558px) 100vw, 558px" /></a>
+  <a href="/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1135" loading="lazy" class="size-full wp-image-1135" src="/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" width="558" height="87" /></a>
   
   <p id="caption-attachment-1135" class="wp-caption-text">
     Setup the connection string to your storage account
@@ -48,7 +48,7 @@ Replace the placeholder with your storage account name and storage account key
 </ol>
 
 <div id="attachment_1136" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-the-connection-string.jpg"><img aria-describedby="caption-attachment-1136" loading="lazy" class="wp-image-1136" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-the-connection-string.jpg" alt="Retrieve the connection string" width="700" height="20" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-the-connection-string.jpg 767w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-the-connection-string-300x9.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Retrieve-the-connection-string.jpg"><img aria-describedby="caption-attachment-1136" loading="lazy" class="wp-image-1136" src="/wp-content/uploads/2018/04/Retrieve-the-connection-string.jpg" alt="Retrieve the connection string" width="700" height="20" /></a>
   
   <p id="caption-attachment-1136" class="wp-caption-text">
     Retrieve the connection string
@@ -62,7 +62,7 @@ Replace the placeholder with your storage account name and storage account key
 </ol>
 
 <div id="attachment_1138" style="width: 433px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1138" loading="lazy" class="size-full wp-image-1138" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg" alt="Create the orders table if it does not exist" width="423" height="73" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg 423w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-orders-table-if-it-does-not-exist-300x52.jpg 300w" sizes="(max-width: 423px) 100vw, 423px" /></a>
+  <a href="/wp-content/uploads/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1138" loading="lazy" class="size-full wp-image-1138" src="/wp-content/uploads/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg" alt="Create the orders table if it does not exist" width="423" height="73" /></a>
   
   <p id="caption-attachment-1138" class="wp-caption-text">
     Create the orders table if it does not exist
@@ -134,7 +134,7 @@ To insert data into the previously created table, follow these steps:
   1. Add the following class:
 
 <div id="attachment_1139" style="width: 454px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg"><img aria-describedby="caption-attachment-1139" loading="lazy" class="size-full wp-image-1139" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg" alt="The OrderEntity class will be used to add orders into the table" width="444" height="380" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg 444w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table-300x257.jpg 300w" sizes="(max-width: 444px) 100vw, 444px" /></a>
+  <a href="/wp-content/uploads/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg"><img aria-describedby="caption-attachment-1139" loading="lazy" class="size-full wp-image-1139" src="/wp-content/uploads/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg" alt="The OrderEntity class will be used to add orders into the table" width="444" height="380" /></a>
   
   <p id="caption-attachment-1139" class="wp-caption-text">
     The OrderEntity class will be used to add orders into the table
@@ -148,7 +148,7 @@ To insert data into the previously created table, follow these steps:
 </ol>
 
 <div id="attachment_1140" style="width: 782px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Insert-a-single-record-into-the-table.jpg"><img aria-describedby="caption-attachment-1140" loading="lazy" class="size-full wp-image-1140" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Insert-a-single-record-into-the-table.jpg" alt="Insert a single record into the table" width="772" height="239" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Insert-a-single-record-into-the-table.jpg 772w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Insert-a-single-record-into-the-table-300x93.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Insert-a-single-record-into-the-table-768x238.jpg 768w" sizes="(max-width: 772px) 100vw, 772px" /></a>
+  <a href="/wp-content/uploads/2018/04/Insert-a-single-record-into-the-table.jpg"><img aria-describedby="caption-attachment-1140" loading="lazy" class="size-full wp-image-1140" src="/wp-content/uploads/2018/04/Insert-a-single-record-into-the-table.jpg" alt="Insert a single record into the table" width="772" height="239" /></a>
   
   <p id="caption-attachment-1140" class="wp-caption-text">
     Insert a single record into the table
@@ -162,7 +162,7 @@ You can group inserts and other operations into a single batch transaction. You 
 To insert multiple orders in one transaction, add this code to your application:
 
 <div id="attachment_1141" style="width: 780px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Insert-multiple-records-into-the-table.jpg"><img aria-describedby="caption-attachment-1141" loading="lazy" class="size-full wp-image-1141" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Insert-multiple-records-into-the-table.jpg" alt="Insert multiple records into the table" width="770" height="506" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Insert-multiple-records-into-the-table.jpg 770w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Insert-multiple-records-into-the-table-300x197.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Insert-multiple-records-into-the-table-768x505.jpg 768w" sizes="(max-width: 770px) 100vw, 770px" /></a>
+  <a href="/wp-content/uploads/2018/04/Insert-multiple-records-into-the-table.jpg"><img aria-describedby="caption-attachment-1141" loading="lazy" class="size-full wp-image-1141" src="/wp-content/uploads/2018/04/Insert-multiple-records-into-the-table.jpg" alt="Insert multiple records into the table" width="770" height="506" /></a>
   
   <p id="caption-attachment-1141" class="wp-caption-text">
     Insert multiple records into the table
@@ -178,7 +178,7 @@ Within a table, entities are ordered within the partition key. Within a partitio
 The following code gets all records within a partition using the PartitionKey property:
 
 <div id="attachment_1142" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang.jpg"><img aria-describedby="caption-attachment-1142" loading="lazy" class="wp-image-1142" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang.jpg" alt="Retrieve all records of the table with the partition key Wolfgang" width="700" height="203" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang.jpg 770w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang-300x87.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang-768x222.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang.jpg"><img aria-describedby="caption-attachment-1142" loading="lazy" class="wp-image-1142" src="/wp-content/uploads/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang.jpg" alt="Retrieve all records of the table with the partition key Wolfgang" width="700" height="203" /></a>
   
   <p id="caption-attachment-1142" class="wp-caption-text">
     Retrieve all records of the table with the partition key Wolfgang
@@ -190,7 +190,7 @@ The following code gets all records within a partition using the PartitionKey pr
 To update records, you can use the InsertOrReplace() method. It creates a records if it does not exist and updates an existing one, based on the partition key and row key. Use the following code to do that:
 
 <div id="attachment_1143" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Update-a-record-in-the-table.jpg"><img aria-describedby="caption-attachment-1143" loading="lazy" class="wp-image-1143" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Update-a-record-in-the-table.jpg" alt="Update a record in the table" width="700" height="209" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Update-a-record-in-the-table.jpg 766w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Update-a-record-in-the-table-300x90.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Update-a-record-in-the-table.jpg"><img aria-describedby="caption-attachment-1143" loading="lazy" class="wp-image-1143" src="/wp-content/uploads/2018/04/Update-a-record-in-the-table.jpg" alt="Update a record in the table" width="700" height="209" /></a>
   
   <p id="caption-attachment-1143" class="wp-caption-text">
     Update a record in the table
@@ -202,7 +202,7 @@ To update records, you can use the InsertOrReplace() method. It creates a record
 To delete a record, you have to retrieve it first and then call the Delete() method. Use the following code to do that:
 
 <div id="attachment_1144" style="width: 774px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-a-record-from-the-table.jpg"><img aria-describedby="caption-attachment-1144" loading="lazy" class="size-full wp-image-1144" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-a-record-from-the-table.jpg" alt="Delete a record from the table" width="764" height="152" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-a-record-from-the-table.jpg 764w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-a-record-from-the-table-300x60.jpg 300w" sizes="(max-width: 764px) 100vw, 764px" /></a>
+  <a href="/wp-content/uploads/2018/04/Delete-a-record-from-the-table.jpg"><img aria-describedby="caption-attachment-1144" loading="lazy" class="size-full wp-image-1144" src="/wp-content/uploads/2018/04/Delete-a-record-from-the-table.jpg" alt="Delete a record from the table" width="764" height="152" /></a>
   
   <p id="caption-attachment-1144" class="wp-caption-text">
     Delete a record from the table
@@ -275,7 +275,7 @@ You can find the following demo on <a href="https://github.com/WolfgangOfner/Azu
   2. Add the following code to your app.config file:
 
 <div id="attachment_1135" style="width: 568px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1135" loading="lazy" class="size-full wp-image-1135" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" width="558" height="87" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account.jpg 558w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account-300x47.jpg 300w" sizes="(max-width: 558px) 100vw, 558px" /></a>
+  <a href="/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1135" loading="lazy" class="size-full wp-image-1135" src="/wp-content/uploads/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" width="558" height="87" /></a>
   
   <p id="caption-attachment-1135" class="wp-caption-text">
     Setup the connection string to your storage account
@@ -288,7 +288,7 @@ Replace the placeholder with your storage account name and storage account key.
   2. In the Main method, retrieve the connection string:
 
 <div id="attachment_1136" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-the-connection-string.jpg"><img aria-describedby="caption-attachment-1136" loading="lazy" class="wp-image-1136" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-the-connection-string.jpg" alt="Retrieve the connection string" width="700" height="20" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-the-connection-string.jpg 767w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Retrieve-the-connection-string-300x9.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Retrieve-the-connection-string.jpg"><img aria-describedby="caption-attachment-1136" loading="lazy" class="wp-image-1136" src="/wp-content/uploads/2018/04/Retrieve-the-connection-string.jpg" alt="Retrieve the connection string" width="700" height="20" /></a>
   
   <p id="caption-attachment-1136" class="wp-caption-text">
     Retrieve the connection string
@@ -302,7 +302,7 @@ Replace the placeholder with your storage account name and storage account key.
 </ol>
 
 <div id="attachment_1145" style="width: 427px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1145" loading="lazy" class="size-full wp-image-1145" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg" alt="Create the queue queue if it does not exist" width="417" height="70" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg 417w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-queue-queue-if-it-does-not-exist-300x50.jpg 300w" sizes="(max-width: 417px) 100vw, 417px" /></a>
+  <a href="/wp-content/uploads/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1145" loading="lazy" class="size-full wp-image-1145" src="/wp-content/uploads/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg" alt="Create the queue queue if it does not exist" width="417" height="70" /></a>
   
   <p id="caption-attachment-1145" class="wp-caption-text">
     Create the queue queue if it does not exist
@@ -316,7 +316,7 @@ Replace the placeholder with your storage account name and storage account key.
 </ol>
 
 <div id="attachment_1146" style="width: 441px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-three-messages-to-the-queue.jpg"><img aria-describedby="caption-attachment-1146" loading="lazy" class="size-full wp-image-1146" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-three-messages-to-the-queue.jpg" alt="Add three messages to the queue" width="431" height="53" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-three-messages-to-the-queue.jpg 431w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-three-messages-to-the-queue-300x37.jpg 300w" sizes="(max-width: 431px) 100vw, 431px" /></a>
+  <a href="/wp-content/uploads/2018/04/Add-three-messages-to-the-queue.jpg"><img aria-describedby="caption-attachment-1146" loading="lazy" class="size-full wp-image-1146" src="/wp-content/uploads/2018/04/Add-three-messages-to-the-queue.jpg" alt="Add three messages to the queue" width="431" height="53" /></a>
   
   <p id="caption-attachment-1146" class="wp-caption-text">
     Add three messages to the queue
@@ -329,7 +329,7 @@ Replace the placeholder with your storage account name and storage account key.
   </li>
 </ol>
 
-[<img loading="lazy" width="774" height="423" class="wp-image-1096" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Displaying-the-previously-added-messages-in-the-Azure-Portal.jpg" alt="&quot;Displaying" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Displaying-the-previously-added-messages-in-the-Azure-Portal.jpg 774w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Displaying-the-previously-added-messages-in-the-Azure-Portal-300x164.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Displaying-the-previously-added-messages-in-the-Azure-Portal-768x420.jpg 768w" sizes="(max-width: 774px) 100vw, 774px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Displaying-the-previously-added-messages-in-the-Azure-Portal.jpg)
+[<img loading="lazy" width="774" height="423" class="wp-image-1096" src="/wp-content/uploads/2018/04/Displaying-the-previously-added-messages-in-the-Azure-Portal.jpg" alt="&quot;Displaying" />](/wp-content/uploads/2018/04/Displaying-the-previously-added-messages-in-the-Azure-Portal.jpg)
 
 On the screenshot above, you can see that every message in the queue got a unique ID assigned. This ID is used by the Storage Client Library to identify a message.
 
@@ -340,7 +340,7 @@ The maximum size for a message in a queue is 64 KB, but it is best practice to k
 Messages are usually published by a different application from the application that listens for new messages to process them. For simplicity, I use the same application for publishing and listening in this demo. To de-queue a message use the following code:
 
 <div id="attachment_1147" style="width: 400px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg"><img aria-describedby="caption-attachment-1147" loading="lazy" class="size-full wp-image-1147" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg" alt="Dequeue a single message from the queue which is not older than five minutes" width="390" height="105" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg 390w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes-300x81.jpg 300w" sizes="(max-width: 390px) 100vw, 390px" /></a>
+  <a href="/wp-content/uploads/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg"><img aria-describedby="caption-attachment-1147" loading="lazy" class="size-full wp-image-1147" src="/wp-content/uploads/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg" alt="Dequeue a single message from the queue which is not older than five minutes" width="390" height="105" /></a>
   
   <p id="caption-attachment-1147" class="wp-caption-text">
     Dequeue a single message from the queue which is not older than five minutes
@@ -354,7 +354,7 @@ The code returns the oldest message, which is not older than five minutes.
 A queue listener can be implemented as single-threaded (processing one message at a time) or multi-threaded (processing messages in a batch on separate threads). You can retrieve up to 32 messages from a queue using GetMessages() to process multiple messages in parallel. To get more than one message with GetMessages(), specify the number of items which should be de-queued:
 
 <div id="attachment_1148" style="width: 438px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Dequeue-multiple-messages-from-the-queue.jpg"><img aria-describedby="caption-attachment-1148" loading="lazy" class="size-full wp-image-1148" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Dequeue-multiple-messages-from-the-queue.jpg" alt="Dequeue multiple messages from the queue" width="428" height="112" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Dequeue-multiple-messages-from-the-queue.jpg 428w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Dequeue-multiple-messages-from-the-queue-300x79.jpg 300w" sizes="(max-width: 428px) 100vw, 428px" /></a>
+  <a href="/wp-content/uploads/2018/04/Dequeue-multiple-messages-from-the-queue.jpg"><img aria-describedby="caption-attachment-1148" loading="lazy" class="size-full wp-image-1148" src="/wp-content/uploads/2018/04/Dequeue-multiple-messages-from-the-queue.jpg" alt="Dequeue multiple messages from the queue" width="428" height="112" /></a>
   
   <p id="caption-attachment-1148" class="wp-caption-text">
     Dequeue multiple messages from the queue

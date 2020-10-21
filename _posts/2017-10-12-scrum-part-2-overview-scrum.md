@@ -38,7 +38,7 @@ If the team takes the ownership of the product, the team feels more responsible 
 **Lead by example:** the organizational leader must lead by acknowledging the agile process by accepting that the team is self-managing and giving it the freedom it needs. Don’t do it as shown in the following comic 😉
 
 <div id="attachment_166" style="width: 710px" class="wp-caption aligncenter">
-  <a href="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Dilbert_Training_Agile_Programming.png"><img aria-describedby="caption-attachment-166" loading="lazy" class="wp-image-166" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Dilbert_Training_Agile_Programming.png" alt="Dilbert Training Agile Programming" width="700" height="220" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Dilbert_Training_Agile_Programming.png 3850w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Dilbert_Training_Agile_Programming-300x94.png 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Dilbert_Training_Agile_Programming-768x242.png 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Dilbert_Training_Agile_Programming-1024x322.png 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2017/10/Dilbert_Training_Agile_Programming.png"><img aria-describedby="caption-attachment-166" loading="lazy" class="wp-image-166" src="/wp-content/uploads/2017/10/Dilbert_Training_Agile_Programming.png" alt="Dilbert Training Agile Programming" width="700" height="220" /></a>
   
   <p id="caption-attachment-166" class="wp-caption-text">
     <a href="http://www.agitma.nl/dilbert-saves-the-agile-day/" target="_blank" rel="noopener">Source</a>

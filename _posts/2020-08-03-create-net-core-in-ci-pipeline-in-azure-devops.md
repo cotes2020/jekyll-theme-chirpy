@@ -15,7 +15,7 @@ In my <a href="https://www.programmingwithwolfgang.com/creating-a-microservice-w
 In your Azure DevOps project, go to Pipelines and click Create Pipeline.
 
 <div id="attachment_2306" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Create-a-new-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2306" loading="lazy" class="wp-image-2306" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Create-a-new-CI-Pipeline.jpg" alt="Create a new CI Pipeline" width="700" height="361" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Create-a-new-CI-Pipeline.jpg 1332w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Create-a-new-CI-Pipeline-300x155.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Create-a-new-CI-Pipeline-1024x528.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Create-a-new-CI-Pipeline-768x396.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/08/Create-a-new-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2306" loading="lazy" class="wp-image-2306" src="/wp-content/uploads/2020/08/Create-a-new-CI-Pipeline.jpg" alt="Create a new CI Pipeline" width="700" height="361" /></a>
   
   <p id="caption-attachment-2306" class="wp-caption-text">
     Create a new CI Pipeline
@@ -25,7 +25,7 @@ In your Azure DevOps project, go to Pipelines and click Create Pipeline.
 In the next window, select where you have your code stored. I select GitHub for this Demo. Usually, I have my code directly in Azure DevOps, then I would select Azure Repos Git. On the bottom, you can see &#8220;Use the classic editor&#8221;. This opens the old task-based editor. You shouldn&#8217;t use this anymore since the new standard is to use YML pipelines. This enables you to have your pipeline in your source control.
 
 <div id="attachment_2307" style="width: 608px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-where-your-code-is.jpg"><img aria-describedby="caption-attachment-2307" loading="lazy" class="size-full wp-image-2307" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-where-your-code-is.jpg" alt="Select where your code is" width="598" height="571" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-where-your-code-is.jpg 598w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-where-your-code-is-300x286.jpg 300w" sizes="(max-width: 598px) 100vw, 598px" /></a>
+  <a href="/wp-content/uploads/2020/08/Select-where-your-code-is.jpg"><img aria-describedby="caption-attachment-2307" loading="lazy" class="size-full wp-image-2307" src="/wp-content/uploads/2020/08/Select-where-your-code-is.jpg" alt="Select where your code is" width="598" height="571" /></a>
   
   <p id="caption-attachment-2307" class="wp-caption-text">
     Select where your code is
@@ -37,7 +37,7 @@ In the next window, select where you have your code stored. I select GitHub for 
 Since the code is on GitHub, I have to authorize Azure Pipelines to access my repositories. If the code was on an Azure Repos, this step wouldn&#8217;t be necessary.
 
 <div id="attachment_2308" style="width: 535px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg"><img aria-describedby="caption-attachment-2308" loading="lazy" class="wp-image-2308" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg" alt="Authorize Azure Pipelines to access Github" width="525" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg 557w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Authorize-Azure-Pipelines-to-access-Github-225x300.jpg 225w" sizes="(max-width: 525px) 100vw, 525px" /></a>
+  <a href="/wp-content/uploads/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg"><img aria-describedby="caption-attachment-2308" loading="lazy" class="wp-image-2308" src="/wp-content/uploads/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg" alt="Authorize Azure Pipelines to access Github" width="525" height="700" /></a>
   
   <p id="caption-attachment-2308" class="wp-caption-text">
     Authorize Azure Pipelines to access Github
@@ -47,7 +47,7 @@ Since the code is on GitHub, I have to authorize Azure Pipelines to access my re
 After authorizing Azure Pipelines for GitHub, all your repositories will be displayed. Search and select for the repository, you want to make the CI pipeline for. In my case, I select the .NetCoreMicroserviceCiCdAks repository.
 
 <div id="attachment_2492" style="width: 697px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Select-your-repository.jpg"><img aria-describedby="caption-attachment-2492" loading="lazy" class="size-full wp-image-2492" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Select-your-repository.jpg" alt="Select your repository" width="687" height="295" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Select-your-repository.jpg 687w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Select-your-repository-300x129.jpg 300w" sizes="(max-width: 687px) 100vw, 687px" /></a>
+  <a href="/wp-content/uploads/2020/10/Select-your-repository.jpg"><img aria-describedby="caption-attachment-2492" loading="lazy" class="size-full wp-image-2492" src="/wp-content/uploads/2020/10/Select-your-repository.jpg" alt="Select your repository" width="687" height="295" /></a>
   
   <p id="caption-attachment-2492" class="wp-caption-text">
     Select your repository
@@ -61,7 +61,7 @@ On the next window, I have to approve to install Azure Pipelines in my Github re
 On the next step, select a template for your CI pipeline. Azure DevOps offers many templates like Docker, Kubernetes, PHP, or Node.js. Since my application is a .NET Core microservice, I select the ASP.NET Core template.
 
 <div id="attachment_2314" style="width: 493px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2314" loading="lazy" class="size-full wp-image-2314" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg" alt="Select the ASP.NET Core template for your CI Pipeline" width="483" height="633" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg 483w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline-229x300.jpg 229w" sizes="(max-width: 483px) 100vw, 483px" /></a>
+  <a href="/wp-content/uploads/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2314" loading="lazy" class="size-full wp-image-2314" src="/wp-content/uploads/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg" alt="Select the ASP.NET Core template for your CI Pipeline" width="483" height="633" /></a>
   
   <p id="caption-attachment-2314" class="wp-caption-text">
     Select the ASP.NET Core template for your CI Pipeline
@@ -71,7 +71,7 @@ On the next step, select a template for your CI pipeline. Azure DevOps offers ma
 That&#8217;s it. The template created a simple CI pipeline and you can use it to build your .NET Core solution. In the next section, I will go into more detail about the functionality and add more steps.
 
 <div id="attachment_2493" style="width: 587px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/The-template-created-a-simple-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2493" loading="lazy" class="size-full wp-image-2493" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/The-template-created-a-simple-CI-Pipeline.jpg" alt="The template created a simple CI Pipeline" width="577" height="418" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/The-template-created-a-simple-CI-Pipeline.jpg 577w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/The-template-created-a-simple-CI-Pipeline-300x217.jpg 300w" sizes="(max-width: 577px) 100vw, 577px" /></a>
+  <a href="/wp-content/uploads/2020/10/The-template-created-a-simple-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2493" loading="lazy" class="size-full wp-image-2493" src="/wp-content/uploads/2020/10/The-template-created-a-simple-CI-Pipeline.jpg" alt="The template created a simple CI Pipeline" width="577" height="418" /></a>
   
   <p id="caption-attachment-2493" class="wp-caption-text">
     The template created a simple CI Pipeline
@@ -101,7 +101,7 @@ I remove the build script and select the .NET Core task on the right side. I sel
 &nbsp;
 
 <div id="attachment_2494" style="width: 338px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Add-a-Nuget-restore-step-to-the-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2494" loading="lazy" class="wp-image-2494" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Add-a-Nuget-restore-step-to-the-CI-Pipeline.jpg" alt="Add a Nuget restore step to the CI Pipeline" width="328" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Add-a-Nuget-restore-step-to-the-CI-Pipeline.jpg 359w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Add-a-Nuget-restore-step-to-the-CI-Pipeline-141x300.jpg 141w" sizes="(max-width: 328px) 100vw, 328px" /></a>
+  <a href="/wp-content/uploads/2020/10/Add-a-Nuget-restore-step-to-the-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2494" loading="lazy" class="wp-image-2494" src="/wp-content/uploads/2020/10/Add-a-Nuget-restore-step-to-the-CI-Pipeline.jpg" alt="Add a Nuget restore step to the CI Pipeline" width="328" height="700" /></a>
   
   <p id="caption-attachment-2494" class="wp-caption-text">
     Add a Nuget restore step to the CI Pipeline
@@ -154,7 +154,7 @@ displayName: &#8216;Publish CustomerApi&#8217;
 Click Save and Run and and the pipeline will be added to your source control and then executed.I created a new branch to test if everything is fine.
 
 <div id="attachment_2495" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Running-the-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2495" loading="lazy" class="wp-image-2495" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Running-the-CI-Pipeline.jpg" alt="Running the CI Pipeline" width="700" height="307" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Running-the-CI-Pipeline.jpg 1193w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Running-the-CI-Pipeline-300x132.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Running-the-CI-Pipeline-1024x450.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/Running-the-CI-Pipeline-768x337.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/10/Running-the-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2495" loading="lazy" class="wp-image-2495" src="/wp-content/uploads/2020/10/Running-the-CI-Pipeline.jpg" alt="Running the CI Pipeline" width="700" height="307" /></a>
   
   <p id="caption-attachment-2495" class="wp-caption-text">
     Running the CI Pipeline
@@ -164,7 +164,7 @@ Click Save and Run and and the pipeline will be added to your source control and
 After the build is finished, you see a summary and that all 52 tests passed.
 
 <div id="attachment_2491" style="width: 1018px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/All-unit-tests-passed.jpg"><img aria-describedby="caption-attachment-2491" loading="lazy" class="size-full wp-image-2491" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/All-unit-tests-passed.jpg" alt="All unit tests passed" width="1008" height="783" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/All-unit-tests-passed.jpg 1008w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/All-unit-tests-passed-300x233.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/10/All-unit-tests-passed-768x597.jpg 768w" sizes="(max-width: 1008px) 100vw, 1008px" /></a>
+  <a href="/wp-content/uploads/2020/10/All-unit-tests-passed.jpg"><img aria-describedby="caption-attachment-2491" loading="lazy" class="size-full wp-image-2491" src="/wp-content/uploads/2020/10/All-unit-tests-passed.jpg" alt="All unit tests passed" width="1008" height="783" /></a>
   
   <p id="caption-attachment-2491" class="wp-caption-text">
     All unit tests passed
@@ -192,7 +192,7 @@ condition: and(succeeded(), eq(variables[&#8216;Build.SourceBranch&#8217;], &#82
 Save the pipeline and run it with any branch but the master branch. You will see that the publish task is skipped.
 
 <div id="attachment_2509" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-Publish-Task-got-skipped.jpg"><img aria-describedby="caption-attachment-2509" loading="lazy" class="wp-image-2509" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-Publish-Task-got-skipped.jpg" alt="The Publish Task got skipped" width="700" height="347" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-Publish-Task-got-skipped.jpg 1020w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-Publish-Task-got-skipped-300x149.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-Publish-Task-got-skipped-768x380.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/08/The-Publish-Task-got-skipped.jpg"><img aria-describedby="caption-attachment-2509" loading="lazy" class="wp-image-2509" src="/wp-content/uploads/2020/08/The-Publish-Task-got-skipped.jpg" alt="The Publish Task got skipped" width="700" height="347" /></a>
   
   <p id="caption-attachment-2509" class="wp-caption-text">
     The Publish Task got skipped

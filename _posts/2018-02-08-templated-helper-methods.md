@@ -12,7 +12,7 @@ I talked about HTML Helper Methods in <a href="https://www.programmingwithwolfga
 I use the same project as last time. The only changes I made was adding an address and the birthday to the customer class. You can download the code <a href="https://github.com/WolfgangOfner/MVC-TemplatedHelperMethods" target="_blank" rel="noopener noreferrer">here</a>.
 
 <div id="attachment_798" style="width: 305px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Implementation-of-the-Address-class.jpg"><img aria-describedby="caption-attachment-798" loading="lazy" class="size-full wp-image-798" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Implementation-of-the-Address-class.jpg" alt="Implementation of the Address class" width="295" height="278" /></a>
+  <a href="/wp-content/uploads/2018/02/Implementation-of-the-Address-class.jpg"><img aria-describedby="caption-attachment-798" loading="lazy" class="size-full wp-image-798" src="/wp-content/uploads/2018/02/Implementation-of-the-Address-class.jpg" alt="Implementation of the Address class" width="295" height="278" /></a>
   
   <p id="caption-attachment-798" class="wp-caption-text">
     Implementation of the Address class
@@ -24,7 +24,7 @@ I use the same project as last time. The only changes I made was adding an addre
 The simplest templated helper method is Html.Editor and the strongly typed version Html.EditorFor. I like the strongly typed version due to it&#8217;s IntelliSense support and pass the property name as the parameter. The MVC framework renders the element which it thinks fits best.
 
 <div id="attachment_802" style="width: 492px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg"><img aria-describedby="caption-attachment-802" loading="lazy" class="size-full wp-image-802" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg" alt="Using Html.EditorFor to create HTML elements" width="482" height="337" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg 482w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Using-Html.EditorFor-to-create-HTML-elements-300x210.jpg 300w" sizes="(max-width: 482px) 100vw, 482px" /></a>
+  <a href="/wp-content/uploads/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg"><img aria-describedby="caption-attachment-802" loading="lazy" class="size-full wp-image-802" src="/wp-content/uploads/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg" alt="Using Html.EditorFor to create HTML elements" width="482" height="337" /></a>
   
   <p id="caption-attachment-802" class="wp-caption-text">
     Using Html.EditorFor to create HTML elements
@@ -206,7 +206,7 @@ The following templated helper methods are available for the scaffolding process
 With these templated helper methods it is possible to render forms with just a couple lines of code. This makes them easy to read and easy to change.
 
 <div id="attachment_799" style="width: 486px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg"><img aria-describedby="caption-attachment-799" loading="lazy" class="size-full wp-image-799" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg" alt="Creating a form using templated helper methods with the model" width="476" height="169" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg 476w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model-300x107.jpg 300w" sizes="(max-width: 476px) 100vw, 476px" /></a>
+  <a href="/wp-content/uploads/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg"><img aria-describedby="caption-attachment-799" loading="lazy" class="size-full wp-image-799" src="/wp-content/uploads/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg" alt="Creating a form using templated helper methods with the model" width="476" height="169" /></a>
   
   <p id="caption-attachment-799" class="wp-caption-text">
     Creating a form using templated helper methods with the model
@@ -215,7 +215,7 @@ With these templated helper methods it is possible to render forms with just a c
 
 When you look at the result you can see that there are some problems with the output:
 
-[<img loading="lazy" width="259" height="451" class="size-full wp-image-800" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Output-of-the-form-which-was-created-with-the-templated-helper-methods.jpg" alt="&quot;<yoastmark" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Output-of-the-form-which-was-created-with-the-templated-helper-methods.jpg 259w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Output-of-the-form-which-was-created-with-the-templated-helper-methods-172x300.jpg 172w" sizes="(max-width: 259px) 100vw, 259px" />](https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Output-of-the-form-which-was-created-with-the-templated-helper-methods.jpg)
+[<img loading="lazy" width="259" height="451" class="size-full wp-image-800" src="/wp-content/uploads/2018/02/Output-of-the-form-which-was-created-with-the-templated-helper-methods.jpg" alt="&quot;<yoastmark" />](/wp-content/uploads/2018/02/Output-of-the-form-which-was-created-with-the-templated-helper-methods.jpg)
 
 The Html.LabelForModel method didn&#8217;t render anything in the headline, and the role is a textbox instead of a drop-down list. (this time it is not the fault of IE) Additionally, the Address is not rendered and probably I don&#8217;t want to display the Id to the user.
 
@@ -343,7 +343,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div id="attachment_803" style="width: 285px" class="wp-caption aligncenter">
-    <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg"><img aria-describedby="caption-attachment-803" loading="lazy" class="size-full wp-image-803" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg" alt="Applying the HiddenInput attribute to the CustomerId" width="275" height="58" /></a>
+    <a href="/wp-content/uploads/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg"><img aria-describedby="caption-attachment-803" loading="lazy" class="size-full wp-image-803" src="/wp-content/uploads/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg" alt="Applying the HiddenInput attribute to the CustomerId" width="275" height="58" /></a>
     
     <p id="caption-attachment-803" class="wp-caption-text">
       Applying the HiddenInput attribute to the CustomerId
@@ -367,7 +367,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div id="attachment_806" style="width: 317px" class="wp-caption aligncenter">
-    <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg"><img aria-describedby="caption-attachment-806" loading="lazy" class="size-full wp-image-806" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg" alt="Decorating the model properties with the Display attribute" width="307" height="254" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg 307w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Decorating-the-model-properties-with-the-Display-attribute-300x248.jpg 300w" sizes="(max-width: 307px) 100vw, 307px" /></a>
+    <a href="/wp-content/uploads/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg"><img aria-describedby="caption-attachment-806" loading="lazy" class="size-full wp-image-806" src="/wp-content/uploads/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg" alt="Decorating the model properties with the Display attribute" width="307" height="254" /></a>
     
     <p id="caption-attachment-806" class="wp-caption-text">
       Decorating the model properties with the Display attribute
@@ -379,7 +379,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div id="attachment_807" style="width: 283px" class="wp-caption aligncenter">
-    <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg"><img aria-describedby="caption-attachment-807" loading="lazy" class="size-full wp-image-807" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg" alt="Output of the form with the Display attribute for naming the properties" width="273" height="379" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg 273w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties-216x300.jpg 216w" sizes="(max-width: 273px) 100vw, 273px" /></a>
+    <a href="/wp-content/uploads/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg"><img aria-describedby="caption-attachment-807" loading="lazy" class="size-full wp-image-807" src="/wp-content/uploads/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg" alt="Output of the form with the Display attribute for naming the properties" width="273" height="379" /></a>
     
     <p id="caption-attachment-807" class="wp-caption-text">
       Output of the form with the Display attribute for naming the properties
@@ -395,7 +395,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div id="attachment_808" style="width: 357px" class="wp-caption aligncenter">
-    <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg"><img aria-describedby="caption-attachment-808" loading="lazy" class="size-full wp-image-808" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg" alt="Implementation of the partial customer class with attributes" width="347" height="327" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg 347w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Implementation-of-the-partial-customer-class-with-attributes-300x283.jpg 300w" sizes="(max-width: 347px) 100vw, 347px" /></a>
+    <a href="/wp-content/uploads/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg"><img aria-describedby="caption-attachment-808" loading="lazy" class="size-full wp-image-808" src="/wp-content/uploads/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg" alt="Implementation of the partial customer class with attributes" width="347" height="327" /></a>
     
     <p id="caption-attachment-808" class="wp-caption-text">
       Implementation of the partial customer class with attributes
@@ -407,7 +407,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div id="attachment_809" style="width: 359px" class="wp-caption aligncenter">
-    <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg"><img aria-describedby="caption-attachment-809" loading="lazy" class="size-full wp-image-809" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg" alt="Adding the MetaData attribute to the customer class" width="349" height="78" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg 349w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Adding-the-MetaData-attribute-to-the-customer-class-300x67.jpg 300w" sizes="(max-width: 349px) 100vw, 349px" /></a>
+    <a href="/wp-content/uploads/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg"><img aria-describedby="caption-attachment-809" loading="lazy" class="size-full wp-image-809" src="/wp-content/uploads/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg" alt="Adding the MetaData attribute to the customer class" width="349" height="78" /></a>
     
     <p id="caption-attachment-809" class="wp-caption-text">
       Adding the MetaData attribute to the customer class
@@ -431,7 +431,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div id="attachment_810" style="width: 494px" class="wp-caption aligncenter">
-    <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Adding-a-render-method-for-the-Address-property.jpg"><img aria-describedby="caption-attachment-810" loading="lazy" class="size-full wp-image-810" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Adding-a-render-method-for-the-Address-property.jpg" alt="Adding a render method for the Address property" width="484" height="187" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Adding-a-render-method-for-the-Address-property.jpg 484w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/02/Adding-a-render-method-for-the-Address-property-300x116.jpg 300w" sizes="(max-width: 484px) 100vw, 484px" /></a>
+    <a href="/wp-content/uploads/2018/02/Adding-a-render-method-for-the-Address-property.jpg"><img aria-describedby="caption-attachment-810" loading="lazy" class="size-full wp-image-810" src="/wp-content/uploads/2018/02/Adding-a-render-method-for-the-Address-property.jpg" alt="Adding a render method for the Address property" width="484" height="187" /></a>
     
     <p id="caption-attachment-810" class="wp-caption-text">
       Adding a render method for the Address property

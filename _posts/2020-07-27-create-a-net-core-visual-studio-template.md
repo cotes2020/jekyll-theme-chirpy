@@ -16,7 +16,7 @@ I plan to create a skeleton for my solution and when creating a new project with
 The first step is to create the structure of your Visual Studio template. Therefore, I created an empty C# solution and add three projects, Template.Api, Template.Service and Template.Data. For the template, you can install any Nuget you want or add code. I added a controller that calls a service that calls a repository to get some data.
 
 <div id="attachment_2285" style="width: 271px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Visual-Studio-Template-Project-Structure.jpg"><img aria-describedby="caption-attachment-2285" loading="lazy" class="size-full wp-image-2285" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Visual-Studio-Template-Project-Structure.jpg" alt="Visual Studio Template Project Structure" width="261" height="365" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Visual-Studio-Template-Project-Structure.jpg 261w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Visual-Studio-Template-Project-Structure-215x300.jpg 215w" sizes="(max-width: 261px) 100vw, 261px" /></a>
+  <a href="/wp-content/uploads/2020/07/Visual-Studio-Template-Project-Structure.jpg"><img aria-describedby="caption-attachment-2285" loading="lazy" class="size-full wp-image-2285" src="/wp-content/uploads/2020/07/Visual-Studio-Template-Project-Structure.jpg" alt="Visual Studio Template Project Structure" width="261" height="365" /></a>
   
   <p id="caption-attachment-2285" class="wp-caption-text">
     Visual Studio Template Project Structure
@@ -26,7 +26,7 @@ The first step is to create the structure of your Visual Studio template. Theref
 Additionally, I added Swagger to have a UI to test the Api method. When you are satisfied with your project, run it. You should see the Swagger UI now.
 
 <div id="attachment_2286" style="width: 378px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-Swagger-UI-for-the-template.jpg"><img aria-describedby="caption-attachment-2286" loading="lazy" class="size-full wp-image-2286" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-Swagger-UI-for-the-template.jpg" alt="The Swagger UI for the template" width="368" height="426" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-Swagger-UI-for-the-template.jpg 368w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-Swagger-UI-for-the-template-259x300.jpg 259w" sizes="(max-width: 368px) 100vw, 368px" /></a>
+  <a href="/wp-content/uploads/2020/07/The-Swagger-UI-for-the-template.jpg"><img aria-describedby="caption-attachment-2286" loading="lazy" class="size-full wp-image-2286" src="/wp-content/uploads/2020/07/The-Swagger-UI-for-the-template.jpg" alt="The Swagger UI for the template" width="368" height="426" /></a>
   
   <p id="caption-attachment-2286" class="wp-caption-text">
     The Swagger UI for the template
@@ -36,7 +36,7 @@ Additionally, I added Swagger to have a UI to test the Api method. When you are 
 As the last step, I test the Get method to verify that everything works correctly.
 
 <div id="attachment_2287" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Testing-the-Template-Api.jpg"><img aria-describedby="caption-attachment-2287" loading="lazy" class="wp-image-2287" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Testing-the-Template-Api.jpg" alt="Testing the Template Api" width="700" height="712" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Testing-the-Template-Api.jpg 750w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Testing-the-Template-Api-295x300.jpg 295w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/07/Testing-the-Template-Api.jpg"><img aria-describedby="caption-attachment-2287" loading="lazy" class="wp-image-2287" src="/wp-content/uploads/2020/07/Testing-the-Template-Api.jpg" alt="Testing the Template Api" width="700" height="712" /></a>
   
   <p id="caption-attachment-2287" class="wp-caption-text">
     Testing the Template Api
@@ -50,7 +50,7 @@ The template is set up and as the next step, I am going to export it and install
 To export the Visual Studio Template, click on Project and then Export Template.
 
 <div id="attachment_2288" style="width: 361px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Export-the-Visual-Studio-Template.jpg"><img aria-describedby="caption-attachment-2288" loading="lazy" class="size-full wp-image-2288" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Export-the-Visual-Studio-Template.jpg" alt="Export the Visual Studio Template" width="351" height="548" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Export-the-Visual-Studio-Template.jpg 351w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Export-the-Visual-Studio-Template-192x300.jpg 192w" sizes="(max-width: 351px) 100vw, 351px" /></a>
+  <a href="/wp-content/uploads/2020/07/Export-the-Visual-Studio-Template.jpg"><img aria-describedby="caption-attachment-2288" loading="lazy" class="size-full wp-image-2288" src="/wp-content/uploads/2020/07/Export-the-Visual-Studio-Template.jpg" alt="Export the Visual Studio Template" width="351" height="548" /></a>
   
   <p id="caption-attachment-2288" class="wp-caption-text">
     Export the Visual Studio Template
@@ -60,7 +60,7 @@ To export the Visual Studio Template, click on Project and then Export Template.
 This opens a new window in which you can select what template you want to export and which project. Leave it as Project template, select the Template.Api project and click on Next.
 
 <div id="attachment_2289" style="width: 725px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Choose-which-Project-to-export.jpg"><img aria-describedby="caption-attachment-2289" loading="lazy" class="size-full wp-image-2289" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Choose-which-Project-to-export.jpg" alt="Choose which Project to export" width="715" height="566" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Choose-which-Project-to-export.jpg 715w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Choose-which-Project-to-export-300x237.jpg 300w" sizes="(max-width: 715px) 100vw, 715px" /></a>
+  <a href="/wp-content/uploads/2020/07/Choose-which-Project-to-export.jpg"><img aria-describedby="caption-attachment-2289" loading="lazy" class="size-full wp-image-2289" src="/wp-content/uploads/2020/07/Choose-which-Project-to-export.jpg" alt="Choose which Project to export" width="715" height="566" /></a>
   
   <p id="caption-attachment-2289" class="wp-caption-text">
     Choose which Project to export
@@ -70,7 +70,7 @@ This opens a new window in which you can select what template you want to export
 On the last page of the export, uncheck both checkboxes and click Finish.
 
 <div id="attachment_2290" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Finish-the-Export.jpg"><img aria-describedby="caption-attachment-2290" loading="lazy" class="wp-image-2290" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Finish-the-Export.jpg" alt="Finish the Export" width="700" height="556" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Finish-the-Export.jpg 715w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Finish-the-Export-300x238.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/07/Finish-the-Export.jpg"><img aria-describedby="caption-attachment-2290" loading="lazy" class="wp-image-2290" src="/wp-content/uploads/2020/07/Finish-the-Export.jpg" alt="Finish the Export" width="700" height="556" /></a>
   
   <p id="caption-attachment-2290" class="wp-caption-text">
     Finish the Export
@@ -80,7 +80,7 @@ On the last page of the export, uncheck both checkboxes and click Finish.
 Repeat this export for all other projects in your solution. After you are finished, you can find the exported files under C:\Users\<YourUserName>\Documents\Visual Studio <YourVersion>\My Exported Templates.
 
 <div id="attachment_2291" style="width: 629px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-exported-.zip-files.jpg"><img aria-describedby="caption-attachment-2291" loading="lazy" class="size-full wp-image-2291" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-exported-.zip-files.jpg" alt="The exported .zip files" width="619" height="140" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-exported-.zip-files.jpg 619w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-exported-.zip-files-300x68.jpg 300w" sizes="(max-width: 619px) 100vw, 619px" /></a>
+  <a href="/wp-content/uploads/2020/07/The-exported-.zip-files.jpg"><img aria-describedby="caption-attachment-2291" loading="lazy" class="size-full wp-image-2291" src="/wp-content/uploads/2020/07/The-exported-.zip-files.jpg" alt="The exported .zip files" width="619" height="140" /></a>
   
   <p id="caption-attachment-2291" class="wp-caption-text">
     The exported .zip files
@@ -116,7 +116,7 @@ Template.Data\MyTemplate.vstemplate
 Save the file and create a zip of the three folder and the template file. You can easily do this by highlighting everything and the right-click and then select Send to &#8211;> Compressed (zipped) folder. Your folder should contain the following files and directories now:
 
 <div id="attachment_2292" style="width: 632px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg"><img aria-describedby="caption-attachment-2292" loading="lazy" class="size-full wp-image-2292" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg" alt="Content of the template folder after finishing the creation of the template" width="622" height="180" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg 622w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template-300x87.jpg 300w" sizes="(max-width: 622px) 100vw, 622px" /></a>
+  <a href="/wp-content/uploads/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg"><img aria-describedby="caption-attachment-2292" loading="lazy" class="size-full wp-image-2292" src="/wp-content/uploads/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg" alt="Content of the template folder after finishing the creation of the template" width="622" height="180" /></a>
   
   <p id="caption-attachment-2292" class="wp-caption-text">
     Content of the template folder after finishing the creation of the template
@@ -132,7 +132,7 @@ To install the template, all you have to do is to copy the Template.zip file int
 Open Visual Studio and select Create a new project. Search for My Template and the previously added template will be displayed.
 
 <div id="attachment_2293" style="width: 574px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Select-your-template-in-Visual-Studio.jpg"><img aria-describedby="caption-attachment-2293" loading="lazy" class="size-full wp-image-2293" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Select-your-template-in-Visual-Studio.jpg" alt="Select your template in Visual Studio" width="564" height="167" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Select-your-template-in-Visual-Studio.jpg 564w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Select-your-template-in-Visual-Studio-300x89.jpg 300w" sizes="(max-width: 564px) 100vw, 564px" /></a>
+  <a href="/wp-content/uploads/2020/07/Select-your-template-in-Visual-Studio.jpg"><img aria-describedby="caption-attachment-2293" loading="lazy" class="size-full wp-image-2293" src="/wp-content/uploads/2020/07/Select-your-template-in-Visual-Studio.jpg" alt="Select your template in Visual Studio" width="564" height="167" /></a>
   
   <p id="caption-attachment-2293" class="wp-caption-text">
     Select your template in Visual Studio
@@ -175,7 +175,7 @@ return _repository.GetAll();
 Adding the variable also adds a lot of errors in your solution. You can ignore them though.
 
 <div id="attachment_2294" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Errors-after-adding-the-template-variables.jpg"><img aria-describedby="caption-attachment-2294" loading="lazy" class="wp-image-2294" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Errors-after-adding-the-template-variables.jpg" alt="Errors after adding the template variables" width="700" height="508" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Errors-after-adding-the-template-variables.jpg 720w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Errors-after-adding-the-template-variables-300x218.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/07/Errors-after-adding-the-template-variables.jpg"><img aria-describedby="caption-attachment-2294" loading="lazy" class="wp-image-2294" src="/wp-content/uploads/2020/07/Errors-after-adding-the-template-variables.jpg" alt="Errors after adding the template variables" width="700" height="508" /></a>
   
   <p id="caption-attachment-2294" class="wp-caption-text">
     Errors after adding the template variables
@@ -187,7 +187,7 @@ Adding the variable also adds a lot of errors in your solution. You can ignore t
 Not only class names and namespaces should have the provided name, but also the classes should be named accordingly. You can do the same as before and replace Template in all file names with $ext_safeprojectname$. You don&#8217;t have to change the project name though.
 
 <div id="attachment_2295" style="width: 308px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Replace-the-file-names-with-variables.jpg"><img aria-describedby="caption-attachment-2295" loading="lazy" class="size-full wp-image-2295" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Replace-the-file-names-with-variables.jpg" alt="Replace the file names with variables" width="298" height="363" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Replace-the-file-names-with-variables.jpg 298w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Replace-the-file-names-with-variables-246x300.jpg 246w" sizes="(max-width: 298px) 100vw, 298px" /></a>
+  <a href="/wp-content/uploads/2020/07/Replace-the-file-names-with-variables.jpg"><img aria-describedby="caption-attachment-2295" loading="lazy" class="size-full wp-image-2295" src="/wp-content/uploads/2020/07/Replace-the-file-names-with-variables.jpg" alt="Replace the file names with variables" width="298" height="363" /></a>
   
   <p id="caption-attachment-2295" class="wp-caption-text">
     Replace the file names with variables
@@ -225,7 +225,7 @@ Template.Data\MyTemplate.vstemplate
 Zip all files and copy the zip over the previously created zip in the Visual C# folder. Create a new project and select your template and enter Customer as project name. If you did everything right, all files and projects should be named correctly and the project should build without an error. It is very easy to have errors on the first try since you don&#8217;t have any help to find errors in the template and every typo will result in a build error.
 
 <div id="attachment_2296" style="width: 257px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/All-files-got-renamed-correctly.jpg"><img aria-describedby="caption-attachment-2296" loading="lazy" class="wp-image-2296 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/All-files-got-renamed-correctly.jpg" alt="All files got renamed correctly from the Visual Studio Template" width="247" height="339" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/All-files-got-renamed-correctly.jpg 247w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/All-files-got-renamed-correctly-219x300.jpg 219w" sizes="(max-width: 247px) 100vw, 247px" /></a>
+  <a href="/wp-content/uploads/2020/07/All-files-got-renamed-correctly.jpg"><img aria-describedby="caption-attachment-2296" loading="lazy" class="wp-image-2296 size-full" src="/wp-content/uploads/2020/07/All-files-got-renamed-correctly.jpg" alt="All files got renamed correctly from the Visual Studio Template" width="247" height="339" /></a>
   
   <p id="caption-attachment-2296" class="wp-caption-text">
     All files got renamed correctly
@@ -235,7 +235,7 @@ Zip all files and copy the zip over the previously created zip in the Visual C# 
 When you don&#8217;t have any error, run the project and you should see Customer in the headline, description and Controller.
 
 <div id="attachment_2297" style="width: 372px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Testing-the-created-solution.jpg"><img aria-describedby="caption-attachment-2297" loading="lazy" class="wp-image-2297 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Testing-the-created-solution.jpg" alt="Testing the created solution from the Visual Studio Template" width="362" height="404" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Testing-the-created-solution.jpg 362w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Testing-the-created-solution-269x300.jpg 269w" sizes="(max-width: 362px) 100vw, 362px" /></a>
+  <a href="/wp-content/uploads/2020/07/Testing-the-created-solution.jpg"><img aria-describedby="caption-attachment-2297" loading="lazy" class="wp-image-2297 size-full" src="/wp-content/uploads/2020/07/Testing-the-created-solution.jpg" alt="Testing the created solution from the Visual Studio Template" width="362" height="404" /></a>
   
   <p id="caption-attachment-2297" class="wp-caption-text">
     Testing the created solution
@@ -277,7 +277,7 @@ Since we use variables everywhere, we have to use variables also in the Dockerfi
 After adding the new template to Visual Studio, create a new project and you will see the Dockerfile in your solution.
 
 <div id="attachment_2298" style="width: 244px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-Dockerfile-is-in-the-created-project.jpg"><img aria-describedby="caption-attachment-2298" loading="lazy" class="wp-image-2298 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-Dockerfile-is-in-the-created-project.jpg" alt="The Dockerfile is in the created project from the Visual Studio Template" width="234" height="354" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-Dockerfile-is-in-the-created-project.jpg 234w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/The-Dockerfile-is-in-the-created-project-198x300.jpg 198w" sizes="(max-width: 234px) 100vw, 234px" /></a>
+  <a href="/wp-content/uploads/2020/07/The-Dockerfile-is-in-the-created-project.jpg"><img aria-describedby="caption-attachment-2298" loading="lazy" class="wp-image-2298 size-full" src="/wp-content/uploads/2020/07/The-Dockerfile-is-in-the-created-project.jpg" alt="The Dockerfile is in the created project from the Visual Studio Template" width="234" height="354" /></a>
   
   <p id="caption-attachment-2298" class="wp-caption-text">
     The Dockerfile is in the created project

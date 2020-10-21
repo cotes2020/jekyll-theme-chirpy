@@ -93,7 +93,7 @@ To create an Azure Mobile App Service instance, follow these steps:
   3. Click Create
 
 <div id="attachment_1347" style="width: 326px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-Mobile-App.jpg"><img aria-describedby="caption-attachment-1347" loading="lazy" class="size-full wp-image-1347" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-Mobile-App.jpg" alt="Create a Mobile App" width="316" height="416" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-Mobile-App.jpg 316w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-Mobile-App-228x300.jpg 228w" sizes="(max-width: 316px) 100vw, 316px" /></a>
+  <a href="/wp-content/uploads/2018/06/Create-a-Mobile-App.jpg"><img aria-describedby="caption-attachment-1347" loading="lazy" class="size-full wp-image-1347" src="/wp-content/uploads/2018/06/Create-a-Mobile-App.jpg" alt="Create a Mobile App" width="316" height="416" /></a>
   
   <p id="caption-attachment-1347" class="wp-caption-text">
     Create a Mobile App
@@ -113,7 +113,7 @@ To create an Azure Mobile App Service instance, follow these steps:
   8. To deploy your app right click on the project in Visual Studio, select Publish and then select your previously created Mobile App by clicking on Select Existing in the Azure App Service tab.
 
 <div id="attachment_1349" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Deploy-your-Mobile-App-to-Azure.jpg"><img aria-describedby="caption-attachment-1349" loading="lazy" class="wp-image-1349" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Deploy-your-Mobile-App-to-Azure.jpg" alt="Deploy your Mobile App to Azure" width="700" height="518" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Deploy-your-Mobile-App-to-Azure.jpg 789w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Deploy-your-Mobile-App-to-Azure-300x222.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Deploy-your-Mobile-App-to-Azure-768x568.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/06/Deploy-your-Mobile-App-to-Azure.jpg"><img aria-describedby="caption-attachment-1349" loading="lazy" class="wp-image-1349" src="/wp-content/uploads/2018/06/Deploy-your-Mobile-App-to-Azure.jpg" alt="Deploy your Mobile App to Azure" width="700" height="518" /></a>
   
   <p id="caption-attachment-1349" class="wp-caption-text">
     Deploy your Mobile App to Azure
@@ -127,7 +127,7 @@ To create an Azure Mobile App Service instance, follow these steps:
 </ol>
 
 <div id="attachment_1351" style="width: 537px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-Mobile-App-is-deployed-and-running.jpg"><img aria-describedby="caption-attachment-1351" loading="lazy" class="size-full wp-image-1351" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-Mobile-App-is-deployed-and-running.jpg" alt="The Mobile App is deployed and running" width="527" height="443" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-Mobile-App-is-deployed-and-running.jpg 527w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-Mobile-App-is-deployed-and-running-300x252.jpg 300w" sizes="(max-width: 527px) 100vw, 527px" /></a>
+  <a href="/wp-content/uploads/2018/06/The-Mobile-App-is-deployed-and-running.jpg"><img aria-describedby="caption-attachment-1351" loading="lazy" class="size-full wp-image-1351" src="/wp-content/uploads/2018/06/The-Mobile-App-is-deployed-and-running.jpg" alt="The Mobile App is deployed and running" width="527" height="443" /></a>
   
   <p id="caption-attachment-1351" class="wp-caption-text">
     The Mobile App is deployed and running
@@ -139,7 +139,7 @@ To create an Azure Mobile App Service instance, follow these steps:
 You can create a new application from the Quickstart blade, or by connecting an existing application. To download the template application, click on Create a new app and then download under section 3 Configure your client application on the Quickstart blade.
 
 <div id="attachment_1348" style="width: 491px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Download-templates-for-your-Mobile-App.jpg"><img aria-describedby="caption-attachment-1348" loading="lazy" class="wp-image-1348" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Download-templates-for-your-Mobile-App.jpg" alt="Download templates for your Mobile App" width="481" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Download-templates-for-your-Mobile-App.jpg 561w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Download-templates-for-your-Mobile-App-206x300.jpg 206w" sizes="(max-width: 481px) 100vw, 481px" /></a>
+  <a href="/wp-content/uploads/2018/06/Download-templates-for-your-Mobile-App.jpg"><img aria-describedby="caption-attachment-1348" loading="lazy" class="wp-image-1348" src="/wp-content/uploads/2018/06/Download-templates-for-your-Mobile-App.jpg" alt="Download templates for your Mobile App" width="481" height="700" /></a>
   
   <p id="caption-attachment-1348" class="wp-caption-text">
     Download templates for your Mobile App
@@ -156,7 +156,7 @@ To enable the integration of identity providers like Facebook or Twitter, follow
   4. In the Allowed external redirect URLs textbox, enter your callback URL, for example, myapp://myauth.callback.
 
 <div id="attachment_1354" style="width: 497px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enable-Twitter-authentication-and-authorization.jpg"><img aria-describedby="caption-attachment-1354" loading="lazy" class="wp-image-1354" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enable-Twitter-authentication-and-authorization.jpg" alt="Enable Twitter authentication and authorization" width="487" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enable-Twitter-authentication-and-authorization.jpg 599w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enable-Twitter-authentication-and-authorization-209x300.jpg 209w" sizes="(max-width: 487px) 100vw, 487px" /></a>
+  <a href="/wp-content/uploads/2018/06/Enable-Twitter-authentication-and-authorization.jpg"><img aria-describedby="caption-attachment-1354" loading="lazy" class="wp-image-1354" src="/wp-content/uploads/2018/06/Enable-Twitter-authentication-and-authorization.jpg" alt="Enable Twitter authentication and authorization" width="487" height="700" /></a>
   
   <p id="caption-attachment-1354" class="wp-caption-text">
     Enable Twitter authentication and authorization

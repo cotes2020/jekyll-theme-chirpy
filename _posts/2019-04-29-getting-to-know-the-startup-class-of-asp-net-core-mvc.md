@@ -14,7 +14,7 @@ The Startup class has two methods, ConfigureServices and Configure, that tell AS
 You can find the source code for this demo on <a href="https://github.com/WolfgangOfner/MVC-Core-Startup" target="_blank" rel="noopener noreferrer">GitHub</a>. On the following screenshot, you can see the default Startup class of a .NET Core:
 
 <div id="attachment_1621" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/The-default-Startup-class-of-ASP.NET-Core-MVC-2.jpg"><img aria-describedby="caption-attachment-1621" loading="lazy" class="wp-image-1621" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/The-default-Startup-class-of-ASP.NET-Core-MVC-2.jpg" alt="The default Startup class of ASP.NET Core MVC 2" width="700" height="599" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/The-default-Startup-class-of-ASP.NET-Core-MVC-2.jpg 924w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/The-default-Startup-class-of-ASP.NET-Core-MVC-2-300x257.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/The-default-Startup-class-of-ASP.NET-Core-MVC-2-768x657.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2019/04/The-default-Startup-class-of-ASP.NET-Core-MVC-2.jpg"><img aria-describedby="caption-attachment-1621" loading="lazy" class="wp-image-1621" src="/wp-content/uploads/2019/04/The-default-Startup-class-of-ASP.NET-Core-MVC-2.jpg" alt="The default Startup class of ASP.NET Core MVC 2" width="700" height="599" /></a>
   
   <p id="caption-attachment-1621" class="wp-caption-text">
     The default Startup class of ASP.NET Core MVC 2
@@ -28,7 +28,7 @@ When the ASP.NET Core starts, the application creates a new instance of the Star
 To enable the MVC functionality, you have to add MVC service to your service collection and a default route to your application. This can be done with services.AddMvc() (optional with a specific version) and app.UseMvcWithDefaultRoute(). That&#8217;s already enough to start your web application.
 
 <div id="attachment_1622" style="width: 546px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Add-MVC-functionality-to-the-web-application.jpg"><img aria-describedby="caption-attachment-1622" loading="lazy" class="wp-image-1622 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Add-MVC-functionality-to-the-web-application.jpg" alt="Add MVC functionality to the Startup class of your web application" width="536" height="169" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Add-MVC-functionality-to-the-web-application.jpg 536w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Add-MVC-functionality-to-the-web-application-300x95.jpg 300w" sizes="(max-width: 536px) 100vw, 536px" /></a>
+  <a href="/wp-content/uploads/2019/04/Add-MVC-functionality-to-the-web-application.jpg"><img aria-describedby="caption-attachment-1622" loading="lazy" class="wp-image-1622 size-full" src="/wp-content/uploads/2019/04/Add-MVC-functionality-to-the-web-application.jpg" alt="Add MVC functionality to the Startup class of your web application" width="536" height="169" /></a>
   
   <p id="caption-attachment-1622" class="wp-caption-text">
     Add MVC functionality to the web application
@@ -48,7 +48,7 @@ Almost every application will use the IApplicationBuilder because it is used to 
 Usually, applications use the UseMvc method, even if the routes look the same as the default route. This approach makes the used routing logic more obvious to other developers and easier to add new routes later.
 
 <div id="attachment_1637" style="width: 408px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Adding-a-the-default-route-with-UseMvc.jpg"><img aria-describedby="caption-attachment-1637" loading="lazy" class="wp-image-1637 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Adding-a-the-default-route-with-UseMvc.jpg" alt="Adding a the default route with UseMvc in the Startup class" width="398" height="95" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Adding-a-the-default-route-with-UseMvc.jpg 398w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Adding-a-the-default-route-with-UseMvc-300x72.jpg 300w" sizes="(max-width: 398px) 100vw, 398px" /></a>
+  <a href="/wp-content/uploads/2019/04/Adding-a-the-default-route-with-UseMvc.jpg"><img aria-describedby="caption-attachment-1637" loading="lazy" class="wp-image-1637 size-full" src="/wp-content/uploads/2019/04/Adding-a-the-default-route-with-UseMvc.jpg" alt="Adding a the default route with UseMvc in the Startup class" width="398" height="95" /></a>
   
   <p id="caption-attachment-1637" class="wp-caption-text">
     Adding a the default route with UseMvc
@@ -141,7 +141,7 @@ Probably the most important property is EnvironmentName because it allows you to
 You can set this variable by selecting ConfiguringAppsProperties from the Visual Studio Project menu and switching to the Debug tag. There double-click the Value field of the environment variable and change it, for example, to Staging. It is common practice to use Staging but the value is not case-sensitive, so you could also use staging. Additionally, you can use every name you want, these previously mentioned ones are only conventional ones.
 
 <div id="attachment_1638" style="width: 610px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Setting-the-environment-variable-to-Development.jpg"><img aria-describedby="caption-attachment-1638" loading="lazy" class="size-full wp-image-1638" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Setting-the-environment-variable-to-Development.jpg" alt="Setting the environment variable to Development" width="600" height="164" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Setting-the-environment-variable-to-Development.jpg 600w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Setting-the-environment-variable-to-Development-300x82.jpg 300w" sizes="(max-width: 600px) 100vw, 600px" /></a>
+  <a href="/wp-content/uploads/2019/04/Setting-the-environment-variable-to-Development.jpg"><img aria-describedby="caption-attachment-1638" loading="lazy" class="size-full wp-image-1638" src="/wp-content/uploads/2019/04/Setting-the-environment-variable-to-Development.jpg" alt="Setting the environment variable to Development" width="600" height="164" /></a>
   
   <p id="caption-attachment-1638" class="wp-caption-text">
     Setting the environment variable to Development
@@ -209,7 +209,7 @@ You can use IHostingEnvironment.EnvironmentName in the Configure method to deter
 </div>
 
 <div id="attachment_1640" style="width: 523px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Register-the-middleware-only-if-the-hosting-environment-is-Development.jpg"><img aria-describedby="caption-attachment-1640" loading="lazy" class="size-full wp-image-1640" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Register-the-middleware-only-if-the-hosting-environment-is-Development.jpg" alt="Register the middleware only if the hosting environment is Development" width="513" height="173" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Register-the-middleware-only-if-the-hosting-environment-is-Development.jpg 513w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Register-the-middleware-only-if-the-hosting-environment-is-Development-300x101.jpg 300w" sizes="(max-width: 513px) 100vw, 513px" /></a>
+  <a href="/wp-content/uploads/2019/04/Register-the-middleware-only-if-the-hosting-environment-is-Development.jpg"><img aria-describedby="caption-attachment-1640" loading="lazy" class="size-full wp-image-1640" src="/wp-content/uploads/2019/04/Register-the-middleware-only-if-the-hosting-environment-is-Development.jpg" alt="Register the middleware only if the hosting environment is Development" width="513" height="173" /></a>
   
   <p id="caption-attachment-1640" class="wp-caption-text">
     Register the middleware only if the hosting environment is Development
@@ -225,7 +225,7 @@ In a classic ASP.Net MVC application, you had to configure the exception handlin
 With ASP.NET Core, you can easily configure this using the IHostingEnvironment and a built-in exception handler middleware.
 
 <div id="attachment_1641" style="width: 326px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Configure-exception-handling-depending-on-the-hosting-environment.jpg"><img aria-describedby="caption-attachment-1641" loading="lazy" class="size-full wp-image-1641" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Configure-exception-handling-depending-on-the-hosting-environment.jpg" alt="Configure exception handling depending on the hosting environment" width="316" height="156" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Configure-exception-handling-depending-on-the-hosting-environment.jpg 316w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Configure-exception-handling-depending-on-the-hosting-environment-300x148.jpg 300w" sizes="(max-width: 316px) 100vw, 316px" /></a>
+  <a href="/wp-content/uploads/2019/04/Configure-exception-handling-depending-on-the-hosting-environment.jpg"><img aria-describedby="caption-attachment-1641" loading="lazy" class="size-full wp-image-1641" src="/wp-content/uploads/2019/04/Configure-exception-handling-depending-on-the-hosting-environment.jpg" alt="Configure exception handling depending on the hosting environment" width="316" height="156" /></a>
   
   <p id="caption-attachment-1641" class="wp-caption-text">
     Configure exception handling depending on the hosting environment
@@ -244,7 +244,7 @@ The server-side part of Browser Link is implemented as a middleware component th
 integration won’t work. Browser Link is useful only during development and should not be used in staging or production because it edits the responses generated by other middleware components to insert JavaScript code that opens HTTP connections back to the server side so that it can receive reload notifications.
 
 <div id="attachment_1642" style="width: 527px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Enable-Browser-Link.jpg"><img aria-describedby="caption-attachment-1642" loading="lazy" class="wp-image-1642 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Enable-Browser-Link.jpg" alt="Enable Browser Link in your Startup class" width="517" height="110" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Enable-Browser-Link.jpg 517w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Enable-Browser-Link-300x64.jpg 300w" sizes="(max-width: 517px) 100vw, 517px" /></a>
+  <a href="/wp-content/uploads/2019/04/Enable-Browser-Link.jpg"><img aria-describedby="caption-attachment-1642" loading="lazy" class="wp-image-1642 size-full" src="/wp-content/uploads/2019/04/Enable-Browser-Link.jpg" alt="Enable Browser Link in your Startup class" width="517" height="110" /></a>
   
   <p id="caption-attachment-1642" class="wp-caption-text">
     Enable Browser Link
@@ -258,7 +258,7 @@ You also have to install the Microsoft.VisualStudio.Web.BrowserLink Nuget packag
 The UseStaticFiles method adds a short-circuiting middleware which provides access to the files in the wwwroot folder so that the application can load images, JavaScript and CSS files.
 
 <div id="attachment_1643" style="width: 526px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Enable-static-content.jpg"><img aria-describedby="caption-attachment-1643" loading="lazy" class="size-full wp-image-1643" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Enable-static-content.jpg" alt="Enable static content" width="516" height="62" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Enable-static-content.jpg 516w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/04/Enable-static-content-300x36.jpg 300w" sizes="(max-width: 516px) 100vw, 516px" /></a>
+  <a href="/wp-content/uploads/2019/04/Enable-static-content.jpg"><img aria-describedby="caption-attachment-1643" loading="lazy" class="size-full wp-image-1643" src="/wp-content/uploads/2019/04/Enable-static-content.jpg" alt="Enable static content" width="516" height="62" /></a>
   
   <p id="caption-attachment-1643" class="wp-caption-text">
     Enable static content

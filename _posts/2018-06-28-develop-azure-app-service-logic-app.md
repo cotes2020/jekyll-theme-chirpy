@@ -20,7 +20,7 @@ To create a Logic App, follow these steps:
   3. Click Create.
 
 <div id="attachment_1316" style="width: 315px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-Logic-App.jpg"><img aria-describedby="caption-attachment-1316" loading="lazy" class="size-full wp-image-1316" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-Logic-App.jpg" alt="Create a Logic App" width="305" height="513" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-Logic-App.jpg 305w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-Logic-App-178x300.jpg 178w" sizes="(max-width: 305px) 100vw, 305px" /></a>
+  <a href="/wp-content/uploads/2018/06/Create-a-Logic-App.jpg"><img aria-describedby="caption-attachment-1316" loading="lazy" class="size-full wp-image-1316" src="/wp-content/uploads/2018/06/Create-a-Logic-App.jpg" alt="Create a Logic App" width="305" height="513" /></a>
   
   <p id="caption-attachment-1316" class="wp-caption-text">
     Create a Logic App
@@ -39,7 +39,7 @@ Following, I will create a template from scratch:
   4. After you are logged in, enter your search text to return certain tweets (for example #Azure), and select an interval and frequency for how often to check for items.
 
 <div id="attachment_1309" style="width: 642px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Connect-the-Logic-App-with-Twitter.jpg"><img aria-describedby="caption-attachment-1309" loading="lazy" class="size-full wp-image-1309" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Connect-the-Logic-App-with-Twitter.jpg" alt="Connect the Logic App with Twitter" width="632" height="304" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Connect-the-Logic-App-with-Twitter.jpg 632w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Connect-the-Logic-App-with-Twitter-300x144.jpg 300w" sizes="(max-width: 632px) 100vw, 632px" /></a>
+  <a href="/wp-content/uploads/2018/06/Connect-the-Logic-App-with-Twitter.jpg"><img aria-describedby="caption-attachment-1309" loading="lazy" class="size-full wp-image-1309" src="/wp-content/uploads/2018/06/Connect-the-Logic-App-with-Twitter.jpg" alt="Connect the Logic App with Twitter" width="632" height="304" /></a>
   
   <p id="caption-attachment-1309" class="wp-caption-text">
     Connect the Logic App with Twitter
@@ -59,7 +59,7 @@ Following, I will create a template from scratch:
 </ol>
 
 <div id="attachment_1319" style="width: 638px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Configure-the-Gmail-connector-to-send-an-email.jpg"><img aria-describedby="caption-attachment-1319" loading="lazy" class="size-full wp-image-1319" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Configure-the-Gmail-connector-to-send-an-email.jpg" alt="Configure the Gmail connector to send an email" width="628" height="612" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Configure-the-Gmail-connector-to-send-an-email.jpg 628w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Configure-the-Gmail-connector-to-send-an-email-300x292.jpg 300w" sizes="(max-width: 628px) 100vw, 628px" /></a>
+  <a href="/wp-content/uploads/2018/06/Configure-the-Gmail-connector-to-send-an-email.jpg"><img aria-describedby="caption-attachment-1319" loading="lazy" class="size-full wp-image-1319" src="/wp-content/uploads/2018/06/Configure-the-Gmail-connector-to-send-an-email.jpg" alt="Configure the Gmail connector to send an email" width="628" height="612" /></a>
   
   <p id="caption-attachment-1319" class="wp-caption-text">
     Configure the Gmail connector to send an email
@@ -79,7 +79,7 @@ Following, I will create a template from scratch:
 </ol>
 
 <div id="attachment_1320" style="width: 523px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-received-email-from-the-Gmail-connector.jpg"><img aria-describedby="caption-attachment-1320" loading="lazy" class="size-full wp-image-1320" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-received-email-from-the-Gmail-connector.jpg" alt="The received email from the Gmail connector" width="513" height="165" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-received-email-from-the-Gmail-connector.jpg 513w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-received-email-from-the-Gmail-connector-300x96.jpg 300w" sizes="(max-width: 513px) 100vw, 513px" /></a>
+  <a href="/wp-content/uploads/2018/06/The-received-email-from-the-Gmail-connector.jpg"><img aria-describedby="caption-attachment-1320" loading="lazy" class="size-full wp-image-1320" src="/wp-content/uploads/2018/06/The-received-email-from-the-Gmail-connector.jpg" alt="The received email from the Gmail connector" width="513" height="165" /></a>
   
   <p id="caption-attachment-1320" class="wp-caption-text">
     The received email from the Gmail connector
@@ -107,7 +107,7 @@ To create an integration account, follow these steps:
   3. Click Create.
 
 <div id="attachment_1322" style="width: 318px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-Integration-account.jpg"><img aria-describedby="caption-attachment-1322" loading="lazy" class="size-full wp-image-1322" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-Integration-account.jpg" alt="Create a new Integration account" width="308" height="455" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-Integration-account.jpg 308w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-Integration-account-203x300.jpg 203w" sizes="(max-width: 308px) 100vw, 308px" /></a>
+  <a href="/wp-content/uploads/2018/06/Create-a-new-Integration-account.jpg"><img aria-describedby="caption-attachment-1322" loading="lazy" class="size-full wp-image-1322" src="/wp-content/uploads/2018/06/Create-a-new-Integration-account.jpg" alt="Create a new Integration account" width="308" height="455" /></a>
   
   <p id="caption-attachment-1322" class="wp-caption-text">
     Create a new integration account
@@ -125,7 +125,7 @@ To add a partner to your integration account, follow these steps:
   3. Click OK.
 
 <div id="attachment_1326" style="width: 327px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-new-partner.jpg"><img aria-describedby="caption-attachment-1326" loading="lazy" class="size-full wp-image-1326" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-new-partner.jpg" alt="Add a new partner" width="317" height="249" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-new-partner.jpg 317w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-new-partner-300x236.jpg 300w" sizes="(max-width: 317px) 100vw, 317px" /></a>
+  <a href="/wp-content/uploads/2018/06/Add-a-new-partner.jpg"><img aria-describedby="caption-attachment-1326" loading="lazy" class="size-full wp-image-1326" src="/wp-content/uploads/2018/06/Add-a-new-partner.jpg" alt="Add a new partner" width="317" height="249" /></a>
   
   <p id="caption-attachment-1326" class="wp-caption-text">
     Add a new partner
@@ -135,7 +135,7 @@ To add a partner to your integration account, follow these steps:
 I added another partner and both are added to the list on the Partners blade.
 
 <div id="attachment_1325" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Both-partners-are-listed.jpg"><img aria-describedby="caption-attachment-1325" loading="lazy" class="wp-image-1325" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Both-partners-are-listed.jpg" alt="Both partners are listed" width="700" height="175" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Both-partners-are-listed.jpg 1039w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Both-partners-are-listed-300x75.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Both-partners-are-listed-768x192.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Both-partners-are-listed-1024x256.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/06/Both-partners-are-listed.jpg"><img aria-describedby="caption-attachment-1325" loading="lazy" class="wp-image-1325" src="/wp-content/uploads/2018/06/Both-partners-are-listed.jpg" alt="Both partners are listed" width="700" height="175" /></a>
   
   <p id="caption-attachment-1325" class="wp-caption-text">
     Both partners are listed
@@ -154,7 +154,7 @@ To create an AS2 agreement, follow these steps:
   4. Click OK
 
 <div id="attachment_1327" style="width: 321px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-AS2-agreement.jpg"><img aria-describedby="caption-attachment-1327" loading="lazy" class="size-full wp-image-1327" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-AS2-agreement.jpg" alt="Create a new AS2 agreement" width="311" height="561" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-AS2-agreement.jpg 311w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-AS2-agreement-166x300.jpg 166w" sizes="(max-width: 311px) 100vw, 311px" /></a>
+  <a href="/wp-content/uploads/2018/06/Create-a-new-AS2-agreement.jpg"><img aria-describedby="caption-attachment-1327" loading="lazy" class="size-full wp-image-1327" src="/wp-content/uploads/2018/06/Create-a-new-AS2-agreement.jpg" alt="Create a new AS2 agreement" width="311" height="561" /></a>
   
   <p id="caption-attachment-1327" class="wp-caption-text">
     Create a new AS2 agreement
@@ -172,7 +172,7 @@ To link them, follow these steps:
   3. Click Save.
 
 <div id="attachment_1328" style="width: 578px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Link-your-Logic-App-and-integration-account.jpg"><img aria-describedby="caption-attachment-1328" loading="lazy" class="size-full wp-image-1328" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Link-your-Logic-App-and-integration-account.jpg" alt="Link your Logic App and integration account" width="568" height="609" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Link-your-Logic-App-and-integration-account.jpg 568w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Link-your-Logic-App-and-integration-account-280x300.jpg 280w" sizes="(max-width: 568px) 100vw, 568px" /></a>
+  <a href="/wp-content/uploads/2018/06/Link-your-Logic-App-and-integration-account.jpg"><img aria-describedby="caption-attachment-1328" loading="lazy" class="size-full wp-image-1328" src="/wp-content/uploads/2018/06/Link-your-Logic-App-and-integration-account.jpg" alt="Link your Logic App and integration account" width="568" height="609" /></a>
   
   <p id="caption-attachment-1328" class="wp-caption-text">
     Link your Logic App and integration account
@@ -191,7 +191,7 @@ After the Logic App and integration account are linked, you can create a B2B wor
   6. Provide a connection name, select your integration account and click Create.
 
 <div id="attachment_1330" style="width: 642px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-the-decode-AS2-message-form.jpg"><img aria-describedby="caption-attachment-1330" loading="lazy" class="size-full wp-image-1330" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-the-decode-AS2-message-form.jpg" alt="Add the decode AS2 message form" width="632" height="456" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-the-decode-AS2-message-form.jpg 632w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-the-decode-AS2-message-form-300x216.jpg 300w" sizes="(max-width: 632px) 100vw, 632px" /></a>
+  <a href="/wp-content/uploads/2018/06/Add-the-decode-AS2-message-form.jpg"><img aria-describedby="caption-attachment-1330" loading="lazy" class="size-full wp-image-1330" src="/wp-content/uploads/2018/06/Add-the-decode-AS2-message-form.jpg" alt="Add the decode AS2 message form" width="632" height="456" /></a>
   
   <p id="caption-attachment-1330" class="wp-caption-text">
     Add the decode AS2 message form
@@ -205,7 +205,7 @@ After the Logic App and integration account are linked, you can create a B2B wor
 </ol>
 
 <div id="attachment_1331" style="width: 658px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Setting-the-Decode-AS2-Message-body-and-headers-information-form-in-the-Logic.jpg"><img aria-describedby="caption-attachment-1331" loading="lazy" class="size-full wp-image-1331" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Setting-the-Decode-AS2-Message-body-and-headers-information-form-in-the-Logic.jpg" alt="Setting the Decode AS2 Message body and headers information form in the Logic" width="648" height="397" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Setting-the-Decode-AS2-Message-body-and-headers-information-form-in-the-Logic.jpg 648w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Setting-the-Decode-AS2-Message-body-and-headers-information-form-in-the-Logic-300x184.jpg 300w" sizes="(max-width: 648px) 100vw, 648px" /></a>
+  <a href="/wp-content/uploads/2018/06/Setting-the-Decode-AS2-Message-body-and-headers-information-form-in-the-Logic.jpg"><img aria-describedby="caption-attachment-1331" loading="lazy" class="size-full wp-image-1331" src="/wp-content/uploads/2018/06/Setting-the-Decode-AS2-Message-body-and-headers-information-form-in-the-Logic.jpg" alt="Setting the Decode AS2 Message body and headers information form in the Logic" width="648" height="397" /></a>
   
   <p id="caption-attachment-1331" class="wp-caption-text">
     Setting the Decode AS2 Message body and headers information form in the Logic
@@ -225,7 +225,7 @@ After the Logic App and integration account are linked, you can create a B2B wor
 </ol>
 
 <div id="attachment_1332" style="width: 646px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enter-a-connection-name-and-select-your-integration-account.jpg"><img aria-describedby="caption-attachment-1332" loading="lazy" class="size-full wp-image-1332" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enter-a-connection-name-and-select-your-integration-account.jpg" alt="Enter a connection name and select your integration account" width="636" height="688" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enter-a-connection-name-and-select-your-integration-account.jpg 636w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enter-a-connection-name-and-select-your-integration-account-277x300.jpg 277w" sizes="(max-width: 636px) 100vw, 636px" /></a>
+  <a href="/wp-content/uploads/2018/06/Enter-a-connection-name-and-select-your-integration-account.jpg"><img aria-describedby="caption-attachment-1332" loading="lazy" class="size-full wp-image-1332" src="/wp-content/uploads/2018/06/Enter-a-connection-name-and-select-your-integration-account.jpg" alt="Enter a connection name and select your integration account" width="636" height="688" /></a>
   
   <p id="caption-attachment-1332" class="wp-caption-text">
     Enter a connection name and select your integration account
@@ -239,7 +239,7 @@ After the Logic App and integration account are linked, you can create a B2B wor
 </ol>
 
 <div id="attachment_1335" style="width: 638px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Decode-the-AS2-message.jpg"><img aria-describedby="caption-attachment-1335" loading="lazy" class="size-full wp-image-1335" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Decode-the-AS2-message.jpg" alt="Decode the AS2 message" width="628" height="205" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Decode-the-AS2-message.jpg 628w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Decode-the-AS2-message-300x98.jpg 300w" sizes="(max-width: 628px) 100vw, 628px" /></a>
+  <a href="/wp-content/uploads/2018/06/Decode-the-AS2-message.jpg"><img aria-describedby="caption-attachment-1335" loading="lazy" class="size-full wp-image-1335" src="/wp-content/uploads/2018/06/Decode-the-AS2-message.jpg" alt="Decode the AS2 message" width="628" height="205" /></a>
   
   <p id="caption-attachment-1335" class="wp-caption-text">
     Decode the AS2 message
@@ -259,7 +259,7 @@ After the Logic App and integration account are linked, you can create a B2B wor
 </ol>
 
 <div id="attachment_1334" style="width: 648px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Configure-the-response.jpg"><img aria-describedby="caption-attachment-1334" loading="lazy" class="size-full wp-image-1334" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Configure-the-response.jpg" alt="Configure the response" width="638" height="506" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Configure-the-response.jpg 638w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Configure-the-response-300x238.jpg 300w" sizes="(max-width: 638px) 100vw, 638px" /></a>
+  <a href="/wp-content/uploads/2018/06/Configure-the-response.jpg"><img aria-describedby="caption-attachment-1334" loading="lazy" class="size-full wp-image-1334" src="/wp-content/uploads/2018/06/Configure-the-response.jpg" alt="Configure the response" width="638" height="506" /></a>
   
   <p id="caption-attachment-1334" class="wp-caption-text">
     Configure the response
@@ -344,7 +344,7 @@ To add a new schema, follow these steps:
   4. Click OK.
 
 <div id="attachment_1336" style="width: 321px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-schema-to-your-integration-account.jpg"><img aria-describedby="caption-attachment-1336" loading="lazy" class="size-full wp-image-1336" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-schema-to-your-integration-account.jpg" alt="Add a schema to your integration account" width="311" height="264" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-schema-to-your-integration-account.jpg 311w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-schema-to-your-integration-account-300x255.jpg 300w" sizes="(max-width: 311px) 100vw, 311px" /></a>
+  <a href="/wp-content/uploads/2018/06/Add-a-schema-to-your-integration-account.jpg"><img aria-describedby="caption-attachment-1336" loading="lazy" class="size-full wp-image-1336" src="/wp-content/uploads/2018/06/Add-a-schema-to-your-integration-account.jpg" alt="Add a schema to your integration account" width="311" height="264" /></a>
   
   <p id="caption-attachment-1336" class="wp-caption-text">
     Add a schema to your integration account
@@ -363,7 +363,7 @@ To add a new schema, follow these steps:
   4. Click OK.
 
 <div id="attachment_1337" style="width: 326px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-map-to-your-integration-account.jpg"><img aria-describedby="caption-attachment-1337" loading="lazy" class="size-full wp-image-1337" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-map-to-your-integration-account.jpg" alt="Add a map to your integration account" width="316" height="254" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-map-to-your-integration-account.jpg 316w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-map-to-your-integration-account-300x241.jpg 300w" sizes="(max-width: 316px) 100vw, 316px" /></a>
+  <a href="/wp-content/uploads/2018/06/Add-a-map-to-your-integration-account.jpg"><img aria-describedby="caption-attachment-1337" loading="lazy" class="size-full wp-image-1337" src="/wp-content/uploads/2018/06/Add-a-map-to-your-integration-account.jpg" alt="Add a map to your integration account" width="316" height="254" /></a>
   
   <p id="caption-attachment-1337" class="wp-caption-text">
     Add a map to your integration account
@@ -384,7 +384,7 @@ Follow these steps to use XML capabilities in your Logic App:
   6. Select Body as Content and the previously uploaded schema
 
 <div id="attachment_1339" style="width: 654px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-XML-validation-to-your-Logic-App.jpg"><img aria-describedby="caption-attachment-1339" loading="lazy" class="size-full wp-image-1339" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-XML-validation-to-your-Logic-App.jpg" alt="Add XML validation to your Logic App" width="644" height="294" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-XML-validation-to-your-Logic-App.jpg 644w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-XML-validation-to-your-Logic-App-300x137.jpg 300w" sizes="(max-width: 644px) 100vw, 644px" /></a>
+  <a href="/wp-content/uploads/2018/06/Add-XML-validation-to-your-Logic-App.jpg"><img aria-describedby="caption-attachment-1339" loading="lazy" class="size-full wp-image-1339" src="/wp-content/uploads/2018/06/Add-XML-validation-to-your-Logic-App.jpg" alt="Add XML validation to your Logic App" width="644" height="294" /></a>
   
   <p id="caption-attachment-1339" class="wp-caption-text">
     Add XML validation to your Logic App
@@ -404,7 +404,7 @@ Follow these steps to use XML capabilities in your Logic App:
 </ol>
 
 <div id="attachment_1340" style="width: 650px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-XML-transformation-to-your-Logic-App.jpg"><img aria-describedby="caption-attachment-1340" loading="lazy" class="size-full wp-image-1340" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-XML-transformation-to-your-Logic-App.jpg" alt="Add XML transformation to your Logic App" width="640" height="463" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-XML-transformation-to-your-Logic-App.jpg 640w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-XML-transformation-to-your-Logic-App-300x217.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" /></a>
+  <a href="/wp-content/uploads/2018/06/Add-XML-transformation-to-your-Logic-App.jpg"><img aria-describedby="caption-attachment-1340" loading="lazy" class="size-full wp-image-1340" src="/wp-content/uploads/2018/06/Add-XML-transformation-to-your-Logic-App.jpg" alt="Add XML transformation to your Logic App" width="640" height="463" /></a>
   
   <p id="caption-attachment-1340" class="wp-caption-text">
     Add XML transformation to your Logic App
@@ -471,7 +471,7 @@ To create an HTTP endpoint to receive an incoming request for a Request Trigger,
   4. Optionally enter a JSON schema for the payload that you expect to be sent to the trigger. This schema can be added to the Request Body JSON Schema field. To generate the schema, select the Use sample payload to generate schema link at the bottom of the form. This displays a dialog where you can type in or paste a sample JSON payload. The advantage of having a schema defined is that the designer will use the schema to generate tokens that your logic app can use to consume, parse, and pass data from the trigger through your workflow.
 
 <div id="attachment_1341" style="width: 663px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enter-a-JSON-schema.jpg"><img aria-describedby="caption-attachment-1341" loading="lazy" class="size-full wp-image-1341" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enter-a-JSON-schema.jpg" alt="Enter a JSON schema" width="653" height="447" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enter-a-JSON-schema.jpg 653w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Enter-a-JSON-schema-300x205.jpg 300w" sizes="(max-width: 653px) 100vw, 653px" /></a>
+  <a href="/wp-content/uploads/2018/06/Enter-a-JSON-schema.jpg"><img aria-describedby="caption-attachment-1341" loading="lazy" class="size-full wp-image-1341" src="/wp-content/uploads/2018/06/Enter-a-JSON-schema.jpg" alt="Enter a JSON schema" width="653" height="447" /></a>
   
   <p id="caption-attachment-1341" class="wp-caption-text">
     Enter a JSON schema
@@ -485,7 +485,7 @@ To create an HTTP endpoint to receive an incoming request for a Request Trigger,
 </ol>
 
 <div id="attachment_1342" style="width: 648px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-generated-HTTP-POST-URL-for-the-trigger.jpg"><img aria-describedby="caption-attachment-1342" loading="lazy" class="size-full wp-image-1342" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-generated-HTTP-POST-URL-for-the-trigger.jpg" alt="The generated HTTP POST URL for the trigger" width="638" height="102" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-generated-HTTP-POST-URL-for-the-trigger.jpg 638w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/The-generated-HTTP-POST-URL-for-the-trigger-300x48.jpg 300w" sizes="(max-width: 638px) 100vw, 638px" /></a>
+  <a href="/wp-content/uploads/2018/06/The-generated-HTTP-POST-URL-for-the-trigger.jpg"><img aria-describedby="caption-attachment-1342" loading="lazy" class="size-full wp-image-1342" src="/wp-content/uploads/2018/06/The-generated-HTTP-POST-URL-for-the-trigger.jpg" alt="The generated HTTP POST URL for the trigger" width="638" height="102" /></a>
   
   <p id="caption-attachment-1342" class="wp-caption-text">
     The generated HTTP POST URL for the trigger
@@ -557,7 +557,7 @@ To monitor your Logic Apps, you can use out-of-the-box tools within your Log App
 Select Metrics under the Monitoring menu and select the metrics you want to look at such as runs started or runs succeeded. You can configure the type of event and the time span you want to look at.
 
 <div id="attachment_1343" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Monitoring-your-Logic-App.jpg"><img aria-describedby="caption-attachment-1343" loading="lazy" class="wp-image-1343" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Monitoring-your-Logic-App.jpg" alt="Monitoring your Logic App" width="700" height="493" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Monitoring-your-Logic-App.jpg 1213w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Monitoring-your-Logic-App-300x211.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Monitoring-your-Logic-App-768x541.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Monitoring-your-Logic-App-1024x721.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/06/Monitoring-your-Logic-App.jpg"><img aria-describedby="caption-attachment-1343" loading="lazy" class="wp-image-1343" src="/wp-content/uploads/2018/06/Monitoring-your-Logic-App.jpg" alt="Monitoring your Logic App" width="700" height="493" /></a>
   
   <p id="caption-attachment-1343" class="wp-caption-text">
     Monitoring your Logic App

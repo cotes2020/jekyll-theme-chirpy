@@ -20,7 +20,7 @@ To create a blob storage account, follow these steps:
   3. Click Create.
 
 <div id="attachment_1064" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Azure-Storage-account.jpg"><img aria-describedby="caption-attachment-1064" loading="lazy" class="wp-image-1064" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Azure-Storage-account.jpg" alt="Create a new Azure Storage blobs account" width="700" height="697" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Azure-Storage-account.jpg 899w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Azure-Storage-account-150x150.jpg 150w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Azure-Storage-account-300x300.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-Azure-Storage-account-768x765.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Create-a-new-Azure-Storage-account.jpg"><img aria-describedby="caption-attachment-1064" loading="lazy" class="wp-image-1064" src="/wp-content/uploads/2018/04/Create-a-new-Azure-Storage-account.jpg" alt="Create a new Azure Storage blobs account" width="700" height="697" /></a>
   
   <p id="caption-attachment-1064" class="wp-caption-text">
     Create a new Azure Storage account
@@ -48,7 +48,7 @@ The code of the following demo can be downloaded from <a href="https://github.c
 </li>
 
 <div id="attachment_1151" style="width: 721px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Connect-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1151" loading="lazy" class="size-full wp-image-1151" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Connect-to-your-storage-account.jpg" alt="Connect to your storage account" width="711" height="55" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Connect-to-your-storage-account.jpg 711w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Connect-to-your-storage-account-300x23.jpg 300w" sizes="(max-width: 711px) 100vw, 711px" /></a>
+  <a href="/wp-content/uploads/2018/04/Connect-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1151" loading="lazy" class="size-full wp-image-1151" src="/wp-content/uploads/2018/04/Connect-to-your-storage-account.jpg" alt="Connect to your storage account" width="711" height="55" /></a>
   
   <p id="caption-attachment-1151" class="wp-caption-text">
     Connect to your storage account
@@ -58,7 +58,7 @@ The code of the following demo can be downloaded from <a href="https://github.c
 Replace the placeholder for storage account name and storage key with your own. You can find them in the Azure Portal under Access keys in your storage account.
 
 <div id="attachment_1065" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string.jpg"><img aria-describedby="caption-attachment-1065" loading="lazy" class="wp-image-1065" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string.jpg" alt="Finding the Storage account name, storage key and connection string" width="700" height="203" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string.jpg 1556w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string-300x87.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string-768x223.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string-1024x297.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string.jpg"><img aria-describedby="caption-attachment-1065" loading="lazy" class="wp-image-1065" src="/wp-content/uploads/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string.jpg" alt="Finding the Storage account name, storage key and connection string" width="700" height="203" /></a>
   
   <p id="caption-attachment-1065" class="wp-caption-text">
     Finding the Storage account name, storage key, and connection string
@@ -72,7 +72,7 @@ Replace the placeholder for storage account name and storage key with your own. 
 </ol>
 
 <div id="attachment_1152" style="width: 507px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1152" loading="lazy" class="size-full wp-image-1152" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg" alt="Create the container myblockcontainer if it does not exist" width="497" height="186" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg 497w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist-300x112.jpg 300w" sizes="(max-width: 497px) 100vw, 497px" /></a>
+  <a href="/wp-content/uploads/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1152" loading="lazy" class="size-full wp-image-1152" src="/wp-content/uploads/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg" alt="Create the container myblockcontainer if it does not exist" width="497" height="186" /></a>
   
   <p id="caption-attachment-1152" class="wp-caption-text">
     Create the container myblockcontainer if it does not exist
@@ -88,7 +88,7 @@ Azure Storage blobs are organized in containers. Each storage account can have a
 </ol>
 
 <div id="attachment_1153" style="width: 589px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Upload-a-file-to-the-container.jpg"><img aria-describedby="caption-attachment-1153" loading="lazy" class="size-full wp-image-1153" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Upload-a-file-to-the-container.jpg" alt="Upload a file to the container" width="579" height="153" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Upload-a-file-to-the-container.jpg 579w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Upload-a-file-to-the-container-300x79.jpg 300w" sizes="(max-width: 579px) 100vw, 579px" /></a>
+  <a href="/wp-content/uploads/2018/04/Upload-a-file-to-the-container.jpg"><img aria-describedby="caption-attachment-1153" loading="lazy" class="size-full wp-image-1153" src="/wp-content/uploads/2018/04/Upload-a-file-to-the-container.jpg" alt="Upload a file to the container" width="579" height="153" /></a>
   
   <p id="caption-attachment-1153" class="wp-caption-text">
     Upload a file to the container
@@ -109,7 +109,7 @@ Azure Storage blobs are organized in containers. Each storage account can have a
 </ol>
 
 <div id="attachment_1066" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-previously-uploaded-blob.jpg"><img aria-describedby="caption-attachment-1066" loading="lazy" class="wp-image-1066" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-previously-uploaded-blob.jpg" alt="The previously uploaded blob" width="700" height="190" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-previously-uploaded-blob.jpg 1128w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-previously-uploaded-blob-300x81.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-previously-uploaded-blob-768x208.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-previously-uploaded-blob-1024x278.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/The-previously-uploaded-blob.jpg"><img aria-describedby="caption-attachment-1066" loading="lazy" class="wp-image-1066" src="/wp-content/uploads/2018/04/The-previously-uploaded-blob.jpg" alt="The previously uploaded blob" width="700" height="190" /></a>
   
   <p id="caption-attachment-1066" class="wp-caption-text">
     The previously uploaded blob
@@ -130,7 +130,7 @@ A container has only read-only system properties, while blobs have both read-onl
 To set user-defined metadata, expand the code from before with these two lines:
 
 <div id="attachment_1069" style="width: 456px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-user-defined-metadata.jpg"><img aria-describedby="caption-attachment-1069" loading="lazy" class="size-full wp-image-1069" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-user-defined-metadata.jpg" alt="Set user-defined metadata" width="446" height="92" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-user-defined-metadata.jpg 446w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-user-defined-metadata-300x62.jpg 300w" sizes="(max-width: 446px) 100vw, 446px" /></a>
+  <a href="/wp-content/uploads/2018/04/Set-user-defined-metadata.jpg"><img aria-describedby="caption-attachment-1069" loading="lazy" class="size-full wp-image-1069" src="/wp-content/uploads/2018/04/Set-user-defined-metadata.jpg" alt="Set user-defined metadata" width="446" height="92" /></a>
   
   <p id="caption-attachment-1069" class="wp-caption-text">
     Set user-defined metadata
@@ -142,7 +142,7 @@ To set user-defined metadata, expand the code from before with these two lines:
 To read the previously added user-defined metadata, add this code:
 
 <div id="attachment_1070" style="width: 541px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-user-defined-metadata.jpg"><img aria-describedby="caption-attachment-1070" loading="lazy" class="size-full wp-image-1070" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-user-defined-metadata.jpg" alt="Read user-defined metadata" width="531" height="165" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-user-defined-metadata.jpg 531w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-user-defined-metadata-300x93.jpg 300w" sizes="(max-width: 531px) 100vw, 531px" /></a>
+  <a href="/wp-content/uploads/2018/04/Read-user-defined-metadata.jpg"><img aria-describedby="caption-attachment-1070" loading="lazy" class="size-full wp-image-1070" src="/wp-content/uploads/2018/04/Read-user-defined-metadata.jpg" alt="Read user-defined metadata" width="531" height="165" /></a>
   
   <p id="caption-attachment-1070" class="wp-caption-text">
     Read user-defined metadata
@@ -156,7 +156,7 @@ If the metadata key does not exist, an exception is thrown.
 To read system properties, add this code:
 
 <div id="attachment_1072" style="width: 561px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-system-metadata.jpg"><img aria-describedby="caption-attachment-1072" loading="lazy" class="size-full wp-image-1072" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-system-metadata.jpg" alt="Read system metadata" width="551" height="116" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-system-metadata.jpg 551w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-system-metadata-300x63.jpg 300w" sizes="(max-width: 551px) 100vw, 551px" /></a>
+  <a href="/wp-content/uploads/2018/04/Read-system-metadata.jpg"><img aria-describedby="caption-attachment-1072" loading="lazy" class="size-full wp-image-1072" src="/wp-content/uploads/2018/04/Read-system-metadata.jpg" alt="Read system metadata" width="551" height="116" /></a>
   
   <p id="caption-attachment-1072" class="wp-caption-text">
     Read system metadata
@@ -178,7 +178,7 @@ Azure Storage Blobs have three different types of blobs:
 First, you have to create a page blob:
 
 <div id="attachment_1073" style="width: 637px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-page-blob.jpg"><img aria-describedby="caption-attachment-1073" loading="lazy" class="size-full wp-image-1073" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-page-blob.jpg" alt="Create a page blob" width="627" height="261" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-page-blob.jpg 627w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-page-blob-300x125.jpg 300w" sizes="(max-width: 627px) 100vw, 627px" /></a>
+  <a href="/wp-content/uploads/2018/04/Create-a-page-blob.jpg"><img aria-describedby="caption-attachment-1073" loading="lazy" class="size-full wp-image-1073" src="/wp-content/uploads/2018/04/Create-a-page-blob.jpg" alt="Create a page blob" width="627" height="261" /></a>
   
   <p id="caption-attachment-1073" class="wp-caption-text">
     Create a page blob
@@ -188,7 +188,7 @@ First, you have to create a page blob:
 After the page blob is created, you can write data to it:
 
 <div id="attachment_1074" style="width: 633px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Wirte-to-a-page-blob.jpg"><img aria-describedby="caption-attachment-1074" loading="lazy" class="wp-image-1074 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Wirte-to-a-page-blob.jpg" alt="Write to a page blob" width="623" height="172" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Wirte-to-a-page-blob.jpg 623w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Wirte-to-a-page-blob-300x83.jpg 300w" sizes="(max-width: 623px) 100vw, 623px" /></a>
+  <a href="/wp-content/uploads/2018/04/Wirte-to-a-page-blob.jpg"><img aria-describedby="caption-attachment-1074" loading="lazy" class="wp-image-1074 size-full" src="/wp-content/uploads/2018/04/Wirte-to-a-page-blob.jpg" alt="Write to a page blob" width="623" height="172" /></a>
   
   <p id="caption-attachment-1074" class="wp-caption-text">
     Write to a page blob
@@ -198,7 +198,7 @@ After the page blob is created, you can write data to it:
 After some data are added to the blob, you can read it:
 
 <div id="attachment_1075" style="width: 481px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-a-page-blob.jpg"><img aria-describedby="caption-attachment-1075" loading="lazy" class="size-full wp-image-1075" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-a-page-blob.jpg" alt="Read a page blob" width="471" height="134" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-a-page-blob.jpg 471w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Read-a-page-blob-300x85.jpg 300w" sizes="(max-width: 471px) 100vw, 471px" /></a>
+  <a href="/wp-content/uploads/2018/04/Read-a-page-blob.jpg"><img aria-describedby="caption-attachment-1075" loading="lazy" class="size-full wp-image-1075" src="/wp-content/uploads/2018/04/Read-a-page-blob.jpg" alt="Read a page blob" width="471" height="134" /></a>
   
   <p id="caption-attachment-1075" class="wp-caption-text">
     Read a page blob
@@ -220,7 +220,7 @@ Azure Storage supports both HTTP and HTTPS. You should always use HTTPS though. 
 Each call to interact with blob storage will be secured, as shown in the following code:
 
 <div id="attachment_1076" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Secure-access-to-your-Storage-Account.jpg"><img aria-describedby="caption-attachment-1076" loading="lazy" class="wp-image-1076" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Secure-access-to-your-Storage-Account.jpg" alt="Secure access to your Storage Account" width="700" height="52" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Secure-access-to-your-Storage-Account.jpg 838w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Secure-access-to-your-Storage-Account-300x22.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Secure-access-to-your-Storage-Account-768x57.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Secure-access-to-your-Storage-Account.jpg"><img aria-describedby="caption-attachment-1076" loading="lazy" class="wp-image-1076" src="/wp-content/uploads/2018/04/Secure-access-to-your-Storage-Account.jpg" alt="Secure access to your Storage Account" width="700" height="52" /></a>
   
   <p id="caption-attachment-1076" class="wp-caption-text">
     Secure access to your Storage Account
@@ -251,7 +251,7 @@ To enable CDN for the storage account, follow these steps:
   2. On the Azure CDN blade, create a new CDN by filling out the form. The difference between the Premium and Standard Pricing tier is that the Premium offers advanced real-time analytics.
 
 <div id="attachment_1077" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-CDN.jpg"><img aria-describedby="caption-attachment-1077" loading="lazy" class="wp-image-1077" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-CDN.jpg" alt="Create a new CDN" width="700" height="279" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-CDN.jpg 860w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-CDN-300x120.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-CDN-768x306.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Create-a-new-CDN.jpg"><img aria-describedby="caption-attachment-1077" loading="lazy" class="wp-image-1077" src="/wp-content/uploads/2018/04/Create-a-new-CDN.jpg" alt="Create a new CDN" width="700" height="279" /></a>
   
   <p id="caption-attachment-1077" class="wp-caption-text">
     Create a new CDN
@@ -282,7 +282,7 @@ The default endpoint for Azure Storage blobs is: StorageAccountName.blob.core.wi
   7. Now you can delete the Asverify CNAME since it has been verified by Azure already.
 
 <div id="attachment_1078" style="width: 561px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-custom-domain-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1078" loading="lazy" class="size-full wp-image-1078" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-custom-domain-to-your-storage-account.jpg" alt="Add a custom domain to your storage account" width="551" height="372" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-custom-domain-to-your-storage-account.jpg 551w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-custom-domain-to-your-storage-account-300x203.jpg 300w" sizes="(max-width: 551px) 100vw, 551px" /></a>
+  <a href="/wp-content/uploads/2018/04/Add-a-custom-domain-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1078" loading="lazy" class="size-full wp-image-1078" src="/wp-content/uploads/2018/04/Add-a-custom-domain-to-your-storage-account.jpg" alt="Add a custom domain to your storage account" width="551" height="372" /></a>
   
   <p id="caption-attachment-1078" class="wp-caption-text">
     Add a custom domain to your storage account
@@ -314,7 +314,7 @@ You can create a lock on a blob for write and delete operations. This lick can b
 Use the following code to get the lease ID:
 
 <div id="attachment_1081" style="width: 469px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Get-the-lease-ID-of-your-block-blob.jpg"><img aria-describedby="caption-attachment-1081" loading="lazy" class="size-full wp-image-1081" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Get-the-lease-ID-of-your-block-blob.jpg" alt="Get the lease ID of your block blob" width="459" height="141" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Get-the-lease-ID-of-your-block-blob.jpg 459w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Get-the-lease-ID-of-your-block-blob-300x92.jpg 300w" sizes="(max-width: 459px) 100vw, 459px" /></a>
+  <a href="/wp-content/uploads/2018/04/Get-the-lease-ID-of-your-block-blob.jpg"><img aria-describedby="caption-attachment-1081" loading="lazy" class="size-full wp-image-1081" src="/wp-content/uploads/2018/04/Get-the-lease-ID-of-your-block-blob.jpg" alt="Get the lease ID of your block blob" width="459" height="141" /></a>
   
   <p id="caption-attachment-1081" class="wp-caption-text">
     Get the lease ID of your block blob
@@ -346,7 +346,7 @@ To enable AFS, follow these steps:
   3. Provide a name, subscription, resource group and location and click Create.
 
 <div id="attachment_1188" style="width: 375px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Deploy-Storage-Sync.jpg"><img aria-describedby="caption-attachment-1188" loading="lazy" class="size-full wp-image-1188" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Deploy-Storage-Sync.jpg" alt="Deploy Storage Sync" width="365" height="358" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Deploy-Storage-Sync.jpg 365w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Deploy-Storage-Sync-300x294.jpg 300w" sizes="(max-width: 365px) 100vw, 365px" /></a>
+  <a href="/wp-content/uploads/2018/04/Deploy-Storage-Sync.jpg"><img aria-describedby="caption-attachment-1188" loading="lazy" class="size-full wp-image-1188" src="/wp-content/uploads/2018/04/Deploy-Storage-Sync.jpg" alt="Deploy Storage Sync" width="365" height="358" /></a>
   
   <p id="caption-attachment-1188" class="wp-caption-text">
     Deploy Storage Sync
@@ -360,7 +360,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div id="attachment_1189" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-file-share-in-the-storage-account.jpg"><img aria-describedby="caption-attachment-1189" loading="lazy" class="wp-image-1189" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-file-share-in-the-storage-account.jpg" alt="Create a file share in the storage account" width="700" height="462" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-file-share-in-the-storage-account.jpg 724w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-file-share-in-the-storage-account-300x198.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Create-a-file-share-in-the-storage-account.jpg"><img aria-describedby="caption-attachment-1189" loading="lazy" class="wp-image-1189" src="/wp-content/uploads/2018/04/Create-a-file-share-in-the-storage-account.jpg" alt="Create a file share in the storage account" width="700" height="462" /></a>
   
   <p id="caption-attachment-1189" class="wp-caption-text">
     Create a file share in the storage account
@@ -377,7 +377,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div id="attachment_1190" style="width: 597px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-Sync-group.jpg"><img aria-describedby="caption-attachment-1190" loading="lazy" class="size-full wp-image-1190" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-Sync-group.jpg" alt="Create a Sync group" width="587" height="484" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-Sync-group.jpg 587w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-Sync-group-300x247.jpg 300w" sizes="(max-width: 587px) 100vw, 587px" /></a>
+  <a href="/wp-content/uploads/2018/04/Create-a-Sync-group.jpg"><img aria-describedby="caption-attachment-1190" loading="lazy" class="size-full wp-image-1190" src="/wp-content/uploads/2018/04/Create-a-Sync-group.jpg" alt="Create a Sync group" width="587" height="484" /></a>
   
   <p id="caption-attachment-1190" class="wp-caption-text">
     Create a Sync group
@@ -396,7 +396,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div id="attachment_1191" style="width: 425px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-enhanced-security.jpg"><img aria-describedby="caption-attachment-1191" loading="lazy" class="size-full wp-image-1191" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-enhanced-security.jpg" alt="Disable enhanced security" width="415" height="448" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-enhanced-security.jpg 415w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-enhanced-security-278x300.jpg 278w" sizes="(max-width: 415px) 100vw, 415px" /></a>
+  <a href="/wp-content/uploads/2018/04/Disable-enhanced-security.jpg"><img aria-describedby="caption-attachment-1191" loading="lazy" class="size-full wp-image-1191" src="/wp-content/uploads/2018/04/Disable-enhanced-security.jpg" alt="Disable enhanced security" width="415" height="448" /></a>
   
   <p id="caption-attachment-1191" class="wp-caption-text">
     Disable enhanced security
@@ -413,7 +413,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div id="attachment_1192" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing.jpg"><img aria-describedby="caption-attachment-1192" loading="lazy" class="wp-image-1192" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing.jpg" alt="Azure File Sync Azure PowerShell Module missing" width="700" height="438" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing.jpg 800w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing-300x188.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing-768x480.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing.jpg"><img aria-describedby="caption-attachment-1192" loading="lazy" class="wp-image-1192" src="/wp-content/uploads/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing.jpg" alt="Azure File Sync Azure PowerShell Module missing" width="700" height="438" /></a>
   
   <p id="caption-attachment-1192" class="wp-caption-text">
     Azure File Sync Azure PowerShell Module missing
@@ -427,7 +427,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div id="attachment_1193" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Install-the-Azure-PowerShell-Module.jpg"><img aria-describedby="caption-attachment-1193" loading="lazy" class="wp-image-1193" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Install-the-Azure-PowerShell-Module.jpg" alt="Install the Azure PowerShell Module" width="700" height="392" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Install-the-Azure-PowerShell-Module.jpg 862w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Install-the-Azure-PowerShell-Module-300x168.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Install-the-Azure-PowerShell-Module-768x430.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Install-the-Azure-PowerShell-Module.jpg"><img aria-describedby="caption-attachment-1193" loading="lazy" class="wp-image-1193" src="/wp-content/uploads/2018/04/Install-the-Azure-PowerShell-Module.jpg" alt="Install the Azure PowerShell Module" width="700" height="392" /></a>
   
   <p id="caption-attachment-1193" class="wp-caption-text">
     Install the Azure PowerShell module
@@ -441,7 +441,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div id="attachment_1194" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Sign-in-and-register-this-server.jpg"><img aria-describedby="caption-attachment-1194" loading="lazy" class="wp-image-1194" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Sign-in-and-register-this-server.jpg" alt="Sign in and register this server" width="700" height="438" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Sign-in-and-register-this-server.jpg 800w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Sign-in-and-register-this-server-300x188.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Sign-in-and-register-this-server-768x480.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Sign-in-and-register-this-server.jpg"><img aria-describedby="caption-attachment-1194" loading="lazy" class="wp-image-1194" src="/wp-content/uploads/2018/04/Sign-in-and-register-this-server.jpg" alt="Sign in and register this server" width="700" height="438" /></a>
   
   <p id="caption-attachment-1194" class="wp-caption-text">
     Sign in and register this server
@@ -460,7 +460,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div id="attachment_1195" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Register-a-server-endpoint.jpg"><img aria-describedby="caption-attachment-1195" loading="lazy" class="wp-image-1195" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Register-a-server-endpoint.jpg" alt="Register a server endpoint" width="700" height="210" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Register-a-server-endpoint.jpg 1688w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Register-a-server-endpoint-300x90.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Register-a-server-endpoint-768x231.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Register-a-server-endpoint-1024x308.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Register-a-server-endpoint.jpg"><img aria-describedby="caption-attachment-1195" loading="lazy" class="wp-image-1195" src="/wp-content/uploads/2018/04/Register-a-server-endpoint.jpg" alt="Register a server endpoint" width="700" height="210" /></a>
   
   <p id="caption-attachment-1195" class="wp-caption-text">
     Register a server endpoint
@@ -476,7 +476,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div id="attachment_1196" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Copy-files-into-the-sync-folder.jpg"><img aria-describedby="caption-attachment-1196" loading="lazy" class="size-full wp-image-1196" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Copy-files-into-the-sync-folder.jpg" alt="Copy files into the sync folder" width="700" height="146" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Copy-files-into-the-sync-folder.jpg 700w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Copy-files-into-the-sync-folder-300x63.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Copy-files-into-the-sync-folder.jpg"><img aria-describedby="caption-attachment-1196" loading="lazy" class="size-full wp-image-1196" src="/wp-content/uploads/2018/04/Copy-files-into-the-sync-folder.jpg" alt="Copy files into the sync folder" width="700" height="146" /></a>
   
   <p id="caption-attachment-1196" class="wp-caption-text">
     Copy files into the sync folder
@@ -490,7 +490,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div id="attachment_1197" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-synchronize-process-was-successful.jpg"><img aria-describedby="caption-attachment-1197" loading="lazy" class="wp-image-1197" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-synchronize-process-was-successful.jpg" alt="The synchronize process was successful" width="700" height="266" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-synchronize-process-was-successful.jpg 1082w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-synchronize-process-was-successful-300x114.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-synchronize-process-was-successful-768x292.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-synchronize-process-was-successful-1024x389.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/The-synchronize-process-was-successful.jpg"><img aria-describedby="caption-attachment-1197" loading="lazy" class="wp-image-1197" src="/wp-content/uploads/2018/04/The-synchronize-process-was-successful.jpg" alt="The synchronize process was successful" width="700" height="266" /></a>
   
   <p id="caption-attachment-1197" class="wp-caption-text">
     The synchronize process was successful

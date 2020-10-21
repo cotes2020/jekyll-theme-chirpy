@@ -81,7 +81,7 @@ To create a new Service Fabric application, follow these steps:
   2. In the New Project dialog, select Service Fabric Application within the Cloud category. Provide a name and click OK.
 
 <div id="attachment_1388" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-Service-Fabric-application.jpg"><img aria-describedby="caption-attachment-1388" loading="lazy" class="wp-image-1388" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-Service-Fabric-application.jpg" alt="Create a Service Fabric application" width="700" height="486" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-Service-Fabric-application.jpg 941w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-Service-Fabric-application-300x208.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-Service-Fabric-application-768x533.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/07/Create-a-Service-Fabric-application.jpg"><img aria-describedby="caption-attachment-1388" loading="lazy" class="wp-image-1388" src="/wp-content/uploads/2018/07/Create-a-Service-Fabric-application.jpg" alt="Create a Service Fabric application" width="700" height="486" /></a>
   
   <p id="caption-attachment-1388" class="wp-caption-text">
     Create a Service Fabric application
@@ -98,7 +98,7 @@ To create a new Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1389" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Select-a-Template-for-your-Fabric-Service.jpg"><img aria-describedby="caption-attachment-1389" loading="lazy" class="wp-image-1389" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Select-a-Template-for-your-Fabric-Service.jpg" alt="Select a Template for your Fabric Service" width="700" height="528" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Select-a-Template-for-your-Fabric-Service.jpg 786w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Select-a-Template-for-your-Fabric-Service-300x226.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Select-a-Template-for-your-Fabric-Service-768x579.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/07/Select-a-Template-for-your-Fabric-Service.jpg"><img aria-describedby="caption-attachment-1389" loading="lazy" class="wp-image-1389" src="/wp-content/uploads/2018/07/Select-a-Template-for-your-Fabric-Service.jpg" alt="Select a Template for your Fabric Service" width="700" height="528" /></a>
   
   <p id="caption-attachment-1389" class="wp-caption-text">
     Select a Template for your Fabric Service
@@ -112,7 +112,7 @@ To create a new Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1392" style="width: 671px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-service-type-description.jpg"><img aria-describedby="caption-attachment-1392" loading="lazy" class="size-full wp-image-1392" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-service-type-description.jpg" alt="The service type description" width="661" height="87" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-service-type-description.jpg 661w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-service-type-description-300x39.jpg 300w" sizes="(max-width: 661px) 100vw, 661px" /></a>
+  <a href="/wp-content/uploads/2018/07/The-service-type-description.jpg"><img aria-describedby="caption-attachment-1392" loading="lazy" class="size-full wp-image-1392" src="/wp-content/uploads/2018/07/The-service-type-description.jpg" alt="The service type description" width="661" height="87" /></a>
   
   <p id="caption-attachment-1392" class="wp-caption-text">
     The service type description
@@ -124,7 +124,7 @@ To create a new Service Fabric application, follow these steps:
   1. A service type is created for the project. In this case, the type is defined in the Simulator.cs file. This service type is registered in Program.cs when the program starts so that the Service Fabric runtime knows which type to initialize when it creates an instance of the service.
 
 <div id="attachment_1393" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Registering-a-service-type-in-the-main-method.jpg"><img aria-describedby="caption-attachment-1393" loading="lazy" class="wp-image-1393" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Registering-a-service-type-in-the-main-method.jpg" alt="Registering a service type in the main method" width="700" height="322" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Registering-a-service-type-in-the-main-method.jpg 827w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Registering-a-service-type-in-the-main-method-300x138.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Registering-a-service-type-in-the-main-method-768x353.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/07/Registering-a-service-type-in-the-main-method.jpg"><img aria-describedby="caption-attachment-1393" loading="lazy" class="wp-image-1393" src="/wp-content/uploads/2018/07/Registering-a-service-type-in-the-main-method.jpg" alt="Registering a service type in the main method" width="700" height="322" /></a>
   
   <p id="caption-attachment-1393" class="wp-caption-text">
     Registering a service type in the main method
@@ -138,7 +138,7 @@ To create a new Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1394" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/RunAsync-which-increments-a-counter-every-second.jpg"><img aria-describedby="caption-attachment-1394" loading="lazy" class="wp-image-1394" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/RunAsync-which-increments-a-counter-every-second.jpg" alt="RunAsync which increments a counter every second" width="700" height="393" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/RunAsync-which-increments-a-counter-every-second.jpg 809w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/RunAsync-which-increments-a-counter-every-second-300x168.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/RunAsync-which-increments-a-counter-every-second-768x431.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/07/RunAsync-which-increments-a-counter-every-second.jpg"><img aria-describedby="caption-attachment-1394" loading="lazy" class="wp-image-1394" src="/wp-content/uploads/2018/07/RunAsync-which-increments-a-counter-every-second.jpg" alt="RunAsync which increments a counter every second" width="700" height="393" /></a>
   
   <p id="caption-attachment-1394" class="wp-caption-text">
     RunAsync which increments a counter every second
@@ -155,7 +155,7 @@ To create a new Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1395" style="width: 384px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-the-ISimulatorService-interface.jpg"><img aria-describedby="caption-attachment-1395" loading="lazy" class="size-full wp-image-1395" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-the-ISimulatorService-interface.jpg" alt="Create the ISimulatorService interface" width="374" height="194" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-the-ISimulatorService-interface.jpg 374w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-the-ISimulatorService-interface-300x156.jpg 300w" sizes="(max-width: 374px) 100vw, 374px" /></a>
+  <a href="/wp-content/uploads/2018/07/Create-the-ISimulatorService-interface.jpg"><img aria-describedby="caption-attachment-1395" loading="lazy" class="size-full wp-image-1395" src="/wp-content/uploads/2018/07/Create-the-ISimulatorService-interface.jpg" alt="Create the ISimulatorService interface" width="374" height="194" /></a>
   
   <p id="caption-attachment-1395" class="wp-caption-text">
     Create the ISimulatorService interface
@@ -169,7 +169,7 @@ To create a new Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1396" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Implementation-of-the-GetLeads-method.jpg"><img aria-describedby="caption-attachment-1396" loading="lazy" class="wp-image-1396" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Implementation-of-the-GetLeads-method.jpg" alt="Implementation of the GetLeads method" width="700" height="190" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Implementation-of-the-GetLeads-method.jpg 760w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Implementation-of-the-GetLeads-method-300x81.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/07/Implementation-of-the-GetLeads-method.jpg"><img aria-describedby="caption-attachment-1396" loading="lazy" class="wp-image-1396" src="/wp-content/uploads/2018/07/Implementation-of-the-GetLeads-method.jpg" alt="Implementation of the GetLeads method" width="700" height="190" /></a>
   
   <p id="caption-attachment-1396" class="wp-caption-text">
     Implementation of the GetLeads method
@@ -183,7 +183,7 @@ To create a new Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1397" style="width: 617px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-CreateServiceReplicaListeners-method.jpg"><img aria-describedby="caption-attachment-1397" loading="lazy" class="size-full wp-image-1397" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-CreateServiceReplicaListeners-method.jpg" alt="Modify the CreateServiceReplicaListeners method" width="607" height="77" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-CreateServiceReplicaListeners-method.jpg 607w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-CreateServiceReplicaListeners-method-300x38.jpg 300w" sizes="(max-width: 607px) 100vw, 607px" /></a>
+  <a href="/wp-content/uploads/2018/07/Modify-the-CreateServiceReplicaListeners-method.jpg"><img aria-describedby="caption-attachment-1397" loading="lazy" class="size-full wp-image-1397" src="/wp-content/uploads/2018/07/Modify-the-CreateServiceReplicaListeners-method.jpg" alt="Modify the CreateServiceReplicaListeners method" width="607" height="77" /></a>
   
   <p id="caption-attachment-1397" class="wp-caption-text">
     Modify the CreateServiceReplicaListeners method
@@ -200,7 +200,7 @@ To add a web app to your Service Fabric application, follow these steps:
   2. In the template dialog, select Stateless ASP.NET Core, provide a name and click OK.
 
 <div id="attachment_1398" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-web-app-in-your-Service-Fabric-app.jpg"><img aria-describedby="caption-attachment-1398" loading="lazy" class="wp-image-1398" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-web-app-in-your-Service-Fabric-app.jpg" alt="Create a web app in your Service Fabric app" width="700" height="528" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-web-app-in-your-Service-Fabric-app.jpg 786w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-web-app-in-your-Service-Fabric-app-300x226.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-web-app-in-your-Service-Fabric-app-768x579.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/07/Create-a-web-app-in-your-Service-Fabric-app.jpg"><img aria-describedby="caption-attachment-1398" loading="lazy" class="wp-image-1398" src="/wp-content/uploads/2018/07/Create-a-web-app-in-your-Service-Fabric-app.jpg" alt="Create a web app in your Service Fabric app" width="700" height="528" /></a>
   
   <p id="caption-attachment-1398" class="wp-caption-text">
     Create a web app in your Service Fabric app
@@ -214,7 +214,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1399" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Select-the-mvc-template-for-your-web-app.png"><img aria-describedby="caption-attachment-1399" loading="lazy" class="wp-image-1399" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Select-the-mvc-template-for-your-web-app.png" alt="Select the mvc template for your web app" width="700" height="492" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Select-the-mvc-template-for-your-web-app.png 786w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Select-the-mvc-template-for-your-web-app-300x211.png 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Select-the-mvc-template-for-your-web-app-768x540.png 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/07/Select-the-mvc-template-for-your-web-app.png"><img aria-describedby="caption-attachment-1399" loading="lazy" class="wp-image-1399" src="/wp-content/uploads/2018/07/Select-the-mvc-template-for-your-web-app.png" alt="Select the mvc template for your web app" width="700" height="492" /></a>
   
   <p id="caption-attachment-1399" class="wp-caption-text">
     Select the MVC template for your web app
@@ -228,7 +228,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1400" style="width: 659px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-HTTP-endpoint-description.jpg"><img aria-describedby="caption-attachment-1400" loading="lazy" class="size-full wp-image-1400" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-HTTP-endpoint-description.jpg" alt="The HTTP endpoint description" width="649" height="101" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-HTTP-endpoint-description.jpg 649w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-HTTP-endpoint-description-300x47.jpg 300w" sizes="(max-width: 649px) 100vw, 649px" /></a>
+  <a href="/wp-content/uploads/2018/07/The-HTTP-endpoint-description.jpg"><img aria-describedby="caption-attachment-1400" loading="lazy" class="size-full wp-image-1400" src="/wp-content/uploads/2018/07/The-HTTP-endpoint-description.jpg" alt="The HTTP endpoint description" width="649" height="101" /></a>
   
   <p id="caption-attachment-1400" class="wp-caption-text">
     The HTTP endpoint description
@@ -242,7 +242,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1401" style="width: 786px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-WebApp-class.jpg"><img aria-describedby="caption-attachment-1401" loading="lazy" class="size-full wp-image-1401" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-WebApp-class.jpg" alt="The WebApp class" width="776" height="584" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-WebApp-class.jpg 776w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-WebApp-class-300x226.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-WebApp-class-768x578.jpg 768w" sizes="(max-width: 776px) 100vw, 776px" /></a>
+  <a href="/wp-content/uploads/2018/07/The-WebApp-class.jpg"><img aria-describedby="caption-attachment-1401" loading="lazy" class="size-full wp-image-1401" src="/wp-content/uploads/2018/07/The-WebApp-class.jpg" alt="The WebApp class" width="776" height="584" /></a>
   
   <p id="caption-attachment-1401" class="wp-caption-text">
     The WebApp class
@@ -259,7 +259,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1402" style="width: 386px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-copied-ISimulatorService-interface.jpg"><img aria-describedby="caption-attachment-1402" loading="lazy" class="size-full wp-image-1402" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-copied-ISimulatorService-interface.jpg" alt="The copied ISimulatorService interface" width="376" height="194" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-copied-ISimulatorService-interface.jpg 376w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-copied-ISimulatorService-interface-300x155.jpg 300w" sizes="(max-width: 376px) 100vw, 376px" /></a>
+  <a href="/wp-content/uploads/2018/07/The-copied-ISimulatorService-interface.jpg"><img aria-describedby="caption-attachment-1402" loading="lazy" class="size-full wp-image-1402" src="/wp-content/uploads/2018/07/The-copied-ISimulatorService-interface.jpg" alt="The copied ISimulatorService interface" width="376" height="194" /></a>
   
   <p id="caption-attachment-1402" class="wp-caption-text">
     The copied ISimulatorService interface
@@ -273,7 +273,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1403" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-modified-CreateServiceInstanceListeners-method.jpg"><img aria-describedby="caption-attachment-1403" loading="lazy" class="wp-image-1403" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-modified-CreateServiceInstanceListeners-method.jpg" alt="The modified CreateServiceInstanceListeners method" width="700" height="280" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-modified-CreateServiceInstanceListeners-method.jpg 804w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-modified-CreateServiceInstanceListeners-method-300x120.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/The-modified-CreateServiceInstanceListeners-method-768x308.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/07/The-modified-CreateServiceInstanceListeners-method.jpg"><img aria-describedby="caption-attachment-1403" loading="lazy" class="wp-image-1403" src="/wp-content/uploads/2018/07/The-modified-CreateServiceInstanceListeners-method.jpg" alt="The modified CreateServiceInstanceListeners method" width="700" height="280" /></a>
   
   <p id="caption-attachment-1403" class="wp-caption-text">
     The modified CreateServiceInstanceListeners method
@@ -287,7 +287,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1404" style="width: 369px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Inject-FabricClient-into-the-HomeController.jpg"><img aria-describedby="caption-attachment-1404" loading="lazy" class="size-full wp-image-1404" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Inject-FabricClient-into-the-HomeController.jpg" alt="Inject FabricClient into the HomeController" width="359" height="165" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Inject-FabricClient-into-the-HomeController.jpg 359w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Inject-FabricClient-into-the-HomeController-300x138.jpg 300w" sizes="(max-width: 359px) 100vw, 359px" /></a>
+  <a href="/wp-content/uploads/2018/07/Inject-FabricClient-into-the-HomeController.jpg"><img aria-describedby="caption-attachment-1404" loading="lazy" class="size-full wp-image-1404" src="/wp-content/uploads/2018/07/Inject-FabricClient-into-the-HomeController.jpg" alt="Inject FabricClient into the HomeController" width="359" height="165" /></a>
   
   <p id="caption-attachment-1404" class="wp-caption-text">
     Inject FabricClient into the HomeController
@@ -301,7 +301,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1405" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-Index-method-to-call-the-Simulator-service.jpg"><img aria-describedby="caption-attachment-1405" loading="lazy" class="wp-image-1405" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-Index-method-to-call-the-Simulator-service.jpg" alt="Modify the Index method to call the Simulator service" width="700" height="284" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-Index-method-to-call-the-Simulator-service.jpg 784w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-Index-method-to-call-the-Simulator-service-300x122.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-Index-method-to-call-the-Simulator-service-768x312.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/07/Modify-the-Index-method-to-call-the-Simulator-service.jpg"><img aria-describedby="caption-attachment-1405" loading="lazy" class="wp-image-1405" src="/wp-content/uploads/2018/07/Modify-the-Index-method-to-call-the-Simulator-service.jpg" alt="Modify the Index method to call the Simulator service" width="700" height="284" /></a>
   
   <p id="caption-attachment-1405" class="wp-caption-text">
     Modify the Index method to call the Simulator service
@@ -315,7 +315,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div id="attachment_1406" style="width: 346px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-Index.cshtml-view.jpg"><img aria-describedby="caption-attachment-1406" loading="lazy" class="size-full wp-image-1406" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-Index.cshtml-view.jpg" alt="Modify the Index.cshtml view" width="336" height="363" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-Index.cshtml-view.jpg 336w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Modify-the-Index.cshtml-view-278x300.jpg 278w" sizes="(max-width: 336px) 100vw, 336px" /></a>
+  <a href="/wp-content/uploads/2018/07/Modify-the-Index.cshtml-view.jpg"><img aria-describedby="caption-attachment-1406" loading="lazy" class="size-full wp-image-1406" src="/wp-content/uploads/2018/07/Modify-the-Index.cshtml-view.jpg" alt="Modify the Index.cshtml view" width="336" height="363" /></a>
   
   <p id="caption-attachment-1406" class="wp-caption-text">
     Modify the Index.cshtml view
@@ -327,7 +327,7 @@ To add a web app to your Service Fabric application, follow these steps:
   1. To run the web app and stateful service, you can publish it to the local Service Fabric cluster. Right-click the Service Fabric application node in the Solution Explorer and select Publish. From the Publish Service Fabric Application dialog, select a target profile matching one of the local cluster options, and click Publish.
 
 <div id="attachment_1407" style="width: 640px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Deploy-to-a-local-cluster-with-error-message.png"><img aria-describedby="caption-attachment-1407" loading="lazy" class="size-full wp-image-1407" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Deploy-to-a-local-cluster-with-error-message.png" alt="Deploy to a local cluster with error message" width="630" height="428" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Deploy-to-a-local-cluster-with-error-message.png 630w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Deploy-to-a-local-cluster-with-error-message-300x204.png 300w" sizes="(max-width: 630px) 100vw, 630px" /></a>
+  <a href="/wp-content/uploads/2018/07/Deploy-to-a-local-cluster-with-error-message.png"><img aria-describedby="caption-attachment-1407" loading="lazy" class="size-full wp-image-1407" src="/wp-content/uploads/2018/07/Deploy-to-a-local-cluster-with-error-message.png" alt="Deploy to a local cluster with error message" width="630" height="428" /></a>
   
   <p id="caption-attachment-1407" class="wp-caption-text">
     Deploy to a local cluster with an error message
@@ -362,7 +362,7 @@ To create a new Service Fabric application based on the Actor service template, 
   3. Select Actor Service from the templates list, provide a name and Click OK.
 
 <div id="attachment_1409" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-an-Actor-service.jpg"><img aria-describedby="caption-attachment-1409" loading="lazy" class="wp-image-1409" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-an-Actor-service.jpg" alt="Create an Actor service" width="700" height="528" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-an-Actor-service.jpg 786w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-an-Actor-service-300x226.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-an-Actor-service-768x579.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/07/Create-an-Actor-service.jpg"><img aria-describedby="caption-attachment-1409" loading="lazy" class="wp-image-1409" src="/wp-content/uploads/2018/07/Create-an-Actor-service.jpg" alt="Create an Actor service" width="700" height="528" /></a>
   
   <p id="caption-attachment-1409" class="wp-caption-text">
     Create an Actor service
@@ -383,7 +383,7 @@ Service Fabric can run processes and containers side by side, and containers can
   4. Expand the PackageRoot folder in the Solution Explorer and you will find the ServiceManifest.xml file there. Modify the Resources section to add a UriScheme, Port and Protocol setting for the service point.
 
 <div id="attachment_1411" style="width: 637px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Add-a-UriScheme-Port-and-Protocol-to-the-ServiceManifest.xml-file.jpg"><img aria-describedby="caption-attachment-1411" loading="lazy" class="size-full wp-image-1411" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Add-a-UriScheme-Port-and-Protocol-to-the-ServiceManifest.xml-file.jpg" alt="Add a UriScheme, Port and Protocol to the ServiceManifest.xml file" width="627" height="95" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Add-a-UriScheme-Port-and-Protocol-to-the-ServiceManifest.xml-file.jpg 627w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Add-a-UriScheme-Port-and-Protocol-to-the-ServiceManifest.xml-file-300x45.jpg 300w" sizes="(max-width: 627px) 100vw, 627px" /></a>
+  <a href="/wp-content/uploads/2018/07/Add-a-UriScheme-Port-and-Protocol-to-the-ServiceManifest.xml-file.jpg"><img aria-describedby="caption-attachment-1411" loading="lazy" class="size-full wp-image-1411" src="/wp-content/uploads/2018/07/Add-a-UriScheme-Port-and-Protocol-to-the-ServiceManifest.xml-file.jpg" alt="Add a UriScheme, Port and Protocol to the ServiceManifest.xml file" width="627" height="95" /></a>
   
   <p id="caption-attachment-1411" class="wp-caption-text">
     Add a UriScheme, Port and Protocol to the ServiceManifest.xml file
@@ -397,7 +397,7 @@ Service Fabric can run processes and containers side by side, and containers can
 </ol>
 
 <div id="attachment_1412" style="width: 536px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-PortBinding-policy-for-the-container.jpg"><img aria-describedby="caption-attachment-1412" loading="lazy" class="size-full wp-image-1412" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-PortBinding-policy-for-the-container.jpg" alt="Create a PortBinding policy for the container" width="526" height="169" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-PortBinding-policy-for-the-container.jpg 526w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/07/Create-a-PortBinding-policy-for-the-container-300x96.jpg 300w" sizes="(max-width: 526px) 100vw, 526px" /></a>
+  <a href="/wp-content/uploads/2018/07/Create-a-PortBinding-policy-for-the-container.jpg"><img aria-describedby="caption-attachment-1412" loading="lazy" class="size-full wp-image-1412" src="/wp-content/uploads/2018/07/Create-a-PortBinding-policy-for-the-container.jpg" alt="Create a PortBinding policy for the container" width="526" height="169" /></a>
   
   <p id="caption-attachment-1412" class="wp-caption-text">
     Create a PortBinding policy for the container

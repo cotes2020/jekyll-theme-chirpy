@@ -64,7 +64,7 @@ The ASP .NET Core tag helper automatically includes the antiforgery token into a
 When you look at the HTML code of the form, you can see the generated field for the token.
 
 <div id="attachment_2183" style="width: 534px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg"><img aria-describedby="caption-attachment-2183" loading="lazy" class="size-full wp-image-2183" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg" alt="The auto-generated antiforgery token in the form to prevent cross site request forgery attacks" width="524" height="134" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg 524w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-auto-generated-antiforgery-token-in-the-form-300x77.jpg 300w" sizes="(max-width: 524px) 100vw, 524px" /></a>
+  <a href="/wp-content/uploads/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg"><img aria-describedby="caption-attachment-2183" loading="lazy" class="size-full wp-image-2183" src="/wp-content/uploads/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg" alt="The auto-generated antiforgery token in the form to prevent cross site request forgery attacks" width="524" height="134" /></a>
   
   <p id="caption-attachment-2183" class="wp-caption-text">
     The auto-generated antiforgery token in the form
@@ -74,7 +74,7 @@ When you look at the HTML code of the form, you can see the generated field for 
 You can also see two cookies in your browser. In Chrome you can see the cookies when you open the Developer Tools (F12) and then click on Application and then on Cookies.
 
 <div id="attachment_2184" style="width: 669px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg"><img aria-describedby="caption-attachment-2184" loading="lazy" class="size-full wp-image-2184" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg" alt="The User Id and Anti Forgery Cookie" width="659" height="297" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg 659w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/The-User-Id-and-Anti-Forgery-Cookie-300x135.jpg 300w" sizes="(max-width: 659px) 100vw, 659px" /></a>
+  <a href="/wp-content/uploads/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg"><img aria-describedby="caption-attachment-2184" loading="lazy" class="size-full wp-image-2184" src="/wp-content/uploads/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg" alt="The User Id and Anti Forgery Cookie" width="659" height="297" /></a>
   
   <p id="caption-attachment-2184" class="wp-caption-text">
     The User Id and Anti Forgery Cookie

@@ -12,7 +12,7 @@ Today, some of my colleagues had a discussion about .Net Standard. Is it a new f
 .Net Standard is a specification which defines a set of APIs which the .Net platform has to implement. It is not another .Net platform though. You can only build libraries, not executables with it. On the following screenshot, you can see that .Net Standard contains APIs from the classic .Net framework, .Net core and Xamarin.
 
 <div id="attachment_1579" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/What-is-Net-Standard..jpg"><img aria-describedby="caption-attachment-1579" loading="lazy" class="wp-image-1579" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/What-is-Net-Standard..jpg" alt="What is .Net Standard" width="700" height="305" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/What-is-Net-Standard..jpg 1730w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/What-is-Net-Standard.-300x131.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/What-is-Net-Standard.-768x334.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/What-is-Net-Standard.-1024x446.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2019/02/What-is-Net-Standard..jpg"><img aria-describedby="caption-attachment-1579" loading="lazy" class="wp-image-1579" src="/wp-content/uploads/2019/02/What-is-Net-Standard..jpg" alt="What is .Net Standard" width="700" height="305" /></a>
   
   <p id="caption-attachment-1579" class="wp-caption-text">
     What is .Net Standard (<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">Source</a>)
@@ -22,7 +22,7 @@ Today, some of my colleagues had a discussion about .Net Standard. Is it a new f
 The following screenshot shows that it defines a set all APIs that all .Net frameworks implement.
 
 <div id="attachment_1580" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Implementation-of-.Net-Standard.jpg"><img aria-describedby="caption-attachment-1580" loading="lazy" class="wp-image-1580" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Implementation-of-.Net-Standard.jpg" alt="Implementation of .Net Standard" width="700" height="338" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Implementation-of-.Net-Standard.jpg 1653w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Implementation-of-.Net-Standard-300x145.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Implementation-of-.Net-Standard-768x370.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Implementation-of-.Net-Standard-1024x494.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2019/02/Implementation-of-.Net-Standard.jpg"><img aria-describedby="caption-attachment-1580" loading="lazy" class="wp-image-1580" src="/wp-content/uploads/2019/02/Implementation-of-.Net-Standard.jpg" alt="Implementation of .Net Standard" width="700" height="338" /></a>
   
   <p id="caption-attachment-1580" class="wp-caption-text">
     Implementation of .Net Standard (<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">Source</a>)
@@ -36,7 +36,7 @@ The following screenshot shows that it defines a set all APIs that all .Net fram
 Some of you might remember portable class libraries, which sound like .Net Standard. Both technologies have the same idea but a portable class library needs to be recompiled every time you want to use it for a different target. .Net Standard doesn&#8217;t have to be recompiled to be used for a different target. Check out the following screenshot to compare the differences:
 
 <div id="attachment_1578" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Portable-Class-Library-vs-Net-Standard.jpg"><img aria-describedby="caption-attachment-1578" loading="lazy" class="wp-image-1578" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Portable-Class-Library-vs-Net-Standard.jpg" alt="Portable Class Library vs .Net Standard" width="700" height="212" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Portable-Class-Library-vs-Net-Standard.jpg 1589w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Portable-Class-Library-vs-Net-Standard-300x91.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Portable-Class-Library-vs-Net-Standard-768x233.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Portable-Class-Library-vs-Net-Standard-1024x311.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2019/02/Portable-Class-Library-vs-Net-Standard.jpg"><img aria-describedby="caption-attachment-1578" loading="lazy" class="wp-image-1578" src="/wp-content/uploads/2019/02/Portable-Class-Library-vs-Net-Standard.jpg" alt="Portable Class Library vs .Net Standard" width="700" height="212" /></a>
   
   <p id="caption-attachment-1578" class="wp-caption-text">
     Portable Class Library vs .Net Standard (<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">Source</a>)
@@ -50,7 +50,7 @@ Portable class libraries are deprecated because .Net Standard is better in every
 A new version of .Net Standard always contains all previous APIs and additional ones. The following screenshot shows how a new version is built on all previous ones:
 
 <div id="attachment_1582" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Net-Standard-Versions.jpg"><img aria-describedby="caption-attachment-1582" loading="lazy" class="wp-image-1582" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Net-Standard-Versions.jpg" alt=".Net Standard Versions" width="700" height="554" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Net-Standard-Versions.jpg 913w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Net-Standard-Versions-300x237.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Net-Standard-Versions-768x607.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2019/02/Net-Standard-Versions.jpg"><img aria-describedby="caption-attachment-1582" loading="lazy" class="wp-image-1582" src="/wp-content/uploads/2019/02/Net-Standard-Versions.jpg" alt=".Net Standard Versions" width="700" height="554" /></a>
   
   <p id="caption-attachment-1582" class="wp-caption-text">
     Every version is built on the previous one (<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">Source</a>)
@@ -190,7 +190,7 @@ If you are looking for a specific API, you can go to <a href="https://docs.micr
 Version 1.6 has around 13,000 APIs whereas version 2.0 has already around 32,000 APIs which includes for example Primitives, Collections, Linq or Files
 
 <div id="attachment_1586" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/APIs-of-.Net-Standard-2.0.jpg"><img aria-describedby="caption-attachment-1586" loading="lazy" class="wp-image-1586" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/APIs-of-.Net-Standard-2.0.jpg" alt="APIs of .Net Standard 2.0" width="700" height="240" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/APIs-of-.Net-Standard-2.0.jpg 1583w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/APIs-of-.Net-Standard-2.0-300x103.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/APIs-of-.Net-Standard-2.0-768x263.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/APIs-of-.Net-Standard-2.0-1024x351.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2019/02/APIs-of-.Net-Standard-2.0.jpg"><img aria-describedby="caption-attachment-1586" loading="lazy" class="wp-image-1586" src="/wp-content/uploads/2019/02/APIs-of-.Net-Standard-2.0.jpg" alt="APIs of .Net Standard 2.0" width="700" height="240" /></a>
   
   <p id="caption-attachment-1586" class="wp-caption-text">
     Some APIs of 2.0 (<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">Source</a>)
@@ -208,7 +208,7 @@ Migrating to .Net Standard just for the sake of migrating is not the best strate
 Open the .csproj file of the classic .Net framework project you want to migrate and delete everything. Then copy a new Project tag with the target framework of netstandard in it. If you want to migrate a .Net core project, you only have to change the target framework to netstandard. For details see the following screenshot:
 
 <div id="attachment_1589" style="width: 431px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Migrate-to-.Net-Standard.jpg"><img aria-describedby="caption-attachment-1589" loading="lazy" class="size-full wp-image-1589" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Migrate-to-.Net-Standard.jpg" alt="Migrate to .Net Standard" width="421" height="137" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Migrate-to-.Net-Standard.jpg 421w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Migrate-to-.Net-Standard-300x98.jpg 300w" sizes="(max-width: 421px) 100vw, 421px" /></a>
+  <a href="/wp-content/uploads/2019/02/Migrate-to-.Net-Standard.jpg"><img aria-describedby="caption-attachment-1589" loading="lazy" class="size-full wp-image-1589" src="/wp-content/uploads/2019/02/Migrate-to-.Net-Standard.jpg" alt="Migrate to .Net Standard" width="421" height="137" /></a>
   
   <p id="caption-attachment-1589" class="wp-caption-text">
     Migrate to .Net Standard
@@ -222,7 +222,7 @@ If you are migrating a .Net core project, you are already done. For your .Net fr
 If you want to target multiple frameworks, for example, .Net Standard and .Net 4.6.1, you only have to change the TargetFramework tag in the .csproj file to TargetFrameworks and separate the different framework with a semicolon.
 
 <div id="attachment_1590" style="width: 461px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Target-multiple-platforms.jpg"><img aria-describedby="caption-attachment-1590" loading="lazy" class="size-full wp-image-1590" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Target-multiple-platforms.jpg" alt="Target multiple platforms" width="451" height="129" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Target-multiple-platforms.jpg 451w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Target-multiple-platforms-300x86.jpg 300w" sizes="(max-width: 451px) 100vw, 451px" /></a>
+  <a href="/wp-content/uploads/2019/02/Target-multiple-platforms.jpg"><img aria-describedby="caption-attachment-1590" loading="lazy" class="size-full wp-image-1590" src="/wp-content/uploads/2019/02/Target-multiple-platforms.jpg" alt="Target multiple platforms" width="451" height="129" /></a>
   
   <p id="caption-attachment-1590" class="wp-caption-text">
     Target multiple platforms
@@ -232,7 +232,7 @@ If you want to target multiple frameworks, for example, .Net Standard and .Net 4
 If you use multiple target platforms, you can use if statements to use different code, depending on your target framework:
 
 <div id="attachment_1591" style="width: 457px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Execute-code-depending-on-the-target-platform.jpg"><img aria-describedby="caption-attachment-1591" loading="lazy" class="size-full wp-image-1591" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Execute-code-depending-on-the-target-platform.jpg" alt="Execute code depending on the target platform" width="447" height="91" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Execute-code-depending-on-the-target-platform.jpg 447w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/02/Execute-code-depending-on-the-target-platform-300x61.jpg 300w" sizes="(max-width: 447px) 100vw, 447px" /></a>
+  <a href="/wp-content/uploads/2019/02/Execute-code-depending-on-the-target-platform.jpg"><img aria-describedby="caption-attachment-1591" loading="lazy" class="size-full wp-image-1591" src="/wp-content/uploads/2019/02/Execute-code-depending-on-the-target-platform.jpg" alt="Execute code depending on the target platform" width="447" height="91" /></a>
   
   <p id="caption-attachment-1591" class="wp-caption-text">
     Execute code depending on the target platform

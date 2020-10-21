@@ -10,7 +10,7 @@ The decorator pattern is a structural design pattern used for dynamically adding
 You can see this behavior on the UML diagram where the decorator implements the interface to extend the functionality.
 
 <div id="attachment_2238" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Decorator-Pattern-UML.jpg"><img aria-describedby="caption-attachment-2238" loading="lazy" class="wp-image-2238" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Decorator-Pattern-UML.jpg" alt="Decorator Pattern UML" width="700" height="418" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Decorator-Pattern-UML.jpg 1125w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Decorator-Pattern-UML-300x179.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Decorator-Pattern-UML-1024x611.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Decorator-Pattern-UML-768x458.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/06/Decorator-Pattern-UML.jpg"><img aria-describedby="caption-attachment-2238" loading="lazy" class="wp-image-2238" src="/wp-content/uploads/2020/06/Decorator-Pattern-UML.jpg" alt="Decorator Pattern UML" width="700" height="418" /></a>
   
   <p id="caption-attachment-2238" class="wp-caption-text">
     Decorator Pattern UML (Source)
@@ -153,7 +153,7 @@ return View(data);
 Start the application and click on Get Data. After a couple of seconds, you will see the data displayed.
 
 <div id="attachment_2243" style="width: 377px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Displaying-the-loaded-data.jpg"><img aria-describedby="caption-attachment-2243" loading="lazy" class="size-full wp-image-2243" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Displaying-the-loaded-data.jpg" alt="Displaying the loaded data" width="367" height="559" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Displaying-the-loaded-data.jpg 367w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/06/Displaying-the-loaded-data-197x300.jpg 197w" sizes="(max-width: 367px) 100vw, 367px" /></a>
+  <a href="/wp-content/uploads/2020/06/Displaying-the-loaded-data.jpg"><img aria-describedby="caption-attachment-2243" loading="lazy" class="size-full wp-image-2243" src="/wp-content/uploads/2020/06/Displaying-the-loaded-data.jpg" alt="Displaying the loaded data" width="367" height="559" /></a>
   
   <p id="caption-attachment-2243" class="wp-caption-text">
     Displaying the loaded data

@@ -24,7 +24,7 @@ A microservice is an application that offers operations for a specific context. 
 When you start the application, you will see the Swagger UI and can also try all the available methods.
 
 <div id="attachment_2279" style="width: 430px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Swagger-UI-of-the-Microservice.jpg"><img aria-describedby="caption-attachment-2279" loading="lazy" class="wp-image-2279" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Swagger-UI-of-the-Microservice.jpg" alt="Swagger UI of the Microservice" width="420" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Swagger-UI-of-the-Microservice.jpg 544w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/07/Swagger-UI-of-the-Microservice-180x300.jpg 180w" sizes="(max-width: 420px) 100vw, 420px" /></a>
+  <a href="/wp-content/uploads/2020/07/Swagger-UI-of-the-Microservice.jpg"><img aria-describedby="caption-attachment-2279" loading="lazy" class="wp-image-2279" src="/wp-content/uploads/2020/07/Swagger-UI-of-the-Microservice.jpg" alt="Swagger UI of the Microservice" width="420" height="700" /></a>
   
   <p id="caption-attachment-2279" class="wp-caption-text">
     Swagger UI of the Microservice

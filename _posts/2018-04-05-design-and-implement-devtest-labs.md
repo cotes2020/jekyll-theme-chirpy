@@ -17,7 +17,7 @@ To add a new DevTest Lab, follow these steps:
   4. By default, the Auto-shutdown option is enabled. This feature can help you save costs. Click on it, if you want to disable it or if you want to change the time for the shutdown.
 
 <div id="attachment_1016" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1016" loading="lazy" class="wp-image-1016" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-DevTest-Lab.jpg" alt="Create a DevTest Lab" width="700" height="389" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-DevTest-Lab.jpg 889w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-DevTest-Lab-300x167.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-DevTest-Lab-768x427.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-a-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1016" loading="lazy" class="wp-image-1016" src="/wp-content/uploads/2018/03/Create-a-DevTest-Lab.jpg" alt="Create a DevTest Lab" width="700" height="389" /></a>
   
   <p id="caption-attachment-1016" class="wp-caption-text">
     Create a DevTest Lab
@@ -38,7 +38,7 @@ The deployment process creates a new resource group with the following resources
   * A virtual network
 
 <div id="attachment_1017" style="width: 675px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Deployed-resources.jpg"><img aria-describedby="caption-attachment-1017" loading="lazy" class="size-full wp-image-1017" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Deployed-resources.jpg" alt="Deployed resources" width="665" height="218" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Deployed-resources.jpg 665w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Deployed-resources-300x98.jpg 300w" sizes="(max-width: 665px) 100vw, 665px" /></a>
+  <a href="/wp-content/uploads/2018/03/Deployed-resources.jpg"><img aria-describedby="caption-attachment-1017" loading="lazy" class="size-full wp-image-1017" src="/wp-content/uploads/2018/03/Deployed-resources.jpg" alt="Deployed resources" width="665" height="218" /></a>
   
   <p id="caption-attachment-1017" class="wp-caption-text">
     Deployed resources
@@ -54,7 +54,7 @@ After the DevTest Lab is deployed, you can add a VM to it following these steps:
   3. Selecting an image opens the Virtual machine blade. Provide a machine name, user name, password, the size of your VM and optionally artifacts. Artifacts are third-party tools like Chrome or Git.
 
 <div id="attachment_1022" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1022" loading="lazy" class="wp-image-1022" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg" alt="Create a Windows 2016 Server for your DevTest Lab" width="700" height="493" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg 1483w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab-300x211.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab-768x541.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab-1024x722.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1022" loading="lazy" class="wp-image-1022" src="/wp-content/uploads/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg" alt="Create a Windows 2016 Server for your DevTest Lab" width="700" height="493" /></a>
   
   <p id="caption-attachment-1022" class="wp-caption-text">
     Create a Windows 2016 Server for your DevTest Lab
@@ -75,7 +75,7 @@ After the VM is created, the ownership is assigned to the creator but it can be 
   2. On the top of the Overview blade click on unclaim.
 
 <div id="attachment_1021" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Unclaim-a-VM.jpg"><img aria-describedby="caption-attachment-1021" loading="lazy" class="wp-image-1021" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Unclaim-a-VM.jpg" alt="Unclaim a VM" width="700" height="161" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Unclaim-a-VM.jpg 937w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Unclaim-a-VM-300x69.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Unclaim-a-VM-768x176.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Unclaim-a-VM.jpg"><img aria-describedby="caption-attachment-1021" loading="lazy" class="wp-image-1021" src="/wp-content/uploads/2018/03/Unclaim-a-VM.jpg" alt="Unclaim a VM" width="700" height="161" /></a>
   
   <p id="caption-attachment-1021" class="wp-caption-text">
     Unclaim a VM
@@ -112,7 +112,7 @@ To create a custom image from a provisioned VM using the Azure Portal, follow th
   1. In your DevTest lab, select All virtual machines under the My Lab menu and then click on the VM, you want to use as a base for your image.
 
 <div id="attachment_1020" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1020" loading="lazy" class="wp-image-1020" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg" alt="All virtual machines in your DevTest Lab" width="700" height="411" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg 705w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/All-virtual-machines-in-your-DevTest-Lab-300x176.jpg 300w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1020" loading="lazy" class="wp-image-1020" src="/wp-content/uploads/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg" alt="All virtual machines in your DevTest Lab" width="700" height="411" /></a>
   
   <p id="caption-attachment-1020" class="wp-caption-text">
     All virtual machines in your DevTest Lab
@@ -132,7 +132,7 @@ To create a custom image from a provisioned VM using the Azure Portal, follow th
 </ol>
 
 <div id="attachment_1023" style="width: 315px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-custom-image.jpg"><img aria-describedby="caption-attachment-1023" loading="lazy" class="size-full wp-image-1023" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-custom-image.jpg" alt="Create a custom image" width="305" height="400" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-custom-image.jpg 305w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Create-a-custom-image-229x300.jpg 229w" sizes="(max-width: 305px) 100vw, 305px" /></a>
+  <a href="/wp-content/uploads/2018/03/Create-a-custom-image.jpg"><img aria-describedby="caption-attachment-1023" loading="lazy" class="size-full wp-image-1023" src="/wp-content/uploads/2018/03/Create-a-custom-image.jpg" alt="Create a custom image" width="305" height="400" /></a>
   
   <p id="caption-attachment-1023" class="wp-caption-text">
     Create a custom image
@@ -157,7 +157,7 @@ To delete a custom image, follow these steps:
   3. Click delete and select Yes in the confirmation dialog.
 
 <div id="attachment_1024" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image.jpg"><img aria-describedby="caption-attachment-1024" loading="lazy" class="wp-image-1024" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image.jpg" alt="Delete a custom image" width="700" height="98" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image.jpg 1672w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image-300x42.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image-768x108.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/03/Delete-a-custom-image-1024x144.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/03/Delete-a-custom-image.jpg"><img aria-describedby="caption-attachment-1024" loading="lazy" class="wp-image-1024" src="/wp-content/uploads/2018/03/Delete-a-custom-image.jpg" alt="Delete a custom image" width="700" height="98" /></a>
   
   <p id="caption-attachment-1024" class="wp-caption-text">
     Delete a custom image
@@ -196,7 +196,7 @@ To create a formula from a base, follow these steps:
   8. After you are done with the configuration, click Create to create the formula.
 
 <div id="attachment_1027" style="width: 691px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula.jpg"><img aria-describedby="caption-attachment-1027" loading="lazy" class="wp-image-1027" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula.jpg" alt="Create a new formula" width="681" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula.jpg 892w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-292x300.jpg 292w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-768x790.jpg 768w" sizes="(max-width: 681px) 100vw, 681px" /></a>
+  <a href="/wp-content/uploads/2018/04/Create-a-new-formula.jpg"><img aria-describedby="caption-attachment-1027" loading="lazy" class="wp-image-1027" src="/wp-content/uploads/2018/04/Create-a-new-formula.jpg" alt="Create a new formula" width="681" height="700" /></a>
   
   <p id="caption-attachment-1027" class="wp-caption-text">
     Create a new formula
@@ -210,7 +210,7 @@ To create a formula from a VM, follow these steps:
   1. In your DevTest Labs instance, on the Overview blade, select the VM from which you want to create the new formula.
 
 <div id="attachment_1028" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula.jpg"><img aria-describedby="caption-attachment-1028" loading="lazy" class="wp-image-1028" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula.jpg" alt="Select a VM for your formula" width="700" height="221" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula.jpg 1311w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula-300x95.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula-768x242.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Select-a-VM-for-your-formula-1024x323.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Select-a-VM-for-your-formula.jpg"><img aria-describedby="caption-attachment-1028" loading="lazy" class="wp-image-1028" src="/wp-content/uploads/2018/04/Select-a-VM-for-your-formula.jpg" alt="Select a VM for your formula" width="700" height="221" /></a>
   
   <p id="caption-attachment-1028" class="wp-caption-text">
     Select a VM for your formula
@@ -227,7 +227,7 @@ To create a formula from a VM, follow these steps:
 </ol>
 
 <div id="attachment_1029" style="width: 326px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-from-a-VM.jpg"><img aria-describedby="caption-attachment-1029" loading="lazy" class="size-full wp-image-1029" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-from-a-VM.jpg" alt="Create a new formula from a VM" width="316" height="376" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-from-a-VM.jpg 316w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Create-a-new-formula-from-a-VM-252x300.jpg 252w" sizes="(max-width: 316px) 100vw, 316px" /></a>
+  <a href="/wp-content/uploads/2018/04/Create-a-new-formula-from-a-VM.jpg"><img aria-describedby="caption-attachment-1029" loading="lazy" class="size-full wp-image-1029" src="/wp-content/uploads/2018/04/Create-a-new-formula-from-a-VM.jpg" alt="Create a new formula from a VM" width="316" height="376" /></a>
   
   <p id="caption-attachment-1029" class="wp-caption-text">
     Create a new formula from a VM
@@ -244,7 +244,7 @@ To modify the properties of an existing formula, follow these steps:
   4. Make your changes on the Update formula blade and select Update when you are finished.
 
 <div id="attachment_1030" style="width: 685px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-an-existing-formula.jpg"><img aria-describedby="caption-attachment-1030" loading="lazy" class="size-full wp-image-1030" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-an-existing-formula.jpg" alt="Modify an existing formula" width="675" height="650" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-an-existing-formula.jpg 675w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-an-existing-formula-300x289.jpg 300w" sizes="(max-width: 675px) 100vw, 675px" /></a>
+  <a href="/wp-content/uploads/2018/04/Modify-an-existing-formula.jpg"><img aria-describedby="caption-attachment-1030" loading="lazy" class="size-full wp-image-1030" src="/wp-content/uploads/2018/04/Modify-an-existing-formula.jpg" alt="Modify an existing formula" width="675" height="650" /></a>
   
   <p id="caption-attachment-1030" class="wp-caption-text">
     Modify an existing formula
@@ -260,7 +260,7 @@ To delete an existing formula, follow these steps:
   3. Click on the ellipsis to the right of the formula you want to delete and click Delete in the context menu.
 
 <div id="attachment_1031" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula.jpg"><img aria-describedby="caption-attachment-1031" loading="lazy" class="wp-image-1031" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula.jpg" alt="Delete an existing formula" width="700" height="123" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula.jpg 1663w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula-300x53.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula-768x135.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Delete-an-existing-formula-1024x180.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Delete-an-existing-formula.jpg"><img aria-describedby="caption-attachment-1031" loading="lazy" class="wp-image-1031" src="/wp-content/uploads/2018/04/Delete-an-existing-formula.jpg" alt="Delete an existing formula" width="700" height="123" /></a>
   
   <p id="caption-attachment-1031" class="wp-caption-text">
     Delete an existing formula
@@ -287,7 +287,7 @@ You can configure that the creation of only specific VM sizes is allowed. To do 
   4. Click Save on the top of the blade when you are finished.
 
 <div id="attachment_1032" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg"><img aria-describedby="caption-attachment-1032" loading="lazy" class="wp-image-1032" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg" alt="Enable allowed virtual machine sizes policy" width="700" height="496" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg 1064w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy-300x213.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy-768x544.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy-1024x726.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg"><img aria-describedby="caption-attachment-1032" loading="lazy" class="wp-image-1032" src="/wp-content/uploads/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg" alt="Enable allowed virtual machine sizes policy" width="700" height="496" /></a>
   
   <p id="caption-attachment-1032" class="wp-caption-text">
     Enable allowed virtual machine sizes policy
@@ -305,7 +305,7 @@ It is also possible to limit the number of virtual machines an user can create. 
   5. Click Save.
 
 <div id="attachment_1033" style="width: 698px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg"><img aria-describedby="caption-attachment-1033" loading="lazy" class="size-full wp-image-1033" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg" alt="Limit the number of virtual machines and premium OS disks per user" width="688" height="373" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg 688w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user-300x163.jpg 300w" sizes="(max-width: 688px) 100vw, 688px" /></a>
+  <a href="/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg"><img aria-describedby="caption-attachment-1033" loading="lazy" class="size-full wp-image-1033" src="/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg" alt="Limit the number of virtual machines and premium OS disks per user" width="688" height="373" /></a>
   
   <p id="caption-attachment-1033" class="wp-caption-text">
     Limit the number of virtual machines and premium OS disks per user
@@ -325,7 +325,7 @@ To specify the maximum number of VMs that can be created in your current lab, fo
   5. Click Save.
 
 <div id="attachment_1034" style="width: 684px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg"><img aria-describedby="caption-attachment-1034" loading="lazy" class="size-full wp-image-1034" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg" alt="Limit the number of virtual machines and premium OS disks per lab" width="674" height="402" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg 674w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab-300x179.jpg 300w" sizes="(max-width: 674px) 100vw, 674px" /></a>
+  <a href="/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg"><img aria-describedby="caption-attachment-1034" loading="lazy" class="size-full wp-image-1034" src="/wp-content/uploads/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg" alt="Limit the number of virtual machines and premium OS disks per lab" width="674" height="402" /></a>
   
   <p id="caption-attachment-1034" class="wp-caption-text">
     Limit the number of virtual machines and premium OS disks per lab
@@ -345,7 +345,7 @@ To enable auto-shutdown, follow these steps:
   5. Click Save.
 
 <div id="attachment_1035" style="width: 661px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy.jpg"><img aria-describedby="caption-attachment-1035" loading="lazy" class="size-full wp-image-1035" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy.jpg" alt="Configure auto-shutdown policy" width="651" height="593" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy.jpg 651w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-300x273.jpg 300w" sizes="(max-width: 651px) 100vw, 651px" /></a>
+  <a href="/wp-content/uploads/2018/04/Configure-auto-shutdown-policy.jpg"><img aria-describedby="caption-attachment-1035" loading="lazy" class="size-full wp-image-1035" src="/wp-content/uploads/2018/04/Configure-auto-shutdown-policy.jpg" alt="Configure auto-shutdown policy" width="651" height="593" /></a>
   
   <p id="caption-attachment-1035" class="wp-caption-text">
     Configure auto-shutdown policy
@@ -359,7 +359,7 @@ Once configured, the auto-shutdown policy will be applied to all VMs in the lab.
   3. After all changes are made, click Save.
 
 <div id="attachment_1036" style="width: 687px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg"><img aria-describedby="caption-attachment-1036" loading="lazy" class="size-full wp-image-1036" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg" alt="Configure auto-shutdown policy for an individual VM" width="677" height="448" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg 677w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM-300x199.jpg 300w" sizes="(max-width: 677px) 100vw, 677px" /></a>
+  <a href="/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg"><img aria-describedby="caption-attachment-1036" loading="lazy" class="size-full wp-image-1036" src="/wp-content/uploads/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg" alt="Configure auto-shutdown policy for an individual VM" width="677" height="448" /></a>
   
   <p id="caption-attachment-1036" class="wp-caption-text">
     Configure auto-shutdown policy for an individual VM
@@ -378,7 +378,7 @@ Besides auto-shutdown, you can also configure an auto-start policy. To do that f
   4. Click Save
 
 <div id="attachment_1037" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy.jpg"><img aria-describedby="caption-attachment-1037" loading="lazy" class="wp-image-1037" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy.jpg" alt="Configure auto-start policy" width="700" height="418" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy.jpg 1081w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy-300x179.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy-768x458.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Configure-auto-start-policy-1024x611.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Configure-auto-start-policy.jpg"><img aria-describedby="caption-attachment-1037" loading="lazy" class="wp-image-1037" src="/wp-content/uploads/2018/04/Configure-auto-start-policy.jpg" alt="Configure auto-start policy" width="700" height="418" /></a>
   
   <p id="caption-attachment-1037" class="wp-caption-text">
     Configure auto-start policy
@@ -394,7 +394,7 @@ Once configured, the auto-start policy will be applied to all VMs in the lab. Yo
   3. Click Save.
 
 <div id="attachment_1038" style="width: 652px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-auto-start-for-a-specific-VM.jpg"><img aria-describedby="caption-attachment-1038" loading="lazy" class="size-full wp-image-1038" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-auto-start-for-a-specific-VM.jpg" alt="Disable auto-start for a specific VM" width="642" height="441" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-auto-start-for-a-specific-VM.jpg 642w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Disable-auto-start-for-a-specific-VM-300x206.jpg 300w" sizes="(max-width: 642px) 100vw, 642px" /></a>
+  <a href="/wp-content/uploads/2018/04/Disable-auto-start-for-a-specific-VM.jpg"><img aria-describedby="caption-attachment-1038" loading="lazy" class="size-full wp-image-1038" src="/wp-content/uploads/2018/04/Disable-auto-start-for-a-specific-VM.jpg" alt="Disable auto-start for a specific VM" width="642" height="441" /></a>
   
   <p id="caption-attachment-1038" class="wp-caption-text">
     Disable auto-start for a specific VM
@@ -410,7 +410,7 @@ The expiration date policy ensures that VMs are automatically deleted at a speci
   3. Click OK and then Create.
 
 <div id="attachment_1039" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy.jpg"><img aria-describedby="caption-attachment-1039" loading="lazy" class="wp-image-1039" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy.jpg" alt="Set the expiration date policy" width="700" height="538" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy.jpg 1209w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy-300x231.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy-768x590.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Set-the-expiration-date-policy-1024x787.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Set-the-expiration-date-policy.jpg"><img aria-describedby="caption-attachment-1039" loading="lazy" class="wp-image-1039" src="/wp-content/uploads/2018/04/Set-the-expiration-date-policy.jpg" alt="Set the expiration date policy" width="700" height="538" /></a>
   
   <p id="caption-attachment-1039" class="wp-caption-text">
     Set the expiration date policy
@@ -431,7 +431,7 @@ To view the monthly estimated cost trend chart follow these steps:
   2. On the Configuration and policies blade, select Cost trend under the Cost Tracking menu.
 
 <div id="attachment_1052" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart.jpg"><img aria-describedby="caption-attachment-1052" loading="lazy" class="wp-image-1052" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart.jpg" alt="The Cost trend chart" width="700" height="334" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart.jpg 1588w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart-300x143.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart-768x367.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Cost-trend-chart-1024x489.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/The-Cost-trend-chart.jpg"><img aria-describedby="caption-attachment-1052" loading="lazy" class="wp-image-1052" src="/wp-content/uploads/2018/04/The-Cost-trend-chart.jpg" alt="The Cost trend chart" width="700" height="334" /></a>
   
   <p id="caption-attachment-1052" class="wp-caption-text">
     The Cost trend chart
@@ -445,7 +445,7 @@ To modify the Cost trend chart follow these steps:
   3. Click OK to save your changes.
 
 <div id="attachment_1042" style="width: 596px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-the-cost-trend-chart.jpg"><img aria-describedby="caption-attachment-1042" loading="lazy" class="wp-image-1042" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-the-cost-trend-chart.jpg" alt="Modify the cost trend chart" width="586" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-the-cost-trend-chart.jpg 625w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Modify-the-cost-trend-chart-251x300.jpg 251w" sizes="(max-width: 586px) 100vw, 586px" /></a>
+  <a href="/wp-content/uploads/2018/04/Modify-the-cost-trend-chart.jpg"><img aria-describedby="caption-attachment-1042" loading="lazy" class="wp-image-1042" src="/wp-content/uploads/2018/04/Modify-the-cost-trend-chart.jpg" alt="Modify the cost trend chart" width="586" height="700" /></a>
   
   <p id="caption-attachment-1042" class="wp-caption-text">
     Modify the cost trend chart
@@ -461,7 +461,7 @@ With cost by resource, you get a breakdown of your costs of each resource. To do
   3. All your resources of the lab are listed on the Cost by resource blade.
 
 <div id="attachment_1053" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource.jpg"><img aria-describedby="caption-attachment-1053" loading="lazy" class="wp-image-1053" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource.jpg" alt="Your costs by resource" width="700" height="184" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource.jpg 1674w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource-300x79.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource-768x202.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Your-costs-by-resource-1024x270.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Your-costs-by-resource.jpg"><img aria-describedby="caption-attachment-1053" loading="lazy" class="wp-image-1053" src="/wp-content/uploads/2018/04/Your-costs-by-resource.jpg" alt="Your costs by resource" width="700" height="184" /></a>
   
   <p id="caption-attachment-1053" class="wp-caption-text">
     Your costs by resource
@@ -489,7 +489,7 @@ Owners and users can be added at the lab level via the Azure Portal. This also i
   5. Click Save.
 
 <div id="attachment_1043" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab.jpg"><img aria-describedby="caption-attachment-1043" loading="lazy" class="wp-image-1043" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab.jpg" alt="Add a user to the lab" width="700" height="307" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab.jpg 1667w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab-300x132.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab-768x337.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-the-lab-1024x449.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Add-a-user-to-the-lab.jpg"><img aria-describedby="caption-attachment-1043" loading="lazy" class="wp-image-1043" src="/wp-content/uploads/2018/04/Add-a-user-to-the-lab.jpg" alt="Add a user to the lab" width="700" height="307" /></a>
   
   <p id="caption-attachment-1043" class="wp-caption-text">
     Add a user to the lab
@@ -505,7 +505,7 @@ Additionally to the Azure portal, you can add an external user to your Azure Dev
   3. Enter the email of the user you want to add as a guest and optionally include a message for the invitation.
 
 <div id="attachment_1054" style="width: 326px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg"><img aria-describedby="caption-attachment-1054" loading="lazy" class="wp-image-1054 size-full" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg" alt="Add a user as a guest to your Active Directory" width="316" height="338" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg 316w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-as-guest-to-your-Active-Directory-280x300.jpg 280w" sizes="(max-width: 316px) 100vw, 316px" /></a>
+  <a href="/wp-content/uploads/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg"><img aria-describedby="caption-attachment-1054" loading="lazy" class="wp-image-1054 size-full" src="/wp-content/uploads/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg" alt="Add a user as a guest to your Active Directory" width="316" height="338" /></a>
   
   <p id="caption-attachment-1054" class="wp-caption-text">
     Add a user as a guest to your Active Directory
@@ -519,7 +519,7 @@ Additionally to the Azure portal, you can add an external user to your Azure Dev
 </ol>
 
 <div id="attachment_1055" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg"><img aria-describedby="caption-attachment-1055" loading="lazy" class="wp-image-1055" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg" alt="The Azure Active Directory with the new guest user" width="700" height="133" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg 1480w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user-300x57.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user-768x146.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user-1024x195.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg"><img aria-describedby="caption-attachment-1055" loading="lazy" class="wp-image-1055" src="/wp-content/uploads/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg" alt="The Azure Active Directory with the new guest user" width="700" height="133" /></a>
   
   <p id="caption-attachment-1055" class="wp-caption-text">
     The Azure Active Directory with the new guest user
@@ -546,7 +546,7 @@ Now, you can add the user to your lab using PowerShell, following these steps:
       * New-AzureRmRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName &#8216;DevTest Labs User&#8217; -Scope $labId
 
 <div id="attachment_1056" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg"><img aria-describedby="caption-attachment-1056" loading="lazy" class="wp-image-1056" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg" alt="Add a user to your lab with PowerShell" width="700" height="296" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg 1831w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell-300x127.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell-768x325.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell-1024x433.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg"><img aria-describedby="caption-attachment-1056" loading="lazy" class="wp-image-1056" src="/wp-content/uploads/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg" alt="Add a user to your lab with PowerShell" width="700" height="296" /></a>
   
   <p id="caption-attachment-1056" class="wp-caption-text">
     Add a user to your lab with PowerShell
@@ -556,7 +556,7 @@ Now, you can add the user to your lab using PowerShell, following these steps:
 After you are done, the user will appear in your lab&#8217;s Active Directory. To verify it go to your Azure DevTest Labs &#8211;> Configuration and policies &#8211;> Access control (IAM). There, you can see the previously added user with his assigned role.
 
 <div id="attachment_1057" style="width: 711px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg"><img aria-describedby="caption-attachment-1057" loading="lazy" class="wp-image-1057" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg" alt="Confirm that the user has been added to your lab" width="701" height="363" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg 1475w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab-300x155.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab-768x398.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab-1024x530.jpg 1024w" sizes="(max-width: 701px) 100vw, 701px" /></a>
+  <a href="/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg"><img aria-describedby="caption-attachment-1057" loading="lazy" class="wp-image-1057" src="/wp-content/uploads/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg" alt="Confirm that the user has been added to your lab" width="701" height="363" /></a>
   
   <p id="caption-attachment-1057" class="wp-caption-text">
     Confirm that the user has been added to your lab
@@ -573,7 +573,7 @@ You can give your lab users Contributor access rights. This enables them to edit
   4. Click Save
 
 <div id="attachment_1046" style="width: 477px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg"><img aria-describedby="caption-attachment-1046" loading="lazy" class="size-full wp-image-1046" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg" alt="Give users the Contributor or Reader access rights" width="467" height="239" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg 467w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Give-users-the-Contributor-or-Reader-access-rights-300x154.jpg 300w" sizes="(max-width: 467px) 100vw, 467px" /></a>
+  <a href="/wp-content/uploads/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg"><img aria-describedby="caption-attachment-1046" loading="lazy" class="size-full wp-image-1046" src="/wp-content/uploads/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg" alt="Give users the Contributor or Reader access rights" width="467" height="239" /></a>
   
   <p id="caption-attachment-1046" class="wp-caption-text">
     Give users the Contributor or Reader access rights
@@ -609,7 +609,7 @@ To add a repository to your Azure DevTest Labs using the Azure portal, follow th
   5. Click Save.
 
 <div id="attachment_1051" style="width: 587px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg"><img aria-describedby="caption-attachment-1051" loading="lazy" class="size-full wp-image-1051" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg" alt="Add a repository with templates to your Azure DevTest Labs" width="577" height="526" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg 577w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs-300x273.jpg 300w" sizes="(max-width: 577px) 100vw, 577px" /></a>
+  <a href="/wp-content/uploads/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg"><img aria-describedby="caption-attachment-1051" loading="lazy" class="size-full wp-image-1051" src="/wp-content/uploads/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg" alt="Add a repository with templates to your Azure DevTest Labs" width="577" height="526" /></a>
   
   <p id="caption-attachment-1051" class="wp-caption-text">
     Add a repository with templates to your Azure DevTest Labs

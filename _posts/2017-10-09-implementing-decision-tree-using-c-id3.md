@@ -469,7 +469,7 @@ The CalculateResult method is called to find the outcome of the entered query. T
 Due to the nature of the console, printing the tree results into displaying every possible route through the tree. To improve the readability nodes are written in upper case and edges in lower case. The root node is printed in Magenta, normal decision nodes in Cyan and leafs in yellow. Edges are printed in yellow.
 
 <div id="attachment_127" style="width: 1098px" class="wp-caption aligncenter">
-  <a href="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Printing-the-decision-tree.jpg"><img aria-describedby="caption-attachment-127" loading="lazy" class="size-full wp-image-127" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Printing-the-decision-tree.jpg" alt="Printing the decision tree" width="1088" height="175" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Printing-the-decision-tree.jpg 1088w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Printing-the-decision-tree-300x48.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Printing-the-decision-tree-768x124.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Printing-the-decision-tree-1024x165.jpg 1024w" sizes="(max-width: 1088px) 100vw, 1088px" /></a>
+  <a href="/wp-content/uploads/2017/10/Printing-the-decision-tree.jpg"><img aria-describedby="caption-attachment-127" loading="lazy" class="size-full wp-image-127" src="/wp-content/uploads/2017/10/Printing-the-decision-tree.jpg" alt="Printing the decision tree" width="1088" height="175"/></a>
   
   <p id="caption-attachment-127" class="wp-caption-text">
     Figure 2: Printing the decision tree
@@ -479,7 +479,7 @@ Due to the nature of the console, printing the tree results into displaying ever
 If a result for a query is found, the found route will be printed with the same principle as just explained.
 
 <div id="attachment_118" style="width: 666px" class="wp-caption aligncenter">
-  <a href="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Printing-result-of-decision-tree-query.jpg"><img aria-describedby="caption-attachment-118" loading="lazy" class="size-full wp-image-118" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Printing-result-of-decision-tree-query.jpg" alt="Printed result of a query" width="656" height="242" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Printing-result-of-decision-tree-query.jpg 656w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Printing-result-of-decision-tree-query-300x111.jpg 300w" sizes="(max-width: 656px) 100vw, 656px" /></a>
+  <a href="/wp-content/uploads/2017/10/Printing-result-of-decision-tree-query.jpg"><img aria-describedby="caption-attachment-118" loading="lazy" class="size-full wp-image-118" src="/wp-content/uploads/2017/10/Printing-result-of-decision-tree-query.jpg" alt="Printed result of a query" width="656" height="242" /></a>
   
   <p id="caption-attachment-118" class="wp-caption-text">
     Figure 3: Printed result of a query

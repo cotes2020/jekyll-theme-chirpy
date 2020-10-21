@@ -45,7 +45,7 @@ To create an API Management service, follow these steps:
   3. Click Create.
 
 <div id="attachment_1361" style="width: 587px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg"><img aria-describedby="caption-attachment-1361" loading="lazy" class="size-full wp-image-1361" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg" alt="Create an API Management service in the Azure Portal" width="577" height="531" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg 577w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-an-API-Management-service-in-the-Azure-Portal-300x276.jpg 300w" sizes="(max-width: 577px) 100vw, 577px" /></a>
+  <a href="/wp-content/uploads/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg"><img aria-describedby="caption-attachment-1361" loading="lazy" class="size-full wp-image-1361" src="/wp-content/uploads/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg" alt="Create an API Management service in the Azure Portal" width="577" height="531" /></a>
   
   <p id="caption-attachment-1361" class="wp-caption-text">
     Create an API Management service in the Azure Portal
@@ -66,7 +66,7 @@ To add and publish a new product, follow these steps:
   6. Click Create.
 
 <div id="attachment_1362" style="width: 442px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-product-to-you-API-Management-instance.jpg"><img aria-describedby="caption-attachment-1362" loading="lazy" class="wp-image-1362" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-product-to-you-API-Management-instance.jpg" alt="Add a product to you API Management instance" width="432" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-product-to-you-API-Management-instance.jpg 577w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-product-to-you-API-Management-instance-185x300.jpg 185w" sizes="(max-width: 432px) 100vw, 432px" /></a>
+  <a href="/wp-content/uploads/2018/06/Add-a-product-to-you-API-Management-instance.jpg"><img aria-describedby="caption-attachment-1362" loading="lazy" class="wp-image-1362" src="/wp-content/uploads/2018/06/Add-a-product-to-you-API-Management-instance.jpg" alt="Add a product to you API Management instance" width="432" height="700" /></a>
   
   <p id="caption-attachment-1362" class="wp-caption-text">
     Add a product to you API Management instance
@@ -85,7 +85,7 @@ To create a new API, follow these steps:
   6. Click Create.
 
 <div id="attachment_1363" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-API.jpg"><img aria-describedby="caption-attachment-1363" loading="lazy" class="wp-image-1363" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-API.jpg" alt="Create a new API" width="700" height="451" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-API.jpg 892w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-API-300x193.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-API-768x495.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/06/Create-a-new-API.jpg"><img aria-describedby="caption-attachment-1363" loading="lazy" class="wp-image-1363" src="/wp-content/uploads/2018/06/Create-a-new-API.jpg" alt="Create a new API" width="700" height="451" /></a>
   
   <p id="caption-attachment-1363" class="wp-caption-text">
     Create a new API
@@ -104,7 +104,7 @@ To add an operation, follow these steps:
   4. Click Create.
 
 <div id="attachment_1364" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-an-operation-to-your-API.jpg"><img aria-describedby="caption-attachment-1364" loading="lazy" class="wp-image-1364" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-an-operation-to-your-API.jpg" alt="Add an operation to your API" width="700" height="539" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-an-operation-to-your-API.jpg 958w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-an-operation-to-your-API-300x231.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-an-operation-to-your-API-768x591.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/06/Add-an-operation-to-your-API.jpg"><img aria-describedby="caption-attachment-1364" loading="lazy" class="wp-image-1364" src="/wp-content/uploads/2018/06/Add-an-operation-to-your-API.jpg" alt="Add an operation to your API" width="700" height="539" /></a>
   
   <p id="caption-attachment-1364" class="wp-caption-text">
     Add an operation to your API
@@ -124,7 +124,7 @@ To configure a policy, follow these steps:
   5. After you are done, click Save
 
 <div id="attachment_1365" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-policy-for-CORS.jpg"><img aria-describedby="caption-attachment-1365" loading="lazy" class="wp-image-1365" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-policy-for-CORS.jpg" alt="Add a policy for CORS" width="700" height="457" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-policy-for-CORS.jpg 929w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-policy-for-CORS-300x196.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Add-a-policy-for-CORS-768x501.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2018/06/Add-a-policy-for-CORS.jpg"><img aria-describedby="caption-attachment-1365" loading="lazy" class="wp-image-1365" src="/wp-content/uploads/2018/06/Add-a-policy-for-CORS.jpg" alt="Add a policy for CORS" width="700" height="457" /></a>
   
   <p id="caption-attachment-1365" class="wp-caption-text">
     Add a policy for CORS
@@ -148,7 +148,7 @@ To create a rate limited API, follow these steps:
   5. Click Create.
 
 <div id="attachment_1366" style="width: 524px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-Product-to-limit-the-requests.jpg"><img aria-describedby="caption-attachment-1366" loading="lazy" class="wp-image-1366" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-Product-to-limit-the-requests.jpg" alt="Create a new Product to limit the requests" width="514" height="700" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-Product-to-limit-the-requests.jpg 594w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/06/Create-a-new-Product-to-limit-the-requests-220x300.jpg 220w" sizes="(max-width: 514px) 100vw, 514px" /></a>
+  <a href="/wp-content/uploads/2018/06/Create-a-new-Product-to-limit-the-requests.jpg"><img aria-describedby="caption-attachment-1366" loading="lazy" class="wp-image-1366" src="/wp-content/uploads/2018/06/Create-a-new-Product-to-limit-the-requests.jpg" alt="Create a new Product to limit the requests" width="514" height="700" /></a>
   
   <p id="caption-attachment-1366" class="wp-caption-text">
     Create a new Product to limit the requests

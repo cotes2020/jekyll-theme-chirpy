@@ -95,7 +95,7 @@ displayName: &#8216;Publish code coverage results&#8217;
 Save the changes and run the CI pipeline. After the build is finished, you will see the Code Coverage tab in the summary overview where you can see the coverage of each of your projects.
 
 <div id="attachment_2396" style="width: 444px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Summary-of-the-Code-Coverage-Results.jpg"><img aria-describedby="caption-attachment-2396" loading="lazy" class="size-full wp-image-2396" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/09/Summary-of-the-Code-Coverage-Results.jpg" alt="Summary of the Code Coverage Results" width="434" height="620" /></a>
+  <a href="/wp-content/uploads/2020/09/Summary-of-the-Code-Coverage-Results.jpg"><img aria-describedby="caption-attachment-2396" loading="lazy" class="size-full wp-image-2396" src="/wp-content/uploads/2020/09/Summary-of-the-Code-Coverage-Results.jpg" alt="Summary of the Code Coverage Results" width="434" height="620" /></a>
   
   <p id="caption-attachment-2396" class="wp-caption-text">
     Summary of the Code Coverage Results

@@ -24,7 +24,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.
 Open the solution with Visual Studio 2019 and right-click on the CustomerApi project. Then click on Add and select Docker Support&#8230;
 
 <div id="attachment_2351" style="width: 680px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Add-Docker-Support-to-the-API-project.jpg"><img aria-describedby="caption-attachment-2351" loading="lazy" class="size-full wp-image-2351" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Add-Docker-Support-to-the-API-project.jpg" alt="Add Docker Support to the API project" width="670" height="600" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Add-Docker-Support-to-the-API-project.jpg 670w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Add-Docker-Support-to-the-API-project-300x269.jpg 300w" sizes="(max-width: 670px) 100vw, 670px" /></a>
+  <a href="/wp-content/uploads/2020/08/Add-Docker-Support-to-the-API-project.jpg"><img aria-describedby="caption-attachment-2351" loading="lazy" class="size-full wp-image-2351" src="/wp-content/uploads/2020/08/Add-Docker-Support-to-the-API-project.jpg" alt="Add Docker Support to the API project" width="670" height="600" /></a>
   
   <p id="caption-attachment-2351" class="wp-caption-text">
     Add Docker Support to the API project
@@ -34,7 +34,7 @@ Open the solution with Visual Studio 2019 and right-click on the CustomerApi pro
 This opens a window where you can select the operating system for your project. If you don&#8217;t have a requirement to use Windows, I would always use Linux since it is smaller and therefore faster.
 
 <div id="attachment_2352" style="width: 370px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-the-operating-system-for-the-Docker-container.jpg"><img aria-describedby="caption-attachment-2352" loading="lazy" class="size-full wp-image-2352" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-the-operating-system-for-the-Docker-container.jpg" alt="Select the operating system for the Docker container" width="360" height="156" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-the-operating-system-for-the-Docker-container.jpg 360w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Select-the-operating-system-for-the-Docker-container-300x130.jpg 300w" sizes="(max-width: 360px) 100vw, 360px" /></a>
+  <a href="/wp-content/uploads/2020/08/Select-the-operating-system-for-the-Docker-container.jpg"><img aria-describedby="caption-attachment-2352" loading="lazy" class="size-full wp-image-2352" src="/wp-content/uploads/2020/08/Select-the-operating-system-for-the-Docker-container.jpg" alt="Select the operating system for the Docker container" width="360" height="156" /></a>
   
   <p id="caption-attachment-2352" class="wp-caption-text">
     Select the operating system for the Docker container
@@ -44,7 +44,7 @@ This opens a window where you can select the operating system for your project. 
 After you clicked OK, a Dockerfile was added to the project and in Visual Studio you can see that you can start the project with Docker now.
 
 <div id="attachment_2353" style="width: 632px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Start-the-project-in-Docker.jpg"><img aria-describedby="caption-attachment-2353" loading="lazy" class="size-full wp-image-2353" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Start-the-project-in-Docker.jpg" alt="Start the project in Docker" width="622" height="79" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Start-the-project-in-Docker.jpg 622w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/Start-the-project-in-Docker-300x38.jpg 300w" sizes="(max-width: 622px) 100vw, 622px" /></a>
+  <a href="/wp-content/uploads/2020/08/Start-the-project-in-Docker.jpg"><img aria-describedby="caption-attachment-2353" loading="lazy" class="size-full wp-image-2353" src="/wp-content/uploads/2020/08/Start-the-project-in-Docker.jpg" alt="Start the project in Docker" width="622" height="79" /></a>
   
   <p id="caption-attachment-2353" class="wp-caption-text">
     Start the project in Docker
@@ -60,7 +60,7 @@ docker ps
 On the following screenshot, you can see that I have one container running with the name CustomerApi and it runs on port 32770. This is the same port as the browser opened.
 
 <div id="attachment_2354" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-microservice-is-running-inside-a-Docker-container.jpg"><img aria-describedby="caption-attachment-2354" loading="lazy" class="wp-image-2354" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-microservice-is-running-inside-a-Docker-container.jpg" alt="The microservice is running inside a Docker container" width="700" height="82" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-microservice-is-running-inside-a-Docker-container.jpg 1654w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-microservice-is-running-inside-a-Docker-container-300x35.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-microservice-is-running-inside-a-Docker-container-1024x119.jpg 1024w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-microservice-is-running-inside-a-Docker-container-768x90.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2020/08/The-microservice-is-running-inside-a-Docker-container-1536x179.jpg 1536w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2020/08/The-microservice-is-running-inside-a-Docker-container.jpg"><img aria-describedby="caption-attachment-2354" loading="lazy" class="wp-image-2354" src="/wp-content/uploads/2020/08/The-microservice-is-running-inside-a-Docker-container.jpg" alt="The microservice is running inside a Docker container" width="700" height="82" /></a>
   
   <p id="caption-attachment-2354" class="wp-caption-text">
     The microservice is running inside a Docker container

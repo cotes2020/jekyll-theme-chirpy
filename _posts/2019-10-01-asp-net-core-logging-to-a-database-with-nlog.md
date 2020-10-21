@@ -18,7 +18,7 @@ I created a new web project with .net core and the MVC template and added the NL
 To get started, create a database and then the Log table. You can find the script to create the table at the bottom of my config file. Now let&#8217;s inspect the config file:
 
 <div id="attachment_1768" style="width: 442px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/NLog-internal-logging.jpg"><img aria-describedby="caption-attachment-1768" loading="lazy" class="size-full wp-image-1768" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/NLog-internal-logging.jpg" alt="NLog internal logging" width="432" height="120" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/NLog-internal-logging.jpg 432w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/NLog-internal-logging-300x83.jpg 300w" sizes="(max-width: 432px) 100vw, 432px" /></a>
+  <a href="/wp-content/uploads/2019/10/NLog-internal-logging.jpg"><img aria-describedby="caption-attachment-1768" loading="lazy" class="size-full wp-image-1768" src="/wp-content/uploads/2019/10/NLog-internal-logging.jpg" alt="NLog internal logging" width="432" height="120" /></a>
   
   <p id="caption-attachment-1768" class="wp-caption-text">
     NLog internal logging
@@ -28,7 +28,7 @@ To get started, create a database and then the Log table. You can find the scrip
 The first section of the file is for internal logs of Nlog. These logs come in handy when you have a problem with Nlog. There you can configure what level of logging you want and where the log file should be created. You can also configure whether the file should be reloaded on save with autoReload.
 
 <div id="attachment_1769" style="width: 522px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Configure-the-database-connection.jpg"><img aria-describedby="caption-attachment-1769" loading="lazy" class="size-full wp-image-1769" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Configure-the-database-connection.jpg" alt="Configure the database connection" width="512" height="132" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Configure-the-database-connection.jpg 512w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Configure-the-database-connection-300x77.jpg 300w" sizes="(max-width: 512px) 100vw, 512px" /></a>
+  <a href="/wp-content/uploads/2019/10/Configure-the-database-connection.jpg"><img aria-describedby="caption-attachment-1769" loading="lazy" class="size-full wp-image-1769" src="/wp-content/uploads/2019/10/Configure-the-database-connection.jpg" alt="Configure the database connection" width="512" height="132" /></a>
   
   <p id="caption-attachment-1769" class="wp-caption-text">
     Configure the database connection
@@ -38,7 +38,7 @@ The first section of the file is for internal logs of Nlog. These logs come in h
 The next section is for configuring the database connection. The variables are read from the appsettings.json from the NlogConnection section. You can see the appsettings.json section on the following screenshot.
 
 <div id="attachment_1770" style="width: 304px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Settings-for-Nlog-from-appsettings.json_.jpeg"><img aria-describedby="caption-attachment-1770" loading="lazy" class="size-full wp-image-1770" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Settings-for-Nlog-from-appsettings.json_.jpeg" alt="Settings for Nlog from appsettings.json" width="294" height="117" /></a>
+  <a href="/wp-content/uploads/2019/10/Settings-for-Nlog-from-appsettings.json_.jpeg"><img aria-describedby="caption-attachment-1770" loading="lazy" class="size-full wp-image-1770" src="/wp-content/uploads/2019/10/Settings-for-Nlog-from-appsettings.json_.jpeg" alt="Settings for Nlog from appsettings.json" width="294" height="117" /></a>
   
   <p id="caption-attachment-1770" class="wp-caption-text">
     Settings for Nlog from appsettings.json
@@ -48,7 +48,7 @@ The next section is for configuring the database connection. The variables are r
 The commandText section defines the insert statement. This is straight forward and you don&#8217;t have to edit anything.
 
 <div id="attachment_1772" style="width: 474px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Setting-up-the-insert-statement-for-logging.jpg"><img aria-describedby="caption-attachment-1772" loading="lazy" class="size-full wp-image-1772" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Setting-up-the-insert-statement-for-logging.jpg" alt="Setting up the insert statement for logging" width="464" height="261" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Setting-up-the-insert-statement-for-logging.jpg 464w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Setting-up-the-insert-statement-for-logging-300x169.jpg 300w" sizes="(max-width: 464px) 100vw, 464px" /></a>
+  <a href="/wp-content/uploads/2019/10/Setting-up-the-insert-statement-for-logging.jpg"><img aria-describedby="caption-attachment-1772" loading="lazy" class="size-full wp-image-1772" src="/wp-content/uploads/2019/10/Setting-up-the-insert-statement-for-logging.jpg" alt="Setting up the insert statement for logging" width="464" height="261" /></a>
   
   <p id="caption-attachment-1772" class="wp-caption-text">
     Setting up the insert statement for logging
@@ -58,7 +58,7 @@ The commandText section defines the insert statement. This is straight forward a
 The last section lets you specify rules about your log. You can configure which logger should log where. In my example, every logger logs messages with the log level Info and higher into the database. Another example could be to log information from one logger to the database and the information from another one to a file.
 
 <div id="attachment_1773" style="width: 417px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Rules-for-logging.jpg"><img aria-describedby="caption-attachment-1773" loading="lazy" class="size-full wp-image-1773" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Rules-for-logging.jpg" alt="Rules for logging" width="407" height="53" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Rules-for-logging.jpg 407w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Rules-for-logging-300x39.jpg 300w" sizes="(max-width: 407px) 100vw, 407px" /></a>
+  <a href="/wp-content/uploads/2019/10/Rules-for-logging.jpg"><img aria-describedby="caption-attachment-1773" loading="lazy" class="size-full wp-image-1773" src="/wp-content/uploads/2019/10/Rules-for-logging.jpg" alt="Rules for logging" width="407" height="53" /></a>
   
   <p id="caption-attachment-1773" class="wp-caption-text">
     Rules for logging
@@ -70,7 +70,7 @@ The last section lets you specify rules about your log. You can configure which 
 Using Nlog in your application is really simple. First, you have to tell your WebHost to use Nlog in the CreateWebHostBuilder by simply adding .UseNlog() at the end of the statement.
 
 <div id="attachment_1774" style="width: 477px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Use-Nlog-in-the-WebHostBuilder.jpg"><img aria-describedby="caption-attachment-1774" loading="lazy" class="size-full wp-image-1774" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Use-Nlog-in-the-WebHostBuilder.jpg" alt="Use Nlog in the WebHostBuilder" width="467" height="106" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Use-Nlog-in-the-WebHostBuilder.jpg 467w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Use-Nlog-in-the-WebHostBuilder-300x68.jpg 300w" sizes="(max-width: 467px) 100vw, 467px" /></a>
+  <a href="/wp-content/uploads/2019/10/Use-Nlog-in-the-WebHostBuilder.jpg"><img aria-describedby="caption-attachment-1774" loading="lazy" class="size-full wp-image-1774" src="/wp-content/uploads/2019/10/Use-Nlog-in-the-WebHostBuilder.jpg" alt="Use Nlog in the WebHostBuilder" width="467" height="106" /></a>
   
   <p id="caption-attachment-1774" class="wp-caption-text">
     Use Nlog in the WebHostBuilder
@@ -80,7 +80,7 @@ Using Nlog in your application is really simple. First, you have to tell your We
 That&#8217;s all you have to do. Now you can already use the logger in your application. To use the logger, inject the ILogger interface with the type of the class which uses it. The ILogger interface provides useful methods like LogInformation() or LogCritical(). Call one of the methods and insert your log message.
 
 <div id="attachment_1775" style="width: 492px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Use-ILogger-to-log-messages.jpg"><img aria-describedby="caption-attachment-1775" loading="lazy" class="size-full wp-image-1775" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Use-ILogger-to-log-messages.jpg" alt="Use ILogger to log messages" width="482" height="407" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Use-ILogger-to-log-messages.jpg 482w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Use-ILogger-to-log-messages-300x253.jpg 300w" sizes="(max-width: 482px) 100vw, 482px" /></a>
+  <a href="/wp-content/uploads/2019/10/Use-ILogger-to-log-messages.jpg"><img aria-describedby="caption-attachment-1775" loading="lazy" class="size-full wp-image-1775" src="/wp-content/uploads/2019/10/Use-ILogger-to-log-messages.jpg" alt="Use ILogger to log messages" width="482" height="407" /></a>
   
   <p id="caption-attachment-1775" class="wp-caption-text">
     Use ILogger to log messages
@@ -94,7 +94,7 @@ To test that the logging is working, you have only to start your application and
 On the following screenshot, you can see that I called the Index and the Privacy method once which create a log entry for both calls.
 
 <div id="attachment_1776" style="width: 710px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Log-entries-in-the-Log-table.jpg"><img aria-describedby="caption-attachment-1776" loading="lazy" class="wp-image-1776" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Log-entries-in-the-Log-table.jpg" alt="Log entries in the Log table" width="700" height="51" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Log-entries-in-the-Log-table.jpg 866w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Log-entries-in-the-Log-table-300x22.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2019/10/Log-entries-in-the-Log-table-768x56.jpg 768w" sizes="(max-width: 700px) 100vw, 700px" /></a>
+  <a href="/wp-content/uploads/2019/10/Log-entries-in-the-Log-table.jpg"><img aria-describedby="caption-attachment-1776" loading="lazy" class="wp-image-1776" src="/wp-content/uploads/2019/10/Log-entries-in-the-Log-table.jpg" alt="Log entries in the Log table" width="700" height="51" /></a>
   
   <p id="caption-attachment-1776" class="wp-caption-text">
     Log entries in the Log table

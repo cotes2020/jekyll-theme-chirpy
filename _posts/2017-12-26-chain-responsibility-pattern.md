@@ -27,7 +27,7 @@ The goals of the chain of responsibility pattern are:
 
 ## UML Diagram
 
-[<img loading="lazy" class="aligncenter wp-image-496" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Chain-of-Responsibility-pattern-UML-diagram.jpg" alt="Chain of Responsibility pattern UML diagram" width="700" height="491" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Chain-of-Responsibility-pattern-UML-diagram.jpg 1596w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Chain-of-Responsibility-pattern-UML-diagram-300x211.jpg 300w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Chain-of-Responsibility-pattern-UML-diagram-768x539.jpg 768w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Chain-of-Responsibility-pattern-UML-diagram-1024x719.jpg 1024w" sizes="(max-width: 700px) 100vw, 700px" />](http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Chain-of-Responsibility-pattern-UML-diagram.jpg)
+[<img loading="lazy" class="aligncenter wp-image-496" src="/wp-content/uploads/2017/12/Chain-of-Responsibility-pattern-UML-diagram.jpg" alt="Chain of Responsibility pattern UML diagram" width="700" height="491" />](/wp-content/uploads/2017/12/Chain-of-Responsibility-pattern-UML-diagram.jpg)
 
 The client and concrete handler link together to form the chain of responsibility. The client could be the employee who needs his report approved and the handler are different managers like team leader, area manager and CEO.
 
@@ -38,7 +38,7 @@ I will now implement the real world example which I mentioned before. You can fi
 The user can enter an amount and then different managers are asked for their approval. If the amount is even too high for the CEO, the approval is denied. The problem with this approach is that all the business logic happens in the main method. Lets say the employee goes to his manager and he can&#8217;t approve the amount. He then sends the report back and tells the employee to go to his manager instead of passing the report directly.
 
 <div id="attachment_436" style="width: 444px" class="wp-caption aligncenter">
-  <a href="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Finding-a-manager-to-approve-the-report.jpg"><img aria-describedby="caption-attachment-436" loading="lazy" class="size-full wp-image-436" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Finding-a-manager-to-approve-the-report.jpg" alt="Finding a manager to approve the report" width="434" height="221" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Finding-a-manager-to-approve-the-report.jpg 434w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Finding-a-manager-to-approve-the-report-300x153.jpg 300w" sizes="(max-width: 434px) 100vw, 434px" /></a>
+  <a href="/wp-content/uploads/2017/12/Finding-a-manager-to-approve-the-report.jpg"><img aria-describedby="caption-attachment-436" loading="lazy" class="size-full wp-image-436" src="/wp-content/uploads/2017/12/Finding-a-manager-to-approve-the-report.jpg" alt="Finding a manager to approve the report" width="434" height="221" /></a>
   
   <p id="caption-attachment-436" class="wp-caption-text">
     Finding a manager to approve the report
@@ -54,7 +54,7 @@ To implement the chain of responsibility pattern I reuse the code from the previ
 First I implement the ExpenseHandler which handles the approving process. If the current manager is not able to approve the amount, the costs are given to the next manager in line to approve it. To be able to do that, the managers of the chain have to be registered. The register process replaces the adding of the managers to the list of the previous example.
 
 <div id="attachment_437" style="width: 637px" class="wp-caption aligncenter">
-  <a href="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Create-chain-of-responsibility.jpg"><img aria-describedby="caption-attachment-437" loading="lazy" class="size-full wp-image-437" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Create-chain-of-responsibility.jpg" alt="Create chain of responsibility" width="627" height="160" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Create-chain-of-responsibility.jpg 627w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Create-chain-of-responsibility-300x77.jpg 300w" sizes="(max-width: 627px) 100vw, 627px" /></a>
+  <a href="/wp-content/uploads/2017/12/Create-chain-of-responsibility.jpg"><img aria-describedby="caption-attachment-437" loading="lazy" class="size-full wp-image-437" src="/wp-content/uploads/2017/12/Create-chain-of-responsibility.jpg" alt="Create chain of responsibility" width="627" height="160" /></a>
   
   <p id="caption-attachment-437" class="wp-caption-text">
     Create chain of responsibility
@@ -64,7 +64,7 @@ First I implement the ExpenseHandler which handles the approving process. If the
 To get an approval of the report, the only thing Tom has to do is call the approve method with the expenses as parameter. The ExpenseHandler will take care of sending the message to the right manager. As a result of this, the code looks cleaner and is easier to read.
 
 <div id="attachment_438" style="width: 485px" class="wp-caption aligncenter">
-  <a href="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Get-approval-of-the-report.jpg"><img aria-describedby="caption-attachment-438" loading="lazy" class="size-full wp-image-438" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Get-approval-of-the-report.jpg" alt="Get approval of the report" width="475" height="59" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Get-approval-of-the-report.jpg 475w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/12/Get-approval-of-the-report-300x37.jpg 300w" sizes="(max-width: 475px) 100vw, 475px" /></a>
+  <a href="/wp-content/uploads/2017/12/Get-approval-of-the-report.jpg"><img aria-describedby="caption-attachment-438" loading="lazy" class="size-full wp-image-438" src="/wp-content/uploads/2017/12/Get-approval-of-the-report.jpg" alt="Get approval of the report" width="475" height="59" /></a>
   
   <p id="caption-attachment-438" class="wp-caption-text">
     Get approval of the report

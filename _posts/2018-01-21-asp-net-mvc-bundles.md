@@ -20,7 +20,7 @@ To show how bundles word, I create a new empty ASP.NET MVC project with the MVC 
 These CSS and Javascript libraries are often used, so they represent a real-world example. Then I create a simple view which uses at least one of the features of each package so that there are several files which need to be loaded.
 
 <div id="attachment_689" style="width: 493px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-files.jpg"><img aria-describedby="caption-attachment-689" loading="lazy" class="size-full wp-image-689" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-files.jpg" alt="Adding CSS and Javascript files" width="483" height="121" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-files.jpg 483w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-files-300x75.jpg 300w" sizes="(max-width: 483px) 100vw, 483px" /></a>
+  <a href="/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-files.jpg"><img aria-describedby="caption-attachment-689" loading="lazy" class="size-full wp-image-689" src="/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-files.jpg" alt="Adding CSS and Javascript files" width="483" height="121" /></a>
   
   <p id="caption-attachment-689" class="wp-caption-text">
     Adding CSS and Javascript files
@@ -32,7 +32,7 @@ These CSS and Javascript libraries are often used, so they represent a real-worl
 You can analyze the network load with every browser by pressing the F12 key. This opens the dev tools which shows some useful information for development and debugging. Switch to the Network tab and disable Caching. Then reload the website. This lists all files requested and also displays a summary of the number of files transferred and the number of bytes.
 
 <div id="attachment_690" style="width: 564px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools.jpg"><img aria-describedby="caption-attachment-690" loading="lazy" class="size-full wp-image-690" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools.jpg" alt="Network tab in the Chrome DevTools" width="554" height="381" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools.jpg 554w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools-300x206.jpg 300w" sizes="(max-width: 554px) 100vw, 554px" /></a>
+  <a href="/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools.jpg"><img aria-describedby="caption-attachment-690" loading="lazy" class="size-full wp-image-690" src="/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools.jpg" alt="Network tab in the Chrome DevTools" width="554" height="381" /></a>
   
   <p id="caption-attachment-690" class="wp-caption-text">
     Network tab in the Chrome DevTools
@@ -42,7 +42,7 @@ You can analyze the network load with every browser by pressing the F12 key. Thi
 &nbsp;
 
 <div id="attachment_693" style="width: 546px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Summary-of-the-transferred-data.jpg"><img aria-describedby="caption-attachment-693" loading="lazy" class="size-full wp-image-693" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Summary-of-the-transferred-data.jpg" alt="Summary of the transferred data" width="536" height="26" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Summary-of-the-transferred-data.jpg 536w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Summary-of-the-transferred-data-300x15.jpg 300w" sizes="(max-width: 536px) 100vw, 536px" /></a>
+  <a href="/wp-content/uploads/2018/01/Summary-of-the-transferred-data.jpg"><img aria-describedby="caption-attachment-693" loading="lazy" class="size-full wp-image-693" src="/wp-content/uploads/2018/01/Summary-of-the-transferred-data.jpg" alt="Summary of the transferred data" width="536" height="26" /></a>
   
   <p id="caption-attachment-693" class="wp-caption-text">
     Summary of the requests and transferred data
@@ -62,7 +62,7 @@ The first step to use Bundles is installing the Microsoft.AspNet.Web.Optimizatio
 The BundleConfig class has one static method,  <span class="fontstyle0">RegisterBundles</span> which takes a BundleCollection as parameter. Add your CSS files by adding a new StyleBundle to the BundleCollection and the Javascript files by adding a new ScriptBundle to the BundleCollection.
 
 <div id="attachment_702" style="width: 487px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-Bundles-to-the-BundleConfig-class.jpg"><img aria-describedby="caption-attachment-702" loading="lazy" class="wp-image-702 size-full" title="Adding CSS and Javascript Bundles to the BundleConfig class" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-Bundles-to-the-BundleConfig-class.jpg" alt="Adding CSS and Javascript Bundles to the BundleConfig class" width="477" height="277" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-Bundles-to-the-BundleConfig-class.jpg 477w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-Bundles-to-the-BundleConfig-class-300x174.jpg 300w" sizes="(max-width: 477px) 100vw, 477px" /></a>
+  <a href="/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-Bundles-to-the-BundleConfig-class.jpg"><img aria-describedby="caption-attachment-702" loading="lazy" class="wp-image-702 size-full" title="Adding CSS and Javascript Bundles to the BundleConfig class" src="/wp-content/uploads/2018/01/Adding-CSS-and-Javascript-Bundles-to-the-BundleConfig-class.jpg" alt="Adding CSS and Javascript Bundles to the BundleConfig class" width="477" height="277" /></a>
   
   <p id="caption-attachment-702" class="wp-caption-text">
     Adding CSS and Javascript Bundles to the BundleConfig class
@@ -78,7 +78,7 @@ If one file depends on the other one, make sure to add them in the right order. 
 After creating the Bundles, I have to add the RegisterBundle method in the Global.asx file to make sure it is called at the start of the application. To register the RegisterBunle method in the Global.asx file add the following line of code: <span class="fontstyle0">BundleConfig.RegisterBundles(BundleTable.Bundles);</span>
 
 <div id="attachment_696" style="width: 453px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Registering-the-Bundles-in-the-Global.asax-file.jpg"><img aria-describedby="caption-attachment-696" loading="lazy" class="size-full wp-image-696" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Registering-the-Bundles-in-the-Global.asax-file.jpg" alt="Registering the Bundles in the Global.asax file" width="443" height="185" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Registering-the-Bundles-in-the-Global.asax-file.jpg 443w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Registering-the-Bundles-in-the-Global.asax-file-300x125.jpg 300w" sizes="(max-width: 443px) 100vw, 443px" /></a>
+  <a href="/wp-content/uploads/2018/01/Registering-the-Bundles-in-the-Global.asax-file.jpg"><img aria-describedby="caption-attachment-696" loading="lazy" class="size-full wp-image-696" src="/wp-content/uploads/2018/01/Registering-the-Bundles-in-the-Global.asax-file.jpg" alt="Registering the Bundles in the Global.asax file" width="443" height="185" /></a>
   
   <p id="caption-attachment-696" class="wp-caption-text">
     Registering the Bundles in the Global.asax file
@@ -88,7 +88,7 @@ After creating the Bundles, I have to add the RegisterBundle method in the Globa
 The next step is to add the System.Web.Optimization namespace to the web.config viel in the Views folder.
 
 <div id="attachment_697" style="width: 347px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-the-System.Web_.Optimization-namespace-to-the-web.config-file.jpg"><img aria-describedby="caption-attachment-697" loading="lazy" class="size-full wp-image-697" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-the-System.Web_.Optimization-namespace-to-the-web.config-file.jpg" alt="Adding the System.Web.Optimization namespace to the web.config file" width="337" height="127" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-the-System.Web_.Optimization-namespace-to-the-web.config-file.jpg 337w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-the-System.Web_.Optimization-namespace-to-the-web.config-file-300x113.jpg 300w" sizes="(max-width: 337px) 100vw, 337px" /></a>
+  <a href="/wp-content/uploads/2018/01/Adding-the-System.Web_.Optimization-namespace-to-the-web.config-file.jpg"><img aria-describedby="caption-attachment-697" loading="lazy" class="size-full wp-image-697" src="/wp-content/uploads/2018/01/Adding-the-System.Web_.Optimization-namespace-to-the-web.config-file.jpg" alt="Adding the System.Web.Optimization namespace to the web.config file" width="337" height="127" /></a>
   
   <p id="caption-attachment-697" class="wp-caption-text">
     Adding the System.Web.Optimization namespace to the web.config file
@@ -98,7 +98,7 @@ The next step is to add the System.Web.Optimization namespace to the web.config
 The last step is adding the Bundles to your layout view and enabling CSS and Javascript optimization in the web.config file. To do that use Styles.Render and Scripts.Render with the name of the Bundle you provided while creating it.
 
 <div id="attachment_698" style="width: 282px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-the-Bundles-to-the-layout-view.jpg"><img aria-describedby="caption-attachment-698" loading="lazy" class="size-full wp-image-698" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Adding-the-Bundles-to-the-layout-view.jpg" alt="Adding the Bundles to the layout view" width="272" height="64" /></a>
+  <a href="/wp-content/uploads/2018/01/Adding-the-Bundles-to-the-layout-view.jpg"><img aria-describedby="caption-attachment-698" loading="lazy" class="size-full wp-image-698" src="/wp-content/uploads/2018/01/Adding-the-Bundles-to-the-layout-view.jpg" alt="Adding the Bundles to the layout view" width="272" height="64" /></a>
   
   <p id="caption-attachment-698" class="wp-caption-text">
     Adding the Bundles to the layout view
@@ -108,7 +108,7 @@ The last step is adding the Bundles to your layout view and enabling CSS and Jav
 Then set the value of the debug attribute in the compilation tag in the web.config to false. If this is set to true, the browser requests all the files with separate requests and doesn&#8217;t use bundling.
 
 <div id="attachment_699" style="width: 415px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Setting-debug-to-false-in-the-web.config.jpg"><img aria-describedby="caption-attachment-699" loading="lazy" class="size-full wp-image-699" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Setting-debug-to-false-in-the-web.config.jpg" alt="Setting debug to false in the web.config" width="405" height="65" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Setting-debug-to-false-in-the-web.config.jpg 405w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Setting-debug-to-false-in-the-web.config-300x48.jpg 300w" sizes="(max-width: 405px) 100vw, 405px" /></a>
+  <a href="/wp-content/uploads/2018/01/Setting-debug-to-false-in-the-web.config.jpg"><img aria-describedby="caption-attachment-699" loading="lazy" class="size-full wp-image-699" src="/wp-content/uploads/2018/01/Setting-debug-to-false-in-the-web.config.jpg" alt="Setting debug to false in the web.config" width="405" height="65" /></a>
   
   <p id="caption-attachment-699" class="wp-caption-text">
     Setting debug to false in the web.config
@@ -118,7 +118,7 @@ Then set the value of the debug attribute in the compilation tag in the web.conf
 In theory, fewer files get requested and the transferred data size is smaller too now. To test this I start the application and open the DevTools again. Then I reload the page.
 
 <div id="attachment_700" style="width: 563px" class="wp-caption aligncenter">
-  <a href="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools-after-Bundling.jpg"><img aria-describedby="caption-attachment-700" loading="lazy" class="size-full wp-image-700" src="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools-after-Bundling.jpg" alt="Network tab in the Chrome DevTools after Bundling" width="553" height="304" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools-after-Bundling.jpg 553w, https://www.programmingwithwolfgang.com/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools-after-Bundling-300x165.jpg 300w" sizes="(max-width: 553px) 100vw, 553px" /></a>
+  <a href="/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools-after-Bundling.jpg"><img aria-describedby="caption-attachment-700" loading="lazy" class="size-full wp-image-700" src="/wp-content/uploads/2018/01/Network-tab-in-the-Chrome-DevTools-after-Bundling.jpg" alt="Network tab in the Chrome DevTools after Bundling" width="553" height="304" /></a>
   
   <p id="caption-attachment-700" class="wp-caption-text">
     Network tab in the Chrome DevTools after bundling
