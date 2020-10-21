@@ -425,10 +425,9 @@ Figure 1 shows the result of the finished decision tree.
 &nbsp;
 
 <div id="attachment_106" style="width: 672px" class="wp-caption aligncenter">
-  <a href="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Decision-Tree.jpg"><img aria-describedby="caption-attachment-106" loading="lazy" class="wp-image-106 size-full" src="http://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Decision-Tree.jpg" alt="Decision Tree" width="662" height="328" srcset="https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Decision-Tree.jpg 662w, https://www.programmingwithwolfgang.com/wp-content/uploads/2017/10/Decision-Tree-300x149.jpg 300w" sizes="(max-width: 662px) 100vw, 662px" /></a>
-  
+  <a href="/wp-content/uploads/2017/10/Decision-Tree.jpg"><img aria-describedby="caption-attachment-106" loading="lazy" class="wp-image-106 size-full" src="/wp-content/uploads/2017/10/Decision-Tree.jpg" alt="Decision Tree" width="662" height="328"/></a>  
   <p id="caption-attachment-106" class="wp-caption-text">
-    Figure 1: Decision Tree (https://www.cise.ufl.edu/~ddd/cap6635/Fall-97/Short-papers/2.htm)
+    Figure 1: Decision Tree [Source](https://www.cise.ufl.edu/~ddd/cap6635/Fall-97/Short-papers/2.htm)
   </p>
 </div>
 

@@ -16,7 +16,7 @@ description: >-
   A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture.
 
 # Replace with the website url, e.g. 'https://username.github.io'
-url: 'protocol://domain'
+url: 'http://localhost:4000'
 
 author: Wolfgang Ofner
 
