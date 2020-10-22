@@ -468,8 +468,8 @@ The CalculateResult method is called to find the outcome of the entered query. T
 
 Due to the nature of the console, printing the tree results into displaying every possible route through the tree. To improve the readability nodes are written in upper case and edges in lower case. The root node is printed in Magenta, normal decision nodes in Cyan and leafs in yellow. Edges are printed in yellow.
 
-<div id="attachment_127" style="width: 1098px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/10/Printing-the-decision-tree.jpg"><img aria-describedby="caption-attachment-127" loading="lazy" class="size-full wp-image-127" src="/assets/img/posts/2017/10/Printing-the-decision-tree.jpg" alt="Printing the decision tree" width="1088" height="175"/></a>
+<div id="attachment_127" style="width: 700px" class="wp-caption aligncenter">
+  <a href="/assets/img/posts/2017/10/Printing-the-decision-tree.jpg"><img aria-describedby="caption-attachment-127" loading="lazy" class="size-full wp-image-127" src="/assets/img/posts/2017/10/Printing-the-decision-tree.jpg" alt="Printing the decision tree"/></a>
   
   <p id="caption-attachment-127" class="wp-caption-text">
     Figure 2: Printing the decision tree
