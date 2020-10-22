@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Programming]
 tags: ['C#', learning]
 ---
-Welcome to part 3 of how I learned programming. In my last post, I wrote about how I learned C# in university in Austria. You can find this post <a href="http://www.programmingwithwolfgang.com/learned-programming-part-2/" target="_blank" rel="noopener">here</a>.
+Welcome to part 3 of how I learned programming. In my last post, I wrote about how I learned C# in university in Austria. You can find this post <a href="/learned-programming-part-2/" target="_blank" rel="noopener">here</a>.
 
 In this post, I will talk about studying in Canada and the differences to Austria.
 
@@ -29,6 +29,6 @@ The C++ class was similar to the Java one. The class was twice a week for 1.5 ho
 
 That&#8217;s it with my story about studying in Canada. If you have the chance, I highly recommend you to study abroad. In the next chapter, I will talk about how I got into web development and how I taught my self new stuff.
 
-Next: <a href="http://www.programmingwithwolfgang.com/learned-programming-part-4/" target="_blank" rel="noopener">Part 4</a>
+Next: <a href="/learned-programming-part-4/" target="_blank" rel="noopener">Part 4</a>
 
-Previous: <a href="http://www.programmingwithwolfgang.com/how-i-learned-programming-part-2/" target="_blank" rel="noopener">Part 2</a>
+Previous: <a href="/how-i-learned-programming-part-2/" target="_blank" rel="noopener">Part 2</a>

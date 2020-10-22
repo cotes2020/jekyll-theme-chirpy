@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Programming]
 tags: [books, learning, Pluralsight, Youtube]
 ---
-Welcome to part 5 of how I learned programming. In my last post, I wrote about how I got into web development and what problems I encountered while learning. You can find this post <a href="http://www.programmingwithwolfgang.com/how-i-learned-programming-part-4/" target="_blank" rel="noopener">here</a>.
+Welcome to part 5 of how I learned programming. In my last post, I wrote about how I got into web development and what problems I encountered while learning. You can find this post <a href="/how-i-learned-programming-part-4/" target="_blank" rel="noopener">here</a>.
 
 In this post I will talk about how I teach myself new technologies and programming related topics at home using Pluralsight, Youtube and books.
 

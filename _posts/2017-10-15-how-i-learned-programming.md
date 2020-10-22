@@ -65,4 +65,4 @@ You can find my original solution on <a href="https://github.com/WolfgangOfner/U
 
 This was the first part of how I learned programming. In the next part, you can read about the second part of the semester.
 
-Next: <a href="http://www.programmingwithwolfgang.com/how-i-learned-programming-part-2/" target="_blank" rel="noopener noreferrer">Part 2</a>
+Next: <a href="/how-i-learned-programming-part-2/" target="_blank" rel="noopener noreferrer">Part 2</a>

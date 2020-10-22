@@ -51,6 +51,6 @@ At the beginning, do Scrum exactly as the Scrum Guide suggests. After you are us
 
 &nbsp;
 
-Next: <a href="http://www.programmingwithwolfgang.com/scrum-part-3-scrum-roles/" target="_blank" rel="noopener">Scrum Part 3 &#8211; Scrum roles</a>
+Next: <a href="/scrum-part-3-scrum-roles/" target="_blank" rel="noopener">Scrum Part 3 &#8211; Scrum roles</a>
 
-Previous: <a href="http://www.programmingwithwolfgang.com/scrum-part-1-future-building-software/" target="_blank" rel="noopener">Scrum Part 1 – Welcome to the future</a>
+Previous: <a href="/scrum-part-1-future-building-software/" target="_blank" rel="noopener">Scrum Part 1 – Welcome to the future</a>

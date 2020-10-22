@@ -37,4 +37,4 @@ The Scrum Master is responsible for facilitating all scrum meetings. He is a coa
 
 &nbsp;
 
-Previous: <a href="http://www.programmingwithwolfgang.com/scrum-part-5-meetings/" target="_blank" rel="noopener">Scrum Part 5 &#8211; Meetings</a>
+Previous: <a href="/scrum-part-5-meetings/" target="_blank" rel="noopener">Scrum Part 5 &#8211; Meetings</a>

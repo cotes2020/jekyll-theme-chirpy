@@ -41,4 +41,4 @@ The more uncertain you are about how and what you build, the more complicated an
 
 &nbsp;
 
-Next <a href="http://www.programmingwithwolfgang.com/scrum-part-2-overview-scrum/" target="_blank" rel="noopener">Scrum Part 2 &#8211; An overview of Scrum</a>
+Next <a href="/scrum-part-2-overview-scrum/" target="_blank" rel="noopener">Scrum Part 2 &#8211; An overview of Scrum</a>

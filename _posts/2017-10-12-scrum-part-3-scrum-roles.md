@@ -25,6 +25,6 @@ The Responsibility is shared between every team member. Since everyone is respon
 
 For more information about the roles check out <a href="http://www.scrum-institute.org/Scrum_Roles_The_Scrum_Team.php" target="_blank" rel="noopener">the documentation</a>.
 
-Next: <a href="http://www.programmingwithwolfgang.com/scrum-part-4-scrum-artifacts/" target="_blank" rel="noopener">Scrum  Part 4 &#8211; Scrum Artifacts</a>
+Next: <a href="/scrum-part-4-scrum-artifacts/" target="_blank" rel="noopener">Scrum  Part 4 &#8211; Scrum Artifacts</a>
 
-Previous: <a href="http://www.programmingwithwolfgang.com/scrum-part-2-overview-scrum/" target="_blank" rel="noopener">Scrum Part 2 &#8211; An overview of Scrum</a>
+Previous: <a href="/scrum-part-2-overview-scrum/" target="_blank" rel="noopener">Scrum Part 2 &#8211; An overview of Scrum</a>

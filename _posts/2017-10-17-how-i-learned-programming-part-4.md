@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Programming]
 tags: [ASP.NET MVC, CSS, HTML, Javascript, learning, PHP]
 ---
-Welcome to part 4 of how I learned programming. In my last post, I wrote about how I learned Java and C++ in Canada and how the teacher there impressed me. You can find this post <a href="http://www.programmingwithwolfgang.com/how-i-learned-programming-part-3/" target="_blank" rel="noopener">here</a>.
+Welcome to part 4 of how I learned programming. In my last post, I wrote about how I learned Java and C++ in Canada and how the teacher there impressed me. You can find this post <a href="/how-i-learned-programming-part-3/" target="_blank" rel="noopener">here</a>.
 
 In this post, I will talk about how I got into web development and what problems I encountered while learning.
 
@@ -125,6 +125,6 @@ If you are wondering about the assignment. Here are the tasks of the assignment:
 
 This is the story how I got into web development. In the last part of this series, I will tell you how I teach myself new stuff at home.
 
-Next: <a href="http://www.programmingwithwolfgang.com/learned-programming-part-5/" target="_blank" rel="noopener">Part 5</a>
+Next: <a href="/learned-programming-part-5/" target="_blank" rel="noopener">Part 5</a>
 
-Previous: <a href="http://www.programmingwithwolfgang.com/how-i-learned-programming-part-3/" target="_blank" rel="noopener">Part 3</a>
+Previous: <a href="/how-i-learned-programming-part-3/" target="_blank" rel="noopener">Part 3</a>

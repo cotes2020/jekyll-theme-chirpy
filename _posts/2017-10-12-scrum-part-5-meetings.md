@@ -93,6 +93,6 @@ If you hear for the first time about these meetings, you might think that the wh
 
 &nbsp;
 
-Next: <a href="http://www.programmingwithwolfgang.com/scrum-part-6-rules/" target="_blank" rel="noopener">Scrum Part 6 &#8211; Rules</a>
+Next: <a href="/scrum-part-6-rules/" target="_blank" rel="noopener">Scrum Part 6 &#8211; Rules</a>
 
-Previous: <a href="http://www.programmingwithwolfgang.com/scrum-part-4-scrum-artifacts/" target="_blank" rel="noopener">Scrum Part 4 &#8211; Scrum Artifacts</a>
+Previous: <a href="/scrum-part-4-scrum-artifacts/" target="_blank" rel="noopener">Scrum Part 4 &#8211; Scrum Artifacts</a>

@@ -57,11 +57,11 @@ I know that this example is not really what you will see in a real-world project
 
 The Template Method pattern to achieve a clean design. The algorithm provided by the base class is closed for modification but is open for extension by subclasses. As a result, your design satisfies the open-closed principle. The pattern also helps to implement the Hollywood principle (&#8220;Don&#8217;t call us, we call you&#8221;).
 
-One downside is that the steps of the algorithm must be already known when the pattern is applied. Therefore the Template Method pattern is great for reuse but it is not as flexible as for example the <a href="http://www.programmingwithwolfgang.com/strategy-pattern/" target="_blank" rel="noopener">Strategy pattern</a>.
+One downside is that the steps of the algorithm must be already known when the pattern is applied. Therefore the Template Method pattern is great for reuse but it is not as flexible as for example the <a href="/strategy-pattern/" target="_blank" rel="noopener">Strategy pattern</a>.
 
 ## Related patterns
 
-<a href="http://www.programmingwithwolfgang.com/strategy-pattern/" target="_blank" rel="noopener">Strategy</a>: Inject a complete algorithm implementation into another module
+<a href="/strategy-pattern/" target="_blank" rel="noopener">Strategy</a>: Inject a complete algorithm implementation into another module
 
 Decorator: Compose an algorithm or behavior from several sub-parts
 

@@ -100,6 +100,6 @@ The Product Owner determines what to do with it. Maybe it needs refinement, mayb
 
 &nbsp;
 
-Next: <a href="http://www.programmingwithwolfgang.com/scrum-part-5-meetings/" target="_blank" rel="noopener">Scrum Part 5 &#8211; Meetings</a>
+Next: <a href="/scrum-part-5-meetings/" target="_blank" rel="noopener">Scrum Part 5 &#8211; Meetings</a>
 
-Previous: <a href="http://www.programmingwithwolfgang.com/scrum-part-3-scrum-roles/" target="_blank" rel="noopener">Scrum Part 3 &#8211; Scrum roles</a>
+Previous: <a href="/scrum-part-3-scrum-roles/" target="_blank" rel="noopener">Scrum Part 3 &#8211; Scrum roles</a>
