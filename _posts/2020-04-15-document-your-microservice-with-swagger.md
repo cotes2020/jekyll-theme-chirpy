@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
 ---
-Swagger is an open-source toolset that can be easily integrated into your solution and which helps you to document and test your APIs. It is so simple that even none technical people can use it. <a href="https://www.programmingwithwolfgang.com/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my last post</a>, I created two Microservices and today I will explain how I integrated Swagger.
+Swagger is an open-source toolset that can be easily integrated into your solution and which helps you to document and test your APIs. It is so simple that even none technical people can use it. <a href="/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my last post</a>, I created two Microservices and today I will explain how I integrated Swagger.
 
 ## What is Swagger?
 
@@ -161,7 +161,7 @@ After clicking on Try it out, you can define the format of your request on the t
 
 Today, I talked about Swagger, one of my favorite NuGet packages. Swagger can be used to document and test your application and make this information easily accessible even for none technical people. Swagger is also very easy to set up and can be extended and modify to fit your needs.
 
-<a href="https://www.programmingwithwolfgang.com/cqrs-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">In my next post</a>, I will explain the implementation of CQRS and how it can be used to split up your read and write operations.
+<a href="/cqrs-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">In my next post</a>, I will explain the implementation of CQRS and how it can be used to split up your read and write operations.
 
 Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
 

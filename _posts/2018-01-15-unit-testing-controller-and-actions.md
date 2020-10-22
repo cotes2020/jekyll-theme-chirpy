@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [FluentAssertions, MVC, TDD, xUnit]
 ---
-In <a href="https://www.programmingwithwolfgang.com/controllers-and-actions/" target="_blank" rel="noopener">my last post</a>, I showed how to work with controllers and actions. This included passing data, return types of actions and redirects. In this post, I want to check if my implemented features work as I expect them to by unit testing controllers and actions.
+In <a href="/controllers-and-actions/" target="_blank" rel="noopener">my last post</a>, I showed how to work with controllers and actions. This included passing data, return types of actions and redirects. In this post, I want to check if my implemented features work as I expect them to by unit testing controllers and actions.
 
 ## Setting up the project
 

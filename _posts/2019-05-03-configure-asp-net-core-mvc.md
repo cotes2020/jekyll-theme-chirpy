@@ -541,6 +541,6 @@ These configuration options are used to fine-tune the way your MVC application w
 
 ## Conclusion
 
-In this post, I talked about configuring your ASP.NET Core MVC application. I showed how to enable logging, add built-in MVC functionalities and how to create a JSON file from which the application can read its configuration. If you want to learn more about more complex configurations, check my post <a href="https://www.programmingwithwolfgang.com/dealing-with-complex-configurations-in-asp-net-mvc-core" target="_blank" rel="noopener noreferrer">Dealing with Complex Configurations in ASP.NET MVC Core</a>.
+In this post, I talked about configuring your ASP.NET Core MVC application. I showed how to enable logging, add built-in MVC functionalities and how to create a JSON file from which the application can read its configuration. If you want to learn more about more complex configurations, check my post <a href="/dealing-with-complex-configurations-in-asp-net-mvc-core" target="_blank" rel="noopener noreferrer">Dealing with Complex Configurations in ASP.NET MVC Core</a>.
 
 For more details about the configuring ASP.NET Core, I highly recommend the book &#8220;<a href="https://www.amazon.com/Pro-ASP-NET-Core-MVC-2/dp/148423149X" target="_blank" rel="noopener noreferrer">Pro ASP.NET Core MVC 2</a>&#8220;. You can find the source code for this demo on <a href="https://github.com/WolfgangOfner/MVC-Core-Configure" target="_blank" rel="noopener noreferrer">GitHub</a>.

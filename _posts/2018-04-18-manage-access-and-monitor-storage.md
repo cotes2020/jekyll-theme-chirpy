@@ -27,7 +27,7 @@ The SAS token should be stored in the Azure Key Vault.
 
 ### Creating an SAS token with C#
 
-You can find the following code demo on <a href="https://github.com/WolfgangOfner/Azure-CreateSASToken" target="_blank" rel="noopener noreferrer">GitHub</a>. To learn how to create a container, queue and table see<span style="color: #ff0000;"> </span><a href="https://www.programmingwithwolfgang.com/implement-azure-storage-blobs-and-azure-files/" target="_blank" rel="noopener noreferrer">Implement Azure Storage blobs and Azure files</a> and <a href="https://www.programmingwithwolfgang.com/implement-azure-storage-tables-queues-and-azure-cosmos-db-table-api/" target="_blank" rel="noopener noreferrer">Implement Azure Storage Tables, Queues, and Azure Cosmos DB Table API</a>.
+You can find the following code demo on <a href="https://github.com/WolfgangOfner/Azure-CreateSASToken" target="_blank" rel="noopener noreferrer">GitHub</a>. To learn how to create a container, queue and table see<span style="color: #ff0000;"> </span><a href="/implement-azure-storage-blobs-and-azure-files/" target="_blank" rel="noopener noreferrer">Implement Azure Storage blobs and Azure files</a> and <a href="/implement-azure-storage-tables-queues-and-azure-cosmos-db-table-api/" target="_blank" rel="noopener noreferrer">Implement Azure Storage Tables, Queues, and Azure Cosmos DB Table API</a>.
 
 The following code creates an SAS token for a blob container with a start time and expiration time. Before you start, install the WindowsAzure.Storage NuGet package.
 
@@ -345,4 +345,4 @@ In this post, I talked about creating an SAS token to give access with specific 
 
 In the second part, I talked about how to enable monitoring and logging for your storage account and how to view and analyze these logs in the Azure portal and with Excel.
 
-For more information about the 70-532 exam get the <a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener noreferrer">Exam Ref book from Microsoft</a> and continue reading my blog posts. I am covering all topics needed to pass the exam. You can find an overview of all posts related to the 70-532 exam <a href="https://www.programmingwithwolfgang.com/prepared-for-the-70-532-exam/" target="_blank" rel="noopener noreferrer">here</a>.
+For more information about the 70-532 exam get the <a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener noreferrer">Exam Ref book from Microsoft</a> and continue reading my blog posts. I am covering all topics needed to pass the exam. You can find an overview of all posts related to the 70-532 exam <a href="/prepared-for-the-70-532-exam/" target="_blank" rel="noopener noreferrer">here</a>.

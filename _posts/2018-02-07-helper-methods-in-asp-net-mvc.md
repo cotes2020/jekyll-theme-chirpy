@@ -61,7 +61,7 @@ The MVC framework offers many helper methods out of the box to manage your HTML
   </p>
 </div>
 
-This is a very simple view. I added Bootstrap and some simple CSS. Usually, I would use a layout file but since the focus of this post is on helper methods, I think this approach is fine. Note that I have to set the name property of every input field. This name corresponds to a property of the model. If I don&#8217;t set the name, the <a href="https://www.programmingwithwolfgang.com/model-binding-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">model binder </a>wouldn&#8217;t be able to bind the data.
+This is a very simple view. I added Bootstrap and some simple CSS. Usually, I would use a layout file but since the focus of this post is on helper methods, I think this approach is fine. Note that I have to set the name property of every input field. This name corresponds to a property of the model. If I don&#8217;t set the name, the <a href="/model-binding-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">model binder </a>wouldn&#8217;t be able to bind the data.
 
 ### Creating a form
 
@@ -151,7 +151,7 @@ Here are the different overloaded versions of the BefginForm helper method:
   </h3>
   
   <p>
-    When you use the BeginForm helper method, you leave the routing to the MVC framework. It takes the first route in the <a href="https://www.programmingwithwolfgang.com/routing-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">routing configuration</a>. If you want to use a specific route for your form, use BeginRouteForm instead.
+    When you use the BeginForm helper method, you leave the routing to the MVC framework. It takes the first route in the <a href="/routing-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">routing configuration</a>. If you want to use a specific route for your form, use BeginRouteForm instead.
   </p>
   
   <p>

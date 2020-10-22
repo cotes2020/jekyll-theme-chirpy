@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Azure Functions, Azure Static Web Apps, 'C#', Cosmos DB, React]
 ---
-<a href="https://www.programmingwithwolfgang.com/azure-static-web-apps/" target="_blank" rel="noopener noreferrer">Last week, I talked about hosting your static website with Azure Static Web Apps.</a> Today, I will extend this example using a free Cosmos DB for the website data and Azure Functions to retrieve them. This approach will give you free website hosting and global distribution of your website.  
+<a href="/azure-static-web-apps/" target="_blank" rel="noopener noreferrer">Last week, I talked about hosting your static website with Azure Static Web Apps.</a> Today, I will extend this example using a free Cosmos DB for the website data and Azure Functions to retrieve them. This approach will give you free website hosting and global distribution of your website.  
 You can find the demo code of the Azure Static Web App <a href="https://github.com/WolfgangOfner/React-Azure-Static-Web-App" target="_blank" rel="noopener noreferrer">here</a> and the code for the Azure Functions <a href="https://github.com/WolfgangOfner/AzureFunctions-CosmosDb" target="_blank" rel="noopener noreferrer">here</a>.
 
 ## Azure Cosmos DB
@@ -174,4 +174,4 @@ Open the URL of your Azure Static Web App and the data from the Cosmos DB will b
 
 Today, I showed how to use Azure Cosmos DB, Azure Functions and Azure Static Web Apps to achieve free website hosting and also a global distribution of the website. You can find the demo code of the Azure Static Web App <a href="https://github.com/WolfgangOfner/React-Azure-Static-Web-App" target="_blank" rel="noopener noreferrer">here</a> and the code for the Azure Functions <a href="https://github.com/WolfgangOfner/AzureFunctions-CosmosDb" target="_blank" rel="noopener noreferrer">here</a>.
 
-During Ignite in September 2020, Microsoft announced new features for Static Web Apps. From now on it is also possible to host Blazor apps and the connection with the Azure Function got improved a lot. You can find my post about it <a href="https://www.programmingwithwolfgang.com/azure-static-web-app-with-blazor/" target="_blank" rel="noopener noreferrer">here</a>.
+During Ignite in September 2020, Microsoft announced new features for Static Web Apps. From now on it is also possible to host Blazor apps and the connection with the Azure Function got improved a lot. You can find my post about it <a href="/azure-static-web-app-with-blazor/" target="_blank" rel="noopener noreferrer">here</a>.

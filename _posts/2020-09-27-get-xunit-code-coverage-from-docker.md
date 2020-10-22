@@ -7,7 +7,7 @@ tags: [Azure Devops, 'C#', docker, xUnit]
 ---
 Getting code coverage in Azure DevOps is not well documented and the first time I configured it, it took me quite some time to figure out how to do it. It gets even more complicated when you run your tests inside a Docker container during the build.
 
-<a href="https://www.programmingwithwolfgang.com/run-tests-inside-docker-during-ci/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to run tests inside a container during the build. Today, I want to show how to get the code coverage of these tests and how to display them in Azure DevOps.
+<a href="/run-tests-inside-docker-during-ci/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to run tests inside a container during the build. Today, I want to show how to get the code coverage of these tests and how to display them in Azure DevOps.
 
 Code coverage gives you an indication of how much of your code is covered by at least one test. Usually, the higher the better but you shouldn&#8217;t aim for 100%. As always, it depends on the project but I would recommend having around 80%.
 

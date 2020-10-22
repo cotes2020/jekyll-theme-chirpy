@@ -34,7 +34,7 @@ There are four patterns similar to the proxy pattern:
   * Prototype
   * [Decorator](https://www.programmingwithwolfgang.com/decorator-pattern-in-net-core-3-1)
   * Flyweight
-  * <a href="https://www.programmingwithwolfgang.com/adapter-pattern/" target="_blank" rel="noopener noreferrer">Adapter</a>
+  * <a href="/adapter-pattern/" target="_blank" rel="noopener noreferrer">Adapter</a>
 
 ## Implementation of the Proxy Pattern
 

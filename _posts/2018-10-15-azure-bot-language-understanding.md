@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Bot, 'C#', Luis, Microsoft Bot Framework]
 ---
-With the Azure bot framework and luis, Microsoft offers two great features to implement language understanding in your chat bot. This is the second part of my chat bot series and in this post, I will show you how to add a language understanding to your chat bot using luis. You can find the first part <a href="https://www.programmingwithwolfgang.com/bot-application-azure/" target="_blank" rel="noopener">here</a>.
+With the Azure bot framework and luis, Microsoft offers two great features to implement language understanding in your chat bot. This is the second part of my chat bot series and in this post, I will show you how to add a language understanding to your chat bot using luis. You can find the first part <a href="/bot-application-azure/" target="_blank" rel="noopener">here</a>.
 
 ## Adding new answers to your Azure bot
 
@@ -117,4 +117,4 @@ Obviously, this code is not really useful, it is only supposed to show what you 
 
 In this post, I showed how to implement language understanding in your Azure Bot using luis. Additionally, I showed how to use entities and make the answers of your Azure bot smarter. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/Azure-ChatBot" target="_blank" rel="noopener">GitHub</a>.
 
-In <a href="https://www.programmingwithwolfgang.com/extending-answers-chat-bot/" target="_blank" rel="noopener">part 3</a> of this series, I will talk about different reply types like videos, images or files.
+In <a href="/extending-answers-chat-bot/" target="_blank" rel="noopener">part 3</a> of this series, I will talk about different reply types like videos, images or files.

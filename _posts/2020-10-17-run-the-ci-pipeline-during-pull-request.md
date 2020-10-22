@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [DevOps]
 tags: [Azure Devops, CI, continuous integration, DevOps Pull request policy]
 ---
-In the modern DevOps culture, the goal is to get features as fast as possible into production. Additionally, we have to guarantee that these new features don&#8217;t break anything. To do that, I will show in this post how to protect the master branch with a policy that enforces a pull request (PR) and reviews. To further enhance the quality, I will show <a href="https://www.programmingwithwolfgang.com/run-the-ci-pipeline-during-pull-request" target="_blank" rel="noopener noreferrer">how to run the CI pipeline from my last post</a>, which builds the solutions and runs all unit tests.
+In the modern DevOps culture, the goal is to get features as fast as possible into production. Additionally, we have to guarantee that these new features don&#8217;t break anything. To do that, I will show in this post how to protect the master branch with a policy that enforces a pull request (PR) and reviews. To further enhance the quality, I will show <a href="/run-the-ci-pipeline-during-pull-request" target="_blank" rel="noopener noreferrer">how to run the CI pipeline from my last post</a>, which builds the solutions and runs all unit tests.
 
 ## Protect the Master Branch with a Pull Request Policy
 
@@ -75,7 +75,7 @@ Companies have different merge strategies. Some use squash merges, some do rebas
 
 ### Configure automatic Builds
 
-Now we come to the most interesting part of the policy. I add a build policy and select the previously created CustomerApi CI pipeline.  You can find the post <a href="https://www.programmingwithwolfgang.com/build-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">here</a>. I set /CustomerApi/* as path filter. The automatic trigger starts the build every time changes are committed inside the CustomerApi folder and the build expires after 12 hours. This means if the pull request is not completed within 12 hours, the build has to be triggered again.
+Now we come to the most interesting part of the policy. I add a build policy and select the previously created CustomerApi CI pipeline.  You can find the post <a href="/build-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">here</a>. I set /CustomerApi/* as path filter. The automatic trigger starts the build every time changes are committed inside the CustomerApi folder and the build expires after 12 hours. This means if the pull request is not completed within 12 hours, the build has to be triggered again.
 
 <div id="attachment_2506" style="width: 372px" class="wp-caption aligncenter">
   <a href="/wp-content/uploads/2020/08/Add-a-build-policy-for-the-CustomerApi-to-the-Pull-Request.jpg"><img aria-describedby="caption-attachment-2506" loading="lazy" class="wp-image-2506" src="/wp-content/uploads/2020/08/Add-a-build-policy-for-the-CustomerApi-to-the-Pull-Request.jpg" alt="Add a build policy for the CustomerApi to the Pull Request" width="362" height="700" /></a>

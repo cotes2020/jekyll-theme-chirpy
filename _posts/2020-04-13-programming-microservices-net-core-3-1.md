@@ -23,7 +23,7 @@ Our two microservice should satisfy the following requirements:
   * Communication between microservices should be implemented through some kind of queue
   * Use DDD and CQRS approaches with the Mediator and Repository Pattern
 
-To keep it simple, I will use an in-memory database. During the implementation, I will point out what you have to change if you want to use a normal database. I will split up the full implementation. In this post, I will create the microservices with the needed features. In the following posts, I will implement <a href="https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">Swagger</a>, create a <a href="https://www.programmingwithwolfgang.com/dockerize-an-asp-net-core-microservice-and-rabbitmq/" target="_blank" rel="noopener noreferrer">Docker container</a>, set up <a href="https://www.programmingwithwolfgang.com/rabbitmq-in-an-asp-net-core-3-1-microservice" target="_blank" rel="noopener noreferrer">RabbitMQ</a> and explain [CQRS](https://www.programmingwithwolfgang.com/cqrs-in-asp-net-core-3-1/) and <a href="https://www.programmingwithwolfgang.com/mediator-pattern-in-asp-net-core-3-1/" target="_blank" rel="noopener noreferrer">Mediator</a>.
+To keep it simple, I will use an in-memory database. During the implementation, I will point out what you have to change if you want to use a normal database. I will split up the full implementation. In this post, I will create the microservices with the needed features. In the following posts, I will implement <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">Swagger</a>, create a <a href="/dockerize-an-asp-net-core-microservice-and-rabbitmq/" target="_blank" rel="noopener noreferrer">Docker container</a>, set up <a href="/rabbitmq-in-an-asp-net-core-3-1-microservice" target="_blank" rel="noopener noreferrer">RabbitMQ</a> and explain [CQRS](https://www.programmingwithwolfgang.com/cqrs-in-asp-net-core-3-1/) and <a href="/mediator-pattern-in-asp-net-core-3-1/" target="_blank" rel="noopener noreferrer">Mediator</a>.
 
 ## Structure of the Microservice
 
@@ -107,7 +107,7 @@ RuleFor(x => x.Age)
 
 ### Startup
 
-In the Startup.cs, I register my services, validators and configure other parts of the application like AutoMapper, the database context or Swagger. This part should be self-explanatory and I will talk about <a href="https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">Swagger</a> or <a href="https://www.programmingwithwolfgang.com/rabbitmq-in-an-asp-net-core-3-1-microservice" target="_blank" rel="noopener noreferrer">RabbitMQ</a> later.
+In the Startup.cs, I register my services, validators and configure other parts of the application like AutoMapper, the database context or Swagger. This part should be self-explanatory and I will talk about <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">Swagger</a> or <a href="/rabbitmq-in-an-asp-net-core-3-1-microservice" target="_blank" rel="noopener noreferrer">RabbitMQ</a> later.
 
 <div id="attachment_2475" style="width: 710px" class="wp-caption aligncenter">
   <a href="/wp-content/uploads/2020/04/Register-the-classes-and-configure-the-services.jpg"><img aria-describedby="caption-attachment-2475" loading="lazy" class="wp-image-2475" src="/wp-content/uploads/2020/04/Register-the-classes-and-configure-the-services.jpg" alt="Register the classes and configure the services" width="700" height="439" /></a>
@@ -358,7 +358,7 @@ This line would register a background service that listens to change in the queu
 
 ## Test the Microservice
 
-After you made the changes to both APIs, you can start them. This should display the Swagger GUI which gives you information about all actions and models and also lets you send requests. The GUI should be self-explanatory but <a href="https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">I will talk more about it in my next post</a>.
+After you made the changes to both APIs, you can start them. This should display the Swagger GUI which gives you information about all actions and models and also lets you send requests. The GUI should be self-explanatory but <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">I will talk more about it in my next post</a>.
 
 <div id="attachment_1881" style="width: 556px" class="wp-caption aligncenter">
   <a href="/wp-content/uploads/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg"><img aria-describedby="caption-attachment-1881" loading="lazy" class="size-full wp-image-1881" src="/wp-content/uploads/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg" alt="The Swagger GUI with the available actions and models" width="546" height="627" /></a>
@@ -372,7 +372,7 @@ After you made the changes to both APIs, you can start them. This should display
 
 Today, I talked about the structure and the features of my microservices. This is just the beginning but both applications are working and could be already deployed. It is important to keep in mind that each microservice has its own data storage and is kept as simple as possible.
 
-<a href="https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">In my next post, I will talk about Swagger</a> and how you can use it to easily and quickly document your microservice while providing the opportunity to test requests.
+<a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">In my next post, I will talk about Swagger</a> and how you can use it to easily and quickly document your microservice while providing the opportunity to test requests.
 
 Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
 

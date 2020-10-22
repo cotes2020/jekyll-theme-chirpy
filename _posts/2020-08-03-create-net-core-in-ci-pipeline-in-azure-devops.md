@@ -10,7 +10,7 @@ A crucial feature of DevOps is to give the developer fast feedback if their code
 
 ## Create a .NET Core CI Pipeline in Azure DevOps
 
-In my <a href="https://www.programmingwithwolfgang.com/creating-a-microservice-with-net-core-3-1/" target="_blank" rel="noopener noreferrer">last post, Creating a Microservice with .NET Core 3.1</a>, I created a new ASP .NET Core microservice. I will use the CI pipeline to build all projects and run all unit tests in the repository. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/NetCoreCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.
+In my <a href="/creating-a-microservice-with-net-core-3-1/" target="_blank" rel="noopener noreferrer">last post, Creating a Microservice with .NET Core 3.1</a>, I created a new ASP .NET Core microservice. I will use the CI pipeline to build all projects and run all unit tests in the repository. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/NetCoreCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.
 
 In your Azure DevOps project, go to Pipelines and click Create Pipeline.
 

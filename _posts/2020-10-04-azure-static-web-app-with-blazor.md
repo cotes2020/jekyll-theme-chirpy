@@ -179,6 +179,6 @@ Below the URL, you see a link to the Github Actions which are responsible for th
 
 ## Conclusion
 
-<a href="https://www.programmingwithwolfgang.com/azure-static-web-apps/" target="_blank" rel="noopener noreferrer">I already wrote an article about Azure Static Web Apps</a> when they got announced in May. Back then I had some problems and the functionality was very limited. With these improvements, especially with the support of Blazor, Microsoft is going definitively in the right direction. To have a realistic application, the Azure Function could get some data from a database. Another great benefit is that it is still free and you only pay for the Azure Functions (the first 400,000 seconds are free).
+<a href="/azure-static-web-apps/" target="_blank" rel="noopener noreferrer">I already wrote an article about Azure Static Web Apps</a> when they got announced in May. Back then I had some problems and the functionality was very limited. With these improvements, especially with the support of Blazor, Microsoft is going definitively in the right direction. To have a realistic application, the Azure Function could get some data from a database. Another great benefit is that it is still free and you only pay for the Azure Functions (the first 400,000 seconds are free).
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/BlazorAzureStaticWebsite" target="_blank" rel="noopener noreferrer">Github</a>.

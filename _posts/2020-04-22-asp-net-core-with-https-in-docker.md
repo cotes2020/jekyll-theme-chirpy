@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Docker, ASP.NET]  
 tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, SSL, Swagger]
 ---
-<a href="https://www.programmingwithwolfgang.com/dockerize-an-asp-net-core-microservice-and-rabbitmq/" target="_blank" rel="noopener noreferrer">In my last post</a>, I dockerized my ASP .NET Core 3.1 microservices but the HTTPS connection didn&#8217;t work. Kestrel needs a certificate to process HTTPS requests. Today, I will show you how to create a development certificate and how to provide it to your Docker container so you can use ASP .NET Core with HTTPS in Docker.
+<a href="/dockerize-an-asp-net-core-microservice-and-rabbitmq/" target="_blank" rel="noopener noreferrer">In my last post</a>, I dockerized my ASP .NET Core 3.1 microservices but the HTTPS connection didn&#8217;t work. Kestrel needs a certificate to process HTTPS requests. Today, I will show you how to create a development certificate and how to provide it to your Docker container so you can use ASP .NET Core with HTTPS in Docker.
 
 ## Start a Docker Container without a Certificate
 
@@ -89,6 +89,6 @@ docker run -p 32789:80 -p 32788:443 -e Kestrel\_\_Certificates\_\_Default\_\_Pat
 
 This post showed how to create a certificate and how to provide it to your application inside a Docker container. This enables you to use ASP .NET Coree with HTTPS in Docker.
 
-<a href="https://www.programmingwithwolfgang.com/set-up-docker-compose-for-asp-net-core-3-1-microservices" target="_blank" rel="noopener noreferrer">In my next post</a>, I will create a docker-compose file which will help you to start both microservices and RabbitMQ with a single command.
+<a href="/set-up-docker-compose-for-asp-net-core-3-1-microservices" target="_blank" rel="noopener noreferrer">In my next post</a>, I will create a docker-compose file which will help you to start both microservices and RabbitMQ with a single command.
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.

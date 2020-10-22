@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Architecture Pattern, Cloud, Scaling]
 ---
-In <a href="https://www.programmingwithwolfgang.com/vertically-scaling-pattern/" target="_blank" rel="noopener noreferrer">my last post</a>, I talked about vertically scaling vs. horizontally scaling with a focus on vertically scaling. Today, I will talk about it again, but I will focus on horizontally scaling this time.
+In <a href="/vertically-scaling-pattern/" target="_blank" rel="noopener noreferrer">my last post</a>, I talked about vertically scaling vs. horizontally scaling with a focus on vertically scaling. Today, I will talk about it again, but I will focus on horizontally scaling this time.
 
 ## Why use Scaling?
 

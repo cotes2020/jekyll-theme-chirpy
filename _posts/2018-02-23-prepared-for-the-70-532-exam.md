@@ -15,31 +15,31 @@ To study more in depth for the exam, I got the <a href="http://amzn.to/2EWNWMF" 
 
 ### Create and Manage Azure Resource Manager Virtual Machines
 
-  * <a href="https://www.programmingwithwolfgang.com/deploy-workload-on-azure-arm-virtual-machines/" target="_blank" rel="noopener noreferrer">Deploy workloads on Azure ARM virtual machines</a>
-  * <a href="https://www.programmingwithwolfgang.com/perform-configuration-management/" target="_blank" rel="noopener noreferrer">Perform Configuration Management</a>
-  * <a href="https://www.programmingwithwolfgang.com/scale-arm-virtual-machines/" target="_blank" rel="noopener noreferrer">Scale ARM Virtual Machines</a>
-  * <a href="https://www.programmingwithwolfgang.com/design-implement-arm-vm-azure-storage/" target="_blank" rel="noopener noreferrer">Design and implement ARM VM Azure Storage</a>
-  * <a href="https://www.programmingwithwolfgang.com/monitor-vms-in-azure/" target="_blank" rel="noopener noreferrer">Monitor VMs in Azure</a>
-  * <a href="https://www.programmingwithwolfgang.com/manage-arm-vm-availability/" target="_blank" rel="noopener noreferrer">Manage ARM VM Availability</a>
-  * <a href="https://www.programmingwithwolfgang.com/design-and-implement-devtest-labs/" target="_blank" rel="noopener noreferrer">Design and implement Azure DevTest Labs</a>
+  * <a href="/deploy-workload-on-azure-arm-virtual-machines/" target="_blank" rel="noopener noreferrer">Deploy workloads on Azure ARM virtual machines</a>
+  * <a href="/perform-configuration-management/" target="_blank" rel="noopener noreferrer">Perform Configuration Management</a>
+  * <a href="/scale-arm-virtual-machines/" target="_blank" rel="noopener noreferrer">Scale ARM Virtual Machines</a>
+  * <a href="/design-implement-arm-vm-azure-storage/" target="_blank" rel="noopener noreferrer">Design and implement ARM VM Azure Storage</a>
+  * <a href="/monitor-vms-in-azure/" target="_blank" rel="noopener noreferrer">Monitor VMs in Azure</a>
+  * <a href="/manage-arm-vm-availability/" target="_blank" rel="noopener noreferrer">Manage ARM VM Availability</a>
+  * <a href="/design-and-implement-devtest-labs/" target="_blank" rel="noopener noreferrer">Design and implement Azure DevTest Labs</a>
 
 ### Design and Implement a Storage and Data Strategy
 
-  * <a href="https://www.programmingwithwolfgang.com/implement-azure-storage-blobs-and-azure-files/" target="_blank" rel="noopener noreferrer">Implement Azure Storage blobs and Azure files</a>
-  * <a href="https://www.programmingwithwolfgang.com/implement-azure-storage-tables-queues-and-azure-cosmos-db-table-api/" target="_blank" rel="noopener noreferrer">Implement Azure Storage Tables, Queues, and Azure Cosmos DB Table API</a>
-  * <a href="https://www.programmingwithwolfgang.com/manage-access-and-monitor-storage/" target="_blank" rel="noopener noreferrer">Manage access and monitor storage</a>
-  * <a href="https://www.programmingwithwolfgang.com/implement-azure-sql-database/" target="_blank" rel="noopener noreferrer">Implement Azure SQL database</a>
-  * <a href="https://www.programmingwithwolfgang.com/implement-azure-cosmos-db-documentdb/" target="_blank" rel="noopener noreferrer">Implement Azure Cosmos DB DocumentDB</a>
-  * <a href="https://www.programmingwithwolfgang.com/implement-redis-cache-azure/" target="_blank" rel="noopener noreferrer">Implement Redis Cache</a>
-  * <a href="https://www.programmingwithwolfgang.com/implement-azure-search/" target="_blank" rel="noopener noreferrer">Implement Azure Search</a>
+  * <a href="/implement-azure-storage-blobs-and-azure-files/" target="_blank" rel="noopener noreferrer">Implement Azure Storage blobs and Azure files</a>
+  * <a href="/implement-azure-storage-tables-queues-and-azure-cosmos-db-table-api/" target="_blank" rel="noopener noreferrer">Implement Azure Storage Tables, Queues, and Azure Cosmos DB Table API</a>
+  * <a href="/manage-access-and-monitor-storage/" target="_blank" rel="noopener noreferrer">Manage access and monitor storage</a>
+  * <a href="/implement-azure-sql-database/" target="_blank" rel="noopener noreferrer">Implement Azure SQL database</a>
+  * <a href="/implement-azure-cosmos-db-documentdb/" target="_blank" rel="noopener noreferrer">Implement Azure Cosmos DB DocumentDB</a>
+  * <a href="/implement-redis-cache-azure/" target="_blank" rel="noopener noreferrer">Implement Redis Cache</a>
+  * <a href="/implement-azure-search/" target="_blank" rel="noopener noreferrer">Implement Azure Search</a>
 
 ### Design and Implement Azure Compute, Web and Mobile Services
 
-  * <a href="https://www.programmingwithwolfgang.com/design-azure-app-service-web-app/" target="_blank" rel="noopener noreferrer">Design Azure App Service Web App</a>
-  * <a href="https://www.programmingwithwolfgang.com/design-azure-app-service-api-apps/" target="_blank" rel="noopener noreferrer">Design Azure App Service API Apps</a>
-  * <a href="https://www.programmingwithwolfgang.com/develop-azure-app-service-logic-app/" target="_blank" rel="noopener noreferrer">Develop an Azure App Service Logic App</a>
-  * <a href="https://www.programmingwithwolfgang.com/develop-azure-app-service-mobile-app" target="_blank" rel="noopener noreferrer">Develop Azure App Service Mobile App</a>
+  * <a href="/design-azure-app-service-web-app/" target="_blank" rel="noopener noreferrer">Design Azure App Service Web App</a>
+  * <a href="/design-azure-app-service-api-apps/" target="_blank" rel="noopener noreferrer">Design Azure App Service API Apps</a>
+  * <a href="/develop-azure-app-service-logic-app/" target="_blank" rel="noopener noreferrer">Develop an Azure App Service Logic App</a>
+  * <a href="/develop-azure-app-service-mobile-app" target="_blank" rel="noopener noreferrer">Develop Azure App Service Mobile App</a>
   * [Implement API Management](https://www.programmingwithwolfgang.com/implement-api-management/)
-  * <a href="https://www.programmingwithwolfgang.com/implement-azure-functions-webjobs/" target="_blank" rel="noopener noreferrer">Implement Azure Functions and WebJobs</a>
-  * <a href="https://www.programmingwithwolfgang.com/implement-azure-service-fabric-apps/" target="_blank" rel="noopener noreferrer">Design and Implement Azure Service Fabric apps</a>
-  * <a href="https://www.programmingwithwolfgang.com/design-and-implement-devops/" target="_blank" rel="noopener noreferrer">Design and implement DevOps</a>
+  * <a href="/implement-azure-functions-webjobs/" target="_blank" rel="noopener noreferrer">Implement Azure Functions and WebJobs</a>
+  * <a href="/implement-azure-service-fabric-apps/" target="_blank" rel="noopener noreferrer">Design and Implement Azure Service Fabric apps</a>
+  * <a href="/design-and-implement-devops/" target="_blank" rel="noopener noreferrer">Design and implement DevOps</a>

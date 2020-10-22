@@ -119,7 +119,7 @@ Note that I am using the default route. It is also important that the variable n
 
 ## Binding primitive data types
 
-When the model binder encounters a primitive data type, it tries to convert it into the needed type. If the conversion fails, an exception message is displayed because int is not nullable (except you handle the exception as I described in <a href="https://www.programmingwithwolfgang.com/built-filter-asp-net-mvc/" target="_blank" rel="noopener noreferrer">Built-in Filter in ASP.NET MVC</a>)
+When the model binder encounters a primitive data type, it tries to convert it into the needed type. If the conversion fails, an exception message is displayed because int is not nullable (except you handle the exception as I described in <a href="/built-filter-asp-net-mvc/" target="_blank" rel="noopener noreferrer">Built-in Filter in ASP.NET MVC</a>)
 
 <div id="attachment_724" style="width: 710px" class="wp-caption aligncenter">
   <a href="/wp-content/uploads/2018/01/Converting-exception-leading-to-yellow-screen-of-death.jpg"><img aria-describedby="caption-attachment-724" loading="lazy" class="wp-image-724" src="/wp-content/uploads/2018/01/Converting-exception-leading-to-yellow-screen-of-death.jpg" alt="Converting exception leading to yellow screen of death" width="700" height="159" /></a>

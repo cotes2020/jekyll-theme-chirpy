@@ -6,7 +6,7 @@ layout: post
 categories: [DevOps, Docker]
 tags: [Azure Devops, CI, DevOps, docker, Docker Hub]
 ---
-<a href="https://www.programmingwithwolfgang.com/add-docker-to-a-asp-net-core-microservice/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to build a .NET Core Microservice inside a Docker container. Today, I want to build this microservice in an Azure DevOps CI pipeline and push the image to Dockerhub.
+<a href="/add-docker-to-a-asp-net-core-microservice/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to build a .NET Core Microservice inside a Docker container. Today, I want to build this microservice in an Azure DevOps CI pipeline and push the image to Dockerhub.
 
 ## Set up a Service Connection to Docker Hub
 
@@ -42,7 +42,7 @@ On the next page, select Docker Hub as your Registry type, enter your Docker ID,
 
 ## Create a new Azure DevOps CI Pipeline
 
-After setting up the service connection, create a new CI Pipeline. Select the source code location and then any template. After the yml file is created, delete its content. For more details on creating a Pipeline, see my post &#8220;<a href="https://www.programmingwithwolfgang.com/build-net-core-in-a-ci-pipeline-in-azure-devops/" target="_blank" rel="noopener noreferrer">Build .Net Core in a CI Pipeline in Azure DevOps</a>&#8220;.
+After setting up the service connection, create a new CI Pipeline. Select the source code location and then any template. After the yml file is created, delete its content. For more details on creating a Pipeline, see my post &#8220;<a href="/build-net-core-in-a-ci-pipeline-in-azure-devops/" target="_blank" rel="noopener noreferrer">Build .Net Core in a CI Pipeline in Azure DevOps</a>&#8220;.
 
 <div id="attachment_2367" style="width: 553px" class="wp-caption aligncenter">
   <a href="/wp-content/uploads/2020/09/Create-an-empty-Pipeline.jpg"><img aria-describedby="caption-attachment-2367" loading="lazy" class="wp-image-2367 size-full" src="/wp-content/uploads/2020/09/Create-an-empty-Pipeline.jpg" alt="Create an empty DevOps CI pipeline" width="543" height="187" /></a>

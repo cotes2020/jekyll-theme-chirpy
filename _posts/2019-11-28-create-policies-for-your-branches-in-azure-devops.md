@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [DevOps]
 tags: [Azure Devops, Azure Devops Services, Git, Pull Request]
 ---
-<a href="https://www.programmingwithwolfgang.com/create-automatic-build-pipeline-for-net-core/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to create a build pipeline for your .net and .net core project. Today, I want to use one of those pipelines to verify that new pull requests didn&#8217;t break my solution and I also want to show how to improve the code quality with branch policies.
+<a href="/create-automatic-build-pipeline-for-net-core/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to create a build pipeline for your .net and .net core project. Today, I want to use one of those pipelines to verify that new pull requests didn&#8217;t break my solution and I also want to show how to improve the code quality with branch policies.
 
 ## Branch Policies
 

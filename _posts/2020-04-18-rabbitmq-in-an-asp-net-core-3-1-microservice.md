@@ -265,7 +265,7 @@ Another problem is that after the message is read, it is removed from the queue.
 
 This post explained why you should use queues to decouple your microservices and how to implement RabbitMQ using Docker and ASP .NET Core 3.1. Keep in mind that this is a quick implementation and needs some work to be production-ready.
 
-<a href="https://www.programmingwithwolfgang.com/dockerize-an-asp-net-core-microservice-and-rabbitmq" target="_blank" rel="noopener noreferrer">In my next post</a>, I will dockerize the application which will make it way easier to run and distribute the whole application.
+<a href="/dockerize-an-asp-net-core-microservice-and-rabbitmq" target="_blank" rel="noopener noreferrer">In my next post</a>, I will dockerize the application which will make it way easier to run and distribute the whole application.
 
 Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
 

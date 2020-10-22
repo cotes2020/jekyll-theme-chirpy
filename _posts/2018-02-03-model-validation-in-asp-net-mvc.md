@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [ajax, attributes, Javascript, model validation]
 ---
-Model validation is the process of checking whether the user input is suitable for <a href="https://www.programmingwithwolfgang.com/model-binding-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">model binding</a> and if not it should provide useful error messages to the user. The first part is to ensure that only valid entries are made. This should filter inputs which don&#8217;t make any sense. This could be a birth date in the future or an appointment date in the past. As important as checking for valid data is to inform the user about the wrong input and help him to enter the information in the expected form. Without any help, it can be frustrating and annoying for the user which might end up in losing a potential customer.
+Model validation is the process of checking whether the user input is suitable for <a href="/model-binding-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">model binding</a> and if not it should provide useful error messages to the user. The first part is to ensure that only valid entries are made. This should filter inputs which don&#8217;t make any sense. This could be a birth date in the future or an appointment date in the past. As important as checking for valid data is to inform the user about the wrong input and help him to enter the information in the expected form. Without any help, it can be frustrating and annoying for the user which might end up in losing a potential customer.
 
 To help the developer, ASP.NET MVC provides several possibilities for model validation.
 
@@ -207,7 +207,7 @@ Displaying all error messages on the top of the form might be ok if the form is 
 
 ## Validation using the Model Binder
 
-The default <a href="https://www.programmingwithwolfgang.com/model-binding-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">model binder</a> performs validation during the binding process. If it can&#8217;t bind a property, it will display an error message. For example, if you leave the birthday empty, the model binder will display a message prompting the user to enter a birthday.
+The default <a href="/model-binding-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">model binder</a> performs validation during the binding process. If it can&#8217;t bind a property, it will display an error message. For example, if you leave the birthday empty, the model binder will display a message prompting the user to enter a birthday.
 
 <div id="attachment_754" style="width: 313px" class="wp-caption aligncenter">
   <a href="/wp-content/uploads/2018/02/Error-message-by-model-binder-because-of-empty-birthday-field.jpg"><img aria-describedby="caption-attachment-754" loading="lazy" class="size-full wp-image-754" src="/wp-content/uploads/2018/02/Error-message-by-model-binder-because-of-empty-birthday-field.jpg" alt="Error message by model binder because of empty birthday field" width="303" height="253" /></a>

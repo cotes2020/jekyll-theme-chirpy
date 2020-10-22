@@ -7,7 +7,7 @@ tags: [.net core 3.1, docker, microservice]
 ---
 Microservices need to be deployed often and fast. To achieve this, they often run inside a Docker container. In this post, I will show how easy it is to add Docker support to a project using Visual Studio.
 
-<a href="https://www.programmingwithwolfgang.com/run-the-ci-pipeline-during-a-pull-request/" target="_blank" rel="noopener noreferrer">My last post</a> explained how to create a CI pipeline and protect the master branch in Azure DevOps. In my next post, I will add another CI pipeline to build the Docker container.
+<a href="/run-the-ci-pipeline-during-a-pull-request/" target="_blank" rel="noopener noreferrer">My last post</a> explained how to create a CI pipeline and protect the master branch in Azure DevOps. In my next post, I will add another CI pipeline to build the Docker container.
 
 ## What is Docker?
 
@@ -15,7 +15,7 @@ Docker is the most popular container technology. It is written in Go and open-so
 
 Another big advantage is that Docker containers share the host system kernel. This makes them way smaller than a virtual machine and enables them to start within seconds or even less. For more information about Docker, check out <a href="https://www.docker.com/resources/what-container" target="_blank" rel="noopener noreferrer">Docker.com</a>. There you can also download Docker Desktop which you will need to run Docker container on your machine.
 
-For more information, see my post &#8220;<a href="https://www.programmingwithwolfgang.com/dockerize-an-asp-net-core-microservice-and-rabbitmq/" target="_blank" rel="noopener noreferrer">Dockerize an ASP .NET Core Microservice and RabbitMQ</a>&#8221;
+For more information, see my post &#8220;<a href="/dockerize-an-asp-net-core-microservice-and-rabbitmq/" target="_blank" rel="noopener noreferrer">Dockerize an ASP .NET Core Microservice and RabbitMQ</a>&#8221;
 
 ## Add Docker Support to the Microservice
 

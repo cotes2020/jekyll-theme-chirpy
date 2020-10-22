@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [attribute, scaffolding, template]
 ---
-I talked about HTML Helper Methods in <a href="https://www.programmingwithwolfgang.com/helper-methods-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">my last post</a>. Although it was a pretty lengthy post, I only talked about the basic helper methods. The problem with this approach was that I had to decide which input field I want to render. I want to tell the framework which property I want to be displayed and let the framework decide which HTML element gets rendered. Therefore, I want to talk about templated helper methods today and show how they can be used to easily create views with even less programming to do.
+I talked about HTML Helper Methods in <a href="/helper-methods-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">my last post</a>. Although it was a pretty lengthy post, I only talked about the basic helper methods. The problem with this approach was that I had to decide which input field I want to render. I want to tell the framework which property I want to be displayed and let the framework decide which HTML element gets rendered. Therefore, I want to talk about templated helper methods today and show how they can be used to easily create views with even less programming to do.
 
 ## Setting up the project
 

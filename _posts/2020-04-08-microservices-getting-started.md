@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Design Pattern]
 tags: [docker, high availability, kubernetes, microservice]
 ---
-Many developers have heard about microservices and that it&#8217;s the next great thing. But for many developers I have talked to, microservices is just another buzzword like DevOps. I have been working on different projects using microservices for a bit more than a year and in this post, I want to talk about the theory and the ideas behind the concept. <a href="https://www.programmingwithwolfgang.com/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my next posts</a>, I will show how to implement a microservice using ASP .NET Core 3.1.
+Many developers have heard about microservices and that it&#8217;s the next great thing. But for many developers I have talked to, microservices is just another buzzword like DevOps. I have been working on different projects using microservices for a bit more than a year and in this post, I want to talk about the theory and the ideas behind the concept. <a href="/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my next posts</a>, I will show how to implement a microservice using ASP .NET Core 3.1.
 
 ## What is a Microservice?
 
@@ -101,4 +101,4 @@ Messages between services are often sent via queue so messages can be handled, e
 
 Today, I tried to give a short overview of the theory of microservices. Microservices have advantages but also disadvantages compared to monolithic applications. In the end, there is no perfect solution and you should think about the requirements of your project and then decide if microservices are the way to go. I would also recommend starting with a small project and gain some experience in running them.
 
-This post was all about microservices in theory, <a href="https://www.programmingwithwolfgang.com/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">in my next posts</a>, I will implement two microservices using ASP .NET Core, CQRS, mediator, RabbitMQ and Docker.
+This post was all about microservices in theory, <a href="/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">in my next posts</a>, I will implement two microservices using ASP .NET Core, CQRS, mediator, RabbitMQ and Docker.

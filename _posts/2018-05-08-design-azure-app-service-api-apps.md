@@ -219,7 +219,7 @@ If you exceed the CPI and bandwidth quotas, your app will respond with a 403 HTT
 
 ### Enable and review diagnostics logs
 
-To enable and review diagnostics logs, see my last post <a href="https://www.programmingwithwolfgang.com/design-azure-app-service-web-app/#ImplementDiagnostics" target="_blank" rel="noopener">Design Azure App Service Web App</a>.
+To enable and review diagnostics logs, see my last post <a href="/design-azure-app-service-web-app/#ImplementDiagnostics" target="_blank" rel="noopener">Design Azure App Service Web App</a>.
 
 ## Conclusion
 
@@ -227,4 +227,4 @@ This post showed how to create an Azure API App in the Azure portal and how to c
 
 The last section explained how to monitor your API Apps and how quotas work.
 
-For more information about the 70-532 exam get the <a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener">Exam Ref book from Microsoft</a> and continue reading my blog posts. I am covering all topics needed to pass the exam. You can find an overview of all posts related to the 70-532 exam <a href="https://www.programmingwithwolfgang.com/prepared-for-the-70-532-exam/" target="_blank" rel="noopener">here</a>.
+For more information about the 70-532 exam get the <a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener">Exam Ref book from Microsoft</a> and continue reading my blog posts. I am covering all topics needed to pass the exam. You can find an overview of all posts related to the 70-532 exam <a href="/prepared-for-the-70-532-exam/" target="_blank" rel="noopener">here</a>.

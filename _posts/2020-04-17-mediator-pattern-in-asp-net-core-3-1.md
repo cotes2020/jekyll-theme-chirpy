@@ -119,7 +119,7 @@ If you don&#8217;t have a return value, the handler inherits from IRequestHandle
 
 The mediator pattern is a great pattern to reduce the dependencies within your application which helps you to reuse your components and also to keep the Single Responsible Principle. I showed I implemented it in my ASP .NET Core 3.1 microservices using the MediatR NuGet package.
 
-<a href="https://www.programmingwithwolfgang.com/rabbitmq-in-an-asp-net-core-3-1-microservice" target="_blank" rel="noopener noreferrer">In my next post, I will implement RabbitMQ</a> which enables my microservices to exchange data in a decoupled asynchronous way.
+<a href="/rabbitmq-in-an-asp-net-core-3-1-microservice" target="_blank" rel="noopener noreferrer">In my next post, I will implement RabbitMQ</a> which enables my microservices to exchange data in a decoupled asynchronous way.
 
 Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
 

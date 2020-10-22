@@ -139,7 +139,7 @@ As you can see, the changes worked and the bot uses the new phrase to &#8220;ask
 
 ## Conclusion
 
-Today, I showed you how to create a simple chat bot with Azure and how to deploy it using GitHub. In my <a href="https://www.programmingwithwolfgang.com/azure-bot-language-understanding/" target="_blank" rel="noopener">next post</a>, I will show you how to enable language understanding with luis.
+Today, I showed you how to create a simple chat bot with Azure and how to deploy it using GitHub. In my <a href="/azure-bot-language-understanding/" target="_blank" rel="noopener">next post</a>, I will show you how to enable language understanding with luis.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/Azure-ChatBot" target="_blank" rel="noopener">GitHub</a>.
 

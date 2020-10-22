@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Docker]
 tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
 ---
-<a href="https://www.programmingwithwolfgang.com/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my last post</a>, I described how to dockerize my microservices. To start the whole application, you have to start both microservices and RabbitMq. Today, I will add a docker-compose file which is a tool to easily run multi-container applications.
+<a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my last post</a>, I described how to dockerize my microservices. To start the whole application, you have to start both microservices and RabbitMq. Today, I will add a docker-compose file which is a tool to easily run multi-container applications.
 
 ## What is the Docker-Compose File?
 
@@ -141,7 +141,7 @@ When starting multiple containers with a compose file, a default network is crea
 
 ## Conclusion
 
-In today&#8217;s post, I talked about docker-compose and how it can be used to easily set up applications with multiple containers.With this post, most of the features of the two microservices are implemented. <a href="https://www.programmingwithwolfgang.com/build-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">With my next post</a>, I will start to focus more on the DevOps process. This means that I will create CI pipelines, run tests automatically during pull requests and later on will automatically deploy the microservices.
+In today&#8217;s post, I talked about docker-compose and how it can be used to easily set up applications with multiple containers.With this post, most of the features of the two microservices are implemented. <a href="/build-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">With my next post</a>, I will start to focus more on the DevOps process. This means that I will create CI pipelines, run tests automatically during pull requests and later on will automatically deploy the microservices.
 
 Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
 

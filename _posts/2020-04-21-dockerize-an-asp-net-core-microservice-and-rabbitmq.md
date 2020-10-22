@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Docker, ASP.NET]
 tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
 ---
-<a href="https://www.programmingwithwolfgang.com/rabbitmq-in-an-asp-net-core-3-1-microservice/" target="_blank" rel="noopener noreferrer">In my last post</a>, I added RabbitMQ to my two microservices which finished all the functional requirements. Microservices became so popular because they can be easily deployed using Docker. Today I will dockerize my microservices and create Docker container which can be run anywhere as long as Docker is installed. I will explain most of the Docker commands but basic knowledge about starting and stopping containers is recommended.
+<a href="/rabbitmq-in-an-asp-net-core-3-1-microservice/" target="_blank" rel="noopener noreferrer">In my last post</a>, I added RabbitMQ to my two microservices which finished all the functional requirements. Microservices became so popular because they can be easily deployed using Docker. Today I will dockerize my microservices and create Docker container which can be run anywhere as long as Docker is installed. I will explain most of the Docker commands but basic knowledge about starting and stopping containers is recommended.
 
 ## What is Docker?
 
@@ -166,7 +166,7 @@ docker run -p 32789:80 -p 32788:443 customerapi.
   </p>
 </div>
 
-After the container is started, open localhost:32789 and you should see the Swagger UI of the API. If you use the HTTP port, you will get a connection closed error. HTTPS is currently not working because we have to provide a certificate so kestrel can process HTTPs requests. I will explain <a href="https://www.programmingwithwolfgang.com/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">in my next post</a> how to add a certificate to the container. For now, I will only use the HTTP port.
+After the container is started, open localhost:32789 and you should see the Swagger UI of the API. If you use the HTTP port, you will get a connection closed error. HTTPS is currently not working because we have to provide a certificate so kestrel can process HTTPs requests. I will explain <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">in my next post</a> how to add a certificate to the container. For now, I will only use the HTTP port.
 
 ### Push the Image to Dockerhub
 
@@ -232,7 +232,7 @@ For practice purposes, you can dockerize the OrderApi. The steps are identical t
 
 ## Conclusion
 
-Today, I showed how to dockerize the microservices to create immutable Docker images which I can easily share using Dockerhub and run everywhere the same way. Currently, only the HTTP port of the application works because we haven&#8217;t provided an SSL certificate to process HTTPS requests. <a href="https://www.programmingwithwolfgang.com/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my next post</a>, I will create a development certificate and start the image with it.
+Today, I showed how to dockerize the microservices to create immutable Docker images which I can easily share using Dockerhub and run everywhere the same way. Currently, only the HTTP port of the application works because we haven&#8217;t provided an SSL certificate to process HTTPS requests. <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my next post</a>, I will create a development certificate and start the image with it.
 
 Note: On October 11, I removed the Solution folder and moved the projects to the root level. I also edited this post to reflect the changes. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
 

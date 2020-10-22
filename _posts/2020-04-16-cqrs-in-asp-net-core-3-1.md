@@ -11,7 +11,7 @@ You can find the code of  the finished demo on <a href="https://github.com/Wol
 
 ## What is CQRS?
 
-CQRS or Command Query Responsibility Segregation is a design pattern to separate the read and write processes of your application. Read operations are called Queries and write operations are called Commands. Open one of the two microservices and you will see in the service project two folders, Command and Query. Inside the folder, you can see a handler and a command or query. They are used for the mediator, <a href="https://www.programmingwithwolfgang.com/mediator-pattern-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">which I will describe in my next post</a>.
+CQRS or Command Query Responsibility Segregation is a design pattern to separate the read and write processes of your application. Read operations are called Queries and write operations are called Commands. Open one of the two microservices and you will see in the service project two folders, Command and Query. Inside the folder, you can see a handler and a command or query. They are used for the mediator, <a href="/mediator-pattern-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">which I will describe in my next post</a>.
 
 <div id="attachment_1965" style="width: 184px" class="wp-caption aligncenter">
   <a href="/wp-content/uploads/2020/04/Operations-are-split-in-Commands-and-Queries.jpg"><img aria-describedby="caption-attachment-1965" loading="lazy" class="wp-image-1965 size-full" src="/wp-content/uploads/2020/04/Operations-are-split-in-Commands-and-Queries.jpg" alt="Operations are split in Commands and Queries in CQRS" width="174" height="88" /></a>
@@ -84,7 +84,7 @@ As everything, CQRS also comes with some downside:
 
 ## Conclusion
 
-This post gave a short overview of CQRS and how it can be used to separate the read and write operations in your application. In my demo code, I only use it to separate these operations but you could put the queries and commands in different solutions that allow you to independently scale them. <a href="https://www.programmingwithwolfgang.com/mediator-pattern-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">In my next post</a>, I will describe the mediator pattern and how I use it to remove dependencies between commands and queries.
+This post gave a short overview of CQRS and how it can be used to separate the read and write operations in your application. In my demo code, I only use it to separate these operations but you could put the queries and commands in different solutions that allow you to independently scale them. <a href="/mediator-pattern-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">In my next post</a>, I will describe the mediator pattern and how I use it to remove dependencies between commands and queries.
 
 Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
 

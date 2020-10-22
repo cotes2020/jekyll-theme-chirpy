@@ -303,7 +303,7 @@ Azure Storage only charges for disk space used and network bandwidth.
 
 ## Azure files
 
-Azure files are useful for VMs and cloud services as mounted share. Check out my post <a href="https://www.programmingwithwolfgang.com/design-implement-arm-vm-azure-storage/#CreateAzureStorage" target="_blank" rel="noopener">&#8220;Design and Implement ARM VM Azure Storage&#8221;</a> for an instruction on how to create an Azure file share.
+Azure files are useful for VMs and cloud services as mounted share. Check out my post <a href="/design-implement-arm-vm-azure-storage/#CreateAzureStorage" target="_blank" rel="noopener">&#8220;Design and Implement ARM VM Azure Storage&#8221;</a> for an instruction on how to create an Azure file share.
 
 ## Implement blob leasing
 
@@ -323,7 +323,7 @@ Use the following code to get the lease ID:
 
 ## <span class="fontstyle0">Create connections to files from on-premises or cloud-based Windows or, Linux machines</span>
 
-<span class="fontstyle0">Azure Files can be used to replace on-premise file servers or NAS devices.</span> You can find an instruction on how to connect to Azure Files in my post <a href="https://www.programmingwithwolfgang.com/design-implement-arm-vm-azure-storage/#CreateAzureStorage" target="_blank" rel="noopener">&#8220;Design and Implement ARM VM Azure Storage&#8221;</a>. The instructions are for an Azure VM but you can do also do it with your on-premise machine.
+<span class="fontstyle0">Azure Files can be used to replace on-premise file servers or NAS devices.</span> You can find an instruction on how to connect to Azure Files in my post <a href="/design-implement-arm-vm-azure-storage/#CreateAzureStorage" target="_blank" rel="noopener">&#8220;Design and Implement ARM VM Azure Storage&#8221;</a>. The instructions are for an Azure VM but you can do also do it with your on-premise machine.
 
 ## Shard large datasets
 
@@ -505,4 +505,4 @@ The last section was about implementing Azure File Sync to synchronize files fro
 
 You can find the example code on <a href="https://github.com/WolfgangOfner/Azure-StorageAccount" target="_blank" rel="noopener">GitHub</a>. Don&#8217;t forget to replace the account name and access key placeholder with the name of your storage account and it&#8217;s access key.
 
-For more information about the 70-532 exam get the <a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener">Exam Ref book from Microsoft</a> and continue reading my blog posts. I am covering all topics needed to pass the exam. You can find an overview of all posts related to the 70-532 exam <a href="https://www.programmingwithwolfgang.com/prepared-for-the-70-532-exam/" target="_blank" rel="noopener">here</a>.
+For more information about the 70-532 exam get the <a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener">Exam Ref book from Microsoft</a> and continue reading my blog posts. I am covering all topics needed to pass the exam. You can find an overview of all posts related to the 70-532 exam <a href="/prepared-for-the-70-532-exam/" target="_blank" rel="noopener">here</a>.

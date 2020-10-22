@@ -42,4 +42,4 @@ In our Powershell script, we were using &#8220;azure-pipelines-task-lib&#8221;: 
 
 Right now the pipeline is working again but once Microsoft updates the Azure Key Vault task to use a new version of the azure-pipelines-task-lib, the pipeline will break again. When this happens we have to update the azure-pipelines-task-lib inside our Powershell script and it should work again.
 
-If you want to read more about CI/CD pipelines, read my article <a href="https://www.programmingwithwolfgang.com/create-automatic-build-pipeline-for-net-core/" target="_blank" rel="noopener noreferrer">Create Automatic Builds for .Net and .Net Core Applications with Azure Devops</a>.
+If you want to read more about CI/CD pipelines, read my article <a href="/create-automatic-build-pipeline-for-net-core/" target="_blank" rel="noopener noreferrer">Create Automatic Builds for .Net and .Net Core Applications with Azure Devops</a>.

@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Design Pattern]
 tags: [.net core, 'C#', entity framework core]
 ---
-A couple of years ago, I wrote about the <a href="https://www.programmingwithwolfgang.com/repository-and-unit-of-work-pattern/" target="_blank" rel="noopener noreferrer">Repository and Unit of Work pattern</a>. Although this post is quite old and not even .net core, I get many questions about it. Since the writing of the post, .Net core matured and I learned a lot about software development. Therefore, I wouldn&#8217;t implement the code as I did back then. Today, I will write about implementing .the repository pattern in .Net core
+A couple of years ago, I wrote about the <a href="/repository-and-unit-of-work-pattern/" target="_blank" rel="noopener noreferrer">Repository and Unit of Work pattern</a>. Although this post is quite old and not even .net core, I get many questions about it. Since the writing of the post, .Net core matured and I learned a lot about software development. Therefore, I wouldn&#8217;t implement the code as I did back then. Today, I will write about implementing .the repository pattern in .Net core
 
 ## Why I am changing the Repository Pattern in .Net Core
 

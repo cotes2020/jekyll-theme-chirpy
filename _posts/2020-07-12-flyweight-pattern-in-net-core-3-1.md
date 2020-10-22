@@ -11,7 +11,7 @@ The Flyweight pattern is a structural design pattern that helps you to share obj
 
 You want to use the flyweight pattern when you have many objects which don&#8217;t change. A real-life example would be a restaurant. They serve many dishes but the meals are always the same (maybe the only vary in size). For example, when you go to McDonald&#8217;s and five order a Big Mac meals, you get five times the same meal.
 
-The flyweight pattern helps to keep the memory usage of your application low and also helps to speed up the processing of your objects. The flyweight pattern works well in combination with the <a href="https://www.programmingwithwolfgang.com/strategy-pattern/" target="_blank" rel="noopener noreferrer">strategy pattern</a>.
+The flyweight pattern helps to keep the memory usage of your application low and also helps to speed up the processing of your objects. The flyweight pattern works well in combination with the <a href="/strategy-pattern/" target="_blank" rel="noopener noreferrer">strategy pattern</a>.
 
 ## Flyweight Pattern Implementation
 
