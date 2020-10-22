@@ -45,7 +45,7 @@ To enable the Profiler, follow these steps:
   1. In your Application Insights resource, select the Performance blade and select Profiler.
 
 <div id="attachment_2106" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/08/Create-a-Profiler.jpg"><img aria-describedby="caption-attachment-2106" loading="lazy" class="wp-image-2106" src="/wp-content/uploads/2018/08/Create-a-Profiler.jpg" alt="Create a Profiler" width="700" height="306" /></a>
+  <a href="/assets/img/posts/2018/08/Create-a-Profiler.jpg"><img aria-describedby="caption-attachment-2106" loading="lazy" class="wp-image-2106" src="/assets/img/posts/2018/08/Create-a-Profiler.jpg" alt="Create a Profiler" width="700" height="306" /></a>
   
   <p id="caption-attachment-2106" class="wp-caption-text">
     Create a Profiler
@@ -79,7 +79,7 @@ To configure the CI/CD pipeline from the Azure portal, follow these steps:
   3. Click Create.
 
 <div id="attachment_2107" style="width: 322px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/08/Create-a-new-Web-App.jpg"><img aria-describedby="caption-attachment-2107" loading="lazy" class="size-full wp-image-2107" src="/wp-content/uploads/2018/08/Create-a-new-Web-App.jpg" alt="Create a new Web App for DevOps" width="312" height="460" /></a>
+  <a href="/assets/img/posts/2018/08/Create-a-new-Web-App.jpg"><img aria-describedby="caption-attachment-2107" loading="lazy" class="size-full wp-image-2107" src="/assets/img/posts/2018/08/Create-a-new-Web-App.jpg" alt="Create a new Web App for DevOps" width="312" height="460" /></a>
   
   <p id="caption-attachment-2107" class="wp-caption-text">
     Create a new Web App
@@ -96,7 +96,7 @@ To configure the CI/CD pipeline from the Azure portal, follow these steps:
 </ol>
 
 <div id="attachment_2108" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/08/Create-Continuous-Delivery-with-VSTS.jpg"><img aria-describedby="caption-attachment-2108" loading="lazy" class="wp-image-2108" src="/wp-content/uploads/2018/08/Create-Continuous-Delivery-with-VSTS.jpg" alt="Create Continuous Delivery with VSTS" width="700" height="553" /></a>
+  <a href="/assets/img/posts/2018/08/Create-Continuous-Delivery-with-VSTS.jpg"><img aria-describedby="caption-attachment-2108" loading="lazy" class="wp-image-2108" src="/assets/img/posts/2018/08/Create-Continuous-Delivery-with-VSTS.jpg" alt="Create Continuous Delivery with VSTS" width="700" height="553" /></a>
   
   <p id="caption-attachment-2108" class="wp-caption-text">
     Create Continuous Delivery with VSTS
@@ -129,7 +129,7 @@ Follow these steps to enable continuous deployment from a GitHub repository:
   4. Click OK.
 
 <div id="attachment_2109" style="width: 325px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/08/Enable-continuous-deployment-from-GitHub.jpg"><img aria-describedby="caption-attachment-2109" loading="lazy" class="size-full wp-image-2109" src="/wp-content/uploads/2018/08/Enable-continuous-deployment-from-GitHub.jpg" alt="Enable continuous deployment from GitHub" width="315" height="453" /></a>
+  <a href="/assets/img/posts/2018/08/Enable-continuous-deployment-from-GitHub.jpg"><img aria-describedby="caption-attachment-2109" loading="lazy" class="size-full wp-image-2109" src="/assets/img/posts/2018/08/Enable-continuous-deployment-from-GitHub.jpg" alt="Enable continuous deployment from GitHub" width="315" height="453" /></a>
   
   <p id="caption-attachment-2109" class="wp-caption-text">
     Enable continuous deployment from GitHub

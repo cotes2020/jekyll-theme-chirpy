@@ -28,7 +28,7 @@ To follow the demo you need Visual Studio 2019 and at least .net core 3.0. You c
 To create a new Blazor App, select the Blazor template in Visual Studio.
 
 <div id="attachment_2209" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/06/Select-the-Blazor-App-template.jpg"><img aria-describedby="caption-attachment-2209" loading="lazy" class="wp-image-2209" src="/wp-content/uploads/2020/06/Select-the-Blazor-App-template.jpg" alt="Select the Blazor App template" width="700" height="485" /></a>
+  <a href="/assets/img/posts/2020/06/Select-the-Blazor-App-template.jpg"><img aria-describedby="caption-attachment-2209" loading="lazy" class="wp-image-2209" src="/assets/img/posts/2020/06/Select-the-Blazor-App-template.jpg" alt="Select the Blazor App template" width="700" height="485" /></a>
   
   <p id="caption-attachment-2209" class="wp-caption-text">
     Select the Blazor App template
@@ -38,7 +38,7 @@ To create a new Blazor App, select the Blazor template in Visual Studio.
 After entering a name and location, select Blazor Server App, and click on Create.
 
 <div id="attachment_2210" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/06/Create-a-Blazor-Server-App.jpg"><img aria-describedby="caption-attachment-2210" loading="lazy" class="wp-image-2210" src="/wp-content/uploads/2020/06/Create-a-Blazor-Server-App.jpg" alt="Create a Blazor Server App" width="700" height="483" /></a>
+  <a href="/assets/img/posts/2020/06/Create-a-Blazor-Server-App.jpg"><img aria-describedby="caption-attachment-2210" loading="lazy" class="wp-image-2210" src="/assets/img/posts/2020/06/Create-a-Blazor-Server-App.jpg" alt="Create a Blazor Server App" width="700" height="483" /></a>
   
   <p id="caption-attachment-2210" class="wp-caption-text">
     Create a Blazor Server App
@@ -48,7 +48,7 @@ After entering a name and location, select Blazor Server App, and click on Creat
 This creates the solution and also a demo application. Start the application and you will see a welcome screen and a menu on the left side. Click on Fetch data to see some information about the weather forecast or on Counter to see a button which increases the amount when you click it.
 
 <div id="attachment_2211" style="width: 472px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/06/The-counter-function-of-the-demo-app.jpg"><img aria-describedby="caption-attachment-2211" loading="lazy" class="size-full wp-image-2211" src="/wp-content/uploads/2020/06/The-counter-function-of-the-demo-app.jpg" alt="The counter function of the demo app" width="462" height="268" /></a>
+  <a href="/assets/img/posts/2020/06/The-counter-function-of-the-demo-app.jpg"><img aria-describedby="caption-attachment-2211" loading="lazy" class="size-full wp-image-2211" src="/assets/img/posts/2020/06/The-counter-function-of-the-demo-app.jpg" alt="The counter function of the demo app" width="462" height="268" /></a>
   
   <p id="caption-attachment-2211" class="wp-caption-text">
     The counter function of the demo app
@@ -182,7 +182,7 @@ public decimal Price { get; set; }
 Run the application, navigate to /products and you will see the dropdown menu. Select a product and it will be displayed below the dropdown.
 
 <div id="attachment_2212" style="width: 462px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/06/Testing-my-first-Blazor-Component.jpg"><img aria-describedby="caption-attachment-2212" loading="lazy" class="size-full wp-image-2212" src="/wp-content/uploads/2020/06/Testing-my-first-Blazor-Component.jpg" alt="Testing my first Blazor Component" width="452" height="317" /></a>
+  <a href="/assets/img/posts/2020/06/Testing-my-first-Blazor-Component.jpg"><img aria-describedby="caption-attachment-2212" loading="lazy" class="size-full wp-image-2212" src="/assets/img/posts/2020/06/Testing-my-first-Blazor-Component.jpg" alt="Testing my first Blazor Component" width="452" height="317" /></a>
   
   <p id="caption-attachment-2212" class="wp-caption-text">
     Testing my first Blazor Component

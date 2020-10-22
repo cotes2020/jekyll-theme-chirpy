@@ -31,12 +31,12 @@ RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "
 
 Thats already everything I have to change to run the tests inside the container and generate test results. If you run the build, you will see the successful tests in the output of the build step.
 
-<a style="text-align: center;" href="/wp-content/uploads/2020/09/The-tests-ran-inside-the-Docker-container.jpg"><img loading="lazy" class="size-full wp-image-2389" src="/wp-content/uploads/2020/09/The-tests-ran-inside-the-Docker-container.jpg" alt="The tests ran inside the Docker container" width="1627" height="445" /></a>
+<a style="text-align: center;" href="/assets/img/posts/2020/09/The-tests-ran-inside-the-Docker-container.jpg"><img loading="lazy" class="size-full wp-image-2389" src="/assets/img/posts/2020/09/The-tests-ran-inside-the-Docker-container.jpg" alt="The tests ran inside the Docker container" width="1627" height="445" /></a>
 
 The tests ran inside the Docker container. If you try to look at the Tests tab of the built-in Azure DevOps to see the test results, you won&#8217;t see the tab.
 
 <div id="attachment_2386" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/09/The-build-was-successful-but-not-Test-Results-are-showing.jpg"><img aria-describedby="caption-attachment-2386" loading="lazy" class="wp-image-2386" src="/wp-content/uploads/2020/09/The-build-was-successful-but-not-Test-Results-are-showing.jpg" alt="The build was successful but not Test Results are showing" width="700" height="227" /></a>
+  <a href="/assets/img/posts/2020/09/The-build-was-successful-but-not-Test-Results-are-showing.jpg"><img aria-describedby="caption-attachment-2386" loading="lazy" class="wp-image-2386" src="/assets/img/posts/2020/09/The-build-was-successful-but-not-Test-Results-are-showing.jpg" alt="The build was successful but not Test Results are showing" width="700" height="227" /></a>
   
   <p id="caption-attachment-2386" class="wp-caption-text">
     The build was successful but not Test Results are showing
@@ -76,7 +76,7 @@ displayName: &#8216;Publish test results&#8217;
 Run the CI pipeline again and after it is finished, you will see the Tests tab on the summary page. Click on it and you will see that all tests ran successfully. Azure DevOps even gives you a trophy for that :D.
 
 <div id="attachment_2387" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/09/The-Tests-tab-is-shown-and-you-get-even-a-trophy.jpg"><img aria-describedby="caption-attachment-2387" loading="lazy" class="wp-image-2387" src="/wp-content/uploads/2020/09/The-Tests-tab-is-shown-and-you-get-even-a-trophy.jpg" alt="The Tests tab is shown and you get even a trophy" width="700" height="492" /></a>
+  <a href="/assets/img/posts/2020/09/The-Tests-tab-is-shown-and-you-get-even-a-trophy.jpg"><img aria-describedby="caption-attachment-2387" loading="lazy" class="wp-image-2387" src="/assets/img/posts/2020/09/The-Tests-tab-is-shown-and-you-get-even-a-trophy.jpg" alt="The Tests tab is shown and you get even a trophy" width="700" height="492" /></a>
   
   <p id="caption-attachment-2387" class="wp-caption-text">
     The Tests tab is shown and you get even a trophy

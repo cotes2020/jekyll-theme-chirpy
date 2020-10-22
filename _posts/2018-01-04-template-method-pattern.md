@@ -9,7 +9,7 @@ The Template Method pattern helps to create the skeleton of an algorithm. This s
 
 ## UML Diagram
 
-[<img loading="lazy" class="aligncenter wp-image-502" src="/wp-content/uploads/2018/01/Template-Method-UML-diagram.jpg" alt="Template Method UML diagram" width="326" height="500" />](/wp-content/uploads/2018/01/Template-Method-UML-diagram.jpg)
+[<img loading="lazy" class="aligncenter wp-image-502" src="/assets/img/posts/2018/01/Template-Method-UML-diagram.jpg" alt="Template Method UML diagram" width="326" height="500" />](/assets/img/posts/2018/01/Template-Method-UML-diagram.jpg)
 
 The UML diagram for the Template Method is pretty simple. It has one abstract class with the TemplateMethod and one or many sub methods which can be overridden by subclasses. These sub methods can be either abstract or virtual. If they are abstract, they have to be implemented. If they are virtual, they can be overridden to alter the behavior of this step.
 
@@ -19,12 +19,12 @@ To be honest, the Template Method was pretty confusing to me in the beginning bu
 
 I want to do some calculation and then save the result somewhere. The algorithm has three steps whereas step two and three can be overridden by a subclass. The class Calculator offers the TemplateMethod. This method contains the three steps.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-471" src="/wp-content/uploads/2018/01/TemplateMethod.jpg" alt="TemplateMethod" width="237" height="160" />](/wp-content/uploads/2018/01/TemplateMethod.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-471" src="/assets/img/posts/2018/01/TemplateMethod.jpg" alt="TemplateMethod" width="237" height="160" />](/assets/img/posts/2018/01/TemplateMethod.jpg)
 
 The first step, BeforeCalculation can&#8217;t be overridden by the subclasses and therefore will always be executed. The second step of the algorithm, CalculateSomething can be overridden. The classes CalculatorOracle and CalculatorSqlAzure override this method and do their own calculations. The CalculatorSqlAzure also overrides the property Result.
 
 <div id="attachment_472" style="width: 351px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg"><img aria-describedby="caption-attachment-472" loading="lazy" class="size-full wp-image-472" src="/wp-content/uploads/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg" alt="Implementation of CalculateSomething in the CalculatorSqlAzure class" width="341" height="140" /></a>
+  <a href="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg"><img aria-describedby="caption-attachment-472" loading="lazy" class="size-full wp-image-472" src="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg" alt="Implementation of CalculateSomething in the CalculatorSqlAzure class" width="341" height="140" /></a>
   
   <p id="caption-attachment-472" class="wp-caption-text">
     Implementation of CalculateSomething in the CalculatorSqlAzure class
@@ -34,7 +34,7 @@ The first step, BeforeCalculation can&#8217;t be overridden by the subclasses an
 The CalculatorOracle class only overrides the CalculateSomething method.
 
 <div id="attachment_473" style="width: 332px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg"><img aria-describedby="caption-attachment-473" loading="lazy" class="size-full wp-image-473" src="/wp-content/uploads/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg" alt="Implementation of CalculateSomething in the CalculatorOracle class" width="322" height="84" /></a>
+  <a href="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg"><img aria-describedby="caption-attachment-473" loading="lazy" class="size-full wp-image-473" src="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg" alt="Implementation of CalculateSomething in the CalculatorOracle class" width="322" height="84" /></a>
   
   <p id="caption-attachment-473" class="wp-caption-text">
     Implementation of CalculateSomething in the CalculatorOracle class
@@ -44,7 +44,7 @@ The CalculatorOracle class only overrides the CalculateSomething method.
 The third and last step, SaveResult is only overridden by the CalculatorSqlAzure class. This means that the CalculatorOracle class uses the method provided by the Calculator.
 
 <div id="attachment_474" style="width: 486px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg"><img aria-describedby="caption-attachment-474" loading="lazy" class="wp-image-474 size-full" src="/wp-content/uploads/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg" alt="Overridden SaveResult method in the CalculatorSqlAzure class" width="476" height="94" /></a>
+  <a href="/assets/img/posts/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg"><img aria-describedby="caption-attachment-474" loading="lazy" class="wp-image-474 size-full" src="/assets/img/posts/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg" alt="Overridden SaveResult method in the CalculatorSqlAzure class" width="476" height="94" /></a>
   
   <p id="caption-attachment-474" class="wp-caption-text">
     Overridden SaveResult method in the CalculatorSqlAzure class

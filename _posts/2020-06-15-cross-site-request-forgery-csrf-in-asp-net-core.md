@@ -64,7 +64,7 @@ The ASP .NET Core tag helper automatically includes the antiforgery token into a
 When you look at the HTML code of the form, you can see the generated field for the token.
 
 <div id="attachment_2183" style="width: 534px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg"><img aria-describedby="caption-attachment-2183" loading="lazy" class="size-full wp-image-2183" src="/wp-content/uploads/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg" alt="The auto-generated antiforgery token in the form to prevent cross site request forgery attacks" width="524" height="134" /></a>
+  <a href="/assets/img/posts/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg"><img aria-describedby="caption-attachment-2183" loading="lazy" class="size-full wp-image-2183" src="/assets/img/posts/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg" alt="The auto-generated antiforgery token in the form to prevent cross site request forgery attacks" width="524" height="134" /></a>
   
   <p id="caption-attachment-2183" class="wp-caption-text">
     The auto-generated antiforgery token in the form
@@ -74,7 +74,7 @@ When you look at the HTML code of the form, you can see the generated field for 
 You can also see two cookies in your browser. In Chrome you can see the cookies when you open the Developer Tools (F12) and then click on Application and then on Cookies.
 
 <div id="attachment_2184" style="width: 669px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg"><img aria-describedby="caption-attachment-2184" loading="lazy" class="size-full wp-image-2184" src="/wp-content/uploads/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg" alt="The User Id and Anti Forgery Cookie" width="659" height="297" /></a>
+  <a href="/assets/img/posts/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg"><img aria-describedby="caption-attachment-2184" loading="lazy" class="size-full wp-image-2184" src="/assets/img/posts/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg" alt="The User Id and Anti Forgery Cookie" width="659" height="297" /></a>
   
   <p id="caption-attachment-2184" class="wp-caption-text">
     The User Id and Anti Forgery Cookie

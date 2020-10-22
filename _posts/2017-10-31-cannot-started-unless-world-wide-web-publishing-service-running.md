@@ -16,13 +16,13 @@ Stop-WebSite &#8216;Default Web Site&#8217;
 
 After I encountered this error I connected to the Server and saw that the WebAppPool (IIS &#8211;> Sites &#8211;> Default Web Site) wasn&#8217;t running. I clicked on Start and got the following error message:
 
-[<img loading="lazy" class="aligncenter size-full wp-image-293" src="/wp-content/uploads/2017/10/Default-Web-Site-starten.png" alt="Default Web Site error" width="409" height="148" />](/wp-content/uploads/2017/10/Default-Web-Site-starten.png)
+[<img loading="lazy" class="aligncenter size-full wp-image-293" src="/assets/img/posts/2017/10/Default-Web-Site-starten.png" alt="Default Web Site error" width="409" height="148" />](/assets/img/posts/2017/10/Default-Web-Site-starten.png)
 
 ### Starting the World Wide Web Publishing Service (W3SVC)
 
 After that, I went to the **Services** (Computer&#8211;> right click on manage &#8211;> Configuration &#8211;> Services or directly Services in the Start menu) and saw that the **World Wide Web Publishing Service** wasn&#8217;t running. Right-click the service and select **Start**. Then the service should be running. You can see that on the left column where you should have the Options Stop and Restart the service.
 
-[<img loading="lazy" class="aligncenter wp-image-294" src="/wp-content/uploads/2017/10/World-Wide-Web-Publishing-Service.-oder-einfach-auf-Services-klicken.png" alt="World Wide Web Publishing Service" width="700" height="504" />](/wp-content/uploads/2017/10/World-Wide-Web-Publishing-Service.-oder-einfach-auf-Services-klicken.png)
+[<img loading="lazy" class="aligncenter wp-image-294" src="/assets/img/posts/2017/10/World-Wide-Web-Publishing-Service.-oder-einfach-auf-Services-klicken.png" alt="World Wide Web Publishing Service" width="700" height="504" />](/assets/img/posts/2017/10/World-Wide-Web-Publishing-Service.-oder-einfach-auf-Services-klicken.png)
 
 After I started the services manually, the PowerShell script could stop the WebAppPool automatically.
 

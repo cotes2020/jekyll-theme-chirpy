@@ -805,7 +805,7 @@ Demand more. Change lanes and find your explosive wealth accelerator. Hit the Fa
   * **Sharing of resources so everyone is able to benefit**
 
 <div id="attachment_2251" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/07/IT-Books-scaled.jpg"><img aria-describedby="caption-attachment-2251" loading="lazy" class="wp-image-2251" src="/wp-content/uploads/2020/07/IT-Books-scaled.jpg" alt="IT Books" width="700" height="276" /></a>
+  <a href="/assets/img/posts/2020/07/IT-Books-scaled.jpg"><img aria-describedby="caption-attachment-2251" loading="lazy" class="wp-image-2251" src="/assets/img/posts/2020/07/IT-Books-scaled.jpg" alt="IT Books" width="700" height="276" /></a>
   
   <p id="caption-attachment-2251" class="wp-caption-text">
     IT Books

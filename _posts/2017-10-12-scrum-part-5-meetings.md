@@ -23,7 +23,7 @@ A sprint is a learning loop. It consists of a plan, do, check, act or learn, bu
 
 It’s important to note that to change bad things you actually have to change. Changes can be hard for a team but they should be seen as a chance to improve the building process which results in a happier customer.
 
-[<img loading="lazy" class="wp-image-186 aligncenter" src="/wp-content/uploads/2017/10/Learning-loop.jpg" alt="Scrum sprint learning loop" width="600" height="398"/>](/wp-content/uploads/2017/10/Learning-loop.jpg)
+[<img loading="lazy" class="wp-image-186 aligncenter" src="/assets/img/posts/2017/10/Learning-loop.jpg" alt="Scrum sprint learning loop" width="600" height="398"/>](/assets/img/posts/2017/10/Learning-loop.jpg)
 
 ## Velocity
 

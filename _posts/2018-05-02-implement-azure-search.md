@@ -20,7 +20,7 @@ To create an Azure Search service, follow these steps:
   3. Click Create.
 
 <div id="attachment_1245" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/Create-a-new-Azure-Search-Service.jpg"><img aria-describedby="caption-attachment-1245" loading="lazy" class="wp-image-1245" src="/wp-content/uploads/2018/05/Create-a-new-Azure-Search-Service.jpg" alt="Create a new Azure Search Service" width="700" height="697" /></a>
+  <a href="/assets/img/posts/2018/05/Create-a-new-Azure-Search-Service.jpg"><img aria-describedby="caption-attachment-1245" loading="lazy" class="wp-image-1245" src="/assets/img/posts/2018/05/Create-a-new-Azure-Search-Service.jpg" alt="Create a new Azure Search Service" width="700" height="697" /></a>
   
   <p id="caption-attachment-1245" class="wp-caption-text">
     Create a new Azure Search Service
@@ -36,7 +36,7 @@ You can only scale an Azure Search Service with a paid pricing tier.
   3. Click Save.
 
 <div id="attachment_1246" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/Scale-your-Azure-Search-Service.jpg"><img aria-describedby="caption-attachment-1246" loading="lazy" class="wp-image-1246" src="/wp-content/uploads/2018/05/Scale-your-Azure-Search-Service.jpg" alt="Scale your Azure Search Service" width="700" height="209" /></a>
+  <a href="/assets/img/posts/2018/05/Scale-your-Azure-Search-Service.jpg"><img aria-describedby="caption-attachment-1246" loading="lazy" class="wp-image-1246" src="/assets/img/posts/2018/05/Scale-your-Azure-Search-Service.jpg" alt="Scale your Azure Search Service" width="700" height="209" /></a>
   
   <p id="caption-attachment-1246" class="wp-caption-text">
     Scale your Azure Search Service
@@ -56,7 +56,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
   3. Set up the connection to your Azure Search Service. Note that the serviceName is only the name you entered. Not a URI.
 
 <div id="attachment_1253" style="width: 704px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/Set-up-the-connection-to-the-Azure-Search-Service-account.jpg"><img aria-describedby="caption-attachment-1253" loading="lazy" class="size-full wp-image-1253" src="/wp-content/uploads/2018/05/Set-up-the-connection-to-the-Azure-Search-Service-account.jpg" alt="Set up the connection to the Azure Search Service account" width="694" height="68" /></a>
+  <a href="/assets/img/posts/2018/05/Set-up-the-connection-to-the-Azure-Search-Service-account.jpg"><img aria-describedby="caption-attachment-1253" loading="lazy" class="size-full wp-image-1253" src="/assets/img/posts/2018/05/Set-up-the-connection-to-the-Azure-Search-Service-account.jpg" alt="Set up the connection to the Azure Search Service account" width="694" height="68" /></a>
   
   <p id="caption-attachment-1253" class="wp-caption-text">
     Set up the connection to the Azure Search Service account
@@ -73,7 +73,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1252" style="width: 427px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/The-car-class-for-the-search.jpg"><img aria-describedby="caption-attachment-1252" loading="lazy" class="size-full wp-image-1252" src="/wp-content/uploads/2018/05/The-car-class-for-the-search.jpg" alt="The car class for the search" width="417" height="340" /></a>
+  <a href="/assets/img/posts/2018/05/The-car-class-for-the-search.jpg"><img aria-describedby="caption-attachment-1252" loading="lazy" class="size-full wp-image-1252" src="/assets/img/posts/2018/05/The-car-class-for-the-search.jpg" alt="The car class for the search" width="417" height="340" /></a>
   
   <p id="caption-attachment-1252" class="wp-caption-text">
     The car class for the search
@@ -87,7 +87,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1251" style="width: 349px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/Create-an-index-object-for-the-search.jpg"><img aria-describedby="caption-attachment-1251" loading="lazy" class="size-full wp-image-1251" src="/wp-content/uploads/2018/05/Create-an-index-object-for-the-search.jpg" alt="Create an index object for the search" width="339" height="125" /></a>
+  <a href="/assets/img/posts/2018/05/Create-an-index-object-for-the-search.jpg"><img aria-describedby="caption-attachment-1251" loading="lazy" class="size-full wp-image-1251" src="/assets/img/posts/2018/05/Create-an-index-object-for-the-search.jpg" alt="Create an index object for the search" width="339" height="125" /></a>
   
   <p id="caption-attachment-1251" class="wp-caption-text">
     Create an index object for the search
@@ -101,7 +101,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1255" style="width: 212px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/Create-a-car-array.jpg"><img aria-describedby="caption-attachment-1255" loading="lazy" class="size-full wp-image-1255" src="/wp-content/uploads/2018/05/Create-a-car-array.jpg" alt="Create a car array" width="202" height="393" /></a>
+  <a href="/assets/img/posts/2018/05/Create-a-car-array.jpg"><img aria-describedby="caption-attachment-1255" loading="lazy" class="size-full wp-image-1255" src="/assets/img/posts/2018/05/Create-a-car-array.jpg" alt="Create a car array" width="202" height="393" /></a>
   
   <p id="caption-attachment-1255" class="wp-caption-text">
     Create a car array
@@ -115,7 +115,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1256" style="width: 437px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/Upload-the-car-array.jpg"><img aria-describedby="caption-attachment-1256" loading="lazy" class="size-full wp-image-1256" src="/wp-content/uploads/2018/05/Upload-the-car-array.jpg" alt="Upload the car array" width="427" height="73" /></a>
+  <a href="/assets/img/posts/2018/05/Upload-the-car-array.jpg"><img aria-describedby="caption-attachment-1256" loading="lazy" class="size-full wp-image-1256" src="/assets/img/posts/2018/05/Upload-the-car-array.jpg" alt="Upload the car array" width="427" height="73" /></a>
   
   <p id="caption-attachment-1256" class="wp-caption-text">
     Upload the car array
@@ -133,7 +133,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
   1. That&#8217;s all you have to do to set up the search. The next step is to search something. To do that, create a SearchParameters object containing all properties, which the search should return. Then execute the search with the string you are looking for and your SearchParameters object.
 
 <div id="attachment_1257" style="width: 522px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/Execute-the-search.jpg"><img aria-describedby="caption-attachment-1257" loading="lazy" class="size-full wp-image-1257" src="/wp-content/uploads/2018/05/Execute-the-search.jpg" alt="Execute the search" width="512" height="137" /></a>
+  <a href="/assets/img/posts/2018/05/Execute-the-search.jpg"><img aria-describedby="caption-attachment-1257" loading="lazy" class="size-full wp-image-1257" src="/assets/img/posts/2018/05/Execute-the-search.jpg" alt="Execute the search" width="512" height="137" /></a>
   
   <p id="caption-attachment-1257" class="wp-caption-text">
     Execute the search
@@ -147,7 +147,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1258" style="width: 614px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/Iterate-through-the-search-result.jpg"><img aria-describedby="caption-attachment-1258" loading="lazy" class="size-full wp-image-1258" src="/wp-content/uploads/2018/05/Iterate-through-the-search-result.jpg" alt="Iterate through the search result" width="604" height="72" /></a>
+  <a href="/assets/img/posts/2018/05/Iterate-through-the-search-result.jpg"><img aria-describedby="caption-attachment-1258" loading="lazy" class="size-full wp-image-1258" src="/assets/img/posts/2018/05/Iterate-through-the-search-result.jpg" alt="Iterate through the search result" width="604" height="72" /></a>
   
   <p id="caption-attachment-1258" class="wp-caption-text">
     Iterate through the search result

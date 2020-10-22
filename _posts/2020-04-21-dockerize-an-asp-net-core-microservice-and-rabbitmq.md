@@ -28,7 +28,7 @@ You can find the code of  the finished demo on <a href="https://github.com/Wol
 Visual Studio makes it super easy to dockerize your application. All you have to do it to right-click on the API project and then select Add &#8211;> Docker Support.
 
 <div id="attachment_1921" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Dockerize-your-application.jpg"><img aria-describedby="caption-attachment-1921" loading="lazy" class="wp-image-1921" src="/wp-content/uploads/2020/04/Dockerize-your-application.jpg" alt="Dockerize your application" width="700" height="695" /></a>
+  <a href="/assets/img/posts/2020/04/Dockerize-your-application.jpg"><img aria-describedby="caption-attachment-1921" loading="lazy" class="wp-image-1921" src="/assets/img/posts/2020/04/Dockerize-your-application.jpg" alt="Dockerize your application" width="700" height="695" /></a>
   
   <p id="caption-attachment-1921" class="wp-caption-text">
     Dockerize your application
@@ -42,7 +42,7 @@ This opens a new window where you can select Linux or Windows as OS for the cont
 The .dockerignore file is like the .gitignore file and contains extensions and paths which should not be copied into the container. Default extensions in the .dockerignore file are .vs, /bin or /obj. The .dockerignore file is not required to dockerize your application but highly recommended.
 
 <div id="attachment_1922" style="width: 191px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Content-of-the-.dockerignore-file.jpg"><img aria-describedby="caption-attachment-1922" loading="lazy" class="size-full wp-image-1922" src="/wp-content/uploads/2020/04/Content-of-the-.dockerignore-file.jpg" alt="Content of the .dockerignore file" width="181" height="185" /></a>
+  <a href="/assets/img/posts/2020/04/Content-of-the-.dockerignore-file.jpg"><img aria-describedby="caption-attachment-1922" loading="lazy" class="size-full wp-image-1922" src="/assets/img/posts/2020/04/Content-of-the-.dockerignore-file.jpg" alt="Content of the .dockerignore file" width="181" height="185" /></a>
   
   <p id="caption-attachment-1922" class="wp-caption-text">
     Content of the .dockerignore file
@@ -101,7 +101,7 @@ For more details on the Dockerfile and .dockerignore file check out the <a href=
 After adding the Docker support to your application, you should be able to select Docker as a startup option in Visual Studio. When you select Docker for the first time, Visual Studio will run the Dockerfile, therefore build and create the container. This might take a bit because the images for the .NET Core runtime and SDK need to be downloaded. After the first download, they are cached and can be quickly reused.
 
 <div id="attachment_1927" style="width: 418px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Select-Docker-as-startup-option.jpg"><img aria-describedby="caption-attachment-1927" loading="lazy" class="wp-image-1927 size-full" src="/wp-content/uploads/2020/04/Select-Docker-as-startup-option.jpg" alt="Dockerize the application and select Docker as startup option" width="408" height="47" /></a>
+  <a href="/assets/img/posts/2020/04/Select-Docker-as-startup-option.jpg"><img aria-describedby="caption-attachment-1927" loading="lazy" class="wp-image-1927 size-full" src="/assets/img/posts/2020/04/Select-Docker-as-startup-option.jpg" alt="Dockerize the application and select Docker as startup option" width="408" height="47" /></a>
   
   <p id="caption-attachment-1927" class="wp-caption-text">
     Select Docker as startup option
@@ -111,7 +111,7 @@ After adding the Docker support to your application, you should be able to selec
 Click F5 or on the Docker button and your application should start as you are used to. If you don&#8217;t believe me that it is running inside a Docker container, you can check the running containers in PowerShell with the command docker ps.
 
 <div id="attachment_1928" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Check-the-running-containers.jpg"><img aria-describedby="caption-attachment-1928" loading="lazy" class="wp-image-1928" src="/wp-content/uploads/2020/04/Check-the-running-containers.jpg" alt="Check the running containers" width="700" height="46" /></a>
+  <a href="/assets/img/posts/2020/04/Check-the-running-containers.jpg"><img aria-describedby="caption-attachment-1928" loading="lazy" class="wp-image-1928" src="/assets/img/posts/2020/04/Check-the-running-containers.jpg" alt="Check the running containers" width="700" height="46" /></a>
   
   <p id="caption-attachment-1928" class="wp-caption-text">
     Check the running containers
@@ -133,7 +133,7 @@ docker build -t customerapi . -f CustomerApi/Dockerfile
 to build the Dockerfile which is in your current file with the tag name customerapi. This will download the needed images (or use them from the cache) and start to build your image. Step 7 fails because a directory can&#8217;t be found though.
 
 <div id="attachment_2457" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Build-the-docker-image.jpg"><img aria-describedby="caption-attachment-2457" loading="lazy" class="wp-image-2457" src="/wp-content/uploads/2020/04/Build-the-docker-image.jpg" alt="Build the docker image" width="700" height="232" /></a>
+  <a href="/assets/img/posts/2020/04/Build-the-docker-image.jpg"><img aria-describedby="caption-attachment-2457" loading="lazy" class="wp-image-2457" src="/assets/img/posts/2020/04/Build-the-docker-image.jpg" alt="Build the docker image" width="700" height="232" /></a>
   
   <p id="caption-attachment-2457" class="wp-caption-text">
     Build the docker image
@@ -143,7 +143,7 @@ to build the Dockerfile which is in your current file with the tag name customer
 To confirm that your image was really created, use docker images.
 
 <div id="attachment_1931" style="width: 1107px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Confirm-that-the-image-was-created.jpg"><img aria-describedby="caption-attachment-1931" loading="lazy" class="size-full wp-image-1931" src="/wp-content/uploads/2020/04/Confirm-that-the-image-was-created.jpg" alt="Confirm that the image was created" width="1097" height="55" /></a>
+  <a href="/assets/img/posts/2020/04/Confirm-that-the-image-was-created.jpg"><img aria-describedby="caption-attachment-1931" loading="lazy" class="size-full wp-image-1931" src="/assets/img/posts/2020/04/Confirm-that-the-image-was-created.jpg" alt="Confirm that the image was created" width="1097" height="55" /></a>
   
   <p id="caption-attachment-1931" class="wp-caption-text">
     Confirm that the image was created
@@ -159,7 +159,7 @@ docker run -p 32789:80 -p 32788:443 customerapi.
 [/code]
 
 <div id="attachment_1932" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Run-the-previously-created-image.jpg"><img aria-describedby="caption-attachment-1932" loading="lazy" class="wp-image-1932" src="/wp-content/uploads/2020/04/Run-the-previously-created-image.jpg" alt="Run the previously created image dockerize" width="700" height="74" /></a>
+  <a href="/assets/img/posts/2020/04/Run-the-previously-created-image.jpg"><img aria-describedby="caption-attachment-1932" loading="lazy" class="wp-image-1932" src="/assets/img/posts/2020/04/Run-the-previously-created-image.jpg" alt="Run the previously created image dockerize" width="700" height="74" /></a>
   
   <p id="caption-attachment-1932" class="wp-caption-text">
     Run the previously created image
@@ -173,7 +173,7 @@ After the container is started, open localhost:32789 and you should see the Swag
 We confirmed that the image is running, and now it is time to share it and therefore to upload it to Dockerhub. Dockerhub is the default registry in Docker Desktop. Use docker login to login in your Dockerhub account.
 
 <div id="attachment_1933" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Log-in-into-Dockerhub.jpg"><img aria-describedby="caption-attachment-1933" loading="lazy" class="wp-image-1933" src="/wp-content/uploads/2020/04/Log-in-into-Dockerhub.jpg" alt="Log in into Dockerhub" width="700" height="51" /></a>
+  <a href="/assets/img/posts/2020/04/Log-in-into-Dockerhub.jpg"><img aria-describedby="caption-attachment-1933" loading="lazy" class="wp-image-1933" src="/assets/img/posts/2020/04/Log-in-into-Dockerhub.jpg" alt="Log in into Dockerhub" width="700" height="51" /></a>
   
   <p id="caption-attachment-1933" class="wp-caption-text">
     Log in into Dockerhub
@@ -193,7 +193,7 @@ docker push wolfgangofner/customerapi
 [/code]
 
 <div id="attachment_1935" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Push-the-image-to-Dockerhub.jpg"><img aria-describedby="caption-attachment-1935" loading="lazy" class="wp-image-1935" src="/wp-content/uploads/2020/04/Push-the-image-to-Dockerhub.jpg" alt="Push the image to Dockerhub dockerize" width="700" height="129" /></a>
+  <a href="/assets/img/posts/2020/04/Push-the-image-to-Dockerhub.jpg"><img aria-describedby="caption-attachment-1935" loading="lazy" class="wp-image-1935" src="/assets/img/posts/2020/04/Push-the-image-to-Dockerhub.jpg" alt="Push the image to Dockerhub dockerize" width="700" height="129" /></a>
   
   <p id="caption-attachment-1935" class="wp-caption-text">
     Push the image to Dockerhub
@@ -203,7 +203,7 @@ docker push wolfgangofner/customerapi
 To confirm that the image was pushed to Dockerhub, I open my repositories and see the newly create customerapi there.
 
 <div id="attachment_1936" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Confirm-that-the-image-was-pushed-to-Dockerhub.jpg"><img aria-describedby="caption-attachment-1936" loading="lazy" class="wp-image-1936" src="/wp-content/uploads/2020/04/Confirm-that-the-image-was-pushed-to-Dockerhub.jpg" alt="Confirm that the image was pushed to Dockerhub dockerize" width="700" height="105" /></a>
+  <a href="/assets/img/posts/2020/04/Confirm-that-the-image-was-pushed-to-Dockerhub.jpg"><img aria-describedby="caption-attachment-1936" loading="lazy" class="wp-image-1936" src="/assets/img/posts/2020/04/Confirm-that-the-image-was-pushed-to-Dockerhub.jpg" alt="Confirm that the image was pushed to Dockerhub dockerize" width="700" height="105" /></a>
   
   <p id="caption-attachment-1936" class="wp-caption-text">
     Confirm that the image was pushed to Dockerhub
@@ -219,7 +219,7 @@ docker run -p 32789:80 -p 32788:443 wolfgangofner/customerapi
 [/code]
 
 <div id="attachment_1937" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Run-the-previously-uploaded-image.jpg"><img aria-describedby="caption-attachment-1937" loading="lazy" class="wp-image-1937" src="/wp-content/uploads/2020/04/Run-the-previously-uploaded-image.jpg" alt="Run the previously uploaded image dockerize" width="700" height="162" /></a>
+  <a href="/assets/img/posts/2020/04/Run-the-previously-uploaded-image.jpg"><img aria-describedby="caption-attachment-1937" loading="lazy" class="wp-image-1937" src="/assets/img/posts/2020/04/Run-the-previously-uploaded-image.jpg" alt="Run the previously uploaded image dockerize" width="700" height="162" /></a>
   
   <p id="caption-attachment-1937" class="wp-caption-text">
     Run the previously uploaded image

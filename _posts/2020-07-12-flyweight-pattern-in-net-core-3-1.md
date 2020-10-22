@@ -116,7 +116,7 @@ mealFactory.PrintMeals();
 When running the application, you will see that there are no items in the cache and then slowly the medium-sized meals are created. The large meals are created way faster because they are read from the cache. After serving all four meals, the cache still has only two items, as expected.
 
 <div id="attachment_2256" style="width: 330px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/07/Testing-the-Flyweight-Pattern-Implementation.jpg"><img aria-describedby="caption-attachment-2256" loading="lazy" class="size-full wp-image-2256" src="/wp-content/uploads/2020/07/Testing-the-Flyweight-Pattern-Implementation.jpg" alt="Testing the Flyweight Pattern Implementation" width="320" height="160" /></a>
+  <a href="/assets/img/posts/2020/07/Testing-the-Flyweight-Pattern-Implementation.jpg"><img aria-describedby="caption-attachment-2256" loading="lazy" class="size-full wp-image-2256" src="/assets/img/posts/2020/07/Testing-the-Flyweight-Pattern-Implementation.jpg" alt="Testing the Flyweight Pattern Implementation" width="320" height="160" /></a>
   
   <p id="caption-attachment-2256" class="wp-caption-text">
     Testing the Flyweight Pattern Implementation

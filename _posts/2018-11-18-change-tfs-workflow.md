@@ -20,7 +20,7 @@ As already mentioned, with witadmin you can download the configuration xml file 
 After you downloaded the xml file, open it and find the <Workflow> section. Under the <States> section, you can add a new state.
 
 <div id="attachment_1504" style="width: 451px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/11/Add-a-new-state-to-a-work-item.jpg"><img aria-describedby="caption-attachment-1504" loading="lazy" class="size-full wp-image-1504" src="/wp-content/uploads/2018/11/Add-a-new-state-to-a-work-item.jpg" alt="Add a new state to a work item" width="441" height="120" /></a>
+  <a href="/assets/img/posts/2018/11/Add-a-new-state-to-a-work-item.jpg"><img aria-describedby="caption-attachment-1504" loading="lazy" class="size-full wp-image-1504" src="/assets/img/posts/2018/11/Add-a-new-state-to-a-work-item.jpg" alt="Add a new state to a work item" width="441" height="120" /></a>
   
   <p id="caption-attachment-1504" class="wp-caption-text">
     Add a new state to a work item
@@ -36,7 +36,7 @@ The new state can&#8217;t be selected right now because there is no transition f
 Below the states, you will find the <Transitions> section. There you can add your transitions. A transition always has a from and to state. Note that the transition for New is from empty (from=&#8221;&#8221;). Additionally, you can add a default reason which will be displayed when you select this state. For example when you transition from new to approved the default message could be something like &#8220;Customer approved PBI&#8221;.
 
 <div id="attachment_1505" style="width: 456px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/11/Add-a-new-transition-for-the-new-state.jpg"><img aria-describedby="caption-attachment-1505" loading="lazy" class="size-full wp-image-1505" src="/wp-content/uploads/2018/11/Add-a-new-transition-for-the-new-state.jpg" alt="Add a new transition for the new state" width="446" height="173" /></a>
+  <a href="/assets/img/posts/2018/11/Add-a-new-transition-for-the-new-state.jpg"><img aria-describedby="caption-attachment-1505" loading="lazy" class="size-full wp-image-1505" src="/assets/img/posts/2018/11/Add-a-new-transition-for-the-new-state.jpg" alt="Add a new transition for the new state" width="446" height="173" /></a>
   
   <p id="caption-attachment-1505" class="wp-caption-text">
     Add a new transition for the new state
@@ -56,7 +56,7 @@ If you go to your TFS after uploading the type definition, you will see your new
 Download the config file with **witadmin exportprocessconfig /collection:COLLECTIONNAME /p:PROJECT /f:FILENAME**. Open the xml file and find the work item, you added the state to, for example, Bug or Backlog Item. Add the state in the States section.
 
 <div id="attachment_1506" style="width: 460px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/11/Add-the-new-state-in-the-process-config-file.jpg"><img aria-describedby="caption-attachment-1506" loading="lazy" class="wp-image-1506 size-full" src="/wp-content/uploads/2018/11/Add-the-new-state-in-the-process-config-file.jpg" alt="Add the new state in the TFS process config file" width="450" height="53" /></a>
+  <a href="/assets/img/posts/2018/11/Add-the-new-state-in-the-process-config-file.jpg"><img aria-describedby="caption-attachment-1506" loading="lazy" class="wp-image-1506 size-full" src="/assets/img/posts/2018/11/Add-the-new-state-in-the-process-config-file.jpg" alt="Add the new state in the TFS process config file" width="450" height="53" /></a>
   
   <p id="caption-attachment-1506" class="wp-caption-text">
     Add the new state in the process config file

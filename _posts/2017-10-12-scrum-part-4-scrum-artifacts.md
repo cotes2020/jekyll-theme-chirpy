@@ -21,7 +21,7 @@ The Product Owner and the team should work together to prioritize the tasks in t
 The Product Backlog should be managed with a tool like TFS. If you use TFS as your source control too, it&#8217;s possible to link a feature with a commit to increase the tractability of changes. In the following, you can see the Product Backlog in TFS.
 
 <div id="attachment_159" style="width: 634px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2017/10/Product-Backlog.png"><img aria-describedby="caption-attachment-159" loading="lazy" class="size-full wp-image-159" src="/wp-content/uploads/2017/10/Product-Backlog.png" alt="Product Backlog" width="624" height="313" /></a>
+  <a href="/assets/img/posts/2017/10/Product-Backlog.png"><img aria-describedby="caption-attachment-159" loading="lazy" class="size-full wp-image-159" src="/assets/img/posts/2017/10/Product-Backlog.png" alt="Product Backlog" width="624" height="313" /></a>
   
   <p id="caption-attachment-159" class="wp-caption-text">
     <a href="https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/30/15/metablogapi/0250.Figure-1_59B7BEE6.png" target="_blank" rel="noopener">Source</a>
@@ -35,7 +35,7 @@ The Sprint Backlog is a subset of selected Backlog Items for the current sprint 
 Personally, I like to display the Sprint Backlog on a whiteboard. On the following screenshot, you can see my current whiteboard. I whitened business relevant delicate tasks.
 
 <div id="attachment_160" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2017/10/Sprint-Backlog-Board.jpg"><img aria-describedby="caption-attachment-160" loading="lazy" class="wp-image-160" src="/wp-content/uploads/2017/10/Sprint-Backlog-Board.jpg" alt="Scrum Artifacts Sprint Backlog Board" width="700" height="525" /></a>
+  <a href="/assets/img/posts/2017/10/Sprint-Backlog-Board.jpg"><img aria-describedby="caption-attachment-160" loading="lazy" class="wp-image-160" src="/assets/img/posts/2017/10/Sprint-Backlog-Board.jpg" alt="Scrum Artifacts Sprint Backlog Board" width="700" height="525" /></a>
   
   <p id="caption-attachment-160" class="wp-caption-text">
     Kanban Board for the Sprint Backlog
@@ -85,7 +85,7 @@ A piece of software can only be in one of two states: done or not done. There is
 The Burndown Chart displays the number of remaining features with the remaining time. Tools like TFS also show you an ideal progress which is linear from the start to the end with no work left. Such a linear progress is only in theory possible but the actual progress should be around the theoretical progress. Often the actual progress is like a wave, sometimes over this ideal trend and sometimes below it. On the following screenshot, you can see such a burndown chart from the TFS.
 
 <div id="attachment_157" style="width: 460px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2017/10/Burndown-chart.png"><img aria-describedby="caption-attachment-157" loading="lazy" class="wp-image-157 size-full" src="/wp-content/uploads/2017/10/Burndown-chart.png" alt="Scrum Artifacts Burndown chart" width="450" height="437" /></a>
+  <a href="/assets/img/posts/2017/10/Burndown-chart.png"><img aria-describedby="caption-attachment-157" loading="lazy" class="wp-image-157 size-full" src="/assets/img/posts/2017/10/Burndown-chart.png" alt="Scrum Artifacts Burndown chart" width="450" height="437" /></a>
   
   <p id="caption-attachment-157" class="wp-caption-text">
     <a href="https://docs.microsoft.com/en-us/vsts/work/scrum/_img/alm_sb_introhealthychart.png" target="_blank" rel="noopener">Source</a>

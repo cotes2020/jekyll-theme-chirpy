@@ -50,7 +50,7 @@ The problem when using DbContext is that the code is tightly coupled to entity f
 ## Repository Pattern and Unit of Work Pattern UML Diagram
 
 <div id="attachment_529" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/01/Repository-pattern-UML-diagram.jpg"><img aria-describedby="caption-attachment-529" loading="lazy" class="wp-image-529" src="/wp-content/uploads/2018/01/Repository-pattern-UML-diagram.jpg" alt="Repository pattern UML diagram" width="700" height="484" /></a>
+  <a href="/assets/img/posts/2018/01/Repository-pattern-UML-diagram.jpg"><img aria-describedby="caption-attachment-529" loading="lazy" class="wp-image-529" src="/assets/img/posts/2018/01/Repository-pattern-UML-diagram.jpg" alt="Repository pattern UML diagram" width="700" height="484" /></a>
   
   <p id="caption-attachment-529" class="wp-caption-text">
     Repository pattern UML diagram
@@ -59,7 +59,7 @@ The problem when using DbContext is that the code is tightly coupled to entity f
 
 The Repository pattern consists of one IRepository which contains all generic operations like Add or Remove. It is implemented by the Repository and by all IConcreteRepository interfaces. Every IConcreteRepository interface is implemented by one ConcreteRepository class which also derives from the Repository class. With this implementation, the ConcreteRepositoy has all generic methods and also the methods for the specific class. As an example: the CustomerRepository could implement a method which is called GetAllSeniorCustomers or GetBestCustomersByRevenue.
 
-[<img loading="lazy" class="aligncenter wp-image-530" src="/wp-content/uploads/2018/01/Unit-of-Work-pattern-UML-diagram.jpg" alt="Unit of Work pattern UML diagram" width="292" height="400" />](/wp-content/uploads/2018/01/Unit-of-Work-pattern-UML-diagram.jpg)
+[<img loading="lazy" class="aligncenter wp-image-530" src="/assets/img/posts/2018/01/Unit-of-Work-pattern-UML-diagram.jpg" alt="Unit of Work pattern UML diagram" width="292" height="400" />](/assets/img/posts/2018/01/Unit-of-Work-pattern-UML-diagram.jpg)
 
 The unit of work provides the ability to save the changes to the storage (whatever this storage is). The IUnitOfWork interface has a method for saving which is often called Complete and every concrete repository as property. For example, if I have the repository ICustomerRepository then the IUnitOfWork has an ICustomerRepositry property with a getter only. Additionally, IUnitOfWork inherits from IDisposable.
 
@@ -69,7 +69,7 @@ The UnitOfWork class implements the Complete method, in which the data get saved
 
 For this example, I created a console project (RepositoryAndUnitOfWork) and a class library (RepositoryAndUnitOfWork.DataAccess). In the class library, I generate a database with a customer table.
 
-## [<img loading="lazy" class="aligncenter size-full wp-image-528" src="/wp-content/uploads/2018/01/Customer-Table.jpg" alt="" width="393" height="228" />](/wp-content/uploads/2018/01/Customer-Table.jpg)
+## [<img loading="lazy" class="aligncenter size-full wp-image-528" src="/assets/img/posts/2018/01/Customer-Table.jpg" alt="" width="393" height="228" />](/assets/img/posts/2018/01/Customer-Table.jpg)
 
 Next, I let Entity Framework generate the data model from the database. If you don&#8217;t know how to do that, check the <a href="https://msdn.microsoft.com/en-us/library/jj206878(v=vs.113).aspx" target="_blank" rel="noopener">documentation</a> for a step by step walkthrough.
 
@@ -77,39 +77,39 @@ Next, I let Entity Framework generate the data model from the database. If you d
 
 After setting up the database, it&#8217;s time to implement the repository. To do that, I create a new folder, Repositories, in the class library project and add a new interface IRepositry. In this Interface, I add all generic methods I want to use later in my applications. These methods are, GetById, Add, AddRange, Remove or Find. To make the Interface usable for all classes I use the generic type parameter T, where T is a class.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-516" src="/wp-content/uploads/2018/01/IRepository.jpg" alt="IRepository" width="453" height="355" />](/wp-content/uploads/2018/01/IRepository.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-516" src="/assets/img/posts/2018/01/IRepository.jpg" alt="IRepository" width="453" height="355" />](/assets/img/posts/2018/01/IRepository.jpg)
 
 After the generic repository, I also implement a specific repository for the customer. The ICustomerRepository inherits from IRepository and only implements one method.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-517" src="/wp-content/uploads/2018/01/ICustomerRepository.jpg" alt="ICustomerRepository" width="471" height="87" />](/wp-content/uploads/2018/01/ICustomerRepository.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-517" src="/assets/img/posts/2018/01/ICustomerRepository.jpg" alt="ICustomerRepository" width="471" height="87" />](/assets/img/posts/2018/01/ICustomerRepository.jpg)
 
 After implementing all interfaces it&#8217;s time to implement concrete repository classes. First, I create a class Repository which inherits from IRepository. In this class, I implement all methods from the interface. Additionally to the methods, I have a constructor which takes a DbContext as Parameter. This DbContext instantiates a DbSet which will be used to get or add data.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-518" src="/wp-content/uploads/2018/01/Repository.jpg" alt="Repository" width="448" height="151" />](/wp-content/uploads/2018/01/Repository.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-518" src="/assets/img/posts/2018/01/Repository.jpg" alt="Repository" width="448" height="151" />](/assets/img/posts/2018/01/Repository.jpg)
 
 The implementations of the methods are pretty straight Forward. The only interesting one might be the Find method which takes an expression as parameter. In the implementation, I use Where to find all entries which fit the Expression of the parameter.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-519" src="/wp-content/uploads/2018/01/Find-method.jpg" alt="Find method" width="454" height="284" />](/wp-content/uploads/2018/01/Find-method.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-519" src="/assets/img/posts/2018/01/Find-method.jpg" alt="Find method" width="454" height="284" />](/assets/img/posts/2018/01/Find-method.jpg)
 
 The final step for the Repository pattern is to implement the CustomerReposiotry. This class derives from Repository and ICustomerRepository and implements the method from the interface. The constructor takes a CustomerDbEntities object as Parameter which is derived from DbContext and generated by Entity Framework.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-521" src="/wp-content/uploads/2018/01/CustomerRepository.jpg" alt="CustomerRepository" width="797" height="252" />](/wp-content/uploads/2018/01/CustomerRepository.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-521" src="/assets/img/posts/2018/01/CustomerRepository.jpg" alt="CustomerRepository" width="797" height="252" />](/assets/img/posts/2018/01/CustomerRepository.jpg)
 
 ### Implementing Unit of Work
 
 All repositories are created now, but I need a class which writes my data to the database, the unit of work. To implement this class, I first implement the IUnitOfWork interface in the repositories folder in the library project. This interface derives from IDisposable and has an ICustomerRepository property and the method Complete. This method is responsible for saving changes. The Name of the method could be Save, Finish or whatever you like best.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-523" src="/wp-content/uploads/2018/01/IUnitOfWork.jpg" alt="IUnitOfWork" width="312" height="144" />](/wp-content/uploads/2018/01/IUnitOfWork.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-523" src="/assets/img/posts/2018/01/IUnitOfWork.jpg" alt="IUnitOfWork" width="312" height="144" />](/assets/img/posts/2018/01/IUnitOfWork.jpg)
 
 Like before, I add the concrete implementation of IUnitOfWork to the repositories folder in the console application project. The constructor takes a CustomerDbEnties object as parameter and also initializes the ICustomerRepository. The Complete Method saves the context with SaveChanges and the Dispose method disposes changes.
 
-[<img loading="lazy" class="aligncenter size-full wp-image-524" src="/wp-content/uploads/2018/01/UnitOfWork.jpg" alt="UnitOfWork" width="391" height="408" />](/wp-content/uploads/2018/01/UnitOfWork.jpg)
+[<img loading="lazy" class="aligncenter size-full wp-image-524" src="/assets/img/posts/2018/01/UnitOfWork.jpg" alt="UnitOfWork" width="391" height="408" />](/assets/img/posts/2018/01/UnitOfWork.jpg)
 
 ### Using the Repository and Unit of Work
 
 The usage of the unit of work differs between a web application and a console application. In an MVC application, the unit of work gets injected into the constructor. In the console application, I have to use a using statement. I can use with unitOfWork.Customer.Method(), for example unitOfWork.GetBestCustomers(3). To save the changes use unitOfWork.Complete().
 
-[<img loading="lazy" class="aligncenter wp-image-527" src="/wp-content/uploads/2018/01/Using-the-unit-of-work.jpg" alt="Using the unit of work" width="800" height="204" />](/wp-content/uploads/2018/01/Using-the-unit-of-work.jpg)
+[<img loading="lazy" class="aligncenter wp-image-527" src="/assets/img/posts/2018/01/Using-the-unit-of-work.jpg" alt="Using the unit of work" width="800" height="204" />](/assets/img/posts/2018/01/Using-the-unit-of-work.jpg)
 
 You can find the source code on <a href="https://github.com/WolfgangOfner/RepositoryAndUnitOfWorkPattern" target="_blank" rel="noopener">GitHub</a>. If you want to try out the example, you have to change to connection string in the App.config to the location of the database on your computer
 

@@ -35,7 +35,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
   2. On the Azure Cosmos DB blade, provide a unique ID, subscription, resource group and location. Select an API, for example, SQL and click Create.
 
 <div id="attachment_1225" style="width: 321px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Create-an-Azure-Cosmos-DB-with-a-SQL-API.jpg"><img aria-describedby="caption-attachment-1225" loading="lazy" class="size-full wp-image-1225" src="/wp-content/uploads/2018/04/Create-an-Azure-Cosmos-DB-with-a-SQL-API.jpg" alt="Create an Azure Cosmos DB with a SQL API" width="311" height="444" /></a>
+  <a href="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-SQL-API.jpg"><img aria-describedby="caption-attachment-1225" loading="lazy" class="size-full wp-image-1225" src="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-SQL-API.jpg" alt="Create an Azure Cosmos DB with a SQL API" width="311" height="444" /></a>
   
   <p id="caption-attachment-1225" class="wp-caption-text">
     Create an Azure Cosmos DB with a SQL API
@@ -55,7 +55,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
 </ol>
 
 <div id="attachment_1226" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Create-variables-for-the-database-collection-and-client-of-your-Azure-Cosmos-DB-account.jpg"><img aria-describedby="caption-attachment-1226" loading="lazy" class="wp-image-1226" src="/wp-content/uploads/2018/04/Create-variables-for-the-database-collection-and-client-of-your-Azure-Cosmos-DB-account.jpg" alt="Create variables for the database, collection and client of your Azure Cosmos DB account" width="700" height="156" /></a>
+  <a href="/assets/img/posts/2018/04/Create-variables-for-the-database-collection-and-client-of-your-Azure-Cosmos-DB-account.jpg"><img aria-describedby="caption-attachment-1226" loading="lazy" class="wp-image-1226" src="/assets/img/posts/2018/04/Create-variables-for-the-database-collection-and-client-of-your-Azure-Cosmos-DB-account.jpg" alt="Create variables for the database, collection and client of your Azure Cosmos DB account" width="700" height="156" /></a>
   
   <p id="caption-attachment-1226" class="wp-caption-text">
     Create variables for the database, collection, and client of your Azure Cosmos DB account
@@ -69,7 +69,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
 </ol>
 
 <div id="attachment_1227" style="width: 611px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Create-the-database-if-it-does-not-exist-yet.jpg"><img aria-describedby="caption-attachment-1227" loading="lazy" class="size-full wp-image-1227" src="/wp-content/uploads/2018/04/Create-the-database-if-it-does-not-exist-yet.jpg" alt="Create the database if it does not exist yet" width="601" height="325" /></a>
+  <a href="/assets/img/posts/2018/04/Create-the-database-if-it-does-not-exist-yet.jpg"><img aria-describedby="caption-attachment-1227" loading="lazy" class="size-full wp-image-1227" src="/assets/img/posts/2018/04/Create-the-database-if-it-does-not-exist-yet.jpg" alt="Create the database if it does not exist yet" width="601" height="325" /></a>
   
   <p id="caption-attachment-1227" class="wp-caption-text">
     Create the database if it does not exist yet
@@ -83,7 +83,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
 </ol>
 
 <div id="attachment_1228" style="width: 584px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Create-the-colleciton-if-it-does-not-exist-yet.jpg"><img aria-describedby="caption-attachment-1228" loading="lazy" class="size-full wp-image-1228" src="/wp-content/uploads/2018/04/Create-the-colleciton-if-it-does-not-exist-yet.jpg" alt="Create the colleciton if it does not exist yet" width="574" height="380" /></a>
+  <a href="/assets/img/posts/2018/04/Create-the-colleciton-if-it-does-not-exist-yet.jpg"><img aria-describedby="caption-attachment-1228" loading="lazy" class="size-full wp-image-1228" src="/assets/img/posts/2018/04/Create-the-colleciton-if-it-does-not-exist-yet.jpg" alt="Create the colleciton if it does not exist yet" width="574" height="380" /></a>
   
   <p id="caption-attachment-1228" class="wp-caption-text">
     After the database is created, create the collection if it does not exist yet
@@ -97,7 +97,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
 </ol>
 
 <div id="attachment_1229" style="width: 286px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/The-customer-class-will-be-used-to-add-customer-to-the-database.jpg"><img aria-describedby="caption-attachment-1229" loading="lazy" class="size-full wp-image-1229" src="/wp-content/uploads/2018/04/The-customer-class-will-be-used-to-add-customer-to-the-database.jpg" alt="The customer class will be used to add customer to the database" width="276" height="200" /></a>
+  <a href="/assets/img/posts/2018/04/The-customer-class-will-be-used-to-add-customer-to-the-database.jpg"><img aria-describedby="caption-attachment-1229" loading="lazy" class="size-full wp-image-1229" src="/assets/img/posts/2018/04/The-customer-class-will-be-used-to-add-customer-to-the-database.jpg" alt="The customer class will be used to add customer to the database" width="276" height="200" /></a>
   
   <p id="caption-attachment-1229" class="wp-caption-text">
     The customer class will be used to add a customer to the database
@@ -111,7 +111,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
 </ol>
 
 <div id="attachment_1231" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Add-an-item-to-the-collection.jpg"><img aria-describedby="caption-attachment-1231" loading="lazy" class="wp-image-1231" src="/wp-content/uploads/2018/04/Add-an-item-to-the-collection.jpg" alt="Add an item to the collection" width="700" height="130" /></a>
+  <a href="/assets/img/posts/2018/04/Add-an-item-to-the-collection.jpg"><img aria-describedby="caption-attachment-1231" loading="lazy" class="wp-image-1231" src="/assets/img/posts/2018/04/Add-an-item-to-the-collection.jpg" alt="Add an item to the collection" width="700" height="130" /></a>
   
   <p id="caption-attachment-1231" class="wp-caption-text">
     Add an item to the collection
@@ -125,7 +125,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
 </ol>
 
 <div id="attachment_1230" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Get-a-list-of-customers-which-fit-the-LINQ-expression.jpg"><img aria-describedby="caption-attachment-1230" loading="lazy" class="wp-image-1230" src="/wp-content/uploads/2018/04/Get-a-list-of-customers-which-fit-the-LINQ-expression.jpg" alt="Get a list of customers which fit the LINQ expression" width="700" height="312" /></a>
+  <a href="/assets/img/posts/2018/04/Get-a-list-of-customers-which-fit-the-LINQ-expression.jpg"><img aria-describedby="caption-attachment-1230" loading="lazy" class="wp-image-1230" src="/assets/img/posts/2018/04/Get-a-list-of-customers-which-fit-the-LINQ-expression.jpg" alt="Get a list of customers which fit the LINQ expression" width="700" height="312" /></a>
   
   <p id="caption-attachment-1230" class="wp-caption-text">
     Get a list of customers which fit the LINQ expression
@@ -143,7 +143,7 @@ In the previous section, I showed how to query data using C#. You can also creat
   3. Enter your query, for example, SELECT * FROM c and click Execute Query.
 
 <div id="attachment_1232" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Create-a-query-in-the-Azure-portal-using-SQL.jpg"><img aria-describedby="caption-attachment-1232" loading="lazy" class="wp-image-1232" src="/wp-content/uploads/2018/04/Create-a-query-in-the-Azure-portal-using-SQL.jpg" alt="Create a query in the Azure portal using SQL" width="700" height="338" /></a>
+  <a href="/assets/img/posts/2018/04/Create-a-query-in-the-Azure-portal-using-SQL.jpg"><img aria-describedby="caption-attachment-1232" loading="lazy" class="wp-image-1232" src="/assets/img/posts/2018/04/Create-a-query-in-the-Azure-portal-using-SQL.jpg" alt="Create a query in the Azure portal using SQL" width="700" height="338" /></a>
   
   <p id="caption-attachment-1232" class="wp-caption-text">
     Create a query in the Azure portal using SQL
@@ -158,7 +158,7 @@ The code for the following demo can be found on <a href="https://github.com/Wolf
   2. On the Azure Cosmos DB blade, provide a unique ID, subscription, resource group and location. Select Gremlin (graph) as API and click Create.
 
 <div id="attachment_1201" style="width: 317px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Create-an-Azure-Cosmos-DB-with-a-Graph-API.jpg"><img aria-describedby="caption-attachment-1201" loading="lazy" class="size-full wp-image-1201" src="/wp-content/uploads/2018/04/Create-an-Azure-Cosmos-DB-with-a-Graph-API.jpg" alt="Create an Azure Cosmos DB with a Graph API" width="307" height="431"  /></a>
+  <a href="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-Graph-API.jpg"><img aria-describedby="caption-attachment-1201" loading="lazy" class="size-full wp-image-1201" src="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-Graph-API.jpg" alt="Create an Azure Cosmos DB with a Graph API" width="307" height="431"  /></a>
   
   <p id="caption-attachment-1201" class="wp-caption-text">
     Create an Azure Cosmos DB with a Graph API
@@ -178,7 +178,7 @@ The code for the following demo can be found on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1202" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Connect-to-your-Azure-Comos-DB.jpg"><img aria-describedby="caption-attachment-1202" loading="lazy" class="wp-image-1202" src="/wp-content/uploads/2018/04/Connect-to-your-Azure-Comos-DB.jpg" alt="Connect to your Azure Comos DB" width="700" height="119" /></a>
+  <a href="/assets/img/posts/2018/04/Connect-to-your-Azure-Comos-DB.jpg"><img aria-describedby="caption-attachment-1202" loading="lazy" class="wp-image-1202" src="/assets/img/posts/2018/04/Connect-to-your-Azure-Comos-DB.jpg" alt="Connect to your Azure Comos DB" width="700" height="119" /></a>
   
   <p id="caption-attachment-1202" class="wp-caption-text">
     Connect to your Azure Cosmos DB
@@ -192,7 +192,7 @@ The code for the following demo can be found on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1203" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Create-a-database-with-a-collection.jpg"><img aria-describedby="caption-attachment-1203" loading="lazy" class="wp-image-1203" src="/wp-content/uploads/2018/04/Create-a-database-with-a-collection.jpg" alt="Create a database with a collection" width="700" height="154" /></a>
+  <a href="/assets/img/posts/2018/04/Create-a-database-with-a-collection.jpg"><img aria-describedby="caption-attachment-1203" loading="lazy" class="wp-image-1203" src="/assets/img/posts/2018/04/Create-a-database-with-a-collection.jpg" alt="Create a database with a collection" width="700" height="154" /></a>
   
   <p id="caption-attachment-1203" class="wp-caption-text">
     Create a database with a collection
@@ -206,7 +206,7 @@ The code for the following demo can be found on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1204" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Add-nodes-and-edges.jpg"><img aria-describedby="caption-attachment-1204" loading="lazy" class="wp-image-1204" src="/wp-content/uploads/2018/04/Add-nodes-and-edges.jpg" alt="Add nodes and edges" width="700" height="323" /></a>
+  <a href="/assets/img/posts/2018/04/Add-nodes-and-edges.jpg"><img aria-describedby="caption-attachment-1204" loading="lazy" class="wp-image-1204" src="/assets/img/posts/2018/04/Add-nodes-and-edges.jpg" alt="Add nodes and edges" width="700" height="323" /></a>
   
   <p id="caption-attachment-1204" class="wp-caption-text">
     Add nodes and edges
@@ -220,7 +220,7 @@ The code for the following demo can be found on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1205" style="width: 578px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Add-nodes-and-edges-to-the-collection.jpg"><img aria-describedby="caption-attachment-1205" loading="lazy" class="size-full wp-image-1205" src="/wp-content/uploads/2018/04/Add-nodes-and-edges-to-the-collection.jpg" alt="Add nodes and edges to the collection" width="568" height="223" /></a>
+  <a href="/assets/img/posts/2018/04/Add-nodes-and-edges-to-the-collection.jpg"><img aria-describedby="caption-attachment-1205" loading="lazy" class="size-full wp-image-1205" src="/assets/img/posts/2018/04/Add-nodes-and-edges-to-the-collection.jpg" alt="Add nodes and edges to the collection" width="568" height="223" /></a>
   
   <p id="caption-attachment-1205" class="wp-caption-text">
     Add nodes and edges to the collection
@@ -234,7 +234,7 @@ The code for the following demo can be found on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1206" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/The-added-nodes-and-edges-displayed-as-graph.jpg"><img aria-describedby="caption-attachment-1206" loading="lazy" class="wp-image-1206" src="/wp-content/uploads/2018/04/The-added-nodes-and-edges-displayed-as-graph.jpg" alt="The added nodes and edges displayed as graph" width="700" height="324" /></a>
+  <a href="/assets/img/posts/2018/04/The-added-nodes-and-edges-displayed-as-graph.jpg"><img aria-describedby="caption-attachment-1206" loading="lazy" class="wp-image-1206" src="/assets/img/posts/2018/04/The-added-nodes-and-edges-displayed-as-graph.jpg" alt="The added nodes and edges displayed as graph" width="700" height="324" /></a>
   
   <p id="caption-attachment-1206" class="wp-caption-text">
     The added nodes and edges displayed as a graph
@@ -248,7 +248,7 @@ The code for the following demo can be found on <a href="https://github.com/Wolf
 </ol>
 
 <div id="attachment_1207" style="width: 535px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Search-for-all-people-Wolfgang-knows.jpg"><img aria-describedby="caption-attachment-1207" loading="lazy" class="size-full wp-image-1207" src="/wp-content/uploads/2018/04/Search-for-all-people-Wolfgang-knows.jpg" alt="Search for all people Wolfgang knows" width="525" height="189" /></a>
+  <a href="/assets/img/posts/2018/04/Search-for-all-people-Wolfgang-knows.jpg"><img aria-describedby="caption-attachment-1207" loading="lazy" class="size-full wp-image-1207" src="/assets/img/posts/2018/04/Search-for-all-people-Wolfgang-knows.jpg" alt="Search for all people Wolfgang knows" width="525" height="189" /></a>
   
   <p id="caption-attachment-1207" class="wp-caption-text">
     Search for all people Wolfgang knows
@@ -275,7 +275,7 @@ To create a single partition collection, follow these steps:
   2. On the Add Collection blade, provide a name for the database and collection, set the Storage capacity and the throughput, and leave the partition key empty.
 
 <div id="attachment_1209" style="width: 450px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Add-a-collection-to-your-Azure-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-1209" loading="lazy" class="size-full wp-image-1209" src="/wp-content/uploads/2018/04/Add-a-collection-to-your-Azure-Cosmos-DB.jpg" alt="Add a collection to your Azure Cosmos DB" width="440" height="515" /></a>
+  <a href="/assets/img/posts/2018/04/Add-a-collection-to-your-Azure-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-1209" loading="lazy" class="size-full wp-image-1209" src="/assets/img/posts/2018/04/Add-a-collection-to-your-Azure-Cosmos-DB.jpg" alt="Add a collection to your Azure Cosmos DB" width="440" height="515" /></a>
   
   <p id="caption-attachment-1209" class="wp-caption-text">
     Add a collection to your Azure Cosmos DB
@@ -374,7 +374,7 @@ To distribute data globally, follow these steps:
   2. On the Replicate data globally blade, select the regions to add by clicking on the map. These new regions are read regions. Read regions often outnumber write regions, which can drastically improve the performance of your application.
 
 <div id="attachment_1210" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Enable-geo-configuration-for-your-Azure-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-1210" loading="lazy" class="wp-image-1210" src="/wp-content/uploads/2018/04/Enable-geo-configuration-for-your-Azure-Cosmos-DB.jpg" alt="Enable geo-configuration for your Azure Cosmos DB" width="700" height="700" /></a>
+  <a href="/assets/img/posts/2018/04/Enable-geo-configuration-for-your-Azure-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-1210" loading="lazy" class="wp-image-1210" src="/assets/img/posts/2018/04/Enable-geo-configuration-for-your-Azure-Cosmos-DB.jpg" alt="Enable geo-configuration for your Azure Cosmos DB" width="700" height="700" /></a>
   
   <p id="caption-attachment-1210" class="wp-caption-text">
     Enable geo-configuration for your Azure Cosmos DB
@@ -402,7 +402,7 @@ To distribute data globally, follow these steps:
 You can also use C# code to set the preferred region. To do that use this code:
 
 <div id="attachment_1234" style="width: 515px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Set-the-preferred-region.jpg"><img aria-describedby="caption-attachment-1234" loading="lazy" class="size-full wp-image-1234" src="/wp-content/uploads/2018/04/Set-the-preferred-region.jpg" alt="Set the preferred region" width="505" height="172" /></a>
+  <a href="/assets/img/posts/2018/04/Set-the-preferred-region.jpg"><img aria-describedby="caption-attachment-1234" loading="lazy" class="size-full wp-image-1234" src="/assets/img/posts/2018/04/Set-the-preferred-region.jpg" alt="Set the preferred region" width="505" height="172" /></a>
   
   <p id="caption-attachment-1234" class="wp-caption-text">
     Set the preferred region
@@ -444,7 +444,7 @@ The enable the firewall and configure IP addresses, follow these steps:
   3. Click Save.
 
 <div id="attachment_1212" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Add-ip-addresses-to-your-firewall.jpg"><img aria-describedby="caption-attachment-1212" loading="lazy" class="wp-image-1212" src="/wp-content/uploads/2018/04/Add-ip-addresses-to-your-firewall.jpg" alt="Add ip addresses to your firewall" width="700" height="419" /></a>
+  <a href="/assets/img/posts/2018/04/Add-ip-addresses-to-your-firewall.jpg"><img aria-describedby="caption-attachment-1212" loading="lazy" class="wp-image-1212" src="/assets/img/posts/2018/04/Add-ip-addresses-to-your-firewall.jpg" alt="Add ip addresses to your firewall" width="700" height="419" /></a>
   
   <p id="caption-attachment-1212" class="wp-caption-text">
     Add IP addresses to your firewall
@@ -465,7 +465,7 @@ Follow these steps to use the Active Directory to give an user access to the Azu
   4. Click Save.
 
 <div id="attachment_1213" style="width: 446px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/04/Grant-a-user-the-DocumentDB-Account-Contributor-access.jpg"><img aria-describedby="caption-attachment-1213" loading="lazy" class="size-full wp-image-1213" src="/wp-content/uploads/2018/04/Grant-a-user-the-DocumentDB-Account-Contributor-access.jpg" alt="Grant a user the DocumentDB Account Contributor access" width="436" height="634" /></a>
+  <a href="/assets/img/posts/2018/04/Grant-a-user-the-DocumentDB-Account-Contributor-access.jpg"><img aria-describedby="caption-attachment-1213" loading="lazy" class="size-full wp-image-1213" src="/assets/img/posts/2018/04/Grant-a-user-the-DocumentDB-Account-Contributor-access.jpg" alt="Grant a user the DocumentDB Account Contributor access" width="436" height="634" /></a>
   
   <p id="caption-attachment-1213" class="wp-caption-text">
     Grant a user the DocumentDB Account Contributor access

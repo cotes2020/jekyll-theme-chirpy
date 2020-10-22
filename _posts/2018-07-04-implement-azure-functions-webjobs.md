@@ -28,7 +28,7 @@ If you want to externalize a process so that it runs and scales independently fr
   3. Click Create.
 
 <div id="attachment_1371" style="width: 322px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Create-an-Azure-Function.jpg"><img aria-describedby="caption-attachment-1371" loading="lazy" class="wp-image-1371 size-full" src="/wp-content/uploads/2018/07/Create-an-Azure-Function.jpg" alt="Create your first Azure Functions" width="312" height="633" /></a>
+  <a href="/assets/img/posts/2018/07/Create-an-Azure-Function.jpg"><img aria-describedby="caption-attachment-1371" loading="lazy" class="wp-image-1371 size-full" src="/assets/img/posts/2018/07/Create-an-Azure-Function.jpg" alt="Create your first Azure Functions" width="312" height="633" /></a>
   
   <p id="caption-attachment-1371" class="wp-caption-text">
     Create an Azure Function
@@ -46,7 +46,7 @@ To implement a Webhook function, follow these steps:
   5. Select Azure Function, provide a name and then select Generic WebHook.
 
 <div id="attachment_1372" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Create-a-Webhook-for-your-Azure-function.jpg"><img aria-describedby="caption-attachment-1372" loading="lazy" class="wp-image-1372" src="/wp-content/uploads/2018/07/Create-a-Webhook-for-your-Azure-function.jpg" alt="Create a Webhook for your Azure function" width="700" height="623" /></a>
+  <a href="/assets/img/posts/2018/07/Create-a-Webhook-for-your-Azure-function.jpg"><img aria-describedby="caption-attachment-1372" loading="lazy" class="wp-image-1372" src="/assets/img/posts/2018/07/Create-a-Webhook-for-your-Azure-function.jpg" alt="Create a Webhook for your Azure function" width="700" height="623" /></a>
   
   <p id="caption-attachment-1372" class="wp-caption-text">
     Create a Webhook for your Azure function
@@ -66,7 +66,7 @@ To implement a Webhook function, follow these steps:
 </ol>
 
 <div id="attachment_1373" style="width: 420px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/The-local-URL-of-your-Azure-Function.jpg"><img aria-describedby="caption-attachment-1373" loading="lazy" class="size-full wp-image-1373" src="/wp-content/uploads/2018/07/The-local-URL-of-your-Azure-Function.jpg" alt="The local URL of your Azure Function" width="410" height="67" /></a>
+  <a href="/assets/img/posts/2018/07/The-local-URL-of-your-Azure-Function.jpg"><img aria-describedby="caption-attachment-1373" loading="lazy" class="size-full wp-image-1373" src="/assets/img/posts/2018/07/The-local-URL-of-your-Azure-Function.jpg" alt="The local URL of your Azure Function" width="410" height="67" /></a>
   
   <p id="caption-attachment-1373" class="wp-caption-text">
     The local URL of your Azure Function
@@ -80,7 +80,7 @@ To implement a Webhook function, follow these steps:
 </ol>
 
 <div id="attachment_1374" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Test-your-Azure-Function.jpg"><img aria-describedby="caption-attachment-1374" loading="lazy" class="wp-image-1374" src="/wp-content/uploads/2018/07/Test-your-Azure-Function.jpg" alt="Test your Azure Function" width="700" height="446" /></a>
+  <a href="/assets/img/posts/2018/07/Test-your-Azure-Function.jpg"><img aria-describedby="caption-attachment-1374" loading="lazy" class="wp-image-1374" src="/assets/img/posts/2018/07/Test-your-Azure-Function.jpg" alt="Test your Azure Function" width="700" height="446" /></a>
   
   <p id="caption-attachment-1374" class="wp-caption-text">
     Test your Azure Function
@@ -95,7 +95,7 @@ To create an event processing function, follow these steps:
   2. Select Timer and C# and click Create this function.
 
 <div id="attachment_1375" style="width: 1228px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Create-an-event-processing-funciton.jpg"><img aria-describedby="caption-attachment-1375" loading="lazy" class="wp-image-1375 size-full" src="/wp-content/uploads/2018/07/Create-an-event-processing-funciton.jpg" alt="Create an event processing function" width="1218" height="548" /></a>
+  <a href="/assets/img/posts/2018/07/Create-an-event-processing-funciton.jpg"><img aria-describedby="caption-attachment-1375" loading="lazy" class="wp-image-1375 size-full" src="/assets/img/posts/2018/07/Create-an-event-processing-funciton.jpg" alt="Create an event processing function" width="1218" height="548" /></a>
   
   <p id="caption-attachment-1375" class="wp-caption-text">
     Create an event processing function
@@ -118,7 +118,7 @@ To create an Azure connected function using Azure Queues, follow these steps:
   4. Click Create.
 
 <div id="attachment_1379" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Create-a-queue-triggered-function.jpg"><img aria-describedby="caption-attachment-1379" loading="lazy" class="wp-image-1379" src="/wp-content/uploads/2018/07/Create-a-queue-triggered-function.jpg" alt="Create a queue triggered function" width="700" height="259" /></a>
+  <a href="/assets/img/posts/2018/07/Create-a-queue-triggered-function.jpg"><img aria-describedby="caption-attachment-1379" loading="lazy" class="wp-image-1379" src="/assets/img/posts/2018/07/Create-a-queue-triggered-function.jpg" alt="Create a queue triggered function" width="700" height="259" /></a>
   
   <p id="caption-attachment-1379" class="wp-caption-text">
     Create a queue triggered function
@@ -135,7 +135,7 @@ To create an Azure connected function using Azure Queues, follow these steps:
 </ol>
 
 <div id="attachment_1380" style="width: 1473px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Add-the-storage-account-information-to-your-function.jpg"><img aria-describedby="caption-attachment-1380" loading="lazy" class="size-full wp-image-1380" src="/wp-content/uploads/2018/07/Add-the-storage-account-information-to-your-function.jpg" alt="Add the storage account information to your function" width="1463" height="733" /></a>
+  <a href="/assets/img/posts/2018/07/Add-the-storage-account-information-to-your-function.jpg"><img aria-describedby="caption-attachment-1380" loading="lazy" class="size-full wp-image-1380" src="/assets/img/posts/2018/07/Add-the-storage-account-information-to-your-function.jpg" alt="Add the storage account information to your function" width="1463" height="733" /></a>
   
   <p id="caption-attachment-1380" class="wp-caption-text">
     Add the storage account information to your function
@@ -149,7 +149,7 @@ To create an Azure connected function using Azure Queues, follow these steps:
 </ol>
 
 <div id="attachment_1383" style="width: 1706px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Test-your-function-with-the-queue.jpg"><img aria-describedby="caption-attachment-1383" loading="lazy" class="size-full wp-image-1383" src="/wp-content/uploads/2018/07/Test-your-function-with-the-queue.jpg" alt="Test your function with the queue" width="1696" height="776" /></a>
+  <a href="/assets/img/posts/2018/07/Test-your-function-with-the-queue.jpg"><img aria-describedby="caption-attachment-1383" loading="lazy" class="size-full wp-image-1383" src="/assets/img/posts/2018/07/Test-your-function-with-the-queue.jpg" alt="Test your function with the queue" width="1696" height="776" /></a>
   
   <p id="caption-attachment-1383" class="wp-caption-text">
     Test your function with the queue
@@ -166,7 +166,7 @@ To create a function integrated with Azure Storage Blobs, follow these steps:
   4. Click Create.
 
 <div id="attachment_1381" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Create-an-integrated-function-with-storage.jpg"><img aria-describedby="caption-attachment-1381" loading="lazy" class="wp-image-1381" src="/wp-content/uploads/2018/07/Create-an-integrated-function-with-storage.jpg" alt="Create an integrated function with storage" width="700" height="242" /></a>
+  <a href="/assets/img/posts/2018/07/Create-an-integrated-function-with-storage.jpg"><img aria-describedby="caption-attachment-1381" loading="lazy" class="wp-image-1381" src="/assets/img/posts/2018/07/Create-an-integrated-function-with-storage.jpg" alt="Create an integrated function with storage" width="700" height="242" /></a>
   
   <p id="caption-attachment-1381" class="wp-caption-text">
     Create an integrated function with storage
@@ -183,7 +183,7 @@ To create a function integrated with Azure Storage Blobs, follow these steps:
 </ol>
 
 <div id="attachment_1382" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Add-the-storage-account-information-to-your-function-with-blob-storage.jpg"><img aria-describedby="caption-attachment-1382" loading="lazy" class="wp-image-1382" src="/wp-content/uploads/2018/07/Add-the-storage-account-information-to-your-function-with-blob-storage.jpg" alt="Add the storage account information to your function with blob storage" width="700" height="345" /></a>
+  <a href="/assets/img/posts/2018/07/Add-the-storage-account-information-to-your-function-with-blob-storage.jpg"><img aria-describedby="caption-attachment-1382" loading="lazy" class="wp-image-1382" src="/assets/img/posts/2018/07/Add-the-storage-account-information-to-your-function-with-blob-storage.jpg" alt="Add the storage account information to your function with blob storage" width="700" height="345" /></a>
   
   <p id="caption-attachment-1382" class="wp-caption-text">
     Add the storage account information to your function with blob storage

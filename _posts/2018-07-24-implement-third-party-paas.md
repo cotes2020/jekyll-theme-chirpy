@@ -24,7 +24,7 @@ to deploy a basic Pivotal Cloud Foundry on Azure, follow these steps:
   2. In the Azure portal click on +Create a resource, search for Pivotal Cloud Foundry on Microsoft Azure and click Create.
 
 <div id="attachment_1418" style="width: 451px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Deploy-Pivotal-Cloud-Foundry-on-Azure.jpg"><img aria-describedby="caption-attachment-1418" loading="lazy" class="wp-image-1418" src="/wp-content/uploads/2018/07/Deploy-Pivotal-Cloud-Foundry-on-Azure.jpg" alt="Deploy Pivotal Cloud Foundry on Azure as a third-party PaaS" width="441" height="700" /></a>
+  <a href="/assets/img/posts/2018/07/Deploy-Pivotal-Cloud-Foundry-on-Azure.jpg"><img aria-describedby="caption-attachment-1418" loading="lazy" class="wp-image-1418" src="/assets/img/posts/2018/07/Deploy-Pivotal-Cloud-Foundry-on-Azure.jpg" alt="Deploy Pivotal Cloud Foundry on Azure as a third-party PaaS" width="441" height="700" /></a>
   
   <p id="caption-attachment-1418" class="wp-caption-text">
     Deploy Pivotal Cloud Foundry on Azure
@@ -76,7 +76,7 @@ You can deploy from the Azure Marketplace templates, or using ARM templates. To 
   1. In the Azure portal click on +Create a resource, search for Red Hat OpenShift Container Platform and click Create.
 
 <div id="attachment_1419" style="width: 451px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/07/Deploy-a-Red-hat-OpenShift-Container-Platform.jpg"><img aria-describedby="caption-attachment-1419" loading="lazy" class="wp-image-1419" src="/wp-content/uploads/2018/07/Deploy-a-Red-hat-OpenShift-Container-Platform.jpg" alt="Deploy a Red hat OpenShift Container Platform" width="441" height="700" /></a>
+  <a href="/assets/img/posts/2018/07/Deploy-a-Red-hat-OpenShift-Container-Platform.jpg"><img aria-describedby="caption-attachment-1419" loading="lazy" class="wp-image-1419" src="/assets/img/posts/2018/07/Deploy-a-Red-hat-OpenShift-Container-Platform.jpg" alt="Deploy a Red hat OpenShift Container Platform" width="441" height="700" /></a>
   
   <p id="caption-attachment-1419" class="wp-caption-text">
     Deploy a Red hat OpenShift Container Platform

@@ -20,7 +20,7 @@ To create a Redis Cache, follow these steps:
   3. Click Create.
 
 <div id="attachment_1239" style="width: 325px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/Create-a-new-Redis-cache.png"><img aria-describedby="caption-attachment-1239" loading="lazy" class="size-full wp-image-1239" src="/wp-content/uploads/2018/05/Create-a-new-Redis-cache.png" alt="Create a new Redis cache" width="315" height="403" /></a>
+  <a href="/assets/img/posts/2018/05/Create-a-new-Redis-cache.png"><img aria-describedby="caption-attachment-1239" loading="lazy" class="size-full wp-image-1239" src="/assets/img/posts/2018/05/Create-a-new-Redis-cache.png" alt="Create a new Redis cache" width="315" height="403" /></a>
   
   <p id="caption-attachment-1239" class="wp-caption-text">
     Create a new Redis Cache
@@ -84,7 +84,7 @@ To configure the frequency of the snapshots, follow these steps:
   3. Click OK.
 
 <div id="attachment_1240" style="width: 322px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/05/Configure-data-persistence.jpg"><img aria-describedby="caption-attachment-1240" loading="lazy" class="size-full wp-image-1240" src="/wp-content/uploads/2018/05/Configure-data-persistence.jpg" alt="Configure data persistence" width="312" height="337" /></a>
+  <a href="/assets/img/posts/2018/05/Configure-data-persistence.jpg"><img aria-describedby="caption-attachment-1240" loading="lazy" class="size-full wp-image-1240" src="/assets/img/posts/2018/05/Configure-data-persistence.jpg" alt="Configure data persistence" width="312" height="337" /></a>
   
   <p id="caption-attachment-1240" class="wp-caption-text">
     Configure data persistence

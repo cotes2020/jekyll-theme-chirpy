@@ -188,7 +188,7 @@ docker run -d &#8211;hostname my-rabbit &#8211;name some-rabbit -e RABBITMQ\_DEF
 Don&#8217;t worry if you don&#8217;t understand them. Simplified these two lines download the RabbitMQ Docker image, start is as a container and configure the ports, the name, and the credentials.
 
 <div id="attachment_1912" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Run-RabbitMQ-in-a-Docker-container.jpg"><img aria-describedby="caption-attachment-1912" loading="lazy" class="wp-image-1912" src="/wp-content/uploads/2020/04/Run-RabbitMQ-in-a-Docker-container.jpg" alt="Run RabbitMQ in a Docker container" width="700" height="478" /></a>
+  <a href="/assets/img/posts/2020/04/Run-RabbitMQ-in-a-Docker-container.jpg"><img aria-describedby="caption-attachment-1912" loading="lazy" class="wp-image-1912" src="/assets/img/posts/2020/04/Run-RabbitMQ-in-a-Docker-container.jpg" alt="Run RabbitMQ in a Docker container" width="700" height="478" /></a>
   
   <p id="caption-attachment-1912" class="wp-caption-text">
     Run RabbitMQ in a Docker container
@@ -198,7 +198,7 @@ Don&#8217;t worry if you don&#8217;t understand them. Simplified these two lines
 After RabbitMQ is started, you can navigate to localhost:15672 and login with guest as user and guest as password.
 
 <div id="attachment_1913" style="width: 586px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Login-into-the-RabbitMQ-management-portal.jpg"><img aria-describedby="caption-attachment-1913" loading="lazy" class="size-full wp-image-1913" src="/wp-content/uploads/2020/04/Login-into-the-RabbitMQ-management-portal.jpg" alt="Login into the RabbitMQ management portal" width="576" height="243" /></a>
+  <a href="/assets/img/posts/2020/04/Login-into-the-RabbitMQ-management-portal.jpg"><img aria-describedby="caption-attachment-1913" loading="lazy" class="size-full wp-image-1913" src="/assets/img/posts/2020/04/Login-into-the-RabbitMQ-management-portal.jpg" alt="Login into the RabbitMQ management portal" width="576" height="243" /></a>
   
   <p id="caption-attachment-1913" class="wp-caption-text">
     Login into the RabbitMQ management portal
@@ -208,7 +208,7 @@ After RabbitMQ is started, you can navigate to localhost:15672 and login with gu
 Navigate to the Queues tab and you will see that there is no queue yet.
 
 <div id="attachment_1914" style="width: 656px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/No-queues-are-created-yet.jpg"><img aria-describedby="caption-attachment-1914" loading="lazy" class="wp-image-1914 size-full" src="/wp-content/uploads/2020/04/No-queues-are-created-yet.jpg" alt="A message was published and consumed" width="646" height="474" /></a>
+  <a href="/assets/img/posts/2020/04/No-queues-are-created-yet.jpg"><img aria-describedby="caption-attachment-1914" loading="lazy" class="wp-image-1914 size-full" src="/assets/img/posts/2020/04/No-queues-are-created-yet.jpg" alt="A message was published and consumed" width="646" height="474" /></a>
   
   <p id="caption-attachment-1914" class="wp-caption-text">
     A message was published and consumed
@@ -218,7 +218,7 @@ Navigate to the Queues tab and you will see that there is no queue yet.
 Now you can start the OrderApi and the CustomerApi project. The order how you start them doesn&#8217;t matter. After you started the CustomerApi, the CustomerQueue will be created and you can see it in the management portal.
 
 <div id="attachment_1915" style="width: 883px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/The-CustomerQueue-was-created-from-the-CustomerApi-solution.jpg"><img aria-describedby="caption-attachment-1915" loading="lazy" class="wp-image-1915" src="/wp-content/uploads/2020/04/The-CustomerQueue-was-created-from-the-CustomerApi-solution.jpg" alt="No queues are created yet" width="873" height="528" /></a>
+  <a href="/assets/img/posts/2020/04/The-CustomerQueue-was-created-from-the-CustomerApi-solution.jpg"><img aria-describedby="caption-attachment-1915" loading="lazy" class="wp-image-1915" src="/assets/img/posts/2020/04/The-CustomerQueue-was-created-from-the-CustomerApi-solution.jpg" alt="No queues are created yet" width="873" height="528" /></a>
   
   <p id="caption-attachment-1915" class="wp-caption-text">
     No queues are created yet
@@ -228,7 +228,7 @@ Now you can start the OrderApi and the CustomerApi project. The order how you st
 Click on CustomerQueue and you will see that there is no message in the queue yet and that there is one consumer (the OrderApi).
 
 <div id="attachment_1916" style="width: 616px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Overview-of-the-CustomerQueue-and-its-Consumers.jpg"><img aria-describedby="caption-attachment-1916" loading="lazy" class="wp-image-1916" src="/wp-content/uploads/2020/04/Overview-of-the-CustomerQueue-and-its-Consumers.jpg" alt="Overview of the CustomerQueue and its Consumers" width="606" height="700" /></a>
+  <a href="/assets/img/posts/2020/04/Overview-of-the-CustomerQueue-and-its-Consumers.jpg"><img aria-describedby="caption-attachment-1916" loading="lazy" class="wp-image-1916" src="/assets/img/posts/2020/04/Overview-of-the-CustomerQueue-and-its-Consumers.jpg" alt="Overview of the CustomerQueue and its Consumers" width="606" height="700" /></a>
   
   <p id="caption-attachment-1916" class="wp-caption-text">
     Overview of the CustomerQueue and its Consumers
@@ -238,7 +238,7 @@ Click on CustomerQueue and you will see that there is no message in the queue ye
 Go to the Put action of the CustomerApi and update a customer. If you use my in-memory database you can use the Guid &#8220;9f35b48d-cb87-4783-bfdb-21e36012930a&#8221;. The other values don&#8217;t matter for this test.
 
 <div id="attachment_1917" style="width: 541px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Update-a-customer.jpg"><img aria-describedby="caption-attachment-1917" loading="lazy" class="size-full wp-image-1917" src="/wp-content/uploads/2020/04/Update-a-customer.jpg" alt="Update a customer" width="531" height="688" /></a>
+  <a href="/assets/img/posts/2020/04/Update-a-customer.jpg"><img aria-describedby="caption-attachment-1917" loading="lazy" class="size-full wp-image-1917" src="/assets/img/posts/2020/04/Update-a-customer.jpg" alt="Update a customer" width="531" height="688" /></a>
   
   <p id="caption-attachment-1917" class="wp-caption-text">
     Update a customer
@@ -248,7 +248,7 @@ Go to the Put action of the CustomerApi and update a customer. If you use my in-
 After you sent the update request, go back to the RabbitMQ management portal and you will see that a message was published to the queue and also a message was consumed.
 
 <div id="attachment_1918" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/A-message-was-published-and-consumed.jpg"><img aria-describedby="caption-attachment-1918" loading="lazy" class="wp-image-1918" src="/wp-content/uploads/2020/04/A-message-was-published-and-consumed.jpg" alt="A message was published and consumed" width="700" height="387" /></a>
+  <a href="/assets/img/posts/2020/04/A-message-was-published-and-consumed.jpg"><img aria-describedby="caption-attachment-1918" loading="lazy" class="wp-image-1918" src="/assets/img/posts/2020/04/A-message-was-published-and-consumed.jpg" alt="A message was published and consumed" width="700" height="387" /></a>
   
   <p id="caption-attachment-1918" class="wp-caption-text">
     A message was published and consumed

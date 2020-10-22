@@ -10,7 +10,7 @@ The proxy pattern belongs to the group of structural patterns and is often used 
 The proxy often acts as a substitute of a concrete object, as shown on the following UML diagram.
 
 <div id="attachment_2222" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/06/Proxy-Pattern-UML.jpg"><img aria-describedby="caption-attachment-2222" loading="lazy" class="wp-image-2222" src="/wp-content/uploads/2020/06/Proxy-Pattern-UML.jpg" alt="Proxy Pattern UML" width="700" height="390" /></a>
+  <a href="/assets/img/posts/2020/06/Proxy-Pattern-UML.jpg"><img aria-describedby="caption-attachment-2222" loading="lazy" class="wp-image-2222" src="/assets/img/posts/2020/06/Proxy-Pattern-UML.jpg" alt="Proxy Pattern UML" width="700" height="390" /></a>
   
   <p id="caption-attachment-2222" class="wp-caption-text">
     Proxy Pattern UML (<a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank" rel="noopener noreferrer">Source</a>)
@@ -75,7 +75,7 @@ return await client.SayHelloAsync(request);
 Start both projects in my demo and navigate to /RemoteProxy/HelloMessage and you will see the message in your browser.
 
 <div id="attachment_2223" style="width: 440px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/06/Getting-a-message-from-the-Remote-Proxy.jpg"><img aria-describedby="caption-attachment-2223" loading="lazy" class="size-full wp-image-2223" src="/wp-content/uploads/2020/06/Getting-a-message-from-the-Remote-Proxy.jpg" alt="Getting a message from the Remote Proxy" width="430" height="103" /></a>
+  <a href="/assets/img/posts/2020/06/Getting-a-message-from-the-Remote-Proxy.jpg"><img aria-describedby="caption-attachment-2223" loading="lazy" class="size-full wp-image-2223" src="/assets/img/posts/2020/06/Getting-a-message-from-the-Remote-Proxy.jpg" alt="Getting a message from the Remote Proxy" width="430" height="103" /></a>
   
   <p id="caption-attachment-2223" class="wp-caption-text">
     Getting a message from the Remote Proxy

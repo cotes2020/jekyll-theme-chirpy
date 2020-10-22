@@ -18,7 +18,7 @@ docker run -p 32789:80 -p 32788:443 -e "ASPNETCORE_URLS=https://+;http://+" wolf
 This command sets a port mapping, adds an environment variable and starts the image customerapi from my Dockerhub repository. Executing this command will result in the following exception:
 
 <div id="attachment_1941" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Start-a-.net-core-application-without-a-certificate.jpg"><img aria-describedby="caption-attachment-1941" loading="lazy" class="wp-image-1941" src="/wp-content/uploads/2020/04/Start-a-.net-core-application-without-a-certificate.jpg" alt="Start a .NET Core application without a certificate" width="700" height="133" /></a>
+  <a href="/assets/img/posts/2020/04/Start-a-.net-core-application-without-a-certificate.jpg"><img aria-describedby="caption-attachment-1941" loading="lazy" class="wp-image-1941" src="/assets/img/posts/2020/04/Start-a-.net-core-application-without-a-certificate.jpg" alt="Start a .NET Core application without a certificate" width="700" height="133" /></a>
   
   <p id="caption-attachment-1941" class="wp-caption-text">
     Start a .NET Core application without a certificate
@@ -33,7 +33,7 @@ You can create a certificate with the following command: <span class="">dotnet d
 
 <div>
   <div id="attachment_1943" style="width: 710px" class="wp-caption aligncenter">
-    <a href="/wp-content/uploads/2020/04/Creating-the-certificate.jpg"><img aria-describedby="caption-attachment-1943" loading="lazy" class="wp-image-1943" src="/wp-content/uploads/2020/04/Creating-the-certificate.jpg" alt="Creating the certificate to use ASP .Net Core with HTTPS in Docker" width="700" height="114" /></a>
+    <a href="/assets/img/posts/2020/04/Creating-the-certificate.jpg"><img aria-describedby="caption-attachment-1943" loading="lazy" class="wp-image-1943" src="/assets/img/posts/2020/04/Creating-the-certificate.jpg" alt="Creating the certificate to use ASP .Net Core with HTTPS in Docker" width="700" height="114" /></a>
     
     <p id="caption-attachment-1943" class="wp-caption-text">
       Creating the certificate
@@ -52,7 +52,7 @@ docker run -p 32789:80 -p 32788:443 -e Kestrel\_\_Certificates\_\_Default\_\_Pat
 [/code]
 
 <div id="attachment_1944" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg"><img aria-describedby="caption-attachment-1944" loading="lazy" class="wp-image-1944" src="/wp-content/uploads/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg" alt="Start a .NET Core application and provide a certificate" width="700" height="94" /></a>
+  <a href="/assets/img/posts/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg"><img aria-describedby="caption-attachment-1944" loading="lazy" class="wp-image-1944" src="/assets/img/posts/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg" alt="Start a .NET Core application and provide a certificate" width="700" height="94" /></a>
   
   <p id="caption-attachment-1944" class="wp-caption-text">
     Start a .NET Core application and provide a certificate
@@ -62,7 +62,7 @@ docker run -p 32789:80 -p 32788:443 -e Kestrel\_\_Certificates\_\_Default\_\_Pat
 When you open https://localhost:32788, you should see the Swagger UI.
 
 <div id="attachment_1945" style="width: 545px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2020/04/Testing-the-application-with-HTTPS.jpg"><img aria-describedby="caption-attachment-1945" loading="lazy" class="wp-image-1945 size-full" src="/wp-content/uploads/2020/04/Testing-the-application-with-HTTPS.jpg" alt="Testing ASP .Net Core with HTTPS in Docker" width="535" height="497" /></a>
+  <a href="/assets/img/posts/2020/04/Testing-the-application-with-HTTPS.jpg"><img aria-describedby="caption-attachment-1945" loading="lazy" class="wp-image-1945 size-full" src="/assets/img/posts/2020/04/Testing-the-application-with-HTTPS.jpg" alt="Testing ASP .Net Core with HTTPS in Docker" width="535" height="497" /></a>
   
   <p id="caption-attachment-1945" class="wp-caption-text">
     Testing the application with HTTPS

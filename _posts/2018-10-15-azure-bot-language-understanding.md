@@ -12,7 +12,7 @@ With the Azure bot framework and luis, Microsoft offers two great features to im
 If you created your Azure bot the same way as described in part 1, it will already have luis integration. To add new language features, go to the <a href="https://eu.luis.ai/home" target="_blank" rel="noopener">luis homepage</a> and login with your Azure credentials. After you logged in, you should see your chat bot. Open it and you will see 4 already existing intents.
 
 <div id="attachment_1450" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/10/List-of-predefined-intents.jpg"><img aria-describedby="caption-attachment-1450" loading="lazy" class="wp-image-1450" src="/wp-content/uploads/2018/10/List-of-predefined-intents.jpg" alt="List of predefined intents" width="700" height="277" /></a>
+  <a href="/assets/img/posts/2018/10/List-of-predefined-intents.jpg"><img aria-describedby="caption-attachment-1450" loading="lazy" class="wp-image-1450" src="/assets/img/posts/2018/10/List-of-predefined-intents.jpg" alt="List of predefined intents" width="700" height="277" /></a>
   
   <p id="caption-attachment-1450" class="wp-caption-text">
     List of predefined intents
@@ -26,7 +26,7 @@ An intent is something the user wants to do. To teach your app what the user wan
 To create a new intent, click on + Create new intent and enter a name, for example, Weather. Now type in examples (utterances), the user might say.
 
 <div id="attachment_1451" style="width: 619px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/10/Add-a-new-intent.jpg"><img aria-describedby="caption-attachment-1451" loading="lazy" class="wp-image-1451" src="/wp-content/uploads/2018/10/Add-a-new-intent.jpg" alt="Add a new intent" width="609" height="700"  /></a>
+  <a href="/assets/img/posts/2018/10/Add-a-new-intent.jpg"><img aria-describedby="caption-attachment-1451" loading="lazy" class="wp-image-1451" src="/assets/img/posts/2018/10/Add-a-new-intent.jpg" alt="Add a new intent" width="609" height="700"  /></a>
   
   <p id="caption-attachment-1451" class="wp-caption-text">
     Add a new intent
@@ -40,7 +40,7 @@ After you are done, click on Train in the right top corner and after the trainin
 Now that you have created a new intend, your bot has to handle it. To do something with the new intent, you have to add it to the switch statement in the OnTurnAsync method in the BasicBot.cs file. The simplest way to add the new intent is to add a new case with &#8220;Weather&#8221; and then return a message.
 
 <div id="attachment_1452" style="width: 603px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/10/Handle-the-intent-in-the-bot.jpg"><img aria-describedby="caption-attachment-1452" loading="lazy" class="size-full wp-image-1452" src="/wp-content/uploads/2018/10/Handle-the-intent-in-the-bot.jpg" alt="Handle the intent in the bot" width="593" height="185" /></a>
+  <a href="/assets/img/posts/2018/10/Handle-the-intent-in-the-bot.jpg"><img aria-describedby="caption-attachment-1452" loading="lazy" class="size-full wp-image-1452" src="/assets/img/posts/2018/10/Handle-the-intent-in-the-bot.jpg" alt="Handle the intent in the bot" width="593" height="185" /></a>
   
   <p id="caption-attachment-1452" class="wp-caption-text">
     Handle the intent in the bot
@@ -50,7 +50,7 @@ Now that you have created a new intend, your bot has to handle it. To do somethi
 Additionally, I remove the welcome message by commenting the following code:
 
 <div id="attachment_1453" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/10/Remove-welcome-message.jpg"><img aria-describedby="caption-attachment-1453" loading="lazy" class="wp-image-1453" src="/wp-content/uploads/2018/10/Remove-welcome-message.jpg" alt="Remove welcome message" width="700" height="272" /></a>
+  <a href="/assets/img/posts/2018/10/Remove-welcome-message.jpg"><img aria-describedby="caption-attachment-1453" loading="lazy" class="wp-image-1453" src="/assets/img/posts/2018/10/Remove-welcome-message.jpg" alt="Remove welcome message" width="700" height="272" /></a>
   
   <p id="caption-attachment-1453" class="wp-caption-text">
     Remove welcome message
@@ -60,7 +60,7 @@ Additionally, I remove the welcome message by commenting the following code:
 Check in your code and after it is deployed, you can test it.
 
 <div id="attachment_1455" style="width: 585px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/10/Testing-the-weather-intent.jpg"><img aria-describedby="caption-attachment-1455" loading="lazy" class="size-full wp-image-1455" src="/wp-content/uploads/2018/10/Testing-the-weather-intent.jpg" alt="Testing the weather intent" width="575" height="275" /></a>
+  <a href="/assets/img/posts/2018/10/Testing-the-weather-intent.jpg"><img aria-describedby="caption-attachment-1455" loading="lazy" class="size-full wp-image-1455" src="/assets/img/posts/2018/10/Testing-the-weather-intent.jpg" alt="Testing the weather intent" width="575" height="275" /></a>
   
   <p id="caption-attachment-1455" class="wp-caption-text">
     Testing the weather intent
@@ -80,7 +80,7 @@ The bot should react to the city, the user enters. Therefore the bot has to know
 To add the entity, add a new utterance to the intent, for example, is it sunny in zurich? Then click on zurich and enter City to create the City entity. In the next window set the Entity type to simple and click done.
 
 <div id="attachment_1456" style="width: 698px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/10/Define-an-entity-in-luis.jpg"><img aria-describedby="caption-attachment-1456" loading="lazy" class="size-full wp-image-1456" src="/wp-content/uploads/2018/10/Define-an-entity-in-luis.jpg" alt="Define an entity in luis" width="688" height="567" /></a>
+  <a href="/assets/img/posts/2018/10/Define-an-entity-in-luis.jpg"><img aria-describedby="caption-attachment-1456" loading="lazy" class="size-full wp-image-1456" src="/assets/img/posts/2018/10/Define-an-entity-in-luis.jpg" alt="Define an entity in luis" width="688" height="567" /></a>
   
   <p id="caption-attachment-1456" class="wp-caption-text">
     Define an entity in luis
@@ -90,7 +90,7 @@ To add the entity, add a new utterance to the intent, for example, is it sunny i
 Then I enter all previously used utterance but this time with a city. After all utterances are entered, I click on each city and select the city entity. This marks it as an entity.
 
 <div id="attachment_1457" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/10/Applying-the-city-entity.jpg"><img aria-describedby="caption-attachment-1457" loading="lazy" class="wp-image-1457" src="/wp-content/uploads/2018/10/Applying-the-city-entity.jpg" alt="Applying the city entity" width="700" height="539" /></a>
+  <a href="/assets/img/posts/2018/10/Applying-the-city-entity.jpg"><img aria-describedby="caption-attachment-1457" loading="lazy" class="wp-image-1457" src="/assets/img/posts/2018/10/Applying-the-city-entity.jpg" alt="Applying the city entity" width="700" height="539" /></a>
   
   <p id="caption-attachment-1457" class="wp-caption-text">
     Applying the city entity
@@ -104,7 +104,7 @@ Click on Train and then on Publish
 The following code shows how to get the entity of the luisResult and then give an answer, according to the entity.
 
 <div id="attachment_1458" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/10/Handle-the-entity-in-the-bot.jpg"><img aria-describedby="caption-attachment-1458" loading="lazy" class="wp-image-1458" src="/wp-content/uploads/2018/10/Handle-the-entity-in-the-bot.jpg" alt="Handle the entity in the Azure bot" width="700" height="250" /></a>
+  <a href="/assets/img/posts/2018/10/Handle-the-entity-in-the-bot.jpg"><img aria-describedby="caption-attachment-1458" loading="lazy" class="wp-image-1458" src="/assets/img/posts/2018/10/Handle-the-entity-in-the-bot.jpg" alt="Handle the entity in the Azure bot" width="700" height="250" /></a>
   
   <p id="caption-attachment-1458" class="wp-caption-text">
     Handle the entity in the Azure bot

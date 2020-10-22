@@ -32,7 +32,7 @@ To create a new VM and put it into an availability group, follow these steps:
   3. On the Create virtual machine, provide a name, user name, password, subscription, and location for your new VM.
 
 <div id="attachment_995" style="width: 607px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/03/Create-a-new-VM.jpg"><img aria-describedby="caption-attachment-995" loading="lazy" class="wp-image-995" src="/wp-content/uploads/2018/03/Create-a-new-VM.jpg" alt="Create a new VM to Manage ARM VM Availability" width="597" height="700" /></a>
+  <a href="/assets/img/posts/2018/03/Create-a-new-VM.jpg"><img aria-describedby="caption-attachment-995" loading="lazy" class="wp-image-995" src="/assets/img/posts/2018/03/Create-a-new-VM.jpg" alt="Create a new VM to Manage ARM VM Availability" width="597" height="700" /></a>
   
   <p id="caption-attachment-995" class="wp-caption-text">
     Create a new VM
@@ -49,7 +49,7 @@ To create a new VM and put it into an availability group, follow these steps:
 </ol>
 
 <div id="attachment_994" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/03/Create-a-new-Availability-Set.jpg"><img aria-describedby="caption-attachment-994" loading="lazy" class="wp-image-994" src="/wp-content/uploads/2018/03/Create-a-new-Availability-Set.jpg" alt="Create a new Availability Set" width="700" height="230" /></a>
+  <a href="/assets/img/posts/2018/03/Create-a-new-Availability-Set.jpg"><img aria-describedby="caption-attachment-994" loading="lazy" class="wp-image-994" src="/assets/img/posts/2018/03/Create-a-new-Availability-Set.jpg" alt="Create a new Availability Set" width="700" height="230" /></a>
   
   <p id="caption-attachment-994" class="wp-caption-text">
     Create a new Availability Set
@@ -84,7 +84,7 @@ To add an Azure Load Balancer, follow these steps:
   5. Select or add a new Public IP address.
 
 <div id="attachment_996" style="width: 319px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/03/Create-a-Load-Balancer.jpg"><img aria-describedby="caption-attachment-996" loading="lazy" class="size-full wp-image-996" src="/wp-content/uploads/2018/03/Create-a-Load-Balancer.jpg" alt="Create a Load Balancer" width="309" height="530" /></a>
+  <a href="/assets/img/posts/2018/03/Create-a-Load-Balancer.jpg"><img aria-describedby="caption-attachment-996" loading="lazy" class="size-full wp-image-996" src="/assets/img/posts/2018/03/Create-a-Load-Balancer.jpg" alt="Create a Load Balancer" width="309" height="530" /></a>
   
   <p id="caption-attachment-996" class="wp-caption-text">
     Create a Load Balancer
@@ -107,7 +107,7 @@ To add an Azure Load Balancer, follow these steps:
 </ol>
 
 <div id="attachment_997" style="width: 588px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/03/Add-a-backend-pool.jpg"><img aria-describedby="caption-attachment-997" loading="lazy" class="size-full wp-image-997" src="/wp-content/uploads/2018/03/Add-a-backend-pool.jpg" alt="Add a backend pool" width="578" height="471" /></a>
+  <a href="/assets/img/posts/2018/03/Add-a-backend-pool.jpg"><img aria-describedby="caption-attachment-997" loading="lazy" class="size-full wp-image-997" src="/assets/img/posts/2018/03/Add-a-backend-pool.jpg" alt="Add a backend pool" width="578" height="471" /></a>
   
   <p id="caption-attachment-997" class="wp-caption-text">
     Add a backend pool
@@ -121,7 +121,7 @@ To add an Azure Load Balancer, follow these steps:
 </ol>
 
 <div id="attachment_998" style="width: 547px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/03/The-created-backend-pool.jpg"><img aria-describedby="caption-attachment-998" loading="lazy" class="size-full wp-image-998" src="/wp-content/uploads/2018/03/The-created-backend-pool.jpg" alt="The created backend pool" width="537" height="457" /></a>
+  <a href="/assets/img/posts/2018/03/The-created-backend-pool.jpg"><img aria-describedby="caption-attachment-998" loading="lazy" class="size-full wp-image-998" src="/assets/img/posts/2018/03/The-created-backend-pool.jpg" alt="The created backend pool" width="537" height="457" /></a>
   
   <p id="caption-attachment-998" class="wp-caption-text">
     The created backend pool
@@ -138,7 +138,7 @@ To add an Azure Load Balancer, follow these steps:
 </ol>
 
 <div id="attachment_999" style="width: 590px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/03/Add-health-probe-to-your-Load-Balancer.jpg"><img aria-describedby="caption-attachment-999" loading="lazy" class="size-full wp-image-999" src="/wp-content/uploads/2018/03/Add-health-probe-to-your-Load-Balancer.jpg" alt="Add health probe to your Load Balancer" width="580" height="442" /></a>
+  <a href="/assets/img/posts/2018/03/Add-health-probe-to-your-Load-Balancer.jpg"><img aria-describedby="caption-attachment-999" loading="lazy" class="size-full wp-image-999" src="/assets/img/posts/2018/03/Add-health-probe-to-your-Load-Balancer.jpg" alt="Add health probe to your Load Balancer" width="580" height="442" /></a>
   
   <p id="caption-attachment-999" class="wp-caption-text">
     Add health probe to your Load Balancer
@@ -152,7 +152,7 @@ To add an Azure Load Balancer, follow these steps:
 </ol>
 
 <div id="attachment_1000" style="width: 1028px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/03/The-created-health-probe.jpg"><img aria-describedby="caption-attachment-1000" loading="lazy" class="size-full wp-image-1000" src="/wp-content/uploads/2018/03/The-created-health-probe.jpg" alt="The created health probe" width="1018" height="485" /></a>
+  <a href="/assets/img/posts/2018/03/The-created-health-probe.jpg"><img aria-describedby="caption-attachment-1000" loading="lazy" class="size-full wp-image-1000" src="/assets/img/posts/2018/03/The-created-health-probe.jpg" alt="The created health probe" width="1018" height="485" /></a>
   
   <p id="caption-attachment-1000" class="wp-caption-text">
     The created health probe
@@ -169,7 +169,7 @@ To add an Azure Load Balancer, follow these steps:
 </ol>
 
 <div id="attachment_1001" style="width: 587px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2018/03/Create-a-load-balancing-rule.jpg"><img aria-describedby="caption-attachment-1001" loading="lazy" class="size-full wp-image-1001" src="/wp-content/uploads/2018/03/Create-a-load-balancing-rule.jpg" alt="Create a load balancing rule" width="577" height="694" /></a>
+  <a href="/assets/img/posts/2018/03/Create-a-load-balancing-rule.jpg"><img aria-describedby="caption-attachment-1001" loading="lazy" class="size-full wp-image-1001" src="/assets/img/posts/2018/03/Create-a-load-balancing-rule.jpg" alt="Create a load balancing rule" width="577" height="694" /></a>
   
   <p id="caption-attachment-1001" class="wp-caption-text">
     Create a load balancing rule
