@@ -74,7 +74,7 @@
 
     get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; }
 
-    get isLightkMode() { return this.mode == ModeToggle.LIGHT_MODE; }
+    get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; }
 
     get hasMode() { return this.mode != null; }
 
@@ -83,7 +83,7 @@
     flipMode() {
       if (this.hasMode) {
         if (this.isSysDarkPrefer) {
-          if (this.isLightkMode) {
+          if (this.isLightMode) {
             this.clearMode();
           } else {
             this.setLight();
