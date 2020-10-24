@@ -42,37 +42,39 @@ XSS can occur when you display text which a user entered. ASP .NET Core automati
 
 The following code creates a form where the user can enter his user name. The input is displayed once in a safe way and once in an unsafe way.
 
-[code language=&#8221;csharp&#8221;]  
+```csharp  
 @model Customer
 
-<form asp-action="Index">  
-<div class="form-group">  
-<label asp-for="UserName">Please enter your user name</label>  
-<input type="text" class="form-control" asp-for="UserName" value="User">  
-</div>  
-<button type="submit" class="mt-md-1 btn btn-primary">Submit</button>  
+<div asp-validation-summary="All"></div>
+
+<form asp-action="Index">
+    <div class="form-group">
+        <label asp-for="UserName">Please enter your user name</label>
+        <input type="text" class="form-control" asp-for="UserName" value="User">
+    </div>
+    <button type="submit" class="mt-md-1 btn btn-primary">Submit</button>
 </form>
 
 <br />
 
-@if (!string.IsNullOrEmpty(Model.UserName))  
-{  
-<div class="row">  
-<p>Safe output: @(Model.UserName)</p>  
-</div>  
-<div class="row">  
-<p>Unsafe output: @Html.Raw(Model.UserName)</p>  
-</div>  
+@if (!string.IsNullOrEmpty(Model.UserName))
+{
+    <div class="row">
+        <p>Safe output: @(Model.UserName)</p>
+    </div>
+    <div class="row">
+        <p>Unsafe output: @Html.Raw(Model.UserName)</p>
+    </div>
 }  
-[/code]
+```
 
 When a user enters his user name everything is fine. But when an attacker enters Javascript, the Javascript will be executed when the text is rendered inside the unsafe output
 
 tag. When you enter the following code as your name:
 
-[code language=&#8221;javascript&#8221;]  
+```javascript  
 <script>alert(&#8216;attacked&#8217;)</script>  
-[/code]
+```
 
 and click submit, an alert windows will be displayed.
 
@@ -98,38 +100,38 @@ When you click on OK, the text will be rendered into the safe output line and no
 
 Another way to inject code is through query parameters. If your application ready query parameters but doesn&#8217;t sanitize them, Javascript in it will be executed. The following code contains two forms. When you click on the button a query parameter will be read and printed to an alert box.
 
-[code language=&#8221;csharp&#8221;]  
+```csharp  
 @using System.Text.Encodings.Web
 
-@model Customer  
+@model Customer
 @inject JavaScriptEncoder JavaScriptEncoder
 
-<h2>Unsafe Javascript</h2>  
-<form asp-action="JavascriptAttack">  
-@Html.HiddenFor(m => m.UserId)  
-<div class="form-group">  
-<label for="userName">Please enter your user id</label>  
-<input type="text" class="form-control" id="userName" name="userName" value="User">  
-</div>  
-<button type="submit" class="mt-md-1 btn btn-primary" onclick="alert(&#8216;Saving user name for account with id: @Context.Request.Query["userId"]&#8217;);">Submit</button>  
+<h2>Unsafe Javascript</h2>
+<form asp-action="JavascriptAttack">
+    @Html.HiddenFor(m => m.UserId)
+    <div class="form-group">
+        <label for="userName">Please enter your user id</label>
+        <input type="text" class="form-control" id="userName" name="userName" value="User">
+    </div>
+    <button type="submit" class="mt-md-1 btn btn-primary" onclick="alert('Saving user name for account with id: @Context.Request.Query["userId"]');">Submit</button>
 </form>
-
-<h2>Safe Javascript</h2>  
-<form asp-action="JavascriptAttack">  
-@Html.HiddenFor(m => m.UserId)  
-<div class="form-group">  
-<label for="userName2">Please enter your user id</label>  
-<input type="text" class="form-control" id="userName2" name="userName2" value="User">  
-</div>  
-<button type="submit" class="mt-md-1 btn btn-primary" onclick="alert(&#8216;Saving user name for account with id: @JavaScriptEncoder.Encode(Context.Request.Query["UserId"])&#8217;);">Submit</button>  
-</form>  
-[/code]
+<br />
+<h2>Safe Javascript</h2>
+<form asp-action="JavascriptAttack">
+    @Html.HiddenFor(m => m.UserId)
+    <div class="form-group">
+        <label for="userName2">Please enter your user id</label>
+        <input type="text" class="form-control" id="userName2" name="userName2" value="User">
+    </div>
+    <button type="submit" class="mt-md-1 btn btn-primary" onclick="alert('Saving user name for account with id: @JavaScriptEncoder.Encode(Context.Request.Query["UserId"])');">Submit</button>
+</form>
+```
 
 The first submit button will execute Javascript whereas the second one uses the JavaScriptEncode to encode the text first. To simulate an attack replace the value of the UserId with the following code and click enter:
 
-[code language=&#8221;javascript&#8221;]  
+```javascript  
 %27);alert(&#8216;You got attacked&#8217;);//  
-[/code]
+```
 
 Click the submit button of the unsafe form and you will see two Javascript alerts. The first one saying &#8220;Saving user name for account with id: &#8221; and then a second one saying &#8220;You got attacked&#8221;.
 

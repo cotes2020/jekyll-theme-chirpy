@@ -89,29 +89,22 @@ Repeat this export for all other projects in your solution. After you are finish
 
 Unzip every zip file into a separate folder and delete the zip files. I get quite often a warning that the file header is corrupt during the unzip. You can ignore this message though. Next, create a file with a vstemplate ending, for example, Template.vstemplate in the folder where you unzipped your templates. This file contains links to all projects in the template in the XML format. Copy the following code into the file:
 
-[code language=&#8221;XML&#8221;]  
-<VSTemplate Version="2.0.0" Type="ProjectGroup"  
-xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">  
-<TemplateData>  
-<Name>My Template</Name>  
-<Description>A template with a three tier architecture.</Description>  
-<ProjectType>CSharp</ProjectType>  
-</TemplateData>  
-<TemplateContent>  
-<ProjectCollection>  
-<ProjectTemplateLink ProjectName=" Template.Api" CopyParameters="true">  
-Template.Api\MyTemplate.vstemplate  
-</ProjectTemplateLink>  
-<ProjectTemplateLink ProjectName=" Template.Service" CopyParameters="true">  
-Template.Service\MyTemplate.vstemplate  
-</ProjectTemplateLink>  
-<ProjectTemplateLink ProjectName="Template.Data" CopyParameters="true">  
-Template.Data\MyTemplate.vstemplate  
-</ProjectTemplateLink>  
-</ProjectCollection>  
-</TemplateContent>  
-</VSTemplate>  
-[/code]
+```xml  
+<VSTemplate xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Version="2.0.0" Type="ProjectGroup">
+   <TemplateData>
+      <Name>My Template</Name>
+      <Description>A template with a three tier architecture.</Description>
+      <ProjectType>CSharp</ProjectType>
+   </TemplateData>
+   <TemplateContent>
+      <ProjectCollection>
+         <ProjectTemplateLink ProjectName=" Template.Api" CopyParameters="true">Template.Api\MyTemplate.vstemplate</ProjectTemplateLink>
+         <ProjectTemplateLink ProjectName=" Template.Service" CopyParameters="true">Template.Service\MyTemplate.vstemplate</ProjectTemplateLink>
+         <ProjectTemplateLink ProjectName="Template.Data" CopyParameters="true">Template.Data\MyTemplate.vstemplate</ProjectTemplateLink>
+      </ProjectCollection>
+   </TemplateContent>
+</VSTemplate>
+```
 
 Save the file and create a zip of the three folder and the template file. You can easily do this by highlighting everything and the right-click and then select Send to &#8211;> Compressed (zipped) folder. Your folder should contain the following files and directories now:
 
@@ -149,28 +142,28 @@ Having a template is nice but it would be even nicer if the projects weren&#8217
 
 I am replacing in all files Template with $ext_safeprojectname$, for example, the TemplateService class:
 
-[code language=&#8221;CSharp&#8221;]  
-using System.Collections.Generic;  
+```csharp  
+using System.Collections.Generic;
 using $ext_safeprojectname$.Data;
 
-namespace $ext_safeprojectname$.Service  
-{  
-public class $ext\_safeprojectname$Service : I$ext\_safeprojectname$Service  
-{  
-private readonly I$ext\_safeprojectname$Repository \_repository;
+namespace $ext_safeprojectname$.Service
+{
+    public class $ext_safeprojectname$Service : I$ext_safeprojectname$Service
+    {
+        private readonly I$ext_safeprojectname$Repository _repository;
 
-public TemplateService(I$ext_safeprojectname$Repository repository)  
-{  
-_repository = repository;  
-}
+        public $ext_safeprojectname$Service(I$ext_safeprojectname$Repository repository)
+        {
+            _repository = repository;
+        }
 
-public List<string> GetAll()  
-{  
-return _repository.GetAll();  
-}  
-}  
-}  
-[/code]
+        public List<string> GetAll()
+        {
+            return _repository.GetAll();
+        }
+    }
+} 
+```
 
 Adding the variable also adds a lot of errors in your solution. You can ignore them though.
 
@@ -198,29 +191,22 @@ Not only class names and namespaces should have the provided name, but also the 
 
 Repeat the export from before by clicking on Project &#8211;> Export Template and export all your projects. Delete your previously created folders and unzipp the exported zip files. In the vstemplate file, replace Template with $safeprojectname$. This will rename the project files. Also make sure that CopyParameters=&#8221;true&#8221; is set for every project. Otherwise, the user input won&#8217;t be copied and the variables will be empty.
 
-[code language=&#8221;XML&#8221;]  
-<VSTemplate Version="2.0.0" Type="ProjectGroup"  
-xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">  
-<TemplateData>  
-<Name>My Template</Name>  
-<Description>A template with a three tier architecture.</Description>  
-<ProjectType>CSharp</ProjectType>  
-</TemplateData>  
-<TemplateContent>  
-<ProjectCollection>  
-<ProjectTemplateLink ProjectName="$safeprojectname$.Api" CopyParameters="true">  
-Template.Api\MyTemplate.vstemplate  
-</ProjectTemplateLink>  
-<ProjectTemplateLink ProjectName="$safeprojectname$.Service" CopyParameters="true">  
-Template.Service\MyTemplate.vstemplate  
-</ProjectTemplateLink>  
-<ProjectTemplateLink ProjectName="$safeprojectname$.Data" CopyParameters="true">  
-Template.Data\MyTemplate.vstemplate  
-</ProjectTemplateLink>  
-</ProjectCollection>  
-</TemplateContent>  
-</VSTemplate>  
-[/code]
+```xml  
+<VSTemplate xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Version="2.0.0" Type="ProjectGroup">
+   <TemplateData>
+      <Name>My Template</Name>
+      <Description>A template with a three tier architecture.</Description>
+      <ProjectType>CSharp</ProjectType>
+   </TemplateData>
+   <TemplateContent>
+      <ProjectCollection>
+         <ProjectTemplateLink ProjectName="$safeprojectname$.Api" CopyParameters="true">Template.Api\MyTemplate.vstemplate</ProjectTemplateLink>
+         <ProjectTemplateLink ProjectName="$safeprojectname$.Service" CopyParameters="true">Template.Service\MyTemplate.vstemplate</ProjectTemplateLink>
+         <ProjectTemplateLink ProjectName="$safeprojectname$.Data" CopyParameters="true">Template.Data\MyTemplate.vstemplate</ProjectTemplateLink>
+      </ProjectCollection>
+   </TemplateContent>
+</VSTemplate>
+```
 
 Zip all files and copy the zip over the previously created zip in the Visual C# folder. Create a new project and select your template and enter Customer as project name. If you did everything right, all files and projects should be named correctly and the project should build without an error. It is very easy to have errors on the first try since you don&#8217;t have any help to find errors in the template and every typo will result in a build error.
 
@@ -246,7 +232,7 @@ When you don&#8217;t have any error, run the project and you should see Customer
 
 Adding Docker support to your Visual Studio Template is very simple. Right-click on your Template.Api project and select Add &#8211;> Docker Support. Select an operating system and click OK. This adds a Dockerfile and that&#8217;s it already.
 
-[code language=&#8221;text&#8221;]  
+```text  
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base  
 WORKDIR /app  
 EXPOSE 80
@@ -268,7 +254,7 @@ FROM base AS final
 WORKDIR /app  
 COPY &#8211;from=publish /app/publish .  
 ENTRYPOINT ["dotnet", "Template.Api.dll"]  
-[/code]
+```
 
 ### Use Variables in the Dockerfile
 

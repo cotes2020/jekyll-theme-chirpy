@@ -38,12 +38,12 @@ HttpOnly is good practice if you don&#8217;t need to access the cookie using Jav
 
 In ASP .NET Core 2.1 and higher, you can use CookieOptions to set the SameSite attribute. Use at least lax but use strict wherever possible. To set the setting use the following code:
 
-[code language=&#8221;csharp&#8221;]  
+```csharp  
 Response.Cookies.Append("UserId", "1234", new CookieOptions  
 {  
-SameSite = SameSiteMode.Lax  
+    SameSite = SameSiteMode.Lax  
 });  
-[/code]
+```
 
 ### Using Antiforgery Tokens
 
@@ -51,15 +51,15 @@ The ASP .NET Core server uses two randomly generated antiforgery tokens. The fir
 
 The ASP .NET Core tag helper automatically includes the antiforgery token into a form field. You can create a form for a name using this code:
 
-[code language=&#8221;csharp&#8221;]  
-<form asp-action="SaveProfile">  
-<div class="form-group">  
-<label for="name">Enter your name</label>  
-<input type="text" class="form-control" asp-for="Name" id="name" />  
-</div>  
-<button type="submit" class="btn btn-primary">Submit</button>  
-</form>  
-[/code]
+```html  
+<form asp-action="SaveProfile">
+   <div class="form-group">  
+      <label for="name">Enter your name</label>  
+      <input type="text" class="form-control" asp-for="Name" id="name" />  
+   </div>
+   <button type="submit" class="btn btn-primary">Submit</button>  
+</form>
+```
 
 When you look at the HTML code of the form, you can see the generated field for the token.
 
@@ -83,16 +83,16 @@ You can also see two cookies in your browser. In Chrome you can see the cookies 
 
 The last step is to tell the server to check the antiforgery token. You can do this by using the ValidateAntiForgeryToken attribute on an action.
 
-[code language=&#8221;csharp&#8221;]  
+```csharp  
 [HttpPost]  
 [ValidateAntiForgeryToken]  
 public IActionResult SaveProfile(Customer model)  
 {  
-// do something with the model
-
-return View();  
+    // do something with the model
+    
+    return View();  
 }  
-[/code]
+```
 
 ## Conclusion
 

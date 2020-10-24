@@ -36,30 +36,30 @@ In my microservices, the controllers call all needed services and therefore work
 
 I am installing the MediatR and the MediatR.Extensions.Microsoft.DependencyInjection in my Api project. In the Startup class, I registered my mediators using:
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 services.AddMediatR(Assembly.GetExecutingAssembly());  
-[/code]
+```
 
 I can do this because the controllers are in the same project. In the OrderApi, I am also using the ICustomerNameUpdateService interface as mediator. Therefore, I also have to register it.
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(ICustomerNameUpdateService).Assembly);  
-[/code]
+```
 
 Now, I can use the IMediator object with dependency injection in my controllers.
 
-[code language=&#8221;CSharp&#8221;]  
-public class OrderController : ControllerBase  
-{  
-private readonly IMapper _mapper;  
-private readonly IMediator _mediator;
+```csharp  
+public class OrderController : ControllerBase
+{
+    private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
 
-public OrderController(IMapper mapper, IMediator mediator)  
-{  
-_mapper = mapper;  
-_mediator = mediator;  
-}  
-[/code]
+    public OrderController(IMapper mapper, IMediator mediator)
+    {
+        _mapper = mapper;
+        _mediator = mediator;
+    }  
+```
 
 ### Using the Mediator pattern
 
@@ -67,51 +67,51 @@ Every call consists of a request and a handler. The request is sent to the handl
 
 In the OrderController, I have the Order method which will create a new Order object. To create the Order, I create a CreateOrderCommand and map the Order from the post request to the Order of the CreateOrderCommandObject. Then I use the Send method of the mediator.
 
-[code language=&#8221;CSharp&#8221;]  
-[HttpPost]  
-public async Task<ActionResult<Order>> Order([FromBody] OrderModel orderModel)  
-{  
-try  
-{  
-return await _mediator.Send(new CreateOrderCommand  
-{  
-Order = _mapper.Map<Order>(orderModel)  
-});  
-}  
-catch (Exception ex)  
-{  
-return BadRequest(ex.Message);  
-}  
-}  
-[/code]
+```csharp  
+[HttpPost]
+public async Task<ActionResult<Order>> Order([FromBody] OrderModel orderModel)
+{
+    try
+    {
+        return await _mediator.Send(new CreateOrderCommand
+        {
+            Order = _mapper.Map<Order>(orderModel)
+        });
+    }
+    catch (Exception ex)
+    {
+        return BadRequest(ex.Message);
+    }
+} 
+```
 
 The request (or query and command in my case) inherit from IRequest<T> interface which where T indicates the return value. If you don&#8217;t have a return value, then inherit from IRequest.
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 public class CreateOrderCommand : IRequest<Order>  
 {  
-public Order Order { get; set; }  
+    public Order Order { get; set; }  
 }  
-[/code]
+```
 
 The send method sends the object to the CreateOrderCommmandHandler. The handler inherits from IRequestHandler<TRequest, TResponse> and implements a Handle method. This Handle method processes the CreateOrderCommand. In this case, it calls the AddAsync method of the repository and passes the Order.
 
-[code language=&#8221;CSharp&#8221;]  
-public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Order>  
-{  
-private readonly IOrderRepository _orderRepository;
+```csharp  
+public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Order>
+{
+    private readonly IOrderRepository _orderRepository;
 
-public CreateOrderCommandHandler(IOrderRepository orderRepository)  
-{  
-_orderRepository = orderRepository;  
-}
+    public CreateOrderCommandHandler(IOrderRepository orderRepository)
+    {
+        _orderRepository = orderRepository;
+    }
 
-public async Task<Order> Handle(CreateOrderCommand request, CancellationToken cancellationToken)  
-{  
-return await _orderRepository.AddAsync(request.Order);  
-}  
-}  
-[/code]
+    public async Task<Order> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+    {
+        return await _orderRepository.AddAsync(request.Order);
+    }
+} 
+```
 
 If you don&#8217;t have a return value, the handler inherits from IRequestHandler<TRequest>.
 

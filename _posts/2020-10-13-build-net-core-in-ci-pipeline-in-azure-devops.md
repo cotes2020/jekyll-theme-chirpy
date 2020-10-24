@@ -115,52 +115,52 @@ I remove the build script and select the .NET Core task on the right side. I sel
 
 I repeat the process of adding new .NET Core tasks but I use build to build all projects, test to run all projects that have Test at the end of the project name, and then publish the CustomerApi project. Since I already built and restored the test projects, you can see that I use the &#8211;no-restore and &#8211;no-build arguments for them. The whole pipeline looks as follows:
 
-[code language=&#8221;text&#8221;]  
-name : NetCore-CustomerApi-CI  
-trigger:  
-branches:  
-include:  
-&#8211; master  
-paths:  
-include:  
-&#8211; CustomerApi/*
-
-pool:  
-vmImage: &#8216;ubuntu-latest&#8217;
-
-variables:  
-buildConfiguration: &#8216;Release&#8217;
-
-steps:  
-&#8211; task: DotNetCoreCLI@2  
-inputs:  
-command: &#8216;restore&#8217;  
-projects: &#8216;*\*/CustomerApi\*.csproj&#8217;  
-displayName: &#8216;Restore Nuget Packages&#8217;
-
-&#8211; task: DotNetCoreCLI@2  
-inputs:  
-command: &#8216;build&#8217;  
-projects: &#8216;*\*/CustomerApi\*.csproj&#8217;  
-arguments: &#8216;&#8211;no-restore&#8217;  
-displayName: &#8216;Build projects&#8217;
-
-&#8211; task: DotNetCoreCLI@2  
-inputs:  
-command: &#8216;test&#8217;  
-projects: &#8216;*\*/\*Test.csproj&#8217;  
-arguments: &#8216;&#8211;no-restore &#8211;no-build&#8217;  
-displayName: &#8216;Run Tests&#8217;
-
-&#8211; task: DotNetCoreCLI@2  
-inputs:  
-command: &#8216;publish&#8217;  
-publishWebProjects: false  
-projects: &#8216;**/CustomerApi.csproj&#8217;  
-arguments: &#8216;&#8211;configuration $(buildConfiguration) &#8211;no-restore&#8217;  
-modifyOutputPath: false  
-displayName: &#8216;Publish CustomerApi&#8217;  
-[/code]
+```yaml  
+name : NetCore-CustomerApi-CI
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - CustomerApi/*
+ 
+pool:
+  vmImage: 'ubuntu-latest'
+ 
+variables:
+  buildConfiguration: 'Release'
+ 
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/CustomerApi*.csproj'
+  displayName: 'Restore Nuget Packages'
+ 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/CustomerApi*.csproj'
+    arguments: '--no-restore'
+  displayName: 'Build projects'
+ 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*Test.csproj'
+    arguments: '--no-restore --no-build'
+  displayName: 'Run Tests'
+ 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '**/CustomerApi.csproj'
+    arguments: '--configuration $(buildConfiguration) --no-restore'
+    modifyOutputPath: false
+  displayName: 'Publish CustomerApi'
+```
 
 Click Save and Run the pipeline will be added to your source control and then executed.
 
@@ -188,17 +188,17 @@ You don&#8217;t see anything under Code Coverage. I will cover this in a later p
 
 Currently, the publish task runs always, even if I don&#8217;t want to create a release. It would be more efficient to run this task only when the build was triggered by the master branch. To do that, I add a custom condition to the publish task. I want to run the publish only when the previous steps succeeded and when the build was not triggered by a pull request. I do this with the following code:
 
-[code language=&#8221;text&#8221;]  
-&#8211; task: DotNetCoreCLI@2  
-inputs:  
-command: &#8216;publish&#8217;  
-publishWebProjects: false  
-projects: &#8216;**/CustomerApi.csproj&#8217;  
-arguments: &#8216;&#8211;configuration $(buildConfiguration) &#8211;no-restore&#8217;  
-modifyOutputPath: false  
-displayName: &#8216;Publish CustomerApi&#8217;  
-condition: and(succeeded(), ne(variables[&#8216;Build.Reason&#8217;], &#8216;PullRequest&#8217;))  
-[/code]
+```yaml  
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '**/CustomerApi.csproj'
+    arguments: '--configuration $(buildConfiguration) --no-restore'
+    modifyOutputPath: false    
+  displayName: 'Publish CustomerApi'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))  
+```
 
 Adding a second pipeline for the OrderApi works exactly the same except that instead of CustomerApi, you use OrderApi.
 

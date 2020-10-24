@@ -56,23 +56,23 @@ After setting up the service connection, create a new CI Pipeline. Select the so
 
 First, you have to set up some basic configuration for the pipeline. I will give it a name, set a trigger to run the pipeline every time a commit is made to master and use an Ubuntu agent. You can do this with the following code:
 
-[code language=&#8221;text&#8221;]  
-name : Docker-CI  
-trigger:  
-branches:  
-include:  
-&#8211; master
-
-pool:  
-vmImage: &#8216;ubuntu-latest&#8217;  
-[/code]
+```yaml  
+name : Docker-CI
+trigger:
+  branches:
+    include:
+      - master
+ 
+pool:
+  vmImage: 'ubuntu-latest'
+```
 
 In the next section, I set up the variables for my pipeline. Since this is a very simple example, I only need one for the image name. I define a name and set the tag to the build id using the built-in variable $(Build.BuildId). This increases the tag of my image automatically every time when a build runs.
 
-[code language=&#8221;text&#8221;]  
-variables:  
-ImageName: &#8216;wolfgangofner/microservicedemo:$(Build.BuildId)&#8217;  
-[/code]
+```yaml  
+variables:
+  ImageName: 'wolfgangofner/microservicedemo:$(Build.BuildId)'  
+```
 
 If you want better versioning of the Docker images, use one of the many extensions from the marketplace. In my projects, we use one of our own plugins which you can find <a href="https://marketplace.visualstudio.com/items?itemName=4tecture.BuildVersioning" target="_blank" rel="noopener noreferrer">here</a>.
 
@@ -82,26 +82,26 @@ Now that everything is set up, let&#8217;s add a task to build the image. Before
 
 Inside the job, add a task for Docker. Inside this task add your previously created service connection, the location to the dockerfile, an image name, and the build context. As the command use Build an Image. Note that I use version 1 because version 2 was not working and resulted in an error I could not resolve.
 
-[code language=&#8221;text&#8221;]  
-stages:  
-&#8211; stage: Build  
-displayName: Build image  
-jobs:  
-&#8211; job: DockerImage  
-displayName: Build and push Docker image  
-steps:  
-&#8211; task: Docker@1  
-displayName: &#8216;Build the Docker image&#8217;  
-inputs:  
-containerregistrytype: &#8216;Container Registry&#8217;  
-dockerRegistryEndpoint: &#8216;Docker Hub&#8217;  
-command: &#8216;Build an image&#8217;  
-dockerFile: &#8216;**/Dockerfile&#8217;  
-imageName: &#8216;$(ImageName)&#8217;  
-includeLatestTag: true  
-useDefaultContext: false  
-buildContext: &#8216;.&#8217;  
-[/code]
+```yaml  
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:  
+  - job: DockerImage
+    displayName: Build and push Docker image
+    steps:
+    - task: Docker@1
+      displayName: 'Build the Docker image'
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub'
+        command: 'Build an image'
+        dockerFile: '**/Dockerfile'
+        imageName: '$(ImageName)'
+        includeLatestTag: true
+        useDefaultContext: false
+        buildContext: '.'
+```
 
 You can either add the YAML code from above or click on the Docker task on the right side. You can also easily edit a task by clicking Settings right above the task. This will open the task on the right side.
 
@@ -121,16 +121,16 @@ The last step is to push the image to a registry. For this example, I use Docker
 
 Add the following code to your pipeline:
 
-[code language=&#8221;text&#8221;]  
-&#8211; task: Docker@1  
-displayName: &#8216;Push the Docker image to Dockerhub&#8217;  
-inputs:  
-containerregistrytype: &#8216;Container Registry&#8217;  
-dockerRegistryEndpoint: &#8216;Docker Hub&#8217;  
-command: &#8216;Push an image&#8217;  
-imageName: &#8216;$(ImageName)&#8217;  
-condition: and(succeeded(), ne(variables[&#8216;Build.Reason&#8217;], &#8216;PullRequest&#8217;))  
-[/code]
+```yaml  
+- task: Docker@1
+  displayName: 'Push the Docker image to Dockerhub'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'Docker Hub'
+    command: 'Push an image'
+    imageName: '$(ImageName)'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest')) 
+```
 
 Here I set a display name, the container registry &#8220;Container Registry&#8221; which means Docker Hub, and select my previously created service connection &#8220;Docker Hub&#8221;. The command indicates that I want to push an image and I set the image name from the previously created variable. This task only runs when the previous task was successful and when the build is not triggered by a pull request.
 
@@ -138,47 +138,47 @@ Here I set a display name, the container registry &#8220;Container Registry&#822
 
 The finished pipeline looks as follows:
 
-[code language=&#8221;text&#8221;]  
-name : Docker-CI  
-trigger:  
-branches:  
-include:  
-&#8211; master
-
-pool:  
-vmImage: &#8216;ubuntu-latest&#8217;
-
-variables:  
-ImageName: &#8216;wolfgangofner/microservicedemo:$(Build.BuildId)&#8217;
-
-stages:  
-&#8211; stage: Build  
-displayName: Build image  
-jobs:  
-&#8211; job: Build  
-displayName: Build and push Docker image  
-steps:  
-&#8211; task: Docker@1  
-displayName: &#8216;Build the Docker image&#8217;  
-inputs:  
-containerregistrytype: &#8216;Container Registry&#8217;  
-dockerRegistryEndpoint: &#8216;Docker Hub&#8217;  
-command: &#8216;Build an image&#8217;  
-dockerFile: &#8216;**/Dockerfile&#8217;  
-imageName: &#8216;$(ImageName)&#8217;  
-includeLatestTag: true  
-useDefaultContext: false  
-buildContext: &#8216;.&#8217;
-
-&#8211; task: Docker@1  
-displayName: &#8216;Push the Docker image to Dockerhub&#8217;  
-inputs:  
-containerregistrytype: &#8216;Container Registry&#8217;  
-dockerRegistryEndpoint: &#8216;Docker Hub&#8217;  
-command: &#8216;Push an image&#8217;  
-imageName: &#8216;$(ImageName)&#8217;  
-condition: and(succeeded(), ne(variables[&#8216;Build.Reason&#8217;], &#8216;PullRequest&#8217;))  
-[/code]
+```yaml  
+name : Docker-CI
+trigger:
+  branches:
+    include:
+      - master
+ 
+pool:
+  vmImage: 'ubuntu-latest'
+ 
+variables:
+  ImageName: 'wolfgangofner/microservicedemo:$(Build.BuildId)'
+ 
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:  
+  - job: Build
+    displayName: Build and push Docker image
+    steps:
+    - task: Docker@1
+      displayName: 'Build the Docker image'
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub'
+        command: 'Build an image'
+        dockerFile: '**/Dockerfile'
+        imageName: '$(ImageName)'
+        includeLatestTag: true
+        useDefaultContext: false
+        buildContext: '.'
+     
+    - task: Docker@1
+      displayName: 'Push the Docker image to Dockerhub'
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub'
+        command: 'Push an image'
+        imageName: '$(ImageName)'
+      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+```
 
 You can also find the code of the CI pipeline on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/blob/DockerCiPipeline/Docker-CI.yml" target="_blank" rel="noopener noreferrer">Github</a>.
 

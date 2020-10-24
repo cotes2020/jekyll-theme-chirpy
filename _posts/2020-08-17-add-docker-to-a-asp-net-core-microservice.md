@@ -53,9 +53,9 @@ After you clicked OK, a Dockerfile was added to the project and in Visual Studio
 
 Click F5 to start the application and your browser will open. To prove that this application runs inside a Docker container, check what containers are running. You can do this with the following command:
 
-[code language=&#8221;PowerShell&#8221;]  
+```powershell  
 docker ps  
-[/code]
+```
 
 On the following screenshot, you can see that I have one container running with the name CustomerApi and it runs on port 32770. This is the same port as the browser opened.
 
@@ -71,43 +71,43 @@ On the following screenshot, you can see that I have one container running with 
 
 Visual Studio generates a so-called multi-stage Dockerfile. This means that several images are used to keep the output image as small as possible. The first line in the Dockerfile uses the ASP .NET Core 3.1 runtime and names it base. Additionally, the ports 80 and 443 are exposed so we can access the container with HTTP and HTTPs later.
 
-[code language=&#8221;text&#8221;]  
+```text  
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base  
 WORKDIR /app  
 EXPOSE 80  
 EXPOSE 443  
-[/code]
+```
 
 The next section uses the .NET Core 3.1 SDK to build the project. This image is only used for the build and won&#8217;t be present in the output container. As a result, the container will be smaller and therefore will start faster. Additionally the projects are copied into the container.
 
-[code language=&#8221;text&#8221;]  
+```text  
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build  
 WORKDIR /src  
 COPY ["Solution/CustomerApi/CustomerApi.csproj", "Solution/CustomerApi/"]  
 COPY ["Solution/CustomerApi.Domain/CustomerApi.Domain.csproj", "Solution/CustomerApi.Domain/"]  
 COPY ["Solution/CustomerApi.Service/CustomerApi.Service.csproj", "Solution/CustomerApi.Service/"]  
 COPY ["Solution/CustomerApi.Data/CustomerApi.Data.csproj", "Solution/CustomerApi.Data/"]  
-[/code]
+```
 
 Next, I restore the Nuget packages of the CustomerApi and then build the CustomerApi project.
 
-[code language=&#8221;text&#8221;]  
+```text  
 RUN dotnet restore "Solution/CustomerApi/CustomerApi.csproj"  
 COPY . .  
 WORKDIR "/src/Solution/CustomerApi"  
 RUN dotnet build "CustomerApi.csproj" -c Release -o /app/build  
-[/code]
+```
 
 The last part of the Dockerfile publishes the CustomerApi project. The last line sets the entrypoint as a dotnet application and that the CustomerApi.dll should be run.
 
-[code language=&#8221;text&#8221;]  
+```text  
 FROM build AS publish  
 RUN dotnet publish "CustomerApi.csproj" -c Release -o /app/publish  
 FROM base AS final  
 WORKDIR /app  
 COPY &#8211;from=publish /app/publish .  
 ENTRYPOINT ["dotnet", "CustomerApi.dll"]  
-[/code]
+```
 
 ## Conclusion
 

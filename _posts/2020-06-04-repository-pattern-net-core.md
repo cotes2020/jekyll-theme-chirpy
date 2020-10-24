@@ -19,102 +19,102 @@ In the data project, I have my models and repositories. I create a generic repos
 
 ### Implementing the Repositories
 
-[code language=&#8221;CSharp&#8221;]  
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()  
-{  
-protected readonly RepositoryPatternDemoContext RepositoryPatternDemoContext;
+```csharp  
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
+{
+    protected readonly RepositoryPatternDemoContext RepositoryPatternDemoContext;
 
-public Repository(RepositoryPatternDemoContext repositoryPatternDemoContext)  
-{  
-RepositoryPatternDemoContext = repositoryPatternDemoContext;  
-}
+    public Repository(RepositoryPatternDemoContext repositoryPatternDemoContext)
+    {
+        RepositoryPatternDemoContext = repositoryPatternDemoContext;
+    }
 
-public IQueryable<TEntity> GetAll()  
-{  
-try  
-{  
-return RepositoryPatternDemoContext.Set<TEntity>();  
-}  
-catch (Exception ex)  
-{  
-throw new Exception($"Couldn&#8217;t retrieve entities: {ex.Message}");  
-}  
-}
+    public IQueryable<TEntity> GetAll()
+    {
+        try
+        {
+            return RepositoryPatternDemoContext.Set<TEntity>();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+        }
+    }
 
-public async Task<TEntity> AddAsync(TEntity entity)  
-{  
-if (entity == null)  
-{  
-throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");  
-}
+    public async Task<TEntity> AddAsync(TEntity entity)
+    {
+        if (entity == null)
+        {
+            throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");
+        }
 
-try  
-{  
-await RepositoryPatternDemoContext.AddAsync(entity);  
-await RepositoryPatternDemoContext.SaveChangesAsync();
+        try
+        {
+            await RepositoryPatternDemoContext.AddAsync(entity);
+            await RepositoryPatternDemoContext.SaveChangesAsync();
 
-return entity;  
-}  
-catch (Exception ex)  
-{  
-throw new Exception($"{nameof(entity)} could not be saved: {ex.Message}");  
-}  
-}
+            return entity;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"{nameof(entity)} could not be saved: {ex.Message}");
+        }
+    }
 
-public async Task<TEntity> UpdateAsync(TEntity entity)  
-{  
-if (entity == null)  
-{  
-throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");  
-}
+    public async Task<TEntity> UpdateAsync(TEntity entity)
+    {
+        if (entity == null)
+        {
+            throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");
+        }
 
-try  
-{  
-RepositoryPatternDemoContext.Update(entity);  
-await RepositoryPatternDemoContext.SaveChangesAsync();
+        try
+        {
+            RepositoryPatternDemoContext.Update(entity);
+            await RepositoryPatternDemoContext.SaveChangesAsync();
 
-return entity;  
-}  
-catch (Exception ex)  
-{  
-throw new Exception($"{nameof(entity)} could not be updated: {ex.Message}");  
-}  
-}  
-}  
-[/code]
+            return entity;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"{nameof(entity)} could not be updated: {ex.Message}");
+        }
+    }
+} 
+```
 
 This repository can be used for most entities. In case one of your models needs more functionality, you can create a concrete repository that inherits from Repository. I created a ProductRepository which offers product-specific methods:
 
-[code language=&#8221;CSharp&#8221;]  
-public class ProductRepository : Repository<Product>, IProductRepository  
-{  
-public ProductRepository(RepositoryPatternDemoContext repositoryPatternDemoContext) : base(repositoryPatternDemoContext)  
-{  
-}
+```csharp  
+public class ProductRepository : Repository<Product>, IProductRepository
+{
+    public ProductRepository(RepositoryPatternDemoContext repositoryPatternDemoContext) : base(repositoryPatternDemoContext)
+    {
+    }
 
-public Task<Product&> GetProductByIdAsync(int id)  
-{  
-return GetAll().FirstOrDefaultAsync(x => x.Id == id);  
+    public Task<Product> GetProductByIdAsync(int id)
+    {
+        return GetAll().FirstOrDefaultAsync(x => x.Id == id);
+    }
 }  
-}  
-[/code]
+```
 
 The ProductRepository also offers all generic methods because its interface IProductRepository inherits from IRepository:
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 public interface IProductRepository : IRepository<Product>  
 {  
-Task<Product> GetProductByIdAsync(int id);  
+    Task<Product> GetProductByIdAsync(int id);  
 }  
-[/code]
+```
 
 The last step is to register the generic and concrete repositories in the Startup class.
 
-[code language=&#8221;csharp&#8221;]  
+```csharp  
 services.AddTransient(typeof(IRepository<>), typeof(Repository<>;));  
 services.AddTransient<IProductRepository, ProductRepository>();  
 services.AddTransient<ICustomerRepository, CustomerRepository>();  
-[/code]
+```
 
 The first line registers the generic attributes. This means if you want to use it in the future with a new model, you don&#8217;t have to register anything else. The second and third line register the concrete implementation of the ProductRepository and CustomerRepository.
 
@@ -122,7 +122,7 @@ The first line registers the generic attributes. This means if you want to use i
 
 I implement two services, the CustomerService and the ProductService. Each service gets injected a repository. The ProductServices uses the IProductRepository and the CustomerService uses the ICustomerRepository;. Inside the services, you can implement whatever business logic your application needs. I implemented only simple calls to the repository but you could also have complex calculations and several repository calls in a single method.
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 public class CustomerService : ICustomerService  
 {  
 private readonly ICustomerRepository _customerRepository;
@@ -147,96 +147,101 @@ public async Task<Customer> AddCustomerAsync(Customer newCustomer)
 return await _customerRepository.AddAsync(newCustomer);  
 }  
 }  
-[/code]
+```
 
-[code language=&#8221;CSharp&#8221;]  
-public class ProductService : IProductService  
-{  
-private readonly IProductRepository _productRepository;
+```csharp  
+public class CustomerService : ICustomerService
+{
+    private readonly ICustomerRepository _customerRepository;
 
-public ProductService(IProductRepository productRepository)  
-{  
-_productRepository = productRepository;  
-}
+    public CustomerService(ICustomerRepository customerRepository)
+    {
+        _customerRepository = customerRepository;
+    }
 
-public async Task<Product> GetProductByIdAsync(int id)  
-{  
-return await _productRepository.GetProductByIdAsync(id);  
-}
+    public async Task<List<Customer>> GetAllCustomersAsync()
+    {
+        return await _customerRepository.GetAllCustomersAsync();
+    }
 
-public async Task<Product> AddProductAsync(Product product)  
-{  
-return await _productRepository.AddAsync(product);  
+    public async Task<Customer> GetCustomerByIdAsync(int id)
+    {
+        return await _customerRepository.GetCustomerByIdAsync(id);
+    }
+
+    public async Task<Customer> AddCustomerAsync(Customer newCustomer)
+    {
+        return await _customerRepository.AddAsync(newCustomer);
+    }
 }  
-}  
-[/code]
+```
 
 ## Implementing the Controller to test the Application
 
 To test the application, I implemented a really simple controller. The controllers offer for each service method a parameter-less get method and return whatever the service returned. Each controller gets the respective service injected.
 
-[code language=&#8221;CSharp&#8221;]  
-public class CustomerController : Controller  
-{  
-private readonly ICustomerService _customerService;
+```csharp  
+public class CustomerController : Controller
+{
+    private readonly ICustomerService _customerService;
 
-public CustomerController(ICustomerService customerService)  
-{  
-_customerService = customerService;  
-}
+    public CustomerController(ICustomerService customerService)
+    {
+        _customerService = customerService;
+    }
 
-public async Task<ActionResult<Customer>> CreateCustomer()  
-{  
-var customer = new Customer  
-{  
-Age = 30,  
-FirstName = "Wolfgang",  
-LastName = "Ofner"  
-};
+    public async Task<ActionResult<Customer>> CreateCustomer()
+    {
+        var customer = new Customer
+        {
+            Age = 30,
+            FirstName = "Wolfgang",
+            LastName = "Ofner"
+        };
 
-return await _customerService.AddCustomerAsync(customer);  
-}
+        return await _customerService.AddCustomerAsync(customer);
+    }
 
-public async Task<ActionResult<List<Customer>>> GetAllCustomers()  
-{  
-return await _customerService.GetAllCustomersAsync();  
-}
+    public async Task<ActionResult<List<Customer>>> GetAllCustomers()
+    {
+        return await _customerService.GetAllCustomersAsync();
+    }
 
-public async Task<ActionResult<Customer>> GetCustomerById()  
-{  
-return await _customerService.GetCustomerByIdAsync(1);  
+    public async Task<ActionResult<Customer>> GetCustomerById()
+    {
+        return await _customerService.GetCustomerByIdAsync(1);
+    }
 }  
-}  
-[/code]
+```
 
-[code language=&#8221;CSharp&#8221;]  
-public class ProductController : Controller  
-{  
-private readonly IProductService _productService;
+```csharp  
+public class ProductController : Controller
+{
+    private readonly IProductService _productService;
 
-public ProductController(IProductService productService)  
-{  
-_productService = productService;  
-}
+    public ProductController(IProductService productService)
+    {
+        _productService = productService;
+    }
 
-public async Task<ActionResult<Product>> GetProductById()  
-{  
-return await _productService.GetProductByIdAsync(1);  
-}
+    public async Task<ActionResult<Product>> GetProductById()
+    {
+        return await _productService.GetProductByIdAsync(1);
+    }
 
-public async Task<ActionResult<Product>>; CreateProduct()  
-{  
-var product = new Product  
-{  
-Name = "Name",  
-Description = "Desc",  
-Price = 99.99m  
-};
+    public async Task<ActionResult<Product>> CreateProduct()
+    {
+        var product = new Product
+        {
+            Name = "Name",
+            Description = "Desc",
+            Price = 99.99m
+        };
 
-return await _productService.AddProductAsync(product);  
-}  
-}  
-[/code]
+        return await _productService.AddProductAsync(product);
+    }
+} 
+```
 
 When you call the create customer action, a customer object in JSON should be returned.
 
@@ -252,16 +257,16 @@ When you call the create customer action, a customer object in JSON should be re
 
 If you want to use the a database, you have to add your connection string in the appsettings.json file. My connection string looks like this:
 
-[code language=&#8221;text&#8221;]  
+```json  
 "ConnectionString": "Server=localhost;Database=RepositoryPatternDemo;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=<;YourNewStrong@Passw0rd>;"  
-[/code]
+```
 
 By default, I am using an in-memory database. This means that you don&#8217;t have to configure anything to test the application
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 //services.AddDbContext<RepositoryPatternDemoContext>(options => options.UseSqlServer(Configuration["Database:ConnectionString"]));  
 services.AddDbContext<RepositoryPatternDemoContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));  
-[/code]
+```
 
 I also added an SQL script to create the database, tables and test data. You can find the script <a href="https://github.com/WolfgangOfner/.NetCoreRepositoryAndUnitOfWorkPattern/blob/master/NetCoreRepositoryAndUnitOfWorkPattern.Data/DatabaseScript/database.sql" target="_blank" rel="noopener noreferrer">here</a>.
 

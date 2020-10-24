@@ -53,16 +53,16 @@ The Dockerfile is a set of instructions to build and run an image. Visual Studio
 
 ### Understanding the multi-stage Dockerfile
 
-[code language=&#8221;text&#8221;]  
+```text  
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base  
 WORKDIR /app  
 EXPOSE 80  
 EXPOSE 443  
-[/code]
+```
 
 The first part downloads the .NET Core runtime 3.1 image from Docker hub and gives it the name base which will be used later on. Then it sets the working directory to /app which will also be later used. Lastly, the ports 80 and 443 are exposed which tells Docker to listen to these two ports when the container is running.
 
-[code language=&#8221;text&#8221;]  
+```text  
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build  
 WORKDIR /src  
 COPY ["CustomerApi/CustomerApi.csproj", "CustomerApi/"]  
@@ -74,23 +74,23 @@ RUN dotnet restore "CustomerApi/CustomerApi.csproj"
 COPY . .  
 WORKDIR "/src/CustomerApi"  
 RUN dotnet build "CustomerApi.csproj" -c Release -o /app/build  
-[/code]
+```
 
 The next section downloads the .NET Core 3.1 SDK from Dockerhub and names it build. Then the working directory is set to /src and all project files (except test projects) of the solution are copied inside the container. Then dotnet restore is executed to restore all NuGet packages and the working directory is changed to the directory of the API project. Note that the path starts with /src, the working directory path I set before I copied the files inside the container. Lastly, dotnet build is executed which builds the project with the Release configuration into the path /app/build.
 
-[code language=&#8221;text&#8221;]  
+```text  
 FROM build AS publish  
 RUN dotnet publish "CustomerApi.csproj" -c Release -o /app/publish  
-[/code]
+```
 
 The build image in the first line of the next section is the SDK image which we downloaded before and named build. We use it to run dotnet publish which publishes the CustomerApi project.
 
-[code language=&#8221;text&#8221;]  
+```text  
 FROM base AS final  
 WORKDIR /app  
 COPY &#8211;from=publish /app/publish .  
 ENTRYPOINT ["dotnet", "CustomerApi.dll"]  
-[/code]
+```
 
 The last section uses the runtime image and sets the working directory to /app. Then the published files from the last step are copied into the working directory. The dot means that it is copied to your current location, therefore /app. The Entrypoint command tells Docker to configure the container as an executable and to run the CustomerApi.dll when the container starts.
 
@@ -126,9 +126,9 @@ You don&#8217;t need Visual Studio to create a Docker image. This is useful when
 
 Open Powershell and navigate to the folder containing the CustomerApi.sln file. To build an image, you can use docker build \[build context\] \[location of Dockerfile\]. Optionally, you can add a tag by using -t Tagname. Use
 
-[code language=&#8221;powershell&#8221;]  
+```powershell  
 docker build -t customerapi . -f CustomerApi/Dockerfile  
-[/code]
+```
 
 to build the Dockerfile which is in your current file with the tag name customerapi. This will download the needed images (or use them from the cache) and start to build your image. Step 7 fails because a directory can&#8217;t be found though.
 
@@ -154,9 +154,9 @@ To confirm that your image was really created, use docker images.
 
 To start an image use docker run [-p &#8220;port outside of the container&#8221;:&#8221;port inside the container&#8221;] name of the image to start. In my example:
 
-[code language=&#8221;powershell&#8221;]  
-docker run -p 32789:80 -p 32788:443 customerapi.  
-[/code]
+```powershell  
+docker run -p 32789:80 -p 32788:443 customerapi .  
+```
 
 <div id="attachment_1932" style="width: 710px" class="wp-caption aligncenter">
   <a href="/assets/img/posts/2020/04/Run-the-previously-created-image.jpg"><img aria-describedby="caption-attachment-1932" loading="lazy" class="wp-image-1932" src="/assets/img/posts/2020/04/Run-the-previously-created-image.jpg" alt="Run the previously created image dockerize" width="700" height="74" /></a>
@@ -182,15 +182,15 @@ We confirmed that the image is running, and now it is time to share it and there
 
 Next, I have to tag the image I want to upload with the name of my Dockerhub account and the name of the repository I want to use. I do this with docker tag Image DockerhubAccount/repository.
 
-[code language=&#8221;powershell&#8221;]  
+```powershell  
 docker tag customerapi wolfgangofner/customerapi  
-[/code]
+```
 
 The last step is to push the image to Dockerhub using docker push tagname.
 
-[code language=&#8221;powershell&#8221;]  
+```powershell  
 docker push wolfgangofner/customerapi  
-[/code]
+```
 
 <div id="attachment_1935" style="width: 710px" class="wp-caption aligncenter">
   <a href="/assets/img/posts/2020/04/Push-the-image-to-Dockerhub.jpg"><img aria-describedby="caption-attachment-1935" loading="lazy" class="wp-image-1935" src="/assets/img/posts/2020/04/Push-the-image-to-Dockerhub.jpg" alt="Push the image to Dockerhub dockerize" width="700" height="129" /></a>
@@ -214,9 +214,9 @@ To confirm that the image was pushed to Dockerhub, I open my repositories and se
 
 To confirm that everything worked fine, I will download the image and run it on any machine. The only requirement is that Docker is installed. When you click on the repository, you can see the command to download the image. In my example, this is docker pull wolfgangofner/customerapi. I will use docker run because this runs the image and if it is not available automatically pull it too.
 
-[code language=&#8221;powershell&#8221;]  
+```powershell  
 docker run -p 32789:80 -p 32788:443 wolfgangofner/customerapi  
-[/code]
+```
 
 <div id="attachment_1937" style="width: 710px" class="wp-caption aligncenter">
   <a href="/assets/img/posts/2020/04/Run-the-previously-uploaded-image.jpg"><img aria-describedby="caption-attachment-1937" loading="lazy" class="wp-image-1937" src="/assets/img/posts/2020/04/Run-the-previously-uploaded-image.jpg" alt="Run the previously uploaded image dockerize" width="700" height="162" /></a>

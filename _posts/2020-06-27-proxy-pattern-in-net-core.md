@@ -55,22 +55,25 @@ The remote proxy pattern is the most commonly used proxy and you might have alre
 
 To demonstrate the remote proxy, I created a GRPC server using the default Visual Studio template. In my proxy class, I am calling the server with my name and get a greeting message back. The code looks like I am calling a local method because the proxy hides all the network implementation and details.
 
-[code language=&#8221;CSharp&#8221;]  
-public async Task<HelloReply> GetGreetingMessage()  
-{  
-// todo the GreeterService must run for this test to pass  
-const string name = "Wolfgang";  
-using var channel = GrpcChannel.ForAddress("https://localhost:5001");  
-var client = new Greeter.GreeterClient(channel);
+```csharp  
+public class RemoteProxy : IRemoteProxy
+{
+    public async Task<HelloReply> GetGreetingMessage()
+    {
+        // todo the GreeterService must run for this test to pass
+        const string name = "Wolfgang";
+        using var channel = GrpcChannel.ForAddress("https://localhost:5001");
+        var client = new Greeter.GreeterClient(channel);
+        
+        var request = new HelloRequest
+        {
+            Name = name
+        };
 
-var request = new HelloRequest  
-{  
-Name = name  
-};
-
-return await client.SayHelloAsync(request);  
-}  
-[/code]
+        return await client.SayHelloAsync(request);
+    }
+}
+```
 
 Start both projects in my demo and navigate to /RemoteProxy/HelloMessage and you will see the message in your browser.
 
@@ -94,58 +97,58 @@ In this example, I am opening two file streams to the same file. Usually, this w
 
 The implementation is pretty simple:
 
-[code language=&#8221;CSharp&#8221;]  
-public class SmartProxy : ISmartProxy  
-{  
-public void WriteTwiceToSameFile(string outputFile, string message)  
-{  
-var smartProxy = new SmartProxy();
+```csharp  
+public class SmartProxy : ISmartProxy
+{
+    public void WriteTwiceToSameFile(string outputFile, string message)
+    {
+        var smartProxy = new SmartProxy();
 
-using var file = smartProxy.OpenWrite(outputFile);  
-using var file2 = smartProxy.OpenWrite(outputFile);
+        using var file = smartProxy.OpenWrite(outputFile);
+        using var file2 = smartProxy.OpenWrite(outputFile);
 
-file.Write(Encoding.ASCII.GetBytes(message));  
-file2.Write(Encoding.ASCII.GetBytes(message));
+        file.Write(Encoding.ASCII.GetBytes(message));
+        file2.Write(Encoding.ASCII.GetBytes(message));
 
-file.Close();  
-file2.Close();  
+        file.Close();
+        file2.Close();
+    }
 }  
-}  
-[/code]
+```
 
 The OpenWrite method is implemented in my proxy where I check if a stream already exists. If so, I return the existing stream, if not, I return a new stream.
 
-[code language=&#8221;CSharp&#8221;]  
-public class SmartProxy : IFile  
-{  
-private readonly Dictionary<string, FileStream> _openStreams = new Dictionary<string, FileStream>();
+```csharp  
+public class SmartProxy : IFile
+{
+    private readonly Dictionary<string, FileStream> _openStreams = new Dictionary<string, FileStream>();
 
-public FileStream OpenWrite(string path)  
-{  
-try  
-{  
-var stream = File.OpenWrite(path);  
-_openStreams.Add(path, stream);
+    public FileStream OpenWrite(string path)
+    {
+        try
+        {
+            var stream = File.OpenWrite(path);
+            _openStreams.Add(path, stream);
 
-return stream;  
-}  
-catch (IOException)  
-{  
-if (_openStreams.ContainsKey(path))  
-{  
-var stream = _openStreams[path];
+            return stream;
+        }
+        catch (IOException)
+        {
+            if (_openStreams.ContainsKey(path))
+            {
+                var stream = _openStreams[path];
 
-if (stream != null && stream.CanWrite)  
-{  
-return stream;  
-}  
-}
+                if (stream != null && stream.CanWrite)
+                {
+                    return stream;
+                }
+            }
 
-throw;  
+            throw;
+        }
+    }
 }  
-}  
-}  
-[/code]
+```
 
 ### Protective Proxy
 
@@ -155,34 +158,34 @@ The protective proxy manages access to resources and acts as a gatekeeper. This 
 
 In this example, I want to set up some access roles for a document. Only the author of the document is allowed to update its name and only a user with the editor role is allowed to review the document. The protective proxy checks the user roles and blocks any unauthorized action. The logic of the review and update method stay unchanged and they don&#8217;t even know anything about these security checks.
 
-[code language=&#8221;CSharp&#8221;]  
-public class ProtectiveProxy : Document  
-{  
-public ProtectiveProxy(string name, string content) : base(name, content)  
-{  
-}
+```csharp  
+public class ProtectiveProxy : Document
+{
+    public ProtectiveProxy(string name, string content) : base(name, content)
+    {
+    }
 
-public override void UpdateName(string newName, User user)  
-{  
-if (user.Role != Roles.Author)  
-{  
-throw new UnauthorizedAccessException("Cannot update name unless in Author role.");  
-}
+    public override void UpdateName(string newName, User user)
+    {
+        if (user.Role != Roles.Author)
+        {
+            throw new UnauthorizedAccessException("Cannot update name unless in Author role.");
+        }
 
-base.UpdateName(newName, user);  
-}
+        base.UpdateName(newName, user);
+    }
 
-public override void CompleteReview(User editor)  
-{  
-if (editor.Role != Roles.Editor)  
-{  
-throw new UnauthorizedAccessException("Cannot review documents unless you are an Editor.");  
-}
+    public override void CompleteReview(User editor)
+    {
+        if (editor.Role != Roles.Editor)
+        {
+            throw new UnauthorizedAccessException("Cannot review documents unless you are an Editor.");
+        }
 
-base.CompleteReview(editor);  
+        base.CompleteReview(editor);
+    }
 }  
-}  
-[/code]
+```
 
 To test the implementation, I have some test cases in the ProtectiveProxyTests class.
 

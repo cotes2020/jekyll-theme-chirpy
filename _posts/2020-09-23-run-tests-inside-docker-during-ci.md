@@ -13,21 +13,21 @@ You can find the code of this demo on [Github](https://github.com/WolfgangOfner/
 
 Running unit tests inside a Docker container is more or less as building a project. First, I copy all my test projects inside the container using the COPY command:
 
-[code language=&#8221;text&#8221;]  
+```text  
 COPY ["Tests/CustomerApi.Test/CustomerApi.Test.csproj", "Tests/CustomerApi.Test/"]  
 COPY ["Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj", "Tests/CustomerApi.Service.Test/"]  
 COPY ["Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj", "Tests/CustomerApi.Data.Test/"]  
-[/code]
+```
 
 Next, I set the label test to true. I will need this label later to identify the right layer of the container to copy the test results out of it. Then, I use dotnet test to run the tests in my three test projects. Additionally, I write the test result into the testresults folder and give them different names, e.g. test_results.trx.
 
-[code language=&#8221;text&#8221;]  
+```text  
 FROM build AS test  
 LABEL test=true  
 RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "trx;LogFileName=test_results.trx" Tests/CustomerApi.Test/CustomerApi.Test.csproj  
 RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "trx;LogFileName=test_results2.trx" Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj  
 RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "trx;LogFileName=test_results3.trx" Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj  
-[/code]
+```
 
 Thats already everything I have to change to run the tests inside the container and generate test results. If you run the build, you will see the successful tests in the output of the build step.
 
@@ -49,14 +49,14 @@ The Tests tab is not displayed because Azure DevOps has no test results to displ
 
 To copy the test results out of the container, I use the following PowerShell task in the CI pipeline.
 
-[code language=&#8221;powershell&#8221;]  
-&#8211; pwsh: |  
-$id=docker images &#8211;filter "label=test=true" -q | Select-Object -First 1  
-docker create &#8211;name testcontainer $id  
-docker cp testcontainer:/testresults ./testresults  
-docker rm testcontainer  
-displayName: &#8216;Copy test results&#8217;  
-[/code]
+```yaml  
+- pwsh: |
+   $id=docker images --filter "label=test=true" -q | Select-Object -First 1
+   docker create --name testcontainer $id
+   docker cp testcontainer:/testresults ./testresults
+   docker rm testcontainer
+  displayName: 'Copy test results' 
+```
 
 Docker creates a new layer for every command in the Dockerfile. I can access the layer (also called intermediate container) through the label I set during the build. The script selects the first intermediate container with the label test=true and then copies the content of the testresults folder to the testresults folder of the WorkingDirectory of the build agent. Then the container is removed. Next, I can take this testresults folder and publish the test results inside it.
 
@@ -64,14 +64,14 @@ Docker creates a new layer for every command in the Dockerfile. I can access the
 
 Tp publish the test results, I use the PublishTestResult task of Azure DevOps. I only have to provide the format of the results, what files contain results and the path to the files. The YAML code looks as follows:
 
-[code language=&#8221;text&#8221;]  
-&#8211; task: PublishTestResults@2  
-inputs:  
-testResultsFormat: &#8216;VSTest&#8217;  
-testResultsFiles: &#8216;*\*/\*.trx&#8217;  
-searchFolder: &#8216;$(System.DefaultWorkingDirectory)/testresults&#8217;  
-displayName: &#8216;Publish test results&#8217;  
-[/code]
+```yaml  
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'VSTest'
+    testResultsFiles: '**/*.trx'
+    searchFolder: '$(System.DefaultWorkingDirectory)/testresults'
+  displayName: 'Publish test results' 
+```
 
 Run the CI pipeline again and after it is finished, you will see the Tests tab on the summary page. Click on it and you will see that all tests ran successfully. Azure DevOps even gives you a trophy for that :D.
 

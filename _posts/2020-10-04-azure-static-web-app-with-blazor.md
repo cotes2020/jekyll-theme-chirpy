@@ -63,55 +63,55 @@ Enter a name and then select Http trigger to trigger the function via HTTP calls
 
 To call the Azure Function and get some data about products, I edit the already existing FetchData page. I change the code block to call the Azure Function and then cast the result into a product array. Then, I will loop over the array in the HTML code and display all elements in a table.
 
-[code language=&#8221;CSharp&#8221;]  
-@code {  
-private Product[] products;
+```csharp  
+@code {
+    private Product[] products;
 
-protected override async Task OnInitializedAsync()  
-{  
-try  
-{  
-products = await Http.GetFromJsonAsync<Product[]>("/Api/Product");  
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            products = await Http.GetFromJsonAsync<Product[]>("/Api/Product");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+    }
 }  
-catch (Exception ex)  
-{  
-Console.WriteLine(ex.ToString());  
-}  
-}  
-}  
-[/code]
+```
 
 In the Function, I create a new list with three products and return it. Note that the FunctionName, &#8220;Product&#8221;, is the same as in the call in the code block.
 
-[code language=&#8221;CSharp&#8221;]  
-[FunctionName("Product")]  
-public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req, ILogger log)  
-{  
-var products = new List<Product>  
-{  
-new Product  
-{  
-Name = "Book",  
-Description = "A great book",  
-Price = 9.99m  
-},  
-new Product  
-{  
-Name = "Phone",  
-Description = "A good phone",  
-Price = 149.99m  
-},  
-new Product  
-{  
-Name = "Car",  
-Description = "A bad car ",  
-Price = 999.99m  
-}  
-};
+```csharp  
+[FunctionName("Product")]
+public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req, ILogger log)
+{
+    var products = new List<Product>
+    {
+        new Product
+        {
+            Name = "Book",
+            Description = "A great book",
+            Price = 9.99m
+        },
+        new Product
+        {
+            Name = "Phone",
+            Description = "A good phone",
+            Price = 149.99m
+        },
+        new Product
+        {
+            Name = "Car",
+            Description = "A bad car ",
+            Price = 999.99m
+        }
+    };
 
-return new OkObjectResult(products);  
-}  
-[/code]
+    return new OkObjectResult(products);
+} 
+```
 
 The Product class is in a class library so both projects can reference it.
 

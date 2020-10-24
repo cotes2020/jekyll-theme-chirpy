@@ -11,9 +11,9 @@ tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice,
 
 Before I start, I want to show you what happens when you try to start a .NET Core application without a valid certificate. I use the following command to start the container:
 
-[code language=&#8221;powershell&#8221;]  
+```powershell  
 docker run -p 32789:80 -p 32788:443 -e "ASPNETCORE_URLS=https://+;http://+" wolfgangofner/customerapi  
-[/code]
+```
 
 This command sets a port mapping, adds an environment variable and starts the image customerapi from my Dockerhub repository. Executing this command will result in the following exception:
 
@@ -47,9 +47,9 @@ Note that you must set a password. Otherwise, Kestrel won&#8217;t be able to use
 
 After creating the certificate, you only have to share it with your container and the .NET Core application should start. I use the following command:
 
-[code language=&#8221;powershell&#8221;]  
+```powershell  
 docker run -p 32789:80 -p 32788:443 -e Kestrel\_\_Certificates\_\_Default\_\_Path=/app/Infrastructure/Certificate/certificate.pfx -e Kestrel\_\_Certificates\_\_Default\_\_Password=Password -e "ASPNETCORE_URLS=https://+;http://+"-v D:\temp\:/app/Infrastructure/Certificate wolfgangofner/customerapi  
-[/code]
+```
 
 <div id="attachment_1944" style="width: 710px" class="wp-caption aligncenter">
   <a href="/assets/img/posts/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg"><img aria-describedby="caption-attachment-1944" loading="lazy" class="wp-image-1944" src="/assets/img/posts/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg" alt="Start a .NET Core application and provide a certificate" width="700" height="94" /></a>
@@ -81,9 +81,9 @@ In this section, I will shortly explain the used parameter from the example abov
 
 I created a certificate and copied it into the container during the build. To do that you have to remove .pfx from the .gitignore file. Note that you should never share your certificate or put it inside a container. I only did it to simplify this demo. To use the certificate inside the container, use the following command:
 
-[code language=&#8221;powershell&#8221;]  
+```powershell  
 docker run -p 32789:80 -p 32788:443 -e Kestrel\_\_Certificates\_\_Default\_\_Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx -e Kestrel\_\_Certificates\_\_Default\_\_Password=SecretPassword -e "ASPNETCORE_URLS=https://+;http://+" wolfgangofner/customerapi  
-[/code]
+```
 
 ## Conclusion
 

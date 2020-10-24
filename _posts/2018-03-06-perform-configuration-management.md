@@ -156,7 +156,9 @@ Custom Script Extensions allow you to automatically download files from Azure st
             </p>
             
             <p>
-              [code language=&#8221;powershell&#8221;]<br /> Publish-AzureVMDscConfiguration .\IIS.ps1 -ConfigurationArchivePath .\IIS.ps1.zip<br /> [/code]
+             
+              <br /> Publish-AzureVMDscConfiguration .\IIS.ps1 -ConfigurationArchivePath .\IIS.ps1.zip<br /> 
+              
             </p>
             
             <p>

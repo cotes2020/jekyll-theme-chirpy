@@ -63,54 +63,54 @@ In the next window select HTTP trigger and set the Authorization level to Anonym
 
 After the Azure Function is created, I change the code so it returns a JSON list of products:
 
-[code language=&#8221;csharp&#8221;]  
-public static class Function1  
-{  
-[FunctionName("Function1")]  
-public static async Task<IActionResult> Run(  
-[HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]  
-HttpRequest req,  
-ILogger log)  
-{  
-var products = new List<Product>  
-{  
-new Product  
-{  
-Name = "Phone",  
-Price = 999.90m,  
-Description = "This is the description of the phone"  
-},  
-new Product  
-{  
-Name = "Book",  
-Price = 99.90m,  
-Description = "The best book you will ever read"  
-},  
-new Product  
-{  
-Name = "TV",  
-Price = 15.49m,  
-Description = "Here you can see an awesome TV"  
-}  
-};
+```csharp  
+public static class Function1
+{
+    [FunctionName("Function1")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+        HttpRequest req,
+        ILogger log)
+    {
+        var products = new List<Product>
+        {
+            new Product
+            {
+                Name = "Phone",
+                Price = 999.90m,
+                Description = "This is the description of the phone"
+            },
+            new Product
+            {
+                Name = "Book",
+                Price = 99.90m,
+                Description = "The best book you will ever read"
+            },
+            new Product
+            {
+                Name = "TV",
+                Price = 15.49m,
+                Description = "Here you can see an awesome TV"
+            }
+        };
 
-return new OkObjectResult(JsonConvert.SerializeObject(products));  
+        return new OkObjectResult(JsonConvert.SerializeObject(products));
+    }
 }  
-}  
-[/code]
+```
 
 The Product class has the following properties:
 
-[code language=&#8221;csharp&#8221;]  
+```csharp  
 public class Product  
 {  
-public string Name { get; set; }
-
-public decimal Price { get; set; }
-
-public string Description { get; set; }  
+    public string Name { get; set; }
+    
+    public decimal Price { get; set; }
+    
+    public string Description { get; set; }  
 }  
-[/code]
+```
 
 Start the application and a console window will appear telling you the URL of your function. Enter this URL into your browser and you should see the JSON list displayed.
 
@@ -206,81 +206,81 @@ You should have basic knowledge of React. If you are new to React, take a look a
 
 Open a new Powershell window and create a new react app with the following command:
 
-[code language=&#8221;powershell&#8221;]  
+```powershell  
 npx create-react-app react-static-web-app  
-[/code]
+```
 
 This will create a react project, named react-static-web-app. Go inside the project folder in Powershell and open Visual Studio Code with the following code:
 
-[code language=&#8221;powershell&#8221;]  
+```powershell  
 code .  
-[/code]
+```
 
 I will change the application to call my Azure Function and then display the returned list with Bootstrap cards. First, I create a new folder, called components, and create a new file inside this folder called products.js. Then I add the following code to the new file:
 
-[code language=&#8221;javascript&#8221;]  
-import React from &#8216;react&#8217;
+```javascript  
+import React from 'react'
 
-const Products = ({ products }) => {  
-return (  
-<div>  
-{products.map((product) => (  
-<div class="card">  
-<div class="card-body">  
-<h5 class="card-title">{product.Name}</h5>  
-<h6 class="card-subtitle mb-2 text-muted">{product.Price}</h6>  
-<p class="card-text">{product.Description}</p>  
-</div>  
-</div>  
-))}  
-</div>  
-)  
+const Products = ({ products }) => {
+    return (
+        <div>
+            {products.map((product) => (
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{product.Name}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{product.Price}</h6>
+                        <p class="card-text">{product.Description}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    )
 };
 
-export default Products  
-[/code]
+export default Products 
+```
 
 This method takes a list of products and displays every item. The next step is to implement the Azure Function call in the App.js file.
 
-[code language=&#8221;javascript&#8221;]  
-import React, { Component } from &#8216;react&#8217;;  
-import Products from &#8216;./components/products&#8217;;
+```javascript  
+import React, { Component } from 'react';
+import Products from './components/products';
 
-class App extends Component {  
-render() {  
-return (  
-<Products products={this.state.products} />  
-)  
-}
+class App extends Component {
+  render() {
+    return (
+      <Products products={this.state.products} />
+    )
+  }
 
-state = {  
-products: []  
-};
+  state = {
+    products: []
+  };
 
-componentDidMount() {  
-fetch(&#8216;https://staticwebappwolfgang.azurewebsites.net/api/Function1&#8217;)  
-.then(res => res.json())  
-.then((data) => {  
-this.setState({ products: data })  
-})  
-.catch(console.log)  
-}  
+  componentDidMount() {
+    fetch('https://staticwebappwolfgang.azurewebsites.net/api/Function1')
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ products: data })
+      })
+      .catch(console.log)
+  }
 }
 
 export default App;  
-[/code]
+```
 
 Lastly, I add the Bootstrap css file in the index.html file which is located in the Public folder.
 
-[code language=&#8221;html&#8221;]  
+```html  
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  
-[/code]
+```
 
 Open a new terminal in VS Code and start the application with:
 
-[code language=&#8221;powershell&#8221;]  
+```powershell  
 npm start  
-[/code]
+```
 
 This automatically opens your browser and should display your product list.
 

@@ -49,23 +49,23 @@ The API project is the heart of the application and contains the controllers, va
 
 I try to keep the controller methods as simple as possible. They only call different services and return a model or status to the client. They don&#8217;t do any business logic.
 
-[code language=&#8221;CSharp&#8221;]  
-[HttpPost]  
-public async Task<ActionResult<Customer>> Customer([FromBody] CreateCustomerModel createCustomerModel)  
-{  
-try  
-{  
-return await _mediator.Send(new CreateCustomerCommand  
-{  
-Customer = _mapper.Map<Customer>(createCustomerModel)  
-});  
-}  
-catch (Exception ex)  
-{  
-return BadRequest(ex.Message);  
-}  
-}  
-[/code]
+```csharp
+[HttpPost]
+public async Task<ActionResult<Customer>> Customer([FromBody] CreateCustomerModel createCustomerModel)
+{
+    try
+    {
+        return await _mediator.Send(new CreateCustomerCommand
+        {
+            Customer = _mapper.Map<Customer>(createCustomerModel)
+        });
+    }
+    catch (Exception ex)
+    {
+        return BadRequest(ex.Message);
+    }
+} 
+```
 
 The _mediator.Send is used to call a service using CQRS and the Mediator pattern. I will explain that in a later post. For now, it is important to understand that a service is called and that a Customer is returned. In case of an exception, a bad request and an error message are returned.
 
@@ -75,35 +75,35 @@ My naming convention is that I use the name of the object, in that case, Custome
 
 To validate the user input, I use the NuGet FluentValidations and a validator per model. Your validator inherits from AbstractValidator<T> where T is the class of the model you want to validate. Then you can add rules in the constructor of your validator. The validator is not really important for me right now and so I try to keep it simple and only validate that the first and last name has at least two characters and that the age and birthday are between zero and 150 years. I don&#8217;t validate if the birthday and the age match. This should be changed in the future.
 
-[code language=&#8221;CSharp&#8221;]  
-public class CreateCustomerModelValidator : AbstractValidator<CreateCustomerModel>  
-{  
-public CreateCustomerModelValidator()  
-{  
-RuleFor(x => x.FirstName)  
-.NotNull()  
-.WithMessage("The first name must be at least 2 character long");  
-RuleFor(x => x.FirstName)  
-.MinimumLength(2).  
-WithMessage("The first name must be at least 2 character long");
+```csharp 
+public class CreateCustomerModelValidator : AbstractValidator<CreateCustomerModel>
+{
+    public CreateCustomerModelValidator()
+    {
+        RuleFor(x => x.FirstName)
+            .NotNull()
+            .WithMessage("The first name must be at least 2 character long");
+        RuleFor(x => x.FirstName)
+            .MinimumLength(2).
+            WithMessage("The first name must be at least 2 character long");
+        
+        RuleFor(x => x.LastName)
+            .NotNull()
+            .WithMessage("The last name must be at least 2 character long");
+        RuleFor(x => x.LastName)
+            .MinimumLength(2)
+            .WithMessage("The last name must be at least 2 character long");
 
-RuleFor(x => x.LastName)  
-.NotNull()  
-.WithMessage("The last name must be at least 2 character long");  
-RuleFor(x => x.LastName)  
-.MinimumLength(2)  
-.WithMessage("The last name must be at least 2 character long");
-
-RuleFor(x => x.Birthday)  
-.InclusiveBetween(DateTime.Now.AddYears(-150).Date, DateTime.Now)  
-.WithMessage("The birthday must not be longer ago than 150 years and can not be in the future");
-
-RuleFor(x => x.Age)  
-.InclusiveBetween(0, 150)  
-.WithMessage("The minimum age is 0 and the maximum age is 150 years");  
+        RuleFor(x => x.Birthday)
+            .InclusiveBetween(DateTime.Now.AddYears(-150).Date, DateTime.Now)
+            .WithMessage("The birthday must not be longer ago than 150 years and can not be in the future");
+            
+        RuleFor(x => x.Age)
+            .InclusiveBetween(0, 150)
+            .WithMessage("The minimum age is 0 and the maximum age is 150 years");
+    }
 }  
-}  
-[/code]
+```
 
 ### Startup
 
@@ -125,140 +125,139 @@ The Data project contains everything needed to access the database. I use Entity
 
 In the database context, I add a list of customers that I will use to update an existing customer. The database context is created for every request, therefore updated or created customers will be lost after the request. This behavior is fine for the sake of this demo.
 
-[code language=&#8221;CSharp&#8221;]  
-public CustomerContext(DbContextOptions<CustomerContext> options)  
-: base(options)  
-{  
-var customers = new[]  
-{  
-new Customer  
-{  
-Id = Guid.Parse("9f35b48d-cb87-4783-bfdb-21e36012930a"),  
-FirstName = "Wolfgang",  
-LastName = "Ofner",  
-Birthday = new DateTime(1989, 11, 23),  
-Age = 30  
-},  
-new Customer  
-{  
-Id = Guid.Parse("654b7573-9501-436a-ad36-94c5696ac28f"),  
-FirstName = "Darth",  
-LastName = "Vader",  
-Birthday = new DateTime(1977, 05, 25),  
-Age = 43  
-},  
-new Customer  
-{  
-Id = Guid.Parse("971316e1-4966-4426-b1ea-a36c9dde1066"),  
-FirstName = "Son",  
-LastName = "Goku",  
-Birthday = new DateTime(1937, 04, 16),  
-Age = 83  
-}  
-};
+```csharp
+public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
+{
+    var customers = new[]
+    {
+        new Customer
+        {
+            Id = Guid.Parse("9f35b48d-cb87-4783-bfdb-21e36012930a"),
+            FirstName = "Wolfgang",
+            LastName = "Ofner",
+            Birthday = new DateTime(1989, 11, 23),
+            Age = 30
+        },
+        new Customer
+        {
+            Id = Guid.Parse("654b7573-9501-436a-ad36-94c5696ac28f"),
+            FirstName = "Darth",
+            LastName = "Vader",
+            Birthday = new DateTime(1977, 05, 25),
+            Age = 43
+        },
+        new Customer
+        {
+            Id = Guid.Parse("971316e1-4966-4426-b1ea-a36c9dde1066"),
+            FirstName = "Son",
+            LastName = "Goku",
+            Birthday = new DateTime(1937, 04, 16),
+            Age = 83
+        }
+    };
 
-Customer.AddRange(customers);  
-SaveChanges();  
+    Customer.AddRange(customers);
+    SaveChanges();
 }
 
-public DbSet<Customer> Customer { get; set; }  
-[/code]
+public DbSet<Customer> Customer { get; set; } 
+```
 
 If you want to use a normal database, all you have to do is delete the adding of customers in the constructor and change the following line in the Startup class to take your connection string instead of using an in-memory database.
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 services.AddDbContext<CustomerContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));  
-[/code]
+```
 
 You can either hard-code your connection string in the Startup class or better, read it from the appsettings.json file.
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 services.AddDbContext<CustomerContext>(options => options.UseSqlServer(Configuration["Database:ConnectionString"]));  
-[/code]
+```
 
 ### Repository
 
 I have a generic repository for CRUD operations which can be used for every entity. This repository has methods like AddAsync and UpdateAsync.
 
-[code language=&#8221;CSharp&#8221;]  
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()  
-{  
-protected readonly CustomerContext CustomerContext;
+```csharp  
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
+{
+    protected readonly CustomerContext CustomerContext;
 
-public Repository(CustomerContext customerContext)  
-{  
-CustomerContext = customerContext;  
-}
+    public Repository(CustomerContext customerContext)
+    {
+        CustomerContext = customerContext;
+    }
 
-public IEnumerable<TEntity> GetAll()  
-{  
-try  
-{  
-return CustomerContext.Set<TEntity>();  
-}  
-catch (Exception ex)  
-{  
-throw new Exception($"Couldn&#8217;t retrieve entities: {ex.Message}");  
-}  
-}
+    public IEnumerable<TEntity> GetAll()
+    {
+        try
+        {
+            return CustomerContext.Set<TEntity>();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Couldn't retrieve entities: {ex.Message}");
+        }
+    }
 
-public async Task<TEntity> AddAsync(TEntity entity)  
-{  
-if (entity == null)  
-{  
-throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");  
-}
+    public async Task<TEntity> AddAsync(TEntity entity)
+    {
+        if (entity == null)
+        {
+            throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");
+        }
 
-try  
-{  
-await CustomerContext.AddAsync(entity);  
-await CustomerContext.SaveChangesAsync();
+        try
+        {
+            await CustomerContext.AddAsync(entity);
+            await CustomerContext.SaveChangesAsync();
 
-return entity;  
-}  
-catch (Exception ex)  
-{  
-throw new Exception($"{nameof(entity)} could not be saved: {ex.Message}");  
-}  
-}
+            return entity;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"{nameof(entity)} could not be saved: {ex.Message}");
+        }
+    }
 
-public async Task<TEntity> UpdateAsync(TEntity entity)  
-{  
-if (entity == null)  
-{  
-throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");  
-}
+    public async Task<TEntity> UpdateAsync(TEntity entity)
+    {
+        if (entity == null)
+        {
+            throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");
+        }
 
-try  
-{  
-CustomerContext.Update(entity);  
-await CustomerContext.SaveChangesAsync();
+        try
+        {
+            CustomerContext.Update(entity);
+            await CustomerContext.SaveChangesAsync();
 
-return entity;  
-}  
-catch (Exception ex)  
-{  
-throw new Exception($"{nameof(entity)} could not be updated {ex.Message}");  
-}  
-}  
-}  
-[/code]
+            return entity;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"{nameof(entity)} could not be updated {ex.Message}");
+        }
+    }
+} 
+```
 
 Additionally to the generic repository, I have a CustomerRepository that implements a Customer specific method, GetCustomerByIdAsync.
 
-[code language=&#8221;CSharp&#8221;]  
-public class CustomerRepository : Repository<Customer>, ICustomerRepository  
-{  
-public CustomerRepository(CustomerContext customerContext) : base(customerContext)  
-{  
-}
+```csharp  
+public class CustomerRepository : Repository<Customer>, ICustomerRepository
+{
+    public CustomerRepository(CustomerContext customerContext) : base(customerContext)
+    {
+    }
 
-public async Task<Customer> GetCustomerByIdAsync(Guid id, CancellationToken cancellationToken)  
-{  
-return await CustomerContext.Customer.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);  
-}  
-}  
-[/code]
+    public async Task<Customer> GetCustomerByIdAsync(Guid id, CancellationToken cancellationToken)
+    {
+        return await CustomerContext.Customer.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+    }
+} 
+```
 
 The OrderRepository has more Order specific methods. The CustomerRepository inherits from the generic repository and its interface inherits from the repository interface. Since the CustomerContext has the protected access modified in the generic repository, I can reuse it in my CustomerRepository.
 
@@ -270,44 +269,44 @@ The Domain project contains all entities and no business logic. In my microservi
 
 The Messaging.Send project contains everything I need to send Customer objects to a RabbitMQ queue. I will talk about the specifics of the implementation in a later post.
 
-[code language=&#8221;CSharp&#8221;]  
-public void SendCustomer(Customer customer)  
-{  
-var factory = new ConnectionFactory() { HostName = \_hostname, UserName = \_username, Password = _password };
+```csharp  
+public void SendCustomer(Customer customer)
+{
+    var factory = new ConnectionFactory() { HostName = _hostname, UserName = _username, Password = _password };
+    
+    using (var connection = factory.CreateConnection())
+    using (var channel = connection.CreateModel())
+    {
+        channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
 
-using (var connection = factory.CreateConnection())  
-using (var channel = connection.CreateModel())  
-{  
-channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+        var json = JsonConvert.SerializeObject(customer);
+        var body = Encoding.UTF8.GetBytes(json);
 
-var json = JsonConvert.SerializeObject(customer);  
-var body = Encoding.UTF8.GetBytes(json);
-
-channel.BasicPublish(exchange: "", routingKey: _queueName, basicProperties: null, body: body);  
+        channel.BasicPublish(exchange: "", routingKey: _queueName, basicProperties: null, body: body);
+    }
 }  
-}  
-[/code]
+```
 
 ## Service
 
 The Service project is split into Command and Query. This is how CQRS separates the concerns of reading and writing data. I will go into the details in a later post. For now, all you have to know is that commands write data and queries read data. A query consists of a query and a handler. The query indicates what action should be executed and the handler implements this action. The command works with the same principle.
 
-[code language=&#8221;CSharp&#8221;]  
-public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Customer>  
-{  
-private readonly ICustomerRepository _customerRepository;
+```csharp  
+public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Customer>
+{
+    private readonly ICustomerRepository _customerRepository;
 
-public CreateCustomerCommandHandler(ICustomerRepository customerRepository)  
-{  
-_customerRepository = customerRepository;  
-}
+    public CreateCustomerCommandHandler(ICustomerRepository customerRepository)
+    {
+        _customerRepository = customerRepository;
+    }
 
-public async Task<Customer> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)  
-{  
-return await _customerRepository.AddAsync(request.Customer);  
+    public async Task<Customer> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
+    {
+        return await _customerRepository.AddAsync(request.Customer);
+    }
 }  
-}  
-[/code]
+```
 
 The handler often calls the repository to retrieve or change data.
 
@@ -325,16 +324,16 @@ Now that the base functionality is set up, it is time to test both microservice.
 
 Open the CustomerCommandHandler in the Service project and comment out the following line _customerUpdateSender.SendCustomer(customer);
 
-[code language=&#8221;CSharp&#8221;]  
-public async Task<Customer> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)  
-{  
-var customer = await _repository.UpdateAsync(request.Customer);
+```csharp  
+public async Task<Customer> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
+{
+    var customer = await _customerRepository.UpdateAsync(request.Customer);
 
-// _customerUpdateSender.SendCustomer(customer);
+    // _customerUpdateSender.SendCustomer(customer);
 
-return customer;  
+    return customer;
 }  
-[/code]
+```
 
 This line is responsible for publishing the Customer to the queue
 
@@ -342,7 +341,7 @@ This line is responsible for publishing the Customer to the queue
 
 In the Order API, you have to comment out services.AddHostedService<CustomerFullNameUpdateReceiver>(); in the Startup class of the API project.
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 services.AddTransient<IRequestHandler<GetPaidOrderQuery, List<Order>>, GetPaidOrderQueryHandler>();  
 services.AddTransient<IRequestHandler<GetOrderByIdQuery, Order>, GetOrderByIdQueryHandler>();  
 services.AddTransient<IRequestHandler<GetOrderByCustomerGuidQuery, List<Order>>, GetOrderByCustomerGuidQueryHandler>();  
@@ -352,7 +351,7 @@ services.AddTransient<IRequestHandler<UpdateOrderCommand>, UpdateOrderCommandHan
 services.AddTransient<ICustomerNameUpdateService, CustomerNameUpdateService>();
 
 // services.AddHostedService<CustomerFullNameUpdateReceiver>();  
-[/code]
+```
 
 This line would register a background service that listens to change in the queue and would pull these changes.
 

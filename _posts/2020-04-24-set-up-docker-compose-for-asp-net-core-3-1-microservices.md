@@ -11,33 +11,47 @@ tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice,
 
 Docker-compose is a yml file in which you can set up all the containers your application needs to run. Simplified, it executes several docker run commands after each other. If you are used to docker run commands, the content of the compose file will look familiar. Let&#8217;s have a look at the content of the file:
 
-[code language=&#8221;text&#8221;]  
-version: "3.6"  
-services:  
-rabbitmq:  
-container_name: rabbitmq  
-ports:  
-&#8211; 5672:5672  
-&#8211; 15672:15672  
-environment:  
-&#8211; RABBITMQ\_DEFAULT\_USER=user  
-&#8211; RABBITMQ\_DEFAULT\_PASS=password  
-image: rabbitmq:3-management
-
-customerapi:  
-container_name: customerapi  
-ports:  
-&#8211; 8000:80  
-&#8211; 8001:443  
-environment:  
-&#8211; "ASPNETCORE_URLS=https://+;http://+"  
-&#8211; Kestrel\_\_Certificates\_\_Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx  
-&#8211; Kestrel\_\_Certificates\_\_Default__Password=SecretPassword  
-image: wolfgangofner/customerapi  
-restart: on-failure  
-depends_on:  
-&#8211; rabbitmq  
-[/code]
+```yaml  
+version: "3.6"
+services:
+    rabbitmq:
+        container_name: rabbitmq
+        ports:
+            - 5672:5672
+            - 15672:15672
+        environment:
+            - RABBITMQ_DEFAULT_USER=user
+            - RABBITMQ_DEFAULT_PASS=password        
+        image: rabbitmq:3-management
+                
+    customerapi:
+        container_name: customerapi
+        ports:
+            - 8000:80
+            - 8001:443
+        environment:
+            - "ASPNETCORE_URLS=https://+;http://+"
+            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
+            - Kestrel__Certificates__Default__Password=SecretPassword        
+        image: wolfgangofner/customerapi   
+        restart: on-failure        
+        depends_on:
+            - rabbitmq
+        
+    orderapi:
+        container_name: order
+        ports:
+            - 9000:80
+            - 9001:443
+        environment:
+            - "ASPNETCORE_URLS=https://+;http://+"
+            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
+            - Kestrel__Certificates__Default__Password=SecretPassword       
+        image: wolfgangofner/orderapi       
+        restart: on-failure
+        depends_on:
+            - rabbitmq  
+```
 
 This file describes two images, rabbitmq, and customerapi. Let&#8217;s have a closer look at the customerapi definition:
 
@@ -79,51 +93,51 @@ Another great feature of docker-compose is, that you can stop all your applicati
 
 You don&#8217;t have to use images from Docker hub in your compose file, you can also build images and then run them. To build an image, use the build section and set the context to the location of the Dockerfile.
 
-[code language=&#8221;text&#8221;]  
-version: "3.6"  
-services:  
-rabbitmq:  
-container_name: rabbitmq  
-ports:  
-&#8211; 5672:5672  
-&#8211; 15672:15672  
-environment:  
-&#8211; RABBITMQ\_DEFAULT\_USER=user  
-&#8211; RABBITMQ\_DEFAULT\_PASS=password  
-image: rabbitmq:3-management
-
-customerapi:  
-container_name: customerapi  
-ports:  
-&#8211; 8000:80  
-&#8211; 8001:443  
-environment:  
-&#8211; "ASPNETCORE_URLS=https://+;http://+"  
-&#8211; Kestrel\_\_Certificates\_\_Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx  
-&#8211; Kestrel\_\_Certificates\_\_Default__Password=SecretPassword  
-build:  
-context: ./CustomerApi  
-dockerfile: CustomerApi/Dockerfile  
-restart: on-failure  
-depends_on:  
-&#8211; rabbitmq
-
-orderapi:  
-container_name: order  
-ports:  
-&#8211; 9000:80  
-&#8211; 9001:443  
-environment:  
-&#8211; "ASPNETCORE_URLS=https://+;http://+"  
-&#8211; Kestrel\_\_Certificates\_\_Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx  
-&#8211; Kestrel\_\_Certificates\_\_Default__Password=SecretPassword  
-build:  
-context: ./OrderApi  
-dockerfile: OrderApi/Dockerfile  
-restart: on-failure  
-depends_on:  
-&#8211; rabbitmq  
-[/code]
+```yaml  
+version: "3.6"
+services:
+    rabbitmq:
+        container_name: rabbitmq
+        ports:
+            - 5672:5672
+            - 15672:15672
+        environment:
+            - RABBITMQ_DEFAULT_USER=user
+            - RABBITMQ_DEFAULT_PASS=password        
+        image: rabbitmq:3-management
+                
+    customerapi:
+        container_name: customerapi
+        ports:
+            - 8000:80
+            - 8001:443
+        environment:
+            - "ASPNETCORE_URLS=https://+;http://+"
+            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
+            - Kestrel__Certificates__Default__Password=SecretPassword        
+        build:
+            context: ./CustomerApi
+            dockerfile: CustomerApi/Dockerfile
+        restart: on-failure        
+        depends_on:
+            - rabbitmq
+        
+    orderapi:
+        container_name: order
+        ports:
+            - 9000:80
+            - 9001:443
+        environment:
+            - "ASPNETCORE_URLS=https://+;http://+"
+            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
+            - Kestrel__Certificates__Default__Password=SecretPassword       
+        build:
+            context: ./OrderApi      
+            dockerfile: OrderApi/Dockerfile
+        restart: on-failure
+        depends_on:
+            - rabbitmq             
+```
 
 I named this file docker-compose.Build. You can use the -f parameter to specify the file in your docker-compose command: docker-compose -f docker-compose.Build.yml up -d.
 

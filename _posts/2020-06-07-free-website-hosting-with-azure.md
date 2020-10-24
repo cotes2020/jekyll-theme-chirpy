@@ -64,21 +64,21 @@ Again, Azure Cosmos DB is too big to go into any details in this post. For the f
 
 I am re-using the Azure Function from my last post. If you don&#8217;t have any yet, create a new Azure Function with an HTTP trigger. To connect to the Cosmos DB, I am installing the Microsoft.Azure.Cosmos NuGet package and create a private variable with which I will access the data.
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 private static Container _container;  
-[/code]
+```
 
 Next, I create a method that will create a connection to the container in the database.
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 private static async Task SetUpDatabaseConnection()  
 {  
-var cosmosClient = new CosmosClient("https://staticwebappdemocosmosdb.documents.azure.com:443",  
-"qCEzM0xsroClwt54p7aICi3yBa0bWn4rAaiQNiIPp74LHcA7Wbm9D1iHszfaJ0icRcTwiW74KbMbn4WrMqnyfg==", new CosmosClientOptions());  
-Database database = await cosmosClient.CreateDatabaseIfNotExistsAsync("StaticWebAppDatabase");  
-_container = await database.CreateContainerIfNotExistsAsync("Products", "/Name", 400);  
+    var cosmosClient = new CosmosClient("https://staticwebappdemocosmosdb.documents.azure.com:443",  
+    "qCEzM0xsroClwt54p7aICi3yBa0bWn4rAaiQNiIPp74LHcA7Wbm9D1iHszfaJ0icRcTwiW74KbMbn4WrMqnyfg==", new CosmosClientOptions());  
+    Database database = await cosmosClient.CreateDatabaseIfNotExistsAsync("StaticWebAppDatabase");  
+    _container = await database.CreateContainerIfNotExistsAsync("Products", "/Name", 400);  
 }  
-[/code]
+```
 
 To connect to the Azure Cosmos DB container, you have to enter your URI and primary key. You can find them in the Keys tab of your Cosmos DB account.
 
@@ -92,51 +92,51 @@ To connect to the Azure Cosmos DB container, you have to enter your URI and prim
 
 In the next method, I am creating an iterator that will return all my products. I add these products to a list and return the list. You can filter the query by providing a filter statement in the GetItemQueryIterator method.
 
-[code language=&#8221;CSharp&#8221;]  
-private static async Task<List<Product>> GetAllProducts()  
-{  
-var feedIterator = _container.GetItemQueryIterator<Product>();  
-var products = new List<Product>();
+```csharp  
+private static async Task<List<Product>> GetAllProducts()
+{
+    var feedIterator = _container.GetItemQueryIterator<Product>();
+    var products = new List<Product>();
 
-while (feedIterator.HasMoreResults)  
-{  
-foreach (var item in await feedIterator.ReadNextAsync())  
-{  
-{  
-products.Add(item);  
-}  
-}  
-}
+    while (feedIterator.HasMoreResults)
+    {
+        foreach (var item in await feedIterator.ReadNextAsync())
+        {
+            {
+                products.Add(item);
+            }
+        }
+    }
 
-return products;  
+    return products;
 }  
-[/code]
+```
 
 In the Run method of the Azure Function, I am calling both methods and convert the list to a JSON object before returning it.
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 [FunctionName("Function1")]  
 public static async Task<IActionResult> Run(  
 [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)  
 {  
-await SetUpDatabaseConnection();
-
-return new OkObjectResult(JsonConvert.SerializeObject(await GetAllProducts()));  
+    await SetUpDatabaseConnection();
+    
+    return new OkObjectResult(JsonConvert.SerializeObject(await GetAllProducts()));  
 }  
-[/code]
+```
 
 I keep the Product class as it is.
 
-[code language=&#8221;CSharp&#8221;]  
+```csharp  
 public class Product  
 {  
-public string Name { get; set; }
-
-public decimal Price { get; set; }
-
-public string Description { get; set; }  
+    public string Name { get; set; }
+    
+    public decimal Price { get; set; }
+    
+    public string Description { get; set; }  
 }  
-[/code]
+```
 
 Start the Azure Function, enter the URL displayed in the command line and you will see your previously entered data.
 

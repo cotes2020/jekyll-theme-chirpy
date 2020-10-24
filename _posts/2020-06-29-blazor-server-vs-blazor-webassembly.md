@@ -56,9 +56,9 @@ In Visual Studio create a new project and select Blazor App and then Blazor Serv
 
 The template creates a sample application where you can increase a counter and load data about the weather forecast. Start the application, open the Counter feature and click a couple of times on the button. The blazor.server.js Javascript intercepts the button click action and uses SignalR to send messages to the server where the code is executed. The blazor.server.js file is loaded in the _Host.cshtml file.
 
-[code language=&#8221;Javascript&#8221;]  
+```javascript  
 <script src="_framework/blazor.server.js"></script>  
-[/code]
+```
 
 You can see the messages sent to the server when you open the developer tools, go to the Network tab and click the button several times.
 
