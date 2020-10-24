@@ -32,7 +32,7 @@ social:
     - https://twitter.com/wolfgang_ofner  
     - https://github.com/wolfgangofner  
 
-google_site_verification: google_meta_tag_verification # change to your verification string
+google_site_verification: xxsPm-h6A0B6a0QMgqXO80PU4DbMt4Dq06p-SGzB3TU
 
 
 # Only if your site type is GitHub Project sites and doesn't have a custom domain,
@@ -42,7 +42,7 @@ baseurl: ''
 timezone: Europe/Zurich
 
 google_analytics:
-  id: ''          # Fill with your Google Analytics ID
+  id: 'UA-112077092-1'          # Fill with your Google Analytics ID
   pv:
     # The Google Analytics pageviews switch.
     # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
