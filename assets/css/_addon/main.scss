@@ -338,13 +338,14 @@ $sidebar-display: "sidebar-display";
   border: 0;
   border-radius: 0;
   padding: .18rem .3rem;
-  color: white;
+  color: var(--text-color);
 }
 
 #search-input {
   &:focus {
     box-shadow: none;
     background: center;
+    color: white;
     &.form-control {
       &::-webkit-input-placeholder { @include input-placeholder }
       &::-moz-placeholder { @include input-placeholder }
