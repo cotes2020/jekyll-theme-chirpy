@@ -2,4 +2,4 @@ User-agent: *
 
 Disallow: /norobots/
 
-Sitemap: /sitemap.xml
+Sitemap: https://thankful-island-07643b903.azurestaticapps.net//sitemap.xml
