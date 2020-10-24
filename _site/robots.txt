@@ -2,4 +2,4 @@ User-agent: *
 
 Disallow: /norobots/
 
-Sitemap: https://thankful-island-07643b903.azurestaticapps.net//sitemap.xml
+Sitemap: https://www.programmingwithwolfgang.com/sitemap.xml
