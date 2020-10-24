@@ -8,24 +8,33 @@
 
 {% assign MAX = 10 %}
 
-{% capture tags_array %}
-  {% for tag in site.tags %}
-    {{ tag[1] | size }}::{{ tag[0] | replace: ' ', '-' }}
-  {% endfor %}
-{% endcapture %}
+{% assign size_list = "" | split: "" %}
+{% assign tag_list = "" | split: "" %}
 
-{% assign all_tags = tags_array | split: " " | sort | reverse %}
-{% assign count = 0 %}
+{% for tag in site.tags %}
+  {% assign size = tag | last | size %}
+  {% assign size_list = size_list | push: size %}
+
+  {% assign tag_str = tag | first | replace: " ", "-" | append: "::" | append: size %}
+  {% assign tag_list =  tag_list | push: tag_str %}
+{% endfor %}
+
+{% assign size_list = size_list | sort | reverse %}
+
+{% assign tag_list = tag_list | sort_natural %}
 
 {% assign trending_tags = "" | split: "" %}
 
-{% for iter in all_tags %}
-  {% assign count = count | plus: 1 %}
-  {% assign tag = iter | split: "::" | last  %}
-
-  {% assign trending_tags = trending_tags | push: tag %}
-
-  {% if count >= MAX %}
-    {% break %}
-  {% endif %}
+{% for size in size_list limit: MAX %}
+  {% for tag_str in tag_list %}
+    {% assign tag = tag_str | split: "::" %}
+    {% assign tag_name = tag | first %}
+    {% assign tag_size = tag | last | plus: 0 %}
+    {% if tag_size == size %}
+      {% unless trending_tags contains tag_name %}
+        {% assign trending_tags = trending_tags | push: tag_name %}
+        {% break %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
 {% endfor %}
