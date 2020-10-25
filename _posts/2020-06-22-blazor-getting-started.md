@@ -27,30 +27,30 @@ To follow the demo you need Visual Studio 2019 and at least .net core 3.0. You c
 
 To create a new Blazor App, select the Blazor template in Visual Studio.
 
-<div id="attachment_2209" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Select-the-Blazor-App-template.jpg"><img aria-describedby="caption-attachment-2209" loading="lazy" class="wp-image-2209" src="/assets/img/posts/2020/06/Select-the-Blazor-App-template.jpg" alt="Select the Blazor App template" width="700" height="485" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Select-the-Blazor-App-template.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Select-the-Blazor-App-template.jpg" alt="Select the Blazor App template" /></a>
   
-  <p id="caption-attachment-2209" class="wp-caption-text">
+  <p>
     Select the Blazor App template
   </p>
 </div>
 
 After entering a name and location, select Blazor Server App, and click on Create.
 
-<div id="attachment_2210" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Create-a-Blazor-Server-App.jpg"><img aria-describedby="caption-attachment-2210" loading="lazy" class="wp-image-2210" src="/assets/img/posts/2020/06/Create-a-Blazor-Server-App.jpg" alt="Create a Blazor Server App" width="700" height="483" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Create-a-Blazor-Server-App.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Create-a-Blazor-Server-App.jpg" alt="Create a Blazor Server App" /></a>
   
-  <p id="caption-attachment-2210" class="wp-caption-text">
+  <p>
     Create a Blazor Server App
   </p>
 </div>
 
 This creates the solution and also a demo application. Start the application and you will see a welcome screen and a menu on the left side. Click on Fetch data to see some information about the weather forecast or on Counter to see a button which increases the amount when you click it.
 
-<div id="attachment_2211" style="width: 472px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/The-counter-function-of-the-demo-app.jpg"><img aria-describedby="caption-attachment-2211" loading="lazy" class="size-full wp-image-2211" src="/assets/img/posts/2020/06/The-counter-function-of-the-demo-app.jpg" alt="The counter function of the demo app" width="462" height="268" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/The-counter-function-of-the-demo-app.jpg"><img aria-describedby="caption-attachment-2211" loading="lazy" class="size-full wp-image-2211" src="/assets/img/posts/2020/06/The-counter-function-of-the-demo-app.jpg" alt="The counter function of the demo app" /></a>
   
-  <p id="caption-attachment-2211" class="wp-caption-text">
+  <p>
     The counter function of the demo app
   </p>
 </div>
@@ -184,10 +184,10 @@ As the last step, I add an onchange event to the dropdown menu and the code of t
 
 Run the application, navigate to /products and you will see the dropdown menu. Select a product and it will be displayed below the dropdown.
 
-<div id="attachment_2212" style="width: 462px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Testing-my-first-Blazor-Component.jpg"><img aria-describedby="caption-attachment-2212" loading="lazy" class="size-full wp-image-2212" src="/assets/img/posts/2020/06/Testing-my-first-Blazor-Component.jpg" alt="Testing my first Blazor Component" width="452" height="317" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Testing-my-first-Blazor-Component.jpg"><img aria-describedby="caption-attachment-2212" loading="lazy" class="size-full wp-image-2212" src="/assets/img/posts/2020/06/Testing-my-first-Blazor-Component.jpg" alt="Testing my first Blazor Component" /></a>
   
-  <p id="caption-attachment-2212" class="wp-caption-text">
+  <p>
     Testing my first Blazor Component
   </p>
 </div>

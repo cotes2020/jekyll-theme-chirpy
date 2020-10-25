@@ -42,20 +42,20 @@ I want to create an application which calculates the pay of a person. The pay co
 
 After all the classes are set up, I can add elements to the lists of the person.
 
-<div id="attachment_370" style="width: 483px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Set-up-person.jpg"><img aria-describedby="caption-attachment-370" loading="lazy" class="size-full wp-image-370" src="/assets/img/posts/2017/12/Set-up-person.jpg" alt="Set up person" width="473" height="129" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Set-up-person.jpg"><img aria-describedby="caption-attachment-370" loading="lazy" class="size-full wp-image-370" src="/assets/img/posts/2017/12/Set-up-person.jpg" alt="Set up person" /></a>
   
-  <p id="caption-attachment-370" class="wp-caption-text">
+  <p>
     Set up person
   </p>
 </div>
 
 To calculate the pay of the person, I have to create a foreach loop for Salary, Bonus and Marketing.
 
-<div id="attachment_371" style="width: 541px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Calculate-pay-of-the-person.jpg"><img aria-describedby="caption-attachment-371" loading="lazy" class="size-full wp-image-371" src="/assets/img/posts/2017/12/Calculate-pay-of-the-person.jpg" alt="Calculate pay of the person" width="531" height="305" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Calculate-pay-of-the-person.jpg"><img aria-describedby="caption-attachment-371" loading="lazy" class="size-full wp-image-371" src="/assets/img/posts/2017/12/Calculate-pay-of-the-person.jpg" alt="Calculate pay of the person" /></a>
   
-  <p id="caption-attachment-371" class="wp-caption-text">
+  <p>
     Calculate pay of the person
   </p>
 </div>
@@ -68,50 +68,50 @@ That’s where the visitor comes into play. You can find the solution on [GitHub
 
 The first step is to implement the IVisitor interface, containing three Visit methods with Salary, Marketing and Bonus as parameter.
 
-<div id="attachment_372" style="width: 280px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/IVisitor.jpg"><img aria-describedby="caption-attachment-372" loading="lazy" class="size-full wp-image-372" src="/assets/img/posts/2017/12/IVisitor.jpg" alt="IVisitor interface" width="270" height="176" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/IVisitor.jpg"><img aria-describedby="caption-attachment-372" loading="lazy" class="size-full wp-image-372" src="/assets/img/posts/2017/12/IVisitor.jpg" alt="IVisitor interface" /></a>
   
-  <p id="caption-attachment-372" class="wp-caption-text">
+  <p>
     IVisitor interface
   </p>
 </div>
 
 If I want to expand the functionality of my program, I only have to add a new Visit method to the interface. Next, I implement another interface. I call this interface IAsset. The interface has only one method, Accept with IVisitor as parameter.
 
-<div id="attachment_373" style="width: 348px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/IAsset.jpg"><img aria-describedby="caption-attachment-373" loading="lazy" class="size-full wp-image-373" src="/assets/img/posts/2017/12/IAsset.jpg" alt="IAsset interface" width="338" height="87" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/IAsset.jpg"><img aria-describedby="caption-attachment-373" loading="lazy" class="size-full wp-image-373" src="/assets/img/posts/2017/12/IAsset.jpg" alt="IAsset interface" /></a>
   
-  <p id="caption-attachment-373" class="wp-caption-text">
+  <p>
     IAsset interface
   </p>
 </div>
 
 The Salary, Bonus, Marketing and Person class implement the IAsset interface. All classes implement the Accept method the same way. The visitor calls visit with this as parameter.  There is a slight difference of the implementation in the Person class which I will talk in a second.
 
-<div id="attachment_374" style="width: 286px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Implementation-of-Accept.jpg"><img aria-describedby="caption-attachment-374" loading="lazy" class="size-full wp-image-374" src="/assets/img/posts/2017/12/Implementation-of-Accept.jpg" alt="Implementation of Accept" width="276" height="72" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Implementation-of-Accept.jpg"><img aria-describedby="caption-attachment-374" loading="lazy" class="size-full wp-image-374" src="/assets/img/posts/2017/12/Implementation-of-Accept.jpg" alt="Implementation of Accept" /></a>
   
-  <p id="caption-attachment-374" class="wp-caption-text">
+  <p>
     Implementation of Accept
   </p>
 </div>
 
 With this change, the lists for the salary, bonus and marketing are not needed any longer in the Person class. I replace these three lists with a list of the type IAsset called Assets. This list contains all assets which are needed to calculate the pay of a person. The Accept method iterates through the Assets list and calls visit on every item of the list.
 
-<div id="attachment_375" style="width: 316px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Implementation-of-Accept-in-Person-class.jpg"><img aria-describedby="caption-attachment-375" loading="lazy" class="size-full wp-image-375" src="/assets/img/posts/2017/12/Implementation-of-Accept-in-Person-class.jpg" alt="Implementation of Accept in Person class" width="306" height="183" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Implementation-of-Accept-in-Person-class.jpg"><img aria-describedby="caption-attachment-375" loading="lazy" class="size-full wp-image-375" src="/assets/img/posts/2017/12/Implementation-of-Accept-in-Person-class.jpg" alt="Implementation of Accept in Person class" /></a>
   
-  <p id="caption-attachment-375" class="wp-caption-text">
+  <p>
     Implementation of Accept in Person class
   </p>
 </div>
 
 The last step is to implement a class which contains the logic for the calculation of the salary. This class is the ConcreteVisitor from the UML diagram. I call it TotalSalaryVisitor. The TotalSalaryVisitor implements the IVisitor and therefore also implements all the Visit methods. In these methods the actual calculation takes place. The result will be stored in a public property called TotalSalary. This means that the Visit methods for Salary and Bonus add the SalaryAfterTax and BonusAfterTax to the TotalSalary. The Visit method for the Marketing subtracts the MarketingCosts from the TotalSalary.
 
-<div id="attachment_376" style="width: 372px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/TotalSalaryVisitor.jpg"><img aria-describedby="caption-attachment-376" loading="lazy" class="size-full wp-image-376" src="/assets/img/posts/2017/12/TotalSalaryVisitor.jpg" alt="TotalSalaryVisitor implementation" width="362" height="376" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/TotalSalaryVisitor.jpg"><img aria-describedby="caption-attachment-376" loading="lazy" class="size-full wp-image-376" src="/assets/img/posts/2017/12/TotalSalaryVisitor.jpg" alt="TotalSalaryVisitor implementation" /></a>
   
-  <p id="caption-attachment-376" class="wp-caption-text">
+  <p>
     TotalSalaryVisitor implementation
   </p>
 </div>
@@ -120,10 +120,10 @@ The last step is to implement a class which contains the logic for the calculati
 
 With everything set up, I can remove the logic from the Main method. I also add the values for Salary, Bonus and Marketing to the Assets list. To calculate the salary of a person I call the Accept method of the person with the TotalSalaryVisitor as parameter. Lastly, I print the total pay by accessing the TotalSalary property of the visitor.
 
-<div id="attachment_378" style="width: 704px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Executing-the-calculation-of-the-pay-of-a-person.jpg"><img aria-describedby="caption-attachment-378" loading="lazy" class="size-full wp-image-378" src="/assets/img/posts/2017/12/Executing-the-calculation-of-the-pay-of-a-person.jpg" alt="Executing the calculation of the pay of a person" width="694" height="240" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Executing-the-calculation-of-the-pay-of-a-person.jpg"><img aria-describedby="caption-attachment-378" loading="lazy" class="size-full wp-image-378" src="/assets/img/posts/2017/12/Executing-the-calculation-of-the-pay-of-a-person.jpg" alt="Executing the calculation of the pay of a person" /></a>
   
-  <p id="caption-attachment-378" class="wp-caption-text">
+  <p>
     Executing the calculation of the pay of a person
   </p>
 </div>
@@ -138,10 +138,10 @@ With the visitor pattern, it is also possible to add new calculations without ch
 
 &nbsp;
 
-<div id="attachment_379" style="width: 678px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Added-the-TaxVisitor.jpg"><img aria-describedby="caption-attachment-379" loading="lazy" class="size-full wp-image-379" src="/assets/img/posts/2017/12/Added-the-TaxVisitor.jpg" alt="Added the TaxVisitor" width="668" height="146" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Added-the-TaxVisitor.jpg"><img aria-describedby="caption-attachment-379" loading="lazy" class="size-full wp-image-379" src="/assets/img/posts/2017/12/Added-the-TaxVisitor.jpg" alt="Added the TaxVisitor" /></a>
   
-  <p id="caption-attachment-379" class="wp-caption-text">
+  <p>
     Added the TaxVisitor
   </p>
 </div>

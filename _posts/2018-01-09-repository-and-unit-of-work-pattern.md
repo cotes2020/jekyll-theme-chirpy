@@ -49,10 +49,10 @@ The problem when using DbContext is that the code is tightly coupled to entity f
 
 ## Repository Pattern and Unit of Work Pattern UML Diagram
 
-<div id="attachment_529" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Repository-pattern-UML-diagram.jpg"><img aria-describedby="caption-attachment-529" loading="lazy" class="wp-image-529" src="/assets/img/posts/2018/01/Repository-pattern-UML-diagram.jpg" alt="Repository pattern UML diagram" width="700" height="484" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Repository-pattern-UML-diagram.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Repository-pattern-UML-diagram.jpg" alt="Repository pattern UML diagram" /></a>
   
-  <p id="caption-attachment-529" class="wp-caption-text">
+  <p>
     Repository pattern UML diagram
   </p>
 </div>

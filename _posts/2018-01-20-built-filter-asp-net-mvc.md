@@ -129,10 +129,10 @@ Before the framework invokes an action, it inspects the method definition to see
 
 It is possible to apply one or more filters to an action or controller. A filter which is often used is the Authorize attribute. If the Authorize attribute is applied to an action, only users which are logged in can invoke this action. If the attribute is applied to the controller, it applies to all actions.
 
-<div id="attachment_651" style="width: 347px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Apply-filter-to-action-and-controller.jpg"><img aria-describedby="caption-attachment-651" loading="lazy" class="size-full wp-image-651" src="/assets/img/posts/2018/01/Apply-filter-to-action-and-controller.jpg" alt="Apply filter to action and controller" width="337" height="189" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Apply-filter-to-action-and-controller.jpg"><img aria-describedby="caption-attachment-651" loading="lazy" class="size-full wp-image-651" src="/assets/img/posts/2018/01/Apply-filter-to-action-and-controller.jpg" alt="Apply filter to action and controller" /></a>
   
-  <p id="caption-attachment-651" class="wp-caption-text">
+  <p>
     Apply filter to action and controller
   </p>
 </div>
@@ -300,10 +300,10 @@ As summary: When an unhandled exception of the type specified by ExceptionType i
 
 If an exception occurs in your development environment, you will get the famous yellow screen of death. To prevent this from happening, you have to set the customsError attribute to the web.config file.
 
-<div id="attachment_655" style="width: 522px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/CustommError-in-web.config.jpg"><img aria-describedby="caption-attachment-655" loading="lazy" class="size-full wp-image-655" src="/assets/img/posts/2018/01/CustommError-in-web.config.jpg" alt="CustommError in web.config" width="512" height="41" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/CustommError-in-web.config.jpg"><img aria-describedby="caption-attachment-655" loading="lazy" class="size-full wp-image-655" src="/assets/img/posts/2018/01/CustommError-in-web.config.jpg" alt="CustommError in web.config" /></a>
   
-  <p id="caption-attachment-655" class="wp-caption-text">
+  <p>
     CustommError in web.config
   </p>
 </div>
@@ -314,10 +314,10 @@ The customError attribute redirects the request to the location specified at the
 
 Applying the HandleError attribute to an action enables you to prevent the application from crashing and also enables you to provide some useful error message and help to the user. You can specify an ExceptionType and then send the request to a specific view and provide some information about what went wrong.
 
-<div id="attachment_665" style="width: 698px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Apply-HandleError-on-an-action.jpg"><img aria-describedby="caption-attachment-665" loading="lazy" class="size-full wp-image-665" src="/assets/img/posts/2018/01/Apply-HandleError-on-an-action.jpg" alt="Apply HandleError on an action" width="688" height="177" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Apply-HandleError-on-an-action.jpg"><img aria-describedby="caption-attachment-665" loading="lazy" class="size-full wp-image-665" src="/assets/img/posts/2018/01/Apply-HandleError-on-an-action.jpg" alt="Apply HandleError on an action" /></a>
   
-  <p id="caption-attachment-665" class="wp-caption-text">
+  <p>
     Apply HandleError on an action
   </p>
 </div>
@@ -392,10 +392,10 @@ The HandleError attribute passes the HandleErrorInfo view model to your view. Th
 
 In the ErrorMessage view, I can use this view model to give the user a proper error description and provide some help to solve the problem.
 
-<div id="attachment_675" style="width: 585px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Hepful-error-message-in-the-view.jpg"><img aria-describedby="caption-attachment-675" loading="lazy" class="size-full wp-image-675" src="/assets/img/posts/2018/01/Hepful-error-message-in-the-view.jpg" alt="Hepful error message in the view" width="575" height="372" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Hepful-error-message-in-the-view.jpg"><img aria-describedby="caption-attachment-675" loading="lazy" class="size-full wp-image-675" src="/assets/img/posts/2018/01/Hepful-error-message-in-the-view.jpg" alt="Hepful error message in the view" /></a>
   
-  <p id="caption-attachment-675" class="wp-caption-text">
+  <p>
     Helpful error message in the view
   </p>
 </div>
@@ -555,40 +555,40 @@ The OnActionExecuted method is called after the action is completed and has 5 pr
 
 I created a new class called MyActionAttribute which derives from FilterAttribute and IActionFilter. In the OnActionExecuting method, I check if the browser is Chrome. If the request comes from Chrome, I return an HttpUnauthorizedResult. Again, this is not the most useful implementation but I think you get what you can do with this method. For now, I don&#8217;t implement anything in the OnActionExecuted method. This is no problem. Just be careful because Visual Studio throws a NotImplementedException if you let Visual Studio create the method.
 
-<div id="attachment_672" style="width: 543px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/The-action-filter-class-implementation.jpg"><img aria-describedby="caption-attachment-672" loading="lazy" class="size-full wp-image-672" src="/assets/img/posts/2018/01/The-action-filter-class-implementation.jpg" alt="The action filter class implementation" width="533" height="258" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/The-action-filter-class-implementation.jpg"><img aria-describedby="caption-attachment-672" loading="lazy" class="size-full wp-image-672" src="/assets/img/posts/2018/01/The-action-filter-class-implementation.jpg" alt="The action filter class implementation" /></a>
   
-  <p id="caption-attachment-672" class="wp-caption-text">
+  <p>
     The action filter class implementation
   </p>
 </div>
 
 To use my new filter, I apply it to the CheckFilter action. Note that you don&#8217;t have to write MyActionAttribute when applying it as attribute. MyAction is enough.
 
-<div id="attachment_671" style="width: 303px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Applying-the-action-filter-attribute-to-an-action.jpg"><img aria-describedby="caption-attachment-671" loading="lazy" class="size-full wp-image-671" src="/assets/img/posts/2018/01/Applying-the-action-filter-attribute-to-an-action.jpg" alt="Applying the action filter attribute to an action" width="293" height="114" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Applying-the-action-filter-attribute-to-an-action.jpg"><img aria-describedby="caption-attachment-671" loading="lazy" class="size-full wp-image-671" src="/assets/img/posts/2018/01/Applying-the-action-filter-attribute-to-an-action.jpg" alt="Applying the action filter attribute to an action" /></a>
   
-  <p id="caption-attachment-671" class="wp-caption-text">
+  <p>
     Applying the action filter attribute to an action
   </p>
 </div>
 
 When you call this action from Chrome, you can see that the access is denied for the user.
 
-<div id="attachment_670" style="width: 374px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Result-of-the-action-filter.jpg"><img aria-describedby="caption-attachment-670" loading="lazy" class="size-full wp-image-670" src="/assets/img/posts/2018/01/Result-of-the-action-filter.jpg" alt="Result of the action filter" width="364" height="124" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Result-of-the-action-filter.jpg"><img aria-describedby="caption-attachment-670" loading="lazy" class="size-full wp-image-670" src="/assets/img/posts/2018/01/Result-of-the-action-filter.jpg" alt="Result of the action filter" /></a>
   
-  <p id="caption-attachment-670" class="wp-caption-text">
+  <p>
     Result of the action filter
   </p>
 </div>
 
 &nbsp;
 
-<div id="attachment_683" style="width: 517px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Unauthorized-result-in-Chrome.jpg"><img aria-describedby="caption-attachment-683" loading="lazy" class="size-full wp-image-683" src="/assets/img/posts/2018/01/Unauthorized-result-in-Chrome.jpg" alt="Unauthorized result in Chrome" width="507" height="171" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Unauthorized-result-in-Chrome.jpg"><img aria-describedby="caption-attachment-683" loading="lazy" class="size-full wp-image-683" src="/assets/img/posts/2018/01/Unauthorized-result-in-Chrome.jpg" alt="Unauthorized result in Chrome" /></a>
   
-  <p id="caption-attachment-683" class="wp-caption-text">
+  <p>
     Unauthorized result in Chrome
   </p>
 </div>
@@ -597,30 +597,30 @@ When you call this action from Chrome, you can see that the access is denied for
 
 As I already mentioned, I often use action filter to measure the execution time of an action. To do that, I start a Stopwatch in the OnActionExecuting method and stop it in the OnActionExecuted method. Afterwards, I print the execution time.
 
-<div id="attachment_674" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Implementation-of-the-PerformanceAction-attribute.jpg"><img aria-describedby="caption-attachment-674" loading="lazy" class="wp-image-674" src="/assets/img/posts/2018/01/Implementation-of-the-PerformanceAction-attribute.jpg" alt="Implementation of the PerformanceAction attribute" width="700" height="234" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Implementation-of-the-PerformanceAction-attribute.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Implementation-of-the-PerformanceAction-attribute.jpg" alt="Implementation of the PerformanceAction attribute" /></a>
   
-  <p id="caption-attachment-674" class="wp-caption-text">
+  <p>
     Implementation of the PerformanceAction attribute
   </p>
 </div>
 
 To see different results, I added Thread.Sleep with a random number, so that the execution will take somewhere between some milliseconds and two seconds.
 
-<div id="attachment_673" style="width: 514px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Applying-the-PerformanceAction-attribute.jpg"><img aria-describedby="caption-attachment-673" loading="lazy" class="size-full wp-image-673" src="/assets/img/posts/2018/01/Applying-the-PerformanceAction-attribute.jpg" alt="Applying the PerformanceAction attribute" width="504" height="157" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Applying-the-PerformanceAction-attribute.jpg"><img aria-describedby="caption-attachment-673" loading="lazy" class="size-full wp-image-673" src="/assets/img/posts/2018/01/Applying-the-PerformanceAction-attribute.jpg" alt="Applying the PerformanceAction attribute" /></a>
   
-  <p id="caption-attachment-673" class="wp-caption-text">
+  <p>
     Applying the PerformanceAction attribute
   </p>
 </div>
 
 The print of the execution time is printed before the content of the action because the action filter is executed before the result of the action is processed.
 
-<div id="attachment_684" style="width: 509px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-filter.jpg"><img aria-describedby="caption-attachment-684" loading="lazy" class="size-full wp-image-684" src="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-filter.jpg" alt="Result of performance test with the action filter" width="499" height="167" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-filter.jpg"><img aria-describedby="caption-attachment-684" loading="lazy" class="size-full wp-image-684" src="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-filter.jpg" alt="Result of performance test with the action filter" /></a>
   
-  <p id="caption-attachment-684" class="wp-caption-text">
+  <p>
     Result of performance test with the action filter
   </p>
 </div>
@@ -638,30 +638,30 @@ The OnResultExecuting method is called after an action has returned an action re
 
 To demonstrate how the result filter works, I repeat the performance test but this time I measure the time between the start and the end of the execution of the ActionResult. To do that, I implement the IResultFilter and work with the OnResultExecuting and OnResultExecuted method.
 
-<div id="attachment_677" style="width: 651px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Implementation-of-the-ResultAction-attribute.jpg"><img aria-describedby="caption-attachment-677" loading="lazy" class="size-full wp-image-677" src="/assets/img/posts/2018/01/Implementation-of-the-ResultAction-attribute.jpg" alt="Implementation of the ResultAction attribute" width="641" height="367" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Implementation-of-the-ResultAction-attribute.jpg"><img aria-describedby="caption-attachment-677" loading="lazy" class="size-full wp-image-677" src="/assets/img/posts/2018/01/Implementation-of-the-ResultAction-attribute.jpg" alt="Implementation of the ResultAction attribute" /></a>
   
-  <p id="caption-attachment-677" class="wp-caption-text">
+  <p>
     Implementation of the ResultAction attribute
   </p>
 </div>
 
 The next step is applying the filter to an action and call the action to see the result.
 
-<div id="attachment_678" style="width: 483px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Applying-the-result-filter-attribute-to-an-action.jpg"><img aria-describedby="caption-attachment-678" loading="lazy" class="size-full wp-image-678" src="/assets/img/posts/2018/01/Applying-the-result-filter-attribute-to-an-action.jpg" alt="Applying the result filter attribute to an action" width="473" height="149" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Applying-the-result-filter-attribute-to-an-action.jpg"><img aria-describedby="caption-attachment-678" loading="lazy" class="size-full wp-image-678" src="/assets/img/posts/2018/01/Applying-the-result-filter-attribute-to-an-action.jpg" alt="Applying the result filter attribute to an action" /></a>
   
-  <p id="caption-attachment-678" class="wp-caption-text">
+  <p>
     Applying the result filter attribute to an action
   </p>
 </div>
 
 When you look at the output, you see a difference in the result of the action filter output. The print of the measured time is beneath the output of the action. This behavior is caused by the fact that the result filter is processed after the ActionResult. Therefore the result is printed and then afterward the measured time is added.
 
-<div id="attachment_685" style="width: 509px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-filter-1.jpg"><img aria-describedby="caption-attachment-685" loading="lazy" class="size-full wp-image-685" src="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-filter-1.jpg" alt="Result of performance test with the action filter" width="499" height="167" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-filter-1.jpg"><img aria-describedby="caption-attachment-685" loading="lazy" class="size-full wp-image-685" src="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-filter-1.jpg" alt="Result of performance test with the action filter" /></a>
   
-  <p id="caption-attachment-685" class="wp-caption-text">
+  <p>
     Result of performance test with the action filter
   </p>
 </div>
@@ -670,10 +670,10 @@ When you look at the output, you see a difference in the result of the action fi
 
 In the previous examples, I showed how to create implementations of filters by implementing the desired interface. The Controller class already implements the IAuthenticationFilter, IAuthorizationFilter, IActionFilter, IResultFilter, and IExceptionFilter interfaces. It also provides empty virtual implementations for each of the methods. Knowing this, you can override the desired methods directly in the controller and achieve the same outcome as the filter classes did.
 
-<div id="attachment_679" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Applying-filtering-in-a-controller-without-filter-attributes.jpg"><img aria-describedby="caption-attachment-679" loading="lazy" class="wp-image-679" src="/assets/img/posts/2018/01/Applying-filtering-in-a-controller-without-filter-attributes.jpg" alt="Applying filtering in a controller without filter attributes" width="700" height="418" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Applying-filtering-in-a-controller-without-filter-attributes.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Applying-filtering-in-a-controller-without-filter-attributes.jpg" alt="Applying filtering in a controller without filter attributes" /></a>
   
-  <p id="caption-attachment-679" class="wp-caption-text">
+  <p>
     Applying filtering in a controller without filter attributes
   </p>
 </div>
@@ -682,10 +682,10 @@ If you call the Index action of the FilteringWithoutFilter controller, you will 
 
 &nbsp;
 
-<div id="attachment_686" style="width: 609px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-and-result-filter.jpg"><img aria-describedby="caption-attachment-686" loading="lazy" class="size-full wp-image-686" src="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-and-result-filter.jpg" alt="Result of performance test with the action and result filter" width="599" height="154" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-and-result-filter.jpg"><img aria-describedby="caption-attachment-686" loading="lazy" class="size-full wp-image-686" src="/assets/img/posts/2018/01/Result-of-performance-test-with-the-action-and-result-filter.jpg" alt="Result of performance test with the action and result filter" /></a>
   
-  <p id="caption-attachment-686" class="wp-caption-text">
+  <p>
     Result of performance test with the action and result filter
   </p>
 </div>
@@ -702,10 +702,10 @@ If you look closely, you can see that I combine the action filter method OnActio
 
 If you want to apply filter to all your actions, you can use global filters. If you are using the MVC template, the framework already creates the FilterConfig.cs file under the App_Start folder. Since I didn&#8217;t use the template, I create the file myself. This class has one static method, RegisterGlobalFilters. The FilterConfig.cs is pretty similar to the RouteConfig.cs. To add a new filter, add it to the filters collection with add.
 
-<div id="attachment_680" style="width: 589px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Register-a-filter-globally-in-FilterConfig.cs_.jpg"><img aria-describedby="caption-attachment-680" loading="lazy" class="size-full wp-image-680" src="/assets/img/posts/2018/01/Register-a-filter-globally-in-FilterConfig.cs_.jpg" alt="Register a filter globally in FilterConfig.cs" width="579" height="245" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Register-a-filter-globally-in-FilterConfig.cs_.jpg"><img aria-describedby="caption-attachment-680" loading="lazy" class="size-full wp-image-680" src="/assets/img/posts/2018/01/Register-a-filter-globally-in-FilterConfig.cs_.jpg" alt="Register a filter globally in FilterConfig.cs" /></a>
   
-  <p id="caption-attachment-680" class="wp-caption-text">
+  <p>
     Register a filter globally in FilterConfig.cs
   </p>
 </div>
@@ -716,10 +716,10 @@ The HandleErrorAttribute will always be defined as global filter in ASP.NET MVC.
 
 To register a filter a, you have to pass an instance of the filter class. The name contains the Attribute prefix. If you use the class as attribute, you can omit the Attribute prefix. Additionally, you have to add the RegisterGlobalFilters call in the Global.asx file.
 
-<div id="attachment_682" style="width: 511px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Content-of-the-Global.asx.jpg"><img aria-describedby="caption-attachment-682" loading="lazy" class="size-full wp-image-682" src="/assets/img/posts/2018/01/Content-of-the-Global.asx.jpg" alt="Content of the Global.asx" width="501" height="233" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Content-of-the-Global.asx.jpg"><img aria-describedby="caption-attachment-682" loading="lazy" class="size-full wp-image-682" src="/assets/img/posts/2018/01/Content-of-the-Global.asx.jpg" alt="Content of the Global.asx" /></a>
   
-  <p id="caption-attachment-682" class="wp-caption-text">
+  <p>
     Content of the Global.asx
   </p>
 </div>

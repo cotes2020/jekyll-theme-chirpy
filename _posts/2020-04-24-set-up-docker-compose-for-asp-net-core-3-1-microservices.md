@@ -69,20 +69,20 @@ You can find the code of  the finished demo on <a href="https://github.com/Wol
 
 To execute your compose file, open Powershel, and navigate to the location of your file. In my demo code, I am providing the compose file in the root folder. Once you navigated to your file, use the following command: docker-compose up -d. The -d parameter executes the command detached. This means that the containers run in the background and don&#8217;t block your Powershell window.
 
-<div id="attachment_1953" style="width: 692px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg"><img aria-describedby="caption-attachment-1953" loading="lazy" class="size-full wp-image-1953" src="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg" alt="Start multiple container with docker-compose" width="682" height="620" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg"><img aria-describedby="caption-attachment-1953" loading="lazy" class="size-full wp-image-1953" src="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg" alt="Start multiple container with docker-compose" /></a>
   
-  <p id="caption-attachment-1953" class="wp-caption-text">
+  <p>
     Start multiple container with docker-compose
   </p>
 </div>
 
 To prove that all three containers are running, use docker ps.
 
-<div id="attachment_1954" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Check-all-running-container.jpg"><img aria-describedby="caption-attachment-1954" loading="lazy" class="wp-image-1954" src="/assets/img/posts/2020/04/Check-all-running-container.jpg" alt="Check all running container" width="700" height="84" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Check-all-running-container.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Check-all-running-container.jpg" alt="Check all running container" /></a>
   
-  <p id="caption-attachment-1954" class="wp-caption-text">
+  <p>
     Check all running container
   </p>
 </div>
@@ -141,10 +141,10 @@ services:
 
 I named this file docker-compose.Build. You can use the -f parameter to specify the file in your docker-compose command: docker-compose -f docker-compose.Build.yml up -d.
 
-<div id="attachment_1956" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Build-images-with-docker-compose.jpg"><img aria-describedby="caption-attachment-1956" loading="lazy" class="wp-image-1956" src="/assets/img/posts/2020/04/Build-images-with-docker-compose.jpg" alt="Build images with docker-compose" width="700" height="361" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Build-images-with-docker-compose.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Build-images-with-docker-compose.jpg" alt="Build images with docker-compose" /></a>
   
-  <p id="caption-attachment-1956" class="wp-caption-text">
+  <p>
     Build images with docker-compose
   </p>
 </div>

@@ -21,10 +21,10 @@ To create a new App Service plan, follow these steps:
   2. On the New App Service Plan blade, provide an App service plan name, subscription, resource group, operating system, location, and pricing tier.
   3. Click Create.
 
-<div id="attachment_1267" style="width: 318px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-new-App-Service-plan.jpg"><img aria-describedby="caption-attachment-1267" loading="lazy" class="size-full wp-image-1267" src="/assets/img/posts/2018/05/Create-a-new-App-Service-plan.jpg" alt="Create a new App Service plan" width="308" height="460" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Create-a-new-App-Service-plan.jpg"><img aria-describedby="caption-attachment-1267" loading="lazy" class="size-full wp-image-1267" src="/assets/img/posts/2018/05/Create-a-new-App-Service-plan.jpg" alt="Create a new App Service plan" /></a>
   
-  <p id="caption-attachment-1267" class="wp-caption-text">
+  <p>
     Create a new App Service plan
   </p>
 </div>
@@ -37,10 +37,10 @@ To create a new Web App, follow these steps:
   2. On the Web App blade, provide an App name, subscription, resource group, OS, and  App Service plan. You can take either the previously created one or create a new one.
   3. Click Create.
 
-<div id="attachment_1268" style="width: 577px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-new-Web-App.jpg"><img aria-describedby="caption-attachment-1268" loading="lazy" class="size-full wp-image-1268" src="/assets/img/posts/2018/05/Create-a-new-Web-App.jpg" alt="Create a new Web App" width="567" height="459" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Create-a-new-Web-App.jpg"><img aria-describedby="caption-attachment-1268" loading="lazy" class="size-full wp-image-1268" src="/assets/img/posts/2018/05/Create-a-new-Web-App.jpg" alt="Create a new Web App" /></a>
   
-  <p id="caption-attachment-1268" class="wp-caption-text">
+  <p>
     Create a new Web App
   </p>
 </div>
@@ -51,10 +51,10 @@ After you have created a new App Service plan, you can change the settings, foll
 
   1. In the Azure portal, open your App Service plans. There you can see all your App Service plans, the number of apps deployed for each plan and its pricing tier.
 
-<div id="attachment_1269" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/An-overview-of-my-App-Service-plans.jpg"><img aria-describedby="caption-attachment-1269" loading="lazy" class="wp-image-1269" src="/assets/img/posts/2018/05/An-overview-of-my-App-Service-plans.jpg" alt="An overview of my App Service plans" width="700" height="171" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/An-overview-of-my-App-Service-plans.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/An-overview-of-my-App-Service-plans.jpg" alt="An overview of my App Service plans" /></a>
   
-  <p id="caption-attachment-1269" class="wp-caption-text">
+  <p>
     An overview of my App Service plans
   </p>
 </div>
@@ -91,10 +91,10 @@ To manage your Web App settings, follow these steps:
       * Enable Always On. This configures that the web application will be kept in the memory all the time. Therefore the load time for the next request is reduced.
       * Chose the type of pipeline for IIS. Integrated is the more modern pipeline and Classic would only be used for legacy applications.
 
-<div id="attachment_1270" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Change-the-language-and-runtime-settings-of-your-application.jpg"><img aria-describedby="caption-attachment-1270" loading="lazy" class="wp-image-1270" src="/assets/img/posts/2018/05/Change-the-language-and-runtime-settings-of-your-application.jpg" alt="Change the language and runtime settings of your application" width="700" height="536" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Change-the-language-and-runtime-settings-of-your-application.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Change-the-language-and-runtime-settings-of-your-application.jpg" alt="Change the language and runtime settings of your application" /></a>
   
-  <p id="caption-attachment-1270" class="wp-caption-text">
+  <p>
     Change the language and runtime settings of your application
   </p>
 </div>
@@ -105,10 +105,10 @@ To manage your Web App settings, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1271" style="width: 561px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/ARR-Affinity-settings.jpg"><img aria-describedby="caption-attachment-1271" loading="lazy" class="size-full wp-image-1271" src="/assets/img/posts/2018/05/ARR-Affinity-settings.jpg" alt="ARR Affinity settings" width="551" height="124" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/ARR-Affinity-settings.jpg"><img aria-describedby="caption-attachment-1271" loading="lazy" class="size-full wp-image-1271" src="/assets/img/posts/2018/05/ARR-Affinity-settings.jpg" alt="ARR Affinity settings" /></a>
   
-  <p id="caption-attachment-1271" class="wp-caption-text">
+  <p>
     ARR Affinity settings
   </p>
 </div>
@@ -122,10 +122,10 @@ To manage your Web App settings, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1272" style="width: 486px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Remote-debugging.jpg"><img aria-describedby="caption-attachment-1272" loading="lazy" class="size-full wp-image-1272" src="/assets/img/posts/2018/05/Remote-debugging.jpg" alt="Remote debugging" width="476" height="144" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Remote-debugging.jpg"><img aria-describedby="caption-attachment-1272" loading="lazy" class="size-full wp-image-1272" src="/assets/img/posts/2018/05/Remote-debugging.jpg" alt="Remote debugging" /></a>
   
-  <p id="caption-attachment-1272" class="wp-caption-text">
+  <p>
     Remote debugging
   </p>
 </div>
@@ -136,10 +136,10 @@ To manage your Web App settings, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1273" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Application-and-connection-settings.jpg"><img aria-describedby="caption-attachment-1273" loading="lazy" class="wp-image-1273" src="/assets/img/posts/2018/05/Application-and-connection-settings.jpg" alt="Application and connection settings" width="700" height="218" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Application-and-connection-settings.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Application-and-connection-settings.jpg" alt="Application and connection settings" /></a>
   
-  <p id="caption-attachment-1273" class="wp-caption-text">
+  <p>
     Application and connection settings
   </p>
 </div>
@@ -171,10 +171,10 @@ To configure a custom domain, follow these steps:
   1. In the Azure portal, go to your Web App and select Custom domains under the Settings menu. Custom domains are not available on the Free pricing tier.
   2. On the Custom domains blade, click on +Add hostname and enter your Hostname. Then choose if you want to set up an A record or CNAME record.
 
-<div id="attachment_1274" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Add-a-hostname-for-your-custom-domain.jpg"><img aria-describedby="caption-attachment-1274" loading="lazy" class="wp-image-1274" src="/assets/img/posts/2018/05/Add-a-hostname-for-your-custom-domain.jpg" alt="Add a hostname for your custom domain" width="700" height="160" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Add-a-hostname-for-your-custom-domain.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Add-a-hostname-for-your-custom-domain.jpg" alt="Add a hostname for your custom domain" /></a>
   
-  <p id="caption-attachment-1274" class="wp-caption-text">
+  <p>
     Add a hostname for your custom domain
   </p>
 </div>
@@ -360,10 +360,10 @@ To enable these diagnostic settings, follow these steps:
   4. If you enabled Web server logging, you have to provide either a storage account or you can log to the file system.
   5. Click Save.
 
-<div id="attachment_1275" style="width: 479px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Configure-logging-for-your-Web-App-application.jpg"><img aria-describedby="caption-attachment-1275" loading="lazy" class="wp-image-1275" src="/assets/img/posts/2018/05/Configure-logging-for-your-Web-App-application.jpg" alt="Configure logging for your Web App application" width="469" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Configure-logging-for-your-Web-App-application.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Configure-logging-for-your-Web-App-application.jpg" alt="Configure logging for your Web App application" /></a>
   
-  <p id="caption-attachment-1275" class="wp-caption-text">
+  <p>
     Configure logging for your Web App application
   </p>
 </div>
@@ -374,10 +374,10 @@ To enable these diagnostic settings, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1276" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Application-log-stream.jpg"><img aria-describedby="caption-attachment-1276" loading="lazy" class="wp-image-1276" src="/assets/img/posts/2018/05/Application-log-stream.jpg" alt="Application log stream" width="700" height="341" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Application-log-stream.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Application-log-stream.jpg" alt="Application log stream" /></a>
   
-  <p id="caption-attachment-1276" class="wp-caption-text">
+  <p>
     Application log stream
   </p>
 </div>
@@ -402,10 +402,10 @@ To customize the shown metrics, follow these steps:
   2. On the Metrics blade, add or remove all metrics, you want to display on the graph.
   3. Enter a title, select a chart type and set a time range.
 
-<div id="attachment_1277" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Customize-the-metrics-graph.jpg"><img aria-describedby="caption-attachment-1277" loading="lazy" class="wp-image-1277" src="/assets/img/posts/2018/05/Customize-the-metrics-graph.jpg" alt="Customize the metrics graph" width="700" height="376" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Customize-the-metrics-graph.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Customize-the-metrics-graph.jpg" alt="Customize the metrics graph" /></a>
   
-  <p id="caption-attachment-1277" class="wp-caption-text">
+  <p>
     Customize the metrics graph
   </p>
 </div>
@@ -433,10 +433,10 @@ To configure scaling for your web app, follow these steps.
   2. On the Scale up blade, select your desired pricing tier and click Apply.
   3. Select Scale out under the Settings blade and select the desired instance count to scale out to.
 
-<div id="attachment_1278" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Configure-scaling-out.jpg"><img aria-describedby="caption-attachment-1278" loading="lazy" class="wp-image-1278" src="/assets/img/posts/2018/05/Configure-scaling-out.jpg" alt="Configure scaling out" width="700" height="335" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Configure-scaling-out.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Configure-scaling-out.jpg" alt="Configure scaling out" /></a>
   
-  <p id="caption-attachment-1278" class="wp-caption-text">
+  <p>
     Configure scaling out
   </p>
 </div>

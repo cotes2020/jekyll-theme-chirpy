@@ -15,10 +15,10 @@ If you have never heard about Scrum, you might wonder why use it? Because you wi
 
 &nbsp;
 
-<div id="attachment_165" style="width: 610px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/10/Agile-Waterfall-Success-Failure-Rates.jpg"><img aria-describedby="caption-attachment-165" loading="lazy" class="wp-image-165 size-full" src="/assets/img/posts/2017/10/Agile-Waterfall-Success-Failure-Rates.jpg" alt="Agile (Scrum) - Waterfall Success Failure Rates" width="600" height="292" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/10/Agile-Waterfall-Success-Failure-Rates.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/Agile-Waterfall-Success-Failure-Rates.jpg" alt="Agile (Scrum) - Waterfall Success Failure Rates" /></a>
   
-  <p id="caption-attachment-165" class="wp-caption-text">
+  <p>
     <a href="https://www.mountaingoatsoftware.com/blog/agile-succeeds-three-times-more-often-than-waterfall" target="_blank" rel="noopener">Source </a>
   </p>
 </div>
@@ -29,10 +29,10 @@ When using waterfall, a product gets shipped once at the end of the cycle which�
 
 The following picture is often used to describe project management. I really like it because it also shows the difference between what the customer explains and what the customer actually wants. With an agile approach, the development team would get early feedback and therefore would not develop so far in the wrong direction.
 
-<div id="attachment_168" style="width: 684px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/10/tree-swing-project-management.png"><img aria-describedby="caption-attachment-168" loading="lazy" class="wp-image-168 size-full" src="/assets/img/posts/2017/10/tree-swing-project-management.png" alt="tree swing project management used for explaining Scrum" width="674" height="488" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/10/tree-swing-project-management.png"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/tree-swing-project-management.png" alt="tree swing project management used for explaining Scrum" /></a>
   
-  <p id="caption-attachment-168" class="wp-caption-text">
+  <p>
     <a href="https://www.tamingdata.com/2010/07/08/the-project-management-tree-swing-cartoon-past-and-present/" target="_blank" rel="noopener">Source</a>
   </p>
 </div>

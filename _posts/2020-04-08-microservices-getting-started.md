@@ -69,10 +69,10 @@ It&#8217;s not all great when using a microservice architecture and there are so
 
 Earlier I said that microservices are small and easy to understand. But when your application consists of hundreds or thousands of microservices, the application becomes really complex. Especially when the services talk to each other. Dave Hahn gave a great talk about the architecture of Netflix in 2015 and admitted that no one in the company understands the whole architecture.
 
-<div id="attachment_1857" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Netflix-Architecture-in-2015.jpg"><img aria-describedby="caption-attachment-1857" loading="lazy" class="wp-image-1857" src="/assets/img/posts/2020/04/Netflix-Architecture-in-2015.jpg" alt="Netflix Microservices Architecture in 2015" width="700" height="501" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Netflix-Architecture-in-2015.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Netflix-Architecture-in-2015.jpg" alt="Netflix Microservices Architecture in 2015" /></a>
   
-  <p id="caption-attachment-1857" class="wp-caption-text">
+  <p>
     Netflix Microservices Architecture in 2015 (<a href="https://www.youtube.com/watch?v=-mL3zT1iIKw" target="_blank" rel="noopener noreferrer">Source Youtube</a>)
   </p>
 </div>

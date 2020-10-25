@@ -15,10 +15,10 @@ Branch policies let you define rules on your branch. These rules can be that com
 
 Let&#8217;s set up a policy for the master branch. In your Azure DevOps (on-prem or in the cloud), go to Branches, click the three dots next to the master branch and select branch policies.
 
-<div id="attachment_1809" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/11/Open-branch-policies.jpg"><img aria-describedby="caption-attachment-1809" loading="lazy" class="wp-image-1809" src="/assets/img/posts/2019/11/Open-branch-policies.jpg" alt="Open branch policies" width="700" height="297" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/11/Open-branch-policies.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Open-branch-policies.jpg" alt="Open branch policies" /></a>
   
-  <p id="caption-attachment-1809" class="wp-caption-text">
+  <p>
     Open branch policies
   </p>
 </div>
@@ -29,10 +29,10 @@ On the Branch policies for master config page, I enable the following settings:
 
 This setting enforces that at least one reviewer approved the pull request. Microsoft found out in a research that 2 is the optimal number of reviewers. I only need one most of the time because my teams are usually small therefore needing two reviewers would be too much overhead. Additionally, I set the &#8220;Reset code reviewer votes when there are new changes&#8221;. This setting resets previously made approvals if new code is pushed to the pull request.
 
-<div id="attachment_1810" style="width: 480px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/11/Configure-a-minimum-number-of-reviewers.jpg"><img aria-describedby="caption-attachment-1810" loading="lazy" class="wp-image-1810 size-full" src="/assets/img/posts/2019/11/Configure-a-minimum-number-of-reviewers.jpg" alt="Configure a minimum number of reviewers for your branch policies" width="470" height="186" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/11/Configure-a-minimum-number-of-reviewers.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/11/Configure-a-minimum-number-of-reviewers.jpg" alt="Configure a minimum number of reviewers for your branch policies" /></a>
   
-  <p id="caption-attachment-1810" class="wp-caption-text">
+  <p>
     Configure a minimum number of reviewers
   </p>
 </div>
@@ -41,10 +41,10 @@ This setting enforces that at least one reviewer approved the pull request. Micr
 
 This feature indicates if a work item was linked with the pull request. I think the right setting would be to set it to required because every pull request should have a PBI. I have to admit that sometimes I create a pull request without a PBI, therefore I leave it as optional.
 
-<div id="attachment_1811" style="width: 549px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/11/Check-for-linked-work-items.jpg"><img aria-describedby="caption-attachment-1811" loading="lazy" class="wp-image-1811 size-full" src="/assets/img/posts/2019/11/Check-for-linked-work-items.jpg" alt="Check for linked work items for your branch policies" width="539" height="190" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/11/Check-for-linked-work-items.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/11/Check-for-linked-work-items.jpg" alt="Check for linked work items for your branch policies" /></a>
   
-  <p id="caption-attachment-1811" class="wp-caption-text">
+  <p>
     Check for linked work items
   </p>
 </div>
@@ -53,10 +53,10 @@ This feature indicates if a work item was linked with the pull request. I think 
 
 I set this feature to required because when a comment is made, it must be resolved before a pull request can be completed. In my teams, the author of the comment resolves it except when the author specifies that the comment can be closed by the creator of the pull request.
 
-<div id="attachment_1812" style="width: 489px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/11/Check-for-comment-resolution.jpg"><img aria-describedby="caption-attachment-1812" loading="lazy" class="size-full wp-image-1812" src="/assets/img/posts/2019/11/Check-for-comment-resolution.jpg" alt="Check for comment resolution" width="479" height="186" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/11/Check-for-comment-resolution.jpg"><img aria-describedby="caption-attachment-1812" loading="lazy" class="size-full wp-image-1812" src="/assets/img/posts/2019/11/Check-for-comment-resolution.jpg" alt="Check for comment resolution" /></a>
   
-  <p id="caption-attachment-1812" class="wp-caption-text">
+  <p>
     Check for comment resolution
   </p>
 </div>
@@ -65,10 +65,10 @@ I set this feature to required because when a comment is made, it must be resolv
 
 The build validation is probably the most important step for a pull request because it runs a build when a pull request was created. If this build is not successful, the pull request can&#8217;t be completed. To add a build policy click on &#8220;+ Add build policy&#8221; and select the previously created build pipeline.
 
-<div id="attachment_1813" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/11/Build-validation.jpg"><img aria-describedby="caption-attachment-1813" loading="lazy" class="wp-image-1813" src="/assets/img/posts/2019/11/Build-validation.jpg" alt="Build validation in the branch policies" width="700" height="115" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/11/Build-validation.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Build-validation.jpg" alt="Build validation in the branch policies" /></a>
   
-  <p id="caption-attachment-1813" class="wp-caption-text">
+  <p>
     Build validation
   </p>
 </div>
@@ -89,20 +89,20 @@ I made some changes and committed them to my local master branch. When I try to 
 
 In my last commit, I changed some tests. I created a feature branch and pushed it to Azure DevOps Services. When you click on Repos &#8211;> Pull requests, Azure DevOps Services recognizes the new branch and suggests to create a pull request. To do that click on Create a pull request.
 
-<div id="attachment_1814" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/11/Azure-Devops-Services-suggests-to-create-a-pull-request.jpg"><img aria-describedby="caption-attachment-1814" loading="lazy" class="wp-image-1814" src="/assets/img/posts/2019/11/Azure-Devops-Services-suggests-to-create-a-pull-request.jpg" alt="Azure Devops Services suggests to create a pull request" width="700" height="478" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/11/Azure-Devops-Services-suggests-to-create-a-pull-request.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Azure-Devops-Services-suggests-to-create-a-pull-request.jpg" alt="Azure Devops Services suggests to create a pull request" /></a>
   
-  <p id="caption-attachment-1814" class="wp-caption-text">
+  <p>
     Azure DevOps Services suggests to create a pull request
   </p>
 </div>
 
 On the New Pull Request, you can leave everything as it is and create the pull request by clicking on Create. This creates the pull request and automatically kicks off the build.
 
-<div id="attachment_1815" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/11/Overview-of-the-open-pull-request.jpg"><img aria-describedby="caption-attachment-1815" loading="lazy" class="wp-image-1815" src="/assets/img/posts/2019/11/Overview-of-the-open-pull-request.jpg" alt="Overview of the open pull request" width="700" height="267" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/11/Overview-of-the-open-pull-request.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Overview-of-the-open-pull-request.jpg" alt="Overview of the open pull request" /></a>
   
-  <p id="caption-attachment-1815" class="wp-caption-text">
+  <p>
     Overview of the open pull request
   </p>
 </div>
@@ -115,10 +115,10 @@ I fixed the broken build and pushed my changes to my feature branch. Azure DevOp
 
 To finish the pull request, I click on Complete, to complete it. In the Complete pull request window, I select Delete feature (the name of my branch) after merging. This deletes the feature branch automatically from the Azure DevOps Services Git. You could also set Auto-complete, which would finish your pull request automatically when all criteria are fulfilled. I set this all the time because I don&#8217;t want to go back and complete the pull request when the system can do it automatically for me.
 
-<div id="attachment_1816" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/11/The-pull-request-is-accepted-and-can-be-completed.jpg"><img aria-describedby="caption-attachment-1816" loading="lazy" class="wp-image-1816" src="/assets/img/posts/2019/11/The-pull-request-is-accepted-and-can-be-completed.jpg" alt="The pull request is accepted and can be completed" width="700" height="177" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/11/The-pull-request-is-accepted-and-can-be-completed.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/The-pull-request-is-accepted-and-can-be-completed.jpg" alt="The pull request is accepted and can be completed" /></a>
   
-  <p id="caption-attachment-1816" class="wp-caption-text">
+  <p>
     The pull request is accepted and can be completed
   </p>
 </div>

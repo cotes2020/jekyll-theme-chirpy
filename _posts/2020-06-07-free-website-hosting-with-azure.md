@@ -16,20 +16,20 @@ Cosmos DB is a high-end NoSQL database that offers incredible speed and global d
 
 In the Azure Portal search for Azure Cosmos DB, select it and click on Create or select Azure Cosmos DB from the left panel and then click on Create Azure Cosmos DB account.
 
-<div id="attachment_2155" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Create-a-new-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2155" loading="lazy" class="wp-image-2155" src="/assets/img/posts/2020/06/Create-a-new-Cosmos-DB.jpg" alt="Create a new Cosmos DB" width="700" height="368" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Create-a-new-Cosmos-DB.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Create-a-new-Cosmos-DB.jpg" alt="Create a new Cosmos DB" /></a>
   
-  <p id="caption-attachment-2155" class="wp-caption-text">
+  <p>
     Create a new Cosmos DB
   </p>
 </div>
 
 On the next page, select a resource group and make sure that the Free Tier Discount is applied. After filling out all information click on Review + create.
 
-<div id="attachment_2156" style="width: 632px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Set-up-the-free-tier-of-the-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2156" loading="lazy" class="wp-image-2156" src="/assets/img/posts/2020/06/Set-up-the-free-tier-of-the-Cosmos-DB.jpg" alt="Set up the free tier of the Cosmos DB" width="622" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Set-up-the-free-tier-of-the-Cosmos-DB.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Set-up-the-free-tier-of-the-Cosmos-DB.jpg" alt="Set up the free tier of the Cosmos DB" /></a>
   
-  <p id="caption-attachment-2156" class="wp-caption-text">
+  <p>
     Set up the free tier of the Cosmos DB
   </p>
 </div>
@@ -40,20 +40,20 @@ The deployment will take around ten minutes.
 
 After the deployment is finished, navigate to the Data Explorer tab in your Cosmos DB account. Click on New Container and a new tab is opened on the right side. There enter a Database id, Container id, and Partition key and click OK.
 
-<div id="attachment_2157" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2157" loading="lazy" class="wp-image-2157" src="/assets/img/posts/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB.jpg" alt="Create a new database and container in the Azure Cosmos DB" width="700" height="400" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Create-a-new-catabase-and-container-in-the-Azure-Cosmos-DB.jpg" alt="Create a new database and container in the Azure Cosmos DB" /></a>
   
-  <p id="caption-attachment-2157" class="wp-caption-text">
+  <p>
     Create a new database and container in the Azure Cosmos DB
   </p>
 </div>
 
 Open the newly created database and the Products container and click on New Item. This opens an editor where you can add your products as JSON.
 
-<div id="attachment_2158" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Add-data-to-the-container.jpg"><img aria-describedby="caption-attachment-2158" loading="lazy" class="wp-image-2158" src="/assets/img/posts/2020/06/Add-data-to-the-container.jpg" alt="Add data to the container for your Free Website Hosting " width="700" height="242" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Add-data-to-the-container.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Add-data-to-the-container.jpg" alt="Add data to the container for your Free Website Hosting " /></a>
   
-  <p id="caption-attachment-2158" class="wp-caption-text">
+  <p>
     Add data to the container
   </p>
 </div>
@@ -82,10 +82,10 @@ private static async Task SetUpDatabaseConnection()
 
 To connect to the Azure Cosmos DB container, you have to enter your URI and primary key. You can find them in the Keys tab of your Cosmos DB account.
 
-<div id="attachment_2159" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-2159" loading="lazy" class="wp-image-2159" src="/assets/img/posts/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB.jpg" alt="Get the Uri and Primary Key of the Cosmos DB for your Free Website Hosting " width="700" height="233" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Get-the-Uri-and-Primary-Key-of-the-Cosmos-DB.jpg" alt="Get the Uri and Primary Key of the Cosmos DB for your Free Website Hosting " /></a>
   
-  <p id="caption-attachment-2159" class="wp-caption-text">
+  <p>
     Get the Uri and Primary Key of the Cosmos DB
   </p>
 </div>
@@ -140,20 +140,20 @@ public class Product
 
 Start the Azure Function, enter the URL displayed in the command line and you will see your previously entered data.
 
-<div id="attachment_2160" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Test-the-Azure-Function-locally.jpg"><img aria-describedby="caption-attachment-2160" loading="lazy" class="wp-image-2160" src="/assets/img/posts/2020/06/Test-the-Azure-Function-locally.jpg" alt="Test the Azure Function locally" width="700" height="118" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Test-the-Azure-Function-locally.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Test-the-Azure-Function-locally.jpg" alt="Test the Azure Function locally" /></a>
   
-  <p id="caption-attachment-2160" class="wp-caption-text">
+  <p>
     Test the Azure Function locally
   </p>
 </div>
 
 The last step is to deploy the Azure Function. In my last post, I already imported the publish profile. Since nothing has changed, I can right-click on my project, select Publish and then Publish again.
 
-<div id="attachment_2161" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Publish-the-Azure-Function.jpg"><img aria-describedby="caption-attachment-2161" loading="lazy" class="wp-image-2161" src="/assets/img/posts/2020/06/Publish-the-Azure-Function.jpg" alt="Publish the Azure Function for your Free Website Hosting " width="700" height="233" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Publish-the-Azure-Function.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Publish-the-Azure-Function.jpg" alt="Publish the Azure Function for your Free Website Hosting " /></a>
   
-  <p id="caption-attachment-2161" class="wp-caption-text">
+  <p>
     Publish the Azure Function
   </p>
 </div>
@@ -162,10 +162,10 @@ The last step is to deploy the Azure Function. In my last post, I already import
 
 Open the URL of your Azure Static Web App and the data from the Cosmos DB will be displayed.
 
-<div id="attachment_2162" style="width: 468px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg"><img aria-describedby="caption-attachment-2162" loading="lazy" class="size-full wp-image-2162" src="/assets/img/posts/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg" alt="The data from the database is displayed in the React app" width="458" height="434" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg"><img aria-describedby="caption-attachment-2162" loading="lazy" class="size-full wp-image-2162" src="/assets/img/posts/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg" alt="The data from the database is displayed in the React app" /></a>
   
-  <p id="caption-attachment-2162" class="wp-caption-text">
+  <p>
     The data from the database is displayed in the React app
   </p>
 </div>

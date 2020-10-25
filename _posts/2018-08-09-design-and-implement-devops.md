@@ -44,10 +44,10 @@ To enable the Profiler, follow these steps:
 
   1. In your Application Insights resource, select the Performance blade and select Profiler.
 
-<div id="attachment_2106" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/08/Create-a-Profiler.jpg"><img aria-describedby="caption-attachment-2106" loading="lazy" class="wp-image-2106" src="/assets/img/posts/2018/08/Create-a-Profiler.jpg" alt="Create a Profiler" width="700" height="306" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/08/Create-a-Profiler.jpg"><img loading="lazy" src="/assets/img/posts/2018/08/Create-a-Profiler.jpg" alt="Create a Profiler" /></a>
   
-  <p id="caption-attachment-2106" class="wp-caption-text">
+  <p>
     Create a Profiler
   </p>
 </div>
@@ -78,10 +78,10 @@ To configure the CI/CD pipeline from the Azure portal, follow these steps:
   2. Provide a name, subscription and APP Service plan.
   3. Click Create.
 
-<div id="attachment_2107" style="width: 322px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/08/Create-a-new-Web-App.jpg"><img aria-describedby="caption-attachment-2107" loading="lazy" class="size-full wp-image-2107" src="/assets/img/posts/2018/08/Create-a-new-Web-App.jpg" alt="Create a new Web App for DevOps" width="312" height="460" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/08/Create-a-new-Web-App.jpg"><img aria-describedby="caption-attachment-2107" loading="lazy" class="size-full wp-image-2107" src="/assets/img/posts/2018/08/Create-a-new-Web-App.jpg" alt="Create a new Web App for DevOps" /></a>
   
-  <p id="caption-attachment-2107" class="wp-caption-text">
+  <p>
     Create a new Web App
   </p>
 </div>
@@ -95,10 +95,10 @@ To configure the CI/CD pipeline from the Azure portal, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_2108" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/08/Create-Continuous-Delivery-with-VSTS.jpg"><img aria-describedby="caption-attachment-2108" loading="lazy" class="wp-image-2108" src="/assets/img/posts/2018/08/Create-Continuous-Delivery-with-VSTS.jpg" alt="Create Continuous Delivery with VSTS" width="700" height="553" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/08/Create-Continuous-Delivery-with-VSTS.jpg"><img loading="lazy" src="/assets/img/posts/2018/08/Create-Continuous-Delivery-with-VSTS.jpg" alt="Create Continuous Delivery with VSTS" /></a>
   
-  <p id="caption-attachment-2108" class="wp-caption-text">
+  <p>
     Create Continuous Delivery with VSTS
   </p>
 </div>
@@ -128,10 +128,10 @@ Follow these steps to enable continuous deployment from a GitHub repository:
   3. On the Deployment option blade, select GitHub, authorize Azure to use Github, select a project and a branch.
   4. Click OK.
 
-<div id="attachment_2109" style="width: 325px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/08/Enable-continuous-deployment-from-GitHub.jpg"><img aria-describedby="caption-attachment-2109" loading="lazy" class="size-full wp-image-2109" src="/assets/img/posts/2018/08/Enable-continuous-deployment-from-GitHub.jpg" alt="Enable continuous deployment from GitHub" width="315" height="453" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/08/Enable-continuous-deployment-from-GitHub.jpg"><img aria-describedby="caption-attachment-2109" loading="lazy" class="size-full wp-image-2109" src="/assets/img/posts/2018/08/Enable-continuous-deployment-from-GitHub.jpg" alt="Enable continuous deployment from GitHub" /></a>
   
-  <p id="caption-attachment-2109" class="wp-caption-text">
+  <p>
     Enable continuous deployment from GitHub
   </p>
 </div>

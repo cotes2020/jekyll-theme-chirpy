@@ -21,10 +21,10 @@ To create an Azure SQL database in the Azure portal, follow these steps:
       * Pricing tier
   3. After you entered all information, click on Create.
 
-<div id="attachment_1158" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-new-SQL-database.jpg"><img aria-describedby="caption-attachment-1158" loading="lazy" class="wp-image-1158" src="/assets/img/posts/2018/04/Create-a-new-SQL-database.jpg" alt="Create a new Azure SQL database" width="700" height="442" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-a-new-SQL-database.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-a-new-SQL-database.jpg" alt="Create a new Azure SQL database" /></a>
   
-  <p id="caption-attachment-1158" class="wp-caption-text">
+  <p>
     Create a new Azure SQL database
   </p>
 </div>
@@ -89,10 +89,10 @@ To review the metrics of your Azure SQL database, follow these steps:
   2. On the Overview blade, click on the Resource graph.
   3. This opens the Metrics blade. There select the desired metrics, you wish to analyze.
 
-<div id="attachment_1159" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Configure-the-metrics-graph.jpg"><img aria-describedby="caption-attachment-1159" loading="lazy" class="wp-image-1159" src="/assets/img/posts/2018/04/Configure-the-metrics-graph.jpg" alt="Configure the metrics graph" width="700" height="616" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Configure-the-metrics-graph.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Configure-the-metrics-graph.jpg" alt="Configure the metrics graph" /></a>
   
-  <p id="caption-attachment-1159" class="wp-caption-text">
+  <p>
     Configure the metrics graph
   </p>
 </div>
@@ -117,10 +117,10 @@ To restore an Azure SQL database, follow these steps:
   4. Optionally change the Pricing tier.
   5. Click on OK to restore the backup.
 
-<div id="attachment_1162" style="width: 324px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Restore-an-Azure-SQL-database.jpg"><img aria-describedby="caption-attachment-1162" loading="lazy" class="size-full wp-image-1162" src="/assets/img/posts/2018/04/Restore-an-Azure-SQL-database.jpg" alt="Restore an Azure SQL database" width="314" height="554" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Restore-an-Azure-SQL-database.jpg"><img aria-describedby="caption-attachment-1162" loading="lazy" class="size-full wp-image-1162" src="/assets/img/posts/2018/04/Restore-an-Azure-SQL-database.jpg" alt="Restore an Azure SQL database" /></a>
   
-  <p id="caption-attachment-1162" class="wp-caption-text">
+  <p>
     Restore an Azure SQL database
   </p>
 </div>
@@ -132,10 +132,10 @@ To restore a deleted Azure SQL database, follow these steps:
   1. In the Azure portal, go to your SQL server and select the Deleted databases blade under the Setting menu.
   2. On the Deleted databases blade, select the database, you want to restore.
 
-<div id="attachment_1161" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Select-a-deleted-Azure-SQL-database-to-restore.jpg"><img aria-describedby="caption-attachment-1161" loading="lazy" class="wp-image-1161" src="/assets/img/posts/2018/04/Select-a-deleted-Azure-SQL-database-to-restore.jpg" alt="Select a deleted Azure SQL database to restore" width="700" height="167" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Select-a-deleted-Azure-SQL-database-to-restore.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Select-a-deleted-Azure-SQL-database-to-restore.jpg" alt="Select a deleted Azure SQL database to restore" /></a>
   
-  <p id="caption-attachment-1161" class="wp-caption-text">
+  <p>
     Select a deleted Azure SQL database to restore
   </p>
 </div>
@@ -146,10 +146,10 @@ To restore a deleted Azure SQL database, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1160" style="width: 320px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Restore-the-deleted-Azure-SQL-database.jpg"><img aria-describedby="caption-attachment-1160" loading="lazy" class="size-full wp-image-1160" src="/assets/img/posts/2018/04/Restore-the-deleted-Azure-SQL-database.jpg" alt="Restore the deleted Azure SQL database" width="310" height="275" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Restore-the-deleted-Azure-SQL-database.jpg"><img aria-describedby="caption-attachment-1160" loading="lazy" class="size-full wp-image-1160" src="/assets/img/posts/2018/04/Restore-the-deleted-Azure-SQL-database.jpg" alt="Restore the deleted Azure SQL database" /></a>
   
-  <p id="caption-attachment-1160" class="wp-caption-text">
+  <p>
     Restore the deleted Azure SQL database
   </p>
 </div>
@@ -171,10 +171,10 @@ To enable geo-replication, follow these steps:
   3. On the Create secondary blade, enter the server and pricing information.
   4. Click on OK.
 
-<div id="attachment_1163" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-an-online-secondary-database.jpg"><img aria-describedby="caption-attachment-1163" loading="lazy" class="wp-image-1163" src="/assets/img/posts/2018/04/Create-an-online-secondary-database.jpg" alt="Create an online secondary database" width="700" height="397" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-an-online-secondary-database.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-an-online-secondary-database.jpg" alt="Create an online secondary database" /></a>
   
-  <p id="caption-attachment-1163" class="wp-caption-text">
+  <p>
     Create an online secondary database
   </p>
 </div>
@@ -190,10 +190,10 @@ To create a BACPAC file, follow these steps:
   1. Open SQL Server Management Studio and connect to your database.
   2. Right-click on the database, select Tasks and click on Export Data-tier Application.
 
-<div id="attachment_1168" style="width: 684px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Export-your-source-database.jpg"><img aria-describedby="caption-attachment-1168" loading="lazy" class="wp-image-1168" src="/assets/img/posts/2018/04/Export-your-source-database.jpg" alt="Export your source database" width="674" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Export-your-source-database.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Export-your-source-database.jpg" alt="Export your source database" /></a>
   
-  <p id="caption-attachment-1168" class="wp-caption-text">
+  <p>
     Export your source database
   </p>
 </div>
@@ -204,10 +204,10 @@ To create a BACPAC file, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1170" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Select-a-location-for-the-export-file.jpg"><img aria-describedby="caption-attachment-1170" loading="lazy" class="wp-image-1170" src="/assets/img/posts/2018/04/Select-a-location-for-the-export-file.jpg" alt="Select a location for the export file" width="700" height="632" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Select-a-location-for-the-export-file.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Select-a-location-for-the-export-file.jpg" alt="Select a location for the export file" /></a>
   
-  <p id="caption-attachment-1170" class="wp-caption-text">
+  <p>
     Select a location for the export file
   </p>
 </div>
@@ -218,10 +218,10 @@ To create a BACPAC file, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1169" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Export-successful.jpg"><img aria-describedby="caption-attachment-1169" loading="lazy" class="wp-image-1169" src="/assets/img/posts/2018/04/Export-successful.jpg" alt="Export successful" width="700" height="632" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Export-successful.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Export-successful.jpg" alt="Export successful" /></a>
   
-  <p id="caption-attachment-1169" class="wp-caption-text">
+  <p>
     Export successful
   </p>
 </div>
@@ -233,10 +233,10 @@ To import a BACPAC file into your Azure SQL database, follow these steps:
   1. Open SQL Server Management Studio and connect to your Azure SQL server. You can find the server name in the Azure Portal on your SQL server. Go to Properties under the Settings menu.
   2. If you can&#8217;t connect to your server, you may have to allow your UP address in the firewall. Select Firewalls and virtual network under the Settings menu and enter your IP address or a range of IPs.
 
-<div id="attachment_1176" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Configure-the-firewall-of-your-SQL-server.jpg"><img aria-describedby="caption-attachment-1176" loading="lazy" class="wp-image-1176" src="/assets/img/posts/2018/04/Configure-the-firewall-of-your-SQL-server.jpg" alt="Configure the firewall of your SQL server" width="700" height="394" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Configure-the-firewall-of-your-SQL-server.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Configure-the-firewall-of-your-SQL-server.jpg" alt="Configure the firewall of your SQL server" /></a>
   
-  <p id="caption-attachment-1176" class="wp-caption-text">
+  <p>
     Configure the firewall of your SQL server
   </p>
 </div>
@@ -247,10 +247,10 @@ To import a BACPAC file into your Azure SQL database, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1178" style="width: 361px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg"><img aria-describedby="caption-attachment-1178" loading="lazy" class="size-full wp-image-1178" src="/assets/img/posts/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg" alt="Start the Import Data-tier Application wizard" width="351" height="280" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg"><img aria-describedby="caption-attachment-1178" loading="lazy" class="size-full wp-image-1178" src="/assets/img/posts/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg" alt="Start the Import Data-tier Application wizard" /></a>
   
-  <p id="caption-attachment-1178" class="wp-caption-text">
+  <p>
     Start the Import Data-tier Application wizard
   </p>
 </div>
@@ -261,10 +261,10 @@ To import a BACPAC file into your Azure SQL database, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1179" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Select-your-BACPAC-file-for-the-import.jpg"><img aria-describedby="caption-attachment-1179" loading="lazy" class="wp-image-1179" src="/assets/img/posts/2018/04/Select-your-BACPAC-file-for-the-import.jpg" alt="Select your BACPAC file for the import" width="700" height="637" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Select-your-BACPAC-file-for-the-import.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Select-your-BACPAC-file-for-the-import.jpg" alt="Select your BACPAC file for the import" /></a>
   
-  <p id="caption-attachment-1179" class="wp-caption-text">
+  <p>
     Select your BACPAC file for the import
   </p>
 </div>
@@ -275,10 +275,10 @@ To import a BACPAC file into your Azure SQL database, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1180" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Enter-a-database-name-and-select-the-pricing-tier.jpg"><img aria-describedby="caption-attachment-1180" loading="lazy" class="wp-image-1180" src="/assets/img/posts/2018/04/Enter-a-database-name-and-select-the-pricing-tier.jpg" alt="Enter a database name and select the pricing tier" width="700" height="637" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Enter-a-database-name-and-select-the-pricing-tier.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Enter-a-database-name-and-select-the-pricing-tier.jpg" alt="Enter a database name and select the pricing tier" /></a>
   
-  <p id="caption-attachment-1180" class="wp-caption-text">
+  <p>
     Enter a database name and select the pricing tier
   </p>
 </div>
@@ -289,10 +289,10 @@ To import a BACPAC file into your Azure SQL database, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1181" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/The-summary-of-the-import-wizard.jpg"><img aria-describedby="caption-attachment-1181" loading="lazy" class="wp-image-1181" src="/assets/img/posts/2018/04/The-summary-of-the-import-wizard.jpg" alt="The summary of the import wizard" width="700" height="637" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/The-summary-of-the-import-wizard.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/The-summary-of-the-import-wizard.jpg" alt="The summary of the import wizard" /></a>
   
-  <p id="caption-attachment-1181" class="wp-caption-text">
+  <p>
     The summary of the import wizard
   </p>
 </div>
@@ -303,10 +303,10 @@ To import a BACPAC file into your Azure SQL database, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1182" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/The-database-got-created-by-the-imported-schema.jpg"><img aria-describedby="caption-attachment-1182" loading="lazy" class="wp-image-1182" src="/assets/img/posts/2018/04/The-database-got-created-by-the-imported-schema.jpg" alt="The database got created by the imported schema" width="700" height="462" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/The-database-got-created-by-the-imported-schema.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/The-database-got-created-by-the-imported-schema.jpg" alt="The database got created by the imported schema" /></a>
   
-  <p id="caption-attachment-1182" class="wp-caption-text">
+  <p>
     The database got created by the imported schema
   </p>
 </div>
@@ -317,10 +317,10 @@ You can scale-up and scale-out your Azure SQL databases.
 
 Scaling-up means to add CPU, memory, and better disk i/o to handle the load. To do that click in the Azure portal on your database on Database size under the monitoring menu and move the slider to the right, or select a higher pricing tier.
 
-<div id="attachment_1164" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Scale-out-your-Azure-SQL-database.jpg"><img aria-describedby="caption-attachment-1164" loading="lazy" class="wp-image-1164" src="/assets/img/posts/2018/04/Scale-out-your-Azure-SQL-database.jpg" alt="Scale-up your Azure SQL database" width="700" height="245" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Scale-out-your-Azure-SQL-database.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Scale-out-your-Azure-SQL-database.jpg" alt="Scale-up your Azure SQL database" /></a>
   
-  <p id="caption-attachment-1164" class="wp-caption-text">
+  <p>
     Scale-up your Azure SQL database
   </p>
 </div>
@@ -351,10 +351,10 @@ To create an Elastic pool, follow these steps:
   2. On the Elastic database pool blade, provide a name and select a pricing tier under the Configure pool setting.
   3. On the Resource Configuration & Pricing blade, click on Databases and then +Add databases to add your databases.
 
-<div id="attachment_1165" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-new-Elastic-pool.jpg"><img aria-describedby="caption-attachment-1165" loading="lazy" class="wp-image-1165" src="/assets/img/posts/2018/04/Create-a-new-Elastic-pool.jpg" alt="Create a new Elastic pool" width="700" height="214" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-a-new-Elastic-pool.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-a-new-Elastic-pool.jpg" alt="Create a new Elastic pool" /></a>
   
-  <p id="caption-attachment-1165" class="wp-caption-text">
+  <p>
     Create a new Elastic pool
   </p>
 </div>
@@ -439,10 +439,10 @@ Azure SQL Data Sync has the following attributes:
   </p>
 </div>
 
-<div id="attachment_1166" style="width: 665px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Azure-Data-Sync-diagram.jpg"><img aria-describedby="caption-attachment-1166" loading="lazy" class="size-full wp-image-1166" src="/assets/img/posts/2018/04/Azure-Data-Sync-diagram.jpg" alt="Azure Data Sync diagram" width="655" height="614" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Azure-Data-Sync-diagram.jpg"><img aria-describedby="caption-attachment-1166" loading="lazy" class="size-full wp-image-1166" src="/assets/img/posts/2018/04/Azure-Data-Sync-diagram.jpg" alt="Azure Data Sync diagram" /></a>
   
-  <p id="caption-attachment-1166" class="wp-caption-text">
+  <p>
     Azure Data Sync diagram (<a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener">Source</a>)
   </p>
 </div>

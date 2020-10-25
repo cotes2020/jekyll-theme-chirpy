@@ -19,10 +19,10 @@ To create a blob storage account, follow these steps:
   2. On the Create storage account blade provide a name, location, subscription, and resource group. Optionally you can choose between standard (HDD) and premium (SSD) performance and enforce HTTPS by moving the slider to Enabled under the Secure transfer required attribute.
   3. Click Create.
 
-<div id="attachment_1064" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-new-Azure-Storage-account.jpg"><img aria-describedby="caption-attachment-1064" loading="lazy" class="wp-image-1064" src="/assets/img/posts/2018/04/Create-a-new-Azure-Storage-account.jpg" alt="Create a new Azure Storage blobs account" width="700" height="697" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-a-new-Azure-Storage-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-a-new-Azure-Storage-account.jpg" alt="Create a new Azure Storage blobs account" /></a>
   
-  <p id="caption-attachment-1064" class="wp-caption-text">
+  <p>
     Create a new Azure Storage account
   </p>
 </div>
@@ -47,20 +47,20 @@ The code of the following demo can be downloaded from <a href="https://github.c
   </ol>
 </li>
 
-<div id="attachment_1151" style="width: 721px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Connect-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1151" loading="lazy" class="size-full wp-image-1151" src="/assets/img/posts/2018/04/Connect-to-your-storage-account.jpg" alt="Connect to your storage account" width="711" height="55" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Connect-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1151" loading="lazy" class="size-full wp-image-1151" src="/assets/img/posts/2018/04/Connect-to-your-storage-account.jpg" alt="Connect to your storage account" /></a>
   
-  <p id="caption-attachment-1151" class="wp-caption-text">
+  <p>
     Connect to your storage account
   </p>
 </div>
 
 Replace the placeholder for storage account name and storage key with your own. You can find them in the Azure Portal under Access keys in your storage account.
 
-<div id="attachment_1065" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string.jpg"><img aria-describedby="caption-attachment-1065" loading="lazy" class="wp-image-1065" src="/assets/img/posts/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string.jpg" alt="Finding the Storage account name, storage key and connection string" width="700" height="203" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Finding-the-Storage-account-name-storage-key-and-connection-string.jpg" alt="Finding the Storage account name, storage key and connection string" /></a>
   
-  <p id="caption-attachment-1065" class="wp-caption-text">
+  <p>
     Finding the Storage account name, storage key, and connection string
   </p>
 </div>
@@ -71,10 +71,10 @@ Replace the placeholder for storage account name and storage key with your own. 
   </li>
 </ol>
 
-<div id="attachment_1152" style="width: 507px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1152" loading="lazy" class="size-full wp-image-1152" src="/assets/img/posts/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg" alt="Create the container myblockcontainer if it does not exist" width="497" height="186" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1152" loading="lazy" class="size-full wp-image-1152" src="/assets/img/posts/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg" alt="Create the container myblockcontainer if it does not exist" /></a>
   
-  <p id="caption-attachment-1152" class="wp-caption-text">
+  <p>
     Create the container myblockcontainer if it does not exist
   </p>
 </div>
@@ -87,10 +87,10 @@ Azure Storage blobs are organized in containers. Each storage account can have a
   </li>
 </ol>
 
-<div id="attachment_1153" style="width: 589px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Upload-a-file-to-the-container.jpg"><img aria-describedby="caption-attachment-1153" loading="lazy" class="size-full wp-image-1153" src="/assets/img/posts/2018/04/Upload-a-file-to-the-container.jpg" alt="Upload a file to the container" width="579" height="153" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Upload-a-file-to-the-container.jpg"><img aria-describedby="caption-attachment-1153" loading="lazy" class="size-full wp-image-1153" src="/assets/img/posts/2018/04/Upload-a-file-to-the-container.jpg" alt="Upload a file to the container" /></a>
   
-  <p id="caption-attachment-1153" class="wp-caption-text">
+  <p>
     Upload a file to the container
   </p>
 </div>
@@ -108,10 +108,10 @@ Azure Storage blobs are organized in containers. Each storage account can have a
   </li>
 </ol>
 
-<div id="attachment_1066" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/The-previously-uploaded-blob.jpg"><img aria-describedby="caption-attachment-1066" loading="lazy" class="wp-image-1066" src="/assets/img/posts/2018/04/The-previously-uploaded-blob.jpg" alt="The previously uploaded blob" width="700" height="190" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/The-previously-uploaded-blob.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/The-previously-uploaded-blob.jpg" alt="The previously uploaded blob" /></a>
   
-  <p id="caption-attachment-1066" class="wp-caption-text">
+  <p>
     The previously uploaded blob
   </p>
 </div>
@@ -129,10 +129,10 @@ A container has only read-only system properties, while blobs have both read-onl
 
 To set user-defined metadata, expand the code from before with these two lines:
 
-<div id="attachment_1069" style="width: 456px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Set-user-defined-metadata.jpg"><img aria-describedby="caption-attachment-1069" loading="lazy" class="size-full wp-image-1069" src="/assets/img/posts/2018/04/Set-user-defined-metadata.jpg" alt="Set user-defined metadata" width="446" height="92" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Set-user-defined-metadata.jpg"><img aria-describedby="caption-attachment-1069" loading="lazy" class="size-full wp-image-1069" src="/assets/img/posts/2018/04/Set-user-defined-metadata.jpg" alt="Set user-defined metadata" /></a>
   
-  <p id="caption-attachment-1069" class="wp-caption-text">
+  <p>
     Set user-defined metadata
   </p>
 </div>
@@ -141,10 +141,10 @@ To set user-defined metadata, expand the code from before with these two lines:
 
 To read the previously added user-defined metadata, add this code:
 
-<div id="attachment_1070" style="width: 541px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Read-user-defined-metadata.jpg"><img aria-describedby="caption-attachment-1070" loading="lazy" class="size-full wp-image-1070" src="/assets/img/posts/2018/04/Read-user-defined-metadata.jpg" alt="Read user-defined metadata" width="531" height="165" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Read-user-defined-metadata.jpg"><img aria-describedby="caption-attachment-1070" loading="lazy" class="size-full wp-image-1070" src="/assets/img/posts/2018/04/Read-user-defined-metadata.jpg" alt="Read user-defined metadata" /></a>
   
-  <p id="caption-attachment-1070" class="wp-caption-text">
+  <p>
     Read user-defined metadata
   </p>
 </div>
@@ -155,10 +155,10 @@ If the metadata key does not exist, an exception is thrown.
 
 To read system properties, add this code:
 
-<div id="attachment_1072" style="width: 561px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Read-system-metadata.jpg"><img aria-describedby="caption-attachment-1072" loading="lazy" class="size-full wp-image-1072" src="/assets/img/posts/2018/04/Read-system-metadata.jpg" alt="Read system metadata" width="551" height="116" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Read-system-metadata.jpg"><img aria-describedby="caption-attachment-1072" loading="lazy" class="size-full wp-image-1072" src="/assets/img/posts/2018/04/Read-system-metadata.jpg" alt="Read system metadata" /></a>
   
-  <p id="caption-attachment-1072" class="wp-caption-text">
+  <p>
     Read system metadata
   </p>
 </div>
@@ -177,30 +177,30 @@ Azure Storage Blobs have three different types of blobs:
 
 First, you have to create a page blob:
 
-<div id="attachment_1073" style="width: 637px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-page-blob.jpg"><img aria-describedby="caption-attachment-1073" loading="lazy" class="size-full wp-image-1073" src="/assets/img/posts/2018/04/Create-a-page-blob.jpg" alt="Create a page blob" width="627" height="261" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-a-page-blob.jpg"><img aria-describedby="caption-attachment-1073" loading="lazy" class="size-full wp-image-1073" src="/assets/img/posts/2018/04/Create-a-page-blob.jpg" alt="Create a page blob" /></a>
   
-  <p id="caption-attachment-1073" class="wp-caption-text">
+  <p>
     Create a page blob
   </p>
 </div>
 
 After the page blob is created, you can write data to it:
 
-<div id="attachment_1074" style="width: 633px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Wirte-to-a-page-blob.jpg"><img aria-describedby="caption-attachment-1074" loading="lazy" class="wp-image-1074 size-full" src="/assets/img/posts/2018/04/Wirte-to-a-page-blob.jpg" alt="Write to a page blob" width="623" height="172" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Wirte-to-a-page-blob.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/04/Wirte-to-a-page-blob.jpg" alt="Write to a page blob" /></a>
   
-  <p id="caption-attachment-1074" class="wp-caption-text">
+  <p>
     Write to a page blob
   </p>
 </div>
 
 After some data are added to the blob, you can read it:
 
-<div id="attachment_1075" style="width: 481px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Read-a-page-blob.jpg"><img aria-describedby="caption-attachment-1075" loading="lazy" class="size-full wp-image-1075" src="/assets/img/posts/2018/04/Read-a-page-blob.jpg" alt="Read a page blob" width="471" height="134" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Read-a-page-blob.jpg"><img aria-describedby="caption-attachment-1075" loading="lazy" class="size-full wp-image-1075" src="/assets/img/posts/2018/04/Read-a-page-blob.jpg" alt="Read a page blob" /></a>
   
-  <p id="caption-attachment-1075" class="wp-caption-text">
+  <p>
     Read a page blob
   </p>
 </div>
@@ -219,10 +219,10 @@ Azure Storage supports both HTTP and HTTPS. You should always use HTTPS though. 
 
 Each call to interact with blob storage will be secured, as shown in the following code:
 
-<div id="attachment_1076" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Secure-access-to-your-Storage-Account.jpg"><img aria-describedby="caption-attachment-1076" loading="lazy" class="wp-image-1076" src="/assets/img/posts/2018/04/Secure-access-to-your-Storage-Account.jpg" alt="Secure access to your Storage Account" width="700" height="52" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Secure-access-to-your-Storage-Account.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Secure-access-to-your-Storage-Account.jpg" alt="Secure access to your Storage Account" /></a>
   
-  <p id="caption-attachment-1076" class="wp-caption-text">
+  <p>
     Secure access to your Storage Account
   </p>
 </div>
@@ -250,10 +250,10 @@ To enable CDN for the storage account, follow these steps:
   1. Open your storage account and select Azure CDN under the Blob Service menu.
   2. On the Azure CDN blade, create a new CDN by filling out the form. The difference between the Premium and Standard Pricing tier is that the Premium offers advanced real-time analytics.
 
-<div id="attachment_1077" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-new-CDN.jpg"><img aria-describedby="caption-attachment-1077" loading="lazy" class="wp-image-1077" src="/assets/img/posts/2018/04/Create-a-new-CDN.jpg" alt="Create a new CDN" width="700" height="279" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-a-new-CDN.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-a-new-CDN.jpg" alt="Create a new CDN" /></a>
   
-  <p id="caption-attachment-1077" class="wp-caption-text">
+  <p>
     Create a new CDN
   </p>
 </div>
@@ -281,10 +281,10 @@ The default endpoint for Azure Storage blobs is: StorageAccountName.blob.core.wi
   6. Create another CNAME record that maps your subdomain to your blob service endpoint on your DNS provider&#8217;s website
   7. Now you can delete the Asverify CNAME since it has been verified by Azure already.
 
-<div id="attachment_1078" style="width: 561px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-custom-domain-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1078" loading="lazy" class="size-full wp-image-1078" src="/assets/img/posts/2018/04/Add-a-custom-domain-to-your-storage-account.jpg" alt="Add a custom domain to your storage account" width="551" height="372" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Add-a-custom-domain-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1078" loading="lazy" class="size-full wp-image-1078" src="/assets/img/posts/2018/04/Add-a-custom-domain-to-your-storage-account.jpg" alt="Add a custom domain to your storage account" /></a>
   
-  <p id="caption-attachment-1078" class="wp-caption-text">
+  <p>
     Add a custom domain to your storage account
   </p>
 </div>
@@ -313,10 +313,10 @@ You can create a lock on a blob for write and delete operations. This lick can b
 
 Use the following code to get the lease ID:
 
-<div id="attachment_1081" style="width: 469px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Get-the-lease-ID-of-your-block-blob.jpg"><img aria-describedby="caption-attachment-1081" loading="lazy" class="size-full wp-image-1081" src="/assets/img/posts/2018/04/Get-the-lease-ID-of-your-block-blob.jpg" alt="Get the lease ID of your block blob" width="459" height="141" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Get-the-lease-ID-of-your-block-blob.jpg"><img aria-describedby="caption-attachment-1081" loading="lazy" class="size-full wp-image-1081" src="/assets/img/posts/2018/04/Get-the-lease-ID-of-your-block-blob.jpg" alt="Get the lease ID of your block blob" /></a>
   
-  <p id="caption-attachment-1081" class="wp-caption-text">
+  <p>
     Get the lease ID of your block blob
   </p>
 </div>
@@ -345,10 +345,10 @@ To enable AFS, follow these steps:
   2. In the Azure portal, click on +Create a resource and search for Azure File Sync. Click on it and click on Create.
   3. Provide a name, subscription, resource group and location and click Create.
 
-<div id="attachment_1188" style="width: 375px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Deploy-Storage-Sync.jpg"><img aria-describedby="caption-attachment-1188" loading="lazy" class="size-full wp-image-1188" src="/assets/img/posts/2018/04/Deploy-Storage-Sync.jpg" alt="Deploy Storage Sync" width="365" height="358" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Deploy-Storage-Sync.jpg"><img aria-describedby="caption-attachment-1188" loading="lazy" class="size-full wp-image-1188" src="/assets/img/posts/2018/04/Deploy-Storage-Sync.jpg" alt="Deploy Storage Sync" /></a>
   
-  <p id="caption-attachment-1188" class="wp-caption-text">
+  <p>
     Deploy Storage Sync
   </p>
 </div>
@@ -359,10 +359,10 @@ To enable AFS, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1189" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-file-share-in-the-storage-account.jpg"><img aria-describedby="caption-attachment-1189" loading="lazy" class="wp-image-1189" src="/assets/img/posts/2018/04/Create-a-file-share-in-the-storage-account.jpg" alt="Create a file share in the storage account" width="700" height="462" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-a-file-share-in-the-storage-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-a-file-share-in-the-storage-account.jpg" alt="Create a file share in the storage account" /></a>
   
-  <p id="caption-attachment-1189" class="wp-caption-text">
+  <p>
     Create a file share in the storage account
   </p>
 </div>
@@ -376,10 +376,10 @@ To enable AFS, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1190" style="width: 597px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-Sync-group.jpg"><img aria-describedby="caption-attachment-1190" loading="lazy" class="size-full wp-image-1190" src="/assets/img/posts/2018/04/Create-a-Sync-group.jpg" alt="Create a Sync group" width="587" height="484" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-a-Sync-group.jpg"><img aria-describedby="caption-attachment-1190" loading="lazy" class="size-full wp-image-1190" src="/assets/img/posts/2018/04/Create-a-Sync-group.jpg" alt="Create a Sync group" /></a>
   
-  <p id="caption-attachment-1190" class="wp-caption-text">
+  <p>
     Create a Sync group
   </p>
 </div>
@@ -395,10 +395,10 @@ To enable AFS, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1191" style="width: 425px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Disable-enhanced-security.jpg"><img aria-describedby="caption-attachment-1191" loading="lazy" class="size-full wp-image-1191" src="/assets/img/posts/2018/04/Disable-enhanced-security.jpg" alt="Disable enhanced security" width="415" height="448" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Disable-enhanced-security.jpg"><img aria-describedby="caption-attachment-1191" loading="lazy" class="size-full wp-image-1191" src="/assets/img/posts/2018/04/Disable-enhanced-security.jpg" alt="Disable enhanced security" /></a>
   
-  <p id="caption-attachment-1191" class="wp-caption-text">
+  <p>
     Disable enhanced security
   </p>
 </div>
@@ -412,10 +412,10 @@ To enable AFS, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1192" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing.jpg"><img aria-describedby="caption-attachment-1192" loading="lazy" class="wp-image-1192" src="/assets/img/posts/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing.jpg" alt="Azure File Sync Azure PowerShell Module missing" width="700" height="438" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Azure-File-Sync-Azure-PowerShell-Module-missing.jpg" alt="Azure File Sync Azure PowerShell Module missing" /></a>
   
-  <p id="caption-attachment-1192" class="wp-caption-text">
+  <p>
     Azure File Sync Azure PowerShell Module missing
   </p>
 </div>
@@ -426,10 +426,10 @@ To enable AFS, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1193" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Install-the-Azure-PowerShell-Module.jpg"><img aria-describedby="caption-attachment-1193" loading="lazy" class="wp-image-1193" src="/assets/img/posts/2018/04/Install-the-Azure-PowerShell-Module.jpg" alt="Install the Azure PowerShell Module" width="700" height="392" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Install-the-Azure-PowerShell-Module.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Install-the-Azure-PowerShell-Module.jpg" alt="Install the Azure PowerShell Module" /></a>
   
-  <p id="caption-attachment-1193" class="wp-caption-text">
+  <p>
     Install the Azure PowerShell module
   </p>
 </div>
@@ -440,10 +440,10 @@ To enable AFS, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1194" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Sign-in-and-register-this-server.jpg"><img aria-describedby="caption-attachment-1194" loading="lazy" class="wp-image-1194" src="/assets/img/posts/2018/04/Sign-in-and-register-this-server.jpg" alt="Sign in and register this server" width="700" height="438" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Sign-in-and-register-this-server.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Sign-in-and-register-this-server.jpg" alt="Sign in and register this server" /></a>
   
-  <p id="caption-attachment-1194" class="wp-caption-text">
+  <p>
     Sign in and register this server
   </p>
 </div>
@@ -459,10 +459,10 @@ To enable AFS, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1195" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Register-a-server-endpoint.jpg"><img aria-describedby="caption-attachment-1195" loading="lazy" class="wp-image-1195" src="/assets/img/posts/2018/04/Register-a-server-endpoint.jpg" alt="Register a server endpoint" width="700" height="210" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Register-a-server-endpoint.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Register-a-server-endpoint.jpg" alt="Register a server endpoint" /></a>
   
-  <p id="caption-attachment-1195" class="wp-caption-text">
+  <p>
     Register a server endpoint
   </p>
 </div>
@@ -475,10 +475,10 @@ To enable AFS, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1196" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Copy-files-into-the-sync-folder.jpg"><img aria-describedby="caption-attachment-1196" loading="lazy" class="size-full wp-image-1196" src="/assets/img/posts/2018/04/Copy-files-into-the-sync-folder.jpg" alt="Copy files into the sync folder" width="700" height="146" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Copy-files-into-the-sync-folder.jpg"><img aria-describedby="caption-attachment-1196" loading="lazy" class="size-full wp-image-1196" src="/assets/img/posts/2018/04/Copy-files-into-the-sync-folder.jpg" alt="Copy files into the sync folder" /></a>
   
-  <p id="caption-attachment-1196" class="wp-caption-text">
+  <p>
     Copy files into the sync folder
   </p>
 </div>
@@ -489,10 +489,10 @@ To enable AFS, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1197" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/The-synchronize-process-was-successful.jpg"><img aria-describedby="caption-attachment-1197" loading="lazy" class="wp-image-1197" src="/assets/img/posts/2018/04/The-synchronize-process-was-successful.jpg" alt="The synchronize process was successful" width="700" height="266" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/The-synchronize-process-was-successful.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/The-synchronize-process-was-successful.jpg" alt="The synchronize process was successful" /></a>
   
-  <p id="caption-attachment-1197" class="wp-caption-text">
+  <p>
     The synchronize process was successful
   </p>
 </div>

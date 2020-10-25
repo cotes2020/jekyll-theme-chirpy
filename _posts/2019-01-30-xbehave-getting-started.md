@@ -28,10 +28,10 @@ A test in xBehave always has the attribute Scenario. As previously mentioned, xB
 
 In the Given or Arrange phase, you set up all the objects you need to run your test. In my example test, I only need one employee object, You could set up several objects and combine them with And.
 
-<div id="attachment_1565" style="width: 312px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/01/Setting-up-two-employee-objects-for-the-tests.jpg"><img aria-describedby="caption-attachment-1565" loading="lazy" class="wp-image-1565 size-full" src="/assets/img/posts/2019/01/Setting-up-two-employee-objects-for-the-tests.jpg" alt="Setting up two employee objects for the xBehave tests" width="302" height="92" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/01/Setting-up-two-employee-objects-for-the-tests.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/01/Setting-up-two-employee-objects-for-the-tests.jpg" alt="Setting up two employee objects for the xBehave tests" /></a>
   
-  <p id="caption-attachment-1565" class="wp-caption-text">
+  <p>
     Setting up two employee objects for the tests
   </p>
 </div>
@@ -40,10 +40,10 @@ In the Given or Arrange phase, you set up all the objects you need to run your t
 
 In the When or Act phase, you call the methods, you want to test. In my example, I add the hours worked during the week to my employee.
 
-<div id="attachment_1566" style="width: 615px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/01/Executing-a-method-with-my-test-object.jpg"><img aria-describedby="caption-attachment-1566" loading="lazy" class="size-full wp-image-1566" src="/assets/img/posts/2019/01/Executing-a-method-with-my-test-object.jpg" alt="Executing a method with my test object" width="605" height="53" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/01/Executing-a-method-with-my-test-object.jpg"><img aria-describedby="caption-attachment-1566" loading="lazy" class="size-full wp-image-1566" src="/assets/img/posts/2019/01/Executing-a-method-with-my-test-object.jpg" alt="Executing a method with my test object" /></a>
   
-  <p id="caption-attachment-1566" class="wp-caption-text">
+  <p>
     Executing a method with my test object
   </p>
 </div>
@@ -52,10 +52,10 @@ In the When or Act phase, you call the methods, you want to test. In my example,
 
 In the Then or Assert phase, you check if the value or result is what you expected. In my example, I check if the salary of the employee has the value I expect.
 
-<div id="attachment_1567" style="width: 522px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/01/Evaluate-the-result-of-the-previous-operation.jpg"><img aria-describedby="caption-attachment-1567" loading="lazy" class="size-full wp-image-1567" src="/assets/img/posts/2019/01/Evaluate-the-result-of-the-previous-operation.jpg" alt="Evaluate the result of the previous operation" width="512" height="46" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/01/Evaluate-the-result-of-the-previous-operation.jpg"><img aria-describedby="caption-attachment-1567" loading="lazy" class="size-full wp-image-1567" src="/assets/img/posts/2019/01/Evaluate-the-result-of-the-previous-operation.jpg" alt="Evaluate the result of the previous operation" /></a>
   
-  <p id="caption-attachment-1567" class="wp-caption-text">
+  <p>
     Evaluate the result of the previous operation
   </p>
 </div>
@@ -64,10 +64,10 @@ In the Then or Assert phase, you check if the value or result is what you expect
 
 You can always return to a previous phase. For example, after the salary check from above, you can have another method call with when and then another assert with then.
 
-<div id="attachment_1568" style="width: 625px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/01/Repeating-testing-steps.jpg"><img aria-describedby="caption-attachment-1568" loading="lazy" class="size-full wp-image-1568" src="/assets/img/posts/2019/01/Repeating-testing-steps.jpg" alt="Repeating testing steps" width="615" height="195" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/01/Repeating-testing-steps.jpg"><img aria-describedby="caption-attachment-1568" loading="lazy" class="size-full wp-image-1568" src="/assets/img/posts/2019/01/Repeating-testing-steps.jpg" alt="Repeating testing steps" /></a>
   
-  <p id="caption-attachment-1568" class="wp-caption-text">
+  <p>
     Repeating testing steps
   </p>
 </div>
@@ -76,10 +76,10 @@ You can always return to a previous phase. For example, after the salary check f
 
 In xUnit, the constructor of the class is called before a test is executed. xBehave is very similar, but instead of the constructor, it calls the method with the Background attribute. Usually, the method is also called Background but you can choose whatever name fits best for you.
 
-<div id="attachment_1569" style="width: 657px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/01/Setting-up-code-before-the-test-execution.jpg"><img aria-describedby="caption-attachment-1569" loading="lazy" class="size-full wp-image-1569" src="/assets/img/posts/2019/01/Setting-up-code-before-the-test-execution.jpg" alt="Setting up code before the test execution" width="647" height="137" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/01/Setting-up-code-before-the-test-execution.jpg"><img aria-describedby="caption-attachment-1569" loading="lazy" class="size-full wp-image-1569" src="/assets/img/posts/2019/01/Setting-up-code-before-the-test-execution.jpg" alt="Setting up code before the test execution" /></a>
   
-  <p id="caption-attachment-1569" class="wp-caption-text">
+  <p>
     Setting up code before the test execution
   </p>
 </div>
@@ -88,10 +88,10 @@ In xUnit, the constructor of the class is called before a test is executed. xBeh
 
 In xBehave you can add parameters to your test with the parameter Example. It works the same way as InlindeData in xUnit. You add values and then have matching parameters in the method signature.
 
-<div id="attachment_1570" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/01/Add-parameter-to-your-test.jpg"><img aria-describedby="caption-attachment-1570" loading="lazy" class="wp-image-1570" src="/assets/img/posts/2019/01/Add-parameter-to-your-test.jpg" alt="Add parameter to your test" width="700" height="110" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/01/Add-parameter-to-your-test.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Add-parameter-to-your-test.jpg" alt="Add parameter to your test" /></a>
   
-  <p id="caption-attachment-1570" class="wp-caption-text">
+  <p>
     Add parameters to your test
   </p>
 </div>
@@ -102,10 +102,10 @@ Instead of Example, you can use any attribute which inherits from DataAttribute,
 
 If you want to assign a value to a variable within your test, you can pass this variable as a parameter. Each parameter which does not have a corresponding example value (based purely on the number of values/parameters) continues to have its default value passed (null for reference types and zero values for value types).
 
-<div id="attachment_1571" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/01/Adding-a-variable-as-parameter-to-be-used-in-the-test.jpg"><img aria-describedby="caption-attachment-1571" loading="lazy" class="wp-image-1571" src="/assets/img/posts/2019/01/Adding-a-variable-as-parameter-to-be-used-in-the-test.jpg" alt="Adding a variable as parameter to be used in the test" width="700" height="135" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/01/Adding-a-variable-as-parameter-to-be-used-in-the-test.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Adding-a-variable-as-parameter-to-be-used-in-the-test.jpg" alt="Adding a variable as parameter to be used in the test" /></a>
   
-  <p id="caption-attachment-1571" class="wp-caption-text">
+  <p>
     Adding a variable as a parameter to be used in the test
   </p>
 </div>
@@ -114,10 +114,10 @@ If you want to assign a value to a variable within your test, you can pass this 
 
 To exclude a scenario from execution, you can apply the skip attribute and provide a message. It works the same way as in xUnit.
 
-<div id="attachment_1572" style="width: 337px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/01/Skipping-a-scenario.jpg"><img aria-describedby="caption-attachment-1572" loading="lazy" class="size-full wp-image-1572" src="/assets/img/posts/2019/01/Skipping-a-scenario.jpg" alt="Skipping a scenario" width="327" height="70" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/01/Skipping-a-scenario.jpg"><img aria-describedby="caption-attachment-1572" loading="lazy" class="size-full wp-image-1572" src="/assets/img/posts/2019/01/Skipping-a-scenario.jpg" alt="Skipping a scenario" /></a>
   
-  <p id="caption-attachment-1572" class="wp-caption-text">
+  <p>
     Skipping a scenario
   </p>
 </div>
@@ -126,10 +126,10 @@ To exclude a scenario from execution, you can apply the skip attribute and provi
 
 You can set up fake objects and fake calls the same way as in xUnit, using a faking framework like FakeItEasy.
 
-<div id="attachment_1573" style="width: 641px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/01/Faking-objects-inside-the-test.jpg"><img aria-describedby="caption-attachment-1573" loading="lazy" class="size-full wp-image-1573" src="/assets/img/posts/2019/01/Faking-objects-inside-the-test.jpg" alt="Faking objects inside the test" width="631" height="397" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/01/Faking-objects-inside-the-test.jpg"><img aria-describedby="caption-attachment-1573" loading="lazy" class="size-full wp-image-1573" src="/assets/img/posts/2019/01/Faking-objects-inside-the-test.jpg" alt="Faking objects inside the test" /></a>
   
-  <p id="caption-attachment-1573" class="wp-caption-text">
+  <p>
     Faking objects inside the test (<a href="https://github.com/xbehave/xbehave.net/wiki/Can-I-use-xbehave.net-with-isolation-%28faking-mocking-substitution%29-libraries%3F" target="_blank" rel="noopener">Source xBehave</a>)
   </p>
 </div>
@@ -138,10 +138,10 @@ You can set up fake objects and fake calls the same way as in xUnit, using a fak
 
 If your code needs some cleanup after execution, xBehave provides you with the Teardown method. Provide a delegate to the Teardown method and xBehave will execute your method after the test was run or if an exception occured. On the following screenshot, you can see that in the Teardown method, the employee object calls the Destroy method which does whatever is necessary to clean up the employee object.
 
-<div id="attachment_1574" style="width: 308px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/01/Teardown-an-object.jpg"><img aria-describedby="caption-attachment-1574" loading="lazy" class="size-full wp-image-1574" src="/assets/img/posts/2019/01/Teardown-an-object.jpg" alt="Teardown an object" width="298" height="61" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/01/Teardown-an-object.jpg"><img aria-describedby="caption-attachment-1574" loading="lazy" class="size-full wp-image-1574" src="/assets/img/posts/2019/01/Teardown-an-object.jpg" alt="Teardown an object" /></a>
   
-  <p id="caption-attachment-1574" class="wp-caption-text">
+  <p>
     Teardown an object
   </p>
 </div>

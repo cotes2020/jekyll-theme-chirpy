@@ -15,20 +15,20 @@ To create a Blazor WebAssembly application, you need Visual Studio 2019 and the 
 
 In Visual Studio create a new project and select Blazor App as your template.
 
-<div id="attachment_2405" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Select-Blazor-App-as-the-template.jpg"><img aria-describedby="caption-attachment-2405" loading="lazy" class="wp-image-2405" src="/assets/img/posts/2020/10/Select-Blazor-App-as-the-template.jpg" alt="Select Blazor App as the template" width="700" height="485" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Select-Blazor-App-as-the-template.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Select-Blazor-App-as-the-template.jpg" alt="Select Blazor App as the template" /></a>
   
-  <p id="caption-attachment-2405" class="wp-caption-text">
+  <p>
     Select Blazor App as the template
   </p>
 </div>
 
 Enter a name and then select Blazor WebAssembly App to create a client-side Blazor application.
 
-<div id="attachment_2406" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Create-a-Blazor-WebAssembly-application.jpg"><img aria-describedby="caption-attachment-2406" loading="lazy" class="wp-image-2406" src="/assets/img/posts/2020/10/Create-a-Blazor-WebAssembly-application.jpg" alt="Create a Blazor WebAssembly application" width="700" height="485" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Create-a-Blazor-WebAssembly-application.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Create-a-Blazor-WebAssembly-application.jpg" alt="Create a Blazor WebAssembly application" /></a>
   
-  <p id="caption-attachment-2406" class="wp-caption-text">
+  <p>
     Create a Blazor WebAssembly application
   </p>
 </div>
@@ -41,20 +41,20 @@ To create an Azure Function, you need the <a href="https://docs.microsoft.com/en
 
 In your previously created solution, right-click on the solution file, click add a new project, and select Azure Functions as the template.
 
-<div id="attachment_2407" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Select-Azure-Function-as-the-template.jpg"><img aria-describedby="caption-attachment-2407" loading="lazy" class="wp-image-2407" src="/assets/img/posts/2020/10/Select-Azure-Function-as-the-template.jpg" alt="Select Azure Function as the template" width="700" height="485" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Select-Azure-Function-as-the-template.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Select-Azure-Function-as-the-template.jpg" alt="Select Azure Function as the template" /></a>
   
-  <p id="caption-attachment-2407" class="wp-caption-text">
+  <p>
     Select Azure Function as the template
   </p>
 </div>
 
 Enter a name and then select Http trigger to trigger the function via HTTP calls.
 
-<div id="attachment_2408" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Select-HTTP-Trigger-for-the-Azure-Function.jpg"><img aria-describedby="caption-attachment-2408" loading="lazy" class="wp-image-2408" src="/assets/img/posts/2020/10/Select-HTTP-Trigger-for-the-Azure-Function.jpg" alt="Select HTTP Trigger for the Azure Function" width="700" height="485" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Select-HTTP-Trigger-for-the-Azure-Function.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Select-HTTP-Trigger-for-the-Azure-Function.jpg" alt="Select HTTP Trigger for the Azure Function" /></a>
   
-  <p id="caption-attachment-2408" class="wp-caption-text">
+  <p>
     Select HTTP Trigger for the Azure Function
   </p>
 </div>
@@ -117,10 +117,10 @@ The Product class is in a class library so both projects can reference it.
 
 To test that everything is working as expected, start the Blazor app and the Azure Function. Click on the Fetch data and you will see three products displayed. In the console application of the Azure Function, you can see its URL and some log information. To test only the Azure Function, you could also call the displayed URL. This will return the products as JSON.
 
-<div id="attachment_2409" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Test-the-implementation-locally.jpg"><img aria-describedby="caption-attachment-2409" loading="lazy" class="wp-image-2409" src="/assets/img/posts/2020/10/Test-the-implementation-locally.jpg" alt="Test the implementation locally" width="700" height="356" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Test-the-implementation-locally.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Test-the-implementation-locally.jpg" alt="Test the implementation locally" /></a>
   
-  <p id="caption-attachment-2409" class="wp-caption-text">
+  <p>
     Test the implementation locally
   </p>
 </div>
@@ -129,50 +129,50 @@ To test that everything is working as expected, start the Blazor app and the Azu
 
 Go to the Azure Portal, click on New, search for Static Webb App, and click on Create.
 
-<div id="attachment_2410" style="width: 564px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Create-the-Static-Web-App.jpg"><img aria-describedby="caption-attachment-2410" loading="lazy" class="size-full wp-image-2410" src="/assets/img/posts/2020/10/Create-the-Static-Web-App.jpg" alt="Create the Static Web App" width="554" height="221" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Create-the-Static-Web-App.jpg"><img aria-describedby="caption-attachment-2410" loading="lazy" class="size-full wp-image-2410" src="/assets/img/posts/2020/10/Create-the-Static-Web-App.jpg" alt="Create the Static Web App" /></a>
   
-  <p id="caption-attachment-2410" class="wp-caption-text">
+  <p>
     Create the Static Web App
   </p>
 </div>
 
 Enter a name, location, and your Github repository. Then select Blazor as Build Presets and enter the location of your Blazor project and of your Azure Function project. Click Review + create and your application will be deployed.
 
-<div id="attachment_2411" style="width: 604px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Configure-the-Static-Web-App.jpg"><img aria-describedby="caption-attachment-2411" loading="lazy" class="wp-image-2411" src="/assets/img/posts/2020/10/Configure-the-Static-Web-App.jpg" alt="Configure the Static Web App" width="594" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Configure-the-Static-Web-App.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Configure-the-Static-Web-App.jpg" alt="Configure the Static Web App" /></a>
   
-  <p id="caption-attachment-2411" class="wp-caption-text">
+  <p>
     Configure the Static Web App
   </p>
 </div>
 
 The deployment takes only a moment. After it is finished, click on the URL that is displayed in your Static Web App.
 
-<div id="attachment_2412" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/The-Static-Web-App-got-deployed.jpg"><img aria-describedby="caption-attachment-2412" loading="lazy" class="wp-image-2412" src="/assets/img/posts/2020/10/The-Static-Web-App-got-deployed.jpg" alt="The Static Web App got deployed" width="700" height="121" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/The-Static-Web-App-got-deployed.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/The-Static-Web-App-got-deployed.jpg" alt="The Static Web App got deployed" /></a>
   
-  <p id="caption-attachment-2412" class="wp-caption-text">
+  <p>
     The Static Web App got deployed
   </p>
 </div>
 
 This opens your application in a new window and when you click on Fetch data, you will see your products.
 
-<div id="attachment_2415" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Testing-the-deployed-Blazor-application.jpg"><img aria-describedby="caption-attachment-2415" loading="lazy" class="wp-image-2415" src="/assets/img/posts/2020/10/Testing-the-deployed-Blazor-application.jpg" alt="Testing the deployed Blazor application" width="700" height="323" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Testing-the-deployed-Blazor-application.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Testing-the-deployed-Blazor-application.jpg" alt="Testing the deployed Blazor application" /></a>
   
-  <p id="caption-attachment-2415" class="wp-caption-text">
+  <p>
     Testing the deployed Blazor application
   </p>
 </div>
 
 Below the URL, you see a link to the Github Actions which are responsible for the deployment. Alternatively, you could also open your Github repository and click on Actions there. When you open the Github Actions, you will see the deployment from the Azure Static Web App.
 
-<div id="attachment_2414" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Github-Actions-deployed-the-Blazor-application.jpg"><img aria-describedby="caption-attachment-2414" loading="lazy" class="wp-image-2414" src="/assets/img/posts/2020/10/Github-Actions-deployed-the-Blazor-application.jpg" alt="Github Actions deployed the Blazor application" width="700" height="246" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Github-Actions-deployed-the-Blazor-application.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Github-Actions-deployed-the-Blazor-application.jpg" alt="Github Actions deployed the Blazor application" /></a>
   
-  <p id="caption-attachment-2414" class="wp-caption-text">
+  <p>
     Github Actions deployed the Blazor application
   </p>
 </div>

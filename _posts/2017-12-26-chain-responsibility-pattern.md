@@ -37,10 +37,10 @@ I will now implement the real world example which I mentioned before. You can fi
 
 The user can enter an amount and then different managers are asked for their approval. If the amount is even too high for the CEO, the approval is denied. The problem with this approach is that all the business logic happens in the main method. Lets say the employee goes to his manager and he can&#8217;t approve the amount. He then sends the report back and tells the employee to go to his manager instead of passing the report directly.
 
-<div id="attachment_436" style="width: 444px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Finding-a-manager-to-approve-the-report.jpg"><img aria-describedby="caption-attachment-436" loading="lazy" class="size-full wp-image-436" src="/assets/img/posts/2017/12/Finding-a-manager-to-approve-the-report.jpg" alt="Finding a manager to approve the report" width="434" height="221" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Finding-a-manager-to-approve-the-report.jpg"><img aria-describedby="caption-attachment-436" loading="lazy" class="size-full wp-image-436" src="/assets/img/posts/2017/12/Finding-a-manager-to-approve-the-report.jpg" alt="Finding a manager to approve the report" /></a>
   
-  <p id="caption-attachment-436" class="wp-caption-text">
+  <p>
     Finding a manager to approve the report
   </p>
 </div>
@@ -53,20 +53,20 @@ To implement the chain of responsibility pattern I reuse the code from the previ
 
 First I implement the ExpenseHandler which handles the approving process. If the current manager is not able to approve the amount, the costs are given to the next manager in line to approve it. To be able to do that, the managers of the chain have to be registered. The register process replaces the adding of the managers to the list of the previous example.
 
-<div id="attachment_437" style="width: 637px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Create-chain-of-responsibility.jpg"><img aria-describedby="caption-attachment-437" loading="lazy" class="size-full wp-image-437" src="/assets/img/posts/2017/12/Create-chain-of-responsibility.jpg" alt="Create chain of responsibility" width="627" height="160" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Create-chain-of-responsibility.jpg"><img aria-describedby="caption-attachment-437" loading="lazy" class="size-full wp-image-437" src="/assets/img/posts/2017/12/Create-chain-of-responsibility.jpg" alt="Create chain of responsibility" /></a>
   
-  <p id="caption-attachment-437" class="wp-caption-text">
+  <p>
     Create chain of responsibility
   </p>
 </div>
 
 To get an approval of the report, the only thing Tom has to do is call the approve method with the expenses as parameter. The ExpenseHandler will take care of sending the message to the right manager. As a result of this, the code looks cleaner and is easier to read.
 
-<div id="attachment_438" style="width: 485px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Get-approval-of-the-report.jpg"><img aria-describedby="caption-attachment-438" loading="lazy" class="size-full wp-image-438" src="/assets/img/posts/2017/12/Get-approval-of-the-report.jpg" alt="Get approval of the report" width="475" height="59" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Get-approval-of-the-report.jpg"><img aria-describedby="caption-attachment-438" loading="lazy" class="size-full wp-image-438" src="/assets/img/posts/2017/12/Get-approval-of-the-report.jpg" alt="Get approval of the report" /></a>
   
-  <p id="caption-attachment-438" class="wp-caption-text">
+  <p>
     Get approval of the report
   </p>
 </div>

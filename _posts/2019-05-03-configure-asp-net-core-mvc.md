@@ -9,10 +9,10 @@ Some configurations like the connection string usually change on every environme
 
 On the following screenshot, I configure my application in the BuildWebHost method of the program class to read the appsettings.json file, the environment variables and if available the command line arguments.
 
-<div id="attachment_1645" style="width: 646px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Configure-the-application-to-read-settings-from-a-json-file-environment-variables-and-the-command-line-parameter.jpg"><img aria-describedby="caption-attachment-1645" loading="lazy" class="size-full wp-image-1645" src="/assets/img/posts/2019/04/Configure-the-application-to-read-settings-from-a-json-file-environment-variables-and-the-command-line-parameter.jpg" alt="Configure the application to read settings from a json file, environment variables and the command line parameter" width="636" height="262" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Configure-the-application-to-read-settings-from-a-json-file-environment-variables-and-the-command-line-parameter.jpg"><img aria-describedby="caption-attachment-1645" loading="lazy" class="size-full wp-image-1645" src="/assets/img/posts/2019/04/Configure-the-application-to-read-settings-from-a-json-file-environment-variables-and-the-command-line-parameter.jpg" alt="Configure the application to read settings from a json file, environment variables and the command line parameter" /></a>
   
-  <p id="caption-attachment-1645" class="wp-caption-text">
+  <p>
     Configure the application to read settings from a JSON file, environment variables and the command line parameter
   </p>
 </div>
@@ -76,20 +76,20 @@ The IConfigurationBuilder provides three extension methods:
 
 The most common uses for the appsettings.json file are to store your connection strings and logging setting, but you can store any data that your application needs. On the following screenshot, I add the ShortCircuitMiddleware section containing EnableBrowserShortCircuit with the value true to the appsettings.json file.
 
-<div id="attachment_1646" style="width: 284px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Adding-values-to-the-appsettings.json-file.jpg"><img aria-describedby="caption-attachment-1646" loading="lazy" class="wp-image-1646 size-full" src="/assets/img/posts/2019/04/Adding-values-to-the-appsettings.json-file.jpg" alt="Adding values to the appsettings.json file to configure your application" width="274" height="88" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Adding-values-to-the-appsettings.json-file.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/04/Adding-values-to-the-appsettings.json-file.jpg" alt="Adding values to the appsettings.json file to configure your application" /></a>
   
-  <p id="caption-attachment-1646" class="wp-caption-text">
+  <p>
     Adding values to the appsettings.json file
   </p>
 </div>
 
 In JSON everything has to be quoted exception bool and number values. If you want to add a new section, add a comma after the closing bracket of the ShortCircuitMiddleware section. Be aware to not add a trailing comma at the end if you don&#8217;t have another section there. This and missing quotes are the most common mistakes in a JSON file.
 
-<div id="attachment_1647" style="width: 283px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Adding-more-values-to-the-appsettings.json-file.jpg"><img aria-describedby="caption-attachment-1647" loading="lazy" class="wp-image-1647 size-full" src="/assets/img/posts/2019/04/Adding-more-values-to-the-appsettings.json-file.jpg" alt="Adding more values to the appsettings.json file to configure your application" width="273" height="106" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Adding-more-values-to-the-appsettings.json-file.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/04/Adding-more-values-to-the-appsettings.json-file.jpg" alt="Adding more values to the appsettings.json file to configure your application" /></a>
   
-  <p id="caption-attachment-1647" class="wp-caption-text">
+  <p>
     Adding more values to the appsettings.json file
   </p>
 </div>
@@ -98,10 +98,10 @@ In JSON everything has to be quoted exception bool and number values. If you wan
 
 The Startup class can access the configuration data by defining a constructor with an IConfiguration argument. When the UseStartup method is called in the Program class, the configuration data prepared by the ConfigureAppConfiguration is used to create the Startup object.
 
-<div id="attachment_1648" style="width: 375px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Setting-the-Configuration-in-the-Startup-constructor.jpg"><img aria-describedby="caption-attachment-1648" loading="lazy" class="size-full wp-image-1648" src="/assets/img/posts/2019/04/Setting-the-Configuration-in-the-Startup-constructor.jpg" alt="Setting the Configuration in the Startup constructor" width="365" height="166" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Setting-the-Configuration-in-the-Startup-constructor.jpg"><img aria-describedby="caption-attachment-1648" loading="lazy" class="size-full wp-image-1648" src="/assets/img/posts/2019/04/Setting-the-Configuration-in-the-Startup-constructor.jpg" alt="Setting the Configuration in the Startup constructor" /></a>
   
-  <p id="caption-attachment-1648" class="wp-caption-text">
+  <p>
     Setting the Configuration in the Startup constructor
   </p>
 </div>
@@ -191,10 +191,10 @@ Additionally, the IConfiguration interface provides the following extension meth
 
 With these extension methods, I read the configuration and if EnableBrowserShortCircuiting is true, I add the ShortCircuitMiddleware to my application.
 
-<div id="attachment_1649" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Use-the-configuration-to-decide-if-the-middleware-should-be-enabled-or-not.jpg"><img aria-describedby="caption-attachment-1649" loading="lazy" class="wp-image-1649" src="/assets/img/posts/2019/04/Use-the-configuration-to-decide-if-the-middleware-should-be-enabled-or-not.jpg" alt="Use the configuration to decide if the middleware should be enabled or not" width="700" height="92" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Use-the-configuration-to-decide-if-the-middleware-should-be-enabled-or-not.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Use-the-configuration-to-decide-if-the-middleware-should-be-enabled-or-not.jpg" alt="Use the configuration to decide if the middleware should be enabled or not" /></a>
   
-  <p id="caption-attachment-1649" class="wp-caption-text">
+  <p>
     Use the configuration to decide if the middleware should be enabled or not
   </p>
 </div>
@@ -207,10 +207,10 @@ It is important not to assume that a configuration value will be specified. It i
 
 Many of the built-in middlewares already generate logging output. To set up the logging, you have to set it up in the Program class:
 
-<div id="attachment_1651" style="width: 586px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Configure-logging-in-the-Program-class.jpg"><img aria-describedby="caption-attachment-1651" loading="lazy" class="size-full wp-image-1651" src="/assets/img/posts/2019/04/Configure-logging-in-the-Program-class.jpg" alt="Configure logging in the Program class" width="576" height="102" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Configure-logging-in-the-Program-class.jpg"><img aria-describedby="caption-attachment-1651" loading="lazy" class="size-full wp-image-1651" src="/assets/img/posts/2019/04/Configure-logging-in-the-Program-class.jpg" alt="Configure logging in the Program class" /></a>
   
-  <p id="caption-attachment-1651" class="wp-caption-text">
+  <p>
     Configure logging in the Program class
   </p>
 </div>
@@ -275,10 +275,10 @@ The ConfigureLogging method sets up the logging system using a lambda function t
 
 Configuration data for the logging is usually defined in the appsettings.json file.
 
-<div id="attachment_1657" style="width: 228px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Configuring-logging-in-the-appsettings.json-file.jpg"><img aria-describedby="caption-attachment-1657" loading="lazy" class="size-full wp-image-1657" src="/assets/img/posts/2019/04/Configuring-logging-in-the-appsettings.json-file.jpg" alt="Configuring logging in the appsettings.json file" width="218" height="115" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Configuring-logging-in-the-appsettings.json-file.jpg"><img aria-describedby="caption-attachment-1657" loading="lazy" class="size-full wp-image-1657" src="/assets/img/posts/2019/04/Configuring-logging-in-the-appsettings.json-file.jpg" alt="Configuring logging in the appsettings.json file" /></a>
   
-  <p id="caption-attachment-1657" class="wp-caption-text">
+  <p>
     Configuring logging in the appsettings.json file
   </p>
 </div>
@@ -373,10 +373,10 @@ ASP.NET has seven debugging levels:
 
 The logging messages in the previous section were generated by the ASP.NET Core and MVC components that handled the HTTP request and generated the response. This kind of message can provide useful information, but you can also generate custom log messages that are specific to your application.
 
-<div id="attachment_1658" style="width: 506px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Create-your-own-log-message.jpg"><img aria-describedby="caption-attachment-1658" loading="lazy" class="size-full wp-image-1658" src="/assets/img/posts/2019/04/Create-your-own-log-message.jpg" alt="Create your own log message" width="496" height="243" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Create-your-own-log-message.jpg"><img aria-describedby="caption-attachment-1658" loading="lazy" class="size-full wp-image-1658" src="/assets/img/posts/2019/04/Create-your-own-log-message.jpg" alt="Create your own log message" /></a>
   
-  <p id="caption-attachment-1658" class="wp-caption-text">
+  <p>
     Create your own log message
   </p>
 </div>

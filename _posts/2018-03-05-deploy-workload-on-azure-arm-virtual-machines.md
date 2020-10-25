@@ -64,10 +64,10 @@ Following, I will explain how to create a new Windows Server VM from a pre-built
       </ul>
     </li>
 
-<div id="attachment_822" style="width: 355px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg"><img aria-describedby="caption-attachment-822" loading="lazy" class="size-full wp-image-822" src="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg" alt="Entering basic data for the new VM" width="345" height="781" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg"><img aria-describedby="caption-attachment-822" loading="lazy" class="size-full wp-image-822" src="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg" alt="Entering basic data for the new VM" /></a>
   
-  <p id="caption-attachment-822" class="wp-caption-text">
+  <p>
     Entering basic data for the new VM
   </p>
 </div>
@@ -78,10 +78,10 @@ Following, I will explain how to create a new Windows Server VM from a pre-built
   </li>
 </ol>
 
-<div id="attachment_823" style="width: 450px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Select-a-VM-size-according-to-your-needs.jpg"><img aria-describedby="caption-attachment-823" loading="lazy" class="wp-image-823" src="/assets/img/posts/2018/02/Select-a-VM-size-according-to-your-needs.jpg" alt="Select a VM size according to your needs" width="440" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Select-a-VM-size-according-to-your-needs.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Select-a-VM-size-according-to-your-needs.jpg" alt="Select a VM size according to your needs" /></a>
   
-  <p id="caption-attachment-823" class="wp-caption-text">
+  <p>
     Select a VM size according to your needs
   </p>
 </div>
@@ -95,10 +95,10 @@ Following, I will explain how to create a new Windows Server VM from a pre-built
   </li>
 </ol>
 
-<div id="attachment_824" style="width: 665px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Summary-of-the-new-VM.jpg"><img aria-describedby="caption-attachment-824" loading="lazy" class="wp-image-824" src="/assets/img/posts/2018/02/Summary-of-the-new-VM.jpg" alt="Summary of the new VM" width="655" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Summary-of-the-new-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Summary-of-the-new-VM.jpg" alt="Summary of the new VM" /></a>
   
-  <p id="caption-attachment-824" class="wp-caption-text">
+  <p>
     Summary of the new VM
   </p>
 </div>
@@ -117,10 +117,10 @@ To provision a VM using a custom image, I first have to create a custom image. T
 
 After the VM is deployed, I connect myself to the VM using a remote connection. You can download the remote connection when you click on your VM and then click Connect on the Overview blade.
 
-<div id="attachment_827" style="width: 587px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Download-the-remote-connection-to-the-VM.jpg"><img aria-describedby="caption-attachment-827" loading="lazy" class="wp-image-827 size-full" src="/assets/img/posts/2018/02/Download-the-remote-connection-to-the-VM.jpg" alt="Download the remote connection to the Azure ARM virtual machines" width="577" height="222" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Download-the-remote-connection-to-the-VM.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/02/Download-the-remote-connection-to-the-VM.jpg" alt="Download the remote connection to the Azure ARM virtual machines" /></a>
   
-  <p id="caption-attachment-827" class="wp-caption-text">
+  <p>
     Download the remote connection to the VM
   </p>
 </div>
@@ -133,20 +133,20 @@ The next step is to open the command line as administrator and change the path t
 
 After the image is generalized go back to the Azure Portal. Click on your VM and select Capture from the top menu on the Overview blade.
 
-<div id="attachment_847" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Capture-the-new-image.jpg"><img aria-describedby="caption-attachment-847" loading="lazy" class="wp-image-847" src="/assets/img/posts/2018/03/Capture-the-new-image.jpg" alt="Capture the new image" width="700" height="124" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Capture-the-new-image.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Capture-the-new-image.jpg" alt="Capture the new image" /></a>
   
-  <p id="caption-attachment-847" class="wp-caption-text">
+  <p>
     Capture the new image
   </p>
 </div>
 
 On the Create image blade provide a name for your new image and a Resource group. Then click Create to create your new image.
 
-<div id="attachment_848" style="width: 598px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-the-image-from-your-VM.jpg"><img aria-describedby="caption-attachment-848" loading="lazy" class="size-full wp-image-848" src="/assets/img/posts/2018/03/Create-the-image-from-your-VM.jpg" alt="Create the image from your VM" width="588" height="430" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Create-the-image-from-your-VM.jpg"><img aria-describedby="caption-attachment-848" loading="lazy" class="size-full wp-image-848" src="/assets/img/posts/2018/03/Create-the-image-from-your-VM.jpg" alt="Create the image from your VM" /></a>
   
-  <p id="caption-attachment-848" class="wp-caption-text">
+  <p>
     Create the image from your VM
   </p>
 </div>
@@ -155,10 +155,10 @@ On the Create image blade provide a name for your new image and a Resource group
 
 The last step is to create your new VM from the previously created image. To do that click on All resources and select the image you just created. The type is Image and the symbol looks similar to the symbol of a virtual machine. After you selected your image, click on + Create VM on the top of the Overview blade. This opens the Create virtual machine blade where you can enter the configuration of your VM.
 
-<div id="attachment_849" style="width: 455px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-the-VM-from-your-image.jpg"><img aria-describedby="caption-attachment-849" loading="lazy" class="size-full wp-image-849" src="/assets/img/posts/2018/03/Create-the-VM-from-your-image.jpg" alt="Create the VM from your image" width="445" height="156" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Create-the-VM-from-your-image.jpg"><img aria-describedby="caption-attachment-849" loading="lazy" class="size-full wp-image-849" src="/assets/img/posts/2018/03/Create-the-VM-from-your-image.jpg" alt="Create the VM from your image" /></a>
   
-  <p id="caption-attachment-849" class="wp-caption-text">
+  <p>
     Create the VM from your image
   </p>
 </div>

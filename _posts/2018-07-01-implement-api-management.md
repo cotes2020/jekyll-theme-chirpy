@@ -44,10 +44,10 @@ To create an API Management service, follow these steps:
   2. Provide a name, subscription, resource group, location, organization name, and administrator email.
   3. Click Create.
 
-<div id="attachment_1361" style="width: 587px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg"><img aria-describedby="caption-attachment-1361" loading="lazy" class="size-full wp-image-1361" src="/assets/img/posts/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg" alt="Create an API Management service in the Azure Portal" width="577" height="531" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg"><img aria-describedby="caption-attachment-1361" loading="lazy" class="size-full wp-image-1361" src="/assets/img/posts/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg" alt="Create an API Management service in the Azure Portal" /></a>
   
-  <p id="caption-attachment-1361" class="wp-caption-text">
+  <p>
     Create an API Management service in the Azure Portal
   </p>
 </div>
@@ -65,10 +65,10 @@ To add and publish a new product, follow these steps:
   5. Click on Select API and select Echo API.
   6. Click Create.
 
-<div id="attachment_1362" style="width: 442px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/Add-a-product-to-you-API-Management-instance.jpg"><img aria-describedby="caption-attachment-1362" loading="lazy" class="wp-image-1362" src="/assets/img/posts/2018/06/Add-a-product-to-you-API-Management-instance.jpg" alt="Add a product to you API Management instance" width="432" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/Add-a-product-to-you-API-Management-instance.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Add-a-product-to-you-API-Management-instance.jpg" alt="Add a product to you API Management instance" /></a>
   
-  <p id="caption-attachment-1362" class="wp-caption-text">
+  <p>
     Add a product to you API Management instance
   </p>
 </div>
@@ -84,10 +84,10 @@ To create a new API, follow these steps:
   5. Add the previously added product in the Products drop-down.
   6. Click Create.
 
-<div id="attachment_1363" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/Create-a-new-API.jpg"><img aria-describedby="caption-attachment-1363" loading="lazy" class="wp-image-1363" src="/assets/img/posts/2018/06/Create-a-new-API.jpg" alt="Create a new API" width="700" height="451" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/Create-a-new-API.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Create-a-new-API.jpg" alt="Create a new API" /></a>
   
-  <p id="caption-attachment-1363" class="wp-caption-text">
+  <p>
     Create a new API
   </p>
 </div>
@@ -103,10 +103,10 @@ To add an operation, follow these steps:
   3. Optionally, you can create parameters.
   4. Click Create.
 
-<div id="attachment_1364" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/Add-an-operation-to-your-API.jpg"><img aria-describedby="caption-attachment-1364" loading="lazy" class="wp-image-1364" src="/assets/img/posts/2018/06/Add-an-operation-to-your-API.jpg" alt="Add an operation to your API" width="700" height="539" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/Add-an-operation-to-your-API.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Add-an-operation-to-your-API.jpg" alt="Add an operation to your API" /></a>
   
-  <p id="caption-attachment-1364" class="wp-caption-text">
+  <p>
     Add an operation to your API
   </p>
 </div>
@@ -123,10 +123,10 @@ To configure a policy, follow these steps:
   4. Add your desired policy, for example, to enable CORS from all domains.
   5. After you are done, click Save
 
-<div id="attachment_1365" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/Add-a-policy-for-CORS.jpg"><img aria-describedby="caption-attachment-1365" loading="lazy" class="wp-image-1365" src="/assets/img/posts/2018/06/Add-a-policy-for-CORS.jpg" alt="Add a policy for CORS" width="700" height="457" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/Add-a-policy-for-CORS.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Add-a-policy-for-CORS.jpg" alt="Add a policy for CORS" /></a>
   
-  <p id="caption-attachment-1365" class="wp-caption-text">
+  <p>
     Add a policy for CORS
   </p>
 </div>
@@ -147,10 +147,10 @@ To create a rate limited API, follow these steps:
   4. Add your previously created API.
   5. Click Create.
 
-<div id="attachment_1366" style="width: 524px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/Create-a-new-Product-to-limit-the-requests.jpg"><img aria-describedby="caption-attachment-1366" loading="lazy" class="wp-image-1366" src="/assets/img/posts/2018/06/Create-a-new-Product-to-limit-the-requests.jpg" alt="Create a new Product to limit the requests" width="514" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/Create-a-new-Product-to-limit-the-requests.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Create-a-new-Product-to-limit-the-requests.jpg" alt="Create a new Product to limit the requests" /></a>
   
-  <p id="caption-attachment-1366" class="wp-caption-text">
+  <p>
     Create a new Product to limit the requests
   </p>
 </div>

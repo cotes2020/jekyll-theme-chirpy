@@ -37,50 +37,50 @@ The last configuration is the centralized configuration. Here you have your conf
 
 In this simple example, I will write the configuration in the appsettings.json file of my .Net core web application and configure the Startup class to read the value. Afterward, I will change the title of my page, depending on the value of the toggle. I am calling my toggle in the appsettings.json FeatureToggle and set the IsEnabled property to true.
 
-<div id="attachment_1603" style="width: 202px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/02/Enable-the-toggle-in-the-appsettings.jpg"><img aria-describedby="caption-attachment-1603" loading="lazy" class="size-full wp-image-1603" src="/assets/img/posts/2019/02/Enable-the-toggle-in-the-appsettings.jpg" alt="Enable the toggle in the appsettings" width="192" height="187" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/02/Enable-the-toggle-in-the-appsettings.jpg"><img aria-describedby="caption-attachment-1603" loading="lazy" class="size-full wp-image-1603" src="/assets/img/posts/2019/02/Enable-the-toggle-in-the-appsettings.jpg" alt="Enable the toggle in the appsettings" /></a>
   
-  <p id="caption-attachment-1603" class="wp-caption-text">
+  <p>
     Enable the toggle in the appsettings.json file
   </p>
 </div>
 
 Next, I enable Options in the Startup class to read the settings individually and then read my value into the MyFeatureToggleClass.
 
-<div id="attachment_1604" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/02/Set-up-reading-the-appsettings-file.jpg"><img aria-describedby="caption-attachment-1604" loading="lazy" class="wp-image-1604" src="/assets/img/posts/2019/02/Set-up-reading-the-appsettings-file.jpg" alt="Set up reading the appsettings file" width="700" height="259" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/02/Set-up-reading-the-appsettings-file.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Set-up-reading-the-appsettings-file.jpg" alt="Set up reading the appsettings file" /></a>
   
-  <p id="caption-attachment-1604" class="wp-caption-text">
+  <p>
     Set up reading the appsettings file
   </p>
 </div>
 
 I put the MyFeatureToggle class in a new folder called Toggles and its only property is a bool indicating whether it is enabled.
 
-<div id="attachment_1605" style="width: 306px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/02/The-feature-toggle-class.jpg"><img aria-describedby="caption-attachment-1605" loading="lazy" class="size-full wp-image-1605" src="/assets/img/posts/2019/02/The-feature-toggle-class.jpg" alt="The feature toggle class" width="296" height="108" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/02/The-feature-toggle-class.jpg"><img aria-describedby="caption-attachment-1605" loading="lazy" class="size-full wp-image-1605" src="/assets/img/posts/2019/02/The-feature-toggle-class.jpg" alt="The feature toggle class" /></a>
   
-  <p id="caption-attachment-1605" class="wp-caption-text">
+  <p>
     The feature toggle class
   </p>
 </div>
 
 As a simple test if my set up is working, I read the value and if my toggle is enabled, I set the view title to &#8220;Toggle is enabled&#8221;. Otherwise, I display &#8220;Toggle is disabled&#8221;.
 
-<div id="attachment_1606" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/02/Setting-the-title-depending-on-the-value-of-the-toggle.jpg"><img aria-describedby="caption-attachment-1606" loading="lazy" class="wp-image-1606" src="/assets/img/posts/2019/02/Setting-the-title-depending-on-the-value-of-the-toggle.jpg" alt="Setting the title depending on the value of the toggle" width="700" height="117" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/02/Setting-the-title-depending-on-the-value-of-the-toggle.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Setting-the-title-depending-on-the-value-of-the-toggle.jpg" alt="Setting the title depending on the value of the toggle" /></a>
   
-  <p id="caption-attachment-1606" class="wp-caption-text">
+  <p>
     Setting the title depending on the value of the toggle
   </p>
 </div>
 
 Start the application and click the Privacy menu item. Now you will see that the toggle is enabled.
 
-<div id="attachment_1607" style="width: 667px" class="wp-caption aligncenter">
+<div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2019/02/Test-the-enabled-feature-toggle.jpg"><img aria-describedby="caption-attachment-1607" loading="lazy" class="size-full wp-image-1607" src="/assets/img/posts/2019/02/Test-the-enabled-feature-toggle.jpg" alt="Test the enabled feature toggle" width="657" height="220"  /></a>
   
-  <p id="caption-attachment-1607" class="wp-caption-text">
+  <p>
     Test the enabled feature toggle
   </p>
 </div>

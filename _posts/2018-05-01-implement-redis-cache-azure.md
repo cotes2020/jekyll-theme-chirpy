@@ -19,10 +19,10 @@ To create a Redis Cache, follow these steps:
   2. On the New Redis Chache blade, provide a DNS name, subscription, resource group, location, and pricing tier.
   3. Click Create.
 
-<div id="attachment_1239" style="width: 325px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-new-Redis-cache.png"><img aria-describedby="caption-attachment-1239" loading="lazy" class="size-full wp-image-1239" src="/assets/img/posts/2018/05/Create-a-new-Redis-cache.png" alt="Create a new Redis cache" width="315" height="403" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Create-a-new-Redis-cache.png"><img aria-describedby="caption-attachment-1239" loading="lazy" class="size-full wp-image-1239" src="/assets/img/posts/2018/05/Create-a-new-Redis-cache.png" alt="Create a new Redis cache" /></a>
   
-  <p id="caption-attachment-1239" class="wp-caption-text">
+  <p>
     Create a new Redis Cache
   </p>
 </div>
@@ -83,10 +83,10 @@ To configure the frequency of the snapshots, follow these steps:
   2. On the Redis data persistence blade, select the Backup Frequency and select a storage account.
   3. Click OK.
 
-<div id="attachment_1240" style="width: 322px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Configure-data-persistence.jpg"><img aria-describedby="caption-attachment-1240" loading="lazy" class="size-full wp-image-1240" src="/assets/img/posts/2018/05/Configure-data-persistence.jpg" alt="Configure data persistence" width="312" height="337" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Configure-data-persistence.jpg"><img aria-describedby="caption-attachment-1240" loading="lazy" class="size-full wp-image-1240" src="/assets/img/posts/2018/05/Configure-data-persistence.jpg" alt="Configure data persistence" /></a>
   
-  <p id="caption-attachment-1240" class="wp-caption-text">
+  <p>
     Configure data persistence
   </p>
 </div>

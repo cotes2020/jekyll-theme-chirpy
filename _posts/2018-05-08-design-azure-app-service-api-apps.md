@@ -19,20 +19,20 @@ To create a new API app, follow these steps:
   2. On the API App blade, provide a name, subscription, resource group and App Service plan.
   3. Click Create.
 
-<div id="attachment_1282" style="width: 315px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-new-API-App.jpg"><img aria-describedby="caption-attachment-1282" loading="lazy" class="size-full wp-image-1282" src="/assets/img/posts/2018/05/Create-a-new-API-App.jpg" alt="Create a new API App" width="305" height="410" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Create-a-new-API-App.jpg"><img aria-describedby="caption-attachment-1282" loading="lazy" class="size-full wp-image-1282" src="/assets/img/posts/2018/05/Create-a-new-API-App.jpg" alt="Create a new API App" /></a>
   
-  <p id="caption-attachment-1282" class="wp-caption-text">
+  <p>
     Create a new API App
   </p>
 </div>
 
 After the API App is deployed, you can download a sample project in ASP.Net, NodeJs or Java by clicking on Quickstart under the Deployment menu.
 
-<div id="attachment_1283" style="width: 489px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Download-a-sample-project.jpg"><img aria-describedby="caption-attachment-1283" loading="lazy" class="size-full wp-image-1283" src="/assets/img/posts/2018/05/Download-a-sample-project.jpg" alt="Download a sample project" width="479" height="295" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Download-a-sample-project.jpg"><img aria-describedby="caption-attachment-1283" loading="lazy" class="size-full wp-image-1283" src="/assets/img/posts/2018/05/Download-a-sample-project.jpg" alt="Download a sample project" /></a>
   
-  <p id="caption-attachment-1283" class="wp-caption-text">
+  <p>
     Download a sample project
   </p>
 </div>
@@ -41,10 +41,10 @@ After the API App is deployed, you can download a sample project in ASP.Net, Nod
 
 To create a new API App open Visual Studio 2017 and create a new ASP.NET project with the Azure API App template.
 
-<div id="attachment_1287" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg"><img aria-describedby="caption-attachment-1287" loading="lazy" class="wp-image-1287" src="/assets/img/posts/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg" alt="Create a new ASP.Net application with the Azure API App template" width="700" height="457" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg" alt="Create a new ASP.Net application with the Azure API App template" /></a>
   
-  <p id="caption-attachment-1287" class="wp-caption-text">
+  <p>
     Create a new ASP.Net application with the Azure API App template
   </p>
 </div>
@@ -70,10 +70,10 @@ Follow these steps to deploy your API App from Visual Studio:
   </ol>
 </li>
 
-<div id="attachment_1288" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-App-Service.jpg"><img aria-describedby="caption-attachment-1288" loading="lazy" class="wp-image-1288" src="/assets/img/posts/2018/05/Create-App-Service.jpg" alt="Create App Service" width="700" height="525" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Create-App-Service.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Create-App-Service.jpg" alt="Create App Service" /></a>
   
-  <p id="caption-attachment-1288" class="wp-caption-text">
+  <p>
     Create App Service
   </p>
 </div>
@@ -100,10 +100,10 @@ To work with swagger, follow these steps:
   1. Go to <a href="https://swagger.io/swagger-ui/" target="_blank" rel="noopener">https://swagger.io/swagger-ui/</a> and either download swagger or use the live demo. I used the live demo and entered the path to my API definition, https://wolfgangapi.azurewebsites.net/swagger/docs/v1. You can find the definition in the Azure portal by clicking on API definition under the API menu.
   2. Click Explore and the available API endpoints will be displayed.
 
-<div id="attachment_1289" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/The-available-endpoints-of-your-API.jpg"><img aria-describedby="caption-attachment-1289" loading="lazy" class="wp-image-1289" src="/assets/img/posts/2018/05/The-available-endpoints-of-your-API.jpg" alt="The available endpoints of your API" width="700" height="364" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/The-available-endpoints-of-your-API.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/The-available-endpoints-of-your-API.jpg" alt="The available endpoints of your API" /></a>
   
-  <p id="caption-attachment-1289" class="wp-caption-text">
+  <p>
     The available endpoints of your API
   </p>
 </div>
@@ -123,10 +123,10 @@ To work with swagger, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1291" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Test-your-API-with-swagger.jpg"><img aria-describedby="caption-attachment-1291" loading="lazy" class="wp-image-1291" src="/assets/img/posts/2018/05/Test-your-API-with-swagger.jpg" alt="Test your API with swagger" width="700" height="271" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Test-your-API-with-swagger.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Test-your-API-with-swagger.jpg" alt="Test your API with swagger" /></a>
   
-  <p id="caption-attachment-1291" class="wp-caption-text">
+  <p>
     Test your API with swagger
   </p>
 </div>
@@ -139,10 +139,10 @@ To enable CORS (Cross-Origin Resource Sharing), follow these steps:
   2.  On the CORS blade, enter the allowed origins or enter an asterisk to allow all origins.
   3. Click Save.
 
-<div id="attachment_1284" style="width: 512px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Enable-CORS.jpg"><img aria-describedby="caption-attachment-1284" loading="lazy" class="wp-image-1284 size-full" src="/assets/img/posts/2018/05/Enable-CORS.jpg" alt="Enable CORS for your API Apps" width="502" height="537" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Enable-CORS.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/05/Enable-CORS.jpg" alt="Enable CORS for your API Apps" /></a>
   
-  <p id="caption-attachment-1284" class="wp-caption-text">
+  <p>
     Enable CORS
   </p>
 </div>
@@ -156,10 +156,10 @@ To generate client code for your API App that has Swagger API metadata, follow t
   1. In the Azure portal, go to your API App and select API definition under the API menu.
   2. On the API definition, copy the API definition.
 
-<div id="attachment_1293" style="width: 625px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Copy-the-API-definition.jpg"><img aria-describedby="caption-attachment-1293" loading="lazy" class="size-full wp-image-1293" src="/assets/img/posts/2018/05/Copy-the-API-definition.jpg" alt="Copy the API definition" width="615" height="514" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Copy-the-API-definition.jpg"><img aria-describedby="caption-attachment-1293" loading="lazy" class="size-full wp-image-1293" src="/assets/img/posts/2018/05/Copy-the-API-definition.jpg" alt="Copy the API definition" /></a>
   
-  <p id="caption-attachment-1293" class="wp-caption-text">
+  <p>
     Copy the API definition
   </p>
 </div>
@@ -176,10 +176,10 @@ To generate client code for your API App that has Swagger API metadata, follow t
   </li>
 </ol>
 
-<div id="attachment_1294" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Paste-the-API-definition-into-the-swagger-editor.jpg"><img aria-describedby="caption-attachment-1294" loading="lazy" class="wp-image-1294" src="/assets/img/posts/2018/05/Paste-the-API-definition-into-the-swagger-editor.jpg" alt="Paste the API definition into the swagger editor" width="700" height="199" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Paste-the-API-definition-into-the-swagger-editor.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Paste-the-API-definition-into-the-swagger-editor.jpg" alt="Paste the API definition into the swagger editor" /></a>
   
-  <p id="caption-attachment-1294" class="wp-caption-text">
+  <p>
     Paste the API definition into the swagger editor
   </p>
 </div>
@@ -193,10 +193,10 @@ To generate client code for your API App that has Swagger API metadata, follow t
   </li>
 </ol>
 
-<div id="attachment_1295" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/05/Download-the-client-application-for-your-desired-language.jpg"><img aria-describedby="caption-attachment-1295" loading="lazy" class="wp-image-1295" src="/assets/img/posts/2018/05/Download-the-client-application-for-your-desired-language.jpg" alt="Download the client application for your desired language" width="700" height="589" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/05/Download-the-client-application-for-your-desired-language.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Download-the-client-application-for-your-desired-language.jpg" alt="Download the client application for your desired language" /></a>
   
-  <p id="caption-attachment-1295" class="wp-caption-text">
+  <p>
     Download the client application for your desired language
   </p>
 </div>

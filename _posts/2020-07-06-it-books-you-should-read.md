@@ -804,10 +804,10 @@ Demand more. Change lanes and find your explosive wealth accelerator. Hit the Fa
   * **Connect empathically with self and others to have more satisfying** **relationships**
   * **Sharing of resources so everyone is able to benefit**
 
-<div id="attachment_2251" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/IT-Books-scaled.jpg"><img aria-describedby="caption-attachment-2251" loading="lazy" class="wp-image-2251" src="/assets/img/posts/2020/07/IT-Books-scaled.jpg" alt="IT Books" width="700" height="276" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/IT-Books-scaled.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/IT-Books-scaled.jpg" alt="IT Books" /></a>
   
-  <p id="caption-attachment-2251" class="wp-caption-text">
+  <p>
     IT Books
   </p>
 </div>

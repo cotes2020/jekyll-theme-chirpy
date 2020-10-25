@@ -33,10 +33,10 @@ Scaling up and down means changing the size of your VM. You can change the follo
 
 <span style="color: #000000;">You can also scale your VM by using PowerShell. First check which VM sizes are available in a specific region by using Get-AzureRmVmSize -Location &#8220;Westeurope&#8221; | Sort-Object Name |<br /> ft Name, NumberOfCores, MemoryInMB, MaxDataDiskCount -AutoSize.</span>
 
-<div id="attachment_896" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Get-all-available-VM-sizes-of-a-region-in-PowerShell.jpg"><img aria-describedby="caption-attachment-896" loading="lazy" class="wp-image-896" src="/assets/img/posts/2018/03/Get-all-available-VM-sizes-of-a-region-in-PowerShell.jpg" alt="Get all available VM sizes of a region in PowerShell" width="700" height="478" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Get-all-available-VM-sizes-of-a-region-in-PowerShell.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Get-all-available-VM-sizes-of-a-region-in-PowerShell.jpg" alt="Get all available VM sizes of a region in PowerShell" /></a>
   
-  <p id="caption-attachment-896" class="wp-caption-text">
+  <p>
     Get all available VM sizes of a region in PowerShell
   </p>
 </div>
@@ -45,10 +45,10 @@ If you want to check another location than westeurope, change westeurope to your
 
 Next put your Resource group, VM name and new VM size into variables. Then use Update-AzureRmVM -ResourceGroupName $ResourceGroupName -VM $VMToScale to update your VM to the desired size.
 
-<div id="attachment_897" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Scale-your-VM-using-PowerShell.jpg"><img aria-describedby="caption-attachment-897" loading="lazy" class="wp-image-897" src="/assets/img/posts/2018/03/Scale-your-VM-using-PowerShell.jpg" alt="Scale your VM using PowerShell" width="700" height="132" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Scale-your-VM-using-PowerShell.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Scale-your-VM-using-PowerShell.jpg" alt="Scale your VM using PowerShell" /></a>
   
-  <p id="caption-attachment-897" class="wp-caption-text">
+  <p>
     Scale your VM using PowerShell
   </p>
 </div>
@@ -102,10 +102,10 @@ Deploying a Scale Set is similar to deploying a standalone VM:
  12. Leave Autoscale disabled.
  13. Click Create.
 
-<div id="attachment_877" style="width: 669px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-VM-Scale-Set.jpg"><img aria-describedby="caption-attachment-877" loading="lazy" class="wp-image-877" src="/assets/img/posts/2018/03/Create-a-VM-Scale-Set.jpg" alt="Create a VM Scale Set" width="659" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Create-a-VM-Scale-Set.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-a-VM-Scale-Set.jpg" alt="Create a VM Scale Set" /></a>
   
-  <p id="caption-attachment-877" class="wp-caption-text">
+  <p>
     Create a VM Scale Set
   </p>
 </div>
@@ -144,10 +144,10 @@ When you configure Autoscale when provisioning a VM Scale Set, you can only sca
  12. In the Autoscale property group, select enable Autoscale. Then provide the desired VM instance count ranges, the scale out or scale in CPU thresholds and instance counts to scale out or scale in by.
  13. Click Create.
 
-<div id="attachment_878" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Enable-Autoscale-during-provisioning-of-a-VM-Scale-Set.jpg"><img aria-describedby="caption-attachment-878" loading="lazy" class="wp-image-878" src="/assets/img/posts/2018/03/Enable-Autoscale-during-provisioning-of-a-VM-Scale-Set.jpg" alt="Enable Autoscale during provisioning of a VM Scale Set" width="700" height="361" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Enable-Autoscale-during-provisioning-of-a-VM-Scale-Set.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Enable-Autoscale-during-provisioning-of-a-VM-Scale-Set.jpg" alt="Enable Autoscale during provisioning of a VM Scale Set" /></a>
   
-  <p id="caption-attachment-878" class="wp-caption-text">
+  <p>
     Enable Autoscale during provisioning of a VM Scale Set
   </p>
 </div>
@@ -163,10 +163,10 @@ After your Scale Set is deployed, you can add Autoscale and scale against a vari
   3. Add the Default Scale Condition or Add A Scale Condition. The default condition will run when no other scale condition match. For example, the Default Scale Condition checks the CPU Usage and if it&#8217;s above a certain threshold, it starts additional instances. The Scale Condition could be a scheduled scaling where you start new instances in the morning on workdays and shut them down on the evening.
   4. Specify if you want to scale based on a metric or scale to a specific instance count.
   5. Click on +Add a rule to add scaling rule. To scale out select within the rule to increase your instance count and to scale in selected decrease your instance count. Adding a rule should be self-explaining and can be done on a variety of metrics. 
-    <div id="attachment_875" style="width: 710px" class="wp-caption aligncenter">
-      <a href="/assets/img/posts/2018/03/Configure-Autoscale-for-your-VM-Scale-Set.jpg"><img aria-describedby="caption-attachment-875" loading="lazy" class="wp-image-875" src="/assets/img/posts/2018/03/Configure-Autoscale-for-your-VM-Scale-Set.jpg" alt="Configure Autoscale for your VM Scale Set" width="700" height="372" /></a>
+    <div class="col-12 col-sm-10 aligncenter">
+      <a href="/assets/img/posts/2018/03/Configure-Autoscale-for-your-VM-Scale-Set.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Configure-Autoscale-for-your-VM-Scale-Set.jpg" alt="Configure Autoscale for your VM Scale Set" /></a>
       
-      <p id="caption-attachment-875" class="wp-caption-text">
+      <p>
         Configure Autoscale based on CPU usage for your VM Scale Set
       </p>
     </div></li> 
@@ -175,10 +175,10 @@ After your Scale Set is deployed, you can add Autoscale and scale against a vari
     
     Select Scale to a specific instance count and set the instance count to 5. Then select Repeat specific days and select Monday until Friday. If necessary change the Timezone and the Start time or End time to meet your requirements.
     
-    <div id="attachment_876" style="width: 710px" class="wp-caption aligncenter">
-      <a href="/assets/img/posts/2018/03/Configure-scheduled-scaling-for-your-VM-Scale-Set.jpg"><img aria-describedby="caption-attachment-876" loading="lazy" class="wp-image-876" src="/assets/img/posts/2018/03/Configure-scheduled-scaling-for-your-VM-Scale-Set.jpg" alt="Configure scheduled scaling for your VM Scale Set" width="700" height="224" /></a>
+    <div class="col-12 col-sm-10 aligncenter">
+      <a href="/assets/img/posts/2018/03/Configure-scheduled-scaling-for-your-VM-Scale-Set.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Configure-scheduled-scaling-for-your-VM-Scale-Set.jpg" alt="Configure scheduled scaling for your VM Scale Set" /></a>
       
-      <p id="caption-attachment-876" class="wp-caption-text">
+      <p>
         Configure scheduled scaling for your VM Scale Set
       </p>
     </div>

@@ -55,10 +55,10 @@ To enable monitoring and diagnostics when deploying a new VM follow these steps:
       * Location
       * License (if available)
 
-<div id="attachment_822" style="width: 319px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg"><img aria-describedby="caption-attachment-822" loading="lazy" class="wp-image-822" src="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg" alt="Entering basic data for the new VM" width="309" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg" alt="Entering basic data for the new VM" /></a>
   
-  <p id="caption-attachment-822" class="wp-caption-text">
+  <p>
     Entering basic data for the new VM
   </p>
 </div>
@@ -69,10 +69,10 @@ To enable monitoring and diagnostics when deploying a new VM follow these steps:
   </li>
 </ol>
 
-<div id="attachment_823" style="width: 450px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Select-a-VM-size-according-to-your-needs.jpg"><img aria-describedby="caption-attachment-823" loading="lazy" class="wp-image-823" src="/assets/img/posts/2018/02/Select-a-VM-size-according-to-your-needs.jpg" alt="Select a VM size according to your needs" width="440" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Select-a-VM-size-according-to-your-needs.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Select-a-VM-size-according-to-your-needs.jpg" alt="Select a VM size according to your needs" /></a>
   
-  <p id="caption-attachment-823" class="wp-caption-text">
+  <p>
     Select a VM size according to your needs
   </p>
 </div>
@@ -83,10 +83,10 @@ To enable monitoring and diagnostics when deploying a new VM follow these steps:
   </li>
 </ol>
 
-<div id="attachment_922" style="width: 295px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Enable-diagnostics-when-provisioning-a-VM.jpg"><img aria-describedby="caption-attachment-922" loading="lazy" class="size-full wp-image-922" src="/assets/img/posts/2018/03/Enable-diagnostics-when-provisioning-a-VM.jpg" alt="Enable diagnostics when provisioning a VM" width="285" height="213" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Enable-diagnostics-when-provisioning-a-VM.jpg"><img aria-describedby="caption-attachment-922" loading="lazy" class="size-full wp-image-922" src="/assets/img/posts/2018/03/Enable-diagnostics-when-provisioning-a-VM.jpg" alt="Enable diagnostics when provisioning a VM" /></a>
   
-  <p id="caption-attachment-922" class="wp-caption-text">
+  <p>
     Enable diagnostics when provisioning a VM
   </p>
 </div>
@@ -97,10 +97,10 @@ To enable monitoring and diagnostics when deploying a new VM follow these steps:
   </li>
 </ol>
 
-<div id="attachment_824" style="width: 665px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Summary-of-the-new-VM.jpg"><img aria-describedby="caption-attachment-824" loading="lazy" class="wp-image-824" src="/assets/img/posts/2018/02/Summary-of-the-new-VM.jpg" alt="Summary of the new VM" width="655" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Summary-of-the-new-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Summary-of-the-new-VM.jpg" alt="Summary of the new VM" /></a>
   
-  <p id="caption-attachment-824" class="wp-caption-text">
+  <p>
     Summary of the new VM
   </p>
 </div>
@@ -133,10 +133,10 @@ To enable and configure alerts follow these steps:
   3. Click + Add metric alert or + Add activity log alert to add a new rule.
   4. On the Add rule provide a name, select the metric source, specify the condition and then select the action to take when this condition is met.
 
-<div id="attachment_953" style="width: 407px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-new-alert-for-your-VM.jpg"><img aria-describedby="caption-attachment-953" loading="lazy" class="wp-image-953" src="/assets/img/posts/2018/03/Create-a-new-alert-for-your-VM.jpg" alt="Create a new alert for your VM" width="397" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Create-a-new-alert-for-your-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-a-new-alert-for-your-VM.jpg" alt="Create a new alert for your VM" /></a>
   
-  <p id="caption-attachment-953" class="wp-caption-text">
+  <p>
     Create a new alert for your VM
   </p>
 </div>
@@ -157,10 +157,10 @@ To look at the metrics follow these steps:
   2. Select Metrics under the Monitoring menu.
   3. On the Metrics blade, select the metrics you want to view. The selected metrics will be displayed as a graph on the right side.
 
-<div id="attachment_954" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/View-the-desired-metrics.jpg"><img aria-describedby="caption-attachment-954" loading="lazy" class="wp-image-954" src="/assets/img/posts/2018/03/View-the-desired-metrics.jpg" alt="View the desired metrics" width="700" height="426" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/View-the-desired-metrics.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/View-the-desired-metrics.jpg" alt="View the desired metrics" /></a>
   
-  <p id="caption-attachment-954" class="wp-caption-text">
+  <p>
     View the desired metrics
   </p>
 </div>
@@ -180,10 +180,10 @@ You can view event logs, diagnostic infrastructure logs and application logs by 
   3. Expand the Azure node, then the Storage node.
   4. Expand the storage account which contains the logs you want to view. Then expand Tables.
 
-<div id="attachment_924" style="width: 391px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Select-a-log-using-Visual-Studio.jpg"><img aria-describedby="caption-attachment-924" loading="lazy" class="size-full wp-image-924" src="/assets/img/posts/2018/03/Select-a-log-using-Visual-Studio.jpg" alt="Select a log using Visual Studio" width="381" height="568" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Select-a-log-using-Visual-Studio.jpg"><img aria-describedby="caption-attachment-924" loading="lazy" class="size-full wp-image-924" src="/assets/img/posts/2018/03/Select-a-log-using-Visual-Studio.jpg" alt="Select a log using Visual Studio" /></a>
   
-  <p id="caption-attachment-924" class="wp-caption-text">
+  <p>
     Select a log using Visual Studio
   </p>
 </div>
@@ -194,10 +194,10 @@ You can view event logs, diagnostic infrastructure logs and application logs by 
   </li>
 </ol>
 
-<div id="attachment_923" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/The-queried-logs-in-Visual-Studio.jpg"><img aria-describedby="caption-attachment-923" loading="lazy" class="wp-image-923" src="/assets/img/posts/2018/03/The-queried-logs-in-Visual-Studio.jpg" alt="The queried logs in Visual Studio" width="700" height="407" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/The-queried-logs-in-Visual-Studio.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/The-queried-logs-in-Visual-Studio.jpg" alt="The queried logs in Visual Studio" /></a>
   
-  <p id="caption-attachment-923" class="wp-caption-text">
+  <p>
     The queried logs in Visual Studio
   </p>
 </div>
@@ -212,10 +212,10 @@ To view IIS logs using Visual Studio follow these steps:
   4. Expand the storage account which contains the logs you want to view. Then expand Blobs.
   5. If you don&#8217;t see the logs, go to your VM, select Diagnostic settings and on the Logs blade enable IIS logs.
 
-<div id="attachment_925" style="width: 319px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Open-the-IIS-log-using-Visual-Studio.jpg"><img aria-describedby="caption-attachment-925" loading="lazy" class="size-full wp-image-925" src="/assets/img/posts/2018/03/Open-the-IIS-log-using-Visual-Studio.jpg" alt="Open the IIS log using Visual Studio" width="309" height="451" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Open-the-IIS-log-using-Visual-Studio.jpg"><img aria-describedby="caption-attachment-925" loading="lazy" class="size-full wp-image-925" src="/assets/img/posts/2018/03/Open-the-IIS-log-using-Visual-Studio.jpg" alt="Open the IIS log using Visual Studio" /></a>
   
-  <p id="caption-attachment-925" class="wp-caption-text">
+  <p>
     Open the IIS log using Visual Studio
   </p>
 </div>
@@ -234,10 +234,10 @@ To view the boot diagnostics follow these steps:
   2. Select Boot diagnostics from the Support + Troubleshooting menu.
   3. If you have a Windows VM, you see the login screen. Select Serial log to see and download the log file. If you have a Linux VM, you will see the log by default.
 
-<div id="attachment_926" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/View-Boot-diagnostics.jpg"><img aria-describedby="caption-attachment-926" loading="lazy" class="wp-image-926" src="/assets/img/posts/2018/03/View-Boot-diagnostics.jpg" alt="View Boot diagnostics" width="700" height="574" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/View-Boot-diagnostics.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/View-Boot-diagnostics.jpg" alt="View Boot diagnostics" /></a>
   
-  <p id="caption-attachment-926" class="wp-caption-text">
+  <p>
     View Boot diagnostics
   </p>
 </div>
@@ -250,10 +250,10 @@ To enable Application Insights at runtime, you first have to create a new Applic
   2. Search for Application Insights and click Create.
   3. Provide a new, Subscription, Resource Group and Location. Leave the Application Type as ASP.NET web application.
 
-<div id="attachment_929" style="width: 324px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-new-Application-Insights-instance.jpg"><img aria-describedby="caption-attachment-929" loading="lazy" class="wp-image-929 size-full" src="/assets/img/posts/2018/03/Create-a-new-Application-Insights-instance.jpg" alt="Create a new Application Insights instance to Monitor VMs" width="314" height="372" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Create-a-new-Application-Insights-instance.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/03/Create-a-new-Application-Insights-instance.jpg" alt="Create a new Application Insights instance to Monitor VMs" /></a>
   
-  <p id="caption-attachment-929" class="wp-caption-text">
+  <p>
     Create a new Application Insights instance
   </p>
 </div>
@@ -270,10 +270,10 @@ To enable Application Insights at runtime, you first have to create a new Applic
   </li>
 </ol>
 
-<div id="attachment_932" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Enable-Application-Insights-for-your-WebApp.jpg"><img aria-describedby="caption-attachment-932" loading="lazy" class="wp-image-932" src="/assets/img/posts/2018/03/Enable-Application-Insights-for-your-WebApp.jpg" alt="Enable Application Insights for your WebApp" width="700" height="530" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Enable-Application-Insights-for-your-WebApp.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Enable-Application-Insights-for-your-WebApp.jpg" alt="Enable Application Insights for your WebApp" /></a>
   
-  <p id="caption-attachment-932" class="wp-caption-text">
+  <p>
     Enable Application Insights for your WebApp
   </p>
 </div>
@@ -287,10 +287,10 @@ To enable Application Insights at runtime, you first have to create a new Applic
   </li>
 </ol>
 
-<div id="attachment_933" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Get-Live-Stream-information-from-Application-Insights.jpg"><img aria-describedby="caption-attachment-933" loading="lazy" class="wp-image-933" src="/assets/img/posts/2018/03/Get-Live-Stream-information-from-Application-Insights.jpg" alt="Get Live Stream information from Application Insights" width="700" height="596" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Get-Live-Stream-information-from-Application-Insights.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Get-Live-Stream-information-from-Application-Insights.jpg" alt="Get Live Stream information from Application Insights" /></a>
   
-  <p id="caption-attachment-933" class="wp-caption-text">
+  <p>
     Get Live Stream information from Application Insights
   </p>
 </div>
@@ -304,10 +304,10 @@ To monitor a VM workload with Azure Application Insights follow these steps:
   3. After the Status Monitor is installed, open IIS and select the web application that you want to monitor.
   4. Sign in with your Azure credentials and click on Configure settings to configure to which Application Insights you stream your data.
 
-<div id="attachment_956" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Enable-Application-Insights-Status-Monitor-on-your-VM.jpg"><img aria-describedby="caption-attachment-956" loading="lazy" class="wp-image-956" src="/assets/img/posts/2018/03/Enable-Application-Insights-Status-Monitor-on-your-VM.jpg" alt="Enable Application Insights Status Monitor on your VM" width="700" height="191" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Enable-Application-Insights-Status-Monitor-on-your-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Enable-Application-Insights-Status-Monitor-on-your-VM.jpg" alt="Enable Application Insights Status Monitor on your VM" /></a>
   
-  <p id="caption-attachment-956" class="wp-caption-text">
+  <p>
     Enable Application Insights Status Monitor on your VM
   </p>
 </div>
@@ -327,10 +327,10 @@ To monitor a VM workload with Azure Application Insights follow these steps:
   </li>
 </ol>
 
-<div id="attachment_957" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Live-Metrics-in-Application-Insights-from-the-Web-Application-running-on-IIS-on-the-VM.jpg"><img aria-describedby="caption-attachment-957" loading="lazy" class="wp-image-957" src="/assets/img/posts/2018/03/Live-Metrics-in-Application-Insights-from-the-Web-Application-running-on-IIS-on-the-VM.jpg" alt="Live Metrics in Application Insights from the Web Application running on IIS on the VM" width="700" height="287" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Live-Metrics-in-Application-Insights-from-the-Web-Application-running-on-IIS-on-the-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Live-Metrics-in-Application-Insights-from-the-Web-Application-running-on-IIS-on-the-VM.jpg" alt="Live Metrics in Application Insights from the Web Application running on IIS on the VM" /></a>
   
-  <p id="caption-attachment-957" class="wp-caption-text">
+  <p>
     Live Metrics in Application Insights from the Web Application running on IIS on the VM
   </p>
 </div>
@@ -343,10 +343,10 @@ With Azure Log Analytics, you can collect data directly from your Azure VM and o
   2. Select Log Analytics and click Create.
   3. Provide a name, Subscription, Resource Group, Location, and Pricing tier, then click OK.
 
-<div id="attachment_958" style="width: 323px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-new-Log-Analytics-instance.jpg"><img aria-describedby="caption-attachment-958" loading="lazy" class="size-full wp-image-958" src="/assets/img/posts/2018/03/Create-a-new-Log-Analytics-instance.jpg" alt="Create a new Log Analytics instance" width="313" height="438" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Create-a-new-Log-Analytics-instance.jpg"><img aria-describedby="caption-attachment-958" loading="lazy" class="size-full wp-image-958" src="/assets/img/posts/2018/03/Create-a-new-Log-Analytics-instance.jpg" alt="Create a new Log Analytics instance" /></a>
   
-  <p id="caption-attachment-958" class="wp-caption-text">
+  <p>
     Create a new Log Analytics instance
   </p>
 </div>
@@ -360,10 +360,10 @@ After Log Analytics is created, you have to enable the Log Analytics VM Extensio
   3. On the Virtual machine blade, click on Connect. This installs the agent and configures it for your Log Analytics workspace.
   4. After the installation is completed, the OMS connection status will change to This workspace.
 
-<div id="attachment_934" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Installing-the-agent-on-your-VM.jpg"><img aria-describedby="caption-attachment-934" loading="lazy" class="size-full wp-image-934" src="/assets/img/posts/2018/03/Installing-the-agent-on-your-VM.jpg" alt="Installing the agent on your VM" width="700" height="662" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Installing-the-agent-on-your-VM.jpg"><img aria-describedby="caption-attachment-934" loading="lazy" class="size-full wp-image-934" src="/assets/img/posts/2018/03/Installing-the-agent-on-your-VM.jpg" alt="Installing the agent on your VM" /></a>
   
-  <p id="caption-attachment-934" class="wp-caption-text">
+  <p>
     Installing the agent on your VM
   </p>
 </div>
@@ -378,10 +378,10 @@ Log Analytics can collect events from the Windows event logs or Linux Syslog and
   4. Add a new event log by entering a name and then clicking +.
   5. After the log is created, select the desired log level.
 
-<div id="attachment_935" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-new-Log-for-information-from-your-VM.jpg"><img aria-describedby="caption-attachment-935" loading="lazy" class="wp-image-935" src="/assets/img/posts/2018/03/Create-a-new-Log-for-information-from-your-VM.jpg" alt="Create a new Log for information from your VM" width="700" height="286" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Create-a-new-Log-for-information-from-your-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-a-new-Log-for-information-from-your-VM.jpg" alt="Create a new Log for information from your VM" /></a>
   
-  <p id="caption-attachment-935" class="wp-caption-text">
+  <p>
     Create a new Log for information from your VM
   </p>
 </div>
@@ -392,10 +392,10 @@ Log Analytics can collect events from the Windows event logs or Linux Syslog and
   </li>
 </ol>
 
-<div id="attachment_936" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Select-your-desired-performance-counters.jpg"><img aria-describedby="caption-attachment-936" loading="lazy" class="wp-image-936" src="/assets/img/posts/2018/03/Select-your-desired-performance-counters.jpg" alt="Select your desired performance counters" width="700" height="369" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Select-your-desired-performance-counters.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Select-your-desired-performance-counters.jpg" alt="Select your desired performance counters" /></a>
   
-  <p id="caption-attachment-936" class="wp-caption-text">
+  <p>
     Select your desired performance counters
   </p>
 </div>
@@ -414,10 +414,10 @@ After data collection is set up, you can run searches in your log. To do that, f
   2. Click Log Search under the General menu.
   3. The Log Search blade already suggests a couple of queries and the search box also makes suggestions based on your input. For example, you could enter Usage and click the Search icon which will give you various information about the usage of your VM.
 
-<div id="attachment_962" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Search-the-logs-for-the-usage-of-your-VM.jpg"><img aria-describedby="caption-attachment-962" loading="lazy" class="wp-image-962" src="/assets/img/posts/2018/03/Search-the-logs-for-the-usage-of-your-VM.jpg" alt="Search the logs for the usage of your VM" width="700" height="675" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Search-the-logs-for-the-usage-of-your-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Search-the-logs-for-the-usage-of-your-VM.jpg" alt="Search the logs for the usage of your VM" /></a>
   
-  <p id="caption-attachment-962" class="wp-caption-text">
+  <p>
     Search the logs for the usage of your VM
   </p>
 </div>
@@ -441,10 +441,10 @@ To enable a Network Watcher follow these steps:
   1. In the Azure Portal, click on All services and search for Network Watcher and select the result.
   2. On the Overview blade of your Network Watcher, enable the regions you want to monitor in the drop-down list.
 
-<div id="attachment_964" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Enable-Network-Watchers-in-your-desired-location.jpg"><img aria-describedby="caption-attachment-964" loading="lazy" class="wp-image-964" src="/assets/img/posts/2018/03/Enable-Network-Watchers-in-your-desired-location.jpg" alt="Enable Network Watchers in your desired location" width="700" height="195" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Enable-Network-Watchers-in-your-desired-location.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Enable-Network-Watchers-in-your-desired-location.jpg" alt="Enable Network Watchers in your desired location" /></a>
   
-  <p id="caption-attachment-964" class="wp-caption-text">
+  <p>
     Enable Network Watchers in your desired location
   </p>
 </div>
@@ -457,10 +457,10 @@ After your Network Watcher is deployed, you can take a look at the topology of y
   2. On the Topology blade, select a Subscription, Resource Group, and a Virtual Network.
   3. After a couple of seconds, your network will be displayed. You can also download the topology by clicking on Download topology.
 
-<div id="attachment_967" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Topology-with-virtual-machines-and-network-cards.jpg"><img aria-describedby="caption-attachment-967" loading="lazy" class="wp-image-967" src="/assets/img/posts/2018/03/Topology-with-virtual-machines-and-network-cards.jpg" alt="Topology with virtual machines and network cards" width="700" height="224" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Topology-with-virtual-machines-and-network-cards.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Topology-with-virtual-machines-and-network-cards.jpg" alt="Topology with virtual machines and network cards" /></a>
   
-  <p id="caption-attachment-967" class="wp-caption-text">
+  <p>
     Topology with virtual machines and network cards
   </p>
 </div>
@@ -473,10 +473,10 @@ You can only have a certain amount of network resources per subscription. The Ne
   2. Select a Subscription and Location.
   3. The Portal will list all resources, the current limit, and your usage.
 
-<div id="attachment_968" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Overview-of-the-Network-subscription-limit.jpg"><img aria-describedby="caption-attachment-968" loading="lazy" class="wp-image-968" src="/assets/img/posts/2018/03/Overview-of-the-Network-subscription-limit.jpg" alt="Overview of the Network subscription limit" width="700" height="345" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Overview-of-the-Network-subscription-limit.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Overview-of-the-Network-subscription-limit.jpg" alt="Overview of the Network subscription limit" /></a>
   
-  <p id="caption-attachment-968" class="wp-caption-text">
+  <p>
     Overview of the Network subscription limit
   </p>
 </div>

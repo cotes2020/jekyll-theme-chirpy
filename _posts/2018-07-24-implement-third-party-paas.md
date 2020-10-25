@@ -23,10 +23,10 @@ to deploy a basic Pivotal Cloud Foundry on Azure, follow these steps:
   1. Before you can create a Cloud Foundry cluster, you must create an Azure Service Principle. Follow the instructions on <a href="https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/get-started/create-service-principal.md" target="_blank" rel="noopener">Github</a>.
   2. In the Azure portal click on +Create a resource, search for Pivotal Cloud Foundry on Microsoft Azure and click Create.
 
-<div id="attachment_1418" style="width: 451px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/07/Deploy-Pivotal-Cloud-Foundry-on-Azure.jpg"><img aria-describedby="caption-attachment-1418" loading="lazy" class="wp-image-1418" src="/assets/img/posts/2018/07/Deploy-Pivotal-Cloud-Foundry-on-Azure.jpg" alt="Deploy Pivotal Cloud Foundry on Azure as a third-party PaaS" width="441" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/07/Deploy-Pivotal-Cloud-Foundry-on-Azure.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Deploy-Pivotal-Cloud-Foundry-on-Azure.jpg" alt="Deploy Pivotal Cloud Foundry on Azure as a third-party PaaS" /></a>
   
-  <p id="caption-attachment-1418" class="wp-caption-text">
+  <p>
     Deploy Pivotal Cloud Foundry on Azure
   </p>
 </div>
@@ -75,10 +75,10 @@ You can deploy from the Azure Marketplace templates, or using ARM templates. To 
 
   1. In the Azure portal click on +Create a resource, search for Red Hat OpenShift Container Platform and click Create.
 
-<div id="attachment_1419" style="width: 451px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/07/Deploy-a-Red-hat-OpenShift-Container-Platform.jpg"><img aria-describedby="caption-attachment-1419" loading="lazy" class="wp-image-1419" src="/assets/img/posts/2018/07/Deploy-a-Red-hat-OpenShift-Container-Platform.jpg" alt="Deploy a Red hat OpenShift Container Platform" width="441" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/07/Deploy-a-Red-hat-OpenShift-Container-Platform.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Deploy-a-Red-hat-OpenShift-Container-Platform.jpg" alt="Deploy a Red hat OpenShift Container Platform" /></a>
   
-  <p id="caption-attachment-1419" class="wp-caption-text">
+  <p>
     Deploy a Red hat OpenShift Container Platform
   </p>
 </div>

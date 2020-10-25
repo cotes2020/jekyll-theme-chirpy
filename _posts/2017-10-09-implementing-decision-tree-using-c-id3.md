@@ -424,9 +424,9 @@ Figure 1 shows the result of the finished decision tree.
 
 &nbsp;
 
-<div id="attachment_106" style="width: 672px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/10/Decision-Tree.jpg"><img aria-describedby="caption-attachment-106" loading="lazy" class="wp-image-106 size-full" src="/assets/img/posts/2017/10/Decision-Tree.jpg" alt="Decision Tree" width="662" height="328"/></a>  
-  <p id="caption-attachment-106" class="wp-caption-text">
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/10/Decision-Tree.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/Decision-Tree.jpg" alt="Decision Tree" width="662" height="328"/></a>  
+  <p>
     Figure 1: Decision Tree [Source](https://www.cise.ufl.edu/~ddd/cap6635/Fall-97/Short-papers/2.htm)
   </p>
 </div>
@@ -468,20 +468,20 @@ The CalculateResult method is called to find the outcome of the entered query. T
 
 Due to the nature of the console, printing the tree results into displaying every possible route through the tree. To improve the readability nodes are written in upper case and edges in lower case. The root node is printed in Magenta, normal decision nodes in Cyan and leafs in yellow. Edges are printed in yellow.
 
-<div id="attachment_127" style="width: 700px" class="wp-caption aligncenter">
+<div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2017/10/Printing-the-decision-tree.jpg"><img aria-describedby="caption-attachment-127" loading="lazy" class="size-full wp-image-127" src="/assets/img/posts/2017/10/Printing-the-decision-tree.jpg" alt="Printing the decision tree"/></a>
   
-  <p id="caption-attachment-127" class="wp-caption-text">
+  <p>
     Figure 2: Printing the decision tree
   </p>
 </div>
 
 If a result for a query is found, the found route will be printed with the same principle as just explained.
 
-<div id="attachment_118" style="width: 666px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/10/Printing-result-of-decision-tree-query.jpg"><img aria-describedby="caption-attachment-118" loading="lazy" class="size-full wp-image-118" src="/assets/img/posts/2017/10/Printing-result-of-decision-tree-query.jpg" alt="Printed result of a query" width="656" height="242" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/10/Printing-result-of-decision-tree-query.jpg"><img aria-describedby="caption-attachment-118" loading="lazy" class="size-full wp-image-118" src="/assets/img/posts/2017/10/Printing-result-of-decision-tree-query.jpg" alt="Printed result of a query" /></a>
   
-  <p id="caption-attachment-118" class="wp-caption-text">
+  <p>
     Figure 3: Printed result of a query
   </p>
 </div>

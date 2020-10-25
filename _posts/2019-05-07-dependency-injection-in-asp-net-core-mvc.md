@@ -13,30 +13,30 @@ You can find the source code of the following demo on <a href="https://github.co
 
 I created a repository which will provide basic operations for my Customer class like Add and Delete.
 
-<div id="attachment_1680" style="width: 472px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Setting-up-a-repository-class-for-basic-operations.jpg"><img aria-describedby="caption-attachment-1680" loading="lazy" class="size-full wp-image-1680" src="/assets/img/posts/2019/04/Setting-up-a-repository-class-for-basic-operations.jpg" alt="Setting up a repository class for basic operations" width="462" height="534" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Setting-up-a-repository-class-for-basic-operations.jpg"><img aria-describedby="caption-attachment-1680" loading="lazy" class="size-full wp-image-1680" src="/assets/img/posts/2019/04/Setting-up-a-repository-class-for-basic-operations.jpg" alt="Setting up a repository class for basic operations" /></a>
   
-  <p id="caption-attachment-1680" class="wp-caption-text">
+  <p>
     Setting up a repository class for basic operations
   </p>
 </div>
 
 Next, I created a view which will display the customer&#8217;s name and age in a table.
 
-<div id="attachment_1681" style="width: 577px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/The-view-to-display-the-customer-data.jpg"><img aria-describedby="caption-attachment-1681" loading="lazy" class="wp-image-1681" src="/assets/img/posts/2019/04/The-view-to-display-the-customer-data.jpg" alt="The view to display the customer data" width="567" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/The-view-to-display-the-customer-data.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/The-view-to-display-the-customer-data.jpg" alt="The view to display the customer data" /></a>
   
-  <p id="caption-attachment-1681" class="wp-caption-text">
+  <p>
     The view to display the customer data
   </p>
 </div>
 
 Lastly, I call this view from the controller with the CustomerRepository creating some data.
 
-<div id="attachment_1683" style="width: 377px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Hardcoding-the-usage-of-the-CustomerRepository-in-the-controller.jpg"><img aria-describedby="caption-attachment-1683" loading="lazy" class="size-full wp-image-1683" src="/assets/img/posts/2019/04/Hardcoding-the-usage-of-the-CustomerRepository-in-the-controller.jpg" alt="Hardcoding the usage of the CustomerRepository in the controller" width="367" height="71" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Hardcoding-the-usage-of-the-CustomerRepository-in-the-controller.jpg"><img aria-describedby="caption-attachment-1683" loading="lazy" class="size-full wp-image-1683" src="/assets/img/posts/2019/04/Hardcoding-the-usage-of-the-CustomerRepository-in-the-controller.jpg" alt="Hardcoding the usage of the CustomerRepository in the controller" /></a>
   
-  <p id="caption-attachment-1683" class="wp-caption-text">
+  <p>
     Hard-coding the usage of the CustomerRepository in the controller
   </p>
 </div>
@@ -47,20 +47,20 @@ The CustomerRepository is hard-coded into the controller. This means that if you
 
 The term dependency injection (DI) describes an approach to creating loosely coupled components, which are used automatically by MVC. This means that controllers and other components don&#8217;t need to have any knowledge of how the types they require are created. Dependency injection might seem abstract in the beginning but let&#8217;s take a look at the modified HomeController:
 
-<div id="attachment_1685" style="width: 389px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Preparing-the-Home-Controller-for-dependency-injection.jpg"><img aria-describedby="caption-attachment-1685" loading="lazy" class="size-full wp-image-1685" src="/assets/img/posts/2019/04/Preparing-the-Home-Controller-for-dependency-injection.jpg" alt="Preparing the Home Controller for dependency injection" width="379" height="213" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Preparing-the-Home-Controller-for-dependency-injection.jpg"><img aria-describedby="caption-attachment-1685" loading="lazy" class="size-full wp-image-1685" src="/assets/img/posts/2019/04/Preparing-the-Home-Controller-for-dependency-injection.jpg" alt="Preparing the Home Controller for dependency injection" /></a>
   
-  <p id="caption-attachment-1685" class="wp-caption-text">
+  <p>
     Preparing the Home Controller for dependency injection
   </p>
 </div>
 
 I am passing an IRepository object to the constructor of the class. From now on the class doesn&#8217;t have to care to get the right object. The right object will be passed. This behavior is also known as the Hollywood Principle. The only problem with this code is, that nobody tells MVC which object to pass as the IRepository and therefore it passes null which will lead to an exception.
 
-<div id="attachment_1686" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Exception-when-starting-the-application.jpg"><img aria-describedby="caption-attachment-1686" loading="lazy" class="wp-image-1686" src="/assets/img/posts/2019/04/Exception-when-starting-the-application.jpg" alt="Exception when starting the application" width="700" height="102" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Exception-when-starting-the-application.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Exception-when-starting-the-application.jpg" alt="Exception when starting the application" /></a>
   
-  <p id="caption-attachment-1686" class="wp-caption-text">
+  <p>
     Exception when starting the application
   </p>
 </div>
@@ -79,10 +79,10 @@ In the previous section, I added the IRepository interface to the Home controlle
 
 services.AddTransient<IRepository, ProductRepository>();
 
-<div id="attachment_1688" style="width: 581px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Register-the-IRepository-interface-as-ProductRepository.jpg"><img aria-describedby="caption-attachment-1688" loading="lazy" class="size-full wp-image-1688" src="/assets/img/posts/2019/04/Register-the-IRepository-interface-as-ProductRepository.jpg" alt="Register the IRepository interface as ProductRepository" width="571" height="90" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Register-the-IRepository-interface-as-ProductRepository.jpg"><img aria-describedby="caption-attachment-1688" loading="lazy" class="size-full wp-image-1688" src="/assets/img/posts/2019/04/Register-the-IRepository-interface-as-ProductRepository.jpg" alt="Register the IRepository interface as ProductRepository" /></a>
   
-  <p id="caption-attachment-1688" class="wp-caption-text">
+  <p>
     Register the IRepository interface as ProductRepository
   </p>
 </div>
@@ -95,10 +95,10 @@ There are three different Methods to register a service, depending on its scope:
 
 I will explain the differences in the section &#8220;Understanding Service Life Cycles&#8221;. For now, add the line and that&#8217;s all you have to do to fix the previous exception.
 
-<div id="attachment_1689" style="width: 369px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/The-application-works-again.jpg"><img aria-describedby="caption-attachment-1689" loading="lazy" class="size-full wp-image-1689" src="/assets/img/posts/2019/04/The-application-works-again.jpg" alt="The application works again" width="359" height="187" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/The-application-works-again.jpg"><img aria-describedby="caption-attachment-1689" loading="lazy" class="size-full wp-image-1689" src="/assets/img/posts/2019/04/The-application-works-again.jpg" alt="The application works again" /></a>
   
-  <p id="caption-attachment-1689" class="wp-caption-text">
+  <p>
     The application works again
   </p>
 </div>
@@ -109,20 +109,20 @@ Dependency injection can also be used for concrete types, which are not accessed
 
 In the following example, I created a new WeatherService class and added it to the Home controller. There, I created a new action which returns only the string provided by the service. It is not the most useful implementation but it shows how it works.
 
-<div id="attachment_1690" style="width: 607px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Adding-the-weather-service-to-the-Home-controller.jpg"><img aria-describedby="caption-attachment-1690" loading="lazy" class="size-full wp-image-1690" src="/assets/img/posts/2019/04/Adding-the-weather-service-to-the-Home-controller.jpg" alt="Adding the weather service to the Home controller" width="597" height="336" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Adding-the-weather-service-to-the-Home-controller.jpg"><img aria-describedby="caption-attachment-1690" loading="lazy" class="size-full wp-image-1690" src="/assets/img/posts/2019/04/Adding-the-weather-service-to-the-Home-controller.jpg" alt="Adding the weather service to the Home controller" /></a>
   
-  <p id="caption-attachment-1690" class="wp-caption-text">
+  <p>
     Adding the weather service to the Home controller
   </p>
 </div>
 
 Next, I register the WeatherService in the Startup class. Since there is no mapping between a service type and an implementation type in this solution, you have to use an override of the AddTransient method which accepts a single type parameter that tells the service provider that it should instantiate the WeatherService class to resolve a dependency on this type.
 
-<div id="attachment_1691" style="width: 582px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Register-the-WeatherService-in-the-Startup-class.jpg"><img aria-describedby="caption-attachment-1691" loading="lazy" class="size-full wp-image-1691" src="/assets/img/posts/2019/04/Register-the-WeatherService-in-the-Startup-class.jpg" alt="Register the WeatherService in the Startup class" width="572" height="106" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Register-the-WeatherService-in-the-Startup-class.jpg"><img aria-describedby="caption-attachment-1691" loading="lazy" class="size-full wp-image-1691" src="/assets/img/posts/2019/04/Register-the-WeatherService-in-the-Startup-class.jpg" alt="Register the WeatherService in the Startup class" /></a>
   
-  <p id="caption-attachment-1691" class="wp-caption-text">
+  <p>
     Register the WeatherService in the Startup class
   </p>
 </div>
@@ -131,10 +131,10 @@ The advantages of this approach are that the service provider will resolve any d
 
 If you call the new action, you will see the weather information provided by the WeatherService.
 
-<div id="attachment_1692" style="width: 395px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Getting-data-from-the-weather-service.jpg"><img aria-describedby="caption-attachment-1692" loading="lazy" class="size-full wp-image-1692" src="/assets/img/posts/2019/04/Getting-data-from-the-weather-service.jpg" alt="Getting data from the weather service" width="385" height="90" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Getting-data-from-the-weather-service.jpg"><img aria-describedby="caption-attachment-1692" loading="lazy" class="size-full wp-image-1692" src="/assets/img/posts/2019/04/Getting-data-from-the-weather-service.jpg" alt="Getting data from the weather service" /></a>
   
-  <p id="caption-attachment-1692" class="wp-caption-text">
+  <p>
     Getting data from the weather service
   </p>
 </div>
@@ -229,10 +229,10 @@ One version of the AddTransient method accepts a factory function that is invoke
 
 To demonstrate this behavior, I extended the ConfigureServices method of the Startup class. First, I inject an IHostingEnvironment object which indicates on which environment the application is running. Afterward, I check this variable and if it is development, I instantiate a ProductRepository as IRepository. Otherwise, I instantiate a CustomerRepository.
 
-<div id="attachment_1693" style="width: 616px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Instantiate-the-IRepository-interface-depending-on-the-hosting-environment.jpg"><img aria-describedby="caption-attachment-1693" loading="lazy" class="size-full wp-image-1693" src="/assets/img/posts/2019/04/Instantiate-the-IRepository-interface-depending-on-the-hosting-environment.jpg" alt="Instantiate the IRepository interface depending on the hosting environment" width="606" height="425" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Instantiate-the-IRepository-interface-depending-on-the-hosting-environment.jpg"><img aria-describedby="caption-attachment-1693" loading="lazy" class="size-full wp-image-1693" src="/assets/img/posts/2019/04/Instantiate-the-IRepository-interface-depending-on-the-hosting-environment.jpg" alt="Instantiate the IRepository interface depending on the hosting environment" /></a>
   
-  <p id="caption-attachment-1693" class="wp-caption-text">
+  <p>
     Instantiate the IRepository interface depending on the hosting environment
   </p>
 </div>
@@ -243,10 +243,10 @@ This life cycle creates a single object from the implementation class that is us
 
 Note that there are also versions of the AddScoped method that accept a factory function and that can be used to register a concrete type. These methods work in the same way as the AddTransient method.
 
-<div id="attachment_1694" style="width: 393px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Adding-a-scoped-dependency.jpg"><img aria-describedby="caption-attachment-1694" loading="lazy" class="wp-image-1694 size-full" src="/assets/img/posts/2019/04/Adding-a-scoped-dependency.jpg" alt="Adding a scoped for your dependency injection" width="383" height="21" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Adding-a-scoped-dependency.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/04/Adding-a-scoped-dependency.jpg" alt="Adding a scoped for your dependency injection" /></a>
   
-  <p id="caption-attachment-1694" class="wp-caption-text">
+  <p>
     Adding a scoped dependency
   </p>
 </div>
@@ -255,10 +255,10 @@ Note that there are also versions of the AddScoped method that accept a factory 
 
 The singleton life cycle ensures that a single object is used to resolve all the dependencies for a given service type. When using this life cycle, you must ensure that the implementation classes used to resolve dependencies are safe for concurrent access.
 
-<div id="attachment_1695" style="width: 306px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/04/Adding-a-singleton-dependency.jpg"><img aria-describedby="caption-attachment-1695" loading="lazy" class="wp-image-1695 size-full" src="/assets/img/posts/2019/04/Adding-a-singleton-dependency.jpg" alt="Adding a singleton for your dependency injection" width="296" height="23" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/04/Adding-a-singleton-dependency.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/04/Adding-a-singleton-dependency.jpg" alt="Adding a singleton for your dependency injection" /></a>
   
-  <p id="caption-attachment-1695" class="wp-caption-text">
+  <p>
     Adding a singleton dependency
   </p>
 </div>
@@ -267,10 +267,10 @@ The singleton life cycle ensures that a single object is used to resolve all the
 
 The standard way to declare a dependency is through the constructor. Additionally to the standard way, MVC provides the functionality to inject an action, called action injection. Action injection allows dependencies to be declared through parameters to action methods. To be more precise, action injection is provided by the model binding system. All you have to do is using the FromService attribute before your parameter. Also, don&#8217;t forget to register your service in the Startup class.
 
-<div id="attachment_1699" style="width: 549px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/Using-action-injection.jpg"><img aria-describedby="caption-attachment-1699" loading="lazy" class="size-full wp-image-1699" src="/assets/img/posts/2019/05/Using-action-injection.jpg" alt="Using action injection" width="539" height="73" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/Using-action-injection.jpg"><img aria-describedby="caption-attachment-1699" loading="lazy" class="size-full wp-image-1699" src="/assets/img/posts/2019/05/Using-action-injection.jpg" alt="Using action injection" /></a>
   
-  <p id="caption-attachment-1699" class="wp-caption-text">
+  <p>
     Using action injection
   </p>
 </div>
@@ -353,10 +353,10 @@ I have never used property binding and don&#8217;t see a use case where to use i
 
 MVC provides the dependency feature for you. There can be occasions when it can be useful to create an implementation for an interface without relying on dependency injection. In these situations, you can work directly with the service provider.
 
-<div id="attachment_1700" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/Resolve-an-object-manually.jpg"><img aria-describedby="caption-attachment-1700" loading="lazy" class="wp-image-1700" src="/assets/img/posts/2019/05/Resolve-an-object-manually.jpg" alt="Resolve an object manually wihtout dependency injection" width="700" height="160" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/Resolve-an-object-manually.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Resolve-an-object-manually.jpg" alt="Resolve an object manually wihtout dependency injection" /></a>
   
-  <p id="caption-attachment-1700" class="wp-caption-text">
+  <p>
     Resolve an object manually
   </p>
 </div>

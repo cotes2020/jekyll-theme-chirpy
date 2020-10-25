@@ -11,10 +11,10 @@ I talked about HTML Helper Methods in <a href="/helper-methods-in-asp-net-mvc/" 
 
 I use the same project as last time. The only changes I made was adding an address and the birthday to the customer class. You can download the code <a href="https://github.com/WolfgangOfner/MVC-TemplatedHelperMethods" target="_blank" rel="noopener noreferrer">here</a>.
 
-<div id="attachment_798" style="width: 305px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Implementation-of-the-Address-class.jpg"><img aria-describedby="caption-attachment-798" loading="lazy" class="size-full wp-image-798" src="/assets/img/posts/2018/02/Implementation-of-the-Address-class.jpg" alt="Implementation of the Address class" width="295" height="278" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Implementation-of-the-Address-class.jpg"><img aria-describedby="caption-attachment-798" loading="lazy" class="size-full wp-image-798" src="/assets/img/posts/2018/02/Implementation-of-the-Address-class.jpg" alt="Implementation of the Address class" /></a>
   
-  <p id="caption-attachment-798" class="wp-caption-text">
+  <p>
     Implementation of the Address class
   </p>
 </div>
@@ -23,10 +23,10 @@ I use the same project as last time. The only changes I made was adding an addre
 
 The simplest templated helper method is Html.Editor and the strongly typed version Html.EditorFor. I like the strongly typed version due to it&#8217;s IntelliSense support and pass the property name as the parameter. The MVC framework renders the element which it thinks fits best.
 
-<div id="attachment_802" style="width: 492px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg"><img aria-describedby="caption-attachment-802" loading="lazy" class="size-full wp-image-802" src="/assets/img/posts/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg" alt="Using Html.EditorFor to create HTML elements" width="482" height="337" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg"><img aria-describedby="caption-attachment-802" loading="lazy" class="size-full wp-image-802" src="/assets/img/posts/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg" alt="Using Html.EditorFor to create HTML elements" /></a>
   
-  <p id="caption-attachment-802" class="wp-caption-text">
+  <p>
     Using Html.EditorFor to create HTML elements
   </p>
 </div>
@@ -205,10 +205,10 @@ The following templated helper methods are available for the scaffolding process
 
 With these templated helper methods it is possible to render forms with just a couple lines of code. This makes them easy to read and easy to change.
 
-<div id="attachment_799" style="width: 486px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg"><img aria-describedby="caption-attachment-799" loading="lazy" class="size-full wp-image-799" src="/assets/img/posts/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg" alt="Creating a form using templated helper methods with the model" width="476" height="169" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg"><img aria-describedby="caption-attachment-799" loading="lazy" class="size-full wp-image-799" src="/assets/img/posts/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg" alt="Creating a form using templated helper methods with the model" /></a>
   
-  <p id="caption-attachment-799" class="wp-caption-text">
+  <p>
     Creating a form using templated helper methods with the model
   </p>
 </div>
@@ -342,10 +342,10 @@ The ASP.NET MVC framework offers the following datatype attributes:
     Earlier I said that I don&#8217;t want to display the CustomerId to the user. It is common not to display all information, for example, the id or primary key of an element is usually not relevant to the user. To hide a property, I decorate it with the HiddenInput attribute and set the DisplayValue to false.
   </p>
   
-  <div id="attachment_803" style="width: 285px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg"><img aria-describedby="caption-attachment-803" loading="lazy" class="size-full wp-image-803" src="/assets/img/posts/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg" alt="Applying the HiddenInput attribute to the CustomerId" width="275" height="58" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg"><img aria-describedby="caption-attachment-803" loading="lazy" class="size-full wp-image-803" src="/assets/img/posts/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg" alt="Applying the HiddenInput attribute to the CustomerId" /></a>
     
-    <p id="caption-attachment-803" class="wp-caption-text">
+    <p>
       Applying the HiddenInput attribute to the CustomerId
     </p>
   </div>
@@ -366,10 +366,10 @@ The ASP.NET MVC framework offers the following datatype attributes:
     The scaffolding process displays the name of the property as the label. The problem is that property names are rarely useful to the user. No user wants to read FirstName. A user expects First name. Therefore, I can decorate properties with the Display attribute and a class with the DisplayName attribute. As the parameter, I pass the name which I want to be displayed.
   </p>
   
-  <div id="attachment_806" style="width: 317px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg"><img aria-describedby="caption-attachment-806" loading="lazy" class="size-full wp-image-806" src="/assets/img/posts/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg" alt="Decorating the model properties with the Display attribute" width="307" height="254" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg"><img aria-describedby="caption-attachment-806" loading="lazy" class="size-full wp-image-806" src="/assets/img/posts/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg" alt="Decorating the model properties with the Display attribute" /></a>
     
-    <p id="caption-attachment-806" class="wp-caption-text">
+    <p>
       Decorating the model properties with the Display attribute
     </p>
   </div>
@@ -378,10 +378,10 @@ The ASP.NET MVC framework offers the following datatype attributes:
     When I start the application now, nice names are displayed and also Person in the header will be rendered.
   </p>
   
-  <div id="attachment_807" style="width: 283px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg"><img aria-describedby="caption-attachment-807" loading="lazy" class="size-full wp-image-807" src="/assets/img/posts/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg" alt="Output of the form with the Display attribute for naming the properties" width="273" height="379" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg"><img aria-describedby="caption-attachment-807" loading="lazy" class="size-full wp-image-807" src="/assets/img/posts/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg" alt="Output of the form with the Display attribute for naming the properties" /></a>
     
-    <p id="caption-attachment-807" class="wp-caption-text">
+    <p>
       Output of the form with the Display attribute for naming the properties
     </p>
   </div>
@@ -394,10 +394,10 @@ The ASP.NET MVC framework offers the following datatype attributes:
     It is not always possible to apply attributes to classes because they are automatically generated by tools like the Entity Framework. (Actually, you can add attributes but they will be overridden the next time the class gets updated and therefore generated again). The solution to this problem is to add a partial class of the class you want to extend with the same properties and add the attributes there. To be able to do that the original class has to be partial as well. Fortunately Entity Framework creates partial classes. Then you have to add the MetadataType attribute to the class with typeof(your class) as the parameter.
   </p>
   
-  <div id="attachment_808" style="width: 357px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg"><img aria-describedby="caption-attachment-808" loading="lazy" class="size-full wp-image-808" src="/assets/img/posts/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg" alt="Implementation of the partial customer class with attributes" width="347" height="327" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg"><img aria-describedby="caption-attachment-808" loading="lazy" class="size-full wp-image-808" src="/assets/img/posts/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg" alt="Implementation of the partial customer class with attributes" /></a>
     
-    <p id="caption-attachment-808" class="wp-caption-text">
+    <p>
       Implementation of the partial customer class with attributes
     </p>
   </div>
@@ -406,10 +406,10 @@ The ASP.NET MVC framework offers the following datatype attributes:
     On the screenshot above, I created a partial class and called it CustomerWithAttributes. Then I added all attributes from the Customer class which has attributes. Additionally to these changes, I made the Customer class partial and added the MetadataType attribute to it with the CustomerWithAttributes class as the parameter.
   </p>
   
-  <div id="attachment_809" style="width: 359px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg"><img aria-describedby="caption-attachment-809" loading="lazy" class="size-full wp-image-809" src="/assets/img/posts/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg" alt="Adding the MetaData attribute to the customer class" width="349" height="78" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg"><img aria-describedby="caption-attachment-809" loading="lazy" class="size-full wp-image-809" src="/assets/img/posts/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg" alt="Adding the MetaData attribute to the customer class" /></a>
     
-    <p id="caption-attachment-809" class="wp-caption-text">
+    <p>
       Adding the MetaData attribute to the customer class
     </p>
   </div>
@@ -430,10 +430,10 @@ The ASP.NET MVC framework offers the following datatype attributes:
     To render complex datatype, I have to explicitly tell the MVC framework how to do that by creating a separate call to the templated helper method:
   </p>
   
-  <div id="attachment_810" style="width: 494px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Adding-a-render-method-for-the-Address-property.jpg"><img aria-describedby="caption-attachment-810" loading="lazy" class="size-full wp-image-810" src="/assets/img/posts/2018/02/Adding-a-render-method-for-the-Address-property.jpg" alt="Adding a render method for the Address property" width="484" height="187" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Adding-a-render-method-for-the-Address-property.jpg"><img aria-describedby="caption-attachment-810" loading="lazy" class="size-full wp-image-810" src="/assets/img/posts/2018/02/Adding-a-render-method-for-the-Address-property.jpg" alt="Adding a render method for the Address property" /></a>
     
-    <p id="caption-attachment-810" class="wp-caption-text">
+    <p>
       Adding a render method for the Address property
     </p>
   </div>

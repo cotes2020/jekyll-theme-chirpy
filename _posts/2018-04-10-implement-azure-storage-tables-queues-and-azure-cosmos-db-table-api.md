@@ -28,10 +28,10 @@ This section will explain how to access table storage programmatically using C#.
   1. Create a new C# console application.
   2. Add the following code to your app.config file:
 
-<div id="attachment_1135" style="width: 568px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1135" loading="lazy" class="size-full wp-image-1135" src="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" width="558" height="87" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1135" loading="lazy" class="size-full wp-image-1135" src="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" /></a>
   
-  <p id="caption-attachment-1135" class="wp-caption-text">
+  <p>
     Setup the connection string to your storage account
   </p>
 </div>
@@ -47,10 +47,10 @@ Replace the placeholder with your storage account name and storage account key
   </li>
 </ol>
 
-<div id="attachment_1136" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Retrieve-the-connection-string.jpg"><img aria-describedby="caption-attachment-1136" loading="lazy" class="wp-image-1136" src="/assets/img/posts/2018/04/Retrieve-the-connection-string.jpg" alt="Retrieve the connection string" width="700" height="20" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Retrieve-the-connection-string.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Retrieve-the-connection-string.jpg" alt="Retrieve the connection string" /></a>
   
-  <p id="caption-attachment-1136" class="wp-caption-text">
+  <p>
     Retrieve the connection string
   </p>
 </div>
@@ -61,10 +61,10 @@ Replace the placeholder with your storage account name and storage account key
   </li>
 </ol>
 
-<div id="attachment_1138" style="width: 433px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1138" loading="lazy" class="size-full wp-image-1138" src="/assets/img/posts/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg" alt="Create the orders table if it does not exist" width="423" height="73" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1138" loading="lazy" class="size-full wp-image-1138" src="/assets/img/posts/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg" alt="Create the orders table if it does not exist" /></a>
   
-  <p id="caption-attachment-1138" class="wp-caption-text">
+  <p>
     Create the orders table if it does not exist
   </p>
 </div>
@@ -133,10 +133,10 @@ To insert data into the previously created table, follow these steps:
 
   1. Add the following class:
 
-<div id="attachment_1139" style="width: 454px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg"><img aria-describedby="caption-attachment-1139" loading="lazy" class="size-full wp-image-1139" src="/assets/img/posts/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg" alt="The OrderEntity class will be used to add orders into the table" width="444" height="380" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg"><img aria-describedby="caption-attachment-1139" loading="lazy" class="size-full wp-image-1139" src="/assets/img/posts/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg" alt="The OrderEntity class will be used to add orders into the table" /></a>
   
-  <p id="caption-attachment-1139" class="wp-caption-text">
+  <p>
     The OrderEntity class will be used to add orders into the table
   </p>
 </div>
@@ -147,10 +147,10 @@ To insert data into the previously created table, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1140" style="width: 782px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Insert-a-single-record-into-the-table.jpg"><img aria-describedby="caption-attachment-1140" loading="lazy" class="size-full wp-image-1140" src="/assets/img/posts/2018/04/Insert-a-single-record-into-the-table.jpg" alt="Insert a single record into the table" width="772" height="239" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Insert-a-single-record-into-the-table.jpg"><img aria-describedby="caption-attachment-1140" loading="lazy" class="size-full wp-image-1140" src="/assets/img/posts/2018/04/Insert-a-single-record-into-the-table.jpg" alt="Insert a single record into the table" /></a>
   
-  <p id="caption-attachment-1140" class="wp-caption-text">
+  <p>
     Insert a single record into the table
   </p>
 </div>
@@ -161,10 +161,10 @@ You can group inserts and other operations into a single batch transaction. You 
 
 To insert multiple orders in one transaction, add this code to your application:
 
-<div id="attachment_1141" style="width: 780px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Insert-multiple-records-into-the-table.jpg"><img aria-describedby="caption-attachment-1141" loading="lazy" class="size-full wp-image-1141" src="/assets/img/posts/2018/04/Insert-multiple-records-into-the-table.jpg" alt="Insert multiple records into the table" width="770" height="506" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Insert-multiple-records-into-the-table.jpg"><img aria-describedby="caption-attachment-1141" loading="lazy" class="size-full wp-image-1141" src="/assets/img/posts/2018/04/Insert-multiple-records-into-the-table.jpg" alt="Insert multiple records into the table" /></a>
   
-  <p id="caption-attachment-1141" class="wp-caption-text">
+  <p>
     Insert multiple records into the table
   </p>
 </div>
@@ -177,10 +177,10 @@ Within a table, entities are ordered within the partition key. Within a partitio
 
 The following code gets all records within a partition using the PartitionKey property:
 
-<div id="attachment_1142" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang.jpg"><img aria-describedby="caption-attachment-1142" loading="lazy" class="wp-image-1142" src="/assets/img/posts/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang.jpg" alt="Retrieve all records of the table with the partition key Wolfgang" width="700" height="203" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Retrieve-all-records-of-the-table-with-the-partition-key-Wolfgang.jpg" alt="Retrieve all records of the table with the partition key Wolfgang" /></a>
   
-  <p id="caption-attachment-1142" class="wp-caption-text">
+  <p>
     Retrieve all records of the table with the partition key Wolfgang
   </p>
 </div>
@@ -189,10 +189,10 @@ The following code gets all records within a partition using the PartitionKey pr
 
 To update records, you can use the InsertOrReplace() method. It creates a records if it does not exist and updates an existing one, based on the partition key and row key. Use the following code to do that:
 
-<div id="attachment_1143" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Update-a-record-in-the-table.jpg"><img aria-describedby="caption-attachment-1143" loading="lazy" class="wp-image-1143" src="/assets/img/posts/2018/04/Update-a-record-in-the-table.jpg" alt="Update a record in the table" width="700" height="209" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Update-a-record-in-the-table.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Update-a-record-in-the-table.jpg" alt="Update a record in the table" /></a>
   
-  <p id="caption-attachment-1143" class="wp-caption-text">
+  <p>
     Update a record in the table
   </p>
 </div>
@@ -201,10 +201,10 @@ To update records, you can use the InsertOrReplace() method. It creates a record
 
 To delete a record, you have to retrieve it first and then call the Delete() method. Use the following code to do that:
 
-<div id="attachment_1144" style="width: 774px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Delete-a-record-from-the-table.jpg"><img aria-describedby="caption-attachment-1144" loading="lazy" class="size-full wp-image-1144" src="/assets/img/posts/2018/04/Delete-a-record-from-the-table.jpg" alt="Delete a record from the table" width="764" height="152" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Delete-a-record-from-the-table.jpg"><img aria-describedby="caption-attachment-1144" loading="lazy" class="size-full wp-image-1144" src="/assets/img/posts/2018/04/Delete-a-record-from-the-table.jpg" alt="Delete a record from the table" /></a>
   
-  <p id="caption-attachment-1144" class="wp-caption-text">
+  <p>
     Delete a record from the table
   </p>
 </div>
@@ -274,10 +274,10 @@ You can find the following demo on <a href="https://github.com/WolfgangOfner/Azu
   1. Create a new C# console application.
   2. Add the following code to your app.config file:
 
-<div id="attachment_1135" style="width: 568px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1135" loading="lazy" class="size-full wp-image-1135" src="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" width="558" height="87" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1135" loading="lazy" class="size-full wp-image-1135" src="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" /></a>
   
-  <p id="caption-attachment-1135" class="wp-caption-text">
+  <p>
     Setup the connection string to your storage account
   </p>
 </div>
@@ -287,10 +287,10 @@ Replace the placeholder with your storage account name and storage account key.
   1. Install the WindowsAzure.Storage NuGet package.
   2. In the Main method, retrieve the connection string:
 
-<div id="attachment_1136" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Retrieve-the-connection-string.jpg"><img aria-describedby="caption-attachment-1136" loading="lazy" class="wp-image-1136" src="/assets/img/posts/2018/04/Retrieve-the-connection-string.jpg" alt="Retrieve the connection string" width="700" height="20" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Retrieve-the-connection-string.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Retrieve-the-connection-string.jpg" alt="Retrieve the connection string" /></a>
   
-  <p id="caption-attachment-1136" class="wp-caption-text">
+  <p>
     Retrieve the connection string
   </p>
 </div>
@@ -301,10 +301,10 @@ Replace the placeholder with your storage account name and storage account key.
   </li>
 </ol>
 
-<div id="attachment_1145" style="width: 427px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1145" loading="lazy" class="size-full wp-image-1145" src="/assets/img/posts/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg" alt="Create the queue queue if it does not exist" width="417" height="70" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1145" loading="lazy" class="size-full wp-image-1145" src="/assets/img/posts/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg" alt="Create the queue queue if it does not exist" /></a>
   
-  <p id="caption-attachment-1145" class="wp-caption-text">
+  <p>
     Create the queue queue if it does not exist
   </p>
 </div>
@@ -315,10 +315,10 @@ Replace the placeholder with your storage account name and storage account key.
   </li>
 </ol>
 
-<div id="attachment_1146" style="width: 441px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-three-messages-to-the-queue.jpg"><img aria-describedby="caption-attachment-1146" loading="lazy" class="size-full wp-image-1146" src="/assets/img/posts/2018/04/Add-three-messages-to-the-queue.jpg" alt="Add three messages to the queue" width="431" height="53" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Add-three-messages-to-the-queue.jpg"><img aria-describedby="caption-attachment-1146" loading="lazy" class="size-full wp-image-1146" src="/assets/img/posts/2018/04/Add-three-messages-to-the-queue.jpg" alt="Add three messages to the queue" /></a>
   
-  <p id="caption-attachment-1146" class="wp-caption-text">
+  <p>
     Add three messages to the queue
   </p>
 </div>
@@ -339,10 +339,10 @@ The maximum size for a message in a queue is 64 KB, but it is best practice to k
 
 Messages are usually published by a different application from the application that listens for new messages to process them. For simplicity, I use the same application for publishing and listening in this demo. To de-queue a message use the following code:
 
-<div id="attachment_1147" style="width: 400px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg"><img aria-describedby="caption-attachment-1147" loading="lazy" class="size-full wp-image-1147" src="/assets/img/posts/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg" alt="Dequeue a single message from the queue which is not older than five minutes" width="390" height="105" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg"><img aria-describedby="caption-attachment-1147" loading="lazy" class="size-full wp-image-1147" src="/assets/img/posts/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg" alt="Dequeue a single message from the queue which is not older than five minutes" /></a>
   
-  <p id="caption-attachment-1147" class="wp-caption-text">
+  <p>
     Dequeue a single message from the queue which is not older than five minutes
   </p>
 </div>
@@ -353,10 +353,10 @@ The code returns the oldest message, which is not older than five minutes.
 
 A queue listener can be implemented as single-threaded (processing one message at a time) or multi-threaded (processing messages in a batch on separate threads). You can retrieve up to 32 messages from a queue using GetMessages() to process multiple messages in parallel. To get more than one message with GetMessages(), specify the number of items which should be de-queued:
 
-<div id="attachment_1148" style="width: 438px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Dequeue-multiple-messages-from-the-queue.jpg"><img aria-describedby="caption-attachment-1148" loading="lazy" class="size-full wp-image-1148" src="/assets/img/posts/2018/04/Dequeue-multiple-messages-from-the-queue.jpg" alt="Dequeue multiple messages from the queue" width="428" height="112" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Dequeue-multiple-messages-from-the-queue.jpg"><img aria-describedby="caption-attachment-1148" loading="lazy" class="size-full wp-image-1148" src="/assets/img/posts/2018/04/Dequeue-multiple-messages-from-the-queue.jpg" alt="Dequeue multiple messages from the queue" /></a>
   
-  <p id="caption-attachment-1148" class="wp-caption-text">
+  <p>
     Dequeue multiple messages from the queue
   </p>
 </div>

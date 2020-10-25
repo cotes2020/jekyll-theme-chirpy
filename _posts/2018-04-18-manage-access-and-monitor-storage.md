@@ -33,70 +33,70 @@ The following code creates an SAS token for a blob container with a start time a
 
 Add the following code to your App.config file and replace the placeholder with your account name and
 
-<div id="attachment_1111" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-the-connection-string-to-your-storage-account-to-the-App.config-file.jpg"><img aria-describedby="caption-attachment-1111" loading="lazy" class="wp-image-1111" src="/assets/img/posts/2018/04/Add-the-connection-string-to-your-storage-account-to-the-App.config-file.jpg" alt="Add the connection string to your storage account to the App.config file" width="700" height="80" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Add-the-connection-string-to-your-storage-account-to-the-App.config-file.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Add-the-connection-string-to-your-storage-account-to-the-App.config-file.jpg" alt="Add the connection string to your storage account to the App.config file" /></a>
   
-  <p id="caption-attachment-1111" class="wp-caption-text">
+  <p>
     Add the connection string to your storage account to the App.config file
   </p>
 </div>
 
 Use the following code to create an SAS token for your blob with read, write, delete and list rights. The token will expire in one hour.
 
-<div id="attachment_1112" style="width: 704px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-blob.jpg"><img aria-describedby="caption-attachment-1112" loading="lazy" class="size-full wp-image-1112" src="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-blob.jpg" alt="Create an SAS token for a blob" width="694" height="283" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-blob.jpg"><img aria-describedby="caption-attachment-1112" loading="lazy" class="size-full wp-image-1112" src="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-blob.jpg" alt="Create an SAS token for a blob" /></a>
   
-  <p id="caption-attachment-1112" class="wp-caption-text">
+  <p>
     Create an SAS token for a blob
   </p>
 </div>
 
 With the SAS token, you can access your container.
 
-<div id="attachment_1113" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Access-the-blob-container-with-the-SAS-token.jpg"><img aria-describedby="caption-attachment-1113" loading="lazy" class="wp-image-1113" src="/assets/img/posts/2018/04/Access-the-blob-container-with-the-SAS-token.jpg" alt="Access the blob container with the SAS token" width="700" height="154" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Access-the-blob-container-with-the-SAS-token.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Access-the-blob-container-with-the-SAS-token.jpg" alt="Access the blob container with the SAS token" /></a>
   
-  <p id="caption-attachment-1113" class="wp-caption-text">
+  <p>
     Access the blob container with the SAS token
   </p>
 </div>
 
 Use the following code to create an SAS token for your queue with read, add, update and processMessages rights. The token will expire in one hour.
 
-<div id="attachment_1114" style="width: 684px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-queue.jpg"><img aria-describedby="caption-attachment-1114" loading="lazy" class="wp-image-1114 size-full" src="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-queue.jpg" alt="Create an SAS token for a queue" width="674" height="252" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-queue.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-queue.jpg" alt="Create an SAS token for a queue" /></a>
   
-  <p id="caption-attachment-1114" class="wp-caption-text">
+  <p>
     Create an SAS token for a queue
   </p>
 </div>
 
 With the following code, you can access your queue and add a new message.
 
-<div id="attachment_1115" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Access-the-queue-with-the-SAS-token-and-add-a-new-message.jpg"><img aria-describedby="caption-attachment-1115" loading="lazy" class="wp-image-1115" src="/assets/img/posts/2018/04/Access-the-queue-with-the-SAS-token-and-add-a-new-message.jpg" alt="Access the queue with the SAS token and add a new message" width="700" height="126" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Access-the-queue-with-the-SAS-token-and-add-a-new-message.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Access-the-queue-with-the-SAS-token-and-add-a-new-message.jpg" alt="Access the queue with the SAS token and add a new message" /></a>
   
-  <p id="caption-attachment-1115" class="wp-caption-text">
+  <p>
     Access the queue with the SAS token and add a new message
   </p>
 </div>
 
 Use the following code to create an SAS token for your table with query, add, update and delete rights. The token will expire in one hour.
 
-<div id="attachment_1116" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-table.jpg"><img aria-describedby="caption-attachment-1116" loading="lazy" class="wp-image-1116" src="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-table.jpg" alt="Create an SAS token for a table" width="700" height="284" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-table.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-table.jpg" alt="Create an SAS token for a table" /></a>
   
-  <p id="caption-attachment-1116" class="wp-caption-text">
+  <p>
     Create an SAS token for a table
   </p>
 </div>
 
 With the SAS token, you can access your table.
 
-<div id="attachment_1117" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Access-the-table-with-the-SAS-token.jpg"><img aria-describedby="caption-attachment-1117" loading="lazy" class="wp-image-1117" src="/assets/img/posts/2018/04/Access-the-table-with-the-SAS-token.jpg" alt="Access the table with the SAS token" width="700" height="155" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Access-the-table-with-the-SAS-token.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Access-the-table-with-the-SAS-token.jpg" alt="Access the table with the SAS token" /></a>
   
-  <p id="caption-attachment-1117" class="wp-caption-text">
+  <p>
     Access the table with the SAS token
   </p>
 </div>
@@ -115,10 +115,10 @@ Additionally, to creating the SAS token in your code, you can create it in the A
   3. After you set your desired attributes, click on Generate SAS and connection string.
   4. Below the button can you find the SAS token and the URLs to your resources.
 
-<div id="attachment_1118" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-in-the-Azure-Portal.jpg"><img aria-describedby="caption-attachment-1118" loading="lazy" class="wp-image-1118" src="/assets/img/posts/2018/04/Create-an-SAS-token-in-the-Azure-Portal.jpg" alt="Create an SAS token in the Azure Portal to Monitor storage" width="700" height="390" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-in-the-Azure-Portal.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-an-SAS-token-in-the-Azure-Portal.jpg" alt="Create an SAS token in the Azure Portal to Monitor storage" /></a>
   
-  <p id="caption-attachment-1118" class="wp-caption-text">
+  <p>
     Create an SAS token in the Azure Portal
   </p>
 </div>
@@ -169,10 +169,10 @@ To regenerate your storage account keys, follow these steps:
   3. Click on Yes in the confirmation dialog.
   4. Your key is regenerated.
 
-<div id="attachment_1119" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Regenerate-the-primary-key.jpg"><img aria-describedby="caption-attachment-1119" loading="lazy" class="wp-image-1119" src="/assets/img/posts/2018/04/Regenerate-the-primary-key.jpg" alt="Regenerate the primary key" width="700" height="238" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Regenerate-the-primary-key.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Regenerate-the-primary-key.jpg" alt="Regenerate the primary key" /></a>
   
-  <p id="caption-attachment-1119" class="wp-caption-text">
+  <p>
     Regenerate the primary key
   </p>
 </div>
@@ -187,10 +187,10 @@ Cross-Origin Resource Sharing (CORS) enables web applications running in the bro
   2. Click on +Add at the top of the blade.
   3. On the Add CORS rule blade, enter your configuration
 
-<div id="attachment_1122" style="width: 316px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-new-CORS-rule-to-your-blob.jpg"><img aria-describedby="caption-attachment-1122" loading="lazy" class="size-full wp-image-1122" src="/assets/img/posts/2018/04/Add-a-new-CORS-rule-to-your-blob.jpg" alt="Add a new CORS rule to your blob" width="306" height="354" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Add-a-new-CORS-rule-to-your-blob.jpg"><img aria-describedby="caption-attachment-1122" loading="lazy" class="size-full wp-image-1122" src="/assets/img/posts/2018/04/Add-a-new-CORS-rule-to-your-blob.jpg" alt="Add a new CORS rule to your blob" /></a>
   
-  <p id="caption-attachment-1122" class="wp-caption-text">
+  <p>
     Add a new CORS rule to your blob
   </p>
 </div>
@@ -258,10 +258,10 @@ To configure storage metrics and retention for Blob, Table, and Queue services, 
   4. Set your desired settings and set a value for retention by moving the slider or entering a number between 0 and 365.
   5. Click Save.
 
-<div id="attachment_1128" style="width: 581px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Configure-your-storage-metrics-and-retention.jpg"><img aria-describedby="caption-attachment-1128" loading="lazy" class="wp-image-1128" src="/assets/img/posts/2018/04/Configure-your-storage-metrics-and-retention.jpg" alt="Configure your storage metrics and retention" width="571" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Configure-your-storage-metrics-and-retention.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Configure-your-storage-metrics-and-retention.jpg" alt="Configure your storage metrics and retention" /></a>
   
-  <p id="caption-attachment-1128" class="wp-caption-text">
+  <p>
     Configure your storage metrics and retention
   </p>
 </div>
@@ -279,10 +279,10 @@ To monitor metrics, follow these steps:
   1. In the Azure portal, go to your storage account and select Metrics under the Blob, File, Table or Queue Service menu.
   2. On the metrics blade, you can see graphs for the previously mentioned metrics.
 
-<div id="attachment_1126" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Metric-graphs.jpg"><img aria-describedby="caption-attachment-1126" loading="lazy" class="wp-image-1126" src="/assets/img/posts/2018/04/Metric-graphs.jpg" alt="Metric graphs" width="700" height="367" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Metric-graphs.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Metric-graphs.jpg" alt="Metric graphs" /></a>
   
-  <p id="caption-attachment-1126" class="wp-caption-text">
+  <p>
     Metric graphs
   </p>
 </div>
@@ -293,10 +293,10 @@ To monitor metrics, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1127" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/View-the-details-of-a-metric-and-modify-the-graph.jpg"><img aria-describedby="caption-attachment-1127" loading="lazy" class="wp-image-1127" src="/assets/img/posts/2018/04/View-the-details-of-a-metric-and-modify-the-graph.jpg" alt="View the details of a metric and modify the graph" width="700" height="381" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/View-the-details-of-a-metric-and-modify-the-graph.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/View-the-details-of-a-metric-and-modify-the-graph.jpg" alt="View the details of a metric and modify the graph" /></a>
   
-  <p id="caption-attachment-1127" class="wp-caption-text">
+  <p>
     View the details of a metric and modify the graph
   </p>
 </div>

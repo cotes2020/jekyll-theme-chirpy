@@ -17,10 +17,10 @@ docker run -p 32789:80 -p 32788:443 -e "ASPNETCORE_URLS=https://+;http://+" wolf
 
 This command sets a port mapping, adds an environment variable and starts the image customerapi from my Dockerhub repository. Executing this command will result in the following exception:
 
-<div id="attachment_1941" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Start-a-.net-core-application-without-a-certificate.jpg"><img aria-describedby="caption-attachment-1941" loading="lazy" class="wp-image-1941" src="/assets/img/posts/2020/04/Start-a-.net-core-application-without-a-certificate.jpg" alt="Start a .NET Core application without a certificate" width="700" height="133" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Start-a-.net-core-application-without-a-certificate.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Start-a-.net-core-application-without-a-certificate.jpg" alt="Start a .NET Core application without a certificate" /></a>
   
-  <p id="caption-attachment-1941" class="wp-caption-text">
+  <p>
     Start a .NET Core application without a certificate
   </p>
 </div>
@@ -32,10 +32,10 @@ As you can see, Kestrel can&#8217;t start because no certificate was specified a
 You can create a certificate with the following command: <span class="">dotnet dev-certs https -ep [Path of the certificate]-p [Password]. I create the certificate under D:\temp and set Password as its password.</span>
 
 <div>
-  <div id="attachment_1943" style="width: 710px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2020/04/Creating-the-certificate.jpg"><img aria-describedby="caption-attachment-1943" loading="lazy" class="wp-image-1943" src="/assets/img/posts/2020/04/Creating-the-certificate.jpg" alt="Creating the certificate to use ASP .Net Core with HTTPS in Docker" width="700" height="114" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2020/04/Creating-the-certificate.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Creating-the-certificate.jpg" alt="Creating the certificate to use ASP .Net Core with HTTPS in Docker" /></a>
     
-    <p id="caption-attachment-1943" class="wp-caption-text">
+    <p>
       Creating the certificate
     </p>
   </div>
@@ -51,20 +51,20 @@ After creating the certificate, you only have to share it with your container an
 docker run -p 32789:80 -p 32788:443 -e Kestrel\_\_Certificates\_\_Default\_\_Path=/app/Infrastructure/Certificate/certificate.pfx -e Kestrel\_\_Certificates\_\_Default\_\_Password=Password -e "ASPNETCORE_URLS=https://+;http://+"-v D:\temp\:/app/Infrastructure/Certificate wolfgangofner/customerapi  
 ```
 
-<div id="attachment_1944" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg"><img aria-describedby="caption-attachment-1944" loading="lazy" class="wp-image-1944" src="/assets/img/posts/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg" alt="Start a .NET Core application and provide a certificate" width="700" height="94" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg" alt="Start a .NET Core application and provide a certificate" /></a>
   
-  <p id="caption-attachment-1944" class="wp-caption-text">
+  <p>
     Start a .NET Core application and provide a certificate
   </p>
 </div>
 
 When you open https://localhost:32788, you should see the Swagger UI.
 
-<div id="attachment_1945" style="width: 545px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Testing-the-application-with-HTTPS.jpg"><img aria-describedby="caption-attachment-1945" loading="lazy" class="wp-image-1945 size-full" src="/assets/img/posts/2020/04/Testing-the-application-with-HTTPS.jpg" alt="Testing ASP .Net Core with HTTPS in Docker" width="535" height="497" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Testing-the-application-with-HTTPS.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/04/Testing-the-application-with-HTTPS.jpg" alt="Testing ASP .Net Core with HTTPS in Docker" /></a>
   
-  <p id="caption-attachment-1945" class="wp-caption-text">
+  <p>
     Testing the application with HTTPS
   </p>
 </div>

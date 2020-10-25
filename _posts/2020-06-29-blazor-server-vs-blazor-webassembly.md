@@ -46,10 +46,10 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/B
 
 In Visual Studio create a new project and select Blazor App and then Blazor Server App.
 
-<div id="attachment_2228" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Create-a-new-Blazor-Server-App.jpg"><img aria-describedby="caption-attachment-2228" loading="lazy" class="wp-image-2228" src="/assets/img/posts/2020/06/Create-a-new-Blazor-Server-App.jpg" alt="Create a new Blazor Server App" width="700" height="482" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Create-a-new-Blazor-Server-App.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Create-a-new-Blazor-Server-App.jpg" alt="Create a new Blazor Server App" /></a>
   
-  <p id="caption-attachment-2228" class="wp-caption-text">
+  <p>
     Create a new Blazor Server App
   </p>
 </div>
@@ -62,10 +62,10 @@ The template creates a sample application where you can increase a counter and l
 
 You can see the messages sent to the server when you open the developer tools, go to the Network tab and click the button several times.
 
-<div id="attachment_2229" style="width: 563px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/SignalR-messages-between-server-and-browser.png"><img aria-describedby="caption-attachment-2229" loading="lazy" class="size-full wp-image-2229" src="/assets/img/posts/2020/06/SignalR-messages-between-server-and-browser.png" alt="SignalR messages between server and browser" width="553" height="541" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/SignalR-messages-between-server-and-browser.png"><img aria-describedby="caption-attachment-2229" loading="lazy" class="size-full wp-image-2229" src="/assets/img/posts/2020/06/SignalR-messages-between-server-and-browser.png" alt="SignalR messages between server and browser" /></a>
   
-  <p id="caption-attachment-2229" class="wp-caption-text">
+  <p>
     SignalR messages between server and browser
   </p>
 </div>
@@ -74,20 +74,20 @@ You can see the messages sent to the server when you open the developer tools, g
 
 In Visual Studio create a new project and select Blazor App and then Blazor WebAssembly App.
 
-<div id="attachment_2230" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Create-a-new-Blazor-WebAssembly-App.png"><img aria-describedby="caption-attachment-2230" loading="lazy" class="wp-image-2230" src="/assets/img/posts/2020/06/Create-a-new-Blazor-WebAssembly-App.png" alt="Create a new Blazor WebAssembly App" width="700" height="484" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Create-a-new-Blazor-WebAssembly-App.png"><img loading="lazy" src="/assets/img/posts/2020/06/Create-a-new-Blazor-WebAssembly-App.png" alt="Create a new Blazor WebAssembly App" /></a>
   
-  <p id="caption-attachment-2230" class="wp-caption-text">
+  <p>
     Create a new Blazor WebAssembly App
   </p>
 </div>
 
 Creating a WASM App creates three projects: client, server, and shared whereas shared is a .Net Standard project. Start the application, open the Network tab of the developer tools and you will see that 6.6 MB got downloaded. If you start the application in Release mode, only 2.3 MB are downloaded. Switching to Release turns on the linker and therefore only necessary files are sent.
 
-<div id="attachment_2231" style="width: 400px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/All-the-files-which-are-sent-to-the-client.jpg"><img aria-describedby="caption-attachment-2231" loading="lazy" class="wp-image-2231" src="/assets/img/posts/2020/06/All-the-files-which-are-sent-to-the-client.jpg" alt="All the files which are sent to the client" width="390" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/All-the-files-which-are-sent-to-the-client.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/All-the-files-which-are-sent-to-the-client.jpg" alt="All the files which are sent to the client" /></a>
   
-  <p id="caption-attachment-2231" class="wp-caption-text">
+  <p>
     All the files which are sent to the client
   </p>
 </div>

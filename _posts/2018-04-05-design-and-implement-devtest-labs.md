@@ -16,10 +16,10 @@ To add a new DevTest Lab, follow these steps:
   3. Enter a Lab name, Subscription, Location and optionally add a Name and Value for tagging.
   4. By default, the Auto-shutdown option is enabled. This feature can help you save costs. Click on it, if you want to disable it or if you want to change the time for the shutdown.
 
-<div id="attachment_1016" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1016" loading="lazy" class="wp-image-1016" src="/assets/img/posts/2018/03/Create-a-DevTest-Lab.jpg" alt="Create a DevTest Lab" width="700" height="389" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Create-a-DevTest-Lab.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-a-DevTest-Lab.jpg" alt="Create a DevTest Lab" /></a>
   
-  <p id="caption-attachment-1016" class="wp-caption-text">
+  <p>
     Create a DevTest Lab
   </p>
 </div>
@@ -37,10 +37,10 @@ The deployment process creates a new resource group with the following resources
   * A Storage account
   * A virtual network
 
-<div id="attachment_1017" style="width: 675px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Deployed-resources.jpg"><img aria-describedby="caption-attachment-1017" loading="lazy" class="size-full wp-image-1017" src="/assets/img/posts/2018/03/Deployed-resources.jpg" alt="Deployed resources" width="665" height="218" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Deployed-resources.jpg"><img aria-describedby="caption-attachment-1017" loading="lazy" class="size-full wp-image-1017" src="/assets/img/posts/2018/03/Deployed-resources.jpg" alt="Deployed resources" /></a>
   
-  <p id="caption-attachment-1017" class="wp-caption-text">
+  <p>
     Deployed resources
   </p>
 </div>
@@ -53,10 +53,10 @@ After the DevTest Lab is deployed, you can add a VM to it following these steps:
   2. On the Choose a base blade, select your desired image for your VM.
   3. Selecting an image opens the Virtual machine blade. Provide a machine name, user name, password, the size of your VM and optionally artifacts. Artifacts are third-party tools like Chrome or Git.
 
-<div id="attachment_1022" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1022" loading="lazy" class="wp-image-1022" src="/assets/img/posts/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg" alt="Create a Windows 2016 Server for your DevTest Lab" width="700" height="493" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-a-Windows-2016-Server-for-your-DevTest-Lab.jpg" alt="Create a Windows 2016 Server for your DevTest Lab" /></a>
   
-  <p id="caption-attachment-1022" class="wp-caption-text">
+  <p>
     Create a Windows 2016 Server for your DevTest Lab
   </p>
 </div>
@@ -74,10 +74,10 @@ After the VM is created, the ownership is assigned to the creator but it can be 
   1. Click on the VM, you want to unclaim in your DevTest Lab.
   2. On the top of the Overview blade click on unclaim.
 
-<div id="attachment_1021" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Unclaim-a-VM.jpg"><img aria-describedby="caption-attachment-1021" loading="lazy" class="wp-image-1021" src="/assets/img/posts/2018/03/Unclaim-a-VM.jpg" alt="Unclaim a VM" width="700" height="161" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Unclaim-a-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Unclaim-a-VM.jpg" alt="Unclaim a VM" /></a>
   
-  <p id="caption-attachment-1021" class="wp-caption-text">
+  <p>
     Unclaim a VM
   </p>
 </div>
@@ -111,10 +111,10 @@ To create a custom image from a provisioned VM using the Azure Portal, follow th
 
   1. In your DevTest lab, select All virtual machines under the My Lab menu and then click on the VM, you want to use as a base for your image.
 
-<div id="attachment_1020" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg"><img aria-describedby="caption-attachment-1020" loading="lazy" class="wp-image-1020" src="/assets/img/posts/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg" alt="All virtual machines in your DevTest Lab" width="700" height="411" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/All-virtual-machines-in-your-DevTest-Lab.jpg" alt="All virtual machines in your DevTest Lab" /></a>
   
-  <p id="caption-attachment-1020" class="wp-caption-text">
+  <p>
     All virtual machines in your DevTest Lab
   </p>
 </div>
@@ -131,10 +131,10 @@ To create a custom image from a provisioned VM using the Azure Portal, follow th
   </li>
 </ol>
 
-<div id="attachment_1023" style="width: 315px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-custom-image.jpg"><img aria-describedby="caption-attachment-1023" loading="lazy" class="size-full wp-image-1023" src="/assets/img/posts/2018/03/Create-a-custom-image.jpg" alt="Create a custom image" width="305" height="400" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Create-a-custom-image.jpg"><img aria-describedby="caption-attachment-1023" loading="lazy" class="size-full wp-image-1023" src="/assets/img/posts/2018/03/Create-a-custom-image.jpg" alt="Create a custom image" /></a>
   
-  <p id="caption-attachment-1023" class="wp-caption-text">
+  <p>
     Create a custom image
   </p>
 </div>
@@ -156,10 +156,10 @@ To delete a custom image, follow these steps:
   2. On the Configuration and policies blade, select Custom images under the Virtual Machine Bases menu and click the three dots next to the image which you want to delete.
   3. Click delete and select Yes in the confirmation dialog.
 
-<div id="attachment_1024" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/03/Delete-a-custom-image.jpg"><img aria-describedby="caption-attachment-1024" loading="lazy" class="wp-image-1024" src="/assets/img/posts/2018/03/Delete-a-custom-image.jpg" alt="Delete a custom image" width="700" height="98" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/03/Delete-a-custom-image.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Delete-a-custom-image.jpg" alt="Delete a custom image" /></a>
   
-  <p id="caption-attachment-1024" class="wp-caption-text">
+  <p>
     Delete a custom image
   </p>
 </div>
@@ -195,10 +195,10 @@ To create a formula from a base, follow these steps:
   7. On the Advanced blade, you can configure the IP address and the automatic delete options.
   8. After you are done with the configuration, click Create to create the formula.
 
-<div id="attachment_1027" style="width: 691px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-new-formula.jpg"><img aria-describedby="caption-attachment-1027" loading="lazy" class="wp-image-1027" src="/assets/img/posts/2018/04/Create-a-new-formula.jpg" alt="Create a new formula" width="681" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-a-new-formula.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-a-new-formula.jpg" alt="Create a new formula" /></a>
   
-  <p id="caption-attachment-1027" class="wp-caption-text">
+  <p>
     Create a new formula
   </p>
 </div>
@@ -209,10 +209,10 @@ To create a formula from a VM, follow these steps:
 
   1. In your DevTest Labs instance, on the Overview blade, select the VM from which you want to create the new formula.
 
-<div id="attachment_1028" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Select-a-VM-for-your-formula.jpg"><img aria-describedby="caption-attachment-1028" loading="lazy" class="wp-image-1028" src="/assets/img/posts/2018/04/Select-a-VM-for-your-formula.jpg" alt="Select a VM for your formula" width="700" height="221" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Select-a-VM-for-your-formula.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Select-a-VM-for-your-formula.jpg" alt="Select a VM for your formula" /></a>
   
-  <p id="caption-attachment-1028" class="wp-caption-text">
+  <p>
     Select a VM for your formula
   </p>
 </div>
@@ -226,10 +226,10 @@ To create a formula from a VM, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1029" style="width: 326px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-new-formula-from-a-VM.jpg"><img aria-describedby="caption-attachment-1029" loading="lazy" class="size-full wp-image-1029" src="/assets/img/posts/2018/04/Create-a-new-formula-from-a-VM.jpg" alt="Create a new formula from a VM" width="316" height="376" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Create-a-new-formula-from-a-VM.jpg"><img aria-describedby="caption-attachment-1029" loading="lazy" class="size-full wp-image-1029" src="/assets/img/posts/2018/04/Create-a-new-formula-from-a-VM.jpg" alt="Create a new formula from a VM" /></a>
   
-  <p id="caption-attachment-1029" class="wp-caption-text">
+  <p>
     Create a new formula from a VM
   </p>
 </div>
@@ -243,10 +243,10 @@ To modify the properties of an existing formula, follow these steps:
   3. Select the formula you wish to modify.
   4. Make your changes on the Update formula blade and select Update when you are finished.
 
-<div id="attachment_1030" style="width: 685px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Modify-an-existing-formula.jpg"><img aria-describedby="caption-attachment-1030" loading="lazy" class="size-full wp-image-1030" src="/assets/img/posts/2018/04/Modify-an-existing-formula.jpg" alt="Modify an existing formula" width="675" height="650" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Modify-an-existing-formula.jpg"><img aria-describedby="caption-attachment-1030" loading="lazy" class="size-full wp-image-1030" src="/assets/img/posts/2018/04/Modify-an-existing-formula.jpg" alt="Modify an existing formula" /></a>
   
-  <p id="caption-attachment-1030" class="wp-caption-text">
+  <p>
     Modify an existing formula
   </p>
 </div>
@@ -259,10 +259,10 @@ To delete an existing formula, follow these steps:
   2. On the Configuration and policies blade, select Formulas (reusable bases) under the Virtual Machine Bases menu.
   3. Click on the ellipsis to the right of the formula you want to delete and click Delete in the context menu.
 
-<div id="attachment_1031" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Delete-an-existing-formula.jpg"><img aria-describedby="caption-attachment-1031" loading="lazy" class="wp-image-1031" src="/assets/img/posts/2018/04/Delete-an-existing-formula.jpg" alt="Delete an existing formula" width="700" height="123" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Delete-an-existing-formula.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Delete-an-existing-formula.jpg" alt="Delete an existing formula" /></a>
   
-  <p id="caption-attachment-1031" class="wp-caption-text">
+  <p>
     Delete an existing formula
   </p>
 </div>
@@ -286,10 +286,10 @@ You can configure that the creation of only specific VM sizes is allowed. To do 
   3. On the Allowed virtual machine move the slider to On and then check each VM size which you want to be allowed to be created.
   4. Click Save on the top of the blade when you are finished.
 
-<div id="attachment_1032" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg"><img aria-describedby="caption-attachment-1032" loading="lazy" class="wp-image-1032" src="/assets/img/posts/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg" alt="Enable allowed virtual machine sizes policy" width="700" height="496" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Enable-allowed-virtual-machine-sizes-policy.jpg" alt="Enable allowed virtual machine sizes policy" /></a>
   
-  <p id="caption-attachment-1032" class="wp-caption-text">
+  <p>
     Enable allowed virtual machine sizes policy
   </p>
 </div>
@@ -304,10 +304,10 @@ It is also possible to limit the number of virtual machines an user can create. 
   4. After you enabled a limitation, provide a number for the limit. The default value is 1.
   5. Click Save.
 
-<div id="attachment_1033" style="width: 698px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg"><img aria-describedby="caption-attachment-1033" loading="lazy" class="size-full wp-image-1033" src="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg" alt="Limit the number of virtual machines and premium OS disks per user" width="688" height="373" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg"><img aria-describedby="caption-attachment-1033" loading="lazy" class="size-full wp-image-1033" src="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg" alt="Limit the number of virtual machines and premium OS disks per user" /></a>
   
-  <p id="caption-attachment-1033" class="wp-caption-text">
+  <p>
     Limit the number of virtual machines and premium OS disks per user
   </p>
 </div>
@@ -324,10 +324,10 @@ To specify the maximum number of VMs that can be created in your current lab, fo
   4. After you enabled a limitation, provide a number for the limit. The default value is 1.
   5. Click Save.
 
-<div id="attachment_1034" style="width: 684px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg"><img aria-describedby="caption-attachment-1034" loading="lazy" class="size-full wp-image-1034" src="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg" alt="Limit the number of virtual machines and premium OS disks per lab" width="674" height="402" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg"><img aria-describedby="caption-attachment-1034" loading="lazy" class="size-full wp-image-1034" src="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg" alt="Limit the number of virtual machines and premium OS disks per lab" /></a>
   
-  <p id="caption-attachment-1034" class="wp-caption-text">
+  <p>
     Limit the number of virtual machines and premium OS disks per lab
   </p>
 </div>
@@ -344,10 +344,10 @@ To enable auto-shutdown, follow these steps:
   4. Configure the shutdown time and optionally enable sending a notification and provide a webhook URL or an email address. The notification will be sent 15 minutes prior the shutdown.
   5. Click Save.
 
-<div id="attachment_1035" style="width: 661px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Configure-auto-shutdown-policy.jpg"><img aria-describedby="caption-attachment-1035" loading="lazy" class="size-full wp-image-1035" src="/assets/img/posts/2018/04/Configure-auto-shutdown-policy.jpg" alt="Configure auto-shutdown policy" width="651" height="593" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Configure-auto-shutdown-policy.jpg"><img aria-describedby="caption-attachment-1035" loading="lazy" class="size-full wp-image-1035" src="/assets/img/posts/2018/04/Configure-auto-shutdown-policy.jpg" alt="Configure auto-shutdown policy" /></a>
   
-  <p id="caption-attachment-1035" class="wp-caption-text">
+  <p>
     Configure auto-shutdown policy
   </p>
 </div>
@@ -358,10 +358,10 @@ Once configured, the auto-shutdown policy will be applied to all VMs in the lab.
   2. On the VM blade select Auto-shutdown under the Operations menu. There you can see the same attributes as before but if you change them here, you only change the settings for this VM.
   3. After all changes are made, click Save.
 
-<div id="attachment_1036" style="width: 687px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg"><img aria-describedby="caption-attachment-1036" loading="lazy" class="size-full wp-image-1036" src="/assets/img/posts/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg" alt="Configure auto-shutdown policy for an individual VM" width="677" height="448" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg"><img aria-describedby="caption-attachment-1036" loading="lazy" class="size-full wp-image-1036" src="/assets/img/posts/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg" alt="Configure auto-shutdown policy for an individual VM" /></a>
   
-  <p id="caption-attachment-1036" class="wp-caption-text">
+  <p>
     Configure auto-shutdown policy for an individual VM
   </p>
 </div>
@@ -377,10 +377,10 @@ Besides auto-shutdown, you can also configure an auto-start policy. To do that f
   3. Move the slider to On and then configure the start time and on which days the VMs should start.
   4. Click Save
 
-<div id="attachment_1037" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Configure-auto-start-policy.jpg"><img aria-describedby="caption-attachment-1037" loading="lazy" class="wp-image-1037" src="/assets/img/posts/2018/04/Configure-auto-start-policy.jpg" alt="Configure auto-start policy" width="700" height="418" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Configure-auto-start-policy.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Configure-auto-start-policy.jpg" alt="Configure auto-start policy" /></a>
   
-  <p id="caption-attachment-1037" class="wp-caption-text">
+  <p>
     Configure auto-start policy
   </p>
 </div>
@@ -393,10 +393,10 @@ Once configured, the auto-start policy will be applied to all VMs in the lab. Yo
   2. On the VM blade select Auto-start under the Operations menu. There you can see move the slider to On or Off to enable or disable auto-start.
   3. Click Save.
 
-<div id="attachment_1038" style="width: 652px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Disable-auto-start-for-a-specific-VM.jpg"><img aria-describedby="caption-attachment-1038" loading="lazy" class="size-full wp-image-1038" src="/assets/img/posts/2018/04/Disable-auto-start-for-a-specific-VM.jpg" alt="Disable auto-start for a specific VM" width="642" height="441" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Disable-auto-start-for-a-specific-VM.jpg"><img aria-describedby="caption-attachment-1038" loading="lazy" class="size-full wp-image-1038" src="/assets/img/posts/2018/04/Disable-auto-start-for-a-specific-VM.jpg" alt="Disable auto-start for a specific VM" /></a>
   
-  <p id="caption-attachment-1038" class="wp-caption-text">
+  <p>
     Disable auto-start for a specific VM
   </p>
 </div>
@@ -409,10 +409,10 @@ The expiration date policy ensures that VMs are automatically deleted at a speci
   2. On the Advanced blade click the calendar icon under Expiration date and select the date when the VM should be deleted. Next, select the time.
   3. Click OK and then Create.
 
-<div id="attachment_1039" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Set-the-expiration-date-policy.jpg"><img aria-describedby="caption-attachment-1039" loading="lazy" class="wp-image-1039" src="/assets/img/posts/2018/04/Set-the-expiration-date-policy.jpg" alt="Set the expiration date policy" width="700" height="538" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Set-the-expiration-date-policy.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Set-the-expiration-date-policy.jpg" alt="Set the expiration date policy" /></a>
   
-  <p id="caption-attachment-1039" class="wp-caption-text">
+  <p>
     Set the expiration date policy
   </p>
 </div>
@@ -430,10 +430,10 @@ To view the monthly estimated cost trend chart follow these steps:
   1. In your DevTest Labs instance, select Configuration and policies under the Settings menu.
   2. On the Configuration and policies blade, select Cost trend under the Cost Tracking menu.
 
-<div id="attachment_1052" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/The-Cost-trend-chart.jpg"><img aria-describedby="caption-attachment-1052" loading="lazy" class="wp-image-1052" src="/assets/img/posts/2018/04/The-Cost-trend-chart.jpg" alt="The Cost trend chart" width="700" height="334" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/The-Cost-trend-chart.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/The-Cost-trend-chart.jpg" alt="The Cost trend chart" /></a>
   
-  <p id="caption-attachment-1052" class="wp-caption-text">
+  <p>
     The Cost trend chart
   </p>
 </div>
@@ -444,10 +444,10 @@ To modify the Cost trend chart follow these steps:
   2. On the Manage target blade, you can modify the date interval of the chart and also set a cost target threshold and notifications via webhook when a certain amount is reached.
   3. Click OK to save your changes.
 
-<div id="attachment_1042" style="width: 596px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Modify-the-cost-trend-chart.jpg"><img aria-describedby="caption-attachment-1042" loading="lazy" class="wp-image-1042" src="/assets/img/posts/2018/04/Modify-the-cost-trend-chart.jpg" alt="Modify the cost trend chart" width="586" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Modify-the-cost-trend-chart.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Modify-the-cost-trend-chart.jpg" alt="Modify the cost trend chart" /></a>
   
-  <p id="caption-attachment-1042" class="wp-caption-text">
+  <p>
     Modify the cost trend chart
   </p>
 </div>
@@ -460,10 +460,10 @@ With cost by resource, you get a breakdown of your costs of each resource. To do
   2. On the Configuration and policies blade, select Cost by resource under the Cost Tracking menu.
   3. All your resources of the lab are listed on the Cost by resource blade.
 
-<div id="attachment_1053" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Your-costs-by-resource.jpg"><img aria-describedby="caption-attachment-1053" loading="lazy" class="wp-image-1053" src="/assets/img/posts/2018/04/Your-costs-by-resource.jpg" alt="Your costs by resource" width="700" height="184" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Your-costs-by-resource.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Your-costs-by-resource.jpg" alt="Your costs by resource" /></a>
   
-  <p id="caption-attachment-1053" class="wp-caption-text">
+  <p>
     Your costs by resource
   </p>
 </div>
@@ -488,10 +488,10 @@ Owners and users can be added at the lab level via the Azure Portal. This also i
   4. Enter the name or email address and select the user.
   5. Click Save.
 
-<div id="attachment_1043" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-user-to-the-lab.jpg"><img aria-describedby="caption-attachment-1043" loading="lazy" class="wp-image-1043" src="/assets/img/posts/2018/04/Add-a-user-to-the-lab.jpg" alt="Add a user to the lab" width="700" height="307" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Add-a-user-to-the-lab.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Add-a-user-to-the-lab.jpg" alt="Add a user to the lab" /></a>
   
-  <p id="caption-attachment-1043" class="wp-caption-text">
+  <p>
     Add a user to the lab
   </p>
 </div>
@@ -504,10 +504,10 @@ Additionally to the Azure portal, you can add an external user to your Azure Dev
   2. On the All users blade, click +New guest user on the top of the blade.
   3. Enter the email of the user you want to add as a guest and optionally include a message for the invitation.
 
-<div id="attachment_1054" style="width: 326px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg"><img aria-describedby="caption-attachment-1054" loading="lazy" class="wp-image-1054 size-full" src="/assets/img/posts/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg" alt="Add a user as a guest to your Active Directory" width="316" height="338" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg" alt="Add a user as a guest to your Active Directory" /></a>
   
-  <p id="caption-attachment-1054" class="wp-caption-text">
+  <p>
     Add a user as a guest to your Active Directory
   </p>
 </div>
@@ -518,10 +518,10 @@ Additionally to the Azure portal, you can add an external user to your Azure Dev
   </li>
 </ol>
 
-<div id="attachment_1055" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg"><img aria-describedby="caption-attachment-1055" loading="lazy" class="wp-image-1055" src="/assets/img/posts/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg" alt="The Azure Active Directory with the new guest user" width="700" height="133" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/The-Azure-Active-Directory-with-the-new-guest-user.jpg" alt="The Azure Active Directory with the new guest user" /></a>
   
-  <p id="caption-attachment-1055" class="wp-caption-text">
+  <p>
     The Azure Active Directory with the new guest user
   </p>
 </div>
@@ -545,20 +545,20 @@ Now, you can add the user to your lab using PowerShell, following these steps:
   5. Assign the role to the user: 
       * New-AzureRmRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName &#8216;DevTest Labs User&#8217; -Scope $labId
 
-<div id="attachment_1056" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg"><img aria-describedby="caption-attachment-1056" loading="lazy" class="wp-image-1056" src="/assets/img/posts/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg" alt="Add a user to your lab with PowerShell" width="700" height="296" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Add-a-user-to-your-lab-with-PowerShell.jpg" alt="Add a user to your lab with PowerShell" /></a>
   
-  <p id="caption-attachment-1056" class="wp-caption-text">
+  <p>
     Add a user to your lab with PowerShell
   </p>
 </div>
 
 After you are done, the user will appear in your lab&#8217;s Active Directory. To verify it go to your Azure DevTest Labs &#8211;> Configuration and policies &#8211;> Access control (IAM). There, you can see the previously added user with his assigned role.
 
-<div id="attachment_1057" style="width: 711px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg"><img aria-describedby="caption-attachment-1057" loading="lazy" class="wp-image-1057" src="/assets/img/posts/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg" alt="Confirm that the user has been added to your lab" width="701" height="363" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Confirm-that-the-user-has-been-added-to-your-lab.jpg" alt="Confirm that the user has been added to your lab" /></a>
   
-  <p id="caption-attachment-1057" class="wp-caption-text">
+  <p>
     Confirm that the user has been added to your lab
   </p>
 </div>
@@ -572,10 +572,10 @@ You can give your lab users Contributor access rights. This enables them to edit
   3. Select Contributor to give users the Contributor access rights.
   4. Click Save
 
-<div id="attachment_1046" style="width: 477px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg"><img aria-describedby="caption-attachment-1046" loading="lazy" class="size-full wp-image-1046" src="/assets/img/posts/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg" alt="Give users the Contributor or Reader access rights" width="467" height="239" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg"><img aria-describedby="caption-attachment-1046" loading="lazy" class="size-full wp-image-1046" src="/assets/img/posts/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg" alt="Give users the Contributor or Reader access rights" /></a>
   
-  <p id="caption-attachment-1046" class="wp-caption-text">
+  <p>
     Give users the Contributor or Reader access rights
   </p>
 </div>
@@ -608,10 +608,10 @@ To add a repository to your Azure DevTest Labs using the Azure portal, follow th
   4. Enter either a folder path that starts with / and is relative to your Git clone URI or your ARM template definition.
   5. Click Save.
 
-<div id="attachment_1051" style="width: 587px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg"><img aria-describedby="caption-attachment-1051" loading="lazy" class="size-full wp-image-1051" src="/assets/img/posts/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg" alt="Add a repository with templates to your Azure DevTest Labs" width="577" height="526" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg"><img aria-describedby="caption-attachment-1051" loading="lazy" class="size-full wp-image-1051" src="/assets/img/posts/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg" alt="Add a repository with templates to your Azure DevTest Labs" /></a>
   
-  <p id="caption-attachment-1051" class="wp-caption-text">
+  <p>
     Add a repository with templates to your Azure DevTest Labs
   </p>
 </div>

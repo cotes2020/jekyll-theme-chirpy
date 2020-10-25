@@ -23,30 +23,30 @@ I want to do some calculation and then save the result somewhere. The algorithm 
 
 The first step, BeforeCalculation can&#8217;t be overridden by the subclasses and therefore will always be executed. The second step of the algorithm, CalculateSomething can be overridden. The classes CalculatorOracle and CalculatorSqlAzure override this method and do their own calculations. The CalculatorSqlAzure also overrides the property Result.
 
-<div id="attachment_472" style="width: 351px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg"><img aria-describedby="caption-attachment-472" loading="lazy" class="size-full wp-image-472" src="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg" alt="Implementation of CalculateSomething in the CalculatorSqlAzure class" width="341" height="140" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg"><img aria-describedby="caption-attachment-472" loading="lazy" class="size-full wp-image-472" src="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg" alt="Implementation of CalculateSomething in the CalculatorSqlAzure class" /></a>
   
-  <p id="caption-attachment-472" class="wp-caption-text">
+  <p>
     Implementation of CalculateSomething in the CalculatorSqlAzure class
   </p>
 </div>
 
 The CalculatorOracle class only overrides the CalculateSomething method.
 
-<div id="attachment_473" style="width: 332px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg"><img aria-describedby="caption-attachment-473" loading="lazy" class="size-full wp-image-473" src="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg" alt="Implementation of CalculateSomething in the CalculatorOracle class" width="322" height="84" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg"><img aria-describedby="caption-attachment-473" loading="lazy" class="size-full wp-image-473" src="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg" alt="Implementation of CalculateSomething in the CalculatorOracle class" /></a>
   
-  <p id="caption-attachment-473" class="wp-caption-text">
+  <p>
     Implementation of CalculateSomething in the CalculatorOracle class
   </p>
 </div>
 
 The third and last step, SaveResult is only overridden by the CalculatorSqlAzure class. This means that the CalculatorOracle class uses the method provided by the Calculator.
 
-<div id="attachment_474" style="width: 486px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg"><img aria-describedby="caption-attachment-474" loading="lazy" class="wp-image-474 size-full" src="/assets/img/posts/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg" alt="Overridden SaveResult method in the CalculatorSqlAzure class" width="476" height="94" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg" alt="Overridden SaveResult method in the CalculatorSqlAzure class" /></a>
   
-  <p id="caption-attachment-474" class="wp-caption-text">
+  <p>
     Overridden SaveResult method in the CalculatorSqlAzure class
   </p>
 </div>

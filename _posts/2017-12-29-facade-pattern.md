@@ -29,10 +29,10 @@ The UML diagram for the facade pattern is pretty empty. It only shows the facade
 
 In this example, I am implementing a fake API which provides information for books. The API has three methods: LookUpAuthor, LookUpPublisher and LookUpTitle. All three methods take the ISBN as string Parameter and also return a string. To get the information for a specific ISBN, every method has to be called.
 
-<div id="attachment_447" style="width: 538px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/WithoutFacadePattern.jpg"><img aria-describedby="caption-attachment-447" loading="lazy" class="size-full wp-image-447" src="/assets/img/posts/2017/12/WithoutFacadePattern.jpg" alt="Implementation of API calls without the Facade Pattern" width="528" height="308" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/WithoutFacadePattern.jpg"><img aria-describedby="caption-attachment-447" loading="lazy" class="size-full wp-image-447" src="/assets/img/posts/2017/12/WithoutFacadePattern.jpg" alt="Implementation of API calls without the Facade Pattern" /></a>
   
-  <p id="caption-attachment-447" class="wp-caption-text">
+  <p>
     Implementation of API calls without the Facade Pattern
   </p>
 </div>
@@ -47,20 +47,20 @@ To hide all the service calls, I implement a facade which takes the ISBN as Para
 
 Implementing a facade is pretty simple. I move all the service calls into a separate class called Book Service. This class exposes only one method, LookUpBookInformation which takes the ISBN as a parameter and returns a book object. Inside the LookUpBookInformation method, I implement all the service calls which were in the main method before. The return value of every service call is mapped to a property of the book object.
 
-<div id="attachment_448" style="width: 468px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Implementation-of-the-BookService-class.jpg"><img aria-describedby="caption-attachment-448" loading="lazy" class="size-full wp-image-448" src="/assets/img/posts/2017/12/Implementation-of-the-BookService-class.jpg" alt="Implementation of the BookService class" width="458" height="287" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Implementation-of-the-BookService-class.jpg"><img aria-describedby="caption-attachment-448" loading="lazy" class="size-full wp-image-448" src="/assets/img/posts/2017/12/Implementation-of-the-BookService-class.jpg" alt="Implementation of the BookService class" /></a>
   
-  <p id="caption-attachment-448" class="wp-caption-text">
+  <p>
     Implementation of the BookService class
   </p>
 </div>
 
 With this implementation, i can tidy up the main method and end up with only one method call.
 
-<div id="attachment_449" style="width: 562px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Invoking-the-BookService.jpg"><img aria-describedby="caption-attachment-449" loading="lazy" class="size-full wp-image-449" src="/assets/img/posts/2017/12/Invoking-the-BookService.jpg" alt="Invoking the BookService" width="552" height="213" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Invoking-the-BookService.jpg"><img aria-describedby="caption-attachment-449" loading="lazy" class="size-full wp-image-449" src="/assets/img/posts/2017/12/Invoking-the-BookService.jpg" alt="Invoking the BookService" /></a>
   
-  <p id="caption-attachment-449" class="wp-caption-text">
+  <p>
     Invoking the BookService
   </p>
 </div>

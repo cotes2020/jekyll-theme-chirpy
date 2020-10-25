@@ -29,10 +29,10 @@ To keep it simple, I will use an in-memory database. During the implementation, 
 
 I created a solution for each microservice. You can see the structure of the microservices on the following screenshot.
 
-<div id="attachment_1867" style="width: 264px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Structure-of-the-Order-Microservice.jpg"><img aria-describedby="caption-attachment-1867" loading="lazy" class="wp-image-1867 size-full" title="Structure of the Order Microservice" src="/assets/img/posts/2020/04/Structure-of-the-Order-Microservice.jpg" alt="Structure of the Order Microservice" width="254" height="212" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Structure-of-the-Order-Microservice.jpg"><img loading="lazy" size-full" title="Structure of the Order Microservice" src="/assets/img/posts/2020/04/Structure-of-the-Order-Microservice.jpg" alt="Structure of the Order Microservice" /></a>
   
-  <p id="caption-attachment-1867" class="wp-caption-text">
+  <p>
     Structure of the Order Microservice
   </p>
 </div>
@@ -109,10 +109,10 @@ public class CreateCustomerModelValidator : AbstractValidator<CreateCustomerMode
 
 In the Startup.cs, I register my services, validators and configure other parts of the application like AutoMapper, the database context or Swagger. This part should be self-explanatory and I will talk about <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">Swagger</a> or <a href="/rabbitmq-in-an-asp-net-core-3-1-microservice" target="_blank" rel="noopener noreferrer">RabbitMQ</a> later.
 
-<div id="attachment_2475" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Register-the-classes-and-configure-the-services.jpg"><img aria-describedby="caption-attachment-2475" loading="lazy" class="wp-image-2475" src="/assets/img/posts/2020/04/Register-the-classes-and-configure-the-services.jpg" alt="Register the classes and configure the services" width="700" height="439" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Register-the-classes-and-configure-the-services.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Register-the-classes-and-configure-the-services.jpg" alt="Register the classes and configure the services" /></a>
   
-  <p id="caption-attachment-2475" class="wp-caption-text">
+  <p>
     Register the classes and configure the services
   </p>
 </div>
@@ -359,10 +359,10 @@ This line would register a background service that listens to change in the queu
 
 After you made the changes to both APIs, you can start them. This should display the Swagger GUI which gives you information about all actions and models and also lets you send requests. The GUI should be self-explanatory but <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">I will talk more about it in my next post</a>.
 
-<div id="attachment_1881" style="width: 556px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg"><img aria-describedby="caption-attachment-1881" loading="lazy" class="size-full wp-image-1881" src="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg" alt="The Swagger GUI with the available actions and models" width="546" height="627" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg"><img aria-describedby="caption-attachment-1881" loading="lazy" class="size-full wp-image-1881" src="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg" alt="The Swagger GUI with the available actions and models" /></a>
   
-  <p id="caption-attachment-1881" class="wp-caption-text">
+  <p>
     The Swagger GUI with the available actions and models
   </p>
 </div>

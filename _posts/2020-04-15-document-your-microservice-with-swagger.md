@@ -39,10 +39,10 @@ app.UseSwaggerUI(c =>
 
 That&#8217;s all you have to configure in Swagger. Now I only have to make two adjustments to the starting project. First, I tell the project to create the XML file by opening the properties of the project. Go to the Build tab and check XML documentation file. It is important that you use All Configurations as Configuration in the dropdown on top All Configurations.
 
-<div id="attachment_1889" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Create-the-XML-documentation-file.jpg"><img aria-describedby="caption-attachment-1889" loading="lazy" class="wp-image-1889" src="/assets/img/posts/2020/04/Create-the-XML-documentation-file.jpg" alt="Create the XML documentation file" width="700" height="682" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Create-the-XML-documentation-file.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Create-the-XML-documentation-file.jpg" alt="Create the XML documentation file" /></a>
   
-  <p id="caption-attachment-1889" class="wp-caption-text">
+  <p>
     Create the XML documentation file
   </p>
 </div>
@@ -125,10 +125,10 @@ services.AddSwaggerGen(c =>
 
 Everything is set up and when you start the application, you should see the Swagger UI.
 
-<div id="attachment_1893" style="width: 565px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Swagger-UI.jpg"><img aria-describedby="caption-attachment-1893" loading="lazy" class="wp-image-1893" src="/assets/img/posts/2020/04/Swagger-UI.jpg" alt="Swagger UI" width="555" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Swagger-UI.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Swagger-UI.jpg" alt="Swagger UI" /></a>
   
-  <p id="caption-attachment-1893" class="wp-caption-text">
+  <p>
     Swagger UI
   </p>
 </div>
@@ -137,20 +137,20 @@ On top of the page, you can see my headline and my contact information. Then you
 
 When you click on an action, it opens and shows you information about the parameter, and also shows the responses which I added previously in the XML comment.
 
-<div id="attachment_1894" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Swagger-UI-information-about-an-action.jpg"><img aria-describedby="caption-attachment-1894" loading="lazy" class="wp-image-1894" src="/assets/img/posts/2020/04/Swagger-UI-information-about-an-action.jpg" alt="Swagger UI information about an action" width="700" height="467" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Swagger-UI-information-about-an-action.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Swagger-UI-information-about-an-action.jpg" alt="Swagger UI information about an action" /></a>
   
-  <p id="caption-attachment-1894" class="wp-caption-text">
+  <p>
     Swagger UI information about an action
   </p>
 </div>
 
 When you click on the Try it out button in the top right corner, Swagger will already create a request for you with all parameters. You can edit them and then send the request to the server and the UI will show you the reply.
 
-<div id="attachment_1895" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/04/Testing-an-aciton-of-the-API.jpg"><img aria-describedby="caption-attachment-1895" loading="lazy" class="wp-image-1895" src="/assets/img/posts/2020/04/Testing-an-aciton-of-the-API.jpg" alt="Testing an action of the API" width="700" height="491" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/04/Testing-an-aciton-of-the-API.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Testing-an-aciton-of-the-API.jpg" alt="Testing an action of the API" /></a>
   
-  <p id="caption-attachment-1895" class="wp-caption-text">
+  <p>
     Testing an action of the API
   </p>
 </div>

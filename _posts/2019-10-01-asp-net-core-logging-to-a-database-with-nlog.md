@@ -17,50 +17,50 @@ I created a new web project with .net core and the MVC template and added the NL
 
 To get started, create a database and then the Log table. You can find the script to create the table at the bottom of my config file. Now let&#8217;s inspect the config file:
 
-<div id="attachment_1768" style="width: 442px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/10/NLog-internal-logging.jpg"><img aria-describedby="caption-attachment-1768" loading="lazy" class="size-full wp-image-1768" src="/assets/img/posts/2019/10/NLog-internal-logging.jpg" alt="NLog internal logging" width="432" height="120" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/10/NLog-internal-logging.jpg"><img aria-describedby="caption-attachment-1768" loading="lazy" class="size-full wp-image-1768" src="/assets/img/posts/2019/10/NLog-internal-logging.jpg" alt="NLog internal logging" /></a>
   
-  <p id="caption-attachment-1768" class="wp-caption-text">
+  <p>
     NLog internal logging
   </p>
 </div>
 
 The first section of the file is for internal logs of Nlog. These logs come in handy when you have a problem with Nlog. There you can configure what level of logging you want and where the log file should be created. You can also configure whether the file should be reloaded on save with autoReload.
 
-<div id="attachment_1769" style="width: 522px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/10/Configure-the-database-connection.jpg"><img aria-describedby="caption-attachment-1769" loading="lazy" class="size-full wp-image-1769" src="/assets/img/posts/2019/10/Configure-the-database-connection.jpg" alt="Configure the database connection" width="512" height="132" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/10/Configure-the-database-connection.jpg"><img aria-describedby="caption-attachment-1769" loading="lazy" class="size-full wp-image-1769" src="/assets/img/posts/2019/10/Configure-the-database-connection.jpg" alt="Configure the database connection" /></a>
   
-  <p id="caption-attachment-1769" class="wp-caption-text">
+  <p>
     Configure the database connection
   </p>
 </div>
 
 The next section is for configuring the database connection. The variables are read from the appsettings.json from the NlogConnection section. You can see the appsettings.json section on the following screenshot.
 
-<div id="attachment_1770" style="width: 304px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/10/Settings-for-Nlog-from-appsettings.json_.jpeg"><img aria-describedby="caption-attachment-1770" loading="lazy" class="size-full wp-image-1770" src="/assets/img/posts/2019/10/Settings-for-Nlog-from-appsettings.json_.jpeg" alt="Settings for Nlog from appsettings.json" width="294" height="117" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/10/Settings-for-Nlog-from-appsettings.json_.jpeg"><img aria-describedby="caption-attachment-1770" loading="lazy" class="size-full wp-image-1770" src="/assets/img/posts/2019/10/Settings-for-Nlog-from-appsettings.json_.jpeg" alt="Settings for Nlog from appsettings.json" /></a>
   
-  <p id="caption-attachment-1770" class="wp-caption-text">
+  <p>
     Settings for Nlog from appsettings.json
   </p>
 </div>
 
 The commandText section defines the insert statement. This is straight forward and you don&#8217;t have to edit anything.
 
-<div id="attachment_1772" style="width: 474px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/10/Setting-up-the-insert-statement-for-logging.jpg"><img aria-describedby="caption-attachment-1772" loading="lazy" class="size-full wp-image-1772" src="/assets/img/posts/2019/10/Setting-up-the-insert-statement-for-logging.jpg" alt="Setting up the insert statement for logging" width="464" height="261" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/10/Setting-up-the-insert-statement-for-logging.jpg"><img aria-describedby="caption-attachment-1772" loading="lazy" class="size-full wp-image-1772" src="/assets/img/posts/2019/10/Setting-up-the-insert-statement-for-logging.jpg" alt="Setting up the insert statement for logging" /></a>
   
-  <p id="caption-attachment-1772" class="wp-caption-text">
+  <p>
     Setting up the insert statement for logging
   </p>
 </div>
 
 The last section lets you specify rules about your log. You can configure which logger should log where. In my example, every logger logs messages with the log level Info and higher into the database. Another example could be to log information from one logger to the database and the information from another one to a file.
 
-<div id="attachment_1773" style="width: 417px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/10/Rules-for-logging.jpg"><img aria-describedby="caption-attachment-1773" loading="lazy" class="size-full wp-image-1773" src="/assets/img/posts/2019/10/Rules-for-logging.jpg" alt="Rules for logging" width="407" height="53" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/10/Rules-for-logging.jpg"><img aria-describedby="caption-attachment-1773" loading="lazy" class="size-full wp-image-1773" src="/assets/img/posts/2019/10/Rules-for-logging.jpg" alt="Rules for logging" /></a>
   
-  <p id="caption-attachment-1773" class="wp-caption-text">
+  <p>
     Rules for logging
   </p>
 </div>
@@ -69,20 +69,20 @@ The last section lets you specify rules about your log. You can configure which 
 
 Using Nlog in your application is really simple. First, you have to tell your WebHost to use Nlog in the CreateWebHostBuilder by simply adding .UseNlog() at the end of the statement.
 
-<div id="attachment_1774" style="width: 477px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/10/Use-Nlog-in-the-WebHostBuilder.jpg"><img aria-describedby="caption-attachment-1774" loading="lazy" class="size-full wp-image-1774" src="/assets/img/posts/2019/10/Use-Nlog-in-the-WebHostBuilder.jpg" alt="Use Nlog in the WebHostBuilder" width="467" height="106" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/10/Use-Nlog-in-the-WebHostBuilder.jpg"><img aria-describedby="caption-attachment-1774" loading="lazy" class="size-full wp-image-1774" src="/assets/img/posts/2019/10/Use-Nlog-in-the-WebHostBuilder.jpg" alt="Use Nlog in the WebHostBuilder" /></a>
   
-  <p id="caption-attachment-1774" class="wp-caption-text">
+  <p>
     Use Nlog in the WebHostBuilder
   </p>
 </div>
 
 That&#8217;s all you have to do. Now you can already use the logger in your application. To use the logger, inject the ILogger interface with the type of the class which uses it. The ILogger interface provides useful methods like LogInformation() or LogCritical(). Call one of the methods and insert your log message.
 
-<div id="attachment_1775" style="width: 492px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/10/Use-ILogger-to-log-messages.jpg"><img aria-describedby="caption-attachment-1775" loading="lazy" class="size-full wp-image-1775" src="/assets/img/posts/2019/10/Use-ILogger-to-log-messages.jpg" alt="Use ILogger to log messages" width="482" height="407" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/10/Use-ILogger-to-log-messages.jpg"><img aria-describedby="caption-attachment-1775" loading="lazy" class="size-full wp-image-1775" src="/assets/img/posts/2019/10/Use-ILogger-to-log-messages.jpg" alt="Use ILogger to log messages" /></a>
   
-  <p id="caption-attachment-1775" class="wp-caption-text">
+  <p>
     Use ILogger to log messages
   </p>
 </div>
@@ -93,10 +93,10 @@ To test that the logging is working, you have only to start your application and
 
 On the following screenshot, you can see that I called the Index and the Privacy method once which create a log entry for both calls.
 
-<div id="attachment_1776" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/10/Log-entries-in-the-Log-table.jpg"><img aria-describedby="caption-attachment-1776" loading="lazy" class="wp-image-1776" src="/assets/img/posts/2019/10/Log-entries-in-the-Log-table.jpg" alt="Log entries in the Log table" width="700" height="51" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/10/Log-entries-in-the-Log-table.jpg"><img loading="lazy" src="/assets/img/posts/2019/10/Log-entries-in-the-Log-table.jpg" alt="Log entries in the Log table" /></a>
   
-  <p id="caption-attachment-1776" class="wp-caption-text">
+  <p>
     Log entries in the Log table
   </p>
 </div>

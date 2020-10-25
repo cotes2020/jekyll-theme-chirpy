@@ -13,38 +13,38 @@ ASP.NET MVC offers for every feature the option to use your own implementation
 
 I created a new ASP.NET MVC project with the empty template and add folders and core references for MVC.
 
-<div id="attachment_601" style="width: 610px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Set-up-project.jpg"><img aria-describedby="caption-attachment-601" loading="lazy" class="wp-image-601" src="/assets/img/posts/2018/01/Set-up-project.jpg" alt="Setting up the ASP.NET MVC project" width="600" height="392" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Set-up-project.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Set-up-project.jpg" alt="Setting up the ASP.NET MVC project" /></a>
   
-  <p id="caption-attachment-601" class="wp-caption-text">
+  <p>
     Setting up the ASP.NET MVC project
   </p>
 </div>
 
 In the next step, I create a model classes, Customer and a Role enum.
 
-<div id="attachment_793" style="width: 316px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Implementation-of-the-Customer-class.jpg"><img aria-describedby="caption-attachment-793" loading="lazy" class="size-full wp-image-793" src="/assets/img/posts/2018/02/Implementation-of-the-Customer-class.jpg" alt="Implementation of the Customer class" width="306" height="238" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Implementation-of-the-Customer-class.jpg"><img aria-describedby="caption-attachment-793" loading="lazy" class="size-full wp-image-793" src="/assets/img/posts/2018/02/Implementation-of-the-Customer-class.jpg" alt="Implementation of the Customer class" /></a>
   
-  <p id="caption-attachment-793" class="wp-caption-text">
+  <p>
     Implementation of the Customer class
   </p>
 </div>
 
-<div id="attachment_776" style="width: 149px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Implementation-of-the-Role-enum.jpg"><img aria-describedby="caption-attachment-776" loading="lazy" class="size-full wp-image-776" src="/assets/img/posts/2018/02/Implementation-of-the-Role-enum.jpg" alt="Implementation of the Role enum" width="139" height="123" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Implementation-of-the-Role-enum.jpg"><img aria-describedby="caption-attachment-776" loading="lazy" class="size-full wp-image-776" src="/assets/img/posts/2018/02/Implementation-of-the-Role-enum.jpg" alt="Implementation of the Role enum" /></a>
   
-  <p id="caption-attachment-776" class="wp-caption-text">
+  <p>
     Implementation of the Role enum
   </p>
 </div>
 
 In the Home controller, I create two actions, both with the name CreateCustomer. One sends a new Customer object to the view and the other action takes an HTTP post request with the customer. This is the standard approach to deal with HTML forms.
 
-<div id="attachment_777" style="width: 406px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Actions-in-the-Home-controller.jpg"><img aria-describedby="caption-attachment-777" loading="lazy" class="size-full wp-image-777" src="/assets/img/posts/2018/02/Actions-in-the-Home-controller.jpg" alt="Actions in the Home controller" width="396" height="201" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Actions-in-the-Home-controller.jpg"><img aria-describedby="caption-attachment-777" loading="lazy" class="size-full wp-image-777" src="/assets/img/posts/2018/02/Actions-in-the-Home-controller.jpg" alt="Actions in the Home controller" /></a>
   
-  <p id="caption-attachment-777" class="wp-caption-text">
+  <p>
     Actions in the Home controller
   </p>
 </div>
@@ -53,10 +53,10 @@ In the Home controller, I create two actions, both with the name CreateCustomer.
 
 The MVC framework offers many helper methods out of the box to manage your HTML code for elements. First, I want to show you how to build a form without any helper methods and then extend this form piece by piece.
 
-<div id="attachment_780" style="width: 510px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/View-with-a-simple-HTML-form.jpg"><img aria-describedby="caption-attachment-780" loading="lazy" class="wp-image-780" src="/assets/img/posts/2018/02/View-with-a-simple-HTML-form.jpg" alt="View with a simple HTML form" width="500" height="459" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/View-with-a-simple-HTML-form.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/View-with-a-simple-HTML-form.jpg" alt="View with a simple HTML form" /></a>
   
-  <p id="caption-attachment-780" class="wp-caption-text">
+  <p>
     View with a simple HTML form
   </p>
 </div>
@@ -67,10 +67,10 @@ This is a very simple view. I added Bootstrap and some simple CSS. Usually, I wo
 
 The most used helper method is Html.BeginForm. This helper creates the form tag and has 13 different versions. You can use either @{Html.BeginForm();} to create an open form tag and @{Html.EndForm();} to create a closing form tag or you can use the simpler version @using(Html.BeginForm()){ and add the closing bracket } at the end of the form. I think I never saw anything else than the approach with the using since it&#8217;s so much simpler.
 
-<div id="attachment_781" style="width: 580px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/02/Creating-a-form-using-Html.BeginForm.jpg"><img aria-describedby="caption-attachment-781" loading="lazy" class="size-full wp-image-781" src="/assets/img/posts/2018/02/Creating-a-form-using-Html.BeginForm.jpg" alt="Creating a form using Html.BeginForm()" width="570" height="275" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/02/Creating-a-form-using-Html.BeginForm.jpg"><img aria-describedby="caption-attachment-781" loading="lazy" class="size-full wp-image-781" src="/assets/img/posts/2018/02/Creating-a-form-using-Html.BeginForm.jpg" alt="Creating a form using Html.BeginForm()" /></a>
   
-  <p id="caption-attachment-781" class="wp-caption-text">
+  <p>
     Creating a form using Html.BeginForm()
   </p>
 </div>
@@ -158,10 +158,10 @@ Here are the different overloaded versions of the BefginForm helper method:
     To demonstrate the BeginRouteForm helper method, I added a new route in the RouteConfig. I added the new route before the default one and named it MyFormRoute.
   </p>
   
-  <div id="attachment_782" style="width: 618px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/New-route-for-BeginRouteForm-helper-method.jpg"><img aria-describedby="caption-attachment-782" loading="lazy" class="size-full wp-image-782" src="/assets/img/posts/2018/02/New-route-for-BeginRouteForm-helper-method.jpg" alt="New route for BeginRouteForm helper method" width="608" height="194" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/New-route-for-BeginRouteForm-helper-method.jpg"><img aria-describedby="caption-attachment-782" loading="lazy" class="size-full wp-image-782" src="/assets/img/posts/2018/02/New-route-for-BeginRouteForm-helper-method.jpg" alt="New route for BeginRouteForm helper method" /></a>
     
-    <p id="caption-attachment-782" class="wp-caption-text">
+    <p>
       New route for BeginRouteForm helper method
     </p>
   </div>
@@ -170,10 +170,10 @@ Here are the different overloaded versions of the BefginForm helper method:
     In the BeginRouteForm method, I pass the route name as the parameter. The MVC framework now finds the first route and routes to the CreateCustomer action in the Home controller. (I know this behavior isn&#8217;t very clever but it shows how BeginRouteForm works)
   </p>
   
-  <div id="attachment_783" style="width: 594px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Using-BeginRouteForm.jpg"><img aria-describedby="caption-attachment-783" loading="lazy" class="size-full wp-image-783" src="/assets/img/posts/2018/02/Using-BeginRouteForm.jpg" alt="Using BeginRouteForm with the route name as parameter" width="584" height="271" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Using-BeginRouteForm.jpg"><img aria-describedby="caption-attachment-783" loading="lazy" class="size-full wp-image-783" src="/assets/img/posts/2018/02/Using-BeginRouteForm.jpg" alt="Using BeginRouteForm with the route name as parameter" /></a>
     
-    <p id="caption-attachment-783" class="wp-caption-text">
+    <p>
       Using BeginRouteForm with the route name as parameter
     </p>
   </div>
@@ -272,10 +272,10 @@ Here are the different overloaded versions of the BefginForm helper method:
     I replace the HTML input elements with Html.TextBox. The syntax might feel strange in the beginning but once you got used to it, you won&#8217;t go back to writing plain HTML forms.
   </p>
   
-  <div id="attachment_784" style="width: 624px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Replacing-the-HTML-input-fields-with-MVC-HTML-input-helper-methods.jpg"><img aria-describedby="caption-attachment-784" loading="lazy" class="size-full wp-image-784" src="/assets/img/posts/2018/02/Replacing-the-HTML-input-fields-with-MVC-HTML-input-helper-methods.jpg" alt="Replacing the HTML input fields with MVC HTML input helper methods" width="614" height="272" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Replacing-the-HTML-input-fields-with-MVC-HTML-input-helper-methods.jpg"><img aria-describedby="caption-attachment-784" loading="lazy" class="size-full wp-image-784" src="/assets/img/posts/2018/02/Replacing-the-HTML-input-fields-with-MVC-HTML-input-helper-methods.jpg" alt="Replacing the HTML input fields with MVC HTML input helper methods" /></a>
     
-    <p id="caption-attachment-784" class="wp-caption-text">
+    <p>
       Replacing the HTML input fields with MVC HTML input helper methods
     </p>
   </div>
@@ -292,10 +292,10 @@ Here are the different overloaded versions of the BefginForm helper method:
     The solution to this problem is another overloaded version of the helper method which takes only a string as a parameter. The string is the property name and the MVC framework automatically creates the name attribute for you.
   </p>
   
-  <div id="attachment_786" style="width: 548px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Generating-input-elements-from-a-property.jpg"><img aria-describedby="caption-attachment-786" loading="lazy" class="size-full wp-image-786" src="/assets/img/posts/2018/02/Generating-input-elements-from-a-property.jpg" alt="Generating input elements from a property" width="538" height="277" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Generating-input-elements-from-a-property.jpg"><img aria-describedby="caption-attachment-786" loading="lazy" class="size-full wp-image-786" src="/assets/img/posts/2018/02/Generating-input-elements-from-a-property.jpg" alt="Generating input elements from a property" /></a>
     
-    <p id="caption-attachment-786" class="wp-caption-text">
+    <p>
       Generating input elements from a property
     </p>
   </div>
@@ -312,10 +312,10 @@ Here are the different overloaded versions of the BefginForm helper method:
     Each input helper method has also a strongly typed version which works with lambda expressions. The view model is passed to the helper method and you can select the needed property. The strongly typed input helper methods can only be used in a strongly typed view.
   </p>
   
-  <div id="attachment_787" style="width: 556px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Creating-input-element-using-strongly-typed-input-helper-methods.jpg"><img aria-describedby="caption-attachment-787" loading="lazy" class="size-full wp-image-787" src="/assets/img/posts/2018/02/Creating-input-element-using-strongly-typed-input-helper-methods.jpg" alt="Creating input element using strongly typed input helper methods" width="546" height="271" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Creating-input-element-using-strongly-typed-input-helper-methods.jpg"><img aria-describedby="caption-attachment-787" loading="lazy" class="size-full wp-image-787" src="/assets/img/posts/2018/02/Creating-input-element-using-strongly-typed-input-helper-methods.jpg" alt="Creating input element using strongly typed input helper methods" /></a>
     
-    <p id="caption-attachment-787" class="wp-caption-text">
+    <p>
       Creating input element using strongly typed input helper methods
     </p>
   </div>
@@ -332,10 +332,10 @@ Here are the different overloaded versions of the BefginForm helper method:
     So far, I only talked about input elements. The MVC framework also offers helper methods for drop-down lists.
   </p>
   
-  <div id="attachment_791" style="width: 837px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/HTML-helper-methods-for-select-elements.jpg"><img aria-describedby="caption-attachment-791" loading="lazy" class="size-full wp-image-791" src="/assets/img/posts/2018/02/HTML-helper-methods-for-select-elements.jpg" alt="HTML helper methods for select elements" width="827" height="211" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/HTML-helper-methods-for-select-elements.jpg"><img aria-describedby="caption-attachment-791" loading="lazy" class="size-full wp-image-791" src="/assets/img/posts/2018/02/HTML-helper-methods-for-select-elements.jpg" alt="HTML helper methods for select elements" /></a>
     
-    <p id="caption-attachment-791" class="wp-caption-text">
+    <p>
       HTML helper methods for select elements
     </p>
   </div>
@@ -344,10 +344,10 @@ Here are the different overloaded versions of the BefginForm helper method:
     The difference between a normal drop-down list and multiple-select is that the drop-down list allows only one element to be selected.
   </p>
   
-  <div id="attachment_788" style="width: 556px" class="wp-caption aligncenter">
-    <a href="/assets/img/posts/2018/02/Creating-a-drop-down-list-with-HTML-helper-methods.jpg"><img aria-describedby="caption-attachment-788" loading="lazy" class="size-full wp-image-788" src="/assets/img/posts/2018/02/Creating-a-drop-down-list-with-HTML-helper-methods.jpg" alt="Creating a drop-down list with HTML helper methods" width="546" height="370" /></a>
+  <div class="col-12 col-sm-10 aligncenter">
+    <a href="/assets/img/posts/2018/02/Creating-a-drop-down-list-with-HTML-helper-methods.jpg"><img aria-describedby="caption-attachment-788" loading="lazy" class="size-full wp-image-788" src="/assets/img/posts/2018/02/Creating-a-drop-down-list-with-HTML-helper-methods.jpg" alt="Creating a drop-down list with HTML helper methods" /></a>
     
-    <p id="caption-attachment-788" class="wp-caption-text">
+    <p>
       Creating a drop-down list with HTML helper methods
     </p>
   </div>

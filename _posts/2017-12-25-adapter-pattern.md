@@ -29,10 +29,10 @@ Let&#8217;s look at a real time example
 
 As an example, I import a list of my employees and then use a third party tool to a fancy header and footer to the list while printing it. Let&#8217;s say that my internal SAP system returns my employees as string array. The third-party tool expects a list of strings though. Therefore I need an adapter which to enable me to use the library with my string array.
 
-<div id="attachment_414" style="width: 455px" class="wp-caption aligncenter">
+<div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2017/12/SAP.png"><img aria-describedby="caption-attachment-414" loading="lazy" class="size-full wp-image-414" src="/assets/img/posts/2017/12/SAP.png" alt="SAPSystem implementation" width="445" height="262"  /></a>
   
-  <p id="caption-attachment-414" class="wp-caption-text">
+  <p>
     Internal employee management system
   </p>
 </div>
@@ -41,20 +41,20 @@ The third-party tool called FancyReportingTool is pretty simple too. It is insta
 
 The constructor of the library asks for an interface. Because of this interface, it is possible for me to use the adapter. Remember this when creating libraries yourself. It&#8217;s good practice to provide support for future adapters.
 
-<div id="attachment_415" style="width: 469px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/FancyReportingTool.png"><img aria-describedby="caption-attachment-415" loading="lazy" class="size-full wp-image-415" src="/assets/img/posts/2017/12/FancyReportingTool.png" alt="FancyReportingTool implementation" width="459" height="396" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/FancyReportingTool.png"><img aria-describedby="caption-attachment-415" loading="lazy" class="size-full wp-image-415" src="/assets/img/posts/2017/12/FancyReportingTool.png" alt="FancyReportingTool implementation" /></a>
   
-  <p id="caption-attachment-415" class="wp-caption-text">
+  <p>
     FancyReportingTool implementation
   </p>
 </div>
 
 The last missing piece is the ConcreteAdapter which is called EmployeeAdapter. This class inherits from the interface and form the SAPSystem. The adapter gets the employees from the SAPSystem class and converts the array into a list and returns it. The FancyReportingTool can print this list now.
 
-<div id="attachment_416" style="width: 520px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/EmplyeeAdapter.png"><img aria-describedby="caption-attachment-416" loading="lazy" class="size-full wp-image-416" src="/assets/img/posts/2017/12/EmplyeeAdapter.png" alt="EmplyeeAdapter implementation" width="510" height="630" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/EmplyeeAdapter.png"><img aria-describedby="caption-attachment-416" loading="lazy" class="size-full wp-image-416" src="/assets/img/posts/2017/12/EmplyeeAdapter.png" alt="EmplyeeAdapter implementation" /></a>
   
-  <p id="caption-attachment-416" class="wp-caption-text">
+  <p>
     EmplyeeAdapter implementation
   </p>
 </div>
@@ -63,10 +63,10 @@ The last missing piece is the ConcreteAdapter which is called EmployeeAdapter. T
 
 With everything set up, I can create an instance of the interface, an instance of the FancyReportingTool with this interface and then call the ShowEmplyeeList on the FancyReportingTool object. This will get the employee data from my internal SAPSystem, convert it and use the third party library to print the data to the console.
 
-<div id="attachment_417" style="width: 280px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2017/12/Output.png"><img aria-describedby="caption-attachment-417" loading="lazy" class="size-full wp-image-417" src="/assets/img/posts/2017/12/Output.png" alt="Output with data from the adapter" width="270" height="130" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2017/12/Output.png"><img aria-describedby="caption-attachment-417" loading="lazy" class="size-full wp-image-417" src="/assets/img/posts/2017/12/Output.png" alt="Output with data from the adapter" /></a>
   
-  <p id="caption-attachment-417" class="wp-caption-text">
+  <p>
     Output with data from the adapter
   </p>
 </div>

@@ -92,10 +92,10 @@ To create an Azure Mobile App Service instance, follow these steps:
   2. Provide a name, subscription, resource group and, service plan.
   3. Click Create
 
-<div id="attachment_1347" style="width: 326px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/Create-a-Mobile-App.jpg"><img aria-describedby="caption-attachment-1347" loading="lazy" class="size-full wp-image-1347" src="/assets/img/posts/2018/06/Create-a-Mobile-App.jpg" alt="Create a Mobile App" width="316" height="416" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/Create-a-Mobile-App.jpg"><img aria-describedby="caption-attachment-1347" loading="lazy" class="size-full wp-image-1347" src="/assets/img/posts/2018/06/Create-a-Mobile-App.jpg" alt="Create a Mobile App" /></a>
   
-  <p id="caption-attachment-1347" class="wp-caption-text">
+  <p>
     Create a Mobile App
   </p>
 </div>
@@ -112,10 +112,10 @@ To create an Azure Mobile App Service instance, follow these steps:
   7. Compile the application and then deploy it to your Mobile App to Azure.
   8. To deploy your app right click on the project in Visual Studio, select Publish and then select your previously created Mobile App by clicking on Select Existing in the Azure App Service tab.
 
-<div id="attachment_1349" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/Deploy-your-Mobile-App-to-Azure.jpg"><img aria-describedby="caption-attachment-1349" loading="lazy" class="wp-image-1349" src="/assets/img/posts/2018/06/Deploy-your-Mobile-App-to-Azure.jpg" alt="Deploy your Mobile App to Azure" width="700" height="518" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/Deploy-your-Mobile-App-to-Azure.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Deploy-your-Mobile-App-to-Azure.jpg" alt="Deploy your Mobile App to Azure" /></a>
   
-  <p id="caption-attachment-1349" class="wp-caption-text">
+  <p>
     Deploy your Mobile App to Azure
   </p>
 </div>
@@ -126,10 +126,10 @@ To create an Azure Mobile App Service instance, follow these steps:
   </li>
 </ol>
 
-<div id="attachment_1351" style="width: 537px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/The-Mobile-App-is-deployed-and-running.jpg"><img aria-describedby="caption-attachment-1351" loading="lazy" class="size-full wp-image-1351" src="/assets/img/posts/2018/06/The-Mobile-App-is-deployed-and-running.jpg" alt="The Mobile App is deployed and running" width="527" height="443" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/The-Mobile-App-is-deployed-and-running.jpg"><img aria-describedby="caption-attachment-1351" loading="lazy" class="size-full wp-image-1351" src="/assets/img/posts/2018/06/The-Mobile-App-is-deployed-and-running.jpg" alt="The Mobile App is deployed and running" /></a>
   
-  <p id="caption-attachment-1351" class="wp-caption-text">
+  <p>
     The Mobile App is deployed and running
   </p>
 </div>
@@ -138,10 +138,10 @@ To create an Azure Mobile App Service instance, follow these steps:
 
 You can create a new application from the Quickstart blade, or by connecting an existing application. To download the template application, click on Create a new app and then download under section 3 Configure your client application on the Quickstart blade.
 
-<div id="attachment_1348" style="width: 491px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/Download-templates-for-your-Mobile-App.jpg"><img aria-describedby="caption-attachment-1348" loading="lazy" class="wp-image-1348" src="/assets/img/posts/2018/06/Download-templates-for-your-Mobile-App.jpg" alt="Download templates for your Mobile App" width="481" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/Download-templates-for-your-Mobile-App.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Download-templates-for-your-Mobile-App.jpg" alt="Download templates for your Mobile App" /></a>
   
-  <p id="caption-attachment-1348" class="wp-caption-text">
+  <p>
     Download templates for your Mobile App
   </p>
 </div>
@@ -155,10 +155,10 @@ To enable the integration of identity providers like Facebook or Twitter, follow
   3. On the Authentication / Authorization configure the provider you want to use. For example, for Twitter, you have to enter your API Key and API Secret which you get on Twitter&#8217;s developer page.
   4. In the Allowed external redirect URLs textbox, enter your callback URL, for example, myapp://myauth.callback.
 
-<div id="attachment_1354" style="width: 497px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/06/Enable-Twitter-authentication-and-authorization.jpg"><img aria-describedby="caption-attachment-1354" loading="lazy" class="wp-image-1354" src="/assets/img/posts/2018/06/Enable-Twitter-authentication-and-authorization.jpg" alt="Enable Twitter authentication and authorization" width="487" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/06/Enable-Twitter-authentication-and-authorization.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Enable-Twitter-authentication-and-authorization.jpg" alt="Enable Twitter authentication and authorization" /></a>
   
-  <p id="caption-attachment-1354" class="wp-caption-text">
+  <p>
     Enable Twitter authentication and authorization
   </p>
 </div>

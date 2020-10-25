@@ -9,10 +9,10 @@ The decorator pattern is a structural design pattern used for dynamically adding
 
 You can see this behavior on the UML diagram where the decorator implements the interface to extend the functionality.
 
-<div id="attachment_2238" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Decorator-Pattern-UML.jpg"><img aria-describedby="caption-attachment-2238" loading="lazy" class="wp-image-2238" src="/assets/img/posts/2020/06/Decorator-Pattern-UML.jpg" alt="Decorator Pattern UML" width="700" height="418" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Decorator-Pattern-UML.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Decorator-Pattern-UML.jpg" alt="Decorator Pattern UML" /></a>
   
-  <p id="caption-attachment-2238" class="wp-caption-text">
+  <p>
     Decorator Pattern UML (Source)
   </p>
 </div>
@@ -157,10 +157,10 @@ public class HomeController : Controller
 
 Start the application and click on Get Data. After a couple of seconds, you will see the data displayed.
 
-<div id="attachment_2243" style="width: 377px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/Displaying-the-loaded-data.jpg"><img aria-describedby="caption-attachment-2243" loading="lazy" class="size-full wp-image-2243" src="/assets/img/posts/2020/06/Displaying-the-loaded-data.jpg" alt="Displaying the loaded data" width="367" height="559" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/Displaying-the-loaded-data.jpg"><img aria-describedby="caption-attachment-2243" loading="lazy" class="size-full wp-image-2243" src="/assets/img/posts/2020/06/Displaying-the-loaded-data.jpg" alt="Displaying the loaded data" /></a>
   
-  <p id="caption-attachment-2243" class="wp-caption-text">
+  <p>
     Displaying the loaded data
   </p>
 </div>

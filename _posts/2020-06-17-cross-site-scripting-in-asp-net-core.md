@@ -78,20 +78,20 @@ tag. When you enter the following code as your name:
 
 and click submit, an alert windows will be displayed.
 
-<div id="attachment_2190" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/The-injected-code-got-executed.jpg"><img aria-describedby="caption-attachment-2190" loading="lazy" class="wp-image-2190" src="/assets/img/posts/2020/06/The-injected-code-got-executed.jpg" alt="The injected code got executed causing Cross Site Scripting" width="700" height="121" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/The-injected-code-got-executed.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/The-injected-code-got-executed.jpg" alt="The injected code got executed causing Cross Site Scripting" /></a>
   
-  <p id="caption-attachment-2190" class="wp-caption-text">
+  <p>
     The injected code got executed
   </p>
 </div>
 
 When you click on OK, the text will be rendered into the safe output line and nothing will be displayed in the unsafe output line because the browser interprets the Javascript.
 
-<div id="attachment_2191" style="width: 362px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-in-the-safe-output-line.jpg"><img aria-describedby="caption-attachment-2191" loading="lazy" class="size-full wp-image-2191" src="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-in-the-safe-output-line.jpg" alt="The Javascript is displayed as text in the safe output line, no Cross Site Scripting possible" width="352" height="307" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-in-the-safe-output-line.jpg"><img aria-describedby="caption-attachment-2191" loading="lazy" class="size-full wp-image-2191" src="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-in-the-safe-output-line.jpg" alt="The Javascript is displayed as text in the safe output line, no Cross Site Scripting possible" /></a>
   
-  <p id="caption-attachment-2191" class="wp-caption-text">
+  <p>
     The Javascript is displayed as text in the safe output line
   </p>
 </div>
@@ -135,20 +135,20 @@ The first submit button will execute Javascript whereas the second one uses the 
 
 Click the submit button of the unsafe form and you will see two Javascript alerts. The first one saying &#8220;Saving user name for account with id: &#8221; and then a second one saying &#8220;You got attacked&#8221;.
 
-<div id="attachment_2192" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/The-Javascript-got-executed.jpg"><img aria-describedby="caption-attachment-2192" loading="lazy" class="wp-image-2192" src="/assets/img/posts/2020/06/The-Javascript-got-executed.jpg" alt="The Javascript got executed Cross Site Scripting" width="700" height="165" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/The-Javascript-got-executed.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/The-Javascript-got-executed.jpg" alt="The Javascript got executed Cross Site Scripting" /></a>
   
-  <p id="caption-attachment-2192" class="wp-caption-text">
+  <p>
     The Javascript got executed
   </p>
 </div>
 
 When you click the submit button of the safe form, you will see the Javascript as text.
 
-<div id="attachment_2193" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-and-not-executed.jpg"><img aria-describedby="caption-attachment-2193" loading="lazy" class="wp-image-2193" src="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-and-not-executed.jpg" alt="The Javascript is displayed as text and not executed and no Cross Site Scripting" width="700" height="183" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-and-not-executed.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-and-not-executed.jpg" alt="The Javascript is displayed as text and not executed and no Cross Site Scripting" /></a>
   
-  <p id="caption-attachment-2193" class="wp-caption-text">
+  <p>
     The Javascript is displayed as text and not executed
   </p>
 </div>

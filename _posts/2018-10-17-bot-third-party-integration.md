@@ -11,10 +11,10 @@ It is really easy to integrate your bot, hosted on Azure to third-party tools li
 
 You can integrate your bot with several third-party applications. To see a list, which applications are available, go to your bot and open the Channels blade under the Bot management menu.
 
-<div id="attachment_1479" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Available-channels-for-the-bot.jpg"><img aria-describedby="caption-attachment-1479" loading="lazy" class="wp-image-1479" src="/assets/img/posts/2018/10/Available-channels-for-the-bot.jpg" alt="Available channels for the bot" width="700" height="389" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Available-channels-for-the-bot.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Available-channels-for-the-bot.jpg" alt="Available channels for the bot" /></a>
   
-  <p id="caption-attachment-1479" class="wp-caption-text">
+  <p>
     Available channels
   </p>
 </div>
@@ -37,10 +37,10 @@ Follow these steps to integrate your bot with Slack:
 
   1. Create a new Slack App and enter a name for your app.
 
-<div id="attachment_1480" style="width: 564px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Create-a-Slack-App.jpg"><img aria-describedby="caption-attachment-1480" loading="lazy" class="size-full wp-image-1480" src="/assets/img/posts/2018/10/Create-a-Slack-App.jpg" alt="Create a Slack App" width="554" height="454" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Create-a-Slack-App.jpg"><img aria-describedby="caption-attachment-1480" loading="lazy" class="size-full wp-image-1480" src="/assets/img/posts/2018/10/Create-a-Slack-App.jpg" alt="Create a Slack App" /></a>
   
-  <p id="caption-attachment-1480" class="wp-caption-text">
+  <p>
     Create a Slack App
   </p>
 </div>
@@ -49,10 +49,10 @@ Follow these steps to integrate your bot with Slack:
   2. Enter https://slack.botframework.com and click Add.
   3. Click Save URLs.
 
-<div id="attachment_1481" style="width: 711px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Add-a-redirect-URL-to-Slack.jpg"><img aria-describedby="caption-attachment-1481" loading="lazy" class="wp-image-1481" src="/assets/img/posts/2018/10/Add-a-redirect-URL-to-Slack.jpg" alt="Add a redirect URL to Slack" width="701" height="324" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Add-a-redirect-URL-to-Slack.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Add-a-redirect-URL-to-Slack.jpg" alt="Add a redirect URL to Slack" /></a>
   
-  <p id="caption-attachment-1481" class="wp-caption-text">
+  <p>
     Add a redirect URL to Slack
   </p>
 </div>
@@ -62,10 +62,10 @@ Follow these steps to integrate your bot with Slack:
   3. Switch the slider for Always Show My Bot as Online to On.
   4. Click Add Bot User.
 
-<div id="attachment_1482" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Add-a-bot-user.jpg"><img aria-describedby="caption-attachment-1482" loading="lazy" class="wp-image-1482" src="/assets/img/posts/2018/10/Add-a-bot-user.jpg" alt="Add a bot user" width="700" height="481" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Add-a-bot-user.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Add-a-bot-user.jpg" alt="Add a bot user" /></a>
   
-  <p id="caption-attachment-1482" class="wp-caption-text">
+  <p>
     Add a bot user
   </p>
 </div>
@@ -81,10 +81,10 @@ Follow these steps to integrate your bot with Slack:
       * message.mpim
   4. Click Save Changes.
 
-<div id="attachment_1483" style="width: 686px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Add-events.jpg"><img aria-describedby="caption-attachment-1483" loading="lazy" class="wp-image-1483" src="/assets/img/posts/2018/10/Add-events.jpg" alt="Add events" width="676" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Add-events.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Add-events.jpg" alt="Add events" /></a>
   
-  <p id="caption-attachment-1483" class="wp-caption-text">
+  <p>
     Add events
   </p>
 </div>
@@ -93,10 +93,10 @@ Follow these steps to integrate your bot with Slack:
 
   1. Select Basic Information. There, you can find your App ID, Client ID, Client Secret, Signing Secret, and Verification Token.
 
-<div id="attachment_1488" style="width: 661px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/The-Slack-app-credentials.jpg"><img aria-describedby="caption-attachment-1488" loading="lazy" class="wp-image-1488" src="/assets/img/posts/2018/10/The-Slack-app-credentials.jpg" alt="The Slack app credentials" width="651" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/The-Slack-app-credentials.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/The-Slack-app-credentials.jpg" alt="The Slack app credentials" /></a>
   
-  <p id="caption-attachment-1488" class="wp-caption-text">
+  <p>
     The Slack app credentials
   </p>
 </div>
@@ -104,10 +104,10 @@ Follow these steps to integrate your bot with Slack:
   1. Click on Install your App to your workspace and then on Install App to Workspace.
   2. On the next window, click Authorize and your app gets installed.
 
-<div id="attachment_1490" style="width: 457px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Install-your-App-to-Slack.jpg"><img aria-describedby="caption-attachment-1490" loading="lazy" class="size-full wp-image-1490" src="/assets/img/posts/2018/10/Install-your-App-to-Slack.jpg" alt="Install your App to Slack" width="447" height="449" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Install-your-App-to-Slack.jpg"><img aria-describedby="caption-attachment-1490" loading="lazy" class="size-full wp-image-1490" src="/assets/img/posts/2018/10/Install-your-App-to-Slack.jpg" alt="Install your App to Slack" /></a>
   
-  <p id="caption-attachment-1490" class="wp-caption-text">
+  <p>
     Install your App to Slack
   </p>
 </div>
@@ -117,10 +117,10 @@ Follow these steps to integrate your bot with Slack:
   3. Enter your Client ID, Client Secret, and Verification Token from Slack.
   4. Click Save.
 
-<div id="attachment_1489" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Enter-the-Slack-credentials-in-the-Azure-Portal.jpg"><img aria-describedby="caption-attachment-1489" loading="lazy" class="wp-image-1489" src="/assets/img/posts/2018/10/Enter-the-Slack-credentials-in-the-Azure-Portal.jpg" alt="Enter the Slack credentials in the Azure Portal" width="700" height="348" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Enter-the-Slack-credentials-in-the-Azure-Portal.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Enter-the-Slack-credentials-in-the-Azure-Portal.jpg" alt="Enter the Slack credentials in the Azure Portal" /></a>
   
-  <p id="caption-attachment-1489" class="wp-caption-text">
+  <p>
     Enter the Slack credentials in the Azure Portal
   </p>
 </div>
@@ -128,20 +128,20 @@ Follow these steps to integrate your bot with Slack:
   1. A new window opens.
   2. Click Authorize.
 
-<div id="attachment_1491" style="width: 446px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Authorize-the-App-in-Slack.jpg"><img aria-describedby="caption-attachment-1491" loading="lazy" class="size-full wp-image-1491" src="/assets/img/posts/2018/10/Authorize-the-App-in-Slack.jpg" alt="Authorize the App in Slack" width="436" height="296" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Authorize-the-App-in-Slack.jpg"><img aria-describedby="caption-attachment-1491" loading="lazy" class="size-full wp-image-1491" src="/assets/img/posts/2018/10/Authorize-the-App-in-Slack.jpg" alt="Authorize the App in Slack" /></a>
   
-  <p id="caption-attachment-1491" class="wp-caption-text">
+  <p>
     Authorize the App in Slack
   </p>
 </div>
 
 That&#8217;s it. Now you can chat with your chatbot in Slack. Note that some answers might be displayed differently than on the web. For example, the image carousel is displayed as several images underneath each other.
 
-<div id="attachment_1492" style="width: 503px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Testing-the-bot-in-Slack.jpg"><img aria-describedby="caption-attachment-1492" loading="lazy" class="wp-image-1492" src="/assets/img/posts/2018/10/Testing-the-bot-in-Slack.jpg" alt="Testing the bot in Slack" width="493" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Testing-the-bot-in-Slack.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Testing-the-bot-in-Slack.jpg" alt="Testing the bot in Slack" /></a>
   
-  <p id="caption-attachment-1492" class="wp-caption-text">
+  <p>
     Testing the bot in Slack
   </p>
 </div>
@@ -155,10 +155,10 @@ To integrate your bot with the Facebook Messenger, follow these steps:
   1. Create a new <a href="https://developers.facebook.com/quickstarts" target="_blank" rel="noopener">Facebook App</a>.
   2. Under Settings &#8211;> Basic, you can find your App ID.
 
-<div id="attachment_1493" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Facebook-App-ID-and-Secret.jpg"><img aria-describedby="caption-attachment-1493" loading="lazy" class="wp-image-1493" src="/assets/img/posts/2018/10/Facebook-App-ID-and-Secret.jpg" alt="Facebook App ID and Secret" width="700" height="216" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Facebook-App-ID-and-Secret.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Facebook-App-ID-and-Secret.jpg" alt="Facebook App ID and Secret" /></a>
   
-  <p id="caption-attachment-1493" class="wp-caption-text">
+  <p>
     Facebook App ID and Secret
   </p>
 </div>
@@ -166,10 +166,10 @@ To integrate your bot with the Facebook Messenger, follow these steps:
   1. Click on Dashboard and then on Set Up on the Messenger Tilde.
   2. In the Token Generation section, create a new page and then save the Page Access Token.
 
-<div id="attachment_1494" style="width: 564px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Facebook-Page-Token.jpg"><img aria-describedby="caption-attachment-1494" loading="lazy" class="size-full wp-image-1494" src="/assets/img/posts/2018/10/Facebook-Page-Token.jpg" alt="Facebook Page Token" width="554" height="291" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Facebook-Page-Token.jpg"><img aria-describedby="caption-attachment-1494" loading="lazy" class="size-full wp-image-1494" src="/assets/img/posts/2018/10/Facebook-Page-Token.jpg" alt="Facebook Page Token" /></a>
   
-  <p id="caption-attachment-1494" class="wp-caption-text">
+  <p>
     Facebook Page Token
   </p>
 </div>
@@ -183,20 +183,20 @@ To integrate your bot with the Facebook Messenger, follow these steps:
   3. Click on Facebook Messenger
   4. Enter the App ID, App Secret, Page ID, and Page Access Token. You can find the Page ID on your Page under the About section.
 
-<div id="attachment_1495" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Configure-the-Facebook-Messenger-Channel.jpg"><img aria-describedby="caption-attachment-1495" loading="lazy" class="wp-image-1495" src="/assets/img/posts/2018/10/Configure-the-Facebook-Messenger-Channel.jpg" alt="Configure the Facebook Messenger Channel" width="700" height="538" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Configure-the-Facebook-Messenger-Channel.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Configure-the-Facebook-Messenger-Channel.jpg" alt="Configure the Facebook Messenger Channel" /></a>
   
-  <p id="caption-attachment-1495" class="wp-caption-text">
+  <p>
     Configure the Facebook Messenger Channel
   </p>
 </div>
 
   1. Copy the Callback URL and Verify token to the open window on the Facebook page.
 
-<div id="attachment_1496" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Set-up-the-Callback-URL-on-Facebook.jpg"><img aria-describedby="caption-attachment-1496" loading="lazy" class="wp-image-1496" src="/assets/img/posts/2018/10/Set-up-the-Callback-URL-on-Facebook.jpg" alt="Set up the Callback URL on Facebook" width="700" height="431" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Set-up-the-Callback-URL-on-Facebook.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Set-up-the-Callback-URL-on-Facebook.jpg" alt="Set up the Callback URL on Facebook" /></a>
   
-  <p id="caption-attachment-1496" class="wp-caption-text">
+  <p>
     Set up the Callback URL on Facebook
   </p>
 </div>
@@ -205,10 +205,10 @@ To integrate your bot with the Facebook Messenger, follow these steps:
   2. Click on Verify and Save on the Facebook page.
   3. Subscribe your page to the Webhook.
 
-<div id="attachment_1497" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Subscribe-your-page-to-the-Webhook.jpg"><img aria-describedby="caption-attachment-1497" loading="lazy" class="wp-image-1497" src="/assets/img/posts/2018/10/Subscribe-your-page-to-the-Webhook.jpg" alt="Subscribe your page to the Webhook" width="700" height="158" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Subscribe-your-page-to-the-Webhook.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Subscribe-your-page-to-the-Webhook.jpg" alt="Subscribe your page to the Webhook" /></a>
   
-  <p id="caption-attachment-1497" class="wp-caption-text">
+  <p>
     Subscribe your page to the Webhook
   </p>
 </div>
@@ -219,10 +219,10 @@ To integrate your bot with the Facebook Messenger, follow these steps:
 
 Integrating your bot into your website is as simple as it could be. In the Azure Portal in your bot, click on Channels under the Bot management and select Web Chat. There you have your Secret keys and the code to embed the code on your website. You only have to replace the string YOUR\_SECRET\_HERE with your actual secret and you are good to go.
 
-<div id="attachment_1498" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/10/Integrate-your-application-in-your-website.jpg"><img aria-describedby="caption-attachment-1498" loading="lazy" class="wp-image-1498" src="/assets/img/posts/2018/10/Integrate-your-application-in-your-website.jpg" alt="Integrate your application into your website" width="700" height="504" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/10/Integrate-your-application-in-your-website.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Integrate-your-application-in-your-website.jpg" alt="Integrate your application into your website" /></a>
   
-  <p id="caption-attachment-1498" class="wp-caption-text">
+  <p>
     Integrate your application into your website
   </p>
 </div>

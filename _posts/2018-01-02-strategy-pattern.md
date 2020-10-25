@@ -31,10 +31,10 @@ There are many examples of implementing the Strategy pattern on the internet. Po
 
 My products have some basics properties like price or name and also the production country. The ProductionCostCalculatorService class implements a calculate Methode in which it has a switch Statement. Depending on the production Country, the production costs are calculated differently.
 
-<div id="attachment_458" style="width: 420px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-a-switch-statement.jpg"><img aria-describedby="caption-attachment-458" loading="lazy" class="size-full wp-image-458" src="/assets/img/posts/2018/01/Calculating-production-costs-using-a-switch-statement.jpg" alt="Calculating production costs using a switch statement" width="410" height="311" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-a-switch-statement.jpg"><img aria-describedby="caption-attachment-458" loading="lazy" class="size-full wp-image-458" src="/assets/img/posts/2018/01/Calculating-production-costs-using-a-switch-statement.jpg" alt="Calculating production costs using a switch statement" /></a>
   
-  <p id="caption-attachment-458" class="wp-caption-text">
+  <p>
     Calculating production costs using a switch statement
   </p>
 </div>
@@ -51,40 +51,40 @@ To implement the strategy pattern, I have to implement a new class for every str
 
 After these changes, I can modify the ProductionCostCalculatorService class. First, I inject the IProdctionCostCalculatorService in the constructor. Then, I change the CalculateProductionCost method to return the return value of the Calculate method from the Interface.
 
-<div id="attachment_459" style="width: 784px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/ProductionCostCalculatorService.jpg"><img aria-describedby="caption-attachment-459" loading="lazy" class="size-full wp-image-459" src="/assets/img/posts/2018/01/ProductionCostCalculatorService.jpg" alt="ProductionCostCalculatorService" width="774" height="247" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/ProductionCostCalculatorService.jpg"><img aria-describedby="caption-attachment-459" loading="lazy" class="size-full wp-image-459" src="/assets/img/posts/2018/01/ProductionCostCalculatorService.jpg" alt="ProductionCostCalculatorService" /></a>
   
-  <p id="caption-attachment-459" class="wp-caption-text">
+  <p>
     ProductionCostCalculatorService with the Strategy pattern
   </p>
 </div>
 
 The last step is to modify the call of the calculation. For every strategy, I need an object, which I inject into the constructor of the ProductionCostCalculatorService.
 
-<div id="attachment_461" style="width: 983px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-strategies-and-print-out.jpg"><img aria-describedby="caption-attachment-461" loading="lazy" class="size-full wp-image-461" src="/assets/img/posts/2018/01/Calculating-production-costs-using-strategies-and-print-out.jpg" alt="Calculating production costs using strategies and print out" width="973" height="207" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-strategies-and-print-out.jpg"><img aria-describedby="caption-attachment-461" loading="lazy" class="size-full wp-image-461" src="/assets/img/posts/2018/01/Calculating-production-costs-using-strategies-and-print-out.jpg" alt="Calculating production costs using strategies and print out" /></a>
   
-  <p id="caption-attachment-461" class="wp-caption-text">
+  <p>
     Calculating production costs using strategies and print out
   </p>
 </div>
 
 I have to admit that These calls look a bit messy and I am not a big fan of them. Therefore it is possible to change the ProductionCostCalculatorService, so it takes the strategy as parameter in the Calculate method instead of the constructor.
 
-<div id="attachment_462" style="width: 892px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Method-call-with-strategy.jpg"><img aria-describedby="caption-attachment-462" loading="lazy" class="size-full wp-image-462" src="/assets/img/posts/2018/01/Method-call-with-strategy.jpg" alt="Method call with strategy" width="882" height="128" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Method-call-with-strategy.jpg"><img aria-describedby="caption-attachment-462" loading="lazy" class="size-full wp-image-462" src="/assets/img/posts/2018/01/Method-call-with-strategy.jpg" alt="Method call with strategy" /></a>
   
-  <p id="caption-attachment-462" class="wp-caption-text">
+  <p>
     Method call with strategy as parameter
   </p>
 </div>
 
 This change also tidies up the ProductionCostCalculatorService, which makes it even easier to read. With this changes implemented, I can now change the call of the calculation. It is not necessary anymore to create a new ProductionCostCalculatorService object for every different production country. Instead, I pass the country as parameter in the CalculateProductionCost method.
 
-<div id="attachment_463" style="width: 1251px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-the-strategy-as-paramater.jpg"><img aria-describedby="caption-attachment-463" loading="lazy" class="size-full wp-image-463" src="/assets/img/posts/2018/01/Calculating-production-costs-using-the-strategy-as-paramater.jpg" alt="Calculating production costs using the strategy as paramater" width="1241" height="147" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-the-strategy-as-paramater.jpg"><img aria-describedby="caption-attachment-463" loading="lazy" class="size-full wp-image-463" src="/assets/img/posts/2018/01/Calculating-production-costs-using-the-strategy-as-paramater.jpg" alt="Calculating production costs using the strategy as paramater" /></a>
   
-  <p id="caption-attachment-463" class="wp-caption-text">
+  <p>
     Calculating production costs using the strategy as parameter
   </p>
 </div>

@@ -19,10 +19,10 @@ Tag helpers can be defined anywhere in the project, but it helps to keep them to
 
 Tag helpers are derived from the TagHelper class, which is defined in the Microsoft.AspNetCore.Razor.TagHelpers namespace.
 
-<div id="attachment_1732" style="width: 593px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/Creating-a-Tag-Helper-to-transform-a-button.jpg"><img aria-describedby="caption-attachment-1732" loading="lazy" class="size-full wp-image-1732" src="/assets/img/posts/2019/05/Creating-a-Tag-Helper-to-transform-a-button.jpg" alt="Creating a Tag Helper to transform a button" width="583" height="179" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/Creating-a-Tag-Helper-to-transform-a-button.jpg"><img aria-describedby="caption-attachment-1732" loading="lazy" class="size-full wp-image-1732" src="/assets/img/posts/2019/05/Creating-a-Tag-Helper-to-transform-a-button.jpg" alt="Creating a Tag Helper to transform a button" /></a>
   
-  <p id="caption-attachment-1732" class="wp-caption-text">
+  <p>
     Creating a Tag Helper to transform a button
   </p>
 </div>
@@ -203,10 +203,10 @@ The Process method transforms an element by configuring the TagHelperOutput obje
 
 Tag helper classes can be used only after they have been registered using the Razor @addTagHelper expression. The set of views to which a tag helper will be applied depends on where the @addTagHelper expression is used. For a single view, the expression appears in the view itself. For a subset of views in an application, the expression appears in a _ViewImport.cshtml file in the folder that contains the views or a parent folder.
 
-<div id="attachment_1733" style="width: 511px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/Register-the-Tag-Helper.jpg"><img aria-describedby="caption-attachment-1733" loading="lazy" class="size-full wp-image-1733" src="/assets/img/posts/2019/05/Register-the-Tag-Helper.jpg" alt="Register the Tag Helper" width="501" height="27" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/Register-the-Tag-Helper.jpg"><img aria-describedby="caption-attachment-1733" loading="lazy" class="size-full wp-image-1733" src="/assets/img/posts/2019/05/Register-the-Tag-Helper.jpg" alt="Register the Tag Helper" /></a>
   
-  <p id="caption-attachment-1733" class="wp-caption-text">
+  <p>
     Register the Tag Helper
   </p>
 </div>
@@ -217,10 +217,10 @@ The first part of the argument specifies the name of the tag helper classes, wit
 
 The last step is to use the tag helper in the view, so it can transform the element.
 
-<div id="attachment_1734" style="width: 430px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/Using-a-Tag-Helper.jpg"><img aria-describedby="caption-attachment-1734" loading="lazy" class="size-full wp-image-1734" src="/assets/img/posts/2019/05/Using-a-Tag-Helper.jpg" alt="Using a Tag Helper" width="420" height="40" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/Using-a-Tag-Helper.jpg"><img aria-describedby="caption-attachment-1734" loading="lazy" class="size-full wp-image-1734" src="/assets/img/posts/2019/05/Using-a-Tag-Helper.jpg" alt="Using a Tag Helper" /></a>
   
-  <p id="caption-attachment-1734" class="wp-caption-text">
+  <p>
     Using a Tag Helper
   </p>
 </div>
@@ -231,10 +231,10 @@ If you start the application and click on create, you will see the red Add butto
 
 Broadening the scope of a tag helper means you don&#8217;t have to create tag helpers that repeat the same operation on different element types. Some care is required because it is easy to create a tag helper that will start matching elements too broadly in the future as the contents of the views in the application evolve. A more balanced approach is to apply the HtmlTargetElement attribute multiple times, specifying the complete set of elements that will be transformed as a combination of narrowly defined matches.
 
-<div id="attachment_1742" style="width: 585px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/Add-multiple-HtmlTargetElement-attributes.jpg"><img aria-describedby="caption-attachment-1742" loading="lazy" class="size-full wp-image-1742" src="/assets/img/posts/2019/05/Add-multiple-HtmlTargetElement-attributes.jpg" alt="Add multiple HtmlTargetElement attributes" width="575" height="66" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/Add-multiple-HtmlTargetElement-attributes.jpg"><img aria-describedby="caption-attachment-1742" loading="lazy" class="size-full wp-image-1742" src="/assets/img/posts/2019/05/Add-multiple-HtmlTargetElement-attributes.jpg" alt="Add multiple HtmlTargetElement attributes" /></a>
   
-  <p id="caption-attachment-1742" class="wp-caption-text">
+  <p>
     Add multiple HtmlTargetElement attributes
   </p>
 </div>
@@ -251,10 +251,10 @@ In the following sections, I will show you some neat advanced features to get th
 
 Tag helpers are not restricted to transforming the standard HTML elements and can also be used to replace custom elements with commonly used content. This can be a useful feature for making views more concise and making their intent more obvious.
 
-<div id="attachment_1744" style="width: 430px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/Adding-your-own-HTML-element.jpg"><img aria-describedby="caption-attachment-1744" loading="lazy" class="size-full wp-image-1744" src="/assets/img/posts/2019/05/Adding-your-own-HTML-element.jpg" alt="Adding your own HTML element" width="420" height="53" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/Adding-your-own-HTML-element.jpg"><img aria-describedby="caption-attachment-1744" loading="lazy" class="size-full wp-image-1744" src="/assets/img/posts/2019/05/Adding-your-own-HTML-element.jpg" alt="Adding your own HTML element" /></a>
   
-  <p id="caption-attachment-1744" class="wp-caption-text">
+  <p>
     Adding your own HTML element
   </p>
 </div>
@@ -263,10 +263,10 @@ The WolfgangsButton element isn&#8217;t part of the HTML specification and won&#
 
 When dealing with custom elements that are not part of the HTML specification, you must apply the HtmlTargetElement attribute and specify the element name. The convention of applying tag helpers to elements based on the class name works only for standard element names.
 
-<div id="attachment_1745" style="width: 590px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/The-new-Tag-Helper-to-transform-WolfgangsButton.jpg"><img aria-describedby="caption-attachment-1745" loading="lazy" class="size-full wp-image-1745" src="/assets/img/posts/2019/05/The-new-Tag-Helper-to-transform-WolfgangsButton.jpg" alt="The new Tag Helper to transform WolfgangsButton" width="580" height="314" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/The-new-Tag-Helper-to-transform-WolfgangsButton.jpg"><img aria-describedby="caption-attachment-1745" loading="lazy" class="size-full wp-image-1745" src="/assets/img/posts/2019/05/The-new-Tag-Helper-to-transform-WolfgangsButton.jpg" alt="The new Tag Helper to transform WolfgangsButton" /></a>
   
-  <p id="caption-attachment-1745" class="wp-caption-text">
+  <p>
     The new Tag Helper to transform WolfgangsButton
   </p>
 </div>
@@ -403,10 +403,10 @@ Inserting Content around the Output Element
 
 The first TagHelperOutput properties are PreElement and PostElement, which are used to insert elements into the view before and after the output element.
 
-<div id="attachment_1747" style="width: 599px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/The-content-wrapper-implementation.jpg"><img aria-describedby="caption-attachment-1747" loading="lazy" class="size-full wp-image-1747" src="/assets/img/posts/2019/05/The-content-wrapper-implementation.jpg" alt="The content wrapper implementation" width="589" height="572" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/The-content-wrapper-implementation.jpg"><img aria-describedby="caption-attachment-1747" loading="lazy" class="size-full wp-image-1747" src="/assets/img/posts/2019/05/The-content-wrapper-implementation.jpg" alt="The content wrapper implementation" /></a>
   
-  <p id="caption-attachment-1747" class="wp-caption-text">
+  <p>
     The content wrapper implementation
   </p>
 </div>
@@ -415,20 +415,20 @@ This tag helper transforms div elements that have a title attribute, and it work
 
 This tag helper uses the TagBuilder class to create an h1 element that is contained in a div element that has been styled with Bootstrap classes. There are optional bool include-header and include-footer attributes used to specify where the content is injected, and the default is to add elements before and after the output element.
 
-<div id="attachment_1749" style="width: 333px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/Adding-surrounding-content.jpg"><img aria-describedby="caption-attachment-1749" loading="lazy" class="size-full wp-image-1749" src="/assets/img/posts/2019/05/Adding-surrounding-content.jpg" alt="Adding surrounding content" width="323" height="333" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/Adding-surrounding-content.jpg"><img aria-describedby="caption-attachment-1749" loading="lazy" class="size-full wp-image-1749" src="/assets/img/posts/2019/05/Adding-surrounding-content.jpg" alt="Adding surrounding content" /></a>
   
-  <p id="caption-attachment-1749" class="wp-caption-text">
+  <p>
     Adding surrounding content
   </p>
 </div>
 
 Next, I add a div tag around the RenderBody method.
 
-<div id="attachment_1748" style="width: 320px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/Preparing-the-RenderBody-tag-to-render-my-element-before-and-after-it.jpg"><img aria-describedby="caption-attachment-1748" loading="lazy" class="wp-image-1748 size-full" src="/assets/img/posts/2019/05/Preparing-the-RenderBody-tag-to-render-my-element-before-and-after-it.jpg" alt="Preparing the RenderBody tag to render my element before and after it" width="310" height="21" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/Preparing-the-RenderBody-tag-to-render-my-element-before-and-after-it.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/05/Preparing-the-RenderBody-tag-to-render-my-element-before-and-after-it.jpg" alt="Preparing the RenderBody tag to render my element before and after it" /></a>
   
-  <p id="caption-attachment-1748" class="wp-caption-text">
+  <p>
     Preparing the RenderBody tag to render my element before and after it
   </p>
 </div>
@@ -437,10 +437,10 @@ Next, I add a div tag around the RenderBody method.
 
 The PreContent and PostContent properties are used to insert content inside the output element, surrounding the original contents.
 
-<div id="attachment_1750" style="width: 593px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2019/05/Tag-Helper-to-insert-content-inside-of-an-element.jpg"><img aria-describedby="caption-attachment-1750" loading="lazy" class="size-full wp-image-1750" src="/assets/img/posts/2019/05/Tag-Helper-to-insert-content-inside-of-an-element.jpg" alt="Tag Helper to insert content inside of an element" width="583" height="183" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2019/05/Tag-Helper-to-insert-content-inside-of-an-element.jpg"><img aria-describedby="caption-attachment-1750" loading="lazy" class="size-full wp-image-1750" src="/assets/img/posts/2019/05/Tag-Helper-to-insert-content-inside-of-an-element.jpg" alt="Tag Helper to insert content inside of an element" /></a>
   
-  <p id="caption-attachment-1750" class="wp-caption-text">
+  <p>
     Tag Helper to insert content inside of an element
   </p>
 </div>

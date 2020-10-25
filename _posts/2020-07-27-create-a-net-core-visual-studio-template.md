@@ -15,30 +15,30 @@ I plan to create a skeleton for my solution and when creating a new project with
 
 The first step is to create the structure of your Visual Studio template. Therefore, I created an empty C# solution and add three projects, Template.Api, Template.Service and Template.Data. For the template, you can install any Nuget you want or add code. I added a controller that calls a service that calls a repository to get some data.
 
-<div id="attachment_2285" style="width: 271px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/Visual-Studio-Template-Project-Structure.jpg"><img aria-describedby="caption-attachment-2285" loading="lazy" class="size-full wp-image-2285" src="/assets/img/posts/2020/07/Visual-Studio-Template-Project-Structure.jpg" alt="Visual Studio Template Project Structure" width="261" height="365" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/Visual-Studio-Template-Project-Structure.jpg"><img aria-describedby="caption-attachment-2285" loading="lazy" class="size-full wp-image-2285" src="/assets/img/posts/2020/07/Visual-Studio-Template-Project-Structure.jpg" alt="Visual Studio Template Project Structure" /></a>
   
-  <p id="caption-attachment-2285" class="wp-caption-text">
+  <p>
     Visual Studio Template Project Structure
   </p>
 </div>
 
 Additionally, I added Swagger to have a UI to test the Api method. When you are satisfied with your project, run it. You should see the Swagger UI now.
 
-<div id="attachment_2286" style="width: 378px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/The-Swagger-UI-for-the-template.jpg"><img aria-describedby="caption-attachment-2286" loading="lazy" class="size-full wp-image-2286" src="/assets/img/posts/2020/07/The-Swagger-UI-for-the-template.jpg" alt="The Swagger UI for the template" width="368" height="426" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/The-Swagger-UI-for-the-template.jpg"><img aria-describedby="caption-attachment-2286" loading="lazy" class="size-full wp-image-2286" src="/assets/img/posts/2020/07/The-Swagger-UI-for-the-template.jpg" alt="The Swagger UI for the template" /></a>
   
-  <p id="caption-attachment-2286" class="wp-caption-text">
+  <p>
     The Swagger UI for the template
   </p>
 </div>
 
 As the last step, I test the Get method to verify that everything works correctly.
 
-<div id="attachment_2287" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/Testing-the-Template-Api.jpg"><img aria-describedby="caption-attachment-2287" loading="lazy" class="wp-image-2287" src="/assets/img/posts/2020/07/Testing-the-Template-Api.jpg" alt="Testing the Template Api" width="700" height="712" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/Testing-the-Template-Api.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Testing-the-Template-Api.jpg" alt="Testing the Template Api" /></a>
   
-  <p id="caption-attachment-2287" class="wp-caption-text">
+  <p>
     Testing the Template Api
   </p>
 </div>
@@ -49,40 +49,40 @@ The template is set up and as the next step, I am going to export it and install
 
 To export the Visual Studio Template, click on Project and then Export Template.
 
-<div id="attachment_2288" style="width: 361px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/Export-the-Visual-Studio-Template.jpg"><img aria-describedby="caption-attachment-2288" loading="lazy" class="size-full wp-image-2288" src="/assets/img/posts/2020/07/Export-the-Visual-Studio-Template.jpg" alt="Export the Visual Studio Template" width="351" height="548" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/Export-the-Visual-Studio-Template.jpg"><img aria-describedby="caption-attachment-2288" loading="lazy" class="size-full wp-image-2288" src="/assets/img/posts/2020/07/Export-the-Visual-Studio-Template.jpg" alt="Export the Visual Studio Template" /></a>
   
-  <p id="caption-attachment-2288" class="wp-caption-text">
+  <p>
     Export the Visual Studio Template
   </p>
 </div>
 
 This opens a new window in which you can select what template you want to export and which project. Leave it as Project template, select the Template.Api project and click on Next.
 
-<div id="attachment_2289" style="width: 725px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/Choose-which-Project-to-export.jpg"><img aria-describedby="caption-attachment-2289" loading="lazy" class="size-full wp-image-2289" src="/assets/img/posts/2020/07/Choose-which-Project-to-export.jpg" alt="Choose which Project to export" width="715" height="566" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/Choose-which-Project-to-export.jpg"><img aria-describedby="caption-attachment-2289" loading="lazy" class="size-full wp-image-2289" src="/assets/img/posts/2020/07/Choose-which-Project-to-export.jpg" alt="Choose which Project to export" /></a>
   
-  <p id="caption-attachment-2289" class="wp-caption-text">
+  <p>
     Choose which Project to export
   </p>
 </div>
 
 On the last page of the export, uncheck both checkboxes and click Finish.
 
-<div id="attachment_2290" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/Finish-the-Export.jpg"><img aria-describedby="caption-attachment-2290" loading="lazy" class="wp-image-2290" src="/assets/img/posts/2020/07/Finish-the-Export.jpg" alt="Finish the Export" width="700" height="556" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/Finish-the-Export.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Finish-the-Export.jpg" alt="Finish the Export" /></a>
   
-  <p id="caption-attachment-2290" class="wp-caption-text">
+  <p>
     Finish the Export
   </p>
 </div>
 
 Repeat this export for all other projects in your solution. After you are finished, you can find the exported files under C:\Users\<YourUserName>\Documents\Visual Studio <YourVersion>\My Exported Templates.
 
-<div id="attachment_2291" style="width: 629px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/The-exported-.zip-files.jpg"><img aria-describedby="caption-attachment-2291" loading="lazy" class="size-full wp-image-2291" src="/assets/img/posts/2020/07/The-exported-.zip-files.jpg" alt="The exported .zip files" width="619" height="140" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/The-exported-.zip-files.jpg"><img aria-describedby="caption-attachment-2291" loading="lazy" class="size-full wp-image-2291" src="/assets/img/posts/2020/07/The-exported-.zip-files.jpg" alt="The exported .zip files" /></a>
   
-  <p id="caption-attachment-2291" class="wp-caption-text">
+  <p>
     The exported .zip files
   </p>
 </div>
@@ -108,10 +108,10 @@ Unzip every zip file into a separate folder and delete the zip files. I get quit
 
 Save the file and create a zip of the three folder and the template file. You can easily do this by highlighting everything and the right-click and then select Send to &#8211;> Compressed (zipped) folder. Your folder should contain the following files and directories now:
 
-<div id="attachment_2292" style="width: 632px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg"><img aria-describedby="caption-attachment-2292" loading="lazy" class="size-full wp-image-2292" src="/assets/img/posts/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg" alt="Content of the template folder after finishing the creation of the template" width="622" height="180" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg"><img aria-describedby="caption-attachment-2292" loading="lazy" class="size-full wp-image-2292" src="/assets/img/posts/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg" alt="Content of the template folder after finishing the creation of the template" /></a>
   
-  <p id="caption-attachment-2292" class="wp-caption-text">
+  <p>
     Content of the template folder after finishing the creation of the template
   </p>
 </div>
@@ -124,10 +124,10 @@ To install the template, all you have to do is to copy the Template.zip file int
 
 Open Visual Studio and select Create a new project. Search for My Template and the previously added template will be displayed.
 
-<div id="attachment_2293" style="width: 574px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/Select-your-template-in-Visual-Studio.jpg"><img aria-describedby="caption-attachment-2293" loading="lazy" class="size-full wp-image-2293" src="/assets/img/posts/2020/07/Select-your-template-in-Visual-Studio.jpg" alt="Select your template in Visual Studio" width="564" height="167" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/Select-your-template-in-Visual-Studio.jpg"><img aria-describedby="caption-attachment-2293" loading="lazy" class="size-full wp-image-2293" src="/assets/img/posts/2020/07/Select-your-template-in-Visual-Studio.jpg" alt="Select your template in Visual Studio" /></a>
   
-  <p id="caption-attachment-2293" class="wp-caption-text">
+  <p>
     Select your template in Visual Studio
   </p>
 </div>
@@ -167,10 +167,10 @@ namespace $ext_safeprojectname$.Service
 
 Adding the variable also adds a lot of errors in your solution. You can ignore them though.
 
-<div id="attachment_2294" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/Errors-after-adding-the-template-variables.jpg"><img aria-describedby="caption-attachment-2294" loading="lazy" class="wp-image-2294" src="/assets/img/posts/2020/07/Errors-after-adding-the-template-variables.jpg" alt="Errors after adding the template variables" width="700" height="508" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/Errors-after-adding-the-template-variables.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Errors-after-adding-the-template-variables.jpg" alt="Errors after adding the template variables" /></a>
   
-  <p id="caption-attachment-2294" class="wp-caption-text">
+  <p>
     Errors after adding the template variables
   </p>
 </div>
@@ -179,10 +179,10 @@ Adding the variable also adds a lot of errors in your solution. You can ignore t
 
 Not only class names and namespaces should have the provided name, but also the classes should be named accordingly. You can do the same as before and replace Template in all file names with $ext_safeprojectname$. You don&#8217;t have to change the project name though.
 
-<div id="attachment_2295" style="width: 308px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/Replace-the-file-names-with-variables.jpg"><img aria-describedby="caption-attachment-2295" loading="lazy" class="size-full wp-image-2295" src="/assets/img/posts/2020/07/Replace-the-file-names-with-variables.jpg" alt="Replace the file names with variables" width="298" height="363" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/Replace-the-file-names-with-variables.jpg"><img aria-describedby="caption-attachment-2295" loading="lazy" class="size-full wp-image-2295" src="/assets/img/posts/2020/07/Replace-the-file-names-with-variables.jpg" alt="Replace the file names with variables" /></a>
   
-  <p id="caption-attachment-2295" class="wp-caption-text">
+  <p>
     Replace the file names with variables
   </p>
 </div>
@@ -210,20 +210,20 @@ Repeat the export from before by clicking on Project &#8211;> Export Template an
 
 Zip all files and copy the zip over the previously created zip in the Visual C# folder. Create a new project and select your template and enter Customer as project name. If you did everything right, all files and projects should be named correctly and the project should build without an error. It is very easy to have errors on the first try since you don&#8217;t have any help to find errors in the template and every typo will result in a build error.
 
-<div id="attachment_2296" style="width: 257px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/All-files-got-renamed-correctly.jpg"><img aria-describedby="caption-attachment-2296" loading="lazy" class="wp-image-2296 size-full" src="/assets/img/posts/2020/07/All-files-got-renamed-correctly.jpg" alt="All files got renamed correctly from the Visual Studio Template" width="247" height="339" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/All-files-got-renamed-correctly.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/07/All-files-got-renamed-correctly.jpg" alt="All files got renamed correctly from the Visual Studio Template" /></a>
   
-  <p id="caption-attachment-2296" class="wp-caption-text">
+  <p>
     All files got renamed correctly
   </p>
 </div>
 
 When you don&#8217;t have any error, run the project and you should see Customer in the headline, description and Controller.
 
-<div id="attachment_2297" style="width: 372px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/Testing-the-created-solution.jpg"><img aria-describedby="caption-attachment-2297" loading="lazy" class="wp-image-2297 size-full" src="/assets/img/posts/2020/07/Testing-the-created-solution.jpg" alt="Testing the created solution from the Visual Studio Template" width="362" height="404" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/Testing-the-created-solution.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/07/Testing-the-created-solution.jpg" alt="Testing the created solution from the Visual Studio Template" /></a>
   
-  <p id="caption-attachment-2297" class="wp-caption-text">
+  <p>
     Testing the created solution
   </p>
 </div>
@@ -262,10 +262,10 @@ Since we use variables everywhere, we have to use variables also in the Dockerfi
 
 After adding the new template to Visual Studio, create a new project and you will see the Dockerfile in your solution.
 
-<div id="attachment_2298" style="width: 244px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/07/The-Dockerfile-is-in-the-created-project.jpg"><img aria-describedby="caption-attachment-2298" loading="lazy" class="wp-image-2298 size-full" src="/assets/img/posts/2020/07/The-Dockerfile-is-in-the-created-project.jpg" alt="The Dockerfile is in the created project from the Visual Studio Template" width="234" height="354" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/07/The-Dockerfile-is-in-the-created-project.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/07/The-Dockerfile-is-in-the-created-project.jpg" alt="The Dockerfile is in the created project from the Visual Studio Template" /></a>
   
-  <p id="caption-attachment-2298" class="wp-caption-text">
+  <p>
     The Dockerfile is in the created project
   </p>
 </div>

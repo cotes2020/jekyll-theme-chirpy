@@ -13,20 +13,20 @@ A crucial feature of DevOps is to give the developer fast feedback if their code
 
 In your Azure DevOps project, go to Pipelines and click Create Pipeline.
 
-<div id="attachment_2306" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/08/Create-a-new-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2306" loading="lazy" class="wp-image-2306" src="/assets/img/posts/2020/08/Create-a-new-CI-Pipeline.jpg" alt="Create a new CI Pipeline" width="700" height="361" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/08/Create-a-new-CI-Pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Create-a-new-CI-Pipeline.jpg" alt="Create a new CI Pipeline" /></a>
   
-  <p id="caption-attachment-2306" class="wp-caption-text">
+  <p>
     Create a new CI Pipeline
   </p>
 </div>
 
 In the next window, select where you have your code stored. I select GitHub for this Demo. Usually, I have my code directly in Azure DevOps, then I would select Azure Repos Git. On the bottom, you can see &#8220;Use the classic editor&#8221;. This opens the old task-based editor. You shouldn&#8217;t use this anymore since the new standard is to use YML pipelines. This enables you to have your pipeline in your source control.
 
-<div id="attachment_2307" style="width: 608px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/08/Select-where-your-code-is.jpg"><img aria-describedby="caption-attachment-2307" loading="lazy" class="size-full wp-image-2307" src="/assets/img/posts/2020/08/Select-where-your-code-is.jpg" alt="Select where your code is" width="598" height="571" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/08/Select-where-your-code-is.jpg"><img aria-describedby="caption-attachment-2307" loading="lazy" class="size-full wp-image-2307" src="/assets/img/posts/2020/08/Select-where-your-code-is.jpg" alt="Select where your code is" /></a>
   
-  <p id="caption-attachment-2307" class="wp-caption-text">
+  <p>
     Select where your code is
   </p>
 </div>
@@ -35,30 +35,30 @@ In the next window, select where you have your code stored. I select GitHub for 
 
 Since the code is on GitHub, I have to authorize Azure Pipelines to access my repositories. If the code was on an Azure Repos, this step wouldn&#8217;t be necessary.
 
-<div id="attachment_2308" style="width: 535px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg"><img aria-describedby="caption-attachment-2308" loading="lazy" class="wp-image-2308" src="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg" alt="Authorize Azure Pipelines to access Github" width="525" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg" alt="Authorize Azure Pipelines to access Github" /></a>
   
-  <p id="caption-attachment-2308" class="wp-caption-text">
+  <p>
     Authorize Azure Pipelines to access Github
   </p>
 </div>
 
 After authorizing Azure Pipelines for GitHub, all your repositories will be displayed. Search and select for the repository, you want to make the CI pipeline for. In my case, I select the MicroserviceDemo repository.
 
-<div id="attachment_2486" style="width: 692px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Find-your-repository.jpg"><img aria-describedby="caption-attachment-2486" loading="lazy" class="size-full wp-image-2486" src="/assets/img/posts/2020/10/Find-your-repository.jpg" alt="Find your repository" width="682" height="290" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Find-your-repository.jpg"><img aria-describedby="caption-attachment-2486" loading="lazy" class="size-full wp-image-2486" src="/assets/img/posts/2020/10/Find-your-repository.jpg" alt="Find your repository" /></a>
   
-  <p id="caption-attachment-2486" class="wp-caption-text">
+  <p>
     Find your repository
   </p>
 </div>
 
 On the next window, I have to approve to install Azure Pipelines in my Github repository. This allows Azure DevOps to access the repository and write to the code. This is necessary because the CI pipeline will be added to the source control. Again, this is not necessary when you have your code in Azure DevOps.
 
-<div id="attachment_2487" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Approve-the-access-to-the-Github-repository.jpg"><img aria-describedby="caption-attachment-2487" loading="lazy" class="wp-image-2487" src="/assets/img/posts/2020/10/Approve-the-access-to-the-Github-repository.jpg" alt="Approve the access to the Github repository" width="700" height="610" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Approve-the-access-to-the-Github-repository.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Approve-the-access-to-the-Github-repository.jpg" alt="Approve the access to the Github repository" /></a>
   
-  <p id="caption-attachment-2487" class="wp-caption-text">
+  <p>
     Approve the access to the Github repository
   </p>
 </div>
@@ -67,20 +67,20 @@ On the next window, I have to approve to install Azure Pipelines in my Github re
 
 On the next step, select a template for your CI pipeline. Azure DevOps offers many templates like Docker, Kubernetes, PHP, or Node.js. Since my application is a .NET Core microservice, I select the ASP.NET Core template.
 
-<div id="attachment_2314" style="width: 493px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2314" loading="lazy" class="size-full wp-image-2314" src="/assets/img/posts/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg" alt="Select the ASP.NET Core template for your CI Pipeline" width="483" height="633" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2314" loading="lazy" class="size-full wp-image-2314" src="/assets/img/posts/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg" alt="Select the ASP.NET Core template for your CI Pipeline" /></a>
   
-  <p id="caption-attachment-2314" class="wp-caption-text">
+  <p>
     Select the ASP.NET Core template for your CI Pipeline
   </p>
 </div>
 
 That&#8217;s it. The template created a simple CI pipeline and you can use it to build your .NET Core solution. In the next section, I will go into more detail about the functionality and add more steps.
 
-<div id="attachment_2488" style="width: 541px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/The-CI-Pipeline-got-created-from-the-template.jpg"><img aria-describedby="caption-attachment-2488" loading="lazy" class="size-full wp-image-2488" src="/assets/img/posts/2020/10/The-CI-Pipeline-got-created-from-the-template.jpg" alt="The CI Pipeline got created from the template" width="531" height="374" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/The-CI-Pipeline-got-created-from-the-template.jpg"><img aria-describedby="caption-attachment-2488" loading="lazy" class="size-full wp-image-2488" src="/assets/img/posts/2020/10/The-CI-Pipeline-got-created-from-the-template.jpg" alt="The CI Pipeline got created from the template" /></a>
   
-  <p id="caption-attachment-2488" class="wp-caption-text">
+  <p>
     The CI Pipeline got created from the template
   </p>
 </div>
@@ -105,10 +105,10 @@ I plan to add several new steps to restore NuGet packages, build the solution, r
 
 I remove the build script and select the .NET Core task on the right side. I select restore as command and *\*/CustomerApi\*.csproj as the path to the projects to restore each project starting with CustomerApi. Then click Add, to add the task to your pipeline. Make sure that your cursor is at the beginning of the next line under steps.
 
-<div id="attachment_2489" style="width: 300px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/Add-Nuget-restore-to-the-CI-pipeline.jpg"><img aria-describedby="caption-attachment-2489" loading="lazy" class="wp-image-2489" src="/assets/img/posts/2020/10/Add-Nuget-restore-to-the-CI-pipeline.jpg" alt="Add Nuget restore to the CI pipeline" width="290" height="700" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/Add-Nuget-restore-to-the-CI-pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Add-Nuget-restore-to-the-CI-pipeline.jpg" alt="Add Nuget restore to the CI pipeline" /></a>
   
-  <p id="caption-attachment-2489" class="wp-caption-text">
+  <p>
     Add Nuget restore to the CI pipeline
   </p>
 </div>
@@ -164,20 +164,20 @@ steps:
 
 Click Save and Run the pipeline will be added to your source control and then executed.
 
-<div id="attachment_2490" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/The-CI-Pipeline-is-running.jpg"><img aria-describedby="caption-attachment-2490" loading="lazy" class="wp-image-2490" src="/assets/img/posts/2020/10/The-CI-Pipeline-is-running.jpg" alt="The CI Pipeline is running" width="700" height="424" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/The-CI-Pipeline-is-running.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/The-CI-Pipeline-is-running.jpg" alt="The CI Pipeline is running" /></a>
   
-  <p id="caption-attachment-2490" class="wp-caption-text">
+  <p>
     The CI Pipeline is running
   </p>
 </div>
 
 After the build is finished, you see a summary and that all 38 tests passed.
 
-<div id="attachment_2491" style="width: 710px" class="wp-caption aligncenter">
-  <a href="/assets/img/posts/2020/10/All-unit-tests-passed.jpg"><img aria-describedby="caption-attachment-2491" loading="lazy" class="wp-image-2491" src="/assets/img/posts/2020/10/All-unit-tests-passed.jpg" alt="All unit tests passed" width="700" height="544" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/10/All-unit-tests-passed.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/All-unit-tests-passed.jpg" alt="All unit tests passed" /></a>
   
-  <p id="caption-attachment-2491" class="wp-caption-text">
+  <p>
     All unit tests passed
   </p>
 </div>
