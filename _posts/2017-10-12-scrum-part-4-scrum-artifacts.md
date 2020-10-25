@@ -21,7 +21,7 @@ The Product Owner and the team should work together to prioritize the tasks in t
 The Product Backlog should be managed with a tool like TFS. If you use TFS as your source control too, it&#8217;s possible to link a feature with a commit to increase the tractability of changes. In the following, you can see the Product Backlog in TFS.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2017/10/Product-Backlog.png"><img aria-describedby="caption-attachment-159" loading="lazy" class="size-full wp-image-159" src="/assets/img/posts/2017/10/Product-Backlog.png" alt="Product Backlog" /></a>
+  <a href="/assets/img/posts/2017/10/Product-Backlog.png"><img loading="lazy" src="/assets/img/posts/2017/10/Product-Backlog.png" alt="Product Backlog" /></a>
   
   <p>
     <a href="https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/30/15/metablogapi/0250.Figure-1_59B7BEE6.png" target="_blank" rel="noopener">Source</a>

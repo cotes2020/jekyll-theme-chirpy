@@ -38,7 +38,7 @@ The deployment process creates a new resource group with the following resources
   * A virtual network
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Deployed-resources.jpg"><img aria-describedby="caption-attachment-1017" loading="lazy" class="size-full wp-image-1017" src="/assets/img/posts/2018/03/Deployed-resources.jpg" alt="Deployed resources" /></a>
+  <a href="/assets/img/posts/2018/03/Deployed-resources.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Deployed-resources.jpg" alt="Deployed resources" /></a>
   
   <p>
     Deployed resources
@@ -132,7 +132,7 @@ To create a custom image from a provisioned VM using the Azure Portal, follow th
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-custom-image.jpg"><img aria-describedby="caption-attachment-1023" loading="lazy" class="size-full wp-image-1023" src="/assets/img/posts/2018/03/Create-a-custom-image.jpg" alt="Create a custom image" /></a>
+  <a href="/assets/img/posts/2018/03/Create-a-custom-image.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-a-custom-image.jpg" alt="Create a custom image" /></a>
   
   <p>
     Create a custom image
@@ -227,7 +227,7 @@ To create a formula from a VM, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-new-formula-from-a-VM.jpg"><img aria-describedby="caption-attachment-1029" loading="lazy" class="size-full wp-image-1029" src="/assets/img/posts/2018/04/Create-a-new-formula-from-a-VM.jpg" alt="Create a new formula from a VM" /></a>
+  <a href="/assets/img/posts/2018/04/Create-a-new-formula-from-a-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-a-new-formula-from-a-VM.jpg" alt="Create a new formula from a VM" /></a>
   
   <p>
     Create a new formula from a VM
@@ -244,7 +244,7 @@ To modify the properties of an existing formula, follow these steps:
   4. Make your changes on the Update formula blade and select Update when you are finished.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Modify-an-existing-formula.jpg"><img aria-describedby="caption-attachment-1030" loading="lazy" class="size-full wp-image-1030" src="/assets/img/posts/2018/04/Modify-an-existing-formula.jpg" alt="Modify an existing formula" /></a>
+  <a href="/assets/img/posts/2018/04/Modify-an-existing-formula.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Modify-an-existing-formula.jpg" alt="Modify an existing formula" /></a>
   
   <p>
     Modify an existing formula
@@ -305,7 +305,7 @@ It is also possible to limit the number of virtual machines an user can create. 
   5. Click Save.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg"><img aria-describedby="caption-attachment-1033" loading="lazy" class="size-full wp-image-1033" src="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg" alt="Limit the number of virtual machines and premium OS disks per user" /></a>
+  <a href="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-user.jpg" alt="Limit the number of virtual machines and premium OS disks per user" /></a>
   
   <p>
     Limit the number of virtual machines and premium OS disks per user
@@ -325,7 +325,7 @@ To specify the maximum number of VMs that can be created in your current lab, fo
   5. Click Save.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg"><img aria-describedby="caption-attachment-1034" loading="lazy" class="size-full wp-image-1034" src="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg" alt="Limit the number of virtual machines and premium OS disks per lab" /></a>
+  <a href="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Limit-the-number-of-virtual-machines-and-premium-OS-disks-per-lab.jpg" alt="Limit the number of virtual machines and premium OS disks per lab" /></a>
   
   <p>
     Limit the number of virtual machines and premium OS disks per lab
@@ -345,7 +345,7 @@ To enable auto-shutdown, follow these steps:
   5. Click Save.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Configure-auto-shutdown-policy.jpg"><img aria-describedby="caption-attachment-1035" loading="lazy" class="size-full wp-image-1035" src="/assets/img/posts/2018/04/Configure-auto-shutdown-policy.jpg" alt="Configure auto-shutdown policy" /></a>
+  <a href="/assets/img/posts/2018/04/Configure-auto-shutdown-policy.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Configure-auto-shutdown-policy.jpg" alt="Configure auto-shutdown policy" /></a>
   
   <p>
     Configure auto-shutdown policy
@@ -359,7 +359,7 @@ Once configured, the auto-shutdown policy will be applied to all VMs in the lab.
   3. After all changes are made, click Save.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg"><img aria-describedby="caption-attachment-1036" loading="lazy" class="size-full wp-image-1036" src="/assets/img/posts/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg" alt="Configure auto-shutdown policy for an individual VM" /></a>
+  <a href="/assets/img/posts/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Configure-auto-shutdown-policy-for-an-individual-VM.jpg" alt="Configure auto-shutdown policy for an individual VM" /></a>
   
   <p>
     Configure auto-shutdown policy for an individual VM
@@ -394,7 +394,7 @@ Once configured, the auto-start policy will be applied to all VMs in the lab. Yo
   3. Click Save.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Disable-auto-start-for-a-specific-VM.jpg"><img aria-describedby="caption-attachment-1038" loading="lazy" class="size-full wp-image-1038" src="/assets/img/posts/2018/04/Disable-auto-start-for-a-specific-VM.jpg" alt="Disable auto-start for a specific VM" /></a>
+  <a href="/assets/img/posts/2018/04/Disable-auto-start-for-a-specific-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Disable-auto-start-for-a-specific-VM.jpg" alt="Disable auto-start for a specific VM" /></a>
   
   <p>
     Disable auto-start for a specific VM
@@ -573,7 +573,7 @@ You can give your lab users Contributor access rights. This enables them to edit
   4. Click Save
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg"><img aria-describedby="caption-attachment-1046" loading="lazy" class="size-full wp-image-1046" src="/assets/img/posts/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg" alt="Give users the Contributor or Reader access rights" /></a>
+  <a href="/assets/img/posts/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Give-users-the-Contributor-or-Reader-access-rights.jpg" alt="Give users the Contributor or Reader access rights" /></a>
   
   <p>
     Give users the Contributor or Reader access rights
@@ -609,7 +609,7 @@ To add a repository to your Azure DevTest Labs using the Azure portal, follow th
   5. Click Save.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg"><img aria-describedby="caption-attachment-1051" loading="lazy" class="size-full wp-image-1051" src="/assets/img/posts/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg" alt="Add a repository with templates to your Azure DevTest Labs" /></a>
+  <a href="/assets/img/posts/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Add-a-repository-with-templates-to-your-Azure-DevTest-Labs.jpg" alt="Add a repository with templates to your Azure DevTest Labs" /></a>
   
   <p>
     Add a repository with templates to your Azure DevTest Labs

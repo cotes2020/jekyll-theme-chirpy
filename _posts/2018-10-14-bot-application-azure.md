@@ -67,7 +67,7 @@ In this section, I will show you how to edit existing answers of your bot and ho
 To edit the source code of your code, download it. Click on Download Bot source code on the Build blade under the Bot management menu.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Download-the-source-code-of-your-bot.jpg"><img aria-describedby="caption-attachment-1443" loading="lazy" class="size-full wp-image-1443" src="/assets/img/posts/2018/10/Download-the-source-code-of-your-bot.jpg" alt="Download the source code of your bot" /></a>
+  <a href="/assets/img/posts/2018/10/Download-the-source-code-of-your-bot.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Download-the-source-code-of-your-bot.jpg" alt="Download the source code of your bot" /></a>
   
   <p>
     Download the source code of your bot
@@ -91,7 +91,7 @@ There are different ways to deploy your bot application to Azure. The simplest i
   4. Click OK.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Add-GitHub-as-your-deployment-source.jpg"><img aria-describedby="caption-attachment-1444" loading="lazy" class="size-full wp-image-1444" src="/assets/img/posts/2018/10/Add-GitHub-as-your-deployment-source.jpg" alt="Add GitHub as your deployment source" /></a>
+  <a href="/assets/img/posts/2018/10/Add-GitHub-as-your-deployment-source.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Add-GitHub-as-your-deployment-source.jpg" alt="Add GitHub as your deployment source" /></a>
   
   <p>
     Add GitHub as your deployment source

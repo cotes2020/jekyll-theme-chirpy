@@ -56,7 +56,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
   3. Set up the connection to your Azure Search Service. Note that the serviceName is only the name you entered. Not a URI.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Set-up-the-connection-to-the-Azure-Search-Service-account.jpg"><img aria-describedby="caption-attachment-1253" loading="lazy" class="size-full wp-image-1253" src="/assets/img/posts/2018/05/Set-up-the-connection-to-the-Azure-Search-Service-account.jpg" alt="Set up the connection to the Azure Search Service account" /></a>
+  <a href="/assets/img/posts/2018/05/Set-up-the-connection-to-the-Azure-Search-Service-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Set-up-the-connection-to-the-Azure-Search-Service-account.jpg" alt="Set up the connection to the Azure Search Service account" /></a>
   
   <p>
     Set up the connection to the Azure Search Service account
@@ -73,7 +73,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/The-car-class-for-the-search.jpg"><img aria-describedby="caption-attachment-1252" loading="lazy" class="size-full wp-image-1252" src="/assets/img/posts/2018/05/The-car-class-for-the-search.jpg" alt="The car class for the search" /></a>
+  <a href="/assets/img/posts/2018/05/The-car-class-for-the-search.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/The-car-class-for-the-search.jpg" alt="The car class for the search" /></a>
   
   <p>
     The car class for the search
@@ -87,7 +87,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-an-index-object-for-the-search.jpg"><img aria-describedby="caption-attachment-1251" loading="lazy" class="size-full wp-image-1251" src="/assets/img/posts/2018/05/Create-an-index-object-for-the-search.jpg" alt="Create an index object for the search" /></a>
+  <a href="/assets/img/posts/2018/05/Create-an-index-object-for-the-search.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Create-an-index-object-for-the-search.jpg" alt="Create an index object for the search" /></a>
   
   <p>
     Create an index object for the search
@@ -101,7 +101,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-car-array.jpg"><img aria-describedby="caption-attachment-1255" loading="lazy" class="size-full wp-image-1255" src="/assets/img/posts/2018/05/Create-a-car-array.jpg" alt="Create a car array" /></a>
+  <a href="/assets/img/posts/2018/05/Create-a-car-array.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Create-a-car-array.jpg" alt="Create a car array" /></a>
   
   <p>
     Create a car array
@@ -115,7 +115,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Upload-the-car-array.jpg"><img aria-describedby="caption-attachment-1256" loading="lazy" class="size-full wp-image-1256" src="/assets/img/posts/2018/05/Upload-the-car-array.jpg" alt="Upload the car array" /></a>
+  <a href="/assets/img/posts/2018/05/Upload-the-car-array.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Upload-the-car-array.jpg" alt="Upload the car array" /></a>
   
   <p>
     Upload the car array
@@ -133,7 +133,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
   1. That&#8217;s all you have to do to set up the search. The next step is to search something. To do that, create a SearchParameters object containing all properties, which the search should return. Then execute the search with the string you are looking for and your SearchParameters object.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Execute-the-search.jpg"><img aria-describedby="caption-attachment-1257" loading="lazy" class="size-full wp-image-1257" src="/assets/img/posts/2018/05/Execute-the-search.jpg" alt="Execute the search" /></a>
+  <a href="/assets/img/posts/2018/05/Execute-the-search.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Execute-the-search.jpg" alt="Execute the search" /></a>
   
   <p>
     Execute the search
@@ -147,7 +147,7 @@ You can find the code for the following demo on <a href="https://github.com/Wolf
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Iterate-through-the-search-result.jpg"><img aria-describedby="caption-attachment-1258" loading="lazy" class="size-full wp-image-1258" src="/assets/img/posts/2018/05/Iterate-through-the-search-result.jpg" alt="Iterate through the search result" /></a>
+  <a href="/assets/img/posts/2018/05/Iterate-through-the-search-result.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Iterate-through-the-search-result.jpg" alt="Iterate through the search result" /></a>
   
   <p>
     Iterate through the search result

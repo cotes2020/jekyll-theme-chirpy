@@ -20,7 +20,7 @@ As already mentioned, with witadmin you can download the configuration xml file 
 After you downloaded the xml file, open it and find the <Workflow> section. Under the <States> section, you can add a new state.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/11/Add-a-new-state-to-a-work-item.jpg"><img aria-describedby="caption-attachment-1504" loading="lazy" class="size-full wp-image-1504" src="/assets/img/posts/2018/11/Add-a-new-state-to-a-work-item.jpg" alt="Add a new state to a work item" /></a>
+  <a href="/assets/img/posts/2018/11/Add-a-new-state-to-a-work-item.jpg"><img loading="lazy" src="/assets/img/posts/2018/11/Add-a-new-state-to-a-work-item.jpg" alt="Add a new state to a work item" /></a>
   
   <p>
     Add a new state to a work item
@@ -36,7 +36,7 @@ The new state can&#8217;t be selected right now because there is no transition f
 Below the states, you will find the <Transitions> section. There you can add your transitions. A transition always has a from and to state. Note that the transition for New is from empty (from=&#8221;&#8221;). Additionally, you can add a default reason which will be displayed when you select this state. For example when you transition from new to approved the default message could be something like &#8220;Customer approved PBI&#8221;.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/11/Add-a-new-transition-for-the-new-state.jpg"><img aria-describedby="caption-attachment-1505" loading="lazy" class="size-full wp-image-1505" src="/assets/img/posts/2018/11/Add-a-new-transition-for-the-new-state.jpg" alt="Add a new transition for the new state" /></a>
+  <a href="/assets/img/posts/2018/11/Add-a-new-transition-for-the-new-state.jpg"><img loading="lazy" src="/assets/img/posts/2018/11/Add-a-new-transition-for-the-new-state.jpg" alt="Add a new transition for the new state" /></a>
   
   <p>
     Add a new transition for the new state

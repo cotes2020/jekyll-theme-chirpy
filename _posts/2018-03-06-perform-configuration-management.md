@@ -29,7 +29,7 @@ Custom Script Extensions allow you to automatically download files from Azure st
     <li>
       Under the Settings section, select Extensions <p>
         <div class="col-12 col-sm-10 aligncenter">
-          <a href="/assets/img/posts/2018/02/The-Extensions-option-under-Settings.jpg"><img aria-describedby="caption-attachment-831" loading="lazy" class="size-full wp-image-831" src="/assets/img/posts/2018/02/The-Extensions-option-under-Settings.jpg" alt="The Extensions option under Settings" /></a>
+          <a href="/assets/img/posts/2018/02/The-Extensions-option-under-Settings.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/The-Extensions-option-under-Settings.jpg" alt="The Extensions option under Settings" /></a>
           
           <p>
             The Extensions option under Settings
@@ -45,7 +45,7 @@ Custom Script Extensions allow you to automatically download files from Azure st
         <li>
           On the install extension blade upload a PowerShell script file which you want to run when the VM starts. The PowerShell script contains only one line to copy a file from C:\ to the desktop. The entire command is: Copy-Item &#8220;FilePath&#8221; -Destination &#8220;DestinationPath&#8221;. Before I upload the script, I create the file under C:\. <p>
             <div class="col-12 col-sm-10 aligncenter">
-              <a href="/assets/img/posts/2018/02/Adding-the-PowerShell-script-which-will-run-when-the-VM-starts.jpg"><img aria-describedby="caption-attachment-832" loading="lazy" class="size-full wp-image-832" src="/assets/img/posts/2018/02/Adding-the-PowerShell-script-which-will-run-when-the-VM-starts.jpg" alt="Adding the PowerShell script which will run when the VM starts" /></a>
+              <a href="/assets/img/posts/2018/02/Adding-the-PowerShell-script-which-will-run-when-the-VM-starts.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Adding-the-PowerShell-script-which-will-run-when-the-VM-starts.jpg" alt="Adding the PowerShell script which will run when the VM starts" /></a>
               
               <p>
                 Adding the PowerShell script which will run when the VM starts
@@ -60,7 +60,7 @@ Custom Script Extensions allow you to automatically download files from Azure st
             </li></ol> </li> </ol> 
             
             <div class="col-12 col-sm-10 aligncenter">
-              <a href="/assets/img/posts/2018/03/Copied-the-file-on-the-desktop-using-the-uploaded-script.jpg"><img aria-describedby="caption-attachment-861" loading="lazy" class="size-full wp-image-861" src="/assets/img/posts/2018/03/Copied-the-file-on-the-desktop-using-the-uploaded-script.jpg" alt="Copied the file on the desktop using the uploaded script" /></a>
+              <a href="/assets/img/posts/2018/03/Copied-the-file-on-the-desktop-using-the-uploaded-script.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Copied-the-file-on-the-desktop-using-the-uploaded-script.jpg" alt="Copied the file on the desktop using the uploaded script" /></a>
               
               <p>
                 Copied the file on the desktop using the uploaded script
@@ -184,7 +184,7 @@ Custom Script Extensions allow you to automatically download files from Azure st
             </ol>
             
             <div class="col-12 col-sm-10 aligncenter">
-              <a href="/assets/img/posts/2018/03/Deploy-the-DSC-script-to-your-VM.jpg"><img aria-describedby="caption-attachment-859" loading="lazy" class="size-full wp-image-859" src="/assets/img/posts/2018/03/Deploy-the-DSC-script-to-your-VM.jpg" alt="Deploy the DSC script to your VM" /></a>
+              <a href="/assets/img/posts/2018/03/Deploy-the-DSC-script-to-your-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Deploy-the-DSC-script-to-your-VM.jpg" alt="Deploy the DSC script to your VM" /></a>
               
               <p>
                 Deploy the DSC script to your VM
@@ -218,7 +218,7 @@ Custom Script Extensions allow you to automatically download files from Azure st
             </ol>
             
             <div class="col-12 col-sm-10 aligncenter">
-              <a href="/assets/img/posts/2018/03/Enable-remote-debugging-on-your-VM-in-Visual-Studio.jpg"><img aria-describedby="caption-attachment-854" loading="lazy" class="size-full wp-image-854" src="/assets/img/posts/2018/03/Enable-remote-debugging-on-your-VM-in-Visual-Studio.jpg" alt="Enable remote debugging on your VM in Visual Studio" /></a>
+              <a href="/assets/img/posts/2018/03/Enable-remote-debugging-on-your-VM-in-Visual-Studio.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Enable-remote-debugging-on-your-VM-in-Visual-Studio.jpg" alt="Enable remote debugging on your VM in Visual Studio" /></a>
               
               <p>
                 Enable remote debugging on your VM in Visual Studio

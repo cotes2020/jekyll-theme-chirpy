@@ -20,7 +20,7 @@ To create a new API app, follow these steps:
   3. Click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-new-API-App.jpg"><img aria-describedby="caption-attachment-1282" loading="lazy" class="size-full wp-image-1282" src="/assets/img/posts/2018/05/Create-a-new-API-App.jpg" alt="Create a new API App" /></a>
+  <a href="/assets/img/posts/2018/05/Create-a-new-API-App.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Create-a-new-API-App.jpg" alt="Create a new API App" /></a>
   
   <p>
     Create a new API App
@@ -30,7 +30,7 @@ To create a new API app, follow these steps:
 After the API App is deployed, you can download a sample project in ASP.Net, NodeJs or Java by clicking on Quickstart under the Deployment menu.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Download-a-sample-project.jpg"><img aria-describedby="caption-attachment-1283" loading="lazy" class="size-full wp-image-1283" src="/assets/img/posts/2018/05/Download-a-sample-project.jpg" alt="Download a sample project" /></a>
+  <a href="/assets/img/posts/2018/05/Download-a-sample-project.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Download-a-sample-project.jpg" alt="Download a sample project" /></a>
   
   <p>
     Download a sample project
@@ -157,7 +157,7 @@ To generate client code for your API App that has Swagger API metadata, follow t
   2. On the API definition, copy the API definition.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Copy-the-API-definition.jpg"><img aria-describedby="caption-attachment-1293" loading="lazy" class="size-full wp-image-1293" src="/assets/img/posts/2018/05/Copy-the-API-definition.jpg" alt="Copy the API definition" /></a>
+  <a href="/assets/img/posts/2018/05/Copy-the-API-definition.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Copy-the-API-definition.jpg" alt="Copy the API definition" /></a>
   
   <p>
     Copy the API definition

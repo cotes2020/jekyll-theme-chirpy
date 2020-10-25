@@ -20,7 +20,7 @@ To create a Logic App, follow these steps:
   3. Click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Create-a-Logic-App.jpg"><img aria-describedby="caption-attachment-1316" loading="lazy" class="size-full wp-image-1316" src="/assets/img/posts/2018/06/Create-a-Logic-App.jpg" alt="Create a Logic App" /></a>
+  <a href="/assets/img/posts/2018/06/Create-a-Logic-App.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Create-a-Logic-App.jpg" alt="Create a Logic App" /></a>
   
   <p>
     Create a Logic App
@@ -39,7 +39,7 @@ Following, I will create a template from scratch:
   4. After you are logged in, enter your search text to return certain tweets (for example #Azure), and select an interval and frequency for how often to check for items.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Connect-the-Logic-App-with-Twitter.jpg"><img aria-describedby="caption-attachment-1309" loading="lazy" class="size-full wp-image-1309" src="/assets/img/posts/2018/06/Connect-the-Logic-App-with-Twitter.jpg" alt="Connect the Logic App with Twitter" /></a>
+  <a href="/assets/img/posts/2018/06/Connect-the-Logic-App-with-Twitter.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Connect-the-Logic-App-with-Twitter.jpg" alt="Connect the Logic App with Twitter" /></a>
   
   <p>
     Connect the Logic App with Twitter
@@ -59,7 +59,7 @@ Following, I will create a template from scratch:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Configure-the-Gmail-connector-to-send-an-email.jpg"><img aria-describedby="caption-attachment-1319" loading="lazy" class="size-full wp-image-1319" src="/assets/img/posts/2018/06/Configure-the-Gmail-connector-to-send-an-email.jpg" alt="Configure the Gmail connector to send an email" /></a>
+  <a href="/assets/img/posts/2018/06/Configure-the-Gmail-connector-to-send-an-email.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Configure-the-Gmail-connector-to-send-an-email.jpg" alt="Configure the Gmail connector to send an email" /></a>
   
   <p>
     Configure the Gmail connector to send an email
@@ -79,7 +79,7 @@ Following, I will create a template from scratch:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/The-received-email-from-the-Gmail-connector.jpg"><img aria-describedby="caption-attachment-1320" loading="lazy" class="size-full wp-image-1320" src="/assets/img/posts/2018/06/The-received-email-from-the-Gmail-connector.jpg" alt="The received email from the Gmail connector" /></a>
+  <a href="/assets/img/posts/2018/06/The-received-email-from-the-Gmail-connector.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/The-received-email-from-the-Gmail-connector.jpg" alt="The received email from the Gmail connector" /></a>
   
   <p>
     The received email from the Gmail connector
@@ -107,7 +107,7 @@ To create an integration account, follow these steps:
   3. Click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Create-a-new-Integration-account.jpg"><img aria-describedby="caption-attachment-1322" loading="lazy" class="size-full wp-image-1322" src="/assets/img/posts/2018/06/Create-a-new-Integration-account.jpg" alt="Create a new Integration account" /></a>
+  <a href="/assets/img/posts/2018/06/Create-a-new-Integration-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Create-a-new-Integration-account.jpg" alt="Create a new Integration account" /></a>
   
   <p>
     Create a new integration account
@@ -125,7 +125,7 @@ To add a partner to your integration account, follow these steps:
   3. Click OK.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Add-a-new-partner.jpg"><img aria-describedby="caption-attachment-1326" loading="lazy" class="size-full wp-image-1326" src="/assets/img/posts/2018/06/Add-a-new-partner.jpg" alt="Add a new partner" /></a>
+  <a href="/assets/img/posts/2018/06/Add-a-new-partner.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Add-a-new-partner.jpg" alt="Add a new partner" /></a>
   
   <p>
     Add a new partner
@@ -154,7 +154,7 @@ To create an AS2 agreement, follow these steps:
   4. Click OK
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Create-a-new-AS2-agreement.jpg"><img aria-describedby="caption-attachment-1327" loading="lazy" class="size-full wp-image-1327" src="/assets/img/posts/2018/06/Create-a-new-AS2-agreement.jpg" alt="Create a new AS2 agreement" /></a>
+  <a href="/assets/img/posts/2018/06/Create-a-new-AS2-agreement.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Create-a-new-AS2-agreement.jpg" alt="Create a new AS2 agreement" /></a>
   
   <p>
     Create a new AS2 agreement
@@ -172,7 +172,7 @@ To link them, follow these steps:
   3. Click Save.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Link-your-Logic-App-and-integration-account.jpg"><img aria-describedby="caption-attachment-1328" loading="lazy" class="size-full wp-image-1328" src="/assets/img/posts/2018/06/Link-your-Logic-App-and-integration-account.jpg" alt="Link your Logic App and integration account" /></a>
+  <a href="/assets/img/posts/2018/06/Link-your-Logic-App-and-integration-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Link-your-Logic-App-and-integration-account.jpg" alt="Link your Logic App and integration account" /></a>
   
   <p>
     Link your Logic App and integration account
@@ -191,7 +191,7 @@ After the Logic App and integration account are linked, you can create a B2B wor
   6. Provide a connection name, select your integration account and click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Add-the-decode-AS2-message-form.jpg"><img aria-describedby="caption-attachment-1330" loading="lazy" class="size-full wp-image-1330" src="/assets/img/posts/2018/06/Add-the-decode-AS2-message-form.jpg" alt="Add the decode AS2 message form" /></a>
+  <a href="/assets/img/posts/2018/06/Add-the-decode-AS2-message-form.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Add-the-decode-AS2-message-form.jpg" alt="Add the decode AS2 message form" /></a>
   
   <p>
     Add the decode AS2 message form
@@ -205,7 +205,7 @@ After the Logic App and integration account are linked, you can create a B2B wor
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Setting-the-Decode-AS2-Message-body-and-headers-information-form-in-the-Logic.jpg"><img aria-describedby="caption-attachment-1331" loading="lazy" class="size-full wp-image-1331" src="/assets/img/posts/2018/06/Setting-the-Decode-AS2-Message-body-and-headers-information-form-in-the-Logic.jpg" alt="Setting the Decode AS2 Message body and headers information form in the Logic" /></a>
+  <a href="/assets/img/posts/2018/06/Setting-the-Decode-AS2-Message-body-and-headers-information-form-in-the-Logic.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Setting-the-Decode-AS2-Message-body-and-headers-information-form-in-the-Logic.jpg" alt="Setting the Decode AS2 Message body and headers information form in the Logic" /></a>
   
   <p>
     Setting the Decode AS2 Message body and headers information form in the Logic
@@ -225,7 +225,7 @@ After the Logic App and integration account are linked, you can create a B2B wor
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Enter-a-connection-name-and-select-your-integration-account.jpg"><img aria-describedby="caption-attachment-1332" loading="lazy" class="size-full wp-image-1332" src="/assets/img/posts/2018/06/Enter-a-connection-name-and-select-your-integration-account.jpg" alt="Enter a connection name and select your integration account" /></a>
+  <a href="/assets/img/posts/2018/06/Enter-a-connection-name-and-select-your-integration-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Enter-a-connection-name-and-select-your-integration-account.jpg" alt="Enter a connection name and select your integration account" /></a>
   
   <p>
     Enter a connection name and select your integration account
@@ -239,7 +239,7 @@ After the Logic App and integration account are linked, you can create a B2B wor
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Decode-the-AS2-message.jpg"><img aria-describedby="caption-attachment-1335" loading="lazy" class="size-full wp-image-1335" src="/assets/img/posts/2018/06/Decode-the-AS2-message.jpg" alt="Decode the AS2 message" /></a>
+  <a href="/assets/img/posts/2018/06/Decode-the-AS2-message.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Decode-the-AS2-message.jpg" alt="Decode the AS2 message" /></a>
   
   <p>
     Decode the AS2 message
@@ -259,7 +259,7 @@ After the Logic App and integration account are linked, you can create a B2B wor
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Configure-the-response.jpg"><img aria-describedby="caption-attachment-1334" loading="lazy" class="size-full wp-image-1334" src="/assets/img/posts/2018/06/Configure-the-response.jpg" alt="Configure the response" /></a>
+  <a href="/assets/img/posts/2018/06/Configure-the-response.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Configure-the-response.jpg" alt="Configure the response" /></a>
   
   <p>
     Configure the response
@@ -344,7 +344,7 @@ To add a new schema, follow these steps:
   4. Click OK.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Add-a-schema-to-your-integration-account.jpg"><img aria-describedby="caption-attachment-1336" loading="lazy" class="size-full wp-image-1336" src="/assets/img/posts/2018/06/Add-a-schema-to-your-integration-account.jpg" alt="Add a schema to your integration account" /></a>
+  <a href="/assets/img/posts/2018/06/Add-a-schema-to-your-integration-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Add-a-schema-to-your-integration-account.jpg" alt="Add a schema to your integration account" /></a>
   
   <p>
     Add a schema to your integration account
@@ -363,7 +363,7 @@ To add a new schema, follow these steps:
   4. Click OK.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Add-a-map-to-your-integration-account.jpg"><img aria-describedby="caption-attachment-1337" loading="lazy" class="size-full wp-image-1337" src="/assets/img/posts/2018/06/Add-a-map-to-your-integration-account.jpg" alt="Add a map to your integration account" /></a>
+  <a href="/assets/img/posts/2018/06/Add-a-map-to-your-integration-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Add-a-map-to-your-integration-account.jpg" alt="Add a map to your integration account" /></a>
   
   <p>
     Add a map to your integration account
@@ -384,7 +384,7 @@ Follow these steps to use XML capabilities in your Logic App:
   6. Select Body as Content and the previously uploaded schema
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Add-XML-validation-to-your-Logic-App.jpg"><img aria-describedby="caption-attachment-1339" loading="lazy" class="size-full wp-image-1339" src="/assets/img/posts/2018/06/Add-XML-validation-to-your-Logic-App.jpg" alt="Add XML validation to your Logic App" /></a>
+  <a href="/assets/img/posts/2018/06/Add-XML-validation-to-your-Logic-App.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Add-XML-validation-to-your-Logic-App.jpg" alt="Add XML validation to your Logic App" /></a>
   
   <p>
     Add XML validation to your Logic App
@@ -404,7 +404,7 @@ Follow these steps to use XML capabilities in your Logic App:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Add-XML-transformation-to-your-Logic-App.jpg"><img aria-describedby="caption-attachment-1340" loading="lazy" class="size-full wp-image-1340" src="/assets/img/posts/2018/06/Add-XML-transformation-to-your-Logic-App.jpg" alt="Add XML transformation to your Logic App" /></a>
+  <a href="/assets/img/posts/2018/06/Add-XML-transformation-to-your-Logic-App.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Add-XML-transformation-to-your-Logic-App.jpg" alt="Add XML transformation to your Logic App" /></a>
   
   <p>
     Add XML transformation to your Logic App
@@ -471,7 +471,7 @@ To create an HTTP endpoint to receive an incoming request for a Request Trigger,
   4. Optionally enter a JSON schema for the payload that you expect to be sent to the trigger. This schema can be added to the Request Body JSON Schema field. To generate the schema, select the Use sample payload to generate schema link at the bottom of the form. This displays a dialog where you can type in or paste a sample JSON payload. The advantage of having a schema defined is that the designer will use the schema to generate tokens that your logic app can use to consume, parse, and pass data from the trigger through your workflow.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Enter-a-JSON-schema.jpg"><img aria-describedby="caption-attachment-1341" loading="lazy" class="size-full wp-image-1341" src="/assets/img/posts/2018/06/Enter-a-JSON-schema.jpg" alt="Enter a JSON schema" /></a>
+  <a href="/assets/img/posts/2018/06/Enter-a-JSON-schema.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Enter-a-JSON-schema.jpg" alt="Enter a JSON schema" /></a>
   
   <p>
     Enter a JSON schema
@@ -485,7 +485,7 @@ To create an HTTP endpoint to receive an incoming request for a Request Trigger,
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/The-generated-HTTP-POST-URL-for-the-trigger.jpg"><img aria-describedby="caption-attachment-1342" loading="lazy" class="size-full wp-image-1342" src="/assets/img/posts/2018/06/The-generated-HTTP-POST-URL-for-the-trigger.jpg" alt="The generated HTTP POST URL for the trigger" /></a>
+  <a href="/assets/img/posts/2018/06/The-generated-HTTP-POST-URL-for-the-trigger.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/The-generated-HTTP-POST-URL-for-the-trigger.jpg" alt="The generated HTTP POST URL for the trigger" /></a>
   
   <p>
     The generated HTTP POST URL for the trigger

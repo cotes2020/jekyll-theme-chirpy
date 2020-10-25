@@ -23,7 +23,7 @@ Before I create the new CI Pipeline for building the Docker image, I set up a co
 This opens a pop-up where you select Docker Registry.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/09/Select-Docker-Registry-for-your-service-connection.jpg"><img aria-describedby="caption-attachment-2372" loading="lazy" class="size-full wp-image-2372" src="/assets/img/posts/2020/09/Select-Docker-Registry-for-your-service-connection.jpg" alt="Select Docker Registry for your service connection" /></a>
+  <a href="/assets/img/posts/2020/09/Select-Docker-Registry-for-your-service-connection.jpg"><img loading="lazy" src="/assets/img/posts/2020/09/Select-Docker-Registry-for-your-service-connection.jpg" alt="Select Docker Registry for your service connection" /></a>
   
   <p>
     Select Docker Registry for your service connection

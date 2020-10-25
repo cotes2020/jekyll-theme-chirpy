@@ -65,7 +65,7 @@ Following, I will explain how to create a new Windows Server VM from a pre-built
     </li>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg"><img aria-describedby="caption-attachment-822" loading="lazy" class="size-full wp-image-822" src="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg" alt="Entering basic data for the new VM" /></a>
+  <a href="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Entering-basic-data-for-the-new-VM.jpg" alt="Entering basic data for the new VM" /></a>
   
   <p>
     Entering basic data for the new VM
@@ -144,7 +144,7 @@ After the image is generalized go back to the Azure Portal. Click on your VM and
 On the Create image blade provide a name for your new image and a Resource group. Then click Create to create your new image.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-the-image-from-your-VM.jpg"><img aria-describedby="caption-attachment-848" loading="lazy" class="size-full wp-image-848" src="/assets/img/posts/2018/03/Create-the-image-from-your-VM.jpg" alt="Create the image from your VM" /></a>
+  <a href="/assets/img/posts/2018/03/Create-the-image-from-your-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-the-image-from-your-VM.jpg" alt="Create the image from your VM" /></a>
   
   <p>
     Create the image from your VM
@@ -156,7 +156,7 @@ On the Create image blade provide a name for your new image and a Resource group
 The last step is to create your new VM from the previously created image. To do that click on All resources and select the image you just created. The type is Image and the symbol looks similar to the symbol of a virtual machine. After you selected your image, click on + Create VM on the top of the Overview blade. This opens the Create virtual machine blade where you can enter the configuration of your VM.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-the-VM-from-your-image.jpg"><img aria-describedby="caption-attachment-849" loading="lazy" class="size-full wp-image-849" src="/assets/img/posts/2018/03/Create-the-VM-from-your-image.jpg" alt="Create the VM from your image" /></a>
+  <a href="/assets/img/posts/2018/03/Create-the-VM-from-your-image.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-the-VM-from-your-image.jpg" alt="Create the VM from your image" /></a>
   
   <p>
     Create the VM from your image

@@ -12,7 +12,7 @@ I talked about HTML Helper Methods in <a href="/helper-methods-in-asp-net-mvc/" 
 I use the same project as last time. The only changes I made was adding an address and the birthday to the customer class. You can download the code <a href="https://github.com/WolfgangOfner/MVC-TemplatedHelperMethods" target="_blank" rel="noopener noreferrer">here</a>.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Implementation-of-the-Address-class.jpg"><img aria-describedby="caption-attachment-798" loading="lazy" class="size-full wp-image-798" src="/assets/img/posts/2018/02/Implementation-of-the-Address-class.jpg" alt="Implementation of the Address class" /></a>
+  <a href="/assets/img/posts/2018/02/Implementation-of-the-Address-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Implementation-of-the-Address-class.jpg" alt="Implementation of the Address class" /></a>
   
   <p>
     Implementation of the Address class
@@ -24,7 +24,7 @@ I use the same project as last time. The only changes I made was adding an addre
 The simplest templated helper method is Html.Editor and the strongly typed version Html.EditorFor. I like the strongly typed version due to it&#8217;s IntelliSense support and pass the property name as the parameter. The MVC framework renders the element which it thinks fits best.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg"><img aria-describedby="caption-attachment-802" loading="lazy" class="size-full wp-image-802" src="/assets/img/posts/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg" alt="Using Html.EditorFor to create HTML elements" /></a>
+  <a href="/assets/img/posts/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Using-Html.EditorFor-to-create-HTML-elements.jpg" alt="Using Html.EditorFor to create HTML elements" /></a>
   
   <p>
     Using Html.EditorFor to create HTML elements
@@ -206,7 +206,7 @@ The following templated helper methods are available for the scaffolding process
 With these templated helper methods it is possible to render forms with just a couple lines of code. This makes them easy to read and easy to change.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg"><img aria-describedby="caption-attachment-799" loading="lazy" class="size-full wp-image-799" src="/assets/img/posts/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg" alt="Creating a form using templated helper methods with the model" /></a>
+  <a href="/assets/img/posts/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Creating-a-form-using-templated-helper-methods-with-the-model.jpg" alt="Creating a form using templated helper methods with the model" /></a>
   
   <p>
     Creating a form using templated helper methods with the model
@@ -343,7 +343,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg"><img aria-describedby="caption-attachment-803" loading="lazy" class="size-full wp-image-803" src="/assets/img/posts/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg" alt="Applying the HiddenInput attribute to the CustomerId" /></a>
+    <a href="/assets/img/posts/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Applying-the-HiddenInput-attribute-to-the-CustomerId.jpg" alt="Applying the HiddenInput attribute to the CustomerId" /></a>
     
     <p>
       Applying the HiddenInput attribute to the CustomerId
@@ -367,7 +367,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg"><img aria-describedby="caption-attachment-806" loading="lazy" class="size-full wp-image-806" src="/assets/img/posts/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg" alt="Decorating the model properties with the Display attribute" /></a>
+    <a href="/assets/img/posts/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Decorating-the-model-properties-with-the-Display-attribute.jpg" alt="Decorating the model properties with the Display attribute" /></a>
     
     <p>
       Decorating the model properties with the Display attribute
@@ -379,7 +379,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg"><img aria-describedby="caption-attachment-807" loading="lazy" class="size-full wp-image-807" src="/assets/img/posts/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg" alt="Output of the form with the Display attribute for naming the properties" /></a>
+    <a href="/assets/img/posts/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Output-of-the-form-with-the-Display-attribute-for-naming-the-properties.jpg" alt="Output of the form with the Display attribute for naming the properties" /></a>
     
     <p>
       Output of the form with the Display attribute for naming the properties
@@ -395,7 +395,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg"><img aria-describedby="caption-attachment-808" loading="lazy" class="size-full wp-image-808" src="/assets/img/posts/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg" alt="Implementation of the partial customer class with attributes" /></a>
+    <a href="/assets/img/posts/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Implementation-of-the-partial-customer-class-with-attributes.jpg" alt="Implementation of the partial customer class with attributes" /></a>
     
     <p>
       Implementation of the partial customer class with attributes
@@ -407,7 +407,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg"><img aria-describedby="caption-attachment-809" loading="lazy" class="size-full wp-image-809" src="/assets/img/posts/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg" alt="Adding the MetaData attribute to the customer class" /></a>
+    <a href="/assets/img/posts/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Adding-the-MetaData-attribute-to-the-customer-class.jpg" alt="Adding the MetaData attribute to the customer class" /></a>
     
     <p>
       Adding the MetaData attribute to the customer class
@@ -431,7 +431,7 @@ The ASP.NET MVC framework offers the following datatype attributes:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Adding-a-render-method-for-the-Address-property.jpg"><img aria-describedby="caption-attachment-810" loading="lazy" class="size-full wp-image-810" src="/assets/img/posts/2018/02/Adding-a-render-method-for-the-Address-property.jpg" alt="Adding a render method for the Address property" /></a>
+    <a href="/assets/img/posts/2018/02/Adding-a-render-method-for-the-Address-property.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Adding-a-render-method-for-the-Address-property.jpg" alt="Adding a render method for the Address property" /></a>
     
     <p>
       Adding a render method for the Address property

@@ -16,7 +16,7 @@ Microsoft released with .net core 3.0 the next major version of .net core which 
 A pretty neat feature of .net core is that you can create a single file executable that contains all dependencies. This makes the output way clearer. To create a single file executable, you only have to add the RuntimeIdentifier and PublishSingleFile in your csproj file.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/12/Configure-your-application-to-publish-as-a-single-file.jpg"><img aria-describedby="caption-attachment-1843" loading="lazy" class="size-full wp-image-1843" src="/assets/img/posts/2019/12/Configure-your-application-to-publish-as-a-single-file.jpg" alt="" /></a>
+  <a href="/assets/img/posts/2019/12/Configure-your-application-to-publish-as-a-single-file.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/Configure-your-application-to-publish-as-a-single-file.jpg" alt="" /></a>
   
   <p>
     Configure your application to publish as a single file
@@ -26,7 +26,7 @@ A pretty neat feature of .net core is that you can create a single file executab
 The RuntimeIdentifier tells the compiler for what operating system it should create the executable. This could be, for example, win10-x64 or win10-x86. Creating a single file will make the executable way bigger since all the dependencies are packed into the file.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/12/Everything-got-packed-into-the-executable.jpg"><img aria-describedby="caption-attachment-1844" loading="lazy" class="size-full wp-image-1844" src="/assets/img/posts/2019/12/Everything-got-packed-into-the-executable.jpg" alt="Everything got packed into the executable" /></a>
+  <a href="/assets/img/posts/2019/12/Everything-got-packed-into-the-executable.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/Everything-got-packed-into-the-executable.jpg" alt="Everything got packed into the executable" /></a>
   
   <p>
     Everything got packed into the executable
@@ -40,7 +40,7 @@ To reduce the size of your published output, you can trim it. Trimming removes n
 To configure ready to run, you only have to add the PublishedTrim tag to your csproj and set it to true.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/12/Remove-not-needed-dependencies-before-the-publish.jpg"><img aria-describedby="caption-attachment-1847" loading="lazy" class="size-full wp-image-1847" src="/assets/img/posts/2019/12/Remove-not-needed-dependencies-before-the-publish.jpg" alt="Remove not needed dependencies before the publish" /></a>
+  <a href="/assets/img/posts/2019/12/Remove-not-needed-dependencies-before-the-publish.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/Remove-not-needed-dependencies-before-the-publish.jpg" alt="Remove not needed dependencies before the publish" /></a>
   
   <p>
     Remove not needed dependencies before the publish
@@ -50,7 +50,7 @@ To configure ready to run, you only have to add the PublishedTrim tag to your cs
 Be careful though because if you work with reflections, dependencies might get removed although you need them. You have to test your application before using it.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/12/The-executable-is-much-smaller-after-the-trim.jpg"><img aria-describedby="caption-attachment-1845" loading="lazy" class="size-full wp-image-1845" src="/assets/img/posts/2019/12/The-executable-is-much-smaller-after-the-trim.jpg" alt="The executable is much smaller after the trim" /></a>
+  <a href="/assets/img/posts/2019/12/The-executable-is-much-smaller-after-the-trim.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/The-executable-is-much-smaller-after-the-trim.jpg" alt="The executable is much smaller after the trim" /></a>
   
   <p>
     The executable is much smaller after the trim

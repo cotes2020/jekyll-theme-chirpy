@@ -64,7 +64,7 @@ The ASP .NET Core tag helper automatically includes the antiforgery token into a
 When you look at the HTML code of the form, you can see the generated field for the token.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg"><img aria-describedby="caption-attachment-2183" loading="lazy" class="size-full wp-image-2183" src="/assets/img/posts/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg" alt="The auto-generated antiforgery token in the form to prevent cross site request forgery attacks" /></a>
+  <a href="/assets/img/posts/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/The-auto-generated-antiforgery-token-in-the-form.jpg" alt="The auto-generated antiforgery token in the form to prevent cross site request forgery attacks" /></a>
   
   <p>
     The auto-generated antiforgery token in the form
@@ -74,7 +74,7 @@ When you look at the HTML code of the form, you can see the generated field for 
 You can also see two cookies in your browser. In Chrome you can see the cookies when you open the Developer Tools (F12) and then click on Application and then on Cookies.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg"><img aria-describedby="caption-attachment-2184" loading="lazy" class="size-full wp-image-2184" src="/assets/img/posts/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg" alt="The User Id and Anti Forgery Cookie" /></a>
+  <a href="/assets/img/posts/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/The-User-Id-and-Anti-Forgery-Cookie.jpg" alt="The User Id and Anti Forgery Cookie" /></a>
   
   <p>
     The User Id and Anti Forgery Cookie

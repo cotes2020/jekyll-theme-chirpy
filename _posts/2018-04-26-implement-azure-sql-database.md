@@ -118,7 +118,7 @@ To restore an Azure SQL database, follow these steps:
   5. Click on OK to restore the backup.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Restore-an-Azure-SQL-database.jpg"><img aria-describedby="caption-attachment-1162" loading="lazy" class="size-full wp-image-1162" src="/assets/img/posts/2018/04/Restore-an-Azure-SQL-database.jpg" alt="Restore an Azure SQL database" /></a>
+  <a href="/assets/img/posts/2018/04/Restore-an-Azure-SQL-database.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Restore-an-Azure-SQL-database.jpg" alt="Restore an Azure SQL database" /></a>
   
   <p>
     Restore an Azure SQL database
@@ -147,7 +147,7 @@ To restore a deleted Azure SQL database, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Restore-the-deleted-Azure-SQL-database.jpg"><img aria-describedby="caption-attachment-1160" loading="lazy" class="size-full wp-image-1160" src="/assets/img/posts/2018/04/Restore-the-deleted-Azure-SQL-database.jpg" alt="Restore the deleted Azure SQL database" /></a>
+  <a href="/assets/img/posts/2018/04/Restore-the-deleted-Azure-SQL-database.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Restore-the-deleted-Azure-SQL-database.jpg" alt="Restore the deleted Azure SQL database" /></a>
   
   <p>
     Restore the deleted Azure SQL database
@@ -248,7 +248,7 @@ To import a BACPAC file into your Azure SQL database, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg"><img aria-describedby="caption-attachment-1178" loading="lazy" class="size-full wp-image-1178" src="/assets/img/posts/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg" alt="Start the Import Data-tier Application wizard" /></a>
+  <a href="/assets/img/posts/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Start-the-Import-Data-tier-Application-wizard.jpg" alt="Start the Import Data-tier Application wizard" /></a>
   
   <p>
     Start the Import Data-tier Application wizard
@@ -440,7 +440,7 @@ Azure SQL Data Sync has the following attributes:
 </div>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Azure-Data-Sync-diagram.jpg"><img aria-describedby="caption-attachment-1166" loading="lazy" class="size-full wp-image-1166" src="/assets/img/posts/2018/04/Azure-Data-Sync-diagram.jpg" alt="Azure Data Sync diagram" /></a>
+  <a href="/assets/img/posts/2018/04/Azure-Data-Sync-diagram.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Azure-Data-Sync-diagram.jpg" alt="Azure Data Sync diagram" /></a>
   
   <p>
     Azure Data Sync diagram (<a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener">Source</a>)

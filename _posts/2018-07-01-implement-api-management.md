@@ -45,7 +45,7 @@ To create an API Management service, follow these steps:
   3. Click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg"><img aria-describedby="caption-attachment-1361" loading="lazy" class="size-full wp-image-1361" src="/assets/img/posts/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg" alt="Create an API Management service in the Azure Portal" /></a>
+  <a href="/assets/img/posts/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Create-an-API-Management-service-in-the-Azure-Portal.jpg" alt="Create an API Management service in the Azure Portal" /></a>
   
   <p>
     Create an API Management service in the Azure Portal

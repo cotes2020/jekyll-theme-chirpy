@@ -30,7 +30,7 @@ View components can be created in three different ways which are:
 A Poco view component is a class that provides view component functionality without relying on any of the MVC APIs. As with Poco controllers, the kind of view component is awkward to work with but can be helpful in understanding how they work. A Poco view component is any class whose name ends with ViewComponent and that defines an Invoke method. VIew component classes can be defined anywhere in an application, but the convention is to group them together in a folder called Components at the root level of the project.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/The-Poco-view-component.jpg"><img aria-describedby="caption-attachment-1707" loading="lazy" class="size-full wp-image-1707" src="/assets/img/posts/2019/05/The-Poco-view-component.jpg" alt="The Poco view component" /></a>
+  <a href="/assets/img/posts/2019/05/The-Poco-view-component.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/The-Poco-view-component.jpg" alt="The Poco view component" /></a>
   
   <p>
     The Poco view component
@@ -40,7 +40,7 @@ A Poco view component is a class that provides view component functionality with
 You can add your view component to a view by calling the invoke method and passing the view component name:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Calling-the-VIewComponent-from-the-view.jpg"><img aria-describedby="caption-attachment-1708" loading="lazy" class="size-full wp-image-1708" src="/assets/img/posts/2019/05/Calling-the-VIewComponent-from-the-view.jpg" alt="Calling the VIewComponent from the view" /></a>
+  <a href="/assets/img/posts/2019/05/Calling-the-VIewComponent-from-the-view.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Calling-the-VIewComponent-from-the-view.jpg" alt="Calling the VIewComponent from the view" /></a>
   
   <p>
     Calling the VIewComponent from the view
@@ -50,7 +50,7 @@ You can add your view component to a view by calling the invoke method and passi
 This code adds the number of countries and its total population on top of the customer table.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Testing-the-view-component.jpg"><img aria-describedby="caption-attachment-1709" loading="lazy" class="size-full wp-image-1709" src="/assets/img/posts/2019/05/Testing-the-view-component.jpg" alt="Testing the view component" /></a>
+  <a href="/assets/img/posts/2019/05/Testing-the-view-component.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Testing-the-view-component.jpg" alt="Testing the view component" /></a>
   
   <p>
     Testing the view component
@@ -68,7 +68,7 @@ Note that you have to include the await keyword. Otherwise, you won&#8217;t see 
 Poco view components are limited in functionality unless they take advantage of the MVC API, which is possible but requires a lot more effort than the more common approach, deriving from the ViewComponent class. Deriving from the base class gives you access to context data and makes it easier to generate results. When you create a derived view component, you don&#8217;t have to put ViewComponent in the name.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Calling-the-derived-view-component-from-the-view.jpg"><img aria-describedby="caption-attachment-1711" loading="lazy" class="size-full wp-image-1711" src="/assets/img/posts/2019/05/Calling-the-derived-view-component-from-the-view.jpg" alt="Calling the derived view component from the view" /></a>
+  <a href="/assets/img/posts/2019/05/Calling-the-derived-view-component-from-the-view.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Calling-the-derived-view-component-from-the-view.jpg" alt="Calling the derived view component from the view" /></a>
   
   <p>
     Calling the derived view component from the view
@@ -186,7 +186,7 @@ The most useful response is the awkwardly named ViewViewComponentResult object, 
 These methods correspond to those provided by the Controller base class and are used in much the same way.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/The-derived-view-component-returning-an-IViewComponentResult-object.jpg"><img aria-describedby="caption-attachment-1710" loading="lazy" class="size-full wp-image-1710" src="/assets/img/posts/2019/05/The-derived-view-component-returning-an-IViewComponentResult-object.jpg" alt="The derived view component returning an IViewComponentResult object" /></a>
+  <a href="/assets/img/posts/2019/05/The-derived-view-component-returning-an-IViewComponentResult-object.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/The-derived-view-component-returning-an-IViewComponentResult-object.jpg" alt="The derived view component returning an IViewComponentResult object" /></a>
   
   <p>
     The derived view component returning an IViewComponentResult object
@@ -202,7 +202,7 @@ Selecting a partial view in a view component is similar to selecting a view in a
 If no name is specified, then Razor looks for a file called Default.cshtml. Razor looks in two locations for the partial view. The first location takes into account the name of the controller handling the HTTP request, which allows each controller to have its own custom view. The second location is shared between all controllers.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/View-for-the-view-component.jpg"><img aria-describedby="caption-attachment-1712" loading="lazy" class="size-full wp-image-1712" src="/assets/img/posts/2019/05/View-for-the-view-component.jpg" alt="View for the view component" /></a>
+  <a href="/assets/img/posts/2019/05/View-for-the-view-component.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/View-for-the-view-component.jpg" alt="View for the view component" /></a>
   
   <p>
     View for the view component
@@ -224,7 +224,7 @@ Start the application and you will see the table, produced by the view component
 The ContentViewComponentResult class is used to include fragments of HTML in the parent view without using a view. Instances of the ContentViewComponentResult class are created using the Content method inherited from the ViewComponent base class, which accepts a string value. In addition to the Content method, the Invoke method can return a string, and MVC will automatically convert to a ContentViewComponent.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/View-component-which-returns-HTML.jpg"><img aria-describedby="caption-attachment-1714" loading="lazy" class="size-full wp-image-1714" src="/assets/img/posts/2019/05/View-component-which-returns-HTML.jpg" alt="View component which returns HTML" /></a>
+  <a href="/assets/img/posts/2019/05/View-component-which-returns-HTML.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/View-component-which-returns-HTML.jpg" alt="View component which returns HTML" /></a>
   
   <p>
     View component which returns HTML
@@ -420,7 +420,7 @@ The ViewComponent base class provides a set of convenience properties that make 
 The context data can be used in whatever way it helps the view component to its work, including varying the way that data is selected or rendering different content or views. To demonstrate this feature, I changed my view component to read the route data and if there is a value for id, I return a message.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Reading-RouteData-in-the-view-component.jpg"><img aria-describedby="caption-attachment-1715" loading="lazy" class="size-full wp-image-1715" src="/assets/img/posts/2019/05/Reading-RouteData-in-the-view-component.jpg" alt="Reading RouteData in the view component" /></a>
+  <a href="/assets/img/posts/2019/05/Reading-RouteData-in-the-view-component.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Reading-RouteData-in-the-view-component.jpg" alt="Reading RouteData in the view component" /></a>
   
   <p>
     Reading RouteData in the view component
@@ -430,7 +430,7 @@ The context data can be used in whatever way it helps the view component to its 
 If I call my action with a value for the id parameter, the string is returned instead of the countries and population.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Changing-the-output-of-the-view-component-depending-on-the-route-data.jpg"><img aria-describedby="caption-attachment-1716" loading="lazy" class="size-full wp-image-1716" src="/assets/img/posts/2019/05/Changing-the-output-of-the-view-component-depending-on-the-route-data.jpg" alt="Changing the output of the view component, depending on the route data" /></a>
+  <a href="/assets/img/posts/2019/05/Changing-the-output-of-the-view-component-depending-on-the-route-data.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Changing-the-output-of-the-view-component-depending-on-the-route-data.jpg" alt="Changing the output of the view component, depending on the route data" /></a>
   
   <p>
     Changing the output of the view component, depending on the route data
@@ -442,7 +442,7 @@ If I call my action with a value for the id parameter, the string is returned in
 Parent views can provide additional context data as arguments in the Component.Invoke expression. This feature can be used to provide data from the parent view model or to give guidance about the type of content that the view component should produce. I extended my view component to take a bool parameter. If this parameter is true, I return a message, indicating that the parameter was received and processed.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Working-with-the-parameter-in-the-view-component.jpg"><img aria-describedby="caption-attachment-1717" loading="lazy" class="size-full wp-image-1717" src="/assets/img/posts/2019/05/Working-with-the-parameter-in-the-view-component.jpg" alt="Working with the parameter in the view component" /></a>
+  <a href="/assets/img/posts/2019/05/Working-with-the-parameter-in-the-view-component.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Working-with-the-parameter-in-the-view-component.jpg" alt="Working with the parameter in the view component" /></a>
   
   <p>
     Working with the parameter in the view component
@@ -452,7 +452,7 @@ Parent views can provide additional context data as arguments in the Component.I
 Next, I change the main view to provide a parameter for my view component.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Providing-an-argument-to-the-view-component.jpg"><img aria-describedby="caption-attachment-1718" loading="lazy" class="size-full wp-image-1718" src="/assets/img/posts/2019/05/Providing-an-argument-to-the-view-component.jpg" alt="Providing an argument to the view component" /></a>
+  <a href="/assets/img/posts/2019/05/Providing-an-argument-to-the-view-component.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Providing-an-argument-to-the-view-component.jpg" alt="Providing an argument to the view component" /></a>
   
   <p>
     Providing an argument to the view component
@@ -462,7 +462,7 @@ Next, I change the main view to provide a parameter for my view component.
 Start the application and you will see that the previously defined string will be returned to the view.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Changing-the-output-of-the-view-component-depending-on-the-provided-parameter.jpg"><img aria-describedby="caption-attachment-1719" loading="lazy" class="size-full wp-image-1719" src="/assets/img/posts/2019/05/Changing-the-output-of-the-view-component-depending-on-the-provided-parameter.jpg" alt="Changing the output of the view component, depending on the provided parameter" /></a>
+  <a href="/assets/img/posts/2019/05/Changing-the-output-of-the-view-component-depending-on-the-provided-parameter.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Changing-the-output-of-the-view-component-depending-on-the-provided-parameter.jpg" alt="Changing the output of the view component, depending on the provided parameter" /></a>
   
   <p>
     Changing the output of the view component, depending on the provided parameter
@@ -476,7 +476,7 @@ Start the application and you will see that the previously defined string will b
 View components can be unit tested like every other C# class. I created a new test project and implemented a simple test to demonstrate how to test the Invoke method.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Unit-testing-the-view-component.jpg"><img aria-describedby="caption-attachment-1720" loading="lazy" class="size-full wp-image-1720" src="/assets/img/posts/2019/05/Unit-testing-the-view-component.jpg" alt="Unit testing the view component" /></a>
+  <a href="/assets/img/posts/2019/05/Unit-testing-the-view-component.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Unit-testing-the-view-component.jpg" alt="Unit testing the view component" /></a>
   
   <p>
     Unit testing the view component
@@ -488,7 +488,7 @@ View components can be unit tested like every other C# class. I created a new te
 All view components so far were executed synchronously. You can create an asynchronous view component by defining an InvokeAsync method that returns a Task. When Razor receives the Task from the InvokeAsync method, it will wait for it to complete and then insert the result into the main view.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Creating-an-async-view-component.jpg"><img aria-describedby="caption-attachment-1721" loading="lazy" class="size-full wp-image-1721" src="/assets/img/posts/2019/05/Creating-an-async-view-component.jpg" alt="Creating an async view component" /></a>
+  <a href="/assets/img/posts/2019/05/Creating-an-async-view-component.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Creating-an-async-view-component.jpg" alt="Creating an async view component" /></a>
   
   <p>
     Creating an async view component
@@ -500,7 +500,7 @@ All view components so far were executed synchronously. You can create an asynch
 View components often provide basic functionality to enhance the current view with additional data. If you have to do more complex operations, you can create a class that is a controller and a view component. This allows for related functionality to be grouped together and reduces code duplication.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/The-hybrid-controller-view-component.jpg"><img aria-describedby="caption-attachment-1725" loading="lazy" class="size-full wp-image-1725" src="/assets/img/posts/2019/05/The-hybrid-controller-view-component.jpg" alt="The hybrid controller - view component" /></a>
+  <a href="/assets/img/posts/2019/05/The-hybrid-controller-view-component.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/The-hybrid-controller-view-component.jpg" alt="The hybrid controller - view component" /></a>
   
   <p>
     The hybrid controller &#8211; view component
@@ -516,7 +516,7 @@ Since hybrid classes don&#8217;t inherit from the ViewComponent base class, they
 A hybrid class requires two sets of views: those that are rendered when the class is used as a controller and those that are rendered when the class is used as a view component. First, I add the view for the controller under Views/Country/Create.cshtml
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/The-view-for-the-controller.jpg"><img aria-describedby="caption-attachment-1726" loading="lazy" class="size-full wp-image-1726" src="/assets/img/posts/2019/05/The-view-for-the-controller.jpg" alt="The view for the controller" /></a>
+  <a href="/assets/img/posts/2019/05/The-view-for-the-controller.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/The-view-for-the-controller.jpg" alt="The view for the controller" /></a>
   
   <p>
     The view for the controller
@@ -526,7 +526,7 @@ A hybrid class requires two sets of views: those that are rendered when the clas
 Next, I add a the partial view under Views/Shared/Components/HybridComponent/Default.cshml.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Partial-view-for-the-hybrid-controller.jpg"><img aria-describedby="caption-attachment-1727" loading="lazy" class="size-full wp-image-1727" src="/assets/img/posts/2019/05/Partial-view-for-the-hybrid-controller.jpg" alt="Partial view for the hybrid controller" /></a>
+  <a href="/assets/img/posts/2019/05/Partial-view-for-the-hybrid-controller.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Partial-view-for-the-hybrid-controller.jpg" alt="Partial view for the hybrid controller" /></a>
   
   <p>
     Partial view for the hybrid controller
@@ -536,7 +536,7 @@ Next, I add a the partial view under Views/Shared/Components/HybridComponent/Def
 Lastly, I invoke my hybrid controller from the view with the previously applied name.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Invoking-the-hybrid-controller-view-component.jpg"><img aria-describedby="caption-attachment-1728" loading="lazy" class="size-full wp-image-1728" src="/assets/img/posts/2019/05/Invoking-the-hybrid-controller-view-component.jpg" alt="Invoking the hybrid controller - view component" /></a>
+  <a href="/assets/img/posts/2019/05/Invoking-the-hybrid-controller-view-component.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Invoking-the-hybrid-controller-view-component.jpg" alt="Invoking the hybrid controller - view component" /></a>
   
   <p>
     Invoking the hybrid controller &#8211; view component

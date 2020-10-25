@@ -246,7 +246,7 @@ public class ProductController : Controller
 When you call the create customer action, a customer object in JSON should be returned.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/Test-the-creation-of-a-customer.jpg"><img aria-describedby="caption-attachment-2150" loading="lazy" class="size-full wp-image-2150" src="/assets/img/posts/2020/06/Test-the-creation-of-a-customer.jpg" alt="Test the creation of a customer Repository Pattern in .Net Core " /></a>
+  <a href="/assets/img/posts/2020/06/Test-the-creation-of-a-customer.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Test-the-creation-of-a-customer.jpg" alt="Test the creation of a customer Repository Pattern in .Net Core " /></a>
   
   <p>
     Test the creation of a customer

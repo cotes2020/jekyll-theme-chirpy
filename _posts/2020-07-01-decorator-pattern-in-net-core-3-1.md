@@ -158,7 +158,7 @@ public class HomeController : Controller
 Start the application and click on Get Data. After a couple of seconds, you will see the data displayed.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/Displaying-the-loaded-data.jpg"><img aria-describedby="caption-attachment-2243" loading="lazy" class="size-full wp-image-2243" src="/assets/img/posts/2020/06/Displaying-the-loaded-data.jpg" alt="Displaying the loaded data" /></a>
+  <a href="/assets/img/posts/2020/06/Displaying-the-loaded-data.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Displaying-the-loaded-data.jpg" alt="Displaying the loaded data" /></a>
   
   <p>
     Displaying the loaded data

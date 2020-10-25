@@ -66,7 +66,7 @@ To implement a Webhook function, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/The-local-URL-of-your-Azure-Function.jpg"><img aria-describedby="caption-attachment-1373" loading="lazy" class="size-full wp-image-1373" src="/assets/img/posts/2018/07/The-local-URL-of-your-Azure-Function.jpg" alt="The local URL of your Azure Function" /></a>
+  <a href="/assets/img/posts/2018/07/The-local-URL-of-your-Azure-Function.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/The-local-URL-of-your-Azure-Function.jpg" alt="The local URL of your Azure Function" /></a>
   
   <p>
     The local URL of your Azure Function
@@ -135,7 +135,7 @@ To create an Azure connected function using Azure Queues, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Add-the-storage-account-information-to-your-function.jpg"><img aria-describedby="caption-attachment-1380" loading="lazy" class="size-full wp-image-1380" src="/assets/img/posts/2018/07/Add-the-storage-account-information-to-your-function.jpg" alt="Add the storage account information to your function" /></a>
+  <a href="/assets/img/posts/2018/07/Add-the-storage-account-information-to-your-function.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Add-the-storage-account-information-to-your-function.jpg" alt="Add the storage account information to your function" /></a>
   
   <p>
     Add the storage account information to your function
@@ -149,7 +149,7 @@ To create an Azure connected function using Azure Queues, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Test-your-function-with-the-queue.jpg"><img aria-describedby="caption-attachment-1383" loading="lazy" class="size-full wp-image-1383" src="/assets/img/posts/2018/07/Test-your-function-with-the-queue.jpg" alt="Test your function with the queue" /></a>
+  <a href="/assets/img/posts/2018/07/Test-your-function-with-the-queue.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Test-your-function-with-the-queue.jpg" alt="Test your function with the queue" /></a>
   
   <p>
     Test your function with the queue

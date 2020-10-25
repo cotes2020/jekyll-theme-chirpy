@@ -24,7 +24,7 @@ In your Azure DevOps project, go to Pipelines and click Create Pipeline.
 In the next window, select where you have your code stored. I select GitHub for this Demo. Usually, I have my code directly in Azure DevOps, then I would select Azure Repos Git. On the bottom, you can see &#8220;Use the classic editor&#8221;. This opens the old task-based editor. You shouldn&#8217;t use this anymore since the new standard is to use YML pipelines. This enables you to have your pipeline in your source control.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Select-where-your-code-is.jpg"><img aria-describedby="caption-attachment-2307" loading="lazy" class="size-full wp-image-2307" src="/assets/img/posts/2020/08/Select-where-your-code-is.jpg" alt="Select where your code is" /></a>
+  <a href="/assets/img/posts/2020/08/Select-where-your-code-is.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Select-where-your-code-is.jpg" alt="Select where your code is" /></a>
   
   <p>
     Select where your code is
@@ -46,7 +46,7 @@ Since the code is on GitHub, I have to authorize Azure Pipelines to access my re
 After authorizing Azure Pipelines for GitHub, all your repositories will be displayed. Search and select for the repository, you want to make the CI pipeline for. In my case, I select the MicroserviceDemo repository.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/10/Find-your-repository.jpg"><img aria-describedby="caption-attachment-2486" loading="lazy" class="size-full wp-image-2486" src="/assets/img/posts/2020/10/Find-your-repository.jpg" alt="Find your repository" /></a>
+  <a href="/assets/img/posts/2020/10/Find-your-repository.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Find-your-repository.jpg" alt="Find your repository" /></a>
   
   <p>
     Find your repository
@@ -68,7 +68,7 @@ On the next window, I have to approve to install Azure Pipelines in my Github re
 On the next step, select a template for your CI pipeline. Azure DevOps offers many templates like Docker, Kubernetes, PHP, or Node.js. Since my application is a .NET Core microservice, I select the ASP.NET Core template.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg"><img aria-describedby="caption-attachment-2314" loading="lazy" class="size-full wp-image-2314" src="/assets/img/posts/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg" alt="Select the ASP.NET Core template for your CI Pipeline" /></a>
+  <a href="/assets/img/posts/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Select-the-ASP.NET-Core-template-for-your-CI-Pipeline.jpg" alt="Select the ASP.NET Core template for your CI Pipeline" /></a>
   
   <p>
     Select the ASP.NET Core template for your CI Pipeline
@@ -78,7 +78,7 @@ On the next step, select a template for your CI pipeline. Azure DevOps offers ma
 That&#8217;s it. The template created a simple CI pipeline and you can use it to build your .NET Core solution. In the next section, I will go into more detail about the functionality and add more steps.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/10/The-CI-Pipeline-got-created-from-the-template.jpg"><img aria-describedby="caption-attachment-2488" loading="lazy" class="size-full wp-image-2488" src="/assets/img/posts/2020/10/The-CI-Pipeline-got-created-from-the-template.jpg" alt="The CI Pipeline got created from the template" /></a>
+  <a href="/assets/img/posts/2020/10/The-CI-Pipeline-got-created-from-the-template.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/The-CI-Pipeline-got-created-from-the-template.jpg" alt="The CI Pipeline got created from the template" /></a>
   
   <p>
     The CI Pipeline got created from the template

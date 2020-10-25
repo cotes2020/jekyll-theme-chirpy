@@ -10,7 +10,7 @@ Middleware is the term used for the components that are combined to form the req
 It may not be intuitive at first, but this allows for a lot of flexibility in the way the parts of an application are combined.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Middlewares-in-ASP.NET-Core-MVC.jpg"><img aria-describedby="caption-attachment-1623" loading="lazy" class="size-full wp-image-1623" src="/assets/img/posts/2019/04/Middlewares-in-ASP.NET-Core-MVC.jpg" alt="Middlewares in ASP.NET Core MVC" /></a>
+  <a href="/assets/img/posts/2019/04/Middlewares-in-ASP.NET-Core-MVC.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Middlewares-in-ASP.NET-Core-MVC.jpg" alt="Middlewares in ASP.NET Core MVC" /></a>
   
   <p>
     Middlewares in ASP.NET Core MVC (<a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-2.2">Source</a>)
@@ -36,7 +36,7 @@ On the following screenshot, you can see a simple implementation of a middleware
 The request pipeline or chain of middlewares is created in the Configure method of the Startup class. All you have to do is app.UseMiddleware<MyMiddleware>(); A request is only passed through a middleware when it is registered in the Startup class.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Register-the-content-creating-middleware.jpg"><img aria-describedby="caption-attachment-1627" loading="lazy" class="size-full wp-image-1627" src="/assets/img/posts/2019/04/Register-the-content-creating-middleware.jpg" alt="Register the content-creating middleware" /></a>
+  <a href="/assets/img/posts/2019/04/Register-the-content-creating-middleware.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Register-the-content-creating-middleware.jpg" alt="Register the content-creating middleware" /></a>
   
   <p>
     Register the content-creating middleware
@@ -46,7 +46,7 @@ The request pipeline or chain of middlewares is created in the Configure method 
 That&#8217;s already everything you have to do to use the middleware. Start the application and enter /contentmiddleware and you will see the response from the middleware.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Response-from-the-content-creating-middleware.jpg"><img aria-describedby="caption-attachment-1628" loading="lazy" class="size-full wp-image-1628" src="/assets/img/posts/2019/04/Response-from-the-content-creating-middleware.jpg" alt="Response from the content-creating middleware" /></a>
+  <a href="/assets/img/posts/2019/04/Response-from-the-content-creating-middleware.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Response-from-the-content-creating-middleware.jpg" alt="Response from the content-creating middleware" /></a>
   
   <p>
     Response from the content-creating middleware
@@ -58,7 +58,7 @@ That&#8217;s already everything you have to do to use the middleware. Start the 
 A short-circuiting middleware intercepts the request before the content generating components (for example a controller) is reached. The main reason for doing this is performance. This type of middleware is called short-circuiting because it doesn&#8217;t always forward the request to the next component in the chain.  For example if your application doesn&#8217;t allow Chrome users, the middleware can check the client agent and if it is Chrome, a response with an error message is created.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/The-short-circuiting-middleware.jpg"><img aria-describedby="caption-attachment-1629" loading="lazy" class="size-full wp-image-1629" src="/assets/img/posts/2019/04/The-short-circuiting-middleware.jpg" alt="The short-circuiting middleware" /></a>
+  <a href="/assets/img/posts/2019/04/The-short-circuiting-middleware.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/The-short-circuiting-middleware.jpg" alt="The short-circuiting middleware" /></a>
   
   <p>
     The short-circuiting middleware
@@ -68,7 +68,7 @@ A short-circuiting middleware intercepts the request before the content generati
 It is important to note that middlewares are called in the same order as they are registered in the Startup class. The middleware which is registered first will handle the request first. Short-circuiting middlewares should always be placed at the front of the chain.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/The-order-of-the-middlewares-is-important.jpg"><img aria-describedby="caption-attachment-1630" loading="lazy" class="size-full wp-image-1630" src="/assets/img/posts/2019/04/The-order-of-the-middlewares-is-important.jpg" alt="The order of the middlewares is important" /></a>
+  <a href="/assets/img/posts/2019/04/The-order-of-the-middlewares-is-important.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/The-order-of-the-middlewares-is-important.jpg" alt="The order of the middlewares is important" /></a>
   
   <p>
     The order of the middlewares is important
@@ -88,7 +88,7 @@ If you make a request from Chrome (also from Edge since it is using Chromium now
 Calls with a different browser, for example, Firefox still create a response.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Calls-with-Firefox-are-allowed.jpg"><img aria-describedby="caption-attachment-1632" loading="lazy" class="size-full wp-image-1632" src="/assets/img/posts/2019/04/Calls-with-Firefox-are-allowed.jpg" alt="Calls with Firefox are allowed" /></a>
+  <a href="/assets/img/posts/2019/04/Calls-with-Firefox-are-allowed.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Calls-with-Firefox-are-allowed.jpg" alt="Calls with Firefox are allowed" /></a>
   
   <p>
     Calls with Firefox are allowed
@@ -122,7 +122,7 @@ Since there is a request-editing middleware, it won&#8217;t be surprising that t
 Now register the middleware in your Startup class. It may not be intuitive but it is important that a response-editing middleware is registered first because the response passes all middlewares in the reverse order of the request. This means that the first middleware processes the request first and the response last.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Register-the-response-editing-middleware-first.jpg"><img aria-describedby="caption-attachment-1635" loading="lazy" class="size-full wp-image-1635" src="/assets/img/posts/2019/04/Register-the-response-editing-middleware-first.jpg" alt="Register the response-editing middleware first" /></a>
+  <a href="/assets/img/posts/2019/04/Register-the-response-editing-middleware-first.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Register-the-response-editing-middleware-first.jpg" alt="Register the response-editing middleware first" /></a>
   
   <p>
     Register the response-editing middleware first

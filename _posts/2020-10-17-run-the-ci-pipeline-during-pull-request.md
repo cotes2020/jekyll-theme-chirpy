@@ -22,7 +22,7 @@ To create a new policy go to Project settings  &#8211;> Repositories &#8211;> P
 This opens a fly-out where you can select either of the two options. I select &#8220;Protect current and future branches matching a specified pattern&#8221; and enter master as the branch name. This means that this policy is only valid for the master branch. Then click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Add-a-Pull-Request-Policy-for-the-master-branch.jpg"><img aria-describedby="caption-attachment-2326" loading="lazy" class="size-full wp-image-2326" src="/assets/img/posts/2020/08/Add-a-Pull-Request-Policy-for-the-master-branch.jpg" alt="Add a Pull Request Policy for the master branch" /></a>
+  <a href="/assets/img/posts/2020/08/Add-a-Pull-Request-Policy-for-the-master-branch.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Add-a-Pull-Request-Policy-for-the-master-branch.jpg" alt="Add a Pull Request Policy for the master branch" /></a>
   
   <p>
     Add a Pull Request Policy for the master branch
@@ -36,7 +36,7 @@ This opens the Branch Policies menu where you can configure your pull request.
 First, I require one reviewer, allow the requestor to approve their changes, and reset the vote every time new changes are committed. Usually, I don&#8217;t allow the requestor to approve their changes but since I am alone in this demo project I allow it. Microsoft recommends that two reviewers should check the pull request for the highest quality.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Configure-the-minimum-number-of-reviewers.jpg"><img aria-describedby="caption-attachment-2330" loading="lazy" class="size-full wp-image-2330" src="/assets/img/posts/2020/08/Configure-the-minimum-number-of-reviewers.jpg" alt="Configure the minimum number of reviewers" /></a>
+  <a href="/assets/img/posts/2020/08/Configure-the-minimum-number-of-reviewers.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Configure-the-minimum-number-of-reviewers.jpg" alt="Configure the minimum number of reviewers" /></a>
   
   <p>
     Configure the minimum number of reviewers
@@ -46,7 +46,7 @@ First, I require one reviewer, allow the requestor to approve their changes, and
 Next, I require every pull request to be linked with a work item. There should never be code changes without a PBI or Bug ticket describing the desired changes. Therefore, this is required.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Check-for-linked-work-items.jpg"><img aria-describedby="caption-attachment-2329" loading="lazy" class="size-full wp-image-2329" src="/assets/img/posts/2020/08/Check-for-linked-work-items.jpg" alt="Check for linked work items" /></a>
+  <a href="/assets/img/posts/2020/08/Check-for-linked-work-items.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Check-for-linked-work-items.jpg" alt="Check for linked work items" /></a>
   
   <p>
     Check for linked work items
@@ -56,7 +56,7 @@ Next, I require every pull request to be linked with a work item. There should n
 Reviewers provide their feedback with comments, therefore, I require all comments to be resolved before a pull request can be completed. In my projects, always the creator of the comment resolves the comment and not the creator of the PR.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Configure-comment-resolution.jpg"><img aria-describedby="caption-attachment-2331" loading="lazy" class="size-full wp-image-2331" src="/assets/img/posts/2020/08/Configure-comment-resolution.jpg" alt="Configure comment resolution" /></a>
+  <a href="/assets/img/posts/2020/08/Configure-comment-resolution.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Configure-comment-resolution.jpg" alt="Configure comment resolution" /></a>
   
   <p>
     Configure comment resolution
@@ -102,7 +102,7 @@ I added a new unit test, commit the changes to the master branch, and push the c
 Since the master branch is protected, I have to create a feature branch. I name this branch addunittest and push the changes to Azure DevOps.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Pushing-a-new-branch.jpg"><img aria-describedby="caption-attachment-2335" loading="lazy" class="size-full wp-image-2335" src="/assets/img/posts/2020/08/Pushing-a-new-branch.jpg" alt="Pushing a new branch" /></a>
+  <a href="/assets/img/posts/2020/08/Pushing-a-new-branch.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Pushing-a-new-branch.jpg" alt="Pushing a new branch" /></a>
   
   <p>
     Pushing a new branch
@@ -156,7 +156,7 @@ I fixed my unit test, added a link to the PB,I and fixed the suggested changes f
 When you click on Complete, you can select a merge type. Since I restricted the merge strategy to squash commit only, I can&#8217;t select any other strategy.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Only-Squash-commit-is-allowed-by-the-Pull-Request-policy.jpg"><img aria-describedby="caption-attachment-2344" loading="lazy" class="size-full wp-image-2344" src="/assets/img/posts/2020/08/Only-Squash-commit-is-allowed-by-the-Pull-Request-policy.jpg" alt="Only Squash commit is allowed by the Pull Request policy" /></a>
+  <a href="/assets/img/posts/2020/08/Only-Squash-commit-is-allowed-by-the-Pull-Request-policy.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Only-Squash-commit-is-allowed-by-the-Pull-Request-policy.jpg" alt="Only Squash commit is allowed by the Pull Request policy" /></a>
   
   <p>
     Only Squash commit is allowed by the Pull Request policy
@@ -166,7 +166,7 @@ When you click on Complete, you can select a merge type. Since I restricted the 
 The definition of done in my projects is that the PBI is set to done when the pull request is finished (because we deploy the feature automatically to prod when thePR is completed). Additionally, I select to delete my branch after merging.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Complete-the-Pull-Request.jpg"><img aria-describedby="caption-attachment-2345" loading="lazy" class="size-full wp-image-2345" src="/assets/img/posts/2020/08/Complete-the-Pull-Request.jpg" alt="Complete the Pull Request" /></a>
+  <a href="/assets/img/posts/2020/08/Complete-the-Pull-Request.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Complete-the-Pull-Request.jpg" alt="Complete the Pull Request" /></a>
   
   <p>
     Complete the Pull Request

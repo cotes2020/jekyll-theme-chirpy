@@ -20,7 +20,7 @@ Tag helpers can be defined anywhere in the project, but it helps to keep them to
 Tag helpers are derived from the TagHelper class, which is defined in the Microsoft.AspNetCore.Razor.TagHelpers namespace.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Creating-a-Tag-Helper-to-transform-a-button.jpg"><img aria-describedby="caption-attachment-1732" loading="lazy" class="size-full wp-image-1732" src="/assets/img/posts/2019/05/Creating-a-Tag-Helper-to-transform-a-button.jpg" alt="Creating a Tag Helper to transform a button" /></a>
+  <a href="/assets/img/posts/2019/05/Creating-a-Tag-Helper-to-transform-a-button.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Creating-a-Tag-Helper-to-transform-a-button.jpg" alt="Creating a Tag Helper to transform a button" /></a>
   
   <p>
     Creating a Tag Helper to transform a button
@@ -204,7 +204,7 @@ The Process method transforms an element by configuring the TagHelperOutput obje
 Tag helper classes can be used only after they have been registered using the Razor @addTagHelper expression. The set of views to which a tag helper will be applied depends on where the @addTagHelper expression is used. For a single view, the expression appears in the view itself. For a subset of views in an application, the expression appears in a _ViewImport.cshtml file in the folder that contains the views or a parent folder.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Register-the-Tag-Helper.jpg"><img aria-describedby="caption-attachment-1733" loading="lazy" class="size-full wp-image-1733" src="/assets/img/posts/2019/05/Register-the-Tag-Helper.jpg" alt="Register the Tag Helper" /></a>
+  <a href="/assets/img/posts/2019/05/Register-the-Tag-Helper.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Register-the-Tag-Helper.jpg" alt="Register the Tag Helper" /></a>
   
   <p>
     Register the Tag Helper
@@ -218,7 +218,7 @@ The first part of the argument specifies the name of the tag helper classes, wit
 The last step is to use the tag helper in the view, so it can transform the element.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Using-a-Tag-Helper.jpg"><img aria-describedby="caption-attachment-1734" loading="lazy" class="size-full wp-image-1734" src="/assets/img/posts/2019/05/Using-a-Tag-Helper.jpg" alt="Using a Tag Helper" /></a>
+  <a href="/assets/img/posts/2019/05/Using-a-Tag-Helper.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Using-a-Tag-Helper.jpg" alt="Using a Tag Helper" /></a>
   
   <p>
     Using a Tag Helper
@@ -232,7 +232,7 @@ If you start the application and click on create, you will see the red Add butto
 Broadening the scope of a tag helper means you don&#8217;t have to create tag helpers that repeat the same operation on different element types. Some care is required because it is easy to create a tag helper that will start matching elements too broadly in the future as the contents of the views in the application evolve. A more balanced approach is to apply the HtmlTargetElement attribute multiple times, specifying the complete set of elements that will be transformed as a combination of narrowly defined matches.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Add-multiple-HtmlTargetElement-attributes.jpg"><img aria-describedby="caption-attachment-1742" loading="lazy" class="size-full wp-image-1742" src="/assets/img/posts/2019/05/Add-multiple-HtmlTargetElement-attributes.jpg" alt="Add multiple HtmlTargetElement attributes" /></a>
+  <a href="/assets/img/posts/2019/05/Add-multiple-HtmlTargetElement-attributes.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Add-multiple-HtmlTargetElement-attributes.jpg" alt="Add multiple HtmlTargetElement attributes" /></a>
   
   <p>
     Add multiple HtmlTargetElement attributes
@@ -252,7 +252,7 @@ In the following sections, I will show you some neat advanced features to get th
 Tag helpers are not restricted to transforming the standard HTML elements and can also be used to replace custom elements with commonly used content. This can be a useful feature for making views more concise and making their intent more obvious.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Adding-your-own-HTML-element.jpg"><img aria-describedby="caption-attachment-1744" loading="lazy" class="size-full wp-image-1744" src="/assets/img/posts/2019/05/Adding-your-own-HTML-element.jpg" alt="Adding your own HTML element" /></a>
+  <a href="/assets/img/posts/2019/05/Adding-your-own-HTML-element.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Adding-your-own-HTML-element.jpg" alt="Adding your own HTML element" /></a>
   
   <p>
     Adding your own HTML element
@@ -264,7 +264,7 @@ The WolfgangsButton element isn&#8217;t part of the HTML specification and won&#
 When dealing with custom elements that are not part of the HTML specification, you must apply the HtmlTargetElement attribute and specify the element name. The convention of applying tag helpers to elements based on the class name works only for standard element names.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/The-new-Tag-Helper-to-transform-WolfgangsButton.jpg"><img aria-describedby="caption-attachment-1745" loading="lazy" class="size-full wp-image-1745" src="/assets/img/posts/2019/05/The-new-Tag-Helper-to-transform-WolfgangsButton.jpg" alt="The new Tag Helper to transform WolfgangsButton" /></a>
+  <a href="/assets/img/posts/2019/05/The-new-Tag-Helper-to-transform-WolfgangsButton.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/The-new-Tag-Helper-to-transform-WolfgangsButton.jpg" alt="The new Tag Helper to transform WolfgangsButton" /></a>
   
   <p>
     The new Tag Helper to transform WolfgangsButton
@@ -404,7 +404,7 @@ Inserting Content around the Output Element
 The first TagHelperOutput properties are PreElement and PostElement, which are used to insert elements into the view before and after the output element.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/The-content-wrapper-implementation.jpg"><img aria-describedby="caption-attachment-1747" loading="lazy" class="size-full wp-image-1747" src="/assets/img/posts/2019/05/The-content-wrapper-implementation.jpg" alt="The content wrapper implementation" /></a>
+  <a href="/assets/img/posts/2019/05/The-content-wrapper-implementation.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/The-content-wrapper-implementation.jpg" alt="The content wrapper implementation" /></a>
   
   <p>
     The content wrapper implementation
@@ -416,7 +416,7 @@ This tag helper transforms div elements that have a title attribute, and it work
 This tag helper uses the TagBuilder class to create an h1 element that is contained in a div element that has been styled with Bootstrap classes. There are optional bool include-header and include-footer attributes used to specify where the content is injected, and the default is to add elements before and after the output element.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Adding-surrounding-content.jpg"><img aria-describedby="caption-attachment-1749" loading="lazy" class="size-full wp-image-1749" src="/assets/img/posts/2019/05/Adding-surrounding-content.jpg" alt="Adding surrounding content" /></a>
+  <a href="/assets/img/posts/2019/05/Adding-surrounding-content.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Adding-surrounding-content.jpg" alt="Adding surrounding content" /></a>
   
   <p>
     Adding surrounding content
@@ -438,7 +438,7 @@ Next, I add a div tag around the RenderBody method.
 The PreContent and PostContent properties are used to insert content inside the output element, surrounding the original contents.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Tag-Helper-to-insert-content-inside-of-an-element.jpg"><img aria-describedby="caption-attachment-1750" loading="lazy" class="size-full wp-image-1750" src="/assets/img/posts/2019/05/Tag-Helper-to-insert-content-inside-of-an-element.jpg" alt="Tag Helper to insert content inside of an element" /></a>
+  <a href="/assets/img/posts/2019/05/Tag-Helper-to-insert-content-inside-of-an-element.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Tag-Helper-to-insert-content-inside-of-an-element.jpg" alt="Tag Helper to insert content inside of an element" /></a>
   
   <p>
     Tag Helper to insert content inside of an element

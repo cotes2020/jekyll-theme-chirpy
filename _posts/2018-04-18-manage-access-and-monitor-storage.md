@@ -44,7 +44,7 @@ Add the following code to your App.config file and replace the placeholder with 
 Use the following code to create an SAS token for your blob with read, write, delete and list rights. The token will expire in one hour.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-blob.jpg"><img aria-describedby="caption-attachment-1112" loading="lazy" class="size-full wp-image-1112" src="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-blob.jpg" alt="Create an SAS token for a blob" /></a>
+  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-blob.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-blob.jpg" alt="Create an SAS token for a blob" /></a>
   
   <p>
     Create an SAS token for a blob
@@ -188,7 +188,7 @@ Cross-Origin Resource Sharing (CORS) enables web applications running in the bro
   3. On the Add CORS rule blade, enter your configuration
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-new-CORS-rule-to-your-blob.jpg"><img aria-describedby="caption-attachment-1122" loading="lazy" class="size-full wp-image-1122" src="/assets/img/posts/2018/04/Add-a-new-CORS-rule-to-your-blob.jpg" alt="Add a new CORS rule to your blob" /></a>
+  <a href="/assets/img/posts/2018/04/Add-a-new-CORS-rule-to-your-blob.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Add-a-new-CORS-rule-to-your-blob.jpg" alt="Add a new CORS rule to your blob" /></a>
   
   <p>
     Add a new CORS rule to your blob

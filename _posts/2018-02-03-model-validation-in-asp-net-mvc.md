@@ -24,7 +24,7 @@ I created a new ASP.NET MVC project with the empty template and add folders and
 Then I create a simple Home controller with two actions. The first action returns a view to the user to enter customer information and the second action processes the user input. In a real-world solution, the customer information would be stored probably in a database. In this example, I don&#8217;t do anything with it except passing to a second view to display the information.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Implementation-of-the-Home-controller.jpg"><img aria-describedby="caption-attachment-737" loading="lazy" class="size-full wp-image-737" src="/assets/img/posts/2018/01/Implementation-of-the-Home-controller.jpg" alt="Implementation of the Home controller" /></a>
+  <a href="/assets/img/posts/2018/01/Implementation-of-the-Home-controller.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Implementation-of-the-Home-controller.jpg" alt="Implementation of the Home controller" /></a>
   
   <p>
     Implementation of the Home controller
@@ -34,7 +34,7 @@ Then I create a simple Home controller with two actions. The first action return
 To work with customers, I need to implement a customer model. I want to keep the customer as simple as possible and therefore the class only has basic properties.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Implementation-of-the-customer-class.jpg"><img aria-describedby="caption-attachment-738" loading="lazy" class="size-full wp-image-738" src="/assets/img/posts/2018/01/Implementation-of-the-customer-class.jpg" alt="Implementation of the customer class" /></a>
+  <a href="/assets/img/posts/2018/01/Implementation-of-the-customer-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Implementation-of-the-customer-class.jpg" alt="Implementation of the customer class" /></a>
   
   <p>
     Implementation of the customer class
@@ -44,7 +44,7 @@ To work with customers, I need to implement a customer model. I want to keep the
 I keep the views simple too. The RegisterCustomer view takes a name, birthday and has a checkbox to accept the terms and conditions.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Register-new-customer-view.jpg"><img aria-describedby="caption-attachment-739" loading="lazy" class="size-full wp-image-739" src="/assets/img/posts/2018/01/Register-new-customer-view.jpg" alt="Register new customer view" /></a>
+  <a href="/assets/img/posts/2018/01/Register-new-customer-view.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Register-new-customer-view.jpg" alt="Register new customer view" /></a>
   
   <p>
     Register new customer view
@@ -60,7 +60,7 @@ To enforce these requirements, I use model validation.
 One possible approach of checking if the model is valid is checking directly in the action.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Validating-the-model-directly-in-the-action.jpg"><img aria-describedby="caption-attachment-741" loading="lazy" class="size-full wp-image-741" src="/assets/img/posts/2018/01/Validating-the-model-directly-in-the-action.jpg" alt="Validating the model directly in the action" /></a>
+  <a href="/assets/img/posts/2018/01/Validating-the-model-directly-in-the-action.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Validating-the-model-directly-in-the-action.jpg" alt="Validating the model directly in the action" /></a>
   
   <p>
     Validating the model directly in the action
@@ -72,7 +72,7 @@ I check if every field contains the expected value. If not, I add a model error 
 I added some CSS to the HTML which colors the border of the element with the model error in red.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/CSS-to-highlight-model-error-in-the-view.jpg"><img aria-describedby="caption-attachment-743" loading="lazy" class="size-full wp-image-743" src="/assets/img/posts/2018/02/CSS-to-highlight-model-error-in-the-view.jpg" alt="CSS to highlight model error in the view" /></a>
+  <a href="/assets/img/posts/2018/02/CSS-to-highlight-model-error-in-the-view.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/CSS-to-highlight-model-error-in-the-view.jpg" alt="CSS to highlight model error in the view" /></a>
   
   <p>
     CSS to highlight model error in the view (<a href="http://amzn.to/2mgRbTy" target="_blank" rel="noopener noreferrer">Source</a>)
@@ -80,7 +80,7 @@ I added some CSS to the HTML which colors the border of the element with the mod
 </div>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Highlighted-errors-in-the-view.jpg"><img aria-describedby="caption-attachment-744" loading="lazy" class="size-full wp-image-744" src="/assets/img/posts/2018/02/Highlighted-errors-in-the-view.jpg" alt="Highlighted errors in the view" /></a>
+  <a href="/assets/img/posts/2018/02/Highlighted-errors-in-the-view.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Highlighted-errors-in-the-view.jpg" alt="Highlighted errors in the view" /></a>
   
   <p>
     Highlighted errors in the view
@@ -92,7 +92,7 @@ I added some CSS to the HTML which colors the border of the element with the mod
 Highlighting input fields which contain wrong values is a nice beginning but it doesn&#8217;t tell the user what is wrong. The MVC framework provides several helper methods to display useful error messages to the user. The simplest one is Html.ValidationSumary().
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Displaying-error-messages-with-Html.ValidationSummar.jpg"><img aria-describedby="caption-attachment-745" loading="lazy" class="size-full wp-image-745" src="/assets/img/posts/2018/02/Displaying-error-messages-with-Html.ValidationSummar.jpg" alt="Displaying error messages with Html.ValidationSummar" /></a>
+  <a href="/assets/img/posts/2018/02/Displaying-error-messages-with-Html.ValidationSummar.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Displaying-error-messages-with-Html.ValidationSummar.jpg" alt="Displaying error messages with Html.ValidationSummar" /></a>
   
   <p>
     Displaying error messages with Html.ValidationSummar
@@ -102,7 +102,7 @@ Highlighting input fields which contain wrong values is a nice beginning but it 
 This helper method adds all error messages above the form. If there are none, nothing will be rendered before the form.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Displaying-error-messages-to-the-user.jpg"><img aria-describedby="caption-attachment-746" loading="lazy" class="size-full wp-image-746" src="/assets/img/posts/2018/02/Displaying-error-messages-to-the-user.jpg" alt="Displaying error messages to the user" /></a>
+  <a href="/assets/img/posts/2018/02/Displaying-error-messages-to-the-user.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Displaying-error-messages-to-the-user.jpg" alt="Displaying error messages to the user" /></a>
   
   <p>
     Displaying error messages to the user
@@ -170,7 +170,7 @@ The Html.ValidationSummary helper has several overloaded implementations. See th
 Another approach to validate a model is model level validation. This is used when you have to ensure that two or more properties interact correctly. I know it&#8217;s a stupid example but for whatever reason, you don&#8217;t allow a customers name to be Wolfgang with his birthday yesterday. Adding a model level error to the ModelState is also achieved by using the AddModelError with the difference that the first parameter is an empty string. Additionally, you have to pass true as the parameter for the ValidationSummary in the view.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Model-level-error-implementation.jpg"><img aria-describedby="caption-attachment-748" loading="lazy" class="size-full wp-image-748" src="/assets/img/posts/2018/02/Model-level-error-implementation.jpg" alt="Model level error implementation" /></a>
+  <a href="/assets/img/posts/2018/02/Model-level-error-implementation.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Model-level-error-implementation.jpg" alt="Model level error implementation" /></a>
   
   <p>
     Model level error implementation
@@ -178,7 +178,7 @@ Another approach to validate a model is model level validation. This is used whe
 </div>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Displaying-the-model-level-error-message.jpg"><img aria-describedby="caption-attachment-747" loading="lazy" class="size-full wp-image-747" src="/assets/img/posts/2018/02/Displaying-the-model-level-error-message.jpg" alt="Displaying the model level error message" /></a>
+  <a href="/assets/img/posts/2018/02/Displaying-the-model-level-error-message.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Displaying-the-model-level-error-message.jpg" alt="Displaying the model level error message" /></a>
   
   <p>
     Displaying the model level error message
@@ -190,7 +190,7 @@ Another approach to validate a model is model level validation. This is used whe
 Displaying all error messages on the top of the form might be ok if the form is as short as mine but if the form has 20 rows, the user will be confused with all the error messages. The solution for this is the ValidationMessageFor HTML helper. This method takes a lambda expression with the name of the property of which it should display the error message.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Implementation-of-the-ValidationMessageFor-helper-for-every-input-field.jpg"><img aria-describedby="caption-attachment-751" loading="lazy" class="size-full wp-image-751" src="/assets/img/posts/2018/02/Implementation-of-the-ValidationMessageFor-helper-for-every-input-field.jpg" alt="Implementation of the ValidationMessageFor helper for every input field" /></a>
+  <a href="/assets/img/posts/2018/02/Implementation-of-the-ValidationMessageFor-helper-for-every-input-field.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Implementation-of-the-ValidationMessageFor-helper-for-every-input-field.jpg" alt="Implementation of the ValidationMessageFor helper for every input field" /></a>
   
   <p>
     Implementation of the ValidationMessageFor helper for every input field
@@ -198,7 +198,7 @@ Displaying all error messages on the top of the form might be ok if the form is 
 </div>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Displaying-an-error-message-for-every-input-field.jpg"><img aria-describedby="caption-attachment-749" loading="lazy" class="size-full wp-image-749" src="/assets/img/posts/2018/02/Displaying-an-error-message-for-every-input-field.jpg" alt="Displaying an error message for every input field" /></a>
+  <a href="/assets/img/posts/2018/02/Displaying-an-error-message-for-every-input-field.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Displaying-an-error-message-for-every-input-field.jpg" alt="Displaying an error message for every input field" /></a>
   
   <p>
     Displaying an error message for every input field
@@ -210,7 +210,7 @@ Displaying all error messages on the top of the form might be ok if the form is 
 The default <a href="/model-binding-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">model binder</a> performs validation during the binding process. If it can&#8217;t bind a property, it will display an error message. For example, if you leave the birthday empty, the model binder will display a message prompting the user to enter a birthday.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Error-message-by-model-binder-because-of-empty-birthday-field.jpg"><img aria-describedby="caption-attachment-754" loading="lazy" class="size-full wp-image-754" src="/assets/img/posts/2018/02/Error-message-by-model-binder-because-of-empty-birthday-field.jpg" alt="Error message by model binder because of empty birthday field" /></a>
+  <a href="/assets/img/posts/2018/02/Error-message-by-model-binder-because-of-empty-birthday-field.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Error-message-by-model-binder-because-of-empty-birthday-field.jpg" alt="Error message by model binder because of empty birthday field" /></a>
   
   <p>
     Error message by model binder because of empty birthday field
@@ -220,7 +220,7 @@ The default <a href="/model-binding-in-asp-net-mvc/" target="_blank" rel="noopen
 The model binder also displays an error message if you try to enter an invalid value, for example, a string as birthday.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Error-message-by-model-binder-because-of-the-wrong-value-in-the-birthday-field.jpg"><img aria-describedby="caption-attachment-755" loading="lazy" class="size-full wp-image-755" src="/assets/img/posts/2018/02/Error-message-by-model-binder-because-of-the-wrong-value-in-the-birthday-field.jpg" alt="Error message by model binder because of the wrong value in the birthday field" /></a>
+  <a href="/assets/img/posts/2018/02/Error-message-by-model-binder-because-of-the-wrong-value-in-the-birthday-field.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Error-message-by-model-binder-because-of-the-wrong-value-in-the-birthday-field.jpg" alt="Error message by model binder because of the wrong value in the birthday field" /></a>
   
   <p>
     Error message by model binder because of the wrong value in the birthday field
@@ -234,7 +234,7 @@ Modern browsers like Chrome or Edge don&#8217;t even let the user enter a string
 The MVC framework enables you to add attributes to properties of a model. The advantage of this approach is that the attributes and therefore the model validation are always enforced when the model is used.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Using-Metadata-in-the-model-class.jpg"><img aria-describedby="caption-attachment-752" loading="lazy" class="size-full wp-image-752" src="/assets/img/posts/2018/02/Using-Metadata-in-the-model-class.jpg" alt="Using Metadata in the model class" /></a>
+  <a href="/assets/img/posts/2018/02/Using-Metadata-in-the-model-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Using-Metadata-in-the-model-class.jpg" alt="Using Metadata in the model class" /></a>
   
   <p>
     Using built-in validation attributes in the model class
@@ -343,7 +343,7 @@ I applied the Required attribute with and without a specific error message and t
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Implementation-of-a-custom-attribute-for-property-validation.jpg"><img aria-describedby="caption-attachment-756" loading="lazy" class="size-full wp-image-756" src="/assets/img/posts/2018/02/Implementation-of-a-custom-attribute-for-property-validation.jpg" alt="Implementation of a custom attribute for property validation" /></a>
+    <a href="/assets/img/posts/2018/02/Implementation-of-a-custom-attribute-for-property-validation.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Implementation-of-a-custom-attribute-for-property-validation.jpg" alt="Implementation of a custom attribute for property validation" /></a>
     
     <p>
       Implementation of a custom attribute for property validation
@@ -355,7 +355,7 @@ I applied the Required attribute with and without a specific error message and t
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Applying-my-custom-attribute-to-a-property.jpg"><img aria-describedby="caption-attachment-760" loading="lazy" class="size-full wp-image-760" src="/assets/img/posts/2018/02/Applying-my-custom-attribute-to-a-property.jpg" alt="Applying my custom attribute to a property" /></a>
+    <a href="/assets/img/posts/2018/02/Applying-my-custom-attribute-to-a-property.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Applying-my-custom-attribute-to-a-property.jpg" alt="Applying my custom attribute to a property" /></a>
     
     <p>
       Applying my custom attribute to a property
@@ -375,7 +375,7 @@ I applied the Required attribute with and without a specific error message and t
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Extending-the-Required-attribute-with-my-custom-validation.jpg"><img aria-describedby="caption-attachment-762" loading="lazy" class="size-full wp-image-762" src="/assets/img/posts/2018/02/Extending-the-Required-attribute-with-my-custom-validation.jpg" alt="Extending the Required attribute with my custom validation" /></a>
+    <a href="/assets/img/posts/2018/02/Extending-the-Required-attribute-with-my-custom-validation.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Extending-the-Required-attribute-with-my-custom-validation.jpg" alt="Extending the Required attribute with my custom validation" /></a>
     
     <p>
       Extending the Required attribute with my custom validation
@@ -399,7 +399,7 @@ I applied the Required attribute with and without a specific error message and t
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Configuring-web.config-for-client-side-validation.jpg"><img aria-describedby="caption-attachment-763" loading="lazy" class="size-full wp-image-763" src="/assets/img/posts/2018/02/Configuring-web.config-for-client-side-validation.jpg" alt="Configuring web.config for client-side validation" /></a>
+    <a href="/assets/img/posts/2018/02/Configuring-web.config-for-client-side-validation.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Configuring-web.config-for-client-side-validation.jpg" alt="Configuring web.config for client-side validation" /></a>
     
     <p>
       Configuring web.config for client-side validation
@@ -435,7 +435,7 @@ I applied the Required attribute with and without a specific error message and t
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Adding-validation-attributes-to-the-model-for-client-side-validation.jpg"><img aria-describedby="caption-attachment-764" loading="lazy" class="size-full wp-image-764" src="/assets/img/posts/2018/02/Adding-validation-attributes-to-the-model-for-client-side-validation.jpg" alt="Adding validation attributes to the model for client-side validation" /></a>
+    <a href="/assets/img/posts/2018/02/Adding-validation-attributes-to-the-model-for-client-side-validation.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Adding-validation-attributes-to-the-model-for-client-side-validation.jpg" alt="Adding validation attributes to the model for client-side validation" /></a>
     
     <p>
       Adding validation attributes to the model for client-side validation
@@ -443,7 +443,7 @@ I applied the Required attribute with and without a specific error message and t
   </div>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Error-message-from-client-side-validation.jpg"><img aria-describedby="caption-attachment-765" loading="lazy" class="size-full wp-image-765" src="/assets/img/posts/2018/02/Error-message-from-client-side-validation.jpg" alt="Error message from client-side validation" /></a>
+    <a href="/assets/img/posts/2018/02/Error-message-from-client-side-validation.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Error-message-from-client-side-validation.jpg" alt="Error message from client-side validation" /></a>
     
     <p>
       Error message from client-side validation
@@ -466,7 +466,7 @@ Remote validation is a mix of server-side and client-side validation. It is ofte
 Implementing remote validation consists of two steps. The first step is to implement an action in your controller which returns a JsonResult and takes one string parameter.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Implementation-of-the-remote-validation-in-the-controller.jpg"><img aria-describedby="caption-attachment-766" loading="lazy" class="size-full wp-image-766" src="/assets/img/posts/2018/02/Implementation-of-the-remote-validation-in-the-controller.jpg" alt="Implementation of the remote validation in the controller" /></a>
+  <a href="/assets/img/posts/2018/02/Implementation-of-the-remote-validation-in-the-controller.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Implementation-of-the-remote-validation-in-the-controller.jpg" alt="Implementation of the remote validation in the controller" /></a>
   
   <p>
     Implementation of the remote validation in the controller
@@ -478,7 +478,7 @@ In the action, I check if the customer name is Wolfgang. If it is Wolfgang, I re
 The second step is to add the Remote attribute to the Name property of the Customer class. Additionally, I add the validation method name and the controller.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Adding-the-remote-attribute-to-the-property-of-the-model-class.jpg"><img aria-describedby="caption-attachment-767" loading="lazy" class="size-full wp-image-767" src="/assets/img/posts/2018/02/Adding-the-remote-attribute-to-the-property-of-the-model-class.jpg" alt="Adding the remote attribute to the property of the model class" /></a>
+  <a href="/assets/img/posts/2018/02/Adding-the-remote-attribute-to-the-property-of-the-model-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Adding-the-remote-attribute-to-the-property-of-the-model-class.jpg" alt="Adding the remote attribute to the property of the model class" /></a>
   
   <p>
     Adding the remote attribute to the property of the model class
@@ -488,7 +488,7 @@ The second step is to add the Remote attribute to the Name property of the Custo
 That&#8217;s it. When you enter a name, you will get an error message as soon as you have finished entering Wolfgang. If you change one letter, the error message will disappear.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Remote-validation-of-the-customer-name.jpg"><img aria-describedby="caption-attachment-768" loading="lazy" class="size-full wp-image-768" src="/assets/img/posts/2018/02/Remote-validation-of-the-customer-name.jpg" alt="Remote validation of the customer name" /></a>
+  <a href="/assets/img/posts/2018/02/Remote-validation-of-the-customer-name.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Remote-validation-of-the-customer-name.jpg" alt="Remote validation of the customer name" /></a>
   
   <p>
     Remote validation of the customer name

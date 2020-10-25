@@ -200,7 +200,7 @@ Don&#8217;t worry if you don&#8217;t understand them. Simplified these two lines
 After RabbitMQ is started, you can navigate to localhost:15672 and login with guest as user and guest as password.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Login-into-the-RabbitMQ-management-portal.jpg"><img aria-describedby="caption-attachment-1913" loading="lazy" class="size-full wp-image-1913" src="/assets/img/posts/2020/04/Login-into-the-RabbitMQ-management-portal.jpg" alt="Login into the RabbitMQ management portal" /></a>
+  <a href="/assets/img/posts/2020/04/Login-into-the-RabbitMQ-management-portal.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Login-into-the-RabbitMQ-management-portal.jpg" alt="Login into the RabbitMQ management portal" /></a>
   
   <p>
     Login into the RabbitMQ management portal
@@ -240,7 +240,7 @@ Click on CustomerQueue and you will see that there is no message in the queue ye
 Go to the Put action of the CustomerApi and update a customer. If you use my in-memory database you can use the Guid &#8220;9f35b48d-cb87-4783-bfdb-21e36012930a&#8221;. The other values don&#8217;t matter for this test.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Update-a-customer.jpg"><img aria-describedby="caption-attachment-1917" loading="lazy" class="size-full wp-image-1917" src="/assets/img/posts/2020/04/Update-a-customer.jpg" alt="Update a customer" /></a>
+  <a href="/assets/img/posts/2020/04/Update-a-customer.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Update-a-customer.jpg" alt="Update a customer" /></a>
   
   <p>
     Update a customer

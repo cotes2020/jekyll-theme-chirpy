@@ -84,7 +84,7 @@ To enable monitoring and diagnostics when deploying a new VM follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Enable-diagnostics-when-provisioning-a-VM.jpg"><img aria-describedby="caption-attachment-922" loading="lazy" class="size-full wp-image-922" src="/assets/img/posts/2018/03/Enable-diagnostics-when-provisioning-a-VM.jpg" alt="Enable diagnostics when provisioning a VM" /></a>
+  <a href="/assets/img/posts/2018/03/Enable-diagnostics-when-provisioning-a-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Enable-diagnostics-when-provisioning-a-VM.jpg" alt="Enable diagnostics when provisioning a VM" /></a>
   
   <p>
     Enable diagnostics when provisioning a VM
@@ -181,7 +181,7 @@ You can view event logs, diagnostic infrastructure logs and application logs by 
   4. Expand the storage account which contains the logs you want to view. Then expand Tables.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Select-a-log-using-Visual-Studio.jpg"><img aria-describedby="caption-attachment-924" loading="lazy" class="size-full wp-image-924" src="/assets/img/posts/2018/03/Select-a-log-using-Visual-Studio.jpg" alt="Select a log using Visual Studio" /></a>
+  <a href="/assets/img/posts/2018/03/Select-a-log-using-Visual-Studio.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Select-a-log-using-Visual-Studio.jpg" alt="Select a log using Visual Studio" /></a>
   
   <p>
     Select a log using Visual Studio
@@ -213,7 +213,7 @@ To view IIS logs using Visual Studio follow these steps:
   5. If you don&#8217;t see the logs, go to your VM, select Diagnostic settings and on the Logs blade enable IIS logs.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Open-the-IIS-log-using-Visual-Studio.jpg"><img aria-describedby="caption-attachment-925" loading="lazy" class="size-full wp-image-925" src="/assets/img/posts/2018/03/Open-the-IIS-log-using-Visual-Studio.jpg" alt="Open the IIS log using Visual Studio" /></a>
+  <a href="/assets/img/posts/2018/03/Open-the-IIS-log-using-Visual-Studio.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Open-the-IIS-log-using-Visual-Studio.jpg" alt="Open the IIS log using Visual Studio" /></a>
   
   <p>
     Open the IIS log using Visual Studio
@@ -344,7 +344,7 @@ With Azure Log Analytics, you can collect data directly from your Azure VM and o
   3. Provide a name, Subscription, Resource Group, Location, and Pricing tier, then click OK.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-new-Log-Analytics-instance.jpg"><img aria-describedby="caption-attachment-958" loading="lazy" class="size-full wp-image-958" src="/assets/img/posts/2018/03/Create-a-new-Log-Analytics-instance.jpg" alt="Create a new Log Analytics instance" /></a>
+  <a href="/assets/img/posts/2018/03/Create-a-new-Log-Analytics-instance.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-a-new-Log-Analytics-instance.jpg" alt="Create a new Log Analytics instance" /></a>
   
   <p>
     Create a new Log Analytics instance
@@ -361,7 +361,7 @@ After Log Analytics is created, you have to enable the Log Analytics VM Extensio
   4. After the installation is completed, the OMS connection status will change to This workspace.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Installing-the-agent-on-your-VM.jpg"><img aria-describedby="caption-attachment-934" loading="lazy" class="size-full wp-image-934" src="/assets/img/posts/2018/03/Installing-the-agent-on-your-VM.jpg" alt="Installing the agent on your VM" /></a>
+  <a href="/assets/img/posts/2018/03/Installing-the-agent-on-your-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Installing-the-agent-on-your-VM.jpg" alt="Installing the agent on your VM" /></a>
   
   <p>
     Installing the agent on your VM

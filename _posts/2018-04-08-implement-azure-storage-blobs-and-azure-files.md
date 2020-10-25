@@ -48,7 +48,7 @@ The code of the following demo can be downloaded from <a href="https://github.c
 </li>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Connect-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1151" loading="lazy" class="size-full wp-image-1151" src="/assets/img/posts/2018/04/Connect-to-your-storage-account.jpg" alt="Connect to your storage account" /></a>
+  <a href="/assets/img/posts/2018/04/Connect-to-your-storage-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Connect-to-your-storage-account.jpg" alt="Connect to your storage account" /></a>
   
   <p>
     Connect to your storage account
@@ -72,7 +72,7 @@ Replace the placeholder for storage account name and storage key with your own. 
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1152" loading="lazy" class="size-full wp-image-1152" src="/assets/img/posts/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg" alt="Create the container myblockcontainer if it does not exist" /></a>
+  <a href="/assets/img/posts/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-the-container-myblockcontainer-if-it-does-not-exist.jpg" alt="Create the container myblockcontainer if it does not exist" /></a>
   
   <p>
     Create the container myblockcontainer if it does not exist
@@ -88,7 +88,7 @@ Azure Storage blobs are organized in containers. Each storage account can have a
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Upload-a-file-to-the-container.jpg"><img aria-describedby="caption-attachment-1153" loading="lazy" class="size-full wp-image-1153" src="/assets/img/posts/2018/04/Upload-a-file-to-the-container.jpg" alt="Upload a file to the container" /></a>
+  <a href="/assets/img/posts/2018/04/Upload-a-file-to-the-container.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Upload-a-file-to-the-container.jpg" alt="Upload a file to the container" /></a>
   
   <p>
     Upload a file to the container
@@ -130,7 +130,7 @@ A container has only read-only system properties, while blobs have both read-onl
 To set user-defined metadata, expand the code from before with these two lines:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Set-user-defined-metadata.jpg"><img aria-describedby="caption-attachment-1069" loading="lazy" class="size-full wp-image-1069" src="/assets/img/posts/2018/04/Set-user-defined-metadata.jpg" alt="Set user-defined metadata" /></a>
+  <a href="/assets/img/posts/2018/04/Set-user-defined-metadata.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Set-user-defined-metadata.jpg" alt="Set user-defined metadata" /></a>
   
   <p>
     Set user-defined metadata
@@ -142,7 +142,7 @@ To set user-defined metadata, expand the code from before with these two lines:
 To read the previously added user-defined metadata, add this code:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Read-user-defined-metadata.jpg"><img aria-describedby="caption-attachment-1070" loading="lazy" class="size-full wp-image-1070" src="/assets/img/posts/2018/04/Read-user-defined-metadata.jpg" alt="Read user-defined metadata" /></a>
+  <a href="/assets/img/posts/2018/04/Read-user-defined-metadata.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Read-user-defined-metadata.jpg" alt="Read user-defined metadata" /></a>
   
   <p>
     Read user-defined metadata
@@ -156,7 +156,7 @@ If the metadata key does not exist, an exception is thrown.
 To read system properties, add this code:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Read-system-metadata.jpg"><img aria-describedby="caption-attachment-1072" loading="lazy" class="size-full wp-image-1072" src="/assets/img/posts/2018/04/Read-system-metadata.jpg" alt="Read system metadata" /></a>
+  <a href="/assets/img/posts/2018/04/Read-system-metadata.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Read-system-metadata.jpg" alt="Read system metadata" /></a>
   
   <p>
     Read system metadata
@@ -178,7 +178,7 @@ Azure Storage Blobs have three different types of blobs:
 First, you have to create a page blob:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-page-blob.jpg"><img aria-describedby="caption-attachment-1073" loading="lazy" class="size-full wp-image-1073" src="/assets/img/posts/2018/04/Create-a-page-blob.jpg" alt="Create a page blob" /></a>
+  <a href="/assets/img/posts/2018/04/Create-a-page-blob.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-a-page-blob.jpg" alt="Create a page blob" /></a>
   
   <p>
     Create a page blob
@@ -198,7 +198,7 @@ After the page blob is created, you can write data to it:
 After some data are added to the blob, you can read it:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Read-a-page-blob.jpg"><img aria-describedby="caption-attachment-1075" loading="lazy" class="size-full wp-image-1075" src="/assets/img/posts/2018/04/Read-a-page-blob.jpg" alt="Read a page blob" /></a>
+  <a href="/assets/img/posts/2018/04/Read-a-page-blob.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Read-a-page-blob.jpg" alt="Read a page blob" /></a>
   
   <p>
     Read a page blob
@@ -282,7 +282,7 @@ The default endpoint for Azure Storage blobs is: StorageAccountName.blob.core.wi
   7. Now you can delete the Asverify CNAME since it has been verified by Azure already.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-custom-domain-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1078" loading="lazy" class="size-full wp-image-1078" src="/assets/img/posts/2018/04/Add-a-custom-domain-to-your-storage-account.jpg" alt="Add a custom domain to your storage account" /></a>
+  <a href="/assets/img/posts/2018/04/Add-a-custom-domain-to-your-storage-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Add-a-custom-domain-to-your-storage-account.jpg" alt="Add a custom domain to your storage account" /></a>
   
   <p>
     Add a custom domain to your storage account
@@ -314,7 +314,7 @@ You can create a lock on a blob for write and delete operations. This lick can b
 Use the following code to get the lease ID:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Get-the-lease-ID-of-your-block-blob.jpg"><img aria-describedby="caption-attachment-1081" loading="lazy" class="size-full wp-image-1081" src="/assets/img/posts/2018/04/Get-the-lease-ID-of-your-block-blob.jpg" alt="Get the lease ID of your block blob" /></a>
+  <a href="/assets/img/posts/2018/04/Get-the-lease-ID-of-your-block-blob.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Get-the-lease-ID-of-your-block-blob.jpg" alt="Get the lease ID of your block blob" /></a>
   
   <p>
     Get the lease ID of your block blob
@@ -346,7 +346,7 @@ To enable AFS, follow these steps:
   3. Provide a name, subscription, resource group and location and click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Deploy-Storage-Sync.jpg"><img aria-describedby="caption-attachment-1188" loading="lazy" class="size-full wp-image-1188" src="/assets/img/posts/2018/04/Deploy-Storage-Sync.jpg" alt="Deploy Storage Sync" /></a>
+  <a href="/assets/img/posts/2018/04/Deploy-Storage-Sync.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Deploy-Storage-Sync.jpg" alt="Deploy Storage Sync" /></a>
   
   <p>
     Deploy Storage Sync
@@ -377,7 +377,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-a-Sync-group.jpg"><img aria-describedby="caption-attachment-1190" loading="lazy" class="size-full wp-image-1190" src="/assets/img/posts/2018/04/Create-a-Sync-group.jpg" alt="Create a Sync group" /></a>
+  <a href="/assets/img/posts/2018/04/Create-a-Sync-group.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-a-Sync-group.jpg" alt="Create a Sync group" /></a>
   
   <p>
     Create a Sync group
@@ -396,7 +396,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Disable-enhanced-security.jpg"><img aria-describedby="caption-attachment-1191" loading="lazy" class="size-full wp-image-1191" src="/assets/img/posts/2018/04/Disable-enhanced-security.jpg" alt="Disable enhanced security" /></a>
+  <a href="/assets/img/posts/2018/04/Disable-enhanced-security.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Disable-enhanced-security.jpg" alt="Disable enhanced security" /></a>
   
   <p>
     Disable enhanced security
@@ -476,7 +476,7 @@ To enable AFS, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Copy-files-into-the-sync-folder.jpg"><img aria-describedby="caption-attachment-1196" loading="lazy" class="size-full wp-image-1196" src="/assets/img/posts/2018/04/Copy-files-into-the-sync-folder.jpg" alt="Copy files into the sync folder" /></a>
+  <a href="/assets/img/posts/2018/04/Copy-files-into-the-sync-folder.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Copy-files-into-the-sync-folder.jpg" alt="Copy files into the sync folder" /></a>
   
   <p>
     Copy files into the sync folder

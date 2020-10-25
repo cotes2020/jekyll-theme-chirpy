@@ -14,7 +14,7 @@ You can find the source code of the following demo on <a href="https://github.co
 I created a repository which will provide basic operations for my Customer class like Add and Delete.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Setting-up-a-repository-class-for-basic-operations.jpg"><img aria-describedby="caption-attachment-1680" loading="lazy" class="size-full wp-image-1680" src="/assets/img/posts/2019/04/Setting-up-a-repository-class-for-basic-operations.jpg" alt="Setting up a repository class for basic operations" /></a>
+  <a href="/assets/img/posts/2019/04/Setting-up-a-repository-class-for-basic-operations.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Setting-up-a-repository-class-for-basic-operations.jpg" alt="Setting up a repository class for basic operations" /></a>
   
   <p>
     Setting up a repository class for basic operations
@@ -34,7 +34,7 @@ Next, I created a view which will display the customer&#8217;s name and age in a
 Lastly, I call this view from the controller with the CustomerRepository creating some data.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Hardcoding-the-usage-of-the-CustomerRepository-in-the-controller.jpg"><img aria-describedby="caption-attachment-1683" loading="lazy" class="size-full wp-image-1683" src="/assets/img/posts/2019/04/Hardcoding-the-usage-of-the-CustomerRepository-in-the-controller.jpg" alt="Hardcoding the usage of the CustomerRepository in the controller" /></a>
+  <a href="/assets/img/posts/2019/04/Hardcoding-the-usage-of-the-CustomerRepository-in-the-controller.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Hardcoding-the-usage-of-the-CustomerRepository-in-the-controller.jpg" alt="Hardcoding the usage of the CustomerRepository in the controller" /></a>
   
   <p>
     Hard-coding the usage of the CustomerRepository in the controller
@@ -48,7 +48,7 @@ The CustomerRepository is hard-coded into the controller. This means that if you
 The term dependency injection (DI) describes an approach to creating loosely coupled components, which are used automatically by MVC. This means that controllers and other components don&#8217;t need to have any knowledge of how the types they require are created. Dependency injection might seem abstract in the beginning but let&#8217;s take a look at the modified HomeController:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Preparing-the-Home-Controller-for-dependency-injection.jpg"><img aria-describedby="caption-attachment-1685" loading="lazy" class="size-full wp-image-1685" src="/assets/img/posts/2019/04/Preparing-the-Home-Controller-for-dependency-injection.jpg" alt="Preparing the Home Controller for dependency injection" /></a>
+  <a href="/assets/img/posts/2019/04/Preparing-the-Home-Controller-for-dependency-injection.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Preparing-the-Home-Controller-for-dependency-injection.jpg" alt="Preparing the Home Controller for dependency injection" /></a>
   
   <p>
     Preparing the Home Controller for dependency injection
@@ -80,7 +80,7 @@ In the previous section, I added the IRepository interface to the Home controlle
 services.AddTransient<IRepository, ProductRepository>();
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Register-the-IRepository-interface-as-ProductRepository.jpg"><img aria-describedby="caption-attachment-1688" loading="lazy" class="size-full wp-image-1688" src="/assets/img/posts/2019/04/Register-the-IRepository-interface-as-ProductRepository.jpg" alt="Register the IRepository interface as ProductRepository" /></a>
+  <a href="/assets/img/posts/2019/04/Register-the-IRepository-interface-as-ProductRepository.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Register-the-IRepository-interface-as-ProductRepository.jpg" alt="Register the IRepository interface as ProductRepository" /></a>
   
   <p>
     Register the IRepository interface as ProductRepository
@@ -96,7 +96,7 @@ There are three different Methods to register a service, depending on its scope:
 I will explain the differences in the section &#8220;Understanding Service Life Cycles&#8221;. For now, add the line and that&#8217;s all you have to do to fix the previous exception.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/The-application-works-again.jpg"><img aria-describedby="caption-attachment-1689" loading="lazy" class="size-full wp-image-1689" src="/assets/img/posts/2019/04/The-application-works-again.jpg" alt="The application works again" /></a>
+  <a href="/assets/img/posts/2019/04/The-application-works-again.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/The-application-works-again.jpg" alt="The application works again" /></a>
   
   <p>
     The application works again
@@ -110,7 +110,7 @@ Dependency injection can also be used for concrete types, which are not accessed
 In the following example, I created a new WeatherService class and added it to the Home controller. There, I created a new action which returns only the string provided by the service. It is not the most useful implementation but it shows how it works.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Adding-the-weather-service-to-the-Home-controller.jpg"><img aria-describedby="caption-attachment-1690" loading="lazy" class="size-full wp-image-1690" src="/assets/img/posts/2019/04/Adding-the-weather-service-to-the-Home-controller.jpg" alt="Adding the weather service to the Home controller" /></a>
+  <a href="/assets/img/posts/2019/04/Adding-the-weather-service-to-the-Home-controller.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Adding-the-weather-service-to-the-Home-controller.jpg" alt="Adding the weather service to the Home controller" /></a>
   
   <p>
     Adding the weather service to the Home controller
@@ -120,7 +120,7 @@ In the following example, I created a new WeatherService class and added it to t
 Next, I register the WeatherService in the Startup class. Since there is no mapping between a service type and an implementation type in this solution, you have to use an override of the AddTransient method which accepts a single type parameter that tells the service provider that it should instantiate the WeatherService class to resolve a dependency on this type.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Register-the-WeatherService-in-the-Startup-class.jpg"><img aria-describedby="caption-attachment-1691" loading="lazy" class="size-full wp-image-1691" src="/assets/img/posts/2019/04/Register-the-WeatherService-in-the-Startup-class.jpg" alt="Register the WeatherService in the Startup class" /></a>
+  <a href="/assets/img/posts/2019/04/Register-the-WeatherService-in-the-Startup-class.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Register-the-WeatherService-in-the-Startup-class.jpg" alt="Register the WeatherService in the Startup class" /></a>
   
   <p>
     Register the WeatherService in the Startup class
@@ -132,7 +132,7 @@ The advantages of this approach are that the service provider will resolve any d
 If you call the new action, you will see the weather information provided by the WeatherService.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Getting-data-from-the-weather-service.jpg"><img aria-describedby="caption-attachment-1692" loading="lazy" class="size-full wp-image-1692" src="/assets/img/posts/2019/04/Getting-data-from-the-weather-service.jpg" alt="Getting data from the weather service" /></a>
+  <a href="/assets/img/posts/2019/04/Getting-data-from-the-weather-service.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Getting-data-from-the-weather-service.jpg" alt="Getting data from the weather service" /></a>
   
   <p>
     Getting data from the weather service
@@ -230,7 +230,7 @@ One version of the AddTransient method accepts a factory function that is invoke
 To demonstrate this behavior, I extended the ConfigureServices method of the Startup class. First, I inject an IHostingEnvironment object which indicates on which environment the application is running. Afterward, I check this variable and if it is development, I instantiate a ProductRepository as IRepository. Otherwise, I instantiate a CustomerRepository.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Instantiate-the-IRepository-interface-depending-on-the-hosting-environment.jpg"><img aria-describedby="caption-attachment-1693" loading="lazy" class="size-full wp-image-1693" src="/assets/img/posts/2019/04/Instantiate-the-IRepository-interface-depending-on-the-hosting-environment.jpg" alt="Instantiate the IRepository interface depending on the hosting environment" /></a>
+  <a href="/assets/img/posts/2019/04/Instantiate-the-IRepository-interface-depending-on-the-hosting-environment.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Instantiate-the-IRepository-interface-depending-on-the-hosting-environment.jpg" alt="Instantiate the IRepository interface depending on the hosting environment" /></a>
   
   <p>
     Instantiate the IRepository interface depending on the hosting environment
@@ -268,7 +268,7 @@ The singleton life cycle ensures that a single object is used to resolve all the
 The standard way to declare a dependency is through the constructor. Additionally to the standard way, MVC provides the functionality to inject an action, called action injection. Action injection allows dependencies to be declared through parameters to action methods. To be more precise, action injection is provided by the model binding system. All you have to do is using the FromService attribute before your parameter. Also, don&#8217;t forget to register your service in the Startup class.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Using-action-injection.jpg"><img aria-describedby="caption-attachment-1699" loading="lazy" class="size-full wp-image-1699" src="/assets/img/posts/2019/05/Using-action-injection.jpg" alt="Using action injection" /></a>
+  <a href="/assets/img/posts/2019/05/Using-action-injection.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Using-action-injection.jpg" alt="Using action injection" /></a>
   
   <p>
     Using action injection

@@ -29,7 +29,7 @@ This section will explain how to access table storage programmatically using C#.
   2. Add the following code to your app.config file:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1135" loading="lazy" class="size-full wp-image-1135" src="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" /></a>
+  <a href="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" /></a>
   
   <p>
     Setup the connection string to your storage account
@@ -62,7 +62,7 @@ Replace the placeholder with your storage account name and storage account key
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1138" loading="lazy" class="size-full wp-image-1138" src="/assets/img/posts/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg" alt="Create the orders table if it does not exist" /></a>
+  <a href="/assets/img/posts/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-the-orders-table-if-it-does-not-exist.jpg" alt="Create the orders table if it does not exist" /></a>
   
   <p>
     Create the orders table if it does not exist
@@ -134,7 +134,7 @@ To insert data into the previously created table, follow these steps:
   1. Add the following class:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg"><img aria-describedby="caption-attachment-1139" loading="lazy" class="size-full wp-image-1139" src="/assets/img/posts/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg" alt="The OrderEntity class will be used to add orders into the table" /></a>
+  <a href="/assets/img/posts/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/The-OrderEntity-class-will-be-used-to-add-orders-into-the-table.jpg" alt="The OrderEntity class will be used to add orders into the table" /></a>
   
   <p>
     The OrderEntity class will be used to add orders into the table
@@ -148,7 +148,7 @@ To insert data into the previously created table, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Insert-a-single-record-into-the-table.jpg"><img aria-describedby="caption-attachment-1140" loading="lazy" class="size-full wp-image-1140" src="/assets/img/posts/2018/04/Insert-a-single-record-into-the-table.jpg" alt="Insert a single record into the table" /></a>
+  <a href="/assets/img/posts/2018/04/Insert-a-single-record-into-the-table.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Insert-a-single-record-into-the-table.jpg" alt="Insert a single record into the table" /></a>
   
   <p>
     Insert a single record into the table
@@ -162,7 +162,7 @@ You can group inserts and other operations into a single batch transaction. You 
 To insert multiple orders in one transaction, add this code to your application:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Insert-multiple-records-into-the-table.jpg"><img aria-describedby="caption-attachment-1141" loading="lazy" class="size-full wp-image-1141" src="/assets/img/posts/2018/04/Insert-multiple-records-into-the-table.jpg" alt="Insert multiple records into the table" /></a>
+  <a href="/assets/img/posts/2018/04/Insert-multiple-records-into-the-table.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Insert-multiple-records-into-the-table.jpg" alt="Insert multiple records into the table" /></a>
   
   <p>
     Insert multiple records into the table
@@ -202,7 +202,7 @@ To update records, you can use the InsertOrReplace() method. It creates a record
 To delete a record, you have to retrieve it first and then call the Delete() method. Use the following code to do that:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Delete-a-record-from-the-table.jpg"><img aria-describedby="caption-attachment-1144" loading="lazy" class="size-full wp-image-1144" src="/assets/img/posts/2018/04/Delete-a-record-from-the-table.jpg" alt="Delete a record from the table" /></a>
+  <a href="/assets/img/posts/2018/04/Delete-a-record-from-the-table.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Delete-a-record-from-the-table.jpg" alt="Delete a record from the table" /></a>
   
   <p>
     Delete a record from the table
@@ -275,7 +275,7 @@ You can find the following demo on <a href="https://github.com/WolfgangOfner/Azu
   2. Add the following code to your app.config file:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img aria-describedby="caption-attachment-1135" loading="lazy" class="size-full wp-image-1135" src="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" /></a>
+  <a href="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Setup-the-connection-string-to-your-storage-account.jpg" alt="Setup the connection string to your storage account" /></a>
   
   <p>
     Setup the connection string to your storage account
@@ -302,7 +302,7 @@ Replace the placeholder with your storage account name and storage account key.
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg"><img aria-describedby="caption-attachment-1145" loading="lazy" class="size-full wp-image-1145" src="/assets/img/posts/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg" alt="Create the queue queue if it does not exist" /></a>
+  <a href="/assets/img/posts/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-the-queue-queue-if-it-does-not-exist.jpg" alt="Create the queue queue if it does not exist" /></a>
   
   <p>
     Create the queue queue if it does not exist
@@ -316,7 +316,7 @@ Replace the placeholder with your storage account name and storage account key.
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-three-messages-to-the-queue.jpg"><img aria-describedby="caption-attachment-1146" loading="lazy" class="size-full wp-image-1146" src="/assets/img/posts/2018/04/Add-three-messages-to-the-queue.jpg" alt="Add three messages to the queue" /></a>
+  <a href="/assets/img/posts/2018/04/Add-three-messages-to-the-queue.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Add-three-messages-to-the-queue.jpg" alt="Add three messages to the queue" /></a>
   
   <p>
     Add three messages to the queue
@@ -340,7 +340,7 @@ The maximum size for a message in a queue is 64 KB, but it is best practice to k
 Messages are usually published by a different application from the application that listens for new messages to process them. For simplicity, I use the same application for publishing and listening in this demo. To de-queue a message use the following code:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg"><img aria-describedby="caption-attachment-1147" loading="lazy" class="size-full wp-image-1147" src="/assets/img/posts/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg" alt="Dequeue a single message from the queue which is not older than five minutes" /></a>
+  <a href="/assets/img/posts/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Dequeue-a-single-message-from-the-queue-which-is-not-older-than-five-minutes.jpg" alt="Dequeue a single message from the queue which is not older than five minutes" /></a>
   
   <p>
     Dequeue a single message from the queue which is not older than five minutes
@@ -354,7 +354,7 @@ The code returns the oldest message, which is not older than five minutes.
 A queue listener can be implemented as single-threaded (processing one message at a time) or multi-threaded (processing messages in a batch on separate threads). You can retrieve up to 32 messages from a queue using GetMessages() to process multiple messages in parallel. To get more than one message with GetMessages(), specify the number of items which should be de-queued:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Dequeue-multiple-messages-from-the-queue.jpg"><img aria-describedby="caption-attachment-1148" loading="lazy" class="size-full wp-image-1148" src="/assets/img/posts/2018/04/Dequeue-multiple-messages-from-the-queue.jpg" alt="Dequeue multiple messages from the queue" /></a>
+  <a href="/assets/img/posts/2018/04/Dequeue-multiple-messages-from-the-queue.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Dequeue-multiple-messages-from-the-queue.jpg" alt="Dequeue multiple messages from the queue" /></a>
   
   <p>
     Dequeue multiple messages from the queue

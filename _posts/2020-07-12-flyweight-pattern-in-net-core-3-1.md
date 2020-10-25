@@ -116,7 +116,7 @@ static void Main(string[] args)
 When running the application, you will see that there are no items in the cache and then slowly the medium-sized meals are created. The large meals are created way faster because they are read from the cache. After serving all four meals, the cache still has only two items, as expected.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/Testing-the-Flyweight-Pattern-Implementation.jpg"><img aria-describedby="caption-attachment-2256" loading="lazy" class="size-full wp-image-2256" src="/assets/img/posts/2020/07/Testing-the-Flyweight-Pattern-Implementation.jpg" alt="Testing the Flyweight Pattern Implementation" /></a>
+  <a href="/assets/img/posts/2020/07/Testing-the-Flyweight-Pattern-Implementation.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Testing-the-Flyweight-Pattern-Implementation.jpg" alt="Testing the Flyweight Pattern Implementation" /></a>
   
   <p>
     Testing the Flyweight Pattern Implementation

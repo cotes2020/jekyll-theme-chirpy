@@ -40,7 +40,7 @@ After you are done, click on Train in the right top corner and after the trainin
 Now that you have created a new intend, your bot has to handle it. To do something with the new intent, you have to add it to the switch statement in the OnTurnAsync method in the BasicBot.cs file. The simplest way to add the new intent is to add a new case with &#8220;Weather&#8221; and then return a message.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Handle-the-intent-in-the-bot.jpg"><img aria-describedby="caption-attachment-1452" loading="lazy" class="size-full wp-image-1452" src="/assets/img/posts/2018/10/Handle-the-intent-in-the-bot.jpg" alt="Handle the intent in the bot" /></a>
+  <a href="/assets/img/posts/2018/10/Handle-the-intent-in-the-bot.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Handle-the-intent-in-the-bot.jpg" alt="Handle the intent in the bot" /></a>
   
   <p>
     Handle the intent in the bot
@@ -60,7 +60,7 @@ Additionally, I remove the welcome message by commenting the following code:
 Check in your code and after it is deployed, you can test it.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Testing-the-weather-intent.jpg"><img aria-describedby="caption-attachment-1455" loading="lazy" class="size-full wp-image-1455" src="/assets/img/posts/2018/10/Testing-the-weather-intent.jpg" alt="Testing the weather intent" /></a>
+  <a href="/assets/img/posts/2018/10/Testing-the-weather-intent.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Testing-the-weather-intent.jpg" alt="Testing the weather intent" /></a>
   
   <p>
     Testing the weather intent
@@ -80,7 +80,7 @@ The bot should react to the city, the user enters. Therefore the bot has to know
 To add the entity, add a new utterance to the intent, for example, is it sunny in zurich? Then click on zurich and enter City to create the City entity. In the next window set the Entity type to simple and click done.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Define-an-entity-in-luis.jpg"><img aria-describedby="caption-attachment-1456" loading="lazy" class="size-full wp-image-1456" src="/assets/img/posts/2018/10/Define-an-entity-in-luis.jpg" alt="Define an entity in luis" /></a>
+  <a href="/assets/img/posts/2018/10/Define-an-entity-in-luis.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Define-an-entity-in-luis.jpg" alt="Define an entity in luis" /></a>
   
   <p>
     Define an entity in luis

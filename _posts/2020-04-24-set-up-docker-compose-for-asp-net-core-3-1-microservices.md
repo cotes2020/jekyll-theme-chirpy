@@ -70,7 +70,7 @@ You can find the code of  the finished demo on <a href="https://github.com/Wol
 To execute your compose file, open Powershel, and navigate to the location of your file. In my demo code, I am providing the compose file in the root folder. Once you navigated to your file, use the following command: docker-compose up -d. The -d parameter executes the command detached. This means that the containers run in the background and don&#8217;t block your Powershell window.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg"><img aria-describedby="caption-attachment-1953" loading="lazy" class="size-full wp-image-1953" src="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg" alt="Start multiple container with docker-compose" /></a>
+  <a href="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg" alt="Start multiple container with docker-compose" /></a>
   
   <p>
     Start multiple container with docker-compose

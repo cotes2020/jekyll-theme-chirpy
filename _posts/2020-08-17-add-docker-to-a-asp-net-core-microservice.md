@@ -24,7 +24,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.
 Open the solution with Visual Studio 2019 and right-click on the CustomerApi project. Then click on Add and select Docker Support&#8230;
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Add-Docker-Support-to-the-API-project.jpg"><img aria-describedby="caption-attachment-2351" loading="lazy" class="size-full wp-image-2351" src="/assets/img/posts/2020/08/Add-Docker-Support-to-the-API-project.jpg" alt="Add Docker Support to the API project" /></a>
+  <a href="/assets/img/posts/2020/08/Add-Docker-Support-to-the-API-project.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Add-Docker-Support-to-the-API-project.jpg" alt="Add Docker Support to the API project" /></a>
   
   <p>
     Add Docker Support to the API project
@@ -34,7 +34,7 @@ Open the solution with Visual Studio 2019 and right-click on the CustomerApi pro
 This opens a window where you can select the operating system for your project. If you don&#8217;t have a requirement to use Windows, I would always use Linux since it is smaller and therefore faster.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Select-the-operating-system-for-the-Docker-container.jpg"><img aria-describedby="caption-attachment-2352" loading="lazy" class="size-full wp-image-2352" src="/assets/img/posts/2020/08/Select-the-operating-system-for-the-Docker-container.jpg" alt="Select the operating system for the Docker container" /></a>
+  <a href="/assets/img/posts/2020/08/Select-the-operating-system-for-the-Docker-container.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Select-the-operating-system-for-the-Docker-container.jpg" alt="Select the operating system for the Docker container" /></a>
   
   <p>
     Select the operating system for the Docker container
@@ -44,7 +44,7 @@ This opens a window where you can select the operating system for your project. 
 After you clicked OK, a Dockerfile was added to the project and in Visual Studio you can see that you can start the project with Docker now.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Start-the-project-in-Docker.jpg"><img aria-describedby="caption-attachment-2353" loading="lazy" class="size-full wp-image-2353" src="/assets/img/posts/2020/08/Start-the-project-in-Docker.jpg" alt="Start the project in Docker" /></a>
+  <a href="/assets/img/posts/2020/08/Start-the-project-in-Docker.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Start-the-project-in-Docker.jpg" alt="Start the project in Docker" /></a>
   
   <p>
     Start the project in Docker

@@ -24,7 +24,7 @@ I want to do some calculation and then save the result somewhere. The algorithm 
 The first step, BeforeCalculation can&#8217;t be overridden by the subclasses and therefore will always be executed. The second step of the algorithm, CalculateSomething can be overridden. The classes CalculatorOracle and CalculatorSqlAzure override this method and do their own calculations. The CalculatorSqlAzure also overrides the property Result.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg"><img aria-describedby="caption-attachment-472" loading="lazy" class="size-full wp-image-472" src="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg" alt="Implementation of CalculateSomething in the CalculatorSqlAzure class" /></a>
+  <a href="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorSqlAzure-class.jpg" alt="Implementation of CalculateSomething in the CalculatorSqlAzure class" /></a>
   
   <p>
     Implementation of CalculateSomething in the CalculatorSqlAzure class
@@ -34,7 +34,7 @@ The first step, BeforeCalculation can&#8217;t be overridden by the subclasses an
 The CalculatorOracle class only overrides the CalculateSomething method.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg"><img aria-describedby="caption-attachment-473" loading="lazy" class="size-full wp-image-473" src="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg" alt="Implementation of CalculateSomething in the CalculatorOracle class" /></a>
+  <a href="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Implementation-of-CalculateSomething-in-the-CalculatorOracle-class.jpg" alt="Implementation of CalculateSomething in the CalculatorOracle class" /></a>
   
   <p>
     Implementation of CalculateSomething in the CalculatorOracle class

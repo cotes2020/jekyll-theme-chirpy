@@ -35,7 +35,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
   2. On the Azure Cosmos DB blade, provide a unique ID, subscription, resource group and location. Select an API, for example, SQL and click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-SQL-API.jpg"><img aria-describedby="caption-attachment-1225" loading="lazy" class="size-full wp-image-1225" src="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-SQL-API.jpg" alt="Create an Azure Cosmos DB with a SQL API" /></a>
+  <a href="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-SQL-API.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-SQL-API.jpg" alt="Create an Azure Cosmos DB with a SQL API" /></a>
   
   <p>
     Create an Azure Cosmos DB with a SQL API
@@ -69,7 +69,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-the-database-if-it-does-not-exist-yet.jpg"><img aria-describedby="caption-attachment-1227" loading="lazy" class="size-full wp-image-1227" src="/assets/img/posts/2018/04/Create-the-database-if-it-does-not-exist-yet.jpg" alt="Create the database if it does not exist yet" /></a>
+  <a href="/assets/img/posts/2018/04/Create-the-database-if-it-does-not-exist-yet.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-the-database-if-it-does-not-exist-yet.jpg" alt="Create the database if it does not exist yet" /></a>
   
   <p>
     Create the database if it does not exist yet
@@ -83,7 +83,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-the-colleciton-if-it-does-not-exist-yet.jpg"><img aria-describedby="caption-attachment-1228" loading="lazy" class="size-full wp-image-1228" src="/assets/img/posts/2018/04/Create-the-colleciton-if-it-does-not-exist-yet.jpg" alt="Create the colleciton if it does not exist yet" /></a>
+  <a href="/assets/img/posts/2018/04/Create-the-colleciton-if-it-does-not-exist-yet.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-the-colleciton-if-it-does-not-exist-yet.jpg" alt="Create the colleciton if it does not exist yet" /></a>
   
   <p>
     After the database is created, create the collection if it does not exist yet
@@ -97,7 +97,7 @@ The code for the following demo can be found on [GitHub](https://github.com/Wolf
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/The-customer-class-will-be-used-to-add-customer-to-the-database.jpg"><img aria-describedby="caption-attachment-1229" loading="lazy" class="size-full wp-image-1229" src="/assets/img/posts/2018/04/The-customer-class-will-be-used-to-add-customer-to-the-database.jpg" alt="The customer class will be used to add customer to the database" /></a>
+  <a href="/assets/img/posts/2018/04/The-customer-class-will-be-used-to-add-customer-to-the-database.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/The-customer-class-will-be-used-to-add-customer-to-the-database.jpg" alt="The customer class will be used to add customer to the database" /></a>
   
   <p>
     The customer class will be used to add a customer to the database
@@ -158,7 +158,7 @@ The code for the following demo can be found on <a href="https://github.com/Wolf
   2. On the Azure Cosmos DB blade, provide a unique ID, subscription, resource group and location. Select Gremlin (graph) as API and click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-Graph-API.jpg"><img aria-describedby="caption-attachment-1201" loading="lazy" class="size-full wp-image-1201" src="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-Graph-API.jpg" alt="Create an Azure Cosmos DB with a Graph API" width="307" height="431"  /></a>
+  <a href="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-Graph-API.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-an-Azure-Cosmos-DB-with-a-Graph-API.jpg" alt="Create an Azure Cosmos DB with a Graph API" width="307" height="431"  /></a>
   
   <p>
     Create an Azure Cosmos DB with a Graph API
@@ -220,7 +220,7 @@ The code for the following demo can be found on <a href="https://github.com/Wolf
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-nodes-and-edges-to-the-collection.jpg"><img aria-describedby="caption-attachment-1205" loading="lazy" class="size-full wp-image-1205" src="/assets/img/posts/2018/04/Add-nodes-and-edges-to-the-collection.jpg" alt="Add nodes and edges to the collection" /></a>
+  <a href="/assets/img/posts/2018/04/Add-nodes-and-edges-to-the-collection.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Add-nodes-and-edges-to-the-collection.jpg" alt="Add nodes and edges to the collection" /></a>
   
   <p>
     Add nodes and edges to the collection
@@ -248,7 +248,7 @@ The code for the following demo can be found on <a href="https://github.com/Wolf
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Search-for-all-people-Wolfgang-knows.jpg"><img aria-describedby="caption-attachment-1207" loading="lazy" class="size-full wp-image-1207" src="/assets/img/posts/2018/04/Search-for-all-people-Wolfgang-knows.jpg" alt="Search for all people Wolfgang knows" /></a>
+  <a href="/assets/img/posts/2018/04/Search-for-all-people-Wolfgang-knows.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Search-for-all-people-Wolfgang-knows.jpg" alt="Search for all people Wolfgang knows" /></a>
   
   <p>
     Search for all people Wolfgang knows
@@ -275,7 +275,7 @@ To create a single partition collection, follow these steps:
   2. On the Add Collection blade, provide a name for the database and collection, set the Storage capacity and the throughput, and leave the partition key empty.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-collection-to-your-Azure-Cosmos-DB.jpg"><img aria-describedby="caption-attachment-1209" loading="lazy" class="size-full wp-image-1209" src="/assets/img/posts/2018/04/Add-a-collection-to-your-Azure-Cosmos-DB.jpg" alt="Add a collection to your Azure Cosmos DB" /></a>
+  <a href="/assets/img/posts/2018/04/Add-a-collection-to-your-Azure-Cosmos-DB.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Add-a-collection-to-your-Azure-Cosmos-DB.jpg" alt="Add a collection to your Azure Cosmos DB" /></a>
   
   <p>
     Add a collection to your Azure Cosmos DB
@@ -402,7 +402,7 @@ To distribute data globally, follow these steps:
 You can also use C# code to set the preferred region. To do that use this code:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Set-the-preferred-region.jpg"><img aria-describedby="caption-attachment-1234" loading="lazy" class="size-full wp-image-1234" src="/assets/img/posts/2018/04/Set-the-preferred-region.jpg" alt="Set the preferred region" /></a>
+  <a href="/assets/img/posts/2018/04/Set-the-preferred-region.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Set-the-preferred-region.jpg" alt="Set the preferred region" /></a>
   
   <p>
     Set the preferred region
@@ -465,7 +465,7 @@ Follow these steps to use the Active Directory to give an user access to the Azu
   4. Click Save.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Grant-a-user-the-DocumentDB-Account-Contributor-access.jpg"><img aria-describedby="caption-attachment-1213" loading="lazy" class="size-full wp-image-1213" src="/assets/img/posts/2018/04/Grant-a-user-the-DocumentDB-Account-Contributor-access.jpg" alt="Grant a user the DocumentDB Account Contributor access" /></a>
+  <a href="/assets/img/posts/2018/04/Grant-a-user-the-DocumentDB-Account-Contributor-access.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Grant-a-user-the-DocumentDB-Account-Contributor-access.jpg" alt="Grant a user the DocumentDB Account Contributor access" /></a>
   
   <p>
     Grant a user the DocumentDB Account Contributor access

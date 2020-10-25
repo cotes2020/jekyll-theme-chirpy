@@ -79,7 +79,7 @@ To configure the CI/CD pipeline from the Azure portal, follow these steps:
   3. Click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/08/Create-a-new-Web-App.jpg"><img aria-describedby="caption-attachment-2107" loading="lazy" class="size-full wp-image-2107" src="/assets/img/posts/2018/08/Create-a-new-Web-App.jpg" alt="Create a new Web App for DevOps" /></a>
+  <a href="/assets/img/posts/2018/08/Create-a-new-Web-App.jpg"><img loading="lazy" src="/assets/img/posts/2018/08/Create-a-new-Web-App.jpg" alt="Create a new Web App for DevOps" /></a>
   
   <p>
     Create a new Web App
@@ -129,7 +129,7 @@ Follow these steps to enable continuous deployment from a GitHub repository:
   4. Click OK.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/08/Enable-continuous-deployment-from-GitHub.jpg"><img aria-describedby="caption-attachment-2109" loading="lazy" class="size-full wp-image-2109" src="/assets/img/posts/2018/08/Enable-continuous-deployment-from-GitHub.jpg" alt="Enable continuous deployment from GitHub" /></a>
+  <a href="/assets/img/posts/2018/08/Enable-continuous-deployment-from-GitHub.jpg"><img loading="lazy" src="/assets/img/posts/2018/08/Enable-continuous-deployment-from-GitHub.jpg" alt="Enable continuous deployment from GitHub" /></a>
   
   <p>
     Enable continuous deployment from GitHub

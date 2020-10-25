@@ -78,7 +78,7 @@ public class RemoteProxy : IRemoteProxy
 Start both projects in my demo and navigate to /RemoteProxy/HelloMessage and you will see the message in your browser.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/Getting-a-message-from-the-Remote-Proxy.jpg"><img aria-describedby="caption-attachment-2223" loading="lazy" class="size-full wp-image-2223" src="/assets/img/posts/2020/06/Getting-a-message-from-the-Remote-Proxy.jpg" alt="Getting a message from the Remote Proxy" /></a>
+  <a href="/assets/img/posts/2020/06/Getting-a-message-from-the-Remote-Proxy.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Getting-a-message-from-the-Remote-Proxy.jpg" alt="Getting a message from the Remote Proxy" /></a>
   
   <p>
     Getting a message from the Remote Proxy

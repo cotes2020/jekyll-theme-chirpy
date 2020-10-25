@@ -93,7 +93,7 @@ To create an Azure Mobile App Service instance, follow these steps:
   3. Click Create
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/Create-a-Mobile-App.jpg"><img aria-describedby="caption-attachment-1347" loading="lazy" class="size-full wp-image-1347" src="/assets/img/posts/2018/06/Create-a-Mobile-App.jpg" alt="Create a Mobile App" /></a>
+  <a href="/assets/img/posts/2018/06/Create-a-Mobile-App.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/Create-a-Mobile-App.jpg" alt="Create a Mobile App" /></a>
   
   <p>
     Create a Mobile App
@@ -127,7 +127,7 @@ To create an Azure Mobile App Service instance, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/06/The-Mobile-App-is-deployed-and-running.jpg"><img aria-describedby="caption-attachment-1351" loading="lazy" class="size-full wp-image-1351" src="/assets/img/posts/2018/06/The-Mobile-App-is-deployed-and-running.jpg" alt="The Mobile App is deployed and running" /></a>
+  <a href="/assets/img/posts/2018/06/The-Mobile-App-is-deployed-and-running.jpg"><img loading="lazy" src="/assets/img/posts/2018/06/The-Mobile-App-is-deployed-and-running.jpg" alt="The Mobile App is deployed and running" /></a>
   
   <p>
     The Mobile App is deployed and running

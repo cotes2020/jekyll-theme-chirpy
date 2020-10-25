@@ -95,7 +95,7 @@ The whole code to copy the everything out of the container, display the test res
 Save the changes and run the CI pipeline. After the build is finished, you will see the Code Coverage tab in the summary overview where you can see the coverage of each of your projects.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/09/Summary-of-the-Code-Coverage-Results.jpg"><img aria-describedby="caption-attachment-2396" loading="lazy" class="size-full wp-image-2396" src="/assets/img/posts/2020/09/Summary-of-the-Code-Coverage-Results.jpg" alt="Summary of the Code Coverage Results" /></a>
+  <a href="/assets/img/posts/2020/09/Summary-of-the-Code-Coverage-Results.jpg"><img loading="lazy" src="/assets/img/posts/2020/09/Summary-of-the-Code-Coverage-Results.jpg" alt="Summary of the Code Coverage Results" /></a>
   
   <p>
     Summary of the Code Coverage Results

@@ -48,7 +48,7 @@ Action invokers rely on model binders to bind the data from the request to the d
 There can be several model binder in an MVC application and you can also create your own. In this post, I will only talk about the built-in binder, DefaultModelBinder.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Displaying-customer-with-id-1.jpg"><img aria-describedby="caption-attachment-722" loading="lazy" class="size-full wp-image-722" src="/assets/img/posts/2018/01/Displaying-customer-with-id-1.jpg" alt="Displaying customer with id 1" /></a>
+  <a href="/assets/img/posts/2018/01/Displaying-customer-with-id-1.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Displaying-customer-with-id-1.jpg" alt="Displaying customer with id 1" /></a>
   
   <p>
     Displaying customer with id 1
@@ -132,7 +132,7 @@ When the model binder encounters a primitive data type, it tries to convert it i
 You can prevent this from happening but you have to make sure that your code can handle the id if it is null.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Nullable-int-parameter.jpg"><img aria-describedby="caption-attachment-708" loading="lazy" class="size-full wp-image-708" src="/assets/img/posts/2018/01/Nullable-int-parameter.jpg" alt="Nullable int parameter" /></a>
+  <a href="/assets/img/posts/2018/01/Nullable-int-parameter.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Nullable-int-parameter.jpg" alt="Nullable int parameter" /></a>
   
   <p>
     Nullable int parameter
@@ -142,7 +142,7 @@ You can prevent this from happening but you have to make sure that your code can
 An even simpler alternative is to use default parameter.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Default-value-for-the-action-parameter.jpg"><img aria-describedby="caption-attachment-709" loading="lazy" class="size-full wp-image-709" src="/assets/img/posts/2018/01/Default-value-for-the-action-parameter.jpg" alt="Default value for the action parameter" /></a>
+  <a href="/assets/img/posts/2018/01/Default-value-for-the-action-parameter.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Default-value-for-the-action-parameter.jpg" alt="Default value for the action parameter" /></a>
   
   <p>
     Default value for the action parameter
@@ -152,7 +152,7 @@ An even simpler alternative is to use default parameter.
 If the model binder can&#8217;t bind the user input to the parameter, the default value is used.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Displaying-default-customer-after-casting-failed.jpg"><img aria-describedby="caption-attachment-725" loading="lazy" class="size-full wp-image-725" src="/assets/img/posts/2018/01/Displaying-default-customer-after-casting-failed.jpg" alt="Displaying default customer after casting failed" /></a>
+  <a href="/assets/img/posts/2018/01/Displaying-default-customer-after-casting-failed.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Displaying-default-customer-after-casting-failed.jpg" alt="Displaying default customer after casting failed" /></a>
   
   <p>
     Displaying default customer after casting failed
@@ -166,7 +166,7 @@ Default parameters prevent the application from crashing if the model binding pr
 If the DefaultModelBinder class encounters a complex type in the parameter, it uses reflections to get the public properties and then binds to each of them in turn.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Complex-data-type-Customer-as-action-parameter.jpg"><img aria-describedby="caption-attachment-726" loading="lazy" class="size-full wp-image-726" src="/assets/img/posts/2018/01/Complex-data-type-Customer-as-action-parameter.jpg" alt="Complex data type Customer as action parameter" /></a>
+  <a href="/assets/img/posts/2018/01/Complex-data-type-Customer-as-action-parameter.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Complex-data-type-Customer-as-action-parameter.jpg" alt="Complex data type Customer as action parameter" /></a>
   
   <p>
     Complex data type Customer as action parameter
@@ -176,7 +176,7 @@ If the DefaultModelBinder class encounters a complex type in the parameter, it u
 If you use HTML Helper methods, the helper sets the name attributes of the element to match the format that the model binder uses.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Name-set-by-HTML-helper.jpg"><img aria-describedby="caption-attachment-727" loading="lazy" class="size-full wp-image-727" src="/assets/img/posts/2018/01/Name-set-by-HTML-helper.jpg" alt="Name set by HTML helper" /></a>
+  <a href="/assets/img/posts/2018/01/Name-set-by-HTML-helper.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Name-set-by-HTML-helper.jpg" alt="Name set by HTML helper" /></a>
   
   <p>
     Name set by HTML helper
@@ -188,7 +188,7 @@ If you use HTML Helper methods, the helper sets the name attributes of the eleme
 Sometimes you don&#8217;t want to bind the data to the type the HTML generates for you. This means that the prefixes containing the view won&#8217;t correspond to the structure that the model binder is expecting and therefore your data won&#8217;t be processed properly. For example, I have some address information in a form and pass the form to an action. This action only needs some properties and therefore I create a new class called AddressShort.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/New-action-for-address-details.jpg"><img aria-describedby="caption-attachment-711" loading="lazy" class="size-full wp-image-711" src="/assets/img/posts/2018/01/New-action-for-address-details.jpg" alt="New action for address details" /></a>
+  <a href="/assets/img/posts/2018/01/New-action-for-address-details.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/New-action-for-address-details.jpg" alt="New action for address details" /></a>
   
   <p>
     New action for address details
@@ -198,7 +198,7 @@ Sometimes you don&#8217;t want to bind the data to the type the HTML generates f
 If you pass the Customer class with the Address property to the action, it can&#8217;t be passed and the AddressShort object will only contain null objects. The values are null because the name attributes have the prefix Address in the HTML form and the model binder is looking for this type when trying to bind the AddressShort type. You can fix this by telling the model binder which prefix it should look for with the Bind attribute in the action.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/The-Bind-attribute-in-the-action.jpg"><img aria-describedby="caption-attachment-712" loading="lazy" class="size-full wp-image-712" src="/assets/img/posts/2018/01/The-Bind-attribute-in-the-action.jpg" alt="The Bind attribute in the action" /></a>
+  <a href="/assets/img/posts/2018/01/The-Bind-attribute-in-the-action.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/The-Bind-attribute-in-the-action.jpg" alt="The Bind attribute in the action" /></a>
   
   <p>
     The Bind attribute in the action
@@ -240,7 +240,7 @@ Model binding arrays and collections are supported by the model binder and can b
 To demonstrate how binding to an array works, I create a new action which takes a string array as parameter:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Action-with-an-array-parameter.jpg"><img aria-describedby="caption-attachment-716" loading="lazy" class="size-full wp-image-716" src="/assets/img/posts/2018/01/Action-with-an-array-parameter.jpg" alt="Action with an array parameter" /></a>
+  <a href="/assets/img/posts/2018/01/Action-with-an-array-parameter.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Action-with-an-array-parameter.jpg" alt="Action with an array parameter" /></a>
   
   <p>
     Action with an array parameter
@@ -254,7 +254,7 @@ The model binder searches for all items with the name attribute countries and th
 Binding to collections works as binding to arrays. I create a new action and let the user enter cities this time. The only difference is that the parameter is of type IList:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Action-with-a-list-parameter.jpg"><img aria-describedby="caption-attachment-717" loading="lazy" class="size-full wp-image-717" src="/assets/img/posts/2018/01/Action-with-a-list-parameter.jpg" alt="Action with a list parameter" /></a>
+  <a href="/assets/img/posts/2018/01/Action-with-a-list-parameter.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Action-with-a-list-parameter.jpg" alt="Action with a list parameter" /></a>
   
   <p>
     Action with a list parameter
@@ -268,7 +268,7 @@ Again, I check whether the list is null and then pass the values to the view to 
 Binding to a collection of a complex data type is not different than binding to a normal collection except the naming of the items is a bit different. The names start with the index in square brackets followed by a period and the name of the property. For example [0].City
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Names-starting-with-0-to-bind-to-a-collection.jpg"><img aria-describedby="caption-attachment-728" loading="lazy" class="size-full wp-image-728" src="/assets/img/posts/2018/01/Names-starting-with-0-to-bind-to-a-collection.jpg" alt="Names starting with [0] to bind to a collection" /></a>
+  <a href="/assets/img/posts/2018/01/Names-starting-with-0-to-bind-to-a-collection.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Names-starting-with-0-to-bind-to-a-collection.jpg" alt="Names starting with [0] to bind to a collection" /></a>
   
   <p>
     Names starting with [0] to bind to a collection

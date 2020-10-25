@@ -130,7 +130,7 @@ To test that everything is working as expected, start the Blazor app and the Azu
 Go to the Azure Portal, click on New, search for Static Webb App, and click on Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/10/Create-the-Static-Web-App.jpg"><img aria-describedby="caption-attachment-2410" loading="lazy" class="size-full wp-image-2410" src="/assets/img/posts/2020/10/Create-the-Static-Web-App.jpg" alt="Create the Static Web App" /></a>
+  <a href="/assets/img/posts/2020/10/Create-the-Static-Web-App.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Create-the-Static-Web-App.jpg" alt="Create the Static Web App" /></a>
   
   <p>
     Create the Static Web App

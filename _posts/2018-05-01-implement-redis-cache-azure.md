@@ -20,7 +20,7 @@ To create a Redis Cache, follow these steps:
   3. Click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-new-Redis-cache.png"><img aria-describedby="caption-attachment-1239" loading="lazy" class="size-full wp-image-1239" src="/assets/img/posts/2018/05/Create-a-new-Redis-cache.png" alt="Create a new Redis cache" /></a>
+  <a href="/assets/img/posts/2018/05/Create-a-new-Redis-cache.png"><img loading="lazy" src="/assets/img/posts/2018/05/Create-a-new-Redis-cache.png" alt="Create a new Redis cache" /></a>
   
   <p>
     Create a new Redis Cache
@@ -84,7 +84,7 @@ To configure the frequency of the snapshots, follow these steps:
   3. Click OK.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Configure-data-persistence.jpg"><img aria-describedby="caption-attachment-1240" loading="lazy" class="size-full wp-image-1240" src="/assets/img/posts/2018/05/Configure-data-persistence.jpg" alt="Configure data persistence" /></a>
+  <a href="/assets/img/posts/2018/05/Configure-data-persistence.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Configure-data-persistence.jpg" alt="Configure data persistence" /></a>
   
   <p>
     Configure data persistence

@@ -38,7 +38,7 @@ That&#8217;s all. You can run the test and if the constructor of your Employee c
 In the intro, I mentioned that every test runs in isolation in xUnit. This is done by creating a new instance for each test. Therefore the constructor is called for each test and can be used to initialize objects, which are needed for the tests. Since I will need the object of the Employee class in all my tests, I can initialize it in the constructor and don&#8217;t have to write the same code over and over in every test.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Initialize-the-testee-in-the-constructor.jpg"><img aria-describedby="caption-attachment-1532" loading="lazy" class="size-full wp-image-1532" src="/assets/img/posts/2019/01/Initialize-the-testee-in-the-constructor.jpg" alt="Initialize the testee in the constructor" /></a>
+  <a href="/assets/img/posts/2019/01/Initialize-the-testee-in-the-constructor.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Initialize-the-testee-in-the-constructor.jpg" alt="Initialize the testee in the constructor" /></a>
   
   <p>
     Initialize the testee in the constructor
@@ -50,7 +50,7 @@ In the intro, I mentioned that every test runs in isolation in xUnit. This is do
 Sometimes you have to do some cleanup like a database rollback or deleting a file after the tests were executed. Like the constructor, this can be done in a central place for all tests. To do that implement the IDisposable interface and implement the Dispose method. This method is called every time a test is finished.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Implement-the-IDisposable-interface.jpg"><img aria-describedby="caption-attachment-1533" loading="lazy" class="size-full wp-image-1533" src="/assets/img/posts/2019/01/Implement-the-IDisposable-interface.jpg" alt="Implement the IDisposable interface" /></a>
+  <a href="/assets/img/posts/2019/01/Implement-the-IDisposable-interface.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Implement-the-IDisposable-interface.jpg" alt="Implement the IDisposable interface" /></a>
   
   <p>
     Implement the IDisposable interface
@@ -62,7 +62,7 @@ Sometimes you have to do some cleanup like a database rollback or deleting a fil
 Often you want to execute a test with different parameters, for example, if a valid age for your employee has to be between at least 18 and maximum 65 years, you want to test the edge cases (17, 18, 65, 66). Additionally, you might test negative numbers. You could write several asserts but this would be a lot of typing and not really practical. The solution for this is the Theory attribute in xUnit. A Theory allows you to pass values from different sources as parameters to your test method. With the InlineData attribute, you can add values for the parameter.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Executing-the-same-method-with-several-input-variables.jpg"><img aria-describedby="caption-attachment-1534" loading="lazy" class="size-full wp-image-1534" src="/assets/img/posts/2019/01/Executing-the-same-method-with-several-input-variables.jpg" alt="Executing the same method with several input variables" /></a>
+  <a href="/assets/img/posts/2019/01/Executing-the-same-method-with-several-input-variables.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Executing-the-same-method-with-several-input-variables.jpg" alt="Executing the same method with several input variables" /></a>
   
   <p>
     Executing the same method with several input variables
@@ -76,7 +76,7 @@ If you run this test method, five test cases will be executed.
 Sometimes you don&#8217;t want a test to be executed. To ignore tests, add the Skip attribute and provide an info message.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Skipping-a-test.jpg"><img aria-describedby="caption-attachment-1535" loading="lazy" class="size-full wp-image-1535" src="/assets/img/posts/2019/01/Skipping-a-test.jpg" alt="Skipping a test" /></a>
+  <a href="/assets/img/posts/2019/01/Skipping-a-test.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Skipping-a-test.jpg" alt="Skipping a test" /></a>
   
   <p>
     Skipping a test
@@ -88,7 +88,7 @@ Sometimes you don&#8217;t want a test to be executed. To ignore tests, add the S
 I barely use this feature but sometimes you want to group certain tests together. This can be for example all tests from one class and only some tests from another class. To do that use the Trait attribute and provide a name and category. You can apply this attribute to a class or to a single test.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Applying-the-Trait-attribute-to-a-test-method.jpg"><img aria-describedby="caption-attachment-1536" loading="lazy" class="size-full wp-image-1536" src="/assets/img/posts/2019/01/Applying-the-Trait-attribute-to-a-test-method.jpg" alt="Applying the Trait attribute to a test method" /></a>
+  <a href="/assets/img/posts/2019/01/Applying-the-Trait-attribute-to-a-test-method.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Applying-the-Trait-attribute-to-a-test-method.jpg" alt="Applying the Trait attribute to a test method" /></a>
   
   <p>
     Applying the Trait attribute to a test method
@@ -96,7 +96,7 @@ I barely use this feature but sometimes you want to group certain tests together
 </div>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Applying-the-Trait-attribute-to-a-test-class.jpg"><img aria-describedby="caption-attachment-1537" loading="lazy" class="size-full wp-image-1537" src="/assets/img/posts/2019/01/Applying-the-Trait-attribute-to-a-test-class.jpg" alt="Applying the Trait attribute to a test class" /></a>
+  <a href="/assets/img/posts/2019/01/Applying-the-Trait-attribute-to-a-test-class.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Applying-the-Trait-attribute-to-a-test-class.jpg" alt="Applying the Trait attribute to a test class" /></a>
   
   <p>
     Applying the Trait attribute to a test class
@@ -106,7 +106,7 @@ I barely use this feature but sometimes you want to group certain tests together
 If you run the tests and group the output by category, all traits with the same category will be grouped together.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Grouped-test-output.jpg"><img aria-describedby="caption-attachment-1538" loading="lazy" class="size-full wp-image-1538" src="/assets/img/posts/2019/01/Grouped-test-output.jpg" alt="Grouped test output" /></a>
+  <a href="/assets/img/posts/2019/01/Grouped-test-output.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Grouped-test-output.jpg" alt="Grouped test output" /></a>
   
   <p>
     Grouped test output
@@ -118,7 +118,7 @@ If you run the tests and group the output by category, all traits with the same 
 By default, no output is generated when a test finished. For reporting reasons, it can be useful to add some information on what the test did to the output of the test. This can be done with the ITestOutputHelper. Pass it as parameter in the constructor of your test class and initialize a private field with it.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Using-the-ITestOutputHelper.jpg"><img aria-describedby="caption-attachment-1539" loading="lazy" class="size-full wp-image-1539" src="/assets/img/posts/2019/01/Using-the-ITestOutputHelper.jpg" alt="Using the ITestOutputHelper" /></a>
+  <a href="/assets/img/posts/2019/01/Using-the-ITestOutputHelper.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Using-the-ITestOutputHelper.jpg" alt="Using the ITestOutputHelper" /></a>
   
   <p>
     Using the ITestOutputHelper
@@ -128,7 +128,7 @@ By default, no output is generated when a test finished. For reporting reasons, 
 Next, use the WriteLine method of the ITestOutputHelper object to create the desired output.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Creating-a-custom-message-for-the-test-result.jpg"><img aria-describedby="caption-attachment-1540" loading="lazy" class="size-full wp-image-1540" src="/assets/img/posts/2019/01/Creating-a-custom-message-for-the-test-result.jpg" alt="Creating a custom message for the test result" /></a>
+  <a href="/assets/img/posts/2019/01/Creating-a-custom-message-for-the-test-result.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Creating-a-custom-message-for-the-test-result.jpg" alt="Creating a custom message for the test result" /></a>
   
   <p>
     Creating a custom message for the test result
@@ -138,7 +138,7 @@ Next, use the WriteLine method of the ITestOutputHelper object to create the des
 When you run the test, you will see the message in the test result window.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Output-message-of-the-test.jpg"><img aria-describedby="caption-attachment-1541" loading="lazy" class="size-full wp-image-1541" src="/assets/img/posts/2019/01/Output-message-of-the-test.jpg" alt="Output message of the test" /></a>
+  <a href="/assets/img/posts/2019/01/Output-message-of-the-test.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Output-message-of-the-test.jpg" alt="Output message of the test" /></a>
   
   <p>
     Output message of the test
@@ -150,7 +150,7 @@ When you run the test, you will see the message in the test result window.
 Previously, I mentioned that for every test a new object is instantiated and therefore isolated from the other tests.  Sometimes you need to share a resource with several tests. This can be done with Fixtures. First, you have to create a so-called fixture class with the information you want to share. In my simple example, I set DateTime.Now to demonstrate that every test uses the same instance of the object.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Fixture-class-to-share-the-time-property.jpg"><img aria-describedby="caption-attachment-1542" loading="lazy" class="size-full wp-image-1542" src="/assets/img/posts/2019/01/Fixture-class-to-share-the-time-property.jpg" alt="Fixture class to share the time property" /></a>
+  <a href="/assets/img/posts/2019/01/Fixture-class-to-share-the-time-property.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Fixture-class-to-share-the-time-property.jpg" alt="Fixture class to share the time property" /></a>
   
   <p>
     Fixture class to share the time property
@@ -170,7 +170,7 @@ Next, I am creating a collection class with the CollectionDefiniton attribute an
 Finally, I add the Collection attribute with the previously set name to my test class and pass the fixture class in the constructor.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Passing-the-collection-to-the-test-class.jpg"><img aria-describedby="caption-attachment-1544" loading="lazy" class="size-full wp-image-1544" src="/assets/img/posts/2019/01/Passing-the-collection-to-the-test-class.jpg" alt="Passing the collection to the test class" /></a>
+  <a href="/assets/img/posts/2019/01/Passing-the-collection-to-the-test-class.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Passing-the-collection-to-the-test-class.jpg" alt="Passing the collection to the test class" /></a>
   
   <p>
     Passing the collection to the test class
@@ -180,7 +180,7 @@ Finally, I add the Collection attribute with the previously set name to my test 
 To demonstrate that the _timeFixture object stays the same, I run a couple of tests with Thread.Sleep(1500) and both tests will output the same time.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Tests-using-the-fixture-object.jpg"><img aria-describedby="caption-attachment-1546" loading="lazy" class="size-full wp-image-1546" src="/assets/img/posts/2019/01/Tests-using-the-fixture-object.jpg" alt="Tests using the fixture object" /></a>
+  <a href="/assets/img/posts/2019/01/Tests-using-the-fixture-object.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Tests-using-the-fixture-object.jpg" alt="Tests using the fixture object" /></a>
   
   <p>
     Tests using the fixture object
@@ -190,7 +190,7 @@ To demonstrate that the _timeFixture object stays the same, I run a couple of te
 Both tests will print the same output.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/The-same-output-of-the-fixture-object.jpg"><img aria-describedby="caption-attachment-1545" loading="lazy" class="size-full wp-image-1545" src="/assets/img/posts/2019/01/The-same-output-of-the-fixture-object.jpg" alt="The same output of the fixture object" /></a>
+  <a href="/assets/img/posts/2019/01/The-same-output-of-the-fixture-object.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/The-same-output-of-the-fixture-object.jpg" alt="The same output of the fixture object" /></a>
   
   <p>
     The same output of the fixture object
@@ -204,7 +204,7 @@ Previously, I showed how to use the Theory attribute to pass several parameters 
 Create a new class with a static property and only a getter which yield returns all your test data as object arrays.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Class-with-test-data.jpg"><img aria-describedby="caption-attachment-1547" loading="lazy" class="size-full wp-image-1547" src="/assets/img/posts/2019/01/Class-with-test-data.jpg" alt="Class with test data" /></a>
+  <a href="/assets/img/posts/2019/01/Class-with-test-data.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Class-with-test-data.jpg" alt="Class with test data" /></a>
   
   <p>
     Class with test data
@@ -214,7 +214,7 @@ Create a new class with a static property and only a getter which yield returns 
 For your test, use the MemberData instead of the InlineData attribute and provide the name of the property and the type of the class containing your test data.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Using-test-data-from-a-class.jpg"><img aria-describedby="caption-attachment-1548" loading="lazy" class="size-full wp-image-1548" src="/assets/img/posts/2019/01/Using-test-data-from-a-class.jpg" alt="Using test data from a class" /></a>
+  <a href="/assets/img/posts/2019/01/Using-test-data-from-a-class.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Using-test-data-from-a-class.jpg" alt="Using test data from a class" /></a>
   
   <p>
     Using test data from a class
@@ -226,7 +226,7 @@ For your test, use the MemberData instead of the InlineData attribute and provid
 A custom attribute works the same way as the MemberData attribute but it is even less to write in your test. Create a new class and inherit from the DataAttribute class. Then override the GetData method.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Override-the-GetData-method-from-the-DataAttribute-class.jpg"><img aria-describedby="caption-attachment-1549" loading="lazy" class="size-full wp-image-1549" src="/assets/img/posts/2019/01/Override-the-GetData-method-from-the-DataAttribute-class.jpg" alt="Override the GetData method from the DataAttribute class" /></a>
+  <a href="/assets/img/posts/2019/01/Override-the-GetData-method-from-the-DataAttribute-class.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Override-the-GetData-method-from-the-DataAttribute-class.jpg" alt="Override the GetData method from the DataAttribute class" /></a>
   
   <p>
     Override the GetData method from the DataAttribute class
@@ -236,7 +236,7 @@ A custom attribute works the same way as the MemberData attribute but it is even
 After you created the class, add the name of the class (without Attribute) as the attribute to your Theory. xUnit will recognize your attribute and call the GetData method.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Use-the-custom-attribute.jpg"><img aria-describedby="caption-attachment-1550" loading="lazy" class="size-full wp-image-1550" src="/assets/img/posts/2019/01/Use-the-custom-attribute.jpg" alt="Use the custom attribute" /></a>
+  <a href="/assets/img/posts/2019/01/Use-the-custom-attribute.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Use-the-custom-attribute.jpg" alt="Use the custom attribute" /></a>
   
   <p>
     Use the custom attribute
@@ -248,7 +248,7 @@ After you created the class, add the name of the class (without Attribute) as th
 The last method to provide data for your tests is from an external source. To read the data from a csv file, I placed the csv file in the root folder of my project and created a class with a static property. In the getter of the property, I read the file, split the values and return them as object arrays. Don&#8217;t forget to set the Copy to Output Directory property of the csv file to Copy always or Copy if newer. Otherwise, the file won&#8217;t be copied when you compile your code and therefore won&#8217;t be found at runtime.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Read-data-from-a-csv-file.jpg"><img aria-describedby="caption-attachment-1551" loading="lazy" class="size-full wp-image-1551" src="/assets/img/posts/2019/01/Read-data-from-a-csv-file.jpg" alt="Read data from a csv file" /></a>
+  <a href="/assets/img/posts/2019/01/Read-data-from-a-csv-file.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Read-data-from-a-csv-file.jpg" alt="Read data from a csv file" /></a>
   
   <p>
     Read data from a csv file

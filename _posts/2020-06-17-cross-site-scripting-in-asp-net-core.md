@@ -89,7 +89,7 @@ and click submit, an alert windows will be displayed.
 When you click on OK, the text will be rendered into the safe output line and nothing will be displayed in the unsafe output line because the browser interprets the Javascript.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-in-the-safe-output-line.jpg"><img aria-describedby="caption-attachment-2191" loading="lazy" class="size-full wp-image-2191" src="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-in-the-safe-output-line.jpg" alt="The Javascript is displayed as text in the safe output line, no Cross Site Scripting possible" /></a>
+  <a href="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-in-the-safe-output-line.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/The-Javascript-is-displayed-as-text-in-the-safe-output-line.jpg" alt="The Javascript is displayed as text in the safe output line, no Cross Site Scripting possible" /></a>
   
   <p>
     The Javascript is displayed as text in the safe output line

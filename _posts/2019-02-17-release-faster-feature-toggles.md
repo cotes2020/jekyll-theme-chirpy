@@ -38,7 +38,7 @@ The last configuration is the centralized configuration. Here you have your conf
 In this simple example, I will write the configuration in the appsettings.json file of my .Net core web application and configure the Startup class to read the value. Afterward, I will change the title of my page, depending on the value of the toggle. I am calling my toggle in the appsettings.json FeatureToggle and set the IsEnabled property to true.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/02/Enable-the-toggle-in-the-appsettings.jpg"><img aria-describedby="caption-attachment-1603" loading="lazy" class="size-full wp-image-1603" src="/assets/img/posts/2019/02/Enable-the-toggle-in-the-appsettings.jpg" alt="Enable the toggle in the appsettings" /></a>
+  <a href="/assets/img/posts/2019/02/Enable-the-toggle-in-the-appsettings.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Enable-the-toggle-in-the-appsettings.jpg" alt="Enable the toggle in the appsettings" /></a>
   
   <p>
     Enable the toggle in the appsettings.json file
@@ -58,7 +58,7 @@ Next, I enable Options in the Startup class to read the settings individually an
 I put the MyFeatureToggle class in a new folder called Toggles and its only property is a bool indicating whether it is enabled.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/02/The-feature-toggle-class.jpg"><img aria-describedby="caption-attachment-1605" loading="lazy" class="size-full wp-image-1605" src="/assets/img/posts/2019/02/The-feature-toggle-class.jpg" alt="The feature toggle class" /></a>
+  <a href="/assets/img/posts/2019/02/The-feature-toggle-class.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/The-feature-toggle-class.jpg" alt="The feature toggle class" /></a>
   
   <p>
     The feature toggle class
@@ -78,7 +78,7 @@ As a simple test if my set up is working, I read the value and if my toggle is e
 Start the application and click the Privacy menu item. Now you will see that the toggle is enabled.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/02/Test-the-enabled-feature-toggle.jpg"><img aria-describedby="caption-attachment-1607" loading="lazy" class="size-full wp-image-1607" src="/assets/img/posts/2019/02/Test-the-enabled-feature-toggle.jpg" alt="Test the enabled feature toggle" width="657" height="220"  /></a>
+  <a href="/assets/img/posts/2019/02/Test-the-enabled-feature-toggle.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Test-the-enabled-feature-toggle.jpg" alt="Test the enabled feature toggle" width="657" height="220"  /></a>
   
   <p>
     Test the enabled feature toggle

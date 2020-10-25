@@ -22,7 +22,7 @@ To create a new App Service plan, follow these steps:
   3. Click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-new-App-Service-plan.jpg"><img aria-describedby="caption-attachment-1267" loading="lazy" class="size-full wp-image-1267" src="/assets/img/posts/2018/05/Create-a-new-App-Service-plan.jpg" alt="Create a new App Service plan" /></a>
+  <a href="/assets/img/posts/2018/05/Create-a-new-App-Service-plan.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Create-a-new-App-Service-plan.jpg" alt="Create a new App Service plan" /></a>
   
   <p>
     Create a new App Service plan
@@ -38,7 +38,7 @@ To create a new Web App, follow these steps:
   3. Click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-new-Web-App.jpg"><img aria-describedby="caption-attachment-1268" loading="lazy" class="size-full wp-image-1268" src="/assets/img/posts/2018/05/Create-a-new-Web-App.jpg" alt="Create a new Web App" /></a>
+  <a href="/assets/img/posts/2018/05/Create-a-new-Web-App.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Create-a-new-Web-App.jpg" alt="Create a new Web App" /></a>
   
   <p>
     Create a new Web App
@@ -106,7 +106,7 @@ To manage your Web App settings, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/ARR-Affinity-settings.jpg"><img aria-describedby="caption-attachment-1271" loading="lazy" class="size-full wp-image-1271" src="/assets/img/posts/2018/05/ARR-Affinity-settings.jpg" alt="ARR Affinity settings" /></a>
+  <a href="/assets/img/posts/2018/05/ARR-Affinity-settings.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/ARR-Affinity-settings.jpg" alt="ARR Affinity settings" /></a>
   
   <p>
     ARR Affinity settings
@@ -123,7 +123,7 @@ To manage your Web App settings, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Remote-debugging.jpg"><img aria-describedby="caption-attachment-1272" loading="lazy" class="size-full wp-image-1272" src="/assets/img/posts/2018/05/Remote-debugging.jpg" alt="Remote debugging" /></a>
+  <a href="/assets/img/posts/2018/05/Remote-debugging.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Remote-debugging.jpg" alt="Remote debugging" /></a>
   
   <p>
     Remote debugging

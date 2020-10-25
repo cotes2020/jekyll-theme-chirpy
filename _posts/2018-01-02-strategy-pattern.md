@@ -32,7 +32,7 @@ There are many examples of implementing the Strategy pattern on the internet. Po
 My products have some basics properties like price or name and also the production country. The ProductionCostCalculatorService class implements a calculate Methode in which it has a switch Statement. Depending on the production Country, the production costs are calculated differently.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-a-switch-statement.jpg"><img aria-describedby="caption-attachment-458" loading="lazy" class="size-full wp-image-458" src="/assets/img/posts/2018/01/Calculating-production-costs-using-a-switch-statement.jpg" alt="Calculating production costs using a switch statement" /></a>
+  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-a-switch-statement.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Calculating-production-costs-using-a-switch-statement.jpg" alt="Calculating production costs using a switch statement" /></a>
   
   <p>
     Calculating production costs using a switch statement
@@ -52,7 +52,7 @@ To implement the strategy pattern, I have to implement a new class for every str
 After these changes, I can modify the ProductionCostCalculatorService class. First, I inject the IProdctionCostCalculatorService in the constructor. Then, I change the CalculateProductionCost method to return the return value of the Calculate method from the Interface.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/ProductionCostCalculatorService.jpg"><img aria-describedby="caption-attachment-459" loading="lazy" class="size-full wp-image-459" src="/assets/img/posts/2018/01/ProductionCostCalculatorService.jpg" alt="ProductionCostCalculatorService" /></a>
+  <a href="/assets/img/posts/2018/01/ProductionCostCalculatorService.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/ProductionCostCalculatorService.jpg" alt="ProductionCostCalculatorService" /></a>
   
   <p>
     ProductionCostCalculatorService with the Strategy pattern
@@ -62,7 +62,7 @@ After these changes, I can modify the ProductionCostCalculatorService class. Fi
 The last step is to modify the call of the calculation. For every strategy, I need an object, which I inject into the constructor of the ProductionCostCalculatorService.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-strategies-and-print-out.jpg"><img aria-describedby="caption-attachment-461" loading="lazy" class="size-full wp-image-461" src="/assets/img/posts/2018/01/Calculating-production-costs-using-strategies-and-print-out.jpg" alt="Calculating production costs using strategies and print out" /></a>
+  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-strategies-and-print-out.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Calculating-production-costs-using-strategies-and-print-out.jpg" alt="Calculating production costs using strategies and print out" /></a>
   
   <p>
     Calculating production costs using strategies and print out
@@ -72,7 +72,7 @@ The last step is to modify the call of the calculation. For every strategy, I ne
 I have to admit that These calls look a bit messy and I am not a big fan of them. Therefore it is possible to change the ProductionCostCalculatorService, so it takes the strategy as parameter in the Calculate method instead of the constructor.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Method-call-with-strategy.jpg"><img aria-describedby="caption-attachment-462" loading="lazy" class="size-full wp-image-462" src="/assets/img/posts/2018/01/Method-call-with-strategy.jpg" alt="Method call with strategy" /></a>
+  <a href="/assets/img/posts/2018/01/Method-call-with-strategy.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Method-call-with-strategy.jpg" alt="Method call with strategy" /></a>
   
   <p>
     Method call with strategy as parameter
@@ -82,7 +82,7 @@ I have to admit that These calls look a bit messy and I am not a big fan of them
 This change also tidies up the ProductionCostCalculatorService, which makes it even easier to read. With this changes implemented, I can now change the call of the calculation. It is not necessary anymore to create a new ProductionCostCalculatorService object for every different production country. Instead, I pass the country as parameter in the CalculateProductionCost method.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-the-strategy-as-paramater.jpg"><img aria-describedby="caption-attachment-463" loading="lazy" class="size-full wp-image-463" src="/assets/img/posts/2018/01/Calculating-production-costs-using-the-strategy-as-paramater.jpg" alt="Calculating production costs using the strategy as paramater" /></a>
+  <a href="/assets/img/posts/2018/01/Calculating-production-costs-using-the-strategy-as-paramater.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Calculating-production-costs-using-the-strategy-as-paramater.jpg" alt="Calculating production costs using the strategy as paramater" /></a>
   
   <p>
     Calculating production costs using the strategy as parameter

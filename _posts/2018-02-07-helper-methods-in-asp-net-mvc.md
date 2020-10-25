@@ -24,7 +24,7 @@ I created a new ASP.NET MVC project with the empty template and add folders and
 In the next step, I create a model classes, Customer and a Role enum.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Implementation-of-the-Customer-class.jpg"><img aria-describedby="caption-attachment-793" loading="lazy" class="size-full wp-image-793" src="/assets/img/posts/2018/02/Implementation-of-the-Customer-class.jpg" alt="Implementation of the Customer class" /></a>
+  <a href="/assets/img/posts/2018/02/Implementation-of-the-Customer-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Implementation-of-the-Customer-class.jpg" alt="Implementation of the Customer class" /></a>
   
   <p>
     Implementation of the Customer class
@@ -32,7 +32,7 @@ In the next step, I create a model classes, Customer and a Role enum.
 </div>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Implementation-of-the-Role-enum.jpg"><img aria-describedby="caption-attachment-776" loading="lazy" class="size-full wp-image-776" src="/assets/img/posts/2018/02/Implementation-of-the-Role-enum.jpg" alt="Implementation of the Role enum" /></a>
+  <a href="/assets/img/posts/2018/02/Implementation-of-the-Role-enum.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Implementation-of-the-Role-enum.jpg" alt="Implementation of the Role enum" /></a>
   
   <p>
     Implementation of the Role enum
@@ -42,7 +42,7 @@ In the next step, I create a model classes, Customer and a Role enum.
 In the Home controller, I create two actions, both with the name CreateCustomer. One sends a new Customer object to the view and the other action takes an HTTP post request with the customer. This is the standard approach to deal with HTML forms.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Actions-in-the-Home-controller.jpg"><img aria-describedby="caption-attachment-777" loading="lazy" class="size-full wp-image-777" src="/assets/img/posts/2018/02/Actions-in-the-Home-controller.jpg" alt="Actions in the Home controller" /></a>
+  <a href="/assets/img/posts/2018/02/Actions-in-the-Home-controller.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Actions-in-the-Home-controller.jpg" alt="Actions in the Home controller" /></a>
   
   <p>
     Actions in the Home controller
@@ -68,7 +68,7 @@ This is a very simple view. I added Bootstrap and some simple CSS. Usually, I wo
 The most used helper method is Html.BeginForm. This helper creates the form tag and has 13 different versions. You can use either @{Html.BeginForm();} to create an open form tag and @{Html.EndForm();} to create a closing form tag or you can use the simpler version @using(Html.BeginForm()){ and add the closing bracket } at the end of the form. I think I never saw anything else than the approach with the using since it&#8217;s so much simpler.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Creating-a-form-using-Html.BeginForm.jpg"><img aria-describedby="caption-attachment-781" loading="lazy" class="size-full wp-image-781" src="/assets/img/posts/2018/02/Creating-a-form-using-Html.BeginForm.jpg" alt="Creating a form using Html.BeginForm()" /></a>
+  <a href="/assets/img/posts/2018/02/Creating-a-form-using-Html.BeginForm.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Creating-a-form-using-Html.BeginForm.jpg" alt="Creating a form using Html.BeginForm()" /></a>
   
   <p>
     Creating a form using Html.BeginForm()
@@ -159,7 +159,7 @@ Here are the different overloaded versions of the BefginForm helper method:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/New-route-for-BeginRouteForm-helper-method.jpg"><img aria-describedby="caption-attachment-782" loading="lazy" class="size-full wp-image-782" src="/assets/img/posts/2018/02/New-route-for-BeginRouteForm-helper-method.jpg" alt="New route for BeginRouteForm helper method" /></a>
+    <a href="/assets/img/posts/2018/02/New-route-for-BeginRouteForm-helper-method.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/New-route-for-BeginRouteForm-helper-method.jpg" alt="New route for BeginRouteForm helper method" /></a>
     
     <p>
       New route for BeginRouteForm helper method
@@ -171,7 +171,7 @@ Here are the different overloaded versions of the BefginForm helper method:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Using-BeginRouteForm.jpg"><img aria-describedby="caption-attachment-783" loading="lazy" class="size-full wp-image-783" src="/assets/img/posts/2018/02/Using-BeginRouteForm.jpg" alt="Using BeginRouteForm with the route name as parameter" /></a>
+    <a href="/assets/img/posts/2018/02/Using-BeginRouteForm.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Using-BeginRouteForm.jpg" alt="Using BeginRouteForm with the route name as parameter" /></a>
     
     <p>
       Using BeginRouteForm with the route name as parameter
@@ -273,7 +273,7 @@ Here are the different overloaded versions of the BefginForm helper method:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Replacing-the-HTML-input-fields-with-MVC-HTML-input-helper-methods.jpg"><img aria-describedby="caption-attachment-784" loading="lazy" class="size-full wp-image-784" src="/assets/img/posts/2018/02/Replacing-the-HTML-input-fields-with-MVC-HTML-input-helper-methods.jpg" alt="Replacing the HTML input fields with MVC HTML input helper methods" /></a>
+    <a href="/assets/img/posts/2018/02/Replacing-the-HTML-input-fields-with-MVC-HTML-input-helper-methods.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Replacing-the-HTML-input-fields-with-MVC-HTML-input-helper-methods.jpg" alt="Replacing the HTML input fields with MVC HTML input helper methods" /></a>
     
     <p>
       Replacing the HTML input fields with MVC HTML input helper methods
@@ -293,7 +293,7 @@ Here are the different overloaded versions of the BefginForm helper method:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Generating-input-elements-from-a-property.jpg"><img aria-describedby="caption-attachment-786" loading="lazy" class="size-full wp-image-786" src="/assets/img/posts/2018/02/Generating-input-elements-from-a-property.jpg" alt="Generating input elements from a property" /></a>
+    <a href="/assets/img/posts/2018/02/Generating-input-elements-from-a-property.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Generating-input-elements-from-a-property.jpg" alt="Generating input elements from a property" /></a>
     
     <p>
       Generating input elements from a property
@@ -313,7 +313,7 @@ Here are the different overloaded versions of the BefginForm helper method:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Creating-input-element-using-strongly-typed-input-helper-methods.jpg"><img aria-describedby="caption-attachment-787" loading="lazy" class="size-full wp-image-787" src="/assets/img/posts/2018/02/Creating-input-element-using-strongly-typed-input-helper-methods.jpg" alt="Creating input element using strongly typed input helper methods" /></a>
+    <a href="/assets/img/posts/2018/02/Creating-input-element-using-strongly-typed-input-helper-methods.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Creating-input-element-using-strongly-typed-input-helper-methods.jpg" alt="Creating input element using strongly typed input helper methods" /></a>
     
     <p>
       Creating input element using strongly typed input helper methods
@@ -333,7 +333,7 @@ Here are the different overloaded versions of the BefginForm helper method:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/HTML-helper-methods-for-select-elements.jpg"><img aria-describedby="caption-attachment-791" loading="lazy" class="size-full wp-image-791" src="/assets/img/posts/2018/02/HTML-helper-methods-for-select-elements.jpg" alt="HTML helper methods for select elements" /></a>
+    <a href="/assets/img/posts/2018/02/HTML-helper-methods-for-select-elements.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/HTML-helper-methods-for-select-elements.jpg" alt="HTML helper methods for select elements" /></a>
     
     <p>
       HTML helper methods for select elements
@@ -345,7 +345,7 @@ Here are the different overloaded versions of the BefginForm helper method:
   </p>
   
   <div class="col-12 col-sm-10 aligncenter">
-    <a href="/assets/img/posts/2018/02/Creating-a-drop-down-list-with-HTML-helper-methods.jpg"><img aria-describedby="caption-attachment-788" loading="lazy" class="size-full wp-image-788" src="/assets/img/posts/2018/02/Creating-a-drop-down-list-with-HTML-helper-methods.jpg" alt="Creating a drop-down list with HTML helper methods" /></a>
+    <a href="/assets/img/posts/2018/02/Creating-a-drop-down-list-with-HTML-helper-methods.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Creating-a-drop-down-list-with-HTML-helper-methods.jpg" alt="Creating a drop-down list with HTML helper methods" /></a>
     
     <p>
       Creating a drop-down list with HTML helper methods

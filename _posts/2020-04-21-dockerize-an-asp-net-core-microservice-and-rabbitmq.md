@@ -42,7 +42,7 @@ This opens a new window where you can select Linux or Windows as OS for the cont
 The .dockerignore file is like the .gitignore file and contains extensions and paths which should not be copied into the container. Default extensions in the .dockerignore file are .vs, /bin or /obj. The .dockerignore file is not required to dockerize your application but highly recommended.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Content-of-the-.dockerignore-file.jpg"><img aria-describedby="caption-attachment-1922" loading="lazy" class="size-full wp-image-1922" src="/assets/img/posts/2020/04/Content-of-the-.dockerignore-file.jpg" alt="Content of the .dockerignore file" /></a>
+  <a href="/assets/img/posts/2020/04/Content-of-the-.dockerignore-file.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Content-of-the-.dockerignore-file.jpg" alt="Content of the .dockerignore file" /></a>
   
   <p>
     Content of the .dockerignore file
@@ -143,7 +143,7 @@ to build the Dockerfile which is in your current file with the tag name customer
 To confirm that your image was really created, use docker images.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Confirm-that-the-image-was-created.jpg"><img aria-describedby="caption-attachment-1931" loading="lazy" class="size-full wp-image-1931" src="/assets/img/posts/2020/04/Confirm-that-the-image-was-created.jpg" alt="Confirm that the image was created" /></a>
+  <a href="/assets/img/posts/2020/04/Confirm-that-the-image-was-created.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Confirm-that-the-image-was-created.jpg" alt="Confirm that the image was created" /></a>
   
   <p>
     Confirm that the image was created

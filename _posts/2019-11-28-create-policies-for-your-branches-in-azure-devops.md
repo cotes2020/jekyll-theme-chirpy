@@ -54,7 +54,7 @@ This feature indicates if a work item was linked with the pull request. I think 
 I set this feature to required because when a comment is made, it must be resolved before a pull request can be completed. In my teams, the author of the comment resolves it except when the author specifies that the comment can be closed by the creator of the pull request.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/11/Check-for-comment-resolution.jpg"><img aria-describedby="caption-attachment-1812" loading="lazy" class="size-full wp-image-1812" src="/assets/img/posts/2019/11/Check-for-comment-resolution.jpg" alt="Check for comment resolution" /></a>
+  <a href="/assets/img/posts/2019/11/Check-for-comment-resolution.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Check-for-comment-resolution.jpg" alt="Check for comment resolution" /></a>
   
   <p>
     Check for comment resolution

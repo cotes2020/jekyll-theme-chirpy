@@ -48,7 +48,7 @@ After entering a name and location, select Blazor Server App, and click on Creat
 This creates the solution and also a demo application. Start the application and you will see a welcome screen and a menu on the left side. Click on Fetch data to see some information about the weather forecast or on Counter to see a button which increases the amount when you click it.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/The-counter-function-of-the-demo-app.jpg"><img aria-describedby="caption-attachment-2211" loading="lazy" class="size-full wp-image-2211" src="/assets/img/posts/2020/06/The-counter-function-of-the-demo-app.jpg" alt="The counter function of the demo app" /></a>
+  <a href="/assets/img/posts/2020/06/The-counter-function-of-the-demo-app.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/The-counter-function-of-the-demo-app.jpg" alt="The counter function of the demo app" /></a>
   
   <p>
     The counter function of the demo app
@@ -185,7 +185,7 @@ As the last step, I add an onchange event to the dropdown menu and the code of t
 Run the application, navigate to /products and you will see the dropdown menu. Select a product and it will be displayed below the dropdown.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/Testing-my-first-Blazor-Component.jpg"><img aria-describedby="caption-attachment-2212" loading="lazy" class="size-full wp-image-2212" src="/assets/img/posts/2020/06/Testing-my-first-Blazor-Component.jpg" alt="Testing my first Blazor Component" /></a>
+  <a href="/assets/img/posts/2020/06/Testing-my-first-Blazor-Component.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Testing-my-first-Blazor-Component.jpg" alt="Testing my first Blazor Component" /></a>
   
   <p>
     Testing my first Blazor Component

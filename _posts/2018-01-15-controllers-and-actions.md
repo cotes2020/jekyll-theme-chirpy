@@ -26,7 +26,7 @@ Throughout this post, I will only use the default route. This post describes the
 Following I will show several options, how to pass data to the action. First I start with the simplest way to call an action though. The easiest way to call an action is by entering an URL which is mapped to a route and redirected to the fitting action.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Simple-Action.jpg"><img aria-describedby="caption-attachment-602" loading="lazy" class="size-full wp-image-602" src="/assets/img/posts/2018/01/Simple-Action.jpg" alt="Simple Action" /></a>
+  <a href="/assets/img/posts/2018/01/Simple-Action.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Simple-Action.jpg" alt="Simple Action" /></a>
   
   <p>
     Simple Action
@@ -40,7 +40,7 @@ The Index action does nothing except returning a view to the user&#8217;s browse
 A simple way to pass data to an action is by using a parameter for the action. The parameter will be added at the end of the URL.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Action-with-int-parameter.jpg"><img aria-describedby="caption-attachment-603" loading="lazy" class="size-full wp-image-603" src="/assets/img/posts/2018/01/Action-with-int-parameter.jpg" alt="Action with int parameter" /></a>
+  <a href="/assets/img/posts/2018/01/Action-with-int-parameter.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Action-with-int-parameter.jpg" alt="Action with int parameter" /></a>
   
   <p>
     Action with int parameter
@@ -58,7 +58,7 @@ It is also interesting to note that parameter can&#8217;t have out or ref parame
 There are two options on how to pass multiple parameters to an action. The first option is to use the catchall variable in the route. To do that, you have to configure the route first, as shown in the following screenshot.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Catchall-route.jpg"><img aria-describedby="caption-attachment-604" loading="lazy" class="size-full wp-image-604" src="/assets/img/posts/2018/01/Catchall-route.jpg" alt="Catchall route" width="573" height="105"  /></a>
+  <a href="/assets/img/posts/2018/01/Catchall-route.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Catchall-route.jpg" alt="Catchall route" width="573" height="105"  /></a>
   
   <p>
     Catchall route
@@ -68,7 +68,7 @@ There are two options on how to pass multiple parameters to an action. The first
 After setting up the route, you can use the catchall variable as the parameter and add as many variables as you want to it. The variables are all passed as one string and have to be parsed. The following screenshot shows one id and three variables in the catchall are passed to the method.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Catchall-action-1.jpg"><img aria-describedby="caption-attachment-605" loading="lazy" class="size-full wp-image-605" src="/assets/img/posts/2018/01/Catchall-action-1.jpg" alt="Catchall action" width="713" height="119"  /></a>
+  <a href="/assets/img/posts/2018/01/Catchall-action-1.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Catchall-action-1.jpg" alt="Catchall action" width="713" height="119"  /></a>
   
   <p>
     Catchall action
@@ -78,7 +78,7 @@ After setting up the route, you can use the catchall variable as the parameter 
 The second way is to use multiple parameters. This method is used to pass data from a form to the action.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Action-with-multiple-parameter.jpg"><img aria-describedby="caption-attachment-606" loading="lazy" class="size-full wp-image-606" src="/assets/img/posts/2018/01/Action-with-multiple-parameter.jpg" alt="Action with multiple parameter" width="546" height="116"  /></a>
+  <a href="/assets/img/posts/2018/01/Action-with-multiple-parameter.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Action-with-multiple-parameter.jpg" alt="Action with multiple parameter" width="546" height="116"  /></a>
   
   <p>
     Action with multiple parameter
@@ -98,7 +98,7 @@ Besides parameter, there are several other sources from where you can receive da
 I would suggest to type these classes into your action and look through the options provided by the intellisense. On the following screenshot, I show some of these options.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Action-with-different-sources-to-get-some-data.jpg"><img aria-describedby="caption-attachment-607" loading="lazy" class="size-full wp-image-607" src="/assets/img/posts/2018/01/Action-with-different-sources-to-get-some-data.jpg" alt="Action with different sources to get some data" /></a>
+  <a href="/assets/img/posts/2018/01/Action-with-different-sources-to-get-some-data.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Action-with-different-sources-to-get-some-data.jpg" alt="Action with different sources to get some data" /></a>
   
   <p>
     Action with different sources to get some data
@@ -120,7 +120,7 @@ Returning a view is the easiest way to present an HTML page to the user. Using 
 The simplest is without a parameter. When using this version, the MVC framework searches for a view with the same name as the action.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/View-without-parameter.jpg"><img aria-describedby="caption-attachment-609" loading="lazy" class="size-full wp-image-609" src="/assets/img/posts/2018/01/View-without-parameter.jpg" alt="View without parameter" /></a>
+  <a href="/assets/img/posts/2018/01/View-without-parameter.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/View-without-parameter.jpg" alt="View without parameter" /></a>
   
   <p>
     View without parameter
@@ -155,7 +155,7 @@ The MVC framework also searches for ASPX views, C# and Visual Basic .NET Razor t
 By default, the framework searches for a view with the same name as the action. If you want to return a view from the same controller but with a different name, you have to pass the name as the parameter in the view.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/View-with-view-name.jpg"><img aria-describedby="caption-attachment-608" loading="lazy" class="size-full wp-image-608" src="/assets/img/posts/2018/01/View-with-view-name.jpg" alt="View with view name" /></a>
+  <a href="/assets/img/posts/2018/01/View-with-view-name.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/View-with-view-name.jpg" alt="View with view name" /></a>
   
   <p>
     View with view name
@@ -167,7 +167,7 @@ By default, the framework searches for a view with the same name as the action. 
 Sometimes the view you want to return is in a different directory. Then you can pass the path to the view as the parameter. Note: Don&#8217;t forget the tilde at the beginning of the path. Otherwise, you won&#8217;t get the expected view.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/View-with-path.jpg"><img aria-describedby="caption-attachment-610" loading="lazy" class="size-full wp-image-610" src="/assets/img/posts/2018/01/View-with-path.jpg" alt="View with path" /></a>
+  <a href="/assets/img/posts/2018/01/View-with-path.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/View-with-path.jpg" alt="View with path" /></a>
   
   <p>
     View with path
@@ -181,7 +181,7 @@ It is very uncommon to use this feature and it is a hint that your design might 
 All versions of the view which I showed above also have the option to pass a view model. To pass the view model to the view, simply add it as a parameter. On the following screenshot, I pass the path to the view and the view model (which in this case is just a string).
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/View-with-path-and-view-model.jpg"><img aria-describedby="caption-attachment-611" loading="lazy" class="size-full wp-image-611" src="/assets/img/posts/2018/01/View-with-path-and-view-model.jpg" alt="View with path and view model" /></a>
+  <a href="/assets/img/posts/2018/01/View-with-path-and-view-model.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/View-with-path-and-view-model.jpg" alt="View with path and view model" /></a>
   
   <p>
     View with path and view model
@@ -191,7 +191,7 @@ All versions of the view which I showed above also have the option to pass a vie
 When you use only a view model which is a string, the ASP.NET MVC framework thinks that it is the name of the view you want to return. To tell the framework that it is a model, you have to prefix the model with the model: keyword.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/View-with-model-keyword.jpg"><img aria-describedby="caption-attachment-613" loading="lazy" class="size-full wp-image-613" src="/assets/img/posts/2018/01/View-with-model-keyword.jpg" alt="View with model keyword" /></a>
+  <a href="/assets/img/posts/2018/01/View-with-model-keyword.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/View-with-model-keyword.jpg" alt="View with model keyword" /></a>
   
   <p>
     View with model keyword
@@ -203,7 +203,7 @@ When you use only a view model which is a string, the ASP.NET MVC framework thin
 Previously I showed how to pass a model to the view. Now there are two different ways to use this view model in the view.  Either you cast the model to its data type and then use it inline, for example, @(((DateTime)Model).ToLocalTime()) or you can declare the model and its data type and then use it like a normal C# variable.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/View-with-view-model.jpg"><img aria-describedby="caption-attachment-612" loading="lazy" class="size-full wp-image-612" src="/assets/img/posts/2018/01/View-with-view-model.jpg" alt="View with view model" /></a>
+  <a href="/assets/img/posts/2018/01/View-with-view-model.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/View-with-view-model.jpg" alt="View with view model" /></a>
   
   <p>
     View with view model
@@ -217,7 +217,7 @@ Casting the object works but it makes the view pretty messy. Therefore I recomme
 Another way to pass data to a view is with the view bag. The difference between the view bag and the data model is that the view bag is a dynamic object. The view bag doesn&#8217;t have to be passed to the view but can be used in the view like the view model.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Adding-data-into-the-view-bag.jpg"><img aria-describedby="caption-attachment-615" loading="lazy" class="size-full wp-image-615" src="/assets/img/posts/2018/01/Adding-data-into-the-view-bag.jpg" alt="Adding data into the view bag" /></a>
+  <a href="/assets/img/posts/2018/01/Adding-data-into-the-view-bag.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Adding-data-into-the-view-bag.jpg" alt="Adding data into the view bag" /></a>
   
   <p>
     Adding data into the view bag
@@ -227,7 +227,7 @@ Another way to pass data to a view is with the view bag. The difference between 
 Due to its dynamic behavior, I don&#8217;t have to declare the view bag variable before using it. I can simply assign my data to it.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/View-with-view-bag.jpg"><img aria-describedby="caption-attachment-614" loading="lazy" class="size-full wp-image-614" src="/assets/img/posts/2018/01/View-with-view-bag.jpg" alt="View with view bag" /></a>
+  <a href="/assets/img/posts/2018/01/View-with-view-bag.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/View-with-view-bag.jpg" alt="View with view bag" /></a>
   
   <p>
     View with view bag
@@ -239,7 +239,7 @@ Due to its dynamic behavior, I don&#8217;t have to declare the view bag variable
 Temp data works like the view bag with one difference. After reading the data from temp data, the values get marked for deletion. The usage is similar to the usage of a session.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Assigning-values-to-temp-data.jpg"><img aria-describedby="caption-attachment-617" loading="lazy" class="size-full wp-image-617" src="/assets/img/posts/2018/01/Assigning-values-to-temp-data.jpg" alt="Assigning values to temp data" /></a>
+  <a href="/assets/img/posts/2018/01/Assigning-values-to-temp-data.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Assigning-values-to-temp-data.jpg" alt="Assigning values to temp data" /></a>
   
   <p>
     Assigning values to temp data
@@ -249,7 +249,7 @@ Temp data works like the view bag with one difference. After reading the data fr
 If the value is a primitive data type, it can be used like the session. If it is an object, you have to cast it.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Using-temp-data-in-a-view.jpg"><img aria-describedby="caption-attachment-618" loading="lazy" class="size-full wp-image-618" src="/assets/img/posts/2018/01/Using-temp-data-in-a-view.jpg" alt="Using temp data in a view" /></a>
+  <a href="/assets/img/posts/2018/01/Using-temp-data-in-a-view.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Using-temp-data-in-a-view.jpg" alt="Using temp data in a view" /></a>
   
   <p>
     Using temp data in a view
@@ -267,7 +267,7 @@ There are three different ways to store the values from temp data:
 Peek returns the value without marking it for deletion. Keep marks the value to keep it after it was accessed. When the value is accessed a second time, it gets marked for removal if you don&#8217;t use Keep again.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Ways-to-store-data-from-temp-data.jpg"><img aria-describedby="caption-attachment-619" loading="lazy" class="size-full wp-image-619" src="/assets/img/posts/2018/01/Ways-to-store-data-from-temp-data.jpg" alt="Ways to store data from temp data" /></a>
+  <a href="/assets/img/posts/2018/01/Ways-to-store-data-from-temp-data.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Ways-to-store-data-from-temp-data.jpg" alt="Ways to store data from temp data" /></a>
   
   <p>
     Ways to store data from temp data
@@ -284,7 +284,7 @@ ASP.NET MVC hat to built-in classes for returning an HTTP status code
 Additionally, you can return every HTTP status code you want with HttpStatusCodeResult. Pass the status code and a message as parameter. HttpNotFoundResult has a short form, HttpNotFound. The return value for a status code is HttpStatusCodeResult.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Working-with-HttpStatusCode.jpg"><img aria-describedby="caption-attachment-626" loading="lazy" class="size-full wp-image-626" src="/assets/img/posts/2018/01/Working-with-HttpStatusCode.jpg" alt="Working with HttpStatusCode" /></a>
+  <a href="/assets/img/posts/2018/01/Working-with-HttpStatusCode.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Working-with-HttpStatusCode.jpg" alt="Working with HttpStatusCode" /></a>
   
   <p>
     Working with HttpStatusCode
@@ -329,7 +329,7 @@ ASP.NET MVC offers for every redirect a temporary and permanent implementation. 
 If you want to redirect to a view, use the Redirect or RedirectPermanent method with the folder and index name as a string parameter. You don&#8217;t have to provide the file ending of the view. The return value of this is RedirectResult.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Redirect-to-view.jpg"><img aria-describedby="caption-attachment-621" loading="lazy" class="size-full wp-image-621" src="/assets/img/posts/2018/01/Redirect-to-view.jpg" alt="Redirect to view" /></a>
+  <a href="/assets/img/posts/2018/01/Redirect-to-view.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Redirect-to-view.jpg" alt="Redirect to view" /></a>
   
   <p>
     Redirect to view
@@ -341,7 +341,7 @@ If you want to redirect to a view, use the Redirect or RedirectPermanent method 
 To redirect from an action to a route use RedirectToRoute or RedirectToRoutePermanent. The methods take an anonymous type with the route information. The return value is RedirectToRouteResult.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Redirect-to-route.jpg"><img aria-describedby="caption-attachment-622" loading="lazy" class="size-full wp-image-622" src="/assets/img/posts/2018/01/Redirect-to-route.jpg" alt="Redirect to route" /></a>
+  <a href="/assets/img/posts/2018/01/Redirect-to-route.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Redirect-to-route.jpg" alt="Redirect to route" /></a>
   
   <p>
     Redirect to route

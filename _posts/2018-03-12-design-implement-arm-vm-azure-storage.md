@@ -238,7 +238,7 @@ Follow these steps:
   6. As Source type select None (empty disk) and provide your desired size.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-new-disk-for-your-VM.jpg"><img aria-describedby="caption-attachment-906" loading="lazy" class="size-full wp-image-906" src="/assets/img/posts/2018/03/Create-a-new-disk-for-your-VM.jpg" alt="Create a new disk for your VM" /></a>
+  <a href="/assets/img/posts/2018/03/Create-a-new-disk-for-your-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-a-new-disk-for-your-VM.jpg" alt="Create a new disk for your VM" /></a>
   
   <p>
     Create a new disk for your VM
@@ -537,7 +537,7 @@ For this example, I create a new C# console application. Then follow these steps
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Connect-to-your-storage-account-and-get-the-reference-from-the-file-share.jpg"><img aria-describedby="caption-attachment-944" loading="lazy" class="size-full wp-image-944" src="/assets/img/posts/2018/03/Connect-to-your-storage-account-and-get-the-reference-from-the-file-share.jpg" alt="Connect to your storage account and get the reference from the file share" /></a>
+  <a href="/assets/img/posts/2018/03/Connect-to-your-storage-account-and-get-the-reference-from-the-file-share.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Connect-to-your-storage-account-and-get-the-reference-from-the-file-share.jpg" alt="Connect to your storage account and get the reference from the file share" /></a>
   
   <p>
     Connect to your storage account and get the reference from the file share
@@ -551,7 +551,7 @@ For this example, I create a new C# console application. Then follow these steps
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Get-a-reference-to-your-root-directory-and-to-the-file-you-want-to-download.jpg"><img aria-describedby="caption-attachment-945" loading="lazy" class="size-full wp-image-945" src="/assets/img/posts/2018/03/Get-a-reference-to-your-root-directory-and-to-the-file-you-want-to-download.jpg" alt="Get a reference to your root directory and to the file you want to download" /></a>
+  <a href="/assets/img/posts/2018/03/Get-a-reference-to-your-root-directory-and-to-the-file-you-want-to-download.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Get-a-reference-to-your-root-directory-and-to-the-file-you-want-to-download.jpg" alt="Get a reference to your root directory and to the file you want to download" /></a>
   
   <p>
     Get a reference to your root directory and to the file you want to download
@@ -565,7 +565,7 @@ For this example, I create a new C# console application. Then follow these steps
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Download-the-file-to-your-computer.jpg"><img aria-describedby="caption-attachment-946" loading="lazy" class="size-full wp-image-946" src="/assets/img/posts/2018/03/Download-the-file-to-your-computer.jpg" alt="Download the file to your computer" /></a>
+  <a href="/assets/img/posts/2018/03/Download-the-file-to-your-computer.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Download-the-file-to-your-computer.jpg" alt="Download the file to your computer" /></a>
   
   <p>
     Download the file to your computer
@@ -579,7 +579,7 @@ For this example, I create a new C# console application. Then follow these steps
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Upload-a-file-to-your-file-share.jpg"><img aria-describedby="caption-attachment-947" loading="lazy" class="size-full wp-image-947" src="/assets/img/posts/2018/03/Upload-a-file-to-your-file-share.jpg" alt="Upload a file to your file share" /></a>
+  <a href="/assets/img/posts/2018/03/Upload-a-file-to-your-file-share.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Upload-a-file-to-your-file-share.jpg" alt="Upload a file to your file share" /></a>
   
   <p>
     Upload a file to your file share
@@ -605,7 +605,7 @@ To register an app in the AAD follow these steps:
   3. On the Create blade, provide a name and Sign-on URL and click on Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-an-application-registration.jpg"><img aria-describedby="caption-attachment-976" loading="lazy" class="size-full wp-image-976" src="/assets/img/posts/2018/03/Create-an-application-registration.jpg" alt="Create an application registration" /></a>
+  <a href="/assets/img/posts/2018/03/Create-an-application-registration.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-an-application-registration.jpg" alt="Create an application registration" /></a>
   
   <p>
     Create an application registration
@@ -699,7 +699,7 @@ To register an app in the AAD follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Give-your-user-all-key-permissions.jpg"><img aria-describedby="caption-attachment-981" loading="lazy" class="size-full wp-image-981" src="/assets/img/posts/2018/03/Give-your-user-all-key-permissions.jpg" alt="Give your user all key permissions" /></a>
+  <a href="/assets/img/posts/2018/03/Give-your-user-all-key-permissions.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Give-your-user-all-key-permissions.jpg" alt="Give your user all key permissions" /></a>
   
   <p>
     Give your user all key permissions

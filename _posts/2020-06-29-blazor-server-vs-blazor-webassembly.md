@@ -63,7 +63,7 @@ The template creates a sample application where you can increase a counter and l
 You can see the messages sent to the server when you open the developer tools, go to the Network tab and click the button several times.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/SignalR-messages-between-server-and-browser.png"><img aria-describedby="caption-attachment-2229" loading="lazy" class="size-full wp-image-2229" src="/assets/img/posts/2020/06/SignalR-messages-between-server-and-browser.png" alt="SignalR messages between server and browser" /></a>
+  <a href="/assets/img/posts/2020/06/SignalR-messages-between-server-and-browser.png"><img loading="lazy" src="/assets/img/posts/2020/06/SignalR-messages-between-server-and-browser.png" alt="SignalR messages between server and browser" /></a>
   
   <p>
     SignalR messages between server and browser

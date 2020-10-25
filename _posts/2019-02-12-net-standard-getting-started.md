@@ -208,7 +208,7 @@ Migrating to .Net Standard just for the sake of migrating is not the best strate
 Open the .csproj file of the classic .Net framework project you want to migrate and delete everything. Then copy a new Project tag with the target framework of netstandard in it. If you want to migrate a .Net core project, you only have to change the target framework to netstandard. For details see the following screenshot:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/02/Migrate-to-.Net-Standard.jpg"><img aria-describedby="caption-attachment-1589" loading="lazy" class="size-full wp-image-1589" src="/assets/img/posts/2019/02/Migrate-to-.Net-Standard.jpg" alt="Migrate to .Net Standard" /></a>
+  <a href="/assets/img/posts/2019/02/Migrate-to-.Net-Standard.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Migrate-to-.Net-Standard.jpg" alt="Migrate to .Net Standard" /></a>
   
   <p>
     Migrate to .Net Standard
@@ -222,7 +222,7 @@ If you are migrating a .Net core project, you are already done. For your .Net fr
 If you want to target multiple frameworks, for example, .Net Standard and .Net 4.6.1, you only have to change the TargetFramework tag in the .csproj file to TargetFrameworks and separate the different framework with a semicolon.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/02/Target-multiple-platforms.jpg"><img aria-describedby="caption-attachment-1590" loading="lazy" class="size-full wp-image-1590" src="/assets/img/posts/2019/02/Target-multiple-platforms.jpg" alt="Target multiple platforms" /></a>
+  <a href="/assets/img/posts/2019/02/Target-multiple-platforms.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Target-multiple-platforms.jpg" alt="Target multiple platforms" /></a>
   
   <p>
     Target multiple platforms
@@ -232,7 +232,7 @@ If you want to target multiple frameworks, for example, .Net Standard and .Net 4
 If you use multiple target platforms, you can use if statements to use different code, depending on your target framework:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/02/Execute-code-depending-on-the-target-platform.jpg"><img aria-describedby="caption-attachment-1591" loading="lazy" class="size-full wp-image-1591" src="/assets/img/posts/2019/02/Execute-code-depending-on-the-target-platform.jpg" alt="Execute code depending on the target platform" /></a>
+  <a href="/assets/img/posts/2019/02/Execute-code-depending-on-the-target-platform.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Execute-code-depending-on-the-target-platform.jpg" alt="Execute code depending on the target platform" /></a>
   
   <p>
     Execute code depending on the target platform

@@ -151,7 +151,7 @@ After the publish profile is imported, click on Publish and the Azure Function w
 In the Azure portal, click on the Functions tab of your Azure Function. There you will see your previously deployed function.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/05/The-published-function-appears-in-the-Azure-Portal-under-Functions.jpg"><img aria-describedby="caption-attachment-2128" loading="lazy" class="size-full wp-image-2128" src="/assets/img/posts/2020/05/The-published-function-appears-in-the-Azure-Portal-under-Functions.jpg" alt="The published function appears in the Azure Portal under Functions" /></a>
+  <a href="/assets/img/posts/2020/05/The-published-function-appears-in-the-Azure-Portal-under-Functions.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/The-published-function-appears-in-the-Azure-Portal-under-Functions.jpg" alt="The published function appears in the Azure Portal under Functions" /></a>
   
   <p>
     The published function appears in the Azure Portal under Functions
@@ -191,7 +191,7 @@ Next call the function from your browser. The URL is <YourAzureFunctionName>.azu
 If we create the React app now and try to call the Azure Function, it won&#8217;t work. The reason why it won&#8217;t work is that CORS is not configured and therefore the request will be blocked. The configure CORS, open then the CORS tab, and enter http://localhost:3000. This will be the URL of the React app during the development.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/05/Configure-CORS.jpg"><img aria-describedby="caption-attachment-2133" loading="lazy" class="size-full wp-image-2133" src="/assets/img/posts/2020/05/Configure-CORS.jpg" alt="Configure CORS" /></a>
+  <a href="/assets/img/posts/2020/05/Configure-CORS.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/Configure-CORS.jpg" alt="Configure CORS" /></a>
   
   <p>
     Configure CORS
@@ -285,7 +285,7 @@ npm start
 This automatically opens your browser and should display your product list.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/05/Testing-the-react-app-with-the-data-from-the-Azure-Function.jpg"><img aria-describedby="caption-attachment-2132" loading="lazy" class="size-full wp-image-2132" src="/assets/img/posts/2020/05/Testing-the-react-app-with-the-data-from-the-Azure-Function.jpg" alt="Testing the react app with the data from the Azure Function" /></a>
+  <a href="/assets/img/posts/2020/05/Testing-the-react-app-with-the-data-from-the-Azure-Function.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/Testing-the-react-app-with-the-data-from-the-Azure-Function.jpg" alt="Testing the react app with the data from the Azure Function" /></a>
   
   <p>
     Testing the React app with the data from the Azure Function
@@ -299,7 +299,7 @@ Check in the React app into Github and let&#8217;s deploy it with Static Web App
 In the Azure portal, search for Static Web App and click on Create to start the deployment process.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/05/Create-a-Static-Web-App.jpg"><img aria-describedby="caption-attachment-2134" loading="lazy" class="size-full wp-image-2134" src="/assets/img/posts/2020/05/Create-a-Static-Web-App.jpg" alt="Create a Static Web Apps" /></a>
+  <a href="/assets/img/posts/2020/05/Create-a-Static-Web-App.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/Create-a-Static-Web-App.jpg" alt="Create a Static Web Apps" /></a>
   
   <p>
     Create a Static Web App
@@ -319,7 +319,7 @@ On the Basics tab enter a name, select a region, and select your Github reposito
 On the Build tab, I removed the Api location because I have my Azure Function already deployed. The Static Web Apps are still in preview and I couldn&#8217;t deploy a C# Azure Function because the build failed. The build demanded that the direction of the function must be set in the function.json file. With C#, you can&#8217;t edit the function.json file because it is created during the build. I was able to deploy a Javascript Azure Function using Static Web Apps though.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/05/Configure-the-location-of-the-app-and-api.jpg"><img aria-describedby="caption-attachment-2136" loading="lazy" class="size-full wp-image-2136" src="/assets/img/posts/2020/05/Configure-the-location-of-the-app-and-api.jpg" alt="Configure the location of the app and api" /></a>
+  <a href="/assets/img/posts/2020/05/Configure-the-location-of-the-app-and-api.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/Configure-the-location-of-the-app-and-api.jpg" alt="Configure the location of the app and api" /></a>
   
   <p>
     Configure the location of the app and api
@@ -329,7 +329,7 @@ On the Build tab, I removed the Api location because I have my Azure Function al
 On the following screenshot, you can see all my entered information. Click on Create and the deployment process starts.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/05/Overview-of-the-Static-Web-App-before-creation.jpg"><img aria-describedby="caption-attachment-2137" loading="lazy" class="size-full wp-image-2137" src="/assets/img/posts/2020/05/Overview-of-the-Static-Web-App-before-creation.jpg" alt="Overview of the Static Web Apps before creation" /></a>
+  <a href="/assets/img/posts/2020/05/Overview-of-the-Static-Web-App-before-creation.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/Overview-of-the-Static-Web-App-before-creation.jpg" alt="Overview of the Static Web Apps before creation" /></a>
   
   <p>
     Overview of the Static Web App before creation

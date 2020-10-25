@@ -16,7 +16,7 @@ I plan to create a skeleton for my solution and when creating a new project with
 The first step is to create the structure of your Visual Studio template. Therefore, I created an empty C# solution and add three projects, Template.Api, Template.Service and Template.Data. For the template, you can install any Nuget you want or add code. I added a controller that calls a service that calls a repository to get some data.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/Visual-Studio-Template-Project-Structure.jpg"><img aria-describedby="caption-attachment-2285" loading="lazy" class="size-full wp-image-2285" src="/assets/img/posts/2020/07/Visual-Studio-Template-Project-Structure.jpg" alt="Visual Studio Template Project Structure" /></a>
+  <a href="/assets/img/posts/2020/07/Visual-Studio-Template-Project-Structure.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Visual-Studio-Template-Project-Structure.jpg" alt="Visual Studio Template Project Structure" /></a>
   
   <p>
     Visual Studio Template Project Structure
@@ -26,7 +26,7 @@ The first step is to create the structure of your Visual Studio template. Theref
 Additionally, I added Swagger to have a UI to test the Api method. When you are satisfied with your project, run it. You should see the Swagger UI now.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/The-Swagger-UI-for-the-template.jpg"><img aria-describedby="caption-attachment-2286" loading="lazy" class="size-full wp-image-2286" src="/assets/img/posts/2020/07/The-Swagger-UI-for-the-template.jpg" alt="The Swagger UI for the template" /></a>
+  <a href="/assets/img/posts/2020/07/The-Swagger-UI-for-the-template.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/The-Swagger-UI-for-the-template.jpg" alt="The Swagger UI for the template" /></a>
   
   <p>
     The Swagger UI for the template
@@ -50,7 +50,7 @@ The template is set up and as the next step, I am going to export it and install
 To export the Visual Studio Template, click on Project and then Export Template.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/Export-the-Visual-Studio-Template.jpg"><img aria-describedby="caption-attachment-2288" loading="lazy" class="size-full wp-image-2288" src="/assets/img/posts/2020/07/Export-the-Visual-Studio-Template.jpg" alt="Export the Visual Studio Template" /></a>
+  <a href="/assets/img/posts/2020/07/Export-the-Visual-Studio-Template.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Export-the-Visual-Studio-Template.jpg" alt="Export the Visual Studio Template" /></a>
   
   <p>
     Export the Visual Studio Template
@@ -60,7 +60,7 @@ To export the Visual Studio Template, click on Project and then Export Template.
 This opens a new window in which you can select what template you want to export and which project. Leave it as Project template, select the Template.Api project and click on Next.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/Choose-which-Project-to-export.jpg"><img aria-describedby="caption-attachment-2289" loading="lazy" class="size-full wp-image-2289" src="/assets/img/posts/2020/07/Choose-which-Project-to-export.jpg" alt="Choose which Project to export" /></a>
+  <a href="/assets/img/posts/2020/07/Choose-which-Project-to-export.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Choose-which-Project-to-export.jpg" alt="Choose which Project to export" /></a>
   
   <p>
     Choose which Project to export
@@ -80,7 +80,7 @@ On the last page of the export, uncheck both checkboxes and click Finish.
 Repeat this export for all other projects in your solution. After you are finished, you can find the exported files under C:\Users\<YourUserName>\Documents\Visual Studio <YourVersion>\My Exported Templates.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/The-exported-.zip-files.jpg"><img aria-describedby="caption-attachment-2291" loading="lazy" class="size-full wp-image-2291" src="/assets/img/posts/2020/07/The-exported-.zip-files.jpg" alt="The exported .zip files" /></a>
+  <a href="/assets/img/posts/2020/07/The-exported-.zip-files.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/The-exported-.zip-files.jpg" alt="The exported .zip files" /></a>
   
   <p>
     The exported .zip files
@@ -109,7 +109,7 @@ Unzip every zip file into a separate folder and delete the zip files. I get quit
 Save the file and create a zip of the three folder and the template file. You can easily do this by highlighting everything and the right-click and then select Send to &#8211;> Compressed (zipped) folder. Your folder should contain the following files and directories now:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg"><img aria-describedby="caption-attachment-2292" loading="lazy" class="size-full wp-image-2292" src="/assets/img/posts/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg" alt="Content of the template folder after finishing the creation of the template" /></a>
+  <a href="/assets/img/posts/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Content-of-the-template-folder-after-finishing-the-creation-of-the-template.jpg" alt="Content of the template folder after finishing the creation of the template" /></a>
   
   <p>
     Content of the template folder after finishing the creation of the template
@@ -125,7 +125,7 @@ To install the template, all you have to do is to copy the Template.zip file int
 Open Visual Studio and select Create a new project. Search for My Template and the previously added template will be displayed.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/Select-your-template-in-Visual-Studio.jpg"><img aria-describedby="caption-attachment-2293" loading="lazy" class="size-full wp-image-2293" src="/assets/img/posts/2020/07/Select-your-template-in-Visual-Studio.jpg" alt="Select your template in Visual Studio" /></a>
+  <a href="/assets/img/posts/2020/07/Select-your-template-in-Visual-Studio.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Select-your-template-in-Visual-Studio.jpg" alt="Select your template in Visual Studio" /></a>
   
   <p>
     Select your template in Visual Studio
@@ -180,7 +180,7 @@ Adding the variable also adds a lot of errors in your solution. You can ignore t
 Not only class names and namespaces should have the provided name, but also the classes should be named accordingly. You can do the same as before and replace Template in all file names with $ext_safeprojectname$. You don&#8217;t have to change the project name though.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/Replace-the-file-names-with-variables.jpg"><img aria-describedby="caption-attachment-2295" loading="lazy" class="size-full wp-image-2295" src="/assets/img/posts/2020/07/Replace-the-file-names-with-variables.jpg" alt="Replace the file names with variables" /></a>
+  <a href="/assets/img/posts/2020/07/Replace-the-file-names-with-variables.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Replace-the-file-names-with-variables.jpg" alt="Replace the file names with variables" /></a>
   
   <p>
     Replace the file names with variables

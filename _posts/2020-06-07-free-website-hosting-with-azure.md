@@ -163,7 +163,7 @@ The last step is to deploy the Azure Function. In my last post, I already import
 Open the URL of your Azure Static Web App and the data from the Cosmos DB will be displayed.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg"><img aria-describedby="caption-attachment-2162" loading="lazy" class="size-full wp-image-2162" src="/assets/img/posts/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg" alt="The data from the database is displayed in the React app" /></a>
+  <a href="/assets/img/posts/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/The-data-from-the-database-is-displayed-in-the-React-app.jpg" alt="The data from the database is displayed in the React app" /></a>
   
   <p>
     The data from the database is displayed in the React app

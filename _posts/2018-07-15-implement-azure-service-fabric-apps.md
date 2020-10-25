@@ -112,7 +112,7 @@ To create a new Service Fabric application, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/The-service-type-description.jpg"><img aria-describedby="caption-attachment-1392" loading="lazy" class="size-full wp-image-1392" src="/assets/img/posts/2018/07/The-service-type-description.jpg" alt="The service type description" /></a>
+  <a href="/assets/img/posts/2018/07/The-service-type-description.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/The-service-type-description.jpg" alt="The service type description" /></a>
   
   <p>
     The service type description
@@ -155,7 +155,7 @@ To create a new Service Fabric application, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Create-the-ISimulatorService-interface.jpg"><img aria-describedby="caption-attachment-1395" loading="lazy" class="size-full wp-image-1395" src="/assets/img/posts/2018/07/Create-the-ISimulatorService-interface.jpg" alt="Create the ISimulatorService interface" /></a>
+  <a href="/assets/img/posts/2018/07/Create-the-ISimulatorService-interface.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Create-the-ISimulatorService-interface.jpg" alt="Create the ISimulatorService interface" /></a>
   
   <p>
     Create the ISimulatorService interface
@@ -183,7 +183,7 @@ To create a new Service Fabric application, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Modify-the-CreateServiceReplicaListeners-method.jpg"><img aria-describedby="caption-attachment-1397" loading="lazy" class="size-full wp-image-1397" src="/assets/img/posts/2018/07/Modify-the-CreateServiceReplicaListeners-method.jpg" alt="Modify the CreateServiceReplicaListeners method" /></a>
+  <a href="/assets/img/posts/2018/07/Modify-the-CreateServiceReplicaListeners-method.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Modify-the-CreateServiceReplicaListeners-method.jpg" alt="Modify the CreateServiceReplicaListeners method" /></a>
   
   <p>
     Modify the CreateServiceReplicaListeners method
@@ -228,7 +228,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/The-HTTP-endpoint-description.jpg"><img aria-describedby="caption-attachment-1400" loading="lazy" class="size-full wp-image-1400" src="/assets/img/posts/2018/07/The-HTTP-endpoint-description.jpg" alt="The HTTP endpoint description" /></a>
+  <a href="/assets/img/posts/2018/07/The-HTTP-endpoint-description.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/The-HTTP-endpoint-description.jpg" alt="The HTTP endpoint description" /></a>
   
   <p>
     The HTTP endpoint description
@@ -242,7 +242,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/The-WebApp-class.jpg"><img aria-describedby="caption-attachment-1401" loading="lazy" class="size-full wp-image-1401" src="/assets/img/posts/2018/07/The-WebApp-class.jpg" alt="The WebApp class" /></a>
+  <a href="/assets/img/posts/2018/07/The-WebApp-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/The-WebApp-class.jpg" alt="The WebApp class" /></a>
   
   <p>
     The WebApp class
@@ -259,7 +259,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/The-copied-ISimulatorService-interface.jpg"><img aria-describedby="caption-attachment-1402" loading="lazy" class="size-full wp-image-1402" src="/assets/img/posts/2018/07/The-copied-ISimulatorService-interface.jpg" alt="The copied ISimulatorService interface" /></a>
+  <a href="/assets/img/posts/2018/07/The-copied-ISimulatorService-interface.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/The-copied-ISimulatorService-interface.jpg" alt="The copied ISimulatorService interface" /></a>
   
   <p>
     The copied ISimulatorService interface
@@ -287,7 +287,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Inject-FabricClient-into-the-HomeController.jpg"><img aria-describedby="caption-attachment-1404" loading="lazy" class="size-full wp-image-1404" src="/assets/img/posts/2018/07/Inject-FabricClient-into-the-HomeController.jpg" alt="Inject FabricClient into the HomeController" /></a>
+  <a href="/assets/img/posts/2018/07/Inject-FabricClient-into-the-HomeController.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Inject-FabricClient-into-the-HomeController.jpg" alt="Inject FabricClient into the HomeController" /></a>
   
   <p>
     Inject FabricClient into the HomeController
@@ -315,7 +315,7 @@ To add a web app to your Service Fabric application, follow these steps:
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Modify-the-Index.cshtml-view.jpg"><img aria-describedby="caption-attachment-1406" loading="lazy" class="size-full wp-image-1406" src="/assets/img/posts/2018/07/Modify-the-Index.cshtml-view.jpg" alt="Modify the Index.cshtml view" /></a>
+  <a href="/assets/img/posts/2018/07/Modify-the-Index.cshtml-view.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Modify-the-Index.cshtml-view.jpg" alt="Modify the Index.cshtml view" /></a>
   
   <p>
     Modify the Index.cshtml view
@@ -327,7 +327,7 @@ To add a web app to your Service Fabric application, follow these steps:
   1. To run the web app and stateful service, you can publish it to the local Service Fabric cluster. Right-click the Service Fabric application node in the Solution Explorer and select Publish. From the Publish Service Fabric Application dialog, select a target profile matching one of the local cluster options, and click Publish.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Deploy-to-a-local-cluster-with-error-message.png"><img aria-describedby="caption-attachment-1407" loading="lazy" class="size-full wp-image-1407" src="/assets/img/posts/2018/07/Deploy-to-a-local-cluster-with-error-message.png" alt="Deploy to a local cluster with error message" /></a>
+  <a href="/assets/img/posts/2018/07/Deploy-to-a-local-cluster-with-error-message.png"><img loading="lazy" src="/assets/img/posts/2018/07/Deploy-to-a-local-cluster-with-error-message.png" alt="Deploy to a local cluster with error message" /></a>
   
   <p>
     Deploy to a local cluster with an error message
@@ -383,7 +383,7 @@ Service Fabric can run processes and containers side by side, and containers can
   4. Expand the PackageRoot folder in the Solution Explorer and you will find the ServiceManifest.xml file there. Modify the Resources section to add a UriScheme, Port and Protocol setting for the service point.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Add-a-UriScheme-Port-and-Protocol-to-the-ServiceManifest.xml-file.jpg"><img aria-describedby="caption-attachment-1411" loading="lazy" class="size-full wp-image-1411" src="/assets/img/posts/2018/07/Add-a-UriScheme-Port-and-Protocol-to-the-ServiceManifest.xml-file.jpg" alt="Add a UriScheme, Port and Protocol to the ServiceManifest.xml file" /></a>
+  <a href="/assets/img/posts/2018/07/Add-a-UriScheme-Port-and-Protocol-to-the-ServiceManifest.xml-file.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Add-a-UriScheme-Port-and-Protocol-to-the-ServiceManifest.xml-file.jpg" alt="Add a UriScheme, Port and Protocol to the ServiceManifest.xml file" /></a>
   
   <p>
     Add a UriScheme, Port and Protocol to the ServiceManifest.xml file
@@ -397,7 +397,7 @@ Service Fabric can run processes and containers side by side, and containers can
 </ol>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Create-a-PortBinding-policy-for-the-container.jpg"><img aria-describedby="caption-attachment-1412" loading="lazy" class="size-full wp-image-1412" src="/assets/img/posts/2018/07/Create-a-PortBinding-policy-for-the-container.jpg" alt="Create a PortBinding policy for the container" /></a>
+  <a href="/assets/img/posts/2018/07/Create-a-PortBinding-policy-for-the-container.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Create-a-PortBinding-policy-for-the-container.jpg" alt="Create a PortBinding policy for the container" /></a>
   
   <p>
     Create a PortBinding policy for the container

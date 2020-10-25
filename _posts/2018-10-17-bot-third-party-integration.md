@@ -38,7 +38,7 @@ Follow these steps to integrate your bot with Slack:
   1. Create a new Slack App and enter a name for your app.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Create-a-Slack-App.jpg"><img aria-describedby="caption-attachment-1480" loading="lazy" class="size-full wp-image-1480" src="/assets/img/posts/2018/10/Create-a-Slack-App.jpg" alt="Create a Slack App" /></a>
+  <a href="/assets/img/posts/2018/10/Create-a-Slack-App.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Create-a-Slack-App.jpg" alt="Create a Slack App" /></a>
   
   <p>
     Create a Slack App
@@ -105,7 +105,7 @@ Follow these steps to integrate your bot with Slack:
   2. On the next window, click Authorize and your app gets installed.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Install-your-App-to-Slack.jpg"><img aria-describedby="caption-attachment-1490" loading="lazy" class="size-full wp-image-1490" src="/assets/img/posts/2018/10/Install-your-App-to-Slack.jpg" alt="Install your App to Slack" /></a>
+  <a href="/assets/img/posts/2018/10/Install-your-App-to-Slack.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Install-your-App-to-Slack.jpg" alt="Install your App to Slack" /></a>
   
   <p>
     Install your App to Slack
@@ -129,7 +129,7 @@ Follow these steps to integrate your bot with Slack:
   2. Click Authorize.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Authorize-the-App-in-Slack.jpg"><img aria-describedby="caption-attachment-1491" loading="lazy" class="size-full wp-image-1491" src="/assets/img/posts/2018/10/Authorize-the-App-in-Slack.jpg" alt="Authorize the App in Slack" /></a>
+  <a href="/assets/img/posts/2018/10/Authorize-the-App-in-Slack.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Authorize-the-App-in-Slack.jpg" alt="Authorize the App in Slack" /></a>
   
   <p>
     Authorize the App in Slack
@@ -167,7 +167,7 @@ To integrate your bot with the Facebook Messenger, follow these steps:
   2. In the Token Generation section, create a new page and then save the Page Access Token.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Facebook-Page-Token.jpg"><img aria-describedby="caption-attachment-1494" loading="lazy" class="size-full wp-image-1494" src="/assets/img/posts/2018/10/Facebook-Page-Token.jpg" alt="Facebook Page Token" /></a>
+  <a href="/assets/img/posts/2018/10/Facebook-Page-Token.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Facebook-Page-Token.jpg" alt="Facebook Page Token" /></a>
   
   <p>
     Facebook Page Token

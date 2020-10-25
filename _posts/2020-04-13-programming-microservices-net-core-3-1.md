@@ -360,7 +360,7 @@ This line would register a background service that listens to change in the queu
 After you made the changes to both APIs, you can start them. This should display the Swagger GUI which gives you information about all actions and models and also lets you send requests. The GUI should be self-explanatory but <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">I will talk more about it in my next post</a>.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg"><img aria-describedby="caption-attachment-1881" loading="lazy" class="size-full wp-image-1881" src="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg" alt="The Swagger GUI with the available actions and models" /></a>
+  <a href="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg" alt="The Swagger GUI with the available actions and models" /></a>
   
   <p>
     The Swagger GUI with the available actions and models

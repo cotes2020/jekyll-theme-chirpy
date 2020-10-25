@@ -34,7 +34,7 @@ For every return type, I will create a new dialog and call this dialog in the in
 Replying with a video hosted somewhere on the internet is pretty simple. You only have to create a message, add a text to this message and then a VideoCard as attachment. Before you can send the reply, you have to convert it to JSON.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Return-a-video-from-the-internet.jpg"><img aria-describedby="caption-attachment-1463" loading="lazy" class="size-full wp-image-1463" src="/assets/img/posts/2018/10/Return-a-video-from-the-internet.jpg" alt="Return a video from the internet" /></a>
+  <a href="/assets/img/posts/2018/10/Return-a-video-from-the-internet.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Return-a-video-from-the-internet.jpg" alt="Return a video from the internet" /></a>
   
   <p>
     Return a video from the internet
@@ -44,7 +44,7 @@ Replying with a video hosted somewhere on the internet is pretty simple. You onl
 When you test your chat bot, you will see the video as the reply of the chat bot.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Testing-the-internet-video-return.jpg"><img aria-describedby="caption-attachment-1464" loading="lazy" class="size-full wp-image-1464" src="/assets/img/posts/2018/10/Testing-the-internet-video-return.jpg" alt="Testing the internet video return" /></a>
+  <a href="/assets/img/posts/2018/10/Testing-the-internet-video-return.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Testing-the-internet-video-return.jpg" alt="Testing the internet video return" /></a>
   
   <p>
     Testing the internet video return
@@ -56,7 +56,7 @@ When you test your chat bot, you will see the video as the reply of the chat bot
 Replying with a Youtube video is almost the same as replying with a normal video. Instead of a VideoCard, a normal Attachment is returned.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Return-a-Youtube-video.jpg"><img aria-describedby="caption-attachment-1465" loading="lazy" class="size-full wp-image-1465" src="/assets/img/posts/2018/10/Return-a-Youtube-video.jpg" alt="Return a Youtube video" /></a>
+  <a href="/assets/img/posts/2018/10/Return-a-Youtube-video.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Return-a-Youtube-video.jpg" alt="Return a Youtube video" /></a>
   
   <p>
     Return a Youtube video
@@ -66,7 +66,7 @@ Replying with a Youtube video is almost the same as replying with a normal video
 When testing the reply, you can see the embedded Youtube video in the chat.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Testing-the-Youtube-video-reply.jpg"><img aria-describedby="caption-attachment-1466" loading="lazy" class="size-full wp-image-1466" src="/assets/img/posts/2018/10/Testing-the-Youtube-video-reply.jpg" alt="Testing the Youtube video reply" /></a>
+  <a href="/assets/img/posts/2018/10/Testing-the-Youtube-video-reply.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Testing-the-Youtube-video-reply.jpg" alt="Testing the Youtube video reply" /></a>
   
   <p>
     Testing the Youtube video reply
@@ -88,7 +88,7 @@ Returning a file from the internet is basically the same as returning a Youtube 
 Testing the file reply returns a pdf file which you can download.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Testing-the-file-reply.jpg"><img aria-describedby="caption-attachment-1468" loading="lazy" class="size-full wp-image-1468" src="/assets/img/posts/2018/10/Testing-the-file-reply.jpg" alt="Testing the file reply" /></a>
+  <a href="/assets/img/posts/2018/10/Testing-the-file-reply.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Testing-the-file-reply.jpg" alt="Testing the file reply" /></a>
   
   <p>
     Testing the file reply
@@ -110,7 +110,7 @@ Replying with an image is the same as the pdf reply. The only difference is the 
 The test shows the image in the chat.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/10/Testing-the-image-reply.jpg"><img aria-describedby="caption-attachment-1470" loading="lazy" class="size-full wp-image-1470" src="/assets/img/posts/2018/10/Testing-the-image-reply.jpg" alt="Testing the image reply" /></a>
+  <a href="/assets/img/posts/2018/10/Testing-the-image-reply.jpg"><img loading="lazy" src="/assets/img/posts/2018/10/Testing-the-image-reply.jpg" alt="Testing the image reply" /></a>
   
   <p>
     Testing the image reply

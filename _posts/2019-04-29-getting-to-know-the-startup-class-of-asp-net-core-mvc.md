@@ -141,7 +141,7 @@ Probably the most important property is EnvironmentName because it allows you to
 You can set this variable by selecting ConfiguringAppsProperties from the Visual Studio Project menu and switching to the Debug tag. There double-click the Value field of the environment variable and change it, for example, to Staging. It is common practice to use Staging but the value is not case-sensitive, so you could also use staging. Additionally, you can use every name you want, these previously mentioned ones are only conventional ones.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Setting-the-environment-variable-to-Development.jpg"><img aria-describedby="caption-attachment-1638" loading="lazy" class="size-full wp-image-1638" src="/assets/img/posts/2019/04/Setting-the-environment-variable-to-Development.jpg" alt="Setting the environment variable to Development" /></a>
+  <a href="/assets/img/posts/2019/04/Setting-the-environment-variable-to-Development.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Setting-the-environment-variable-to-Development.jpg" alt="Setting the environment variable to Development" /></a>
   
   <p>
     Setting the environment variable to Development
@@ -209,7 +209,7 @@ You can use IHostingEnvironment.EnvironmentName in the Configure method to deter
 </div>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Register-the-middleware-only-if-the-hosting-environment-is-Development.jpg"><img aria-describedby="caption-attachment-1640" loading="lazy" class="size-full wp-image-1640" src="/assets/img/posts/2019/04/Register-the-middleware-only-if-the-hosting-environment-is-Development.jpg" alt="Register the middleware only if the hosting environment is Development" /></a>
+  <a href="/assets/img/posts/2019/04/Register-the-middleware-only-if-the-hosting-environment-is-Development.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Register-the-middleware-only-if-the-hosting-environment-is-Development.jpg" alt="Register the middleware only if the hosting environment is Development" /></a>
   
   <p>
     Register the middleware only if the hosting environment is Development
@@ -225,7 +225,7 @@ In a classic ASP.Net MVC application, you had to configure the exception handlin
 With ASP.NET Core, you can easily configure this using the IHostingEnvironment and a built-in exception handler middleware.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Configure-exception-handling-depending-on-the-hosting-environment.jpg"><img aria-describedby="caption-attachment-1641" loading="lazy" class="size-full wp-image-1641" src="/assets/img/posts/2019/04/Configure-exception-handling-depending-on-the-hosting-environment.jpg" alt="Configure exception handling depending on the hosting environment" /></a>
+  <a href="/assets/img/posts/2019/04/Configure-exception-handling-depending-on-the-hosting-environment.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Configure-exception-handling-depending-on-the-hosting-environment.jpg" alt="Configure exception handling depending on the hosting environment" /></a>
   
   <p>
     Configure exception handling depending on the hosting environment
@@ -258,7 +258,7 @@ You also have to install the Microsoft.VisualStudio.Web.BrowserLink Nuget packag
 The UseStaticFiles method adds a short-circuiting middleware which provides access to the files in the wwwroot folder so that the application can load images, JavaScript and CSS files.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Enable-static-content.jpg"><img aria-describedby="caption-attachment-1643" loading="lazy" class="size-full wp-image-1643" src="/assets/img/posts/2019/04/Enable-static-content.jpg" alt="Enable static content" /></a>
+  <a href="/assets/img/posts/2019/04/Enable-static-content.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Enable-static-content.jpg" alt="Enable static content" /></a>
   
   <p>
     Enable static content
