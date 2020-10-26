@@ -20,7 +20,7 @@ dos2unix tools/run.sh
 dos2unix tools/build.sh
 ```
 
-IF you only want to run the website, you can use the following code, which should start faster than the above one:
+If you only want to run the website, you can use the following code, which should start faster than the above one:
 
 ```terminal
 docker run --volume="$($PWD):/srv/jekyll" -p 4000:4000 -it jekyll/jekyll jekyll serve --force_polling
