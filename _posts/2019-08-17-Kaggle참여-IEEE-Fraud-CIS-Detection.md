@@ -1,7 +1,7 @@
 ---
 title: 첫 Kaggle 대회참여 - IEEE-CIS Fraud Detection
 author: loveAlakazam
-categories: [프로젝트][GCP]
+categories: [프로젝트]
 tags: [인공지능 스피커][TTS][STT][Python3][Web-Scraping]
 comments: false
 ---
