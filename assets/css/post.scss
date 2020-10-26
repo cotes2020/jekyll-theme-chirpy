@@ -132,7 +132,6 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 }
 
 #toc-wrapper {
-  margin-top: 7rem;
   border-left: 1px solid rgba(158, 158, 158, 0.17);
   position: -webkit-sticky;
   position: sticky;
@@ -142,8 +141,8 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   &.topbar-down {
     top: 6rem;
   }
-  >h3 {
-    @include label(inherit, 600);
+  > span {
+    @include panel-label;
   }
 }
 

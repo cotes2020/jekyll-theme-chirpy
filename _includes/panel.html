@@ -17,9 +17,7 @@
     {% if update_list.size > 0 %}
 
     <div id="access-lastmod" class="post">
-      <h3 data-toc-skip>
-        {{- site.data.label.panel.lastmod -}}
-      </h3>
+      <span>{{- site.data.label.panel.lastmod -}}</span>
       <ul class="post-content pl-0 pb-1 ml-1 mt-2">
 
       {% for item in update_list %}
@@ -44,15 +42,14 @@
 
   {% if trending_tags.size > 0 %}
     <div id="access-tags">
-      <h3 data-toc-skip>
-        {{- site.data.label.panel.trending_tags -}}
-      </h3>
+      <span>{{- site.data.label.panel.trending_tags -}}</span>
       <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
-
+      
       {% for tag in trending_tags %}
         {% capture url %}/tags/{{ tag | downcase | url_encode }}/{% endcapture %}
         <a class="post-tag" href="{{ url | relative_url }}">{{ tag | replace: '-', ' ' }}</a>
       {% endfor %}
+
       </div>
     </div>
   {% endif %}
@@ -60,9 +57,9 @@
 
   {% if page.layout == 'post' and site.toc and page.toc %}
   <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
-    <h3 data-toc-skip class="pl-3 pt-2 mb-2">
+    <span class="pl-3 pt-2 mb-2">
       {{- site.data.label.panel.toc -}}
-    </h3>
+    </span>
     <nav id="toc" data-toggle="toc"></nav>
   </div>
   {% endif %}
