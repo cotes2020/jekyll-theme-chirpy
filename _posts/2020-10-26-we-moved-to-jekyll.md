@@ -24,7 +24,7 @@ Microsoft improved Azure Static Web Apps and With all the options above ruled ou
 ## Why use Jekyll and Azure Static Web App?
 The biggest advantage of Jekyll is that it supports HTML, Javascript, and CSS and generates static sites. This means that it is blazing fast since there are no computing or database lookups needed anymore. The second big advantage is that it is not PHP and so I can easily change everything to my liking. The next advantage is the simple integration with Azure Static App. The deployment gets created, more or less, automatically and I have full control over the whole process.
 
-I am fortunate that I have readers from all over the world. So far, they all had to connect to a server in Europe. With Azure Static Web App, my blog gets replicated on five servers the US, Europe, and Asia which reduces the latency for none Europeans. I only have Google Analytics data for a couple of days but so far the average page load time went down by 52%. The further the user is away, the bigger the performance increase is. For example, the page load time for US based users decreased by 76%.
+I am fortunate that I have readers from all over the world. So far, they all had to connect to a server in Europe. With Azure Static Web App, my blog gets replicated on five servers the US, Europe, and Asia which reduces the latency for none Europeans. I only have Google Analytics data for a couple of days but so far the average page load time went down by 52%. The further the user is away, the bigger the performance increase is. For example, the page load time for US-based users decreased by 76%.
 
 ## How to migrate from WordPress to Jekyll
 Migrating from WordPress to Jekyll is easy, in theory. I used the Jekyll Exporter plugin to export my posts and pictures. The problem is, that the plugin only works when there are no other plugins active. I am using around 10 plugins and deactivating them took around 30 min and gave me many 404 and 500 error pages. It was a bit annoying but also made me happy to leave WordPress behind. Once I had my posts and pictures, I was surprised how well the export was. All posts got converted to markdown and could already be used. I edited mainly the images so they don't use the WordPress CSS classes anymore and look nice on mobile and desktop and removed some boiler-plate text. It took me a couple of hours and some regex to get everything cleaned up.
@@ -33,7 +33,7 @@ Migrating from WordPress to Jekyll is easy, in theory. I used the Jekyll Exporte
 This migration reminded me of how awesome Docker is and how it can improve the efficiency of developers. The theme I am using needs besides Ruby some other Linux programs I have never heard about and also which I didn't want to install on my Windows 10 WSL. Instead of going through the kinda complicated build and run process, I use Docker to run and build the whole website. The only downside of this approach is that I have to build the website before checking in. In the near future, I want to extend the Github Action so it uses Docker to build my website before the deployment.
 
 ### New Features
-I tried to change as little as possible but the theme I am using has some nice eye candy features. The biggest improvements is the built-in dark mode which enables users to switch between a light and dark theme. Another nice feature is the listing of posts inside a category including their publish dates.
+I tried to change as little as possible but the theme I am using has some nice eye candy features. The biggest improvement is the built-in dark mode which enables users to switch between a light and dark theme. Another nice feature is the listing of posts inside a category including their publish dates.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/Display-all-Posts-of-a-Category.jpg"><img loading="lazy" src="/assets/img/posts/Display-all-Posts-of-a-Category.jpg" alt="Display all Posts of a Category" /></a>
@@ -43,7 +43,7 @@ I tried to change as little as possible but the theme I am using has some nice e
   </p>
 </div>
 
-The last feature I really like is the table of content of the right side which shows you automatically where you are at the moment and also lets you create links to headlines.
+The last feature I really like is the table of content on the right side which shows you automatically where you are at the moment and also lets you create links to headlines.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/Table-of-contents-in-Jekyll.jpg"><img loading="lazy" src="/assets/img/posts/Table-of-contents-in-Jekyll.jpg" alt="Table of contents in Jekyll" /></a>
