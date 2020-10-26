@@ -516,20 +516,15 @@ footer {
   &.topbar-down {
     top: 6rem;
   }
-  >div {
+  > div {
     padding-left: 1rem;
     border-left: 1px solid var(--main-border-color);
     &:not(:last-child) {
       margin-bottom: 4rem;
     }
   }
-  h3 {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    margin-top: 0;
-    margin-bottom: 0;
-    letter-spacing: -0.02em;
-    @include label(inherit, 600);
+  span {
+    @include panel-label;
   }
   .post-content {
     font-size: .9rem;
