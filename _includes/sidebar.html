@@ -81,7 +81,7 @@
     {% endcapture %}
 
     {% if url != '' %}
-    <a href="{{ url }}" {% unless entry.noblank %}target="_blank" rel="noopener"{% endunless %}>
+    <a href="{{ url }}" aria-label="{{ entry.type }}" {% unless entry.noblank %}target="_blank" rel="noopener"{% endunless %}>
       <i class="{{ entry.icon }}"></i>
     </a>
     {% endif %}
