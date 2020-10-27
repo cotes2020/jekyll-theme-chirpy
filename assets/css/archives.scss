@@ -33,7 +33,7 @@
       background-image: linear-gradient(
         to left, #fff, #fbfbfb, #fbfbfb, #fbfbfb, #fff);
     }
-    >div {
+    > div {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -111,12 +111,12 @@
   } // #archives .date
 
   ul {
-    >li {
-      >div>a {
+    > li {
+      > div > a {
         /* post title in Archvies */
         margin-left: 2.5rem;
         position: relative;
-        top: .1rem;
+        top: 0.1rem;
       }
       &::after {
         @extend %date-timeline;
@@ -129,10 +129,10 @@
         top: -1.61rem;
       }
     }
-    &:not(:last-child)>li:last-child::after {
+    &:not(:last-child) > li:last-child::after {
       height: 3.4rem;
     }
-    &:last-child>li:last-child::after {
+    &:last-child > li:last-child::after {
       display: none;
     }
   } // #archives ul
