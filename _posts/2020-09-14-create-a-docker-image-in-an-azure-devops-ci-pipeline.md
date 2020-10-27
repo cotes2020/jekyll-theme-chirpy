@@ -45,7 +45,7 @@ On the next page, select Docker Hub as your Registry type, enter your Docker ID,
 After setting up the service connection, create a new CI Pipeline. Select the source code location and then any template. After the yml file is created, delete its content. For more details on creating a Pipeline, see my post &#8220;<a href="/build-net-core-in-a-ci-pipeline-in-azure-devops/" target="_blank" rel="noopener noreferrer">Build .Net Core in a CI Pipeline in Azure DevOps</a>&#8220;.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/09/Create-an-empty-Pipeline.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/09/Create-an-empty-Pipeline.jpg" alt="Create an empty DevOps CI pipeline" /></a>
+  <a href="/assets/img/posts/2020/09/Create-an-empty-Pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2020/09/Create-an-empty-Pipeline.jpg" alt="Create an empty DevOps CI pipeline" /></a>
   
   <p>
     Create an empty Pipeline
