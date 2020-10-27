@@ -10,7 +10,7 @@
 
 #post-list {
   margin-top: 1rem;
-  padding-right: .5rem;
+  padding-right: 0.5rem;
 
   .post-preview {
     padding-top: 1.5rem;
@@ -21,13 +21,13 @@
       font-size: 1.4rem;
       margin: 0;
       ~i { // pinned icon
-        font-size: .86rem;
+        font-size: 0.86rem;
       }
     }
 
     .post-meta {
       i {
-        font-size: .73rem;
+        font-size: 0.73rem;
         &:not(:first-child) { // post-meta icons on the homepage
           margin-left: 1.5rem;
         }
@@ -35,8 +35,8 @@
     }
 
     .post-content {
-      margin-top: .6rem;
-      margin-bottom: .6rem;
+      margin-top: 0.6rem;
+      margin-bottom: 0.6rem;
       color: var(--post-list-text-color);
       >p {
         /* Make preview shorter on the homepage */
@@ -128,7 +128,7 @@
   }
 
   .pagination {
-    font-size: .85rem;
+    font-size: 0.85rem;
     .page-item .page-link {
       width: 2.2rem;
       height: 2.2rem;

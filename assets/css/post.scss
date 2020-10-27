@@ -89,20 +89,20 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   p {
     font-size: 1.1rem;
     line-height: 1.5rem;
-    margin-top: .3rem;
+    margin-top: 0.3rem;
     white-space: normal;
   }
 
   a, span {
     &::before {
       color: var(--text-muted-color);
-      font-size: .65rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
     }
     &:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      left: .5px;
+      left: 0.5px;
       &::before {
         content: $prompt-older
       }
@@ -110,7 +110,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     &:last-child {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
-      right: .5px;
+      right: 0.5px;
       &::before {
         content: $prompt-newer
       }
@@ -148,8 +148,8 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
 #toc li>a {
   line-height: 1rem;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 
@@ -181,8 +181,8 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   }
 
   p {
-    font-size: .9rem;
-    margin-bottom: .5rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -233,7 +233,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     font-size: 1.2rem;
     a {
       &:not(:last-child) {
-        margin-right: .25rem;
+        margin-right: 0.25rem;
       }
       &:hover {
         text-decoration: none;
@@ -243,7 +243,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
       }
     }
     >i {
-      padding-top: .35rem;
+      padding-top: 0.35rem;
       &:hover {
         @extend %btn-share-hovor;
       }
@@ -291,7 +291,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     font-weight: 400;
   }
   span:last-child {
-    font-size: .85rem;
+    font-size: 0.85rem;
   }
 } // .license-wrapper
 
@@ -320,8 +320,8 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
         content: "\2022";
         color: rgba(158, 158, 158, 0.8);
         font-weight: bold;
-        padding-left: .5rem;
-        padding-right: .3rem;
+        padding-left: 0.5rem;
+        padding-right: 0.3rem;
       }
       &.flex-column {
         -webkit-box-orient: horizontal!important;
