@@ -49,7 +49,7 @@ To ![fork](https://user-images.githubusercontent.com/136959/42383736-c4cb0db8-80
 Once done, you can see the copy of the repository in your own profile. Rename the repository to `USERNAME.github.io` and change the `USERNAME` to your Github username or the desired name.
 
 
-![Renaming](https://github.com/anggi3234/anggi3234.github.io/master/assets/img/sample/renaming.png?raw=true)
+![Renaming](https://raw.githubusercontent.com/anggi3234/anggi3234.github.io/master/assets/img/sample/renaming.png)
 
 
 
