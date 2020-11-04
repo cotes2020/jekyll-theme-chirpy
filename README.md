@@ -42,7 +42,9 @@ Prior to installation, you would need to install the necessary Jekyll dependenci
 To ![fork](https://user-images.githubusercontent.com/136959/42383736-c4cb0db8-80fd-11e8-91ca-12bae108bccc.png)[fork](https://github.com/anggi3234/anggi3234.github.io/fork) the repository, go to the GitHub project page and click the fork button on the top right corner.
 
 
-![Forking](https://github.com/anggi3234/anggi3234.github.io/master/assets/img/sample/forking.png?raw=true)
+![Forking](https://raw.githubusercontent.com/anggi3234/anggi3234.github.io/master/assets/img/sample/forking.png)
+
+
 
 Once done, you can see the copy of the repository in your own profile. Rename the repository to `USERNAME.github.io` and change the `USERNAME` to your Github username or the desired name.
 
