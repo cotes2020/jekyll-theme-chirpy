@@ -112,8 +112,6 @@ public class DataServiceCachingDecorator : IDataService
 All that is left to do is to register the service and decorator in the ConfigureServices method of the startup class with the following code:
 
 ```csharp  
-services.AddTransient<IDataService, DataService>();
-
 services.AddScoped(serviceProvider =>  
 {  
     var logger = serviceProvider.GetService<ILogger<DataServiceLoggingDecorator>>();  
@@ -132,12 +130,10 @@ With everything in place, I can call the GetData method from the service which g
 ```csharp  
 public class HomeController : Controller
 {
-    private readonly IDataService _dataService;
-    private readonly ILogger<HomeController> _logger;
+    private readonly IDataService _dataService;    
 
-    public HomeController(ILogger<HomeController> logger, IDataService dataService)
+    public HomeController(IDataService dataService)
     {
-        _logger = logger;
         _dataService = dataService;
     }
 
