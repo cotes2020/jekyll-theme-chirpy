@@ -47,7 +47,7 @@ Thanks for the contribution! :sparkles:
 
 
 ## Credit
-The web template (Jekyll theme) for this project is forked from [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) by [cotes2020](https://github.com/cotes2020). 
+The web template (Jekyll theme) for this project is forked from [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) by [cotes2020](https://github.com/cotes2020).
 
 
 ## Notes
@@ -57,5 +57,3 @@ If you're unsure on how to contribute or are unfamiliar with GitHub, you can see
 ## License
 
 This work is published under [MIT](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE) License.
-
-[⬆️ UP](_posts/about.md#Table-of-Contents)
