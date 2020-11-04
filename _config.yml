@@ -17,11 +17,11 @@ description: >-                        # used by seo meta and the atom feed
   Bioinformatics students and enthusiasts.
 
 # Replace with the website url, e.g. 'https://username.github.io'
-url: 'https://anggi3234.github.io/'
+url: 'https://anggi3234.github.io'
 
 author: Angganararas Lungidningtyas                  # change to your full name
 
-avatar: assets/img/sample/avatar.png   # support internet resources
+avatar: /assets/img/sample/avatar.png   # support internet resources
 
 github:
   username: anggi3234             # change to your github username
