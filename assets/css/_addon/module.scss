@@ -38,8 +38,8 @@
 }
 
 %heading {
-  font-weight: 400;
-  font-family: 'Lato', 'Microsoft Yahei', sans-serif;
+  font-weight: 650;
+  font-family: 'Barlow Semi Condensed', 'Microsoft Yahei', sans-serif;
 }
 
 %section {
@@ -60,7 +60,7 @@
   text-decoration: none;
 }
 
-@mixin sidebar-links($color: rgba(255, 255, 255, 0.5)) {
+@mixin sidebar-links($color: rgba(255, 255, 255, 0.7)) {
   color: $color;
   transition: color 0.35s ease-in-out;
   user-select: none;
@@ -97,17 +97,6 @@
   font-size: $font-size;
   font-weight: $font-weight;
   font-family: 'Roboto Condensed', 'Microsoft Yahei', sans-serif;
-}
-
-@mixin panel-label {
-  @include label(inherit);
-  display: block;
-  line-height: 1.2;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  margin-top: 0;
-  margin-bottom: 0;
-  letter-spacing: -0.02em;
 }
 
 @mixin align-center {
