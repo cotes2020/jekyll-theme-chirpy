@@ -1,56 +1,71 @@
-# Chirpy
+<h1 align="center">The Trove</h1>
 
-🌏 English • [简体中文](docs/README_zh-CN.md)
+<p align="center">Welcome! This is a repository for (not limited to) student in Bioinformatics to share knowledge or tips and tricks in programming. Feel free to contribute if you have any suggestion.</p>
+<br>
+<p align="center">
+  <img alt="githubdark-logo" src="https://cdn.jsdelivr.net/gh/anggi3234/anggi3234.github.io@main/assets/img/sample/Bioinformatics.svg" width="580">
+  <br>
+  <a href="https://github.com/StylishThemes/GitHub-Dark/tags">
+    <img src="https://img.shields.io/github/v/tag/anggi3234/anggi3234.github.io?label=version" alt="Version">
+  </a>
+  <a href="https://david-dm.org/StylishThemes/GitHub-Dark?type=dev">
+    <img src="https://img.shields.io/david/dev/StylishThemes/GitHub-Dark.svg?label=devDependencies&style=flat" alt="devDependencies">
+  </a>
+</p>
+<h3 align="center">Learn, Practice, Contribute.</h3>
 
-[![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8220b926db514f13afc3f02b7f884f4b)](https://app.codacy.com/manual/cotes2020/jekyll-theme-chirpy?utm_source=github.com&utm_medium=referral&utm_content=cotes2020/jekyll-theme-chirpy&utm_campaign=Badge_Grade_Dashboard)
-[![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
-[![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
+# Table of Contents
+* [About](#About)
+* [Installation](#installation)
+  * [Setting up your local environment](#setting-up-your-local-environment)
+* [Usage](#usage)
+  * [Initialization](#initialization)
+  * [Configuration](#configuration)
+  * [Run Locally](#run-locally)
+  * [Deployment](#deployment)
+    * [Deploy on GitHub Pages](#deploy-on-github-pages)
+* [Contributions and Development](#contributions-and-development)
+* [Credit](#credit)
+* [Notes](#notes)
 
-A minimal, sidebar, responsive web design Jekyll theme, focusing on text presentation, aim to help you easily record and share your knowledge. [Live Demo »](https://chirpy.cotes.info)
 
-[![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
+## About
 
-## Table of Contents
-
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Credits](#credits)
-- [Support](#support)
-- [License](#license)
-
-## Features
-
-- Pinned Posts
-- Configurable theme mode
-- Double-level Categories
-- Last modified date for posts
-- Table of Contents
-- Automatically recommend related posts
-- Syntax highlighting
-- Mathematical expressions
-- Search
-- Atom Feeds
-- Disqus Comments
-- Google Analytics
-- GA Pageviews reporting (Advanced)
-- SEO and Performance Optimization
+This place is intended to help friends who are currently pursuing Bioinformatics degree or even to those who are not, but are curious to learn more in the subject. You can find helpful contents or even tips and tricks to learn more about: Bioinformatics in general, programming tips and tricks, or other things relating to productivity boosts or hacks for working from home that you think are helpful for in the current pandemic situation. Feel free to contribute if you have suggestions or contents.
 
 ## Installation
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub, rename the repository to `USERNAME.github.io` (where `USERNAME` is your GitHub username), and then open terminal and clone the fork to local by:
+>This installation tutorial is adapted from the [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) repository, the forked repository used as the Jekyll theme for the website. 
 
-```terminal
-$ git clone https://github.com/USERNAME/USERNAME.github.io.git -b master --single-branch
-```
+Prior to installation, you would need to install the necessary Jekyll dependencies: `Ruby`,  `Bundler`, `RubyGems`. You can find the tutorials to do that from [Jekyll Website](https://jekyllrb.com/docs/installation/) for the respective operating systems. Once installed, you can then fork and test the website on your local environment before submitting a pull request to contribute.
 
-### Setting up the local envrionment
+To ![fork](https://user-images.githubusercontent.com/136959/42383736-c4cb0db8-80fd-11e8-91ca-12bae108bccc.png)[fork](https://github.com/anggi3234/anggi3234.github.io/fork) the repository, go to the GitHub project page and click the fork button on the top right corner.
 
-If you would like to run or build the project on your local machine, please follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems` and `Bundler`. 
 
-Before running or building for the first time, please complete the installation of the Jekyll plugins. Go to the root directory of project and run:
+![Forking](https://github.com/anggi3234/anggi3234.github.io/master/assets/img/sample/forking.png?raw=true)
+
+Once done, you can see the copy of the repository in your own profile. Rename the repository to `USERNAME.github.io` and change the `USERNAME` to your Github username or the desired name. 
+
+
+![Renaming](https://github.com/anggi3234/anggi3234.github.io/master/assets/img/sample/renaming.png?raw=true)
+
+
+
+### Setting up your local environment 
+
+Clone the the forked project to your local computer by:
+- Using the terminal
+
+  ```terminal
+  $ git clone https://github.com/USERNAME/USERNAME.github.io.git -b master --single-branch
+  ```
+
+- Using Github Desktop (You can use this if you prefer a GUI view)
+
+
+You will need to complete the installation for Jekyll plugins prior to setting up the build. 
+
+Navigate to the directory of your project in your local computer and run:
 
 ```terminal
 $ bundle install
@@ -72,17 +87,9 @@ In order to generate some extra files (_categories_, _tags_ and _last modified l
   $ brew install coreutils
   ```
 
-### Setting up Docker environment (optional)
-
-If you're a loyal fan of [**Docker**](https://www.docker.com/) or just too lazy to install the packages mentioned in [_Setting up the local envrionment_](#setting-up-the-local-envrionment), please make sure you have **Docker Engine** installed and running, and then get Docker image `jekyll/jekyll` from Docker Hub by the following command:
-
-```console
-$ docker pull jekyll/jekyll:latest
-```
-
 ## Usage
 
-Running [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/) requires some extra files, which cannot be generated by Jekyll native commands, so please strictly follow the methods mentioned below to run or deploy your website.
+Running [**This Project**](https://github.com/anggi3234/anggi3234.github.io/) requires some extra files, which cannot be generated by Jekyll native commands, so please strictly follow the methods mentioned below to run or deploy your website.
 
 ### Initialization
 
@@ -127,18 +134,6 @@ Then open a browser and visit to <http://localhost:4000>.
 
 Few days later, you may find that the file changes does not refresh in real time by using `run.sh`. Don't worry, the advanced option `-r` (or `--realtime`) will solve this problem, but it requires [**fswatch**](http://emcrisostomo.github.io/fswatch/) to be installed on your machine.
 
-### Run on Docker
-
-Run the site on Docker with the following command:
-
-```terminal
-$ docker run --rm -it \
-    --volume="$PWD:/srv/jekyll" \
-    -p 4000:4000 jekyll/jekyll \
-    bash tools/run.sh --docker
-```
-
-Please note that on Docker containers, you'll lose the real-time refresh feature.
 
 ### Deployment
 
@@ -153,51 +148,35 @@ For security reasons, GitHub Pages build runs on `safe` mode, which restricts us
 1. Push any commit to `origin/master` to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
 
 2. Browse to your repository on GitHub and choose the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
-    ![gh-pages-sources](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/gh-pages-sources.png)
+    ![gh-pages-sources](https://raw.githubusercontent.com/anggi3234/anggi3234.github.io/master/assets/img/sample/gh-pages-sources.png)
 
 3. Visit your website at the address indicated by GitHub.
 
-#### Deploy on Other Platforms
 
-On platforms other than GitHub, we cannot enjoy the convenience of **GitHub Actions**. Therefore, we should build the site locally (or on some other 3rd-party CI platform) and then put the site files on the server.
+## Contributions and Development
 
-Go to the root of the source project, build your site by:
+If you'd like to contribute to this repository, you can try to:
 
-```console
-$ bash tools/build.sh
-```
+1. Make sure you have a [Github](https://github.com) account before you contribute.
+2. [![fork](https://user-images.githubusercontent.com/136959/42383736-c4cb0db8-80fd-11e8-91ca-12bae108bccc.png) Fork](https://github.com/anggi3234/anggi3234.github.io/fork) this project repository and clone it locally.
+3. Create a new branch from `master` and create a descriptive name.
+4. Follow the installation guide to set up the environment locally for testing.
+5. After completing the development and installation, commit and upush to the remote repository.
+6. Submit a new pull request to be reviewed.
 
-> **Note**: The output path can be specified with the option `-d`.
+Thanks for the contribution! :sparkles:
 
-Or, build the site with Docker by:
 
-```terminal
-$ docker run --rm -it \
-    --volume="$PWD:/srv/jekyll" \
-    jekyll/jekyll \
-    bash tools/build.sh --docker
-```
+## Credit
+The web template (Jekyll theme) for this project is forked from [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) by [cotes2020](https://github.com/cotes2020). 
 
-Unless you specified the output path, the generated site files will be placed in folder `_site` of the project's root directory. Now you should upload those files to your web server.
 
-### Documentation
+## Notes
 
-For more details and the better reading experience, please check out the [tutorials on demo site](https://chirpy.cotes.info/categories/tutorial/). In the meanwhile, a copy of the tutorial is also available on the [Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
-
-## Contributing
-
-The old saying, "Two heads are better than one." Consequently, welcome to report bugs, improve code quality or submit a new feature. For more information, see [contributing guidelines](.github/CONTRIBUTING.md).
-
-## Credits
-
-This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Bootstrap](https://getbootstrap.com/), [Font Awesome](https://fontawesome.com/) and some other wonderful tools (their copyright information can be found in the relevant files).
-
-:tada: Thanks to all the volunteers who contributed to this project, their GitHub IDs are on [this list](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors). Also, I won't forget those guys who submitted the issues or unmerged PR because they reported bugs, shared ideas or inspired me to write more readable documentation.
-
-## Support
-
-If you enjoy this theme or find it helpful, please consider becoming my sponsor, I'd really appreciate it! Click the button <kbd>:heart: Sponsor</kbd> at the top of the [Home Page](https://github.com/cotes2020/jekyll-theme-chirpy) and choose a link that suits you to donate; this will encourage and help me better maintain the project.
+If you're unsure on how to contribute or are unfamiliar with GitHub, you can see the [documentation]( https://docs.github.com/en) here.  
 
 ## License
 
 This work is published under [MIT](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE) License.
+
+[⬆️ UP](#Table-of-Contents)
