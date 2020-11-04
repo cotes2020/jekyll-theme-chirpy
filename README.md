@@ -3,7 +3,7 @@
 <p align="center">Welcome! This is a repository for (not limited to) student in Bioinformatics to share knowledge or tips and tricks in programming. Feel free to contribute if you have any suggestion.</p>
 <br>
 <p align="center">
-  <img alt="githubdark-logo" src="https://cdn.jsdelivr.net/gh/anggi3234/anggi3234.github.io@main/assets/img/sample/Bioinformatics.svg" width="580">
+  <img alt="githubdark-logo" src="https://cdn.jsdelivr.net/gh/anggi3234/anggi3234.github.io@master/assets/img/sample/Bioinformatics.svg" width="580">
   <br>
   <a href="https://github.com/StylishThemes/GitHub-Dark/tags">
     <img src="https://img.shields.io/github/v/tag/anggi3234/anggi3234.github.io?label=version" alt="Version">
@@ -35,7 +35,7 @@ This place is intended to help friends who are currently pursuing Bioinformatics
 
 ## Installation
 
->This installation tutorial is adapted from the [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) repository, the forked repository used as the Jekyll theme for the website. 
+>This installation tutorial is adapted from the [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) repository, the forked repository used as the Jekyll theme for the website.
 
 Prior to installation, you would need to install the necessary Jekyll dependencies: `Ruby`,  `Bundler`, `RubyGems`. You can find the tutorials to do that from [Jekyll Website](https://jekyllrb.com/docs/installation/) for the respective operating systems. Once installed, you can then fork and test the website on your local environment before submitting a pull request to contribute.
 
@@ -44,14 +44,14 @@ To ![fork](https://user-images.githubusercontent.com/136959/42383736-c4cb0db8-80
 
 ![Forking](https://github.com/anggi3234/anggi3234.github.io/master/assets/img/sample/forking.png?raw=true)
 
-Once done, you can see the copy of the repository in your own profile. Rename the repository to `USERNAME.github.io` and change the `USERNAME` to your Github username or the desired name. 
+Once done, you can see the copy of the repository in your own profile. Rename the repository to `USERNAME.github.io` and change the `USERNAME` to your Github username or the desired name.
 
 
 ![Renaming](https://github.com/anggi3234/anggi3234.github.io/master/assets/img/sample/renaming.png?raw=true)
 
 
 
-### Setting up your local environment 
+### Setting up your local environment
 
 Clone the the forked project to your local computer by:
 - Using the terminal
@@ -63,7 +63,7 @@ Clone the the forked project to your local computer by:
 - Using Github Desktop (You can use this if you prefer a GUI view)
 
 
-You will need to complete the installation for Jekyll plugins prior to setting up the build. 
+You will need to complete the installation for Jekyll plugins prior to setting up the build.
 
 Navigate to the directory of your project in your local computer and run:
 
@@ -109,7 +109,7 @@ What it does is:
     - files under `_posts`
     - folder `docs`
 
-2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`. 
+2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`.
 
 3. Automatically create a commit to save the changes.
 
@@ -168,7 +168,7 @@ Thanks for the contribution! :sparkles:
 
 
 ## Credit
-The web template (Jekyll theme) for this project is forked from [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) by [cotes2020](https://github.com/cotes2020). 
+The web template (Jekyll theme) for this project is forked from [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) by [cotes2020](https://github.com/cotes2020).
 
 
 ## Notes
