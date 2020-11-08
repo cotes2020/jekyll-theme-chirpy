@@ -24,9 +24,9 @@ Next, I set the label test to true. I will need this label later to identify the
 ```text  
 FROM build AS test  
 LABEL test=true  
-RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "trx;LogFileName=test_results.trx" Tests/CustomerApi.Test/CustomerApi.Test.csproj  
-RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "trx;LogFileName=test_results2.trx" Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj  
-RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "trx;LogFileName=test_results3.trx" Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj  
+RUN dotnet test -c Release --results-directory /testresults --logger "trx;LogFileName=test_results.trx" Tests/CustomerApi.Test/CustomerApi.Test.csproj  
+RUN dotnet test -c Release --results-directory /testresults --logger "trx;LogFileName=test_results2.trx" Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj  
+RUN dotnet test -c Release --results-directory /testresults --logger "trx;LogFileName=test_results3.trx" Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj  
 ```
 
 Thats already everything I have to change to run the tests inside the container and generate test results. If you run the build, you will see the successful tests in the output of the build step.
