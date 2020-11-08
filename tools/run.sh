@@ -56,26 +56,18 @@ _init() {
   cd "$WORK_DIR"
 
   if [[ -f Gemfile.lock ]]; then
-    rm -f Gemfile.lock
+   rm -f Gemfile.lock
   fi
 
   if [[ -d $CONTAINER ]]; then
-    rm -rf "$CONTAINER"
+   rm -rf "$CONTAINER"
   fi
 
   mkdir "$CONTAINER"
   cp -r ./* "$CONTAINER"
   cp -r ./.git "$CONTAINER"
 
-  if $docker; then
-    local _image_user=$(stat -c "%U" "$JEKYLL_DOCKER_HOME"/.)
-
-    if [[ $_image_user != $(whoami) ]]; then
-      # under Docker for Linux
-      chown -R "$(stat -c "%U:%G" "$JEKYLL_DOCKER_HOME"/.)" "$CONTAINER"
-    fi
-
-  fi
+  chmod -R 777 "$CONTAINER"    
 
   trap _cleanup INT
 }
