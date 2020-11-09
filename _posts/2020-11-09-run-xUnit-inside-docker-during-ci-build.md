@@ -42,7 +42,7 @@ That's already everything I have to change to run the tests inside the container
 
 If you run the build, you will see the successful tests in the output of the build step.
 
-<a style="text-align: center;" href="/assets/img/posts/The-tests-ran-inside-the-Docker-Container.jpg"><img loading="lazy" src="/assets/img/posts/The-tests-ran-inside-the-Docker-Container.jpg" alt="The tests ran inside the Docker container" /></a>
+<a style="text-align: center;" href="/assets/img/posts/The-tests-ran-inside-the-Docker-Container.JPG"><img loading="lazy" src="/assets/img/posts/The-tests-ran-inside-the-Docker-Container.JPG" alt="The tests ran inside the Docker container" /></a>
 
 The tests ran inside the Docker container. If you try to look at the Tests tab of the built-in Azure DevOps to see the test results, you won't see the tab.
 
@@ -93,7 +93,7 @@ To publish the test results, I use the PublishTestResult task of Azure DevOps. I
 Run the CI pipeline again and after it is finished, you will see the Tests tab on the summary page. Click on it and you will see that all tests ran successfully. Azure DevOps even gives you a trophy for that.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/The-Tests-tab-is-shown-and-you-get-even-a-trophy.jpg"><img loading="lazy" src="/assets/img/posts/The-Tests-tab-is-shown-and-you-get-even-a-trophy.jpg" alt="The Tests tab is shown and you get even a trophy" /></a>
+  <a href="/assets/img/posts/The-Tests-tab-is-shown-and-you-get-even-a-trophy.JPG"><img loading="lazy" src="/assets/img/posts/The-Tests-tab-is-shown-and-you-get-even-a-trophy.JPG" alt="The Tests tab is shown and you get even a trophy" /></a>
   
   <p>
     The Tests tab is shown and you get even a trophy

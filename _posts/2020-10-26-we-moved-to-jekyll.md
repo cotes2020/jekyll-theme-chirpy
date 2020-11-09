@@ -36,7 +36,7 @@ This migration reminded me of how awesome Docker is and how it can improve the e
 I tried to change as little as possible but the theme I am using has some nice eye candy features. The biggest improvement is the built-in dark mode which enables users to switch between a light and dark theme. Another nice feature is the listing of posts inside a category including their publish dates.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/Display-all-Posts-of-a-Category.jpg"><img loading="lazy" src="/assets/img/posts/Display-all-Posts-of-a-Category.jpg" alt="Display all Posts of a Category" /></a>
+  <a href="/assets/img/posts/Display-all-Posts-of-a-Category.JPG"><img loading="lazy" src="/assets/img/posts/Display-all-Posts-of-a-Category.JPG" alt="Display all Posts of a Category" /></a>
   
   <p>
    Display all posts of a category
@@ -46,7 +46,7 @@ I tried to change as little as possible but the theme I am using has some nice e
 The last feature I really like is the table of content on the right side which shows you automatically where you are at the moment and also lets you create links to headlines.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/Table-of-contents-in-Jekyll.jpg"><img loading="lazy" src="/assets/img/posts/Table-of-contents-in-Jekyll.jpg" alt="Table of contents in Jekyll" /></a>
+  <a href="/assets/img/posts/Table-of-contents-in-Jekyll.JPG"><img loading="lazy" src="/assets/img/posts/Table-of-contents-in-Jekyll.JPG" alt="Table of contents in Jekyll" /></a>
   
   <p>
    Table of contents in Jekyll
