@@ -191,7 +191,7 @@ You can also find the code of the CI pipeline on <a href="https://github.com/Wol
 Save the pipeline and run it. The build should succeed and a new image should be pushed to Docker Hub.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/11/The-pipeline-ran-successfully-and-pushed-the-image.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/The-pipeline-ran-successfully-and-pushed-the-image.jpg" alt="The DevOps CI pipeline ran successfully and pushed the image" /></a>
+  <a href="/assets/img/posts/2020/11/The-pipeline-ran-successfully-and-pushed-the-image.JPG"><img loading="lazy" src="/assets/img/posts/2020/11/The-pipeline-ran-successfully-and-pushed-the-image.JPG" alt="The DevOps CI pipeline ran successfully and pushed the image" /></a>
   
   <p>
     The pipeline ran successfully
