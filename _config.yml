@@ -4,39 +4,29 @@
 # © 2017-2019 Cotes Chung
 # MIT licensed
 
-
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: Chirpy                          # the main title
+title: Daily Co # the main title
+tagline: 차근차근 성장하고있는<br/>아기 개발자 👩🏻‍💻 # it will display as the sub-title
+description: >- # used by seo meta and the atom feed
+  아기 개발자의 성장 발자국 👣
 
-tagline: A text-focused Jekyll theme.  # it will display as the sub-title
-
-description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
-
-# Replace with the website url, e.g. 'https://username.github.io'
-url: 'protocol://domain'
-
-author: your_full_name                  # change to your full name
-
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
+url: "https://dailyco.github.io" # Replace with the website url, e.g. 'https://username.github.io'
+author: YuJin Kim # change to your full name
+avatar: /assets/img/sample/avatar.jpg # support internet resources
 
 github:
-  username: github_username             # change to your github username
-
-twitter:
-  username: twitter_username            # change to your twitter username
-
+  username: dailyco # change to your github username
+# twitter:
+#   username: twitter_username            # change to your twitter username
 social:
-  name: your_full_name                  # it will shows as the copyright owner in Footer
-  email: example@doamin.com             # change to your email address
+  name: dailyco # it will shows as the copyright owner in Footer
+  email: alwayspring103@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    # - https://twitter.com/username      # change to your twitter homepage
+    - https://github.com/dailyco # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -45,29 +35,27 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 #--------------------------
 
-
 # Only if your site type is GitHub Project sites and doesn't have a custom domain,
 # change below value to '/projectname'.
-baseurl: ''
+baseurl: ""
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Seoul
 
 google_analytics:
-  id: ''          # Fill with your Google Analytics ID
+  id: "UA-150778693-1" # '150778693'          # Fill with your Google Analytics ID
   pv:
     # The Google Analytics pageviews switch.
     # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
     enabled: false
     # the next options only valid when `google_analytics.pv` is enabled.
-    proxy_url: ''
-    proxy_endpoint: ''
-    cache: false  # pv data local cache, good for the users from GFW area.
+    proxy_url: ""
+    proxy_endpoint: ""
+    cache: false # pv data local cache, good for the users from GFW area.
 
 disqus:
-  comments: false  # boolean type, the global switch for posts comments.
-  shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-
+  comments: true # boolean type, the global switch for posts comments.
+  shortname: "dailyco" # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 # Prefer color scheme setting, available values:
 #
@@ -79,21 +67,16 @@ disqus:
 #     dark   - Use the dark color scheme
 #
 theme_mode: dual
-
 # boolean type, global switch for ToC in posts.
 toc: true
-
 paginate: 10
-
 markdown: kramdown
-
 highlighter: rouge
-
 kramdown:
   input: GFM
   syntax_highlighter: rouge
   syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
-    css_class: 'highlight'
+    css_class: "highlight"
     # default_lang: console
     span:
       line_numbers: false
@@ -104,68 +87,53 @@ kramdown:
 # DO NOT change this unless you're a Pro user on Jekyll and Web development,
 # or you think you're smart enough to change other relevant URLs within this template.
 permalink: /posts/:title/
-
 defaults:
-  -
-    scope:
-      path: ""          # An empty string here means all files in the project
+  - scope:
+      path: "" # An empty string here means all files in the project
       type: posts
     values:
       layout: post
-      comments: true    # Enable comments in posts.
-      toc: true         # Display TOC column in posts.
+      comments: true # Enable comments in posts.
+      toc: true # Display TOC column in posts.
       location: Post
       breadcrumb:
-        -
-          label: Posts
+        - label: Posts
           url: /
-  -
-    scope:
+  - scope:
       path: _drafts
     values:
       comments: false
-  -
-    scope:
+  - scope:
       path: tags
     values:
       tab_active: Tags
       location: Tag
       breadcrumb:
-        -
-          label: Home
+        - label: Home
           url: /
-        -
-          label: Tags
+        - label: Tags
           url: /tabs/tags/
-  -
-    scope:
+  - scope:
       path: categories
     values:
       tab_active: Categories
       location: Category
       breadcrumb:
-        -
-          label: Home
+        - label: Home
           url: /
-        -
-          label: Categories
+        - label: Categories
           url: /tabs/categories/
-  -
-    scope:
+  - scope:
       path: tabs
     values:
       layout: page
-      dynamic_title: true    # Hide title in mobile screens.
+      dynamic_title: true # Hide title in mobile screens.
       breadcrumb:
-        -
-          label: Home
+        - label: Home
           url: /
-
-
 sass:
   sass_dir: /assets/css
   style: compressed
-
 compress_html:
   clippings: all
   comments: all
@@ -174,17 +142,15 @@ compress_html:
   blanklines: false
   ignore:
     envs: []
-
 exclude:
-  - vendor        # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
+  - vendor # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
   - Gemfile.lock
   - Gemfile
   - tools
   - docs
   - README.md
   - LICENSE
-
-sitemap_exclude:  # Sitemap will exclude the following items.
+sitemap_exclude: # Sitemap will exclude the following items.
   fuzzy:
     - /assets/
   accurate:
