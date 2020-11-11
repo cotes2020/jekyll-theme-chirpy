@@ -3,7 +3,7 @@ title: Build .NET Core in a CI Pipeline in Azure DevOps
 date: 2020-10-13T17:20:53+02:00
 author: Wolfgang Ofner
 categories: [DevOps]
-tags: [.net core, Azure Devops, CI, Continous Integration, DevOps, Github]
+tags: [NET Core, Azure Devops, CI, Continous Integration, DevOps, Github]
 ---
 A crucial feature of DevOps is to give the developer fast feedback if their code changes work. This can be done by automatically building code and running tests every time changes are checked-in. Today, I will show how to create a CI pipeline (continuous integration) for ASP .NET Core.
 

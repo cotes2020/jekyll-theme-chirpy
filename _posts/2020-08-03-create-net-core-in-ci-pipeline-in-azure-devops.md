@@ -4,7 +4,7 @@ date: 2020-08-03T19:24:06+02:00
 author: Wolfgang Ofner
 layout: post
 categories: [DevOps]
-tags: [.net core, Azure Devops, CI, continuous integration, DevOps]
+tags: [NET Core, Azure Devops, CI, continuous integration, DevOps]
 ---
 A crucial feature of DevOps is to give the developer fast feedback if their code changes work. This can be done by automatically building code and running tests every time changes are checked-in. Today, I will show how to create a CI pipeline (continuous integration) for ASP .NET Core.
 

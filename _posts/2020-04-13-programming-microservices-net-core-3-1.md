@@ -3,7 +3,7 @@ title: Programming a Microservice with .NET Core 3.1
 date: 2020-04-13T17:53:40+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
+tags: [NET Core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
 ---
 In [my last post](https://www.programmingwithwolfgang.com/microservices-getting-started/), I talked about the theory of a microservice. Today it is going to be more practical. I will create two microservices using ASP .NET Core 3.1. Over the next posts., I will extend the microservices using CQRS, docker and docker-compose, RabbitMQ and automatic builds and deployments.
 

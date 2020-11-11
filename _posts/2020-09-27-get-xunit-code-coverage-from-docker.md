@@ -42,7 +42,7 @@ I am using FakeItEasy to mock objects, FluentAssertions for a more readable asse
 
 After installing coverlet, the next step is to collect the coverage results. To do that, I edit the Dockerfile to enable collecting the coverage results, setting the output format, and the output directory. The code of the tests looks as follows:
 
-```text  
+```docker 
 FROM build AS test  
 LABEL test=true  
 RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "trx;LogFileName=test_results.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=json%2cCobertura /p:CoverletOutput=/testresults/coverage/ -p:MergeWith=/testresults/coverage/coverage.json Tests/CustomerApi.Test/CustomerApi.Test.csproj  
@@ -95,7 +95,7 @@ The whole code to copy the everything out of the container, display the test res
 Save the changes and run the CI pipeline. After the build is finished, you will see the Code Coverage tab in the summary overview where you can see the coverage of each of your projects.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/09/Summary-of-the-Code-Coverage-Results.jpg"><img loading="lazy" src="/assets/img/posts/2020/09/Summary-of-the-Code-Coverage-Results.jpg" alt="Summary of the Code Coverage Results" /></a>
+  <a href="/assets/img/posts/2020/09/Code-Coverage-Results.jpg"><img loading="lazy" src="/assets/img/posts/2020/09/Code-Coverage-Results.jpg" alt="Summary of the Code Coverage Results" /></a>
   
   <p>
     Summary of the Code Coverage Results

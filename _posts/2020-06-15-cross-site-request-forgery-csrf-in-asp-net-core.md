@@ -3,7 +3,7 @@ title: Cross Site Request Forgery (CSRF) in ASP .NET Core
 date: 2020-06-15T08:42:05+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core 3.1, ASP.NET Core MVC, 'C#', CSRF, OWASP Top 10, Security]
+tags: [NET Core 3.1, ASP.NET Core MVC, 'C#', CSRF, OWASP Top 10, Security]
 ---
 Cross Site Request Forgery, also known as session riding is an exploit where attackers trick users to send requests that they don&#8217;t know about and don&#8217;t want to do. It was on the OWASP Top 10 every year, except in 2017. Although it is not on the current list, it is still important that developers take care of it and don&#8217;t leave any vulnerabilities in their application. Today I will describe what Cross Site Request Forgery is and how it can be prevented in ASP .NET Core MVC using .NET Core 3.1
 

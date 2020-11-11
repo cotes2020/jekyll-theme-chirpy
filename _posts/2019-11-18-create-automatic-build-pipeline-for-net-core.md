@@ -3,7 +3,7 @@ title: Create Automatic Builds for .Net and .Net Core Applications with Azure De
 date: 2019-11-18T16:15:30+01:00
 author: Wolfgang Ofner
 categories: [DevOps]
-tags: [.net core, ASP.NET Core MVC, ASP.NET MVC, Azure Devops, Azure Devops Services Continous Integration]
+tags: [NET Core, ASP.NET Core MVC, ASP.NET MVC, Azure Devops, Azure Devops Services Continous Integration]
 ---
 Automated build processes should be a no-brainer nowadays but unfortunately, I still come across quite many projects which do their builds manually. In today&#8217;s post, I want to give an introduction to setting up an automated build pipeline for a .net and .net core application with Microsoft&#8217;s Azure DevOps Server. The DevOps Server is the on-premise version of Azure DevOps Services, but they are so similar that its negligible which one you use for this demo. I will use Azure DevOps Services. You can create a free account <a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank" rel="noopener noreferrer">here</a>.
 

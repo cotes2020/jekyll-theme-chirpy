@@ -3,7 +3,7 @@ title: 'Whats new in C# 7.0'
 date: 2017-10-31T16:11:26+01:00
 author: Wolfgang Ofner
 categories: [Programming]
-tags: [.Net, 'C#']
+tags: [NET, 'C#']
 ---
 Recently I made a post, about the new features in C# 6.0 and in this post I will show you whats new in C# 7.0.
 

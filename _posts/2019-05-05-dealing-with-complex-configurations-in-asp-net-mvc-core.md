@@ -3,7 +3,7 @@ title: Dealing with Complex Configurations in ASP.NET Core MVC
 date: 2019-05-05T11:14:45+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core, ASP.NET Core MVC, 'C#']
+tags: [NET Core, ASP.NET Core MVC, 'C#']
 ---
 If you have to deal with a large number of hosting environments, configuring all of them in the Startup class can become messy. In the following sections, I will describe different ways that the Startup class can be used for complex configurations. You can find the source code of the following demo on <a href="https://github.com/WolfgangOfner/MVC-Core-Complex-Configurations" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

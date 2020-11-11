@@ -3,7 +3,7 @@ title: '.Net Standard - Getting Started'
 date: 2019-02-12T09:35:00+01:00
 author: Wolfgang Ofner
 categories: [Programming]
-tags: [.Net, .net core, .net Standard, 'C#']
+tags: [NET, NET Core, NET Standard, 'C#']
 ---
 Today, some of my colleagues had a discussion about .Net Standard. Is it a new framework, an extension to classic .Net framework, or to .Net core? Confusion was great and in today&#8217;s post, I would like to shed light on the matter.
 

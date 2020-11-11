@@ -3,7 +3,7 @@ title: CQRS in ASP .NET Core 3.1
 date: 2020-04-16T13:03:24+02:00
 author: Wolfgang Ofner
 categories: [Design Pattern, ASP.NET]  
-tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, mediator, MediatR, microservice, RabbitMQ Swagger]
+tags: [NET Core 3.1, 'C#', CQRS, docker, docker-compose, mediator, MediatR, microservice, RabbitMQ Swagger]
 ---
 CQRS stands for Command Query Responsibility Segregation and is used to use different models for read and for write operations. In this post, I will explain how I implemented CQRS in my microservices and how to use the mediator pattern with it to get even more abstraction.
 

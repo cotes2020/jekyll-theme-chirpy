@@ -3,7 +3,7 @@ title: Create a .NET Core Visual Studio Template
 date: 2020-07-27T19:18:58+02:00
 author: Wolfgang Ofner
 categories: [Programming, Miscellaneous]
-tags: [.net core 3.1, 'C#', docker, Visual Studio]
+tags: [NET Core 3.1, 'C#', docker, Visual Studio]
 ---
 Over the last couple of weeks, I created several microservices with the same project structure. Setting up a new solution was quite repetitive, time-consuming, and no to be honest no fun. Since my solutions have the same structure, I created a Visual Studio template that sets up everything for me. Today, I want to show you how to create your Visual Studio template with ASP .Net MVC with .NET Core 3.1 and Docker.
 
@@ -232,7 +232,7 @@ When you don&#8217;t have any error, run the project and you should see Customer
 
 Adding Docker support to your Visual Studio Template is very simple. Right-click on your Template.Api project and select Add &#8211;> Docker Support. Select an operating system and click OK. This adds a Dockerfile and that&#8217;s it already.
 
-```text  
+```docker
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base  
 WORKDIR /app  
 EXPOSE 80

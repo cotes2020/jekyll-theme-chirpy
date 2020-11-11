@@ -13,7 +13,7 @@ You can find the code of this demo on [Github](https://github.com/WolfgangOfner/
 
 Running unit tests inside a Docker container is more or less the same as building a project. First, I copy all my test projects inside the container using the COPY command:
 
-```text  
+```docker 
 COPY ["Tests/CustomerApi.Test/CustomerApi.Test.csproj", "Tests/CustomerApi.Test/"]  
 COPY ["Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj", "Tests/CustomerApi.Service.Test/"]  
 COPY ["Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj", "Tests/CustomerApi.Data.Test/"]  
@@ -21,7 +21,7 @@ COPY ["Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj", "Tests/Custome
 
 After copying, I execute dotnet restore on all test projects.
 
-```text  
+```docker 
 RUN dotnet restore "Tests/CustomerApi.Test/CustomerApi.Test.csproj"
 RUN dotnet restore "Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj"
 RUN dotnet restore "Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj" 
@@ -29,7 +29,7 @@ RUN dotnet restore "Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj"
 
 Next, I set the label test to the build id. I will need this label later to identify the right layer of the container to copy the test results out of it. Then, I use dotnet test to run the tests in my three test projects. Additionally, I write the test result into the testresults folder and give them different names, e.g. test_results.trx.
 
-```text  
+```docker 
 FROM build AS test  
 ARG BuildId
 LABEL test=${BuildId} 
@@ -42,9 +42,15 @@ That's already everything I have to change to run the tests inside the container
 
 If you run the build, you will see the successful tests in the output of the build step.
 
-<a style="text-align: center;" href="/assets/img/posts/The-tests-ran-inside-the-Docker-Container.JPG"><img loading="lazy" src="/assets/img/posts/The-tests-ran-inside-the-Docker-Container.JPG" alt="The tests ran inside the Docker container" /></a>
+<div class="col-12 col-sm-10 aligncenter">
+<a href="/assets/img/posts/2020/11/The-tests-ran-inside-the-Docker-Container.JPG"><img loading="lazy" src="/assets/img/posts/2020/11/The-tests-ran-inside-the-Docker-Container.JPG" alt="The tests ran inside the Docker container" /></a>
 
-The tests ran inside the Docker container. If you try to look at the Tests tab of the built-in Azure DevOps to see the test results, you won't see the tab.
+ <p>
+    The tests ran inside the Docker container
+  </p>
+</div>
+
+If you try to look at the Tests tab of the built-in Azure DevOps to see the test results, you won't see the tab.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/09/The-build-was-successful-but-not-Test-Results-are-showing.jpg"><img loading="lazy" src="/assets/img/posts/2020/09/The-build-was-successful-but-not-Test-Results-are-showing.jpg" alt="The build was successful but not Test Results are showing" /></a>
@@ -93,7 +99,7 @@ To publish the test results, I use the PublishTestResult task of Azure DevOps. I
 Run the CI pipeline again and after it is finished, you will see the Tests tab on the summary page. Click on it and you will see that all tests ran successfully. Azure DevOps even gives you a trophy for that.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/The-Tests-tab-is-shown-and-you-get-even-a-trophy.JPG"><img loading="lazy" src="/assets/img/posts/The-Tests-tab-is-shown-and-you-get-even-a-trophy.JPG" alt="The Tests tab is shown and you get even a trophy" /></a>
+  <a href="/assets/img/posts/2020/11/The-Tests-tab-is-shown-and-you-get-even-a-trophy.JPG"><img loading="lazy" src="/assets/img/posts/2020/11/The-Tests-tab-is-shown-and-you-get-even-a-trophy.JPG" alt="The Tests tab is shown and you get even a trophy" /></a>
   
   <p>
     The Tests tab is shown and you get even a trophy

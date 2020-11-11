@@ -3,7 +3,7 @@ title: Middleware in ASP.NET Core MVC
 date: 2019-05-01T11:17:11+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core, ASP.NET Core MVC, 'C#']
+tags: [NET Core, ASP.NET Core MVC, 'C#']
 ---
 Middleware is the term used for the components that are combined to form the request pipeline. This pipeline is arranged like a chain. The request is either returned by the middleware or passed to the next one until a response is sent back. Once a response is created, the response will travel the chain back, passing all middlewares again, which allows them to modify this response.
 

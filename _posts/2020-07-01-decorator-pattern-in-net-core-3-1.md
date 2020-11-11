@@ -3,7 +3,7 @@ title: Decorator Pattern in .NET Core 3.1
 date: 2020-07-01T08:51:30+02:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
-tags: [.net core 3.1, 'C#', software architecture]
+tags: [NET Core 3.1, 'C#', software architecture]
 ---
 The decorator pattern is a structural design pattern used for dynamically adding behavior to a class without changing the class. You can use multiple decorators to extend the functionality of a class whereas each decorator focuses on a single-tasking, promoting separations of concerns. Decorator classes allow functionality to be added dynamically without changing the class thus respecting the open-closed principle.
 

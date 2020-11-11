@@ -3,7 +3,7 @@ title: View Components in ASP.NET Core MVC
 date: 2019-05-09T11:41:52+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core, ASP.NET Core MVC, 'C#', view component]
+tags: [NET Core, ASP.NET Core MVC, 'C#', view component]
 ---
 View components are a new feature in ASP.NET Core MVC which replaces the child action feature from the previous version. View components are classes which provide action-style logic to support partial views. This means that complex content can be embedded in views with C# code which can be easily maintained and unit tested.  You can find the source code for the following demo on <a href="https://github.com/WolfgangOfner/MVC-View-Components" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

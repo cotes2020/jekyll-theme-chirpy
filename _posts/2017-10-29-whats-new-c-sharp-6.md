@@ -3,7 +3,7 @@ title: 'Whats new in C# 6.0'
 date: 2017-10-29T17:26:58+01:00
 author: Wolfgang Ofner
 categories: [Programming]
-tags: [.Net, 'C#']
+tags: [NET, 'C#']
 ---
 C# 6.0 is around for a while but in the last couple weeks, I spoke with many programmers who don&#8217;t know anything about the new features. Therefore I want to present some of the new features in this post.
 

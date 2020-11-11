@@ -3,7 +3,7 @@ title: Flyweight Pattern in .NET Core 3.1
 date: 2020-07-12T21:14:29+02:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
-tags: [.net core 3.1, 'C#', software architecture]
+tags: [NET Core 3.1, 'C#', software architecture]
 ---
 The Flyweight pattern is a structural design pattern that helps you to share objects and therefore reduce the memory usage of your application.
 

@@ -45,7 +45,7 @@ On the next page, select Docker Hub as your Registry type, enter your Docker ID,
 After setting up the service connection, create a new CI Pipeline. Select the source code location and then any template. After the yml file is created, delete its content. For more details on creating a Pipeline, see my post "<a href="/run-the-ci-pipeline-during-pull-request/" target="_blank" rel="noopener noreferrer">Run the CI Pipeline during a Pull Request</a>".
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/Create-an-empty-DevOps-CI-pipeline.JPG"><img loading="lazy" src="/assets/img/posts/Create-an-empty-DevOps-CI-pipeline.JPG" alt="Create an empty DevOps CI pipeline" /></a>
+  <a href="/assets/img/posts/2020/11/Create-an-empty-DevOps-CI-pipeline.JPG"><img loading="lazy" src="/assets/img/posts/2020/11/Create-an-empty-DevOps-CI-pipeline.JPG" alt="Create an empty DevOps CI pipeline" /></a>
   
   <p>
     Create an empty Pipeline
@@ -108,7 +108,7 @@ stages:
 You can either add the YAML code from above or click on the Docker task on the right side. You can also easily edit a task by clicking Settings right above the task. This will open the task on the right side.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/Edit-the-Docker-task.JPG"><img loading="lazy" src="/assets/img/posts/Edit-the-Docker-task.JPG" alt="Edit the Docker task in the DevOps CI pipeline" /></a>
+  <a href="/assets/img/posts/2020/11/Edit-the-Docker-task.JPG"><img loading="lazy" src="/assets/img/posts/2020/11/Edit-the-Docker-task.JPG" alt="Edit the Docker task in the DevOps CI pipeline" /></a>
   
   <p>
     Edit the Docker task
@@ -191,7 +191,7 @@ You can also find the code of the CI pipeline on <a href="https://github.com/Wol
 Save the pipeline and run it. The build should succeed and a new image should be pushed to Docker Hub.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/The-pipeline-ran-successfully-and-pushed-the-image.jpg"><img loading="lazy" src="/assets/img/posts/The-pipeline-ran-successfully-and-pushed-the-image.jpg" alt="The DevOps CI pipeline ran successfully and pushed the image" /></a>
+  <a href="/assets/img/posts/2020/11/The-pipeline-ran-successfully-and-pushed-the-image.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/The-pipeline-ran-successfully-and-pushed-the-image.jpg" alt="The DevOps CI pipeline ran successfully and pushed the image" /></a>
   
   <p>
     The pipeline ran successfully
@@ -201,7 +201,7 @@ Save the pipeline and run it. The build should succeed and a new image should be
 The pipeline ran successfully and if I go to <a href="https://hub.docker.com/r/wolfgangofner/customerapi/tags" target="_blank" rel="noopener noreferrer">my repository on Docker Hub</a>, I should see a new image with the tag 307 there.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/The-new-image-got-pushed-to-Docker-Hub.JPG"><img loading="lazy" src="/assets/img/posts/The-new-image-got-pushed-to-Docker-Hub.JPG" alt="The new image got pushed to Docker Hub" /></a>
+  <a href="/assets/img/posts/2020/11/The-new-image-got-pushed-to-Docker-Hub.JPG"><img loading="lazy" src="/assets/img/posts/2020/11/The-new-image-got-pushed-to-Docker-Hub.JPG" alt="The new image got pushed to Docker Hub" /></a>
   
   <p>
     The new image got pushed to Docker Hub

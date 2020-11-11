@@ -3,7 +3,7 @@ title: Getting to know the Startup Class of ASP.Net Core MVC
 date: 2019-04-29T11:15:53+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core, ASP.NET Core MVC, 'C#']
+tags: [NET Core, ASP.NET Core MVC, 'C#']
 ---
 Every .NET Core web application has a Program class with a static Main method.
 

@@ -3,7 +3,7 @@ title: Understanding Tag Helpers in ASP.NET Core MVC
 date: 2019-05-11T11:56:04+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core, ASP.NET Core MVC, 'C#', tag helper]
+tags: [NET Core, ASP.NET Core MVC, 'C#', tag helper]
 ---
 Tag helpers are a new feature that has been introduced in ASP.NET Core MVC and are C# classes that transform HTML elements in a view. Common uses for tag helpers include URLs for forms using the application&#8217;s routing configuration, ensuring that elements of a specific type are styled consistently, and replacing custom shorthand elements with commonly used fragments of content.
 

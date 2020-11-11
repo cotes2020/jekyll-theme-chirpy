@@ -13,7 +13,7 @@ You can find the code of this demo on [Github](https://github.com/WolfgangOfner/
 
 Running unit tests inside a Docker container is more or less as building a project. First, I copy all my test projects inside the container using the COPY command:
 
-```text  
+```docker
 COPY ["Tests/CustomerApi.Test/CustomerApi.Test.csproj", "Tests/CustomerApi.Test/"]  
 COPY ["Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj", "Tests/CustomerApi.Service.Test/"]  
 COPY ["Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj", "Tests/CustomerApi.Data.Test/"]  
@@ -21,7 +21,7 @@ COPY ["Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj", "Tests/Custome
 
 Next, I set the label test to true. I will need this label later to identify the right layer of the container to copy the test results out of it. Then, I use dotnet test to run the tests in my three test projects. Additionally, I write the test result into the testresults folder and give them different names, e.g. test_results.trx.
 
-```text  
+```docker
 FROM build AS test  
 LABEL test=true  
 RUN dotnet test -c Release --results-directory /testresults --logger "trx;LogFileName=test_results.trx" Tests/CustomerApi.Test/CustomerApi.Test.csproj  

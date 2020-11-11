@@ -3,7 +3,7 @@ title: '.Net Core 3.0 - What''s new'
 date: 2019-12-07T11:14:37+01:00
 author: Wolfgang Ofner
 categories: [Programming]
-tags: [.net core, .net core 3.0, 'C#']
+tags: [NET Core, NET Core 3.0, 'C#']
 ---
 Microsoft released with .net core 3.0 the next major version of .net core which brings improvements to the deployment, .net core WPF and WinForms applications and much more. Today, I want to showcase some of these new features.
 

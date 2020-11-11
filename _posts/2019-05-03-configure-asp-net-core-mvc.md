@@ -3,7 +3,7 @@ title: Configure ASP.NET Core MVC
 date: 2019-05-03T11:17:40+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core, ASP.NET Core MVC, 'C#']
+tags: [NET Core, ASP.NET Core MVC, 'C#']
 ---
 Some configurations like the connection string usually change on every environment your application is running on. Instead of hard-coding this information into your application, ASP.NET Core enables you to provide configuration data through different sources such as environment variables, command-line arguments or JSON files. You can find the source code for this demo on <a href="https://github.com/WolfgangOfner/MVC-Core-Configure" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

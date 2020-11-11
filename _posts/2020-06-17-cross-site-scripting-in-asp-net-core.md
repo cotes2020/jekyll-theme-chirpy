@@ -3,7 +3,7 @@ title: Cross Site Scripting (XSS) in ASP .NET Core
 date: 2020-06-17T09:42:15+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core 3.1, ASP.NET Core MVC, 'C#', Javascript, OWASP Top 10, Security]
+tags: [NET Core 3.1, ASP.NET Core MVC, 'C#', Javascript, OWASP Top 10, Security]
 ---
 Cross Site Scripting (XSS) is an attack where attackers inject code into a website which is then executed. XSS is on place seven of the <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/" target="_blank" rel="noopener noreferrer">OWASP Top 10 list of 2017</a> but could be easily avoided. In this post, I will talk about the concepts of cross site scripting and how you can protect your application against these attacks.
 

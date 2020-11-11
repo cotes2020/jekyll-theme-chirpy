@@ -3,7 +3,7 @@ title: Release faster with Feature Toggles
 date: 2019-02-17T14:59:31+01:00
 author: Wolfgang Ofner
 categories: [DevOps]
-tags: [.net core, 'C#', Continous Deployment]
+tags: [NET Core, 'C#', Continous Deployment]
 ---
 Nowadays, more and more teams do (finally) continuous integration and continuous deployment (CI/CD). Unfortunately, even if the development team was able to do CI/CD, the business department is often a limiting factor since they want to test the feature before it is deployed. So only teams without a limiting business department can do CI/CD? No, the solution to this problem are feature toggles. Today, I will show how you can CI/CD and still satisfy your bureaucratic business department.
 

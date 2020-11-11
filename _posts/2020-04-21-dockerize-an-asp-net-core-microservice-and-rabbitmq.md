@@ -3,7 +3,7 @@ title: Dockerize an ASP .NET Core Microservice and RabbitMQ
 date: 2020-04-21T11:24:50+02:00
 author: Wolfgang Ofner
 categories: [Docker, ASP.NET]
-tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
+tags: [NET Core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
 ---
 <a href="/rabbitmq-in-an-asp-net-core-3-1-microservice/" target="_blank" rel="noopener noreferrer">In my last post</a>, I added RabbitMQ to my two microservices which finished all the functional requirements. Microservices became so popular because they can be easily deployed using Docker. Today I will dockerize my microservices and create Docker container which can be run anywhere as long as Docker is installed. I will explain most of the Docker commands but basic knowledge about starting and stopping containers is recommended.
 
@@ -53,7 +53,7 @@ The Dockerfile is a set of instructions to build and run an image. Visual Studio
 
 ### Understanding the multi-stage Dockerfile
 
-```text  
+```docker
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base  
 WORKDIR /app  
 EXPOSE 80  
@@ -62,7 +62,7 @@ EXPOSE 443
 
 The first part downloads the .NET Core runtime 3.1 image from Docker hub and gives it the name base which will be used later on. Then it sets the working directory to /app which will also be later used. Lastly, the ports 80 and 443 are exposed which tells Docker to listen to these two ports when the container is running.
 
-```text  
+```docker 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build  
 WORKDIR /src  
 COPY ["CustomerApi/CustomerApi.csproj", "CustomerApi/"]  
@@ -78,14 +78,14 @@ RUN dotnet build "CustomerApi.csproj" -c Release -o /app/build
 
 The next section downloads the .NET Core 3.1 SDK from Dockerhub and names it build. Then the working directory is set to /src and all project files (except test projects) of the solution are copied inside the container. Then dotnet restore is executed to restore all NuGet packages and the working directory is changed to the directory of the API project. Note that the path starts with /src, the working directory path I set before I copied the files inside the container. Lastly, dotnet build is executed which builds the project with the Release configuration into the path /app/build.
 
-```text  
+```docker
 FROM build AS publish  
 RUN dotnet publish "CustomerApi.csproj" -c Release -o /app/publish  
 ```
 
 The build image in the first line of the next section is the SDK image which we downloaded before and named build. We use it to run dotnet publish which publishes the CustomerApi project.
 
-```text  
+```docker 
 FROM base AS final  
 WORKDIR /app  
 COPY &#8211;from=publish /app/publish .  

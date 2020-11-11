@@ -3,7 +3,7 @@ title: Dependency Injection in ASP.NET Core MVC
 date: 2019-05-07T11:32:49+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core, ASP.NET Core MVC, 'C#', Dependency Injection]
+tags: [NET Core, ASP.NET Core MVC, 'C#', Dependency Injection]
 ---
 Dependency Injection is a technique that helps to create flexible applications and simplifies unit testing. .NET Core brings dependency injection out of the box, therefore you don&#8217;t have to use any third party tools like Autofac or Ninject anymore.
 

@@ -3,7 +3,7 @@ title: Set up Docker-Compose for ASP .NET Core 3.1 Microservices
 date: 2020-04-24T11:04:16+02:00
 author: Wolfgang Ofner
 categories: [Docker]
-tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
+tags: [NET Core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
 ---
 <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my last post</a>, I described how to dockerize my microservices. To start the whole application, you have to start both microservices and RabbitMq. Today, I will add a docker-compose file which is a tool to easily run multi-container applications.
 

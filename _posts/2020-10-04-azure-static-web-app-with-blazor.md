@@ -3,7 +3,7 @@ title: Azure Static Web App with Blazor
 date: 2020-10-04T16:51:05+02:00
 author: Wolfgang Ofner
 categories: [Cloud, DevOps]
-tags: [.net core, Azure Function, Azure Static Web App, Blazor, 'C#']
+tags: [NET Core, Azure Function, Azure Static Web App, Blazor, 'C#']
 ---
 Last week at Ignite Microsoft announced that the preview of Azure Static Web App now also supports Blazor WebAssembly. In this post, I will show how to create a Blazor client-side (WebAssembly) application and an Azure Function to retrieve some data. Then Azure Static Web App will automatically deploy the Blazor app and the Function.
 

@@ -3,7 +3,7 @@ title: Document your Microservice with Swagger
 date: 2020-04-15T17:37:49+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [.net core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
+tags: [NET Core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
 ---
 Swagger is an open-source toolset that can be easily integrated into your solution and which helps you to document and test your APIs. It is so simple that even none technical people can use it. <a href="/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my last post</a>, I created two Microservices and today I will explain how I integrated Swagger.
 
