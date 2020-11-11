@@ -27,7 +27,7 @@ docker run --volume="$($PWD):/srv/jekyll" -p 4000:4000 -it jekyll/jekyll jekyll 
 ```
 The --force_polling flag enables a watcher that re-creates the files everytime something changes.
 
-## Setting up the local envrionment
+## Setting up the live environment
 
 Currently, the website needs to be built and the _site folder needs to be checked in. Build the site with the following command:
 
