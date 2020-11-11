@@ -2,4 +2,4 @@ User-agent: *
 
 Disallow: /norobots/
 
-Sitemap: https://www.programmingwithwolfgang.com/sitemap.xml
+Sitemap: http://0.0.0.0:4000/sitemap.xml
