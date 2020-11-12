@@ -51,7 +51,7 @@ I try to keep the controller methods as simple as possible. They only call diffe
 
 ```csharp
 [HttpPost]
-public async Task<ActionResult<Customer>> Customer([FromBody] CreateCustomerModel createCustomerModel)
+public async Task<ActionResult<Customer>> Customer(CreateCustomerModel createCustomerModel)
 {
     try
     {

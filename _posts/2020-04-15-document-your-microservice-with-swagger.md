@@ -72,7 +72,7 @@ Additionally, I add the response codes and the ProducesResponseType attribute wh
 [ProducesResponseType(StatusCodes.Status400BadRequest)]  
 [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]  
 [HttpPost]  
-public async Task<ActionResult<Customer>> Customer([FromBody] CreateCustomerModel createCustomerModel)  
+public async Task<ActionResult<Customer>> Customer(CreateCustomerModel createCustomerModel)  
 {  
 ```
 

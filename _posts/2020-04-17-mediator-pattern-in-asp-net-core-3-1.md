@@ -69,7 +69,7 @@ In the OrderController, I have the Order method which will create a new Order ob
 
 ```csharp  
 [HttpPost]
-public async Task<ActionResult<Order>> Order([FromBody] OrderModel orderModel)
+public async Task<ActionResult<Order>> Order(OrderModel orderModel)
 {
     try
     {

@@ -68,9 +68,11 @@ _init() {
 }
 
 _build() {
+    chmod -R 777 "$CONTAINER"  
+
   cd "$CONTAINER"
   echo "$ cd $(pwd)"
-
+  
   bash "_scripts/sh/create_pages.sh"
   bash "_scripts/sh/dump_lastmod.sh"
 
