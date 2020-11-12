@@ -30,7 +30,7 @@ It&#8217;s not a big change but it&#8217;s a nice simplification of the code.
 Tuples give you the possibility to return two values at a time. These two values can be different data types. On the screenshots below you can see the call of a simple method which returns two strings.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2017/10/Tuples-call.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/Tuples-call.jpg" alt="Tuples call" /></a>
+  <a href="/assets/img/posts/2017/10/Tuples-call.jpg"><img loading="lazy" src="/assets/img/posts/2017/10/Tuples-call.jpg" alt="Tuples call" /></a>
   
   <p>
     Call of the method which returns a tuple value
@@ -40,7 +40,7 @@ Tuples give you the possibility to return two values at a time. These two values
 &nbsp;
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2017/10/Tuples-return.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/Tuples-return.jpg" alt="Tuples return" /></a>
+  <a href="/assets/img/posts/2017/10/Tuples-return.jpg"><img loading="lazy" src="/assets/img/posts/2017/10/Tuples-return.jpg" alt="Tuples return" /></a>
   
   <p>
     Method returns a tuple value
@@ -56,7 +56,7 @@ To use Tuples you need to target the .Net Framework 4.7. If you target a lower .
 With the new feature pattern matching it is now possible to have switch cases for data types. For example case int: do something, case string: do something else. On the screenshot below I show how to calculate the sum of all int and double values of a list of objects. If the element is a string the program writes the string to the console.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2017/10/pattern-matching-list.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/pattern-matching-list.jpg" alt="pattern matching list" /></a>
+  <a href="/assets/img/posts/2017/10/pattern-matching-list.jpg"><img loading="lazy" src="/assets/img/posts/2017/10/pattern-matching-list.jpg" alt="pattern matching list" /></a>
   
   <p>
     List of objects containing different data types
@@ -78,7 +78,7 @@ With the new feature pattern matching it is now possible to have switch cases fo
 The last new feature I want to talk about is the literal improvement. With C# 7.0 it is now possible to separate const numbers with an underscore to improve the readability.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2017/10/Literal-improvements.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/Literal-improvements.jpg" alt="Literal improvements" /></a>
+  <a href="/assets/img/posts/2017/10/Literal-improvements.jpg"><img loading="lazy" src="/assets/img/posts/2017/10/Literal-improvements.jpg" alt="Literal improvements" /></a>
   
   <p>
     Better readability of long numbers

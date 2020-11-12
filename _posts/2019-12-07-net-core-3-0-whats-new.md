@@ -64,7 +64,7 @@ With .net core 3.0, you can create ready to run executables. This uses ahead of 
 To configure ready to run, you only have to add the PublishReadyToRun tag to your csproj and set it to true.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/12/Publish-ready-to-run.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/12/Publish-ready-to-run.jpg" alt="Publish your .net core 3.0 application ready to run" /></a>
+  <a href="/assets/img/posts/2019/12/Publish-ready-to-run.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/Publish-ready-to-run.jpg" alt="Publish your .net core 3.0 application ready to run" /></a>
   
   <p>
     Publish ready to run
@@ -90,7 +90,7 @@ With .net core 3.0, you can now create WPF and WinForms applications. Currently,
 After the application is created, you can see in the csproj file that it is a WPF application and used .net core 3.0
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/12/csproj-file-of-the-.Net-Core-WPF-project.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/12/csproj-file-of-the-.Net-Core-WPF-project.jpg" alt="csproj file of the .Net Core 3.0 WPF project" /></a>
+  <a href="/assets/img/posts/2019/12/csproj-file-of-the-.Net-Core-WPF-project.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/csproj-file-of-the-.Net-Core-WPF-project.jpg" alt="csproj file of the .Net Core 3.0 WPF project" /></a>
   
   <p>
     csproj file of the .Net Core WPF project

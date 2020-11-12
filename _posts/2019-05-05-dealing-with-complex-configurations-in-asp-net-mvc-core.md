@@ -26,7 +26,7 @@ When you load configuration data from a platform-specific file, the configuratio
 Selecting different configuration data files can be useful but doesn’t provide a complete solution for complex configurations because data files don’t contain C# statements. If you want to vary the configuration statements used to create services or register middleware components, then you can use different methods, where the name of the method includes the hosting environment:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Using-different-method-names-in-the-Startup-class.jpg"><img loading="lazy" size-full" title="Using different method names in the Startup class to handle complex configurations" src="/assets/img/posts/2019/04/Using-different-method-names-in-the-Startup-class.jpg" alt="Using different method names in the Startup class" /></a>
+  <a href="/assets/img/posts/2019/04/Using-different-method-names-in-the-Startup-class.jpg"><img loading="lazy"  title="Using different method names in the Startup class to handle complex configurations" src="/assets/img/posts/2019/04/Using-different-method-names-in-the-Startup-class.jpg" alt="Using different method names in the Startup class" /></a>
   
   <p>
     Using different method names in the Startup class
@@ -40,7 +40,7 @@ When ASP.NET Core looks for the ConfigureServices and Configure methods in the S
 Using different methods means you don’t have to use if statements to check the hosting environment name, but it can result in large classes, which is a problem in itself. For especially complex configurations, the final progression is to create a different configuration class for each hosting environment. When ASP.NET looks for the Startup class, it first checks to see whether there is a class whose name includes the current hosting environment.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Choose-the-Startup-class-at-runtime.jpg"><img loading="lazy" size-full" title="Choose the Startup class at runtime to deal with your complex configurations" src="/assets/img/posts/2019/04/Choose-the-Startup-class-at-runtime.jpg" alt="Choose the Startup class at runtime" /></a>
+  <a href="/assets/img/posts/2019/04/Choose-the-Startup-class-at-runtime.jpg"><img loading="lazy"  title="Choose the Startup class at runtime to deal with your complex configurations" src="/assets/img/posts/2019/04/Choose-the-Startup-class-at-runtime.jpg" alt="Choose the Startup class at runtime" /></a>
   
   <p>
     Choose the Startup class at runtime

@@ -56,7 +56,7 @@ If you go to your TFS after uploading the type definition, you will see your new
 Download the config file with **witadmin exportprocessconfig /collection:COLLECTIONNAME /p:PROJECT /f:FILENAME**. Open the xml file and find the work item, you added the state to, for example, Bug or Backlog Item. Add the state in the States section.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/11/Add-the-new-state-in-the-process-config-file.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/11/Add-the-new-state-in-the-process-config-file.jpg" alt="Add the new state in the TFS process config file" /></a>
+  <a href="/assets/img/posts/2018/11/Add-the-new-state-in-the-process-config-file.jpg"><img loading="lazy" src="/assets/img/posts/2018/11/Add-the-new-state-in-the-process-config-file.jpg" alt="Add the new state in the TFS process config file" /></a>
   
   <p>
     Add the new state in the process config file

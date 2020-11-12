@@ -62,7 +62,7 @@ docker run -p 32789:80 -p 32788:443 -e Kestrel\_\_Certificates\_\_Default\_\_Pat
 When you open https://localhost:32788, you should see the Swagger UI.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Testing-the-application-with-HTTPS.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/04/Testing-the-application-with-HTTPS.jpg" alt="Testing ASP .Net Core with HTTPS in Docker" /></a>
+  <a href="/assets/img/posts/2020/04/Testing-the-application-with-HTTPS.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Testing-the-application-with-HTTPS.jpg" alt="Testing ASP .Net Core with HTTPS in Docker" /></a>
   
   <p>
     Testing the application with HTTPS

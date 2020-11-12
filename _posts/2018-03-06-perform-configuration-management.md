@@ -95,7 +95,7 @@ Custom Script Extensions allow you to automatically download files from Azure st
             </p>
             
             <div class="col-12 col-sm-10 aligncenter">
-              <a href="/assets/img/posts/2018/03/Example-of-a-DSC-script.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/03/Example-of-a-DSC-script.jpg" alt="Example of a DSC script for the configuration management" /></a>
+              <a href="/assets/img/posts/2018/03/Example-of-a-DSC-script.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Example-of-a-DSC-script.jpg" alt="Example of a DSC script for the configuration management" /></a>
               
               <p>
                 Example of a DSC script (<a href="https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/windows/extensions-dsc-overview.md" target="_blank" rel="noopener noreferrer">Source</a>)

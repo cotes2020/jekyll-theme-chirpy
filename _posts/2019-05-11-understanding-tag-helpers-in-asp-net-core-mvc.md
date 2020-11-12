@@ -426,7 +426,7 @@ This tag helper uses the TagBuilder class to create an h1 element that is contai
 Next, I add a div tag around the RenderBody method.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/05/Preparing-the-RenderBody-tag-to-render-my-element-before-and-after-it.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/05/Preparing-the-RenderBody-tag-to-render-my-element-before-and-after-it.jpg" alt="Preparing the RenderBody tag to render my element before and after it" /></a>
+  <a href="/assets/img/posts/2019/05/Preparing-the-RenderBody-tag-to-render-my-element-before-and-after-it.jpg"><img loading="lazy" src="/assets/img/posts/2019/05/Preparing-the-RenderBody-tag-to-render-my-element-before-and-after-it.jpg" alt="Preparing the RenderBody tag to render my element before and after it" /></a>
   
   <p>
     Preparing the RenderBody tag to render my element before and after it

@@ -14,7 +14,7 @@ To help the developer, ASP.NET MVC provides several possibilities for model vali
 I created a new ASP.NET MVC project with the empty template and add folders and core references for MVC.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Set-up-project.jpg"><img loading="lazy" size-full" title="Setting up the ASP.NET MVC project for model validation" src="/assets/img/posts/2018/01/Set-up-project.jpg" alt="Setting up the ASP.NET MVC project for model validation" /></a>
+  <a href="/assets/img/posts/2018/01/Set-up-project.jpg"><img loading="lazy"  title="Setting up the ASP.NET MVC project for model validation" src="/assets/img/posts/2018/01/Set-up-project.jpg" alt="Setting up the ASP.NET MVC project for model validation" /></a>
   
   <p>
     Setting up the ASP.NET MVC project for model validation

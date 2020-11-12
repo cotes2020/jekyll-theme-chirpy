@@ -30,7 +30,7 @@ To keep it simple, I will use an in-memory database. During the implementation, 
 I created a solution for each microservice. You can see the structure of the microservices on the following screenshot.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Structure-of-the-Order-Microservice.jpg"><img loading="lazy" size-full" title="Structure of the Order Microservice" src="/assets/img/posts/2020/04/Structure-of-the-Order-Microservice.jpg" alt="Structure of the Order Microservice" /></a>
+  <a href="/assets/img/posts/2020/04/Structure-of-the-Order-Microservice.jpg"><img loading="lazy"  title="Structure of the Order Microservice" src="/assets/img/posts/2020/04/Structure-of-the-Order-Microservice.jpg" alt="Structure of the Order Microservice" /></a>
   
   <p>
     Structure of the Order Microservice

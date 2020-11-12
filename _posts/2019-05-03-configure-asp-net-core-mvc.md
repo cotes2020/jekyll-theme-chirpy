@@ -77,7 +77,7 @@ The IConfigurationBuilder provides three extension methods:
 The most common uses for the appsettings.json file are to store your connection strings and logging setting, but you can store any data that your application needs. On the following screenshot, I add the ShortCircuitMiddleware section containing EnableBrowserShortCircuit with the value true to the appsettings.json file.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Adding-values-to-the-appsettings.json-file.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/04/Adding-values-to-the-appsettings.json-file.jpg" alt="Adding values to the appsettings.json file to configure your application" /></a>
+  <a href="/assets/img/posts/2019/04/Adding-values-to-the-appsettings.json-file.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Adding-values-to-the-appsettings.json-file.jpg" alt="Adding values to the appsettings.json file to configure your application" /></a>
   
   <p>
     Adding values to the appsettings.json file
@@ -87,7 +87,7 @@ The most common uses for the appsettings.json file are to store your connection 
 In JSON everything has to be quoted exception bool and number values. If you want to add a new section, add a comma after the closing bracket of the ShortCircuitMiddleware section. Be aware to not add a trailing comma at the end if you don&#8217;t have another section there. This and missing quotes are the most common mistakes in a JSON file.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Adding-more-values-to-the-appsettings.json-file.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/04/Adding-more-values-to-the-appsettings.json-file.jpg" alt="Adding more values to the appsettings.json file to configure your application" /></a>
+  <a href="/assets/img/posts/2019/04/Adding-more-values-to-the-appsettings.json-file.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Adding-more-values-to-the-appsettings.json-file.jpg" alt="Adding more values to the appsettings.json file to configure your application" /></a>
   
   <p>
     Adding more values to the appsettings.json file

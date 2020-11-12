@@ -211,7 +211,7 @@ Repeat the export from before by clicking on Project &#8211;> Export Template an
 Zip all files and copy the zip over the previously created zip in the Visual C# folder. Create a new project and select your template and enter Customer as project name. If you did everything right, all files and projects should be named correctly and the project should build without an error. It is very easy to have errors on the first try since you don&#8217;t have any help to find errors in the template and every typo will result in a build error.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/All-files-got-renamed-correctly.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/07/All-files-got-renamed-correctly.jpg" alt="All files got renamed correctly from the Visual Studio Template" /></a>
+  <a href="/assets/img/posts/2020/07/All-files-got-renamed-correctly.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/All-files-got-renamed-correctly.jpg" alt="All files got renamed correctly from the Visual Studio Template" /></a>
   
   <p>
     All files got renamed correctly
@@ -221,7 +221,7 @@ Zip all files and copy the zip over the previously created zip in the Visual C# 
 When you don&#8217;t have any error, run the project and you should see Customer in the headline, description and Controller.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/Testing-the-created-solution.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/07/Testing-the-created-solution.jpg" alt="Testing the created solution from the Visual Studio Template" /></a>
+  <a href="/assets/img/posts/2020/07/Testing-the-created-solution.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Testing-the-created-solution.jpg" alt="Testing the created solution from the Visual Studio Template" /></a>
   
   <p>
     Testing the created solution
@@ -263,7 +263,7 @@ Since we use variables everywhere, we have to use variables also in the Dockerfi
 After adding the new template to Visual Studio, create a new project and you will see the Dockerfile in your solution.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/07/The-Dockerfile-is-in-the-created-project.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/07/The-Dockerfile-is-in-the-created-project.jpg" alt="The Dockerfile is in the created project from the Visual Studio Template" /></a>
+  <a href="/assets/img/posts/2020/07/The-Dockerfile-is-in-the-created-project.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/The-Dockerfile-is-in-the-created-project.jpg" alt="The Dockerfile is in the created project from the Visual Studio Template" /></a>
   
   <p>
     The Dockerfile is in the created project

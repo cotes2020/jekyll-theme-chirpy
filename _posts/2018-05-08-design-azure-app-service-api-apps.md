@@ -140,7 +140,7 @@ To enable CORS (Cross-Origin Resource Sharing), follow these steps:
   3. Click Save.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Enable-CORS.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/05/Enable-CORS.jpg" alt="Enable CORS for your API Apps" /></a>
+  <a href="/assets/img/posts/2018/05/Enable-CORS.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Enable-CORS.jpg" alt="Enable CORS for your API Apps" /></a>
   
   <p>
     Enable CORS

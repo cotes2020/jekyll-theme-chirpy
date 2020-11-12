@@ -244,7 +244,7 @@ This life cycle creates a single object from the implementation class that is us
 Note that there are also versions of the AddScoped method that accept a factory function and that can be used to register a concrete type. These methods work in the same way as the AddTransient method.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Adding-a-scoped-dependency.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/04/Adding-a-scoped-dependency.jpg" alt="Adding a scoped for your dependency injection" /></a>
+  <a href="/assets/img/posts/2019/04/Adding-a-scoped-dependency.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Adding-a-scoped-dependency.jpg" alt="Adding a scoped for your dependency injection" /></a>
   
   <p>
     Adding a scoped dependency
@@ -256,7 +256,7 @@ Note that there are also versions of the AddScoped method that accept a factory 
 The singleton life cycle ensures that a single object is used to resolve all the dependencies for a given service type. When using this life cycle, you must ensure that the implementation classes used to resolve dependencies are safe for concurrent access.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/Adding-a-singleton-dependency.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/04/Adding-a-singleton-dependency.jpg" alt="Adding a singleton for your dependency injection" /></a>
+  <a href="/assets/img/posts/2019/04/Adding-a-singleton-dependency.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/Adding-a-singleton-dependency.jpg" alt="Adding a singleton for your dependency injection" /></a>
   
   <p>
     Adding a singleton dependency

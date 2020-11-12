@@ -24,7 +24,7 @@ The code for today&#8217;s demo can be found on <a href="https://github.com/Wolf
 For each class I want to test, I create a separate class to which I add tests in the name, for example, if I want to test the Employee class I name my test class EmployeeTests. To create a test method, you only have to add the Fact attribute to the method.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Using-the-Fact-attritbue.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/01/Using-the-Fact-attritbue.jpg" alt="Using the xUnit Fact attribute" /></a>
+  <a href="/assets/img/posts/2019/01/Using-the-Fact-attritbue.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Using-the-Fact-attritbue.jpg" alt="Using the xUnit Fact attribute" /></a>
   
   <p>
     Using the Fact attribute
@@ -160,7 +160,7 @@ Previously, I mentioned that for every test a new object is instantiated and the
 Next, I am creating a collection class with the CollectionDefiniton attribute and the ICollectionFixture interface with my previously created fixture class.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Creating-the-collection-to-share-date-accross-tests.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/01/Creating-the-collection-to-share-date-accross-tests.jpg" alt="Creating the collection to share date across tests" /></a>
+  <a href="/assets/img/posts/2019/01/Creating-the-collection-to-share-date-accross-tests.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Creating-the-collection-to-share-date-accross-tests.jpg" alt="Creating the collection to share date across tests" /></a>
   
   <p>
     Creating the collection to share date across tests

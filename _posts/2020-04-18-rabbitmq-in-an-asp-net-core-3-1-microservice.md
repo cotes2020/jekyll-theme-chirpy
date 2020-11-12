@@ -210,7 +210,7 @@ After RabbitMQ is started, you can navigate to localhost:15672 and login with gu
 Navigate to the Queues tab and you will see that there is no queue yet.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/No-queues-are-created-yet.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/04/No-queues-are-created-yet.jpg" alt="A message was published and consumed" /></a>
+  <a href="/assets/img/posts/2020/04/No-queues-are-created-yet.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/No-queues-are-created-yet.jpg" alt="A message was published and consumed" /></a>
   
   <p>
     A message was published and consumed

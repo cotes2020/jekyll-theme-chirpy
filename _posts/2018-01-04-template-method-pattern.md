@@ -44,7 +44,7 @@ The CalculatorOracle class only overrides the CalculateSomething method.
 The third and last step, SaveResult is only overridden by the CalculatorSqlAzure class. This means that the CalculatorOracle class uses the method provided by the Calculator.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg" alt="Overridden SaveResult method in the CalculatorSqlAzure class" /></a>
+  <a href="/assets/img/posts/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Overriden-SaveResult-method-in-the-CalculatorSqlAzure-class.jpg" alt="Overridden SaveResult method in the CalculatorSqlAzure class" /></a>
   
   <p>
     Overridden SaveResult method in the CalculatorSqlAzure class

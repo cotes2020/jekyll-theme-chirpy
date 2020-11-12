@@ -118,7 +118,7 @@ To provision a VM using a custom image, I first have to create a custom image. T
 After the VM is deployed, I connect myself to the VM using a remote connection. You can download the remote connection when you click on your VM and then click Connect on the Overview blade.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/02/Download-the-remote-connection-to-the-VM.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/02/Download-the-remote-connection-to-the-VM.jpg" alt="Download the remote connection to the Azure ARM virtual machines" /></a>
+  <a href="/assets/img/posts/2018/02/Download-the-remote-connection-to-the-VM.jpg"><img loading="lazy" src="/assets/img/posts/2018/02/Download-the-remote-connection-to-the-VM.jpg" alt="Download the remote connection to the Azure ARM virtual machines" /></a>
   
   <p>
     Download the remote connection to the VM

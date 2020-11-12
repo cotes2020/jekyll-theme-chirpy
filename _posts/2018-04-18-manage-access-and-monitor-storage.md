@@ -64,7 +64,7 @@ With the SAS token, you can access your container.
 Use the following code to create an SAS token for your queue with read, add, update and processMessages rights. The token will expire in one hour.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-queue.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-queue.jpg" alt="Create an SAS token for a queue" /></a>
+  <a href="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-queue.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Create-an-SAS-token-for-a-queue.jpg" alt="Create an SAS token for a queue" /></a>
   
   <p>
     Create an SAS token for a queue

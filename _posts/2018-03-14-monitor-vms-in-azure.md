@@ -251,7 +251,7 @@ To enable Application Insights at runtime, you first have to create a new Applic
   3. Provide a new, Subscription, Resource Group and Location. Leave the Application Type as ASP.NET web application.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/03/Create-a-new-Application-Insights-instance.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/03/Create-a-new-Application-Insights-instance.jpg" alt="Create a new Application Insights instance to Monitor VMs" /></a>
+  <a href="/assets/img/posts/2018/03/Create-a-new-Application-Insights-instance.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Create-a-new-Application-Insights-instance.jpg" alt="Create a new Application Insights instance to Monitor VMs" /></a>
   
   <p>
     Create a new Application Insights instance

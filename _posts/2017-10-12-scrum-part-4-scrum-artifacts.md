@@ -85,7 +85,7 @@ A piece of software can only be in one of two states: done or not done. There is
 The Burndown Chart displays the number of remaining features with the remaining time. Tools like TFS also show you an ideal progress which is linear from the start to the end with no work left. Such a linear progress is only in theory possible but the actual progress should be around the theoretical progress. Often the actual progress is like a wave, sometimes over this ideal trend and sometimes below it. On the following screenshot, you can see such a burndown chart from the TFS.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2017/10/Burndown-chart.png"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/Burndown-chart.png" alt="Scrum Artifacts Burndown chart" /></a>
+  <a href="/assets/img/posts/2017/10/Burndown-chart.png"><img loading="lazy" src="/assets/img/posts/2017/10/Burndown-chart.png" alt="Scrum Artifacts Burndown chart" /></a>
   
   <p>
     <a href="https://docs.microsoft.com/en-us/vsts/work/scrum/_img/alm_sb_introhealthychart.png" target="_blank" rel="noopener">Source</a>

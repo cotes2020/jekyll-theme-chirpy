@@ -28,7 +28,7 @@ If you want to externalize a process so that it runs and scales independently fr
   3. Click Create.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Create-an-Azure-Function.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/07/Create-an-Azure-Function.jpg" alt="Create your first Azure Functions" /></a>
+  <a href="/assets/img/posts/2018/07/Create-an-Azure-Function.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Create-an-Azure-Function.jpg" alt="Create your first Azure Functions" /></a>
   
   <p>
     Create an Azure Function
@@ -95,7 +95,7 @@ To create an event processing function, follow these steps:
   2. Select Timer and C# and click Create this function.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/07/Create-an-event-processing-funciton.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/07/Create-an-event-processing-funciton.jpg" alt="Create an event processing function" /></a>
+  <a href="/assets/img/posts/2018/07/Create-an-event-processing-funciton.jpg"><img loading="lazy" src="/assets/img/posts/2018/07/Create-an-event-processing-funciton.jpg" alt="Create an event processing function" /></a>
   
   <p>
     Create an event processing function

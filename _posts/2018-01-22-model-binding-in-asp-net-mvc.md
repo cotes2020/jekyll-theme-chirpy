@@ -212,7 +212,7 @@ I am not a big fan of this syntax because I think it makes the code messy but it
 Sometimes you don&#8217;t want the user to see sensitive data. You could hide the information in the HTML or create a new view model and only send the information you want to display. A simpler solution is to tell the model binder not to bind the properties which you don&#8217;t want to display. You can tell the model binder to not bind a property by using the Exclude attribute in the action.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Action-excluding-the-city-in-the-binding-process.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/01/Action-excluding-the-city-in-the-binding-process.jpg" alt="Action excluding the city from the binding process" /></a>
+  <a href="/assets/img/posts/2018/01/Action-excluding-the-city-in-the-binding-process.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Action-excluding-the-city-in-the-binding-process.jpg" alt="Action excluding the city from the binding process" /></a>
   
   <p>
     Action excluding the city from the binding process
@@ -222,7 +222,7 @@ Sometimes you don&#8217;t want the user to see sensitive data. You could hide th
 On the screenshot above, you can see that I excluded the city from being bound. Another approach would be to include the properties I want to bind with the Include attribute. You can also use the Include and Exclude property in a class. On the following screenshot, I show how to use the Include property in the model class.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Applying-the-Include-property-on-a-class.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/01/Applying-the-Include-property-on-a-class.jpg" alt="Applying the Include property in a class" /></a>
+  <a href="/assets/img/posts/2018/01/Applying-the-Include-property-on-a-class.jpg"><img loading="lazy" src="/assets/img/posts/2018/01/Applying-the-Include-property-on-a-class.jpg" alt="Applying the Include property in a class" /></a>
   
   <p>
     Applying the Include property in a class

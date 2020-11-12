@@ -16,7 +16,7 @@ If you have never heard about Scrum, you might wonder why use it? Because you wi
 &nbsp;
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2017/10/Agile-Waterfall-Success-Failure-Rates.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/Agile-Waterfall-Success-Failure-Rates.jpg" alt="Agile (Scrum) - Waterfall Success Failure Rates" /></a>
+  <a href="/assets/img/posts/2017/10/Agile-Waterfall-Success-Failure-Rates.jpg"><img loading="lazy" src="/assets/img/posts/2017/10/Agile-Waterfall-Success-Failure-Rates.jpg" alt="Agile (Scrum) - Waterfall Success Failure Rates" /></a>
   
   <p>
     <a href="https://www.mountaingoatsoftware.com/blog/agile-succeeds-three-times-more-often-than-waterfall" target="_blank" rel="noopener">Source </a>
@@ -30,7 +30,7 @@ When using waterfall, a product gets shipped once at the end of the cycle which�
 The following picture is often used to describe project management. I really like it because it also shows the difference between what the customer explains and what the customer actually wants. With an agile approach, the development team would get early feedback and therefore would not develop so far in the wrong direction.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2017/10/tree-swing-project-management.png"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/tree-swing-project-management.png" alt="tree swing project management used for explaining Scrum" /></a>
+  <a href="/assets/img/posts/2017/10/tree-swing-project-management.png"><img loading="lazy" src="/assets/img/posts/2017/10/tree-swing-project-management.png" alt="tree swing project management used for explaining Scrum" /></a>
   
   <p>
     <a href="https://www.tamingdata.com/2010/07/08/the-project-management-tree-swing-cartoon-past-and-present/" target="_blank" rel="noopener">Source</a>

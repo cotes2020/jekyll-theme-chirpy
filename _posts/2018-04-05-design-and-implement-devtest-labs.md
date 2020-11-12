@@ -505,7 +505,7 @@ Additionally to the Azure portal, you can add an external user to your Azure Dev
   3. Enter the email of the user you want to add as a guest and optionally include a message for the invitation.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg" alt="Add a user as a guest to your Active Directory" /></a>
+  <a href="/assets/img/posts/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Add-a-user-as-guest-to-your-Active-Directory.jpg" alt="Add a user as a guest to your Active Directory" /></a>
   
   <p>
     Add a user as a guest to your Active Directory

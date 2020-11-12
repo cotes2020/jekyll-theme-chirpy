@@ -62,7 +62,7 @@ The first step to use Bundles is installing the Microsoft.AspNet.Web.Optimizatio
 The BundleConfig class has one static method,  <span class="fontstyle0">RegisterBundles</span> which takes a BundleCollection as parameter. Add your CSS files by adding a new StyleBundle to the BundleCollection and the Javascript files by adding a new ScriptBundle to the BundleCollection.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/01/Adding-CSS-and-Javascript-Bundles-to-the-BundleConfig-class.jpg"><img loading="lazy" size-full" title="Adding CSS and Javascript Bundles to the BundleConfig class" src="/assets/img/posts/2018/01/Adding-CSS-and-Javascript-Bundles-to-the-BundleConfig-class.jpg" alt="Adding CSS and Javascript Bundles to the BundleConfig class" /></a>
+  <a href="/assets/img/posts/2018/01/Adding-CSS-and-Javascript-Bundles-to-the-BundleConfig-class.jpg"><img loading="lazy"  title="Adding CSS and Javascript Bundles to the BundleConfig class" src="/assets/img/posts/2018/01/Adding-CSS-and-Javascript-Bundles-to-the-BundleConfig-class.jpg" alt="Adding CSS and Javascript Bundles to the BundleConfig class" /></a>
   
   <p>
     Adding CSS and Javascript Bundles to the BundleConfig class

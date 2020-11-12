@@ -29,7 +29,7 @@ A test in xBehave always has the attribute Scenario. As previously mentioned, xB
 In the Given or Arrange phase, you set up all the objects you need to run your test. In my example test, I only need one employee object, You could set up several objects and combine them with And.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/01/Setting-up-two-employee-objects-for-the-tests.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/01/Setting-up-two-employee-objects-for-the-tests.jpg" alt="Setting up two employee objects for the xBehave tests" /></a>
+  <a href="/assets/img/posts/2019/01/Setting-up-two-employee-objects-for-the-tests.jpg"><img loading="lazy" src="/assets/img/posts/2019/01/Setting-up-two-employee-objects-for-the-tests.jpg" alt="Setting up two employee objects for the xBehave tests" /></a>
   
   <p>
     Setting up two employee objects for the tests

@@ -369,7 +369,7 @@ Click on the CI/CD pipeline and you can see more detailed information.
 Before you can test your deployed React app, you have to enter its URL in the CORS settings of your Azure Function. You can find the URL on the overview tab of your Static Web Apps.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/05/Add-the-URL-of-the-Static-Web-App-to-the-CORS-Setting-of-the-Azure-Function.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/05/Add-the-URL-of-the-Static-Web-App-to-the-CORS-Setting-of-the-Azure-Function.jpg" alt="Add the URL of the Static Web Apps to the CORS Setting of the Azure Function" /></a>
+  <a href="/assets/img/posts/2020/05/Add-the-URL-of-the-Static-Web-App-to-the-CORS-Setting-of-the-Azure-Function.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/Add-the-URL-of-the-Static-Web-App-to-the-CORS-Setting-of-the-Azure-Function.jpg" alt="Add the URL of the Static Web Apps to the CORS Setting of the Azure Function" /></a>
   
   <p>
     Add the URL of the Static Web App to the CORS Setting of the Azure Function
@@ -379,7 +379,7 @@ Before you can test your deployed React app, you have to enter its URL in the CO
 After you entered the URL in the CORS settings, call it in your browser and you should see your React app displaying the list of products.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/05/Testing-the-Static-Web-App-with-the-Azure-Function.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/05/Testing-the-Static-Web-App-with-the-Azure-Function.jpg" alt="Testing the Static Web Apps with the Azure Function" /></a>
+  <a href="/assets/img/posts/2020/05/Testing-the-Static-Web-App-with-the-Azure-Function.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/Testing-the-Static-Web-App-with-the-Azure-Function.jpg" alt="Testing the Static Web Apps with the Azure Function" /></a>
   
   <p>
     Testing the Static Web App with the Azure Function

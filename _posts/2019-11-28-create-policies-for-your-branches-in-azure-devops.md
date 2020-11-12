@@ -30,7 +30,7 @@ On the Branch policies for master config page, I enable the following settings:
 This setting enforces that at least one reviewer approved the pull request. Microsoft found out in a research that 2 is the optimal number of reviewers. I only need one most of the time because my teams are usually small therefore needing two reviewers would be too much overhead. Additionally, I set the &#8220;Reset code reviewer votes when there are new changes&#8221;. This setting resets previously made approvals if new code is pushed to the pull request.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/11/Configure-a-minimum-number-of-reviewers.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/11/Configure-a-minimum-number-of-reviewers.jpg" alt="Configure a minimum number of reviewers for your branch policies" /></a>
+  <a href="/assets/img/posts/2019/11/Configure-a-minimum-number-of-reviewers.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Configure-a-minimum-number-of-reviewers.jpg" alt="Configure a minimum number of reviewers for your branch policies" /></a>
   
   <p>
     Configure a minimum number of reviewers
@@ -42,7 +42,7 @@ This setting enforces that at least one reviewer approved the pull request. Micr
 This feature indicates if a work item was linked with the pull request. I think the right setting would be to set it to required because every pull request should have a PBI. I have to admit that sometimes I create a pull request without a PBI, therefore I leave it as optional.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/11/Check-for-linked-work-items.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2019/11/Check-for-linked-work-items.jpg" alt="Check for linked work items for your branch policies" /></a>
+  <a href="/assets/img/posts/2019/11/Check-for-linked-work-items.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Check-for-linked-work-items.jpg" alt="Check for linked work items for your branch policies" /></a>
   
   <p>
     Check for linked work items

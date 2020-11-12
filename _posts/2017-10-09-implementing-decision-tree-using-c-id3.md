@@ -425,7 +425,7 @@ Figure 1 shows the result of the finished decision tree.
 &nbsp;
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2017/10/Decision-Tree.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2017/10/Decision-Tree.jpg" alt="Decision Tree" width="662" height="328"/></a>  
+  <a href="/assets/img/posts/2017/10/Decision-Tree.jpg"><img loading="lazy" src="/assets/img/posts/2017/10/Decision-Tree.jpg" alt="Decision Tree" width="662" height="328"/></a>  
   <p>
     Figure 1: Decision Tree [Source](https://www.cise.ufl.edu/~ddd/cap6635/Fall-97/Short-papers/2.htm)
   </p>

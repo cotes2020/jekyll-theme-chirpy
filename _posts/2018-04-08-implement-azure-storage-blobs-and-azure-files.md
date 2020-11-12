@@ -188,7 +188,7 @@ First, you have to create a page blob:
 After the page blob is created, you can write data to it:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/04/Wirte-to-a-page-blob.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2018/04/Wirte-to-a-page-blob.jpg" alt="Write to a page blob" /></a>
+  <a href="/assets/img/posts/2018/04/Wirte-to-a-page-blob.jpg"><img loading="lazy" src="/assets/img/posts/2018/04/Wirte-to-a-page-blob.jpg" alt="Write to a page blob" /></a>
   
   <p>
     Write to a page blob

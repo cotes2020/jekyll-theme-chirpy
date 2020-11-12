@@ -14,7 +14,7 @@ You can find the code of  the finished demo on <a href="https://github.com/Wol
 CQRS or Command Query Responsibility Segregation is a design pattern to separate the read and write processes of your application. Read operations are called Queries and write operations are called Commands. Open one of the two microservices and you will see in the service project two folders, Command and Query. Inside the folder, you can see a handler and a command or query. They are used for the mediator, <a href="/mediator-pattern-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">which I will describe in my next post</a>.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Operations-are-split-in-Commands-and-Queries.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/04/Operations-are-split-in-Commands-and-Queries.jpg" alt="Operations are split in Commands and Queries in CQRS" /></a>
+  <a href="/assets/img/posts/2020/04/Operations-are-split-in-Commands-and-Queries.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Operations-are-split-in-Commands-and-Queries.jpg" alt="Operations are split in Commands and Queries in CQRS" /></a>
   
   <p>
     Operations are split in Commands and Queries

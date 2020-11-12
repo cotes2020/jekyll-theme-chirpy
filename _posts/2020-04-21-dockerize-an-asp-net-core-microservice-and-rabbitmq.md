@@ -101,7 +101,7 @@ For more details on the Dockerfile and .dockerignore file check out the <a href=
 After adding the Docker support to your application, you should be able to select Docker as a startup option in Visual Studio. When you select Docker for the first time, Visual Studio will run the Dockerfile, therefore build and create the container. This might take a bit because the images for the .NET Core runtime and SDK need to be downloaded. After the first download, they are cached and can be quickly reused.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Select-Docker-as-startup-option.jpg"><img loading="lazy" size-full" src="/assets/img/posts/2020/04/Select-Docker-as-startup-option.jpg" alt="Dockerize the application and select Docker as startup option" /></a>
+  <a href="/assets/img/posts/2020/04/Select-Docker-as-startup-option.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Select-Docker-as-startup-option.jpg" alt="Dockerize the application and select Docker as startup option" /></a>
   
   <p>
     Select Docker as startup option
