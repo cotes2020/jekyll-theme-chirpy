@@ -143,10 +143,10 @@ main() {
   _init
   _build
     
-  rm -rf _site
-  mkdir _site
-  
-  cp -r "$CONTAINER"/_site/* _site
+  #rm -rf _site
+  #mkdir _site
+  #
+  #cp -r "$CONTAINER"/_site/* _site
 
 }
 
