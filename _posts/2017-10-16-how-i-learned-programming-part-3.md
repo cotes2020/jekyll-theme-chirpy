@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [Programming]
 tags: ['C#', learning]
 ---
-Welcome to part 3 of how I learned programming. In my last post, I wrote about how I learned C# in university in Austria. You can find this post <a href="/learned-programming-part-2/" target="_blank" rel="noopener">here</a>.
+Welcome to part 3 of how I learned programming. In my last post, I wrote about how I learned C# in university in Austria. You can find this post <a href="/how-i-learned-programming-part-2/" target="_blank" rel="noopener">here</a>.
 
 In this post, I will talk about studying in Canada and the differences to Austria.
 

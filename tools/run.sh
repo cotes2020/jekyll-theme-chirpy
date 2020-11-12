@@ -95,19 +95,19 @@ _run() {
   bash _scripts/sh/create_pages.sh
   bash _scripts/sh/dump_lastmod.sh
     
-  if $build; then
-    cd "$WORK_DIR"
-    
-    echo copy _site
-    
-    rm -rf _site
-    mkdir _site    
-    cp -r "$CONTAINER"/_site/* _site
-	  
-    echo _site copy successful
-
-    cd "$CONTAINER"
-  fi
+  #if $build; then
+  #  cd "$WORK_DIR"
+  #  
+  #  echo copy _site
+  #  
+  #  rm -rf _site
+  #  mkdir _site    
+  #  cp -r "$CONTAINER"/_site/* _site
+	#  
+  #  echo _site copy successful
+#
+  #  cd "$CONTAINER"
+  #fi
   
   if $realtime; then
 
@@ -141,8 +141,6 @@ main() {
 
   _init
   _run
-  
-
 }
 
 while (($#)); do
