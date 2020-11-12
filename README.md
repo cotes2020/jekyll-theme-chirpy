@@ -32,7 +32,7 @@ The --force_polling flag enables a watcher that re-creates the files everytime s
 Currently, the website needs to be built and the _site folder needs to be checked in. Build the site with the following command:
 
 ```terminal
-docker run --rm --volume="$($PWD):/srv/jekyll" -p 4000:4000 -it jekyll/jekyll bash tools/build.sh
+docker run --rm --volume="$($PWD):/srv/jekyll" -p 4000:4000 -it jekyll/jekyll bash tools/run.sh --build
 ```
 
 It is planned to move this task to the Github action in the near future.

@@ -231,4 +231,4 @@ Integrating your bot into your website is as simple as it could be. In the Azure
 
 In this post, I showed how to integrate your Azure bot with Slack, Facebook Messenger, and your own website. Besides the approval from Facebook, it only takes a couple of minutes. Keep in mind that different chats display some replies differently.
 
-For more information on Azure bot, check out <a href="/tag/bot/" target="_blank" rel="noopener">my other posts about bots</a>.
+For more information on Azure bot, check out <a href="/tags/bot/" target="_blank" rel="noopener">my other posts about bots</a>.

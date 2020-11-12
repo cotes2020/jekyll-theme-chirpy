@@ -55,8 +55,6 @@ This estimation process is repeated until all items are estimated. After the est
 
 I have also seen teams using T-shirt sizes instead of story points. The sizes are between small and XL. In the end, it will have the same outcome as story points. If this approach works better for your team, use it.
 
-There are plenty of apps for free on the market. I use the one from bbv which can be found in the <a href="https://itunes.apple.com/ch/app/bbv-planning-poker/id1204820215?l=en&mt=8" target="_blank" rel="noopener">App store</a> and in <a href="https://play.google.com/store/apps/details?id=ch.bbv.planningpoker&hl=en" target="_blank" rel="noopener">Google Play</a>.
-
 ## **Daily Scrum (Daily Stand-up Meeting)**
 
 The Daily Stand-up Meeting is a daily meeting for and by the development team. The time box is 15 minutes. This meeting serves as a quick check on what’s going on in the team. In this meeting, the team makes a plan for the current day. If the team has some problems which it can’t solve by itself, it’s the Scrum Masters responsibility to help the team to get these problems solved.

@@ -13,8 +13,6 @@ If you have never heard about Scrum, you might wonder why use it? Because you wi
 
 ## Comparison between waterfall and agile project success rates
 
-&nbsp;
-
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2017/10/Agile-Waterfall-Success-Failure-Rates.jpg"><img loading="lazy" src="/assets/img/posts/2017/10/Agile-Waterfall-Success-Failure-Rates.jpg" alt="Agile (Scrum) - Waterfall Success Failure Rates" /></a>
   
@@ -33,7 +31,7 @@ The following picture is often used to describe project management. I really lik
   <a href="/assets/img/posts/2017/10/tree-swing-project-management.png"><img loading="lazy" src="/assets/img/posts/2017/10/tree-swing-project-management.png" alt="tree swing project management used for explaining Scrum" /></a>
   
   <p>
-    <a href="https://www.tamingdata.com/2010/07/08/the-project-management-tree-swing-cartoon-past-and-present/" target="_blank" rel="noopener">Source</a>
+    <a href="https://www.pinterest.co.uk/pin/289285976039880708/" target="_blank" rel="noopener">Source</a>
   </p>
 </div>
 
