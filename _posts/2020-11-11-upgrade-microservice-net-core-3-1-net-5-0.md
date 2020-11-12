@@ -67,7 +67,7 @@ After setting this up, I can use this variable in my project files and can updat
 After updating all project files, update all Nuget packages of your solution. You can do this by right-clicking your solution --> Manage Nuget Packages for Solution...
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/11/Update-Nuget-packages.JPG"><img loading="lazy" src="/assets/img/posts/2020/11/Update-Nuget-packages.JPG" alt="Update Nuget packages" /></a>
+  <a href="/assets/img/posts/2020/11/Update-Nuget-packages.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/Update-Nuget-packages.jpg" alt="Update Nuget packages" /></a>
   
   <p>
     Update your Nuget packages
@@ -77,7 +77,7 @@ After updating all project files, update all Nuget packages of your solution. Yo
 That's it. Your solution is updated to .NET 5.0. Build the solution to check that you have no errors.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/11/Build-the-solution.JPG"><img loading="lazy" src="/assets/img/posts/2020/11/Build-the-solution.JPG" alt="Build the solution" /></a>
+  <a href="/assets/img/posts/2020/11/Build-the-solution.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/Build-the-solution.jpg" alt="Build the solution" /></a>
   
   <p>
     Build the solution
@@ -87,7 +87,7 @@ That's it. Your solution is updated to .NET 5.0. Build the solution to check tha
 Additionally, run all your tests to make sure your code still works.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/11/Run-all-unit-tests.JPG"><img loading="lazy" src="/assets/img/posts/2020/11/Run-all-unit-tests.JPG" alt="Run all unit tests" /></a>
+  <a href="/assets/img/posts/2020/11/Run-all-unit-tests.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/Run-all-unit-tests.jpg" alt="Run all unit tests" /></a>
   
   <p>
     Run all unit tests
@@ -133,7 +133,7 @@ COPY ["*.props", "./"]
 Check in your changes and the build in Azure DevOps will run successfully.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/11/The-Net-5-build-was-successful.JPG"><img loading="lazy" src="/assets/img/posts/2020/11/The-Net-5-build-was-successful.JPG" alt="The .NET 5.0 build was successful" /></a>
+  <a href="/assets/img/posts/2020/11/The-Net-5-build-was-successful.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/The-Net-5-build-was-successful.jpg" alt="The .NET 5.0 build was successful" /></a>
   
   <p>
     The .NET 5.0 build was successful
