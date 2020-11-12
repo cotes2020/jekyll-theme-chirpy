@@ -59,6 +59,12 @@ _init() {
   cp -r ./* "$_temp"
   cp -r ./.git "$_temp"
   mv "$_temp" "$CONTAINER"
+  
+  JpgImages=`find . -name "*.JPG"`
+  for eachfile in $JpgImages
+    do
+      mv "$eachfile" ${eachfile//JPG/jpg}
+    done
 }
 
 _build() {

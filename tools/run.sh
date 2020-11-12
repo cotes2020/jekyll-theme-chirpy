@@ -64,12 +64,6 @@ _init() {
   if [[ -d $CONTAINER ]]; then
    rm -rf "$CONTAINER"
   fi
-
-  JpgImages=`find . -name "*.JPG"`
-  for eachfile in $JpgImages
-  do
-  mv "$eachfile" ${eachfile//JPG/jpg}
-  done
       
   mkdir "$CONTAINER"
   cp -r ./* "$CONTAINER"
