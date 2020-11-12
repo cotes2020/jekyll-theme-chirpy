@@ -98,7 +98,7 @@ Custom Script Extensions allow you to automatically download files from Azure st
               <a href="/assets/img/posts/2018/03/Example-of-a-DSC-script.jpg"><img loading="lazy" src="/assets/img/posts/2018/03/Example-of-a-DSC-script.jpg" alt="Example of a DSC script for the configuration management" /></a>
               
               <p>
-                Example of a DSC script (<a href="https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/windows/extensions-dsc-overview.md" target="_blank" rel="noopener noreferrer">Source</a>)
+                Example of a DSC script 
               </p>
             </div>
             
@@ -107,7 +107,7 @@ Custom Script Extensions allow you to automatically download files from Azure st
             </h3>
             
             <p>
-              Many resources are already defined and exposed to DSC. Additionally, it is possible to implement custom resources by creating a PowerShell module. This module includes a MOF (Managed Object Format) file, a script module, and a module manifest. For more information on this topic see the <a href="https://docs.microsoft.com/en-us/powershell/dsc/authoringResource" target="_blank" rel="noopener noreferrer">documentation</a>.
+              Many resources are already defined and exposed to DSC. Additionally, it is possible to implement custom resources by creating a PowerShell module. This module includes a MOF (Managed Object Format) file, a script module, and a module manifest.
             </p>
             
             <h3>
@@ -128,7 +128,7 @@ Custom Script Extensions allow you to automatically download files from Azure st
             </ul>
             
             <p>
-              The documentation for the Local Configuration Manager can be found <a href="https://docs.microsoft.com/en-us/powershell/dsc/metaconfig" target="_blank" rel="noopener noreferrer">here</a>.
+              The documentation for the Local Configuration Manager can be found <a href="https://docs.microsoft.com/en-us/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7.1" target="_blank" rel="noopener noreferrer">here</a>.
             </p>
             
             <h2>

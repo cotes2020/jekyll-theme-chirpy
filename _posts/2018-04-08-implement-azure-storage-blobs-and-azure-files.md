@@ -422,7 +422,7 @@ To enable AFS, follow these steps:
 
 <ol start="11">
   <li>
-    To install the Azure PowerShell module, open PowerShell and enter <span class="hljs-pscommand">Install-Module</span><span class="hljs-parameter"> -Name</span> AzureRM<span class="hljs-parameter"> -AllowClobber. For more information see the <a href="https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0" target="_blank" rel="noopener">documentation</a>.</span>
+    To install the Azure PowerShell module, open PowerShell and enter <span class="hljs-pscommand">Install-Module</span><span class="hljs-parameter"> -Name</span> AzureRM<span class="hljs-parameter"> -AllowClobber. 
   </li>
 </ol>
 

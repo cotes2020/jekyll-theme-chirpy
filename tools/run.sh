@@ -22,6 +22,7 @@ JEKYLL_DOCKER_HOME="/srv/jekyll"
 
 realtime=false
 docker=true
+build=false
 
 _help() {
   echo "Usage:"
@@ -126,6 +127,12 @@ main() {
 
   _init
   _run
+  if $build; then
+    rm -rf _site
+    mkdir _site
+    
+    cp -r "$CONTAINER"/_site/* _site
+  fi
 }
 
 while (($#)); do
@@ -170,6 +177,10 @@ while (($#)); do
     -h | --help)
       _help
       exit 0
+      ;;
+    --build)
+      build=true
+      shift
       ;;
     *)
       # unknown option

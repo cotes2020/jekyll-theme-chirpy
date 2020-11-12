@@ -772,7 +772,7 @@ The Aad Client ID and Aad Client Secret are the values you copied during the set
 
 **<span lang="DE-AT"><span style="color: #000000; font-family: Calibri;">CLI</span></span>**
 
-To encrypt your VM disk with Azure CLI see the <a href="https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption#cli-commands" target="_blank" rel="noopener noreferrer">documentation</a>.
+To encrypt your VM disk with Azure CLI see the <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disk-encryption-cli-quickstart" target="_blank" rel="noopener noreferrer">documentation</a>.
 
 ## StoreSimple
 

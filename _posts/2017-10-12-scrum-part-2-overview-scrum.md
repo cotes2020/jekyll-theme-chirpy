@@ -53,4 +53,4 @@ At the beginning, do Scrum exactly as the Scrum Guide suggests. After you are us
 
 Next: <a href="/scrum-part-3-scrum-roles/" target="_blank" rel="noopener">Scrum Part 3 &#8211; Scrum roles</a>
 
-Previous: <a href="/scrum-part-1-future-building-software/" target="_blank" rel="noopener">Scrum Part 1 – Welcome to the future</a>
+Previous: <a href="/scrum-part-1-welcome-agile-development" target="_blank" rel="noopener">Scrum Part 1 – Welcome to the future</a>

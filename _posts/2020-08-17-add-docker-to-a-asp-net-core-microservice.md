@@ -7,8 +7,6 @@ tags: [NET Core 3.1, docker, microservice]
 ---
 Microservices need to be deployed often and fast. To achieve this, they often run inside a Docker container. In this post, I will show how easy it is to add Docker support to a project using Visual Studio.
 
-<a href="/run-the-ci-pipeline-during-a-pull-request/" target="_blank" rel="noopener noreferrer">My last post</a> explained how to create a CI pipeline and protect the master branch in Azure DevOps. In my next post, I will add another CI pipeline to build the Docker container.
-
 ## What is Docker?
 
 Docker is the most popular container technology. It is written in Go and open-source. A container can contain a Windows or Linux application and will run the same, no matter where you start it. This means it runs the same way during development, on the testing environment, and on the production environment. This eliminates the famous “It works on my machine”.

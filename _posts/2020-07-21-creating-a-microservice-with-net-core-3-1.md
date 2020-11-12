@@ -33,6 +33,6 @@ When you start the application, you will see the Swagger UI and can also try all
 
 ## Conclusion
 
-This post was a short introduction into the microservice that I will use in the following posts to create automatic builds, deployments to Kubernetes, DevOps workflows, and much more. Check out the <a href="/build-net-core-in-a-ci-pipeline-in-azure-devops/" target="_blank" rel="noopener noreferrer">next post of this series</a> where I create a CI pipeline in Azure DevOps to build the .NET Core solution and run all unit tests.
+This post was a short introduction into the microservice that I will use in the following posts to create automatic builds, deployments to Kubernetes, DevOps workflows, and much more. Check out the <a href="/create-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">next post of this series</a> where I create a CI pipeline in Azure DevOps to build the .NET Core solution and run all unit tests.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/createMicroservice" target="_blank" rel="noopener noreferrer">Github</a> on the createMicroservice branch.
