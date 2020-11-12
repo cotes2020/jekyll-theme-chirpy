@@ -21,7 +21,7 @@ cmd="bundle exec jekyll s"
 JEKYLL_DOCKER_HOME="/srv/jekyll"
 
 realtime=false
-docker=false
+docker=true
 
 _help() {
   echo "Usage:"
@@ -36,6 +36,7 @@ _help() {
   echo "     -t, --trace             Show the full backtrace when an error occurs"
   echo "     -r, --realtime          Make the modified content updated in real time"
   echo "         --docker            Run within docker"
+  echo "         --build	         Build for deployment"
 }
 
 _cleanup() {
@@ -53,6 +54,7 @@ _setup_docker() {
 }
 
 _init() {
+
   cd "$WORK_DIR"
 
   if [[ -f Gemfile.lock ]]; then
@@ -63,10 +65,16 @@ _init() {
    rm -rf "$CONTAINER"
   fi
 
+  JpgImages=`find . -name "*.JPG"`
+  for eachfile in $JpgImages
+  do
+  mv "$eachfile" ${eachfile//JPG/jpg}
+  done
+      
   mkdir "$CONTAINER"
   cp -r ./* "$CONTAINER"
   cp -r ./.git "$CONTAINER"
-
+  
   chmod -R 777 "$CONTAINER"    
 
   trap _cleanup INT
@@ -162,7 +170,7 @@ while (($#)); do
       shift
       ;;
     --docker)
-      docker=true
+      docker=false
       shift
       ;;
     -h | --help)

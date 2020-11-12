@@ -16,7 +16,7 @@ dest="${WORK_DIR}/_site"
 
 cmd="JEKYLL_ENV=production bundle exec jekyll b"
 
-docker=false
+docker=true
 
 config=""
 
@@ -116,7 +116,7 @@ main() {
         shift
         ;;
       --docker)
-        docker=true
+        docker=false
         shift
         ;;
       --config)
@@ -142,6 +142,12 @@ main() {
 
   _init
   _build
+    
+  rm -rf _site
+  mkdir _site
+  
+  cp -r "$CONTAINER"/_site/* _site
+
 }
 
 main "$@"
