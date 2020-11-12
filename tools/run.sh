@@ -94,7 +94,21 @@ _run() {
   cd "$CONTAINER"
   bash _scripts/sh/create_pages.sh
   bash _scripts/sh/dump_lastmod.sh
+    
+  if $build; then
+    cd "$WORK_DIR"
+    
+    echo copy _site
+    
+    rm -rf _site
+    mkdir _site    
+    cp -r "$CONTAINER"/_site/* _site
+	  
+    echo _site copy successful
 
+    cd "$CONTAINER"
+  fi
+  
   if $realtime; then
 
     exclude_regex="\/\..*"
@@ -127,12 +141,8 @@ main() {
 
   _init
   _run
-  if $build; then
-    rm -rf _site
-    mkdir _site
-    
-    cp -r "$CONTAINER"/_site/* _site
-  fi
+  
+
 }
 
 while (($#)); do
