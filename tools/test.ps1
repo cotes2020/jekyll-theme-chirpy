@@ -15,19 +15,19 @@ foreach ($filename in $filenames)
 
 echo "HTML files replaced"
 
-#echo "Searching XML files"
-#
-#$fileNames = Get-ChildItem -Path "$($PWD)\*.xml" -Recurse | select -expand fullname
-#
-#echo "$($fileNames.Length) files found"
-#echo "Replacing http://0.0.0.0:4000 with https://www.programmingwithwolfgang.com in HTML files"
-#
-#foreach ($filename in $filenames) 
-#{
-# (  Get-Content $fileName) -replace "http://0.0.0.0:4000","https://www.programmingwithwolfgang.com" | Set-Content $fileName
-#}
-#
-#echo "XML files replaced"
+echo "Searching XML files"
+
+$fileNames = Get-ChildItem -Path "$($PWD)\*.xml" -Recurse | select -expand fullname
+
+echo "$($fileNames.Length) files found"
+echo "Replacing http://0.0.0.0:4000 with https://www.programmingwithwolfgang.com in HTML files"
+
+foreach ($filename in $filenames) 
+{
+ (  Get-Content $fileName) -replace "http://0.0.0.0:4000","https://www.programmingwithwolfgang.com" | Set-Content $fileName -Force
+}
+
+echo "XML files replaced"
 #
 #echo "Searching JSON files"
 #
@@ -38,7 +38,7 @@ echo "HTML files replaced"
 #
 #foreach ($filename in $filenames) 
 #{
-# (  Get-Content $fileName) -replace "http://0.0.0.0:4000","https://www.programmingwithwolfgang.com" | Set-Content $fileName
+# (  Get-Content $fileName) -replace "http://0.0.0.0:4000","https://www.programmingwithwolfgang.com" | Set-Content $fileName -Force
 #}
 #
 #echo "JSON files replaced"
@@ -52,7 +52,7 @@ echo "HTML files replaced"
 #
 #foreach ($filename in $filenames) 
 #{
-# (  Get-Content $fileName) -replace "http://0.0.0.0:4000","https://www.programmingwithwolfgang.com" | Set-Content $fileName
+# (  Get-Content $fileName) -replace "http://0.0.0.0:4000","https://www.programmingwithwolfgang.com" | Set-Content $fileName -Force
 #}
 #
 #echo "TXT files replaced"
