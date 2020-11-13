@@ -51,4 +51,4 @@ In the next post, I will talk about new experiences on how to get feedback from 
 
 Next: <a href="/how-i-learned-programming-part-3/" target="_blank" rel="noopener">Part 3</a>
 
-Previous: <a href="/how-i-learned-programming-part-1/" target="_blank" rel="noopener">Part 1</a>
+Previous: <a href="/how-i-learned-programming-part/" target="_blank" rel="noopener">Part 1</a>
