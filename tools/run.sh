@@ -21,8 +21,7 @@ cmd="bundle exec jekyll s"
 JEKYLL_DOCKER_HOME="/srv/jekyll"
 
 realtime=false
-docker=true
-build=false
+docker=false
 
 _help() {
   echo "Usage:"
@@ -37,7 +36,6 @@ _help() {
   echo "     -t, --trace             Show the full backtrace when an error occurs"
   echo "     -r, --realtime          Make the modified content updated in real time"
   echo "         --docker            Run within docker"
-  echo "         --build	         Build for deployment"
 }
 
 _cleanup() {
@@ -55,22 +53,29 @@ _setup_docker() {
 }
 
 _init() {
-
   cd "$WORK_DIR"
 
   if [[ -f Gemfile.lock ]]; then
-   rm -f Gemfile.lock
+    rm -f Gemfile.lock
   fi
 
   if [[ -d $CONTAINER ]]; then
-   rm -rf "$CONTAINER"
+    rm -rf "$CONTAINER"
   fi
-      
+
   mkdir "$CONTAINER"
   cp -r ./* "$CONTAINER"
   cp -r ./.git "$CONTAINER"
-  
   chmod -R 777 "$CONTAINER"    
+  if $docker; then
+    local _image_user=$(stat -c "%U" "$JEKYLL_DOCKER_HOME"/.)
+
+    if [[ $_image_user != $(whoami) ]]; then
+      # under Docker for Linux
+      chown -R "$(stat -c "%U:%G" "$JEKYLL_DOCKER_HOME"/.)" "$CONTAINER"
+    fi
+
+  fi
 
   trap _cleanup INT
 }
@@ -94,7 +99,7 @@ _run() {
   cd "$CONTAINER"
   bash _scripts/sh/create_pages.sh
   bash _scripts/sh/dump_lastmod.sh
-      
+
   if $realtime; then
 
     exclude_regex="\/\..*"
@@ -127,20 +132,6 @@ main() {
 
   _init
   _run
-
-  #if $build; then
-  #  cd "$WORK_DIR"
-  #  
-  #  echo copy _site
-  #  
-  #  rm -rf _site
-  #  mkdir _site    
-  #  cp -r "$CONTAINER"/_site/* _site
-	#  
-  #  echo _site copy successful
-
-  #  cd "$CONTAINER"
-  #fi
 }
 
 while (($#)); do
@@ -179,16 +170,12 @@ while (($#)); do
       shift
       ;;
     --docker)
-      docker=false
+      docker=true
       shift
       ;;
     -h | --help)
       _help
       exit 0
-      ;;
-    --build)
-      build=true
-      shift
       ;;
     *)
       # unknown option
