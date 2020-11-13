@@ -26,7 +26,7 @@
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
   <!-- GA -->
-  {% if jekyll.environment == 'production' %}
+  <!-- {% if jekyll.environment == 'production' %}-->
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
@@ -36,7 +36,7 @@
     {% if site.google_analytics.pv.proxy_url and site.google_analytics.pv.enabled %}
       <link rel="preconnect" href="{{ site.google_analytics.pv.proxy_url }}" crossorigin="use-credentials">
       <link rel="dns-prefetch" href="{{ site.google_analytics.pv.proxy_url }}">
-    {% endif %}
+    <!-- {% endif %} -->
   {% endif %}
 
   <!-- jsDelivr CDN -->
