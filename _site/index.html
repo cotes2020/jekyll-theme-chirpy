@@ -22,7 +22,6 @@
     <meta name="twitter:site" content="@wolfgang_ofner" />
     <meta name="twitter:creator" content="@Wolfgang Ofner" />
     <meta name="google-site-verification" content="xxsPm-h6A0B6a0QMgqXO80PU4DbMt4Dq06p-SGzB3TU" />
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script
         type="application/ld+json"> {"url":"https://www.programmingwithwolfgang.com/","@type":"WebSite","headline":"Programming With Wolfgang","sameAs":["https://twitter.com/wolfgang_ofner","https://github.com/wolfgangofner"],"author":{"@type":"Person","name":"Wolfgang Ofner"},"name":"Wolfgang Ofner","description":"A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture.","@context":"https://schema.org"}</script>
     <link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon">
@@ -70,6 +69,9 @@
     <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         async></script>
     <script src="/assets/js/home.min.js" async></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112077092-1"></script>
+    <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-112077092-1'); </script>
+    <script src="/app.js" defer></script>
 
 <body data-spy="scroll" data-target="#toc">
     <div id="sidebar" class="d-flex flex-column">
@@ -134,36 +136,6 @@
                 <div class="col-12 col-lg-11 col-xl-8">
                     <div id="page" class="post pb-5 pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 mb-md-4">
                         <div id="post-list">
-                            <div class="post-preview">
-                                <div class="d-flex justify-content-between pr-xl-2">
-                                    <h1><a href="/upgrade-microservice-net-core-3-1-net-5-0/">Upgrade a Microservice
-                                            from .NET Core 3.1 to .NET 5.0</a></h1>
-                                </div>
-                                <div class="post-content">
-                                    <p> Microsoft released the next major release, called .NET 5.0 which succeeds .NET
-                                        Core 3.1. .NET 5.0 comes with a lot of improvements and also with C# 9. It also
-                                        is the first step of a unified .NET pl...</p>
-                                </div>
-                                <div class="post-meta text-muted"> <i class="far fa-clock fa-fw"></i> <span
-                                        class="timeago " data-toggle="tooltip" data-placement="bottom"
-                                        title="Wed, Nov 11, 2020, 12:00 AM +0100"> Nov 11 <i
-                                            class="unloaded">2020-11-11T00:00:00+01:00</i> </span></div>
-                            </div>
-                            <div class="post-preview">
-                                <div class="d-flex justify-content-between pr-xl-2">
-                                    <h1><a href="/run-xUnit-inside-docker-during-ci-build/">Run xUnit Tests inside
-                                            Docker during an Azure DevOps CI Build</a></h1>
-                                </div>
-                                <div class="post-content">
-                                    <p> Running your build inside a Docker container has many advantages like platform
-                                        independence and better testability for developers. These containers also bring
-                                        more complexity though. In my last pos...</p>
-                                </div>
-                                <div class="post-meta text-muted"> <i class="far fa-clock fa-fw"></i> <span
-                                        class="timeago " data-toggle="tooltip" data-placement="bottom"
-                                        title="Mon, Nov 9, 2020, 12:00 AM +0100"> Nov 9 <i
-                                            class="unloaded">2020-11-09T00:00:00+01:00</i> </span></div>
-                            </div>
                             <div class="post-preview">
                                 <div class="d-flex justify-content-between pr-xl-2">
                                     <h1><a href="/build-docker-azure-devops-ci-pipeline/">Build Docker in an Azure
@@ -283,6 +255,36 @@
                                         title="Mon, Sep 14, 2020, 2:34 PM +0200"> Sep 14 <i
                                             class="unloaded">2020-09-14T14:34:59+02:00</i> </span></div>
                             </div>
+                            <div class="post-preview">
+                                <div class="d-flex justify-content-between pr-xl-2">
+                                    <h1><a href="/add-docker-to-a-asp-net-core-microservice/">Add Docker to an ASP .NET
+                                            Core Microservice</a></h1>
+                                </div>
+                                <div class="post-content">
+                                    <p> Microservices need to be deployed often and fast. To achieve this, they often
+                                        run inside a Docker container. In this post, I will show how easy it is to add
+                                        Docker support to a project using Visual...</p>
+                                </div>
+                                <div class="post-meta text-muted"> <i class="far fa-clock fa-fw"></i> <span
+                                        class="timeago " data-toggle="tooltip" data-placement="bottom"
+                                        title="Mon, Aug 17, 2020, 6:31 PM +0200"> Aug 17 <i
+                                            class="unloaded">2020-08-17T18:31:42+02:00</i> </span></div>
+                            </div>
+                            <div class="post-preview">
+                                <div class="d-flex justify-content-between pr-xl-2">
+                                    <h1><a href="/create-net-core-in-ci-pipeline-in-azure-devops/">Create a .NET Core CI
+                                            Pipeline in Azure DevOps</a></h1>
+                                </div>
+                                <div class="post-content">
+                                    <p> A crucial feature of DevOps is to give the developer fast feedback if their code
+                                        changes work. This can be done by automatically building code and running tests
+                                        every time changes are checked-in. T...</p>
+                                </div>
+                                <div class="post-meta text-muted"> <i class="far fa-clock fa-fw"></i> <span
+                                        class="timeago " data-toggle="tooltip" data-placement="bottom"
+                                        title="Mon, Aug 3, 2020, 7:24 PM +0200"> Aug 3 <i
+                                            class="unloaded">2020-08-03T19:24:06+02:00</i> </span></div>
+                            </div>
                         </div>
                         <ul class="pagination mt-4 mb-0 pl-lg-2">
                             <li class="page-item disabled"> <a class="page-link btn-box-shadow" href="#"><i
@@ -302,22 +304,23 @@
                         <div id="access-lastmod" class="post">
                             <h3 data-toc-skip>Recent Update</h3>
                             <ul class="post-content pl-0 pb-1 ml-1 mt-2">
-                                <li><a href="/document-your-microservice-with-swagger/">Document your Microservice with
-                                        Swagger</a>
-                                <li><a href="/how-i-learned-programming-part-3/">How I learned programming - Part 3</a>
+                                <li><a href="/create-a-docker-image-in-an-azure-devops-ci-pipeline/">Create a Docker
+                                        Image in an Azure DevOps CI Pipeline</a>
+                                <li><a href="/we-moved-to-jekyll/">We moved to Jekyll</a>
+                                <li><a href="/xunit-getting-started/">xUnit - Getting Started</a>
+                                <li><a href="/xbehave-getting-started/">xBehave - Getting Started</a>
                             </ul>
                         </div>
                         <div id="access-tags">
                             <h3 data-toc-skip>Trending Tags</h3>
                             <div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag"
-                                    href="/tags/xunit/">xUnit</a> <a class="post-tag" href="/tags/mediatr/">MediatR</a>
-                                <a class="post-tag" href="/tags/cqrs/">CQRS</a> <a class="post-tag"
-                                    href="/tags/docker-compose/">docker compose</a> <a class="post-tag"
+                                    href="/tags/mediatr/">MediatR</a> <a class="post-tag" href="/tags/cqrs/">CQRS</a> <a
+                                    class="post-tag" href="/tags/docker-compose/">docker compose</a> <a class="post-tag"
                                     href="/tags/swagger/">Swagger</a> <a class="post-tag" href="/tags/scrum/">Scrum</a>
-                                <a class="post-tag" href="/tags/ci/">CI</a> <a class="post-tag"
-                                    href="/tags/agile/">Agile</a> <a class="post-tag"
-                                    href="/tags/rabbitmq/">RabbitMQ</a> <a class="post-tag" href="/tags/mvc/">MVC</a>
-                            </div>
+                                <a class="post-tag" href="/tags/agile/">Agile</a> <a class="post-tag"
+                                    href="/tags/xunit/">xUnit</a> <a class="post-tag"
+                                    href="/tags/rabbitmq/">RabbitMQ</a> <a class="post-tag" href="/tags/mvc/">MVC</a> <a
+                                    class="post-tag" href="/tags/ci/">CI</a></div>
                         </div>
                     </div>
                 </div>
@@ -340,13 +343,13 @@
         <div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
             <div class="col-12 col-xl-11 post-content">
                 <div id="search-hints">
-                    <h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/xunit/">xUnit</a> <a
-                        class="post-tag" href="/tags/mediatr/">MediatR</a> <a class="post-tag"
-                        href="/tags/cqrs/">CQRS</a> <a class="post-tag" href="/tags/docker-compose/">docker compose</a>
-                    <a class="post-tag" href="/tags/swagger/">Swagger</a> <a class="post-tag"
-                        href="/tags/scrum/">Scrum</a> <a class="post-tag" href="/tags/ci/">CI</a> <a class="post-tag"
-                        href="/tags/agile/">Agile</a> <a class="post-tag" href="/tags/rabbitmq/">RabbitMQ</a> <a
-                        class="post-tag" href="/tags/mvc/">MVC</a>
+                    <h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/mediatr/">MediatR</a>
+                    <a class="post-tag" href="/tags/cqrs/">CQRS</a> <a class="post-tag"
+                        href="/tags/docker-compose/">docker compose</a> <a class="post-tag"
+                        href="/tags/swagger/">Swagger</a> <a class="post-tag" href="/tags/scrum/">Scrum</a> <a
+                        class="post-tag" href="/tags/agile/">Agile</a> <a class="post-tag" href="/tags/xunit/">xUnit</a>
+                    <a class="post-tag" href="/tags/rabbitmq/">RabbitMQ</a> <a class="post-tag"
+                        href="/tags/mvc/">MVC</a> <a class="post-tag" href="/tags/ci/">CI</a>
                 </div>
                 <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
             </div>
@@ -356,5 +359,3 @@
             class="fas fa-angle-up"></i> </a>
     <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script>
     <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://www.programmingwithwolfgang.com{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"><div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>{categories}</div><div><i class="fa fa-tag fa-fw"></i>{tags}</div></div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>' }); </script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-112077092-1"></script>
-    <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-112077092-1'); </script>
