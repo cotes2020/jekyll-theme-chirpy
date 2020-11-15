@@ -1,7 +1,7 @@
 ---
 title: CTF-Red @ BsidesIslamabad-2020 - Pakistan's first ever Bsides
 author:
-date: 2020-11-15 22:00:00 +0500
+date: 2020-11-16 01:00:00 +0500
 comments: true
 categories: [Categories, CTF-Challenges]
 tags: [ctf, bsidespakistan, cyber security] # TAG names should always be lowercase
