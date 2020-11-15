@@ -10,7 +10,7 @@ tags: [ctf, bsidespakistan, cyber security] # TAG names should always be lowerca
 **Assalam-o-Alaikum folks!**
 I hope you guys are safe and sound in this pandemic.
 
-BsidesIslamabad-2020 was the first ever Bsides cyber security conference of Pakistan, conducted on _November 6th-8th 2020_.
+BsidesIslamabad-2020 was the first ever Bsides cyber security conference of Pakistan, conducted on _November 7th-8th 2020_.
 For those who don't know what _Bsides_ is:
 
 > BSides is a community-driven framework for building events for and by information security community members.
