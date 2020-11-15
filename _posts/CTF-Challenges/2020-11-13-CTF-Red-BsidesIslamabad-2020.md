@@ -168,7 +168,7 @@ The content of file is not properly readable, so used an online [Js beautifier](
 
 ![ShaktimanDaDev JS File](/assets/img/posts/bsidesisb2020/ShaktimanDaDev-Js-content-deobfuscated.png)
 
-From this file we have a url (which was the Shaktiman's secret portal), his username and password. Accessed that urla and entered the found username & password:
+From this file we have a url (which was the Shaktiman's secret portal), his username and password. Accessed that url and entered the found username & password:
 
 ![ShaktimanDaDev logedIn](/assets/img/posts/bsidesisb2020/ShaktimanDaDev-logedin.png)
 
