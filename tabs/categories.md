@@ -1,5 +1,5 @@
 ---
-title: Categories
+title: Published Posts
 type: categories
 # All the Categories of posts
 # v2.0
@@ -16,12 +16,12 @@ type: categories
 {% assign sort_categories = site.categories | sort %}
 
 {% for category in sort_categories %}
-  {% assign category_name = category | first %}
-  {% assign posts_of_category = category | last %}
-  {% assign first_post = posts_of_category | first %}
+{% assign category_name = category | first %}
+{% assign posts_of_category = category | last %}
+{% assign first_post = posts_of_category | first %}
 
-  {% if category_name == first_post.categories[0] %}
-    {% assign sub_categories = "" | split: "" %}
+{% if category_name == first_post.categories[0] %}
+{% assign sub_categories = "" | split: "" %}
 
     {% for post in posts_of_category %}
       {% assign second_category = post.categories[1] %}
@@ -64,8 +64,8 @@ type: categories
 
       <!-- arrow -->
       {% if sub_categories_size > 0%}
-      <a href="#{{ LIST_PREFIX }}{{ group_index }}" data-toggle="collapse" 
-        aria-expanded="true" aria-label="{{ HEAD_PREFIX }}{{ group_index }}-trigger" 
+      <a href="#{{ LIST_PREFIX }}{{ group_index }}" data-toggle="collapse"
+        aria-expanded="true" aria-label="{{ HEAD_PREFIX }}{{ group_index }}-trigger"
         class="category-trigger hide-border-bottom">
         <i class="fas fa-fw fa-angle-down"></i>
       </a>
@@ -100,5 +100,5 @@ type: categories
 
     {% assign group_index = group_index | plus: 1 %}
 
-  {% endif %}
+{% endif %}
 {% endfor %}

@@ -1,7 +1,8 @@
 ---
 title: CTF-Red @ BsidesIslamabad-2020 - Pakistan's first ever Bsides
-author: theFawsec
+author:
 date: 2020-11-13 10:00:00 +0500
+comments: true
 categories: [Categories, CTF-Challenges]
 tags: [ctf, bsidespakistan, cyber security] # TAG names should always be lowercase
 ---
@@ -9,12 +10,12 @@ tags: [ctf, bsidespakistan, cyber security] # TAG names should always be lowerca
 **Assalam-o-Alaikum folks!**
 I hope you guys are safe and sound in this pandemic.
 
-BsidesIslamabad-2020 is the first ever Bsides of Pakistan that was a virtual conference (due to covid), conducted on _November 6th-8th 2020_.
+BsidesIslamabad-2020 was the first ever Bsides cyber security conference of Pakistan, conducted on _November 6th-8th 2020_.
 For those who don't know what _Bsides_ is:
 
 > BSides is a community-driven framework for building events for and by information security community members.
 
-BsidesIslamabad had a lot of amazing speakers, workshops on hardware hacking and reverse-engineering and Two CTFs:
+BsidesIslamabad had a lot of amazing speakers, workshops on hardware hacking and reverse-engineering and two CTFs:
 
 - <span style="color:red"> CTF-Red (offensive) </span>
 - <span style="color:blue"> CTF-Blue (defensive) </span>
@@ -140,6 +141,8 @@ And we successfully got access tot our friend's account:
 
 ## Vulnerability?
 
+I think the main issue here is that the authectication and authorization is solely handled by a single cookie value which is just the user-id. User-ids can be found by differnet ways so once a user-id is disclosed, that user is done!
+
 ---
 
 # ShaktimanDaDev
@@ -204,6 +207,8 @@ Username of a user can be found by viewing that user's details. Sending the abov
 
 ## Vulnerability?
 
+`Lack of proper access control`. There should be porper access cotrol implmented on endpoints that are not meant for a user (in this case the moderator).
+
 ---
 
 # Remani
@@ -239,6 +244,8 @@ So I sent the **POST** request again but this time intercepted the response, cha
 
 ## Vulnerability?
 
+Well I think this is an example of vulnerable coding, where just changing the response caused the app to process the request differently.
+
 ---
 
 # X_Pass
@@ -262,13 +269,17 @@ Copy this value and paste it in the input box, hit enter and the challenge is so
 
 ![X_Pass](/assets/img/posts/bsidesisb2020/x_pass-flag-found.png)
 
+## Vulnerability?
+
+If we see, we were able to enter the correct password because that password was being logged in console. This is usually done by developers to debug the code but they may forget to remove these statments before making the application live.
+
 ---
 
 # HackTheAdmin
 
 ![Hack The Admin](/assets/img/posts/bsidesisb2020/hacktheadmin.png)
 
-Main page had simple login form to enter usernamen and password.
+Main page had simple login form to enter username and password.
 ![Hack The Admin Home](/assets/img/posts/bsidesisb2020/hacktheadmin-home.png)
 
 After spending a few minutes and looking through the source code, did not find anything usefull.Then I ran directory bruteforce through which I was able to access a few files:
@@ -306,4 +317,16 @@ Here `YWRtaW4=` is base-64 encoding of the word `admin`
 
 In response we receive a flag and the challenge is solved!
 
+## Vulnerability?
+
+`Source code disclosure` & `use of weak encoding`. Using base64 to encode some sensitive data and depending on that data for authentication or authorization puprose can lead to severe issues.
+
 ---
+
+# Finishing note
+
+Well thats all folks. I hope you guys enjoyed this post and learnt something new today. I would like to thank the team behind [BsidesIslamabad](https://www.bsidesislamabad.com/) for such an amazing event.
+
+If anyone have any questions or you just wanna talk about cyber security in general, feel free to shoot a dm on twitter or linkedIn, as I am always open to talk, discuss and learn new things.
+
+### Thank you!

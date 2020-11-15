@@ -4,27 +4,21 @@
 #  © 2020 Cotes Chung
 #  MIT Licensed
 
-
--
-  name: Home
+- name: Home
   icon: "fas fa-home"
--
-  name: Categories
+- name: Posts
   icon: "fas fa-stream"
   path: tabs
   url: categories
--
-  name: "Tags"
+- name: "Tags"
   icon: "fas fa-tags"
   path: tabs
   url: tags
--
-  name: "Archives"
+- name: "Archives"
   path: tabs
   url: archives
   icon: "fas fa-archive"
--
-  name: "About"
+- name: "About"
   icon: "fas fa-info"
   path: tabs
   url: about
