@@ -135,7 +135,7 @@ If we look at the link that we got from the already registered user, we can see 
 
 ![Manipulator Rsponse Changed](/assets/img/posts/bsidesisb2020/manipulator-register-response-changed.png)
 
-And we successfully got access tot our friend's account:
+And we successfully got access to our friend's account:
 
 ![Manipulator Flag Found](/assets/img/posts/bsidesisb2020/manipulator-flag-found.png)
 
