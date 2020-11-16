@@ -195,7 +195,7 @@ Upon reading the JS code, found the following function:
 
 ![Broken Auth JS](/assets/img/posts/bsidesisb2020/brokenAuth-js-content.png)
 
-This function tells us that to delete a user we have to send a request tot `deleting_a_user.php` with username as parameter value.
+This function tells us that to delete a user we have to send a request to `deleting_a_user.php` with username as parameter value.
 
 ```
 https://target-url/deleting_a_user.php?username=[USERNAME-HERE]
@@ -233,8 +233,8 @@ If we closely read this code, we can see a **POST** request is made to **payment
 - done()
 - fail()
 
-Well not a JS guru here (and you don't need be to understand the code), we can see that whenver we send this **POST** request, the `fail()` method is being called.
-So what causes this `fail()` method be called instead of `done()`? Well the first thing that came to my mind was that maybe the reponse of this request?
+Well not a JS guru here (and you don't need be to understand the code), we can see that whenever we send this **POST** request, the `fail()` method is being called.
+So what causes this `fail()` method to get called instead of `done()`? Well the first thing that came to my mind was that maybe the reponse of this request?
 
 So I sent the **POST** request again but this time intercepted the response, changed the `403 Forbidden` to `200 Ok` and VOILA!
 
@@ -282,7 +282,7 @@ If we see, we were able to enter the correct password because that password was 
 Main page had simple login form to enter username and password.
 ![Hack The Admin Home](/assets/img/posts/bsidesisb2020/hacktheadmin-home.png)
 
-After spending a few minutes and looking through the source code, did not find anything usefull.Then I ran directory bruteforce through which I was able to access a few files:
+After spending a few minutes and looking through the source code, did not find anything useful.Then I ran directory bruteforce through which I was able to access a few files:
 
 ![Hack The Admin Dir Brut](/assets/img/posts/bsidesisb2020/hacktheadmin-dir-search.png)
 
