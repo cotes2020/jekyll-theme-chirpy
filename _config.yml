@@ -18,17 +18,17 @@ description: >-                        # used by seo meta and the atom feed
   and focuses on text presentation.
 
 # Replace with the website url, e.g. 'https://username.github.io'
-url: 'protocol://domain'
+url: 'https://chirpy.github.io'
 
 author: your_full_name                  # change to your full name
 
 avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
 github:
-  username: github_username             # change to your github username
+  username: apynx             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: capkatak          # change to your twitter username
 
 social:
   name: your_full_name                  # it will shows as the copyright owner in Footer
@@ -51,7 +51,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Jakarta
 
 google_analytics:
   id: ''          # Fill with your Google Analytics ID
