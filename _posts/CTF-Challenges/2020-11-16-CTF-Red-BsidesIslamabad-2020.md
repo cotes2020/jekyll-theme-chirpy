@@ -141,7 +141,7 @@ And we successfully got access to our friend's account:
 
 ## Vulnerability?
 
-I think the main issue here is that the authectication and authorization is solely handled by a single cookie value which is just the user-id. User-ids can be found by differnet ways so once a user-id is disclosed, that user is done!
+I think the main issue here is that the authentication and authorization is solely handled by a single cookie value which is just the user-id. User-ids can be found by different ways so once a user-id is disclosed, that user is done!
 
 ---
 
@@ -178,7 +178,7 @@ Here we got an encoded string. At this stage I simply used `magic` tool of [Cybe
 
 ## Vulnerability?
 
-Well the issue here is what we call `Security through Obscurity`. Simply disabling some shortcut keys to access source code, saving sensitive data (username,password and that url) by using so called `encryption` on some Js files is a secure practise.
+Well i think the issue here is what we call `Security through Obscurity`. Simply disabling some shortcut keys to access source code, saving sensitive data (username,password and that url) by using so called `encryption` on some Js files is not a secure practise.
 
 ---
 
@@ -207,7 +207,7 @@ Username of a user can be found by viewing that user's details. Sending the abov
 
 ## Vulnerability?
 
-`Lack of proper access control`. There should be porper access cotrol implmented on endpoints that are not meant for a user (in this case the moderator).
+`Lack of proper access control`. There should be proper access cotrol implemented on endpoints that are not meant for a user (in this case the moderator).
 
 ---
 
