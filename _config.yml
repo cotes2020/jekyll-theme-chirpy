@@ -12,7 +12,7 @@ title: TheFawsec # the main title
 tagline: A cyber security enthusiast & aspiring penetration tester, interested in red teaming & social engineering. # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A personal blogging site, where I talk about different topic in cyber security.
+  A personal blog, where I talk about different topics of cyber security and share what I learn.
 
 # Replace with the website url, e.g. 'https://username.github.io'
 url: "https://thefawsec.github.io"
