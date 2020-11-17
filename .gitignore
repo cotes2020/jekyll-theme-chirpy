@@ -1,5 +1,7 @@
 # hidden files
 .*
+!.github
+!.gitignore
 
 # python compiled files
 *.pyc
