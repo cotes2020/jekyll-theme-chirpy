@@ -12,7 +12,7 @@ jobs:
         DAYS_TO_CLOSE: ${{ 2 }}
       uses: actions/stale@v3
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ secrets.GH_PAT }}
         stale-issue-message: 'This issue is stale because it has been open ${{ env.DAYS_TO_STALE }} days with no activity. Remove stale label or comment or this will be closed in ${{ env.DAYS_TO_CLOSE }} days'
         stale-issue-label: 'stale'
         exempt-issue-labels: 'pending, in progress'
