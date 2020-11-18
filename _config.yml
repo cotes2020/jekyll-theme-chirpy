@@ -161,7 +161,6 @@ defaults:
           label: Home
           url: /
 
-
 sass:
   sass_dir: /assets/css
   style: compressed
@@ -198,3 +197,13 @@ sitemap_exclude:  # Sitemap will exclude the following items.
     - sitemap.xml
     - robots.txt
     - redirects.json
+
+# see: <https://github.com/jekyll/jekyll-archives/blob/master/docs/configuration.md>
+jekyll-archives:  
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: '/tags/:name/'
+    category: '/categories/:name/'
