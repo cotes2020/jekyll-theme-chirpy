@@ -14,7 +14,11 @@ layout: compress
 {% for post in site.posts %}
   <url>
     <loc>{{ site.url | append: site.baseurl | append: post.url }}</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    {% if post.lastmod %}
+      <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
+    {% else %}
+      <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    {% endif %}
 
     {% if post.sitemap.changefreq %}
       <changefreq>{{ post.sitemap.changefreq }}</changefreq>
@@ -59,19 +63,9 @@ layout: compress
     {% continue %}
   {% endif %}
 
-  {% capture lastmod %}
-    {% if page.lastmod %}
-      {{ page.lastmod }}
-    {% elsif page.date %}
-      {{ page.date }}
-    {% else %}
-      {{ site.time }}
-    {% endif %}
-  {% endcapture %}
-
-   <url>
+  <url>
     <loc>{{ site.url | append: site.baseurl | append: page.url | remove: "index.html" }}</loc>
-    <lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
 
     {% if page.sitemap.changefreq %}
       <changefreq>{{ page.sitemap.changefreq }}</changefreq>

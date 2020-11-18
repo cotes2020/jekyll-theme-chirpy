@@ -30,10 +30,10 @@ layout: compress
     <title>{{ post.title }}</title>
     <link href="{{ post_absolute_url }}" rel="alternate" type="text/html" title="{{ post.title }}" />
     <published>{{ post.date | date_to_xmlschema }}</published>
-  {% if post.seo.date_modified %}
-    <updated>{{ post.seo.date_modified | date_to_xmlschema }}</updated>
+  {% if post.lastmod %}
+    <updated>{{ post.lastmod | date_to_xmlschema }}</updated>
   {% else %}
-    <updated>{{ site.time | date_to_xmlschema }}</updated>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
   {% endif %}
     <id>{{ post_absolute_url }}</id>
     <content src="{{ post_absolute_url }}" />
