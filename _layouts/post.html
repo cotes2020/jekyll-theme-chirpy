@@ -31,22 +31,10 @@ layout: default
         </div>
 
         <!-- lastmod -->
-        {%- capture filename -%}
-          {{ page.url | split: "/" | last }}
-        {%- endcapture -%}
-
-        {% for item in site.data.updates %}
-          {% assign encode_filename = item.filename | url_encode %}
-          {% if filename == encode_filename %}
-            {% assign lastmod = item.lastmod %}
-            {% break %}
-          {% endif %}
-        {% endfor %}
-
-        {% if lastmod %}
+        {% if page.lastmod %}
         <div>
           Updated
-          {% include timeago.html date=lastmod class="lastmod" tooltip=true %}
+          {% include timeago.html date=page.lastmod class="lastmod" tooltip=true %}
         </div>
         {% endif %}
 
@@ -61,7 +49,6 @@ layout: default
       </div> <!-- .post-meta -->
 
       <div class="post-content">
-
         {%- capture img_placehodler -%}
           data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
         {% endcapture%}
