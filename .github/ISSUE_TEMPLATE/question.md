@@ -15,6 +15,5 @@ labels: question
 - [ ] I searched the Internet for related problems, but still couldn't solve it.
 - [ ] My question is based on the latest code of `master` branch.
 
-
 ## Description
-<!-- Please describe your question. -->
+<!-- Please describe your question in detial. -->
