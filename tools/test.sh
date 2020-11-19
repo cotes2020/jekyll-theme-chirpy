@@ -14,8 +14,43 @@
 DEST=_site
 URL_IGNORE=cdn.jsdelivr.net
 
+_build=false
+
+help() {
+  echo "Usage:"
+  echo
+  echo "   bash ./tools/test.sh [options]"
+  echo
+  echo "Options:"
+  echo "     --build              Run jekyll build before testing."
+  echo "     -h, --help           Print this information."
+}
+
 if [[ -n $1 && -d $1 ]]; then
   DEST=$1
+fi
+
+while (($#)); do
+  opt="$1"
+  case $opt in
+    --build)
+      _build=true
+      shift
+      ;;
+    -h | --help)
+      help
+      exit 0
+      ;;
+    *)
+      # unknown option
+      help
+      exit 1
+      ;;
+  esac
+done
+
+if $_build; then
+  JEKYLL_ENV=production bundle exec jekyll b
 fi
 
 bundle exec htmlproofer $DEST \
