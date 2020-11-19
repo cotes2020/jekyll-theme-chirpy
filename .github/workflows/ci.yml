@@ -29,20 +29,6 @@ jobs:
         with:
           ruby-version: '2.6.x'
 
-      - name: Install tools (for Ubuntu)
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
-          sudo add-apt-repository ppa:rmescandon/yq
-          sudo apt update
-          sudo apt install yq -y
-
-      - name: Install tools (for macOS)
-        if: matrix.os == 'macos-latest'
-        run: |
-          brew install coreutils
-          brew install yq
-
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -73,7 +59,7 @@ jobs:
 
       - name: Build Site
         run: |
-          bash tools/build.sh
+          JEKYLL_ENV=production bundle exec jekyll b
 
       - name: Test Site
         run: |

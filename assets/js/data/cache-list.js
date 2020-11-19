@@ -40,34 +40,6 @@ const include = [
     '{{ item | relative_url }}',
   {% endfor %}
 
-  /* The posts of first Home page and recent update list */
-  {% assign post_list = "" | split: "" %}
-
-  {% for post in site.posts limit: site.paginate %}
-    {% capture post_url %}{{ post.url | relative_url }}{% endcapture %}
-    {% assign post_list = post_list | push: post_url %}
-  {% endfor %}
-
-  {% include update-list.html %}
-
-  {% for item in update_list %}
-    {% assign url = item | split: "::" | last | url_encode | prepend: "/posts/" | append: "/" | relative_url %}
-    {% assign post_list = post_list | push: url %}
-  {% endfor %}
-
-  {% assign post_list = post_list | uniq %}
-
-  {% for url in post_list %}
-    '{{ url }}',
-  {% endfor %}
-
-  /* Trending tags */
-  {% include trending-tags.html %}
-  {% for tag in trending_tags %}
-    {% capture tag_url %}/tags/{{ tag | downcase | url_encode }}/{% endcapture %}
-    '{{ tag_url | relative_url }}',
-  {% endfor %}
-
   /*--- Icons ---*/
 
   {%- capture icon_url -%}

@@ -21,13 +21,6 @@ jobs:
         with:
           ruby-version: 2.6.x
 
-      - name: Install tools
-        run: |
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
-          sudo add-apt-repository ppa:rmescandon/yq
-          sudo apt update
-          sudo apt install yq -y
-
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -58,19 +51,19 @@ jobs:
 
       - name: Check baseurl
         run: |
-          baseurl="$(grep '^baseurl:' _config.yml | yq r - baseurl)"
+          baseurl="$(grep '^baseurl:' _config.yml | sed "s/.*: *//;s/['\"]//g;s/#.*//")"
           if [[ -n $baseurl ]]; then
             echo "SPEC_TEST=_site_no_baseurl" >> $GITHUB_ENV
           fi
 
       - name: Build Site
         run: |
-          bash tools/build.sh
+          JEKYLL_ENV=production bundle exec jekyll b
 
           if [[ -n $SPEC_TEST ]]; then
             # Bypass the defects of htmlproofer
-            bash tools/build.sh -b "" -d "$SPEC_TEST"
-          fi          
+            JEKYLL_ENV=production bundle exec jekyll b -b "" -d "$SPEC_TEST"
+          fi
 
       - name: Test Site
         run: |
