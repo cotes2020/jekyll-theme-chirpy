@@ -22,8 +22,9 @@ help() {
   echo "   bash ./tools/test.sh [options]"
   echo
   echo "Options:"
-  echo "     --build              Run jekyll build before testing."
-  echo "     -h, --help           Print this information."
+  echo "     --build                  Run Jekyll build before test."
+  echo "     -d, --dir   <path>       Specify the test path."
+  echo "     -h, --help               Print this information."
 }
 
 if [[ -n $1 && -d $1 ]]; then
@@ -35,6 +36,16 @@ while (($#)); do
   case $opt in
     --build)
       _build=true
+      shift
+      ;;
+    -d | --dir)
+      if [[ ! -d $2 ]]; then
+        echo -e "Error: path '$2' doesn't exist\n"
+        help
+        exit 1
+      fi
+      DEST=$2
+      shift
       shift
       ;;
     -h | --help)
