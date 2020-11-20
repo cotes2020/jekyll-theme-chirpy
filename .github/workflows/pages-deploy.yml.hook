@@ -67,8 +67,12 @@ jobs:
 
       - name: Test Site
         run: |
-          bash tools/test.sh "$SPEC_TEST"
-
+          if [[ -n $SPEC_TEST ]]; then
+            bash tools/test.sh -d "$SPEC_TEST"
+          else
+            bash tools/test.sh
+          fi
+          
       - name: Deploy
         run: |
           bash tools/deploy.sh
