@@ -29,13 +29,13 @@
     <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
 
     <div id="topbar-title">
-    {% if page.location %}
-      {{- page.location -}}
-    {% elsif page.layout == "home" %}
-      {{- site.title -}}
-    {% else %}
-      {{- page.title -}}
-    {% endif %}
+      {% if page.layout == 'home' %}
+        {{- site.title -}}
+      {% elsif page.collection == 'tabs' %}
+        {{- page.title -}}
+      {% else %}
+        {{- page.layout | capitalize -}}
+      {% endif %}
     </div>
 
     <i id="search-trigger" class="fas fa-search fa-fw"></i>
