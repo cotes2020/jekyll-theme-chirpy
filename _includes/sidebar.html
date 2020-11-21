@@ -7,6 +7,7 @@
 -->
 
 <div id="nav-wrapper">
+
   <div id="profile-wrapper" class="d-flex flex-column">
     <div id="avatar" class="d-flex justify-content-center">
       <a href="{{ site.baseurl }}/" alt="avatar">
@@ -25,31 +26,25 @@
       </div>
       <div class="site-subtitle font-italic">{{- site.tagline -}}</div>
     </div>
-  </div>
+  </div><!-- #profile-wrapper -->
 
   <ul class="nav flex-column">
-  {% assign page_urls = page.url | split: "/" %}
-
-  {% for item in site.data.tabs %}
-    {% assign ref = site.baseurl | append: "/" %}
-
-    {% if item.path %}
-      {% assign ref = ref | append: item.path | append: "/" %}
-      {% if item.url %}
-        {% assign ref = ref | append: item.url | append: "/" %}
-      {% endif %}
-    {% endif %}
-
-    <li class="nav-item d-flex justify-content-center
-      {% if item.url == page_urls.last
-        or item.name == page.tab_active
-        or item.name == "Home" and page.layout == "home" %}active{% endif %}">
-      <a href="{{ ref }}" class="nav-link d-flex justify-content-center align-items-center w-100">
-        <i class="fa-fw {{ item.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
-        <span>{{ item.name | upcase }}</span>
+    <!-- home -->
+    <li class="nav-item d-flex justify-content-center {% if page.layout == 'home' %}active{% endif %}">
+      <a href="/" class="nav-link d-flex justify-content-center align-items-center w-100">
+        <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
+        <span>{{ "HOME" }}</span>
+      </a>
+    </li>
+    <!-- the real tabs -->
+    {% for tab in site.tabs %}
+    <li class="nav-item d-flex justify-content-center {% if tab.url == page.url %}active{% endif %}">
+      <a href="{{ tab.url }}" class="nav-link d-flex justify-content-center align-items-center w-100">
+        <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
+        <span>{{ tab.title | upcase }}</span>
       </a>
     </li> <!-- .nav-item -->
-  {% endfor %}
+    {% endfor %}
 
   </ul> <!-- ul.nav.flex-column -->
 
