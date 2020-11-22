@@ -24,42 +24,38 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
 
-    steps:
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.6.x'
+    env:
+      GEMS_PATH: ~/vendor/bundle
 
+    steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # for posts's lastmod
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
 
       - name: Bundle Caching
-        id: bundle-cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
-          path: vendor/bundle
+          path: ${{ env.GEMS_PATH }}
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
           restore-keys: |
             ${{ runner.os }}-gems-
 
-      - name: Bundle config
-        run: |
-          bundle config path vendor/bundle
-
       - name: Bundle Install
-        if: steps.bundle-cache.outputs.cache-hit != 'true'
         run: |
-          bundle install
-
-      - name: Bundle Install locally
-        if: steps.bundle-cache.outputs.cache-hit == 'true'
-        run: |
-          bundle install --local
+          bundle config path ${{ env.GEMS_PATH }}
+          bundle install --jobs 4 --retry 3
 
       - name: Build Site
+        env:
+          JEKYLL_ENV: production
         run: |
-          JEKYLL_ENV=production bundle exec jekyll b
+          bundle exec jekyll b
 
       - name: Test Site
         run: |
