@@ -4,7 +4,7 @@ about: Suggest an idea for this project
 labels: enhancement
 ---
 
-<!-- Note: Please follow the template to open a new issue, otherwise your question will probably be ignored. -->
+<!-- NOTE: Please maintain all sections, otherwise the issue will be automatically closed :) -->
 
 ## Checklist
 <!-- Please complete the following list of tasks, and then check it by change the "[ ]" to "[x]" -->
