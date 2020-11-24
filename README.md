@@ -1,6 +1,4 @@
 # sh0116.github.io
-A minimal, sidebar, responsive web design Jekyll theme that focuses on text presentation. 
-
 <h2>Fast01 GitBlog</h2>
 
 ----------
