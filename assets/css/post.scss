@@ -9,6 +9,7 @@
 
 {% include_relative _addon/main.scss %}
 {% include_relative _addon/syntax.scss %}
+{% include_relative _colors/barami-color.scss %}
 
 $prompt-older: "{{ site.data.label.post.button.previous }}";
 $prompt-newer: "{{ site.data.label.post.button.next }}";
@@ -65,11 +66,11 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
   .btn {
     @include btn-post-nav;
-    color: var(--link-color);
+    color: $barami-color;
     &:hover {
-      background: #2a408e;
+      background: $barami-color;
       color: #fff;
-      border-color: #2a408e;
+      border-color: $barami-color;
     }
     &.disabled {
       @include btn-post-nav;

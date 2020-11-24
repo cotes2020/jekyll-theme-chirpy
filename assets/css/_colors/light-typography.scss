@@ -6,6 +6,8 @@
 * MIT Licensed
 */
 
+@import "barami-color";
+
 @mixin light-scheme {
   /* Common */
   --body-bg: #fafafa;
@@ -16,8 +18,8 @@
   --text-color: #333333;
   --blockquote-border-color: #eee;
   --blockquote-text-color: #9a9a9a;
-  --link-color: #2a408e;
-  --link-underline-color: #dee2e6;
+  --link-color: $barami-color;
+  --link-underline-color: darken($barami-color, 20%);
   --text-muted-color: gray;
   --tb-odd-bg: #fbfcfd;
   --tb-border-color: #eaeaea;
@@ -42,11 +44,11 @@
   --post-list-text-color: dimgray;
   --btn-patinator-text-color: #555555;
   --btn-paginator-hover-color: #e9ecef;
-  --btn-active-bg: #2a408e;
-  --btn-active-border-color: #007bff;
+  --btn-active-bg: darken($barami-color, 80%);
+  --btn-active-border-color: darken($barami-color, 40%);
   --btn-text-color: #f8f8f8;
   --btn-paginator-border-color: #f1f1f1;
-  --btn-paginator-shadow: #4b92d2;
+  --btn-paginator-shadow: lighten($barami-color);
 
   /* Posts */
   --btn-share-hover-color: var(--link-color);
