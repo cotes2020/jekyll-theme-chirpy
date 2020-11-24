@@ -1,5 +1,5 @@
 ---
-title: Fast01
+title: About
 icon: fas fa-info
 order: 4
 
@@ -15,7 +15,6 @@ order: 4
 ----------
 배우고싶은게 많지만 공부는 싫은 개발자입니다.
 
-</br>
 
 **관심사**
 
