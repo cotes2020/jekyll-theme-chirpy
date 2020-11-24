@@ -9,6 +9,8 @@
 
 /* ---------- scss placeholder --------- */
 
+@import "../_colors/barami-color";
+
 %tag-hover {
   background: var(--tag-hover);
   transition: background 0.35s ease-in-out;
@@ -20,13 +22,13 @@
 }
 
 %link-hover {
-  color: #d2603a !important;
-  border-bottom: 1px solid #d2603a;
+  color: lighten($barami-color, 20%) !important;
+  border-bottom: 1px solid $barami-color;
   text-decoration: none;
 }
 
 %link-color {
-  color: var(--link-color);
+  color: $barami-color;
 }
 
 %link-underline {

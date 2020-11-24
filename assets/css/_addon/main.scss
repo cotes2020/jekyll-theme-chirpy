@@ -11,6 +11,7 @@
 @import "_addon/variables";
 @import "_colors/light-typography";
 @import "_colors/dark-typography";
+@import "_colors/barami-color";
 
 @mixin set-visible($light-display, $dark-display) {
   [light-mode-invisible] {
@@ -98,7 +99,7 @@ $sidebar-display: "sidebar-display";
   .site-subtitle {
     font-size: 95%;
     text-align: center;
-    color: #828282;
+    color: #cccccc;
     line-height: 1.2rem;
     word-spacing: 1px;
     margin: 0.5rem 1.5rem 2rem 1.5rem;
@@ -546,8 +547,8 @@ footer {
     padding: 0.3rem .5rem;
     margin: 0 .35rem .5rem 0;
     &:hover {
-      background-color: #2a408e;
-      border-color: #2a408e;
+      background-color: $barami-color;
+      border-color: $barami-color;
       color: #fff;
       transition: none;
     }
