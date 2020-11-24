@@ -1,5 +1,5 @@
 ---
-title: About
+title: Fast01
 icon: fas fa-info
 order: 4
 
@@ -11,7 +11,7 @@ order: 4
 ---
 
 
-<h3> About me </h3>
+<h3> About, Fast01 </h3>
 ----------
 배우고싶은게 많지만 공부는 싫은 개발자입니다.
 
