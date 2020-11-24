@@ -11,4 +11,16 @@ order: 4
 ---
 
 
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+<h3> About me </h3>
+----------
+배우고싶은게 많지만 공부는 싫은 개발자입니다.
+
+</br>
+
+**관심사**
+
+ - NLP ( Natural language processing )
+ - Algorithm ( Problem Solving )
+ - Cloud Service
+ - ML / DL 
+
