@@ -1,6 +1,6 @@
 # Barami Site
 
-Jekyll thene Chripy 템플릿 포크해서 2020 바라미 전시회를 위한 바라미 블로그 개설
+Jekyll Theme Chripy 템플릿 포크해서 2020 바라미 전시회를 위한 바라미 블로그 개설
 
 
 포크한 Chripy은 Readme.md는 아래와 같다. 
