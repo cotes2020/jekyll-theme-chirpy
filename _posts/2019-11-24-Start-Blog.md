@@ -1,5 +1,5 @@
 ---
-title: Customize the Favicon
+title: 블로그 
 author: Cotes Chung
 date: 2020-11-24 18:00:00 +0800
 categories: []
