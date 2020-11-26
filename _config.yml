@@ -7,7 +7,6 @@
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
-
 title: Chirpy                          # the main title
 
 tagline: A text-focused Jekyll theme.  # it will display as the sub-title
@@ -42,7 +41,6 @@ social:
     # - https://www.linkedin.com/in/username
 
 google_site_verification: google_meta_tag_verification # change to your verification string
-
 #--------------------------
 
 
@@ -184,7 +182,7 @@ compress_html:
     envs: []
 
 exclude:
-  - vendor        # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
+  - vendor
   - Gemfile.lock
   - Gemfile
   - tools
@@ -192,23 +190,7 @@ exclude:
   - README.md
   - LICENSE
 
-sitemap_exclude:  # Sitemap will exclude the following items.
-  fuzzy:
-    - /assets/
-  accurate:
-    - /norobots/
-    - /tabs/
-    - /categories/
-    - /tags/
-    - /posts/
-    - 404.html
-    - feed.xml
-    - sitemap.xml
-    - robots.txt
-    - redirects.json
-
-# see: <https://github.com/jekyll/jekyll-archives/blob/master/docs/configuration.md>
-jekyll-archives:  
+jekyll-archives:
   enabled: [categories, tags]
   layouts:
     category: category
