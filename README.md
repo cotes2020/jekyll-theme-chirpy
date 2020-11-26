@@ -1,13 +1,13 @@
 # Chirpy
 
-🌏 English • [简体中文](docs/README_zh-CN.md)
+Language: English | [简体中文](docs/README_zh-CN.md)
 
 [![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8220b926db514f13afc3f02b7f884f4b)](https://app.codacy.com/manual/cotes2020/jekyll-theme-chirpy?utm_source=github.com&utm_medium=referral&utm_content=cotes2020/jekyll-theme-chirpy&utm_campaign=Badge_Grade_Dashboard)
 [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
 [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-A minimal, sidebar, responsive web design Jekyll theme, focusing on text presentation, aim to help you easily record and share your knowledge. [Live Demo »](https://chirpy.cotes.info)
+A minimal, sidebar, responsive web design Jekyll theme that focuses on text presentation. Designed to help you record and share your knowledge easily. [Live Demo »](https://chirpy.cotes.info)
 
 [![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
 
@@ -18,7 +18,7 @@ A minimal, sidebar, responsive web design Jekyll theme, focusing on text present
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Credits](#credits)
-- [Support](#support)
+- [Supporting](#supporting)
 - [License](#license)
 
 ## Features
@@ -48,7 +48,7 @@ $ git clone https://github.com/USERNAME/USERNAME.github.io.git -b master --singl
 
 ### Setting up the local envrionment
 
-If you would like to run or build the project on your local machine, please follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems` and `Bundler`. 
+If you would like to run or build the project on your local machine, please follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`.
 
 Before running or building for the first time, please complete the installation of the Jekyll plugins. Go to the root directory of project and run:
 
@@ -86,7 +86,7 @@ What it does is:
     - files under `_posts`
     - folder `docs`
 
-2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`. 
+2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`.
 
 3. Automatically create a commit to save the changes.
 
@@ -132,7 +132,7 @@ For security reasons, GitHub Pages build runs on `safe` mode, which restricts us
 
 1. Push any commit to `origin/master` to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
 
-2. Browse to your repository on GitHub and choose the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
+2. Browse to your repo's landing page on GitHub and select the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
     ![gh-pages-sources](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/gh-pages-sources.png)
 
 3. Visit your website at the address indicated by GitHub.
@@ -173,7 +173,7 @@ This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Boot
 
 :tada: Thanks to all the volunteers who contributed to this project, their GitHub IDs are on [this list](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors). Also, I won't forget those guys who submitted the issues or unmerged PR because they reported bugs, shared ideas or inspired me to write more readable documentation.
 
-## Support
+## Supporting
 
 If you enjoy this theme or find it helpful, please consider becoming my sponsor, I'd really appreciate it! Click the button <kbd>:heart: Sponsor</kbd> at the top of the [Home Page](https://github.com/cotes2020/jekyll-theme-chirpy) and choose a link that suits you to donate; this will encourage and help me better maintain the project.
 

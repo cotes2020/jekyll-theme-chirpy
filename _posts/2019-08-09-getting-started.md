@@ -18,7 +18,7 @@ $ git clone https://github.com/USERNAME/USERNAME.github.io.git -b master --singl
 
 ### Setting up the local envrionment
 
-If you would like to run or build the project on your local machine, please follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems` and `Bundler`. 
+If you would like to run or build the project on your local machine, please follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`. 
 
 Before running or building for the first time, please complete the installation of the Jekyll plugins. Go to the root directory of project and run:
 
@@ -103,7 +103,7 @@ For security reasons, GitHub Pages build runs on `safe` mode, which restricts us
 
 1. Push any commit to `origin/master` to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
 
-2. Browse to your repository on GitHub and choose the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
+2. Browse to your repo's landing page on GitHub and select the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
     ![gh-pages-sources](/assets/img/sample/gh-pages-sources.png){: width="650" class="normal"}
 
 3. Visit your website at the address indicated by GitHub.
