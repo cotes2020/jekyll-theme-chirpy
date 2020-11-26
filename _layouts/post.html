@@ -31,10 +31,10 @@ layout: default
         </div>
 
         <!-- lastmod -->
-        {% if page.lastmod %}
+        {% if page.last_modified_at %}
         <div>
           Updated
-          {% include timeago.html date=page.lastmod class="lastmod" tooltip=true %}
+          {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
         </div>
         {% endif %}
 
