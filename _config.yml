@@ -131,6 +131,13 @@ defaults:
       comments: false
   -
     scope:
+      path: index.html
+    values:
+      breadcrumb:
+        -
+          label: Posts
+  -
+    scope:
       path: tags
     values:
       breadcrumb:
