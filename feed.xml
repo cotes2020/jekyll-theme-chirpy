@@ -30,8 +30,8 @@ layout: compress
     <title>{{ post.title }}</title>
     <link href="{{ post_absolute_url }}" rel="alternate" type="text/html" title="{{ post.title }}" />
     <published>{{ post.date | date_to_xmlschema }}</published>
-  {% if post.lastmod %}
-    <updated>{{ post.lastmod | date_to_xmlschema }}</updated>
+  {% if post.last_modified_at %}
+    <updated>{{ post.last_modified_at | date_to_xmlschema }}</updated>
   {% else %}
     <updated>{{ post.date | date_to_xmlschema }}</updated>
   {% endif %}
@@ -51,9 +51,9 @@ layout: compress
     <summary>{{ post.summary | strip }}</summary>
   {% else %}
     <summary>
-      {% assign content = post.content %}
-      {% include no-linenos.html %}
-      {{ content | strip_html | truncate: 200 }}</summary>
+      {% include no-linenos.html content=post.content %}
+      {{ content  | strip_html | truncate: 400 }}
+    </summary>
   {% endif %}
 
   </entry>
