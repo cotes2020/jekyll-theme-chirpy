@@ -11,7 +11,7 @@ Language: [English](../README.md) | 简体中文
 
 [![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
 
-> ⚠️ 中文版文档存在更新不及时的风险（开源文档以英文为主，请见谅）。如果发现中、英文内容不匹配的情况，一切以英文版内容为准。如果您愿意的话，可提交 issuse 提醒作者更新中文版 README，谢谢。
+> :bulb: 中文版文档存在更新不及时的风险（开源文档以英文为主，请见谅）。如果发现中、英文内容不匹配的情况，一切以英文版内容为准。如果您愿意的话，可提交 issue 提醒作者更新中文版 README，谢谢。
 
 ## 目录
 
@@ -19,7 +19,7 @@ Language: [English](../README.md) | 简体中文
 - [安装](#安装)
 - [使用](#使用)
 - [参与贡献](#参与贡献)
-- [感谢](#感谢)
+- [鸣谢](#鸣谢)
 - [赞助](#赞助)
 - [许可证书](#许可证书)
 
