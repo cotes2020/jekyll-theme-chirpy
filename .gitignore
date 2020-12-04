@@ -15,3 +15,5 @@ Gemfile.lock
 
 # bundle cache
 vendor
+/test
+/private

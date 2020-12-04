@@ -1,11 +1,14 @@
 ---
 title: About
+date:2020년 11월 19일 오후 5시 20분
 
-# The About page
-# v2.0
-# https://github.com/cotes2020/jekyll-theme-chirpy
-# © 2017-2019 Cotes Chung
-# MIT License
 ---
+## FrontEnd Developer를 목표로    
+매일 새로 알게 된 내용을 기록하기위한 블로글입니다.
 
-> **Note**: Add Markdown syntax content to file `tabs/about.md` and it will show up on this page.
+
+#### 								너는 존재한다 - 그러므로 사라질 것이다  
+#### 								너는 사라진다 - 그러므로 아름답다  
+
+######                                                                비스와바 쉼보르스카, 두 번은 없다
+								  

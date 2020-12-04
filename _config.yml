@@ -13,7 +13,7 @@ title: maldives0                          # the main title
 tagline: my developing history.  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
- front-end study를 시작으로 programming 공부를 기록하기
+ 사람이란 흐르는 강물과 같아 하루하루가 다르고 새롭다
 
 # Replace with the website url, e.g. 'https://username.github.io'
 url: 'https://maldives0.github.io'
@@ -26,17 +26,17 @@ github:
   username: maldives0             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
-
+  username:             # change to your twitter username
+  
 social:
-  name: your_full_name                  # it will shows as the copyright owner in Footer
+  name: Juyoung Jung                 # it will shows as the copyright owner in Footer
   email: maliethy@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
+    -      # change to your twitter homepage
     - https://github.com/maldives0       # change to your github homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
+    - https://www.facebook.com/ju.jung.792
     # - https://www.linkedin.com/in/username
 
 google_site_verification: google_meta_tag_verification # change to your verification string
@@ -46,7 +46,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 # Only if your site type is GitHub Project sites and doesn't have a custom domain,
 # change below value to '/projectname'.
-baseurl: '/'
+baseurl: '/maldives0'
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Asia/Seoul
@@ -76,7 +76,7 @@ disqus:
 #
 #     dark   - Use the dark color scheme
 #
-theme_mode: dark
+theme_mode: dual
 
 # boolean type, global switch for ToC in posts.
 toc: true
@@ -103,16 +103,21 @@ kramdown:
 # or you think you're smart enough to change other relevant URLs within this template.
 permalink: /posts/:title/
 
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+
 defaults:
   -
     scope:
-      path: ""          # An empty string here means all files in the project
+      path: ''          # An empty string here means all files in the project
       type: posts
     values:
       layout: post
       comments: true    # Enable comments in posts.
       toc: true         # Display TOC column in posts.
-      location: Post
       breadcrumb:
         -
           label: Posts
@@ -124,10 +129,15 @@ defaults:
       comments: false
   -
     scope:
+      path: index.html
+    values:
+      breadcrumb:
+        -
+          label: Posts
+  -
+    scope:
       path: tags
     values:
-      tab_active: Tags
-      location: Tag
       breadcrumb:
         -
           label: Home
@@ -139,8 +149,6 @@ defaults:
     scope:
       path: categories
     values:
-      tab_active: Categories
-      location: Category
       breadcrumb:
         -
           label: Home
@@ -150,7 +158,8 @@ defaults:
           url: /tabs/categories/
   -
     scope:
-      path: tabs
+      path: ''
+      type: tabs             # see `site.collections`
     values:
       layout: page
       dynamic_title: true    # Hide title in mobile screens.
@@ -158,7 +167,6 @@ defaults:
         -
           label: Home
           url: /
-
 
 sass:
   sass_dir: /assets/css
