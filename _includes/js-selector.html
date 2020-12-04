@@ -6,34 +6,21 @@
   MIT Licensed
 -->
 
-{% if page.layout == 'home' %}
-
-  <script async src="{{ '/assets/js/home.min.js' | relative_url }}"></script>
-
-{% elsif page.layout == 'post' %}
-
-  <script async src="{{ '/assets/js/post.min.js' | relative_url }}"></script>
-
-  {% if page.math %}
-    <!-- MathJax -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  {% endif %}
-
-{% elsif page.layout == 'page' %}
-
-  {% if page.title == 'Categories' and page.collection == 'tabs' %}
-    <script async src="{{ '/assets/js/categories.min.js' | relative_url }}"></script>
-  {% else %}
-    <script async src="{{ '/assets/js/page.min.js' | relative_url }}"></script>
-  {% endif %}
-
+{% if page.layout == 'home' or page.layout == 'post' or page.layout == 'categories' %}
+  {% assign js = page.layout %}
 {% else %}
-
-  <script async src="{{ '/assets/js/page.min.js' | relative_url }}"></script>
-
+  {% assign js = "page" %}
 {% endif %}
 
+{% assign js_src = js | prepend: '/assets/js/' | append: '.min.js' | relative_url %}
+
+<script async src="{{ js_src }}"></script>
+
+{% if page.math %}
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endif %}
 
 {% if jekyll.environment == 'production' %}
   <!-- PWA -->

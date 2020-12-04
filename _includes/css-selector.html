@@ -6,50 +6,21 @@
   MIT Licensed
 -->
 
-{% if page.layout == 'home' %}
-  <link rel="preload" href="{{ '/assets/css/home.css' | relative_url }}" as="style">
-  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
 
-{% elsif page.layout == 'page' %}
+{% if page.layout == 'category' or page.layout == 'tag' %}
+  {% assign style = 'category-tag' %}
+{% else %}
+  {% assign style =  page.layout %}
+{% endif %}
 
-  {% if page.collection == 'tabs' and page.title != 'About' %}
+{% assign src = style | prepend: '/assets/css/' | append: '.css' | relative_url %}
 
-    {% if page.title == 'Categories' %}
-      <link rel="preload" href="{{ '/assets/css/categories.css' | relative_url }}" as="style">
-      <link rel="stylesheet" href="{{ '/assets/css/categories.css' | relative_url }}">
-   
-    {% elsif page.title == 'Tags' %}
-      <link rel="preload" href="{{ '/assets/css/tags.css' | relative_url }}" as="style">
-      <link rel="stylesheet" href="{{ '/assets/css/tags.css' | relative_url }}">
-   
-    {% elsif page.title == 'Archives'%}
-      <link rel="preload" href="{{ '/assets/css/archives.css' | relative_url }}" as="style">
-      <link rel="stylesheet" href="{{ '/assets/css/archives.css' | relative_url }}">
-   
-    {% endif %}
+<link rel="preload" href="{{ src }}" as="style">
+<link rel="stylesheet" href="{{ src }}">
 
-  {% else %}
-
-    <link rel="preload" href="{{ '/assets/css/page.css' | relative_url }}" as="style">
-    <link rel="stylesheet" href="{{ '/assets/css/page.css' | relative_url }}">
-
-  {% endif %}
-
-{% elsif page.layout == 'category' or page.layout == 'tag' %}
-
-  <link rel="preload" href="{{ '/assets/css/category-tag.css' | relative_url }}" as="style">
-  <link rel="stylesheet" href="{{ '/assets/css/category-tag.css' | relative_url }}">
-
-{% elsif page.layout == 'post' %}
-
-  <link rel="preload" as="style" href="{{ '/assets/css/post.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
-
+{% if page.layout == 'post' %}
   {% if site.toc and page.toc %}
-
     <link rel="preload" as="style" href="{{ '/assets/css/lib/bootstrap-toc.min.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/lib/bootstrap-toc.min.css' | relative_url }}" />
-
   {% endif %}
-
 {% endif %}
