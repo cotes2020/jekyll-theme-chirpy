@@ -9,19 +9,13 @@ layout: compress
 
 <!DOCTYPE html>
 
-{% if site.lang %}
-  {% assign lang = site.lang | split: "_" | first %}
-{% else %}
-  {% assign lang = 'en' %}
-{% endif %}
-
 {% capture prefer_mode %}
-  {% if site.theme_mode != "dual" %}
+  {% unless site.theme_mode == "dual" %}
     mode="{{ site.theme_mode }}"
-  {% endif %}
+  {% endunless %}
 {% endcapture %}
 
-<html lang="{{ lang }}" {{ prefer_mode }} >
+<html lang="{{ site.lang | split: "_" | first | default: "en" }}" {{ prefer_mode }} >
 
   {% include head.html %}
 
