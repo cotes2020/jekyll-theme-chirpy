@@ -8,17 +8,16 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: maldives0                          # the main title
+title: juyoung's Blog                         # the main title
 
-tagline: my developing history.  # it will display as the sub-title
+tagline: Front-End Developing의 재미  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
- 사람이란 흐르는 강물과 같아 하루하루가 다르고 새롭다
-
+  사람이란 흐르는 강물과 같아 하루하루가 다르고 새롭다
 # Replace with the website url, e.g. 'https://username.github.io'
 url: 'https://maldives0.github.io'
 
-author: juyoung jung                 # change to your full name
+author: juyoung                  # change to your full name
 
 avatar: /assets/img/happiness.jpg   # support internet resources
 
@@ -27,13 +26,13 @@ github:
 
 twitter:
   username:             # change to your twitter username
-  
+
 social:
-  name: Juyoung Jung                 # it will shows as the copyright owner in Footer
+  name: juyoung                  # it will shows as the copyright owner in Footer
   email: maliethy@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    -      # change to your twitter homepage
+    - https://twitter.com/username      # change to your twitter homepage
     - https://github.com/maldives0       # change to your github homepage
     # Uncomment below to add more social links
     - https://www.facebook.com/ju.jung.792
@@ -63,8 +62,8 @@ google_analytics:
     cache: false  # pv data local cache, good for the users from GFW area.
 
 disqus:
-  comments: true  # boolean type, the global switch for posts comments.
-  shortname: 'disqus_vXQAaeuvqx'    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+  comments: false  # boolean type, the global switch for posts comments.
+  shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 
 # Prefer color scheme setting, available values:
@@ -103,21 +102,16 @@ kramdown:
 # or you think you're smart enough to change other relevant URLs within this template.
 permalink: /posts/:title/
 
-collections:
-  tabs:
-    output: true
-    sort_by: order
-
-
 defaults:
   -
     scope:
-      path: ''          # An empty string here means all files in the project
+      path: ""          # An empty string here means all files in the project
       type: posts
     values:
       layout: post
       comments: true    # Enable comments in posts.
       toc: true         # Display TOC column in posts.
+      location: Post
       breadcrumb:
         -
           label: Posts
@@ -129,15 +123,10 @@ defaults:
       comments: false
   -
     scope:
-      path: index.html
-    values:
-      breadcrumb:
-        -
-          label: Posts
-  -
-    scope:
       path: tags
     values:
+      tab_active: Tags
+      location: Tag
       breadcrumb:
         -
           label: Home
@@ -149,6 +138,8 @@ defaults:
     scope:
       path: categories
     values:
+      tab_active: Categories
+      location: Category
       breadcrumb:
         -
           label: Home
@@ -158,8 +149,7 @@ defaults:
           url: /tabs/categories/
   -
     scope:
-      path: ''
-      type: tabs             # see `site.collections`
+      path: tabs
     values:
       layout: page
       dynamic_title: true    # Hide title in mobile screens.
@@ -167,6 +157,7 @@ defaults:
         -
           label: Home
           url: /
+
 
 sass:
   sass_dir: /assets/css

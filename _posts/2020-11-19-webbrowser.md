@@ -1,10 +1,9 @@
-----
+---
 title: node란 무엇인가
 author: juyoung
-date:2020년 11월 19일 오후 4시 8분
-categories: [Tutorial]
-tags: [javascript]
-pin: node객체
+date: 2020-11-19 16:08:00 +0800
+categories: [html, grammer]
+tags: [html]
 ---
 
 ![](https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/904/2234.png)

@@ -1,10 +1,9 @@
-----
-title: node란 무엇인가
+---
+title: SequelizeUniqueConstraintError
 author: juyoung
-date:2020년 11월 29일 오후 7시 5분
-categories: [Tutorial]
-tags: [javascript]
-pin: 일치연산자(===)와 동등연산자(==)
+date: 2020-11-29 19:05:00 +0800
+categories: [project, error]
+tags: [error]
 ---
 PATCH /user/2/follow/ 200 429.465 ms - 12
 

@@ -1,8 +1,8 @@
-----
+---
 title: node란 무엇인가
 author: juyoung
-date:2020년 11월 23일 오후 6시 28분
-categories: [Tutorial]
+date: 2020-11-23 18:28:00 +0800
+categories: [javascript, grammer]
 tags: [javascript]
 pin: 일치연산자(===)와 동등연산자(==)
 ---
