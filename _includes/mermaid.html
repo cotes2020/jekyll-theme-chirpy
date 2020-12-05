@@ -2,7 +2,7 @@
     {%- if site.mermaid.custom -%}
         <script src="{{ site.mermaid.custom }}"></script>
     {%- else -%}
-        <script src="/assets/js/mermaid.min-mod.js"></script>
+        <script src="/assets/js/mermaid.min.js"></script>
     {%- endif %}
     <script>
         mermaid.initialize({%- if site.mermaid.theme -%}{theme: "{{ site.mermaid.theme }}"}{%- else -%}{theme: "neutral"}{%- endif %});
