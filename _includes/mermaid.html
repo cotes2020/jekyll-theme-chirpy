@@ -1,0 +1,12 @@
+{%- if content contains '<code class="language-mermaid">' -%}
+    {%- if site.mermaid.custom -%}
+        <script src="{{ site.mermaid.custom }}"></script>
+    {%- else -%}
+        <script src="/assets/js/mermaid.min-mod.js"></script>
+    {%- endif %}
+    <script>
+        mermaid.initialize({%- if site.mermaid.theme -%}{theme: "{{ site.mermaid.theme }}"}{%- else -%}{theme: "neutral"}{%- endif %});
+
+    </script>
+{%- endif %}
+
