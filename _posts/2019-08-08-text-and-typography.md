@@ -208,3 +208,24 @@ fi;
 ## Reverse Footnote
 
 [^footnote]: The footnote source.
+
+## Mermaid
+
+Source:
+```
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+```
+Output:
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
