@@ -205,25 +205,26 @@ fi;
 ```
 
 
-## Reverse Footnote
-
-[^footnote]: The footnote source.
-
 ## Mermaid
 
 Source:
 ```
+<div class="mermaid">
 graph TD;
     A-->B;
     A-->C;
     B-->D;
     C-->D;
+</div>
 ```
 Output:
-```mermaid
+<div class="mermaid">
 graph TD;
     A-->B;
     A-->C;
     B-->D;
     C-->D;
-```
+</div>
+## Reverse Footnote
+
+[^footnote]: The footnote source.
