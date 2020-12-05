@@ -1,0 +1,1 @@
+dir /b *.jpg >bg.txt

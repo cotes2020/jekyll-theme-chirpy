@@ -1,5 +1,5 @@
 ---
-title: About
+title: Sobre Nós
 icon: fas fa-info
 order: 4
 
@@ -10,5 +10,7 @@ order: 4
 # MIT License
 ---
 
+Somos um grupo de estudos em Visão Computacional e temas relacionados. Nosso objetivo é promover um ambiente saudável e construtivo de compartilhamento de conhecimento sobre Visão Computacional e suas diversas aplicações em problemas do mundo real.
 
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+O grupo não possui fins lucrativos.
+
