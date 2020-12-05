@@ -1,4 +1,4 @@
-{%- if content contains 'class="mermaid"' -%}
+{%- if content contains '<div class="mermaid">' -%}
     {%- if site.mermaid.custom -%}
         <script src="{{ site.mermaid.custom }}"></script>
     {%- else -%}
