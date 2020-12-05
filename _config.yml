@@ -79,7 +79,7 @@ disqus:
 theme_mode: dual
 
 mermaid:
-  theme: "neutral" # "dark", "forest", "default"
+  theme: "default" # "neutral", "dark", "forest"
 
 # boolean type, the global switch for ToC in posts.
 toc: true
