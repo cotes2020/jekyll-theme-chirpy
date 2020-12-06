@@ -67,16 +67,17 @@ disqus:
   shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 
-# Prefer color scheme setting, available values:
+# Prefer color scheme setting, keep empty will follow the system prefer color by default.
+# And there will be a toggle to switch the theme between dark and light
+# on the bottom left of the sidebar.
 #
-#     dual   - Follow the system prefer color by default, and a toggle will display
-#              in the left bottom of Sidebar, which used for switch the theme between dark and light.
+# Available values:
 #
 #     light  - Use the light color scheme
 #
 #     dark   - Use the dark color scheme
 #
-theme_mode: dual
+theme_mode:
 
 # boolean type, the global switch for ToC in posts.
 toc: true
