@@ -7,5 +7,5 @@
 # © 2020 Cotes Chung
 # MIT Licensed
 
-bundle exec jekyll s -l -o
+bundle exec jekyll s -H 0.0.0.0 -l
 
