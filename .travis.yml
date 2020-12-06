@@ -2,13 +2,9 @@ os: linux
 dist: bionic
 
 language: ruby
-rvm: 2.6.5
+rvm: 2.7.0
 
-before_install:
-  - bundle config path 'vendor/bundle'
-
-install:
-  - bundle install --quiet
+cache: bundler
 
 addons:
   apt:
@@ -24,10 +20,6 @@ branches:
 
 git:
   depth: false # for posts lastmod
-
-cache:
-  directories:
-    - $TRAVIS_BUILD_DIR/vendor/bundle
 
 notifications:
   email:
