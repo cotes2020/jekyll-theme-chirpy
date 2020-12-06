@@ -17,12 +17,12 @@
   @if $dark-mode {
     @include dark-scheme;
     .mode-toggle {
-      transform: rotate(180deg);
+      transform: rotateY(180deg);
     }
   } @else {
     @include light-scheme;
     .mode-toggle {
-      transform: rotate(360deg);
+      transform: none;
     }
   }
 }
@@ -191,10 +191,6 @@ $sidebar-display: "sidebar-display";
         text-align: center;
         position: relative;
         bottom: 1px;
-      }
-
-      .mode-toggle {
-        transition: all .5s !important;
       }
     }
 
