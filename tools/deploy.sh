@@ -15,6 +15,16 @@ _no_branch=false
 _backup_dir="$(mktemp -d)"
 
 init() {
+  if [[ -z ${GITHUB_ACTION+x} ]]; then
+    echo "ERROR: This script is not allowed to run outside of GitHub Action."
+    exit -1
+  fi
+
+  # Gemfile could be changed by `bundle install` in actions workflow
+  if [[ -n $(git status Gemfile.lock --porcelain) ]]; then
+    git checkout -- Gemfile.lock
+  fi
+
   if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
     _no_branch=true
     git checkout -b "$PAGES_BRANCH"

@@ -25,13 +25,13 @@ jobs:
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.x
+          ruby-version: 2.7
 
       - name: Bundle Caching
         uses: actions/cache@v2
         with:
           path: ${{ env.GEMS_PATH }}
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
 
@@ -65,7 +65,7 @@ jobs:
           else
             bash tools/test.sh
           fi
-          
+
       - name: Deploy
         run: |
           bash tools/deploy.sh
