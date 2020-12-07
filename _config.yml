@@ -6,7 +6,7 @@
 
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-#--------------------------
+# --------------------------
 title: Chirpy                          # the main title
 
 tagline: A text-focused Jekyll theme.  # it will display as the sub-title
@@ -41,7 +41,7 @@ social:
     # - https://www.linkedin.com/in/username
 
 google_site_verification: google_meta_tag_verification # change to your verification string
-#--------------------------
+# --------------------------
 
 
 # Only if your site type is GitHub Project sites and doesn't have a custom domain,
@@ -67,32 +67,29 @@ disqus:
   shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 
-# Prefer color scheme setting, keep empty will follow the system prefer color by default.
-# And there will be a toggle to switch the theme between dark and light
+# Prefer color scheme setting.
+#
+# Note: Keep empty will follow the system prefer color by default,
+# and there will be a toggle to switch the theme between dark and light
 # on the bottom left of the sidebar.
 #
-# Available values:
+# Available options:
 #
 #     light  - Use the light color scheme
 #
 #     dark   - Use the dark color scheme
 #
-theme_mode:
+theme_mode:   # <light|dark>
 
 # boolean type, the global switch for ToC in posts.
 toc: true
 
 paginate: 10
 
-markdown: kramdown
-
-highlighter: rouge
-
 kramdown:
-  input: GFM
   syntax_highlighter: rouge
-  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
-    css_class: 'highlight'
+  syntax_highlighter_opts:   # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: highlight
     # default_lang: console
     span:
       line_numbers: false
@@ -197,5 +194,5 @@ jekyll-archives:
     category: category
     tag: tag
   permalinks:
-    tag: '/tags/:name/'
-    category: '/categories/:name/'
+    tag: /tags/:name/
+    category: /categories/:name/
