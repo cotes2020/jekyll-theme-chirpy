@@ -9,7 +9,8 @@
 -->
 {%- if content contains 'class="mermaid"' -%}
   <script src="/assets/js/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:false})
+  <script>mermaid.initialize({startOnLoad:false});
+/* Extenstion to mermaid */
 class _mermaid {
 	constructor(Class){
 		if (Class == undefined) Class = "mermaid";
@@ -43,7 +44,7 @@ class _mermaid {
 		
 	}
 }
-
+/* Extenstion to mermaid END */
     Mermaid_settings = {
       "light" : {%- if site.mermaid.theme.light -%} "{{ site.mermaid.theme.light }}" {%- else -%} "default"{%- endif %},
       "dark" : {%- if site.mermaid.theme.dark -%} "{{ site.mermaid.theme.dark }}" {%- else -%} "dark"{%- endif %}
