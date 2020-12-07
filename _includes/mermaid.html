@@ -1,0 +1,37 @@
+
+<!--
+  Add Mermaid Support 
+
+  v0.1
+  https://github.com/s0ubhik/jekyll-theme-chirpy
+  © 2020 Soubhik Biswas
+  MIT License
+-->
+{%- if content contains 'class="mermaid"' -%}
+  <script src="/assets/js/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:false});</script>
+  <script src="/assets/js/mermaid.ext.js"></script>
+  <script>
+    Mermaid_settings = {
+      "light" : {%- if site.mermaid.theme.light -%} "{{ site.mermaid.theme.light }}" {%- else -%} "default"{%- endif %},
+      "dark" : {%- if site.mermaid.theme.dark -%} "{{ site.mermaid.theme.dark }}" {%- else -%} "dark"{%- endif %}
+    };
+    $(document).ready(function(){
+    	Mermaid = new _mermaid();
+    	if (toggle.hasMode){  /* Set as session */
+    		Mermaid.render({theme: Mermaid_settings[toggle.mode]})
+    	} else{
+    	  if (toggle.isSysDarkPrefer){  /* Set as System */
+    		Mermaid.render({theme: Mermaid_settings.dark});
+    	  } else {
+    		Mermaid.render({theme: Mermaid_settings.light});
+    	  }
+    	}
+    	});
+
+    $(".mode-toggle").click(function(){
+    	Mermaid.render({theme: Mermaid_settings[toggle.mode]})
+    });
+
+  </script>
+{%- endif %}

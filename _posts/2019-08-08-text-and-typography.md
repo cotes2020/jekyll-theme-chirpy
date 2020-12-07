@@ -119,6 +119,26 @@ When \\(a \ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they 
 
 $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
+## Mermaid
+[**Mermaid**](https://mermaid-js.github.io/) lets you represent diagrams using text and code :
+```
+<div class="mermaid">
+  graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+</div>
+
+```
+<div class="mermaid">
+  graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+</div>
+
 ## Code Snippet
 
 ### Common

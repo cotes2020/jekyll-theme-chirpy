@@ -12,21 +12,21 @@
 <script type="text/javascript">
 
   class ModeToggle {
-    static get MODE_KEY() { return "mode"; }
-    static get DARK_MODE() { return "dark"; }
-    static get LIGHT_MODE() { return "light"; }
 
     constructor() {
-      if (this.mode != null) {
-        if (this.mode == ModeToggle.DARK_MODE) {
-          if (!this.isSysDarkPrefer) {
-            this.setDark();
-          }
+      this.dark_mode = "dark";
+      this.light_mode = "light";
+      this.mode_key = "mode";
+ 
+      if (this.mode == null){ /* set as system */
+        if (this.isSysDarkPrefer) {
+          this.setDark();
         } else {
-          if (this.isSysDarkPrefer) {
-            this.setLight();
-          }
+          this.setLight();
         }
+      } else { /* Set as session */
+        if (this.mode == this.dark_mode) this.setDark();
+        if (this.mode == this.light_mode) this.setLight();
       }
 
       var self = this;
@@ -34,7 +34,7 @@
       /* always follow the system prefers */
       this.sysDarkPrefers.addListener(function() {
         if (self.mode != null) {
-          if (self.mode == ModeToggle.DARK_MODE) {
+          if (self.mode == this.dark_mode) {
             if (!self.isSysDarkPrefer) {
               self.setDark();
             }
@@ -53,60 +53,45 @@
 
 
     setDark() {
-      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+      $('html').attr(this.mode_key, this.dark_mode);
+      sessionStorage.setItem(this.mode_key, this.dark_mode);
     }
 
     setLight() {
-      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+      $('html').attr(this.mode_key, this.light_mode);
+      sessionStorage.setItem(this.mode_key, this.light_mode);
     }
 
     clearMode() {
-      $('html').removeAttr(ModeToggle.MODE_KEY);
-      sessionStorage.removeItem(ModeToggle.MODE_KEY);
-    }
+      $('html').removeAttr(this.mode_key);
+      sessionStorage.removeItem(this.mode_key);
+     }
 
     get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
 
     get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
 
-    get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; }
+    get isDarkMode() { return this.mode == this.dark_mode; }
 
-    get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; }
+    get isLight_Mode() { return this.mode == this.light_mode; }
 
     get hasMode() { return this.mode != null; }
 
-    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
+    get mode() { return sessionStorage.getItem(this.mode_key); }
 
     flipMode() {
       if (this.hasMode) {
-        if (this.isSysDarkPrefer) {
-          if (this.isLightMode) {
-            this.clearMode();
-          } else {
-            this.setLight();
-          }
-
-        } else {
-          if (this.isDarkMode) {
-            this.clearMode();
-          } else {
-            this.setDark();
-          }
-        }
-
-      } else {
-        if (this.isSysDarkPrefer) {
+        if (this.mode == this.dark_mode){
+          this.clearMode();
           this.setLight();
         } else {
+          this.clearMode();
           this.setDark();
         }
       }
-
     } /* flipMode() */
 
-  } /* ModeToggle */
+  } /* this */
 
   let toggle = new ModeToggle();
 
