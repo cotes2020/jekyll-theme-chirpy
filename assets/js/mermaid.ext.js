@@ -16,7 +16,7 @@ class _mermaid {
 		this.mrmds = mrmds;
         let graps = [];
         for (let i=0; i < mrmds.length; i++){
-	        mrmds[i].setAttribute("id",ID);
+	        mrmds[i].setAttribute("id","Mermaid-"+i);
 	        this.graphs.push({id: "Mermaid-"+i, graph: mrmds[i].innerText});
         }
 	}
@@ -34,7 +34,7 @@ class _mermaid {
 		await this.clean();
 		if (init === undefined){
       init = {};
-    };
+    }
 		mermaid.initialize(init);
 		mermaid.init(init, this.mrmds);
 		
