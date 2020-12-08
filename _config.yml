@@ -78,22 +78,22 @@ mermaid:
 # and there will be a toggle to switch the theme between dark and light
 # on the bottom left of the sidebar.
 #
-# <<<<<<< master
+ <<<<<<< master
 # Available values:x
 =======
 # Available options:
-# >>>>>>> master
+ >>>>>>> master
 #
 #     light  - Use the light color scheme
 #
 #     dark   - Use the dark color scheme
 #
-# <<<<<<< master
+ <<<<<<< master
 
 theme_mode:
 =======
 theme_mode:   # <light|dark>
-# >>>>>>> master
+ >>>>>>> master
 
 
 # boolean type, the global switch for ToC in posts.
