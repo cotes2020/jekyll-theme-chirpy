@@ -5,6 +5,7 @@ date: 2019-08-08 11:33:00 +0800
 categories: [Blogging, Demo]
 tags: [typography]
 math: true
+mermaid: true
 image: /assets/img/sample/devices-mockup.png
 ---
 
@@ -12,18 +13,16 @@ This post is to show Markdown syntax rendering on [**Chirpy**](https://github.co
 
 
 ## Titles
-
 ---
+# H1 - heading
 
-# H1
+<h2 data-toc-skip>H2 - heading</h2>
 
-<h2 data-toc-skip>H2</h2>
+<h3 data-toc-skip>H3 - heading</h3>
 
-<h3 data-toc-skip>H3</h3>
-
-<h4>H4</h4>
-
+<h4>H4 - heading</h4>
 ---
+<br>
 
 ## Paragraph
 
@@ -79,31 +78,49 @@ Click the hook will locate the footnote[^footnote].
 
 ## Images
 
-By default, the image is centered and the image caption can be displayed at the bottom:
+- Default (with caption)
 
 ![Desktop View](/assets/img/sample/mockup.png)
 _Full screen width and center alignment_
 
-You can change the size of the picture:
+<br>
+
+- Specify width
 
 ![Desktop View](/assets/img/sample/mockup.png){: width="400"}
 _400px image width_
 
-In addition, you can use class `normal` , `left` and `right` to specify the image position (but in these case, the image caption is prohibited), for example:
+<br>
 
-- Normal position
-  
-  ![Desktop View](/assets/img/sample/mockup.png){: width="350" class="normal"}
+- Left aligned
 
-- Float to the left
+![Desktop View](/assets/img/sample/mockup.png){: width="350" class="normal"}
+
+<br>
+
+- Float to left
 
   ![Desktop View](/assets/img/sample/mockup.png){: width="240" class="left"}
   "A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space."
 
-- Float to the right
+<br>
+
+- Float to right
 
   ![Desktop View](/assets/img/sample/mockup.png){: width="240" class="right"}
   "A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space."
+
+<br>
+
+## Mermaid SVG
+
+```mermaid
+ gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+```
 
 ## Inline code
 
