@@ -190,7 +190,7 @@ fi;
 ```
 {% endraw %}
 
-#### HTML
+#### Html
 
 ```html
 <div class="sidenav">
@@ -207,20 +207,26 @@ fi;
 </div>
 ```
 
-**Horizontal Scrolling**
+#### Java
 
-```html
-<div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading" id="{{ category_name }}">
-      <i class="far fa-folder"></i>
-      <p>This is a very long long long long long long long long long long long long long long long long long long long long long line.</p>
-      </a>
-    </div>
-  </div>
-</div>
+```java
+private void writeObject(java.io.ObjectOutputStream s)
+  throws java.io.IOException {
+  // Write out any hidden serialization magic
+  s.defaultWriteObject();
+
+  // Write out HashMap capacity and load factor
+  s.writeInt(map.capacity());
+  s.writeFloat(map.loadFactor());
+
+  // Write out size
+  s.writeInt(map.size());
+
+  // Write out all elements in the proper order.
+  for (E e: map.keySet())
+    s.writeObject(e);
+}
 ```
-
 
 ## Reverse Footnote
 

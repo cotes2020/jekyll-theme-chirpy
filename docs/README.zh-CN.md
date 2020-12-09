@@ -33,6 +33,7 @@ Language: [English](../README.md) | 简体中文
 - 语法高亮
 - 二级目录
 - 数学表达式
+- Mermaid 图表
 - 搜索
 - Atom 订阅
 - Disqus 评论
