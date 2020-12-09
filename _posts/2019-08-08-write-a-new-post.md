@@ -8,7 +8,7 @@ tags: [writing]
 
 ## Naming and Path
 
-Create a new file named `YYYY-MM-DD-TITLE.EXTENSION` and put it in the `_post/` of the root directory. Please note that the `EXTENSION` must be one of `md` and `markdown`. From `v2.4.1`, you can create sub-directories under `_posts/` to categorize posts.
+Create a new file named `YYYY-MM-DD-TITLE.EXTENSION` and put it in the `_post/` of the root directory. Please note that the `EXTENSION` must be one of `md` and `markdown`.
 
 ## Front Matter
 
@@ -78,8 +78,7 @@ mermaid: true
 ---
 ```
 
-Then you can use it like other markdown language: surround the graph code with <code class="language-plaintext highlighter-rouge">```mermaid</code>
-and <code class="language-plaintext highlighter-rouge">```</code>.
+Then you can use it like other markdown language: surround the graph code with <code class="highlighter-rouge">```mermaid</code>.
 
 ## Images
 

@@ -31,6 +31,7 @@ A minimal, sidebar, responsive web design Jekyll theme that focuses on text pres
 - Automatically recommend related posts
 - Syntax highlighting
 - Mathematical expressions
+- Mermaid diagram & flowchart
 - Search
 - Atom Feeds
 - Disqus Comments
