@@ -33,8 +33,8 @@
 
       /* always follow the system prefers */
       this.sysDarkPrefers.addListener(function() {
-        if (self.mode != null) {
-          if (self.mode == ModeToggle.DARK_MODE) {
+        if (self.hasMode) {
+          if (self.isDarkMode) {
             if (!self.isSysDarkPrefer) {
               self.setDark();
             }
@@ -47,6 +47,8 @@
 
           self.clearMode();
         }
+
+        self.updateMermaid();
       });
 
     } /* constructor() */
@@ -79,6 +81,33 @@
 
     get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
 
+    /* get the current mode on screen */
+    get modeStatus() {
+      if (this.isDarkMode
+        || (!this.hasMode && this.isSysDarkPrefer) ) {
+        return ModeToggle.DARK_MODE;
+      } else {
+        return ModeToggle.LIGHT_MODE;
+      }
+    }
+
+    updateMermaid() {
+      if (mermaid !== undefined) {
+        let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default");
+        let config = { theme: expectedTheme };
+
+        /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
+        $(".mermaid").each(function() {
+          let svgCode = $(this).prev().children().html();
+          $(this).removeAttr("data-processed");
+          $(this).html(svgCode);
+        });
+
+        mermaid.initialize(config);
+        mermaid.init(undefined, ".mermaid");
+      }
+    }
+
     flipMode() {
       if (this.hasMode) {
         if (this.isSysDarkPrefer) {
@@ -104,6 +133,8 @@
         }
       }
 
+      this.updateMermaid();
+
     } /* flipMode() */
 
   } /* ModeToggle */
@@ -111,7 +142,9 @@
   let toggle = new ModeToggle();
 
   $(".mode-toggle").click(function() {
+
     toggle.flipMode();
+
   });
 
 </script>
