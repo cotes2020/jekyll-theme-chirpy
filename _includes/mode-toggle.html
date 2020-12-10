@@ -17,8 +17,8 @@
     static get LIGHT_MODE() { return "light"; }
 
     constructor() {
-      if (this.mode != null) {
-        if (this.mode == ModeToggle.DARK_MODE) {
+      if (this.hasMode) {
+        if (this.isDarkMode) {
           if (!this.isSysDarkPrefer) {
             this.setDark();
           }
@@ -92,7 +92,7 @@
     }
 
     updateMermaid() {
-      if (mermaid !== undefined) {
+      if (typeof mermaid !== "undefined") {
         let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default");
         let config = { theme: expectedTheme };
 
