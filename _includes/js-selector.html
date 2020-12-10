@@ -25,4 +25,10 @@
 {% if jekyll.environment == 'production' %}
   <!-- PWA -->
   <script defer src="{{ '/app.js' | relative_url }}"></script>
+
+  <!-- GA -->
+  {% if site.google_analytics.id %}
+    {% include google-analytics.html %}
+  {% endif %}
+
 {% endif %}
