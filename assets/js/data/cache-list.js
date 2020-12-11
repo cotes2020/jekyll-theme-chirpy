@@ -26,18 +26,13 @@ const include = [
   '{{ "/assets/js/home.min.js" | relative_url }}',
   '{{ "/assets/js/page.min.js" | relative_url }}',
   '{{ "/assets/js/post.min.js" | relative_url }}',
+  '{{ "/assets/js/categories.min.js" | relative_url }}',
 
   /*--- HTML ---*/
 
   /* Tabs */
-  {% for tab in site.data.tabs %}
-    {% capture item %}
-      {%- unless tab.name == 'Home' -%}
-        /tabs/{{ tab.name | downcase }}
-      {%- endunless -%}
-      {{- "/" -}}
-    {% endcapture %}
-    '{{ item | relative_url }}',
+  {% for tab in site.tabs %}
+    '{{ tab.url }}',
   {% endfor %}
 
   /*--- Icons ---*/
