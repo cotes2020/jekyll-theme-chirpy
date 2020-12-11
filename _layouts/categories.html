@@ -46,7 +46,7 @@ layout: page
       {% else %}
         <i class="far fa-folder fa-fw"></i>
       {% endif %}
-        <a href="{{ site.baseurl }}/categories/{{ category_name | replace: ' ', '-' | downcase | url_encode }}/"
+        <a href="{{ site.baseurl }}/categories/{{ category_name | slugify | url_encode }}/"
           class="ml-1 mr-2">
           {{ category_name }}
         </a>
@@ -85,7 +85,7 @@ layout: page
         {% for sub_category in sub_categories %}
         <li class="list-group-item">
           <i class="far fa-folder fa-fw"></i>
-          <a href="{{ site.baseurl }}/categories/{{ sub_category | replace: ' ', '-' | downcase | url_encode }}/"
+          <a href="{{ site.baseurl }}/categories/{{ sub_category | slugify | url_encode }}/"
             class="ml-1 mr-2">{{ sub_category }}</a>
           {% assign posts_size = site.categories[sub_category] | size %}
           <span class="text-muted small font-weight-light">{{ posts_size }}
