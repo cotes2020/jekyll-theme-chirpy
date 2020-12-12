@@ -860,6 +860,19 @@ div.post-content .table-wrapper {
     font-size: 1.08rem;
     @include img(true);
   }// p
+
+  ul {
+    padding-left: 2rem;
+
+    .task-list-item {
+      list-style-type: none;
+    }
+
+    input[type=checkbox] {
+      margin: 0 .5rem .25rem -1.3rem;
+      vertical-align: middle;
+    }
+  }
 }
 
 .tag:hover {
