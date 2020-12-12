@@ -862,18 +862,21 @@ div.post-content .table-wrapper {
   }// p
 
   ul {
-    padding-left: 2rem;
+    &.task-list, &:not([class]) {
+      padding-left: 2rem;
 
-    .task-list-item {
-      list-style-type: none;
-    }
+      .task-list-item {
+        list-style-type: none;
+      }
 
-    input[type=checkbox] {
-      margin: 0 .5rem .25rem -1.3rem;
-      vertical-align: middle;
+      input[type=checkbox] {
+        margin: 0 .5rem .25rem -1.3rem;
+        vertical-align: middle;
+      }
     }
-  }
-}
+  } // ul
+
+} // .post-content
 
 .tag:hover {
   @extend %tag-hover;
