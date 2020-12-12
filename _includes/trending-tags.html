@@ -15,7 +15,7 @@
   {% assign size = tag | last | size %}
   {% assign size_list = size_list | push: size %}
 
-  {% assign tag_str = tag | first | replace: " ", "-" | append: "::" | append: size %}
+  {% assign tag_str = tag | first | append: "::" | append: size %}
   {% assign tag_list =  tag_list | push: tag_str %}
 {% endfor %}
 

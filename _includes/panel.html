@@ -11,9 +11,9 @@
   <div class="access">
 
   {% include update-list.html %}
-  
+
   {% if update_list.size > 0 %}
-    
+
     <div id="access-lastmod" class="post">
       <span>{{- site.data.label.panel.lastmod -}}</span>
       <ul class="post-content pl-0 pb-1 ml-1 mt-2">
@@ -27,7 +27,7 @@
 
       </ul>
     </div> <!-- #access-lastmod -->
-  
+
   {% endif %}
 
   {% include trending-tags.html %}
@@ -36,10 +36,10 @@
     <div id="access-tags">
       <span>{{- site.data.label.panel.trending_tags -}}</span>
       <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
-      
-      {% for tag in trending_tags %}
-        {% capture url %}/tags/{{ tag | downcase | url_encode }}/{% endcapture %}
-        <a class="post-tag" href="{{ url | relative_url }}">{{ tag | replace: '-', ' ' }}</a>
+
+      {% for tag_name in trending_tags %}
+        {% assign url = tag_name | slugify | url_encode | prepend: "/tags/" | append: "/" %}
+        <a class="post-tag" href="{{ url | relative_url }}">{{ tag_name }}</a>
       {% endfor %}
 
       </div>
