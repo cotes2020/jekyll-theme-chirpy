@@ -1033,13 +1033,6 @@ div.post-content .table-wrapper {
     @include ml-mr(1.8rem);
   }
 
-  /* table text in small screens */
-  div > table, p ~ table {
-    width: 100%;
-    table-layout: fixed;
-    word-wrap: break-word;
-  }
-
   #main-wrapper {
     padding-bottom: $footer-height;
   }
