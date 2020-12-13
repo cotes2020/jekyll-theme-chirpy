@@ -30,13 +30,14 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 .post-content {
   > ol, > ul, > dl {
     padding-left: 2rem;
-    li+li {
+    li + li {
       margin-top: 0.3rem;
     }
   }
   li {
     > ol, > ul, > dl { // sub list
       padding-left: 2rem;
+      margin-top: 0.3rem;
     }
     > p {
       margin: 1rem 0 0.8rem;
