@@ -42,17 +42,25 @@ Fluttering and dancing in the breeze.
 
 ### Ordered list
 
-1. first item
-2. second item
-3. third item
+1. Firstly
+2. Secondly
+3. Thirdly
 
 ### Unordered list
 
-- item 1
-	- sub item 1
-	- sub item 2
+- Chapter
+	- Setcion
+      - Paragraph
 
-- item 2
+### Checkbox list
+
+- [ ] TODO
+- [x] Completed
+- Hold on
+- [ ] Defeat COVID-19
+  - [x] Vaccine production
+  - [ ] Economic recovery
+  - [ ] People smile again
 
 ## Block Quote
 
