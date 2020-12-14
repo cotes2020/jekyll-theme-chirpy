@@ -872,8 +872,8 @@ div.post-content .table-wrapper {
 
       > span { // <span> created by JS
         border: 1px solid var(--checkbox-color);
-        background-color: var(--checkbox-bg);
-        border-radius: 4px;
+        background-color: var(--main-wrapper-bg);
+        border-radius: 50%;
         margin: 0 .5rem .2rem -1.5rem;
         vertical-align: middle;
         height: 1rem;
@@ -881,7 +881,8 @@ div.post-content .table-wrapper {
         display: inline-block;
 
         &[checked] {
-          background-color: var(--checkbox-checked-bg);
+          background-color: var(--checkbox-checked-color);
+          border-color: var(--checkbox-checked-color);
 
           &::after {
             content: "";
@@ -890,9 +891,9 @@ div.post-content .table-wrapper {
             position: relative;
             bottom: 9px;
             left: 5px;
-            background: var(--checkbox-checked-bg);
+            background: var(--checkbox-checked-color);
             display: inline-block;
-            border: solid var(--checkbox-checked-color); // the hook symbol
+            border: solid var(--main-wrapper-bg); // the hook symbol
             border-width: 0 2px 2px 0;
             transform: rotate(45deg) scale(1);
           }
