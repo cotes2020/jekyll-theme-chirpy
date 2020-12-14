@@ -51,10 +51,10 @@ layout: default
       <div class="post-content">
         {%- capture img_placehodler -%}
           data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
-        {% endcapture%}
+        {%- endcapture -%}
 
         {% if page.image %}
-          <img src="{{ img_placehodler }}" data-src="{{ page.image }}" class="post-preview-img">
+          <img src="{{ img_placehodler }}" data-src="{{ page.image }}" class="preview-img">
         {% endif %}
 
         <!-- Using lozad. See: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
