@@ -807,7 +807,7 @@ div.post-content .table-wrapper {
   word-wrap: break-word;
 
   @mixin img($caption: false) {
-    > img:not([style]):not([class]) {
+    > img:not([style]) {
       margin: 0.5rem 0;
 
       &:not(.normal):not(.left):not(.right) {
