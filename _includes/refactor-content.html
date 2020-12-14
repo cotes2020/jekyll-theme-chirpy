@@ -4,15 +4,14 @@
 
 {% assign _content = include.content %}
 
-<!--
-  Suroundding the markdown table with '<div class="table-wrapper">. and '</div>'
--->
+<!-- Suroundding the markdown table with '<div class="table-wrapper">. and '</div>' -->
 {% if _content contains '<table>' %}
-  {% assign _content = _content | replace: '<table>', '<div class="table-wrapper"><table>' %}
-  {% assign _content = _content | replace: '</table>', '</table></div>' %}
-  {% assign _content = _content | replace: '</table></div></code>', '</table></code>' %}
+  {% assign _content = _content
+    | replace: '<table>', '<div class="table-wrapper"><table>'
+    | replace: '</table>', '</table></div>'
+    | replace: '</table></div></code>', '</table></code>'
+  %}
 {% endif %}
-
 
 <!--
   Fixed kramdown code highlight rendering:
@@ -20,8 +19,18 @@
   https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
 -->
 {% if _content contains '<pre class="highlight">' %}
-  {% assign _content = _content | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight"><code' %}
-  {% assign _content = _content | replace: '</code></pre></div>', '</code></div>' %}
+  {% assign _content = _content
+    | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight"><code'
+    | replace: '</code></pre></div>', '</code></div>'
+  %}
 {% endif %}
 
+<!-- Add attribute 'hide-bullet' to the checkbox list -->
+{% if _content contains '<li class="task-list-item"><' %}
+  {% assign _content = _content
+    | replace: '"task-list-item"><', '"task-list-item" hide-bullet><'
+  %}
+{% endif %}
+
+<!-- return -->
 {{ _content }}
