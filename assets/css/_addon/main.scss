@@ -866,7 +866,7 @@ div.post-content .table-wrapper {
       padding-left: 2rem;
     }
 
-    // attribute 'hide-bullet' added by JS
+    // attribute 'hide-bullet' was added by liquid
     .task-list-item[hide-bullet] {
       list-style-type: none;
 
@@ -898,10 +898,12 @@ div.post-content .table-wrapper {
           }
         }
       }
+
     } // .task-list-item
 
     input[type=checkbox] {
-      display: none;
+      margin: 0 .5rem .2rem -1.3rem;
+      vertical-align: middle;
     }
 
   } // ul
