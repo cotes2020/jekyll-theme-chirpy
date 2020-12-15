@@ -870,37 +870,16 @@ div.post-content .table-wrapper {
     .task-list-item[hide-bullet] {
       list-style-type: none;
 
-      > span { // <span> created by JS
-        border: 1px solid var(--checkbox-color);
-        background-color: var(--main-wrapper-bg);
-        border-radius: 50%;
-        margin: 0 .5rem .2rem -1.5rem;
+      > i { // checkbox icon
+        margin: 0 .4rem .2rem -1.4rem;
         vertical-align: middle;
-        height: 1rem;
-        width: 1rem;
-        display: inline-block;
-
-        &[checked] {
-          background-color: var(--checkbox-checked-color);
-          border-color: var(--checkbox-checked-color);
-
-          &::after {
-            content: "";
-            width: 5px;
-            height: 9px;
-            position: relative;
-            bottom: 9px;
-            left: 5px;
-            background: var(--checkbox-checked-color);
-            display: inline-block;
-            border: solid var(--main-wrapper-bg); // the hook symbol
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg) scale(1);
-          }
+        color: var(--checkbox-color);
+        &.checked {
+          color: var(--checkbox-checked-color);
         }
       }
 
-    } // .task-list-item
+    }
 
     input[type=checkbox] {
       margin: 0 .5rem .2rem -1.3rem;
