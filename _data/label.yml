@@ -4,16 +4,17 @@
 # © 2017-2019 Cotes Chung
 # MIT Licensed
 
-
 panel:
-  lastmod: "Recent Update"
-  trending_tags: "Trending Tags"
-  toc: "Contents"
+  lastmod: Recent Update
+  trending_tags: Trending Tags
+  toc: Contents
 
 post:
-  relate_posts: "Further Reading"
+  relate_posts: Further Reading
   button:
     next: Newer
     previous: Older
 
-search_hint: "Search"   # text show on search bar
+search_hint: Search   # text show on search bar
+
+pin_prompt: Pinned   # pinned prompt
