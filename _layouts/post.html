@@ -18,33 +18,31 @@ layout: default
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published date and author -->
         <div>
-          Posted
           {% include timeago.html date=page.date tooltip=true %}
           by
           <span class="author">
-          {% if page.author %}
-            {{ page.author }}
-          {% else %}
-            {{ site.author }}
-          {% endif %}
+            {{ page.author | default: site.author }}
           </span>
         </div>
 
-        <!-- lastmod -->
-        {% if page.last_modified_at %}
         <div>
-          Updated
-          {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
-        </div>
-        {% endif %}
+          <!-- lastmod -->
+          {% if page.last_modified_at %}
+          <span>
+            Updated
+            {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
+          </span>
+          {% endif %}
 
-        <!-- page views -->
-        {% if site.google_analytics.pv.enabled %}
-        <div>
+          <!-- read time -->
+          {% include read-time.html content=content %}
+
+          <!-- page views -->
+          {% if site.google_analytics.pv.enabled %}
           <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span>
-          views
+          {% endif %}
+
         </div>
-        {% endif %}
 
       </div> <!-- .post-meta -->
 

@@ -27,6 +27,27 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   border-color: var(--btn-border-color);
 }
 
+@mixin dot($pl: 0.2rem, $pr: 0.4rem) {
+  content: "\2022";
+  color: rgba(158, 158, 158, 0.8);
+  padding-left: $pl;
+  padding-right: $pr;
+}
+
+.post .post-meta {
+  > div:nth-child(2) {
+    > span:not(:first-child)::before {
+      @include dot;
+    }
+  }
+  #pv::after {
+    content: " views";
+  }
+  .readtime::after {
+    content: " read";
+  }
+}
+
 .post-content {
   > ol, > ul, > dl {
     padding-left: 2rem;
@@ -318,11 +339,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   .post {
     .post-meta {
       >div:not(:first-child)::before {
-        content: "\2022";
-        color: rgba(158, 158, 158, 0.8);
-        font-weight: bold;
-        padding-left: 0.5rem;
-        padding-right: 0.3rem;
+        @include dot(.5rem, .2rem);
       }
       &.flex-column {
         -webkit-box-orient: horizontal!important;
