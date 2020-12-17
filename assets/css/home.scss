@@ -20,17 +20,14 @@
     h1 {
       font-size: 1.4rem;
       margin: 0;
-      ~i { // pinned icon
-        font-size: 0.86rem;
-      }
     }
 
     .post-meta {
       i {
         font-size: 0.73rem;
-        &:not(:first-child) { // post-meta icons on the homepage
-          margin-left: 1rem;
-        }
+      }
+      span:not(:last-child) {
+        margin-right: 1.2rem;
       }
     }
 
@@ -38,7 +35,7 @@
       margin-top: 0.6rem;
       margin-bottom: 0.6rem;
       color: var(--post-list-text-color);
-      >p {
+      > p {
         /* Make preview shorter on the homepage */
         margin: 0;
         overflow: hidden;
@@ -46,6 +43,17 @@
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+      }
+    }
+
+    .pin {
+      > i {
+        transform: rotate(45deg);
+        padding-left: 3px;
+        color: var(--pin-color);
+      }
+      > span {
+        display: none;
       }
     }
 
@@ -107,12 +115,6 @@
 
 } // .pagination
 
-@media all and (max-width: 576px) {
-  #post-list .post-meta>span i:not(:first-child) {
-    margin-left: 1rem;
-  }
-}
-
 /* Hide SideBar and TOC */
 @media all and (max-width: 830px) {
   .pagination {
@@ -125,6 +127,21 @@
 
   #post-list {
     margin-top: 1.5rem;
+    .post-preview .post-meta {
+      .pin {
+        background: var(--pin-bg);
+        border-radius: 5px;
+        line-height: 1.4rem;
+        height: 1.3rem;
+        margin-top: 3px;
+        padding-left: 1px;
+        padding-right: 6px;
+
+        > span {
+          display: inline;
+        }
+      }
+    }
   }
 
   .pagination {
