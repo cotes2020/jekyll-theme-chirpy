@@ -69,8 +69,8 @@ div > pre {
 
   overflow: auto;
   .lineno {
-    margin-left: .2rem;
-    padding-right: .5rem;
+    margin-left: 0.2rem;
+    padding-right: 0.5rem;
     min-width: 2.2rem;
     text-align: right;
     color: var(--highlight-lineno-color);
@@ -154,7 +154,7 @@ div {
   position: absolute;
   right: 1.8rem;
   margin-top: 3px;
-  font-size: .7rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--highlight-lineno-color);
   text-transform: uppercase;

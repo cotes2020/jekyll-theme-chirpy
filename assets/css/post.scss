@@ -159,7 +159,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   position: sticky;
   top: 4rem;
   transition: top 0.2s ease-in-out;
-  animation: fade-up .8s;
+  animation: fade-up 0.8s;
   &.topbar-down {
     top: 6rem;
   }
@@ -185,9 +185,9 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     border: 1px solid var(--card-border-color);
     background-color: var(--card-bg);
     box-shadow: 0 0 5px 0 var(--card-box-shadow);
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     h3 {
       color: var(--text-color);
     }
@@ -339,7 +339,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   .post {
     .post-meta {
       >div:not(:first-child)::before {
-        @include dot(.5rem, .2rem);
+        @include dot(0.5rem, 0.2rem);
       }
       &.flex-column {
         -webkit-box-orient: horizontal!important;
