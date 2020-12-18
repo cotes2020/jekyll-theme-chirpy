@@ -102,20 +102,20 @@ _400px image width_
 
 - Left aligned
 
-![Desktop View](/assets/img/sample/mockup.png){: width="350" class="normal"}
+![Desktop View](/assets/img/sample/mockup.png){: width="350" .normal}
 
 <br>
 
 - Float to left
 
-  ![Desktop View](/assets/img/sample/mockup.png){: width="240" class="left"}
+  ![Desktop View](/assets/img/sample/mockup.png){: width="240" .left}
   "A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space."
 
 <br>
 
 - Float to right
 
-  ![Desktop View](/assets/img/sample/mockup.png){: width="240" class="right"}
+  ![Desktop View](/assets/img/sample/mockup.png){: width="240" .right}
   "A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space."
 
 <br>
