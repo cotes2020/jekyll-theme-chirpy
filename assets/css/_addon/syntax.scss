@@ -148,3 +148,20 @@ div {
     }
   }
 }
+
+[class^='language-']::before {
+  content: attr(lang);
+  position: absolute;
+  right: 1.8rem;
+  margin-top: 3px;
+  font-size: .7rem;
+  font-weight: 600;
+  color: var(--highlight-lineno-color);
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  [class^='language-']::before {
+    right: 3.1rem;
+  }
+}
