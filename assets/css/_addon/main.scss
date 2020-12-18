@@ -810,7 +810,7 @@ div.post-content .table-wrapper {
     > img[data-src] {
       margin: 0.5rem 0;
 
-      &:not([class]) {
+      &:not(.normal):not(.left):not(.right) {
         @include align-center;
 
         @if $caption {
