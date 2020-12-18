@@ -206,10 +206,10 @@ $sidebar-display: "sidebar-display";
 
 @media (hover: hover) {
   #sidebar ul > li:last-child::after {
-    -webkit-transition: top .5s ease;
-    -moz-transition: top .5s ease;
-    -o-transition: top .5s ease;
-    transition: top .5s ease;
+    -webkit-transition: top 0.5s ease;
+    -moz-transition: top 0.5s ease;
+    -o-transition: top 0.5s ease;
+    transition: top 0.5s ease;
   }
 }
 
@@ -243,9 +243,9 @@ $sidebar-display: "sidebar-display";
   img {
     width: 100%;
     height: 100%;
-    -webkit-transition: transform .5s;
-    -moz-transition: transform .5s;
-    transition: transform .5s;
+    -webkit-transition: transform 0.5s;
+    -moz-transition: transform 0.5s;
+    transition: transform 0.5s;
 
     &:hover {
       -ms-transform: scale(1.2);
@@ -298,7 +298,7 @@ $sidebar-display: "sidebar-display";
     &:not(:last-child) {
       &::after {
         content: "›";
-        padding: 0 .3rem;
+        padding: 0 0.3rem;
       }
     }
   }
@@ -315,7 +315,7 @@ $sidebar-display: "sidebar-display";
   border-radius: 1rem;
   border: 1px solid var(--search-wrapper-bg);
   background: var(--search-wrapper-bg);
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   i {
     z-index: 2;
     font-size: 0.9rem;
@@ -336,7 +336,7 @@ $sidebar-display: "sidebar-display";
   background: center;
   border: 0;
   border-radius: 0;
-  padding: 0.18rem .3rem;
+  padding: 0.18rem 0.3rem;
   color: var(--text-color);
 }
 
@@ -538,8 +538,8 @@ footer {
     background: none;
     border: 1px solid var(--btn-border-color);
     border-radius: 0.8rem;
-    padding: 0.3rem .5rem;
-    margin: 0 .35rem .5rem 0;
+    padding: 0.3rem 0.5rem;
+    margin: 0 0.35rem 0.5rem 0;
     &:hover {
       background-color: #2a408e;
       border-color: #2a408e;
@@ -642,7 +642,7 @@ blockquote {
 }
 
 kbd {
-  margin: 0 .3rem;
+  margin: 0 0.3rem;
 }
 
 sup {
@@ -676,7 +676,7 @@ sup {
 
 .footnote {
   @at-root a#{&} {
-    margin: 0 .2em;
+    margin: 0 0.2em;
     border-bottom-style: none !important;
     -webkit-transition: background-color 1.5s ease-in-out; /* Safari prior 6.1 */
     transition: background-color 1.5s ease-in-out;
@@ -871,7 +871,7 @@ div.post-content .table-wrapper {
       list-style-type: none;
 
       > i { // checkbox icon
-        margin: 0 .4rem .2rem -1.4rem;
+        margin: 0 0.4rem 0.2rem -1.4rem;
         vertical-align: middle;
         color: var(--checkbox-color);
         &.checked {
@@ -882,7 +882,7 @@ div.post-content .table-wrapper {
     }
 
     input[type=checkbox] {
-      margin: 0 .5rem .2rem -1.3rem;
+      margin: 0 0.5rem 0.2rem -1.3rem;
       vertical-align: middle;
     }
 
@@ -900,7 +900,7 @@ div.post-content .table-wrapper {
   text-align: center;
   background: var(--tag-bg);
   border-radius: 0.3rem;
-  padding: 0 .4rem;
+  padding: 0 0.4rem;
   color: inherit;
   line-height: 1.3rem;
   &:not(:last-child) {
@@ -984,7 +984,7 @@ div.post-content .table-wrapper {
   box-shadow: none;
   border-color: var(--input-focus-border-color) !important;
   background: center !important;
-  transition: background-color .15s ease-in-out,border-color .15s ease-in-out;
+  transition: background-color 0.15s ease-in-out,border-color 0.15s ease-in-out;
 }
 
 /*--- Responsive Design ---*/
@@ -1315,8 +1315,8 @@ div.post-content .table-wrapper {
   }
 
   #search-input {
-    -webkit-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
   #search-result-wrapper {
@@ -1474,7 +1474,7 @@ div.post-content .table-wrapper {
         @include icon-round(1.65rem);
         line-height: 1rem;
         font-size: 0.6rem;
-        padding: 0.5em 0 0 .1em;
+        padding: 0.5em 0 0 0.1em;
         display: inline-block!important;
       }
     }
