@@ -177,7 +177,7 @@ compress_html:
   profile: false
   blanklines: false
   ignore:
-    envs: []
+    envs: [development]
 
 exclude:
   - vendor
