@@ -97,7 +97,7 @@ PLATFORMS
 
 DEPENDENCIES
   html-proofer
-  jekyll (>= 4.0.0, < 5.0)
+  jekyll (>= 4.1.0, < 5.0)
   jekyll-archives
   jekyll-paginate
   jekyll-redirect-from
