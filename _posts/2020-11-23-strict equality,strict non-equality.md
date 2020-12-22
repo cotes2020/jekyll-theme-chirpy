@@ -1,10 +1,9 @@
 ---
-title: node란 무엇인가
+title: 일치연산자(===)와 동등연산자(==)
 author: juyoung
 date: 2020-11-23 18:28:00 +0800
 categories: [javascript, grammer]
 tags: [javascript]
-pin: 일치연산자(===)와 동등연산자(==)
 ---
 
 1. 일치 연산자 ===를 사용하여 null과 undefined를 비교하면

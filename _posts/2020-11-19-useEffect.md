@@ -74,6 +74,7 @@ Error: Rendered fewer hooks than expected. This may be caused by an accidental e
 ```
 return이 가장 아래 오도록 하면 에러가 해결된다
 
-출처:[zeroCho](https://www.zerocho.com/category/React/``)`,
-[react Docs](https://reactjs.org/docs/hooks-reference.html#useeffect)`
+출처:zeroCho blog <https://www.zerocho.com/category/React/``>,  
+
+react Docs <https://reactjs.org/docs/hooks-reference.html#useeffect>
 

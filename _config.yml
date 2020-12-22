@@ -8,9 +8,9 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: juyoung's Blog                         # the main title
+title: 개발장이                        # the main title
 
-tagline: Front-End Developing의 재미  # it will display as the sub-title
+tagline: Front-End Developer  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   사람이란 흐르는 강물과 같아 하루하루가 다르고 새롭다
@@ -25,14 +25,14 @@ github:
   username: maldives0             # change to your github username
 
 twitter:
-  username:             # change to your twitter username
+  username: maliethy0            # change to your twitter username
 
 social:
   name: juyoung                  # it will shows as the copyright owner in Footer
   email: maliethy@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
+    - https://twitter.com/maliethy0      # change to your twitter homepage
     - https://github.com/maldives0       # change to your github homepage
     # Uncomment below to add more social links
     - https://www.facebook.com/ju.jung.792
@@ -62,8 +62,8 @@ google_analytics:
     cache: false  # pv data local cache, good for the users from GFW area.
 
 disqus:
-  comments: false  # boolean type, the global switch for posts comments.
-  shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+  comments: true  # boolean type, the global switch for posts comments.
+  shortname: 'maldives0'    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 
 # Prefer color scheme setting, available values:

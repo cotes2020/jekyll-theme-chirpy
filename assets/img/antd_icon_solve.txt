@@ -1,0 +1,52 @@
+
+Page
+Size     First Load JS
+┌ λ /
+1.43 kB         500 kB
+├   /_app
+0 B             105 kB
+├ ○ /404
+262 B           106 kB
+├ λ /hashtag/[tag]
+784 B           496 kB
+├ λ /login
+10.2 kB         485 kB
+├ λ /post/[id]
+687 B           496 kB
+├ λ /posts/related
+1.09 kB         499 kB
+├ λ /profile
+8.9 kB          484 kB
+├ λ /signup
+1.33 kB         476 kB
+└ λ /user/[id]
+1.27 kB         496 kB
++ First Load JS shared by all
+105 kB
+  ├ chunks/033f869c0cc364627d93bd7d05534baade1e7634.acce72.js  
+5.03 kB
+  ├ chunks/6b7903cd2497917111f687055581f790035a2aa9.c4f564.js  
+15.6 kB
+  ├ chunks/777c2cca.558465.js
+77 B
+  ├ chunks/b6451bfa71415e1eb6b699247070fee6c4d97f38.fee3f6.js  
+11.5 kB
+  ├ chunks/commons.7aac71.js
+8.79 kB
+  ├ chunks/framework.9d2e16.js
+42.1 kB
+  ├ chunks/main.5b6e30.js
+7.06 kB
+  ├ chunks/pages/_app.c0b4a3.js
+14.3 kB
+  ├ chunks/styles.f4dce8.js
+99 B
+  ├ chunks/webpack.470e21.js
+752 B
+  └ css/777c2cca.81a3d2c1.chunk.css
+65.7 kB
+
+λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
+   (ISR)     incremental static regeneration (uses revalidate in getStaticProps)
