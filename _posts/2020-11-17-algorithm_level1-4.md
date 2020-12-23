@@ -1,15 +1,15 @@
 ---
-title: programmers algorithm test level1 4번째
+title: programmers algorithm test Level1 네 번째
 author: juyoung
 date: 2020-11-17 19:06:00 +0800
-categories: [algorithm, level1]
+categories: [algorithm, Level1]
 tags: [algorithm]
 ---
 
 
 
 
-31. 약수의 합
+# 31. 약수의 합
 
 
 ```javascript
@@ -47,7 +47,7 @@ console.log(solution(12));
 ```
 
 
-32. 체육복
+# 32. 체육복
 
 
 ```javascript
@@ -141,7 +141,7 @@ console.log(solution(3, [3], [1]));
 ```  
  
 
-33. 완주하지 못한 선수
+# 33. 완주하지 못한 선수
 
 ```javascript
 //sol1
@@ -198,7 +198,7 @@ console.log(solution(["a", "b", "c", "a"], ["b", "a", "c"]));
 
 ```    
 
-34. K번째 수
+# 34. K번째 수
 
 ```javascript
 //sol1
@@ -233,7 +233,7 @@ console.log(solution([1, 5, 2, 6, 3, 7, 4], [[2, 5, 3], [4, 4, 1], [1, 7, 3]]));
 
 ```    
 
-35. 모의고사
+# 35. 모의고사
 
 ```javascript
 function solution(n) {
@@ -260,7 +260,7 @@ console.log(solution([1, 3, 2, 4, 2, 1, 3, 2, 4, 2]));
 
 ```  
 
-36. 자릿수 더하기   
+# 36. 자릿수 더하기   
 
 
 ```javascript

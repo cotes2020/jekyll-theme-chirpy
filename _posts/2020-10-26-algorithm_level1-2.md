@@ -1,13 +1,13 @@
 ---
-title: programmers algorithm test level1 두번째
+title: programmers algorithm test Level1 두번째
 author: juyoung
 date: 2020-10-26 18:46:00 +0800
-categories: [algorithm, level1]
+categories: [algorithm, Level1]
 tags: [algorithm]
 ---
 
 
-11. 콜라츠 추측
+# 11. 콜라츠 추측
 
 
 ```javascript
@@ -37,7 +37,7 @@ console.log(solution(626331));
 ```
 
 
-12. 하샤드 수  
+# 12. 하샤드 수  
 
 
 ```javascript
@@ -61,7 +61,7 @@ console.log(solution(18));
 
 ```  
 
-13. 핸드폰 번호 가리기   
+# 13. 핸드폰 번호 가리기   
 
 ```javascript
 //sol1
@@ -126,7 +126,7 @@ console.log(solution("01033334444"));
 
 ```    
 
-14. 행렬의 덧셈    
+# 14. 행렬의 덧셈    
 
 ```javascript
 //sol1
@@ -172,7 +172,7 @@ console.log(solution([[1], [2]], [[3], [4]]));
 
 ```  
 
-15. 시저암호  
+# 15. 시저암호  
 
 ```javascript
 //sol1
@@ -211,7 +211,7 @@ console.log(solution("a B z", 4));
 
 ```  
 
-16. 이상한 문자 만들기  
+# 16. 이상한 문자 만들기  
 
 ```javascript
 //sol1
@@ -285,7 +285,7 @@ console.log(solution("try hello world"));
 ```  
   
   
-17. 짝수와 홀수 
+# 17. 짝수와 홀수 
 
 ```javascript
 function solution(n) {
@@ -296,7 +296,7 @@ console.log(solution(0));
 ```
   
 
-18. 문자열 다루기 기본  
+# 18. 문자열 다루기 기본  
 
 ```javascript
 //sol1
@@ -320,7 +320,7 @@ console.log(/^[0-9]+$/.test('22'));//true
 ```  
   
 
-19. 가운데 글자 가져오기  
+# 19. 가운데 글자 가져오기  
 
 ```javascript
 //sol1
@@ -359,7 +359,7 @@ console.log(solution(s));
 ```    
 
 
-20. 자연수 뒤집어 배열로 만들기  
+# 20. 자연수 뒤집어 배열로 만들기  
 
 ```javascript
 //sol1

@@ -1,7 +1,7 @@
 ---
 title: programming 프로그래밍에 대한 단상
 author: juyoung
-date: 2019-08-09 20:55:00 +0800
+date: 2019-10-02 20:55:00 +0800
 categories: [diary, programming]
 tags: [programming]
 ---

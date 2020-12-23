@@ -1,13 +1,13 @@
 ---
-title: programmers algorithm test level1 세번째
+title: programmers algorithm test Level1 세번째
 author: juyoung
 date: 2020-11-12 19:06:00 +0800
-categories: [algorithm, level1]
+categories: [algorithm, Level1]
 tags: [algorithm]
 ---
 
 
-21. 최대공약수와 최소공배수
+# 21. 최대공약수와 최소공배수
 
 
 ```javascript
@@ -38,7 +38,7 @@ console.log(solution(2, 5));
 ```
 
 
-22. 나누어 떨어지는 숫자 배열
+# 22. 나누어 떨어지는 숫자 배열
 
 
 ```javascript
@@ -86,7 +86,7 @@ console.log(sol([5, 9, 7, 10],5));
 ```    
 
 
-23. 문자열 내 마음대로 정렬하기
+# 23. 문자열 내 마음대로 정렬하기
 
 ```javascript
 //sol1
@@ -138,7 +138,7 @@ console.log(solution(['bed', 'aun', 'car'], 1));
 ```     
 
 
-24. 문자열 내림차순으로 배치하기  
+# 24. 문자열 내림차순으로 배치하기  
 
 ```javascript
 function solution(s) {
@@ -147,7 +147,7 @@ function solution(s) {
 ```    
 
 
-25. 서울에서 김서방 찾기  
+# 25. 서울에서 김서방 찾기  
 
 ```javascript
 //sol1
@@ -191,7 +191,7 @@ console.log(solution(['Kim', 'Jane', 'Cho',]));
 ```  
   
 
-26. 소수 찾기
+# 26. 소수 찾기
 
 ```javascript
 //sol1
@@ -309,7 +309,7 @@ console.log(solution(100));
 ```  
   
 
-27. x만큼 간격이 있는 n개의 숫자
+# 27. x만큼 간격이 있는 n개의 숫자
  
 
 ```javascript
@@ -335,7 +335,7 @@ console.log(solution(4, 3));
 ```
   
 
-28. 제일 작은 수 제거하기 
+# 28. 제일 작은 수 제거하기 
 
 ```javascript
 //sol1
@@ -367,7 +367,7 @@ console.log(solution([1]));
 ```  
   
 
-29. 정수 제곱근 판별  
+# 29. 정수 제곱근 판별  
 
 ```javascript
 //sol1
@@ -389,7 +389,7 @@ console.log(solution(121));
 
 ```
 
-30. 정수 내림차순으로 배치하기
+# 30. 정수 내림차순으로 배치하기
 
 
 ```javascript

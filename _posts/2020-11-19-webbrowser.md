@@ -2,7 +2,7 @@
 title: node란 무엇인가
 author: juyoung
 date: 2020-11-19 16:08:00 +0800
-categories: [html, grammer]
+categories: [html, syntax]
 tags: [html]
 ---
 

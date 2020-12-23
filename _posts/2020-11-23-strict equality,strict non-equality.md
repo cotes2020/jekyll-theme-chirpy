@@ -2,7 +2,7 @@
 title: 일치연산자(===)와 동등연산자(==)
 author: juyoung
 date: 2020-11-23 18:28:00 +0800
-categories: [javascript, grammer]
+categories: [javascript, syntax]
 tags: [javascript]
 ---
 

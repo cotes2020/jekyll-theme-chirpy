@@ -1,20 +1,20 @@
 ---
-title: programmers algorithm test level1 첫번째
+title: programmers algorithm test Level1 첫번째
 author: juyoung
 date: 2020-10-21 18:46:00 +0800
-categories: [algorithm, level1]
+categories: [algorithm, Level1]
 tags: [algorithm]
 ---
 
-'2020.10.21' 부터 프로그래머스에 있는 알고리즘 연습문제를 풀기 시작했다.   
-처음 일주일은 해답을 보지 않으면 2-3시간을 고민해도 안풀렸는데 조금씩 비슷한 풀이가 나오기 시작하자 혼자 힘으로 쉬운 문제는 풀리는 게 신기했다.  
+'2020.10.21' 부터 프로그래머스에 있는 알고리즘 연습문제를 풀기 시작했다.  
+처음 일주일은 해답을 보지 않으면 2-3시간을 고민해도 안풀렸는데 조금씩 비슷한 풀이가 나오기 시작하자 혼자 힘으로 쉬운 문제는 풀리는 게 신기했다. 
 
 내가 푼 방식과 함께 프로그래머스에 있던 다른 기발한 답들도 함께 기록한다.
   
 
-1. 2016년
+# 1. 2016년
 
-
+ 
 ```javascript
 function solution(a, b) {
   
@@ -27,7 +27,7 @@ console.log(solution(10,23));
 ```
 
 
-2. 같은 숫자는 싫어  
+# 2. 같은 숫자는 싫어  
 
 
 ```javascript
@@ -105,7 +105,7 @@ console.log(solution([1,1,3,3,0,1,1]))
 ```  
   
 
-3. 3진법 뒤집기    
+# 3. 3진법 뒤집기    
 
 
 ```javascript
@@ -141,7 +141,7 @@ console.log(solution(45));
 ```      
 
 
-4. 두개 뽑아서 더하기    
+# 4. 두개 뽑아서 더하기    
 
 
 ```javascript
@@ -190,7 +190,7 @@ console.log(solution([5, 0, 2, 7]));
 ```    
   
 
-5. 평균 구하기   
+# 5. 평균 구하기   
 
 
 ```javascript
@@ -214,7 +214,7 @@ console.log(solution([5, 5]));
 
 
 
-6. 문자열을 정수로 바꾸기 
+# 6. 문자열을 정수로 바꾸기 
 
 
 ```javascript
@@ -246,7 +246,7 @@ console.log(solution("-1234"));
 ```  
   
 
-7. 수박수박수박수박수   
+# 7. 수박수박수박수박수   
 
 ```javascript
 //sol1
@@ -290,7 +290,7 @@ console.log(waterMelon(4));
 ```  
   
 
-8. 문자열 내 p와 y의 개수  
+# 8. 문자열 내 p와 y의 개수  
 
 
 ```javascript
@@ -360,7 +360,7 @@ console.log(solution("abc"));//true
 ```    
 
 
-9. 두 정수 사이의 합    
+# 9. 두 정수 사이의 합    
 
 
 ```javascript
@@ -403,7 +403,7 @@ console.log(solution(3, 6));
 ```  
   
 
-10. 직사각형 별찍기   
+# 10. 직사각형 별찍기   
 
 ```javascript
 //sol1

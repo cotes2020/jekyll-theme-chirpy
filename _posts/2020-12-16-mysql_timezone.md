@@ -6,10 +6,10 @@ categories: [project, portpolio]
 tags: [project]
 ---
 
-1. mysql shell을 실행한다.  
+# 1. mysql shell을 실행한다.  
 저는 MySQL 8.0 Command Line Client - Unicode 을 실행했습니다.  
 
-2. mysql> select @@global.time_zone, @@session.time_zone; 명령을 실행한다.
+# 2. mysql> select @@global.time_zone, @@session.time_zone; 명령을 실행한다.
 
 ```console
 
@@ -22,7 +22,7 @@ mysql> select @@global.time_zone, @@session.time_zone;
 1 row in set (0.00 sec)
 ```  
 
-3. SET GLOBAL time_zone='Asia/Seoul';  
+# 3. SET GLOBAL time_zone='Asia/Seoul';  
 SET time_zone='Asia/Seoul'; 명령을 실행한다가 아래의 에러 발생!  
 
 ERROR 1298 (HY000): Unknown or incorrect time zone: 'Asia/Seoul'  
@@ -37,10 +37,12 @@ https://dev.mysql.com/downloads/timezones.html에서
 ```
 이게 대체 뭔소린지 알 수가 없어서 포기하고...
 
-4. SET GLOBAL time_zone='+09:00';  
+# 4. SET GLOBAL time_zone='+09:00';  
 SET time_zone='+09:00'; 명령을 실행한다  
 
-5.  다시 확인해보면 이런 화면이 보인다  
+# 5. select @@global.time_zone, @@session.time_zone; 
+이 명령어로 다시 확인해보면 이런 화면이 보인다  
+
 
 ```console 
 
@@ -53,7 +55,7 @@ mysql> select @@global.time_zone, @@session.time_zone;
 1 row in set (0.00 sec)
 ```
 
-6. 그러나 이 설정은 mysql를 재실행하면 다시 초기화되므로 영구적으로 적용시키켜야 한다.  
+# 6. 그러나 이 설정은 mysql를 재실행하면 다시 초기화되므로 영구적으로 적용시키켜야 한다.  
  
 my.ini 파일에 [mysqld] 섹션 맨 아래에 default-time-zone을 추가한다  
 
@@ -78,11 +80,11 @@ sync_relay_log_info=10000
 # The TCP/IP Port the MySQL Server X Protocol will listen on.
 loose_mysqlx_port=33060
 
-#Default time-zone setting - (기본 time-zone 설정)
+#Default time-zone setting - (기본 time-zone 설정)//맨 마지막에 이 부분을 더해준다.
 default-time-zone='+09:00'
 ```  
 
-7. 그리고 mysql서버를 재시작 해준다.  
+# 7. 마지막으로 mysql서버를 재시작 해준다.  
 
 windows관리도구 서비스 프로그램 실행 > 서비스 창에서 mysql80 오른쪽 클릭> 중지 후 시작 버튼 누르기
 ![windows관리도구 서비스 프로그램](/assets/img/service.jpg)
