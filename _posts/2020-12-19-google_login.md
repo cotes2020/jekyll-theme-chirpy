@@ -2,8 +2,8 @@
 title: passportjs를 이용한 google OAuth 로그인 기능 구현하기
 author: juyoung
 date: 2020-12-16 16:08:00 +0800
-categories: [project, API]
-tags: [project]
+categories: [react, API]
+tags: [API]
 ---
 
 # 0. 구글 API console에 접속해 OAuth 클라이언트 ID를 만들기
@@ -188,6 +188,7 @@ module.exports = router;
 <br />
 
 ![구글 403 승인오류](/assets/img/google_error.jpg)
+
 <br />
 403 에러 메세지가 나온다는 것은 승인된 redirection URL에 해당 주소값을 넣어주지 않았기 때문에 발생합니다.
 <br />
