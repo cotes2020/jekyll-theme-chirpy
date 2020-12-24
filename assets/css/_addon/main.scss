@@ -771,14 +771,15 @@ img {
 
 
 /*--- Begin of Markdown table style ---*/
-div.post-content .table-wrapper {
+
+.table-wrapper { // it will be created by Liquid
   overflow-x: auto;
+  margin-bottom: 1.5rem;
 
   > table {
     min-width: 100%;
     overflow-x: auto;
     border-spacing: 0;
-    margin-bottom: 1.5rem;
 
     thead {
       border-bottom: solid 2px rgba(210, 215, 217, 0.75);

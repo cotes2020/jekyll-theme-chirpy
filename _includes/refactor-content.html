@@ -4,7 +4,10 @@
 
 {% assign _content = include.content %}
 
-<!-- Suroundding the markdown table with '<div class="table-wrapper">. and '</div>' -->
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
 {% if _content contains '<table>' %}
   {% assign _content = _content
     | replace: '<table>', '<div class="table-wrapper"><table>'
