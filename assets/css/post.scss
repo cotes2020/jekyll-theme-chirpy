@@ -49,21 +49,6 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 }
 
 .post-content {
-  > ol, > ul, > dl {
-    padding-left: 2rem;
-    li + li {
-      margin-top: 0.3rem;
-    }
-  }
-  li {
-    > ol, > ul, > dl { // sub list
-      padding-left: 2rem;
-      margin-top: 0.3rem;
-    }
-    > p {
-      margin: 1rem 0 0.8rem;
-    }
-  }
   .preview-img {
     margin-top: 0;
     margin-bottom: 2.5rem;
@@ -182,7 +167,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     @include label(1.1rem, 600);
   }
   .card {
-    border: 1px solid var(--card-border-color);
+    border-color: var(--card-border-color);
     background-color: var(--card-bg);
     box-shadow: 0 0 5px 0 var(--card-box-shadow);
     -webkit-transition: all 0.3s ease-in-out;
@@ -194,7 +179,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
     &:hover {
       -webkit-transform: translate3d(0, -3px, 0);
       transform: translate3d(0, -3px, 0);
-      box-shadow: 0 20px 35px -4px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 15px -4px rgba(0,0,0,0.15);
     }
   }
 
