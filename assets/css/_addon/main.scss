@@ -46,8 +46,9 @@ html[mode=dark] {
   }
 }
 
-html, body {
+:root {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
