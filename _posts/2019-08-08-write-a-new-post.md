@@ -78,7 +78,7 @@ mermaid: true
 ---
 ```
 
-Then you can use it like other markdown language: surround the graph code with <code class="highlighter-rouge">```mermaid</code>.
+Then you can use it like other markdown language: surround the graph code with ```` ```mermaid ```` and ```` ``` ````.
 
 ## Images
 
@@ -147,7 +147,7 @@ pin: true
 
 ## Code Block
 
-Markdown symbols <code class="highlighter-rouge">```</code> can easily create a code block as following examples.
+Markdown symbols ```` ``` ```` can easily create a code block as following examples.
 
 ```
 This is a common code snippet, without syntax highlight and line number.
@@ -155,7 +155,7 @@ This is a common code snippet, without syntax highlight and line number.
 
 ## Specific Language
 
-Using <code class="highlighter-rouge">```language</code> you will get code snippets with line numbers and syntax highlight.
+Using ```` ```language ```` you will get code snippets with line numbers and syntax highlight.
 
 > **Note**: The Jekyll style `{% raw %}{%{% endraw %} highlight LANGUAGE {% raw %}%}{% endraw %}` or `{% raw %}{%{% endraw %} highlight LANGUAGE linenos {% raw %}%}{% endraw %}` are not allowed to be used in this theme !
 
