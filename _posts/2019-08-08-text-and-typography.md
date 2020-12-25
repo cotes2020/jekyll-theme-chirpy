@@ -38,7 +38,7 @@ Beside the lake, beneath the trees,
 
 Fluttering and dancing in the breeze.
 
-## List
+## Lists
 
 ### Ordered list
 
@@ -52,7 +52,7 @@ Fluttering and dancing in the breeze.
 	- Setcion
       - Paragraph
 
-### Checkbox list
+### Task list
 
 - [ ] TODO
 - [x] Completed
@@ -62,26 +62,35 @@ Fluttering and dancing in the breeze.
   - [ ] Economic recovery
   - [ ] People smile again
 
+### Description list
+
+Sun
+: the star around which the earth orbits
+
+Moon
+: the natural satellite of the earth, visible by reflected light from the sun
+
+
 ## Block Quote
 
 > This line to shows the Block Quote.
 
 ## Tables
 
-| Company                      | contact          | Country |
+| Company                      | Contact          | Country |
 |:-----------------------------|:-----------------|--------:|
 | Alfreds Futterkiste          | Maria Anders     | Germany |
 | Island Trading               | Helen Bennett    | UK      |
 | Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy   |
 
-## Link
+## Links
 
 <http://127.0.0.1:4000>
 
 
 ## Footnote
 
-Click the hook will locate the footnote[^footnote].
+Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
 
 
 ## Images
@@ -130,9 +139,6 @@ _400px image width_
   cherry :active, c, after b a, 1d
 ```
 
-## Inline code
-
-This is an example of `Inline Code`.
 
 ## Mathematics
 
@@ -144,7 +150,13 @@ When \\(a \ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they 
 
 $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
-## Code Snippet
+
+## Inline code
+
+This is an example of `Inline Code`.
+
+
+## Code block
 
 ### Common
 
@@ -157,14 +169,6 @@ This is a common code snippet, without syntax highlight and line number.
 #### Console
 
 ```console
-$ date
-Sun Nov  3 15:11:12 CST 2019
-```
-
-
-#### Terminal
-
-```terminal
 $ env |grep SHELL
 SHELL=/usr/local/bin/bash
 PYENV_SHELL=bash
@@ -198,23 +202,6 @@ fi;
 ```
 {% endraw %}
 
-#### Html
-
-```html
-<div class="sidenav">
-  <a href="#contact">Contact</a>
-  <button class="dropdown-btn">Dropdown
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-  <a href="#contact">Search</a>
-</div>
-```
-
 #### Java
 
 ```java
@@ -222,20 +209,11 @@ private void writeObject(java.io.ObjectOutputStream s)
   throws java.io.IOException {
   // Write out any hidden serialization magic
   s.defaultWriteObject();
-
-  // Write out HashMap capacity and load factor
-  s.writeInt(map.capacity());
-  s.writeFloat(map.loadFactor());
-
-  // Write out size
-  s.writeInt(map.size());
-
-  // Write out all elements in the proper order.
-  for (E e: map.keySet())
-    s.writeObject(e);
+  for (E e: map.keySet()) s.writeObject(e);
 }
 ```
 
 ## Reverse Footnote
 
-[^footnote]: The footnote source.
+[^footnote]: The footnote source
+[^fn-nth-2]: The 2nd footnote source
