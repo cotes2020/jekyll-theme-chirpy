@@ -41,10 +41,10 @@ CDS가 표시등 이외 주변 불빛을 감지하지 못하게 방지하는 차
 <img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/discord1.png" width="700px"> 
 <img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/discord2.png" width="700px"> 
 
-웹 프론트엔드 (https://ibarami.github.io 에서 직접 사용해보실 수 있습니다.)
+웹 프론트엔드 (<a href="https://ibarami.github.io" target="_blank"> https://ibarami.github.io</a> 에서 직접 사용해보실 수 있습니다.)
 <img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/web1.png" width="700px"> 
 
-REST API 예시 (https://api.chinchister.com/jinwonbot/)
+REST API 예시 (<a href="https://api.chinchister.com/jinwonbot/" target="_blank">https://api.chinchister.com/jinwonbot/</a>에서 직접 사용해보실 수 있습니다. <a href="https://github.com/Dictor/jinwonbot/blob/master/docs/api.md" target="_blank">API 명세서</a> )
    
 <img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/rest.png" width="500px"> 
 
@@ -55,9 +55,10 @@ REST API 예시 (https://api.chinchister.com/jinwonbot/)
 - 접근성과 편의성을 위한 더 다양한 종류의 프론트앤드를 구현해야 합니다. 기존 프론트앤드의 개선도요.
 
 ## 소스코드
-- 백앤드, 디스코드 프론트엔드 및 REST API 소스 : https://github.com/Dictor/jinwonbot
-- 웹 프론트엔드 소스 : https://github.com/ibarami/ibarami.github.io
-- 센서 소스 : https://github.com/ibarami/IsBaramiOpen
+
+- <a href="https://github.com/Dictor/jinwonbot" target="_blank">백앤드, 디스코드 프론트엔드 및 REST API 소스</a>
+- <a href="https://github.com/ibarami/ibarami.github.io" target="_blank">웹 프론트엔드 소스</a>
+- <a href="https://github.com/ibarami/IsBaramiOpen" target="_blank">센서 소스</a>
 
 ## 감사한 분
-작품과 디스코드 프론트앤드의 이름과 프로필사진, 하드웨어를 제공해주신 24기 주진원 선배님께 다시 한번 감사드립니다! 
+작품과 디스코드 프론트앤드의 이름과 프로필사진, 하드웨어를 제공해주신 24기 주진원 선배님께 다시 한번 감사드립니다! 그리고 디스코드 봇 사용해주신 바라미 회원분들도 완전 감사!
