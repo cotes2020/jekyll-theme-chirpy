@@ -33,21 +33,31 @@ CDS가 표시등 이외 주변 불빛을 감지하지 못하게 방지하는 차
 <img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/structure.png" width="100%"> 
 
 - **센서**: 전자석으로 문을 잠그는 SECOM 단말기 잠금 장치에 9축 IMU센서인 MPU9050을 부착하고 파이썬 데몬이 일정 시간마다 센서의 자기장 평균값을 읽어 상태가 바뀌었다고 판단되면 정해진 깃헙 저장소에 커밋을 수행합니다. 이때 커밋 메세지에 감지 시간과 문 상태가 담기며 이 데이터로 생성된 정적 웹 페이지가 커밋됩니다.
-- **백앤드**: 일정시간마다 백앤드 데몬은 저장소의 커밋을 확인해 로컬 DB (JSON store)와 원격 저장소의 커밋 목록을 동기화합니다. echo 웹 서버와 디스코드 메세지 처리기는 요청이 들어올때마다 로컬 DB에 질의를 수행해 응답합니다.
-- **프론트앤드**: 현재 상태로썬 두 개의 일반 사용자용 프론트앤드와 프론트 앤드를 제작하기 위한 REST API가 구현되어 있습니다.
+- **백엔드**: 일정시간마다 백앤드 데몬은 저장소의 커밋을 확인해 로컬 DB (JSON store)와 원격 저장소의 커밋 목록을 동기화합니다. echo 웹 서버와 디스코드 메세지 처리기는 요청이 들어올때마다 로컬 DB에 질의를 수행해 응답합니다.
+- **프론트엔드**: 현재 상태로썬 두 개의 일반 사용자용 프론트앤드와 프론트 앤드를 제작하기 위한 REST API가 구현되어 있습니다.
 
 ## 시연 사진
-디스코드 프론트앤드
-<img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/discord1.png" width="100%"> 
-<img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/discord2.png" width="100%"> 
+디스코드 프론트엔드 (바라미 디스코드방이나 진원쿤#5014에게 직접 메세지를 보내 사용해보실 수 있습니다.)
+<img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/discord1.png" width="700px"> 
+<img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/discord2.png" width="700px"> 
 
-웹 프론트앤드
-<img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/web1.png" width="100%"> 
+웹 프론트엔드 (https://ibarami.github.io 에서 직접 사용해보실 수 있습니다.)
+<img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/web1.png" width="700px"> 
 
-REST API 예시
-<img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/rest.png" width="100%"> 
+REST API 예시 (https://api.chinchister.com/jinwonbot/)
+   
+<img src="/assets/img/post/2020-12-25-25th-kimjeonghyun-jinwonbot/rest.png" width="500px"> 
 
 ## FAQ
+- 왜 백앤드에서 센서 감지까지 한 번에 수행하지 않고 센서 감지부와 백앤드가 분리된 구조인가요? : 원래 진원 선배가 제작한 센서와 웹 프론트엔드만 존재하던 독립적인 작품이였습니다. 거기에 제가 원래 작품의 구조를 유지하면서 추가적으로 여러 가지 기능을 구현하다보니 지금과 같은 구조를 가지게 되었습니다. 덕분에 복잡성은 조금 증가했지만 좀 더 여러 문제 상황에 대해 내성을 가지게된 이중 구조가 되었습니다.
 
 ## 개선할 점
 - 접근성과 편의성을 위한 더 다양한 종류의 프론트앤드를 구현해야 합니다. 기존 프론트앤드의 개선도요.
+
+## 소스코드
+- 백앤드, 디스코드 프론트엔드 및 REST API 소스 : https://github.com/Dictor/jinwonbot
+- 웹 프론트엔드 소스 : https://github.com/ibarami/ibarami.github.io
+- 센서 소스 : https://github.com/ibarami/IsBaramiOpen
+
+## 감사한 분
+작품과 디스코드 프론트앤드의 이름과 프로필사진, 하드웨어를 제공해주신 24기 주진원 선배님께 다시 한번 감사드립니다! 
