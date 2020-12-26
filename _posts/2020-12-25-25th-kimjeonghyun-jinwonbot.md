@@ -1,5 +1,5 @@
 ---
-title: 진원봇 : 바라미실 문 개폐 알림 봇
+title: 진원봇-바라미실 문 개폐 알림 봇
 author: Jeonghyun Kim (kimdictor@gmail.com)
 date: 2020-12-25 22:00:00 +0900
 categories: [Exhibition,2020년]
