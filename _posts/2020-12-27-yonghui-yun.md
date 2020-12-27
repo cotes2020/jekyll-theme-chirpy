@@ -1,5 +1,5 @@
 ---
-title: 전시회 글양식 
+title: Analog Circuit Design - Operational Amplifier
 author: Yong Hui, Yun
 date: 2020-12-24 13:30:00 +0900
 categories: [Exhibition,2020년]
