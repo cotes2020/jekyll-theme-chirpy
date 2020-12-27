@@ -12,7 +12,9 @@ $(function() {
   });
 
   $("#back-to-top").click(() => {
-    $("body,html").scrollTop(0);
+    $("body,html").animate({
+      scrollTop: 0
+    }, 800);
     return false;
   });
 });
