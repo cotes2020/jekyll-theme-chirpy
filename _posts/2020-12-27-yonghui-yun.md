@@ -3,7 +3,7 @@ title: 전시회 글양식
 author: Yong Hui, Yun
 date: 2020-12-24 13:30:00 +0900
 categories: [Exhibition,2020년]
-tags: [post,yonghui_yun,analog_circuit]
+tags: [post,yonghui-yun,analog-circuit]
 ---
 
 ------------------------------------------
