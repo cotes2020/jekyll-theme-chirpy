@@ -1,7 +1,6 @@
 ---
 name: Bug Report
 about: Create a report to help us improve
-labels: suspect
 ---
 
 <!-- NOTE: Please maintain all sections, otherwise the issue will be automatically closed :) -->
