@@ -1,15 +1,14 @@
 ---
 title: Analog Circuit Design - Operational Amplifier
 author: Yong Hui, Yun
-date: 2020-12-24 13:30:00 +0900
+date: 2020-12-27 13:30:00 +0900
 categories: [Exhibition,2020년]
 tags: [post,yonghui-yun,analog-circuit]
 ---
 
-------------------------------------------
-# Analog Circuit Design - Operational Amplifier
+------------------------------------------ 
 
-<img src="/assets/img/post/2020-12-24-yonghui_yun/all_circuit_layout.jpg">
+<img src="/assets/img/post/2020-12-27-yonghui-yun/all_circuit_layout.jpg">
 
 위 그림에는 하나의 OPAMP를 구동하기 위한 모든 회로가 들어가 있습니다.
 
