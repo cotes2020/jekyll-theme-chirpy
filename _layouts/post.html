@@ -111,7 +111,15 @@ layout: default
 
   </div> <!-- #post-wrapper -->
 
-  {% include panel.html %}
+  {% assign enable_toc = false %}
+
+  {% if site.toc and page.toc %}
+    {% if content contains '<h2' or content contains '<h3' %}
+      {% assign enable_toc = true %}
+    {% endif %}
+  {% endif %}
+
+  {% include panel.html toc=enable_toc %}
 
 </div> <!-- .row -->
 
