@@ -2,9 +2,9 @@ name: "Intercept bad issue/PRs"
 
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened]
   pull_request:
-    types: [opened]
+    types: [opened, reopened]
 
 jobs:
   autoclose:
