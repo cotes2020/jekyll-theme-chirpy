@@ -3,7 +3,7 @@ title:  OpenCV 기반의 자율주행 모형차
 author: Park Juntaek
 date: 2020-12-28 14:22:00 +0900
 categories: [Exhibition,2020년]
-tags: [post,parkjuntaek]     # TAG names should always be lowercase, 띄어쓰기도 금지
+tags: [post,parkjuntaek,opencv,image-processing,self-driving]     # TAG names should always be lowercase, 띄어쓰기도 금지
 ---
 
 작성자: 박준택
