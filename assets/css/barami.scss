@@ -20,14 +20,22 @@
   }
 }
 
-.barami-account {
+
+// 신현이 추가한 커스텀 패널들
+// - 후원 계좌 및 방명록
+.custom-panel {
   border: 2px solid $barami-color;
   border-radius: 10px;
   padding: 10px;
-  .barami-account-title {
+  margin: 10px 0;
+  .custom-panel-title {
     font-weight: bold;
   }
-  .barami-account-content {
+  .custom-panel-content {
     font-size: 90%;
+  }
+  a {
+    font-weight: bold;
+    color: $barami-color;
   }
 }
