@@ -1,4 +1,3 @@
-@@ -0,0 +1,50 @@
 ---
 title: Create Affordable-Covid19-Detecting-System
 author: WooYul Jung, Dongkun Ahn, Jeongeun Kim, Jinseo Heo
