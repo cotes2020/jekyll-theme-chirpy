@@ -149,7 +149,7 @@ div {
   }
 }
 
-[class^='language-']::before {
+div[class^='language-']::before {
   content: attr(lang);
   position: absolute;
   right: 1.8rem;
@@ -161,7 +161,7 @@ div {
 }
 
 @media (min-width: 768px) {
-  [class^='language-']::before {
+  div[class^='language-']::before {
     right: 3.1rem;
   }
 }
