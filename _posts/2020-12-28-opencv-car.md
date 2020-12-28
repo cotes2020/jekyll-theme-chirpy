@@ -36,7 +36,7 @@ Pi Cam을 이용하여 트랙을 촬영하고 Jetson Nano에서 영상처리를 
 ----
 <figure>
     <figcaption>Sliding Window – Step3</figcaption>
-    <img src="/assets/img/post/2020-12-28-opencv-car/img3.png">
+    <img src="/assets/img/post/2020-12-28-opencv-car/img4.png">
 </figure>
 ----
 
