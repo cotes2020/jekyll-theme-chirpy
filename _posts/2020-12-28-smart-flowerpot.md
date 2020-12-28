@@ -157,10 +157,9 @@ void loop() {
 ```
 
 # RGB모듈과 수분센서 시연 영상 링크
+<a href="https://www.youtube.com/watch?v=t-InZaT9B-g" target="_blank">https://www.youtube.com/watch?v=t-InZaT9B-g</a>
 
-https://www.youtube.com/watch?v=t-InZaT9B-g
-
-이에 KOCW의 IOT 서비스에 관한 참고자료 (http://kocw.xcache.kinxcdn.com/KOCW/edu/document/cuk/wiesunghong1206/12.pdf) 의 예제에 나와있는대로, DHT11 습도 센서와 Blynk 서비스를 이용해 현재의 결과를 만들어 낼 수 있었습니다.
+이에 KOCW의 IOT 서비스에 관한 참고자료 (<a href="http://kocw.xcache.kinxcdn.com/KOCW/edu/document/cuk/wiesunghong1206/12.pdf" target="_blank">http://kocw.xcache.kinxcdn.com/KOCW/edu/document/cuk/wiesunghong1206/12.pdf</a>) 의 예제에 나와있는대로, DHT11 습도 센서와 Blynk 서비스를 이용해 현재의 결과를 만들어 낼 수 있었습니다.
 
 <div style="width: 50%; margin: 0 auto;"> 
     <img src="/assets/img/post/2020-12-28-smart-flowerpot/img3.png">
