@@ -45,9 +45,9 @@ Maxwell equation이야 흔히 다들 알고 있는 대로
 
 아래는 3D로 이 식을 풀었을 떄의 결과 입니다.
 
-<img src="/assets/img/post/2020-12-28-FDTD-simulation/3D-1.JPG" width="70%">
+<img src="/assets/img/post/2020-12-28-FDTD-simulation/3D-1.png" width="70%">
 
-<img src="/assets/img/post/2020-12-28-FDTD-simulation/3D-2.JPG" width="70%">
+<img src="/assets/img/post/2020-12-28-FDTD-simulation/3D-2.png" width="70%">
 
 # 실행
 
@@ -57,9 +57,9 @@ Maxwell equation이야 흔히 다들 알고 있는 대로
 
 다음 아래 3개의 그래프는 이론값과 FDTD를 적용했을 때의 E wave를 비교한 것입니다. 빨강이 이론값, 파랑이 FDTD를 적용했을 때의 그래프 입니다. dt = 1.67*1e-12로 700번 돌렸고 각각 time step이 0, 100, 200, ... 700일 때의 그래프 입니다. PEC로 boundary를 설정해서 반사파가 오는 것을 확인 할 수 있습니다. 
 
-<img src="/assets/img/post/2020-12-28-FDTD-simulation/1Dresult-1.JPG" width="80%">
-<img src="/assets/img/post/2020-12-28-FDTD-simulation/1Dresult-2.JPG" width="80%">
-<img src="/assets/img/post/2020-12-28-FDTD-simulation/1Dresult-3.JPG" width="80%">
+<img src="/assets/img/post/2020-12-28-FDTD-simulation/1Dresult-1.png" width="80%">
+<img src="/assets/img/post/2020-12-28-FDTD-simulation/1Dresult-2.png" width="80%">
+<img src="/assets/img/post/2020-12-28-FDTD-simulation/1Dresult-3.png" width="80%">
 
 ### 3D FDTD
 
