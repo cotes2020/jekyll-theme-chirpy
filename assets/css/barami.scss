@@ -1,0 +1,11 @@
+
+{% include_relative _colors/barami-color.scss %}
+
+.barami-account {
+  border: 1px solid $barami-color;
+  .barami-account-title {
+  }
+  .barami-account-content {
+    text-align: center;
+  }
+}
