@@ -1,9 +1,9 @@
 ---
 title: Create Affordable-Covid19-Detecting-System
-author: WooYul Jung, Dongkun Ahn, Jeongeun Kim, Jinseo Heo
+author: WooYul Jung, Dongkun Ahn, Jeongeun Kim, Jinsuh Hur
 date: 2020-12-28 17:00:00 +0900
 categories: [Exhibition,2020년]
-tags: [post,jungwooyul,ahndongkun,kimjeongeun,heojinseo,opencv,flirlepton] 
+tags: [post,jungwooyul,ahndongkun,kimjeongeun,hurjinsuh,opencv,flirlepton] 
 ---
 
 ------------------------------------------
