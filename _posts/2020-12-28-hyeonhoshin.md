@@ -11,14 +11,20 @@ tags: [post,hyeonho-shin,deep-learning,computer-science]
 ## Abstract
 
 Welcome to brief description of DeepPoint VO, final assignment program designed by Hyeonho shin.
+
 Our submitted program is designed to know to how much accuracy can be improved using the latest VO algorithms for beating SOTA in Visual monocular odometry algorithm, BVO[1].
+
 To begin with, we implemented six algorithms and various parameters to compare. As a result, the key point algorithm was ‘LFNet’ with soft ratio-test.
+
 Without additional training about KITTI dataset, our VO beats SOTA in median. Also we found the counter-well-known facts about ratio test.
-Source code repository : <a href='https://github.com/hyeonhoshin/tanuki-pyslam'>
+
+Source code repository : <a href="https://github.com/hyeonhoshin/tanuki-pyslam">https://github.com/hyeonhoshin/tanuki-pyslam </a>
 
 ## Design
 We reused the vanilla visual odometry framework except for Deep Learning based key point extractor and descriptor.
+
 In detail, we used Brute Force feature matcher, because there is no elapsed time difference between FLANN matcher. Also, FLANN matcher has a danger to fall into local minima.
+
 For reducing outliers of matching results, we used ratio test and RANSAC algorithm. The ratio test is similar to Voting algorithm. If 2nd good matching pair’s distance is too different with 1st one, we neglect this result. The RANSAC eliminates outliers, by probabilistic finding.
 
 ## Experiment condition
@@ -40,26 +46,118 @@ For reducing outliers of matching results, we used ratio test and RANSAC algorit
 
 ## Result
 ### Accuracy comparison among Key point algorithms
-|  | ORB2 | DELF | R2D2 | D2NET | LFNET |
-|------|---|---|---|---|---|
-| Translation error(%) | 16.80 | 83.09 | 1.06 | 1.69 | 0.68 |
-| Rotation error(%) | 5.49 | 37.18 | 0.41 | 0.70 | 0.59 |
+<table>
+    <tr>
+        <td></td>
+        <td>ORB2</td>
+        <td>DELF</td>
+        <td>R2D2</td>
+        <td>D2NET</td>
+        <td>LFNET</td>
+    </tr>
+    <tr>
+        <td>Translation error(%)</td>
+        <td>16.80</td>
+        <td>83.09</td>
+        <td>1.06</td>
+        <td>1.69</td>
+        <td>0.68</td>
+    </tr>
+    <tr>
+        <td>Rotation error(%)</td>
+        <td>5.49</td>
+        <td>37.18</td>
+        <td>0.41</td>
+        <td>0.70</td>
+        <td>0.59</td>
+    </tr>
+</table>
 
 With above table 1, we can see the LFNET has the best performance among the famous SOTA key point extraction and description algorithms.
 
 ### Speed
-| The number of features | 100 | 250 | 500 | 1000 | 2000 | 3000 |
-|------|---|---|---|---|---|---|
-| Estimated FPS | 31.16 | 25.95 | 18.72 | 13.69 | 8.81 | 3.70 |
-| Translation error in Seq 07(%) | 14.43 | 5.644 | 5.479 | 5.07 | 4.96 | 3.99 |
+
+<table>
+    <tr>
+        <td>The number of features</td>
+        <td>100</td>
+        <td>250</td>
+        <td>500</td>
+        <td>1000</td>
+        <td>2000</td>
+        <td>3000</td>
+    </tr>
+    <tr>
+        <td>Estimated FPS</td>
+        <td>31.16</td>
+        <td>25.95</td>
+        <td>18.72</td>
+        <td>13.69</td>
+        <td>8.81</td>
+        <td>3.70</td>
+    </tr>
+    <tr>
+        <td>Translation error in Seq 07(%)</td>
+        <td>14.43</td>
+        <td>5.644</td>
+        <td>5.479</td>
+        <td>5.07</td>
+        <td>4.96</td>
+        <td>3.99</td>
+    </tr>
+</table>
+
 Because of the Python’s multi-thread limitation and IO bottleneck by using libraries(Torch-Caffe-NumPy), the total speed is under-estimated significantly. So we used the pre-made tool for estimating the FPS which considers feature key points extraction, description and matching. Because they take the most proportion of visual odometry, we thought it would be valid and reliable.
 We picked the key points 1000 only for analysis. Because it has more than 10FPS, which makes it possible to do real-time with KITTI’s dataset. The KITTI’s dataset has 10fps, and in the 1000 key points case the fps is higher than KITTI’s one.
 
 ### Accuracy
-| Trans err (%) | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | median |
-|------|---|---|---|---|---|---|---|---|---|---|---|
-| Ours | 1.15 | 3.72 | 1.90 | 0.86 | 1.32 | 0.68 | 5.07 | 1.75 | 1.39 | 0.85 | 1.32 |
-| BVO | 1.99 | 2.14 | 1.47 | 0.93 | 0.88 | 0.92 | 1.85 | 1.61 | 1.38 | 1.24 | 1.27 | 1.38 |
+<table>
+    <tr>
+        <td>Trans err (%)</td>
+        <td>00</td>
+        <td>01</td>
+        <td>02</td>
+        <td>03</td>
+        <td>04</td>
+        <td>05</td>
+        <td>06</td>
+        <td>07</td>
+        <td>08</td>
+        <td>09</td>
+        <td>10</td>
+        <td>median</td>
+    </tr>
+    <tr>
+        <td>Ours</td>
+        <td>1.15</td>
+        <td>3.72</td>
+        <td>1.90</td>
+        <td>0.86</td>
+        <td>1.32</td>
+        <td>0.68</td>
+        <td>5.07</td>
+        <td>1.75</td>
+        <td>1.39</td>
+        <td>0.85</td>
+        <td>1.32</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>BVO</td>
+        <td>1.99</td>
+        <td>2.14</td>
+        <td>1.47</td>
+        <td>0.93</td>
+        <td>0.88</td>
+        <td>0.92</td>
+        <td>1.85</td>
+        <td>1.61</td>
+        <td>1.38</td>
+        <td>1.24</td>
+        <td>1.27</td>
+        <td>1.38</td>
+    </tr>
+</table>
 
 As you can see above table, we can beat the SOTA BVO in median. In detail, we beated BVO in sequece 00, 03, 04, 06, 10. Specifically, in 06, we can outperform 3 times in the error. On the other hand, we get the bad result in 07, about 5 times.
 Our analysis is guessed that our algorithm is more fragile to speed variation of the car. The sequence 06 keep speed consistently, but luminance change is large. In contract, in sequence 07, speed change is more variant. It includes waiting, stopping, accelearating, slowing.
