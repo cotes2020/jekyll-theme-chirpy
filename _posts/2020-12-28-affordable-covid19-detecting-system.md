@@ -48,5 +48,4 @@ calibration 작업을 통해 FLIR LEPTON 2.5 적외선센서가 측정하는 체
 
 # 시연 링크
 
-https://www.youtube.com/watch?v=t-InZaT9B-g
-
+https://www.youtube.com/channel/UCV0Ju_Q0uCIOLAEAtkETbJg
