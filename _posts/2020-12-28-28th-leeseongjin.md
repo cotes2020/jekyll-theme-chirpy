@@ -21,8 +21,10 @@ pc용 리듬게임은 주로 키보드 조작 혹은 마우스의 클릭을 사�
 
 ##시연영상
 
-<source src="/assets/img/post/2020-12-25-28th-leeseongjin/vedio1.mp4" controls width="90%">
-
+<video controls width="90%">
+    <source src="/assets/img/post/2020-12-25-28th-leeseongjin/vedio1.mp4">
+    Sorry, your browser doesn't support embedded videos.
+</video> 
 
 ##개선할점
 
