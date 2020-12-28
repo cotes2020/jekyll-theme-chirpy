@@ -1,0 +1,33 @@
+---
+# Style for Barami
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2019 Cotes Chung
+# MIT License
+---
+
+{% include_relative _colors/barami-color.scss %}
+
+.barami-account {
+  border: 2px solid $barami-color;
+  border-radius: 10px;
+  padding: 10px;
+  .barami-account-title {
+    font-weight: bold;
+  }
+  .barami-account-content {
+    font-size: 90%;
+  }
+}
+
+.barami-account {
+  border: 2px solid $barami-color;
+  border-radius: 10px;
+  padding: 10px;
+  .barami-account-title {
+    font-weight: bold;
+  }
+  .barami-account-content {
+    font-size: 90%;
+  }
+}
