@@ -49,9 +49,9 @@ layout: page
 {% for post in posts %}
 
   <div class="post-preview">
-    <a href="{{ post.url | relative_url }}">
-      <h1>{{ post.title }}</h1>
-    </a>
+    <h1>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h1>
 
     <div class="post-content">
       <p>
