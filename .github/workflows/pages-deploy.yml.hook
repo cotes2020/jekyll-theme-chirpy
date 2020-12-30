@@ -44,20 +44,14 @@ jobs:
         run: |
           baseurl="$(grep '^baseurl:' _config.yml | sed "s/.*: *//;s/['\"]//g;s/#.*//")"
           if [[ -n $baseurl ]]; then
-            echo "SPEC_TEST=_site$baseurl" >> $GITHUB_ENV
+            echo "BASE_URL=$baseurl" >> $GITHUB_ENV
           fi
 
       - name: Build Site
         env:
           JEKYLL_ENV: production
         run: |
-          bundle exec jekyll b
-
-          if [[ -n $SPEC_TEST ]]; then
-            # build in a subdir (_site/baseurl) so it will pass the
-            # htmlproofer test
-            bundle exec jekyll b -b "" -d "$SPEC_TEST"
-          fi
+          bundle exec jekyll b -d "_site$BASE_URL"
 
       - name: Test Site
         run: |
@@ -65,4 +59,10 @@ jobs:
 
       - name: Deploy
         run: |
+          if [[ -n $BASE_URL ]]; then
+            mv _site$BASE_URL _site-rename
+            rm -rf _site
+            mv _site-rename _site
+          fi
+
           bash tools/deploy.sh
