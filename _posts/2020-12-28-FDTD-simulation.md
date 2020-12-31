@@ -14,7 +14,7 @@ tags: [post,hwanghyeonjo,fdtd]     # TAG names should always be lowercase, 띄�
 
 # 이론
 
-Finite Disctete Time Domain의 약자입니다.
+Finite Difference Time Domain의 약자입니다.
 
 E field와 H field를 컴퓨터 시뮬레이션 하는데 쓰이는 가장 기본적인 model로 orthogonal grid에 한정되어 있다는 단점이 있습니다. 또 High Q System에서는 시뮬레이션 시간이 오래 걸리기도 합니다.
 
@@ -54,7 +54,10 @@ Maxwell equation이야 흔히 다들 알고 있는 대로
 
 # 실행
 
+1D코드와 3D코드 모두 제 깃헙에 있습니다.
+
 ### 1D FDTD
+
 
 코드 중간에 to make the plot move를 주석을 빼고 74~80번줄을 주석처리 하면 꿈틀 거리는 그래프를 볼 수 있습니다.(멋 있 습 니 다)
 
