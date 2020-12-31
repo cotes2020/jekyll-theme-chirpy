@@ -671,27 +671,19 @@ kbd {
   margin: 0 0.3rem;
 }
 
-sup {
-  z-index: 1;
-  &:target {
-    @extend %anchor;
-    z-index: 0;
-  }
-}
-
 .footnotes > ol {
   padding-left: 2rem;
   margin-top: 0.5rem;
   > li {
-    + li {
-      margin-top: 0.3rem;
+    &:not(:last-child) {
+      margin-bottom: 0.3rem;
     }
     > p {
       margin-left: 0.25em;
       margin-top: 0;
       margin-bottom: 0;
     }
-    &:target > p {
+    &:target:not([scroll-focus]), &[scroll-focus=true] > p { // [scroll-focus] added by `smooth-scroll.js`
       background-color: var(--footnote-target-bg);
       width: fit-content;
       -webkit-transition: background-color 1.5s ease-in-out;
@@ -703,14 +695,14 @@ sup {
 
 .footnote {
   @at-root a#{&} {
-    margin: 0 0.2em;
+    @include ml-mr(1px);
+    @include pl-pr(2px);
     border-bottom-style: none !important;
     -webkit-transition: background-color 1.5s ease-in-out; /* Safari prior 6.1 */
     transition: background-color 1.5s ease-in-out;
   }
-  @at-root sup:target > a#{&} {
+  @at-root sup:target:not([scroll-focus]), sup[scroll-focus=true] > a#{&} { // [scroll-focus] added by `smooth-scroll.js`
     background-color: var(--footnote-target-bg);
-    padding: 0 2px;
   }
 }
 
@@ -1204,13 +1196,9 @@ img {
     justify-content: center!important;
   }
 
-  sup:target {
-    padding-top: 3.4rem;
-  }
-
   .footnotes ol > li {
     padding-top: 3.5rem;
-    margin-top: -3.2rem !important;
+    margin-top: -3.2rem;
     &:first-child {
       margin-top: -3.5rem;
     }
