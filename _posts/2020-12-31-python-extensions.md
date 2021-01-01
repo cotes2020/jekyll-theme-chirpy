@@ -17,6 +17,8 @@ mermaid: false
 - [django-debug-toolbar](https://github.com/jazzband/django-debug-toolbar)
 - [django-faker](https://github.com/joke2k/django-faker)
 - [django-health-check](https://github.com/KristianOellegaard/django-health-check)
+- [django-prometheus](https://github.com/korfuri/django-prometheus)
 - [django-rest-framework](https://github.com/encode/django-rest-framework)
 - [django-stubs](https://github.com/typeddjango/django-stubs)
 - [pylint-django](https://github.com/PyCQA/pylint-django)
+- [pytest-django](https://github.com/pytest-dev/pytest-django)
