@@ -8,7 +8,7 @@ math: false
 mermaid: false
 ---
 
-### Django extenions
+## Django extenions
 
 - [django-axes](https://github.com/jazzband/django-axes)
 - [django-channels](https://github.com/django/channels)
