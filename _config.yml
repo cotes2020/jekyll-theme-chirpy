@@ -9,7 +9,7 @@
 # --------------------------
 title: Benton Snyder                          # the main title
 
-tagline: Software Engineer, not too much, mostly Python.  # it will display as the sub-title
+tagline: Engineer, not too much, mostly Python.  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A technology blog with a focus 
@@ -37,7 +37,7 @@ social:
     - https://github.com/bensnyde       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    - https://www.linkedin.com/pub/benton-snyder/37/491/5a1
+    # - https://www.linkedin.com/pub/benton-snyder/37/491/5a1
 
 google_site_verification: google_meta_tag_verification # change to your verification string
 # --------------------------
