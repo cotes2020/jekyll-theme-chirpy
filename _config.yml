@@ -7,38 +7,36 @@
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: Chirpy                          # the main title
+title: Benton Snyder                          # the main title
 
-tagline: A text-focused Jekyll theme.  # it will display as the sub-title
+tagline: Technologist.  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  Technology blog.
 
 # fill in the base hostname & protocol for your site, e.g., 'https://username.github.io'
 url: 'https://bensnyde.github.io'
 
-author: your_full_name                  # change to your full name
+author: Benton Snyder                  # change to your full name
 
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
+avatar: /assets/img/sample/avatar.png   # support internet resources
 
 github:
   username: bensnyde             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: bensnyde            # change to your twitter username
 
 social:
-  name: your_full_name                  # it will shows as the copyright owner in Footer
-  email: example@doamin.com             # change to your email address
+  name: Benton Snyder                  # it will shows as the copyright owner in Footer
+  email: benton@bensnyde.me             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/bensnyde      # change to your twitter homepage
+    - https://github.com/bensnyde       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+     - https://www.linkedin.com/pub/benton-snyder/37/491/5a1
 
 google_site_verification: google_meta_tag_verification # change to your verification string
 # --------------------------
@@ -52,7 +50,7 @@ baseurl: '/bensnyde.github.io'
 timezone: America/Chicago
 
 google_analytics:
-  id: ''          # Fill with your Google Analytics ID
+  id: 'UA-43423047-5'          # Fill with your Google Analytics ID
   pv:
     # The Google Analytics pageviews switch.
     # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
