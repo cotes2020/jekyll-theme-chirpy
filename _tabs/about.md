@@ -11,4 +11,5 @@ order: 4
 ---
 
 
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+> 안녕하세요! 👋 \\
+> 공부한 내용을 정리해볼려고 합니다. 소개는 [Medium](https://grohong.medium.com/)에서 확인해 볼 수 있습니다. 👍
