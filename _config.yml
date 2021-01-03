@@ -174,31 +174,16 @@ compress_html:
   profile: false
   blanklines: false
   ignore:
-    envs: []
-
+    envs: [development]
+    
 exclude:
-  - vendor        # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
+  - vendor
   - Gemfile.lock
   - Gemfile
   - tools
   - docs
   - README.md
   - LICENSE
-
-sitemap_exclude:  # Sitemap will exclude the following items.
-  fuzzy:
-    - /assets/
-  accurate:
-    - /norobots/
-    - /tabs/
-    - /categories/
-    - /tags/
-    - /posts/
-    - 404.html
-    - feed.xml
-    - sitemap.xml
-    - robots.txt
-    - redirects.json
 
 # see: <https://github.com/jekyll/jekyll-archives/blob/master/docs/configuration.md>
 jekyll-archives:  
