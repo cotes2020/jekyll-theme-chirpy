@@ -16,8 +16,9 @@
   <title>
   {%- unless page.layout == "home" -%}
     {% t page.title %}
+    {{- " | " -}}
   {%- endunless -%}
-    {{ site.title | prepend: ' | ' }}
+    {{ site.title }}
   </title>
 
   {% include favicons.html %}
