@@ -1,6 +1,6 @@
 ---
 title: 블로그 
-author: Cotes Chung
+author: fast01
 date: 2020-11-24 14:00:00 +0800
 categories: []
 tags: []
