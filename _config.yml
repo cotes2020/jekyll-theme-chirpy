@@ -116,7 +116,7 @@ defaults:
       toc: true         # Display TOC column in posts.
       breadcrumb:
         -
-          label: Posts
+          label: pages.posts
           url: /
   -
     scope:
@@ -129,17 +129,17 @@ defaults:
     values:
       breadcrumb:
         -
-          label: Posts
+          label: pages.posts
   -
     scope:
       path: tags
     values:
       breadcrumb:
         -
-          label: Home
+          label: pages.home
           url: /
         -
-          label: Tags
+          label: pages.tags
           url: /tabs/tags/
   -
     scope:
@@ -147,10 +147,10 @@ defaults:
     values:
       breadcrumb:
         -
-          label: Home
+          label: pages.home
           url: /
         -
-          label: Categories
+          label: pages.categories
           url: /tabs/categories/
   -
     scope:
@@ -161,7 +161,7 @@ defaults:
       dynamic_title: true    # Hide title in mobile screens.
       breadcrumb:
         -
-          label: Home
+          label: pages.home
           url: /
 
 sass:

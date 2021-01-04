@@ -1,0 +1,18 @@
+pages:
+  about: "A propos"
+  archives: "Archives"
+  categories: "Categories"
+  home: "Accueil"
+  posts: "Posts"
+  tags: "Tags"
+
+PAGES:
+  ABOUT: "A PROPOS"
+  ARCHIVES: "ARCHIVES"
+  CATEGORIES: "CATEGORIES"
+  HOME: "ACCUEIL"
+  TAGS: "TAGS"
+
+search:
+  cancel: "Cancel"
+  hint: "Rechercher"

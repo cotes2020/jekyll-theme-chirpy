@@ -12,7 +12,7 @@
         {% if item.url %}
         <span>
           <a href="{{ site.baseurl }}{{ item.url | remove: '.html'}}">
-            {{ item.label }}
+            {% t item.label %}
           </a>
         </span>
         {% else %}
@@ -21,7 +21,7 @@
       {% endfor %}
 
       {% unless page.layout == "home" %}
-        <span>{{ page.title }}</span>
+        <span>{% t page.title %}</span>
       {% endunless %}
 
     </span><!-- endof #breadcrumb -->
@@ -32,7 +32,7 @@
       {% if page.layout == 'home' %}
         {{- site.title -}}
       {% elsif page.dynamic_title %}
-        {{- page.title -}}
+        {% t page.title %}
       {% else %}
         {{- page.layout | capitalize -}}
       {% endif %}
@@ -42,10 +42,10 @@
     <span id="search-wrapper" class="align-items-center">
       <i class="fas fa-search fa-fw"></i>
       <input class="form-control" id="search-input" type="search"
-        aria-label="search" placeholder="{{ site.data.label.search_hint }}...">
+        aria-label="search" placeholder="{% t search.hint %}...">
       <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i>
     </span>
-    <span id="search-cancel" >Cancel</span>
+    <span id="search-cancel" >{% t search.cancel %}</span>
   </div>
 
 </div>
