@@ -34,7 +34,7 @@ social:
   email: contact@dysnomia-studio        # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://dysnomia-studio                 # change to your twitter homepage
+    - https://dysnomia.studio                 # change to your twitter homepage
     - https://twitter.com/DysnomiaStudio      # change to your twitter homepage
     - https://github.com/Dysnomia-Studio      # change to your github homepage
     # Uncomment below to add more social links
@@ -197,3 +197,9 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+plugins:
+  - jekyll-multiple-languages-plugin
+
+languages: ["en", "fr"]
+exclude_from_localizations: ["javascript", "images", "css"]
