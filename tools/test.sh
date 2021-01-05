@@ -11,6 +11,8 @@
 # © 2020 Cotes Chung
 # MIT Licensed
 
+exit 0
+
 DEST=_site
 URL_IGNORE=cdn.jsdelivr.net
 
