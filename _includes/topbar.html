@@ -20,9 +20,13 @@
         {% endif %}
       {% endfor %}
 
-      {% unless page.layout == "home" %}
+      {% unless page.layout == "home" or page.layout == "post" %}
         <span>{% t page.title %}</span>
       {% endunless %}
+
+      {% if page.layout == "post" %}
+        <span>{{ page.title }}</span>
+      {% endif %}
 
     </span><!-- endof #breadcrumb -->
 

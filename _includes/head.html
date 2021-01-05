@@ -15,7 +15,12 @@
 
   <title>
   {%- unless page.layout == "home" -%}
-    {% t page.title %}
+    {% if page.layout == "post" %}
+      {{ page.title }}
+    {% else %}
+      {% t page.title %}
+    {% endif %}
+
     {{- " | " -}}
   {%- endunless -%}
     {{ site.title }}
