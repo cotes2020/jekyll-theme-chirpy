@@ -16,3 +16,19 @@ PAGES:
 search:
   cancel: "Cancel"
   hint: "Search"
+
+label:
+  panel:
+    lastmod: Recent Update
+    trending_tags: Trending Tags
+    toc: Contents
+
+  post:
+    relate_posts: Further Reading
+    button:
+      next: Newer
+      previous: Older
+
+  search_hint: Search   # text show on search bar
+
+  pin_prompt: Pinned   # pinned prompt
