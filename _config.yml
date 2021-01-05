@@ -200,3 +200,4 @@ plugins:
 
 languages: ["en", "fr"]
 exclude_from_localizations: ["javascript", "images", "css"]
+theme: jekyll-theme-midnight
