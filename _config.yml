@@ -14,7 +14,7 @@ tagline:   # it will display as the sub-title
 description: # used by seo meta and the atom feed
 
 # fill in the base hostname & protocol for your site, e.g., 'https://username.github.io'
-url: 'https://dysnomia-studio.github.io'
+url: 'https://blog.dysnomia.studio'
 
 author: Axel "Elanis" Soupé             # change to your full name
 
