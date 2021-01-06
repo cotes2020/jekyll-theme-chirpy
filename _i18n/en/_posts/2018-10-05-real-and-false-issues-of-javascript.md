@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Real and false issues of javascript"
+tags: web quality javascript
+categories: web javascript
 ---
 
 Hello !

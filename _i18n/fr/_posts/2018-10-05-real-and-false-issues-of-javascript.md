@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "(Faux-)problèmes du javascript"
+tags: web quality javascript
+categories: web javascript
 ---
 
 Bonjour à tous !  
