@@ -52,13 +52,17 @@ layout: default
         {%- endcapture -%}
 
         {% if page.image %}
-          <img src="{{ img_placehodler }}" data-src="{{ page.image }}" class="preview-img">
+          <img src="{{ img_placehodler }}" data-src="{{ site.assets_cdn }}{{ page.image }}"
+            class="preview-img" alt="Preview Image">
         {% endif %}
 
         <!-- Using lozad. See: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
         {% if content contains '<img src=' %}
-          {% assign replacement = '<img src="' | append: img_placehodler | append: '" data-src=' %}
-          {{ content | replace: '<img src=', replacement }}
+          {% assign replacement = '<img src="'
+            | append: img_placehodler
+            | append: '" data-src="'
+            | append: site.assets_cdn %}
+          {{ content | replace: '<img src="', replacement }}
         {% else %}
           {{ content }}
         {% endif %}
