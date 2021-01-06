@@ -185,6 +185,12 @@ $sidebar-display: "sidebar-display";
 
   } // ul
 
+  @media (min-width: 1650px) {
+    .sidebar-bottom-language {
+      line-height: 3.5em;
+    }
+  }
+
   .sidebar-bottom {
     font-size: 1.2rem;
     margin-bottom: 2.1rem;

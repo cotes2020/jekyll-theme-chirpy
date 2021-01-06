@@ -49,13 +49,14 @@
   </ul> <!-- ul.nav.flex-column -->
 
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center">
+    {% capture link1 %}{{ site.baseurl_root }}{{ page.url}}{% endcapture %}
     {% if site.lang == "fr" %}
       {% capture link1 %}{{ site.baseurl_root }}{{ page.url}}{% endcapture %}
-      <a href="{{ link1 }}" >EN</a>
+      <a href="{{ link1 }}" class="sidebar-bottom-language" aria-label="language">EN</a>
 
     {% elsif site.lang == "en" %}
       {% capture link2 %}{{ site.baseurl_root }}/fr{{ page.url  }}{% endcapture %}
-      <a href="{{ link2 }}" >FR</a>
+      <a href="{{ link2 }}" class="sidebar-bottom-language" aria-label="language">FR</a>
     {% endif %}
 
     {% for entry in site.data.contact %}
