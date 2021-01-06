@@ -42,8 +42,15 @@ layout: default
           <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span>
           {% endif %}
 
-        </div>
+          {% if site.lang == "fr" %}
+            {% capture link1 %}{{ site.baseurl_root }}{{ page.url}}{% endcapture %}
+            <span><a href="{{ link1 }}" >English Version</a></span>
 
+          {% elsif site.lang == "en" %}
+            {% capture link2 %}{{ site.baseurl_root }}/fr{{ page.url  }}{% endcapture %}
+            <span><a href="{{ link2 }}" >Version Française</a></span>
+          {% endif %}
+        </div>
       </div> <!-- .post-meta -->
 
       <div class="post-content">
