@@ -81,8 +81,10 @@ disqus:
 #
 theme_mode:   # [light|dark]
 
-# The CDN endpoint for website assets. Fill it if you have one.
-assets_cdn: ''
+# The CDN endpoint for images.
+# After filling in, the image resource URL of posts and site avatar
+# will automatically add the CDN endpoint prefix.
+img_cdn: ''
 
 # boolean type, the global switch for ToC in posts.
 toc: true
