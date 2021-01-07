@@ -21,8 +21,6 @@ url: ''
 
 author: your_full_name                  # change to your full name
 
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
-
 github:
   username: github_username             # change to your github username
 
@@ -84,7 +82,12 @@ theme_mode:   # [light|dark]
 # The CDN endpoint for images.
 # After filling in, the image resource URL of posts and site avatar
 # will automatically add the CDN endpoint prefix.
-img_cdn: ''
+#
+# Note: MUST remove it or replace with your CDN
+img_cdn: 'https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images'
+
+avatar: /commons/avatar.jpg   # the avatar on sidebar, support local or internet resources
+
 
 # boolean type, the global switch for ToC in posts.
 toc: true

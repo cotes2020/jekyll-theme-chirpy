@@ -11,11 +11,11 @@ In [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/), the image fi
 
 With a square image (PNG, JPG or GIF) in hand, open the site [*Favicon & App Icon Generator*](https://www.favicon-generator.org/) and upload your original image.
 
-![upload-image](/img/posts/20190811/upload-image.png)
+![upload-image](/posts/20190811/upload-image.png)
 
 Click button <kbd>Create Favicon</kbd> and wait a moment for the website to generate the icons of various sizes automatically.
 
-![download-icons](/img/posts/20190811/download-icons.png){: width="600"}
+![download-icons](/posts/20190811/download-icons.png){: width="600"}
 
 Download the generated package, unzip and delete the following two from the extracted files:
 

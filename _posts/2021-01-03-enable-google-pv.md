@@ -16,13 +16,9 @@ This post is to enable Page Views on the [**Chirpy**][chirpy-homepage] theme bas
 First, you need to setup your account on Google analytics. While your create your account, you must create your first **Property** as well.
 
 1. Head to <https://analytics.google.com/> and click on **Start Measuring**
-
 2. Enter your desired *Account Name* and choose the desired checkboxes
-
 3. Enter your desired *Property Name*. This is the name of the tracker project that appears on your Google Analytics dashboard
-
 4. Enter the required information *About your business*
-
 5. Hit *Create* and accept any license popup to setup your Google Analytics account and create your property
 
 ### Create Data Stream
@@ -30,18 +26,14 @@ First, you need to setup your account on Google analytics. While your create you
 With your property created, you now need to set up Data Stream to track your blog traffic. After you signup, the prompt should automatically take you to creating your first **Data Stream**. If not, follow these steps:
 
 1. Go to **Admin** on the left column
-
 2. Select the desired property from the drop down on the second column
-
 3. Click on **Data Streams**
-
 4. Add a stream and click on **Web**
-
 5. Enter your blog's URL
 
 It should look like this:
 
-![google-analytics-data-stream](/img/posts/20210103/01-google-analytics-data-stream.png)
+![google-analytics-data-stream](/posts/20210103/01-google-analytics-data-stream.png)
 
 Now, click on the new data stream and grab the **Measurement ID**. It should look something like `G-V6XXXXXXXX`. Copy this to your `_config.yml` file
 
@@ -59,7 +51,7 @@ google_analytics:
 
 When you push these changes to your blog, you should start seeing the traffic on your Google Analytics. Play around with Google Analytics dashboard to get familiar with the options available as it takes like 5 mins to pickup your changes. You should now be able to monitor your traffic in realtime.
 
-![google-analytics-realtime](/img/posts/20210103/02-google-analytics-realtime.png)
+![google-analytics-realtime](/posts/20210103/02-google-analytics-realtime.png)
 
 ## Setup Page Views
 
@@ -193,7 +185,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
 If everything went good, you'll get this screen:
 
-![superProxy-deployed](/img/posts/20210103/03-superProxy-deployed.png)
+![superProxy-deployed](/posts/20210103/03-superProxy-deployed.png)
 
 ### Create Google Analytics Query
 
@@ -219,14 +211,14 @@ After <kbd>Run Query</kbd>, copy the generated contents of **API Query URI** at 
 
 After the query is saved on GAE, a **Public Endpoint** (public access address) will be generated, and we will get the query result in JSON format when accessing it. Finally, click <kbd>Enable Endpoint</kbd> in **Public Request Endpoint** to make the query effective, and click <kbd>Start Scheduling</kbd> in **Scheduling** to start the scheduled task.
 
-![superproxy-query](/img/posts/20210103/04-superproxy-query.png)
+![superproxy-query](/posts/20210103/04-superproxy-query.png)
 
 
 ## Configure Chirpy to Display Page View
 
 Once all the hard part is done, it is very easy to enable the Page View on Chirpy theme. Your superProxy dashboard should look something like below and you can grab the required values.
 
-![superproxy-dashboard](/img/posts/20210103/05-superproxy-dashboard.png)
+![superproxy-dashboard](/posts/20210103/05-superproxy-dashboard.png)
 
 Update the `_config.yml` file of [**Chirpy**][chirpy-homepage] project with the values from your dashboard, to look similar to the following:
 
