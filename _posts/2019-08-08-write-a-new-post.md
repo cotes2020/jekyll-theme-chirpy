@@ -135,6 +135,28 @@ By default, the image is centered, but you can specify the position by using one
 
 > **Limitation**: Once you specify the position of an image, it is forbidden to add the image caption.
 
+### CDN Resources
+
+If you host the images on CDN, you can save the time of repeatedly writing the CDN address.
+
+Therefore, fill in the CDN address in the variable `img_cdn` of `_config.yml` file:
+
+```yaml
+img_cdn: https://cdn.com
+```
+
+When using images, omit the CDN address:
+
+```markdown
+![The flower](/img/flower.png)
+```
+
+The parsing result will automatically add the CDN prefix before the image path:
+
+```html
+<img src="https://cdn.com/img/flower.png" alt="The flower">
+```
+
 ## Pinned Posts
 
 You can pin one or more posts to the top of the home page, and the fixed posts are sorted in reverse order according to their release date. Enable by:
