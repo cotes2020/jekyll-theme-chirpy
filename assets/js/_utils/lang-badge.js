@@ -2,11 +2,11 @@
  *  Add language indicator to code snippets
  */
 
-$(function() {
+$(function () {
   const prefix = "language-";
   const regex = new RegExp(`^${prefix}([a-z])+$`);
 
-  $(`div[class^=${prefix}`).each(function() {
+  $(`div[class^=${prefix}`).each(function () {
     let clzsses = $(this).attr("class").split(" ");
 
     clzsses.forEach((clzss) => {
@@ -15,6 +15,5 @@ $(function() {
         $(this).attr("lang", `${lang}`);
       }
     });
-
   });
 });

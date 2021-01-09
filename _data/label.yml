@@ -15,6 +15,6 @@ post:
     next: Newer
     previous: Older
 
-search_hint: Search   # text show on search bar
+search_hint: Search # text show on search bar
 
-pin_prompt: Pinned   # pinned prompt
+pin_prompt: Pinned # pinned prompt

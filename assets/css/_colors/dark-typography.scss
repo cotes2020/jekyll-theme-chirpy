@@ -96,11 +96,11 @@
   }
 
   /* posts' toc, override BS */
-  nav[data-toggle=toc] .nav-link.active,
-  nav[data-toggle=toc] .nav-link.active:focus,
-  nav[data-toggle=toc] .nav-link.active:hover,
-  nav[data-toggle=toc] .nav > li > a:focus,
-  nav[data-toggle=toc] .nav > li > a:hover {
+  nav[data-toggle="toc"] .nav-link.active,
+  nav[data-toggle="toc"] .nav-link.active:focus,
+  nav[data-toggle="toc"] .nav-link.active:hover,
+  nav[data-toggle="toc"] .nav > li > a:focus,
+  nav[data-toggle="toc"] .nav > li > a:hover {
     color: var(--toc-highlight) !important;
     border-left-color: var(--toc-highlight) !important;
   }
@@ -133,7 +133,7 @@
       rgb(39, 39, 45),
       rgb(39, 39, 45),
       rgb(39, 39, 45),
-      rgb(26, 26, 30));
+      rgb(26, 26, 30)
+    );
   }
-
 } // dark-scheme

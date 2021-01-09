@@ -7,10 +7,8 @@
  * MIT Licensed
  */
 
-$(function() {
-
-  var MARK="img-hyperlink";
+$(function () {
+  var MARK = "img-hyperlink";
 
   $("a:has(img)").addClass(MARK);
-  
 });

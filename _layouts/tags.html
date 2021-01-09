@@ -1,6 +1,5 @@
 ---
 layout: page
-
 # All the Tags of posts.
 # v2.0
 # https://github.com/cotes2020/jekyll-theme-chirpy
@@ -9,18 +8,15 @@ layout: page
 ---
 
 <div id="tags" class="d-flex flex-wrap ml-xl-2 mr-xl-2">
-
-  {% assign tags = "" | split: "" %}
-  {% for t in site.tags %}
-    {% assign tags = tags | push: t[0] %}
+  {% assign tags = "" | split: "" %} {% for t in site.tags %} {% assign tags =
+  tags | push: t[0] %} {% endfor %} {% assign sorted_tags = tags | sort_natural
+  %} {% for t in sorted_tags %}
+  <div>
+    <a
+      class="tag"
+      href="{{ site.baseurl }}/tags/{{ t | slugify | url_encode }}/"
+      >{{ t }}<span class="text-muted">{{ site.tags[t].size }}</span></a
+    >
+  </div>
   {% endfor %}
-
-  {% assign sorted_tags = tags | sort_natural %}
-
-  {% for t in sorted_tags %}
-    <div>
-      <a class="tag" href="{{ site.baseurl }}/tags/{{ t | slugify | url_encode }}/">{{ t }}<span class="text-muted">{{ site.tags[t].size }}</span></a>
-    </div>
-  {% endfor %}
-
 </div>

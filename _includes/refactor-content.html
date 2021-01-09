@@ -35,28 +35,5 @@
   %}
 {% endif %}
 
-<!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-{% if _content contains '<img src="' %}
-  {% assign lozad = true %}
-  {% assign img_placehodler
-    = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
-
-  {% assign replacement = '<img src="'
-    | append: img_placehodler
-    | append: '" data-src="' %}
-
-  {% if site.img_cdn %}
-    {% assign replacement = replacement | append: site.img_cdn | append: '/' %}
-  {% else %}
-    {% assign replacement = replacement | append: site.baseurl | append: '/' %}
-  {% endif %}
-
-  {% assign _content = _content | replace: '<img src="/', replacement %}
-{% endif %}
-
 <!-- return -->
 {{ _content }}
-
-{% if lozad %}
-  {% include lozad.html %}
-{% endif %}

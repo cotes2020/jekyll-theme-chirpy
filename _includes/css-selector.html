@@ -6,21 +6,21 @@
   MIT Licensed
 -->
 
+{% if page.layout == 'category' or page.layout == 'tag' %} {% assign style =
+'category-tag' %} {% else %} {% assign style = page.layout %} {% endif %} {%
+assign src = style | prepend: '/assets/css/' | append: '.css' | relative_url %}
 
-{% if page.layout == 'category' or page.layout == 'tag' %}
-  {% assign style = 'category-tag' %}
-{% else %}
-  {% assign style =  page.layout %}
-{% endif %}
+<link rel="preload" href="{{ src }}" as="style" />
+<link rel="stylesheet" href="{{ src }}" />
 
-{% assign src = style | prepend: '/assets/css/' | append: '.css' | relative_url %}
-
-<link rel="preload" href="{{ src }}" as="style">
-<link rel="stylesheet" href="{{ src }}">
-
-{% if page.layout == 'post' %}
-  {% if site.toc and page.toc %}
-    <link rel="preload" as="style" href="{{ '/assets/css/lib/bootstrap-toc.min.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/lib/bootstrap-toc.min.css' | relative_url }}" />
-  {% endif %}
-{% endif %}
+{% if page.layout == 'post' %} {% if site.toc and page.toc %}
+<link
+  rel="preload"
+  as="style"
+  href="{{ '/assets/css/lib/bootstrap-toc.min.css' | relative_url }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ '/assets/css/lib/bootstrap-toc.min.css' | relative_url }}"
+/>
+{% endif %} {% endif %}

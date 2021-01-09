@@ -6,9 +6,8 @@
  * MIT License
  */
 
-$(function() {
-
-  var sidebarUtil = (function() {
+$(function () {
+  var sidebarUtil = (function () {
     const ATTR_DISPLAY = "sidebar-display";
     var isExpanded = false;
     var body = $("body");
@@ -22,13 +21,11 @@ $(function() {
         }
 
         isExpanded = !isExpanded;
-      }
+      },
     };
-
-  }());
+  })();
 
   $("#sidebar-trigger").click(sidebarUtil.toggle);
 
   $("#mask").click(sidebarUtil.toggle);
-
 });

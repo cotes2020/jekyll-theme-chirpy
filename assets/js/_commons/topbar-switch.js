@@ -6,8 +6,7 @@
  * MIT License
  */
 
-$(function() {
-
+$(function () {
   var didScroll;
   var lastScrollTop = 0;
   var delta = 5;
@@ -36,7 +35,6 @@ $(function() {
       if ($("#search-input").is(":focus")) {
         $("#search-input").blur(); /* remove focus */
       }
-
     } else {
       /* Scroll Up */
       if (st + $(window).height() < $(document).height()) {
@@ -53,17 +51,17 @@ $(function() {
     lastScrollTop = st;
   }
 
-  $(window).scroll(function(event) {
-    if ($("#topbar-title").is(":hidden")) { /* Not in small screens */
+  $(window).scroll(function (event) {
+    if ($("#topbar-title").is(":hidden")) {
+      /* Not in small screens */
       didScroll = true;
     }
   });
 
-  setInterval(function() {
+  setInterval(function () {
     if (didScroll) {
       hasScrolled();
       didScroll = false;
     }
   }, 250);
-
 });

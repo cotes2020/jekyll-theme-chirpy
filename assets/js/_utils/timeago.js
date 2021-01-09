@@ -6,8 +6,7 @@
  * MIT Licensed
  */
 
-$(function() {
-
+$(function () {
   var toRefresh = $(".timeago").length;
 
   var intervalId = void 0;
@@ -21,7 +20,7 @@ $(function() {
       return past.toLocaleString("en-US", {
         year: "numeric",
         month: "short",
-        day: "numeric"
+        day: "numeric",
       });
     }
 
@@ -29,7 +28,7 @@ $(function() {
       toRefresh -= 1;
       return past.toLocaleString("en-US", {
         month: "short",
-        day: "numeric"
+        day: "numeric",
       });
     }
 
@@ -55,7 +54,7 @@ $(function() {
   }
 
   function updateTimeago() {
-    $(".timeago").each(function() {
+    $(".timeago").each(function () {
       if ($(this).children("i").length > 0) {
         var basic = $(this).text();
         var isLastmod = $(this).hasClass("lastmod");
@@ -76,8 +75,8 @@ $(function() {
     return;
   }
 
-  if (updateTimeago() > 0) { /* run immediately */
+  if (updateTimeago() > 0) {
+    /* run immediately */
     intervalId = setInterval(updateTimeago, 60000); /* run every minute */
   }
-
 });

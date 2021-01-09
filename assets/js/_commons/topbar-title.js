@@ -4,13 +4,14 @@
  * https://github.com/cotes2020/jekyll-theme-chirpy
  * © 2018-2019 Cotes Chung
  * MIT License
-*/
+ */
 
-$(function() {
-
+$(function () {
   var DEFAULT = $("#topbar-title").text().trim();
-  var title = ($("div.post>h1").length > 0) ?
-          $("div.post>h1").text().trim() : $("h1").text().trim();
+  var title =
+    $("div.post>h1").length > 0
+      ? $("div.post>h1").text().trim()
+      : $("h1").text().trim();
 
   if ($("#page-category").length || $("#page-tag").length) {
     /* The title in Category or Tag page will be "<title> <count_of_posts>" */
@@ -21,10 +22,13 @@ $(function() {
 
   /* Replace topbar title while scroll screens. */
   $(window).scroll(function () {
-    if ($("#post-list").length /* in Home page */
-      || $("div.post>h1").is(":hidden") /* is tab pages */
-      || $("#topbar-title").is(":hidden") /* not mobile screens */
-      || $("#sidebar.sidebar-expand").length) { /* when the sidebar trigger is clicked */
+    if (
+      $("#post-list").length /* in Home page */ ||
+      $("div.post>h1").is(":hidden") /* is tab pages */ ||
+      $("#topbar-title").is(":hidden") /* not mobile screens */ ||
+      $("#sidebar.sidebar-expand").length
+    ) {
+      /* when the sidebar trigger is clicked */
       return false;
     }
 
@@ -40,8 +44,7 @@ $(function() {
   });
 
   /* Click title remove hover effect. */
-  $("#topbar-title").click(function() {
-    $("body,html").animate({scrollTop: 0}, 800);
+  $("#topbar-title").click(function () {
+    $("body,html").animate({ scrollTop: 0 }, 800);
   });
-
 });

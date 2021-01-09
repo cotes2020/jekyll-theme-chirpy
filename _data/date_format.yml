@@ -4,7 +4,6 @@
 #  © 2020 Cotes Chung
 #  MIT Licensed
 
-
 tooltip: "%a, %b %e, %Y, %l:%M %p %z"
 post:
   long: "%b %e, %Y"

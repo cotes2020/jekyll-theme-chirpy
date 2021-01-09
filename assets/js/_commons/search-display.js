@@ -1,13 +1,12 @@
 /*
-* This script make #search-result-wrapper switch to unloaded or shown automatically.
-* v2.0
-* https://github.com/cotes2020/jekyll-theme-chirpy
-* © 2018-2019 Cotes Chung
-* MIT License
-*/
+ * This script make #search-result-wrapper switch to unloaded or shown automatically.
+ * v2.0
+ * https://github.com/cotes2020/jekyll-theme-chirpy
+ * © 2018-2019 Cotes Chung
+ * MIT License
+ */
 
-$(function() {
-
+$(function () {
   var btnSbTrigger = $("#sidebar-trigger");
   var btnSearchTrigger = $("#search-trigger");
   var btnCancel = $("#search-cancel");
@@ -21,10 +20,9 @@ $(function() {
   var input = $("#search-input");
   var hints = $("#search-hints");
 
-
   /*--- Actions in small screens (Sidebar unloaded) ---*/
 
-  var scrollBlocker = (function() {
+  var scrollBlocker = (function () {
     var offset = 0;
     return {
       block() {
@@ -35,11 +33,11 @@ $(function() {
       },
       getOffset() {
         return offset;
-      }
+      },
     };
-  }());
+  })();
 
-  var mobileSearchBar = (function() {
+  var mobileSearchBar = (function () {
     return {
       on() {
         btnSbTrigger.addClass("unloaded");
@@ -54,11 +52,11 @@ $(function() {
         btnSbTrigger.removeClass("unloaded");
         topbarTitle.removeClass("unloaded");
         btnSearchTrigger.removeClass("unloaded");
-      }
+      },
     };
-  }());
+  })();
 
-  var resultSwitch = (function() {
+  var resultSwitch = (function () {
     var visable = false;
 
     return {
@@ -89,36 +87,34 @@ $(function() {
       },
       isVisable() {
         return visable;
-      }
+      },
     };
-
-  }());
-
+  })();
 
   function isMobileView() {
     return btnCancel.hasClass("loaded");
   }
 
-  btnSearchTrigger.click(function() {
+  btnSearchTrigger.click(function () {
     mobileSearchBar.on();
     resultSwitch.on();
     input.focus();
   });
 
-  btnCancel.click(function() {
+  btnCancel.click(function () {
     mobileSearchBar.off();
     resultSwitch.off();
   });
 
-  input.focus(function() {
+  input.focus(function () {
     searchWrapper.addClass("input-focus");
   });
 
-  input.focusout(function() {
+  input.focusout(function () {
     searchWrapper.removeClass("input-focus");
   });
 
-  input.on("keyup", function(e) {
+  input.on("keyup", function (e) {
     if (e.keyCode === 8 && input.val() === "") {
       if (!isMobileView()) {
         resultSwitch.off();
@@ -140,7 +136,7 @@ $(function() {
     }
   });
 
-  btnClear.on("click", function() {
+  btnClear.on("click", function () {
     input.val("");
     if (isMobileView()) {
       hints.removeClass("unloaded");
@@ -151,5 +147,4 @@ $(function() {
     input.focus();
     btnClear.removeClass("visable");
   });
-
 });
