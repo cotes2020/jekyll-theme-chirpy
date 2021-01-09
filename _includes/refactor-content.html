@@ -35,5 +35,32 @@
   %}
 {% endif %}
 
+{% if _content contains '<img src="' %}
+
+  {% if site.img_cdn != '' %}
+    {% assign img_path_replacement = '<img src="' | append: site.img_cdn | append: '/' %}
+  {% else %}
+    {% assign img_path_replacement = '<img src="' | append: site.baseurl | append: '/' %}
+  {% endif %}
+
+  {% assign _content = _content | replace: '<img src="/', img_path_replacement %}
+
+  <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+  {% assign lozad = true %}
+  {% assign img_placehodler
+    = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
+
+  {% assign lozad_replacement = '<img src="'
+    | append: img_placehodler
+    | append: '" data-src="' %}
+
+  {% assign _content = _content | replace: '<img src="', lozad_replacement %}
+
+{% endif %}
+
 <!-- return -->
 {{ _content }}
+
+{% if lozad %}
+  {% include lozad.html %}
+{% endif %}

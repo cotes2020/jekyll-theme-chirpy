@@ -9,14 +9,14 @@
 # --------------------------
 title: Chirpy                          # the main title
 
-tagline: A text-focused Jekyll theme.  # it will display as the sub-title
+tagline: A text-focused Jekyll theme   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
   bootstrap Jekyll theme with responsive web design
   and focuses on text presentation.
 
-# fill in the base hostname & protocol for your site, e.g., 'https://username.github.io'
+# fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
 
 author: your_full_name                  # change to your full name
@@ -79,7 +79,15 @@ disqus:
 #
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # <light|dark>
+theme_mode:   # [light|dark]
+
+# The CDN endpoint for images.
+# Notice that once it is assigned, the CDN url
+# will be added to all image (site avatar & posts' images) paths starting with '/'
+#
+# e.g. 'https://cdn.com'
+img_cdn: ''
+
 
 # boolean type, the global switch for ToC in posts.
 toc: true
