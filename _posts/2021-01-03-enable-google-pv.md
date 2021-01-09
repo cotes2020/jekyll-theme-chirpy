@@ -12,16 +12,13 @@ This post is to enable Page Views on the [**Chirpy**][chirpy-homepage] theme bas
 ## Set up Google Analytics
 
 ### Create GA account and property
+
 First, you need to setup your account on Google analytics. While your create your account, you must create your first **Property** as well.
 
-1. Head to <https://https://analytics.google.com/> and click on **Start Measuring**
-
+1. Head to <https://analytics.google.com/> and click on **Start Measuring**
 2. Enter your desired *Account Name* and choose the desired checkboxes
-
 3. Enter your desired *Property Name*. This is the name of the tracker project that appears on your Google Analytics dashboard
-
 4. Enter the required information *About your business*
-
 5. Hit *Create* and accept any license popup to setup your Google Analytics account and create your property
 
 ### Create Data Stream
@@ -29,18 +26,14 @@ First, you need to setup your account on Google analytics. While your create you
 With your property created, you now need to set up Data Stream to track your blog traffic. After you signup, the prompt should automatically take you to creating your first **Data Stream**. If not, follow these steps:
 
 1. Go to **Admin** on the left column
-
 2. Select the desired property from the drop down on the second column
-
 3. Click on **Data Streams**
-
 4. Add a stream and click on **Web**
-
 5. Enter your blog's URL
 
 It should look like this:
 
-![google-analytics-data-stream](/assets/img/sample/01-google-analytics-data-stream.png)
+![google-analytics-data-stream](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20210103/01-google-analytics-data-stream.png)
 
 Now, click on the new data stream and grab the **Measurement ID**. It should look something like `G-V6XXXXXXXX`. Copy this to your `_config.yml` file
 
@@ -49,7 +42,6 @@ google_analytics:
   id: 'G-V6XXXXXXX'          # Fill with your Google Analytics ID
   pv:
     # The Google Analytics pageviews switch.
-    # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
     enabled: false
     # the next options only valid when `google_analytics.pv` is enabled.
     proxy_url: ''
@@ -59,11 +51,11 @@ google_analytics:
 
 When you push these changes to your blog, you should start seeing the traffic on your Google Analytics. Play around with Google Analytics dashboard to get familiar with the options available as it takes like 5 mins to pickup your changes. You should now be able to monitor your traffic in realtime.
 
-![google-analytics-realtime](/assets/img/sample/02-google-analytics-realtime.png)
+![google-analytics-realtime](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20210103/02-google-analytics-realtime.png)
 
 ## Setup Page Views
 
-There is a detailed [tutorial](https://developers.google.com/analytics/solutions/google-analytics-super-proxy) available to set up Google Analytics superProxy. But, if you are interested to just quickly get your Chirpy-based blog display page views, follow along. These steps were tested on a Linux machine. If you are running Windows, you can use Git bash terminal to run linux-like commands.
+There is a detailed [tutorial](https://developers.google.com/analytics/solutions/google-analytics-super-proxy) available to set up Google Analytics superProxy. But, if you are interested to just quickly get your Chirpy-based blog display page views, follow along. These steps were tested on a Linux machine. If you are running Windows, you can use Git bash terminal to run Unix-like commands.
 
 ### Setup Google App Engine
 
@@ -134,18 +126,22 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 4. Enter any random key for `XSRF_KEY`, your `config.py` should look similar to this
 
     ```python
-#!/usr/bin/python2.7
-__author__ = 'pete.frisella@gmail.com (Pete Frisella)'
-# OAuth 2.0 Client Settings
-AUTH_CONFIG = {
-    'OAUTH_CLIENT_ID': 'YOUR_CLIENT_ID',
-    'OAUTH_CLIENT_SECRET': 'YOUR_CLIENT_SECRET',
-    'OAUTH_REDIRECT_URI': '%s%s' % (
-      'https://chirpy-test-XXXXXX.ue.r.appspot.com',
-      '/admin/auth')
-}
-# XSRF Settings
-XSRF_KEY = 'OnceUponATimeThereLivedALegend'
+    #!/usr/bin/python2.7
+
+    __author__ = 'pete.frisella@gmail.com (Pete Frisella)'
+
+    # OAuth 2.0 Client Settings
+    AUTH_CONFIG = {
+      'OAUTH_CLIENT_ID': 'YOUR_CLIENT_ID',
+      'OAUTH_CLIENT_SECRET': 'YOUR_CLIENT_SECRET',
+      'OAUTH_REDIRECT_URI': '%s%s' % (
+        'https://chirpy-test-XXXXXX.ue.r.appspot.com',
+        '/admin/auth'
+      )
+    }
+
+    # XSRF Settings
+    XSRF_KEY = 'OnceUponATimeThereLivedALegend'
     ```
 **Tip:** You can configure a custom domain instead of `https://PROJECT_ID.REGION_ID.r.appspot.com`. But, for the sake of keeping it simple, we will be using the Google provided default URL.
 
@@ -189,7 +185,7 @@ XSRF_KEY = 'OnceUponATimeThereLivedALegend'
 
 If everything went good, you'll get this screen:
 
-![superProxy-deployed](/assets/img/sample/03-superProxy-deployed.png)
+![superProxy-deployed](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20210103/03-superProxy-deployed.png)
 
 ### Create Google Analytics Query
 
@@ -215,14 +211,14 @@ After <kbd>Run Query</kbd>, copy the generated contents of **API Query URI** at 
 
 After the query is saved on GAE, a **Public Endpoint** (public access address) will be generated, and we will get the query result in JSON format when accessing it. Finally, click <kbd>Enable Endpoint</kbd> in **Public Request Endpoint** to make the query effective, and click <kbd>Start Scheduling</kbd> in **Scheduling** to start the scheduled task.
 
-![superproxy-query](/assets/img/sample/04-superproxy-query.png)
+![superproxy-query](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20210103/04-superproxy-query.png)
 
 
 ## Configure Chirpy to Display Page View
 
 Once all the hard part is done, it is very easy to enable the Page View on Chirpy theme. Your superProxy dashboard should look something like below and you can grab the required values.
 
-![superproxy-dashboard](/assets/img/sample/05-superproxy-dashboard.png)
+![superproxy-dashboard](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20210103/05-superproxy-dashboard.png)
 
 Update the `_config.yml` file of [**Chirpy**][chirpy-homepage] project with the values from your dashboard, to look similar to the following:
 
@@ -231,13 +227,11 @@ google_analytics:
   id: 'G-XXXXXXXXXX'   # Fill with your Google Analytics ID
   pv:
     # The Google Analytics pageviews switch.
-    # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
     enabled: true
     # the next options only valid when `google_analytics.pv` is enabled.
     proxy_url: 'https://PROJECT_ID.REGION_ID.r.appspot.com'
     proxy_endpoint: 'https://PROJECT_ID.REGION_ID.r.appspot.com/query?id=<ID FROM SUPER PROXY>'
     cache: false      # pv data local cache, good for the users from GFW area.
-
 ```
 
 Now, you should see the Page View enabled on your blog.

@@ -6,7 +6,7 @@ categories: [Blogging, Demo]
 tags: [typography]
 math: true
 mermaid: true
-image: /assets/img/sample/devices-mockup.png
+image: https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/devices-mockup.png
 ---
 
 This post is to show Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), you can also use it as an example of writing. Now, let's start looking at text and typography.
@@ -97,34 +97,34 @@ Click the hook will locate the footnote[^footnote], and here is another footnote
 
 - Default (with caption)
 
-![Desktop View](/assets/img/sample/mockup.png)
+![Desktop View](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190808/mockup.png)
 _Full screen width and center alignment_
 
 <br>
 
 - Specify width
 
-![Desktop View](/assets/img/sample/mockup.png){: width="400"}
+![Desktop View](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190808/mockup.png){: width="400"}
 _400px image width_
 
 <br>
 
 - Left aligned
 
-![Desktop View](/assets/img/sample/mockup.png){: width="350" .normal}
+![Desktop View](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190808/mockup.png){: width="350" .normal}
 
 <br>
 
 - Float to left
 
-  ![Desktop View](/assets/img/sample/mockup.png){: width="240" .left}
+  ![Desktop View](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190808/mockup.png){: width="240" .left}
   "A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space."
 
 <br>
 
 - Float to right
 
-  ![Desktop View](/assets/img/sample/mockup.png){: width="240" .right}
+  ![Desktop View](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190808/mockup.png){: width="240" .right}
   "A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space."
 
 <br>

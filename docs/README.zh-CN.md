@@ -9,7 +9,7 @@ Language: [English](../README.md) | 简体中文
 
 一个不一样的 Jekyll 主题，采用响应式设计，方便记录、管理、分享你的知识和经验。[懂的进 »](https://chirpy.cotes.info)
 
-[![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
+[![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/devices-mockup.png)](https://chirpy.cotes.info)
 
 > :bulb: 中文版文档存在更新不及时的风险（开源文档以英文为主，请见谅）。如果发现中、英文内容不匹配的情况，一切以英文版内容为准。如果您愿意的话，可提交 issue 提醒作者更新中文版 README，谢谢。
 
@@ -139,7 +139,7 @@ $ docker run -it --rm \
 
 2. 回到 GitHub 上的仓库， 通过 _Settings_
  → _Options_ → _GitHub Pages_ 选择分支 `gh-pages` 作为[_发布源_](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site):
-    ![gh-pages-sources](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/gh-pages-sources.png)
+    ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190809/gh-pages-sources.png)
 
 3. 按照 GitHub 指示的地址去访问你的网站。
 
