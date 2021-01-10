@@ -132,6 +132,15 @@ code {
 
 td.rouge-code {
   padding: 1.5rem 1.5rem 1.5rem 1rem;
+
+  // Prevent some browser extends from
+  // changing the URL string of code block.
+  a {
+    color: inherit !important;
+    border-bottom: none !important;
+    pointer-events: none;
+  }
+
 }
 
 /* Hide line numbers for default, console, and terminal code snippets */
