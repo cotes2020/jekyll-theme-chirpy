@@ -4,7 +4,7 @@ author:
 date: 2021-01-15 21:00:00 +0500
 comments: false
 categories: [Categories, CTF-Challenges]
-tags: [ctf, hackeone, cyber security]
+tags: [ctf, cyber security]
 ---
 
 __Assalam-o-Alaikum & Hello Folks!__ 
