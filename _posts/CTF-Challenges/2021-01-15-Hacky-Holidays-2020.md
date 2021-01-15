@@ -315,7 +315,7 @@ The task was to read the admin posts which are only visible to admins. There is 
     ![IMAGE](/assets/img/posts/hackyholiday2020/day8/day-08-6.png)
 
 ___
-# Day 09
+# Day 09 - Evil Quiz
 
 In the Evil Quiz application, a user, after entring his name, can attempt a quiz, and based on his anwers, the application rates the user's evilness on scale of 1 to 3.
 
@@ -478,7 +478,8 @@ Lets abuse this vulnerability!
    ![IMAGE](/assets/img/posts/hackyholiday2020/day9/day-09-7.png)
 
 ___
-# Day 10
+# Day 10 - Signup Manager
+
 The main page had two functions, Login and Signup. After I created an account, I was just greeted with a message saying `We'll have a look into you and see if you're evil enough to join the grinch army!`.
 
 ## Information Gathering
