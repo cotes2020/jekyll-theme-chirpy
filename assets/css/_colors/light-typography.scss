@@ -77,4 +77,8 @@
   --footer-bg-color: #ffffff;
   --footnote-target-bg: lightcyan;
   --footer-link: #424242;
+
+  .text-muted {
+    color: var(--text-muted-color) !important;
+  }
 } // light-scheme

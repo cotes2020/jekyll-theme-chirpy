@@ -136,4 +136,8 @@
       rgb(26, 26, 30));
   }
 
+  .text-muted {
+    color: var(--text-muted-color) !important;
+  }
+
 } // dark-scheme
