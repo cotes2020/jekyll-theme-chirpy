@@ -27,7 +27,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 ### Test Configuration
 
-- Browerser type & version:
+- Browser type & version:
 - Operating system:
 - Bundler version:
 - Ruby version:
