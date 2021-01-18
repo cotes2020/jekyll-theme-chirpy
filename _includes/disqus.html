@@ -13,13 +13,13 @@
   </p>
 </div>
 
-<script src="{{ site.baseurl }}/assets/js/lib/jquery.disqusloader.min.js"></script>
+<script src="{{ '/assets/js/lib/jquery.disqusloader.min.js' | relative_url }}"></script>
 <script>
   var options = {
     scriptUrl: '//{{ site.disqus.shortname }}.disqus.com/embed.js',
 
     disqusConfig: function() {
-      this.page.url = '{{ site.url | append: site.baseurl | append: page.url }}';
+      this.page.url = '{{ page.url | absolute_url }}';
       this.page.identifier = '{{ page.url }}';
     }
   };

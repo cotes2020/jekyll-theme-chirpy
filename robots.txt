@@ -12,4 +12,4 @@ User-agent: *
 
 Disallow: /norobots/
 
-Sitemap: {{ site.url | append: site.baseurl }}/sitemap.xml
+Sitemap: {{ '/sitemap.xml' | absolute_url }}
