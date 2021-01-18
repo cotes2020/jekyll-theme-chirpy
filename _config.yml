@@ -7,22 +7,20 @@
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: Chirpy                          # the main title
+title: DBinity                         # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Making sense of data in this world   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  Sharing my thoughts and articles from my professional and personal life.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://zimindkp.github.io'
 
-author: your_full_name                  # change to your full name
+author: Kishan Parekh                  # change to your full name
 
 github:
-  username: github_username             # change to your github username
+  username: zimindkp             # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
@@ -47,7 +45,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: America/Toronto
 
 google_analytics:
   id: ''          # Fill with your Google Analytics ID
