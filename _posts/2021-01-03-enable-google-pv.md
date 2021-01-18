@@ -7,7 +7,7 @@ tags: [google analytics, pageviews]
 ---
 
 
-This post is to enable Page Views on the [**Chirpy**][chirpy-homepage] theme based blog that you just built. This requires technical knowledge and it's recommended to keep the `google_analytics.pv` disabled unless you have a good reason. If you website has low traffic, the page views count would discourage you to write more blogs. With that said, let's start with the setup.
+This post is to enable Page Views on the [**Chirpy**][chirpy-homepage] theme based blog that you just built. This requires technical knowledge and it's recommended to keep the `google_analytics.pv` disabled unless you have a good reason. If your website has low traffic, the page views count would discourage you to write more blogs. With that said, let's start with the setup.
 
 ## Set up Google Analytics
 
@@ -181,7 +181,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
 7. Click on **Authorize Users** and make sure to add yourself as a managed user.
 
-8. If you get any errors, please google it. The errors are self-explanatory and should be easy to fix.
+8. If you get any errors, please Google it. The errors are self-explanatory and should be easy to fix.
 
 If everything went good, you'll get this screen:
 
@@ -193,19 +193,21 @@ Head to `https://PROJECT_ID.REGION_ID.r.appspot.com/admin` and create a query af
 
 The query parameters are as follows:
 
-- `start-date` - fill in the first day of blog posting
+- **start-date**: fill in the first day of blog posting
 
-- `end-date` - fill in `today` (this is a parameter supported by GA Report, which means that it will always end according to the current query date)
+- **end-date**: fill in `today` (this is a parameter supported by GA Report, which means that it will always end according to the current query date)
 
-- `metrics` - select `ga:pageviews`
+- **metrics**: select `ga:pageviews`
 
-- `dimensions` - select `ga:pagePath`
+- **dimensions**: select `ga:pagePath`
 
 In order to reduce the returned results and reduce the network bandwidth, we add custom filtering rules [^ga-filters]:
 
-- `filters` - fill in `ga:pagePath=~^/posts/.*/$;ga:pagePath!@=`
+- **filters**: fill in `ga:pagePath=~^/posts/.*/$;ga:pagePath!@=`
 
-  Among them, `;` means using _logical AND_ to concatenate two rules, `!@=` means excluding `=`.
+  Among them, `;` means using _logical AND_ to concatenate two rules.
+
+  If the `site.baseurl` is specified, change the first filtering rule to `ga:pagePath=~^/BASE_URL/posts/.*/$`, where `BASE_URL` is the value of `site.baseurl`.
 
 After <kbd>Run Query</kbd>, copy the generated contents of **API Query URI** at the bottom of the page, and fill in the **Encoded URI for the query** of SuperProxy on GAE.
 
