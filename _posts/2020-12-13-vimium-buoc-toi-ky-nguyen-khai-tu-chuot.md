@@ -1,5 +1,5 @@
 ---
-title: Tech weekly .#2 - Vimium bước tới kỷ nguyên khai tử chuột.
+title: Vimium bước tới kỷ nguyên khai tử chuột.
 author: Thuan Pham
 date: 2020-12-13 11:23
 categories: [Blogging]
