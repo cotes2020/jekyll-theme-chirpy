@@ -1,3 +1,13 @@
+---
+title: 온습도 관리 프로그램
+author: DongSeonKim
+date: 2021-01-22 13:04:00 +0900
+categories: [Exhibition,2020년]
+tags: [post,dongseon]     # TAG names should always be lowercase, 띄어쓰기도 금지 
+---
+
+------------------------------------------
+
 ## 온 • 습도 탐지 및 관리시스템
 
 ### 작품 소개
