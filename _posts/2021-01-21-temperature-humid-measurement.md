@@ -114,7 +114,8 @@ delay(300);
 
 ### 실제 구상 사진
 
-![img](file:///C:/Users/User/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg) ![img](file:///C:/Users/User/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg)
+<img src="/assets/img/post/2021-01-21-temperature-humid-measurement/pic1.PNG" width="90%"> 
+<img src="/assets/img/post/2021-01-21-temperature-humid-measurement/pic2.PNG" width="90%">
 
  
 
