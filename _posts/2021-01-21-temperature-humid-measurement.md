@@ -114,8 +114,8 @@ delay(300);
 
 ### 실제 구상 사진
 
-<img src="/assets/img/post/2021-01-21-temperature-humid-measurement/pic1.PNG" width="90%"> 
-<img src="/assets/img/post/2021-01-21-temperature-humid-measurement/pic2.PNG" width="90%">
+<img src="/assets/img/post/2021-01-21-temperature-humid-measurement/pic1.png" width="90%"> 
+<img src="/assets/img/post/2021-01-21-temperature-humid-measurement/pic2.png" width="90%">
 
  
 
