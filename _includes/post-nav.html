@@ -9,7 +9,8 @@
 
 <div class="post-navigation d-flex justify-content-between">
   {% if page.previous.url %}
-  <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary">
+  <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary"
+    prompt="{{ site.data.label.post.button.previous | default: 'previous' }}">
     <p>{{ page.previous.title }}</p>
   </a>
   {% else %}
@@ -19,7 +20,8 @@
   {% endif %}
 
   {% if page.next.url %}
-  <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary">
+  <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary"
+    prompt="{{ site.data.label.post.button.next | default: 'next' }}">
     <p>{{ page.next.title }}</p>
   </a>
   {% else %}
