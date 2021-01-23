@@ -312,6 +312,16 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
       margin-top: 1rem;
     }
   }
+
+  .post-content > div[class^='language-'] {
+    @include ml-mr(-1.25rem);
+    border-radius: 0;
+
+    &::before { // the lang badge
+      right: 1rem;
+    }
+  }
+
 }
 
 @media all and (max-width: 768px) {
