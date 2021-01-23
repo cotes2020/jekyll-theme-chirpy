@@ -98,16 +98,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  html-proofer
-  jekyll (>= 4.1.0, < 5.0)
-  jekyll-archives
-  jekyll-paginate
-  jekyll-redirect-from
-  jekyll-seo-tag
-  jekyll-sitemap
+  html-proofer (~> 3.18)
+  jekyll (~> 4.1)
+  jekyll-archives (~> 2.2)
+  jekyll-paginate (~> 1.1)
+  jekyll-redirect-from (~> 0.16)
+  jekyll-seo-tag (~> 2.7)
+  jekyll-sitemap (~> 1.4)
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)
 
 BUNDLED WITH
-   2.1.4
+   2.2.4
