@@ -78,7 +78,7 @@ $(function() {
             hints.removeClass("unloaded");
           }
           resultWrapper.addClass("unloaded");
-          btnClear.removeClass("visable");
+          btnClear.removeClass("visible");
           main.removeClass("hidden");
 
           input.val("");
@@ -130,7 +130,7 @@ $(function() {
         resultSwitch.on();
 
         if (!btnClear.hasClass("visible")) {
-          btnClear.addClass("visable");
+          btnClear.addClass("visible");
         }
 
         if (isMobileView()) {
@@ -149,7 +149,7 @@ $(function() {
       resultSwitch.off();
     }
     input.focus();
-    btnClear.removeClass("visable");
+    btnClear.removeClass("visible");
   });
 
 });
