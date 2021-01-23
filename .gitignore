@@ -5,3 +5,7 @@
 # jekyll cache
 _site
 vendor
+
+# npm dependencies
+node_modules
+package-lock.json
