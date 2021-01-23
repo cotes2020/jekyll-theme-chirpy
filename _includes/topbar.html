@@ -42,7 +42,7 @@
     <span id="search-wrapper" class="align-items-center">
       <i class="fas fa-search fa-fw"></i>
       <input class="form-control" id="search-input" type="search"
-        aria-label="search" placeholder="{{ site.data.label.search_hint }}...">
+        aria-label="search" placeholder="{{ site.data.label.search_hint | default: 'Search' }}...">
       <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i>
     </span>
     <span id="search-cancel" >Cancel</span>

@@ -8,7 +8,7 @@
 -->
 
 <div class="share-wrapper">
-  <span class="share-label text-muted mr-1">{{ site.data.share.label }}</span>
+  <span class="share-label text-muted mr-1">{{ site.data.label.post.share | default: 'Share' }}</span>
   <span class="share-icons">
     {% capture title %}{{ page.title }} - {{ site.title }}{% endcapture %}
     {% assign url = page.url | absolute_url %}

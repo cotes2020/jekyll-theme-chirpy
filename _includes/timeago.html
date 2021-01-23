@@ -6,20 +6,25 @@
   © 2020 Cotes Chung
   MIT License
 -->
+
+{% assign tooltip_df = site.data.date_format.tooltip | default: '%a, %b %e, %Y, %l:%M %p %z' %}
+{% assign post_long_df = site.data.date_format.post.long | default: '%b %e, %Y' %}
+{% assign post_short_df = site.data.date_format.post.short | default: '%b %e' %}
+
 <span class="timeago {% if include.class %}{{ include.class }}{% endif %}"
   {% if include.tooltip %}
     data-toggle="tooltip"
     data-placement="bottom"
-    title="{{ include.date | date: site.data.date_format.tooltip }}"
+    title="{{ include.date | date: tooltip_df }}"
   {% endif %}>
 
   {% assign this_year = site.time | date: "%Y" %}
   {% assign post_year = include.date | date: "%Y" %}
 
   {% if post_year == this_year %}
-    {{ include.date | date: site.data.date_format.post.short }}
+    {{ include.date | date: post_short_df }}
   {% else %}
-    {{ include.date | date: site.data.date_format.post.long }}
+    {{ include.date | date: post_long_df }}
   {% endif %}
 
   <i class="unloaded">{{ include.date | date_to_xmlschema }}</i>
