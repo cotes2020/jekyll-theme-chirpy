@@ -315,7 +315,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 }
 
 @media all and (max-width: 768px) {
-  .post img {
+  .post-content > p > img {
     max-width: calc(100% + 1rem);
   }
 }
