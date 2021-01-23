@@ -1,5 +1,5 @@
 /*
- * Topbar title auto change while scrolling in mobile screens.
+ * Top bar title auto change while scrolling in mobile screens.
  * v2.0
  * https://github.com/cotes2020/jekyll-theme-chirpy
  * © 2018-2019 Cotes Chung
@@ -8,9 +8,13 @@
 
 $(function() {
 
-  var DEFAULT = $("#topbar-title").text().trim();
-  var title = ($("div.post>h1").length > 0) ?
-          $("div.post>h1").text().trim() : $("h1").text().trim();
+  const topbarTitle = $("#topbar-title");
+  const postTitle = $("div.post>h1");
+
+  const DEFAULT = topbarTitle.text().trim();
+
+  let title = (postTitle.length > 0) ?
+    postTitle.text().trim() : $("h1").text().trim();
 
   if ($("#page-category").length || $("#page-tag").length) {
     /* The title in Category or Tag page will be "<title> <count_of_posts>" */
@@ -22,25 +26,25 @@ $(function() {
   /* Replace topbar title while scroll screens. */
   $(window).scroll(function () {
     if ($("#post-list").length /* in Home page */
-      || $("div.post>h1").is(":hidden") /* is tab pages */
-      || $("#topbar-title").is(":hidden") /* not mobile screens */
+      || postTitle.is(":hidden") /* is tab pages */
+      || topbarTitle.is(":hidden") /* not mobile screens */
       || $("#sidebar.sidebar-expand").length) { /* when the sidebar trigger is clicked */
       return false;
     }
 
     if ($(this).scrollTop() >= 95) {
-      if ($("#topbar-title").text() !== title) {
-        $("#topbar-title").text(title);
+      if (topbarTitle.text() !== title) {
+        topbarTitle.text(title);
       }
     } else {
-      if ($("#topbar-title").text() !== DEFAULT) {
-        $("#topbar-title").text(DEFAULT);
+      if (topbarTitle.text() !== DEFAULT) {
+        topbarTitle.text(DEFAULT);
       }
     }
   });
 
   /* Click title remove hover effect. */
-  $("#topbar-title").click(function() {
+  topbarTitle.click(function() {
     $("body,html").animate({scrollTop: 0}, 800);
   });
 

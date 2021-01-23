@@ -8,24 +8,24 @@
 
 $(function() {
 
-  var btnSbTrigger = $("#sidebar-trigger");
-  var btnSearchTrigger = $("#search-trigger");
-  var btnCancel = $("#search-cancel");
-  var btnClear = $("#search-cleaner");
+  const btnSbTrigger = $("#sidebar-trigger");
+  const btnSearchTrigger = $("#search-trigger");
+  const btnCancel = $("#search-cancel");
+  const btnClear = $("#search-cleaner");
 
-  var main = $("#main");
-  var topbarTitle = $("#topbar-title");
-  var searchWrapper = $("#search-wrapper");
-  var resultWrapper = $("#search-result-wrapper");
-  var results = $("#search-results");
-  var input = $("#search-input");
-  var hints = $("#search-hints");
+  const main = $("#main");
+  const topbarTitle = $("#topbar-title");
+  const searchWrapper = $("#search-wrapper");
+  const resultWrapper = $("#search-result-wrapper");
+  const results = $("#search-results");
+  const input = $("#search-input");
+  const hints = $("#search-hints");
 
 
   /*--- Actions in small screens (Sidebar unloaded) ---*/
 
-  var scrollBlocker = (function() {
-    var offset = 0;
+  const scrollBlocker = (function () {
+    let offset = 0;
     return {
       block() {
         offset = $(window).scrollTop();
@@ -39,7 +39,7 @@ $(function() {
     };
   }());
 
-  var mobileSearchBar = (function() {
+  const mobileSearchBar = (function () {
     return {
       on() {
         btnSbTrigger.addClass("unloaded");
@@ -58,21 +58,21 @@ $(function() {
     };
   }());
 
-  var resultSwitch = (function() {
-    var visable = false;
+  const resultSwitch = (function () {
+    let visible = false;
 
     return {
       on() {
-        if (!visable) {
+        if (!visible) {
           resultWrapper.removeClass("unloaded");
           main.addClass("hidden");
 
-          visable = true;
+          visible = true;
           scrollBlocker.block();
         }
       },
       off() {
-        if (visable) {
+        if (visible) {
           results.empty();
           if (hints.hasClass("unloaded")) {
             hints.removeClass("unloaded");
@@ -82,13 +82,13 @@ $(function() {
           main.removeClass("hidden");
 
           input.val("");
-          visable = false;
+          visible = false;
 
           scrollBlocker.release();
         }
       },
-      isVisable() {
-        return visable;
+      isVisible() {
+        return visible;
       }
     };
 

@@ -7,11 +7,11 @@ $(function() {
   const regex = new RegExp(`^${prefix}([a-z])+$`);
 
   $(`div[class^=${prefix}`).each(function() {
-    let clzsses = $(this).attr("class").split(" ");
+    let classes = $(this).attr("class").split(" ");
 
-    clzsses.forEach((clzss) => {
-      if (regex.test(clzss)) {
-        let lang = clzss.substring(prefix.length);
+    classes.forEach((_class) => {
+      if (regex.test(_class)) {
+        let lang = _class.substring(prefix.length);
         $(this).attr("lang", `${lang}`);
       }
     });

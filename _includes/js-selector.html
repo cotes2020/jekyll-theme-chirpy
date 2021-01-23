@@ -6,15 +6,24 @@
   MIT Licensed
 -->
 
-{% if page.layout == 'home' or page.layout == 'post' or page.layout == 'categories' %}
-  {% assign js = page.layout %}
-{% else %}
-  {% assign js = "page" %}
+{% if page.layout == 'home' or page.layout == 'post' %}
+  {% if site.google_analytics.pv.enabled %}
+    <!-- pv-report needs countup.js -->
+    <script async src="https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js"></script>
+    <script async src="{{ '/assets/js/dist/pvreport.min.js' | relative_url }}"></script>
+  {% endif %}
 {% endif %}
 
-{% assign js_src = js | prepend: '/assets/js/' | append: '.min.js' | relative_url %}
+{% if page.layout == 'home'
+    or page.layout == 'post'
+    or page.layout == 'categories' %}
+  {% assign type = page.layout %}
+{% else %}
+  {% assign type = "page" %}
+{% endif %}
 
-<script async src="{{ js_src }}"></script>
+{% assign js = type | prepend: '/assets/js/dist/' | append: '.min.js' %}
+<script defer src="{{ js | relative_url }}"></script>
 
 {% if page.math %}
   <!-- MathJax -->
