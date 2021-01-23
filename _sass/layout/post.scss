@@ -1,17 +1,9 @@
----
-# Post-specific style
-# v2.0
-# https://github.com/cotes2020/jekyll-theme-chirpy
-# © 2019 Cotes Chung
-# MIT License
----
+/*
+  Post-specific style
+*/
 
-
-{% include_relative _addon/main.scss %}
-{% include_relative _addon/syntax.scss %}
-
-$prompt-older: "{{ site.data.label.post.button.previous }}";
-$prompt-newer: "{{ site.data.label.post.button.next }}";
+$prompt-older: 'older'!default; // "{{ site.data.label.post.button.previous }}";
+$prompt-newer: 'newer'!default; // "{{ site.data.label.post.button.next }}";
 
 @mixin btn-sharing-color($light-color, $important: false) {
   @if $important {
@@ -34,15 +26,17 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
   padding-right: $pr;
 }
 
-.post .post-meta {
+#post-wrapper .post-meta {
   > div:nth-child(2) {
     > span:not(:first-child)::before {
       @include dot;
     }
   }
+
   #pv::after {
     content: " views";
   }
+
   .readtime::after {
     content: " read";
   }
@@ -331,7 +325,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 }
 
 @media all and (min-width: 768px) {
-  .post {
+  #post-wrapper {
     .post-meta {
       >div:not(:first-child)::before {
         @include dot(0.5rem, 0.2rem);
