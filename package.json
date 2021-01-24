@@ -20,10 +20,11 @@
   },
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy#readme",
   "dependencies": {
-    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
+    "gulp-insert": "^0.5.0",
     "gulp-rename": "^2.0.0",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
   }
 }
