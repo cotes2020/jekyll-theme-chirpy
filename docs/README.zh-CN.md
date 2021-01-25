@@ -1,6 +1,6 @@
 # Chirpy
 
-Language: [English](../README.md) | 简体中文
+Language: [English](https://github.com/cotes2020/jekyll-theme-chirpy#readme) | 简体中文
 
 [![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8220b926db514f13afc3f02b7f884f4b)](https://app.codacy.com/manual/cotes2020/jekyll-theme-chirpy?utm_source=github.com&utm_medium=referral&utm_content=cotes2020/jekyll-theme-chirpy&utm_campaign=Badge_Grade_Dashboard)
@@ -16,6 +16,7 @@ Language: [English](../README.md) | 简体中文
 ## 目录
 
 - [功能一览](#功能一览)
+- [前提要求](#前提要求)
 - [安装](#安装)
 - [使用](#使用)
 - [参与贡献](#参与贡献)
@@ -42,40 +43,63 @@ Language: [English](../README.md) | 简体中文
 - SEO 优化
 - 网站性能优化
 
+
+## 前提要求
+
+参考 [Jekyll Docs](https://jekyllrb.com/docs/installation/) 安装 `Ruby`，`RubyGems`，`Jekyll` 和 `Bundler`，Docker 粉可免。
+
+
 ## 安装
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork)，把仓库改名为 `USERNAME.github.io`（其中 `USERNAME` 是你的 GitHub 用户名）， 然后克隆到本地：
+有二法可得此主题:
 
-```terminal
-$ git clone https://github.com/USERNAME/USERNAME.github.io.git -b master --single-branch
+  - 从 [RubyGems](https://rubygems.org/gems/jekyll-theme-chirpy) 安装
+  - 从 GitHub 上 Fork
+
+### Rubygems 安装
+
+在你的 Jekyll 站点的 `Gemfile` 添加:
+
+```ruby
+gem "jekyll-theme-chirpy"
 ```
 
-### 设置本地环境
+然后，添加这行到你的 Jekyll 站点的 `_config.yml`:
 
-如果你想在本地运行或构建, 参考 [Jekyll Docs](https://jekyllrb.com/docs/installation/)安装 `Ruby`，`RubyGems`，`Jekyll` 和 `Bundler`。
-
-首次运行或构建时, 请先安装 Jekyll plugins。在项目根目录运行：
-
-```terminal
-$ bundle install
+```yaml
+theme: jekyll-theme-chirpy
 ```
 
-`bundle` 会自动安装 `Gemfile` 内指定的依赖插件。
-
-### 配置 Docker 镜像（可选）
-
-如果你是 [**Docker**](https://www.docker.com/) 的铁粉，或者不想在本地安装上述 [_设置本地环境_](#设置本地环境) 提到的包, 那么请确保先安装并运行了 **Docker Engine** 然后从 Docker Hub 获取镜像 `jekyll/jekyll`:
+接着执行:
 
 ```console
-$ docker pull jekyll/jekyll
+$ bundle
 ```
 
+最后, 拷贝额外所需主题的 gem 文件（详见 [starter 项目][starter] 的文件目录）至你的 Jekyll 站点, 然后把主题的 `_config.yml` 全部内容附加到你的 Jekyll 站点的同名文件。
 
-## 使用
+> **提示**: 定位主题的 gem 文件，可以执行:
+>
+```console
+$ bundle info --path jekyll-theme-chirpy
+```
 
-### 初始化
+或者你可以 [使用 starter template][use-starter] 来快速创建 Jekyll 站点，以省去复制主题 gem 文件的时间。
 
-在项目根目录，开始初始化:
+[starter]: https://github.com/cotes2020/chirpy-starter
+[use-starter]: https://github.com/cotes2020/chirpy-starter/generate
+
+### 在 GitHub 上 Fork
+
+[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) 然后克隆到本地。
+
+安装依赖：
+
+```console
+$ bundle
+```
+
+接着执行文件初始化:
 
 ```console
 $ bash tools/init.sh
@@ -85,15 +109,17 @@ $ bash tools/init.sh
 
 上述脚本完成了以下工作:
 
-1. 从你的仓库中删除了:
+  1. 从你的仓库中删除了:
 
-	- `.travis.yml`
-	- `_posts` 下的文件
-	- `docs` 目录
+    - `.travis.yml`
+    - `_posts` 下的文件
+    - `docs` 目录
 
-2. 如果使用了参数 `--no-gh`，则会怒删 `.github`。否则，将会配置 GitHub Actions：把 `.github/workflows/pages-deploy.yml.hook` 的后缀 `.hook` 去除，然后删除 `.github` 里的其他目录和文件。
+  2. 如果使用了参数 `--no-gh`，则会怒删 `.github`。否则，将会配置 GitHub Actions：把 `.github/workflows/pages-deploy.yml.hook` 的后缀 `.hook` 去除，然后删除 `.github` 里的其他目录和文件。
 
-3. 自动提交一个 Commit 以保存上述文件的更改。
+  3. 自动提交一个 Commit 以保存上述文件的更改。
+
+## 使用
 
 ### 配置文件
 
@@ -112,11 +138,7 @@ $ bash tools/init.sh
 $ bundle exec jekyll s
 ```
 
-访问本地服务： <http://localhost:4000>
-
-### 用 Docker 运行
-
-在项目根目录运行命令:
+或者用 Docker 运行:
 
 ```terminal
 $ docker run -it --rm \
@@ -125,23 +147,31 @@ $ docker run -it --rm \
     jekyll serve
 ```
 
+访问本地服务：<http://localhost:4000>
+
 ### 部署
 
 部署开始前，把  `_config.yml` 的 `url` 改为 `https://<username>.github.io`(或者你的私有域名，如：`https://yourdomain.com`)。另外，如果你想使用 [Project 类型网站](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites)，修改配置文件的 `baseurl` 为项目名称，以斜杠开头，如：`/project`。
 
-假设你已经完成了 [初始化](#初始化)，现在你可以选择下列其中一个方式去站点部署。
+现在你可以选择下列其中一个方式去站点部署。
 
 #### 部署到 GitHub Pages
 
 由于安全原因，GitHub Pages 的构建强制加了 `safe`参数，这导致了我们不能使用插件去创建所需的附加页面。因此，我们可以使用 GitHub Actions 去构建站点，把站点文件存储在一个新分支上，再指定该分支作为 Pages 服务的源。
 
-1. 推送任意一个 commit 到 `origin/master` 以触发 GitHub Actions workflow。一旦 build 完毕并且成功，远端将会自动出现一个新分支 `gh-pages` 用来存储构建的站点文件。
+确保你的 Jekyll 站点存在文件 `/.github/workflows/pages-deploy.yml`。没有的话，新建并填入[示例工作流][workflow]的内容, 注意参数 `on.push.branches` 的值必须和你的仓库默认分支名相同。
 
-2. 回到 GitHub 上的仓库， 通过 _Settings_
- → _Options_ → _GitHub Pages_ 选择分支 `gh-pages` 作为[_发布源_](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site):
-    ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190809/gh-pages-sources.png)
+[workflow]:https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook
 
-3. 按照 GitHub 指示的地址去访问你的网站。
+在 GitHub 把你的仓库命名为 `<GH-USERNAME>.github.io`，然后：
+
+  1. 推送任意一个 commit 到 `origin/master` 以触发 GitHub Actions workflow。一旦 build 完毕并且成功，远端将会自动出现一个新分支 `gh-pages` 用来存储构建的站点文件。
+
+  2. 回到 GitHub 上的仓库， 通过 _Settings_ → _Options_ → _GitHub Pages_ 选择分支 `gh-pages` 作为[_发布源_](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site):
+
+      ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190809/gh-pages-sources.png)
+
+  3. 按照 GitHub 指示的地址去访问你的网站。
 
 #### 部署到其他 Pages 平台
 
@@ -165,7 +195,7 @@ $ docker run -it --rm \
 
 生成的静态文件将会在 `_site`， 把内部的文件上传到服务器即可。
 
-### 文档
+## 文档
 
 若想要更多细节以及更佳的阅读体验，请参阅 [线上教程](https://chirpy.cotes.info/categories/tutorial/)。 与此同时，[Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki) 也有一份教程的拷贝。
 
@@ -178,6 +208,12 @@ $ docker run -it --rm \
 这个主题的开发主要基于 [Jekyll](https://jekyllrb.com/) 生态、[Bootstrap](https://getbootstrap.com/)、[Font Awesome](https://fontawesome.com/) 和其他一些出色的工具 (相关文件中可以找到这些工具的版权信息).
 
 :tada: 感谢所有参与代码贡献的小伙伴, 他们的 GayHub ID 在这个[列表](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors)。 另外, 提交过 issues(或者未被合并 PR) 的高富帅和白富美也不会被遗忘,他/她们帮助报告 bug、分享新点子或者启发了我写出更通俗易懂的文档。
+
+还有，感谢 [JetBrains][JB] 提供开源 License！
+
+[![JB-logo](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/jetbrains.svg)][JB]
+
+[JB]:https://www.jetbrains.com/?from=jekyll-theme-chirpy
 
 ## 赞助
 
