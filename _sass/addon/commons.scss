@@ -645,6 +645,12 @@ h5 {
   font-size: 1.1rem;
 }
 
+ol, ul {
+  ol, ul {
+    margin-bottom: 1rem;
+  }
+}
+
 blockquote {
   border-left: 5px solid var(--blockquote-border-color);
   padding-left: 1rem;
