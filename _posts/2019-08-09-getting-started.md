@@ -7,105 +7,137 @@ tags: [getting started]
 pin: true
 ---
 
+## Prerequisites
+
+Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`.
 
 ## Installation
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub, rename the repository to `USERNAME.github.io` (where `USERNAME` is your GitHub username), and then open terminal and clone the fork to local by:
+There are two ways to get the theme:
 
-```terminal
-$ git clone https://github.com/USERNAME/USERNAME.github.io.git -b master --single-branch
+  - Install from [RubyGems](https://rubygems.org/gems/jekyll-theme-chirpy)
+  - Fork from GitHub
+
+### Install From Rubygems
+
+Add this line to your Jekyll site's `Gemfile`:
+
+```ruby
+gem "jekyll-theme-chirpy"
 ```
 
-### Setting up the local envrionment
+And add this line to your Jekyll site's `_config.yml`:
 
-If you would like to run or build the project on your local machine, please follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`.
-
-Before running or building for the first time, please complete the installation of the Jekyll plugins. Go to the root directory of project and run:
-
-```terminal
-$ bundle install
+```yaml
+theme: jekyll-theme-chirpy
 ```
 
-`bundle` will automatically install all the dependencies specified by `Gemfile`.
-
-### Setting up Docker environment (optional)
-
-If you're a loyal fan of [**Docker**](https://www.docker.com/) or just too lazy to install the packages mentioned in [_Setting up the local envrionment_](#setting-up-the-local-envrionment), please make sure you have **Docker Engine** installed and running, and then get Docker image `jekyll/jekyll` from Docker Hub by the following command:
+And then execute:
 
 ```console
-$ docker pull jekyll/jekyll
+$ bundle
 ```
 
-## Usage
+Finally, copy the missing files (refer to the [starter project][starter] for the detailed file directory structure) from the theme's gem to your Jekyll site, and append all the variables of the theme's `_config.yml` to your Jekyll site.
 
-### Initialization
+> **Hint**: To locate the theme’s gem, execute:
+>
+```console
+$ bundle info --path jekyll-theme-chirpy
+```
 
-Go to the root directory of the project and start initialization:
+Or you can [use the starter template][use-starter] to create a Jekyll site to save time copying contents from theme's gem.
+
+[starter]: https://github.com/cotes2020/chirpy-starter
+[use-starter]: https://github.com/cotes2020/chirpy-starter/generate
+
+### Fork From GitHub
+
+[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) from GitHub and clone your fork to local.
+
+Install gem dependencies by:
+
+```console
+$ bundle
+```
+
+And then execute:
 
 ```console
 $ bash tools/init.sh
 ```
 
-> **Note**: If you not intend to deploy it on GitHub Pages, append parameter option `--no-gh` at the end of the above command.
+> **Note**: If you don't plan to deploy your site on GitHub Pages, append parameter option `--no-gh` at the end of the above command.
 
 What it does is:
 
-1. Remove some files or directories from your repository:
-    - `.travis.yml`
-    - files under `_posts`
-    - folder `docs`
+  1. Remove some files or directories from your repository:
 
-2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`.
+      - `.travis.yml`
+      - files under `_posts`
+      - folder `docs`
 
-3. Automatically create a commit to save the changes.
+  2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`.
+
+  3. Automatically create a commit to save the changes.
+
+
+## Usage
 
 ### Configuration
 
-Generally, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
+Update the variables of `_config.yml` as needed. Some of them are typical options:
 
-- `url`
-- `avatar`
-- `timezone`
-- `theme_mode`
+  - `url`
+  - `avatar`
+  - `timezone`
+  - `theme_mode`
 
-### Run Locally
+### Running Local Server
 
 You may want to preview the site contents before publishing, so just run it by:
 
-```terminal
+```console
 $ bundle exec jekyll s
 ```
 
-Then open a browser and visit to <http://localhost:4000>.
-
-### Run on Docker
-
-Run the site on Docker with the following command:
+Or run the site on Docker with the following command:
 
 ```terminal
-$ docker run --rm -it \
+$ docker run -it --rm \
     --volume="$PWD:/srv/jekyll" \
     -p 4000:4000 jekyll/jekyll \
     jekyll serve
 ```
 
+Open a browser and visit to _<http://localhost:4000>_.
 
 ### Deployment
 
-Before the deployment begins, checkout the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [_project site_](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base url on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starting with a slash. For example, `/project`.
+Before the deployment begins, checkout the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [**project site**](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base url on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starting with a slash, e.g, `/project-name`.
 
-Assuming you have already gone through the [initialization](#initialization), you can now choose ONE of the following methods to deploy your website.
+Now you can now choose ONE of the following methods to deploy your website.
 
 #### Deploy on GitHub Pages
 
-For security reasons, GitHub Pages build runs on `safe` mode, which restricts us from using plugins to generate additional page files. Therefore, we can use **GitHub Actions** to build the site, store the built site files on a new branch, and use that branch as the source of the Pages service.
+For security reasons, GitHub Pages build runs on `safe` mode, which restricts us from using plugins to generate additional page files. Therefore, we can use **GitHub Actions** to build the site, store the built site files on a new branch, and use that branch as the source of the GH Pages service.
 
-1. Push any commit to `origin/master` to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
+Ensure your Jekyll site has the file `/.github/workflows/pages-deploy.yml`.
+Otherwise, create a new one and fill in the contents of the [workflow file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name.
 
-2. Browse to your repo's landing page on GitHub and select the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
-    ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190809/gh-pages-sources.png){: width="650" class="normal"}
+[workflow]:https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook
 
-3. Visit your website at the address indicated by GitHub.
+Rename your repoistory to `<GH-USERNAME>.github.io` on GitHub.
+
+And then publish your site by:
+
+  1. Push any commit to remote to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
+
+  2. Browse to your repo's landing page on GitHub and select the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
+
+      ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190809/gh-pages-sources.png)
+
+  3. Visit your website at the address indicated by GitHub.
 
 #### Deploy on Other Platforms
 
@@ -117,7 +149,7 @@ Go to the root of the source project, build your site by:
 $ JEKYLL_ENV=production bundle exec jekyll b
 ```
 
-Or, build the site with Docker by:
+Or build the site with Docker by:
 
 ```terminal
 $ docker run -it --rm \
