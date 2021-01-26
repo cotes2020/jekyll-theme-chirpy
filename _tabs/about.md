@@ -13,16 +13,11 @@ order: 4
 
 😎 **I'm Thuan, Student at Saigon Technology University** <img src="https://camo.githubusercontent.com/7d5c1327f28f30dd3b242d60c92fa399051bd5765af36f7c8df5138ac67d8f7b/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f6659536e486c75667365636f38466839335a2f67697068792e676966" width="25"/>
 
-✏️💻 Linux & zsh & kitty & tmux & neovim & cascadia code
+😎 I'm a IT student with a passion for building highly usable web applications.
 
-🥅 **2021 Goals**: build 12 habits in 12 months.
+<img src="https://camo.githubusercontent.com/7d5c1327f28f30dd3b242d60c92fa399051bd5765af36f7c8df5138ac67d8f7b/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f6659536e486c75667365636f38466839335a2f67697068792e676966" width="25"/> When not working, I enjoy spending time 🚴cycling and 📔reading.
 
-💕 **My passions**:
-
-- 🚴 Cycling
-- 👽 Technology
-- 📔 Books
-- 🏞️ Nature
+💻 My setup: Linux, kitty, zsh, tmux, neovim and cascadia code
 
 **Blog: [https://thuanpham2311.github.io](https://thuanpham2311.github.io)**
 
