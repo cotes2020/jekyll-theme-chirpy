@@ -40,7 +40,6 @@ A minimal, sidebar, responsive web design Jekyll theme that focuses on text pres
 - GA Pageviews reporting (Advanced)
 - SEO and Performance Optimization
 
-
 ## Prerequisites
 
 Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`.
@@ -72,7 +71,7 @@ And then execute:
 $ bundle
 ```
 
-Finally, copy the missing files (refer to the [starter project][starter] for the detailed file directory structure) from the theme's gem to your Jekyll site, and append all the variables of the theme's `_config.yml` to your Jekyll site.
+Finally, copy the extra files (refer to the [starter project][starter] for the detailed file directory structure) from the theme's gem to your Jekyll site, and append all the variables of the theme's `_config.yml` to your Jekyll site.
 
 > **Hint**: To locate the theme’s gem, execute:
 >
@@ -115,6 +114,7 @@ What it does is:
 
   3. Automatically create a commit to save the changes.
 
+
 ## Usage
 
 ### Configuration
@@ -149,20 +149,23 @@ Open a browser and visit to _<http://localhost:4000>_.
 
 Before the deployment begins, checkout the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [**project site**](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base url on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starting with a slash, e.g, `/project-name`.
 
-Now you can now choose ONE of the following methods to deploy your website.
+Now you can choose ONE of the following methods to deploy your Jekyll site.
 
 #### Deploy on GitHub Pages
 
 For security reasons, GitHub Pages build runs on `safe` mode, which restricts us from using plugins to generate additional page files. Therefore, we can use **GitHub Actions** to build the site, store the built site files on a new branch, and use that branch as the source of the GH Pages service.
 
-Ensure your Jekyll site has the file `/.github/workflows/pages-deploy.yml`.
-Otherwise, create a new one and fill in the contents of the [workflow file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name.
+Quickly check the files needed for GitHub Actions build:
+
+  1. Ensure your Jekyll site has the file `/.github/workflows/pages-deploy.yml`. Otherwise, create a new one and fill in the contents of the [workflow file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name.
+
+  2. Ensuer your Jekyll site has file `/tools/test.sh` and `/tools/deploy.sh`. Otherwise, copy them from this repo to your Jekyll site.
 
 [workflow]:https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook
 
-Rename your repoistory to `<GH-USERNAME>.github.io` on GitHub.
+Next, rename your repoistory to `<GH-USERNAME>.github.io` on GitHub.
 
-And then publish your site by:
+And then publish your Jekyll site by:
 
   1. Push any commit to remote to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
 
@@ -193,6 +196,7 @@ $ docker run -it --rm \
 ```
 
 Unless you specified the output path, the generated site files will be placed in folder `_site` of the project's root directory. Now you should upload those files to your web server.
+
 
 ## Documentation
 
