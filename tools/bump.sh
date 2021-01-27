@@ -2,9 +2,10 @@
 #
 # Bump latest version to
 #   - _sass/jekyll-theme-chirpy.scss
-#   - assets/js/_commons/_copyright.js
+#   - assets/js/.copyright.js
 #   - assets/js/dist/*.js
 #   - jekyll-theme-chirpy.gemspec
+#   - package.json
 #
 # Required: gulp
 
