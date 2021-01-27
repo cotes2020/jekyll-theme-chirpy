@@ -14,9 +14,10 @@ A minimal, sidebar, responsive web design Jekyll theme that focuses on text pres
 ## Table of Contents
 
 - [Features](#features)
-- [Installation](#installation)
 - [Prerequisites](#prerequisites)
+- [Installation](#installation)
 - [Usage](#usage)
+- [Documentation](#documentation)
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [Supporting](#supporting)
@@ -102,7 +103,6 @@ $ bash tools/init.sh
 What it does is:
 
 1. Remove some files or directories from your repository:
-
     - `.travis.yml`
     - files under `_posts`
     - folder `docs`
