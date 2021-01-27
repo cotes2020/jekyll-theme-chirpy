@@ -12,7 +12,6 @@ const fs = require('fs');
 
 const JS_ROOT = './assets/js';
 const jsDest = `${ JS_ROOT }/dist/`;
-const copyrightPath = `${ JS_ROOT }/.copyright`;
 
 function concatJs(files, output) {
   return src(files)
@@ -23,7 +22,7 @@ function concatJs(files, output) {
 
 function minifyJs() {
   return src(`${ jsDest }/*.js`)
-    .pipe(insert.prepend(fs.readFileSync(copyrightPath, 'utf8')))
+    .pipe(insert.prepend(fs.readFileSync(`${ JS_ROOT }/.copyright`, 'utf8')))
     .pipe(uglify({output: {comments: /^!|@preserve|@license|@cc_on/i}}))
     .pipe(dest(jsDest));
 }

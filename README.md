@@ -48,8 +48,8 @@ Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete th
 
 There are two ways to get the theme:
 
-  - Install from [RubyGems](https://rubygems.org/gems/jekyll-theme-chirpy)
-  - Fork from GitHub
+- Install from [RubyGems](https://rubygems.org/gems/jekyll-theme-chirpy)
+- Fork from GitHub
 
 ### Install From Rubygems
 
@@ -81,9 +81,6 @@ $ bundle info --path jekyll-theme-chirpy
 
 Or you can [use the starter template][use-starter] to create a Jekyll site to save time copying contents from theme's gem.
 
-[starter]: https://github.com/cotes2020/chirpy-starter
-[use-starter]: https://github.com/cotes2020/chirpy-starter/generate
-
 ### Fork From GitHub
 
 [Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) from GitHub and clone your fork to local.
@@ -104,16 +101,15 @@ $ bash tools/init.sh
 
 What it does is:
 
-  1. Remove some files or directories from your repository:
+1. Remove some files or directories from your repository:
 
-      - `.travis.yml`
-      - files under `_posts`
-      - folder `docs`
+    - `.travis.yml`
+    - files under `_posts`
+    - folder `docs`
 
-  2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`.
+2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`.
 
-  3. Automatically create a commit to save the changes.
-
+3. Automatically create a commit to save the changes.
 
 ## Usage
 
@@ -121,10 +117,10 @@ What it does is:
 
 Update the variables of `_config.yml` as needed. Some of them are typical options:
 
-  - `url`
-  - `avatar`
-  - `timezone`
-  - `theme_mode`
+- `url`
+- `avatar`
+- `timezone`
+- `theme_mode`
 
 ### Running Local Server
 
@@ -157,23 +153,20 @@ For security reasons, GitHub Pages build runs on `safe` mode, which restricts us
 
 Quickly check the files needed for GitHub Actions build:
 
-  1. Ensure your Jekyll site has the file `/.github/workflows/pages-deploy.yml`. Otherwise, create a new one and fill in the contents of the [workflow file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name.
-
-  2. Ensuer your Jekyll site has file `/tools/test.sh` and `/tools/deploy.sh`. Otherwise, copy them from this repo to your Jekyll site.
-
-[workflow]:https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook
+1. Ensure your Jekyll site has the file `/.github/workflows/pages-deploy.yml`. Otherwise, create a new one and fill in the contents of the [workflow file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name.
+2. Ensuer your Jekyll site has file `/tools/test.sh` and `/tools/deploy.sh`. Otherwise, copy them from this repo to your Jekyll site.
 
 Next, rename your repoistory to `<GH-USERNAME>.github.io` on GitHub.
 
 And then publish your Jekyll site by:
 
-  1. Push any commit to remote to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
+1. Push any commit to remote to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
 
-  2. Browse to your repo's landing page on GitHub and select the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
+2. Browse to your repo's landing page on GitHub and select the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
 
-      ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190809/gh-pages-sources.png)
+    ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190809/gh-pages-sources.png)
 
-  3. Visit your website at the address indicated by GitHub.
+3. Visit your website at the address indicated by GitHub.
 
 #### Deploy on Other Platforms
 
@@ -197,7 +190,6 @@ $ docker run -it --rm \
 
 Unless you specified the output path, the generated site files will be placed in folder `_site` of the project's root directory. Now you should upload those files to your web server.
 
-
 ## Documentation
 
 For more details and the better reading experience, please check out the [tutorials on demo site](https://chirpy.cotes.info/categories/tutorial/). In the meanwhile, a copy of the tutorial is also available on the [Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
@@ -212,11 +204,9 @@ This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Boot
 
 :tada: Thanks to all the volunteers who contributed to this project, their GitHub IDs are on [this list](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors). Also, I won't forget those guys who submitted the issues or unmerged PR because they reported bugs, shared ideas or inspired me to write more readable documentation.
 
-Also, thank [JetBrains][JB] for providing the open source license.
+Also, thank [JetBrains][jb] for providing the open source license.
 
-[![JB-logo](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/jetbrains.svg)][JB]
-
-[JB]:https://www.jetbrains.com/?from=jekyll-theme-chirpy
+[![JB-logo](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/jetbrains.svg)][jb]
 
 ## Supporting
 
@@ -225,3 +215,8 @@ If you enjoy this theme or find it helpful, please consider becoming my sponsor,
 ## License
 
 This work is published under [MIT](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE) License.
+
+[starter]: https://github.com/cotes2020/chirpy-starter
+[use-starter]: https://github.com/cotes2020/chirpy-starter/generate
+[workflow]:https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook
+[jb]:https://www.jetbrains.com/?from=jekyll-theme-chirpy

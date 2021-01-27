@@ -2,10 +2,17 @@
   Style for page Category and Tag
 */
 
-#page-category, #page-tag {
+.dash {
+  margin: 0 .5rem .6rem .5rem;
+  border-bottom: 2px dotted var(--dash-color);
+}
+
+#page-category,
+#page-tag {
   ul > li {
     line-height: 1.5rem;
     padding: 0.6rem 0;
+
     &::before { // dot
       background: #999;
       width: 5px;
@@ -17,14 +24,16 @@
       top: 0.6rem;
       margin-right: 0.5rem;
     }
+
     > a { /* post's title */
-      font-size: 1.1rem;
       @extend %no-bottom-border;
+
+      font-size: 1.1rem;
     }
+
     > span:last-child {
       white-space: nowrap;
-    }
-    /* post's date */
+    } /* post's date */
   }
 }
 
@@ -36,22 +45,19 @@
   font-size: 1.25rem;
 }
 
-a:hover {
-  #page-category &,
-  #page-tag &,
-  #access-lastmod & {
+#page-category,
+#page-tag,
+#access-lastmod {
+  a:hover {
     @extend %link-hover;
+
     margin-bottom: -1px; // Avoid jumping
   }
 }
 
-.dash {
-  margin: 0 .5rem .6rem .5rem;
-  border-bottom: 2px dotted var(--dash-color);
-}
-
 @media all and (max-width: 576px) {
-  #page-category, #page-tag {
+  #page-category,
+  #page-tag {
     ul > li {
       &::before {
         margin: 0 .5rem;
