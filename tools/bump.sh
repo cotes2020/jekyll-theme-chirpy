@@ -21,15 +21,15 @@ NODE_META="package.json"
 
 bump_assets() {
   _version="$1"
-  for i in ${!ASSETS[@]}; do
-    sed -i "s/v[[:digit:]]\.[[:digit:]]\.[[:digit:]]/v$_version/" ${ASSETS[$i]}
+  for i in "${!ASSETS[@]}"; do
+    sed -i "s/v[[:digit:]]\.[[:digit:]]\.[[:digit:]]/v$_version/" "${ASSETS[$i]}"
   done
 
   gulp
 }
 
 bump_gemspec() {
-  sed -i "s/[[:digit:]]\.[[:digit:]]\.[[:digit:]]/$1/" $GEM_SPEC
+  sed -i "s/[[:digit:]]\.[[:digit:]]\.[[:digit:]]/$1/" "$GEM_SPEC"
 }
 
 bump_node() {
@@ -39,9 +39,9 @@ bump_node() {
 }
 
 bump() {
-  bump_assets $1
-  bump_gemspec $1
-  bump_node $1
+  bump_assets "$1"
+  bump_gemspec "$1"
+  bump_node "$1"
 
   if [[ -n $(git status . -s) ]]; then
     git add .

@@ -14,33 +14,11 @@
 
 #archives {
   letter-spacing: 0.03rem;
-  li {
-    font-size: 1.1rem;
-    line-height: 3rem;
-    &:nth-child(odd) {
-      background-color: var(--main-wrapper-bg, #fff);
-      background-image: linear-gradient(
-        to left, #fff, #fbfbfb, #fbfbfb, #fbfbfb, #fff);
-    }
-    > div {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
 
   span.lead {
     font-size: 1.5rem;
     position: relative;
     left: 8px;
-
-    &:not(:first-child) {
-      position: relative;
-      left: 4px;
-      &::after {
-        left: 67px;
-      }
-    }
 
     &::after { /* Year dot */
       content: "";
@@ -59,7 +37,63 @@
       box-shadow: 0 0 2px 0 #c2c6cc;
       z-index: 1;
     }
+
+    &:not(:first-child) {
+      position: relative;
+      left: 4px;
+      &::after {
+        left: 67px;
+      }
+    }
+
   } // #archives span.lead
+
+  ul {
+    li {
+      font-size: 1.1rem;
+      line-height: 3rem;
+
+      div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        a {
+          /* post title in Archvies */
+          margin-left: 2.5rem;
+          position: relative;
+          top: 0.1rem;
+        }
+      }
+
+      &:nth-child(odd) {
+        background-color: var(--main-wrapper-bg, #fff);
+        background-image: linear-gradient(to left, #fff, #fbfbfb, #fbfbfb, #fbfbfb, #fff);
+      }
+
+      &::after {
+        @extend %date-timeline;
+
+        height: 2.8rem;
+        top: -1.3rem;
+      }
+
+      &:first-child::before {
+        @extend %date-timeline;
+
+        height: 3.06rem;
+        top: -1.61rem;
+      }
+    }
+
+    &:not(:last-child) > li:last-child::after {
+      height: 3.4rem;
+    }
+
+    &:last-child > li:last-child::after {
+      display: none;
+    }
+  } // #archives ul
 
   .date {
     white-space: nowrap;
@@ -97,35 +131,7 @@
     }
   } // #archives .date
 
-  ul {
-    > li {
-      > div > a {
-        /* post title in Archvies */
-        margin-left: 2.5rem;
-        position: relative;
-        top: 0.1rem;
-      }
-      &::after {
-        @extend %date-timeline;
-        height: 2.8rem;
-        top: -1.3rem;
-      }
-      &:first-child::before {
-        @extend %date-timeline;
-        height: 3.06rem;
-        top: -1.61rem;
-      }
-    }
-    &:not(:last-child) > li:last-child::after {
-      height: 3.4rem;
-    }
-    &:last-child > li:last-child::after {
-      display: none;
-    }
-  } // #archives ul
-
 } // #archives
-
 
 @media all and (max-width: 576px) {
   #archives {
