@@ -183,8 +183,9 @@ compress_html:
 
 exclude:
   - vendor
-  - Gemfile.lock
   - Gemfile
+  - Gemfile.lock
+  - jekyll-theme-chirpy.gemspec
   - tools
   - docs
   - README.md
