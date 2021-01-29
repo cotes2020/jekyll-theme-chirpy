@@ -69,7 +69,6 @@ $ bash tools/init.sh
 What it does is:
 
 1. Remove some files or directories from your repository:
-
     - `.travis.yml`
     - files under `_posts`
     - folder `docs`
@@ -77,7 +76,6 @@ What it does is:
 2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`.
 
 3. Automatically create a commit to save the changes.
-
 
 ## Usage
 
@@ -157,3 +155,7 @@ $ docker run -it --rm \
 ```
 
 Unless you specified the output path, the generated site files will be placed in folder `_site` of the project's root directory. Now you should upload those files to your web server.
+
+[starter]: https://github.com/cotes2020/chirpy-starter
+[use-starter]: https://github.com/cotes2020/chirpy-starter/generate
+[workflow]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook
