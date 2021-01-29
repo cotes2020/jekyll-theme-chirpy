@@ -84,11 +84,13 @@ Then you can use it like other markdown language: surround the graph code with `
 
 ### Preview image
 
-If you want to add an image to the top of the post contents, specify the url for the image by:
+If you want to add an image to the top of the post contents, specify the url and alt attribute for the image:
 
 ```yaml
 ---
-image: /path/to/image-file
+image:
+  src: /path/to/image/file
+  alt: image alternative text
 ---
 ```
 
