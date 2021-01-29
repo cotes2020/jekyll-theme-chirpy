@@ -92,6 +92,14 @@ image: /path/to/image-file
 ---
 ```
 
+### Image tags: alt and/or title
+
+If you want to add the alt and title tags to the image post:
+```yaml
+---
+image-alt: image description
+```
+
 ### Image caption
 
 Add italics to the next line of an image，then it will become the caption and appear at the bottom of the image:
