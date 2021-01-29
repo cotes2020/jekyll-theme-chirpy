@@ -88,8 +88,18 @@ If you want to add an image to the top of the post contents, specify the url for
 
 ```yaml
 ---
-image: /path/to/image-file
+image:
+  src: /path/to/image-file
 ---
+```
+
+### Image alt attribute
+
+If you want to add the "alt attribute" to the image at the top of the post contents, specify it by:
+```yaml
+---
+image:
+  alt: image alternative text
 ```
 
 ### Image caption
