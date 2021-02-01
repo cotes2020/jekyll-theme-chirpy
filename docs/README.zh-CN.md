@@ -2,13 +2,13 @@
 
 Language: [English](https://github.com/cotes2020/jekyll-theme-chirpy#readme) | 简体中文
 
+[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)](https://rubygems.org/gems/jekyll-theme-chirpy)
 [![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8220b926db514f13afc3f02b7f884f4b)](https://app.codacy.com/manual/cotes2020/jekyll-theme-chirpy?utm_source=github.com&utm_medium=referral&utm_content=cotes2020/jekyll-theme-chirpy&utm_campaign=Badge_Grade_Dashboard)
-[![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=important)](https://rubygems.org/gems/jekyll-theme-chirpy)
+[![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg?color=blue)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
 [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-一个不一样的 Jekyll 主题，采用响应式设计，方便记录、管理、分享你的知识和经验。[懂的进 »](https://chirpy.cotes.info)
+一个不一样的 Jekyll 主题，采用响应式设计，方便记录、管理、分享您的知识和经验。[懂的进 »](https://chirpy.cotes.info)
 
 [![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/devices-mockup.png)](https://chirpy.cotes.info)
 
@@ -55,18 +55,18 @@ Language: [English](https://github.com/cotes2020/jekyll-theme-chirpy#readme) | �
 
 有二法可得此主题:
 
-- 从 [RubyGems](https://rubygems.org/gems/jekyll-theme-chirpy) 安装
-- 从 GitHub 上 Fork
+- **从 RubyGems 安装** - 易于版本升级，隔离无关的主题项目文件，让您的仓库舒适清爽。
+- **从 GitHub 上 Fork** - 对个性化二次开发友好，但是难于升级，只适合专业开发人员使用。
 
-### Rubygems 安装
+### RubyGems 安装
 
-在你的 Jekyll 站点的 `Gemfile` 添加:
+在您的 Jekyll 站点的 `Gemfile` 添加:
 
 ```ruby
 gem "jekyll-theme-chirpy"
 ```
 
-然后，添加这行到你的 Jekyll 站点的 `_config.yml`:
+然后，添加这行到您的 Jekyll 站点的 `_config.yml`:
 
 ```yaml
 theme: jekyll-theme-chirpy
@@ -78,7 +78,7 @@ theme: jekyll-theme-chirpy
 $ bundle
 ```
 
-最后, 拷贝额外所需主题的 gem 文件（详见 [starter 项目][starter] 的文件目录）至你的 Jekyll 站点, 然后把主题的 `_config.yml` 全部内容附加到你的 Jekyll 站点的同名文件。
+最后, 拷贝额外所需主题的 gem 文件（详见 [starter 项目][starter] 的文件目录）至您的 Jekyll 站点, 然后把主题的 `_config.yml` 全部内容附加到您的 Jekyll 站点的同名文件。
 
 > **提示**: 定位主题的 gem 文件，可以执行:
 >
@@ -86,7 +86,7 @@ $ bundle
 $ bundle info --path jekyll-theme-chirpy
 ```
 
-或者你可以 [使用 starter template][use-starter] 来快速创建 Jekyll 站点，以省去复制主题 gem 文件的时间。
+或者您可以 [使用 starter template][use-starter] 来快速创建 Jekyll 站点，以省去复制主题 gem 文件的时间。
 
 ### 在 GitHub 上 Fork
 
@@ -104,11 +104,11 @@ $ bundle
 $ bash tools/init.sh
 ```
 
-> 如果你不打算部署到 GitHub Pages, 在上述命令后附加参数选项 `--no-gh`。
+> 如果您不打算部署到 GitHub Pages, 在上述命令后附加参数选项 `--no-gh`。
 
 上述脚本完成了以下工作:
 
-1. 从你的仓库中删除了:
+1. 从您的仓库中删除了:
     - `.travis.yml`
     - `_posts` 下的文件
     - `docs` 目录
@@ -126,7 +126,7 @@ $ bash tools/init.sh
 - `url`
 - `avatar`
 - `timezone`
-- `theme_mode`
+- `lang`
 
 ### 本地运行
 
@@ -149,9 +149,9 @@ $ docker run -it --rm \
 
 ### 部署
 
-部署开始前，把  `_config.yml` 的 `url` 改为 `https://<username>.github.io`(或者你的私有域名，如：`https://yourdomain.com`)。另外，如果你想使用 [Project 类型网站](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites)，修改配置文件的 `baseurl` 为项目名称，以斜杠开头，如：`/project`。
+部署开始前，把  `_config.yml` 的 `url` 改为 `https://<username>.github.io`(或者您的私有域名，如：`https://yourdomain.com`)。另外，如果您想使用 [Project 类型网站](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites)，修改配置文件的 `baseurl` 为项目名称，以斜杠开头，如：`/project`。
 
-现在你可以选择下列其中一个方式去站点部署。
+现在您可以选择下列其中一个方式去站点部署。
 
 #### 部署到 GitHub Pages
 
@@ -159,10 +159,10 @@ $ docker run -it --rm \
 
 快速检查 GitHub Actions 构建需要的文件:
 
-1. 确保你的 Jekyll 站点存在文件 `/.github/workflows/pages-deploy.yml`。没有的话，新建并填入[示例工作流][workflow]的内容, 注意参数 `on.push.branches` 的值必须和你的仓库默认分支名相同。
-2. 检查你的 Jekyll 站点是否有文件 `/tools/test.sh` 和 `/tools/deploy.sh`. 没有的话, 从本仓库拷贝到你的 Jekyll 项目.
+- 确保您的 Jekyll 站点存在文件 `.github/workflows/pages-deploy.yml`。没有的话，新建并填入[示例工作流][workflow]的内容, 注意参数 `on.push.branches` 的值必须和您的仓库默认分支名相同。
+- 检查您的 Jekyll 站点是否有文件 `tools/test.sh` 和 `tools/deploy.sh`. 没有的话, 从本仓库拷贝到您的 Jekyll 项目.
 
-在 GitHub 把你的仓库命名为 `<GH-USERNAME>.github.io`，然后：
+在 GitHub 把您的仓库命名为 `<GH-USERNAME>.github.io`，然后开始发布：
 
 1. 推送任意一个 commit 到 `origin/master` 以触发 GitHub Actions workflow。一旦 build 完毕并且成功，远端将会自动出现一个新分支 `gh-pages` 用来存储构建的站点文件。
 
@@ -170,7 +170,7 @@ $ docker run -it --rm \
 
     ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190809/gh-pages-sources.png)
 
-3. 按照 GitHub 指示的地址去访问你的网站。
+3. 按照 GitHub 指示的地址去访问您的网站。
 
 #### 部署到其他 Pages 平台
 

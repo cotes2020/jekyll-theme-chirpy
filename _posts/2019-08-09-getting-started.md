@@ -15,10 +15,10 @@ Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete th
 
 There are two ways to get the theme:
 
-- Install from [RubyGems](https://rubygems.org/gems/jekyll-theme-chirpy)
-- Fork from GitHub
+- **Install from RubyGems** - Easy to upgrade, isolate irrelevant project files so you can focus on writing.
+- **Fork from GitHub** - Convenient for custom development, but difficult to upgrade, only suitable for web developers.
 
-### Install From Rubygems
+### Install From RubyGems
 
 Add this line to your Jekyll site's `Gemfile`:
 
@@ -38,15 +38,15 @@ And then execute:
 $ bundle
 ```
 
-Finally, copy the extra files (refer to the [starter project][starter] for the detailed file directory structure) from the theme's gem to your Jekyll site, and append all the variables of the theme's `_config.yml` to your Jekyll site.
+Finally, copy the required files from the theme's gem (for detailed files, see [starter project][starter]) to your Jekyll site.
 
-> **Hint**: To locate the theme’s gem, execute:
+> **Hint**: To locate the installed theme’s gem, execute:
 >
 ```console
 $ bundle info --path jekyll-theme-chirpy
 ```
 
-Or you can [use the starter template][use-starter] to create a Jekyll site to save time copying contents from theme's gem.
+Or you can [**use the starter template**][use-starter] to create a Jekyll site to save time copying files from theme's gem. We have prepared everything for you there!
 
 ### Fork From GitHub
 
@@ -86,7 +86,7 @@ Update the variables of `_config.yml` as needed. Some of them are typical option
 - `url`
 - `avatar`
 - `timezone`
-- `theme_mode`
+- `lang`
 
 ### Running Local Server
 
@@ -119,12 +119,12 @@ For security reasons, GitHub Pages build runs on `safe` mode, which restricts us
 
 Quickly check the files needed for GitHub Actions build:
 
-1. Ensure your Jekyll site has the file `/.github/workflows/pages-deploy.yml`. Otherwise, create a new one and fill in the contents of the [workflow file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name.
-2. Ensuer your Jekyll site has file `/tools/test.sh` and `/tools/deploy.sh`. Otherwise, copy them from this repo to your Jekyll site.
+- Ensure your Jekyll site has the file `.github/workflows/pages-deploy.yml`. Otherwise, create a new one and fill in the contents of the [workflow file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name.
+- Ensuer your Jekyll site has file `tools/test.sh` and `tools/deploy.sh`. Otherwise, copy them from this repo to your Jekyll site.
 
-Next, rename your repoistory to `<GH-USERNAME>.github.io` on GitHub.
+And then rename your repoistory to `<GH-USERNAME>.github.io` on GitHub.
 
-And then publish your Jekyll site by:
+Now publish your Jekyll site by:
 
 1. Push any commit to remote to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
 
