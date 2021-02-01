@@ -15,14 +15,12 @@ timezone: Asia/Seoul
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: Chirpy                          # the main title
+title: You May Also Like                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: 사람, 사회, 콘텐츠, 데이터   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  추천 시스템, 왓챠, recommender system, 박지민
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://ziminpark.github.io'
@@ -71,7 +69,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   light # [light|dark]
+theme_mode:   dark # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -81,7 +79,7 @@ theme_mode:   light # [light|dark]
 img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/avatar.jpg
+avatar: https://avatars.githubusercontent.com/u/48933016?s=400&u=dc1cda495ed580b41787d2a3f0b64fd3e093efe2&v=4
 
 # boolean type, the global switch for ToC in posts.
 toc: true

@@ -1425,7 +1425,7 @@ $sidebar-display: "sidebar-display";
   #main > div.row {
     padding-left: calc((100% - #{$main-content-max-width}) / 2);
     > div.col-xl-8 {
-      max-width: 850px;
+      max-width: 950px;
     }
   }
 
