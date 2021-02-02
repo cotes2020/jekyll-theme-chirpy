@@ -26,14 +26,20 @@ NODE_META="package.json"
 
 _check_src() {
   if [[ ! -f $1 && ! -d $1 ]]; then
-    echo -e "Error: missing file \"$1\"!\n"
+    echo -e "Error: Missing file \"$1\"!\n"
     exit -1
   fi
 }
 
 check() {
   if [[ -n $(git status . -s) ]]; then
-    echo "Warning: commit unstaged files first, and then run this tool againt."
+    echo "Error: Commit unstaged files first, and then run this tool againt."
+    exit -1
+  fi
+
+  # ensure the current branch is 'master'
+  if [[ "$(git branch --show-current)" != "master" ]]; then
+    echo "Error: This operation must be performed on the 'master' branch!"
     exit -1
   fi
 
@@ -76,13 +82,51 @@ bump() {
 }
 
 build_gem() {
+  rm -f ./*.gem
   gem build "$GEM_SPEC"
+}
+
+release() {
+  _version="$1"
+  _major=""
+  _minor=""
+
+  IFS='.' read -r -a array <<< "$_version"
+
+  for elem in "${array[@]}"; do
+    if [[ -z $_major ]]; then
+      _major="$elem"
+    elif [[ -z $_minor ]]; then
+      _minor="$elem"
+    else
+      break
+    fi
+  done
+
+  _release_branch="$_major-$_minor-stable"
+
+  if [[ -z $(git branch -v | grep "$_release_branch") ]]; then
+    git checkout -b "$_release_branch"
+  else
+    git checkout "$_release_branch"
+    # cherry-pick the latest 2 commit from master to release branch
+    git cherry-pick "$(git rev-parse master~1)" "$(git rev-parse master)"
+  fi
+
+  echo -e "Create tag v$_version\n"
+  git tag "v$_version"
+
+  build_gem
+
+  # head back to master branch
+  git checkout master
+
 }
 
 main() {
   check
 
-  _latest_tag="$(git describe --tags --abbrev=0)"
+  _latest_tag="$(git describe --tags $(git rev-list --tags --max-count=1))"
 
   echo "Input a version number (hint: latest version is ${_latest_tag:1})"
 
@@ -98,16 +142,13 @@ main() {
     echo -e "Bump version to $_version\n"
     bump "$_version"
 
-    echo -e "Create tag v$_version\n"
-    git tag "v$_version"
-
-    build_gem
+    echo -e "Release to v$_version\n"
+    release "$_version"
 
   else
-
     echo "Error: Illegal version number: '$_version'"
-
   fi
+
 }
 
 main
