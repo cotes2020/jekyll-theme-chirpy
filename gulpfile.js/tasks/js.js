@@ -10,7 +10,7 @@ const uglify = require('gulp-uglify');
 const insert = require('gulp-insert');
 const fs = require('fs');
 
-const JS_ROOT = './assets/js';
+const JS_ROOT = 'assets/js';
 const jsDest = `${ JS_ROOT }/dist/`;
 
 function concatJs(files, output) {
