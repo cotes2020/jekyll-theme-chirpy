@@ -5,15 +5,19 @@
 #   - assets/js/.copyright.js
 #   - assets/js/dist/*.js (will be built by gulp later)
 #   - jekyll-theme-chirpy.gemspec
+#   - Gemfile.lock
 #   - package.json
 #
-# 2. Create a git-tag
+# 2. Create a git-tag on release branch
 #
 # 3. Build a rubygem package
+#
 #
 # Requires: gulp, rubygem
 
 set -eu
+
+auto_release=true
 
 ASSETS=(
   "_sass/jekyll-theme-chirpy.scss"
@@ -21,6 +25,8 @@ ASSETS=(
 )
 
 GEM_SPEC="jekyll-theme-chirpy.gemspec"
+
+GEM_LOCK="Gemfile.lock"
 
 NODE_META="package.json"
 
@@ -54,26 +60,33 @@ check() {
 _bump_assets() {
   _version="$1"
   for i in "${!ASSETS[@]}"; do
-    sed -i "s/v[[:digit:]]\.[[:digit:]]\.[[:digit:]]/v$_version/" "${ASSETS[$i]}"
+    sed -i "s/v[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/v$_version/" "${ASSETS[$i]}"
   done
 
   gulp
 }
 
 _bump_gemspec() {
-  sed -i "s/[[:digit:]]\.[[:digit:]]\.[[:digit:]]/$1/" "$GEM_SPEC"
+  sed -i "s/[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/$1/" "$GEM_SPEC"
 }
 
 _bump_node() {
   sed -i \
-    "s,[\"]version[\"]: [\"][[:digit:]]\.[[:digit:]]\.[[:digit:]][\"],\"version\": \"$1\"," \
+    "s,[\"]version[\"]: [\"][[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+[\"],\"version\": \"$1\"," \
     $NODE_META
+}
+
+_bump_gemlock() {
+  sed -i \
+    "s/jekyll-theme-chirpy ([[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/jekyll-theme-chirpy ($1/" \
+    $GEM_LOCK
 }
 
 bump() {
   _bump_assets "$1"
   _bump_gemspec "$1"
   _bump_node "$1"
+  _bump_gemlock "$1"
 
   if [[ -n $(git status . -s) ]]; then
     git add .
@@ -143,12 +156,29 @@ main() {
     bump "$_version"
 
     echo -e "Release to v$_version\n"
-    release "$_version"
+
+    if $auto_release; then
+      release "$_version"
+    fi
 
   else
     echo "Error: Illegal version number: '$_version'"
   fi
 
 }
+
+while (($#)); do
+  opt="$1"
+  case $opt in
+    -m | --manual)
+      auto_release=false
+      shift
+      ;;
+    *)
+      echo "unknown option '$opt'!"
+      exit 1
+      ;;
+  esac
+done
 
 main
