@@ -5,7 +5,7 @@ Language: [English](https://github.com/cotes2020/jekyll-theme-chirpy#readme) | �
 [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)](https://rubygems.org/gems/jekyll-theme-chirpy)
 [![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8220b926db514f13afc3f02b7f884f4b)](https://app.codacy.com/manual/cotes2020/jekyll-theme-chirpy?utm_source=github.com&utm_medium=referral&utm_content=cotes2020/jekyll-theme-chirpy&utm_campaign=Badge_Grade_Dashboard)
-[![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg?color=blue)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
 [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
 一个不一样的 Jekyll 主题，采用响应式设计，方便记录、管理、分享您的知识和经验。[懂的进 »](https://chirpy.cotes.info)
@@ -214,7 +214,11 @@ $ docker run -it --rm \
 
 ## 赞助
 
-如果您喜欢这个主题或者它对您有帮助，请考虑打赏作者：在 [项目主页](https://github.com/cotes2020/jekyll-theme-chirpy) 点击按钮 <kbd>:heart: Sponsor</kbd> 选择适合的链接即可完成（国内一般选第二个链接，支付宝/微信赞助），您的打赏将会极大地鼓励作者，并帮助作者更好地维护项目！
+如果您喜欢这个主题或者它对您有帮助，请考虑打赏作者，您的支持将会极大地鼓励作者，并帮助作者更好地维护项目！
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Support-Buy%20Me%20a%20Coffee-orange)](https://www.buymeacoffee.com/coteschung)
+[![CN Donation](https://img.shields.io/badge/Support-WeChat%20Pay-brightgreen)][cn-donation]
+[![CN Donation](https://img.shields.io/badge/Support-Alipay-blue)][cn-donation]
 
 ## 许可证书
 
@@ -223,4 +227,8 @@ $ docker run -it --rm \
 [starter]: https://github.com/cotes2020/chirpy-starter
 [use-starter]: https://github.com/cotes2020/chirpy-starter/generate
 [workflow]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook
+
+<!-- ReadMe links -->
+
 [jb]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
+[cn-donation]: https://cotes.gitee.io/alipay-wechat-donation/
