@@ -15,10 +15,10 @@ Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete th
 
 There are two ways to get the theme:
 
-- **Install from RubyGems** - Easy to upgrade, isolate irrelevant project files so you can focus on writing.
-- **Fork from GitHub** - Convenient for custom development, but difficult to upgrade, only suitable for web developers.
+- **Install from RubyGems** - Easy to update, isolate irrelevant project files so you can focus on writing.
+- **Fork on GitHub** - Convenient for custom development, but difficult to update, only suitable for web developers.
 
-### Install From RubyGems
+### Installing the Theme Gem
 
 Add this line to your Jekyll site's `Gemfile`:
 
@@ -42,15 +42,15 @@ Finally, copy the required files from the theme's gem (for detailed files, see [
 
 > **Hint**: To locate the installed theme’s gem, execute:
 >
-```console
-$ bundle info --path jekyll-theme-chirpy
-```
+> ```console
+> $ bundle info --path jekyll-theme-chirpy
+> ```
 
 Or you can [**use the starter template**][use-starter] to create a Jekyll site to save time copying files from theme's gem. We have prepared everything for you there!
 
-### Fork From GitHub
+### Fork on GitHub
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) from GitHub and clone your fork to local.
+[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub and then clone your fork to local.
 
 Install gem dependencies by:
 
