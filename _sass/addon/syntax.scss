@@ -157,7 +157,7 @@ div {
 div[class^='language-']::before {
   content: attr(lang);
   position: absolute;
-  right: 1.8rem;
+  right: 2rem;
   margin-top: 3px;
   font-size: 0.7rem;
   font-weight: 600;
@@ -168,5 +168,11 @@ div[class^='language-']::before {
 @media (min-width: 768px) {
   div[class^='language-']::before {
     right: 3.1rem;
+  }
+}
+
+@media (min-width: 1650px) {
+  div[class^='language-']::before {
+    right: 3.5rem;
   }
 }
