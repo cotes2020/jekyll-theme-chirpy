@@ -10,7 +10,7 @@ mermaid: true
 
 ## Weeaboo là cái méo gì?
 
-Theo định nghĩa của tui thì chỉ những người nước ngoài không phải dân Nhật Bản chính hiệu, có sở thích với văn hóa hoạt hình và truyện của n
+Theo định nghĩa của tui thì chỉ những người nước ngoài không phải dân Nhật Bản chính hiệu, có sở thích với văn hóa hoạt hình và truyện của Nhật
 
 Nói chung là người có sở thích với văn hóa hoạt hình, truyện,... của Nhật.
 
