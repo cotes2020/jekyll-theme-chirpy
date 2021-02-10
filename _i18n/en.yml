@@ -19,22 +19,22 @@ search:
 
 label:
   panel:
-    lastmod: Recent Update
-    trending_tags: Trending Tags
-    toc: Contents
+    lastmod: "Recent Update"
+    trending_tags: "Trending Tags"
+    toc: "Contents"
 
   post:
-    relate_posts: Further Reading
+    relate_posts: "Further Reading"
     button:
-      next: Newer
-      previous: Older
+      next: "Newer"
+      previous: "Older"
 
-  search_hint: Search   # text show on search bar
+  search_hint: "Search"   # text show on search bar
 
-  pin_prompt: Pinned   # pinned prompt
+  pin_prompt: "Pinned"   # pinned prompt
 
-  categories: categories
-  category: category
-
-  posts: posts
-  post: post
+  categories:
+    categories: "categories"
+    category: "category"
+    posts: "posts"
+    post: "post"

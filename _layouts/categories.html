@@ -56,10 +56,10 @@ layout: page
         <span class="text-muted small font-weight-light">
           {% if sub_categories_size > 0 %}
             {{ sub_categories_size }}
-            {% if sub_categories_size > 1 %}{% t label.categories %}{% else %}{% t label.category %}{% endif %},
+            {% if sub_categories_size > 1 %}{% t label.categories.categories %}{% else %}{% t label.categories.category %}{% endif %},
           {% endif %}
             {{ top_posts_size }}
-            {% if top_posts_size > 1 %}{% t label.posts %}{% else %}{% t label.post %}{% endif %}
+            {% if top_posts_size > 1 %}{% t label.categories.posts %}{% else %}{% t label.categories.post %}{% endif %}
         </span>
       </span>
 

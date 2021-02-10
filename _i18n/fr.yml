@@ -19,22 +19,22 @@ search:
 
 label:
   panel:
-    lastmod: Mis à jour récemment
-    trending_tags: Populaire
-    toc: Contenu
+    lastmod: "Mis à jour récemment"
+    trending_tags: "Populaire"
+    toc: "Contenu"
 
   post:
-    relate_posts: A lire
+    relate_posts: "A lire"
     button:
-      next: Suivant
-      previous: Précédent
+      next: "Suivant"
+      previous: "Précédent"
 
-  search_hint: Rechercher   # text show on search bar
+  search_hint: "Rechercher"   # text show on search bar
 
-  pin_prompt: Epinglé   # pinned prompt
+  pin_prompt: "Epinglé"   # pinned prompt
 
-  categories: catégories
-  category: catégorie
-
-  posts: posts
-  post: post
+  categories:
+    categories: "catégories"
+    category: "catégorie"
+    posts: "posts"
+    post: "post"
