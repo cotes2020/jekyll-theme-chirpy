@@ -85,7 +85,7 @@ Or you can [**use the starter template**][use-starter] to create a Jekyll site t
 
 ### Fork on GitHub
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub and then clone your fork to local.
+[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub and then clone your fork to local. (Please note that the default branch code is in development.  If you want the blog to be stable, please switch to the [latest tag](https://github.com/cotes2020/jekyll-theme-chirpy/tags) and start writing.)
 
 Install gem dependencies by:
 
@@ -213,9 +213,9 @@ Also, thank [JetBrains][jb] for providing the open source license.
 
 If you like this theme or find it helpful, please consider sponsoring me, because it will encourage and help me better maintain the project, I will be very grateful!
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Support-Buy%20Me%20a%20Coffee-orange)](https://www.buymeacoffee.com/coteschung)
-[![CN Donation](https://img.shields.io/badge/Support-WeChat%20Pay-brightgreen)][cn-donation]
-[![CN Donation](https://img.shields.io/badge/Support-Alipay-blue)][cn-donation]
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-orange?logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/coteschung)
+[![Wechat Pay](https://img.shields.io/badge/WeChat%20Pay-brightgreen?logo=wechat&logoColor=white)][cn-donation]
+[![Alipay](https://img.shields.io/badge/Alipay-blue?logo=alipay&logoColor=white)][cn-donation]
 
 ## License
 
