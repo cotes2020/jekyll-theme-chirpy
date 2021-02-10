@@ -32,3 +32,9 @@ label:
   search_hint: Search   # text show on search bar
 
   pin_prompt: Pinned   # pinned prompt
+
+  categories: categories
+  category: category
+
+  posts: posts
+  post: post

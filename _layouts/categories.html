@@ -56,10 +56,10 @@ layout: page
         <span class="text-muted small font-weight-light">
           {% if sub_categories_size > 0 %}
             {{ sub_categories_size }}
-            {% if sub_categories_size > 1 %}categories{% else %}category{% endif %},
+            {% if sub_categories_size > 1 %}{% t label.categories %}{% else %}{% t label.category %}{% endif %},
           {% endif %}
             {{ top_posts_size }}
-            post{% if top_posts_size > 1 %}s{% endif %}
+            {% if top_posts_size > 1 %}{% t label.posts %}{% else %}{% t label.post %}{% endif %}
         </span>
       </span>
 

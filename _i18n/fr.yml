@@ -32,3 +32,9 @@ label:
   search_hint: Rechercher   # text show on search bar
 
   pin_prompt: Epinglé   # pinned prompt
+
+  categories: catégories
+  category: catégorie
+
+  posts: posts
+  post: post
