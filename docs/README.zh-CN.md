@@ -90,7 +90,7 @@ $ bundle info --path jekyll-theme-chirpy
 
 ### 在 GitHub 上 Fork
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) 然后克隆到本地。
+[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) 然后克隆到本地。(友情提示：默认分支的代码处于开发状态，如果您想博客更加稳定，请切换到最新的 [Tag](https://github.com/cotes2020/jekyll-theme-chirpy/tags) 开始写作。)
 
 安装依赖：
 
@@ -216,9 +216,9 @@ $ docker run -it --rm \
 
 如果您喜欢这个主题或者它对您有帮助，请考虑打赏作者，您的支持将会极大地鼓励作者，并帮助作者更好地维护项目！
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Support-Buy%20Me%20a%20Coffee-orange)](https://www.buymeacoffee.com/coteschung)
-[![CN Donation](https://img.shields.io/badge/Support-WeChat%20Pay-brightgreen)][cn-donation]
-[![CN Donation](https://img.shields.io/badge/Support-Alipay-blue)][cn-donation]
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-orange?logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/coteschung)
+[![Wechat Pay](https://img.shields.io/badge/WeChat%20Pay-brightgreen?logo=wechat&logoColor=white)][cn-donation]
+[![Alipay](https://img.shields.io/badge/Alipay-blue?logo=alipay&logoColor=white)][cn-donation]
 
 ## 许可证书
 
