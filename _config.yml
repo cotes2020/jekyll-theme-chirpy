@@ -69,7 +69,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   dark # [light|dark]
+theme_mode:  light # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
