@@ -1,5 +1,5 @@
 ---
-title: Thủ thuật Hack Tiền khi đang học đại học
+title: Thủ thuật Hack Tiền khi đang học uni
 author: Thuan Pham
 date: 2020-10-14 18:51
 categories: [Blogging]
