@@ -1,0 +1,68 @@
+name: 'Automatic build'
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - .gitignore
+      - README.md
+      - LICENSE
+
+jobs:
+  continuous-delivery:
+
+    runs-on: ubuntu-latest
+
+    env:
+      GEMS_PATH: ~/vendor/bundle
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # for posts's lastmod
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+
+      - name: Bundle Caching
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.GEMS_PATH }}
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Bundle Install
+        run: |
+          bundle config path ${{ env.GEMS_PATH }}
+          bundle install --jobs 4 --retry 3
+
+      - name: Check baseurl
+        run: |
+          baseurl="$(grep '^baseurl:' _config.yml | sed "s/.*: *//;s/['\"]//g;s/#.*//")"
+          if [[ -n $baseurl ]]; then
+            echo "BASE_URL=$baseurl" >> $GITHUB_ENV
+          fi
+
+      - name: Build Site
+        env:
+          JEKYLL_ENV: production
+        run: |
+          bundle exec jekyll b -d "_site$BASE_URL"
+
+      - name: Test Site
+        run: |
+          bash tools/test.sh
+
+      - name: Deploy
+        run: |
+          if [[ -n $BASE_URL ]]; then
+            mv _site$BASE_URL _site-rename
+            rm -rf _site
+            mv _site-rename _site
+          fi
+
+          bash tools/deploy.sh
