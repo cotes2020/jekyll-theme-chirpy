@@ -2,7 +2,7 @@
 
 panel:
   lastmod: Posts recientes
-  trending_tags: Temas trending
+  trending_tags: Temas de interés
   toc: Contenido
 
 post:
@@ -14,6 +14,6 @@ post:
 
 search_hint: Busca   # text show on search bar
 
-pin_prompt: Pinned    # pinned prompt
+pin_prompt: Fijado    # pinned prompt
 
 read_time_unit: min   # see posts' time to read
