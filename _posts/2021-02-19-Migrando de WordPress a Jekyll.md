@@ -75,4 +75,3 @@ Si, bien es cierto que Jekyll quizá puede ser más complejo de poner en marcha 
 
 ***
 Recuerda que puedes seguirme en mis redes sociales
-***
