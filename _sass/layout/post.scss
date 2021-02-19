@@ -333,12 +333,6 @@
   } // .post
 }
 
-@media all and (min-width: 768px) and (max-width: 830px) {
-  .post img {
-    max-width: calc(100% + 2rem);
-  }
-}
-
 /* Hide SideBar and TOC */
 @media all and (max-width: 830px) {
   .post-navigation {
