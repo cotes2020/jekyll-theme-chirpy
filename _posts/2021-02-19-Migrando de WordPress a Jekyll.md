@@ -1,7 +1,7 @@
 ---
 title: Migración de WordPress a Jekyll
 author: Marcos Ramírez
-date: 2021-02-19 10:34:00 +0200
+date: 2021-02-19 10:34:00 +0100
 categories: [Informática, Jekyll]
 tags: [jekyll, wordpress, migración]
 pin: true
