@@ -4,5 +4,6 @@ icon: fas fa-info
 order: 1
 ---
 
+Soy Marcos Ramírez, llevo más de 25 años dedicándome desarrollo de aplicaciones web de todo tipo.
 
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+... y en breve terminaré de escribir esto ...
