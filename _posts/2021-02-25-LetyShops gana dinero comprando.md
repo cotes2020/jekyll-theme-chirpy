@@ -8,6 +8,7 @@ pin: true
 toc: true
 ---
 
+![LetyShops](/assets/img/logos/LetyShops.png)
 
 # CashBack: un gran desconocido
 
