@@ -8,8 +8,6 @@ pin: true
 toc: true
 ---
 
-Última modificación: {{ page.last-modified-date }}
-
 ![Wordpress To Jekyll](/assets/img/headers/wp2jekyll.png)
 
 Estoy migrando todos mis blogs a Jekyll, y de paso, estoy aprovechando para decidir cual(es) de ellos unificar aquí.
