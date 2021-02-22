@@ -1,5 +1,5 @@
 ---
-title: LeyShops Gana dinero comprando online
+title: LeyShops: Gana dinero comprando online
 author: Marcos Ramírez
 date: 2021-02-22 15:50:00 +0100
 categories: [Finanzas, Ahorro]
