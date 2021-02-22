@@ -216,7 +216,7 @@ $ docker run -it --rm \
 
 如果您喜欢这个主题或者它对您有帮助，请考虑打赏作者，您的支持将会极大地鼓励作者，并帮助作者更好地维护项目！
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-orange?logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/coteschung)
+[![Ko-fi](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-ff5f5f?logo=ko-fi&logoColor=white)](https://ko-fi.com/coteschung)
 [![Wechat Pay](https://img.shields.io/badge/WeChat%20Pay-brightgreen?logo=wechat&logoColor=white)][cn-donation]
 [![Alipay](https://img.shields.io/badge/Alipay-blue?logo=alipay&logoColor=white)][cn-donation]
 

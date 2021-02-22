@@ -213,7 +213,7 @@ Also, thank [JetBrains][jb] for providing the open source license.
 
 If you like this theme or find it helpful, please consider sponsoring me, because it will encourage and help me better maintain the project, I will be very grateful!
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-orange?logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/coteschung)
+[![Ko-fi](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-ff5f5f?logo=ko-fi&logoColor=white)](https://ko-fi.com/coteschung)
 [![Wechat Pay](https://img.shields.io/badge/WeChat%20Pay-brightgreen?logo=wechat&logoColor=white)][cn-donation]
 [![Alipay](https://img.shields.io/badge/Alipay-blue?logo=alipay&logoColor=white)][cn-donation]
 
@@ -229,4 +229,3 @@ This work is published under [MIT](https://github.com/cotes2020/jekyll-theme-chi
 
 [jb]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
 [cn-donation]: https://cotes.gitee.io/alipay-wechat-donation/
-
