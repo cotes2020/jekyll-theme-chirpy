@@ -89,7 +89,7 @@ toc: true
 
 disqus:
   comments: false  # boolean type, the global switch for posts comments.
-  shortname: 'marcos-ramirez.disqus.com'    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+  shortname: 'marcos-ramirez'    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 paginate: 10
 
