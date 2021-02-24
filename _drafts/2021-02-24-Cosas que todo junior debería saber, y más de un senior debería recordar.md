@@ -146,10 +146,11 @@ No cometáis este error, que estamos en 2021, y ya en los 80 se decía lo import
 
 ### programación Avanzada
 
-1. Patrones y Arquitecturas (Hexagonal, MVC, De capas, Cliente servidor, de evento,   etc.. )
-2. paradigmas (KISS, SOLID)
+1. Patrones y Arquitecturas (Hexagonal, MVC, De capas, Cliente servidor, de evento... )
+2. paradigmas (KISS, SOLID...)
 3. Guias de estilo (importantísimo)
 4. Refactorización
+5. Testing (Acostumbrarse a hacer tests, debería ser obligado)
 
 ## Herramientas que deberías aprender.
 
@@ -158,6 +159,8 @@ No cometáis este error, que estamos en 2021, y ya en los 80 se decía lo import
 3. Formatos de serialización (YAML, JSON)
 3. Integración continua
 4. Metodologías ágiles (aunque en muchas compañias no se aplica bien, eso da para otro post)
+5. Gestores de tareas (En España Jira y demás apps de Atlassian son las más usadas junto a Trello y Todoist)
+6. Sistemas de virtualización y/o contenedores (VMWare, Docker, Kubernetes)
 
 
 
