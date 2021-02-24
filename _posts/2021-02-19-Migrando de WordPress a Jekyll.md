@@ -6,6 +6,7 @@ categories: [Informática, Jekyll]
 tags: [jekyll, wordpress, migración]
 pin: true
 toc: true
+permalink: /:title/
 ---
 
 ![Wordpress To Jekyll](/assets/img/headers/wp2jekyll.png)
