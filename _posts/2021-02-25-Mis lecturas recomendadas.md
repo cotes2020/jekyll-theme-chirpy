@@ -1,7 +1,7 @@
 ---
 title: Mis lecturas recomendadas
 author: Marcos Ramírez
-date: 2021-02-25 20:00:00 +0100
+date: 2021-02-25 21:00:00 +0100
 categories: [Personal, Lectura]
 tags: [libros, recomendados, recomendaciones, lectura, programación, informática]
 pin: true
