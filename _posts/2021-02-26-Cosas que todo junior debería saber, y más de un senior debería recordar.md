@@ -206,6 +206,23 @@ YAML se usa en cientos de aplicaciones, por no decir casi todas, como formato de
 
 Esto he dudado en si incluirlo o no, pero ... en realidad, te dediques a lo que te dediques, creo que saber usar VMWare, Docker, o Kubernetes, solo puede darte ventajas.
 
+# BONUS
+
+Tenemos una profesión priviligiada, y, aunque soy consciente de que, quizá hablo desde una posición aún más privilegiada, me voy a permitir aconsejarte que elijas bien donde trabajar, y con quien, nuestra profesión nos permite, en mayor o menor medida, darnos el lujo de elegir, y deberías aprovecharlo.
+
+Por ello, ten en cuenta las "miserias" normales de cualquier empresa de desarrollo.
+
+Y, un primer paso para evitarlas es pregunta directamente sobre esto en las entrevistas, no tengas miedo.
+
+
+
+## Los EGOs
+
+Para mi, uno de los mayores problemas del sector, son los EGOs, lidiar con alguien con mucho EGO siendo Junior, puede ser bastante infierno...
+
+## Cultura empresarial
+
+Esto va a gustos, a unos les gusta una cultura como la de Google... a otros, como a mi, les parece horrorosa, infórmate bien antes de entrar.
 
 
 Eso es todo, espero que te haya servido de ayuda, y, si tienes algún aporte que hacer, o alguna pregunta, no dudes en comentar,
