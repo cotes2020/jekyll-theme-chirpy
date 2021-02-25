@@ -10,7 +10,7 @@ toc: true
 
 # Disclaimer
 
-Para los de piel fina: este post, va dirigido tanto a personas que han decidido empezar a estudiar programación, sin contar con ningún tipo de "background", como a quien ya ha aprendido lo básico (juniors), y a todo Senior que quiera leerlo, y aportar su granito de arena, o sus 2 cents... como queráis decirlo.
+Para los de piel fina: este post, va dirigido tanto a personas que han decidido empezar a estudiar programación, sin contar con ningún tipo de "background", como a quien ya ha aprendido lo básico (juniors), y a todo Senior que quiera leerlo, y aportar su granito de arena, o sus 2 cents... como queráis decirlo, o recordar algunas cosas, que quizá haya olvidado.
 
 Habrá cosas subjetivas, basadas en mi prisma, obviamente, pero la intención es aportar algo de mi experiencia para intentar ayudar.
 
@@ -18,9 +18,8 @@ Habrá cosas subjetivas, basadas en mi prisma, obviamente, pero la intención es
 
 Este post iba a ser un vídeo[^1] en respuesta a este Tweet:
 
-```HTML
 <blockquote class="twitter-tweet"><p lang="es" dir="ltr">Al aprender programación debería haber una clase en la que te digan que no todo es código y hay millones de configuraciones, cosas locas al rededor y entornos que te van a hacer la vida triste y que tienes que aprender también (y es horrible) y no solo te vas a frustrar por bugs</p>&mdash; 🐣 Ari 🐙 (@Ari_Reinventada) <a href="https://twitter.com/Ari_Reinventada/status/1351475565388312578?ref_src=twsrc%5Etfw">January 19, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-```
+
 
 Pero, escribir es mucho más rápido que grabar y editar vídeo, y como de todos modos tenía que escribir el "guión", he decidido responder
 por escrito, de momento... en algún momento grabaré este video, y otros tantos pendientes, y adeudados.
@@ -168,7 +167,7 @@ Eso es todo, espero que te haya servido de ayuda, y, si tienes algún aporte que
 
 ---
 
-[^1]: Pero con lo paquete que soy editando vídeo, sumado a mi enfermiza autoexigencia, tardo la vida en grabar, editar y publicar cualquier cosa.
+[^1]: Pero con lo paquete que soy editando vídeo, sumado a mi enfermiza autoexigencia, tardo la vida en grabar, editar y publicar cualquier cosa, sobretodo por el tiempo que empleo en aprender a editar del modo que quiero.
 [^2]: Curiosamente, desde mi espectro, solo veo gente que ha decidido dedicarse, o empezar, por el FrontEnd web, me gustaría que me comentáseis otros casos, solo por simple curiosidad estadística, no me creo que el 100% haya elegido FrontEnd :)
 [^3]: Podría decir NINGUNO, pero yo suelo buscar lenguaje que provoque reacciones en la gente.
 [^4]: Para los de piel fina, una vez más, hablo de quien no sabe nada de nada, si ya sabes, el trabajo de gente como los chicos de [CodelyTV](https://codely.tv/){:target="_blank"}, es la caña. si
