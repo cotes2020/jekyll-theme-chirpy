@@ -3,7 +3,7 @@ title: Cosas que todo Junior debería saber, y más de un Senior debería record
 author: Marcos Ramírez
 date: 2021-02-24 18:00:00 +0100
 categories: [Informática, programación, Formación]
-tags: [junior, programación, conocimientos, básicos]
+tags: [junior, programación, conocimientos, básicos, aprender, programar, cursos, camp, codecamp]
 pin: false
 toc: true
 ---

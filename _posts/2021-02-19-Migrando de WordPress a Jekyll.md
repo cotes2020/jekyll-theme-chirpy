@@ -6,6 +6,7 @@ categories: [Informática, Jekyll]
 tags: [jekyll, wordpress, migración]
 pin: true
 toc: true
+excerpt_separator: <!--more-->
 permalink: /:title/
 ---
 
@@ -15,7 +16,7 @@ Estoy migrando todos mis blogs a Jekyll, y de paso, estoy aprovechando para deci
 El proceso llevará algo de, o bastante, tiempo.
 
 Por ello, en los próximos días (semanas, meses...) veréis publicados posts antiguos, y/o de otros blogs
-
+<!--more-->
 ## ¿Por qué?
 
 Llevo años con varios blogs ([VivirJugando](https://VivirJugando.wordpress.com){:target="_blank", rel="nofollow"}, [VivirTecleando](https://vivirtecleando.wordpress.com){:target="_blank"}, [VivirEmprendiendo](https://VivirEmprendiendo.wordpress.com){:target="_blank"} , etc... ) , todos ellos en WordpPress, tanto hospedados por WordPress.com como por mí.
