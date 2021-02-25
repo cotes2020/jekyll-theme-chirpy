@@ -215,7 +215,6 @@ Por ello, ten en cuenta las "miserias" normales de cualquier empresa de desarrol
 Y, un primer paso para evitarlas es pregunta directamente sobre esto en las entrevistas, no tengas miedo.
 
 
-
 ## Los EGOs
 
 Para mi, uno de los mayores problemas del sector, son los EGOs, lidiar con alguien con mucho EGO siendo Junior, puede ser bastante infierno...
@@ -224,6 +223,10 @@ Para mi, uno de los mayores problemas del sector, son los EGOs, lidiar con algui
 
 Esto va a gustos, a unos les gusta una cultura como la de Google... a otros, como a mi, les parece horrorosa, infórmate bien antes de entrar.
 
+
+## Lecturas recomendadas
+
+Te dejo un link a [mis lecturas recomendadas](/Mis-lecturas-recomendadas), donde pretendo crear un pequeño repositorio, espero que colaborativo, de cosas interesantes.
 
 Eso es todo, espero que te haya servido de ayuda, y, si tienes algún aporte que hacer, o alguna pregunta, no dudes en comentar,
 
