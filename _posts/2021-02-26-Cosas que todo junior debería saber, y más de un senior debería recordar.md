@@ -1,7 +1,7 @@
 ---
 title: Cosas que todo Junior debería saber, y más de un Senior debería recordar.
 author: Marcos Ramírez
-date: 2021-02-24 18:00:00 +0100
+date: 2021-02-26 18:00:00 +0100
 categories: [Informática, programación, Formación]
 tags: [junior, programación, conocimientos, básicos, aprender, programar, cursos, camp, codecamp]
 pin: false
@@ -145,21 +145,66 @@ No cometáis este error, que estamos en 2021, y ya en los 80 se decía lo import
 
 ### programación Avanzada
 
-1. Patrones y Arquitecturas (Hexagonal, MVC, De capas, Cliente servidor, de evento... )
-2. paradigmas (KISS, SOLID...)
-3. Guias de estilo (importantísimo)
-4. Refactorización
-5. Testing (Acostumbrarse a hacer tests, debería ser obligado)
+Este es un breve resumen de lo que considero que deberías aprender, cada cosa daría al menos para un post completo, por lo que esto únicamente pretendo que sirva para que tengas de donde empezar a tirar del hilo
 
-## Herramientas que deberías aprender.
+#### Patrones y Arquitecturas
 
-1. Linters
-2. MarkUp languajes (MarkDown)
-3. Formatos de serialización (YAML, JSON)
+Las más usadas a día de hoy, podríamos decir que son la hexagonal, o MVC (aunque empieza a estar en desuso), pero tampoco está de más que aprendas otras como las de capas, Cliente servidor, de evento...
+
+#### Paradigmas
+
+Lo mismo de antes, SOLID es la más extendida a día de hoy, pero por ejemplo, yo lo primero que aprendí fué KISS, que si te paras a pensarlo, en el fondo, no dista mucho de la S de Solid, de todo se puede aprender algo, por lo que mi recomendación siempre será que cuanta más teoria, mejor.
+
+
+#### Refactorización
+
+Cuando tengas cieta soltura, empezar a aprender a refactorizar, es de lo más importante que podrás aprender, yo aconsejo empezar a refactorizar cosas simples, normalmente, corrigiendo los errores típicos de Junior (implemetar clausulas de guarda, implementar TDA, y... demás cosas simples)
+
+#### Testing
+
+Sin entrar en TDD, acostumbrarse a escribir tests, debería ser obligado, aunque también hay que tener cuidado en no caer en el exceso, el testing es casi un arte. Y algo que debes dominar.
+
+#### Guias de estilo
+
+Parece una tontería, pero ceñirse a una guía de estilo (incluso cuando no nos gueste ese estilo determinado), simplifica mucho la tarea, e incluso chorradas como definir si tabuladores o espacios (la eterna y absurda "pelea", que dejó de tener sentido hace mil años, a no ser que hablemos a la hora de teclear)
+
+
+
+## Otras cosas que deberías aprender.
+
+Aquí os dejo algunas cosillas útiles, e incluso alguna molona, por si estoy dando mucho el tostón
+
+
+### Metodologías ágiles
+
+Las más usadas son SCRUM y Kanban, y aquí tengo un conflicto... por que, en realidad, o al menos en mi experiencia, muy, muy, muy pocas empresas lo aplican correctamente, a la hora de la verdad, se limitan a meter tareas en sprints... y bueno, sobre esto, ya hablaré en otro post, pero deberías saber bien en que consiste.
+
+(aunque en muchas compañias no se aplica bien, eso da para otro post)
+
+### Gestores de tareas y/o proyectos
+
+En España (y posiblemente en medio mundo) Jira y el ecosistema de Atlasian es el más usado, verte unos tutoriales y aprender a exprimirlo, te simplificará bastante la vida.
+
+Trello y Todoist también es relativamente frecuente encontrarlos en algunas empresas.
+
+### Linters
+
+Los linters simplifican la vida de manera extraordinaria en muchos casos, como, por ejemplo, cuando eres como yo, y no estás agusto con la guia de estilo de la empresa, y te da la real gana seguir usando la tuya, entonces, simplemente configuras el linter para que adapte tu estilo al de la empresa, y listo.
+
+### MarkUp languajes
+
+Lenguajes como MarkDown (y sus variantes), son útiles y ampliamente usados en muchísimas aplicaciones, y son un modo estupendo de escribir texto "bonito" de manera rápida y en cualquier sitio.
+
+### Formatos de serialización (y similares)
+
+JSON deberías saberlo ya, pero si no es así, ya sabes.
+YAML se usa en cientos de aplicaciones, por no decir casi todas, como formato de configuraciones, por lo que lo cuelo por aquí, para no crear un apartrado especial.
+
 3. Integración continua
-4. Metodologías ágiles (aunque en muchas compañias no se aplica bien, eso da para otro post)
-5. Gestores de tareas (En España Jira y demás apps de Atlassian son las más usadas junto a Trello y Todoist)
-6. Sistemas de virtualización y/o contenedores (VMWare, Docker, Kubernetes)
+
+### Sistemas de virtualización y/o contenedores
+
+Esto he dudado en si incluirlo o no, pero ... en realidad, te dediques a lo que te dediques, creo que saber usar VMWare, Docker, o Kubernetes, solo puede darte ventajas.
 
 
 
