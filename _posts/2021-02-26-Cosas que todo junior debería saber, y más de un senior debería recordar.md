@@ -77,7 +77,7 @@ Agradecería si alquien pudiese aportar más en este aspecto.
 
 Aquí, dado que hay literalmente MILES, y sin entrar en polémicas de cual es mejor, o peor, o quien directamente es un estafador, te daré un simple consejo:
 
-| Para adquirir los conocimientos básicos, te basta con ver tutoriales gratuitos online, si decides PAGAR, que sea por el TIEMPO y CONOCIMIENMTOS un PROFESOR que te resuelva dudas, no por un curso, o unos vídeos[^4] y, evidentemente busca y pide referencias de dicho profesor/escuela
+Para adquirir los conocimientos básicos, te basta con ver tutoriales gratuitos online, si decides PAGAR, que sea por el TIEMPO y CONOCIMIENMTOS un PROFESOR que te resuelva dudas, no por un curso, o unos vídeos[^4] y, evidentemente busca y pide referencias de dicho profesor/escuela
 
 ### Formación autodidacta
 
