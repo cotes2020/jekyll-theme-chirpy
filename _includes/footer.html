@@ -6,13 +6,26 @@
   <div class="d-flex justify-content-between align-items-center">
     <div class="footer-left">
       <p class="mb-0">
-        © {{ 'now' | date: "%Y" }}
+        ©
+        <!-- years range -->
+        {% assign this_year = "now" | date: "%Y" | plus: 0 %}
+        {% assign years_range = this_year %}
+        {% if site.data.rights.first_publication_year < this_year
+          and site.data.rights.first_publication_year %}
+          {{ site.data.rights.first_publication_year }} -
+        {% endif %}
+        {{ this_year }}
+        <!-- copyright owner -->
         <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
+        <!-- copyright statement -->
         {% if site.data.rights.brief %}
         <span data-toggle="tooltip" data-placement="top"
-          title="{{ site.data.rights.verbose }}">{{ site.data.rights.brief }}</span>
+          title="{{ site.data.rights.verbose }}">
+          {{ site.data.rights.brief }}
+        </span>
         {% endif %}
       </p>
+
     </div>
 
     <div class="footer-right">
