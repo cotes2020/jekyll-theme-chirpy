@@ -1,5 +1,7 @@
 name: 'Automatic build'
 on:
+  schedule:
+    - cron: '30 * * * *' # Runs every 30 mins
   push:
     branches:
       - master
