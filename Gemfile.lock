@@ -74,6 +74,8 @@ GEM
     mercenary (0.4.0)
     nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.11.1-x86_64-linux)
+      racc (~> 1.4)
     nokogumbo (2.0.4)
       nokogiri (~> 1.8, >= 1.8.4)
     parallel (1.20.1)
@@ -105,6 +107,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   html-proofer (~> 3.18)
@@ -114,4 +117,4 @@ DEPENDENCIES
   wdm (~> 0.1.1)
 
 BUNDLED WITH
-   2.2.4
+   2.2.11
