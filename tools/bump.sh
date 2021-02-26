@@ -44,7 +44,7 @@ check() {
   fi
 
   # ensure the current branch is 'master'
-  if [[ "$(git branch --show-current)" != "master" ]]; then
+  if [[ "$(git branch --show-current)" != "master" && manual_release == "false" ]]; then
     echo "Error: This operation must be performed on the 'master' branch!"
     exit -1
   fi
@@ -147,6 +147,17 @@ release() {
 
 }
 
+help() {
+  echo "Bump new version to Chirpy project"
+  echo "Usage:"
+  echo
+  echo "   bash /path/to/bump.sh [options]"
+  echo
+  echo "Options:"
+  echo "     -m, --manual         Manual relase, bump version only."
+  echo "     -h, --help           Print this help information."
+}
+
 main() {
   check
 
@@ -178,6 +189,10 @@ while (($#)); do
     -m | --manual)
       manual_release=true
       shift
+      ;;
+    -h | --help)
+      help
+      exit 0
       ;;
     *)
       echo "unknown option '$opt'!"
