@@ -23,7 +23,7 @@ Por ello, voy a dividir este post en géneros y tendréis a la derecha un menú 
 
 # Programación
 
-1. ***[Clean Code](https://amzn.to/3aPT5VQ){:rel="nofollow", target="_blank"}***: Lo tienes disponible en [Castellano](https://amzn.to/3syncHv){:rel="nofollow", target="_blank"} ([Código Limpio])(https://amzn.to/3syncHv){:rel="nofollow", target="_blank"} o en [Ingles](https://amzn.to/3aPT5VQ){:rel="nofollow", target="_blank"}, y para mí, es el primer libro que todo programador debería leer, por que habla de algo, para mí, importántisimo, que son CONCEPTOS. y no lenguajes. lo que aprenderás en este libro, podrás aplicarlo a cualquier lenguaje.
+1. ***[Clean Code](https://amzn.to/3aPT5VQ){:rel="nofollow", target="_blank"}***: Lo tienes disponible en [Castellano](https://amzn.to/3syncHv){:rel="nofollow", target="_blank"} [(Código Limpio)](https://amzn.to/3syncHv){:rel="nofollow", target="_blank"} o en [Ingles](https://amzn.to/3aPT5VQ){:rel="nofollow", target="_blank"}, y para mí, es el primer libro que todo programador debería leer, por que habla de algo, para mí, importántisimo, que son CONCEPTOS. y no lenguajes. lo que aprenderás en este libro, podrás aplicarlo a cualquier lenguaje.
 
 2. ***[The Clean Coder](https://amzn.to/2ZPOaOj){:rel="nofollow", target="_blank"}***: Disponible solo inglés, hasta donde yo sé, es la evolución del primero, sobre Roobert C. Martin hay polémica, pero a mi parecer, tiene cosas muy interesantes (y otras no tanto), pero debes ser tú quien lo lea y juzgue qué conocmientos adquiridos le parecen útiles y cuales no.
 
