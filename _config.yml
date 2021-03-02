@@ -14,16 +14,15 @@ lang: es-ES
 timezone: Europe/Madrid
 future: false  # This enables future posts :facepalm:
 
+
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
 title: Marcos Ramírez                          # the main title
-
 tagline: Software Engineer   # it will display as the sub-title
-
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  Blog personal de Marcos Ramírez, ingeniero de software, posts de programación,
+  teconología, life style, y también verás micurriculum y portfolio
+excerpt_separator: <!--more-->
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://blog.marcosramirez.info'
@@ -31,7 +30,7 @@ url: 'https://blog.marcosramirez.info'
 author: Marcos Ramirez                  # change to your full name
 
 github:
-  username: marcosramirez             # change to your github username
+  username: MarcosRamirez             # change to your github username
 
 twitter:
   username: ImMarcosRamirez            # change to your twitter username
