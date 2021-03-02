@@ -20,14 +20,22 @@ Y añadiendo esto:
 ```YAML
 on:
   schedule:
-    - cron: '30 * * * *' # Runs every 30 mins
+    - cron: '*/30 * * * *' # Runs every 30 mins
 
 ```
 
 Con esto, forzaremos un build cada media hora, que hará que ahora ya sí se publiquen los posts programados.
 
-***Y ahora ya solo tendrás que escribir y hacer push de tus posts con fecha futura, y se publicarán automáticamente***.
 
+Otra opción (menos elegante), es forzar el rebuild, ejecutando un push vacío desde nuestro local, o donde sea:
+
+```bash
+git commit -m 'Force Rebuild' --allow-empty
+git push origin <branch-name>
+```
+
+
+***Y ahora ya solo tendrás que escribir y hacer push de tus posts con fecha futura, y se publicarán automáticamente***.
 
 
 
