@@ -17,7 +17,7 @@ El primer problema "serio", que me he encontrado con Jekyll, es que no podía pr
 
 Y añadiendo esto:
 
-```YAML
+```yaml
 on:
   schedule:
     - cron: '*/30 * * * *' # Runs every 30 mins
