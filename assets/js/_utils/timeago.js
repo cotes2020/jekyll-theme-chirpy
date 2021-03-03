@@ -10,13 +10,14 @@ $(function() {
 
   let intervalId = void 0;
 
-  function timeago(iso, isLastmod) {
+  function timeago(iso, prepData) {
     let now = new Date();
     let past = new Date(iso);
+    let prep = (typeof prepData !== "undefined" ? `${prepData} ` : "");
 
     if (past.getFullYear() !== now.getFullYear()) {
       toRefresh -= 1;
-      return past.toLocaleString("en-US", {
+      return prep + past.toLocaleString("en-US", {
         year: "numeric",
         month: "short",
         day: "numeric"
@@ -25,7 +26,7 @@ $(function() {
 
     if (past.getMonth() !== now.getMonth()) {
       toRefresh -= 1;
-      return past.toLocaleString("en-US", {
+      return prep + past.toLocaleString("en-US", {
         month: "short",
         day: "numeric"
       });
@@ -55,11 +56,9 @@ $(function() {
   function updateTimeago() {
     $(".timeago").each(function() {
       if ($(this).children("i").length > 0) {
-        $(this).text();
-        let isLastmod = $(this).hasClass("lastmod");
         let node = $(this).children("i");
         let date = node.text(); /* ISO Date: "YYYY-MM-DDTHH:MM:SSZ" */
-        $(this).text(timeago(date, isLastmod));
+        $(this).text(timeago(date, $(this).attr("prep")));
         $(this).append(node);
       }
     });

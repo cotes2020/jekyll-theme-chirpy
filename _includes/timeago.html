@@ -1,5 +1,6 @@
 <!--
   Date format snippet
+  See: /assets/js/_utils/timeage.js
 -->
 
 {% assign tooltip_df = site.data.date_format.tooltip | default: '%a, %b %e, %Y, %l:%M %p %z' %}
@@ -11,7 +12,10 @@
     data-toggle="tooltip"
     data-placement="bottom"
     title="{{ include.date | date: tooltip_df }}"
-  {% endif %}>
+  {% endif %}
+
+  {% if include.prefix %}prefix="{{ include.prefix }} "{% endif%}
+  {% if include.prep %}prep="{{ include.prep }}"{% endif %} >
 
   {% assign this_year = site.time | date: "%Y" %}
   {% assign post_year = include.date | date: "%Y" %}
