@@ -25,7 +25,7 @@ jobs:
         os: [ubuntu-latest, macos-latest]
 
     env:
-      GEMS_PATH: ~/vendor/bundle
+      GEMS_PATH: vendor/bundle
 
     steps:
       - name: Checkout
