@@ -14,19 +14,18 @@ layout: default
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published date and author -->
         <div>
-          {% include timeago.html date=page.date tooltip=true %}
-          by
-          <span class="author">
+          <span class="semi-bold">
             {{ page.author | default: site.author }}
           </span>
+          {% include timeago.html date=page.date prep="on" tooltip=true %}
         </div>
 
         <div>
           <!-- lastmod -->
           {% if page.last_modified_at %}
           <span>
-            Updated
-            {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
+            {% include timeago.html date=page.last_modified_at
+              class="lastmod" prefix="Updated" tooltip=true %}
           </span>
           {% endif %}
 
