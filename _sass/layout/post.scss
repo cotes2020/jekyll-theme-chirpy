@@ -70,11 +70,13 @@
     @include btn-post-nav;
 
     color: var(--link-color);
+
     &:hover {
       background: #2a408e;
       color: #fff;
       border-color: #2a408e;
     }
+
     &.disabled {
       @include btn-post-nav;
 
@@ -82,18 +84,33 @@
       cursor: not-allowed;
       background: none;
       color: gray;
+
       &:hover {
         border-color: none;
       }
     }
+
     &.btn-outline-primary.disabled:focus {
       box-shadow: none;
     }
+
     &::before {
       color: var(--text-muted-color);
       font-size: 0.65rem;
       text-transform: uppercase;
       content: attr(prompt);
+    }
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      left: 0.5px;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      right: 0.5px;
     }
   }
 
@@ -102,19 +119,6 @@
     line-height: 1.5rem;
     margin-top: 0.3rem;
     white-space: normal;
-  }
-
-  a {
-    &:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      left: 0.5px;
-    }
-    &:last-child {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      right: 0.5px;
-    }
   }
 
 } // .post-navigation
