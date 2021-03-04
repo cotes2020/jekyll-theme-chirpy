@@ -1,6 +1,10 @@
 name: "Intercept bad issue/PRs"
 
-on: [issues, pull_request]
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
 
 jobs:
   autoclose:
@@ -10,7 +14,7 @@ jobs:
       uses: roots/issue-closer@v1.1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-pattern: "\\[x\\] I have read"
+        issue-pattern: "(\\[x\\]|\\[X\\]) I have read"
         issue-close-message: ":wave: Hi @${issue.user.login},\n\nThis issue is being automatically closed because it does not follow the issue template."
-        pr-pattern: "\\[x\\] Bug|\\[x\\] New feat|\\[x\\] Break|\\[x\\] Doc|@dependabot"
+        pr-pattern: "(\\[x\\]|\\[X\\]) (Bug fix|New feature|Breaking change|Documentation update)|@dependabot"
         pr-close-message: ":wave: Hi @${pull_request.user.login},\n\nThis PR is being automatically closed because it does not follow the PR template."
