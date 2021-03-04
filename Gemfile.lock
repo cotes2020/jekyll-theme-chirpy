@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jekyll-theme-chirpy (3.2.1)
+    jekyll-theme-chirpy (3.2.2)
       jekyll (~> 4.1)
       jekyll-archives (~> 2.2)
       jekyll-paginate (~> 1.1)
