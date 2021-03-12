@@ -120,7 +120,7 @@ For security reasons, GitHub Pages build runs on `safe` mode, which restricts us
 Quickly check the files needed for GitHub Actions build:
 
 - Ensure your Jekyll site has the file `.github/workflows/pages-deploy.yml`. Otherwise, create a new one and fill in the contents of the [workflow file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name.
-- Ensuer your Jekyll site has file `tools/test.sh` and `tools/deploy.sh`. Otherwise, copy them from this repo to your Jekyll site.
+- Ensure your Jekyll site has file `tools/test.sh` and `tools/deploy.sh`. Otherwise, copy them from this repo to your Jekyll site.
 
 And then rename your repoistory to `<GH-USERNAME>.github.io` on GitHub.
 
