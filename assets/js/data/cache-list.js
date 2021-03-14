@@ -60,6 +60,7 @@ const exclude = [
   {%- if site.google_analytics.pv.proxy_url and site.google_analytics.pv.enabled -%}
     '{{ site.google_analytics.pv.proxy_url }}',
   {%- endif -%}
+  'https://www.google-analytics.com',
   '/assets/js/data/pageviews.json',
   '/img.shields.io/'
 ];
