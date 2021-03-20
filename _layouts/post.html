@@ -15,7 +15,7 @@ layout: default
         <!-- Published date and author -->
         <div>
           <span class="semi-bold">
-            {{ page.author | default: site.author }}
+            {{ page.author | default: site.social.name }}
           </span>
           {% include timeago.html date=page.date prep="on" tooltip=true %}
         </div>
