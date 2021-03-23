@@ -19,11 +19,12 @@ const include = [
   '{{ "/sw.js" | relative_url }}',
 
   /* --- HTML --- */
-
+  '{{ "/index.html" | relative_url }}',
+  '{{ "/404.html" | relative_url }}',
   {% for tab in site.tabs %}
     '{{ tab.url }}',
   {% endfor %}
-  '{{ "/404.html" | relative_url }}',
+
 
   /* --- Icons --- */
 
