@@ -116,11 +116,10 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 1. Clone the **Google Analytics superProxy** project on Github: <https://github.com/googleanalytics/google-analytics-super-proxy> to your local.
 
 2. Remove the first 2 lines in the [`src/app.yaml`](https://github.com/googleanalytics/google-analytics-super-proxy/blob/master/src/app.yaml#L1-L2) file:
-
-    ```yaml
-    -application: your-project-id
-    -version: 1
-    ```
+  ```diff
+- application: your-project-id
+- version: 1
+  ```
 
 3. In `src/config.py`, add the `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` that you gathered from you App Engine Dashboard.
 
