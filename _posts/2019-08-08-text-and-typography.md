@@ -101,6 +101,10 @@ Click the hook will locate the footnote[^footnote], and here is another footnote
 ![Desktop View](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190808/mockup.png)
 _Full screen width and center alignment_
 
+- Lightbox (with caption)
+{% lightbox https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190808/mockup.png --thumb="https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190808/mockup.png" --data="appfoundry_image_set" --title="Image opening in a lightbox" --alt="This is my image" --img-style="max-width:80%;" --class="yourclass" %}
+_Full screen width and center alignment_
+
 <br>
 
 - Specify width
