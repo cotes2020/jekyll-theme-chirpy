@@ -12,18 +12,6 @@ A minimal, sidebar, responsive web design Jekyll theme that focuses on text pres
 
 [![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/devices-mockup.png)](https://chirpy.cotes.info)
 
-## Table of Contents
-
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
-- [Credits](#credits)
-- [Support](#support)
-- [License](#license)
-
 ## Features
 
 - Pinned Posts
@@ -207,13 +195,11 @@ This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Boot
 
 Also, thank [JetBrains][jb] for providing the open source license.
 
-[![JB-logo](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/jetbrains.svg)][jb]
-
-## Support
+## Sponsoring
 
 If you like this theme or find it helpful, please consider sponsoring me, because it will encourage and help me better maintain the project, I will be very grateful!
 
-[![Ko-fi](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/coteschung)
+[![Buy Me a Coffee](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-ff813f?logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/coteschung)
 [![Wechat Pay](https://img.shields.io/badge/-Tip%20Me%20on%20WeChat-brightgreen?logo=wechat&logoColor=white)][cn-donation]
 [![Alipay](https://img.shields.io/badge/-Tip%20Me%20on%20Alipay-blue?logo=alipay&logoColor=white)][cn-donation]
 
