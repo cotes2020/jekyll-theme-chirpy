@@ -6,7 +6,7 @@ order: 4
 
 Engineer. Physics Teacher. 
 
-Interested in Econophysics, Applicated Mathematics, Mathematical Modeling, Investment.
+Interested in Econophysics, Applicated Mathematics, Mathematical Modeling, Investment, Blockchain Technology.
 
 Half-coder: Python, Rails.
 
@@ -22,12 +22,11 @@ Email : [jiap@hotmail.com](mailto:jiap@hotmail.com)
 
 102526 @ [Mixin Messenger](https://mixin.one/messenger)
 
-http://jiaping.blog
+https://jiaping.blog
 
 ---
 
 Donate Link
-
 
 <div class="--donate-button"
      data-button-id="9cf98bb6-8f09-45f7-a960-16dcc5ad5ad8"
