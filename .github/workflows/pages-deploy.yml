@@ -53,9 +53,9 @@ jobs:
         run: |
           bundle exec jekyll b -d "_site$BASE_URL"
 
-      - name: Test Site
-        run: |
-          bash tools/test.sh
+      # - name: Test Site
+      #   run: |
+      #     bash tools/test.sh
 
       - name: Deploy
         run: |
