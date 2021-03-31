@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" class="m-loading-icon m-loading-wipe">
+  <defs>
+    <style>
+      .m-loading-icon {
+        stroke: #343640;
+        stroke-width: 3.5;
+        stroke-linecap: round;
+        background: none;
+        vertical-align: middle;
+      }
+      .m-loading-icon .m-loading-icon-bg-path{
+        fill: none;
+        stroke: #F2F2F2;
+      }
+      .m-loading-icon .m-loading-icon-active-path{
+        fill: none;
+        stroke: #666666;
+        transform-origin: 50% 50%;
+      }
+      .m-loading-wipe .m-loading-icon-active-path{
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: 0;
+        animation: loading-wipe 1.5s ease-in-out infinite, loading-rotate 2s linear infinite;
+      }
+      .m-loading-default .m-loading-icon-active-path{
+        stroke-dasharray: 60, 150;
+        animation: loading-rotate 0.8s linear infinite;
+      }
+
+      @keyframes loading-rotate{
+        to{transform:rotate(1turn)}
+      }
+      @keyframes loading-wipe{
+        0%{
+          stroke-dasharray:1,200;
+          stroke-dashoffset:0;
+        }
+        50%{
+          stroke-dasharray:90,150;
+          stroke-dashoffset:-40px;
+        }
+        to{
+          stroke-dasharray:90,150;
+          stroke-dashoffset:-120px;
+        }
+      }
+    </style>
+  </defs>
+  <title>loading</title>
+  <g>
+  <g>
+    <circle cx="25" cy="25" r="20" class="m-loading-icon-bg-path"></circle>
+    <circle cx="25" cy="25" r="20" class="m-loading-icon-active-path"></circle>
+  </g>
+  </g>
+</svg>
