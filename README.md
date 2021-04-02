@@ -193,7 +193,7 @@ This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Boot
 
 :tada: Thanks to all the volunteers who contributed to this project, their GitHub IDs are on [this list](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors). Also, I won't forget those guys who submitted the issues or unmerged PR because they reported bugs, shared ideas or inspired me to write more readable documentation.
 
-Also, thank [JetBrains][jb] for providing the open source license.
+Last but not least, thank [JetBrains][jb] for providing the open source license.
 
 ## Sponsoring
 
