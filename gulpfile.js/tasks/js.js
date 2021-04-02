@@ -22,7 +22,7 @@ function concatJs(files, output) {
 
 function minifyJs() {
   return src(`${ jsDest }/*.js`)
-    .pipe(insert.prepend(fs.readFileSync(`${ JS_ROOT }/.copyright`, 'utf8')))
+    .pipe(insert.prepend(fs.readFileSync(`${ JS_ROOT }/_copyright`, 'utf8')))
     .pipe(uglify({output: {comments: /^!|@preserve|@license|@cc_on/i}}))
     .pipe(dest(jsDest));
 }
