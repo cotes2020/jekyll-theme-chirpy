@@ -10,10 +10,10 @@ $(function() {
 
   let intervalId = void 0;
 
-  function timeago(iso, prepData) {
+  function timeago(iso, preposition) {
     let now = new Date();
     let past = new Date(iso);
-    let prep = (typeof prepData !== "undefined" ? `${prepData} ` : "");
+    let prep = (typeof preposition !== "undefined" ? `${preposition} ` : "");
 
     if (past.getFullYear() !== now.getFullYear()) {
       toRefresh -= 1;
@@ -50,7 +50,7 @@ $(function() {
       return minute + " minute" + (minute > 1 ? "s" : "") + " ago";
     }
 
-    return (isLastmod ? "just" : "Just") + " now";
+    return "just now";
   }
 
   function updateTimeago() {
