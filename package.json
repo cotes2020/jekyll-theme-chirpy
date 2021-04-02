@@ -1,6 +1,6 @@
 {
   "name": "jekyll-theme-chirpy",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "A minimal, sidebar, responsive web design Jekyll theme that focuses on text presentation.",
   "main": "index.js",
   "directories": {
