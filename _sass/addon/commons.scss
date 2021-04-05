@@ -1071,7 +1071,14 @@ $sidebar-display: "sidebar-display";
   -webkit-transform: translate3d(0, -5px, 0);
 }
 
-/* --- Responsive Design --- */
+/*
+  Responsive Design:
+
+ {sidebar, content, panel} >= 1120px screen width
+ {sidebar, content} >= 850px screen width
+ {content} <= 849px screen width
+
+*/
 
 @media all and (max-width: 576px) {
 
@@ -1121,8 +1128,8 @@ $sidebar-display: "sidebar-display";
 
 }
 
-/* Hide Sidebar and TOC */
-@media all and (max-width: 830px) {
+/* hide sidebar and panel */
+@media all and (max-width: 849px) {
   %slide {
     -webkit-transition: transform 0.4s ease;
     transition: transform 0.4s ease;
@@ -1239,16 +1246,17 @@ $sidebar-display: "sidebar-display";
     }
   }
 
-}
+} // max-width: 849px
 
+/* Phone & Pad */
 @media all and (min-width: 577px) and (max-width: 1199px) {
   footer > .d-flex > div {
     width: 312px;
   }
 }
 
-/* Sidebar visible */
-@media all and (min-width: 831px) {
+/* Sidebar is visible */
+@media all and (min-width: 850px) {
   /* Solved jumping scrollbar */
   html {
     overflow-y: scroll;
@@ -1295,9 +1303,9 @@ $sidebar-display: "sidebar-display";
 
 }
 
-/* iPad 9.7" horizontal */
-@media all and (min-width: 992px) and (max-width: 1024px) {
-  #main-wrapper .col-lg-11 {
+/* Pad horizontal */
+@media all and (min-width: 992px) and (max-width: 1199px) {
+  #main .col-lg-11 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 96%;
     flex: 0 0 96%;
@@ -1305,11 +1313,17 @@ $sidebar-display: "sidebar-display";
   }
 }
 
-/* Compact icons in sidebar & TOC hidden */
-@media all and (min-width: 832px) and (max-width: 1199px) {
+/* Compact icons in sidebar & panel hidden */
+@media all and (min-width: 850px) and (max-width: 1199px) {
 
   #sidebar {
     width: $sidebar-width-small;
+
+    .site-subtitle {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
     .sidebar-bottom {
       a,
       span {
@@ -1354,7 +1368,7 @@ $sidebar-display: "sidebar-display";
 
 }
 
-/* Pannel hidden */
+/* panel hidden */
 @media all and (max-width: 1199px) {
   #panel-wrapper {
     display: none;
@@ -1609,7 +1623,7 @@ $sidebar-display: "sidebar-display";
   } // #sidebar
 
   footer > div.d-flex {
-    width: 87%;
+    width: 92%;
     max-width: 1140px;
   }
 
