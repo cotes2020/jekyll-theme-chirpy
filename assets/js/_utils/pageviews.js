@@ -19,19 +19,20 @@ const getInitStatus = (function () {
 
 const PvOpts = (function () {
   return {
-    isEnabled() {
-      return "true" === $("meta[name=pv-cache-enabled]").attr("content");
-    },
     getProxyEndpoint() {
       return $("meta[name=pv-proxy-endpoint]").attr("content");
     },
     getLocalData() {
-      return $("meta[name=pv-cache-data]").attr("content");
+      return $("meta[name=pv-cache-path]").attr("content");
+    },
+    hasLocalData() {
+      let path = PvOpts.getLocalData();
+      return (typeof path !== "undefined" && path !== false);
     }
   }
 }());
 
-const PvCache = (function () {
+const PvData = (function () {
   const KEY_PV = "pv";
   const KEY_CREATION = "pv_created_date";
   const KEY_PV_SRC = "pv_source";
@@ -71,12 +72,12 @@ const PvCache = (function () {
       return get(KEY_PV_SRC) === Source.PROXY;
     },
     isExpired() {
-      if (PvCache.isFromOrigin()) {
+      if (PvData.isFromOrigin()) {
         let date = new Date(get(KEY_CREATION));
         date.setDate(date.getDate() + 1); /* update origin records every day */
         return Date.now() >= date.getTime();
 
-      } else if (PvCache.isFromProxy()) {
+      } else if (PvData.isFromProxy()) {
         let date = new Date(get(KEY_CREATION));
         date.setHours(date.getHours() + 1); /* update proxy records per hour */
         return Date.now() >= date.getTime();
@@ -84,10 +85,10 @@ const PvCache = (function () {
       return false;
     },
     getAllPageviews() {
-      return PvCache.getData().totalsForAllResults["ga:pageviews"];
+      return PvData.getData().totalsForAllResults["ga:pageviews"];
     },
     newerThan(pv) {
-      return PvCache.getAllPageviews() > pv.totalsForAllResults["ga:pageviews"];
+      return PvData.getAllPageviews() > pv.totalsForAllResults["ga:pageviews"];
     },
     inspectKeys() {
       if (localStorage.getItem(KEY_PV) === null
@@ -98,7 +99,7 @@ const PvCache = (function () {
     }
   };
 
-}()); /* PvCache */
+}()); /* PvData */
 
 
 function countUp(min, max, destId) {
@@ -173,7 +174,7 @@ function fetchProxyPageviews() {
     dataType: "jsonp",
     jsonpCallback: "displayPageviews",
     success: (data, textStatus, jqXHR) => {
-      PvCache.saveProxyCache(JSON.stringify(data));
+      PvData.saveProxyCache(JSON.stringify(data));
     },
     error: (jqXHR, textStatus, errorThrown) => {
       console.log("Failed to load pageviews from proxy server: " + errorThrown);
@@ -182,18 +183,18 @@ function fetchProxyPageviews() {
 }
 
 
-function fetchPageviews(fetchOrigin = true, filterOrigin = false) {
-  if (PvOpts.isEnabled() && fetchOrigin) {
+function fetchPageviews(fetchOrigin = true, coverOrigin = false) {
+  if (fetchOrigin) {
     fetch(PvOpts.getLocalData())
       .then((response) => response.json())
       .then((data) => {
-        if (filterOrigin) {
-          if (PvCache.newerThan(data)) {
+        if (coverOrigin) {
+          if (PvData.newerThan(data)) {
             return;
           }
         }
         displayPageviews(data);
-        PvCache.saveOriginCache(JSON.stringify(data));
+        PvData.saveOriginCache(JSON.stringify(data));
       })
       .then(() => fetchProxyPageviews());
 
@@ -205,28 +206,29 @@ function fetchPageviews(fetchOrigin = true, filterOrigin = false) {
 
 
 $(function() {
-  if ($(".pageviews").length > 0) {
-    PvCache.inspectKeys();
-    let cache = PvCache.getData();
+  if ($(".pageviews").length <= 0) {
+    return;
+  }
 
-    if (cache) {
-      displayPageviews(cache);
+  PvData.inspectKeys();
+  let data = PvData.getData();
 
-      if (PvCache.isExpired()) {
-        fetchPageviews(true, PvCache.isFromProxy());
+  if (data) {
+    displayPageviews(data);
 
-      } else {
-
-        if (PvCache.isFromOrigin()) {
-          fetchPageviews(false);
-        }
-
-      }
+    if (PvData.isExpired()) {
+      fetchPageviews(true, PvData.isFromProxy());
 
     } else {
-      fetchPageviews();
+
+      if (PvData.isFromOrigin()) {
+        fetchPageviews(false);
+      }
+
     }
 
+  } else {
+    fetchPageviews(PvOpts.hasLocalData());
   }
 
 });
