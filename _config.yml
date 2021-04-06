@@ -50,15 +50,11 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 # --------------------------
 
 google_analytics:
-  id: ''          # Fill with your Google Analytics ID
+  id: ''              # fill in your Google Analytics ID
+  # Google Analytics pageviews report settings
   pv:
-    # The Google Analytics pageviews switch.
-    # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
-    enabled: false
-    # the next options only valid when `google_analytics.pv` is enabled.
-    proxy_url: ''
-    proxy_endpoint: ''
-    cache: false  # pv data local cache, good for the users from GFW area.
+    proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
+    cache_path:       # the local PV cache data, friendly to visitors from GFW region
 
 # Prefer color scheme setting.
 #

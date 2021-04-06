@@ -18,6 +18,11 @@ const getInitStatus = (function () {
 }());
 
 const PvOpts = (function () {
+  function hasContent(selector) {
+    let content = $(selector).attr("content");
+    return (typeof content !== "undefined" && content !== false);
+  }
+
   return {
     getProxyEndpoint() {
       return $("meta[name=pv-proxy-endpoint]").attr("content");
@@ -25,22 +30,18 @@ const PvOpts = (function () {
     getLocalData() {
       return $("meta[name=pv-cache-path]").attr("content");
     },
+    hasProxyEndpoint() {
+      return hasContent("meta[name=pv-proxy-endpoint]");
+    },
     hasLocalData() {
-      let path = PvOpts.getLocalData();
-      return (typeof path !== "undefined" && path !== false);
+      return hasContent("meta[name=pv-cache-path]");
     }
   }
 }());
 
-const PvData = (function () {
+const PvStorage = (function () {
   const KEY_PV = "pv";
   const KEY_CREATION = "pv_created_date";
-  const KEY_PV_SRC = "pv_source";
-
-  const Source = {
-    ORIGIN: "origin",
-    PROXY: "proxy"
-  };
 
   function get(key) {
     return localStorage.getItem(key);
@@ -51,48 +52,30 @@ const PvData = (function () {
   }
 
   return {
-    getData() {
+    hasCache() {
+      return (localStorage.getItem(KEY_PV) !== null);
+    },
+    getCache() {
       // get data from browser cache
       return JSON.parse(localStorage.getItem(KEY_PV));
     },
-    saveOriginCache(pv) {
+    saveCache(pv) {
       set(KEY_PV, pv);
-      set(KEY_PV_SRC, Source.ORIGIN);
       set(KEY_CREATION, new Date().toJSON());
-    },
-    saveProxyCache(pv) {
-      set(KEY_PV, pv);
-      set(KEY_PV_SRC, Source.PROXY);
-      set(KEY_CREATION, new Date().toJSON());
-    },
-    isFromOrigin() {
-      return get(KEY_PV_SRC) === Source.ORIGIN;
-    },
-    isFromProxy() {
-      return get(KEY_PV_SRC) === Source.PROXY;
     },
     isExpired() {
-      if (PvData.isFromOrigin()) {
-        let date = new Date(get(KEY_CREATION));
-        date.setDate(date.getDate() + 1); /* update origin records every day */
-        return Date.now() >= date.getTime();
-
-      } else if (PvData.isFromProxy()) {
-        let date = new Date(get(KEY_CREATION));
-        date.setHours(date.getHours() + 1); /* update proxy records per hour */
-        return Date.now() >= date.getTime();
-      }
-      return false;
+      let date = new Date(get(KEY_CREATION));
+      date.setHours(date.getHours() + 1); // per hour
+      return Date.now() >= date.getTime();
     },
     getAllPageviews() {
-      return PvData.getData().totalsForAllResults["ga:pageviews"];
+      return PvStorage.getCache().totalsForAllResults["ga:pageviews"];
     },
     newerThan(pv) {
-      return PvData.getAllPageviews() > pv.totalsForAllResults["ga:pageviews"];
+      return PvStorage.getAllPageviews() > pv.totalsForAllResults["ga:pageviews"];
     },
     inspectKeys() {
       if (localStorage.getItem(KEY_PV) === null
-        || localStorage.getItem(KEY_PV_SRC) === null
         || localStorage.getItem(KEY_CREATION) === null) {
         localStorage.clear();
       }
@@ -100,7 +83,6 @@ const PvData = (function () {
   };
 
 }()); /* PvData */
-
 
 function countUp(min, max, destId) {
   if (min < max) {
@@ -112,7 +94,6 @@ function countUp(min, max, destId) {
     }
   }
 }
-
 
 function countPV(path, rows) {
   let count = 0;
@@ -130,7 +111,6 @@ function countPV(path, rows) {
   return count;
 }
 
-
 function tacklePV(rows, path, elem, hasInit) {
   let count = countPV(path, rows);
   count = (count === 0 ? 1 : count);
@@ -144,7 +124,6 @@ function tacklePV(rows, path, elem, hasInit) {
     }
   }
 }
-
 
 function displayPageviews(data) {
   if (typeof data === "undefined") {
@@ -166,37 +145,38 @@ function displayPageviews(data) {
   }
 }
 
-
 function fetchProxyPageviews() {
-  $.ajax({
-    type: "GET",
-    url: PvOpts.getProxyEndpoint(),
-    dataType: "jsonp",
-    jsonpCallback: "displayPageviews",
-    success: (data, textStatus, jqXHR) => {
-      PvData.saveProxyCache(JSON.stringify(data));
-    },
-    error: (jqXHR, textStatus, errorThrown) => {
-      console.log("Failed to load pageviews from proxy server: " + errorThrown);
-    }
-  });
+  if (PvOpts.hasProxyEndpoint()) {
+    $.ajax({
+      type: "GET",
+      url: PvOpts.getProxyEndpoint(),
+      dataType: "jsonp",
+      jsonpCallback: "displayPageviews",
+      success: (data, textStatus, jqXHR) => {
+        PvStorage.saveCache(JSON.stringify(data));
+      },
+      error: (jqXHR, textStatus, errorThrown) => {
+        console.log("Failed to load pageviews from proxy server: " + errorThrown);
+      }
+    });
+  }
 }
 
-
-function fetchPageviews(fetchOrigin = true, coverOrigin = false) {
-  if (fetchOrigin) {
+function loadPageviews(hasCache = false) {
+  if (PvOpts.hasLocalData()) {
     fetch(PvOpts.getLocalData())
       .then((response) => response.json())
       .then((data) => {
-        if (coverOrigin) {
-          if (PvData.newerThan(data)) {
-            return;
-          }
+        // The cache from the proxy will sometimes be more recent than the local one
+        if (hasCache && PvStorage.newerThan(data)) {
+          return;
         }
         displayPageviews(data);
-        PvData.saveOriginCache(JSON.stringify(data));
+        PvStorage.saveCache(JSON.stringify(data));
       })
-      .then(() => fetchProxyPageviews());
+      .then(() => {
+        fetchProxyPageviews();
+      });
 
   } else {
     fetchProxyPageviews();
@@ -204,31 +184,20 @@ function fetchPageviews(fetchOrigin = true, coverOrigin = false) {
 
 }
 
-
 $(function() {
   if ($(".pageviews").length <= 0) {
     return;
   }
 
-  PvData.inspectKeys();
-  let data = PvData.getData();
+  PvStorage.inspectKeys();
 
-  if (data) {
-    displayPageviews(data);
-
-    if (PvData.isExpired()) {
-      fetchPageviews(true, PvData.isFromProxy());
-
-    } else {
-
-      if (PvData.isFromOrigin()) {
-        fetchPageviews(false);
-      }
-
+  if (PvStorage.hasCache()) {
+    displayPageviews(PvStorage.getCache());
+    if (!PvStorage.isExpired()) {
+      return;
     }
-
-  } else {
-    fetchPageviews(PvOpts.hasLocalData());
   }
+
+  loadPageviews(PvStorage.hasCache());
 
 });
