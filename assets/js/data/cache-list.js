@@ -53,9 +53,9 @@ const include = [
 ];
 
 const exclude = [
-  {%- if site.google_analytics.pv.proxy_url and site.google_analytics.pv.enabled -%}
-    '{{ site.google_analytics.pv.proxy_url }}',
+  {%- if site.google_analytics.pv.proxy_endpoint -%}
+    'https://{{ site.google_analytics.pv.proxy_endpoint | replace: "https://", "" | split: "/" | first }}',
   {%- endif -%}
-  '/assets/js/data/pageviews.json',
-  '/img.shields.io/'
+  'https://img.shields.io',
+  '/assets/js/data/pageviews.json'
 ];

@@ -7,7 +7,7 @@ tags: [google analytics, pageviews]
 ---
 
 
-This post is to enable Page Views on the [**Chirpy**][chirpy-homepage] theme based blog that you just built. This requires technical knowledge and it's recommended to keep the `google_analytics.pv` disabled unless you have a good reason. If your website has low traffic, the page views count would discourage you to write more blogs. With that said, let's start with the setup.
+This post is to enable Page Views on the [**Chirpy**][chirpy-homepage] theme based blog that you just built. This requires technical knowledge and it's recommended to keep the `google_analytics.pv.*` empty unless you have a good reason. If your website has low traffic, the page views count would discourage you to write more blogs. With that said, let's start with the setup.
 
 ## Set up Google Analytics
 
@@ -39,14 +39,11 @@ Now, click on the new data stream and grab the **Measurement ID**. It should loo
 
 ```yaml
 google_analytics:
-  id: 'G-V6XXXXXXX'          # Fill with your Google Analytics ID
+  id: 'G-V6XXXXXXX'   # fill in your Google Analytics ID
+  # Google Analytics pageviews report settings
   pv:
-    # The Google Analytics pageviews switch.
-    enabled: false
-    # the next options only valid when `google_analytics.pv` is enabled.
-    proxy_url: ''
-    proxy_endpoint: ''
-    cache: false  # pv data local cache, good for the users from GFW area.
+    proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
+    cache_path:       # the local PV cache data, friendly to visitors from GFW region
 ```
 
 When you push these changes to your blog, you should start seeing the traffic on your Google Analytics. Play around with Google Analytics dashboard to get familiar with the options available as it takes like 5 mins to pickup your changes. You should now be able to monitor your traffic in realtime.
@@ -222,17 +219,12 @@ Once all the hard part is done, it is very easy to enable the Page View on Chirp
 
 Update the `_config.yml` file of [**Chirpy**][chirpy-homepage] project with the values from your dashboard, to look similar to the following:
 
-
 ```yaml
 google_analytics:
-  id: 'G-XXXXXXXXXX'   # Fill with your Google Analytics ID
+  id: 'G-V6XXXXXXX'   # fill in your Google Analytics ID
   pv:
-    # The Google Analytics pageviews switch.
-    enabled: true
-    # the next options only valid when `google_analytics.pv` is enabled.
-    proxy_url: 'https://PROJECT_ID.REGION_ID.r.appspot.com'
     proxy_endpoint: 'https://PROJECT_ID.REGION_ID.r.appspot.com/query?id=<ID FROM SUPER PROXY>'
-    cache: false      # pv data local cache, good for the users from GFW area.
+    cache_path:       # the local PV cache data, friendly to visitors from GFW region
 ```
 
 Now, you should see the Page View enabled on your blog.

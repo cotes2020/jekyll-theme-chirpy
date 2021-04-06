@@ -68,7 +68,7 @@ layout: page
         {% include read-time.html content=post.content %}
 
         <!-- page views -->
-        {% if site.google_analytics.pv.enabled %}
+        {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
         <i class="far fa-eye fa-fw"></i>
         <span id="pv_{{-post.title-}}" class="pageviews">
           <i class="fas fa-spinner fa-spin fa-fw"></i>
