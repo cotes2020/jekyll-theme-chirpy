@@ -75,14 +75,20 @@ const PvStorage = (function () {
       return PvStorage.getAllPageviews() > pv.totalsForAllResults["ga:pageviews"];
     },
     inspectKeys() {
-      if (localStorage.getItem(KEY_PV) === null
-        || localStorage.getItem(KEY_CREATION) === null) {
-        localStorage.clear();
+      for(let i = 0; i < localStorage.length; i++){
+        const key = localStorage.key(i);
+        switch (key) {
+          case KEY_PV:
+          case KEY_CREATION:
+            break;
+          default:
+            localStorage.clear();
+            return;
+        }
       }
     }
   };
-
-}()); /* PvData */
+}()); /* PvStorage */
 
 function countUp(min, max, destId) {
   if (min < max) {
