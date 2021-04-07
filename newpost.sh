@@ -20,9 +20,11 @@ if [ -f "_posts/"$timestamp-$file_name".md" ];then
 			rm -rf _posts/"$timestamp-$file_name".md
 			echo "重新写入文件 ..."
 			echo "---
-layout: mypost
-title: $file_name
+title: 
+author: jiap
+date: $timestamp $timestamp_hms
 categories: []
+tags: []
 ---
 
 <img src='/assets/img/$timestamp-$file_name/xx.png' style='zoom:40%; margin: 0 auto; display: block;'/>"  > "_posts/"$timestamp-$file_name".md"
@@ -38,9 +40,11 @@ categories: []
 			echo "不覆盖文件 ..."
 			echo "创建名为"$timestamp-$file_name-$timestamp_hms".md 的文件" 
 			echo "---
-layout: mypost
-title: $file_name
+title: 
+author: jiap
+date: $timestamp $timestamp_hms
 categories: []
+tags: []
 ---
 
 <img src='/assets/img/$timestamp-$file_name-$timestamp_hms/[Replace Pic Name]' style='zoom:40%; margin: 0 auto; display: block;'/>"  > "_posts/"$timestamp-$file_name-$timestamp_hms".md"
@@ -60,9 +64,11 @@ categories: []
   # echo "不存在"
   echo ">>> 创建新的博文 Blog ..."
   echo "---
-layout: mypost
-title: $file_name
+title: 
+author: jiap
+date: $timestamp $timestamp_hms
 categories: []
+tags: []
 ---
 
 <img src='/assets/img/$timestamp-$file_name/[Replace Pic Name]' style='zoom:40%; margin: 0 auto; display: block;'/>"  > "_posts/"$timestamp-$file_name".md"
