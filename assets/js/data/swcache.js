@@ -4,17 +4,18 @@ layout: compress
 # The list to be cached by PWA
 ---
 
-const include = [
-  /* --- CSS --- */
+const resource = [
 
+  /* --- CSS --- */
   '{{ "/assets/css/style.css" | relative_url }}',
 
-  /* --- Javascripts --- */
-  '{{ "/assets/js/dist/home.min.js" | relative_url }}',
-  '{{ "/assets/js/dist/page.min.js" | relative_url }}',
-  '{{ "/assets/js/dist/post.min.js" | relative_url }}',
-  '{{ "/assets/js/dist/categories.min.js" | relative_url }}',
-  '{{ "/assets/js/data/search.json" | relative_url }}',
+  /* --- JavaScripts --- */
+  {% assign js_path = "/assets/js" | relative_url %}
+  '{{ js_path }}/dist/home.min.js',
+  '{{ js_path }}/dist/page.min.js',
+  '{{ js_path }}/dist/post.min.js',
+  '{{ js_path }}/dist/categories.min.js',
+  '{{ js_path }}/data/search.json',
   '{{ "/app.js" | relative_url }}',
   '{{ "/sw.js" | relative_url }}',
 
@@ -25,12 +26,8 @@ const include = [
     '{{ tab.url }}',
   {% endfor %}
 
-
   /* --- Icons --- */
-
-  {%- capture icon_url -%}
-    {{ "/assets/img/favicons" | relative_url }}
-  {%- endcapture -%}
+  {% assign icon_url = "/assets/img/favicons" | relative_url %}
   '{{ icon_url }}/favicon.ico',
   '{{ icon_url }}/apple-icon.png',
   '{{ icon_url }}/apple-icon-precomposed.png',
@@ -52,10 +49,24 @@ const include = [
   '{{ icon_url }}/browserconfig.xml'
 ];
 
-const exclude = [
-  {%- if site.google_analytics.pv.proxy_endpoint -%}
-    'https://{{ site.google_analytics.pv.proxy_endpoint | replace: "https://", "" | split: "/" | first }}',
-  {%- endif -%}
-  'https://img.shields.io',
-  '/assets/js/data/pageviews.json'
+/* The request url with below domain will be cached */
+const allowedDomains = [
+  {% if site.google_analytics.id != '' %}
+    'www.googletagmanager.com',
+    'www.google-analytics.com',
+  {% endif %}
+
+  '{{ site.url | split: "//" | last }}',
+
+  'fonts.gstatic.com',
+  'fonts.googleapis.com',
+  'cdn.jsdelivr.net',
+  'polyfill.io'
+];
+
+/* Requests that include the following path will be banned */
+const denyUrls = [
+  {% if site.google_analytics.pv.cache_path %}
+    '{{ site.google_analytics.pv.cache_path | absolute_url }}'
+  {% endif %}
 ];
