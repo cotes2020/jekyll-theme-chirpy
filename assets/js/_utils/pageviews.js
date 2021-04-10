@@ -18,30 +18,42 @@ const getInitStatus = (function () {
 }());
 
 const PvOpts = (function () {
+  function getContent(selector) {
+    return $(selector).attr("content");
+  }
+
   function hasContent(selector) {
-    let content = $(selector).attr("content");
+    let content = getContent(selector);
     return (typeof content !== "undefined" && content !== false);
   }
 
   return {
-    getProxyEndpoint() {
-      return $("meta[name=pv-proxy-endpoint]").attr("content");
+    getProxyMeta() {
+      return getContent("meta[name=pv-proxy-endpoint]");
     },
-    getLocalData() {
-      return $("meta[name=pv-cache-path]").attr("content");
+    getLocalMeta() {
+      return getContent("meta[name=pv-cache-path]");
     },
-    hasProxyEndpoint() {
+    hasProxyMeta() {
       return hasContent("meta[name=pv-proxy-endpoint]");
     },
-    hasLocalData() {
+    hasLocalMeta() {
       return hasContent("meta[name=pv-cache-path]");
     }
   }
 }());
 
 const PvStorage = (function () {
-  const KEY_PV = "pv";
-  const KEY_CREATION = "pv_created_date";
+  const Keys = {
+    KEY_PV: "pv",
+    KEY_PV_SRC: "pv_src",
+    KEY_CREATION: "pv_created_date"
+  };
+
+  const Source = {
+    LOCAL: "same-origin",
+    PROXY: "cors"
+  };
 
   function get(key) {
     return localStorage.getItem(key);
@@ -51,35 +63,54 @@ const PvStorage = (function () {
     localStorage.setItem(key, val);
   }
 
+  function saveCache(pv, src) {
+    set(Keys.KEY_PV, pv);
+    set(Keys.KEY_PV_SRC, src);
+    set(Keys.KEY_CREATION, new Date().toJSON());
+  }
+
   return {
+    keysCount() {
+      return Object.keys(Keys).length;
+    },
     hasCache() {
-      return (localStorage.getItem(KEY_PV) !== null);
+      return (localStorage.getItem(Keys.KEY_PV) !== null);
     },
     getCache() {
-      // get data from browser cache
-      return JSON.parse(localStorage.getItem(KEY_PV));
+      return JSON.parse(localStorage.getItem(Keys.KEY_PV));
     },
-    saveCache(pv) {
-      set(KEY_PV, pv);
-      set(KEY_CREATION, new Date().toJSON());
+    saveLocalCache(pv) {
+      saveCache(pv, Source.LOCAL);
+    },
+    saveProxyCache(pv) {
+      saveCache(pv, Source.PROXY);
     },
     isExpired() {
-      let date = new Date(get(KEY_CREATION));
-      date.setHours(date.getHours() + 1); // per hour
+      let date = new Date(get(Keys.KEY_CREATION));
+      date.setHours(date.getHours() + 1);   // per hour
       return Date.now() >= date.getTime();
     },
-    getAllPageviews() {
-      return PvStorage.getCache().totalsForAllResults["ga:pageviews"];
+    isFromLocal() {
+      return get(Keys.KEY_PV_SRC) === Source.LOCAL;
+    },
+    isFromProxy() {
+      return get(Keys.KEY_PV_SRC) === Source.PROXY;
     },
     newerThan(pv) {
-      return PvStorage.getAllPageviews() > pv.totalsForAllResults["ga:pageviews"];
+      return PvStorage.getCache().totalsForAllResults["ga:pageviews"] > pv.totalsForAllResults["ga:pageviews"];
     },
     inspectKeys() {
+      if (localStorage.length !== PvStorage.keysCount()) {
+        localStorage.clear();
+        return;
+      }
+
       for(let i = 0; i < localStorage.length; i++){
         const key = localStorage.key(i);
         switch (key) {
-          case KEY_PV:
-          case KEY_CREATION:
+          case Keys.KEY_PV:
+          case Keys.KEY_PV_SRC:
+          case Keys.KEY_CREATION:
             break;
           default:
             localStorage.clear();
@@ -152,14 +183,14 @@ function displayPageviews(data) {
 }
 
 function fetchProxyPageviews() {
-  if (PvOpts.hasProxyEndpoint()) {
+  if (PvOpts.hasProxyMeta()) {
     $.ajax({
       type: "GET",
-      url: PvOpts.getProxyEndpoint(),
+      url: PvOpts.getProxyMeta(),
       dataType: "jsonp",
       jsonpCallback: "displayPageviews",
-      success: (data, textStatus, jqXHR) => {
-        PvStorage.saveCache(JSON.stringify(data));
+      success: (data) => {
+        PvStorage.saveProxyCache(JSON.stringify(data));
       },
       error: (jqXHR, textStatus, errorThrown) => {
         console.log("Failed to load pageviews from proxy server: " + errorThrown);
@@ -168,26 +199,19 @@ function fetchProxyPageviews() {
   }
 }
 
-function loadPageviews(hasCache = false) {
-  if (PvOpts.hasLocalData()) {
-    fetch(PvOpts.getLocalData())
-      .then((response) => response.json())
-      .then((data) => {
+function fetchLocalPageviews(hasCache = false) {
+  return fetch(PvOpts.getLocalMeta())
+    .then(response => response.json())
+    .then(data => {
+      if (hasCache) {
         // The cache from the proxy will sometimes be more recent than the local one
-        if (hasCache && PvStorage.newerThan(data)) {
+        if (PvStorage.isFromProxy() && PvStorage.newerThan(data)) {
           return;
         }
-        displayPageviews(data);
-        PvStorage.saveCache(JSON.stringify(data));
-      })
-      .then(() => {
-        fetchProxyPageviews();
-      });
-
-  } else {
-    fetchProxyPageviews();
-  }
-
+      }
+      displayPageviews(data);
+      PvStorage.saveLocalCache(JSON.stringify(data));
+    });
 }
 
 $(function() {
@@ -199,11 +223,27 @@ $(function() {
 
   if (PvStorage.hasCache()) {
     displayPageviews(PvStorage.getCache());
-    if (!PvStorage.isExpired()) {
-      return;
+
+    if (PvStorage.isExpired()) {
+      if (PvOpts.hasLocalMeta()) {
+        fetchLocalPageviews(true).then(fetchProxyPageviews);
+      } else {
+        fetchProxyPageviews();
+      }
+
+    } else {
+      if (PvStorage.isFromLocal()) {
+        fetchProxyPageviews();
+      }
+    }
+
+  } else { // no cached
+
+    if (PvOpts.hasLocalMeta()) {
+      fetchLocalPageviews().then(fetchProxyPageviews);
+    } else {
+      fetchProxyPageviews();
     }
   }
-
-  loadPageviews(PvStorage.hasCache());
 
 });
