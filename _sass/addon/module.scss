@@ -4,6 +4,12 @@
 
 /* ---------- scss placeholder --------- */
 
+%heading {
+  color: var(--heading-color);
+  font-weight: 400;
+  font-family: 'Lato', 'Microsoft Yahei', sans-serif;
+}
+
 %tag-hover {
   background: var(--tag-hover);
   transition: background 0.35s ease-in-out;
@@ -31,12 +37,6 @@
 
 %no-bottom-border {
   border-bottom: none;
-}
-
-%heading {
-  color: var(--heading-color);
-  font-weight: 400;
-  font-family: 'Lato', 'Microsoft Yahei', sans-serif;
 }
 
 %section {
