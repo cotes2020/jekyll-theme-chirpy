@@ -357,6 +357,7 @@ footer {
 }
 
 .post-content {
+  font-size: 1.08rem;
   line-height: 1.8;
   margin-top: 2rem;
   overflow-wrap: break-word;
@@ -424,8 +425,6 @@ footer {
 
   p {
     @include img(true);
-
-    font-size: 1.08rem;
   }
 
   ul {
@@ -905,7 +904,6 @@ $sidebar-display: "sidebar-display";
   border-radius: 0;
   padding: 0.18rem 0.3rem;
   color: var(--text-color);
-  font-size: 95%;
 
   &:focus {
     box-shadow: none;
@@ -1430,7 +1428,7 @@ $sidebar-display: "sidebar-display";
     }
   }
 
-  .post-content p {
+  .post-content {
     font-size: 1.03rem;
   }
 
