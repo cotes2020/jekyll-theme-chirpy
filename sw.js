@@ -36,28 +36,39 @@ self.addEventListener('install', e => {
   );
 });
 
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(r => {
-      /* console.log(`[sw] method: ${e.request.method}, fetching: ${e.request.url}`); */
-      return r || fetch(e.request).then(response => {
-        const url = e.request.url;
-
-        if (e.request.method !== 'GET'
-          || !verifyDomain(url)
-          || isExcluded(url)) {
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => {
+        if (response) {
           return response;
         }
 
-        return caches.open(cacheName).then(cache => {
-          /* console.log('[sw] Caching new resource: ' + e.request.url); */
-          cache.put(e.request, response.clone());
-          return response;
-        });
+        return fetch(event.request)
+          .then(response => {
+            const url = event.request.url;
 
-      });
-    })
-  );
+            if (event.request.method !== 'GET' ||
+              !verifyDomain(url) ||
+              isExcluded(url)) {
+              return response;
+            }
+
+            /*
+              see: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
+             */
+            let responseToCache = response.clone();
+
+            caches.open(cacheName)
+              .then(cache => {
+                /* console.log('[sw] Caching new resource: ' + event.request.url); */
+                cache.put(event.request, responseToCache);
+              });
+
+            return response;
+          });
+      })
+    );
 });
 
 self.addEventListener('activate', e => {
