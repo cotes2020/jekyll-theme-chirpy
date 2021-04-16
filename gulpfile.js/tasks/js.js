@@ -40,7 +40,6 @@ const postJs = () => {
   return concatJs([
       `${JS_ROOT}/_commons/*.js`,
       `${JS_ROOT}/_utils/timeago.js`,
-      `${JS_ROOT}/_utils/img-hyperlink.js`,
       `${JS_ROOT}/_utils/lang-badge.js`,
       // 'smooth-scroll.js' must be called after ToC is ready
       `${JS_ROOT}/_utils/smooth-scroll.js`
