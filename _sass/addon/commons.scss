@@ -403,7 +403,7 @@ footer {
       color: var(--link-color);
     }
 
-    &:not(.img-hyperlink) {
+    &:not(.img-link) {
       @extend %link-color;
       @extend %link-underline;
       &:hover {
@@ -411,7 +411,7 @@ footer {
       }
     }
 
-    &.img-hyperlink {
+    &.img-link {
       @include img;
       @include img-caption;
     }
