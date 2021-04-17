@@ -363,10 +363,6 @@ footer {
   overflow-wrap: break-word;
   word-wrap: break-word;
 
-  img[data-src] {
-    margin: 0.5rem 0;
-  }
-
   @mixin img-caption {
     + em {
       display: block;
@@ -378,9 +374,11 @@ footer {
     }
   }
 
-  @mixin img($caption: false) {
+  @mixin img-style($caption: false) {
 
-    > img[data-src] {
+    img[data-src] {
+      margin: 0.5rem 0;
+
       @if $caption {
         @include img-caption;
       }
@@ -395,8 +393,14 @@ footer {
         margin: 0.75rem 0 1rem 1rem;
       }
 
+      &.shadow {
+        filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
+      }
+
     }
   }
+
+  @include img-style(true);
 
   a {
     blockquote & {
@@ -412,7 +416,7 @@ footer {
     }
 
     &.img-link {
-      @include img;
+      @include img-style;
       @include img-caption;
     }
   }
@@ -421,10 +425,6 @@ footer {
     > img[data-src]:not(.normal):not(.left):not(.right) {
       @include align-center;
     }
-  }
-
-  p {
-    @include img(true);
   }
 
   ul {
