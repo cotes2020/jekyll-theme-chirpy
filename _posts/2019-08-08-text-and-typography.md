@@ -57,7 +57,6 @@ Fluttering and dancing in the breeze.
 
 - [ ] TODO
 - [x] Completed
-- Hold on
 - [ ] Defeat COVID-19
   - [x] Vaccine production
   - [ ] Economic recovery
@@ -107,6 +106,11 @@ _Full screen width and center alignment_
 
 ![Desktop View](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190808/mockup.png){: width="400"}
 _400px image width_
+
+- Shadow
+
+![Shadow Avatar](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/posts/20190808/window.png){: .shadow width="90%" }
+_shadow effect (visible in light mode)_
 
 <br>
 
