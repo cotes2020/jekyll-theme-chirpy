@@ -1,5 +1,5 @@
 ---
-permalink: robots.txt
+permalink: /robots.txt
 # The robots rules
 ---
 
