@@ -10,27 +10,27 @@ const uglify = require('gulp-uglify');
 const insert = require('gulp-insert');
 const fs = require('fs');
 
-const JS_ROOT = 'assets/js';
-const jsDest = `${ JS_ROOT }/dist/`;
+const JS_SRC = '_javascript';
+const JS_DEST = `assets/js/dist/`;
 
 function concatJs(files, output) {
   return src(files)
     .pipe(concat(output))
     .pipe(rename({ extname: '.min.js' }))
-    .pipe(dest(jsDest));
+    .pipe(dest(JS_DEST));
 }
 
 function minifyJs() {
-  return src(`${ jsDest }/*.js`)
-    .pipe(insert.prepend(fs.readFileSync(`${ JS_ROOT }/_copyright`, 'utf8')))
+  return src(`${ JS_DEST }/*.js`)
+    .pipe(insert.prepend(fs.readFileSync(`${ JS_SRC }/copyright`, 'utf8')))
     .pipe(uglify({output: {comments: /^!|@preserve|@license|@cc_on/i}}))
-    .pipe(dest(jsDest));
+    .pipe(dest(JS_DEST));
 }
 
 const homeJs = () => {
   return concatJs([
-      `${JS_ROOT}/_commons/*.js`,
-      `${JS_ROOT}/_utils/timeago.js`
+      `${JS_SRC}/commons/*.js`,
+      `${JS_SRC}/utils/timeago.js`
     ],
     'home'
   );
@@ -38,34 +38,34 @@ const homeJs = () => {
 
 const postJs = () => {
   return concatJs([
-      `${JS_ROOT}/_commons/*.js`,
-      `${JS_ROOT}/_utils/timeago.js`,
-      `${JS_ROOT}/_utils/lang-badge.js`,
+      `${JS_SRC}/commons/*.js`,
+      `${JS_SRC}/utils/timeago.js`,
+      `${JS_SRC}/utils/lang-badge.js`,
       // 'smooth-scroll.js' must be called after ToC is ready
-      `${JS_ROOT}/_utils/smooth-scroll.js`
+      `${JS_SRC}/utils/smooth-scroll.js`
     ], 'post'
   );
 };
 
 const categoriesJs = () => {
   return concatJs([
-      `${JS_ROOT}/_commons/*.js`,
-      `${JS_ROOT}/_utils/category-collapse.js`
+      `${JS_SRC}/commons/*.js`,
+      `${JS_SRC}/utils/category-collapse.js`
     ], 'categories'
   );
 };
 
 const pageJs = () => {
   return concatJs([
-      `${JS_ROOT}/_commons/*.js`,
-      `${JS_ROOT}/_utils/smooth-scroll.js`
+      `${JS_SRC}/commons/*.js`,
+      `${JS_SRC}/utils/smooth-scroll.js`
     ], 'page'
   );
 };
 
 // GA pageviews report
 const pvreportJs = () => {
-  return concatJs(`${JS_ROOT}/_utils/pageviews.js`, 'pvreport');
+  return concatJs(`${JS_SRC}/utils/pageviews.js`, 'pvreport');
 };
 
 const buildJs = parallel(homeJs, postJs, categoriesJs, pageJs, pvreportJs);
@@ -76,9 +76,9 @@ exports.liveRebuild = () => {
   buildJs();
 
   watch([
-      `${ JS_ROOT }/_commons/*.js`,
-      `${ JS_ROOT }/_utils/*.js`,
-      `${ JS_ROOT }/lib/*.js`
+      `${ JS_SRC }/commons/*.js`,
+      `${ JS_SRC }/utils/*.js`,
+      `${ JS_SRC }/lib/*.js`
     ],
     buildJs
   )

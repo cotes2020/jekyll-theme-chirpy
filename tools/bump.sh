@@ -4,7 +4,7 @@
 #
 #   1. Bump latest version number to files:
 #     - _sass/jekyll-theme-chirpy.scss
-#     - assets/js/_copyright.js
+#     - _javascript/copyright
 #     - assets/js/dist/*.js (will be built by gulp later)
 #     - jekyll-theme-chirpy.gemspec
 #     - package.json
@@ -28,7 +28,7 @@ manual_release=false
 
 ASSETS=(
   "_sass/jekyll-theme-chirpy.scss"
-  "assets/js/_copyright"
+  "_javascript/copyright"
 )
 
 GEM_SPEC="jekyll-theme-chirpy.gemspec"

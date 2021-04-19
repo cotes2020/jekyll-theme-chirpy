@@ -40,7 +40,8 @@ const PvOpts = (function () {
     hasLocalMeta() {
       return hasContent("meta[name=pv-cache-path]");
     }
-  }
+  };
+
 }());
 
 const PvStorage = (function () {
