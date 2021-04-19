@@ -23,7 +23,7 @@ const resource = [
   '{{ "/index.html" | relative_url }}',
   '{{ "/404.html" | relative_url }}',
   {% for tab in site.tabs %}
-    '{{ tab.url }}',
+    '{{ tab.url | relative_url }}',
   {% endfor %}
 
   /* --- Icons --- */
