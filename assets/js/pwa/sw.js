@@ -1,5 +1,6 @@
 ---
 layout: compress
+permalink: '/sw.js'
 # PWA service worker
 ---
 
