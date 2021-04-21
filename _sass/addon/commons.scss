@@ -574,12 +574,18 @@ footer {
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
-/* --- override magnific-popup --- */
+/* --- Overriding --- */
 
+// magnific-popup
 figure .mfp-title {
   text-align: center;
   padding-right: 0;
   margin-top: 0.5rem;
+}
+
+// mermaid
+.mermaid {
+  text-align: center;
 }
 
 /* --- sidebar layout --- */
