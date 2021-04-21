@@ -46,7 +46,6 @@
   {% assign _content = _content | replace: '<img src="/', img_path_replacement %}
 
   <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-  {% assign lozad = true %}
   {% assign img_placehodler
     = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
 
@@ -60,7 +59,3 @@
 
 <!-- return -->
 {{ _content }}
-
-{% if lozad %}
-  {% include lozad.html %}
-{% endif %}

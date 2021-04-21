@@ -27,6 +27,10 @@ function minifyJs() {
     .pipe(dest(JS_DEST));
 }
 
+const commonsJs = () => {
+  return concatJs(`${JS_SRC}/commons/*.js`, 'commons');
+};
+
 const homeJs = () => {
   return concatJs([
       `${JS_SRC}/commons/*.js`,
@@ -39,8 +43,11 @@ const homeJs = () => {
 const postJs = () => {
   return concatJs([
       `${JS_SRC}/commons/*.js`,
+      `${JS_SRC}/utils/img-extra.js`,
       `${JS_SRC}/utils/timeago.js`,
       `${JS_SRC}/utils/lang-badge.js`,
+      `${JS_SRC}/utils/checkbox.js`,
+      `${JS_SRC}/utils/copy-link.js`,
       // 'smooth-scroll.js' must be called after ToC is ready
       `${JS_SRC}/utils/smooth-scroll.js`
     ], 'post'
@@ -58,7 +65,9 @@ const categoriesJs = () => {
 const pageJs = () => {
   return concatJs([
       `${JS_SRC}/commons/*.js`,
-      `${JS_SRC}/utils/smooth-scroll.js`
+      `${JS_SRC}/utils/checkbox.js`,
+      `${JS_SRC}/utils/img-extra.js`,
+      `${JS_SRC}/utils/copy-link.js`,
     ], 'page'
   );
 };
@@ -68,7 +77,7 @@ const pvreportJs = () => {
   return concatJs(`${JS_SRC}/utils/pageviews.js`, 'pvreport');
 };
 
-const buildJs = parallel(homeJs, postJs, categoriesJs, pageJs, pvreportJs);
+const buildJs = parallel(commonsJs, homeJs, postJs, categoriesJs, pageJs, pvreportJs);
 
 exports.build = series(buildJs, minifyJs);
 
