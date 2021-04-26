@@ -3,9 +3,7 @@ title: About
 icon: fas fa-info
 order: 4
 ---
-<br>
 
--    ![Desktop View](./assets/img/about_award.jpg){: width="240" .right}
     Hi, my name is Max and I'm currently a student at 
     Auckland University of Technology (AUT).
 
@@ -13,4 +11,4 @@ order: 4
     I enjoy discussing approaches to complex problems and aim to bring a multidisciplinary perspective to all challenges I face.
 
     I'd love to get in touch! Please feel free to contact me by email @ vandijcksm@gmail.com
-<br>
+<
