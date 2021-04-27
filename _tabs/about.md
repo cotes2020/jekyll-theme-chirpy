@@ -4,8 +4,8 @@ icon: fas fa-info
 order: 4
 ---
 
-![Desktop View](../assets/img/about_award.jpg){: width="294" .right}
-
+---
+![Desktop View](../assets/img/about_award.jpg){: width="200" .right}
 Hi, my name is Max and I'm currently a student at Auckland University of Technology (AUT).
 
 I'm an analytically minded individual who aims to solve complex, data-driven problems through Machine Learning and Artificial Intelligence.
