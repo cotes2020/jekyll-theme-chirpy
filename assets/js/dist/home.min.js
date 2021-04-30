@@ -1,5 +1,5 @@
 /*!
- * Chirpy v3.3.2 (https://github.com/cotes2020/jekyll-theme-chirpy/)
+ * Chirpy v4.0.0 (https://github.com/cotes2020/jekyll-theme-chirpy/)
  * © 2019 Cotes Chung
  * MIT Licensed
  */
