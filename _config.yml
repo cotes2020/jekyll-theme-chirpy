@@ -4,15 +4,13 @@
 # © 2017-2019 Cotes Chung
 # MIT licensed
 
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-# --------------------------
 title: 童话里是骗人的                          
 tagline: Work Hard, Play Hard. 
 
 description: >-
   Work Hard, Play Hard. 这里是Jovins的博客, 主要记录、分享一些技术和想法，目前专注Swift和SwiftUI开发。
 author: Jovins(黄进文)  
-avatar: /assets/images/avatar.png
+avatar: /assets/img/sample/avatar.png
 url: 'https://jovins.cn'
 
 github:
