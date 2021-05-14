@@ -1,0 +1,34 @@
+#  Sharing options at the bottom of the post.
+#  Icons from <https://fontawesome.com/>
+#
+#  v2.1
+#  https://github.com/cotes2020/jekyll-theme-chirpy
+#  © 2020 Cotes Chung
+#  MIT Licensed
+
+label: "Share"
+
+platforms:
+  -
+    type: Twitter
+    icon: "fab fa-twitter"
+    link: "https://twitter.com/intent/tweet?text=TITLE&url=URL"
+  -
+    type: Facebook
+    icon: "fab fa-facebook-square"
+    link: "https://www.facebook.com/sharer/sharer.php?title=TITLE&u=URL"
+  -
+    type: Telegram
+    icon: "fab fa-telegram"
+    link: "https://telegram.me/share?text=TITLE&url=URL"
+
+  # Uncomment below if you need to.
+  # -
+  #   type: Linkedin
+  #   icon: "fab fa-linkedin"
+  #   link: "https://www.linkedin.com/sharing/share-offsite/?url=URL"
+  #
+  # -
+  #   type: Weibo
+  #   icon: "fab fa-weibo"
+  #   link: "http://service.weibo.com/share/share.php?title=TITLE&url=URL"

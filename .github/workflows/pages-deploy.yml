@@ -1,0 +1,71 @@
+name: 'Automatic build'
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - .gitignore
+      - README.md
+      - LICENSE
+
+jobs:
+  continuous-delivery:
+
+    runs-on: ubuntu-latest
+
+    env:
+      GEMS_PATH: ~/vendor/bundle
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # for posts's lastmod
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+
+      - name: Bundle Caching
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.GEMS_PATH }}
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Bundle Install
+        run: |
+          bundle config path ${{ env.GEMS_PATH }}
+          bundle install --jobs 4 --retry 3
+
+      - name: Check baseurl
+        run: |
+          baseurl="$(grep '^baseurl:' _config.yml | sed "s/.*: *//;s/['\"]//g;s/#.*//")"
+          if [[ -n $baseurl ]]; then
+            echo "SPEC_TEST=_site_no_baseurl" >> $GITHUB_ENV
+          fi
+
+      - name: Build Site
+        env:
+          JEKYLL_ENV: production
+        run: |
+          bundle exec jekyll b
+
+          if [[ -n $SPEC_TEST ]]; then
+            # Bypass the defects of htmlproofer
+            bundle exec jekyll b -b "" -d "$SPEC_TEST"
+          fi
+
+      - name: Test Site
+        run: |
+          if [[ -n $SPEC_TEST ]]; then
+            bash tools/test.sh -d "$SPEC_TEST"
+          else
+            bash tools/test.sh
+          fi
+
+      - name: Deploy
+        run: |
+          bash tools/deploy.sh
