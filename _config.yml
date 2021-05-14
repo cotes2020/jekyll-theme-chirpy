@@ -4,12 +4,6 @@
 # © 2017-2019 Cotes Chung
 # MIT licensed
 
-# Import the theme
-theme: jekyll-theme-chirpy
-baseurl: ''
-lang: zh-Hans
-timezone: Asia/Shanghai
-
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
 title: 童话里是骗人的                          
@@ -37,8 +31,11 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: google_meta_tag_verification # change to your verification string
-# --------------------------
+google_site_verification: google_meta_tag_verification
+
+baseurl: ''
+lang: zh-Hans
+timezone: Asia/Shanghai
 
 google_analytics:
   id: ''          # Fill with your Google Analytics ID
