@@ -3,27 +3,24 @@
 */
 
 .pagination {
-  font-size: 1rem;
+  color: var(--btn-patinator-text-color);
+  font-family: 'Lato', sans-serif;
+
   a:hover {
     text-decoration: none;
   }
 
   .page-item {
     .page-link {
-      color: var(--btn-patinator-text-color);
+      color: inherit;
       width: 2.5rem;
       height: 2.5rem;
       padding: 0;
-      text-align: center;
       display: -webkit-box;
-      display: flex;
       -webkit-box-pack: center;
-      justify-content: center;
       -webkit-box-align: center;
-      align-items: center;
       border-radius: 50%;
       border: 1px solid var(--btn-paginator-border-color);
-      font-family: 'Lato', sans-serif;
       background-color: var(--button-bg);
       &:hover {
         background-color: var(--btn-paginator-hover-color);
@@ -48,9 +45,6 @@
     &:first-child .page-link,
     &:last-child .page-link {
       border-radius: 50%;
-    }
-    &:not(:last-child) {
-      margin-right: 0.7rem;
     }
   } // .page-item
 
@@ -116,7 +110,15 @@
 /* Hide SideBar and TOC */
 @media all and (max-width: 830px) {
   .pagination {
-    justify-content: center;
+    justify-content: space-evenly;
+
+    .page-item {
+      &:not(:first-child):not(:last-child) {
+        display: none;
+      }
+
+    }
+
   }
 }
 
@@ -144,11 +146,24 @@
 
   .pagination {
     font-size: 0.85rem;
-    .page-item .page-link {
-      width: 2.2rem;
-      height: 2.2rem;
+
+    .page-item {
+      &:not(:last-child) {
+        margin-right: 0.7rem;
+      }
+
+      .page-link {
+        width: 2rem;
+        height: 2rem;
+      }
+
     }
-  }
+
+    .page-index {
+      display: none;
+    }
+
+  } // .pagination
 
 }
 
