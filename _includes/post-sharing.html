@@ -16,8 +16,11 @@
         </a>
     {% endfor %}
 
-    <i class="fa-fw fas fa-link small" onclick="copyLink()"
+    <i class="fa-fw fas fa-link" onclick="copyLink()"
         data-toggle="tooltip" data-placement="top" title="Copy link"></i>
+    
+    <i class="fa-fw fas fa-share-square" onclick="shareLink('{{title}}')"
+      data-toggle="tooltip" data-placement="top" title="Share link"></i>
 
   </span>
 </div>
