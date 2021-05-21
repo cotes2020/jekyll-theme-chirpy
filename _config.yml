@@ -25,9 +25,6 @@ social:
   links:
     - https://twitter.com/jovins      
     - https://github.com/jovins       
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
 
 google_site_verification: google_meta_tag_verification
 
@@ -94,15 +91,15 @@ collections:
 defaults:
   -
     scope:
-      path: ''          # An empty string here means all files in the project
+      path: ''          
       type: posts
     values:
       layout: post
-      comments: true    # Enable comments in posts.
-      toc: true         # Display TOC column in posts.
+      comments: true    
+      toc: true         
       breadcrumb:
         -
-          label: Posts
+          label: 主页
           url: /
   -
     scope:
@@ -115,14 +112,14 @@ defaults:
     values:
       breadcrumb:
         -
-          label: Posts
+          label: 主页
   -
     scope:
       path: tags
     values:
       breadcrumb:
         -
-          label: Home
+          label: 主页
           url: /
         -
           label: Tags
@@ -133,7 +130,7 @@ defaults:
     values:
       breadcrumb:
         -
-          label: Home
+          label: 主页
           url: /
         -
           label: Categories
@@ -147,7 +144,7 @@ defaults:
       dynamic_title: true    # Hide title in mobile screens.
       breadcrumb:
         -
-          label: Home
+          label: 主页
           url: /
 
 sass:

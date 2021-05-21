@@ -114,12 +114,12 @@ $sidebar-display: "sidebar-display";
     height: $tab-height;
     &:hover {
       .nav-link {
-        color: #f8f9facf;
+        color: #f3acb6;
       }
     }
     &.active {
       .nav-link {
-        color: #fcfcfc;
+        color: #f56a79;
       }
     }
   }
@@ -140,7 +140,7 @@ $sidebar-display: "sidebar-display";
         right: 1px;
         width: 3px;
         height: $tab-cursor-height;
-        background-color: var(--nav-cursor-color);
+        background-color: #f56a79;
         pointer-events: none;
       }
     }
@@ -541,8 +541,8 @@ footer {
     padding: 0.3rem 0.5rem;
     margin: 0 0.35rem 0.5rem 0;
     &:hover {
-      background-color: #2a408e;
-      border-color: #2a408e;
+      background-color: #c73866;
+      border-color: #c73866;
       color: #fff;
       transition: none;
     }
