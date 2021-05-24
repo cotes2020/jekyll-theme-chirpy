@@ -11,6 +11,9 @@
   type: twitter
   icon: 'fab fa-twitter'
 -
+  icon: 'fab fa-weibo'
+  url:  'https://weibo.com/jovins'
+-
   type: email
   icon: 'fas fa-envelope'
   noblank: true            # open link in current tab
