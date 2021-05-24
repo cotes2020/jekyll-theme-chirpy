@@ -1,6 +1,11 @@
 <!--
  Recommend the other 3 posts according to the tags and categories of the current post,
  if the number is not enough, use the other latest posts to supplement.
+
+ v2.0
+ https://github.com/cotes2020/jekyll-theme-chirpy
+ © 2019 Cotes Chung
+ Published under the MIT License
 -->
 
 <!-- The total size of related posts  -->
@@ -80,8 +85,7 @@
 
 {% if index_list.size > 0 %}
   <div id="related-posts" class="mt-5 mb-2 mb-sm-4">
-    <h3 class="pt-2 mt-1 mb-4 ml-1"
-      data-toc-skip>{{ site.data.label.post.relate_posts | default: 'Further Reading' }}</h3>
+    <h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>{{ site.data.label.post.relate_posts }}</h3>
     <div class="card-deck mb-4">
     {% for entry in index_list %}
       {% assign index = entry | plus: 0 %}

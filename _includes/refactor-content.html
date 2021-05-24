@@ -4,10 +4,7 @@
 
 {% assign _content = include.content %}
 
-<!--
-  In order to allow a wide table to scroll horizontally,
-  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
--->
+<!-- Suroundding the markdown table with '<div class="table-wrapper">. and '</div>' -->
 {% if _content contains '<table>' %}
   {% assign _content = _content
     | replace: '<table>', '<div class="table-wrapper"><table>'
@@ -33,28 +30,6 @@
   {% assign _content = _content
     | replace: '"task-list-item"><', '"task-list-item" hide-bullet><'
   %}
-{% endif %}
-
-{% if _content contains '<img src="' %}
-
-  {% if site.img_cdn != '' %}
-    {% assign img_path_replacement = '<img src="' | append: site.img_cdn | append: '/' %}
-  {% else %}
-    {% assign img_path_replacement = '<img src="' | append: site.baseurl | append: '/' %}
-  {% endif %}
-
-  {% assign _content = _content | replace: '<img src="/', img_path_replacement %}
-
-  <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-  {% assign img_placehodler
-    = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
-
-  {% assign lozad_replacement = '<img src="'
-    | append: img_placehodler
-    | append: '" data-src="' %}
-
-  {% assign _content = _content | replace: '<img src="', lozad_replacement %}
-
 {% endif %}
 
 <!-- return -->

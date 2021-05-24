@@ -1,4 +1,8 @@
 # The label text of site.
+#  v2.0
+#  https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2017-2019 Cotes Chung
+# MIT Licensed
 
 panel:
   lastmod: Recent Update
@@ -7,13 +11,10 @@ panel:
 
 post:
   relate_posts: Further Reading
-  share: Share
   button:
     next: Newer
     previous: Older
 
 search_hint: Search   # text show on search bar
 
-pin_prompt: Pinned    # pinned prompt
-
-read_time_unit: min   # see posts' time to read
+pin_prompt: Pinned   # pinned prompt

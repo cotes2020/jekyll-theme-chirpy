@@ -1,0 +1,73 @@
+---
+# Style for page Category and Tag
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2019 Cotes Chung
+# MIT License
+---
+
+
+{% include_relative _addon/main.scss %}
+
+#page-category, #page-tag {
+  ul > li {
+    line-height: 1.5rem;
+    padding: 0.6rem 0;
+    &::before { // dot
+      background: #999;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      display: block;
+      content: "";
+      position: relative;
+      top: 0.6rem;
+      margin-right: 0.5rem;
+    }
+    > a { /* post's title */
+      font-size: 1.1rem;
+      @extend %no-bottom-border;
+    }
+    > span:last-child {
+      white-space: nowrap;
+    }
+    /* post's date */
+  }
+}
+
+#page-tag h1 > i { // tag icon
+  font-size: 1.2rem;
+}
+
+#page-category h1 > i {
+  font-size: 1.25rem;
+}
+
+a:hover {
+  #page-category &,
+  #page-tag &,
+  #access-lastmod & {
+    @extend %link-hover;
+    margin-bottom: -1px; // Avoid jumping
+  }
+}
+
+.dash {
+  margin: 0 .5rem .6rem .5rem;
+  border-bottom: 2px dotted var(--dash-color);
+}
+
+@media all and (max-width: 576px) {
+  #page-category, #page-tag {
+    ul > li {
+      &::before {
+        margin: 0 .5rem;
+      }
+      > a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

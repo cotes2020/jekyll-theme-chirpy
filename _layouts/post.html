@@ -1,6 +1,10 @@
 ---
 layout: default
 # The posts' layout
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2017-2019 Cotes Chung
+# MIT Licensed
 ---
 
 <div class="row">
@@ -14,18 +18,19 @@ layout: default
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published date and author -->
         <div>
-          <span class="semi-bold">
-            {{ page.author | default: site.social.name }}
+          {% include timeago.html date=page.date tooltip=true %}
+          by
+          <span class="author">
+            {{ page.author | default: site.author }}
           </span>
-          {% include timeago.html date=page.date prep="on" tooltip=true %}
         </div>
 
         <div>
           <!-- lastmod -->
           {% if page.last_modified_at %}
           <span>
-            {% include timeago.html date=page.last_modified_at
-              class="lastmod" prefix="Updated" tooltip=true %}
+            Updated
+            {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
           </span>
           {% endif %}
 
@@ -33,7 +38,7 @@ layout: default
           {% include read-time.html content=content %}
 
           <!-- page views -->
-          {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
+          {% if site.google_analytics.pv.enabled %}
           <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span>
           {% endif %}
 
@@ -42,13 +47,21 @@ layout: default
       </div> <!-- .post-meta -->
 
       <div class="post-content">
+        {%- capture img_placehodler -%}
+          data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
+        {%- endcapture -%}
 
-        {% if page.image.src %}
-          <img src="{{ page.image.src }}" class="preview-img" alt="{{ page.image.alt | default: "Preview Image" }}">
+        {% if page.image %}
+          <img src="{{ img_placehodler }}" data-src="{{ page.image }}" class="preview-img">
         {% endif %}
 
-        {{ content }}
-
+        <!-- Using lozad. See: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+        {% if content contains '<img src=' %}
+          {% assign replacement = '<img src="' | append: img_placehodler | append: '" data-src=' %}
+          {{ content | replace: '<img src=', replacement }}
+        {% else %}
+          {{ content }}
+        {% endif %}
       </div>
 
       <div class="post-tail-wrapper text-muted">
@@ -98,15 +111,7 @@ layout: default
 
   </div> <!-- #post-wrapper -->
 
-  {% assign enable_toc = false %}
-
-  {% if site.toc and page.toc %}
-    {% if content contains '<h2' or content contains '<h3' %}
-      {% assign enable_toc = true %}
-    {% endif %}
-  {% endif %}
-
-  {% include panel.html toc=enable_toc %}
+  {% include panel.html %}
 
 </div> <!-- .row -->
 
@@ -127,3 +132,5 @@ layout: default
   </div> <!-- .col-* -->
 
 </div> <!-- .row -->
+
+{% include lozad.html %}

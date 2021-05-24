@@ -1,6 +1,10 @@
 ---
 layout: page
 # The Home page layout
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2017-2019 Cotes Chung
+# MIT Licensed
 ---
 
 
@@ -45,9 +49,9 @@ layout: page
 {% for post in posts %}
 
   <div class="post-preview">
-    <h1>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </h1>
+    <a href="{{ post.url | relative_url }}">
+      <h1>{{ post.title }}</h1>
+    </a>
 
     <div class="post-content">
       <p>
@@ -68,7 +72,7 @@ layout: page
         {% include read-time.html content=post.content %}
 
         <!-- page views -->
-        {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
+        {% if site.google_analytics.pv.enabled %}
         <i class="far fa-eye fa-fw"></i>
         <span id="pv_{{-post.title-}}" class="pageviews">
           <i class="fas fa-spinner fa-spin fa-fw"></i>
@@ -79,7 +83,7 @@ layout: page
       {% if post.pin %}
       <div class="pin">
         <i class="fas fa-thumbtack fa-fw"></i>
-        <span>{{ site.data.label.pin_prompt | default: 'Pinned' }}</span>
+        <span>{{ site.data.label.pin_prompt }}</span>
       </div>
       {% endif %}
 

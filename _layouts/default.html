@@ -1,6 +1,10 @@
 ---
 layout: compress
 # Default layout
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2017-2019 Cotes Chung
+# MIT Licensed
 ---
 
 <!DOCTYPE html>
@@ -11,13 +15,15 @@ layout: compress
   {% endif %}
 {% endcapture %}
 
-<html lang="{{ site.lang | default: "en-US" }}" {{ prefer_mode }}>
+<html lang="{{ site.lang | split: "_" | first | default: "en" }}" {{ prefer_mode }}>
 
   {% include head.html %}
 
   <body data-spy="scroll" data-target="#toc">
 
-    {% include sidebar.html %}
+    <div id="sidebar" class="d-flex flex-column">
+      {% include sidebar.html %}
+    </div>
 
     {% include topbar.html %}
 
