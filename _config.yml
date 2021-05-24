@@ -4,51 +4,32 @@
 # © 2017-2019 Cotes Chung
 # MIT licensed
 
+title: 童话里是骗人的                          
+tagline: Work Hard, Play Hard. 
 
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-# --------------------------
-title: Chirpy                          # the main title
-
-tagline: A text-focused Jekyll theme.  # it will display as the sub-title
-
-description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
-
-# fill in the base hostname & protocol for your site, e.g., 'https://username.github.io'
-url: ''
-
-author: your_full_name                  # change to your full name
-
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
+description: >-
+  Work Hard, Play Hard. 这里是Jovins的博客, 主要记录、分享一些技术和想法，目前专注Swift和SwiftUI开发。
+author: Jovins(黄进文)  
+avatar: /assets/img/sample/avatar.png
+url: 'https://jovins.cn'
 
 github:
-  username: github_username             # change to your github username
+  username: Jovins             
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: Jovins            
 
 social:
-  name: your_full_name                  # it will shows as the copyright owner in Footer
-  email: example@doamin.com             # change to your email address
+  name: Jovins                  
+  email: jovinscoder@gmail.com             
   links:
-    # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://twitter.com/jovins      
+    - https://github.com/jovins       
 
-google_site_verification: google_meta_tag_verification # change to your verification string
-# --------------------------
+google_site_verification: google_meta_tag_verification
 
-
-# Only if your site type is GitHub Project sites and doesn't have a custom domain,
-# change below value to '/projectname'.
 baseurl: ''
-
-# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
+lang: zh-Hans
 timezone: Asia/Shanghai
 
 google_analytics:
@@ -110,15 +91,15 @@ collections:
 defaults:
   -
     scope:
-      path: ''          # An empty string here means all files in the project
+      path: ''          
       type: posts
     values:
       layout: post
-      comments: true    # Enable comments in posts.
-      toc: true         # Display TOC column in posts.
+      comments: true    
+      toc: true         
       breadcrumb:
         -
-          label: Posts
+          label: 主页
           url: /
   -
     scope:
@@ -131,14 +112,14 @@ defaults:
     values:
       breadcrumb:
         -
-          label: Posts
+          label: 主页
   -
     scope:
       path: tags
     values:
       breadcrumb:
         -
-          label: Home
+          label: 主页
           url: /
         -
           label: Tags
@@ -149,7 +130,7 @@ defaults:
     values:
       breadcrumb:
         -
-          label: Home
+          label: 主页
           url: /
         -
           label: Categories
@@ -163,7 +144,7 @@ defaults:
       dynamic_title: true    # Hide title in mobile screens.
       breadcrumb:
         -
-          label: Home
+          label: 主页
           url: /
 
 sass:
