@@ -9,7 +9,7 @@ tagline: Work Hard, Play Hard.
 
 description: >-
   Work Hard, Play Hard. 这里是Jovins的博客, 主要记录、分享一些技术和想法，目前专注Swift和SwiftUI开发。
-author: Jovins(黄进文)  
+author: Jovins  
 avatar: /assets/img/sample/avatar.png
 url: 'https://jovins.cn'
 
@@ -17,13 +17,13 @@ github:
   username: Jovins             
 
 twitter:
-  username: Jovins            
+  username: JovinsWong            
 
 social:
   name: Jovins                  
   email: jovinscoder@gmail.com             
   links:
-    - https://twitter.com/jovins      
+    - https://twitter.com/JovinsWong      
     - https://github.com/jovins       
 
 google_site_verification: google_meta_tag_verification

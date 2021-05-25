@@ -18,31 +18,37 @@ layout: default
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published date and author -->
         <div>
-          {% include timeago.html date=page.date tooltip=true %}
-          by
+        　由
           <span class="author">
-            {{ page.author | default: site.author }}
+            {% if page.author %}
+              {{ page.author }}
+            {% else %}
+              {{ site.author }}
+            {% endif %}
           </span>
+          发布于
+          {% include timeago.html date=page.date tooltip=true %}
         </div>
 
+        <!-- lastmod -->
+        {%- capture filename -%}
+          {{ page.url | split: "/" | last }}
+        {%- endcapture -%}
+
+        {% for item in site.data.updates %}
+          {% assign encode_filename = item.filename | split: "/" | last | url_encode %}
+          {% if filename == encode_filename %}
+            {% assign lastmod = item.lastmod %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        {% if lastmod %}
         <div>
-          <!-- lastmod -->
-          {% if page.last_modified_at %}
-          <span>
-            Updated
-            {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
-          </span>
-          {% endif %}
-
-          <!-- read time -->
-          {% include read-time.html content=content %}
-
-          <!-- page views -->
-          {% if site.google_analytics.pv.enabled %}
-          <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span>
-          {% endif %}
-
+          最后更新: 
+          {% include timeago.html date=lastmod class="lastmod" tooltip=true %}
         </div>
+        {% endif %}
 
       </div> <!-- .post-meta -->
 
