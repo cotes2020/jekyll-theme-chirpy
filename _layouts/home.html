@@ -65,7 +65,7 @@ layout: page
       <div>
         <!-- posted date -->
         <i class="far fa-clock fa-fw"></i>
-        {% include read-time.html content=post.content %}
+        {% include timeago.html date=post.date tooltip=true %}
 
         <!-- page views -->
         {% if site.google_analytics.pv.enabled %}
