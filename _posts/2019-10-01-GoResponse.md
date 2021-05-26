@@ -293,13 +293,13 @@ const tpl = `
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>{{.Title}}</title>
+		<title>{.Title}</title>
 	</head>
 	<body>
-		{{range .Items}}<div>{{ . }}</div>{{else}}<div><strong>no rows</strong></div>{{end}}
+		{{range .Items}}<div>{ . }</div>{{else}}<div><strong>no rows</strong></div>{{end}}
 	</body>
 </html>`
-
+// {.Title} 外面还有一个{}括号，{ . } 外面还有{}
 func main() {
 
     t, err := template.New("webpage").Parse(tpl)
