@@ -1,0 +1,229 @@
+---
+layout: post
+title: "02-Go语言开发环境搭建"
+date: 2019-10-01 13:40:00.000000000 +09:00
+categories: [Go]
+tags: [Go, GoLand安装]
+---
+
+## Go语言SDK安装和配置
+
+- **什么是SDK**
+  - 软件开发工具包（外语首字母缩写：**SDK**、外语全称：**SoftwareDevelopmentKit）**一般都是一些软件工程师为特定的软件包、软件框架、硬件平台、操作系统等建立应用软件时的开发工具的集合
+  - 如果不安装SDK, 你可以编写Go语言代码, 但是你不能编译执行编写好的Go语言代码
+- **如何安装?**
+- [下载SDK安装包地址](https://golang.google.cn/dl/)
+  - 由于新版本一般不太稳定, 所以我们选择下载上一个版本
+
+![](/assets/images/2019Go/go-gotwosection-01.png)
+
++ Mac版SDK直接下载Mac图形化安装包安装即可
+
+  + Mac 配置Go环境变量GOPATH和GOBIN
+
+  ```
+  1）打开终端，cd ~
+
+  　　（2）查看是否有.bash_profile文件：
+
+  　　　　  ls -all
+
+  　　（3）有则跳过此步，没有则：
+
+  　　　　1）创建：touch .bash_profile
+
+  　　　　2）编辑：open -e .bash_profile
+
+  　　　　3）自定义GOPATH和GOBIN位置：
+
+  export GOPATH=/Users/hopkings/www/Go
+  export GOBIN=$GOPATH/bin
+  export PATH=$PATH:$GOBIN
+  　　（4）编译：source .bash_profile
+
+  　　　查看Go环境变量：go env
+  ```
+
++ Windows版图形化安装包
+
+![](/assets/images/2019Go/go-gotwosection-02.png)
+
+![](/assets/images/2019Go/go-gotwosection-03.png)
+
+![](/assets/images/2019Go/go-gotwosection-04.png)
+
+![](/assets/images/2019Go/go-gotwosection-05.png)
+
+![](/assets/images/2019Go/go-gotwosection-06.png)
+
+![](/assets/images/2019Go/go-gotwosection-07.png)
+
++ Windows检测配置环境变量
+
+![](/assets/images/2019Go/go-gotwosection-08.png)
+
+![](/assets/images/2019Go/go-gotwosection-09.png)
+
+![](/assets/images/2019Go/go-gotwosection-10.png)
+
++ **添加GOROOT环境变量**
+
+![](/assets/images/2019Go/go-gotwosection-11.png)
+
++ **.配置GOPATH环境变量**
+  + 用于告诉操作系统，将来我们要在哪里编写Go语言程序
+
+![](/assets/images/2019Go/go-gotwosection-12.png)
+
+![](/assets/images/2019Go/go-gotwosection-13.png)
+
++ **配置GoBin环境变量**
+  + 用于告诉操作系统，去哪查找Go语言提供的一些应用程序
+
+![](/assets/images/2019Go/go-gotwosection-14.png)
+
+![](/assets/images/2019Go/go-gotwosection-15.png)
+
++ **最终结果**
+
+![](/assets/images/2019Go/go-gotwosection-16.png)
+
++ **检查是否安装配置成功**
+  + 4.1打开CMD
+
+![](/assets/images/2019Go/go-gotwosection-17.png)
+
++ 输入`go version`
+
+![](/assets/images/2019Go/go-gotwosection-18.png)
+
++ 输入`go env`
+
+![](/assets/images/2019Go/go-gotwosection-19.png)
+
+## 安装Go语言开发工具
+
+- 记事本(开发效率极低)
+- Vim(初学者入门门槛高)
+- VSCode(不喜欢)
+- Sublime Test(不喜欢)
+- GoLand(喜欢,当收费)
+- LiteIDE（开源免费， 跨平台运行，轻量级）
+- 生男生女都一样， 最关键是你中意哪个就用哪个
+
+## Goland安装
+
+- 下载安装包: [点我下载Goland](https://www.jetbrains.com/go/download/#section=windows)
+
+- Mac版Goland安装
+
+  + 首先去[官网](https://www.jetbrains.com/products.html?fromMenu)下载产品，官方最新的就好，不需要去网页搜索什么破解版等野鸡版本，然后**直接安装**。
+  + 下载Jet Brains License ⬇️ :
+    + 链接:[https://pan.baidu.com/s/10nRk7Gei_kdmPRtGhsEyTw](https://pan.baidu.com/s/10nRk7Gei_kdmPRtGhsEyTw) 密码:1ved (3.1 版本的破解文件 适用于 2018.2 全线产品)
+  + 将**2**中下载好的破解文件放到一个不会改动的文件夹中。我放在如下目录（macOS系统）：
+    + `/Library/JetbrainsLicense` (**笔者存放的 Library 文件夹是系统根目录下的, 需要读写权限的, 所以没有读写权限的朋友不要放在这里, 常规文件夹如‘文档’、‘下载’等等都可以，否则会出现 ‘Key is invalid’的提示**)
+  + 打开GoLand的安装目录，macOS版去**应用程序/Applications**中找到对应程序**显示包内容**如下：
+
+  ![](/assets/images/2019Go/go-gotwosection-20.png)
+
+  + 打开`goland.vmoptions`，笔者用的是atom打开的，在最后一行加上`-javaagent:步骤2中破解文件放置的位置`，**保存**，笔者的如下：
+
+  ![](/assets/images/2019Go/go-gotwosection-21.png)
+
+  + 来[这](https://hastebin.com/zidalaxugu.json) （打不开的看**6**段段尾）复制整个网页的内容到任意文本编辑器，将图中画圈的部分改成你自己想要的名字（任意），PS：没什么意义，启动界面授权名字会写这个，笔者写的是“valenti”，**改好复制整段**。
+
+  ![](/assets/images/2019Go/go-gotwosection-22.png)
+
+  + 或者直接复制：
+
+  ```
+  {"licenseId":"1337",
+  "licenseeName":"Your Name",
+  "assigneeName":"",
+  "assigneeEmail":"",
+  "licenseRestriction":"Unlimited license till end of the century.",
+  "checkConcurrentUse":false,
+  "products":[
+  {"code":"II","paidUpTo":"2099-12-31"},
+  {"code":"DM","paidUpTo":"2099-12-31"},
+  {"code":"AC","paidUpTo":"2099-12-31"},
+  {"code":"RS0","paidUpTo":"2099-12-31"},
+  {"code":"WS","paidUpTo":"2099-12-31"},
+  {"code":"DPN","paidUpTo":"2099-12-31"},
+  {"code":"RC","paidUpTo":"2099-12-31"},
+  {"code":"PS","paidUpTo":"2099-12-31"},
+  {"code":"DC","paidUpTo":"2099-12-31"},
+  {"code":"RM","paidUpTo":"2099-12-31"},
+  {"code":"CL","paidUpTo":"2099-12-31"},
+  {"code":"PC","paidUpTo":"2099-12-31"},
+  {"code":"DB","paidUpTo":"2099-12-31"},
+  {"code":"GO","paidUpTo":"2099-12-31"},
+  {"code":"RD","paidUpTo":"2099-12-31"}
+  ],
+  "hash":"2911276/0",
+  "gracePeriodDays":7,
+  "autoProlongated":false}
+  ```
+
+  + 启动GoLand，它会弹出授权的提示框，选择**Activaction code**，复制刚才粘贴的一整段，激活，done！！
+
+  ![](/assets/images/2019Go/go-gotwosection-23.png)
+
+- Windows版安装
+
+  + 运行安装文件
+
+  ![](/assets/images/2019Go/go-gotwosection-24.png)
+
+  + 疯狂下一步
+
+  ![](/assets/images/2019Go/go-gotwosection-25.png)
+
+  ![](/assets/images/2019Go/go-gotwosection-26.png)
+
+  ![](/assets/images/2019Go/go-gotwosection-27.png)
+
+  ![](/assets/images/2019Go/go-gotwosection-28.png)
+
+  ![](/assets/images/2019Go/go-gotwosection-29.png)
+
+- 激活程序: 自行淘宝`JetBrains 激活`(仅供学生党参考, 在职人员请支持正版)
+
+![](/assets/images/2019Go/go-gotwosection-30.png)
+
+- 看不习惯英文的可以自行百度`Goland汉化包`
+
+![](/assets/images/2019Go/go-gotwosection-31.png)
+
++ 打开项目文件夹
+
+![](/assets/images/2019Go/go-gotwosection-32.png)
+
+![](/assets/images/2019Go/go-gotwosection-33.png)
+
+![](/assets/images/2019Go/go-gotwosection-34.png)
+
+![](/assets/images/2019Go/go-gotwosection-35.png)
+
++ 测试开发工具是否安装正确
+
+![](/assets/images/2019Go/go-gotwosection-36.png)
+
+![](/assets/images/2019Go/go-gotwosection-37.png)
+
+![](/assets/images/2019Go/go-gotwosection-38.png)
+
+![](/assets/images/2019Go/go-gotwosection-39.png)
+
+![](/assets/images/2019Go/go-gotwosection-40.png)
+
++ 其它问题:
+  + 提示没有安装JVM
+
+![](/assets/images/2019Go/go-gotwosection-41.png)
+
++ 下载Java SDK [点我下载](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
+![](/assets/images/2019Go/go-gotwosection-42.png)
+
+- 安装即可
