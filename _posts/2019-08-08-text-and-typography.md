@@ -50,7 +50,7 @@ Fluttering and dancing in the breeze.
 ### Unordered list
 
 - Chapter
-	- Setcion
+	- Section
       - Paragraph
 
 ### Task list
