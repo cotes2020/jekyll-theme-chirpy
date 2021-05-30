@@ -1,0 +1,36 @@
+---
+title: Docker 스터디 1장 Intro
+author: Shim Jaehun
+date: 2021-05-30 00:34:00 +0800
+categories: [Study, Code, Infra, Docker]
+tags: [docker]
+toc: true
+---
+
+*참고: [가장 빨리 만나는 Docker](http://pyrasis.com/docker.html)*
+
+# Docker 스터디 1장
+
+## 가상머신과 Docker
+
+- Docker는 오픈소스 프로젝트
+- Immutable Infrastructure 패러다임에서 패생됨
+- 서비스 운영환경을 이미지로 생성, 배포
+- 운영환경이 바뀌면 이미지를 새로 생성하여 배포.
+
+
+2013년 당시 서버는 AWS등 SaaS가 많이 대중화되었지만, 배포환경은 그렇지 못했다.
+그래서 도커가 출현.
+
+장점
+1. 편리한 관리 : 이미지만 관리하면 되어서 배포관리 편함, 버전관리도 쉽다
+1. 확장 : 이미지 하나로 서버를 계속 찍어낼수 있다. 클라우드 플랫폼의 Auto Scaling과 연동하면 쉽게 확장 가능
+1. 테스트 : 테스트 환경 구축이 쉽다.
+1. Lightweight
+
+
+# Docker 스터디 2장
+
+# Docker 스터디 3장
+
+# Docker 스터디 4장
