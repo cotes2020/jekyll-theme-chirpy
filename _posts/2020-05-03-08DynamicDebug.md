@@ -12,7 +12,7 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
 
 ## Xcode的动态调试原理
 
-![](/assets/images/reverse/1.xcodetiaoshi.png)
+![](/assets/images/2020Reverse/1.xcodetiaoshi.png)
 
 + 关于`GCC`、`LLVM`、`GDB`、`LLDB`
   + Xcode的编译器发展历程: [GCC](https://www.gnu.org/software/gcc/) → [LLVM](https://llvm.org/)
@@ -26,7 +26,7 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
 
 ## 动态调试任意App
 
-![](/assets/images/reverse/2.dongtaitiaoshiapp.png)
+![](/assets/images/2020Reverse/2.dongtaitiaoshiapp.png)
 
 + #### debugserver的权限问题
 
@@ -50,7 +50,7 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
 
   + 给`debugserver.plist`文件加上`get-task-allow`和`task_for_pid-allow`权限
 
-  ![](/assets/images/reverse/3.debugquanxian.png)
+  ![](/assets/images/2020Reverse/3.debugquanxian.png)
 
   + 通过ldid命令重新签名
 
