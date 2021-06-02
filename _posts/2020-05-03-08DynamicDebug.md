@@ -225,13 +225,13 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
   + 查看指令的用法
   + 比如`help breakpoint`、`help breakpoint set`
 
-+ `expression <cmd-options> -- <expr>`
++ `expression [cmd-options] -- [expr]`
 
   + 执行一个表达式
 
-    +  `<cmd-options>` : 命令选项
+    +  `[cmd-options]` : 命令选项
     + `--` : 命令选项结束符，表示所有的命令选项已经设置完毕，如果没有命令选项，--可以省略
-    + `<expr>` : 需要执行的表达式
+    + `[expr]` : 需要执行的表达式
 
     ```
     (lldb) expression self.view.backgroundColor = [UIColor redColor]
@@ -253,18 +253,18 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
   + 和指令`bt`的效果一样
   + 注意: frame由往上调用的
 
-+ `thread return [<expr>]`
++ `thread return [expr]`
 
   + 让函数直接返回某个值，不会执行断点后面的代码
 
     ```swift
-    	 private func test() {
+    private func test() {
             
-    ->      let a = 10		// 设置断点
-            let b = 20
-            let total = a + b
-            print("a + b = \(total)")
-        }
+    ->   let a = 10		// 设置断点
+         let b = 20
+         let total = a + b
+         print("a + b = \(total)")
+    }
     // 输入thread return,不会执行断点下面的代码
     ```
 
