@@ -12,7 +12,7 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
 
 ## Xcode的动态调试原理
 
-![1.xcodetiaoshi](/assets/images/reverse/1.xcodetiaoshi.png)
+![](/assets/images/reverse/1.xcodetiaoshi.png)
 
 + 关于`GCC`、`LLVM`、`GDB`、`LLDB`
   + Xcode的编译器发展历程: [GCC](https://www.gnu.org/software/gcc/) → [LLVM](https://llvm.org/)
@@ -230,8 +230,8 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
   + 执行一个表达式
 
     +  `<cmd-options>` : 命令选项
-    + -- : 命令选项结束符，表示所有的命令选项已经设置完毕，如果没有命令选项，--可以省略
-    + <expr> : 需要执行的表达式
+    + `--` : 命令选项结束符，表示所有的命令选项已经设置完毕，如果没有命令选项，--可以省略
+    + `<expr>` : 需要执行的表达式
 
     ```
     (lldb) expression self.view.backgroundColor = [UIColor redColor]
