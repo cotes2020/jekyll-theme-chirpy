@@ -151,12 +151,12 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
     * thread #1, queue = 'com.apple.main-thread', stop reason = signal SIGSTOP
         frame #0: 0x0000000199e7c198 libsystem_kernel.dylib`mach_msg_trap + 8
     libsystem_kernel.dylib`mach_msg_trap:
-    ->  0x199e7c198 <+8>: ret
+    ->  0x199e7c198 +8: ret
     
     libsystem_kernel.dylib`mach_msg_overwrite_trap:
-        0x199e7c19c <+0>: mov    x16, #-0x20
-        0x199e7c1a0 <+4>: svc    #0x80
-        0x199e7c1a4 <+8>: ret
+        0x199e7c19c +0: mov    x16, #-0x20
+        0x199e7c1a0 +4: svc    #0x80
+        0x199e7c1a4 +8: ret
     Target 0: (Carben) stopped.
     (lldb)
     ```
@@ -180,19 +180,19 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
 + 指令的格式
 
   ```
-   <command> [<subcommand> [<subcommand>...]] <action> [-options [option-
+   [command] [subcommand] [[subcommand]...]] [action] [-options [option-
   value]] [argument [argument...]]
   ```
 
-  + `<command>` : 命令
+  + `command` : 命令
 
-  + `<subcommand>` : 子命令
+  + `subcommand` : 子命令
 
-  + `<action> `: 命令操作
+  + `action `: 命令操作
 
-  + `<options>`: 命令选项
+  + `options`: 命令选项
 
-  + `<arguments>` : 命令参数
+  + `arguments` : 命令参数
 
   + 比如给test函数设置断点
 
@@ -215,10 +215,10 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
     (lldb) breakpoint set -a 0x102096354
     ```
 
-    + `breakpoint`是<command>
-    + `set`是<action>
-    + `-n`是<options>
-    + `test`是<arguments>
+    + `breakpoint`是`command`
+    + `set`是`action`
+    + `-n`是`options`
+    + `test`是`arguments`
 
 + `help`
 
@@ -268,7 +268,7 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
     // 输入thread return,不会执行断点下面的代码
     ```
 
-+ `frame variable [<variable-name>]`
++ `frame variable [variable-name]`
 
   + 打印当前栈帧的变量
 
