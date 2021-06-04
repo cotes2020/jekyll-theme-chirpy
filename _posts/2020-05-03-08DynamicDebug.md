@@ -402,7 +402,7 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
 
 + Mach-O的文件结构
 
-  ![mach-o](/assets/images/2020Reverse/1.xcodetiaoshi.png/machoimage.png)
+  ![mach-o](/assets/images/2020Reverse/machoimage.png)
 
 + 未使用`ASLR`
 
@@ -418,7 +418,7 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
 
   + 地址分布
 
-    ![noalsr](/assets/images/2020Reverse/1.xcodetiaoshi.png/noaslr.png)
+    ![noalsr](/assets/images/2020Reverse/noaslr.png)
 
     ```
     VM Address: Virtual Memory Address 虚拟内存地址
@@ -456,7 +456,7 @@ tags: [逆向工程, 动态调试, debugserver, LLDB, ASLR]
 
   + 地址分布
 
-    ![aslradress](/assets/images/2020Reverse/1.xcodetiaoshi.png/alsradress.png)
+    ![aslradress](/assets/images/2020Reverse/alsradress.png)
 
     ```
     breakpoint set -a 0x102095f90+0x10000
