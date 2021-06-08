@@ -255,7 +255,7 @@ override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec
 }
 ```
 
-**8.`ASWrapperLayoutSpec`: 填充布局**
+**8.`ASWrapperLayoutSpec`: 填充整个视图布局**
 
 + 根据布局视图上设置的大小来包装和计算子视图的布局
 
@@ -265,7 +265,7 @@ override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec
 }
 ```
 
-**9.`ASCornerLayoutSpec`: 圆角布局**
+**9.`ASCornerLayoutSpec`: 角标布局**
 
 + 设置角标
 
@@ -278,7 +278,7 @@ override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec
 }
 ```
 
-**10.`ASStackLayoutElement`元素属性**
+**10.`ASStackLayoutElement`栈布局元素属性**
 
 + `spacingBefore`: 栈布局中，第一个子视图在主轴上的间隙
 + `spacingAfter`: 栈布局中，最后一个子视图在主轴上的间隙
