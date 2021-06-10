@@ -20,37 +20,35 @@ title: Austin's Velog # the main title
 tagline: Good Vibes # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  순간의 기록
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "https://trustnloveu.github.io"
 
 github:
-  username: github_username # change to your github username
+  username: trustnloveu # change to your github username
 
-twitter:
-  username: twitter_username # change to your twitter username
+# twitter:
+#   username: twitter_username # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@doamin.com # change to your email address
+  name: Austin Yang
+  email: trustnloveu@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your twitter homepage
-    - https://github.com/username # change to your github homepage
+    # - https://twitter.com/username # change to your twitter homepage
+    - https://github.com/trustnloveu # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    # - https://www.linkedin.com/in/trustnloveu
 
 google_site_verification: google_meta_tag_verification # change to your verification string
 # --------------------------
 
 google_analytics:
-  id: "" # fill in your Google Analytics ID
+  id: "G-85L0J1F4FP" # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint: # fill in the Google Analytics superProxy endpoint of Google App Engine
