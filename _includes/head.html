@@ -8,22 +8,22 @@
 
   {% if page.layout == 'home' or page.layout == 'post' %}
 
-    {% if site.google_analytics.pv.proxy_endpoint %}
-      <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">
-    {% endif %}
+  {% if site.google_analytics.pv.proxy_endpoint %}
+  <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">
+  {% endif %}
 
-    {% if site.google_analytics.pv.cache_path %}
-      <meta name="pv-cache-path" content="{{ site.google_analytics.pv.cache_path | relative_url }}">
-    {% endif %}
+  {% if site.google_analytics.pv.cache_path %}
+  <meta name="pv-cache-path" content="{{ site.google_analytics.pv.cache_path | relative_url }}">
+  {% endif %}
 
   {% endif %}
 
   {% seo title=false %}
 
   <title>
-  {%- unless page.layout == "home" -%}
+    {%- unless page.layout == "home" -%}
     {{ page.title | append: " | "}}
-  {%- endunless -%}
+    {%- endunless -%}
     {{ site.title }}
   </title>
 
@@ -35,19 +35,19 @@
 
   <!-- GA -->
   {% if jekyll.environment == 'production' %}
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-    {% if site.google_analytics.pv.proxy_endpoint %}
-      {% assign proxy_url = site.google_analytics.pv.proxy_endpoint
-        | replace: "https://", "" | split: "/" | first | prepend: "https://" %}
+  {% if site.google_analytics.pv.proxy_endpoint %}
+  {% assign proxy_url = site.google_analytics.pv.proxy_endpoint
+  | replace: "https://", "" | split: "/" | first | prepend: "https://" %}
 
-      <link rel="preconnect" href="{{ proxy_url }}" crossorigin="use-credentials">
-      <link rel="dns-prefetch" href="{{ proxy_url }}">
-    {% endif %}
+  <link rel="preconnect" href="{{ proxy_url }}" crossorigin="use-credentials">
+  <link rel="dns-prefetch" href="{{ proxy_url }}">
+  {% endif %}
   {% endif %}
 
   <!-- jsDelivr CDN -->
@@ -70,5 +70,9 @@
     src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
 
   {% include js-selector.html %}
+
+  <!-- Google Adsense -->
+  <script data-ad-client="ca-pub-4375303620144063" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 </head>
