@@ -1,45 +1,32 @@
 # The Site Configuration
 
-# Import the theme
-theme: Test
-
-# Only if your site type is GitHub Project sites and doesn't have a custom domain,
-# change below value to '/projectname'.
-baseurl: ''
-
-# the HTML language tag › https://www.w3.org/International/questions/qa-choosing-language-tags
-lang: en-US
-
-# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
-
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: Chirpy                          # the main title
+title: Study                          # the main title
 
-tagline: 하루에 5 Commit !!   # it will display as the sub-title
+tagline: Commit .. Commit !!!   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  나는야 거북이
+  읽거나, 보거나, 듣거나, 쓰거나
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://ksm02071.github.io'
+
+author: Sungmin                  # change to your full name
 
 github:
   username: ksm02071             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username:            # change to your twitter username
 
 social:
-  # Change to your full name.
-  # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Ksm
-  email: ksm03071@gmail.com             # change to your email address
+  name: Kimsungmin                  # it will shows as the copyright owner in Footer
+  email: ksm03071@naver.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/undefined      # change to your twitter homepage
+    - https://github.com/ksm02071       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -47,12 +34,29 @@ social:
 google_site_verification: google_meta_tag_verification # change to your verification string
 # --------------------------
 
+
+# Only if your site type is GitHub Project sites and doesn't have a custom domain,
+# change below value to '/projectname'.
+baseurl: ''
+
+# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
+timezone: Asia/Seoul
+
 google_analytics:
-  id: ''              # fill in your Google Analytics ID
-  # Google Analytics pageviews report settings
+  id: ''          # Fill with your Google Analytics ID
   pv:
-    proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
-    cache_path:       # the local PV cache data, friendly to visitors from GFW region
+    # The Google Analytics pageviews switch.
+    # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
+    enabled: false
+    # the next options only valid when `google_analytics.pv` is enabled.
+    proxy_url: ''
+    proxy_endpoint: ''
+    cache: false  # pv data local cache, good for the users from GFW area.
+
+disqus:
+  comments: true # boolean type, the global switch for posts comments.
+  shortname: sungminkim    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+
 
 # Prefer color scheme setting.
 #
@@ -63,6 +67,7 @@ google_analytics:
 # Available options:
 #
 #     light  - Use the light color scheme
+#
 #     dark   - Use the dark color scheme
 #
 theme_mode:   # [light|dark]
@@ -75,18 +80,12 @@ theme_mode:   # [light|dark]
 img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/avatar.jpg
+avatar: https://icon-library.net/images/github-icon-white/github-icon-white-26.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
 
-disqus:
-  comments: true  # boolean type, the global switch for posts comments.
-  shortname: 'SungminE'    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-
 paginate: 10
-
-# ------------ The following options are not recommended to be modified ------------------
 
 kramdown:
   syntax_highlighter: rouge
@@ -98,6 +97,10 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
+
+# DO NOT change this unless you're a Pro user on Jekyll and Web development,
+# or you think you're smart enough to change other relevant URLs within this template.
+permalink: /posts/:title/
 
 collections:
   tabs:
@@ -114,9 +117,10 @@ defaults:
       layout: post
       comments: true    # Enable comments in posts.
       toc: true         # Display TOC column in posts.
-      # DO NOT modify the following parameter unless you are confident enough
-      # to update the code of all other post links in this project.
-      permalink: /posts/:title/
+      breadcrumb:
+        -
+          label: Posts
+          url: /
   -
     scope:
       path: _drafts
@@ -124,12 +128,44 @@ defaults:
       comments: false
   -
     scope:
+      path: index.html
+    values:
+      breadcrumb:
+        -
+          label: Posts
+  -
+    scope:
+      path: tags
+    values:
+      breadcrumb:
+        -
+          label: Home
+          url: /
+        -
+          label: Tags
+          url: /tabs/tags/
+  -
+    scope:
+      path: categories
+    values:
+      breadcrumb:
+        -
+          label: Home
+          url: /
+        -
+          label: Categories
+          url: /tabs/categories/
+  -
+    scope:
       path: ''
       type: tabs             # see `site.collections`
     values:
       layout: page
-      permalink: /:title/
       dynamic_title: true    # Hide title in mobile screens.
+      breadcrumb:
+        -
+          label: Home
+          url: /
 
 sass:
   style: compressed
@@ -144,15 +180,17 @@ compress_html:
     envs: [development]
 
 exclude:
-  - '*.gem'
-  - '*.gemspec'
+  - vendor
+  - Gemfile.lock
+  - Gemfile
   - tools
   - docs
   - README.md
   - LICENSE
   - gulpfile.js
   - node_modules
-  - '*.json'
+  - package.json
+  - package-lock.json
 
 jekyll-archives:
   enabled: [categories, tags]
@@ -162,3 +200,9 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+# theme: jekyll-theme-chirpy
+# remote_theme: https://github.com/cotes2020/jekyll-theme-chirpy.git
+plugins:
+  - jekyll-remote-theme
+remote_theme: cotes2020/jekyll-theme-chirpy
