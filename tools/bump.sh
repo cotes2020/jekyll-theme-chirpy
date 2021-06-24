@@ -2,29 +2,32 @@
 #
 # How does it work:
 #
-#   1. Bump latest version number to files:
+#   1. Cherry pick the latest commit from default branch
+#      to the target release branch if the target release branch already existed.
+#
+#   2. Bump latest version number to the following files:
+#
 #     - _sass/jekyll-theme-chirpy.scss
 #     - _javascript/copyright
 #     - assets/js/dist/*.js (will be built by gulp later)
 #     - jekyll-theme-chirpy.gemspec
 #     - package.json
 #
-#   2. Create a git-tag on release branch
+#   3. Create a git-tag on release branch
 #
-#   3. Build a RubyGems package base on the latest git-tag
+#   4. Build a RubyGems package base on the latest git-tag
 #
 #
 # Usage:
 #
-#   Switch to 'master' branch or 'X-Y-stable' branch with argument '-m',
-#`  and then run this script.
+#   Run on default branch, if run on other branch requires parameter '-m' (manual mode).
 #
 #
 # Requires: Git, Gulp, RubyGems
 
 set -eu
 
-manual_release=false
+opt_manual=false
 
 ASSETS=(
   "_sass/jekyll-theme-chirpy.scss"
@@ -34,6 +37,10 @@ ASSETS=(
 GEM_SPEC="jekyll-theme-chirpy.gemspec"
 
 NODE_META="package.json"
+
+DEFAULT_BRANCH="master"
+
+_working_branch="$(git branch --show-current)"
 
 _check_src() {
   if [[ ! -f $1 && ! -d $1 ]]; then
@@ -48,8 +55,8 @@ check() {
     exit -1
   fi
 
-  # ensure the current branch is 'master' or running in 'manual' mode
-  if [[ "$(git branch --show-current)" != "master" && $manual_release == "false" ]]; then
+  # ensure working on default branch or running in 'manual' mode
+  if [[ $_working_branch != $DEFAULT_BRANCH && $opt_manual == "false" ]]; then
     echo "Error: This operation must be performed on the 'master' branch or '--manual' mode!"
     exit -1
   fi
@@ -100,6 +107,7 @@ release() {
   _version="$1"
   _major=""
   _minor=""
+  _new_release_branch=false
 
   IFS='.' read -r -a array <<< "$_version"
 
@@ -115,7 +123,7 @@ release() {
 
   _release_branch="$_major-$_minor-stable"
 
-  if $manual_release; then
+  if $opt_manual; then
     echo -e "Bump version to $_version (manual release)\n"
     bump "$_version"
     exit 0
@@ -123,10 +131,11 @@ release() {
 
   if [[ -z $(git branch -v | grep "$_release_branch") ]]; then
     git checkout -b "$_release_branch"
+    _new_release_branch=true
   else
     git checkout "$_release_branch"
     # cherry-pick the latest commit from master branch to release branch
-    git cherry-pick "$(git rev-parse master)"
+    git cherry-pick "$(git rev-parse $DEFAULT_BRANCH)"
   fi
 
   echo -e "Bump version to $_version\n"
@@ -138,10 +147,14 @@ release() {
   echo -e "Build the gem pakcage for v$_version\n"
   build_gem
 
-  # head back to master branch
-  git checkout master
-  # cherry-pick the latest commit from release branch to master branch
-  git cherry-pick "$_release_branch" -x
+  # head back to working branch
+  git checkout $_working_branch
+
+  if [[ $_working_branch == $DEFAULT_BRANCH ]]; then
+    if $_new_release_branch; then
+      git merge $_release_branch
+    fi
+  fi
 
 }
 
@@ -185,7 +198,7 @@ while (($#)); do
   opt="$1"
   case $opt in
     -m | --manual)
-      manual_release=true
+      opt_manual=true
       shift
       ;;
     -h | --help)
