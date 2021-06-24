@@ -73,19 +73,19 @@ F.e: Assume we calculate the probability of a person having height = 1.8m. If we
 
 **Joint probability:** Two events have to happen simultaneously.
 
-Notation: $P(A = a, B = b) ~~or~~ P(A ∩ B)$
+Notation: $$P(A = a, B = b) ~~or~~ P(A ∩ B)$$
 
-Note: $P(A ∩ B) ≤ P(A), P(B)$
+Note: $$P(A ∩ B) ≤ P(A), P(B)$$
 
 **Conditional probability:** Probability of B = b, provided that A = a has occurred.
 
-Notation and formula: $P(B=b | A=a) = \frac{P(B = b, A = a)}{P(A = a)} = \frac{P(A ~∩~ B)}{P(A = a)}$
+Notation and formula: $$P(B=b | A=a) = \frac{P(B = b, A = a)}{P(A = a)} = \frac{P(A ~∩~ B)}{P(A = a)}$$
 
 **Bayes' Theorem:**
 
-$P(A | B) = \frac{P(B | A) . P(A)}{P(B)} (1)$
+$$P(A | B) = \frac{P(B | A) . P(A)}{P(B)} (1)$$
 
-To be more clear: Because $P(A ∩ B) = P(B | A) . P(A) = P(A | B) . P(B)$
+To be more clear: Because $$P(A ∩ B) = P(B | A) . P(A) = P(A | B) . P(B)$$
 
 **→ (1) is true**
 

@@ -1,7 +1,7 @@
 ---
 title: Residual Neural Network
 author: Tai Le
-date: 2020-05-14
+date: 2021-05-14
 math: true
 tags: [Deep Learning]
 ---
@@ -30,7 +30,7 @@ So how can we train the very deep networks to obtain state-of-the-art performanc
 
 By understand this picture, you can understand how Residual Block works. There are some important modifications from the traditional design, they are **Skip Connection** and **Identity Mapping**. ****Below is the formula for the diagram:
 
-                                             $y = \underbrace{F(x)}_\text{Residual} + \underbrace{x}_\text{Identity}$ 
+$$y = \underbrace{F(x)}_\text{Residual} + \underbrace{x}_\text{Identity}$$
 
 The above picture implies that apart from the output $F(x)$ by forwarding the input through the stacked layers, the block uses **Skip Connection** to pass a cloned version of $x$ to the end of the operation, then it uses **Identity Mapping** to **combines $F(x)$ and $x$ together. In addition, **Identity Mapping** does not have any parameters, so its contribution to model complexity is zero. In fact, according to He et al (2015):
 
@@ -62,7 +62,7 @@ Not just one layer, we can even skip multiple layers. For example, in the paper,
 
 Example code in PyTorch (from **Dive into Deep Learning** book):
 
-```jsx
+```python
 from d2l import torch as d2l
 import torch
 from torch import nn
