@@ -1,7 +1,9 @@
 ---
 title: Math Cheat Sheet & Notes
+author: Tai Le
 date: 2021-05-02
-tags: ['Math', 'Machine Learning', 'Deep Learning']
+math: true
+tags: [Math, Deep Learning]
 ---
 
 

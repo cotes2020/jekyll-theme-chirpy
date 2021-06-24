@@ -1,7 +1,8 @@
 ---
 title: Sử dụng Tensorflow với AMD GPU trên Ubuntu
+author: Tai Le
 date: 2020-04-21
-tags: ['Machine Learning', 'Tensorflow', 'ROCm']
+tags: [ROCm]
 ---
 
 ![Cover](/assets/img/2020-04-21/cover.png)

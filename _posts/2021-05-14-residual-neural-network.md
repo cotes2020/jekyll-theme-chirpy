@@ -1,4 +1,10 @@
-# Residual Neural Network
+---
+title: Residual Neural Network
+author: Tai Le
+date: 2020-05-14
+math: true
+tags: [Deep Learning]
+---
 
 ## Problems
 

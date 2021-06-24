@@ -1,7 +1,8 @@
 ---
 title: Phân loại chó mèo bằng Keras
+author: Tai Le
 date: 2020-04-26
-tags: ['Machine Learning', 'Deep Learning', 'Tensorflow', 'Computer Vision']
+tags: [Deep Learning]
 ---
 
 ![Cover](/assets/img/2020-04-26/cover.jpg)
