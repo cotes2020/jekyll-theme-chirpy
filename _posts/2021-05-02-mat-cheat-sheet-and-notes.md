@@ -40,23 +40,23 @@ Before gathering data:
 
 - **Sample space or outcome space:** Total results, samples or outcomes of a problem.
 
-F.e: When rolling a dice, we have a sample space of S = {1, 2, 3, 4, 5, 6}
+F.e: When rolling a dice, we have a sample space of $S = {1, 2, 3, 4, 5, 6}$
 
 - **Event:** A set of outcomes from a given ***sample space.***
 
 F.e: An event of getting an odd number when rolling a dice.
 
 - The probability of an event A in the given sample space S is denoted as P(A), satisfies the following properties:
-    - P(A) ≥ 0
-    - P(S) = 1
+    - $P(A) ≥ 0$
+    - $P(S) = 1$
     - For ***mutually exclusive*** events, the probability that any happens = sum of their individual probabilities
 
 **Random variables (Biến ngẫu nhiên):**
 
 Set X as a random variable, rather than specifying accurate like P(X = a), we can illustrate:
 
-- P(X) as the distribution over the random variable X
-- P(a) as a probability of a specific value
+- $P(X)$ as the distribution over the random variable X
+- $P(a)$ as a probability of a specific value
 
 There is a difference between **discrete and continuous random variables**.
 
