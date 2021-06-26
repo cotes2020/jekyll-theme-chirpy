@@ -5,7 +5,7 @@ theme: jekyll-theme-chirpy
 
 # Only if your site type is GitHub Project sites and doesn't have a custom domain,
 # change below value to '/projectname'.
-baseurl: ''
+baseurl: 'https://0530hwi.github.io'
 
 # the HTML language tag › https://www.w3.org/International/questions/qa-choosing-language-tags
 lang: en-US
@@ -15,9 +15,9 @@ timezone: Asia/Shanghai
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: Chirpy                          # the main title
+title: Hwi                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: 도전, 세계적 빅데이터 강사   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
@@ -25,13 +25,13 @@ description: >-                        # used by seo meta and the atom feed
   and focuses on text presentation.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://0530hwi.github.io'
 
 github:
-  username: github_username             # change to your github username
+  username: 0530hwi             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: NONE            # change to your twitter username
 
 social:
   # Change to your full name.
