@@ -48,7 +48,7 @@
   {% assign _content = _content | replace: '<img src="/', img_path_replacement %}
 
   <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-  {% assign _content = _content | replace: '<img src="', '<img data-src="' %}
+  {% assign _content = _content | replace: '<img src="', '<img data-proofer-ignore data-src="' %}
 
   <!-- add image placehoder to prevent layout reflow -->
 
