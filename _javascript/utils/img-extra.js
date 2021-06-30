@@ -11,10 +11,10 @@ $(function() {
     return;
   }
 
-  /* lozy loading */
+  /* lazy loading */
 
-  const imgs = document.querySelectorAll(`${IMG_SCOPE} img[data-src]`);
-  const observer = lozad(imgs);
+  const imgList = document.querySelectorAll(`${IMG_SCOPE} img[data-src]`);
+  const observer = lozad(imgList);
   observer.observe();
 
   /* popup */
@@ -40,9 +40,8 @@ $(function() {
     }
   });
 
-
   /* markup the image links */
+
   $(`${IMG_SCOPE} a`).has("img").addClass('img-link');
 
 });
-

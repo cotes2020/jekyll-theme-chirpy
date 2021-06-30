@@ -44,7 +44,11 @@ layout: default
       <div class="post-content">
 
         {% if page.image.src %}
-          <img src="{{ page.image.src }}" class="preview-img" alt="{{ page.image.alt | default: "Preview Image" }}">
+          <img src="{{ page.image.src }}"
+            class="preview-img"
+            alt="{{ page.image.alt | default: "Preview Image" }}"
+            {% if page.image.width %}width="{{ page.image.width }}"{% endif %}
+            {% if page.image.height %}height="{{ page.image.height }}"{% endif %}>
         {% endif %}
 
         {{ content }}
