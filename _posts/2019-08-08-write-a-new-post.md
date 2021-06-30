@@ -84,15 +84,20 @@ Then you can use it like other markdown language: surround the graph code with `
 
 ### Preview image
 
-If you want to add an image to the top of the post contents, specify the url and alt attribute for the image:
+If you want to add an image to the top of the post contents, specify the attribute `src`, `width`, `height` and `alt` for the image:
 
 ```yaml
 ---
 image:
   src: /path/to/image/file
+  width: 1000   # in pixels
+  height: 400   # in pixels
   alt: image alternative text
 ---
 ```
+
+Except for `alt`, all other options are necessary, especially the `width` and `height`, which are related to user experience and web page loading performance. Later section ["Image size"](#image-size) will also mention this.
+
 
 ### Image caption
 
@@ -105,10 +110,10 @@ _Image Caption_
 
 ### Image size
 
-You can specify the width (and height) of a image with `width`:
+In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image:
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: width="400"}
+![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
 ```
 
 ### Image position
@@ -120,19 +125,19 @@ By default, the image is centered, but you can specify the position by using one
   Image will be left aligned in below sample:
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .normal}
+  ![Desktop View](/assets/img/sample/mockup.png){: .normal }
   ```
 
 - **Float to the left**
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .left}
+  ![Desktop View](/assets/img/sample/mockup.png){: .left }
   ```
 
 - **Float to the right**
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .right}
+  ![Desktop View](/assets/img/sample/mockup.png){: .right }
   ```
 
 > **Limitation**: Once you specify the position of an image, it is forbidden to add the image caption.
@@ -142,9 +147,8 @@ By default, the image is centered, but you can specify the position by using one
 The screenshots of the program window can be considered to show the shadow effect, and the shadow will be visible in the `light` mode:
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: .shadow}
+![Desktop View](/assets/img/sample/mockup.png){: .shadow }
 ```
-
 
 ### CDN URL
 
