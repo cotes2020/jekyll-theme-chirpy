@@ -23,8 +23,8 @@
 
 %link-hover {
   color: #d2603a !important;
-  border-bottom: 1px solid #d2603a;
-  text-decoration: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 1px;
 }
 
 %link-color {
@@ -57,7 +57,7 @@
   text-decoration: none;
 }
 
-@mixin sidebar-links($color: rgba(255, 255, 255, 0.5)) {
+@mixin sidebar-links($color: #333) {
   color: $color;
   transition: color 0.35s ease-in-out;
   user-select: none;

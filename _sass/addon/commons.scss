@@ -202,8 +202,8 @@ footer {
     padding: 0.3rem 0.5rem;
     margin: 0 0.35rem 0.5rem 0;
     &:hover {
-      background-color: #2a408e;
-      border-color: #2a408e;
+      background-color: #e74c3c;
+      border-color: #e74c3c;
       color: #fff;
       transition: none;
     }
@@ -618,9 +618,8 @@ $sidebar-display: "sidebar-display";
     @include sidebar-links;
 
     &:hover {
-      @include no-text-decoration;
-
-      color: #fff;
+      color: #555;
+      text-decoration: underline;
     }
   }
 
@@ -648,18 +647,12 @@ $sidebar-display: "sidebar-display";
       -webkit-transition: transform 0.5s;
       -moz-transition: transform 0.5s;
       transition: transform 0.5s;
-
-      &:hover {
-        -ms-transform: scale(1.2);
-        -moz-transform: scale(1.2);
-        -webkit-transform: scale(1.2);
-        transform: scale(1.2);
-      }
     }
   } // #avatar
 
   .site-title {
     a {
+      color: #000;
       font-weight: 900;
       font-size: 1.5rem;
       letter-spacing: 0.5px;
@@ -669,11 +662,15 @@ $sidebar-display: "sidebar-display";
   .site-subtitle {
     font-size: 95%;
     color: #828282;
-    line-height: 1.2rem;
-    word-spacing: 1px;
-    margin: 0.5rem 1.5rem 0.5rem 1.5rem;
-    min-height: 3rem; // avoid vertical shifting in multi-line words
+    line-height: 1.5rem;
+    margin: 0.5rem 0 0.5rem 1.5rem;
     user-select: none;
+  }
+
+  hr {
+    border-top: solid 5px #666;
+    width: 80px;
+    margin: 0 $sidebar-right-space 1rem 0;
   }
 
   .nav-link {
@@ -681,57 +678,26 @@ $sidebar-display: "sidebar-display";
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 1px;
-    display: table-cell;
     vertical-align: middle;
+    text-align: right;
+    padding: 0.5rem 0;
+    margin-right: $sidebar-right-space;
   }
 
   .nav-item {
-    text-align: center;
-    display: table;
-    height: $tab-height;
-    &:hover {
-      .nav-link {
-        color: #f8f9facf;
-      }
-    }
+    text-align: right;
+
     &.active {
       .nav-link {
-        color: #fcfcfc;
+        color: #555;
+        text-decoration: underline;
       }
     }
   }
 
   ul {
-    height: $tab-height * $tab-count;
     margin-bottom: 2rem;
     padding-left: 0;
-
-    li {
-      width: 100%;
-
-      &:last-child {
-        $cursor-width: 3px;
-
-        a {
-          position: relative;
-          left: $cursor-width / 2;
-          width: 100%;
-        }
-
-        &::after { // the cursor
-          display: table;
-          visibility: hidden;
-          content: "";
-          position: relative;
-          right: 1px;
-          width: $cursor-width;
-          height: $tab-cursor-height;
-          border-radius: 1px;
-          background-color: var(--nav-cursor-color);
-          pointer-events: none;
-        }
-      }
-    } // li
 
     @mixin fix-cursor($top) {
       top: $top;
@@ -822,6 +788,7 @@ $sidebar-display: "sidebar-display";
 .profile-wrapper {
   margin-top: 2rem;
   width: 100%;
+  padding: 0 $sidebar-right-space;
 }
 
 #search-result-wrapper {
@@ -1510,12 +1477,8 @@ $sidebar-display: "sidebar-display";
       margin-top: 4rem;
       margin-bottom: 1rem;
 
-      &.text-center {
-        text-align: left !important;
-      }
-
       %profile-ml {
-        margin-left: 4.5rem;
+        margin-left: 3.5rem;
       }
 
       #avatar {
@@ -1525,7 +1488,7 @@ $sidebar-display: "sidebar-display";
           width: 6.2rem;
           height: 6.2rem;
           &.mx-auto {
-            margin-left: 0 !important;
+            margin-right: 0 !important;
           }
         }
       }
@@ -1542,15 +1505,13 @@ $sidebar-display: "sidebar-display";
       .site-subtitle {
         @extend %profile-ml;
 
-        word-spacing: 0;
+        word-spacing: 3px;
         margin-top: 0.3rem;
       }
 
     } // .profile-wrapper (min-width: 1650px)
 
     ul {
-      padding-left: 2.5rem;
-
       > li:last-child {
         > a {
           position: static;
@@ -1561,10 +1522,6 @@ $sidebar-display: "sidebar-display";
         text-align: left;
 
         .nav-link {
-          > span {
-            letter-spacing: 3px;
-          }
-
           > i {
             @include icon-round(1.65rem);
 

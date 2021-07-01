@@ -91,13 +91,13 @@ To be more clear: Because $$P(A ∩ B) = P(B | A) . P(A) = P(A | B) . P(B)$$
 
 **Marginalization (Phép biên hóa):**
 
-Operation of determining P(B) from P(A, B). To be more theoretically:
+Operation of determining $P(B)$ from $P(A, B)$. To be more theoretically:
 
 Marginalisation is a method that requires summing over the possible values of one variable to determine the marginal contribution of another.
 
 which is also known as ***sum rule***. The probability or distribution of marginalization is called a marginal probability or marginal distribution
 
-Formulation: P(B) = AP(A, B)
+Formulation: $$P(B) = AP(A, B)$$
 
 **Independence:**
 
@@ -113,13 +113,13 @@ Expectation and variance offer useful measures to summarize key characteristics 
 
 **Expectation (average) of random variable X:**
 
-Formula: E[X] = xx P (X=x)
+Formula: $$E[X] = xx P (X=x)$$
 
 **Variance:**
 
 Measure how much the random variable X deviates from its expectation
 
-Formula: Var[X] = E [(X − E[X])2] = E[X2] − E[X]2
+Formula: $$Var[X] = E [(X − E[X])2] = E[X2] − E[X]2$$
 
 ---
 
@@ -133,7 +133,7 @@ Vectors are 1-dimensional arrays of numbers or terms. In geometry, vectors store
 
 ### **Notation**
 
-$v = \begin{bmatrix}1 \\ 2 \\ 3 \end{bmatrix}$
+$$v = \begin{bmatrix}1 \\ 2 \\ 3 \end{bmatrix}$$
 
 ### Vectors in geometry
 
@@ -185,7 +185,7 @@ Angle of dot product:
 
 ![/assets/img/2021-05-02/Untitled%202.png](/assets/img/2021-05-02/Untitled%202.png)
 
-Hadamard product *(elementwise multiplication)*: $\begin{bmatrix}
+Hadamard product *(elementwise multiplication)*: $$\begin{bmatrix}
 a_1 \\
 a_2 \\
 \end{bmatrix}
@@ -198,7 +198,7 @@ b_2 \\
 \begin{bmatrix}
 a_1 \cdot b_1 \\
 a_2 \cdot b_2 \\
-\end{bmatrix}$
+\end{bmatrix}$$
 
 ### Vector fields
 
@@ -208,7 +208,7 @@ A vector field shows how far the point (x,y) would hypothetically move if we app
 
 ### Dimensions
 
-$\begin{bmatrix}
+$$\begin{bmatrix}
 2 & 4 \\
 5 & -7 \\
 12 & 5 \\
@@ -216,7 +216,7 @@ $\begin{bmatrix}
 \begin{bmatrix}
 a² & 2a & 8\\
 18 & 7a-4 & 10\\
-\end{bmatrix}$
+\end{bmatrix}$$
 
 1 has dimensions (3, 2)
 
