@@ -2,18 +2,34 @@
   JS selector for site.
 -->
 
+<!-- common -->
+
+<script async src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
+
+{% if jekyll.environment == 'production' %}
+  <!-- PWA -->
+  <script defer src="{{ '/app.js' | relative_url }}"></script>
+
+  <!-- GA -->
+  {% if site.google_analytics.id %}
+    {% include google-analytics.html %}
+  {% endif %}
+
+{% endif %}
+
+<!-- layout specified -->
+
 {% if page.layout == 'home' or page.layout == 'post' %}
   {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
     <!-- pv-report needs countup.js -->
     <script async src="https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js"></script>
-    <script async src="{{ '/assets/js/dist/pvreport.min.js' | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/dist/pvreport.min.js' | relative_url }}"></script>
   {% endif %}
 {% endif %}
 
 {% if page.layout == 'post' or page.layout == 'page' %}
   <!-- image lazy-loading & popup -->
-  <script async
-    src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script>
 {% endif %}
 
 {% if page.layout == 'home'
@@ -49,15 +65,4 @@
   <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
   </script>
-{% endif %}
-
-{% if jekyll.environment == 'production' %}
-  <!-- PWA -->
-  <script defer src="{{ '/app.js' | relative_url }}"></script>
-
-  <!-- GA -->
-  {% if site.google_analytics.id %}
-    {% include google-analytics.html %}
-  {% endif %}
-
 {% endif %}
