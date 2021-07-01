@@ -72,9 +72,9 @@
     color: var(--link-color);
 
     &:hover {
-      background: #2a408e;
+      background: var(--btn-active-bg);
       color: #fff;
-      border-color: #2a408e;
+      border-color: var(--btn-active-bg);
     }
 
     &.disabled {

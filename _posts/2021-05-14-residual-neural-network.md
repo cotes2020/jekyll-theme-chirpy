@@ -6,7 +6,7 @@ math: true
 tags: [Deep Learning]
 ---
 
-## Problems
+## 1. Problems
 
 CNNs have achieved many milestones in Computer Vision. They have been trained hierarchically with the concepts of learning low/mid/high-level features, the levels can be enriched by the number of stacked layers. According to He et al. (2015), the depth of the networks is crucially important to their accuracy, and the ImageNet winners only trained networks within 16 to 30 layers to achieve the highest performance.
 
@@ -20,7 +20,7 @@ But through several experiments, He et al. encountered the **degradation** of ac
 
 So how can we train the very deep networks to obtain state-of-the-art performance? That is why Residual Block and Residual Neural Network were designed to alleviate this problem.
 
-## Approach
+## 2. Approach
 
 ### **Residual Block**
 
@@ -42,6 +42,10 @@ and
 
 ⇒ In the end, in the case we have no ideas which layers are ineffective for the whole network, it can "push the residual to zero" (He et al., 2015, para. x). Besides, we only need to optimize $F(x)$ in backward propagation.
 
+**Multiple layers skipping**
+
+![/assets/img/2021-05-14/Untitled%203.png](/assets/img/2021-05-14/Untitled%203.png)
+
 **Note:** Residual mapping is combining $F(x)$ with $x$
 
 **Problem:** Sometimes $x$ and $F(x)$ do not share the same dimension or channels
@@ -54,11 +58,8 @@ Not just one layer, we can even skip multiple layers. For example, in the paper,
 
 ![/assets/img/2021-05-14/Untitled%202.png](/assets/img/2021-05-14/Untitled%202.png)
 
-![/assets/img/2021-05-14/Untitled%203.png](/assets/img/2021-05-14/Untitled%203.png)
 
-**Multiple layers skipping**
-
-## **Code**
+## 3. Code
 
 Example code in PyTorch (from **Dive into Deep Learning** book):
 
@@ -95,7 +96,7 @@ class Residual(nn.Module):  #@save
         return F.relu(Y)
 ```
 
-## **References**
+## 4. References
 
 - **Medium article**: [https://towardsdatascience.com/introduction-to-resnets-c0a830a288a4](https://towardsdatascience.com/introduction-to-resnets-c0a830a288a4)
 - **ResNet paper**: [https://arxiv.org/pdf/1512.03385.pdf](https://arxiv.org/pdf/1512.03385.pdf)
