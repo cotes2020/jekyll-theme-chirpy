@@ -39,8 +39,6 @@ html[mode=dark] {
   padding: 1.5rem;
 }
 
-$code-font-size: 0.85rem;
-
 div > pre {
   @extend %code-snippet-bg;
   @extend %code-snippet-radius;
