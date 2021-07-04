@@ -1,0 +1,5 @@
+/*
+  Appending custom SCSS variables will override the default ones in `_sass/addon/variables.scsss`
+*/
+
+$tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
