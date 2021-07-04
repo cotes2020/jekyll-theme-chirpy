@@ -8,6 +8,7 @@
   In order to allow a wide table to scroll horizontally,
   we suround the markdown table with `<div class="table-wrapper">` and `</div>`
 -->
+
 {% if _content contains '<table>' %}
   {% assign _content = _content
     | replace: '<table>', '<div class="table-wrapper"><table>'
@@ -21,6 +22,7 @@
   https://github.com/penibelst/jekyll-compress-html/issues/101
   https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
 -->
+
 {% if _content contains '<pre class="highlight">' %}
   {% assign _content = _content
     | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight"><code'
@@ -29,6 +31,7 @@
 {% endif %}
 
 <!-- Add attribute 'hide-bullet' to the checkbox list -->
+
 {% if _content contains '<li class="task-list-item"><' %}
   {% assign _content = _content
     | replace: '"task-list-item"><', '"task-list-item" hide-bullet><'
@@ -36,9 +39,12 @@
 {% endif %}
 
 
+<!-- images -->
+
 {% if _content contains '<img src="' %}
 
   <!-- add CDN prefix if it exists -->
+
   {% if site.img_cdn != '' %}
     {% assign img_path_replacement = '<img src="' | append: site.img_cdn | append: '/' %}
   {% else %}
@@ -48,6 +54,7 @@
   {% assign _content = _content | replace: '<img src="/', img_path_replacement %}
 
   <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
   {% assign _content = _content | replace: '<img src="', '<img data-proofer-ignore data-src="' %}
 
   <!-- add image placehoder to prevent layout reflow -->
@@ -95,6 +102,29 @@
 
 {% endif %}
 
+<!-- Add lang-badge for code snippets -->
+
+{% if _content contains '<div class="language-' %}
+  {% assign _code_splits = _content | split: '<div class="language-' %}
+  {% assign _new_content = nil %}
+
+  {% for _snippet in _code_splits %}
+    {% if forloop.first %}
+      {% assign _new_content = _snippet %}
+    {% else %}
+      {% assign _lang = _snippet | split: ' ' | first %}
+      {% capture _tag_head %}<div lang="{{_lang}}" class="language-{% endcapture %}
+      {% assign _new_content = _new_content | append: _tag_head | append: _snippet %}
+    {% endif %}
+  {% endfor %}
+
+  {% if _new_content %}
+    {% assign _content = _new_content %}
+  {% endif %}
+
+{% endif %}
+
 
 <!-- return -->
+
 {{ _content }}

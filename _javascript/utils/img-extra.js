@@ -25,7 +25,7 @@ $(function() {
       const title = nextTag.prop('tagName') === 'EM' ? nextTag.text() : '';
       const src = $(this).attr('data-src'); // created by lozad.js
 
-      $(this).wrap(`<a href="${src}" title="${title}" class="popup"></a>`);
+      $(this).wrap(`<a href="${src}" title="${title}" class="popup img-link"></a>`);
     }
   );
 
@@ -41,7 +41,5 @@ $(function() {
   });
 
   /* markup the image links */
-
-  $(`${IMG_SCOPE} a`).has("img").addClass('img-link');
 
 });
