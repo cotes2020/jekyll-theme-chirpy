@@ -16,4 +16,4 @@ labels: question
 - [ ] My question is based on the latest code of `master` branch.
 
 ## Description
-<!-- Please describe your question in detial. -->
+<!-- Please describe your question in detail. -->
