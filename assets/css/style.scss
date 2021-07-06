@@ -1,6 +1,16 @@
 ---
 ---
 
-{% include_relative variables-hook.scss %}
+{% comment %} include the variables-hook if it exists {% endcomment %}
 
-@import "jekyll-theme-chirpy";
+{% assign hook = 'variables-hook.scss' %}
+{% assign _hook_path = hook | prepend: '/assets/css/' %}
+{% assign _hook_obj = site.static_files | where: 'path', _hook_path | first %}
+
+{% if _hook_obj %}
+  {% include_relative {{ hook }} %}
+{% endif %}
+
+@import "{{ site.theme }}";
+
+// append your custom style below
