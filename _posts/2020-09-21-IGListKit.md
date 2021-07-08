@@ -16,7 +16,9 @@ tags: [Swift, IGListKit, UICollectionView]
 
 ## IGListKit介绍
 
-`IGListKit` 是 Instagram 在2016年年底推出的一套数据驱动的 `UICollectionView` 框架，使用数据驱动去创造更为快速灵活的列表界面。为什么选择 `UICollectionView` 而不是 `UITableView` ？因为 `UICollectionView` 支持自定义布局，比 `UITableView` 更加灵活。 `IGListKit` 的主要特性如下：
+`IGListKit` 是 Instagram 在2016年年底推出的一套数据驱动的 `UICollectionView` 框架，使用数据驱动去创造更为快速灵活的列表界面。为什么选择 `UICollectionView` 而不是 `UITableView` ？因为 `UICollectionView` 支持自定义布局，比 `UITableView` 更加灵活，[IGListKit文档](https://instagram.github.io/IGListKit/)
+
+`IGListKit` 的主要特性如下：
 
 + 数据驱动 (数据改变 -> Diff算法 -> update界面)
 + 支持多种数据类型
