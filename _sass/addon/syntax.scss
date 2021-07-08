@@ -63,6 +63,28 @@ div > pre {
   }
 
   overflow: auto;
+
+  pre {
+    margin-bottom: 0;
+    font-size: $code-font-size;
+    line-height: 1.4rem;
+    word-wrap: normal; /* Fixed Safari overflow-x */
+  }
+
+  table {
+    padding: 0;
+    border: 0;
+    td pre {
+      overflow: visible;  /* Fixed iOS safari overflow-x */
+      word-break: normal; /* Fixed iOS safari linenos code break */
+    }
+  }
+
+  td {
+    padding: 0;
+    border: 0;
+  }
+
   .lineno {
     margin-left: 0.2rem;
     padding-right: 0.5rem;
@@ -77,24 +99,12 @@ div > pre {
     -o-user-select: none;
     user-select: none;
   }
-  pre {
-    margin-bottom: 0;
-    font-size: $code-font-size;
-    line-height: 1.4rem;
-    word-wrap: normal; /* Fixed Safari overflow-x */
+
+  /* set the dollar sign to non-selectable */
+  .gp {
+    user-select: none;
   }
-  table {
-    padding: 0;
-    border: 0;
-    td pre {
-      overflow: visible;  /* Fixed iOS safari overflow-x */
-      word-break: normal; /* Fixed iOS safari linenos code break */
-    }
-  }
-  td {
-    padding: 0;
-    border: 0;
-  }
+
 } //.highlight
 
 code {
