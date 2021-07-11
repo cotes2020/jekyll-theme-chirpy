@@ -148,11 +148,11 @@ release() {
   build_gem
 
   # head back to working branch
-  git checkout $_working_branch
+  git checkout "$_working_branch"
 
   if [[ $_working_branch == $DEFAULT_BRANCH ]]; then
     if $_new_release_branch; then
-      git merge $_release_branch
+      git merge "$_release_branch"
     fi
   fi
 
