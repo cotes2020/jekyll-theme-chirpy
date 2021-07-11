@@ -7,15 +7,16 @@
 {% assign post_long_df = site.data.date_format.post.long | default: '%b %e, %Y' %}
 {% assign post_short_df = site.data.date_format.post.short | default: '%b %e' %}
 
+{% if include.preposition %}
+  {{ include.preposition }}
+{% endif %}
 <span class="timeago {% if include.class %}{{ include.class }}{% endif %}"
   {% if include.tooltip %}
     data-toggle="tooltip"
     data-placement="bottom"
     title="{{ include.date | date: tooltip_df }}"
   {% endif %}
-
-  {% if include.prefix %}prefix="{{ include.prefix }} "{% endif%}
-  {% if include.prep %}prep="{{ include.prep }}"{% endif %} >
+  {% if include.prefix %}prefix="{{ include.prefix }} "{% endif%}>
 
   {% assign this_year = site.time | date: "%Y" %}
   {% assign post_year = include.date | date: "%Y" %}
