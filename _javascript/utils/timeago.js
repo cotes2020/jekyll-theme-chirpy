@@ -10,14 +10,13 @@ $(function() {
 
   let intervalId = void 0;
 
-  function timeago(iso, preposition) {
+  function timeago(iso) {
     let now = new Date();
     let past = new Date(iso);
-    let prep = (typeof preposition !== "undefined" ? `${preposition} ` : "");
 
     if (past.getFullYear() !== now.getFullYear()) {
       toRefresh -= 1;
-      return prep + past.toLocaleString("en-US", {
+      return past.toLocaleString("en-US", {
         year: "numeric",
         month: "short",
         day: "numeric"
@@ -26,7 +25,7 @@ $(function() {
 
     if (past.getMonth() !== now.getMonth()) {
       toRefresh -= 1;
-      return prep + past.toLocaleString("en-US", {
+      return past.toLocaleString("en-US", {
         month: "short",
         day: "numeric"
       });
