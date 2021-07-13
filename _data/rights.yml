@@ -1,11 +1,11 @@
 #  License data
 
 license:
-  name: CC BY 4.0
-  link: "https://creativecommons.org/licenses/by/4.0/"
+  name: CC BY-SA 4.0
+  link: "https://creativecommons.org/licenses/by-sa/4.0/"
 
 brief: Some rights reserved.
 
 verbose: >-
   Except where otherwise noted, the blog posts on this site are licensed
-  under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+  under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License by the author.

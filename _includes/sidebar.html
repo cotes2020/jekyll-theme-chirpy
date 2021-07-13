@@ -24,7 +24,7 @@
       <a href="{{ '/' | relative_url }}">{{- site.title -}}</a>
     </div>
 
-    <div class="site-subtitle font-italic">{{- site.tagline -}}</div>
+    <div class="site-subtitle font-italic"><img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" height="20" width="20" display="inline-block">{{- site.tagline -}}</div>
 
   </div><!-- .profile-wrapper -->
 
@@ -84,6 +84,11 @@
       <span id="mode-toggle-wrapper" class="order-1">
         {% include mode-toggle.html %}
       </span>
+	  
+	  <span id="mode-toggle-wrapper" class="order-2">
+        <i class=""></i>
+      </span>
+	  
     {% endunless %}
 
   </div> <!-- .sidebar-bottom -->

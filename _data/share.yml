@@ -2,14 +2,26 @@
 #  Icons from <https://fontawesome.com/>
 
 platforms:
+#  -
+#    type: Twitter
+#    icon: "fab fa-twitter"
+#    link: "https://twitter.com/intent/tweet?text=TITLE&url=URL"
+#  -
+#    type: Facebook
+#    icon: "fab fa-facebook-square"
+#    link: "https://www.facebook.com/sharer/sharer.php?title=TITLE&u=URL"
   -
-    type: Twitter
-    icon: "fab fa-twitter"
-    link: "https://twitter.com/intent/tweet?text=TITLE&url=URL"
-  -
-    type: Facebook
-    icon: "fab fa-facebook-square"
-    link: "https://www.facebook.com/sharer/sharer.php?title=TITLE&u=URL"
+   type: QQ
+   icon: "fab fa-qq"
+   link: "http://connect.qq.com/widget/shareqq/index.html?title=TITLE&url=URL"
+   
+   
+#  -
+#   type: WeChat
+#   icon: "fab fa-weixin"
+#   link: "http://service.weibo.com/share/share.php?title=TITLE&url=URL"
+
+
   -
     type: Telegram
     icon: "fab fa-telegram"
@@ -21,7 +33,8 @@ platforms:
   #   icon: "fab fa-linkedin"
   #   link: "https://www.linkedin.com/sharing/share-offsite/?url=URL"
   #
-  # -
-  #   type: Weibo
-  #   icon: "fab fa-weibo"
-  #   link: "http://service.weibo.com/share/share.php?title=TITLE&url=URL"
+  -
+   type: Weibo
+   icon: "fab fa-weibo"
+   link: "http://service.weibo.com/share/share.php?title=TITLE&url=URL"
+
