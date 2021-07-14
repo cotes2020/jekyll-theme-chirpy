@@ -16,15 +16,15 @@ typora-root-url: ..
 ![img](/assets/img/avatar.jpg)
 
 
-# 博客搭建过程
+## 博客搭建过程
 
-## 1 Windows下安装依赖
+### 1 Windows下安装依赖
 
 下载[RubyInstaller](https://rubyinstaller.org/)并安装
 
 注意版本：Jekyll 4.0.2依赖的Ruby版本**Ruby(>= 2.4, < 3.0)**
 
-## 2 本地安装Jekyll并创建项目
+### 2 本地安装Jekyll并创建项目
 
 ```shell
 // 1 安装Jekyll
@@ -45,7 +45,7 @@ jekyll serve
 ```
 
 
-## 3 个性化修改
+### 3 个性化修改
 
 在Jekyll的主题Chirpy的基础之上进行了一点小修改
 
@@ -56,7 +56,7 @@ jekyll serve
 5. 添加MathJax以更好的支持LaTeX公式
 6. 开启基于Disqus的评论（评论需要科学上网）
 
-## 4 部署到GitHub
+### 4 部署到GitHub
 
 1. 确认本地修改完成之后，记录过的文件
 2. fork [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) 并克隆到本地
@@ -73,7 +73,7 @@ jekyll serve
 
 
 
-# 文章头部格式说明
+## 文章头部格式说明
 ```
 ---
 layout: post
@@ -99,7 +99,7 @@ typora-root-url: ..
 6. typora-root-url：设置在typora中的根目录，方便typora中图片显示
 
 
-# 参考
+## 参考
 
 1. [Jekyll](https://jekyllrb.com/)
 2. [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)
