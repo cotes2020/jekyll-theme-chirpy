@@ -1,5 +1,9 @@
 # The Site Configuration
 
+title: Sokranotes Blog
+
+SEOTitle: 苏格拉没有底的博客 | Sokranotes Blog
+
 # Import the theme
 theme: jekyll-theme-chirpy
 
@@ -19,10 +23,7 @@ title: Sokranotes                          # the main title
 
 tagline: Love is the art of collaboration.   # it will display as the sub-title
 
-description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+description: "Thinking, Recording, Learning, 思考, 记录, 学习"
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://sokranotes.github.io/'
