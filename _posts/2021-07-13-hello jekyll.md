@@ -50,7 +50,7 @@ jekyll serve
 在Jekyll的主题Chirpy的基础之上进行了一点小修改
 
 1. 侧边栏颜色及文字颜色，修改配色
-2. tags中展开显示，提高可读性
+2. tags中展开显示，提高可读性，借鉴了 [LOFFER](https://github.com/FromEndWorld/LOFFER) 的设计
 3. 侧边栏下方图标修改，去掉多余的图标，并进行了分隔
 4. 文章分享修改
 5. 添加MathJax以更好的支持LaTeX公式
