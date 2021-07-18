@@ -23,10 +23,6 @@
   padding-right: $pr;
 }
 
-.timeago::before {
-  content: attr(prefix);
-}
-
 #post-wrapper .post-meta {
   > div:nth-child(2) {
     > span:not(:first-child)::before {
