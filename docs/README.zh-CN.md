@@ -1,21 +1,44 @@
-# Chirpy
+<div align="right">
+  <a href="https://github.com/cotes2020/jekyll-theme-chirpy#readme">EN</a> |
+  <a href="https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/README.zh-CN.md">中文 (简体)</a>
+</div>
 
-Language: [English](https://github.com/cotes2020/jekyll-theme-chirpy#readme) | 简体中文
+<div align="center">
+  <h1>Chirpy Jekyll Theme</h1>
+  <p>
+    <a href="https://rubygems.org/gems/jekyll-theme-chirpy">
+    <img alt="Gem Version" src="https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen"></img>
+  </a>
+    <a href="https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush">
+    <img alt="Build Status" src="https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push"></img>
+  </a>
+    <a href="https://app.codacy.com/manual/cotes2020/jekyll-theme-chirpy?utm_source=github.com&utm_medium=referral&utm_content=cotes2020/jekyll-theme-chirpy&utm_campaign=Badge_Grade_Dashboard">
+    <img alt="Codacy Badge" src="https://api.codacy.com/project/badge/Grade/8220b926db514f13afc3f02b7f884f4b"></img>
+  </a>
+    <a href="https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE">
+    <img alt="GitHub license" src="https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg"></img>
+  </a>
+    <a href="https://996.icu">
+    <img alt="996.icu" src="https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg"></img>
+  </a>
+  </p>
+</div>
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)](https://rubygems.org/gems/jekyll-theme-chirpy)
-[![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8220b926db514f13afc3f02b7f884f4b)](https://app.codacy.com/manual/cotes2020/jekyll-theme-chirpy?utm_source=github.com&utm_medium=referral&utm_content=cotes2020/jekyll-theme-chirpy&utm_campaign=Badge_Grade_Dashboard)
-[![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
-[![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
+一个采用了最简化、侧边栏、响应式设计的 Jekyll 主题，专注于文本展示，旨在帮助您轻松地记录和分享知识。
 
-一个不一样的 Jekyll 主题，采用响应式设计，方便记录、管理、分享您的知识和经验。[懂的进 »](https://chirpy.cotes.info)
+[在线体验 »](https://chirpy.cotes.info)
 
-[![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/devices-mockup.png)](https://chirpy.cotes.info)
+<p align="center">
+  <a href="https://chirpy.cotes.info">
+    <img alt="Devices Mockup" src="https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/devices-mockup.png"></img>
+  </a>
+</p>
 
 ## 功能一览
 
+- 本地化外观语言
+- 可配置的主题颜色
 - 文章置顶
-- 可配置的全局主题颜色
 - 文章最后修改日期
 - 文章目录
 - 自动推荐相关文章
@@ -34,17 +57,16 @@ Language: [English](https://github.com/cotes2020/jekyll-theme-chirpy#readme) | �
 
 ## 前提要求
 
-参考 [Jekyll Docs](https://jekyllrb.com/docs/installation/) 安装 `Ruby`，`RubyGems`，`Jekyll` 和 `Bundler`，Docker 粉可免。
-
+参考 [Jekyll Docs](https://jekyllrb.com/docs/installation/) 安装 `Ruby`，`RubyGems`，`Jekyll` 和 `Bundler`。需要注意的是，`Ruby` 的版本必须与主题在 [RubyGems.org](https://rubygems.org/gems/jekyll-theme-chirpy) 上的要求一致.
 
 ## 安装
 
 有二法可得此主题:
 
-- **从 RubyGems 安装** - 易于版本升级，隔离无关的主题项目文件，让您的仓库舒适清爽。
-- **从 GitHub 上 Fork** - 对个性化二次开发友好，但是难于升级，只适合专业开发人员使用。
+- **[从 RubyGems 安装](#从-rubygems-安装)** - 易于版本升级，隔离无关的主题项目文件，让您的仓库舒适清爽。
+- **[从 GitHub 上 Fork](#从-github-上-fork)** - 对个性化二次开发友好，但是难于升级，只适合专业开发人员使用。
 
-### RubyGems 安装
+### 从 RubyGems 安装
 
 在您的 Jekyll 站点的 `Gemfile` 添加:
 
@@ -64,17 +86,22 @@ theme: jekyll-theme-chirpy
 $ bundle
 ```
 
-最后, 拷贝额外所需主题的 gem 文件（详见 [starter 项目][starter] 的文件目录）至您的 Jekyll 站点, 然后把主题的 `_config.yml` 全部内容附加到您的 Jekyll 站点的同名文件。
+然后，进入主题的 gem 目录:
 
-> **提示**: 定位主题的 gem 文件，可以执行:
->
 ```console
-$ bundle info --path jekyll-theme-chirpy
+$ cd "$(bundle info --path jekyll-theme-chirpy)"
 ```
 
-或者您可以 [使用 starter template][use-starter] 来快速创建 Jekyll 站点，以省去复制主题 gem 文件的时间。
+拷贝运行站点所需主题的 gem 文件（详见 [starter 仓库][starter] 的文件目录）至您的 Jekyll 站点, 然后把主题的 `_config.yml` 全部内容附加到您的 Jekyll 站点的同名文件。
 
-### 在 GitHub 上 Fork
+> ⚠️ **留意重叠的文件！**
+>
+如果您的网站是通过命令 `jekyll new` 创建的，那么站点的根目录会存在文件 `index.markdown` 和 `about.markdown`。 请务必删除它们, 否则在网站构建后将覆盖主题的 `index.html` 和 `_tabs/about.html`，引起空白或错乱的页面出现。
+
+作为替代方案，同时也被我们力荐，您可以 [使用 starter template][use-starter] 来快速创建 Jekyll 站点，以省去复制主题 gem 文件的时间。那里早已为您准备好建站需要的一切！
+
+
+### 从 GitHub 上 Fork
 
 [Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) 然后克隆到本地。(友情提示：默认分支的代码处于开发状态，如果您想博客更加稳定，请切换到最新的 [Tag](https://github.com/cotes2020/jekyll-theme-chirpy/tags) 开始写作。)
 
@@ -113,6 +140,12 @@ $ bash tools/init.sh
 - `avatar`
 - `timezone`
 - `lang`
+
+### 自定义样式
+
+如果您需要自定义样式, 拷贝主题的文件 `assets/css/style.scss` 到您站点的相同路径上，然后在该文件末尾添加样式。
+
+自 `v4.1.0` 起，如果您想覆盖文件 `_sass/addon/variables.scss` 里定义的 SASS 变量的默认值，新建文件 `_sass/variables-hook.scss`，然后重写您需要的变量即可。
 
 ### 本地运行
 
@@ -182,7 +215,7 @@ $ docker run -it --rm \
 
 ## 文档
 
-若想要更多细节以及更佳的阅读体验，请参阅 [线上教程](https://chirpy.cotes.info/categories/tutorial/)。 与此同时，[Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki) 也有一份教程的拷贝。
+若想要更多细节以及更佳的阅读体验，请参阅 [线上教程](https://chirpy.cotes.info/categories/tutorial/)。 与此同时，[Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki) 也有一份教程的拷贝。请注意，Demo 网站和 Wiki 上的文档都是基于最新的发行版本，而 `master` 分支的功能往往领先于现有文档。
 
 ## 参与贡献
 

@@ -9,16 +9,16 @@ pin: true
 
 ## Prerequisites
 
-Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`.
+Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`. Please note that the version of `Ruby` must meet the requirements of the theme on [RubyGems.org](https://rubygems.org/gems/jekyll-theme-chirpy).
 
 ## Installation
 
 There are two ways to get the theme:
 
-- **Install from RubyGems** - Easy to update, isolate irrelevant project files so you can focus on writing.
-- **Fork on GitHub** - Convenient for custom development, but difficult to update, only suitable for web developers.
+- **[Install from RubyGems](#install-from-rubygems)** - Easy to update, isolate irrelevant project files so you can focus on writing.
+- **[Fork on GitHub](#fork-on-github)** - Convenient for custom development, but difficult to update, only suitable for web developers.
 
-### Installing the Theme Gem
+### Install from RubyGems
 
 Add this line to your Jekyll site's `Gemfile`:
 
@@ -38,15 +38,19 @@ And then execute:
 $ bundle
 ```
 
-Finally, copy the required files from the theme's gem (for detailed files, see [starter project][starter]) to your Jekyll site.
+Next, go to the installed local theme path:
 
-> **Hint**: To locate the installed theme’s gem, execute:
+```console
+$ cd "$(bundle info --path jekyll-theme-chirpy)"
+```
+
+And then copy the critical files (for details, see [starter project][starter]) from the theme's gem to your Jekyll site.
+
+> ⚠️ **Watch out for duplicate files!**
 >
-> ```console
-> $ bundle info --path jekyll-theme-chirpy
-> ```
+If your Jekyll site is created by the `jekyll new` command, there will be `index.markdown` and `about.markdown` in the root directory of your site. Please be sure to remove them, otherwise they will overwrite the `index.html` and `_tabs/about.html` from this project, resulting in blank or messy pages.
 
-Or you can [**use the starter template**][use-starter] to create a Jekyll site to save time copying files from the theme's gem. We have prepared everything for you there!
+As an alternative, which we recommend, you can create a Jekyll site [**using the starter template**][use-starter] to save time copying files from the theme's gem. We've prepared everything you need there!
 
 ### Fork on GitHub
 
@@ -87,6 +91,12 @@ Update the variables of `_config.yml` as needed. Some of them are typical option
 - `avatar`
 - `timezone`
 - `lang`
+
+### Customing Stylesheet
+
+If you need to customize stylesheet, copy the theme's `assets/css/style.scss` to the same path on your Jekyll site, and then add the custom style at the end of the style file.
+
+Starting from `v4.1.0`, if you want to overwrite the SASS variables defined in `_sass/addon/variables.scss`, create a new file `_sass/variables-hook.scss` and assign new values to the target variable in it.
 
 ### Running Local Server
 
