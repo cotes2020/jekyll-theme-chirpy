@@ -8,7 +8,7 @@
 
     {% assign paths = page.url | split: '/' %}
 
-    {% if paths.size == 0 %}
+    {% if paths.size == 0 or page.layout == 'home' %}
       <!-- index page -->
       <span>{{ 'Posts' }}</span>
     {% else %}
