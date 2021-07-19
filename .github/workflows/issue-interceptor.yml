@@ -1,16 +1,18 @@
-name: "Intercept bad issues"
+name: Intercept bad issues
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
 
 jobs:
-  autoclose:
+  auto_close_issues:
     runs-on: ubuntu-latest
     steps:
-    - name: Auto close issues that did not follow template
-      uses: roots/issue-closer@v1.1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-pattern: "(\\[x\\]|\\[X\\]) I have read"
-        issue-close-message: ":wave: Hi @${issue.user.login},\n\nThis issue is being automatically closed because it does not follow the issue template."
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Auto close issues that did not follow template
+        uses: lucasbento/auto-close-issues@v1.0.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-close-message: ":wave: Hi @${issue.user.login},\n\nThis issue is being automatically closed because it does not follow the issue template."
+          closed-issues-label: "🙁 Not following issue template"
