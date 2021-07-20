@@ -2,21 +2,6 @@
   JS selector for site.
 -->
 
-<!-- common -->
-
-<script async src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
-
-{% if jekyll.environment == 'production' %}
-  <!-- PWA -->
-  <script defer src="{{ '/app.js' | relative_url }}"></script>
-
-  <!-- GA -->
-  {% if site.google_analytics.id %}
-    {% include google-analytics.html %}
-  {% endif %}
-
-{% endif %}
-
 <!-- layout specified -->
 
 {% if page.layout == 'home' or page.layout == 'post' %}
@@ -65,4 +50,19 @@
   <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
   </script>
+{% endif %}
+
+<!-- commons -->
+
+<script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
+
+{% if jekyll.environment == 'production' %}
+  <!-- PWA -->
+  <script defer src="{{ '/app.js' | relative_url }}"></script>
+
+  <!-- GA -->
+  {% if site.google_analytics.id %}
+    {% include google-analytics.html %}
+  {% endif %}
+
 {% endif %}
