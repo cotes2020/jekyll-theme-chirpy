@@ -17,24 +17,28 @@ layout: default
           <span class="semi-bold">
             {{ page.author | default: site.social.name }}
           </span>
-          {% include timeago.html date=page.date preposition="on" tooltip=true %}
+          {% capture _preposition %}{{ site.data.locales[site.lang].post.published | default: 'on' }}{% endcapture %}
+          {% include timeago.html date=page.date tooltip=true preposition=_preposition %}
         </div>
 
         <div>
           <!-- lastmod -->
           {% if page.last_modified_at %}
           <span>
-            {% include timeago.html date=page.last_modified_at
-              class="lastmod" prefix="Updated" tooltip=true %}
+            {{ site.data.locales[site.lang].post.updated | default: 'Updated' }}
+            {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
           </span>
           {% endif %}
 
           <!-- read time -->
-          {% include read-time.html content=content %}
+          {% include read-time.html content=content prompt=true %}
 
           <!-- page views -->
           {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
-          <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span>
+          <span id="pv" class="pageviews">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </span>
+          {{ site.data.locales[site.lang].post.pageview_measure | default: "views" }}
           {% endif %}
 
         </div>
@@ -59,6 +63,7 @@ layout: default
 
         <!-- categories -->
         {% if page.categories.size > 0 %}
+
         <div class="post-meta mb-3">
           <i class="far fa-folder-open fa-fw mr-1"></i>
           {% for category in page.categories %}
@@ -83,13 +88,18 @@ layout: default
 
         <div class="post-tail-bottom
           d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
-          {% if site.data.rights.license %}
           <div class="license-wrapper">
-            This post is licensed under
-            <a href="{{ site.data.rights.license.link }}">{{ site.data.rights.license.name }}</a>
-            by the author.
-          </div>
+          {% if site.data.locales[site.lang].copyright.license.template %}
+            {% capture _replacement %}
+            <a href="{{ site.data.locales[site.lang].copyright.license.link }}">
+              {{ site.data.locales[site.lang].copyright.license.name }}
+            </a>
+            {% endcapture %}
+            {{ site.data.locales[site.lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
+          {% else %}
+            <span class="text-muted small">{{ site.outdated }}</span>
           {% endif %}
+          </div>
 
           {% include post-sharing.html %}
 

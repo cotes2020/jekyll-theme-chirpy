@@ -11,7 +11,7 @@ layout: compress
   {% endif %}
 {% endcapture %}
 
-<html lang="{{ site.lang | default: "en-US" }}" {{ prefer_mode }}>
+<html lang="{{ site.content_lang | default: site.lang }}" {{ prefer_mode }}>
 
   {% include head.html %}
 

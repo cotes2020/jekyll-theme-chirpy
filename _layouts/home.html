@@ -3,9 +3,9 @@ layout: page
 # The Home page layout
 ---
 
+{% assign pinned = site.posts | where: "pin", "true" %}
+{% assign default = site.posts | where_exp: "item", "item.pin != true" %}
 
-{% assign pinned = site.posts | where_exp: "item", "item.pin == true"  %}
-{% assign default = site.posts | where_exp: "item", "item.pin != true"  %}
 {% assign posts = "" | split: "" %}
 
 <!-- Get pinned posts -->
@@ -38,7 +38,6 @@ layout: page
     {% assign posts = posts | push: default[i] %}
   {% endfor %}
 {% endif %}
-
 
 <div id="post-list">
 
@@ -79,7 +78,7 @@ layout: page
       {% if post.pin %}
       <div class="pin">
         <i class="fas fa-thumbtack fa-fw"></i>
-        <span>{{ site.data.label.pin_prompt | default: 'Pinned' }}</span>
+        <span>{{ site.data.locales[site.lang].post.pin_prompt | default: 'Pinned' }}</span>
       </div>
       {% endif %}
 

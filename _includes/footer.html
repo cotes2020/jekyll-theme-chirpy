@@ -8,21 +8,30 @@
       <p class="mb-0">
         © {{ 'now' | date: "%Y" }}
         <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
-        {% if site.data.rights.brief %}
+        {% if site.data.locales[site.lang].copyright.brief %}
         <span data-toggle="tooltip" data-placement="top"
-          title="{{ site.data.rights.verbose }}">{{ site.data.rights.brief }}</span>
+          title="{{ site.data.locales[site.lang].copyright.verbose }}">{{ site.data.locales[site.lang].copyright.brief }}</span>
+        {% else %}
+        <span class="text-muted">{{ site.outdated }}</span>
         {% endif %}
       </p>
     </div>
 
     <div class="footer-right">
       <p class="mb-0">
-        Powered by
-        <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-        with
-        <a href="https://github.com/cotes2020/jekyll-theme-chirpy"
-          target="_blank" rel="noopener">Chirpy</a>
-        theme.
+        {% capture _platform %}
+          <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
+        {% endcapture %}
+
+        {% capture _theme %}
+          <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
+        {% endcapture %}
+
+        {{ site.data.locales[site.lang].meta
+          | default: 'Powered by :PLATFORM with :THEME theme.'
+          | replace: ':PLATFORM', _platform | replace: ':THEME', _theme
+        }}
+
       </p>
     </div>
 
