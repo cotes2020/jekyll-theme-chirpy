@@ -1,9 +1,11 @@
 <!--
   Calculate the post's reading time, and display the word count in tooltip
  -->
+
 {% assign words = include.content | strip_html | number_of_words: "auto" %}
 
 <!-- words per minute  -->
+
 {% assign wpm = 180 %}
 {% assign min_time = 1 %}
 
@@ -13,7 +15,15 @@
   {% assign read_time = min_time %}
 {% endunless %}
 
+{% capture read_prompt %}
+  {{- site.data.locales[site.lang].post.read_time.prompt | default: "read" -}}
+{% endcapture %}
+
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="{{ words }} words">
-  {{- read_time -}}{{" "}}{{- site.data.label.read_time_unit | default: "min" -}}
+<span class="readtime" data-toggle="tooltip" data-placement="bottom"
+  title="{{ words }} {{ site.data.locales[site.lang].post.words | default: "words" }}">
+  {{- read_time -}}{{" "}}{{- site.data.locales[site.lang].post.read_time.unit | default: "min" -}}
+  {%- if include.prompt -%}
+    {% unless site.lang contains 'zh' %}{{" "}}{% endunless %}{{ read_prompt }}
+  {%- endif -%}
 </span>

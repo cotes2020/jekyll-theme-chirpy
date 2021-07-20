@@ -2,7 +2,7 @@
  * Copy current page url to clipboard.
  */
 
-function copyLink(url) {
+function copyLink(url, msg) {
   if (!url || 0 === url.length) {
     url = window.location.href;
   }
@@ -13,6 +13,10 @@ function copyLink(url) {
   document.execCommand("copy");
   $temp.remove();
 
-  alert("Link copied successfully!");
+  let feedback = "Link copied successfully!";
+  if (msg && msg.length > 0) {
+    feedback = msg;
+  }
 
+  alert(feedback);
 }

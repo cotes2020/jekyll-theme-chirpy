@@ -3,7 +3,7 @@
 -->
 
 <div class="share-wrapper">
-  <span class="share-label text-muted mr-1">{{ site.data.label.post.share | default: 'Share' }}</span>
+  <span class="share-label text-muted mr-1">{{ site.data.locales[site.lang].post.share | default: 'Share' }}</span>
   <span class="share-icons">
     {% capture title %}{{ page.title }} - {{ site.title }}{% endcapture %}
     {% assign url = page.url | absolute_url %}
@@ -16,8 +16,10 @@
         </a>
     {% endfor %}
 
-    <i class="fa-fw fas fa-link small" onclick="copyLink()"
-        data-toggle="tooltip" data-placement="top" title="Copy link"></i>
+    <i class="fa-fw fas fa-link small" onclick="copyLink('', '{{ site.data.locales[site.lang].post.button.copy.succeed }}')"
+        data-toggle="tooltip" data-placement="top"
+        title="{{ site.data.locales[site.lang].post.button.copy.title }}">
+    </i>
 
   </span>
 </div>

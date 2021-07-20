@@ -2,8 +2,7 @@
   The Side Bar
 -->
 
-<div id="sidebar" class="d-flex flex-column align-items-end">
-
+<div id="sidebar" class="d-flex flex-column align-items-end" lang="{{lang}}">
   <div class="profile-wrapper text-center">
     <div id="avatar">
       <a href="{{ '/' | relative_url }}" alt="avatar" class="mx-auto">
@@ -21,19 +20,19 @@
     </div>
 
     <div class="site-title mt-3">
-      <a href="{{ '/' | relative_url }}">{{- site.title -}}</a>
+      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </div>
-
-    <div class="site-subtitle font-italic">{{- site.tagline -}}</div>
+    <div class="site-subtitle font-italic">{{ site.tagline }}</div>
 
   </div><!-- .profile-wrapper -->
 
   <ul class="w-100">
+
     <!-- home -->
     <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
       <a href="{{ '/' | relative_url }}" class="nav-link">
         <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
-        <span>{{ "HOME" }}</span>
+        <span>{{ site.data.locales[site.lang].tabs.home | default: "home" | upcase }}</span>
       </a>
     </li>
     <!-- the real tabs -->
@@ -41,7 +40,9 @@
     <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
       <a href="{{ tab.url | relative_url }}" class="nav-link">
         <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
-        <span>{{ tab.title | upcase }}</span>
+        {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+
+        <span>{{ site.data.locales[site.lang].tabs.[tab_name] | default: tab_name | upcase }}</span>
       </a>
     </li> <!-- .nav-item -->
     {% endfor %}

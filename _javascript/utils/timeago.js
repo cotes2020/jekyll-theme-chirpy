@@ -10,25 +10,19 @@ $(function() {
 
   let intervalId = void 0;
 
-  function timeago(iso) {
+  const locale = $("meta[name=layout-lang]").attr("content");
+  const dPrompt = $("meta[name=day-prompt]").attr("content");
+  const hrPrompt = $("meta[name=hour-prompt]").attr("content");
+  const minPrompt = $("meta[name=minute-prompt]").attr("content");
+  const justnowPrompt = $("meta[name=justnow-prompt]").attr("content");
+
+  function timeago(isoDate, dateStr) {
     let now = new Date();
-    let past = new Date(iso);
+    let past = new Date(isoDate);
 
-    if (past.getFullYear() !== now.getFullYear()) {
-      toRefresh -= 1;
-      return past.toLocaleString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric"
-      });
-    }
-
-    if (past.getMonth() !== now.getMonth()) {
-      toRefresh -= 1;
-      return past.toLocaleString("en-US", {
-        month: "short",
-        day: "numeric"
-      });
+    if (past.getFullYear() !== now.getFullYear()
+        || past.getMonth() !== now.getMonth()) {
+      return dateStr;
     }
 
     let seconds = Math.floor((now - past) / 1000);
@@ -36,28 +30,29 @@ $(function() {
     let day = Math.floor(seconds / 86400);
     if (day >= 1) {
       toRefresh -= 1;
-      return day + " day" + (day > 1 ? "s" : "") + " ago";
+      return ` ${day} ${dPrompt}`;
     }
 
     let hour = Math.floor(seconds / 3600);
     if (hour >= 1) {
-      return hour + " hour" + (hour > 1 ? "s" : "") + " ago";
+      return ` ${hour} ${hrPrompt}`;
     }
 
     let minute = Math.floor(seconds / 60);
     if (minute >= 1) {
-      return minute + " minute" + (minute > 1 ? "s" : "") + " ago";
+      return ` ${minute} ${minPrompt}`;
     }
 
-    return "just now";
+    return justnowPrompt;
   }
 
   function updateTimeago() {
     $(".timeago").each(function() {
       if ($(this).children("i").length > 0) {
+        let dateStr = $(this).clone().children().remove().end().text();
         let node = $(this).children("i");
-        let date = node.text(); /* ISO Date: "YYYY-MM-DDTHH:MM:SSZ" */
-        $(this).text(timeago(date, $(this).attr("prep")));
+        let iosDate = node.text(); /* ISO Date: "YYYY-MM-DDTHH:MM:SSZ" */
+        $(this).text(timeago(iosDate, dateStr));
         $(this).append(node);
       }
     });

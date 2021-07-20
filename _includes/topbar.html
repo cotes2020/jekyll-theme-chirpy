@@ -10,31 +10,36 @@
 
     {% if paths.size == 0 or page.layout == 'home' %}
       <!-- index page -->
-      <span>{{ 'Posts' }}</span>
+      <span>{{ site.data.locales[site.lang].tabs.home | default: 'home' | capitalize }}</span>
+
     {% else %}
 
       {% for item in paths %}
 
         {% if forloop.first %}
-          {% unless page.layout == 'post' %}
           <span>
-            <a href="{{ '/' | relative_url }}">{{ 'Home' }}</a>
+            <a href="{{ '/' | relative_url }}">
+              {{ site.data.locales[site.lang].tabs.home | default: 'home' | capitalize }}
+            </a>
           </span>
-          {% endunless %}
 
         {% elsif forloop.last %}
-          <span>{{ page.title }}</span>
+
+          {% if page.collection == 'tabs' %}
+            <span>{{ site.data.locales[site.lang].tabs[item] | default: page.title }}</span>
+          {% else %}
+            <span>{{ page.title }}</span>
+          {% endif %}
 
         {% else %}
-        <span>
-          {% assign url = item %}
-          {% if item == 'posts' and page.layout == 'post' %}
-            {% assign url = '/' %}
-          {% endif %}
-          <a href="{{ url | relative_url }}">
-            {{ item | capitalize }}
-          </a>
-        </span>
+
+          {% unless page.layout == 'post' %}
+            <span>
+              <a href="{{ item | relative_url }}">
+                {{ site.data.locales[site.lang].tabs[item] | default: page.title }}
+              </a>
+            </span>
+          {% endunless %}
 
         {% endif %}
 
@@ -48,11 +53,12 @@
 
     <div id="topbar-title">
       {% if page.layout == 'home' %}
-        {{- site.title -}}
-      {% elsif page.dynamic_title %}
-        {{- page.title -}}
+        {{- site.data.locales[site.lang].title | default: site.title -}}
+      {% elsif page.collection == 'tabs' %}
+        {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
+        {{- site.data.locales[site.lang].tabs[tab_key] | default: page.title -}}
       {% else %}
-        {{- page.layout | capitalize -}}
+        {{- site.data.locales[site.lang].layout[page.layout] | default: page.layout | capitalize -}}
       {% endif %}
     </div>
 
@@ -60,10 +66,10 @@
     <span id="search-wrapper" class="align-items-center">
       <i class="fas fa-search fa-fw"></i>
       <input class="form-control" id="search-input" type="search"
-        aria-label="search" autocomplete="off" placeholder="{{ site.data.label.search_hint | default: 'Search' }}...">
+        aria-label="search" autocomplete="off" placeholder="{{ site.data.locales[site.lang].search.hint | default: 'Search' | capitalize }}...">
       <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i>
     </span>
-    <span id="search-cancel" >Cancel</span>
+    <span id="search-cancel" >{{ site.data.locales[site.lang].search.cancel | default: 'Cancel' }}</span>
   </div>
 
 </div>
