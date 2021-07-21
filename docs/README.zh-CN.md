@@ -96,7 +96,7 @@ $ cd "$(bundle info --path jekyll-theme-chirpy)"
 
 > ⚠️ **留意重叠的文件！**
 >
-如果您的网站是通过命令 `jekyll new` 创建的，那么站点的根目录会存在文件 `index.markdown` 和 `about.markdown`。 请务必删除它们, 否则在网站构建后将覆盖主题的 `index.html` 和 `_tabs/about.html`，引起空白或错乱的页面出现。
+> 如果您的网站是通过命令 `jekyll new` 创建的，那么站点的根目录会存在文件 `index.markdown` 和 `about.markdown`。 请务必删除它们, 否则在网站构建后将覆盖主题的 `index.html` 和 `_tabs/about.html`，引起空白或错乱的页面出现。
 
 作为替代方案，同时也被我们力荐，您可以 [使用 starter template][use-starter] 来快速创建 Jekyll 站点，以省去复制主题 gem 文件的时间。那里早已为您准备好建站需要的一切！
 
