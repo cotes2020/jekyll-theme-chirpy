@@ -5,7 +5,7 @@ date: 2021-07-25
 tags: [AI Journey]
 ---
 
-After one and a half years of learning and working with Machine Learning, especially Deep Learning, I decided to stop. Even though you might have heard the success stories in AI, I feel like it is not for me. Below are my thoughts about my journey.
+After one and a half years of learning and working with Machine Learning, especially Deep Learning, I decided to stop. It is a hard decision in my life. Even though you might have heard the success stories in AI, I feel like it is not for me. Below are my personal thoughts about my journey.
 
 
 ## 1. Introduction
@@ -15,24 +15,26 @@ I began the AI trip in March 2020. Because of the nature of my learning ability,
 
 ## 2. Reasons
 
-No journey comes to an end without the reasons, isn't it? Yes, I have two reasons for stopping.
+No journey comes to an end without the reasons, correct? Yes, I have two reasons for stopping.
 
-### The shorage of the job market for AI in Da Nang city
+#### The shorage of the job market for AI in Da Nang city
 
-After deciding to change the environment, I found out that there were not many AI companies in Da Nang city. Then I started searching Facebook and Linkedin, there were no available jobs in the city.
+After deciding to change the environment, I found out that there were not many AI companies in Da Nang city. Then I started searching Facebook and Linkedin, but there were no available jobs in the city.
 
 The lesson I took away from this is always to find a suitable job market before you decide anything. If you want to follow AI or Data Science career, you should head to Hanoi or Ho Chi Minh cities because these places have so many opportunities for AI Engineers and AI Researchers. In my situation, I still have 2-3 years serving as a militia in my ward, so I am unable to leave the city.
 
 
-### My incapability in following research direction
+#### My incapability in following research direction
 
-Besides, from my point of view, I will not be thriving in researching because it is very challenging, and I also prefer the engineering process. AI Engineering is somehow like Software Engineering because it similarly requires deployment, Docker, API Server, database, .... Additionally, you need to have the intermediate knowledge of AI like the ones below:
+Besides, from my point of view, I will not be thriving in researching because it is very challenging, and I also prefer the engineering process. However, AI Engineering is somehow like Software Engineering because it similarly requires deployment, Docker, API Server, database, and so on. Additionally, you need to have the intermediate knowledge of AI like the list below:
 
 - How to load a model
 - What kind of input does a model require
 - The format and meaning of the result
 - Inferencing on GPU
 - Modularize the code (optional)
+- Convert a model into different formats
+- Deploy models with resource efficiency
 - ...
 
 These are the things that I have practiced many times. I am still aware of the steps even when I stopped two months ago.
