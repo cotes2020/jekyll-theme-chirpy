@@ -19,14 +19,14 @@ No journey comes to an end without the reasons, correct? Yes, I have two reasons
 
 #### The shorage of the job market for AI in Da Nang city
 
-After deciding to change the environment, I found out that there were not many AI companies in Da Nang city. Then I started searching Facebook and Linkedin, but there were no available jobs in the city.
+After deciding to change the environment, I found out that there were not many AI companies in Da Nang city. Then I started searching Facebook and Linkedin, but there were no available jobs.
 
-The lesson I took away from this is always to find a suitable job market before you decide anything. If you want to follow AI or Data Science career, you should head to Hanoi or Ho Chi Minh cities because these places have so many opportunities for AI Engineers and AI Researchers. In my situation, I still have 2-3 years serving as a militia in my ward, so I am unable to leave the city.
+The lesson I took away from this is always to find a suitable job market before you decide anything. If you want to follow AI or Data Science career, you should head to Hanoi or Ho Chi Minh cities because these places have greater opportunities for AI Engineers and AI Researchers. In my situation, I still have 2-3 years serving as a militia in my ward, so I am unable to leave the city.
 
 
 #### My incapability in following research direction
 
-Besides, from my point of view, I will not be thriving in researching because it is very challenging, and I also prefer the engineering process. However, AI Engineering is somehow like Software Engineering because it similarly requires deployment, Docker, API Server, database, and so on. Additionally, you need to have the intermediate knowledge of AI like the list below:
+Besides, from my point of view, I will not be thriving in researching because it is very challenging, and I also prefer the engineering and product building process. However, AI Engineering is somehow like Software Engineering because it similarly requires deployment, Docker, API Server, database, and so on. Additionally, you need to have the intermediate knowledge of AI like the list below:
 
 - How to load a model
 - What kind of input does a model require
