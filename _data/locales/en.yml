@@ -61,9 +61,9 @@ post:
   published: 'on'
   updated: Updated
   timeago:
-    day: d ago
-    hour: hr ago
-    minute: min ago
+    day: days ago
+    hour: hours ago
+    minute: minutes ago
     just_now: just now
   words: words
   pageview_measure: views
