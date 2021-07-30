@@ -24,11 +24,11 @@ search:
 panel:
   lastmod: 最近更新
   trending_tags: 热门标签
-  toc: 目录
+  toc: 文章内容
 
 #  The liquid date format › http://strftime.net/
 date_format:
-  tooltip: '%a, %F, %R %z'
+  tooltip: '%F, %R %z'
   post:
     long: '%F'
     short: '%m-%d'
