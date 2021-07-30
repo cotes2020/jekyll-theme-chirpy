@@ -11,11 +11,6 @@ baseurl: ''
 # Go to folder '_data/locales' to check the available language options
 lang: en
 
-# The lang attribute of HTML › http://www.lingoes.net/en/translator/langcode.htm
-# We can specify a language different from the layout of the content.
-# If it is not assigned, the site will use the value of 'lang' instead.
-content_lang: ''
-
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Asia/Shanghai
 
@@ -173,6 +168,3 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
-
-# Outdated configuration warning
-outdated: '-- Missing configuration options! --'
