@@ -96,8 +96,6 @@ layout: default
             </a>
             {% endcapture %}
             {{ site.data.locales[site.lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
-          {% else %}
-            <span class="text-muted small">{{ site.outdated }}</span>
           {% endif %}
           </div>
 
