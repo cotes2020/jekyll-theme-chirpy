@@ -3,6 +3,8 @@ layout: page
 # All the Categories of posts
 ---
 
+{% include lang.html %}
+
 {% assign HEAD_PREFIX = "h_" %}
 {% assign LIST_PREFIX = "l_" %}
 
@@ -45,10 +47,10 @@ layout: page
         <span class="text-muted small font-weight-light">
           {% if sub_categories_size > 0 %}
             {{ sub_categories_size }}
-            {{ site.data.locales[site.lang].categories.category_measure | default: 'categories' }},
+            {{ site.data.locales[lang].categories.category_measure }},
           {% endif %}
             {{ top_posts_size }}
-            {{ site.data.locales[site.lang].categories.post_measure | default: 'posts' }}
+            {{ site.data.locales[lang].categories.post_measure }}
         </span>
       </span>
 
@@ -81,7 +83,7 @@ layout: page
           {% assign posts_size = site.categories[sub_category] | size %}
           <span class="text-muted small font-weight-light">
             {{ posts_size }}
-            {{ site.data.locales[site.lang].categories.post_measure | default: 'posts' }}
+            {{ site.data.locales[lang].categories.post_measure }}
           </span>
         </li>
         {% endfor %}

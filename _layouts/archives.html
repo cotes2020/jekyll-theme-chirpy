@@ -3,6 +3,8 @@ layout: page
 # The Archives of posts.
 ---
 
+{% include lang.html %}
+
 <div id="archives" class="pl-xl-2">
 
 {% for post in site.posts %}
@@ -17,7 +19,7 @@ layout: page
     <li>
       <div>
         {% capture this_day %}{{ post.date | date: "%d" }}{% endcapture %}
-        {% capture _mth_df %}{{ site.data.locales[site.lang].date_format.post.archive_month | default: "%b" }}{% endcapture %}
+        {% capture _mth_df %}{{ site.data.locales[lang].date_format.post.archive_month }}{% endcapture %}
         {% capture this_month %}{{ post.date | date: _mth_df }}{% endcapture %}
         <span class="date day">{{ this_day }}</span>
         <span class="date month small text-muted">{% include no-zero-date.html date_str=this_month %}</span>

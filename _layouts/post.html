@@ -3,6 +3,8 @@ layout: default
 # The posts' layout
 ---
 
+{% include lang.html %}
+
 <div class="row">
 
   <div id="post-wrapper" class="col-12 col-lg-11 col-xl-8">
@@ -17,7 +19,7 @@ layout: default
           <span class="semi-bold">
             {{ page.author | default: site.social.name }}
           </span>
-          {% capture _preposition %}{{ site.data.locales[site.lang].post.published | default: 'on' }}{% endcapture %}
+          {% capture _preposition %}{{ site.data.locales[lang].post.published }}{% endcapture %}
           {% include timeago.html date=page.date tooltip=true preposition=_preposition %}
         </div>
 
@@ -25,7 +27,7 @@ layout: default
           <!-- lastmod -->
           {% if page.last_modified_at %}
           <span>
-            {{ site.data.locales[site.lang].post.updated | default: 'Updated' }}
+            {{ site.data.locales[lang].post.updated }}
             {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
           </span>
           {% endif %}
@@ -38,7 +40,7 @@ layout: default
           <span id="pv" class="pageviews">
             <i class="fas fa-spinner fa-spin fa-fw"></i>
           </span>
-          {{ site.data.locales[site.lang].post.pageview_measure | default: "views" }}
+          {{ site.data.locales[lang].post.pageview_measure }}
           {% endif %}
 
         </div>
@@ -89,13 +91,13 @@ layout: default
         <div class="post-tail-bottom
           d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
           <div class="license-wrapper">
-          {% if site.data.locales[site.lang].copyright.license.template %}
+          {% if site.data.locales[lang].copyright.license.template %}
             {% capture _replacement %}
-            <a href="{{ site.data.locales[site.lang].copyright.license.link }}">
-              {{ site.data.locales[site.lang].copyright.license.name }}
+            <a href="{{ site.data.locales[lang].copyright.license.link }}">
+              {{ site.data.locales[lang].copyright.license.name }}
             </a>
             {% endcapture %}
-            {{ site.data.locales[site.lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
+            {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
           {% endif %}
           </div>
 

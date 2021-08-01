@@ -3,6 +3,8 @@ layout: page
 # The Home page layout
 ---
 
+{% include lang.html %}
+
 {% assign pinned = site.posts | where: "pin", "true" %}
 {% assign default = site.posts | where_exp: "item", "item.pin != true" %}
 
@@ -78,7 +80,7 @@ layout: page
       {% if post.pin %}
       <div class="pin">
         <i class="fas fa-thumbtack fa-fw"></i>
-        <span>{{ site.data.locales[site.lang].post.pin_prompt | default: 'Pinned' }}</span>
+        <span>{{ site.data.locales[lang].post.pin_prompt }}</span>
       </div>
       {% endif %}
 
