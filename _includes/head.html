@@ -9,7 +9,6 @@
   {% if page.layout == 'home' or page.layout == 'post' %}
 
     <!-- i18n for timeago.js -->
-    <meta name="layout-lang" content="{{ site.lang | default: "en" }}">
     <meta name="day-prompt" content="{{ site.data.locales[site.lang].post.timeago.day | default: "d ago" }}">
     <meta name="hour-prompt" content="{{ site.data.locales[site.lang].post.timeago.hour | default: "hr ago" }}">
     <meta name="minute-prompt" content="{{ site.data.locales[site.lang].post.timeago.minute | default: "min ago" }}">

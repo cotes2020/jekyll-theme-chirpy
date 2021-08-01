@@ -10,7 +10,6 @@ $(function() {
 
   let intervalId = void 0;
 
-  const locale = $("meta[name=layout-lang]").attr("content");
   const dPrompt = $("meta[name=day-prompt]").attr("content");
   const hrPrompt = $("meta[name=hour-prompt]").attr("content");
   const minPrompt = $("meta[name=minute-prompt]").attr("content");
