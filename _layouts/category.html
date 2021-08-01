@@ -3,6 +3,8 @@ layout: page
 # The Category layout
 ---
 
+{% include lang.html %}
+
 <div id="page-category">
   <h1 class="pl-lg-2">
     <i class="far fa-folder-open fa-fw text-muted"></i>
@@ -11,7 +13,7 @@ layout: page
   </h1>
 
   <ul class="post-content pl-0">
-    {% assign post_df = site.data.locales[site.lang].date_format.post.long | default: '%b %e, %Y' %}
+    {% assign post_df = site.data.locales[lang].date_format.post.long %}
 
     {% for post in page.posts %}
     <li class="d-flex justify-content-between pl-md-3 pr-md-3">

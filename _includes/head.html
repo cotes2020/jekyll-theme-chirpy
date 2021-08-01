@@ -8,11 +8,11 @@
 
   {% if page.layout == 'home' or page.layout == 'post' %}
 
-    <!-- i18n for timeago.js -->
-    <meta name="day-prompt" content="{{ site.data.locales[site.lang].post.timeago.day | default: "d ago" }}">
-    <meta name="hour-prompt" content="{{ site.data.locales[site.lang].post.timeago.hour | default: "hr ago" }}">
-    <meta name="minute-prompt" content="{{ site.data.locales[site.lang].post.timeago.minute | default: "min ago" }}">
-    <meta name="justnow-prompt" content="{{ site.data.locales[site.lang].post.timeago.just_now | default: "just now" }}">
+    <!-- i18n for `_javascript/utils/timeago.js` -->
+    <meta name="day-prompt" content="{{ site.data.locales[lang].post.timeago.day }}">
+    <meta name="hour-prompt" content="{{ site.data.locales[lang].post.timeago.hour }}">
+    <meta name="minute-prompt" content="{{ site.data.locales[lang].post.timeago.minute }}">
+    <meta name="justnow-prompt" content="{{ site.data.locales[lang].post.timeago.just_now }}">
 
     {% if site.google_analytics.pv.proxy_endpoint %}
       <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">

@@ -3,9 +3,9 @@
   See: /assets/js/_utils/timeage.js
 -->
 
-{% assign tooltip_df = site.data.locales[site.lang].date_format.tooltip | default: '%a, %b %e, %Y, %l:%M %p %z' %}
-{% assign post_long_df = site.data.locales[site.lang].date_format.post.long | default: '%b %e, %Y' %}
-{% assign post_short_df = site.data.locales[site.lang].date_format.post.short | default: '%b %e' %}
+{% assign tooltip_df = site.data.locales[lang].date_format.tooltip %}
+{% assign post_long_df = site.data.locales[lang].date_format.post.long %}
+{% assign post_short_df = site.data.locales[lang].date_format.post.short %}
 
 {% if include.preposition %}
   {{ include.preposition }}
