@@ -79,7 +79,7 @@ typora-root-url: ..
 
 知乎上有一个问题《[有哪些你非常讨厌但却不得不用的软件？](https://www.zhihu.com/question/400031214)》，截止到2021年7月15日18:14:52，默认排序第一的回答是微信，得到了3907个赞
 
-<img src="/assets/img/image-20210715181619629.png" alt="image-20210715181619629" style="zoom:50%;" />
+<img src="/assets/img/image-20210715181619629.png" alt="image-20210715181619629" style="zoom:33%;" />
 
 ##### QQ/TIM
 
