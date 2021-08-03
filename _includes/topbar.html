@@ -31,16 +31,12 @@
             <span>{{ page.title }}</span>
           {% endif %}
 
-        {% else %}
-
-          {% unless page.layout == 'post' %}
-            <span>
-              <a href="{{ item | relative_url }}">
-                {{ site.data.locales[lang].tabs[item] | default: page.title }}
-              </a>
-            </span>
-          {% endunless %}
-
+        {% elsif page.layout == 'category' or page.layout == 'tag' %}
+          <span>
+            <a href="{{ item | relative_url }}">
+              {{ site.data.locales[lang].tabs[item] | default: page.title }}
+            </a>
+          </span>
         {% endif %}
 
       {% endfor %}
