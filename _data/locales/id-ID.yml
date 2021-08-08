@@ -20,6 +20,7 @@ tabs:
 search:
   hint: Cari
   cancel: Batal
+  no_results: Ups! Tidak ada hasil yang ditemukan.
 
 panel:
   lastmod: Postingan Terbaru

@@ -14,7 +14,7 @@
 </div>
 {% endcapture %}
 
-{% capture not_found %}<p class="mt-5">Oops! No result founds.</p>{% endcapture %}
+{% capture not_found %}<p class="mt-5">{{ site.data.locales[lang].search.no_results }}</p>{% endcapture %}
 
 <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script>
 
