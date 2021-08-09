@@ -16,7 +16,7 @@ tabs:
   archives: 归档
   about: 关于
 
-# text displayed in the search bar
+# the text displayed in the search bar & search results
 search:
   hint: 搜索
   cancel: 取消
