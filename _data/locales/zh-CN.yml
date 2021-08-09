@@ -20,6 +20,7 @@ tabs:
 search:
   hint: 搜索
   cancel: 取消
+  no_results: 搜索结果为空
 
 panel:
   lastmod: 最近更新
