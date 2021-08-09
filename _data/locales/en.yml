@@ -20,6 +20,7 @@ tabs:
 search:
   hint: search
   cancel: Cancel
+  no_results: Oops! No result founds.
 
 panel:
   lastmod: Recent Update
