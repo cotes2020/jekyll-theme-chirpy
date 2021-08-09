@@ -16,7 +16,7 @@ tabs:
   archives: Arsip
   about: Tentang
 
-# text displayed in the search bar
+# the text displayed in the search bar & search results
 search:
   hint: Cari
   cancel: Batal
