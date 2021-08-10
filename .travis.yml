@@ -3,47 +3,38 @@ dist: bionic
 
 language: minimal
 
+if: tag =~ /^v(\d)+(\.(\d)+){2}$/
+
 jobs:
   include:
-
-    - name: CD
+    - name: Deploy
       language: ruby
       rvm: 2.7.0
-
       addons:
         apt:
           packages:
             # required to avoid SSL error (for htmlproofer)
             - libcurl4-openssl-dev
-
       cache:
         directories:
           - $TRAVIS_BUILD_DIR/vendor/bundle
-
       before_install:
         # match the Gemfile.lock, travis' bundler is 2.1.2
         - gem install bundler:2.2.4
         - bundle config path 'vendor/bundle'
-
       install:
         # overriding to drop the travis `--development` flag
         - bundle install --jobs=3 --retry=3
-
       script:
         - eval "$BUILD_CMD"
-
       git:
         depth: false # for posts' lastmod
 
     - name: Flush Starter
-      script:
-        - eval "$FLUSH_STARTER"
+      script: eval "$FLUSH_STARTER"
 
 before_script:
   - git -C "$HOME" clone "$BUILDER_REPO" --depth=1 -q
-
-branches:
-  only: /.*-stable$/
 
 notifications:
   email:
