@@ -1,0 +1,36 @@
+{% comment %}
+  The trending tags list
+{% endcomment %}
+
+{% assign MAX = 10 %}
+
+{% assign size_list = "" | split: "" %}
+{% assign tag_list = "" | split: "" %}
+
+{% for tag in site.tags %}
+  {% assign size = tag | last | size %}
+  {% assign size_list = size_list | push: size %}
+
+  {% assign tag_str = tag | first | append: "::" | append: size %}
+  {% assign tag_list =  tag_list | push: tag_str %}
+{% endfor %}
+
+{% assign size_list = size_list | sort | reverse %}
+
+{% assign tag_list = tag_list | sort_natural %}
+
+{% assign trending_tags = "" | split: "" %}
+
+{% for size in size_list limit: MAX %}
+  {% for tag_str in tag_list %}
+    {% assign tag = tag_str | split: "::" %}
+    {% assign tag_name = tag | first %}
+    {% assign tag_size = tag | last | plus: 0 %}
+    {% if tag_size == size %}
+      {% unless trending_tags contains tag_name %}
+        {% assign trending_tags = trending_tags | push: tag_name %}
+        {% break %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}

@@ -1,0 +1,19 @@
+<!--
+  The Search results
+-->
+<div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
+  <div class="col-12 col-sm-11 post-content">
+    <div id="search-hints">
+      <h4 class="text-muted mb-4">{{ site.data.locales[lang].panel.trending_tags }}</h4>
+
+      {% include trending-tags.html %}
+
+      {% for tag in trending_tags %}
+        {% capture url %}/tags/{{ tag | slugify | url_encode }}/{% endcapture %}
+        <a class="post-tag" href="{{ url | relative_url }}">{{ tag | replace: '-', ' ' }}</a>
+      {% endfor %}
+
+    </div>
+    <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+  </div>
+</div>

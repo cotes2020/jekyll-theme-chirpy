@@ -1,0 +1,106 @@
+<!--
+ Recommend the other 3 posts according to the tags and categories of the current post,
+ if the number is not enough, use the other latest posts to supplement.
+-->
+
+<!-- The total size of related posts  -->
+{% assign TOTAL_SIZE = 3 %}
+
+<!-- An random integer that bigger than 0  -->
+{% assign TAG_SCORE = 1 %}
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy}  -->
+{% assign CATEGORY_SCORE = 0.5 %}
+
+{% assign SEPARATOR = ":" %}
+
+{% assign score_list = "" | split: "" %}
+{% assign last_index = site.posts.size | minus: 1 %}
+
+{% for i in (0..last_index) %}
+  {% assign post = site.posts[i] %}
+
+  {% if post.url == page.url %}
+    {% continue %}
+  {% endif %}
+
+  {% assign score = 0 %}
+
+  {% for tag in post.tags %}
+    {% if page.tags contains tag %}
+      {% assign score = score | plus: TAG_SCORE %}
+    {% endif %}
+  {% endfor %}
+
+  {% for category in post.categories %}
+    {% if page.categories contains category %}
+      {% assign score = score | plus: CATEGORY_SCORE %}
+    {% endif %}
+  {% endfor %}
+
+  {% if score > 0 %}
+    {% capture score_item %}{{ score }}{{ SEPARATOR }}{{ i }}{% endcapture %}
+    {% assign score_list = score_list | push: score_item %}
+  {% endif %}
+
+{% endfor %}
+
+
+{% assign index_list = "" | split: "" %}
+
+{% if score_list.size > 0 %}
+  {% assign score_list = score_list | sort | reverse %}
+  {% for entry in score_list limit: TOTAL_SIZE %}
+    {% assign index = entry | split: SEPARATOR | last %}
+    {% assign index_list = index_list | push: index %}
+  {% endfor %}
+{% endif %}
+
+<!-- Fill with the other newlest posts  -->
+{% assign less = TOTAL_SIZE | minus: index_list.size %}
+
+{% if less > 0 %}
+
+  {% for i in (0..last_index) %}
+    {% assign post = site.posts[i] %}
+    {% if post.url != page.url  %}
+      {% capture cur_index %}{{ i }}{% endcapture %}
+      {% unless index_list contains cur_index %}
+        {% assign index_list = index_list | push: cur_index %}
+        {% assign less = less | minus: 1 %}
+        {% if less <= 0 %}
+          {% break %}
+        {% endif %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+
+{% endif %}
+
+
+{% if index_list.size > 0 %}
+  <div id="related-posts" class="mt-5 mb-2 mb-sm-4">
+    <h3 class="pt-2 mt-1 mb-4 ml-1"
+      data-toc-skip>{{ site.data.locales[lang].post.relate_posts }}</h3>
+    <div class="card-deck mb-4">
+    {% for entry in index_list %}
+      {% assign index = entry | plus: 0 %}
+      {% assign post = site.posts[index] %}
+      <div class="card">
+        <a href="{{ post.url | relative_url }}">
+          <div class="card-body">
+            {% include timeago.html date=post.date class="small" %}
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>{{ post.title }}</h3>
+            <div class="text-muted small">
+              <p>
+                {% include no-linenos.html content=post.content %}
+                {{ content | markdownify | strip_html | truncate: 200 }}
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+    </div> <!-- .card-deck -->
+  </div> <!-- #related-posts -->
+{% endif %}

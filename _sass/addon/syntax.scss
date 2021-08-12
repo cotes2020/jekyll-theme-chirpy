@@ -1,0 +1,186 @@
+/*
+* The syntax highlight.
+*/
+
+@import "colors/light-syntax";
+@import "colors/dark-syntax";
+
+html:not([mode]),
+html[mode=light] {
+  @include light-syntax;
+}
+
+html[mode=dark] {
+  @include dark-syntax;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([mode]),
+  html[mode=dark] {
+    @include dark-syntax;
+  }
+
+  html[mode=light] {
+    @include light-syntax;
+  }
+}
+
+/* -- Codes Snippet -- */
+
+%code-snippet-bg {
+  background: var(--highlight-bg-color);
+}
+
+%code-snippet-radius {
+  border-radius: 6px;
+}
+
+%code-snippet-padding {
+  padding: 1.5rem;
+}
+
+div > pre {
+  @extend %code-snippet-bg;
+  @extend %code-snippet-radius;
+  @extend %code-snippet-padding;
+}
+
+.highlighter-rouge {
+  @extend %code-snippet-bg;
+  @extend %code-snippet-radius;
+
+  color: var(--highlighter-rouge-color);
+  margin-top: 0.5rem;
+  margin-bottom: 1.2em; /* Override BS Inline-code style */
+}
+
+.highlight {
+  @extend %code-snippet-radius;
+  @extend %code-snippet-bg;
+
+  @at-root figure#{&} {
+    @extend %code-snippet-bg;
+  }
+
+  overflow: auto;
+
+  pre {
+    margin-bottom: 0;
+    font-size: $code-font-size;
+    line-height: 1.4rem;
+    word-wrap: normal; /* Fixed Safari overflow-x */
+  }
+
+  table {
+    padding: 0;
+    border: 0;
+    td pre {
+      overflow: visible;  /* Fixed iOS safari overflow-x */
+      word-break: normal; /* Fixed iOS safari linenos code break */
+    }
+  }
+
+  td {
+    padding: 0;
+    border: 0;
+  }
+
+  .lineno {
+    margin-left: 0.2rem;
+    padding-right: 0.5rem;
+    min-width: 2.2rem;
+    text-align: right;
+    color: var(--highlight-lineno-color);
+    border-right: 1px solid var(--highlight-lineno-border-color);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+
+  /* set the dollar sign to non-selectable */
+  .gp {
+    user-select: none;
+  }
+
+} //.highlight
+
+code {
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
+
+  &.highlighter-rouge {
+    font-size: $code-font-size;
+    padding: 3px 5px;
+    border-radius: 4px;
+    background-color: var(--inline-code-bg);
+  }
+
+  @at-root a > &.highlighter-rouge {
+    padding-bottom: 0; // show link's underlinke
+    color: inherit;
+  }
+
+  @at-root a:hover > &.highlighter-rouge {
+    border-bottom: none;
+  }
+
+  blockquote &.highlighter-rouge {
+    color: inherit;
+  }
+}
+
+td.rouge-code {
+  padding: 1.5rem 1.5rem 1.5rem 1rem;
+
+  // Prevent some browser extends from
+  // changing the URL string of code block.
+  a {
+    color: inherit !important;
+    border-bottom: none !important;
+    pointer-events: none;
+  }
+
+}
+
+/* Hide line numbers for default, console, and terminal code snippets */
+div {
+  &[class^='highlighter-rouge'],
+  &.language-plaintext.highlighter-rouge,
+  &.language-console.highlighter-rouge,
+  &.language-terminal.highlighter-rouge {
+    pre.lineno {
+      display: none;
+    }
+    td.rouge-code {
+      @extend %code-snippet-padding;
+    }
+  }
+}
+
+div[class^='language-']::before {
+  content: attr(lang);
+  position: absolute;
+  right: 2rem;
+  margin-top: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--highlight-lineno-color);
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  div[class^='language-']::before {
+    right: 3.1rem;
+  }
+}
+
+@media (min-width: 1650px) {
+  div[class^='language-']::before {
+    right: 3.5rem;
+  }
+}

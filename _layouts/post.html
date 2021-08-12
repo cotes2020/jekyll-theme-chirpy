@@ -1,0 +1,143 @@
+---
+layout: default
+# The posts' layout
+---
+
+{% include lang.html %}
+
+<div class="row">
+
+  <div id="post-wrapper" class="col-12 col-lg-11 col-xl-8">
+
+    <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+
+      <h1 data-toc-skip>{{ page.title }}</h1>
+
+      <div class="post-meta text-muted d-flex flex-column">
+        <!-- Published date and author -->
+        <div>
+          <span class="semi-bold">
+            {{ page.author | default: site.social.name }}
+          </span>
+          {% capture _preposition %}{{ site.data.locales[lang].post.published }}{% endcapture %}
+          {% include timeago.html date=page.date tooltip=true preposition=_preposition %}
+        </div>
+
+        <div>
+          <!-- lastmod -->
+          {% if page.last_modified_at %}
+          <span>
+            {{ site.data.locales[lang].post.updated }}
+            {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
+          </span>
+          {% endif %}
+
+          <!-- read time -->
+          {% include read-time.html content=content prompt=true %}
+
+          <!-- page views -->
+          {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
+          <span id="pv" class="pageviews">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </span>
+          {{ site.data.locales[lang].post.pageview_measure }}
+          {% endif %}
+
+        </div>
+
+      </div> <!-- .post-meta -->
+
+      <div class="post-content">
+
+        {% if page.image.src %}
+          <img src="{{ page.image.src }}"
+            class="preview-img"
+            alt="{{ page.image.alt | default: "Preview Image" }}"
+            {% if page.image.width %}width="{{ page.image.width }}"{% endif %}
+            {% if page.image.height %}height="{{ page.image.height }}"{% endif %}>
+        {% endif %}
+
+        {{ content }}
+
+      </div>
+
+      <div class="post-tail-wrapper text-muted">
+
+        <!-- categories -->
+        {% if page.categories.size > 0 %}
+
+        <div class="post-meta mb-3">
+          <i class="far fa-folder-open fa-fw mr-1"></i>
+          {% for category in page.categories %}
+            <a href='{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/'>{{ category }}</a>
+            {%- unless forloop.last -%}, {%- endunless -%}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- tags -->
+        {% if page.tags.size > 0 %}
+        <div class="post-tags">
+          <i class="fa fa-tags fa-fw mr-1"></i>
+          {% for tag in page.tags %}
+          <a href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/"
+            class="post-tag no-text-decoration" >
+            {{- tag -}}
+          </a>
+          {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="post-tail-bottom
+          d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+          <div class="license-wrapper">
+          {% if site.data.locales[lang].copyright.license.template %}
+            {% capture _replacement %}
+            <a href="{{ site.data.locales[lang].copyright.license.link }}">
+              {{ site.data.locales[lang].copyright.license.name }}
+            </a>
+            {% endcapture %}
+            {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
+          {% endif %}
+          </div>
+
+          {% include post-sharing.html %}
+
+        </div><!-- .post-tail-bottom -->
+
+      </div><!-- div.post-tail -->
+
+    </div> <!-- .post -->
+
+
+  </div> <!-- #post-wrapper -->
+
+  {% assign enable_toc = false %}
+
+  {% if site.toc and page.toc %}
+    {% if content contains '<h2' or content contains '<h3' %}
+      {% assign enable_toc = true %}
+    {% endif %}
+  {% endif %}
+
+  {% include panel.html toc=enable_toc %}
+
+</div> <!-- .row -->
+
+<div class="row">
+  <div class="col-12 col-lg-11 col-xl-8">
+    <div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+
+    {% include related-posts.html %}
+
+    {% include post-nav.html %}
+
+    {% if site.disqus.comments and page.comments %}
+      {% include disqus.html %}
+    {% endif %}
+
+    </div> <!-- #post-extend-wrapper -->
+
+  </div> <!-- .col-* -->
+
+</div> <!-- .row -->

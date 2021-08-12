@@ -1,0 +1,37 @@
+<!--
+  The Footer
+-->
+
+<footer class="d-flex w-100 justify-content-center">
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="footer-left">
+      <p class="mb-0">
+        © {{ 'now' | date: "%Y" }}
+        <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
+        {% if site.data.locales[lang].copyright.brief %}
+        <span data-toggle="tooltip" data-placement="top"
+          title="{{ site.data.locales[lang].copyright.verbose }}">{{ site.data.locales[lang].copyright.brief }}</span>
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="footer-right">
+      <p class="mb-0">
+        {% capture _platform %}
+          <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
+        {% endcapture %}
+
+        {% capture _theme %}
+          <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
+        {% endcapture %}
+
+        {{ site.data.locales[lang].meta
+          | default: 'Powered by :PLATFORM with :THEME theme.'
+          | replace: ':PLATFORM', _platform | replace: ':THEME', _theme
+        }}
+
+      </p>
+    </div>
+
+  </div> <!-- div.d-flex -->
+</footer>

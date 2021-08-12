@@ -1,0 +1,30 @@
+<!--
+  Navigation buttons at the bottom of the post.
+-->
+
+<div class="post-navigation d-flex justify-content-between">
+  {% if page.previous.url %}
+  <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary"
+    prompt="{{ site.data.locales[lang].post.button.previous }}">
+    <p>{{ page.previous.title }}</p>
+  </a>
+  {% else %}
+  <span class="btn btn-outline-primary disabled"
+    prompt="{{ site.data.locales[lang].post.button.previous }}">
+    <p>-</p>
+  </span>
+  {% endif %}
+
+  {% if page.next.url %}
+  <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary"
+    prompt="{{ site.data.locales[lang].post.button.next }}">
+    <p>{{ page.next.title }}</p>
+  </a>
+  {% else %}
+  <span class="btn btn-outline-primary disabled"
+    prompt="{{ site.data.locales[lang].post.button.next }}">
+    <p>-</p>
+  </span>
+  {% endif %}
+
+</div>

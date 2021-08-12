@@ -1,0 +1,75 @@
+<!--
+  The Head
+-->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {% if page.layout == 'home' or page.layout == 'post' %}
+
+    <!-- i18n for `_javascript/utils/timeago.js` -->
+    <meta name="day-prompt" content="{{ site.data.locales[lang].post.timeago.day }}">
+    <meta name="hour-prompt" content="{{ site.data.locales[lang].post.timeago.hour }}">
+    <meta name="minute-prompt" content="{{ site.data.locales[lang].post.timeago.minute }}">
+    <meta name="justnow-prompt" content="{{ site.data.locales[lang].post.timeago.just_now }}">
+
+    {% if site.google_analytics.pv.proxy_endpoint %}
+      <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">
+    {% endif %}
+
+    {% if site.google_analytics.pv.cache_path %}
+      <meta name="pv-cache-path" content="{{ site.google_analytics.pv.cache_path | relative_url }}">
+    {% endif %}
+
+  {% endif %}
+
+  {% seo title=false %}
+
+  <title>
+  {%- unless page.layout == "home" -%}
+    {{ page.title | append: " | "}}
+  {%- endunless -%}
+    {{ site.title }}
+  </title>
+
+  {% include favicons.html %}
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+  <!-- GA -->
+  {% if jekyll.environment == 'production' %}
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    {% if site.google_analytics.pv.proxy_endpoint %}
+      {% assign proxy_url = site.google_analytics.pv.proxy_endpoint
+        | replace: "https://", "" | split: "/" | first | prepend: "https://" %}
+
+      <link rel="preconnect" href="{{ proxy_url }}" crossorigin="use-credentials">
+      <link rel="dns-prefetch" href="{{ proxy_url }}">
+    {% endif %}
+  {% endif %}
+
+  <!-- jsDelivr CDN -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css">
+
+  {% include css-selector.html %}
+
+  <!-- JavaScript -->
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+</head>

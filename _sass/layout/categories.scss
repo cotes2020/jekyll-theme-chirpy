@@ -1,0 +1,66 @@
+/*
+  Style for Tab Categories
+*/
+
+%category-icon-color {
+  color: gray;
+}
+
+.categories {
+  margin-bottom: 2rem;
+  .card-header {
+    padding-right: 12px;
+  }
+
+  i {
+    &.far,
+    &.fas {
+      font-size: 86%; // fontawesome icons
+    }
+  }
+
+  .list-group-item {
+    border-left: none;
+    border-right: none;
+    padding-left: 2rem;
+    > i {
+      @extend %category-icon-color;
+    }
+    &:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+  }
+
+  .card-header > span > i:first-child {
+    @extend %category-icon-color;
+  }
+
+} // .categories
+
+.category-trigger {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  text-align: center;
+  color: #6c757d !important;
+  > i.fas {
+    position: relative;
+    height: 0.7rem;
+    width: 1rem;
+    transition: 300ms ease all;
+  }
+}
+
+@media (hover: hover) { // only works on desktop
+  .category-trigger:hover {
+    background-color: var(--categories-hover-bg);
+  }
+}
+
+.rotate {
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Safari 3-8 */
+  transform: rotate(-90deg);
+}
