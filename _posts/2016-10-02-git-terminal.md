@@ -82,7 +82,7 @@ git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
 + `<REPO>`：是你的`仓库名称`
 
 ```
-https://<token>@github.com/Jovins/jovins.github.io.git/
+https://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@github.com/Jovins/jovins.github.io.git/
 ```
 
 ## 创建pods库的模板库
