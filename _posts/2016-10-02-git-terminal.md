@@ -50,6 +50,41 @@ pod search <库名> --simple
 pod trunk delete <库名> <版本号>
 ```
 
+## Github问题
+
+Error: remote: Support for password authentication was removed on August 13, 2021.
+
+2021年8月13号，Github把密码换成token
+
+### `token`好处
+
+令牌（token）与基于密码的身份验证相比，令牌提供了许多安全优势：
+
++ 唯一： 令牌特定于 GitHub，可以按使用或按设备生成
++ 可撤销：可以随时单独撤销令牌，而无需更新未受影响的凭据
++ 有限 ： 令牌可以缩小范围以仅允许用例所需的访问
++ 随机：令牌不需要记住或定期输入的更简单密码可能会受到的字典类型或蛮力尝试的影响
+
+### 修改token
+
+`Settings` -> `Developer setting` -> `Personal access tokens` -> `Generate new token` ，设置token的有效期，访问权限等。生成`token`后记得复制出来，不然下次页面刷新会消失。
+
+### 设置token
+
+把`token`直接添加远程仓库链接中，这样就可以避免同一个仓库每次提交代码都要输入`token`.
+
+```
+git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
+```
+
++ `<your_token>`：换成你自己得到的`token`
++ `<USERNAME>`：是你自己`github`的`用户名`
++ `<REPO>`：是你的`仓库名称`
+
+```
+https://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@github.com/Jovins/jovins.github.io.git/
+```
+
 ## 创建pods库的模板库
 
 ``` bash
