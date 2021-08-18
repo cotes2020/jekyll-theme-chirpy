@@ -52,9 +52,9 @@ pod trunk delete <库名> <版本号>
 
 ## Github问题
 
-Error: remote: Support for password authentication was removed on August 13, 2021.
+`Error: remote: Support for password authentication was removed on August 13, 2021.`
 
-2021年8月13号，Github把密码换成token
+2021年8月13号，Github把密码换成token.
 
 ### `token`好处
 
@@ -82,7 +82,7 @@ git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
 + `<REPO>`：是你的`仓库名称`
 
 ```
-https://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@github.com/Jovins/jovins.github.io.git/
+https://<token>@github.com/Jovins/jovins.github.io.git/
 ```
 
 ## 创建pods库的模板库
