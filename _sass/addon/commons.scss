@@ -1691,3 +1691,68 @@ $sidebar-display: "sidebar-display";
     margin-left: 41px;
   }
 }
+
+.tooltipped {
+  position: relative;
+}
+
+.tooltipped::after {
+  position: absolute;
+  z-index: 1000000;
+  display: none;
+  padding: 0.3rem 0.5rem;
+  font: arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  color: var(--body-bg);
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: break-word;
+  white-space: pre;
+  pointer-events: none;
+  content: attr(aria-label);
+  background: var(--copy-tooltip-bg);
+  border-radius: 0.2rem;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.tooltipped::before {
+  position: absolute;
+  z-index: 1000001;
+  display: none;
+  width: 0;
+  height: 0;
+  color: var(--copy-tooltip-bg);
+  pointer-events: none;
+  content: "";
+  border: 0.3rem solid transparent;
+}
+
+.tooltipped:hover::before,
+.tooltipped:hover::after,
+.tooltipped:active::before,
+.tooltipped:active::after,
+.tooltipped:focus::before,
+.tooltipped:focus::after {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.tooltipped-s::after {
+  top: 100%;
+  right: 50%;
+  margin-top: 0.3rem;
+  -webkit-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  transform: translateX(50%);
+}
+
+.tooltipped-s::before {
+  top: auto;
+  right: 50%;
+  bottom: -0.3rem;
+  margin-right: -0.3rem;
+  border-bottom-color: var(--copy-tooltip-bg);
+}

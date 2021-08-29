@@ -49,9 +49,41 @@ div > pre {
   @extend %code-snippet-bg;
   @extend %code-snippet-radius;
 
+  position: relative;
   color: var(--highlighter-rouge-color);
   margin-top: 0.5rem;
   margin-bottom: 1.2em; /* Override BS Inline-code style */
+
+  .cpbtn {
+    -webkit-transition: opacity .3s ease-in-out;
+    -o-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 1.75rem;
+    background: none;
+    border: none;
+    color: var(--copy-button-color);
+  }
+
+  @media (min-width: 768px) {
+    .cpbtn {
+      right: 0.6rem;
+    }
+  }
+
+  @media (min-width: 1650px) {
+    .cpbtn {
+      right: 1rem;
+    }
+  }
+
+}
+
+.highlighter-rouge:hover .cpbtn,
+.highlighter-rouge .cpbtn:focus {
+  opacity: 1;
 }
 
 .highlight {
@@ -165,7 +197,7 @@ div {
 div[class^='language-']::before {
   content: attr(lang);
   position: absolute;
-  right: 2rem;
+  right: 0;
   margin-top: 3px;
   font-size: 0.7rem;
   font-weight: 600;
@@ -175,12 +207,12 @@ div[class^='language-']::before {
 
 @media (min-width: 768px) {
   div[class^='language-']::before {
-    right: 3.1rem;
+    right: 0.6rem;
   }
 }
 
 @media (min-width: 1650px) {
   div[class^='language-']::before {
-    right: 3.5rem;
+    right: 1rem;
   }
 }
