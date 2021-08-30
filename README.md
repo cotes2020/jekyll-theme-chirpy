@@ -6,9 +6,7 @@ Thinking	Recording	Learning
 
 [![Sokranotes](https://sokranotes.github.io/assets/img/avatar.jpg)](https://sokranotes.github.io/)
 
-```diff
-- ↑↑↑↑↑     [点击此处访问博客](https://sokranotes.github.io/)     ↑↑↑↑↑
-```
+↑↑↑↑↑     [点击此处访问博客](https://sokranotes.github.io/)     ↑↑↑↑↑
 
 
 
