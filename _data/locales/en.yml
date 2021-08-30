@@ -79,6 +79,10 @@ post:
     copy:
       title: Copy link
       succeed: Link copied successfully!
+  clipboard:
+    tooltip: Copy to clipboard
+    succeed: Copied!
+    failed: Error occurred!
   # pinned prompt of posts list on homepage
   pin_prompt: Pinned
 

@@ -142,7 +142,12 @@ layout: default
 
 </div> <!-- .row -->
 
-<!-- enable displaying copy button in code blocks -->
+<!-- display copy button in code blocks -->
 <script>
-  var enableCopyToClipboard = {{ site.clipboard }} && {{ page.clipboard }};
+  var clipboardAttr = {
+    enable: {{ site.clipboard }} && {{ page.clipboard }},
+    tooltip: '{{ site.data.locales[lang].post.clipboard.tooltip }}',
+    succeed: '{{ site.data.locales[lang].post.clipboard.succeed }}',
+    failed: '{{ site.data.locales[lang].post.clipboard.failed }}',
+  };
 </script>

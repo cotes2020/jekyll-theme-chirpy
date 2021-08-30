@@ -4,7 +4,7 @@
  */
 
 $(function copyToClipboard() {
-	if (!enableCopyToClipboard) {
+	if (!clipboardAttr.enable) {
 		return;
 	}
 
@@ -19,40 +19,43 @@ $(function copyToClipboard() {
 	}
 
 	function fallbackMessage(action) {
-		var actionMsg = '';
-		var actionKey = (action === 'cut' ? 'X' : 'C');
-		if (/iPhone|iPad/i.test(navigator.userAgent)) {
-			actionMsg = 'No support :(';
-		} else if (/Mac/i.test(navigator.userAgent)) {
-			actionMsg = 'Press ⌘-' + actionKey + ' to ' + action;
-		} else {
-			actionMsg = 'Press Ctrl-' + actionKey + ' to ' + action;
+		let tooltipMsg = "Error occurred!";
+		if (clipboardAttr.failed && clipboardAttr.failed.length > 0) {
+			tooltipMsg = clipboardAttr.failed;
 		}
-		return actionMsg;
+		return tooltipMsg;
 	}
 
 	$("div.highlighter-rouge").each(function (index, element) {
 		element.firstChild.insertAdjacentHTML('beforebegin', '<button class="cpbtn" data-clipboard-snippet><i class="far fa-copy"></i></button>');
 	});
-	var clipboardSnippets = new ClipboardJS('[data-clipboard-snippet]', {
+	let clipboardSnippets = new ClipboardJS('[data-clipboard-snippet]', {
 		target: function (trigger) {
 			return trigger.nextElementSibling;
 		}
 	});
 	clipboardSnippets.on('success', function (e) {
 		e.clearSelection();
-		showTooltip(e.trigger, 'Copied!');
+		let tooltipMsg = "Copied!";
+		if (clipboardAttr.succeed && clipboardAttr.succeed.length > 0) {
+			tooltipMsg = clipboardAttr.succeed;
+		}
+		showTooltip(e.trigger, tooltipMsg);
 	});
 	clipboardSnippets.on('error', function (e) {
 		showTooltip(e.trigger, fallbackMessage(e.action));
 	});
 
-	var btns = document.querySelectorAll('.cpbtn');
-	for (var i = 0; i < btns.length; i++) {
+	let btns = document.querySelectorAll('.cpbtn');
+	for (let i = 0; i < btns.length; i++) {
 		btns[i].addEventListener('mouseleave', clearTooltip);
 		btns[i].addEventListener('blur', clearTooltip);
 		btns[i].addEventListener('mouseenter', function (e) {
-			showTooltip(e.currentTarget, "copy to clipboard");
+			let tooltipMsg = "Copy to clipboard";
+			if (clipboardAttr.tooltip && clipboardAttr.tooltip.length > 0) {
+				tooltipMsg = clipboardAttr.tooltip;
+			}
+			showTooltip(e.currentTarget, tooltipMsg);
 		}, false);
 	}
 });

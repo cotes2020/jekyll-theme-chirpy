@@ -78,6 +78,10 @@ post:
     copy:
       title: 分享链接
       succeed: 链接已复制！
+  clipboard:
+    tooltip: 复制到剪贴板
+    succeed: 已复制！
+    failed: 出错啦！
   # pinned prompt of posts list on homepage
   pin_prompt: 顶置
 
