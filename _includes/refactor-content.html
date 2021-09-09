@@ -113,8 +113,13 @@
       {% assign _new_content = _snippet %}
     {% else %}
       {% assign _lang = _snippet | split: ' ' | first %}
-      {% capture _tag_head %}<div lang="{{_lang}}" class="language-{% endcapture %}
-      {% assign _new_content = _new_content | append: _tag_head | append: _snippet %}
+      {% capture _tag_head %}<div class="language-{% endcapture %}
+      {% assign _replacement = '-rouge"><div class="code-header" data-lang="'
+          | append: _lang
+          | append: '"></div><div class="highlight">'
+      %}
+      {% capture _tag_tail %}{{ _snippet | replace: '-rouge"><div class="highlight">', _replacement }}{% endcapture %}
+      {% assign _new_content = _new_content | append: _tag_head | append: _tag_tail %}
     {% endif %}
   {% endfor %}
 
