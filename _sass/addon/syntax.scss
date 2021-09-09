@@ -166,6 +166,10 @@ div {
   background: var(--code-header-bg);
   border-top-left-radius: $code-radius;
   border-top-right-radius: $code-radius;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.85rem;
 
   // language badge
   &::before {
@@ -176,6 +180,29 @@ div {
     text-transform: uppercase;
     padding-left: 1em;
   }
+
+  // clipboard
+  button {
+    border: 0;
+    background-color: inherit;
+    border-top-right-radius: $code-radius;
+    color: var(--highlight-lineno-color);
+
+    &:hover {
+      background-color: gray;
+      color: white;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    i {
+      font-size: 85%;
+    }
+
+  }
+
 }
 
 @media all and (max-width: 576px) {
@@ -187,7 +214,11 @@ div {
 
       .code-header {
         border-radius: 0;
-        padding: 0 0.4rem;
+        padding-left: 0.4rem;
+
+        button {
+          border-top-right-radius: 0;
+        }
       }
     }
   }
