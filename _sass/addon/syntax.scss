@@ -27,16 +27,18 @@ html[mode=dark] {
 
 /* -- Codes Snippet -- */
 
+$code-radius: 6px;
+
 %code-snippet-bg {
   background: var(--highlight-bg-color);
 }
 
 %code-snippet-radius {
-  border-radius: 6px;
+  border-radius: $code-radius;
 }
 
 %code-snippet-padding {
-  padding: 1.5rem;
+  padding: 1.2rem;
 }
 
 div > pre {
@@ -86,12 +88,10 @@ div > pre {
   }
 
   .lineno {
-    margin-left: 0.2rem;
     padding-right: 0.5rem;
     min-width: 2.2rem;
     text-align: right;
     color: var(--highlight-lineno-color);
-    border-right: 1px solid var(--highlight-lineno-border-color);
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -135,7 +135,7 @@ code {
 }
 
 td.rouge-code {
-  padding: 1.5rem 1.5rem 1.5rem 1rem;
+  padding: 1.2rem 1.5rem 1.2rem 1rem;
 
   // Prevent some browser extends from
   // changing the URL string of code block.
@@ -162,25 +162,64 @@ div {
   }
 }
 
-div[class^='language-']::before {
-  content: attr(lang);
-  position: absolute;
-  right: 2rem;
-  margin-top: 3px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--highlight-lineno-color);
-  text-transform: uppercase;
-}
+.code-header {
+  background: var(--code-header-bg);
+  border-top-left-radius: $code-radius;
+  border-top-right-radius: $code-radius;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.85rem;
 
-@media (min-width: 768px) {
-  div[class^='language-']::before {
-    right: 3.1rem;
+  // language badge
+  &::before {
+    content: attr(data-lang);
+    color: var(--lang-badge-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: 1em;
   }
+
+  // clipboard
+  button {
+    border: 0;
+    background-color: inherit;
+    border-top-right-radius: $code-radius;
+    color: var(--highlight-lineno-color);
+
+    &:hover {
+      background-color: gray;
+      color: white;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    i {
+      font-size: 85%;
+    }
+
+  }
+
 }
 
-@media (min-width: 1650px) {
-  div[class^='language-']::before {
-    right: 3.5rem;
+@media all and (max-width: 576px) {
+  .post-content {
+    > div[class^='language-'] {
+      @include ml-mr(-1.25rem);
+
+      border-radius: 0;
+
+      .code-header {
+        border-radius: 0;
+        padding-left: 0.4rem;
+
+        button {
+          border-top-right-radius: 0;
+        }
+      }
+    }
   }
 }
