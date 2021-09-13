@@ -203,8 +203,8 @@ footer {
     padding: 0.3rem 0.5rem;
     margin: 0 0.35rem 0.5rem 0;
     &:hover {
-      background-color: #2a408e;
-      border-color: #2a408e;
+      background-color: #000000;
+      border-color: #000000;
       color: #fff;
       transition: none;
     }
@@ -504,7 +504,7 @@ footer {
 
     border-bottom: none;
     text-decoration: none;
-    color: #d2603a;
+    color: #474747;
   }
 }
 
@@ -640,12 +640,13 @@ $sidebar-display: "sidebar-display";
     }
 
     > a {
-      display: block;
-      width: 6rem;
-      height: 6rem;
-      border-radius: 50%;
-      border: 2px solid #b6b6b6;
-      overflow: hidden;
+      // display: block;
+      width: 16rem;
+      height: 16rem;
+      // right: 100rem;
+      // border-radius: 50%;
+      // border: 3px solid #b6b6b6;
+      overflow: visible;
       transform: translateZ(0); // fixed the zoom in Safari
       -webkit-transition: border-color 0.35s ease-in-out;
       -moz-transition: border-color 0.35s ease-in-out;
@@ -653,18 +654,18 @@ $sidebar-display: "sidebar-display";
     }
 
     img {
-      width: 100%;
-      height: 100%;
+      width: 75%;
+      height: 75%;
       -webkit-transition: transform 0.5s;
       -moz-transition: transform 0.5s;
       transition: transform 0.5s;
 
-      &:hover {
-        -ms-transform: scale(1.2);
-        -moz-transform: scale(1.2);
-        -webkit-transform: scale(1.2);
-        transform: scale(1.2);
-      }
+      // &:hover {
+      //   -ms-transform: scale(2.2);
+      //   -moz-transform: scale(2.2);
+      //   -webkit-transform: scale(2.2);
+      //   transform: scale(2.2);
+      // }
     }
   } // #avatar
 
@@ -687,6 +688,10 @@ $sidebar-display: "sidebar-display";
   }
 
   .nav-link {
+    border-bottom: 1px solid #fff;
+    
+    // border-top: 1px solid red;
+    line-height: 1.75rem;
     border-radius: 0;
     font-size: 0.95rem;
     font-weight: 600;
@@ -701,12 +706,12 @@ $sidebar-display: "sidebar-display";
     height: $tab-height;
     &:hover {
       .nav-link {
-        color: #f8f9facf;
+        color: #fff;
       }
     }
     &.active {
       .nav-link {
-        color: #fcfcfc;
+        color: #fff;
       }
     }
   }
@@ -801,7 +806,7 @@ $sidebar-display: "sidebar-display";
     }
 
     .icon-border {
-      background-color: #525354;
+      background-color: #5b6064;
       content: "";
       width: 3px;
       height: 3px;
@@ -859,7 +864,7 @@ $sidebar-display: "sidebar-display";
 
 #topbar {
   i { // icons
-    color: #999;
+    color: rgb(27, 27, 27);
   }
 
   #breadcrumb {
@@ -1534,6 +1539,7 @@ $sidebar-display: "sidebar-display";
           width: 6.2rem;
           height: 6.2rem;
           &.mx-auto {
+
             margin-left: 0 !important;
           }
         }
@@ -1575,7 +1581,7 @@ $sidebar-display: "sidebar-display";
           }
 
           > i {
-            @include icon-round(1.65rem);
+            // @include icon-round(1.65rem);
 
             line-height: 1.5rem;
             font-size: 0.6rem;
@@ -1609,7 +1615,7 @@ $sidebar-display: "sidebar-display";
       }
 
       i {
-        @include icon-round(2rem);
+        // @include icon-round(2rem);
 
         padding-top: 0.44rem;
         margin-top: .7rem; // multi line space
