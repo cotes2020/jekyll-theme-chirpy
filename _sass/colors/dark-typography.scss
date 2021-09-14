@@ -3,26 +3,23 @@
  */
 
 @mixin dark-scheme {
-  /* framework */
-  --main-wrapper-bg: rgb(27, 27, 30);
+  /* Framework color */
   --body-bg: var(--main-wrapper-bg);
-  --topbar-wrapper-bg: rgb(39, 40, 43);
-  --search-wrapper-bg: rgb(34, 34, 39);
-  --search-icon-color: rgb(100, 102, 105);
-  --input-focus-border-color: rgb(112, 114, 115);
   --mask-bg: rgb(68, 69, 70);
-  --footer-bg-color: var(--main-wrapper-bg);
-
-  /* common color */
-  --text-color: rgb(175, 176, 177);
-  --heading-color: #cccccc;
-  --text-muted-color: rgb(107, 116, 124);
-  --link-color: rgb(138, 180, 248);
-  --link-underline-color: rgb(82, 108, 150);
+  --main-wrapper-bg: rgb(27, 27, 30);
   --main-border-color: rgb(44, 45, 45);
-  --button-bg: rgb(39, 40, 43);
+  --scrollbar-track-bg: rgba(0, 0, 0, 0.3);
+  --scrollbar-thumb-bg: rgb(173 171 171 / 50%);
+
+  /* Common color */
+  --text-color: rgb(175, 176, 177);
+  --text-muted-color: rgb(107, 116, 124);
+  --heading-color: #cccccc;
   --blockquote-border-color: rgb(66, 66, 66);
   --blockquote-text-color: rgb(117, 117, 117);
+  --link-color: rgb(138, 180, 248);
+  --link-underline-color: rgb(82, 108, 150);
+  --button-bg: rgb(39, 40, 43);
   --btn-border-color: rgb(63, 65, 68);
   --btn-backtotop-color: var(--text-color);
   --btn-backtotop-border-color: var(--btn-border-color);
@@ -36,8 +33,12 @@
   --nav-cursor-color: rgb(183, 182, 182);
   --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
 
-  /* Top Bar */
+  /* Topbar */
   --topbar-text-color: var(--text-color);
+  --topbar-wrapper-bg: rgb(39, 40, 43);
+  --search-wrapper-bg: rgb(34, 34, 39);
+  --search-icon-color: rgb(100, 102, 105);
+  --input-focus-border-color: rgb(112, 114, 115);
 
   /* Home page */
   --post-list-text-color: rgb(175, 176, 177);
@@ -82,6 +83,7 @@
   --timeline-year-dot-color: var(--timeline-color);
 
   /* Footer */
+  --footer-bg-color: var(--main-wrapper-bg);
   --footer-link: rgb(171, 171, 171);
 
   .post-content img {
