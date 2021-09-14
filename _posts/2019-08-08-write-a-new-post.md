@@ -72,7 +72,7 @@ math: true
 
 [**Mermaid**](https://github.com/mermaid-js/mermaid) is a great diagrams generation tool. To enable it on your post, add the following to the YAML block:
 
-```yml
+```yaml
 ---
 mermaid: true
 ---
@@ -107,6 +107,7 @@ Add italics to the next line of an image，then it will become the caption and a
 ![img-description](/path/to/image)
 _Image Caption_
 ```
+{: .nolineno}
 
 ### Image size
 
@@ -115,6 +116,7 @@ In order to prevent the page content layout from shifting when the image is load
 ```markdown
 ![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
 ```
+{: .nolineno}
 
 ### Image position
 
@@ -127,18 +129,21 @@ By default, the image is centered, but you can specify the position by using one
   ```markdown
   ![Desktop View](/assets/img/sample/mockup.png){: .normal }
   ```
+  {: .nolineno}
 
 - **Float to the left**
 
   ```markdown
   ![Desktop View](/assets/img/sample/mockup.png){: .left }
   ```
+  {: .nolineno}
 
 - **Float to the right**
 
   ```markdown
   ![Desktop View](/assets/img/sample/mockup.png){: .right }
   ```
+  {: .nolineno}
 
 > **Limitation**: Once you specify the position of an image, it is forbidden to add the image caption.
 
@@ -149,6 +154,7 @@ The screenshots of the program window can be considered to show the shadow effec
 ```markdown
 ![Desktop View](/assets/img/sample/mockup.png){: .shadow }
 ```
+{: .nolineno}
 
 ### CDN URL
 
@@ -157,6 +163,7 @@ If you host the images on the CDN, you can save the time of repeatedly writing t
 ```yaml
 img_cdn: https://cdn.com
 ```
+{: .nolineno}
 
 Once `img_cdn` is assigned, the CDN url will be added to the path of all images (images of site avatar and posts) starting with `/`.
 
@@ -165,12 +172,14 @@ For instance, when using images:
 ```markdown
 ![The flower](/path/to/flower.png)
 ```
+{: .nolineno}
 
 The parsing result will automatically add the CDN prefix `https://cdn.com` before the image path:
 
 ```html
 <img src="https://cdn.com/path/to/flower.png" alt="The flower">
 ```
+{: .nolineno}
 
 ## Pinned Posts
 
@@ -190,7 +199,7 @@ Markdown symbols ```` ``` ```` can easily create a code block as following examp
 This is a common code snippet, without syntax highlight and line number.
 ```
 
-## Specific Language
+### Specific Language
 
 Using ```` ```language ```` you will get code snippets with line numbers and syntax highlight.
 
@@ -204,6 +213,17 @@ items:
       price:     1.47
       quantity:  4
 ```
+
+### Hiding Line Number
+
+When you want to hide the line number of the code block, you can append `{: .nolineno}` at the next line of it:
+
+````markdown
+```shell
+echo 'No more line numbers!'
+```
+{: .nolineno}
+````
 
 ### Liquid Codes
 

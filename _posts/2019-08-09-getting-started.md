@@ -25,12 +25,14 @@ Add this line to your Jekyll site's `Gemfile`:
 ```ruby
 gem "jekyll-theme-chirpy"
 ```
+{: .nolineno}
 
 And add this line to your Jekyll site's `_config.yml`:
 
 ```yaml
 theme: jekyll-theme-chirpy
 ```
+{: .nolineno}
 
 And then execute:
 
