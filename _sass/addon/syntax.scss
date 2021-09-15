@@ -184,12 +184,19 @@ div {
 
   // clipboard
   button {
-    border: 0;
+    border: 1px solid var(--code-header-bg);
+    border-radius: $code-radius;
+    padding: 0;
+    width: 1.95rem;
     background-color: inherit;
-    border-top-right-radius: $code-radius;
     color: var(--highlight-lineno-color);
 
-    &:hover {
+    &[locked=true] {
+      color: var(--clipboard-checked-color);
+      border-color: var(--clipboard-checked-color);
+    }
+
+    &:not([locked]):hover {
       background-color: gray;
       color: white;
     }
@@ -199,7 +206,7 @@ div {
     }
 
     i {
-      font-size: 85%;
+      font-size: 0.9rem;
     }
 
   }
@@ -216,10 +223,7 @@ div {
       .code-header {
         border-radius: 0;
         padding-left: 0.4rem;
-
-        button {
-          border-top-right-radius: 0;
-        }
+        padding-right: 0.5rem;
       }
     }
   }
