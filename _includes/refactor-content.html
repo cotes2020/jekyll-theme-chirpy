@@ -116,7 +116,9 @@
       {% capture _tag_head %}<div class="language-{% endcapture %}
       {% assign _replacement = '-rouge"><div class="code-header" data-lang="'
           | append: _lang
-          | append: '"><button><i class="far fa-clone"></i></button></div><div class="highlight">'
+          | append: '"><button data-original-title="'
+          | append: site.data.locales[lang].post.button.copy
+          | append: '"><i class="far fa-clone"></i></button></div><div class="highlight">'
       %}
       {% capture _tag_tail %}{{ _snippet | replace: '-rouge"><div class="highlight">', _replacement }}{% endcapture %}
       {% assign _new_content = _new_content | append: _tag_head | append: _tag_tail %}
