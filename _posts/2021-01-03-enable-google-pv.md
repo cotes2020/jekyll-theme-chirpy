@@ -45,6 +45,7 @@ google_analytics:
     proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
     cache_path:       # the local PV cache data, friendly to visitors from GFW region
 ```
+{: file="_config.yml"}
 
 When you push these changes to your blog, you should start seeing the traffic on your Google Analytics. Play around with Google Analytics dashboard to get familiar with the options available as it takes like 5 mins to pickup your changes. You should now be able to monitor your traffic in realtime.
 
@@ -140,6 +141,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
     # XSRF Settings
     XSRF_KEY = 'OnceUponATimeThereLivedALegend'
     ```
+    {: file="src/config.py"}
 
     **Tip:** You can configure a custom domain instead of `https://PROJECT_ID.REGION_ID.r.appspot.com`. But, for the sake of keeping it simple, we will be using the Google provided default URL.
 
@@ -226,6 +228,7 @@ google_analytics:
     proxy_endpoint: 'https://PROJECT_ID.REGION_ID.r.appspot.com/query?id=<ID FROM SUPER PROXY>'
     cache_path:       # the local PV cache data, friendly to visitors from GFW region
 ```
+{: file="_config.yml"}
 
 Now, you should see the Page View enabled on your blog.
 

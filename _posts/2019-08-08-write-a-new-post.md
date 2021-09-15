@@ -4,6 +4,7 @@ author: Cotes Chung
 date: 2019-08-08 14:10:00 +0800
 categories: [Blogging, Tutorial]
 tags: [writing]
+render_with_liquid: false
 ---
 
 ## Naming and Path
@@ -163,7 +164,7 @@ If you host the images on the CDN, you can save the time of repeatedly writing t
 ```yaml
 img_cdn: https://cdn.com
 ```
-{: .nolineno}
+{: file='_config.yml' .nolineno}
 
 Once `img_cdn` is assigned, the CDN url will be added to the path of all images (images of site avatar and posts) starting with `/`.
 
@@ -193,30 +194,27 @@ pin: true
 
 ## Code Block
 
-Markdown symbols ```` ``` ```` can easily create a code block as following examples.
+Markdown symbols ```` ``` ```` can easily create a code block as follows:
 
 ```
-This is a common code snippet, without syntax highlight and line number.
+This is a plaintext code snippet.
 ```
 
-### Specific Language
+### Specifying Language
 
-Using ```` ```language ```` you will get code snippets with line numbers and syntax highlight.
+Using ```` ```{language} ```` you will get a code block with syntax highlight:
 
-> **Note**: The Jekyll style `{% raw %}{%{% endraw %} highlight LANGUAGE {% raw %}%}{% endraw %}` or `{% raw %}{%{% endraw %} highlight LANGUAGE linenos {% raw %}%}{% endraw %}` are not allowed to be used in this theme !
-
+````markdown
 ```yaml
-# Yaml code snippet
-items:
-    - part_no:   A4786
-      descrip:   Water Bucket (Filled)
-      price:     1.47
-      quantity:  4
+key: value
 ```
+````
 
-### Hiding Line Number
+> **Limination**: The Jekyll style `highlight` tag ais not compatible with this theme.
 
-When you want to hide the line number of the code block, you can append `{: .nolineno}` at the next line of it:
+### Line Number
+
+By default, all languages except `plaintext`, `console` and `terminal` will display line numbers. When you want to hide the line number of the code block, you can append `{: .nolineno}` at the next line:
 
 ````markdown
 ```shell
@@ -225,10 +223,22 @@ echo 'No more line numbers!'
 {: .nolineno}
 ````
 
+### Specifying the Filename
+
+You may have noticed that the code language will be displayed on the left side of the header of the code block. If you want to replace it with the file name, you can add the attribute `file` to achieve this:
+
+````markdown
+```shell
+# content
+```
+{: file="path/to/file" }
+````
+
 ### Liquid Codes
 
-If you want to display the **Liquid** snippet, surround the liquid code with `{% raw %}{%{% endraw %} raw {%raw%}%}{%endraw%}` and `{% raw %}{%{% endraw %} endraw {%raw%}%}{%endraw%}` .
+If you want to display the **Liquid** snippet, surround the liquid code with `{% raw %}` and `{% endraw %}`:
 
+````markdown
 {% raw %}
 ```liquid
 {% if product.title contains 'Pack' %}
@@ -236,6 +246,9 @@ If you want to display the **Liquid** snippet, surround the liquid code with `{%
 {% endif %}
 ```
 {% endraw %}
+````
+
+Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the post's YAML block.
 
 ## Learn More
 

@@ -176,44 +176,23 @@ SHELL=/usr/local/bin/bash
 PYENV_SHELL=bash
 ```
 
-#### Ruby
-
-```ruby
-def sum_eq_n?(arr, n)
-  return true if arr.empty? && n == 0
-  arr.product(arr).reject { |a,b| a == b }.any? { |a,b| a + b == n }
-end
-```
-
 #### Shell
 
-```shell
+```bash
 if [ $? -ne 0 ]; then
     echo "The command was not successful.";
     #do the needful / exit
 fi;
 ```
 
-#### Liquid
+### Specific filename
 
-{% raw %}
-```liquid
-{% if product.title contains 'Pack' %}
-  This product's title contains the word Pack.
-{% endif %}
+```sass
+@import
+  "colors/light-typography",
+  "colors/dark-typography"
 ```
-{% endraw %}
-
-#### Java
-
-```java
-private void writeObject(java.io.ObjectOutputStream s)
-  throws java.io.IOException {
-  // Write out any hidden serialization magic
-  s.defaultWriteObject();
-  for (E e: map.keySet()) s.writeObject(e);
-}
-```
+{: file='_sass/jekyll-theme-chirpy.scss'}
 
 ## Reverse Footnote
 
