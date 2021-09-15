@@ -76,9 +76,7 @@ post:
   button:
     next: Terbaru
     previous: Terlama
-    copy:
-      title: Salin tautan
-      succeed: Tautan berhasil disalin!
+    copy: Disalin!
   # pinned prompt of posts list on homepage
   pin_prompt: Disematkan
 

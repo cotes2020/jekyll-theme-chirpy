@@ -24,9 +24,8 @@ $(function() {
     placement: 'left'
   });
 
-  function setTooltip(btn, msg) {
+  function setTooltip(btn) {
     $(btn).tooltip('hide')
-      .attr('data-original-title', msg)
       .tooltip('show');
   }
 
@@ -70,7 +69,7 @@ $(function() {
       return;
     }
 
-    setTooltip(e.trigger, 'Copied!');
+    setTooltip(e.trigger);
     hideTooltip(e.trigger);
 
     setSuccessIcon(e.trigger);
