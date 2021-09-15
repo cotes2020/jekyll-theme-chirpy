@@ -172,14 +172,22 @@ div {
   align-items: center;
   line-height: 1.85rem;
 
-  // language badge
+  // text data
   &::before {
-    content: attr(data-lang);
+    content: attr(text-data);
     color: var(--lang-badge-color);
+    padding-left: 1em;
+
+    // language
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    padding-left: 1em;
+
+    // file name
+    @at-root [file] #{&} {
+      font-size: 0.85rem;
+      text-transform: none;
+    }
   }
 
   // clipboard
