@@ -76,9 +76,7 @@ post:
   button:
     next: Newer
     previous: Older
-    copy:
-      title: Copy link
-      succeed: Link copied successfully!
+    copy: Copied!
   # pinned prompt of posts list on homepage
   pin_prompt: Pinned
 

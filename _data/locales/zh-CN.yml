@@ -75,9 +75,7 @@ post:
   button:
     next: 下一篇
     previous: 上一篇
-    copy:
-      title: 分享链接
-      succeed: 链接已复制！
+    copy: 已复制！
   # pinned prompt of posts list on homepage
   pin_prompt: 顶置
 
