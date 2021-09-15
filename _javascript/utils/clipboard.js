@@ -8,7 +8,6 @@
 
 $(function() {
   const btnSelector = '.code-header>button';
-  const ICON_DEFAULT = getIcon(btnSelector);
   const ICON_SUCCESS = 'fas fa-check';
   const ATTR_LOCKED = 'locked';
   const TIMEOUT = 2000; // in milliseconds
@@ -24,6 +23,13 @@ $(function() {
     placement: 'left'
   });
 
+  function getIcon(btn) {
+    let iconNode = $(btn).children();
+    return iconNode.attr('class');
+  }
+
+  const ICON_DEFAULT = getIcon(btnSelector);
+
   function setTooltip(btn) {
     $(btn).tooltip('hide')
       .tooltip('show');
@@ -33,11 +39,6 @@ $(function() {
     setTimeout(function() {
       $(btn).tooltip('hide');
     }, TIMEOUT);
-  }
-
-  function getIcon(btn) {
-    let iconNode = $(btn).children();
-    return iconNode.attr('class');;
   }
 
   function setSuccessIcon(btn) {
