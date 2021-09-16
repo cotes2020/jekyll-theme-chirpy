@@ -16,9 +16,10 @@
         </a>
     {% endfor %}
 
-    <i class="fa-fw fas fa-link small" onclick="copyLink('', '{{ site.data.locales[lang].post.button.copy.succeed }}')"
+    <i id="copy-link" class="fa-fw fas fa-link small"
         data-toggle="tooltip" data-placement="top"
-        title="{{ site.data.locales[lang].post.button.copy.title }}">
+        title="{{ site.data.locales[lang].post.button.share_link.title }}"
+        title-succeed="{{ site.data.locales[lang].post.button.share_link.succeed }}">
     </i>
 
   </span>

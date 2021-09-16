@@ -128,10 +128,12 @@ release() {
       git checkout -b "$_release_branch"
       _new_release_branch=true
     else
+      # cherry-pick the latest commit from default branch to release branch
+      _last_commit="$(git rev-parse $DEFAULT_BRANCH)"
       git checkout "$_release_branch"
-      # cherry-pick the latest commit from master branch to release branch
-      git cherry-pick "$(git rev-parse $DEFAULT_BRANCH)"
+      git cherry-pick "$_last_commit" -m 1
     fi
+
   fi
 
   echo -e "Bump version to $_version\n"
