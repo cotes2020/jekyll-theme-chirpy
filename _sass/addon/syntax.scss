@@ -199,12 +199,12 @@ div {
     background-color: inherit;
     color: var(--highlight-lineno-color);
 
-    &[locked=true] {
+    &[timeout] {
       color: var(--clipboard-checked-color);
       border-color: var(--clipboard-checked-color);
     }
 
-    &:not([locked]):hover {
+    &:not([timeout]):hover {
       background-color: gray;
       color: white;
     }
