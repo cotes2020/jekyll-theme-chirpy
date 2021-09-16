@@ -1,5 +1,5 @@
 /*
- * Initial the clipboard.js object
+ * Clipboard functions
  *
  * Dependencies:
  *   - popper.js (https://github.com/popperjs/popper-core)
@@ -9,12 +9,34 @@
 $(function() {
   const btnSelector = '.code-header>button';
   const ICON_SUCCESS = 'fas fa-check';
-  const ATTR_LOCKED = 'locked';
+  const ATTR_TIMEOUT = 'timeout';
   const TIMEOUT = 2000; // in milliseconds
 
+  function isLocked(node) {
+    if ($(node)[0].hasAttribute(ATTR_TIMEOUT)) {
+      let timeout = $(node).attr(ATTR_TIMEOUT);
+      if (Number(timeout) > Date.now()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function lock(node) {
+    $(node).attr(ATTR_TIMEOUT, Date.now() + TIMEOUT);
+  }
+
+  function unlock(node) {
+    $(node).removeAttr(ATTR_TIMEOUT);
+  }
+
+  /* --- Copy code block --- */
+
+  // Initial the clipboard.js object
   const clipboard = new ClipboardJS(btnSelector, {
     target(trigger) {
-      return trigger.parentNode.nextElementSibling;
+      let codeBlock = trigger.parentNode.nextElementSibling;
+      return codeBlock.querySelector('code .rouge-code');
     }
   });
 
@@ -30,51 +52,79 @@ $(function() {
 
   const ICON_DEFAULT = getIcon(btnSelector);
 
-  function setTooltip(btn) {
-    $(btn).tooltip('hide')
-      .tooltip('show');
+  function showTooltip(btn) {
+    $(btn).tooltip('show');
   }
 
   function hideTooltip(btn) {
-    setTimeout(function() {
-      $(btn).tooltip('hide');
-    }, TIMEOUT);
+    $(btn).tooltip('hide');
+    unlock(btn);
   }
 
   function setSuccessIcon(btn) {
     let btnNode = $(btn);
     let iconNode = btnNode.children();
-    btnNode.attr(ATTR_LOCKED, true);
     iconNode.attr('class', ICON_SUCCESS);
+    lock(btn);
   }
 
   function resumeIcon(btn) {
     let btnNode = $(btn);
     let iconNode = btnNode.children();
-
-    setTimeout(function() {
-      btnNode.removeAttr(ATTR_LOCKED);
-      iconNode.attr('class', ICON_DEFAULT);
-    }, TIMEOUT);
-  }
-
-  function isLocked(btn) {
-    let locked = $(btn).attr(ATTR_LOCKED);
-    return locked === 'true';
+    iconNode.attr('class', ICON_DEFAULT);
+    unlock(btn);
   }
 
   clipboard.on('success', (e) => {
     e.clearSelection();
 
-    if (isLocked(e.trigger)) {
+    const trigger = e.trigger;
+    if (isLocked(trigger)) {
       return;
     }
 
-    setTooltip(e.trigger);
-    hideTooltip(e.trigger);
+    setSuccessIcon(trigger);
+    showTooltip(trigger);
 
-    setSuccessIcon(e.trigger);
-    resumeIcon($(e.trigger));
+    setTimeout(() => {
+      hideTooltip(trigger);
+      resumeIcon(trigger);
+    }, TIMEOUT);
+
+  });
+
+  /* --- Post link sharing --- */
+
+  $('#copy-link').click((e) => {
+
+    let target = $(e.target);
+
+    if (isLocked(target)) {
+      return;
+    }
+
+    // Copy URL to clipboard
+
+    const url = window.location.href;
+    const $temp = $("<input>");
+
+    $("body").append($temp);
+    $temp.val(url).select();
+    document.execCommand("copy");
+    $temp.remove();
+
+    // Switch tooltip title
+
+    const defaultTitle = target.attr('data-original-title');
+    const succeedTitle = target.attr('title-succeed');
+
+    target.attr('data-original-title', succeedTitle).tooltip('show');
+    lock(target);
+
+    setTimeout(() => {
+      target.attr('data-original-title', defaultTitle);
+      unlock(target);
+    }, TIMEOUT);
 
   });
 
