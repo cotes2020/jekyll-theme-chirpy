@@ -35,7 +35,8 @@ $(function() {
   // Initial the clipboard.js object
   const clipboard = new ClipboardJS(btnSelector, {
     target(trigger) {
-      return trigger.parentNode.nextElementSibling;
+      let codeBlock = trigger.parentNode.nextElementSibling;
+      return codeBlock.querySelector('code .rouge-code');
     }
   });
 
