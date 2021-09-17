@@ -199,6 +199,8 @@ div {
     background-color: inherit;
     color: var(--highlight-lineno-color);
 
+    @extend %cursor-pointer;
+
     &[timeout] {
       color: var(--clipboard-checked-color);
       border-color: var(--clipboard-checked-color);

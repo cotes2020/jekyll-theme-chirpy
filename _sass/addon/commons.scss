@@ -811,6 +811,8 @@ $sidebar-display: "sidebar-display";
       i {
         @include sidebar-links;
 
+        @extend %cursor-pointer;
+
         margin: 0;
         font-size: 1.05rem;
         text-align: center;
@@ -914,12 +916,16 @@ $sidebar-display: "sidebar-display";
   border: 1px solid var(--search-wrapper-bg);
   background: var(--search-wrapper-bg);
   padding: 0 0.5rem;
+
   i {
     z-index: 2;
     font-size: 0.9rem;
     color: var(--search-icon-color);
   }
+
   .fa-times-circle { /* button 'clean up' */
+    @extend %cursor-pointer;
+
     visibility: hidden;
   }
 }
@@ -928,6 +934,8 @@ $sidebar-display: "sidebar-display";
   color: var(--link-color);
   margin-left: 1rem;
   display: none;
+
+  @extend %cursor-pointer;
 }
 
 #search-input {

@@ -242,6 +242,9 @@
     > i {
       position: relative;
       bottom: 1px;
+
+      @extend %cursor-pointer;
+
       &:hover {
         @extend %btn-share-hovor;
       }
