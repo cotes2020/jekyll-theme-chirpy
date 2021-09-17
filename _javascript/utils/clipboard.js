@@ -58,21 +58,18 @@ $(function() {
 
   function hideTooltip(btn) {
     $(btn).tooltip('hide');
-    unlock(btn);
   }
 
   function setSuccessIcon(btn) {
     let btnNode = $(btn);
     let iconNode = btnNode.children();
     iconNode.attr('class', ICON_SUCCESS);
-    lock(btn);
   }
 
   function resumeIcon(btn) {
     let btnNode = $(btn);
     let iconNode = btnNode.children();
     iconNode.attr('class', ICON_DEFAULT);
-    unlock(btn);
   }
 
   clipboard.on('success', (e) => {
@@ -85,10 +82,12 @@ $(function() {
 
     setSuccessIcon(trigger);
     showTooltip(trigger);
+    lock(trigger);
 
     setTimeout(() => {
       hideTooltip(trigger);
       resumeIcon(trigger);
+      unlock(trigger);
     }, TIMEOUT);
 
   });
