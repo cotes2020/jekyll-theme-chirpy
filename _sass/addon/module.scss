@@ -65,16 +65,9 @@
   text-decoration: none;
 }
 
-@mixin sidebar-links {
-  color: rgba(117, 117, 117, 83%);
+%sidebar-links {
+  color: rgba(117, 117, 117, 0.9);
   user-select: none;
-}
-
-@mixin icon-round($diameter) {
-  border: 1px solid;
-  border-radius: 50%;
-  width: $diameter;
-  height: $diameter;
 }
 
 @mixin ml-mr($value) {
