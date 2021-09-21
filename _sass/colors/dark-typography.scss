@@ -30,13 +30,17 @@
   --checkbox-checked-color: var(--link-color);
 
   /* Sidebar */
-  --nav-cursor-color: rgb(183, 182, 182);
   --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
+  --sidebar-muted-color: #6d6c6b;
+  --sidebar-hover-color: rgb(255 255 255 / 68%);
+  --sidebar-active-color: rgb(255 255 255 / 68%);
+  --nav-cursor-color: rgb(183, 182, 182);
 
   /* Topbar */
   --topbar-text-color: var(--text-color);
   --topbar-wrapper-bg: rgb(39, 40, 43);
   --search-wrapper-bg: rgb(34, 34, 39);
+  --search-wrapper-border-color: rgb(34, 34, 39);
   --search-icon-color: rgb(100, 102, 105);
   --input-focus-border-color: rgb(112, 114, 115);
 
@@ -44,11 +48,8 @@
   --post-list-text-color: rgb(175, 176, 177);
   --btn-patinator-text-color: var(--text-color);
   --btn-paginator-hover-color: rgb(64, 65, 66);
-  --btn-active-bg: rgba(28, 52, 94, 1);
-  --btn-active-border-color: rgb(66, 94, 138);
-  --btn-text-color: var(--text-color);
   --btn-paginator-border-color: var(--btn-border-color);
-  --btn-paginator-shadow: var(--main-wrapper-bg);
+  --btn-text-color: var(--text-color);
   --pin-bg: rgb(34 35 37);
   --pin-color: inherit;
 
@@ -98,11 +99,12 @@
   nav[data-toggle=toc] .nav-link.active,
   nav[data-toggle=toc] .nav-link.active:focus,
   nav[data-toggle=toc] .nav-link.active:hover,
-  nav[data-toggle=toc] .nav > li > a:focus,
-  nav[data-toggle=toc] .nav > li > a:hover {
+  nav[data-toggle=toc] .nav>li>a:focus,
+  nav[data-toggle=toc] .nav>li>a:hover {
     color: var(--toc-highlight) !important;
     border-left-color: var(--toc-highlight) !important;
   }
+
 
   /* categories */
   .categories.card,

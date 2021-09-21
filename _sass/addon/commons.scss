@@ -650,21 +650,20 @@ $sidebar-display: "sidebar-display";
     &:hover {
       @include no-text-decoration;
 
-      color: #fff;
+      color: var(--sidebar-hover-color) !important;
     }
   }
 
   #avatar {
-    &:hover > a {
-      border-color: #fff;
-    }
-
     > a {
+      &:hover {
+        border-color: white;
+      }
       display: block;
       width: 6rem;
       height: 6rem;
       border-radius: 50%;
-      border: 2px solid #b6b6b6;
+      border: 2px solid rgba(222, 222, 222, 0.7);
       overflow: hidden;
       transform: translateZ(0); // fixed the zoom in Safari
       -webkit-transition: border-color 0.35s ease-in-out;
@@ -690,15 +689,18 @@ $sidebar-display: "sidebar-display";
 
   .site-title {
     a {
+      @extend %clickable-transition;
+
       font-weight: 900;
       font-size: 1.5rem;
       letter-spacing: 0.5px;
+      color: rgba(134, 133, 133, 99%);
     }
   }
 
   .site-subtitle {
     font-size: 95%;
-    color: #828282;
+    color: var(--sidebar-muted-color);
     line-height: 1.2rem;
     word-spacing: 1px;
     margin: 0.5rem 1.5rem 0.5rem 1.5rem;
@@ -719,15 +721,15 @@ $sidebar-display: "sidebar-display";
     text-align: center;
     display: table;
     height: $tab-height;
-    &:hover {
-      .nav-link {
-        color: #f8f9facf;
-      }
-    }
+
     &.active {
       .nav-link {
-        color: #fcfcfc;
+        color: var(--sidebar-active-color);
       }
+    }
+
+    &:not(.active) > a {
+      @extend %clickable-transition;
     }
   }
 
@@ -803,6 +805,7 @@ $sidebar-display: "sidebar-display";
 
     a {
       @extend %icon;
+      @extend %clickable-transition;
     }
 
     #mode-toggle-wrapper {
@@ -812,6 +815,7 @@ $sidebar-display: "sidebar-display";
         @include sidebar-links;
 
         @extend %cursor-pointer;
+        @extend %clickable-transition;
 
         margin: 0;
         font-size: 1.05rem;
@@ -823,7 +827,7 @@ $sidebar-display: "sidebar-display";
     }
 
     .icon-border {
-      background-color: #525354;
+      background-color: var(--sidebar-muted-color);
       content: "";
       width: 3px;
       height: 3px;
@@ -834,7 +838,7 @@ $sidebar-display: "sidebar-display";
 
     a:hover,
     #mode-toggle-wrapper i:hover {
-      color: #fff;
+      color: var(--sidebar-hover-color);
     }
 
   } // .sidebar-bottom
@@ -875,7 +879,6 @@ $sidebar-display: "sidebar-display";
   transition: top 0.2s ease-in-out;
   z-index: 50;
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.05);
   background-color: var(--topbar-wrapper-bg);
 }
 
@@ -913,7 +916,7 @@ $sidebar-display: "sidebar-display";
   display: flex;
   width: 85%;
   border-radius: 1rem;
-  border: 1px solid var(--search-wrapper-bg);
+  border: 1px solid var(--search-wrapper-border-color);
   background: var(--search-wrapper-bg);
   padding: 0 0.5rem;
 

@@ -28,9 +28,7 @@
     }
     &.active {
       .page-link {
-        background-color: var(--btn-active-bg);
-        border-color: var(--btn-active-border-color);
-        box-shadow: 0 0 8px 0 var(--btn-paginator-shadow) !important;
+        background-color: var(--btn-paginator-hover-color);
         color: var(--btn-text-color);
       }
     }

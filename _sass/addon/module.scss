@@ -35,6 +35,10 @@
   border-bottom: 1px solid var(--link-underline-color);
 }
 
+%clickable-transition {
+  transition: color 0.35s ease-in-out;
+}
+
 %no-bottom-border {
   border-bottom: none;
 }
@@ -61,9 +65,8 @@
   text-decoration: none;
 }
 
-@mixin sidebar-links($color: rgba(255, 255, 255, 0.5)) {
-  color: $color;
-  transition: color 0.35s ease-in-out;
+@mixin sidebar-links {
+  color: rgba(117, 117, 117, 83%);
   user-select: none;
 }
 
