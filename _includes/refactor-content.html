@@ -119,14 +119,20 @@
 
       {% if _left contains 'file="' %}
         {% assign _text = _left | split: 'file="' | last | split: '"' | first %}
+        {% assign _label_icon = 'far fa-file' %}
       {% else %}
         {% assign _text = _left | split: 'language-' | last | split: ' ' | first %}
+        {% assign _label_icon = 'fas fa-code small' %}
       {% endif %}
 
+      {% capture _label %}
+        <span text-data="{{ _text }}"><i class="fa-fw {{ _label_icon }}"></i></span>
+      {% endcapture %}
+
       {% assign _new_content = _new_content | append: _snippet
-          | append: '<div class="code-header" text-data="'
-          | append: _text
-          | append: '"><button aria-label="copy" data-original-title="'
+          | append: '<div class="code-header">'
+          | append: _label
+          | append: '<button aria-label="copy" data-original-title="'
           | append: site.data.locales[lang].post.button.copy_code.succeed
           | append: '"><i class="far fa-clone"></i></button></div>'
           | append: '<div class="highlight"><code>'

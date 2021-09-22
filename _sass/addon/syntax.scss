@@ -172,23 +172,32 @@ div {
   align-items: center;
   line-height: 1.85rem;
 
-  // text data
-  &::before {
-    content: attr(text-data);
+  // the label
+  span {
     color: var(--lang-badge-color);
-    padding-left: 1em;
+    padding-left: 0.6rem;
+    font-size: 0.85rem;
 
-    // language
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
+    &:after {
+      content: attr(text-data);
+      margin-left: 0.3rem;
+      font-weight: 600;
 
-    // file name
-    @at-root [file] #{&} {
-      font-size: 0.85rem;
-      text-transform: none;
+      // language
+      @at-root .highlighter-rouge:not([file]) #{&} {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+
+    } // :after
+
+    @at-root [file] #{&} > i { // center the file icon
+      position: relative;
+      top: 1px;
     }
+
   }
+
 
   // clipboard
   button {
@@ -208,7 +217,9 @@ div {
 
     &:not([timeout]):hover {
       background-color: gray;
-      color: white;
+      > i {
+        color: white;
+      }
     }
 
     &:focus {
