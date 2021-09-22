@@ -214,15 +214,19 @@ div {
     @extend %cursor-pointer;
 
     &[timeout] {
-      border-color: var(--clipboard-checked-color);
+      &:hover {
+        border-color: var(--clipboard-checked-color);
+      }
+
       i {
         color: var(--clipboard-checked-color);
       }
     }
 
     &:not([timeout]):hover {
-      background-color: gray;
-      > i {
+      background-color: rgba(128, 128, 128, 0.37);
+
+      i {
         color: white;
       }
     }

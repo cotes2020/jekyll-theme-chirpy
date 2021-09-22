@@ -133,7 +133,7 @@
       {% assign _new_content = _new_content | append: _snippet
           | append: '<div class="code-header">'
           | append: _label
-          | append: '<button aria-label="copy" data-original-title="'
+          | append: '<button aria-label="copy" title-succeed="'
           | append: site.data.locales[lang].post.button.copy_code.succeed
           | append: '"><i class="far fa-clipboard"></i></button></div>'
           | append: '<div class="highlight"><code>'
