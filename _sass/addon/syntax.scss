@@ -172,17 +172,27 @@ div {
   align-items: center;
   line-height: 1.85rem;
 
+  // icons
+  i {
+    font-size: 1rem;
+    color: var(--lang-badge-muted-color);
+
+    &.small {
+      font-size: 70%;
+      margin-left: 0.25rem;
+    }
+  }
+
   // the label block
   span {
-    color: var(--lang-badge-color);
     padding-left: 0.6rem;
-    font-size: 0.85rem;
 
     &:after {
       content: attr(text-data);
       margin-left: 0.3rem;
+      font-size: 0.85rem;
       font-weight: 600;
-
+      color: var(--lang-badge-color);
     }
 
     @at-root [file] #{&} > i { // center the file icon
@@ -200,13 +210,14 @@ div {
     padding: 0;
     width: 1.95rem;
     background-color: inherit;
-    color: var(--highlight-lineno-color);
 
     @extend %cursor-pointer;
 
     &[timeout] {
-      color: var(--clipboard-checked-color);
       border-color: var(--clipboard-checked-color);
+      i {
+        color: var(--clipboard-checked-color);
+      }
     }
 
     &:not([timeout]):hover {
@@ -218,10 +229,6 @@ div {
 
     &:focus {
       outline: none;
-    }
-
-    i {
-      font-size: 0.9rem;
     }
 
   }
