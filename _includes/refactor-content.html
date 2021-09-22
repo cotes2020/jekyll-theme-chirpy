@@ -121,7 +121,8 @@
         {% assign _text = _left | split: 'file="' | last | split: '"' | first %}
         {% assign _label_icon = 'far fa-file' %}
       {% else %}
-        {% assign _text = _left | split: 'language-' | last | split: ' ' | first %}
+        {% assign _lang = _left | split: 'language-' | last | split: ' ' | first %}
+        {% capture _text %}{% include language-alias.html language=_lang %}{% endcapture %}
         {% assign _label_icon = 'fas fa-code small' %}
       {% endif %}
 
