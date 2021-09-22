@@ -172,7 +172,7 @@ div {
   align-items: center;
   line-height: 1.85rem;
 
-  // the label
+  // the label block
   span {
     color: var(--lang-badge-color);
     padding-left: 0.6rem;
@@ -183,13 +183,7 @@ div {
       margin-left: 0.3rem;
       font-weight: 600;
 
-      // language
-      @at-root .highlighter-rouge:not([file]) #{&} {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-      }
-
-    } // :after
+    }
 
     @at-root [file] #{&} > i { // center the file icon
       position: relative;
