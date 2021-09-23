@@ -1099,8 +1099,8 @@ $sidebar-display: "sidebar-display";
   height: $size;
   border-radius: 50%;
   border: 1px solid var(--btn-backtotop-border-color);
-  transition: 0.2s ease-out;
-  -webkit-transition: 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+  -webkit-transition: transform 0.2s ease-out;
 
   i {
     line-height: $size;
