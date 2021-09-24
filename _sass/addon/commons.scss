@@ -649,9 +649,6 @@ $sidebar-display: "sidebar-display";
 
   #avatar {
     > a {
-      &:hover {
-        border-color: white;
-      }
       display: block;
       width: 6rem;
       height: 6rem;
@@ -662,6 +659,10 @@ $sidebar-display: "sidebar-display";
       -webkit-transition: border-color 0.35s ease-in-out;
       -moz-transition: border-color 0.35s ease-in-out;
       transition: border-color 0.35s ease-in-out;
+
+      &:hover {
+        border-color: white;
+      }
     }
 
     img {
@@ -799,11 +800,6 @@ $sidebar-display: "sidebar-display";
     a {
       @extend %icon;
       @extend %clickable-transition;
-    }
-
-    i {
-      line-height: 1.75rem; // default line-height in body
-      vertical-align: middle;
     }
 
     i {
