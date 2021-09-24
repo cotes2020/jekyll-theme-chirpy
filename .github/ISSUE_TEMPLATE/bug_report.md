@@ -36,6 +36,7 @@ Steps to reproduce the behavior:
 - Gem version: <!-- by running: `gem -v`-->
 - Bundler version: <!-- by running: `bundle -v`-->
 - Jekyll version: <!-- by running: `bundle list | grep " jekyll "` -->
+- Theme version: <!-- by running: `gem list | grep jekyll-theme-chirpy` -->
 
 ### Desktop
 <!-- If necessary, uncomment and fill in the following list:
