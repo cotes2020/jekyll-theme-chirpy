@@ -806,6 +806,11 @@ $sidebar-display: "sidebar-display";
       vertical-align: middle;
     }
 
+    i {
+      line-height: 1.75rem; // default line-height in body
+      vertical-align: middle;
+    }
+
     #mode-toggle-wrapper {
       @extend %icon;
 
@@ -1081,18 +1086,27 @@ $sidebar-display: "sidebar-display";
 /* --- button back-to-top --- */
 
 #back-to-top {
+  $size: 2.7em;
+
   display: none;
   z-index: 1;
   cursor: pointer;
   position: fixed;
   background: var(--button-bg);
   color: var(--btn-backtotop-color);
-  height: 2.6em;
-  width: 2.7em;
+  padding: 0;
+  width: $size;
+  height: $size;
   border-radius: 50%;
   border: 1px solid var(--btn-backtotop-border-color);
-  transition: 0.2s ease-out;
-  -webkit-transition: 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+  -webkit-transition: transform 0.2s ease-out;
+
+  i {
+    line-height: $size;
+    position: relative;
+    bottom: 2px;
+  }
 }
 
 #back-to-top:hover {

@@ -65,8 +65,11 @@
   --tag-hover: rgb(222, 226, 230);
   --tb-odd-bg: #fbfcfd;
   --tb-border-color: #eaeaea;
-  --categories-hover-bg: var(--btn-border-color);
   --dash-color: silver;
+
+  /* Categories */
+  --categories-hover-bg: var(--btn-border-color);
+  --categories-icon-hover-color: darkslategray;
 
   /* Archive */
   --timeline-color: rgba(0, 0, 0, 0.075);
