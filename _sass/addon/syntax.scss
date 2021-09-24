@@ -187,7 +187,7 @@ div {
   span {
     padding-left: 0.6rem;
 
-    &:after {
+    &::after {
       content: attr(text-data);
       margin-left: 0.3rem;
       font-size: 0.85rem;
@@ -201,7 +201,6 @@ div {
     }
 
   }
-
 
   // clipboard
   button {
