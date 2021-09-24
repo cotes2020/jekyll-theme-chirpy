@@ -41,7 +41,7 @@ $(function() {
   });
 
   $(btnSelector).tooltip({
-    trigger: 'click',
+    trigger: 'hover',
     placement: 'left'
   });
 
@@ -53,11 +53,12 @@ $(function() {
   const ICON_DEFAULT = getIcon(btnSelector);
 
   function showTooltip(btn) {
-    $(btn).tooltip('show');
+    const succeedTitle = $(btn).attr('title-succeed');
+    $(btn).attr('data-original-title', succeedTitle).tooltip('show');
   }
 
   function hideTooltip(btn) {
-    $(btn).tooltip('hide');
+    $(btn).tooltip('hide').removeAttr('data-original-title');
   }
 
   function setSuccessIcon(btn) {
