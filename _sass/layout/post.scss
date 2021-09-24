@@ -143,11 +143,21 @@
   line-height: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  font-size: 0.8rem;
 
   &.nav-link:not(.active) {
     color: inherit;
   }
 }
+
+nav[data-toggle=toc] {
+  .nav {
+    .nav > li > a.active {
+      font-weight: 600 !important;
+    }
+  }
+}
+
 
 /* --- Related Posts --- */
 

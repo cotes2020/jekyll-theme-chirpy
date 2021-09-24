@@ -28,13 +28,17 @@
   --checkbox-checked-color: #07a8f7;
 
   /* Sidebar */
-  --sidebar-bg: radial-gradient(circle, rgba(42, 30, 107, 1) 0%, rgba(35, 37, 46, 1) 100%);
-  --nav-cursor-color: #fcfcfc;
+  --sidebar-bg: #eeeeee;
+  --sidebar-muted-color: #a2a19f;
+  --sidebar-active-color: #424242;
+  --nav-cursor-color: #757575;
+  --sidebar-btn-bg: white;
 
   /* Topbar */
   --topbar-text-color: rgb(78, 78, 78);
   --topbar-wrapper-bg: white;
-  --search-wrapper-bg: #f5f5f5;
+  --search-wrapper-bg: rgb(245 245 245 / 50%);
+  --search-wrapper-border-color: rgb(245 245 245);
   --search-tag-bg: #f8f9fa;
   --search-icon-color: #c2c6cc;
   --input-focus-border-color: var(--btn-border-color);
@@ -42,12 +46,9 @@
   /* Home page */
   --post-list-text-color: dimgray;
   --btn-patinator-text-color: #555555;
-  --btn-paginator-hover-color: #e9ecef;
-  --btn-active-bg: #2a408e;
-  --btn-active-border-color: #007bff;
-  --btn-text-color: #f8f8f8;
-  --btn-paginator-border-color: #f1f1f1;
-  --btn-paginator-shadow: #4b92d2;
+  --btn-paginator-hover-color: var(--sidebar-bg);
+  --btn-paginator-border-color: var(--sidebar-bg);
+  --btn-text-color: #676666;
   --pin-bg: #f5f5f5;
   --pin-color: #999fa4;
 
