@@ -2,7 +2,7 @@
 title: Java - Interfaces in Java
 date: 2020-09-12 11:11:11 -0400
 description:
-categories: [1CodeNote, JavaNote]
+categories: [05-CodeNote, JavaNote]
 tags: [Java]
 toc: true
 ---

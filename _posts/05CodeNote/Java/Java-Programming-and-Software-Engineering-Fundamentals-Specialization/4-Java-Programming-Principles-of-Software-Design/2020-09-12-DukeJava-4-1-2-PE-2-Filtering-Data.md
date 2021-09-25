@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-1-2 Programming Exercise 2 - Filtering Data
 date: 2020-09-12 11:11:11 -0400
 description:
-categories: [1CodeNote, JavaNote]
+categories: [05-CodeNote, JavaNote]
 tags: [Java]
 toc: true
 ---

@@ -145,7 +145,7 @@ _class_ EC2.Paginator.DescribeByoipCidrs
 
 paginator = client.get_paginator('describe_byoip_cidrs')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_byoip_cidrs()](#EC2.Client.describe_byoip_cidrs "EC2.Client.describe_byoip_cidrs").
 
@@ -235,7 +235,7 @@ _class_ EC2.Paginator.DescribeCapacityReservations
 
 paginator = client.get_paginator('describe_capacity_reservations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_capacity_reservations()](#EC2.Client.describe_capacity_reservations "EC2.Client.describe_capacity_reservations").
 
@@ -492,7 +492,7 @@ _class_ EC2.Paginator.DescribeCarrierGateways
 
 paginator = client.get_paginator('describe_carrier_gateways')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_carrier_gateways()](#EC2.Client.describe_carrier_gateways "EC2.Client.describe_carrier_gateways").
 
@@ -659,7 +659,7 @@ _class_ EC2.Paginator.DescribeClassicLinkInstances
 
 paginator = client.get_paginator('describe_classic_link_instances')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_classic_link_instances()](#EC2.Client.describe_classic_link_instances "EC2.Client.describe_classic_link_instances").
 
@@ -837,7 +837,7 @@ _class_ EC2.Paginator.DescribeClientVpnAuthorizationRules
 
 paginator = client.get_paginator('describe_client_vpn_authorization_rules')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_client_vpn_authorization_rules()](#EC2.Client.describe_client_vpn_authorization_rules "EC2.Client.describe_client_vpn_authorization_rules").
 
@@ -995,7 +995,7 @@ _class_ EC2.Paginator.DescribeClientVpnConnections
 
 paginator = client.get_paginator('describe_client_vpn_connections')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_client_vpn_connections()](#EC2.Client.describe_client_vpn_connections "EC2.Client.describe_client_vpn_connections").
 
@@ -1195,7 +1195,7 @@ _class_ EC2.Paginator.DescribeClientVpnEndpoints
 
 paginator = client.get_paginator('describe_client_vpn_endpoints')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_client_vpn_endpoints()](#EC2.Client.describe_client_vpn_endpoints "EC2.Client.describe_client_vpn_endpoints").
 
@@ -1571,7 +1571,7 @@ _class_ EC2.Paginator.DescribeClientVpnRoutes
 
 paginator = client.get_paginator('describe_client_vpn_routes')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_client_vpn_routes()](#EC2.Client.describe_client_vpn_routes "EC2.Client.describe_client_vpn_routes").
 
@@ -1734,7 +1734,7 @@ _class_ EC2.Paginator.DescribeClientVpnTargetNetworks
 
 paginator = client.get_paginator('describe_client_vpn_target_networks')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_client_vpn_target_networks()](#EC2.Client.describe_client_vpn_target_networks "EC2.Client.describe_client_vpn_target_networks").
 
@@ -1903,7 +1903,7 @@ _class_ EC2.Paginator.DescribeCoipPools
 
 paginator = client.get_paginator('describe_coip_pools')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_coip_pools()](#EC2.Client.describe_coip_pools "EC2.Client.describe_coip_pools").
 
@@ -2069,7 +2069,7 @@ _class_ EC2.Paginator.DescribeDhcpOptions
 
 paginator = client.get_paginator('describe_dhcp_options')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_dhcp_options()](#EC2.Client.describe_dhcp_options "EC2.Client.describe_dhcp_options").
 
@@ -2262,7 +2262,7 @@ _class_ EC2.Paginator.DescribeEgressOnlyInternetGateways
 
 paginator = client.get_paginator('describe_egress_only_internet_gateways')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_egress_only_internet_gateways()](#EC2.Client.describe_egress_only_internet_gateways "EC2.Client.describe_egress_only_internet_gateways").
 
@@ -2432,7 +2432,7 @@ _class_ EC2.Paginator.DescribeExportImageTasks
 
 paginator = client.get_paginator('describe_export_image_tasks')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_export_image_tasks()](#EC2.Client.describe_export_image_tasks "EC2.Client.describe_export_image_tasks").
 
@@ -2618,7 +2618,7 @@ _class_ EC2.Paginator.DescribeFastSnapshotRestores
 
 paginator = client.get_paginator('describe_fast_snapshot_restores')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_fast_snapshot_restores()](#EC2.Client.describe_fast_snapshot_restores "EC2.Client.describe_fast_snapshot_restores").
 
@@ -2786,7 +2786,7 @@ _class_ EC2.Paginator.DescribeFleets
 
 paginator = client.get_paginator('describe_fleets')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_fleets()](#EC2.Client.describe_fleets "EC2.Client.describe_fleets").
 
@@ -3446,7 +3446,7 @@ _class_ EC2.Paginator.DescribeFlowLogs
 
 paginator = client.get_paginator('describe_flow_logs')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_flow_logs()](#EC2.Client.describe_flow_logs "EC2.Client.describe_flow_logs").
 
@@ -3666,7 +3666,7 @@ _class_ EC2.Paginator.DescribeFpgaImages
 
 paginator = client.get_paginator('describe_fpga_images')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_fpga_images()](#EC2.Client.describe_fpga_images "EC2.Client.describe_fpga_images").
 
@@ -3949,7 +3949,7 @@ _class_ EC2.Paginator.DescribeHostReservationOfferings
 
 paginator = client.get_paginator('describe_host_reservation_offerings')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_host_reservation_offerings()](#EC2.Client.describe_host_reservation_offerings "EC2.Client.describe_host_reservation_offerings").
 
@@ -4096,7 +4096,7 @@ _class_ EC2.Paginator.DescribeHostReservations
 
 paginator = client.get_paginator('describe_host_reservations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_host_reservations()](#EC2.Client.describe_host_reservations "EC2.Client.describe_host_reservations").
 
@@ -4308,7 +4308,7 @@ _class_ EC2.Paginator.DescribeHosts
 
 paginator = client.get_paginator('describe_hosts')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_hosts()](#EC2.Client.describe_hosts "EC2.Client.describe_hosts").
 
@@ -4615,7 +4615,7 @@ _class_ EC2.Paginator.DescribeIamInstanceProfileAssociations
 
 paginator = client.get_paginator('describe_iam_instance_profile_associations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_iam_instance_profile_associations()](#EC2.Client.describe_iam_instance_profile_associations "EC2.Client.describe_iam_instance_profile_associations").
 
@@ -4766,7 +4766,7 @@ _class_ EC2.Paginator.DescribeImportImageTasks
 
 paginator = client.get_paginator('describe_import_image_tasks')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_import_image_tasks()](#EC2.Client.describe_import_image_tasks "EC2.Client.describe_import_image_tasks").
 
@@ -5060,7 +5060,7 @@ _class_ EC2.Paginator.DescribeImportSnapshotTasks
 
 paginator = client.get_paginator('describe_import_snapshot_tasks')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_import_snapshot_tasks()](#EC2.Client.describe_import_snapshot_tasks "EC2.Client.describe_import_snapshot_tasks").
 
@@ -5282,7 +5282,7 @@ _class_ EC2.Paginator.DescribeInstanceCreditSpecifications
 
 paginator = client.get_paginator('describe_instance_credit_specifications')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_instance_credit_specifications()](#EC2.Client.describe_instance_credit_specifications "EC2.Client.describe_instance_credit_specifications").
 
@@ -5412,7 +5412,7 @@ _class_ EC2.Paginator.DescribeInstanceStatus
 
 paginator = client.get_paginator('describe_instance_status')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_instance_status()](#EC2.Client.describe_instance_status "EC2.Client.describe_instance_status").
 
@@ -5717,7 +5717,7 @@ _class_ EC2.Paginator.DescribeInstanceTypeOfferings
 
 paginator = client.get_paginator('describe_instance_type_offerings')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_instance_type_offerings()](#EC2.Client.describe_instance_type_offerings "EC2.Client.describe_instance_type_offerings").
 
@@ -5843,7 +5843,7 @@ _class_ EC2.Paginator.DescribeInstanceTypes
 
 paginator = client.get_paginator('describe_instance_types')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_instance_types()](#EC2.Client.describe_instance_types "EC2.Client.describe_instance_types").
 
@@ -6463,7 +6463,7 @@ _class_ EC2.Paginator.DescribeInstances
 
 paginator = client.get_paginator('describe_instances')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_instances()](#EC2.Client.describe_instances "EC2.Client.describe_instances").
 
@@ -7544,7 +7544,7 @@ _class_ EC2.Paginator.DescribeInternetGateways
 
 paginator = client.get_paginator('describe_internet_gateways')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_internet_gateways()](#EC2.Client.describe_internet_gateways "EC2.Client.describe_internet_gateways").
 
@@ -7725,7 +7725,7 @@ _class_ EC2.Paginator.DescribeIpv6Pools
 
 paginator = client.get_paginator('describe_ipv6_pools')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_ipv6_pools()](#EC2.Client.describe_ipv6_pools "EC2.Client.describe_ipv6_pools").
 
@@ -7895,7 +7895,7 @@ _class_ EC2.Paginator.DescribeLaunchTemplateVersions
 
 paginator = client.get_paginator('describe_launch_template_versions')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_launch_template_versions()](#EC2.Client.describe_launch_template_versions "EC2.Client.describe_launch_template_versions").
 
@@ -8662,7 +8662,7 @@ _class_ EC2.Paginator.DescribeLaunchTemplates
 
 paginator = client.get_paginator('describe_launch_templates')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_launch_templates()](#EC2.Client.describe_launch_templates "EC2.Client.describe_launch_templates").
 
@@ -8845,7 +8845,7 @@ _class_ EC2.Paginator.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssocia
 
 paginator = client.get_paginator('describe_local_gateway_route_table_virtual_interface_group_associations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_local_gateway_route_table_virtual_interface_group_associations()](#EC2.Client.describe_local_gateway_route_table_virtual_interface_group_associations "EC2.Client.describe_local_gateway_route_table_virtual_interface_group_associations").
 
@@ -9026,7 +9026,7 @@ _class_ EC2.Paginator.DescribeLocalGatewayRouteTableVpcAssociationsthis definiti
 
 paginator = client.get_paginator('describe_local_gateway_route_table_vpc_associations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_local_gateway_route_table_vpc_associations()](#EC2.Client.describe_local_gateway_route_table_vpc_associations "EC2.Client.describe_local_gateway_route_table_vpc_associations").
 
@@ -9207,7 +9207,7 @@ _class_ EC2.Paginator.DescribeLocalGatewayRouteTables
 
 paginator = client.get_paginator('describe_local_gateway_route_tables')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_local_gateway_route_tables()](#EC2.Client.describe_local_gateway_route_tables "EC2.Client.describe_local_gateway_route_tables").
 
@@ -9382,7 +9382,7 @@ _class_ EC2.Paginator.DescribeLocalGatewayVirtualInterfaceGroupsdefinition")
 
 paginator = client.get_paginator('describe_local_gateway_virtual_interface_groups')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_local_gateway_virtual_interface_groups()](#EC2.Client.describe_local_gateway_virtual_interface_groups "EC2.Client.describe_local_gateway_virtual_interface_groups").
 
@@ -9549,7 +9549,7 @@ _class_ EC2.Paginator.DescribeLocalGatewayVirtualInterfaces
 
 paginator = client.get_paginator('describe_local_gateway_virtual_interfaces')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_local_gateway_virtual_interfaces()](#EC2.Client.describe_local_gateway_virtual_interfaces "EC2.Client.describe_local_gateway_virtual_interfaces").
 
@@ -9729,7 +9729,7 @@ _class_ EC2.Paginator.DescribeLocalGateways
 
 paginator = client.get_paginator('describe_local_gateways')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_local_gateways()](#EC2.Client.describe_local_gateways "EC2.Client.describe_local_gateways").
 
@@ -9896,7 +9896,7 @@ _class_ EC2.Paginator.DescribeManagedPrefixLists
 
 paginator = client.get_paginator('describe_managed_prefix_lists')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_managed_prefix_lists()](#EC2.Client.describe_managed_prefix_lists "EC2.Client.describe_managed_prefix_lists").
 
@@ -10084,7 +10084,7 @@ _class_ EC2.Paginator.DescribeMovingAddresses
 
 paginator = client.get_paginator('describe_moving_addresses')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_moving_addresses()](#EC2.Client.describe_moving_addresses "EC2.Client.describe_moving_addresses").
 
@@ -10210,7 +10210,7 @@ _class_ EC2.Paginator.DescribeNatGateways
 
 paginator = client.get_paginator('describe_nat_gateways')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_nat_gateways()](#EC2.Client.describe_nat_gateways "EC2.Client.describe_nat_gateways").
 
@@ -10471,7 +10471,7 @@ _class_ EC2.Paginator.DescribeNetworkAcls
 
 paginator = client.get_paginator('describe_network_acls')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_network_acls()](#EC2.Client.describe_network_acls "EC2.Client.describe_network_acls").
 
@@ -10753,7 +10753,7 @@ _class_ EC2.Paginator.DescribeNetworkInsightsAnalyses
 
 paginator = client.get_paginator('describe_network_insights_analyses')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_network_insights_analyses()](#EC2.Client.describe_network_insights_analyses "EC2.Client.describe_network_insights_analyses").
 
@@ -12493,7 +12493,7 @@ _class_ EC2.Paginator.DescribeNetworkInsightsPaths
 
 paginator = client.get_paginator('describe_network_insights_paths')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_network_insights_paths()](#EC2.Client.describe_network_insights_paths "EC2.Client.describe_network_insights_paths").
 
@@ -12684,7 +12684,7 @@ _class_ EC2.Paginator.DescribeNetworkInterfacePermissions
 
 paginator = client.get_paginator('describe_network_interface_permissions')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_network_interface_permissions()](#EC2.Client.describe_network_interface_permissions "EC2.Client.describe_network_interface_permissions").
 
@@ -12845,7 +12845,7 @@ _class_ EC2.Paginator.DescribeNetworkInterfaces
 
 paginator = client.get_paginator('describe_network_interfaces')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_network_interfaces()](#EC2.Client.describe_network_interfaces "EC2.Client.describe_network_interfaces").
 
@@ -13297,7 +13297,7 @@ _class_ EC2.Paginator.DescribePrefixLists
 
 paginator = client.get_paginator('describe_prefix_lists')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_prefix_lists()](#EC2.Client.describe_prefix_lists "EC2.Client.describe_prefix_lists").
 
@@ -13431,7 +13431,7 @@ _class_ EC2.Paginator.DescribePrincipalIdFormat
 
 paginator = client.get_paginator('describe_principal_id_format')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_principal_id_format()](#EC2.Client.describe_principal_id_format "EC2.Client.describe_principal_id_format").
 
@@ -13541,7 +13541,7 @@ _class_ EC2.Paginator.DescribePublicIpv4Pools
 
 paginator = client.get_paginator('describe_public_ipv4_pools')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_public_ipv4_pools()](#EC2.Client.describe_public_ipv4_pools "EC2.Client.describe_public_ipv4_pools").
 
@@ -13739,7 +13739,7 @@ _class_ EC2.Paginator.DescribeReservedInstancesModifications
 
 paginator = client.get_paginator('describe_reserved_instances_modifications')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_reserved_instances_modifications()](#EC2.Client.describe_reserved_instances_modifications "EC2.Client.describe_reserved_instances_modifications").
 
@@ -13965,7 +13965,7 @@ _class_ EC2.Paginator.DescribeReservedInstancesOfferings
 
 paginator = client.get_paginator('describe_reserved_instances_offerings')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_reserved_instances_offerings()](#EC2.Client.describe_reserved_instances_offerings "EC2.Client.describe_reserved_instances_offerings").
 
@@ -14242,7 +14242,7 @@ _class_ EC2.Paginator.DescribeRouteTables
 
 paginator = client.get_paginator('describe_route_tables')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_route_tables()](#EC2.Client.describe_route_tables "EC2.Client.describe_route_tables").
 
@@ -14582,7 +14582,7 @@ _class_ EC2.Paginator.DescribeScheduledInstanceAvailability
 
 paginator = client.get_paginator('describe_scheduled_instance_availability')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_scheduled_instance_availability()](#EC2.Client.describe_scheduled_instance_availability "EC2.Client.describe_scheduled_instance_availability").
 
@@ -14846,7 +14846,7 @@ _class_ EC2.Paginator.DescribeScheduledInstances
 
 paginator = client.get_paginator('describe_scheduled_instances')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_scheduled_instances()](#EC2.Client.describe_scheduled_instances "EC2.Client.describe_scheduled_instances").
 
@@ -15086,7 +15086,7 @@ _class_ EC2.Paginator.DescribeSecurityGroups
 
 paginator = client.get_paginator('describe_security_groups')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_security_groups()](#EC2.Client.describe_security_groups "EC2.Client.describe_security_groups").
 
@@ -15601,7 +15601,7 @@ _class_ EC2.Paginator.DescribeSnapshots
 
 paginator = client.get_paginator('describe_snapshots')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_snapshots()](#EC2.Client.describe_snapshots "EC2.Client.describe_snapshots").
 
@@ -15837,7 +15837,7 @@ _class_ EC2.Paginator.DescribeSpotFleetInstances
 
 paginator = client.get_paginator('describe_spot_fleet_instances')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_spot_fleet_instances()](#EC2.Client.describe_spot_fleet_instances "EC2.Client.describe_spot_fleet_instances").
 
@@ -15940,7 +15940,7 @@ _class_ EC2.Paginator.DescribeSpotFleetRequests
 
 paginator = client.get_paginator('describe_spot_fleet_requests')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_spot_fleet_requests()](#EC2.Client.describe_spot_fleet_requests "EC2.Client.describe_spot_fleet_requests").
 
@@ -16802,7 +16802,7 @@ _class_ EC2.Paginator.DescribeSpotInstanceRequests
 
 paginator = client.get_paginator('describe_spot_instance_requests')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_spot_instance_requests()](#EC2.Client.describe_spot_instance_requests "EC2.Client.describe_spot_instance_requests").
 
@@ -17460,7 +17460,7 @@ _class_ EC2.Paginator.DescribeSpotPriceHistory
 
 paginator = client.get_paginator('describe_spot_price_history')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_spot_price_history()](#EC2.Client.describe_spot_price_history "EC2.Client.describe_spot_price_history").
 
@@ -17620,7 +17620,7 @@ _class_ EC2.Paginator.DescribeStaleSecurityGroups
 
 paginator = client.get_paginator('describe_stale_security_groups')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_stale_security_groups()](#EC2.Client.describe_stale_security_groups "EC2.Client.describe_stale_security_groups").
 
@@ -17912,7 +17912,7 @@ _class_ EC2.Paginator.DescribeSubnets
 
 paginator = client.get_paginator('describe_subnets')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_subnets()](#EC2.Client.describe_subnets "EC2.Client.describe_subnets").
 
@@ -18183,7 +18183,7 @@ _class_ EC2.Paginator.DescribeTags
 
 paginator = client.get_paginator('describe_tags')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_tags()](#EC2.Client.describe_tags "EC2.Client.describe_tags").
 
@@ -18314,7 +18314,7 @@ _class_ EC2.Paginator.DescribeTrafficMirrorFilters
 
 paginator = client.get_paginator('describe_traffic_mirror_filters')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_traffic_mirror_filters()](#EC2.Client.describe_traffic_mirror_filters "EC2.Client.describe_traffic_mirror_filters").
 
@@ -18653,7 +18653,7 @@ _class_ EC2.Paginator.DescribeTrafficMirrorSessions
 
 paginator = client.get_paginator('describe_traffic_mirror_sessions')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_traffic_mirror_sessions()](#EC2.Client.describe_traffic_mirror_sessions "EC2.Client.describe_traffic_mirror_sessions").
 
@@ -18850,7 +18850,7 @@ _class_ EC2.Paginator.DescribeTrafficMirrorTargets
 
 paginator = client.get_paginator('describe_traffic_mirror_targets')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_traffic_mirror_targets()](#EC2.Client.describe_traffic_mirror_targets "EC2.Client.describe_traffic_mirror_targets").
 
@@ -19026,7 +19026,7 @@ _class_ EC2.Paginator.DescribeTransitGatewayAttachments
 
 paginator = client.get_paginator('describe_transit_gateway_attachments')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_transit_gateway_attachments()](#EC2.Client.describe_transit_gateway_attachments "EC2.Client.describe_transit_gateway_attachments").
 
@@ -19232,7 +19232,7 @@ _class_ EC2.Paginator.DescribeTransitGatewayConnectPeers
 
 paginator = client.get_paginator('describe_transit_gateway_connect_peers')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_transit_gateway_connect_peers()](#EC2.Client.describe_transit_gateway_connect_peers "EC2.Client.describe_transit_gateway_connect_peers").
 
@@ -19462,7 +19462,7 @@ _class_ EC2.Paginator.DescribeTransitGatewayConnects
 
 paginator = client.get_paginator('describe_transit_gateway_connects')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_transit_gateway_connects()](#EC2.Client.describe_transit_gateway_connects "EC2.Client.describe_transit_gateway_connects").
 
@@ -19644,7 +19644,7 @@ _class_ EC2.Paginator.DescribeTransitGatewayMulticastDomains
 
 paginator = client.get_paginator('describe_transit_gateway_multicast_domains')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_transit_gateway_multicast_domains()](#EC2.Client.describe_transit_gateway_multicast_domains "EC2.Client.describe_transit_gateway_multicast_domains").
 
@@ -19839,7 +19839,7 @@ _class_ EC2.Paginator.DescribeTransitGatewayPeeringAttachmentsdefinition")
 
 paginator = client.get_paginator('describe_transit_gateway_peering_attachments')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_transit_gateway_peering_attachments()](#EC2.Client.describe_transit_gateway_peering_attachments "EC2.Client.describe_transit_gateway_peering_attachments").
 
@@ -20060,7 +20060,7 @@ _class_ EC2.Paginator.DescribeTransitGatewayRouteTables
 
 paginator = client.get_paginator('describe_transit_gateway_route_tables')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_transit_gateway_route_tables()](#EC2.Client.describe_transit_gateway_route_tables "EC2.Client.describe_transit_gateway_route_tables").
 
@@ -20236,7 +20236,7 @@ _class_ EC2.Paginator.DescribeTransitGatewayVpcAttachments
 
 paginator = client.get_paginator('describe_transit_gateway_vpc_attachments')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_transit_gateway_vpc_attachments()](#EC2.Client.describe_transit_gateway_vpc_attachments "EC2.Client.describe_transit_gateway_vpc_attachments").
 
@@ -20440,7 +20440,7 @@ _class_ EC2.Paginator.DescribeTransitGateways
 
 paginator = client.get_paginator('describe_transit_gateways')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_transit_gateways()](#EC2.Client.describe_transit_gateways "EC2.Client.describe_transit_gateways").
 
@@ -20681,7 +20681,7 @@ _class_ EC2.Paginator.DescribeVolumeStatus
 
 paginator = client.get_paginator('describe_volume_status')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_volume_status()](#EC2.Client.describe_volume_status "EC2.Client.describe_volume_status").
 
@@ -20953,7 +20953,7 @@ _class_ EC2.Paginator.DescribeVolumes
 
 paginator = client.get_paginator('describe_volumes')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_volumes()](#EC2.Client.describe_volumes "EC2.Client.describe_volumes").
 
@@ -21223,7 +21223,7 @@ _class_ EC2.Paginator.DescribeVolumesModifications
 
 paginator = client.get_paginator('describe_volumes_modifications')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_volumes_modifications()](#EC2.Client.describe_volumes_modifications "EC2.Client.describe_volumes_modifications").
 
@@ -21431,7 +21431,7 @@ _class_ EC2.Paginator.DescribeVpcClassicLinkDnsSupport
 
 paginator = client.get_paginator('describe_vpc_classic_link_dns_support')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_vpc_classic_link_dns_support()](#EC2.Client.describe_vpc_classic_link_dns_support "EC2.Client.describe_vpc_classic_link_dns_support").
 
@@ -21516,7 +21516,7 @@ _class_ EC2.Paginator.DescribeVpcEndpointConnectionNotificationsdefinition")
 
 paginator = client.get_paginator('describe_vpc_endpoint_connection_notifications')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_vpc_endpoint_connection_notifications()](#EC2.Client.describe_vpc_endpoint_connection_notifications "EC2.Client.describe_vpc_endpoint_connection_notifications").
 
@@ -21669,7 +21669,7 @@ _class_ EC2.Paginator.DescribeVpcEndpointConnections
 
 paginator = client.get_paginator('describe_vpc_endpoint_connections')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_vpc_endpoint_connections()](#EC2.Client.describe_vpc_endpoint_connections "EC2.Client.describe_vpc_endpoint_connections").
 
@@ -21843,7 +21843,7 @@ _class_ EC2.Paginator.DescribeVpcEndpointServiceConfigurationsdefinition")
 
 paginator = client.get_paginator('describe_vpc_endpoint_service_configurations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_vpc_endpoint_service_configurations()](#EC2.Client.describe_vpc_endpoint_service_configurations "EC2.Client.describe_vpc_endpoint_service_configurations").
 
@@ -22096,7 +22096,7 @@ _class_ EC2.Paginator.DescribeVpcEndpointServicePermissions
 
 paginator = client.get_paginator('describe_vpc_endpoint_service_permissions')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_vpc_endpoint_service_permissions()](#EC2.Client.describe_vpc_endpoint_service_permissions "EC2.Client.describe_vpc_endpoint_service_permissions").
 
@@ -22222,7 +22222,7 @@ _class_ EC2.Paginator.DescribeVpcEndpointServices
 
 paginator = client.get_paginator('describe_vpc_endpoint_services')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_vpc_endpoint_services()](#EC2.Client.describe_vpc_endpoint_services "EC2.Client.describe_vpc_endpoint_services").
 
@@ -22468,7 +22468,7 @@ _class_ EC2.Paginator.DescribeVpcEndpoints
 
 paginator = client.get_paginator('describe_vpc_endpoints')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_vpc_endpoints()](#EC2.Client.describe_vpc_endpoints "EC2.Client.describe_vpc_endpoints").
 
@@ -22752,7 +22752,7 @@ _class_ EC2.Paginator.DescribeVpcPeeringConnections
 
 paginator = client.get_paginator('describe_vpc_peering_connections')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_vpc_peering_connections()](#EC2.Client.describe_vpc_peering_connections "EC2.Client.describe_vpc_peering_connections").
 
@@ -23095,7 +23095,7 @@ _class_ EC2.Paginator.DescribeVpcs
 
 paginator = client.get_paginator('describe_vpcs')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.describe_vpcs()](#EC2.Client.describe_vpcs "EC2.Client.describe_vpcs").
 
@@ -23374,7 +23374,7 @@ _class_ EC2.Paginator.GetAssociatedIpv6PoolCidrs
 
 paginator = client.get_paginator('get_associated_ipv6_pool_cidrs')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.get_associated_ipv6_pool_cidrs()](#EC2.Client.get_associated_ipv6_pool_cidrs "EC2.Client.get_associated_ipv6_pool_cidrs").
 
@@ -23461,7 +23461,7 @@ _class_ EC2.Paginator.GetGroupsForCapacityReservation
 
 paginator = client.get_paginator('get_groups_for_capacity_reservation')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.get_groups_for_capacity_reservation()](#EC2.Client.get_groups_for_capacity_reservation "EC2.Client.get_groups_for_capacity_reservation").
 
@@ -23547,7 +23547,7 @@ _class_ EC2.Paginator.GetManagedPrefixListAssociations
 
 paginator = client.get_paginator('get_managed_prefix_list_associations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.get_managed_prefix_list_associations()](#EC2.Client.get_managed_prefix_list_associations "EC2.Client.get_managed_prefix_list_associations").
 
@@ -23634,7 +23634,7 @@ _class_ EC2.Paginator.GetManagedPrefixListEntries
 
 paginator = client.get_paginator('get_managed_prefix_list_entries')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.get_managed_prefix_list_entries()](#EC2.Client.get_managed_prefix_list_entries "EC2.Client.get_managed_prefix_list_entries").
 
@@ -23723,7 +23723,7 @@ _class_ EC2.Paginator.GetTransitGatewayAttachmentPropagationsdefinition")
 
 paginator = client.get_paginator('get_transit_gateway_attachment_propagations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.get_transit_gateway_attachment_propagations()](#EC2.Client.get_transit_gateway_attachment_propagations "EC2.Client.get_transit_gateway_attachment_propagations").
 
@@ -23848,7 +23848,7 @@ _class_ EC2.Paginator.GetTransitGatewayMulticastDomainAssociationsdefinition")
 
 paginator = client.get_paginator('get_transit_gateway_multicast_domain_associations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.get_transit_gateway_multicast_domain_associations()](#EC2.Client.get_transit_gateway_multicast_domain_associations "EC2.Client.get_transit_gateway_multicast_domain_associations").
 
@@ -23998,7 +23998,7 @@ _class_ EC2.Paginator.GetTransitGatewayPrefixListReferences
 
 paginator = client.get_paginator('get_transit_gateway_prefix_list_references')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.get_transit_gateway_prefix_list_references()](#EC2.Client.get_transit_gateway_prefix_list_references "EC2.Client.get_transit_gateway_prefix_list_references").
 
@@ -24165,7 +24165,7 @@ _class_ EC2.Paginator.GetTransitGatewayRouteTableAssociationsdefinition")
 
 paginator = client.get_paginator('get_transit_gateway_route_table_associations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.get_transit_gateway_route_table_associations()](#EC2.Client.get_transit_gateway_route_table_associations "EC2.Client.get_transit_gateway_route_table_associations").
 
@@ -24302,7 +24302,7 @@ _class_ EC2.Paginator.GetTransitGatewayRouteTablePropagationsdefinition")
 
 paginator = client.get_paginator('get_transit_gateway_route_table_propagations')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.get_transit_gateway_route_table_propagations()](#EC2.Client.get_transit_gateway_route_table_propagations "EC2.Client.get_transit_gateway_route_table_propagations").
 
@@ -24439,7 +24439,7 @@ _class_ EC2.Paginator.SearchLocalGatewayRoutes
 
 paginator = client.get_paginator('search_local_gateway_routes')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.search_local_gateway_routes()](#EC2.Client.search_local_gateway_routes "EC2.Client.search_local_gateway_routes").
 
@@ -24589,7 +24589,7 @@ _class_ EC2.Paginator.SearchTransitGatewayMulticastGroups
 
 paginator = client.get_paginator('search_transit_gateway_multicast_groups')
 
-paginate(_**kwargs_)
+paginate(kwargs_)
 
 Creates an iterator that will paginate through responses from [EC2.Client.search_transit_gateway_multicast_groups()](#EC2.Client.search_transit_gateway_multicast_groups "EC2.Client.search_transit_gateway_multicast_groups").
 

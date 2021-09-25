@@ -2,7 +2,7 @@
 title: Python Crash
 date: 2019-10-11 11:11:11 -0400
 description:
-categories: [1CodeNote, PythonNote]
+categories: [05-CodeNote, PythonNote]
 img: /assets/img/sample/rabbit.png
 tags: [Python]
 ---
@@ -23,6 +23,8 @@ tags: [Python]
   - [Network with PY](#network-with-py)
   - [class](#class)
 - [images](#images)
+  - [ku example](#ku-example)
+    - [filter() function](#filter-function)
 
 ---
 
@@ -552,10 +554,61 @@ for filename in glob.glob('*.txt'):
 ```
 
 
+---
 
 
+## ku example
 
 
+### filter() function
+
+- filter out contents from a given sequence that can be a `list, string or tuple` etc.
+
+`filter(function, iterable)`
+
+Arguments:
+- An iterable sequence to be filtered.
+- a function that accepts an argument and returns bool 
+  - i.e. True or False based on it’s logic.
+
+Returns:
+- A new sequence of filtered contents.
+
+Logic:
+- filter() iterates over all elements in the sequence and for each element it calls the given callback function. 
+- If this function returns False then that element is skipped
+- returned True, elements are added into a new list. 
+- In the end it returns a new list with filtered contents based on the function passed to it as argument.
+
+```py
+def isOfLengthFour(strObj):
+    if len(strObj) == 2:
+        return True
+    else:
+        return False
+
+
+# Filter a list of strings in Python using filter()
+listOfStr = ['hi', 'this' , 'is', 'a', 'very', 'simple', 'string' , 'for', 'us']
+filteredList = list(filter(isOfLengthFour , listOfStr))
+# called isOfLengthFour() for each string element. 
+# filteredList:  ['hi', 'is', 'us']
+
+
+filteredList = list(filter(lambda x : len(x) == 2 , listOfStr))
+# filteredList:  ['hi', 'is', 'us']
+
+
+strObj = 'Hi this is a sample string, a very sample string'
+filteredChars = ''.join((filter(lambda x: x not in ['a', 's'], strObj)))
+# Filtered Characters  :  Hi thi i  mple tring,  very mple tring
+
+
+array1 = [1,3,4,5,21,33,45,66,77,88,99,5,3,32,55,66,77,22,3,4,5]
+array2 = [5,3,66]
+filteredArray = list(filter(lambda x : x not in array2, array1))
+# Filtered Array  :  [1, 4, 21, 33, 45, 77, 88, 99, 32, 55, 77, 22, 4]
+```
 
 
 

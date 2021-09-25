@@ -2,7 +2,7 @@
 title: Java - DukeJava 4-2 Step Two Simple recommendations
 date: 2020-09-14 11:11:11 -0400
 description:
-categories: [1CodeNote, JavaNote]
+categories: [05-CodeNote, JavaNote]
 tags: [Java]
 toc: true
 ---

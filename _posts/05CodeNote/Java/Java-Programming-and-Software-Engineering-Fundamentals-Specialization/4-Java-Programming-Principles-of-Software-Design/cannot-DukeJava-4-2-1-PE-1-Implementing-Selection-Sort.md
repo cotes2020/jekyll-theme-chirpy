@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-2-1 Programming Exercise 1 Implementing Selection Sort
 date: 2020-09-13 11:11:11 -0400
 description:
-categories: [1CodeNote, JavaNote]
+categories: [05-CodeNote, JavaNote]
 tags: [Java]
 toc: true
 --- 

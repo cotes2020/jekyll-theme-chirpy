@@ -1,6 +1,6 @@
 
 
-assign_ipv6_addresses(_**kwargs_)
+assign_ipv6_addresses(kwargs_)
 
 Assigns one or more IPv6 addresses to the specified network interface. You can specify one or more specific IPv6 addresses, or you can specify the number of IPv6 addresses to be automatically assigned from within the subnet's IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private IPv4 addresses, and the limit varies per instance type. For information, see [IP Addresses Per Network Interface Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -62,7 +62,7 @@ Returns
         The ID of the network interface.
         
 
-assign_private_ip_addresses(_**kwargs_)
+assign_private_ip_addresses(kwargs_)
 
 Assigns one or more secondary private IP addresses to the specified network interface.
 
@@ -181,7 +181,7 @@ Expected Output:
     },
 }
 
-associate_address(_**kwargs_)
+associate_address(kwargs_)
 
 Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface. Before you can use an Elastic IP address, you must allocate it to your account.
 
@@ -304,7 +304,7 @@ Expected Output:
     },
 }
 
-associate_client_vpn_target_network(_**kwargs_)
+associate_client_vpn_target_network(kwargs_)
 
 Associates a target network with a Client VPN endpoint. A target network is a subnet in a VPC. You can associate multiple subnets from the same VPC with a Client VPN endpoint. You can associate only one subnet in each Availability Zone. We recommend that you associate at least two subnets to provide Availability Zone redundancy.
 
@@ -380,7 +380,7 @@ Returns
             A message about the status of the target network association, if applicable.
             
 
-associate_dhcp_options(_**kwargs_)
+associate_dhcp_options(kwargs_)
 
 Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC.
 
@@ -454,7 +454,7 @@ Expected Output:
     },
 }
 
-associate_enclave_certificate_iam_role(_**kwargs_)
+associate_enclave_certificate_iam_role(kwargs_)
 
 Associates an AWS Identity and Access Management (IAM) role with an AWS Certificate Manager (ACM) certificate. This enables the certificate to be used by the ACM for Nitro Enclaves application inside an enclave. For more information, see [AWS Certificate Manager for Nitro Enclaves](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-refapp.html) in the _AWS Nitro Enclaves User Guide_ .
 
@@ -509,7 +509,7 @@ Returns
         The ID of the AWS KMS CMK used to encrypt the private key of the certificate.
         
 
-associate_iam_instance_profile(_**kwargs_)
+associate_iam_instance_profile(kwargs_)
 
 Associates an IAM instance profile with a running or stopped instance. You cannot associate more than one IAM instance profile with an instance.
 
@@ -636,7 +636,7 @@ Expected Output:
     },
 }
 
-associate_route_table(_**kwargs_)
+associate_route_table(kwargs_)
 
 Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC. This association causes traffic from the subnet or gateway to be routed according to the routes in the route table. The action returns an association ID, which you need in order to disassociate the route table later. A route table can be associated with multiple subnets.
 
@@ -722,7 +722,7 @@ Expected Output:
     },
 }
 
-associate_subnet_cidr_block(_**kwargs_)
+associate_subnet_cidr_block(kwargs_)
 
 Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a prefix length of /64.
 
@@ -803,7 +803,7 @@ Returns
         The ID of the subnet.
         
 
-associate_transit_gateway_multicast_domain(_**kwargs_)
+associate_transit_gateway_multicast_domain(kwargs_)
 
 Associates the specified subnets and transit gateway attachments with the specified transit gateway multicast domain.
 
@@ -902,7 +902,7 @@ Returns
                     The state of the subnet association.
                     
 
-associate_transit_gateway_route_table(_**kwargs_)
+associate_transit_gateway_route_table(kwargs_)
 
 Associates the specified attachment with the specified transit gateway route table. You can associate only one route table with an attachment.
 
@@ -979,7 +979,7 @@ Returns
             The state of the association.
             
 
-associate_vpc_cidr_block(_**kwargs_)
+associate_vpc_cidr_block(kwargs_)
 
 Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, an Amazon-provided IPv6 CIDR block, or an IPv6 CIDR block from an IPv6 address pool that you provisioned through bring your own IP addresses ([BYOIP](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) ). The IPv6 CIDR block size is fixed at /56.
 
@@ -1121,7 +1121,7 @@ Returns
         The ID of the VPC.
         
 
-attach_classic_link_vpc(_**kwargs_)
+attach_classic_link_vpc(kwargs_)
 
 Links an EC2-Classic instance to a ClassicLink-enabled VPC through one or more of the VPC's security groups. You cannot link an EC2-Classic instance to more than one VPC at a time. You can only link an instance that's in the running state. An instance is automatically unlinked from a VPC when it's stopped - you can link it to the VPC again when you restart it.
 
@@ -1186,7 +1186,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-attach_internet_gateway(_**kwargs_)
+attach_internet_gateway(kwargs_)
 
 Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the [Amazon Virtual Private Cloud User Guide](https://docs.aws.amazon.com/vpc/latest/userguide/) .
 
@@ -1239,7 +1239,7 @@ Expected Output:
     },
 }
 
-attach_network_interface(_**kwargs_)
+attach_network_interface(kwargs_)
 
 Attaches a network interface to an instance.
 
@@ -1327,7 +1327,7 @@ Expected Output:
     },
 }
 
-attach_volume(_**kwargs_)
+attach_volume(kwargs_)
 
 Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name.
 
@@ -1450,7 +1450,7 @@ Expected Output:
     },
 }
 
-attach_vpn_gateway(_**kwargs_)
+attach_vpn_gateway(kwargs_)
 
 Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
 
@@ -1516,7 +1516,7 @@ Returns
             The ID of the VPC.
             
 
-authorize_client_vpn_ingress(_**kwargs_)
+authorize_client_vpn_ingress(kwargs_)
 
 Adds an ingress authorization rule to a Client VPN endpoint. Ingress authorization rules act as firewall rules that grant access to networks. You must configure ingress authorization rules to enable clients to access resources in AWS or on-premises networks.
 
@@ -1591,7 +1591,7 @@ Returns
             A message about the status of the authorization rule, if applicable.
             
 
-authorize_security_group_egress(_**kwargs_)
+authorize_security_group_egress(kwargs_)
 
 [VPC only] Adds the specified egress rules to a security group for use with a VPC.
 
@@ -1852,7 +1852,7 @@ Expected Output:
     },
 }
 
-authorize_security_group_ingress(_**kwargs_)
+authorize_security_group_ingress(kwargs_)
 
 Adds the specified ingress rules to a security group.
 
@@ -2163,7 +2163,7 @@ Expected Output:
     },
 }
 
-bundle_instance(_**kwargs_)
+bundle_instance(kwargs_)
 
 Bundles an Amazon instance store-backed Windows instance.
 
@@ -2356,7 +2356,7 @@ Returns
 
 True if the operation can be paginated, False otherwise.
 
-cancel_bundle_task(_**kwargs_)
+cancel_bundle_task(kwargs_)
 
 Cancels a bundling operation for an instance store-backed Windows instance.
 
@@ -2486,7 +2486,7 @@ Returns
             The time of the most recent update for the task.
             
 
-cancel_capacity_reservation(_**kwargs_)
+cancel_capacity_reservation(kwargs_)
 
 Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to cancelled .
 
@@ -2532,7 +2532,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-cancel_conversion_task(_**kwargs_)
+cancel_conversion_task(kwargs_)
 
 Cancels an active conversion task. The task can be the import of an instance or volume. The action removes all artifacts of the conversion, including a partially uploaded volume or instance. If the conversion is complete or is in the process of transferring the final disk image, the command fails and returns an exception.
 
@@ -2563,7 +2563,7 @@ Returns
 
 None
 
-cancel_export_task(_**kwargs_)
+cancel_export_task(kwargs_)
 
 Cancels an active export task. The request removes all artifacts of the export, including any partially-created Amazon S3 objects. If the export task is complete or is in the process of transferring the final disk image, the command fails and returns an error.
 
@@ -2587,7 +2587,7 @@ Returns
 
 None
 
-cancel_import_task(_**kwargs_)
+cancel_import_task(kwargs_)
 
 Cancels an in-process import virtual machine or import snapshot task.
 
@@ -2638,7 +2638,7 @@ Returns
         The current state of the task being canceled.
         
 
-cancel_reserved_instances_listing(_**kwargs_)
+cancel_reserved_instances_listing(kwargs_)
 
 Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace.
 
@@ -2807,7 +2807,7 @@ Returns
                 The last modified timestamp of the listing.
                 
 
-cancel_spot_fleet_requests(_**kwargs_)
+cancel_spot_fleet_requests(kwargs_)
 
 Cancels the specified Spot Fleet requests.
 
@@ -2974,7 +2974,7 @@ Expected Output:
     },
 }
 
-cancel_spot_instance_requests(_**kwargs_)
+cancel_spot_instance_requests(kwargs_)
 
 Cancels one or more Spot Instance requests.
 
@@ -3070,7 +3070,7 @@ Expected Output:
     },
 }
 
-confirm_product_instance(_**kwargs_)
+confirm_product_instance(kwargs_)
 
 Determines whether a product code is associated with an instance. This action can only be used by the owner of the product code. It is useful when a product code owner must verify whether another user's instance is eligible for support.
 
@@ -3146,7 +3146,7 @@ Expected Output:
     },
 }
 
-copy_fpga_image(_**kwargs_)
+copy_fpga_image(kwargs_)
 
 Copies the specified Amazon FPGA Image (AFI) to the current Region.
 
@@ -3203,7 +3203,7 @@ Returns
         The ID of the new AFI.
         
 
-copy_image(_**kwargs_)
+copy_image(kwargs_)
 
 Initiates the copy of an AMI from the specified source Region to the current Region. You specify the destination Region by using its endpoint when making the request.
 
@@ -3313,7 +3313,7 @@ Expected Output:
     },
 }
 
-copy_snapshot(_**kwargs_)
+copy_snapshot(kwargs_)
 
 Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3. You can copy the snapshot within the same Region or from one Region to another. You can use the snapshot to create EBS volumes or Amazon Machine Images (AMIs).
 
@@ -3499,7 +3499,7 @@ Expected Output:
     },
 }
 
-create_capacity_reservation(_**kwargs_)
+create_capacity_reservation(kwargs_)
 
 Creates a new Capacity Reservation with the specified attributes.
 
@@ -3774,7 +3774,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_carrier_gateway(_**kwargs_)
+create_carrier_gateway(kwargs_)
 
 Creates a carrier gateway. For more information about carrier gateways, see [Carrier gateways](https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#wavelength-carrier-gateway) in the _AWS Wavelength Developer Guide_ .
 
@@ -3917,7 +3917,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_client_vpn_endpoint(_**kwargs_)
+create_client_vpn_endpoint(kwargs_)
 
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you create and configure to enable and manage client VPN sessions. It is the destination endpoint at which all client VPN sessions are terminated.
 
@@ -4200,7 +4200,7 @@ Returns
         The DNS name to be used by clients when establishing their VPN session.
         
 
-create_client_vpn_route(_**kwargs_)
+create_client_vpn_route(kwargs_)
 
 Adds a route to a network to a Client VPN endpoint. Each Client VPN endpoint has a route table that describes the available destination network routes. Each route in the route table specifies the path for traﬃc to speciﬁc resources or networks.
 
@@ -4284,7 +4284,7 @@ Returns
             A message about the status of the Client VPN endpoint route, if applicable.
             
 
-create_customer_gateway(_**kwargs_)
+create_customer_gateway(kwargs_)
 
 Provides information to AWS about your VPN customer gateway device. The customer gateway is the appliance at your end of the VPN connection. (The device on the AWS side of the VPN connection is the virtual private gateway.) You must provide the internet-routable IP address of the customer gateway's external interface. The IP address must be static and can be behind a device performing network address translation (NAT).
 
@@ -4501,7 +4501,7 @@ Expected Output:
     },
 }
 
-create_default_subnet(_**kwargs_)
+create_default_subnet(kwargs_)
 
 Creates a default subnet with a size /20 IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see [Creating a Default Subnet](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -4685,7 +4685,7 @@ Returns
             The Amazon Resource Name (ARN) of the Outpost.
             
 
-create_default_vpc(_**kwargs_)
+create_default_vpc(kwargs_)
 
 Creates a default VPC with a size /16 IPv4 CIDR block and a default subnet in each Availability Zone. For more information about the components of a default VPC, see [Default VPC and Default Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html) in the _Amazon Virtual Private Cloud User Guide_ . You cannot specify the components of the default VPC yourself.
 
@@ -4873,7 +4873,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_dhcp_options(_**kwargs_)
+create_dhcp_options(kwargs_)
 
 Creates a set of DHCP options for your VPC. After creating the set, you must associate it with the VPC, causing all existing and new instances that you launch in the VPC to use this set of DHCP options. The following are the individual DHCP options you can specify. For more information about the options, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt) .
 
@@ -5094,7 +5094,7 @@ Expected Output:
     },
 }
 
-create_egress_only_internet_gateway(_**kwargs_)
+create_egress_only_internet_gateway(kwargs_)
 
 [IPv6 only] Creates an egress-only internet gateway for your VPC. An egress-only internet gateway is used to enable outbound communication over IPv6 from instances in your VPC to the internet, and prevents hosts outside of your VPC from initiating an IPv6 connection with your instance.
 
@@ -5244,7 +5244,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_fleet(_**kwargs_)
+create_fleet(kwargs_)
 
 Launches an EC2 Fleet.
 
@@ -5858,7 +5858,7 @@ Returns
                 The value is Windows for Windows instances. Otherwise, the value is blank.
                 
 
-create_flow_logs(_**kwargs_)
+create_flow_logs(kwargs_)
 
 Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC.
 
@@ -6063,7 +6063,7 @@ Returns
                 The ID of the resource.
                 
 
-create_fpga_image(_**kwargs_)
+create_fpga_image(kwargs_)
 
 Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP).
 
@@ -6194,7 +6194,7 @@ Returns
         The global FPGA image identifier (AGFI ID).
         
 
-create_image(_**kwargs_)
+create_image(kwargs_)
 
 Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped.
 
@@ -6447,7 +6447,7 @@ Expected Output:
     },
 }
 
-create_instance_export_task(_**kwargs_)
+create_instance_export_task(kwargs_)
 
 Exports a running or stopped instance to an Amazon S3 bucket.
 
@@ -6662,7 +6662,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_internet_gateway(_**kwargs_)
+create_internet_gateway(kwargs_)
 
 Creates an internet gateway for use with a VPC. After creating the internet gateway, you attach it to a VPC using AttachInternetGateway .
 
@@ -6829,7 +6829,7 @@ Expected Output:
     },
 }
 
-create_key_pair(_**kwargs_)
+create_key_pair(kwargs_)
 
 Creates a 2048-bit RSA key pair with the specified name. Amazon EC2 stores the public key and displays the private key for you to save to a file. The private key is returned as an unencrypted PEM encoded PKCS#1 private key. If a key with the specified name already exists, Amazon EC2 returns an error.
 
@@ -6987,7 +6987,7 @@ Expected Output:
     },
 }
 
-create_launch_template(_**kwargs_)
+create_launch_template(kwargs_)
 
 Creates a launch template. A launch template contains the parameters to launch an instance. When you launch an instance using RunInstances , you can specify a launch template instead of providing the launch parameters in the request. For more information, see [Launching an instance from a launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -7850,7 +7850,7 @@ Expected Output:
     },
 }
 
-create_launch_template_version(_**kwargs_)
+create_launch_template_version(kwargs_)
 
 Creates a new version for a launch template. You can specify an existing version of launch template from which to base the new version.
 
@@ -9245,7 +9245,7 @@ Expected Output:
     },
 }
 
-create_local_gateway_route(_**kwargs_)
+create_local_gateway_route(kwargs_)
 
 Creates a static route for the specified local gateway route table.
 
@@ -9339,7 +9339,7 @@ Returns
             The AWS account ID that owns the local gateway route.
             
 
-create_local_gateway_route_table_vpc_association(_**kwargs_)definition")
+create_local_gateway_route_table_vpc_association(kwargs_)definition")
 
 Associates the specified VPC with the specified local gateway route table.
 
@@ -9497,7 +9497,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_managed_prefix_list(_**kwargs_)
+create_managed_prefix_list(kwargs_)
 
 Creates a managed prefix list. You can specify one or more entries for the prefix list. Each entry consists of a CIDR block and an optional description.
 
@@ -9711,7 +9711,7 @@ Returns
             The ID of the owner of the prefix list.
             
 
-create_nat_gateway(_**kwargs_)
+create_nat_gateway(kwargs_)
 
 Creates a NAT gateway in the specified public subnet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. Internet-bound traffic from a private subnet can be routed to the NAT gateway, therefore enabling instances in the private subnet to connect to the internet. For more information, see [NAT Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -9993,7 +9993,7 @@ Expected Output:
     },
 }
 
-create_network_acl(_**kwargs_)
+create_network_acl(kwargs_)
 
 Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.
 
@@ -10275,7 +10275,7 @@ Expected Output:
     },
 }
 
-create_network_acl_entry(_**kwargs_)
+create_network_acl_entry(kwargs_)
 
 Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules.
 
@@ -10401,7 +10401,7 @@ Expected Output:
     },
 }
 
-create_network_insights_path(_**kwargs_)
+create_network_insights_path(kwargs_)
 
 Creates a path to analyze for reachability.
 
@@ -10593,7 +10593,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_network_interface(_**kwargs_)
+create_network_interface(kwargs_)
 
 Creates a network interface in the specified subnet.
 
@@ -11098,7 +11098,7 @@ Expected Output:
     },
 }
 
-create_network_interface_permission(_**kwargs_)
+create_network_interface_permission(kwargs_)
 
 Grants an AWS-authorized account permission to attach the specified network interface to an instance in their account.
 
@@ -11199,7 +11199,7 @@ Returns
                 A status message, if applicable.
                 
 
-create_placement_group(_**kwargs_)
+create_placement_group(kwargs_)
 
 Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group.
 
@@ -11367,7 +11367,7 @@ Expected Output:
     },
 }
 
-create_reserved_instances_listing(_**kwargs_)
+create_reserved_instances_listing(kwargs_)
 
 Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace. You can submit one Standard Reserved Instance listing at a time. To get a list of your Standard Reserved Instances, you can use the DescribeReservedInstances operation.
 
@@ -11588,7 +11588,7 @@ Returns
                 The last modified timestamp of the listing.
                 
 
-create_route(_**kwargs_)
+create_route(kwargs_)
 
 Creates a route in a route table within a VPC.
 
@@ -11694,7 +11694,7 @@ Expected Output:
     },
 }
 
-create_route_table(_**kwargs_)
+create_route_table(kwargs_)
 
 Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.
 
@@ -12022,7 +12022,7 @@ Expected Output:
     },
 }
 
-create_security_group(_**kwargs_)
+create_security_group(kwargs_)
 
 Creates a security group.
 
@@ -12189,7 +12189,7 @@ Expected Output:
     },
 }
 
-create_snapshot(_**kwargs_)
+create_snapshot(kwargs_)
 
 Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use snapshots for backups, to make copies of EBS volumes, and to save data before shutting down an instance.
 
@@ -12408,7 +12408,7 @@ Expected Output:
     },
 }
 
-create_snapshots(_**kwargs_)
+create_snapshots(kwargs_)
 
 Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3. Volumes are chosen by specifying an instance. Any attached volumes will produce one snapshot each that is crash-consistent across the instance. Boot volumes can be excluded by changing the parameters.
 
@@ -12590,7 +12590,7 @@ Returns
                 Snapshot id that can be used to describe this snapshot.
                 
 
-create_spot_datafeed_subscription(_**kwargs_)
+create_spot_datafeed_subscription(kwargs_)
 
 Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per AWS account. For more information, see [Spot Instance data feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) in the _Amazon EC2 User Guide for Linux Instances_ .
 
@@ -12700,7 +12700,7 @@ Expected Output:
     },
 }
 
-create_subnet(_**kwargs_)
+create_subnet(kwargs_)
 
 Creates a subnet in a specified VPC.
 
@@ -12994,7 +12994,7 @@ Expected Output:
     },
 }
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -13082,7 +13082,7 @@ Expected Output:
     },
 }
 
-create_traffic_mirror_filter(_**kwargs_)
+create_traffic_mirror_filter(kwargs_)
 
 Creates a Traffic Mirror filter.
 
@@ -13405,7 +13405,7 @@ Returns
         Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html) .
         
 
-create_traffic_mirror_filter_rule(_**kwargs_)
+create_traffic_mirror_filter_rule(kwargs_)
 
 Creates a Traffic Mirror filter rule.
 
@@ -13619,7 +13619,7 @@ Returns
         Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html) .
         
 
-create_traffic_mirror_session(_**kwargs_)
+create_traffic_mirror_session(kwargs_)
 
 Creates a Traffic Mirror session.
 
@@ -13834,7 +13834,7 @@ Returns
         Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html) .
         
 
-create_traffic_mirror_target(_**kwargs_)
+create_traffic_mirror_target(kwargs_)
 
 Creates a target for your Traffic Mirror session.
 
@@ -13997,7 +13997,7 @@ Returns
         Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html) .
         
 
-create_transit_gateway(_**kwargs_)
+create_transit_gateway(kwargs_)
 
 Creates a transit gateway.
 
@@ -14254,7 +14254,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_transit_gateway_connect(_**kwargs_)
+create_transit_gateway_connect(kwargs_)
 
 Creates a Connect attachment from a specified transit gateway attachment. A Connect attachment is a GRE-based tunnel attachment that you can use to establish a connection between a transit gateway and an appliance.
 
@@ -14421,7 +14421,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_transit_gateway_connect_peer(_**kwargs_)
+create_transit_gateway_connect_peer(kwargs_)
 
 Creates a Connect peer for a specified transit gateway Connect attachment between a transit gateway and an appliance.
 
@@ -14657,7 +14657,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_transit_gateway_multicast_domain(_**kwargs_)
+create_transit_gateway_multicast_domain(kwargs_)
 
 Creates a multicast domain using the specified transit gateway.
 
@@ -14847,7 +14847,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_transit_gateway_peering_attachment(_**kwargs_)
+create_transit_gateway_peering_attachment(kwargs_)
 
 Requests a transit gateway peering attachment between the specified transit gateway (requester) and a peer transit gateway (accepter). The transit gateways must be in different Regions. The peer transit gateway can be in your account or a different AWS account.
 
@@ -15059,7 +15059,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_transit_gateway_prefix_list_reference(_**kwargs_)
+create_transit_gateway_prefix_list_reference(kwargs_)
 
 Creates a reference (route) to a prefix list in a specified transit gateway route table.
 
@@ -15161,7 +15161,7 @@ Returns
                 The ID of the resource.
                 
 
-create_transit_gateway_route(_**kwargs_)
+create_transit_gateway_route(kwargs_)
 
 Creates a static route for the specified transit gateway route table.
 
@@ -15264,7 +15264,7 @@ Returns
             The state of the route.
             
 
-create_transit_gateway_route_table(_**kwargs_)
+create_transit_gateway_route_table(kwargs_)
 
 Creates a route table for the specified transit gateway.
 
@@ -15410,7 +15410,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_transit_gateway_vpc_attachment(_**kwargs_)
+create_transit_gateway_vpc_attachment(kwargs_)
 
 Attaches the specified VPC to the specified transit gateway.
 
@@ -15627,7 +15627,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-create_volume(_**kwargs_)
+create_volume(kwargs_)
 
 Creates an EBS volume that can be attached to an instance in the same Availability Zone.
 
@@ -15996,7 +15996,7 @@ Expected Output:
     },
 }
 
-create_vpc(_**kwargs_)
+create_vpc(kwargs_)
 
 Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). For more information about how large to make your VPC, see [Your VPC and Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -16291,7 +16291,7 @@ Expected Output:
     },
 }
 
-create_vpc_endpoint(_**kwargs_)
+create_vpc_endpoint(kwargs_)
 
 Creates a VPC endpoint for a specified service. An endpoint enables you to create a private connection between your VPC and the service. The service may be provided by AWS, an AWS Marketplace Partner, or another AWS account. For more information, see [VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -16607,7 +16607,7 @@ Returns
         Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         
 
-create_vpc_endpoint_connection_notification(_**kwargs_)
+create_vpc_endpoint_connection_notification(kwargs_)
 
 Creates a connection notification for a specified VPC endpoint or VPC endpoint service. A connection notification notifies you of specific endpoint events. You must create an SNS topic to receive notifications. For more information, see [Create a Topic](https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html) in the _Amazon Simple Notification Service Developer Guide_ .
 
@@ -16713,7 +16713,7 @@ Returns
         Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         
 
-create_vpc_endpoint_service_configuration(_**kwargs_)
+create_vpc_endpoint_service_configuration(kwargs_)
 
 Creates a VPC endpoint service configuration to which service consumers (AWS accounts, IAM users, and IAM roles) can connect.
 
@@ -16965,7 +16965,7 @@ Returns
         Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         
 
-create_vpc_peering_connection(_**kwargs_)
+create_vpc_peering_connection(kwargs_)
 
 Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection. The accepter VPC can belong to another AWS account and can be in a different Region to the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.
 
@@ -17288,7 +17288,7 @@ Returns
             The ID of the VPC peering connection.
             
 
-create_vpn_connection(_**kwargs_)
+create_vpn_connection(kwargs_)
 
 Creates a VPN connection between an existing virtual private gateway or transit gateway and a customer gateway. The supported connection type is ipsec.1 .
 
@@ -18070,7 +18070,7 @@ Returns
                     The Amazon Resource Name (ARN) of the VPN tunnel endpoint certificate.
                     
 
-create_vpn_connection_route(_**kwargs_)
+create_vpn_connection_route(kwargs_)
 
 Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.
 
@@ -18104,7 +18104,7 @@ Returns
 
 None
 
-create_vpn_gateway(_**kwargs_)
+create_vpn_gateway(kwargs_)
 
 Creates a virtual private gateway. A virtual private gateway is the endpoint on the VPC side of your VPN connection. You can create a virtual private gateway before creating the VPC itself.
 
@@ -18280,7 +18280,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-delete_carrier_gateway(_**kwargs_)
+delete_carrier_gateway(kwargs_)
 
 Deletes a carrier gateway.
 
@@ -18375,7 +18375,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-delete_client_vpn_endpoint(_**kwargs_)
+delete_client_vpn_endpoint(kwargs_)
 
 Deletes the specified Client VPN endpoint. You must disassociate all target networks before you can delete a Client VPN endpoint.
 
@@ -18434,7 +18434,7 @@ Returns
             A message about the status of the Client VPN endpoint.
             
 
-delete_client_vpn_route(_**kwargs_)
+delete_client_vpn_route(kwargs_)
 
 Deletes a route from a Client VPN endpoint. You can only delete routes that you manually added using the **CreateClientVpnRoute** action. You cannot delete routes that were automatically added when associating a subnet. To remove routes that have been automatically added, disassociate the target subnet from the Client VPN endpoint.
 
@@ -18498,7 +18498,7 @@ Returns
             A message about the status of the Client VPN endpoint route, if applicable.
             
 
-delete_customer_gateway(_**kwargs_)
+delete_customer_gateway(kwargs_)
 
 Deletes the specified customer gateway. You must delete the VPN connection before you can delete the customer gateway.
 
@@ -18543,7 +18543,7 @@ Expected Output:
     },
 }
 
-delete_dhcp_options(_**kwargs_)
+delete_dhcp_options(kwargs_)
 
 Deletes the specified set of DHCP options. You must disassociate the set of DHCP options before you can delete it. You can disassociate the set of DHCP options by associating either a new set of options or the default set of options with the VPC.
 
@@ -18588,7 +18588,7 @@ Expected Output:
     },
 }
 
-delete_egress_only_internet_gateway(_**kwargs_)
+delete_egress_only_internet_gateway(kwargs_)
 
 Deletes an egress-only internet gateway.
 
@@ -18632,7 +18632,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-delete_fleets(_**kwargs_)
+delete_fleets(kwargs_)
 
 Deletes the specified EC2 Fleet.
 
@@ -18758,7 +18758,7 @@ Returns
                 The ID of the EC2 Fleet.
                 
 
-delete_flow_logs(_**kwargs_)
+delete_flow_logs(kwargs_)
 
 Deletes one or more flow logs.
 
@@ -18835,7 +18835,7 @@ Returns
                 The ID of the resource.
                 
 
-delete_fpga_image(_**kwargs_)
+delete_fpga_image(kwargs_)
 
 Deletes the specified Amazon FPGA Image (AFI).
 
@@ -18879,7 +18879,7 @@ Returns
         Is true if the request succeeds, and an error otherwise.
         
 
-delete_internet_gateway(_**kwargs_)
+delete_internet_gateway(kwargs_)
 
 Deletes the specified internet gateway. You must detach the internet gateway from the VPC before you can delete it.
 
@@ -18924,7 +18924,7 @@ Expected Output:
     },
 }
 
-delete_key_pair(_**kwargs_)
+delete_key_pair(kwargs_)
 
 Deletes the specified key pair, by removing the public key from Amazon EC2.
 
@@ -18966,7 +18966,7 @@ Expected Output:
     },
 }
 
-delete_launch_template(_**kwargs_)
+delete_launch_template(kwargs_)
 
 Deletes a launch template. Deleting a launch template deletes all of its versions.
 
@@ -19090,7 +19090,7 @@ Expected Output:
     },
 }
 
-delete_launch_template_versions(_**kwargs_)
+delete_launch_template_versions(kwargs_)
 
 Deletes one or more versions of a launch template. You cannot delete the default version of a launch template; you must first assign a different version as the default. If the default version is the only version for the launch template, you must delete the entire launch template using DeleteLaunchTemplate .
 
@@ -19236,7 +19236,7 @@ Expected Output:
     },
 }
 
-delete_local_gateway_route(_**kwargs_)
+delete_local_gateway_route(kwargs_)
 
 Deletes the specified route from the specified local gateway route table.
 
@@ -19323,7 +19323,7 @@ Returns
             The AWS account ID that owns the local gateway route.
             
 
-delete_local_gateway_route_table_vpc_association(_**kwargs_)definition")
+delete_local_gateway_route_table_vpc_association(kwargs_)definition")
 
 Deletes the specified association between a VPC and local gateway route table.
 
@@ -19429,7 +19429,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-delete_managed_prefix_list(_**kwargs_)
+delete_managed_prefix_list(kwargs_)
 
 Deletes the specified managed prefix list. You must first remove all references to the prefix list in your resources.
 
@@ -19545,7 +19545,7 @@ Returns
             The ID of the owner of the prefix list.
             
 
-delete_nat_gateway(_**kwargs_)
+delete_nat_gateway(kwargs_)
 
 Deletes the specified NAT gateway. Deleting a NAT gateway disassociates its Elastic IP address, but does not release the address from your account. Deleting a NAT gateway does not delete any NAT gateway routes in your route tables.
 
@@ -19608,7 +19608,7 @@ Expected Output:
     },
 }
 
-delete_network_acl(_**kwargs_)
+delete_network_acl(kwargs_)
 
 Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.
 
@@ -19653,7 +19653,7 @@ Expected Output:
     },
 }
 
-delete_network_acl_entry(_**kwargs_)
+delete_network_acl_entry(kwargs_)
 
 Deletes the specified ingress or egress entry (rule) from the specified network ACL.
 
@@ -19714,7 +19714,7 @@ Expected Output:
     },
 }
 
-delete_network_insights_analysis(_**kwargs_)
+delete_network_insights_analysis(kwargs_)
 
 Deletes the specified network insights analysis.
 
@@ -19758,7 +19758,7 @@ Returns
         The ID of the network insights analysis.
         
 
-delete_network_insights_path(_**kwargs_)
+delete_network_insights_path(kwargs_)
 
 Deletes the specified path.
 
@@ -19802,7 +19802,7 @@ Returns
         The ID of the path.
         
 
-delete_network_interface(_**kwargs_)
+delete_network_interface(kwargs_)
 
 Deletes the specified network interface. You must detach the network interface before you can delete it.
 
@@ -19847,7 +19847,7 @@ Expected Output:
     },
 }
 
-delete_network_interface_permission(_**kwargs_)
+delete_network_interface_permission(kwargs_)
 
 Deletes a permission for a network interface. By default, you cannot delete the permission if the account for which you're removing the permission has attached the network interface to an instance. However, you can force delete the permission, regardless of any attachment.
 
@@ -19895,7 +19895,7 @@ Returns
         Returns true if the request succeeds, otherwise returns an error.
         
 
-delete_placement_group(_**kwargs_)
+delete_placement_group(kwargs_)
 
 Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see [Placement groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -19940,7 +19940,7 @@ Expected Output:
     },
 }
 
-delete_queued_reserved_instances(_**kwargs_)
+delete_queued_reserved_instances(kwargs_)
 
 Deletes the queued purchases for the specified Reserved Instances.
 
@@ -20032,7 +20032,7 @@ Returns
                 The ID of the Reserved Instance.
                 
 
-delete_route(_**kwargs_)
+delete_route(kwargs_)
 
 Deletes the specified route from the specified route table.
 
@@ -20084,7 +20084,7 @@ Expected Output:
     },
 }
 
-delete_route_table(_**kwargs_)
+delete_route_table(kwargs_)
 
 Deletes the specified route table. You must disassociate the route table from any subnets before you can delete it. You can't delete the main route table.
 
@@ -20129,7 +20129,7 @@ Expected Output:
     },
 }
 
-delete_security_group(_**kwargs_)
+delete_security_group(kwargs_)
 
 Deletes a security group.
 
@@ -20173,7 +20173,7 @@ Expected Output:
     },
 }
 
-delete_snapshot(_**kwargs_)
+delete_snapshot(kwargs_)
 
 Deletes the specified snapshot.
 
@@ -20224,7 +20224,7 @@ Expected Output:
     },
 }
 
-delete_spot_datafeed_subscription(_**kwargs_)
+delete_spot_datafeed_subscription(kwargs_)
 
 Deletes the data feed for Spot Instances.
 
@@ -20261,7 +20261,7 @@ Expected Output:
     },
 }
 
-delete_subnet(_**kwargs_)
+delete_subnet(kwargs_)
 
 Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.
 
@@ -20306,7 +20306,7 @@ Expected Output:
     },
 }
 
-delete_tags(_**kwargs_)
+delete_tags(kwargs_)
 
 Deletes the specified set of tags from the specified set of resources.
 
@@ -20394,7 +20394,7 @@ Expected Output:
     },
 }
 
-delete_traffic_mirror_filter(_**kwargs_)
+delete_traffic_mirror_filter(kwargs_)
 
 Deletes the specified Traffic Mirror filter.
 
@@ -20440,7 +20440,7 @@ Returns
         The ID of the Traffic Mirror filter.
         
 
-delete_traffic_mirror_filter_rule(_**kwargs_)
+delete_traffic_mirror_filter_rule(kwargs_)
 
 Deletes the specified Traffic Mirror rule.
 
@@ -20484,7 +20484,7 @@ Returns
         The ID of the deleted Traffic Mirror rule.
         
 
-delete_traffic_mirror_session(_**kwargs_)
+delete_traffic_mirror_session(kwargs_)
 
 Deletes the specified Traffic Mirror session.
 
@@ -20528,7 +20528,7 @@ Returns
         The ID of the deleted Traffic Mirror session.
         
 
-delete_traffic_mirror_target(_**kwargs_)
+delete_traffic_mirror_target(kwargs_)
 
 Deletes the specified Traffic Mirror target.
 
@@ -20574,7 +20574,7 @@ Returns
         The ID of the deleted Traffic Mirror target.
         
 
-delete_transit_gateway(_**kwargs_)
+delete_transit_gateway(kwargs_)
 
 Deletes the specified transit gateway.
 
@@ -20734,7 +20734,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-delete_transit_gateway_connect(_**kwargs_)
+delete_transit_gateway_connect(kwargs_)
 
 Deletes the specified Connect attachment. You must first delete any Connect peers for the attachment.
 
@@ -20841,7 +20841,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-delete_transit_gateway_connect_peer(_**kwargs_)
+delete_transit_gateway_connect_peer(kwargs_)
 
 Deletes the specified Connect peer.
 
@@ -20998,7 +20998,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-delete_transit_gateway_multicast_domain(_**kwargs_)
+delete_transit_gateway_multicast_domain(kwargs_)
 
 Deletes the specified transit gateway multicast domain.
 
@@ -21120,7 +21120,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-delete_transit_gateway_peering_attachment(_**kwargs_)
+delete_transit_gateway_peering_attachment(kwargs_)
 
 Deletes a transit gateway peering attachment.
 
@@ -21264,7 +21264,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-delete_transit_gateway_prefix_list_reference(_**kwargs_)
+delete_transit_gateway_prefix_list_reference(kwargs_)
 
 Deletes a reference (route) to a prefix list in a specified transit gateway route table.
 
@@ -21362,7 +21362,7 @@ Returns
                 The ID of the resource.
                 
 
-delete_transit_gateway_route(_**kwargs_)
+delete_transit_gateway_route(kwargs_)
 
 Deletes the specified route from the specified transit gateway route table.
 
@@ -21461,7 +21461,7 @@ Returns
             The state of the route.
             
 
-delete_transit_gateway_route_table(_**kwargs_)
+delete_transit_gateway_route_table(kwargs_)
 
 Deletes the specified transit gateway route table. You must disassociate the route table from any transit gateway route tables before you can delete it.
 
@@ -21562,7 +21562,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-delete_transit_gateway_vpc_attachment(_**kwargs_)
+delete_transit_gateway_vpc_attachment(kwargs_)
 
 Deletes the specified VPC attachment.
 
@@ -21692,7 +21692,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-delete_volume(_**kwargs_)
+delete_volume(kwargs_)
 
 Deletes the specified EBS volume. The volume must be in the available state (not attached to an instance).
 
@@ -21741,7 +21741,7 @@ Expected Output:
     },
 }
 
-delete_vpc(_**kwargs_)
+delete_vpc(kwargs_)
 
 Deletes the specified VPC. You must detach or delete all gateways and resources that are associated with the VPC before you can delete it. For example, you must terminate all instances running in the VPC, delete all security groups associated with the VPC (except the default one), delete all route tables associated with the VPC (except the default one), and so on.
 
@@ -21786,7 +21786,7 @@ Expected Output:
     },
 }
 
-delete_vpc_endpoint_connection_notifications(_**kwargs_)
+delete_vpc_endpoint_connection_notifications(kwargs_)
 
 Deletes one or more VPC endpoint connection notifications.
 
@@ -21861,7 +21861,7 @@ Returns
                 The ID of the resource.
                 
 
-delete_vpc_endpoint_service_configurations(_**kwargs_)
+delete_vpc_endpoint_service_configurations(kwargs_)
 
 Deletes one or more VPC endpoint service configurations in your account. Before you delete the endpoint service configuration, you must reject any Available or PendingAcceptance interface endpoint connections that are attached to the service.
 
@@ -21936,7 +21936,7 @@ Returns
                 The ID of the resource.
                 
 
-delete_vpc_endpoints(_**kwargs_)
+delete_vpc_endpoints(kwargs_)
 
 Deletes one or more specified VPC endpoints. Deleting a gateway endpoint also deletes the endpoint routes in the route tables that were associated with the endpoint. Deleting an interface endpoint or a Gateway Load Balancer endpoint deletes the endpoint network interfaces. Gateway Load Balancer endpoints can only be deleted if the routes that are associated with the endpoint are deleted.
 
@@ -22013,7 +22013,7 @@ Returns
                 The ID of the resource.
                 
 
-delete_vpc_peering_connection(_**kwargs_)
+delete_vpc_peering_connection(kwargs_)
 
 Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the accepter VPC can delete the VPC peering connection if it's in the active state. The owner of the requester VPC can delete a VPC peering connection in the pending-acceptance state. You cannot delete a VPC peering connection that's in the failed state.
 
@@ -22057,7 +22057,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-delete_vpn_connection(_**kwargs_)
+delete_vpn_connection(kwargs_)
 
 Deletes the specified VPN connection.
 
@@ -22088,7 +22088,7 @@ Returns
 
 None
 
-delete_vpn_connection_route(_**kwargs_)
+delete_vpn_connection_route(kwargs_)
 
 Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.
 
@@ -22120,7 +22120,7 @@ Returns
 
 None
 
-delete_vpn_gateway(_**kwargs_)
+delete_vpn_gateway(kwargs_)
 
 Deletes the specified virtual private gateway. You must first detach the virtual private gateway from the VPC. Note that you don't need to delete the virtual private gateway if you plan to delete and recreate the VPN connection between your VPC and your network.
 
@@ -22147,7 +22147,7 @@ Returns
 
 None
 
-deprovision_byoip_cidr(_**kwargs_)
+deprovision_byoip_cidr(kwargs_)
 
 Releases the specified address range that you provisioned for use with your AWS resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool.
 
@@ -22214,7 +22214,7 @@ Returns
             The state of the address pool.
             
 
-deregister_image(_**kwargs_)
+deregister_image(kwargs_)
 
 Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new instances; however, it doesn't affect any instances that you've already launched from the AMI. You'll continue to incur usage costs for those instances until you terminate them.
 
@@ -22243,7 +22243,7 @@ Returns
 
 None
 
-deregister_instance_event_notification_attributes(_**kwargs_)definition")
+deregister_instance_event_notification_attributes(kwargs_)definition")
 
 Deregisters tag keys to prevent tags that have the specified tag keys from being included in scheduled event notifications for resources in the Region.
 
@@ -22313,7 +22313,7 @@ Returns
             Indicates wheter all tag keys in the current Region are registered to appear in scheduled event notifications. true indicates that all tag keys in the current Region are registered.
             
 
-deregister_transit_gateway_multicast_group_members(_**kwargs_)definition")
+deregister_transit_gateway_multicast_group_members(kwargs_)definition")
 
 Deregisters the specified members (network interfaces) from the transit gateway multicast group.
 
@@ -22381,7 +22381,7 @@ Returns
             The IP address assigned to the transit gateway multicast group.
             
 
-deregister_transit_gateway_multicast_group_sources(_**kwargs_)definition")
+deregister_transit_gateway_multicast_group_sources(kwargs_)definition")
 
 Deregisters the specified sources (network interfaces) from the transit gateway multicast group.
 
@@ -22449,7 +22449,7 @@ Returns
             The IP address assigned to the transit gateway multicast group.
             
 
-describe_account_attributes(_**kwargs_)
+describe_account_attributes(kwargs_)
 
 Describes attributes of your AWS account. The following are the supported account attributes:
 
@@ -22631,7 +22631,7 @@ Expected Output:
     },
 }
 
-describe_addresses(_**kwargs_)
+describe_addresses(kwargs_)
 
 Describes the specified Elastic IP addresses or all of your Elastic IP addresses.
 
@@ -22933,7 +22933,7 @@ Expected Output:
     },
 }
 
-describe_aggregate_id_format(_**kwargs_)
+describe_aggregate_id_format(kwargs_)
 
 Describes the longer ID format settings for all resource types in a specific Region. This request is useful for performing a quick audit to determine whether a specific Region is fully opted in for longer IDs (17-character IDs).
 
@@ -23000,7 +23000,7 @@ Returns
                 Indicates whether longer IDs (17-character IDs) are enabled for the resource.
                 
 
-describe_availability_zones(_**kwargs_)
+describe_availability_zones(kwargs_)
 
 Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you. If there is an event impacting a zone, you can use this request to view the state and any provided messages for that zone.
 
@@ -23237,7 +23237,7 @@ Expected Output:
     },
 }
 
-describe_bundle_tasks(_**kwargs_)
+describe_bundle_tasks(kwargs_)
 
 Describes the specified bundle tasks or all of your bundle tasks.
 
@@ -23425,7 +23425,7 @@ Returns
                 The time of the most recent update for the task.
                 
 
-describe_byoip_cidrs(_**kwargs_)
+describe_byoip_cidrs(kwargs_)
 
 Describes the IP address ranges that were specified in calls to ProvisionByoipCidr .
 
@@ -23505,7 +23505,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_capacity_reservations(_**kwargs_)
+describe_capacity_reservations(kwargs_)
 
 Describes one or more of your Capacity Reservations. The results describe only the Capacity Reservations in the AWS Region that you're currently using.
 
@@ -23746,7 +23746,7 @@ Returns
                         Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                         
 
-describe_carrier_gateways(_**kwargs_)
+describe_carrier_gateways(kwargs_)
 
 Describes one or more of your carrier gateways.
 
@@ -23896,7 +23896,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_classic_link_instances(_**kwargs_)
+describe_classic_link_instances(kwargs_)
 
 Describes one or more of your linked EC2-Classic instances. This request only returns information about EC2-Classic instances linked to a VPC through ClassicLink. You cannot use this request to return information about other instances.
 
@@ -24062,7 +24062,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_client_vpn_authorization_rules(_**kwargs_)
+describe_client_vpn_authorization_rules(kwargs_)
 
 Describes the authorization rules for a specified Client VPN endpoint.
 
@@ -24203,7 +24203,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_client_vpn_connections(_**kwargs_)
+describe_client_vpn_connections(kwargs_)
 
 Describes active client connections and connections that have been terminated within the last 60 minutes for the specified Client VPN endpoint.
 
@@ -24386,7 +24386,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_client_vpn_endpoints(_**kwargs_)
+describe_client_vpn_endpoints(kwargs_)
 
 Describes one or more Client VPN endpoints in the account.
 
@@ -24745,7 +24745,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_client_vpn_routes(_**kwargs_)
+describe_client_vpn_routes(kwargs_)
 
 Describes the routes for the specified Client VPN endpoint.
 
@@ -24891,7 +24891,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_client_vpn_target_networks(_**kwargs_)
+describe_client_vpn_target_networks(kwargs_)
 
 Describes the target networks associated with the specified Client VPN endpoint.
 
@@ -25043,7 +25043,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_coip_pools(_**kwargs_)
+describe_coip_pools(kwargs_)
 
 Describes the specified customer-owned address pools or all of your customer-owned address pools.
 
@@ -25192,7 +25192,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_conversion_tasks(_**kwargs_)
+describe_conversion_tasks(kwargs_)
 
 Describes the specified conversion tasks or all your conversion tasks. For more information, see the [VM Import/Export User Guide](https://docs.aws.amazon.com/vm-import/latest/userguide/) .
 
@@ -25459,7 +25459,7 @@ Returns
                         Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                         
 
-describe_customer_gateways(_**kwargs_)
+describe_customer_gateways(kwargs_)
 
 Describes one or more of your VPN customer gateways.
 
@@ -25651,7 +25651,7 @@ Expected Output:
     },
 }
 
-describe_dhcp_options(_**kwargs_)
+describe_dhcp_options(kwargs_)
 
 Describes one or more of your DHCP options sets.
 
@@ -25867,7 +25867,7 @@ Expected Output:
     },
 }
 
-describe_egress_only_internet_gateways(_**kwargs_)
+describe_egress_only_internet_gateways(kwargs_)
 
 Describes one or more of your egress-only internet gateways.
 
@@ -26020,7 +26020,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_elastic_gpus(_**kwargs_)
+describe_elastic_gpus(kwargs_)
 
 Describes the Elastic Graphics accelerator associated with your instances. For more information about Elastic Graphics, see [Amazon Elastic Graphics](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html) .
 
@@ -26190,7 +26190,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_export_image_tasks(_**kwargs_)
+describe_export_image_tasks(kwargs_)
 
 Describes the specified export image tasks or all of your export image tasks.
 
@@ -26359,7 +26359,7 @@ Returns
         The token to use to get the next page of results. This value is null when there are no more results to return.
         
 
-describe_export_tasks(_**kwargs_)
+describe_export_tasks(kwargs_)
 
 Describes the specified export instance tasks or all of your export instance tasks.
 
@@ -26533,7 +26533,7 @@ Returns
                         Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                         
 
-describe_fast_snapshot_restores(_**kwargs_)
+describe_fast_snapshot_restores(kwargs_)
 
 Describes the state of fast snapshot restores for your snapshots.
 
@@ -26684,7 +26684,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_fleet_history(_**kwargs_)
+describe_fleet_history(kwargs_)
 
 Describes the events for the specified EC2 Fleet during the specified time.
 
@@ -26831,7 +26831,7 @@ Returns
         The start date and time for the events, in UTC format (for example, _YYYY_ -_MM_ -_DD_ T*HH* :_MM_ :_SS_ Z).
         
 
-describe_fleet_instances(_**kwargs_)
+describe_fleet_instances(kwargs_)
 
 Describes the running instances for the specified EC2 Fleet.
 
@@ -26954,7 +26954,7 @@ Returns
         The ID of the EC2 Fleet.
         
 
-describe_fleets(_**kwargs_)
+describe_fleets(kwargs_)
 
 Describes the specified EC2 Fleets or all of your EC2 Fleets.
 
@@ -27598,7 +27598,7 @@ Returns
                         The value is Windows for Windows instances. Otherwise, the value is blank.
                         
 
-describe_flow_logs(_**kwargs_)
+describe_flow_logs(kwargs_)
 
 Describes one or more flow logs. To view the information in your flow logs (the log streams for the network interfaces), you must use the CloudWatch Logs console or the CloudWatch Logs API.
 
@@ -27801,7 +27801,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_fpga_image_attribute(_**kwargs_)
+describe_fpga_image_attribute(kwargs_)
 
 Describes the specified attribute of the specified Amazon FPGA Image (AFI).
 
@@ -27912,7 +27912,7 @@ Returns
                     The type of product code.
                     
 
-describe_fpga_images(_**kwargs_)
+describe_fpga_images(kwargs_)
 
 Describes the Amazon FPGA Images (AFIs) available to you. These include public AFIs, private AFIs that you own, and AFIs owned by other AWS accounts for which you have load permissions.
 
@@ -28178,7 +28178,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_host_reservation_offerings(_**kwargs_)
+describe_host_reservation_offerings(kwargs_)
 
 Describes the Dedicated Host reservations that are available to purchase.
 
@@ -28311,7 +28311,7 @@ Returns
                 The upfront price of the offering. Does not apply to No Upfront offerings.
                 
 
-describe_host_reservations(_**kwargs_)
+describe_host_reservations(kwargs_)
 
 Describes reservations that are associated with Dedicated Hosts in your account.
 
@@ -28506,7 +28506,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_hosts(_**kwargs_)
+describe_hosts(kwargs_)
 
 Describes the specified Dedicated Hosts or all your Dedicated Hosts.
 
@@ -28803,7 +28803,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_iam_instance_profile_associations(_**kwargs_)
+describe_iam_instance_profile_associations(kwargs_)
 
 Describes your IAM instance profile associations.
 
@@ -28968,7 +28968,7 @@ Expected Output:
     },
 }
 
-describe_id_format(_**kwargs_)
+describe_id_format(kwargs_)
 
 Describes the ID format settings for your resources on a per-Region basis, for example, to view which resource types are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types.
 
@@ -29030,7 +29030,7 @@ Returns
                 Indicates whether longer IDs (17-character IDs) are enabled for the resource.
                 
 
-describe_identity_id_format(_**kwargs_)
+describe_identity_id_format(kwargs_)
 
 Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see [Resource IDs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -29100,7 +29100,7 @@ Returns
                 Indicates whether longer IDs (17-character IDs) are enabled for the resource.
                 
 
-describe_image_attribute(_**kwargs_)
+describe_image_attribute(kwargs_)
 
 Describes the specified attribute of the specified AMI. You can specify only one attribute at a time.
 
@@ -29374,7 +29374,7 @@ Expected Output:
     },
 }
 
-describe_images(_**kwargs_)
+describe_images(kwargs_)
 
 Describes the specified images (AMIs, AKIs, and ARIs) available to you or all of the images available to you.
 
@@ -29857,7 +29857,7 @@ Expected Output:
     },
 }
 
-describe_import_image_tasks(_**kwargs_)
+describe_import_image_tasks(kwargs_)
 
 Displays details about an import virtual machine or import snapshot tasks that are already created.
 
@@ -30134,7 +30134,7 @@ Returns
         The token to use to get the next page of results. This value is null when there are no more results to return.
         
 
-describe_import_snapshot_tasks(_**kwargs_)
+describe_import_snapshot_tasks(kwargs_)
 
 Describes your import snapshot tasks.
 
@@ -30339,7 +30339,7 @@ Returns
         The token to use to get the next page of results. This value is null when there are no more results to return.
         
 
-describe_instance_attribute(_**kwargs_)
+describe_instance_attribute(kwargs_)
 
 Describes the specified attribute of the specified instance. You can specify only one attribute at a time. Valid attribute values are: instanceType | kernel | ramdisk | userData | disableApiTermination | instanceInitiatedShutdownBehavior | rootDeviceName | blockDeviceMapping | productCodes | sourceDestCheck | groupSet | ebsOptimized | sriovNetSupport
 
@@ -30695,7 +30695,7 @@ Expected Output:
     },
 }
 
-describe_instance_credit_specifications(_**kwargs_)
+describe_instance_credit_specifications(kwargs_)
 
 Describes the credit option for CPU usage of the specified burstable performance instances. The credit options are standard and unlimited .
 
@@ -30818,7 +30818,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_instance_event_notification_attributes(_**kwargs_)definition")
+describe_instance_event_notification_attributes(kwargs_)definition")
 
 Describes the tag keys that are registered to appear in scheduled event notifications for resources in the current Region.
 
@@ -30868,7 +30868,7 @@ Returns
             Indicates wheter all tag keys in the current Region are registered to appear in scheduled event notifications. true indicates that all tag keys in the current Region are registered.
             
 
-describe_instance_status(_**kwargs_)
+describe_instance_status(kwargs_)
 
 Describes the status of the specified instances or all of your instances. By default, only running instances are described, unless you specifically indicate to return the status of all instances.
 
@@ -31210,7 +31210,7 @@ Expected Output:
     },
 }
 
-describe_instance_type_offerings(_**kwargs_)
+describe_instance_type_offerings(kwargs_)
 
 Returns a list of all instance types offered. The results can be filtered by location (Region or Availability Zone). If no location is specified, the instance types offered in the current Region are returned.
 
@@ -31319,7 +31319,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_instance_types(_**kwargs_)
+describe_instance_types(kwargs_)
 
 Describes the details of the instance types that are offered in a location. The results can be filtered by the attributes of the instance types.
 
@@ -31922,7 +31922,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_instances(_**kwargs_)
+describe_instances(kwargs_)
 
 Describes the specified instances or all instances.
 
@@ -33060,7 +33060,7 @@ Expected Output:
     },
 }
 
-describe_internet_gateways(_**kwargs_)
+describe_internet_gateways(kwargs_)
 
 Describes one or more of your internet gateways.
 
@@ -33262,7 +33262,7 @@ Expected Output:
     },
 }
 
-describe_ipv6_pools(_**kwargs_)
+describe_ipv6_pools(kwargs_)
 
 Describes your IPv6 address pools.
 
@@ -33415,7 +33415,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_key_pairs(_**kwargs_)
+describe_key_pairs(kwargs_)
 
 Describes the specified key pairs or all of your key pairs.
 
@@ -33588,7 +33588,7 @@ Expected Output:
     },
 }
 
-describe_launch_template_versions(_**kwargs_)
+describe_launch_template_versions(kwargs_)
 
 Describes one or more versions of a specified launch template. You can describe all versions, individual versions, or a range of versions. You can also describe all the latest versions or all the default versions of all the launch templates in your account.
 
@@ -34405,7 +34405,7 @@ Expected Output:
     },
 }
 
-describe_launch_templates(_**kwargs_)
+describe_launch_templates(kwargs_)
 
 Describes one or more launch templates.
 
@@ -34601,7 +34601,7 @@ Expected Output:
     },
 }
 
-describe_local_gateway_route_table_virtual_interface_group_associations(_**kwargs_)describe_local_gateway_route_table_virtual_interface_group_associations "Permalink to this definition")
+describe_local_gateway_route_table_virtual_interface_group_associations(kwargs_)describe_local_gateway_route_table_virtual_interface_group_associations "Permalink to this definition")
 
 Describes the associations between virtual interface groups and local gateway route tables.
 
@@ -34765,7 +34765,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_local_gateway_route_table_vpc_associations(_**kwargs_)definition")
+describe_local_gateway_route_table_vpc_associations(kwargs_)definition")
 
 Describes the specified associations between VPCs and local gateway route tables.
 
@@ -34929,7 +34929,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_local_gateway_route_tables(_**kwargs_)
+describe_local_gateway_route_tables(kwargs_)
 
 Describes one or more local gateway route tables. By default, all local gateway route tables are described. Alternatively, you can filter the results.
 
@@ -35087,7 +35087,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_local_gateway_virtual_interface_groups(_**kwargs_)definition")
+describe_local_gateway_virtual_interface_groups(kwargs_)definition")
 
 Describes the specified local gateway virtual interface groups.
 
@@ -35237,7 +35237,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_local_gateway_virtual_interfaces(_**kwargs_)
+describe_local_gateway_virtual_interfaces(kwargs_)
 
 Describes the specified local gateway virtual interfaces.
 
@@ -35400,7 +35400,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_local_gateways(_**kwargs_)
+describe_local_gateways(kwargs_)
 
 Describes one or more local gateways. By default, all local gateways are described. Alternatively, you can filter the results.
 
@@ -35550,7 +35550,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_managed_prefix_lists(_**kwargs_)
+describe_managed_prefix_lists(kwargs_)
 
 Describes your managed prefix lists and any AWS-managed prefix lists.
 
@@ -35724,7 +35724,7 @@ Returns
                 The ID of the owner of the prefix list.
                 
 
-describe_moving_addresses(_**kwargs_)
+describe_moving_addresses(kwargs_)
 
 Describes your Elastic IP addresses that are being moved to the EC2-VPC platform, or that are being restored to the EC2-Classic platform. This request does not return information about any other Elastic IP addresses in your account.
 
@@ -35861,7 +35861,7 @@ Expected Output:
     },
 }
 
-describe_nat_gateways(_**kwargs_)
+describe_nat_gateways(kwargs_)
 
 Describes one or more of your NAT gateways.
 
@@ -36147,7 +36147,7 @@ Expected Output:
     },
 }
 
-describe_network_acls(_**kwargs_)
+describe_network_acls(kwargs_)
 
 Describes one or more of your network ACLs.
 
@@ -36466,7 +36466,7 @@ Expected Output:
     },
 }
 
-describe_network_insights_analyses(_**kwargs_)
+describe_network_insights_analyses(kwargs_)
 
 Describes one or more of your network insights analyses.
 
@@ -38189,7 +38189,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_network_insights_paths(_**kwargs_)
+describe_network_insights_paths(kwargs_)
 
 Describes one or more of your paths.
 
@@ -38363,7 +38363,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_network_interface_attribute(_**kwargs_)
+describe_network_interface_attribute(kwargs_)
 
 Describes a network interface attribute. You can specify only one attribute at a time.
 
@@ -38596,7 +38596,7 @@ Expected Output:
     },
 }
 
-describe_network_interface_permissions(_**kwargs_)
+describe_network_interface_permissions(kwargs_)
 
 Describes the permissions for your network interfaces.
 
@@ -38740,7 +38740,7 @@ Returns
         The token to use to retrieve the next page of results.
         
 
-describe_network_interfaces(_**kwargs_)
+describe_network_interfaces(kwargs_)
 
 Describes one or more of your network interfaces.
 
@@ -39245,7 +39245,7 @@ Expected Output:
     },
 }
 
-describe_placement_groups(_**kwargs_)
+describe_placement_groups(kwargs_)
 
 Describes the specified placement groups or all of your placement groups. For more information, see [Placement groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -39400,7 +39400,7 @@ Returns
                         Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                         
 
-describe_prefix_lists(_**kwargs_)
+describe_prefix_lists(kwargs_)
 
 Describes available AWS services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service.
 
@@ -39520,7 +39520,7 @@ Returns
                 The name of the prefix.
                 
 
-describe_principal_id_format(_**kwargs_)
+describe_principal_id_format(kwargs_)
 
 Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference.
 
@@ -39617,7 +39617,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_public_ipv4_pools(_**kwargs_)
+describe_public_ipv4_pools(kwargs_)
 
 Describes the specified IPv4 address pools.
 
@@ -39798,7 +39798,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_regions(_**kwargs_)
+describe_regions(kwargs_)
 
 Describes the Regions that are enabled for your account, or all Regions.
 
@@ -39974,7 +39974,7 @@ Expected Output:
     },
 }
 
-describe_reserved_instances(_**kwargs_)
+describe_reserved_instances(kwargs_)
 
 Describes one or more of the Reserved Instances that you purchased.
 
@@ -40214,7 +40214,7 @@ Returns
                         Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                         
 
-describe_reserved_instances_listings(_**kwargs_)
+describe_reserved_instances_listings(kwargs_)
 
 Describes your account's Reserved Instance listings in the Reserved Instance Marketplace.
 
@@ -40428,7 +40428,7 @@ Returns
                 The last modified timestamp of the listing.
                 
 
-describe_reserved_instances_modifications(_**kwargs_)
+describe_reserved_instances_modifications(kwargs_)
 
 Describes the modifications made to your Reserved Instances. If no parameter is specified, information about all your Reserved Instances modification requests is returned. If a modification ID is specified, only information about the specific modification is returned.
 
@@ -40643,7 +40643,7 @@ Returns
                 The time when the modification request was last updated.
                 
 
-describe_reserved_instances_offerings(_**kwargs_)
+describe_reserved_instances_offerings(kwargs_)
 
 Describes Reserved Instance offerings that are available for purchase. With Reserved Instances, you purchase the right to launch instances for a period of time. During that time period, you do not receive insufficient capacity errors, and you pay a lower usage rate than the rate charged for On-Demand instances for the actual time used.
 
@@ -40912,7 +40912,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_route_tables(_**kwargs_)
+describe_route_tables(kwargs_)
 
 Describes one or more of your route tables.
 
@@ -41283,7 +41283,7 @@ Expected Output:
     },
 }
 
-describe_scheduled_instance_availability(_**kwargs_)
+describe_scheduled_instance_availability(kwargs_)
 
 Finds available schedules that meet the specified criteria.
 
@@ -41587,7 +41587,7 @@ Expected Output:
     },
 }
 
-describe_scheduled_instances(_**kwargs_)
+describe_scheduled_instances(kwargs_)
 
 Describes the specified Scheduled Instances or all your Scheduled Instances.
 
@@ -41857,7 +41857,7 @@ Expected Output:
     },
 }
 
-describe_security_group_references(_**kwargs_)
+describe_security_group_references(kwargs_)
 
 [VPC only] Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request.
 
@@ -41953,7 +41953,7 @@ Expected Output:
     },
 }
 
-describe_security_groups(_**kwargs_)
+describe_security_groups(kwargs_)
 
 Describes the specified security groups or all of your security groups.
 
@@ -42496,7 +42496,7 @@ Expected Output:
     },
 }
 
-describe_snapshot_attribute(_**kwargs_)
+describe_snapshot_attribute(kwargs_)
 
 Describes the specified attribute of the specified snapshot. You can specify only one attribute at a time.
 
@@ -42615,7 +42615,7 @@ Expected Output:
     },
 }
 
-describe_snapshots(_**kwargs_)
+describe_snapshots(kwargs_)
 
 Describes the specified EBS snapshots available to you or all of the EBS snapshots available to you.
 
@@ -42928,7 +42928,7 @@ Expected Output:
     },
 }
 
-describe_spot_datafeed_subscription(_**kwargs_)
+describe_spot_datafeed_subscription(kwargs_)
 
 Describes the data feed for Spot Instances. For more information, see [Spot Instance data feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) in the _Amazon EC2 User Guide for Linux Instances_ .
 
@@ -43027,7 +43027,7 @@ Expected Output:
     },
 }
 
-describe_spot_fleet_instances(_**kwargs_)
+describe_spot_fleet_instances(kwargs_)
 
 Describes the running instances for the specified Spot Fleet.
 
@@ -43140,7 +43140,7 @@ Expected Output:
     },
 }
 
-describe_spot_fleet_request_history(_**kwargs_)
+describe_spot_fleet_request_history(kwargs_)
 
 Describes the events for the specified Spot Fleet request during the specified time.
 
@@ -43347,7 +43347,7 @@ Expected Output:
     },
 }
 
-describe_spot_fleet_requests(_**kwargs_)
+describe_spot_fleet_requests(kwargs_)
 
 Describes your Spot Fleet requests.
 
@@ -44256,7 +44256,7 @@ Expected Output:
     },
 }
 
-describe_spot_instance_requests(_**kwargs_)
+describe_spot_instance_requests(kwargs_)
 
 Describes the specified Spot Instance requests.
 
@@ -44962,7 +44962,7 @@ Expected Output:
     },
 }
 
-describe_spot_price_history(_**kwargs_)
+describe_spot_price_history(kwargs_)
 
 Describes the Spot price history. For more information, see [Spot Instance pricing history](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html) in the _Amazon EC2 User Guide for Linux Instances_ .
 
@@ -45149,7 +45149,7 @@ Expected Output:
     },
 }
 
-describe_stale_security_groups(_**kwargs_)
+describe_stale_security_groups(kwargs_)
 
 [VPC only] Describes the stale security group rules for security groups in a specified VPC. Rules are stale when they reference a deleted security group in a peer VPC, or a security group in a peer VPC for which the VPC peering connection has been deleted.
 
@@ -45425,7 +45425,7 @@ Returns
                 The ID of the VPC for the security group.
                 
 
-describe_subnets(_**kwargs_)
+describe_subnets(kwargs_)
 
 Describes one or more of your subnets.
 
@@ -45718,7 +45718,7 @@ Expected Output:
     },
 }
 
-describe_tags(_**kwargs_)
+describe_tags(kwargs_)
 
 Describes the specified tags for your EC2 resources.
 
@@ -45874,7 +45874,7 @@ Expected Output:
     },
 }
 
-describe_traffic_mirror_filters(_**kwargs_)
+describe_traffic_mirror_filters(kwargs_)
 
 Describes one or more Traffic Mirror filters.
 
@@ -46196,7 +46196,7 @@ Returns
         The token to use to retrieve the next page of results. The value is null when there are no more results to return.
         
 
-describe_traffic_mirror_sessions(_**kwargs_)
+describe_traffic_mirror_sessions(kwargs_)
 
 Describes one or more Traffic Mirror sessions. By default, all Traffic Mirror sessions are described. Alternatively, you can filter the results.
 
@@ -46376,7 +46376,7 @@ Returns
         The token to use to retrieve the next page of results. The value is null when there are no more results to return.
         
 
-describe_traffic_mirror_targets(_**kwargs_)
+describe_traffic_mirror_targets(kwargs_)
 
 Information about one or more Traffic Mirror targets.
 
@@ -46535,7 +46535,7 @@ Returns
         The token to use to retrieve the next page of results. The value is null when there are no more results to return.
         
 
-describe_transit_gateway_attachments(_**kwargs_)
+describe_transit_gateway_attachments(kwargs_)
 
 Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.
 
@@ -46724,7 +46724,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_transit_gateway_connect_peers(_**kwargs_)
+describe_transit_gateway_connect_peers(kwargs_)
 
 Describes one or more Connect peers.
 
@@ -46937,7 +46937,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_transit_gateway_connects(_**kwargs_)
+describe_transit_gateway_connects(kwargs_)
 
 Describes one or more Connect attachments.
 
@@ -47102,7 +47102,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_transit_gateway_multicast_domains(_**kwargs_)
+describe_transit_gateway_multicast_domains(kwargs_)
 
 Describes one or more transit gateway multicast domains.
 
@@ -47280,7 +47280,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_transit_gateway_peering_attachments(_**kwargs_)
+describe_transit_gateway_peering_attachments(kwargs_)
 
 Describes your transit gateway peering attachments.
 
@@ -47484,7 +47484,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_transit_gateway_route_tables(_**kwargs_)
+describe_transit_gateway_route_tables(kwargs_)
 
 Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results.
 
@@ -47643,7 +47643,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_transit_gateway_vpc_attachments(_**kwargs_)
+describe_transit_gateway_vpc_attachments(kwargs_)
 
 Describes one or more VPC attachments. By default, all VPC attachments are described. Alternatively, you can filter the results.
 
@@ -47830,7 +47830,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_transit_gateways(_**kwargs_)
+describe_transit_gateways(kwargs_)
 
 Describes one or more transit gateways. By default, all transit gateways are described. Alternatively, you can filter the results.
 
@@ -48054,7 +48054,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_volume_attribute(_**kwargs_)
+describe_volume_attribute(kwargs_)
 
 Describes the specified attribute of the specified volume. You can specify only one attribute at a time.
 
@@ -48163,7 +48163,7 @@ Expected Output:
     },
 }
 
-describe_volume_status(_**kwargs_)
+describe_volume_status(kwargs_)
 
 Describes the status of the specified volumes. Volume status provides the result of the checks performed on your volumes to determine events that can impair the performance of your volumes. The performance of a volume can be affected if an issue occurs on the volume's underlying host. If the volume's underlying host experiences a power outage or system issue, after the system is restored, there could be data inconsistencies on the volume. Volume events notify you if this occurs. Volume actions notify you if any action needs to be taken in response to the event.
 
@@ -48497,7 +48497,7 @@ Expected Output:
     },
 }
 
-describe_volumes(_**kwargs_)
+describe_volumes(kwargs_)
 
 Describes the specified EBS volumes or all of your EBS volumes.
 
@@ -48843,7 +48843,7 @@ Expected Output:
     },
 }
 
-describe_volumes_modifications(_**kwargs_)
+describe_volumes_modifications(kwargs_)
 
 Describes the most recent volume modification request for the specified EBS volumes.
 
@@ -49038,7 +49038,7 @@ Returns
         Token for pagination, null if there are no more results
         
 
-describe_vpc_attribute(_**kwargs_)
+describe_vpc_attribute(kwargs_)
 
 Describes the specified attribute of the specified VPC. You can specify only one attribute at a time.
 
@@ -49155,7 +49155,7 @@ Expected Output:
     },
 }
 
-describe_vpc_classic_link(_**kwargs_)
+describe_vpc_classic_link(kwargs_)
 
 Describes the ClassicLink status of one or more VPCs.
 
@@ -49283,7 +49283,7 @@ Returns
                 The ID of the VPC.
                 
 
-describe_vpc_classic_link_dns_support(_**kwargs_)
+describe_vpc_classic_link_dns_support(kwargs_)
 
 Describes the ClassicLink DNS support status of one or more VPCs. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -49352,7 +49352,7 @@ Returns
                 The ID of the VPC.
                 
 
-describe_vpc_endpoint_connection_notifications(_**kwargs_)definition")
+describe_vpc_endpoint_connection_notifications(kwargs_)definition")
 
 Describes the connection notifications for VPC endpoints and VPC endpoint services.
 
@@ -49488,7 +49488,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_vpc_endpoint_connections(_**kwargs_)
+describe_vpc_endpoint_connections(kwargs_)
 
 Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that are pending your acceptance.
 
@@ -49645,7 +49645,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_vpc_endpoint_service_configurations(_**kwargs_)
+describe_vpc_endpoint_service_configurations(kwargs_)
 
 Describes the VPC endpoint service configurations in your account (your services).
 
@@ -49881,7 +49881,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_vpc_endpoint_service_permissions(_**kwargs_)
+describe_vpc_endpoint_service_permissions(kwargs_)
 
 Describes the principals (service consumers) that are permitted to discover your VPC endpoint service.
 
@@ -49990,7 +49990,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_vpc_endpoint_services(_**kwargs_)
+describe_vpc_endpoint_services(kwargs_)
 
 Describes available services to which you can create a VPC endpoint.
 
@@ -50226,7 +50226,7 @@ Returns
         The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
         
 
-describe_vpc_endpoints(_**kwargs_)
+describe_vpc_endpoints(kwargs_)
 
 Describes one or more of your VPC endpoints.
 
@@ -50498,7 +50498,7 @@ Returns
         The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
         
 
-describe_vpc_peering_connections(_**kwargs_)
+describe_vpc_peering_connections(kwargs_)
 
 Describes one or more of your VPC peering connections.
 
@@ -50824,7 +50824,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-describe_vpcs(_**kwargs_)
+describe_vpcs(kwargs_)
 
 Describes one or more of your VPCs.
 
@@ -51122,7 +51122,7 @@ Expected Output:
     },
 }
 
-describe_vpn_connections(_**kwargs_)
+describe_vpn_connections(kwargs_)
 
 Describes one or more of your VPN connections.
 
@@ -51596,7 +51596,7 @@ Returns
                         The Amazon Resource Name (ARN) of the VPN tunnel endpoint certificate.
                         
 
-describe_vpn_gateways(_**kwargs_)
+describe_vpn_gateways(kwargs_)
 
 Describes one or more of your virtual private gateways.
 
@@ -51773,7 +51773,7 @@ Returns
                         Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                         
 
-detach_classic_link_vpc(_**kwargs_)
+detach_classic_link_vpc(kwargs_)
 
 Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the instance has been unlinked, the VPC security groups are no longer associated with it. An instance is automatically unlinked from a VPC when it's stopped.
 
@@ -51824,7 +51824,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-detach_internet_gateway(_**kwargs_)
+detach_internet_gateway(kwargs_)
 
 Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.
 
@@ -51877,7 +51877,7 @@ Expected Output:
     },
 }
 
-detach_network_interface(_**kwargs_)
+detach_network_interface(kwargs_)
 
 Detaches a network interface from an instance.
 
@@ -51933,7 +51933,7 @@ Expected Output:
     },
 }
 
-detach_volume(_**kwargs_)
+detach_volume(kwargs_)
 
 Detaches an EBS volume from an instance. Make sure to unmount any file systems on the device within your operating system before detaching the volume. Failure to do so can result in the volume becoming stuck in the busy state while detaching. If this happens, detachment can be delayed indefinitely until you unmount the volume, force detachment, reboot the instance, or all three. If an EBS volume is the root device of an instance, it can't be detached while the instance is running. To detach the root volume, stop the instance first.
 
@@ -52037,7 +52037,7 @@ Expected Output:
     },
 }
 
-detach_vpn_gateway(_**kwargs_)
+detach_vpn_gateway(kwargs_)
 
 Detaches a virtual private gateway from a VPC. You do this if you're planning to turn off the VPC and not use it anymore. You can confirm a virtual private gateway has been completely detached from a VPC by describing the virtual private gateway (any attachments to the virtual private gateway are also described).
 
@@ -52073,7 +52073,7 @@ Returns
 
 None
 
-disable_ebs_encryption_by_default(_**kwargs_)
+disable_ebs_encryption_by_default(kwargs_)
 
 Disables EBS encryption by default for your account in the current Region.
 
@@ -52115,7 +52115,7 @@ Returns
         The updated status of encryption by default.
         
 
-disable_fast_snapshot_restores(_**kwargs_)
+disable_fast_snapshot_restores(kwargs_)
 
 Disables fast snapshot restores for the specified snapshots in the specified Availability Zones.
 
@@ -52286,7 +52286,7 @@ Returns
                             The error message.
                             
 
-disable_transit_gateway_route_table_propagation(_**kwargs_)definition")
+disable_transit_gateway_route_table_propagation(kwargs_)definition")
 
 Disables the specified resource attachment from propagating routes to the specified propagation route table.
 
@@ -52363,7 +52363,7 @@ Returns
             The state.
             
 
-disable_vgw_route_propagation(_**kwargs_)
+disable_vgw_route_propagation(kwargs_)
 
 Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC.
 
@@ -52416,7 +52416,7 @@ Expected Output:
     },
 }
 
-disable_vpc_classic_link(_**kwargs_)
+disable_vpc_classic_link(kwargs_)
 
 Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances linked to it.
 
@@ -52460,7 +52460,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-disable_vpc_classic_link_dns_support(_**kwargs_)
+disable_vpc_classic_link_dns_support(kwargs_)
 
 Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames resolve to public IP addresses when addressed between a linked EC2-Classic instance and instances in the VPC to which it's linked. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -52498,7 +52498,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-disassociate_address(_**kwargs_)
+disassociate_address(kwargs_)
 
 Disassociates an Elastic IP address from the instance or network interface it's associated with.
 
@@ -52560,7 +52560,7 @@ Expected Output:
     },
 }
 
-disassociate_client_vpn_target_network(_**kwargs_)
+disassociate_client_vpn_target_network(kwargs_)
 
 Disassociates a target network from the specified Client VPN endpoint. When you disassociate the last target network from a Client VPN, the following happens:
 
@@ -52632,7 +52632,7 @@ Returns
             A message about the status of the target network association, if applicable.
             
 
-disassociate_enclave_certificate_iam_role(_**kwargs_)
+disassociate_enclave_certificate_iam_role(kwargs_)
 
 Disassociates an IAM role from an AWS Certificate Manager (ACM) certificate. Disassociating an IAM role from an ACM certificate removes the Amazon S3 object that contains the certificate, certificate chain, and encrypted private key from the Amazon S3 bucket. It also revokes the IAM role's permission to use the AWS Key Management Service (KMS) customer master key (CMK) used to encrypt the private key. This effectively revokes the role's permission to use the certificate.
 
@@ -52673,7 +52673,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-disassociate_iam_instance_profile(_**kwargs_)
+disassociate_iam_instance_profile(kwargs_)
 
 Disassociates an IAM instance profile from a running or stopped instance.
 
@@ -52779,7 +52779,7 @@ Expected Output:
     },
 }
 
-disassociate_route_table(_**kwargs_)
+disassociate_route_table(kwargs_)
 
 Disassociates a subnet or gateway from a route table.
 
@@ -52826,7 +52826,7 @@ Expected Output:
     },
 }
 
-disassociate_subnet_cidr_block(_**kwargs_)
+disassociate_subnet_cidr_block(kwargs_)
 
 Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only. You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
 
@@ -52898,7 +52898,7 @@ Returns
         The ID of the subnet.
         
 
-disassociate_transit_gateway_multicast_domain(_**kwargs_)
+disassociate_transit_gateway_multicast_domain(kwargs_)
 
 Disassociates the specified subnets from the transit gateway multicast domain.
 
@@ -52995,7 +52995,7 @@ Returns
                     The state of the subnet association.
                     
 
-disassociate_transit_gateway_route_table(_**kwargs_)
+disassociate_transit_gateway_route_table(kwargs_)
 
 Disassociates a resource attachment from a transit gateway route table.
 
@@ -53072,7 +53072,7 @@ Returns
             The state of the association.
             
 
-disassociate_vpc_cidr_block(_**kwargs_)
+disassociate_vpc_cidr_block(kwargs_)
 
 Disassociates a CIDR block from a VPC. To disassociate the CIDR block, you must specify its association ID. You can get the association ID by using DescribeVpcs . You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
 
@@ -53188,7 +53188,7 @@ Returns
         The ID of the VPC.
         
 
-enable_ebs_encryption_by_default(_**kwargs_)
+enable_ebs_encryption_by_default(kwargs_)
 
 Enables EBS encryption by default for your account in the current Region.
 
@@ -53232,7 +53232,7 @@ Returns
         The updated status of encryption by default.
         
 
-enable_fast_snapshot_restores(_**kwargs_)
+enable_fast_snapshot_restores(kwargs_)
 
 Enables fast snapshot restores for the specified snapshots in the specified Availability Zones.
 
@@ -53407,7 +53407,7 @@ Returns
                             The error message.
                             
 
-enable_transit_gateway_route_table_propagation(_**kwargs_)definition")
+enable_transit_gateway_route_table_propagation(kwargs_)definition")
 
 Enables the specified attachment to propagate routes to the specified propagation route table.
 
@@ -53484,7 +53484,7 @@ Returns
             The state.
             
 
-enable_vgw_route_propagation(_**kwargs_)
+enable_vgw_route_propagation(kwargs_)
 
 Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
 
@@ -53537,7 +53537,7 @@ Expected Output:
     },
 }
 
-enable_volume_io(_**kwargs_)
+enable_volume_io(kwargs_)
 
 Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.
 
@@ -53582,7 +53582,7 @@ Expected Output:
     },
 }
 
-enable_vpc_classic_link(_**kwargs_)
+enable_vpc_classic_link(kwargs_)
 
 Enables a VPC for ClassicLink. You can then link EC2-Classic instances to your ClassicLink-enabled VPC to allow communication over private IP addresses. You cannot enable your VPC for ClassicLink if any of your VPC route tables have existing routes for address ranges within the 10.0.0.0/8 IP address range, excluding local routes for VPCs in the 10.0.0.0/16 and 10.1.0.0/16 IP address ranges. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -53626,7 +53626,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-enable_vpc_classic_link_dns_support(_**kwargs_)
+enable_vpc_classic_link_dns_support(kwargs_)
 
 Enables a VPC to support DNS hostname resolution for ClassicLink. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -53664,7 +53664,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-export_client_vpn_client_certificate_revocation_list(_**kwargs_)this definition")
+export_client_vpn_client_certificate_revocation_list(kwargs_)this definition")
 
 Downloads the client certificate revocation list for the specified Client VPN endpoint.
 
@@ -53724,7 +53724,7 @@ Returns
             A message about the status of the client certificate revocation list, if applicable.
             
 
-export_client_vpn_client_configuration(_**kwargs_)
+export_client_vpn_client_configuration(kwargs_)
 
 Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint. The Client VPN endpoint configuration file includes the Client VPN endpoint and certificate information clients need to establish a connection with the Client VPN endpoint.
 
@@ -53768,7 +53768,7 @@ Returns
         The contents of the Client VPN endpoint configuration file.
         
 
-export_image(_**kwargs_)
+export_image(kwargs_)
 
 Exports an Amazon Machine Image (AMI) to a VM file. For more information, see [Exporting a VM Directory from an Amazon Machine Image (AMI)](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html) in the _VM Import/Export User Guide_ .
 
@@ -53970,7 +53970,7 @@ Returns
                 Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                 
 
-export_transit_gateway_routes(_**kwargs_)
+export_transit_gateway_routes(kwargs_)
 
 Exports routes from the specified transit gateway route table to the specified S3 bucket. By default, all routes are exported. Alternatively, you can filter by CIDR range.
 
@@ -54084,7 +54084,7 @@ Returns
 
 The presigned url
 
-get_associated_enclave_certificate_iam_roles(_**kwargs_)
+get_associated_enclave_certificate_iam_roles(kwargs_)
 
 Returns the IAM roles that are associated with the specified AWS Certificate Manager (ACM) certificate. It also returns the name of the Amazon S3 bucket and the Amazon S3 object key where the certificate, certificate chain, and encrypted private key bundle are stored, and the ARN of the AWS Key Management Service (KMS) customer master key (CMK) that's used to encrypt the private key.
 
@@ -54150,7 +54150,7 @@ Returns
                 The ID of the KMS customer master key (CMK) used to encrypt the private key.
                 
 
-get_associated_ipv6_pool_cidrs(_**kwargs_)
+get_associated_ipv6_pool_cidrs(kwargs_)
 
 Gets information about the IPv6 CIDR block associations for a specified IPv6 address pool.
 
@@ -54220,7 +54220,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-get_capacity_reservation_usage(_**kwargs_)
+get_capacity_reservation_usage(kwargs_)
 
 Gets usage information about a Capacity Reservation. If the Capacity Reservation is shared, it shows usage information for the Capacity Reservation owner and each AWS account that is currently using the shared capacity. If the Capacity Reservation is not shared, it shows only the Capacity Reservation owner's usage.
 
@@ -54325,7 +54325,7 @@ Returns
                 The number of instances the AWS account currently has in the Capacity Reservation.
                 
 
-get_coip_pool_usage(_**kwargs_)
+get_coip_pool_usage(kwargs_)
 
 Describes the allocations from the specified customer-owned address pool.
 
@@ -54451,7 +54451,7 @@ Returns
         The ID of the local gateway route table.
         
 
-get_console_output(_**kwargs_)
+get_console_output(kwargs_)
 
 Gets the console output for the specified instance. For Linux instances, the instance console output displays the exact console output that would normally be displayed on a physical monitor attached to a computer. For Windows instances, the instance console output includes the last three system event log errors.
 
@@ -54539,7 +54539,7 @@ Expected Output:
     },
 }
 
-get_console_screenshot(_**kwargs_)
+get_console_screenshot(kwargs_)
 
 Retrieve a JPG-format screenshot of a running instance to help with troubleshooting.
 
@@ -54592,7 +54592,7 @@ Returns
         The ID of the instance.
         
 
-get_default_credit_specification(_**kwargs_)
+get_default_credit_specification(kwargs_)
 
 Describes the default credit option for CPU usage of a burstable performance instance family.
 
@@ -54649,7 +54649,7 @@ Returns
             The default credit option for CPU usage of the instance family. Valid values are standard and unlimited .
             
 
-get_ebs_default_kms_key_id(_**kwargs_)
+get_ebs_default_kms_key_id(kwargs_)
 
 Describes the default customer master key (CMK) for EBS encryption by default for your account in this Region. You can change the default CMK for encryption by default using ModifyEbsDefaultKmsKeyId or ResetEbsDefaultKmsKeyId .
 
@@ -54687,7 +54687,7 @@ Returns
         The Amazon Resource Name (ARN) of the default CMK for encryption by default.
         
 
-get_ebs_encryption_by_default(_**kwargs_)
+get_ebs_encryption_by_default(kwargs_)
 
 Describes whether EBS encryption by default is enabled for your account in the current Region.
 
@@ -54725,7 +54725,7 @@ Returns
         Indicates whether encryption by default is enabled.
         
 
-get_groups_for_capacity_reservation(_**kwargs_)
+get_groups_for_capacity_reservation(kwargs_)
 
 Lists the resource groups to which a Capacity Reservation has been added.
 
@@ -54795,7 +54795,7 @@ Returns
                 The ID of the AWS account that owns the resource group.
                 
 
-get_host_reservation_purchase_preview(_**kwargs_)
+get_host_reservation_purchase_preview(kwargs_)
 
 Preview a reservation purchase with configurations that match those of your Dedicated Host. You must have active Dedicated Hosts in your account before you purchase a reservation.
 
@@ -54914,7 +54914,7 @@ Returns
         The potential total upfront price. This is billed immediately.
         
 
-get_launch_template_data(_**kwargs_)
+get_launch_template_data(kwargs_)
 
 Retrieves the configuration data of the specified instance. You can use this data to create a launch template.
 
@@ -55619,7 +55619,7 @@ Expected Output:
     },
 }
 
-get_managed_prefix_list_associations(_**kwargs_)
+get_managed_prefix_list_associations(kwargs_)
 
 Gets information about the resources that are associated with the specified managed prefix list.
 
@@ -55689,7 +55689,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-get_managed_prefix_list_entries(_**kwargs_)
+get_managed_prefix_list_entries(kwargs_)
 
 Gets information about the entries for a specified managed prefix list.
 
@@ -55781,7 +55781,7 @@ Returns
 
 A paginator object.
 
-get_password_data(_**kwargs_)
+get_password_data(kwargs_)
 
 Retrieves the encrypted administrator password for a running Windows instance.
 
@@ -55843,7 +55843,7 @@ Returns
         The time the data was last updated.
         
 
-get_reserved_instances_exchange_quote(_**kwargs_)
+get_reserved_instances_exchange_quote(kwargs_)
 
 Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance. If the exchange cannot be performed, the reason is returned in the response. Use AcceptReservedInstancesExchangeQuote to perform the exchange.
 
@@ -56063,7 +56063,7 @@ Returns
         Describes the reason why the exchange cannot be completed.
         
 
-get_transit_gateway_attachment_propagations(_**kwargs_)
+get_transit_gateway_attachment_propagations(kwargs_)
 
 Lists the route tables to which the specified resource attachment propagates routes.
 
@@ -56171,7 +56171,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-get_transit_gateway_multicast_domain_associations(_**kwargs_)definition")
+get_transit_gateway_multicast_domain_associations(kwargs_)definition")
 
 Gets information about the associations for the transit gateway multicast domain.
 
@@ -56304,7 +56304,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-get_transit_gateway_prefix_list_references(_**kwargs_)
+get_transit_gateway_prefix_list_references(kwargs_)
 
 Gets information about the prefix list references in a specified transit gateway route table.
 
@@ -56454,7 +56454,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-get_transit_gateway_route_table_associations(_**kwargs_)
+get_transit_gateway_route_table_associations(kwargs_)
 
 Gets information about the associations for the specified transit gateway route table.
 
@@ -56574,7 +56574,7 @@ Returns
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         
 
-get_transit_gateway_route_table_propagations(_**kwargs_)
+get_transit_gateway_route_table_propagations(kwargs_)
 
 Gets information about the route table propagations for the specified transit gateway route table.
 
@@ -56710,7 +56710,7 @@ Return type
 
 botocore.waiter.Waiter
 
-import_client_vpn_client_certificate_revocation_list(_**kwargs_)this definition")
+import_client_vpn_client_certificate_revocation_list(kwargs_)this definition")
 
 Uploads a client certificate revocation list to the specified Client VPN endpoint. Uploading a client certificate revocation list overwrites the existing client certificate revocation list.
 
@@ -56763,7 +56763,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-import_image(_**kwargs_)
+import_image(kwargs_)
 
 Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI). For more information, see [Importing a VM as an Image Using VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) in the _VM Import/Export User Guide_ .
 
@@ -57170,7 +57170,7 @@ Returns
                 Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                 
 
-import_instance(_**kwargs_)
+import_instance(kwargs_)
 
 Creates an import instance task using metadata from the specified disk image. ImportInstance only supports single-volume VMs. To import multi-volume VMs, use ImportImage . For more information, see [Importing a Virtual Machine Using the Amazon EC2 CLI](https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html) .
 
@@ -57613,7 +57613,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-import_key_pair(_**kwargs_)
+import_key_pair(kwargs_)
 
 Imports the public key from an RSA key pair that you created with a third-party tool. Compare this with CreateKeyPair , in which AWS creates the key pair and gives the keys to you (AWS keeps a copy of the public key). With ImportKeyPair, you create the key pair and give AWS just the public key. The private key is never transferred between you and AWS.
 
@@ -57747,7 +57747,7 @@ Returns
                 Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                 
 
-import_snapshot(_**kwargs_)
+import_snapshot(kwargs_)
 
 Imports a disk into an EBS snapshot.
 
@@ -58023,7 +58023,7 @@ Returns
                 Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                 
 
-import_volume(_**kwargs_)
+import_volume(kwargs_)
 
 Creates an import volume task using metadata from the specified disk image.For more information, see [Importing Disks to Amazon EBS](https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html) .
 
@@ -58323,7 +58323,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-modify_availability_zone_group(_**kwargs_)
+modify_availability_zone_group(kwargs_)
 
 Changes the opt-in status of the Local Zone and Wavelength Zone group for your account.
 
@@ -58376,7 +58376,7 @@ Returns
         Is true if the request succeeds, and an error otherwise.
         
 
-modify_capacity_reservation(_**kwargs_)
+modify_capacity_reservation(kwargs_)
 
 Modifies a Capacity Reservation's capacity and the conditions under which it is to be released. You cannot change a Capacity Reservation's instance type, EBS optimization, instance store settings, platform, Availability Zone, or instance eligibility. If you need to modify any of these attributes, we recommend that you cancel the Capacity Reservation, and then create a new one with the required attributes.
 
@@ -58438,7 +58438,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-modify_client_vpn_endpoint(_**kwargs_)
+modify_client_vpn_endpoint(kwargs_)
 
 Modifies the specified Client VPN endpoint. Modifying the DNS server resets existing client connections.
 
@@ -58577,7 +58577,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-modify_default_credit_specification(_**kwargs_)
+modify_default_credit_specification(kwargs_)
 
 Modifies the default credit option for CPU usage of burstable performance instances. The default credit option is set at the account level per AWS Region, and is specified per instance family. All new burstable performance instances in the account launch using the default credit option.
 
@@ -58645,7 +58645,7 @@ Returns
             The default credit option for CPU usage of the instance family. Valid values are standard and unlimited .
             
 
-modify_ebs_default_kms_key_id(_**kwargs_)
+modify_ebs_default_kms_key_id(kwargs_)
 
 Changes the default customer master key (CMK) for EBS encryption by default for your account in this Region.
 
@@ -58706,7 +58706,7 @@ Returns
         The Amazon Resource Name (ARN) of the default CMK for encryption by default.
         
 
-modify_fleet(_**kwargs_)
+modify_fleet(kwargs_)
 
 Modifies the specified EC2 Fleet.
 
@@ -58929,7 +58929,7 @@ Returns
         Is true if the request succeeds, and an error otherwise.
         
 
-modify_fpga_image_attribute(_**kwargs_)
+modify_fpga_image_attribute(kwargs_)
 
 Modifies the specified attribute of the specified Amazon FPGA Image (AFI).
 
@@ -59115,7 +59115,7 @@ Returns
                     The type of product code.
                     
 
-modify_hosts(_**kwargs_)
+modify_hosts(kwargs_)
 
 Modify the auto-placement setting of a Dedicated Host. When auto-placement is enabled, any instances that you launch with a tenancy of host but without a specific host ID are placed onto any available Dedicated Host in your account that has auto-placement enabled. When auto-placement is disabled, you need to provide a host ID to have the instance launch onto a specific host. If no host ID is provided, the instance is launched onto a suitable host with auto-placement enabled.
 
@@ -59216,7 +59216,7 @@ Returns
                 The ID of the resource.
                 
 
-modify_id_format(_**kwargs_)
+modify_id_format(kwargs_)
 
 Modifies the ID format for the specified resource on a per-Region basis. You can specify that resources should receive longer IDs (17-character IDs) when they are created.
 
@@ -59256,7 +59256,7 @@ Returns
 
 None
 
-modify_identity_id_format(_**kwargs_)
+modify_identity_id_format(kwargs_)
 
 Modifies the ID format of a resource for a specified IAM user, IAM role, or the root user for an account; or all IAM users, IAM roles, and the root user for an account. You can specify that resources should receive longer IDs (17-character IDs) when they are created.
 
@@ -59305,7 +59305,7 @@ Returns
 
 None
 
-modify_image_attribute(_**kwargs_)
+modify_image_attribute(kwargs_)
 
 Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time. You can use the Attribute parameter to specify the attribute or one of the following parameters: Description , LaunchPermission , or ProductCode .
 
@@ -59475,7 +59475,7 @@ Expected Output:
     },
 }
 
-modify_instance_attribute(_**kwargs_)
+modify_instance_attribute(kwargs_)
 
 Modifies the specified attribute of the specified instance. You can specify only one attribute at a time.
 
@@ -59716,7 +59716,7 @@ Expected Output:
     },
 }
 
-modify_instance_capacity_reservation_attributes(_**kwargs_)definition")
+modify_instance_capacity_reservation_attributes(kwargs_)definition")
 
 Modifies the Capacity Reservation settings for a stopped instance. Use this action to configure an instance to target a specific Capacity Reservation, run in any open Capacity Reservation with matching attributes, or run On-Demand Instance capacity.
 
@@ -59791,7 +59791,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-modify_instance_credit_specification(_**kwargs_)
+modify_instance_credit_specification(kwargs_)
 
 Modifies the credit option for CPU usage on a running or stopped burstable performance instance. The credit options are standard and unlimited .
 
@@ -59901,7 +59901,7 @@ Returns
                     The applicable error message.
                     
 
-modify_instance_event_start_time(_**kwargs_)
+modify_instance_event_start_time(kwargs_)
 
 Modifies the start time for a scheduled Amazon EC2 instance event.
 
@@ -59992,7 +59992,7 @@ Returns
             The deadline for starting the event.
             
 
-modify_instance_metadata_options(_**kwargs_)
+modify_instance_metadata_options(kwargs_)
 
 Modify the instance metadata parameters on a running or stopped instance. When you modify the parameters on a stopped instance, they are applied when the instance is started. When you modify the parameters on a running instance, the API responds with a state of “pending”. After the parameter modifications are successfully applied to the instance, the state of the modifications changes from “pending” to “applied” in subsequent describe-instances API calls. For more information, see [Instance metadata and user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) .
 
@@ -60103,7 +60103,7 @@ Returns
             If you specify a value of disabled , you will not be able to access your instance metadata.
             
 
-modify_instance_placement(_**kwargs_)
+modify_instance_placement(kwargs_)
 
 Modifies the placement attributes for a specified instance. You can do the following:
 
@@ -60171,7 +60171,7 @@ Returns
         Is true if the request succeeds, and an error otherwise.
         
 
-modify_launch_template(_**kwargs_)
+modify_launch_template(kwargs_)
 
 Modifies a launch template. You can specify which version of the launch template to set as the default version. When launching an instance, the default version applies when a launch template version is not specified.
 
@@ -60305,7 +60305,7 @@ Expected Output:
     },
 }
 
-modify_managed_prefix_list(_**kwargs_)
+modify_managed_prefix_list(kwargs_)
 
 Modifies the specified managed prefix list.
 
@@ -60470,7 +60470,7 @@ Returns
             The ID of the owner of the prefix list.
             
 
-modify_network_interface_attribute(_**kwargs_)
+modify_network_interface_attribute(kwargs_)
 
 Modifies the specified network interface attribute. You can specify only one attribute at a time. You can use this action to attach and detach security groups from an existing EC2 instance.
 
@@ -60623,7 +60623,7 @@ Expected Output:
     },
 }
 
-modify_reserved_instances(_**kwargs_)
+modify_reserved_instances(kwargs_)
 
 Modifies the Availability Zone, instance count, instance type, or network platform (EC2-Classic or EC2-VPC) of your Reserved Instances. The Reserved Instances to be modified must be identical, except for Availability Zone, network platform, and instance type.
 
@@ -60717,7 +60717,7 @@ Returns
         The ID for the modification.
         
 
-modify_snapshot_attribute(_**kwargs_)
+modify_snapshot_attribute(kwargs_)
 
 Adds or removes permission settings for the specified snapshot. You may add or remove specified AWS account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single operation. If you need to both add and remove account IDs for a snapshot, you must use multiple operations. You can make up to 500 modifications to a snapshot in a single operation.
 
@@ -60862,7 +60862,7 @@ Expected Output:
     },
 }
 
-modify_spot_fleet_request(_**kwargs_)
+modify_spot_fleet_request(kwargs_)
 
 Modifies the specified Spot Fleet request.
 
@@ -61040,7 +61040,7 @@ Expected Output:
     },
 }
 
-modify_subnet_attribute(_**kwargs_)
+modify_subnet_attribute(kwargs_)
 
 Modifies a subnet attribute. You can only modify one attribute at a time.
 
@@ -61130,7 +61130,7 @@ Expected Output:
     },
 }
 
-modify_traffic_mirror_filter_network_services(_**kwargs_)
+modify_traffic_mirror_filter_network_services(kwargs_)
 
 Allows or restricts mirroring network services.
 
@@ -61417,7 +61417,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-modify_traffic_mirror_filter_rule(_**kwargs_)
+modify_traffic_mirror_filter_rule(kwargs_)
 
 Modifies the specified Traffic Mirror rule.
 
@@ -61597,7 +61597,7 @@ Returns
             The description of the Traffic Mirror rule.
             
 
-modify_traffic_mirror_session(_**kwargs_)
+modify_traffic_mirror_session(kwargs_)
 
 Modifies a Traffic Mirror session.
 
@@ -61742,7 +61742,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-modify_transit_gateway(_**kwargs_)
+modify_transit_gateway(kwargs_)
 
 Modifies the specified transit gateway. When you modify a transit gateway, the modified options are applied to new transit gateway attachments only. Your existing transit gateway attachments are not modified.
 
@@ -61961,7 +61961,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-modify_transit_gateway_prefix_list_reference(_**kwargs_)
+modify_transit_gateway_prefix_list_reference(kwargs_)
 
 Modifies a reference (route) to a prefix list in a specified transit gateway route table.
 
@@ -62063,7 +62063,7 @@ Returns
                 The ID of the resource.
                 
 
-modify_transit_gateway_vpc_attachment(_**kwargs_)
+modify_transit_gateway_vpc_attachment(kwargs_)
 
 Modifies the specified VPC attachment.
 
@@ -62234,7 +62234,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-modify_volume(_**kwargs_)
+modify_volume(kwargs_)
 
 You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity. If your EBS volume is attached to a current-generation EC2 instance type, you might be able to apply these changes without stopping the instance or detaching the volume from it. For more information about modifying an EBS volume running Linux, see [Modifying the size, IOPS, or type of an EBS volume on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html) . For more information about modifying an EBS volume running Windows, see [Modifying the size, IOPS, or type of an EBS volume on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html) .
 
@@ -62412,7 +62412,7 @@ Returns
             The modification completion or failure time.
             
 
-modify_volume_attribute(_**kwargs_)
+modify_volume_attribute(kwargs_)
 
 Modifies a volume attribute.
 
@@ -62476,7 +62476,7 @@ Expected Output:
     },
 }
 
-modify_vpc_attribute(_**kwargs_)
+modify_vpc_attribute(kwargs_)
 
 Modifies the specified attribute of the specified VPC.
 
@@ -62567,7 +62567,7 @@ Expected Output:
     },
 }
 
-modify_vpc_endpoint(_**kwargs_)
+modify_vpc_endpoint(kwargs_)
 
 Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface, gateway, or Gateway Load Balancer). For more information, see [VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -62665,7 +62665,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-modify_vpc_endpoint_connection_notification(_**kwargs_)
+modify_vpc_endpoint_connection_notification(kwargs_)
 
 Modifies a connection notification for VPC endpoint or VPC endpoint service. You can change the SNS topic for the notification, or the events for which to be notified.
 
@@ -62719,7 +62719,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-modify_vpc_endpoint_service_configuration(_**kwargs_)
+modify_vpc_endpoint_service_configuration(kwargs_)
 
 Modifies the attributes of your VPC endpoint service configuration. You can change the Network Load Balancers or Gateway Load Balancers for your service, and you can specify whether acceptance is required for requests to connect to your endpoint service through an interface VPC endpoint.
 
@@ -62803,7 +62803,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-modify_vpc_endpoint_service_permissions(_**kwargs_)
+modify_vpc_endpoint_service_permissions(kwargs_)
 
 Modifies the permissions for your [VPC endpoint service](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html) . You can add or remove permissions for service consumers (IAM users, IAM roles, and AWS accounts) to connect to your endpoint service.
 
@@ -62865,7 +62865,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-modify_vpc_peering_connection_options(_**kwargs_)
+modify_vpc_peering_connection_options(kwargs_)
 
 Modifies the VPC peering connection options on one side of a VPC peering connection. You can do the following:
 
@@ -62994,7 +62994,7 @@ Returns
             If true, enables outbound communication from instances in a local VPC to an EC2-Classic instance that's linked to a peer VPC using ClassicLink.
             
 
-modify_vpc_tenancy(_**kwargs_)
+modify_vpc_tenancy(kwargs_)
 
 Modifies the instance tenancy attribute of the specified VPC. You can change the instance tenancy attribute of a VPC to default only. You cannot change the instance tenancy attribute to dedicated .
 
@@ -63049,7 +63049,7 @@ Returns
         Returns true if the request succeeds; otherwise, returns an error.
         
 
-modify_vpn_connection(_**kwargs_)
+modify_vpn_connection(kwargs_)
 
 Modifies the customer gateway or the target gateway of an AWS Site-to-Site VPN connection. To modify the target gateway, the following migration options are available:
 
@@ -63488,7 +63488,7 @@ Returns
                     The Amazon Resource Name (ARN) of the VPN tunnel endpoint certificate.
                     
 
-modify_vpn_connection_options(_**kwargs_)
+modify_vpn_connection_options(kwargs_)
 
 Modifies the connection options for your Site-to-Site VPN connection.
 
@@ -63930,7 +63930,7 @@ Returns
                     The Amazon Resource Name (ARN) of the VPN tunnel endpoint certificate.
                     
 
-modify_vpn_tunnel_certificate(_**kwargs_)
+modify_vpn_tunnel_certificate(kwargs_)
 
 Modifies the VPN tunnel endpoint certificate.
 
@@ -64349,7 +64349,7 @@ Returns
                     The Amazon Resource Name (ARN) of the VPN tunnel endpoint certificate.
                     
 
-modify_vpn_tunnel_options(_**kwargs_)
+modify_vpn_tunnel_options(kwargs_)
 
 Modifies the options for a VPN tunnel in an AWS Site-to-Site VPN connection. You can modify multiple options for a tunnel in a single request, but you can only modify one tunnel at a time. For more information, see [Site-to-Site VPN Tunnel Options for Your Site-to-Site VPN Connection](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html) in the _AWS Site-to-Site VPN User Guide_ .
 
@@ -65009,7 +65009,7 @@ Returns
                     The Amazon Resource Name (ARN) of the VPN tunnel endpoint certificate.
                     
 
-monitor_instances(_**kwargs_)
+monitor_instances(kwargs_)
 
 Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -65081,7 +65081,7 @@ Returns
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
                     
 
-move_address_to_vpc(_**kwargs_)
+move_address_to_vpc(kwargs_)
 
 Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC platform. The Elastic IP address must be allocated to your account for more than 24 hours, and it must not be associated with an instance. After the Elastic IP address is moved, it is no longer available for use in the EC2-Classic platform, unless you move it back using the RestoreAddressToClassic request. You cannot move an Elastic IP address that was originally allocated for use in the EC2-VPC platform to the EC2-Classic platform.
 
@@ -65149,7 +65149,7 @@ Expected Output:
     },
 }
 
-provision_byoip_cidr(_**kwargs_)
+provision_byoip_cidr(kwargs_)
 
 Provisions an IPv4 or IPv6 address range for use with your AWS resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised using AdvertiseByoipCidr .
 
@@ -65288,7 +65288,7 @@ Returns
             The state of the address pool.
             
 
-purchase_host_reservation(_**kwargs_)
+purchase_host_reservation(kwargs_)
 
 Purchase a reservation with configurations that match those of your Dedicated Host. You must have active Dedicated Hosts in your account before you purchase a reservation. This action results in the specified reservation being purchased and charged to your account.
 
@@ -65461,7 +65461,7 @@ Returns
         The total amount charged to your account when you purchase the reservation.
         
 
-purchase_reserved_instances_offering(_**kwargs_)
+purchase_reserved_instances_offering(kwargs_)
 
 Purchases a Reserved Instance for use with your account. With Reserved Instances, you pay a lower hourly rate compared to On-Demand instance pricing.
 
@@ -65538,7 +65538,7 @@ Returns
         The IDs of the purchased Reserved Instances.
         
 
-purchase_scheduled_instances(_**kwargs_)
+purchase_scheduled_instances(kwargs_)
 
 Purchases the Scheduled Instances with the specified schedule.
 
@@ -65772,7 +65772,7 @@ Expected Output:
     },
 }
 
-reboot_instances(_**kwargs_)
+reboot_instances(kwargs_)
 
 Requests a reboot of the specified instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
 
@@ -65826,7 +65826,7 @@ Expected Output:
     },
 }
 
-register_image(_**kwargs_)
+register_image(kwargs_)
 
 Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see [Creating your own AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -66046,7 +66046,7 @@ Returns
         The ID of the newly registered AMI.
         
 
-register_instance_event_notification_attributes(_**kwargs_)definition")
+register_instance_event_notification_attributes(kwargs_)definition")
 
 Registers a set of tag keys to include in scheduled event notifications for your resources.
 
@@ -66118,7 +66118,7 @@ Returns
             Indicates wheter all tag keys in the current Region are registered to appear in scheduled event notifications. true indicates that all tag keys in the current Region are registered.
             
 
-register_transit_gateway_multicast_group_members(_**kwargs_)definition")
+register_transit_gateway_multicast_group_members(kwargs_)definition")
 
 Registers members (network interfaces) with the transit gateway multicast group. A member is a network interface associated with a supported EC2 instance that receives multicast traffic. For information about supported instances, see [Multicast Consideration](https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits) in _Amazon VPC Transit Gateways_ .
 
@@ -66188,7 +66188,7 @@ Returns
             The IP address assigned to the transit gateway multicast group.
             
 
-register_transit_gateway_multicast_group_sources(_**kwargs_)definition")
+register_transit_gateway_multicast_group_sources(kwargs_)definition")
 
 Registers sources (network interfaces) with the specified transit gateway multicast group.
 
@@ -66260,7 +66260,7 @@ Returns
             The IP address assigned to the transit gateway multicast group.
             
 
-reject_transit_gateway_multicast_domain_associations(_**kwargs_)this definition")
+reject_transit_gateway_multicast_domain_associations(kwargs_)this definition")
 
 Rejects a request to associate cross-account subnets with a transit gateway multicast domain.
 
@@ -66357,7 +66357,7 @@ Returns
                     The state of the subnet association.
                     
 
-reject_transit_gateway_peering_attachment(_**kwargs_)
+reject_transit_gateway_peering_attachment(kwargs_)
 
 Rejects a transit gateway peering attachment request.
 
@@ -66501,7 +66501,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-reject_transit_gateway_vpc_attachment(_**kwargs_)
+reject_transit_gateway_vpc_attachment(kwargs_)
 
 Rejects a request to attach a VPC to a transit gateway.
 
@@ -66633,7 +66633,7 @@ Returns
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                     
 
-reject_vpc_endpoint_connections(_**kwargs_)
+reject_vpc_endpoint_connections(kwargs_)
 
 Rejects one or more VPC endpoint connection requests to your VPC endpoint service.
 
@@ -66715,7 +66715,7 @@ Returns
                 The ID of the resource.
                 
 
-reject_vpc_peering_connection(_**kwargs_)
+reject_vpc_peering_connection(kwargs_)
 
 Rejects a VPC peering connection request. The VPC peering connection must be in the pending-acceptance state. Use the DescribeVpcPeeringConnections request to view your outstanding VPC peering connection requests. To delete an active VPC peering connection, or to delete a VPC peering connection request that you initiated, use DeleteVpcPeeringConnection .
 
@@ -66759,7 +66759,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-release_address(_**kwargs_)
+release_address(kwargs_)
 
 Releases the specified Elastic IP address.
 
@@ -66836,7 +66836,7 @@ Expected Output:
     },
 }
 
-release_hosts(_**kwargs_)
+release_hosts(kwargs_)
 
 When you no longer want to use an On-Demand Dedicated Host it can be released. On-Demand billing is stopped and the host goes into released state. The host ID of Dedicated Hosts that have been released can no longer be specified in another request, for example, to modify the host. You must stop or terminate all instances on a host before it can be released.
 
@@ -66920,7 +66920,7 @@ Returns
                 The ID of the resource.
                 
 
-replace_iam_instance_profile_association(_**kwargs_)
+replace_iam_instance_profile_association(kwargs_)
 
 Replaces an IAM instance profile for the specified running instance. You can use this action to change the IAM instance profile that's associated with an instance without having to disassociate the existing IAM instance profile first.
 
@@ -67019,7 +67019,7 @@ Returns
             The time the IAM instance profile was associated with the instance.
             
 
-replace_network_acl_association(_**kwargs_)
+replace_network_acl_association(kwargs_)
 
 Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -67092,7 +67092,7 @@ Expected Output:
     },
 }
 
-replace_network_acl_entry(_**kwargs_)
+replace_network_acl_entry(kwargs_)
 
 Replaces an entry (rule) in a network ACL. For more information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -67212,7 +67212,7 @@ Expected Output:
     },
 }
 
-replace_route(_**kwargs_)
+replace_route(kwargs_)
 
 Replaces an existing route within a route table in a VPC. You must provide only one of the following: internet gateway, virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, egress-only internet gateway, or transit gateway.
 

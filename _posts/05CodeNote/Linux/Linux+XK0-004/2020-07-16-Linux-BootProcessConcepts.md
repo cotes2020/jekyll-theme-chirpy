@@ -1,7 +1,7 @@
 ---
 title: Linux - Boot Process Concepts
 date: 2020-07-16 11:11:11 -0400
-categories: [1CodeNote, LinuxNote]
+categories: [05-CodeNote, LinuxNote]
 tags: [Linux, Boot]
 math: true
 image: 

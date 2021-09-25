@@ -7,7 +7,7 @@ toc: true
 image:
 ---
 
-[toc]
+- [Amazon DynamoDB `boto3.resource('dynamodb')`](#amazon-dynamodb-boto3resourcedynamodb)
 
 ---
 

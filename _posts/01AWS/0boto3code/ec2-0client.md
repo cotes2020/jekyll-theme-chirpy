@@ -501,7 +501,7 @@ ec2client = boto3.client('ec2')
 
 ## instances
 
-### accept_reserved_instances_exchange_quote(_**kwargs_)
+### accept_reserved_instances_exchange_quote(kwargs_)
 
 Accepts the Convertible Reserved Instance exchange quote described in the GetReservedInstancesExchangeQuote call.
 
@@ -545,7 +545,7 @@ Return
 
 ## transit_gateway
 
-### accept_transit_gateway_multicast_domain_associations(_**kwargs_) 
+### accept_transit_gateway_multicast_domain_associations(kwargs_) 
 
 Accepts a request to associate subnets with a transit gateway multicast domain.
 
@@ -597,7 +597,7 @@ Return
 
 ---
 
-### accept_transit_gateway_peering_attachment(_**kwargs_) 
+### accept_transit_gateway_peering_attachment(kwargs_) 
 - Accepts a transit gateway peering attachment request. 
 - The peering attachment must be in the pendingAcceptance state.
 
@@ -723,7 +723,7 @@ Return
 
 ---
 
-### accept_transit_gateway_vpc_attachment(_**kwargs_)
+### accept_transit_gateway_vpc_attachment(kwargs_)
 
 - Accepts a request to attach a VPC to a transit gateway.
 - The VPC attachment must be in the `pendingAcceptance` state. 
@@ -781,7 +781,7 @@ Return
 
 ## vpc endpoint
 
-### accept_vpc_endpoint_connections(_**kwargs_)
+### accept_vpc_endpoint_connections(kwargs_)
 
 Accepts one or more interface VPC endpoint connection requests to your VPC endpoint service.
 
@@ -820,7 +820,7 @@ Return
 
 ## vpc_peering
 
-### accept_vpc_peering_connection(_**kwargs_)
+### accept_vpc_peering_connection(kwargs_)
 
 - Accept a VPC peering connection request. 
 - To accept a request, the VPC peering connection must be in the pending-acceptance state, and you must be the owner of the peer VPC. 
@@ -911,7 +911,7 @@ Return
 
 
 
-### advertise_byoip_cidr(_**kwargs_)
+### advertise_byoip_cidr(kwargs_)
 
 - Advertises an IPv4 or IPv6 address range that is provisioned for use with your AWS resources through bring your own IP addresses (BYOIP).
 
@@ -957,7 +957,7 @@ Return
 ## AWS account.
 
 
-### allocate_address(_**kwargs_)
+### allocate_address(kwargs_)
 
 - Allocates an Elastic IP address to your AWS account. 
 - After you <font color=blue> allocate the Elastic IP address </font> , associate it with an instance or network interface. 
@@ -1074,7 +1074,7 @@ print(response)
 
 
 
-### allocate_hosts(_**kwargs_)
+### allocate_hosts(kwargs_)
 
 - Allocates a Dedicated Host to your account. At a minimum, specify the supported instance type or instance family, the Availability Zone in which to allocate the host, and the number of hosts to allocate.
 
@@ -1188,7 +1188,7 @@ Return
         
       - _(string) --_
 
-apply_security_groups_to_client_vpn_target_network(_**kwargs_)[¶](#EC2.Client.apply_security_groups_to_client_vpn_target_network "Permalink to this definition")
+apply_security_groups_to_client_vpn_target_network(kwargs_)[¶](#EC2.Client.apply_security_groups_to_client_vpn_target_network "Permalink to this definition")
 
 Applies a security group to the association between the target network and the Client VPN endpoint. This action replaces the existing security groups with the specified security groups.
 
@@ -1245,7 +1245,7 @@ Return
 
 --- 
 
-### assign_ipv6_addresses(_**kwargs_) 
+### assign_ipv6_addresses(kwargs_) 
 
 - Assigns one or more IPv6 addresses to the specified network interface.
   - specify one or more specific IPv6 addresses,

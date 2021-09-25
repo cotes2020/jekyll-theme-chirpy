@@ -69,12 +69,13 @@ obj_cols = list(s[s].index)
 drop_X_train = X_train.select_dtypes(exclude=['object'])
 drop_X_valid = X_valid.select_dtypes(exclude=['object'])
 
-print("MAE from Approach 1 (Drop categorical variables):")
+print("--- MAE from Approach 1 (Drop categorical variables):")
 print(score_dataset(drop_X_train, drop_X_valid, y_train, y_valid))
 # MAE from Approach 1 (Drop categorical variables):
 # 17837.82570776256
 print("Unique values in 'Condition2' column in training data:", X_train['Condition2'].unique())
 print("Unique values in 'Condition2' column in validation data:", X_valid['Condition2'].unique())
+print("\n==================== ")
 # Unique values in 'Condition2' column in training data: ['Norm' 'PosA' 'Feedr' 'PosN' 'Artery' 'RRAe']
 # Unique values in 'Condition2' column in validation data: ['Norm' 'Feedr''PosN' 'Artery' 'RRAn' 'RRNn' ]
 
@@ -132,9 +133,10 @@ label_X_valid = X_valid.drop(bad_label_cols, axis=1)
 ordinal_encoder = OrdinalEncoder()
 label_X_train[good_label_cols] = ordinal_encoder.fit_transform(X_train[good_label_cols])
 label_X_valid[good_label_cols] = ordinal_encoder.transform(X_valid[good_label_cols])
-print("MAE from Approach 2 (Ordinal Encoding):") 
+print("--- MAE from Approach 2 (Ordinal Encoding):") 
 print(score_dataset(label_X_train, label_X_valid, y_train, y_valid))
 # 17098.01649543379
+print("\n==================== ")
 
 
 # Get number of unique entries in each column with categorical data
@@ -205,7 +207,7 @@ num_cols_neighborhood = 25
 # Fill in the line below: 
 # How many entries are added to the dataset by replacing the column with a one-hot encoding?
 OH_entries_added = 100*10000-10000
-print(OH_entries_added)
+# print(OH_entries_added)
 # How many entries are added to the dataset by replacing the column with an ordinal encoding?
 label_entries_added = 0
 
@@ -233,12 +235,58 @@ print('Categorical columns that will be dropped from the dataset:', high_cardina
 # =============== Step 4: One-hot encoding
 # Use the next code cell to one-hot encode the data in X_train and X_valid. 
 # Set the preprocessed DataFrames to OH_X_train and OH_X_valid, respectively.
-# The full list of categorical columns in the dataset can be found in the Python list object_cols.
+# The full list of categorical columns in the dataset can be found in the Python list obj_cols.
 # You should only one-hot encode the categorical columns in low_cardinality_cols. 
 # All other categorical columns should be dropped from the dataset.
 
 from sklearn.preprocessing import OneHotEncoder
 
+# Apply one-hot encoder to each column with categorical data
 OH_encoder = OneHotEncoder(handle_unknown='ignore', sparse=False)
-OH_obj_col_X_train = OneHotEncoder.fit_transform(X_train[low_cardinality_cols])
+obj_X_train = pd.DataFrame(OH_encoder.fit_transform(X_train[low_cardinality_cols]))
+obj_X_valid = pd.DataFrame(OH_encoder.transform(X_valid[low_cardinality_cols]))
 
+print("obj_X_train " + str(obj_X_train.shape))
+print("obj_X_valid " + str(obj_X_valid.shape))
+
+# One-hot encoding removed index; put it back
+obj_X_train.index = X_train.index
+obj_X_valid.index = X_valid.index
+
+# Remove categorical columns (will replace with one-hot encoding)
+num_X_train = X_train.drop(obj_cols, axis=1)
+num_X_valid = X_valid.drop(obj_cols, axis=1)
+
+
+# Add one-hot encoded columns to numerical features
+OH_X_train = pd.concat([num_X_train, obj_X_train], axis=1)
+OH_X_valid = pd.concat([num_X_valid, obj_X_valid], axis=1)
+
+print("OH_X_train " + str(OH_X_train.shape))
+print("OH_X_valid " + str(OH_X_valid.shape))
+
+print("--- MAE from Approach 3 (One-Hot Encoding):") 
+print(score_dataset(OH_X_train, OH_X_valid, y_train, y_valid))
+# 17525.345719178084
+print("\n==================== ")
+
+
+# Fills NA/NaN values using the forward fill method (fill)
+X_test = X_test.fillna(method='ffill')
+print("X_test " + str(X_test.shape))
+OH_cols_test = pd.DataFrame(OH_encoder.transform(X_test[low_cardinality_cols]))
+OH_cols_test.index = X_test.index
+num_X_test = X_test.drop(obj_cols, axis=1)
+OH_X_test = pd.concat([num_X_test, OH_cols_test], axis=1)
+
+
+
+# Fill in the line below: get test predictions
+model = RandomForestRegressor(n_estimators=100, random_state=0)
+model.fit(OH_X_train, y_train)
+preds_test = model.predict(OH_X_test)
+
+# Save test predictions to file
+output = pd.DataFrame({'Id': OH_X_test.index,
+                       'SalePrice': preds_test})
+output.to_csv('submission.csv', index=False)

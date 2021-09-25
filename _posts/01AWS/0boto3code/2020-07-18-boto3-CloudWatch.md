@@ -7,7 +7,9 @@ toc: true
 image:
 ---
 
-[toc]
+- [Amazon CloudWatch `boto3.client('cloudwatch')`](#amazon-cloudwatch-boto3clientcloudwatch)
+  - [example](#example)
+    - [AWS CloudWatch Log Group Retention to 60](#aws-cloudwatch-log-group-retention-to-60)
 
 ---
 

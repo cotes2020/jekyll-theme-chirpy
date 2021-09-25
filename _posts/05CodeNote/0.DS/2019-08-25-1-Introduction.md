@@ -1,10 +1,10 @@
 ---
-title: pythonds3 - 1. Introduction
+title: DS - pythonds3 - 1. Introduction
 # author: Grace JyL
 date: 2019-08-25 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [1CodeNote, PythonNote]
+categories: [05-CodeNote, DS]
 tags:
 math: true
 # pin: true
@@ -12,7 +12,21 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
-[toc]
+- [1. Introduction](#1-introduction)
+  - [1.5. Why Study Data Structures and Abstract Data Types?](#15-why-study-data-structures-and-abstract-data-types)
+  - [1.8. Getting Started with Data](#18-getting-started-with-data)
+    - [1.8.1. Built-in Atomic Data Types](#181-built-in-atomic-data-types)
+    - [1.8.2. Built-in Collection Data Types](#182-built-in-collection-data-types)
+  - [1.9. Input and Output](#19-input-and-output)
+    - [1.9.0. input](#190-input)
+    - [1.9.1. String Formatting](#191-string-formatting)
+  - [1.10. Control Structures](#110-control-structures)
+  - [1.13. Object-Oriented Programming in Python: Defining Classes](#113-object-oriented-programming-in-python-defining-classes)
+    - [1.13.1. A Fraction Class](#1131-a-fraction-class)
+    - [1.13.2. Inheritance: Logic Gates and Circuits](#1132-inheritance-logic-gates-and-circuits)
+      - [1. build a representation for logic gates.](#1-build-a-representation-for-logic-gates)
+      - [2. have the basic gates working, now build circuits.](#2-have-the-basic-gates-working-now-build-circuits)
+  - [1.14. Summary](#114-summary)
 
 ---
 

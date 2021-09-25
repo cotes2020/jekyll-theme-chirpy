@@ -70,13 +70,13 @@ available actions:
 ## Actions
 
 
-### authorize_egress(_**kwargs_)
+### authorize_egress(kwargs_)
 
 1. authorize_egress
    - [VPC only] Adds the specified egress rules to a security group for use with a VPC.
    - An outbound rule permits instances to send traffic to the specified IPv4 or IPv6 CIDR address ranges, or to the instances associated with the specified destination security groups.
 
-2. authorize_ingress(_**kwargs_)
+2. authorize_ingress(kwargs_)
    - Adds the specified ingress rules to a security group.
    - An inbound rule permits instances to receive traffic from the specified IPv4 or IPv6 CIDR address ranges, or from the instances associated with the specified destination security groups.
 
@@ -205,7 +205,7 @@ Return
 
 ---
 
-### create_tags(_**kwargs_)
+### create_tags(kwargs_)
 
 
 **Request Syntax**
@@ -230,7 +230,7 @@ Return:
 ---
 
 
-### delete(_**kwargs_) `Deletes a security group`
+### delete(kwargs_) `Deletes a security group`
 
 If you attempt to delete a security group that is associated with an instance, or is referenced by another security group, the operation fails with `InvalidGroup.InUse` in EC2-Classic or `DependencyViolation` in EC2-VPC.
 
@@ -278,15 +278,15 @@ Return
 
 
 
-### revoke_egress(_**kwargs_) and revoke_ingress(_**kwargs_)
+### revoke_egress(kwargs_) and revoke_ingress(kwargs_)
 
 
-1. `revoke_egress(_**kwargs_)`
+1. `revoke_egress(kwargs_)`
    - [VPC only] Removes the specified egress rules from a security group for EC2-VPC. This action does not apply to security groups for use in EC2-Classic. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.
    - [Default VPC] If the values you specify do not match the existing rule's values, no error is returned, and the output describes the security group rules that were not revoked.
 
 
-2. `revoke_ingress(_**kwargs_)`
+2. `revoke_ingress(kwargs_)`
 
    - Removes the specified ingress rules from a security group. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.
    - [EC2-Classic , default VPC] If the values you specify do not match the existing rule's values, no error is returned, and the output describes the security group rules that were not revoked.
@@ -697,7 +697,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-copy(_**kwargs_)
+copy(kwargs_)
 
 Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3. You can copy the snapshot within the same Region or from one Region to another. You can use the snapshot to create EBS volumes or Amazon Machine Images (AMIs).
 
@@ -840,7 +840,7 @@ Return:
                 Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
 
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -883,7 +883,7 @@ Return:
 - Return type: list(ec2.Tag)
 - A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified snapshot.
 
@@ -907,7 +907,7 @@ Parameters
 **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - None
 
-describe_attribute(_**kwargs_)
+describe_attribute(kwargs_)
 
 Describes the specified attribute of the specified snapshot. You can specify only one attribute at a time.
 
@@ -1001,7 +1001,7 @@ Calls [EC2.Client.describe_snapshots()](#EC2.Client.describe_snapshots "EC2.Clie
 snapshot.load()
 - None
 
-modify_attribute(_**kwargs_)
+modify_attribute(kwargs_)
 
 Adds or removes permission settings for the specified snapshot. You may add or remove specified AWS account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single operation. If you need to both add and remove account IDs for a snapshot, you must use multiple operations. You can make up to 500 modifications to a snapshot in a single operation.
 
@@ -1096,7 +1096,7 @@ Calls [EC2.Client.describe_snapshots()](#EC2.Client.describe_snapshots "EC2.Clie
 snapshot.reload()
 - None
 
-reset_attribute(_**kwargs_)
+reset_attribute(kwargs_)
 
 Resets permission settings for the specified snapshot.
 
@@ -1123,7 +1123,7 @@ Waiters
 
 Waiters provide an interface to wait for a resource to reach a specific state. For more information about waiters refer to the [_Resources Introduction Guide_](../../guide/resources.html#waiters-intro).
 
-wait_until_completed(_**kwargs_)
+wait_until_completed(kwargs_)
 
 Waits until this Snapshot is completed. This method calls EC2.Waiter.snapshot_completed.wait() which polls. [EC2.Client.describe_snapshots()](#EC2.Client.describe_snapshots "EC2.Client.describe_snapshots") every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 
@@ -1442,7 +1442,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-create_instances(_**kwargs_)
+create_instances(kwargs_)
 
 Launches the specified number of instances using an AMI for which you have permissions.
 
@@ -2173,7 +2173,7 @@ Return:
 - Return type: list(ec2.Instance)
 - A list of Instance resources
 
-create_network_interface(_**kwargs_)
+create_network_interface(kwargs_)
 
 Creates a network interface in the specified subnet.
 
@@ -2291,7 +2291,7 @@ Return:
 - Return type: ec2.NetworkInterface
 - NetworkInterface resource
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -2334,7 +2334,7 @@ Return:
 - Return type: list(ec2.Tag)
 - A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.
 
@@ -2402,7 +2402,7 @@ Return:
 - Return type: list(ec2.Instance)
 - A list of Instance resources
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -2443,7 +2443,7 @@ Parameters
 
 - None
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all Instance resources in the collection filtered by kwargs passed to method.A Instance collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -2477,7 +2477,7 @@ Return:
 - Return type: list(ec2.Instance)
 - A list of Instance resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of Instance resources in the collection.
 
@@ -2497,7 +2497,7 @@ Return:
 - Return type: list(ec2.Instance)
 - A list of Instance resources
 
-monitor(_**kwargs_)
+monitor(kwargs_)
 
 Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -2552,7 +2552,7 @@ Return:
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
 
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all Instance resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -2572,7 +2572,7 @@ Return:
 - Return type: list(ec2.Instance)
 - A list of Instance resources
 
-reboot(_**kwargs_)
+reboot(kwargs_)
 
 Requests a reboot of the specified instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
 
@@ -2594,7 +2594,7 @@ Parameters
 **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - None
 
-start(_**kwargs_)
+start(kwargs_)
 
 Starts an Amazon EBS-backed instance that you've previously stopped.
 
@@ -2705,7 +2705,7 @@ Return:
                     The current state of the instance.
 
 
-stop(_**kwargs_)
+stop(kwargs_)
 
 Stops an Amazon EBS-backed instance.
 
@@ -2832,7 +2832,7 @@ Return:
                     The current state of the instance.
 
 
-terminate(_**kwargs_)
+terminate(kwargs_)
 
 Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.
 
@@ -2942,7 +2942,7 @@ Return:
                     The current state of the instance.
 
 
-unmonitor(_**kwargs_)
+unmonitor(kwargs_)
 
 Disables detailed monitoring for a running instance. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -3012,7 +3012,7 @@ Return:
 - Return type: list(ec2.NetworkInterface)
 - A list of NetworkInterface resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all NetworkInterface resources in the collection filtered by kwargs passed to method.A NetworkInterface collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -3046,7 +3046,7 @@ Return:
 - Return type: list(ec2.NetworkInterface)
 - A list of NetworkInterface resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of NetworkInterface resources in the collection.
 
@@ -3066,7 +3066,7 @@ Return:
 - Return type: list(ec2.NetworkInterface)
 - A list of NetworkInterface resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all NetworkInterface resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -3154,7 +3154,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified set of tags from the specified set of resources.
 
@@ -3426,7 +3426,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-attach_to_instance(_**kwargs_)
+attach_to_instance(kwargs_)
 
 Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name.
 
@@ -3502,7 +3502,7 @@ Return:
         Indicates whether the EBS volume is deleted on instance termination.
 
 
-create_snapshot(_**kwargs_)
+create_snapshot(kwargs_)
 
 Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use snapshots for backups, to make copies of EBS volumes, and to save data before shutting down an instance.
 
@@ -3575,7 +3575,7 @@ Return:
 - Return type: ec2.Snapshot
 - Snapshot resource
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -3618,7 +3618,7 @@ Return:
 - Return type: list(ec2.Tag)
 - A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified EBS volume. The volume must be in the available state (not attached to an instance).
 
@@ -3640,7 +3640,7 @@ Parameters
 **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - None
 
-describe_attribute(_**kwargs_)
+describe_attribute(kwargs_)
 
 Describes the specified attribute of the specified volume. You can specify only one attribute at a time.
 
@@ -3707,7 +3707,7 @@ Return:
         The ID of the volume.
 
 
-describe_status(_**kwargs_)
+describe_status(kwargs_)
 
 Describes the status of the specified volumes. Volume status provides the result of the checks performed on your volumes to determine events that can impair the performance of your volumes. The performance of a volume can be affected if an issue occurs on the volume's underlying host. If the volume's underlying host experiences a power outage or system issue, after the system is restored, there could be data inconsistencies on the volume. Volume events notify you if this occurs. Volume actions notify you if any action needs to be taken in response to the event.
 
@@ -3929,7 +3929,7 @@ Return:
                         The ID of the attached instance.
 
 
-detach_from_instance(_**kwargs_)
+detach_from_instance(kwargs_)
 
 Detaches an EBS volume from an instance. Make sure to unmount any file systems on the device within your operating system before detaching the volume. Failure to do so can result in the volume becoming stuck in the busy state while detaching. If this happens, detachment can be delayed indefinitely until you unmount the volume, force detachment, reboot the instance, or all three. If an EBS volume is the root device of an instance, it can't be detached while the instance is running. To detach the root volume, stop the instance first.
 
@@ -3996,7 +3996,7 @@ Return:
         Indicates whether the EBS volume is deleted on instance termination.
 
 
-enable_io(_**kwargs_)
+enable_io(kwargs_)
 
 Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.
 
@@ -4033,7 +4033,7 @@ Calls [EC2.Client.describe_volumes()](#EC2.Client.describe_volumes "EC2.Client.d
 volume.load()
 - None
 
-modify_attribute(_**kwargs_)
+modify_attribute(kwargs_)
 
 Modifies a volume attribute.
 
@@ -4097,7 +4097,7 @@ Return:
 - Return type: list(ec2.Snapshot)
 - A list of Snapshot resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all Snapshot resources in the collection filtered by kwargs passed to method.A Snapshot collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -4147,7 +4147,7 @@ Return:
 - Return type: list(ec2.Snapshot)
 - A list of Snapshot resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of Snapshot resources in the collection.
 
@@ -4167,7 +4167,7 @@ Return:
 - Return type: list(ec2.Snapshot)
 - A list of Snapshot resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all Snapshot resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -4414,7 +4414,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-associate_dhcp_options(_**kwargs_)
+associate_dhcp_options(kwargs_)
 
 Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC.
 
@@ -4439,7 +4439,7 @@ Parameters
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - None
 
-attach_classic_link_instance(_**kwargs_)
+attach_classic_link_instance(kwargs_)
 
 Links an EC2-Classic instance to a ClassicLink-enabled VPC through one or more of the VPC's security groups. You cannot link an EC2-Classic instance to more than one VPC at a time. You can only link an instance that's in the running state. An instance is automatically unlinked from a VPC when it's stopped - you can link it to the VPC again when you restart it.
 
@@ -4488,7 +4488,7 @@ Return:
         Returns true if the request succeeds; otherwise, it returns an error.
 
 
-attach_internet_gateway(_**kwargs_)
+attach_internet_gateway(kwargs_)
 
 Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the [Amazon Virtual Private Cloud User Guide](https://docs.aws.amazon.com/vpc/latest/userguide/) .
 
@@ -4510,7 +4510,7 @@ Parameters
 
 - None
 
-create_network_acl(_**kwargs_)
+create_network_acl(kwargs_)
 
 Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.
 
@@ -4571,7 +4571,7 @@ Return:
 - Return type: ec2.NetworkAcl
 - NetworkAcl resource
 
-create_route_table(_**kwargs_)
+create_route_table(kwargs_)
 
 Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.
 
@@ -4632,7 +4632,7 @@ Return:
 - Return type: ec2.RouteTable
 - RouteTable resource
 
-create_security_group(_**kwargs_)
+create_security_group(kwargs_)
 
 Creates a security group.
 
@@ -4719,7 +4719,7 @@ Return:
 - Return type: ec2.SecurityGroup
 - SecurityGroup resource
 
-create_subnet(_**kwargs_)
+create_subnet(kwargs_)
 
 Creates a subnet in a specified VPC.
 
@@ -4812,7 +4812,7 @@ Return:
 - Return type: ec2.Subnet
 - Subnet resource
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -4855,7 +4855,7 @@ Return:
 - Return type: list(ec2.Tag)
 - A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified VPC. You must detach or delete all gateways and resources that are associated with the VPC before you can delete it. For example, you must terminate all instances running in the VPC, delete all security groups associated with the VPC (except the default one), delete all route tables associated with the VPC (except the default one), and so on.
 
@@ -4873,7 +4873,7 @@ Parameters
 **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - None
 
-describe_attribute(_**kwargs_)
+describe_attribute(kwargs_)
 
 Describes the specified attribute of the specified VPC. You can specify only one attribute at a time.
 
@@ -4929,7 +4929,7 @@ Return:
             The attribute value. The valid values are true or false .
 
 
-detach_classic_link_instance(_**kwargs_)
+detach_classic_link_instance(kwargs_)
 
 Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the instance has been unlinked, the VPC security groups are no longer associated with it. An instance is automatically unlinked from a VPC when it's stopped.
 
@@ -4968,7 +4968,7 @@ Return:
         Returns true if the request succeeds; otherwise, it returns an error.
 
 
-detach_internet_gateway(_**kwargs_)
+detach_internet_gateway(kwargs_)
 
 Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.
 
@@ -4990,7 +4990,7 @@ Parameters
 
 - None
 
-disable_classic_link(_**kwargs_)
+disable_classic_link(kwargs_)
 
 Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances linked to it.
 
@@ -5025,7 +5025,7 @@ Return:
         Returns true if the request succeeds; otherwise, it returns an error.
 
 
-enable_classic_link(_**kwargs_)
+enable_classic_link(kwargs_)
 
 Enables a VPC for ClassicLink. You can then link EC2-Classic instances to your ClassicLink-enabled VPC to allow communication over private IP addresses. You cannot enable your VPC for ClassicLink if any of your VPC route tables have existing routes for address ranges within the 10.0.0.0/8 IP address range, excluding local routes for VPCs in the 10.0.0.0/16 and 10.1.0.0/16 IP address ranges. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -5078,7 +5078,7 @@ Calls [EC2.Client.describe_vpcs()](#EC2.Client.describe_vpcs "EC2.Client.describ
 vpc.load()
 - None
 
-modify_attribute(_**kwargs_)
+modify_attribute(kwargs_)
 
 Modifies the specified attribute of the specified VPC.
 
@@ -5130,7 +5130,7 @@ Calls [EC2.Client.describe_vpcs()](#EC2.Client.describe_vpcs "EC2.Client.describ
 vpc.reload()
 - None
 
-request_vpc_peering_connection(_**kwargs_)
+request_vpc_peering_connection(kwargs_)
 
 Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection. The accepter VPC can belong to another AWS account and can be in a different Region to the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.
 
@@ -5234,7 +5234,7 @@ Return:
 - Return type: list(ec2.VpcPeeringConnection)
 - A list of VpcPeeringConnection resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all VpcPeeringConnection resources in the collection filtered by kwargs passed to method.A VpcPeeringConnection collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -5268,7 +5268,7 @@ Return:
 - Return type: list(ec2.VpcPeeringConnection)
 - A list of VpcPeeringConnection resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of VpcPeeringConnection resources in the collection.
 
@@ -5288,7 +5288,7 @@ Return:
 - Return type: list(ec2.VpcPeeringConnection)
 - A list of VpcPeeringConnection resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all VpcPeeringConnection resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -5325,7 +5325,7 @@ Return:
 - Return type: list(ec2.Instance)
 - A list of Instance resources
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -5366,7 +5366,7 @@ Parameters
 
 - None
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all Instance resources in the collection filtered by kwargs passed to method.A Instance collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -5400,7 +5400,7 @@ Return:
 - Return type: list(ec2.Instance)
 - A list of Instance resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of Instance resources in the collection.
 
@@ -5420,7 +5420,7 @@ Return:
 - Return type: list(ec2.Instance)
 - A list of Instance resources
 
-monitor(_**kwargs_)
+monitor(kwargs_)
 
 Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -5475,7 +5475,7 @@ Return:
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
 
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all Instance resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -5495,7 +5495,7 @@ Return:
 - Return type: list(ec2.Instance)
 - A list of Instance resources
 
-reboot(_**kwargs_)
+reboot(kwargs_)
 
 Requests a reboot of the specified instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
 
@@ -5517,7 +5517,7 @@ Parameters
 **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - None
 
-start(_**kwargs_)
+start(kwargs_)
 
 Starts an Amazon EBS-backed instance that you've previously stopped.
 
@@ -5628,7 +5628,7 @@ Return:
                     The current state of the instance.
 
 
-stop(_**kwargs_)
+stop(kwargs_)
 
 Stops an Amazon EBS-backed instance.
 
@@ -5755,7 +5755,7 @@ Return:
                     The current state of the instance.
 
 
-terminate(_**kwargs_)
+terminate(kwargs_)
 
 Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.
 
@@ -5865,7 +5865,7 @@ Return:
                     The current state of the instance.
 
 
-unmonitor(_**kwargs_)
+unmonitor(kwargs_)
 
 Disables detailed monitoring for a running instance. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -5935,7 +5935,7 @@ Return:
 - Return type: list(ec2.InternetGateway)
 - A list of InternetGateway resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all InternetGateway resources in the collection filtered by kwargs passed to method.A InternetGateway collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -5969,7 +5969,7 @@ Return:
 - Return type: list(ec2.InternetGateway)
 - A list of InternetGateway resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of InternetGateway resources in the collection.
 
@@ -5989,7 +5989,7 @@ Return:
 - Return type: list(ec2.InternetGateway)
 - A list of InternetGateway resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all InternetGateway resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -6026,7 +6026,7 @@ Return:
 - Return type: list(ec2.NetworkAcl)
 - A list of NetworkAcl resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all NetworkAcl resources in the collection filtered by kwargs passed to method.A NetworkAcl collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -6060,7 +6060,7 @@ Return:
 - Return type: list(ec2.NetworkAcl)
 - A list of NetworkAcl resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of NetworkAcl resources in the collection.
 
@@ -6080,7 +6080,7 @@ Return:
 - Return type: list(ec2.NetworkAcl)
 - A list of NetworkAcl resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all NetworkAcl resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -6117,7 +6117,7 @@ Return:
 - Return type: list(ec2.NetworkInterface)
 - A list of NetworkInterface resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all NetworkInterface resources in the collection filtered by kwargs passed to method.A NetworkInterface collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -6151,7 +6151,7 @@ Return:
 - Return type: list(ec2.NetworkInterface)
 - A list of NetworkInterface resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of NetworkInterface resources in the collection.
 
@@ -6171,7 +6171,7 @@ Return:
 - Return type: list(ec2.NetworkInterface)
 - A list of NetworkInterface resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all NetworkInterface resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -6208,7 +6208,7 @@ Return:
 - Return type: list(ec2.VpcPeeringConnection)
 - A list of VpcPeeringConnection resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all VpcPeeringConnection resources in the collection filtered by kwargs passed to method.A VpcPeeringConnection collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -6242,7 +6242,7 @@ Return:
 - Return type: list(ec2.VpcPeeringConnection)
 - A list of VpcPeeringConnection resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of VpcPeeringConnection resources in the collection.
 
@@ -6262,7 +6262,7 @@ Return:
 - Return type: list(ec2.VpcPeeringConnection)
 - A list of VpcPeeringConnection resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all VpcPeeringConnection resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -6299,7 +6299,7 @@ Return:
 - Return type: list(ec2.RouteTable)
 - A list of RouteTable resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all RouteTable resources in the collection filtered by kwargs passed to method.A RouteTable collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -6333,7 +6333,7 @@ Return:
 - Return type: list(ec2.RouteTable)
 - A list of RouteTable resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of RouteTable resources in the collection.
 
@@ -6353,7 +6353,7 @@ Return:
 - Return type: list(ec2.RouteTable)
 - A list of RouteTable resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all RouteTable resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -6390,7 +6390,7 @@ Return:
 - Return type: list(ec2.SecurityGroup)
 - A list of SecurityGroup resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all SecurityGroup resources in the collection filtered by kwargs passed to method.A SecurityGroup collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -6434,7 +6434,7 @@ Return:
 - Return type: list(ec2.SecurityGroup)
 - A list of SecurityGroup resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of SecurityGroup resources in the collection.
 
@@ -6454,7 +6454,7 @@ Return:
 - Return type: list(ec2.SecurityGroup)
 - A list of SecurityGroup resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all SecurityGroup resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -6491,7 +6491,7 @@ Return:
 - Return type: list(ec2.Subnet)
 - A list of Subnet resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all Subnet resources in the collection filtered by kwargs passed to method.A Subnet collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -6525,7 +6525,7 @@ Return:
 - Return type: list(ec2.Subnet)
 - A list of Subnet resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of Subnet resources in the collection.
 
@@ -6545,7 +6545,7 @@ Return:
 - Return type: list(ec2.Subnet)
 - A list of Subnet resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all Subnet resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -6569,7 +6569,7 @@ Waiters
 
 Waiters provide an interface to wait for a resource to reach a specific state. For more information about waiters refer to the [_Resources Introduction Guide_](../../guide/resources.html#waiters-intro).
 
-wait_until_available(_**kwargs_)
+wait_until_available(kwargs_)
 
 Waits until this Vpc is available. This method calls EC2.Waiter.vpc_available.wait() which polls. [EC2.Client.describe_vpcs()](#EC2.Client.describe_vpcs "EC2.Client.describe_vpcs") every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 
@@ -6640,7 +6640,7 @@ Parameters
 *   **MaxResults** (_integer_) -- The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
 - None
 
-wait_until_exists(_**kwargs_)
+wait_until_exists(kwargs_)
 
 Waits until this Vpc is exists. This method calls EC2.Waiter.vpc_exists.wait() which polls. [EC2.Client.describe_vpcs()](#EC2.Client.describe_vpcs "EC2.Client.describe_vpcs") every 1 seconds until a successful state is reached. An error is returned after 5 failed checks.
 
@@ -6933,7 +6933,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-accept(_**kwargs_)
+accept(kwargs_)
 
 Accept a VPC peering connection request. To accept a request, the VPC peering connection must be in the pending-acceptance state, and you must be the owner of the peer VPC. Use DescribeVpcPeeringConnections to view your outstanding VPC peering connection requests.
 
@@ -7146,7 +7146,7 @@ Return:
             The ID of the VPC peering connection.
 
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the accepter VPC can delete the VPC peering connection if it's in the active state. The owner of the requester VPC can delete a VPC peering connection in the pending-acceptance state. You cannot delete a VPC peering connection that's in the failed state.
 
@@ -7199,7 +7199,7 @@ Calls [EC2.Client.describe_vpc_peering_connections()](#EC2.Client.describe_vpc_p
 vpc_peering_connection.load()
 - None
 
-reject(_**kwargs_)
+reject(kwargs_)
 
 Rejects a VPC peering connection request. The VPC peering connection must be in the pending-acceptance state. Use the DescribeVpcPeeringConnections request to view your outstanding VPC peering connection requests. To delete an active VPC peering connection, or to delete a VPC peering connection request that you initiated, use DeleteVpcPeeringConnection .
 
@@ -7249,7 +7249,7 @@ Waiters
 
 Waiters provide an interface to wait for a resource to reach a specific state. For more information about waiters refer to the [_Resources Introduction Guide_](../../guide/resources.html#waiters-intro).
 
-wait_until_exists(_**kwargs_)
+wait_until_exists(kwargs_)
 
 Waits until this VpcPeeringConnection is exists. This method calls EC2.Waiter.vpc_peering_connection_exists.wait() which polls. [EC2.Client.describe_vpc_peering_connections()](#EC2.Client.describe_vpc_peering_connections "EC2.Client.describe_vpc_peering_connections") every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 
@@ -7495,7 +7495,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-associate(_**kwargs_)
+associate(kwargs_)
 
 Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface. Before you can use an Elastic IP address, you must allocate it to your account.
 
@@ -7577,7 +7577,7 @@ Calls [EC2.Client.describe_addresses()](#EC2.Client.describe_addresses "EC2.Clie
 vpc_address.load()
 - None
 
-release(_**kwargs_)
+release(kwargs_)
 
 Releases the specified Elastic IP address.
 

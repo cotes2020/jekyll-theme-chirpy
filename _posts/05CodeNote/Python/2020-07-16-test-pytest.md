@@ -2,7 +2,7 @@
 title: Python Pytest
 date: 2020-07-16 11:11:11 -0400
 description:
-categories: [1CodeNote, PythonNote]
+categories: [05-CodeNote, PythonNote]
 img: /assets/img/sample/rabbit.png
 tags: [Python]
 ---

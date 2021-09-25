@@ -148,7 +148,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-attach_to_vpc(_**kwargs_)
+attach_to_vpc(kwargs_)
 
 Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the [Amazon Virtual Private Cloud User Guide](https://docs.aws.amazon.com/vpc/latest/userguide/) .
 
@@ -175,7 +175,7 @@ Returns
 
 None
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -229,7 +229,7 @@ Returns
 
 A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified internet gateway. You must detach the internet gateway from the VPC before you can delete it.
 
@@ -250,7 +250,7 @@ Returns
 
 None
 
-detach_from_vpc(_**kwargs_)
+detach_from_vpc(kwargs_)
 
 Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.
 
@@ -417,7 +417,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified key pair, by removing the public key from Amazon EC2.
 
@@ -545,7 +545,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified key pair, by removing the public key from Amazon EC2.
 
@@ -810,7 +810,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-create_entry(_**kwargs_)
+create_entry(kwargs_)
 
 Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules.
 
@@ -902,7 +902,7 @@ Returns
 
 None
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -956,7 +956,7 @@ Returns
 
 A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.
 
@@ -977,7 +977,7 @@ Returns
 
 None
 
-delete_entry(_**kwargs_)
+delete_entry(kwargs_)
 
 Deletes the specified ingress or egress entry (rule) from the specified network ACL.
 
@@ -1051,7 +1051,7 @@ Returns
 
 None
 
-replace_association(_**kwargs_)
+replace_association(kwargs_)
 
 Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -1098,7 +1098,7 @@ Returns
         The ID of the new association.
         
 
-replace_entry(_**kwargs_)
+replace_entry(kwargs_)
 
 Replaces an entry (rule) in a network ACL. For more information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -1576,7 +1576,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-assign_private_ip_addresses(_**kwargs_)
+assign_private_ip_addresses(kwargs_)
 
 Assigns one or more secondary private IP addresses to the specified network interface.
 
@@ -1650,7 +1650,7 @@ Returns
                 The private IP address assigned to the network interface.
                 
 
-attach(_**kwargs_)
+attach(kwargs_)
 
 Attaches a network interface to an instance.
 
@@ -1710,7 +1710,7 @@ Returns
         The index of the network card.
         
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -1764,7 +1764,7 @@ Returns
 
 A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified network interface. You must detach the network interface before you can delete it.
 
@@ -1785,7 +1785,7 @@ Returns
 
 None
 
-describe_attribute(_**kwargs_)
+describe_attribute(kwargs_)
 
 Describes a network interface attribute. You can specify only one attribute at a time.
 
@@ -1917,7 +1917,7 @@ Returns
             The attribute value. The valid values are true or false .
             
 
-detach(_**kwargs_)
+detach(kwargs_)
 
 Detaches a network interface from an instance.
 
@@ -1974,7 +1974,7 @@ Returns
 
 None
 
-modify_attribute(_**kwargs_)
+modify_attribute(kwargs_)
 
 Modifies the specified network interface attribute. You can specify only one attribute at a time. You can use this action to attach and detach security groups from an existing EC2 instance.
 
@@ -2054,7 +2054,7 @@ Returns
 
 None
 
-reset_attribute(_**kwargs_)
+reset_attribute(kwargs_)
 
 Resets a network interface attribute. You can specify only one attribute at a time.
 
@@ -2076,7 +2076,7 @@ Returns
 
 None
 
-unassign_private_ip_addresses(_**kwargs_)
+unassign_private_ip_addresses(kwargs_)
 
 Unassigns one or more secondary private IP addresses from a network interface.
 
@@ -2194,7 +2194,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Disassociates an Elastic IP address from the instance or network interface it's associated with.
 
@@ -2374,7 +2374,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see [Placement groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -2461,7 +2461,7 @@ Returns
 
 A list of Instance resources
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -2511,7 +2511,7 @@ Returns
 
 None
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all Instance resources in the collection filtered by kwargs passed to method.A Instance collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -2549,7 +2549,7 @@ Returns
 
 A list of Instance resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of Instance resources in the collection.
 
@@ -2573,7 +2573,7 @@ Returns
 
 A list of Instance resources
 
-monitor(_**kwargs_)
+monitor(kwargs_)
 
 Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -2634,7 +2634,7 @@ Returns
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
                     
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all Instance resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -2658,7 +2658,7 @@ Returns
 
 A list of Instance resources
 
-reboot(_**kwargs_)
+reboot(kwargs_)
 
 Requests a reboot of the specified instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
 
@@ -2682,7 +2682,7 @@ Returns
 
 None
 
-start(_**kwargs_)
+start(kwargs_)
 
 Starts an Amazon EBS-backed instance that you've previously stopped.
 
@@ -2803,7 +2803,7 @@ Returns
                     The current state of the instance.
                     
 
-stop(_**kwargs_)
+stop(kwargs_)
 
 Stops an Amazon EBS-backed instance.
 
@@ -2940,7 +2940,7 @@ Returns
                     The current state of the instance.
                     
 
-terminate(_**kwargs_)
+terminate(kwargs_)
 
 Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.
 
@@ -3060,7 +3060,7 @@ Returns
                     The current state of the instance.
                     
 
-unmonitor(_**kwargs_)
+unmonitor(kwargs_)
 
 Disables detailed monitoring for a running instance. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -3289,7 +3289,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified route from the specified route table.
 
@@ -3326,7 +3326,7 @@ Return type
 
 list of str
 
-replace(_**kwargs_)
+replace(kwargs_)
 
 Replaces an existing route within a route table in a VPC. You must provide only one of the following: internet gateway, virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, egress-only internet gateway, or transit gateway.
 
@@ -3646,7 +3646,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-associate_with_subnet(_**kwargs_)
+associate_with_subnet(kwargs_)
 
 Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC. This association causes traffic from the subnet or gateway to be routed according to the routes in the route table. The action returns an association ID, which you need in order to disassociate the route table later. A route table can be associated with multiple subnets.
 
@@ -3676,7 +3676,7 @@ Returns
 
 RouteTableAssociation resource
 
-create_route(_**kwargs_)
+create_route(kwargs_)
 
 Creates a route in a route table within a VPC.
 
@@ -3742,7 +3742,7 @@ Returns
 
 Route resource
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -3796,7 +3796,7 @@ Returns
 
 A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified route table. You must disassociate the route table from any subnets before you can delete it. You can't delete the main route table.
 
@@ -3975,7 +3975,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Disassociates a subnet or gateway from a route table.
 
@@ -4009,7 +4009,7 @@ Return type
 
 list of str
 
-replace_subnet(_**kwargs_)
+replace_subnet(kwargs_)
 
 Changes the route table associated with a given subnet, internet gateway, or virtual private gateway in a VPC. After the operation completes, the subnet or gateway uses the routes in the new route table. For more information about route tables, see [Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) in the _Amazon Virtual Private Cloud User Guide_ .
 
@@ -4405,7 +4405,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-authorize_egress(_**kwargs_)
+authorize_egress(kwargs_)
 
 [VPC only] Adds the specified egress rules to a security group for use with a VPC.
 
@@ -4601,7 +4601,7 @@ Returns
 
 None
 
-authorize_ingress(_**kwargs_)
+authorize_ingress(kwargs_)
 
 Adds the specified ingress rules to a security group.
 
@@ -4821,7 +4821,7 @@ Returns
 
 None
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -4875,7 +4875,7 @@ Returns
 
 A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes a security group.
 
@@ -4939,7 +4939,7 @@ Returns
 
 None
 
-revoke_egress(_**kwargs_)
+revoke_egress(kwargs_)
 
 [VPC only] Removes the specified egress rules from a security group for EC2-VPC. This action does not apply to security groups for use in EC2-Classic. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.
 
@@ -5310,7 +5310,7 @@ Returns
                         The ID of the VPC peering connection, if applicable.
                         
 
-revoke_ingress(_**kwargs_)
+revoke_ingress(kwargs_)
 
 Removes the specified ingress rules from a security group. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.
 
@@ -5878,7 +5878,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-copy(_**kwargs_)
+copy(kwargs_)
 
 Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3. You can copy the snapshot within the same Region or from one Region to another. You can use the snapshot to create EBS volumes or Amazon Machine Images (AMIs).
 
@@ -6035,7 +6035,7 @@ Returns
                 Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
                 
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -6089,7 +6089,7 @@ Returns
 
 A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified snapshot.
 
@@ -6115,7 +6115,7 @@ Returns
 
 None
 
-describe_attribute(_**kwargs_)
+describe_attribute(kwargs_)
 
 Describes the specified attribute of the specified snapshot. You can specify only one attribute at a time.
 
@@ -6231,7 +6231,7 @@ Returns
 
 None
 
-modify_attribute(_**kwargs_)
+modify_attribute(kwargs_)
 
 Adds or removes permission settings for the specified snapshot. You may add or remove specified AWS account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single operation. If you need to both add and remove account IDs for a snapshot, you must use multiple operations. You can make up to 500 modifications to a snapshot in a single operation.
 
@@ -6339,7 +6339,7 @@ Returns
 
 None
 
-reset_attribute(_**kwargs_)
+reset_attribute(kwargs_)
 
 Resets permission settings for the specified snapshot.
 
@@ -6372,7 +6372,7 @@ Waiters
 
 Waiters provide an interface to wait for a resource to reach a specific state. For more information about waiters refer to the [_Resources Introduction Guide_](../../guide/resources.html#waiters-intro).
 
-wait_until_completed(_**kwargs_)
+wait_until_completed(kwargs_)
 
 Waits until this Snapshot is completed. This method calls EC2.Waiter.snapshot_completed.wait() which polls. [EC2.Client.describe_snapshots()](#EC2.Client.describe_snapshots "EC2.Client.describe_snapshots") every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 
@@ -6703,7 +6703,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-create_instances(_**kwargs_)
+create_instances(kwargs_)
 
 Launches the specified number of instances using an AMI for which you have permissions.
 
@@ -7524,7 +7524,7 @@ Returns
 
 A list of Instance resources
 
-create_network_interface(_**kwargs_)
+create_network_interface(kwargs_)
 
 Creates a network interface in the specified subnet.
 
@@ -7657,7 +7657,7 @@ Returns
 
 NetworkInterface resource
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -7711,7 +7711,7 @@ Returns
 
 A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.
 
@@ -7797,7 +7797,7 @@ Returns
 
 A list of Instance resources
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -7847,7 +7847,7 @@ Returns
 
 None
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all Instance resources in the collection filtered by kwargs passed to method.A Instance collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -7885,7 +7885,7 @@ Returns
 
 A list of Instance resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of Instance resources in the collection.
 
@@ -7909,7 +7909,7 @@ Returns
 
 A list of Instance resources
 
-monitor(_**kwargs_)
+monitor(kwargs_)
 
 Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -7970,7 +7970,7 @@ Returns
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
                     
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all Instance resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -7994,7 +7994,7 @@ Returns
 
 A list of Instance resources
 
-reboot(_**kwargs_)
+reboot(kwargs_)
 
 Requests a reboot of the specified instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
 
@@ -8018,7 +8018,7 @@ Returns
 
 None
 
-start(_**kwargs_)
+start(kwargs_)
 
 Starts an Amazon EBS-backed instance that you've previously stopped.
 
@@ -8139,7 +8139,7 @@ Returns
                     The current state of the instance.
                     
 
-stop(_**kwargs_)
+stop(kwargs_)
 
 Stops an Amazon EBS-backed instance.
 
@@ -8276,7 +8276,7 @@ Returns
                     The current state of the instance.
                     
 
-terminate(_**kwargs_)
+terminate(kwargs_)
 
 Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.
 
@@ -8396,7 +8396,7 @@ Returns
                     The current state of the instance.
                     
 
-unmonitor(_**kwargs_)
+unmonitor(kwargs_)
 
 Disables detailed monitoring for a running instance. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -8477,7 +8477,7 @@ Returns
 
 A list of NetworkInterface resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all NetworkInterface resources in the collection filtered by kwargs passed to method.A NetworkInterface collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -8515,7 +8515,7 @@ Returns
 
 A list of NetworkInterface resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of NetworkInterface resources in the collection.
 
@@ -8539,7 +8539,7 @@ Returns
 
 A list of NetworkInterface resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all NetworkInterface resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -8629,7 +8629,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified set of tags from the specified set of resources.
 
@@ -8922,7 +8922,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-attach_to_instance(_**kwargs_)
+attach_to_instance(kwargs_)
 
 Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name.
 
@@ -9013,7 +9013,7 @@ Returns
         Indicates whether the EBS volume is deleted on instance termination.
         
 
-create_snapshot(_**kwargs_)
+create_snapshot(kwargs_)
 
 Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use snapshots for backups, to make copies of EBS volumes, and to save data before shutting down an instance.
 
@@ -9096,7 +9096,7 @@ Returns
 
 Snapshot resource
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -9150,7 +9150,7 @@ Returns
 
 A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified EBS volume. The volume must be in the available state (not attached to an instance).
 
@@ -9174,7 +9174,7 @@ Returns
 
 None
 
-describe_attribute(_**kwargs_)
+describe_attribute(kwargs_)
 
 Describes the specified attribute of the specified volume. You can specify only one attribute at a time.
 
@@ -9253,7 +9253,7 @@ Returns
         The ID of the volume.
         
 
-describe_status(_**kwargs_)
+describe_status(kwargs_)
 
 Describes the status of the specified volumes. Volume status provides the result of the checks performed on your volumes to determine events that can impair the performance of your volumes. The performance of a volume can be affected if an issue occurs on the volume's underlying host. If the volume's underlying host experiences a power outage or system issue, after the system is restored, there could be data inconsistencies on the volume. Volume events notify you if this occurs. Volume actions notify you if any action needs to be taken in response to the event.
 
@@ -9509,7 +9509,7 @@ Returns
                         The ID of the attached instance.
                         
 
-detach_from_instance(_**kwargs_)
+detach_from_instance(kwargs_)
 
 Detaches an EBS volume from an instance. Make sure to unmount any file systems on the device within your operating system before detaching the volume. Failure to do so can result in the volume becoming stuck in the busy state while detaching. If this happens, detachment can be delayed indefinitely until you unmount the volume, force detachment, reboot the instance, or all three. If an EBS volume is the root device of an instance, it can't be detached while the instance is running. To detach the root volume, stop the instance first.
 
@@ -9583,7 +9583,7 @@ Returns
         Indicates whether the EBS volume is deleted on instance termination.
         
 
-enable_io(_**kwargs_)
+enable_io(kwargs_)
 
 Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.
 
@@ -9630,7 +9630,7 @@ Returns
 
 None
 
-modify_attribute(_**kwargs_)
+modify_attribute(kwargs_)
 
 Modifies a volume attribute.
 
@@ -9705,7 +9705,7 @@ Returns
 
 A list of Snapshot resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all Snapshot resources in the collection filtered by kwargs passed to method.A Snapshot collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -9759,7 +9759,7 @@ Returns
 
 A list of Snapshot resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of Snapshot resources in the collection.
 
@@ -9783,7 +9783,7 @@ Returns
 
 A list of Snapshot resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all Snapshot resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -10049,7 +10049,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-associate_dhcp_options(_**kwargs_)
+associate_dhcp_options(kwargs_)
 
 Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC.
 
@@ -10080,7 +10080,7 @@ Returns
 
 None
 
-attach_classic_link_instance(_**kwargs_)
+attach_classic_link_instance(kwargs_)
 
 Links an EC2-Classic instance to a ClassicLink-enabled VPC through one or more of the VPC's security groups. You cannot link an EC2-Classic instance to more than one VPC at a time. You can only link an instance that's in the running state. An instance is automatically unlinked from a VPC when it's stopped - you can link it to the VPC again when you restart it.
 
@@ -10139,7 +10139,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-attach_internet_gateway(_**kwargs_)
+attach_internet_gateway(kwargs_)
 
 Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the [Amazon Virtual Private Cloud User Guide](https://docs.aws.amazon.com/vpc/latest/userguide/) .
 
@@ -10167,7 +10167,7 @@ Returns
 
 None
 
-create_network_acl(_**kwargs_)
+create_network_acl(kwargs_)
 
 Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.
 
@@ -10238,7 +10238,7 @@ Returns
 
 NetworkAcl resource
 
-create_route_table(_**kwargs_)
+create_route_table(kwargs_)
 
 Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.
 
@@ -10309,7 +10309,7 @@ Returns
 
 RouteTable resource
 
-create_security_group(_**kwargs_)
+create_security_group(kwargs_)
 
 Creates a security group.
 
@@ -10414,7 +10414,7 @@ Returns
 
 SecurityGroup resource
 
-create_subnet(_**kwargs_)
+create_subnet(kwargs_)
 
 Creates a subnet in a specified VPC.
 
@@ -10521,7 +10521,7 @@ Returns
 
 Subnet resource
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -10575,7 +10575,7 @@ Returns
 
 A list of Tag resources
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes the specified VPC. You must detach or delete all gateways and resources that are associated with the VPC before you can delete it. For example, you must terminate all instances running in the VPC, delete all security groups associated with the VPC (except the default one), delete all route tables associated with the VPC (except the default one), and so on.
 
@@ -10595,7 +10595,7 @@ Returns
 
 None
 
-describe_attribute(_**kwargs_)
+describe_attribute(kwargs_)
 
 Describes the specified attribute of the specified VPC. You can specify only one attribute at a time.
 
@@ -10661,7 +10661,7 @@ Returns
             The attribute value. The valid values are true or false .
             
 
-detach_classic_link_instance(_**kwargs_)
+detach_classic_link_instance(kwargs_)
 
 Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the instance has been unlinked, the VPC security groups are no longer associated with it. An instance is automatically unlinked from a VPC when it's stopped.
 
@@ -10706,7 +10706,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-detach_internet_gateway(_**kwargs_)
+detach_internet_gateway(kwargs_)
 
 Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.
 
@@ -10734,7 +10734,7 @@ Returns
 
 None
 
-disable_classic_link(_**kwargs_)
+disable_classic_link(kwargs_)
 
 Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances linked to it.
 
@@ -10771,7 +10771,7 @@ Returns
         Returns true if the request succeeds; otherwise, it returns an error.
         
 
-enable_classic_link(_**kwargs_)
+enable_classic_link(kwargs_)
 
 Enables a VPC for ClassicLink. You can then link EC2-Classic instances to your ClassicLink-enabled VPC to allow communication over private IP addresses. You cannot enable your VPC for ClassicLink if any of your VPC route tables have existing routes for address ranges within the 10.0.0.0/8 IP address range, excluding local routes for VPCs in the 10.0.0.0/16 and 10.1.0.0/16 IP address ranges. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -10834,7 +10834,7 @@ Returns
 
 None
 
-modify_attribute(_**kwargs_)
+modify_attribute(kwargs_)
 
 Modifies the specified attribute of the specified VPC.
 
@@ -10893,7 +10893,7 @@ Returns
 
 None
 
-request_vpc_peering_connection(_**kwargs_)
+request_vpc_peering_connection(kwargs_)
 
 Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection. The accepter VPC can belong to another AWS account and can be in a different Region to the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.
 
@@ -11012,7 +11012,7 @@ Returns
 
 A list of VpcPeeringConnection resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all VpcPeeringConnection resources in the collection filtered by kwargs passed to method.A VpcPeeringConnection collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -11050,7 +11050,7 @@ Returns
 
 A list of VpcPeeringConnection resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of VpcPeeringConnection resources in the collection.
 
@@ -11074,7 +11074,7 @@ Returns
 
 A list of VpcPeeringConnection resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all VpcPeeringConnection resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -11120,7 +11120,7 @@ Returns
 
 A list of Instance resources
 
-create_tags(_**kwargs_)
+create_tags(kwargs_)
 
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
@@ -11170,7 +11170,7 @@ Returns
 
 None
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all Instance resources in the collection filtered by kwargs passed to method.A Instance collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -11208,7 +11208,7 @@ Returns
 
 A list of Instance resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of Instance resources in the collection.
 
@@ -11232,7 +11232,7 @@ Returns
 
 A list of Instance resources
 
-monitor(_**kwargs_)
+monitor(kwargs_)
 
 Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -11293,7 +11293,7 @@ Returns
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
                     
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all Instance resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -11317,7 +11317,7 @@ Returns
 
 A list of Instance resources
 
-reboot(_**kwargs_)
+reboot(kwargs_)
 
 Requests a reboot of the specified instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
 
@@ -11341,7 +11341,7 @@ Returns
 
 None
 
-start(_**kwargs_)
+start(kwargs_)
 
 Starts an Amazon EBS-backed instance that you've previously stopped.
 
@@ -11462,7 +11462,7 @@ Returns
                     The current state of the instance.
                     
 
-stop(_**kwargs_)
+stop(kwargs_)
 
 Stops an Amazon EBS-backed instance.
 
@@ -11599,7 +11599,7 @@ Returns
                     The current state of the instance.
                     
 
-terminate(_**kwargs_)
+terminate(kwargs_)
 
 Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.
 
@@ -11719,7 +11719,7 @@ Returns
                     The current state of the instance.
                     
 
-unmonitor(_**kwargs_)
+unmonitor(kwargs_)
 
 Disables detailed monitoring for a running instance. For more information, see [Monitoring your instances and volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 
@@ -11800,7 +11800,7 @@ Returns
 
 A list of InternetGateway resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all InternetGateway resources in the collection filtered by kwargs passed to method.A InternetGateway collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -11838,7 +11838,7 @@ Returns
 
 A list of InternetGateway resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of InternetGateway resources in the collection.
 
@@ -11862,7 +11862,7 @@ Returns
 
 A list of InternetGateway resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all InternetGateway resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -11908,7 +11908,7 @@ Returns
 
 A list of NetworkAcl resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all NetworkAcl resources in the collection filtered by kwargs passed to method.A NetworkAcl collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -11946,7 +11946,7 @@ Returns
 
 A list of NetworkAcl resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of NetworkAcl resources in the collection.
 
@@ -11970,7 +11970,7 @@ Returns
 
 A list of NetworkAcl resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all NetworkAcl resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -12016,7 +12016,7 @@ Returns
 
 A list of NetworkInterface resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all NetworkInterface resources in the collection filtered by kwargs passed to method.A NetworkInterface collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -12054,7 +12054,7 @@ Returns
 
 A list of NetworkInterface resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of NetworkInterface resources in the collection.
 
@@ -12078,7 +12078,7 @@ Returns
 
 A list of NetworkInterface resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all NetworkInterface resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -12124,7 +12124,7 @@ Returns
 
 A list of VpcPeeringConnection resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all VpcPeeringConnection resources in the collection filtered by kwargs passed to method.A VpcPeeringConnection collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -12162,7 +12162,7 @@ Returns
 
 A list of VpcPeeringConnection resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of VpcPeeringConnection resources in the collection.
 
@@ -12186,7 +12186,7 @@ Returns
 
 A list of VpcPeeringConnection resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all VpcPeeringConnection resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -12232,7 +12232,7 @@ Returns
 
 A list of RouteTable resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all RouteTable resources in the collection filtered by kwargs passed to method.A RouteTable collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -12270,7 +12270,7 @@ Returns
 
 A list of RouteTable resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of RouteTable resources in the collection.
 
@@ -12294,7 +12294,7 @@ Returns
 
 A list of RouteTable resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all RouteTable resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -12340,7 +12340,7 @@ Returns
 
 A list of SecurityGroup resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all SecurityGroup resources in the collection filtered by kwargs passed to method.A SecurityGroup collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -12388,7 +12388,7 @@ Returns
 
 A list of SecurityGroup resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of SecurityGroup resources in the collection.
 
@@ -12412,7 +12412,7 @@ Returns
 
 A list of SecurityGroup resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all SecurityGroup resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -12458,7 +12458,7 @@ Returns
 
 A list of Subnet resources
 
-filter(_**kwargs_)
+filter(kwargs_)
 
 Creates an iterable of all Subnet resources in the collection filtered by kwargs passed to method.A Subnet collection will include all resources by default if no filters are provided, and extreme caution should be taken when performing actions on all resources.
 
@@ -12496,7 +12496,7 @@ Returns
 
 A list of Subnet resources
 
-limit(_**kwargs_)
+limit(kwargs_)
 
 Creates an iterable up to a specified amount of Subnet resources in the collection.
 
@@ -12520,7 +12520,7 @@ Returns
 
 A list of Subnet resources
 
-page_size(_**kwargs_)
+page_size(kwargs_)
 
 Creates an iterable of all Subnet resources in the collection, but limits the number of items returned by each service call by the specified amount.
 
@@ -12548,7 +12548,7 @@ Waiters
 
 Waiters provide an interface to wait for a resource to reach a specific state. For more information about waiters refer to the [_Resources Introduction Guide_](../../guide/resources.html#waiters-intro).
 
-wait_until_available(_**kwargs_)
+wait_until_available(kwargs_)
 
 Waits until this Vpc is available. This method calls EC2.Waiter.vpc_available.wait() which polls. [EC2.Client.describe_vpcs()](#EC2.Client.describe_vpcs "EC2.Client.describe_vpcs") every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 
@@ -12624,7 +12624,7 @@ Returns
 
 None
 
-wait_until_exists(_**kwargs_)
+wait_until_exists(kwargs_)
 
 Waits until this Vpc is exists. This method calls EC2.Waiter.vpc_exists.wait() which polls. [EC2.Client.describe_vpcs()](#EC2.Client.describe_vpcs "EC2.Client.describe_vpcs") every 1 seconds until a successful state is reached. An error is returned after 5 failed checks.
 
@@ -12953,7 +12953,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-accept(_**kwargs_)
+accept(kwargs_)
 
 Accept a VPC peering connection request. To accept a request, the VPC peering connection must be in the pending-acceptance state, and you must be the owner of the peer VPC. Use DescribeVpcPeeringConnections to view your outstanding VPC peering connection requests.
 
@@ -13207,7 +13207,7 @@ Returns
             The ID of the VPC peering connection.
             
 
-delete(_**kwargs_)
+delete(kwargs_)
 
 Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the accepter VPC can delete the VPC peering connection if it's in the active state. The owner of the requester VPC can delete a VPC peering connection in the pending-acceptance state. You cannot delete a VPC peering connection that's in the failed state.
 
@@ -13270,7 +13270,7 @@ Returns
 
 None
 
-reject(_**kwargs_)
+reject(kwargs_)
 
 Rejects a VPC peering connection request. The VPC peering connection must be in the pending-acceptance state. Use the DescribeVpcPeeringConnections request to view your outstanding VPC peering connection requests. To delete an active VPC peering connection, or to delete a VPC peering connection request that you initiated, use DeleteVpcPeeringConnection .
 
@@ -13325,7 +13325,7 @@ Waiters
 
 Waiters provide an interface to wait for a resource to reach a specific state. For more information about waiters refer to the [_Resources Introduction Guide_](../../guide/resources.html#waiters-intro).
 
-wait_until_exists(_**kwargs_)
+wait_until_exists(kwargs_)
 
 Waits until this VpcPeeringConnection is exists. This method calls EC2.Waiter.vpc_peering_connection_exists.wait() which polls. [EC2.Client.describe_vpc_peering_connections()](#EC2.Client.describe_vpc_peering_connections "EC2.Client.describe_vpc_peering_connections") every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 
@@ -13577,7 +13577,7 @@ Actions
 
 Actions call operations on resources. They may automatically handle the passing in of arguments set from identifiers and some attributes. For more information about actions refer to the [_Resources Introduction Guide_](../../guide/resources.html#actions-intro).
 
-associate(_**kwargs_)
+associate(kwargs_)
 
 Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface. Before you can use an Elastic IP address, you must allocate it to your account.
 
@@ -13669,7 +13669,7 @@ Returns
 
 None
 
-release(_**kwargs_)
+release(kwargs_)
 
 Releases the specified Elastic IP address.
 
