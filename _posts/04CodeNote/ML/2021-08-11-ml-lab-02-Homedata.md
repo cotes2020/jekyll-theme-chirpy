@@ -1,5 +1,5 @@
 ---
-title: ML lab - Home data
+title: ML lab 02 - Predict home prices in Iowa
 date: 2021-08-11 11:11:11 -0400
 categories: [04CodeNote, MLNote]
 tags: [ML]

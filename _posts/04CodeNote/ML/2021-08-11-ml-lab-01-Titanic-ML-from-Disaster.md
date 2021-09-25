@@ -1,5 +1,5 @@
 ---
-title: ML lab - Titanic-ML-from-Disaster
+title: ML lab 01 - Titanic-ML-from-Disaster
 date: 2021-08-11 11:11:11 -0400
 categories: [04CodeNote, MLNote]
 tags: [ML]
