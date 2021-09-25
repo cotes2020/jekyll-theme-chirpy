@@ -1,0 +1,11 @@
+# Kali Linux Top10
+# Docker image with kali-linux-top10 and a handful of other useful tools
+FROM kalilinux/kali-rolling
+
+# do APT update
+RUN apt-get -y update && apt-get -y dist-upgrade && apt-get -y autoremove && apt-get clean
+
+# install Kali Linux "Top 10" metapackage and a couple "nice to have" tools
+RUN apt-get install -y \
+    metasploit-framework \
+    nikto \
