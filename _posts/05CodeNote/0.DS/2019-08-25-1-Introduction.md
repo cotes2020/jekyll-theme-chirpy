@@ -4,7 +4,7 @@ title: DS - pythonds3 - 1. Introduction
 date: 2019-08-25 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [05-CodeNote, DS]
+categories: [04CodeNote, DS]
 tags:
 math: true
 # pin: true

@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-1-1 - Programming Exercise - Searching Earthquake Data
 date: 2020-09-10 11:11:11 -0400
 description:
-categories: [05-CodeNote, JavaNote]
+categories: [04CodeNote, JavaNote]
 tags: [Java]
 toc: true
 ---

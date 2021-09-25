@@ -1,7 +1,7 @@
 ---
 title: GitHub - A successful Git branching model
 date: 2020-11-11 11:11:11 -0400
-categories: [05-CodeNote]
+categories: [04CodeNote]
 tags: [git]
 toc: true
 image:

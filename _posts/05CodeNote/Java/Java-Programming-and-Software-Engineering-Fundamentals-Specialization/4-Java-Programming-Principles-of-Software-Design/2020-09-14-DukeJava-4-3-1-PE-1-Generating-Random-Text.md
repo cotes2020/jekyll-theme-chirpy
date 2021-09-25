@@ -2,7 +2,7 @@
 title: Java - DukeJava - 4-3-1 Programming Exercise 1 Generating Random Text
 date: 2020-09-14 11:11:11 -0400
 description:
-categories: [05-CodeNote, JavaNote]
+categories: [04CodeNote, JavaNote]
 tags: [Java]
 toc: true
 ---
