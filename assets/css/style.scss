@@ -11,6 +11,12 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 
 /* append your custom style below */
 
+h1.summary {
+  display: inline;
+}
+
+// TODO: summary::markerがずれてる
+
 .jekyll-linkpreview-wrapper {
   max-width: 600px;
   margin-bottom: 20px;

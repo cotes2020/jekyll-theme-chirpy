@@ -4,5 +4,7 @@ icon: fas fa-info
 order: 4
 ---
 
-
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+## 文章を読むときの注意点
+- 一人称が`(俺|僕|私)`のどれか確定していない。
+- 無意識に常体と敬体が混ざりがち。多分、人に伝えたい気持ちがこもってれば敬体になるけど、
+自分の中で盛り上がっちゃうと常体になってるんだと思う。
