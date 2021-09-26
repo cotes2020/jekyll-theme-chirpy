@@ -10,3 +10,56 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 @import "{{ site.theme }}";
 
 /* append your custom style below */
+
+.jekyll-linkpreview-wrapper {
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.jekyll-linkpreview-wrapper-inner {
+  border: thin solid grey;
+  border-radius: 7px;
+  padding: 12px;
+}
+
+.jekyll-linkpreview-content {
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.jekyll-linkpreview-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.jekyll-linkpreview-image img {
+  width: 100px;
+  height: 100px;
+}
+
+.jekyll-linkpreview-body {
+  margin-right: 110px;
+}
+
+.jekyll-linkpreview-body-nog {
+  margin-right: 10px;
+}
+
+.jekyll-linkpreview-title {
+  font-size: 17px;
+  margin: 0 0 2px;
+  line-height: 1.3;
+  padding-top: 1rem;
+}
+
+.jekyll-linkpreview-description {
+  line-height: 1.5;
+  font-size: 13px;
+}
+
+.jekyll-linkpreview-footer {
+  font-size: 11px;
+}

@@ -1,3 +1,6 @@
+# my settings
+_cache
+
 # hidden files
 .*
 !.git*
