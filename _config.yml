@@ -18,9 +18,9 @@ timezone: Asia/Tokyo
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: yuji96 # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: "Re: It is a too yummy jam!" # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
@@ -31,10 +31,10 @@ description: >- # used by seo meta and the atom feed
 url: "https://yuji96.github.io"
 
 github:
-  username: github_username # change to your github username
+  username: yuji96 # change to your github username
 
 twitter:
-  username: twitter_username # change to your twitter username
+  username: Mt_B00Ks # change to your twitter username
 
 social:
   # Change to your full name.
@@ -43,8 +43,8 @@ social:
   email: example@example.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your twitter homepage
-    - https://github.com/username # change to your github homepage
+    - https://twitter.com/Mt_B00Ks # change to your twitter homepage
+    - https://github.com/yuji96 # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -81,7 +81,7 @@ theme_mode: # [light|dark]
 img_cdn: ""
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets/img/favicons/sample_icon.jpg
+avatar: assets/img/favicons/avatar.png
 
 # boolean type, the global switch for ToC in posts.
 toc: true
