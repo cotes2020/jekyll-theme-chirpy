@@ -13,11 +13,16 @@ toc: true
 ---
 
 - [DS - pythonds3 - 6. Sorting and Searching](#ds---pythonds3---6-sorting-and-searching)
+  - [summary](#summary)
   - [Searching](#searching)
-    - [The Sequential Search](#the-sequential-search)
+    - [The Sequential Search 一个个找](#the-sequential-search-一个个找)
       - [Sequential Search of an Unordered List](#sequential-search-of-an-unordered-list)
       - [Sequential Search of an ordered List](#sequential-search-of-an-ordered-list)
-    - [The Binary Search](#the-binary-search)
+    - [divide and conquer strategy.](#divide-and-conquer-strategy)
+      - [The Binary Search](#the-binary-search)
+        - [`𝑂(log𝑛)` 从中间查找](#𝑂log𝑛-从中间查找)
+        - [Binary Search in python](#binary-search-in-python)
+        - [analyze the binary search](#analyze-the-binary-search)
     - [Hashing](#hashing)
       - [Hash Functions](#hash-functions)
       - [Collision Resolution](#collision-resolution)
@@ -28,22 +33,56 @@ toc: true
       - [The complete hash table example](#the-complete-hash-table-example)
       - [Analysis of Hashing](#analysis-of-hashing)
   - [Sorting](#sorting)
-    - [The Bubble Sort `𝑂(𝑛^2)`](#the-bubble-sort-𝑂𝑛2)
-      - [bubbleSort in python](#bubblesort-in-python)
-      - [analyze the bubble sort](#analyze-the-bubble-sort)
-      - [the short bubble](#the-short-bubble)
-    - [The Selection Sort `𝑂(𝑛^2)`](#the-selection-sort-𝑂𝑛2)
-      - [Selection sort in python](#selection-sort-in-python)
-      - [analyze the Selection sort](#analyze-the-selection-sort)
-    - [The Insertion Sort `𝑂(𝑛^2)`](#the-insertion-sort-𝑂𝑛2)
-      - [Insertion Sort in python](#insertion-sort-in-python)
-      - [analyze the Insertion sort](#analyze-the-insertion-sort)
-    - [The Shell Sort](#the-shell-sort)
+    - [normal strategy](#normal-strategy)
+      - [The Bubble Sort](#the-bubble-sort)
+        - [`𝑂(𝑛^2)` 两个两个 带着大的那个往上滚](#𝑂𝑛2-两个两个-带着大的那个往上滚)
+        - [bubbleSort in python](#bubblesort-in-python)
+        - [analyze the bubble sort](#analyze-the-bubble-sort)
+        - [the short bubble](#the-short-bubble)
+      - [The Selection Sort](#the-selection-sort)
+        - [`𝑂(𝑛^2)` 8->1，从1找到最大数location，放最后，切掉最后一个数字再继续](#𝑂𝑛2-8-1从1找到最大数location放最后切掉最后一个数字再继续)
+        - [Selection sort in python](#selection-sort-in-python)
+        - [analyze the Selection sort](#analyze-the-selection-sort)
+      - [The Insertion Sort](#the-insertion-sort)
+        - [`𝑂(𝑛^2)` 往前比大小 拿出记住自己的数字 大数字往后挪 切掉前面的数字继续](#𝑂𝑛2-往前比大小-拿出记住自己的数字-大数字往后挪-切掉前面的数字继续)
+        - [Insertion Sort in python](#insertion-sort-in-python)
+        - [analyze the Insertion sort](#analyze-the-insertion-sort)
+      - [The Shell Sort](#the-shell-sort)
+        - [`between 𝑂(𝑛) and 𝑂(𝑛^2)` gap拆开 分别不停的的insertion sort](#between-𝑂𝑛-and-𝑂𝑛2-gap拆开-分别不停的的insertion-sort)
+        - [Shell sort in python](#shell-sort-in-python)
+        - [analyze the Insertion sort](#analyze-the-insertion-sort-1)
+    - [divide and conquer strategy](#divide-and-conquer-strategy-1)
+      - [The Merge Sort](#the-merge-sort)
+        - [`𝑂(𝑛log𝑛)` 从中间分开直到只剩一个->两个比大小 sort 再合起来](#𝑂𝑛log𝑛-从中间分开直到只剩一个-两个比大小-sort-再合起来)
+        - [Merge sort in python](#merge-sort-in-python)
+        - [analyze the mergeSort sort](#analyze-the-mergesort-sort)
+      - [The Quick Sort](#the-quick-sort)
+        - [`𝑂(𝑛log𝑛) to 𝑂(𝑛^2)` pivot, small < pivot < large](#𝑂𝑛log𝑛-to-𝑂𝑛2-pivot-small--pivot--large)
+        - [quickSort in python](#quicksort-in-python)
+        - [analyze the quickSort sort](#analyze-the-quicksort-sort)
 
 ---
 
 
 # DS - pythonds3 - 6. Sorting and Searching
+
+---
+
+## summary
+
+A sequential search is `𝑂(𝑛)` for ordered and unordered lists.
+
+A binary search of an ordered list is `𝑂(log𝑛)` in the worst case.
+
+Hash tables can provide `constant` time searching.
+
+A bubble sort, a selection sort, and an insertion sort are `𝑂(𝑛^2)` algorithms.
+
+A shell sort improves on the insertion sort by sorting incremental sublists. It falls between `𝑂(𝑛) to 𝑂(𝑛^2)`.
+
+A merge sort is `𝑂(𝑛log𝑛)`, but requires **additional space** for the merging process.
+
+A quick sort is `𝑂(𝑛log𝑛) to 𝑂(𝑛2)` degrade if the split points are not near the middle of the list. It **does not require additional space**.
 
 ---
 
@@ -70,8 +109,9 @@ many different ways to search for the item.
 
 how these algorithms work and how they compare to one another.
 
+---
 
-### The Sequential Search
+### The Sequential Search 一个个找
 
 When data items are stored in a collection such as a list, they have a **linear or sequential relationship**.
 - Each data item is stored in a position `relative to the others`.
@@ -89,7 +129,6 @@ When data items are stored in a collection such as a list, they have a **linear 
 def sequentialSearch(alist, item):
   pos = 0
   found = False
-
   while pos < len(alist) and not found:
     if alist[pos] == item:
       found = True
@@ -131,7 +170,6 @@ If the item is not in the list,
 
 #### Sequential Search of an ordered List
 
-
 We assumed earlier that the items in our collection had been randomly placed, no relative order between the items.
 - What would happen to the sequential search if the items were ordered in some way?
 - Would we be able to gain any efficiency in our search technique?
@@ -157,14 +195,20 @@ In summary, a sequential search is improved by ordering the list only in the cas
 ---
 
 
-### The Binary Search
+### divide and conquer strategy.
+
+#### The Binary Search
+
+##### `𝑂(log𝑛)` 从中间查找
 
 take greater advantage of the ordered list
 - In the sequential search, compare against the first item, there are at most `𝑛−1` more items to look through if the first item is not what we are looking for.
-- Instead of searching the list in sequence, a binary search will start by examining the middle item.
-- If that item is the one we are searching for, we are done.
-- If it is not the correct item, we can use the ordered nature of the list to eliminate half of the remaining items.
-- If the item we are searching for is greater than the middle item, the entire lower half of the list as well as the middle item can be eliminated from further consideration.
+
+binary search
+- start by examining the middle item.
+- If that item is the one, we are done.
+- If not, use the ordered nature of the list to eliminate half of the remaining items.
+- If the item searching for is > the middle item, the entire lower half of the list as well as the middle item can be eliminated from further consideration.
 - The item, if it is in the list, must be in the upper half.
 
 We can then repeat the process with the upper half.
@@ -172,6 +216,9 @@ We can then repeat the process with the upper half.
 - Again, we either find it or split the list in half, therefore eliminating another large part of our possible search space.
 
 ![binsearch](https://i.imgur.com/137Zfsb.png)
+
+
+##### Binary Search in python
 
 ```py
 def binarySearch(alist, item):
@@ -223,17 +270,22 @@ print(binarySearch(testlist, 3))
 print(binarySearch(testlist, 13))
 ```
 
+##### analyze the binary search
 
-To analyze the binary search algorithm, we need to recall that each comparison eliminates about half of the remaining items from consideration.
+- each comparison eliminates about half of the remaining items from consideration.
 - What is the maximum number of comparisons this algorithm will require to check the entire list?
-- If we start with n items, about `𝑛/2` items will be left after the first comparison.
-- After the second comparison, there will be about 𝑛/4. Then 𝑛/8, 𝑛/16, and so on.
+  - If we start with `n` items, about `𝑛/2` items will be left after the first comparison.
+  - After the second comparison, there will be about `𝑛/4`. Then `𝑛/8, 𝑛/16, and so on`.
+
 - How many times can we split the list
-- When we split the list enough times, we end up with a list that has just one item. Either that is the item we are looking for or it is not. Either way, we are done.
-- The number of comparisons necessary to get to this point is i where `n/2^i = 1`.
-- Solving for `i` gives us `𝑖=log𝑛`.
-- The maximum number of comparisons is logarithmic with respect to the number of items in the list.
-- Therefore, the binary search is `𝑂(log𝑛)`.
+  - When we split the list enough times, we end up with a list that has just one item.
+  - Either that is the item we are looking for or it is not.
+  - Either way, we are done.
+
+- The number of comparisons necessary to get to this point is `i` where `n/2^i = 1`.
+  - Solving for `i`: `𝑖=log𝑛`.
+  - The maximum number of comparisons is logarithmic with respect to the number of items in the list.
+  - Therefore, the binary search is `𝑂(log𝑛)`.
 
 One additional analysis issue needs to be addressed. In the recursive solution shown above, the recursive call,
 - uses the slice operator to create the left half of the list that is then passed to the next invocation (similarly for the right half as well).
@@ -754,7 +806,7 @@ Result for both a successful and an unsuccessful search.
 
 
 ## Sorting
-Sorting
+
 - the process of placing elements from a collection in some kind of order.
   - For example,
   - a list of words could be sorted alphabetically or by length.
@@ -776,11 +828,15 @@ the operations to analyze a sorting process.
   - This exchange is a costly operation and the total number of exchanges will also be important for evaluating the overall efficiency of the algorithm.
 
 
+---
+
+### normal strategy
 
 ---
 
+#### The Bubble Sort
 
-### The Bubble Sort `𝑂(𝑛^2)`
+##### `𝑂(𝑛^2)` 两个两个 带着大的那个往上滚
 
 The bubble sort makes multiple passes through a list.
 - It compares adjacent items and exchanges those that are out of order.
@@ -802,7 +858,7 @@ Since each pass places the next largest value in place, the total number of pass
 After completing the 𝑛−1 passes, the smallest item must be in the correct position with no further processing required.
 
 
-#### bubbleSort in python
+##### bubbleSort in python
 - It takes the list as a parameter, and modifies it by exchanging items as necessary.
 
 ```py
@@ -839,7 +895,7 @@ In Python, it is possible to perform **simultaneous assignment**.
 
 ---
 
-#### analyze the bubble sort
+##### analyze the bubble sort
 
 > the number of comparisons for each pass.
 
@@ -878,7 +934,7 @@ bubble sort is often considered the **most inefficient sorting** method
 
 ---
 
-#### the short bubble
+##### the short bubble
 
 ```py
 def shortBubbleSort(alist):
@@ -901,11 +957,13 @@ print(alist)
 
 ---
 
-### The Selection Sort `𝑂(𝑛^2)`
+#### The Selection Sort
+
+##### `𝑂(𝑛^2)` 8->1，从1找到最大数location，放最后，切掉最后一个数字再继续
 
 - The selection sort improves on the bubble sort by `making only one exchange for every pass through the list`.
   - selection sort `looks for the largest value` as it makes a pass
-  - and, after completing the pass, places it in the proper location.
+  - and after completing the pass, places it in the proper location.
 - As with a bubble sort, after the first pass, the largest item is in the correct place.
 - After the second pass, the next largest is in place.
 - This process continues and requires `𝑛−1` passes to sort n items, since the final item must be in place after the (𝑛−1) st pass.
@@ -914,7 +972,7 @@ print(alist)
 
 ![0_J2ta_c6YA870MKor](https://i.imgur.com/vIUtyfF.jpg)
 
-#### Selection sort in python
+##### Selection sort in python
 ```py
 def selectionSort(alist):
    for fillslot in range(len(alist)-1,0,-1):
@@ -932,7 +990,7 @@ print(alist)
 ```
 
 
-#### analyze the Selection sort
+##### analyze the Selection sort
 
 You may see that the selection sort makes the same number of comparisons as the bubble sort and is therefore also `𝑂(𝑛^2)`.
 - However, due to the reduction in the number of exchanges, the selection sort typically executes faster in benchmark studies.
@@ -942,7 +1000,9 @@ You may see that the selection sort makes the same number of comparisons as the 
 ---
 
 
-### The Insertion Sort `𝑂(𝑛^2)`
+#### The Insertion Sort
+
+##### `𝑂(𝑛^2)` 往前比大小 拿出记住自己的数字 大数字往后挪 切掉前面的数字继续
 
 - It always maintains a sorted sublist in the lower positions of the list.
 - Each new item is then “inserted” back into the previous sublist such that the sorted sublist is one item larger.
@@ -964,7 +1024,7 @@ the fifth pass in detail.
 - Now we have a sorted sublist of six items.
 
 
-#### Insertion Sort in python
+##### Insertion Sort in python
 
 ```py
 def insertionSort(alist):
@@ -984,7 +1044,7 @@ print(alist)
 ```
 
 
-#### analyze the Insertion sort
+##### analyze the Insertion sort
 
 - `𝑛−1` passes to sort `n` items.
 - The iteration starts at position 1 and moves through position `𝑛−1`, as these are the items that need to be inserted back into the sorted sublists.
@@ -992,7 +1052,7 @@ print(alist)
 
 <font color=red> worse case </font>:
 
-- The maximum number of comparisons for an insertion sort is the sum of the `first 𝑛−1 integers`. 𝑂(𝑛^2).
+- The maximum number of comparisons for an insertion sort is the sum of the `first 𝑛−1 integers`. `𝑂(𝑛^2)`.
 
 <font color=red> best case </font>:
 
@@ -1006,33 +1066,331 @@ One note about `shifting` versus `exchanging` is also important.
 
 ---
 
-### The Shell Sort
+#### The Shell Sort
+
+##### `between 𝑂(𝑛) and 𝑂(𝑛^2)` gap拆开 分别不停的的insertion sort
 
 - sometimes called the “diminishing increment sort,”
 - improves on the insertion sort by
   - breaking the original list into a number of smaller sublists,
-  - each of which is sorted using an insertion sort.
-- The unique way that these sublists are chosen is the key to the shell sort. Instead of breaking the list into sublists of contiguous items, the shell sort uses an increment i, sometimes called the gap, to create a sublist by choosing all items that are i items apart.
+  - each of which is sorted using an `insertion sort`.
+- The unique way that these sublists are chosen is the key to the shell sort.
+  - Instead of breaking the list into sublists of contiguous items, the shell sort uses an increment `i`, sometimes called the gap, to create a sublist by choosing all items that are `i` items apart.
 
-This can be seen in Figure 6. This list has nine items. If we use an increment of three, there are three sublists, each of which can be sorted by an insertion sort. After completing these sorts, we get the list shown in Figure 7. Although this list is not completely sorted, something very interesting has happened. By sorting the sublists, we have moved the items closer to where they actually belong.
+![shellsortA](https://i.imgur.com/kbG4fea.png)
 
-../_images/shellsortA.png
-Figure 6: A Shell Sort with Increments of Three
+![shellsortB](https://i.imgur.com/fevQIlG.png)
 
-../_images/shellsortB.png
-Figure 7: A Shell Sort after Sorting Each Sublist
+![shellsortC](https://i.imgur.com/KmH7Hv3.png)
 
-Figure 8 shows a final insertion sort using an increment of one; in other words, a standard insertion sort. Note that by performing the earlier sublist sorts, we have now reduced the total number of shifting operations necessary to put the list in its final order. For this case, we need only four more shifts to complete the process.
 
-../_images/shellsortC.png
-Figure 8: ShellSort: A Final Insertion Sort with Increment of 1
+list has nine items.
+- use an increment of three, there are three sublists, each of which can be sorted by an insertion sort.
+- After completing these sorts, Although this list is not completely sorted, something very interesting has happened.
+- By sorting the sublists, moved the items closer to where they actually belong.
+- a final insertion sort using an increment of one; in other words, a standard insertion sort.
+- Note that by performing the earlier sublist sorts, we have now **reduced the total number of shifting operations** necessary to put the list in its final order.
+- For this case, we need only four more shifts to complete the process.
 
-../_images/shellsortD.png
-Figure 9: Initial Sublists for a Shell Sort
 
-We said earlier that the way in which the increments are chosen is the unique feature of the shell sort. The function shown in ActiveCode 1 uses a different set of increments. In this case, we begin with 𝑛2 sublists. On the next pass, 𝑛4 sublists are sorted. Eventually, a single list is sorted with the basic insertion sort. Figure 9 shows the first sublists for our example using this increment.
+##### Shell sort in python
+```py
+def shellSort(alist):
+    sublistcount = len(alist)//2
+    while sublistcount > 0:
+      for startposition in range(sublistcount):
+        gapInsertionSort(alist, startposition, sublistcount)
+      print("After increments of size",sublistcount, "The list is",alist)
+      sublistcount = sublistcount // 2
 
-The following invocation of the shellSort function shows the partially sorted lists after each increment, with the final sort being an insertion sort with an increment of one.
+def gapInsertionSort(alist,start,gap):
+    for i in range(start+gap,len(alist),gap):
+        currentvalue = alist[i]
+        position = i
+        while position>=gap and alist[position-gap]>currentvalue:
+            alist[position]=alist[position-gap]
+            position = position-gap
+        alist[position]=currentvalue
+
+alist = [54,26,93,17,77,31,44,55,20]
+shellSort(alist)
+print(alist)
+```
+
+- the partially sorted lists after each increment, with the final sort being an insertion sort with an increment of one.
+
+
+##### analyze the Insertion sort
+
+- At first glance you may think that a shell sort cannot be better than an insertion sort, since it does a complete insertion sort as the last step.
+- It turns out, however, that this final insertion sort does not need to do very many comparisons (or shifts) since the list has been pre-sorted by earlier incremental insertion sorts, as described above.
+- In other words, each pass produces a list that is “more sorted” than the previous one.
+- This makes the final pass very efficient.
+
+Although a general analysis of the shell sort is well beyond the scope of this text, we can say that it tends to fall somewhere `between 𝑂(𝑛) and 𝑂(𝑛^2)`, based on the behavior described above.
+- For the increments shown in Listing 5, the performance is `𝑂(𝑛^2)`.
+- By changing the increment, for example using 2^𝑘−1 (1, 3, 7, 15, 31, and so on), a shell sort can perform at `𝑂(𝑛^ 3/2)`.
+
+
+---
+
+### divide and conquer strategy
+
+We now turn our attention to using a `divide and conquer strategy` as a way to improve the performance of sorting algorithms.
+
+
+---
+
+#### The Merge Sort
+
+##### `𝑂(𝑛log𝑛)` 从中间分开直到只剩一个->两个比大小 sort 再合起来
+
+Merge sort
+- recursive algorithm that continually splits a list in half. If the list is empty or has one item, it is sorted by definition (the base case).
+- If the list has more than one item, we split the list and recursively invoke a `merge sort` on both halves.
+- Once the two halves are sorted, the fundamental operation, called a merge, is performed.
+- Merging is the process of taking two smaller sorted lists and combining them together into a single, sorted, new list.
+
+![mergesortA](https://i.imgur.com/IDnIkoE.png)
+
+![mergesortB](https://i.imgur.com/a4iSRLU.png)
+
+
+##### Merge sort in python
+
+The mergeSort function
+- begins by asking the base case question.
+- If the length of the list is less than or equal to one, then we already have a sorted list and no more processing is necessary.
+- If, on the other hand, the length is greater than one, then we use the Python slice operation to extract the left and right halves.
+- It is important to note that the list may not have an even number of items. That does not matter, as the lengths will differ by at most one.
+
+```py
+def mergeSort(alist):
+    print("Splitting ",alist)
+    if len(alist)>1:
+        mid = len(alist)//2
+        lefthalf = alist[:mid]
+        righthalf = alist[mid:]
+
+        mergeSort(lefthalf)
+        mergeSort(righthalf)
+        # Once the mergeSort function is invoked on the left half and the right half, it is assumed they are sorted.
+
+        # The rest of the function is responsible for merging the two smaller sorted lists into a larger sorted list.
+        i, j, k = 0, 0, 0
+        while i < len(lefthalf) and j < len(righthalf):
+            if lefthalf[i] <= righthalf[j]:
+                alist[k]=lefthalf[i]
+                i=i+1
+            else:
+                alist[k]=righthalf[j]
+                j=j+1
+            k=k+1
+
+        while i < len(lefthalf):
+            alist[k]=lefthalf[i]
+            i=i+1
+            k=k+1
+
+        while j < len(righthalf):
+            alist[k]=righthalf[j]
+            j=j+1
+            k=k+1
+    print("Merging ",alist)
+
+alist = [54,26,93,17,77,31,44,55,20]
+mergeSort(alist)
+print(alist)
+```
+
+- Notice that the merge operation places the items back into the original list (alist) one at a time by repeatedly taking the smallest item from the sorted lists.
+- Note that the statement `lefthalf[i] <= righthalf[j]` ensures that the algorithm is stable.
+- A stable algorithm `maintains the order of duplicate items` in a list and is preferred in most cases.
+
+
+
+##### analyze the mergeSort sort
+
+mergeSort: consider the two distinct processes that make up its implementation.
+
+- First, the list is split into halves.
+  - binary search: we can divide a list in half `log𝑛` times where `n` is the length of the list.
+    - `n/2, 𝑛/4, 𝑛/8, 𝑛/16, ....`
+    - `n/2^i = 1`
+    - `𝑖=log𝑛`
+- The second process is the merge.
+  - Each item in the list will eventually be processed and placed on the sorted list.
+  - So the merge operation which `results in a list` of size `n` requires `n` operations.
+  - The result of this analysis is that `log𝑛` splits, each of which costs `𝑛` for a total of `𝑛log𝑛` operations.
+
+- A merge sort is an `𝑂(𝑛log𝑛)` algorithm.
+
+- the slicing operator is `𝑂(𝑘)` where `k` is the size of the slice.
+- In order to guarantee that mergeSort will be `𝑂(𝑛log𝑛)` we will need to remove the slice operator.
+- simply pass the starting and ending indices along with the list when we make the recursive call.
+- We leave this as an exercise.
+
+It is important to notice that the mergeSort function `requires extra space` to hold the two halves as they are extracted with the slicing operations.
+
+This additional space can be a critical factor if the list is large and can make this sort problematic when working on large data sets.
+
+
+---
+
+
+#### The Quick Sort
+
+##### `𝑂(𝑛log𝑛) to 𝑂(𝑛^2)` pivot, small < pivot < large
+
+> Quick sort can be O(n log n), but if the pivot points are not well chosen and the list is just so, it can be O(n^2).
+> Merge Sort is the only guaranteed O(n log n) even in the worst case. The cost is that merge sort uses more memory.
+
+![Screen Shot 2021-09-27 at 7.05.59 PM](https://i.imgur.com/pnDV79v.png)
+
+![Screen Shot 2021-09-27 at 7.25.03 PM](https://i.imgur.com/y5sZEhi.png)
+
+The quick sort uses divide and conquer to gain the same advantages as the merge sort, `while not using additional storage`.
+
+As a trade-off, however, it is possible that the list may not be divided in half. When this happens, we will see that performance is diminished.
+
+A quick sort first selects a value, `pivot value`.
+- many different ways to choose the pivot value, we will simply use the first item in the list.
+- The role of the pivot value is to assist with splitting the list.
+- The actual position where the pivot value belongs in the final sorted list, commonly called the `split point`, will be used to divide the list for subsequent calls to the quick sort.
+
+```py
+def sq(arr, l, r):
+  if l>r:
+    return arr
+  else:
+    p = partitioning(arr, l, r)
+    qs(arr[0:p], 0, p)
+    qs(arr[p:], p+1, r)
+```
+
+**Partitioning**
+- The goal of the partition process is to move items that are on the wrong side with respect to the pivot value while also converging on the split point.
+
+1. begins by locating two position markers
+   1. leftmark and rightmark, at the beginning and end of the remaining items in the list
+2. incrementing leftmark until locate a value <font color=blue> greater than the pivot value </font>.
+3. then decrement rightmark until find a value <font color=blue> less than the pivot value </font>.
+4. At this point, we have two items that are out of place with respect to the eventual split point.
+   1. For our example, this occurs at 93 and 20.
+5. Now exchange these two items and then repeat the process again.
+
+6. At the point where rightmark becomes less than leftmark, we stop.
+7. The position of rightmark is now the split point.
+8. The pivot value can be exchanged with the contents of the split point and the pivot value is now in place (Figure 14).
+9. In addition, all the items to the left of the split point are less than the pivot value, and all the items to the right of the split point are greater than the pivot value.
+10. The list can now be divided at the split point and the quick sort can be invoked recursively on the two halves.
+
+
+![firstsplit](https://i.imgur.com/dCJunDA.png)
+
+![partitionA](https://i.imgur.com/jQPiRut.png)
+
+![partitionB](https://i.imgur.com/rKFSiX3.png)
+
+- 54 will serve as our first pivot value.
+- 54 will eventually end up in the position currently holding 31.
+- The partition process will happen next. It will find the split point and at the same time move other items to the appropriate side of the list, either less than or greater than the pivot value.
+
+
+##### quickSort in python
+
+The quickSort function invokes a recursive function, quickSortHelper. quickSortHelper begins with the same base case as the merge sort.
+- If the length of the list is less than or equal to one, it is already sorted.
+- If it is greater, then it can be partitioned and recursively sorted.  
+
+```py
+def quickSort(alist):
+  quickSortHelper(alist,0,len(alist)-1)
+
+def quickSortHelper(alist,first,last):
+  if first<last:
+    splitpoint = partition(alist,first,last)
+    quickSortHelper(alist,first,splitpoint-1)
+    quickSortHelper(alist,splitpoint+1,last)
+
+def partition(alist,first,last):
+  pivotvalue = alist[first]
+
+  leftmark = first+1
+  rightmark = last
+
+  done = False
+  while not done:
+    while leftmark <= rightmark and alist[leftmark] <= pivotvalue:
+      leftmark = leftmark + 1
+
+    while leftmark <= rightmark and alist[rightmark] >= pivotvalue:
+      rightmark = rightmark -1
+
+    if leftmark > rightmark:
+      done = True
+    else:
+      temp = alist[leftmark]
+      alist[leftmark] = alist[rightmark]
+      alist[rightmark] = temp
+
+  temp = alist[first]
+  alist[first] = alist[rightmark]
+  alist[rightmark] = temp
+  return rightmark
+
+alist = [54,26,93,17,77,31,44,55,20]
+quickSort(alist)
+print(alist)
+```
+
+
+
+##### analyze the quickSort sort
+
+![Screen Shot 2021-09-27 at 7.32.56 PM](https://i.imgur.com/zqs7LSY.png)
+
+for a list of length `n`,
+- if the partition always occurs in the middle of the list, there will again be `log𝑛` divisions.
+- In order to find the split point, each of the `n` items needs to be checked against the pivot value. The result is `𝑛log𝑛`.
+- In addition, there is **no need for additional memory** as in the merge sort process.
+
+Unfortunately, worst case, the split points may not be in the middle and can be very skewed to the left or the right, leaving a very uneven division.
+- In this case,
+  - sorting a list of `n` items divides into sorting a list of `0` items and a list of `𝑛−1` items.
+  - Then sorting a list of `𝑛−1` divides into a list of size 0 and a list of size `𝑛−2`, and so on.
+- The result is an `𝑂(𝑛^2)` sort with all of the overhead that recursion requires.
+
+different ways to choose the pivot value.
+- In particular, we can attempt to alleviate some of the potential for an uneven division by using a technique called **median of three**.
+
+**median of three**
+- To choose the pivot value, consider the `first, the middle, and the last element in the list`.
+  - In our example, those are 54, 77, and 20.
+- Now pick the median value, in our case 54, and use it for the pivot value (of course, that was the pivot value we used originally).
+- The idea is that in the case where the first item in the list does not belong toward the middle of the list, **the median of three** will choose a better “middle” value.
+- This will be particularly useful when the original list is somewhat sorted to begin with.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
