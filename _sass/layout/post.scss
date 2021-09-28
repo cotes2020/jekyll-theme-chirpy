@@ -218,9 +218,12 @@ nav[data-toggle=toc] {
 
 #post-extend-wrapper {
   min-height: 2rem;
+
   #disqus_thread {
+    min-height: 7.5rem;
     margin-bottom: 2rem;
   }
+
 }
 
 .post-tail-bottom a {
