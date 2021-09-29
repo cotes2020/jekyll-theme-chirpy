@@ -1,38 +1,27 @@
 <div align="right">
-  <a href="https://github.com/cotes2020/jekyll-theme-chirpy#readme">EN</a> |
-  <a href="https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/README.zh-CN.md">中文 (简体)</a>
+
+  EN /
+  [中文(简体)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/README.zh-CN.md)
+
 </div>
 
 <div align="center">
-  <h1>Chirpy Jekyll Theme</h1>
-  <p>
-    <a href="https://rubygems.org/gems/jekyll-theme-chirpy">
-    <img alt="Gem Version" src="https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen"></img>
-  </a>
-    <a href="https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush">
-    <img alt="Build Status" src="https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push"></img>
-  </a>
-    <a href="https://app.codacy.com/manual/cotes2020/jekyll-theme-chirpy?utm_source=github.com&utm_medium=referral&utm_content=cotes2020/jekyll-theme-chirpy&utm_campaign=Badge_Grade_Dashboard">
-    <img alt="Codacy Badge" src="https://api.codacy.com/project/badge/Grade/8220b926db514f13afc3f02b7f884f4b"></img>
-  </a>
-    <a href="https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE">
-    <img alt="GitHub license" src="https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg"></img>
-  </a>
-    <a href="https://996.icu">
-    <img alt="996.icu" src="https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg"></img>
-  </a>
-  </p>
+
+  # Chirpy Jekyll Theme
+
+  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)](https://rubygems.org/gems/jekyll-theme-chirpy)
+  [![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush)
+  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8220b926db514f13afc3f02b7f884f4b)](https://app.codacy.com/manual/cotes2020/jekyll-theme-chirpy?utm_source=github.com&utm_medium=referral&utm_content=cotes2020/jekyll-theme-chirpy&utm_campaign=Badge_Grade_Dashboard)
+  [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
+  [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
+
+  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+
+  **[Live Demo →](https://chirpy.cotes.info)**
+
+  [![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/devices-mockup.png)](https://chirpy.cotes.info)
+
 </div>
-
-A minimal, sidebar, responsive web design Jekyll theme that focuses on text presentation. Designed to help you easily record and share your knowledge.
-
-[Live Demo »](https://chirpy.cotes.info)
-
-<p align="center">
-  <a href="https://chirpy.cotes.info">
-    <img alt="Devices Mockup" src="https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/devices-mockup.png"></img>
-  </a>
-</p>
 
 ## Features
 
