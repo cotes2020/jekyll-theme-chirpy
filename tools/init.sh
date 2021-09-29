@@ -52,13 +52,14 @@ init_files() {
   if $_no_gh; then
     rm -rf .github
   else
-    # change the files of `.github`
+    ## Change the files of `.github`
+
     mv .github/workflows/$ACTIONS_WORKFLOW.hook .
     rm -rf .github
     mkdir -p .github/workflows
     mv ./${ACTIONS_WORKFLOW}.hook .github/workflows/${ACTIONS_WORKFLOW}
 
-    # ensure the gh-actions trigger branch
+    ## Ensure the gh-actions trigger branch
 
     _workflow=".github/workflows/${ACTIONS_WORKFLOW}"
     _default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
@@ -66,6 +67,10 @@ init_files() {
 
     sed -i.$TEMP_SUFFIX "$((_lineno + 1))s/- .*/- ${_default_branch}/" "$_workflow"
     rm -f "$_workflow.$TEMP_SUFFIX"
+
+    ## Cleanup image settings in site config
+    sed -i.$TEMP_SUFFIX "s/^img_cdn:.*/img_cdn: ''/;s/^avatar:.*/avatar: ''/" _config.yml
+    rm -f _config.yml.$TEMP_SUFFIX
 
   fi
 
