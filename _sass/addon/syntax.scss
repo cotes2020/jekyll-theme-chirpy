@@ -179,25 +179,28 @@ div {
 
     &.small {
       font-size: 70%;
-      margin-left: 0.25rem;
     }
   }
 
   // the label block
   span {
-    padding-left: 0.6rem;
+    padding-left: 0.35rem;
 
     &::after {
       content: attr(text-data);
-      margin-left: 0.3rem;
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--lang-badge-color);
     }
 
-    @at-root [file] #{&} > i { // center the file icon
+    i {
+      margin: 0 0.5rem;
+    }
+
+    @at-root [file] #{&} > i {
       position: relative;
-      top: 1px;
+      top: 1px; // center the file icon
+      margin-left: 0.25rem;
     }
 
   }
@@ -244,6 +247,10 @@ div {
       @include ml-mr(-1.25rem);
 
       border-radius: 0;
+
+      .highlight {
+        padding-left: 0.25rem;
+      }
 
       .code-header {
         border-radius: 0;
