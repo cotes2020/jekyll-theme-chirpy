@@ -12,7 +12,7 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
-- [1. Introduction](#1-introduction)
+- [DS - pythonds3 - 1. Introduction](#ds---pythonds3---1-introduction)
   - [1.5. Why Study Data Structures and Abstract Data Types?](#15-why-study-data-structures-and-abstract-data-types)
   - [1.8. Getting Started with Data](#18-getting-started-with-data)
     - [1.8.1. Built-in Atomic Data Types](#181-built-in-atomic-data-types)
@@ -30,7 +30,7 @@ toc: true
 
 ---
 
-# 1. Introduction
+# DS - pythonds3 - 1. Introduction
 
 Problem Solving with Algorithms and Data Structures using Python 1
 

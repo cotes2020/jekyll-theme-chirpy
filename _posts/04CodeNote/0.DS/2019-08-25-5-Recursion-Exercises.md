@@ -23,9 +23,10 @@ toc: true
   - [missionaries and cannibals](#missionaries-and-cannibals)
   - [python tree](#python-tree)
 
+---
+
+
 # DS - pythonds3 - 5. Recursion - Exercises
-
-
 
 ---
 

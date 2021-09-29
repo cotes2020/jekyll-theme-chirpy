@@ -12,7 +12,7 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
-- [4. Basic Data Structures](#4-basic-data-structures)
+- [DS - pythonds3 - 4. Basic Data Structures](#ds---pythonds3---4-basic-data-structures)
   - [Linear Structures](#linear-structures)
   - [Stack](#stack)
     - [stack operations](#stack-operations)
@@ -64,7 +64,7 @@ toc: true
 
 ---
 
-# 4. Basic Data Structures
+# DS - pythonds3 - 4. Basic Data Structures
 
 Problem Solving with Algorithms and Data Structures using Python 4
 
