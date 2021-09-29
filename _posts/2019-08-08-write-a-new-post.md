@@ -146,7 +146,7 @@ By default, the image is centered, but you can specify the position by using one
   ```
   {: .nolineno}
 
-> **Limitation**: Once you specify the position of an image, it is forbidden to add the image caption.
+> **Limitation**: Once the position of the image is specified, the image caption should not be added.
 
 ### Image shadow
 
