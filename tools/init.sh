@@ -16,6 +16,13 @@ help() {
   echo "     -h, --help           Print this help information."
 }
 
+check_status() {
+  if [[ -n $(git status . -s) ]]; then
+    echo "Error: Commit unstaged files first, and then run this tool againt."
+    exit -1
+  fi
+}
+
 check_init() {
   local _has_inited=false
 
@@ -40,24 +47,39 @@ check_init() {
 }
 
 init_files() {
-
   if $_no_gh; then
     rm -rf .github
   else
+    # change the files of `.github`
     mv .github/workflows/$ACTIONS_WORKFLOW.hook .
     rm -rf .github
     mkdir -p .github/workflows
     mv ./${ACTIONS_WORKFLOW}.hook .github/workflows/${ACTIONS_WORKFLOW}
+
+    # ensure the gh-actions trigger branch
+
+    _workflow=".github/workflows/${ACTIONS_WORKFLOW}"
+    _default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+    _lineno="$(sed -n "/branches:/=" "$_workflow")"
+    sed -i "$((_lineno + 1))s/- .*/- ${_default_branch}/" "$_workflow"
+
   fi
 
+  # trace the gem lockfile on user-end
+  sed -i "/Gemfile.lock/d" .gitignore
+
+  # remove the other fies
   rm -f .travis.yml
   rm -rf _posts/* docs
 
+  # save changes
   git add -A && git add .github -f
   git commit -m "[Automation] Initialize the environment." -q
 
   echo "[INFO] Initialization successful!"
 }
+
+check_status
 
 check_init
 

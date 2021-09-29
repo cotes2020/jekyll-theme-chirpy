@@ -1,33 +1,23 @@
 #!/usr/bin/env bash
 #
-# How does it work:
 #
-#   1. Cherry pick the latest commit from default branch
-#      to the target release branch if the target release branch already existed.
+# 1. Bump latest version number to the following files:
 #
-#   2. Bump latest version number to the following files:
+#   - _sass/jekyll-theme-chirpy.scss
+#   - _javascript/copyright
+#   - assets/js/dist/*.js (will be built by gulp later)
+#   - jekyll-theme-chirpy.gemspec
+#   - package.json
 #
-#     - _sass/jekyll-theme-chirpy.scss
-#     - _javascript/copyright
-#     - assets/js/dist/*.js (will be built by gulp later)
-#     - jekyll-theme-chirpy.gemspec
-#     - package.json
-#
-#   3. Create a git-tag on release branch
-#
-#   4. Build a RubyGems package base on the latest git-tag
-#
+# 2. Then create a commit to automatically save the changes.
 #
 # Usage:
 #
-#   Run on default branch, if run on other branch requires parameter '-m' (manual mode).
+#   Run on the default branch or hotfix branch
 #
-#
-# Requires: Git, Gulp, RubyGems
+# Requires: Git, Gulp
 
 set -eu
-
-opt_manual=false
 
 ASSETS=(
   "_sass/jekyll-theme-chirpy.scss"
@@ -37,10 +27,6 @@ ASSETS=(
 GEM_SPEC="jekyll-theme-chirpy.gemspec"
 
 NODE_META="package.json"
-
-DEFAULT_BRANCH="master"
-
-_working_branch="$(git branch --show-current)"
 
 _check_src() {
   if [[ ! -f $1 && ! -d $1 ]]; then
@@ -52,12 +38,6 @@ _check_src() {
 check() {
   if [[ -n $(git status . -s) ]]; then
     echo "Error: Commit unstaged files first, and then run this tool againt."
-    exit -1
-  fi
-
-  # ensure working on default branch or running in 'manual' mode
-  if [[ $_working_branch != $DEFAULT_BRANCH && $opt_manual == "false" ]]; then
-    echo "Error: This operation must be performed on the 'master' branch or '--manual' mode!"
     exit -1
   fi
 
@@ -98,75 +78,6 @@ bump() {
   fi
 }
 
-build_gem() {
-  rm -f ./*.gem
-  gem build "$GEM_SPEC"
-}
-
-release() {
-  _version="$1"
-  _major=""
-  _minor=""
-  _new_release_branch=false
-
-  IFS='.' read -r -a array <<< "$_version"
-
-  for elem in "${array[@]}"; do
-    if [[ -z $_major ]]; then
-      _major="$elem"
-    elif [[ -z $_minor ]]; then
-      _minor="$elem"
-    else
-      break
-    fi
-  done
-
-  _release_branch="$_major-$_minor-stable"
-
-  if ! $opt_manual; then
-    if [[ -z $(git branch -v | grep "$_release_branch") ]]; then
-      git checkout -b "$_release_branch"
-      _new_release_branch=true
-    else
-      # cherry-pick the latest commit from default branch to release branch
-      _last_commit="$(git rev-parse $DEFAULT_BRANCH)"
-      git checkout "$_release_branch"
-      git cherry-pick "$_last_commit" -m 1
-    fi
-
-  fi
-
-  echo -e "Bump version to $_version\n"
-  bump "$_version"
-
-  echo -e "Create tag v$_version\n"
-  git tag "v$_version"
-
-  echo -e "Build the gem pakcage for v$_version\n"
-  build_gem
-
-  # head back to working branch
-  git checkout "$_working_branch"
-
-  if [[ $_working_branch == $DEFAULT_BRANCH ]]; then
-    if $_new_release_branch; then
-      git merge "$_release_branch"
-    fi
-  fi
-
-}
-
-help() {
-  echo "Bump new version to Chirpy project"
-  echo "Usage:"
-  echo
-  echo "   bash /path/to/bump.sh [options]"
-  echo
-  echo "Options:"
-  echo "     -m, --manual         Manual relase, bump version only."
-  echo "     -h, --help           Print this help information."
-}
-
 main() {
   check
 
@@ -183,7 +94,8 @@ main() {
       exit -1
     fi
 
-    release "$_version"
+    echo -e "Bump version to $_version\n"
+    bump "$_version"
 
   else
 
@@ -191,23 +103,5 @@ main() {
   fi
 
 }
-
-while (($#)); do
-  opt="$1"
-  case $opt in
-    -m | --manual)
-      opt_manual=true
-      shift
-      ;;
-    -h | --help)
-      help
-      exit 0
-      ;;
-    *)
-      echo "unknown option '$opt'!"
-      exit 1
-      ;;
-  esac
-done
 
 main
