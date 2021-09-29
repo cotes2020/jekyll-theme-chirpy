@@ -139,15 +139,13 @@
   }
 }
 
-#toc li > a {
-  line-height: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+#toc li a {
   font-size: 0.8rem;
 
   &.nav-link:not(.active) {
     color: inherit;
   }
+
 }
 
 nav[data-toggle=toc] {
