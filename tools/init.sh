@@ -6,6 +6,8 @@ set -eu
 
 ACTIONS_WORKFLOW=pages-deploy.yml
 
+TEMP_SUFFIX="to-delete" #  temporary file suffixes that make `sed -i` compatible with BSD and Linux
+
 help() {
   echo "Usage:"
   echo
@@ -61,12 +63,15 @@ init_files() {
     _workflow=".github/workflows/${ACTIONS_WORKFLOW}"
     _default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
     _lineno="$(sed -n "/branches:/=" "$_workflow")"
-    sed -i "$((_lineno + 1))s/- .*/- ${_default_branch}/" "$_workflow"
+
+    sed -i.$TEMP_SUFFIX "$((_lineno + 1))s/- .*/- ${_default_branch}/" "$_workflow"
+    rm -f "$_workflow.$TEMP_SUFFIX"
 
   fi
 
   # trace the gem lockfile on user-end
-  sed -i "/Gemfile.lock/d" .gitignore
+  sed -i.$TEMP_SUFFIX "/Gemfile.lock/d" .gitignore
+  rm -f ".gitignore.$TEMP_SUFFIX"
 
   # remove the other fies
   rm -f .travis.yml
