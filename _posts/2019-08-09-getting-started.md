@@ -165,7 +165,7 @@ It depends on how you use the theme:
     And then execute the following command:
 
     ```console
-    $ bundle update jekyll-theme-chirpy
+  $ bundle update jekyll-theme-chirpy
     ```
 
     As the version upgrades, the critical files (for details, see the [Startup Template][starter]) and configuration options will change. Please refer to the [Upgrade Guide](https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Upgrade-Guide) to keep your repo's files in sync with the latest version of the theme.
