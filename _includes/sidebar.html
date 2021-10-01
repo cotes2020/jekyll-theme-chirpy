@@ -6,16 +6,18 @@
   <div class="profile-wrapper text-center">
     <div id="avatar">
       <a href="{{ '/' | relative_url }}" alt="avatar" class="mx-auto">
-        {% capture avatar_url %}
-          {%- if site.avatar contains '://' -%}
-            {{ site.avatar }}
-          {%- elsif site.img_cdn != '' and site.img_cdn -%}
-            {{ site.avatar | prepend: site.img_cdn }}
-          {%- else -%}
-            {{ site.avatar | relative_url }}
-          {%- endif -%}
-        {% endcapture %}
-        <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
+        {% if site.avatar != '' and site.avatar %}
+          {% capture avatar_url %}
+            {%- if site.avatar contains '://' -%}
+              {{ site.avatar }}
+            {%- elsif site.img_cdn != '' and site.img_cdn -%}
+              {{ site.avatar | prepend: site.img_cdn }}
+            {%- else -%}
+              {{ site.avatar | relative_url }}
+            {%- endif -%}
+          {% endcapture %}
+          <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
+        {% endif %}
       </a>
     </div>
 
