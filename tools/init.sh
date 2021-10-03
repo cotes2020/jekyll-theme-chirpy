@@ -69,7 +69,7 @@ init_files() {
     rm -f "$_workflow.$TEMP_SUFFIX"
 
     ## Cleanup image settings in site config
-    sed -i.$TEMP_SUFFIX "s/^img_cdn:.*/img_cdn: ''/;s/^avatar:.*/avatar: ''/" _config.yml
+    sed -i.$TEMP_SUFFIX "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
     rm -f _config.yml.$TEMP_SUFFIX
 
   fi

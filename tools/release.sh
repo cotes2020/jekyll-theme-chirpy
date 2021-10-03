@@ -28,6 +28,16 @@ check() {
   fi
 }
 
+## Remove unnecessary theme settings
+cleanup_config() {
+  cp _config.yml _config.yml.bak
+  sed -i "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
+}
+
+resume_config() {
+  mv _config.yml.bak _config.yml
+}
+
 release() {
   _default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
   _version="$(grep "spec.version" jekyll-theme-chirpy.gemspec | sed 's/.*= "//;s/".*//')" # X.Y.Z
@@ -49,9 +59,10 @@ release() {
 
   # build a gem package
   echo -e "Build the gem pakcage for v$_version\n"
+  cleanup_config
   rm -f ./*.gem
   gem build "$GEM_SPEC"
-
+  resume_config
 }
 
 main() {
