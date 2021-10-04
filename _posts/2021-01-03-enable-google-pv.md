@@ -13,20 +13,20 @@ This post is to enable Page Views on the [**Chirpy**][chirpy-homepage] theme bas
 
 ### Create GA account and property
 
-First, you need to setup your account on Google analytics. While your create your account, you must create your first **Property** as well.
+First, you need to set up your account on Google analytics. While you create your account, you must create your first **Property** as well.
 
 1. Head to <https://analytics.google.com/> and click on **Start Measuring**
 2. Enter your desired _Account Name_ and choose the desired checkboxes
 3. Enter your desired _Property Name_. This is the name of the tracker project that appears on your Google Analytics dashboard
 4. Enter the required information _About your business_
-5. Hit _Create_ and accept any license popup to setup your Google Analytics account and create your property
+5. Hit _Create_ and accept any license popup to set up your Google Analytics account and create your property
 
 ### Create Data Stream
 
-With your property created, you now need to set up Data Stream to track your blog traffic. After you signup, the prompt should automatically take you to creating your first **Data Stream**. If not, follow these steps:
+With your property created, you now need to set up Data Stream to track your blog traffic. After you signup, the prompt should automatically take you to create your first **Data Stream**. If not, follow these steps:
 
 1. Go to **Admin** on the left column
-2. Select the desired property from the drop down on the second column
+2. Select the desired property from the drop-down on the second column
 3. Click on **Data Streams**
 4. Add a stream and click on **Web**
 5. Enter your blog's URL
@@ -47,13 +47,13 @@ google_analytics:
 ```
 {: file="_config.yml"}
 
-When you push these changes to your blog, you should start seeing the traffic on your Google Analytics. Play around with Google Analytics dashboard to get familiar with the options available as it takes like 5 mins to pickup your changes. You should now be able to monitor your traffic in realtime.
+When you push these changes to your blog, you should start seeing the traffic on your Google Analytics. Play around with the Google Analytics dashboard to get familiar with the options available as it takes like 5 mins to pick up your changes. You should now be able to monitor your traffic in real time.
 
 ![google-analytics-realtime](/posts/20210103/02-google-analytics-realtime.png){: width="616" height="557"}
 
 ## Setup Page Views
 
-There is a detailed [tutorial](https://developers.google.com/analytics/solutions/google-analytics-super-proxy) available to set up Google Analytics superProxy. But, if you are interested to just quickly get your Chirpy-based blog display page views, follow along. These steps were tested on a Linux machine. If you are running Windows, you can use Git bash terminal to run Unix-like commands.
+There is a detailed [tutorial](https://developers.google.com/analytics/solutions/google-analytics-super-proxy) available to set up Google Analytics superProxy. But, if you are interested to just quickly get your Chirpy-based blog display page views, follow along. These steps were tested on a Linux machine. If you are running Windows, you can use the Git bash terminal to run Unix-like commands.
 
 ### Setup Google App Engine
 
@@ -67,7 +67,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
 5. Select **Python** language and **Standard** environment
 
-6. Enable billing account. Yeah, you have to link your credit card. But, you won't be billed unless you exceed your free quota. For a simple blog, free quota is more than sufficient.
+6. Enable billing account. Yeah, you have to link your credit card. But, you won't be billed unless you exceed your free quota. For a simple blog, the free quota is more than sufficient.
 
 7. Go to your App Engine dashboard on your browser and select **API & Services** from the left navigation menu
 
@@ -77,7 +77,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
 10. On the left, Click on _OAuth Consent Screen_ and accept **Configure Consent Screen**. Select **External** since your blog is probably hosted for the public. Click on **Publish** under _Publishing Status_
 
-11. Click on **Credentials** on the left and create a new **OAuth Client IDs** credential. Make sure to add a entry under `Authorized redirect URIs` that matches: `https://<project-id>.<region>.r.appspot.com/admin/auth`
+11. Click on **Credentials** on the left and create a new **OAuth Client IDs** credential. Make sure to add an entry under `Authorized redirect URIs` that matches: `https://<project-id>.<region>.r.appspot.com/admin/auth`
 
 12. Note down the **Your Client ID** and **Your Client Secret**. You'll need this in the next section.
 
@@ -119,7 +119,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 - version: 1
   ```
 
-3. In `src/config.py`, add the `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` that you gathered from you App Engine Dashboard.
+3. In `src/config.py`, add the `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` that you gathered from your App Engine Dashboard.
 
 4. Enter any random key for `XSRF_KEY`, your `config.py` should look similar to this
 
@@ -206,7 +206,7 @@ In order to reduce the returned results and reduce the network bandwidth, we add
 
     If the `site.baseurl` is specified, change the first filtering rule to `ga:pagePath=~^/BASE_URL/posts/.*/$`, where `BASE_URL` is the value of `site.baseurl`.
 
-After <kbd>Run Query</kbd>, copy the generated contents of **API Query URI** at the bottom of the page, and fill in the **Encoded URI for the query** of SuperProxy on GAE.
+After <kbd>Run Query</kbd>, copy the generated contents of **API Query URI** at the bottom of the page and fill in the **Encoded URI for the query** of SuperProxy on GAE.
 
 After the query is saved on GAE, a **Public Endpoint** (public access address) will be generated, and we will get the query result in JSON format when accessing it. Finally, click <kbd>Enable Endpoint</kbd> in **Public Request Endpoint** to make the query effective, and click <kbd>Start Scheduling</kbd> in **Scheduling** to start the scheduled task.
 
