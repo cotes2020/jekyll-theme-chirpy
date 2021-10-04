@@ -7,9 +7,9 @@ labels: enhancement
 <!-- NOTE: Please maintain all sections, otherwise the issue will be automatically closed :) -->
 
 ## Checklist
-<!-- Please complete the following list of tasks, and then check it by change the "[ ]" to "[x]" -->
+<!-- Please complete the following list of tasks, and then check it by changing the "[ ]" to "[x]" -->
 - [ ] I have read the [contributing guidelines](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/CONTRIBUTING.md).
-- [ ] There are no similar request on existing issues (including closed ones).
+- [ ] There is no similar request on existing issues (including closed ones).
 - [ ] I have read the [project progress](https://github.com/cotes2020/jekyll-theme-chirpy/projects) and know the current progress of the project.
 - [ ] I was in the `master` branch of the latest code.
 
