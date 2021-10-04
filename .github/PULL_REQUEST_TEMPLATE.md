@@ -29,16 +29,14 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 - Browser type & version:
 - Operating system:
-- Bundler version:
-- Ruby version:
-- Jekyll version:
+- Ruby version: <!-- by running: `ruby -v` -->
+- Bundler version: <!-- by running: `bundle -v`-->
+- Jekyll version: <!-- by running: `bundle list | grep " jekyll "` -->
 
 ### Checklist
+
 <!-- Select checkboxes by change the "[ ]" to "[x]" -->
-- [ ] My code follows the [Google style guidelines](https://google.github.io/styleguide/)
-- [ ] I have performed a self-review of my own code
+- [ ] I have performed a self-review of my code
 - [ ] I have commented on my code, particularly in hard-to-understand areas
 - [ ] I have made corresponding changes to the documentation
 - [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] Any dependent changes have been merged and published in downstream modules
