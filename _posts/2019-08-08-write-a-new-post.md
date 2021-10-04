@@ -24,15 +24,15 @@ tags: [TAG]     # TAG names should always be lowercase
 ---
 ```
 
-> **Note**: The posts' ***layout*** has been set to `post` by default, so there is no need to add the variable ***layout*** in Front Matter block.
+> **Note**: The posts' ***layout*** has been set to `post` by default, so there is no need to add the variable ***layout*** in the Front Matter block.
 
 ### Timezone of date
 
-In order to accurately record the release date of a post, you should not only setup the `timezone` of `_config.yml` but also provide the the post's timezone in field `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
+In order to accurately record the release date of a post, you should not only set up the `timezone` of `_config.yml` but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
 
 ### Categories and Tags
 
-The `categories` of each post is designed to contain up to two elements, and the number of elements in `tags` can be zero to infinity. For instance:
+The `categories` of each post are designed to contain up to two elements, and the number of elements in `tags` can be zero to infinity. For instance:
 
 ```yaml
 categories: [Animal, Insect]
@@ -41,7 +41,7 @@ tags: [bee]
 
 ## Table of Contents
 
-By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to `_config.yml` and set the value of variable `toc` to `false`. If you want to turn off TOC for specific post, add the following to post's [Front Matter](https://jekyllrb.com/docs/front-matter/):
+By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to `_config.yml` and set the value of variable `toc` to `false`. If you want to turn off TOC for a specific post, add the following to the post's [Front Matter](https://jekyllrb.com/docs/front-matter/):
 
 ```yaml
 ---
@@ -51,7 +51,7 @@ toc: false
 
 ## Comments
 
-Similar to TOC, the [Disqus](https://disqus.com/) comments is loaded by default in each post, and the global switch is defined by variable `comments` in file `_config.yml` . If you want to close the comment for specific post, add the following to the **Front Matter** of the post:
+Similar to TOC, the [Disqus](https://disqus.com/) comments are loaded by default in each post, and the global switch is defined by variable `comments` in file `_config.yml` . If you want to close the comment for a specific post, add the following to the **Front Matter** of the post:
 
 ```yaml
 ---
@@ -79,13 +79,13 @@ mermaid: true
 ---
 ```
 
-Then you can use it like other markdown language: surround the graph code with ```` ```mermaid ```` and ```` ``` ````.
+Then you can use it like other markdown languages: surround the graph code with ```` ```mermaid ```` and ```` ``` ````.
 
 ## Images
 
 ### Preview image
 
-If you want to add an image to the top of the post contents, specify the attribute `src`, `width`, `height` and `alt` for the image:
+If you want to add an image to the top of the post contents, specify the attribute `src`, `width`, `height`, and `alt` for the image:
 
 ```yaml
 ---
@@ -121,7 +121,7 @@ In order to prevent the page content layout from shifting when the image is load
 
 ### Image position
 
-By default, the image is centered, but you can specify the position by using one of class `normal` , `left` and `right`. For example:
+By default, the image is centered, but you can specify the position by using one of the classes `normal`, `left`, and `right`. For example:
 
 - **Normal position**
 
@@ -159,14 +159,14 @@ The screenshots of the program window can be considered to show the shadow effec
 
 ### CDN URL
 
-If you host the images on the CDN, you can save the time of repeatedly writing the CDN url by assigning the variable `img_cdn` of `_config.yml` file:
+If you host the images on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable `img_cdn` of `_config.yml` file:
 
 ```yaml
 img_cdn: https://cdn.com
 ```
 {: file='_config.yml' .nolineno}
 
-Once `img_cdn` is assigned, the CDN url will be added to the path of all images (images of site avatar and posts) starting with `/`.
+Once `img_cdn` is assigned, the CDN URL will be added to the path of all images (images of site avatar and posts) starting with `/`.
 
 For instance, when using images:
 
@@ -210,11 +210,11 @@ key: value
 ```
 ````
 
-> **Limination**: The Jekyll style `highlight` tag ais not compatible with this theme.
+> **Limitation**: The Jekyll style `highlight` tag is not compatible with this theme.
 
 ### Line Number
 
-By default, all languages except `plaintext`, `console` and `terminal` will display line numbers. When you want to hide the line number of the code block, you can append `{: .nolineno}` at the next line:
+By default, all languages except `plaintext`, `console`, and `terminal` will display line numbers. When you want to hide the line number of the code block, you can append `{: .nolineno}` at the next line:
 
 ````markdown
 ```shell

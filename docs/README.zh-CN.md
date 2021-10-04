@@ -17,7 +17,7 @@
 
   一款简约而强大、采用响应式设计的 Jekyll 主题，适合展示专业写作内容。
 
-  **[线上体验 →](https://chirpy.cotes.info)**
+  [**线上体验 →**](https://chirpy.cotes.info)
 
   [![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/commons/devices-mockup.png)](https://chirpy.cotes.info)
 
@@ -53,9 +53,8 @@
 
 有两种方式可以创建一个使用本主题的仓库：
 
-- **[使用 Chirpy Starter](#使用-chirpy-starter)** - 易于版本升级，隔离无关的主题项目文件，让您的仓库舒适清爽。
-
-- **[从 GitHub 上 Fork](#从-github-上-fork)** - 对个性化二次开发友好，但是难于升级。除非您决定魔改此款主题或者参与代码贡献，否则不推荐使用此方式。
+- [**使用 Chirpy Starter**](#使用-chirpy-starter) - 易于版本升级，隔离无关的主题项目文件，让您的仓库舒适清爽。
+- [**从 GitHub 上 Fork**](#从-github-上-fork) - 对个性化二次开发友好，但是难于升级。除非您决定魔改此款主题或者参与代码贡献，否则不推荐使用此方式。
 
 #### 使用 Chirpy Starter
 

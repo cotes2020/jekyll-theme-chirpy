@@ -17,7 +17,7 @@
 
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
-  **[Live Demo →](https://chirpy.cotes.info)**
+  [**Live Demo →**](https://chirpy.cotes.info)
 
   [![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/commons/devices-mockup.png)](https://chirpy.cotes.info)
 
@@ -44,7 +44,7 @@
 
 ## Prerequisites
 
-Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`.
+Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll`, and `Bundler`.
 
 ## Installation
 
@@ -52,9 +52,8 @@ Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installat
 
 There are two ways to create a new repository for this theme:
 
-- **[Using the Chirpy Starter](#option-1-using-the-chirpy-starter)** - Easy to upgrade, isolates irrelevant project files so you can focus on writing.
-
-- **[Forking on GitHub](#option-2-forking-on-github)** - Convenient for custom development, but difficult to upgrade. Unless you are familiar with Jekyll and are determined to tweak or contribute to this project, this approach is not recommended.
+- [**Using the Chirpy Starter**](#option-1-using-the-chirpy-starter) - Easy to upgrade, isolates irrelevant project files so you can focus on writing.
+- [**Forking on GitHub**](#option-2-forking-on-github) - Convenient for custom development, but difficult to upgrade. Unless you are familiar with Jekyll and are determined to tweak or contribute to this project, this approach is not recommended.
 
 #### Option 1. Using the Chirpy Starter
 
@@ -62,7 +61,7 @@ Create a new repository from the [**Chirpy Starter**][use-starter] and name it `
 
 #### Option 2. Forking on GitHub
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub and rename it to `<GH_USERNAME>.github.io`. Please note that the default branch code is in development.  If you want the site to be stable, please switch to the [latest tag](https://github.com/cotes2020/jekyll-theme-chirpy/tags) and start writing.
+[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub and rename it to `<GH_USERNAME>.github.io`. Please note that the default branch code is in development.  If you want the site to be stable, please switch to the [latest tag][latest-tag] and start writing.
 
 And then execute:
 
@@ -79,7 +78,7 @@ The above command will:
     - files under `_posts`
     - folder `docs`
 
-2. If the option `--no-gh` is provided, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing the extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in the folder `.github`.
+2. If the option `--no-gh` is provided, the directory `.github` will be deleted. Otherwise, set up the GitHub Action workflow by removing the extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in the folder `.github`.
 
 3. Removes item `Gemfile.lock` from `.gitignore`.
 
@@ -87,7 +86,7 @@ The above command will:
 
 ### Installing Dependencies
 
-Before running for the first time, go the root directory of your site, and install dependencies as follows:
+Before running for the first time, go to the root directory of your site, and install dependencies as follows:
 
 ```console
 $ bundle
@@ -106,7 +105,7 @@ Update the variables of `_config.yml` as needed. Some of them are typical option
 
 ### Customing Stylesheet
 
-If you need to customize stylesheet, copy the theme's `assets/css/style.scss` to the same path on your Jekyll site, and then add the custom style at the end of the style file.
+If you need to customize the stylesheet, copy the theme's `assets/css/style.scss` to the same path on your Jekyll site, and then add the custom style at the end of the style file.
 
 Starting from [`v4.1.0`][chirpy-4.1.0], if you want to overwrite the SASS variables defined in `_sass/addon/variables.scss`, create a new file `_sass/variables-hook.scss` and assign new values to the target variable in it.
 
@@ -131,7 +130,7 @@ After a while, the local service will be published at _<http://127.0.0.1:4000>_.
 
 ### Deployment
 
-Before the deployment begins, checkout the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [**project site**](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base URL on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starting with a slash, e.g, `/project-name`.
+Before the deployment begins, check out the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [**project site**](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base URL on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starts with a slash, e.g, `/project-name`.
 
 Now you can choose ONE of the following methods to deploy your Jekyll site.
 
@@ -145,7 +144,7 @@ Quickly check the files needed for GitHub Actions build:
 
 - Ensure your Jekyll site has file `tools/deploy.sh`. Otherwise, copy it from here to your Jekyll site.
 
-- Furthermore, if you have committed `Gemfile.lock` to the repo, and your runtime system is not Linux, don't forget to update the platform list in the lockfile:
+- Furthermore, if you have committed `Gemfile.lock` to the repo, and your runtime system is not Linux, don't forget to update the platform list in the lock file:
 
   ```console
   $ bundle lock --add-platform x86_64-linux
@@ -189,7 +188,8 @@ Unless you specified the output path, the generated site files will be placed in
 
 It depends on how you use the theme:
 
-- If you are using the theme gem (there will be `gem "jekyll-theme-chirpy"` in the `Gemfile`), editing the `Gemfile` and update the version number of the them gem, for example:
+- If you are using the theme gem (there will be `gem "jekyll-theme-chirpy"` in the `Gemfile`), editing the `Gemfile` and update the version number of the theme gem, for example:
+
     ```diff
     - gem "jekyll-theme-chirpy", "~> 3.2", ">= 3.2.1"
     + gem "jekyll-theme-chirpy", "~> 3.3", ">= 3.3.0"
@@ -208,7 +208,7 @@ The merge is likely to conflict with your local modifications. Please be patient
 
 ## Documentation
 
-For more details and a better reading experience, please check out the [tutorials on the demo site](https://chirpy.cotes.info/categories/tutorial/). In the meanwhile, a copy of the tutorial is also available on the [Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki). Please note that the tutorials on the demo website or Wiki are based on the latest release, and the features of `master` branch usually ahead of the documentation.
+For more details and a better reading experience, please check out the [tutorials on the demo site](https://chirpy.cotes.info/categories/tutorial/). In the meanwhile, a copy of the tutorial is also available on the [Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki). Please note that the tutorials on the demo website or Wiki are based on the latest release, and the features of `master` branch are usually ahead of the documentation.
 
 ## Contributing
 
@@ -216,9 +216,9 @@ The old saying, "Two heads are better than one." Consequently, welcome to report
 
 ## Credits
 
-This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Bootstrap](https://getbootstrap.com/), [Font Awesome](https://fontawesome.com/) and some other wonderful tools (their copyright information can be found in the relevant files). The avatar and favicon design comes from [Clipart Max](https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/).
+This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Bootstrap](https://getbootstrap.com/), [Font Awesome](https://fontawesome.com/) and some other wonderful tools (their copyright information can be found in the relevant files). The avatar and favicon design come from [Clipart Max](https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/).
 
-:tada: Thanks to all the volunteers who contributed to this project, their GitHub IDs are on [this list](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors). Also, I won't forget those guys who submitted the issues or unmerged PR because they reported bugs, shared ideas, or inspired me to write more readable documentation.
+:tada: Thanks to all the volunteers who contributed to this project, their GitHub IDs are on [this list](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors). Also, I won't forget those guys who submitted the issues or unmerged PR because they reported bugs, shared ideas or inspired me to write more readable documentation.
 
 Last but not least, thank [JetBrains][jb] for providing the open source license.
 
