@@ -83,7 +83,7 @@ init_files() {
   rm -rf _posts/* docs
 
   # save changes
-  git add -A && git add .github -f
+  git add -A
   git commit -m "[Automation] Initialize the environment." -q
 
   echo "[INFO] Initialization successful!"
