@@ -276,7 +276,7 @@ def bfs(start):
             print(currentVert.id, currentVert.getColor())
     print(outputstr)
  
-g = GraphyAL()
+# g = GraphyAL()
 # g.addEdge('1', '2', 10)
 # g.addEdge('1', '3', 15)
 # g.addEdge('2', '5', 7)
@@ -286,16 +286,16 @@ g = GraphyAL()
 # g.addEdge('4', '6', 7)
 # g.addEdge('5', '6', 13) 
 
-# g.addEdge('A', 'B')
-# g.addEdge('A', 'C')
-# g.addEdge('A', 'D')
-# g.addEdge('A', 'E')
-# g.addEdge('B', 'G')
-# g.addEdge('F', 'G')
-# g.addEdge('E', 'F')
-# g.addEdge('D', 'H')
-# g.addEdge('H', 'F')
-# g.print_list()
+# # g.addEdge('A', 'B')
+# # g.addEdge('A', 'C')
+# # g.addEdge('A', 'D')
+# # g.addEdge('A', 'E')
+# # g.addEdge('B', 'G')
+# # g.addEdge('F', 'G')
+# # g.addEdge('E', 'F')
+# # g.addEdge('D', 'H')
+# # g.addEdge('H', 'F')
+# # g.print_list()
 
 # bfs(g.vertList['1'])
 
@@ -343,7 +343,6 @@ def dijkstra(aGraph, start):
                 nextVert.setDistance(newDist)
                 nextVert.setPred(currentVert)
                 pq.decreaseKey(nextVert,newDist)
-
     
 g = GraphyAL()
 g.addEdge('1', '2', 10)
@@ -366,39 +365,68 @@ print([(v.getDistance(),v.id) for v in g])
 
 
 
-# 8. Using Prim’s algorithm, find the minimum weight spanning tree for the graph shown above.
 
-# 1
-# ​
-# 2
-# ​
-# 3
-# ​
-# Activity: 8.25.5 ActiveCode (primsalg)
 
+# -------------------------------------- Excercises -------------------------------------------------
+# 8. Using Prim’s algorithm, 
+# find the minimum weight spanning tree for the graph shown above.
+from pythonds.graphs import PriorityQueue, Graph, Vertex
+import sys
+
+def prim(G,start):
+    pq = PriorityQueue()
+    for v in G:
+        v.setDistance(sys.maxsize)
+        v.setPred(None)
+    start.setDistance(0)
+    pq.buildHeap([(v.getDistance(),v) for v in G])
+
+    while not pq.isEmpty():
+        currentVert = pq.delMin()
+        for nextVert in currentVert.getConnections():
+          newCost = currentVert.getWeight(nextVert)
+          if nextVert in pq and newCost < nextVert.getDistance():
+              nextVert.setPred(currentVert)
+              nextVert.setDistance(newCost)
+              pq.decreaseKey(nextVert,newCost)
+
+
+
+
+
+# -------------------------------------- Excercises -------------------------------------------------
 # Draw a dependency graph illustrating the steps needed to send an email. Perform a topological sort on your graph.
 
+
+
+
+
+# -------------------------------------- Excercises -------------------------------------------------
 # Derive an expression for the base of the exponent used in expressing the running time of the knights tour.
 
-# Short Answer
-# Q-6: 11. Explain why the general DFS algorithm is not suitable for solving
+
+
+
+
+
+# -------------------------------------- Excercises -------------------------------------------------
+# 11. Explain why the general DFS algorithm is not suitable for solving
 # the knights tour problem.
 
+# - The knight’s tour is a special case of a depth first search where the goal is to create the deepest depth first tree, without any branches.
 
-# Instructor's Feedback
-# You have not answered this question yet.
-# Activity: 8.25.6 shortanswer (DFS)
+# The more general depth first search is actually easier.
+# - Its goal is to search as deeply as possible, connecting as many nodes in the graph as possible and branching where necessary.
 
-# Q-7: 12. What is the Big-O running time for Prim’s minimum
+
+
+
+
+
+# 12. What is the Big-O running time for Prim’s minimum
 # spanning tree algorithm?
-
 # A. O(1)
-# B. O(n3)
-# C. O(n)
-# D. O(n2)
+# B. O(n^3)
+# C. O(n) - The time it takes for this program to run doesn't grow linearly.
+# D. O(n^2)  
 
-# Activity: 8.25.7 Multiple Choice (question1_2)
-
-# You have attempted 1 of 8 activities on this page
-# username: lgraceye | Back to top
-# © Copyright 2014 Brad Miller, David Ranum. Created using Runestone 5.7.1.
