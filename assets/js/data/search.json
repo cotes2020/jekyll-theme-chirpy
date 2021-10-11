@@ -6,7 +6,7 @@ layout: compress
   {% for post in site.posts %}
   {
     "title": "{{ post.title | escape }}",
-    "url": "{{ site.baseurl }}{{ post.url }}",
+    "url": "{{ post.url | relative_url }}",
     "categories": "{{ post.categories | join: ', '}}",
     "tags": "{{ post.tags | join: ', ' }}",
     "date": "{{ post.date }}",
