@@ -12,6 +12,14 @@
       - [**图的遍历**](#图的遍历)
     - [三、算法刷题指南](#三算法刷题指南)
     - [四、总结几句](#四总结几句)
+- [https://labuladong.gitbook.io](#httpslabuladonggitbookio)
+  - [day1. 原地修改数组](#day1-原地修改数组)
+    - [有序数组去重](#有序数组去重)
+    - [有序链表去重](#有序链表去重)
+    - [移除元素](#移除元素)
+    - [移除0](#移除0)
+  - [day2. 前缀和技巧](#day2-前缀和技巧)
+    - [计算list中间指定位置的和](#计算list中间指定位置的和)
 
 ---
 
@@ -289,31 +297,31 @@ def dp(n):
 ```java
 // 全排列算法的主要代码如下：
 
-void backtrack(int[] nums, LinkedList<Integer> track) {
-    if (track.size() == nums.length) {
-        res.add(new LinkedList(track));
-        return;
-    }
+// void backtrack(int[] nums, LinkedList<Integer> track) {
+//     if (track.size() == nums.length) {
+//         res.add(new LinkedList(track));
+//         return;
+//     }
+// ​
+//     for (int i = 0; i < nums.length; i++) {
+//         if (track.contains(nums[i]))
+//             continue;
+//         track.add(nums[i]);
+//         // 进入下一层决策树
+//         backtrack(nums, track);
+//         track.removeLast();
+//     }
 ​
-    for (int i = 0; i < nums.length; i++) {
-        if (track.contains(nums[i]))
-            continue;
-        track.add(nums[i]);
-        // 进入下一层决策树
-        backtrack(nums, track);
-        track.removeLast();
-    }
-​
-/* 提取出 N 叉树遍历框架 */
-void backtrack(int[] nums, LinkedList<Integer> track) {
-    for (int i = 0; i < nums.length; i++) {
-        backtrack(nums, track);
-}
+// /提取出 N 叉树遍历框架/
+// void backtrack(int[] nums, LinkedList<Integer> track) {
+//     for (int i = 0; i < nums.length; i++) {
+//         backtrack(nums, track);
+// }
 ```
 
 N 叉树的遍历框架
 - 先刷树的相关题目，试着从框架上看问题，而不要纠结于细节问题。
-- 纠结细节问题，就比如纠结 i 到底应该加到 n 还是加到 n - 1，这个数组的大小到底应该开 n 还是 n + 1？
+- 纠结细节问题，就比如纠结 i 到底应该加到 n 还是加到 `n - 1`，这个数组的大小到底应该开 n 还是 n + 1？
 
 从框架上看问题
 - 基于框架进行抽取和扩展，既可以在看别人解法时快速理解核心逻辑，也有助于找到我们自己写解法时的思路方向。
@@ -325,8 +333,440 @@ N 叉树的遍历框架
 ### 四、总结几句
 
 数据结构的
-- **基本存储方式**就是`链式`和`顺序`两种，
+- **基本存储方式** 就是`链式`和`顺序`两种，
   - `数组`（顺序存储）
   - `链表`（链式存储）。
-- **基本操作**就是`增删查改`，
-- **遍历方式**无非`迭代`和`递归`。
+- **基本操作** 就是`增删查改`，
+- **遍历方式** 无非`迭代`和`递归`。
+
+
+
+---
+
+
+# https://labuladong.gitbook.io
+
+
+## day1. 原地修改数组
+
+数组
+- 在尾部插入、删除元素是比较高效的，时间复杂度是 ·，
+- 在中间或者开头插入、删除元素，就会涉及数据的搬移，时间复杂度为 `O(N)`，效率较低。
+
+Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
+
+
+如何在原地修改数组，避免数据的搬移。
+- 如果不是原地修改的话，直接 new 一个 int[] 数组，把去重之后的元素放进这个新数组中，然后返回这个新数组即可。
+- 原地删除不允许 new 新数组，只能在原数组上操作，然后返回一个长度，这样就可以通过返回的长度和原始数组得到我们去重后的元素有哪些了。
+
+### 有序数组去重
+
+![Screen Shot 2021-10-10 at 10.21.49 PM](https://i.imgur.com/71PNcPT.png)
+
+在数组相关的算法题中时非常常见的，通用解法就是使用快慢指针技巧。
+- 让慢指针 slow 走在后面，快指针 fast 走在前面探路
+- 找到一个不重复的元素就告诉 slow 并让 slow 前进一步。
+- 这样当 fast 指针遍历完整个数组 nums 后，`nums[0..slow]` 就是不重复元素。
+
+```java
+int removeDuplicates(int[] nums) {
+    if (nums.length == 0) { return 0; }
+    int slow = 0, fast = 0;
+    while (fast < nums.length) {
+        if (nums[fast] != nums[slow]) {
+            slow++;
+            // 维护 nums[0..slow] 无重复
+            nums[slow] = nums[fast];
+        }
+        fast++;
+    }
+    // 数组长度为索引 + 1
+    return slow + 1;
+}
+```
+
+```py
+from collections import OrderedDict
+from typing import List
+
+# Method 1 ----- new list
+def removeDuplicates(test_list):
+    res = []
+    for i in test_list:
+        if i not in res:
+            res.append(i)
+
+# Method 2 ----- new list
+def removeDuplicates(test_list):
+    res = []
+    [res.append(x) for x in test_list if x not in res]
+
+# Method 3 ------ set(x)
+def removeDuplicates(test_list):
+    # the ordering of the element is lost
+    test_list = list(set(test_list))
+
+# Method 4 ------ Using list comprehension + enumerate()
+def removeDuplicates(test_list):
+    res = [i for n, i in enumerate(test_list)]
+
+# Method 5 : Using collections.OrderedDict.fromkeys()
+def removeDuplicates(test_list):
+    res = list(OrderedDict.fromkeys(test_list))
+    # maintain the insertion order as well
+    res = list(dict.fromkeys(test_list))
+
+# Method 6 ------ 快慢指针
+def removeDuplicates(test_list):
+    # Runtime: 72 ms, faster than 99.60% of Python3 online submissions for Remove Duplicates from Sorted Array.
+    # Memory Usage: 15.7 MB, less than 45.93% of Python3 online submissions for Remove Duplicates from Sorted Array.
+    fast, slow = 0,0
+    if len(test_list) == 0: return 0
+    while fast < len(test_list):
+        print(test_list)
+        print(test_list[fast])
+
+        if test_list[slow] != test_list[fast]:
+            slow +=1
+            test_list[slow] = test_list[fast]
+        fast += 1
+    print(test_list[0:slow+1])
+    return slow+1
+
+# removeDuplicates([0,0,1,2,2,3,3])
+```
+
+---
+
+### 有序链表去重
+
+```java
+ListNode deleteDuplicates(ListNode head) {
+    if (head == null) return null;
+    ListNode slow = head, fast = head;
+    while (fast != null) {
+        if (fast.val != slow.val) {
+            // nums[slow] = nums[fast];
+            slow.next = fast;
+            // slow++;
+            slow = slow.next;
+        }
+        // fast++
+        fast = fast.next;
+    }
+    // 断开与后面重复元素的连接
+    slow.next = null;
+    return head;
+}
+```
+
+```py
+
+from basic import LinkedList, Node
+
+# 两个指针
+# Runtime: 40 ms, faster than 84.87% of Python3 online submissions for Remove Duplicates from Sorted List.
+# Memory Usage: 14.2 MB, less than 56.16% of Python3 online submissions for Remove Duplicates from Sorted List.
+def deleteDuplicates(LL):
+    if not LL: return 0
+    slow, fast = LL.head, LL.head
+    if LL.head == None: return LL.head
+    while fast != None:
+        if slow.val != fast.val:
+            slow.next = fast
+            slow = slow.next
+        fast = fast.next
+    slow.next = None
+    # print(LL.val)
+    return LL
+
+# 一个指针
+def deleteDuplicates(LL):
+    cur = LL.head
+    while cur:
+        while cur.next and cur.val == cur.next.val:
+            cur.next = cur.next.next     # skip duplicated node
+        cur = cur.next     # not duplicate of current node, move to next node
+    return LL
+
+# nice for if the values weren't sorted in the linked list
+def deleteDuplicates(LL):
+    dic = {}
+    node = LL.head
+    while node:
+        dic[node.val] = dic.get(node.val, 0) + 1
+        node = node.next
+    node = LL.head
+    while node:
+        tmp = node
+        for _ in range(dic[node.val]):
+            tmp = tmp.next
+        node.next = tmp
+        node = node.next
+    return LL
+
+# recursive
+def deleteDuplicates(LL):
+    if not LL.head: return LL
+    if LL.head.next is not None:
+        if LL.head.val == LL.head.next.val:
+            LL.head.next = LL.head.next.next
+            deleteDuplicates(LL.head)
+        else:
+            deleteDuplicates(LL.head.next)
+    return LL
+
+LL = LinkedList()
+list_num = [0,0,1,2,2,3,3]
+for i in list_num:
+    LL.insert(i)
+LL.printLL()
+
+LL = deleteDuplicates(LL)
+LL.printLL()
+```
+
+
+
+### 移除元素
+
+把 nums 中所有值为 val 的元素原地删除，依然需要使用 `双指针技巧` 中的 `快慢指针`：
+- 如果 fast 遇到需要去除的元素，则直接跳过，
+- 否则就告诉 slow 指针，并让 slow 前进一步。
+
+```java
+int removeElement(int[] nums, int val) {
+    int fast = 0, slow = 0;
+    while (fast < nums.length) {
+        if (nums[fast] != val) {
+            nums[slow] = nums[fast];
+            slow++;
+        }
+        fast++;
+    }
+    return slow;
+}
+```
+
+```py
+# Runtime: 32 ms, faster than 81.50% of Python3 online submissions for Remove Element.
+# Memory Usage: 14.2 MB, less than 47.25% of Python3 online submissions for Remove Element.
+def removeElement(nums: List[int], val: int) -> int:
+    slow, fast = 0,0
+    while fast < len(nums):
+        if nums[fast] != val:
+            nums[slow] = nums[fast]
+            slow += 1
+        fast += 1
+    print(nums)
+    print(nums[0:slow])
+
+# removeElement([0,0,1,2,2,3,3], 2)
+```
+
+---
+
+### 移除0
+
+```py
+
+# =============== 移除0
+# 两个指针
+def moveZeroes(nums: List[int]) -> None:
+    # Runtime: 188 ms, faster than 17.89% of Python3 online submissions for Move Zeroes.
+    # Memory Usage: 15.6 MB, less than 7.33% of Python3 online submissions for Move Zeroes.
+    slow, fast = 0,0
+    if nums == []:
+        return []
+    while fast < len(nums):
+        print(nums[fast])
+        if nums[fast] != 0:
+            nums[slow] = nums[fast]
+            slow+=1
+        fast+=1
+    for i in range(slow, len(nums)):
+        nums[i] = 0
+    print(nums)
+
+# 一个指针
+def moveZeroes(nums: List[int]) -> None:
+    # Runtime: 172 ms, faster than 25.48% of Python3 online submissions for Move Zeroes.
+    # Memory Usage: 15.4 MB, less than 24.21% of Python3 online submissions for Move Zeroes.
+    slow = 0
+    if nums == []:
+        return []
+    for i in range(len(nums)):
+        if nums[i] != 0:
+            nums[slow] = nums[i]
+            slow+=1
+        i+=1
+    for i in range(slow, len(nums)):
+        nums[i] = 0
+    print(nums)
+
+
+def moveZeroes(self, nums: List[int]) -> None:
+    # Runtime: 248 ms, faster than 13.91% of Python3 online submissions for Move Zeroes.
+    # Memory Usage: 15.2 MB, less than 88.67% of Python3 online submissions for Move Zeroes.
+    slow = 0
+    leng = len(nums)
+    if nums == []:
+        return []
+    for i in range(leng):
+        if nums[i] != 0:
+            nums[slow] = nums[i]
+            slow+=1
+    for i in range(slow, leng):
+        nums[i] = 0
+    return nums
+
+# Runtime: 260 ms, faster than 13.33% of Python3 online submissions for Move Zeroes.
+# Memory Usage: 15.5 MB, less than 24.34% of Python3 online submissions for Move Zeroes.
+def moveZeroes(nums: List[int]) -> None:
+    slow = 0
+    for i in range(len(nums)):
+        if nums[i] != 0:
+            nums[slow],nums[i] = nums[i],nums[slow]
+            slow +=1
+
+# moveZeroes([0,1,0,3,12])
+```
+
+
+---
+
+
+## day2. 前缀和技巧
+
+快速计算一个索引区间内的元素之和。
+
+
+### 计算list中间指定位置的和
+
+
+303. Range Sum Query - Immutable
+Given an integer array `nums`, handle multiple queries of the following type:
+
+Calculate the sum of the elements of nums between `indices left and right` inclusive where `left <= right`.
+
+Implement the NumArray class:
+- `NumArray(int[] nums)` Initializes the object with the integer array nums.
+- `int sumRange(int left, int right)` Returns the sum of the elements of nums between indices left and right inclusive (i.e. `nums[left] + nums[left + 1] + ... + nums[right]`).
+
+```
+Example 1:
+
+Input
+["NumArray", "sumRange", "sumRange", "sumRange"]
+[[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]
+Output:
+[null, 1, -1, -3]
+
+Explanation
+NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
+numArray.sumRange(0, 2); // return (-2) + 0 + 3 = 1
+numArray.sumRange(2, 5); // return 3 + (-5) + 2 + (-1) = -1
+numArray.sumRange(0, 5); // return (-2) + 0 + 3 + (-5) + 2 + (-1) = -3
+```
+
+
+```java
+// solution 1
+class NumArray {
+    private int[] nums;
+    public NumArray(int[] nums) {
+        this.nums = nums;
+    }
+    public int sumRange(int left, int right) {
+        int res = 0;
+        for (int i = left; i <= right; i++) {
+            res += nums[i];
+        }
+        return res;
+    }
+}
+// 可以达到效果，但是效率很差，
+// 因为 sumRange 的时间复杂度是 O(N)，其中 N 代表 nums 数组的长度。
+// 这道题的最优解法是使用前缀和技巧，将 sumRange 函数的时间复杂度降为 O(1)。
+
+// 时间复杂度就是代码在最坏情况下的执行次数。
+// 如果调用方输入 left = 0, right = 0，那相当于没有循环，时间复杂度是 O(1)；
+// 如果调用方输入 left = 0, right = nums.length-1，for 循环相当于遍历了整个 nums 数组，时间复杂度是 O(N)，其中 N 代表 nums 数组的长度。
+
+
+
+// solution2
+// 说白了就是不要在 sumRange 里面用 for 循环
+class NumArray {
+
+    // 前缀和数组
+    private int[] preSum;
+
+    /* 输入一个数组，构造前缀和 */
+    public NumArray(int[] nums) {
+        preSum = new int[nums.length + 1];
+        // 计算 nums 的累加和
+        for (int i = 1; i < preSum.length; i++) {
+            preSum[i] = preSum[i - 1] + nums[i - 1];
+        }
+    }
+
+    /* 查询闭区间 [left, right] 的累加和 */
+    public int sumRange(int left, int right) {
+        return preSum[right + 1] - preSum[left];
+    }
+}
+```
+
+![Screen Shot 2021-10-11 at 10.18.11 PM](https://i.imgur.com/9FGiMm1.png)
+
+- 求索引区间 `[1, 4]` 内的所有元素之和，就可以通过 `preSum[5] - preSum[1]` 得出。
+- sumRange 函数仅仅需要做一次减法运算，避免for循环，最坏时间复杂度为常数 O(1)。
+
+
+
+```java
+// 存储着所有同学的分数
+int[] scores;
+// 试卷满分 100 分
+int[] count = new int[100 + 1]
+// 记录每个分数有几个同学
+for (int score : scores)
+    count[score]++
+// 构造前缀和
+for (int i = 1; i < count.length; i++)
+    count[i] = count[i] + count[i-1];
+
+// 利用 count 这个前缀和数组进行分数段查询
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
