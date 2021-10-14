@@ -28,6 +28,19 @@ tags: [Swift, 技术栈]
 + 多学习第三方优秀框架
 + 拓宽知识面，比如多看Swift、SwiftUI、Python、Go、C/C++等语言。
 
+---
+
+## 工具使用
+
++ Instruments - Xcode自带调试工具
++ BuildTimeAnalyzer - 调试App启动耗时
++ Charles - 抓包
++ Reveal - UI调试
++ MachOView/Hopper Disassembler/class-dump - mach-o静态分析
++ Debugserver/LLDB - 代码调试
+
+---
+
 ## Swift 第三方库
 
 网络请求

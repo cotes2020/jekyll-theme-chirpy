@@ -8,7 +8,7 @@ tags: [算法基础, 数据结构, 字典, 字符串, 数组]
 
 数组是最基本的数据结构。在Swift中，以前Objective-C时代中将NSMutableArray和NSArray分开的做法，被统一到了唯一的数据结构—Array。虽然看上去就一种数据结构，其实它的实现有三种:
 
-- contiguousArray: 效率最高，元素分配在连续的元素上。如果数组是只类型(栈上操作)，则Swift会自动调用Array的这种实现；如果注重效率，那么推荐声明这种高磊鑫个，尤其是在大量元素的类时，这样的效果会更好。
+- contiguousArray: 效率最高，元素分配在连续的元素上。如果数组是只类型(栈上操作)，则Swift会自动调用Array的这种实现；如果注重效率，那么推荐声明这种，尤其是在大量元素的类时，这样的效果会更好。
 
 - .Array: 会自动桥接到Objective-C中国的NSArray上，如果是值类型，则其性能与ContiguousArray无差别。
 - ArraySlice: 它不是一个新的数组，只是一个片段，在内存上与原数组享用同一个区域。
@@ -31,10 +31,12 @@ print(nums)
 var stack = Stacks<Any>()
 stack.capacity = 20
 for i in 1..<10 {
-		stack.push(i as Any)
+   stack.push(i as Any)
 }
 for _ in 0..<stack.count {
-		print(stack.pop() as! Int)
+   if let value = stack.pop() as? Int {
+     print("value = \(value)")
+   }
 }
 ```
 
@@ -55,7 +57,9 @@ struct Stacks<T> {
             return elements.capacity
         }
         set {
-            elements.reserveCapacity(newValue) // 用于为原数组预留空间，防止数组在增加或者删除元素时反复申请内存空间或者创建新的数组
+          	// 用于为原数组预留空间，防止数组在增加或者删除元素时反复
+            // 申请内存空间或者创建新的数组
+            elements.reserveCapacity(newValue) 
         }
     }
     
@@ -78,7 +82,8 @@ struct Stacks<T> {
         if count == 0 {
             fatalError("栈已经空，不能再执行出栈操作")
         }
-        return elements.popLast() // 返回并且删除最后一个元素
+      	// 返回并且删除最后一个元素
+        return elements.popLast() 
     }
     
     // 返回栈顶元素
