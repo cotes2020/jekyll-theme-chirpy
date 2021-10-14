@@ -3,7 +3,9 @@ dist: bionic
 
 language: minimal
 
-if: tag =~ /^v(\d)+(\.(\d)+){2}$/
+branches:
+  only:
+    - /^release\/(\d)+(\.(\d)+){1}$/
 
 jobs:
   include:
