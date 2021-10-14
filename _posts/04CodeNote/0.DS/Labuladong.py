@@ -206,13 +206,16 @@ def moveZeroes(nums: List[int]) -> None:
 
 
 # =============== 和为k的子数组
-# 1. Brute force O(N^3) - TLE
-def subarraySum(self, nums: List[int], k: int) -> int: 
-	count = 0
-	for i in range(len(nums)):
-		for j in range(i, len(nums)):
-			if sum(nums[i:j+1]) == k: count += 1
-	return count
+# Given an array of integers nums and an integer k, 
+# return the total number of continuous subarrays whose sum equals to k.
+# Example 1:
+# Input: nums = [1,1,1], k = 2
+# Output: 2
+# Example 2:
+# Input: nums = [1,2,3], k = 3
+# Output: 2
+
+# 1. Brute force O(N^3) - TLE  
 
 # 2. Sliding Window O(N^2) - only works if the range of nums ∈ Z+ (+ve integers)
 def subarraySum(self, nums: List[int], k: int) -> int: 
@@ -235,6 +238,24 @@ def subarraySum(self, nums: List[int], k: int) -> int:
     return count # return False         
 
 
+# [1,2,1,3] and k = 3
+# running sums = [1,3,4,7]
+# from 1->4, there is increase of k
+# from 4->7, there is an increase of k. 
+# So, we've found 2 subarrays of sums=k.
+def subarraySum(self, nums, k):
+    count, sums = 0, 0
+    d = dict()
+    d[0] = 1
+    for i in range(len(nums)):
+        sums += nums[i]
+        count += d.get(sums-k,0)
+        # how many this sums shows up
+        d[sums] = d.get(sums,0) + 1
+    return(count)
+
+
+
 def subarraySum(nums: List[int], k: int) -> int:
     print("------", nums)
     sumlist = [nums[0]]
@@ -245,12 +266,47 @@ def subarraySum(nums: List[int], k: int) -> int:
     i = sumlist.count(k) + nums.count(k)
     print(sumlist)
     return i
-       
-       
-print(subarraySum([1,-1,0], 0))
-print(subarraySum([-1,-1,1], 0))
-print(subarraySum([1,1,1], 2))
-print(subarraySum([1,2,3], 3))
+
+# print(subarraySum([1,-1,0], 0))
+# print(subarraySum([-1,-1,1], 0))
+# print(subarraySum([1,1,1], 2))
+# print(subarraySum([1,2,3], 3))
+
+
+
+
+
+# =============== 304. 二维区域和检索 - 矩阵不可变
+# https://www.youtube.com/watch?v=PwDqpOMwg6U
+# [
+#   [[ [3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5] ]],
+#   [2,1,4,3],[1,1,2,2],[1,2,2,4]
+# ]
+class NumMatrix:
+
+    def __init__(self, matrix):
+        if not matrix: return 0
+        n, m = len(matrix), len(matrix[0])
+        self.sums = [ [0 for j in range(m+1)] for i in range(n+1) ]
+        for i in range(1, n+1):
+            for j in range(1, m+1):
+                self.sums[i][j] = matrix[i-1][j-1] + self.sums[i][j-1] + self.sums[i-1][j] - self.sums[i-1][j-1]
+        print(" -------- sums:")
+        for i in self.sums:
+            print(i) 
+
+    def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
+        #     self                     +      左                      +       up                  +      小角
+        sum = self.sums[row2+1][col2+1] - self.sums[row2+1][col1] - self.sums[row1][col2+1] + self.sums[row1][col1]
+        print(sum)
+        return sum
+         
+numMatrix = NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]) 
+numMatrix.sumRegion(2, 1, 4, 3); # return 8 (i.e sum of the red rectangle)
+numMatrix.sumRegion(1, 1, 2, 2); # return 11 (i.e sum of the green rectangle)
+numMatrix.sumRegion(1, 2, 2, 4); # return 12 (i.e sum of the blue rectangle)
+ 
+ 
 
 # =============== 
 
@@ -308,28 +364,4 @@ print(subarraySum([1,2,3], 3))
 
 
 
-# =============== 
-
-
-
-# =============== 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# .
+# ===============

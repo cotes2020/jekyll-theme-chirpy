@@ -20,6 +20,8 @@
     - [移除0](#移除0)
   - [day2. 前缀和技巧](#day2-前缀和技巧)
     - [计算list中间指定位置的和](#计算list中间指定位置的和)
+    - [和为k的子数组](#和为k的子数组)
+    - [304. 二维区域和检索 - 矩阵不可变](#304-二维区域和检索---矩阵不可变)
 
 ---
 
@@ -743,8 +745,18 @@ for (int i = 1; i < count.length; i++)
 
 
 
+### 和为k的子数组
 
 
+
+
+### 304. 二维区域和检索 - 矩阵不可变
+
+[youtube](https://www.youtube.com/watch?v=PwDqpOMwg6U)
+
+图像快
+
+![Screen Shot 2021-10-13 at 11.35.52 PM](https://i.imgur.com/f55K6B4.png)
 
 
 
