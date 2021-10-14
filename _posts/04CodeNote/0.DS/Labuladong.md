@@ -754,7 +754,7 @@ for (int i = 1; i < count.length; i++)
 
 [youtube](https://www.youtube.com/watch?v=PwDqpOMwg6U)
 
-图像快
+图像块之间相互减
 
 ![Screen Shot 2021-10-13 at 11.35.52 PM](https://i.imgur.com/f55K6B4.png)
 
