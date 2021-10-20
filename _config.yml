@@ -26,7 +26,7 @@ description: >-                        # used by seo meta and the atom feed
   에픽세븐 이것 저것 만들어 보기 놀이터 
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://epica1c.github.io'
+url: 'https://epica1c.github.io' 
 
 github:
   username: epica1c              # change to your github username
