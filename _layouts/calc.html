@@ -1,0 +1,202 @@
+---
+layout: page
+# The layout for Tag page
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>계산기</title>
+    <style>
+      body{
+      }
+      input{
+      }
+      input:focus{
+        outline:none;
+      }
+    </style>
+    <script language="javascript">
+    <!--
+  
+      function Chking() {
+          var f = eval("document.frm");
+
+          if(f.option1.value && f.option2.value && f.option3.value && f.option4.value) {
+              f.total.value = parseInt(OptionChk(f.option11.value,f.option1.value)) + parseInt(OptionChk(f.option22.value,f.option2.value)) + parseInt(OptionChk(f.option33.value,f.option3.value)) + parseInt(OptionChk(f.option44.value,f.option4.value));
+          } else {
+              return false;
+
+          }
+      }
+
+      function OptionChk(val, data) {
+        if((val == "crit_rate")) {
+          data = data * 1.5;
+          return data;
+        } else if((val == "speed")) {
+          data = data * 2;
+          return data;
+        } else if ((val == "att")) {
+          var f = eval("document.frm");
+          if(f.base_att.value > 500) {
+            data = (data / f.base_att.value)*100;
+            return data;
+          } else {
+            return 0;
+          }
+        } else if ((val == "life")) {
+          var f = eval("document.frm");
+          if(f.base_life.value > 3800) {
+            data = (data / f.base_life.value)*100;
+            return data;
+          } else {
+            return 0;
+          }
+        } else if ((val == "def")) {
+          var f = eval("document.frm");
+          if(f.base_def.value > 450) {
+            data = (data / f.base_def.value)*100;
+            return data;
+          } else {
+            return 0;
+          }
+        } else
+          return data;
+        }
+  
+    //-->
+    </script>
+  </head>
+  <body>
+    <!--계산기 -->
+    
+    <style type="text/css">
+      .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+      .tg td{background-color:#F4F6F6;border-color:#9ABAD9;border-style:solid;border-width:0px;color:#444;
+        font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 7px;word-break:normal; text-align: center;}
+      .tg th{background-color:#5D6D7E;border-color:#9ABAD9;border-style:solid;border-width:0px;color:#fff;
+        font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 7px;word-break:normal; text-align: center;}
+      .tg .tg-phtq{background-color:#EAEDED;border-color:inherit;text-align:center;vertical-align:top}
+      .tg .tg-0pky{border-color:inherit;text-align:center;vertical-align:top}
+      </style>
+      <div style="text-align: center;">
+      <form name="frm">
+      <table class="tg">
+      <thead>
+        <tr>
+          <th class="tg-0pky">
+            <input type="number" class="form-control" style="width:120px; text-align: center;vertical-align: middle;" id="base_att" placeholder="공격력" min=0 value="" onmouseup="Chking();" onKeyPress="Chking();" onKeyUp="Chking();">
+          </th>
+          <th class="tg-0pky">
+            <input type="number" class="form-control" style="width:120px; text-align: center;vertical-align: middle;" id="base_life" placeholder="생명력" min=0 value="" onmouseup="Chking();" onKeyPress="Chking();" onKeyUp="Chking();">
+          </th>
+          <th class="tg-0pky">
+            <input type="number" class="form-control" style="width:120px; text-align: center;vertical-align: middle;" id="base_def" placeholder="방어력" min=0 value="" onmouseup="Chking();" onKeyPress="Chking();" onKeyUp="Chking();">
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tg-phtq">
+            <select id="option11" name="option11" class="form-control custom-select selectpicker" data-size="12" data-show-subtext="true" onchange="Chking();">
+              <option value="">부옵션1</option>
+              <option data-divider="true"></option>
+              <option value="attackp">공격력 %</option>
+              <option value="att">공격력</option>
+              <option value="lifep">생명력 %</option>
+              <option value="life">생명력</option>
+              <option value="defensep">방어력 %</option>
+              <option value="def">방어력</option>
+              <option value="speed">속도</option>
+              <option value="crit_rate">치명확률</option>
+              <option value="crit_damage">치명피해</option>
+              <option value="eff">효과적중</option>
+              <option value="eff_resist">효과저항</option>
+            </select>
+          </td>
+          <td class="tg-phtq" colspan="2">
+            <input type="number" class="form-control text-center" id="option1" min=0 value="0" onmouseup="Chking();" onKeyPress="Chking();" onKeyUp="Chking();">
+          </td>
+        </tr>
+        <tr>
+          <td class="tg-0pky">
+            <select id="option22" name="option22" class="form-control custom-select selectpicker" data-size="12" data-show-subtext="true" onchange="Chking();">
+              <option value="">부옵션2</option>
+              <option data-divider="true"></option>
+              <option value="attackp">공격력 %</option>
+              <option value="att">공격력</option>
+              <option value="lifep">생명력 %</option>
+              <option value="life">생명력</option>
+              <option value="defensep">방어력 %</option>
+              <option value="def">방어력</option>
+              <option value="speed">속도</option>
+              <option value="crit_rate">치명확률</option>
+              <option value="crit_damage">치명피해</option>
+              <option value="eff">효과적중</option>
+              <option value="eff_resist">효과저항</option>
+            </select>
+          </td>
+          <td class="tg-0pky" colspan="2">
+            <input type="number" class="form-control text-center" id="option2" min=0 value="0" onmouseup="Chking();" onKeyPress="Chking();" onKeyUp="Chking();">
+          </td>
+        </tr>
+        <tr>
+          <td class="tg-phtq">
+            <select id="option33" name="option33" class="form-control custom-select selectpicker" data-size="12" data-show-subtext="true" onchange="Chking();">
+              <option value="">부옵션3</option>
+              <option data-divider="true"></option>
+              <option value="attackp">공격력 %</option>
+              <option value="att">공격력</option>
+              <option value="lifep">생명력 %</option>
+              <option value="life">생명력</option>
+              <option value="defensep">방어력 %</option>
+              <option value="def">방어력</option>
+              <option value="speed">속도</option>
+              <option value="crit_rate">치명확률</option>
+              <option value="crit_damage">치명피해</option>
+              <option value="eff">효과적중</option>
+              <option value="eff_resist">효과저항</option>
+            </select>
+          </td>
+          <td class="tg-phtq" colspan="2">
+            <input type="number" class="form-control text-center" id="option3" min=0 value="0" onmouseup="Chking();" onKeyPress="Chking();" onKeyUp="Chking();">
+          </td>
+        </tr>
+        <tr>
+          <td class="tg-0pky">
+            <select id="option44" name="option44" class="form-control custom-select selectpicker" data-size="12" data-show-subtext="true" onchange="Chking();">
+              <option value="">부옵션4</option>
+              <option data-divider="true"></option>
+              <option value="attackp">공격력 %</option>
+              <option value="att">공격력</option>
+              <option value="lifep">생명력 %</option>
+              <option value="life">생명력</option>
+              <option value="defensep">방어력 %</option>
+              <option value="def">방어력</option>
+              <option value="speed">속도</option>
+              <option value="crit_rate">치명확률</option>
+              <option value="crit_damage">치명피해</option>
+              <option value="eff">효과적중</option>
+              <option value="eff_resist">효과저항</option>
+            </select>
+          </td>
+          <td class="tg-0pky" colspan="2">
+            <input type="number" class="form-control text-center" id="option4" min=0 value="0" onmouseup="Chking();" onKeyPress="Chking();" onKeyUp="Chking();">
+          </td>
+        </tr>
+        <tr>
+          <td class="tg-phtq text-center" style="width:100px; vertical-align: middle;">
+            점수
+          </td>
+          <td class="tg-phtq" colspan="2">
+            <input type="number" class="form-control text-center" id="total" value="" readonly>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+      </form>
+    </div>      
+  </body>
+</html>

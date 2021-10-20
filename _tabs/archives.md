@@ -1,7 +1,7 @@
 ---
 layout: archives
-title: Archives
+title: 연혁
 icon: fas fa-archive
-order: 3
+order: 4
 ---
 
