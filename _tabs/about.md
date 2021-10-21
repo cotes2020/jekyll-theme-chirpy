@@ -37,17 +37,15 @@ order: 4
 
 # About Me
 
-Bright, eager, passionate practician, and an enthusiast of Information Security with an MS (Hons.) in Cyber Security and Information Assurance.
+Bright, eager, passionate practician, and an enthusiast of InfoSec with an MS (Hons.) in Cyber Security and Information Assurance.
 
-> Quick, imaginative, and strategic mind;
+<!-- > Quick, imaginative, and strategic mind;
 >
 > Quick learner and like to take every chance to improve the knowledge and learn new technology;
 >
 > Highly curious, goal-oriented;
 >
-> Always passionate, always up for a challenge and unforeseen possibilities;
->
-> Like breaking into things; both physically and virtually;
+> Always passionate, always up for a challenge and unforeseen possibilities;  -->
 
 Chess, piano and dance are three constructive hobbies I pursue.
 
@@ -67,6 +65,7 @@ I love chocolate! 🍫
 I have been fortunate enough to meet great folks, come across ample valuable resources, have the opportunity to learn my favorite security field, and been able to have my step in Cyber Security.
 
 I have documented the exercises and learning path throughout my journey. This blog is all about:
+- Knowledge from work
 - Classroom learning
 - Online learning
 - Hands-on training(CTFs, labs, hackathons, etc)
