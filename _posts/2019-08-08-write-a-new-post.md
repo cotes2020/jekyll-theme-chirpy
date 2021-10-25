@@ -253,4 +253,3 @@ Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the pos
 ## Learn More
 
 For more knowledge about Jekyll posts, visit the [Jekyll Docs: Posts](https://jekyllrb.com/docs/posts/).
-

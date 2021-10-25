@@ -52,8 +52,8 @@ Fluttering and dancing in the breeze.
 ### Unordered list
 
 - Chapter
-	- Section
-      - Paragraph
+  - Section
+    - Paragraph
 
 ### Task list
 
@@ -72,7 +72,6 @@ Sun
 Moon
 : the natural satellite of the earth, visible by reflected light from the sun
 
-
 ## Block Quote
 
 > This line to shows the Block Quote.
@@ -89,11 +88,9 @@ Moon
 
 <http://127.0.0.1:4000>
 
-
 ## Footnote
 
 Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
-
 
 ## Images
 
@@ -141,7 +138,6 @@ _shadow effect (visible in light mode)_
   cherry :active, c, after b a, 1d
 ```
 
-
 ## Mathematics
 
 The mathematics powered by [**MathJax**](https://www.mathjax.org/):
@@ -152,11 +148,9 @@ When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
 
 $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
-
 ## Inline code
 
 This is an example of `Inline Code`.
-
 
 ## Code block
 

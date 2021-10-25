@@ -75,6 +75,7 @@ $ bash tools/init.sh
 上述脚本将会:
 
 1. 从您的仓库中删除了:
+
     - `.travis.yml`
     - `_posts` 下的文件
     - `docs` 目录
@@ -157,7 +158,7 @@ $ docker run -it --rm \
 
 2. 回到 GitHub 上的仓库，选择标签 _Settings_ → 点击左侧导航栏的 _Pages_ → _GitHub Pages_ 选择分支 `gh-pages` 的 `/(root)` 作为「[发布源][pages-src]」:
 
-    ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/posts/20190809/gh-pages-sources.png)
+  ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/posts/20190809/gh-pages-sources.png)
 
 3. 按照 GitHub 指示的地址去访问您的网站。
 
@@ -188,18 +189,19 @@ $ docker run -it --rm \
 这取决于您如何使用这个 theme：
 
 - 如果您是使用 theme gem（`Gemfile` 会有 `gem "jekyll-theme-chirpy"`），编辑 `Gemfile` 并更新 them gem 的版本号，譬如：
-    ```diff
-    - gem "jekyll-theme-chirpy", "~> 3.2", ">= 3.2.1"
-    + gem "jekyll-theme-chirpy", "~> 3.3", ">= 3.3.0"
-    ```
 
-    接着执行以下命令：
+  ```diff
+  - gem "jekyll-theme-chirpy", "~> 3.2", ">= 3.2.1"
+  + gem "jekyll-theme-chirpy", "~> 3.3", ">= 3.3.0"
+  ```
 
-    ```console
-    $ bundle update jekyll-theme-chirpy
-    ```
+  接着执行以下命令：
 
-    随着 theme 版本的升级，运行站点的必要文件（详见 [Chirpy Starter][starter]）以及配置选项会出现变化，请参阅「[升级指南](https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Upgrade-Guide)」的改动细节去保持您仓库中的相关文件同步到最新版本。
+  ```console
+  $ bundle update jekyll-theme-chirpy
+  ```
+
+  随着 theme 版本的升级，运行站点的必要文件（详见 [Chirpy Starter][starter]）以及配置选项会出现变化，请参阅「[升级指南](https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Upgrade-Guide)」的改动细节去保持您仓库中的相关文件同步到最新版本。
 
 - 如果您是以 fork 的方式使用（您站点的 `Gemfile` 会有 `gemspec`），那么合并上游 [最新的 tag][latest-tag] 到您的 Repo 以完成升级。期间很有可能会产生冲突 (conflicts)，请务必耐心谨慎地解决它们。
 

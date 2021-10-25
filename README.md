@@ -74,6 +74,7 @@ $ bash tools/init.sh
 The above command will:
 
 1. Removes some files or directories from your repository:
+
     - `.travis.yml`
     - files under `_posts`
     - folder `docs`
@@ -157,8 +158,7 @@ Now publish your Jekyll site by:
 1. Push any commit to remote to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
 
 2. Browse to your repository on GitHub. Select the tab _Settings_, then click _Pages_ in the left navigation bar, and then in the section **Source** of _GitHub Pages_, select the `/(root)` directory of branch `gh-pages` as the [publishing source][pages-src]. Remember to click <kbd>Save</kbd> before leaving.
-
-    ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/posts/20190809/gh-pages-sources.png)
+  ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/posts/20190809/gh-pages-sources.png)
 
 3. Visit your website at the address indicated by GitHub.
 
@@ -190,18 +190,18 @@ It depends on how you use the theme:
 
 - If you are using the theme gem (there will be `gem "jekyll-theme-chirpy"` in the `Gemfile`), editing the `Gemfile` and update the version number of the theme gem, for example:
 
-    ```diff
-    - gem "jekyll-theme-chirpy", "~> 3.2", ">= 3.2.1"
-    + gem "jekyll-theme-chirpy", "~> 3.3", ">= 3.3.0"
-    ```
+  ```diff
+  - gem "jekyll-theme-chirpy", "~> 3.2", ">= 3.2.1"
+  + gem "jekyll-theme-chirpy", "~> 3.3", ">= 3.3.0"
+  ```
 
-    And then execute the following command:
+  And then execute the following command:
 
-    ```console
-    $ bundle update jekyll-theme-chirpy
-    ```
+  ```console
+  $ bundle update jekyll-theme-chirpy
+  ```
 
-    As the version upgrades, the critical files (for details, see the [Startup Template][starter]) and configuration options will change. Please refer to the [Upgrade Guide](https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Upgrade-Guide) to keep your repo's files in sync with the latest version of the theme.
+  As the version upgrades, the critical files (for details, see the [Startup Template][starter]) and configuration options will change. Please refer to the [Upgrade Guide](https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Upgrade-Guide) to keep your repo's files in sync with the latest version of the theme.
 
 - If you forked from the source project (there will be `gemspec` in the `Gemfile` of your site), then merge the [latest upstream tags][latest-tag] into your Jekyll site to complete the upgrade.
 The merge is likely to conflict with your local modifications. Please be patient and careful to resolve these conflicts.
