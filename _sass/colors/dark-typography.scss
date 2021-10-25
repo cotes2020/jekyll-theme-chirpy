@@ -116,11 +116,13 @@
     .card-header {
       background-color: var(--card-header-bg);
     }
+
     .list-group-item {
       border-left: none;
       border-right: none;
       padding-left: 2rem;
       border-color: var(--categories-border);
+
       &:last-child {
         border-bottom-color: var(--card-bg);
       }
@@ -128,13 +130,16 @@
   }
 
   #archives li:nth-child(odd) {
-    background-image: linear-gradient(
-      to left,
-      rgb(26, 26, 30),
-      rgb(39, 39, 45),
-      rgb(39, 39, 45),
-      rgb(39, 39, 45),
-      rgb(26, 26, 30));
+    background-image:
+      linear-gradient(
+        to left,
+        rgb(26, 26, 30),
+        rgb(39, 39, 45),
+        rgb(39, 39, 45),
+        rgb(39, 39, 45),
+        rgb(26, 26, 30)
+      );
+
   }
 
 } // dark-scheme

@@ -6,12 +6,9 @@
 @mixin mode-toggle($dark-mode: false) {
   @if $dark-mode {
     @include dark-scheme;
-
   } @else {
     @include light-scheme;
-
   }
-
 }
 
 html:not([mode]),
@@ -175,15 +172,18 @@ footer {
 
   a {
     color: var(--footer-link);
+
     &:link {
       @include no-text-decoration;
     }
+
     &:hover {
       @extend %link-hover;
 
       @include no-text-decoration;
     }
   }
+
   .footer-right {
     text-align: right;
   }
@@ -202,22 +202,28 @@ footer {
     position: -webkit-sticky; /* Safari */
     position: sticky;
   }
+
   &.topbar-down {
     top: 6rem;
   }
+
   > div {
     padding-left: 1rem;
     border-left: 1px solid var(--main-border-color);
+
     &:not(:last-child) {
       margin-bottom: 4rem;
     }
   }
+
   span {
     @include panel-label;
   }
+
   .post-content {
     font-size: 0.9rem;
   }
+
 }
 
 #access-tags {
@@ -234,6 +240,7 @@ footer {
     border-radius: 0.8rem;
     padding: 0.3rem 0.5rem;
     margin: 0 0.35rem 0.5rem 0;
+
     &:hover {
       background-color: #2a408e;
       border-color: #2a408e;
@@ -244,7 +251,6 @@ footer {
 }
 
 #access-lastmod {
-
   li {
     height: 1.8rem;
     overflow: hidden;
@@ -270,15 +276,18 @@ footer {
 .footnotes > ol {
   padding-left: 2rem;
   margin-top: 0.5rem;
+
   > li {
     &:not(:last-child) {
       margin-bottom: 0.3rem;
     }
+
     > p {
       margin-left: 0.25em;
       margin-top: 0;
       margin-bottom: 0;
     }
+
     // [scroll-focus] added by `smooth-scroll.js`
     &:target:not([scroll-focus]),
     &[scroll-focus=true] > p {
@@ -323,9 +332,11 @@ footer {
     margin-top: 3rem;
     margin-bottom: 1rem;
   }
+
   em { /* MarkDown italic */
     padding-right: 0.2rem;
   }
+
   a:hover {
     code {
       @extend %link-hover;
@@ -346,6 +357,7 @@ footer {
 
     thead {
       border-bottom: solid 2px rgba(210, 215, 217, 0.75);
+
       th {
         @extend %table-cell;
       }
@@ -354,18 +366,21 @@ footer {
     tbody {
       tr {
         border-bottom: 1px solid var(--tb-border-color);
+
         &:nth-child(2n) {
           background-color: var(--tb-even-bg);
         }
+
         &:nth-child(2n + 1) {
           background-color: var(--tb-odd-bg);
         }
+
         td {
           @extend %table-cell;
         }
       }
-    }
-  }
+    } // tbody
+  }// table
 }
 
 /* --- post --- */
@@ -377,12 +392,15 @@ footer {
 .post-meta {
   font-size: 0.85rem;
   word-spacing: 1px;
+
   a {
     @extend %link-color;
     @extend %link-underline;
+
     &:not(:last-child) {
       margin-right: 2px;
     }
+
     &:hover {
       @extend %link-hover;
     }
@@ -416,7 +434,7 @@ footer {
     margin: 0.5rem 0;
 
     &[data-loaded=true] {
-      animation: fade-in linear .5s;
+      animation: fade-in linear 0.5s;
     }
 
     &.left {
@@ -445,6 +463,7 @@ footer {
     &:not(.img-link) {
       @extend %link-color;
       @extend %link-underline;
+
       &:hover {
         @extend %link-hover;
       }
@@ -473,6 +492,7 @@ footer {
         margin: 0 0.4rem 0.2rem -1.4rem;
         vertical-align: middle;
         color: var(--checkbox-color);
+
         &.checked {
           color: var(--checkbox-checked-color);
         }
@@ -546,6 +566,7 @@ footer {
   padding: 1px 3px;
   border-radius: 3px;
   color: var(--link-color);
+
   &:focus {
     box-shadow: none;
   }
@@ -755,7 +776,6 @@ $sidebar-display: "sidebar-display";
       width: 100%;
 
       &:last-child {
-
         a {
           position: relative;
           left: $cursor-width / 2;
@@ -871,6 +891,7 @@ $sidebar-display: "sidebar-display";
   display: none;
   height: 100%;
   overflow: auto;
+
   .post-content {
     margin-top: 2rem;
   }
@@ -959,6 +980,7 @@ $sidebar-display: "sidebar-display";
   &:focus {
     box-shadow: none;
     background: center;
+
     &.form-control {
       &::-webkit-input-placeholder { @include input-placeholder; }
       &::-moz-placeholder { @include input-placeholder; }
@@ -979,6 +1001,7 @@ $sidebar-display: "sidebar-display";
     border: none;
     padding: 0.5rem;
     margin: 0 1rem 1rem 0;
+
     &::before {
       content: "#";
       color: var(--text-muted-color);
@@ -989,6 +1012,7 @@ $sidebar-display: "sidebar-display";
 
 #search-results {
   padding-bottom: 6rem;
+
   a {
     &:hover {
       @extend %link-hover;
@@ -1081,6 +1105,7 @@ $sidebar-display: "sidebar-display";
   &:nth-child(2) {
     margin-top: $topbar-height; /* same as the height of topbar */
   }
+
   &:first-child {
     /* 3rem for topbar, 6rem for footer */
     min-height: calc(100vh - #{$topbar-height} - #{$footer-height} - #{$post-extend-min-height});
@@ -1088,8 +1113,7 @@ $sidebar-display: "sidebar-display";
 }
 
 #post-wrapper {
-  min-height: calc(
-    100vh - #{$topbar-height} - #{$footer-height} - #{$post-extend-min-height}) !important;
+  min-height: calc(100vh - #{$topbar-height} - #{$footer-height} - #{$post-extend-min-height}) !important;
 }
 
 #topbar-wrapper.row,
@@ -1147,8 +1171,8 @@ $sidebar-display: "sidebar-display";
   }
 
   #post-wrapper {
-    min-height: calc(
-      100vh - #{$topbar-height} - #{$footer-height} - #{$post-extend-min-height}) !important;
+    min-height: calc(100vh - #{$topbar-height} - #{$footer-height} - #{$post-extend-min-height}) !important;
+
     h1 {
       margin-top: 2.2rem;
       font-size: 1.55rem;
@@ -1170,6 +1194,7 @@ $sidebar-display: "sidebar-display";
 
   footer {
     height: $footer-height;
+
     > div.d-flex {
       width: 100%;
       padding: 1.5rem 0;
@@ -1178,6 +1203,7 @@ $sidebar-display: "sidebar-display";
       -ms-flex-pack: distribute !important;
       justify-content: space-around !important;
     }
+
     .footer-left,
     .footer-right {
       text-align: center;
@@ -1201,13 +1227,13 @@ $sidebar-display: "sidebar-display";
   .footnotes ol > li {
     padding-top: 3.5rem;
     margin-top: -3.2rem;
+
     &:first-child {
       margin-top: -3.5rem;
     }
   }
 
   [#{$sidebar-display}] {
-
     #sidebar {
       transform: translateX(0);
     }
@@ -1272,6 +1298,7 @@ $sidebar-display: "sidebar-display";
     &.loaded ~ a {
       margin-right: 1rem;
     }
+
     .fa-times-circle {
       right: 5.2rem;
     }
@@ -1299,6 +1326,7 @@ $sidebar-display: "sidebar-display";
 
   #page h1.dynamic-title {
     display: none;
+
     ~ .post-content {
       margin-top: 3rem;
     }
@@ -1373,7 +1401,6 @@ $sidebar-display: "sidebar-display";
 
 /* Compact icons in sidebar & panel hidden */
 @media all and (min-width: 850px) and (max-width: 1199px) {
-
   #sidebar {
     width: $sidebar-width-small;
 
@@ -1387,6 +1414,7 @@ $sidebar-display: "sidebar-display";
       span {
         width: 2rem;
       }
+
       .icon-border {
         left: -3px;
       }
@@ -1446,7 +1474,6 @@ $sidebar-display: "sidebar-display";
 /* --- desktop mode, both sidebar and panel are visible --- */
 
 @media all and (min-width: 1200px) {
-
   #main > div.row > div.col-xl-8 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 75%;
@@ -1476,12 +1503,15 @@ $sidebar-display: "sidebar-display";
 
   #search-results > div {
     width: 46%;
+
     &:nth-child(odd) {
       margin-right: 1.5rem;
     }
+
     &:nth-child(even) {
       margin-left: 1.5rem;
     }
+
     &:last-child:nth-child(odd) {
       position: relative;
       right: 24.3%;
@@ -1499,9 +1529,9 @@ $sidebar-display: "sidebar-display";
 }
 
 @media all and (min-width: 1400px) {
-
   #main > div.row {
     padding-left: calc((100% - #{$main-content-max-width}) / 2);
+
     > div.col-xl-8 {
       max-width: 850px;
     }
@@ -1509,6 +1539,7 @@ $sidebar-display: "sidebar-display";
 
   #search-result-wrapper {
     padding-right: 2rem;
+
     > div {
       max-width: 1110px;
     }
@@ -1527,13 +1558,13 @@ $sidebar-display: "sidebar-display";
 }
 
 @media all and (min-width: 1650px) {
-
   #breadcrumb {
     padding-left: 0;
   }
 
   #main > div.row > div.col-xl-8 {
     padding-left: 0;
+
     > div:first-child {
       padding-left: 0.55rem !important;
       padding-right: 1.9rem !important;
@@ -1581,6 +1612,7 @@ $sidebar-display: "sidebar-display";
         > a {
           width: 6.2rem;
           height: 6.2rem;
+
           &.mx-auto {
             margin-left: 0 !important;
           }
