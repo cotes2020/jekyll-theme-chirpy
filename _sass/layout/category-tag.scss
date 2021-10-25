@@ -3,7 +3,7 @@
 */
 
 .dash {
-  margin: 0 .5rem .6rem .5rem;
+  margin: 0 0.5rem 0.6rem 0.5rem;
   border-bottom: 2px dotted var(--dash-color);
 }
 
@@ -60,8 +60,9 @@
   #page-tag {
     ul > li {
       &::before {
-        margin: 0 .5rem;
+        margin: 0 0.5rem;
       }
+
       > a {
         white-space: nowrap;
         overflow: hidden;
