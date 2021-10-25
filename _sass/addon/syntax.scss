@@ -76,6 +76,7 @@ div > pre {
   table {
     padding: 0;
     border: 0;
+
     td pre {
       overflow: visible;  /* Fixed iOS safari overflow-x */
       word-break: normal; /* Fixed iOS safari linenos code break */
@@ -157,6 +158,7 @@ div {
     pre.lineno {
       display: none;
     }
+
     td.rouge-code {
       @extend %code-snippet-padding;
     }

@@ -202,16 +202,15 @@ In order to reduce the returned results and reduce the network bandwidth, we add
 
 - **filters**: fill in `ga:pagePath=~^/posts/.*/$;ga:pagePath!@=`.
 
-    Among them, `;` means using _logical AND_ to concatenate two rules.
+  Among them, `;` means using _logical AND_ to concatenate two rules.
 
-    If the `site.baseurl` is specified, change the first filtering rule to `ga:pagePath=~^/BASE_URL/posts/.*/$`, where `BASE_URL` is the value of `site.baseurl`.
+  If the `site.baseurl` is specified, change the first filtering rule to `ga:pagePath=~^/BASE_URL/posts/.*/$`, where `BASE_URL` is the value of `site.baseurl`.
 
 After <kbd>Run Query</kbd>, copy the generated contents of **API Query URI** at the bottom of the page and fill in the **Encoded URI for the query** of SuperProxy on GAE.
 
 After the query is saved on GAE, a **Public Endpoint** (public access address) will be generated, and we will get the query result in JSON format when accessing it. Finally, click <kbd>Enable Endpoint</kbd> in **Public Request Endpoint** to make the query effective, and click <kbd>Start Scheduling</kbd> in **Scheduling** to start the scheduled task.
 
 ![superproxy-query](/posts/20210103/04-superproxy-query.png){: width="1100" height="126"}
-
 
 ## Configure Chirpy to Display Page View
 
