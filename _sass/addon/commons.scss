@@ -319,10 +319,10 @@ footer {
 .reversefootnote {
   @at-root a#{&} {
     font-size: 0.6rem;
-    position: absolute;
     line-height: 1;
-    padding-top: 0.5em;
-    margin-left: 0.5em;
+    position: relative;
+    bottom: 0.25em;
+    margin-left: 0.25em;
     border-bottom-style: none !important;
   }
 }

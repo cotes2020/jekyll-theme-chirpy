@@ -20,8 +20,8 @@ $(function() {
 
           const hash = decodeURI(this.hash);
           let isFnRef = RegExp(/^#fnref:/).test(hash);
-          let isFn = RegExp(/^#fn:/).test(hash);
-          let selector = hash.includes(":") ? hash.replace(/\:/, "\\:") : hash;
+          let isFn = isFnRef? false : RegExp(/^#fn:/).test(hash);
+          let selector = hash.includes(":") ? hash.replace(/\:/g, "\\:") : hash;
           let target = $(selector);
 
           if (target.length) {
