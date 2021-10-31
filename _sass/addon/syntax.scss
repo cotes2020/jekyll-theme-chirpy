@@ -121,12 +121,12 @@ code {
     background-color: var(--inline-code-bg);
   }
 
-  @at-root a > &.highlighter-rouge {
+  a > &.highlighter-rouge {
     padding-bottom: 0; // show link's underlinke
     color: inherit;
   }
 
-  @at-root a:hover > &.highlighter-rouge {
+  a:hover > &.highlighter-rouge {
     border-bottom: none;
   }
 

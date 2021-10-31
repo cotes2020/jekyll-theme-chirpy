@@ -394,7 +394,6 @@ footer {
   word-spacing: 1px;
 
   a {
-    @extend %link-color;
     @extend %link-underline;
 
     &:not(:last-child) {
@@ -456,12 +455,7 @@ footer {
   }
 
   a {
-    blockquote & {
-      color: var(--link-color);
-    }
-
     &:not(.img-link) {
-      @extend %link-color;
       @extend %link-underline;
 
       &:hover {
