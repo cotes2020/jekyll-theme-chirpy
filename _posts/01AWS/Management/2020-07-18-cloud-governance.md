@@ -1,6 +1,6 @@
 ---
 title: AWS - Management - cloud governance on AWS
-date: 2021-05-02 11:11:11 -0400
+date: 2020-07-18 11:11:11 -0400
 categories: [01AWS, Management]
 tags: [AWS]
 toc: true
