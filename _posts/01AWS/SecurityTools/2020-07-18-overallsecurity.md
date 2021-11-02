@@ -7,7 +7,17 @@ toc: true
 image:
 ---
 
-[toc]
+- [AWS Cloud: Proactive Security and Forensic Readiness](#aws-cloud-proactive-security-and-forensic-readiness)
+  - [1. Identity and Access Management in AWS](#1-identity-and-access-management-in-aws)
+    - [Best-practice checklist](#best-practice-checklist)
+  - [2. Infrastructure-level protection in AWS](#2-infrastructure-level-protection-in-aws)
+    - [Best-practice checklist](#best-practice-checklist-1)
+  - [3. Data protection in AWS](#3-data-protection-in-aws)
+    - [Best-practice checklist](#best-practice-checklist-2)
+  - [4. Detective controls in AWS Cloud](#4-detective-controls-in-aws-cloud)
+    - [best practice checklist](#best-practice-checklist-3)
+  - [5. Incident Response in AWS](#5-incident-response-in-aws)
+    - [Best-practice checklist](#best-practice-checklist-4)
 
 ---
 
