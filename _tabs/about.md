@@ -7,9 +7,8 @@ order: 4
 ---
 
 > A CYBER SECURITY PRACTICIAN
-> 
-<br>
-<p align="center">
+
+<div align="center">
 
 <img src="https://i.imgur.com/hOFYY7s.png" width="100" align="left"> <img src="https://i.imgur.com/UYv2Cpd.png" width="100" align="left"> <img src="https://i.imgur.com/tIMuMgk.jpg" width="100" height="95" align="left">
 
@@ -30,6 +29,8 @@ order: 4
 <br>
 <br>
 <br>
+</div>
+
 
 > On my way to CISSP, OSCP ...
 
@@ -66,7 +67,7 @@ I have been fortunate enough to meet great folks, come across ample valuable res
 
 I have documented the exercises and learning path throughout my journey. This blog is all about:
 - Knowledge from work
-- Classroom learning
+- School project
 - Online learning
 - Hands-on training(CTFs, labs, hackathons, etc)
 - Security certifications learning
