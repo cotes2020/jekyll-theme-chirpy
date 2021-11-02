@@ -1,5 +1,5 @@
 ---
-title: DS - pythonds3 - 6. Algorithms Sorting and Searching
+title: DS - pythonds3 - 6. Sorting and Searching
 # author: Grace JyL
 date: 2019-08-25 11:11:11 -0400
 description:
@@ -12,7 +12,7 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
-- [DS - pythonds3 - 6. Algorithms Sorting and Searching](#ds---pythonds3---6-algorithms-sorting-and-searching)
+- [DS - pythonds3 - 6. Sorting and Searching](#ds---pythonds3---6-sorting-and-searching)
   - [summary](#summary)
   - [Searching](#searching)
     - [The Sequential Search 一个个找](#the-sequential-search-一个个找)
@@ -52,22 +52,19 @@ toc: true
         - [Shell sort in python](#shell-sort-in-python)
         - [analyze the Insertion sort](#analyze-the-insertion-sort-1)
     - [divide and conquer strategy](#divide-and-conquer-strategy-1)
-      - [Merge Sort](#merge-sort)
+      - [The Merge Sort](#the-merge-sort)
         - [`𝑂(𝑛log𝑛)` 从中间分开直到只剩一个->两个比大小 sort 再合起来](#𝑂𝑛log𝑛-从中间分开直到只剩一个-两个比大小-sort-再合起来)
         - [Merge sort in python](#merge-sort-in-python)
         - [analyze the mergeSort sort](#analyze-the-mergesort-sort)
-      - [Quick Sort](#quick-sort)
-        - [`𝑂(𝑛log𝑛) to 𝑂(𝑛^2)`, pivot, 从前往后数小的，从后往前数大的，卡住就换，最后 small < pivot < large](#𝑂𝑛log𝑛-to-𝑂𝑛2-pivot-从前往后数小的从后往前数大的卡住就换最后-small--pivot--large)
-        - [QuickSort in python](#quicksort-in-python)
+      - [The Quick Sort](#the-quick-sort)
+        - [`𝑂(𝑛log𝑛) to 𝑂(𝑛^2)` pivot, small < pivot < large](#𝑂𝑛log𝑛-to-𝑂𝑛2-pivot-small--pivot--large)
+        - [quickSort in python](#quicksort-in-python)
         - [analyze the quickSort sort](#analyze-the-quicksort-sort)
-    - [Other sorting](#other-sorting)
-      - [Bucket Sort](#bucket-sort)
-      - [Radix Sort](#radix-sort)
 
 ---
 
 
-# DS - pythonds3 - 6. Algorithms Sorting and Searching
+# DS - pythonds3 - 6. Sorting and Searching
 
 ---
 
@@ -1144,7 +1141,7 @@ We now turn our attention to using a `divide and conquer strategy` as a way to i
 
 ---
 
-#### Merge Sort
+#### The Merge Sort
 
 ##### `𝑂(𝑛log𝑛)` 从中间分开直到只剩一个->两个比大小 sort 再合起来
 
@@ -1162,13 +1159,9 @@ Merge sort
 ##### Merge sort in python
 
 The mergeSort function
-- divide and conquer algorithm.
-- It continuously divides an array into two halves, recurses on both the left subarray and right subarray and then merges the two sorted halves。
-
 - begins by asking the base case question.
-  - If the length of the list is less than or equal to one, already have a sorted list，no more processing is necessary.
-  - If the length is greater than one, use the Python slice operation to extract the left and right halves.
-
+- If the length of the list is less than or equal to one, then we already have a sorted list and no more processing is necessary.
+- If, on the other hand, the length is greater than one, then we use the Python slice operation to extract the left and right halves.
 - It is important to note that the list may not have an even number of items. That does not matter, as the lengths will differ by at most one.
 
 ```py
@@ -1245,24 +1238,20 @@ This additional space can be a critical factor if the list is large and can make
 ---
 
 
-#### Quick Sort
+#### The Quick Sort
 
-##### `𝑂(𝑛log𝑛) to 𝑂(𝑛^2)`, pivot, 从前往后数小的，从后往前数大的，卡住就换，最后 small < pivot < large
+##### `𝑂(𝑛log𝑛) to 𝑂(𝑛^2)` pivot, small < pivot < large
 
-> Quick sort can be `O(n log n)`, but if the pivot points are not well chosen and the list is just so, it can be `O(n^2)`.
-
-> Merge Sort is the only guaranteed `O(n log n)` even in the worst case. The cost is that merge sort uses more memory.
-
-![quicksort](https://i.imgur.com/Foy0S8c.gif)
+> Quick sort can be O(n log n), but if the pivot points are not well chosen and the list is just so, it can be O(n^2).
+> Merge Sort is the only guaranteed O(n log n) even in the worst case. The cost is that merge sort uses more memory.
 
 ![Screen Shot 2021-09-27 at 7.05.59 PM](https://i.imgur.com/pnDV79v.png)
 
 ![Screen Shot 2021-09-27 at 7.25.03 PM](https://i.imgur.com/y5sZEhi.png)
 
-The quick sort uses **divide and conquer** to gain the same advantages as the merge sort, `while not using additional storage`.
-- As a trade-off, however, it is possible that the list may not be divided in half.
-- When this happens, performance is diminished.
+The quick sort uses divide and conquer to gain the same advantages as the merge sort, `while not using additional storage`.
 
+As a trade-off, however, it is possible that the list may not be divided in half. When this happens, we will see that performance is diminished.
 
 A quick sort first selects a value, `pivot value`.
 - many different ways to choose the pivot value, we will simply use the first item in the list.
@@ -1282,31 +1271,22 @@ def sq(arr, l, r):
 **Partitioning**
 - The goal of the partition process is to move items that are on the wrong side with respect to the pivot value while also converging on the split point.
 
-
-![firstsplit](https://i.imgur.com/dCJunDA.png)
-
 1. begins by locating two position markers
-   1. `leftmark` and `rightmark`,
-   2. at the beginning and end of the remaining items in the list
-2. incrementing `leftmark` until locate a value <font color=blue> greater than the pivot value </font>.
-3. then decrement `rightmark` until find a value <font color=blue> less than the pivot value </font>.
-
-4. we have two items that are out of place with respect to the eventual split point.
+   1. leftmark and rightmark, at the beginning and end of the remaining items in the list
+2. incrementing leftmark until locate a value <font color=blue> greater than the pivot value </font>.
+3. then decrement rightmark until find a value <font color=blue> less than the pivot value </font>.
+4. At this point, we have two items that are out of place with respect to the eventual split point.
    1. For our example, this occurs at 93 and 20.
-
 5. Now exchange these two items and then repeat the process again.
 
-6. At the point where `rightmark` becomes less than `leftmark`, we stop.
-
-7. The position of `rightmark` is now the split point.
-
-8. The pivot value can be exchanged with the contents of the `split point` and the `pivot value` is now in place
-
-9. now:
-   1. all the items to the left of the split point are less than the pivot value,
-   2. all the items to the right of the split point are greater than the pivot value.
-
+6. At the point where rightmark becomes less than leftmark, we stop.
+7. The position of rightmark is now the split point.
+8. The pivot value can be exchanged with the contents of the split point and the pivot value is now in place (Figure 14).
+9. In addition, all the items to the left of the split point are less than the pivot value, and all the items to the right of the split point are greater than the pivot value.
 10. The list can now be divided at the split point and the quick sort can be invoked recursively on the two halves.
+
+
+![firstsplit](https://i.imgur.com/dCJunDA.png)
 
 ![partitionA](https://i.imgur.com/jQPiRut.png)
 
@@ -1317,7 +1297,7 @@ def sq(arr, l, r):
 - The partition process will happen next. It will find the split point and at the same time move other items to the appropriate side of the list, either less than or greater than the pivot value.
 
 
-##### QuickSort in python
+##### quickSort in python
 
 The quickSort function invokes a recursive function, quickSortHelper. quickSortHelper begins with the same base case as the merge sort.
 - If the length of the list is less than or equal to one, it is already sorted.
@@ -1368,14 +1348,6 @@ print(alist)
 
 ##### analyze the quickSort sort
 
-
-- Stable: No
-- Time Complexity:
-  - Best Case: O(nlog(n))
-  - Worst Case: O(n^2)
-  - Average Case: O(nlog(n))
-
-
 ![Screen Shot 2021-09-27 at 7.32.56 PM](https://i.imgur.com/zqs7LSY.png)
 
 for a list of length `n`,
@@ -1399,45 +1371,12 @@ different ways to choose the pivot value.
 - The idea is that in the case where the first item in the list does not belong toward the middle of the list, **the median of three** will choose a better “middle” value.
 - This will be particularly useful when the original list is somewhat sorted to begin with.
 
----
-
-
-### Other sorting
-
-
----
-
-
-#### Bucket Sort
-
-- works by distributing the elements of an array into a number of buckets.
-- Each bucket is then sorted individually, either using a different sorting algorithm, or by recursively applying the bucket sorting algorithm
-
-
-**Time Complexity**:
-- Best Case: Ω(n + k)
-- Worst Case: O(n^2)
-- Average Case:Θ(n + k)
-
-
-![bucketsort](https://i.imgur.com/GZphZCB.png)
-
-
----
 
 
 
-#### Radix Sort
-
-- like bucket sort,
-- distributes elements of an array into a number of buckets.
-- However, radix sort differs from bucket sort by 're-bucketing' the array after the initial pass as opposed to sorting each bucket and merging
 
 
-Time Complexity:
-- Best Case: Ω(nk)
-- Worst Case: O(nk)
-- Average Case: Θ(nk)
+
 
 
 

@@ -299,123 +299,18 @@ class NumMatrix:
         sum = self.sums[row2+1][col2+1] - self.sums[row2+1][col1] - self.sums[row1][col2+1] + self.sums[row1][col1]
         print(sum)
         return sum
-# numMatrix = NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]) 
-# numMatrix.sumRegion(2, 1, 4, 3); # return 8 (i.e sum of the red rectangle)
-# numMatrix.sumRegion(1, 1, 2, 2); # return 11 (i.e sum of the green rectangle)
-# numMatrix.sumRegion(1, 2, 2, 4); # return 12 (i.e sum of the blue rectangle)
+numMatrix = NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]) 
+numMatrix.sumRegion(2, 1, 4, 3); # return 8 (i.e sum of the red rectangle)
+numMatrix.sumRegion(1, 1, 2, 2); # return 11 (i.e sum of the green rectangle)
+numMatrix.sumRegion(1, 2, 2, 4); # return 12 (i.e sum of the blue rectangle)
  
 
 
 # =============== 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-class Solution:
-    # iteratively
-    def mergeTwoLists(self, l1, l2):
-        # while 
-        dummy = ListNode(0)
-        p = dummy
-        while l1 and l2:
-            if l1.val < l2.val:
-                p.next = l1
-                l1 = l1.next
-            else:
-                p.next = l2
-                l2 = l2.next
-            p = p.next
-        p.next = l1 or l2
-        return dummy.next 
-
-    # recursively    
-    def mergeTwoLists(self, l1, l2):
-        if not l1 or not l2:
-             return l1 or l2
-        if l1.val < l2.val:
-            l1.next = self.mergeTwoLists(l1.next, l2)
-            return l1
-        else:
-            l2.next = self.mergeTwoLists(l1, l2.next)
-            return l2
-    
-    # recursively    
-    def mergeTwoLists(self, a, b):
-        if a and b:
-            if a.val > b.val:
-                a, b = b, a
-            a.next = self.mergeTwoLists(a.next, b)
-        return a or b
-
-    # in-place, iteratively        
-    def mergeTwoLists(self, l1, l2):
-        if None in (l1, l2):
-            return l1 or l2
-        dummy = cur = ListNode(0)
-        dummy.next = l1
-        while l1 and l2:
-            if l1.val < l2.val:
-                l1 = l1.next
-            else:
-                nxt = cur.next
-                cur.next = l2
-                tmp = l2.next
-                l2.next = nxt
-                l2 = tmp
-            cur = cur.next
-        cur.next = l1 or l2
-        return dummy.next
 
 
 # =============== 
-
-# 23. Merge k Sorted Lists
-# # You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
-# Merge all the linked-lists into one sorted linked-list and return it.
-# Example 1:
-# Input: lists = [[1,4,5],[1,3,4],[2,6]]
-# Output: [1,1,2,3,4,4,5,6]
-# Explanation: The linked-lists are:
-# [
-#   1->4->5,
-#   1->3->4,
-#   2->6
-# ]
-# merging them into one sorted list:
-# 1->1->2->3->4->4->5->6
-
-class Solution(object):
-
-    def mergeKLists(self, lists):
-        if not lists: return None
-        if len(lists) == 1: return lists[0]
-
-        mid = len(lists) // 2
-        l, r = self.mergeKLists(lists[:mid]), self.mergeKLists(lists[mid:])
-        return self.merge(l, r)
-    
-    def merge(self, l, r):
-        dummy = p = ListNode()
-        while l and r:
-            if l.val < r.val:
-                p.next = l
-                l = l.next
-            else:
-                p.next = r
-                r = r.next
-            p = p.next
-        p.next = l or r
-        return dummy.next
-    
-    def merge1(self, l, r):
-        if not l or not r: return l or r
-        if l.val< r.val:
-            l.next = self.merge(l.next, r)
-            return l
-        r.next = self.merge(l, r.next)
-        return r
 
 
 
