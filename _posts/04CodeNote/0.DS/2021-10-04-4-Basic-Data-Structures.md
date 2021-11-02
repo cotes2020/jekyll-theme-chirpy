@@ -12,72 +12,6 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
-- [DS - pythonds3 - 4. Basic Data Structures](#ds---pythonds3---4-basic-data-structures)
-- [Linear Structures](#linear-structures)
-- [List](#list)
-  - [Arrays](#arrays)
-  - [Dynamic Array in Java](#dynamic-array-in-java)
-    - [Arrays in Java](#arrays-in-java)
-      - [declare Array](#declare-array)
-        - [Instantiate Array](#instantiate-array)
-        - [Array Literal](#array-literal)
-      - [Access Array Elements](#access-array-elements)
-        - [with for Loop](#with-for-loop)
-        - [with foreach loops ???](#with-foreach-loops-)
-      - [Arrays of Objects](#arrays-of-objects)
-      - [error:](#error)
-        - [access element outside the array size](#access-element-outside-the-array-size)
-      - [Multidimensional Arrays](#multidimensional-arrays)
-      - [Passing Arrays to Methods](#passing-arrays-to-methods)
-      - [Returning Arrays from Methods](#returning-arrays-from-methods)
-      - [Class Objects for Arrays](#class-objects-for-arrays)
-    - [Array Members](#array-members)
-    - [Cloning of arrays](#cloning-of-arrays)
-  - [Linked List](#linked-list)
-    - [Unordered List - Abstract Data Type](#unordered-list---abstract-data-type)
-      - [Unordered List: Linked Lists](#unordered-list-linked-lists)
-      - [Node Class](#node-class)
-        - [Node Class <- unordered linked list  (!!!!!!!!!!!!!)](#node-class---unordered-linked-list--)
-      - [Unordered List Class <- unordered linked list (old)](#unordered-list-class---unordered-linked-list-old)
-      - [Unordered List Class <- unordered linked list (new)  (!!!!!!!!!!!!!)](#unordered-list-class---unordered-linked-list-new--)
-        - [`is_empty()`](#is_empty)
-        - [`add()`](#add)
-        - [`size`, `search`, and `remove`](#size-search-and-remove)
-          - [`size()`](#size)
-          - [`search(item):`](#searchitem)
-          - [`remove()`](#remove)
-        - [`pop()`](#pop)
-        - [`append()`](#append)
-        - [`insert()`](#insert)
-        - [`index()`](#index)
-    - [Ordered List - Abstract Data Type](#ordered-list---abstract-data-type)
-      - [Ordered List in py (!!!!!!!!!!!!!)](#ordered-list-in-py-)
-  - [Stack](#stack)
-    - [stack operations](#stack-operations)
-    - [code](#code)
-      - [Stack <- list  (!!!!!!!!!!!!!)](#stack---list--)
-      - [stack in java](#stack-in-java)
-      - [Stack <- Linked List](#stack---linked-list)
-      - [Stack Class in Java](#stack-class-in-java)
-      - [reverse char in string](#reverse-char-in-string)
-      - [simple Balanced Parentheses](#simple-balanced-parentheses)
-      - [Balanced Symbols (A General Case)](#balanced-symbols-a-general-case)
-      - [convert-integer-into-different-base](#convert-integer-into-different-base)
-      - [Infix, Prefix, and Postfix Expressions](#infix-prefix-and-postfix-expressions)
-  - [Queue](#queue)
-    - [code](#code-1)
-      - [queue as a list  (!!!!!!!!!!!!!)](#queue-as-a-list--)
-      - [queue in java](#queue-in-java)
-      - [Simulation: Hot Potato](#simulation-hot-potato)
-      - [Simulation: Printing Tasks](#simulation-printing-tasks)
-  - [Deque](#deque)
-    - [Deque - Abstract Data Type](#deque---abstract-data-type)
-    - [code](#code-2)
-      - [dequeue as a list in py (!!!!!!!!!!!!!)](#dequeue-as-a-list-in-py-)
-      - [Palindrome-Checker 回文 对称的单词](#palindrome-checker-回文-对称的单词)
-  - [Hashing](#hashing)
-  - [Graph](#graph)
-
 - ref:
   - https://runestone.academy/runestone/books/published/pythonds/BasicDS/toctree.html
   - [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/books/published/pythonds3/BasicDS/ImplementinganOrderedList.html)
@@ -203,7 +137,7 @@ int arr2[] = {10, 20, 30, 40, 50};
 
 ---
 
-## Dynamic Array in Java
+### Dynamic Array in Java
 
 
 In reality, elements of an ArrayList are stored in a traditional array
@@ -230,7 +164,7 @@ serious limitation;
 
 
 
-**Analysis of Dynamic Arrays**
+#### Analysis of Dynamic Arrays**
 
 **amortization** 分期偿还
 - an algorithmic design pattern
@@ -242,7 +176,7 @@ serious limitation;
 
 
 
-**ADT design Position**
+#### ADT design Position
 - first( ): Returns the position of the first element of L (or null if empty).
 - last(): Returns the position of the last element of L (or null if empty).
 - before(p): Returns the position of L immediately before position p (or null if p is the first position).
