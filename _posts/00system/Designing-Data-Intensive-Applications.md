@@ -48,10 +48,12 @@ image:
         - [imperative approach](#imperative-approach)
       - [MapReduce querying](#mapreduce-querying)
     - [Graph-like data models](#graph-like-data-models)
-      - [Property graphs](#property-graphs)
+      - [Property graphs model](#property-graphs-model)
         - [The Cypher Query Language](#the-cypher-query-language)
         - [Graph Queries in SQL](#graph-queries-in-sql)
-      - [Triple-stores and SPARQL](#triple-stores-and-sparql)
+      - [Triple-stores model and SPARQL](#triple-stores-model-and-sparql)
+        - [The semantic web](#the-semantic-web)
+        - [The RDF data model](#the-rdf-data-model)
       - [The SPARQL query language](#the-sparql-query-language)
       - [The foundation: Datalog](#the-foundation-datalog)
   - [Storage and retrieval](#storage-and-retrieval)
@@ -1105,7 +1107,7 @@ relational and document databases are becoming more similar over time
 
 ### Query languages for data
 
-```bash
+```sql
 # code
 function getSharks() { var sharks = [];
 for (var i = 0; i < animals.length; i++) { if (animals[i].family === "Sharks") {
@@ -1386,7 +1388,7 @@ There are several ways of structuring and querying the data.
 
 ---
 
-#### Property graphs
+#### Property graphs model
 
 Each vertex consists of:
 * Unique identifier
@@ -1401,17 +1403,19 @@ Each edge consists of:
 * Label to describe the kind of relationship between the two vertices
 * A collection of properties (key-value pairs)
 
-think of a graph store as consisting of two relational tables,
+think of a graph store as consisting of `two relational tables`,
 - one for vertices and one for edges,
 - this schema uses the PostgreSQL json datatype to store the properties of each vertex or edge
 - The head and tail vertex are stored for each edge;
 - if you want the set of incoming or outgoing edges for a vertex, you can query the edges table by head_vertex or tail_vertex, respectively.
+
 
 ```sql
 CREATE TABLE vertices (
   vertex_id integer PRIMARYKEY,
   properties json
 );
+
 CREATE TABLE edges (
   edge_id integer PRIMARY KEY,
   tail_vertex integer REFERENCES vertices (vertex_id),
@@ -1449,7 +1453,9 @@ _Cypher_
 * Graph queries in SQL.
 * In a relational database, you usually know in advance which `joins` you need in your query.
 * In a graph query, the number `if joins` is not fixed in advance.
-* In Cypher `:WITHIN*0...` expresses "follow a `WITHIN` edge, zero or more times" (like the `*` operator in a regular expression).
+* `:WITHIN*0...`:
+  * "follow a `WITHIN` edge, zero or more times"
+  * (like the `*` operator in a regular expression).
 * This idea of variable-length traversal paths in a query can be expressed using something called _recursive common table expressions_ (the `WITH RECURSIVE` syntax).
 
 Example:
@@ -1490,21 +1496,237 @@ The query can be read as follows:
 
 ##### Graph Queries in SQL
 
+```sql
+-- graph data can be represented in a relational database.
+CREATE TABLE vertices (
+  vertex_id integer PRIMARYKEY,
+  properties json
+);
+
+CREATE TABLE edges (
+  edge_id integer PRIMARY KEY,
+  tail_vertex integer REFERENCES vertices (vertex_id),
+  head_vertex integer REFERENCES vertices (vertex_id),
+  label text,
+  properties json
+);
+
+CREATE INDEX edges_tails ON edges (tail_vertex);
+CREATE INDEX edges_heads ON edges (head_vertex);
+
+CREATE
+  (NAmerica:Location {name:'North America', type:'continent'}),
+  (USA:Location      {name:'United States', type:'country'  }),
+  (Idaho:Location    {name:'Idaho',         type:'state'    }),
+  (Lucy:Person       {name:'Lucy' }),
+  (Idaho) -[:WITHIN]->  (USA)  -[:WITHIN]-> (NAmerica),
+  (Lucy)  -[:BORN_IN]-> (Idaho)
+```
+
+
 - In a `relational database`
   - you usually know in advance which `joins` you need in your query.
+
 - In a `graph query`
   - need to traverse a variable number of edges before you find the vertex you’re looking for
   - the number of `joins` is not fixed in advance.
 
 
+**Cypher query**
+- `() -[:WITHIN*0..]-> ()` rule in the Cypher query.
+- A person’s `LIVES_IN` edge may point at any kind of location: a street, a city, a district, a region, a state, etc. A city may be WITHIN a region, a region `WITHIN` a state, a state `WITHIN` a country, etc.
+- The `LIVES_IN` edge may point directly at the location vertex you’re looking for, or it may be several levels removed in the location hierarchy.
+- In Cypher, `:WITHIN*0..` expresses that fact very concisely: it means “follow a `WITHIN` edge, zero or more times.” It is like the `*` operator in a regular expression.
 
+
+
+**recursive common table expressions**
+- Since SQL:1999, this idea of `variable-length traversal paths in a query` can be expressed using something called **recursive common table expressions** (the `WITH RECURSIVE` syntax).
+  - supported in PostgreSQL, IBM DB2, Oracle, and SQL Server
+- However, the syntax is very clumsy in comparison to Cypher.
+- same query can be written in 4 lines in one query language but requires 29 lines in another, that just shows that different data models are designed to satisfy different use cases. It’s important to pick a data model that is suitable for your application.
+
+
+```sql
+-- Cypher query
+MATCH
+  (person) -[:BORN_IN]->  () -[:WITHIN*0..]-> (us:Location {name:'United States'}),
+  (person) -[:LIVES_IN]-> () -[:WITHIN*0..]-> (eu:Location {name:'Europe'})
+RETURN person.name
+
+
+-- expressed in SQL using recursive common table expressions
+WITH RECURSIVE
+
+  -- in_usa is the set of vertex IDs of all locations within the United States
+in_usa(vertex_id) AS (
+  -- find the vertex whose name property has the value "United States",
+  -- and make it the first element of the set of vertices in_usa.
+  SELECT vertex_id FROM vertices WHERE properties->>'name' = 'United States'
+  UNION
+  -- Follow all incoming within edges from vertices in the set in_usa,
+  -- and add them to the same set, until all incoming within edges have been visited.
+  SELECT edges.tail_vertex FROM edges
+  JOIN in_usa ON edges.head_vertex = in_usa.vertex_id WHERE edges.label = 'within'),
+
+  -- in_europe is the set of vertex IDs of all locations within Europe
+in_europe(vertex_id) AS (
+  SELECT vertex_id FROM vertices WHERE properties->>'name' = 'Europe'
+  UNION
+  SELECT edges.tail_vertex FROM edges
+  JOIN in_europe ON edges.head_vertex = in_europe.vertex_id WHERE edges.label = 'within'),
+
+
+  -- born_in_usa is the set of vertex IDs of all people born in the US
+born_in_usa(vertex_id) AS (
+  -- For each of the vertices in the set in_usa,
+  -- follow incoming born_in edges to find people who were born in some place within the United States.
+  SELECT edges.tail_vertex FROM edges
+  JOIN in_usa ON edges.head_vertex = in_usa.vertex_id WHERE edges.label = 'born_in'),
+
+
+  -- lives_in_europe is the set of vertex IDs of all people living in Europe
+lives_in_europe(vertex_id) AS (
+  SELECT edges.tail_vertex FROM edges
+  JOIN in_europe ON edges.head_vertex = in_europe.vertex_id WHERE edges.label = 'lives_in')
+
+SELECT vertices.properties->>'name' FROM vertices
+-- join to find those people who were both born in the US *and* live in Europe
+-- intersect the set of people born in the USA with the set of people living in Europe, by joining them.
+JOIN born_in_usa ON vertices.vertex_id = born_in_usa.vertex_id
+JOIN lives_in_europe ON vertices.vertex_id = lives_in_europe.vertex_id;
+```
 
 
 ---
 
-#### Triple-stores and SPARQL
+#### Triple-stores model and SPARQL
 
-In a triple-store, all information is stored in the form of very simple three-part statements: _subject_, _predicate_, _object_ (peg: _Jim_, _likes_, _bananas_). A triple is equivalent to a vertex in graph.
+The **triple-store model** is mostly equivalent to the **property graph model**
+
+**triple-store**
+- In a triple-store, all information is stored in the form of very simple **three-part statements**: `_subject_, _predicate_, _object_ `
+  - For example, in the triple (Jim, likes, bananas),
+  - Jim is the `subject`,
+  - likes is the `predicate` (verb),
+  - and bananas is the `object`.
+- A triple is equivalent to a vertex in graph.
+
+The object is one of two things:
+1. A value in a 原始 **primitive datatype**, such as a string or a number.
+   1. the `predicate` and `object` of the triple are equivalent to the `key and value of a property` on the `subject` vertex.
+   2. a vertex lucy with properties `{"age":33}`
+2. Another vertex in the graph.
+   1. the predicate is an `edge` in the graph, the subject is the `tail vertex`, and the object is the `head vertex`.
+   2. For example, in (lucy, marriedTo, alain) the subject and object lucy and alain are both vertices, and the predicate marriedTo is the label of the edge that connects them.
+
+```sql
+@prefix : <urn:example:>.
+_:lucy     a       :Person.
+_:lucy     :name   "Lucy".
+_:lucy     :bornIn _:idaho.
+
+_:idaho    a       :Location.
+_:idaho    :name   "Idaho".
+_:idaho    :type   "state".
+_:idaho    :within _:usa.
+
+_:usa      a       :Location.
+_:usa      :name   "United States".
+_:usa      :type   "country".
+_:usa      :within _:namerica.
+
+_:namerica a       :Location.
+_:namerica :name   "North America".
+_:namerica :type   "continent".
+```
+
+In this example:
+- vertices of the graph are written as `_:someName`
+- The name doesn’t mean anything outside of this file; it exists only because we otherwise wouldn’t know which triples refer to the same vertex.
+
+- When the predicate represents an `edge`, the `object` is a vertex, `_:idaho :within _:usa`.
+- When the predicate is a `property`, the `object` is a string literal, `_:usa :name "United States"`.
+
+
+```sql
+_:lucy     a :Person;   :name "Lucy";          :bornIn _:idaho.
+_:idaho    a :Location; :name "Idaho";         :type "state";   :within _:usa.
+_:usa      a :Location; :name "United States"; :type "country"; :within _:namerica.
+_:namerica a :Location; :name "North America"; :type "continent".
+```
+
+
+---
+
+##### The semantic web
+
+If you read more about triple-stores, you may get sucked into a 大漩涡 maelstrom of articles written about the **semantic web** 语义网.
+
+- The triple-store data model is completely independent of the semantic web—for example,
+- Datomic is a triple-store that does not claim to have anything to do with it. But since the two are so closely linked in many people’s minds, we should discuss them briefly.
+
+
+
+The semantic web is fundamentally a simple and reasonable idea:
+- websites already publish information as text and pictures for humans to read, so why don’t they also publish information as machine-readable data for computers to read?
+
+**Resource Description Framework (RDF)**
+- a mechanism for **different websites to publish data in a consistent format**
+  - allowing data from different websites to be automatically combined into a `web of data`
+  - a kind of internet-wide “database of everything.”
+
+- overhyped in the early 2000s but so far hasn’t realized in practice, which has made many people cynical 嗤之以鼻 about it. It has also suffered from a dizzying plethora of `acronyms`, overly complex `standards proposals`, and `hubris`
+
+
+- However, if you look past those failings, there is also a lot of good work that has come out of the semantic web project. Triples can be a good internal data model for applications, even if you have no interest in publishing RDF data on the semantic web.
+
+
+---
+
+##### The RDF data model
+
+The Turtle language: human-readable format for RDF data.
+
+RDF in an XML format, much more verbosely
+
+Turtle/N3 is preferable as it is much easier on the eyes, and tools like Apache Jena can automatically convert between different RDF formats if necessary.
+
+```xml
+<rdf:RDF xmlns="urn:example:" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Location rdf:nodeID="idaho">
+  <name>Idaho</name>
+  <type>state</type>
+  <within>
+    <Location rdf:nodeID="usa">
+      <name>United States</name>
+      <type>country</type>
+      <within>
+        <Location rdf:nodeID="namerica">
+          <name>North America</name>
+          <type>continent</type>
+        </Location>
+      </within>
+    </Location>
+  </within>
+</Location>
+<Person rdf:nodeID="lucy">
+  <name>Lucy</name>
+  <bornIn rdf:nodeID="idaho"/>
+</Person>
+</rdf:RDF>
+```
+
+RDF has a few quirks due to the fact that it is designed for internet-wide data exchange.
+- The subject, predicate, and object of a triple are often URIs.
+- For example, a predicate might be an URI such as `<http://my-company.com/namespace#within> or <http://my-company.com/namespace#lives_in>`, rather than just WITHIN or LIVES_IN.
+- The reasoning behind this design is that you should be able to combine your data with someone else’s data, and if they attach a different meaning to the word within or lives_in, you won’t get a conflict because their predicates are actually `<http://other.org/foo#within> and <http://other.org/foo#lives_in>`.
+The URL `<http://my-company.com/namespace>` doesn’t necessarily need to resolve to anything—from RDF’s point of view, it is simply a namespace. To avoid potential confusion with http:// URLs, the examples in this section use non-resolvable URIs such as urn:example:within. Fortunately, you can just specify this prefix once at the top of the file, and then forget about it.
+
+
+
+
+---
 
 #### The SPARQL query language
 
