@@ -7,7 +7,8 @@ math: true
 image: 
 ---
 
-[toc]
+- [Creating Aliases](#creating-aliases)
+  - [Creating Aliases for Docker Commands in Linux](#creating-aliases-for-docker-commands-in-linux)
 
 ---
 
