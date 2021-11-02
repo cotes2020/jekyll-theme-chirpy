@@ -640,10 +640,10 @@ class Test{
 A clone of a `multidimensional array` (like `Object[][]`) is a “shallow copy”
 - it creates only a single new array with each element array a reference to an original element array but subarrays are shared.
 
-```java
+```
 class Test{     
     public static void main(String args[])  {
-        int intArray[][] = {{1,2,3},{4,5}};
+        int intArray[][] = { {1,2,3} , {4,5} };
         int cloneArray[][] = intArray.clone();
 
         // will print false
