@@ -1,4 +1,11 @@
-
+---
+title: AWS - SSM - Patch Manager
+date: 2020-05-23 11:11:11 -0400
+categories: [01AWS, SSM]
+tags: [AWS, SSM]
+toc: true
+image:
+---
 
 - [AWS Systems Manager Patch Manager](#aws-systems-manager-patch-manager)
   - [Patch Manager prerequisites](#patch-manager-prerequisites)
