@@ -7,7 +7,22 @@ tags: [Java]
 toc: true
 ---
 
-[toc]
+- [java Lambda Expressions](#java-lambda-expressions)
+  - [java Lambda Expressions](#java-lambda-expressions-1)
+  - [Ideal Use Case for Lambda Expressions](#ideal-use-case-for-lambda-expressions)
+    - [Approach 1: Create Methods That Search for Members That Match One Characteristic](#approach-1-create-methods-that-search-for-members-that-match-one-characteristic)
+    - [Approach 2: Create More Generalized Search Methods](#approach-2-create-more-generalized-search-methods)
+    - [Approach 3: Specify Search Criteria Code in a Local Class](#approach-3-specify-search-criteria-code-in-a-local-class)
+    - [Approach 4: Specify Search Criteria Code in an Anonymous Class](#approach-4-specify-search-criteria-code-in-an-anonymous-class)
+    - [Approach 5: Specify Search Criteria Code with a Lambda Expression](#approach-5-specify-search-criteria-code-with-a-lambda-expression)
+    - [Approach 6: Use Standard Functional Interfaces with Lambda Expressions](#approach-6-use-standard-functional-interfaces-with-lambda-expressions)
+    - [Approach 7: Use Lambda Expressions Throughout Your Application](#approach-7-use-lambda-expressions-throughout-your-application)
+    - [Approach 8: Use Generics More Extensively](#approach-8-use-generics-more-extensively)
+  - [Syntax of Lambda Expressions](#syntax-of-lambda-expressions)
+  - [Accessing Local Variables of the Enclosing Scope](#accessing-local-variables-of-the-enclosing-scope)
+  - [Target Typing](#target-typing)
+  - [Target Types and Method Arguments](#target-types-and-method-arguments)
+  - [Serialization](#serialization)
 
 ---
 

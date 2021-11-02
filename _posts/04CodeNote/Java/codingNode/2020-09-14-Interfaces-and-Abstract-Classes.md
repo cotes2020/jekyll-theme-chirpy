@@ -1,5 +1,5 @@
 ---
-title: Java - Interfaces and Abstract Classes
+title: Java - Note
 date: 2020-09-14 11:11:11 -0400
 description:
 categories: [04CodeNote, JavaNote]
@@ -7,12 +7,21 @@ tags: [Java]
 toc: true
 ---
 
-
-# Java - Interfaces and Abstract Classes
-
-[toc]
+- [Interfaces and Abstract Classes](#interfaces-and-abstract-classes)
+  - [Commonalities in Code](#commonalities-in-code)
+  - [Developing an Interface](#developing-an-interface)
+  - [Interface: Utility and Flexibility](#interface-utility-and-flexibility)
+- [abstract keyword in java](#abstract-keyword-in-java)
+  - [Capture commonality in Abstract Base Class](#capture-commonality-in-abstract-base-class)
 
 ---
+
+
+
+# Interfaces and Abstract Classes
+
+
+
 
 ## Commonalities in Code
 
