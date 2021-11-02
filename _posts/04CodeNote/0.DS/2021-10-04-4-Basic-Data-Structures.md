@@ -16,11 +16,8 @@ toc: true
 - [Linear Structures](#linear-structures)
 - [List](#list)
   - [Arrays](#arrays)
-    - [running time](#running-time)
-    - [Dynamic Array in Java](#dynamic-array-in-java)
-      - [Analysis of Dynamic Arrays](#analysis-of-dynamic-arrays)
-      - [ADT design Position](#adt-design-position)
-    - [Arrays in Java `char arr1[] = {'g', 'e'}`](#arrays-in-java-char-arr1--g-e)
+  - [Dynamic Array in Java](#dynamic-array-in-java)
+    - [Arrays in Java](#arrays-in-java)
       - [declare Array](#declare-array)
         - [Instantiate Array](#instantiate-array)
         - [Array Literal](#array-literal)
@@ -196,8 +193,7 @@ int arr2[] = {10, 20, 30, 40, 50};
 > whereas an array of ints or floats is called simply an array.
 
 
-### running time
-
+**running time**
 - size( ): `O(1)`
 - isEmpty( ): `O(1)`
 - get(i): `O(1)`
@@ -207,7 +203,7 @@ int arr2[] = {10, 20, 30, 40, 50};
 
 ---
 
-### Dynamic Array in Java
+## Dynamic Array in Java
 
 
 In reality, elements of an ArrayList are stored in a traditional array
@@ -231,7 +227,10 @@ serious limitation;
   - In that case, the class requests a new, larger array from the system, and copies all references from the smaller array into the beginning of the new array.
   - At that point in time, the old array is no longer needed, so it can be reclaimed by the system.
 
-#### Analysis of Dynamic Arrays
+
+
+
+**Analysis of Dynamic Arrays**
 
 **amortization** 分期偿还
 - an algorithmic design pattern
@@ -242,8 +241,8 @@ serious limitation;
   - The beauty of using this analysis method is that we can overcharge some operations in order to save up cyber-dollars to pay for others.
 
 
-#### ADT design Position
 
+**ADT design Position**
 - first( ): Returns the position of the first element of L (or null if empty).
 - last(): Returns the position of the last element of L (or null if empty).
 - before(p): Returns the position of L immediately before position p (or null if p is the first position).
@@ -266,8 +265,10 @@ running time:
 
 ---
 
-### Arrays in Java `char arr1[] = {'g', 'e'}`
+### Arrays in Java 
 
+
+`char arr1[] = {'g', 'e'}`
 
 **array**
 - a group of like-typed variables that are referred to by a common name.
