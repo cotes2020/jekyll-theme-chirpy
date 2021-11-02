@@ -17,9 +17,9 @@ toc: true
 - [List](#list)
   - [Arrays](#arrays)
     - [running time](#running-time)
-    - [Dynamic Arrays in Java](#dynamic-arrays-in-java)
+    - [Dynamic Array in Java](#dynamic-array-in-java)
       - [Analysis of Dynamic Arrays](#analysis-of-dynamic-arrays)
-      - [ADT design: Position](#adt-design-position)
+      - [ADT design Position](#adt-design-position)
     - [Arrays in Java `char arr1[] = {'g', 'e'}`](#arrays-in-java-char-arr1--g-e)
       - [declare Array](#declare-array)
         - [Instantiate Array](#instantiate-array)
@@ -198,6 +198,7 @@ int arr2[] = {10, 20, 30, 40, 50};
 
 
 ### running time
+
 - size( ): `O(1)`
 - isEmpty( ): `O(1)`
 - get(i): `O(1)`
@@ -207,7 +208,7 @@ int arr2[] = {10, 20, 30, 40, 50};
 
 ---
 
-### Dynamic Arrays in Java
+### Dynamic Array in Java
 
 
 In reality, elements of an ArrayList are stored in a traditional array
@@ -242,7 +243,7 @@ serious limitation;
   - The beauty of using this analysis method is that we can overcharge some operations in order to save up cyber-dollars to pay for others.
 
 
-#### ADT design: Position
+#### ADT design Position
 
 - first( ): Returns the position of the first element of L (or null if empty).
 - last(): Returns the position of the last element of L (or null if empty).
