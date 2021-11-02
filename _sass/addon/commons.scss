@@ -189,6 +189,13 @@ footer {
   }
 }
 
+i { // fontawesome icons
+  &.far,
+  &.fas {
+    @extend %no-cursor;
+  }
+}
+
 /* --- Panels --- */
 
 .access {
@@ -473,6 +480,8 @@ footer {
 
     &.img-link {
       @include caption;
+
+      @extend %no-cursor;
     }
 
   } // a
@@ -852,6 +861,8 @@ $sidebar-display: "sidebar-display";
     }
 
     .icon-border {
+      @extend %no-cursor;
+
       background-color: var(--sidebar-muted-color);
       content: "";
       width: 3px;

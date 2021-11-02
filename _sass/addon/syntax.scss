@@ -133,6 +133,10 @@ code {
   blockquote &.highlighter-rouge {
     color: inherit;
   }
+
+  .highlight > & {
+    color: transparent;
+  }
 }
 
 td.rouge-code {
