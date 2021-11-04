@@ -76,6 +76,8 @@ toc: true
     - [在 BST 中插入一个数](#在-bst-中插入一个数)
     - [在 BST 中删除一个数](#在-bst-中删除一个数)
     - [不同的二叉搜索树 - 穷举问题](#不同的二叉搜索树---穷举问题)
+    - [不同的二叉搜索树II](#不同的二叉搜索树ii)
+    - [二叉树后序遍历](#二叉树后序遍历)
 
 ---
 
@@ -2077,30 +2079,147 @@ TreeNode getMin(TreeNode node) {
 }
 ```
 
+
 ---
+
 
 ### 不同的二叉搜索树 - 穷举问题
 
-
 [96. Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/)
 - Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.
+- 给你输入一个正整数 n，存储 `{1,2,3...,n}` 这些值共有有多少种不同的 BST 结构。
+
+```java
+// Runtime Error
+// /* 主函数 */
+// int numTrees(int n) {
+//     // 计算闭区间 [1, n] 组成的 BST 个数
+//     return count(1, n);
+// }
+
+// /* 计算闭区间 [lo, hi] 组成的 BST 个数 */
+// int count(int lo, int hi) {
+//     // base case
+//     if (lo > hi) return 1;
+//     int res = 0;
+//     for (int i = lo; i <= hi; i++) {
+//         // i 的值作为根节点 root
+//         int left = count(lo, i - 1);
+//         int right = count(i + 1, hi);
+//         // 左右子树的组合数乘积是 BST 的总数
+//         res += left * right;
+//     }
+//     return res;
+// }
+```
+
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Unique Binary Search Trees.
+// Memory Usage: 35.3 MB, less than 99.03% of Java online submissions for Unique Binary Search Trees.
+
+// 备忘录
+int[][] memo;
+
+int numTrees(int n) {
+    // 备忘录的值初始化为 0
+    memo = new int[n + 1][n + 1];
+    return count(1, n);
+}
+
+int count(int lo, int hi) {
+    if (lo > hi) return 1;
+    // 查备忘录
+    if (memo[lo][hi] != 0) return memo[lo][hi];
+    int res = 0;
+    for (int mid = lo; mid <= hi; mid++) {
+        int left = count(lo, mid - 1);
+        int right = count(mid + 1, hi);
+        res += left * right;
+    }
+    // 将结果存入备忘录
+    memo[lo][hi] = res;
+    return res;
+}
+```
 
 
 
+---
+
+### 不同的二叉搜索树II
+
+95.不同的二叉搜索树II（Medium）
+- 不止计算有几个不同的 BST，而是要你构建出所有合法的 BST
+
+```java
+/* 主函数 */
+List<TreeNode> generateTrees(int n) {
+    if (n == 0) return new LinkedList<>();
+    // 构造闭区间 [1, n] 组成的 BST 
+    return build(1, n);
+}
+
+/* 构造闭区间 [lo, hi] 组成的 BST */
+List<TreeNode> build(int lo, int hi) {
+    List<TreeNode> res = new LinkedList<>();
+    // base case
+    if (lo > hi) {
+        res.add(null);
+        return res;
+    }
+    // 1、穷举 root 节点的所有可能。
+    for (int i = lo; i <= hi; i++) {
+        // 2、递归构造出左右子树的所有合法 BST。
+        List<TreeNode> leftTree = build(lo, i - 1);
+        List<TreeNode> rightTree = build(i + 1, hi);
+        // 3、给 root 节点穷举所有左右子树的组合。
+        for (TreeNode left : leftTree) {
+            for (TreeNode right : rightTree) {
+                // i 作为根节点 root 的值
+                TreeNode root = new TreeNode(i);
+                root.left = left;
+                root.right = right;
+                res.add(root);
+            }
+        }
+    }
+    return res;
+}
+```
+
+---
+
+### 二叉树后序遍历
+
+后序遍历的代码框架：
+- 如果当前节点要做的事情需要通过左右子树的计算结果推导出来，就要用到后序遍历。
 
 
+```java
+void traverse(TreeNode root) {
+    traverse(root.left);
+    traverse(root.right);
+    /* 后序遍历代码的位置 */
+    /* 在这里处理当前节点 */
+}
+```
 
 
+[1373. Maximum Sum BST in Binary Tree](https://leetcode.com/problems/maximum-sum-bst-in-binary-tree/)
+- Given a binary tree root, return the maximum sum of all keys of any sub-tree which is also a Binary Search Tree (BST).
+- Assume a BST is defined as follows:
+- The left subtree of a node contains only nodes with keys less than the node's key.
+- The right subtree of a node contains only nodes with keys greater than the node's key.
+- Both the left and right subtrees must also be binary search trees.
+- 1、我肯定得知道左右子树是不是合法的 BST，如果这俩儿子有一个不是 BST，以我为根的这棵树肯定不会是 BST，对吧。
+- 2、如果左右子树都是合法的 BST，我得瞅瞅左右子树加上自己还是不是合法的 BST 了。因为按照 BST 的定义，当前节点的值应该大于左子树的最大值，小于右子树的最小值，否则就破坏了 BST 的性质。
+- 3、因为题目要计算最大的节点之和，如果左右子树加上我自己还是一棵合法的 BST，也就是说以我为根的整棵树是一棵 BST，那我需要知道我们这棵 BST 的所有节点值之和是多少，方便和别的 BST 争个高下，对吧。
 
-
-
-
-
-
-
-
-
-
+根据以上三点，站在当前节点的视角，需要知道以下具体信息：
+- 1、左右子树是否是 BST。
+- 2、左子树的最大值和右子树的最小值。
+- 3、左右子树的节点值之和。
 
 
 

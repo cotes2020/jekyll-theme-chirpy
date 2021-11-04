@@ -42,7 +42,7 @@ S3 access from a private subnet doesn’t work, because:
   - has no internet access
   - can’t reach the AWS S3 URL, and the request will time out
 
-**S3 VPC endpoint**
+## with **S3 VPC endpoint**
 - provides a way for an S3 request to be routed through to the Amazon S3 service, without having to connect a subnet to an internet gateway.
 - ![image-1](https://i.imgur.com/858oda3.png)
 - S3 VPC endpoint is what’s known as a gateway endpoint. It works by adding an entry to the route table of a subnet, forwarding S3 traffic to the S3 VPC endpoint.
