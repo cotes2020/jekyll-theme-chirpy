@@ -1,0 +1,30 @@
+<!--
+  Calculate the post's reading time, and display the word count in tooltip
+ -->
+
+{% assign words = include.content | strip_html | number_of_words: "auto" %}
+
+<!-- words per minute  -->
+
+{% assign wpm = 180 %}
+{% assign min_time = 1 %}
+
+{% assign read_time = words | divided_by: wpm %}
+
+{% unless read_time > 0 %}
+  {% assign read_time = min_time %}
+{% endunless %}
+
+{% capture read_prompt %}
+  {{- site.data.locales[lang].post.read_time.prompt -}}
+{% endcapture %}
+
+<!-- return element -->
+<span class="readtime" data-toggle="tooltip" data-placement="bottom"
+  title="{{ words }} {{ site.data.locales[lang].post.words }}">
+  {{- read_time -}}{{" "}}{{- site.data.locales[lang].post.read_time.unit -}}
+  {%- if include.prompt -%}
+    {% assign _prompt_words = read_prompt | number_of_words: 'auto' %}
+    {% unless _prompt_words > 1 %}{{" "}}{% endunless %}{{ read_prompt }}
+  {%- endif -%}
+</span>
