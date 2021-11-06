@@ -78,6 +78,20 @@ toc: true
     - [不同的二叉搜索树 - 穷举问题](#不同的二叉搜索树---穷举问题)
     - [不同的二叉搜索树II](#不同的二叉搜索树ii)
     - [二叉树后序遍历](#二叉树后序遍历)
+    - [二叉树的序列化与反序列化](#二叉树的序列化与反序列化)
+    - [二叉树打平到一个字符串](#二叉树打平到一个字符串)
+- [图论基础](#图论基础)
+  - [图的遍历](#图的遍历-1)
+    - [DFS](#dfs)
+    - [转换成图](#转换成图)
+    - [所有可能路径](#所有可能路径)
+    - [判断有向图是否存在环](#判断有向图是否存在环)
+    - [拓扑排序](#拓扑排序)
+  - [搜索名人](#搜索名人)
+    - [暴力解法](#暴力解法)
+    - [优化解法](#优化解法)
+    - [最终解法](#最终解法)
+  - [并查集算法计算连通分量 UNION-FIND算法](#并查集算法计算连通分量-union-find算法)
 
 ---
 
@@ -1762,11 +1776,44 @@ void traverse(TreeNode root) {
 // Memory Usage: 41.7 MB, less than 66.40% of Java online submissions for Count Complete Tree Nodes.
 
 // 定义：count(root) 返回以 root 为根的树有多少节点
+// 时间复杂度 O(N)：
 int count(TreeNode root) {
     // base case
     if (root == null) return 0;
     // 自己加上子树的节点数就是整棵树的节点数
     return 1 + count(root.left) + count(root.right);
+}
+
+// 一棵满二叉树，节点总数就和树的高度呈指数关系：
+public int countNodes(TreeNode root) {
+    int h = 0;
+    // 计算树的高度
+    while (root != null) {
+        root = root.left;
+        h++;
+    }
+    // 节点总数就是 2^h - 1
+    return (int)Math.pow(2, h) - 1;
+}
+
+// 完全二叉树比普通二叉树特殊，但又没有满二叉树那么特殊，
+// 计算它的节点总数，可以说是普通二叉树和完全二叉树的结合版，先看代码：
+public int countNodes(TreeNode root) {
+    TreeNode l = root, r = root;
+    // 记录左、右子树的高度
+    int hl = 0, hr = 0;
+    while (l != null) {
+        l = l.left;
+        hl++;
+    }
+    while (r != null) {
+        r = r.right;
+        hr++;
+    }
+    // 如果左右子树的高度相同，则是一棵满二叉树
+    if (hl == hr) return (int)Math.pow(2, hl) - 1;
+    // 如果左右高度不同，则按照普通二叉树的逻辑计算
+    return 1 + countNodes(root.left) + countNodes(root.right);
 }
 ```
 
@@ -2205,7 +2252,6 @@ void traverse(TreeNode root) {
 }
 ```
 
-
 [1373. Maximum Sum BST in Binary Tree](https://leetcode.com/problems/maximum-sum-bst-in-binary-tree/)
 - Given a binary tree root, return the maximum sum of all keys of any sub-tree which is also a Binary Search Tree (BST).
 - Assume a BST is defined as follows:
@@ -2220,6 +2266,630 @@ void traverse(TreeNode root) {
 - 1、左右子树是否是 BST。
 - 2、左子树的最大值和右子树的最小值。
 - 3、左右子树的节点值之和。
+
+
+```java
+// 全局变量，记录 BST 最大节点之和
+int maxSum = 0;
+
+/* 主函数 */
+public int maxSumBST(TreeNode root) {
+    traverse(root);
+    return maxSum;
+}
+
+// 函数返回 int[]{ isBST, min, max, sum}
+int[] traverse(TreeNode root) {
+    // base case
+    if (root == null) return new int[] {1, Integer.MAX_VALUE, Integer.MIN_VALUE, 0};
+    // 递归计算左右子树
+    int[] left = traverse(root.left);
+    int[] right = traverse(root.right);
+    
+    /******* 后序遍历位置 *******/
+    int[] res = new int[4];
+    // 这个 if 在判断以 root 为根的二叉树是不是 BST
+    if (left[0] == 1 && right[0] == 1 &&
+        root.val > left[2] && root.val < right[1]) {
+        // 以 root 为根的二叉树是 BST
+        res[0] = 1;
+        // 计算以 root 为根的这棵 BST 的最小值
+        res[1] = Math.min(left[1], root.val);
+        // 计算以 root 为根的这棵 BST 的最大值
+        res[2] = Math.max(right[2], root.val);
+        // 计算以 root 为根的这棵 BST 所有节点之和
+        res[3] = left[3] + right[3] + root.val;
+        // 更新全局变量
+        maxSum = Math.max(maxSum, res[3]);
+    } else {
+        // 以 root 为根的二叉树不是 BST
+        res[0] = 0;
+        // 其他的值都没必要计算了，因为用不到
+    }
+    return res;
+}
+```
+
+
+---
+
+### 二叉树的序列化与反序列化
+
+二叉树的遍历方式有哪些？递归遍历方式有
+- 前序遍历，中序遍历，后序遍历；
+- 迭代方式一般是层级遍历。
+
+
+
+[297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
+- Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+- Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
+- Clarification: The input/output format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
+
+
+```java
+public class Codec {
+    // 把一棵二叉树序列化成字符串
+    public String serialize(TreeNode root) {}
+    // 把字符串反序列化成二叉树
+    public TreeNode deserialize(String data) {}
+}
+```
+
+```java
+LinkedList<Integer> res;
+void traverse(TreeNode root) {
+    if (root == null) {
+        // 暂且用数字 -1 代表空指针 null
+        res.addLast(-1);
+        return;
+    }
+    /****** 前序遍历位置 ******/
+    res.addLast(root.val);
+    /***********************/
+    traverse(root.left);
+    traverse(root.right);
+}
+```
+
+
+---
+
+### 二叉树打平到一个字符串
+
+
+```java
+String SEP = ',';
+String NULL = '#'; 
+
+/* 主函数，将二叉树序列化为字符串 */
+String serialize(TreeNode root) {
+    StringBuilder sb = new StringBuilder();
+    serialize(root, sb);
+    return sb.toString();
+}
+void serialize(TreeNode root, StringBuilder sb){
+    if(root==null){
+        sb.append(Null).append(SEP);
+        return;
+    }
+    sb.append(root.val).append(SEP);
+    traverse(root.left, sb);
+    traverse(root.right, sb);
+}
+```
+
+---
+
+
+# 图论基础
+
+
+
+邻接表 
+- 把每个节点 x 的邻居都存到一个列表里，
+- 然后把 x 和这个列表关联起来，
+- 这样就可以通过一个节点 x 找到它的所有相邻节点。
+
+邻接矩阵
+- 二维布尔数组，我们权且成为 matrix
+- 如果节点 x 和 y 是相连的，那么就把 matrix[x][y] 设为 true（上图中绿色的方格代表 true）。
+- 如果想找节点 x 的邻居，去扫一圈 matrix[x][..] 就行了。
+
+有向加权图
+- 如果是邻接表，我们不仅仅存储某个节点 x 的所有邻居节点，还存储 x 到每个邻居的权重
+- 如果是邻接矩阵，matrix[x][y] 不再是布尔值，而是一个 int 值，0 表示没有连接，其他值表示权重 
+
+无向图
+- 所谓的「无向」，是不是等同于「双向」？
+- 如果连接无向图中的节点 x 和 y，把 matrix[x][y] 和 matrix[y][x] 都变成 true 不就行了；邻接表也是类似的操作。
+ 
+
+图和多叉树最大的区别是，图是可能包含环的，
+- 你从图的某一个节点开始遍历，有可能走了一圈又回到这个节点。
+- 所以，如果图包含环，遍历框架就要一个 visited 数组进行辅助：
+
+
+---
+
+## 图的遍历
+
+
+```java
+boolean[] visited;
+
+/* 图遍历框架 */
+void traverse(Graph graph, int s) {
+    if (visited[s]) return;
+    // 经过节点 s
+    visited[s] = true;
+    for (int neighbor : graph.neighbors(s))
+        traverse(graph, neighbor);
+    // 离开节点 s
+    visited[s] = false;   
+}
+```
+
+---
+
+
+### DFS
+
+```java
+// 防止重复遍历同一个节点
+boolean[] visited;
+// 从节点 s 开始 BFS 遍历，将遍历过的节点标记为 true
+void traverse(List<Integer>[] graph, int s) {
+    if (visited[s]) {
+        return;
+    }
+    /* 前序遍历代码位置 */
+    // 将当前节点标记为已遍历
+    visited[s] = true;
+    for (int t : graph[s]) {
+        traverse(graph, t);
+    }
+    /* 后序遍历代码位置 */
+}
+```
+
+---
+
+### 转换成图
+
+图的两种存储形式
+- 邻接矩阵
+- 和邻接表。
+
+
+```java
+// 邻接表
+// [ [1,0], [0,1] ]
+// 节点编号分别是 0, 1, ..., numCourses-1
+List<Integer>[] buildGraph(int numCourses, int[][] prerequisites) {
+    // 图中共有 numCourses 个节点
+    // create graph
+    List<Integer>[] graph = new LinkedList[numCourses];
+    for (int i = 0; i < numCourses; i++) {
+        graph[i] = new LinkedList<>();
+    }
+    for (int[] edge : prerequisites) {
+        int from = edge[1];
+        int to = edge[0];
+        // 修完课程 from 才能修课程 to
+        // 在图中添加一条从 from 指向 to 的有向边
+        graph[from].add(to);
+    }
+    return graph;
+}
+```
+
+
+
+---
+
+### 所有可能路径
+
+797.所有可能的路径（中等）
+
+
+```java
+// 记录所有路径
+List<List<Integer>> res = new LinkedList<>();
+    
+public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+    LinkedList<Integer> path = new LinkedList<>();
+    traverse(graph, 0, path);
+    return res;
+}
+
+/* 图的遍历框架 */
+void traverse(int[][] graph, int s, LinkedList<Integer> path) {
+    // 添加节点 s 到路径
+    path.addLast(s);
+    int n = graph.length;
+    if (s == n - 1) {
+        // 到达终点
+        res.add(new LinkedList<>(path));
+        path.removeLast();
+        return;
+    }
+    // 递归每个相邻节点
+    for (int v : graph[s]) {
+        traverse(graph, v, path);
+    }
+    // 从路径移出节点 s
+    path.removeLast();
+}
+```
+
+
+
+```java
+// Runtime: 7 ms, faster than 26.00% of Java online submissions for All Paths From Source to Target.
+// Memory Usage: 41.5 MB, less than 47.72% of Java online submissions for All Paths From Source to Target.
+class Solution {
+    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        // if null, return null
+        if(graph.length == 0 || graph[0].length==0) return new ArrayList<>();
+        // start
+        List<List<Integer>> res = new ArrayList<>();
+        bfscheckPath(graph, 0, res);
+        return res;
+    }
+    public void bfscheckPath(int[][] graph, int start, List<List<Integer>> res) {
+        // start the que
+        Queue<List<Integer>> que = new ArrayDeque<>();
+        que.add(Arrays.asList(start));
+        while(!que.isEmpty()){
+            // start the path
+            List<Integer> path = que.poll();
+            // path last node
+            int end = path.get(path.size()-1);
+            if(end == graph.length-1) {
+                res.add(path);
+                continue;
+            }
+            for(int node : graph[end]) {
+                List<Integer> list = new ArrayList<>(path);
+                list.add(node);
+                que.add(list);
+            }
+        }
+    }
+}
+```
+
+
+---
+
+### 判断有向图是否存在环
+
+有向图的环检测、拓扑排序算法。
+
+看到依赖问题，首先想到的就是把问题转化成「有向图」这种数据结构
+- 只要图中存在环，那就说明存在循环依赖。
+
+[207 题「课程表」207. Course Schedule](https://leetcode.com/problems/course-schedule/)
+- 先来思考如何遍历这幅图，只要会遍历，就可以判断图中是否存在环了。
+- There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where `prerequisites[i] = [ai, bi]` indicates that you must take course bi first if you want to take course ai.
+- For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+Return true if you can finish all courses. Otherwise, return false.
+
+
+
+DFS 算法遍历图的框架
+- 无非就是从多叉树遍历框架扩展出来的，加了个 visited 数组罢了：
+
+```java
+// Runtime: 2 ms, faster than 99.48% of Java online submissions for Course Schedule.
+// Memory Usage: 40.3 MB, less than 46.35% of Java online submissions for Course Schedule.
+
+// 防止重复遍历同一个节点
+boolean hasCycle = false;
+boolean[] onPath, visited;
+List<Integer>[] buildGraph(int numCourses, int[][] prerequisites) {
+    // 图中共有 numCourses 个节点
+    List<Integer>[] graph = new LinkedList[numCourses];
+    // create graph edge first
+    for (int i = 0; i < numCourses; i++) graph[i] = new LinkedList<>();
+    // check edge
+    for (int[] edge : prerequisites) {
+        int from = edge[1];
+        int to = edge[0];
+        // 修完课程 from 才能修课程 to
+        // 在图中添加一条从 from 指向 to 的有向边
+        graph[from].add(to);
+    }
+    return graph;
+}
+boolean canFinish(int numCourses, int[][] prerequisites) {
+    List<Integer>[] graph = buildGraph(numCourses, prerequisites);
+    visited = new boolean[numCourses];
+    onPath = new boolean[numCourses];
+    for (int i = 0; i < numCourses; i++) traverse(graph, i);
+    return !hasCycle;
+}
+void traverse(List<Integer>[] graph, int s) {
+    // 发现环！！
+    if (onPath[s]) hasCycle = true;
+    if (visited[s]) return;
+    /* 前序遍历代码位置 */
+    // 将当前节点标记为已遍历
+    visited[s] = true;
+    onPath[s] = true;
+    for (int t : graph[s]) traverse(graph, t);
+    /* 后序遍历代码位置 */
+    onPath[s] = false;
+}
+```
+
+---
+
+### 拓扑排序 
+
+拓扑排序的结果就是反转之后的后序遍历结果
+
+
+- 如果把课程抽象成节点，课程之间的依赖关系抽象成有向边，
+- 那么这幅图的拓扑排序结果就是上课顺序。
+- 先判断一下题目输入的课程依赖是否成环，成环的话是无法进行拓扑排序的，复用上一道题的主函数
+
+
+[210. Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
+- There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where `prerequisites[i] = [ai, bi]` indicates that you must take course bi first if you want to take course ai.
+- For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+- Return the ordering of courses you should take to finish all courses. 
+- If there are many valid answers, return any of them. 
+- If it is impossible to finish all courses, return an empty array.
+
+
+```java 
+// Runtime: 3 ms, faster than 96.43% of Java online submissions for Course Schedule II.
+// Memory Usage: 40.7 MB, less than 49.39% of Java online submissions for Course Schedule II.
+
+// 记录后序遍历结果
+List<Integer> postorder = new ArrayList<>();
+// 记录是否存在环
+boolean hasCycle = false;
+// 防止重复遍历同一个节点
+boolean[] onPath, visited;
+
+List<Integer>[] buildGraph(int numCourses, int[][] prerequisites) {
+    // 图中共有 numCourses 个节点
+    List<Integer>[] graph = new LinkedList[numCourses];
+    // create graph edge first
+    for (int i = 0; i < numCourses; i++) graph[i] = new LinkedList<>();
+    // check edge
+    for (int[] edge : prerequisites) {
+        int from = edge[1];
+        int to = edge[0];
+        // 修完课程 from 才能修课程 to
+        // 在图中添加一条从 from 指向 to 的有向边
+        graph[from].add(to);
+    }
+    return graph;
+}
+// 主函数
+public int[] findOrder(int numCourses, int[][] prerequisites) {
+    List<Integer>[] graph = buildGraph(numCourses, prerequisites);
+    visited = new boolean[numCourses];
+    onPath = new boolean[numCourses];
+    for (int i = 0; i < numCourses; i++) traverse(graph, i);
+    // 有环图无法进行拓扑排序
+    if (hasCycle) return new int[]{};
+
+    // 逆后序遍历结果即为拓扑排序结果
+    int[] res = new int[numCourses];
+    Collections.reverse(postorder);
+    for (int i = 0; i < numCourses; i++) {
+        res[i] = postorder.get(i);
+    }
+    return res;
+}
+
+void traverse(List<Integer>[] graph, int s) {
+    // 发现环！！
+    if (onPath[s]) hasCycle = true;
+    if (visited[s]|| hasCycle) return;
+    /* 前序遍历代码位置 */
+    // 将当前节点标记为已遍历
+    visited[s] = true;
+    onPath[s] = true;
+    // 前序遍历位置
+    for (int t : graph[s]) traverse(graph, t);
+    // 后序遍历位置
+    postorder.add(s);
+
+    onPath[s] = false;
+}
+```
+
+---
+
+
+## 搜索名人 
+
+277.搜索名人（中等）
+- 给你 n 个人的社交关系（你知道任意两个人之间是否认识），然后请你找出这些人中的「名人」。
+- 所谓「名人」有两个条件：
+  - 、所有其他人都认识「名人」。
+  - 、「名人」不认识任何其他人。
+
+
+把名流问题描述成算法的形式就是这样的：
+- 给你输入一个大小为 n x n 的二维数组（邻接矩阵） graph 表示一幅有 n 个节点的图，每个人都是图中的一个节点，编号为 0 到 n - 1。
+- 如果 graph[i][j] == 1 代表第 i 个人认识第 j 个人，如果 graph[i][j] == 0 代表第 i 个人不认识第 j 个人。
+- 有了这幅图表示人与人之间的关系，请你计算，这 n 个人中，是否存在「名人」？
+- 如果存在，算法返回这个名人的编号，如果不存在，算法返回 -1。
+
+---
+
+### 暴力解法
+
+```java
+int findCelebrity(int n) {
+    for (int cand = 0; cand < n; cand++) {
+        int other;
+        for (other = 0; other < n; other++) {
+            if (cand == other) continue;
+            // 保证其他人都认识 cand，且 cand 不认识任何其他人
+            // 否则 cand 就不可能是名人
+            if (knows(cand, other) || !knows(other, cand)) break;
+        }
+        if (other == n) {
+            // 找到名人
+            return cand;
+        }
+    }
+    // 没有一个人符合名人特性
+    return -1;
+}
+```
+
+---
+
+### 优化解法
+
+我再重复一遍所谓「名人」的定义：
+- 1、所有其他人都认识名人
+- 2、名人不认识任何其他人。
+- 这个定义就很有意思，它保证了人群中最多有一个名人。
+- 这很好理解，如果有两个人同时是名人，那么这两条定义就自相矛盾了。
+- 只要观察任意两个候选人的关系，我一定能确定其中的一个人不是名人，把他排除。
+
+
+逐一分析每种情况，看看怎么排除掉一个人。
+- 对于情况一，cand 认识 other，所以 cand 肯定不是名人，排除。因为名人不可能认识别人。
+- 对于情况二，other 认识 cand，所以 other 肯定不是名人，排除。
+- 对于情况三，他俩互相认识，肯定都不是名人，可以随便排除一个。
+- 对于情况四，他俩互不认识，肯定都不是名人，可以随便排除一个。因为名人应该被所有其他人认识。
+- 我们可以不断从候选人中选两个出来，然后排除掉一个，直到最后只剩下一个候选人，这时候再使用一个 for 循环判断这个候选人是否是货真价实的「名人」。
+- 避免了嵌套 for 循环，时间复杂度降为 O(N) 了，
+- 不过引入了一个队列来存储候选人集合，使用了 O(N) 的空间复杂度。
+
+```java
+int findCelebrity(int n) {
+    if (n == 1) return 0;
+    // 将所有候选人装进队列
+    LinkedList<Integer> q = new LinkedList<>();
+    for (int i = 0; i < n; i++) q.addLast(i);
+    // 一直排除，直到只剩下一个候选人停止循环
+    while (q.size() >= 2) {
+        // 每次取出两个候选人，排除一个
+        int cand = q.removeFirst();
+        int other = q.removeFirst();
+        // cand 不可能是名人，排除，让 other 归队
+        if (knows(cand, other) || !knows(other, cand)) q.addFirst(other);
+        // other 不可能是名人，排除，让 cand 归队
+        else q.addFirst(cand);
+    }
+
+    // 现在排除得只剩一个候选人，判断他是否真的是名人
+    int cand = q.removeFirst();
+    for (int other = 0; other < n; other++) {
+        if (other == cand) continue;
+        // 保证其他人都认识 cand，且 cand 不认识任何其他人
+        if (!knows(other, cand) || knows(cand, other)) return -1;
+    }
+    // cand 是名人
+    return cand;
+}
+```
+
+
+---
+
+### 最终解法
+
+时间复杂度为 O(N)，空间复杂度为 O(1)
+
+```java
+int findCelebrity(int n) {
+    // 先假设 cand 是名人
+    int cand = 0;
+    for (int other = 1; other < n; other++) {
+        // if other x-> cand or cand->other
+        // cand 不可能是名人，排除
+        // 假设 other 是名人
+        if (!knows(other, cand) || knows(cand, other)) cand = other;
+        // other 不可能是名人，排除
+        // 什么都不用做，继续假设 cand 是名人 下一个other
+        else {}
+    }
+    // 现在的 cand 是排除的最后结果，但不能保证一定是名人
+    for (int other = 0; other < n; other++) {
+        if (cand == other) continue;
+        // 需要保证其他人都认识 cand，且 cand 不认识任何其他人
+        if (!knows(other, cand) || knows(cand, other)) return -1; 
+    }
+    return cand;
+}
+```
+
+
+---
+
+## 并查集算法计算连通分量 UNION-FIND算法
+
+
+
+动态连通性
+- 抽象成给一幅图连线。
+- 比如总共有 10 个节点，他们互不相连，分别用 0~9 标记：
+
+
+Union-Find 算法主要需要实现这两个 API：
+
+```java
+class UF {
+    /* 将 p 和 q 连接 */
+    public void union(int p, int q);
+    /* 判断 p 和 q 是否连通 */
+    public boolean connected(int p, int q);
+    /* 返回图中有多少个连通分量 */
+    public int count();
+}
+```
+
+「连通」是一种等价关系，也就是说具有如下三个性质：
+- 1、自反性：节点 p 和 p 是连通的。
+- 2、对称性：如果节点 p 和 q 连通，那么 q 和 p 也连通。
+- 3、传递性：如果节点 p 和 q 连通，q 和 r 连通，那么 p 和 r 也连通。
+- 比如说之前那幅图，0～9 任意两个不同的点都不连通，调用 connected 都会返回 false，连通分量为 10 个。
+- 如果现在调用 union(0, 1)，那么 0 和 1 被连通，连通分量降为 9 个。
+- 再调用 union(1, 2)，这时 0,1,2 都被连通，调用 connected(0, 2) 也会返回 true，连通分量变为 8 个。
+
+
+判断这种「等价关系」非常实用
+- 比如说编译器判断同一个变量的不同引用，比如社交网络中的朋友圈计算等等。
+- Union-Find 算法的关键就在于 union 和 connected 函数的效率。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
