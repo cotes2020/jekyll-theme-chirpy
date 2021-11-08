@@ -1,9 +1,7 @@
-package labuladongjava;
+package labuladongjava.PriorityQueue;
 
-import java.util.Comparator;
-
-import labuladongjava.PriorityQueue.Entry;
-import labuladongjava.PriorityQueue.PriorityQueue;
+import java.util.Comparator; 
+import labuladongjava.compare.DefaultComparator;
 
 // This provides a nested PQEntry class that composes a key and a value into a single object, and support for managing a comparator.
 public abstract class AbstractPriorityQueue<K,V> implements PriorityQueue<K,V> {
@@ -18,7 +16,7 @@ public abstract class AbstractPriorityQueue<K,V> implements PriorityQueue<K,V> {
         public K getKey(){return k;}
         public V getValue(){return v;}
         protected void setKey(K key){k=key;} 
-        protected void setValue(V value){V=value;}
+        protected void setValue(V value){v=value;}
     }
     
     // instance variable for an AbstractPriorityQueue

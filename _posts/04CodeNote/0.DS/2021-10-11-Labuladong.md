@@ -91,7 +91,15 @@ toc: true
     - [暴力解法](#暴力解法)
     - [优化解法](#优化解法)
     - [最终解法](#最终解法)
-  - [并查集算法计算连通分量 UNION-FIND算法](#并查集算法计算连通分量-union-find算法)
+  - [UNION-FIND 并查集算法 计算 连通分量](#union-find-并查集算法-计算-连通分量)
+    - [UNION-FIND算法](#union-find算法)
+      - [基本思路](#基本思路)
+      - [平衡性优化](#平衡性优化)
+      - [路径压缩](#路径压缩)
+  - [UNION-FIND算法应用](#union-find算法应用)
+    - [DFS 的替代方案](#dfs-的替代方案)
+    - [判定合法等式](#判定合法等式)
+  - [DIJKSTRA 算法](#dijkstra-算法)
 
 ---
 
@@ -2203,7 +2211,7 @@ int count(int lo, int hi) {
 /* 主函数 */
 List<TreeNode> generateTrees(int n) {
     if (n == 0) return new LinkedList<>();
-    // 构造闭区间 [1, n] 组成的 BST 
+    // 构造闭区间 [1, n] 组成的 BST
     return build(1, n);
 }
 
@@ -2285,7 +2293,7 @@ int[] traverse(TreeNode root) {
     // 递归计算左右子树
     int[] left = traverse(root.left);
     int[] right = traverse(root.right);
-    
+
     /******* 后序遍历位置 *******/
     int[] res = new int[4];
     // 这个 if 在判断以 root 为根的二叉树是不是 BST
@@ -2360,7 +2368,7 @@ void traverse(TreeNode root) {
 
 ```java
 String SEP = ',';
-String NULL = '#'; 
+String NULL = '#';
 
 /* 主函数，将二叉树序列化为字符串 */
 String serialize(TreeNode root) {
@@ -2386,7 +2394,7 @@ void serialize(TreeNode root, StringBuilder sb){
 
 
 
-邻接表 
+邻接表
 - 把每个节点 x 的邻居都存到一个列表里，
 - 然后把 x 和这个列表关联起来，
 - 这样就可以通过一个节点 x 找到它的所有相邻节点。
@@ -2398,12 +2406,12 @@ void serialize(TreeNode root, StringBuilder sb){
 
 有向加权图
 - 如果是邻接表，我们不仅仅存储某个节点 x 的所有邻居节点，还存储 x 到每个邻居的权重
-- 如果是邻接矩阵，matrix[x][y] 不再是布尔值，而是一个 int 值，0 表示没有连接，其他值表示权重 
+- 如果是邻接矩阵，matrix[x][y] 不再是布尔值，而是一个 int 值，0 表示没有连接，其他值表示权重
 
 无向图
 - 所谓的「无向」，是不是等同于「双向」？
 - 如果连接无向图中的节点 x 和 y，把 matrix[x][y] 和 matrix[y][x] 都变成 true 不就行了；邻接表也是类似的操作。
- 
+
 
 图和多叉树最大的区别是，图是可能包含环的，
 - 你从图的某一个节点开始遍历，有可能走了一圈又回到这个节点。
@@ -2496,7 +2504,7 @@ List<Integer>[] buildGraph(int numCourses, int[][] prerequisites) {
 ```java
 // 记录所有路径
 List<List<Integer>> res = new LinkedList<>();
-    
+
 public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
     LinkedList<Integer> path = new LinkedList<>();
     traverse(graph, 0, path);
@@ -2571,7 +2579,7 @@ class Solution {
 - 只要图中存在环，那就说明存在循环依赖。
 
 [207 题「课程表」207. Course Schedule](https://leetcode.com/problems/course-schedule/)
-- 先来思考如何遍历这幅图，只要会遍历，就可以判断图中是否存在环了。
+- 只要会遍历，就可以判断图中是否存在环了。
 - There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where `prerequisites[i] = [ai, bi]` indicates that you must take course bi first if you want to take course ai.
 - For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
 Return true if you can finish all courses. Otherwise, return false.
@@ -2626,10 +2634,9 @@ void traverse(List<Integer>[] graph, int s) {
 
 ---
 
-### 拓扑排序 
+### 拓扑排序
 
 拓扑排序的结果就是反转之后的后序遍历结果
-
 
 - 如果把课程抽象成节点，课程之间的依赖关系抽象成有向边，
 - 那么这幅图的拓扑排序结果就是上课顺序。
@@ -2639,12 +2646,12 @@ void traverse(List<Integer>[] graph, int s) {
 [210. Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
 - There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where `prerequisites[i] = [ai, bi]` indicates that you must take course bi first if you want to take course ai.
 - For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
-- Return the ordering of courses you should take to finish all courses. 
-- If there are many valid answers, return any of them. 
+- Return the ordering of courses you should take to finish all courses.
+- If there are many valid answers, return any of them.
 - If it is impossible to finish all courses, return an empty array.
 
 
-```java 
+```java
 // Runtime: 3 ms, faster than 96.43% of Java online submissions for Course Schedule II.
 // Memory Usage: 40.7 MB, less than 49.39% of Java online submissions for Course Schedule II.
 
@@ -2708,7 +2715,7 @@ void traverse(List<Integer>[] graph, int s) {
 ---
 
 
-## 搜索名人 
+## 搜索名人
 
 277.搜索名人（中等）
 - 给你 n 个人的社交关系（你知道任意两个人之间是否认识），然后请你找出这些人中的「名人」。
@@ -2821,7 +2828,7 @@ int findCelebrity(int n) {
     for (int other = 0; other < n; other++) {
         if (cand == other) continue;
         // 需要保证其他人都认识 cand，且 cand 不认识任何其他人
-        if (!knows(other, cand) || knows(cand, other)) return -1; 
+        if (!knows(other, cand) || knows(cand, other)) return -1;
     }
     return cand;
 }
@@ -2830,9 +2837,11 @@ int findCelebrity(int n) {
 
 ---
 
-## 并查集算法计算连通分量 UNION-FIND算法
+## UNION-FIND 并查集算法 计算 连通分量
 
+---
 
+### UNION-FIND算法
 
 动态连通性
 - 抽象成给一幅图连线。
@@ -2865,20 +2874,454 @@ class UF {
 - 比如说编译器判断同一个变量的不同引用，比如社交网络中的朋友圈计算等等。
 - Union-Find 算法的关键就在于 union 和 connected 函数的效率。
 
+算法的关键点有 3 个：
+- 1、用 parent 数组记录每个节点的父节点，相当于指向父节点的指针，所以 parent 数组内实际存储着一个森林（若干棵多叉树）。
+- 2、用 size 数组记录着每棵树的重量，目的是让 union 后树依然拥有平衡性，而不会退化成链表，影响操作效率。
+- 3、在 find 函数中进行路径压缩，保证任意树的高度保持在常数，使得 union 和 connected API 时间复杂度为 O(1)。
 
 
 
+---
+
+#### 基本思路
+
+- 设定树的每个节点有一个指针指向其父节点，如果是根节点的话，这个指针指向自己
+- 如果某两个节点被连通，则让其中的（任意）一个节点的根节点接到另一个节点的根节点上：
+
+
+```java
+class UF {
+    private int count;      // 记录连通分量
+    private int[] parent;   // 节点 x 的节点是 parent[x]
+
+    /* 构造函数，n 为图的节点总数 */
+    public UF(int n) {
+        // 一开始互不连通
+        this.count = n;
+        // 父节点指针初始指向自己
+        parent = new int[n];
+        for (int i = 0; i < n; i++) parent[i] = i;
+    }
+
+    /* 返回某个节点 x 的根节点 */
+    private int find(int x) {
+        // 根节点的 parent[x] == x
+        while (parent[x] != x) x = parent[x];
+        return x;
+    }
+
+    /* 返回当前的连通分量个数 */
+    public int count() {
+        return count;
+    }
+
+    /* 其他函数 */
+    public void union(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        if (rootP == rootQ) return;
+        // 将两棵树合并为一棵
+        // 简单粗暴的把 p 所在的树接到 q 所在的树的根节点下面
+        parent[rootP] = rootQ;
+        // parent[rootQ] = rootP 也一样
+        count--; // 两个分量合二为一
+    }
+
+    // 如果节点 p 和 q 连通的话，它们一定拥有相同的根节点
+    public boolean connected(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        return rootP == rootQ;
+    }
+}
+
+```
+
+
+主要 API connected 和 union 中的复杂度都是 find 函数造成的，它们的复杂度和 find 一样。
+- find 主要功能就是从某个节点向上遍历到树根，其时间复杂度就是树的高度。
+- 我们可能习惯性地认为树的高度就是 logN，但这并不一定。树的高度最坏情况下可能变成 N。
+
+所以说上面这种解法，find , union , connected 的时间复杂度都是 O(N)。
+
+
+---
+
+#### 平衡性优化
+
+for 小一些的树接到大一些的树下面，这样就能避免头重脚轻，更平衡一些
+- 树的高度大致在 logN 这个数量级，极大提升执行效率。
+- 此时，find , union , connected 的时间复杂度都下降为 O(logN)，即便数据规模上亿，所需时间也非常少。
 
 
 
+```java
+class UF {
+    private int count;      // 记录连通分量
+    private int[] parent;   // 节点 x 的节点是 parent[x]
+    private int[] size;     // 新增一个数组记录树的“重量”
+
+    /* 构造函数，n 为图的节点总数 */
+    public UF(int n) {
+        // 一开始互不连通
+        this.count = n;
+        // 父节点指针初始指向自己
+        parent = new int[n];
+        for (int i = 0; i < n; i++) {
+            size[i] = 1;      // 记录每棵树包含的节点数
+            parent[i] = i;
+        }
+    }
+
+    /* 返回某个节点 x 的根节点 */
+    private int find(int x) {
+        // 根节点的 parent[x] == x
+        while (parent[x] != x) {
+            x = parent[x];
+        }
+        return x;
+    }
+
+    /* 返回当前的连通分量个数 */
+    public int count() {
+        return count;
+    }
+
+    /* 其他函数 */
+    public void union(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        if (rootP == rootQ) return;
+        // 将两棵树合并为一棵
+        // 简单粗暴的把 p 所在的树接到 q 所在的树的根节点下面
+        if(size[rootP]>size[rootQ]) {
+            parent[rootQ] = rootP;
+            size[rootP] += size[rootQ];
+        } else {
+            parent[rootP] = rootQ;
+            size[rootQ] += size[rootP];
+        }
+        count--; // 两个分量合二为一
+    }
+
+    // 如果节点 p 和 q 连通的话，它们一定拥有相同的根节点
+    public boolean connected(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        return rootP == rootQ;
+    }
+}
+```
+
+---
+
+#### 路径压缩
+
+进一步压缩每棵树的高度，使树高始终保持为常数
+- 这样 find 就能以 O(1) 的时间找到某一节点的根节点，
+- 相应的，connected 和 union 复杂度都下降为 O(1)。
+- 调用 find 函数每次向树根遍历的同时，顺手将树高缩短了，最终所有树高都不会超过 3（union 的时候树高可能达到 3）。
 
 
+Union-Find 算法的复杂度可以这样分析：
+- 构造函数初始化数据结构需要 O(N) 的时间和空间复杂度；
+- 连通两个节点 union、判断两个节点的连通性 connected、计算连通分量 count 所需的时间复杂度均为 O(1)。
 
 
+![1](https://i.imgur.com/gUVWOv6.jpg)
+
+如果带有重量平衡优化，一定会得到情况一，而不带重量优化，可能出现情况二。
+- 高度为 3 时才会触发路径压缩那个 while 循环，
+- 所以情况一根本不会触发路径压缩，而情况二会多执行很多次路径压缩，将第三层节点压缩到第二层。
 
 
+```java
+class UF {
+    private int count;      // 记录连通分量
+    private int[] parent;   // 节点 x 的节点是 parent[x]
+    private int[] size;     // 新增一个数组记录树的“重量”
+
+    /* 构造函数，n 为图的节点总数 */
+    public UF(int n) {
+        // 一开始互不连通
+        this.count = n;
+        // 父节点指针初始指向自己
+        parent = new int[n];
+        size = new int[n];
+        for (int i = 0; i < n; i++) {
+            size[i] = 1;      // 记录每棵树包含的节点数
+            parent[i] = i;
+        }
+    }
+
+    /* 返回某个节点 x 的根节点 */
+    private int find(int x) {
+        // 根节点的 parent[x] == x
+        while (parent[x] != x) {
+            parent[x] = parent[parent[x]];
+            x = parent[x];
+        }
+        return x;
+    }
+
+    /* 返回当前的连通分量个数 */
+    public int count() {
+        return count;
+    }
+
+    /* 其他函数 */
+    public void union(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        if (rootP == rootQ) return;
+        // 将两棵树合并为一棵
+        // 简单粗暴的把 p 所在的树接到 q 所在的树的根节点下面
+        if(size[rootP]>size[rootQ]) {
+            parent[rootQ] = rootP;
+            size[rootP] += size[rootQ];
+        } else {
+            parent[rootP] = rootQ;
+            size[rootQ] += size[rootP];
+        }
+        count--; // 两个分量合二为一
+    }
+
+    // 如果节点 p 和 q 连通的话，它们一定拥有相同的根节点
+    public boolean connected(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        return rootP == rootQ;
+    }
+}
+```
+
+---
+
+## UNION-FIND算法应用
+
+使用 Union-Find 算法，主要是如何把原问题转化成`图的动态连通性问题`。
+- 对于算式合法性问题，可以直接利用等价关系，
+- 对于棋盘包围问题，则是利用一个虚拟节点，营造出动态连通特性。
+- 将二维数组映射到一维数组，利用方向数组 d 来简化代码量  
+
+---
 
 
+### DFS 的替代方案
+
+
+[130. Surrounded Regions](https://leetcode.com/problems/surrounded-regions/)
+- Given an m x n matrix board containing 'X' and 'O', capture all regions that are 4-directionally surrounded by 'X'.
+- A region is captured by flipping all 'O's into 'X's in that surrounded region.
+- 被围绕的区域：给你一个 M×N 的二维矩阵，其中包含字符 X 和 O，
+- 让你找到矩阵中四面被 X 围住的 O，并且把它们替换成 X。
+
+传统方法
+- 先用 for 循环遍历棋盘的四边，
+- 用 DFS 算法把那些与边界相连的 O 换成一个特殊字符，比如 #；
+- 然后再遍历整个棋盘，把剩下的 O 换成 X，
+- 把 # 恢复成 O。
+- 只有和边界 O 相连的 O 才具有和 dummy 的连通性，他们不会被替换。
+- 这样就能完成题目的要求，时间复杂度 O(MN)。
+
+
+将二维坐标映射到一维的常用技巧。
+- 二维坐标 (x,y) 可以转换成 x * n + y 这个数
+- （m 是棋盘的行数，n 是棋盘的列数）。
+
+
+```java
+// Runtime: 6 ms, faster than 12.80% of Java online submissions for Surrounded Regions.
+// Memory Usage: 41 MB, less than 73.76% of Java online submissions for Surrounded Regions.
+void solve(char[][] board) {
+    if (board.length == 0) return;
+
+    int m = board.length;
+    int n = board[0].length;
+
+    // 给 dummy 留一个额外位置
+    UF uf = new UF(m * n + 1);
+    int dummy = m * n;
+
+    // 将首列和末列的 O 与 dummy 连通
+    for (int i = 0; i < m; i++) {
+        if (board[i][0] == 'O') uf.union(i * n, dummy);
+        if (board[i][n - 1] == 'O') uf.union(i * n + n - 1, dummy);
+    }
+    // 将首行和末行的 O 与 dummy 连通
+    for (int j = 0; j < n; j++) {
+        if (board[0][j] == 'O') uf.union(j, dummy);
+        if (board[m - 1][j] == 'O') uf.union(n * (m - 1) + j, dummy);
+    }
+    // 方向数组 d 是上下左右搜索的常用手法
+    int[][] d = new int[][]{{1,0}, {0,1}, {0,-1}, {-1,0}};
+    for (int i = 1; i < m - 1; i++)
+        for (int j = 1; j < n - 1; j++)
+            if (board[i][j] == 'O')
+                // 将此 O 与上下左右的 O 连通
+                for (int k = 0; k < 4; k++) {
+                    int x = i + d[k][0];
+                    int y = j + d[k][1];
+                    if (board[x][y] == 'O') uf.union(x * n + y, i * n + j);
+                }
+    // 所有不和 dummy 连通的 O，都要被替换
+    for (int i = 1; i < m - 1; i++)
+        for (int j = 1; j < n - 1; j++)
+            if (!uf.connected(dummy, i * n + j)) board[i][j] = 'X';
+}
+```
+
+```java
+class UF {
+    private int count;      // 记录连通分量
+    private int[] parent;   // 节点 x 的节点是 parent[x]
+    private int[] size;     // 新增一个数组记录树的“重量”
+
+    /* 构造函数，n 为图的节点总数 */
+    public UF(int n) {
+        // 一开始互不连通
+        this.count = n;
+        // 父节点指针初始指向自己
+        parent = new int[n];
+        size = new int[n];
+        for (int i = 0; i < n; i++) {
+            size[i] = 1;
+            parent[i] = i;
+        }
+    }
+
+    /* 返回某个节点 x 的根节点 */
+    private int find(int x) {
+        // 根节点的 parent[x] == x
+        while (parent[x] != x) {
+            parent[x] = parent[parent[x]];
+            x = parent[x];
+        }
+        return x;
+    }
+
+    /* 返回当前的连通分量个数 */
+    public int count() {
+        return count;
+    }
+
+    /* 其他函数 */
+    public void union(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        if (rootP == rootQ) return;
+        // 将两棵树合并为一棵
+        // 简单粗暴的把 p 所在的树接到 q 所在的树的根节点下面
+        if(size[rootP]>size[rootQ]) {
+            parent[rootQ] = rootP;
+            size[rootP] += size[rootQ];
+        } else {
+            parent[rootP] = rootQ;
+            size[rootQ] += size[rootP];
+        }
+        count--; // 两个分量合二为一
+    }
+
+    // 如果节点 p 和 q 连通的话，它们一定拥有相同的根节点
+    public boolean connected(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        return rootP == rootQ;
+    }
+}
+```
+
+
+---
+
+
+### 判定合法等式
+
+[990. Satisfiability of Equality Equations](https://leetcode.com/problems/satisfiability-of-equality-equations/)
+- You are given an array of strings equations that represent relationships between variables where each string equations[i] is of length 4 and takes one of two different forms: "xi==yi" or "xi!=yi".Here, xi and yi are lowercase letters (not necessarily different) that represent one-letter variable names.
+- Return true if it is possible to assign integers to variable names so as to satisfy all the given equations, or false otherwise.
+
+```java
+// Runtime: 1 ms, faster than 77.43% of Java online submissions for Satisfiability of Equality Equations.
+// Memory Usage: 38.6 MB, less than 75.05% of Java online submissions for Satisfiability of Equality Equations.
+
+class UF{
+    private int count;
+    private int[] parent;
+    private int[] size;
+
+    public UF(int n){
+        this.count=n;
+        parent=new int[n];
+        size=new int[n];
+        for(int i=0; i<n;i++){
+          parent[i]=i;
+          size[i]=1;
+        }
+    }
+
+    private int find(int x){
+        while(parent[x]!=x){
+            parent[x]=parent[parent[x]];
+            x=parent[x];
+        }
+        return x;
+    }
+
+    public int count(){
+        return count;
+    }
+
+    public void union(int p, int q){
+        int rootP=find(p);
+        int rootQ=find(q);
+        if(rootP == rootQ) return;
+        if(size[rootP]>size[rootQ]){
+            parent[rootQ]=rootP;
+            size[rootP] += size[rootQ];
+        } else{
+            parent[rootP]=rootQ;
+            size[rootQ] += size[rootP];
+        }
+        count--;
+    }
+
+    public boolean connected(int p, int q){
+        int rootP=find(p);
+        int rootQ=find(q);
+        return rootP == rootQ;
+    }
+}
+
+class Solution{
+    public boolean equationsPossible(String[] equations){
+        // 26 个英文字母
+        UF uf=new UF(26);
+        // 先让相等的字母形成连通分量
+        for(String eq : equations){
+            if(eq.charAt(1) == '='){
+                char x=eq.charAt(0);
+                char y=eq.charAt(3);
+                uf.union(x - 'a', y - 'a');
+            }
+        }        
+        // 检查不等关系是否打破相等关系的连通性
+        for(String eq : equations){
+            if(eq.charAt(1) == '!'){
+                char x=eq.charAt(0);
+                char y=eq.charAt(3);
+                // 如果相等关系成立，就是逻辑冲突
+                if(uf.connected(x - 'a', y - 'a')) return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+---
+
+## DIJKSTRA 算法
 
 
 

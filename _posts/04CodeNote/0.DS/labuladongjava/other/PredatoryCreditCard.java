@@ -1,5 +1,4 @@
-package labuladongjava;
-import labuladongjava.*;
+package labuladongjava.other; 
 
 public class PredatoryCreditCard extends CreditCard{
     // Additional instance variable

@@ -1,4 +1,5 @@
-package labuladongjava; 
+package labuladongjava.other; 
+
 // import java.lang.System;
 
 public class CreditCard {

@@ -1,12 +1,5 @@
-package labuladongjava.PriorityQueue;
-
+package labuladongjava.PriorityQueue; 
 import java.util.Comparator;
-
-import javax.swing.text.Position;
-
-import labuladongjava.PriorityQueue.AbstractPriorityQueue;
-import labuladongjava.PriorityQueue.LinkedPositionalList;
-import labuladongjava.PriorityQueue.PositionalList;
 
 public class SortedPriorityQueue<K,V> extends AbstractPriorityQueue<K,V> {
     // /∗∗ primary collection of priority queue entries ∗/
@@ -34,7 +27,7 @@ public class SortedPriorityQueue<K,V> extends AbstractPriorityQueue<K,V> {
         }
         if(walk == null) list.addFirst(newset);
         else list.addAfter(walk, newset);
-        return newset
+        return newset;
     }
     
     public Entry<K, V> min() {

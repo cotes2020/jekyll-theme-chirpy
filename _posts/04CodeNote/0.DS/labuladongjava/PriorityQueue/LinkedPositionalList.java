@@ -18,7 +18,9 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
         }
         public E getElement() throws IllegalStateException {
             // convention for defunct node 
-            if (next == null) throw new IllegalStateException("Position no longer valid");
+            if (next == null) {
+                throw new IllegalStateException("Position no longer valid");
+            }
             return element; 
         }
         public Node<E> getPrev() { 
@@ -136,7 +138,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
         Node<E> successor = node.getNext(); 
         predecessor.setNext(successor); 
         successor.setPrev(predecessor);
-        size−−;
+        size--;
         
         E answer = node.getElement(); 
         // help with garbage collection

@@ -1,4 +1,4 @@
-package labuladongjava; 
+package labuladongjava.other; 
 
 public class DynamicArrayList<E> implements List<E> { // instance variables {
     
@@ -11,12 +11,15 @@ public class DynamicArrayList<E> implements List<E> { // instance variables {
 
     // constructors
     // constructs list with default capacity
-    public ArrayList() { 
+    public DynamicArrayList() { 
         this(CAPACITY); 
     } 
     
     // constructs list with given capacity
-    public ArrayList(int capacity) {
+    public DynamicArrayList(int capacity2) {
+    }
+
+    public void ArrayList(int capacity) {
         // safe cast; compiler may give warning
         data = (E[ ]) new Object[capacity]; 
     }
@@ -28,7 +31,7 @@ public class DynamicArrayList<E> implements List<E> { // instance variables {
     public boolean isEmpty() { return size == 0; }
 
     // // utility method
-    // /∗∗ Checks whether the given index is in the range [0, n−1]. ∗/
+    // /∗∗ Checks whether the given index is in the range [0, n-1]. ∗/
     protected void checkIndex(int i, int n) throws IndexOutOfBoundsException {
         if (i < 0 || i >= n) throw new IndexOutOfBoundsException("Illegal index: " + i);
     }
@@ -36,7 +39,7 @@ public class DynamicArrayList<E> implements List<E> { // instance variables {
     // /∗∗ Returns (but does not remove) the element at index i. ∗/ 
     public E get(int i) throws IndexOutOfBoundsException {
         checkIndex(i, size);
-        return data[i]; }
+        return data[i]; 
     }
     // /∗∗ Replaces the element at index i with e, and returns the replaced element. ∗/ 
     public E set(int i, E e) throws IndexOutOfBoundsException {
@@ -51,7 +54,7 @@ public class DynamicArrayList<E> implements List<E> { // instance variables {
     //     // not enough capacity
     //     if (size == data.length) throw new IllegalStateException("Array is full");
     //     // start by shifting rightmost
-    //     for (int k=size−1; k >= i; k−−) {
+    //     for (int k=size-1; k >= i; k--) {
     //         data[k+1] = data[k];
     //     }
     //     // ready to place the new element 
@@ -61,7 +64,7 @@ public class DynamicArrayList<E> implements List<E> { // instance variables {
     public void add(int i, E e) throws IndexOutOfBoundsException {
         checkIndex(i, size + 1);
         // not enough capacity
-        if (size == data.length) resize(2 ∗ data.length); 
+        if (size == data.length) resize(2*data.length); 
         // so double the current capacity  
     }
         
@@ -70,11 +73,11 @@ public class DynamicArrayList<E> implements List<E> { // instance variables {
     public E remove(int i) throws IndexOutOfBoundsException {
         checkIndex(i, size);
         E temp = data[i];
-        for (int k=i; k < size−1; k++){
+        for (int k=i; k < size-1; k++){
             data[k] = data[k+1]; 
         }
-        data[size−1] = null; 
-        size−−;
+        data[size-1] = null; 
+        size--;
         return temp;
     }
 

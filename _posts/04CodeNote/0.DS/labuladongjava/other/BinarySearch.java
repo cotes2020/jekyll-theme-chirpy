@@ -1,4 +1,4 @@
-package labuladongjava;
+package labuladongjava.other; 
 
 // 二分搜索
 

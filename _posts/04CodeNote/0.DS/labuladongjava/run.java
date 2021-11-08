@@ -1,5 +1,4 @@
-package labuladongjava; 
-import labuladongjava.CreditCard; 
+package labuladongjava;  
 
 public class run {
      
@@ -28,11 +27,16 @@ public class run {
         Labu test = new Labu();
 
         // initialize the first elements of the array
-        ListNode anw = Labu.mergeTwoLists(l1, l2);
+        // ListNode anw = Labu.mergeTwoLists(l1, l2);
 
-        // accessing the elements of the specified array
-        for (int i = 0; i < arr.length; i++)
-            System.out.println("Element at " + i + " : " +
-                        arr[i].roll_no +" "+ arr[i].name);
+        // // accessing the elements of the specified array
+        // for (int i = 0; i < arr.length; i++)
+        //     System.out.println("Element at " + i + " : " +
+        //                 arr[i].roll_no +" "+ arr[i].name);
+
+        // String[] equations = {"c==c"};
+        String[] equations = {"b==d"};
+        // String[] equations = {"c==c","b==d","x!=z"};
+        System.out.println(test.equationsPossible(equations));
     }
 }

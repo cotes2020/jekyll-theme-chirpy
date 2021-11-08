@@ -1,10 +1,11 @@
 package labuladongjava;
 
 import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.PriorityQueue; 
 
 // import labuladongjava.PriorityQueue.PriorityQueue;
 import labuladongjava.other.ListNode;
+import labuladongjava.other.UF;
 
 public class Labu {
 
@@ -78,4 +79,62 @@ public class Labu {
     //     System.out.println(ans);
     // }
 
+    
+
+
+    public boolean equationsPossible(String[] equations) {
+        // 26 个英文字母
+        UF uf = new UF(26);
+        // 先让相等的字母形成连通分量
+        for (String eq : equations) {
+            System.out.println(eq);
+            if (eq.charAt(1) == '=') {
+                char x = eq.charAt(0);
+                char y = eq.charAt(3);
+                uf.union(x - 'a', y - 'a');
+                System.out.println(x);
+                System.out.println(y);
+                // System.out.println(x - 'a');
+                // System.out.println(y - 'a');
+            }
+        }
+        
+        if (uf.connected('f' - 'a', 'f' - 'a')) System.out.println("yesc");
+        if (uf.connected('b' - 'a', 'd' - 'a')) {System.out.println("yesb");} else {System.out.println("noyesb");}
+        if (uf.connected('x' - 'a', 'z' - 'a')) {System.out.println("yesx");} else {System.out.println("noyesx");}
+        
+        // 检查不等关系是否打破相等关系的连通性
+        for (String eq : equations) {
+            if (eq.charAt(1) == '!') {
+                char x = eq.charAt(0);
+                char y = eq.charAt(3);
+                // 如果相等关系成立，就是逻辑冲突
+                if (uf.connected(x - 'a', y - 'a'))
+                    System.out.println(x);
+                    System.out.println(x);
+                    System.out.println(y);
+                    return false;
+            }
+        }
+        return true;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
