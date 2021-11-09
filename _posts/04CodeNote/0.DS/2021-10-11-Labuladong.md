@@ -3130,7 +3130,7 @@ class UF {
 - （m 是棋盘的行数，n 是棋盘的列数）。
 
 
-```java
+```
 // Runtime: 6 ms, faster than 12.80% of Java online submissions for Surrounded Regions.
 // Memory Usage: 41 MB, less than 73.76% of Java online submissions for Surrounded Regions.
 void solve(char[][] board) {
