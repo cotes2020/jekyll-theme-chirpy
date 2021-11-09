@@ -10,9 +10,9 @@ tags: [life]
 - [打篮球 指甲淤血](#打篮球-指甲淤血)
 
 - ref
-  - https://www.zhihu.com/question/27115847
-  - https://www.leha.com/health/90891
-  - https://new.qq.com/omn/20200715/20200715A0KD5N00.html
+  - [https://www.zhihu.com/question/27115847](https://www.zhihu.com/question/27115847)
+  - [https://www.leha.com/health/90891](https://www.leha.com/health/90891)
+  - [https://new.qq.com/omn/20200715/20200715A0KD5N00.html](https://new.qq.com/omn/20200715/20200715A0KD5N00.html)
 
 ---
 
