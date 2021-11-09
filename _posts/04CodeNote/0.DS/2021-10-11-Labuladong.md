@@ -71,7 +71,13 @@ toc: true
     - [通过前序和中序/后序和中序遍历结果构造二叉树(kong)](#通过前序和中序后序和中序遍历结果构造二叉树kong)
     - [寻找重复子树(kong)](#寻找重复子树kong)
   - [层序遍历框架](#层序遍历框架)
-    - [二叉树层级遍历](#二叉树层级遍历)
+    - [二叉树max层级遍历 用Queue和q.size去遍历左右](#二叉树max层级遍历-用queue和qsize去遍历左右)
+    - [多叉树的层序遍历框架  用Queue和q.size去遍历child](#多叉树的层序遍历框架--用queue和qsize去遍历child)
+    - [BFS（广度优先搜索）用Queue和q.size去遍历child + not visited](#bfs广度优先搜索用queue和qsize去遍历child--not-visited)
+    - [二叉树min层级遍历 用Queue和q.size去遍历左右](#二叉树min层级遍历-用queue和qsize去遍历左右)
+    - [穷举所有可能的密码组合 用Queue和q.size去遍历all](#穷举所有可能的密码组合-用queue和qsize去遍历all)
+    - [解开密码锁的最少次数 用Queue和q.size去遍历all + visited + deads](#解开密码锁的最少次数-用queue和qsize去遍历all--visited--deads)
+    - [双向 BFS 优化](#双向-bfs-优化)
   - [二叉搜索树](#二叉搜索树)
     - [判断 BST 的合法性](#判断-bst-的合法性)
     - [在 BST 中搜索元素](#在-bst-中搜索元素)
@@ -115,6 +121,14 @@ toc: true
 
 
 ## 学习算法和刷题的框架思维
+
+```java
+Queue q = new LinkedList<>();
+Set<String> deads = new HashSet<>();
+
+```
+
+
 
 ---
 
@@ -2009,7 +2023,7 @@ TreeNode build(int[] nums, int lo, int hi) {
 
 ---
 
-### 二叉树层级遍历
+### 二叉树max层级遍历 用Queue和q.size去遍历左右
 
 [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
 - Given the root of a binary tree, return its maximum depth.
@@ -2021,23 +2035,16 @@ void levelTraverse(TreeNode root) {
     if (root == null) return 0;
     Queue<TreeNode> q = new LinkedList<>();
     q.offer(root);
-
-    int depth = 1;
+    int depth = 0;
     // 从上到下遍历二叉树的每一层
     while (!q.isEmpty()) {
         int sz = q.size();
         // 从左到右遍历每一层的每个节点
         for (int i = 0; i < sz; i++) {
             TreeNode cur = q.poll();
-            printf("节点 %s 在第 %s 层", cur, depth);
-
             // 将下一层节点放入队列
-            if (cur.left != null) {
-                q.offer(cur.left);
-            }
-            if (cur.right != null) {
-                q.offer(cur.right);
-            }
+            if (cur.left != null) q.offer(cur.left);
+            if (cur.right != null) q.offer(cur.right);
         }
         depth++;
     }
@@ -2045,40 +2052,258 @@ void levelTraverse(TreeNode root) {
 ```
 
 
-
-
-
-
-
-
-
 ---
 
+### 多叉树的层序遍历框架  用Queue和q.size去遍历child
+
+[559. Maximum Depth of N-ary Tree](https://leetcode.com/problems/maximum-depth-of-n-ary-tree/)
+- Given a n-ary tree, find its maximum depth.
+- The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+- Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value (See examples).
+
+
 ```java
+// Runtime: 1 ms, faster than 55.15% of Java online submissions for Maximum Depth of N-ary Tree.
+// Memory Usage: 39.3 MB, less than 55.15% of Java online submissions for Maximum Depth of N-ary Tree.
 // 输入一棵多叉树的根节点，层序遍历这棵多叉树
 void levelTraverse(TreeNode root) {
     if (root == null) return 0;
     Queue<TreeNode> q = new LinkedList<>();
     q.offer(root);
-
-    int depth = 1;
+    int depth = 0;
     // 从上到下遍历多叉树的每一层
     while (!q.isEmpty()) {
         int sz = q.size();
         // 从左到右遍历每一层的每个节点
         for (int i = 0; i < sz; i++) {
             TreeNode cur = q.poll();
-            printf("节点 %s 在第 %s 层", cur, depth);
-
             // 将下一层节点放入队列
-            for (TreeNode child : cur.children) {
-                q.offer(child);
-            }
+            for (TreeNode child : cur.children) q.offer(child);
         }
         depth++;
     }
 }
 ```
+
+---
+
+### BFS（广度优先搜索）用Queue和q.size去遍历child + not visited
+
+BFS 找到的路径一定是最短的，但代价就是空间复杂度可能比 DFS 大很多
+
+BFS 的核心数据结构；
+- cur.adj() 泛指 cur 相邻的节点，比如说二维数组中，cur 上下左右四面的位置就是相邻节点；
+- visited 的主要作用是防止走回头路，大部分时候都是必须的，但是像一般的二叉树结构，没有子节点到父节点的指针，不会走回头路就不需要 visited。
+
+
+
+```java
+// 输入起点，进行 BFS 搜索
+int BFS(Node start) {
+    Queue<Node> q;     // 核心数据结构
+    Set<Node> visited; // 避免走回头路
+
+    q.offer(start);    // 将起点加入队列
+    visited.add(start);
+    int step = 0; // 记录搜索的步数
+
+    while (!q.isEmpty()) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向四周扩散一步 */
+        for (int i = 0; i < sz; i++) {
+            Node cur = q.poll();
+            /* 将 cur 的相邻节点加入队列 */
+            for (Node x : cur.adj()) {
+                if (x not in visited) {
+                    q.offer(x);
+                    visited.add(x);
+                }
+            }
+        }
+        step++;
+    }
+}
+```
+
+---
+
+### 二叉树min层级遍历 用Queue和q.size去遍历左右
+
+
+[111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
+- Given a binary tree, find its minimum depth.
+- The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+- Note: A leaf is a node with no children.
+
+```java
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Minimum Depth of Binary Tree.
+Memory Usage: 59.3 MB, less than 87.89% of Java online submissions for Minimum Depth of Binary Tree.
+
+int minDepth(TreeNode root) {
+    if (root == null) return 0;
+    Queue<TreeNode> q = new LinkedList<>();
+    q.offer(root);
+    int depth = 0;
+    while (!q.isEmpty()) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向四周扩散 */
+        for (int i = 0; i < sz; i++) {
+            TreeNode cur = q.poll();
+            /* 判断是否到达终点 */
+            if (cur.left == null && cur.right == null) return depth+1;
+            /* 将 cur 的相邻节点加入队列 */
+            if (cur.left != null) q.offer(cur.left);
+            if (cur.right != null) q.offer(cur.right);
+        }
+        /* 这里增加步数 */
+        depth++;
+    }
+    return depth;
+}
+```
+
+
+---
+
+### 穷举所有可能的密码组合 用Queue和q.size去遍历all
+
+如果你只转一下锁，有几种可能？总共有 4 个位置，每个位置可以向上转，也可以向下转，也就是有 8 种可能对吧。
+
+比如说从 "0000" 开始，转一次，可以穷举出 "1000", "9000", "0100", "0900"... 共 8 种密码。然后，再以这 8 种密码作为基础，对每个密码再转一下，穷举出所有可能…
+
+仔细想想，这就可以抽象成一幅图，每个节点有 8 个相邻的节点，又让你求最短距离，这不就是典型的 BFS 嘛，框架就可以派上用场了，先写出一个「简陋」的 BFS 框架代码再说别的：
+
+1、会走回头路。比如说我们从 "0000" 拨到 "1000"，但是等从队列拿出 "1000" 时，还会拨出一个 "0000"，这样的话会产生死循环。
+
+2、没有终止条件，按照题目要求，我们找到 target 就应该结束并返回拨动的次数。
+
+3、没有对 deadends 的处理，按道理这些「死亡密码」是不能出现的，也就是说你遇到这些密码的时候需要跳过。
+
+
+```java
+// 将 s[j] 向上拨动一次
+String plusOne(String s, int j) {
+    char[] ch = s.toCharArray();
+    if (ch[j] == '9') ch[j] = '0';
+    else ch[j] += 1;
+    return new String(ch);
+}
+// 将 s[i] 向下拨动一次
+String minusOne(String s, int j) {
+    char[] ch = s.toCharArray();
+    if (ch[j] == '0') ch[j] = '9';
+    else ch[j] -= 1;
+    return new String(ch);
+}
+
+// BFS 框架，打印出所有可能的密码
+void BFS(String target) {
+    Queue<String> q = new LinkedList<>();
+    q.offer("0000");
+    while (!q.isEmpty()) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向周围扩散 */
+        for (int i = 0; i < sz; i++) {
+            String cur = q.poll();
+            /* 判断是否到达终点 */
+            System.out.println(cur);
+            /* 将一个节点的相邻节点加入队列 */
+            for (int j = 0; j < 4; j++) {
+                String up = plusOne(cur, j);
+                String down = minusOne(cur, j);
+                q.offer(up);
+                q.offer(down);
+            }
+        }
+        /* 在这里增加步数 */
+    }
+    return;
+}
+```
+
+
+---
+
+
+### 解开密码锁的最少次数 用Queue和q.size去遍历all + visited + deads
+
+[752. Open the Lock](https://labuladong.github.io/algo/4/29/108/)
+- You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'. The wheels can rotate freely and wrap around: for example we can turn '9' to be '0', or '0' to be '9'. Each move consists of turning one wheel one slot.
+- The lock initially starts at '0000', a string representing the state of the 4 wheels.
+- You are given a list of deadends dead ends, meaning if the lock displays any of these codes, the wheels of the lock will stop turning and you will be unable to open it.
+- Given a target representing the value of the wheels that will unlock the lock, return the minimum total number of turns required to open the lock, or -1 if it is impossible.
+
+```java
+// Runtime: 76 ms, faster than 79.81% of Java online submissions for Open the Lock.
+// Memory Usage: 44.9 MB, less than 79.14% of Java online submissions for Open the Lock.
+// 将 s[j] 向上拨动一次
+
+String plusOne(String s, int j) {
+    char[] ch = s.toCharArray();
+    if (ch[j] == '9') ch[j] = '0';
+    else ch[j] += 1;
+    return new String(ch);
+}
+// 将 s[i] 向下拨动一次
+String minusOne(String s, int j) {
+    char[] ch = s.toCharArray();
+    if (ch[j] == '0') ch[j] = '9';
+    else ch[j] -= 1;
+    return new String(ch);
+}
+
+int openLock(String[] deadends, String target) {
+    // 记录需要跳过的死亡密码
+    Set<String> deads = new HashSet<>();
+    for (String s : deadends) deads.add(s);
+
+    // 记录已经穷举过的密码，防止走回头路
+    Set<String> visited = new HashSet<>();
+    Queue<String> q = new LinkedList<>();
+    // 从起点开始启动广度优先搜索
+    int step = 0;
+    q.offer("0000");
+    visited.add("0000");
+
+    while (!q.isEmpty()) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向周围扩散 */
+        for (int i = 0; i < sz; i++) {
+            String cur = q.poll();
+            /* 判断是否到达终点 */
+            if (deads.contains(cur)) continue;
+            if (cur.equals(target)) return step;
+            /* 将一个节点的未遍历相邻节点加入队列 */
+            for (int j = 0; j < 4; j++) {
+                String up = plusOne(cur, j);
+                String down = minusOne(cur, j);
+                if (!visited.contains(up)) {
+                    q.offer(up);
+                    visited.add(up);
+                }
+                if (!visited.contains(down)) {
+                    q.offer(down);
+                    visited.add(down);
+                }
+            }
+        }
+        /* 在这里增加步数 */
+        step++;
+    }
+    // 如果穷举完都没找到目标密码，那就是找不到了
+    return -1;
+}
+```
+
+---
+
+
+### 双向 BFS 优化
+
+双向 BFS 也有局限，因为你必须知道终点在哪里。
+
+
+
 
 
 
