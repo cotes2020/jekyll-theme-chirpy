@@ -70,6 +70,8 @@ toc: true
     - [构造最大二叉树](#构造最大二叉树)
     - [通过前序和中序/后序和中序遍历结果构造二叉树(kong)](#通过前序和中序后序和中序遍历结果构造二叉树kong)
     - [寻找重复子树(kong)](#寻找重复子树kong)
+  - [层序遍历框架](#层序遍历框架)
+    - [二叉树层级遍历](#二叉树层级遍历)
   - [二叉搜索树](#二叉搜索树)
     - [判断 BST 的合法性](#判断-bst-的合法性)
     - [在 BST 中搜索元素](#在-bst-中搜索元素)
@@ -2001,7 +2003,57 @@ TreeNode build(int[] nums, int lo, int hi) {
 
 ---
 
-###
+## 层序遍历框架
+
+
+---
+
+### 二叉树层级遍历
+
+[104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+- Given the root of a binary tree, return its maximum depth.
+- A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+
+
+```java
+// 输入一棵二叉树的根节点，层序遍历这棵二叉树
+void levelTraverse(TreeNode root) {
+    if (root == null) return 0;
+    Queue<TreeNode> q = new LinkedList<>();
+    q.offer(root);
+
+    int depth = 1;
+    // 从上到下遍历二叉树的每一层
+    while (!q.isEmpty()) {
+        int sz = q.size();
+        // 从左到右遍历每一层的每个节点
+        for (int i = 0; i < sz; i++) {
+            TreeNode cur = q.poll();
+            printf("节点 %s 在第 %s 层", cur, depth);
+
+            // 将下一层节点放入队列
+            if (cur.left != null) {
+                q.offer(cur.left);
+            }
+            if (cur.right != null) {
+                q.offer(cur.right);
+            }
+        }
+        depth++;
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+---
 
 ```java
 // 输入一棵多叉树的根节点，层序遍历这棵多叉树
@@ -3191,7 +3243,7 @@ void solve(char[][] board) {
         if (board[m - 1][j] == 'O') uf.union(n * (m - 1) + j, dummy);
     }
     // 方向数组 d 是上下左右搜索的常用手法
-    // add below:
+    int[][] d = new int[][] ({1,0}, {0,1}, {0,-1}, {-1,0});
     for (int i = 1; i < m - 1; i++)
         for (int j = 1; j < n - 1; j++)
             if (board[i][j] == 'O')
@@ -3207,9 +3259,6 @@ void solve(char[][] board) {
             if (!uf.connected(dummy, i * n + j)) board[i][j] = 'X';
 }
 ```
-
-`int[][] d = new int[][] {{1,0}, {0,1}, {0,-1}, {-1,0}};`
-
 
 
 ```java
