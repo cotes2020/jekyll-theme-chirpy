@@ -1,11 +1,11 @@
----
+<!-- ---
 title: Linux - Creating Aliases
 date: 2020-11-01 11:11:11 -0400
 categories: [31Linux, Sysadmin]
 tags: [Linux, Sysadmin]
 math: true
 image: 
----
+--- -->
 
 [toc]
 
