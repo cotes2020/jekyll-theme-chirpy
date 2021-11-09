@@ -2001,6 +2001,43 @@ TreeNode build(int[] nums, int lo, int hi) {
 
 ---
 
+###
+
+```java
+// 输入一棵多叉树的根节点，层序遍历这棵多叉树
+void levelTraverse(TreeNode root) {
+    if (root == null) return 0;
+    Queue<TreeNode> q = new LinkedList<>();
+    q.offer(root);
+
+    int depth = 1;
+    // 从上到下遍历多叉树的每一层
+    while (!q.isEmpty()) {
+        int sz = q.size();
+        // 从左到右遍历每一层的每个节点
+        for (int i = 0; i < sz; i++) {
+            TreeNode cur = q.poll();
+            printf("节点 %s 在第 %s 层", cur, depth);
+
+            // 将下一层节点放入队列
+            for (TreeNode child : cur.children) {
+                q.offer(child);
+            }
+        }
+        depth++;
+    }
+}
+```
+
+
+
+
+
+
+
+
+---
+
 
 
 ## 二叉搜索树
@@ -3154,7 +3191,7 @@ void solve(char[][] board) {
         if (board[m - 1][j] == 'O') uf.union(n * (m - 1) + j, dummy);
     }
     // 方向数组 d 是上下左右搜索的常用手法
-    // int[][] d = new int[][] {{1,0}, {0,1}, {0,-1}, {-1,0}};
+    // add below:
     for (int i = 1; i < m - 1; i++)
         for (int j = 1; j < n - 1; j++)
             if (board[i][j] == 'O')
@@ -3170,6 +3207,10 @@ void solve(char[][] board) {
             if (!uf.connected(dummy, i * n + j)) board[i][j] = 'X';
 }
 ```
+
+`int[][] d = new int[][] {{1,0}, {0,1}, {0,-1}, {-1,0}};`
+
+
 
 ```java
 class UF {
