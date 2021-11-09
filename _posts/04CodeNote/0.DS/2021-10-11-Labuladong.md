@@ -3130,7 +3130,7 @@ class UF {
 - （m 是棋盘的行数，n 是棋盘的列数）。
 
 
-```
+```java
 // Runtime: 6 ms, faster than 12.80% of Java online submissions for Surrounded Regions.
 // Memory Usage: 41 MB, less than 73.76% of Java online submissions for Surrounded Regions.
 void solve(char[][] board) {
@@ -3154,7 +3154,7 @@ void solve(char[][] board) {
         if (board[m - 1][j] == 'O') uf.union(n * (m - 1) + j, dummy);
     }
     // 方向数组 d 是上下左右搜索的常用手法
-    int[][] d = new int[][]{{1,0}, {0,1}, {0,-1}, {-1,0}};
+    // int[][] d = new int[][] {{1,0}, {0,1}, {0,-1}, {-1,0}};
     for (int i = 1; i < m - 1; i++)
         for (int j = 1; j < n - 1; j++)
             if (board[i][j] == 'O')
