@@ -4114,7 +4114,7 @@ class State {
 }
 
 // 方向数组，上下左右的坐标偏移量
-int[][] dirs = new int[][]{{0,1}, {1,0}, {0,-1}, {-1,0}};
+int[][] dirs = new int[][]括号{0,1}, {1,0}, {0,-1}, {-1,0}括号;
 
 // 返回坐标 (x, y) 的上下左右相邻坐标
 List<int[]> adj(int[][] matrix, int x, int y) {
