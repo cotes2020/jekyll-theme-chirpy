@@ -111,6 +111,14 @@ toc: true
   - [DIJKSTRA 算法 起点 start 到某一个终点 end 的最短路径](#dijkstra-算法-起点-start-到某一个终点-end-的最短路径)
     - [网络延迟时间](#网络延迟时间)
     - [路径经过的权重最大值](#路径经过的权重最大值)
+    - [概率最大的路径](#概率最大的路径)
+- [设计数据结构](#设计数据结构)
+  - [缓存淘汰](#缓存淘汰)
+    - [LRU 缓存淘汰算法 Least Recently Used](#lru-缓存淘汰算法-least-recently-used)
+      - [造轮子 LRU 算法](#造轮子-lru-算法)
+      - [使用 Java 内置的 LinkedHashMap 来实现一遍。](#使用-java-内置的-linkedhashmap-来实现一遍)
+    - [LFU 淘汰算法 Least Frequently Used](#lfu-淘汰算法-least-frequently-used)
+  - [最大栈](#最大栈)
 
 
 ---
@@ -132,13 +140,26 @@ List<int[]> res = new ArrayList<>();
 
 Set<String> deads = new HashSet<>();
 
+HashMap<Integer, Integer> KeyVal = new HashMap<>();
+HashMap.containsKey(key);
+HashMap.get(key);
+HashMap.put(key, val);
+HashMap.size();
+HashMap.putIfAbsent(1, new LinkedHashSet<>());
+
+LinkedHashSet<Integer> keyList = ;
+LinkedHashSet.iterator().next();
+LinkedHashSet.remove(Key);
+
+
 ```
 
 
 11/8:61
-11/9:
-
-
+11/9:63
+11/10:64
+11/11:65
+11/12:
 
 
 
@@ -4144,7 +4165,8 @@ int minimumEffortPath(int[][] heights){
             int nextY = neighbor[1];
             // 计算从 (curX, curY) 达到 (nextX, nextY) 的消耗
             int effortToNextNode = Math.max(
-                effortTo[curX][curY], Math.abs(heights[curX][curY] - heights[nextX][nextY]));
+                effortTo[curX][curY],
+                Math.abs(heights[curX][curY] - heights[nextX][nextY]));
             // 更新 dp table
             if (effortTo[nextX][nextY] > effortToNextNode) {
                 effortTo[nextX][nextY] = effortToNextNode;
@@ -4157,6 +4179,409 @@ int minimumEffortPath(int[][] heights){
 }
 ```
 
+---
+
+### 概率最大的路径
+
+[1514. Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/)
+- You are given an undirected weighted graph of n nodes (0-indexed), represented by an edge list where edges[i] = [a, b] is an undirected edge connecting the nodes a and b with a probability of success of traversing that edge succProb[i].
+- Given two nodes start and end, find the path with the maximum probability of success to go from start to end and return its success probability.
+- If there is no path from start to end, return 0. Your answer will be accepted if it differs from the correct answer by at most 1e-5.
+
+```java
+// Runtime: 28 ms, faster than 96.09% of Java online submissions for Path with Maximum Probability.
+// Memory Usage: 52.4 MB, less than 58.96% of Java online submissions for Path with Maximum Probability.
+
+class State {
+    // 图节点的 id
+    int id;
+    // 从 start 节点到达当前节点的概率
+    double probFromStart;
+
+    State(int id, double probFromStart) {
+        this.id = id;
+        this.probFromStart = probFromStart;
+    }
+}
+
+double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
+    List<double[]>[] graph = new LinkedList[n];
+    for (int i = 0; i < n; i++) {
+        graph[i] = new LinkedList<>();
+    }
+    // 构造邻接表结构表示图
+    for (int i = 0; i < edges.length; i++) {
+        int from = edges[i][0];
+        int to = edges[i][1];
+        double weight = succProb[i];
+        // 无向图就是双向图；先把 int 统一转成 double，待会再转回来
+        graph[from].add(new double[]{(double)to, weight});
+        graph[to].add(new double[]{(double)from, weight});
+    }
+
+    // 定义：probTo[i] 的值就是节点 start 到达节点 i 的最大概率
+    double[] probTo = new double[n];
+    // dp table 初始化为一个取不到的最小值
+    Arrays.fill(probTo, -1);
+    // base case，start 到 start 的概率就是 1
+    probTo[start] = 1;
+
+    // 优先级队列，probFromStart 较大的排在前面
+    Queue<State> pq = new PriorityQueue<>((a, b) -> {
+        return Double.compare(b.probFromStart, a.probFromStart);
+    });
+    // 从起点 start 开始进行 BFS
+    pq.offer(new State(start, 1));
+
+    while (!pq.isEmpty()) {
+        State curState = pq.poll();
+        int curNodeID = curState.id;
+        double curProbFromStart = curState.probFromStart;
+
+        // 遇到终点提前返回
+        if (curNodeID == end) {
+            return curProbFromStart;
+        }
+
+        if (curProbFromStart < probTo[curNodeID]) {
+            // 已经有一条概率更大的路径到达 curNode 节点了
+            continue;
+        }
+        // 将 curNode 的相邻节点装入队列
+        for (double[] neighbor : graph[curNodeID]) {
+            int nextNodeID = (int)neighbor[0];
+            // 看看从 curNode 达到 nextNode 的概率是否会更大
+            double probToNextNode = probTo[curNodeID] * neighbor[1];
+            if (probTo[nextNodeID] < probToNextNode) {
+                probTo[nextNodeID] = probToNextNode;
+                pq.offer(new State(nextNodeID, probToNextNode));
+            }
+        }
+    }
+    // 如果到达这里，说明从 start 开始无法到达 end，返回 0
+    return 0.0;
+}
+```
+
+
+---
+
+
+# 设计数据结构
+
+
+- LRU 算法的淘汰策略是 Least Recently Used， 淘汰那些最久没被使用的数据；
+  - LRU 算法的核心数据结构是使用哈希链表 LinkedHashMap，
+  - 借助链表的`有序性`使得链表元素维持插入顺序，
+  - 借助哈希映射的`快速访问能力`使得我们可以在 O(1) 时间访问链表的任意元素。
+  - LRU 算法相当于把数据按照时间排序
+    - 这个需求借助链表很自然就能实现，
+    - 一直从链表头部加入元素的话，越靠近头部的元素就是新的数据，越靠近尾部的元素就是旧的数据，
+    - 进行缓存淘汰的时候只要简单地将尾部的元素淘汰掉就行了。
+
+- 而 LFU 算法的淘汰策略是 Least Frequently Used， 淘汰那些使用次数最少的数据。
+  - LFU 算法的难度大于 LRU 算法
+  - 把数据按照访问频次进行排序，
+  - 还有一种情况，如果多个数据拥有相同的访问频次，我们就得删除最早插入的那个数据。
+    - 也就是说 LFU 算法是淘汰访问频次最低的数据，
+    - 如果访问频次最低的数据有多条，需要淘汰最旧的数据。
+
+
+---
+
+## 缓存淘汰
+
+### LRU 缓存淘汰算法 Least Recently Used
+
+让 put 和 get 方法的时间复杂度为 O(1)，cache 这个数据结构必要的条件：
+- cache 中的元素必须有时序，
+  - 以区分最近使用的和久未使用的数据，
+  - 当容量满了之后要删除最久未使用的那个元素腾位置。
+- 要在 cache 中快速找某个 key 是否已存在并得到对应的 val；
+- 每次访问 cache 中的某个 key，需要将这个元素变为最近使用的，
+  - 也就是说 cache 要支持在任意位置快速插入和删除元素。
+
+数据结构
+- 哈希表查找快，但是数据无固定顺序；
+- 链表有顺序之分，插入删除快，但是查找慢。
+- 结合一下，形成一种新的数据结构：哈希链表 LinkedHashMap。
+
+LRU 缓存算法的核心数据结构就是哈希链表，双向链表和哈希表的结合体。这个数据结构长这样：
+
+---
+
+#### 造轮子 LRU 算法
+
+- 我们实现的双链表 API 只能从尾部插入
+- 也就是说靠尾部的数据是最近使用的，靠头部的数据是最久为使用的。
+
+```java
+// 双链表的节点类
+class Node {
+    public int key, val;
+    public Node next, prev;
+    public Node(int k, int v) {
+        this.key = k;
+        this.val = v;
+    }
+}
+
+// 依靠我们的 Node 类型构建一个双链表
+class DoubleList {  
+    private Node head, tail;   // 头尾虚节点
+    private int size;          // 链表元素数
+
+    public DoubleList() {
+        // 初始化双向链表的数据
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
+        head.next = tail;
+        tail.prev = head;
+        size = 0;
+    }
+
+    // 在链表尾部添加节点 x，时间 O(1)
+    public void addLast(Node x) {
+        x.prev = tail.prev;
+        x.next = tail;
+        tail.prev.next = x;
+        tail.prev = x;
+        size++;
+    }
+
+    // 删除链表中的 x 节点（x 一定存在）
+    // 由于是双链表且给的是目标 Node 节点，时间 O(1)
+    public void remove(Node x) {
+        x.prev.next = x.next;
+        x.next.prev = x.prev;
+        size--;
+    }
+
+    // 删除链表中第一个节点，并返回该节点，时间 O(1)
+    public Node removeFirst() {
+        if (head.next == tail)
+            return null;
+        Node first = head.next;
+        remove(first);
+        return first;
+    }
+
+    // 返回链表长度，时间 O(1)
+    public int size() { return size; }
+
+}
+
+class LRUCache {
+    // key -> Node(key, val)
+    private HashMap<Integer, Node> map;
+    // Node(k1, v1) <-> Node(k2, v2)...
+    private DoubleList cache;
+    // 最大容量
+    private int cap;
+
+    public LRUCache(int capacity) {
+        this.cap = capacity;
+        map = new HashMap<>();
+        cache = new DoubleList();
+    }
+
+    public int get(int key) {
+        if (!map.containsKey(key)) return -1;
+        // 将该数据提升为最近使用的
+        makeRecently(key);
+        return map.get(key).val;
+    }
+
+    public void put(int key, int val) {
+        if (map.containsKey(key)) {
+            // 删除旧的数据
+            deleteKey(key);
+            // 新插入的数据为最近使用的数据
+            addRecently(key, val);
+            return;
+        }
+
+        if (cap == cache.size()) {
+            // 删除最久未使用的元素
+            removeLeastRecently();
+        }
+        // 添加为最近使用的元素
+        addRecently(key, val);
+    }
+
+}
+
+/* 将某个 key 提升为最近使用的 */
+private void makeRecently(int key) {
+    Node x = map.get(key);
+    // 先从链表中删除这个节点
+    cache.remove(x);
+    // 重新插到队尾
+    cache.addLast(x);
+}
+
+/* 添加最近使用的元素 */
+private void addRecently(int key, int val) {
+    Node x = new Node(key, val);
+    // 链表尾部就是最近使用的元素
+    cache.addLast(x);
+    // 别忘了在 map 中添加 key 的映射
+    map.put(key, x);
+}
+
+/* 删除某一个 key */
+private void deleteKey(int key) {
+    Node x = map.get(key);
+    // 从链表中删除
+    cache.remove(x);
+    // 从 map 中删除
+    map.remove(key);
+}
+
+/* 删除最久未使用的元素 */
+private void removeLeastRecently() {
+    // 链表头部的第一个元素就是最久未使用的
+    Node deletedNode = cache.removeFirst();
+    // 同时别忘了从 map 中删除它的 key
+    int deletedKey = deletedNode.key;
+    map.remove(deletedKey);
+}
+```
+
+---
+
+
+#### 使用 Java 内置的 LinkedHashMap 来实现一遍。
+
+
+```java
+class LRUCache {
+    int cap;
+    LinkedHashMap<Integer, Integer> cache = new LinkedHashMap<>();
+
+    public LRUCache(int capacity) {
+        this.cap = capacity;
+    }
+
+    // get + 将 key 变为最近使用
+    public int get(int key) {
+        if (!cache.containsKey(key)) return -1;
+        // 将 key 变为最近使用
+        makeRecently(key);
+        return cache.get(key);
+    }
+
+    // add + 将 key 变为最近使用
+    public void put(int key, int val) {
+        if (cache.containsKey(key)) {
+            // 修改 key 的值
+            cache.put(key, val);
+            // 将 key 变为最近使用
+            makeRecently(key);
+            return;
+        }
+        if (cache.size() >= this.cap) {
+            // 链表头部就是最久未使用的 key
+            int oldestKey = cache.keySet().iterator().next();
+            cache.remove(oldestKey);
+        }
+        // 将新的 key 添加链表尾部
+        cache.put(key, val);
+    }
+
+    private void makeRecently(int key) {
+        int val = cache.get(key);
+        // 删除 key，重新插入到队尾
+        cache.remove(key);
+        cache.put(key, val);
+    }
+}
+```
+
+---
+
+
+### LFU 淘汰算法 Least Frequently Used
+
+
+
+```java
+// Runtime: 71 ms, faster than 56.22% of Java online submissions for LFU Cache.
+// Memory Usage: 122.6 MB, less than 78.55% of Java online submissions for LFU Cache.
+
+class LFUCache {
+    HashMap<Integer, Integer> keyToVal;
+    HashMap<Integer, Integer> keyToFreq;
+    HashMap<Integer, LinkedHashSet<Integer>> freqToKeys;
+    int minFreq;
+    int cap;
+
+    public LFUCache(int capacity){
+        keyToVal = new HashMap<>();
+        keyToFreq = new HashMap<>();
+        freqToKeys = new HashMap<>();
+        this.cap = capacity;
+        this.minFreq = 0;
+    }
+
+    public int get(int key){
+        if(!keyToVal.containsKey(key))return -1;
+        increaseFreq(key);
+        return keyToVal.get(key);
+    }
+
+    public void put(int key, int val){      
+        if(this.cap <= 0)return;
+        if(keyToVal.containsKey(key)){
+            keyToVal.put(key, val);
+            increaseFreq(key);
+            return;
+        }
+        if(keyToVal.size()>= this.cap)removeMinFreqKey();
+        keyToVal.put(key, val);
+        keyToFreq.put(key, 1);
+
+        freqToKeys.putIfAbsent(1, new LinkedHashSet<>());
+        freqToKeys.get(1).add(key);
+        // 插入新 key 后最小的 freq 肯定是 1
+        this.minFreq = 1;
+    }
+
+    public void removeMinFreqKey(){  
+        LinkedHashSet<Integer> keyList = freqToKeys.get(this.minFreq);
+        // 其中最先被插入的那个 key 就是该被淘汰的 key
+        int deletedKey = keyList.iterator().next();
+        keyList.remove(deletedKey);
+        if(keyList.isEmpty())freqToKeys.remove(this.minFreq);
+        keyToVal.remove(deletedKey);
+        keyToFreq.remove(deletedKey);
+    }
+    private void increaseFreq(int key){        
+        int freq = keyToFreq.get(key);
+        keyToFreq.put(key, freq+1);
+        freqToKeys.putIfAbsent(freq+1, new LinkedHashSet<>());
+        freqToKeys.get(freq+1).add(key);
+
+        freqToKeys.get(freq).remove(key);
+        if(freqToKeys.get(freq).isEmpty()){
+            freqToKeys.remove(freq);
+            if(this.minFreq == freq)this.minFreq++;
+        }
+    }
+}
+
+/**
+ * Your LFUCache object will be instantiated and called as such:
+ * LFUCache obj = new LFUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
+```
+
+
+---
+
+## 最大栈
 
 
 
