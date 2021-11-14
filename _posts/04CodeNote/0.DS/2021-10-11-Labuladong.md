@@ -33,7 +33,7 @@ toc: true
     - [计算list中间指定位置的和](#计算list中间指定位置的和)
     - [和为k的子数组](#和为k的子数组)
     - [304. 二维区域和检索 - 矩阵不可变](#304-二维区域和检索---矩阵不可变)
-- [链表 解题](#链表-解题)
+- [LinkedList](#linkedlist)
   - [单链表的六大解题套路](#单链表的六大解题套路)
     - [合并两个有序链表 Merge 2 Sorted Lists](#合并两个有序链表-merge-2-sorted-lists)
       - [java](#java)
@@ -88,7 +88,7 @@ toc: true
     - [二叉树后序遍历](#二叉树后序遍历)
     - [二叉树的序列化与反序列化](#二叉树的序列化与反序列化)
     - [二叉树打平到一个字符串](#二叉树打平到一个字符串)
-- [图论基础](#图论基础)
+- [Graphy](#graphy)
   - [图的遍历](#图的遍历-1)
     - [DFS](#dfs)
     - [转换成图](#转换成图)
@@ -119,6 +119,8 @@ toc: true
       - [使用 Java 内置的 LinkedHashMap 来实现一遍。](#使用-java-内置的-linkedhashmap-来实现一遍)
     - [LFU 淘汰算法 Least Frequently Used](#lfu-淘汰算法-least-frequently-used)
   - [最大栈](#最大栈)
+  - [other](#other)
+    - [中位数](#中位数)
 
 
 ---
@@ -134,6 +136,9 @@ toc: true
 ## 学习算法和刷题的框架思维
 
 ```java
+Stack.push();
+
+
 Queue q = new LinkedList<>();
 List<int[]>[] graph = new LinkedList[n+1];
 List<int[]> res = new ArrayList<>();
@@ -146,6 +151,8 @@ HashMap.get(key);
 HashMap.put(key, val);
 HashMap.size();
 HashMap.putIfAbsent(1, new LinkedHashSet<>());
+HashMap.getOrDefault(val, 0);
+
 
 LinkedHashSet<Integer> keyList = ;
 LinkedHashSet.iterator().next();
@@ -159,8 +166,8 @@ LinkedHashSet.remove(Key);
 11/9:63
 11/10:64
 11/11:65
-11/12:
-
+11/12:66
+11/14:67
 
 
 
@@ -903,7 +910,7 @@ for (int i = 1; i < count.length; i++)
 
 
 
-# 链表 解题
+# LinkedList
 
 ---
 
@@ -2840,7 +2847,7 @@ void serialize(TreeNode root, StringBuilder sb){
 ---
 
 
-# 图论基础
+# Graphy
 
 
 
@@ -4584,12 +4591,105 @@ class LFUCache {
 ## 最大栈
 
 
+[895. Maximum Frequency Stack](https://leetcode.com/problems/maximum-frequency-stack/)
+- Design a stack-like data structure to push elements to the stack and pop the most frequent element from the stack.
+- Implement the FreqStack class:
+  - FreqStack() constructs an empty frequency stack.
+  - void push(int val) pushes an integer val onto the top of the stack.
+  - int pop() removes and returns the most frequent element in the stack.
+  - If there is a tie for the most frequent element, the element closest to the stack's top is removed and returned.
 
 
+```java
+FreqStack stk = new FreqStack();
+
+// 向最大频率栈中添加元素
+stk.push(2); stk.push(7); stk.push(2);
+stk.push(7); stk.push(2); stk.push(4);
+
+// 栈中元素：[2,7,2,7,2,4]
+stk.pop() // 返回 2
+// 因为 2 出现了三次
+
+// 栈中元素：[2,7,2,7,4]
+stk.pop() // 返回 7
+// 2 和 7 都出现了两次，但 7 是最近添加的
+
+// 栈中元素：[2,7,2,4]
+stk.pop() // 返回 2
+
+// 栈中元素：[2,7,4]89-p-0p098-0p
+stk.pop() // 返回 4
+
+// 栈中元素：[2,7]
 
 
+// Runtime: 27 ms, faster than 67.35% of Java online submissions for Maximum Frequency Stack.
+// Memory Usage: 49.8 MB, less than 38.95% of Java online submissions for Maximum Frequency Stack.
+
+class FreqStack {
+    int maxFre;
+    HashMap<Integer, Integer> ValFre;
+    HashMap<Integer, Stack<Integer>> FreVal;
 
 
+    public FreqStack() {
+        // 记录 FreqStack 中元素的最大频率
+        maxFreq = 0;
+        // 记录 FreqStack 中每个 val 对应的出现频率，后文就称为 VF 表
+        valToFreq = new HashMap<>();
+        // 记录频率 freq 对应的 val 列表，后文就称为 FV 表
+        freqToVals = new HashMap<>();
+    }
+
+    public void push(int val) {
+        // 修改 VF 表：val 对应的 freq 加一
+        int freq = valToFreq.getOrDefault(val, 0) + 1;
+        valToFreq.put(val, freq);
+        // 修改 FV 表：在 freq 对应的列表加上 val
+        freqToVals.putIfAbsent(freq, new Stack<>());
+        freqToVals.get(freq).push(val);
+        // 更新 maxFreq
+        maxFreq = Math.max(maxFreq, freq);
+    }
+
+
+    public int pop() {
+        // 修改 FV 表：pop 出一个 maxFreq 对应的元素 v
+        Stack<Integer> vals = freqToVals.get(maxFreq);
+        int v = vals.pop();
+        // 修改 VF 表：v 对应的 freq 减一
+        int freq = valToFreq.get(v) - 1;
+        valToFreq.put(v, freq);
+        // 更新 maxFreq
+        if (vals.isEmpty()) {
+            // 如果 maxFreq 对应的元素空了
+            maxFreq--;
+        }
+        return v;
+    }
+}
+
+```
+
+
+---
+
+
+## other
+
+
+### 中位数
+
+[295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
+- The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value and the median is the mean of the two middle values.
+  - For example, for arr = [2,3,4], the median is 3.
+  - For example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.
+
+- Implement the MedianFinder class:
+  - MedianFinder() initializes the MedianFinder object.
+  - void addNum(int num) adds the integer num from the data stream to the data structure.
+  - double findMedian() returns the median of all elements so far. Answers within 10-5 of the actual answer will be accepted.
 
 
 
