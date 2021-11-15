@@ -1,42 +1,48 @@
 ---
+# Style for Tab Categories
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2019 Cotes Chung
+# MIT License
 ---
-/*!
-  Style for Tab Categories
-  v2.0
-  https://github.com/cotes2020/jekyll-theme-chirpy
-  © 2019 Cotes Chung
-  MIT License
-*/
 
-.categories {
-  margin-bottom: 2rem;
-}
 
-.categories .card-header {
-  padding-right: 12px;
-}
+{% include_relative _addon/main.scss %}
 
-.categories .card-header>span>i:first-child,
-.categories .list-group-item>i {
+%category-icon-color {
   color: gray;
 }
 
-.categories .list-group-item {
-  border-left: none;
-  border-right: none;
-  padding-left: 2rem;
-}
+.categories {
+  margin-bottom: 2rem;
+  .card-header {
+    padding-right: 12px;
+  }
+  .list-group-item {
+    border-left: none;
+    border-right: none;
+    padding-left: 2rem;
+    > i {
+      @extend %category-icon-color;
+    }
+    &:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
 
-.categories .collapsing .list-group-item:first-child,
-.categories .collapse .list-group-item:first-child {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
+  }
 
-.categories i.far,
-.categories i.fas { // fontawesome icons
-  font-size: 86%;
-}
+  .card-header > span > i:first-child {
+    @extend %category-icon-color;
+  }
+
+  i {
+    &.far, &.fas {
+      font-size: 86%; // fontawesome icons
+    }
+  }
+
+} // .categories
 
 .category-trigger {
   width: 1.7rem;
@@ -44,45 +50,22 @@
   border-radius: 50%;
   text-align: center;
   color: #6c757d!important;
+  > i.fas {
+    position: relative;
+    height: 0.7rem;
+    width: 1rem;
+    transition: 300ms ease all;
+  }
 }
 
 @media (hover: hover) { // only works on desktop
   .category-trigger:hover {
-    background-color: var(--categories-hover-bg, #e9ecef);
+    background-color: var(--categories-hover-bg);
   }
-}
-
-.category-trigger>i.fas {
-  position: relative;
-  height: .7rem;
-  width: 1rem;
-  transition: 300ms ease all;
 }
 
 .rotate {
   -ms-transform: rotate(-90deg); /* IE 9 */
   -webkit-transform: rotate(-90deg); /* Safari 3-8 */
   transform: rotate(-90deg);
-}
-
-@media (prefers-color-scheme: dark) {
-  .categories.card,
-  .list-group-item {
-    background-color: var(--card-bg);
-  }
-
-  .categories .card-header {
-    background-color: var(--card-header-bg);
-  }
-
-  .categories .list-group-item {
-    border-left: none;
-    border-right: none;
-    padding-left: 2rem;
-    border-color: var(--main-border);
-  }
-
-  .categories .list-group-item:last-child {
-    border-bottom-color: var(--card-bg);
-  }
 }

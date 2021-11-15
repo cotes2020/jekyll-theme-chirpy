@@ -15,11 +15,12 @@
 
 set -eu
 
-WORK_DIR=$(dirname $(dirname $(realpath "$0")))
-URL_FILE=${WORK_DIR}/assets/data/proxy.json
-PV_CACHE=${WORK_DIR}/assets/data/pageviews.json
+WORK_DIR="$(dirname "$(dirname "$(realpath "$0")")")"
+URL_FILE="${WORK_DIR}/_config.yml"
+PV_CACHE="${WORK_DIR}/assets/js/data/pageviews.json"
 
+PROXY_URL="$(grep "proxy_endpoint:" "$URL_FILE" | sed "s/.*: '//g;s/'.*//")"
 
-PROXY_URL=$(jq -r '.proxyUrl' $URL_FILE)
+wget "$PROXY_URL" -O "$PV_CACHE"
 
-wget $PROXY_URL -O $PV_CACHE
+echo "ls $PV_CACHE"

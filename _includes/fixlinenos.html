@@ -1,9 +1,0 @@
-<!--
-  Fixed kramdown code highlight rendering:
-  https://github.com/penibelst/jekyll-compress-html/issues/101
-  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
--->
-{% if _content contains '<pre class="highlight">' %}
-  {% assign _content = _content | replace: '<pre class="highlight"><code', '<code' %}
-  {% assign _content = _content | replace: '</code></pre>', '</code>' %}
-{% endif %}

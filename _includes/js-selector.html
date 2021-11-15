@@ -1,0 +1,28 @@
+<!--
+  JS selector for site.
+  Chirpy v2.3
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT Licensed
+-->
+
+{% if page.layout == 'home' or page.layout == 'post' or page.layout == 'categories' %}
+  {% assign js = page.layout %}
+{% else %}
+  {% assign js = "page" %}
+{% endif %}
+
+{% assign js_src = js | prepend: '/assets/js/' | append: '.min.js' | relative_url %}
+
+<script async src="{{ js_src }}"></script>
+
+{% if page.math %}
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endif %}
+
+{% if jekyll.environment == 'production' %}
+  <!-- PWA -->
+  <script defer src="{{ '/app.js' | relative_url }}"></script>
+{% endif %}

@@ -1,0 +1,28 @@
+<!--
+ Post sharing snippet
+
+ v2.1
+ https://github.com/cotes2020/jekyll-theme-chirpy
+ © 2019 Cotes Chung
+ Published under the MIT License
+-->
+
+<div class="share-wrapper">
+  <span class="share-label text-muted mr-1">{{ site.data.share.label }}</span>
+  <span class="share-icons">
+    {% capture title %}{{ page.title }} - {{ site.title }}{% endcapture %}
+    {% assign url = page.url | relative_url | prepend: site.url %}
+
+    {% for share in site.data.share.platforms %}
+      {% assign link = share.link | replace: 'TITLE', title | replace: 'URL', url %}
+        <a href="{{ link }}" data-toggle="tooltip" data-placement="top"
+          title="{{ share.type }}" target="_blank" rel="noopener" aria-label="{{ share.type }}">
+          <i class="fa-fw {{ share.icon }}"></i>
+        </a>
+    {% endfor %}
+
+    <i class="fa-fw fas fa-link small" onclick="copyLink()"
+        data-toggle="tooltip" data-placement="top" title="Copy link"></i>
+
+  </span>
+</div>

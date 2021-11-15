@@ -1,237 +1,181 @@
-# Jekyll Theme Chirpy
+# Chirpy
 
-[![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=event%3Apush)
+Language: English | [简体中文](docs/README.zh-CN.md)
+
+[![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8220b926db514f13afc3f02b7f884f4b)](https://app.codacy.com/manual/cotes2020/jekyll-theme-chirpy?utm_source=github.com&utm_medium=referral&utm_content=cotes2020/jekyll-theme-chirpy&utm_campaign=Badge_Grade_Dashboard)
 [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
 [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-Language: English | [简体中文](docs/README_zh-CN.md)
+A minimal, sidebar, responsive web design Jekyll theme that focuses on text presentation. Designed to help you record and share your knowledge easily. [Live Demo »](https://chirpy.cotes.info)
 
-A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text exhibition. It will help you easily record, manage and share your knowledge and experience. 
-
-You will get the following features:
-
-* Auto Dark Mode
-* Posts' Last Modified Date
-* Table of Contents
-* Automatically Recommend Related Posts
-* Syntax highlighting
-* Two Level Categories
-* Search
-* Atom Feeds
-* Disqus Comments
-* Google Analytics
-* GA Pageviews (Advanced)
-* SEO Tag
-* Performance Optimization
-
-[**Live Demo** »](https://chirpy.cotes.info)
-
-![devices-mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)
+[![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
 
 ## Table of Contents
 
-* [Installing](#installing)
-* [Usage](#usage)
-* [Contributing](#contributing)
-* [Credits](#credits)
-* [Support](#support)
-* [License](#license)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [Supporting](#supporting)
+- [License](#license)
 
+## Features
 
-## Installing
+- Pinned Posts
+- Configurable theme mode
+- Double-level Categories
+- Last modified date for posts
+- Table of Contents
+- Automatically recommend related posts
+- Syntax highlighting
+- Mathematical expressions
+- Search
+- Atom Feeds
+- Disqus Comments
+- Google Analytics
+- GA Pageviews reporting (Advanced)
+- SEO and Performance Optimization
 
-### Prerequisites
+## Installation
 
-Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installtion of basic environment (Ruby, RubyGem, Bundler and Jekyll). In order to use the script tools to save time, we also need to install [Python](https://www.python.org/downloads/)(version 3.5 or abover) and [ruamel.yaml](https://pypi.org/project/ruamel.yaml/).
+[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub, rename the repository to `USERNAME.github.io` (where `USERNAME` is your GitHub username), and then open terminal and clone the fork to local by:
 
-In addition, if your machine is running Debian or macOS, make sure you have the [GNU coreutils](https://www.gnu.org/software/coreutils/) installed. Otherwise, get it by:
-
-* Debian
-
-```console
-$ sudo apt-get install coreutils
+```terminal
+$ git clone https://github.com/USERNAME/USERNAME.github.io.git -b master --single-branch
 ```
 
-* macOS
+### Setting up the local envrionment
 
-```console
-$ brew install coreutils
-```
+If you would like to run or build the project on your local machine, please follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll` and `Bundler`.
 
-
-### Jekyll Plugins
-
-[Fork **Chirpy** from GitHub](https://github.com/cotes2020/jekyll-theme-chirpy/fork), then clone your forked repo to local:
-
-```console
-$ git clone git@github.com:USER/jekyll-theme-chirpy.git
-```
-
-replace the `USER` above to your GitHub username.
-
-The first time you run or build the project on your machine, perform the installation of Jekyll plugins. Go to the root of repo and run:
+Before running or building for the first time, please complete the installation of the Jekyll plugins. Go to the root directory of project and run:
 
 ```terminal
 $ bundle install
 ```
 
-`bundle` will automatically install all the dependent Jekyll Plugins that listed in the `Gemfile`.
+`bundle` will automatically install all the dependencies specified by `Gemfile`.
 
+### Setting up Docker environment (optional)
+
+If you're a loyal fan of [**Docker**](https://www.docker.com/) or just too lazy to install the packages mentioned in [_Setting up the local envrionment_](#setting-up-the-local-envrionment), please make sure you have **Docker Engine** installed and running, and then get Docker image `jekyll/jekyll` from Docker Hub by the following command:
+
+```console
+$ docker pull jekyll/jekyll
+```
 
 ## Usage
 
+### Initialization
 
-### Directory Structure
+Go to the root directory of the project and start initialization:
 
-The main files and related brief introductions are listed below.
-
-```sh
-jekyll-theme-chirpy/
-├── _data
-├── _includes      
-├── _layouts
-├── _posts          # posts stay here
-├── _scripts
-├── .travis.yml     # remove it
-├── .github         # remove this, too
-├── assets      
-├── tabs
-│   └── about.md    # the ABOUT page
-├── .gitignore
-├── 404.html
-├── Gemfile
-├── LICENSE
-├── README.md
-├── _config.yml     # configuration file
-├── tools           # script tools
-├── docs
-├── feed.xml
-├── index.html
-├── robots.txt
-└── sitemap.xml
-```
-
-
-As mentioned above, some files or directories should be removed from your repo:
-
-- .travis.yml
-- .github
-
-
-### Customization
-
-Basically, go to `_config.yml` and customize the variables as needed, some of them are typical options:
-
-* Avatar
-    
-    `avatar` defines the source image location. The sample image is `/assets/img/sample/avatar.jpg`. It should be replaced by your own one. Notice that a huge image file will increase the load time of your site, so keep your avatar size as samll as possible(may be *<https://tinypng.com/>* will help).
-
-* TimeZone
-
-    To ensure that the posts' release date matches the city you live in, please modify the field `timezone` correctly. A list of all available values can be found on [TimezoneConverter](http://www.timezoneconverter.com/cgi-bin/findzone/findzone) or [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-
-
-###  Run Locally
-
-You may want to preview the site before publishing, so just run the script tool:
-
-```terminal
-$ bash tools/run.sh
-```
-
-Open a modern brower and visit at <http://localhost:4000>.
-
-Few days later, you may find that the file modification(e.g. edits to a post) does not refresh in real time by using `run.sh`. Don't worry, the advanced option `-r` (or `--realtime`) will solve this problem, but it requires [**fswatch**](http://emcrisostomo.github.io/fswatch/) to be installed on your machine. Type `-h` for more information.
-
-###  Deploying to GitHub Pages
-
-Before the deployment begins, ensure the `url` in file `_config.yml` has been set to `https://<username>.github.io`(or the custom domain, if you have. e.g. `https://yourdomain.com`). What's more, if you prefer to the [Project site](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites), change `baseurl` of file `_config.yml` to your project name, starting with a slash. e.g. `/project`.
-
-#### Option 1: Built by GitHub Pages
-
-By deploying the site in this way, you're allowed to push the source code directly to the remote.
-
-> **Note**: If you want to use any third-party Jekyll plugins that not in [this list](https://pages.github.com/versions/), stop reading the current approach and go to [*Option 2: Build locally*](#option-2-build-locally).
-
-**1**. Rename the repository to:
-
-|Site Type | Repo's Name|
-|:---|:---|
-|User or Organization | `<username>.github.io`|
-|Project| any one except `<username>.github.io`, let's say `project`|
-
-**2**. Commit the changes of the repo first, then run the initialization script:
-
-```terminal
+```console
 $ bash tools/init.sh
 ```
 
->**Note**: The *Recent Update* requires the posts' latest git-log date, so make sure the changes in `_posts` have been committed before running this command.
+> **Note**: If you not intend to deploy it on GitHub Pages, append parameter option `--no-gh` at the end of the above command.
 
-it will automatically generates the *Latest Modified Date* and *Categories / Tags* page for the posts.
+What it does is:
 
-**3**. Push the changes to `origin/master` then go to GitHub website and enable GitHub Pages service for the repo.
+1. Remove some files or directories from your repository:
 
-**4**. Check it out:
+    - `.travis.yml`
+    - files under `_posts`
+    - folder `docs`
 
-|Site Type | Site URL |
-|:---|:---|
-|User or Organization | `https://<username>.github.io/`|
-|Project| `https://<username>.github.io/project/`|
+2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`.
 
+3. Automatically create a commit to save the changes.
 
-#### Option 2: Build Locally
+### Configuration
 
-For security reasons, GitHub Pages runs on `safe` mode, which means the third-party Jekyll plugins or custom scripts won't work. If you want to use any another plugins that not in the [whitelist](https://pages.github.com/versions/), **you have to generate the site locally rather than on GitHub Pages**.
+Generally, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
 
-**1**. Browse to GitHub website, create a brand new repo named: 
+- `url`
+- `avatar`
+- `timezone`
+- `theme_mode`
 
-|Site Type | Repo's Name|
-|:---|:---|
-|User or Organization | `<username>.github.io`|
-|Project| any one except `<username>.github.io`, let's say `project`|
+### Run Locally
 
-and clone it.
+You may want to preview the site contents before publishing, so just run it by:
 
-**2**. In the root of the source project, build your site by:
-
-```console
-$ bash tools/build.sh -d /path/to/local/project/
+```terminal
+$ bundle exec jekyll s
 ```
 
-The generated static files will be placed in the root of `/path/to/local/project`. Commit and push the changes to the `master` branch on GitHub.
+Then open a browser and visit to <http://localhost:4000>.
 
-**3**. Go to GitHub website and enable Pages service for the new repository.
+### Run on Docker
 
-**4**. Visit at:
+Run the site on Docker with the following command:
 
-|Site Type | Site URL |
-|:---|:---|
-|User or Organization | `https://<username>.github.io/`|
-|Project| `https://<username>.github.io/project/`|
+```terminal
+$ docker run -it --rm \
+    --volume="$PWD:/srv/jekyll" \
+    -p 4000:4000 jekyll/jekyll \
+    jekyll serve
+```
 
-and enjoy!
+### Deployment
+
+Before the deployment begins, checkout the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [_project site_](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base url on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starting with a slash. For example, `/project`.
+
+Assuming you have already gone through the [initialization](#initialization), you can now choose ONE of the following methods to deploy your website.
+
+#### Deploy on GitHub Pages
+
+For security reasons, GitHub Pages build runs on `safe` mode, which restricts us from using plugins to generate additional page files. Therefore, we can use **GitHub Actions** to build the site, store the built site files on a new branch, and use that branch as the source of the Pages service.
+
+1. Push any commit to `origin/master` to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
+
+2. Browse to your repo's landing page on GitHub and select the branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) throught _Settings_ → _Options_ → _GitHub Pages_:
+    ![gh-pages-sources](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/gh-pages-sources.png)
+
+3. Visit your website at the address indicated by GitHub.
+
+#### Deploy on Other Platforms
+
+On platforms other than GitHub, we cannot enjoy the convenience of **GitHub Actions**. Therefore, we should build the site locally (or on some other 3rd-party CI platform) and then put the site files on the server.
+
+Go to the root of the source project, build your site by:
+
+```console
+$ JEKYLL_ENV=production bundle exec jekyll b
+```
+
+Or, build the site with Docker by:
+
+```terminal
+$ docker run -it --rm \
+    --env JEKYLL_ENV=production \
+    --volume="$PWD:/srv/jekyll" \
+    jekyll/jekyll \
+    jekyll build
+```
+
+Unless you specified the output path, the generated site files will be placed in folder `_site` of the project's root directory. Now you should upload those files to your web server.
 
 ### Documentation
 
-For more details and the better reading experience, please check out the [tutorial in demo site](https://chirpy.cotes.info/categories/tutorial/). In the meanwhile, a copy of the tutorial is also available on the [Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+For more details and the better reading experience, please check out the [tutorials on demo site](https://chirpy.cotes.info/categories/tutorial/). In the meanwhile, a copy of the tutorial is also available on the [Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
 
 ## Contributing
 
-The old saying: "Tow heads are better than one. Five heads are better than two." So, welcome to report bugs, improve code quality or submit a new feature. For more information, see [contributing guidelines](.github/CONTRIBUTING.md).
-
+The old saying, "Two heads are better than one." Consequently, welcome to report bugs, improve code quality or submit a new feature. For more information, see [contributing guidelines](.github/CONTRIBUTING.md).
 
 ## Credits
 
-This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Bootstrap](https://getbootstrap.com/), [Font Awesome](https://fontawesome.com/) and some other wonderful tools(their copyright information can be found in the relevant files).
+This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Bootstrap](https://getbootstrap.com/), [Font Awesome](https://fontawesome.com/) and some other wonderful tools (their copyright information can be found in the relevant files).
 
-:tada:Thanks to all the volunteers who contributed to this project, their github ID is on [this list](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors). Also, I won't forget the guys who submitted the issues(or unmerged PR), they reported bugs, shared ideas or inspired me to write more readable documentation.
+:tada: Thanks to all the volunteers who contributed to this project, their GitHub IDs are on [this list](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors). Also, I won't forget those guys who submitted the issues or unmerged PR because they reported bugs, shared ideas or inspired me to write more readable documentation.
 
+## Supporting
 
-## Support
-
-If you enjoy this theme or find it helpful, please consider becoming my sponsor, I'd really appreciate it! Click the button <kbd>:heart:Sponsor</kbd> at the top of the [Home Page](https://github.com/cotes2020/jekyll-theme-chirpy) and choose a link that suits you to donate. This will encourage me and help me maintain this project.
-
+If you enjoy this theme or find it helpful, please consider becoming my sponsor, I'd really appreciate it! Click the button <kbd>:heart: Sponsor</kbd> at the top of the [Home Page](https://github.com/cotes2020/jekyll-theme-chirpy) and choose a link that suits you to donate; this will encourage and help me better maintain the project.
 
 ## License
 

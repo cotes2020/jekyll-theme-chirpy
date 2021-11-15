@@ -29,22 +29,23 @@
     <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
 
     <div id="topbar-title">
-    {% if page.location %}
-      {{- page.location -}}
-    {% elsif page.layout == "home" %}
-      {{- site.title -}}
-    {% else %}
-      {{- page.title -}}
-    {% endif %}
+      {% if page.layout == 'home' %}
+        {{- site.title -}}
+      {% elsif page.dynamic_title %}
+        {{- page.title -}}
+      {% else %}
+        {{- page.layout | capitalize -}}
+      {% endif %}
     </div>
 
     <i id="search-trigger" class="fas fa-search fa-fw"></i>
     <span id="search-wrapper" class="align-items-center">
       <i class="fas fa-search fa-fw"></i>
-      <input class="form-control" id="search-input" type="search" placeholder="{{ site.data.label.search_hint }}...">
+      <input class="form-control" id="search-input" type="search"
+        aria-label="search" placeholder="{{ site.data.label.search_hint }}...">
       <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i>
     </span>
-    <a href="javascript:;">Cancel</a>
+    <span id="search-cancel" >Cancel</span>
   </div>
 
 </div>
