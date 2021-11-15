@@ -7,17 +7,16 @@
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
+
 title: Chirpy                          # the main title
 
 tagline: A text-focused Jekyll theme.  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation.
 
-# fill in the base hostname & protocol for your site, e.g., 'https://username.github.io'
-url: ''
+# Replace with your domain, e.g. 'https://username.github.io'
+url: 'protocol://domain'
 
 author: your_full_name                  # change to your full name
 
@@ -41,44 +40,34 @@ social:
     # - https://www.linkedin.com/in/username
 
 google_site_verification: google_meta_tag_verification # change to your verification string
+
 #--------------------------
 
-
-# Only if your site type is GitHub Project sites and doesn't have a custom domain,
-# change below value to '/projectname'.
+# if your site type is Project Pages site, change below value to '/projectname'
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Asia/Shanghai
 
 google_analytics:
-  id: ''          # Fill with your Google Analytics ID
-  pv:
-    # The Google Analytics pageviews switch.
-    # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
-    enabled: false
-    # the next options only valid when `google_analytics.pv` is enabled.
-    proxy_url: ''
-    proxy_endpoint: ''
-    cache: false  # pv data local cache, good for the users from GFW area.
+  # Fill with your Google Analytics ID
+  id: ''
+  # The Google Analytics pageviews switch.
+  # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
+  pv: false
+  # superProxy baseURL and URL, only valid when `google_analytics.pv` is set to 'true'
+  proxy_baseurl: ''
+  proxy_url: ''
+
 
 disqus:
   comments: false  # boolean type, the global switch for posts comments.
   shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
+# The year your website first ran.
+first_run: 2019
 
-# Prefer color scheme setting, available values:
-#
-#     dual   - Follow the system prefer color by default, and a toggle will display
-#              in the left bottom of Sidebar, which used for switch the theme between dark and light.
-#
-#     light  - Use the light color scheme
-#
-#     dark   - Use the dark color scheme
-#
-theme_mode: dual
-
-# boolean type, the global switch for ToC in posts.
+# boolean type, global switch for ToC in posts.
 toc: true
 
 paginate: 10
@@ -99,25 +88,18 @@ kramdown:
       line_numbers: true
       start_line: 1
 
-# DO NOT change this unless you're a Pro user on Jekyll and Web development,
-# or you think you're smart enough to change other relevant URLs within this template.
 permalink: /posts/:title/
-
-collections:
-  tabs:
-    output: true
-    sort_by: order
-
 
 defaults:
   -
     scope:
-      path: ''          # An empty string here means all files in the project
+      path: ""          # An empty string here means all files in the project
       type: posts
     values:
       layout: post
       comments: true    # Enable comments in posts.
       toc: true         # Display TOC column in posts.
+      location: Post
       breadcrumb:
         -
           label: Posts
@@ -129,15 +111,9 @@ defaults:
       comments: false
   -
     scope:
-      path: index.html
-    values:
-      breadcrumb:
-        -
-          label: Posts
-  -
-    scope:
       path: tags
     values:
+      location: Tag
       breadcrumb:
         -
           label: Home
@@ -149,6 +125,7 @@ defaults:
     scope:
       path: categories
     values:
+      location: Category
       breadcrumb:
         -
           label: Home
@@ -158,8 +135,7 @@ defaults:
           url: /tabs/categories/
   -
     scope:
-      path: ''
-      type: tabs             # see `site.collections`
+      path: tabs
     values:
       layout: page
       dynamic_title: true    # Hide title in mobile screens.
@@ -167,6 +143,12 @@ defaults:
         -
           label: Home
           url: /
+  -
+    scope:
+      path: assets/data
+    values:
+      layout: compress
+
 
 sass:
   sass_dir: /assets/css
@@ -174,27 +156,31 @@ sass:
 
 compress_html:
   clippings: all
-  comments: all
-  endings: all
+  comments: ["<!-- ", " -->"]
+  endings: [html, head, body, dt, dd, rt, rp, optgroup, option, colgroup, caption, thead, tbody, tfoot, tr, td, th]
   profile: false
   blanklines: false
   ignore:
     envs: []
 
 exclude:
-  - vendor
+  - vendor        # Avoid Jekyll mistakenly read the vender directory on Travis-CI's VM .
   - Gemfile.lock
   - Gemfile
   - tools
   - docs
-  - README.md
-  - LICENSE
 
-jekyll-archives:
-  enabled: [categories, tags]
-  layouts:
-    category: category
-    tag: tag
-  permalinks:
-    tag: '/tags/:name/'
-    category: '/categories/:name/'
+sitemap_exclude:  # Sitemap will exclude the following items.
+  fuzzy:
+    - /assets/
+  accurate:
+    - /norobots/
+    - /tabs/
+    - /categories/
+    - /tags/
+    - /posts/
+    - 404.html
+    - feed.xml
+    - sitemap.xml
+    - robots.txt
+    - redirects.json

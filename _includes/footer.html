@@ -7,27 +7,20 @@
 -->
 
 <footer class="d-flex w-100 justify-content-center">
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="footer-left">
+  <div class="d-flex justify-content-between  align-items-center">
+    <div class="copyright">
+      {% assign first = site.first_run | plus: 0 %}
+      {% assign last = 'now' | date: "%Y" | plus: 0 %}
       <p class="mb-0">
-        © {{ 'now' | date: "%Y" }}
-        <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
-        {% if site.data.rights.brief %}
-        <span data-toggle="tooltip" data-placement="top"
-          title="{{ site.data.rights.verbose }}">{{ site.data.rights.brief }}</span>
-        {% endif %}
+        © {% if last > first %}{{ first }}-{% endif %}{{-last-}}
+        <a href="{{ site.social.links[0] }}" class="ml-1">{{ site.social.name }}</a>.
+        <br>Powered by <a href="https://jekyllrb.com" target="_blank">Jekyll</a>, theme by <a href="https://github.com/cotes2020/jekyll-theme-chirpy/">Chirpy</a>.
       </p>
     </div>
-
-    <div class="footer-right">
+    <div class="license">
       <p class="mb-0">
-        Powered by
-        <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-        with
-        <a href="{{ site.data.meta.homepage }}" target="_blank" rel="noopener">{{ site.data.meta.name }}</a>
-        theme.
+        The blog posts on this site are licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
       </p>
     </div>
-
   </div> <!-- div.d-flex -->
 </footer>

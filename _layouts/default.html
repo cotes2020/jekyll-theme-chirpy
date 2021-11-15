@@ -8,55 +8,41 @@ layout: compress
 ---
 
 <!DOCTYPE html>
-
-{% if site.lang %}
-  {% assign lang = site.lang | split: "_" | first %}
-{% else %}
-  {% assign lang = 'en' %}
-{% endif %}
-
-{% capture prefer_mode %}
-  {% if site.theme_mode != "dual" %}
-    mode="{{ site.theme_mode }}"
-  {% endif %}
-{% endcapture %}
-
-<html lang="{{ lang }}" {{ prefer_mode }} >
+<html lang="en">
 
   {% include head.html %}
 
   <body data-spy="scroll" data-target="#toc">
-
     <div id="sidebar" class="d-flex flex-column">
       {% include sidebar.html %}
     </div>
-
-    {% include topbar.html %}
-
     <div id="main-wrapper">
+      {% include topbar.html %}
       <div id="main">
 
-        {% include refactor-content.html content=content %}
+        {% capture _content %}
+          {{ content }}
+        {% endcapture %}
+
+        {% include fixlinenos.html %}
+        {{ _content }}
 
         {% include footer.html %}
-
       </div>
-
       {% include search-results.html %}
-
-    </div> <!-- #main-wrapper -->
+    </div>
 
     <div id="mask"></div>
 
-    <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
+    <a id="back-to-top" href="#" class="btn btn-lg btn-box-shadow" role="button">
       <i class="fas fa-angle-up"></i>
     </a>
 
-    {% include search-loader.html %}
-
-    {% if site.google_analytics.id and jekyll.environment == 'production' %}
+    {% if jekyll.environment == 'production' %}
       {% include google-analytics.html %}
     {% endif %}
+
+    {% include search-loader.html %}
 
   </body>
 
