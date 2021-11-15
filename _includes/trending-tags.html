@@ -1,5 +1,9 @@
 {% comment %}
   The trending tags list
+  v2.0
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2019 Cotes Chung
+  MIT Licensed
 {% endcomment %}
 
 {% assign MAX = 10 %}
@@ -11,7 +15,7 @@
   {% assign size = tag | last | size %}
   {% assign size_list = size_list | push: size %}
 
-  {% assign tag_str = tag | first | append: "::" | append: size %}
+  {% assign tag_str = tag | first | replace: " ", "-" | append: "::" | append: size %}
   {% assign tag_list =  tag_list | push: tag_str %}
 {% endfor %}
 

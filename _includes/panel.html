@@ -1,19 +1,21 @@
 <!--
   The Pannel on right side (Desktop views)
+  v2.0
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2017-2019 Cotes Chung
+  MIT License
 -->
-
-{% include lang.html %}
 
 <div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down">
 
   <div class="access">
 
   {% include update-list.html %}
-
+  
   {% if update_list.size > 0 %}
-
+    
     <div id="access-lastmod" class="post">
-      <span>{{- site.data.locales[lang].panel.lastmod -}}</span>
+      <span>{{- site.data.label.panel.lastmod -}}</span>
       <ul class="post-content pl-0 pb-1 ml-1 mt-2">
 
       {% for item in update_list %}
@@ -25,19 +27,19 @@
 
       </ul>
     </div> <!-- #access-lastmod -->
-
+  
   {% endif %}
 
   {% include trending-tags.html %}
 
   {% if trending_tags.size > 0 %}
     <div id="access-tags">
-      <span>{{- site.data.locales[lang].panel.trending_tags -}}</span>
+      <span>{{- site.data.label.panel.trending_tags -}}</span>
       <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
-
-      {% for tag_name in trending_tags %}
-        {% assign url = tag_name | slugify | url_encode | prepend: "/tags/" | append: "/" %}
-        <a class="post-tag" href="{{ url | relative_url }}">{{ tag_name }}</a>
+      
+      {% for tag in trending_tags %}
+        {% capture url %}/tags/{{ tag | downcase | url_encode }}/{% endcapture %}
+        <a class="post-tag" href="{{ url | relative_url }}">{{ tag | replace: '-', ' ' }}</a>
       {% endfor %}
 
       </div>
@@ -45,15 +47,13 @@
   {% endif %}
   </div> <!-- .access -->
 
-  {% if include.toc %}
-    <!-- BS-toc.js will be loaded at medium priority -->
-    <script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script>
-    <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
-      <span class="pl-3 pt-2 mb-2">
-      {{- site.data.locales[lang].panel.toc -}}
-      </span>
-      <nav id="toc" data-toggle="toc"></nav>
-    </div>
+  {% if page.layout == 'post' and site.toc and page.toc %}
+  <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
+    <span class="pl-3 pt-2 mb-2">
+      {{- site.data.label.panel.toc -}}
+    </span>
+    <nav id="toc" data-toggle="toc"></nav>
+  </div>
   {% endif %}
 
 </div> <!-- #panel-wrapper -->

@@ -1,0 +1,11 @@
+#  The date format
+#  v2.1
+#  https://github.com/cotes2020/jekyll-theme-chirpy
+#  © 2020 Cotes Chung
+#  MIT Licensed
+
+
+tooltip: "%a, %b %e, %Y, %l:%M %p %z"
+post:
+  long: "%b %e, %Y"
+  short: "%b %e"

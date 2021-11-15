@@ -1,0 +1,151 @@
+/*
+* The syntax highlight.
+* v2.0
+* https://github.com/cotes2020/jekyll-theme-chirpy
+* © 2018-2019 Cotes Chung
+* MIT Licensed
+*/
+
+@import "_colors/light-syntax";
+@import "_colors/dark-syntax";
+
+html:not([mode]),
+html[mode=light] {
+  @include light-syntax;
+}
+
+html[mode=dark] {
+  @include dark-syntax;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([mode]),
+  html[mode=dark] {
+    @include dark-syntax;
+  }
+
+  html[mode=light] {
+    @include light-syntax;
+  }
+}
+
+/* -- Codes Snippet -- */
+
+%code-snippet-bg {
+  background: var(--highlight-bg-color);
+}
+
+%code-snippet-radius {
+  border-radius: 5px;
+}
+
+%code-snippet-padding {
+  padding: 0.8rem 1rem;
+}
+
+$code-font-size: 0.85rem;
+
+div > pre {
+  @extend %code-snippet-bg;
+  @extend %code-snippet-radius;
+  @extend %code-snippet-padding;
+}
+
+.highlighter-rouge {
+  @extend %code-snippet-bg;
+  @extend %code-snippet-radius;
+
+  color: var(--highlighter-rouge-color);
+  margin-bottom: 1.2em; /* Override BS Inline-code style */
+}
+
+.highlight {
+  @extend %code-snippet-radius;
+  @extend %code-snippet-bg;
+
+  @at-root figure#{&} {
+    @extend %code-snippet-bg;
+  }
+
+  overflow: auto;
+  .lineno {
+    margin: 0.8rem 0;
+    padding: 0 0.5rem;
+    min-width: 2.2rem;
+    text-align: right;
+    color: var(--highlight-lineno-color);
+    border-right: 1px solid var(--highlight-lineno-border-color);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+  pre {
+    margin-bottom: 0;
+    font-size: $code-font-size;
+    line-height: 1.4rem;
+    word-wrap: normal; /* Fixed Safari overflow-x */
+  }
+  table {
+    padding: 0;
+    border: 0;
+    td pre {
+      overflow: visible;  /* Fixed iOS safari overflow-x */
+      word-break: normal; /* Fixed iOS safari linenos code break */
+    }
+  }
+  td {
+    padding: 0;
+    border: 0;
+  }
+} //.highlight
+
+code {
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
+
+  &.highlighter-rouge {
+    font-size: $code-font-size;
+    padding: 3px 5px;
+    margin: 0 0.15rem;
+    border-radius: 4px;
+    background-color: var(--inline-code-bg);
+  }
+
+  @at-root a > &.highlighter-rouge {
+    padding-bottom: 0; // show link's underlinke
+    color: inherit;
+  }
+
+  @at-root a:hover > &.highlighter-rouge {
+    border-bottom: none;
+  }
+
+  blockquote &.highlighter-rouge {
+    color: inherit;
+  }
+}
+
+td.rouge-code {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Hide line numbers for default, console, and terminal code snippets */
+div {
+  &[class^='highlighter-rouge'],
+  &.language-plaintext.highlighter-rouge,
+  &.language-console.highlighter-rouge,
+  &.language-terminal.highlighter-rouge {
+    pre.lineno {
+      display: none;
+    }
+    td.rouge-code {
+      @extend %code-snippet-padding;
+    }
+  }
+}

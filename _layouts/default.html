@@ -1,25 +1,35 @@
 ---
 layout: compress
 # Default layout
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2017-2019 Cotes Chung
+# MIT Licensed
 ---
 
 <!DOCTYPE html>
 
-{% include lang.html %}
+{% if site.lang %}
+  {% assign lang = site.lang | split: "_" | first %}
+{% else %}
+  {% assign lang = 'en' %}
+{% endif %}
 
 {% capture prefer_mode %}
-  {% if site.theme_mode %}
+  {% if site.theme_mode != "dual" %}
     mode="{{ site.theme_mode }}"
   {% endif %}
 {% endcapture %}
 
-<html lang="{{ site.lang }}" {{ prefer_mode }}>
+<html lang="{{ lang }}" {{ prefer_mode }} >
 
   {% include head.html %}
 
   <body data-spy="scroll" data-target="#toc">
 
-    {% include sidebar.html %}
+    <div id="sidebar" class="d-flex flex-column">
+      {% include sidebar.html %}
+    </div>
 
     {% include topbar.html %}
 
@@ -36,10 +46,6 @@ layout: compress
 
     </div> <!-- #main-wrapper -->
 
-    {% if page.mermaid %}
-      {% include mermaid.html %}
-    {% endif %}
-
     <div id="mask"></div>
 
     <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
@@ -48,7 +54,9 @@ layout: compress
 
     {% include search-loader.html %}
 
-    {% include js-selector.html %}
+    {% if site.google_analytics.id and jekyll.environment == 'production' %}
+      {% include google-analytics.html %}
+    {% endif %}
 
   </body>
 

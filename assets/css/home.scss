@@ -1,0 +1,145 @@
+---
+# Style for Homepage
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2019 Cotes Chung
+# MIT License
+---
+
+{% include_relative _addon/main.scss %}
+
+#post-list {
+  margin-top: 1rem;
+  padding-right: 0.5rem;
+
+  .post-preview {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--main-border-color);
+
+    h1 {
+      font-size: 1.4rem;
+      margin: 0;
+      ~i { // pinned icon
+        font-size: 0.86rem;
+      }
+    }
+
+    .post-meta {
+      i {
+        font-size: 0.73rem;
+        &:not(:first-child) { // post-meta icons on the homepage
+          margin-left: 1.5rem;
+        }
+      }
+    }
+
+    .post-content {
+      margin-top: 0.6rem;
+      margin-bottom: 0.6rem;
+      color: var(--post-list-text-color);
+      >p {
+        /* Make preview shorter on the homepage */
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+  } // .post-preview
+
+} // #post-list
+
+.pagination {
+  font-size: 1rem;
+  a:hover {
+    text-decoration: none;
+  }
+
+  .page-item {
+    .page-link {
+      color: var(--btn-patinator-text-color);
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      text-align: center;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--btn-paginator-border-color);
+      font-family: 'Lato', sans-serif;
+      background-color: var(--button-bg);
+      &:hover {
+        background-color: var(--btn-paginator-hover-color)
+      }
+    }
+    &.active {
+      .page-link {
+        background-color: var(--btn-active-bg);
+        border-color: var(--btn-active-border-color);
+        box-shadow: 0 0 8px 0 var(--btn-paginator-shadow) !important;
+        color: var(--btn-text-color);
+      }
+    }
+    &.disabled {
+      cursor: not-allowed;
+      .page-link {
+        color: rgba(108, 117, 125, 0.57);
+        border-color: var(--btn-paginator-border-color);
+        background-color: var(--button-bg);
+      }
+    }
+    &:first-child .page-link,
+    &:last-child .page-link {
+      border-radius: 50%;
+    }
+    &:not(:last-child) {
+      margin-right: 0.7rem;
+    }
+  } // .page-item
+
+} // .pagination
+
+@media all and (max-width: 576px) {
+  #post-list .post-meta>span i:not(:first-child) {
+    margin-left: 1rem;
+  }
+}
+
+/* Hide SideBar and TOC */
+@media all and (max-width: 830px) {
+  .pagination {
+    justify-content: center;
+  }
+}
+
+/* Sidebar is visible */
+@media all and (min-width: 831px) {
+
+  #post-list {
+    margin-top: 1.5rem;
+  }
+
+  .pagination {
+    font-size: 0.85rem;
+    .page-item .page-link {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+  }
+
+}
+
+/* Pannel hidden */
+@media all and (max-width: 1200px) {
+  #post-list {
+    padding-right: 0;
+  }
+}
