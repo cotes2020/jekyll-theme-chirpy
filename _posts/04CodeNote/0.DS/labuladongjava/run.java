@@ -1,4 +1,6 @@
-package labuladongjava;  
+package labuladongjava;
+
+import java.util.LinkedList;
 
 public class run {
      
@@ -35,8 +37,29 @@ public class run {
         //                 arr[i].roll_no +" "+ arr[i].name);
 
         // String[] equations = {"c==c"};
-        String[] equations = {"b==d"};
-        // String[] equations = {"c==c","b==d","x!=z"};
-        System.out.println(test.equationsPossible(equations));
+        // String[] equations = {"b==d"};
+        // // String[] equations = {"c==c","b==d","x!=z"};
+        // System.out.println(test.equationsPossible(equations));
+
+
+        // int[] arr = {1,2,3,4,5};
+        // int n = arr.length, index = 0;
+        // for(int i=0; i<7; i++) {
+        //     System.out.println(arr[index % n]);
+        //     index++;
+        // }
+
+        LinkedList<Integer> q = new LinkedList<>();
+
+        System.out.println(q.isEmpty());
+        q.addLast(1);
+        q.addLast(2);
+        q.addLast(3);
+        q.addLast(4);
+        q.addLast(5);
+        System.out.println(q);
+        System.out.println(q.getLast());
+        System.out.println(q.pollLast()); 
+        System.out.println(q);
     }
 }

@@ -23,16 +23,16 @@ toc: true
       - [**图的遍历**](#图的遍历)
     - [三、算法刷题指南](#三算法刷题指南)
     - [四、总结几句](#四总结几句)
-- [https://labuladong.gitbook.io](#httpslabuladonggitbookio)
-  - [day1. 原地修改数组](#day1-原地修改数组)
+- [数组](#数组)
+  - [原地修改数组](#原地修改数组)
     - [有序数组去重](#有序数组去重)
     - [有序链表去重](#有序链表去重)
     - [移除元素](#移除元素)
     - [移除0](#移除0)
-  - [day2. 前缀和技巧](#day2-前缀和技巧)
-    - [计算list中间指定位置的和](#计算list中间指定位置的和)
+  - [前缀和技巧](#前缀和技巧)
+    - [计算索引区间元素和 list中间指定位置的和](#计算索引区间元素和-list中间指定位置的和)
     - [和为k的子数组](#和为k的子数组)
-    - [304. 二维区域和检索 - 矩阵不可变](#304-二维区域和检索---矩阵不可变)
+    - [二维区域和检索](#二维区域和检索)
 - [LinkedList](#linkedlist)
   - [单链表的六大解题套路](#单链表的六大解题套路)
     - [合并两个有序链表 Merge 2 Sorted Lists](#合并两个有序链表-merge-2-sorted-lists)
@@ -61,6 +61,17 @@ toc: true
   - [排序](#排序)
     - [快速排序](#快速排序)
     - [归并排序](#归并排序)
+- [stack](#stack)
+  - [队列 栈](#队列-栈)
+    - [用栈实现队列](#用栈实现队列)
+    - [用队列实现栈](#用队列实现栈)
+  - [单调栈](#单调栈)
+    - [返回等长数组for更大的元素](#返回等长数组for更大的元素)
+    - [返回等长数组for更大的元素的index](#返回等长数组for更大的元素的index)
+    - [环形数组](#环形数组)
+  - [单调队列结构](#单调队列结构)
+  - [一个「队列」，队列中的元素全都是单调递增（或递减）的。](#一个队列队列中的元素全都是单调递增或递减的)
+    - [滑动窗口问题](#滑动窗口问题)
 - [Tree](#tree)
   - [二叉树](#二叉树)
     - [计算一棵二叉树共有几个节点](#计算一棵二叉树共有几个节点)
@@ -88,6 +99,8 @@ toc: true
     - [二叉树后序遍历](#二叉树后序遍历)
     - [二叉树的序列化与反序列化](#二叉树的序列化与反序列化)
     - [二叉树打平到一个字符串](#二叉树打平到一个字符串)
+- [Binary Heap 二叉堆](#binary-heap-二叉堆)
+  - [最大堆和最小堆](#最大堆和最小堆)
 - [Graphy](#graphy)
   - [图的遍历](#图的遍历-1)
     - [DFS](#dfs)
@@ -118,9 +131,15 @@ toc: true
       - [造轮子 LRU 算法](#造轮子-lru-算法)
       - [使用 Java 内置的 LinkedHashMap 来实现一遍。](#使用-java-内置的-linkedhashmap-来实现一遍)
     - [LFU 淘汰算法 Least Frequently Used](#lfu-淘汰算法-least-frequently-used)
-  - [最大栈](#最大栈)
-  - [other](#other)
-    - [中位数](#中位数)
+  - [最大栈 Maximum Frequency Stack](#最大栈-maximum-frequency-stack)
+- [数据流](#数据流)
+  - [无限序列随机抽取元素](#无限序列随机抽取元素)
+    - [无限序列随机抽取1元素](#无限序列随机抽取1元素)
+    - [无限序列随机抽取 k 个数](#无限序列随机抽取-k-个数)
+  - [中位数](#中位数)
+- [功能](#功能)
+  - [设计朋友圈时间线](#设计朋友圈时间线)
+- [systemm design](#systemm-design)
 
 
 ---
@@ -136,14 +155,44 @@ toc: true
 ## 学习算法和刷题的框架思维
 
 ```java
+
+int[] arr = new int[res.size()];
+
+
+Stack<String> Stack= new Stack<>();
 Stack.push();
+Stack.pop();
+// Access element from top of Stack
+Stack.peek();
+Stack.empty();
 
 
 Queue q = new LinkedList<>();
+Queue.push();
+Queue.poll();
+Queue.peek();
+Queue.isEmpty();
+Queue.poll
+
 List<int[]>[] graph = new LinkedList[n+1];
+
+
 List<int[]> res = new ArrayList<>();
+List<Integer> res = new ArrayList<>();
+List.length();
+
+
 
 Set<String> deads = new HashSet<>();
+
+
+LinkedList<Integer> q = new LInkedList<>();
+LinkedList.isEmpty();
+LinkedList.getFirst();
+LinkedList.getLast();
+LinkedList.addLast();
+LinkedList.pollLast();
+
 
 HashMap<Integer, Integer> KeyVal = new HashMap<>();
 HashMap.containsKey(key);
@@ -159,6 +208,16 @@ LinkedHashSet.iterator().next();
 LinkedHashSet.remove(Key);
 
 
+BinaryHeap q = new BinaryHeap();
+BinaryHeap.insert(k);
+BinaryHeap.findMin();
+BinaryHeap.delMin();
+BinaryHeap.isEmpty();
+BinaryHeap.size();
+BinaryHeap.buildHeap(list);
+
+
+
 ```
 
 
@@ -168,6 +227,7 @@ LinkedHashSet.remove(Key);
 11/11:65
 11/12:66
 11/14:67
+11/15:70
 
 
 
@@ -493,10 +553,10 @@ N 叉树的遍历框架
 ---
 
 
-# https://labuladong.gitbook.io
+# 数组
 
 
-## day1. 原地修改数组
+## 原地修改数组
 
 数组
 - 在尾部插入、删除元素是比较高效的，时间复杂度是`1`，
@@ -785,42 +845,24 @@ def moveZeroes(nums: List[int]) -> None:
 ---
 
 
-## day2. 前缀和技巧
+## 前缀和技巧
 
-快速计算一个索引区间内的元素之和。
+### 计算索引区间元素和 list中间指定位置的和
 
+[303. Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/)
+- Given an integer array nums, handle multiple queries of the following type:
 
+- Calculate the sum of the elements of nums between indices left and right inclusive where left <= right.
+- Implement the NumArray class:
 
-### 计算list中间指定位置的和
-
-```
-303. Range Sum Query - Immutable
-Given an integer array `nums`, handle multiple queries of the following type:
-
-Calculate the sum of the elements of nums between `indices left and right` inclusive where `left <= right`.
-
-Implement the NumArray class:
 - `NumArray(int[] nums)` Initializes the object with the integer array nums.
 - `int sumRange(int left, int right)` Returns the sum of the elements of nums between indices left and right inclusive (i.e. `nums[left] + nums[left + 1] + ... + nums[right]`).
 
-Example 1:
-
-Input
-["NumArray", "sumRange", "sumRange", "sumRange"]
-[[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]
-Output:
-[null, 1, -1, -3]
-
-Explanation
-NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
-numArray.sumRange(0, 2); // return (-2) + 0 + 3 = 1
-numArray.sumRange(2, 5); // return 3 + (-5) + 2 + (-1) = -1
-numArray.sumRange(0, 5); // return (-2) + 0 + 3 + (-5) + 2 + (-1) = -3
-```
 
 
 ```java
-// solution 1
+// Runtime: 63 ms, faster than 18.70% of Java online submissions for Range Sum Query - Immutable.
+// Memory Usage: 41.8 MB, less than 91.48% of Java online submissions for Range Sum Query - Immutable.
 class NumArray {
     private int[] nums;
     public NumArray(int[] nums) {
@@ -828,9 +870,7 @@ class NumArray {
     }
     public int sumRange(int left, int right) {
         int res = 0;
-        for (int i = left; i <= right; i++) {
-            res += nums[i];
-        }
+        for (int i = left; i <= right; i++) res += nums[i];
         return res;
     }
 }
@@ -846,10 +886,11 @@ class NumArray {
 
 // solution2
 // 说白了就是不要在 sumRange 里面用 for 循环
-class NumArray {
+// Runtime: 7 ms, faster than 57.01% of Java online submissions for Range Sum Query - Immutable.
+// Memory Usage: 43.6 MB, less than 59.62% of Java online submissions for Range Sum Query - Immutable.
 
-    // 前缀和数组
-    private int[] preSum;
+class NumArray {
+    private int[] preSum;   // 前缀和数组
 
     /* 输入一个数组，构造前缀和 */
     public NumArray(int[] nums) {
@@ -893,15 +934,129 @@ for (int i = 1; i < count.length; i++)
 
 ### 和为k的子数组
 
+[560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
+- Given an array of integers nums and an integer k, return the total number of continuous subarrays whose sum equals to k.
+
+
+```java
+// 时间复杂度 O(N^2) 空间复杂度 O(N)
+int subarraySum(int[] nums, int k) {
+    int n = nums.length;
+    // 构造前缀和
+    int[] preSum = new int[n + 1];
+    preSum[0] = 0;
+    for (int i = 0; i < n; i++) preSum[i + 1] = preSum[i] + nums[i];
+
+    int res = 0;
+    // 穷举所有子数组
+    for (int i = 1; i <= n; i++)
+        for (int j = 0; j < i; j++)
+            // 子数组 nums[j..i-1] 的元素和
+            // if (preSum[i] - preSum[j] == k) res++;
+            if (preSum[j] == preSum[i] - k) res++;
+
+    return res;
+}
+
+
+// 用哈希表，在记录前缀和的同时记录该前缀和出现的次数。
+// Runtime: 19 ms, faster than 53.05% of Java online submissions for Subarray Sum Equals K.
+Memory Usage: 41.6 MB, less than 58.42% of Java online submissions for Subarray Sum Equals K.
+int subarraySum(int[] nums, int k) {
+    int n = nums.length;
+    // map：前缀和 -> 该前缀和出现的次数
+    HashMap<Integer, Integer> preSum = new HashMap<>();
+    // base case
+    preSum.put(0, 1);
+
+    int res = 0, sum0_i = 0;
+
+    for (int i = 0; i < n; i++) {
+        sum0_i += nums[i];
+        // 这是我们想找的前缀和 nums[0..j]
+        int sum0_j = sum0_i - k;
+        // 如果前面有这个前缀和，则直接更新答案
+        if (preSum.containsKey(sum0_j)) res += preSum.get(sum0_j);
+        // 把前缀和 nums[0..i] 加入并记录出现次数
+        preSum.put(sum0_i, preSum.getOrDefault(sum0_i, 0) + 1);
+    }
+    return res;
+}
+
+```
+
+
+
+
+
+
+
+
+
+
 ---
 
-### 304. 二维区域和检索 - 矩阵不可变
+### 二维区域和检索
+
 
 [youtube](https://www.youtube.com/watch?v=PwDqpOMwg6U)
 
 图像块之间相互减
 
 ![Screen Shot 2021-10-13 at 11.35.52 PM](https://i.imgur.com/f55K6B4.png)
+
+[304. Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/)
+- Given a 2D matrix matrix, handle multiple queries of the following type:
+
+- Calculate the sum of the elements of matrix inside the rectangle defined by its upper left corner (row1, col1) and lower right corner (row2, col2).
+Implement the NumMatrix class:
+
+- NumMatrix(int[][] matrix) Initializes the object with the integer matrix matrix.
+- int sumRegion(int row1, int col1, int row2, int col2) Returns the sum of the elements of matrix inside the rectangle defined by its upper left corner (row1, col1) and lower right corner (row2, col2).
+
+```java
+// Runtime: 107 ms, faster than 74.69% of Java online submissions for Range Sum Query 2D - Immutable.
+// Memory Usage: 66.8 MB, less than 65.71% of Java online submissions for Range Sum Query 2D - Immutable.
+// O(1)
+class NumMatrix {
+
+    int[][] preSum;
+
+    public NumMatrix(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
+        if(m==0|n==0) return;
+
+        preSum = new int[m+1][n+1];
+        for(int x=1; x<=m; x++){
+            for(int y=1; y<=n; y++){
+                // 计算每个矩阵 [0, 0, i, j] 的元素和
+                preSum[x][y] = matrix[x-1][y-1] + preSum[x][y-1] + preSum[x-1][y] - preSum[x-1][y-1];
+            }
+        }
+    }
+
+    public int sumRegion(int row1, int col1, int row2, int col2) {
+        return preSum[row2+1][col2+1] - preSum[row1][col2+1]- preSum[row2+1][col1] + preSum[row1][col1];
+    }
+}
+
+```
+
+---
+
+##
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1807,9 +1962,288 @@ void sort(int[] nums, int lo, int hi) {
 }
 ```
 
+
+---
+
+
+# stack
+
+栈（stack）是很简单的一种数据结构，先进后出的逻辑顺序，符合某些问题的特点，比如说函数调用栈。
+
+---
+
+
+## 队列 栈
+
+---
+
+
+### 用栈实现队列
+
+
+[232. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/)
+- Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).
+- Implement the MyQueue class:
+
+- void push(int x) Pushes element x to the back of the queue.
+- int pop() Removes the element from the front of the queue and returns it.
+- int peek() Returns the element at the front of the queue.
+- boolean empty() Returns true if the queue is empty, false otherwise.
+
+
+
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Implement Queue using Stacks.
+// Memory Usage: 36.7 MB, less than 89.99% of Java online submissions for Implement Queue using Stacks
+
+class MyQueue {
+
+    private Stack<Integer> s1, s2;
+
+    public MyQueue() {
+        s1 = new Stack<>();
+        s2 = new Stack<>();
+    }
+
+    /** 添加元素到队尾 */
+    public void push(int x){
+        s1.push(x);
+    };
+
+    /** 删除队头的元素并返回 */
+    public int pop(){
+        // 先调用 peek 保证 s2 非空
+        peek();
+        return s2.pop();
+    };
+
+    /** 返回队头元素 */
+    // 触发 while 循环，这样的话时间复杂度是 O(N)
+    public int peek() {
+        if (s2.isEmpty())
+            // 把 s1 元素压入 s2
+            while (!s1.isEmpty())
+                s2.push(s1.pop());
+        return s2.peek();
+    }
+
+    /** 判断队列是否为空 */
+    public boolean empty(){
+        return s1.isEmpty() && s2.isEmpty();
+    };
+}
+```
+
+---
+
+### 用队列实现栈
+
+[225. Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues/)
+- Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (push, top, pop, and empty).
+- Implement the MyStack class:
+- void push(int x) Pushes element x to the top of the stack.
+- int pop() Removes the element on the top of the stack and returns it.
+- int top() Returns the element on the top of the stack.
+- boolean empty() Returns true if the stack is empty, false otherwise.
+
+pop 操作时间复杂度是 O(N)，其他操作都是 O(1)​。​
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Implement Stack using Queues.
+// Memory Usage: 37.2 MB, less than 35.03% of Java online submissions for Implement Stack using Queues.
+
+class MyStack {
+
+    Queue<Integer> q = new LinkedList<>();
+    int top = 0;
+
+    /** 添加元素到栈顶 */
+    public void push(int x){
+        q.offer(x);
+        top = x;        
+    };
+
+    /** 删除栈顶的元素并返回 */
+    public int pop(){
+        int size = q.size();
+        while (size > 2) {
+            q.offer(q.pop());
+            size--;
+        }
+        top = q.peek()
+        q.offer(q.pop());
+        return q.poll()
+    };
+
+
+    /** 返回栈顶元素 */
+    public int top(){
+        return top;
+    };
+
+    /** 判断栈是否为空 */
+    public boolean empty(){
+        return q.isEmpty();
+    };
+}
+```
+
+
+
+
+---
+
+## 单调栈
+
+- 单调栈实际上就是栈，只是利用了一些巧妙的逻辑，使得每次新元素入栈后，栈内的元素都保持有序（单调递增或单调递减）。
+- 有点像堆（heap）？不是的，单调栈用途不太广泛，只处理一种典型的问题，叫做 Next Greater Element。
+
+
+### 返回等长数组for更大的元素
+
+给你一个数组 nums，请你返回一个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1。
+
+```java
+vector<int> nextGreaterElement(vector<int>& nums) {
+    vector<int> res(nums.size()); // 存放答案的数组
+    stack<int> s;
+    // 倒着往栈里放
+    for (int i = nums.size() - 1; i >= 0; i--) {
+        // 判定个子高矮
+        while (!s.empty() && s.peek() <= nums[i]) {
+            // 矮个起开，反正也被挡着了。。。
+            s.pop();
+        }
+        // nums[i] 身后的 next great number
+        res[i] = s.empty() ? -1 : s.peek();
+        s.push(nums[i]);
+    }
+    return res;
+}
+```
+
+
+
+
+---
+
+### 返回等长数组for更大的元素的index
+
+
+[739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
+- Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] == 0 instead.
+- 给你一个数组 T，这个数组存放的是近几天的天气气温，你返回一个等长的数组，计算：对于每一天，你还要至少等多少天才能等到一个更暖和的气温；如果等不到那一天，填 0。
+
+```java
+// Runtime: 39 ms, faster than 43.88% of Java online submissions for Daily Temperatures.
+// Memory Usage: 48.4 MB, less than 85.99% of Java online submissions for Daily Temperatures.
+public int[] dailyTemperatures(int[] temperatures) {
+    while(temperatures.length==0) return temperatures;
+    Stack<Integer> s = new Stack<>();
+    int[] res  = new int[temperatures.length];
+    for(int i=temperatures.length-1; i>=0; i--){
+        while(!s.empty() && temperatures[s.peek()] <= temperatures[i]) s.pop();
+        res[i] = s.empty() ? 0 : s.peek()-i;
+        s.push(i);
+    }
+    return res;
+}
+```
+
+---
+
+### 环形数组
+
+对于这种需求，常用套路就是将数组长度翻倍：
+
+```java
+vector<int> nextGreaterElements(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> res(n);
+    stack<int> s;
+    // 假装这个数组长度翻倍了
+    for (int i = 2*n - 1; i >= 0; i--) {
+        // 索引要求模，其他的和模板一样
+        while (!s.empty() && s.peak() <= nums[i % n]) s.pop();
+        res[i % n] = s.empty() ? -1 : s.peak();
+        s.push(nums[i % n]);
+    }
+    return res;
+}
+```
+
+---
+
+## 单调队列结构
+
+一个「队列」，队列中的元素全都是单调递增（或递减）的。
+---
+
+### 滑动窗口问题
+
+在 O(1) 时间算出每个「窗口」中的最大值
+
+239 题「滑动窗口最大值」，难度 Hard：
+- 给你输入一个数组 nums 和一个正整数 k，有一个大小为 k 的窗口在 nums 上从左至右滑动，请你输出每次窗口中 k 个元素的最大值。
+- 在一堆数字中，已知最值为 A，如果给这堆数添加一个数 B，那么比较一下 A 和 B 就可以立即算出新的最值；
+- 但如果减少一个数，就不能直接得到最值了，因为如果减少的这个数恰好是 A，就需要遍历所有数重新找新的最值。
+
+```java
+// Runtime: 36 ms, faster than 47.84% of Java online submissions for Sliding Window Maximum.
+// Memory Usage: 55.2 MB, less than 45.54% of Java online submissions for Sliding Window Maximum.
+
+/* 单调队列的实现 */
+class MonotonicQueue {
+    LinkedList<Integer> q = new LinkedList<>();
+
+    public void push(int n) {
+        // 将小于 n 的元素全部删除
+        while (!q.isEmpty() && q.getLast() < n) q.pollLast();
+        // 然后将 n 加入尾部
+        q.addLast(n);
+    }
+
+    public int max() {
+        return q.getFirst(); // 队头的元素肯定是最大的
+    }
+
+    public void pop(int n) {
+        if (n == q.getFirst()) q.pollFirst(); // 在队头删除元素 n
+    }
+}
+
+/* 解题函数的实现 */
+int[] maxSlidingWindow(int[] nums, int k) {
+    MonotonicQueue window = new MonotonicQueue();
+    List<Integer> res = new ArrayList<>();
+
+    for (int i = 0; i < nums.length; i++) {
+        //先填满窗口的前 k - 1
+        if (i < k - 1) window.push(nums[i]);
+        else {
+            // 窗口向前滑动，加入新数字
+            window.push(nums[i]);
+            // 记录当前窗口的最大值
+            res.add(window.max());
+            // 移出旧数字
+            window.pop(nums[i - k + 1]);
+        }
+    }
+    // 需要转成 int[] 数组再返回
+    int[] arr = new int[res.size()];
+    for (int i = 0; i < res.size(); i++) arr[i] = res.get(i);
+    return arr;
+}
+```
+
+
+
 ---
 
 # Tree
+
+
 
 ---
 
@@ -2846,6 +3280,109 @@ void serialize(TreeNode root, StringBuilder sb){
 
 ---
 
+# Binary Heap 二叉堆
+
+- 其主要操作就两个，sink（下沉）和 swim（上浮），用以维护二叉堆的性质。
+- 其主要应用有两个，
+  - 首先是一种排序方法「堆排序」，
+  - 第二是一种很有用的数据结构「优先级队列」。
+
+![1](https://i.imgur.com/vStOOwC.png)
+
+因为这棵二叉树是「完全二叉树」，所以把 arr[1] 作为整棵树的根的话，每个节点的父节点和左右孩子的索引都可以通过简单的运算得到，这就是二叉堆设计的一个巧妙之处。
+
+```java
+// 父节点的索引
+int parent(int root) {return root / 2;}
+
+// 左孩子的索引
+int left(int root) {return root * 2;}
+
+// 右孩子的索引
+int right(int root) {return root * 2 + 1;}
+```
+
+
+## 最大堆和最小堆
+
+二叉堆还分为最大堆和最小堆。
+- 最大堆的性质是：每个节点都大于等于它的两个子节点。
+- 最小堆的性质是：每个节点都小于等于它的子节点。
+
+优先级队列 数据结构
+- 插入或者删除元素的时候，元素会自动排序
+- 这底层的原理就是二叉堆的操作。
+
+```java
+public class MaxPQ
+    <Key extends Comparable<Key>> {
+
+    private Key[] pq;    // 存储元素的数组
+    private int N = 0;   // 当前 Priority Queue 中的元素个数
+
+    public MaxPQ(int cap) {
+        // 索引 0 不用，所以多分配一个空间
+        pq = (Key[]) new Comparable[cap + 1];
+    }
+
+    /* 返回当前队列中最大元素 */
+    public Key max() {
+        return pq[1];
+    }
+
+    /* 插入元素 e */
+    public void insert(Key e) {
+        N++;
+        pq[N] = e;
+        swim(e);
+    }
+
+    /* 删除并返回当前队列中最大元素 */
+    public Key delMax() {
+        exch(pq[1],pq[N]);
+        pq[N] = null;
+        N--;
+        sink(pq[1]);
+        Key max = pq[1];
+        return max;
+    }
+
+    /* 上浮第 k 个元素，以维护最大堆性质 */
+    private void swim(int k) {
+        while(k>1 && less(parent(k),k)) exch(parent(k),k);
+        k=parent(k);
+    }
+
+    /* 下沉第 k 个元素，以维护最大堆性质 */
+    private void sink(int k) {
+        while(left(k)<=N){
+            int bigger = left(k);
+            if(right(k)<=N && less(bigger, right(k))) bigger = right(k);
+            if(less(bigger, k)) break;
+            exch(bigger,k);
+            k=bigger;
+        }
+    }
+
+    /* 交换数组的两个元素 */
+    private void exch(int i, int j) {
+        Key temp = pq[i];
+        pq[i] = pq[j];
+        pq[j] = temp;
+    }
+
+    /* pq[i] 是否比 pq[j] 小？ */
+    private boolean less(int i, int j) {
+        return pq[i].compareTo(pq[j]) < 0;
+    }
+
+    /* 还有 left, right, parent 三个方法 */
+}
+```
+
+
+
+---
 
 # Graphy
 
@@ -4100,7 +4637,7 @@ class Solution {
 
 [1631. Path With Minimum Effort]()
 - You are a hiker preparing for an upcoming hike. You are given heights, a 2D array of size rows x columns, where heights[row][col] represents the height of cell (row, col). You are situated in the top-left cell, (0, 0), and you hope to travel to the bottom-right cell, (rows-1, columns-1) (i.e., 0-indexed). You can move up, down, left, or right, and you wish to find a route that requires the minimum effort.
-- A route's effort is the maximum absolute difference in heights between two consecutive cells of the route.
+- A routes effort is the maximum absolute difference in heights between two consecutive cells of the route.
 - Return the minimum effort required to travel from the top-left cell to the bottom-right cell.
 
 这道题中评判一条路径是长还是短的标准不再是路径经过的权重总和，而是路径经过的权重最大值。
@@ -4588,7 +5125,7 @@ class LFUCache {
 
 ---
 
-## 最大栈
+## 最大栈 Maximum Frequency Stack
 
 
 [895. Maximum Frequency Stack](https://leetcode.com/problems/maximum-frequency-stack/)
@@ -4597,7 +5134,7 @@ class LFUCache {
   - FreqStack() constructs an empty frequency stack.
   - void push(int val) pushes an integer val onto the top of the stack.
   - int pop() removes and returns the most frequent element in the stack.
-  - If there is a tie for the most frequent element, the element closest to the stack's top is removed and returned.
+  - If there is a tie for the most frequent element, the element closest to the stacks top is removed and returned.
 
 
 ```java
@@ -4676,10 +5213,115 @@ class FreqStack {
 ---
 
 
-## other
+# 数据流
 
 
-### 中位数
+## 无限序列随机抽取元素
+
+
+### 无限序列随机抽取1元素
+
+随机是均匀随机（uniform random）
+- 如果有 n 个元素，每个元素被选中的概率都是 1/n，不可以有统计意义上的偏差。
+
+一般的想法就是，先遍历一遍链表，得到链表的总长度 n，再生成一个 [1,n] 之间的随机数为索引，然后找到索引对应的节点，就是一个随机的节点了
+- 但只能遍历一次，意味着这种思路不可行。
+- 题目还可以再泛化，给一个未知长度的序列，如何在其中随机地选择 k 个元素？想要解决这个问题，就需要著名的水塘抽样算法了。
+
+但是这种问题的关键在于证明，你的算法为什么是对的？为什么每次以 1/i 的概率更新结果就可以保证结果是平均随机（uniform random）？
+- 证明：
+- 假设总共有 n 个元素，每个元素被选择的概率都是 1/n，
+- 那么对于第 i 个元素，它被选择的概率就是：
+
+![formula1](https://i.imgur.com/dYosNcJ.png)
+
+[382. Linked List Random Node](https://leetcode.com/problems/linked-list-random-node/)
+- Given a singly linked list, return a random nodes value from the linked list. Each node must have the same probability of being chosen.
+- Implement the Solution class:
+  - Solution(ListNode head) Initializes the object with the integer array nums.
+  - int getRandom() Chooses a node randomly from the list and returns its value. All the nodes of the list should be equally likely to be choosen.
+
+
+```java
+class Solution {
+
+    Random r;
+    ListNode p;
+    int res = 0;
+
+    public Solution(ListNode head) {
+        this.p = head;
+        this.r = new Random();
+    }
+
+    public int getRandom() {
+        int i = 0;
+        while (this.p != null) {
+            i++;
+            // 生成一个 [0, i) 之间的整数
+            // 这个整数等于 0 的概率就是 1/i
+            if (0 == this.r.nextInt(i)) res = this.p.val;
+            this.p = this.p.next;
+        }
+        return res;
+    }
+}
+
+/* 返回链表中一个随机节点的值 */
+int getRandom(ListNode head) {
+    Random r = new Random();
+    int i = 0, res = 0;
+    ListNode p = head;
+    // while 循环遍历链表
+    while (p != null) {
+        i++;
+        // 生成一个 [0, i) 之间的整数
+        // 这个整数等于 0 的概率就是 1/i
+        if (0 == r.nextInt(i)) res = p.val;
+        p = p.next;
+    }
+    return res;
+}
+```
+
+---
+
+### 无限序列随机抽取 k 个数
+
+![formula2](https://i.imgur.com/Lk6Pim9.png)
+
+```java
+/* 返回链表中 k 个随机节点的值 */
+int[] getRandom(ListNode head, int k) {
+    Random r = new Random();
+    int[] res = new int[k];
+    ListNode p = head;
+
+    // 前 k 个元素先默认选上
+    for (int j = 0; j < k && p != null; j++) {
+        res[j] = p.val;
+        p = p.next;
+    }
+
+    int i = k;
+    // while 循环遍历链表
+    while (p != null) {
+        // 生成一个 [0, i) 之间的整数
+        int j = r.nextInt(++i);
+        // 这个整数小于 k 的概率就是 k/i
+        if (j < k) {
+            res[j] = p.val;
+        }
+        p = p.next;
+    }
+    return res;
+}
+```
+
+---
+
+
+## 中位数
 
 [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
 - The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value and the median is the mean of the two middle values.
@@ -4689,7 +5331,212 @@ class FreqStack {
 - Implement the MedianFinder class:
   - MedianFinder() initializes the MedianFinder object.
   - void addNum(int num) adds the integer num from the data stream to the data structure.
-  - double findMedian() returns the median of all elements so far. Answers within 10-5 of the actual answer will be accepted.
+  - double findMedian() returns the median of all elements so far.
+    - Answers within 10^-5 of the actual answer will be accepted.
+
+
+
+1. 如果输入一个数组，排个序，长度是奇数，最中间的一个元素就是中位数，长度是偶数，最中间两个元素的平均数作为中位数。
+2. 如果数据规模非常大，排序不现实，使用概率算法，随机抽取一部分数据，排序，求中位数，作为所有数据的中位数。
+
+必然需要有序数据结构，本题的核心思路是使用两个优先级队列。
+
+
+```java
+// Runtime: 102 ms, faster than 70.85% of Java online submissions for Find Median from Data Stream.
+// Memory Usage: 69.2 MB, less than 50.74% of Java online submissions for Find Median from Data Stream.
+
+class MedianFinder {
+
+    private PriorityQueue<Integer> large;
+    private PriorityQueue<Integer> small;
+
+    public MedianFinder() {
+        // 小顶堆
+        large = new PriorityQueue<>();
+        // 大顶堆
+        small = new PriorityQueue<>(
+            (a, b) -> {return b - a;}
+        );
+    }
+
+    public double findMedian() {
+        // 如果元素不一样多，多的那个堆的堆顶元素就是中位数
+        if (large.size() < small.size()) return small.peek();
+        else if (large.size() > small.size()) return large.peek();
+        // 如果元素一样多，两个堆堆顶元素的平均数是中位数
+        return (large.peek() + small.peek()) / 2.0;
+    }
+
+    public void addNum(int num) {
+        if (small.size() >= large.size()) {
+            small.offer(num);
+            large.offer(small.poll());
+        } else {
+            large.offer(num);
+            small.offer(large.poll());
+        }
+    }
+}
+
+```
+
+
+
+
+---
+
+# 功能
+
+
+---
+
+
+## 设计朋友圈时间线
+
+![design](https://i.imgur.com/FA6dYX3.png)
+
+
+
+```java
+// Runtime: 9 ms, faster than 75.98% of Java online submissions for Design Twitter.
+// Memory Usage: 37.5 MB, less than 44.43% of Java online submissions for Design Twitter.
+
+class Twitter {
+    private static int timestamp = 0;
+
+    private static class Tweet {
+        private int id;
+        private int time;
+        private Tweet next;
+
+        // 需要传入推文内容（id）和发文时间
+        public Tweet(int id, int time) {
+            this.id = id;
+            this.time = time;
+            this.next = null;
+        }
+    }
+
+    private static class User {
+        private int id;
+        public Set<Integer> followed;
+        // 用户发表的推文链表头结点
+        public Tweet head;
+
+        public User(int userId) {
+            followed = new HashSet<>();
+            this.id = userId;
+            this.head = null;
+            // 关注一下自己
+            follow(id);
+        }
+
+        public void follow(int userId) {
+            followed.add(userId);
+        }
+
+        public void unfollow(int userId) {
+            // 不可以取关自己
+            if (userId != this.id)
+                followed.remove(userId);
+        }
+
+        public void post(int tweetId) {
+            Tweet twt = new Tweet(tweetId, timestamp);
+            timestamp++;
+            // 将新建的推文插入链表头
+            // 越靠前的推文 time 值越大
+            twt.next = head;
+            head = twt;
+        }
+    }
+
+    // 我们需要一个映射将 userId 和 User 对象对应起来
+    private HashMap<Integer, User> userMap = new HashMap<>();
+
+    /** user 发表一条 tweet 动态 */
+    public void postTweet(int userId, int tweetId) {
+        // 若 userId 不存在，则新建
+        if (!userMap.containsKey(userId))
+            userMap.put(userId, new User(userId));
+        User u = userMap.get(userId);
+        u.post(tweetId);
+    }
+
+    /** follower 关注 followee */
+    public void follow(int followerId, int followeeId) {
+        // 若 follower 不存在，则新建
+		if(!userMap.containsKey(followerId)){
+			User u = new User(followerId);
+			userMap.put(followerId, u);
+		}
+        // 若 followee 不存在，则新建
+		if(!userMap.containsKey(followeeId)){
+			User u = new User(followeeId);
+			userMap.put(followeeId, u);
+		}
+		userMap.get(followerId).follow(followeeId);
+    }
+
+    /** follower 取关 followee，如果 Id 不存在则什么都不做 */
+    public void unfollow(int followerId, int followeeId) {
+        if (userMap.containsKey(followerId)) {
+            User flwer = userMap.get(followerId);
+            flwer.unfollow(followeeId);
+        }
+    }
+
+    /** 返回该 user 关注的人（包括他自己）最近的动态 id，
+    最多 10 条，而且这些动态必须按从新到旧的时间线顺序排列。*/
+    public List<Integer> getNewsFeed(int userId) {
+        List<Integer> res = new ArrayList<>();
+        if (!userMap.containsKey(userId)) return res;
+        // 关注列表的用户 Id
+        Set<Integer> users = userMap.get(userId).followed;
+        // 自动通过 time 属性从大到小排序，容量为 users 的大小
+        PriorityQueue<Tweet> pq =
+            new PriorityQueue<>(users.size(), (a, b)->(b.time - a.time));
+
+        // 先将所有链表头节点插入优先级队列
+        for (int id : users) {
+            Tweet twt = userMap.get(id).head;
+            if (twt == null) continue;
+            pq.add(twt);
+        }
+
+        while (!pq.isEmpty()) {
+            // 最多返回 10 条就够了
+            if (res.size() == 10) break;
+            // 弹出 time 值最大的（最近发表的）
+            Tweet twt = pq.poll();
+            res.add(twt.id);
+            // 将下一篇 Tweet 插入进行排序
+            if (twt.next != null)
+                pq.add(twt.next);
+        }
+        return res;
+    }
+
+}
+```
+
+
+
+
+
+
+
+
+---
+
+# systemm design
+
+https://github.com/donnemartin/system-design-primer
+
+
+
+
 
 
 
