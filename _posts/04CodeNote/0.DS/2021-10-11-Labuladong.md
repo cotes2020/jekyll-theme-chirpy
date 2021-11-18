@@ -33,17 +33,29 @@ toc: true
     - [计算索引区间元素和 list中间指定位置的和](#计算索引区间元素和-list中间指定位置的和)
     - [和为k的子数组](#和为k的子数组)
     - [二维区域和检索](#二维区域和检索)
+  - [差分](#差分)
+    - [差分数组](#差分数组)
+    - [370. 区间加法（中等）](#370-区间加法中等)
+    - [1109 题「航班预订统计」](#1109-题航班预订统计)
+    - [1094 题「拼车」](#1094-题拼车)
 - [LinkedList](#linkedlist)
   - [单链表的六大解题套路](#单链表的六大解题套路)
     - [合并两个有序链表 Merge 2 Sorted Lists](#合并两个有序链表-merge-2-sorted-lists)
-      - [java](#java)
-      - [python](#python)
     - [合并 k 个有序链表 Merge k Sorted Lists](#合并-k-个有序链表-merge-k-sorted-lists)
-    - [寻找单链表的倒数第 k 个节点](#寻找单链表的倒数第-k-个节点)
+  - [双指针](#双指针)
+    - [寻找单链表的倒数n节点](#寻找单链表的倒数n节点)
+    - [remove单链表的倒数n节点](#remove单链表的倒数n节点)
     - [寻找单链表的中点](#寻找单链表的中点)
-    - [判断单链表是否包含环并找出环起点](#判断单链表是否包含环并找出环起点)
-    - [链表中含有环，计算这个环的起点](#链表中含有环计算这个环的起点)
     - [判断两个单链表是否相交并找出交点](#判断两个单链表是否相交并找出交点)
+  - [左右指针](#左右指针)
+    - [二分查找](#二分查找)
+    - [两数之和](#两数之和)
+    - [反转数组](#反转数组)
+    - [滑动窗口技巧](#滑动窗口技巧)
+      - [最小覆盖子串](#最小覆盖子串)
+  - [链表的环](#链表的环)
+    - [判断单链表是否包含环](#判断单链表是否包含环)
+    - [计算链表中环起点](#计算链表中环起点)
   - [递归反转链表](#递归反转链表)
     - [递归反转整个链表](#递归反转整个链表)
     - [反转链表前 N 个节点](#反转链表前-n-个节点)
@@ -157,7 +169,7 @@ toc: true
 ```java
 
 int[] arr = new int[res.size()];
-
+int.length;
 
 Stack<String> Stack= new Stack<>();
 Stack.push();
@@ -221,6 +233,8 @@ BinaryHeap.buildHeap(list);
 ```
 
 
+10/24:
+
 11/8:61
 11/9:63
 11/10:64
@@ -228,6 +242,8 @@ BinaryHeap.buildHeap(list);
 11/12:66
 11/14:67
 11/15:70
+11/16:?
+11/17:79
 
 
 
@@ -568,6 +584,9 @@ Do not allocate extra space for another array. You must do this by modifying the
 如何在原地修改数组，避免数据的搬移。
 - 如果不是原地修改的话，直接 new 一个 int[] 数组，把去重之后的元素放进这个新数组中，然后返回这个新数组即可。
 - 原地删除不允许 new 新数组，只能在原数组上操作，然后返回一个长度，这样就可以通过返回的长度和原始数组得到我们去重后的元素有哪些了。
+
+---
+
 
 ### 有序数组去重
 
@@ -986,14 +1005,6 @@ int subarraySum(int[] nums, int k) {
 ```
 
 
-
-
-
-
-
-
-
-
 ---
 
 ### 二维区域和检索
@@ -1044,20 +1055,212 @@ class NumMatrix {
 
 ---
 
-##
+## 差分
+
+
+### 差分数组
+
+差分数组的主要适用场景是频繁对原始数组的某个区间的元素进行增减。
+
+给你输入一个数组 nums，然后又要求给区间 nums[2..6] 全部加 1，再给 nums[3..9] 全部减 3，再给 nums[0..4] 全部加 2，再给…
+- 最后 nums 数组的值是什么？
+- 常规的思路, for 循环给它们都加上, 时间复杂度是 O(N)，
 
 
 
+```java
+// 差分数组工具类
+class Difference {
+
+    // 差分数组
+    private int[] diff;
+
+    /* 输入一个初始数组，区间操作将在这个数组上进行 */
+    public Difference(int[] nums) {
+        assert nums.length > 0;
+        diff = new int[nums.length];
+        // 根据初始数组构造差分数组
+        diff[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) diff[i] = nums[i] - nums[i - 1];
+    }
+
+    /* 给闭区间 [i,j] 增加 val（可以是负数）*/
+    public void increment(int i, int j, int val) {
+        diff[i] += val;
+        if (j + 1 < diff.length) diff[j + 1] -= val;
+    }
+
+    /* 返回结果数组 */
+    public int[] result() {
+        int[] res = new int[diff.length];
+        // 根据差分数组构造结果数组
+        res[0] = diff[0];
+        for (int i = 1; i < diff.length; i++) res[i] = res[i - 1] + diff[i];
+        return res;
+    }
+}
+```
+
+---
 
 
 
+### 370. 区间加法（中等）
 
 
 
+```java
+int[] getModifiedArray(int length, int[][] updates) {
+    // nums 初始化为全 0
+    int[] nums = new int[length];
+    // 构造差分解法
+    Difference df = new Difference(nums);
+
+    for (int[] update : updates) {
+        int i = update[0];
+        int j = update[1];
+        int val = update[2];
+        df.increment(i, j, val);
+    }
+
+    return df.result();
+}
+```
 
 
+---
+
+### 1109 题「航班预订统计」
+
+[1109. Corporate Flight Bookings](https://leetcode.com/problems/corporate-flight-bookings/)
+- There are n flights that are labeled from 1 to n.
+
+- You are given an array of flight bookings bookings, where bookings[i] = [firsti, lasti, seatsi] represents a booking for flights firsti through lasti (inclusive) with seatsi seats reserved for each flight in the range.
+
+- Return an array answer of length n, where answer[i] is the total number of seats reserved for flight i.
+
+```
+Example 1:
+Input: bookings = [[1,2,10],[2,3,20],[2,5,25]], n = 5
+Output: [10,55,45,25,25]
+Explanation:
+Flight labels:        1   2   3   4   5
+Booking 1 reserved:  10  10
+Booking 2 reserved:      20  20
+Booking 3 reserved:      25  25  25  25
+Total seats:         10  55  45  25  25
+Hence, answer = [10,55,45,25,25]
+```
 
 
+```java
+// Runtime: 5 ms, faster than 43.51% of Java online submissions for Corporate Flight Bookings.
+// Memory Usage: 54.6 MB, less than 54.64% of Java online submissions for Corporate Flight Bookings.
+class Solution {
+    int[] corpFlightBookings(int[][] bookings, int n) {
+        // nums 初始化为全 0
+        int[] nums = new int[n];
+        // 构造差分解法
+        Difference df = new Difference(nums);
+        for (int[] booking : bookings) {
+            // 注意转成数组索引要减一哦
+            int i = booking[0] - 1;
+            int j = booking[1] - 1;
+            int val = booking[2];
+            // 对区间 nums[i..j] 增加 val
+            df.increment(i, j, val);
+        }
+        // 返回最终的结果数组
+        return df.result();
+    }
+}
+
+class Difference {
+
+    private int[] diff;
+
+    public Difference(int[] nums){
+        assert nums.length > 0;
+        diff = new int[nums.length];
+        diff[0] = nums[0];
+        for(int i=1;i<nums.length;i++) diff[i] = nums[i] - nums[i-1];
+    }
+
+    public void increment(int x, int y, int k){
+        diff[x] += k;
+        if(y+1<diff.length) diff[y+1] -=k;
+    }
+
+    public int[] result(){
+        int[] res = new int[diff.length];
+        res[0] = diff[0];
+        for(int i=1; i<diff.length; i++) res[i] = res[i-1] + diff[i];
+        return res;
+    }
+}
+```
+
+---
+
+
+###  1094 题「拼车」
+
+
+```java
+
+// Runtime: 3 ms, faster than 70.75% of Java online submissions for Car Pooling.
+// Memory Usage: 38.9 MB, less than 52.80% of Java online submissions for Car Pooling.
+
+boolean carPooling(int[][] trips, int capacity) {
+    // 最多有 1000 个车站
+    int[] nums = new int[1001];
+    // 构造差分解法
+    Difference df = new Difference(nums);
+
+    for (int[] trip : trips) {
+        // 乘客数量
+        int val = trip[0];
+        // 第 trip[1] 站乘客上车
+        int i = trip[1];
+        // 第 trip[2] 站乘客已经下车，
+        // 即乘客在车上的区间是 [trip[1], trip[2] - 1]
+        int j = trip[2] - 1;
+        // 进行区间操作
+        df.increment(i, j, val);
+    }
+    int[] res = df.result();
+    // 客车自始至终都不应该超载
+    for (int i = 0; i < res.length; i++) {
+        if (capacity < res[i]) return false;
+    }
+    return true;
+}
+
+
+class Difference{
+    private int[] diff;
+
+    public Difference(int[] nums){
+        assert nums.length > 0;
+        if(nums.length==0) return;
+        diff = new int[nums.length];
+        diff[0] = nums[0];
+        for(int i=1;i<nums.length;i++) diff[i] = nums[i] - nums[i-1];
+    }
+
+    public void increment(int x, int y, int k){
+        diff[x] +=k;
+        if(y+1<diff.length) diff[y+1] -=k;
+    }
+
+    public int[] result(){
+        int[] res = new int[diff.length];
+        res[0] = diff[0];
+        for(int i=1;i<diff.length;i++) res[i] = diff[i] + res[i-1];
+        return res;
+    }
+}
+```
 
 
 ---
@@ -1088,10 +1291,6 @@ Solution:「拉拉链」，l1, l2 类似于拉链两侧的锯齿，指针 p 就�
   - 但有了我们虚拟节点 dummy 的存在，就避免了这个问题，能够对这种情况进行正确的删除。
 
 
-
----
-
-#### java
 
 ```java
 // Definition for singly-linked list.
@@ -1145,9 +1344,6 @@ ListNode mergeTwoLists(ListNode l1, ListNode l2){
 }
 ```
 
----
-
-#### python
 
 ```python
 class ListNode:
@@ -1317,7 +1513,11 @@ ListNode mergeKLists(ListNode[] lists) {
 
 ---
 
-### 寻找单链表的倒数第 k 个节点
+## 双指针
+
+---
+
+### 寻找单链表的倒数n节点
 
 
 point: 算法题一般只给你一个 ListNode 头结点代表一条单链表，
@@ -1330,26 +1530,31 @@ point: 算法题一般只给你一个 ListNode 头结点代表一条单链表，
 ```java
 // 返回链表的倒数第 k 个节点
 ListNode findFromEnd(ListNode head, int k) {
-    ListNode p1 = head;
-    ListNode p2 = head;
-    // p1 先走 k 步
-    for (int i = 0; i < k; i++) {
-        p1 = p1.next;
+    ListNode fast = head, slow = head;
+    // fast 先走 k 步
+    while (n-- > 0) fast = fast.next;
+    // 让慢指针和快指针同步向前
+    while (fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next;
     }
-    // p1 和 p2 同时走 n - k 步
-    while (p1 != null) {
-        p2 = p2.next;
-        p1 = p1.next;
-    }
-    // p2 现在指向第 n - k 个节点
-    return p2;
+    // slow 现在指向第 n - k 个节点
+    return slow;
 }
 ```
 
 时间复杂度
 - 无论遍历一次链表和遍历两次链表的时间复杂度都是 O(N)，但上述这个算法更有技巧性。
 
-> 第 19 题「删除链表的倒数第 N 个结点」：
+---
+
+
+### remove单链表的倒数n节点
+
+
+[19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
+
+Given the head of a linked list, remove the nth node from the end of the list and return its head.
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Nth Node From End of List.
@@ -1368,19 +1573,18 @@ public ListNode removeNthFromEnd(ListNode head, int n){
     return dummy.next;
 }
 
+// 返回链表的倒数第 k 个节点
 private ListNode findFromEnd(ListNode head, int k){
-    ListNode p1 = head, p2 = head;
-    // p1 先走 k 步
-    for (int i = 0; i < k; i++) {
-        p1 = p1.next;
+    ListNode fast = head, slow = head;
+    // fast 先走 k 步
+    while (n-- > 0) fast = fast.next;
+    // 让慢指针和快指针同步向前
+    while (fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next;
     }
-    // p1 和 p2 同时走 n - k 步
-    while (p1 != null) {
-        p2 = p2.next;
-        p1 = p1.next;
-    }
-    // p2 现在指向第 n - k 个节点
-    return p2;
+    // slow 现在指向第 n - k 个节点
+    return slow;
 }
 ```
 
@@ -1399,27 +1603,274 @@ solution:
 > 如果链表长度为偶数，中点有两个的时候，返回的节点是靠后的那个节点。
 > 这段代码稍加修改就可以直接用到判断链表成环的算法题上。
 
+让快指针一次前进两步，慢指针一次前进一步，当快指针到达链表尽头时，慢指针就处于链表的中间位置。
+
+[876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
+- Given the head of a singly linked list, return the middle node of the linked list.
+- If there are two middle nodes, return the second middle node.
+
+
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Middle of the Linked List.
-// Memory Usage: 36.8 MB, less than 45.65% of Java online submissions for Middle of the Linked List.
+// Memory Usage: 36.4 MB, less than 67.08% of Java online submissions for Middle of the Linked List.
 
 ListNode middleNode(ListNode head) {
-    // 快慢指针初始化指向 head
-    ListNode slow = head, fast = head;
-    // 快指针走到末尾时停止
+    ListNode fast, slow;
+    fast = slow = head;
     while (fast != null && fast.next != null) {
-        // 慢指针走一步，快指针走两步
-        slow = slow.next;
         fast = fast.next.next;
+        slow = slow.next;
     }
-    // 慢指针指向中点
+    // slow 就在中间位置
     return slow;
+}
+```
+
+
+
+---
+
+### 判断两个单链表是否相交并找出交点
+
+160 题「相交链表」
+- 给你输入两个链表的头结点 headA 和 headB，这两个链表可能存在相交。
+- 如果相交，你的算法应该返回相交的那个节点；如果没相交，则返回 null。
+
+
+```java
+// Runtime: 1 ms, faster than 98.52% of Java online submissions for Intersection of Two Linked Lists.
+// Memory Usage: 42.2 MB, less than 57.90% of Java online submissions for Intersection of Two Linked Lists.
+
+ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    // p1 指向 A 链表头结点，p2 指向 B 链表头结点
+    ListNode p1 = headA, p2 = headB;
+    while (p1 != p2) {
+        // p1 走一步，如果走到 A 链表末尾，转到 B 链表
+        if (p1 == null) p1 = headB;
+        else p1 = p1.next;
+        // p2 走一步，如果走到 B 链表末尾，转到 A 链表
+        if (p2 == null) p2 = headA;
+        else p2 = p2.next;
+    }
+    return p1;
 }
 ```
 
 ---
 
-### 判断单链表是否包含环并找出环起点
+## 左右指针
+
+只要数组有序，就应该想到双指针技巧
+
+---
+
+### 二分查找
+
+最简单的二分算法，旨在突出它的双指针特性：
+
+```java
+int binarySearch(int[] nums, int target) {
+    int left = 0;
+    int right = nums.length - 1;
+    while(left <= right) {
+        int mid = (right + left) / 2;
+        if(nums[mid] == target) return mid;
+        else if (nums[mid] < target) left = mid + 1;
+        else if (nums[mid] > target) right = mid - 1;
+    }
+    return -1;
+}
+```
+
+---
+
+
+### 两数之和
+
+
+[167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+
+Given a (索引是从 1 开始的) `1-indexed array` of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+
+```java
+int[] twoSum(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int sum = nums[left] + nums[right];
+        // 题目要求的索引是从 1 开始的
+        if (sum == target) return new int[]{left + 1, right + 1};
+        // 让 sum 大一点
+        else if (sum < target) left++;
+        // 让 sum 小一点
+        else if (sum > target) right--;
+    }
+    return new int[]{-1, -1};
+}
+```
+
+
+---
+
+
+### 反转数组
+
+一般编程语言都会提供 reverse 函数
+
+[344. Reverse String](https://leetcode.com/problems/reverse-string/)
+
+Write a function that reverses a string. The input string is given as an array of characters s.
+
+You must do this by modifying the input array in-place with O(1) extra memory.
+
+反转一个 char[] 类型的字符数组
+
+
+```java
+// Runtime: 1 ms, faster than 95.40% of Java online submissions for Reverse String.
+// Memory Usage: 45.6 MB, less than 89.34% of Java online submissions for Reverse String.
+
+void reverseString(char[] arr) {
+    int left = 0, right = arr.length - 1;
+    while (left < right) {
+        // 交换 arr[left] 和 arr[right]
+        char temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+        left++; right--;
+    }
+}
+```
+
+---
+
+### 滑动窗口技巧
+
+维护一个窗口，不断滑动，然后更新答案么。
+
+该算法的大致逻辑, 时间复杂度是 O(N)，比字符串暴力算法要高效得多。
+
+```java
+int left = 0, right = 0;
+
+while (right < s.size()) {
+    // 增大窗口
+    window.add(s[right]);
+    right++;
+
+    while (window needs shrink) {
+        // 缩小窗口
+        window.remove(s[left]);
+        left++;
+    }
+}
+```
+
+```java
+/* 滑动窗口算法框架 */
+void slidingWindow(string s, string t) {
+    unordered_map<char, int> need, window;
+
+    for (char c : t) need[c]++;
+
+    int left = 0, right = 0;
+    int valid = 0;
+
+    while (right < s.size()) {
+        // c 是将移入窗口的字符
+        char c = s[right];
+        // 右移窗口
+        right++;
+        // 进行窗口内数据的一系列更新
+        ...
+
+        /*** debug 输出的位置 ***/
+        printf("window: [%d, %d)\n", left, right);
+        /********************/
+
+        // 判断左侧窗口是否要收缩
+        while (window needs shrink) {
+            // d 是将移出窗口的字符
+            char d = s[left];
+            // 左移窗口
+            left++;
+            // 进行窗口内数据的一系列更新
+            ...
+        }
+    }
+}
+```
+
+
+---
+
+#### 最小覆盖子串
+
+[76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
+
+Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
+
+The testcases will be generated such that the answer is unique.
+
+A substring is a contiguous sequence of characters within the string.
+
+暴力解法，代码大概是这样的：
+```java
+for (int i = 0; i < s.size(); i++)
+    for (int j = i + 1; j < s.size(); j++)
+        if s[i:j] 包含 t 的所有字母:
+            更新答案
+
+```
+
+
+滑动窗口算法的思路:
+
+1. 我们在字符串 S 中使用双指针中的左右指针技巧，初始化 left = right = 0，把索引左闭右开区间 [left, right) 称为一个「窗口」。
+
+2. 我们先不断地增加 right 指针扩大窗口 [left, right)，直到窗口中的字符串符合要求（包含了 T 中的所有字符）。
+
+3. 此时，我们停止增加 right，转而不断增加 left 指针缩小窗口 [left, right)，直到窗口中的字符串不再符合要求（不包含 T 中的所有字符了）。同时，每次增加 left，我们都要更新一轮结果。
+
+4. 重复第 2 和第 3 步，直到 right 到达字符串 S 的尽头。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+## 链表的环
+
+
+--
+
+### 判断单链表是否包含环
+
+[142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
+- Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+- There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to (0-indexed). It is -1 if there is no cycle. Note that pos is not passed as a parameter.
+
+- Do not modify the linked list.
+
 
 solution:
 - 每当慢指针 slow 前进一步，快指针 fast 就前进两步。
@@ -1437,27 +1888,38 @@ boolean hasCycle(ListNode head) {
         slow = slow.next;
         fast = fast.next.next;
         // 快慢指针相遇，说明含有环
-        if (slow == fast) {
-            return true;
-        }
+        if (slow == fast) return true;
     }
     // 不包含环
     return false;
 }
 ```
 
+
 ---
 
-### 链表中含有环，计算这个环的起点
+### 计算链表中环起点
 
 快慢指针相遇时，慢指针 slow 走了 k 步，那么快指针 fast 一定走了 2k 步：
 - fast 一定比 slow 多走了 k 步，这多走的 k 步其实就是 fast 指针在环里转圈圈，所以 k 的值就是环长度的「整数倍」。
 - 假设相遇点距环的起点的距离为 m，那么环的起点距头结点 head 的距离为 k - m，也就是说如果从 head 前进 k - m 步就能到达环起点。
-- 如果从相遇点继续前进 k - m 步，也恰好到达环起点。因为结合上图的 fast 指针，从相遇点开始走k步可以转回到相遇点，那走 k - m 步肯定就走到环起点了
+- 如果从相遇点继续前进 k - m 步，也恰好到达环起点。
+  - 因为结合上图的 fast 指针，从相遇点开始走k步可以转回到相遇点，那走 k - m 步肯定就走到环起点了
 - 所以，只要我们把快慢指针中的任一个重新指向 head，然后两个指针同速前进，k - m 步后一定会相遇，相遇之处就是环的起点了。
 
 
+[142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
+
+Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to (0-indexed). It is -1 if there is no cycle. Note that pos is not passed as a parameter.
+
+Do not modify the linked list.
+
+
 ```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Linked List Cycle II.
+// Memory Usage: 39.1 MB, less than 62.77% of Java online submissions for Linked List Cycle II.
 ListNode detectCycle(ListNode head) {
     ListNode fast, slow;
     fast = slow = head;
@@ -1479,36 +1941,6 @@ ListNode detectCycle(ListNode head) {
         slow = slow.next;
     }
     return slow;
-}
-```
-
-
-
-
----
-
-### 判断两个单链表是否相交并找出交点
-
-160 题「相交链表」
-- 给你输入两个链表的头结点 headA 和 headB，这两个链表可能存在相交。
-- 如果相交，你的算法应该返回相交的那个节点；如果没相交，则返回 null。
-
-```java
-// Runtime: 1 ms, faster than 98.52% of Java online submissions for Intersection of Two Linked Lists.
-// Memory Usage: 42.2 MB, less than 57.90% of Java online submissions for Intersection of Two Linked Lists.
-
-ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-    // p1 指向 A 链表头结点，p2 指向 B 链表头结点
-    ListNode p1 = headA, p2 = headB;
-    while (p1 != p2) {
-        // p1 走一步，如果走到 A 链表末尾，转到 B 链表
-        if (p1 == null) p1 = headB;
-        else p1 = p1.next;
-        // p2 走一步，如果走到 B 链表末尾，转到 A 链表
-        if (p2 == null) p2 = headA;
-        else p2 = p2.next;
-    }
-    return p1;
 }
 ```
 
@@ -1682,6 +2114,13 @@ ListNode reverse(ListNode a, ListNode b) {
 }
 
 ```
+
+---
+
+
+
+
+
 
 
 ---
