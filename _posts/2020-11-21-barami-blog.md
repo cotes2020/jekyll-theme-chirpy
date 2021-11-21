@@ -7,4 +7,3 @@ tags: [post,shinhyun]     # TAG names should always be lowercase
 ---
 
 아아 - ! 이것은 바라미 블로그라는 것이다 ! 
-g
