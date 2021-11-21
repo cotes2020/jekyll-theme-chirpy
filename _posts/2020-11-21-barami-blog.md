@@ -2,7 +2,7 @@
 title: 바라미 첫글!
 author: Shin Hyun
 date: 2020-11-21 20:41:00 +0900
-categories: [Barami,Board]
+categories: [Barami,General]
 tags: [post,shinhyun]     # TAG names should always be lowercase
 ---
 
