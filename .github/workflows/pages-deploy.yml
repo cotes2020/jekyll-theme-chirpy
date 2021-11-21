@@ -56,10 +56,6 @@ jobs:
             echo "SPEC_TEST=_site_no_baseurl" >> $GITHUB_ENV
           fi
 
-      - name: Deploy
-        run: |
-          bash tools/init.sh
-
       - name: Build Site
         run: |
           JEKYLL_ENV=production bundle exec jekyll b
