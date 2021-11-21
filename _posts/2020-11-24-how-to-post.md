@@ -10,7 +10,7 @@ tags: [post,shinhyun]     # TAG names should always be lowercase, 띄어쓰기�
 
 1. <a href="https://github.com/hyu-barami" target="_blank">hyu-barami</a> 가입 신청을 한다. 
 
-    가입 신청은 신 현, 혹은 박제윤에게 본인 깃헙 아이디를 알려주면 추가하겠다. 메일이 가면 해당 메일로 온 링크 클릭하면 된다. 
+    가입 신청은 신 현, 혹은 김동선에게 본인 깃헙 아이디를 알려주면 추가하겠다. 메일이 가면 해당 메일로 온 링크 클릭하면 된다. 
 
 2. 깃헙을 클론한다.
 ```
