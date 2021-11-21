@@ -1,8 +1,8 @@
 ---
 title: 전시회 글양식 
 author: Shin Hyun
-date: 2020-11-24 21:30:00 +0900
-categories: [Exhibition,2020년]
+date: 2021-11-21 10:13:00 +0900
+categories: [Exhibition,2021년]
 tags: [post,shinhyun]     # TAG names should always be lowercase, 띄어쓰기도 금지 
 ---
 
