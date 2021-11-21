@@ -11,9 +11,9 @@
   <div class="access">
 
   {% include update-list.html %}
-  
+
   {% if update_list.size > 0 %}
-    
+
     <div id="access-lastmod" class="post">
       <span>{{- site.data.label.panel.lastmod -}}</span>
       <ul class="post-content pl-0 pb-1 ml-1 mt-2">
@@ -27,7 +27,7 @@
 
       </ul>
     </div> <!-- #access-lastmod -->
-  
+
   {% endif %}
 
   {% include trending-tags.html %}
@@ -36,7 +36,7 @@
     <div id="access-tags">
       <span>{{- site.data.label.panel.trending_tags -}}</span>
       <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
-      
+
       {% for tag in trending_tags %}
         {% capture url %}/tags/{{ tag | downcase | url_encode }}/{% endcapture %}
         <a class="post-tag" href="{{ url | relative_url }}">{{ tag | replace: '-', ' ' }}</a>
@@ -59,10 +59,10 @@
   <!--  2020 exhibition -->
   <div class="custom-panel">
     <div class="custom-panel-title">
-      2020년 바라미 전시회
+      2021년 바라미 전시회
     </div>
     <div class="custom-panel-content">
-      <a href="/categories/2020년"> ❯ 작품 목록 보기</a>
+      <a href="/categories/2021년"> ❯ 작품 목록 보기</a>
     </div>
     <div class="custom-panel-content">
       <a href="/posts/guest-book"> ❯ 방명록 작성하기</a>
