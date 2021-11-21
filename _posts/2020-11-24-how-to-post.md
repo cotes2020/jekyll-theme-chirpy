@@ -2,7 +2,7 @@
 title: 글을 업로드하는 방법
 author: Shin Hyun
 date: 2020-11-24 21:40:00 +0900
-categories: [Barami,Others]
+categories: [Exhibition,Others]
 tags: [post,shinhyun]     # TAG names should always be lowercase, 띄어쓰기도 금지
 ---
 

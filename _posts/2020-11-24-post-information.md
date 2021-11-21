@@ -2,7 +2,7 @@
 title: 글쓰기 요령 ( 이미지 업로드, HTML, CSS, JS 작성 방법 )
 author: Shin Hyun
 date: 2020-11-24 21:50:00 +0900
-categories: [Barami,Others]
+categories: [Exhibition,Others]
 tags: [post,shinhyun]     # TAG names should always be lowercase, 띄어쓰기도 금지
 ---
 
