@@ -4,7 +4,7 @@ Jekyll Theme Chripy 템플릿 포크해서 2020 바라미 전시회를 위한 �
 
 
 포크한 Chripy은 Readme.md는 아래와 같다. 
-
+ 
 ---------------------------------
 # Chirpy
 
