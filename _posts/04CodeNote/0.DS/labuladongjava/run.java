@@ -1,65 +1,39 @@
 package labuladongjava;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
-public class run {
-     
-    // public static void main(String[ ] args) { 
-    //     CreditCard[] wallet = new CreditCard[3]; 
-    //     wallet[0] = new CreditCard("John Bowman", "California Savings", "5391 0375 9387 5309", 5000); 
-    //     wallet[1] = new CreditCard("John Bowman", "California Federal", "3485 0399 3395 1954", 3500); 
-    //     wallet[2] = new CreditCard("John Bowman", "California Finance", "5391 0375 9387 5309", 2500, 300); 
-    //     for (int val = 1; val <= 16; val++) { 
-    //         wallet[0].charge( 3*val ); 
-    //         wallet[1].charge( 2*val); 
-    //         wallet[2].charge( val );
-    //     }
-    //     for (CreditCard card : wallet) { 
-    //         CreditCard.printSummary(card); 
-    //         while (card.getBalance() > 200.0) {
-    //             card.makePayment(200);
-    //             // calling static method
-    //             System.out.println("New balance = " + card.getBalance( )); 
-    //         }
-    //     }
-    // }
+import javax.sound.sampled.Mixer;
 
+public class run { 
+
+    public static int f(int[] piles, int x){
+        int hours = 0;
+        for(int num : piles){
+            hours += num/x;
+            if(num%x>0) hours++;
+        }
+        return hours;
+    }
+    
+    public static int minEatingSpeed(int[] piles, int H) {
+        int left = 1, right=1000000000 + 1;
+        while(left<right){
+            int mid = left + (right-left)/2;
+            if(f(piles, mid) <= H) right = mid-1;
+            else left = mid+1;
+        }
+        return left;
+    }
 
     public static void main(String[] args) {
-        Labu test = new Labu();
+        int[] piles = new int[]{30,11,23,4,20};
+        int h = 5;
 
-        // initialize the first elements of the array
-        // ListNode anw = Labu.mergeTwoLists(l1, l2);
-
-        // // accessing the elements of the specified array
-        // for (int i = 0; i < arr.length; i++)
-        //     System.out.println("Element at " + i + " : " +
-        //                 arr[i].roll_no +" "+ arr[i].name);
-
-        // String[] equations = {"c==c"};
-        // String[] equations = {"b==d"};
-        // // String[] equations = {"c==c","b==d","x!=z"};
-        // System.out.println(test.equationsPossible(equations));
-
-
-        // int[] arr = {1,2,3,4,5};
-        // int n = arr.length, index = 0;
-        // for(int i=0; i<7; i++) {
-        //     System.out.println(arr[index % n]);
-        //     index++;
-        // }
-
-        LinkedList<Integer> q = new LinkedList<>();
-
-        System.out.println(q.isEmpty());
-        q.addLast(1);
-        q.addLast(2);
-        q.addLast(3);
-        q.addLast(4);
-        q.addLast(5);
-        System.out.println(q);
-        System.out.println(q.getLast());
-        System.out.println(q.pollLast()); 
-        System.out.println(q);
+        // System.out.println(searchRange(s, target));
+        System.out.println(minEatingSpeed(piles, h)); 
     }
 }
