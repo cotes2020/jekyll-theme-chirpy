@@ -31,6 +31,9 @@ toc: true
     - [有序链表去重 `快慢指针前后走，slow.next = null; return head`](#有序链表去重-快慢指针前后走slownext--null-return-head)
     - [移除元素 `快慢指针前后走`](#移除元素-快慢指针前后走)
     - [移除0 `快慢指针前后走`](#移除0-快慢指针前后走)
+  - [TWOSUM问题](#twosum问题)
+    - [TwoSum I](#twosum-i)
+    - [TwoSum II](#twosum-ii)
   - [前缀和技巧](#前缀和技巧)
     - [计算索引区间/list中指定位置的和 `preSum[i] = preSum[i - 1] + nums[i - 1];`](#计算索引区间list中指定位置的和-presumi--presumi---1--numsi---1)
     - [和为k的子数组 `if (preSum[j] == preSum[i] - k) res++;`](#和为k的子数组-if-presumj--presumi---k-res)
@@ -162,14 +165,15 @@ toc: true
     - [LFU 淘汰算法 Least Frequently Used](#lfu-淘汰算法-least-frequently-used)
   - [最大栈 Maximum Frequency Stack](#最大栈-maximum-frequency-stack)
 - [数据流](#数据流)
-  - [无限序列随机抽取元素](#无限序列随机抽取元素)
+  - [随机](#随机)
     - [无限序列随机抽取1元素](#无限序列随机抽取1元素)
     - [无限序列随机抽取 k 个数](#无限序列随机抽取-k-个数)
     - [实现随机集合](#实现随机集合)
-    - [避开黑名单的随机数](#避开黑名单的随机数)
+    - [避开黑名单的随机数 `blacklist index to good index`](#避开黑名单的随机数-blacklist-index-to-good-index)
   - [中位数](#中位数)
 - [功能](#功能)
   - [设计朋友圈时间线](#设计朋友圈时间线)
+- [动态规划](#动态规划)
 - [systemm design](#systemm-design)
 
 
@@ -184,6 +188,9 @@ toc: true
 
 ## basic
 
+
+1. Two pointers
+2. HashMap
 
 ```java
 String Str1 = new String("Welcome to Tutorialspoint.com");
@@ -637,6 +644,9 @@ Do not allocate extra space for another array. You must do this by modifying the
 
 ### 有序数组去重 `快慢指针前后走`
 
+26.删除有序数组中的重复项（简单）
+
+
 ![Screen Shot 2021-10-10 at 10.21.49 PM](https://i.imgur.com/71PNcPT.png)
 
 在数组相关的算法题中时非常常见的，通用解法就是使用快慢指针技巧。
@@ -715,6 +725,11 @@ def removeDuplicates(test_list):
 ---
 
 ### 有序链表去重 `快慢指针前后走，slow.next = null; return head`
+
+[83. Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/submissions/)
+
+Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
 
 ```java
 ListNode deleteDuplicates(ListNode head) {
@@ -805,9 +820,43 @@ LL.printLL()
 
 ### 移除元素 `快慢指针前后走`
 
+27.移除元素（简单）
+
+
 把 nums 中所有值为 val 的元素原地删除，依然需要使用 `双指针技巧` 中的 `快慢指针`：
 - 如果 fast 遇到需要去除的元素，则直接跳过，
 - 否则就告诉 slow 指针，并让 slow 前进一步。
+
+[27. Remove Element](https://leetcode.com/problems/remove-element/)
+
+Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+
+Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums. More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.
+
+Return k after placing the final result in the first k slots of nums.
+
+Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
+
+Custom Judge:
+
+The judge will test your solution with the following code:
+
+int[] nums = [...]; // Input array
+int val = ...; // Value to remove
+int[] expectedNums = [...]; // The expected answer with correct length.
+                            // It is sorted with no values equaling val.
+
+int k = removeElement(nums, val); // Calls your implementation
+
+assert k == expectedNums.length;
+sort(nums, 0, k); // Sort the first k elements of nums
+for (int i = 0; i < actualLength; i++) {
+    assert nums[i] == expectedNums[i];
+}
+If all assertions pass, then your solution will be accepted.
+
+
+
 
 ```java
 int removeElement(int[] nums, int val) {
@@ -833,8 +882,6 @@ def removeElement(nums: List[int], val: int) -> int:
             nums[slow] = nums[fast]
             slow += 1
         fast += 1
-    print(nums)
-    print(nums[0:slow])
 
 # removeElement([0,0,1,2,2,3,3], 2)
 ```
@@ -843,12 +890,29 @@ def removeElement(nums: List[int], val: int) -> int:
 
 ### 移除0 `快慢指针前后走`
 
+[283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)
+
+Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+Note that you must do this in-place without making a copy of the array.
+
 
 ```java
+void moveZeroes(int[] nums) {
+    // 去除 nums 中的所有 0
+    // 返回去除 0 之后的数组长度
+    int p = removeElement(nums, 0);
+    // 将 p 之后的所有元素赋值为 0
+    for (; p < nums.length; p++) {
+        nums[p] = 0;
+    }
+}
+
+// 见上文代码实现
 int removeElement(int[] nums, int val) {
     int fast = 0, slow = 0;
     while (fast < nums.length) {
-        if (nums[fast] != 0) {
+        if (nums[fast] != val) {
             nums[slow] = nums[fast];
             slow++;
         }
@@ -922,6 +986,156 @@ def moveZeroes(nums: List[int]) -> None:
 
 # moveZeroes([0,1,0,3,12])
 ```
+
+
+---
+
+
+## TWOSUM问题
+
+对于 TwoSum 问题，一个难点就是给的数组无序。对于一个无序的数组，我们似乎什么技巧也没有，只能暴力穷举所有可能。
+
+一般情况下，我们会首先把数组排序再考虑双指针技巧。TwoSum 启发我们，HashMap 或者 HashSet 也可以帮助我们处理无序数组相关的简单问题。
+- 设计的核心在于权衡，利用不同的数据结构，可以得到一些针对性的加强。
+
+```java
+int[] twoSum(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int sum = nums[left] + nums[right];
+        if (sum == target) {
+            return new int[]{left, right};
+        } else if (sum < target) {
+            left++; // 让 sum 大一点
+        } else if (sum > target) {
+            right--; // 让 sum 小一点
+        }
+    }
+    // 不存在这样两个数
+    return new int[]{-1, -1};
+}
+```
+
+
+---
+
+### TwoSum I
+
+[1. Two Sum](https://leetcode.com/problems/two-sum/)
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+
+
+最简单粗暴的办法当然是穷举了：
+- 时间复杂度 O(N^2)，空间复杂度 O(1)。
+
+```java
+int[] twoSum(int[] nums, int target) {
+    for (int i = 0; i < nums.length; i++)
+        for (int j = i + 1; j < nums.length; j++)
+            if (nums[j] == target - nums[i]) return new int[] { i, j };
+    // 不存在这么两个数
+    return new int[] {-1, -1};
+}
+```
+
+通过一个哈希表减少时间复杂度：
+- 时间复杂度降低到 O(N)，但是需要 O(N) 的空间复杂度
+
+
+```java
+// Runtime: 8 ms, faster than 45.82% of Java online submissions for Two Sum.
+// Memory Usage: 43.6 MB, less than 6.09% of Java online submissions for Two Sum.
+
+int[] twoSum(int[] nums, int target) {
+    int n = nums.length;
+    HashMap<Integer, Integer> index = new HashMap<>();
+    // 构造一个哈希表：元素映射到相应的索引
+    for (int i = 0; i < n; i++) index.put(nums[i], i);
+
+    for (int i = 0; i < n; i++) {
+        int other = target - nums[i];
+        // 如果 other 存在且不是 nums[i] 本身
+        if (index.containsKey(other) && index.get(other) != i) return new int[] {i, index.get(other)};
+    }
+    return new int[] {-1, -1};
+}
+```
+
+---
+
+### TwoSum II
+
+
+[167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+
+Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+
+
+
+```java
+// Solution 1 : BinarySearch
+// Time : O(nlogn)
+// space : O(1)
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int n = numbers.length;
+        for(int i=0;i<n-1;i++){
+           int pos = Arrays.binarySearch(numbers, i+1 , n, target-numbers[i]);
+           if(pos>0) return new int[]{i+1,pos+1};
+        }
+        return null;
+    }
+}
+
+// Solution 2: HashMap
+// Time : O(n)
+// space : O(n)
+// Runtime: 4 ms, faster than 16.01% of Java online submissions for Two Sum II - Input Array Is Sorted.
+// Memory Usage: 42.3 MB, less than 7.27% of Java online submissions for Two Sum II - Input Array Is Sorted.
+public int[] twoSum(int[] numbers, int target) {
+    int n = numbers.length;
+    HashMap<Integer, Integer> index = new HashMap<>();
+    // 构造一个哈希表：元素映射到相应的索引
+    for (int i = 0; i < n; i++) index.put(numbers[i], i);
+    for (int i = 0; i < n; i++) {
+        int other = target - numbers[i];
+        // 如果 other 存在且不是 numbers[i] 本身
+        if (index.containsKey(other) && index.get(other) != i) return new int[] {i+1, index.get(other)+1};
+    }
+    return new int[] {-1, -1};
+}
+
+// Solution 3 : Two pointers
+// Time : O(n)
+// space : O(1)
+// Runtime: 1 ms, faster than 53.58% of Java online submissions for Two Sum II - Input Array Is Sorted.
+// Memory Usage: 41.5 MB, less than 14.83% of Java online submissions for Two Sum II - Input Array Is Sorted.
+public int[] twoSum(int[] numbers, int target) {
+    int l = 0, r = numbers.length - 1;
+    while (numbers[l] + numbers[r] != target) {
+        if (numbers[l] + numbers[r] > target) r--;
+        else l++;
+        if (r == l) return new int[]{};
+    }
+    return new int[]{l + 1, r + 1};
+}
+```
+
+
+
+
+
+
+
 
 
 ---
@@ -2073,6 +2287,31 @@ int left_bound(int[] nums, int target) {
     }
     return left;
 }
+
+
+// 主函数，在 f(x) == target 的约束下求 x 的最值
+int solution(int[] nums, int target) {
+    if (nums.length == 0) return -1;
+    // 问自己：自变量 x 的最小值是多少？
+    int left = ...;
+    // 问自己：自变量 x 的最大值是多少？
+    int right = ... + 1;
+
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (f(mid) == target) {
+            // 问自己：题目是求左边界还是右边界？
+            // ...
+        } else if (f(mid) < target) {
+            // 问自己：怎么让 f(x) 大一点？
+            // ...
+        } else if (f(mid) > target) {
+            // 问自己：怎么让 f(x) 小一点？
+            // ...
+        }
+    }
+    return left;
+}
 ```
 
 ---
@@ -2098,6 +2337,9 @@ Input: piles = [3,6,7,11], h = 8
 Output: 4
 
 ```java
+// Runtime: 21 ms, faster than 37.05% of Java online submissions for Koko Eating Bananas.
+// Memory Usage: 52.4 MB, less than 7.41% of Java online submissions for Koko Eating Bananas.
+
 // 定义：速度为 x 时，需要 f(x) 小时吃完所有香蕉
 // f(x) 随着 x 的增加单调递减
 int f(int[] piles, int x) {
@@ -2108,7 +2350,6 @@ int f(int[] piles, int x) {
     }
     return hours;
 }
-
 
 public int minEatingSpeed(int[] piles, int H) {
     int left = 1, right = 1000000000 + 1;
@@ -2136,6 +2377,21 @@ public int minEatingSpeed(int[] piles, int H) {
 ---
 
 ##### 运送货物？？？？？？？？？？？？？？
+
+[1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
+
+A conveyor belt has packages that must be shipped from one port to another within days days.
+
+The ith package on the conveyor belt has a weight of weights[i]. Each day, we load the ship with packages on the conveyor belt (in the order given by weights). We may not load more weight than the maximum weight capacity of the ship.
+
+Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within days days.
+
+
+
+Example 1:
+
+Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5
+Output: 15
 
 
 x = capacity
@@ -6395,7 +6651,7 @@ class FreqStack {
 
 ---
 
-## 无限序列随机抽取元素
+## 随机
 
 ---
 
@@ -6600,13 +6856,56 @@ class RandomizedSet {
 
 ---
 
-### 避开黑名单的随机数
+### 避开黑名单的随机数 `blacklist index to good index`
+
+[710. Random Pick with Blacklist](https://leetcode.com/problems/random-pick-with-blacklist/)
+
+You are given an integer n and an array of unique integers blacklist. Design an algorithm to pick a random integer in the range [0, n - 1] that is not in blacklist. Any integer that is in the mentioned range and not in blacklist should be equally likely to be returned.
+
+Optimize your algorithm such that it minimizes the number of calls to the built-in random function of your language.
+
+Implement the Solution class:
+
+Solution(int n, int[] blacklist) Initializes the object with the integer n and the blacklisted integers blacklist.
+int pick() Returns a random integer in the range [0, n - 1] and not in blacklist.
 
 
+- 给你输入一个正整数 N，代表左闭右开区间 [0,N)，
+- 再给你输入一个数组 blacklist，其中包含一些「黑名单数字」，且 blacklist 中的数字都是区间 [0,N) 中的数字。
 
 
+```java
+// Runtime: 42 ms, faster than 40.45% of Java online submissions for Random Pick with Blacklist.
+// Memory Usage: 54 MB, less than 17.08% of Java online submissions for Random Pick with Blacklist.
 
+class Solution {
 
+    Random ran = new Random();
+    HashMap<Integer, Integer> map = new HashMap<>();
+    int range;
+
+    public Solution(int n, int[] blacklist) {
+        Arrays.sort(blacklist);
+        for(int b:blacklist) map.put(b, b);
+
+        range = n-blacklist.length;
+        int last=n-1;
+
+        for(int b:blacklist) {
+            if(b<range){
+                while(map.containsKey(last)) last--;
+                map.put(b,last);
+                last--;
+            }
+        }
+    }
+
+    public int pick() {
+        int res = ran.nextInt(range);
+        return map.getOrDefault(res, res);
+    }
+}
+```
 
 
 
@@ -6812,7 +7111,9 @@ class Twitter {
 }
 ```
 
+---
 
+# 动态规划
 
 
 
