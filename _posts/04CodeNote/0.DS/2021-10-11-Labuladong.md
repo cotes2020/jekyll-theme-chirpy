@@ -174,6 +174,11 @@ toc: true
 - [功能](#功能)
   - [设计朋友圈时间线](#设计朋友圈时间线)
 - [动态规划](#动态规划)
+  - [斐波那契数列](#斐波那契数列)
+  - [凑零钱问题 ` for i, for coin, dp[i] = Math.min(dp[i], dp[i-coin]+1);`](#凑零钱问题--for-i-for-coin-dpi--mathmindpi-dpi-coin1)
+  - [最长递增子序列](#最长递增子序列)
+    - [动态规划解法](#动态规划解法)
+      - [最小路径和（中等）](#最小路径和中等)
 - [systemm design](#systemm-design)
 
 
@@ -198,12 +203,15 @@ String.length()
 String.toCharArray()
 String.charAt()
 
-int[] arr = new int[res.size()];
-int.length;
-Arrays.sort(nums1);
-Arrays.asList(int k);
+
 int[] distTo = new int[V];   
 Arrays.fill(distTo, Integer.MAX_VALUE);
+int[].length;
+
+Arrays.sort(nums1);
+Arrays.asList(int k);
+Arrays.toString(subCoin)
+
 
 Stack<String> Stack= new Stack<>();
 Stack.push();
@@ -7114,6 +7122,332 @@ class Twitter {
 ---
 
 # 动态规划
+
+
+求解动态规划的核心问题是穷举。
+- 动态规划的穷举 存在「重叠子问题」如果暴力穷举的话效率会极其低下，所以需要「备忘录」或者「DP table」来优化穷举过程，避免不必要的计算。
+  - 穷举所有可行解其实并不是一件容易的事，只有列出正确的「状态转移方程」，才能正确地穷举。
+- 而且，动态规划问题一定会具备「最优子结构」，才能通过子问题的最值得到原问题的最值。
+
+明确 base case -> 明确「状态」-> 明确「选择」 -> 定义 dp 数组/函数的含义。
+
+---
+
+
+
+## 斐波那契数列
+
+[509. Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)
+
+The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+
+F(0) = 0, F(1) = 1
+F(n) = F(n - 1) + F(n - 2), for n > 1.
+Given n, calculate F(n).
+
+
+
+Example 1:
+
+Input: n = 2
+Output: 1
+Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
+
+
+1. 暴力递归
+
+观察递归树，很明显发现了算法低效的原因：存在大量重复计算，比如 f(18) 被计算了两次，而且你可以看到，以 f(18) 为根的这个递归树体量巨大，多算一遍，会耗费巨大的时间。更何况，还不止 f(18) 这一个节点被重复计算，所以这个算法及其低效。
+
+这就是动态规划问题的第一个性质：重叠子问题。下面，我们想办法解决这个问题。
+
+```java
+int fib(int N) {
+    if (N == 1 || N == 2) return 1;
+    return fib(N - 1) + fib(N - 2);
+}
+```
+
+
+2. 带备忘录的递归解法
+时间复杂度是 O(n)
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Fibonacci Number.
+// Memory Usage: 37.3 MB, less than 26.68% of Java online submissions for Fibonacci Number.
+
+
+class Solution {
+
+    public int fib(int n) {
+        // 备忘录全初始化为 0
+        int[] memo = new int[ n+ 1];
+        // 进行带备忘录的递归
+        return helper(memo, n);
+    }
+
+    public int helper(int[] memo, int n) {
+        // base case
+        if (n == 0 || n == 1) return n;
+
+        // 已经计算过，不用再计算了
+        if (memo[n] != 0) return memo[n];
+
+        memo[n] = helper(memo, n - 1) + helper(memo, n - 2);
+        return memo[n];
+    }
+}
+```
+
+
+3. dp 数组的迭代解法
+
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Fibonacci Number.
+// Memory Usage: 37.3 MB, less than 26.68% of Java online submissions for Fibonacci Number.
+
+int fib(int N) {
+    if (N == 0) return 0;
+    int[] dp = new int[N + 1];
+
+    // base case
+    dp[0] = 0; dp[1] = 1;
+
+    // 状态转移
+    for (int i = 2; i <= N; i++) dp[i] = dp[i - 1] + dp[i - 2];
+    return dp[N];
+}
+
+```
+
+
+
+4. 状态压缩 pre+cur
+
+```java
+int fib(int n) {
+    if (n < 1) return 0;
+    if (n == 2 || n == 1) return 1;
+    int prev = 1, curr = 1;
+    for (int i = 3; i <= n; i++) {
+        int sum = prev + curr;
+        prev = curr;
+        curr = sum;
+    }
+    return curr;
+}
+```
+
+
+---
+
+## 凑零钱问题 ` for i, for coin, dp[i] = Math.min(dp[i], dp[i-coin]+1);`
+
+
+[322. Coin Change](https://leetcode.com/problems/coin-change/)
+
+You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+
+Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+
+You may assume that you have an infinite number of each kind of coin.
+
+
+Example 1:
+
+Input: coins = [1,2,5], amount = 11
+Output: 3
+Explanation: 11 = 5 + 5 + 1
+
+
+```java
+// Runtime: 28 ms, faster than 33.57% of Java online submissions for Coin Change.
+// Memory Usage: 41.4 MB, less than 30.06% of Java online submissions for Coin Change.
+// Performance:
+// time: O(n * m), n is the amount, m is n of coins
+// memory: O(n), n is the amount
+public int coinChange(int[] coins, int amount) {
+    int[] subCoin = new int[amount+1];
+    Arrays.fill(subCoin, -1);
+    subCoin[0]=0;
+
+    for(int i=1; i<=amount;i++){
+        int minC = Integer.MAX_VALUE;
+        for(int coin:coins){
+            int rest = i - coin;
+            if(rest < 0) continue;
+            if(subCoin[rest] ==-1) continue;
+            minC = Math.min(minC, subCoin[rest]);
+        }
+        if(minC==Integer.MAX_VALUE) continue;
+        subCoin[i]=minC+1;
+    }
+    return subCoin[amount];
+}
+
+
+// Runtime: 12 ms, faster than 79.68% of Java online submissions for Coin Change.
+// Memory Usage: 38.5 MB, less than 70.58% of Java online submissions for Coin Change.
+public int coinChange(int[] coins, int amount) {
+        int[] dp = new int[amount+1];
+        Arrays.fill(dp,amount+1);
+        dp[0]=0;
+        for(int i=1; i<=amount;i++){
+            for(int coin:coins){
+                if(i>=coin) dp[i] = Math.min(dp[i], dp[i-coin]+1);
+            }
+        }
+        return dp[amount]>amount? -1: dp[amount];
+}
+```
+
+
+---
+
+## 最长递增子序列
+
+[300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
+
+Given an integer array nums, return the length of the longest strictly increasing subsequence.
+
+A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements. For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7].
+
+Example 1:
+
+Input: nums = [10,9,2,5,3,7,101,18]
+Output: 4
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+
+```java
+public int lengthOfLIS(int[] nums) {
+    int[] dp = new int[nums.length];
+    Arrays.fill(dp, 1);
+    for(int i=1;i<nums.length;i++){
+        dp[i]=1;
+        for(int j=0;j<i;j++){
+            if(nums[i]>nums[j]) dp[i]= Math.max(dp[j]+1,dp[i]);
+        }
+    }
+    int res = 0;
+    for(int num:dp) res=Math.max(res, num);
+    return res;
+}
+```
+
+---
+
+### 动态规划解法
+
+
+---
+
+
+#### 最小路径和（中等）
+
+[64. Minimum Path Sum ](https://leetcode.com/problems/minimum-path-sum/)
+
+Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+
+Note: You can only move either down or right at any point in time.
+
+我们把「从 D 走到 B 的最小路径和」这个问题转化成了「从 D 走到 A 的最小路径和」和 「从 D 走到 C 的最小路径和」这两个问题。
+- 从左上角位置 (0, 0) 走到位置 (i, j) 的最小路径和为 dp(grid, i, j)。
+- dp(grid, i, j) 的值取决于 dp(grid, i - 1, j) 和 dp(grid, i, j - 1) 返回的值。
+
+
+1. 自顶向下动态规划解法
+时间复杂度和空间复杂度都是 O(MN)，标准的自顶向下动态规划解法。
+
+```java
+// Runtime: 2 ms, faster than 84.10% of Java online submissions for Minimum Path Sum.
+// Memory Usage: 43 MB, less than 19.44% of Java online submissions for Minimum Path Sum.
+
+int[][] memo;
+
+int minPathSum(int[][] grid) {
+    int m = grid.length;
+    int n = grid[0].length;
+    memo = new int[m][n];
+    for(int row:memo) Arrays.fill(row, -1)
+    // 计算从左上角走到右下角的最小路径和
+    return dp(grid, m - 1, n - 1);
+}
+
+int dp(int[][] grid, int i, int j) {
+    // base case
+    if(i==0 && j==0) return grid[0][0];
+
+    // 如果索引出界，返回一个很大的值，
+    // 保证在取 min 的时候不会被取到
+    if(i<0 || j<0) return Integer.MAX_VALUE;
+
+    if(memo[i][j]!=-1) return memo[i][j];
+
+    // 左边和上面的最小路径和加上 grid[i][j]
+    // 就是到达 (i, j) 的最小路径和
+     memo[i][j] = Math.min(
+        dp(grid, i - 1, j);
+        dp(grid, i, j - 1);
+    ) + grid[i][j];
+
+    return  memo[i][j];
+}
+```
+
+
+2. 自底向上的迭代解法
+
+
+```java
+// Runtime: 4 ms, faster than 21.15% of Java online submissions for Minimum Path Sum.
+// Memory Usage: 43 MB, less than 19.44% of Java online submissions for Minimum Path Sum.
+public int minPathSum(int[][] grid) {
+        int m=grid.length;
+        int n=grid[0].length;  
+        int[][] memo = new int[m][n];
+
+        memo[0][0] = grid[0][0];
+
+        for(int i=1;i<m;i++) memo[i][0] = memo[i-1][0] + grid[i][0];
+        for(int j=1;j<n;j++) memo[0][j] = memo[0][j-1] + grid[0][j];
+
+
+        // 状态转移
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                memo[i][j] = Math.min(
+                    memo[i-1][j],
+                    memo[i][j-1]
+                ) + grid[i][j];
+            }
+        }
+        return memo[m-1][n-1];
+   }
+}
+```
+
+---
+
+####
+
+[174. Dungeon Game](https://leetcode.com/problems/dungeon-game/)
+
+The demons had captured the princess and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of m x n rooms laid out in a 2D grid. Our valiant knight was initially positioned in the top-left room and must fight his way through dungeon to rescue the princess.
+
+The knight has an initial health point represented by a positive integer. If at any point his health point drops to 0 or below, he dies immediately.
+
+Some of the rooms are guarded by demons (represented by negative integers), so the knight loses health upon entering these rooms; other rooms are either empty (represented as 0) or contain magic orbs that increase the knight's health (represented by positive integers).
+
+To reach the princess as quickly as possible, the knight decides to move only rightward or downward in each step.
+
+Return the knight's minimum initial health so that he can rescue the princess.
+
+Note that any room can contain threats or power-ups, even the first room the knight enters and the bottom-right room where the princess is imprisoned.
+
+
+
+
+
 
 
 
