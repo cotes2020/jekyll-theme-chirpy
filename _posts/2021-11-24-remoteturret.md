@@ -48,23 +48,23 @@ tags: [post,huijun]     # TAG names should always be lowercase, 띄어쓰기도 
 -----
 ### 작품 사진 및 영상
 
-<img src="/assets/img/post/2021-11-24-remoteturret/long_L.JPG" width="90%">
+<img src="/assets/img/post/2021-11-24-remoteturret/long_L.jpg" width="90%">
 
 멀리서 본 모습
 
-<img src="/assets/img/post/2021-11-24-remoteturret/F.JPG" width="90%">
+<img src="/assets/img/post/2021-11-24-remoteturret/F.jpg" width="90%">
 
 앞면
 
-<img src="/assets/img/post/2021-11-24-remoteturret/L.JPG" width="90%">
+<img src="/assets/img/post/2021-11-24-remoteturret/L.jpg" width="90%">
 
 왼쪽
 
-<img src="/assets/img/post/2021-11-24-remoteturret/R.JPG" width="90%">
+<img src="/assets/img/post/2021-11-24-remoteturret/R.jpg" width="90%">
 
 오른쪽
 
-<img src="/assets/img/post/2021-11-24-remoteturret/B.JPG" width="90%">
+<img src="/assets/img/post/2021-11-24-remoteturret/B.jpg" width="90%">
 
 뒤
 
