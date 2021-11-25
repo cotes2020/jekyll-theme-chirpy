@@ -60,7 +60,7 @@ tags: [post,huijun]     # TAG names should always be lowercase, 띄어쓰기도 
 
 왼쪽
 
-<img src="/assets/img/post/2021-11-24-remoteturret/R.jpg" width="90%">
+<img src="/assets/img/post/2021-11-24-remoteturret/RB.jpg" width="90%">
 
 오른쪽
 
