@@ -3,7 +3,7 @@ title: 2020년 바라미 전시회 방명록 (추첨 1분 선물 증정)
 author: Shin Hyun
 date: 2020-12-28 13:35:00 +0900
 categories: [Exhibition,2020년]
-tags: [post,shinhyun, event]     # TAG names should always be lowercase, 띄어쓰기도 금지
+tags: [post,shinhyun,event]     # TAG names should always be lowercase, 띄어쓰기도 금지
 ---
 
 방명록을 남겨주세요!
