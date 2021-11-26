@@ -51,4 +51,4 @@ tags: [
  사진을 찍어 점자 인식 과정을 진행하게 됩니다.
  
 ### 시연 영상
-<video src="/assets/img/post/2021-11-27-portable_braille_voice_translator/demo.mp4">
+<video src="/assets/img/post/2021-11-27-portable_braille_voice_translator/demo_video.mp4">
