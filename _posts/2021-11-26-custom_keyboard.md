@@ -30,9 +30,7 @@ tags: [post,kangheewon]     # TAG names should always be lowercase, 띄어쓰기
 
 
 
-![example](.\assets\img\post\2021-11-26-custom_keyboard\example.jpg)
-
-
+<img src="/assets/img/post/2021-11-26-custom_keyboard/example.jpg" width="90%">
 
 'ㄹㅇ ㅋㅋ' 밈과 합성 이미지를 모두 접해보고 나서 저런 키보드가 실제로 있으면 어떨까 하는 생각을 가지게 되었기에 직접 만들어 보기로 하였다.
 
@@ -46,7 +44,7 @@ tags: [post,kangheewon]     # TAG names should always be lowercase, 띄어쓰기
 
 다음은 구상한 회로도이다.
 
-![circuit](.\assets\img\post\2021-11-26-custom_keyboard\circuit.jpg)
+<img src="/assets/img/post/2021-11-26-custom_keyboard/circuit.jpg" width="90%">
 
 단순하게 VCC와 GND를 스위치로 연결한다면 플로팅 상태가 발생할 수 있으므로 풀다운을 위한 저항(100옴)을 하나 포함시켰다.
 
@@ -62,7 +60,7 @@ tags: [post,kangheewon]     # TAG names should always be lowercase, 띄어쓰기
 -------
 ### 작품 사진 
 
-![keyboard](.\assets\img\post\2021-11-26-custom_keyboard\keyboard.jpg)
+<img src="/assets/img/post/2021-11-26-custom_keyboard/keyboard.jpg" width="90%">
 
 위의 버튼을 누르면 컴퓨터에 자동으로 ''ㄹㅇ ㅋㅋ'' 와 엔터가 눌려진다. (한영변환을 미리 해두어야한다.)
 
