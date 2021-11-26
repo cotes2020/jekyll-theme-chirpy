@@ -34,7 +34,7 @@ tags: [
 - 점자 한 칸을 구성하는 점을 1부터 6까지의 숫자로 지정하여 숫자열로 표현
 - 파이썬 딕셔너리로 숫자열을 자음, 모음으로 변환
 - 결합함수를 통해 단어로 구성
-  <img src="/assets/img/post/2021-11-27-portable_braille_voice-translator/braile.png">
+  <img src="/assets/img/post/2021-11-27-portable_braille_voice_translator/braile.png">
 
 ### 음성송출
 
@@ -45,10 +45,10 @@ tags: [
 
 ### 실제 장치
 
-<img src="/assets/img/post/2021-11-27-portable_braille_voice-translator/diagram.jpg">
-<img src="/assets/img/post/2021-11-27-portable_braille_voice-translator/result.jpg">
+<img src="/assets/img/post/2021-11-27-portable_braille_voice_translator/diagram.jpg">
+<img src="/assets/img/post/2021-11-27-portable_braille_voice_translator/result.jpg">
 첫번째로 전원 스위치를 눌러 전원을 켠 후, 카메라 셔터 스위치를 누르면
  사진을 찍어 점자 인식 과정을 진행하게 됩니다.
  
 ### 시연 영상
-<video src="/assets/img/post/2021-11-27-portable_braille_voice-translator/demo.mp4">
+<video src="/assets/img/post/2021-11-27-portable_braille_voice_translator/demo.mp4">
