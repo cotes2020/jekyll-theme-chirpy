@@ -1,7 +1,7 @@
 ---
 title: 휴대용 점자 음성 번역기
 author: JeongEun Kim, JeongHyun Kim, HanGyeol Yoon, SeongJin Lee, JeongEun Lee, InSeong Heo
-date: 2020-11-27 00:35:00 +0900
+date: 2021-11-27 00:35:00 +0900
 categories: [Exhibition, Others]
 tags: [
     post,
