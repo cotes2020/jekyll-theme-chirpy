@@ -111,7 +111,7 @@ return은 관절 좌표와 확률이다.
 <div class="row">
     <div style="width: 50%">
         <figcaption>메인서버</figcaption>
-        <img src="/assets/img/post/2021-11-27-VirtualTrainer/test0.jpg">
+        <img src="/assets/img/post/2021-11-27-VirtualTrainer/main.png">
     </div>
 </div>
 
