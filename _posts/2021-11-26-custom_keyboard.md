@@ -30,7 +30,7 @@ tags: [post,kangheewon]     # TAG names should always be lowercase, 띄어쓰기
 
 
 
-<img src="/assets/img/post/2021-11-26-custom_keyboard/example.jpg" width="90%">
+<img src="/assets/img/post/2021-11-26-custom_keyboard/example.jpg" width="40%">
 
 'ㄹㅇ ㅋㅋ' 밈과 합성 이미지를 모두 접해보고 나서 저런 키보드가 실제로 있으면 어떨까 하는 생각을 가지게 되었기에 직접 만들어 보기로 하였다.
 
