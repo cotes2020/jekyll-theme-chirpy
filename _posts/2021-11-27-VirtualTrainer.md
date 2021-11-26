@@ -116,11 +116,47 @@ return은 관절 좌표와 확률이다.
 </div>
 
 숄더프레스 시연
+<div class="row">
+    <div style="width: 50%">
+        <figcaption>초기 상태</figcaption></figcaption>
+        <img src="/assets/img/post/2021-11-27-VirtualTrainer/first.png">
+    </div>
+</div>
+<div class="row">
+    <div style="width: 50%">
+        <figcaption>숄더프레스 통과</figcaption>
+        <img src="/assets/img/post/2021-11-27-VirtualTrainer/SPGreen.png">
+    </div>
+</div>
+<div class="row">
+    <div style="width: 50%">
+        <figcaption>숄더프레스 중간</figcaption>
+        <img src="/assets/img/post/2021-11-27-VirtualTrainer/SPYellow.png">
+    </div>
+</div>
+<div class="row">
+    <div style="width: 50%">
+        <figcaption>숄더프레스 불균형</figcaption>
+        <img src="/assets/img/post/2021-11-27-VirtualTrainer/SPNope.png">
+    </div>
+</div>
+
 <video controls width="90%">
     <source src="/assets/img/post/2021-11-27-VirtualTrainer/ShoulderP.mp4">
 </video>
 
 스쿼트 시연
+<div class="row">
+    <div style="width: 50%">
+        <figcaption>스쿼트 정면</figcaption>
+        <img src="/assets/img/post/2021-11-27-VirtualTrainer/frontsq.png">
+    </div>
+</div><div class="row">
+    <div style="width: 50%">
+        <figcaption>스쿼트 측면</figcaption>
+        <img src="/assets/img/post/2021-11-27-VirtualTrainer/sidesq.png">
+    </div>
+</div>
 <video controls width="90%">
     <source src="/assets/img/post/2021-11-27-VirtualTrainer/squat.mp4">
 </video>
