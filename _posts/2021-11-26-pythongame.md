@@ -250,9 +250,9 @@ pygame.quit()
 ```
 
 이미지:
-
-<img scr="/assets/img/post/2021-11-26-pythongame.md/image01.png" width="90%">
-
+<!--
+<img src="/assets/img/post/2021-11-26-pythongame.md/image01.png" width="90%">
+-->
 
 
 ## 개선해야 할 점
