@@ -33,7 +33,7 @@ NEO-6M을 통해 gps 결과값을 확인할려고 했으나, 첫 구매로 온 �
 두 번째로 구매한 부품은 납땜도 한 번에 하고 제대로 작동하는지 현장에서 확인하기 위해 세운전자상가에 직접 방문하여 구매하였다. 
 이 경우 부품은 제대로 작동하였지만, 신호 송신만 되고 gps 결과값을 수신받지 못했다. 부품과 코딩 문제 때문에 시간이 많이 지체되었고, 제출 기간이 얼마 남지 않아 
 더 이상의 시간 투자가 힘들었다. 따라서 NEO-6M을 이용한 프로젝트를 다루는 블로그를 찾아 제대로 작동했을 떄의 결과값이 어떻게 생기는지 눈으로 확인했다.
-또한 본래 작품설계는 지갑에 붙일 수 있을 정도의 작은 크기로 제작하려고 하였으나, 아두이노를 통해 설계하면서 한계를 느꼈고, 미소소자에 대한 지식을 쌓은 후 소형화 작업을 수행하려한다.
+또한 본래 작품설계는 지갑에 붙일 수 있을 정도의 작은 크기로 제작하려고 하였으나, 아두이노를 통해 설계하면서 한계를 느꼈고,  미소소자에 대한 지식을 쌓은 후 소형화 작업을 수행하려한다.
 
 
 코드
@@ -89,6 +89,67 @@ void loop()
     myString+=myChar;
     delay(1000);
   }
+if(!myString.equals(""))
+  {
+    Serial.println("input value :"+myString);
+    if(myString=="on")  //myString 값이 'on' 이라면
+      {
+        piezoSpeaker_5v.playMelody(piezoSpeaker_5vHoorayLength, piezoSpeaker_5vHoorayMelody, piezoSpeaker_5vHoorayNoteDurations); 
+    delay(500); 
+    
+      }
+      
+    if(myString=="onoff")//off를 입력해서 myString 값이 'onoff'
+    {
+      
+      Serial.println("기기를 찾았습니다!!");
+      myString=""; //myString 값 초기화
+      delay(5);
+      
+      
+    }
+  }
+}
+
+void getgps(TinyGPS &gps) //gps 결과값 print
+{
+  gps.f_get_position(&latitude, &longitude);
+  Serial.print("Lat/Long: "); 
+  Serial.print(latitude,5); 
+  Serial.print(", "); 
+  Serial.println(longitude,5);
   
+  int year;
+  byte month, day, hour, minute, second, hundredths;
+  gps.crack_datetime(&year,&month,&day,&hour,&minute,&second,&hundredths);
+  Serial.print("Date: "); Serial.print(month, DEC); Serial.print("/"); 
+  Serial.print(day, DEC); Serial.print("/"); Serial.print(year);
+  Serial.print("  Time: "); Serial.print(hour, DEC); Serial.print(":"); 
+  Serial.print(minute, DEC); Serial.print(":"); Serial.print(second, DEC); 
+  Serial.print("."); Serial.println(hundredths, DEC); 
+  Serial.print("Altitude (meters): "); Serial.println(gps.f_altitude());  
+  Serial.print("Course (degrees): "); Serial.println(gps.f_course()); 
+  Serial.print("Speed(kmph): "); Serial.println(gps.f_speed_kmph());
+  Serial.println();
+ 
+  unsigned long chars;
+  unsigned short sentences, failed_checksum;
+  gps.stats(&chars, &sentences, &failed_checksum);
+  delay(10000);
+}
+
+## 작품 사진 및 영상
+
+아두이노 회로 완성 사진
+<img src="/assets/img/post/2021-11-26-Detachable lost and found system/circuit.JPG" width="90%">
+
+NEO-6M을 통해 gps 결과값 수신하는 사진
+<img src="/assets/img/post/2021-11-26-Detachable lost and found system/gps.JPG" width="90%">
+
+on/off를 통해 피에조 부저 조작 영상
+<video controls width="90%">
+    <source src="/assets/img/post/2021-11-26-Detachable lost and found system/HC-05,PiezoBuzzer.mp4">
+</video> 
+
 
   
