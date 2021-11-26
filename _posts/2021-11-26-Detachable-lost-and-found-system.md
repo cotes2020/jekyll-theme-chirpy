@@ -145,7 +145,9 @@ NEO-6M을 통해 gps 결과값 수신하는 사진
 <img src="/assets/img/post/2021-11-26-Detachable-lost-and-found-system/gps.JPG" width="90%">
 
 on/off를 통해 피에조 부저 조작 영상
-<source src="/assets/img/post/2021-11-26-Detachable-lost-and-found-system/HC-05,PiezoBuzzer.mp4"width="90%">
+<video controls width="90%">
+    <source src="/assets/img/post/2021-11-26-Detachable-lost-and-found-system/HC-05,PiezoBuzzer.mp4">
+</video> 
 
 
 
