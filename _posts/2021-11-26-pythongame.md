@@ -251,7 +251,7 @@ pygame.quit()
 
 이미지:
 
-  ![묶음 개체입니다.](file:///C:\Users\user\AppData\Local\Temp\DRW000007e8230f.gif)  
+/assets/img/post/2021-11-26-pythongame.md/image01.png
 
 
 
