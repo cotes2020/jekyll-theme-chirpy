@@ -36,43 +36,41 @@ NEO-6M을 통해 gps 결과값을 확인할려고 했으나, 첫 구매로 온 �
 또한 본래 작품설계는 지갑에 붙일 수 있을 정도의 작은 크기로 제작하려고 하였으나, 아두이노를 통해 설계하면서 한계를 느꼈고,  미소소자에 대한 지식을 쌓은 후 소형화 작업을 수행하려한다.
 
 
-코드
-#include <SoftwareSerial.h> //시리얼통신 라이브러리 호출
-#include "PiezoSpeaker.h"//피에조 부저 라이브러리 호출
-#include <TinyGPS.h> //Neo-6M 라이브러리 호출
+## 코드
+
+#include <SoftwareSerial.h> 
+#include "PiezoSpeaker.h"
+#include <TinyGPS.h> 
 
 int PIEZOSPEAKER_5V_PIN_SIG=5; 
 
-int RXPIN=6; //Rx (받는핀 설정) 
-int TXPIN=5; //Tx (보내는핀 설정)
+int RXPIN=6;
+int TXPIN=5; 
 
-int blueTx=10;   //Tx (보내는핀 설정)
-int blueRx=11;   //Rx (받는핀 설정)
-SoftwareSerial mySerial(blueTx, blueRx);  //시리얼 통신을 위한 객체선언
+int blueTx=10;    
+int blueRx=11;    
+SoftwareSerial mySerial(blueTx, blueRx);  
 String myString="";
-unsigned int piezoSpeaker_5vHoorayLength          = 6;                                                      // 멜로디에 포함된 note의 개수
-unsigned int piezoSpeaker_5vHoorayMelody[]        = {NOTE_C4, NOTE_E4, NOTE_G4, NOTE_C5, NOTE_G4, NOTE_C5}; // note list
-unsigned int piezoSpeaker_5vHoorayNoteDurations[] = {8      , 8      , 8      , 4      , 8      , 4      }; // note durations; 4 = quarter note, 8 = eighth note, etc. List length must match HoorayLength!
+unsigned int piezoSpeaker_5vHoorayLength          = 6;                                                      
+unsigned int piezoSpeaker_5vHoorayMelody[]        = {NOTE_C4, NOTE_E4, NOTE_G4, NOTE_C5, NOTE_G4, NOTE_C5}; 
+unsigned int piezoSpeaker_5vHoorayNoteDurations[] = {8      , 8      , 8      , 4      , 8      , 4      };
 PiezoSpeaker piezoSpeaker_5v(PIEZOSPEAKER_5V_PIN_SIG);
 
 #define GPSBAUD 9600
 TinyGPS gps;
-SoftwareSerial uart_gps(RXPIN, TXPIN); //시리얼 통신을 위한 객체선언
-void getgps(TinyGPS &gps); //getgps 함수 실행
-
+SoftwareSerial uart_gps(RXPIN, TXPIN);
+void getgps(TinyGPS &gps);
 
 void setup() 
 {
-  Serial.begin(9600);   //시리얼모니터
-  mySerial.begin(9600); //블루투스 시리얼
+  Serial.begin(9600);  
+  mySerial.begin(9600);
   uart_gps.begin(GPSBAUD);
-  Serial.println("기기의 위치를 확인 중입니다~~");
-
-
+  Serial.println("기기의 위치를 확인 중입니다");
 }
 void loop()
 {
-  while(uart_gps.available())     // Rx 데이터 수신 과정 - 새로운 데이터 생기면 입력받음
+  while(uart_gps.available())     
   {
       int c = uart_gps.read();    
       if(gps.encode(c))      
@@ -92,18 +90,18 @@ void loop()
 if(!myString.equals(""))
   {
     Serial.println("input value :"+myString);
-    if(myString=="on")  //myString 값이 'on' 이라면
+    if(myString=="on")  
       {
         piezoSpeaker_5v.playMelody(piezoSpeaker_5vHoorayLength, piezoSpeaker_5vHoorayMelody, piezoSpeaker_5vHoorayNoteDurations); 
     delay(500); 
     
       }
       
-    if(myString=="onoff")//off를 입력해서 myString 값이 'onoff'
+    if(myString=="onoff")
     {
       
       Serial.println("기기를 찾았습니다!!");
-      myString=""; //myString 값 초기화
+      myString=""; 
       delay(5);
       
       
@@ -111,7 +109,7 @@ if(!myString.equals(""))
   }
 }
 
-void getgps(TinyGPS &gps) //gps 결과값 print
+void getgps(TinyGPS &gps) 
 {
   gps.f_get_position(&latitude, &longitude);
   Serial.print("Lat/Long: "); 
@@ -147,9 +145,8 @@ NEO-6M을 통해 gps 결과값 수신하는 사진
 <img src="/assets/img/post/2021-11-26-Detachable lost and found system/gps.JPG" width="90%">
 
 on/off를 통해 피에조 부저 조작 영상
-<video controls width="90%">
-    <source src="/assets/img/post/2021-11-26-Detachable lost and found system/HC-05,PiezoBuzzer.mp4">
-</video> 
+<source src="/assets/img/post/2021-11-26-Detachable lost and found system/HC-05,PiezoBuzzer.mp4"width="90%">
+
 
 
   
