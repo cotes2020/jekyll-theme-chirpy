@@ -39,7 +39,6 @@ $ bash tools/init.sh
 The above command will:
 
 1. Removes some files or directories from your repository:
-
     - `.travis.yml`
     - files under `_posts`
     - folder `docs`
@@ -123,7 +122,8 @@ Now publish your Jekyll site by:
 1. Push any commit to remote to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named `gh-pages` will appear to store the built site files.
 
 2. Browse to your repository on GitHub. Select the tab _Settings_, then click _Pages_ in the left navigation bar, and then in the section **Source** of _GitHub Pages_, select the `/(root)` directory of branch `gh-pages` as the [publishing source][pages-src]. Remember to click <kbd>Save</kbd> before leaving.
-  ![gh-pages-sources](/posts/20190809/gh-pages-sources.png){: width="850" height="153" }
+
+    ![gh-pages-sources](/posts/20190809/gh-pages-sources.png){: width="850" height="153" }
 
 3. Visit your website at the address indicated by GitHub.
 

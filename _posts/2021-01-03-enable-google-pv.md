@@ -113,15 +113,16 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
 1. Clone the **Google Analytics superProxy** project on Github: <https://github.com/googleanalytics/google-analytics-super-proxy> to your local.
 
-2. Remove the first 2 lines in the [`src/app.yaml`](https://github.com/googleanalytics/google-analytics-super-proxy/blob/master/src/app.yaml#L1-L2) file:
-  ```diff
-- application: your-project-id
-- version: 1
-  ```
+2.  Remove the first 2 lines in the [`src/app.yaml`](https://github.com/googleanalytics/google-analytics-super-proxy/blob/master/src/app.yaml#L1-L2) file:
+
+    ```diff
+    - application: your-project-id
+    - version: 1
+    ```
 
 3. In `src/config.py`, add the `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` that you gathered from your App Engine Dashboard.
 
-4. Enter any random key for `XSRF_KEY`, your `config.py` should look similar to this
+4.  Enter any random key for `XSRF_KEY`, your `config.py` should look similar to this
 
     ```python
     #!/usr/bin/python2.7
@@ -145,7 +146,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
     **Tip:** You can configure a custom domain instead of `https://PROJECT_ID.REGION_ID.r.appspot.com`. But, for the sake of keeping it simple, we will be using the Google provided default URL.
 
-5. From inside the src/ directory, deploy the app
+5.  From inside the src/ directory, deploy the app
 
     ```console
     [root@bc96abf71ef8 src]# gcloud app deploy
