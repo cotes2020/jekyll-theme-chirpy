@@ -251,7 +251,7 @@ pygame.quit()
 
 이미지:
 
-<img scr = "/assets/img/post/2021-11-26-pythongame.md/image01.png" width = "90%">
+<img scr="/assets/img/post/2021-11-26-pythongame.md/image01.png" width="90%">
 
 
 
