@@ -2,8 +2,8 @@
 title: bitstream tranceiver
 author: HyungJoo Park
 date: 2021-11-27
-categories: [Exhibition, 2021년]
-tags: [post,HyungJooPark, Quant] 
+categories: [Exhibition,2021년]
+tags: [post,hyungjoopark,arduino]
 ---
 
 # Arduino SPI bitstream tranceiver
@@ -26,6 +26,9 @@ SPI 통신 방식으로 외부에 출력한다. YAML파일에 비트열을 작�
 
 아두이노가 출력한 신호를 오실로스코프로 화면에 출력해 본 것이다. 초록색은 기준 클락으로 250khz로 진동하고 노란색이 비트스트림이다. 파란색은 EN신호로 신호가 출력중인지 아닌지를 나타낸다.
 
-자세한 사항은 [링크](https://niftylab.github.io/icscan_arduino/)참조
+## 설치 및 사용법
 
-[코드 링크](https://github.com/Park-Hyung-Joo/arduino_comm)
+<a href="https://niftylab.github.io/icscan_arduino/" target="_blank">docs</a> 참조
+
+## 소스코드 링크
+<a href="https://github.com/Park-Hyung-Joo/arduino_comm" target="_blank">source link</a>
