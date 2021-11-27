@@ -99,7 +99,7 @@ cv2.destroyAllWindows()
 ```
 : 데이터를 로드하는 과정은 생략하였다.
 
-데이터 출처 : <a href = "http://mrl.cs.vsb.cz/eyedataset" target="_blank">MRL Eye Dataset</a>
+데이터 출처 : <a href="http://mrl.cs.vsb.cz/eyedataset" target="_blank">MRL Eye Dataset</a>
 
 <img src="/assets/img/post/2021-11-27-Sleepy-driving-prevention-system/eyes.png">
 
