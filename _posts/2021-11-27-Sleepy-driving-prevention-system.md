@@ -12,6 +12,7 @@ tags: [post,jiwon,minjeong]
 ### 티쳐블 머신을 이용해 눈깜빡임 감지 시스템 생성
 > 눈을 떴을 때
 <img src="/assets/img/post/2021-11-27-Sleepy-driving-prevention-system/tm1.png">
+
 > 눈을 감았을 때
 <img src="/assets/img/post/2021-11-27-Sleepy-driving-prevention-system/tm2.png">
 
