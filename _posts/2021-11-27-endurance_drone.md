@@ -25,6 +25,8 @@ tags: [post, drone, ai, rtos, embedded, arm, tensorflow, kalman, pid, rl] # TAG 
     display: block;
     color: grey;
     margin-bottom: 1rem;
+    text-align: center;
+    font-size: 0.85rem !important;
   }
 </style>
 
