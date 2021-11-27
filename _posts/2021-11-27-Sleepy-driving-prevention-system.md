@@ -1,7 +1,7 @@
 ---
 title: Sleepy driving prevention system
 author: Yoon Jiwon, Kim Minjeong
-date: 2021-11-27
+date: 2021-11-27 23:59:00 +0900
 categories: [Exhibition,2021년]
 tags: [post,jiwon,minjeong] 
 ---
