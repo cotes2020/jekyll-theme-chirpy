@@ -6,6 +6,22 @@ categories: [Exhibition, Others]
 tags: [post, drone, ai, rtos, embedded, arm, tensorflow, kalman, pid, rl] # TAG names should always be lowercase, 띄어쓰기도 금지
 ---
 
+<style>
+  h1 {
+    color: red;
+  }
+
+  h2 {
+    font-weight: bold;
+    color: chartreuse;
+  }
+
+  img {
+    display: block;
+    margin: auto;
+  }
+</style>
+
 # 곤충 시각 기관 모방 센서와 인공신경망을 적용한 실내 드론 시스템
 
 ## 작성중인 초안입니다!!
@@ -96,18 +112,18 @@ _TODO MPU9250 스펙_
 #### 자이로 센서
 
 자이로 센서(각속도계)는 가속도과 지자기 센서보다 훨씬 높은 정확도를 가지지만 일종의 편향을 동반하기 때문에 일정 주기마다 편향 값을 보정하는 작업이 필수적입니다. 이를 위해 상보 필터를 적용하였습니다. 아래 그림은 사원수를 이용한 자이로 센서의 각도 계산 예시입니다.
-<img src="/assets/img/post/2021-11-27-endurance_drone/imu_quad.jpg">
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/imu_quad.jpg">
 
 #### 가속도 센서
 
 아래와 같은 수식을 통해 3축 가속도로부터 중력가속도를 기준으로한 각도를 얻을 수 있습니다. yaw축의 각도는 알 수 없으며 roll, pitch 축의 각도만 추정이 가능하다
-<img src="/assets/img/post/2021-11-27-endurance_drone/imu_acc.jpg">
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/imu_acc.jpg">
 
 #### 칼만 필터
 
 얻어온 가속도, 자이로 센서 각도를 기반으로 상보 필터를 한번 거친 후 칼만 필터를 통해 정확한 자세를 추정하게 됩니다.
 
-<img src="/assets/img/post/2021-11-27-endurance_drone/imu_kalman.jpg">
+<img width="250px" src="/assets/img/post/2021-11-27-endurance_drone/imu_kalman.jpg">
 위와 같은 변수를 정의합니다. 각각 아래와 같은 의미를 띕니다.
 - A: x의 변수간 관계를 통해 과거와 현재사이의 물리적인 수식을 행렬로 정리해 놓은 것
 - Q, R: 잡음
@@ -117,13 +133,13 @@ _TODO MPU9250 스펙_
 
 - 초기값 선정: 이전 스텝에서의 결과값이 그 다음 스텝에서의 초기값(x, P)으로 들어 감
 - 추정값과 오차 공분산 예측: 현재상태의 x,P를 추측하는값을 계산
-  <img src="/assets/img/post/2021-11-27-endurance_drone/imu_kalman1.jpg">
+  <img width="200px" src="/assets/img/post/2021-11-27-endurance_drone/imu_kalman1.jpg">
 - 칼만 이득 계산
-  <img src="/assets/img/post/2021-11-27-endurance_drone/imu_kalman2.jpg">
+  <img width="300px" src="/assets/img/post/2021-11-27-endurance_drone/imu_kalman2.jpg">
 - 추정값 계산: 위에서 구한값들과 센서로 측정한값(z)만을 가지고 현재상태의 값을 추정
-  <img src="/assets/img/post/2021-11-27-endurance_drone/imu_kalman3.jpg">
+  <img width="300px" src="/assets/img/post/2021-11-27-endurance_drone/imu_kalman3.jpg">
 - 오차 공분산 계산
-  <img src="/assets/img/post/2021-11-27-endurance_drone/imu_kalman4.jpg">
+  <img width="200px" src="/assets/img/post/2021-11-27-endurance_drone/imu_kalman4.jpg">
 - 다시 1로 돌아가 반복
 
 ### 센서 제어 **(남종현)**
