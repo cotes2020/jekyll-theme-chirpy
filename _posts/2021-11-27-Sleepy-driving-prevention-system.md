@@ -10,9 +10,9 @@ tags: [post,jiwon,minjeong]
 # Sleepy driving prevention system
 
 ### 티쳐블 머신을 이용해 눈깜빡임 감지 시스템 생성
-- 눈을 떴을 때
+눈을 떴을 때
 <img src="/assets/img/post/2021-11-27-Sleepy driving prevention system/tm1.jpg">
-- 눈을 감았을 때
+눈을 감았을 때
 <img src="/assets/img/post/2021-11-27-Sleepy driving prevention system/tm2.jpg">
 
 ### openCV를 이용한 눈깜빡임 감지 시스템
@@ -98,11 +98,11 @@ cv2.destroyAllWindows()
 ```
 : 데이터를 로드하는 과정은 생략하였다.
 
-데이터 출처 <a href = "http://mrl.cs.vsb.cz/eyedataset">
+데이터 출처 : <a href = "http://mrl.cs.vsb.cz/eyedataset">
 
 <img src="/assets/img/post/2021-11-27-Sleepy driving prevention system/eyes.jpg">
 
 ### 보완할 점
 : 코드에 대한 부분적인 수정이 필요함
-> 인지 부위를 눈으로 설정한다면 좀 더 효과적으로 졸음으로 인한 눈 blinking을 확인할 수 있을 것이라 생각했다. 하지만 이 부분을 코드로 바꾸는 데에 약간의 어려움이 있어, 얼굴 전체를 인식해 eye blinking 등을 구분해주는 기능까지 구현해보았다.
------
+(인지 부위를 눈으로 설정한다면 좀 더 효과적으로 졸음으로 인한 눈 blinking을 확인할 수 있을 것이라 생각했다. 하지만 이 부분을 코드로 바꾸는 데에 약간의 어려움이 있어, 얼굴 전체를 인식해 eye blinking 등을 구분해주는 기능까지 구현해보았다.)
+
