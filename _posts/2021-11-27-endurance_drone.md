@@ -21,11 +21,11 @@ tags: [post, drone, ai, rtos, embedded, arm, tensorflow, kalman, pid, rl] # TAG 
     margin: auto;
   }
 
-  p .caption {
+  .caption {
     display: block;
     color: grey;
     margin-bottom: 1rem;
-  }  
+  }
 </style>
 
 ## 작성중인 초안입니다!!
@@ -151,7 +151,7 @@ AirSim은 Unreal Engine을 기반으로 하는 드론, 자동차 등을 위한 �
 ### 센서 제어 **(남종현, 김정현)**
 
 본 연구에서는 드론 자세 감지를 위한 IMU 센서, 광원을 감지하기 위한 광원 센서, 장애물 회피를 위한 거리 센서를 제어하여 값을 읽어와야 합니다. 이 단원에서는 센서 제어에 대한 자세한 세부 사항을 설명합니다. 연구에서는 사용되지 않은 GPS 센서와 거리센서의 UART 프로토콜도 참고용으로 기술하였습니다.
-<img width="200px" src="/assets/img/post/2021-11-27-endurance_drone/sensor_diagram.jpg">
+<img width="400px" src="/assets/img/post/2021-11-27-endurance_drone/sensor_diagram.jpg">
 
 <p class="caption">센서들이 장착되는 개요도</p>
 
