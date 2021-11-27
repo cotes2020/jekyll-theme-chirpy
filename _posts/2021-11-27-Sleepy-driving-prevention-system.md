@@ -11,9 +11,9 @@ tags: [post,jiwon,minjeong]
 
 ### 티쳐블 머신을 이용해 눈깜빡임 감지 시스템 생성
 눈을 떴을 때
-<img src="/assets/img/post/2021-11-27-Sleepy-driving-prevention-system/tm1.jpg">
+<img src="/assets/img/post/2021-11-27-Sleepy-driving-prevention-system/tm1.png">
 눈을 감았을 때
-<img src="/assets/img/post/2021-11-27-Sleepy-driving-prevention-system/tm2.jpg">
+<img src="/assets/img/post/2021-11-27-Sleepy-driving-prevention-system/tm2.png">
 
 ### openCV를 이용한 눈깜빡임 감지 시스템
 ```python
@@ -100,7 +100,7 @@ cv2.destroyAllWindows()
 
 데이터 출처 : <a href = "http://mrl.cs.vsb.cz/eyedataset">
 
-<img src="/assets/img/post/2021-11-27-Sleepy-driving-prevention-system/eyes.jpg">
+<img src="/assets/img/post/2021-11-27-Sleepy-driving-prevention-system/eyes.png">
 
 ### 보완할 점
 : 코드에 대한 부분적인 수정이 필요함
