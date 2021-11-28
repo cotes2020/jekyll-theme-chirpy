@@ -44,6 +44,7 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 
 #### 소스 코드
 <a href="https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_vehicle_Beacon.ino" target="_blank">자율주행 자동차 소스 코드 깃허브</a>
+[새 탭에서 열기](https://www.google.com/){:target="_blank"}
 
 ### 조이스틱 컨트롤러 제작
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/joycon.jpg" width="90%"> <br>
