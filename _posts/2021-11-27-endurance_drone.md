@@ -314,7 +314,7 @@ for (int c = chanStart; c <= chanEnd; c++) {
 
 TCA9548은 프로세서의 I2C 버스를 주(main) 버스로 삼고, 최대 8개의 장치가 I2C 버스를 부(slave) 버스로 삼아 종 9개의 I2C 버스를 제공합니다. I2C 통신은 간단하게 요약해서 특정 주소의 레지스터를 쓰거나, 읽는 2가지 행위로 요약할 수 있는데, 이때 TCA9548은 장치 주소 + 레지스터 주소 + 레지스터 값의 조합의 메세지를 쓰기 전에 현재 통신이 진행될 부 버스를 선택할 수 있게 TCA9548의 레지스터에 버스 번호를 쓴 뒤, 메세지를 쓰는 방식으로 멀티플렉싱을 구현합니다.
 
-<img width="650px" src="/assets/img/post/2021-11-27-endurance_drone/tca9548_msg.jpg">
+<img width="750px" src="/assets/img/post/2021-11-27-endurance_drone/tca9548_msg.jpg">
 <p class="caption">TCA9548을 이용할 때 메세지 예시</p>
 
 ##### 구현
@@ -408,6 +408,64 @@ if (dataReceive[2] == 'R' && dataReceive[3] == 'M' && dataReceive[4] == 'C' && c
 ```
 
 ### PID 제어 **(남종현)**
+
+<img width="650px" src="/assets/img/post/2021-11-27-endurance_drone/pid.jpg">
+<p class="caption">PID 제어기의 블록 다이어그램</p>
+
+PID 제어기는 비례 적분 미분 제어기의 줄임말로, 대표적인 폐루프 제어기입니다. 제어하고자 하는 대상의 출력값을 측정하여 정상 상태 값(목표 값)과 비교하여 오차를 계산하고, 이 오차값을 이용하여 제어에 필요한 출력 값을 계산하는 구조로 되어 있습니다.
+상보필터와 칼만필터로 계산한 현재 자세를 입력으로 받아 roll, pitch의 각도에 대해 오차를 수정하기 위한 출력 값을 제공하는 방식으로 제어를 진행합니다.
+PID 제어기의 특성은 3개의 비례, 적분, 미분 이득치(게인)으로 결정되는데 이 값에 따라 정상 상태에 수렴하는 특성이 크게 바뀌기 때문에 자세 제어의 핵심이라고 할 수 있습니다. 이 이득치 값들을 자동 또는 결정하는 공식도 존재하지만 본 연구에서는 여러번의 테스트를 진행하며 수동으로 최적의 값을 찾고자 했습니다.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gwXdtai-zcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p class="caption">초기 PID 게인 테스트 도중의 실험 영상, LPF 및 칼만 필터를 적용하지 않고 낮은 이득치를 사용하여 제어가 매우 불안정 했습니다. (제어 값의 경향은 맞으나 과감쇠 시스템처럼 수렴하지 못하고 오버 슈팅이 발생하며 진동함)</p>
+
+현재 최신적으로 사용하고 있는 이득치는 비례 이득 3, 적분 이득 2, 미분 이득 0.5입니다. (최종이 아님)
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pid_left.jpg">
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pid_right.jpg">
+
+<p class="caption">프로세서가 계산하여 ground 프로그램에 송출하고 있는 PID 제어 출력값</p>
+
+#### 구현
+
+`updatePID` 함수에 현재 측정 각도를 입력하면 출력 제어값이 반환됩니다.
+
+```c
+double kP[PID_DIMENSION] = {3, 3};
+double kI[PID_DIMENSION] = {2, 2};
+double kD[PID_DIMENSION] = {0.5, 0.5};
+
+void updatePID(double AngX, double AngY, double *result)
+{
+    double degree[PID_DIMENSION] = {
+        0.0,
+    };
+    degree[0] = AngX;
+    degree[1] = AngY;
+
+    static double prevInput[PID_DIMENSION] = {
+        0.0,
+    };
+    static double controlI[PID_DIMENSION] = {
+        0.0,
+    };
+    double controlP[PID_DIMENSION], controlD[PID_DIMENSION], dInput[PID_DIMENSION], error[PID_DIMENSION], desired[PID_DIMENSION] = {10.0,};
+    double time = 0.01;
+    int i;
+
+    for (i = 0; i < 2; i++)
+    {
+        error[i] = desired[i] - degree[i];
+        dInput[i] = degree[i] - prevInput[i];
+        prevInput[i] = degree[i];
+
+        controlP[i] = kP[i] * error[i];
+        controlI[i] = kI[i] * error[i] * time;
+        controlD[i] = -kD[i] * dInput[i] / time;
+
+        result[i] = controlP[i] + controlI[i] + controlD[i];
+    }
+}
+```
 
 ### 회로/PCB 설계 **(남종현)**
 
