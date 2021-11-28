@@ -20,9 +20,9 @@ tags: [post,parknayoung] # TAG names should always be lowercase, 띄어쓰기도
 
 파이썬으로 카드의 모양, 숫자, 이미지 정보를 저장하는 방식으로 코드 작성하였습니다. 
 
--1) space 바를 누르면 카드를 낼 수 있습니다.
+- 1. space 바를 누르면 카드를 낼 수 있습니다.
     
--2) 마우스로 종을 클릭하였을 때
+- 2. 마우스로 종을 클릭하였을 때
     
   - 빠르게 반응하였을 경우 카드를 가져오고 카드 이미지를 리셋하도록 하였습니다.
       
@@ -30,7 +30,7 @@ tags: [post,parknayoung] # TAG names should always be lowercase, 띄어쓰기도
        
   - 잘못 클릭하였을 경우 상대방에게 카드를 한 장씩 주도록 하였습니다.
      
--3) 누군가의 카드가 다 사라지면 게임이 종료하고 순위를 매기어 표시하였습니다.
+- 3. 누군가의 카드가 다 사라지면 게임이 종료하고 순위를 매기어 표시하였습니다.
    
 
 
@@ -42,7 +42,7 @@ tags: [post,parknayoung] # TAG names should always be lowercase, 띄어쓰기도
 
 <img src="/assets/img/post/2021-11-27-python-halli-galli/game.png" width="90%">
    
-## 시간 내에 클릭하지 못 했을 경우
+### 시간 내에 클릭하지 못 했을 경우
 
 <img src="/assets/img/post/2021-11-27-python-halli-galli/timeout.png" width="90%">
    
