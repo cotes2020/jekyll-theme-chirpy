@@ -63,7 +63,7 @@ Fingertip tracking part에서와 마찬가지로, 굵기가 바뀔 때, 현재 �
 
 ### 시연 영상
 
-<video controls>
+<video width="50%" height="50%" controls>
     <source src="/assets/img/post/2021-11-27-dynamic_paint/demonstration_video.mp4" width="50%" height="50%"> 
 </video>
 
