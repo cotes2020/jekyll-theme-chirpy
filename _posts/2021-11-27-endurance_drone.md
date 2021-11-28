@@ -28,6 +28,11 @@ tags: [post, drone, ai, rtos, embedded, arm, tensorflow, kalman, pid, rl] # TAG 
     text-align: center;
     font-size: 0.85rem !important;
   }
+
+  iframe {
+    display: block;
+    margin: auto;
+  }
 </style>
 
 ## 연구 동기
@@ -107,7 +112,7 @@ AirSim은 Unreal Engine을 기반으로 하는 드론, 자동차 등을 위한 �
 <img src="/assets/img/post/2021-11-27-endurance_drone/airsim_light.png">
 <p class="caption">프로그래밍한 이벤트 그래프</p>
 
-### IMU 센서와 칼만 필터를 이용한 자세 추정 (사원수 기반) **(김재민)**
+### IMU 센서와 칼만 필터를 이용한 자세 추정 및 사원수 표현 **(김재민)**
 
 드론의 기본적인 비행을 위해서, IMU 센서를 이용해 드론의 현재 자세를 추정하는 알고리즘을 직접 구현하였습니다. 아래는 구체적인 구현을 위한 수식 설명입니다.
 
@@ -759,18 +764,19 @@ FFT는 현재 단계에선 아직 구현되있지 않습니다.
 
 프로젝트의 모든 산출물 코드는 오픈소스입니다.
 
-- 강화학습 : https://github.com/Dictor/endurance-rl
-- 강화학습 환경 : https://github.com/Dictor/endurance-environment
-- 드론 펌웨어 : https://github.com/Dictor/hamstrone-drone
-- NuttX OS : https://github.com/Dictor/incubator-nuttx
-- 지상국 : https://github.com/Dictor/hamstrone-ground
-- 회로도 및 PCB : https://github.com/Dictor/endurance-circuit
+- 강화학습 : [https://github.com/Dictor/endurance-rl](https://github.com/Dictor/endurance-rl)
+- 강화학습 환경 : [https://github.com/Dictor/endurance-environment](https://github.com/Dictor/endurance-environment)
+- 드론 펌웨어 : [https://github.com/Dictor/hamstrone-drone](https://github.com/Dictor/hamstrone-drone)
+- NuttX OS : [https://github.com/Dictor/incubator-nuttx](https://github.com/Dictor/incubator-nuttx)
+- 지상국 : [https://github.com/Dictor/hamstrone-ground](https://github.com/Dictor/hamstrone-ground)
+- 회로도 및 PCB : [https://github.com/Dictor/endurance-circuit](https://github.com/Dictor/endurance-circuit)
 
 ### 라이센스
 
-본 문서는 CC BY-SA (저작자표시-동일조건변경허락)에 따라 이용할 수 있습니다
+본 문서는 CC BY-SA (저작자표시-동일조건변경허락)에 따라 이용할 수 있습니다. 문서의 작성자는 기여자가 명시된 챕터의 경우 각 기여자가, 명시되지 않은 경우 25기 김정현(kimdictor@gmail.com)입니다.
 대부분 자체 저작물이나, 일부 포함된 저작물은 각 저작권자의 소유입니다.
+코드는 대부분 MIT 또는 Apache 라이센스이나, 펌웨어 등 일부 코드는 GPL 라이센스를 따릅니다. 자세한 라이센스는 각 저장소를 참고하세요.
 
 ### 감사의 인사
 
-회로 설계와 PCB 설계에 많은 도움을 주시고 매 달 회의도 참석해주시고, 대전에서 족발도 사주신 16기 이승준 선배님께 다시 한번 감사드립니다. 강화학습에 관련하여 많은 인사이트를 제공해주신 문준 교수님과 이명훈 교수님께도 감사 인사 전합니다. 팀원들과 도움주신 바라미 회원님들에게도 정말 감사드립니다!
+회로 설계와 PCB 설계에 많은 도움을 주시고 매 달 회의도 참석해주시고, 대전에서 족발도 사주신 16기 이승준 선배님께 다시 한번 감사드립니다. 학술적인 부분은 물론 팀 운영에서도 많은 도움이 되었습니다. 강화학습에 관련하여 많은 인사이트를 제공해주신 문준 교수님과 이명훈 박사님께도 정말 감사드립니다. 팀원들과 도움주신 바라미 회원님들에게도 완전 감사드립니다!!
