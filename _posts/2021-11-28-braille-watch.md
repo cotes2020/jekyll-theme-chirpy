@@ -29,18 +29,18 @@ tags: [post,changjochoi,arduino]
 ### 결과
 
 완성된 시계 내부 사진
-<img src="/assets/img/2021-11-28-braille-watch/appearance.jpg" width="90%">
+<img src="/assets/img/post/2021-11-28-braille-watch/appearance.jpg" width="90%">
 
 현재 시간의 '시' 표시
-<img src="/assets/img/2021-11-28-braille-watch/hour.jpg" width="90%">
+<img src="/assets/img/post/2021-11-28-braille-watch/hour.jpg" width="90%">
 
 
 옆에 스위치가 있는데 이 스위치를 누르면 시를 표시해주고, 그 다음 스위치를 누르면 분을 표시해주도록 함.
 현재 시간의 '분' 표시
-<img src="/assets/img/2021-11-28-braille-watch/minute.jpg" width="90%">
+<img src="/assets/img/post/2021-11-28-braille-watch/minute.jpg" width="90%">
 
 점자표
-<img src="/assets/img/2021-11-28-braille-watch/table.jpg" width="90%">
+<img src="/assets/img/post/2021-11-28-braille-watch/table.jpg" width="90%">
 
 ### 보완점
 - 새로 주문한 모터들이 모두 동작하지 않았다. 그래서 크기를 더 줄이지 못한 부분이 아쉬웠습니다. 그래서 새롭게 보드를 찾아보거나 가능하다면 PCB 보드를 주문제작하여 보드 크기를 더 줄일 수 있다면 좋을 것입니다.
