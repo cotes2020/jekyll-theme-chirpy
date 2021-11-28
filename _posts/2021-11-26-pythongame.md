@@ -23,7 +23,7 @@ tags: [post,joyeongil]     # TAG names should always be lowercase, 띄어쓰기�
 
 : 코드 
 
-```
+```python
 import pygame
 import random
 import time
