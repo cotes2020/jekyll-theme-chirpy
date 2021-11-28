@@ -51,7 +51,7 @@ tags: [
  사진을 찍어 점자 인식 과정을 진행하게 됩니다.
  
 ### 시연 영상
-<video controls>
+<video width="50%" controls>
     <source src="/assets/img/post/2021-11-27-portable_braille_voice_translator/demo_video.mp4">
     Sorry, your browser doesn't support embedded videos.
 </video>
