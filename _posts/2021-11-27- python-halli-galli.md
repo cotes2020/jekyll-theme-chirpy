@@ -17,7 +17,7 @@ tags: [post,parknayoung]     # TAG names should always be lowercase, 띄어쓰�
   
 2. 작품설명
 
-파이썬으로 카드의 모양, 숫자, 이미지 정보를 저장하는 방식으로 코드 작성하였습니다. 
+   파이썬으로 카드의 모양, 숫자, 이미지 정보를 저장하는 방식으로 코드 작성하였습니다. 
 
    -1) space 바를 누르면 카드를 낼 수 있습니다.
     
@@ -29,7 +29,7 @@ tags: [post,parknayoung]     # TAG names should always be lowercase, 띄어쓰�
        
   - 잘못 클릭하였을 경우 상대방에게 카드를 한 장씩 주도록 하였습니다.
      
-   -3) 누군가의 카드가 다 사라지면 게임이 종료하고 순위를 매기어 표시하였습니다.
+    -3) 누군가의 카드가 다 사라지면 게임이 종료하고 순위를 매기어 표시하였습니다.
    
 
 
@@ -41,7 +41,7 @@ tags: [post,parknayoung]     # TAG names should always be lowercase, 띄어쓰�
 
    <img src="/assets/img/post/2021-11-27- python-halli-galli/game.png" width="90%">
    
-  <시간내에 클릭하지 못 했을 경우>
+  <시간 내에 클릭하지 못 했을 경우>
   
    <img src="/assets/img/post/2021-11-27- python-halli-galli/timeout.png" width="90%">
    
@@ -50,12 +50,13 @@ tags: [post,parknayoung]     # TAG names should always be lowercase, 띄어쓰�
    <img src="/assets/img/post/2021-11-27- python-halli-galli/gameover.png" width="90%">
    
   
-  위의 사진들처럼 목표로 한 기능들이 기본적으로 실행되는 것을 확인하였습니다. 
+   위의 사진들처럼 목표로 한 기능들이 기본적으로 실행되는 것을 확인하였습니다. 
     
 
 
 
 4. 한계 
                                             
-    처음 가지고 있는 카드는 카드의 숫자와 모양별 카드 수 비를 반영하여 무작위로 내지만 가져간 카드의 정보는 반영하지 못했습니다. 또한 실행 시, 타이밍이 맞지 않아 순조롭게 진행되지 않는 부분이 있습니다.
+    처음 가지고 있는 카드는 카드의 숫자와 모양별 카드 수 비를 반영하여 무작위로 내지만 가져간 카드의 정보는 반영하지 못했습니다. 
+    또한 실행 시, 타이밍이 맞지 않아 순조롭게 진행되지 않는 부분이 있습니다.
      
