@@ -18,7 +18,7 @@ tags: [post,sujong,knn,mediapipe]
 
 ### 작품 설명
 
-AWS에서 GPU 가상 컴퓨터를 구매해 streamlit 서버를 운영.(https://chosangnimiswatching.com)
+AWS에서 GPU 가상 컴퓨터를 구매해 streamlit 서버를 운영. <a href="https://chosangnimiswatching.com" target="_blank">https://chosangnimiswatching.com</a>  
 
 사용자가 카메라를 켜서 운동을 하면 컴퓨터에서 관절 좌표를 분석한다.(mediapipe 사용)
 <div class="row">
