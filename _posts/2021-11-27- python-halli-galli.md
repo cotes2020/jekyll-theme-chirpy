@@ -37,10 +37,24 @@ tags: [post,parknayoung]     # TAG names should always be lowercase, 띄어쓰�
   
 3. 작품 결과 
 
-   이미지 
+  <GAME 화면 사진>
+
+   <img src="/assets/img/post/2021-11-27- python-halli-galli/game.png" width="90%">
+   
+  <시간내에 클릭하지 못 했을 경우>
+  
+   <img src="/assets/img/post/2021-11-27- python-halli-galli/timeout.png" width="90%">
+   
+  <GAMEOVER 화면 사진>
+  
+   <img src="/assets/img/post/2021-11-27- python-halli-galli/gameover.png" width="90%">
+   
+  
+  위의 사진들처럼 목표로 한 기능들이 기본적으로 실행되는 것을 확인하였습니다. 
+    
 
 
 
 4. 한계
                                             
-    처음 가지고 있는 카드는 카드의 숫자와 모양별 카드 수 비를 반영하여 무작위로 내지만 가져간 카드의 정보는 반영하지 못해 기존의 게임처럼 순조롭게 게임이 진행되지 않았습니다. 
+    처음 가지고 있는 카드는 카드의 숫자와 모양별 카드 수 비를 반영하여 무작위로 내지만 가져간 카드의 정보는 반영하지 못했습니다. 또한 실행 시, 타이밍이 맞지 않아 순조롭게 진행되지 않는 경우가 가끔 있습니다.
