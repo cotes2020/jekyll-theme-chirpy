@@ -32,6 +32,11 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 * HC-11을 이용하여 자동차와 컨트롤러 간의 RF통신 구현
 * CLE-310 3개로 beacon을 구현하고 CLE-310 1개로 비콘들의 RSSI값을 SCAN하여 자동차의 위치를 추적
 
+### 개발 필요성 및 목적
+4차 산업혁명 시대에 드론을 통한 무인 배달이 각광받고 있으나 드론으로는 대량의 물량을 수송할 수 없으며 드론이 가지 못하는 환경도 분명 존재한다. 그래서 대량의 물량을 수송할 수 있는 자율주행 자동차로 배달을 하는 시스템을 구현하고자 한다. <br>
+보통 위치는 GPS로 추적하는 것이 일반적이지만 GPS는 오차 범위가 크므로 실내의 작은 공간에도 적용이 가능한 beacon을 이용하여 위치 추적을 하고자 한다.<br>
+그리고 자율 배달 과정에서의 여러 변수들을 통제하기 위해 장애물 회피, 사람이 직접 조작이 가능한 시스템을 추가하고자 한다.<br>
+
 ## 작품 제작
 
 ### 자율주행 자동차 제작
@@ -106,7 +111,8 @@ https://youtu.be/yJEVJwnj7W8
 
 ### 자율주행 자동차
 #### 주행 모습
-https://youtu.be/aC3_Xr2P1Lc
+https://youtu.be/aC3_Xr2P1Lc <br>
+원래 조이스틱 컨트롤러로부터 속력도 수신하여 속력을 조절할 수 있게 하려 했으나 RF통신 특성상 여러 개의 신호를 수신하려면 통신 속도가 길어져 자동차에 적합하지 않다 판단하여 방향 조절만 가능하게 되었다.
 
 #### 장애물 회피
 https://youtu.be/NmiGZ6Cq1X4
@@ -117,3 +123,6 @@ https://youtu.be/NmiGZ6Cq1X4
 
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/location.jpg" width="90%"> <br>
 자동차의 위치추적을 성공하였다.
+
+## 개선할 사항
+CLE-310을 이용한 beacon의 정확도가 떨어져서 
