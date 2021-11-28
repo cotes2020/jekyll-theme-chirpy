@@ -1,7 +1,7 @@
 ---
 title: bitstream tranceiver
 author: HyungJoo Park
-date: 2021-11-27
+date: 2021-11-27 18:00:00 +0900
 categories: [Exhibition,2021년]
 tags: [post,hyungjoopark,arduino]
 ---
