@@ -1,7 +1,7 @@
 ---
 title: 카메라 캘리브레이션
 author: UkJo Hwang
-date: 2021-11-26
+date: 2021-11-26 18:00:00 +0900
 categories: [Exhibition, 2021년]
 tags: [post, ukjo] # TAG names should always be lowercase, 띄어쓰기도 금지
 ---
