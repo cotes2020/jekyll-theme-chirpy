@@ -37,7 +37,7 @@ tags: [post,changjochoi]
 
 옆에 스위치가 있는데 이 스위치를 누르면 시를 표시해주고, 그 다음 스위치를 누르면 분을 표시해주도록 함.
 현재 시간의 '분' 표시
-<img src="/assets/img/2021-11-28-braille-watch/minute.JPG" width="90%">
+<img src="/assets/img/2021-11-28-braille-watch/minute.jpg" width="90%">
 
 점자표
 <img src="/assets/img/2021-11-28-braille-watch/table.jpg" width="90%">
