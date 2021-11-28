@@ -7,25 +7,7 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 ---
 
 ------------------------------------------
-# Beacon을 이용한 위치추적과 자율주행 자동차
-[1. 개요](#개요) <br>
-
-[2. 작품 제작](#작품-제작) <br>
-  - [2-1. 자율주행 자동차](#자율주행-자동차-제작) <br>
-  - [2-2. 조이스틱 컨트롤러 제작](#조이스틱-컨트롤러-제작) <br>
-  - [2-3. Beacon 제작](#beacon-제작) <br>
-  
-[3. 위치추적 알고리즘 설계](#위치추적-알고리즘-설계) <br>
-  - [3-1. Beacon으로 실험](#beacon으로-실험) <br>
-  - [3-2. 구역 설정](#구역-설정) <br>
-  
-[4. 작품 구동](#작품-구동) <br>
-  - [4-1. 조이스틱 컨트롤러](#조이스틱-컨트롤러) <br>
-  - [4-2. 자율주행 자동차](#자율주행-자동차) <br>
-  - [4-3. Beacon을 이용한 위치 추적](#beacon을-이용한-위치-추적) <br>
-
-[5. 개선할 사항](#개선할-사항) <br>
-  
+# Beacon을 이용한 위치추적과 자율주행 자동차 
 
 ## 개요 
 **아두이노를 이용하여 자율주행 자동차와 컨트롤러를 제작하고, beacon으로 위치추적을 하였습니다.**
@@ -40,6 +22,8 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 보통 위치는 GPS로 추적하는 것이 일반적이지만 GPS는 오차 범위가 크므로 실내의 작은 공간에도 적용이 가능한 beacon을 이용하여 위치 추적을 하고자 한다.<br>
 
 그리고 자율 배달 과정에서의 여러 변수들을 통제하기 위해 장애물 회피, 사람이 직접 조작이 가능한 시스템을 추가하고자 한다.<br>
+
+---
 
 ## 작품 제작
 
@@ -90,6 +74,8 @@ https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/ba
 - HOST CLE-310이 SCAN할 수 있게 BOT으로 모드를 변경하고 GPI를 ground로 한다.
 - beacon들이 헷갈리지 않도록 pink, orange, yellow로 구분
 
+---
+
 ## 위치추적 알고리즘 설계
 ### Beacon으로 실험
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/beacon1.jpg" width="90%"> <br>
@@ -106,6 +92,8 @@ HOST에 들어오는 RSSI 값을 보면서 beacon들의 위치를 계속 바꾸�
 - beacon 3개의 RSSI 값을 이용하여 반지름이 5.15 m인 원 3개 설정
 - 원 3개의 벤다이어그램을 설정하여 구역을 7개로 나눔
 - RSSI 값으로 자동차가 어느 구역에 있는지 판단
+
+---
 
 ## 작품 구동
 
@@ -127,6 +115,8 @@ https://youtu.be/NmiGZ6Cq1X4
 
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/location.jpg" width="90%"> <br>
 자동차의 위치추적을 성공하였다.
+
+---
 
 ## 개선할 사항
 CLE-310을 이용한 beacon의 정확도가 떨어져서 처음에 목표했던 삼각측량법을 이용한 정밀한 위치추적이 불가능하게 되었다. 따라서 향후 정확도를 높여 삼각측량법이 가능하게 하여 정밀한 위치추적을 할 수 있도록 노력해야한다. <br>
