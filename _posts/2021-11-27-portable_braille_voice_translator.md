@@ -3,15 +3,7 @@ title: 휴대용 점자 음성 번역기
 author: JeongEun Kim, JeongHyun Kim, HanGyeol Yoon, SeongJin Lee, JeongEun Lee, InSeong Heo
 date: 2021-11-27 00:35:00 +0900
 categories: [Exhibition,2021년]
-tags: [
-    post,
-    jeongeunkim,
-    jeonghyunkim,
-    hangyeolyoon,
-    seongjinlee,
-    jeongeunlee,
-    inseongheo,
-  ] # TAG names should always be lowercase, 띄어쓰기도 금지
+tags: [post,jeongeunkim,jeonghyunkim,hangyeolyoon,seongjinlee,jeongeunlee,inseongheo] # TAG names should always be lowercase, 띄어쓰기도 금지
 ---
 
 # 휴대용 점자 음성번역기
@@ -51,4 +43,7 @@ tags: [
  사진을 찍어 점자 인식 과정을 진행하게 됩니다.
  
 ### 시연 영상
-<video src="/assets/img/post/2021-11-27-portable_braille_voice_translator/demo_video.mp4">
+<video width="50%" controls>
+    <source src="/assets/img/post/2021-11-27-portable_braille_voice_translator/demo_video.mp4">
+    Sorry, your browser doesn't support embedded videos.
+</video>

@@ -42,7 +42,7 @@ tags: [post, drone, ai, rtos, embedded, arm, tensorflow, kalman, pid, rl] # TAG 
 ## 독창성 및 차별성
 
 - 현재 상용화된 대부분의 드론은 실외용으로 설계되어 실내에서 사용이 어려운 GPS 등의 무선 신호 기반 항법 장치나 고성능 영상 처리 기반 경로 탐색 시스템을 갖추고 있습니다. 따라서 저전력 및 저성능으로 작동되어야 하는 실내용 드론에 적합한 저차원, 저용량의 센서 데이터를 활용한 경로 탐색 방식을 사용하여 기존보다 경량화된 장애물 회피 및 경로 탐색 방식을 구현할 수 있습니다.
-- [선행 연구(Bardienus P. Duisterhof 외 7명, 2019)](https://arxiv.org/abs/1909.11236)는 어두운 실내 공간에서 밝은 목표물을 찾아가는 제한적인 상황에서의 시나리오를 가정했습니다. 본 연구는 선행 연구를 기반으로 보다 보편적인 실내 공간에서 적용시키기 위해, 특정 점멸 패턴을 발산하는 물체를 식별하여 경로를 탐색할 수 있도록 발전시키는 것을 목표하고 있습니다.
+- <a href="https://arxiv.org/abs/1909.11236" target="_blank">선행 연구(Bardienus P. Duisterhof 외 7명, 2019)</a> 는 어두운 실내 공간에서 밝은 목표물을 찾아가는 제한적인 상황에서의 시나리오를 가정했습니다. 본 연구는 선행 연구를 기반으로 보다 보편적인 실내 공간에서 적용시키기 위해, 특정 점멸 패턴을 발산하는 물체를 식별하여 경로를 탐색할 수 있도록 발전시키는 것을 목표하고 있습니다.
 - 목표물을 찾는 밝기 센서에 지정 과제로 제시된 곤충의 시각 기관을 모방한 배열구조로 센서를 배치하여 보다 넓은 시야각을 확보함으로써 선행 연구에 비해 보다 발전된 성능의 경로 탐색 시스템을 구현할 수 있을 것으로 기대합니다.
 - 임베디드 시스템 위에서 인공신경망을 기반으로 한 추론을 진행하는 의사 결정 방식은 최근에 대두되고 있는 새로운 방식입니다. 저용량, 저성능(Cortex-M4, 80MHz, 256KB)의 시스템에서 RTOS를 탑재한 채로 **실시간** 요구 사항을 충족하면서 추론을 진행하는 것 또한 기존의 전통적인 시스템에서의 결정론적인 의사 결정 방식에 대비해 차별화되고 있습니다.
 
@@ -175,59 +175,58 @@ IMU 센서로는 InvenSense 社의 MPU9250을 사용했습니다. 본 연구에�
 - 지자계 비활성화 : AK8963 통신 구현 실패 (통신 프로토콜 이해 부족 및 시간 부족에서 기인)로 인해 절대 yaw각 보정을 포기하고 지자계 센서를 비활성화 한 상태입니다. 대신 진동으로 생기는 yaw각 적분 오차를 완화시키기 위해 일정 각도 이하의 각도 변화(현재 0.3도)는 각도 산정에 반영하지 않고 드랍합니다. 정숙한 상황을 가정한 극단적인 대책 중 하나입니다.
 
 이렇게 얻어온 값을 위에서 설명한 상보 필터를 통해 조합하여 각도를 산출한 후 칼만 필터를 통해 현재 자세를 추정합니다.
-<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/imu_diagram.jpg">
+<img width="650px" src="/assets/img/post/2021-11-27-endurance_drone/imu_diagram.jpg">
 
 <p class="caption">자세 추정 방식 요약 다이어그램</p>
 
 ##### 구현
 
-이 부분의 구현 전체 소스는 [여기](https://github.com/Dictor/hamstrone-drone/blob/master/mpu9250.c)를 참고하세요.
+이 부분의 구현 전체 소스는 <a href="https://github.com/Dictor/hamstrone-drone/blob/master/mpu9250.c" target="_blank">여기</a> 를 참고하세요.
 
-```
+```c
 uint8_t initRegister[INIT_REGISTER_COUNT][2] = {
-    {MPUREG_PWR_MGMT_1, BIT_H_RESET},
-    {MPUREG_PWR_MGMT_1, 0x01},
-    {MPUREG_PWR_MGMT_2, 0x00},
-    {MPUREG_ACCEL_CONFIG, BITS_FS_2G},
-    {MPUREG_ACCEL_CONFIG_2, BITS_DLPF_CFG_10HZ},
-    {MPUREG_GYRO_CONFIG, BITS_FS_250DPS},
-    {MPUREG_CONFIG, BITS_DLPF_CFG_10HZ},
-    {MPUREG_INT_PIN_CFG, 0x12},
-    {MPUREG_USER_CTRL, 0x30},
-    {MPUREG_I2C_MST_CTRL, 0x0D},
-    {MPUREG_I2C_SLV0_ADDR, AK8963_I2C_ADDR},
-    {MPUREG_I2C_SLV0_REG, AK8963_CNTL2}, // ak reset
-    {MPUREG_I2C_SLV0_DO, 0x01},
-    {MPUREG_I2C_SLV0_CTRL, 0x81},
-    {MPUREG_I2C_SLV0_REG, AK8963_CNTL1},
-    {MPUREG_I2C_SLV0_DO, 0x12},
-    {MPUREG_I2C_SLV0_CTRL, 0x81}};
+  {MPUREG_PWR_MGMT_1, BIT_H_RESET},
+  {MPUREG_PWR_MGMT_1, 0x01},
+  {MPUREG_PWR_MGMT_2, 0x00},
+  {MPUREG_ACCEL_CONFIG, BITS_FS_2G},
+  {MPUREG_ACCEL_CONFIG_2, BITS_DLPF_CFG_10HZ},
+  {MPUREG_GYRO_CONFIG, BITS_FS_250DPS},
+  {MPUREG_CONFIG, BITS_DLPF_CFG_10HZ},
+  {MPUREG_INT_PIN_CFG, 0x12},
+  {MPUREG_USER_CTRL, 0x30},
+  {MPUREG_I2C_MST_CTRL, 0x0D},
+  {MPUREG_I2C_SLV0_ADDR, AK8963_I2C_ADDR},
+  {MPUREG_I2C_SLV0_REG, AK8963_CNTL2}, // ak reset
+  {MPUREG_I2C_SLV0_DO, 0x01},
+  {MPUREG_I2C_SLV0_CTRL, 0x81},
+  {MPUREG_I2C_SLV0_REG, AK8963_CNTL1},
+  {MPUREG_I2C_SLV0_DO, 0x12},
+  {MPUREG_I2C_SLV0_CTRL, 0x81}
+};
 ```
 
-```
-for (int i = 0; i < INIT_REGISTER_COUNT; i++)
-    {
-        SPIWriteSingle(HAMSTRONE_GLOBAL_SPI_PORT, MPU9250_SPI_MODE, initRegister[i][0], initRegister[i][1]);
-        mpudebug("initMPU9250: init reg %d = %d", initRegister[i][0], initRegister[i][1]);
-        usleep(1000);
-    }
+```c
+for (int i = 0; i < INIT_REGISTER_COUNT; i++) {
+  SPIWriteSingle(HAMSTRONE_GLOBAL_SPI_PORT, MPU9250_SPI_MODE, initRegister[i][0], initRegister[i][1]);
+  mpudebug("initMPU9250: init reg %d = %d", initRegister[i][0], initRegister[i][1]);
+  usleep(1000);
+}
 ```
 
 초기화를 위한 레지스터 설정값. 위의 배열을 순회하며 전원 인가후 배열의 값대로 레지스터를 설정합니다.
 
-```
+```c
 uint8_t data[21];
-if (SPIRead(HAMSTRONE_GLOBAL_SPI_PORT, MPU9250_SPI_MODE, MPUREG_ACCEL_XOUT_H | READ_FLAG, 21, data) < 0)
-{
-    mpudebug("readMPU9250: read error");
-    return ERROR_READ_FAIL;
+if (SPIRead(HAMSTRONE_GLOBAL_SPI_PORT, MPU9250_SPI_MODE, MPUREG_ACCEL_XOUT_H | READ_FLAG, 21, data) < 0) {
+  mpudebug("readMPU9250: read error");
+  return ERROR_READ_FAIL;
 }
 mpudebug("readMPU9250: read ok");
 ```
 
 MPU9250의 레지스터 값을 읽어와서
 
-```
+```c
 value[10] = ((int16_t)data[6] << 8) | data[7];
 ret->accX = ((float)value[0] / MPU9250_ACCEL_COEFFICIENT);
 ```
@@ -242,29 +241,29 @@ ret->accX = ((float)value[0] / MPU9250_ACCEL_COEFFICIENT);
 - I2C 방식으로 통신
 - 16비트 ADC 내장
 
-본 연구에서는 백색광의 세기를 사용합니다. 별도의 필터링은 없으며 양자화만 진행합니다.
+본 연구에서는 백색광의 세기를 사용합니다. 별도의 필터링은 없으며 신경망에 입력하기 위한 양자화만 진행합니다.
 
 ##### 구현
 
-이 부분의 구현 전체 소스는 [여기](https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c)를 참고하세요.
+이 부분의 구현 전체 소스는 <a href="https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c" target="_blank">여기</a> 
 
-```
+```c
 for (int c = chanStart; c <= chanEnd; c++)
 {
-    if (TCA9548SetChannel(HAMSTRONE_GLOBAL_I2C_PORT, c) < 0)
-        errcnt++;
-    if (I2CWriteRegisterSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_SO6203, HAMSTRONE_CONFIG_SO6203_EN, 0b00001011) < 0)
-        errcnt++;
-    }
+  if (TCA9548SetChannel(HAMSTRONE_GLOBAL_I2C_PORT, c) < 0)
+    errcnt++;
+  if (I2CWriteRegisterSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_SO6203, HAMSTRONE_CONFIG_SO6203_EN, 0b00001011) < 0)
+  errcnt++;
+}
 ```
 
 `EN` 레지스터를 설정해 센서를 활성화합니다.
 
-```
- if (I2CReadSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_SO6203, HAMSTRONE_CONFIG_SO6203_ADCW_H, &valueh) < 0)
-    errcnt++;
+```c
+if (I2CReadSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_SO6203, HAMSTRONE_CONFIG_SO6203_ADCW_H, &valueh) < 0)
+  errcnt++;
 if (I2CReadSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_SO6203, HAMSTRONE_CONFIG_SO6203_ADCW_H + 1, &valuel) < 0)
-    errcnt++;
+  errcnt++;
 result[c] = (valueh << 8) | valuel;
 ```
 
@@ -272,12 +271,496 @@ result[c] = (valueh << 8) | valuel;
 
 #### 거리 센서
 
-거리 센서로는 Benewake 社의 TFmini-S를 사용했습니다. 레이저를 사용한 LIDAR 방식입니다.
+거리 센서로는 Benewake 社의 TFmini-S를 사용했습니다. 레이저를 사용한 LIDAR 방식으로, 드론이 비행 중 장애물을 감지하고 회피하기 위해서 사용합니다. 상세 스펙은 아래와 같습니다.
+
+- 측정 거리 범위 0.1m ~ 12m (90% 반사율의 대상에 대해서)
+- 정확도 6cm (0.1 ~ 6m) 또는 ±1% (6m ~ 12m)
+- 해상도 1cm
+- 프레임률 100Hz
+- 통신 방식 UART 또는 I2C
+
+본 연구에서는 좀 더 정확한 거리 계산을 위한 변수까지는 사용하지 않고 단순 거리 값만 사용합니다. 별도의 필터링은 없으며 신경망에 입력하기 위한 양자화만 진행합니다.
+
+##### 구현
+
+이 부분의 구현 전체 소스는  <a href="https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c" target="_blank">여기</a> 를 참고하세요.
+
+```c
+uint8_t data[7];
+for (int c = chanStart; c <= chanEnd; c++) {
+  if (TCA9548SetChannel(HAMSTRONE_GLOBAL_I2C_PORT, c) < 0)
+    errcnt++;
+  I2CWriteSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_TFmini, 0x01);
+  I2CWriteSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_TFmini, 0x02);
+  I2CWriteSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_TFmini, 0x07);
+  usleep(1000);
+  if (I2CRead(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_TFmini, 7, data) < 0)
+    errcnt++;
+    //  data[0]=isValid? [2]=distl [3]=disth [4]=strengthl [5]=strengthh [7]=rangetype
+  result[c] = (data[3] << 8) | data[2];
+}
+```
+
+값 레지스터를 읽어 거리를 계산합니다.
+
+#### I2C 통신 (TCA9548) 멀티플렉서
+
+위에 설명된 I2C 통신을 사용하는 센서(밝기, 거리)들은 프로세서의 하나의 I2C 버스에 연결되어 통신을 진행하게 됩니다.
+다만, 밝기 센서와 거리 센서들이 각각 동일한 I2C 주소를 가지고 있어 별다른 조치 없이는 하나의 버스에서 통신할 수 없습니다.
+프로세서의 I2C 버스 숫자도 제한되어 하나의 버스에서 중복된 주소의 장치들을 사용하기 위해 I2C 주소 멀티플렉서인 TCA9548을 사용 했습니다.
+
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/tca9548.jpg">
+<p class="caption">TCA9548의 연결 예시도</p>
+
+TCA9548은 프로세서의 I2C 버스를 주(main) 버스로 삼고, 최대 8개의 장치가 I2C 버스를 부(slave) 버스로 삼아 종 9개의 I2C 버스를 제공합니다. I2C 통신은 간단하게 요약해서 특정 주소의 레지스터를 쓰거나, 읽는 2가지 행위로 요약할 수 있는데, 이때 TCA9548은 장치 주소 + 레지스터 주소 + 레지스터 값의 조합의 메세지를 쓰기 전에 현재 통신이 진행될 부 버스를 선택할 수 있게 TCA9548의 레지스터에 버스 번호를 쓴 뒤, 메세지를 쓰는 방식으로 멀티플렉싱을 구현합니다.
+
+<img width="750px" src="/assets/img/post/2021-11-27-endurance_drone/tca9548_msg.jpg">
+<p class="caption">TCA9548을 이용할 때 메세지 예시</p>
+
+##### 구현
+
+앞선 구현 예시에서 `TCA9548SetChannel` 함수를 확인하실 수 있었습니다. 이 함수의 내부 구현은 아래와 같이 간단한, 위에서 설명한 추가적인 정보를 작성하는 내용입니다.
+
+```c
+int TCA9548SetChannel(int fd, uint8_t chan) {
+  return I2CWriteRegisterSingle(fd, HAMSTRONE_CONFIG_I2C_ADDRESS_TCA9548, HAMSTRONE_CONFIG_TCA9548_CHAN, 1 << chan);
+}
+```
+
+##### SPI, I2C 통신 개요도
+
+<img width="500px" src="/assets/img/post/2021-11-27-endurance_drone/sensor_conn.jpg">
+<p class="caption">SPI, I2C를 이용하는 센서의 연결 개요도</p>
 
 #### GPS
 
+범용적인 용도를 위해 GPS의 출력인 NMEA 프로토콜을 현재 위치의 위도 및 경도를 파싱하는 루틴을 작성해두었습니다만, 현재 사용되고 있진 않습니다. 테스트는 GY-GPS6MV2 센서로 진행되었으며 올해 초에 실외용 드론에 탑재될 용도로 개발하게 되었습니다.
+
+GY-GPS6MV2 센서는 `$GPGGA`, `$GPGSV`, `$GPRMC` 등의 데이터 포맷을 전송하는데 `$`기호를 기준으로 새로운 데이터가 시작되기 때문에 `$`문자를 받아들이면 기존의 데이터를 초기화하고 `GPGGA`, `GPGSV`, `GPRMC`등의 5자리 문자열을 인식합니다.각각의 문자열에 따라 가지고 있는 데이터가 다르기 때문에 경우에 따라 알맞은 데이터를 추출할 수 있도록 코드를 작성하였습니다. 센서로부터의 데이터는 큐에 누적되며 파싱을 진행합니다. 메세지가 완성되지 않은 경우 대기하며 큐에 데이터가 쌓일 때 까지 대기합니다.
+
+##### 구현
+
+이 부분의 구현 전체 소스는  <a href="https://github.com/Dictor/hamstrone-drone/blob/master/gps.c" target="_blank">여기</a> 를 참고하세요.
+
+```c
+if (dataReceive[2] == 'R' && dataReceive[3] == 'M' && dataReceive[4] == 'C' && commaCnt == 12) {
+    assembleCnt++;
+    for (i = 0; i < gpsType.num - 1; i++)
+    {
+        int k = 0;
+        char assembleData[15] = {
+            0,
+        };
+        if (i == 1 || i == 3 || i == 5)
+        {
+            for (j = gpsType.Element[i]; j < gpsType.Element[i + 1] - 1; j++)
+            {
+                assembleData[k] = dataReceive[j];
+                k++;
+            }
+            convert = atof(assembleData);
+            if (i == 1)
+            { // UTC
+                convert *= (int)100;
+                HAMSTRONE_WriteValueStore(11, (uint32_t)convert);
+            }
+            else if (i == 3)
+            { // Latitude
+                convert *= (int)100000;
+                HAMSTRONE_WriteValueStore(12, (uint32_t)convert);
+            }
+            else if (i == 5)
+            { // Longitude
+                convert *= (int)100000;
+                HAMSTRONE_WriteValueStore(13, (uint32_t)convert);
+            }
+        }
+    }
+} else if (dataReceive[2] == 'G' && dataReceive[3] == 'G' && dataReceive[4] == 'A' && commaCnt == 14) {
+    assembleCnt++;
+    for (i = 0; i < gpsType.num - 1; i++)
+    {
+        int k = 0;
+        char assembleData[15] = {
+            0,
+        };
+        if (i == 7 || i == 8)
+        {
+            for (j = gpsType.Element[i]; j < gpsType.Element[i + 1] - 1; j++)
+            {
+                assembleData[k] = dataReceive[j];
+                k++;
+            }
+            convert = atof(assembleData);
+            if (i == 7)
+            { // Number of Satellites used for Calculation
+                convert = (int)convert;
+                HAMSTRONE_WriteValueStore(14, (uint32_t)convert);
+            }
+            else if (i == 8)
+            { // HDOP
+                convert *= (int)100;
+                HAMSTRONE_WriteValueStore(15, (uint32_t)convert);
+            }
+        }
+    }
+}
+```
+
+#### 마이크로프로세서 (STM32L432KC)
+
+드론에 탑재된 마이크로프로세서는 ST 社의 STM32L432KC 프로세서를 사용했습니다. 상세 명세는 아래와 같습니다.
+
+- ARM 32비트 Cortex-M4 80MHz(100DMIPS) CPU (FPU, ART 탑재)
+- 256KB 플래시, 64KB SRAM
+- 26개의 IO, 11개의 타이머, 12비트 ADC와 DAC
+- USB, SAI, 2개의 I2C, 3개의 USART, 2개의 SPI, CAN
+
+<img width="550px" src="/assets/img/post/2021-11-27-endurance_drone/cpu_io.jpg">
+<p class="caption">CPU의 IO 연결표</p>
+
 ### PID 제어 **(남종현)**
 
-### 회로/PCB 설계 **(남종현)**
+<img width="650px" src="/assets/img/post/2021-11-27-endurance_drone/pid.jpg">
+<p class="caption">PID 제어기의 블록 다이어그램</p>
 
-### 하드웨어 제작 **(남종현)**
+PID 제어기는 비례 적분 미분 제어기의 줄임말로, 대표적인 폐루프 제어기입니다. 제어하고자 하는 대상의 출력값을 측정하여 정상 상태 값(목표 값)과 비교하여 오차를 계산하고, 이 오차값을 이용하여 제어에 필요한 출력 값을 계산하는 구조로 되어 있습니다.
+상보필터와 칼만필터로 계산한 현재 자세를 입력으로 받아 roll, pitch의 각도에 대해 오차를 수정하기 위한 출력 값을 제공하는 방식으로 제어를 진행합니다.
+PID 제어기의 특성은 3개의 비례, 적분, 미분 이득치(게인)으로 결정되는데 이 값에 따라 정상 상태에 수렴하는 특성이 크게 바뀌기 때문에 자세 제어의 핵심이라고 할 수 있습니다. 이 이득치 값들을 자동 또는 결정하는 공식도 존재하지만 본 연구에서는 여러번의 테스트를 진행하며 수동으로 최적의 값을 찾고자 했습니다.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gwXdtai-zcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p class="caption">초기 PID 게인 테스트 도중의 실험 영상, LPF 및 칼만 필터를 적용하지 않고 낮은 이득치를 사용하여 제어가 매우 불안정 했습니다. (제어 값의 경향은 맞으나 과감쇠 시스템처럼 수렴하지 못하고 오버 슈팅이 발생하며 진동함)</p>
+
+현재 최신적으로 사용하고 있는 이득치는 비례 이득 3, 적분 이득 2, 미분 이득 0.5입니다. (최종이 아님)
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pid_left.png">
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pid_right.png">
+
+<p class="caption">프로세서가 계산하여 ground 프로그램에 송출하고 있는 PID 제어 출력값 (각각 좌, 우로 드론을 기울였을때, 대칭적으로 모터 출력의 대소 관계가 변하는 것을 확인할 수 있습니다. (사진상의 6~9 항목))</p>
+
+#### 구현
+
+`updatePID` 함수에 현재 측정 각도를 입력하면 출력 제어값이 반환됩니다.
+
+```c
+double kP[PID_DIMENSION] = {3, 3};
+double kI[PID_DIMENSION] = {2, 2};
+double kD[PID_DIMENSION] = {0.5, 0.5};
+
+void updatePID(double AngX, double AngY, double *result)
+{
+    double degree[PID_DIMENSION] = {
+        0.0,
+    };
+    degree[0] = AngX;
+    degree[1] = AngY;
+
+    static double prevInput[PID_DIMENSION] = {
+        0.0,
+    };
+    static double controlI[PID_DIMENSION] = {
+        0.0,
+    };
+    double controlP[PID_DIMENSION], controlD[PID_DIMENSION], dInput[PID_DIMENSION], error[PID_DIMENSION], desired[PID_DIMENSION] = {10.0,};
+    double time = 0.01;
+    int i;
+
+    for (i = 0; i < 2; i++)
+    {
+        error[i] = desired[i] - degree[i];
+        dInput[i] = degree[i] - prevInput[i];
+        prevInput[i] = degree[i];
+
+        controlP[i] = kP[i] * error[i];
+        controlI[i] = kI[i] * error[i] * time;
+        controlD[i] = -kD[i] * dInput[i] / time;
+
+        result[i] = controlP[i] + controlI[i] + controlD[i];
+    }
+}
+```
+
+### 회로/PCB 설계 **(김정현, 남종현)**
+
+#### 전원부 (PTH08080)
+
+11.1V (3셀 LIPO) 배터리에서 회로에 공급될 5V 전원을 공급하기 위해 TI 社의 스위칭 레귤레이터 모듈인 PTH08080W를 사용했습니다. 상세 명세는 아래와 같습니다.
+
+- 섭씨 85도에서 2.25A 출력
+- 4.5 ~ 18V 입력 전압
+- 0.9 ~ 5.5V 출력 전압 (조정 가능)
+- 93% 효율
+
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pth08080.png">
+
+<p class="caption">PTH08080의 표준 사용 방법</p>
+
+#### 회로
+
+위에서 설명한 모든 센서와 처리 칩셋, 마이컴을 통합하여 한 회로로 표현하면 아래 사진과 같습니다.
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/circuit.png">
+
+<p class="caption">회로도</p>
+
+#### PCB
+
+위의 회로도를 드론에 탑재하기 적합한 소형 PCB에 올리면 아래 사진들과 같습니다.
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/gerber.png">
+
+<p class="caption">PCB 패턴도</p>
+
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pcb.png">
+
+<p class="caption">실제로 제작된 견본 PCB</p>
+
+현재 제작한 견본 PCB는 여러가지 회로 실수와 풋프린트 오류가 발견되어 지속적으로 수정, 제작중입니다.
+
+### 하드웨어 제작 **(남종현, 김재민)**
+
+테스트에 사용된 견본 드론 하드웨어는 아래 사진과 같습니다. PCB에 오류로 회로가 동작하지 않아 임시로 브레드보드에 조립한 모습니다.
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/drone_top.jpg">
+
+<p class="caption">상단에서 바라본 견본 드론 하드웨어</p>
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/drone_front.jpg">
+
+<p class="caption">정면에서 바라본 견본 드론 하드웨어</p>
+
+### 임베디드 프로그래밍 (RTOS) **(김정현)**
+
+본 연구에서는 다양한 기능들이 임베디드 시스템에서 유기적으로 작용할 필요가 있으므로 Nuttx RTOS(실시간 운영체제)를 채용했습니다. Nuttx 운영체제는 아파치 재단에서 인큐베이팅중인 프로젝트로 광범위한 아키텍쳐를 지원하며 POSIX 표준을 만족하기에 많이 사용하는 데스크탑 환경과 비슷한 코딩을 할 수 있습니다.
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/nuttx.jpg">
+
+<p class="caption">NuttX 구조 다이어그램</p>
+
+본 연구에서 작성한 드론 펌웨어는 User Layer에서 User Application(다이어그램의 Other Application)으로서 작동하며 하드웨어 접근은 HAL과 드라이버를 통해 POSIX API로서 추상화되어있습니다. 예를 들어 UART 통신은 표준 파일처럼 `read`, `write` 메서드를 통해 스트림과 작용하며, I2C와 SPI 통신은 `ioctl` 메서드를 통해 작용합니다. 태스크 제어도 `usleep`등의 표준 메서드로 컨텍스트 스위칭이 쉽게 가능합니다. NuttX는 본 연구에서 사용한 L432KC 프로세서에 대해 대부분 주변장치에 대한 Character Driver를 제공하고 있습니다. 본 연구에서 일부 미흡한 부분에 대해 NuttX에 대해 기여를 한 부분도 [존재](https://github.com/apache/incubator-nuttx/pull/2837)합니다.
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/task.jpg">
+
+<p class="caption">드론 펌웨어의 태스크와 리소스 점유 관계</p>
+
+idle 태스크는 진입 함수(main)이 실행되는 태스크고, 초기화후에 실제 기능 태스크들에 CPU 실행권을 무조건적으로 양보합니다. 3개의 태스크들이 각자의 기능을 처리하며, UART 장치는 두 개 이상의 태스크에서 동시 접근 가능성이 있어 세마포어로 동기화됩니다. Value Store (배열로 구현된 중앙 데이터 저장소)는 읽기, 쓰기 태스크가 명확히 분리되어 있어 별도의 동기화는 없습니다.
+
+### 지상국 **(김정현)**
+
+지상국은 위에서 언급된 Value Store을 랩탑에서 원격으로 확인하고 지령을 내리기 위한 프로그램입니다. golang으로 작성된 백앤드가 HamsterTongue 프로토콜 형식의 시리얼 신호를 파싱하여 Websocket을 통해 vueJS로 작성된 랩탑의 Web UI에 값을 표출합니다. Value Store의 값을 표출, 현재 자세를 그래프로 표현, Signal Verb를 가진 메세지들을 표현하는 3개의 기능이 존재합니다.
+
+#### HamsterTongue 프로토콜
+
+경량 메세지를 송수신하기 위하여 통일된 프로토콜로 통신하게 됩니다. 메세지의 상세 구조는 아래와 같습니다.
+
+```
+Name        Marker  Length  Verb    Noun    Payload     CRC
+Size(byte)  1       1       1       1       ~255        1
+            <-              Message Length              ->
+                            <-      Length              ->
+```
+
+- Marker : 메세지의 시작을 알리는 바이트, 0xFF 고정
+- Length : Verb ~ CRC까지의 길이를 알리는 바이트, 0~255
+- Verb : 메세지의 종류
+- Noun : 메세지의 변수
+- Payload: 데이터 (실질적으로 최대 252바이트)
+- CRC: Verb ~ Payload 까지의 1바이트 CRC 검증 값
+
+##### 구현
+
+C언어로 구현된 송수신 구현
+
+```c
+uint8_t *HAMSTERTONGUE_SerializeMessage(HAMSTERTONGUE_Message *msg)
+{
+	uint8_t *res = malloc(HAMSTERTONGUE_GetMessageLength(msg));
+	res[0] = HAMSTERTONGUE_MESSAGE_MARKER;
+	res[1] = HAMSTERTONGUE_GetMessageLength(msg) - 2;
+	res[2] = msg->Verb;
+	res[3] = msg->Noun;
+	memcpy(res + 4, msg->Payload, msg->PayloadLength);
+	res[4 + msg->PayloadLength] = 0; //CRC
+	return res;
+}
+
+HAMSTERTONGUE_Message *HAMSTERTONGUE_ReadMessage(int fd)
+{
+	HAMSTERTONGUE_Message *msg;
+	uint8_t buf[64], msgpayload[256];
+	uint8_t buildStatus = 0, buildLen, msglen, msgverb, msgnoun, msgcrc; // 0 = not STX yet, 1 = not Len yet, 2 = payload reading, 3 = complete
+	uint8_t readlen = HAMSTERTONGUE_Read(fd, buf, 64);
+	if (readlen > 0)
+	{
+		for (int i = 0; i < readlen; i++)
+		{
+			if (buildStatus == 0)
+			{
+				if (buf[i] == HAMSTERTONGUE_MESSAGE_MARKER)
+				{
+					buildStatus = 1;
+				}
+				else
+				{
+					continue;
+				}
+			}
+			else if (buildStatus == 1)
+			{
+				msglen = buf[i];
+				buildStatus = 2;
+				memset(msgpayload, 0, 256);
+				buildLen = 0;
+				break;
+			}
+			else if (buildStatus == 2)
+			{
+
+				buildLen++;
+				if (buildLen == 1)
+				{
+					msgverb = buf[i];
+				}
+				else if (buildLen == 2)
+				{
+					msgnoun = buf[i];
+				}
+				else if (buildLen > 2 && buildLen <= msglen - 1)
+				{
+					msgpayload[buildLen - 3] = buf[i];
+				}
+				else if (buildLen == msglen)
+				{
+					msgcrc = buf[i];
+					buildStatus = 3;
+				}
+			}
+			else if (buildStatus == 3)
+			{
+				uint8_t payloadLen = msglen - 3;
+				msg = HAMSTERTONGUE_NewMessage(msgverb, msgnoun, payloadLen);
+				msg->Payload = malloc(payloadLen);
+				memcpy(msg->Payload, msgpayload, payloadLen);
+				return msg;
+			}
+		}
+	}
+}
+```
+
+Go 언어로 구현된 메세지 수신 구현
+
+```golang
+func decodeMessage(msgchan chan *hamsterTongueMessage, sendchan chan []byte) {
+	defer ValueMutex.Unlock()
+	for {
+		select {
+		case msg := <-msgchan:
+			globalLogger.WithFields(logrus.Fields{
+				"length":  msg.Length,
+				"verb":    msg.Verb,
+				"noun":    msg.Noun,
+				"payload": msg.Payload,
+			}).Debugf("serial message income")
+			switch msg.Verb {
+			case hamstertongue.MessageConstant["Verb"]["Heartbeat"]:
+			case hamstertongue.MessageConstant["Verb"]["Value"]:
+				ValueMutex.Lock()
+				for i := 0; i < 16; i++ {
+					Value[strconv.Itoa(i)] = binary.LittleEndian.Uint32(addArrayPadding(msg.Payload[i*4:i*4+3], 4))
+				}
+				ValueMutex.Unlock()
+			case hamstertongue.MessageConstant["Verb"]["Signal"]:
+				data, err := json.Marshal(generalMessage{
+					Type: "signal",
+					Data: []interface{}{msg, string(msg.Payload)},
+				})
+				if err != nil {
+					globalLogger.WithField("error", err).Errorln("error caused while making message")
+					continue
+				}
+				sendchan <- data
+			}
+		}
+	}
+}
+```
+
+### 강화학습 **(김정현)**
+
+본 연구에서 가정하고 있는 문제는 실제 상황을 전부 관측할 수 없고, 부분적인 관측치로 상황을 예측하여 해결하는 POMDP(부분 관찰 마르코프 의사결정 과정) 문제 입니다. 이 문제는 강화학습을 통해 상황을 확률적으로 모델링하고 상황에 대한 정답과의 근접 정도인 보상치를 최대화할 수 있게 행동을 인공 신경망으로 행동을 선택할 수 있게 하는 가치 함수를 통해 풀어내게됩니다. 변수로서 표현하면 아래와 같이 표현할 수 있습니다.
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/pomdp.jpg">
+
+- O : 실제 상황에 대한 부분적인 관측치의 집합
+- A : 가능한 행동에 대한 집합
+- R : 보상치
+- S : 실제 상황 (POMDP 문제에서는 O로 가정함)
+- γ : 할인율 (미래와 현재 보상치의 시간 경과에 따른 가치를 결정)
+
+O는 센서의 관측치를 간단히 양자화하여 입력하면, 가치 네트워크 (인공 신경망으로 구현된 가치 함수의 일종)을 통해 가장 확률이 높은 A가 도출되는 방식으로 동작합니다. 학습시에 R은 학습 환경이 목표와의 거리에 대하여 입력시켜주게 되며 γ은 0.95(95%)입니다.
+
+강화학습 알고리즘은 DQN을 사용합니다. 간단하게 설명하면 전통적인 결정적 가치함수 대신에 인공 신경망을 기반으로한 가치 네트워크를 행동을 결정하는 정책으로서 사용하는 방식입니다. DQN의 특성중 하나인 하이퍼 파라미터와 보상 정책은 아래 사진과 같습니다.
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/dqn.jpg">
+
+<p class="caption">하이퍼 파라미터와 보상 정책</p>
+
+이러한 변수와 정책으로 학습시킨 저희의 가치 네트워크의 테스트 예시입니다.
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/dqn_test.jpg">
+
+<p class="caption">가치 네트워크 테스트 결과</p>
+
+비교적 쉬운 시작 위치인 1~3번 장소에서는 양호한 성공률과 평균 episode 길이(소요 시간에 대한 선형적인 수치, 환산하면 대략 1에피소드당 2~3초)를 보여주지만 광원을 찾기 어려운 환경인 4번 장소에 대해서는 성공하지 못하는 모습을 보여줍니다. 현재 이러한 문제를 보정하기 위해 더 다양한 학습 장소에서의 학습을 진행하고 있습니다.
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/dqn_sim.gif">
+
+<p class="caption">가치 네트워크 테스트 시뮬레이션 예시</p>
+
+쉬운 환경에서는 금방 광원에 도착하지만, 어려운 환경에서는 행동을 반복하며 방황하는 모습을 관찰할 수 있습니다.
+
+#### 이식
+
+이렇게 만들어진 가치 신경망을 마이크로 프로세서에 이식하기 위하여 `Tensorflow Lite for microcontroller` 프레임워크를 사용하게 됩니다. 텐서플로우의 API 경량화 및 정적 할당 파생형입니다. 현재 C++과 C 펌웨어의 결합 단계에서 시행 착오를 진행중이며 현재 시점에선 미완성입니다.
+
+### 신호처리(FFT) **(김상윤)**
+
+고속 푸리에 변환(FFT)은 이산 푸리에 변환(DFT)의 기본적인 구현에서 반복해서 수행하는 계산을 한 번씩만 수행하도록 하여 효율성을 높이는 방법입니다. 본 연구에서는 환경 광원과 일정 주파수로 점멸하는 목표 광원을 구분하기 위하여 밝기 센서의 감지 값에 사용합니다.
+
+FFT는 신호의 길이 N이 N=2^d와 같이 2의 거듭제곱 형태라고 가정합니다. DTF는 전체 주파수 함수값을 구하는 계산량은 입력 신호의 원소 수 N의 제곱에 비례하는 데 이렇게 짝수와 홀수 원소로 분류하여 변환을 수행하면 원소 수가 N/2인 신호를 두 번 변환하는 것이 되어 계산량이 2*(N/2)*(N/2)에 비례하게 됩니다.
+
+#### 구현
+
+FFT는 현재 단계에선 아직 구현되있지 않습니다.
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/fft.png">
+
+<p class="caption">FFT 코드 예시</p>
+
+## 연구 결과
+
+현재 진행중인 프로젝트라 아직 만족스러운 결과가 도출되진 않았습니다. 차후 연구 진행 계획은 아래와 같습니다.
+
+- RL 모델 포팅 : ~ 21년 12월
+- 실 하드웨어 제작 및 실험 : ~ 22년 1월
+- 결과 정리 및 발표 : ~ 22년 2월
+
+## 부록
+
+### 코드
+
+프로젝트의 모든 산출물 코드는 오픈소스입니다.
+
+- 강화학습 : https://github.com/Dictor/endurance-rl
+- 강화학습 환경 : https://github.com/Dictor/endurance-environment
+- 드론 펌웨어 : https://github.com/Dictor/hamstrone-drone
+- NuttX OS : https://github.com/Dictor/incubator-nuttx
+- 지상국 : https://github.com/Dictor/hamstrone-ground
+- 회로도 및 PCB : https://github.com/Dictor/endurance-circuit
+
+### 라이센스
+
+본 문서는 CC BY-SA (저작자표시-동일조건변경허락)에 따라 이용할 수 있습니다
+대부분 자체 저작물이나, 일부 포함된 저작물은 각 저작권자의 소유입니다.
+
+### 감사의 인사
+
+회로 설계와 PCB 설계에 많은 도움을 주시고 매 달 회의도 참석해주시고, 대전에서 족발도 사주신 16기 이승준 선배님께 다시 한번 감사드립니다. 강화학습에 관련하여 많은 인사이트를 제공해주신 문준 교수님과 이명훈 교수님께도 감사 인사 전합니다. 팀원들과 도움주신 바라미 회원님들에게도 정말 감사드립니다!

@@ -43,7 +43,6 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 - HOST CLE310로 beacon들의 RSSI 값을 SCAN하여 parsing 후 자동차의 위치를 추적한다.
 
 #### 소스 코드
-<a href="https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_vehicle_Beacon.ino" target="_blank"> 자율주행 자동차 소스 코드 깃허브 </a>
 
 ### 조이스틱 컨트롤러 제작
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/joycon.jpg" width="90%"> <br>
@@ -69,8 +68,9 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/3d2.jpg" width="90%"> <br>
 3D 모델링을 한 후 프린팅을 하여 컨트롤러의 케이스를 제작하려 했으나 프린터의 문제로 프린팅 실패
 
+
 #### 소스 코드
-<a href="https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_Joycontroller_Beacon.ino" target="_blank"> 조이스틱 컨트롤러 소스 코드 깃허브 </a>
+
 
 ### Beacon 제작
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/beacons.jpg" width="90%"> <br>
@@ -113,16 +113,17 @@ HOST에 들어오는 RSSI 값을 보면서 beacon들의 위치를 계속 바꾸�
 
 ### 조이스틱 컨트롤러
 #### 구동 모습
-<a href="https://youtu.be/yJEVJwnj7W8" target="_blank"> 구동 모습 유튜브 </a>
+
 
 ### 자율주행 자동차
 #### 주행 모습
-<a href="https://youtu.be/aC3_Xr2P1Lc" target="_blank"> 주행 모습 유튜브 </a> <br>
+
 원래 조이스틱 컨트롤러로부터 속력도 수신하여 속력을 조절할 수 있게 하려 했으나 RF통신 특성상 여러 개의 신호를 수신하려면 통신 속도가 길어져 자동차에 적합하지 않다 판단하여 방향 조절만 가능
 
 #### 장애물 회피
-<a href="https://youtu.be/NmiGZ6Cq1X4" target="_blank"> 장애물 회피 유튜브 </a>
 
+
+#
 ### Beacon을 이용한 위치 추적
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/location22.png" width="90%"> <br>
 넓은 공터에서 beacon들을 배치하고 자동차를 이동시켜 알고리즘대로 위치추적 <br>

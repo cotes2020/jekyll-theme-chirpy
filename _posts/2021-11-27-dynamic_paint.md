@@ -32,7 +32,7 @@ Google에서 만든 Mediapipe framework에 있는 function을 통해 검지손�
 손 떨림을 방지하기 위해 마지막으로 update한 좌표와 현재 좌표가 일정거리 이상인 경우에만 현재 좌표로 update합니다.   
 
 <figure>
-    <img src="/assets/img/post/2021-11-27-dynamic_paint/eq1.PNG"> 
+    <img src="/assets/img/post/2021-11-27-dynamic_paint/eq1.PNG" width="70%" height="70%"> 
 </figure>
 
 ##### 경계면 구현 
@@ -47,11 +47,11 @@ OpenCV 내장 함수 사용해서 새로 만들었습니다.
 필압 수식은 exponential 함수를 통해 non-linear하게 구현했습니다.   
 
 <figure>
-    <img src="/assets/img/post/2021-11-27-dynamic_paint/eq2.PNG"> 
+    <img src="/assets/img/post/2021-11-27-dynamic_paint/eq2.PNG" width="70%" height="70%"> 
 </figure>
 Fingertip tracking part에서와 마찬가지로, 굵기가 바뀔 때, 현재 굵기에 일정비율을 더하는 방식으로 굵기가 부드럽게 변하도록 구현했습니다.
 <figure>
-    <img src="/assets/img/post/2021-11-27-dynamic_paint/eq3.PNG"> 
+    <img src="/assets/img/post/2021-11-27-dynamic_paint/eq3.PNG" width="70%" height="70%"> 
 </figure>
 
 ##### Draw 방식  
@@ -63,8 +63,8 @@ Fingertip tracking part에서와 마찬가지로, 굵기가 바뀔 때, 현재 �
 
 ### 시연 영상
 
-<video controls>
-    <source src="/assets/img/post/2021-11-27-dynamic_paint/demonstration_video.mp4"> 
+<video width="50%" height="50%" controls>
+    <source src="/assets/img/post/2021-11-27-dynamic_paint/demonstration_video.mp4" width="50%" height="50%"> 
 </video>
 
 -----
