@@ -40,7 +40,7 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 - SCAN하여 얻은 RSSI 값을 parsing하여 각각의 beacon의 RSSI 값을 따로 
 
 #### 소스 코드
-[자율주행 자동차 소스 코드 깃허브](https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_vehicle_Beacon.ino] "자율주행 자동차 소스 코드 깃허브")
+[자율주행 자동차 소스 코드 깃허브](https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_vehicle_Beacon.ino "자율주행 자동차 소스 코드 깃허브")
 
 ### 조이스틱 컨트롤러 제작
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/joycon.jpg" width="90%"> <br>
