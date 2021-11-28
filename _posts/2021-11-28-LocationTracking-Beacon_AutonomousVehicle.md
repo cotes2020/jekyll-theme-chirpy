@@ -30,7 +30,7 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 ### 자율주행 자동차 제작
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/vehicle1.jpg" width="90%"> <br>
 **Arduino UNO보드와 L298P보드, 초음파 센서를 이용하여 Level3 자율주행 자동차 제작** <br>
-선행 연구인 <a href="https://github.com/choi92/Photovoltaic_Autonomous_Vehicle" target="_blank">"태양광 자율주행 자동차"</a>의 자동차를 활용
+선행 연구인 <a href="https://github.com/choi92/Photovoltaic_Autonomous_Vehicle" target="_blank"></a>의 자동차를 활용
 - 3.7 V, 2600 mAh인 18650 리튬 이온 전지 2개를 이용하여 7.4 V의 전원을 공급해준다.
 - 하비 기어모터를 좌우에 각각 2개씩 연결한다.
 - L298P보드로 DC모터의 전류 방향을 바꿔서 회전 방향을 바꾼다.
