@@ -3,7 +3,7 @@ title: 시각장애인을 위한 점자 시계 구현
 author: Chang jo Choi
 date: 2021-11-28 23:18:00 +0900
 categories: [Exhibition,2021년]
-tags: [post,changjochoi]     
+tags: [post,changjochoi,arduino]     
 ---
 
 # 아두이노를 이용한 점자 시계 구현
@@ -32,7 +32,7 @@ tags: [post,changjochoi]
 <img src="/assets/img/2021-11-28-braille-watch/appearance.jpg" width="90%">
 
 현재 시간의 '시' 표시
-<img src="/assets/img/2021-11-28-braille-watch/appearance.jpg" width="90%">
+<img src="/assets/img/2021-11-28-braille-watch/hour.jpg" width="90%">
 
 
 옆에 스위치가 있는데 이 스위치를 누르면 시를 표시해주고, 그 다음 스위치를 누르면 분을 표시해주도록 함.
