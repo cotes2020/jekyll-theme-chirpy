@@ -24,7 +24,7 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
   - [4-2. 자율주행 자동차](#자율주행-자동차) <br>
   - [4-3. Beacon을 이용한 위치 추적](#beacon을-이용한-위치-추적) <br>
 
-[5. 개선할 사항](#개선할-) <br>
+[5. 개선할 사항](#개선할-사항) <br>
   
 
 ## 개요 
@@ -32,7 +32,7 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 * Arduino UNO보드와 L298P보드, 초음파 센서를 이용하여 Level3 자율주행 자동차 제작
 * Arduino UNO보드와 조이스틱을 이용하여 조이스틱 컨트롤러 제작, I2C LCD로 자동차 상태 표시
 * HC-11을 이용하여 자동차와 컨트롤러 간의 RF통신 구현
-* CLE-310 3개로 beacon을 구현하고 CLE-310 1개로 비콘들의 RSSI값을 SCAN하여 자동차의 위치를 추적
+* CLE-310 3개로 beacon을 구현하고 CLE-310 1개로 beacon들의 RSSI값을 SCAN하여 자동차의 위치를 추적
 
 ### 개발 필요성 및 목적
 4차 산업혁명 시대에 드론을 통한 무인 배달이 각광받고 있으나 드론으로는 대량의 물량을 수송할 수 없으며 드론이 가지 못하는 환경도 분명 존재한다. 그래서 대량의 물량을 수송할 수 있는 자율주행 자동차로 배달을 하는 시스템을 구현하고자 한다. <br>
