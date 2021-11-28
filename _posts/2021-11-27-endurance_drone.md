@@ -42,7 +42,7 @@ tags: [post, drone, ai, rtos, embedded, arm, tensorflow, kalman, pid, rl] # TAG 
 ## 독창성 및 차별성
 
 - 현재 상용화된 대부분의 드론은 실외용으로 설계되어 실내에서 사용이 어려운 GPS 등의 무선 신호 기반 항법 장치나 고성능 영상 처리 기반 경로 탐색 시스템을 갖추고 있습니다. 따라서 저전력 및 저성능으로 작동되어야 하는 실내용 드론에 적합한 저차원, 저용량의 센서 데이터를 활용한 경로 탐색 방식을 사용하여 기존보다 경량화된 장애물 회피 및 경로 탐색 방식을 구현할 수 있습니다.
-- [선행 연구(Bardienus P. Duisterhof 외 7명, 2019)](https://arxiv.org/abs/1909.11236)는 어두운 실내 공간에서 밝은 목표물을 찾아가는 제한적인 상황에서의 시나리오를 가정했습니다. 본 연구는 선행 연구를 기반으로 보다 보편적인 실내 공간에서 적용시키기 위해, 특정 점멸 패턴을 발산하는 물체를 식별하여 경로를 탐색할 수 있도록 발전시키는 것을 목표하고 있습니다.
+- <a href="https://arxiv.org/abs/1909.11236" target="_blank">선행 연구(Bardienus P. Duisterhof 외 7명, 2019)</a> 는 어두운 실내 공간에서 밝은 목표물을 찾아가는 제한적인 상황에서의 시나리오를 가정했습니다. 본 연구는 선행 연구를 기반으로 보다 보편적인 실내 공간에서 적용시키기 위해, 특정 점멸 패턴을 발산하는 물체를 식별하여 경로를 탐색할 수 있도록 발전시키는 것을 목표하고 있습니다.
 - 목표물을 찾는 밝기 센서에 지정 과제로 제시된 곤충의 시각 기관을 모방한 배열구조로 센서를 배치하여 보다 넓은 시야각을 확보함으로써 선행 연구에 비해 보다 발전된 성능의 경로 탐색 시스템을 구현할 수 있을 것으로 기대합니다.
 - 임베디드 시스템 위에서 인공신경망을 기반으로 한 추론을 진행하는 의사 결정 방식은 최근에 대두되고 있는 새로운 방식입니다. 저용량, 저성능(Cortex-M4, 80MHz, 256KB)의 시스템에서 RTOS를 탑재한 채로 **실시간** 요구 사항을 충족하면서 추론을 진행하는 것 또한 기존의 전통적인 시스템에서의 결정론적인 의사 결정 방식에 대비해 차별화되고 있습니다.
 
@@ -181,7 +181,7 @@ IMU 센서로는 InvenSense 社의 MPU9250을 사용했습니다. 본 연구에�
 
 ##### 구현
 
-이 부분의 구현 전체 소스는 [여기](https://github.com/Dictor/hamstrone-drone/blob/master/mpu9250.c)를 참고하세요.
+이 부분의 구현 전체 소스는 <a href="https://github.com/Dictor/hamstrone-drone/blob/master/mpu9250.c" target="_blank">여기</a> 를 참고하세요.
 
 ```c
 uint8_t initRegister[INIT_REGISTER_COUNT][2] = {
@@ -245,7 +245,7 @@ ret->accX = ((float)value[0] / MPU9250_ACCEL_COEFFICIENT);
 
 ##### 구현
 
-이 부분의 구현 전체 소스는 [여기](https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c)를 참고하세요.
+이 부분의 구현 전체 소스는 <a href="https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c" target="_blank">여기</a> 
 
 ```c
 for (int c = chanStart; c <= chanEnd; c++)
@@ -283,7 +283,7 @@ result[c] = (valueh << 8) | valuel;
 
 ##### 구현
 
-이 부분의 구현 전체 소스는 [여기](https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c)를 참고하세요.
+이 부분의 구현 전체 소스는  <a href="https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c" target="_blank">여기</a> 를 참고하세요.
 
 ```c
 uint8_t data[7];
@@ -340,7 +340,7 @@ GY-GPS6MV2 센서는 `$GPGGA`, `$GPGSV`, `$GPRMC` 등의 데이터 포맷을 전
 
 ##### 구현
 
-이 부분의 구현 전체 소스는 [여기](https://github.com/Dictor/hamstrone-drone/blob/master/gps.c)를 참고하세요.
+이 부분의 구현 전체 소스는  <a href="https://github.com/Dictor/hamstrone-drone/blob/master/gps.c" target="_blank">여기</a> 를 참고하세요.
 
 ```c
 if (dataReceive[2] == 'R' && dataReceive[3] == 'M' && dataReceive[4] == 'C' && commaCnt == 12) {
