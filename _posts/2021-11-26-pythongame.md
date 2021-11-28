@@ -1,5 +1,5 @@
 ---
-title: 파이썬을 이용해서 간단하고 쉬운 게임 만들어보기
+title: pythongame
 author: Yeong Il Jo
 date: 2021-11-26 18:20:00 +0900
 categories: [Exhibition,2021년]
@@ -23,7 +23,7 @@ tags: [post,joyeongil]     # TAG names should always be lowercase, 띄어쓰기�
 
 : 코드 
 
-```
+```python
 import pygame
 import random
 import time
