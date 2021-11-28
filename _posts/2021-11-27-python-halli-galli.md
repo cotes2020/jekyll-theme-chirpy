@@ -39,15 +39,15 @@ tags: [post,parknayoung]     # TAG names should always be lowercase, 띄어쓰�
 
   <GAME 화면 사진>
 
-   <img src="/assets/img/post/2021-11-27- python-halli-galli/game.png" width="90%">
+   <img src="/assets/img/post/2021-11-27-python-halli-galli/game.png" width="90%">
    
   <시간 내에 클릭하지 못 했을 경우>
   
-   <img src="/assets/img/post/2021-11-27- python-halli-galli/timeout.png" width="90%">
+   <img src="/assets/img/post/2021-11-27-python-halli-galli/timeout.png" width="90%">
    
   <GAMEOVER 화면 사진>
   
-   <img src="/assets/img/post/2021-11-27- python-halli-galli/gameover.png" width="90%">
+   <img src="/assets/img/post/2021-11-27-python-halli-galli/gameover.png" width="90%">
    
   
 
