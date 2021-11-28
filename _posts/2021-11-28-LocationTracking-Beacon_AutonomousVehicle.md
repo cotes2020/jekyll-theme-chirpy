@@ -16,3 +16,5 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 * HC-11을 이용하여 자동차와 컨트롤러 간의 RF통신 구현
 * CLE-310 3개로 비콘을 구현하고 CLE-310 1개로 비콘들의 RSSI값을 SCAN하여 자동차의 위치를 추적
 
+##자율주행 자동차 제작
+<img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/vehicle1.jpg" width="90%"> 
