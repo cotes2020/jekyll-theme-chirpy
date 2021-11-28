@@ -39,8 +39,8 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
 - HOST CLE-310로 beacon들의 RSSI 값을 SCAN하여 자동차의 위치를 추적한다.
 - SCAN하여 얻은 RSSI 값을 parsing하여 각각의 beacon의 RSSI 값을 따로 
 
-#### 소스코드
-https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_vehicle_Beacon.ino]
+#### 소스 코드
+[자율주행 자동차 소스 코드 깃허브](https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_vehicle_Beacon.ino "자율주행 자동차 소스 코드 깃허브")
 
 ### 조이스틱 컨트롤러 제작
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/joycon.jpg" width="90%"> <br>
@@ -64,8 +64,10 @@ https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/ba
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/3d2.jpg" width="90%"> <br>
 3D 모델링을 한 후 프린팅을 하여 컨트롤러의 케이스를 제작하려 했으나 프린터의 문제로 프린팅 실패
 
-#### 소스코드
-https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_vehicle_Beacon.ino
+#### 소스 코드
+[조이스틱 컨트롤러 소스 코드 깃허브](https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/barami21_Joycontroller_Beacon.ino "조이스틱 컨트롤러 소스 코드 깃허브")
+
+
 
 ### Beacon 제작
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/beacons.jpg" width="90%"> <br>
@@ -99,15 +101,15 @@ HOST에 들어오는 RSSI 값을 보면서 beacon들의 위치를 계속 바꾸�
 
 ### 조이스틱 컨트롤러
 #### 구동 모습
-https://youtu.be/yJEVJwnj7W8
+[구동 모습 영상](https://youtu.be/yJEVJwnj7W8 "구동 모습 영상")
 
 ### 자율주행 자동차
 #### 주행 모습
-https://youtu.be/aC3_Xr2P1Lc <br>
+[주행 모습 영상](https://youtu.be/aC3_Xr2P1Lc "주행 모습 영상") <br>
 원래 조이스틱 컨트롤러로부터 속력도 수신하여 속력을 조절할 수 있게 하려 했으나 RF통신 특성상 여러 개의 신호를 수신하려면 통신 속도가 길어져 자동차에 적합하지 않다 판단하여 방향 조절만 가능하게 되었다.
 
 #### 장애물 회피
-https://youtu.be/NmiGZ6Cq1X4
+[장애물 회피 영상](https://youtu.be/NmiGZ6Cq1X4 "장애물 회피 영상")
 
 ### Beacon을 이용한 위치 추적
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/location22.png" width="90%"> <br>
