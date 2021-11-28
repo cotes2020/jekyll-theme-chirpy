@@ -407,6 +407,18 @@ if (dataReceive[2] == 'R' && dataReceive[3] == 'M' && dataReceive[4] == 'C' && c
 }
 ```
 
+#### 마이크로프로세서 (STM32L432KC)
+
+드론에 탑재된 마이크로프로세서는 ST 社의 STM32L432KC 프로세서를 사용했습니다. 상세 명세는 아래와 같습니다.
+
+- ARM 32비트 Cortex-M4 80MHz(100DMIPS) CPU (FPU, ART 탑재)
+- 256KB 플래시, 64KB SRAM
+- 26개의 IO, 11개의 타이머, 12비트 ADC와 DAC
+- USB, SAI, 2개의 I2C, 3개의 USART, 2개의 SPI, CAN
+
+<img width="650px" src="/assets/img/post/2021-11-27-endurance_drone/cpu_io.jpg">
+<p class="caption">CPU의 IO 연결표</p>
+
 ### PID 제어 **(남종현)**
 
 <img width="650px" src="/assets/img/post/2021-11-27-endurance_drone/pid.jpg">
@@ -420,8 +432,8 @@ PID 제어기의 특성은 3개의 비례, 적분, 미분 이득치(게인)으�
 <p class="caption">초기 PID 게인 테스트 도중의 실험 영상, LPF 및 칼만 필터를 적용하지 않고 낮은 이득치를 사용하여 제어가 매우 불안정 했습니다. (제어 값의 경향은 맞으나 과감쇠 시스템처럼 수렴하지 못하고 오버 슈팅이 발생하며 진동함)</p>
 
 현재 최신적으로 사용하고 있는 이득치는 비례 이득 3, 적분 이득 2, 미분 이득 0.5입니다. (최종이 아님)
-<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pid_left.jpg">
-<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pid_right.jpg">
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pid_left.png">
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pid_right.png">
 
 <p class="caption">프로세서가 계산하여 ground 프로그램에 송출하고 있는 PID 제어 출력값</p>
 
@@ -467,6 +479,49 @@ void updatePID(double AngX, double AngY, double *result)
 }
 ```
 
-### 회로/PCB 설계 **(남종현)**
+### 회로/PCB 설계 **(김정현, 남종현)**
 
-### 하드웨어 제작 **(남종현)**
+#### 전원부 (PTH08080)
+
+11.1V (3셀 LIPO) 배터리에서 회로에 공급될 5V 전원을 공급하기 위해 TI 社의 스위칭 레귤레이터 모듈인 PTH08080W를 사용했습니다. 상세 명세는 아래와 같습니다.
+
+- 섭씨 85도에서 2.25A 출력
+- 4.5 ~ 18V 입력 전압
+- 0.9 ~ 5.5V 출력 전압 (조정 가능)
+- 93% 효율
+
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/pth08080.png">
+
+<p class="caption">PTH08080의 표준 사용 방법</p>
+
+#### 회로
+
+위에서 설명한 모든 센서와 처리 칩셋, 마이컴을 통합하여 한 회로로 표현하면 아래 사진과 같습니다.
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/circuit.png">
+
+<p class="caption">회로도</p>
+
+#### PCB
+
+위의 회로도를 드론에 탑재하기 적합한 소형 PCB에 올리면 아래 사진들과 같습니다.
+<img width="550px" src="/assets/img/post/2021-11-27-endurance_drone/gerber.png">
+
+<p class="caption">PCB 패턴도</p>
+
+<img width="550px" src="/assets/img/post/2021-11-27-endurance_drone/pcb.png">
+
+<p class="caption">실제로 제작된 견본 PCB</p>
+
+현재 제작한 견본 PCB는 여러가지 회로 실수와 풋프린트 오류가 발견되어 지속적으로 수정, 제작중입니다.
+
+### 하드웨어 제작 **(남종현, 김재민)**
+
+테스트에 사용된 견본 드론 하드웨어는 아래 사진과 같습니다. PCB에 오류로 회로가 동작하지 않아 임시로 브레드보드에 조립한 모습니다.
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/drone_top.jpg">
+
+<p class="caption">상단에서 바라본 견본 드론 하드웨어</p>
+
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/drone_front.jpgs">
+
+<p class="caption">정면에서 바라본 견본 드론 하드웨어</p>
