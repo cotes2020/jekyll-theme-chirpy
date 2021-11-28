@@ -1,6 +1,6 @@
 ---
 title: 파이썬 할리갈리
-author: parknayoung
+author: Park Nayoung
 date: 2021-11-27 10:16:00 +0900
 categories: [Exhibition,2021년]
 tags: [post,parknayoung]     # TAG names should always be lowercase, 띄어쓰기도 금지 
