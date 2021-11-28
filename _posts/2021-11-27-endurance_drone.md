@@ -522,6 +522,10 @@ void updatePID(double AngX, double AngY, double *result)
 
 <p class="caption">상단에서 바라본 견본 드론 하드웨어</p>
 
-<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/drone_front.jpgs">
+<img width="100%" src="/assets/img/post/2021-11-27-endurance_drone/drone_front.jpg">
 
 <p class="caption">정면에서 바라본 견본 드론 하드웨어</p>
+
+### 임베디드 프로그래밍 (RTOS) **(김정현)**
+
+### 강화학습 **(김정현)**
