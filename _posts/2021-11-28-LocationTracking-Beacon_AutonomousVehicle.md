@@ -60,7 +60,7 @@ https://github.com/choi92/LocationTracking-Beacon_AutonomousVehicle/blob/main/ba
 
 ### Beacon 제작
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/beacons.jpg" width="90%"> <br>
-** CLE-310 3개로 beacon을 구현 **
+**CLE-310 3개로 beacon을 구현**
 - CLE-310 작동 전압에 맞게 1.5 V 전지 2개를 직렬연결하여 3 V의 전원을 공급해준다.
 - HOST CLE-310이 SCAN할 수 있게 BOT으로 모드를 변경하고 GPI를 ground로 한다.
 - beacon들이 헷갈리지 않도록 pink, orange, yellow로 구분
@@ -98,10 +98,6 @@ https://youtu.be/NmiGZ6Cq1X4
 ### Beacon을 이용한 위치 추적
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/location22.png" width="90%"> <br>
 넓은 공터에서 beacon들을 배치하고 자동차를 이동시켜 위치추적을 해보았다. <br>
+
 <img src="/assets/img/post/2021-11-28-LocationTracking-Beacon_AutonomousVehicle/location.jpg" width="90%"> <br>
 자동차의 위치추적을 성공하였다.
-
-
-
-
-
