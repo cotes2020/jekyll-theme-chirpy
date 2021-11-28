@@ -3,15 +3,7 @@ title: 휴대용 점자 음성 번역기
 author: JeongEun Kim, JeongHyun Kim, HanGyeol Yoon, SeongJin Lee, JeongEun Lee, InSeong Heo
 date: 2021-11-27 00:35:00 +0900
 categories: [Exhibition,2021년]
-tags: [
-    post,
-    jeongeunkim,
-    jeonghyunkim,
-    hangyeolyoon,
-    seongjinlee,
-    jeongeunlee,
-    inseongheo,
-  ] # TAG names should always be lowercase, 띄어쓰기도 금지
+tags: [post,jeongeunkim,jeonghyunkim,hangyeolyoon,seongjinlee,jeongeunlee,inseongheo] # TAG names should always be lowercase, 띄어쓰기도 금지
 ---
 
 # 휴대용 점자 음성번역기
