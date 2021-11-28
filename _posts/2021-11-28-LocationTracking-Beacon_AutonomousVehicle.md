@@ -23,6 +23,8 @@ tags: [post,choihyunseo,beacon]     # TAG names should always be lowercase, 띄�
   - [4-1. 조이스틱 컨트롤러](#조이스틱-컨트롤러) <br>
   - [4-2. 자율주행 자동차](#자율주행-자동차) <br>
   - [4-3. Beacon을 이용한 위치 추적](#beacon을-이용한-위치-추적) <br>
+
+[4. 개선할 사항](#개선할-) <br>
   
 
 ## 개요 
