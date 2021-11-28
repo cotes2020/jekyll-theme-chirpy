@@ -30,8 +30,6 @@ tags: [post, drone, ai, rtos, embedded, arm, tensorflow, kalman, pid, rl] # TAG 
   }
 </style>
 
-## 작성중인 초안입니다!!
-
 ## 연구 동기
 
 4차 산업혁명 시대에 드론은 기존 산업과 유기적으로 접목되어 사람을 대신하는 경우가 많아지고 있습니다.
