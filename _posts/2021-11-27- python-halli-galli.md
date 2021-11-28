@@ -50,6 +50,7 @@ tags: [post,parknayoung]     # TAG names should always be lowercase, 띄어쓰�
    <img src="/assets/img/post/2021-11-27- python-halli-galli/gameover.png" width="90%">
    
   
+
    위의 사진들처럼 목표로 한 기능들이 기본적으로 실행되는 것을 확인하였습니다. 
     
 
