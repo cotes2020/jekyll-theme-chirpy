@@ -245,7 +245,7 @@ ret->accX = ((float)value[0] / MPU9250_ACCEL_COEFFICIENT);
 
 ##### 구현
 
-이 부분의 구현 전체 소스는 <a href="https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c" target="_blank">여기</a> 
+이 부분의 구현 전체 소스는 <a href="https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c" target="_blank">여기</a>
 
 ```c
 for (int c = chanStart; c <= chanEnd; c++)
@@ -283,7 +283,7 @@ result[c] = (valueh << 8) | valuel;
 
 ##### 구현
 
-이 부분의 구현 전체 소스는  <a href="https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c" target="_blank">여기</a> 를 참고하세요.
+이 부분의 구현 전체 소스는 <a href="https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c" target="_blank">여기</a> 를 참고하세요.
 
 ```c
 uint8_t data[7];
@@ -340,7 +340,7 @@ GY-GPS6MV2 센서는 `$GPGGA`, `$GPGSV`, `$GPRMC` 등의 데이터 포맷을 전
 
 ##### 구현
 
-이 부분의 구현 전체 소스는  <a href="https://github.com/Dictor/hamstrone-drone/blob/master/gps.c" target="_blank">여기</a> 를 참고하세요.
+이 부분의 구현 전체 소스는 <a href="https://github.com/Dictor/hamstrone-drone/blob/master/gps.c" target="_blank">여기</a> 를 참고하세요.
 
 ```c
 if (dataReceive[2] == 'R' && dataReceive[3] == 'M' && dataReceive[4] == 'C' && commaCnt == 12) {
@@ -744,6 +744,18 @@ FFT는 현재 단계에선 아직 구현되있지 않습니다.
 - 결과 정리 및 발표 : ~ 22년 2월
 
 ## 부록
+
+### 참고할만한 자료
+
+- [바라미 중간 발표회 자료](https://docs.google.com/presentation/d/1sRmPEogIi8D0rBXMNzF-R-VLIYe8P_0OPOBmY_npZU4/edit?usp=sharing)
+
+- 중간 발표 영상 :
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PDn3Tb3OE4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- 드론 펌웨어 저장소 구조 설명 :
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CNvvyLJaI1U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- [Nuttx Getting Start](https://kimdictor.kr/tags/nuttx/)
 
 ### 코드
 
