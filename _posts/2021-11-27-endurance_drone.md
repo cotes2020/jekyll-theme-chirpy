@@ -175,7 +175,7 @@ IMU 센서로는 InvenSense 社의 MPU9250을 사용했습니다. 본 연구에�
 - 지자계 비활성화 : AK8963 통신 구현 실패 (통신 프로토콜 이해 부족 및 시간 부족에서 기인)로 인해 절대 yaw각 보정을 포기하고 지자계 센서를 비활성화 한 상태입니다. 대신 진동으로 생기는 yaw각 적분 오차를 완화시키기 위해 일정 각도 이하의 각도 변화(현재 0.3도)는 각도 산정에 반영하지 않고 드랍합니다. 정숙한 상황을 가정한 극단적인 대책 중 하나입니다.
 
 이렇게 얻어온 값을 위에서 설명한 상보 필터를 통해 조합하여 각도를 산출한 후 칼만 필터를 통해 현재 자세를 추정합니다.
-<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/imu_diagram.jpg">
+<img width="650px" src="/assets/img/post/2021-11-27-endurance_drone/imu_diagram.jpg">
 
 <p class="caption">자세 추정 방식 요약 다이어그램</p>
 
@@ -183,51 +183,50 @@ IMU 센서로는 InvenSense 社의 MPU9250을 사용했습니다. 본 연구에�
 
 이 부분의 구현 전체 소스는 [여기](https://github.com/Dictor/hamstrone-drone/blob/master/mpu9250.c)를 참고하세요.
 
-```
+```c
 uint8_t initRegister[INIT_REGISTER_COUNT][2] = {
-    {MPUREG_PWR_MGMT_1, BIT_H_RESET},
-    {MPUREG_PWR_MGMT_1, 0x01},
-    {MPUREG_PWR_MGMT_2, 0x00},
-    {MPUREG_ACCEL_CONFIG, BITS_FS_2G},
-    {MPUREG_ACCEL_CONFIG_2, BITS_DLPF_CFG_10HZ},
-    {MPUREG_GYRO_CONFIG, BITS_FS_250DPS},
-    {MPUREG_CONFIG, BITS_DLPF_CFG_10HZ},
-    {MPUREG_INT_PIN_CFG, 0x12},
-    {MPUREG_USER_CTRL, 0x30},
-    {MPUREG_I2C_MST_CTRL, 0x0D},
-    {MPUREG_I2C_SLV0_ADDR, AK8963_I2C_ADDR},
-    {MPUREG_I2C_SLV0_REG, AK8963_CNTL2}, // ak reset
-    {MPUREG_I2C_SLV0_DO, 0x01},
-    {MPUREG_I2C_SLV0_CTRL, 0x81},
-    {MPUREG_I2C_SLV0_REG, AK8963_CNTL1},
-    {MPUREG_I2C_SLV0_DO, 0x12},
-    {MPUREG_I2C_SLV0_CTRL, 0x81}};
+  {MPUREG_PWR_MGMT_1, BIT_H_RESET},
+  {MPUREG_PWR_MGMT_1, 0x01},
+  {MPUREG_PWR_MGMT_2, 0x00},
+  {MPUREG_ACCEL_CONFIG, BITS_FS_2G},
+  {MPUREG_ACCEL_CONFIG_2, BITS_DLPF_CFG_10HZ},
+  {MPUREG_GYRO_CONFIG, BITS_FS_250DPS},
+  {MPUREG_CONFIG, BITS_DLPF_CFG_10HZ},
+  {MPUREG_INT_PIN_CFG, 0x12},
+  {MPUREG_USER_CTRL, 0x30},
+  {MPUREG_I2C_MST_CTRL, 0x0D},
+  {MPUREG_I2C_SLV0_ADDR, AK8963_I2C_ADDR},
+  {MPUREG_I2C_SLV0_REG, AK8963_CNTL2}, // ak reset
+  {MPUREG_I2C_SLV0_DO, 0x01},
+  {MPUREG_I2C_SLV0_CTRL, 0x81},
+  {MPUREG_I2C_SLV0_REG, AK8963_CNTL1},
+  {MPUREG_I2C_SLV0_DO, 0x12},
+  {MPUREG_I2C_SLV0_CTRL, 0x81}
+};
 ```
 
-```
-for (int i = 0; i < INIT_REGISTER_COUNT; i++)
-    {
-        SPIWriteSingle(HAMSTRONE_GLOBAL_SPI_PORT, MPU9250_SPI_MODE, initRegister[i][0], initRegister[i][1]);
-        mpudebug("initMPU9250: init reg %d = %d", initRegister[i][0], initRegister[i][1]);
-        usleep(1000);
-    }
+```c
+for (int i = 0; i < INIT_REGISTER_COUNT; i++) {
+  SPIWriteSingle(HAMSTRONE_GLOBAL_SPI_PORT, MPU9250_SPI_MODE, initRegister[i][0], initRegister[i][1]);
+  mpudebug("initMPU9250: init reg %d = %d", initRegister[i][0], initRegister[i][1]);
+  usleep(1000);
+}
 ```
 
 초기화를 위한 레지스터 설정값. 위의 배열을 순회하며 전원 인가후 배열의 값대로 레지스터를 설정합니다.
 
-```
+```c
 uint8_t data[21];
-if (SPIRead(HAMSTRONE_GLOBAL_SPI_PORT, MPU9250_SPI_MODE, MPUREG_ACCEL_XOUT_H | READ_FLAG, 21, data) < 0)
-{
-    mpudebug("readMPU9250: read error");
-    return ERROR_READ_FAIL;
+if (SPIRead(HAMSTRONE_GLOBAL_SPI_PORT, MPU9250_SPI_MODE, MPUREG_ACCEL_XOUT_H | READ_FLAG, 21, data) < 0) {
+  mpudebug("readMPU9250: read error");
+  return ERROR_READ_FAIL;
 }
 mpudebug("readMPU9250: read ok");
 ```
 
 MPU9250의 레지스터 값을 읽어와서
 
-```
+```c
 value[10] = ((int16_t)data[6] << 8) | data[7];
 ret->accX = ((float)value[0] / MPU9250_ACCEL_COEFFICIENT);
 ```
@@ -242,29 +241,29 @@ ret->accX = ((float)value[0] / MPU9250_ACCEL_COEFFICIENT);
 - I2C 방식으로 통신
 - 16비트 ADC 내장
 
-본 연구에서는 백색광의 세기를 사용합니다. 별도의 필터링은 없으며 양자화만 진행합니다.
+본 연구에서는 백색광의 세기를 사용합니다. 별도의 필터링은 없으며 신경망에 입력하기 위한 양자화만 진행합니다.
 
 ##### 구현
 
 이 부분의 구현 전체 소스는 [여기](https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c)를 참고하세요.
 
-```
+```c
 for (int c = chanStart; c <= chanEnd; c++)
 {
-    if (TCA9548SetChannel(HAMSTRONE_GLOBAL_I2C_PORT, c) < 0)
-        errcnt++;
-    if (I2CWriteRegisterSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_SO6203, HAMSTRONE_CONFIG_SO6203_EN, 0b00001011) < 0)
-        errcnt++;
-    }
+  if (TCA9548SetChannel(HAMSTRONE_GLOBAL_I2C_PORT, c) < 0)
+    errcnt++;
+  if (I2CWriteRegisterSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_SO6203, HAMSTRONE_CONFIG_SO6203_EN, 0b00001011) < 0)
+  errcnt++;
+}
 ```
 
 `EN` 레지스터를 설정해 센서를 활성화합니다.
 
-```
- if (I2CReadSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_SO6203, HAMSTRONE_CONFIG_SO6203_ADCW_H, &valueh) < 0)
-    errcnt++;
+```c
+if (I2CReadSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_SO6203, HAMSTRONE_CONFIG_SO6203_ADCW_H, &valueh) < 0)
+  errcnt++;
 if (I2CReadSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_SO6203, HAMSTRONE_CONFIG_SO6203_ADCW_H + 1, &valuel) < 0)
-    errcnt++;
+  errcnt++;
 result[c] = (valueh << 8) | valuel;
 ```
 
@@ -272,9 +271,141 @@ result[c] = (valueh << 8) | valuel;
 
 #### 거리 센서
 
-거리 센서로는 Benewake 社의 TFmini-S를 사용했습니다. 레이저를 사용한 LIDAR 방식입니다.
+거리 센서로는 Benewake 社의 TFmini-S를 사용했습니다. 레이저를 사용한 LIDAR 방식으로, 드론이 비행 중 장애물을 감지하고 회피하기 위해서 사용합니다. 상세 스펙은 아래와 같습니다.
+
+- 측정 거리 범위 0.1m ~ 12m (90% 반사율의 대상에 대해서)
+- 정확도 6cm (0.1 ~ 6m) 또는 ±1% (6m ~ 12m)
+- 해상도 1cm
+- 프레임률 100Hz
+- 통신 방식 UART 또는 I2C
+
+본 연구에서는 좀 더 정확한 거리 계산을 위한 변수까지는 사용하지 않고 단순 거리 값만 사용합니다. 별도의 필터링은 없으며 신경망에 입력하기 위한 양자화만 진행합니다.
+
+##### 구현
+
+이 부분의 구현 전체 소스는 [여기](https://github.com/Dictor/hamstrone-drone/blob/master/bright_distance_sensor.c)를 참고하세요.
+
+```c
+uint8_t data[7];
+for (int c = chanStart; c <= chanEnd; c++) {
+  if (TCA9548SetChannel(HAMSTRONE_GLOBAL_I2C_PORT, c) < 0)
+    errcnt++;
+  I2CWriteSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_TFmini, 0x01);
+  I2CWriteSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_TFmini, 0x02);
+  I2CWriteSingle(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_TFmini, 0x07);
+  usleep(1000);
+  if (I2CRead(HAMSTRONE_GLOBAL_I2C_PORT, HAMSTRONE_CONFIG_I2C_ADDRESS_TFmini, 7, data) < 0)
+    errcnt++;
+    //  data[0]=isValid? [2]=distl [3]=disth [4]=strengthl [5]=strengthh [7]=rangetype
+  result[c] = (data[3] << 8) | data[2];
+}
+```
+
+값 레지스터를 읽어 거리를 계산합니다.
+
+#### I2C 통신 (TCA9548) 멀티플렉서
+
+위에 설명된 I2C 통신을 사용하는 센서(밝기, 거리)들은 프로세서의 하나의 I2C 버스에 연결되어 통신을 진행하게 됩니다.
+다만, 밝기 센서와 거리 센서들이 각각 동일한 I2C 주소를 가지고 있어 별다른 조치 없이는 하나의 버스에서 통신할 수 없습니다.
+프로세서의 I2C 버스 숫자도 제한되어 하나의 버스에서 중복된 주소의 장치들을 사용하기 위해 I2C 주소 멀티플렉서인 TCA9548을 사용 했습니다.
+
+<img width="450px" src="/assets/img/post/2021-11-27-endurance_drone/tca9548.jpg">
+<p class="caption">TCA9548의 연결 예시도</p>
+
+TCA9548은 프로세서의 I2C 버스를 주(main) 버스로 삼고, 최대 8개의 장치가 I2C 버스를 부(slave) 버스로 삼아 종 9개의 I2C 버스를 제공합니다. I2C 통신은 간단하게 요약해서 특정 주소의 레지스터를 쓰거나, 읽는 2가지 행위로 요약할 수 있는데, 이때 TCA9548은 장치 주소 + 레지스터 주소 + 레지스터 값의 조합의 메세지를 쓰기 전에 현재 통신이 진행될 부 버스를 선택할 수 있게 TCA9548의 레지스터에 버스 번호를 쓴 뒤, 메세지를 쓰는 방식으로 멀티플렉싱을 구현합니다.
+
+<img width="650px" src="/assets/img/post/2021-11-27-endurance_drone/tca9548_msg.jpg">
+<p class="caption">TCA9548을 이용할 때 메세지 예시</p>
+
+##### 구현
+
+앞선 구현 예시에서 `TCA9548SetChannel` 함수를 확인하실 수 있었습니다. 이 함수의 내부 구현은 아래와 같이 간단한, 위에서 설명한 추가적인 정보를 작성하는 내용입니다.
+
+```c
+int TCA9548SetChannel(int fd, uint8_t chan) {
+  return I2CWriteRegisterSingle(fd, HAMSTRONE_CONFIG_I2C_ADDRESS_TCA9548, HAMSTRONE_CONFIG_TCA9548_CHAN, 1 << chan);
+}
+```
+
+##### SPI, I2C 통신 개요도
+
+<img width="650px" src="/assets/img/post/2021-11-27-endurance_drone/sensor_conn.jpg">
+<p class="caption">SPI, I2C를 이용하는 센서의 연결 개요도</p>
 
 #### GPS
+
+범용적인 용도를 위해 GPS의 출력인 NMEA 프로토콜을 현재 위치의 위도 및 경도를 파싱하는 루틴을 작성해두었습니다만, 현재 사용되고 있진 않습니다. 테스트는 GY-GPS6MV2 센서로 진행되었으며 올해 초에 실외용 드론에 탑재될 용도로 개발하게 되었습니다.
+
+GY-GPS6MV2 센서는 `$GPGGA`, `$GPGSV`, `$GPRMC` 등의 데이터 포맷을 전송하는데 `$`기호를 기준으로 새로운 데이터가 시작되기 때문에 `$`문자를 받아들이면 기존의 데이터를 초기화하고 `GPGGA`, `GPGSV`, `GPRMC`등의 5자리 문자열을 인식합니다.각각의 문자열에 따라 가지고 있는 데이터가 다르기 때문에 경우에 따라 알맞은 데이터를 추출할 수 있도록 코드를 작성하였습니다. 센서로부터의 데이터는 큐에 누적되며 파싱을 진행합니다. 메세지가 완성되지 않은 경우 대기하며 큐에 데이터가 쌓일 때 까지 대기합니다.
+
+##### 구현
+
+이 부분의 구현 전체 소스는 [여기](https://github.com/Dictor/hamstrone-drone/blob/master/gps.c)를 참고하세요.
+
+```c
+if (dataReceive[2] == 'R' && dataReceive[3] == 'M' && dataReceive[4] == 'C' && commaCnt == 12) {
+    assembleCnt++;
+    for (i = 0; i < gpsType.num - 1; i++)
+    {
+        int k = 0;
+        char assembleData[15] = {
+            0,
+        };
+        if (i == 1 || i == 3 || i == 5)
+        {
+            for (j = gpsType.Element[i]; j < gpsType.Element[i + 1] - 1; j++)
+            {
+                assembleData[k] = dataReceive[j];
+                k++;
+            }
+            convert = atof(assembleData);
+            if (i == 1)
+            { // UTC
+                convert *= (int)100;
+                HAMSTRONE_WriteValueStore(11, (uint32_t)convert);
+            }
+            else if (i == 3)
+            { // Latitude
+                convert *= (int)100000;
+                HAMSTRONE_WriteValueStore(12, (uint32_t)convert);
+            }
+            else if (i == 5)
+            { // Longitude
+                convert *= (int)100000;
+                HAMSTRONE_WriteValueStore(13, (uint32_t)convert);
+            }
+        }
+    }
+} else if (dataReceive[2] == 'G' && dataReceive[3] == 'G' && dataReceive[4] == 'A' && commaCnt == 14) {
+    assembleCnt++;
+    for (i = 0; i < gpsType.num - 1; i++)
+    {
+        int k = 0;
+        char assembleData[15] = {
+            0,
+        };
+        if (i == 7 || i == 8)
+        {
+            for (j = gpsType.Element[i]; j < gpsType.Element[i + 1] - 1; j++)
+            {
+                assembleData[k] = dataReceive[j];
+                k++;
+            }
+            convert = atof(assembleData);
+            if (i == 7)
+            { // Number of Satellites used for Calculation
+                convert = (int)convert;
+                HAMSTRONE_WriteValueStore(14, (uint32_t)convert);
+            }
+            else if (i == 8)
+            { // HDOP
+                convert *= (int)100;
+                HAMSTRONE_WriteValueStore(15, (uint32_t)convert);
+            }
+        }
+    }
+}
+```
 
 ### PID 제어 **(남종현)**
 
