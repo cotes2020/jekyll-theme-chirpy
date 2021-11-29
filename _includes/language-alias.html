@@ -41,8 +41,6 @@
     {{ 'Perl' }}
   {% when 'php','php3','php4','php5' %}
     {{ 'PHP' }}
-  {% when 'plaintext', 'text' %}
-    {{ 'Text' }}
   {% when 'py' %}
     {{ 'Python' }}
   {% when 'rb' %}
@@ -65,7 +63,7 @@
     {{ 'Vue.js' }}
   {% when 'yml' %}
     {{ 'YAML' }}
-  {% when 'css', 'html', 'scss', 'ssh', 'toml', 'xml', 'yaml' %}
+  {% when 'css', 'html', 'scss', 'ssh', 'toml', 'xml', 'yaml', 'json' %}
     {{ _lang | upcase }}
   {% else %}
     {{ _lang | capitalize }}

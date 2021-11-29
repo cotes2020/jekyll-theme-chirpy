@@ -159,7 +159,7 @@ exclude:
   - LICENSE
   - gulpfile.js
   - node_modules
-  - package.json
+  - package*.json
 
 jekyll-archives:
   enabled: [categories, tags]

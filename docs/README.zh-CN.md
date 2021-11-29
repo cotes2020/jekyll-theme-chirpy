@@ -1,7 +1,6 @@
 <div align="right">
 
-  中文(简体) /
-  [EN](https://github.com/cotes2020/jekyll-theme-chirpy#readme)
+  [EN](https://github.com/cotes2020/jekyll-theme-chirpy#readme) / 中文
 
 </div>
 
@@ -9,13 +8,13 @@
 
   # Chirpy Jekyll Theme
 
+  一款简约而强大、采用响应式设计的 Jekyll 主题，适合展示专业写作内容。
+
   [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)](https://rubygems.org/gems/jekyll-theme-chirpy)
   [![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush)
   [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4e556876a3c54d5e8f2d2857c4f43894)](https://www.codacy.com/gh/cotes2020/jekyll-theme-chirpy/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cotes2020/jekyll-theme-chirpy&amp;utm_campaign=Badge_Grade)
   [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
   [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
-
-  一款简约而强大、采用响应式设计的 Jekyll 主题，适合展示专业写作内容。
 
   [**线上体验 →**](https://chirpy.cotes.info)
 
@@ -158,7 +157,7 @@ $ docker run -it --rm \
 
 2. 回到 GitHub 上的仓库，选择标签 _Settings_ → 点击左侧导航栏的 _Pages_ → _GitHub Pages_ 选择分支 `gh-pages` 的 `/(root)` 作为「[发布源][pages-src]」:
 
-  ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/posts/20190809/gh-pages-sources.png)
+    ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/posts/20190809/gh-pages-sources.png)
 
 3. 按照 GitHub 指示的地址去访问您的网站。
 
