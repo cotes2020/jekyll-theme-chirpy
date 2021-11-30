@@ -52,7 +52,7 @@
   </ul> <!-- ul.nav.flex-column -->
 
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
-
+    
     {% for entry in site.data.contact %}
       {% capture url %}
         {%- if entry.type == 'github' -%}
@@ -84,7 +84,7 @@
         <span class="icon-border order-2"></span>
       {% endif %}
 
-      <span id="mode-toggle-wrapper" class="order-1">
+      <span id="mode-toggle-wrapper" class="order-1" tabindex="0">
         {% include mode-toggle.html %}
       </span>
     {% endunless %}
