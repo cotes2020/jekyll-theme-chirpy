@@ -52,16 +52,6 @@
   </ul> <!-- ul.nav.flex-column -->
 
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
-    {% unless site.theme_mode %}
-      {% if site.data.contact.size > 0 %}
-        <span class="icon-border order-2"></span>
-      {% endif %}
-
-      <span id="mode-toggle-wrapper" class="order-1" tabindex="0">
-        {% include mode-toggle.html %}
-      </span>
-    {% endunless %}
-
     {% for entry in site.data.contact %}
       {% capture url %}
         {%- if entry.type == 'github' -%}
@@ -87,6 +77,17 @@
       {% endif %}
 
     {% endfor %}
+
+    {% unless site.theme_mode %}
+      {% if site.data.contact.size > 0 %}
+        <span class="icon-border order-2"></span>
+      {% endif %}
+
+      <span id="mode-toggle-wrapper" class="order-1" tabindex="0">
+        {% include mode-toggle.html %}
+      </span>
+    {% endunless %}
+    
   </div> <!-- .sidebar-bottom -->
 
 </div><!-- #sidebar -->
