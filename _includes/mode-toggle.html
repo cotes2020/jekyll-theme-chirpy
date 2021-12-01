@@ -2,10 +2,7 @@
   Switch the mode between dark and light.
 -->
 
-<i class="mode-toggle fas fa-adjust"></i>
-
 <script type="text/javascript">
-
   class ModeToggle {
     static get MODE_KEY() { return "mode"; }
     static get DARK_MODE() { return "dark"; }
@@ -24,10 +21,10 @@
         }
       }
 
-      var self = this;
+      let self = this;
 
       /* always follow the system prefers */
-      this.sysDarkPrefers.addListener(function() {
+      this.sysDarkPrefers.addEventListener("change", () => {
         if (self.hasMode) {
           if (self.isDarkMode) {
             if (!self.isSysDarkPrefer) {
@@ -48,6 +45,27 @@
 
     } /* constructor() */
 
+    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
+
+    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
+
+    get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; }
+
+    get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; }
+
+    get hasMode() { return this.mode != null; }
+
+    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
+
+    /* get the current mode on screen */
+    get modeStatus() {
+      if (this.isDarkMode
+        || (!this.hasMode && this.isSysDarkPrefer)) {
+        return ModeToggle.DARK_MODE;
+      } else {
+        return ModeToggle.LIGHT_MODE;
+      }
+    }
 
     setDark() {
       $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
@@ -62,28 +80,6 @@
     clearMode() {
       $('html').removeAttr(ModeToggle.MODE_KEY);
       sessionStorage.removeItem(ModeToggle.MODE_KEY);
-    }
-
-    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
-
-    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
-
-    get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; }
-
-    get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; }
-
-    get hasMode() { return this.mode != null; }
-
-    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
-
-    /* get the current mode on screen */
-    get modeStatus() {
-      if (this.isDarkMode
-        || (!this.hasMode && this.isSysDarkPrefer) ) {
-        return ModeToggle.DARK_MODE;
-      } else {
-        return ModeToggle.LIGHT_MODE;
-      }
     }
 
     updateMermaid() {
@@ -103,49 +99,37 @@
       }
     }
 
-    flipMode() {
-      if (this.hasMode) {
-        if (this.isSysDarkPrefer) {
-          if (this.isLightMode) {
-            this.clearMode();
-          } else {
-            this.setLight();
-          }
+  } /* ModeToggle */
 
+  const toggle = new ModeToggle();
+
+  function flipMode() {
+    if (toggle.hasMode) {
+      if (toggle.isSysDarkPrefer) {
+        if (toggle.isLightMode) {
+          toggle.clearMode();
         } else {
-          if (this.isDarkMode) {
-            this.clearMode();
-          } else {
-            this.setDark();
-          }
+          toggle.setLight();
         }
 
       } else {
-        if (this.isSysDarkPrefer) {
-          this.setLight();
+        if (toggle.isDarkMode) {
+          toggle.clearMode();
         } else {
-          this.setDark();
+          toggle.setDark();
         }
       }
 
-      this.updateMermaid();
-
-    } /* flipMode() */
-
-  } /* ModeToggle */
-
-  let toggle = new ModeToggle();
-
-  $(".mode-toggle").click(function() {
-
-    toggle.flipMode();
-
-  });
-
-  $("#mode-toggle-wrapper").keyup(function(e){
-    if(e.keyCode == 13) {
-      toggle.flipMode();
+    } else {
+      if (toggle.isSysDarkPrefer) {
+        toggle.setLight();
+      } else {
+        toggle.setDark();
+      }
     }
-  });
+
+    toggle.updateMermaid();
+
+  } /* flipMode() */
 
 </script>
