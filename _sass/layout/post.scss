@@ -23,7 +23,7 @@
   padding-right: $pr;
 }
 
-#post-wrapper .post-meta {
+h1 + .post-meta {
   > div:nth-child(2) {
     > span:not(:first-child)::before {
       @include dot;
@@ -220,7 +220,7 @@ nav[data-toggle=toc] {
   }
 }
 
-#post-extend-wrapper {
+#tail-wrapper {
   min-height: 2rem;
 
   #disqus_thread {
@@ -339,8 +339,8 @@ nav[data-toggle=toc] {
 }
 
 @media all and (min-width: 768px) {
-  #post-wrapper {
-    .post-meta {
+  #core-wrapper {
+    h1 + .post-meta {
       > div:not(:first-child)::before {
         @include dot(0.5rem, 0.2rem);
       }

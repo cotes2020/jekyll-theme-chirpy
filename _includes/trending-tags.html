@@ -34,3 +34,17 @@
     {% endif %}
   {% endfor %}
 {% endfor %}
+
+{% if trending_tags.size > 0 %}
+  <div id="access-tags">
+    <h4 class="text-muted">{{- site.data.locales[lang].panel.trending_tags -}}</h4>
+    <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
+
+    {% for tag_name in trending_tags %}
+      {% assign url = tag_name | slugify | url_encode | prepend: "/tags/" | append: "/" %}
+      <a class="post-tag" href="{{ url | relative_url }}">{{ tag_name }}</a>
+    {% endfor %}
+
+    </div>
+  </div>
+{% endif %}

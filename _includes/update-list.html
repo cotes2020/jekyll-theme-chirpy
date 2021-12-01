@@ -22,3 +22,19 @@
 {% for entry in all_list limit:MAX_SIZE %}
   {% assign update_list = update_list | push: entry %}
 {% endfor %}
+
+{% if update_list.size > 0 %}
+
+  <div id="access-lastmod" class="post">
+    <h4>{{- site.data.locales[lang].panel.lastmod -}}</h4>
+    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
+      {% for item in update_list %}
+        {% assign index = item | split: "::" | last | plus: 0 %}
+        {% assign post = site.posts[index] %}
+        {% assign url = post.url | relative_url %}
+      <li><a href="{{ url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div> <!-- #access-lastmod -->
+
+{% endif %}
