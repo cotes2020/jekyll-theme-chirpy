@@ -39,6 +39,10 @@
   transition: color 0.35s ease-in-out;
 }
 
+%no-cursor {
+  user-select: none;
+}
+
 %no-bottom-border {
   border-bottom: none;
 }

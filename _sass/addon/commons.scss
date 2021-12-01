@@ -189,6 +189,13 @@ footer {
   }
 }
 
+i { // fontawesome icons
+  &.far,
+  &.fas {
+    @extend %no-cursor;
+  }
+}
+
 /* --- Panels --- */
 
 .access {
@@ -394,7 +401,6 @@ footer {
   word-spacing: 1px;
 
   a {
-    @extend %link-color;
     @extend %link-underline;
 
     &:not(:last-child) {
@@ -456,12 +462,7 @@ footer {
   }
 
   a {
-    blockquote & {
-      color: var(--link-color);
-    }
-
     &:not(.img-link) {
-      @extend %link-color;
       @extend %link-underline;
 
       &:hover {
@@ -479,6 +480,8 @@ footer {
 
     &.img-link {
       @include caption;
+
+      @extend %no-cursor;
     }
 
   } // a
@@ -858,6 +861,8 @@ $sidebar-display: "sidebar-display";
     }
 
     .icon-border {
+      @extend %no-cursor;
+
       background-color: var(--sidebar-muted-color);
       content: "";
       width: 3px;
