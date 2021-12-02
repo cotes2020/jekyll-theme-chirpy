@@ -136,7 +136,6 @@ defaults:
     values:
       layout: page
       permalink: /:title/
-      dynamic_title: true    # Hide title in mobile screens.
 
 sass:
   style: compressed

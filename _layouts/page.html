@@ -9,14 +9,10 @@ layout: default
   <!-- core -->
   <div id="core-wrapper" class="col-12 col-lg-11 col-xl-8">
     <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
-    {% if page.dynamic_title %}
+    {% if page.dynamic_title or page.collection == 'tabs' %}
       <h1 class="dynamic-title">
-        {% if page.collection == 'tabs' %}
-          {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
-          {{- site.data.locales[lang].tabs[tab_key] | default: page.title -}}
-        {% else %}
-          {{- page.title -}}
-        {% endif %}
+        {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
+        {{- site.data.locales[lang].tabs[tab_key] | default: page.title -}}
       </h1>
       <div class="post-content">
         {% include refactor-content.html content=content %}
