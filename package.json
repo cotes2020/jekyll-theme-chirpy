@@ -25,6 +25,6 @@
     "gulp-insert": "^0.5.0",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
+    "uglify-js": "^3.14.3"
   }
 }
