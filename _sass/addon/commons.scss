@@ -232,6 +232,7 @@ i { // fontawesome icons
 #panel-wrapper {
   h4 {
     @include panel-label;
+
     font-family: inherit;
   }
 
@@ -1072,6 +1073,8 @@ $sidebar-display: "sidebar-display";
 }
 
 #core-wrapper {
+  min-height: calc(100vh - #{$topbar-height} - #{$footer-height} - #{$bottom-min-height}) !important;
+
   .categories,
   #tags,
   #archives {
@@ -1126,10 +1129,6 @@ $sidebar-display: "sidebar-display";
   .row.alone {
     margin-bottom: 4rem;
   }
-}
-
-#core-wrapper {
-  min-height: calc(100vh - #{$topbar-height} - #{$footer-height} - #{$bottom-min-height}) !important;
 }
 
 #topbar-wrapper.row,
