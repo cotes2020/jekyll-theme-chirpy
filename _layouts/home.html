@@ -57,9 +57,9 @@ layout: page
       </p>
     </div>
 
-    <div class="post-meta text-muted d-flex justify-content-between">
+    <div class="post-meta text-muted d-flex">
 
-      <div>
+      <div class="mr-auto">
         <!-- posted date -->
         <i class="far fa-calendar fa-fw"></i>
         {% include timeago.html date=post.date tooltip=true %}
@@ -78,7 +78,6 @@ layout: page
           {% endfor %}
           </span>
         {% endif %}
-
       </div>
 
       {% if post.pin %}

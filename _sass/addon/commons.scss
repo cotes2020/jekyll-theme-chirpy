@@ -332,23 +332,6 @@ i { // fontawesome icons
   }
 }
 
-.post {
-  h1 {
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  em { /* MarkDown italic */
-    padding-right: 0.2rem;
-  }
-
-  a:hover {
-    code {
-      @extend %link-hover;
-    }
-  }
-}
-
 /* --- Begin of Markdown table style --- */
 
 .table-wrapper { // it will be created by Liquid
@@ -390,6 +373,19 @@ i { // fontawesome icons
 
 /* --- post --- */
 
+.post {
+  h1 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  a:hover {
+    code {
+      @extend %link-hover;
+    }
+  }
+}
+
 .pageviews .fa-spinner {
   font-size: 80%;
 }
@@ -408,6 +404,10 @@ i { // fontawesome icons
     &:hover {
       @extend %link-hover;
     }
+  }
+
+  em {
+    @extend %normal-font-style;
   }
 }
 
@@ -574,10 +574,6 @@ i { // fontawesome icons
 }
 
 /* --- Effects classes --- */
-
-.semi-bold {
-  font-weight: 600 !important;
-}
 
 .loaded {
   display: block !important;

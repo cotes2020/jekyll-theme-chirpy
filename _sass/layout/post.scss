@@ -16,18 +16,19 @@
   border-color: var(--btn-border-color);
 }
 
-@mixin dot($pl: 0.2rem, $pr: 0.4rem) {
+@mixin dot($pl: 0.25rem, $pr: 0.25rem) {
   content: "\2022";
-  color: rgba(158, 158, 158, 0.8);
   padding-left: $pl;
   padding-right: $pr;
 }
 
 h1 + .post-meta {
-  > div:nth-child(2) {
-    > span:not(:first-child)::before {
-      @include dot;
-    }
+  span + span::before {
+    @include dot;
+  }
+
+  em {
+    color: var(--text-color);
   }
 }
 
@@ -163,6 +164,10 @@ nav[data-toggle=toc] {
 #related-posts {
   > h3 {
     @include label(1.1rem, 600);
+  }
+
+  em {
+    @extend %normal-font-style;
   }
 
   .card {
@@ -308,7 +313,7 @@ nav[data-toggle=toc] {
   line-height: 1.2rem;
 
   > a {
-    font-weight: 600;
+    color: var(--text-color);
 
     &:hover {
       @extend %link-hover;
@@ -336,23 +341,6 @@ nav[data-toggle=toc] {
   .post-content > p > img {
     max-width: calc(100% + 1rem);
   }
-}
-
-@media all and (min-width: 768px) {
-  #core-wrapper {
-    h1 + .post-meta {
-      > div:not(:first-child)::before {
-        @include dot(0.5rem, 0.2rem);
-      }
-
-      &.flex-column {
-        -webkit-box-orient: horizontal !important;
-        -webkit-box-direction: normal !important;
-        -ms-flex-direction: row !important;
-        flex-direction: row !important;
-      }
-    }
-  } // .post
 }
 
 /* Hide SideBar and TOC */
