@@ -806,17 +806,8 @@ $sidebar-display: "sidebar-display";
     i {
       line-height: 1.75rem; // default line-height in body
       vertical-align: middle;
-    }
 
-    #mode-toggle-wrapper {
-      @extend %icon;
-
-      i {
-        @extend %sidebar-links;
-        @extend %cursor-pointer;
-        @extend %clickable-transition;
-      }
-
+      @extend %cursor-pointer;
     }
 
     .icon-border {
@@ -827,10 +818,6 @@ $sidebar-display: "sidebar-display";
       width: 3px;
       height: 3px;
       border-radius: 50%;
-    }
-
-    #mode-toggle-wrapper:hover > i {
-      color: var(--sidebar-active-color);
     }
 
   } // .sidebar-bottom
