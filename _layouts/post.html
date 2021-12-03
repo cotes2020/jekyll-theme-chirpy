@@ -10,6 +10,16 @@ tail_includes:
 
 {% include lang.html %}
 
+{% if page.image.src %}
+  {% capture bg %}
+    {% unless page.image.no_bg %}{{ 'bg' }}{% endunless %}
+  {% endcapture %}
+  <img src="{{ page.image.src }}" class="preview-img {{ bg | strip }}"
+      alt="{{ page.image.alt | default: "Preview Image" }}"
+      {% if page.image.width %}width="{{ page.image.width }}"{% endif %}
+      {% if page.image.height %}height="{{ page.image.height }}"{% endif %}>
+{% endif %}
+
 <h1 data-toc-skip>{{ page.title }}</h1>
 
 <div class="post-meta text-muted d-flex flex-column">
@@ -47,17 +57,7 @@ tail_includes:
 </div> <!-- .post-meta -->
 
 <div class="post-content">
-
-  {% if page.image.src %}
-  <img src="{{ page.image.src }}"
-      class="preview-img"
-      alt="{{ page.image.alt | default: "Preview Image" }}"
-      {% if page.image.width %}width="{{ page.image.width }}"{% endif %}
-      {% if page.image.height %}height="{{ page.image.height }}"{% endif %}>
-  {% endif %}
-
   {{ content }}
-
 </div>
 
 <div class="post-tail-wrapper text-muted">
