@@ -155,8 +155,6 @@ footer {
   padding: 0 1rem;
   height: $footer-height;
   font-size: 0.8rem;
-  color: #7a7b7d;
-  background-color: var(--footer-bg-color);
 
   > div.d-flex {
     line-height: 1.2rem;
@@ -171,7 +169,7 @@ footer {
   }
 
   a {
-    color: var(--footer-link);
+    @extend %text-color;
 
     &:link {
       @include no-text-decoration;
