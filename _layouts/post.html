@@ -16,8 +16,23 @@ tail_includes:
 
   <!-- author -->
   <div>
+    {% capture author_name %}{{ page.author.name | default: site.social.name }}{% endcapture %}
+    {% assign author_link = nil %}
+
+    {% if page.author.link %}
+      {% assign author_link = page.author.link %}
+    {% elsif author_name == site.social.name %}
+      {% assign author_link = site.social.links[0] %}
+    {% endif %}
+
     {{ site.data.locales[lang].post.written_by }}
-    <em>{{ page.author | default: site.social.name }}</em>
+    <em>
+      {% if author_link %}
+        <a href="{{ author_link }}">{{ author_name }}</a>
+      {% else %}
+        {{ author_name }}
+      {% endif %}
+    </em>
   </div>
 
   <div class="d-flex">

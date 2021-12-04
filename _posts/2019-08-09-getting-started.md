@@ -1,6 +1,8 @@
 ---
 title: Getting Started
-author: Cotes Chung
+author:
+  name: Cotes Chung
+  link: https://github.com/cotes2020
 date: 2019-08-09 20:55:00 +0800
 categories: [Blogging, Tutorial]
 tags: [getting started]
