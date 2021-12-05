@@ -31,12 +31,13 @@ h1 + .post-meta {
   }
 }
 
-.post-content {
-  .preview-img {
-    @include align-center;
+img.preview-img {
+  margin-top: 3.75rem;
+  margin-bottom: 0;
+  border-radius: 6px;
 
-    margin-top: 0;
-    margin-bottom: 2.5rem !important;
+  &.bg[data-loaded=true] {
+    background: var(--preview-img-bg);
   }
 }
 
@@ -321,6 +322,10 @@ nav[data-toggle=toc] {
 } // .license-wrapper
 
 @media all and (max-width: 576px) {
+  .preview-img[data-src] {
+    margin-top: 2.2rem;
+  }
+
   .post-tail-bottom {
     -ms-flex-wrap: wrap-reverse !important;
     flex-wrap: wrap-reverse !important;

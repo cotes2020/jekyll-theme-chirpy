@@ -196,6 +196,33 @@ i { // fontawesome icons
   }
 }
 
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+img[data-src] {
+  margin: 0.5rem 0;
+
+  &[data-loaded=true] {
+    animation: fade-in linear 0.5s;
+  }
+
+  &.left {
+    float: left;
+    margin: 0.75rem 1rem 1rem 0;
+  }
+
+  &.right {
+    float: right;
+    margin: 0.75rem 0 1rem 1rem;
+  }
+
+  &.shadow {
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
+  }
+}
+
 /* --- Panels --- */
 
 .access {
@@ -332,23 +359,6 @@ i { // fontawesome icons
   }
 }
 
-.post {
-  h1 {
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  em { /* MarkDown italic */
-    padding-right: 0.2rem;
-  }
-
-  a:hover {
-    code {
-      @extend %link-hover;
-    }
-  }
-}
-
 /* --- Begin of Markdown table style --- */
 
 .table-wrapper { // it will be created by Liquid
@@ -390,6 +400,39 @@ i { // fontawesome icons
 
 /* --- post --- */
 
+.post {
+  h1 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  em { // MarkDown italic
+    padding-right: 0.2rem;
+  }
+
+  a {
+    &.img-link {
+      @extend %no-cursor;
+    }
+
+    &.popup { // created by `_includes/img-extra.html`
+      cursor: zoom-in;
+
+      > img[data-src]:not(.normal):not(.left):not(.right) {
+        @include align-center;
+      }
+    }
+
+    &:hover {
+      code {
+        @extend %link-hover;
+      }
+    }
+
+  } // a
+
+}
+
 .pageviews .fa-spinner {
   font-size: 80%;
 }
@@ -418,47 +461,6 @@ i { // fontawesome icons
   overflow-wrap: break-word;
   word-wrap: break-word;
 
-  @mixin caption {
-    + em {
-      display: block;
-      text-align: center;
-      font-style: normal;
-      font-size: 80%;
-      padding: 0;
-      color: #6d6c6c;
-    }
-  }
-
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  img[data-src] {
-    margin: 0.5rem 0;
-
-    &[data-loaded=true] {
-      animation: fade-in linear 0.5s;
-    }
-
-    &.left {
-      float: left;
-      margin: 0.75rem 1rem 1rem 0;
-    }
-
-    &.right {
-      float: right;
-      margin: 0.75rem 0 1rem 1rem;
-    }
-
-    &.shadow {
-      filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
-    }
-
-    @include caption;
-
-  }
-
   a {
     &:not(.img-link) {
       @extend %link-underline;
@@ -468,21 +470,16 @@ i { // fontawesome icons
       }
     }
 
-    &.popup { // created by `_includes/img-extra.html`
-      cursor: zoom-in;
-
-      > img[data-src]:not(.normal):not(.left):not(.right) {
-        @include align-center;
-      }
+    &.img-link + em {
+      display: block;
+      text-align: center;
+      font-style: normal;
+      font-size: 80%;
+      padding: 0;
+      color: #6d6c6c;
     }
 
-    &.img-link {
-      @include caption;
-
-      @extend %no-cursor;
-    }
-
-  } // a
+  }
 
   ul {
     // attribute 'hide-bullet' was added by liquid

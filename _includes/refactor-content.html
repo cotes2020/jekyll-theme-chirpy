@@ -118,16 +118,16 @@
       {% assign _left = _snippet | split: '><' | last%}
 
       {% if _left contains 'file="' %}
-        {% assign _text = _left | split: 'file="' | last | split: '"' | first %}
+        {% assign _label_text = _left | split: 'file="' | last | split: '"' | first %}
         {% assign _label_icon = 'far fa-file-code' %}
       {% else %}
         {% assign _lang = _left | split: 'language-' | last | split: ' ' | first %}
-        {% capture _text %}{% include language-alias.html language=_lang %}{% endcapture %}
+        {% capture _label_text %}{% include language-alias.html language=_lang %}{% endcapture %}
         {% assign _label_icon = 'fas fa-code small' %}
       {% endif %}
 
       {% capture _label %}
-        <span text-data="{{ _text }}"><i class="fa-fw {{ _label_icon }}"></i></span>
+        <span label-text="{{ _label_text | strip }}"><i class="{{ _label_icon }}"></i></span>
       {% endcapture %}
 
       {% assign _new_content = _new_content | append: _snippet
