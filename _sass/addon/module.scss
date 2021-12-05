@@ -10,6 +10,44 @@
   font-family: 'Lato', 'Microsoft Yahei', sans-serif;
 }
 
+%section {
+  padding-top: 3.5rem;
+  margin-top: -2.5rem;
+
+  #core-wrapper & {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+}
+
+%anchor {
+  > a {
+    font-size: 70%;
+    visibility: hidden;
+    margin-left: 0.25rem;
+    border-bottom: none !important;
+    opacity: 0;
+    transition: opacity 0.25s ease-in, visibility 0s ease-in 0.25s;
+  }
+
+  &:hover {
+    > a {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.25s ease-in, visibility 0s ease-in 0s;
+    }
+  }
+}
+
+%anchor-relative {
+  @extend %anchor;
+
+  > a {
+    position: relative;
+    bottom: 1px;
+  }
+}
+
 %tag-hover {
   background: var(--tag-hover);
   transition: background 0.35s ease-in-out;
@@ -45,18 +83,6 @@
 
 %no-bottom-border {
   border-bottom: none;
-}
-
-%section {
-  #core-wrapper & {
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-}
-
-%anchor {
-  padding-top: 3.5rem;
-  margin-top: -2.5rem;
 }
 
 %cursor-pointer {
