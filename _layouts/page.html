@@ -15,10 +15,18 @@ layout: default
         {{- site.data.locales[lang].tabs[tab_key] | default: page.title -}}
       </h1>
       <div class="post-content">
-        {% include refactor-content.html content=content %}
+        {% if page.layout == 'page' %}
+          {% include refactor-content.html content=content %}
+        {% else %}
+          {{ content }}
+        {% endif %}
       </div>
     {% else %}
-      {% include refactor-content.html content=content %}
+      {% if page.layout == 'post' %}
+        {% include refactor-content.html content=content %}
+      {% else %}
+        {{ content }}
+      {% endif %}
     {% endif %}
     </div>
   </div> <!-- #core-wrapper -->
