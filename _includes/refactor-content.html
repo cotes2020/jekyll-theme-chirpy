@@ -147,6 +147,43 @@
 
 {% endif %}
 
+<!-- Create heading anchors -->
+
+{% assign heading_levels = '2,3,4,5' | split: ',' %}
+{% assign _heading_content = _content %}
+
+{% for level in heading_levels %}
+  {% capture mark_start %}<h{{ level }} id="{% endcapture %}
+  {% capture mark_end %}</h{{ level }}>{% endcapture %}
+
+  {% if _heading_content contains mark_start %}
+    {% assign _new_content = nil %}
+    {% assign heading_snippets = _heading_content | split: mark_start %}
+
+    {% for snippet in heading_snippets %}
+      {% if forloop.first %}
+        {% assign _new_content = snippet %}
+        {% continue %}
+      {% endif %}
+
+      {% assign id = snippet | split: '"' | first %}
+      {% capture anchor %}<a href="#{{ id }}"><i class="fas fa-hashtag"></i></a>{% endcapture %}
+
+      {% assign left = snippet | split: mark_end | first %}
+      {% assign right = snippet | replace: left, '' %}
+
+      {% assign _new_content = _new_content | append: mark_start
+          | append: left | append: anchor | append: mark_end | append: right
+      %}
+
+    {% endfor %}
+
+    {% assign _heading_content = _new_content %}
+
+  {% endif %}
+{% endfor %}
+
+{% assign _content = _heading_content %}
 
 <!-- return -->
 
