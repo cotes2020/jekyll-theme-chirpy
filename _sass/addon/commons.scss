@@ -43,45 +43,6 @@ body {
   font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
 }
 
-/* --- Scrollbar --- */
-
-$scrollbar-size: 7px;
-
-::-webkit-scrollbar {
-  width: $scrollbar-size;
-  height: $scrollbar-size;
-}
-
-::-webkit-scrollbar-track {
-  @at-root body#{&} {
-    -webkit-box-shadow: inset 0 0 6px var(--scrollbar-track-bg);
-  }
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb-bg);
-  border-radius: calc(#{$scrollbar-size} / 2);
-}
-
-.highlight {
-  border-color: transparent;
-  transition: border-color 0.5s ease;
-
-  &:hover {
-    border-color: var(--scrollbar-thumb-bg);
-    transition: border-color 0.2s ease;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    /* add border to act as background-color */
-    border-right-style: inset;
-    border-right-width: calc(100vw + 100vh);
-    border-color: inherit;
-    background-color: var(--highlight-bg-color);
-  }
-
-}
-
 /* --- Typography --- */
 
 h1 {
@@ -842,17 +803,8 @@ $sidebar-display: "sidebar-display";
     i {
       line-height: 1.75rem; // default line-height in body
       vertical-align: middle;
-    }
 
-    #mode-toggle-wrapper {
-      @extend %icon;
-
-      i {
-        @extend %sidebar-links;
-        @extend %cursor-pointer;
-        @extend %clickable-transition;
-      }
-
+      @extend %cursor-pointer;
     }
 
     .icon-border {
@@ -863,10 +815,6 @@ $sidebar-display: "sidebar-display";
       width: 3px;
       height: 3px;
       border-radius: 50%;
-    }
-
-    #mode-toggle-wrapper:hover > i {
-      color: var(--sidebar-active-color);
     }
 
   } // .sidebar-bottom

@@ -48,8 +48,8 @@
 
   const modeToggle = document.querySelector(".mode-toggle");
 
-  if (modeToggle !== null) {
-    modeToggle.addEventListener('click', reloadDisqus);
+  if (typeof modeToggle !== "undefined") {
+    /*  modeToggle.addEventListener('click', reloadDisqus); // not pretty for 'color-scheme'  */
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', reloadDisqus);
   }
 
