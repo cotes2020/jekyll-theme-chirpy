@@ -8,6 +8,11 @@
 */
 
 $(function() {
+  const REM = 16; /* 16px */
+  const $topbarTitle = $("#topbar-title");
+  const topbarHeight = $("#topbar-wrapper").outerHeight();
+  const SCROLL_MARK = "scroll-focus";
+
   $("a[href*='#']")
     .not("[href='#']")
     .not("[href='#0']")
@@ -15,41 +20,48 @@ $(function() {
 
       if (this.pathname.replace(/^\//, "") === location.pathname.replace(/^\//, "")) {
         if (location.hostname === this.hostname) {
-
-          const REM = 16; /* 16px */
-
           const hash = decodeURI(this.hash);
-          let isFnRef = RegExp(/^#fnref:/).test(hash);
-          let isFn = isFnRef? false : RegExp(/^#fn:/).test(hash);
+          let toFootnoteRef = RegExp(/^#fnref:/).test(hash);
+          let toFootnote = toFootnoteRef? false : RegExp(/^#fn:/).test(hash);
           let selector = hash.includes(":") ? hash.replace(/\:/g, "\\:") : hash;
-          let target = $(selector);
+          let $target = $(selector);
 
-          if (target.length) {
+          let parent = $(this).parent().prop("tagName");
+          let isAnchor = RegExp(/^H\d/).test(parent);
+
+          if (typeof $target !== "undefined") {
             event.preventDefault();
 
             if (history.pushState) { /* add hash to URL */
               history.pushState(null, null, hash);
             }
 
-            let curOffset = $(this).offset().top;
-            let destOffset = target.offset().top;
-            const scrollUp = (destOffset < curOffset);
-            const topbarHeight = $("#topbar-wrapper").outerHeight();
+            let curOffset = isAnchor? $(this).offset().top : $(window).scrollTop();
+            let destOffset = $target.offset().top;
 
-            if (scrollUp && isFnRef) {
-              /* Avoid the top-bar covering `fnref` when scrolling up
-                because `fnref` has no `%anchor`(see: module.scss) style. */
-              destOffset -= (topbarHeight + REM / 2);
+            if (destOffset < curOffset) { // scroll up
+              if (toFootnoteRef) {
+                // Avoid the top-bar covering `fnref` when scrolling up
+                // because `fnref` has no `%anchor`(see: module.scss) style.
+                destOffset -= (topbarHeight + REM / 2);
+              }
+
+              if (isAnchor && $topbarTitle.is(":hidden")) {
+                destOffset += topbarHeight;
+              }
+
+            } else { // scroll down
+              if (!isAnchor && !toFootnote) { // the ToC item
+                destOffset += topbarHeight;
+              }
             }
 
             $("html,body").animate({
               scrollTop: destOffset
             }, 800, () => {
 
-              const $target = $(target);
+              // const $target = $($target);
               $target.focus();
-
-              const SCROLL_MARK = "scroll-focus";
 
               /* clean up old scroll mark */
               if ($(`[${SCROLL_MARK}=true]`).length) {
@@ -62,7 +74,7 @@ $(function() {
               }
 
               /* set scroll mark to footnotes */
-              if (isFn || isFnRef) {
+              if (toFootnote || toFootnoteRef) {
                 $target.attr(SCROLL_MARK, true);
               }
 
