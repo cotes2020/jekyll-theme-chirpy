@@ -83,10 +83,6 @@
   --timeline-color: rgb(63, 65, 68);
   --timeline-year-dot-color: var(--timeline-color);
 
-  /* Footer */
-  --footer-bg-color: var(--main-wrapper-bg);
-  --footer-link: rgb(171, 171, 171);
-
   .post-content img {
     filter: brightness(90%);
   }
@@ -138,7 +134,6 @@
         rgb(39, 39, 45),
         rgb(26, 26, 30)
       );
-
   }
 
   color-scheme: dark;

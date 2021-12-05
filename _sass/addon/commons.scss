@@ -116,8 +116,6 @@ footer {
   padding: 0 1rem;
   height: $footer-height;
   font-size: 0.8rem;
-  color: #7a7b7d;
-  background-color: var(--footer-bg-color);
 
   > div.d-flex {
     line-height: 1.2rem;
@@ -132,7 +130,7 @@ footer {
   }
 
   a {
-    color: var(--footer-link);
+    @extend %text-color;
 
     &:link {
       @include no-text-decoration;
@@ -367,10 +365,6 @@ img[data-src] {
     margin-bottom: 1rem;
   }
 
-  em { // MarkDown italic
-    padding-right: 0.2rem;
-  }
-
   a {
     &.img-link {
       @extend %no-cursor;
@@ -389,7 +383,6 @@ img[data-src] {
         @extend %link-hover;
       }
     }
-
   } // a
 
 }
@@ -403,8 +396,6 @@ img[data-src] {
   word-spacing: 1px;
 
   a {
-    @extend %link-underline;
-
     &:not(:last-child) {
       margin-right: 2px;
     }
@@ -412,6 +403,10 @@ img[data-src] {
     &:hover {
       @extend %link-hover;
     }
+  }
+
+  em {
+    @extend %normal-font-style;
   }
 }
 
@@ -532,10 +527,6 @@ img[data-src] {
 }
 
 /* --- Effects classes --- */
-
-.semi-bold {
-  font-weight: 600 !important;
-}
 
 .loaded {
   display: block !important;

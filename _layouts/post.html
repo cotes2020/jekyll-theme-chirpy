@@ -22,37 +22,60 @@ tail_includes:
 
 <h1 data-toc-skip>{{ page.title }}</h1>
 
-<div class="post-meta text-muted d-flex flex-column">
-  <!-- Published date and author -->
+<div class="post-meta text-muted">
+
+  <!-- author -->
   <div>
-    <span class="semi-bold">
-     {{ page.author | default: site.social.name }}
-    </span>
-    {% capture _preposition %}{{ site.data.locales[lang].post.published }}{% endcapture %}
-    {% include timeago.html date=page.date tooltip=true preposition=_preposition %}
+    {% capture author_name %}{{ page.author.name | default: site.social.name }}{% endcapture %}
+    {% assign author_link = nil %}
+
+    {% if page.author.link %}
+      {% assign author_link = page.author.link %}
+    {% elsif author_name == site.social.name %}
+      {% assign author_link = site.social.links[0] %}
+    {% endif %}
+
+    {{ site.data.locales[lang].post.written_by }}
+    <em>
+      {% if author_link %}
+        <a href="{{ author_link }}">{{ author_name }}</a>
+      {% else %}
+        {{ author_name }}
+      {% endif %}
+    </em>
   </div>
 
-  <div>
-    <!-- lastmod -->
-    {% if page.last_modified_at %}
+  <div class="d-flex">
+    <div>
+      <!-- published date -->
+      <span>
+        {{ site.data.locales[lang].post.posted }}
+        {% include timeago.html date=page.date tooltip=true %}
+      </span>
+
+      <!-- lastmod date -->
+      {% if page.last_modified_at %}
       <span>
         {{ site.data.locales[lang].post.updated }}
-        {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
+        {% include timeago.html date=page.last_modified_at tooltip=true %}
       </span>
-    {% endif %}
+      {% endif %}
 
-    <!-- read time -->
-    {% include read-time.html content=content prompt=true %}
+      <!-- read time -->
+      {% include read-time.html content=content prompt=true %}
 
-    <!-- page views -->
-    {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
-      <span id="pv" class="pageviews">
-        <i class="fas fa-spinner fa-spin fa-fw"></i>
+      <!-- page views -->
+      {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
+      <span>
+        <em id="pv" class="pageviews">
+          <i class="fas fa-spinner fa-spin fa-fw"></i>
+        </em>
+        {{ site.data.locales[lang].post.pageview_measure }}
       </span>
-      {{ site.data.locales[lang].post.pageview_measure }}
-    {% endif %}
+      {% endif %}
+    </div>
 
-  </div>
+  </div> <!-- .d-flex -->
 
 </div> <!-- .post-meta -->
 

@@ -63,6 +63,10 @@
   cursor: pointer;
 }
 
+%normal-font-style {
+  font-style: normal;
+}
+
 /* ---------- scss mixin --------- */
 
 @mixin no-text-decoration {
@@ -86,10 +90,6 @@
 
 @mixin input-placeholder {
   opacity: 0.6;
-}
-
-@mixin semi-bold {
-  font-weight: 600;
 }
 
 @mixin label($font-size: 1rem, $font-weight: 600, $color: var(--label-color)) {
