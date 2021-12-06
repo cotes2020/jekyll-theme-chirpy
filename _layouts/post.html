@@ -16,8 +16,18 @@ tail_includes:
   {% endcapture %}
   <img src="{{ page.image.src }}" class="preview-img {{ bg | strip }}"
       alt="{{ page.image.alt | default: "Preview Image" }}"
-      {% if page.image.width %}width="{{ page.image.width }}"{% endif %}
-      {% if page.image.height %}height="{{ page.image.height }}"{% endif %}>
+
+      {% if page.image.width %}
+        width="{{ page.image.width }}"
+      {% elsif page.image.w %}
+        width="{{ page.image.w }}"
+      {% endif %}
+
+      {% if page.image.height %}
+        height="{{ page.image.height }}"
+      {% elsif page.image.h %}
+        height="{{ page.image.h }}"
+      {% endif %}>
 {% endif %}
 
 <h1 data-toc-skip>{{ page.title }}</h1>
