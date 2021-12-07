@@ -775,7 +775,6 @@ $sidebar-display: "sidebar-display";
   } // ul
 
   .sidebar-bottom {
-    font-size: 1.2rem;
     margin-bottom: 2.1rem;
 
     @include ml-mr(auto);
@@ -792,10 +791,26 @@ $sidebar-display: "sidebar-display";
     }
 
     i {
-      line-height: 1.75rem; // default line-height in body
-      vertical-align: middle;
+      font-size: 1.2rem;
+      line-height: 1.75rem;
+    }
 
-      @extend %cursor-pointer;
+    .mode-toggle {
+      padding: 0;
+      border: 0;
+      margin-bottom: 1px;
+      background-color: transparent;
+
+      @extend %icon;
+      @extend %sidebar-links;
+
+      > i {
+        @extend %clickable-transition;
+      }
+
+      &:hover > i {
+        color: var(--sidebar-active-color);
+      }
     }
 
     .icon-border {
@@ -1627,6 +1642,7 @@ $sidebar-display: "sidebar-display";
       }
 
       > span,
+      > button.mode-toggle,
       > a {
         @include ml-mr(0.15rem);
 
