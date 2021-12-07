@@ -216,10 +216,8 @@ img[data-src] {
 }
 
 #panel-wrapper {
-  h4 {
-    @include panel-label;
-
-    font-family: inherit;
+  .panel-heading { // the headings
+    @include label(inherit);
   }
 
   .post-tag {
