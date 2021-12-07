@@ -48,23 +48,23 @@ body {
 h1 {
   @extend %heading;
 
-  font-size: 1.8rem;
+  font-size: 1.9rem;
 }
 
 h2 {
   @extend %heading;
   @extend %section;
-  @extend %anchor;
+  @extend %anchor-relative;
 
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 h3 {
   @extend %heading;
   @extend %section;
-  @extend %anchor;
+  @extend %anchor-relative;
 
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 }
 
 h4 {
@@ -362,7 +362,7 @@ img[data-src] {
 .post {
   h1 {
     margin-top: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   a {
@@ -1126,7 +1126,7 @@ $sidebar-display: "sidebar-display";
 
     h1 {
       margin-top: 2.2rem;
-      font-size: 1.55rem;
+      font-size: 1.75rem;
     }
   }
 
