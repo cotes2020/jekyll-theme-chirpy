@@ -78,9 +78,9 @@
       {% capture _value %}{{ _attr | split: '=' | last | replace: '"', '' }}{% endcapture %}
 
       {% case _key %}
-        {% when 'width' %}
+        {% when 'width', 'w' %}
           {% assign _width = _value %}
-        {% when 'height' %}
+        {% when 'height', 'h' %}
           {% assign _height = _value %}
       {% endcase %}
 

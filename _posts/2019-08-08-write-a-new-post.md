@@ -50,7 +50,7 @@ The author information of the post usually does not need to be filled in the _Fr
 ---
 author:
   name: Full Name
-  url: https://example.com
+  link: https://example.com
 ---
 ```
 
@@ -114,6 +114,8 @@ image:
 
 Except for `alt`, all other options are necessary, especially the `width` and `height`, which are related to user experience and web page loading performance. Later section ["Image size"](#image-size) will also mention this.
 
+Starting from _Chirpy v4.4.0_, the attributes `height` and `width` support abbreviations: `height` → `h`, `width` → `w`.
+
 
 ### Image caption
 
@@ -131,6 +133,13 @@ In order to prevent the page content layout from shifting when the image is load
 
 ```markdown
 ![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
+```
+{: .nolineno}
+
+Starting from _Chirpy v4.4.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
+
+```markdown
+![Desktop View](/assets/img/sample/mockup.png){: w="700" h="400" }
 ```
 {: .nolineno}
 
