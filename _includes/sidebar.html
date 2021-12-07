@@ -54,9 +54,9 @@
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
 
     {% unless site.theme_mode %}
-      <a id="mode-toggle-wrapper" tabindex="0" onclick="flipMode()">
-        <i class="mode-toggle fas fa-adjust"></i>
-      </a>
+      <button class="mode-toggle btn" aria-label="Switch Mode">
+        <i class="fas fa-adjust"></i>
+      </button>
 
       {% if site.data.contact.size > 0 %}
         <span class="icon-border"></span>

@@ -1,10 +1,13 @@
 /*
- * Document-reday functions for '#mode-toggle-wrapper'
+ * Listener for theme mode toggle
  */
 $(function() {
-  $("#mode-toggle-wrapper").keyup((e) => {
-    if(e.keyCode === 13) {
-      flipMode();
-    }
+  $(".mode-toggle").click((e) => {
+    const $target = $(e.target);
+    let $btn = ($target.prop("tagName") === "button".toUpperCase() ?
+      $target : $target.parent());
+
+    $btn.blur(); // remove the clicking outline
+    flipMode();
   });
 });
