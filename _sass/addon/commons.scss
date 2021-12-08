@@ -196,10 +196,6 @@ img[data-src] {
     position: sticky;
   }
 
-  &.topbar-down {
-    top: 6rem;
-  }
-
   > div {
     padding-left: 1rem;
     border-left: 1px solid var(--main-border-color);
@@ -236,6 +232,10 @@ img[data-src] {
       color: #fff;
       transition: none;
     }
+  }
+
+  &.topbar-down > div {
+    top: 6rem;
   }
 }
 

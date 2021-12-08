@@ -145,11 +145,6 @@ img.preview-img {
   top: 4rem;
   transition: top 0.2s ease-in-out;
   animation: fade-up 0.8s;
-
-  &.topbar-down {
-    top: 6rem;
-  }
-
 }
 
 #toc li a {

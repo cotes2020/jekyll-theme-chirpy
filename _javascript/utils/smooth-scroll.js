@@ -8,15 +8,19 @@
 */
 
 $(function() {
+  const $topbarWrapper = $("#topbar-wrapper");
+  const topbarHeight = $topbarWrapper.outerHeight();
   const $topbarTitle = $("#topbar-title");
-  const topbarHeight = $("#topbar-wrapper").outerHeight();
+
+  const ATTR_TOC_SCROLLING = "toc-scrolling-up";
   const SCROLL_MARK = "scroll-focus";
+  const REM = 16; // in pixels
+  let tocScrollUpCount = 0;
 
   $("a[href*='#']")
     .not("[href='#']")
     .not("[href='#0']")
     .click(function(event) {
-
       if (this.pathname.replace(/^\//, "") === location.pathname.replace(/^\//, "")) {
         if (location.hostname === this.hostname) {
           const hash = decodeURI(this.hash);
@@ -27,6 +31,7 @@ $(function() {
 
           let parent = $(this).parent().prop("tagName");
           let isAnchor = RegExp(/^H\d/).test(parent);
+          let isMobileViews = !$topbarTitle.is(":hidden");
 
           if (typeof $target !== "undefined") {
             event.preventDefault();
@@ -36,18 +41,27 @@ $(function() {
             }
 
             let curOffset = isAnchor? $(this).offset().top : $(window).scrollTop();
-            let destOffset = $target.offset().top;
+            let destOffset = $target.offset().top -= REM / 2;
 
             if (destOffset < curOffset) { // scroll up
-              if (!isAnchor && !toFootnote && $topbarTitle.is(":hidden")) { // the ToC item
+              if (!isAnchor && !toFootnote) { // trigger by ToC item
+                if (!isMobileViews) { // on desktop/tablet screens
+                  $topbarWrapper.removeClass("topbar-down").addClass("topbar-up");
+                  // Send message to `${JS_ROOT}/commons/topbar-switch.js`
+                  $topbarWrapper.attr(ATTR_TOC_SCROLLING, true);
+                  tocScrollUpCount += 1;
+                }
+              }
+
+              if ((isAnchor || toFootnoteRef) && isMobileViews) {
                 destOffset -= topbarHeight;
+                console.log(`[smooth] mobile -= topbar height`);
               }
             }
 
-            $("html,body").animate({
+            $("html").animate({
               scrollTop: destOffset
-
-            }, 800, () => {
+            }, 500, () => {
               $target.focus();
 
               /* clean up old scroll mark */
@@ -70,6 +84,14 @@ $(function() {
               } else {
                 $target.attr("tabindex", "-1"); /* Adding tabindex for elements not focusable */
                 $target.focus(); /* Set focus again */
+              }
+
+              if (typeof $topbarWrapper.attr(ATTR_TOC_SCROLLING) !== "undefined") {
+                tocScrollUpCount -= 1;
+
+                if (tocScrollUpCount <= 0) {
+                  $topbarWrapper.attr(ATTR_TOC_SCROLLING, "false");
+                }
               }
             });
           }

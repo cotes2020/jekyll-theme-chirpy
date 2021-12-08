@@ -3,50 +3,50 @@
  */
 
 $(function() {
+  const $topbarWrapper = $("#topbar-wrapper");
+  const $panel = $("#panel-wrapper");
+  const $searchInput = $("#search-input");
 
-  const topbarWrapper = $("#topbar-wrapper");
-  const toc = $("#toc-wrapper");
-  const access = $(".access");
-  const searchInput = $("#search-input");
+  const CLASS_TOPBAR_UP = "topbar-up";
+  const CLASS_TOPBAR_DOWN = "topbar-down";
+  const ATTR_TOC_SCROLLING_UP = "toc-scrolling-up"; // topbar locked
 
   let didScroll;
   let lastScrollTop = 0;
 
-  const delta = 5;
-  const topbarHeight = topbarWrapper.outerHeight();
+  const delta = $topbarWrapper.outerHeight();
+  const topbarHeight = $topbarWrapper.outerHeight();
 
   function hasScrolled() {
-    var st = $(this).scrollTop();
+    let st = $(this).scrollTop();
 
     /* Make sure they scroll more than delta */
     if (Math.abs(lastScrollTop - st) <= delta) {
       return;
     }
 
-    if (st > lastScrollTop && st > topbarHeight) {
-      /* Scroll Down */
-      topbarWrapper.removeClass("topbar-down").addClass("topbar-up");
+    if (st > lastScrollTop ) { // Scroll Down
+      if (st > topbarHeight) {
+        $topbarWrapper.removeClass(CLASS_TOPBAR_DOWN).addClass(CLASS_TOPBAR_UP);
+        $panel.removeClass(CLASS_TOPBAR_DOWN);
 
-      if (toc.length > 0) {
-        toc.removeClass("topbar-down");
+        if ($searchInput.is(":focus")) {
+          $searchInput.blur(); /* remove focus */
+        }
       }
+    } else  {// Scroll up
+      // did not reach the bottom of the document, i.e., still have space to scroll up
+      if (st + $(window).height() < $(document).height()) {
+        let tocScrollingUp = $topbarWrapper.attr(ATTR_TOC_SCROLLING_UP);
+        if (typeof tocScrollingUp !== "undefined") {
+          if (tocScrollingUp === "false") {
+            $topbarWrapper.removeAttr(ATTR_TOC_SCROLLING_UP);
+          }
 
-      if (access.length > 0) {
-        access.removeClass("topbar-down");
-      }
-
-      if (searchInput.is(":focus")) {
-        searchInput.blur(); /* remove focus */
-      }
-
-    } else if (st + $(window).height() < $(document).height()) {
-      /* Scroll Up */
-      topbarWrapper.removeClass("topbar-up").addClass("topbar-down");
-      if (toc.length > 0) {
-        toc.addClass("topbar-down");
-      }
-      if (access.length > 0) {
-        access.addClass("topbar-down");
+        } else {
+          $topbarWrapper.removeClass(CLASS_TOPBAR_UP).addClass(CLASS_TOPBAR_DOWN);
+          $panel.addClass(CLASS_TOPBAR_DOWN);
+        }
       }
     }
 
@@ -54,7 +54,7 @@ $(function() {
   }
 
   $(window).scroll(function(event) {
-    if ($("#topbar-title").is(":hidden")) { /* Not in small screens */
+    if ($("#topbar-title").is(":hidden")) {
       didScroll = true;
     }
   });
