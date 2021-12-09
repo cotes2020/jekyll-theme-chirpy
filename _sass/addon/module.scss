@@ -19,19 +19,24 @@
 
 %anchor {
   > a {
-    font-size: 70%;
-    visibility: hidden;
+    font-size: 1rem;
     margin-left: 0.5rem;
-    border-bottom: none !important;
-    opacity: 0;
-    transition: opacity 0.25s ease-in, visibility 0s ease-in 0.25s;
   }
 
-  &:hover {
+  @media (hover: hover) {
     > a {
-      visibility: visible;
-      opacity: 1;
-      transition: opacity 0.25s ease-in, visibility 0s ease-in 0s;
+      border-bottom: none !important;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.25s ease-in, visibility 0s ease-in 0.25s;
+    }
+
+    &:hover {
+      > a {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.25s ease-in, visibility 0s ease-in 0s;
+      }
     }
   }
 }

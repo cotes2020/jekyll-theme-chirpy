@@ -62,7 +62,7 @@ h2 {
 h3 {
   @extend %heading;
   @extend %section;
-  @extend %anchor-relative;
+  @extend %anchor;
 
   font-size: 1.2rem;
 }
