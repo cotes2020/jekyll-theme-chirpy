@@ -11,30 +11,32 @@
 }
 
 %section {
-  padding-top: 3.5rem;
-  margin-top: -2.5rem;
-
   #core-wrapper & {
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
   }
 }
 
 %anchor {
   > a {
-    font-size: 70%;
-    visibility: hidden;
-    margin-left: 0.25rem;
-    border-bottom: none !important;
-    opacity: 0;
-    transition: opacity 0.25s ease-in, visibility 0s ease-in 0.25s;
+    font-size: 1rem;
+    margin-left: 0.5rem;
   }
 
-  &:hover {
+  @media (hover: hover) {
     > a {
-      visibility: visible;
-      opacity: 1;
-      transition: opacity 0.25s ease-in, visibility 0s ease-in 0s;
+      border-bottom: none !important;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.25s ease-in, visibility 0s ease-in 0.25s;
+    }
+
+    &:hover {
+      > a {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.25s ease-in, visibility 0s ease-in 0s;
+      }
     }
   }
 }
