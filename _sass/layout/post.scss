@@ -353,11 +353,16 @@ nav[data-toggle=toc] {
 }
 
 /* Hide SideBar and TOC */
-@media all and (max-width: 830px) {
+@media all and (max-width: 849px) {
   .post-navigation {
     padding-left: 0;
     padding-right: 0;
     margin-left: -0.5rem;
     margin-right: -0.5rem;
+  }
+
+  .preview-img[data-src] {
+    max-width: 100vw;
+    border-radius: 0;
   }
 }
