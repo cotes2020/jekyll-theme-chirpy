@@ -87,9 +87,11 @@ avatar: '/commons/avatar.jpg'
 # boolean type, the global switch for ToC in posts.
 toc: true
 
-disqus:
-  comments: false  # boolean type, the global switch for posts comments.
-  shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+comments:
+  active:        # The global switch for posts comments, e.g., 'disqus'. Keep it empty means disable
+  # The comment active options are as follows
+  disqus:
+    shortname:   # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 paginate: 10
 
