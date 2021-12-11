@@ -88,10 +88,14 @@ avatar: '/commons/avatar.jpg'
 toc: true
 
 comments:
-  active:        # The global switch for posts comments, e.g., 'disqus'. Keep it empty means disable
-  # The comment active options are as follows
+  active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  # The active options are as follows:
   disqus:
-    shortname:   # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+    shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+  # utterances settings › https://utteranc.es/
+  utterances:
+    repo:         # <gh-username>/<repo>
+    issue_term:   # < url | pathname | title | ...>
 
 paginate: 10
 
@@ -112,7 +116,6 @@ collections:
   tabs:
     output: true
     sort_by: order
-
 
 defaults:
   -
