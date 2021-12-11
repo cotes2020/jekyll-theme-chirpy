@@ -71,22 +71,24 @@
 
     {% assign _width = nil %}
     {% assign _height = nil %}
-    {% assign _attrs = _img | split: '>' | first | split: ' ' %}
+
+    {% assign _img_converted = _img | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
+    {% assign _attrs = _img_converted | split: '>' | first | split: ' ' %}
 
     {% for _attr in _attrs %}
       {% capture _key %}{{ _attr | split: '=' | first }}{% endcapture %}
       {% capture _value %}{{ _attr | split: '=' | last | replace: '"', '' }}{% endcapture %}
 
       {% case _key %}
-        {% when 'width', 'w' %}
+        {% when 'width' %}
           {% assign _width = _value %}
-        {% when 'height', 'h' %}
+        {% when 'height' %}
           {% assign _height = _value %}
       {% endcase %}
 
       {% if _width and _height %}
         {% capture _svg %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{_width}} {{_height}}'%3E%3C/svg%3E{% endcapture %}
-        {% assign _img_content = _img_content | append: '<img src="' | append: _svg | append: '" ' | append: _img %}
+        {% assign _img_content = _img_content | append: '<img src="' | append: _svg | append: '" ' | append: _img_converted %}
         {% break %}
       {% endif %}
 
