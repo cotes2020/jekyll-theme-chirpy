@@ -7,6 +7,7 @@
     static get MODE_KEY() { return "mode"; }
     static get DARK_MODE() { return "dark"; }
     static get LIGHT_MODE() { return "light"; }
+    static get ID() { return "mode-toggle"; }
 
     constructor() {
       if (this.hasMode) {
@@ -40,7 +41,8 @@
           self.clearMode();
         }
 
-        self.updateMermaid();
+        self.notify();
+
       });
 
     } /* constructor() */
@@ -82,21 +84,12 @@
       sessionStorage.removeItem(ModeToggle.MODE_KEY);
     }
 
-    updateMermaid() {
-      if (typeof mermaid !== "undefined") {
-        let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default");
-        let config = { theme: expectedTheme };
-
-        /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
-        $(".mermaid").each(function() {
-          let svgCode = $(this).prev().children().html();
-          $(this).removeAttr("data-processed");
-          $(this).html(svgCode);
-        });
-
-        mermaid.initialize(config);
-        mermaid.init(undefined, ".mermaid");
-      }
+    /* Notify another plugins that the theme mode has changed */
+    notify() {
+      window.postMessage({
+        direction: ModeToggle.ID,
+        message: this.modeStatus
+      }, "*");
     }
 
   } /* ModeToggle */
@@ -128,7 +121,7 @@
       }
     }
 
-    toggle.updateMermaid();
+    toggle.notify();
 
   } /* flipMode() */
 
