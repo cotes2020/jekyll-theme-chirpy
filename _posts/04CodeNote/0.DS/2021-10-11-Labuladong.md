@@ -13,6 +13,7 @@ toc: true
 ---
 
 - [Labuladong](#labuladong)
+  - [re-check](#re-check)
   - [basic](#basic)
   - [timeline](#timeline)
   - [学习算法和刷题的框架思维](#学习算法和刷题的框架思维)
@@ -176,10 +177,23 @@ toc: true
 - [动态规划](#动态规划)
   - [斐波那契数列](#斐波那契数列)
   - [凑零钱问题 ` for i, for coin, dp[i] = Math.min(dp[i], dp[i-coin]+1);`](#凑零钱问题--for-i-for-coin-dpi--mathmindpi-dpi-coin1)
-  - [最长递增子序列](#最长递增子序列)
     - [动态规划解法](#动态规划解法)
       - [最小路径和（中等）](#最小路径和中等)
-- [systemm design](#systemm-design)
+      - [931 题「下降路径最小和」](#931-题下降路径最小和)
+      - [174.地下城游戏 ????????????](#174地下城游戏-)
+  - [子序列](#子序列)
+    - [300 最长递增子序列](#300-最长递增子序列)
+    - [1143 最长公共子序列](#1143-最长公共子序列)
+    - [583 两个字符串的删除操作](#583-两个字符串的删除操作)
+    - [712 最小 ASCII 删除和](#712-最小-ascii-删除和)
+    - [5 最长回文子序列](#5-最长回文子序列)
+    - [516 最长回文子序列长度](#516-最长回文子序列长度)
+    - [494 目标和](#494-目标和)
+    - [72 编辑距离（困难）](#72-编辑距离困难)
+    - [354 俄罗斯套娃信封问题（困难）](#354-俄罗斯套娃信封问题困难)
+    - [53 最大子序和（简单)](#53-最大子序和简单)
+  - [背包类型问题](#背包类型问题)
+- [system design](#system-design)
 
 
 ---
@@ -190,6 +204,15 @@ toc: true
 - https://labuladong.github.io
 
 ---
+
+
+## re-check
+
+1. Palindrome
+
+
+---
+
 
 ## basic
 
@@ -202,16 +225,24 @@ String Str1 = new String("Welcome to Tutorialspoint.com");
 String.length()
 String.toCharArray()
 String.charAt()
+String.substring(lo, lo+maxLen)
 
 
-int[] distTo = new int[V];   
+int[] distTo = new int[V];
 Arrays.fill(distTo, Integer.MAX_VALUE);
 int[].length;
 
-Arrays.sort(nums1);
 Arrays.asList(int k);
 Arrays.toString(subCoin)
-
+Arrays.sort(nums1);
+Arrays.sort(
+    envelopes,
+    new Comparator<int[]>() {
+        public int compare(int[] a, int[] b) {
+            return a[0] == b[0] ? b[1] - a[1] : a[0] - b[0];
+        }
+    }
+);
 
 Stack<String> Stack= new Stack<>();
 Stack.push();
@@ -294,6 +325,9 @@ BinaryHeap.buildHeap(list);
 11/20:
 11/21:87
 11/22:
+11/23:
+11/24:94
+11/25:
 
 
 
@@ -5919,7 +5953,8 @@ int[] dijkstra(int start, int end, List<Integer>[] graph) {
 - 把所谓的传递时间看做距离，实际上就是「从节点 k 到其他所有节点的最短路径中，最长的那条最短路径距离是多少」
 - 从节点 k 出发到其他所有节点的最短路径，就是标准的 Dijkstra 算法。
 
-```java
+
+```
 int networkDelayTime(int[][] times, int n, int k) {
     if(n==0) return -1;
     // 节点编号是从 1 开始的，所以要一个大小为 n + 1 的邻接表
@@ -7224,6 +7259,9 @@ int fib(int N) {
 
 4. 状态压缩 pre+cur
 
+能够使用状态压缩技巧的动态规划都是二维 dp 问题，你看它的状态转移方程，如果计算状态 dp[i][j] 需要的都是 dp[i][j] 相邻的状态，那么就可以使用状态压缩技巧，将二维的 dp 数组转化成一维，将空间复杂度从 O(N^2) 降低到 O(N)。
+
+
 ```java
 int fib(int n) {
     if (n < 1) return 0;
@@ -7301,38 +7339,6 @@ public int coinChange(int[] coins, int amount) {
 }
 ```
 
-
----
-
-## 最长递增子序列
-
-[300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
-
-Given an integer array nums, return the length of the longest strictly increasing subsequence.
-
-A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements. For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7].
-
-Example 1:
-
-Input: nums = [10,9,2,5,3,7,101,18]
-Output: 4
-Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
-
-```java
-public int lengthOfLIS(int[] nums) {
-    int[] dp = new int[nums.length];
-    Arrays.fill(dp, 1);
-    for(int i=1;i<nums.length;i++){
-        dp[i]=1;
-        for(int j=0;j<i;j++){
-            if(nums[i]>nums[j]) dp[i]= Math.max(dp[j]+1,dp[i]);
-        }
-    }
-    int res = 0;
-    for(int num:dp) res=Math.max(res, num);
-    return res;
-}
-```
 
 ---
 
@@ -7426,9 +7432,109 @@ public int minPathSum(int[][] grid) {
 }
 ```
 
+
 ---
 
-####
+
+#### 931 题「下降路径最小和」
+
+[931. Minimum Falling Path Sum](https://leetcode.com/problems/minimum-falling-path-sum/)
+
+Given an n x n array of integers matrix, return the minimum sum of any falling path through matrix.
+
+A falling path starts at any element in the first row and chooses the element in the next row that is either directly below or diagonally left/right. Specifically, the next element from position (row, col) will be (row + 1, col - 1), (row + 1, col), or (row + 1, col + 1).
+
+
+1. 暴力穷举解法
+
+```java
+int minFallingPathSum(int[][] matrix) {
+    int n = matrix.length;
+    int res = Integer.MAX_VALUE;
+    // 终点可能在最后一行的任意一列
+    for (int j = 0; j < n; j++) res = Math.min(res, dp(matrix, n - 1, j));
+    return res;
+}
+
+int dp(int[][] matrix, int i, int j) {
+    // 非法索引检查
+    if (i < 0 || j < 0 ||
+        i >= matrix.length ||
+        j >= matrix[0].length) {
+        // 返回一个特殊值
+        return 99999;
+    }
+    // base case
+    if (i == 0) return matrix[i][j];
+
+    // 状态转移
+    return matrix[i][j] + min(
+            dp(matrix, i - 1, j),
+            dp(matrix, i - 1, j - 1),
+            dp(matrix, i - 1, j + 1)
+        );
+}
+
+int min(int a, int b, int c) {
+    return Math.min(a, Math.min(b, c));
+}
+
+```
+
+
+2. 用备忘录的方法消除重叠子问题
+
+```java
+// Runtime: 3 ms, faster than 84.22% of Java online submissions for Minimum Falling Path Sum.
+// Memory Usage: 45 MB, less than 5.34% of Java online submissions for Minimum Falling Path Sum.
+
+// 备忘录
+int[][] memo;
+
+int minFallingPathSum(int[][] matrix) {
+    int n = matrix.length;
+    int res = Integer.MAX_VALUE;
+    // 备忘录里的值初始化为 66666
+    memo = new int[n][n];
+    for (int i = 0; i < n; i++) Arrays.fill(memo[i], 66666);
+    // 终点可能在 matrix[n-1] 的任意一列
+    for (int j = 0; j < n; j++) res = Math.min(res, dp(matrix, n - 1, j));
+    return res;
+}
+
+int dp(int[][] matrix, int i, int j) {
+    // 1、索引合法性检查
+    if (i < 0 || j < 0 ||
+        i >= matrix.length ||
+        j >= matrix[0].length) {
+        return 99999;
+    }
+
+    // 2、base case
+    if (i == 0) return matrix[0][j];
+
+    // 3、查找备忘录，防止重复计算
+    if (memo[i][j] != 66666) return memo[i][j];
+
+    // 进行状态转移
+    memo[i][j] = matrix[i][j] + min(
+        dp(matrix, i - 1, j),
+        dp(matrix, i - 1, j - 1),
+        dp(matrix, i - 1, j + 1)
+    );
+    return memo[i][j];
+}
+
+int min(int a, int b, int c) {
+    return Math.min(a, Math.min(b, c));
+}
+```
+
+
+
+---
+
+#### 174.地下城游戏 ????????????
 
 [174. Dungeon Game](https://leetcode.com/problems/dungeon-game/)
 
@@ -7444,6 +7550,783 @@ Return the knight's minimum initial health so that he can rescue the princess.
 
 Note that any room can contain threats or power-ups, even the first room the knight enters and the bottom-right room where the princess is imprisoned.
 
+```java
+/* 主函数 */
+int calculateMinimumHP(int[][] grid) {
+    int m = grid.length;
+    int n = grid[0].length;
+    // 备忘录中都初始化为 -1
+    memo = new int[m][n];
+    for (int[] row : memo) {
+        Arrays.fill(row, -1);
+    }
+
+    return dp(grid, 0, 0);
+}
+
+// 备忘录，消除重叠子问题
+int[][] memo;
+
+/* 定义：从 (i, j) 到达右下角，需要的初始血量至少是多少 */
+int dp(int[][] grid, int i, int j) {
+    int m = grid.length;
+    int n = grid[0].length;
+    // base case
+    if (i == m - 1 && j == n - 1) return grid[i][j] >= 0 ? 1 : -grid[i][j] + 1;
+    if (i == m || j == n) return Integer.MAX_VALUE;
+    // 避免重复计算
+    if (memo[i][j] != -1) return memo[i][j];
+    // 状态转移逻辑
+    int res = Math.min(
+            dp(grid, i, j + 1),
+            dp(grid, i + 1, j)
+        ) - grid[i][j];
+    // 骑士的生命值至少为 1
+    memo[i][j] = res <= 0 ? 1 : res;
+
+    return memo[i][j];
+}
+```
+
+---
+
+
+## 子序列
+
+一个字符串，它的子序列有多少种可能？起码是指数级的吧，这种情况下，不用动态规划技巧，还想怎么着呢？
+
+既然要用动态规划，那就要定义 dp 数组，找状态转移关系。
+
+
+1. 一个一维的 dp 数组：
+
+```java
+int n = array.length;
+int[] dp = new int[n];
+
+for (int i = 1; i < n; i++) {
+    for (int j = 0; j < i; j++) {
+        dp[i] = 最值(dp[i], dp[j] + ...)
+    }
+}
+```
+
+
+2. 二维的 dp 数组：
+
+```java
+int n = arr.length;
+int[][] dp = new dp[n][n];
+
+for (int i = 0; i < n; i++) {
+    for (int j = 1; j < n; j++) {
+        if (arr[i] == arr[j])
+            dp[i][j] = dp[i][j] + ...
+        else
+            dp[i][j] = 最值(...)
+    }
+}
+```
+
+这种思路运用相对更多一些，尤其是涉及两个字符串/数组的子序列。
+
+dp 数组的含义
+1. 涉及两个字符串/数组时（比如最长公共子序列）
+   1. 在子数组arr1[0..i]和子数组arr2[0..j]中
+   2. 我们要求的子序列（最长公共子序列）长度为dp[i][j]。
+
+2. 只涉及一个字符串/数组时（比如本文要讲的最长回文子序列）
+   1. 在子数组array[i..j]中
+   2. 我们要求的子序列（最长回文子序列）的长度为dp[i][j]。
+
+
+
+---
+
+### 300 最长递增子序列
+
+[300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
+
+Given an integer array nums, return the length of the longest strictly increasing subsequence.
+
+A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements. For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7].
+
+Example 1:
+
+Input: nums = [10,9,2,5,3,7,101,18]
+Output: 4
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+
+
+1. 动态规划解法
+
+
+```java
+public int lengthOfLIS(int[] nums) {
+    int[] dp = new int[nums.length];
+    Arrays.fill(dp, 1);
+    for(int i=1;i<nums.length;i++){
+        dp[i]=1;
+        for(int j=0;j<i;j++){
+            if(nums[i]>nums[j]) dp[i]= Math.max(dp[j]+1,dp[i]);
+        }
+    }
+    int res = 0;
+    for(int num:dp) res=Math.max(res, num);
+    return res;
+}
+```
+
+---
+
+### 1143 最长公共子序列
+
+[1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
+
+Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
+
+A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
+
+For example, "ace" is a subsequence of "abcde".
+A common subsequence of two strings is a subsequence that is common to both strings.
+
+
+Example 1:
+
+Input: text1 = "abcde", text2 = "ace"
+Output: 3  
+Explanation: The longest common subsequence is "ace" and its length is 3.
+
+
+1. 暴力算法
+   1. 把 s1 和 s2 的所有子序列都穷举出来，
+   2. 看有没有公共的，
+   3. 然后在所有公共子序列里面再寻找一个长度最大的。
+   4. 复杂度就是指数级的，不实际。
+
+2. 不考虑整个字符串，细化到s1和s2的每个字符
+
+1. 用memo备忘录消除子问题
+
+```java
+// 备忘录，消除重叠子问题
+int[][] memo;
+
+/* 主函数 */
+int longestCommonSubsequence(String s1, String s2) {
+    int m = s1.length(), n = s2.length();
+    // 备忘录值为 -1 代表未曾计算
+    memo = new int[m][n];
+    for (int[] row : memo) Arrays.fill(row, -1);
+    // 计算 s1[0..] 和 s2[0..] 的 lcs 长度
+    return dp(s1, 0, s2, 0);
+}
+
+/* 主函数 */
+int dp(String s1, int i, String s2, int j) {
+    // base case
+    // s1[i..]或s2[j..]就相当于空串了，最长公共子序列的长度显然是 0
+    if (i == s1.length() || j == s2.length()) return 0;
+
+    // 如果之前计算过，则直接返回备忘录中的答案
+    if (memo[i][j] != -1) return memo[i][j];
+
+    // 根据 s1[i] 和 s2[j] 的情况做选择
+    // s1[i] 和 s2[j] 必然在 lcs 中
+    if (s1.charAt(i) == s2.charAt(j)) memo[i][j] = 1 + dp(s1, i + 1, s2, j + 1);
+    // s1[i] 和 s2[j] 至少有一个不在 lcs 中
+    else memo[i][j] = Math.max( dp(s1, i + 1, s2, j), dp(s1, i, s2, j + 1) );
+
+    return memo[i][j];
+```
+
+2. 自底向上的迭代的动态规划思路
+
+
+```java
+// Runtime: 9 ms, faster than 89.16% of Java online submissions for Longest Common Subsequence.
+// Memory Usage: 42.9 MB, less than 64.72% of Java online submissions for Longest Common Subsequence.
+
+int longestCommonSubsequence(String s1, String s2) {
+    int m = s1.length(), n = s2.length();
+    int[][] dp = new int[m + 1][n + 1];
+    // 定义：s1[0..i-1] 和 s2[0..j-1] 的 lcs 长度为 dp[i][j]
+    // 目标：s1[0..m-1] 和 s2[0..n-1] 的 lcs 长度，即 dp[m][n]
+    // base case: dp[0][..] = dp[..][0] = 0
+
+    for (int i = 1; i <= m; i++) {
+        for (int j = 1; j <= n; j++) {
+
+            // 现在 i 和 j 从 1 开始，所以要减一
+
+            // s1[i-1] 和 s2[j-1] 必然在 lcs 中
+            if (s1.charAt(i - 1) == s2.charAt(j - 1)) dp[i][j] = 1 + dp[i - 1][j - 1];
+            // s1[i-1] 和 s2[j-1] 至少有一个不在 lcs 中
+            else dp[i][j] = Math.max(dp[i][j - 1], dp[i - 1][j]);
+        }
+    }
+    return dp[m][n];
+}
+```
+
+
+---
+
+### 583 两个字符串的删除操作
+
+[583. Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/)
+- Given two strings word1 and word2, return the minimum number of steps required to make word1 and word2 the same.
+- In one step, you can delete exactly one character in either string.
+- 要计算删除的次数，就可以通过最长公共子序列的长度推导出来
+- 删除的结果就是它俩的最长公共子序列
+
+Example 1:
+Input: word1 = "sea", word2 = "eat"
+
+Output: 2
+Explanation: You need one step to make "sea" to "ea" and another step to make "eat" to "ea".
+
+
+```java
+// Runtime: 7 ms, faster than 90.79% of Java online submissions for Delete Operation for Two Strings.
+// Memory Usage: 39.2 MB, less than 97.09% of Java online submissions for Delete Operation for Two Strings.
+
+class Solution {
+    public int minDistance(String word1, String word2) {
+        int m = word1.length(), n = word2.length();
+        // 复用前文计算 lcs 长度的函数
+        int lcs = longestCommonSubsequence(word1, word2);
+        return m - lcs + n - lcs;
+    }
+
+    // 最长公共子序列的长度
+    public int longestCommonSubsequence(String s1, String s2) {
+        int m = s1.length(), n = s2.length();
+        int[][] dp = new int[m + 1][n + 1];  
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                // 现在 i 和 j 从 1 开始，所以要减一
+                // s1[i-1] 和 s2[j-1] 必然在 lcs 中
+                if (s1.charAt(i - 1) == s2.charAt(j - 1)) dp[i][j] = 1 + dp[i - 1][j - 1];
+                // s1[i-1] 和 s2[j-1] 至少有一个不在 lcs 中
+                else dp[i][j] = Math.max(dp[i][j - 1], dp[i - 1][j]);
+            }
+        }
+        return dp[m][n];
+    }
+}
+```
+
+---
+
+### 712 最小 ASCII 删除和
+
+[712. Minimum ASCII Delete Sum for Two Strings](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/submissions/)
+
+Given two strings s1 and s2, return the lowest ASCII sum of deleted characters to make two strings equal.
+
+Example 1:
+
+Input: s1 = "sea", s2 = "eat"
+Output: 231
+Explanation: Deleting "s" from "sea" adds the ASCII value of "s" (115) to the sum.
+Deleting "t" from "eat" adds 116 to the sum.
+At the end, both strings are equal, and 115 + 116 = 231 is the minimum sum possible to achieve this.
+
+```java
+// Runtime: 32 ms, faster than 36.57% of Java online submissions for Minimum ASCII Delete Sum for Two Strings.
+// Memory Usage: 39.5 MB, less than 80.73% of Java online submissions for Minimum ASCII Delete Sum for Two Strings.
+
+// 备忘录
+int memo[][];
+
+/* 主函数 */    
+int minimumDeleteSum(String s1, String s2) {
+    int m = s1.length(), n = s2.length();
+    // 备忘录值为 -1 代表未曾计算
+    memo = new int[m][n];
+    for (int[] row : memo) Arrays.fill(row, -1);
+    return dp(s1, 0, s2, 0);
+}
+
+// 定义：将 s1[i..] 和 s2[j..] 删除成相同字符串，
+// 最小的 ASCII 码之和为 dp(s1, i, s2, j)。
+int dp(String s1, int i, String s2, int j) {
+    int res = 0;
+    // base case
+    if (i == s1.length()) {
+        // 如果 s1 到头了，那么 s2 剩下的都得删除
+        for (; j < s2.length(); j++) res += s2.charAt(j);
+        return res;
+    }
+    if (j == s2.length()) {
+        // 如果 s2 到头了，那么 s1 剩下的都得删除
+        for (; i < s1.length(); i++) res += s1.charAt(i);
+        return res;
+    }
+    if (memo[i][j] != -1) return memo[i][j];
+
+    // s1[i] 和 s2[j] 都是在 lcs 中的，不用删除
+    if (s1.charAt(i) == s2.charAt(j)) memo[i][j] = dp(s1, i + 1, s2, j + 1);
+    // s1[i] 和 s2[j] 至少有一个不在 lcs 中，删一个
+    else {
+        memo[i][j] = Math.min(
+            s1.charAt(i) + dp(s1, i + 1, s2, j),
+            s2.charAt(j) + dp(s1, i, s2, j + 1)
+        );
+    }
+    return memo[i][j];
+}
+
+```
+
+---
+
+### 5 最长回文子序列
+
+
+5. Longest Palindromic Substring
+
+Given a string s, return the longest palindromic substring in s.
+
+Example 1:
+
+Input: s = "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+
+这个问题对 dp 数组的定义是：在子串s[i..j]中，最长回文子序列的长度为dp[i][j]。一定要记住这个定义才能理解算法。
+
+
+```java
+class Solution {
+
+    private int maxLen = 0;
+    private int lo = 0;
+
+    public String longestPalindrome(String s) {
+        int len=s.length();
+        if(len<2) return s;
+        for(int i=0;i<len-1;i++){
+            checkpalin(s,i,i);
+            checkpalin(s,i,i+1);
+        }
+        return s.substring(lo, lo+maxLen);
+    }
+
+    public void checkpalin(String s, int i, int j) {
+        while(i>=0 && j<s.length() && s.charAt(i)==s.charAt(j)){
+            i--;
+            j++;
+        }
+        if(maxLen < j-i-1){
+            lo = i+1;
+            maxLen = j-i-1;
+
+        }
+    }
+}
+```
+
+
+
+---
+
+### 516 最长回文子序列长度
+
+
+[516. Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)
+- Given a string s, find the longest palindromic subsequence's length in s.
+- A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
+
+Example 1:
+
+Input: s = "bbbab"
+Output: 4
+Explanation: One possible longest palindromic subsequence is "bbbb".
+
+
+```java
+// Runtime: 41 ms, faster than 67.06% of Java online submissions for Longest Palindromic Subsequence.
+// Memory Usage: 49.1 MB, less than 71.59% of Java online submissions for Longest Palindromic Subsequence.
+
+class Solution {
+    public int longestPalindromeSubseq(String s) {
+        int m = s.length();
+        int[][] memo = new int[m][m];
+
+        for(int i=0;i<m;i++) memo[i][i] = 1;
+
+        for(int i=m-1;i>=0;i--){
+            for(int j=i+1;j<m;j++){
+                if(s.charAt(i)==s.charAt(j)) memo[i][j] = memo[i+1][j-1] +2;
+                else memo[i][j] = Math.max(
+                    memo[i][j-1],
+                    memo[i+1][j]
+                );
+            }
+        }
+        return memo[0][m-1];
+    }
+}
+```
+
+---
+
+### 494 目标和
+
+[494. Target Sum](https://leetcode.com/problems/target-sum/)
+
+You are given an integer array nums and an integer target.
+
+You want to build an expression out of nums by adding one of the symbols '+' and '-' before each integer in nums and then concatenate all the integers.
+
+For example, if nums = [2, 1], you can add a '+' before 2 and a '-' before 1 and concatenate them to build the expression "+2-1".
+Return the number of different expressions that you can build, which evaluates to target.
+
+Example 1:
+
+Input: nums = [1,1,1,1,1], target = 3
+Output: 5
+Explanation: There are 5 ways to assign symbols to make the sum of nums be target 3.
+-1 + 1 + 1 + 1 + 1 = 3
++1 - 1 + 1 + 1 + 1 = 3
++1 + 1 - 1 + 1 + 1 = 3
++1 + 1 + 1 - 1 + 1 = 3
++1 + 1 + 1 + 1 - 1 = 3
+
+
+
+一、回溯思路
+任何算法的核心都是穷举，回溯算法就是一个暴力穷举算法
+
+```java
+// Runtime: 556 ms, faster than 13.66% of Java online submissions for Target Sum.
+// Memory Usage: 36.5 MB, less than 84.78% of Java online submissions for Target Sum.
+
+int result = 0;
+
+/* 主函数 */
+int findTargetSumWays(int[] nums, int target) {
+    if (nums.length == 0) return 0;
+    backtrack(nums, 0, target);
+    return result;
+}
+
+/* 回溯算法模板 */
+void backtrack(int[] nums, int i, int rest) {
+    // base case
+    if (i == nums.length) {
+        // 说明恰好凑出 target
+        if (rest == 0) result++;
+        return;
+    }
+
+    // 给 nums[i] 选择 - 号
+    rest += nums[i];
+    // 穷举 nums[i + 1]
+    backtrack(nums, i + 1, rest);
+    // 撤销选择
+    rest -= nums[i];
+
+    // 给 nums[i] 选择 + 号
+    rest -= nums[i];
+    // 穷举 nums[i + 1]
+    backtrack(nums, i + 1, rest);
+    // 撤销选择
+    rest += nums[i];
+}
+```
+
+
+2. 消除重叠子问题
+
+```java
+int findTargetSumWays(int[] nums, int target) {
+    if (nums.length == 0) return 0;
+    return dp(nums, 0, target);
+}
+
+// 备忘录
+HashMap<String, Integer> memo = new HashMap<>();
+
+int dp(int[] nums, int i, int rest) {
+    // base case
+    if (i == nums.length) {
+        if (rest == 0) return 1;
+        return 0;
+    }
+    // 把它俩转成字符串才能作为哈希表的键
+    String key = i + "," + rest;
+    // 避免重复计算
+    if (memo.containsKey(key)) {
+        return memo.get(key);
+    }
+    // 还是穷举
+    int result = dp(nums, i + 1, rest - nums[i]) + dp(nums, i + 1, rest + nums[i]);
+    // 记入备忘录
+    memo.put(key, result);
+    return result;
+}
+```
+
+---
+
+
+### 72 编辑距离（困难）
+
+![dp](https://i.imgur.com/JWV0ewv.jpg)
+
+[72. Edit Distance](https://leetcode.com/problems/edit-distance/)
+
+Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2.
+
+You have the following three operations permitted on a word:
+
+Insert a character
+Delete a character
+Replace a character
+
+
+Example 1:
+
+Input: word1 = "horse", word2 = "ros"
+Output: 3
+Explanation:
+horse -> rorse (replace 'h' with 'r')
+rorse -> rose (remove 'r')
+rose -> ros (remove 'e')
+
+
+1. 暴力解法，存在重叠子问题，需要用动态规划技巧来优化。
+
+
+```java
+class Solution {
+    public int minDistance(String word1, String word2) {
+        return dp(word1, word1.length()-1, word2, word2.length()-1);
+    }
+
+    public int dp(String word1, int i, String word2, int j) {
+        if(i==-1) return j+1;
+        if(j==-1) return i+1;
+        if(word1.charAt(i)==word2.charAt(j)) return dp(word1, i-1, word2, j-1);
+        else return 1+min(
+            dp(word1, i, word2, j-1),
+            dp(word1, i-1, word2, j),
+            dp(word1, i-1, word2, j-1)
+        );
+    }
+
+    public int min(int x, int y, int z) {
+        return Math.min(x, Math.min(y,z));
+    }
+}
+```
+
+2. 动态规划优化
+对于重叠子问题呢，前文 动态规划详解 详细介绍过，优化方法无非是备忘录或者 DP table。
+
+备忘录很好加，原来的代码稍加修改即可：
+
+```java
+// Runtime: 4 ms, faster than 91.95% of Java online submissions for Edit Distance.
+// Memory Usage: 38.8 MB, less than 92.87% of Java online submissions for Edit Distance.
+
+class Solution {
+    public int minDistance(String word1, String word2) {
+        int m=word1.length(), n = word2.length();
+        int[][] memo = new int[m+1][n+1];
+        for (int i = 1; i <= m; i++) memo[i][0] = i;
+        for (int j = 1; j <= n; j++) memo[0][j] = j;
+        for(int i=1;i<=m;i++){
+            for(int j=1;j<=n;j++){
+                if(word1.charAt(i-1)==word2.charAt(j-1)) memo[i][j]=memo[i-1][j-1];
+                else memo[i][j] = 1+min(
+                    memo[i][j-1],
+                    memo[i-1][j-1],
+                    memo[i-1][j]
+                );
+            }
+        }
+        return memo[m][n];
+    }
+
+    public int min(int x, int y, int z) {
+        return Math.min(x, Math.min(y,z));
+    }
+}
+```
+
+
+3. 具体的操作
+
+
+```java
+// int[][] dp;
+Node[][] dp;
+
+class Node {
+    int val;
+    int choice;
+    // 0 代表啥都不做
+    // 1 代表插入
+    // 2 代表删除
+    // 3 代表替换
+}
+```
+
+
+---
+
+### 354 俄罗斯套娃信封问题（困难）
+
+[354. Russian Doll Envelopes](https://leetcode.com/problems/russian-doll-envelopes/)
+
+You are given a 2D array of integers envelopes where envelopes[i] = [wi, hi] represents the width and the height of an envelope.
+
+One envelope can fit into another if and only if both the width and height of one envelope are greater than the other envelope's width and height.
+
+Return the maximum number of envelopes you can Russian doll (i.e., put one inside the other).
+
+Note: You cannot rotate an envelope.
+
+Example 1:
+
+Input: envelopes = [[5,4],[6,4],[6,7],[2,3]]
+Output: 3
+Explanation: The maximum number of envelopes you can Russian doll is 3 ([2,3] => [5,4] => [6,7]).
+
+
+```java
+// Runtime: 148 ms, faster than 53.28% of Java online submissions for Russian Doll Envelopes.
+// Memory Usage: 39.9 MB, less than 82.57% of Java online submissions for Russian Doll Envelopes.
+
+// envelopes = [[w, h], [w, h]...]
+public int maxEnvelopes(int[][] envelopes) {
+    int n = envelopes.length;
+    // 按宽度升序排列，如果宽度一样，则按高度降序排列
+    Arrays.sort(
+        envelopes,
+        new Comparator<int[]>() {
+            public int compare(int[] a, int[] b) {
+                return a[0] == b[0] ? b[1] - a[1] : a[0] - b[0];
+            }
+        }
+    );
+    // 对高度数组寻找 LIS
+    int[] height = new int[n];
+    for (int i = 0; i < n; i++) height[i] = envelopes[i][1];
+    return lengthOfLIS(height);
+}
+
+public int lengthOfLIS(int[] nums) {
+        int n = nums.length;
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
+        for(int i=1; i<n; i++) {
+            for(int j=0; j<i; j++) {
+                if(nums[i] > nums[j]) dp[i] = Math.max(dp[i], dp[j]+1);
+            }
+        }
+        int res=0;
+        for(int num:dp) res=Math.max(res, num);
+        return res;
+    }
+}
+```
+
+---
+
+### 53 最大子序和（简单)
+
+1. simple
+   1. 复杂度是 O(N)，
+   2. 空间复杂度也是 O(N)
+
+```java
+// Runtime: 2 ms, faster than 41.34% of Java online submissions for Maximum Subarray.
+// Memory Usage: 47.7 MB, less than 98.44% of Java online submissions for Maximum Subarray.
+
+int maxSubArray(int[] nums) {
+    int n = nums.length;
+    if(n == 0) return 0;
+
+    int[] dp = new int[n];
+    // base case
+    // 第一个元素前面没有子数组
+    dp[0] = nums[0];
+    int res = dp[0];
+
+    for(int i = 1; i < n; i++) {
+        // 状态转移方程
+        dp[i] = Math.max(nums[i], nums[i] + dp[i - 1]);
+        // 得到 nums 的最大子数组
+        res = Math.max(res, dp[i]);
+    }
+    return res;
+}
+```
+
+2. 状态压缩
+   1. dp[i] 仅仅和 dp[i-1] 的状态有关
+
+```java
+// Runtime: 1 ms, faster than 100.00% of Java online submissions for Maximum Subarray.
+// Memory Usage: 49.2 MB, less than 78.66% of Java online submissions for Maximum Subarray.
+int maxSubArray(int[] nums) {
+    int n = nums.length;
+    if(n == 0) return 0;
+    int res = dp[0];
+    int num_pre = nums[0];
+    int num_cur;
+
+    for(int i = 1; i < n; i++) {
+        // 状态转移方程
+        num_cur = Math.max(nums[i], nums[i] + num_pre);
+        num_pre = num_cur;
+        // 得到 nums 的最大子数组
+        res = Math.max(res, num_cur);
+    }
+    return res;
+}
+```
+
+
+---
+
+## 背包类型问题
+
+1. 动规标准
+   1. 第一步要明确两点，「状态」和「选择」。
+   2. 状态:「背包的容量」和「可选择的物品」。
+      1. 「状态」，有两个，也就是说我们需要一个二维 dp 数组。
+      2. dp[i][w] 的定义如下：对于前 i 个物品，当前背包的容量为 w，这种情况下可以装的最大价值是 dp[i][w]。
+   3. 选择:「装进背包」或者「不装进背包」
+      1. 没有把这第 i 个物品装入背包: 最大价值 dp[i][w] 应该等于 dp[i-1][w]，继承之前的结果。
+      2. 把这第 i 个物品装入了背包，那么 dp[i][w] = dp[i-1][w - wt[i-1]] + val[i-1]。
+
+```cpp
+int knapsack(int W, int N, vector<int>& wt, vector<int>& val) {
+    // base case 已初始化
+    vector<vector<int>> dp(N + 1, vector<int>(W + 1, 0));
+    for (int i = 1; i <= N; i++) {
+        for (int w = 1; w <= W; w++) {
+            if (w - wt[i-1] < 0) {
+                // 这种情况下只能选择不装入背包
+                dp[i][w] = dp[i - 1][w];
+            } else {
+                // 装入或者不装入背包，择优
+                dp[i][w] = max(dp[i - 1][w - wt[i-1]] + val[i-1],
+                               dp[i - 1][w]);
+            }
+        }
+    }
+
+    return dp[N][W];
+}
+```
+
 
 
 
@@ -7456,7 +8339,7 @@ Note that any room can contain threats or power-ups, even the first room the kni
 
 ---
 
-# systemm design
+# system design
 
 https://github.com/donnemartin/system-design-primer
 
