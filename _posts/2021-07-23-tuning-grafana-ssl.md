@@ -2,7 +2,7 @@
 title: Тюнинг Grafana. Ставим SSL
 author: Кирьянов Артем
 date: 2021-07-23 11:00:00 +0300
-categories: [it, devops,monitoring]
+categories: [IT, DevOps]
 tags: [monitoring,grafana,prometheus]
 ---
 
