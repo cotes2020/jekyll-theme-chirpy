@@ -2,7 +2,7 @@
 title: Настройка VPN  in Docker
 author: Кирьянов Артем
 date: 2021-08-20 11:00:00 +0300
-categories: [it, devops,vpm]
+categories: [IT, DevOps]
 tags: [vpn,docker]
 ---
 
