@@ -74,8 +74,8 @@ post:
   relate_posts: Читать далее
   share: Поделиться
   button:
-    next: Следующее
-    previous: Предыдущий
+    next: Следующая
+    previous: Предыдущая
     copy_code:
       succeed: Скопированный!
     share_link:
