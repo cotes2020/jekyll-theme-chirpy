@@ -23,9 +23,9 @@ search:
   no_results: Упс! Результат не найден.
 
 panel:
-  lastmod: Recent Update
-  trending_tags: Trending Tags
-  toc: Contents
+  lastmod: Недавнее обновление
+  trending_tags: Популярные теги
+  toc: Содержимое
 
 #  The liquid date format › http://strftime.net/
 date_format:
@@ -43,48 +43,48 @@ copyright:
     link: https://creativecommons.org/licenses/by/4.0/
 
   # Displayed in the footer
-  brief: Some rights reserved.
+  brief: Некоторые права защищены.
   verbose: >-
-    Except where otherwise noted, the blog posts on this site are licensed
-    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+    За исключением случаев, когда указано иное, записи в блоге на этом сайте лицензированы
+    в соответствии с лицензией Creative Commons Attribution 4.0 International (CC BY 4.0) автором.
 
-meta: Powered by :PLATFORM with :THEME theme.
+meta: Созданно с помощью :PLATFORM с :THEME темой.
 
 not_found:
-  statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
-  hint_template: :HEAD_BAK to try finding it again, or search for it on the :ARCHIVES_PAGE.
-  head_back: Head back Home
-  archives_page: Archives page
+  statment: Извините, мы не туда поместили этот URL-адрес или он указывает на то, чего не существует.
+  hint_template: :HEAD_BAK чтобы попытаться найти его снова или выполнить поиск на :ARCHIVES_PAGE.
+  head_back: Вернуться на главную
+  archives_page: Страница архивов
 
 # ----- Posts related labels -----
 
 post:
   published: 'on'
-  updated: Updated
+  updated: Обновленный
   timeago:
-    day: days ago
-    hour: hours ago
-    minute: minutes ago
-    just_now: just now
-  words: words
-  pageview_measure: views
+    day: день назад
+    hour: час назад
+    minute: минуту назад
+    just_now: сейчас
+  words: слова
+  pageview_measure: виды
   read_time:
-    unit: min
-    prompt: read
-  relate_posts: Further Reading
-  share: Share
+    unit: мин
+    prompt: читать
+  relate_posts: Читать далее
+  share: Поделиться
   button:
-    next: Newer
-    previous: Older
+    next: Следующее
+    previous: Предыдущий
     copy_code:
-      succeed: Copied!
+      succeed: Скопированный!
     share_link:
-      title: Copy link
-      succeed: Link copied successfully!
+      title: Скопированная ссылка
+      succeed: Ссылка успешно скопированна!
   # pinned prompt of posts list on homepage
-  pin_prompt: Pinned
+  pin_prompt: Закреплено
 
 # categories page
 categories:
-  category_measure: categories
-  post_measure: posts
+  category_measure: категории
+  post_measure: посты
