@@ -2,7 +2,7 @@
 title: "Factorials as Invariant Points"
 description: "Revisiting the extended factorial"
 categories: [analysis]
-tags: [factorials]
+tags: [gamma function]
 ---
 
 In '[Deriving the Gamma Function from Scratch]({% post_url 2021-10-14-gamma-function-from-scratch %})', we investigated the analytic origin of the extended factorial. Namely, it comes from the complex solution for the functional equation of the discrete factorial function.
