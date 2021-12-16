@@ -69,7 +69,7 @@ Also, let us _define_ that temporally, two cakes are different cakes altogether 
 
 The image below tries to visualize the 'magic cut':
 
-![The impossible cut](https://raw.githubusercontent.com/Booodaness/tempus_spatium/gh-pages/assets/images/2021-10-26-impossible-cut/impossible_cut.png)
+![The impossible cut](https://raw.githubusercontent.com/Booodaness/tempus_spatium/master/assets/images/2021-10-26-impossible-cut/impossible_cut.png)
 
 ## Conclusion
 
