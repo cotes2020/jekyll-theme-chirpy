@@ -59,8 +59,7 @@ not_found:
 # ----- Posts related labels -----
 
 post:
-  written_by: Oleh
-  posted: Diterbitkan
+  published: "pada"
   updated: Diperbarui
   timeago:
     day: hari yang lalu

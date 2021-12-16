@@ -13,13 +13,9 @@ layout: compress
   {% endif %}
 {% endcapture %}
 
-<html lang="{{ site.lang }}"{{ prefer_mode }}>
+<html lang="{{ site.lang }}" {{ prefer_mode }}>
 
   {% include head.html %}
-
-  {% unless site.theme_mode %}
-    {% include mode-toggle.html %}
-  {% endunless %}
 
   <body data-spy="scroll" data-target="#toc">
 
@@ -30,7 +26,7 @@ layout: compress
     <div id="main-wrapper">
       <div id="main">
 
-        {{ content }}
+        {% include refactor-content.html content=content %}
 
         {% include footer.html %}
 

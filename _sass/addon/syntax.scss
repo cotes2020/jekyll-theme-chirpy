@@ -38,8 +38,13 @@ $code-radius: 6px;
 }
 
 %code-snippet-padding {
-  padding-left: 1rem;
-  padding-right: 1.5rem;
+  padding: 1.2rem;
+}
+
+div > pre {
+  @extend %code-snippet-bg;
+  @extend %code-snippet-radius;
+  @extend %code-snippet-padding;
 }
 
 .highlighter-rouge {
@@ -60,8 +65,6 @@ $code-radius: 6px;
   }
 
   overflow: auto;
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
 
   pre {
     margin-bottom: 0;
@@ -71,10 +74,18 @@ $code-radius: 6px;
   }
 
   table {
+    padding: 0;
+    border: 0;
+
     td pre {
       overflow: visible;  /* Fixed iOS safari overflow-x */
       word-break: normal; /* Fixed iOS safari linenos code break */
     }
+  }
+
+  td {
+    padding: 0;
+    border: 0;
   }
 
   .lineno {
@@ -110,26 +121,22 @@ code {
     background-color: var(--inline-code-bg);
   }
 
-  a > &.highlighter-rouge {
+  @at-root a > &.highlighter-rouge {
     padding-bottom: 0; // show link's underlinke
     color: inherit;
   }
 
-  a:hover > &.highlighter-rouge {
+  @at-root a:hover > &.highlighter-rouge {
     border-bottom: none;
   }
 
   blockquote &.highlighter-rouge {
     color: inherit;
   }
-
-  .highlight > & {
-    color: transparent;
-  }
 }
 
 td.rouge-code {
-  @extend %code-snippet-padding;
+  padding: 1.2rem 1.5rem 1.2rem 1rem;
 
   // Prevent some browser extends from
   // changing the URL string of code block.
@@ -153,80 +160,62 @@ div {
     }
 
     td.rouge-code {
-      padding-left: 1.5rem;
+      @extend %code-snippet-padding;
     }
   }
 }
 
 .code-header {
-  @extend %no-cursor;
-
-  $code-header-height: 2.25rem;
-
+  background: var(--code-header-bg);
   border-top-left-radius: $code-radius;
   border-top-right-radius: $code-radius;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: $code-header-height;
+  line-height: 1.85rem;
 
-  &::before {
-    $dot-size: 0.75rem;
-    $dot-margin: 0.5rem;
+  // icons
+  i {
+    font-size: 1rem;
+    color: var(--lang-badge-muted-color);
 
-    content: "";
-    display: inline-block;
-    margin-left: 1rem;
-    width: $dot-size;
-    height: $dot-size;
-    border-radius: 50%;
-    background-color: var(--code-header-muted-color);
-    box-shadow:
-      ($dot-size + $dot-margin) 0 0 var(--code-header-muted-color),
-      ($dot-size + $dot-margin) * 2 0 0 var(--code-header-muted-color);
+    &.small {
+      font-size: 70%;
+    }
   }
 
   // the label block
   span {
-    // label icon
-    i {
-      font-size: 1rem;
-      margin-right: 0.4rem;
-      color: var(--code-header-icon-color);
+    padding-left: 0.35rem;
 
-      &.small {
-        font-size: 70%;
-      }
+    &::after {
+      content: attr(text-data);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--lang-badge-color);
+    }
+
+    i {
+      margin: 0 0.5rem;
     }
 
     @at-root [file] #{&} > i {
       position: relative;
       top: 1px; // center the file icon
+      margin-left: 0.25rem;
     }
 
-    // label text
-    &::after {
-      content: attr(label-text);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--code-header-text-color);
-    }
   }
 
   // clipboard
   button {
-    @extend %cursor-pointer;
-
-    border: 1px solid transparent;
+    border: 1px solid var(--code-header-bg);
     border-radius: $code-radius;
-    height: $code-header-height;
-    width: $code-header-height;
     padding: 0;
+    width: 1.95rem;
     background-color: inherit;
 
-    i {
-      color: var(--code-header-icon-color);
-    }
+    @extend %cursor-pointer;
 
     &[timeout] {
       &:hover {

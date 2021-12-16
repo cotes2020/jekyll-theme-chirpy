@@ -58,8 +58,7 @@ not_found:
 # ----- Posts related labels -----
 
 post:
-  written_by: 作者
-  posted: 发表于
+  published: 发表于
   updated: 更新于
   timeago:
     day: 天前

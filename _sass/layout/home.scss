@@ -74,14 +74,10 @@
     .post-meta {
       i {
         font-size: 0.73rem;
-
-        &:not(:first-child) {
-          margin-left: 1.2rem;
-        }
       }
 
-      em {
-        @extend %normal-font-style;
+      span:not(:last-child) {
+        margin-right: 1.2rem;
       }
     }
 

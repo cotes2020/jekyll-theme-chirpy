@@ -1,19 +1,15 @@
 ---
 title: Writing a New Post
-author:
-  name: Cotes Chung
-  link: https://github.com/cotes2020
+author: Cotes Chung
 date: 2019-08-08 14:10:00 +0800
 categories: [Blogging, Tutorial]
 tags: [writing]
 render_with_liquid: false
 ---
 
-This post will guide you how to write a post on _Chirpy_ theme. Even if you have previous experience with Jekyll, this article is worth reading, because many features require specific variables to be set.
-
 ## Naming and Path
 
-Create a new file named `YYYY-MM-DD-TITLE.EXTENSION` and put it in the `_posts` of the root directory. Please note that the `EXTENSION` must be one of `md` and `markdown`. If you want to save time of creating files, please consider using the plugin [`Jekyll-Compose`](https://github.com/jekyll/jekyll-compose) to accomplish this.
+Create a new file named `YYYY-MM-DD-TITLE.EXTENSION` and put it in the `_posts/` of the root directory. Please note that the `EXTENSION` must be one of `md` and `markdown`.
 
 ## Front Matter
 
@@ -28,9 +24,9 @@ tags: [TAG]     # TAG names should always be lowercase
 ---
 ```
 
-> **Note**: The posts' _layout_ has been set to `post` by default, so there is no need to add the variable _layout_ in the Front Matter block.
+> **Note**: The posts' ***layout*** has been set to `post` by default, so there is no need to add the variable ***layout*** in the Front Matter block.
 
-### Timezone of Date
+### Timezone of date
 
 In order to accurately record the release date of a post, you should not only set up the `timezone` of `_config.yml` but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
 
@@ -41,17 +37,6 @@ The `categories` of each post are designed to contain up to two elements, and th
 ```yaml
 categories: [Animal, Insect]
 tags: [bee]
-```
-### Author Information
-
-The author information of the post usually does not need to be filled in the _Front Matter_ , they will be obtained from variables `social.name` and the first entry of `social.links` of the configuration file by default. But you can also override it as follows:
-
-```yaml
----
-author:
-  name: Full Name
-  link: https://example.com
----
 ```
 
 ## Table of Contents
@@ -114,8 +99,6 @@ image:
 
 Except for `alt`, all other options are necessary, especially the `width` and `height`, which are related to user experience and web page loading performance. Later section ["Image size"](#image-size) will also mention this.
 
-Starting from _Chirpy v4.4.0_, the attributes `height` and `width` support abbreviations: `height` → `h`, `width` → `w`.
-
 
 ### Image caption
 
@@ -133,13 +116,6 @@ In order to prevent the page content layout from shifting when the image is load
 
 ```markdown
 ![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
-```
-{: .nolineno}
-
-Starting from _Chirpy v4.4.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
-
-```markdown
-![Desktop View](/assets/img/sample/mockup.png){: w="700" h="400" }
 ```
 {: .nolineno}
 
