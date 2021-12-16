@@ -2,7 +2,7 @@
 title: "The Impossible Cut"
 description: "Cakes, cuts and geometry"
 categories: [geometry]
-tags: [Euclidean geometry, spacetime]
+tags: [Euclidean geometry, time, spacetime]
 ---
 
 ## A sweet problem
