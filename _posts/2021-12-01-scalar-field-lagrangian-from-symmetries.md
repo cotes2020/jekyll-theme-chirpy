@@ -2,7 +2,7 @@
 title: "Scalar Field Lagrangian From Symmetries"
 description: "Or, how field theory doesn't leave us much choice"
 categories: [field theory]
-tags: [scalar field theory]
+tags: [scalar field theory, symmetry]
 ---
 
 Welcome to another post on, well, you guessed it: scalar field theory. Today, we will be deriving a Lagrangian density for scalar fields that appears almost everywhere in physics.

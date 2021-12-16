@@ -2,7 +2,7 @@
 title: "Algebra Done Tensorially: Part 2 (Algebras Over Fields)"
 description: "A look at 'algebras' and their structure"
 categories: [abstract algebra, representation theory, tensor algebra]
-tags: [algebras, tensors]
+tags: [tensors]
 ---
 
 Welcome to Part 2 of '_Algebra done Tensorially_'. If you haven't already done so, make sure to check out [Part 1 (Bilinear Products)]({% post_url 2021-10-18-bilinear-products %}) before reading this post :) I will start right from where we stopped in Part 1.

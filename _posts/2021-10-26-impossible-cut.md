@@ -2,7 +2,7 @@
 title: "The Impossible Cut"
 description: "Cakes, cuts and geometry"
 categories: [geometry]
-tags: [Euclidean geometry]
+tags: [Euclidean geometry, spacetime]
 ---
 
 ## A sweet problem
@@ -11,7 +11,7 @@ tags: [Euclidean geometry]
 
 Imagine you have a cake. How can you slice it into $$8$$ pieces in exactly $$3$$ steps? Well, you divide the cake into two, three times, so that the number of pieces compounds to $$2^3 = 8$$ . This can be done by cutting the cake along different planes, in the following manner:
 
-![The most efficient cake-cutting](https://raw.githubusercontent.com/Booodaness/tempus_spatium/master/assets/img/posts/2021-10-26-impossible-cut/slice_cake.png)
+![The most efficient cake-cutting]({{ site.url }}{{ site.baseurl }}/assets/img/posts/2021-10-26-impossible-cut/slice_cake.png)
 
 Notice how the planes of the cuts in the above are mutually orthogonal. If they weren't so, it wouldn't be possible to multiply the number of pieces of the cake by two every slice.
 
@@ -69,7 +69,7 @@ Also, let us _define_ that temporally, two cakes are different cakes altogether 
 
 The image below tries to visualize the 'magic cut':
 
-![The impossible cut](https://raw.githubusercontent.com/Booodaness/tempus_spatium/master/assets/images/2021-10-26-impossible-cut/impossible_cut.png)
+![The impossible cut]({{ site.url }}{{ site.baseurl }}/assets/img/posts/2021-10-26-impossible-cut/impossible_cut.png)
 
 ## Conclusion
 
