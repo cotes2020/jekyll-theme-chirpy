@@ -39,13 +39,13 @@ copyright:
   # Shown at the bottom of the post
   license:
     template: 本文由作者按照 :LICENSE_NAME 进行授权
-    name: CC BY 4.0
-    link: https://creativecommons.org/licenses/by/4.0/
+    name: CC BY-NC-SA 4.0
+    link: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
   # Displayed in the footer
   brief: 保留部分权利。
   verbose: >-
-    除非另有说明，本网站上的博客文章均由作者按照知识共享署名 4.0 国际 (CC BY 4.0) 许可协议进行授权。
+    除非另有说明，本网站上的博客文章均由作者根据知识共享署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 许可协议授权。
 
 meta: 本站由 :PLATFORM 生成，采用 :THEME 主题。
 
@@ -58,7 +58,7 @@ not_found:
 # ----- Posts related labels -----
 
 post:
-  published: 发表于
+  published:
   updated: 更新于
   timeago:
     day: 天前

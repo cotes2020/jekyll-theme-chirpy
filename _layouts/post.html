@@ -17,7 +17,7 @@ layout: default
         <!-- Published date and author -->
         <div>
           <span class="semi-bold">
-            {{ page.author | default: site.social.name }}
+            {{ page.author | default: site.social.name }},
           </span>
           {% capture _preposition %}{{ site.data.locales[lang].post.published }}{% endcapture %}
           {% include timeago.html date=page.date tooltip=true preposition=_preposition %}
@@ -43,6 +43,9 @@ layout: default
           {{ site.data.locales[lang].post.pageview_measure }}
           {% endif %}
 
+          <!-- suggest edits -->
+          {% include suggest_edits.html %}
+
         </div>
 
       </div> <!-- .post-meta -->
@@ -58,6 +61,7 @@ layout: default
         {% endif %}
 
         {{ content }}
+        {% include notes_pdf.html %}
 
       </div>
 
@@ -131,6 +135,8 @@ layout: default
     {% include related-posts.html %}
 
     {% include post-nav.html %}
+
+    {% include giscus.html %}
 
     {% if site.disqus.comments and page.comments %}
       {% include disqus.html %}

@@ -39,14 +39,14 @@ copyright:
   # Shown at the bottom of the post
   license:
     template: Postingan ini dilisensikan di bawah :LICENSE_NAME oleh penulis.
-    name: CC BY 4.0
-    link: https://creativecommons.org/licenses/by/4.0/
+    name: CC BY-NC-SA 4.0
+    link: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
   # Displayed in the footer
   brief: Sebagian konten dilindungi.
   verbose: >-
     Kecuali jika dinyatakan, Postingan blog di situs ini dilisensikan
-    di bawah Lisensi Creative Commons Attribution 4.0 International (CC BY 4.0) oleh penulis.
+    di bawah Lisensi Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) oleh penulis.
 
 meta: Didukung oleh :PLATFORM dengan tema :THEME.
 
@@ -59,7 +59,7 @@ not_found:
 # ----- Posts related labels -----
 
 post:
-  published: "pada"
+  published:
   updated: Diperbarui
   timeago:
     day: hari yang lalu

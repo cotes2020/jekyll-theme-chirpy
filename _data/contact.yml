@@ -1,30 +1,33 @@
 #  The contact options.
-
+-
+  type: rss
+  icon: 'fas fa-rss'
+  noblank: true            # open link in current tab
+-
+  type: sitemap
+  icon: fas fa-sitemap
+  url: https://booodaness.github.io/tempus_spatium/sitemap.xml
+  noblank: true
+-
+  type: quora
+  icon: fab fa-quora
+  url: 'https://www.quora.com/profile/Siddhartha-Bhattacharjee-45'
+-
+   type: stack-overflow
+   icon: 'fab fa-stack-overflow'
+   url:  'https://math.stackexchange.com/users/879669/siddhartha-bhattacharjee?tab=profile'
 -
   type: github
   icon: 'fab fa-github'
 -
-  type: twitter
-  icon: 'fab fa-twitter'
+  type: discord
+  icon: fab fa-discord
+  url: 'https://bit.ly/psi-phi-community'
 -
-  type: email
-  icon: 'fas fa-envelope'
-  noblank: true            # open link in current tab
+  type: reddit
+  icon: fab fa-reddit
+  url: 'https://www.reddit.com/user/Booodaness'
 -
-  type: rss
-  icon: 'fas fa-rss'
-  noblank: true
-
-# Uncomment and complete the url below to enable more contact options
-# -
-#   type: mastodon
-#   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your mastodon account page
-# -
-#   type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
-# -
-#   type: stack-overflow
-#   icon: 'fab fa-stack-overflow'
-#   url:  ''                  # Fill with your stackoverflow homepage
+  type: online-sequencer
+  icon: fas fa-th
+  url: 'https://onlinesequencer.net/members/42571'

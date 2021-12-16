@@ -1,0 +1,63 @@
+\documentclass[12 pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{mathtools, amssymb}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage{geometry}
+\geometry{margin=2.54cm}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={Classical Mechanics Studied Using Trees},
+    }
+\urlstyle{same}
+
+\setlength{\parskip}{1em}
+
+\title{Classical Mechanics Studied Using Trees}
+\author{Booodaness}
+\date{\today}
+
+\clearpage
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\begin{titlepage}
+\maketitle
+\begin{abstract}
+In this document, we examine the logical structure of classical physics using graph theory. Namely, we model the histories of discrete systems as trees with causal structure and some underlying axioms motivated by classical mechanics.
+\end{abstract}
+\end{titlepage}
+
+\setcounter{page}{2}
+
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+
+\section{Graph Theory: Motivation}
+
+\subsection{Discrete systems}
+
+Suppose there is a system $\mathcal{S}$ which updates discretely with time. Let every step i.e. discrete instant in time be labelled by an integer $n$ and the state of $\mathcal{S}$ at the concerned instant as $\sigma \left( n \right)$.
+
+We can imagine that as time passes, $n$ increments in `jumps', as $n, n+1, n+2 \dots$. In accordance, $\sigma \left( n \right)$ updates as $\sigma \left( n \right), \sigma \left( n+1 \right), \sigma \left( n+2 \right), \dots$.
+
+The coordinates of $\mathcal{S}$ at any instant $n$ are $\left( n, \sigma \left( n \right) \right)$. This ordered pair belongs to $\mathbb{Z} \times \mathbb{R}$, called the configuration space of $\mathcal{S}$. Here, we assume that the range of $\sigma$ is $\mathbb{R}$.
+
+The set of all possible coordinates of $\mathcal{S}$ (at different instants) in its configuration space is called its history, or trajectory. In set theoretic notation, the history of $\mathcal{S}$ is $\left\{ \left( n, \sigma \left( n \right) \right) \vert n \in \mathbb{Z} \right\}$.
+
+A visual way of representing the history of a system is to plot the state $\sigma \left( n \right)$ as $n$ updates. For example, if a system's state starts at $0$ and updates by $1$ every unit time interval, its history looks as shown:
+
+\end{document}
