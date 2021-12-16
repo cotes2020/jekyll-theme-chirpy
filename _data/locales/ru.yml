@@ -15,6 +15,7 @@ tabs:
   tags: Теги
   archives: Архивы
   about: Обо мне
+  project: Проекты
 
 # the text displayed in the search bar & search results
 search:
