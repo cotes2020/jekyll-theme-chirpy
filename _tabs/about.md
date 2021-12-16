@@ -7,7 +7,7 @@ mermaid: true
 
 The universe we live in is a strange one. Tangible reality is best understood using physics; yet, its language, mathematics, is one of the most abstract constructs that the human mind has ever conceived. What is the true nature of objective reality — is it represented by the tangible, physical elements of this world, or the nearly metaphysical structures that we invented to grasp the deepest workings of the Cosmos?
 
-The deep connection between physics and mathematics is a grand arena where exploration has just begun. In this age of discovery, it is crucial to investigate the marvels of physics and mathematics that festoon the road to reality. Only then can we truly understand our own existence. In the words of the famous poet T. S. Eliot,
+The deep connection between physics and mathematics is a grand arena where exploration has just begun. In this age of discovery, it is crucial to investigate the marvels of physics and mathematics that festoon the road to reality. Only then can we truly understand our own existence. In the words of the famous poet _T. S. Eliot_,
 
 > We shall not cease from exploration <br>
 And the end of all our exploring <br>

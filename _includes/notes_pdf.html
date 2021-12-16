@@ -1,5 +1,6 @@
-{% if page.notes == 'true' %}
+{% if page.notes == true %}
+  {% assign anchor_url = site.url | append: site.baseurl %}
   {% assign name = page.path | remove: '_notes/' | remove: '.md' %}
-  {% assign pdf_link = site.repository | append: site.default_branch | append: '/assets/notes/' | append: name | append: '/' | append: name | append: '.pdf' %}
-  <iframe src="{{ pdf_link }}#view=fitH" title="{{ page.title }}" height="100%" width="100%"></iframe>
+  {% assign pdf_link = anchor_url | append: '/assets/notes/' | append: name | append: '/' | append: name | append: '.pdf' | append: '#view=fitH' %}
+  <iframe src="{{ pdf_link }}" title="{{ page.title }}" height="1000" width="100%"></iframe>
 {% endif %}

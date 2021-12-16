@@ -26,7 +26,7 @@ description: >-                        # used by seo meta and the atom feed
   Physics, mathematics and philosophy. By Siddhartha Bhattacharjee.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://booodaness.github.io/'
+url: 'https://booodaness.github.io'
 repository: 'https://github.com/Booodaness/tempus_spatium'
 default_branch: 'master'
 
