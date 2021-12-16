@@ -176,4 +176,4 @@ At long last, we can confidently say that we have found the extended factorial f
 
 This brings us to the end of our little endeavour. Clearly, it was a not an easy one, but in Euler's own words,
 
-> "_Logic is the foundation of the certainty of all the knowledge we acquire._" — Leonhard Euler
+> Logic is the foundation of the certainty of all the knowledge we acquire.
