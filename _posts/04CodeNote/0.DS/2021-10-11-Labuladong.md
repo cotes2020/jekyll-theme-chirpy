@@ -31,23 +31,23 @@ toc: true
     - [有序数组去重 `快慢指针前后走`](#有序数组去重-快慢指针前后走)
     - [有序链表去重 `快慢指针前后走，slow.next = null; return head`](#有序链表去重-快慢指针前后走slownext--null-return-head)
     - [移除元素 `快慢指针前后走`](#移除元素-快慢指针前后走)
-    - [移除0 `快慢指针前后走`](#移除0-快慢指针前后走)
+    - [283. Move Zeroes 移除0 `快慢指针前后走`](#283-move-zeroes-移除0-快慢指针前后走)
   - [TWOSUM问题](#twosum问题)
-    - [TwoSum I](#twosum-i)
-    - [TwoSum II](#twosum-ii)
+    - [1. Two Sum](#1-two-sum)
+    - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
   - [前缀和技巧](#前缀和技巧)
-    - [计算索引区间/list中指定位置的和 `preSum[i] = preSum[i - 1] + nums[i - 1];`](#计算索引区间list中指定位置的和-presumi--presumi---1--numsi---1)
-    - [和为k的子数组 `if (preSum[j] == preSum[i] - k) res++;`](#和为k的子数组-if-presumj--presumi---k-res)
-    - [二维区域和检索 `图像块之间相互减`](#二维区域和检索-图像块之间相互减)
+    - [303. Range Sum Query - Immutable 计算索引区间/list中指定位置的和 `preSum[i] = preSum[i - 1] + nums[i - 1];`](#303-range-sum-query---immutable-计算索引区间list中指定位置的和-presumi--presumi---1--numsi---1)
+    - [560. Subarray Sum Equals K 和为k的子数组 `if (preSum[j] == preSum[i] - k) res++;`](#560-subarray-sum-equals-k-和为k的子数组-if-presumj--presumi---k-res)
+    - [304. Range Sum Query 2D - Immutable 二维区域和检索 `图像块之间相互减`](#304-range-sum-query-2d---immutable-二维区域和检索-图像块之间相互减)
   - [差分](#差分)
     - [差分数组 `increment(i,j,val)->{diff[i]+=val; diff[j+1]-=val;`](#差分数组-incrementijval-diffival-diffj1-val)
     - [370. 区间加法（中等）`Difference df = new Difference(nums); df.increment(i, j, val);`](#370-区间加法中等difference-df--new-differencenums-dfincrementi-j-val)
-    - [1109 题「航班预订统计」](#1109-题航班预订统计)
+    - [1109. Corporate Flight Bookings 航班预订统计](#1109-corporate-flight-bookings-航班预订统计)
     - [1094 题「拼车」](#1094-题拼车)
 - [LinkedList](#linkedlist)
   - [单链表的六大解题套路](#单链表的六大解题套路)
     - [合并两个有序链表 Merge 2 Sorted Lists](#合并两个有序链表-merge-2-sorted-lists)
-    - [合并 k 个有序链表 Merge k Sorted Lists](#合并-k-个有序链表-merge-k-sorted-lists)
+    - [23. Merge k Sorted Lists 合并 k 个有序链表 Merge k Sorted Lists](#23-merge-k-sorted-lists-合并-k-个有序链表-merge-k-sorted-lists)
   - [双指针](#双指针)
     - [寻找单链表的倒数n节点](#寻找单链表的倒数n节点)
     - [remove单链表的倒数n节点](#remove单链表的倒数n节点)
@@ -72,9 +72,9 @@ toc: true
     - [反转数组](#反转数组)
     - [滑动窗口技巧 `right++, missing==0, left++`](#滑动窗口技巧-right-missing0-left)
       - [最小覆盖子串](#最小覆盖子串)
-      - [字符串排列](#字符串排列)
-      - [找所有字母异位词](#找所有字母异位词)
-      - [最长无重复子串](#最长无重复子串)
+      - [567. Permutation in String 字符串排列](#567-permutation-in-string-字符串排列)
+      - [438. Find All Anagrams in a String 找所有字母异位词](#438-find-all-anagrams-in-a-string-找所有字母异位词)
+      - [3. Longest Substring Without Repeating Characters 最长无重复子串](#3-longest-substring-without-repeating-characters-最长无重复子串)
   - [链表的环](#链表的环)
     - [判断单链表是否包含环](#判断单链表是否包含环)
     - [计算链表中环起点](#计算链表中环起点)
@@ -86,8 +86,8 @@ toc: true
   - [回文链表](#回文链表)
     - [寻找回文](#寻找回文)
     - [判断回文链表 - 双指针技巧](#判断回文链表---双指针技巧)
-      - [判断回文链表number](#判断回文链表number)
-      - [判断回文链表String](#判断回文链表string)
+      - [9. Palindrome Number 判断回文链表number](#9-palindrome-number-判断回文链表number)
+      - [125. Valid Palindrome 判断回文链表String](#125-valid-palindrome-判断回文链表string)
       - [判断回文单链表 - 把原始链表反转存入一条新的链表，然后比较](#判断回文单链表---把原始链表反转存入一条新的链表然后比较)
       - [判断回文单链表 - 二叉树后序遍历](#判断回文单链表---二叉树后序遍历)
       - [判断回文单链表 - 用栈结构倒序处理单链表](#判断回文单链表---用栈结构倒序处理单链表)
@@ -135,8 +135,14 @@ toc: true
 - [Binary Heap 二叉堆](#binary-heap-二叉堆)
   - [最大堆和最小堆](#最大堆和最小堆)
 - [Graphy](#graphy)
+  - [DFS backtrack 回溯算法](#dfs-backtrack-回溯算法)
+    - [46. Permutations 全排列问题 ??????????/](#46-permutations-全排列问题-)
+      - [Iterative Solution](#iterative-solution)
+      - [Recursive Backtracking using visited array](#recursive-backtracking-using-visited-array)
+    - [51. N-Queens N 皇后问题 ??????????](#51-n-queens-n-皇后问题-)
+    - [78. Subsets 子集（中等）](#78-subsets-子集中等)
+    - [90. Subsets II](#90-subsets-ii)
   - [图的遍历](#图的遍历-1)
-    - [DFS](#dfs)
     - [转换成图](#转换成图)
     - [所有可能路径](#所有可能路径)
     - [判断有向图是否存在环](#判断有向图是否存在环)
@@ -177,22 +183,31 @@ toc: true
 - [动态规划](#动态规划)
   - [斐波那契数列](#斐波那契数列)
   - [凑零钱问题 ` for i, for coin, dp[i] = Math.min(dp[i], dp[i-coin]+1);`](#凑零钱问题--for-i-for-coin-dpi--mathmindpi-dpi-coin1)
-    - [动态规划解法](#动态规划解法)
-      - [最小路径和（中等）](#最小路径和中等)
-      - [931 题「下降路径最小和」](#931-题下降路径最小和)
-      - [174.地下城游戏 ????????????](#174地下城游戏-)
+  - [动态规划解法](#动态规划解法)
+    - [64. Minimum Path Sum 最小路径和（中等）](#64-minimum-path-sum-最小路径和中等)
+    - [931. Minimum Falling Path Sum 下降路径最小和](#931-minimum-falling-path-sum-下降路径最小和)
+    - [174. Dungeon Game 地下城游戏 ????????????](#174-dungeon-game-地下城游戏-)
+    - [514. Freedom Trail 自由之路（困难）??????](#514-freedom-trail-自由之路困难)
+  - [加权有向图 最短路径](#加权有向图-最短路径)
+    - [787. K 站中转内最便宜的航班（中等）](#787-k-站中转内最便宜的航班中等)
   - [子序列](#子序列)
-    - [300 最长递增子序列](#300-最长递增子序列)
-    - [1143 最长公共子序列](#1143-最长公共子序列)
-    - [583 两个字符串的删除操作](#583-两个字符串的删除操作)
-    - [712 最小 ASCII 删除和](#712-最小-ascii-删除和)
-    - [5 最长回文子序列](#5-最长回文子序列)
-    - [516 最长回文子序列长度](#516-最长回文子序列长度)
-    - [494 目标和](#494-目标和)
-    - [72 编辑距离（困难）](#72-编辑距离困难)
-    - [354 俄罗斯套娃信封问题（困难）](#354-俄罗斯套娃信封问题困难)
+    - [300. Longest Increasing Subsequence 最长递增子序列](#300-longest-increasing-subsequence-最长递增子序列)
+    - [1143. Longest Common Subsequence 最长公共子序列](#1143-longest-common-subsequence-最长公共子序列)
+    - [583. Delete Operation for Two Strings 两个字符串的删除操作](#583-delete-operation-for-two-strings-两个字符串的删除操作)
+    - [712. Minimum ASCII Delete Sum for Two Strings 最小 ASCII 删除和](#712-minimum-ascii-delete-sum-for-two-strings-最小-ascii-删除和)
+    - [5. Longest Palindromic Substring 最长回文子序列](#5-longest-palindromic-substring-最长回文子序列)
+    - [516. Longest Palindromic Subsequence 最长回文子序列长度](#516-longest-palindromic-subsequence-最长回文子序列长度)
+    - [494. Target Sum 目标和](#494-target-sum-目标和)
+      - [回溯思路](#回溯思路)
+      - [消除重叠子问题](#消除重叠子问题)
+    - [72. Edit Distance 编辑距离（困难）](#72-edit-distance-编辑距离困难)
+    - [354. Russian Doll Envelopes 俄罗斯套娃信封问题（困难）](#354-russian-doll-envelopes-俄罗斯套娃信封问题困难)
     - [53 最大子序和（简单)](#53-最大子序和简单)
   - [背包类型问题](#背包类型问题)
+    - [子集背包问题](#子集背包问题)
+      - [416. Partition Equal Subset Sum 分割等和子集（中等）](#416-partition-equal-subset-sum-分割等和子集中等)
+      - [698. Partition to K Equal Sum Subsets](#698-partition-to-k-equal-sum-subsets)
+      - [215. Kth Largest Element in an Array](#215-kth-largest-element-in-an-array)
 - [system design](#system-design)
 
 
@@ -221,6 +236,12 @@ toc: true
 2. HashMap
 
 ```java
+
+StringBuilder sb = new StringBuilder();
+StringBuilder.append('.');
+StringBuilder.insert(pos[i],'Q');
+StringBuilder.toString() 
+
 String Str1 = new String("Welcome to Tutorialspoint.com");
 String.length()
 String.toCharArray()
@@ -261,13 +282,14 @@ Queue.poll();
 Queue.peek();
 Queue.isEmpty();
 
+
 List<int[]>[] graph = new LinkedList[n+1];
-
-
+List<List<String>> res = new ArrayList<List<String>>();
 List<int[]> res = new ArrayList<>();
 List<Integer> res = new ArrayList<>();
-List.length();
-
+List.length;
+List.add(a);
+List.remove(i);
 
 
 
@@ -280,6 +302,7 @@ LinkedList.getLast();
 LinkedList.addLast();
 LinkedList.pollLast();
 LinkedList.isEmpty();
+LinkedList.removeLast();
 
 
 HashMap<Integer, Integer> KeyVal = new HashMap<>();
@@ -930,7 +953,7 @@ def removeElement(nums: List[int], val: int) -> int:
 
 ---
 
-### 移除0 `快慢指针前后走`
+### 283. Move Zeroes 移除0 `快慢指针前后走`
 
 [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)
 
@@ -1061,7 +1084,7 @@ int[] twoSum(int[] nums, int target) {
 
 ---
 
-### TwoSum I
+### 1. Two Sum
 
 [1. Two Sum](https://leetcode.com/problems/two-sum/)
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -1110,7 +1133,7 @@ int[] twoSum(int[] nums, int target) {
 
 ---
 
-### TwoSum II
+### 167. Two Sum II - Input Array Is Sorted
 
 
 [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
@@ -1185,7 +1208,7 @@ public int[] twoSum(int[] numbers, int target) {
 
 ## 前缀和技巧
 
-### 计算索引区间/list中指定位置的和 `preSum[i] = preSum[i - 1] + nums[i - 1];`
+### 303. Range Sum Query - Immutable 计算索引区间/list中指定位置的和 `preSum[i] = preSum[i - 1] + nums[i - 1];`
 
 [303. Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/)
 - Given an integer array nums, handle multiple queries of the following type:
@@ -1270,7 +1293,7 @@ for (int i = 1; i < count.length; i++)
 
 ---
 
-### 和为k的子数组 `if (preSum[j] == preSum[i] - k) res++;`
+### 560. Subarray Sum Equals K 和为k的子数组 `if (preSum[j] == preSum[i] - k) res++;`
 
 [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
 - Given an array of integers nums and an integer k,
@@ -1325,7 +1348,7 @@ int subarraySum(int[] nums, int k) {
 
 ---
 
-### 二维区域和检索 `图像块之间相互减`
+### 304. Range Sum Query 2D - Immutable 二维区域和检索 `图像块之间相互减`
 
 [youtube](https://www.youtube.com/watch?v=PwDqpOMwg6U)
 
@@ -1446,7 +1469,7 @@ int[] getModifiedArray(int length, int[][] updates) {
 
 ---
 
-### 1109 题「航班预订统计」
+### 1109. Corporate Flight Bookings 航班预订统计
 
 [1109. Corporate Flight Bookings](https://leetcode.com/problems/corporate-flight-bookings/)
 - There are n flights that are labeled from 1 to n.
@@ -1684,7 +1707,7 @@ class Solution:
         p.next = l1 or l2
         return dummy.next
 
-    # recursively    
+    # recursively
     def mergeTwoLists(self, l1, l2):
         if not l1 or not l2:
              return l1 or l2
@@ -1695,7 +1718,7 @@ class Solution:
             l2.next = self.mergeTwoLists(l1, l2.next)
             return l2
 
-    # recursively    
+    # recursively
     def mergeTwoLists(self, a, b):
         if a and b:
             if a.val > b.val:
@@ -1703,7 +1726,7 @@ class Solution:
             a.next = self.mergeTwoLists(a.next, b)
         return a or b
 
-    # in-place, iteratively        
+    # in-place, iteratively
     def mergeTwoLists(self, l1, l2):
         if None in (l1, l2):
             return l1 or l2
@@ -1721,15 +1744,15 @@ class Solution:
             cur = cur.next
         cur.next = l1 or l2
         return dummy.next
-```                
+```
 
 
 
 ---
 
-### 合并 k 个有序链表 Merge k Sorted Lists
+### 23. Merge k Sorted Lists 合并 k 个有序链表 Merge k Sorted Lists
 
-> 23. Merge k Sorted Lists
+[23. Merge k Sorted Lists]
 
 合并 k 个有序链表的逻辑类似合并两个有序链表
 
@@ -2702,7 +2725,7 @@ class Solution {
 ---
 
 
-#### 字符串排列
+#### 567. Permutation in String 字符串排列
 
 [567. Permutation in String](https://leetcode.com/problems/permutation-in-string/)
 
@@ -2796,7 +2819,7 @@ class Solution {
 ---
 
 
-#### 找所有字母异位词
+#### 438. Find All Anagrams in a String 找所有字母异位词
 
 [438. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
 
@@ -2854,7 +2877,7 @@ class Solution {
 ---
 
 
-#### 最长无重复子串
+#### 3. Longest Substring Without Repeating Characters 最长无重复子串
 
 [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
@@ -3200,9 +3223,9 @@ string palindrome(string& s, int l, int r) {
 ---
 
 
-#### 判断回文链表number
+#### 9. Palindrome Number 判断回文链表number
 
-9. Palindrome Number
+[9. Palindrome Number]
 - Given an integer x, return true if x is palindrome integer.
 - An integer is a palindrome when it reads the same backward as forward.
 - For example, 121 is palindrome while 123 is not.
@@ -3210,10 +3233,10 @@ string palindrome(string& s, int l, int r) {
 
 ---
 
-#### 判断回文链表String
+#### 125. Valid Palindrome 判断回文链表String
 
 
-125. Valid Palindrome
+[125. Valid Palindrome]
 - A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
 - Given a string s, return true if it is a palindrome, or false otherwise.
 - Input: s = "A man, a plan, a canal: Panama"
@@ -3239,10 +3262,10 @@ class Solution {
 public boolean isPalindrome(String s){
     char[] charMap = new char[256];
     for (int i = 0; i < 10; i++)
-        charMap['0'+i] = (char) (1+i);  
+        charMap['0'+i] = (char) (1+i);
         // numeric - don't use 0 as it's reserved for illegal chars
     for (int i = 0; i < 26; i++)
-        charMap['a'+i] = charMap['A'+i] = (char) (11+i);  
+        charMap['a'+i] = charMap['A'+i] = (char) (11+i);
         //alphabetic, ignore cases, continue from 11
     for (int start = 0, end = s.length()-1; start < end;) {
         // illegal chars
@@ -3537,7 +3560,7 @@ class MyStack {
     /** 添加元素到栈顶 */
     public void push(int x){
         q.offer(x);
-        top = x;        
+        top = x;
     };
 
     /** 删除栈顶的元素并返回 */
@@ -4891,6 +4914,519 @@ public class MaxPQ
 
 ---
 
+## DFS backtrack 回溯算法
+
+
+回溯算法其实就是我们常说的 DFS 算法，本质上就是一种暴力穷举算法。
+- 1、路径：也就是已经做出的选择。
+- 2、选择列表：也就是你当前可以做的选择。
+- 3、结束条件：也就是到达决策树底层，无法再做选择的条件。
+
+这也是回溯算法的一个特点，不像动态规划存在重叠子问题可以优化，回溯算法就是纯暴力穷举，复杂度一般都很高。
+
+```java
+// 防止重复遍历同一个节点
+boolean[] visited;
+// 从节点 s 开始 BFS 遍历，将遍历过的节点标记为 true
+void traverse(List<Integer>[] graph, int s) {
+    if (visited[s]) return; 
+    /* 前序遍历代码位置 */
+    // 将当前节点标记为已遍历
+    visited[s] = true;
+    for (int t : graph[s]) traverse(graph, t); 
+    /* 后序遍历代码位置 */
+}
+
+result = []
+def backtrack(路径, 选择列表):
+    if 满足结束条件:
+        result.add(路径)
+        return
+    
+    for 选择 in 选择列表:
+        做选择
+        backtrack(路径, 选择列表)
+        撤销选择
+```
+
+---
+
+### 46. Permutations 全排列问题 ??????????/
+
+[46. Permutations](https://leetcode.com/problems/permutations/)
+
+Given an array nums of distinct integers, return all the possible permutations. 
+You can return the answer in any order.
+
+Example 1:
+
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+
+
+
+#### Iterative Solution
+
+```java
+/**
+ * Iterative Solution
+ *
+ * The idea is to add the nth number in every possible position of each
+ * permutation of the first n-1 numbers.
+ *
+ * Time Complexity: O(N * N!). Number of permutations = P(N,N) = N!. Each permutation takes O(N) to construct
+ * T(n) = (x=2->n) ∑ (x-1)!*x(x+1)/2
+ *      = (x=1->n-1) ∑ (x)!*x(x-1)/2
+ *      = O(N * N!)
+ * Space Complexity: O((N-1) * (N-1)!) = O(N * N!). All permutations of the first n-1 numbers.
+ */
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (nums == null || nums.length == 0) return result; 
+        result.add(Arrays.asList(nums[0]));
+
+        for (int i = 1; i < nums.length; i++) {
+            List<List<Integer>> newResult = new ArrayList<>();
+            for (List<Integer> cur : result) {
+                for (int j = 0; j <= i; j++) {
+                    List<Integer> newCur = new ArrayList<>(cur);
+                    newCur.add(j, nums[i]);
+                    newResult.add(newCur);
+                }
+            }
+            result = newResult;
+        }
+        return result;
+    }
+}
+```
+
+
+
+
+
+#### Recursive Backtracking using visited array
+
+```java
+// Runtime: 1 ms, faster than 94.15% of Java online submissions for Permutations.
+// Memory Usage: 39.2 MB, less than 76.83% of Java online submissions for Permutations.
+// Time Complexity: O(N * N!). Number of permutations = P(N,N) = N!. Each permutation takes O(N) to construct
+//  * T(n) = n*T(n-1) + O(n)
+//  * T(n-1) = (n-1)*T(n-2) + O(n)
+//  * ...
+//  * T(2) = (2)*T(1) + O(n)
+//  * T(1) = O(n)
+// Space Complexity: O(N). Recursion stack + visited array
+
+class Solution { 
+    public List<List<Integer>> permute(int[] nums) {
+        if (nums == null || nums.length == 0) return result; 
+        // 记录「路径」
+        List<List<Integer>> res = new LinkedList<>();
+        LinkedList<Integer> track = new LinkedList<>();
+        boolean[] used = new boolean[nums.length];
+        backtrack(track, used, res, nums);
+        return res;
+    }
+
+    // 从节点 s 开始 BFS 遍历，将遍历过的节点标记为 true
+    void backtrack(LinkedList<Integer> track, boolean[] used, List<List<Integer>> res, int[] nums) {
+        // 触发结束条件
+        if (track.size() == nums.length) {
+            res.add(new LinkedList(track));
+            return;
+        }
+        for(int i=0; i<nums.length; i++){
+            // skip used letters
+            if (used[i]) continue;
+            // add letter to permutation, mark letter as used
+            track.add(nums[i]);
+            used[i] = true;
+            backtrack(track, used, res, nums);
+            // remove letter from permutation, mark letter as unused
+            track.removeLast();
+            used[i] = false;
+        }
+    }
+}
+```
+
+
+---
+
+
+### 51. N-Queens N 皇后问题 ??????????
+
+[51. N-Queens](https://leetcode.com/problems/n-queens/)
+
+The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+
+Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
+
+Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
+
+
+```java
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        List<List<String>> res = new ArrayList<List<String>>();
+        int[] pos = new int[n];
+        dfs(pos, 0, n, res);
+        return res;
+    }
+
+    public void dfs(int[] pos, int step, int n, List<List<String>> list) {
+        if(step==n) {
+            ArrayList<String> ls = printboard(pos,n);
+            res.add(new ArrayList<String>(ls));
+            return;
+        }
+        for(int i=0;i<n;i++) {
+            pos[step]=i;
+            if(isvalid(pos,step)) dfs(pos,step+1,n,list); 
+        }
+    }
+
+    public boolean isvalid(int[] pos, int step) {
+        for(int i=0;i<step;i++) {
+            if( pos[i]==pos[step] || (Math.abs(pos[i]-pos[step]))==(step-i) ) return false;
+        }
+        return true;
+    }
+
+    public ArrayList<String> printboard(int[] pos,int n) {
+        ArrayList<String> ls=new ArrayList<String>();
+        for(int i=0;i<n;i++) {
+            StringBuilder sb = new StringBuilder();
+            for(int j=0;j<n-1;j++) sb.append('.');
+            sb.insert(pos[i],'Q');
+            ls.add(sb.toString());
+        }
+        return ls;
+    }
+}
+```
+
+
+
+```java
+/**
+ * Space Optimized Backtracking 
+ * Total number of permutations can be found by this equation
+ * T(N) = N * T(N-1) + O(N)
+ * T(N-1) = (N-1) * T(N-2) + O(N)
+ * T(N-2) = (N-2) * T(N-3) + O(N)
+ * T(N-3) = (N-3) * T(N-4) + O(N)
+ * ...
+ * T(2) = 2 * T(1) + O(N)
+ * T(1) = O(1)
+ * Thus total number of permutations
+ *      = N * (P(N,0) + P(N,1) + ... + P(N, N-2)) + P(N,N-1)
+ *      = N * (e * N! - P(N,N-1) - P(N,N)) + N!
+ *      = ((e-2)*N + 1) * N! 
+        = (0.718 * N + 1) * N! 
+ * Also, if there are S(N) solutions, then time taken to generate these solution will be N^2 * S(N).
+ * Here number of solutions will be much less than the total number of permutations.
+ * Thus we can ignore the time taken for generating and adding the board in the result list. 
+ * Total Time Complexity = O(N * N!) 
+ * Space Complexity:
+ * -> O(N) for queensPos arr
+ * -> O(N) for recursion depth
+ * -> O(1) for occupied BitSet 
+ * Total Space Complexity = O(N) 
+ * N = Input board size.
+ */
+
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        if (n <= 0) throw new IllegalArgumentException("Invalid board"); 
+        List<List<String>> result = new ArrayList<>();
+        int[] queensPos = new int[n];
+        solveNQueensHelper(result, queensPos, new BitSet(5 * n), 0);
+        return result;
+    }
+
+    private void solveNQueensHelper(List<List<String>> result, int[] queensPos, BitSet occupied, int row) {
+        int n = queensPos.length;
+        if (row == n) {
+            result.add(generateResultBoard(queensPos));
+            return;
+        }
+
+        for (int col = 0; col < n; col++) {
+            // First N bits are for columns
+            // Then 2*N bits are for diagonal at 45 degrees
+            // Then 2*N bits are for diagonal at 135 degrees
+            int diag45 = n + (row + col);
+            int diag135 = 3 * n + (n + row - col);
+            if (occupied.get(col) || occupied.get(diag45) || occupied.get(diag135)) continue; 
+
+            occupied.set(col);
+            occupied.set(diag45);
+            occupied.set(diag135);
+            queensPos[row] = col;
+
+            solveNQueensHelper(result, queensPos, occupied, row + 1);
+
+            occupied.clear(col);
+            occupied.clear(diag45);
+            occupied.clear(diag135);
+        }
+    }
+
+    private List<String> generateResultBoard(int[] queensPos) {
+        List<String> temp = new ArrayList<>();
+        char[] b = new char[queensPos.length];
+        Arrays.fill(b, '.');
+        for (int q : queensPos) {
+            b[q] = 'Q';
+            temp.add(new String(b));
+            b[q] = '.';
+        }
+        return temp;
+    }
+}
+```
+
+
+
+
+```java
+vector<vector<string>> res;
+/* 输入棋盘边长 n，返回所有合法的放置 */
+vector<vector<string>> solveNQueens(int n) {
+    // '.' 表示空，'Q' 表示皇后，初始化空棋盘。
+    vector<string> board(n, string(n, '.'));
+    backtrack(board, 0);
+    return res;
+}
+
+// 路径：board 中小于 row 的那些行都已经成功放置了皇后
+// 选择列表：第 row 行的所有列都是放置皇后的选择
+// 结束条件：row 超过 board 的最后一行
+void backtrack(vector<string>& board, int row) {
+    // 触发结束条件
+    if (row == board.size()) {
+        res.push_back(board);
+        return;
+    }
+    int n = board[row].size();
+    for (int col = 0; col < n; col++) {
+        // 排除不合法选择
+        if (!isValid(board, row, col)) continue;
+        // 做选择
+        board[row][col] = 'Q';
+        // 进入下一行决策
+        backtrack(board, row + 1);
+        // 撤销选择
+        board[row][col] = '.';
+    }
+}
+
+/* 是否可以在 board[row][col] 放置皇后？ */
+bool isValid(vector<string>& board, int row, int col) {
+    int n = board.size();
+    // 检查列是否有皇后互相冲突
+    for (int i = 0; i < n; i++) {
+        if (board[i][col] == 'Q') return false;
+    }
+    // 检查右上方是否有皇后互相冲突
+    for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+        if (board[i][j] == 'Q') return false;
+    }
+    // 检查左上方是否有皇后互相冲突
+    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+        if (board[i][j] == 'Q') return false;
+    }
+    return true;
+}
+```
+
+---
+
+### 78. Subsets 子集（中等）
+
+[78. Subsets](https://leetcode.com/problems/subsets/)
+
+Given an integer array nums of unique elements, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+Example 1:
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+Example 2:
+Input: nums = [0]
+Output: [[],[0]]
+
+
+1. 数学归纳 递归结构 Iterative
+   1. [1,2,3] 的子集可以由 [1,2] 追加得出，[1,2] 的子集可以由 [1] 追加得出，base case 显然就是当输入集合为空集时，输出子集也就是一个空集。
+   2. `subset([1,2,3]) = A + [A[i].add(3) for i = 1..len(A)]`
+   3. The idea is simple. We go through the elements in the nums list. For each element, we loop over the current result list we have constructed so far. For each list in the result, we make a copy of this list and append the current element to it (it means picking the element). It is based on the same idea in backtracking (in each step you have choices: pick or not pick).
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Subsets.
+// Memory Usage: 38.8 MB, less than 97.56% of Java online submissions for Subsets.
+/**
+ * Constant Space Iterative Solution 
+ * S(n) = (0 × (n C 0) + 1 × (n C 1) + 2 × (n C 2) + … + n × (n C n))
+ * Note that (n C k) = (n C n-k). Therefore:
+ * S(n) = 0 × (n C n) + 1 × (n C n-1) + 2 × (n C n-2) + … + n × (n C 0)
+ * If we add these two together, we get
+ * 2S(n) = n × (n C 0) + n × (n C 1) + … + n × (n C n)
+ *       = n × (n C 0 + n C 1 + … + n C n)
+ * As per binomial theorem, (n C 0 + n C 1 + … + n C n) = 2^n, so
+ * 2*S(n) = n * 2^n => S(n) = n * 2^(n-1)
+ *
+ * Time Complexity: O(S(N) + n C 0) = O(N * 2^(N-1) + 1) = O(N * 2^N)
+ *
+ * Space Complexity: O(1) (Excluding the result space)
+ *
+ * N = Length of input nums array
+ */
+public List<List<Integer>> subsets(int[] nums) {
+    // Arrays.sort(nums); // make sure subsets are ordered, not needed
+    List<List<Integer>> res = new ArrayList<>();
+    res.add(new ArrayList<>()); // start with empty set
+    for (int i = 0; i < nums.length; ++i) {
+        for (int j = 0, size = res.size(); j < size; ++j) { // remember
+            List<Integer> subset = new ArrayList<>(res.get(j)); // copy a new one
+            subset.add(nums[i]); // expand
+            res.add(subset); // collect
+        }
+    }
+    return res;
+}
+
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Subsets.
+// Memory Usage: 39.2 MB, less than 77.10% of Java online submissions for Subsets.
+// Time: O(N * 2^N)
+// The outer loop takes O(N) time.
+// The inner loop takes 2, 4, 8, ..., 2^N time respectively.
+// In inner loop, making a new copy of L takes at most O(N) time.
+// Total runtime T(N) = N * (2 + 4 + 8 + ... + 2^N) ~= N * 2^N
+// Space: O(N * 2^N)
+public List<List<Integer>> subsets(int[] nums) {
+  List<List<Integer>> result = new ArrayList<>();
+  result.add(new ArrayList<>());  // empty set
+
+  for (int i = 0; i < nums.length; ++i) {
+    List<List<Integer>> newResult = new ArrayList<>(); // used for new lists
+    for (List<Integer> L : result) {
+      L = new ArrayList<>(L); // copy
+      L.add(nums[i]);
+      newResult.add(L);
+    }
+    result.addAll(newResult);  // concatenate
+  }
+  return result;
+}
+```
+
+
+
+2. backtracking
+
+```java
+// Runtime: 2 ms, faster than 21.39% of Java online submissions for Subsets.
+// Memory Usage: 40 MB, less than 20.20% of Java online submissions for Subsets.
+/**
+ * Backtracking (Recursion)
+ *
+ * Time Complexity: O(N * 2 ^ N) Refer to above explanation
+ *
+ * Space Complexity: O(N) (Recursion Depth + TempList)
+ *
+ * N = Length of input nums array
+ */
+public List<List<Integer>> subsets(int[] nums) {
+    List<List<Integer>> list = new ArrayList<>();
+    Arrays.sort(nums);
+    backtrack(list, new ArrayList<>(), nums, 0);
+    return list;
+}
+private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
+    list.add(new ArrayList<>(tempList));
+    for(int i = start; i < nums.length; i++){
+        tempList.add(nums[i]);
+        backtrack(list, tempList, nums, i + 1);
+        tempList.remove(tempList.size() - 1);
+    }
+}
+
+
+// Runtime: 1 ms, faster than 60.07% of Java online submissions for Subsets.
+// Memory Usage: 39.9 MB, less than 20.20% of Java online submissions for Subsets.
+// Time: O(N * 2^N) since the recurrence is T(N) = 2T(N - 1) and we also spend at most O(N) time within a call.
+// Space: O(N * 2^N) since there are 2^N subsets. If we only print the result, we just need O(N) space.
+private void backtrack(List<List<Integer>> result, List<Integer> numList, int[] nums, int offset) {
+  if (offset >= nums.length) return; 
+  int val = nums[offset];
+  // pick
+  // add to result
+  numList.add(val);
+  subsets(offset + 1, nums, numList, result);
+  result.add(new ArrayList<>(numList));
+  // not pick
+  numList.remove(numList.size() - 1);
+  subsets(offset + 1, nums, numList, result);
+}
+
+```
+
+
+---
+
+### 90. Subsets II 
+
+[90. Subsets II](https://leetcode.com/problems/subsets-ii/)
+Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+Example 1:
+
+Input: nums = [1,2,2]
+Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
+
+
+1. iteration
+
+
+```java
+public List<List<Integer>> subsetsWithDup(int[] nums) {
+  // sort
+  Arrays.sort(nums);
+  List<List<Integer>> result = new ArrayList<>();
+  result.add(new ArrayList<>());  // empty set
+  
+  int cachedSize = 0, startIdx = 0;
+  
+  for (int i = 0; i < nums.length; ++i) {
+    List<List<Integer>> newResult = new ArrayList<>();  // used for new lists
+    // set startIdx first before we update cachedSize
+    startIdx = (i > 0 && nums[i - 1] == nums[i]) ? cachedSize : 0; // if duplicate occurs
+    cachedSize = result.size(); // cache the size for startIdx in the next round
+    for (int j = startIdx; j < result.size(); ++j) {
+      List<Integer> L = result.get(j);
+      L = new ArrayList<>(L);  // copy
+      L.add(nums[i]);
+      newResult.add(L);
+    }
+    result.addAll(newResult);  // concatenate
+  }
+  return result;
+}
+```
+
+
+
+---
+
 ## 图的遍历
 
 
@@ -4905,32 +5441,17 @@ void traverse(Graph graph, int s) {
     for (int neighbor : graph.neighbors(s))
         traverse(graph, neighbor);
     // 离开节点 s
-    visited[s] = false;   
+    visited[s] = false;
 }
 ```
 
 ---
 
 
-### DFS
 
-```java
-// 防止重复遍历同一个节点
-boolean[] visited;
-// 从节点 s 开始 BFS 遍历，将遍历过的节点标记为 true
-void traverse(List<Integer>[] graph, int s) {
-    if (visited[s]) {
-        return;
-    }
-    /* 前序遍历代码位置 */
-    // 将当前节点标记为已遍历
-    visited[s] = true;
-    for (int t : graph[s]) {
-        traverse(graph, t);
-    }
-    /* 后序遍历代码位置 */
-}
-```
+
+
+
 
 ---
 
@@ -5573,7 +6094,7 @@ class UF {
 使用 Union-Find 算法，主要是如何把原问题转化成`图的动态连通性问题`。
 - 对于算式合法性问题，可以直接利用等价关系，
 - 对于棋盘包围问题，则是利用一个虚拟节点，营造出动态连通特性。
-- 将二维数组映射到一维数组，利用方向数组 d 来简化代码量  
+- 将二维数组映射到一维数组，利用方向数组 d 来简化代码量
 
 ---
 
@@ -5776,7 +6297,7 @@ class Solution{
                 char y=eq.charAt(3);
                 uf.union(x - 'a', y - 'a');
             }
-        }        
+        }
         // 检查不等关系是否打破相等关系的连通性
         for(String eq : equations){
             if(eq.charAt(1) == '!'){
@@ -6179,7 +6700,7 @@ int minimumEffortPath(int[][] heights){
         int curY = curState.y;
         int curEffortFromStart = curState.effortFromStart;
         // 到达终点提前结束
-        if (curX == m - 1 && curY == n - 1) return curEffortFromStart;        
+        if (curX == m - 1 && curY == n - 1) return curEffortFromStart;
         if (curEffortFromStart > effortTo[curX][curY]) continue;
         // 将 (curX, curY) 的相邻坐标装入队列
         for (int[] neighbor : adj(heights, curX, curY)) {
@@ -6349,7 +6870,7 @@ class Node {
 }
 
 // 依靠我们的 Node 类型构建一个双链表
-class DoubleList {  
+class DoubleList {
     private Node head, tail;   // 头尾虚节点
     private int size;          // 链表元素数
 
@@ -6552,7 +7073,7 @@ class LFUCache {
         return keyToVal.get(key);
     }
 
-    public void put(int key, int val){      
+    public void put(int key, int val){
         if(this.cap <= 0)return;
         if(keyToVal.containsKey(key)){
             keyToVal.put(key, val);
@@ -6569,7 +7090,7 @@ class LFUCache {
         this.minFreq = 1;
     }
 
-    public void removeMinFreqKey(){  
+    public void removeMinFreqKey(){
         LinkedHashSet<Integer> keyList = freqToKeys.get(this.minFreq);
         // 其中最先被插入的那个 key 就是该被淘汰的 key
         int deletedKey = keyList.iterator().next();
@@ -6578,7 +7099,7 @@ class LFUCache {
         keyToVal.remove(deletedKey);
         keyToFreq.remove(deletedKey);
     }
-    private void increaseFreq(int key){        
+    private void increaseFreq(int key){
         int freq = keyToFreq.get(key);
         keyToFreq.put(key, freq+1);
         freqToKeys.putIfAbsent(freq+1, new LinkedHashSet<>());
@@ -7342,27 +7863,28 @@ public int coinChange(int[] coins, int amount) {
 
 ---
 
-### 动态规划解法
+## 动态规划解法
 
 
 ---
 
 
-#### 最小路径和（中等）
+### 64. Minimum Path Sum 最小路径和（中等）
 
-[64. Minimum Path Sum ](https://leetcode.com/problems/minimum-path-sum/)
+[64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)
 
 Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
 
 Note: You can only move either down or right at any point in time.
 
-我们把「从 D 走到 B 的最小路径和」这个问题转化成了「从 D 走到 A 的最小路径和」和 「从 D 走到 C 的最小路径和」这两个问题。
-- 从左上角位置 (0, 0) 走到位置 (i, j) 的最小路径和为 dp(grid, i, j)。
-- dp(grid, i, j) 的值取决于 dp(grid, i - 1, j) 和 dp(grid, i, j - 1) 返回的值。
-
-
-1. 自顶向下动态规划解法
-时间复杂度和空间复杂度都是 O(MN)，标准的自顶向下动态规划解法。
+1. 自顶向下动态规划解法 `int[][] memo, memo[i][j] = Math.min( dp(grid, i - 1, j), dp(grid, i, j - 1) ) + grid[i][j];)`
+   1. 时间复杂度和空间复杂度都是 `O(MN)`，标准的自顶向下动态规划解法。
+   2. 一般来说，让你在二维矩阵中求最优化问题（最大值或者最小值），肯定需要递归 + 备忘录，也就是动态规划技巧。
+   3. 从 D 走到 A 的最小路径和是 6，而从 D 走到 C 的最小路径和是 8，6 小于 8，所以一定要从 A 走到 B 才能使路径和最小。
+   4. 我们把「从 D 走到 B 的最小路径和」这个问题转化成了
+   5. 「从 D 走到 A 的最小路径和」和 「从 D 走到 C 的最小路径和」这两个问题。
+   6. 从左上角位置 (0, 0) 走到位置 (i, j) 的最小路径和为 dp(grid, i, j)。
+   7. dp(grid, i, j) 的值取决于 dp(grid, i - 1, j) 和 dp(grid, i, j - 1) 返回的值。
 
 ```java
 // Runtime: 2 ms, faster than 84.10% of Java online submissions for Minimum Path Sum.
@@ -7391,9 +7913,9 @@ int dp(int[][] grid, int i, int j) {
 
     // 左边和上面的最小路径和加上 grid[i][j]
     // 就是到达 (i, j) 的最小路径和
-     memo[i][j] = Math.min(
-        dp(grid, i - 1, j);
-        dp(grid, i, j - 1);
+    memo[i][j] = Math.min(
+        dp(grid, i - 1, j),
+        dp(grid, i, j - 1)
     ) + grid[i][j];
 
     return  memo[i][j];
@@ -7401,34 +7923,31 @@ int dp(int[][] grid, int i, int j) {
 ```
 
 
-2. 自底向上的迭代解法
-
+1. 重叠子问题, 自底向上的迭代解法 `int[][] memo, memo[i][j] = Math.min(memo[i-1][j], memo[i][j-1] ) + grid[i][j];)`
 
 ```java
 // Runtime: 4 ms, faster than 21.15% of Java online submissions for Minimum Path Sum.
 // Memory Usage: 43 MB, less than 19.44% of Java online submissions for Minimum Path Sum.
 public int minPathSum(int[][] grid) {
-        int m=grid.length;
-        int n=grid[0].length;  
-        int[][] memo = new int[m][n];
+    int m=grid.length;
+    int n=grid[0].length;
+    int[][] memo = new int[m][n];
 
-        memo[0][0] = grid[0][0];
+    memo[0][0] = grid[0][0];
 
-        for(int i=1;i<m;i++) memo[i][0] = memo[i-1][0] + grid[i][0];
-        for(int j=1;j<n;j++) memo[0][j] = memo[0][j-1] + grid[0][j];
+    for(int i=1;i<m;i++) memo[i][0] = memo[i-1][0] + grid[i][0];
+    for(int j=1;j<n;j++) memo[0][j] = memo[0][j-1] + grid[0][j];
 
-
-        // 状态转移
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                memo[i][j] = Math.min(
-                    memo[i-1][j],
-                    memo[i][j-1]
-                ) + grid[i][j];
-            }
+    // 状态转移
+    for (int i = 1; i < m; i++) {
+        for (int j = 1; j < n; j++) {
+            memo[i][j] = Math.min(
+                memo[i-1][j],
+                memo[i][j-1]
+            ) + grid[i][j];
         }
-        return memo[m-1][n-1];
-   }
+    }
+    return memo[m-1][n-1];
 }
 ```
 
@@ -7436,7 +7955,7 @@ public int minPathSum(int[][] grid) {
 ---
 
 
-#### 931 题「下降路径最小和」
+### 931. Minimum Falling Path Sum 下降路径最小和
 
 [931. Minimum Falling Path Sum](https://leetcode.com/problems/minimum-falling-path-sum/)
 
@@ -7534,7 +8053,7 @@ int min(int a, int b, int c) {
 
 ---
 
-#### 174.地下城游戏 ????????????
+### 174. Dungeon Game 地下城游戏 ????????????
 
 [174. Dungeon Game](https://leetcode.com/problems/dungeon-game/)
 
@@ -7587,6 +8106,289 @@ int dp(int[][] grid, int i, int j) {
     return memo[i][j];
 }
 ```
+
+---
+
+### 514. Freedom Trail 自由之路（困难）??????
+
+[514. Freedom Trail](https://leetcode.com/problems/freedom-trail/)
+
+In the video game Fallout 4, the quest "Road to Freedom" requires players to reach a metal dial called the "Freedom Trail Ring" and use the dial to spell a specific keyword to open the door.
+
+Given a string ring that represents the code engraved on the outer ring and another string key that represents the keyword that needs to be spelled, return the minimum number of steps to spell all the characters in the keyword.
+
+Initially, the first character of the ring is aligned at the "12:00" direction. You should spell all the characters in key one by one by rotating ring clockwise or anticlockwise to make each character of the string key aligned at the "12:00" direction and then by pressing the center button.
+
+At the stage of rotating the ring to spell the key character key[i]:
+
+You can rotate the ring clockwise or anticlockwise by one place, which counts as one step. The final purpose of the rotation is to align one of ring's characters at the "12:00" direction, where this character must equal key[i].
+If the character key[i] has been aligned at the "12:00" direction, press the center button to spell, which also counts as one step. After the pressing, you could begin to spell the next character in the key (next stage). Otherwise, you have finished all the spelling.
+
+
+Example 1:
+Input: ring = "godding", key = "gd"
+Output: 4
+Explanation:
+For the first key character 'g', since it is already in place, we just need 1 step to spell this character.
+For the second key character 'd', we need to rotate the ring "godding" anticlockwise by two steps to make it become "ddinggo".
+Also, we need 1 more step for spelling.
+So the final output is 4.
+Example 2:
+Input: ring = "godding", key = "godding"
+Output: 13
+
+- 遇到求最值的问题，基本都是由动态规划算法来解决，
+- 动态规划本身就是运筹优化算法的一种 
+- 状态是什么？状态就是「下一个需要弹奏的音符」和「当前的手的状态」。
+- 选择是什么？选择就是「下一个音符应该由哪个手指头来弹」，无非就是穷举五个手指头。结合当前手的状态，做出每个选择需要对应代价的，刚才说过这个代价是因人而异的，所以我需要给自己定制一个损失函数，计算不同指法切换的「别扭程度」。
+- 现在的问题就变成了一个标准的动态规划问题，根据损失函数做出「别扭程度」最小的选择，使得整段演奏最流畅……
+
+
+- 题目给你输入一个字符串 ring 代表圆盘上的字符（指针位置在 12 点钟方向，初始指向 ring[0]），再输入一个字符串 key 代表你需要拨动圆盘输入的字符串，你的算法需要返回输入这个 key 至少进行多少次操作（拨动一格圆盘和按下圆盘中间的按钮都算是一次操作）。
+- 原题可以转化为：圆盘固定，我们可以拨动指针；现在需要我们拨动指针并按下按钮，以最少的操作次数输入 key 对应的字符串。
+- 「状态」就是「当前需要输入的字符」和「当前圆盘指针的位置」。
+- 「状态」就是 i 和 j 两个变量。
+- 用 i 表示当前圆盘上指针指向的字符（也就是 ring[i]）；
+- 用 j 表示需要输入的字符（也就是 key[j]）。
+- 当圆盘指针指向 ring[i] 时，输入字符串 key[j..] 至少需要 dp(ring, i, key, j) 次操作。
+
+
+```java
+public int findRotateSteps(String ring, String key) {
+    int[][] memo = new int[ring.length()][key.length()]; 
+    // the first key is the position on the ring we are on, the second is how many letters we have completed!
+    return dfs(ring, key, 0, 0);
+}
+   
+// pos represents the pos of the ring we are sitting on, and the steps represents how many letters we've gone through
+public int dfs(String ring, String key, int pos, int steps) {
+    // have we already analyzed one path? -- no point moving further left or right from this position        
+    if (memo[pos][steps] != 0) return memo[pos][steps];
+
+    boolean clockWise = false, counterClockWise = false;
+    int clockSteps = Integer.MAX_VALUE, counterClockSteps = Integer.MAX_VALUE;
+    
+    int n = ring.length();
+
+    for (int i = 0; i < n; i++) {
+        int curr = (i + pos) % n; // handles loop
+        if (!clockWise && ring.charAt(curr) == key.charAt(steps)) {
+            clockSteps = i + dfs(ring, key, curr, steps + 1);
+            clockWise = true;
+        }
+            
+        int curr2 = pos - i;
+        if (curr2 < 0) curr2 = n + pos - i; // every position we are negative is one off of the length!
+            
+        if (!counterClockWise && ring.charAt(curr2) == key.charAt(steps)) {
+            counterClockSteps = i + dfs(ring, key, curr2, steps + 1);
+            counterClockWise = true;
+        }
+        
+        if (clockWise && counterClockWise) break; 
+        return this.memo[pos][steps] = Math.min(clockSteps, counterClockSteps) + 1; // +1 to click the button
+    }
+}
+}
+```
+
+
+```java
+// 字符 -> 索引列表
+unordered_map<char, vector<int>> charToIndex;
+// 备忘录
+vector<vector<int>> memo;
+
+/* 主函数 */
+int findRotateSteps(string ring, string key) {
+    int m = ring.size();
+    int n = key.size();
+    // 备忘录全部初始化为 0
+    memo.resize(m, vector<int>(n, 0));
+    // 记录圆环上字符到索引的映射
+    for (int i = 0; i < ring.size(); i++) {
+        charToIndex[ring[i]].push_back(i);
+    }
+    // 圆盘指针最初指向 12 点钟方向，
+    // 从第一个字符开始输入 key
+    return dp(ring, 0, key, 0);
+}
+
+// 计算圆盘指针在 ring[i]，输入 key[j..] 的最少操作数
+int dp(string& ring, int i, string& key, int j) {
+    // base case 完成输入
+    if (j == key.size()) return 0;
+    // 查找备忘录，避免重叠子问题
+    if (memo[i][j] != 0) return memo[i][j];
+    
+    int n = ring.size();
+    // 做选择
+    int res = INT_MAX;
+    // ring 上可能有多个字符 key[j]
+    for (int k : charToIndex[key[j]]) {
+        // 拨动指针的次数
+        int delta = abs(k - i);
+        // 选择顺时针还是逆时针
+        delta = min(delta, n - delta);
+        // 将指针拨到 ring[k]，继续输入 key[j+1..]
+        int subProblem = dp(ring, k, key, j + 1);
+        // 选择「整体」操作次数最少的
+        // 加一是因为按动按钮也是一次操作
+        res = min(res, 1 + delta + subProblem);
+    }
+    // 将结果存入备忘录
+    memo[i][j] = res;
+    return res;
+}
+```
+
+---
+
+## 加权有向图 最短路径
+
+### 787. K 站中转内最便宜的航班（中等）
+
+[787. Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
+
+There are n cities connected by some number of flights. You are given an array flights where flights[i] = [fromi, toi, pricei] indicates that there is a flight from city fromi to city toi with cost pricei.
+
+You are also given three integers src, dst, and k, return the cheapest price from src to dst with at most k stops. If there is no such route, return -1.
+
+Example 1:
+Input: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 1
+Output: 200
+Explanation: The graph is shown.
+The cheapest price from city 0 to city 2 with at most 1 stop costs 200, as marked red in the picture.
+
+
+- 一幅加权有向图，让你求 src 到 dst 权重最小的一条路径，同时要满足，这条路径最多不能超过 K + 1 条边（经过 K 个节点相当于经过 K + 1 条边。
+
+
+1. BFS 算法
+
+- 对于加权图的场景，我们需要优先级队列「自动排序」的特性，将路径权重较小的节点排在队列前面，以此为基础施展 BFS 算法。
+
+
+
+2. 动态规划思路
+
+
+```java
+minPath(src, dst) = min(
+    minPath(src, s1) + w1, 
+    minPath(src, s2) + w2
+)
+
+dp(dst, k) = min(
+    dp(s1, k - 1) + w1, 
+    dp(s2, k - 1) + w2
+)
+
+// Time Limit Exceeded
+HashMap<Integer, List<int[]>> indegree;
+int src, dst;
+
+public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
+    k++;
+    this.src=src;
+    this.dst=dst;
+    indegree=new HashMap<>();
+    for(int[] f:flights){
+        int from = f[0];
+        int to = f[1];
+        int price = f[2];
+        // 记录谁指向该节点，以及之间的权重
+        indegree.putIfAbsent(to, new LinkedList<>());
+        indegree.get(to).add(new int[]{from, price});
+    }
+    return dp(dst,k)
+}
+
+// 定义：从 src 出发，k 步之内到达 s 的最短路径权重
+int dp(int s, int k) {
+    if(s==this.src) return 0;
+    if(k==0) return -1;
+
+    // 初始化为最大值，方便等会取最小值
+    int res = Integer.MAX_VALUE;
+    if(indegree.containsKey(s)){
+        // 当 s 有入度节点时，分解为子问题
+        for (int[] v : indegree.get(s)) {
+            int from = v[0];
+            int price = v[1];
+
+            // 从 src 到达相邻的入度节点所需的最短路径权重
+            int subProblem = dp(from, k - 1);
+            // 跳过无解的情况
+            if (subProblem != -1) res = Math.min(res, subProblem + price);
+        }
+    }
+    // 如果还是初始值，说明此节点不可达
+    return res == Integer.MAX_VALUE ? -1 : res;
+}
+```
+
+2. memo
+
+```java
+// Runtime: 7 ms, faster than 47.07% of Java online submissions for Cheapest Flights Within K Stops.
+// Memory Usage: 39.3 MB, less than 98.25% of Java online submissions for Cheapest Flights Within K Stops.
+
+
+HashMap<Integer, List<int[]>> indegree;
+int src, dst;
+// 备忘录
+int[][] memo;
+
+public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
+    k++;
+    this.src=src;
+    this.dst=dst;
+    // 初始化备忘录，全部填一个特殊值
+    memo = new int[n][K + 1];
+    for (int[] row : memo) Arrays.fill(row, -888); 
+    indegree=new HashMap<>();
+    for(int[] f:flights){
+        int from = f[0];
+        int to = f[1];
+        int price = f[2];
+        // 记录谁指向该节点，以及之间的权重
+        indegree.putIfAbsent(to, new LinkedList<>());
+        indegree.get(to).add(new int[]{from, price});
+    }
+    return dp(dst,k)
+}
+
+// 定义：从 src 出发，k 步之内到达 s 的最短路径权重
+int dp(int s, int k) {
+    if(s==this.src) return 0;
+    if(k==0) return -1;
+    // 查备忘录，防止冗余计算
+    if (memo[s][k] != -888) return memo[s][k]; 
+    
+    // 初始化为最大值，方便等会取最小值
+    int res = Integer.MAX_VALUE;
+    if(indegree.containsKey(s)){
+        // 当 s 有入度节点时，分解为子问题
+        for (int[] v : indegree.get(s)) {
+            int from = v[0];
+            int price = v[1];
+
+            // 从 src 到达相邻的入度节点所需的最短路径权重
+            int subProblem = dp(from, k - 1);
+            // 跳过无解的情况
+            if (subProblem != -1) res = Math.min(res, subProblem + price);
+        }
+    }
+    // 存入备忘录
+    memo[s][k] = res == Integer.MAX_VALUE ? -1 : res;
+    return memo[s][k]; 
+}
+```
+
+
+
+
 
 ---
 
@@ -7643,7 +8445,7 @@ dp 数组的含义
 
 ---
 
-### 300 最长递增子序列
+### 300. Longest Increasing Subsequence 最长递增子序列
 
 [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
 
@@ -7679,7 +8481,7 @@ public int lengthOfLIS(int[] nums) {
 
 ---
 
-### 1143 最长公共子序列
+### 1143. Longest Common Subsequence 最长公共子序列
 
 [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
 
@@ -7694,7 +8496,7 @@ A common subsequence of two strings is a subsequence that is common to both stri
 Example 1:
 
 Input: text1 = "abcde", text2 = "ace"
-Output: 3  
+Output: 3
 Explanation: The longest common subsequence is "ace" and its length is 3.
 
 
@@ -7772,7 +8574,7 @@ int longestCommonSubsequence(String s1, String s2) {
 
 ---
 
-### 583 两个字符串的删除操作
+### 583. Delete Operation for Two Strings 两个字符串的删除操作
 
 [583. Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/)
 - Given two strings word1 and word2, return the minimum number of steps required to make word1 and word2 the same.
@@ -7802,7 +8604,7 @@ class Solution {
     // 最长公共子序列的长度
     public int longestCommonSubsequence(String s1, String s2) {
         int m = s1.length(), n = s2.length();
-        int[][] dp = new int[m + 1][n + 1];  
+        int[][] dp = new int[m + 1][n + 1];
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
                 // 现在 i 和 j 从 1 开始，所以要减一
@@ -7819,7 +8621,7 @@ class Solution {
 
 ---
 
-### 712 最小 ASCII 删除和
+### 712. Minimum ASCII Delete Sum for Two Strings 最小 ASCII 删除和
 
 [712. Minimum ASCII Delete Sum for Two Strings](https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/submissions/)
 
@@ -7840,7 +8642,7 @@ At the end, both strings are equal, and 115 + 116 = 231 is the minimum sum possi
 // 备忘录
 int memo[][];
 
-/* 主函数 */    
+/* 主函数 */
 int minimumDeleteSum(String s1, String s2) {
     int m = s1.length(), n = s2.length();
     // 备忘录值为 -1 代表未曾计算
@@ -7882,10 +8684,10 @@ int dp(String s1, int i, String s2, int j) {
 
 ---
 
-### 5 最长回文子序列
+### 5. Longest Palindromic Substring 最长回文子序列
 
 
-5. Longest Palindromic Substring
+[5. Longest Palindromic Substring]
 
 Given a string s, return the longest palindromic substring in s.
 
@@ -7932,7 +8734,7 @@ class Solution {
 
 ---
 
-### 516 最长回文子序列长度
+### 516. Longest Palindromic Subsequence 最长回文子序列长度
 
 
 [516. Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)
@@ -7973,7 +8775,7 @@ class Solution {
 
 ---
 
-### 494 目标和
+### 494. Target Sum 目标和
 
 [494. Target Sum](https://leetcode.com/problems/target-sum/)
 
@@ -7997,7 +8799,7 @@ Explanation: There are 5 ways to assign symbols to make the sum of nums be targe
 
 
 
-一、回溯思路
+#### 回溯思路
 任何算法的核心都是穷举，回溯算法就是一个暴力穷举算法
 
 ```java
@@ -8039,7 +8841,7 @@ void backtrack(int[] nums, int i, int rest) {
 ```
 
 
-2. 消除重叠子问题
+#### 消除重叠子问题
 
 ```java
 int findTargetSumWays(int[] nums, int target) {
@@ -8073,7 +8875,7 @@ int dp(int[] nums, int i, int rest) {
 ---
 
 
-### 72 编辑距离（困难）
+### 72. Edit Distance 编辑距离（困难）
 
 ![dp](https://i.imgur.com/JWV0ewv.jpg)
 
@@ -8179,7 +8981,7 @@ class Node {
 
 ---
 
-### 354 俄罗斯套娃信封问题（困难）
+### 354. Russian Doll Envelopes 俄罗斯套娃信封问题（困难）
 
 [354. Russian Doll Envelopes](https://leetcode.com/problems/russian-doll-envelopes/)
 
@@ -8295,6 +9097,7 @@ int maxSubArray(int[] nums) {
 
 ---
 
+
 ## 背包类型问题
 
 1. 动规标准
@@ -8312,25 +9115,220 @@ int knapsack(int W, int N, vector<int>& wt, vector<int>& val) {
     vector<vector<int>> dp(N + 1, vector<int>(W + 1, 0));
     for (int i = 1; i <= N; i++) {
         for (int w = 1; w <= W; w++) {
-            if (w - wt[i-1] < 0) {
-                // 这种情况下只能选择不装入背包
-                dp[i][w] = dp[i - 1][w];
-            } else {
-                // 装入或者不装入背包，择优
-                dp[i][w] = max(dp[i - 1][w - wt[i-1]] + val[i-1],
-                               dp[i - 1][w]);
-            }
+            // 这种情况下只能选择不装入背包
+            if (w - wt[i-1] < 0) dp[i][w] = dp[i - 1][w];
+            // 装入或者不装入背包，择优
+            else dp[i][w] = max(dp[i - 1][w - wt[i-1]] + val[i-1], dp[i - 1][w]);
         }
     }
-
     return dp[N][W];
 }
 ```
 
 
 
+---
+
+### 子集背包问题
+
+#### 416. Partition Equal Subset Sum 分割等和子集（中等）
+
+[416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)
+
+Given a non-empty array nums containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
 
 
+先对集合求和，得出 sum，把问题转化为背包问题：
+
+给一个可装载重量为 sum / 2 的背包和 N 个物品，每个物品的重量为 nums[i]。
+现在让你装物品，是否存在一种装法，能够恰好将背包装满？
+
+1. 第一步要明确两点，「状态」和「选择」。
+   1. 状态就是「背包的容量」和「可选择的物品」，
+   2. 选择就是「装进背包」或者「不装进背包」。
+2. 第二步要明确 dp 数组的定义。
+
+- dp[i][j] = x 表示，
+- 对于前 i 个物品，当前背包的容量为 j 时，
+- 若 x 为 true，则说明可以恰好将背包装满，
+- 若 x 为 false，则说明不能恰好将背包装满。
+
+- 我们想求的最终答案就是 dp[N][sum/2]，
+- base case 就是
+  - dp[..][0] = true 因为背包没有空间的时候，就相当于装满了，
+  - dp[0][..] = false，没有物品可选择的时候，肯定没办法装满背包。
+
+```java
+// Runtime: 77 ms, faster than 19.78% of Java online submissions for Partition Equal Subset Sum.
+// Memory Usage: 51.4 MB, less than 20.88% of Java online submissions for Partition Equal Subset Sum.
+
+class Solution {
+    public boolean canPartition(int[] nums) {
+
+        int sum=0;
+        for(int num:nums) sum+=num;
+        // 和为奇数时，不可能划分成两个和相等的集合
+        if(sum%2!=0) return false;
+        sum = sum/2;
+
+        int n = nums.length;
+        boolean [][] dp = new boolean[n+1][sum+1];
+
+        // base case
+        for(int i=0;i<=n;i++) dp[i][0]=true;
+        for(int j=0;j<=sum;j++) dp[0][j]=false;
+
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=sum;j++){
+                // 背包容量不足，不能装入第 i 个物品
+                if(j < nums[i-1]) dp[i][j] = dp[i-1][j];
+                // 装入或不装入背包
+                else dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i-1]];
+            }
+        }
+        return dp[n][sum];
+    }
+}
+```
+
+2. 状态压缩
+   1. dp[i][j] 都是通过上一行 dp[i-1][..] 转移过来的
+
+```java
+boolean canPartition(int[] nums) {
+    int sum = 0;
+    for (int num : nums) sum += num;
+    // 和为奇数时，不可能划分成两个和相等的集合
+    if (sum % 2 != 0) return false;
+    int n = nums.length;
+    sum = sum / 2;
+    boolean[] dp = new boolean[sum + 1];
+
+    // base case
+    dp[0] = true;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = sum; j >= 0; j--) {
+            if (j >= nums[i]) dp[j] = dp[j] || dp[j - nums[i]];
+        }
+    }
+    return dp[sum];
+}
+```
+
+
+---
+
+
+#### 698. Partition to K Equal Sum Subsets
+
+Given an integer array nums and an integer k, return true if it is possible to divide this array into k non-empty subsets whose sums are all equal.
+
+Example 1:
+
+Input: nums = [4,3,2,3,5,2,1], k = 4
+Output: true
+Explanation: It's possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3) with equal sums.
+
+
+1. backtracking
+
+```java
+class Solution {
+    public boolean canPartitionKSubsets(int[] nums, int k) {
+        if(k==1) return true;
+        int n = nums.length;
+        //if sum is not a multiple of K we can't divide
+        int sum = 0;
+        for(int num:nums) sum+=num;
+        if(sum%k!=0 || k>n) return false;
+        sum=sum/k;
+        boolean[] used = new boolean[n];
+        Arrays.fill(used, false);
+        return findPart(nums, used, sum, 0,0, k);
+    }
+
+    public boolean findPart(int[] nums, boolean[] used, int target, int cur_sum, int i, int k) {
+        if(k<=1) return true;
+        if(target==cur_sum) return findPart(nums, used, target, 0, 0, k-1);
+
+        for(int j=i; j<nums.length; j++){
+            if(visited[j] || curr_sum+arr[j]>target) continue;
+            used[j] = true;
+            if( findPart(nums, used, target, cur_sum+nums[j], j+1, k) ) return true;
+            used[j] = false;
+        }
+        return false;
+    }
+}
+```
+
+2. remove visited[], `each time used a number, nums[i]=0, undo: nums[i]=temp`.
+
+```java
+// Runtime: 1 ms, faster than 90.92% of Java online submissions for Partition to K Equal Sum Subsets.
+// Memory Usage: 36.3 MB, less than 80.51% of Java online submissions for Partition to K Equal Sum Subsets.
+class Solution {
+    public boolean canPartitionKSubsets(int[] nums, int k) {
+        // Not possible to divide into equal subsets, if sum of all 
+        // nums[] is not a multiple of k.
+        int sum = 0;
+        for (int i = nums.length - 1; i >= 0; i--)  sum += nums[i];
+        if (sum % k != 0 || k>nums.length)  return false;
+        // Determine the target number that each subset must total.
+        // Then start recursion to find if possible to have k equal subsets.
+        sum = sum / k;
+        return dfs(k, 0, 0, nums, sum);
+    }
+    
+    private boolean dfs(int k, int curSum, int numsIdx, int[] nums, int target) {
+        if (k <= 1) return true;                      // If no more subsets to fill, then done
+        for (int i = numsIdx; i < nums.length; i++) { // Loop in nums[] values to find next unused
+            if (nums[i] != 0 && curSum + nums[i] <= target) {
+                int temp = nums[i];
+                nums[i] = 0;
+                // Mark this nums value as "used". If subset exactly filled, start new subset
+                if (curSum + temp == target) {
+                    if (dfs(k - 1, 0, 0, nums, target))  return true;
+                }
+                // Else subset not filled, find more to fill it.
+                else {
+                    if (dfs(k, curSum + temp, i + 1, nums, target))  return true;
+                }
+                nums[i] = temp;
+                // This nums[i] value didn't result in a good solution
+                // so "unuse" this nums[] value and loop back to try another nums[] value
+            }
+        }
+        return false;
+    }
+}
+```
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### 215. Kth Largest Element in an Array
 
 
 
