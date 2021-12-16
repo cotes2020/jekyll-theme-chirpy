@@ -3,19 +3,47 @@ layout: page
 # The page layout
 ---
 
-<div id="tags" class="d-flex flex-wrap ml-xl-2 mr-xl-2">
-
-    {% assign tags = "" | split: "" %}
-    {% for t in site.tags %}
-      {% assign tags = tags | push: t[0] %}
-    {% endfor %}
-  
-    {% assign sorted_tags = tags | sort_natural %}
-  
-    {% for t in sorted_tags %}
-      <div>
-        <a class="tag" href="{{ site.baseurl }}/tags/{{ t | slugify | url_encode }}/">{{ t }}<span class="text-muted">{{ site.tags[t].size }}</span></a>
+<div class="row">
+    <div class="4u 12u$(mobile)">
+      <div class="item">
+        <a href="#" class="image fit"><img src="{{ 'assets/images/pic02.jpg' | relative_url }}" alt="Ipsum Feugiat" /></a>
+        <header>
+          <h3>Ipsum Feugiat</h3>
+        </header>
       </div>
-    {% endfor %}
-  
+      <div class="item">
+        <a href="#" class="image fit"><img src="{{ 'assets/images/pic03.jpg' | relative_url }}" alt="Rhoncus Semper" /></a>
+        <header>
+          <h3>Rhoncus Semper</h3>
+        </header>
+      </div>
+    </div>
+    <div class="4u 12u$(mobile)">
+      <div class="item">
+        <a href="#" class="image fit"><img src="{{ 'assets/images/pic04.jpg' | relative_url }}" alt="Magna Nullam" /></a>
+        <header>
+          <h3>Magna Nullam</h3>
+        </header>
+      </div>
+      <div class="item">
+        <a href="#" class="image fit"><img src="{{ 'assets/images/pic05.jpg' | relative_url }}" alt="Natoque Vitae" /></a>
+        <header>
+          <h3>Natoque Vitae</h3>
+        </header>
+      </div>
+    </div>
+    <div class="4u 12u$(mobile)">
+      <div class="item">
+        <a href="#" class="image fit"><img src="{{ 'assets/images/pic06.jpg' | relative_url }}" alt="Dolor Penatibus" /></a>
+        <header>
+          <h3>Dolor Penatibus</h3>
+        </header>
+      </div>
+      <div class="item">
+        <a href="#" class="image fit"><img src="{{ 'assets/images/pic07.jpg' | relative_url }}" alt="Orci Convallis" /></a>
+        <header>
+          <h3>Orci Convallis</h3>
+        </header>
+      </div>
+    </div>
   </div>
