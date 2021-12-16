@@ -14,8 +14,9 @@ tabs:
   categories: Категории
   tags: Теги
   archives: Архивы
-  about: Обо мне
   project: Проекты
+  about: Обо мне
+  
 
 # the text displayed in the search bar & search results
 search:
