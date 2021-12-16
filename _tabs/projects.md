@@ -1,5 +1,5 @@
 ---
 title: Проекты
-icon: fas fa-info-circle
+icon: fas fa-umbrella
 order: 4
 ---
