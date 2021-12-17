@@ -28,9 +28,12 @@ toc: true
     - [四、总结几句](#四总结几句)
 - [数组](#数组)
   - [原地修改数组](#原地修改数组)
-    - [有序数组去重 `快慢指针前后走`](#有序数组去重-快慢指针前后走)
-    - [有序链表去重 `快慢指针前后走，slow.next = null; return head`](#有序链表去重-快慢指针前后走slownext--null-return-head)
-    - [移除元素 `快慢指针前后走`](#移除元素-快慢指针前后走)
+  - [two pointer](#two-pointer)
+    - [26. Remove Duplicates from Sorted Array 有序数组去重（简单）`快慢指针前后走`](#26-remove-duplicates-from-sorted-array-有序数组去重简单快慢指针前后走)
+    - [80. Remove Duplicates from Sorted Array II `nums[i]!=nums[i-2]](#80-remove-duplicates-from-sorted-array-ii-numsinumsi-2)
+    - [FU. Each unique element should appear at most K times](#fu-each-unique-element-should-appear-at-most-k-times)
+    - [27. Remove Element 移除元素 （简单）`快慢指针前后走`](#27-remove-element-移除元素-简单快慢指针前后走)
+    - [83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走，slow.next = null; return head`](#83-remove-duplicates-from-sorted-list-有序链表去重-快慢指针前后走slownext--null-return-head)
     - [283. Move Zeroes 移除0 `快慢指针前后走`](#283-move-zeroes-移除0-快慢指针前后走)
   - [TWOSUM问题](#twosum问题)
     - [1. Two Sum](#1-two-sum)
@@ -48,28 +51,31 @@ toc: true
   - [单链表的六大解题套路](#单链表的六大解题套路)
     - [合并两个有序链表 Merge 2 Sorted Lists](#合并两个有序链表-merge-2-sorted-lists)
     - [23. Merge k Sorted Lists 合并 k 个有序链表 Merge k Sorted Lists](#23-merge-k-sorted-lists-合并-k-个有序链表-merge-k-sorted-lists)
-  - [双指针](#双指针)
+  - [Two Pointer 双指针](#two-pointer-双指针)
+    - [203. Remove Linked List Elements (Easy)](#203-remove-linked-list-elements-easy)
+    - [237. Delete Node in a Linked List (Easy)](#237-delete-node-in-a-linked-list-easy)
+    - [2095. Delete the Middle Node of a Linked List (Medium)](#2095-delete-the-middle-node-of-a-linked-list-medium)
     - [寻找单链表的倒数n节点](#寻找单链表的倒数n节点)
-    - [remove单链表的倒数n节点](#remove单链表的倒数n节点)
-    - [寻找单链表的中点](#寻找单链表的中点)
-    - [判断两个单链表是否相交并找出交点](#判断两个单链表是否相交并找出交点)
+    - [19. Remove Nth Node From End of List remove单链表的倒数n节点](#19-remove-nth-node-from-end-of-list-remove单链表的倒数n节点)
+    - [876. Middle of the Linked List 寻找单链表的中点](#876-middle-of-the-linked-list-寻找单链表的中点)
+    - [160. 判断两个单链表是否相交并找出交点](#160-判断两个单链表是否相交并找出交点)
     - [example](#example)
       - [870 题「优势洗牌」](#870-题优势洗牌)
   - [左右指针](#左右指针)
     - [二分查找](#二分查找)
     - [在有序数组中搜索指定元素](#在有序数组中搜索指定元素)
-      - [寻找一个数（基本的二分搜索）](#寻找一个数基本的二分搜索)
+      - [704. Binary Search 寻找一个数（基本的二分搜索）](#704-binary-search-寻找一个数基本的二分搜索)
       - [寻找左侧边界的二分搜索](#寻找左侧边界的二分搜索)
         - [278. First Bad Version](#278-first-bad-version)
       - [寻找右侧边界的二分查找](#寻找右侧边界的二分查找)
-      - [寻找左右边界的二分搜索](#寻找左右边界的二分搜索)
+      - [34. Find First and Last Position of Element in Sorted Array 寻找左右边界的二分搜索](#34-find-first-and-last-position-of-element-in-sorted-array-寻找左右边界的二分搜索)
       - [二分搜索算法运用](#二分搜索算法运用)
       - [example](#example-1)
         - [875. Koko Eating Bananas](#875-koko-eating-bananas)
         - [运送货物？？？？？？？？？？？？？？](#运送货物)
         - [https://labuladong.github.io/algo/2/21/59/ ？？？？](#httpslabuladonggithubioalgo22159-)
     - [两数之和](#两数之和)
-    - [反转数组](#反转数组)
+    - [344. Reverse String 反转数组](#344-reverse-string-反转数组)
     - [滑动窗口技巧 `right++, missing==0, left++`](#滑动窗口技巧-right-missing0-left)
       - [最小覆盖子串](#最小覆盖子串)
       - [567. Permutation in String 字符串排列](#567-permutation-in-string-字符串排列)
@@ -77,12 +83,12 @@ toc: true
       - [3. Longest Substring Without Repeating Characters 最长无重复子串](#3-longest-substring-without-repeating-characters-最长无重复子串)
   - [链表的环](#链表的环)
     - [判断单链表是否包含环](#判断单链表是否包含环)
-    - [计算链表中环起点](#计算链表中环起点)
+    - [142. Linked List Cycle II 计算链表中环起点](#142-linked-list-cycle-ii-计算链表中环起点)
   - [递归反转链表](#递归反转链表)
-    - [递归反转整个链表](#递归反转整个链表)
+    - [206 Reverse Linked List 递归反转整个链表 `递归+pointer`](#206-reverse-linked-list-递归反转整个链表-递归pointer)
     - [反转链表前 N 个节点](#反转链表前-n-个节点)
-    - [反转链表的一部分](#反转链表的一部分)
-    - [K个一组反转链表](#k个一组反转链表)
+    - [92. Reverse Linked List II 反转链表的一部分](#92-reverse-linked-list-ii-反转链表的一部分)
+    - [25. Reverse Nodes in k-Group K个一组反转链表](#25-reverse-nodes-in-k-group-k个一组反转链表)
   - [回文链表](#回文链表)
     - [寻找回文](#寻找回文)
     - [判断回文链表 - 双指针技巧](#判断回文链表---双指针技巧)
@@ -118,10 +124,8 @@ toc: true
     - [二叉树max层级遍历 用Queue和q.size去遍历左右](#二叉树max层级遍历-用queue和qsize去遍历左右)
     - [多叉树的层序遍历框架  用Queue和q.size去遍历child](#多叉树的层序遍历框架--用queue和qsize去遍历child)
   - [BFS（广度优先搜索）用Queue和q.size去遍历child + not visited](#bfs广度优先搜索用queue和qsize去遍历child--not-visited)
-    - [二叉树min层级遍历 用Queue和q.size去遍历左右](#二叉树min层级遍历-用queue和qsize去遍历左右)
+    - [111. Minimum Depth of Binary Tree 二叉树min层级遍历 `用Queue和q.size去遍历左右`](#111-minimum-depth-of-binary-tree-二叉树min层级遍历-用queue和qsize去遍历左右)
     - [穷举所有可能的密码组合 用Queue和q.size去遍历all](#穷举所有可能的密码组合-用queue和qsize去遍历all)
-    - [解开密码锁的最少次数 用Queue和q.size去遍历all + visited + deads](#解开密码锁的最少次数-用queue和qsize去遍历all--visited--deads)
-    - [双向 BFS 优化 用Queue和q.size去遍历 q1=q2;q2=temp](#双向-bfs-优化-用queue和qsize去遍历-q1q2q2temp)
   - [二叉搜索树](#二叉搜索树)
     - [判断 BST 的合法性](#判断-bst-的合法性)
     - [在 BST 中搜索元素](#在-bst-中搜索元素)
@@ -135,13 +139,6 @@ toc: true
 - [Binary Heap 二叉堆](#binary-heap-二叉堆)
   - [最大堆和最小堆](#最大堆和最小堆)
 - [Graphy](#graphy)
-  - [DFS backtrack 回溯算法](#dfs-backtrack-回溯算法)
-    - [46. Permutations 全排列问题 ??????????/](#46-permutations-全排列问题-)
-      - [Iterative Solution](#iterative-solution)
-      - [Recursive Backtracking using visited array](#recursive-backtracking-using-visited-array)
-    - [51. N-Queens N 皇后问题 ??????????](#51-n-queens-n-皇后问题-)
-    - [78. Subsets 子集（中等）](#78-subsets-子集中等)
-    - [90. Subsets II](#90-subsets-ii)
   - [图的遍历](#图的遍历-1)
     - [转换成图](#转换成图)
     - [所有可能路径](#所有可能路径)
@@ -178,6 +175,17 @@ toc: true
     - [实现随机集合](#实现随机集合)
     - [避开黑名单的随机数 `blacklist index to good index`](#避开黑名单的随机数-blacklist-index-to-good-index)
   - [中位数](#中位数)
+- [DFS and BFS](#dfs-and-bfs)
+  - [BFS](#bfs)
+    - [752. Open the Lock 解开密码锁最少次数 `用Queue和q.size去遍历all + visited + deads`](#752-open-the-lock-解开密码锁最少次数-用queue和qsize去遍历all--visited--deads)
+      - [BFS](#bfs-1)
+      - [双向 BFS 优化 `用Queue和q.size去遍历 q1=q2;q2=temp`](#双向-bfs-优化-用queue和qsize去遍历-q1q2q2temp)
+  - [DFS backtrack 回溯算法](#dfs-backtrack-回溯算法)
+    - [46. Permutations 全排列问题 ??????????/](#46-permutations-全排列问题-)
+    - [51. N-Queens N 皇后问题 ??????????](#51-n-queens-n-皇后问题-)
+    - [78. Subsets 子集（中等）](#78-subsets-子集中等)
+    - [90. Subsets II](#90-subsets-ii)
+    - [77. Combinations](#77-combinations)
 - [功能](#功能)
   - [设计朋友圈时间线](#设计朋友圈时间线)
 - [动态规划](#动态规划)
@@ -291,12 +299,7 @@ List.length;
 List.add(a);
 List.remove(i);
 
-
-
-Set<String> deads = new HashSet<>();
-
-
-LinkedList<Integer> q = new LInkedList<>();
+LinkedList<Integer> q = new LinkedList<>();
 LinkedList.getFirst();
 LinkedList.getLast();
 LinkedList.addLast();
@@ -304,6 +307,10 @@ LinkedList.pollLast();
 LinkedList.isEmpty();
 LinkedList.removeLast();
 
+
+
+
+Set<String> deads = new HashSet<>();
 
 HashMap<Integer, Integer> KeyVal = new HashMap<>();
 HashMap.containsKey(key);
@@ -700,17 +707,17 @@ N 叉树的遍历框架
 
 Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
 
-
 如何在原地修改数组，避免数据的搬移。
 - 如果不是原地修改的话，直接 new 一个 int[] 数组，把去重之后的元素放进这个新数组中，然后返回这个新数组即可。
 - 原地删除不允许 new 新数组，只能在原数组上操作，然后返回一个长度，这样就可以通过返回的长度和原始数组得到我们去重后的元素有哪些了。
 
 ---
 
-### 有序数组去重 `快慢指针前后走`
+## two pointer
 
-26.删除有序数组中的重复项（简单）
+### 26. Remove Duplicates from Sorted Array 有序数组去重（简单）`快慢指针前后走` 
 
+[26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
 ![Screen Shot 2021-10-10 at 10.21.49 PM](https://i.imgur.com/71PNcPT.png)
 
@@ -734,7 +741,76 @@ int removeDuplicates(int[] nums) {
     // 数组长度为索引 + 1
     return slow + 1;
 }
+
+// Runtime: 1 ms, faster than 82.01% of Java online submissions for Remove Duplicates from Sorted Array.
+// Memory Usage: 45.1 MB, less than 6.26% of Java online submissions for Remove Duplicates from Sorted Array.
+/**
+ * Using 2 pointers.
+ *
+ * Time Complexity: O(N)
+ *
+ * Space Complexity: O(1)
+ *
+ * N = Length of input array.
+ */
+int removeDuplicates(int[] nums) {
+    if (nums == null) throw new IllegalArgumentException("Input is invalid"); 
+    if (nums.length <= 1) return nums.length;
+    int slow = 0, fast = 1;
+    while (fast < nums.length) {
+        if (nums[fast] != nums[slow]) {
+            slow++;
+            // 维护 nums[0..slow] 无重复
+            nums[slow] = nums[fast];
+        }
+        fast++;
+    }
+    // 数组长度为索引 + 1
+    return slow + 1;
+}
+
+// Runtime: 1 ms, faster than 82.01% of Java online submissions for Remove Duplicates from Sorted Array.
+// Memory Usage: 44.3 MB, less than 23.95% of Java online submissions for Remove Duplicates from Sorted Array.
+
+int removeDuplicates(int[] nums) {
+    if (nums == null) throw new IllegalArgumentException("Input is invalid");  
+    if (nums.length <= 1) return nums.length;
+    int slow = 0;
+    for(int i=1; i<nums.length; i++){
+        if (nums[i] != nums[slow]) nums[++slow] = nums[i]; 
+    }
+    // 数组长度为索引 + 1
+    return slow + 1;
+}
 ```
+
+
+```java
+// Runtime: 1 ms, faster than 82.01% of Java online submissions for Remove Duplicates from Sorted Array.
+// Memory Usage: 40.2 MB, less than 80.01% of Java online submissions for Remove Duplicates from Sorted Array.
+
+public int removeDuplicates(int[] nums) {
+        int i = 0;
+        for (int n : nums){
+            if (i == 0 || n > nums[i-1]){
+                nums[i] = n;
+                i++;
+            }
+        }
+        return i;
+    }
+
+public int removeDuplicates(int[] nums) {
+    int i = nums.length > 0 ? 1 : 0;
+    for (int n : nums)
+        if (n > nums[i-1])
+            nums[i++] = n;
+    return i;
+}
+```
+
+
+
 
 ```py
 from collections import OrderedDict
@@ -786,10 +862,164 @@ def removeDuplicates(test_list):
 
 # removeDuplicates([0,0,1,2,2,3,3])
 ```
+ 
 
 ---
 
-### 有序链表去重 `快慢指针前后走，slow.next = null; return head`
+### 80. Remove Duplicates from Sorted Array II `nums[i]!=nums[i-2]
+
+[80. Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/)
+
+Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the same.
+
+Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums. More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.
+
+Return k after placing the final result in the first k slots of nums.
+
+Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Duplicates from Sorted Array II.
+// Memory Usage: 39.3 MB, less than 39.45% of Java online submissions for Remove Duplicates from Sorted Array II.
+/**
+ * In place, one pass solution using 2 pointers
+ *
+ * Time Complexity: O(N)
+ *
+ * Space Complexity: O(1)
+ *
+ * N = Length of input array.
+ */
+public int removeDuplicates(int[] nums) {
+    if (nums == null) throw new IllegalArgumentException("Input array is null");  
+    if (nums.length <= 2) return nums.length; 
+    int insertPos = 1;
+    for (int i = 2; i < nums.length; i++) {
+        if (nums[i] != nums[insertPos - 1]) {
+            nums[++insertPos] = nums[i];
+        }
+    }
+    return insertPos + 1;
+} 
+```
+
+---
+
+### FU. Each unique element should appear at most K times
+
+```java
+/**
+ * Follow-Up: Each unique element should appear at most K times.
+ *
+ * In place, one pass solution using 2 pointers
+ *
+ * Time Complexity: O(N-K)
+ *
+ * Space Complexity: O(1)
+ *
+ * N = Length of input array.
+ */
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        return removeDuplicatesMoreThanK(nums, 2);
+    }
+    public int removeDuplicatesMoreThanK(int[] nums, int k) {
+        if (nums == null || k < 0) throw new IllegalArgumentException("Invalid Input"); 
+        if (k == 0) return 0;  
+        if (nums.length <= k) return nums.length; 
+        int insertPos = k - 1;
+        for (int i = k; i < nums.length; i++) {
+            if (nums[i] != nums[insertPos - (k - 1)]) {
+                nums[++insertPos] = nums[i];
+            }
+        } 
+        return insertPos + 1;
+    }
+}
+```
+
+---
+ 
+### 27. Remove Element 移除元素 （简单）`快慢指针前后走`
+
+把 nums 中所有值为 val 的元素原地删除，依然需要使用 `双指针技巧` 中的 `快慢指针`：
+- 如果 fast 遇到需要去除的元素，则直接跳过，
+- 否则就告诉 slow 指针，并让 slow 前进一步。
+
+[27. Remove Element](https://leetcode.com/problems/remove-element/)
+
+Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+
+Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums. More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.
+
+Return k after placing the final result in the first k slots of nums.
+
+`Do not allocate extra space` for another array. You must do this by modifying the input array in-place with O(1) extra memory.
+ 
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Element.
+// Memory Usage: 38.9 MB, less than 24.52% of Java online submissions for Remove Element.
+/**
+ * Using Two Pointers. Output array maintains the order of the input array.
+ *
+ * Time Complexity: O(N)
+ *
+ * Space Complexity: O(1)
+ *
+ * N = Length of input array.
+ */
+int removeElement(int[] nums, int val) {
+    int fast = 0, slow = 0;
+    while (fast < nums.length) {
+        if (nums[fast] != val) {
+            nums[slow] = nums[fast];
+            slow++;
+        }
+        fast++;
+    }
+    return slow;
+}
+
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Element.
+// Memory Usage: 38.4 MB, less than 25.52% of Java online submissions for Remove Element.
+public int removeElement(int[] nums, int val) {
+    if (nums == null) throw new IllegalArgumentException("Input array is null"); 
+    if(nums.length==0) return 0;
+    int slow=0;
+    for(int i=0;i<nums.length;i++){
+        if(nums[i]!=val) {
+            nums[slow++]=nums[i]; 
+        }
+    }
+    return slow;
+}
+```
+
+
+
+
+
+```py
+# Runtime: 32 ms, faster than 81.50% of Python3 online submissions for Remove Element.
+# Memory Usage: 14.2 MB, less than 47.25% of Python3 online submissions for Remove Element.
+def removeElement(nums: List[int], val: int) -> int:
+    slow, fast = 0,0
+    while fast < len(nums):
+        if nums[fast] != val:
+            nums[slow] = nums[fast]
+            slow += 1
+        fast += 1
+
+# removeElement([0,0,1,2,2,3,3], 2)
+```
+
+
+
+---
+
+
+
+### 83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走，slow.next = null; return head`
 
 [83. Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/submissions/)
 
@@ -881,77 +1111,9 @@ LL = deleteDuplicates(LL)
 LL.printLL()
 ```
 
----
-
-### 移除元素 `快慢指针前后走`
-
-27.移除元素（简单）
-
-
-把 nums 中所有值为 val 的元素原地删除，依然需要使用 `双指针技巧` 中的 `快慢指针`：
-- 如果 fast 遇到需要去除的元素，则直接跳过，
-- 否则就告诉 slow 指针，并让 slow 前进一步。
-
-[27. Remove Element](https://leetcode.com/problems/remove-element/)
-
-Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
-
-Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums. More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.
-
-Return k after placing the final result in the first k slots of nums.
-
-Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
-
-Custom Judge:
-
-The judge will test your solution with the following code:
-
-int[] nums = [...]; // Input array
-int val = ...; // Value to remove
-int[] expectedNums = [...]; // The expected answer with correct length.
-                            // It is sorted with no values equaling val.
-
-int k = removeElement(nums, val); // Calls your implementation
-
-assert k == expectedNums.length;
-sort(nums, 0, k); // Sort the first k elements of nums
-for (int i = 0; i < actualLength; i++) {
-    assert nums[i] == expectedNums[i];
-}
-If all assertions pass, then your solution will be accepted.
-
-
-
-
-```java
-int removeElement(int[] nums, int val) {
-    int fast = 0, slow = 0;
-    while (fast < nums.length) {
-        if (nums[fast] != val) {
-            nums[slow] = nums[fast];
-            slow++;
-        }
-        fast++;
-    }
-    return slow;
-}
-```
-
-```py
-# Runtime: 32 ms, faster than 81.50% of Python3 online submissions for Remove Element.
-# Memory Usage: 14.2 MB, less than 47.25% of Python3 online submissions for Remove Element.
-def removeElement(nums: List[int], val: int) -> int:
-    slow, fast = 0,0
-    while fast < len(nums):
-        if nums[fast] != val:
-            nums[slow] = nums[fast]
-            slow += 1
-        fast += 1
-
-# removeElement([0,0,1,2,2,3,3], 2)
-```
 
 ---
+
 
 ### 283. Move Zeroes 移除0 `快慢指针前后走`
 
@@ -1051,6 +1213,8 @@ def moveZeroes(nums: List[int]) -> None:
 
 # moveZeroes([0,1,0,3,12])
 ```
+
+
 
 
 ---
@@ -1852,12 +2016,163 @@ ListNode mergeKLists(ListNode[] lists) {
 
 ---
 
-## 双指针
+
+## Two Pointer 双指针 
 
 ---
 
-### 寻找单链表的倒数n节点
+### 203. Remove Linked List Elements (Easy)
 
+[203. Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/)
+
+Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+
+Input: head = [1,2,6,3,4,5,6], val = 6
+Output: [1,2,3,4,5]
+
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+// Runtime: 1 ms, faster than 74.37% of Java online submissions for Remove Linked List Elements.
+// Memory Usage: 39.4 MB, less than 98.31% of Java online submissions for Remove Linked List Elements.
+
+class Solution { 
+    public ListNode removeElements(ListNode head, int val) {
+        if (head == null) return null;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode cur = head, pre = dummy;
+        while(cur !=null){
+            if(cur.val == val) pre.next = cur.next;
+            else pre = cur;
+            cur = cur.next;
+        }
+        return dummy.next;
+    }
+} 
+
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Linked List Elements.
+// Memory Usage: 40.6 MB, less than 18.70% of Java online submissions for Remove Linked List Elements.
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        if (head == null) return null;
+        if (head.val==val) return removeElements(head.next,  val);
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode cur = head;
+        while(cur.next !=null){
+            if(cur.next.val == val) cur.next = cur.next.next; 
+            else cur = cur.next;
+        }
+        return dummy.next;
+    }
+}
+
+```
+
+
+
+2. recursive solution
+
+```java
+public ListNode removeElements(ListNode head, int val) {
+        if (head == null) return null;
+        head.next = removeElements(head.next, val);
+        return head.val == val ? head.next : head;
+}
+```
+
+
+---
+
+### 237. Delete Node in a Linked List (Easy)
+
+[237. Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/)
+Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list, instead you will be given access to the node to be deleted directly.
+
+It is guaranteed that the node to be deleted is not a tail node in the list.
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Delete Node in a Linked List.
+// Memory Usage: 40.9 MB, less than 12.23% of Java online submissions for Delete Node in a Linked List.
+class Solution {
+    public void deleteNode(ListNode node) {
+        node.val=node.next.val;
+        node.next = node.next.next;
+    }
+}
+```
+
+
+
+
+---
+
+### 2095. Delete the Middle Node of a Linked List (Medium)
+
+
+[2095. Delete the Middle Node of a Linked List](https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/)
+You are given the head of a linked list. Delete the middle node, and return the head of the modified linked list.
+
+The middle node of a linked list of size n is the ⌊n / 2⌋th node from the start using 0-based indexing, where ⌊x⌋ denotes the largest integer less than or equal to x.
+
+For n = 1, 2, 3, 4, and 5, the middle nodes are 0, 1, 1, 2, and 2, respectively.
+
+Input: head = [1,3,4,7,1,2,6]
+Output: [1,3,4,1,2,6]
+
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+// O(n), O(1)
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        if(head ==null || head.next == null) return null; // 0 or 1 nodes
+        ListNode dummy = new ListNode(-1), fast = dummy, slow=dummy;
+        dummy.next=head;
+        while(fast.next !=null&&fast.next.next !=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        } 
+        slow.next=slow.next.next;
+        return dummy.next;
+    }
+}
+```
+
+---
+
+
+---
+
+### 寻找单链表的倒数n节点 
 
 point: 算法题一般只给你一个 ListNode 头结点代表一条单链表，
 - 不能直接得出这条链表的长度 n，
@@ -1888,7 +2203,7 @@ ListNode findFromEnd(ListNode head, int k) {
 ---
 
 
-### remove单链表的倒数n节点
+### 19. Remove Nth Node From End of List remove单链表的倒数n节点
 
 
 [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
@@ -1929,7 +2244,7 @@ private ListNode findFromEnd(ListNode head, int k){
 
 ---
 
-### 寻找单链表的中点
+### 876. Middle of the Linked List 寻找单链表的中点
 
 point: 无法直接得到单链表的长度 n，
 - 常规方法也是先遍历链表计算 n，再遍历一次得到第 n / 2 个节点，也就是中间节点。
@@ -1969,7 +2284,7 @@ ListNode middleNode(ListNode head) {
 
 ---
 
-### 判断两个单链表是否相交并找出交点
+### 160. 判断两个单链表是否相交并找出交点
 
 160 题「相交链表」
 - 给你输入两个链表的头结点 headA 和 headB，这两个链表可能存在相交。
@@ -1994,6 +2309,11 @@ ListNode getIntersectionNode(ListNode headA, ListNode headB) {
     return p1;
 }
 ```
+
+
+
+
+
 
 ---
 
@@ -2093,7 +2413,7 @@ int binarySearch(int[] nums, int target) {
 
 ---
 
-#### 寻找一个数（基本的二分搜索）
+#### 704. Binary Search 寻找一个数（基本的二分搜索）
 
 - 初始化 right 的赋值是 nums.length - 1，最后一个元素的索引，而不是 nums.length。
 - `nums.length - 1` 两端都闭区间 [left, right]
@@ -2249,9 +2569,9 @@ int left_bound(int[] nums, int target) {
 ---
 
 
-#### 寻找左右边界的二分搜索
+#### 34. Find First and Last Position of Element in Sorted Array 寻找左右边界的二分搜索
 
-34. Find First and Last Position of Element in Sorted Array
+[34. Find First and Last Position of Element in Sorted Array]
 
 Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
 
@@ -2528,7 +2848,7 @@ int[] twoSum(int[] nums, int target) {
 ---
 
 
-### 反转数组
+### 344. Reverse String 反转数组
 
 一般编程语言都会提供 reverse 函数
 
@@ -2958,7 +3278,7 @@ boolean hasCycle(ListNode head) {
 
 ---
 
-### 计算链表中环起点
+### 142. Linked List Cycle II 计算链表中环起点
 
 快慢指针相遇时，慢指针 slow 走了 k 步，那么快指针 fast 一定走了 2k 步：
 - fast 一定比 slow 多走了 k 步，这多走的 k 步其实就是 fast 指针在环里转圈圈，所以 k 的值就是环长度的「整数倍」。
@@ -3010,9 +3330,9 @@ ListNode detectCycle(ListNode head) {
 
 ---
 
-### 递归反转整个链表
+### 206 Reverse Linked List 递归反转整个链表 `递归+pointer`
 
-206 Reverse Linked List
+[206 Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
 - Given the head of a singly linked list, reverse the list, and return the reversed list.
 - Input: head = [1,2,3,4,5]
 - Output: [5,4,3,2,1]
@@ -3024,12 +3344,11 @@ ListNode detectCycle(ListNode head) {
 // Memory Usage: 39.3 MB, less than 38.00% of Java online submissions for Reverse Linked List.
 ListNode reverseList(ListNode head) {
     if (head==null || head.next == null) return head;
-    ListNode last = reverse(head.next);
+    ListNode last = reverseList(head.next);
     head.next.next = head;
     head.next = null;
     return last;
 }
-
 
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
 // Memory Usage: 39 MB, less than 51.90% of Java online submissions for Reverse Linked List.
@@ -3084,31 +3403,44 @@ ListNode reverseN(ListNode head, int n) {
 
 ---
 
+### 92. Reverse Linked List II 反转链表的一部分
 
-### 反转链表的一部分
-
-92. Reverse Linked List II
+[92. Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/)
 - Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
 
 - Input: head = [1,2,3,4,5], left = 2, right = 4
 - Output: [1,4,3,2,5]
 
-
 ```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        
+    }
+}
+
+
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List II.
 // Memory Usage: 36.6 MB, less than 75.28% of Java online submissions for Reverse Linked List II.
 ListNode reverseBetween(ListNode head, int m, int n) {
     // base case
-    if (m == 1) {
-        return reverseN(head, n);
-    }
+    if (m == 1) return reverseN(head, n);
     // 前进到反转的起点触发 base case
     head.next = reverseBetween(head.next, m - 1, n - 1);
     return head;
 }
 
 // 反转以 head 为起点的 n 个节点，返回新的头结点
-ListNode reverseN(ListNode head, int n) {
+ListNode reverseN(ListNode head, int n){
     ListNode successor = null; // 后驱节点
     if (n == 1) {
         // 记录第 n + 1 个节点
@@ -3124,12 +3456,14 @@ ListNode reverseN(ListNode head, int n) {
 }
 ```
 
+
 ---
 
 
-### K个一组反转链表
 
-25. Reverse Nodes in k-Group
+### 25. Reverse Nodes in k-Group K个一组反转链表
+
+[25. Reverse Nodes in k-Group]()
 - Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
 - k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
 - You may not alter the values in the list's nodes, only nodes themselves may be changed.
@@ -4138,7 +4472,7 @@ int BFS(Node start) {
 
 ---
 
-### 二叉树min层级遍历 用Queue和q.size去遍历左右
+### 111. Minimum Depth of Binary Tree 二叉树min层级遍历 `用Queue和q.size去遍历左右`
 
 
 [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
@@ -4147,9 +4481,8 @@ int BFS(Node start) {
 - Note: A leaf is a node with no children.
 
 ```java
-Runtime: 0 ms, faster than 100.00% of Java online submissions for Minimum Depth of Binary Tree.
-Memory Usage: 59.3 MB, less than 87.89% of Java online submissions for Minimum Depth of Binary Tree.
-
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Minimum Depth of Binary Tree.
+// Memory Usage: 59.3 MB, less than 87.89% of Java online submissions for Minimum Depth of Binary Tree.
 int minDepth(TreeNode root) {
     if (root == null) return 0;
     Queue<TreeNode> q = new LinkedList<>();
@@ -4234,160 +4567,6 @@ void BFS(String target) {
 
 
 ---
-
-
-### 解开密码锁的最少次数 用Queue和q.size去遍历all + visited + deads
-
-[752. Open the Lock](https://labuladong.github.io/algo/4/29/108/)
-- You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'. The wheels can rotate freely and wrap around: for example we can turn '9' to be '0', or '0' to be '9'. Each move consists of turning one wheel one slot.
-- The lock initially starts at '0000', a string representing the state of the 4 wheels.
-- You are given a list of deadends dead ends, meaning if the lock displays any of these codes, the wheels of the lock will stop turning and you will be unable to open it.
-- Given a target representing the value of the wheels that will unlock the lock, return the minimum total number of turns required to open the lock, or -1 if it is impossible.
-
-```java
-// Runtime: 76 ms, faster than 79.81% of Java online submissions for Open the Lock.
-// Memory Usage: 44.9 MB, less than 79.14% of Java online submissions for Open the Lock.
-// 将 s[j] 向上拨动一次
-
-String plusOne(String s, int j) {
-    char[] ch = s.toCharArray();
-    if (ch[j] == '9') ch[j] = '0';
-    else ch[j] += 1;
-    return new String(ch);
-}
-// 将 s[i] 向下拨动一次
-String minusOne(String s, int j) {
-    char[] ch = s.toCharArray();
-    if (ch[j] == '0') ch[j] = '9';
-    else ch[j] -= 1;
-    return new String(ch);
-}
-
-int openLock(String[] deadends, String target) {
-    // 记录需要跳过的死亡密码
-    Set<String> deads = new HashSet<>();
-    for (String s : deadends) deads.add(s);
-
-    // 记录已经穷举过的密码，防止走回头路
-    Set<String> visited = new HashSet<>();
-    Queue<String> q = new LinkedList<>();
-    // 从起点开始启动广度优先搜索
-    int step = 0;
-    q.offer("0000");
-    visited.add("0000");
-
-    while (!q.isEmpty()) {
-        int sz = q.size();
-        /* 将当前队列中的所有节点向周围扩散 */
-        for (int i = 0; i < sz; i++) {
-            String cur = q.poll();
-            /* 判断是否到达终点 */
-            if (deads.contains(cur)) continue;
-            if (cur.equals(target)) return step;
-            /* 将一个节点的未遍历相邻节点加入队列 */
-            for (int j = 0; j < 4; j++) {
-                String up = plusOne(cur, j);
-                String down = minusOne(cur, j);
-                if (!visited.contains(up)) {
-                    q.offer(up);
-                    visited.add(up);
-                }
-                if (!visited.contains(down)) {
-                    q.offer(down);
-                    visited.add(down);
-                }
-            }
-        }
-        /* 在这里增加步数 */
-        step++;
-    }
-    // 如果穷举完都没找到目标密码，那就是找不到了
-    return -1;
-}
-```
-
----
-
-
-### 双向 BFS 优化 用Queue和q.size去遍历 q1=q2;q2=temp
-
-
-无论传统 BFS 还是双向 BFS，无论做不做优化，
-- 从 Big O 衡量标准来看，时间复杂度都是一样的，
-- 只能说双向 BFS 是一种 trick，算法运行的速度会相对快一点
-
-
-- 双向 BFS 也有局限，因为你必须知道终点在哪里。
-  - 比如我们刚才讨论的二叉树最小高度的问题，你一开始根本就不知道终点在哪里，也就无法使用双向 BFS；
-  - 但是第二个密码锁的问题，是可以使用双向 BFS 算法来提高效率的，代码稍加修改即可：
-
-- 还是遵循 BFS 算法框架的，
-  - 只是不再使用队列，而是使用 HashSet 方便快速判断两个集合是否有交集。
-- 另外的一个技巧点就是 while 循环的最后交换 q1 和 q2 的内容，
-  - 所以只要默认扩散 q1 就相当于轮流扩散 q1 和 q2。
-
-```java
-// Runtime: 20 ms, faster than 96.72% of Java online submissions for Open the Lock.
-// Memory Usage: 39.4 MB, less than 98.61% of Java online submissions for Open the Lock.
-
-int openLock(String[] deadends, String target) {
-    Set<String> deads = new HashSet<>();
-    for (String s : deadends) deads.add(s);
-    // 用集合不用队列，可以快速判断元素是否存在
-    Set<String> q1 = new HashSet<>();
-    Set<String> q2 = new HashSet<>();
-    Set<String> visited = new HashSet<>();
-
-    int step = 0;
-    q1.add("0000");
-    q2.add(target);
-    while (!q1.isEmpty() && !q2.isEmpty()) {
-        // 哈希集合在遍历的过程中不能修改，用 temp 存储扩散结果
-        Set<String> temp = new HashSet<>();
-        /* 将 q1 中的所有节点向周围扩散 */
-        for (String cur : q1) {
-            /* 判断是否到达终点 */
-            if (deads.contains(cur)) continue;
-            if (q2.contains(cur)) return step;
-            visited.add(cur);
-            /* 将一个节点的未遍历相邻节点加入集合 */
-            for (int j = 0; j < 4; j++) {
-                String up = plusOne(cur, j);
-                String down = minusOne(cur, j);
-                if (!visited.contains(up)) temp.add(up);
-                if (!visited.contains(down)) temp.add(down);
-            }
-        }
-        /* 在这里增加步数 */
-        step++;
-        // temp 相当于 q1
-        // 这里交换 q1 q2，下一轮 while 就是扩散 q2
-        q1 = q2;
-        q2 = temp;
-    }
-    return -1;
-}
-```
-
-双向 BFS 还有一个优化，就是在 while 循环开始时做一个判断：
-- 因为按照 BFS 的逻辑，队列（集合）中的元素越多，扩散之后新的队列（集合）中的元素就越多；
-- 在双向 BFS 算法中，如果我们每次都选择一个较小的集合进行扩散，那么占用的空间增长速度就会慢一些，效率就会高一些。
-
-
-```java
-// ...
-while (!q1.isEmpty() && !q2.isEmpty()) {
-    if (q1.size() > q2.size()) {
-        // 交换 q1 和 q2
-        temp = q1;
-        q1 = q2;
-        q2 = temp;
-    }
-    // ...
-```
-
-
-
 
 
 ---
@@ -4913,516 +5092,6 @@ public class MaxPQ
 
 
 ---
-
-## DFS backtrack 回溯算法
-
-
-回溯算法其实就是我们常说的 DFS 算法，本质上就是一种暴力穷举算法。
-- 1、路径：也就是已经做出的选择。
-- 2、选择列表：也就是你当前可以做的选择。
-- 3、结束条件：也就是到达决策树底层，无法再做选择的条件。
-
-这也是回溯算法的一个特点，不像动态规划存在重叠子问题可以优化，回溯算法就是纯暴力穷举，复杂度一般都很高。
-
-```java
-// 防止重复遍历同一个节点
-boolean[] visited;
-// 从节点 s 开始 BFS 遍历，将遍历过的节点标记为 true
-void traverse(List<Integer>[] graph, int s) {
-    if (visited[s]) return; 
-    /* 前序遍历代码位置 */
-    // 将当前节点标记为已遍历
-    visited[s] = true;
-    for (int t : graph[s]) traverse(graph, t); 
-    /* 后序遍历代码位置 */
-}
-
-result = []
-def backtrack(路径, 选择列表):
-    if 满足结束条件:
-        result.add(路径)
-        return
-    
-    for 选择 in 选择列表:
-        做选择
-        backtrack(路径, 选择列表)
-        撤销选择
-```
-
----
-
-### 46. Permutations 全排列问题 ??????????/
-
-[46. Permutations](https://leetcode.com/problems/permutations/)
-
-Given an array nums of distinct integers, return all the possible permutations. 
-You can return the answer in any order.
-
-Example 1:
-
-Input: nums = [1,2,3]
-Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
-
-
-
-
-#### Iterative Solution
-
-```java
-/**
- * Iterative Solution
- *
- * The idea is to add the nth number in every possible position of each
- * permutation of the first n-1 numbers.
- *
- * Time Complexity: O(N * N!). Number of permutations = P(N,N) = N!. Each permutation takes O(N) to construct
- * T(n) = (x=2->n) ∑ (x-1)!*x(x+1)/2
- *      = (x=1->n-1) ∑ (x)!*x(x-1)/2
- *      = O(N * N!)
- * Space Complexity: O((N-1) * (N-1)!) = O(N * N!). All permutations of the first n-1 numbers.
- */
-class Solution {
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (nums == null || nums.length == 0) return result; 
-        result.add(Arrays.asList(nums[0]));
-
-        for (int i = 1; i < nums.length; i++) {
-            List<List<Integer>> newResult = new ArrayList<>();
-            for (List<Integer> cur : result) {
-                for (int j = 0; j <= i; j++) {
-                    List<Integer> newCur = new ArrayList<>(cur);
-                    newCur.add(j, nums[i]);
-                    newResult.add(newCur);
-                }
-            }
-            result = newResult;
-        }
-        return result;
-    }
-}
-```
-
-
-
-
-
-#### Recursive Backtracking using visited array
-
-```java
-// Runtime: 1 ms, faster than 94.15% of Java online submissions for Permutations.
-// Memory Usage: 39.2 MB, less than 76.83% of Java online submissions for Permutations.
-// Time Complexity: O(N * N!). Number of permutations = P(N,N) = N!. Each permutation takes O(N) to construct
-//  * T(n) = n*T(n-1) + O(n)
-//  * T(n-1) = (n-1)*T(n-2) + O(n)
-//  * ...
-//  * T(2) = (2)*T(1) + O(n)
-//  * T(1) = O(n)
-// Space Complexity: O(N). Recursion stack + visited array
-
-class Solution { 
-    public List<List<Integer>> permute(int[] nums) {
-        if (nums == null || nums.length == 0) return result; 
-        // 记录「路径」
-        List<List<Integer>> res = new LinkedList<>();
-        LinkedList<Integer> track = new LinkedList<>();
-        boolean[] used = new boolean[nums.length];
-        backtrack(track, used, res, nums);
-        return res;
-    }
-
-    // 从节点 s 开始 BFS 遍历，将遍历过的节点标记为 true
-    void backtrack(LinkedList<Integer> track, boolean[] used, List<List<Integer>> res, int[] nums) {
-        // 触发结束条件
-        if (track.size() == nums.length) {
-            res.add(new LinkedList(track));
-            return;
-        }
-        for(int i=0; i<nums.length; i++){
-            // skip used letters
-            if (used[i]) continue;
-            // add letter to permutation, mark letter as used
-            track.add(nums[i]);
-            used[i] = true;
-            backtrack(track, used, res, nums);
-            // remove letter from permutation, mark letter as unused
-            track.removeLast();
-            used[i] = false;
-        }
-    }
-}
-```
-
-
----
-
-
-### 51. N-Queens N 皇后问题 ??????????
-
-[51. N-Queens](https://leetcode.com/problems/n-queens/)
-
-The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
-
-Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
-
-Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
-
-
-```java
-class Solution {
-    public List<List<String>> solveNQueens(int n) {
-        List<List<String>> res = new ArrayList<List<String>>();
-        int[] pos = new int[n];
-        dfs(pos, 0, n, res);
-        return res;
-    }
-
-    public void dfs(int[] pos, int step, int n, List<List<String>> list) {
-        if(step==n) {
-            ArrayList<String> ls = printboard(pos,n);
-            res.add(new ArrayList<String>(ls));
-            return;
-        }
-        for(int i=0;i<n;i++) {
-            pos[step]=i;
-            if(isvalid(pos,step)) dfs(pos,step+1,n,list); 
-        }
-    }
-
-    public boolean isvalid(int[] pos, int step) {
-        for(int i=0;i<step;i++) {
-            if( pos[i]==pos[step] || (Math.abs(pos[i]-pos[step]))==(step-i) ) return false;
-        }
-        return true;
-    }
-
-    public ArrayList<String> printboard(int[] pos,int n) {
-        ArrayList<String> ls=new ArrayList<String>();
-        for(int i=0;i<n;i++) {
-            StringBuilder sb = new StringBuilder();
-            for(int j=0;j<n-1;j++) sb.append('.');
-            sb.insert(pos[i],'Q');
-            ls.add(sb.toString());
-        }
-        return ls;
-    }
-}
-```
-
-
-
-```java
-/**
- * Space Optimized Backtracking 
- * Total number of permutations can be found by this equation
- * T(N) = N * T(N-1) + O(N)
- * T(N-1) = (N-1) * T(N-2) + O(N)
- * T(N-2) = (N-2) * T(N-3) + O(N)
- * T(N-3) = (N-3) * T(N-4) + O(N)
- * ...
- * T(2) = 2 * T(1) + O(N)
- * T(1) = O(1)
- * Thus total number of permutations
- *      = N * (P(N,0) + P(N,1) + ... + P(N, N-2)) + P(N,N-1)
- *      = N * (e * N! - P(N,N-1) - P(N,N)) + N!
- *      = ((e-2)*N + 1) * N! 
-        = (0.718 * N + 1) * N! 
- * Also, if there are S(N) solutions, then time taken to generate these solution will be N^2 * S(N).
- * Here number of solutions will be much less than the total number of permutations.
- * Thus we can ignore the time taken for generating and adding the board in the result list. 
- * Total Time Complexity = O(N * N!) 
- * Space Complexity:
- * -> O(N) for queensPos arr
- * -> O(N) for recursion depth
- * -> O(1) for occupied BitSet 
- * Total Space Complexity = O(N) 
- * N = Input board size.
- */
-
-class Solution {
-    public List<List<String>> solveNQueens(int n) {
-        if (n <= 0) throw new IllegalArgumentException("Invalid board"); 
-        List<List<String>> result = new ArrayList<>();
-        int[] queensPos = new int[n];
-        solveNQueensHelper(result, queensPos, new BitSet(5 * n), 0);
-        return result;
-    }
-
-    private void solveNQueensHelper(List<List<String>> result, int[] queensPos, BitSet occupied, int row) {
-        int n = queensPos.length;
-        if (row == n) {
-            result.add(generateResultBoard(queensPos));
-            return;
-        }
-
-        for (int col = 0; col < n; col++) {
-            // First N bits are for columns
-            // Then 2*N bits are for diagonal at 45 degrees
-            // Then 2*N bits are for diagonal at 135 degrees
-            int diag45 = n + (row + col);
-            int diag135 = 3 * n + (n + row - col);
-            if (occupied.get(col) || occupied.get(diag45) || occupied.get(diag135)) continue; 
-
-            occupied.set(col);
-            occupied.set(diag45);
-            occupied.set(diag135);
-            queensPos[row] = col;
-
-            solveNQueensHelper(result, queensPos, occupied, row + 1);
-
-            occupied.clear(col);
-            occupied.clear(diag45);
-            occupied.clear(diag135);
-        }
-    }
-
-    private List<String> generateResultBoard(int[] queensPos) {
-        List<String> temp = new ArrayList<>();
-        char[] b = new char[queensPos.length];
-        Arrays.fill(b, '.');
-        for (int q : queensPos) {
-            b[q] = 'Q';
-            temp.add(new String(b));
-            b[q] = '.';
-        }
-        return temp;
-    }
-}
-```
-
-
-
-
-```java
-vector<vector<string>> res;
-/* 输入棋盘边长 n，返回所有合法的放置 */
-vector<vector<string>> solveNQueens(int n) {
-    // '.' 表示空，'Q' 表示皇后，初始化空棋盘。
-    vector<string> board(n, string(n, '.'));
-    backtrack(board, 0);
-    return res;
-}
-
-// 路径：board 中小于 row 的那些行都已经成功放置了皇后
-// 选择列表：第 row 行的所有列都是放置皇后的选择
-// 结束条件：row 超过 board 的最后一行
-void backtrack(vector<string>& board, int row) {
-    // 触发结束条件
-    if (row == board.size()) {
-        res.push_back(board);
-        return;
-    }
-    int n = board[row].size();
-    for (int col = 0; col < n; col++) {
-        // 排除不合法选择
-        if (!isValid(board, row, col)) continue;
-        // 做选择
-        board[row][col] = 'Q';
-        // 进入下一行决策
-        backtrack(board, row + 1);
-        // 撤销选择
-        board[row][col] = '.';
-    }
-}
-
-/* 是否可以在 board[row][col] 放置皇后？ */
-bool isValid(vector<string>& board, int row, int col) {
-    int n = board.size();
-    // 检查列是否有皇后互相冲突
-    for (int i = 0; i < n; i++) {
-        if (board[i][col] == 'Q') return false;
-    }
-    // 检查右上方是否有皇后互相冲突
-    for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
-        if (board[i][j] == 'Q') return false;
-    }
-    // 检查左上方是否有皇后互相冲突
-    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
-        if (board[i][j] == 'Q') return false;
-    }
-    return true;
-}
-```
-
----
-
-### 78. Subsets 子集（中等）
-
-[78. Subsets](https://leetcode.com/problems/subsets/)
-
-Given an integer array nums of unique elements, return all possible subsets (the power set).
-
-The solution set must not contain duplicate subsets. Return the solution in any order.
-
-Example 1:
-Input: nums = [1,2,3]
-Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
-
-Example 2:
-Input: nums = [0]
-Output: [[],[0]]
-
-
-1. 数学归纳 递归结构 Iterative
-   1. [1,2,3] 的子集可以由 [1,2] 追加得出，[1,2] 的子集可以由 [1] 追加得出，base case 显然就是当输入集合为空集时，输出子集也就是一个空集。
-   2. `subset([1,2,3]) = A + [A[i].add(3) for i = 1..len(A)]`
-   3. The idea is simple. We go through the elements in the nums list. For each element, we loop over the current result list we have constructed so far. For each list in the result, we make a copy of this list and append the current element to it (it means picking the element). It is based on the same idea in backtracking (in each step you have choices: pick or not pick).
-
-```java
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Subsets.
-// Memory Usage: 38.8 MB, less than 97.56% of Java online submissions for Subsets.
-/**
- * Constant Space Iterative Solution 
- * S(n) = (0 × (n C 0) + 1 × (n C 1) + 2 × (n C 2) + … + n × (n C n))
- * Note that (n C k) = (n C n-k). Therefore:
- * S(n) = 0 × (n C n) + 1 × (n C n-1) + 2 × (n C n-2) + … + n × (n C 0)
- * If we add these two together, we get
- * 2S(n) = n × (n C 0) + n × (n C 1) + … + n × (n C n)
- *       = n × (n C 0 + n C 1 + … + n C n)
- * As per binomial theorem, (n C 0 + n C 1 + … + n C n) = 2^n, so
- * 2*S(n) = n * 2^n => S(n) = n * 2^(n-1)
- *
- * Time Complexity: O(S(N) + n C 0) = O(N * 2^(N-1) + 1) = O(N * 2^N)
- *
- * Space Complexity: O(1) (Excluding the result space)
- *
- * N = Length of input nums array
- */
-public List<List<Integer>> subsets(int[] nums) {
-    // Arrays.sort(nums); // make sure subsets are ordered, not needed
-    List<List<Integer>> res = new ArrayList<>();
-    res.add(new ArrayList<>()); // start with empty set
-    for (int i = 0; i < nums.length; ++i) {
-        for (int j = 0, size = res.size(); j < size; ++j) { // remember
-            List<Integer> subset = new ArrayList<>(res.get(j)); // copy a new one
-            subset.add(nums[i]); // expand
-            res.add(subset); // collect
-        }
-    }
-    return res;
-}
-
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Subsets.
-// Memory Usage: 39.2 MB, less than 77.10% of Java online submissions for Subsets.
-// Time: O(N * 2^N)
-// The outer loop takes O(N) time.
-// The inner loop takes 2, 4, 8, ..., 2^N time respectively.
-// In inner loop, making a new copy of L takes at most O(N) time.
-// Total runtime T(N) = N * (2 + 4 + 8 + ... + 2^N) ~= N * 2^N
-// Space: O(N * 2^N)
-public List<List<Integer>> subsets(int[] nums) {
-  List<List<Integer>> result = new ArrayList<>();
-  result.add(new ArrayList<>());  // empty set
-
-  for (int i = 0; i < nums.length; ++i) {
-    List<List<Integer>> newResult = new ArrayList<>(); // used for new lists
-    for (List<Integer> L : result) {
-      L = new ArrayList<>(L); // copy
-      L.add(nums[i]);
-      newResult.add(L);
-    }
-    result.addAll(newResult);  // concatenate
-  }
-  return result;
-}
-```
-
-
-
-2. backtracking
-
-```java
-// Runtime: 2 ms, faster than 21.39% of Java online submissions for Subsets.
-// Memory Usage: 40 MB, less than 20.20% of Java online submissions for Subsets.
-/**
- * Backtracking (Recursion)
- *
- * Time Complexity: O(N * 2 ^ N) Refer to above explanation
- *
- * Space Complexity: O(N) (Recursion Depth + TempList)
- *
- * N = Length of input nums array
- */
-public List<List<Integer>> subsets(int[] nums) {
-    List<List<Integer>> list = new ArrayList<>();
-    Arrays.sort(nums);
-    backtrack(list, new ArrayList<>(), nums, 0);
-    return list;
-}
-private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
-    list.add(new ArrayList<>(tempList));
-    for(int i = start; i < nums.length; i++){
-        tempList.add(nums[i]);
-        backtrack(list, tempList, nums, i + 1);
-        tempList.remove(tempList.size() - 1);
-    }
-}
-
-
-// Runtime: 1 ms, faster than 60.07% of Java online submissions for Subsets.
-// Memory Usage: 39.9 MB, less than 20.20% of Java online submissions for Subsets.
-// Time: O(N * 2^N) since the recurrence is T(N) = 2T(N - 1) and we also spend at most O(N) time within a call.
-// Space: O(N * 2^N) since there are 2^N subsets. If we only print the result, we just need O(N) space.
-private void backtrack(List<List<Integer>> result, List<Integer> numList, int[] nums, int offset) {
-  if (offset >= nums.length) return; 
-  int val = nums[offset];
-  // pick
-  // add to result
-  numList.add(val);
-  subsets(offset + 1, nums, numList, result);
-  result.add(new ArrayList<>(numList));
-  // not pick
-  numList.remove(numList.size() - 1);
-  subsets(offset + 1, nums, numList, result);
-}
-
-```
-
-
----
-
-### 90. Subsets II 
-
-[90. Subsets II](https://leetcode.com/problems/subsets-ii/)
-Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
-
-The solution set must not contain duplicate subsets. Return the solution in any order.
-
-Example 1:
-
-Input: nums = [1,2,2]
-Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
-
-
-1. iteration
-
-
-```java
-public List<List<Integer>> subsetsWithDup(int[] nums) {
-  // sort
-  Arrays.sort(nums);
-  List<List<Integer>> result = new ArrayList<>();
-  result.add(new ArrayList<>());  // empty set
-  
-  int cachedSize = 0, startIdx = 0;
-  
-  for (int i = 0; i < nums.length; ++i) {
-    List<List<Integer>> newResult = new ArrayList<>();  // used for new lists
-    // set startIdx first before we update cachedSize
-    startIdx = (i > 0 && nums[i - 1] == nums[i]) ? cachedSize : 0; // if duplicate occurs
-    cachedSize = result.size(); // cache the size for startIdx in the next round
-    for (int j = startIdx; j < result.size(); ++j) {
-      List<Integer> L = result.get(j);
-      L = new ArrayList<>(L);  // copy
-      L.add(nums[i]);
-      newResult.add(L);
-    }
-    result.addAll(newResult);  // concatenate
-  }
-  return result;
-}
-```
-
 
 
 ---
@@ -7534,6 +7203,930 @@ class MedianFinder {
 }
 
 ```
+
+---
+
+# DFS and BFS
+
+1. 为什么 BFS 可以找到最短距离，DFS 不行吗？
+   1. BFS 的逻辑，depth 每增加一次，队列中的所有节点都向前迈一步，这保证了第一次到达终点的时候，走的步数是最少的。
+   2. DFS 也是可以的，但是时间复杂度相对高很多。DFS 实际上是靠递归的堆栈记录走过的路径，找最短路径得把二叉树中所有树杈都探索完, 才能对比出最短的路径有多长
+   3. BFS 借助队列做到一次一步「齐头并进」，是可以在不遍历完整棵树的条件下找到最短距离的。
+   4. 形象点说，DFS 是线，BFS 是面；DFS 是单打独斗，BFS 是集体行动
+
+2. 既然 BFS 那么好，为啥 DFS 还要存在？
+   1. BFS 可以找到最短距离，但是空间复杂度高，而 DFS 的空间复杂度较低。
+   2. 假设给你的这个二叉树是满二叉树，节点数为 N，对于 DFS 算法来说，空间复杂度无非就是递归堆栈，最坏情况下顶多就是树的高度，也就是 O(logN)。
+   3. BFS 算法，队列中每次都会储存着二叉树一层的节点，这样的话最坏情况下空间复杂度应该是树的最底层节点的数量，也就是 N/2，用 Big O 表示的话也就是 O(N)。
+   4. 由此观之，BFS 还是有代价的，一般来说在找最短路径的时候使用 BFS，其他时候还是 DFS 使用得多一些（主要是递归代码好写）。
+
+---
+
+## BFS
+
+
+BFS 相对 DFS 的最主要的区别是：BFS 找到的路径一定是最短的，但代价就是空间复杂度可能比 DFS 大很多 
+
+BFS 出现的常见场景好吧，
+- 问题的本质就是让你在一幅「图」中找到从起点 start 到终点 target 的最近距离
+- BFS 算法问题其实都是在干这个事儿，
+- 比如走迷宫，有的格子是围墙不能走，从起点到终点的最短距离是多少？如果这个迷宫带「传送门」可以瞬间传送呢？
+- 再比如说两个单词，要求你通过某些替换，把其中一个变成另一个，每次只能替换一个字符，最少要替换几次？
+- 比如说连连看游戏，两个方块消除的条件不仅仅是图案相同，还得保证两个方块之间的最短连线不能多于两个拐点。你玩连连看，点击两个坐标，游戏是如何判断它俩的最短连线有几个拐点的？
+- 本质上就是一幅「图」，让你从一个起点，走到终点，问最短路径。 
+
+```java
+// 计算从起点 start 到终点 target 的最近距离
+int BFS(Node start, Node target) {
+    Queue<Node> q; // 核心数据结构
+    Set<Node> visited; // 避免走回头路
+    
+    // 将起点加入队列
+    q.offer(start); 
+    visited.add(start);
+    int step = 0; // 记录扩散的步数
+
+    while (q not empty) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向四周扩散 */
+        for (int i = 0; i < sz; i++) {
+            Node cur = q.poll();
+            /* 划重点：这里判断是否到达终点 */
+            if (cur is target) return step;
+            /* 将 cur 的相邻节点加入队列 */
+            for (Node x : cur.adj())
+                if (x not in visited) {
+                    q.offer(x);
+                    visited.add(x);
+                }
+        }
+        /* 划重点：更新步数在这里 */
+        step++;
+    }
+}
+```
+
+---
+
+### 752. Open the Lock 解开密码锁最少次数 `用Queue和q.size去遍历all + visited + deads`
+
+[752. Open the Lock](https://labuladong.github.io/algo/4/29/108/)
+- You have a lock in front of you with 4 circular wheels. 
+- Each wheel has 10 slots: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'. 
+- The wheels can rotate freely and wrap around: for example we can turn '9' to be '0', or '0' to be '9'. 
+- Each move consists of turning one wheel one slot.
+- The lock initially starts at '0000', a string representing the state of the 4 wheels.
+- You are given a list of deadends dead ends, meaning if the lock displays any of these codes, the wheels of the lock will stop turning and you will be unable to open it.
+- Given a target representing the value of the wheels that will unlock the lock, return the minimum total number of turns required to open the lock, or -1 if it is impossible.
+
+
+#### BFS 
+
+```java
+// Runtime: 76 ms, faster than 79.81% of Java online submissions for Open the Lock.
+// Memory Usage: 44.9 MB, less than 79.14% of Java online submissions for Open the Lock.
+// 将 s[j] 向上拨动一次
+
+String plusOne(String s, int j) {
+    char[] ch = s.toCharArray();
+    if (ch[j] == '9') ch[j] = '0';
+    else ch[j] += 1;
+    return new String(ch);
+}
+// 将 s[i] 向下拨动一次
+String minusOne(String s, int j) {
+    char[] ch = s.toCharArray();
+    if (ch[j] == '0') ch[j] = '9';
+    else ch[j] -= 1;
+    return new String(ch);
+}
+
+int openLock(String[] deadends, String target) {
+    // 记录需要跳过的死亡密码
+    Set<String> deads = new HashSet<>();
+    for (String s : deadends) deads.add(s);
+
+    // 记录已经穷举过的密码，防止走回头路
+    Set<String> visited = new HashSet<>();
+    Queue<String> q = new LinkedList<>();
+    // 从起点开始启动广度优先搜索
+    int step = 0;
+    q.offer("0000");
+    visited.add("0000");
+
+    while (!q.isEmpty()) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向周围扩散 */
+        for (int i = 0; i < sz; i++) {
+            String cur = q.poll();
+            /* 判断是否到达终点 */
+            if (deads.contains(cur)) continue;
+            if (cur.equals(target)) return step;
+            /* 将一个节点的未遍历相邻节点加入队列 */
+            for (int j = 0; j < 4; j++) {
+                String up = plusOne(cur, j);
+                String down = minusOne(cur, j);
+                if (!visited.contains(up)) {
+                    q.offer(up);
+                    visited.add(up);
+                }
+                if (!visited.contains(down)) {
+                    q.offer(down);
+                    visited.add(down);
+                }
+            }
+        }
+        /* 在这里增加步数 */
+        step++;
+    }
+    // 如果穷举完都没找到目标密码，那就是找不到了
+    return -1;
+}
+```
+
+
+#### 双向 BFS 优化 `用Queue和q.size去遍历 q1=q2;q2=temp`
+
+
+无论传统 BFS 还是双向 BFS，无论做不做优化，
+- 从 Big O 衡量标准来看，时间复杂度都是一样的，
+- 只能说双向 BFS 是一种 trick，算法运行的速度会相对快一点
+
+
+- 双向 BFS 也有局限，因为你必须知道终点在哪里。
+  - 比如我们刚才讨论的二叉树最小高度的问题，你一开始根本就不知道终点在哪里，也就无法使用双向 BFS；
+  - 但是第二个密码锁的问题，是可以使用双向 BFS 算法来提高效率的，代码稍加修改即可：
+
+- 还是遵循 BFS 算法框架的，
+  - 只是不再使用队列，而是使用 HashSet 方便快速判断两个集合是否有交集。
+- 另外的一个技巧点就是 while 循环的最后交换 q1 和 q2 的内容，
+  - 所以只要默认扩散 q1 就相当于轮流扩散 q1 和 q2。
+
+```java
+// Runtime: 20 ms, faster than 96.72% of Java online submissions for Open the Lock.
+// Memory Usage: 39.4 MB, less than 98.61% of Java online submissions for Open the Lock.
+
+String plusOne(String s, int j) {
+    char[] ch = s.toCharArray();
+    if (ch[j] == '9') ch[j] = '0';
+    else ch[j] += 1;
+    return new String(ch);
+}
+// 将 s[i] 向下拨动一次
+String minusOne(String s, int j) {
+    char[] ch = s.toCharArray();
+    if (ch[j] == '0') ch[j] = '9';
+    else ch[j] -= 1;
+    return new String(ch);
+}
+
+int openLock(String[] deadends, String target) {
+    Set<String> deads = new HashSet<>();
+    for (String s : deadends) deads.add(s);
+    // 用集合不用队列，可以快速判断元素是否存在
+    Set<String> q1 = new HashSet<>();
+    Set<String> q2 = new HashSet<>();
+    Set<String> visited = new HashSet<>();
+
+    int step = 0;
+    q1.add("0000");
+    q2.add(target);
+    while (!q1.isEmpty() && !q2.isEmpty()) {
+        // 哈希集合在遍历的过程中不能修改，用 temp 存储扩散结果
+        Set<String> temp = new HashSet<>();
+        /* 将 q1 中的所有节点向周围扩散 */
+        for (String cur : q1) {
+            /* 判断是否到达终点 */
+            if (deads.contains(cur)) continue;
+            if (q2.contains(cur)) return step;
+            visited.add(cur);
+            /* 将一个节点的未遍历相邻节点加入集合 */
+            for (int j = 0; j < 4; j++) {
+                String up = plusOne(cur, j);
+                String down = minusOne(cur, j);
+                if (!visited.contains(up)) temp.add(up);
+                if (!visited.contains(down)) temp.add(down);
+            }
+        }
+        /* 在这里增加步数 */
+        step++;
+        // temp 相当于 q1
+        // 这里交换 q1 q2，下一轮 while 就是扩散 q2
+        q1 = q2;
+        q2 = temp;
+    }
+    return -1;
+}
+```
+
+双向 BFS 还有一个优化，就是在 while 循环开始时做一个判断：
+- 因为按照 BFS 的逻辑，队列（集合）中的元素越多，扩散之后新的队列（集合）中的元素就越多；
+- 在双向 BFS 算法中，如果我们每次都选择一个较小的集合进行扩散，那么占用的空间增长速度就会慢一些，效率就会高一些。
+
+
+```java
+// ...
+while (!q1.isEmpty() && !q2.isEmpty()) {
+    if (q1.size() > q2.size()) {
+        // 交换 q1 和 q2
+        temp = q1;
+        q1 = q2;
+        q2 = temp;
+    }
+    // ...
+```
+
+---
+
+## DFS backtrack 回溯算法
+
+
+回溯算法其实就是我们常说的 DFS 算法，本质上就是一种暴力穷举算法。
+- 1、路径：也就是已经做出的选择。
+- 2、选择列表：也就是你当前可以做的选择。
+- 3、结束条件：也就是到达决策树底层，无法再做选择的条件。
+
+这也是回溯算法的一个特点，不像动态规划存在重叠子问题可以优化，回溯算法就是纯暴力穷举，复杂度一般都很高。
+
+```java
+// 防止重复遍历同一个节点
+boolean[] visited;
+// 从节点 s 开始 BFS 遍历，将遍历过的节点标记为 true
+void traverse(List<Integer>[] graph, int s) {
+    if (visited[s]) return; 
+    /* 前序遍历代码位置 */
+    // 将当前节点标记为已遍历
+    visited[s] = true;
+    for (int t : graph[s]) traverse(graph, t); 
+    /* 后序遍历代码位置 */
+}
+
+result = []
+def backtrack(路径, 选择列表):
+    if 满足结束条件:
+        result.add(路径)
+        return
+    
+    for 选择 in 选择列表:
+        做选择
+        backtrack(路径, 选择列表)
+        撤销选择
+```
+
+---
+
+### 46. Permutations 全排列问题 ??????????/
+
+[46. Permutations](https://leetcode.com/problems/permutations/)
+
+Given an array nums of distinct integers, return all the possible permutations. 
+You can return the answer in any order.
+
+Example 1:
+
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+1. Iterative Solution
+
+```java
+/**
+ * Iterative Solution
+ *
+ * The idea is to add the nth number in every possible position of each
+ * permutation of the first n-1 numbers.
+ *
+ * Time Complexity: O(N * N!). Number of permutations = P(N,N) = N!. Each permutation takes O(N) to construct
+ * T(n) = (x=2->n) ∑ (x-1)!*x(x+1)/2
+ *      = (x=1->n-1) ∑ (x)!*x(x-1)/2
+ *      = O(N * N!)
+ * Space Complexity: O((N-1) * (N-1)!) = O(N * N!). All permutations of the first n-1 numbers.
+ */
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (nums == null || nums.length == 0) return result; 
+        result.add(Arrays.asList(nums[0]));
+
+        for (int i = 1; i < nums.length; i++) {
+            List<List<Integer>> subres = new ArrayList<>();
+            for (List<Integer> cur : result) {
+                for (int j = 0; j <= i; j++) {
+                    List<Integer> newCur = new ArrayList<>(cur);
+                    newCur.add(j, nums[i]);
+                    subres.add(newCur);
+                }
+            }
+            result = subres;
+        }
+        return result;
+    }
+}
+```
+
+2. Recursive Backtracking using visited array
+
+```java
+// Runtime: 1 ms, faster than 94.15% of Java online submissions for Permutations.
+// Memory Usage: 39.2 MB, less than 76.83% of Java online submissions for Permutations.
+// Time Complexity: O(N * N!). Number of permutations = P(N,N) = N!. Each permutation takes O(N) to construct
+//  * T(n) = n*T(n-1) + O(n)
+//  * T(n-1) = (n-1)*T(n-2) + O(n)
+//  * ...
+//  * T(2) = (2)*T(1) + O(n)
+//  * T(1) = O(n)
+// Space Complexity: O(N). Recursion stack + visited array
+
+class Solution { 
+    public List<List<Integer>> permute(int[] nums) {
+        if (nums == null || nums.length == 0) return result; 
+        // 记录「路径」
+        List<List<Integer>> res = new LinkedList<>();
+        LinkedList<Integer> track = new LinkedList<>();
+        boolean[] used = new boolean[nums.length];
+        backtrack(track, used, res, nums);
+        return res;
+    }
+
+    // 从节点 s 开始 BFS 遍历，将遍历过的节点标记为 true
+    void backtrack(LinkedList<Integer> track, boolean[] used, List<List<Integer>> res, int[] nums) {
+        // 触发结束条件
+        if (track.size() == nums.length) {
+            res.add(new LinkedList(track));
+            return;
+        }
+        for(int i=0; i<nums.length; i++){
+            // skip used letters
+            if (used[i]) continue;
+            // add letter to permutation, mark letter as used
+            track.add(nums[i]);
+            used[i] = true;
+            backtrack(track, used, res, nums);
+            // remove letter from permutation, mark letter as unused
+            track.removeLast();
+            used[i] = false;
+        }
+    }
+}
+```
+
+
+---
+
+
+### 51. N-Queens N 皇后问题 ??????????
+
+[51. N-Queens](https://leetcode.com/problems/n-queens/)
+
+The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+
+Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
+
+Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
+
+
+```java
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        List<List<String>> res = new ArrayList<List<String>>();
+        int[] pos = new int[n];
+        dfs(pos, 0, n, res);
+        return res;
+    }
+
+    public void dfs(int[] pos, int step, int n, List<List<String>> list) {
+        if(step==n) {
+            ArrayList<String> ls = printboard(pos,n);
+            res.add(new ArrayList<String>(ls));
+            return;
+        }
+        for(int i=0;i<n;i++) {
+            pos[step]=i;
+            if(isvalid(pos,step)) dfs(pos,step+1,n,list); 
+        }
+    }
+
+    public boolean isvalid(int[] pos, int step) {
+        for(int i=0;i<step;i++) {
+            if( pos[i]==pos[step] || (Math.abs(pos[i]-pos[step]))==(step-i) ) return false;
+        }
+        return true;
+    }
+
+    public ArrayList<String> printboard(int[] pos,int n) {
+        ArrayList<String> ls=new ArrayList<String>();
+        for(int i=0;i<n;i++) {
+            StringBuilder sb = new StringBuilder();
+            for(int j=0;j<n-1;j++) sb.append('.');
+            sb.insert(pos[i],'Q');
+            ls.add(sb.toString());
+        }
+        return ls;
+    }
+}
+```
+
+
+
+```java
+/**
+ * Space Optimized Backtracking 
+ * Total number of permutations can be found by this equation
+ * T(N) = N * T(N-1) + O(N)
+ * T(N-1) = (N-1) * T(N-2) + O(N)
+ * T(N-2) = (N-2) * T(N-3) + O(N)
+ * T(N-3) = (N-3) * T(N-4) + O(N)
+ * ...
+ * T(2) = 2 * T(1) + O(N)
+ * T(1) = O(1)
+ * Thus total number of permutations
+ *      = N * (P(N,0) + P(N,1) + ... + P(N, N-2)) + P(N,N-1)
+ *      = N * (e * N! - P(N,N-1) - P(N,N)) + N!
+ *      = ((e-2)*N + 1) * N! 
+        = (0.718 * N + 1) * N! 
+ * Also, if there are S(N) solutions, then time taken to generate these solution will be N^2 * S(N).
+ * Here number of solutions will be much less than the total number of permutations.
+ * Thus we can ignore the time taken for generating and adding the board in the result list. 
+ * Total Time Complexity = O(N * N!) 
+ * Space Complexity:
+ * -> O(N) for queensPos arr
+ * -> O(N) for recursion depth
+ * -> O(1) for occupied BitSet 
+ * Total Space Complexity = O(N) 
+ * N = Input board size.
+ */
+
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        if (n <= 0) throw new IllegalArgumentException("Invalid board"); 
+        List<List<String>> result = new ArrayList<>();
+        int[] queensPos = new int[n];
+        solveNQueensHelper(result, queensPos, new BitSet(5 * n), 0);
+        return result;
+    }
+
+    private void solveNQueensHelper(List<List<String>> result, int[] queensPos, BitSet occupied, int row) {
+        int n = queensPos.length;
+        if (row == n) {
+            result.add(generateResultBoard(queensPos));
+            return;
+        }
+
+        for (int col = 0; col < n; col++) {
+            // First N bits are for columns
+            // Then 2*N bits are for diagonal at 45 degrees
+            // Then 2*N bits are for diagonal at 135 degrees
+            int diag45 = n + (row + col);
+            int diag135 = 3 * n + (n + row - col);
+            if (occupied.get(col) || occupied.get(diag45) || occupied.get(diag135)) continue; 
+
+            occupied.set(col);
+            occupied.set(diag45);
+            occupied.set(diag135);
+            queensPos[row] = col;
+
+            solveNQueensHelper(result, queensPos, occupied, row + 1);
+
+            occupied.clear(col);
+            occupied.clear(diag45);
+            occupied.clear(diag135);
+        }
+    }
+
+    private List<String> generateResultBoard(int[] queensPos) {
+        List<String> temp = new ArrayList<>();
+        char[] b = new char[queensPos.length];
+        Arrays.fill(b, '.');
+        for (int q : queensPos) {
+            b[q] = 'Q';
+            temp.add(new String(b));
+            b[q] = '.';
+        }
+        return temp;
+    }
+}
+```
+
+
+
+
+```java
+vector<vector<string>> res;
+/* 输入棋盘边长 n，返回所有合法的放置 */
+vector<vector<string>> solveNQueens(int n) {
+    // '.' 表示空，'Q' 表示皇后，初始化空棋盘。
+    vector<string> board(n, string(n, '.'));
+    backtrack(board, 0);
+    return res;
+}
+
+// 路径：board 中小于 row 的那些行都已经成功放置了皇后
+// 选择列表：第 row 行的所有列都是放置皇后的选择
+// 结束条件：row 超过 board 的最后一行
+void backtrack(vector<string>& board, int row) {
+    // 触发结束条件
+    if (row == board.size()) {
+        res.push_back(board);
+        return;
+    }
+    int n = board[row].size();
+    for (int col = 0; col < n; col++) {
+        // 排除不合法选择
+        if (!isValid(board, row, col)) continue;
+        // 做选择
+        board[row][col] = 'Q';
+        // 进入下一行决策
+        backtrack(board, row + 1);
+        // 撤销选择
+        board[row][col] = '.';
+    }
+}
+
+/* 是否可以在 board[row][col] 放置皇后？ */
+bool isValid(vector<string>& board, int row, int col) {
+    int n = board.size();
+    // 检查列是否有皇后互相冲突
+    for (int i = 0; i < n; i++) {
+        if (board[i][col] == 'Q') return false;
+    }
+    // 检查右上方是否有皇后互相冲突
+    for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+        if (board[i][j] == 'Q') return false;
+    }
+    // 检查左上方是否有皇后互相冲突
+    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+        if (board[i][j] == 'Q') return false;
+    }
+    return true;
+}
+```
+
+---
+
+### 78. Subsets 子集（中等）
+
+[78. Subsets](https://leetcode.com/problems/subsets/)
+
+Given an integer array nums of unique elements, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+Example 1:
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+Example 2:
+Input: nums = [0]
+Output: [[],[0]]
+
+
+1. 数学归纳 递归结构 Iterative
+   1. [1,2,3] 的子集可以由 [1,2] 追加得出，[1,2] 的子集可以由 [1] 追加得出，base case 显然就是当输入集合为空集时，输出子集也就是一个空集。
+   2. `subset([1,2,3]) = A + [A[i].add(3) for i = 1..len(A)]`
+   3. The idea is simple. We go through the elements in the nums list. For each element, we loop over the current result list we have constructed so far. For each list in the result, we make a copy of this list and append the current element to it (it means picking the element). It is based on the same idea in backtracking (in each step you have choices: pick or not pick).
+   4. 计算递归算法时间复杂度的方法
+      1. 递归深度 乘以 每次递归中迭代的次数
+      2. 递归深度显然是 N，每次递归 for 循环的迭代次数取决于 res 的长度，并不是固定的。
+      3. res 的长度应该是每次递归都翻倍，所以说总的迭代次数应该是 2^N。
+      4. 大小为 N 的集合的子集总共有几个？2^N 个 
+      5. 2^N 个子集是 push_back 添加进 res 的，所以要考虑 push_back 这个操作的效率：
+      6. 总的时间复杂度就是 O(N*2^N)，还是比较耗时的。
+   5.  如果不计算储存返回结果所用的空间的，只需要 O(N) 的递归堆栈空间。如果计算 res 所需的空间，应该是 O(N*2^N)。
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Subsets.
+// Memory Usage: 38.8 MB, less than 97.56% of Java online submissions for Subsets.
+/**
+ * Constant Space Iterative Solution 
+
+ * S(n) = (0 × (n C 0) + 1 × (n C 1) + 2 × (n C 2) + … + n × (n C n))
+ * Note that (n C k) = (n C n-k). Therefore:
+ * S(n) = 0 × (n C n) + 1 × (n C n-1) + 2 × (n C n-2) + … + n × (n C 0)
+ * If we add these two together, we get
+ * 2S(n) = n × (n C 0) + n × (n C 1) + … + n × (n C n)
+ *       = n × (n C 0 + n C 1 + … + n C n)
+ * As per binomial theorem, (n C 0 + n C 1 + … + n C n) = 2^n, so
+ * 2*S(n) = n * 2^n => S(n) = n * 2^(n-1)
+ *
+ * Time Complexity: O(S(N) + n C 0) = O(N * 2^(N-1) + 1) = O(N * 2^N)
+ *
+ * Space Complexity: O(1) (Excluding the result space)
+ *
+ * N = Length of input nums array
+ */
+public List<List<Integer>> subsets(int[] nums) {
+    // Arrays.sort(nums); // make sure subsets are ordered, not needed
+    List<List<Integer>> res = new ArrayList<>();
+    res.add(new ArrayList<>()); // start with empty set
+    for (int i = 0; i < nums.length; ++i) {
+        for (int j = 0, size = res.size(); j < size; ++j) { // remember
+            List<Integer> subset = new ArrayList<>(res.get(j)); // copy a new one
+            subset.add(nums[i]); // expand
+            res.add(subset); // collect
+        }
+    }
+    return res;
+}
+
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Subsets.
+// Memory Usage: 39.2 MB, less than 77.10% of Java online submissions for Subsets.
+// Time: O(N * 2^N)
+// The outer loop takes O(N) time.
+// The inner loop takes 2, 4, 8, ..., 2^N time respectively.
+// In inner loop, making a new copy of L takes at most O(N) time.
+// Total runtime T(N) = N * (2 + 4 + 8 + ... + 2^N) ~= N * 2^N
+// Space: O(N * 2^N)
+public List<List<Integer>> subsets(int[] nums) {
+  List<List<Integer>> result = new ArrayList<>();
+  result.add(new ArrayList<>());  // empty set
+
+  for (int i = 0; i < nums.length; ++i) {
+    List<List<Integer>> subres = new ArrayList<>(); // used for new lists
+    for (List<Integer> L : result) {
+      L = new ArrayList<>(L); // copy
+      L.add(nums[i]);
+      subres.add(L);
+    }
+    result.addAll(subres);  // concatenate
+  }
+  return result;
+}
+```
+
+
+
+2. backtracking
+
+```java
+// Runtime: 2 ms, faster than 21.39% of Java online submissions for Subsets.
+// Memory Usage: 40 MB, less than 20.20% of Java online submissions for Subsets.
+/**
+ * Backtracking (Recursion)
+ *
+ * Time Complexity: O(N * 2 ^ N) Refer to above explanation
+ *
+ * Space Complexity: O(N) (Recursion Depth + TempList)
+ *
+ * N = Length of input nums array
+ */
+public List<List<Integer>> subsets(int[] nums) {
+    List<List<Integer>> list = new ArrayList<>();
+    Arrays.sort(nums);
+    backtrack(list, new ArrayList<>(), nums, 0);
+    return list;
+}
+private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
+    list.add(new ArrayList<>(tempList));
+    for(int i = start; i < nums.length; i++){
+        tempList.add(nums[i]);
+        backtrack(list, tempList, nums, i + 1);
+        tempList.remove(tempList.size() - 1);
+    }
+}
+
+
+// Runtime: 1 ms, faster than 60.07% of Java online submissions for Subsets.
+// Memory Usage: 39.9 MB, less than 20.20% of Java online submissions for Subsets.
+// Time: O(N * 2^N) since the recurrence is T(N) = 2T(N - 1) and we also spend at most O(N) time within a call.
+// Space: O(N * 2^N) since there are 2^N subsets. If we only print the result, we just need O(N) space.
+private void backtrack(List<List<Integer>> result, List<Integer> numList, int[] nums, int offset) {
+  if (offset >= nums.length) return; 
+  int val = nums[offset];
+  // pick
+  // add to result
+  numList.add(val);
+  subsets(offset + 1, nums, numList, result);
+  result.add(new ArrayList<>(numList));
+  // not pick
+  numList.remove(numList.size() - 1);
+  subsets(offset + 1, nums, numList, result);
+}
+
+```
+
+
+---
+
+### 90. Subsets II 
+
+[90. Subsets II](https://leetcode.com/problems/subsets-ii/)
+Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+Example 1:
+
+Input: nums = [1,2,2]
+Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
+
+https://leetcode.com/problems/subsets-ii/discuss/388566/Subsets-I-and-II-Java-Solution-with-Detailed-Explanation-and-Comments-(Recursion-and-Iteration)
+
+1. iteration
+
+
+```java
+// Runtime: 2 ms, faster than 43.93% of Java online submissions for Subsets II.
+// Memory Usage: 40.9 MB, less than 11.52% of Java online submissions for Subsets II.
+// Time: O(N * 2^N)
+// Space: O(N * 2^N)
+public List<List<Integer>> subsetsWithDup(int[] nums) {
+  // sort
+  Arrays.sort(nums);
+  List<List<Integer>> res = new ArrayList<>();
+  res.add(new ArrayList<>());  // empty set
+  
+  int cachedSize = 0, startIdx = 0;
+  
+  for (int i = 0; i < nums.length; ++i) {
+    List<List<Integer>> subres = new ArrayList<>();  // used for new lists
+    // set startIdx first before we update cachedSize
+    startIdx = (i > 0 && nums[i - 1] == nums[i]) ? cachedSize : 0; // if duplicate occurs
+    cachedSize = res.size(); // cache the size for startIdx in the next round
+    for (int j = startIdx; j < res.size(); ++j) {
+      List<Integer> L = res.get(j);
+      L = new ArrayList<>(L);  // copy
+      L.add(nums[i]);
+      subres.add(L);
+    }
+    res.addAll(subres);  // concatenate
+  }
+  return res;
+}
+```
+
+
+2. Backtracking
+
+
+The information of whether it picks or not could be passed down by a boolean parameter isPicked.
+
+If the above condition is satisfied:
+
+Do not add the list to the result list.
+Do not do the subproblem after picking the current element.
+Only do the subproblem after not picking the current element.
+
+```java
+public List<List<Integer>> subsetsWithDup(int[] nums) {
+  // sorting
+  Arrays.sort(nums);
+  List<List<Integer>> result = new ArrayList<>();
+  List<Integer> numList = new ArrayList<>();
+  result.add(new ArrayList<>());
+  subsets(0, nums, numList, result, true);
+  return result;
+}
+
+private void subsets(int offset, int[] nums, List<Integer> numList, List<List<Integer>> result, boolean isPicked) {
+  // base case
+  if (offset >= nums.length) return;
+  int val = nums[offset];
+  // duplicate checking (convert && to ||)
+  if (offset == 0 || nums[offset - 1] != nums[offset] || isPicked == true) {
+    // pick
+    numList.add(val);
+    subsets(offset + 1, nums, numList, result, true);
+    result.add(new ArrayList<>(numList));  // add to the result list
+    numList.remove(numList.size() - 1);
+  }
+  // not pick
+  subsets(offset + 1, nums, numList, result, false);
+}
+
+
+// Time: O(N * 2^N)
+// Space: O(N * 2^N)
+private void subsets(int offset, int[] nums, List<Integer> numList, List<List<Integer>> result, boolean isPicked) {
+  // base case
+  if (offset >= nums.length) return; 
+  int val = nums[offset];
+  // not pick
+  subsets(offset + 1, nums, numList, result, false);
+  // duplicate check
+  if (offset >= 1 && nums[offset - 1] == nums[offset] && isPicked == false) return; 
+  // pick
+  numList.add(val);
+  subsets(offset + 1, nums, numList, result, true);
+  result.add(new ArrayList<>(numList));  // add to the result list
+  numList.remove(numList.size() - 1); 
+}
+```
+
+
+
+---
+
+
+### 77. Combinations
+
+[77. Combinations](https://leetcode.com/problems/combinations/)
+
+Given two integers n and k, return all possible combinations of k numbers out of the range [1, n].
+
+You may return the answer in any order.
+ 
+
+Example 1:
+
+Input: n = 4, k = 2
+Output:
+[
+  [2,4],
+  [3,4],
+  [2,3],
+  [1,2],
+  [1,3],
+  [1,4],
+]
+
+1. backtracking 典型的回溯算法，
+   1. k 限制了树的高度，n 限制了树的宽度，
+   2. 直接套我们以前讲过的回溯算法模板框架就行了：
+
+
+```java
+// Runtime: 17 ms, faster than 68.79% of Java online submissions for Combinations.
+// Memory Usage: 41.6 MB, less than 35.55% of Java online submissions for Combinations.
+/**
+ * Backtracking (Recursive Solution)
+ *
+ * Time complexity = InternalNodes in the RecursionTree   +   K * LeafNodes in RecursionTree
+ *                 = (C(N,0) + C(N,1) + ... + C(N,K-1))   +   K * C(N,K)
+ *
+ * Space Complexity = O(K) -> Depth of Recursion tree + Size of TempList
+ *
+ * N, K -> Input numbers.
+ */
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> res = new LinkedList<>();
+        if (k > n || k < 0) return result; 
+        if(k==0) {
+            res.add(new LinkedList<Integer>()); 
+            return res;
+        }
+        backtracking(res, new LinkedList<Integer>(), 1, n, k);
+        return res;
+    }
+    public void backtracking(List<List<Integer>> res, LinkedList<Integer> curr, int start, int n, int k) {
+        if (curr.size()==k) res.add(new LinkedList(curr));
+        for(int i=start; i<=n && curr.size()<k; i++){ 
+            curr.add(i);
+            backtracking(res, curr, i+1, n, k);
+            curr.removeLast(); 
+        }
+    }
+}
+    
+
+
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> res = new ArrayList<>();
+        backtracking(res, new ArrayList<>(), 1, n, k);
+        return res;
+    }
+
+    public void backtracking(List<List<Integer>>res, List<Integer> , 1, int n, int k) {
+        if(k==0) {
+			combs.add(new ArrayList<Integer>(comb));
+			return;
+		}
+		for(int i=start;i<=n;i++) {
+			comb.add(i);
+			combine(combs, comb, i+1, n, k-1);
+			comb.remove(comb.size()-1);
+		}
+    }
+}
+
+
+```
+
+
+```java
+// Runtime: 7 ms, faster than 84.10% of Java online submissions for Combinations.
+// Memory Usage: 52.6 MB, less than 14.45% of Java online submissions for Combinations.
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if (k > n || k < 0) throw new IllegalArgumentException("invalid input");
+        if (k == 0) {
+            result.add(new ArrayList<Integer>());
+            return result;
+        }
+        // Case I: Add number n to answer
+        // Add current element to final solution combine(n-1, k-1)
+        result = combine(n - 1, k - 1);
+        for (List<Integer> list : result) list.add(n);
+        // Case II: Do not add number n to answer
+        result.addAll(combine(n - 1, k));
+        return result;
+    }
+}
+```
+
+
 
 
 
