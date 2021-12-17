@@ -13,11 +13,15 @@ layout: default
 
       <h1 data-toc-skip>{{ page.title }}</h1>
 
+      {% if page.description %}
+        <h3 data-toc-skip>{{ page.description }}</h3>
+      {% endif %}
+
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published date and author -->
         <div>
           <span class="semi-bold">
-            {{ page.author | default: site.social.name }},
+            {{ page.author | default: site.social.name }}{% if page.date %},{% endif %}
           </span>
           {% capture _preposition %}{{ site.data.locales[lang].post.published }}{% endcapture %}
           {% include timeago.html date=page.date tooltip=true preposition=_preposition %}

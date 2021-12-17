@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.3)  13 DEC 2021 15:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.3)  17 DEC 2021 20:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -775,15 +775,15 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.2698pt, 469.75539pt, 72.2698pt)
-* v-part:(T,H,B)=(72.2698pt, 650.43037pt, 72.2698pt)
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=469.75539pt
-* \textheight=650.43037pt
-* \oddsidemargin=-0.00018pt
-* \evensidemargin=-0.00018pt
-* \topmargin=-37.00018pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=12.0pt
@@ -842,7 +842,7 @@ chanics_trees.toc)
 
 
 [2]
-Overfull \hbox (3.9389pt too wide) in paragraph at lines 59--60
+Overfull \hbox (3.93927pt too wide) in paragraph at lines 59--60
 \OT1/cmr/m/n/12 called its his-tory, or tra-jec-tory. In set the-o-retic no-ta-
 tion, the his-tory of $\OMS/cmsy/m/n/12 S$ \OT1/cmr/m/n/12 is $[]$. 
  []
@@ -857,7 +857,7 @@ ed.
 Here is how much of TeX's memory you used:
  31187 strings out of 478542
  720463 string characters out of 5854403
- 1115638 words of memory out of 5000000
+ 1115597 words of memory out of 5000000
  48625 multiletter control sequences out of 15000+600000
  412801 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -870,7 +870,7 @@ ype1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmr17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/
 msbm10.pfb>
-Output written on classical_mechanics_trees.pdf (3 pages, 91908 bytes).
+Output written on classical_mechanics_trees.pdf (3 pages, 91839 bytes).
 PDF statistics:
  78 PDF objects out of 1000 (max. 8388607)
  56 compressed objects within 1 object stream
