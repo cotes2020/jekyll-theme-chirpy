@@ -29,7 +29,9 @@ $$
 
 Indeed, $$\frac{\partial \mathcal{L}}{\partial \left( \partial_{\mu} \phi \right)}$$ transforms like a vector, as second-order terms vanish in inertial coordinates. However, it's not hard to promote the quantity to a tensor in arbitrary coordinates: we simply replace partial derivatives $$\partial_\mu$$ with covariant derivatives $$\nabla_\mu$$ , so that all second-order terms involving the Christoffel symbols cancel out. However, let us stick to inertial coordinates as it's much simpler to manipulate expressions in them and later switch to coordinate-independent quantities.
 
-The vectorial quantity we just found will appear repeatedly in this post, so let us simply call it the _canonical 4-momentum field_ $$\pi^\mu$$ in lieu with conjugate momentum in the Lagrangian mechanics of point particles.
+The vectorial quantity we just found will appear repeatedly in this post, so let us simply call it the _canonical 4-momentum field_ $$\pi^\mu$$ in lieu with conjugate momentum in the Lagrangian mechanics of point particles [^1] .
+
+[^1]: Technically, the quantity described is a momentum _density_ field. However, we will simply refer to it as momentum, much like the Lagrangian density is commonly called the Lagrangian.
 
 ## Continuity equation
 
@@ -105,9 +107,9 @@ $$
 \end{align}
 $$
 
-which is a set of $$4$$ equations, one for each $$\nu$$ [^1] .
+which is a set of $$4$$ equations, one for each $$\nu$$ [^2] .
 
-[^1]: We could bring the metric out from the partial derivative as in inertial coordinates, the metric is constant. In non-inertial coordinates, we'd instead work with covariant derivatives, and assuming metric compatibility of the connection, the metric can, again, be treated as a constant. Therefore, the expression for the stress-energy tensor in curvilinear coordinates and even general relativity (where it is dubbed the 'canonical' stress-energy tensor to distinguish it from the stress-energy tensor appearing in the Einstein field equations) is trivially obtainable: we simple replace the Minkowski metric with a metric tensor.
+[^2]: We could bring the metric out from the partial derivative as in inertial coordinates, the metric is constant. In non-inertial coordinates, we'd instead work with covariant derivatives, and assuming metric compatibility of the connection, the metric can, again, be treated as a constant. Therefore, the expression for the stress-energy tensor in curvilinear coordinates and even general relativity (where it is dubbed the 'canonical' stress-energy tensor to distinguish it from the stress-energy tensor appearing in the Einstein field equations) is trivially obtainable: we simple replace the Minkowski metric with a metric tensor.
 
 ### Physical interpretation
 
@@ -121,9 +123,9 @@ $$\partial_0 T^{0 \nu} + \partial_i T^{i \nu} = 0$$
 
 We may interpret this as the continuity equation for $$\pi^\nu$$ . Then, $$T^{i \nu}$$ is the flux of $$\pi^\nu$$ through a surface of constant $$x^i$$ . Or in spacetime, $$T^{\mu \nu}$$ is the flux of $$\pi^\nu$$ through a surface of constant $$x^\mu$$ .
 
-So, this is what the stress-energy tensor really encodes: _the flux of canonical 4-momentum in spacetime_ [^2] .
+So, this is what the stress-energy tensor really encodes: _the flux of canonical 4-momentum in spacetime_ [^3] .
 
-[^2]: In general relativity, the canonical stress-energy tensor does not necessarily encode momentum flux like the stress-energy tensor appearing in the Einstein field equations. However, the distinction is not important in special relativity.
+[^3]: In general relativity, the canonical stress-energy tensor does not necessarily encode momentum flux like the stress-energy tensor appearing in the Einstein field equations. However, the distinction is not important in special relativity.
 
 ### Symmetry
 
