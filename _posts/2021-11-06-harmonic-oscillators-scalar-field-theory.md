@@ -51,7 +51,7 @@ The above equation is known as the Klein-Gordon equation, named after its discov
 
 ### Linearity
 
-Hooke's law is linear, i.e. valid solutions labelled as $$\phi_{\left( i \right)}$$ may be added to yield new valid solutions,
+The Klein-Gordon equation is linear, i.e. valid solutions labelled as $$\phi_{\left( i \right)}$$ may be added to yield new valid solutions, as long as they have the same $$m^2$$ (i.e. the same $$m$$ upto sign),
 
 $$
 \begin{aligned}
@@ -65,9 +65,9 @@ $$
 
 ### Stress-energy tensor
 
-Whilst the scalar form of Hooke's law is simple, a certain sense of direction is ingrained in its mechanism, which is not directly encoded in the scalar form. Consider a generalized spring: when it is displaced from the stable configuration by a certain amount, a proportional restoring force acts in the opposite direction of the displacement. Even though a minus sign in the expression $$\square \phi = - k \phi$$ indicates this, the formula is not manifestly vectorial, or higher-order (which is required to contain explicit information on direction).
+Whilst the scalar form of the Klein-Gordon equation is simple, a certain sense of direction is ingrained in its mechanism, which is not directly encoded in the scalar form. Consider a generalized spring: when it is displaced from the stable configuration by a certain amount, a proportional restoring force acts in the opposite direction of the displacement. Even though a minus sign in the expression $$\square \phi = - k \phi$$ indicates this, the formula is not manifestly vectorial, or higher-order (which is required to contain explicit information on direction).
 
-To fix this, we will derive Hooke's law in a different manner. A complete description of a field's momentum (which has a sense of direction with respect to the field's dynamics) is provided by its _stress-energy tensor_ $$T_{\mu \nu}$$ ,
+To fix this, we will derive the evolution of harmonic oscillators in a different manner. A complete description of a field's momentum (which has a sense of direction with respect to the field's dynamics) is provided by its _stress-energy tensor_ $$T_{\mu \nu}$$ ,
 
 $$T_{\mu \nu} = \eta_{\mu \rho} \frac{\partial \mathcal{L}}{\partial \left( \partial_\rho \phi \right)} \partial_\nu \phi - \mathcal{L} \: \eta_{\mu \nu}$$
 
