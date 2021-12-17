@@ -47,7 +47,8 @@ But the Bartender wasn't buying this story. "_Ye're playing games with me, aren'
 
 At this point, a curious bystander steps in, carrying a newspaper in his hand. "_They're right, Mr. Bartender. Take a look for yourself._"
 
-![Breaking News]({{ site.url }}{{ site.baseurl }}/assets/img/posts/2021-10-15-current-fundamental-quantity/SI_units.png) [^1]
+![Breaking News]({{ site.url }}{{ site.baseurl }}/assets/img/posts/2021-10-15-current-fundamental-quantity/SI_units.png)
+_Breaking news_ [^1]
 
 [^1]: Source: [https://en.wikipedia.org/wiki/International_System_of_Units#Base_units](https://en.wikipedia.org/wiki/International_System_of_Units#Base_units)
 
@@ -89,7 +90,8 @@ The most basic quantities in physics are: length, mass and time. They are essent
 
 How do we express the units of these quantities if they are to be derived from [the fundamental units we saw earlier](#fundamental_constants)? We simply use the right dimensions and get what are known as the Planck units,
 
-![Planck units]({{ site.url }}{{ site.baseurl }}/assets/img/posts/2021-10-15-current-fundamental-quantity/Planck_units.png) [^2]
+![Planck units]({{ site.url }}{{ site.baseurl }}/assets/img/posts/2021-10-15-current-fundamental-quantity/Planck_units.png)
+_Planck units_ [^2]
 
 [^2]: Source: [https://en.wikipedia.org/wiki/Planck_units#History_and_definition](https://en.wikipedia.org/wiki/Planck_units#History_and_definition)
 
