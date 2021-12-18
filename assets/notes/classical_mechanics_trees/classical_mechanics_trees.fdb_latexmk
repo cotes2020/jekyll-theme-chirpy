@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1639833408 "classical_mechanics_trees.tex" "classical_mechanics_trees.pdf" "classical_mechanics_trees" 1639833478
+["pdflatex"] 1639852555 "classical_mechanics_trees.tex" "classical_mechanics_trees.pdf" "classical_mechanics_trees" 1639852558
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1627974753 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1627965843 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1627965843 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -222,13 +222,13 @@
   "c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1628004648 5227287 e151fc6fd8e09c44e5f41e1c855f0ff4 ""
   "c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1628004767 2801569 61f87c018b0cef3981a8384317c963f0 ""
   "c:/texlive/2021/texmf.cnf" 1628004629 713 e69b156964470283e0530f5060668171 ""
-  "classical_mechanics_trees.aux" 1639833410 1830 324cb902ac9ea92e80268857ab44a4c3 "pdflatex"
-  "classical_mechanics_trees.out" 1639833410 895 c5e9c79adadd51fdfba204010be076d2 "pdflatex"
-  "classical_mechanics_trees.tex" 1639833477 7405 b3a7c2d9f8775be640b2d71a8c5fee2a ""
-  "classical_mechanics_trees.toc" 1639833410 461 935dc084fd4cde78db238c0eea825a15 "pdflatex"
+  "classical_mechanics_trees.aux" 1639852558 1830 324cb902ac9ea92e80268857ab44a4c3 "pdflatex"
+  "classical_mechanics_trees.out" 1639852558 895 c5e9c79adadd51fdfba204010be076d2 "pdflatex"
+  "classical_mechanics_trees.tex" 1639852554 7405 8a450fbc08d2ad31c97695f5acda49f4 ""
+  "classical_mechanics_trees.toc" 1639852558 461 935dc084fd4cde78db238c0eea825a15 "pdflatex"
   (generated)
+  "classical_mechanics_trees.out"
+  "classical_mechanics_trees.toc"
   "classical_mechanics_trees.log"
   "classical_mechanics_trees.pdf"
   "classical_mechanics_trees.aux"
-  "classical_mechanics_trees.out"
-  "classical_mechanics_trees.toc"

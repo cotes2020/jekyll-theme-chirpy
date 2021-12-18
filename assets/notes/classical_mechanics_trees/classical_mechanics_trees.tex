@@ -8,8 +8,6 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{shapes, positioning, arrows.meta}
-\tikzstyle{node} = [draw, circle, fill=white]
-\tikzstyle{arrow} = [draw, -Latex, color=blue]
 
 \usepackage{geometry}
 \geometry{margin=1in}
@@ -131,6 +129,8 @@ To represent this information in the state update plot, we think of the position
 \label{fig:2}
 \centering
 \begin{tikzpicture}
+\tikzstyle{node} = [draw, circle, fill=white]
+\tikzstyle{arrow} = [draw, -Latex, color=blue]
 \begin{axis}[
     axis lines = center,
     xlabel style={below right},
