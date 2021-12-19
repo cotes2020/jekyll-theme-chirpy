@@ -149,6 +149,7 @@ defaults:
       path: '_notes'
     values:
       layout: post
+      author: 'Siddhartha Bhattacharjee'
       notes: true
       permalink: /notes/:title/
 
