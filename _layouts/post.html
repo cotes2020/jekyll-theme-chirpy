@@ -20,9 +20,11 @@ layout: default
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published date and author -->
         <div>
-          <span class="semi-bold">
-            {{ page.author | default: site.social.name }}{% if page.date %},{% endif %}
-          </span>
+          {% if page.author != 'Siddhartha Bhattacharjee' %}
+            <span class="semi-bold">
+              {{ page.author | default: site.social.name }}{% if page.date %},{% endif %}
+            </span>
+          {% endif %}
           {% capture _preposition %}{{ site.data.locales[lang].post.published }}{% endcapture %}
           {% include timeago.html date=page.date tooltip=true preposition=_preposition %}
         </div>

@@ -123,6 +123,7 @@ defaults:
       type: posts
     values:
       layout: post
+      author: 'Siddhartha Bhattacharjee'
       math: true
       toc: true         # Display TOC column in posts.
       comments: false    # Enable comments in posts.
