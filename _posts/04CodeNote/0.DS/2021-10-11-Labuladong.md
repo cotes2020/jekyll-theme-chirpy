@@ -54,11 +54,29 @@ toc: true
   - [Two Pointer 双指针](#two-pointer-双指针)
     - [203. Remove Linked List Elements (Easy)](#203-remove-linked-list-elements-easy)
     - [237. Delete Node in a Linked List (Easy)](#237-delete-node-in-a-linked-list-easy)
+    - [876. Middle of the Linked List 寻找单链表的中点](#876-middle-of-the-linked-list-寻找单链表的中点)
     - [2095. Delete the Middle Node of a Linked List (Medium)](#2095-delete-the-middle-node-of-a-linked-list-medium)
     - [寻找单链表的倒数n节点](#寻找单链表的倒数n节点)
-    - [19. Remove Nth Node From End of List remove单链表的倒数n节点](#19-remove-nth-node-from-end-of-list-remove单链表的倒数n节点)
-    - [876. Middle of the Linked List 寻找单链表的中点](#876-middle-of-the-linked-list-寻找单链表的中点)
+    - [19. Remove Nth Node From End of List remove单链表的倒数n节点 `删除倒数n,找倒数n+1`](#19-remove-nth-node-from-end-of-list-remove单链表的倒数n节点-删除倒数n找倒数n1)
+    - [Delete N Nodes After M Nodes of a Linked List ??????????](#delete-n-nodes-after-m-nodes-of-a-linked-list-)
     - [160. 判断两个单链表是否相交并找出交点](#160-判断两个单链表是否相交并找出交点)
+  - [递归反转链表](#递归反转链表)
+    - [206. Reverse Linked List 递归反转整个链表 `递归+pointer`](#206-reverse-linked-list-递归反转整个链表-递归pointer)
+      - [递归](#递归)
+      - [pointer](#pointer)
+    - [反转链表前 N 个节点](#反转链表前-n-个节点)
+    - [92. Reverse Linked List II 反转链表的一部分](#92-reverse-linked-list-ii-反转链表的一部分)
+      - [iterative](#iterative)
+      - [recursive](#recursive)
+    - [25. Reverse Nodes in k-Group K个一组反转链表](#25-reverse-nodes-in-k-group-k个一组反转链表)
+      - [`a,b reverse(), a.next=reverseK(b,k)`](#ab-reverse-anextreversekbk)
+    - [143. Reorder List (Medium)](#143-reorder-list-medium)
+      - [`Two pointer, find middle, reverse(), combine(n1,n2)`](#two-pointer-find-middle-reverse-combinen1n2)
+      - [`2 pointer. list.add(ListNode), reorder list`](#2-pointer-listaddlistnode-reorder-list)
+    - [1721. Swapping Nodes in a Linked List (Medium)](#1721-swapping-nodes-in-a-linked-list-medium)
+    - [24. Swap Nodes in Pairs (Medium)](#24-swap-nodes-in-pairs-medium)
+      - [`2 pointer and swap`](#2-pointer-and-swap)
+      - [`recursive`](#recursive-1)
     - [example](#example)
       - [870 题「优势洗牌」](#870-题优势洗牌)
   - [左右指针](#左右指针)
@@ -84,11 +102,6 @@ toc: true
   - [链表的环](#链表的环)
     - [判断单链表是否包含环](#判断单链表是否包含环)
     - [142. Linked List Cycle II 计算链表中环起点](#142-linked-list-cycle-ii-计算链表中环起点)
-  - [递归反转链表](#递归反转链表)
-    - [206 Reverse Linked List 递归反转整个链表 `递归+pointer`](#206-reverse-linked-list-递归反转整个链表-递归pointer)
-    - [反转链表前 N 个节点](#反转链表前-n-个节点)
-    - [92. Reverse Linked List II 反转链表的一部分](#92-reverse-linked-list-ii-反转链表的一部分)
-    - [25. Reverse Nodes in k-Group K个一组反转链表](#25-reverse-nodes-in-k-group-k个一组反转链表)
   - [回文链表](#回文链表)
     - [寻找回文](#寻找回文)
     - [判断回文链表 - 双指针技巧](#判断回文链表---双指针技巧)
@@ -169,12 +182,16 @@ toc: true
     - [LFU 淘汰算法 Least Frequently Used](#lfu-淘汰算法-least-frequently-used)
   - [最大栈 Maximum Frequency Stack](#最大栈-maximum-frequency-stack)
 - [数据流](#数据流)
-  - [随机](#随机)
-    - [无限序列随机抽取1元素](#无限序列随机抽取1元素)
+  - [随机 水塘抽样算法（Reservoir Sampling）](#随机-水塘抽样算法reservoir-sampling)
+    - [382. Linked List Random Node 无限序列随机抽取1元素](#382-linked-list-random-node-无限序列随机抽取1元素)
+      - [be list, size, random n](#be-list-size-random-n)
+      - [Reservoir Sampling](#reservoir-sampling)
     - [无限序列随机抽取 k 个数](#无限序列随机抽取-k-个数)
-    - [实现随机集合](#实现随机集合)
-    - [避开黑名单的随机数 `blacklist index to good index`](#避开黑名单的随机数-blacklist-index-to-good-index)
-  - [中位数](#中位数)
+    - [398. Random Pick Index (Medium)](#398-random-pick-index-medium)
+      - [Reservoir Sampling](#reservoir-sampling-1)
+    - [380. Insert Delete GetRandom O(1) 实现随机集合](#380-insert-delete-getrandom-o1-实现随机集合)
+    - [710. Random Pick with Blacklist 避开黑名单的随机数 `blacklist index to good index`](#710-random-pick-with-blacklist-避开黑名单的随机数-blacklist-index-to-good-index)
+  - [295. Find Median from Data Stream 中位数](#295-find-median-from-data-stream-中位数)
 - [DFS and BFS](#dfs-and-bfs)
   - [BFS](#bfs)
     - [752. Open the Lock 解开密码锁最少次数 `用Queue和q.size去遍历all + visited + deads`](#752-open-the-lock-解开密码锁最少次数-用queue和qsize去遍历all--visited--deads)
@@ -232,6 +249,17 @@ toc: true
 ## re-check
 
 1. Palindrome
+
+
+
+```java
+// fast be the last one, slow in the middle.
+while(fast.next!=null) {
+    slow=slow.next;
+    fast=fast.next;
+}
+
+```
 
 
 ---
@@ -2121,7 +2149,44 @@ class Solution {
 }
 ```
 
+---
 
+
+### 876. Middle of the Linked List 寻找单链表的中点
+
+point: 无法直接得到单链表的长度 n，
+- 常规方法也是先遍历链表计算 n，再遍历一次得到第 n / 2 个节点，也就是中间节点。
+
+solution:
+- 两个指针 slow 和 fast 分别指向链表头结点 head。
+- 每当慢指针 slow 前进一步，快指针 fast 就前进两步，
+- 这样当 fast 走到链表末尾时，slow 就指向了链表中点。
+
+> 如果链表长度为偶数，中点有两个的时候，返回的节点是靠后的那个节点。
+> 这段代码稍加修改就可以直接用到判断链表成环的算法题上。
+
+让快指针一次前进两步，慢指针一次前进一步，当快指针到达链表尽头时，慢指针就处于链表的中间位置。
+
+[876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
+- Given the head of a singly linked list, return the middle node of the linked list.
+- If there are two middle nodes, return the second middle node.
+
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Middle of the Linked List.
+// Memory Usage: 36.4 MB, less than 67.08% of Java online submissions for Middle of the Linked List.
+
+ListNode middleNode(ListNode head) {
+    ListNode fast, slow;
+    fast = slow = head;
+    while (fast != null && fast.next != null) {
+        fast = fast.next.next;
+        slow = slow.next;
+    }
+    // slow 就在中间位置
+    return slow;
+}
+```
 
 
 ---
@@ -2168,9 +2233,7 @@ class Solution {
 ```
 
 ---
-
-
----
+ 
 
 ### 寻找单链表的倒数n节点 
 
@@ -2203,7 +2266,7 @@ ListNode findFromEnd(ListNode head, int k) {
 ---
 
 
-### 19. Remove Nth Node From End of List remove单链表的倒数n节点
+### 19. Remove Nth Node From End of List remove单链表的倒数n节点 `删除倒数n,找倒数n+1`
 
 
 [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
@@ -2212,10 +2275,7 @@ Given the head of a linked list, remove the nth node from the end of the list an
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Nth Node From End of List.
-// Memory Usage: 37 MB, less than 75.59% of Java online submissions for Remove Nth Node From End of List.
-
-
-// 主函数
+// Memory Usage: 37 MB, less than 75.59% of Java online submissions for Remove Nth Node From End of List. 
 public ListNode removeNthFromEnd(ListNode head, int n){
     // 虚拟头结点
     ListNode dummy = new ListNode(-1);
@@ -2231,7 +2291,7 @@ public ListNode removeNthFromEnd(ListNode head, int n){
 private ListNode findFromEnd(ListNode head, int k){
     ListNode fast = head, slow = head;
     // fast 先走 k 步
-    while (n-- > 0) fast = fast.next;
+    for(int i=0;i<k;i++) fast = fast.next;
     // 让慢指针和快指针同步向前
     while (fast != null && fast.next != null) {
         slow = slow.next;
@@ -2242,43 +2302,74 @@ private ListNode findFromEnd(ListNode head, int k){
 }
 ```
 
----
-
-### 876. Middle of the Linked List 寻找单链表的中点
-
-point: 无法直接得到单链表的长度 n，
-- 常规方法也是先遍历链表计算 n，再遍历一次得到第 n / 2 个节点，也就是中间节点。
-
-solution:
-- 两个指针 slow 和 fast 分别指向链表头结点 head。
-- 每当慢指针 slow 前进一步，快指针 fast 就前进两步，
-- 这样当 fast 走到链表末尾时，slow 就指向了链表中点。
-
-> 如果链表长度为偶数，中点有两个的时候，返回的节点是靠后的那个节点。
-> 这段代码稍加修改就可以直接用到判断链表成环的算法题上。
-
-让快指针一次前进两步，慢指针一次前进一步，当快指针到达链表尽头时，慢指针就处于链表的中间位置。
-
-[876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
-- Given the head of a singly linked list, return the middle node of the linked list.
-- If there are two middle nodes, return the second middle node.
-
 
 ```java
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Middle of the Linked List.
-// Memory Usage: 36.4 MB, less than 67.08% of Java online submissions for Middle of the Linked List.
-
-ListNode middleNode(ListNode head) {
-    ListNode fast, slow;
-    fast = slow = head;
-    while (fast != null && fast.next != null) {
-        fast = fast.next.next;
-        slow = slow.next;
+// Runtime: 1 ms, faster than 24.37% of Java online submissions for Remove Nth Node From End of List.
+// Memory Usage: 38.6 MB, less than 26.69% of Java online submissions for Remove Nth Node From End of List.
+// O(1) space
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) { 
+        if(head==null) return head;
+        // 删除倒数第 n 个，要先找倒数第 n + 1 个节点
+        ListNode dummy = new ListNode(0,head);
+        ListNode fast=dummy, slow=dummy;
+        for(int i=0;i<n+1;i++){
+            fast=fast.next;
+        }
+        while(fast!=null){
+            slow=slow.next;
+            fast=fast.next;
+        } 
+        slow.next = slow.next.next;
+        return dummy.next;
     }
-    // slow 就在中间位置
-    return slow;
 }
 ```
+
+
+---
+
+### Delete N Nodes After M Nodes of a Linked List ??????????
+
+Given a linked list and two integers M and N. Traverse the linked list such that you retain M nodes then delete next N nodes, continue the same till end of the linked list.
+
+Input:
+M = 2, N = 2
+Linked List: 1->2->3->4->5->6->7->8
+Output:
+Linked List: 1->2->5->6
+
+```java
+// Function to skip M nodes and then
+// delete N nodes of the linked list.
+static void skipMdeleteN( Node head, int M, int N) {
+    Node curr = head, t;
+    int count;
+    // The main loop that traverses through the whole list
+    while (curr!=null)
+    {
+        // Skip M nodes
+        for (count = 1; count < M && curr != null; count++) curr = curr.next;
+ 
+        // If we reached end of list, then return
+        if (curr == null) return;
+ 
+        // Start from next node and delete N nodes
+        t = curr.next;
+        for (count = 1; count <= N && t != null; count++) {
+            Node temp = t;
+            t = t.next;
+        }
+         
+        // Link the previous list with remaining nodes
+        curr.next = t;
+ 
+        // Set current pointer for next iteration
+        curr = t;
+    }
+}
+```
+
 
 
 
@@ -2311,7 +2402,399 @@ ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 ```
 
 
+---
 
+
+## 递归反转链表
+
+---
+
+### 206. Reverse Linked List 递归反转整个链表 `递归+pointer`
+
+[206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
+- Given the head of a singly linked list, reverse the list, and return the reversed list.
+- Input: head = [1,2,3,4,5]
+- Output: [5,4,3,2,1]
+
+
+#### 递归
+
+```java
+// recursion
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
+// Memory Usage: 39.3 MB, less than 38.00% of Java online submissions for Reverse Linked List.
+ListNode reverseList(ListNode head) {
+    if (head==null || head.next == null) return head;
+    ListNode last = reverseList(head.next);
+    head.next.next = head;
+    head.next = null;
+    return last;
+}
+```
+
+#### pointer
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
+// Memory Usage: 39 MB, less than 51.90% of Java online submissions for Reverse Linked List.
+ListNode reverseList(ListNode a) {
+    ListNode pre, cur, nxt;
+    pre = null; cur = a; nxt = a;
+    while (cur != null) {
+        nxt = cur.next;
+        // 逐个结点反转
+        cur.next = pre;
+        // 更新指针位置
+        pre = cur;
+        cur = nxt;
+    }
+    // 返回反转后的头结点
+    return pre;
+}
+```
+
+
+
+---
+
+
+### 反转链表前 N 个节点
+
+具体的区别：
+1. base case 变为 n == 1，反转一个元素，就是它本身，同时要记录后驱节点。
+2. 刚才我们直接把 head.next 设置为 null，因为整个链表反转后原来的 head 变成了整个链表的最后一个节点。
+   1. 但现在 head 节点在递归反转之后不一定是最后一个节点了，所以要记录后驱 successor（第 n + 1 个节点），反转之后将 head 连接上。
+
+
+
+```java
+ListNode successor = null; // 后驱节点
+
+// 反转以 head 为起点的 n 个节点，返回新的头结点
+ListNode reverseN(ListNode head, int n) {
+    if (n == 1) {
+        // 记录第 n + 1 个节点
+        successor = head.next;
+        return head;
+    }
+    // 以 head.next 为起点，需要反转前 n - 1 个节点
+    ListNode last = reverseN(head.next, n - 1);
+    head.next.next = head;
+    // 让反转之后的 head 节点和后面的节点连起来
+    head.next = successor;
+    return last;
+}
+```
+
+---
+
+### 92. Reverse Linked List II 反转链表的一部分
+
+[92. Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/)
+- Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
+
+- Input: head = [1,2,3,4,5], left = 2, right = 4
+- Output: [1,4,3,2,5]
+
+
+#### iterative
+
+```java 
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List II.
+// Memory Usage: 36.6 MB, less than 58.03% of Java online submissions for Reverse Linked List II.
+// O(1) space
+// O(n) Solution
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if(head==null || left==right) return head;
+        ListNode dummy = new ListNode(0,head); 
+        ListNode prev = dummy, curr = dummy.next;  
+        int i=1;
+        while(i<left){
+            prev = curr;
+            curr = curr.next; 
+            i++;
+        } 
+        // flow of execution in each iteration (for the 2nd input): 
+        // 1->2->3->4->5->6->7 |  
+        // 1->2->4->3->5->6->7 | 
+        // 1->2->5->4->3->6->7 | 
+        // 1->2->6->5->4->3->7 | 
+        // 1->2->7->6->5->4->3 
+        ListNode node = prev;
+        while(i<=right){
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next; 
+            i++;
+        }
+        node.next.next = curr;
+        node.next = prev; 
+        return dummy.next;
+    }
+}
+```
+
+
+#### recursive
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List II.
+// Memory Usage: 36.6 MB, less than 75.28% of Java online submissions for Reverse Linked List II.
+ListNode reverseBetween(ListNode head, int m, int n) {
+    // base case
+    if (m == 1) return reverseN(head, n);
+    // 前进到反转的起点触发 base case
+    head.next = reverseBetween(head.next, m - 1, n - 1);
+    return head;
+}
+
+// 反转以 head 为起点的 n 个节点，返回新的头结点
+ListNode reverseN(ListNode head, int n){
+    ListNode successor = null; // 后驱节点
+    if (n == 1) {
+        // 记录第 n + 1 个节点
+        successor = head.next;
+        return head;
+    }
+    // 以 head.next 为起点，需要反转前 n - 1 个节点
+    ListNode last = reverseN(head.next, n - 1);
+    head.next.next = head;
+    // 让反转之后的 head 节点和后面的节点连起来
+    head.next = successor;
+    return last;
+}
+```
+
+
+---
+
+
+### 25. Reverse Nodes in k-Group K个一组反转链表 
+
+[25. Reverse Nodes in k-Group]()
+- Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
+- k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
+- You may not alter the values in the list's nodes, only nodes themselves may be changed.
+- Input: 
+- head = [1,2,3,4,5], k = 2
+- Output: [2,1,4,3,5]
+
+
+#### `a,b reverse(), a.next=reverseK(b,k)`
+
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Nodes in k-Group.
+// Memory Usage: 39.4 MB, less than 60.83% of Java online submissions for Reverse Nodes in k-Group.
+
+ListNode reverseKGroup(ListNode head, int k) {
+    if (head == null) return null;
+    // 区间 [a, b) 包含 k 个待反转元素
+    // 1,2,3,4,5,6
+    ListNode a= head, b= head; 
+    for (int i = 0; i < k; i++) {
+        // 不足 k 个，不需要反转，base case
+        if (b == null) return head;
+        b = b.next;
+    }
+    // 3,2,1,   4,5,6
+    // 反转前 k 个元素
+    ListNode newHead = reverse(a, b);
+    // 递归反转后续链表并连接起来
+    a.next = reverseKGroup(b, k);
+    return newHead;
+}
+
+/** 反转区间 [a, b) 的元素，注意是左闭右开 */
+ListNode reverse(ListNode a, ListNode b) {
+    ListNode pre, cur, nxt;
+    pre = null; cur = a; nxt = a;
+    // while 终止的条件改一下就行了
+    while (cur != b) {
+        nxt = cur.next;
+        cur.next = pre;
+        pre = cur;
+        cur = nxt;
+    }
+    // 返回反转后的头结点
+    return pre;
+}
+```
+ 
+--
+
+### 143. Reorder List (Medium) 
+
+You are given the head of a singly linked-list. The list can be represented as:
+
+L0 → L1 → … → Ln - 1 → Ln
+Reorder the list to be on the following form:
+
+L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+#### `Two pointer, find middle, reverse(), combine(n1,n2)`
+
+```java
+// Runtime: 1 ms, faster than 99.86% of Java online submissions for Reorder List.
+// Memory Usage: 42 MB, less than 45.07% of Java online submissions for Reorder List.
+class Solution {
+    public void reorderList(ListNode head) { 
+        //Find the middle of the list 
+        ListNode fast=head, slow=head;
+        while(fast.next!=null && fast.next.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }  
+        // reverse
+        ListNode second = reverse(slow.next); 
+        slow.next=null;  
+        // merge
+        combine(head, second);
+    }
+    
+    public ListNode reverse(ListNode head) { 
+        ListNode pre=null, cur=head, nxt=head;
+        while(cur!=null){
+            nxt = cur.next;
+            cur.next=pre;
+            pre=cur;
+            cur=nxt;
+        }
+        return pre; 
+    }
+    
+    public void combine(ListNode n1, ListNode n2) {   
+        while(n2!=null){ 
+            ListNode f_temp = n1.next;
+            ListNode s_temp = n2.next;
+            n1.next = n2;
+            n2.next = f_temp;
+            n1 = n2.next;
+            n2 = s_temp; 
+        }
+    }
+}
+```
+
+#### `2 pointer. list.add(ListNode), reorder list`
+
+```java
+// Runtime: 2 ms, faster than 51.01% of Java online submissions for Reorder List.
+// Memory Usage: 41.5 MB, less than 85.84% of Java online submissions for Reorder List.
+
+class Solution {
+    public void reorderList(ListNode head) {
+        if(head == null) return;
+        ArrayList<ListNode> list = new ArrayList<>();
+        ListNode dummy = head;
+        while(dummy != null){
+            list.add(dummy);
+            dummy = dummy.next;
+        } 
+        int i = 1, left = 1, right = list.size() - 1;
+        dummy = head;
+        while(i < list.size()){
+            if(i % 2 == 0) dummy.next = list.get(left++);
+            else dummy.next = list.get(right--);
+            dummy = dummy.next;
+            i++;        
+        }
+        dummy.next = null;
+    }
+}
+```
+
+---
+
+
+### 1721. Swapping Nodes in a Linked List (Medium)
+
+[1721. Swapping Nodes in a Linked List](https://leetcode.com/problems/swapping-nodes-in-a-linked-list/)
+
+You are given the head of a linked list, and an integer k.
+
+Return the head of the linked list after swapping the values of the kth node from the beginning and the kth node from the end (the list is 1-indexed).
+
+Example 1:
+Input: head = [1,2,3,4,5], k = 2
+Output: [1,4,3,2,5]
+
+
+```java
+// Runtime: 2 ms, faster than 100.00% of Java online submissions for Swapping Nodes in a Linked List.
+// Memory Usage: 53.9 MB, less than 96.45% of Java online submissions for Swapping Nodes in a Linked List.
+// traverse the list only once, time complexity is O(n)
+// store only 4 pointers for every list; the space complexity is constant: O(1)
+public ListNode swapNodes(ListNode head, int k) {
+    ListNode fast=head, slow=head;
+    for(int i=0; i<k-1; i++) fast=fast.next;
+    ListNode first=fast;
+    while(fast.next!=null) {
+        slow=slow.next;
+        fast=fast.next;
+    }
+    int val = first.val;
+    first.val = slow.val;
+    slow.val = val;
+    return head;
+}
+```
+
+
+---
+
+### 24. Swap Nodes in Pairs (Medium)
+
+Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)
+
+Example 1:
+Input: head = [1,2,3,4]
+Output: [2,1,4,3]
+
+
+#### `2 pointer and swap`
+
+```java
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode cur = head;
+        ListNode newHead = head.next;
+        while (cur != null && cur.next != null) {
+            ListNode tmp = cur;
+            cur = cur.next;
+            
+            tmp.next = cur.next;
+            cur.next = tmp;
+            
+            cur = tmp.next;
+            if (cur != null && cur.next != null) tmp.next = cur.next;
+        }
+        return newHead;
+    }
+}
+```
+
+
+#### `recursive`
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Swap Nodes in Pairs.
+// Memory Usage: 36.2 MB, less than 97.27% of Java online submissions for Swap Nodes in Pairs.
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode p1=head, p2=head.next, p3=p2.next;
+        p2.next=p1;
+        p1.next=p3;
+        if(p3!=null) p1.next=swapPairs(p3);
+        return p2;
+    }
+}
+```
 
 
 
@@ -3325,195 +3808,6 @@ ListNode detectCycle(ListNode head) {
 ```
 
 ---
-
-## 递归反转链表
-
----
-
-### 206 Reverse Linked List 递归反转整个链表 `递归+pointer`
-
-[206 Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
-- Given the head of a singly linked list, reverse the list, and return the reversed list.
-- Input: head = [1,2,3,4,5]
-- Output: [5,4,3,2,1]
-
-
-```java
-// recursion
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
-// Memory Usage: 39.3 MB, less than 38.00% of Java online submissions for Reverse Linked List.
-ListNode reverseList(ListNode head) {
-    if (head==null || head.next == null) return head;
-    ListNode last = reverseList(head.next);
-    head.next.next = head;
-    head.next = null;
-    return last;
-}
-
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
-// Memory Usage: 39 MB, less than 51.90% of Java online submissions for Reverse Linked List.
-ListNode reverseList(ListNode a) {
-    ListNode pre, cur, nxt;
-    pre = null; cur = a; nxt = a;
-    while (cur != null) {
-        nxt = cur.next;
-        // 逐个结点反转
-        cur.next = pre;
-        // 更新指针位置
-        pre = cur;
-        cur = nxt;
-    }
-    // 返回反转后的头结点
-    return pre;
-}
-```
-
-
-
----
-
-
-### 反转链表前 N 个节点
-
-具体的区别：
-1. base case 变为 n == 1，反转一个元素，就是它本身，同时要记录后驱节点。
-2. 刚才我们直接把 head.next 设置为 null，因为整个链表反转后原来的 head 变成了整个链表的最后一个节点。
-   1. 但现在 head 节点在递归反转之后不一定是最后一个节点了，所以要记录后驱 successor（第 n + 1 个节点），反转之后将 head 连接上。
-
-
-
-```java
-ListNode successor = null; // 后驱节点
-
-// 反转以 head 为起点的 n 个节点，返回新的头结点
-ListNode reverseN(ListNode head, int n) {
-    if (n == 1) {
-        // 记录第 n + 1 个节点
-        successor = head.next;
-        return head;
-    }
-    // 以 head.next 为起点，需要反转前 n - 1 个节点
-    ListNode last = reverseN(head.next, n - 1);
-    head.next.next = head;
-    // 让反转之后的 head 节点和后面的节点连起来
-    head.next = successor;
-    return last;
-}
-```
-
----
-
-### 92. Reverse Linked List II 反转链表的一部分
-
-[92. Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/)
-- Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
-
-- Input: head = [1,2,3,4,5], left = 2, right = 4
-- Output: [1,4,3,2,5]
-
-```java
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode reverseBetween(ListNode head, int left, int right) {
-        
-    }
-}
-
-
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List II.
-// Memory Usage: 36.6 MB, less than 75.28% of Java online submissions for Reverse Linked List II.
-ListNode reverseBetween(ListNode head, int m, int n) {
-    // base case
-    if (m == 1) return reverseN(head, n);
-    // 前进到反转的起点触发 base case
-    head.next = reverseBetween(head.next, m - 1, n - 1);
-    return head;
-}
-
-// 反转以 head 为起点的 n 个节点，返回新的头结点
-ListNode reverseN(ListNode head, int n){
-    ListNode successor = null; // 后驱节点
-    if (n == 1) {
-        // 记录第 n + 1 个节点
-        successor = head.next;
-        return head;
-    }
-    // 以 head.next 为起点，需要反转前 n - 1 个节点
-    ListNode last = reverseN(head.next, n - 1);
-    head.next.next = head;
-    // 让反转之后的 head 节点和后面的节点连起来
-    head.next = successor;
-    return last;
-}
-```
-
-
----
-
-
-
-### 25. Reverse Nodes in k-Group K个一组反转链表
-
-[25. Reverse Nodes in k-Group]()
-- Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
-- k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
-- You may not alter the values in the list's nodes, only nodes themselves may be changed.
-- Input: head = [1,2,3,4,5], k = 2
-- Output: [2,1,4,3,5]
-
-
-```java
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Nodes in k-Group.
-// Memory Usage: 39.4 MB, less than 60.83% of Java online submissions for Reverse Nodes in k-Group.
-
-ListNode reverseKGroup(ListNode head, int k) {
-    if (head == null) return null;
-    // 区间 [a, b) 包含 k 个待反转元素
-    ListNode a, b;
-    a = b = head;
-    for (int i = 0; i < k; i++) {
-        // 不足 k 个，不需要反转，base case
-        if (b == null) return head;
-        b = b.next;
-    }
-    // 反转前 k 个元素
-    ListNode newHead = reverse(a, b);
-    // 递归反转后续链表并连接起来
-    a.next = reverseKGroup(b, k);
-    return newHead;
-}
-
-/** 反转区间 [a, b) 的元素，注意是左闭右开 */
-ListNode reverse(ListNode a, ListNode b) {
-    ListNode pre, cur, nxt;
-    pre = null; cur = a; nxt = a;
-    // while 终止的条件改一下就行了
-    while (cur != b) {
-        nxt = cur.next;
-        cur.next = pre;
-        pre = cur;
-        cur = nxt;
-    }
-    // 返回反转后的头结点
-    return pre;
-}
-
-```
-
----
-
-
-
-
 
 
 
@@ -6884,11 +7178,8 @@ class FreqStack {
 
 ---
 
-## 随机
+## 随机 水塘抽样算法（Reservoir Sampling）
 
----
-
-### 无限序列随机抽取1元素
 
 随机是均匀随机（uniform random）
 - 如果有 n 个元素，每个元素被选中的概率都是 1/n，不可以有统计意义上的偏差。
@@ -6904,6 +7195,11 @@ class FreqStack {
 
 ![formula1](https://i.imgur.com/dYosNcJ.png)
 
+
+---
+
+### 382. Linked List Random Node 无限序列随机抽取1元素
+
 [382. Linked List Random Node](https://leetcode.com/problems/linked-list-random-node/)
 - Given a singly linked list,
 - return a random nodes value from the linked list.
@@ -6912,46 +7208,58 @@ class FreqStack {
   - Solution(ListNode head) Initializes the object with the integer array nums.
   - int getRandom() Chooses a node randomly from the list and returns its value. All the nodes of the list should be equally likely to be choosen.
 
+当你遇到第 i 个元素时，应该有 1/i 的概率选择该元素，1 - 1/i 的概率保持原有的选择。
+
+证明：
+- 假设总共有 n 个元素，
+- 随机性 每个元素被选择的概率都是 1/n
+- 那么对于第 i 个元素，它被选择的概率就是：
+- 第 i 个元素被选择的概率是 1/i，
+- 第 i+1 次不被替换的概率是 1 - 1/(i+1)，以此类推，相乘就是第 i 个元素最终被选中的概率，就是 1/n。
+
+因此，该算法的逻辑是正确的。
+
+#### be list, size, random n
 
 ```java
-class Solution {
-    Random r;
-    ListNode p;
-    int res = 0;
-
-    public Solution(ListNode head) {
-        this.p = head;
-        this.r = new Random();
+// time: O(N) + O(1)
+// space: O(N) a list store all n
+public Solution(ListNode head) {
+    ArrayList<Integer> arr = new ArrayList<>();
+    while(head!=null){
+        arr.add(head.val);
+        head=head.next;
     }
+}
+public int getRandom() {
+     return arr.get( (int)(Math.random() * arr.size()) );
+}
+```
 
+#### Reservoir Sampling
+
+```java
+// Runtime: 17 ms, faster than 28.48% of Java online submissions for Linked List Random Node.
+// Memory Usage: 40.7 MB, less than 82.71% of Java online submissions for Linked List Random Node.
+class Solution {
+    ListNode n;
+    Random r;
+    public Solution(ListNode head) { 
+        this.r = new Random();
+        this.n=head; 
+    }
     public int getRandom() {
-        int i = 0;
-        while (this.p != null) {
-            i++;
+        int res = 0, i = 1; 
+        ListNode cur = n;
+        while(cur!=null){
             // 生成一个 [0, i) 之间的整数
             // 这个整数等于 0 的概率就是 1/i
-            if (0 == this.r.nextInt(i)) res = this.p.val;
-            this.p = this.p.next;
+            if(r.nextInt(i++) == 0) res = cur.val;
+            cur = cur.next; 
         }
         return res;
     }
-}
-
-/* 返回链表中一个随机节点的值 */
-int getRandom(ListNode head) {
-    Random r = new Random();
-    int i = 0, res = 0;
-    ListNode p = head;
-    // while 循环遍历链表
-    while (p != null) {
-        i++;
-        // 生成一个 [0, i) 之间的整数
-        // 这个整数等于 0 的概率就是 1/i
-        if (0 == r.nextInt(i)) res = p.val;
-        p = p.next;
-    }
-    return res;
-}
+} 
 ```
 
 ---
@@ -6979,9 +7287,7 @@ int[] getRandom(ListNode head, int k) {
         // 生成一个 [0, i) 之间的整数
         int j = r.nextInt(++i);
         // 这个整数小于 k 的概率就是 k/i
-        if (j < k) {
-            res[j] = p.val;
-        }
+        if (j < k) res[j] = p.val; 
         p = p.next;
     }
     return res;
@@ -6990,7 +7296,38 @@ int[] getRandom(ListNode head, int k) {
 
 ---
 
-###  实现随机集合
+### 398. Random Pick Index (Medium)
+
+[398. Random Pick Index](https://leetcode.com/problems/random-pick-index/)
+Given an integer array nums with possible duplicates, randomly output the index of a given target number. You can assume that the given target number must exist in the array.
+
+Implement the Solution class:
+
+Solution(int[] nums) Initializes the object with the array nums.
+int pick(int target) Picks a random index i from nums where nums[i] == target. If there are multiple valid i's, then each index should have an equal probability of returning.
+ 
+
+Example 1:
+Input
+["Solution", "pick", "pick", "pick"]
+[[[1, 2, 3, 3, 3]], [3], [1], [3]]
+Output
+[null, 4, 0, 2]
+
+#### Reservoir Sampling
+
+
+```java
+
+```
+
+
+
+
+
+---
+
+### 380. Insert Delete GetRandom O(1) 实现随机集合
 
 [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/)
 
@@ -7089,7 +7426,7 @@ class RandomizedSet {
 
 ---
 
-### 避开黑名单的随机数 `blacklist index to good index`
+### 710. Random Pick with Blacklist 避开黑名单的随机数 `blacklist index to good index`
 
 [710. Random Pick with Blacklist](https://leetcode.com/problems/random-pick-with-blacklist/)
 
@@ -7146,7 +7483,7 @@ class Solution {
 ---
 
 
-## 中位数
+## 295. Find Median from Data Stream 中位数
 
 [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
 - The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value and the median is the mean of the two middle values.
