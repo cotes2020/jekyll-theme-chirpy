@@ -17,3 +17,9 @@ end
 
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
+<<<<<<< HEAD
+=======
+
+# Jekyll <= 4.2.0 compatibility with Ruby 3.0
+gem "webrick", "~> 1.7"
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba

@@ -8,6 +8,10 @@
   In order to allow a wide table to scroll horizontally,
   we suround the markdown table with `<div class="table-wrapper">` and `</div>`
 -->
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 {% if _content contains '<table>' %}
   {% assign _content = _content
     | replace: '<table>', '<div class="table-wrapper"><table>'
@@ -21,6 +25,10 @@
   https://github.com/penibelst/jekyll-compress-html/issues/101
   https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
 -->
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 {% if _content contains '<pre class="highlight">' %}
   {% assign _content = _content
     | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight"><code'
@@ -29,14 +37,28 @@
 {% endif %}
 
 <!-- Add attribute 'hide-bullet' to the checkbox list -->
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 {% if _content contains '<li class="task-list-item"><' %}
   {% assign _content = _content
     | replace: '"task-list-item"><', '"task-list-item" hide-bullet><'
   %}
 {% endif %}
 
+<<<<<<< HEAD
 {% if _content contains '<img src="' %}
 
+=======
+
+<!-- images -->
+
+{% if _content contains '<img src="' %}
+
+  <!-- add CDN prefix if it exists -->
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   {% if site.img_cdn != '' %}
     {% assign img_path_replacement = '<img src="' | append: site.img_cdn | append: '/' %}
   {% else %}
@@ -46,6 +68,7 @@
   {% assign _content = _content | replace: '<img src="/', img_path_replacement %}
 
   <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+<<<<<<< HEAD
   {% assign lozad = true %}
   {% assign img_placehodler
     = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
@@ -64,3 +87,141 @@
 {% if lozad %}
   {% include lozad.html %}
 {% endif %}
+=======
+
+  {% assign _content = _content | replace: '<img src="', '<img data-proofer-ignore data-src="' %}
+
+  <!-- add image placehoder to prevent layout reflow -->
+
+  {% assign _img_content = nil %}
+
+  {% assign _images = _content | split: '<img ' %}
+
+  {% for _img in _images %}
+    {% if forloop.first %}
+      {% assign _img_content = _img %}
+      {% continue %}
+    {% endif %}
+
+    {% assign _width = nil %}
+    {% assign _height = nil %}
+
+    {% assign _img_converted = _img | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
+    {% assign _attrs = _img_converted | split: '>' | first | split: ' ' %}
+
+    {% for _attr in _attrs %}
+      {% capture _key %}{{ _attr | split: '=' | first }}{% endcapture %}
+      {% capture _value %}{{ _attr | split: '=' | last | replace: '"', '' }}{% endcapture %}
+
+      {% case _key %}
+        {% when 'width' %}
+          {% assign _width = _value %}
+        {% when 'height' %}
+          {% assign _height = _value %}
+      {% endcase %}
+
+      {% if _width and _height %}
+        {% capture _svg %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{_width}} {{_height}}'%3E%3C/svg%3E{% endcapture %}
+        {% assign _img_content = _img_content | append: '<img src="' | append: _svg | append: '" ' | append: _img_converted %}
+        {% break %}
+      {% endif %}
+
+    {% endfor %}
+
+    {% unless _width and _height %}
+      {% assign _img_content = _img_content | append: '<img ' | append: _img %}
+    {% endunless %}
+
+  {% endfor %}
+
+  {% assign _content = _img_content %}
+
+{% endif %}
+
+<!-- Add header for code snippets -->
+
+{% if _content contains '<div class="highlight"><code>' %}
+  {% assign _code_spippets = _content | split: '<div class="highlight"><code>' %}
+  {% assign _new_content = '' %}
+
+  {% for _snippet in _code_spippets %}
+
+    {% if forloop.last %}
+      {% assign _new_content = _new_content | append: _snippet %}
+
+    {% else %}
+
+      {% assign _left = _snippet | split: '><' | last%}
+
+      {% if _left contains 'file="' %}
+        {% assign _label_text = _left | split: 'file="' | last | split: '"' | first %}
+        {% assign _label_icon = 'far fa-file-code' %}
+      {% else %}
+        {% assign _lang = _left | split: 'language-' | last | split: ' ' | first %}
+        {% capture _label_text %}{% include language-alias.html language=_lang %}{% endcapture %}
+        {% assign _label_icon = 'fas fa-code small' %}
+      {% endif %}
+
+      {% capture _label %}
+        <span label-text="{{ _label_text | strip }}"><i class="{{ _label_icon }}"></i></span>
+      {% endcapture %}
+
+      {% assign _new_content = _new_content | append: _snippet
+          | append: '<div class="code-header">'
+          | append: _label
+          | append: '<button aria-label="copy" title-succeed="'
+          | append: site.data.locales[lang].post.button.copy_code.succeed
+          | append: '"><i class="far fa-clipboard"></i></button></div>'
+          | append: '<div class="highlight"><code>'
+      %}
+
+    {% endif %}
+
+  {% endfor %}
+
+  {% assign _content = _new_content %}
+
+{% endif %}
+
+<!-- Create heading anchors -->
+
+{% assign heading_levels = '2,3,4,5' | split: ',' %}
+{% assign _heading_content = _content %}
+
+{% for level in heading_levels %}
+  {% capture mark_start %}<h{{ level }} id="{% endcapture %}
+  {% capture mark_end %}</h{{ level }}>{% endcapture %}
+
+  {% if _heading_content contains mark_start %}
+    {% assign _new_content = nil %}
+    {% assign heading_snippets = _heading_content | split: mark_start %}
+
+    {% for snippet in heading_snippets %}
+      {% if forloop.first %}
+        {% assign _new_content = snippet %}
+        {% continue %}
+      {% endif %}
+
+      {% assign id = snippet | split: '"' | first %}
+      {% capture anchor %}<a href="#{{ id }}"><i class="fas fa-hashtag"></i></a>{% endcapture %}
+
+      {% assign left = snippet | split: mark_end | first %}
+      {% assign right = snippet | replace: left, '' %}
+
+      {% assign _new_content = _new_content | append: mark_start
+          | append: left | append: anchor | append: mark_end | append: right
+      %}
+
+    {% endfor %}
+
+    {% assign _heading_content = _new_content %}
+
+  {% endif %}
+{% endfor %}
+
+{% assign _content = _heading_content %}
+
+<!-- return -->
+
+{{ _content }}
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba

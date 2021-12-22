@@ -11,6 +11,7 @@ redirect_from:
 dynamic_title: true
 ---
 
+<<<<<<< HEAD
 <div class="lead">
   <p>Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. </p>
   <p>
@@ -18,4 +19,25 @@ dynamic_title: true
     to try finding it again, or search for it on the
     <a href="{{ 'archives' | relative_url }}">Archives page</a>.
   </p>
+=======
+{% include lang.html %}
+
+<div class="lead">
+
+  {%- capture _head_back -%}
+    <a href="{{ '/' | relative_url }}">{{ site.data.locales[lang].not_found.head_back }}</a>
+  {%- endcapture -%}
+
+  {%- capture _archives_page -%}
+    <a href="{{ 'archives' | relative_url }}">{{ site.data.locales[lang].not_found.archives_page }}</a>
+  {%- endcapture -%}
+
+  <p>{{site.data.locales[lang].not_found.statment }}</p>
+
+  <p>{{ site.data.locales[lang].not_found.hint_template
+    | replace: ':HEAD_BAK', _head_back
+    | replace: ':ARCHIVES_PAGE', _archives_page }}
+  </p>
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 </div>

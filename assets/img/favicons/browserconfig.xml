@@ -1,16 +1,26 @@
 ---
 layout: compress
+<<<<<<< HEAD
 
 # A part of the Favicons
 ---
+=======
+---
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 <?xml version="1.0" encoding="utf-8"?>
 <browserconfig>
   <msapplication>
     <tile>
+<<<<<<< HEAD
       <square70x70logo src="{{ site.baseurl }}/assets/img/favicons/ms-icon-70x70.png" />
       <square150x150logo src="{{ site.baseurl }}/assets/img/favicons/ms-icon-150x150.png" />
       <square310x310logo src="{{ site.baseurl }}/assets/img/favicons/ms-icon-310x310.png" />
       <TileColor>#ffffff</TileColor>
+=======
+      <square150x150logo src="{{ '/assets/img/favicons/mstile-150x150.png' | relative_url }}" />
+      <TileColor>#da532c</TileColor>
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     </tile>
   </msapplication>
 </browserconfig>

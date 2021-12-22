@@ -41,6 +41,10 @@
     &:not(:first-child) {
       position: relative;
       left: 4px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       &::after {
         left: 67px;
       }
@@ -98,6 +102,10 @@
   .date {
     white-space: nowrap;
     display: inline-block;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     &.month {
       width: 1.4rem;
       text-align: center;
@@ -120,6 +128,10 @@
         z-index: 1;
       }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     &.day {
       font-size: 85%;
       font-family: 'Lato', sans-serif;
@@ -127,7 +139,11 @@
       margin-right: -2px;
       width: 1.2rem;
       position: relative;
+<<<<<<< HEAD
       left: -.15rem;
+=======
+      left: -0.15rem;
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     }
   } // #archives .date
 
@@ -136,6 +152,10 @@
 @media all and (max-width: 576px) {
   #archives {
     margin-top: -1rem;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     ul {
       letter-spacing: 0;
     }

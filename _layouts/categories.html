@@ -3,6 +3,10 @@ layout: page
 # All the Categories of posts
 ---
 
+<<<<<<< HEAD
+=======
+{% include lang.html %}
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 {% assign HEAD_PREFIX = "h_" %}
 {% assign LIST_PREFIX = "l_" %}
@@ -33,6 +37,7 @@ layout: page
 
   <div class="card categories">
     <!-- top-category -->
+<<<<<<< HEAD
     <div class="card-header d-flex justify-content-between hide-border-bottom"
         id="{{ HEAD_PREFIX }}{{ group_index }}">
       <span>
@@ -45,16 +50,32 @@ layout: page
           class="ml-1 mr-2">
           {{ category_name }}
         </a>
+=======
+    <div id="{{ HEAD_PREFIX }}{{ group_index }}"
+      class="card-header d-flex justify-content-between hide-border-bottom">
+      <span>
+        <i class="far fa-folder{% if sub_categories_size > 0 %}-open{% endif %} fa-fw"></i>
+
+        {% capture _category_url %}/categories/{{ category_name | slugify | url_encode }}/{% endcapture %}
+        <a href="{{ _category_url | relative_url }}" class="ml-1 mr-2">{{ category_name }}</a>
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
         <!-- content count -->
         {% assign top_posts_size = site.categories[category_name] | size %}
         <span class="text-muted small font-weight-light">
           {% if sub_categories_size > 0 %}
             {{ sub_categories_size }}
+<<<<<<< HEAD
             {% if sub_categories_size > 1 %}categories{% else %}category{% endif %},
           {% endif %}
             {{ top_posts_size }}
             post{% if top_posts_size > 1 %}s{% endif %}
+=======
+            {{ site.data.locales[lang].categories.category_measure }},
+          {% endif %}
+            {{ top_posts_size }}
+            {{ site.data.locales[lang].categories.post_measure }}
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
         </span>
       </span>
 
@@ -80,11 +101,22 @@ layout: page
         {% for sub_category in sub_categories %}
         <li class="list-group-item">
           <i class="far fa-folder fa-fw"></i>
+<<<<<<< HEAD
           <a href="{{ site.baseurl }}/categories/{{ sub_category | slugify | url_encode }}/"
             class="ml-1 mr-2">{{ sub_category }}</a>
           {% assign posts_size = site.categories[sub_category] | size %}
           <span class="text-muted small font-weight-light">{{ posts_size }}
             post{% if posts_size > 1 %}s{% endif %}
+=======
+
+          {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
+          <a href="{{ _sub_ctg_url | relative_url }}" class="ml-1 mr-2">{{ sub_category }}</a>
+
+          {% assign posts_size = site.categories[sub_category] | size %}
+          <span class="text-muted small font-weight-light">
+            {{ posts_size }}
+            {{ site.data.locales[lang].categories.post_measure }}
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
           </span>
         </li>
         {% endfor %}

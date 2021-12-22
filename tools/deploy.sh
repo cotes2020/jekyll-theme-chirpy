@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
 #
+<<<<<<< HEAD
 # Deploy the content of _site to 'origin/<pages_branch>'
+=======
+# Build, test and then deploy the site content to 'origin/<pages_branch>'
+#
+# Requirement: html-proofer, jekyll
+#
+# Usage: See help information
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 set -eu
 
 PAGES_BRANCH="gh-pages"
 
+<<<<<<< HEAD
 _no_branch=false
 _backup_dir="$(mktemp -d)"
 
@@ -17,6 +26,73 @@ init() {
 
   if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
     _no_branch=true
+=======
+SITE_DIR="_site"
+
+_opt_dry_run=false
+
+_config="_config.yml"
+
+_no_pages_branch=false
+
+_backup_dir="$(mktemp -d)"
+
+_baseurl=""
+
+help() {
+  echo "Build, test and then deploy the site content to 'origin/<pages_branch>'"
+  echo
+  echo "Usage:"
+  echo
+  echo "   bash ./tools/deploy.sh [options]"
+  echo
+  echo "Options:"
+  echo '     -c, --config   "<config_a[,config_b[...]]>"    Specify config file(s)'
+  echo "     --dry-run                Build site and test, but not deploy"
+  echo "     -h, --help               Print this information."
+}
+
+init() {
+  if [[ -z ${GITHUB_ACTION+x} && $_opt_dry_run == 'false' ]]; then
+    echo "ERROR: It is not allowed to deploy outside of the GitHub Action envrionment."
+    echo "Type option '-h' to see the help information."
+    exit -1
+  fi
+
+  _baseurl="$(grep '^baseurl:' _config.yml | sed "s/.*: *//;s/['\"]//g;s/#.*//")"
+}
+
+build() {
+  # clean up
+  if [[ -d $SITE_DIR ]]; then
+    rm -rf "$SITE_DIR"
+  fi
+
+  # build
+  JEKYLL_ENV=production bundle exec jekyll b -d "$SITE_DIR$_baseurl" --config "$_config"
+}
+
+test() {
+  bundle exec htmlproofer \
+    --disable-external \
+    --check-html \
+    --allow_hash_href \
+    "$SITE_DIR"
+}
+
+resume_site_dir() {
+  if [[ -n $_baseurl ]]; then
+    # Move the site file to the regular directory '_site'
+    mv "$SITE_DIR$_baseurl" "${SITE_DIR}-rename"
+    rm -rf "$SITE_DIR"
+    mv "${SITE_DIR}-rename" "$SITE_DIR"
+  fi
+}
+
+setup_gh() {
+  if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
+    _no_pages_branch=true
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     git checkout -b "$PAGES_BRANCH"
   else
     git checkout "$PAGES_BRANCH"
@@ -24,7 +100,11 @@ init() {
 }
 
 backup() {
+<<<<<<< HEAD
   mv _site/* "$_backup_dir"
+=======
+  mv "$SITE_DIR"/* "$_backup_dir"
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   mv .git "$_backup_dir"
 
   # When adding custom domain from Github website,
@@ -50,7 +130,11 @@ deploy() {
   git add -A
   git commit -m "[Automation] Site update No.${GITHUB_RUN_NUMBER}"
 
+<<<<<<< HEAD
   if $_no_branch; then
+=======
+  if $_no_pages_branch; then
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     git push -u origin "$PAGES_BRANCH"
   else
     git push -f
@@ -59,9 +143,49 @@ deploy() {
 
 main() {
   init
+<<<<<<< HEAD
+=======
+  build
+  test
+  resume_site_dir
+
+  if $_opt_dry_run; then
+    exit 0
+  fi
+
+  setup_gh
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   backup
   flush
   deploy
 }
 
+<<<<<<< HEAD
+=======
+while (($#)); do
+  opt="$1"
+  case $opt in
+    -c | --config)
+      _config="$2"
+      shift
+      shift
+      ;;
+    --dry-run)
+      # build & test, but not deploy
+      _opt_dry_run=true
+      shift
+      ;;
+    -h | --help)
+      help
+      exit 0
+      ;;
+    *)
+      # unknown option
+      help
+      exit 1
+      ;;
+  esac
+done
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 main

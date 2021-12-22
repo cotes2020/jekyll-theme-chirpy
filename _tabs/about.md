@@ -1,5 +1,6 @@
 ---
 title: About
+<<<<<<< HEAD
 icon: fas fa-info
 order: 4
 ---
@@ -13,3 +14,11 @@ I enjoy discussing approaches to complex problems and aim to bring a multidiscip
 
 I'd love to get in touch! 
 Please feel free to contact me by email at vandijcksm@gmail.com
+=======
+icon: fas fa-info-circle
+order: 4
+---
+
+
+> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba

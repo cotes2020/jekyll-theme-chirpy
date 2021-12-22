@@ -8,6 +8,15 @@
 
   {% if page.layout == 'home' or page.layout == 'post' %}
 
+<<<<<<< HEAD
+=======
+    <!-- i18n for `_javascript/utils/timeago.js` -->
+    <meta name="day-prompt" content="{{ site.data.locales[lang].post.timeago.day }}">
+    <meta name="hour-prompt" content="{{ site.data.locales[lang].post.timeago.hour }}">
+    <meta name="minute-prompt" content="{{ site.data.locales[lang].post.timeago.minute }}">
+    <meta name="justnow-prompt" content="{{ site.data.locales[lang].post.timeago.just_now }}">
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     {% if site.google_analytics.pv.proxy_endpoint %}
       <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">
     {% endif %}
@@ -62,6 +71,7 @@
 
   {% include css-selector.html %}
 
+<<<<<<< HEAD
   <!-- JavaScripts -->
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
@@ -71,4 +81,10 @@
 
   {% include js-selector.html %}
 
+=======
+  <!-- JavaScript -->
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 </head>

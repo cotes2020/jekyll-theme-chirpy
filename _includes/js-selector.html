@@ -2,6 +2,7 @@
   JS selector for site.
 -->
 
+<<<<<<< HEAD
 {% if page.layout == 'home' or page.layout == 'post' %}
   {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
     <!-- pv-report needs countup.js -->
@@ -16,6 +17,30 @@
   {% assign type = page.layout %}
 {% else %}
   {% assign type = "page" %}
+=======
+<!-- layout specified -->
+
+{% if page.layout == 'post' %}
+  {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
+    <!-- pv-report needs countup.js -->
+    <script async src="https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js"></script>
+    <script defer src="{{ '/assets/js/dist/pvreport.min.js' | relative_url }}"></script>
+  {% endif %}
+{% endif %}
+
+{% if page.layout == 'post' or page.layout == 'page' %}
+  <!-- image lazy-loading & popup -->
+  <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/clipboard@2/dist/clipboard.min.js"></script>
+{% endif %}
+
+{% if page.layout == 'home'
+    or page.layout == 'categories'
+    or page.layout == 'post'
+    or page.layout == 'page' %}
+  {% assign type = page.layout %}
+{% else %}
+  {% assign type = "commons" %}
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 {% endif %}
 
 {% assign js = type | prepend: '/assets/js/dist/' | append: '.min.js' %}
@@ -44,6 +69,13 @@
   </script>
 {% endif %}
 
+<<<<<<< HEAD
+=======
+<!-- commons -->
+
+<script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 {% if jekyll.environment == 'production' %}
   <!-- PWA -->
   <script defer src="{{ '/app.js' | relative_url }}"></script>

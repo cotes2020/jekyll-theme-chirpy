@@ -8,14 +8,22 @@
 
     {% assign paths = page.url | split: '/' %}
 
+<<<<<<< HEAD
     {% if paths.size == 0 %}
       <!-- index page -->
       <span>{{ 'Posts' }}</span>
+=======
+    {% if paths.size == 0 or page.layout == 'home' %}
+      <!-- index page -->
+      <span>{{ site.data.locales[lang].tabs.home | capitalize }}</span>
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     {% else %}
 
       {% for item in paths %}
 
         {% if forloop.first %}
+<<<<<<< HEAD
           {% unless page.layout == 'post' %}
           <span>
             <a href="{{ '/' | relative_url }}">{{ 'Home' }}</a>
@@ -36,6 +44,28 @@
           </a>
         </span>
 
+=======
+          <span>
+            <a href="{{ '/' | relative_url }}">
+              {{ site.data.locales[lang].tabs.home | capitalize }}
+            </a>
+          </span>
+
+        {% elsif forloop.last %}
+
+          {% if page.collection == 'tabs' %}
+            <span>{{ site.data.locales[lang].tabs[item] | default: page.title }}</span>
+          {% else %}
+            <span>{{ page.title }}</span>
+          {% endif %}
+
+        {% elsif page.layout == 'category' or page.layout == 'tag' %}
+          <span>
+            <a href="{{ item | relative_url }}">
+              {{ site.data.locales[lang].tabs[item] | default: page.title }}
+            </a>
+          </span>
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
         {% endif %}
 
       {% endfor %}
@@ -48,11 +78,20 @@
 
     <div id="topbar-title">
       {% if page.layout == 'home' %}
+<<<<<<< HEAD
         {{- site.title -}}
       {% elsif page.dynamic_title %}
         {{- page.title -}}
       {% else %}
         {{- page.layout | capitalize -}}
+=======
+        {{- site.data.locales[lang].title | default: site.title -}}
+      {% elsif page.collection == 'tabs' or page.dynamic_title %}
+        {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
+        {{- site.data.locales[lang].tabs[tab_key] | default: page.title -}}
+      {% else %}
+        {{- site.data.locales[lang].layout[page.layout] | default: page.layout | capitalize -}}
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       {% endif %}
     </div>
 
@@ -60,10 +99,17 @@
     <span id="search-wrapper" class="align-items-center">
       <i class="fas fa-search fa-fw"></i>
       <input class="form-control" id="search-input" type="search"
+<<<<<<< HEAD
         aria-label="search" autocomplete="off" placeholder="{{ site.data.label.search_hint | default: 'Search' }}...">
       <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i>
     </span>
     <span id="search-cancel" >Cancel</span>
+=======
+        aria-label="search" autocomplete="off" placeholder="{{ site.data.locales[lang].search.hint | capitalize }}...">
+      <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i>
+    </span>
+    <span id="search-cancel" >{{ site.data.locales[lang].search.cancel }}</span>
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   </div>
 
 </div>

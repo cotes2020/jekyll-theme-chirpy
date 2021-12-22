@@ -6,6 +6,11 @@ set -eu
 
 ACTIONS_WORKFLOW=pages-deploy.yml
 
+<<<<<<< HEAD
+=======
+TEMP_SUFFIX="to-delete" #  temporary file suffixes that make `sed -i` compatible with BSD and Linux
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 help() {
   echo "Usage:"
   echo
@@ -16,6 +21,16 @@ help() {
   echo "     -h, --help           Print this help information."
 }
 
+<<<<<<< HEAD
+=======
+check_status() {
+  if [[ -n $(git status . -s) ]]; then
+    echo "Error: Commit unstaged files first, and then run this tool againt."
+    exit -1
+  fi
+}
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 check_init() {
   local _has_inited=false
 
@@ -40,25 +55,67 @@ check_init() {
 }
 
 init_files() {
+<<<<<<< HEAD
 
   if $_no_gh; then
     rm -rf .github
   else
+=======
+  if $_no_gh; then
+    rm -rf .github
+  else
+    ## Change the files of `.github`
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     mv .github/workflows/$ACTIONS_WORKFLOW.hook .
     rm -rf .github
     mkdir -p .github/workflows
     mv ./${ACTIONS_WORKFLOW}.hook .github/workflows/${ACTIONS_WORKFLOW}
+<<<<<<< HEAD
   fi
 
   rm -f .travis.yml
   rm -rf _posts/* docs
 
   git add -A && git add .github -f
+=======
+
+    ## Ensure the gh-actions trigger branch
+
+    _workflow=".github/workflows/${ACTIONS_WORKFLOW}"
+    _default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+    _lineno="$(sed -n "/branches:/=" "$_workflow")"
+
+    sed -i.$TEMP_SUFFIX "$((_lineno + 1))s/- .*/- ${_default_branch}/" "$_workflow"
+    rm -f "$_workflow.$TEMP_SUFFIX"
+
+    ## Cleanup image settings in site config
+    sed -i.$TEMP_SUFFIX "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
+    rm -f _config.yml.$TEMP_SUFFIX
+
+  fi
+
+  # trace the gem lockfile on user-end
+  sed -i.$TEMP_SUFFIX "/Gemfile.lock/d" .gitignore
+  rm -f ".gitignore.$TEMP_SUFFIX"
+
+  # remove the other fies
+  rm -f .travis.yml
+  rm -rf _posts/* docs
+
+  # save changes
+  git add -A
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   git commit -m "[Automation] Initialize the environment." -q
 
   echo "[INFO] Initialization successful!"
 }
 
+<<<<<<< HEAD
+=======
+check_status
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 check_init
 
 _no_gh=false

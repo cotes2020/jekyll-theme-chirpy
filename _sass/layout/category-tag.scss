@@ -3,7 +3,11 @@
 */
 
 .dash {
+<<<<<<< HEAD
   margin: 0 .5rem .6rem .5rem;
+=======
+  margin: 0 0.5rem 0.6rem 0.5rem;
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   border-bottom: 2px dotted var(--dash-color);
 }
 
@@ -60,8 +64,14 @@
   #page-tag {
     ul > li {
       &::before {
+<<<<<<< HEAD
         margin: 0 .5rem;
       }
+=======
+        margin: 0 0.5rem;
+      }
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       > a {
         white-space: nowrap;
         overflow: hidden;

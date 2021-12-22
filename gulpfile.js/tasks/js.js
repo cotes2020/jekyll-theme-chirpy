@@ -27,6 +27,13 @@ function minifyJs() {
     .pipe(dest(JS_DEST));
 }
 
+<<<<<<< HEAD
+=======
+const commonsJs = () => {
+  return concatJs(`${JS_SRC}/commons/*.js`, 'commons');
+};
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 const homeJs = () => {
   return concatJs([
       `${JS_SRC}/commons/*.js`,
@@ -39,8 +46,15 @@ const homeJs = () => {
 const postJs = () => {
   return concatJs([
       `${JS_SRC}/commons/*.js`,
+<<<<<<< HEAD
       `${JS_SRC}/utils/timeago.js`,
       `${JS_SRC}/utils/lang-badge.js`,
+=======
+      `${JS_SRC}/utils/img-extra.js`,
+      `${JS_SRC}/utils/timeago.js`,
+      `${JS_SRC}/utils/checkbox.js`,
+      `${JS_SRC}/utils/clipboard.js`,
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       // 'smooth-scroll.js' must be called after ToC is ready
       `${JS_SRC}/utils/smooth-scroll.js`
     ], 'post'
@@ -58,7 +72,13 @@ const categoriesJs = () => {
 const pageJs = () => {
   return concatJs([
       `${JS_SRC}/commons/*.js`,
+<<<<<<< HEAD
       `${JS_SRC}/utils/smooth-scroll.js`
+=======
+      `${JS_SRC}/utils/checkbox.js`,
+      `${JS_SRC}/utils/img-extra.js`,
+      `${JS_SRC}/utils/clipboard.js`
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     ], 'page'
   );
 };
@@ -68,7 +88,11 @@ const pvreportJs = () => {
   return concatJs(`${JS_SRC}/utils/pageviews.js`, 'pvreport');
 };
 
+<<<<<<< HEAD
 const buildJs = parallel(homeJs, postJs, categoriesJs, pageJs, pvreportJs);
+=======
+const buildJs = parallel(commonsJs, homeJs, postJs, categoriesJs, pageJs, pvreportJs);
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 exports.build = series(buildJs, minifyJs);
 
@@ -81,6 +105,11 @@ exports.liveRebuild = () => {
       `${ JS_SRC }/lib/*.js`
     ],
     buildJs
+<<<<<<< HEAD
   )
 }
 
+=======
+  );
+};
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba

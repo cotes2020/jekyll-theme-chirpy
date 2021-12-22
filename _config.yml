@@ -3,6 +3,7 @@
 # Import the theme
 theme: jekyll-theme-chirpy
 
+<<<<<<< HEAD
 # Only if your site type is GitHub Project sites and doesn't have a custom domain,
 # change below value to '/projectname'.
 baseurl: ''
@@ -22,31 +23,78 @@ tagline: Aspiring Machine Learning Practitioner   # it will display as the sub-t
 description: >-                        # used by seo meta and the atom feed
   Max van Dijck, Aspiring Machine Learning Practitioner
   and Data Science.
+=======
+# Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
+# and doesn't have a custom domain.
+baseurl: ''
+
+# The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
+# If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
+# otherwise, the layout language will use the default value of 'en'.
+lang: en
+
+# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
+timezone: Asia/Shanghai
+
+# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+# ↓ --------------------------
+
+title: Chirpy                          # the main title
+
+tagline: A text-focused Jekyll theme   # it will display as the sub-title
+
+description: >-                        # used by seo meta and the atom feed
+  A minimal, portfolio, sidebar,
+  bootstrap Jekyll theme with responsive web design
+  and focuses on text presentation.
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
 
 github:
+<<<<<<< HEAD
   username: MaxVanDijck             # change to your github username
 
 twitter:
   username: Max_vanDijck            # change to your twitter username
+=======
+  username: github_username             # change to your github username
+
+twitter:
+  username: twitter_username            # change to your twitter username
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
+<<<<<<< HEAD
   name: Max van Dijck
   email: vandijcksm@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/Max_vanDijck      # change to your twitter homepage
     - https://github.com/MaxVanDijck      # change to your github homepage
+=======
+  name: your_full_name
+  email: example@doamin.com             # change to your email address
+  links:
+    # The first element serves as the copyright owner's link
+    - https://twitter.com/username      # change to your twitter homepage
+    - https://github.com/username       # change to your github homepage
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
 google_site_verification: google_meta_tag_verification # change to your verification string
+<<<<<<< HEAD
 # --------------------------
+=======
+
+# ↑ --------------------------
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 google_analytics:
   id: ''              # fill in your Google Analytics ID
@@ -73,17 +121,29 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
+<<<<<<< HEAD
 img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
 avatar: ./assets/img/portrait.jpg
+=======
+img_cdn: 'https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5'
+
+# the avatar on sidebar, support local or CORS resources
+avatar: '/commons/avatar.jpg'
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 # boolean type, the global switch for ToC in posts.
 toc: true
 
 disqus:
+<<<<<<< HEAD
   comments: true  # boolean type, the global switch for posts comments.
   shortname: 'Max'    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+=======
+  comments: false  # boolean type, the global switch for posts comments.
+  shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 paginate: 10
 
@@ -130,7 +190,10 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+<<<<<<< HEAD
       dynamic_title: true    # Hide title in mobile screens.
+=======
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 sass:
   style: compressed
@@ -153,7 +216,11 @@ exclude:
   - LICENSE
   - gulpfile.js
   - node_modules
+<<<<<<< HEAD
   - '*.json'
+=======
+  - package*.json
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 jekyll-archives:
   enabled: [categories, tags]

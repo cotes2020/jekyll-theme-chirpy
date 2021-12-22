@@ -1,5 +1,6 @@
 <!--
   Date format snippet
+<<<<<<< HEAD
   See: /assets/js/_utils/timeage.js
 -->
 
@@ -29,3 +30,29 @@
   <i class="unloaded">{{ include.date | date_to_xmlschema }}</i>
 
 </span>
+=======
+  See: ${JS_ROOT}/utils/timeago.js
+-->
+
+{% assign tooltip_df = site.data.locales[lang].date_format.tooltip %}
+{% assign post_long_df = site.data.locales[lang].date_format.post.long %}
+{% assign post_short_df = site.data.locales[lang].date_format.post.short %}
+
+<em class="timeago{% if include.class %} {{ include.class }}{% endif %}"
+    date="{{ include.date }}"
+    {% if include.tooltip %}
+      data-toggle="tooltip"
+      data-placement="bottom"
+      title="{{ include.date | date: tooltip_df }}"
+    {% endif %}>
+
+  {%- assign this_year = site.time | date: "%Y" -%}
+  {%- assign post_year = include.date | date: "%Y" -%}
+
+  {%- if post_year == this_year -%}
+    {{ include.date | date: post_short_df }}
+  {%- else -%}
+    {{ include.date | date: post_long_df }}
+  {%- endif -%}
+</em>
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba

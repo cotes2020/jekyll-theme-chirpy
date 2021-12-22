@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #
+<<<<<<< HEAD
 # How does it work:
 #
 #   1. Bump latest version number to files:
@@ -26,6 +27,27 @@ set -eu
 
 manual_release=false
 
+=======
+#
+# 1. Bump latest version number to the following files:
+#
+#   - _sass/jekyll-theme-chirpy.scss
+#   - _javascript/copyright
+#   - assets/js/dist/*.js (will be built by gulp later)
+#   - jekyll-theme-chirpy.gemspec
+#   - package.json
+#
+# 2. Then create a commit to automatically save the changes.
+#
+# Usage:
+#
+#   Run on the default branch or hotfix branch
+#
+# Requires: Git, Gulp
+
+set -eu
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 ASSETS=(
   "_sass/jekyll-theme-chirpy.scss"
   "_javascript/copyright"
@@ -48,12 +70,15 @@ check() {
     exit -1
   fi
 
+<<<<<<< HEAD
   # ensure the current branch is 'master' or running in 'manual' mode
   if [[ "$(git branch --show-current)" != "master" && $manual_release == "false" ]]; then
     echo "Error: This operation must be performed on the 'master' branch or '--manual' mode!"
     exit -1
   fi
 
+=======
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   for i in "${!ASSETS[@]}"; do
     _check_src "${ASSETS[$i]}"
   done
@@ -91,6 +116,7 @@ bump() {
   fi
 }
 
+<<<<<<< HEAD
 build_gem() {
   rm -f ./*.gem
   gem build "$GEM_SPEC"
@@ -156,6 +182,8 @@ help() {
   echo "     -h, --help           Print this help information."
 }
 
+=======
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 main() {
   check
 
@@ -172,7 +200,12 @@ main() {
       exit -1
     fi
 
+<<<<<<< HEAD
     release "$_version"
+=======
+    echo -e "Bump version to $_version\n"
+    bump "$_version"
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
   else
 
@@ -181,6 +214,7 @@ main() {
 
 }
 
+<<<<<<< HEAD
 while (($#)); do
   opt="$1"
   case $opt in
@@ -199,4 +233,6 @@ while (($#)); do
   esac
 done
 
+=======
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 main

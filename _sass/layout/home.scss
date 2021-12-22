@@ -3,13 +3,20 @@
 */
 
 .pagination {
+<<<<<<< HEAD
   font-size: 1rem;
+=======
+  color: var(--btn-patinator-text-color);
+  font-family: 'Lato', sans-serif;
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   a:hover {
     text-decoration: none;
   }
 
   .page-item {
     .page-link {
+<<<<<<< HEAD
       color: var(--btn-patinator-text-color);
       width: 2.5rem;
       height: 2.5rem;
@@ -25,10 +32,24 @@
       border: 1px solid var(--btn-paginator-border-color);
       font-family: 'Lato', sans-serif;
       background-color: var(--button-bg);
+=======
+      color: inherit;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      display: -webkit-box;
+      -webkit-box-pack: center;
+      -webkit-box-align: center;
+      border-radius: 50%;
+      border: 1px solid var(--btn-paginator-border-color);
+      background-color: var(--button-bg);
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       &:hover {
         background-color: var(--btn-paginator-hover-color);
       }
     }
+<<<<<<< HEAD
     &.active {
       .page-link {
         background-color: var(--btn-active-bg);
@@ -39,19 +60,39 @@
     }
     &.disabled {
       cursor: not-allowed;
+=======
+
+    &.active {
+      .page-link {
+        background-color: var(--btn-paginator-hover-color);
+        color: var(--btn-text-color);
+      }
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       .page-link {
         color: rgba(108, 117, 125, 0.57);
         border-color: var(--btn-paginator-border-color);
         background-color: var(--button-bg);
       }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     &:first-child .page-link,
     &:last-child .page-link {
       border-radius: 50%;
     }
+<<<<<<< HEAD
     &:not(:last-child) {
       margin-right: 0.7rem;
     }
+=======
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   } // .page-item
 
 } // .pagination
@@ -77,9 +118,20 @@
     .post-meta {
       i {
         font-size: 0.73rem;
+<<<<<<< HEAD
       }
       span:not(:last-child) {
         margin-right: 1.2rem;
+=======
+
+        &:not(:first-child) {
+          margin-left: 1.2rem;
+        }
+      }
+
+      em {
+        @extend %normal-font-style;
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       }
     }
 
@@ -87,6 +139,10 @@
       margin-top: 0.6rem;
       margin-bottom: 0.6rem;
       color: var(--post-list-text-color);
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       > p {
         /* Make preview shorter on the homepage */
         margin: 0;
@@ -104,27 +160,52 @@
         padding-left: 3px;
         color: var(--pin-color);
       }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       > span {
         display: none;
       }
     }
 
   } // .post-preview
+<<<<<<< HEAD
 
+=======
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 } // #post-list
 
 /* Hide SideBar and TOC */
 @media all and (max-width: 830px) {
   .pagination {
+<<<<<<< HEAD
     justify-content: center;
+=======
+    justify-content: space-evenly;
+
+    .page-item {
+      &:not(:first-child):not(:last-child) {
+        display: none;
+      }
+
+    }
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   }
 }
 
 /* Sidebar is visible */
 @media all and (min-width: 831px) {
+<<<<<<< HEAD
 
   #post-list {
     margin-top: 1.5rem;
+=======
+  #post-list {
+    margin-top: 1.5rem;
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     .post-preview .post-meta {
       .pin {
         background: var(--pin-bg);
@@ -144,11 +225,32 @@
 
   .pagination {
     font-size: 0.85rem;
+<<<<<<< HEAD
     .page-item .page-link {
       width: 2.2rem;
       height: 2.2rem;
     }
   }
+=======
+
+    .page-item {
+      &:not(:last-child) {
+        margin-right: 0.7rem;
+      }
+
+      .page-link {
+        width: 2rem;
+        height: 2rem;
+      }
+
+    }
+
+    .page-index {
+      display: none;
+    }
+
+  } // .pagination
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 }
 

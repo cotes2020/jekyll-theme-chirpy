@@ -1,7 +1,19 @@
 ---
 ---
 
+<<<<<<< HEAD
 // see: /_sass/addon/commons.scss
 $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 
 @import "jekyll-theme-chirpy";
+=======
+/*
+  If the number of TAB files has changed, the following variable is required.
+  And it must be defined before `@import`.
+*/
+$tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
+
+@import "{{ site.theme }}";
+
+/* append your custom style below */
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba

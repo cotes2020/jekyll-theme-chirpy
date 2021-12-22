@@ -2,6 +2,7 @@
   The Side Bar
 -->
 
+<<<<<<< HEAD
 <div id="sidebar" class="d-flex flex-column align-items-end">
 
   <div class="profile-wrapper text-center">
@@ -17,23 +18,55 @@
           {%- endif -%}
         {% endcapture %}
         <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
+=======
+<div id="sidebar" class="d-flex flex-column align-items-end" lang="{{lang}}">
+  <div class="profile-wrapper text-center">
+    <div id="avatar">
+      <a href="{{ '/' | relative_url }}" alt="avatar" class="mx-auto">
+        {% if site.avatar != '' and site.avatar %}
+          {% capture avatar_url %}
+            {%- if site.avatar contains '://' -%}
+              {{ site.avatar }}
+            {%- elsif site.img_cdn != '' and site.img_cdn -%}
+              {{ site.avatar | prepend: site.img_cdn }}
+            {%- else -%}
+              {{ site.avatar | relative_url }}
+            {%- endif -%}
+          {% endcapture %}
+          <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
+        {% endif %}
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       </a>
     </div>
 
     <div class="site-title mt-3">
+<<<<<<< HEAD
       <a href="{{ '/' | relative_url }}">{{- site.title -}}</a>
     </div>
 
     <div class="site-subtitle font-italic">{{- site.tagline -}}</div>
+=======
+      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    </div>
+    <div class="site-subtitle font-italic">{{ site.tagline }}</div>
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
   </div><!-- .profile-wrapper -->
 
   <ul class="w-100">
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     <!-- home -->
     <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
       <a href="{{ '/' | relative_url }}" class="nav-link">
         <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
+<<<<<<< HEAD
         <span>{{ "HOME" }}</span>
+=======
+        <span>{{ site.data.locales[lang].tabs.home | upcase }}</span>
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       </a>
     </li>
     <!-- the real tabs -->
@@ -41,14 +74,34 @@
     <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
       <a href="{{ tab.url | relative_url }}" class="nav-link">
         <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
+<<<<<<< HEAD
         <span>{{ tab.title | upcase }}</span>
+=======
+        {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+
+        <span>{{ site.data.locales[lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
       </a>
     </li> <!-- .nav-item -->
     {% endfor %}
 
   </ul> <!-- ul.nav.flex-column -->
 
+<<<<<<< HEAD
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center">
+=======
+  <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
+
+    {% unless site.theme_mode %}
+      <button class="mode-toggle btn" aria-label="Switch Mode">
+        <i class="fas fa-adjust"></i>
+      </button>
+
+      {% if site.data.contact.size > 0 %}
+        <span class="icon-border"></span>
+      {% endif %}
+    {% endunless %}
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
     {% for entry in site.data.contact %}
       {% capture url %}
@@ -68,7 +121,10 @@
 
       {% if url %}
       <a href="{{ url }}" aria-label="{{ entry.type }}"
+<<<<<<< HEAD
         {% unless site.theme_mode %}class="order-{{ forloop.index | plus: 2 }}"{% endunless %}
+=======
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
         {% unless entry.noblank %}target="_blank" rel="noopener"{% endunless %}>
         <i class="{{ entry.icon }}"></i>
       </a>
@@ -76,6 +132,7 @@
 
     {% endfor %}
 
+<<<<<<< HEAD
     {% unless site.theme_mode %}
       {% if site.data.contact.size > 0 %}
         <span class="icon-border order-2"></span>
@@ -86,6 +143,8 @@
       </span>
     {% endunless %}
 
+=======
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   </div> <!-- .sidebar-bottom -->
 
 </div><!-- #sidebar -->

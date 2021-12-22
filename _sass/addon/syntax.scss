@@ -27,11 +27,17 @@ html[mode=dark] {
 
 /* -- Codes Snippet -- */
 
+<<<<<<< HEAD
+=======
+$code-radius: 6px;
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 %code-snippet-bg {
   background: var(--highlight-bg-color);
 }
 
 %code-snippet-radius {
+<<<<<<< HEAD
   border-radius: 6px;
 }
 
@@ -45,6 +51,14 @@ div > pre {
   @extend %code-snippet-bg;
   @extend %code-snippet-radius;
   @extend %code-snippet-padding;
+=======
+  border-radius: $code-radius;
+}
+
+%code-snippet-padding {
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 }
 
 .highlighter-rouge {
@@ -65,6 +79,7 @@ div > pre {
   }
 
   overflow: auto;
+<<<<<<< HEAD
   .lineno {
     margin-left: 0.2rem;
     padding-right: 0.5rem;
@@ -79,24 +94,56 @@ div > pre {
     -o-user-select: none;
     user-select: none;
   }
+=======
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   pre {
     margin-bottom: 0;
     font-size: $code-font-size;
     line-height: 1.4rem;
     word-wrap: normal; /* Fixed Safari overflow-x */
   }
+<<<<<<< HEAD
   table {
     padding: 0;
     border: 0;
+=======
+
+  table {
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     td pre {
       overflow: visible;  /* Fixed iOS safari overflow-x */
       word-break: normal; /* Fixed iOS safari linenos code break */
     }
   }
+<<<<<<< HEAD
   td {
     padding: 0;
     border: 0;
   }
+=======
+
+  .lineno {
+    padding-right: 0.5rem;
+    min-width: 2.2rem;
+    text-align: right;
+    color: var(--highlight-lineno-color);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+
+  /* set the dollar sign to non-selectable */
+  .gp {
+    user-select: none;
+  }
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 } //.highlight
 
 code {
@@ -112,22 +159,41 @@ code {
     background-color: var(--inline-code-bg);
   }
 
+<<<<<<< HEAD
   @at-root a > &.highlighter-rouge {
+=======
+  a > &.highlighter-rouge {
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     padding-bottom: 0; // show link's underlinke
     color: inherit;
   }
 
+<<<<<<< HEAD
   @at-root a:hover > &.highlighter-rouge {
+=======
+  a:hover > &.highlighter-rouge {
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     border-bottom: none;
   }
 
   blockquote &.highlighter-rouge {
     color: inherit;
   }
+<<<<<<< HEAD
 }
 
 td.rouge-code {
   padding: 1.5rem 1.5rem 1.5rem 1rem;
+=======
+
+  .highlight > & {
+    color: transparent;
+  }
+}
+
+td.rouge-code {
+  @extend %code-snippet-padding;
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
   // Prevent some browser extends from
   // changing the URL string of code block.
@@ -144,16 +210,28 @@ div {
   &[class^='highlighter-rouge'],
   &.language-plaintext.highlighter-rouge,
   &.language-console.highlighter-rouge,
+<<<<<<< HEAD
   &.language-terminal.highlighter-rouge {
     pre.lineno {
       display: none;
     }
     td.rouge-code {
       @extend %code-snippet-padding;
+=======
+  &.language-terminal.highlighter-rouge,
+  &.nolineno {
+    pre.lineno {
+      display: none;
+    }
+
+    td.rouge-code {
+      padding-left: 1.5rem;
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
     }
   }
 }
 
+<<<<<<< HEAD
 div[class^='language-']::before {
   content: attr(lang);
   position: absolute;
@@ -174,5 +252,120 @@ div[class^='language-']::before {
 @media (min-width: 1650px) {
   div[class^='language-']::before {
     right: 3.5rem;
+=======
+.code-header {
+  @extend %no-cursor;
+
+  $code-header-height: 2.25rem;
+
+  border-top-left-radius: $code-radius;
+  border-top-right-radius: $code-radius;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $code-header-height;
+
+  &::before {
+    $dot-size: 0.75rem;
+    $dot-margin: 0.5rem;
+
+    content: "";
+    display: inline-block;
+    margin-left: 1rem;
+    width: $dot-size;
+    height: $dot-size;
+    border-radius: 50%;
+    background-color: var(--code-header-muted-color);
+    box-shadow:
+      ($dot-size + $dot-margin) 0 0 var(--code-header-muted-color),
+      ($dot-size + $dot-margin) * 2 0 0 var(--code-header-muted-color);
+  }
+
+  // the label block
+  span {
+    // label icon
+    i {
+      font-size: 1rem;
+      margin-right: 0.4rem;
+      color: var(--code-header-icon-color);
+
+      &.small {
+        font-size: 70%;
+      }
+    }
+
+    @at-root [file] #{&} > i {
+      position: relative;
+      top: 1px; // center the file icon
+    }
+
+    // label text
+    &::after {
+      content: attr(label-text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--code-header-text-color);
+    }
+  }
+
+  // clipboard
+  button {
+    @extend %cursor-pointer;
+
+    border: 1px solid transparent;
+    border-radius: $code-radius;
+    height: $code-header-height;
+    width: $code-header-height;
+    padding: 0;
+    background-color: inherit;
+
+    i {
+      color: var(--code-header-icon-color);
+    }
+
+    &[timeout] {
+      &:hover {
+        border-color: var(--clipboard-checked-color);
+      }
+
+      i {
+        color: var(--clipboard-checked-color);
+      }
+    }
+
+    &:not([timeout]):hover {
+      background-color: rgba(128, 128, 128, 0.37);
+
+      i {
+        color: white;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+  }
+
+}
+
+@media all and (max-width: 576px) {
+  .post-content {
+    > div[class^='language-'] {
+      @include ml-mr(-1.25rem);
+
+      border-radius: 0;
+
+      .highlight {
+        padding-left: 0.25rem;
+      }
+
+      .code-header {
+        border-radius: 0;
+        padding-left: 0.4rem;
+        padding-right: 0.5rem;
+      }
+    }
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
   }
 }

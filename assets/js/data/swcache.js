@@ -26,6 +26,7 @@ const resource = [
     '{{ tab.url | relative_url }}',
   {% endfor %}
 
+<<<<<<< HEAD
   /* --- Icons --- */
   {% assign icon_url = "/assets/img/favicons" | relative_url %}
   '{{ icon_url }}/favicon.ico',
@@ -47,6 +48,21 @@ const resource = [
   '{{ icon_url }}/ms-icon-144x144.png',
   '{{ icon_url }}/manifest.json',
   '{{ icon_url }}/browserconfig.xml'
+=======
+  /* --- Favicons --- */
+  {% assign favicon_path = "/assets/img/favicons" | relative_url %}
+
+  '{{ favicon_path }}/android-chrome-192x192.png',
+  '{{ favicon_path }}/android-chrome-512x512.png',
+  '{{ favicon_path }}/apple-touch-icon.png',
+  '{{ favicon_path }}/favicon-16x16.png',
+  '{{ favicon_path }}/favicon-32x32.png',
+  '{{ favicon_path }}/favicon.ico',
+  '{{ favicon_path }}/mstile-150x150.png',
+  '{{ favicon_path }}/site.webmanifest',
+  '{{ favicon_path }}/browserconfig.xml'
+
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 ];
 
 /* The request url with below domain will be cached */

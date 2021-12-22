@@ -1,6 +1,13 @@
 # hidden files
 .*
+<<<<<<< HEAD
 !.github
+=======
+!.git*
+!.editorconfig
+!.nojekyll
+!.travis.yml
+>>>>>>> ebb3dc940c22d864dc41a16f1d84c1a0c0a003ba
 
 # bundler cache
 _site
