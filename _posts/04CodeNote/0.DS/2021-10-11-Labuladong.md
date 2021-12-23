@@ -182,16 +182,22 @@ toc: true
     - [LFU 淘汰算法 Least Frequently Used](#lfu-淘汰算法-least-frequently-used)
   - [最大栈 Maximum Frequency Stack](#最大栈-maximum-frequency-stack)
 - [数据流](#数据流)
-  - [随机 水塘抽样算法（Reservoir Sampling）](#随机-水塘抽样算法reservoir-sampling)
+  - [Reservoir Sampling 随机 水塘抽样算法](#reservoir-sampling-随机-水塘抽样算法)
     - [382. Linked List Random Node 无限序列随机抽取1元素](#382-linked-list-random-node-无限序列随机抽取1元素)
       - [be list, size, random n](#be-list-size-random-n)
       - [Reservoir Sampling](#reservoir-sampling)
     - [无限序列随机抽取 k 个数](#无限序列随机抽取-k-个数)
     - [398. Random Pick Index (Medium)](#398-random-pick-index-medium)
       - [Reservoir Sampling](#reservoir-sampling-1)
+      - [HashMap](#hashmap)
     - [380. Insert Delete GetRandom O(1) 实现随机集合](#380-insert-delete-getrandom-o1-实现随机集合)
     - [710. Random Pick with Blacklist 避开黑名单的随机数 `blacklist index to good index`](#710-random-pick-with-blacklist-避开黑名单的随机数-blacklist-index-to-good-index)
-  - [295. Find Median from Data Stream 中位数](#295-find-median-from-data-stream-中位数)
+    - [528. Random Pick with Weight (Medium)](#528-random-pick-with-weight-medium)
+      - [`2 for: [1,2,3] -> [1,2,2,3,3,3]`](#2-for-123---122333)
+      - [Reservoir Sampling](#reservoir-sampling-2)
+      - [reservoir sampling **BEST**](#reservoir-sampling-best)
+  - [other](#other)
+    - [295. Find Median from Data Stream 中位数](#295-find-median-from-data-stream-中位数)
 - [DFS and BFS](#dfs-and-bfs)
   - [BFS](#bfs)
     - [752. Open the Lock 解开密码锁最少次数 `用Queue和q.size去遍历all + visited + deads`](#752-open-the-lock-解开密码锁最少次数-用queue和qsize去遍历all--visited--deads)
@@ -207,8 +213,11 @@ toc: true
   - [设计朋友圈时间线](#设计朋友圈时间线)
 - [动态规划](#动态规划)
   - [斐波那契数列](#斐波那契数列)
-  - [凑零钱问题 ` for i, for coin, dp[i] = Math.min(dp[i], dp[i-coin]+1);`](#凑零钱问题--for-i-for-coin-dpi--mathmindpi-dpi-coin1)
   - [动态规划解法](#动态规划解法)
+    - [322. Coin Change 凑零钱 ` for i, for coin, dp[i] = Math.min(dp[i], dp[i-coin]+1);`](#322-coin-change-凑零钱--for-i-for-coin-dpi--mathmindpi-dpi-coin1)
+      - [暴力解法](#暴力解法-1)
+      - [best 带备忘录的递归](#best-带备忘录的递归)
+      - [dp 数组的迭代解法](#dp-数组的迭代解法)
     - [64. Minimum Path Sum 最小路径和（中等）](#64-minimum-path-sum-最小路径和中等)
     - [931. Minimum Falling Path Sum 下降路径最小和](#931-minimum-falling-path-sum-下降路径最小和)
     - [174. Dungeon Game 地下城游戏 ????????????](#174-dungeon-game-地下城游戏-)
@@ -336,8 +345,6 @@ LinkedList.isEmpty();
 LinkedList.removeLast();
 
 
-
-
 Set<String> deads = new HashSet<>();
 
 HashMap<Integer, Integer> KeyVal = new HashMap<>();
@@ -347,7 +354,6 @@ HashMap.put(key, val);
 HashMap.size();
 HashMap.putIfAbsent(1, new LinkedHashSet<>());
 HashMap.getOrDefault(val, 0);
-
 
 LinkedHashSet<Integer> keyList = ;
 LinkedHashSet.iterator().next();
@@ -7178,7 +7184,7 @@ class FreqStack {
 
 ---
 
-## 随机 水塘抽样算法（Reservoir Sampling）
+## Reservoir Sampling 随机 水塘抽样算法 
 
 
 随机是均匀随机（uniform random）
@@ -7304,8 +7310,7 @@ Given an integer array nums with possible duplicates, randomly output the index 
 Implement the Solution class:
 
 Solution(int[] nums) Initializes the object with the array nums.
-int pick(int target) Picks a random index i from nums where nums[i] == target. If there are multiple valid i's, then each index should have an equal probability of returning.
- 
+int pick(int target) Picks a random index i from nums where nums[i] == target. If there are multiple valid i's, then each index should have an equal probability of returning. 
 
 Example 1:
 Input
@@ -7314,11 +7319,88 @@ Input
 Output
 [null, 4, 0, 2]
 
-#### Reservoir Sampling
 
+
+#### Reservoir Sampling 
 
 ```java
+// Runtime: 93 ms, faster than 21.70% of Java online submissions for Random Pick Index.
+// Memory Usage: 72.5 MB, less than 21.60% of Java online submissions for Random Pick Index.
+/**
+ * Using Reservoir Sampling
+ *
+ * Suppose the indexes of the target element in array are from 1 to N. You have
+ * already picked i-1 elements. Now you are trying to pick ith element. The
+ * probability to pick it is 1/i. Now you do not want to pick any future
+ * numbers.. Thus, the final probability for ith element = 1/i * (1 - 1/(i+1)) *
+ * (1 - 1/(i+2)) * .. * (1 - 1/N) = 1 / N.
+ *
+ * Time Complexity:
+ * 1) Solution() Constructor -> O(1)
+ * 2) pick() -> O(N)
+ *
+ * Space Complexity: O(1)
+ *
+ * N = Length of the input array.
+ */
+class Solution {
+    int[] nums;
+    Random r;
+    public Solution(int[] nums) {
+        this.nums=nums;
+        this.r = new Random();
+    }
+    
+    public int pick(int target) {
+        int res=-1, count=0;
+        for(int i=0;i<nums.length;i++){
+            if(target == nums[i]){ 
+                if(r.nextInt(++count)==0) res=i;
+            }
+        }
+        return res; 
+    }
+}
+```
 
+
+#### HashMap
+
+```java
+/**
+ * Preprocessing input using HashMap
+ *
+ * Time Complexity:
+ * 1) Solution() Constructor -> O(N)
+ * 2) pick() -> O(1)
+ *
+ * Space Complexity: O(N)
+ *
+ * N = Length of the input array.
+ */ 
+
+class Solution {
+    int[] nums;
+    Random r;
+    Map<Integer, List<Integer>> map;
+
+    public Solution(int[] nums) {
+        this.nums=nums;
+        this.r = new Random();
+        this.map = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            if(!map.containsKey(nums[i])) map.put(nums[i], new ArrayList<>());
+            map.get(nums[i]).add(i);
+        } 
+    }
+    
+    public int pick(int target) {
+        int res=0;
+        if (!map.containsKey(target)) return -1; 
+        List<Integer> curList = map.get(target);
+        return curList.get(r.nextInt(curList.size()));
+    }
+}
 ```
 
 
@@ -7478,12 +7560,117 @@ class Solution {
 ```
 
 
+---
+
+
+### 528. Random Pick with Weight (Medium)
+
+You are given a 0-indexed array of positive integers w where w[i] describes the weight of the ith index.
+
+You need to implement the function pickIndex(), which randomly picks an index in the range [0, w.length - 1] (inclusive) and returns it. The probability of picking an index i is w[i] / sum(w).
+
+For example, if w = [1, 3], the probability of picking index 0 is 1 / (1 + 3) = 0.25 (i.e., 25%), and the probability of picking index 1 is 3 / (1 + 3) = 0.75 (i.e., 75%).
+
+#### `2 for: [1,2,3] -> [1,2,2,3,3,3]`
+
+```java
+// memory limit exceeds. Then pick a random value from the arraylist.
+class Solution {
+    private ArrayList<Integer> nums;
+    private Random rand;
+    public Solution(int[] w) {
+        this.nums = new ArrayList<>();
+        this.rand = new Random();
+        for (int i = 0; i < w.length; i++){
+            for (int j = 0; j < w[i]; j++) this.nums.add(i);
+        }
+    } 
+    public int pickIndex() {
+        int n = this.rand.nextInt(nums.size());
+        return nums.get(n);
+    }
+} 
+```
+
+
+#### Reservoir Sampling 
+
+[1,2,3,4,5,]
+[1,3,6,10,15]
+
+
+```java
+class Solution { 
+    int[] nums;
+    int total;
+    Random r; 
+    public Solution(int[] w) {
+        this.nums = new int[w.length];
+        this.r = new Random();
+        int runningTotal = 0;
+        for (int i = 0; i < w.length; i++) {
+            runningTotal += w[i];
+            this.nums[i] = runningTotal;
+        } 
+        this.total = runningTotal;
+    }
+    public int pickIndex() {
+        if (this.total == 0) return -1;
+        int n = this.r.nextInt(this.total);
+        for (int i = 0; i < this.nums.length; i++) {
+            if (n < this.nums[i]) return i;
+        } 
+        return -1;
+    }
+}
+```
+ 
+#### reservoir sampling **BEST**
+
+```java
+// Runtime: 20 ms, faster than 96.28% of Java online submissions for Random Pick with Weight.
+// Memory Usage: 44 MB, less than 69.48% of Java online submissions for Random Pick with Weight.
+class Solution { 
+    int[] nums;
+    int total;
+    Random r; 
+    public Solution(int[] w) {
+        this.nums = new int[w.length];
+        this.r = new Random();
+        int runningTotal = 0;
+        for (int i = 0; i < w.length; i++) {
+            runningTotal += w[i];
+            this.nums[i] = runningTotal;
+        } 
+        this.total = runningTotal;
+    }
+    public int pickIndex() {
+        if (this.total == 0) return -1;
+        int n = this.r.nextInt(nums[nums.length - 1]) + 1;
+        return binarySearch(n);
+    }
+    private int binarySearch(int pos) {
+        int left = 0, right = nums.length - 1;
+        while(left < right) {
+            int mid = left + (right - left) / 2;
+            if(nums[mid] < pos) left = mid + 1;
+            else right = mid;
+        }
+        return left;
+    }
+}
+```
+
+
 
 
 ---
 
 
-## 295. Find Median from Data Stream 中位数
+## other
+
+
+### 295. Find Median from Data Stream 中位数
 
 [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
 - The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value and the median is the mean of the two middle values.
@@ -8707,7 +8894,6 @@ int fib(int N) {
 ```
 
 
-
 4. 状态压缩 pre+cur
 
 能够使用状态压缩技巧的动态规划都是二维 dp 问题，你看它的状态转移方程，如果计算状态 dp[i][j] 需要的都是 dp[i][j] 相邻的状态，那么就可以使用状态压缩技巧，将二维的 dp 数组转化成一维，将空间复杂度从 O(N^2) 降低到 O(N)。
@@ -8730,7 +8916,14 @@ int fib(int n) {
 
 ---
 
-## 凑零钱问题 ` for i, for coin, dp[i] = Math.min(dp[i], dp[i-coin]+1);`
+## 动态规划解法
+
+
+---
+
+
+
+### 322. Coin Change 凑零钱 ` for i, for coin, dp[i] = Math.min(dp[i], dp[i-coin]+1);`
 
 
 [322. Coin Change](https://leetcode.com/problems/coin-change/)
@@ -8748,6 +8941,8 @@ Input: coins = [1,2,5], amount = 11
 Output: 3
 Explanation: 11 = 5 + 5 + 1
 
+1. 从小到大，
+   1. 5=coin(4)+1
 
 ```java
 // Runtime: 28 ms, faster than 33.57% of Java online submissions for Coin Change.
@@ -8758,8 +8953,7 @@ Explanation: 11 = 5 + 5 + 1
 public int coinChange(int[] coins, int amount) {
     int[] subCoin = new int[amount+1];
     Arrays.fill(subCoin, -1);
-    subCoin[0]=0;
-
+    subCoin[0]=0; 
     for(int i=1; i<=amount;i++){
         int minC = Integer.MAX_VALUE;
         for(int coin:coins){
@@ -8774,26 +8968,88 @@ public int coinChange(int[] coins, int amount) {
     return subCoin[amount];
 }
 
+```
 
-// Runtime: 12 ms, faster than 79.68% of Java online submissions for Coin Change.
-// Memory Usage: 38.5 MB, less than 70.58% of Java online submissions for Coin Change.
-public int coinChange(int[] coins, int amount) {
-        int[] dp = new int[amount+1];
-        Arrays.fill(dp,amount+1);
-        dp[0]=0;
-        for(int i=1; i<=amount;i++){
-            for(int coin:coins){
-                if(i>=coin) dp[i] = Math.min(dp[i], dp[i-coin]+1);
-            }
-        }
-        return dp[amount]>amount? -1: dp[amount];
+#### 暴力解法
+
+```java
+int coinChange(int[] coins, int amount) {
+    return dp(coins, amount)
+}
+int dp(int[] coins, int amount) {
+    // base case
+    if (amount == 0) return 0;
+    if (amount < 0) return -1;
+    int res = Integer.MAX_VALUE;
+    for (int coin : coins) {
+        // 计算子问题的结果
+        int subProblem = dp(coins, amount - coin);
+        // 子问题无解则跳过
+        if (subProblem == -1) continue;
+        // 在子问题中选择最优解，然后加一
+        res = Math.min(res, subProblem + 1);
+    }
+    return res == Integer.MAX_VALUE ? -1 : res;
 }
 ```
 
+#### best 带备忘录的递归
+
+```java
+int[] memo;
+int coinChange(int[] coins, int amount) {
+    memo = new int[amount + 1];
+    // dp 数组全都初始化为特殊值
+    Arrays.fill(memo, -666);
+    return dp(coins, amount);
+}
+int dp(int[] coins, int amount) {
+    if (amount == 0) return 0;
+    if (amount < 0) return -1;
+    // 查备忘录，防止重复计算
+    if (memo[amount] != -666) return memo[amount]; 
+    int res = Integer.MAX_VALUE;
+    for (int coin : coins) {
+        // 计算子问题的结果
+        int subProblem = dp(coins, amount - coin);
+        // 子问题无解则跳过
+        if (subProblem == -1) continue;
+        // 在子问题中选择最优解，然后加一
+        res = Math.min(res, subProblem + 1);
+    }
+    // 把计算结果存入备忘录
+    memo[amount] = (res == Integer.MAX_VALUE) ? -1 : res;
+    return memo[amount];
+}
+```
+
+#### dp 数组的迭代解法
+
+自底向上使用 dp table 来消除重叠子问题
+
+
+```java
+// Runtime: 12 ms, faster than 79.68% of Java online submissions for Coin Change.
+// Memory Usage: 38.5 MB, less than 70.58% of Java online submissions for Coin Change.
+public int coinChange(int[] coins, int amount) {
+    int[] dp = new int[amount+1];
+    Arrays.fill(dp,amount+1);
+    dp[0]=0;
+    for(int i=1; i<=amount;i++){
+        for(int coin:coins){
+            if(i>=coin) dp[i] = Math.min(dp[i], dp[i-coin]+1);
+        }
+    }
+    return dp[amount]>amount? -1: dp[amount];
+}
+```
 
 ---
 
-## 动态规划解法
+
+
+
+
 
 
 ---
