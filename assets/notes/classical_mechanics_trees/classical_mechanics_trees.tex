@@ -4,6 +4,7 @@
 \usepackage[english]{babel}
 \usepackage{ragged2e}
 \usepackage{mathtools, amssymb, amsthm}
+\usepackage{pythontex}
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
@@ -26,7 +27,7 @@
 
 \title{Classical Mechanics Studied Using Trees}
 \author{Booodaness}
-\date{\today}
+\date{December 2021}
 
 \clearpage
 
@@ -95,9 +96,9 @@ A visual way of representing the trajectory of a system is to plot the state $\s
 \caption{Evolution of $\mathcal{S}$}
 \end{figure}
 
-In the above figure, the vertical lines indicate that $n$, shown along the x-axis, is discrete.
+In the above figure, the vertical lines indicate that $n$, shown along the x-axis, assumes discrete values. Namely, $n \in \mathbb{Z}^+ \cup \left\{ 0 \right\}$. The state $\sigma$ at a given instant is given as $\sigma \left( n \right) = n$.
 
-Such a diagram may be called a \emph{state update plot}.
+The kind of diagram above may be called a \emph{state update plot}.
 
 \clearpage
 
