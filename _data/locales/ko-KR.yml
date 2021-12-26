@@ -19,13 +19,13 @@ tabs:
 # the text displayed in the search bar & search results
 search:
   hint: 검색
-  cancel: 정보
+  cancel: 취소
   no_results: 검색 결과가 없습니다.
 
 panel:
   lastmod: 최근 업데이트
-  trending_tags: 트렌드 태그
-  toc: 콘텐츠
+  trending_tags: 인기 태그
+  toc: 바로가기
 
 #  The liquid date format › http://strftime.net/
 date_format:
