@@ -1,0 +1,91 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Bejegyzés
+  category: Kategória
+  tag: Címke
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Kezdőlap
+  categories: Kategóriák
+  tags: Címkék
+  archives: Archívum
+  about: Névjegy
+
+# the text displayed in the search bar & search results
+search:
+  hint: keresés
+  cancel: Mégse
+  no_results: Hoppá! Nincs találat...
+
+panel:
+  lastmod: Legújabb bejegyzések
+  trending_tags: Népszerű címkék
+  toc: Tartalomjegyzék
+
+#  The liquid date format › http://strftime.net/
+date_format:
+  tooltip: '%Y %M %d %H:%I:%s'
+  post:
+    long: '%Y %M %d'
+    short: '%M %d'
+    archive_month: '%M'
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: Ez a bejegyzés a szerző által a(z) :LICENSE_NAME licensz alatt engedélyezett.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Egyes jogok fenntartva.
+  verbose: >-
+   Hacsak másképp nem jelezzük, az ezen az oldalon található blogbejegyzések licenceltek.
+   A szerző által a Creative Commons Attribution 4.0 International (CC BY 4.0) licenc alatt.
+
+meta: Működteti a :PLATFORM a :THEME megjelenéssel.
+
+not_found:
+  statment: Sajnáljuk, de rossz helyre tettük a hivatkozást, vagy valami olyanra mutat, ami nem létezik.
+  hint_template: :HEAD_BAK, hogy megpróbálja újra, vagy keresse meg a :ARCHIVES_PAGE-on.
+  head_back: Vissza a főoldalra
+  archives_page: Archívum oldal
+
+# ----- Posts related labels -----
+
+post:
+  written_by: Szerző
+  posted: Közzétéve
+  updated: Frissítve
+  timeago:
+    day: napja
+    hour: órája
+    minute: perce
+    just_now: most
+  words: szavak
+  pageview_measure: megtekintések
+  read_time:
+    unit: perc
+    prompt: olvasás
+  relate_posts: További olvasnivalók
+  share: Megosztás
+  button:
+    next: Következő
+    previous: Előző
+    copy_code:
+      succeed: Másolva!
+    share_link:
+      title: Hivatkozás másolása
+      succeed: Sikeresen másolta a hivatkozást!
+  # pinned prompt of posts list on homepage
+  pin_prompt: Kitűzött
+
+# categories page
+categories:
+  category_measure: kategóriák
+  post_measure: bejegyzések
