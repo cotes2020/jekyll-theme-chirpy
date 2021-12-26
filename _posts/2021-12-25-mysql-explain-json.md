@@ -5,7 +5,7 @@ date: 2021-12-25
 tags: [Back-end Engineering, Database, MySQL]
 ---
 
-Asides from the tasks that my team is working on in my company, I am also trying to find some solutions to optimize the slow SQL queries in several functionalities. And now I will share the experience that I have learned while working on this task.
+Asides from the tasks that my team is working on in my company, I am also supporting a software architect to find some solutions to optimize the slow SQL queries in several functionalities. And now I will share the experience that I have learned while working on this task.
 
 
 ## 1. Introduction
@@ -183,6 +183,6 @@ These things are all that I want to share, I will continue updating this article
 ## 5. References:
 
 - [High Performance MySQL](https://www.amazon.com/High-Performance-MySQL-Optimization-Replication/dp/1449314287)
-- [Visual Explain Plan
-](https://dev.mysql.com/doc/workbench/en/wb-performance-explain.html)
+- [Visual Explain Plan](https://dev.mysql.com/doc/workbench/en/wb-performance-explain.html)
+
 
