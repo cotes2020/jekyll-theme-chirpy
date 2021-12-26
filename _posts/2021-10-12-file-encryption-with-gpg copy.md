@@ -7,12 +7,12 @@ tags: [Back-end Engineering]
 
 A week ago, I had a task related to file encryption, the only technology available was GnuPrivacy Guard (GPG) so I took a day to research it. So today I want to summarize what I have learned from this topic.
 
-## Introduction
+## 1. Introduction
 
 GPG is a complete and free implementation of the OpenPGP standard, which is the most widely used email encryption standard. It helps us to protect our privacy when communicating on the Internet. Just imagine a hacker hacks the financial report of your company and there is no encryption method applied to it, this would be the worst situation that nobody ever wants.
 
 
-## How it works
+## 2. How it works
 
 Generally, GPG is two-way encryption in which we can encrypt the data on one side and decrypt it on another side. The basic workflow consists of 3 steps:
 1. Generate a public and private key using the GPG command-line tool
@@ -25,7 +25,7 @@ Besides file protection, the digital signature is another application of GPG, bu
 In the following section, I will demonstrate and explain each step using Python. Don't worry if you don't know Python, you just need to understand the core idea in the code.
 
 
-### Setup
+#### a. Setup
 
 Let's go and install the library. From the description, you need Python 2.4 or higher to use it.
 
@@ -34,7 +34,7 @@ pip install python-gnupg
 ```
 
 
-### Generate a public and private keypair
+#### b. Generate a public and private keypair
 
  ```python
 import gnupg
@@ -75,7 +75,7 @@ with open("private_key.asc", "w") as f:
 ```
 
 
-### Import the public key in another computer
+#### c. Import the public key in another computer
 
 Assume we already gave the public key to another person. You can follow the code below to import it.
 
@@ -102,7 +102,7 @@ Below is the output of the `print` statement:
 ```
 
 
-### Encrypt the data
+#### d. Encrypt the data
 
 I will encrypt a PDF file to see if the library works for files other than text.
 
@@ -152,7 +152,7 @@ File output:
 As you can see, the file gets encrypted into a lengthy text file. One notable point is that we can encrypt any file extensions, even zip files. I demonstrated with the zipped Webstorm application (~500MB) and it only cost 12 seconds, which is not a considerable amount of time for a heavy file.
 
 
-### Decrypt the data
+#### e. Decrypt the data
 
 When decrypting, the software will use the fingerprints in the encrypted file header to compare. We need to import the private key first (same steps as importing the public key), then we decrypt the file.
 
@@ -208,14 +208,14 @@ gpg: encrypted with 1024-bit RSA key, ID 3B5294A0FE1941E0, created 2021-10-14
 End time: 1.7071013450622559
 ```
 
-## Conclusion
+## 3. Conclusion
 
 This post already covers the basic implementation of the GPG encryption method. So what is next? You can delve into digital signatures, the algorithms (RSA, DSA, ...), cryptographic concepts, and so on.
 
 So I have achieved my goal, which is writing a summary for GPG encryption. I don't know when the next post of mine will be released, but I am sure that it must be an interesting topic and worth summarizing.
 
 
-## References:
+## 4. References:
 
 - [GPG document](https://www.gnupg.org/gph/en/manual.html)
 - [Python implementation by Paul Mahon](https://www.youtube.com/watch?v=9NiPwvLCDpM&ab_channel=PracticalPythonSolutions-ByPaulMahon)
