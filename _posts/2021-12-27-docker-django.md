@@ -6,13 +6,12 @@ categories: [IT, DevOps,Django]
 tags: [Docker,Django]
 ---
 
-# # Django, PostgreSQL и Docker
+## Django, PostgreSQL и Docker
 
 В этом статье, создадим новый проект Django, используя Docker, PostgreSQL, Gunicorn. Я вообще стараюсь для локальной разработки повторять продуктив и использовать близкие настройки. 
 
 Зачем использовать Docker ? Да потому что тупо лень настраивать систему под проект, с Docker проще работать. Меньше слов, больше дел. 
 Кому лень, вот репозиторий с моим тестовым шаблоном [Скачать](https://github.com/hacker342/docker-django)
-
 
 
 # Ставим Docker
@@ -1000,6 +999,6 @@ docker-compose -f docker-compose.prod.yml exec web python manage.py collectstati
 
 Источники используемые для этой статьи
 
- - https://webdevblog.ru/kak-ispolzovat-django-postgresql-i-docker/
+- https://webdevblog.ru/kak-ispolzovat-django-postgresql-i-docker/
 - [William Vincent](https://wsvincent.com/)  —  [How to use Django, PostgreSQL, and Docker](https://wsvincent.com/django-docker-postgresql/)
 -  [Michael Herman](https://testdriven.io/authors/herman/)  —  [Dockerizing Django with Postgres, Gunicorn, and Nginx](https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/)
