@@ -822,7 +822,7 @@ def image_upload(request):
 ```
 Добавим директорию «templates», в каталог «code/upload», и добавим новый шаблон _upload.html_:
 
- {% block content %}
+ ```{% block content %}
     
       <form action="{% url "upload" %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -835,6 +835,7 @@ def image_upload(request):
       {% endif %}
     
     {% endblock %}
+```
 
 Файл _code/hello_django/urls.py_:
 ```
