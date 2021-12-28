@@ -122,7 +122,7 @@ Let us now derive the algebra of complex numbers, encoded in $$B^{i^\prime}_{\ph
 
 By the way, note that when we say 'complex numbers in arbitrary coordinates', we refer to the _vector_ algebra of $$O \left( 2, \mathbb{R} \right)$$ when it acts on a vector space isomorphic to $$\mathbb{R}^2$$ . As an artefact of dealing with vectorial objects, we cannot trust components in any form, as they are not coordinate-independent.
 
-By contrast, in the _scalar_ treatment of complex numbers, where the basis is a set of scalars, 'vectors' and their components are informationally equivalent, implying invariance of the components themselves.
+In contrast, in the _scalar_ treatment of complex numbers, where the basis is a set of scalars, 'vectors' and their components are informationally equivalent, implying invariance of the components themselves.
 
 ### Strategy
 

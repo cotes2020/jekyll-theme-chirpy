@@ -175,7 +175,7 @@ $$\phi^k B^{i^\prime}_{\phantom{i^\prime} ki} = \Lambda^{i^\prime}_{\phantom{i^\
 
 And the action of the linear map above on a vector $$x^i$$ is,
 
-$$\phi^k B^{i^\prime}_{\phantom{i^\prime} ki} x^k = \Lambda^{i^\prime}_{\phantom{i^\prime} i} x^i = x^{i^\prime}$$
+$$\phi^k B^{i^\prime}_{\phantom{i^\prime} ki} x^i = \Lambda^{i^\prime}_{\phantom{i^\prime} i} x^i = x^{i^\prime}$$
 
 ### Characterization
 

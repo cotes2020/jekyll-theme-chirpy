@@ -1,6 +1,6 @@
 ---
 title: "Algebra Done Tensorially: Part 3.2 (Clifford algebras)"
-description: "A glimpse of Clifford algebras as a whole"
+description: "A glimpse at Clifford algebras as a whole"
 categories: [abstract algebra, representation theory, tensor algebra]
 tags: [Clifford algebras, tensors]
 ---
