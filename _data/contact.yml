@@ -24,10 +24,6 @@
   icon: fab fa-discord
   url: 'https://bit.ly/psi-phi-community'
 -
-  type: reddit
-  icon: fab fa-reddit
-  url: 'https://www.reddit.com/user/Booodaness'
--
   type: online-sequencer
   icon: fas fa-th
   url: 'https://onlinesequencer.net/members/42571'
