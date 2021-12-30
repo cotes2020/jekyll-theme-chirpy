@@ -55,7 +55,6 @@ $(function() {
 
               if ((isAnchor || toFootnoteRef) && isMobileViews) {
                 destOffset -= topbarHeight;
-                console.log(`[smooth] mobile -= topbar height`);
               }
             }
 
