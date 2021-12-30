@@ -4,30 +4,32 @@ layout: default
 
 {% include lang.html %}
 
-<div class="row{% unless layout.tail_includes %} alone{% endunless %}">
+<div class="row">
 
   <!-- core -->
   <div id="core-wrapper" class="col-12 col-lg-11 col-xl-8">
     <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
-    {% if page.dynamic_title or page.collection == 'tabs' %}
-      <h1 class="dynamic-title">
-        {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
-        {{- site.data.locales[lang].tabs[tab_key] | default: page.title -}}
-      </h1>
-      <div class="post-content">
-        {% if page.layout == 'page' %}
-          {% include refactor-content.html content=content %}
-        {% else %}
-          {{ content }}
-        {% endif %}
-      </div>
-    {% else %}
-      {% if page.layout == 'post' %}
+
+    {% capture _content %}
+      {% if layout.refactor or page.layout == 'page' %}
         {% include refactor-content.html content=content %}
       {% else %}
         {{ content }}
       {% endif %}
+    {% endcapture %}
+
+    {% if page.layout == 'page' or page.collection == 'tabs'%}
+      {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
+      <h1 class="dynamic-title">
+        {{ title }}
+      </h1>
+      <div class="post-content">
+        {{ _content }}
+      </div>
+    {% else %}
+      {{ _content }}
     {% endif %}
+
     </div>
   </div> <!-- #core-wrapper -->
 
