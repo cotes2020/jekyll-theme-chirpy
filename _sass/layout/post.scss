@@ -233,9 +233,12 @@ nav[data-toggle=toc] {
 #tail-wrapper {
   min-height: 2rem;
 
+  > div:last-of-type {
+    margin-bottom: 2rem;
+  }
+
   #disqus_thread {
     min-height: 7.5rem;
-    margin-bottom: 2rem;
   }
 
 }

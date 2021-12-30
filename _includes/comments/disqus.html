@@ -1,9 +1,6 @@
 <!--
   The Disqus lazy loading.
 -->
-
-{% if site.disqus.comments and page.comments %}
-
 <div id="disqus_thread" class="pt-2 pb-2">
   <p class="text-center text-muted small">
     Comments powered by <a href="https://disqus.com/">Disqus</a>.
@@ -11,6 +8,7 @@
 </div>
 
 <script type="text/javascript">
+
   var disqus_config = function () {
     this.page.url = '{{ page.url | absolute_url }}';
     this.page.identifier = '{{ page.url }}';
@@ -22,7 +20,7 @@
     if(entries[0].isIntersecting) {
         (function () {
             var d = document, s = d.createElement('script');
-            s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';
+            s.src = 'https://{{ site.comments.disqus.shortname }}.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
         })();
@@ -54,5 +52,3 @@
   }
 
 </script>
-
-{% endif %}
