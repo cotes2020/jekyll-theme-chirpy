@@ -212,7 +212,8 @@ img[data-src] {
 }
 
 #panel-wrapper {
-  .panel-heading { // the headings
+  // the headings
+  .panel-heading {
     @include label(inherit);
   }
 
@@ -282,7 +283,7 @@ img[data-src] {
     &[scroll-focus=true] > p {
       background-color: var(--footnote-target-bg);
       width: fit-content;
-      -webkit-transition: background-color 1.5s ease-in-out; // Safari prior 6.1
+      -webkit-transition: background-color 1.5s ease-in-out; /* Safari prior 6.1 */
       transition: background-color 1.5s ease-in-out;
     }
   }
@@ -294,7 +295,7 @@ img[data-src] {
     @include pl-pr(2px);
 
     border-bottom-style: none !important;
-    -webkit-transition: background-color 1.5s ease-in-out; // Safari prior 6.1
+    -webkit-transition: background-color 1.5s ease-in-out; /* Safari prior 6.1 */
     transition: background-color 1.5s ease-in-out;
   }
 
@@ -318,7 +319,8 @@ img[data-src] {
 
 /* --- Begin of Markdown table style --- */
 
-.table-wrapper { // it will be created by Liquid
+// it will be created by Liquid
+.table-wrapper {
   overflow-x: auto;
   margin-bottom: 1.5rem;
 
@@ -368,7 +370,8 @@ img[data-src] {
       @extend %no-cursor;
     }
 
-    &.popup { // created by `_includes/img-extra.html`
+    // created by `_includes/img-extra.html`
+    &.popup {
       cursor: zoom-in;
 
       > img[data-src]:not(.normal):not(.left):not(.right) {

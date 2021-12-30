@@ -123,7 +123,7 @@ img.preview-img {
     white-space: normal;
   }
 
-} // .post-navigation
+} /* .post-navigation */
 
 @keyframes fade-up {
   from {
@@ -301,13 +301,13 @@ nav[data-toggle=toc] {
       }
     }
 
-  } // .share-icons
+  } /* .share-icons */
 
   .fas.fa-link {
     @include btn-sharing-color(rgb(171, 171, 171));
   }
 
-} // .share-wrapper
+} /* .share-wrapper */
 
 .share-label {
   @include label(inherit, 400, inherit);
@@ -331,7 +331,8 @@ nav[data-toggle=toc] {
   span:last-child {
     font-size: 0.85rem;
   }
-} // .license-wrapper
+
+} /* .license-wrapper */
 
 @media all and (max-width: 576px) {
   .preview-img[data-src] {
