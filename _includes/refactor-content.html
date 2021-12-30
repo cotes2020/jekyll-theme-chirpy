@@ -38,65 +38,100 @@
   %}
 {% endif %}
 
-
 <!-- images -->
 
-{% if _content contains '<img src="' %}
+{% assign IMG_TAG = '<img ' %}
 
-  <!-- add CDN prefix if it exists -->
-
-  {% if site.img_cdn != '' %}
-    {% assign img_path_replacement = '<img src="' | append: site.img_cdn | append: '/' %}
-  {% else %}
-    {% assign img_path_replacement = '<img src="' | append: site.baseurl | append: '/' %}
-  {% endif %}
-
-  {% assign _content = _content | replace: '<img src="/', img_path_replacement %}
-
-  <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-
-  {% assign _content = _content | replace: '<img src="', '<img data-proofer-ignore data-src="' %}
-
-  <!-- add image placehoder to prevent layout reflow -->
-
+{% if _content contains IMG_TAG %}
   {% assign _img_content = nil %}
+  {% assign _img_snippets = _content | split: IMG_TAG %}
 
-  {% assign _images = _content | split: '<img ' %}
-
-  {% for _img in _images %}
+  {% for _img_snippet in _img_snippets %}
     {% if forloop.first %}
-      {% assign _img_content = _img %}
+      {% assign _img_content = _img_snippet %}
       {% continue %}
     {% endif %}
 
     {% assign _width = nil %}
     {% assign _height = nil %}
+    {% assign _src = nil %}
 
-    {% assign _img_converted = _img | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
-    {% assign _attrs = _img_converted | split: '>' | first | split: ' ' %}
+    {% assign _left = _img_snippet | split: '/>' | first %}
+    {% assign _right = _img_snippet | replace: _left, '' %}
+
+    {% assign _left = _left | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
+    {% assign _attrs = _left | split: ' ' %}
 
     {% for _attr in _attrs %}
-      {% capture _key %}{{ _attr | split: '=' | first }}{% endcapture %}
-      {% capture _value %}{{ _attr | split: '=' | last | replace: '"', '' }}{% endcapture %}
+      {% assign _pair = _attr | split: '=' %}
+      {% if _pair.size < 2 %}
+        {% continue %}
+      {% endif %}
+
+      {% capture _key %}{{ _pair | first }}{% endcapture %}
+      {% capture _value %}{{ _pair | last | replace: '"', '' }}{% endcapture %}
 
       {% case _key %}
         {% when 'width' %}
           {% assign _width = _value %}
         {% when 'height' %}
           {% assign _height = _value %}
+        {% when 'src' %}
+          {% assign _src = _value %}
       {% endcase %}
 
-      {% if _width and _height %}
-        {% capture _svg %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{_width}} {{_height}}'%3E%3C/svg%3E{% endcapture %}
-        {% assign _img_content = _img_content | append: '<img src="' | append: _svg | append: '" ' | append: _img_converted %}
+      {% if _width and _height and _src %}
         {% break %}
       {% endif %}
-
     {% endfor %}
 
-    {% unless _width and _height %}
-      {% assign _img_content = _img_content | append: '<img ' | append: _img %}
-    {% endunless %}
+    {% if _src %}
+      {% unless _src contains '://' %}
+
+        <!-- Add CDN URL -->
+        {% if site.img_cdn %}
+          {% assign _src_prefix = site.img_cdn %}
+        {% else %}
+          {% assign _src_prefix = site.baseurl %}
+        {% endif %}
+
+        <!-- Add image path -->
+        {% if page.img_path %}
+          {% assign _path = page.img_path %}
+          {% assign last_char = _path | slice: -1 %}
+
+          {% unless last_char == '/' %}
+            {% assign _path = _path | append: '/' %}
+          {% endunless %}
+
+          {% assign _src_prefix = _src_prefix | append: _path %}
+        {% endif %}
+
+        {% assign _final_src = _src_prefix | append: _src %}
+        {% assign _left = _left | replace: _src, _final_src %}
+
+      {% endunless %}
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      {% assign _left = _left | replace: 'src=', 'data-src=' %}
+
+    {% endif %}
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    {% if _width and _height %}
+      {%- capture _svg -%}
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ _width }} {{ _height }}'%3E%3C/svg%3E"
+      {%- endcapture -%}
+
+      {% assign _left =  _svg | append: ' ' | append: _left %}
+    {% endif %}
+
+    <!-- Bypass the HTML-proofer test -->
+    {% assign _left = _left | append: ' data-proofer-ignore' %}
+
+    {% assign _img_content = _img_content | append: IMG_TAG | append: _left | append: _right %}
 
   {% endfor %}
 

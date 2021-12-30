@@ -206,6 +206,31 @@ The parsing result will automatically add the CDN prefix `https://cdn.com` befor
 ```
 {: .nolineno}
 
+### Image path
+
+When a post contains many images, it will be a time-consuming task to repeatedly define the path of the images. To solve this, we can define this path in the YAML block of the post:
+
+```yml
+---
+img_path: /img/path/
+---
+```
+{: .nolineno }
+
+And then, the image source of Markdown can write the file name directly:
+
+```md
+![The flower](flower.png)
+```
+{: .nolineno }
+
+The output will be:
+
+```html
+<img src="/img/path/flower.png" alt="The flower">
+```
+{: .nolineno }
+
 ## Pinned Posts
 
 You can pin one or more posts to the top of the home page, and the fixed posts are sorted in reverse order according to their release date. Enable by:
