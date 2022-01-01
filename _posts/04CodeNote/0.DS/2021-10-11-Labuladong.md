@@ -28,15 +28,26 @@ toc: true
     - [三、算法刷题指南](#三算法刷题指南)
     - [四、总结几句](#四总结几句)
 - [two pointer](#two-pointer)
-  - [two pointer - 数组](#two-pointer---数组)
+  - [two pointer - Array 数组](#two-pointer---array-数组)
     - [26. Remove Duplicates from Sorted Array 有序数组去重（简单）`快慢指针前后走`](#26-remove-duplicates-from-sorted-array-有序数组去重简单快慢指针前后走)
     - [80. Remove Duplicates from Sorted Array II `nums[i]!=nums[i-2]`](#80-remove-duplicates-from-sorted-array-ii-numsinumsi-2)
     - [FU. Each unique element should appear at most K times](#fu-each-unique-element-should-appear-at-most-k-times)
     - [27. Remove Element 移除元素 （简单）`快慢指针前后走`](#27-remove-element-移除元素-简单快慢指针前后走)
     - [83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`](#83-remove-duplicates-from-sorted-list-有序链表去重-快慢指针前后走)
     - [283. Move Zeroes 移除0 `快慢指针前后走`](#283-move-zeroes-移除0-快慢指针前后走)
+    - [349. Intersection of Two Arrays (Easy)](#349-intersection-of-two-arrays-easy)
+      - [++++++++++ `Hash(num1 had), Hash.remove(num2 has)` BEST](#-hashnum1-had-hashremovenum2-has-best)
+      - [`sorting, compare, get the same`](#sorting-compare-get-the-same)
+    - [1385. Find the Distance Value Between Two Arrays (Easy)](#1385-find-the-distance-value-between-two-arrays-easy)
+      - [brute force](#brute-force)
+      - [Binary Search](#binary-search)
+      - [???](#)
+      - [`sort + sliding window` BEST](#sort--sliding-window-best)
+    - [696. Count Binary Substrings (Easy)](#696-count-binary-substrings-easy)
+      - [Brute Force](#brute-force-1)
   - [two pointer - 链表](#two-pointer---链表)
     - [203. Remove Linked List Elements (Easy)](#203-remove-linked-list-elements-easy)
+      - [++++++++++ recursive solution](#-recursive-solution)
     - [237. Delete Node in a Linked List (Easy)](#237-delete-node-in-a-linked-list-easy)
     - [876. Middle of the Linked List 寻找单链表的中点](#876-middle-of-the-linked-list-寻找单链表的中点)
     - [2095. Delete the Middle Node of a Linked List (Medium)](#2095-delete-the-middle-node-of-a-linked-list-medium)
@@ -46,33 +57,35 @@ toc: true
     - [160. 判断两个单链表是否相交并找出交点](#160-判断两个单链表是否相交并找出交点)
   - [two pointer - palindrome 回文](#two-pointer---palindrome-回文)
     - [2108. Find First Palindromic String in the Array (Easy)](#2108-find-first-palindromic-string-in-the-array-easy)
-      - [2 pointer Check each word](#2-pointer-check-each-word)
-      - [StringBuilder.reverse.equals](#stringbuilderreverseequals)
+      - [++++++++++ 2 pointer Check each word](#-2-pointer-check-each-word)
+      - [++++++++++ StringBuilder.reverse.equals](#-stringbuilderreverseequals)
     - [832. Flipping an Image (Easy) `only same values flip both.`](#832-flipping-an-image-easy-only-same-values-flip-both)
+    - [1332. Remove Palindromic Subsequences (Easy)](#1332-remove-palindromic-subsequences-easy)
+      - [++++++++++ `只有0，1，2 三种答案，aaabbb最多两下消完` Best](#-只有012-三种答案aaabbb最多两下消完-best)
+      - [reverse logic also](#reverse-logic-also)
   - [two pointer - String](#two-pointer---string)
     - [2000. Reverse Prefix of Word (Easy)](#2000-reverse-prefix-of-word-easy)
-      - [`char[]`](#char)
-      - [`StringBuilder`](#stringbuilder)
+      - [++++++++++ `char[]`](#-char)
+      - [++++++++++ `StringBuilder`](#-stringbuilder)
     - [557. Reverse Words in a String III (Easy)](#557-reverse-words-in-a-string-iii-easy)
     - [541. Reverse String II (Easy) `2134 6578`](#541-reverse-string-ii-easy-2134-6578)
     - [942. DI String Match (Easy) `Increase l++; Decrease r--`](#942-di-string-match-easy-increase-l-decrease-r--)
     - [905. Sort Array By Parity (Easy)](#905-sort-array-by-parity-easy)
-      - [`new int[i] = nums[l/r]`](#new-inti--numslr)
-      - [In Place Solution Best](#in-place-solution-best)
+      - [++++++++++ `new int[i] = nums[l/r]`](#-new-inti--numslr)
+      - [++++++++++ In Place Solution Best](#-in-place-solution-best)
     - [1768. Merge Strings Alternately (Easy)](#1768-merge-strings-alternately-easy)
-      - [`for (int i=0; i<Math.max(s1,s2); i++); `](#for-int-i0-imathmaxs1s2-i-)
-      - [substring](#substring)
+      - [++++++++++ `for (int i=0; i<Math.max(s1,s2); i++); `](#-for-int-i0-imathmaxs1s2-i-)
+      - [++++++++++ substring](#-substring)
     - [977. Squares of a Sorted Array (Easy)](#977-squares-of-a-sorted-array-easy)
-      - [Brute Force Approach](#brute-force-approach)
-      - [`Math.abs(nums[l]) > Math.abs(nums[r])` Best](#mathabsnumsl--mathabsnumsr-best)
+      - [++++++++++ Brute Force Approach](#-brute-force-approach)
+      - [++++++++++ `Math.abs(nums[l]) > Math.abs(nums[r])` Best](#-mathabsnumsl--mathabsnumsr-best)
     - [821. Shortest Distance to a Character (Easy)](#821-shortest-distance-to-a-character-easy)
-      - [``Math.min(fromLeft, fromRight)`](#mathminfromleft-fromright)
-      - [`when s.char==c, j=i-1; j=i+1`](#when-scharc-ji-1-ji1)
-      - [`combine 2` BEST](#combine-2-best)
+      - [++++++++++ ``Math.min(fromLeft, fromRight)`](#-mathminfromleft-fromright)
+      - [++++++++++ `when s.char==c, j=i-1; j=i+1`](#-when-scharc-ji-1-ji1)
+      - [++++++++++ `combine 2` BEST](#-combine-2-best)
     - [922. Sort Array By Parity II (Easy)](#922-sort-array-by-parity-ii-easy)
-      - [`new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`](#new-res-numsi20-resoddindex-oddindex-resevenindex-evenindex)
-      - [`for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[od]` BEST](#forint-i0in-i2-should-be-even-if-odd-check-prev-numod-best)
-    - [1332. Remove Palindromic Subsequences (Easy)](#1332-remove-palindromic-subsequences-easy)
+      - [++++++++++ `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`](#-new-res-numsi20-resoddindex-oddindex-resevenindex-evenindex)
+      - [++++++++++ `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[odd]` BEST](#-forint-i0in-i2-should-be-even-if-odd-check-prev-numodd-best)
 - [数组](#数组)
   - [TWOSUM问题](#twosum问题)
     - [1. Two Sum](#1-two-sum)
@@ -92,21 +105,21 @@ toc: true
     - [23. Merge k Sorted Lists 合并 k 个有序链表 Merge k Sorted Lists](#23-merge-k-sorted-lists-合并-k-个有序链表-merge-k-sorted-lists)
   - [递归反转链表](#递归反转链表)
     - [206. Reverse Linked List 递归反转整个链表 `递归+pointer`](#206-reverse-linked-list-递归反转整个链表-递归pointer)
-      - [递归](#递归)
-      - [pointer](#pointer)
+      - [++++++++++ 递归](#-递归)
+      - [++++++++++ 2 pointer](#-2-pointer)
     - [反转链表前 N 个节点](#反转链表前-n-个节点)
     - [92. Reverse Linked List II 反转链表的一部分](#92-reverse-linked-list-ii-反转链表的一部分)
-      - [iterative](#iterative)
-      - [recursive](#recursive)
+      - [++++++++++ iterative](#-iterative)
+      - [++++++++++ recursive](#-recursive)
     - [25. Reverse Nodes in k-Group K个一组反转链表](#25-reverse-nodes-in-k-group-k个一组反转链表)
-      - [`a,b reverse(), a.next=reverseK(b,k)`](#ab-reverse-anextreversekbk)
+      - [++++++++++ `a,b reverse(), a.next=reverseK(b,k)`](#-ab-reverse-anextreversekbk)
     - [143. Reorder List (Medium)](#143-reorder-list-medium)
-      - [`Two pointer, find middle, reverse(), combine(n1,n2)`](#two-pointer-find-middle-reverse-combinen1n2)
-      - [`2 pointer. list.add(ListNode), reorder list`](#2-pointer-listaddlistnode-reorder-list)
+      - [++++++++++ `Two pointer, find middle, reverse(), combine(n1,n2)`](#-two-pointer-find-middle-reverse-combinen1n2)
+      - [++++++++++ `2 pointer. list.add(ListNode), reorder list`](#-2-pointer-listaddlistnode-reorder-list)
     - [1721. Swapping Nodes in a Linked List (Medium)](#1721-swapping-nodes-in-a-linked-list-medium)
     - [24. Swap Nodes in Pairs (Medium)](#24-swap-nodes-in-pairs-medium)
-      - [`2 pointer and swap`](#2-pointer-and-swap)
-      - [`recursive`](#recursive-1)
+      - [++++++++++ `2 pointer and swap`](#-2-pointer-and-swap)
+      - [++++++++++ `recursive`](#-recursive-1)
     - [example](#example)
       - [870 题「优势洗牌」](#870-题优势洗牌)
   - [左右指针](#左右指针)
@@ -321,6 +334,10 @@ while(fast.next!=null) {
 
 ```java
 
+Math.abs(a-b);
+Math.min(a,b);
+Math.max(a,b);
+
 StringBuilder sb = new StringBuilder("");
 sb.append('.');
 sb.insert(pos[i],'Q');
@@ -363,6 +380,10 @@ Stack.pop();
 Stack.peek();
 Stack.empty();
 
+ArrayList<Integer> ans = new ArrayList<>();
+ans.add(num);
+ans.size()
+ans.get(i);
 
 ListNode<Integer> head = new ListNode<>();
 ListNode.
@@ -393,6 +414,12 @@ LinkedList.removeLast();
 
 Set<String> deads = new HashSet<>();
 
+
+TreeSet<Integer> tree = new TreeSet<>();
+tree.add(number);
+Set<Integer> set = tree.subSet(leftValue, rightValue+1);
+
+
 HashMap<Integer, Integer> hm = new HashMap<>();
 hm.containsKey(key);
 hm.get(key);
@@ -400,6 +427,14 @@ hm.put(key, val);
 hm.size();
 hm.putIfAbsent(1, new LinkedHashSet<>());
 hm.getOrDefault(val, 0);
+
+
+HashSet<Integer> set = new HashSet<Integer>();
+set.contains(num);
+set.add(num);
+set.remove(num);
+set.size();
+
 
 LinkedHashSet<Integer> keyList = ;
 LinkedHashSet.iterator().next();
@@ -773,7 +808,7 @@ N 叉树的遍历框架
 
 # two pointer
 
-## two pointer - 数组
+## two pointer - Array 数组
 
 原地修改数组
 
@@ -786,6 +821,9 @@ Do not allocate extra space for another array. You must do this by modifying the
 如何在原地修改数组，避免数据的搬移。
 - 如果不是原地修改的话，直接 new 一个 int[] 数组，把去重之后的元素放进这个新数组中，然后返回这个新数组即可。
 - 原地删除不允许 new 新数组，只能在原数组上操作，然后返回一个长度，这样就可以通过返回的长度和原始数组得到我们去重后的元素有哪些了。
+
+
+---
 
 
 ### 26. Remove Duplicates from Sorted Array 有序数组去重（简单）`快慢指针前后走`
@@ -1290,6 +1328,261 @@ def moveZeroes(nums: List[int]) -> None:
 ---
 
 
+### 349. Intersection of Two Arrays (Easy)
+
+
+[349. Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
+Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
+
+Example 1:
+
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2]
+
+
+
+#### ++++++++++ `Hash(num1 had), Hash.remove(num2 has)` BEST
+
+```java
+// Runtime: 2 ms, faster than 95.44% of Java online submissions for Intersection of Two Arrays.
+// Memory Usage: 38.9 MB, less than 87.06% of Java online submissions for Intersection of Two Arrays.
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        HashSet<Integer> set = new HashSet<Integer>();
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int num:nums1) set.add(num);
+        for(int num:nums2) {
+            if(set.contains(num)){
+                ans.add(num);
+                set.remove(num);
+            }
+        }
+        int[] res = new int[ans.size()];
+        for(int i=0; i<ans.size(); i++){
+            res[i] = ans.get(i);
+        }
+        return res;
+    }
+}
+```
+
+#### `sorting, compare, get the same`
+
+```java
+// Runtime: 2 ms, faster than 95.33% of Java online submissions for Intersection of Two Arrays.
+// Memory Usage: 38.9 MB, less than 86.77% of Java online submissions for Intersection of Two Arrays.
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int pt1 = 0, pt2=0;
+        ArrayList<Integer> ans = new ArrayList<>();
+        while (pt1 < nums1.length && pt2 < nums2.length) {
+            if(nums1[pt1]<nums2[pt2]) pt1 = nextPT(nums1, pt1);
+            else if(nums1[pt1]>nums2[pt2]) pt2 = nextPT(nums2, pt2);
+            else{
+                ans.add(nums1[pt1]);
+                pt1 = nextPT(nums1, pt1);
+                pt2 = nextPT(nums2, pt2);
+            }
+        }
+        int[] res = new int[ans.size()];
+        for(int i=0; i<res.length; i++) {
+            res[i] = ans.get(i);
+        }
+        return res;
+    }
+    public int nextPT(int[] nums, int pt) {
+        int value = nums[pt];
+        while(pt<nums.length && nums[pt] == value) pt++;
+        return pt;
+    }
+}
+```
+
+---
+
+
+### 1385. Find the Distance Value Between Two Arrays (Easy)
+
+[1385. Find the Distance Value Between Two Arrays](https://leetcode.com/problems/find-the-distance-value-between-two-arrays/)
+Given two integer arrays arr1 and arr2, and the integer d, return the distance value between the two arrays.
+
+The distance value is defined as the number of elements arr1[i] such that there is not any element arr2[j] where |arr1[i]-arr2[j]| <= d.
+
+Example 1:
+
+Input: arr1 = [4,5,8], arr2 = [10,9,1,8], d = 2
+Output: 2
+Explanation:
+For arr1[0]=4 we have:
+|4-10|=6 > d=2
+|4-9|=5 > d=2
+|4-1|=3 > d=2
+|4-8|=4 > d=2
+For arr1[1]=5 we have:
+|5-10|=5 > d=2
+|5-9|=4 > d=2
+|5-1|=4 > d=2
+|5-8|=3 > d=2
+For arr1[2]=8 we have:
+|8-10|=2 <= d=2
+|8-9|=1 <= d=2
+|8-1|=7 > d=2
+|8-8|=0 <= d=2
+
+
+#### brute force
+
+```java
+// Runtime: 3 ms, faster than 75.47% of Java online submissions for Find the Distance Value Between Two Arrays.
+// Memory Usage: 38.5 MB, less than 70.69% of Java online submissions for Find the Distance Value Between Two Arrays.
+// O(n^2)
+class Solution {
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+        int count = arr1.length;
+        for(int nums1:arr1){
+            for(int nums2:arr2){
+                if(Math.abs(nums1-nums2)<=d){
+                    count--;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+```
+
+
+#### Binary Search
+
+```java
+// Runtime: 3 ms, faster than 76.94% of Java online submissions for Find the Distance Value Between Two Arrays.
+// Memory Usage: 38.6 MB, less than 56.39% of Java online submissions for Find the Distance Value Between Two Arrays.
+class Solution {
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        int count = 0, closeDis;
+        for(int nums1:arr1) {
+            closeDis = bs(arr2, 0, arr2.length-1 , nums1);
+            if(closeDis>d) count++;
+        }
+        return count;
+    }
+    public int bs(int[] arr2, int lo, int hi , int value) {  
+        while(lo>hi) return Integer.MAX_VALUE;
+        int mid = (lo + hi)/2;
+        int dis=Math.abs(arr2[mid] - value);
+        if(arr2[mid] > value) dis = Math.min(dis, bs(arr2, lo, mid-1 , value));
+        else dis = Math.min(dis, bs(arr2, mid+1, hi , value));
+        return dis;
+    }
+}
+```
+
+#### ??? 
+
+```java
+// O(nlogm)
+class Solution {
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+        int count = 0;
+        TreeSet<Integer> tree = new TreeSet<>();
+        for (int number: arr2) {
+            tree.add(number);
+        }
+        for (int i=0; i<arr1.length; i++) {
+            int leftValue = arr1[i] - d;
+            int rightValue = arr1[i] + d;
+            Set<Integer> set = tree.subSet(leftValue, rightValue+1);
+            if (set.isEmpty())
+                count += 1;
+        }
+        return count;
+    }
+}
+```
+
+#### `sort + sliding window` BEST
+
+```java
+// O(NLogN)
+
+// Runtime: 2 ms, faster than 96.65% of Java online submissions for Find the Distance Value Between Two Arrays.
+// Memory Usage: 38.6 MB, less than 68.97% of Java online submissions for Find the Distance Value Between Two Arrays.
+
+class Solution {
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) { 
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        int count=0, j=0;
+        for(int i=0;i<arr1.length;i++){
+            int min = arr1[i]-d;
+            int max = arr1[i]+d; 
+            while(j<arr2.length && arr2[j]<min) j++;
+            if(outband(arr2, j, min, max)) count++;
+        } 
+        return count;
+    } 
+    public boolean outband(int[] arr2, int j, int min, int max) {  
+        return j==arr2.length || !(min<=arr2[j] && arr2[j]<=max);
+    }
+}
+```
+
+---
+
+### 696. Count Binary Substrings (Easy)
+
+Give a binary string s, return the number of non-empty substrings that have the same number of 0's and 1's, and all the 0's and all the 1's in these substrings are grouped consecutively.
+
+Substrings that occur multiple times are counted the number of times they occur.
+
+Example 1:
+
+Input: s = "00110011"
+Output: 6
+Explanation: There are 6 substrings that have equal number of consecutive 1's and 0's: "0011", "01", "1100", "10", "0011", and "01".
+Notice that some of these substrings repeat and are counted the number of times they occur.
+Also, "00110011" is not a valid substring because all the 0's (and 1's) are not grouped together.
+
+
+the number that we should add to ans is equal to min(zeros, ones), or pre count
+
+#### Brute Force                            
+Check for every substring either they are valid substring or not. if valid increase the count but time complexity :O(n^3)
+
+
+```java
+// Runtime: 21 ms, faster than 7.53% of Java online submissions for Count Binary Substrings.
+// Memory Usage: 46 MB, less than 15.02% of Java online submissions for Count Binary Substrings.
+class Solution {
+    public int countBinarySubstrings(String s) {
+        int res=0, pre=0, cur=1, i=0;
+        while(i<s.length()-1){
+            if(s.charAt(i+1)!=s.charAt(i)){
+                res+=Math.min(pre, cur);
+                pre=cur;
+                cur=1;
+            }
+            else {
+                cur++;
+            }
+            i++;
+        }
+        return res+=Math.min(pre, cur);
+    }
+}
+```
+
+
+
+---
+
+
 
 ## two pointer - 链表
 
@@ -1356,7 +1649,7 @@ class Solution {
 
 
 
-2. recursive solution
+#### ++++++++++ recursive solution
 
 ```java
 public ListNode removeElements(ListNode head, int val) {
@@ -1683,7 +1976,7 @@ Given an array of strings words, return the first palindromic string in the arra
 A string is palindromic if it reads the same forward and backward.
 
 
-#### 2 pointer Check each word
+#### ++++++++++ 2 pointer Check each word
 
 ```java
 // Runtime: 2 ms, faster than 83.75% of Java online submissions for Find First Palindromic String in the Array.
@@ -1720,7 +2013,7 @@ class Solution {
 ```
 
 
-#### StringBuilder.reverse.equals
+#### ++++++++++ StringBuilder.reverse.equals
 
 ```java
 class Solution {
@@ -1792,6 +2085,59 @@ class Solution {
 
 ---
 
+### 1332. Remove Palindromic Subsequences (Easy)
+
+[1332. Remove Palindromic Subsequences](https://leetcode.com/problems/remove-palindromic-subsequences/)
+You are given a string s consisting only of letters 'a' and 'b'. In a single step you can remove one palindromic subsequence from s.
+
+Return the minimum number of steps to make the given string empty.
+
+A string is a subsequence of a given string if it is generated by deleting some characters of a given string without changing its order. Note that a subsequence does not necessarily need to be contiguous.
+
+A string is called palindrome if is one that reads the same backward as well as forward.
+
+#### ++++++++++ `只有0，1，2 三种答案，aaabbb最多两下消完` Best
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Palindromic Subsequences.
+// Memory Usage: 37.1 MB, less than 38.55% of Java online submissions for Remove Palindromic Subsequences.
+class Solution {
+    public int removePalindromeSub(String s) {
+        if(s.length()==0) return 0;
+        int i=0, j=s.length()-1;
+        while(i<j){
+            if(s.charAt(i)!=s.charAt(j)) return 2;
+            i++;
+            j--;
+        }
+        return 1;
+    }
+}
+
+class Solution {
+    public int removePalindromeSub(String s) {
+        if (s.length() == 0) return 0;
+        return isPalindrome(s) ? 1 : 2;
+    }
+	//palindrome check
+    private boolean isPalindrome(String s){
+        int left = 0, right = s.length()-1;
+        while (left < right)
+            if (s.charAt(left++) != s.charAt(right--)) return false;
+        return true;
+    }
+}
+```
+
+
+#### reverse logic also
+
+check if the string is same as the reverse string then return 1 otherwise return 2
+
+
+
+---
+
 ## two pointer - String
 
 ---
@@ -1813,7 +2159,7 @@ Output: "dcbaefd"
 Explanation: The first occurrence of "d" is at index 3.
 Reverse the part of word from 0 to 3 (inclusive), the resulting string is "dcbaefd".
 
-#### `char[]`
+#### ++++++++++ `char[]`
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Prefix of Word.
@@ -1834,7 +2180,7 @@ class Solution {
 ```
 
 
-#### `StringBuilder`
+#### ++++++++++ `StringBuilder`
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Prefix of Word.
@@ -2021,7 +2367,7 @@ Input: nums = [3,1,2,4]
 Output: [2,4,3,1]
 Explanation: The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
 
-#### `new int[i] = nums[l/r]`
+#### ++++++++++ `new int[i] = nums[l/r]`
 
 ```java
 class Solution {
@@ -2056,7 +2402,7 @@ class Solution {
 }
 ```
 
-#### In Place Solution Best
+#### ++++++++++ In Place Solution Best
 
 ```java
 // Runtime: 1 ms, faster than 98.86% of Java online submissions for Sort Array By Parity.
@@ -2097,7 +2443,7 @@ word1:  a   b   c
 word2:    p   q   r
 merged: a p b q c r
 
-#### `for (int i=0; i<Math.max(s1,s2); i++); `
+#### ++++++++++ `for (int i=0; i<Math.max(s1,s2); i++); `
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Merge Strings Alternately.
@@ -2117,7 +2463,7 @@ class Solution {
 ```
 
 
-#### substring
+#### ++++++++++ substring
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Merge Strings Alternately.
@@ -2157,7 +2503,7 @@ Explanation: After squaring, the array becomes [16,1,0,9,100].
 After sorting, it becomes [0,1,9,16,100].
 
 
-#### Brute Force Approach
+#### ++++++++++ Brute Force Approach
 
 Squares of sorted array seems like the easiest problem
 
@@ -2175,7 +2521,7 @@ class Solution {
 }
 ```
 
-#### `Math.abs(nums[l]) > Math.abs(nums[r])` Best
+#### ++++++++++ `Math.abs(nums[l]) > Math.abs(nums[r])` Best
 
 1. can the values in the array be negative.
 2. can square of values can exceed Integer.MAX_VALUE.
@@ -2224,7 +2570,7 @@ For index 4, there is a tie between the 'e' at index 3 and the 'e' at index 5, b
 The closest occurrence of 'e' for index 8 is at index 6, so the distance is abs(8 - 6) = 2.
 
 
-#### ``Math.min(fromLeft, fromRight)`
+#### ++++++++++ ``Math.min(fromLeft, fromRight)`
 
 ```java
 // Time Complexity: Forward loop & Backward Loop : O(N) + O(N) ~ O(N)
@@ -2242,7 +2588,7 @@ class Solution {
                 prev=0;
                 res[i]=0;
             }
-            else res[i] = ++prev; 
+            else res[i] = ++prev;
         }
         // backward
         prev = n;
@@ -2255,7 +2601,7 @@ class Solution {
 }
 ```
 
-#### `when s.char==c, j=i-1; j=i+1`
+#### ++++++++++ `when s.char==c, j=i-1; j=i+1`
 
 ```java
 // Runtime: 1 ms, faster than 96.28% of Java online submissions for Shortest Distance to a Character.
@@ -2289,7 +2635,7 @@ class Solution {
 }
 ```
 
-#### `combine 2` BEST
+#### ++++++++++ `combine 2` BEST
 
 ```java
 // Runtime: 1 ms, faster than 96.28% of Java online submissions for Shortest Distance to a Character.
@@ -2313,7 +2659,7 @@ class Solution {
                     j--;
                 }
             }
-            else res[i]=++prev; 
+            else res[i]=++prev;
         }
         return res;
     }
@@ -2340,7 +2686,7 @@ Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
 
 
 
-#### `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`
+#### ++++++++++ `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`
 
 ```java
 // Runtime: 2 ms, faster than 98.92% of Java online submissions for Sort Array By Parity II.
@@ -2361,17 +2707,17 @@ class Solution {
         }
         return res;
     }
-    
-    public void swap(int[] nums, int a, int b) { 
+
+    public void swap(int[] nums, int a, int b) {
         int temp=nums[a];
         nums[a]=nums[b];
-        nums[b]=temp; 
+        nums[b]=temp;
     }
 }
 ```
 
 
-#### `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[od]` BEST
+#### ++++++++++ `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[odd]` BEST
 
 
 ```java
@@ -2382,56 +2728,22 @@ class Solution {
     public int[] sortArrayByParityII(int[] nums) {
         int oddindex = 1, n=nums.length;
         for(int i=0;i<n; i+=2){
-            if(nums[i]%2!=0){ 
+            if(nums[i]%2!=0){
                 while(nums[oddindex]%2!=0) oddindex+=2;
                 swap(nums, oddindex, i);
             }
         }
         return nums;
     }
-    public void swap(int[] nums, int a, int b) { 
+    public void swap(int[] nums, int a, int b) {
         int temp=nums[a];
         nums[a]=nums[b];
-        nums[b]=temp; 
+        nums[b]=temp;
     }
 }
 ```
 
 ---
-
-### 1332. Remove Palindromic Subsequences (Easy)
-
-[1332. Remove Palindromic Subsequences](https://leetcode.com/problems/remove-palindromic-subsequences/)
-You are given a string s consisting only of letters 'a' and 'b'. In a single step you can remove one palindromic subsequence from s.
-
-Return the minimum number of steps to make the given string empty.
-
-A string is a subsequence of a given string if it is generated by deleting some characters of a given string without changing its order. Note that a subsequence does not necessarily need to be contiguous.
-
-A string is called palindrome if is one that reads the same backward as well as forward.
-
-
-
-```java
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Palindromic Subsequences.
-// Memory Usage: 37.1 MB, less than 38.55% of Java online submissions for Remove Palindromic Subsequences.
-class Solution {
-    public int removePalindromeSub(String s) {
-        if(s.length()==0) return 0;
-        int i=0, j=s.length()-1;
-        while(i<j){
-            if(s.charAt(i)!=s.charAt(j)) return 2;
-            i++;
-            j--;
-        }
-        return 1;
-    }
-}
-```
-
-
----
-
 # 数组
 
 ---
@@ -3247,7 +3559,7 @@ ListNode mergeKLists(ListNode[] lists) {
 - Output: [5,4,3,2,1]
 
 
-#### 递归
+#### ++++++++++ 递归
 
 ```java
 // recursion
@@ -3262,7 +3574,7 @@ ListNode reverseList(ListNode head) {
 }
 ```
 
-#### pointer
+#### ++++++++++ 2 pointer
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
@@ -3327,7 +3639,7 @@ ListNode reverseN(ListNode head, int n) {
 - Output: [1,4,3,2,5]
 
 
-#### iterative
+#### ++++++++++ iterative
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List II.
@@ -3367,7 +3679,7 @@ class Solution {
 ```
 
 
-#### recursive
+#### ++++++++++ recursive
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List II.
@@ -3412,7 +3724,7 @@ ListNode reverseN(ListNode head, int n){
 - Output: [2,1,4,3,5]
 
 
-#### `a,b reverse(), a.next=reverseK(b,k)`
+#### ++++++++++ `a,b reverse(), a.next=reverseK(b,k)`
 
 
 ```java
@@ -3465,7 +3777,7 @@ Reorder the list to be on the following form:
 L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 You may not modify the values in the list's nodes. Only nodes themselves may be changed.
 
-#### `Two pointer, find middle, reverse(), combine(n1,n2)`
+#### ++++++++++ `Two pointer, find middle, reverse(), combine(n1,n2)`
 
 ```java
 // Runtime: 1 ms, faster than 99.86% of Java online submissions for Reorder List.
@@ -3509,7 +3821,7 @@ class Solution {
 }
 ```
 
-#### `2 pointer. list.add(ListNode), reorder list`
+#### ++++++++++ `2 pointer. list.add(ListNode), reorder list`
 
 ```java
 // Runtime: 2 ms, faster than 51.01% of Java online submissions for Reorder List.
@@ -3585,7 +3897,7 @@ Input: head = [1,2,3,4]
 Output: [2,1,4,3]
 
 
-#### `2 pointer and swap`
+#### ++++++++++ `2 pointer and swap`
 
 ```java
 class Solution {
@@ -3609,7 +3921,7 @@ class Solution {
 ```
 
 
-#### `recursive`
+#### ++++++++++ `recursive`
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Swap Nodes in Pairs.
