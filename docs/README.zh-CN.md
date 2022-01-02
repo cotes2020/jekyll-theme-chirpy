@@ -16,9 +16,9 @@
   [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
   [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-  [**线上体验 →**](https://chirpy.cotes.info)
+  [**线上体验 →**](https://cotes2020.github.io/chirpy-demo)
 
-  [![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/commons/devices-mockup.png)](https://chirpy.cotes.info)
+  [![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/commons/devices-mockup.png)](https://cotes2020.github.io/chirpy-demo)
 
 </div>
 
@@ -206,7 +206,7 @@ $ docker run -it --rm \
 
 ## 文档
 
-若想要更多细节以及更佳的阅读体验，请参阅「[线上教程](https://chirpy.cotes.info/categories/tutorial/)」。 与此同时，「[Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki)」也有一份教程的拷贝。请注意，Demo 网站和 Wiki 上的文档都是基于最新的发行版本，而 `master` 分支的功能往往领先于现有文档。
+若想要更多细节以及更佳的阅读体验，请参阅「[线上教程](https://cotes2020.github.io/chirpy-demo/categories/tutorial/)」。 与此同时，「[Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki)」也有一份教程的拷贝。请注意，Demo 网站和 Wiki 上的文档都是基于最新的发行版本，而 `master` 分支的功能往往领先于现有文档。
 
 ## 参与贡献
 

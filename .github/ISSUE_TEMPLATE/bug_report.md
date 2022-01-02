@@ -9,7 +9,7 @@ about: Create a report to help us improve
 
 <!-- Please complete the following list of tasks, and then check it by changing the "[ ]" to "[x]" -->
 
-- [ ] I have read the [tutorials](https://chirpy.cotes.info/categories/tutorial/) and know the correct effect of the functional design.
+- [ ] I have read the [tutorials](https://cotes2020.github.io/chirpy-demo/categories/tutorial/) and know the correct effect of the functional design.
 - [ ] There are no similar reports on [existing issues](https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue) (including closed ones).
 - [ ] I found the bug on the latest code of the `master` branch.
 
