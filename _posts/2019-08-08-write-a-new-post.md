@@ -114,7 +114,7 @@ image:
 
 Except for `alt`, all other options are necessary, especially the `width` and `height`, which are related to user experience and web page loading performance. Later section ["Image size"](#image-size) will also mention this.
 
-Starting from _Chirpy v4.4.0_, the attributes `height` and `width` support abbreviations: `height` → `h`, `width` → `w`.
+Starting from _Chirpy v5.0.0_, the attributes `height` and `width` support abbreviations: `height` → `h`, `width` → `w`.
 
 
 ### Image caption
@@ -136,7 +136,7 @@ In order to prevent the page content layout from shifting when the image is load
 ```
 {: .nolineno}
 
-Starting from _Chirpy v4.4.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
+Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
 
 ```markdown
 ![Desktop View](/assets/img/sample/mockup.png){: w="700" h="400" }

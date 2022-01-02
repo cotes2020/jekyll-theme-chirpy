@@ -18,7 +18,7 @@
 
   [**线上体验 →**](https://cotes2020.github.io/chirpy-demo)
 
-  [![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/commons/devices-mockup.png)](https://cotes2020.github.io/chirpy-demo)
+  [![Devices Mockup](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@f4e0354b674f65a53b8917f0f786ed2956898cc1/commons/devices-mockup.png)](https://cotes2020.github.io/chirpy-demo)
 
 </div>
 
@@ -157,7 +157,7 @@ $ docker run -it --rm \
 
 2. 回到 GitHub 上的仓库，选择标签 _Settings_ → 点击左侧导航栏的 _Pages_ → _GitHub Pages_ 选择分支 `gh-pages` 的 `/(root)` 作为「[发布源][pages-src]」:
 
-    ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@0a003683c0c3ca549d12c309f9b3e03ea20981e5/posts/20190809/gh-pages-sources.png)
+    ![gh-pages-sources](https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images@f4e0354b674f65a53b8917f0f786ed2956898cc1/posts/20190809/gh-pages-sources.png)
 
 3. 按照 GitHub 指示的地址去访问您的网站。
 
