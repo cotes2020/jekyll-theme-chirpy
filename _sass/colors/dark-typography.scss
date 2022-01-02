@@ -86,8 +86,8 @@
   --timeline-color: rgb(63, 65, 68);
   --timeline-year-dot-color: var(--timeline-color);
 
-  .post-content img {
-    filter: brightness(90%);
+  .post img[data-src] {
+    filter: brightness(95%);
   }
 
   hr {
