@@ -32,16 +32,19 @@ tags: [TAG]     # TAG names should always be lowercase
 
 ### Timezone of Date
 
-In order to accurately record the release date of a post, you should not only set up the `timezone` of `_config.yml` but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
+In order to accurately record the release date of a post, you should not only set up the `timezone` of _\_config.yml_ but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
 
 ### Categories and Tags
 
 The `categories` of each post are designed to contain up to two elements, and the number of elements in `tags` can be zero to infinity. For instance:
 
 ```yaml
+---
 categories: [Animal, Insect]
 tags: [bee]
+---
 ```
+
 ### Author Information
 
 The author information of the post usually does not need to be filled in the _Front Matter_ , they will be obtained from variables `social.name` and the first entry of `social.links` of the configuration file by default. But you can also override it as follows:
@@ -56,7 +59,7 @@ author:
 
 ## Table of Contents
 
-By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to `_config.yml` and set the value of variable `toc` to `false`. If you want to turn off TOC for a specific post, add the following to the post's [Front Matter](https://jekyllrb.com/docs/front-matter/):
+By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to _\_config.yml_ and set the value of variable `toc` to `false`. If you want to turn off TOC for a specific post, add the following to the post's [Front Matter](https://jekyllrb.com/docs/front-matter/):
 
 ```yaml
 ---
@@ -66,7 +69,9 @@ toc: false
 
 ## Comments
 
-Similar to TOC, the [Disqus](https://disqus.com/) comments are loaded by default in each post, and the global switch is defined by variable `comments` in file `_config.yml` . If you want to close the comment for a specific post, add the following to the **Front Matter** of the post:
+The global switch of comments is defined by variable `comments.active` in the file _\_config.yml_. After selecting a comment system for this variable, comments will be turned on for all posts.
+
+If you want to close the comment for a specific post, add the following to the **Front Matter** of the post:
 
 ```yaml
 ---
@@ -98,26 +103,7 @@ Then you can use it like other markdown languages: surround the graph code with 
 
 ## Images
 
-### Preview image
-
-If you want to add an image to the top of the post contents, specify the attribute `src`, `width`, `height`, and `alt` for the image:
-
-```yaml
----
-image:
-  src: /path/to/image/file
-  width: 1000   # in pixels
-  height: 400   # in pixels
-  alt: image alternative text
----
-```
-
-Except for `alt`, all other options are necessary, especially the `width` and `height`, which are related to user experience and web page loading performance. Later section ["Image size"](#image-size) will also mention this.
-
-Starting from _Chirpy v5.0.0_, the attributes `height` and `width` support abbreviations: `height` → `h`, `width` → `w`.
-
-
-### Image caption
+### Caption
 
 Add italics to the next line of an image，then it will become the caption and appear at the bottom of the image:
 
@@ -127,7 +113,7 @@ _Image Caption_
 ```
 {: .nolineno}
 
-### Image size
+### Size
 
 In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image:
 
@@ -143,7 +129,7 @@ Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`heig
 ```
 {: .nolineno}
 
-### Image position
+### Position
 
 By default, the image is centered, but you can specify the position by using one of the classes `normal`, `left`, and `right`. For example:
 
@@ -172,7 +158,7 @@ By default, the image is centered, but you can specify the position by using one
 
 > **Limitation**: Once the position of the image is specified, the image caption should not be added.
 
-### Image shadow
+### Shadow
 
 The screenshots of the program window can be considered to show the shadow effect, and the shadow will be visible in the `light` mode:
 
@@ -183,7 +169,7 @@ The screenshots of the program window can be considered to show the shadow effec
 
 ### CDN URL
 
-If you host the images on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable `img_cdn` of `_config.yml` file:
+If you host the images on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable `img_cdn` of _\_config.yml_ file:
 
 ```yaml
 img_cdn: https://cdn.com
@@ -206,7 +192,7 @@ The parsing result will automatically add the CDN prefix `https://cdn.com` befor
 ```
 {: .nolineno}
 
-### Image path
+### Image Path
 
 When a post contains many images, it will be a time-consuming task to repeatedly define the path of the images. To solve this, we can define this path in the YAML block of the post:
 
@@ -230,6 +216,25 @@ The output will be:
 <img src="/img/path/flower.png" alt="The flower">
 ```
 {: .nolineno }
+
+
+### Preview Image
+
+If you want to add an image to the top of the post contents, specify the attribute `src`, `width`, `height`, and `alt` for the image:
+
+```yaml
+---
+image:
+  src: /path/to/image/file
+  width: 1000   # in pixels
+  height: 400   # in pixels
+  alt: image alternative text
+---
+```
+
+Except for `alt`, all other options are necessary, especially the `width` and `height`, which are related to user experience and web page loading performance. The above section "[Size](#size)" also mentions this.
+
+Starting from _Chirpy v5.0.0_, the attributes `height` and `width` can be abbreviated: `height` → `h`, `width` → `w`. In addition, the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the  attribute `src` only needs the image file name.
 
 ## Pinned Posts
 
