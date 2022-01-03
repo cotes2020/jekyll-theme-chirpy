@@ -129,7 +129,7 @@
     {% endif %}
 
     <!-- Bypass the HTML-proofer test -->
-    {% assign _left = _left | append: ' data-proofer-ignore' %}
+    {% assign _left = _left | append: data-proofer-ignore %}
 
     {% assign _img_content = _img_content | append: IMG_TAG | append: _left | append: _right %}
 
