@@ -1,39 +1,64 @@
 ---
 name: Bug Report
 about: Create a report to help us improve
-labels: bug
 ---
 
-<!-- Please make sure you have read the README or Wiki, and your question does not appear in other existing issues (including closed ones). Thanks for your cooperation! Now let's start it. -->
+<!-- NOTE: Please maintain all sections, otherwise the issue will be automatically closed :) -->
 
-**Describe the bug**
+## Checklist
+
+<!-- Please complete the following list of tasks, and then check it by changing the "[ ]" to "[x]" -->
+
+- [ ] I have read the [tutorials](https://cotes2020.github.io/chirpy-demo/categories/tutorial/) and know the correct effect of the functional design.
+- [ ] There are no similar reports on [existing issues](https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue) (including closed ones).
+- [ ] I found the bug on the latest code of the `master` branch.
+
+## Describe the bug
+
 <!-- A clear and concise description of what the bug is. -->
 
-**To Reproduce**
-<!--
+### To Reproduce
+
 Steps to reproduce the behavior:
+<!--
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 -->
 
-**Expected behavior**
+### Expected behavior
+
 <!-- A clear and concise description of what you expected to happen. -->
 
-**Screenshots**
+### Screenshots
+
 <!-- If applicable, add screenshots to help explain your problem. -->
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+### Software
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+<!-- Please complete the following information -->
+- Ruby version: <!-- by running: `ruby -v` -->
+- Gem version: <!-- by running: `gem -v`-->
+- Bundler version: <!-- by running: `bundle -v`-->
+- Jekyll version: <!-- by running: `bundle list | grep " jekyll "` -->
+- Theme version: <!-- by running: `gem list | grep jekyll-theme-chirpy` -->
 
-**Additional context**
+### Desktop
+
+<!-- If necessary, uncomment and fill in the following list:
+- OS: [e.g. macOS 10.15.6]
+- Browser: [e.g. Chrome 85.0.4183.83 (64-bit)]
+-->
+
+### Smartphone
+
+<!-- If necessary, uncomment and fill in the following list:
+- Device: [e.g. iPhone 6]
+- OS: [e.g. iOS 13.6.1]
+- Browser: [e.g. Chrome 22]
+-->
+
+### Additional context
+
 <!-- Add any other context about the problem here. -->

@@ -1,0 +1,81 @@
+/*
+ * The syntax light mode typography colors
+ */
+
+@mixin light-scheme {
+  /* Framework color */
+  --body-bg: #fafafa;
+  --mask-bg: #c1c3c5;
+  --main-wrapper-bg: white;
+  --main-border-color: #f3f3f3;
+
+  /* Common color */
+  --text-color: #34343c;
+  --text-muted-color: gray;
+  --heading-color: black;
+  --blockquote-border-color: #eee;
+  --blockquote-text-color: #9a9a9a;
+  --link-color: #2a408e;
+  --link-underline-color: #dee2e6;
+  --button-bg: #fff;
+  --btn-border-color: #e9ecef;
+  --btn-backtotop-color: #686868;
+  --btn-backtotop-border-color: #f1f1f1;
+  --btn-box-shadow: #eaeaea;
+  --checkbox-color: #c5c5c5;
+  --checkbox-checked-color: #07a8f7;
+
+  /* Sidebar */
+  --sidebar-bg: #eeeeee;
+  --sidebar-muted-color: #a2a19f;
+  --sidebar-active-color: #424242;
+  --nav-cursor-color: #757575;
+  --sidebar-btn-bg: white;
+
+  /* Topbar */
+  --topbar-text-color: rgb(78, 78, 78);
+  --topbar-wrapper-bg: white;
+  --search-wrapper-bg: rgb(245 245 245 / 50%);
+  --search-wrapper-border-color: rgb(245 245 245);
+  --search-tag-bg: #f8f9fa;
+  --search-icon-color: #c2c6cc;
+  --input-focus-border-color: var(--btn-border-color);
+
+  /* Home page */
+  --post-list-text-color: dimgray;
+  --btn-patinator-text-color: #555555;
+  --btn-paginator-hover-color: var(--sidebar-bg);
+  --btn-paginator-border-color: var(--sidebar-bg);
+  --btn-text-color: #676666;
+  --pin-bg: #f5f5f5;
+  --pin-color: #999fa4;
+
+  /* Posts */
+  --btn-share-hover-color: var(--link-color);
+  --card-border-color: #f1f1f1;
+  --card-box-shadow: rgba(234, 234, 234, 0.7686274509803922);
+  --label-color: #616161;
+  --relate-post-date: rgba(30, 55, 70, 0.4);
+  --footnote-target-bg: lightcyan;
+  --tag-bg: rgba(0, 0, 0, 0.075);
+  --tag-border: #dee2e6;
+  --tag-shadow: var(--btn-border-color);
+  --tag-hover: rgb(222, 226, 230);
+  --tb-odd-bg: #fbfcfd;
+  --tb-border-color: #eaeaea;
+  --dash-color: silver;
+  --preview-img-bg: radial-gradient(circle, rgb(255 255 255) 0%, rgb(249 249 249) 100%);
+  --kbd-wrap-color: #bdbdbd;
+  --kbd-text-color: var(--text-color);
+  --kbd-bg-color: white;
+
+  /* Categories */
+  --categories-hover-bg: var(--btn-border-color);
+  --categories-icon-hover-color: darkslategray;
+
+  /* Archive */
+  --timeline-color: rgba(0, 0, 0, 0.075);
+  --timeline-node-bg: #c2c6cc;
+  --timeline-year-dot-color: #ffffff;
+
+} // light-scheme

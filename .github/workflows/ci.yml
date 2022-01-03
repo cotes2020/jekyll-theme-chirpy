@@ -1,14 +1,21 @@
-name: build
+name: 'Continuous Integration'
 on:
   push:
+    branches-ignore:
+      - 'production'
+    tags-ignore:
+      - '*'
     paths-ignore:
-    - 'docs/**'
-    - 'README.md'
-    - 'LICENSE'
-    - '.travis.yml'
+      - '.github/**'
+      - '!.github/workflows/ci.yml'
+      - '.travis.yml'
+      - '.gitignore'
+      - 'docs/**'
+      - 'README.md'
+      - 'LICENSE'
   pull_request:
     paths:
-    - "**"
+      - '**'
 
 jobs:
   ci:
@@ -18,67 +25,16 @@ jobs:
         os: [ubuntu-latest, macos-latest]
 
     steps:
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.6.x'
-
-      - uses: actions/setup-python@v1
-        with:
-          python-version: '3.7.x'
-
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Bundle Caching
-        id: bundle-cache
-        uses: actions/cache@v1
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
+          fetch-depth: 0  # for posts's lastmod
 
-      - id: get-pip-cache-path
-        run: |
-          echo "::set-output name=path::`pip show pip | grep "Location" | awk '{print $2}'`"
-
-      - name: Pip caching
-        id: pip-cache
-        uses: actions/cache@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          path: ${{ steps.get-pip-cache-path.outputs.path }}
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install gnu-coreutils for macOS
-        if: runner.os == 'macOS'
-        run: |
-          brew install coreutils
-
-      - name: Bundle config
-        run: |
-          bundle config path vendor/bundle
-
-      - name: Bundle Install
-        if: steps.bundle-cache.outputs.cache-hit != 'true'
-        run: |
-          bundle install
-
-      - name: Bundle Install locally
-        if: steps.bundle-cache.outputs.cache-hit == 'true'
-        run: |
-          bundle install --local
-
-      - name: Pip installing
-        if: steps.pip-cache.outputs.cache-hit != 'true'
-        run: |
-          pip install -r _scripts/py/requirements.txt
-
-      - name: Build Site
-        run: |
-          bash tools/build.sh
+          ruby-version: 2.7
+          bundler-cache: true
 
       - name: Test Site
-        run: |
-          bash tools/test.sh
+        run: bash tools/deploy.sh --dry-run

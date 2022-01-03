@@ -1,0 +1,148 @@
+/*
+ * The main dark mode styles
+ */
+
+@mixin dark-scheme {
+  /* Framework color */
+  --body-bg: var(--main-wrapper-bg);
+  --mask-bg: rgb(68, 69, 70);
+  --main-wrapper-bg: rgb(27, 27, 30);
+  --main-border-color: rgb(44, 45, 45);
+
+  /* Common color */
+  --text-color: rgb(175, 176, 177);
+  --text-muted-color: rgb(107, 116, 124);
+  --heading-color: #cccccc;
+  --blockquote-border-color: rgb(66, 66, 66);
+  --blockquote-text-color: rgb(117, 117, 117);
+  --link-color: rgb(138, 180, 248);
+  --link-underline-color: rgb(82, 108, 150);
+  --button-bg: rgb(39, 40, 43);
+  --btn-border-color: rgb(63, 65, 68);
+  --btn-backtotop-color: var(--text-color);
+  --btn-backtotop-border-color: var(--btn-border-color);
+  --btn-box-shadow: var(--main-wrapper-bg);
+  --card-header-bg: rgb(51, 50, 50);
+  --label-color: rgb(108, 117, 125);
+  --checkbox-color: rgb(118 120 121);
+  --checkbox-checked-color: var(--link-color);
+
+  /* Sidebar */
+  --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
+  --sidebar-muted-color: #6d6c6b;
+  --sidebar-active-color: rgb(255 255 255 / 80%);
+  --nav-cursor-color: rgb(183, 182, 182);
+  --sidebar-btn-bg: rgb(117 116 116 / 20%);
+
+  /* Topbar */
+  --topbar-text-color: var(--text-color);
+  --topbar-wrapper-bg: rgb(39, 40, 43);
+  --search-wrapper-bg: rgb(34, 34, 39);
+  --search-wrapper-border-color: rgb(34, 34, 39);
+  --search-icon-color: rgb(100, 102, 105);
+  --input-focus-border-color: rgb(112, 114, 115);
+
+  /* Home page */
+  --post-list-text-color: rgb(175, 176, 177);
+  --btn-patinator-text-color: var(--text-color);
+  --btn-paginator-hover-color: rgb(64, 65, 66);
+  --btn-paginator-border-color: var(--btn-border-color);
+  --btn-text-color: var(--text-color);
+  --pin-bg: rgb(34 35 37);
+  --pin-color: inherit;
+
+  /* Posts */
+  --toc-highlight: rgb(116, 178, 243);
+  --tag-bg: rgb(41, 40, 40);
+  --tag-hover: rgb(43, 56, 62);
+  --tb-odd-bg: rgba(42, 47, 53, 0.52); /* odd rows of the posts' table */
+  --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
+  --tb-border-color: var(--tb-odd-bg);
+  --footnote-target-bg: rgb(63, 81, 181);
+  --btn-share-color: #6c757d;
+  --btn-share-hover-color: #bfc1ca;
+  --relate-post-date: var(--text-muted-color);
+  --card-bg: rgb(39, 40, 43);
+  --card-border-color: rgb(53, 53, 60);
+  --card-box-shadow: var(--main-wrapper-bg);
+  --preview-img-bg: radial-gradient(circle, rgb(22 22 24) 0%, rgb(32 32 32) 100%);
+  --kbd-wrap-color: #6a6a6a;
+  --kbd-text-color: #d3d3d3;
+  --kbd-bg-color: #242424;
+
+  /* tags */
+  --tag-border: rgb(59, 79, 88);
+  --tag-shadow: rgb(32, 33, 33);
+  --search-tag-bg: var(--tag-bg);
+  --dash-color: rgb(63, 65, 68);
+
+  /* categories */
+  --categories-border: rgb(64, 66, 69);
+  --categories-hover-bg: rgb(73, 75, 76);
+  --categories-icon-hover-color: white;
+
+  /* archives */
+  --timeline-node-bg: rgb(150, 152, 156);
+  --timeline-color: rgb(63, 65, 68);
+  --timeline-year-dot-color: var(--timeline-color);
+
+  .post img[data-src] {
+    filter: brightness(95%);
+  }
+
+  hr {
+    border-color: var(--main-border-color);
+  }
+
+  /* posts' toc, override BS */
+  nav[data-toggle=toc] .nav-link.active,
+  nav[data-toggle=toc] .nav-link.active:focus,
+  nav[data-toggle=toc] .nav-link.active:hover,
+  nav[data-toggle=toc] .nav > li > a:focus,
+  nav[data-toggle=toc] .nav > li > a:hover {
+    color: var(--toc-highlight) !important;
+    border-left-color: var(--toc-highlight) !important;
+  }
+
+  /* categories */
+  .categories.card,
+  .list-group-item {
+    background-color: var(--card-bg);
+  }
+
+  .categories {
+    .card-header {
+      background-color: var(--card-header-bg);
+    }
+
+    .list-group-item {
+      border-left: none;
+      border-right: none;
+      padding-left: 2rem;
+      border-color: var(--categories-border);
+
+      &:last-child {
+        border-bottom-color: var(--card-bg);
+      }
+    }
+  }
+
+  #archives li:nth-child(odd) {
+    background-image:
+      linear-gradient(
+        to left,
+        rgb(26, 26, 30),
+        rgb(39, 39, 45),
+        rgb(39, 39, 45),
+        rgb(39, 39, 45),
+        rgb(26, 26, 30)
+      );
+  }
+
+  color-scheme: dark;
+
+  #disqus_thread {
+    color-scheme: none;
+  }
+
+} // dark-scheme

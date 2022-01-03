@@ -1,0 +1,91 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Post
+  category: Category
+  tag: Tag
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Home
+  categories: Categories
+  tags: Tags
+  archives: Archives
+  about: About
+
+# the text displayed in the search bar & search results
+search:
+  hint: search
+  cancel: Cancel
+  no_results: Oops! No result founds.
+
+panel:
+  lastmod: Recent Update
+  trending_tags: Trending Tags
+  toc: Contents
+
+#  The liquid date format › http://strftime.net/
+date_format:
+  tooltip: '%a, %b %e, %Y, %l:%M %p %z'
+  post:
+    long: '%b %e, %Y'
+    short: '%b %e'
+    archive_month: '%b'
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: This post is licensed under :LICENSE_NAME by the author.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Some rights reserved.
+  verbose: >-
+    Except where otherwise noted, the blog posts on this site are licensed
+    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+
+meta: Powered by :PLATFORM with :THEME theme.
+
+not_found:
+  statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
+  hint_template: :HEAD_BAK to try finding it again, or search for it on the :ARCHIVES_PAGE.
+  head_back: Head back Home
+  archives_page: Archives page
+
+# ----- Posts related labels -----
+
+post:
+  written_by: By
+  posted: Posted
+  updated: Updated
+  timeago:
+    day: days ago
+    hour: hours ago
+    minute: minutes ago
+    just_now: just now
+  words: words
+  pageview_measure: views
+  read_time:
+    unit: min
+    prompt: read
+  relate_posts: Further Reading
+  share: Share
+  button:
+    next: Newer
+    previous: Older
+    copy_code:
+      succeed: Copied!
+    share_link:
+      title: Copy link
+      succeed: Link copied successfully!
+  # pinned prompt of posts list on homepage
+  pin_prompt: Pinned
+
+# categories page
+categories:
+  category_measure: categories
+  post_measure: posts

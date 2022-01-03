@@ -1,48 +1,100 @@
 ---
 layout: page
 # The Home page layout
-# v2.0
-# https://github.com/cotes2020/jekyll-theme-chirpy
-# © 2017-2019 Cotes Chung
-# MIT Licensed
 ---
 
+{% include lang.html %}
+
+{% assign pinned = site.posts | where: "pin", "true" %}
+{% assign default = site.posts | where_exp: "item", "item.pin != true" %}
+
+{% assign posts = "" | split: "" %}
+
+<!-- Get pinned posts -->
+
+{% assign offset = paginator.page | minus: 1 | times: paginator.per_page %}
+{% assign pinned_num = pinned.size | minus: offset %}
+
+{% if pinned_num > 0 %}
+  {% for i in (offset..pinned.size) limit: pinned_num %}
+    {% assign posts = posts | push: pinned[i] %}
+  {% endfor %}
+{% else %}
+  {% assign pinned_num = 0 %}
+{% endif %}
 
 
-<div align="center">
-  <p align="center">
-  <img src="{{site.baseurl}}/assets/img/imagens/capa.png"/>
-  </p>
-</div>
+<!-- Get default posts -->
 
-<h1>Cookbook de Visão Computacional para Iniciantes</h1>
-  
-<p>
-  Neste cookbook você vai encontrar projetos rápidos elaborados para te introduzir ao mundo da Visão Computacional (ou até mesmo para refrescar sua memória sobre alguns temas).
-</p>
+{% assign default_beg = offset | minus: pinned.size %}
 
-<h2>Lista de Tópicos</h2>
+{% if default_beg < 0 %}
+  {% assign default_beg = 0 %}
+{% endif %}
 
-<ul>
-  <li> <a href="{% post_url 2020-12-04-cap1 %}">Capítulo 1: Detecção de Bordas</a> </li>
-  
-  <li><a href="{% post_url 2020-12-04-cap2 %}">Capítulo 2: Operações Morfológicas - Erosão e Dilatação</a></li>
+{% assign default_num = paginator.posts | size | minus: pinned_num  %}
+{% assign default_end = default_beg | plus: default_num | minus: 1 %}
 
-  <li><a href="{% post_url 2020-12-04-cap3 %}">Capítulo 3: Filtro de densidade usando Machine Learning e Clusterização</a></li>
+{% if default_num > 0 %}
+  {% for i in (default_beg..default_end) %}
+    {% assign posts = posts | push: default[i] %}
+  {% endfor %}
+{% endif %}
 
-  <li><a href="{% post_url 2020-12-04-cap4 %}">Capítulo 4: Detecção de pontos de interesse</a></li>
+<div id="post-list">
 
-  <li><a href="{% post_url 2020-12-04-cap5 %}">Capítulo 5: Detecção de objetos com haarcascade</a></li>
+{% for post in posts %}
 
-  <li><a href="{% post_url 2020-12-04-cap6 %}">Capítulo 6: Detector de faces</a></li>
-  
-</ul>
+  <div class="post-preview">
+    <h1>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h1>
 
+    <div class="post-content">
+      <p>
+        {% include no-linenos.html content=post.content %}
+        {{ content | markdownify | strip_html | truncate: 200 | escape }}
+      </p>
+    </div>
 
-<h2>O que eu vou encontrar em cada capítulo?</h2>
+    <div class="post-meta text-muted d-flex">
 
-<p>breve explicação teórica sobre o assunto referente ao capítulo ao mesmo tempo que você executa um pequeno projeto escrito na forma de passo a passo.</p>
+      <div class="mr-auto">
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        {% include timeago.html date=post.date tooltip=true %}
 
-<h2>Eu preciso ler os capítulos em ordem?</h2>
+        <!-- time to read -->
+        <i class="far fa-clock fa-fw"></i>
+        {% include read-time.html content=post.content %}
 
-<p>Absolutamente não! Você pode ler e fazer o projeto que for mais interessante para você.</p>
+        <!-- categories -->
+        {% if post.categories.size > 0 %}
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          {% for category in post.categories %}
+            {{ category }}
+            {%- unless forloop.last -%},{%- endunless -%}
+          {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+
+      {% if post.pin %}
+      <div class="pin">
+        <i class="fas fa-thumbtack fa-fw"></i>
+        <span>{{ site.data.locales[lang].post.pin_prompt }}</span>
+      </div>
+      {% endif %}
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+{% endfor %}
+
+</div> <!-- #post-list -->
+
+{% if paginator.total_pages > 0 %}
+  {% include post-paginator.html %}
+{% endif %}

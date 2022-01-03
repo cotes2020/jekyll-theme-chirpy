@@ -1,85 +1,93 @@
 <!--
   The Side Bar
-  v2.0
-  https://github.com/cotes2020/jekyll-theme-chirpy
-  © 2017-2019 Cotes Chung
-  MIT License
 -->
 
-<div id="nav-wrapper">
-
-  <div id="profile-wrapper" class="d-flex flex-column">
-    <div id="avatar" class="d-flex justify-content-center">
-      <a href="{{ site.baseurl }}/" alt="avatar">
-        {% assign avatar_url = site.avatar %}
-        {% capture start %}{{ site.avatar | slice: 0 }}{% endcapture %}
-        {% if start == '/' %}
-          {% assign avatar_url = avatar_url | prepend: site.baseurl %}
+<div id="sidebar" class="d-flex flex-column align-items-end" lang="{{lang}}">
+  <div class="profile-wrapper text-center">
+    <div id="avatar">
+      <a href="{{ '/' | relative_url }}" alt="avatar" class="mx-auto">
+        {% if site.avatar != '' and site.avatar %}
+          {% capture avatar_url %}
+            {%- if site.avatar contains '://' -%}
+              {{ site.avatar }}
+            {%- elsif site.img_cdn != '' and site.img_cdn -%}
+              {{ site.avatar | prepend: site.img_cdn }}
+            {%- else -%}
+              {{ site.avatar | relative_url }}
+            {%- endif -%}
+          {% endcapture %}
+          <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
         {% endif %}
-        <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
       </a>
     </div>
 
-    <div class="profile-text mt-3">
-      <div class="site-title">
-        <a href="{{ '/' | relative_url }}">{{- site.title -}}</a>
-      </div>
-      <div class="site-subtitle font-italic">{{- site.tagline -}}</div>
+    <div class="site-title mt-3">
+      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </div>
-  </div><!-- #profile-wrapper -->
+    <div class="site-subtitle font-italic">{{ site.tagline }}</div>
 
-  <ul class="nav flex-column">
+  </div><!-- .profile-wrapper -->
+
+  <ul class="w-100">
+
     <!-- home -->
-    <li class="nav-item d-flex justify-content-center {% if page.layout == 'home' %}active{% endif %}">
-      <a href="{{ '/' | relative_url }}" class="nav-link d-flex justify-content-center align-items-center w-100">
+    <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
+      <a href="{{ '/' | relative_url }}" class="nav-link">
         <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
-        <span>{{ "HOME" }}</span>
+        <span>{{ site.data.locales[lang].tabs.home | upcase }}</span>
       </a>
     </li>
     <!-- the real tabs -->
     {% for tab in site.tabs %}
-    <li class="nav-item d-flex justify-content-center {% if tab.url == page.url %}active{% endif %}">
-      <a href="{{ tab.url | relative_url }}" class="nav-link d-flex justify-content-center align-items-center w-100">
+    <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+      <a href="{{ tab.url | relative_url }}" class="nav-link">
         <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
-        <span>{{ tab.title | upcase }}</span>
+        {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+
+        <span>{{ site.data.locales[lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
       </a>
     </li> <!-- .nav-item -->
     {% endfor %}
 
   </ul> <!-- ul.nav.flex-column -->
 
-</div><!-- #nav-wrapper -->
+  <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
 
-<div class="sidebar-bottom d-flex flex-wrap justify-content-around mt-4">
+    {% unless site.theme_mode %}
+      <button class="mode-toggle btn" aria-label="Switch Mode">
+        <i class="fas fa-adjust"></i>
+      </button>
 
-  {% if site.theme_mode == "dual" %}
-  <span id="mode-toggle-wrapper">
-    {% include mode-toggle.html %}
-  </span>
-  <span class="icon-border"></span>
-  {% endif %}
+      {% if site.data.contact.size > 0 %}
+        <span class="icon-border"></span>
+      {% endif %}
+    {% endunless %}
 
-  {% for entry in site.data.contact %}
-    {% capture url %}
-      {%- if entry.type == 'github' -%}
-        https://github.com/{{ site.github.username }}
-      {%- elsif entry.type == 'twitter' -%}
-        https://twitter.com/{{ site.twitter.username }}
-      {%- elsif entry.type == 'email' -%}
-        {% assign email = site.social.email | split: '@' %}
-        javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
-      {%- elsif entry.type == 'rss' -%}
-        {{ "/feed.xml" | relative_url }}
-      {%- else -%}
-        {{ entry.url }}
-      {%- endif -%}
-    {% endcapture %}
+    {% for entry in site.data.contact %}
+      {% capture url %}
+        {%- if entry.type == 'github' -%}
+          https://github.com/{{ site.github.username }}
+        {%- elsif entry.type == 'twitter' -%}
+          https://twitter.com/{{ site.twitter.username }}
+        {%- elsif entry.type == 'email' -%}
+          {% assign email = site.social.email | split: '@' %}
+          javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
+        {%- elsif entry.type == 'rss' -%}
+          {{ "/feed.xml" | relative_url }}
+        {%- else -%}
+          {{ entry.url }}
+        {%- endif -%}
+      {% endcapture %}
 
-    {% if url != '' %}
-    <a href="{{ url }}" aria-label="{{ entry.type }}" {% unless entry.noblank %}target="_blank" rel="noopener"{% endunless %}>
-      <i class="{{ entry.icon }}"></i>
-    </a>
-    {% endif %}
-  {% endfor %}
+      {% if url %}
+      <a href="{{ url }}" aria-label="{{ entry.type }}"
+        {% unless entry.noblank %}target="_blank" rel="noopener"{% endunless %}>
+        <i class="{{ entry.icon }}"></i>
+      </a>
+      {% endif %}
 
-</div>
+    {% endfor %}
+
+  </div> <!-- .sidebar-bottom -->
+
+</div><!-- #sidebar -->
