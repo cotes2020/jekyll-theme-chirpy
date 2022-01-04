@@ -13,7 +13,7 @@ Since the method has to do with the stress-energy tensor for scalar fields and w
 
 ## Canonical 4-momentum field
 
-Recall the special relativistic Euler-Lagrange equation for a scalar field $$\phi$$ with Lagrangian $$\mathcal{L}$$ ,
+Recall the special relativistic Euler-Lagrange equation for a scalar field $$\phi$$ with Lagrangian $$\mathcal{L}$$,
 
 $$\frac{\partial \mathcal{L}}{\partial \phi} = \partial_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)}$$
 
@@ -27,7 +27,7 @@ $$
 \end{align}
 $$
 
-Indeed, $$\frac{\partial \mathcal{L}}{\partial \left( \partial_{\mu} \phi \right)}$$ transforms like a vector, as second-order terms vanish in inertial coordinates. However, it's not hard to promote the quantity to a tensor in arbitrary coordinates: we simply replace partial derivatives $$\partial_\mu$$ with covariant derivatives $$\nabla_\mu$$ , so that all second-order terms involving the Christoffel symbols cancel out. However, let us stick to inertial coordinates as it's much simpler to manipulate expressions in them and later switch to coordinate-independent quantities.
+Indeed, $$\frac{\partial \mathcal{L}}{\partial \left( \partial_{\mu} \phi \right)}$$ transforms like a vector, as second-order terms vanish in inertial coordinates. However, it's not hard to promote the quantity to a tensor in arbitrary coordinates: we simply replace partial derivatives $$\partial_\mu$$ with covariant derivatives $$\nabla_\mu$$, so that all second-order terms involving the Christoffel symbols cancel out. However, let us stick to inertial coordinates as it's much simpler to manipulate expressions in them and later switch to coordinate-independent quantities.
 
 The vectorial quantity we just found will appear repeatedly in this post, so let us simply call it the _canonical 4-momentum field_ $$\pi^\mu$$ in lieu with conjugate momentum in the Lagrangian mechanics of point particles [^1] .
 
@@ -35,25 +35,25 @@ The vectorial quantity we just found will appear repeatedly in this post, so let
 
 ## Continuity equation
 
-The Euler-Lagrange equations tell the following story: the dependence of the dynamics of a scalar field on the field, $$\frac{\partial \mathcal{L}}{\partial \phi}$$ , is linearly related to the divergence of the canonical 4-momentum field $$\pi^\mu$$ ,
+The Euler-Lagrange equations tell the following story: the dependence of the dynamics of a scalar field on the field, $$\frac{\partial \mathcal{L}}{\partial \phi}$$, is linearly related to the divergence of the canonical 4-momentum field $$\pi^\mu$$,
 
 $$\frac{\partial \mathcal{L}}{\partial \phi} = \partial_\mu \pi^\mu$$
 
-If the dynamics of a system are invariant under changes in $$\phi$$ , $$\frac{\partial \mathcal{L}}{\partial \phi} = 0$$ and hence $$\partial_\mu \pi^\mu = 0$$ . If we expand the last equation using the mostly-plus convention for the metric and negate both sides,
+If the dynamics of a system are invariant under changes in $$\phi$$, $$\frac{\partial \mathcal{L}}{\partial \phi} = 0$$ and hence $$\partial_\mu \pi^\mu = 0$$. If we expand the last equation using the mostly-plus convention for the metric and negate both sides,
 
 $$\partial_0 \pi^0 + \partial_i \pi^i = 0$$
 
 This is the continuity equation. $$\pi^0$$ can be thought of as the local energy density, and $$\pi^i$$ the corresponding flux. By the divergence theorem, $$\partial_0 \displaystyle{ \int d^3 x \: \pi^0 = 0 }$$ as $$\displaystyle{ \int d^3 x \left( \pmb{\nabla} \cdot \pmb{\pi} \right) }$$ is a constant surface integral. Hence, the total energy $$\displaystyle{ \int d^3 x \: \pi^0 = 0 }$$ is conserved.
 
-However, when $$\frac{\partial \mathcal{L}}{\partial \phi} \neq 0$$ , the above is no more true. What, then, is conserved in a general scalar field theory?
+However, when $$\frac{\partial \mathcal{L}}{\partial \phi} \neq 0$$, the above is no more true. What, then, is conserved in a general scalar field theory?
 
 ## Noether current
 
-It might feel strange at first that when $$\frac{\partial \mathcal{L}}{\partial \phi} \neq 0$$ , the energy $$\displaystyle{ \int d^3 x \: \pi^0 }$$ is not conserved. But from the point of view of Noether's theorem, that makes sense. Say the dynamics (i.e. Lagrangian) of a field are not symmetric with respect to the field. Since the field may explicitly depend on the time coordinate, energy is not conserved.
+It might feel strange at first that when $$\frac{\partial \mathcal{L}}{\partial \phi} \neq 0$$, the energy $$\displaystyle{ \int d^3 x \: \pi^0 }$$ is not conserved. But from the point of view of Noether's theorem, that makes sense. Say the dynamics (i.e. Lagrangian) of a field are not symmetric with respect to the field. Since the field may explicitly depend on the time coordinate, energy is not conserved.
 
 But what happens if we consider symmetries of spacetime itself? Can we then impose conservation laws on arbitrary fields with arbitrary dynamics? As it turns out, yes.
 
-Minkowski spacetime has many symmetries, but let us start with symmetry under translations in spacetime: for small translations of a field in spacetime $$\delta x^\rho$$, the variation of the Lagrangian is zero, $$\delta \mathcal{L} = 0$$ .
+Minkowski spacetime has many symmetries, but let us start with symmetry under translations in spacetime: for small translations of a field in spacetime $$\delta x^\rho$$, the variation of the Lagrangian is zero, $$\delta \mathcal{L} = 0$$.
 
 Since the translation is small, we can expand $$\phi$$ to first-order,
 
@@ -97,7 +97,7 @@ Generally, the stress-energy tensor (motivated by the dynamics of discrete sets 
 
 $$T^{\mu \nu} =  \pi^\mu \partial^\nu \phi - \eta^{\mu \nu} \: \mathcal{L}$$
 
-where $$\partial^\nu \phi = \eta^{\rho \nu} \partial_\rho \phi$$ . This tensor too has vanishing divergence,
+where $$\partial^\nu \phi = \eta^{\rho \nu} \partial_\rho \phi$$. This tensor too has vanishing divergence,
 
 $$
 \begin{align}
@@ -121,7 +121,7 @@ We can expand the above into timelike and spacelike parts,
 
 $$\partial_0 T^{0 \nu} + \partial_i T^{i \nu} = 0$$
 
-We may interpret this as the continuity equation for $$\pi^\nu$$ . Then, $$T^{i \nu}$$ is the flux of $$\pi^\nu$$ through a surface of constant $$x^i$$ . Or in spacetime, $$T^{\mu \nu}$$ is the flux of $$\pi^\nu$$ through a surface of constant $$x^\mu$$ .
+We may interpret this as the continuity equation for $$\pi^\nu$$. Then, $$T^{i \nu}$$ is the flux of $$\pi^\nu$$ through a surface of constant $$x^i$$. Or in spacetime, $$T^{\mu \nu}$$ is the flux of $$\pi^\nu$$ through a surface of constant $$x^\mu$$.
 
 So, this is what the stress-energy tensor really encodes: _the flux of canonical 4-momentum in spacetime_ [^3] .
 
@@ -129,9 +129,9 @@ So, this is what the stress-energy tensor really encodes: _the flux of canonical
 
 ### Symmetry
 
-In the above picture of the stress-energy tensor, we find an interesting property: the stress-energy tensor is totally symmetric, i.e. $$T^{\mu \nu} = T^{\nu \mu}$$ . Let's see why.
+In the above picture of the stress-energy tensor, we find an interesting property: the stress-energy tensor is totally symmetric, i.e. $$T^{\mu \nu} = T^{\nu \mu}$$. Let's see why.
 
-Recall that $$T^{\mu \nu}$$ is the flux of $$\pi^\nu$$ perpendicular to $$\pmb{e}_\mu$$ . Now consider what it means for $$\pi^\nu$$ to have a flux perpendicular to $$\pmb{e}_\mu$$ : energy density $$\pi^0$$ is being transported along $$\pmb{e}_\mu$$ with conjugate-momentum $$\pi^i$$ in the $$\pmb{e}_\nu$$ direction. But due to conjugate-momentum in the direction $$\pmb{e}_\nu$$ , there must flux perpendicular to the same, so $$T^{\nu \mu} = T^{\mu \nu}$$ .
+Recall that $$T^{\mu \nu}$$ is the flux of $$\pi^\nu$$ perpendicular to $$\pmb{e}_\mu$$. Now consider what it means for $$\pi^\nu$$ to have a flux perpendicular to $$\pmb{e}_\mu$$ : energy density $$\pi^0$$ is being transported along $$\pmb{e}_\mu$$ with conjugate-momentum $$\pi^i$$ in the $$\pmb{e}_\nu$$ direction. But due to conjugate-momentum in the direction $$\pmb{e}_\nu$$, there must flux perpendicular to the same, so $$T^{\nu \mu} = T^{\mu \nu}$$.
 
 <a name="scalar_field_lagrangian"></a>
 
@@ -145,7 +145,7 @@ But the metric is symmetric, hence,
 
 $$\pi^\mu \partial^\nu \phi = \pi^\nu \partial^\mu \phi$$
 
-Since this is true for any $$\pi^\mu$$ and $$\partial^\nu \phi$$ ,
+Since this is true for any $$\pi^\mu$$ and $$\partial^\nu \phi$$,
 
 $$\pi^\mu = \partial^\mu \phi$$
 
@@ -159,4 +159,4 @@ $$\mathcal{L} = \frac{1}{2} \partial_\mu \phi \: \eta^{\mu \nu} \: \partial_\nu 
 
 ## Conclusion
 
-By positing the Lagrangian for a scalar field in the above manner, we justified the expression for $$\mathcal{L}$$ based on the symmetry of $$T^{\mu \nu}$$ . This tensor was itself derived from the symmetry of the dynamics of a scalar field under translations in spacetime. These are very fundamental ideas that do not depend on the final form of $$\mathcal{L}$$ .
+By positing the Lagrangian for a scalar field in the above manner, we justified the expression for $$\mathcal{L}$$ based on the symmetry of $$T^{\mu \nu}$$. This tensor was itself derived from the symmetry of the dynamics of a scalar field under translations in spacetime. These are very fundamental ideas that do not depend on the final form of $$\mathcal{L}$$.

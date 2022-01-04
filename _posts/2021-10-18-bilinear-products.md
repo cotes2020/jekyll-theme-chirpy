@@ -33,15 +33,15 @@ If you are already aware of how tensors work, skip to [bilinear products](#bilin
 
 ### Definition
 
-Given a vector space $$V$$ and its dual space $$V^\text{*}$$ , a rank $$\left( p, q \right)$$ _tensor_ is a multilinear map $$\pmb{T} \in \underset{i=1}{\overset{p}{\bigotimes}} V \underset{j=1}{\overset{q}{\bigotimes}} V^\text{*}$$ .
+Given a vector space $$V$$ and its dual space $$V^\text{*}$$, a rank $$\left( p, q \right)$$ _tensor_ is a multilinear map $$\pmb{T} \in \underset{i=1}{\overset{p}{\bigotimes}} V \underset{j=1}{\overset{q}{\bigotimes}} V^\text{*}$$.
 
-This means that given a covector basis $$\left\{ \pmb{\theta}^i \right\}$$ and vector basis $$\left\{ \pmb{e}_j \right\}$$ , if $$\chi_{i_1} \pmb{\theta}^{i_1}, \psi_{i_2} \pmb{\theta}^{i_2}, \dots, \omega_{i_p} \pmb{\theta}^{i_p}  \in V^\text{*}$$ and $$u^{j_1} \pmb{e}_{j_1}, v^{j_2} \pmb{e}_{j_2} , \dots, w^{j_q} \pmb{e}_{j_q} \in V$$ ,
+This means that given a covector basis $$\left\{ \pmb{\theta}^i \right\}$$ and vector basis $$\left\{ \pmb{e}_j \right\}$$, if $$\chi_{i_1} \pmb{\theta}^{i_1}, \psi_{i_2} \pmb{\theta}^{i_2}, \dots, \omega_{i_p} \pmb{\theta}^{i_p}  \in V^\text{*}$$ and $$u^{j_1} \pmb{e}_{j_1}, v^{j_2} \pmb{e}_{j_2} , \dots, w^{j_q} \pmb{e}_{j_q} \in V$$,
 
 $$\pmb{T} \left( \chi_{i_1} \pmb{\theta}^{i_1}, \psi_{i_2} \pmb{\theta}^{i_2}, \dots, \omega_{i_p} \pmb{\theta}^{i_p}, u^{j_1} \pmb{e}_{j_1}, v^{j_2} \pmb{e}_{j_2}, \dots, w^{j_q} \pmb{e}_{j_q} \right) = \chi_{i_1} \psi_{i_2} \dots \omega_{i_p} \: \pmb{T} \left( \pmb{\theta}^{i_1}, \pmb{\theta}^{i_2}, \dots, \pmb{\theta}^{i_p}, \pmb{e}_{j_1}, \pmb{e}_{j_2}, \dots, \pmb{e}_{j_q} \right) u^{j_1} v^{j_2} \dots w^{j_q}$$
 
 ### Components
 
-With respect to the previous section, for a tensor $$\pmb{T}$$ , its _components_ $$T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q}$$ are defined in the manner,
+With respect to the previous section, for a tensor $$\pmb{T}$$, its _components_ $$T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q}$$ are defined in the manner,
 
 $$
 \begin{align}
@@ -50,11 +50,11 @@ T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q}  & = \left\langle \pmb
 \end{align}
 $$
 
-where $$\langle \rangle : \underset{i=1}{\overset{p}{\bigotimes}} V \underset{j=1}{\overset{q}{\bigotimes}} V^\text{*} \times \underset{i=1}{\overset{p}{\bigotimes}} V \underset{j=1}{\overset{q}{\bigotimes}} V^\text{*} \mapsto F$$ , $$F$$ being the base field of $$V$$ .
+where $$\langle \rangle : \underset{i=1}{\overset{p}{\bigotimes}} V \underset{j=1}{\overset{q}{\bigotimes}} V^\text{*} \times \underset{i=1}{\overset{p}{\bigotimes}} V \underset{j=1}{\overset{q}{\bigotimes}} V^\text{*} \mapsto F$$, $$F$$ being the base field of $$V$$.
 
 <a name="tuple_notation"></a>
 
-To simplify our lives, let us represent tuples of indices with their capital letter, e.g. $$I \equiv i_1 \dots i_p$$ . Also, let us write any multiplication of tensor components, or tensors, with a capital letter, along with tuples for the indices. Lastly, let the tensor product symbol be omitted altogether. Then, the previous set of equations becomes more readable,
+To simplify our lives, let us represent tuples of indices with their capital letter, e.g. $$I \equiv i_1 \dots i_p$$. Also, let us write any multiplication of tensor components, or tensors, with a capital letter, along with tuples for the indices. Lastly, let the tensor product symbol be omitted altogether. Then, the previous set of equations becomes more readable,
 
 $$
 \begin{align}
@@ -63,7 +63,7 @@ T^K_{\phantom{K} L} & = \left\langle \pmb{T} \left( \pmb{\Theta}^I, \pmb{E}_J \r
 \end{align}
 $$
 
-Under a change of coordinates represented by a Jacobian $$\Lambda^{j^\prime}_{\phantom{j^\prime} j}$$ , the coordinates of a tensor transform as,
+Under a change of coordinates represented by a Jacobian $$\Lambda^{j^\prime}_{\phantom{j^\prime} j}$$, the coordinates of a tensor transform as,
 
 $$
 \begin{align}
@@ -86,11 +86,11 @@ Or using the tuple notation for indices,
 
 $$T^{I^\prime}_{\phantom{I^\prime} J^\prime} = \Lambda^{I^\prime}_{\phantom{I^\prime} I} \: T^I_{\phantom{I} J} \: \Lambda^J_{\phantom{J} J^\prime}$$
 
-This is known as the tensor transformation law. Note that the notation for the Jacobian is a slight deviation from the regular tuple notation, in that $$\Lambda^{I^\prime}_{\phantom{I^\prime} I}$$ is _not_ some tensor $$\Lambda^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q}$$ , but a product of tensor components, $$\Lambda^{i_1^\prime}_{\phantom{i_1^\prime} i_1} \dots \Lambda^{i_p^\prime}_{\phantom{i_p^\prime} i_p}$$ . This will be the only exception in the tuple notation.
+This is known as the tensor transformation law. Note that the notation for the Jacobian is a slight deviation from the regular tuple notation, in that $$\Lambda^{I^\prime}_{\phantom{I^\prime} I}$$ is _not_ some tensor $$\Lambda^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q}$$, but a product of tensor components, $$\Lambda^{i_1^\prime}_{\phantom{i_1^\prime} i_1} \dots \Lambda^{i_p^\prime}_{\phantom{i_p^\prime} i_p}$$. This will be the only exception in the tuple notation.
 
 ### Invariance
 
-Under a change of coordinates $$\Lambda^{j^\prime}_{\phantom{j^\prime} j}$$ , the components of $$\pmb{T}$$ transform but $$\pmb{T}$$ itself remains invariant:
+Under a change of coordinates $$\Lambda^{j^\prime}_{\phantom{j^\prime} j}$$, the components of $$\pmb{T}$$ transform but $$\pmb{T}$$ itself remains invariant:
 
 $$
 \begin{align}
@@ -103,7 +103,7 @@ $$
 \end{align}
 $$
 
-where $$\Delta^K_{\phantom{K} I} = \delta^{k_1}_{\phantom{k_1} i_1} \dots \delta^{k_p}_{\phantom{k_p} i_p}$$ . Once again, we see a deviation from the regular tuple notation, of similar kind as in the case of the Jacobian $$\pmb{\Lambda}$$ . This is not another exception to the notation; the Kronecker delta $$\pmb{\delta}$$ is a special kind of Jacobian, which maps a vector space to itself.
+where $$\Delta^K_{\phantom{K} I} = \delta^{k_1}_{\phantom{k_1} i_1} \dots \delta^{k_p}_{\phantom{k_p} i_p}$$. Once again, we see a deviation from the regular tuple notation, of similar kind as in the case of the Jacobian $$\pmb{\Lambda}$$. This is not another exception to the notation; the Kronecker delta $$\pmb{\delta}$$ is a special kind of Jacobian, which maps a vector space to itself.
 
 <a name="bilinear_products"></a>
 
@@ -111,7 +111,7 @@ where $$\Delta^K_{\phantom{K} I} = \delta^{k_1}_{\phantom{k_1} i_1} \dots \delta
 
 ### Definition
 
-Given a vector space $$V$$ , its dual space $$V^\text{*}$$ and rank $$\left( p, q \right)$$ tensors $$\pmb{\Phi}$$ and $$\pmb{T}$$ , a _bilinear product_ $$\mathcal{B}$$ is a bilinear map,
+Given a vector space $$V$$, its dual space $$V^\text{*}$$ and rank $$\left( p, q \right)$$ tensors $$\pmb{\Phi}$$ and $$\pmb{T}$$, a _bilinear product_ $$\mathcal{B}$$ is a bilinear map,
 
 $$\mathcal{B} \left( \pmb{\Phi}, \pmb{T} \right) \in \underset{i=1}{\overset{p}{\bigotimes}} V \underset{j=1}{\overset{q}{\bigotimes}} V^\text{*}$$
 
@@ -149,7 +149,7 @@ $$
 \end{align}
 $$
 
-It is noteworthy that in the above, odd tuples i.e. $$I, K, M$$ are indices running from $$1$$ to $$p$$, coupled with $$V$$ ; while even tuples $$J, L, N$$ run from $$1$$ to $$q$$ coupled with $$V^\text{*}$$ .
+It is noteworthy that in the above, odd tuples i.e. $$I, K, M$$ are indices running from $$1$$ to $$p$$, coupled with $$V$$ ; while even tuples $$J, L, N$$ run from $$1$$ to $$q$$ coupled with $$V^\text{*}$$.
 
 We know that $$\pmb{\mathcal{B}} \left( \pmb{\Phi}, \pmb{T} \right)$$ is a tensor in the same space as its arguments, but that does not immediately justify that the components of $$\pmb{\mathcal{B}}$$ [as we defined them](#components_bilinear_product) transform like tensor components. Instead, we will have to verify that manually,
 
@@ -182,7 +182,7 @@ $$
 \end{align}
 $$
 
-where $$\pmb{E}_{JL} = \pmb{E}_J \otimes \pmb{E}_L$$ and $$\pmb{\Theta}^{IK} = \pmb{\Theta}^I \otimes \pmb{\Theta}^K$$ . Note that the above tensor is labelled as $$\pmb{B}$$ , which is different from the calligraphic label $$\pmb{\mathcal{B}}$$ for the tensor generated from two other tensors by a bilinear product.
+where $$\pmb{E}_{JL} = \pmb{E}_J \otimes \pmb{E}_L$$ and $$\pmb{\Theta}^{IK} = \pmb{\Theta}^I \otimes \pmb{\Theta}^K$$. Note that the above tensor is labelled as $$\pmb{B}$$, which is different from the calligraphic label $$\pmb{\mathcal{B}}$$ for the tensor generated from two other tensors by a bilinear product.
 
 ### As linear maps
 

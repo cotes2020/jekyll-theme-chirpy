@@ -6,11 +6,11 @@ categories: [discrete calculus]
 
 ## Discrete derivative operator
 
-Let a function $$f: \mathbb{R} \mapsto \mathbb{R}$$ . On discretizing the domain of $$f$$ into quanta $$h$$ centred at $$a_0$$, $$f: \mathbb{A} \mapsto \mathbb{A}$$ where $$\mathbb{A} = \left\{ kh+a_0 : k \in \mathbb{Z}, a_0 \in \mathbb{R} \right\}$$ , the derivative operator is replaced by the _discrete derivative operator_ $$\mathcal{D}: \mathbb{A}^{\mathbb{A}} \mapsto \mathbb{A}^{\mathbb{A}}$$ defined as,
+Let a function $$f: \mathbb{R} \mapsto \mathbb{R}$$. On discretizing the domain of $$f$$ into quanta $$h$$ centred at $$a_0$$, $$f: \mathbb{A} \mapsto \mathbb{A}$$ where $$\mathbb{A} = \left\{ kh+a_0 : k \in \mathbb{Z}, a_0 \in \mathbb{R} \right\}$$, the derivative operator is replaced by the _discrete derivative operator_ $$\mathcal{D}: \mathbb{A}^{\mathbb{A}} \mapsto \mathbb{A}^{\mathbb{A}}$$ defined as,
 
 $$\mathcal{D} \left\{ f \right\} \left( a \right) = \frac{f \left( a \right) - f \left( a-h \right)}{h} \tag{1}$$
 
-Notice that, $$\displaystyle{\lim_{h \to 0} \mathcal{D} \left\{ f \right\} \left( a \right) = f^\prime \left( a \right)}$$ , if such a limit exists at $$x=a$$ where $$f^\prime \left( x \right)$$ denotes the first derivative of $$f \left( x \right)$$ .
+Notice that, $$\displaystyle{\lim_{h \to 0} \mathcal{D} \left\{ f \right\} \left( a \right) = f^\prime \left( a \right)}$$, if such a limit exists at $$x=a$$ where $$f^\prime \left( x \right)$$ denotes the first derivative of $$f \left( x \right)$$.
 
 As usual, we are using the [backward difference](https://en.wikipedia.org/wiki/Finite_difference#Basic_types) to construct the difference quotient above. That's because in this blog, we'll primarily use discrete calculus in applications of mathematical physics, where the backward difference can be used to encode causality in a direct sense.
 
@@ -37,7 +37,7 @@ $$\mathcal{D}^{-1} \left\{ f \right\} \left( a \right) - \mathcal{D}^{-1} \left\
 
 ### As Riemann sums
 
-Finding $$\mathcal{D}^{-1} \left\{ f \right\} \left( a \right)$$ from the above equation alone is difficult. Instead, we will discretize the indefinite integral of the continuous function $$f \left( x \right)$$ . The intuition behind this is that the integral of a function _is_ its continuous antiderivative.
+Finding $$\mathcal{D}^{-1} \left\{ f \right\} \left( a \right)$$ from the above equation alone is difficult. Instead, we will discretize the indefinite integral of the continuous function $$f \left( x \right)$$. The intuition behind this is that the integral of a function _is_ its continuous antiderivative.
 
 To do this, we will write the indefinite integral $$F \left( x \right)$$ of $$f \left( x \right)$$ as a Riemann integral and remove the limit,
 

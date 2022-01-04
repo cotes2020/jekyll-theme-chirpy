@@ -49,7 +49,7 @@ Thus, gravity theoretically doesn't change a bit if we reverse time. Except, _mo
 
 ### Initial conditions
 
-If the ball is placed at an initial distance of $$r=r_0$$ from the centre of mass of the earth, reversing time does not change the way we measure $$r$$ or $$r_0$$ . Therefore, the initial positions of bodies in a gravitational system are invariant under time reversal.
+If the ball is placed at an initial distance of $$r=r_0$$ from the centre of mass of the earth, reversing time does not change the way we measure $$r$$ or $$r_0$$. Therefore, the initial positions of bodies in a gravitational system are invariant under time reversal.
 
 But when we express $$r$$ as a function of time and compute velocity, time reversal flips the sign of velocity as it is a first-order time derivative of position:
 
@@ -85,7 +85,7 @@ $$g_{\mu \nu} = \left\langle \partial_\mu, \partial_\nu \right\rangle$$
 
 where $$\left\{ \partial_\mu \right\}$$ is the set of basis vectors for the tangent space at each event in spacetime. And $$\left\langle \right\rangle$$ is the inner product, spacetime's analogue of the familiar dot product.
 
-Under time reversal $$t \mapsto - t$$ , $$\partial_0 \mapsto - \partial_0$$ . As a result,
+Under time reversal $$t \mapsto - t$$, $$\partial_0 \mapsto - \partial_0$$. As a result,
 
 $$
 \begin{align}
@@ -101,13 +101,13 @@ Since the metric changes under time reversal, so does the motion of bodies in th
 
 ### Initial conditions
 
-In GR, the initial conditions required to predict the evolution of a dynamic metric are the initial values $$g_{\mu \nu}$$ and its first derivatives, $$\partial_\rho g_{\mu \nu}$$ . From the previous subsection, we know that the spacetimelike part of the metric is reversed under time reversal. This is a key difference from the Newtonian case, where initial positions had remained invariant.
+In GR, the initial conditions required to predict the evolution of a dynamic metric are the initial values $$g_{\mu \nu}$$ and its first derivatives, $$\partial_\rho g_{\mu \nu}$$. From the previous subsection, we know that the spacetimelike part of the metric is reversed under time reversal. This is a key difference from the Newtonian case, where initial positions had remained invariant.
 
 Naturally, the first derivatives of the metric change too, along with a sign inversion for the time derivative.
 
 ### Newtonian limit
 
-Newtonian gravity, in the framework of GR, is a weak-field, spherically symmetric vacuum solution. A characteristic of spherical symmetry is that it is described by orthogonal coordinate systems. This sets the off-diagonal, or spacetimelike components $$g_{i0}$$ of the metric tensor to $$0$$ .
+Newtonian gravity, in the framework of GR, is a weak-field, spherically symmetric vacuum solution. A characteristic of spherical symmetry is that it is described by orthogonal coordinate systems. This sets the off-diagonal, or spacetimelike components $$g_{i0}$$ of the metric tensor to $$0$$.
 
 Under time reversal, the spacetimelike components of the metric tensor switch signs as we have seen. But since they are zero now, they remain invariant. This explains why a Newtonian gravitational field remains exactly the same even if time is reversed.
 

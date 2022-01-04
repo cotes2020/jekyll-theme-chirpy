@@ -17,7 +17,7 @@ The functional equation of the extended factorial is, as we know,
 
 $$z! = z \left( z-1 \right)!$$
 
-with the boundary condition $$z! = 1$$ .
+with the boundary condition $$z! = 1$$.
 
 ### Complex solution
 
@@ -33,13 +33,13 @@ $$\mathcal{L} \left\{ u \left( z, t \right) \right\} \left( s \right) = \int_0^\
 
 ### Transformations
 
-Given a complex function $$f \left( z \right) : \mathbb{C} \mapsto \mathbb{C}$$ , a _transformation_ is an operation $$\mathcal{T}$$ which can be completely expressed in terms of linear operators in the said function space, $$\widehat{\mathcal{L}} \in \mathbb{C}^\mathbb{C}$$ . _Linear transformations_ are special transformations $$\widehat{\mathcal{T}}$$ which can be expressed as the sums and scalar products of some linear operators. It turns out from these two definitions that a transformation can always be expressed as a [not necessarily linear] function of linear transformations.
+Given a complex function $$f \left( z \right) : \mathbb{C} \mapsto \mathbb{C}$$, a _transformation_ is an operation $$\mathcal{T}$$ which can be completely expressed in terms of linear operators in the said function space, $$\widehat{\mathcal{L}} \in \mathbb{C}^\mathbb{C}$$. _Linear transformations_ are special transformations $$\widehat{\mathcal{T}}$$ which can be expressed as the sums and scalar products of some linear operators. It turns out from these two definitions that a transformation can always be expressed as a [not necessarily linear] function of linear transformations.
 
 More precisely, a transformation is a multivector in an uncountably-infinite dimensional Hilbert space in which linear transformations form a basis. And a linear transformation is a vector in that space. But I get ahead of myself.
 
 ### Symmetries
 
-A _symmetry_ of a transformation $$\mathcal{T}$$ is a quantity $$\sigma \left( z \right)$$ such that $$\mathcal{T} \left\{ \sigma \right\} \left( z \right) = \sigma \left( z \right)$$ . The set of points $$\left( z, \sigma \left( z \right) \right)$$ , or simply the entire function $$\sigma \left( z \right)$$ , are said to be the _invariant points_ under the transformation $$\mathcal{T}$$ . They can be used to construct the _symmetry operator_ of $$\mathcal{T}$$ ,
+A _symmetry_ of a transformation $$\mathcal{T}$$ is a quantity $$\sigma \left( z \right)$$ such that $$\mathcal{T} \left\{ \sigma \right\} \left( z \right) = \sigma \left( z \right)$$. The set of points $$\left( z, \sigma \left( z \right) \right)$$, or simply the entire function $$\sigma \left( z \right)$$, are said to be the _invariant points_ under the transformation $$\mathcal{T}$$. They can be used to construct the _symmetry operator_ of $$\mathcal{T}$$,
 
 $$
 \begin{align}
@@ -52,7 +52,7 @@ $$
 
 The Laplace transform is a functional $$\mathcal{L} : \mathcal{T} \left\{ \mathcal{D} \right\} \mapsto \mathcal{V}$$ where: $$\mathcal{D}$$ is the differential operator; $$\mathcal{T} \left\{ \mathcal{D} \right\}$$ is any differential operator; and $$\mathcal{V}$$ is an operator which maps a function space to itself.
 
-In other words, the Laplace transform is a map from differential operators to operators formed from ordinary functions of the form $$v \left( z \right)$$ .
+In other words, the Laplace transform is a map from differential operators to operators formed from ordinary functions of the form $$v \left( z \right)$$.
 
 $$\mathcal{L} \left\{ \mathcal{D}^n \left\{ \cdot \right\} \right\} \left( s \right) = s^n \mathcal{L} \left\{ \cdot \right\} \left( s \right) - \sum_{k=0}^{n-1} s^{k} \mathcal{D}^{n-k} \left\{ \cdot \right\} \left( 0^- \right)$$
 
@@ -60,11 +60,11 @@ There are infinite allowed choices for a converging Laplace transform, but the o
 
 ### Finding invariant points
 
-Given a transformation $$\mathcal{T}$$ , how can we find an $$\mathcal{S}$$ or equivalently, some $$\sigma \left( z \right)$$ ?
+Given a transformation $$\mathcal{T}$$, how can we find an $$\mathcal{S}$$ or equivalently, some $$\sigma \left( z \right)$$ ?
 
 The trick is to convert $$\mathcal{T}$$ to a differential operator and use the Laplace transform. If $$\mathcal{T}$$ is already a differential operator, the job is easier. If not, some work is required, which is a subject of linear algebra and measure theory.
 
-Suppose a given differential operator $$\mathcal{T}$$ has some $$\mathcal{S}$$. We identify that $$\mathcal{S}$$ is formed from an ordinary function $$\sigma \left( z \right)$$ . Invoking the idea of Laplace transforms, we can define an invertible map $$\mathcal{L} : \mathcal{T} \mapsto \mathcal{S}$$ (here, $$\mathcal{T}$$ and $$\mathcal{S}$$ represent the spaces of all possible $$\mathcal{T}$$'s and $$\mathcal{S}$$'s) so that,
+Suppose a given differential operator $$\mathcal{T}$$ has some $$\mathcal{S}$$. We identify that $$\mathcal{S}$$ is formed from an ordinary function $$\sigma \left( z \right)$$. Invoking the idea of Laplace transforms, we can define an invertible map $$\mathcal{L} : \mathcal{T} \mapsto \mathcal{S}$$ (here, $$\mathcal{T}$$ and $$\mathcal{S}$$ represent the spaces of all possible $$\mathcal{T}$$'s and $$\mathcal{S}$$'s) so that,
 
 $$\mathcal{S} = \mathcal{L} \left\{ \mathcal{T} \right\}$$
 
@@ -94,13 +94,13 @@ Now, we must turn $$\mathcal{T}$$ to a differential operator so that we can appl
 
 $$\mathcal{T} \left\{ f \right\} \left( z \right) = \mathcal{D}_t \left\{ u \left( z, t \right) \right\}$$
 
-For invariant points $$\sigma \left( z \right)$$ ,
+For invariant points $$\sigma \left( z \right)$$,
 
 $$\mathcal{T} \left\{ \sigma \right\} \left( z \right) = \mathcal{D}_t \left\{ u_\sigma \left( z, t \right) \right\} = \sigma \left( z \right)$$
 
 ### Laplace transform
 
-The linear map $$\mathcal{L} : \mathcal{T} \mapsto \mathcal{S}$$ is a Laplace transform for some unknown value $$s$$ ,
+The linear map $$\mathcal{L} : \mathcal{T} \mapsto \mathcal{S}$$ is a Laplace transform for some unknown value $$s$$,
 
 $$
 \begin{align}
@@ -116,7 +116,7 @@ $$
 
 ### Solution
 
-From the above, we can find $$\sigma \left( z \right)$$ if we can find $$u_\sigma \left( z, t \right)$$ . From the statements below,
+From the above, we can find $$\sigma \left( z \right)$$ if we can find $$u_\sigma \left( z, t \right)$$. From the statements below,
 
 
 $$
@@ -139,7 +139,7 @@ $$
 \end{align}
 $$
 
-As in the previous post on the extended factorial, we realize that $$u_\sigma \left( z, t \right) = t^z$$ solves the above equation as $$\frac{\partial}{\partial t} t^z = z \: t^{z-1}$$ . Furthermore, it is indeed true that $$u_\sigma \left( z, 0^- \right) = 0$$ .
+As in the previous post on the extended factorial, we realize that $$u_\sigma \left( z, t \right) = t^z$$ solves the above equation as $$\frac{\partial}{\partial t} t^z = z \: t^{z-1}$$. Furthermore, it is indeed true that $$u_\sigma \left( z, 0^- \right) = 0$$.
 
 Thus, we have,
 
@@ -154,7 +154,7 @@ With respect to the previous post on the extended factorial ([Deriving the Gamma
 
 2. By virtue of being a symmetry operation, we know that the factorial must be a Laplace transform. This wasn't justified in the previous derivation.
 
-3. The new procedure automatically let us infer that $$s=1$$ and $$u \left( z, 0^- \right) = 0$$ , whereas before, we assumed those were true and matched the final result by brute force.
+3. The new procedure automatically let us infer that $$s=1$$ and $$u \left( z, 0^- \right) = 0$$, whereas before, we assumed those were true and matched the final result by brute force.
 
 That said, two things still remain mysterious:
 

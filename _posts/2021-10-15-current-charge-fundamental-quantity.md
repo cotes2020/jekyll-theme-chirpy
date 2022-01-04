@@ -123,7 +123,7 @@ _Where $$k_e$$ is Coulomb's constant. After applying my units,_
 
 $$q_P^2 = \hbar c$$
 
-_Thus, $$q_P = \sqrt{\hbar c}$$ . This is awkward. Surely, the "square root of Planck's constant times the speed of light" does not amount to much. But observe what happens if I work with current instead:_
+_Thus, $$q_P = \sqrt{\hbar c}$$. This is awkward. Surely, the "square root of Planck's constant times the speed of light" does not amount to much. But observe what happens if I work with current instead:_
 
 $$I_P = \frac{q_P}{t_P} = \frac{c^3}{\sqrt{G}}$$
 
@@ -145,6 +145,6 @@ It simply lies in the fact that current can be measured more accurately than cha
 
 This relative ease of measuring current is a natural fact. It has to do with the very nature of measurement: when we measure a quantity, we disturb the object associated with it. Disturbing charges, more often than not, leads to current in nature.
 
-But do not be disheartened. The tale you read is fictional, but not entirely baseless, if we remove the purely fictional elements. The main logic in it is that $$\sqrt{G}$$ has a more straightforward physical interpretation than $$\sqrt{\hbar c}$$ . Is this a natural fact? It is hard to tell. What we do know, after Einstein, is that gravitation has a deeply geometric working in nature. Gravity operates through spacetime itself, rather than through quantum fields, which makes it a unique phenomenon. Even if there is no matter or energy in a large region of space, gravitation can exist in the form of gravitational waves. The point is, both Planck charge and Planck current involve 'awkward' units, i.e. square roots of fundamental units, but at least $$\sqrt{G}$$ has a relatively simple physical interpretation, not due to the human body's size, but the simplicity of gravitation itself.
+But do not be disheartened. The tale you read is fictional, but not entirely baseless, if we remove the purely fictional elements. The main logic in it is that $$\sqrt{G}$$ has a more straightforward physical interpretation than $$\sqrt{\hbar c}$$. Is this a natural fact? It is hard to tell. What we do know, after Einstein, is that gravitation has a deeply geometric working in nature. Gravity operates through spacetime itself, rather than through quantum fields, which makes it a unique phenomenon. Even if there is no matter or energy in a large region of space, gravitation can exist in the form of gravitational waves. The point is, both Planck charge and Planck current involve 'awkward' units, i.e. square roots of fundamental units, but at least $$\sqrt{G}$$ has a relatively simple physical interpretation, not due to the human body's size, but the simplicity of gravitation itself.
 
 But there's another side to the story. You see, there is no clear historical answer for the question of why current is a fundamental quantity in the SI system of units. Sure, the _11 $$^{th}$$ General Conference on Weights and Measures_, 1960, Paris, is well documented. But the _minds_, the _thoughts_, of those attending the conference aren't. We'll never learn the unique insights and logic these people had in a precise manner. This is why imagination is not insensible here, after all. It is a matter of history, not just of physics.

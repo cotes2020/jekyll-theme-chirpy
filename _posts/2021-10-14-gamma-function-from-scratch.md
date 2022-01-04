@@ -11,7 +11,7 @@ About 300 years ago, the influential mathematician Leonhard Euler solved the pro
 
 $$\displaystyle{ z! = \int_0^1 \left( - \ln u \right)^z du }$$
 
-By the substitution $$t = - \ln u$$ , one obtains the more common representation of the extended factorial:
+By the substitution $$t = - \ln u$$, one obtains the more common representation of the extended factorial:
 
 $$\displaystyle{ z! = \int_0^\infty t^z e^{-t} dt }$$
 
@@ -41,7 +41,7 @@ z! & = \int_0^\infty t^z e^{-t} dt \\
 
 <a name="boundary_condition"></a>
 
-The second important property is that $$0! = 1$$ . This, again, can be derived from the integral representation,
+The second important property is that $$0! = 1$$. This, again, can be derived from the integral representation,
 
 $$
 \begin{align}
@@ -72,7 +72,7 @@ The extended factorial first came from Euler's mind, so one could investigate ho
 
 Instead, we will begin with the [properties of the factorial](#properties), which are obvious even from whole number arguments.
 
-Consider equation $$\left( 1 \right)$$ , which is basically a functional equation for the factorial function. If we can solve for the factorial function so that the functional equation holds even for non-integer arguments, and use the boundary condition $$0! = 1$$ , we have found the extended factorial.
+Consider equation $$\left( 1 \right)$$, which is basically a functional equation for the factorial function. If we can solve for the factorial function so that the functional equation holds even for non-integer arguments, and use the boundary condition $$0! = 1$$, we have found the extended factorial.
 
 ### Interlude: the Laplace transform
 
@@ -90,11 +90,11 @@ Alert readers may have realized by this point that the extended factorial is its
 
 $$z! = \mathcal{L} \left\{ t^z \right\} \left( 1 \right)$$
 
-Here, $$t^z$$ is not just a function of $$t$$ , but also of the variable $$z$$ . Similarly, $$z!$$ is a function of $$z$$, but not an explicit function of $$s$$. Hence, for our purposes, we will generalize the operation of the Laplace transform as,
+Here, $$t^z$$ is not just a function of $$t$$, but also of the variable $$z$$. Similarly, $$z!$$ is a function of $$z$$, but not an explicit function of $$s$$. Hence, for our purposes, we will generalize the operation of the Laplace transform as,
 
 $$\displaystyle{ U_s \left( z, t \right) = \mathcal{L} \left\{ u \left( z, t \right) \right\} \left( s \right) = \int_0^\infty u \left( z, t \right) e^{-st} dt }$$
 
-We have used the symbol $$u$$ for the new argument function of the Laplace transform operator, to remind us that it is a function of both $$z$$ and $$t$$ .
+We have used the symbol $$u$$ for the new argument function of the Laplace transform operator, to remind us that it is a function of both $$z$$ and $$t$$.
 
 ### Getting started
 
@@ -138,7 +138,7 @@ Or explicitly,
 
 $$\displaystyle{ \frac{1}{s} \int_0^\infty \frac{\partial u \left( z, t \right)}{\partial t} e^{-st} dt = z \int_0^\infty u \left( z-1, t \right) e^{-st} dt }$$
 
-We need to solve for both $$u \left( z, t \right)$$ and $$s$$ . Firstly, we can pull in various free variables in both sides of the equation, into their repsective integrals, since they are independent of the variable over which we are integrating,
+We need to solve for both $$u \left( z, t \right)$$ and $$s$$. Firstly, we can pull in various free variables in both sides of the equation, into their repsective integrals, since they are independent of the variable over which we are integrating,
 
 $$\displaystyle{ \int_0^\infty \frac{1}{s} \frac{\partial u \left( z, t \right)}{\partial t} e^{-st} dt = \int_0^\infty z u \left( z-1, t \right) e^{-st} dt }$$
 
@@ -154,11 +154,11 @@ We can put this in exactly the form we want, by defining $$u \left( z, t \right)
 
 $$\frac{1}{1} \frac{\partial u \left( z, t \right)}{\partial t} = z u \left( z-1, t \right)$$
 
-Thus, $$s=1$$ . Plugging all of this into the original statement $$z! = \frac{1}{s} \mathcal{L} \left\{ u \left( z, t \right) \right\} \left( s \right)$$,
+Thus, $$s=1$$. Plugging all of this into the original statement $$z! = \frac{1}{s} \mathcal{L} \left\{ u \left( z, t \right) \right\} \left( s \right)$$,
 
 $$z! = \mathcal{L} \left\{ t^z \right\} \left( 1 \right) = \int_0^\infty t^z e^{-t} dt$$
 
-Furthermore, $$\Gamma \left( z \right)$$ can be obtained by plugging in $$z-1$$ . Voila! Or, _not_ so voila, as we have derived the extended integral from simple assumptions!
+Furthermore, $$\Gamma \left( z \right)$$ can be obtained by plugging in $$z-1$$. Voila! Or, _not_ so voila, as we have derived the extended integral from simple assumptions!
 
 ### May the force be with you
 
@@ -166,7 +166,7 @@ But we are not yet done. Remember the second important property of the extended 
 
 $$0! = \mathcal{L} \left\{ t^0 \right\} \left( 1 \right) = \mathcal{L} \left\{ 1 \right\} \left( 1 \right) = 1$$
 
-Lastly, since we had assumed that $$u \left( z, 0^- \right) = 0$$ , we must verify it now,
+Lastly, since we had assumed that $$u \left( z, 0^- \right) = 0$$, we must verify it now,
 
 $$\displaystyle{ u \left( z, 0^- \right) = \lim_{t \to 0^-} t^z = 0 }$$
 

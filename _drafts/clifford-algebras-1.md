@@ -14,7 +14,7 @@ Therefore, we are left with the notion of bilinear vector products which act on 
 
 $$\phi^k B^{i^\prime}_{\phantom{i^\prime} ki} = \Lambda^{i^\prime}_{\phantom{i^\prime} i}$$
 
-According to [the way we had defined the term 'algebra']({% post_url 2021-10-23-algebras-over-fields %}#definition-1), the ordered pair $$\left( \phi^k, B^{i^\prime}_{\phantom{i^\prime} ki} \right)$$ forms an algebra. But the above relation tells us there is an invertible map $$\left( \phi^k, B^{i^\prime}_{\phantom{i^\prime} ki} \right) \mapsto \Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ . The map is invertible as there exists an implicit relationship between $$\phi^k$$ and $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ . Namely, $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ is constrained to have the same degrees of freedom as $$\phi^k$$ .
+According to [the way we had defined the term 'algebra']({% post_url 2021-10-23-algebras-over-fields %}#definition-1), the ordered pair $$\left( \phi^k, B^{i^\prime}_{\phantom{i^\prime} ki} \right)$$ forms an algebra. But the above relation tells us there is an invertible map $$\left( \phi^k, B^{i^\prime}_{\phantom{i^\prime} ki} \right) \mapsto \Lambda^{i^\prime}_{\phantom{i^\prime} i}$$. The map is invertible as there exists an implicit relationship between $$\phi^k$$ and $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$. Namely, $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ is constrained to have the same degrees of freedom as $$\phi^k$$.
 
 Due to the existence of such a map from an algebra to a Jacobian, an algebra can be said to have an underlying, isomorphic Jacobian. Therefore, a Jacobian, in principle, is all one needs to construct or describe its vector algebra, which is the reason [representation theory]({% post_url 2021-10-23-algebras-over-fields %}#representation-theory) works!
 
@@ -24,9 +24,9 @@ Before we actually get into the family of algebras called 'Clifford algebras', l
 
 ### Complex numbers and the orthogonal group
 
-Complex numbers are one of the most well-known algebras, in use ever since people tried to solve 'unsolvable' polynomial equations, such as $$i^2 = -1$$ . But complex numbers are hardly about 'inventing' solutions for such apparently bizarre equations. What's much more interesting is that by inventing these solutions, we've stumbled upon a [field](https://en.wikipedia.org/wiki/Field_(mathematics)), which is a mathematical structure obeying the [field axioms](https://mathworld.wolfram.com/FieldAxioms.html).
+Complex numbers are one of the most well-known algebras, in use ever since people tried to solve 'unsolvable' polynomial equations, such as $$i^2 = -1$$. But complex numbers are hardly about 'inventing' solutions for such apparently bizarre equations. What's much more interesting is that by inventing these solutions, we've stumbled upon a [field](https://en.wikipedia.org/wiki/Field_(mathematics)), which is a mathematical structure obeying the [field axioms](https://mathworld.wolfram.com/FieldAxioms.html).
 
-One way to understand why the above happens is to construct a vector algebra isomorphic to the algebra of complex numbers and study corresponding structures. It turns out that the precise Jacobian characterizing the vector algebra belongs to the two-dimensional orthogonal group $$O \left( 2, \mathbb{R} \right)$$ , which dictates a rotation and scaling on vector spaces isomorphic to $$\mathbb{R}^2$$ .
+One way to understand why the above happens is to construct a vector algebra isomorphic to the algebra of complex numbers and study corresponding structures. It turns out that the precise Jacobian characterizing the vector algebra belongs to the two-dimensional orthogonal group $$O \left( 2, \mathbb{R} \right)$$ , which dictates a rotation and scaling on vector spaces isomorphic to $$\mathbb{R}^2$$.
 
 ### Derivation
 
@@ -39,7 +39,7 @@ As required, the above Jacobian has only $$2$$ degrees of freedom, the same as t
 
 $$\phi^k = \begin{pmatrix} a \\ b \end{pmatrix}$$
 
-Therefore, our problem becomes that of determining the coefficients $$B^{i^\prime}_{\phantom{i^\prime} ki}$$ . Recall that $$\phi^k B^{i^\prime}_{\phantom{i^\prime} ki}$$ produces a rotation and scaling described by $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ that acts on a vector on the right. For this reason, it is necessary to place $$\phi^k$$ on the left of $$B^{i^\prime}_{\phantom{i^\prime} ki}$$ as a _row_ matrix, even though it is a vector (typically represented as column matrices in some basis). This notational inconsistency will not emerge when we repeat this exercise in arbitrary coordinates (using tensors, as expected), but for now, we'll have to keep this little caveat in mind.
+Therefore, our problem becomes that of determining the coefficients $$B^{i^\prime}_{\phantom{i^\prime} ki}$$. Recall that $$\phi^k B^{i^\prime}_{\phantom{i^\prime} ki}$$ produces a rotation and scaling described by $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ that acts on a vector on the right. For this reason, it is necessary to place $$\phi^k$$ on the left of $$B^{i^\prime}_{\phantom{i^\prime} ki}$$ as a _row_ matrix, even though it is a vector (typically represented as column matrices in some basis). This notational inconsistency will not emerge when we repeat this exercise in arbitrary coordinates (using tensors, as expected), but for now, we'll have to keep this little caveat in mind.
 
 In the relation $$\phi^k B^{i^\prime}_{\phantom{i^\prime} ki} = \Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ , we get two matrix equations, one for each $$i^\prime$$ (corresponding to rows, as $$i^\prime$$ is upstairs),
 
@@ -98,7 +98,7 @@ Bingo! We have derived the algebra of complex numbers purely from their underlyi
 
 Here are some observations which can be drawn from above:
 
-1. The algebra we obtained is _unital_, i.e. there is a unity element $$\pmb{e}_0$$ which satisfies $$\pmb{\mathcal{B}} \left( \pmb{e}_0, \pmb{e}_i \right) = \pmb{e}_i \: \forall \: i$$ . Or, in the component form,
+1. The algebra we obtained is _unital_, i.e. there is a unity element $$\pmb{e}_0$$ which satisfies $$\pmb{\mathcal{B}} \left( \pmb{e}_0, \pmb{e}_i \right) = \pmb{e}_i \: \forall \: i$$. Or, in the component form,
 
 $$B^{i^\prime}_{\phantom{i^\prime}0i} = \delta^{i^\prime}_{\phantom{i^\prime}i}$$
 
@@ -106,9 +106,9 @@ $$B^{i^\prime}_{\phantom{i^\prime}0i} = \delta^{i^\prime}_{\phantom{i^\prime}i}$
 
 $$B^{i^\prime}_{\phantom{i^\prime}ki} = B^{i^\prime}_{\phantom{i^\prime}ik}$$
 
-Furthermore, due to unitarity, $$B^{i^\prime}_{\phantom{i^\prime}0i} = B^{i^\prime}_{\phantom{i^\prime}i0} = \delta^{i^\prime}_{\phantom{i^\prime}i}$$ .
+Furthermore, due to unitarity, $$B^{i^\prime}_{\phantom{i^\prime}0i} = B^{i^\prime}_{\phantom{i^\prime}i0} = \delta^{i^\prime}_{\phantom{i^\prime}i}$$.
 
-3. The algebra is _associative_, i.e. $$\pmb{\mathcal{B}} \left( \pmb{\mathcal{B}} \left( \pmb{e}_i, \pmb{e}_j  \right) , \pmb{e}_k \right) = \pmb{\mathcal{B}} \left( \pmb{e}_i, \pmb{\mathcal{B}} \left( \pmb{e}_j, \pmb{e}_k \right) \right)$$ . A simple expansion of this equation, followed by the application of bilinearity and linear independence reveals,
+3. The algebra is _associative_, i.e. $$\pmb{\mathcal{B}} \left( \pmb{\mathcal{B}} \left( \pmb{e}_i, \pmb{e}_j  \right) , \pmb{e}_k \right) = \pmb{\mathcal{B}} \left( \pmb{e}_i, \pmb{\mathcal{B}} \left( \pmb{e}_j, \pmb{e}_k \right) \right)$$. A simple expansion of this equation, followed by the application of bilinearity and linear independence reveals,
 
 $$B_{\phantom{j^{\prime}}ij}^{j^{\prime}} \: B_{\phantom{k^{\prime\prime}}j^{\prime}k}^{k^{\prime\prime}} = B_{\phantom{k^{\prime\prime}}ik^{\prime}}^{k^{\prime\prime}} \: B_{\phantom{k^{\prime}}jk}^{k^{\prime}}$$
 
@@ -120,13 +120,13 @@ Any algebra which satisfies the first and third properties — unitarity and ass
 
 Let us now derive the algebra of complex numbers, encoded in $$B^{i^\prime}_{\phantom{i^\prime} ki}$$ , in coordinate-independent form. But in doing so, we can never find the components of $$B^{i^\prime}_{\phantom{i^\prime} ki}$$ , as they would depend on the coordinate system (and hence, so would the components of bilinear products of the basis vectors). Instead, we can relate $$B^{i^\prime}_{\phantom{i^\prime} ki}$$ in the tensor form to other known tensors.
 
-By the way, note that when we say 'complex numbers in arbitrary coordinates', we refer to the _vector_ algebra of $$O \left( 2, \mathbb{R} \right)$$ when it acts on a vector space isomorphic to $$\mathbb{R}^2$$ . As an artefact of dealing with vectorial objects, we cannot trust components in any form, as they are not coordinate-independent.
+By the way, note that when we say 'complex numbers in arbitrary coordinates', we refer to the _vector_ algebra of $$O \left( 2, \mathbb{R} \right)$$ when it acts on a vector space isomorphic to $$\mathbb{R}^2$$. As an artefact of dealing with vectorial objects, we cannot trust components in any form, as they are not coordinate-independent.
 
 In contrast, in the _scalar_ treatment of complex numbers, where the basis is a set of scalars, 'vectors' and their components are informationally equivalent, implying invariance of the components themselves.
 
 ### Strategy
 
-Like before, our procedure to find $$B^{i^\prime}_{\phantom{i^\prime} ki}$$ is to write down $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ representing $$O \left( 2, \mathbb{R} \right)$$ , pack its degrees of freedom into $$\phi^k$$ and solve for $$B^{i^\prime}_{\phantom{i^\prime} ki}$$ .
+Like before, our procedure to find $$B^{i^\prime}_{\phantom{i^\prime} ki}$$ is to write down $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ representing $$O \left( 2, \mathbb{R} \right)$$ , pack its degrees of freedom into $$\phi^k$$ and solve for $$B^{i^\prime}_{\phantom{i^\prime} ki}$$.
 
 But now that we have freed ourselves of specific coordinate systems like the Cartesian system, how do we proceed with the above? For instance, how can we describe orthogonal Jacobians $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ in a coordinate-invariant manner?
 
@@ -142,7 +142,7 @@ The above points motivate us to lay out the following plan to achieve our goal:
 
 2. Using the arbitrary basis, we will represent orthogonal matrices as linear combinations of basis orthogonal matrices.
 
-3. Next, we will construct an operator which maps every basis Jacobian to the basis vector belonging to the vector space of $$\phi^k$$ . This will allow us to set up an equation where we can solve for $$B^{i^\prime}_{\phantom{i^\prime} ki}$$ .
+3. Next, we will construct an operator which maps every basis Jacobian to the basis vector belonging to the vector space of $$\phi^k$$. This will allow us to set up an equation where we can solve for $$B^{i^\prime}_{\phantom{i^\prime} ki}$$.
 
 Let us get started!
 
@@ -160,6 +160,6 @@ $$
 \end{align}
 $$
 
-where $$\left\{ \pmb{\sigma}_j \right\}$$ is a basis for $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ and $$\left\{ \pmb{\theta}^i \right\}$$ is the covector basis in the space of $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ .
+where $$\left\{ \pmb{\sigma}_j \right\}$$ is a basis for $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$ and $$\left\{ \pmb{\theta}^i \right\}$$ is the covector basis in the space of $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$.
 
 We also want to map each $$\pmb{\sigma}_j = \sigma^{i^\prime}_{\phantom{i^\prime} ij} \: \pmb{e}_{i^\prime} \otimes \pmb{\theta}^i$$  to $$\pmb{e}_j$$ , the corresponding basis vector.

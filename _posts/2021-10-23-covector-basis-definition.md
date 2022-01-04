@@ -12,7 +12,7 @@ $$\pmb{\theta}^i \left( \pmb{e}_j \right) = \delta^i_{\phantom{i} j}$$
 
 Where $$\delta^i_{\phantom{i} j}$$ represents the Kronecker delta. But where does the above definition even come from? Well, turns out it's not so mysterious after all.
 
-Say a covector $$\pmb{\phi}$$ acts on a vector $$\pmb{x}$$ . In the component form,
+Say a covector $$\pmb{\phi}$$ acts on a vector $$\pmb{x}$$. In the component form,
 
 $$\pmb{\phi} \left( \pmb{x} \right) = \left( \phi_i \: \pmb{\theta}^i \right) \left( x^j \: \pmb{e}_j \right)$$
 
@@ -20,7 +20,7 @@ By multilinearity,
 
 $$\pmb{\phi} \left( \pmb{x} \right) = \phi_i \: \pmb{\theta}^i \left( \pmb{e}_j \right) \: x^j$$
 
-We want the result of $$\pmb{\phi} \left( \pmb{x} \right)$$ to be invariant. The simplest way to do so is to define it to be a scalar of the form $$\phi_j \: x^j$$ . Therefore,
+We want the result of $$\pmb{\phi} \left( \pmb{x} \right)$$ to be invariant. The simplest way to do so is to define it to be a scalar of the form $$\phi_j \: x^j$$. Therefore,
 
 $$
 \begin{align}
