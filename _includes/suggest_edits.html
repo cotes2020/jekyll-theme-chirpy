@@ -1,10 +1,5 @@
 {% assign anchor_url = site.repository | append: '/edit/' | append: site.default_branch %}
-{% if page.notes == true %}
-  {% assign name = page.path | remove: '_notes/' | remove: '.md' %}
-  {% assign edit_link = anchor_url | append: '/assets/notes/' | append: name | append: '/' | append: name | append: '.tex' %}
-{% else %}
-  {% assign edit_link = anchor_url | append: '/' | append: page.path %}
-{% endif %}
+{% assign edit_link = anchor_url | append: '/' | append: page.path %}
 <span>
   <a href='{{edit_link}}'><i class='fas fa-edit'></i> Suggest edits</a>
 </span>

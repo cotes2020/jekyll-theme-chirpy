@@ -111,9 +111,6 @@ collections:
   tabs:
     output: true
     sort_by: order
-  notes:
-    output: true
-    sort_by: date
 
 
 defaults:
@@ -145,13 +142,6 @@ defaults:
       layout: page
       permalink: /:title/
       dynamic_title: true    # Hide title in mobile screens.
-  - scope:
-      path: '_notes'
-    values:
-      layout: post
-      author: 'Siddhartha Bhattacharjee'
-      notes: true
-      permalink: /notes/:title/
 
 sass:
   style: compressed

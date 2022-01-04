@@ -5,15 +5,9 @@ layout: page
 
 {% include lang.html %}
 
-{% if page.title == 'Notes' %}
-  {% assign collection = site.notes %}
-{% else %}
-  {% assign collection = site.posts %}
-{% endif %}
-
 <div id="archives" class="pl-xl-2">
 
-{% for post in collection %}
+{% for post in site.posts %}
   {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
   {% capture pre_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
   {% if forloop.first %}

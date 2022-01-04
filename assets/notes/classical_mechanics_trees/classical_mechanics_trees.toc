@@ -1,6 +1,0 @@
-\babel@toc {english}{}\relax 
-\contentsline {section}{\numberline {1}Graph Theory: Motivation}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Discrete systems}{1}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Update structure}{2}{subsection.1.2}%
-\contentsline {section}{\numberline {2}Classical Mechanics and Trees}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Some principles of classical physics}{4}{subsection.2.1}%
