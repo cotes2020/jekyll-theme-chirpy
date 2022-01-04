@@ -56,9 +56,10 @@
     {% assign _height = nil %}
     {% assign _src = nil %}
 
-    {% assign _left = _img_snippet | split: '/>' | first %}
-    {% assign _right = _img_snippet | replace: _left, '' %}
+    {% assign _left = _img_snippet | split: '>' | first %}
+    {% assign _right = _img_snippet | remove: _left %}
 
+    {% assign _left = _left | remove: ' /' %}
     {% assign _left = _left | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
     {% assign _attrs = _left | split: ' ' %}
 
