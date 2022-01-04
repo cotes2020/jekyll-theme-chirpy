@@ -19,7 +19,7 @@ $$d \left( \pmb{u}, \pmb{v} \right) = \sqrt{ \sum_{i=1}^n \left( v_i - u_i \righ
 
 Every Euclidean space has an _origin_ $$\pmb{0}$$, represented by the coordinates $$\left( 0, 0, \overset{n \text{ times}}{\dots}, 0 \right)$$. Then, the _norm_ of a vector in Euclidean space is defined as $$\lvert \pmb{u} \rvert = d \left( \pmb{u}, \pmb{0} \right) = d \left( \pmb{0}, \pmb{u} \right)$$. I.e., in Cartesian coordinates,
 
-$$\lvert \pmb{u} \rvert = \sum_{i=1}^n u_i^2$$
+$$\lvert \pmb{u} \rvert = \sqrt{\sum_{i=1}^n u_i^2}$$
 
 Furthermore, a Euclidean space is equipped with a symmetric bilinear form, the _dot product_ $$\cdot : \mathbb{R^n} \times \mathbb{R}^n \mapsto \mathbb{R}$$, defined using the [polarization identity](https://en.wikipedia.org/wiki/Polarization_identity) as,
 
