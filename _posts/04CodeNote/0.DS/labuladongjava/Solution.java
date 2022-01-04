@@ -36,6 +36,9 @@ public class Solution {
     public static void main(String[] args) {
         int[] nums = new int[]{1,2,2};
         // System.out.println(reverseBetween(nums)); 
+        String hr = new String("hieihipds");
+        int x = hr.indexOf("x");
+        System.out.println(x);
     } 
 
     
