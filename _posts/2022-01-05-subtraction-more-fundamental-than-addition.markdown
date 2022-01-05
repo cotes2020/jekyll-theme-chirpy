@@ -100,4 +100,4 @@ With the above identity being destroyed, the idea of choosing basis vectors to r
 
 All-in-all, we have a neat picture of subtraction: it is more fundamental than addition, upto scalars. By 'fundamental', I mean 'well-defined in a large number of scenarios'.
 
-So, that's it, folks! Thanks a lot for reading up to here! If you like reading my posts, do leave a like in the comments section, it greatly motivates me to write more posts like these! :)
+So, that's it, folks! Thanks a lot for reading up to here! If you like reading my posts, do leave a thumbs up in the comments section, it greatly motivates me to write more posts like these! :)
