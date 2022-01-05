@@ -50,7 +50,7 @@
     <div id="topbar-title">
       {% if page.layout == 'home' %}
         {{- site.data.locales[lang].title | default: site.title -}}
-      {% elsif page.collection == 'tabs' or page.dynamic_title %}
+      {% elsif page.collection == 'tabs' or page.layout == 'page' %}
         {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
         {{- site.data.locales[lang].tabs[tab_key] | default: page.title -}}
       {% else %}
