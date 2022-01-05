@@ -82,7 +82,7 @@ The key here is that since $$\pmb{w} \in \mathbb{R}^n$$ and _not_ $$\mathbb{A}^n
 
 We've so far learnt that subtraction is immune to the generality introduced by choosing affine spaces over Euclidean spaces. However, in the process, an idea has been used informally without making it more rigorous for application to affine spaces: that of subtraction itself!
 
-If you read this post till here, you might've asked: if there isn't a unique notion of $$- \pmb{u}$$ given some $$\pmb{u} \in \mathbb{A}^n$$, what does the expression $$\pmb{v} - \pmb{u}$$ mean? Well, it doesn't mean adding $$- \pmb{u}$$ to $$\pmb{v}$$ anymore! Rather, $$-$$ is an operator on its own, defined as,
+If you read this post till here, you might've asked: if there isn't a unique notion of $$- \pmb{u}$$ given some $$\pmb{u} \in \mathbb{A}^n$$, what does the expression $$\pmb{v} - \pmb{u}$$ mean? Well, it doesn't mean adding $$- \pmb{u}$$ to $$\pmb{v}$$ anymore! Rather, $$-$$ is an operator on its own, $$- : \mathbb{A}^n \times \mathbb{A}^n \mapsto \mathbb{R}^n$$, defined as,
 
 $$\left( \pmb{v} - \pmb{u} \right)_i = v_i - u_i$$
 
@@ -90,7 +90,7 @@ It must be made clear that the subtraction operator appearing on the right hand 
 
 ## Conclusion
 
-The previous paragraph may give rise to a further question: why must we restrict ourselves to a scalar version of subtraction which works as $$-k = \left( -1 \right) k$$? If we don't, the components of vectors in affine space are no longer elements of $$\mathbb{R}$$, but $$\mathbb{A}$$. But there is no unique bilinear map $$\mathbb{A}^n \mapsto \mathbb{A}$$. As a result, we cannot say, for instance, that the first component of a vector with coordinates $$\left( x, y, z \right)$$ is indeed $$x$$ and not $$x+h$$ for some arbitrary $$h$$. As a consequence, the following fact about affine spaces, expressed in Cartesian coordinates, is destroyed,
+The previous paragraph may give rise to a further question: why must we restrict ourselves to a scalar version of subtraction which works as $$-k = \left( -1 \right) k$$? If we don't, the components of vectors in affine space are no longer elements of $$\mathbb{R}$$, but $$\mathbb{A}$$. But there is no unique bilinear map $$\mathbb{R}^n \mapsto \mathbb{A}$$. As a result, we cannot say, for instance, that the first component of a vector in $$\mathbb{R}^n$$ with coordinates $$\left( x, y, z \right)$$ is indeed $$x$$ and not $$x+h$$ for some arbitrary $$h$$. As a consequence, the following fact about affine spaces, expressed in Cartesian coordinates, is destroyed,
 
 $$\pmb{u} = \sum_{i=1}^n u_i \pmb{e}_i$$
 
