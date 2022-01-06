@@ -23,6 +23,6 @@ graph TD
     --> 3(Physics)
 ```
 
-I will be posting on topics from the above fields that I find interesting, such as: analysis, abstract algebra, discrete mathematics, geometry, classical mechanics, field  theory (including general relativity), quantum mechanics, ontology, consciousness, free will and so on. I will assume the reader is aware of some of the foundational mathematics underlying these ideas (save the ones to do with ontology, which involves nearly no math). However, there are plenty of posts which start from basic concepts and examples, whose essence I hope to capture without involving heavy mathematical machinery.
+I will be posting on topics from the above fields that I find interesting, such as: analysis, abstract algebra, discrete mathematics, geometry, classical mechanics, field  theory (including general relativity), quantum mechanics, consciousness, free will and so on. I will assume the reader is aware of some of the foundational mathematics underlying these ideas (save the ones to do with ontology, which involves nearly no math). However, there are plenty of posts which start from basic concepts and examples, whose essence I hope to capture without involving heavy mathematical machinery.
 
 But it is the reader who must judge me. Criticism, suggestions and questions are welcome on this site, as they only add more to this journey into the Cosmic landscape. Let's begin!
