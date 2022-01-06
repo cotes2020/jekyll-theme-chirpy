@@ -7,7 +7,9 @@ toc: true
 image:
 ---
 
-[toc]
+- [Symmetric Encryption](#symmetric-encryption)
+  - [strength](#strength)
+  - [weaknesses](#weaknesses)
 
 --- 
  
@@ -24,7 +26,8 @@ image:
 ---
 
 
-## The major strength:
+## strength
+
 - Faster
   - Symmetric key encryption is very fast,
   - often 1,000 to 10,000 times faster than asymmetric algorithms.
@@ -38,15 +41,18 @@ image:
 ## weaknesses
 
 - Key distribution
-  - major problem.
-  - Parties must have a secure method of exchanging the secret key before establishing communications with a symmetric key protocol.
-  - If a secure electronic channel is not available, offline key distribution method must be used (out-of-band exchange).
+  - major problem
+  - need secure method of exchanging the secret key before establishing communications with a symmetric key protocol.
+  - If a secure electronic channel is not available, offline key distribution method must be used  (out-of-band exchange).
 
-- does not implement nonrepudiation.
+- does not implement non-repudiation.
   - Because any communicating party can encrypt and decrypt messages with the shared secret key
   - no way to prove where a given message originated.
 
-- not scalable.
+> Non-repudiation is the assurance that someone cannot deny the validity of something. 
+> Non-repudiation is a legal concept
+
+- not scalable
   - Extremely difficult for large groups to communicate using symmetric key cryptography.
   - Secure private communication between individuals in the group could be achieved only if each possible combination of users shared a private key.
   - example:
@@ -58,7 +64,6 @@ image:
   - It is primarily employed to
     - perform bulk encryption
     - and provides only for the security service of confidentiality.
-
 
 
 - Keys must be regenerated often.
