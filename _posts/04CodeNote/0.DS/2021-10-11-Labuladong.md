@@ -1571,9 +1571,7 @@ class Solution {
                 pre=cur;
                 cur=1;
             }
-            else {
-                cur++;
-            }
+            else cur++; 
             i++;
         }
         return res+=Math.min(pre, cur);

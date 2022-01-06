@@ -28,14 +28,17 @@ image:
 - Faster
   - Symmetric key encryption is very fast,
   - often 1,000 to 10,000 times faster than asymmetric algorithms.
-- By nature of the mathematics involved, symmetric key cryptography also naturally lends itself to hardware implementations, creating the opportunity for even higher-speed operations.
+- hardware implementations
+  - By nature of the mathematics involved, symmetric key cryptography also naturally lends itself to hardware implementations, creating the opportunity for even higher-speed operations.
 
 
 ---
 
 
-## weaknesses:
-- Key distribution is major problem.
+## weaknesses
+
+- Key distribution
+  - major problem.
   - Parties must have a secure method of exchanging the secret key before establishing communications with a symmetric key protocol.
   - If a secure electronic channel is not available, offline key distribution method must be used (out-of-band exchange).
 
