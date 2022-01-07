@@ -1335,6 +1335,10 @@ $sidebar-display: "sidebar-display";
     min-width: 150px;
   }
 
+  #search-hints {
+    display: none;
+  }
+
   #search-result-wrapper {
     margin-top: 3rem;
   }
@@ -1490,10 +1494,6 @@ $sidebar-display: "sidebar-display";
       position: relative;
       right: 24.3%;
     }
-  }
-
-  #search-hints {
-    display: none;
   }
 
   .post-content {
