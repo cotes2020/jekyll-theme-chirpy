@@ -3,9 +3,8 @@ dist: bionic
 
 language: minimal
 
-branches:
-  only:
-    - /^release\/(\d)+(\.(\d)+){1}$/
+# only run on tags
+if: branch =~ /^v(\d)+(\.(\d)+){2}$/ OR tag IS present
 
 jobs:
   include:
@@ -15,22 +14,13 @@ jobs:
       addons:
         apt:
           packages:
-            # required to avoid SSL error (for htmlproofer)
-            - libcurl4-openssl-dev
-      cache:
-        directories:
-          - $TRAVIS_BUILD_DIR/vendor/bundle
-      before_install:
-        # match the Gemfile.lock, travis' bundler is 2.1.2
-        - gem install bundler:2.2.4
-        - bundle config path 'vendor/bundle'
+            - libcurl4-openssl-dev  # to avoid SSL error (for htmlproofer)
       install:
-        # overriding to drop the travis `--development` flag
-        - bundle install --jobs=3 --retry=3
+        - bundle install --jobs=3 --retry=3  # overriding to drop the travis `--development` flag
       script:
         - eval "$BUILD_CMD"
       git:
-        depth: false # for posts' lastmod
+        depth: false  # for posts' lastmod
 
     - name: Flush Starter
       script: eval "$FLUSH_STARTER"
