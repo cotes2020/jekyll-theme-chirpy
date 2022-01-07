@@ -9,19 +9,19 @@ image:
 
 - [Cryptography - Symmetric Block Ciphers](#cryptography---symmetric-block-ciphers)
   - [Block Cipher](#block-cipher)
-  - [Data Encryption Standard (DES) `64-bit text, 56-bit keys`](#data-encryption-standard-des-64-bit-text-56-bit-keys)
-  - [Triple DES (3DES) `64-bit text, 3 x 56 (168)-bit DES keys`](#triple-des-3des-64-bit-text-3-x-56-168-bit-des-keys)
-  - [IDEA International Data Encryption Algorithm `64-bit text, 128-bit key`](#idea-international-data-encryption-algorithm-64-bit-text-128-bit-key)
-  - [Blowfish `64-bit text, 32-448 bits key`](#blowfish-64-bit-text-32-448-bits-key)
-  - [Twofish `128-bit blocks, 128, 192, 256-bit keys`](#twofish-128-bit-blocks-128-192-256-bit-keys)
-  - [Advanced Encryption Standard (AES) `128, 192, 256 bit key`](#advanced-encryption-standard-aes-128-192-256-bit-key)
-    - [AES Round Structure](#aes-round-structure)
-- [stream cipher](#stream-cipher)
-  - [Ron’s Code / Rivest Cipher.](#rons-code--rivest-cipher)
+    - [Data Encryption Standard (DES) `64-bit text, 56-bit keys`](#data-encryption-standard-des-64-bit-text-56-bit-keys)
+    - [Triple DES (3DES) `64-bit text, 3 x 56 (168)-bit DES keys`](#triple-des-3des-64-bit-text-3-x-56-168-bit-des-keys)
+    - [IDEA International Data Encryption Algorithm `64-bit text, 128-bit key`](#idea-international-data-encryption-algorithm-64-bit-text-128-bit-key)
+    - [Blowfish `64-bit text, 32-448 bits key`](#blowfish-64-bit-text-32-448-bits-key)
+    - [Twofish `128-bit blocks, 128, 192, 256-bit keys`](#twofish-128-bit-blocks-128-192-256-bit-keys)
+    - [Advanced Encryption Standard (AES) `128, 192, 256 bit key`](#advanced-encryption-standard-aes-128-192-256-bit-key)
+      - [AES Round Structure](#aes-round-structure)
+    - [Skipjack algorithm `64-bit`](#skipjack-algorithm-64-bit)
+  - [stream cipher](#stream-cipher)
+    - [Ron’s Code / Rivest Cipher.](#rons-code--rivest-cipher)
     - [RC4 `40-2048 bits`](#rc4-40-2048-bits)
     - [RC5 `32, 64, or 128 bits`](#rc5-32-64-or-128-bits)
     - [RC6](#rc6)
-  - [Skipjack algorithm `64-bit`](#skipjack-algorithm-64-bit)
 
 ---  
 
@@ -42,7 +42,7 @@ Block Cipher
 
 ## Block Cipher
 
-## Data Encryption Standard (DES) `64-bit text, 56-bit keys`
+### Data Encryption Standard (DES) `64-bit text, 56-bit keys`
 
 The US government published the Data Encryption Standard in 1977 as a proposed standard cryptosystem for all government communications. was developed in response to the NBS/NIST, issuing a request for proposals for a standard cryptographic algorithm in 1973.
 
@@ -85,7 +85,7 @@ DES is a 64-bit block cipher that has 5 modes of operation:
 ---
 
 
-## Triple DES (3DES) `64-bit text, 3 x 56 (168)-bit DES keys`
+### Triple DES (3DES) `64-bit text, 3 x 56 (168)-bit DES keys`
 
 the Data Encryption Standard 56-bit key is no longer considered adequate in the face of modern cryptanalytic techniques and supercomputing power. 
 
@@ -117,7 +117,7 @@ Nested application of DES with three different keys KA, KB, and KC,
 
 ---
 
-## IDEA International Data Encryption Algorithm `64-bit text, 128-bit key`
+### IDEA International Data Encryption Algorithm `64-bit text, 128-bit key`
 The International Data Encryption Algorithm (IDEA) 
 - developed in response to complaints about the insufficient key length of the DES algorithm. 
 - 国际数据加密算法 
@@ -135,7 +135,7 @@ The IDEA algorithm is patented by its Swiss developers.
 
 ---
 
-## Blowfish `64-bit text, 32-448 bits key`
+### Blowfish `64-bit text, 32-448 bits key`
 
 - Bruce Schneier: to replace DES.
 - strong symmetric block cipher 
@@ -160,7 +160,7 @@ The IDEA algorithm is patented by its Swiss developers.
 ---
 
 
-## Twofish `128-bit blocks, 128, 192, 256-bit keys`
+### Twofish `128-bit blocks, 128, 192, 256-bit keys`
 developed by Bruce Schneier (also the creator of Blowfish) was another one of the AES finalists.
 - a block cipher. 
 - related to Blowfish, but encrypts data in 128-bit blocks
@@ -177,7 +177,7 @@ Twofish uses two techniques not found in other algorithms:
 ---
 
 
-## Advanced Encryption Standard (AES) `128, 192, 256 bit key`
+### Advanced Encryption Standard (AES) `128, 192, 256 bit key`
 
 U.S. National Institute for Standards and Technology (NIST)
 - 1997, NIST want replace DES.
@@ -220,15 +220,14 @@ strengths
 
 ---
 
-### AES Round Structure
+#### AES Round Structure
 
-The 128-bit version of the AES encryption algorithm proceeds in ten rounds.
+The 128-bit version of the AES encryption algorithm proceeds in `ten rounds`.
 - Each round performs an invertible transformation on a 128-bit array, called state.
 - The initial state X0 = <font color=blue> XOR of the plaintext P with the key K </font>
   - X0 = P XOR K.
 - The ciphertext C is the output of the final round:
   - C = X10.
-	￼
 
 Each round is built from 4 basic steps:
 1. SubBytes step: an S-box substitution step.
@@ -265,13 +264,37 @@ byte[] plaintext1 = aesCipher.doFinal(ciphertext);
 ---
 
 
-# stream cipher
+### Skipjack algorithm `64-bit`
+
+
+- block ciphers
+  - 64-bit blocks of text. 
+  - 80-bit key
+- supports the same 4 modes of operation supported by DES. 
+
+- Skipjack was quickly embraced by the US government
+  - provides the cryptographic routines supporting the Clipper and Capstone encryption chips. 
+  - approved for use by the US government in Federal Information Processing Standard (FIPS) 185, the Escrowed Encryption Standard (EES). 
+
+- However, Skipjack has an added twist—it supports the escrow of encryption keys. 
+- Two government agencies, NIST and the Department of the Treasury, hold a portion of the information required to reconstruct a Skipjack key. 
+- When law enforcement authorities obtain legal authorization, they contact the two agencies, obtain the pieces of the key, and are able to decrypt communications between the affected parties. 
+- Skipjack and the Clipper chip not used by the cryptographic community at large because of its mistrust不信任 of the escrow procedures in place within the US government. 
+
+
 
 ---
 
-## Ron’s Code / Rivest Cipher. 
+
+## stream cipher
+
+---
+
+### Ron’s Code / Rivest Cipher. 
 
 Ron Rivest invented several versions of RC 
+
+
 
 ### RC4 `40-2048 bits`
 The most commonly used version is RC4 (ARC4)
@@ -305,28 +328,6 @@ The most commonly used version is RC4 (ARC4)
 
 
 ---
-
-
-## Skipjack algorithm `64-bit`
-
-
-- block ciphers
-  - 64-bit blocks of text. 
-  - 80-bit key
-- supports the same 4 modes of operation supported by DES. 
-
-- Skipjack was quickly embraced by the US government
-  - provides the cryptographic routines supporting the Clipper and Capstone encryption chips. 
-  - approved for use by the US government in Federal Information Processing Standard (FIPS) 185, the Escrowed Encryption Standard (EES). 
-
-- However, Skipjack has an added twist—it supports the escrow of encryption keys. 
-- Two government agencies, NIST and the Department of the Treasury, hold a portion of the information required to reconstruct a Skipjack key. 
-- When law enforcement authorities obtain legal authorization, they contact the two agencies, obtain the pieces of the key, and are able to decrypt communications between the affected parties. 
-- Skipjack and the Clipper chip not used by the cryptographic community at large because of its mistrust不信任 of the escrow procedures in place within the US government. 
-
----
-
-
 
 
 
