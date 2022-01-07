@@ -4,6 +4,7 @@
 
 $(function() {
   const $topbarWrapper = $("#topbar-wrapper");
+  const $topbarTitle = $("#topbar-title");
   const $panel = $("#panel-wrapper");
   const $searchInput = $("#search-input");
 
@@ -54,7 +55,7 @@ $(function() {
   }
 
   $(window).scroll(function(event) {
-    if ($("#topbar-title").is(":hidden")) {
+    if ($topbarTitle.is(":hidden")) {
       didScroll = true;
     }
   });
