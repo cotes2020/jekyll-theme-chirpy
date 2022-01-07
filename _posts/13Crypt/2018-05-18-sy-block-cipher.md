@@ -7,24 +7,40 @@ toc: true
 image:
 ---
 
-[toc]
+- [Cryptography - Symmetric Block Ciphers](#cryptography---symmetric-block-ciphers)
+  - [Block Cipher](#block-cipher)
+  - [Data Encryption Standard (DES) `64-bit text, 56-bit keys`](#data-encryption-standard-des-64-bit-text-56-bit-keys)
+  - [Triple DES (3DES) `64-bit text, 3 x 56 (168)-bit DES keys`](#triple-des-3des-64-bit-text-3-x-56-168-bit-des-keys)
+  - [IDEA International Data Encryption Algorithm `64-bit text, 128-bit key`](#idea-international-data-encryption-algorithm-64-bit-text-128-bit-key)
+  - [Blowfish `64-bit text, 32-448 bits key`](#blowfish-64-bit-text-32-448-bits-key)
+  - [Twofish `128-bit blocks, 128, 192, 256-bit keys`](#twofish-128-bit-blocks-128-192-256-bit-keys)
+  - [Advanced Encryption Standard (AES) `128, 192, 256 bit key`](#advanced-encryption-standard-aes-128-192-256-bit-key)
+    - [AES Round Structure](#aes-round-structure)
+- [stream cipher](#stream-cipher)
+  - [Ron’s Code / Rivest Cipher.](#rons-code--rivest-cipher)
+    - [RC4 `40-2048 bits`](#rc4-40-2048-bits)
+    - [RC5 `32, 64, or 128 bits`](#rc5-32-64-or-128-bits)
+    - [RC6](#rc6)
+  - [Skipjack algorithm `64-bit`](#skipjack-algorithm-64-bit)
 
 ---  
 
 
-# Block Ciphers
+# Cryptography - Symmetric Block Ciphers
 
 > Symmetric encryption algorithm is recommended by the U.S. National Institute of Standards and Technology (NIST):
 
-
-Data Encryption Standard (DES)
-Triple DES (3DES)
-Advanced Encryption Standard (AES)
-
+Block Cipher
+- Data Encryption Standard (DES) `64-bit text, 56-bit keys` 已能被暴力破解
+- Triple DES (3DES) `64-bit text, 3 x 56 (168)-bit DES keys` isn’t used as often as AES today.
+- IDEA International Data Encryption Algorithm `64-bit text, 128-bit key` Pretty Good Privacy (PGP) secure email package
+- Blowfish `64-bit text, 32-448 bits key` widely use today
+- Twofish `128-bit blocks, 128, 192, 256-bit keys`
+- Advanced Encryption Standard (AES) attack not currently possible  
 
 ---
 
-
+## Block Cipher
 
 ## Data Encryption Standard (DES) `64-bit text, 56-bit keys`
 
@@ -32,7 +48,7 @@ The US government published the Data Encryption Standard in 1977 as a proposed s
 
 - Developed by IBM and adopted by NIST in 1977
 - Due to flaws in the algorithm, cryptographers no longer consider DES secure
-- DES已能被暴力破解
+- DES 已能被暴力破解
   - onsidered adequate to resist a brute-force attack for up to 90 years.
   - but now small 56 bits key and can be broken with brute force in minutes. 
 - DES was superseded by the AES in December 2001. 
@@ -42,15 +58,15 @@ The US government published the Data Encryption Standard in 1977 as a proposed s
 
 - 64-bit blocks and 56-bit keys
   - 64 bits of plain text generate 64-bit of ciphertext. 
-- Small key space makes exhaustive search attack feasible since late 90s
+  - Small key space makes exhaustive search attack feasible since late 90s
   
-- DES uses a long series of exclusive OR (XOR) operations to generate the ciphertext. 
+- DES uses a long series of `exclusive OR (XOR) operations` to generate the ciphertext. 
 - This process is repeated 16 times for each encryption/decryption operation. 
 - Each repetition is commonly referred to as a round of encryption, explaining the statement that DES performs 16 rounds of encryption. 
 
 
 DES uses a 56-bit key to drive the encryption and decryption process. 
-- However, you may read in some literature that DES uses a 64-bit key. This is not an inconsistency矛盾, logical explanation:
+- However, you may read in some literature that DES uses a 64-bit key. This is not an inconsistency 矛盾, logical explanation:
 - The DES specification calls for a 64-bit key. 
   - only 56 bits actually contain keying information. 
   - remaining 8 bits contain parity information to ensure that the other 56 bits are accurate. 
@@ -115,10 +131,7 @@ The International Data Encryption Algorithm (IDEA)
 
 The IDEA algorithm is patented by its Swiss developers. 
 - However, they have granted an unlimited license to anyone who wants to use IDEA for noncommercial purposes. 
-- One popular implementation of IDEA is found in Phil Zimmerman’s popular Pretty Good Privacy (PGP) secure email package. 
-￼
-
-
+- One popular implementation of IDEA is found in Phil Zimmerman’s popular `Pretty Good Privacy (PGP) secure email package`. 
 
 ---
 
@@ -134,7 +147,7 @@ The IDEA algorithm is patented by its Swiss developers.
 - However, it extends IDEA’s key strength even further by allowing the use of variable-length keys, ranging from insecure 32 bits to extremely strong 448 bits. 
 - Obviously, the longer keys will result in a corresponding increase in encryption/decryption time. 
 - Blowfish faster than both IDEA and DES in some instances.
-- Part of the reason is that Blowfish encrypts data in smaller 64-bit blocks,  AES encrypts data in 128-bit blocks.
+- Part of the reason is that Blowfish encrypts data in smaller 64-bit blocks, AES encrypts data in 128-bit blocks.
 - Mr. Schneier released Blowfish for public use with no license required. 
 - Blowfish encryption is built into a number of commercial software products and operating systems. 
 - A number of Blowfish libraries are also available for software developers. 
@@ -171,9 +184,7 @@ U.S. National Institute for Standards and Technology (NIST)
 - five finalists, and ultimately chose Advanced Encryption Standard (AES).
 - October 2000, NIST announced that the Rijndael block cipher had been chosen as the replacement for DES.
 - November 2001, NIST released FIPS 197, which mandated the use of AES/Rijndael for the encryption of all sensitive but unclassified data by the US government.
-
-
-Advanced Encryption Standard (AES)
+ 
 
 - a <font color=red> strong symmetric block cipher </font>
   - Same key
