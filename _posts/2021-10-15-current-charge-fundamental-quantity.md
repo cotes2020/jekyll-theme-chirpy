@@ -82,7 +82,7 @@ One of the most important physicists ever, German physicist Max Planck, identifi
 
 3. **Gravitation**. The two giants when it comes to discovering the nature of gravitation are Newton and Einstein (admittedly, there are many more geniuses involved but Newton and Einstein were both the mightiest pioneers in the field in their times). Both used the _universal gravitational constant_ $$G$$, which encodes the strength of gravitational effects in this universe.
 
-4. **Information**.  Information is one of the most fundamental ideas in physics and mathematics. Every system in this universe contains some information, and the more disorder the system has, the more information is contained in it. I.e., the more information is required to characterize the state of that system. Much of 18th and 19th century physics revolved around the related idea of entropy, which is central to thermodynamics. Here, the so-called _Boltzmann's constant_ $$k_B$$ plays a crucial part. It encodes the relation between the entropy of a system and its number of macrostates corresponding to some state.
+4. **Information**.  Information is one of the most fundamental ideas in physics and mathematics. Every system in this universe contains some information, and the more disorder the system has, the more information is contained in it. I.e., the more information is required to characterize the state of that system. Much of 18th and 19th century physics revolved around the related idea of entropy, which is central to thermodynamics. Here, the so-called _Boltzmann's constant_ $$k_B$$ plays a crucial part. It encodes the relation between the entropy of a system and its number of microstates corresponding to some macrostate.
 
 ### The Planck units
 
