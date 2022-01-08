@@ -27,7 +27,7 @@ The two men then glare at each other. Charge's voice is rather feeble, and Curre
 
 "_What's this fight about, if I may, gentlemen?_", asked the bartender sincerely.
 
-"_Well, Current here thinks he's more fundamental than me. Clearly, he's not! I mean, look at our descriptions! Here_", Charge hands the bartender a sheet of chaged paper.
+"_Well, Current here thinks he's more fundamental than me. Clearly, he's not! I mean, look at our descriptions! Here_", Charge hands the bartender a sheet of paper.
 
 The bartender reads, "_Name, Charge. Age, as old as the universe, for charge is conserved. Hm. Nature, scalar. Favourite hobby, staying in equilibrium. Description: **charge is an intrinsic property of particles which interact with the electromagnetic field.**_"
 
