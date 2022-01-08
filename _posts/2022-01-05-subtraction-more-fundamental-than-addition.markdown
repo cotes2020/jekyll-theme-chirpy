@@ -35,7 +35,7 @@ An example of a Euclidean space used for over 2000 years is the geocentric pictu
 
 Galileo realized that the space we live in is not endowed with an absolute 'origin' whose location is irrefutable. For instance, the laws of science, as he realized, are the same in all inertial frames, and different inertial frames have different origins. He exposes his realization beautifully in [a thought experiment](https://en.wikipedia.org/wiki/Galileo%27s_ship#The_proposal) narrated by _Salviati_, his alter ego in _Dialogue Concerning the Two Chief World Systems_.
 
-In other words, physical space does not distinguish between coordinate systems centred at different origins. Or, the parameters living in physical space are invariant under shifting the origin, in whatever reference frame.
+In other words, physical space does not distinguish between coordinate systems centred at different origins. Or, the parameters living in physical space are invariant under shifting the origin of the concerned reference frame.
 
 This idea not only had important implications for physics, but also for mathematics. The purpose of mathematics is to study structures which are internally consistent. Since physical space forms such a consistent structure, it is the job of mathematics to build on it, using a formal approach. This is why the idea of affine spaces becomes important.
 
