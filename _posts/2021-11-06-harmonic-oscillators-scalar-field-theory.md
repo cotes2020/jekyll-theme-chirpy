@@ -100,7 +100,7 @@ $$T = 4 V \left( \phi \right) - \partial_\alpha \phi \: \partial^\alpha \phi$$
 
 For infinitesimal displacements of a continuous field $$\phi$$, its deformation is encoded in the _Cauchy strain tensor_ $$\epsilon_{\rho \sigma}$$,
 
-$$\epsilon_{\rho \sigma} = \partial_{[ \rho} \: u_{\sigma ]} = \frac{1}{2} \left( \partial_\rho u_\sigma + \partial_\sigma u_\rho \right)$$
+$$\epsilon_{\rho \sigma} = \partial_{( \rho} \: u_{\sigma )} = \frac{1}{2} \left( \partial_\rho u_\sigma + \partial_\sigma u_\rho \right)$$
 
 where $$u_\mu$$ is the displacement gradient defined as,
 
