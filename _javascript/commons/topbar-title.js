@@ -14,15 +14,20 @@ $(function() {
   }
 
   const defaultTitleText = $topbarTitle.text().trim();
-  let titleText = $pageTitle.text().trim();
+  let pageTitleText = $pageTitle.text().trim();
   let hasScrolled = false;
   let lastScrollTop = 0;
 
   if ($("#page-category").length || $("#page-tag").length) {
     /* The title in Category or Tag page will be "<title> <count_of_posts>" */
-    if (/\s/.test(titleText)) {
-      titleText = titleText.replace(/[0-9]/g, "").trim();
+    if (/\s/.test(pageTitleText)) {
+      pageTitleText = pageTitleText.replace(/[0-9]/g, "").trim();
     }
+  }
+
+  // When the page is scrolled down and then refreshed, the topbar title needs to be initialized
+  if ($pageTitle.offset().top < $(window).scrollTop()) {
+    $topbarTitle.text(pageTitleText);
   }
 
   let options = {
@@ -43,7 +48,7 @@ $(function() {
 
     if (isScrollDown) {
       if (heading.intersectionRatio === 0) {
-        $topbarTitle.text(titleText);
+        $topbarTitle.text(pageTitleText);
       }
     } else {
       if (heading.intersectionRatio === 1) {

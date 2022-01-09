@@ -2,7 +2,7 @@
   The Top Bar
 -->
 
-<div id="topbar-wrapper" class="row justify-content-center topbar-down">
+<div id="topbar-wrapper" class="row justify-content-center">
   <div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between">
     <span id="breadcrumb">
 
@@ -50,7 +50,7 @@
     <div id="topbar-title">
       {% if page.layout == 'home' %}
         {{- site.data.locales[lang].title | default: site.title -}}
-      {% elsif page.collection == 'tabs' or page.dynamic_title %}
+      {% elsif page.collection == 'tabs' or page.layout == 'page' %}
         {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
         {{- site.data.locales[lang].tabs[tab_key] | default: page.title -}}
       {% else %}
