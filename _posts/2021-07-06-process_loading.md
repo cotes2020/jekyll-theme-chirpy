@@ -134,7 +134,7 @@ The kernel then loads the parts specified in the LOAD directives in the PHT into
 
 Finally control can be transferred to the entry point of the program or to the interpreter, if linking is required.
 
-In case of a statically linked binary that's pretty much it, however with dynamically linked binaries a lot more magic has to go on.
+In case of a statically linked binary that's pretty much it, however with dynamically linked binaries a lot more has to go on.
 
 First the dynamic linker (contained within the interpreter) looks at the .dynamic section, whose address is stored in the PHT.
 
@@ -144,6 +144,6 @@ So the dynamic linker loads the needed libraries and performs relocations (eithe
 
 Finally control is transferred to the address given by the symbol `_start` in the binary. Normally some gcc/glibc startup code lives there, which in the end calls main()
 
-This was a quick beginner friendly resume of how a process is loaded in linux. There a more hidden magic performed by the kernel during this process. I recommend this [post](https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-4.html) to get a deeper look at code level
+This was a quick beginner friendly resume of how a process is loaded in linux. There is a lot more hidden magic performed by the kernel. I recommend this [post](https://0xax.gitbooks.io/linux-insides/content/SysCall/linux-syscall-4.html) to get a deeper look at code level
 
-I hope you learned new concepts with this article and triggered your curiosity to explore more
+I hope you learned new concepts and triggered your curiosity to explore more
