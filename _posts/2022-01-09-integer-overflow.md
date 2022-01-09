@@ -163,5 +163,5 @@ impossible to detect them after they have happened.  If an integer overflow
 takes place, the application cannot know that the calculation it has
 performed is incorrect, and it will continue under the assumption that it
 is.  Even though they can be difficult to exploit, and frequently cannot be
-exploited at all, they can cause unepected behaviour, which is never a good
+exploited at all, they can cause unexpected behaviour, which is never a good
 thing in a secure system.
