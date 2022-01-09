@@ -247,7 +247,7 @@ img[data-src] {
     }
   }
 
-  &.topbar-down > div {
+  [topbar-visible=true] & > div {
     top: 6rem;
   }
 }
@@ -570,10 +570,6 @@ img[data-src] {
   box-shadow: 0 0 8px 0 var(--btn-box-shadow) !important;
 }
 
-.topbar-up {
-  top: -3rem !important; /* same as topbar height. */
-}
-
 .no-text-decoration {
   @include no-text-decoration;
 }
@@ -876,6 +872,10 @@ $sidebar-display: "sidebar-display";
   z-index: 50;
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   background-color: var(--topbar-wrapper-bg);
+
+  [topbar-visible=false] & {
+    top: -$topbar-height; /* same as topbar height. */
+  }
 }
 
 #topbar {
@@ -1193,23 +1193,20 @@ $sidebar-display: "sidebar-display";
 
 /* hide sidebar and panel */
 @media all and (max-width: 849px) {
-  %slide {
-    -webkit-transition: transform 0.4s ease;
-    transition: transform 0.4s ease;
+  @mixin slide($append: null) {
+    $basic: transform 0.4s ease;
+    @if $append {
+      -webkit-transition: $basic, $append;
+      transition: $basic, $append;
+    } @else {
+      -webkit-transition: $basic;
+      transition: $basic;
+    }
   }
 
   html,
   body {
     overflow-x: hidden;
-  }
-
-  .footnotes ol > li {
-    padding-top: 3.5rem;
-    margin-top: -3.2rem;
-
-    &:first-child {
-      margin-top: -3.5rem;
-    }
   }
 
   [#{$sidebar-display}] {
@@ -1221,11 +1218,10 @@ $sidebar-display: "sidebar-display";
     #main-wrapper {
       transform: translateX(#{$sidebar-width});
     }
-
   }
 
   #sidebar {
-    @extend %slide;
+    @include slide;
 
     transform: translateX(-#{$sidebar-width}); // hide
     -webkit-transform: translateX(-#{$sidebar-width});
@@ -1238,7 +1234,7 @@ $sidebar-display: "sidebar-display";
   }
 
   #main-wrapper {
-    @extend %slide;
+    @include slide;
 
     padding-top: $topbar-height;
   }
@@ -1253,13 +1249,9 @@ $sidebar-display: "sidebar-display";
   }
 
   #topbar-wrapper {
-    @extend %slide;
+    @include slide(top 0.2s ease);
 
     left: 0;
-  }
-
-  .topbar-up {
-    top: 0 !important;
   }
 
   #main > div.row:first-child > div:nth-child(1),
@@ -1308,6 +1300,12 @@ $sidebar-display: "sidebar-display";
 
 } // max-width: 849px
 
+@media all and (max-width: 849px) and (orientation: portrait) {
+  [topbar-visible=false] #topbar-wrapper {
+    top: 0;
+  }
+}
+
 /* Phone & Pad */
 @media all and (min-width: 577px) and (max-width: 1199px) {
   footer > .d-flex > div {
@@ -1351,10 +1349,6 @@ $sidebar-display: "sidebar-display";
   #back-to-top {
     bottom: 5.5rem;
     right: 1.2rem;
-  }
-
-  .topbar-up {
-    box-shadow: none !important;
   }
 
   #topbar-title {
