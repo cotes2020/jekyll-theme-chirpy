@@ -7,9 +7,9 @@ tags: [under the hood, linux, security]
 
 ## Overview:
 
-Hello everyone, In this Post we will take a look at one of the most troublesome yet not very known type of software bugs: Integer overflows
+Hello everyone, In this Post we will take a look at one of the most troublesome yet not very known type of software bugs: Integer overflows.
 
-## back to school:
+## Back to school:
 
 ### Bits, bytes, and words
 The most fundamental unit of computer memory is the **bit**. A bit can be a tiny magnetic region on a hard disk, a tiny dent in the reflective material on a CD or DVD, or a tiny transistor on a memory stick. Whatever the physical implementation, the important thing to know about a bit is that, like a switch, it can only take one of two values: it is either “on” or “off”.
@@ -20,7 +20,7 @@ The number of bytes and words used for an individual data value will vary depend
 
 For example, the text  “hello”  would take up 5 bytes of storage, one per character. The text  “12345”  would also require 5 bytes. The integer 12,345 would take up 4 bytes (1 word), as would the integers 1 and 12,345,678. The real number 123.45 would take up 4 or 8 bytes, as would the values 0.00012345 and 12345000.0.
 
-### what is an integer ?
+### What is an integer ?
 An integer, in the context of computing, is a variable capable of
 representing a real number with no fractional part.  Integers are typically
 the same size as a pointer on the system they are compiled on (i.e. on a 32
@@ -52,10 +52,10 @@ A signed integer ranges from -2147483648 to 2147483647. An unsigned integer is a
 
 ## What is an integer overflow:
 
-We have two unsigned integers, a and b, both of which are 32 bits long.  We
-assign to a the maximum value a 32 bit integer can hold, and to b we assign
-1 We add a and b together and store the result in a third unsigned 32 bit
-integer called r:
+We have two unsigned integers, *a* and *b*, both of which are 32 bits long.  We
+assign to *a* the maximum value a 32 bit integer can hold, and to *b* we assign
+1 We add *a* and *b* together and store the result in a third unsigned 32 bit
+integer called *r*:
 
     a = 0xffffffff
     b = 0x1
@@ -78,7 +78,7 @@ To make it easier, imagine that you are driving you car and you already made 999
 
 Since an integer is a fixed size there is a fixed maximum value it can store.  When an attempt is made to store a value greater than this maximum value it is known as an integer overflow.  an **integer overflow** occurs when an arithmetic operation attempts to create a numeric value that is outside of the range that can be represented with a given number of digits – either higher than the maximum or lower than the minimum representable value. The ISO C99 standard says that an **integer overflow** causes "undefined behavior", meaning that compilers conforming to the standard may do anything they like from completely ignoring the overflow to aborting the program.  Most compilers seem to ignore the overflow, resulting in an unexpected or erroneous result being stored.
 
-## examples
+## Examples
 
 ### Example 1
 
@@ -150,8 +150,11 @@ We can see that we manage to put our score to the value `4294967295` (`0xfffffff
 
 ## Real world scenarios
 [The Explosion of the Ariane 5](https://hownot2code.com/2016/09/02/a-space-error-370-million-for-an-integer-overflow/).
+
 [Boeing 787 software crash](https://www.engadget.com/2015-05-01-boeing-787-dreamliner-software-bug.html)
-[year 2038 Problem](https://en.wikipedia.org/wiki/Year_2038_problem)
+
+[Year 2038 Problem](https://en.wikipedia.org/wiki/Year_2038_problem)
+
 [Casino slot machine](https://www.reddit.com/r/softwaregore/comments/dqqfq7/woman_wins_4294967276_on_a_slot_machine_but/)
 
 ## Conclusion
