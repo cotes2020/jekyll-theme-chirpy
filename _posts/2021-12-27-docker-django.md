@@ -873,7 +873,7 @@ TEMPLATES = [
 Создать папку templates в корне и поместить туда файлик upload.html
 И проверить. Должна отобразиться такая страница:
 
-![enter image description here](https://devopsme.ru/assets/img/upload.jph)
+![enter image description here](https://devopsme.ru/assets/img/upload.jpg)
 
 По-сути у нас уже готовое приложение по хостингу наших картинок :)
 Теперь у вас должна быть возможность загзулить файл на [http://localhost:8000/](http://localhost:8000/), и затем увидеть этот файл на [http://localhost:8000/mediafiles/IMAGE_FILE_NAME](http://localhost:8000/mediafiles/IMAGE_FILE_NAME).
