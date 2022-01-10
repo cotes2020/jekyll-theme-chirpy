@@ -214,7 +214,7 @@ docker-compose exec web python manage.py migrate --noinput
 docker-compose exec db psql --username=hello_django --dbname=hello_django_dev
 ```
 Получим вот такой вывод:
-![enter image description here](https://lh3.googleusercontent.com/pw/AM-JKLXx-wz6CqBIcvo1camd_kf6H72Gz3GE6FR_I7nyhz7T_xWKRjDC8GCoRv_aSHFvD1ATucB_lYyjUhSSFIGM8OxJX6MwKp_FfS0vkw9cd1Oi5fYwctW9VyT4eL3xb1Yw-G3st_M_Xcrba2qNNkq8pazASg=w1604-h1016-no?authuser=0)
+![enter image description here](https://devopsme.ru/assets/img/vivodbd.jpg)
 
 _\c_ - подключение к БД по имени
 _\dt_ - перечисляет все таблицы в базе данных
@@ -435,10 +435,10 @@ volumes:
 docker-compose -f docker-compose.prod.yml up -d --build
 ```
 Вывод Docker
-![enter image description here](https://lh3.googleusercontent.com/pw/AM-JKLVywKVjOnNvGIGE0DvvkAkC6McFTtSeDyl8Dk_hwDxeGwJSh0qBibxAZ9NIeiKVxJzEQoYAV1vjydF0LprNFiMDcjdmuskMHtmLa4FcysDbCm1DWo-2eskoeDdcZj3_rmOwEBoEcUxgeWyU7skrlRHNrA=w1948-h154-no?authuser=0)
+![enter image description here](https://devopsme.ru/assets/img/vivoddocker.jpg)
 
 Отлично! Как видим все у нас применилось! Проверяем:
-![enter image description here](https://lh3.googleusercontent.com/pw/AM-JKLVDbHEfLIhvHsAkD-fr08uImrGDV4htJKZnVDzMsynvnVSL9-zjR0VkFNbVCw0XnqjryyEh_HeRuiKTuu5fo-EyOVDSYTFtstxJVmJUew4yjD3uMnGze_QSchIw4Jp7ScXYEuCvRdJ4T4m3R3rT3ZhuiQ=w2346-h1500-no?authuser=0)
+![enter image description here](https://devopsme.ru/assets/img/django.jpg)
 
 ## Производственный Dockerfile
 Вы заметили, что мы все еще выполняем очистку базы данных (flush)(которая очищает базу данных) и переносим команды при каждом запуске контейнера? Это хорошо в разработке, но давайте создадим новый файл точки входа для промышленной эксплуатации.
@@ -578,7 +578,7 @@ nginx
     └── nginx.conf
 ```
 Структура должна быть такая:
-![enter image description here](https://lh3.googleusercontent.com/pw/AM-JKLVPzlpmePNXoUbrowWvRxv5wCDqcWpuBhMRRzr83LxKZsfuoC-CImdzlnRHmIXaY3u7iuK8b_EOy5vg-ei3jIzQ0l_OYk88GiTeqW2CeYo-11TZ5svqgzepw08QK_CvUbfO50G-NDtVP1iI2oWle0Z6JQ=w674-h270-no?authuser=0)
+![enter image description here](https://devopsme.ru/assets/img/nginx.jpg)
 
 Файл _Dockerfile_:
 ```
@@ -658,7 +658,7 @@ docker-compose -f docker-compose.prod.yml exec web python manage.py migrate --no
 Убедимся, что приложение запущено и работает по адресу http://localhost:1337
 
 Структура вашего проекта теперь должна выглядеть так:
-![enter image description here](https://lh3.googleusercontent.com/pw/AM-JKLXHSQ_glYaPzZP2aWNP7E1W_sHU5ocB7lKqF_IVg4JP_Ux_71N-VLPOLvLuhKB-rPlKVbmJXVrV0DbssmUn87HWLXHauQ4v0qprNH4OENceyTS9sUQRhGHZyNOyqMuzhk2YEBF5edtXeT4adQfWdnb_Dg=w568-h690-no?authuser=0)
+![enter image description here](https://devopsme.ru/assets/img/structureprojects.jpg)
 
 Теперь снова остановим контейнеры:
 ```
@@ -822,7 +822,7 @@ def image_upload(request):
 ```
 Добавим директорию «templates», в каталог «code/upload», и добавим новый шаблон _upload.html_:
 
-![enter image description here](https://lh3.googleusercontent.com/pw/AM-JKLUoJsqTKalaMp2Lnejk1yFaRR0hi849bVz0dDJHeq7jX9af5d7H9_6HWZsAWBCos-d8tPaTYVacw1TXsPq7knVsg8jevXs9tLs1gLo4SwgCZ2xguJXFPus1FWhRiFPTLs3jR7rWd0E7SdSETzyOhd7dGQ=w1328-h438-no?authuser=0)
+![enter image description here](https://devopsme.ru/assets/img/templates.jpg)
 
 Файл _code/hello_django/urls.py_:
 ```
@@ -873,7 +873,7 @@ TEMPLATES = [
 Создать папку templates в корне и поместить туда файлик upload.html
 И проверить. Должна отобразиться такая страница:
 
-![enter image description here](https://lh3.googleusercontent.com/pw/AM-JKLXXnp9kBw1zeAjm4Hk0ff--IRO6mwbJnAmB9FrenTUkk1i_ranDGqp89pBUakqx_HkMYJ3q8VIBGR5WdwZpedCj1UjiLPW8l6L15MsFmZXxaq0grnh5HLE7Ph_j7eWfqoUlo2gRXOxTILEmXMQGshHr4Q=w848-h78-no?authuser=0)
+![enter image description here](https://devopsme.ru/assets/img/upload.jph)
 
 По-сути у нас уже готовое приложение по хостингу наших картинок :)
 Теперь у вас должна быть возможность загзулить файл на [http://localhost:8000/](http://localhost:8000/), и затем увидеть этот файл на [http://localhost:8000/mediafiles/IMAGE_FILE_NAME](http://localhost:8000/mediafiles/IMAGE_FILE_NAME).
