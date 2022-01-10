@@ -37,7 +37,7 @@ tags: [Docker,Django]
 ## Структура
 
 Общая структура выглядит вот так: 
-![enter image description here](https://lh3.googleusercontent.com/pw/AM-JKLUdOkAloz3q2OLAWMu9WCz0YDwnEO8hgxHtroaldpvH3afpvDGotvx8GXz2WUOMTh5ospwSorf64uYYR64pw8wAYc23HP0QmVvnxqKa1Or2JuLiTIs-IlUoK77cVeOMfwx9C57RPqkO7epcoxoaHpf8PA=w696-h570-no?authuser=0)
+![enter image description here](https://devopsme.ru/assets/img/structure.jpg)
 
 
 ## Dockerfile
