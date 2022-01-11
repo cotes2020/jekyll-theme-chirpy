@@ -47,13 +47,13 @@ public class Solution {
     }
 
 
-    public static void main(String[] args) {
+    // public static void main(String[] args) {
         // int[] nums = new int[]{1,2,2};
         // System.out.println(reverseBetween(nums)); 
-        String s = new String("00110011");
-        Solution res = new Solution();
-        res.countBinarySubstrings(s);
-    } 
+        // String s = new String("00110011");
+        // Solution res = new Solution();
+        // res.countBinarySubstrings(s);
+    // } 
 
     
 }

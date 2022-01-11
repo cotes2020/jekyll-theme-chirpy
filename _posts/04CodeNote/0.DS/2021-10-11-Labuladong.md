@@ -342,10 +342,14 @@ Math.min(a,b);
 Math.max(a,b);
 
 StringBuilder sb = new StringBuilder("");
+StringBuffer sb = new StringBuffer(s);
+sb.setCharAt(i, Char);
 sb.append('.');
 sb.insert(pos[i],'Q');
 sb.toString()
 sb.reverse();
+
+
 
 String Str1 = new String("Welcome to Tutorialspoint.com");
 String Str1 = new String(char[] chars);
@@ -354,7 +358,18 @@ Str1.toCharArray()
 Str1.charAt()
 Str1.substring(lo, lo+maxLen)
 Str1.indexOf(ch);
+str1.contains("h")
+
+String CipherText=""
+CipherText += (char)(cipherMatrix[i] + 65);
+
 String[] words = Str1.split(" ");
+
+char ch = (char)(i + 97);
+Character.getNumericValue(c);  
+Character.isLowerCase(s.charAt(i));
+Character.toUpperCase(s.charAt(i));
+Character.isWhitespace()
 
 String.valueOf(char[]);
 String.join(" ", array);
@@ -413,6 +428,18 @@ LinkedList.addLast();
 LinkedList.pollLast();
 LinkedList.isEmpty();
 LinkedList.removeLast();
+
+
+LinkedHashSet<Character> set = new LinkedHashSet<Character>();
+set.add("kkk");
+Iterator<Character> it = set.iterator();
+it.hasNext();
+it.next();
+
+Set<Character> set = new HashSet<Character>();
+set.add("kkk");
+
+
 
 
 Set<String> deads = new HashSet<>();
@@ -1486,7 +1513,7 @@ class Solution {
 }
 ```
 
-#### ??? 
+#### ???
 
 ```java
 // O(nlogm)
@@ -1518,18 +1545,18 @@ class Solution {
 // Memory Usage: 38.6 MB, less than 68.97% of Java online submissions for Find the Distance Value Between Two Arrays.
 
 class Solution {
-    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) { 
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
         Arrays.sort(arr1);
         Arrays.sort(arr2);
         int count=0, j=0;
         for(int i=0;i<arr1.length;i++){
             int min = arr1[i]-d;
-            int max = arr1[i]+d; 
+            int max = arr1[i]+d;
             while(j<arr2.length && arr2[j]<min) j++;
             if(outband(arr2, j, min, max)) count++;
-        } 
+        }
         return count;
-    } 
+    }
     public boolean outband(int[] arr2, int j, int min, int max) {  
         return j==arr2.length || !(min<=arr2[j] && arr2[j]<=max);
     }
@@ -1571,7 +1598,7 @@ class Solution {
                 pre=cur;
                 cur=1;
             }
-            else cur++; 
+            else cur++;
             i++;
         }
         return res+=Math.min(pre, cur);
@@ -10229,7 +10256,7 @@ The passes allow that many days of consecutive travel.
 For example, if we get a 7-day pass on day 2, then we can travel for 7 days: 2, 3, 4, 5, 6, 7, and 8.
 Return the minimum number of dollars you need to travel every day in the given list of days.
 
- 
+
 
 Example 1:
 
@@ -10243,7 +10270,7 @@ In total, you spent $11 and covered all the days of your travel.
 
 
 
-#### bottom-up dp 
+#### bottom-up dp
 
 O(N) Time | O(N) Space
 
@@ -10258,7 +10285,7 @@ class Solution {
         dp[0]=0; //no days to travel, no need to spend
         return dp(days, costs);
     }
-    
+
     public int dp(int[] days, int[] costs) {
         int j=0;
         for(int i =1; i<=365; i++){
@@ -10269,7 +10296,7 @@ class Solution {
                 dp[i] = Math.min(dp[i], dp[Math.max(0,i-30)]+ costs[2]);
                 j++;
             }
-        } 
+        }
         return dp[days[days.length-1]];
     }
 }
@@ -10289,19 +10316,19 @@ class Solution {
         dp[0]=0; //no days to travel, no need to spend
         return dp(days, costs);
     }
-    
+
     public int dp(int[] days, int[] costs) {
         int j=0;
         for(int i =1; i<=365; i++){
             if(j >=days.length) break; //when we are done with our travel days we break.
-            if(dp[i]!= -1) continue; 
+            if(dp[i]!= -1) continue;
             if(days[j] != i) dp[i] = dp[i-1]; // if the day is not a travel day, put the previous day cost.
             else{
                 dp[i] = Math.min(dp[i-1]+costs[0], dp[Math.max(0,i-7)]+ costs[1]);
                 dp[i] = Math.min(dp[i], dp[Math.max(0,i-30)]+ costs[2]);
                 j++;
             }
-        } 
+        }
         return dp[days[days.length-1]];
     }
 }

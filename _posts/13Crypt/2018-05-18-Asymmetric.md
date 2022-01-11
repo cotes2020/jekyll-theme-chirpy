@@ -7,29 +7,46 @@ toc: true
 image:
 ---
 
-[toc]
+- [Asymmetric Encryption](#asymmetric-encryption)
+  - [major advantage](#major-advantage)
+  - [disadvantage:](#disadvantage)
+- [Algorithms:](#algorithms)
+  - [pretty good privacy (PGP):](#pretty-good-privacy-pgp)
+  - [Diffie-Hellman (DH)](#diffie-hellman-dh)
+  - [RSA (Rivest–Shamir–Adleman)](#rsa-rivestshamiradleman)
+    - [Disadvantages:](#disadvantages)
+    - [key generation:](#key-generation)
+  - [El Gamal](#el-gamal)
 
 --- 
   
 # Asymmetric Encryption
 
-- also called Public-Key Encryption.
-  - Two-key systems are referred to as public key cryptography (PKC)
+- also called 
+  - **Public-Key Encryption**
+  - Two-key systems
+  - **public key cryptography (PKC)**
 - In 1976, Whitfield Diffie and Martin R. Hellman published the first public key exchange protocol
-- Asymmetric key cryptography relies on NP-hard problem:
+
+
+- Asymmetric key cryptography relies on `NP-hard problem`:
   - a math problem is considered NP-hard if it cannot be solved in polynomial time.
-  - X^2, X^3, NP-hard problem: 2^X.
+  - X^2, X^3, 
+  - NP-hard problem: 2^X.
+
+
 - Asymmetric cryptography relies on types of problem that are relatively easy to solve one way but are extremely difficult to solve the other way. (Trapdoor function)
   - 233x347=80851
   - 80851=?x? (Hard)
 
 
-- adders the most serious problem of symmetric encryption: key distribution.
+- adders the most serious problem of symmetric encryption: **key distribution**.
   - no fear of authorized key disclosure.
 
+---
 
+## major advantage
 
-## major advantage:
 - <font color=red> Key distribution </font> is a simple process
   - The addition of new users requires the generation of only one public-private keypair.
     - makes the algorithm extremely scalable.
@@ -55,9 +72,12 @@ image:
 - very strong, but very <font color=red> resource intensive </font>
   - takes a significant amount of processing power to encrypt and decrypt data,
   - especially when compared with symmetric encryption.
+
+
 - higher security but <font color=red> slower </font>
   - not for large quantities of real-time data.
   - might be used to encrypt a small chunk of data.
+
 - Most cryptographic protocols use asymmetric encryption only for <font color=red> key exchange </font>
   - secure transmission of large amounts of data use <font color=blue> public key cryptography to establish a connection and then exchange a symmetric secret key </font>
   - The remainder of the session then uses symmetric cryptography.
@@ -85,8 +105,7 @@ image:
 
 ---
 
-
-# asymmetric encryption algorithms:
+# Algorithms:
 
 ---
 
@@ -99,8 +118,8 @@ example:
   - Client A requests server 1’s digital certificate.
   - Server 1 sends its digital certificate,
   - client A knows the received certificate is really from server 1.
-    - because the certificate has been authenticated (signed) by a trusted third party, called a certificate authority.
-  - Client A extracts 提取 server 1’s public key from server 1’s digital certificate.
+    - because the certificate has been authenticated (signed) by a trusted third party, called a **certificate authority**.
+  - Client A extracts 提取 server 1’s `public key` from server 1’s digital certificate.
     - Data encrypted using server 1’s public key can only be decrypted with server 1’s private key.
   - Client A generates a random string of data called a session key.
     - The session key is then encrypted using server 1’s public key and sent to server 1.
@@ -157,7 +176,7 @@ RSA algorithm:
 - security backbone of many well-known security infrastructures: Microsoft, Nokia, and Cisco.
 - RSA works with both encryption and digital signatures, used in many environments,
   - like Secure Sockets Layer (SSL), and key exchange.
-  - commonly used as part of a public key infrastructure (PKI) system.
+  - commonly used as part of a `public key infrastructure (PKI) system`.
     - PKI uses <font color=blue> digital certificates and a certificate authority (CA) </font> to allow secure communication across a public network.
     - But ECDH better in PKI for key agreement.
 
@@ -182,9 +201,9 @@ RSA algorithm:
 
 
 ```
-a 除以 m 所得的余数记作 a mod m.
-如果 a mod m = b mod m
-即 a, b 除以 m 所得的余数相等，那么我们记作：a≡b(mod m)
+a 除以 m 所得的余数记作 a mod m.
+如果 a mod m = b mod m
+即 a, b 除以 m 所得的余数相等，那么我们记作：a≡b(mod m)
 ```
 
 ### key generation:
@@ -235,7 +254,7 @@ To make this even more clear, let’s look at an example:
 1. Plaintext = 3
 ```
 
-￼
+
 ---
 
 
@@ -264,20 +283,4 @@ Major disadvantage:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.￼
+ 
