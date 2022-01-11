@@ -95,13 +95,13 @@ $ docker run -it --rm \
 
 After a while, the local service will be published at _<http://127.0.0.1:4000>_.
 
-### Deployment
+## Deployment
 
 Before the deployment begins, check out the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [**project site**](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base URL on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starts with a slash, e.g, `/project-name`.
 
 Now you can choose ONE of the following methods to deploy your Jekyll site.
 
-#### Deploy by Using Github Actions
+### Deploy by Using Github Actions
 
 For security reasons, GitHub Pages build runs on `safe` mode, which restricts us from using plugins to generate additional page files. Therefore, we can use **GitHub Actions** to build the site, store the built site files on a new branch, and use that branch as the source of the GitHub Pages service.
 
@@ -129,7 +129,7 @@ Now publish your Jekyll site by:
 
 3. Visit your website at the address indicated by GitHub.
 
-#### Manually Build and Deploy
+### Manually Build and Deploy
 
 On self-hosted servers, you cannot enjoy the convenience of **GitHub Actions**. Therefore, you should build the site on your local machine and then upload the site files to the server.
 
@@ -151,7 +151,7 @@ $ docker run -it --rm \
 
 Unless you specified the output path, the generated site files will be placed in folder `_site` of the project's root directory. Now you should upload those files to the target server.
 
-### Upgrading
+## Upgrading
 
 It depends on how you use the theme:
 
