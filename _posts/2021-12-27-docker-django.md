@@ -7,6 +7,7 @@ tags: [Docker,Django]
 ---
 
 ## Django, PostgreSQL и Docker
+![dockerdjango](https://devopsme.ru/assets/img/dockerdjango.jpg)
 
 В этом статье, создадим новый проект Django, используя Docker, PostgreSQL, Gunicorn. Я вообще стараюсь для локальной разработки повторять продуктив и использовать близкие настройки. 
 
@@ -21,7 +22,7 @@ tags: [Docker,Django]
 ##  Проект Django
 
 Создайте новый каталог проекта вместе с новым проектом Django. На момент написания статьи, версия Django = 4.0:
-```
+```sh
     $ mkdir django && cd django
     $ mkdir django-env && cd django-env
     $ python3.10 -m venv env
@@ -188,29 +189,29 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 Не забываем добавить _dev.env_
 
 Собираем образ командой:
-```
+```sh
 docker-compose build
 ```
 Как только образ будет собран, запускаем контейнер:
-```
+```sh
 docker-compose up -d
 ```
 Далее нужно перейти по адресу http://localhost:8000/, чтобы снова увидеть экран приветствия и убедиться что все работает.
 
 Проверьте наличие ошибок в журналах, если это не работает, через команду:
-```
+```sh
 docker-compose logs -f
 ```
 Докер настроен!
 
 Так как мы указали все необходимые доступы для PostgreSQL, произведем миграцию: 
-```
+```sh
 docker-compose exec web python manage.py migrate --noinput
 ```
 Если словите ошибку миграции, то остановите контейнер командой **docker-compose down -v**, чтобы удалить тома вместе с контейнерами. Затем заново создайте образы, запустите контейнеры и примените миграции.
 
 Убедимся, что все таблицы Django по умолчанию были созданы:
-```
+```sh
 docker-compose exec db psql --username=hello_django --dbname=hello_django_dev
 ```
 Получим вот такой вывод:
@@ -220,7 +221,7 @@ _\c_ - подключение к БД по имени
 _\dt_ - перечисляет все таблицы в базе данных
 
 Вы также можете проверить, что том (volume) был создан, запустив команду:
-```
+```sh
 docker volume inspect djangoprojecttelegram_postgres_data
 ```
 Получим вот такой вывод:
@@ -245,7 +246,7 @@ docker volume inspect djangoprojecttelegram_postgres_data
 
 ## entrypoint.sh
 Давайте добавим файл **_entrypoint.sh_** в каталог нашего проекта, чтобы проверить работоспособность Postgres перед применением миграций и запуском сервера разработки Django:
-```
+```sh
 #!/bin/sh
 
 if [ "$DATABASE" = "postgres" ]
@@ -265,7 +266,7 @@ python manage.py migrate
 exec "$@"
 ```
 Обновим локальные права доступа к файлу:
-```
+```sh
 chmod +x entrypoint.sh
 ```
 Затем обновим Dockerfile, чтобы скопировать файл  **entrypoint.sh**  и запустите его как команду точки входа Docker:
@@ -305,7 +306,7 @@ ENTRYPOINT ["/code/entrypoint.sh"]
 
 ## Примечание
 Во-первых, несмотря на добавление Postgres, мы все равно можем создать независимый образ Docker для Django, если для переменной среды DATABASE не задано значение **postgres**. Чтобы проверить, создайте новый образ и затем запустите новый контейнер:
-```
+```sh
 docker build -f ./app/Dockerfile -t hello_django:latest ./app
 docker run -d \
     -p 8006:8000 \
@@ -315,7 +316,7 @@ docker run -d \
 Вы должны увидеть страницу приветствия по адресу http://localhost:8006.
 
 Во-вторых, вы можете закомментировать команды очистки (flush) и миграции (migrate) базы данных в сценарии entrypoint.sh, чтобы они не запускались при каждом запуске или перезапуске контейнера:
-```
+```sh
 #!/bin/sh
 
 if [ "$DATABASE" = "postgres" ]
@@ -335,7 +336,7 @@ fi
 exec "$@"
 ```
 Вместо этого вы можете запустить их вручную, после того, как контейнеры запускаться, вот так:
-```
+```sh
 docker-compose exec web python manage.py flush --no-input
 docker-compose exec web python manage.py migrate
 ```
@@ -343,41 +344,41 @@ docker-compose exec web python manage.py migrate
 ## Небольшой список команд Docker
 
 Когда вы закончите, не можете погасить контейнер Docker.
-```
+```sh
 docker-compose down
 ```
 Просто приостановить контейнер
-```
+```sh
 docker stop CONTAINER ID
 ```
 Запустить ранее остановленный контейнер
-```
+```sh
 docker start CONTAINER ID
 ```
 Перегрузить контейнер
-```
+```sh
 docker restart CONTAINER ID
 ```
 Что бы посмотреть работающие контейнеры
-```
+```sh
 docker ps
 ```
 Что бы посмотреть вообще все контейнеры
-```
+```sh
 docker ps -a
 ```
 Посмотреть список всех образов
-```
+```sh
 docker images
 ```
 Удалить образ
-```
+```sh
 docker rmi CONTAINER ID
 или
 docker rmi -f CONTAINER ID
 ```
 Иногда может понадобиться зайти в работающий контейнер. Для этого нужно запустить команду запуска интерактивной оболочкой **bash**
-```
+```sh
 docker exec -it CONTAINER ID bash
 ```
 Как вы увидели из моего docker-compose.yml файла, я использую Gunicorn
@@ -431,7 +432,7 @@ volumes:
 >Если у вас несколько сред, вы можете использовать конфигурационный файл **docker-compose.override.yml**. При таком подходе вы добавляете базовую конфигурацию в файл docker-compose.yml, а затем используете файл docker-compose.override.yml для переопределения этих параметров конфигурации в зависимости от среды.
 
 После создания необходимых файлов, запустим сборку
-```
+```sh
 docker-compose -f docker-compose.prod.yml up -d --build
 ```
 Вывод Docker
@@ -443,7 +444,7 @@ docker-compose -f docker-compose.prod.yml up -d --build
 ## Производственный Dockerfile
 Вы заметили, что мы все еще выполняем очистку базы данных (flush)(которая очищает базу данных) и переносим команды при каждом запуске контейнера? Это хорошо в разработке, но давайте создадим новый файл точки входа для промышленной эксплуатации.
 Файл _entrypoint.prod.sh_:
-```
+```sh
 #!/bin/sh
 
 if [ "$DATABASE" = "postgres" ]
@@ -457,7 +458,7 @@ fi
 exec "$@"
 ```
 Обновим права доступа к файлу:
-```
+```sh
 chmod +x entrypoint.prod.sh
 ```
 Вообще эту _chmod_ я добавил в Dockerfile
@@ -554,7 +555,7 @@ ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
 Вы заметили, что мы создали пользователя без полномочий root? По умолчанию Docker запускает контейнерные процессы как root внутри контейнера. Это плохая практика, поскольку злоумышленники могут получить root-доступ к хосту Docker, если им удастся вырваться из контейнера. Если вы root в контейнере, вы будете root на хосте.
 
 Проверим как все работает:
-```
+```sh
 docker-compose -f docker-compose.prod.yml down -v
 docker-compose -f docker-compose.prod.yml up -d --build
 docker-compose -f docker-compose.prod.yml exec web python manage.py migrate --noinput
@@ -650,7 +651,7 @@ volumes:
 Теперь порт 8000 открыт только для других сервисов Docker. И это порт больше не будет опубликован на хост-машине.
 
 Проверяем как это работает
-```
+```sh
 docker-compose -f docker-compose.prod.yml down -v
 docker-compose -f docker-compose.prod.yml up -d --build
 docker-compose -f docker-compose.prod.yml exec web python manage.py migrate --noinput
@@ -661,7 +662,7 @@ docker-compose -f docker-compose.prod.yml exec web python manage.py migrate --no
 ![enter image description here](https://devopsme.ru/assets/img/structureprojects.jpg)
 
 Теперь снова остановим контейнеры:
-```
+```sh
 docker-compose -f docker-compose.prod.yml down -v
 ```
 Поскольку Gunicorn является сервером приложений, он не будет обслуживать статические файлы. Итак, настроим обработку статических и мультимедийных файлов
@@ -763,11 +764,11 @@ server {
 }
 ```
 Перезапустим контейнеры
-```
+```sh
 docker-compose down -v
 ```
 
-```
+```sh
 docker-compose -f docker-compose.prod.yml up -d --build
 docker-compose -f docker-compose.prod.yml exec web python manage.py migrate --noinput
 docker-compose -f docker-compose.prod.yml exec web python manage.py collectstatic --no-input --clear
@@ -779,12 +780,12 @@ docker-compose -f docker-compose.prod.yml exec web python manage.py collectstati
 Вы также можете проверить в логах командой  **docker-compose -f docker-compose.prod.yml logs -f**  что запросы к статическим файлам успешно обрабатываются через Nginx:
 
 Далее снова остановим контейнеры:
-```
+```sh
 docker-compose -f docker-compose.prod.yml down -v
 ```
 ## Media файлы
 Чтобы проверить обработку мультимедийных файлов, начните с создания нового модуля Django:
-```
+```sh
 docker-compose up -d --build
 docker-compose exec web python manage.py startapp upload
 ```
@@ -847,7 +848,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 ```
 ## Development
 Запустим контейнер:
-```
+```sh
 docker-compose up --build
 ```
 Скорее всего вы получите ошибку связанную со временем. 
@@ -964,7 +965,7 @@ server {
 }
 ```
 Далее перезапустим контейнеры:
-```
+```sh
 docker-compose down -v
 docker-compose -f docker-compose.prod.yml up -d --build
 docker-compose -f docker-compose.prod.yml exec web python manage.py migrate --noinput
