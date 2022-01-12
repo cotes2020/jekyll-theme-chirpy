@@ -11,22 +11,22 @@
   }
 }
 
-html:not([mode]),
-html[mode=light] {
+html:not([data-mode]),
+html[data-mode=light] {
   @include mode-toggle();
 }
 
-html[mode=dark] {
+html[data-mode=dark] {
   @include mode-toggle(true);
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not([mode]),
-  html[mode=dark] {
+  html:not([data-mode]),
+  html[data-mode=dark] {
     @include mode-toggle(true);
   }
 
-  html[mode=light] {
+  html[data-mode=light] {
     @include mode-toggle();
   }
 }
@@ -247,7 +247,7 @@ img[data-src] {
     }
   }
 
-  [topbar-visible=true] & > div {
+  [data-topbar-visible=true] & > div {
     top: 6rem;
   }
 }
@@ -873,7 +873,7 @@ $sidebar-display: "sidebar-display";
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   background-color: var(--topbar-wrapper-bg);
 
-  [topbar-visible=false] & {
+  [data-topbar-visible=false] & {
     top: -$topbar-height; /* same as topbar height. */
   }
 }
@@ -1301,7 +1301,7 @@ $sidebar-display: "sidebar-display";
 } // max-width: 849px
 
 @media all and (max-width: 849px) and (orientation: portrait) {
-  [topbar-visible=false] #topbar-wrapper {
+  [data-topbar-visible=false] #topbar-wrapper {
     top: 0;
   }
 }

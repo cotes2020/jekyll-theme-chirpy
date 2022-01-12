@@ -3,7 +3,7 @@
  */
 const ScrollHelper = (function () {
   const $body = $("body");
-  const ATTR_TOPBAR_VISIBLE = "topbar-visible";
+  const ATTR_TOPBAR_VISIBLE = "data-topbar-visible";
   const topbarHeight = $("#topbar-wrapper").outerHeight();
 
   let scrollUpCount = 0; // the number of times the scroll up was triggered by ToC or anchor
