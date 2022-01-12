@@ -205,7 +205,7 @@
       {% endif %}
 
       {% assign id = snippet | split: '"' | first %}
-      {% capture anchor %}<a href="#{{ id }}" class="anchor"><i class="fas fa-hashtag"></i></a>{% endcapture %}
+      {% capture anchor %} <a href="#{{ id }}" class="anchor"><i class="fas fa-hashtag"></i></a>{% endcapture %}
 
       {% assign left = snippet | split: mark_end | first %}
       {% assign _start_index = left | size %}

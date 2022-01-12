@@ -20,12 +20,10 @@
 %anchor {
   .anchor {
     font-size: 1rem;
-    margin-left: 0.5rem;
   }
 
   @media (hover: hover) {
     .anchor {
-      border-bottom: none !important;
       visibility: hidden;
       opacity: 0;
       transition: opacity 0.25s ease-in, visibility 0s ease-in 0.25s;
