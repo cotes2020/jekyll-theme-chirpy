@@ -192,6 +192,8 @@ img[data-src] {
   &.shadow {
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
   }
+
+  @extend %img-caption;
 }
 
 /* --- Panels --- */
@@ -439,13 +441,8 @@ img[data-src] {
       }
     }
 
-    &.img-link + em {
-      display: block;
-      text-align: center;
-      font-style: normal;
-      font-size: 80%;
-      padding: 0;
-      color: #6d6c6c;
+    &.img-link {
+      @extend %img-caption;
     }
 
   }

@@ -93,6 +93,17 @@
   font-style: normal;
 }
 
+%img-caption {
+  + em {
+    display: block;
+    text-align: center;
+    font-style: normal;
+    font-size: 80%;
+    padding: 0;
+    color: #6d6c6c;
+  }
+}
+
 /* ---------- scss mixin --------- */
 
 @mixin no-text-decoration {
