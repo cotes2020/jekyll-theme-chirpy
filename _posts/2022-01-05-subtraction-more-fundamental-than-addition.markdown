@@ -98,6 +98,6 @@ where $$\pmb{e}_i$$ is the tuple with the entry $$1$$ in the $$i^{\text{th}}$$ p
 
 With the above identity being destroyed, the idea of choosing basis vectors to represent any vector is also destroyed. Or, the information about a vector is no longer conserved between different coordinate systems! But information must be a coordinate-independent structure, as coordinates are artefacts of a particular perspective.
 
-All-in-all, we have a neat picture of subtraction: it is more fundamental than addition, upto scalars. By 'fundamental', I mean 'well-defined in a large number of scenarios'.
+All-in-all, we have a neat picture of subtraction: it is more fundamental than addition, upto vectors. By 'fundamental', I mean 'well-defined in a large number of scenarios'.
 
 So, that's it, folks! Thanks a lot for reading up to here! If you like reading my posts, do leave a thumbs up in the comments section, it greatly motivates me to write more posts like these! :)
