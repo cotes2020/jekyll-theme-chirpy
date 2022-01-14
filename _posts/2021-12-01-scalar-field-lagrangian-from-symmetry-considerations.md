@@ -1,5 +1,5 @@
 ---
-title: "Scalar Field Lagrangian From Symmetries"
+title: "Scalar Field Lagrangian From Symmetry Considerations"
 description: "Or, how field theory doesn't leave us much choice"
 categories: [field theory]
 tags: [scalar field theory, symmetry]
