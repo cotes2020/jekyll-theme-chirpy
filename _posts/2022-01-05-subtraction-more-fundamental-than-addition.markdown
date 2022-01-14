@@ -66,7 +66,7 @@ The above mathematical statements precisely encode and generalize Galileo's enli
 
 ## The sole survivor
 
-Despite affine spaces rejecting most important properties of Euclidean spaces, one important notion survives: that of subtraction. This is because when an element of $$\left( \mathbb{R}^n, + \right)$$ acts on $$\mathbb{A}^n$$, the _same_ element is added to all vectors in the affine space $$\mathbb{A}^n$$. Therefore, subtracting any vector from another in $$\mathbb{A}^n$$ cancels out the factor added via the additive group $$\left( \mathbb{R}^n, + \right)$$. I.e. for $$\pmb{u}, \pmb{v} \in \mathbb{A}^n$$ and $$\pmb{w} \in \mathbb{R}^n$$,
+Despite affine spaces rejecting most important properties of Euclidean spaces, one important notion survives: that of subtraction (and consequently, a distance function). This is because when an element of $$\left( \mathbb{R}^n, + \right)$$ acts on $$\mathbb{A}^n$$, the _same_ element is added to all vectors in the affine space $$\mathbb{A}^n$$. Therefore, subtracting any vector from another in $$\mathbb{A}^n$$ cancels out the factor added via the additive group $$\left( \mathbb{R}^n, + \right)$$. I.e. for $$\pmb{u}, \pmb{v} \in \mathbb{A}^n$$ and $$\pmb{w} \in \mathbb{R}^n$$,
 
 $$
 \begin{align}
