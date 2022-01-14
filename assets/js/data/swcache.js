@@ -43,7 +43,7 @@ const resource = [
 
 /* The request url with below domain will be cached */
 const allowedDomains = [
-  {% if site.google_analytics.id != '' %}
+  {% if site.google_analytics.id != empty and site.google_analytics.id %}
     'www.googletagmanager.com',
     'www.google-analytics.com',
   {% endif %}

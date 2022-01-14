@@ -40,7 +40,8 @@
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
   <!-- GA -->
-  {% if jekyll.environment == 'production' %}
+  {% if jekyll.environment == 'production'
+      and site.google_analytics.id != empty and site.google_analytics.id %}
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
