@@ -2,7 +2,7 @@
 title: "Subtraction Is More Fundamental Than Addition"
 description: "Or, how field theory doesn't leave us much choice"
 categories: [geometry]
-tags: [affine spaces]
+tags: [affine space]
 ---
 
 When we first learn mathematics in school, we are taught the four fundamental operations of arithmetic: addition, subtraction, multiplication and division. It is a common practice to teach addition first. After all, we're adding things all the time in real life: apples to apples, oranges to oranges and so on. Only then are we taught that the reverse operation is necessary to model the removal of apples from apples: subtraction. [^1]
