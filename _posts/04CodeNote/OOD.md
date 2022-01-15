@@ -193,7 +193,7 @@
 * C++下面没有保证全局变量的初始化顺序.
 
 比如
-- 音乐播放器设计中，我们引入了歌曲管理器实现数据的存储。
+- 音乐播放器设计中，我们引入了 歌曲管理器 实现数据的存储。
 - 歌曲管理器在整个程序中应当`实例化`一次，其他所有关于数据的操作都应该在这个实例上进行。
 - 所以，歌曲管理器应该应用单例模式。
 - 实现单例模式的关键在于利用`静态变量(static variable)`，
@@ -220,7 +220,6 @@ class MySingleton {
             return m_pInstance;
         }
 };
-    
     // in the source file
     MySingleton *MySingleton::m_pInstance = NULL;
     
@@ -242,7 +241,8 @@ class MySingleton {
 
 意图：抽象类需要创建一个对象时，让子类决定实例化哪一个类
 
-所谓的工厂模式(Factory Pattern)，就是指定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类。通常，接口提供传入参数，用以决定实例化什么类。
+所谓的工厂模式(Factory Pattern)，就是指定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类。
+- 通常，接口提供传入参数，用以决定实例化什么类。
 - 工厂模式常见于工具包和框架中，当需要生成一系列类似的子类时，可以考虑使用工厂模式。举例如下：
 
 
@@ -270,11 +270,9 @@ class MySingleton {
         static ImageReader *imageReaderFactoryMethod(ImageType imageType) {
             ImageReader *product = NULL;
             switch (imageType) {
-                case GIF:
-                    product = new GIFReader();
-                case JPEG:
-                    product = new JPEGReader();
-                    //...
+                case GIF: product = new GIFReader();
+                case JPEG: product = new JPEGReader();
+                //...
             }
             return product;
         }
