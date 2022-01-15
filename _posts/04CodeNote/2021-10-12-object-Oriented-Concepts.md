@@ -7,9 +7,9 @@ tags: []
 ---
 
 - [Object-oriented programming 面向对象编程](#object-oriented-programming-面向对象编程)
+  - [`面向过程`和`OOP`在程序流程上的不同之处。](#面向过程和oop在程序流程上的不同之处)
+    - [code different](#code-different)
   - [Object-oriented programming language](#object-oriented-programming-language)
-    - [Python `class&Instance`](#python-classinstance)
-    - [Java](#java)
   - [Object-Oriented Design Principles](#object-oriented-design-principles)
     - [派生关系](#派生关系)
     - [继承/组合/参数化 类型 (复用技术)](#继承组合参数化-类型-复用技术)
@@ -42,12 +42,13 @@ tags: []
       - [Decorator](#decorator)
       - [Façade](#façade)
       - [Proxy](#proxy)
-  - [`面向过程`和`OOP`在程序流程上的不同之处。](#面向过程和oop在程序流程上的不同之处)
 - [Packages and Imports](#packages-and-imports)
   - [Import](#import)
-- [Access control to Members of a Class](#access-control-to-members-of-a-class)
-- [5.4.1. User-defined Classes](#541-user-defined-classes)
+- [Class & Object](#class--object)
   - [Class](#class)
+    - [Access control to Class](#access-control-to-class)
+    - [Python `class&Instance`](#python-classinstance)
+    - [Java](#java)
   - [Object](#object)
     - [Class hierarchy versus instance hierarchy](#class-hierarchy-versus-instance-hierarchy)
 - [difference between class and object:](#difference-between-class-and-object)
@@ -129,6 +130,8 @@ Ask
 
 
 
+## `面向过程`和`OOP`在程序流程上的不同之处。
+
 `procedural programming` 面向过程
 - focus is on writing function/procedure which operate on data.
 - 把计算机程序 视为一系列的命令集合，即一组函数的顺序执行。
@@ -141,6 +144,65 @@ Ask
 - 把`Object`作为程序的基本单元
 - 一个`Object`包含了数据和操作数据的函数。
 - 把 计算机程序 视为一组对象的集合，而每个对象都可以接收其他对象发过来的消息，并处理这些消息，计算机程序的执行就是一系列消息在各个对象之间传递。
+- basically designed to overcome the drawback of the above programming methodologies, which were not so close to real-world applications. 
+- The demand was increased, but still, conventional methods were used. 
+- This new approach brought a revolution in the programming methodology field.
+- OOP allows the writing of programs with the help of certain classes and real-time objects.
+- very close to the real-world and its applications because the state and behaviour of these classes and objects are almost the same as real-world objects. 
+
+
+
+
+### code different
+
+1. `面向过程`的程序
+
+    ```py
+    # 为了表示一个学生的成绩，用一个dict表示：
+    std1 = { 'name': 'Michael', 'score': 98 }
+    std2 = { 'name': 'Bob', 'score': 81 }
+    # 处理学生成绩可以通过函数实现，比如打印学生的成绩：
+    def print_score(std):
+        print('%s: %s' % (std['name'], std['score']))
+    ```  
+
+2. `面向对象`的程序设计思想
+
+   - 首选思考的不是程序的执行流程，而是Student这种数据类型应该被视为一个对象，这个对象拥有name和score这两个属性（`Property`）。
+   - 如果要打印一个学生的成绩
+     - 首先创建出学生对应的对象，
+
+      ```py
+      class Student(object):
+          def __init__(self, name, score):
+              self.name = name
+              self.score = score
+          def print_score(self):
+              print('%s: %s' % (self.name, self.score))
+
+      bart = Student('Bart Simpson', 59)
+      lisa = Student('Lisa Simpson', 87)
+      ```        
+
+     - 然后，给对象发一个print_score消息，让对象自己把自己的数据打印出来。
+       - 给对象发消息实际上就是调用`对象对应的关联函数`
+       - 称之为`对象的方法（Method）`。
+
+      ```py
+      bart.print_score()
+      lisa.print_score()
+      ```
+
+`面向对象`的设计思想是从自然界中来的，因为在自然界中，类（Class）和实例（Instance）的概念是很自然的。
+- `Class`是一种抽象概念，比如我们定义的Class——Student，是指学生这个概念
+- 而实例（`Instance`）则是一个个具体的Student，比如，Bart Simpson和Lisa Simpson是两个具体的Student。
+
+所以，面向对象的设计思想是抽象出`Class`，根据`Class`创建`Instance`。
+- 面向对象的抽象程度又比函数要高，因为一个Class既包含数据，又包含操作数据的方法
+ 
+
+
+
 
 
 ---
@@ -174,37 +236,10 @@ Ask
 * 解释为何这么实现(Explain why you choose this implementation )
 * 对自己的能力水平很熟练(Be familiar with your experience level to make decisions )
 * 在一些高层结构和复杂性方面有设计(Answer in high level of scale and complexity )
-
-
+ 
 ---
 
 
-### Python `class&Instance`
-
-Python is an `object-oriented programming` language.
-- provides features that support `object-oriented programming (OOP)`.
-
-
-在Python中，所有数据类型都可以视为Object，当然也可以自定义对象。
-- 自定义的对象数据类型就是面向对象中的类（`Class`）的概念。
-
----
-
-
-### Java
-
-the main “actors” in the object-oriented paradigm are called `objects`.
-
-- Each `object` is an `instance` of a `class`.
-
-- Each `class` presents to the outside world a concise and consistent view of the objects that are instances of this class, without going into too much unnecessary detail or giving others access to the inner workings of the objects.
-
-- The class definition typically specifies the data fields, also known as instance variables, that an object contains, as well as the methods (operations) that an object can execute.  
-
-Software implementations should achieve robustness, adaptability, and reusability.
-
-
----
 
 
 ## Object-Oriented Design Principles
@@ -304,6 +339,23 @@ Chief among the principles of the object-oriented approach, which are intended t
 
 
 #### Abstraction
+
+Abstraction refers to the act of representing important and special features without including the background details or explanation about that feature. Data abstraction simplifies database design.
+
+1. Physical Level: 
+   1. It describes how the records are stored, which are often hidden from the user. 
+   2. It can be described with the phrase, “block of storage.” 
+
+2. Logical Level: 
+   1. It describes data stored in the database and the relationships between the data. 
+   2. The programmers generally work at this level as they are aware of the functions needed to maintain the relationships between the data. 
+
+3. View Level: 
+   1. Application programs hide details of data types and information for security purposes. 
+   2. This level is generally implemented with the help of GUI, and details that are meant for the user are shown. 
+
+
+
 - The notion of abstraction is to distill a complicated system down to its most fundamental parts.
 - Typically, describing the parts of a system involves naming them and explaining their functionality.
 - Applying the abstraction paradigm to the design of data structures gives rise to **abstract data types (ADTs)**.
@@ -311,6 +363,15 @@ Chief among the principles of the object-oriented approach, which are intended t
 **abstract data types (ADTs)**
 - An ADT is a mathematical model of a data structure that specifies `the type of data stored, the operations supported on them, and the types of parameters of the operations`.
 - An ADT specifies what each operation does, but not how it does it.
+
+
+
+
+
+
+
+
+
 
 **interface**
 - In Java, an ADT can be expressed by an **interface**
@@ -326,9 +387,18 @@ Chief among the principles of the object-oriented approach, which are intended t
 
 
 
+
+
+
 #### Encapsulation
+
 - `different components of a software system should not reveal 揭示 the internal details of their respective implementations`.
-- One of the main advantages of encapsulation is that it gives one programmer freedom to implement the details of a component, without concern that other programmers will be writing code that intricately depends on those internal decisions.
+
+- It describes the idea of wrapping data and the methods that work on data within one unit, e.g., a class in Java. 
+- This concept is often used to hide the internal state representation of an object from the outside.
+
+- One of the **main advantages**: gives programmer freedom to implement the details of a component, without concern that other programmers will be writing code that intricately depends on those internal decisions.
+
 - The only constraint on the programmer of a component is to **maintain the public interface for the component**, as other programmers will be writing code that depends on that interface.
 - Encapsulation yields robustness and adaptability, for it allows the implementation details of parts of a program to change without adversely affecting other parts, thereby making it easier to fix bugs or add new functionality with relatively local changes to a component.
 
@@ -342,7 +412,12 @@ Chief among the principles of the object-oriented approach, which are intended t
 
 
 #### Inheritance
-A natural way to organize various structural components of a software package is in a hierarchical fashion, with similar abstract definitions grouped together in a level-by-level manner that goes from specific to more general as one traverses up the hierarchy. An example of such a hierarchy is shown in Figure 2.3. Using mathematical notations, the set of houses is a subset of the set of buildings, but a superset of the set of ranches. The correspondence between levels is often referred to as an “is a” relationship, as a house is a building, and a ranch is a house.
+- A natural way to organize various structural components of a software package is in a hierarchical fashion, 
+- with similar abstract definitions grouped together in a level-by-level manner that goes from specific to more general as one traverses up the hierarchy. 
+
+- An example of such a hierarchy is shown in Figure 2.3. Using mathematical notations, the set of houses is a subset of the set of buildings, but a superset of the set of ranches. The correspondence between levels is often referred to as an “is a” relationship, as a house is a building, and a ranch is a house.
+
+
 
 
 #### 有限状态机
@@ -701,54 +776,6 @@ Adapter,Decorator以及Proxy之间比较相近，虽然说意图上差别很大�
 
 ---
 
-## `面向过程`和`OOP`在程序流程上的不同之处。
-
-处理学生的成绩表
-
-1. `面向过程`的程序
-
-    ```py
-    # 为了表示一个学生的成绩，用一个dict表示：
-    std1 = { 'name': 'Michael', 'score': 98 }
-    std2 = { 'name': 'Bob', 'score': 81 }
-    # 处理学生成绩可以通过函数实现，比如打印学生的成绩：
-    def print_score(std):
-        print('%s: %s' % (std['name'], std['score']))
-    ```  
-
-2. `面向对象`的程序设计思想
-
-   - 首选思考的不是程序的执行流程，而是Student这种数据类型应该被视为一个对象，这个对象拥有name和score这两个属性（`Property`）。
-   - 如果要打印一个学生的成绩
-     - 首先创建出学生对应的对象，
-
-      ```py
-      class Student(object):
-          def __init__(self, name, score):
-              self.name = name
-              self.score = score
-          def print_score(self):
-              print('%s: %s' % (self.name, self.score))
-
-      bart = Student('Bart Simpson', 59)
-      lisa = Student('Lisa Simpson', 87)
-      ```        
-
-     - 然后，给对象发一个print_score消息，让对象自己把自己的数据打印出来。
-       - 给对象发消息实际上就是调用`对象对应的关联函数`
-       - 称之为`对象的方法（Method）`。
-
-      ```py
-      bart.print_score()
-      lisa.print_score()
-      ```
-
-`面向对象`的设计思想是从自然界中来的，因为在自然界中，类（Class）和实例（Instance）的概念是很自然的。
-- `Class`是一种抽象概念，比如我们定义的Class——Student，是指学生这个概念
-- 而实例（`Instance`）则是一个个具体的Student，比如，Bart Simpson和Lisa Simpson是两个具体的Student。
-
-所以，面向对象的设计思想是抽象出`Class`，根据`Class`创建`Instance`。
-- 面向对象的抽象程度又比函数要高，因为一个Class既包含数据，又包含操作数据的方法
 
 ---
 
@@ -776,42 +803,23 @@ Scanner input = new Scanner(System.in);
 // Importing a Whole Package
 import packageName.∗;
 ```
-
-
-
----
-
-
-
-# Access control to Members of a Class
-
-**Access level modifiers** determine `whether other classes can use a particular field or invoke a particular method`.
-
-There are two levels of access control:
-- At the top level—`public`, or package-private (no explicit modifier).
-- At the member level—`public, private, protected`, or package-private (no explicit modifier)
-
-
-A class may be declared with the modifier `public`
-- that class is visible to all classes everywhere.
-- If a class has no modifier (the default, also known as package-private), it is visible only within its own package (packages are named groups of related classes)
-
-
-The `private` modifier
-- specifies that the member can only be accessed in its own class.
-
-The `protected` modifier
-- specifies that the member can only be accessed within its own package (as with package-private)
-- and, in addition, by a subclass of its class in another package.
-
-
-
+ 
 
 ---
 
-# 5.4.1. User-defined Classes
 
-Python provides a way to define `new functions` in programs, it also provides a way to `define new classes of objects`.
+# Class & Object
+
+It is the basic concept of OOP; an extended concept of the structure used in C. It is an abstract and user-defined data type. It consists of several variables and functions. 
+
+- The primary purpose of the class is to store data and information. 
+- The members of a class define the behaviour of the class. 
+- A class is the blueprint of the object, the implementation of the class is the object. 
+- The class is not visible to the world, but the object is.
+
+
+
+
 
 ---
 
@@ -821,6 +829,61 @@ Python provides a way to define `new functions` in programs, it also provides a 
 - determines how an object will behave and what the object will contain.
 - a blueprint or a set of instruction to build a specific type of object.
 - It provides initial values for member variables and member functions or methods.
+
+
+User-defined Classes
+
+Python provides a way to define `new functions` in programs, it also provides a way to `define new classes of objects`.
+
+
+
+### Access control to Class
+
+**Access level modifiers** determine `whether other classes can use a particular field or invoke a particular method`.
+
+There are two levels of access control:
+- At the top level—`public`, or `package-private` (no explicit modifier).
+- At the member level—`public, private, protected`, or `package-private` (no explicit modifier)
+
+
+class declared with the modifier `public`
+- that class is visible to all classes everywhere.
+- If a class has no modifier (the default, package-private), it is visible only within its own package (packages are named groups of related classes)
+
+
+The `private` modifier
+- specifies that the member can only be accessed in its own class.
+
+
+The `protected` modifier
+- specifies that the member can only be accessed within its own package (as with package-private)
+- and, in addition, by a subclass of its class in another package.
+
+---
+
+### Python `class&Instance`
+
+Python is an `object-oriented programming` language.
+- provides features that support `object-oriented programming (OOP)`.
+
+
+在Python中，所有数据类型都可以视为Object，当然也可以自定义对象。
+- 自定义的对象数据类型就是面向对象中的类（`Class`）的概念。
+
+---
+
+
+### Java
+
+the main “actors” in the object-oriented paradigm are called `objects`.
+
+- Each `object` is an `instance` of a `class`.
+
+- Each `class` presents to the outside world a concise and consistent view of the objects that are instances of this class, without going into too much unnecessary detail or giving others access to the inner workings of the objects.
+
+- The class definition typically specifies the data fields, also known as instance variables, that an object contains, as well as the methods (operations) that an object can execute.  
+
+Software implementations should achieve robustness, adaptability, and reusability.
 
 ---
 
