@@ -398,10 +398,17 @@ Stack.pop();
 Stack.peek();
 Stack.empty();
 
+ArrayList ans = new ArrayList();
 ArrayList<Integer> ans = new ArrayList<>();
 ans.add(num);
 ans.size()
 ans.get(i);
+
+
+Vector myVect = new Vector();
+myVect.add('one');
+myVect.get(i);
+
 
 ListNode<Integer> head = new ListNode<>();
 ListNode.
@@ -421,26 +428,28 @@ List.length;
 List.add(a);
 List.remove(i);
 
-LinkedList<Integer> q = new LinkedList<>();
-LinkedList.getFirst();
-LinkedList.getLast();
-LinkedList.addLast();
-LinkedList.pollLast();
-LinkedList.isEmpty();
-LinkedList.removeLast();
+LinkedList<Integer> linkedlist = new LinkedList<>();
+linkedlist.addFirst('k');
+linkedlist.addLast('k');
+linkedlist.getFirst();
+linkedlist.getLast();
+linkedlist.pollLast();
+linkedlist.isEmpty();
+linkedlist.removeLast();
+Iterator iter = linkedlist.iterator();
+iter.hashNext();
+iter.next();
 
 
 LinkedHashSet<Character> set = new LinkedHashSet<Character>();
 set.add("kkk");
-Iterator<Character> it = set.iterator();
-it.hasNext();
-it.next();
+Iterator<Character> iter = set.iterator();
+iter.hasNext();
+iter.next();
+
 
 Set<Character> set = new HashSet<Character>();
 set.add("kkk");
-
-
-
 
 Set<String> deads = new HashSet<>();
 
@@ -451,9 +460,9 @@ Set<Integer> set = tree.subSet(leftValue, rightValue+1);
 
 
 HashMap<Integer, Integer> hm = new HashMap<>();
-hm.containsKey(key);
-hm.get(key);
 hm.put(key, val);
+hm.get(key);
+hm.containsKey(key);
 hm.size();
 hm.putIfAbsent(1, new LinkedHashSet<>());
 hm.getOrDefault(val, 0);
