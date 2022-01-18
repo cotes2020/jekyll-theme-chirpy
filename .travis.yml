@@ -1,32 +1,40 @@
 os: linux
 dist: bionic
+language: ruby
+rvm: 2.7.0
 
-language: minimal
+before_script: git -C "$HOME" clone "$BUILDER_REPO" --depth=1 -q
 
-# only run on tags
-if: branch =~ /^v(\d)+(\.(\d)+){2}$/ OR tag IS present
+addons:
+  apt:
+    packages:
+      - libcurl4-openssl-dev  # to avoid SSL error (for htmlproofer)
+
+# Overriding to drop the `--development` flag which requires the Gemfile.lock at build
+install: bundle install --jobs=3 --retry=3 --path=vendor/bundle
 
 jobs:
   include:
-    - name: Deploy
-      language: ruby
-      rvm: 2.7.0
-      addons:
-        apt:
-          packages:
-            - libcurl4-openssl-dev  # to avoid SSL error (for htmlproofer)
-      install:
-        - bundle install --jobs=3 --retry=3  # overriding to drop the travis `--development` flag
-      script:
-        - eval "$BUILD_CMD"
+    - stage: Deploy
       git:
         depth: false  # for posts' lastmod
-
-    - name: Flush Starter
+      script: eval "$BUILD_CMD"
+    - stage: Flush Starter
+      install: true   # skip install step
       script: eval "$FLUSH_STARTER"
+    - stage: Update Docs
+      cache: bundler
+      git:
+        depth: false  # for posts' lastmod
+      script: eval "$DOCS_CMD"
 
-before_script:
-  - git -C "$HOME" clone "$BUILDER_REPO" --depth=1 -q
+stages:
+  - name: Deploy
+    if: branch =~ /^v(\d)+(\.(\d)+){2}$/ OR tag IS present
+  - name: Flush Starter
+    if: branch =~ /^v(\d)+(\.(\d)+){2}$/ OR tag IS present
+  - name: Update Docs
+    if: branch = docs
 
 notifications:
   email:
