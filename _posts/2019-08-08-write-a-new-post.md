@@ -217,7 +217,6 @@ The output will be:
 ```
 {: .nolineno }
 
-
 ### Preview Image
 
 If you want to add an image to the top of the post contents, specify the attribute `src`, `width`, `height`, and `alt` for the image:
@@ -250,9 +249,11 @@ pin: true
 
 Markdown symbols ```` ``` ```` can easily create a code block as follows:
 
+````md
 ```
 This is a plaintext code snippet.
 ```
+````
 
 ### Specifying Language
 
@@ -268,18 +269,18 @@ key: value
 
 ### Line Number
 
-By default, all languages except `plaintext`, `console`, and `terminal` will display line numbers. When you want to hide the line number of the code block, you can append `{: .nolineno}` at the next line:
+By default, all languages except `plaintext`, `console`, and `terminal` will display line numbers. When you want to hide the line number of a code block, add the class `nolineno` to it:
 
 ````markdown
 ```shell
 echo 'No more line numbers!'
 ```
-{: .nolineno}
+{: .nolineno }
 ````
 
 ### Specifying the Filename
 
-You may have noticed that the code language will be displayed on the left side of the header of the code block. If you want to replace it with the file name, you can add the attribute `file` to achieve this:
+You may have noticed that the code language will be displayed at the top of the code block. If you want to replace it with the file name, you can add the attribute `file` to achieve this:
 
 ````markdown
 ```shell
