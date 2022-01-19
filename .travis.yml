@@ -3,8 +3,6 @@ dist: bionic
 language: ruby
 rvm: 2.7.0
 
-before_script: git -C "$HOME" clone "$BUILDER_REPO" --depth=1 -q
-
 addons:
   apt:
     packages:
@@ -13,27 +11,30 @@ addons:
 # Overriding to drop the `--development` flag which requires the Gemfile.lock at build
 install: bundle install --jobs=3 --retry=3 --path=vendor/bundle
 
+before_script: git -C "$HOME" clone "$BUILDER_REPO" --depth=1 -q
+
 jobs:
   include:
-    - stage: Deploy
+    - stage: Upgrade
       git:
         depth: false  # for posts' lastmod
       script: eval "$BUILD_CMD"
-    - stage: Flush Starter
+    - stage: Starter
+      language: minimal
       install: true   # skip install step
       script: eval "$FLUSH_STARTER"
-    - stage: Update Docs
+    - stage: Docs
       cache: bundler
       git:
         depth: false  # for posts' lastmod
       script: eval "$DOCS_CMD"
 
 stages:
-  - name: Deploy
+  - name: Upgrade
     if: branch =~ /^v(\d)+(\.(\d)+){2}$/ OR tag IS present
-  - name: Flush Starter
+  - name: Starter
     if: branch =~ /^v(\d)+(\.(\d)+){2}$/ OR tag IS present
-  - name: Update Docs
+  - name: Docs
     if: branch = docs
 
 notifications:
