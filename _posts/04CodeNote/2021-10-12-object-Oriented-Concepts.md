@@ -7,22 +7,20 @@ tags: []
 ---
 
 - [Object-oriented programming 面向对象编程](#object-oriented-programming-面向对象编程)
+  - [language different](#language-different)
   - [`面向过程`和`OOP`在程序流程上的不同之处。](#面向过程和oop在程序流程上的不同之处)
     - [code different](#code-different)
-  - [Object-oriented programming language](#object-oriented-programming-language)
+  - [OOP inter](#oop-inter)
   - [Object-Oriented Design Principles](#object-oriented-design-principles)
     - [派生关系](#派生关系)
     - [继承/组合/参数化 类型 (复用技术)](#继承组合参数化-类型-复用技术)
       - [组合](#组合)
-      - [继承](#继承)
+      - [Inheritance 继承](#inheritance-继承)
       - [参数化/模版类类型](#参数化模版类类型)
-      - [封装](#封装)
+      - [Encapsulation 封装](#encapsulation-封装)
       - [Abstraction](#abstraction)
-      - [Encapsulation](#encapsulation)
-      - [Modularity](#modularity)
-      - [Inheritance](#inheritance)
       - [有限状态机](#有限状态机)
-      - [polymorphisn 多态](#polymorphisn-多态)
+      - [Polymorphism 多态](#polymorphism-多态)
   - [设计模式](#设计模式)
     - [创建型](#创建型)
       - [单例模式 Singleton Pattern](#单例模式-singleton-pattern)
@@ -44,9 +42,10 @@ tags: []
       - [Proxy](#proxy)
 - [Packages and Imports](#packages-and-imports)
   - [Import](#import)
-- [Class & Object](#class--object)
+- [basic concept of OOP](#basic-concept-of-oop)
+  - [Access Modifier](#access-modifier)
+    - [java class Access control](#java-class-access-control)
   - [Class](#class)
-    - [Access control to Class](#access-control-to-class)
     - [Python `class&Instance`](#python-classinstance)
     - [Java](#java)
   - [Object](#object)
@@ -73,7 +72,7 @@ tags: []
     - [`Overrid` 覆写 Methods](#overrid-覆写-methods)
   - [22.4. Invoke 调用 the Parent Class’s Method](#224-invoke-调用-the-parent-classs-method)
   - [继承和多态](#继承和多态)
-    - [继承](#继承-1)
+    - [继承](#继承)
     - [继承好处](#继承好处)
     - [多态](#多态)
     - [多态的好处](#多态的好处)
@@ -95,7 +94,9 @@ tags: []
 
 # Object-oriented programming 面向对象编程
 
+---
 
+## language different
 
 1. Machine language
 2. Assembly language
@@ -119,16 +120,36 @@ tags: []
 5. **object oriented programming**
 
 
-Ask
-1. Handle Ambiguity
-* make assumptions & ask clarifying questions
-* **who** is going to use it and **how** they are going to use it
-* who, what, where, when, how, why
-2. Define the core objects Suppose we are designing for a restaurant. Our core objects might be things like `Table`, `Guest`, `Party`, `Order`, `Meal`, `Employee`, `Server`, and `Host`.
-3. Analyze Relationships
-4. Investigate Actions
+
+**Some important points to know about OOP**
+- OOP treats data as a critical element.
+  - The main aim of OOP is to `bind together the data and the functions` that operate on them
+  - so that no other part of the code can access this data except that function.
+
+- Emphasis is on data rather than procedure.
+- Decomposition of the problem into simpler modules.
+- Doesn’t allow data to freely flow in the entire system, ie localized control flow.
+- Data is protected from external functions.
 
 
+**Advantages of OOPs**
+- It `models` the real world very well.
+- With OOP, programs are `easy to understand and maintain`.
+- OOP offers code `reusability`. Already created classes can be reused without having to write them again.
+- OOP facilitates the quick development of programs where `parallel development of classes` is possible.
+- With OOP, programs are `easier to test, manage and debug`.
+
+
+**Disadvantages of OOP**
+- classes sometimes tend to be over-generalized.
+- The relations among classes become superficial at times.
+- The OOP design is tricky and requires appropriate knowledge. Also, one needs to do proper planning and design for OOP programming.
+- To program with OOP, the programmer needs proper skills such as design, programming, and thinking in terms of objects and classes, etc.
+
+
+
+
+---
 
 ## `面向过程`和`OOP`在程序流程上的不同之处。
 
@@ -144,11 +165,11 @@ Ask
 - 把`Object`作为程序的基本单元
 - 一个`Object`包含了数据和操作数据的函数。
 - 把 计算机程序 视为一组对象的集合，而每个对象都可以接收其他对象发过来的消息，并处理这些消息，计算机程序的执行就是一系列消息在各个对象之间传递。
-- basically designed to overcome the drawback of the above programming methodologies, which were not so close to real-world applications. 
-- The demand was increased, but still, conventional methods were used. 
+- basically designed to overcome the drawback of the above programming methodologies, which were not so close to real-world applications.
+- The demand was increased, but still, conventional methods were used.
 - This new approach brought a revolution in the programming methodology field.
 - OOP allows the writing of programs with the help of certain classes and real-time objects.
-- very close to the real-world and its applications because the state and behaviour of these classes and objects are almost the same as real-world objects. 
+- very close to the real-world and its applications because the state and behaviour of these classes and objects are almost the same as real-world objects.
 
 
 
@@ -199,7 +220,7 @@ Ask
 
 所以，面向对象的设计思想是抽象出`Class`，根据`Class`创建`Instance`。
 - 面向对象的抽象程度又比函数要高，因为一个Class既包含数据，又包含操作数据的方法
- 
+
 
 
 
@@ -208,7 +229,18 @@ Ask
 ---
 
 
-## Object-oriented programming language
+## OOP inter
+
+
+Ask
+1. Handle Ambiguity
+* make assumptions & ask clarifying questions
+* **who** is going to use it and **how** they are going to use it
+* who, what, where, when, how, why
+2. Define the core objects Suppose we are designing for a restaurant. Our core objects might be things like `Table`, `Guest`, `Party`, `Order`, `Meal`, `Employee`, `Server`, and `Host`.
+3. Analyze Relationships
+4. Investigate Actions
+
 
 
 对于初级程序员的面试，最难的部分可能就是所谓的设计题。
@@ -236,10 +268,8 @@ Ask
 * 解释为何这么实现(Explain why you choose this implementation )
 * 对自己的能力水平很熟练(Be familiar with your experience level to make decisions )
 * 在一些高层结构和复杂性方面有设计(Answer in high level of scale and complexity )
- 
+
 ---
-
-
 
 
 ## Object-Oriented Design Principles
@@ -260,7 +290,7 @@ Chief among the principles of the object-oriented approach, which are intended t
 
 这里，我们举一个例子简单说明这些过程分别需要做些什么，在“模式识别”给出更为具体和完整的实例。
 
-
+---
 
 ### 派生关系
 
@@ -271,7 +301,7 @@ Chief among the principles of the object-oriented approach, which are intended t
 
 在确定了派生关系之后，我们需要分析什么是`基类变量(base class variables)`什么是`子类变量(sub class variables)`，并由此确定基类和派生类之间的联系。
 
-
+---
 
 ### 继承/组合/参数化 类型 (复用技术)
 
@@ -284,6 +314,9 @@ Chief among the principles of the object-oriented approach, which are intended t
 * **继承**: 允许你提供操作的缺省实现，通过子类来重定义这些操作，但是不能够在运行时改变。
 * **对象组合**: 允许你在运行时刻改变被组合的行为，但是它存在间接性，相对来说比较低效。
 * **参数化**: 允许你改变所使用的类型，同样不能够在运行时改变。
+
+
+---
 
 #### 组合
 
@@ -302,8 +335,20 @@ Chief among the principles of the object-oriented approach, which are intended t
 * 使用组合方式，我们可以将类层次限制在比较小的范围内，不容易产生类的爆炸。
 * 相对于继承来说,组合可能需要编写“更多的代码。
 
+---
 
-#### 继承
+#### Inheritance 继承
+
+- A natural way to `organize various structural components of a software package in a hierarchical fashion`,
+- with similar abstract definitions grouped together
+- in a level-by-level manner that goes from specific to more general as one traverses up the hierarchy.
+
+- Inheritance is the ability of one class to `inherit capabilities or properties` of another class (the parent class).
+
+  - When we write a class, we inherit properties from other classes. So when we create a class, we do not need to write all the properties and functions again and again, as these can be inherited from another class that possesses it.
+  - Inheritance allows the user to reuse the code whenever possible and reduce its redundancy.
+
+
 - 对于继承的使用，通常情况下我们会定义一个虚基类，由此派生出多个不同的实例类。
   * 通过继承创建的新类称为“子类”或“派生类”，
   * 被继承的类称为“基类”、“父类”或“超类”。
@@ -317,6 +362,9 @@ Chief among the principles of the object-oriented approach, which are intended t
 * 因为子类没有改写父类方法的话，就相当于依赖了父类这个方法的实现细节,被认为破坏封装性。
 * 并且如果父类接口定义需要更改时，子类也需要提更改响应接口。
 
+![4-104](https://i.imgur.com/VQHCe4Y.png)
+
+---
 
 #### 参数化/模版类类型
 - 此外，我们还要提及参数化类型。参数化类型，或者说模版类也是一种有效的代码复用技术。
@@ -328,12 +376,30 @@ Chief among the principles of the object-oriented approach, which are intended t
 * 因为参数化类型本身就不是面向对象语言的一个特征，所以在面向对象的设计模式里面，没有一种模式是于参数化类型相关的。
 * 实践上我们方面是可以使用参数化类型来编写某种模式的。
 
+- Modern software systems typically consist of several different components that must interact correctly in order for the entire system to work properly.
+- Keeping these interactions straight requires that these different components be well organized.
+- Modularity refers to an organizing principle in which `different components of a software system are divided into separate functional units`.
+- Robustness is greatly increased because it is easier to test and debug separate components before they are integrated into a larger software system.
 
-#### 封装
+
+
+
+#### Encapsulation 封装
 
 - 封装是面向对象的特征之一，是对象和类概念的主要特性。
 - 把客观事物封装成抽象的类
 - 并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。
+Encapsulation
+
+- `different components of a software system should not reveal 揭示 the internal details of their respective implementations`.
+
+- It describes the idea of wrapping data and the methods that work on data within one unit, e.g., a class in Java.
+- This concept is often used to hide the internal state representation of an object from the outside.
+
+- One of the **main advantages**: gives programmer freedom to implement the details of a component, without concern that other programmers will be writing code that intricately depends on those internal decisions.
+
+- The only constraint on the programmer of a component is to **maintain the public interface for the component**, as other programmers will be writing code that depends on that interface.
+- Encapsulation yields robustness and adaptability, for it allows the implementation details of parts of a program to change without adversely affecting other parts, thereby making it easier to fix bugs or add new functionality with relatively local changes to a component.
 
 
 
@@ -342,17 +408,17 @@ Chief among the principles of the object-oriented approach, which are intended t
 
 Abstraction refers to the act of representing important and special features without including the background details or explanation about that feature. Data abstraction simplifies database design.
 
-1. Physical Level: 
-   1. It describes how the records are stored, which are often hidden from the user. 
-   2. It can be described with the phrase, “block of storage.” 
+1. Physical Level:
+   1. It describes how the records are stored, which are often hidden from the user.
+   2. It can be described with the phrase, “block of storage.”
 
-2. Logical Level: 
-   1. It describes data stored in the database and the relationships between the data. 
-   2. The programmers generally work at this level as they are aware of the functions needed to maintain the relationships between the data. 
+2. Logical Level:
+   1. It describes data stored in the database and the relationships between the data.
+   2. The programmers generally work at this level as they are aware of the functions needed to maintain the relationships between the data.
 
-3. View Level: 
-   1. Application programs hide details of data types and information for security purposes. 
-   2. This level is generally implemented with the help of GUI, and details that are meant for the user are shown. 
+3. View Level:
+   1. Application programs hide details of data types and information for security purposes.
+   2. This level is generally implemented with the help of GUI, and details that are meant for the user are shown.
 
 
 
@@ -363,14 +429,6 @@ Abstraction refers to the act of representing important and special features wit
 **abstract data types (ADTs)**
 - An ADT is a mathematical model of a data structure that specifies `the type of data stored, the operations supported on them, and the types of parameters of the operations`.
 - An ADT specifies what each operation does, but not how it does it.
-
-
-
-
-
-
-
-
 
 
 **interface**
@@ -386,46 +444,15 @@ Abstraction refers to the act of representing important and special features wit
 
 
 
-
-
-
-
-#### Encapsulation
-
-- `different components of a software system should not reveal 揭示 the internal details of their respective implementations`.
-
-- It describes the idea of wrapping data and the methods that work on data within one unit, e.g., a class in Java. 
-- This concept is often used to hide the internal state representation of an object from the outside.
-
-- One of the **main advantages**: gives programmer freedom to implement the details of a component, without concern that other programmers will be writing code that intricately depends on those internal decisions.
-
-- The only constraint on the programmer of a component is to **maintain the public interface for the component**, as other programmers will be writing code that depends on that interface.
-- Encapsulation yields robustness and adaptability, for it allows the implementation details of parts of a program to change without adversely affecting other parts, thereby making it easier to fix bugs or add new functionality with relatively local changes to a component.
-
-
-
-#### Modularity
-- Modern software systems typically consist of several different components that must interact correctly in order for the entire system to work properly.
-- Keeping these interactions straight requires that these different components be well organized.
-- Modularity refers to an organizing principle in which `different components of a software system are divided into separate functional units`.
-- Robustness is greatly increased because it is easier to test and debug separate components before they are integrated into a larger software system.
-
-
-#### Inheritance
-- A natural way to organize various structural components of a software package is in a hierarchical fashion, 
-- with similar abstract definitions grouped together in a level-by-level manner that goes from specific to more general as one traverses up the hierarchy. 
-
-- An example of such a hierarchy is shown in Figure 2.3. Using mathematical notations, the set of houses is a subset of the set of buildings, but a superset of the set of ranches. The correspondence between levels is often referred to as an “is a” relationship, as a house is a building, and a ranch is a house.
-
-
-
-
 #### 有限状态机
 
 参见[这里](http://en.wikipedia.org/wiki/Finite-state_machine)
 
 
-#### polymorphisn 多态
+#### Polymorphism 多态
+
+- Polymorphism is the ability of data to be processed in more than one form. It allows the performance of the same task in various ways. It consists of method overloading and method overriding, i.e., writing the method once and performing a number of tasks using the same method name.
+
 
 - 在C++中，最常见的`多态`指的是用基类指针指向一个派生类的实例
 - 当用该指针调用一个基类中的虚函数时，实际调用的是派生类的函数实现，而不是基类函数。
@@ -438,6 +465,10 @@ Abstraction refers to the act of representing important and special features wit
 - 实现多态，有两种方式，覆盖和重载。
   * 覆盖和重载的区别在于，覆盖在运行时决定，重载是在编译时决定。
   * 并且覆盖和重载的机制不同，例如在 Java 中，重载方法的签名必须不同于原先方法的，但对于覆盖签名必须相同。
+
+
+![4-104](https://i.imgur.com/IhcFl27.png)
+
 
 ---
 
@@ -772,10 +803,7 @@ Adapter,Decorator以及Proxy之间比较相近，虽然说意图上差别很大�
 * Decorator模式的接口一定要包含原有接口，通常来说还要添加新接口。
 * Proxy模式完全可以重新定义一套新的接口
 
-
-
----
-
+ 
 
 ---
 
@@ -803,41 +831,26 @@ Scanner input = new Scanner(System.in);
 // Importing a Whole Package
 import packageName.∗;
 ```
- 
-
----
-
-
-# Class & Object
-
-It is the basic concept of OOP; an extended concept of the structure used in C. It is an abstract and user-defined data type. It consists of several variables and functions. 
-
-- The primary purpose of the class is to store data and information. 
-- The members of a class define the behaviour of the class. 
-- A class is the blueprint of the object, the implementation of the class is the object. 
-- The class is not visible to the world, but the object is.
-
-
-
 
 
 ---
 
-## Class
+# basic concept of OOP
 
-- an entity
-- determines how an object will behave and what the object will contain.
-- a blueprint or a set of instruction to build a specific type of object.
-- It provides initial values for member variables and member functions or methods.
+---
+
+## Access Modifier
+- Defines access type of the method i.e. from where it can be accessed in your application. 
+- **The return type**: The data type of the value returned by the method or void if does not return a value.
+- **Method Name**: the rules for field names apply to method names as well, but the convention is a little different.
+- **Parameter list**: Comma separated list of the input parameters are defined, preceded with their data type, within the enclosed parenthesis. If there are no parameters, you must use empty parentheses ().
+- **Exception list**: The exceptions you expect by the method can throw, you can specify these exception(s).
+- **Method body**: it is enclosed between braces. The code you need to be executed to perform your intended operations.
 
 
-User-defined Classes
-
-Python provides a way to define `new functions` in programs, it also provides a way to `define new classes of objects`.
 
 
-
-### Access control to Class
+### java class Access control 
 
 **Access level modifiers** determine `whether other classes can use a particular field or invoke a particular method`.
 
@@ -845,23 +858,68 @@ There are two levels of access control:
 - At the top level—`public`, or `package-private` (no explicit modifier).
 - At the member level—`public, private, protected`, or `package-private` (no explicit modifier)
 
-
-class declared with the modifier `public`
-- that class is visible to all classes everywhere.
-- If a class has no modifier (the default, package-private), it is visible only within its own package (packages are named groups of related classes)
-
-
-The `private` modifier
-- specifies that the member can only be accessed in its own class.
+In Java, there 4 type of the access specifiers. 
+- `public`: 
+  - accessible in all class in your application.
+  - that class is visible to all classes everywhere.
+  - If a class has no modifier (the default, package-private), it is visible only within its own package (packages are named groups of related classes)
 
 
-The `protected` modifier
-- specifies that the member can only be accessed within its own package (as with package-private)
-- and, in addition, by a subclass of its class in another package.
+- `protected`: 
+  - accessible within the package in which it is defined and in its subclass(es)(including subclasses declared outside the package)
+  - specifies that the member can only be accessed within its own package (as with package-private)
+  - and, in addition, by a subclass of its class in another package.
+
+
+- `private`: 
+  - accessible only within the class in which it is defined.
+  - specifies that the member can only be accessed in its own class.
+
+
+- `default` (declared/defined without using any modifier): accessible within same class and package within which its class is defined.
+
+
+
+---
+
+## Class
+
+A class
+- It is an abstract and user-defined data type.
+- a user defined blueprint or prototype from which objects are created. 
+  - A class is the blueprint of the object, 
+  - the implementation of the class is the object.
+  - The class is not visible to the world, but the object is.
+
+- It represents the set of properties or methods that are common to all objects of one type. 
+- an extended concept of the structure used in C.
+- It consists of several variables and functions.
+
+- In general, class declarations can include these components, in order: 
+  - **Modifiers**: A class can be public or has default access 
+  - **Class name**: The name should begin with a initial letter (capitalized by convention).
+  - **Superclass(if any)**: The name of the class’s parent (superclass), if any, preceded by the keyword extends. A class can only extend (subclass) one parent.
+  - **Interfaces(if any)**: A comma-separated list of interfaces implemented by the class, if any, preceded by the keyword implements. A class can implement more than one interface.
+  - **Body**: The class body surrounded by braces, { }.
+
+
+- The primary purpose of the class is to store data and information.
+- The members of a class define the behaviour of the class.
+
+- an entity
+- determines how an object will behave and what the object will contain.
+- a blueprint or a set of instruction to build a specific type of object.
+- It provides initial values for member variables and member functions or methods.
+
 
 ---
 
 ### Python `class&Instance`
+
+
+User-defined Classes
+
+Python provides a way to define `new functions` in programs, it also provides a way to `define new classes of objects`.
 
 Python is an `object-oriented programming` language.
 - provides features that support `object-oriented programming (OOP)`.
@@ -891,6 +949,18 @@ Software implementations should achieve robustness, adaptability, and reusabilit
 
 - a self-contained component
 - consists of methods and properties to make a data useful.
+
+- basic unit of Object Oriented Programming and represents the real life entities. 
+- A typical Java program creates many objects interact by invoking methods. 
+- An object consists of: 
+  - **State** : It is represented by `attributes of an object`. It also reflects the properties of an object.
+  - **Behavior** : It is represented by `methods of an object`. It also reflects the response of an object with other objects.
+Identity : It gives a unique name to an object and enables one object to interact with other objects.
+Method: A method is a collection of statements that perform some specific task and return result to the caller. A method can perform some specific task without returning anything. Methods allow us to reuse the code without retyping the code. In Java, every method must be part of some class which is different from languages like C, C++ and Python. 
+Methods are time savers and help us to reuse the code without retyping the code.
+
+
+
 - helps to determines the behavior of the class.
 - For example
   - send a message to an object
@@ -2075,6 +2145,3 @@ MapReduce allows us to do a lot of processing in parallel, which makes processin
 * **Security**:
   * Security threats can, of course, be devastating for a system.
   * Think about the tyupes of issues a system might face and design around thos.
-
-
-  
