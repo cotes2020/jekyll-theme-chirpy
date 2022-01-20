@@ -92,13 +92,10 @@ c3 = p1p2p3(k3, k23, k33) mod 26
 
 ## Caesar Cipher 凱撒密碼
 
-
 It is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet.
 
 ![Caesar_cipher_left_shift_of_3.svg](https://i.imgur.com/RNeQe4K.png)
-
-
-
+ 
 
 
 

@@ -182,6 +182,27 @@ Nested application of DES with three different keys KA, KB, and KC,
 - C = EKC(DKB(EKA(P)));
 - P = DKA(EKB(DKC(C)))
 
+
+```py
+pip install pyDES
+
+import pyDes
+
+data = "DES Algorithm Implementation"
+k = pyDes.des(
+      "DESCRYPT", 
+      pyDes.CBC, 
+      "\0\0\0\0\0\0\0\0", 
+      pad=None, 
+      padmode=pyDes.PAD_PKCS5
+    )
+d = k.encrypt(data)
+
+print "Encrypted: %r" % d
+print "Decrypted: %r" % k.decrypt(d)
+assert k.decrypt(d) == data
+```
+
 - Equivalent to DES when KA=KB=KC (backward compatible)
   - the security of 3DES varies based on the way it is implemented.
   - 3 keying options:

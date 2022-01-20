@@ -1,6 +1,6 @@
 package labuladongjava.cipher;
 
-public class CCasearCipher {
+public class CCCasearipher {
 
     static String encrypt(String planTest, int key){
         StringBuffer sb = new StringBuffer();

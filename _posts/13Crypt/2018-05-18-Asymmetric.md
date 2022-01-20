@@ -15,6 +15,8 @@ image:
   - [Diffie-Hellman (DH)](#diffie-hellman-dh)
   - [RSA (Rivest–Shamir–Adleman)](#rsa-rivestshamiradleman)
     - [Disadvantages:](#disadvantages)
+    - [RSA code](#rsa-code)
+    - [brute force](#brute-force)
     - [key generation:](#key-generation)
   - [El Gamal](#el-gamal)
 
@@ -180,7 +182,6 @@ RSA algorithm:
     - PKI uses <font color=blue> digital certificates and a certificate authority (CA) </font> to allow secure communication across a public network.
     - But ECDH better in PKI for key agreement.
 
-
 - based on <font color=red> factoring 2 larger primes </font>
   - the computational difficulty inherent in factoring large prime numbers.
   - uses the mathematical properties of prime numbers to generate secure public and private keys.
@@ -199,12 +200,140 @@ RSA algorithm:
 
 
 
+### RSA code
 
+```py
+# a 除以 m 所得的余数记作 a mod m.
+# 如果 a mod m = b mod m
+# 即 a, b 除以 m 所得的余数相等，那么我们记作：a≡b(mod m)
+
+from Crypto import Random
+from Crypto.PublicKey import RSA
+import base64
+
+def generate_keys():
+   # key length must be a multiple of 256 and >= 1024
+   key_length = 256*4
+   privatekey = RSA.generate(key_length, Random.new().read)
+   publickey = privatekey.publickey()
+   return privatekey, publickey
+
+def encrypt_message(plaintext , publickey):
+   encrypted_msg = publickey.encrypt(plaintext, 32)[0]
+   encoded_encrypted_msg = base64.b64encode(encrypted_msg)
+   return encoded_encrypted_msg
+
+def decrypt_message(encoded_encrypted_msg, privatekey):
+   decoded_encrypted_msg = base64.b64decode(encoded_encrypted_msg)
+   decoded_decrypted_msg = privatekey.decrypt(decoded_encrypted_msg)
+   return decoded_decrypted_msg
+
+plaintext = "This is the illustration of RSA algorithm of asymmetric cryptography"
+privatekey , publickey = generate_keys()
+encrypted_msg = encrypt_message(plaintext , publickey)
+decrypted_msg = decrypt_message(encrypted_msg, privatekey)
+
+print "%s - (%d)" % (privatekey.exportKey() , len(privatekey.exportKey()))
+print "%s - (%d)" % (publickey.exportKey() , len(publickey.exportKey()))
+print "Original content: %s - (%d)" % (plaintext, len(plaintext))
+print "Encrypted message: %s - (%d)" % (encrypted_msg, len(encrypted_msg))
+print "Decrypted message: %s - (%d)" % (decrypted_msg, len(decrypted_msg))
 ```
-a 除以 m 所得的余数记作 a mod m.
-如果 a mod m = b mod m
-即 a, b 除以 m 所得的余数相等，那么我们记作：a≡b(mod m)
+
+
+```py
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.Signature import PKCS1_v1_5
+from Crypto.Hash import SHA512, SHA384, SHA256, SHA, MD5
+from Crypto import Random
+from base64 import b64encode, b64decode
+hash = "SHA-256"
+
+def newkeys(keysize):
+   random_generator = Random.new().read
+   key = RSA.generate(keysize, random_generator)
+   private, public = key, key.publickey()
+   return public, private
+
+def importKey(externKey):
+   return RSA.importKey(externKey)
+
+def getpublickey(priv_key):
+   return priv_key.publickey()
+
+def encrypt(message, pub_key):
+   cipher = PKCS1_OAEP.new(pub_key)
+   return cipher.encrypt(message)
+
+def decrypt(ciphertext, priv_key):
+   cipher = PKCS1_OAEP.new(priv_key)
+   return cipher.decrypt(ciphertext)
+
+def sign(message, priv_key, hashAlg = "SHA-256"):
+   global hash
+   hash = hashAlg
+   signer = PKCS1_v1_5.new(priv_key)
+   if (hash == "SHA-512"): digest = SHA512.new()
+   elif (hash == "SHA-384"): digest = SHA384.new()
+   elif (hash == "SHA-256"): digest = SHA256.new()
+   elif (hash == "SHA-1"): digest = SHA.new()
+   else: digest = MD5.new()
+   digest.update(message)
+   return signer.sign(digest)
+
+def verify(message, signature, pub_key):
+   signer = PKCS1_v1_5.new(pub_key)
+   if (hash == "SHA-512"): digest = SHA512.new()
+   elif (hash == "SHA-384"): digest = SHA384.new()
+   elif (hash == "SHA-256"): digest = SHA256.new()
+   elif (hash == "SHA-1"): digest = SHA.new()
+   else: digest = MD5.new()
+   digest.update(message)
+   return signer.verify(digest, signature)
 ```
+
+
+### brute force
+
+```py
+def p_and_q(n):
+   data = []
+   for i in range(2, n):
+      if n % i == 0:
+         data.append(i)
+   return tuple(data)
+
+def euler(p, q):
+   return (p - 1) * (q - 1)
+
+def private_index(e, euler_v):
+   for i in range(2, euler_v):
+      if i * e % euler_v == 1:
+         return i
+
+def decipher(d, n, c):
+   return c ** d % n
+
+def main():
+    e = int(input("input e: "))
+    n = int(input("input n: "))
+    c = int(input("input c: "))
+    # t = 123
+    # private key = (103, 143)
+    p_and_q_v = p_and_q(n)
+    # print("[p_and_q]: ", p_and_q_v)
+    euler_v = euler(p_and_q_v[0], p_and_q_v[1])
+    # print("[euler]: ", euler_v)
+    d = private_index(e, euler_v)
+    plain = decipher(d, n, c)
+    print("plain: ", plain)
+    
+if __name__ == "__main__":
+   main()
+```
+
+
 
 ### key generation:
 
@@ -212,20 +341,39 @@ a 除以 m 所得的余数记作 a mod m.
 # 1. Choose two large prime numbers p,q (approximately 200 digits each): p and q, of approximately equal size such that their product, n = pq, is of the required bit length (such as 2,048 bits, 4,096 bits, and so forth).
 
 # 2. Compute the product of those two numbers:
-   n = p * q.
+# Generate the RSA modulus
+   N = p * q.
    m = (p-1)(q-1)
 
 # 3. Select a number, e, that satisfies the following two requirements:
-   e < n.
-   e  co-prime to m.  (2 numbers have no common factors other than 1.)
+# Derived Number (e)
+   1< e < N 
+   e  co-prime to m.  
+  #  (2 numbers have no common factors other than 1.)
 
-# 4. Find d:  
+# Step 3: Public key
+# The specified pair of numbers n and e forms the RSA public key and it is made public.
+
+
+# 4. Find d: Private Key d is calculated from the numbers p, q and e. The mathematical relationship between the numbers is as follows −
+
+ed = 1 mod (p-1) (q-1)
+
   (ed – 1) mod (p – 1)(q – 1) = 0.
   de mod m ≡ 1 		
 
 # 5. Distribute e and n as the public key to all cryptosystem users.
 
 # 6. Keep d secret as the private key.
+
+# Encryption Formula
+# Consider a sender who sends the plain text message to someone whose public key is (n,e). To encrypt the plain text message in the given scenario, use the following syntax −
+C = Pe mod n
+
+# Decryption Formula
+# The decryption process is very straightforward and includes analytics for calculation in a systematic approach. Considering receiver C has the private key d, the result modulus will be calculated as −
+Plaintext = Cd mod n
+
 
 
 If Alice wants to send an encrypted message to Bob,

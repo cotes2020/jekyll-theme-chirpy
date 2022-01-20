@@ -11,8 +11,30 @@ math: true
 toc: true
 image: /assets/img/note/tls-ssl-handshake.png
 ---
-
-[toc]
+ 
+- [网络协议](#网络协议)
+- [The OSI Model](#the-osi-model)
+  - [Layers in OSI](#layers-in-osi)
+- [TCP & UDP, TCP/IP](#tcp--udp-tcpip)
+  - [layers in TCP/IP](#layers-in-tcpip)
+    - [4. **Application Layer**:](#4-application-layer)
+    - [3. **Host-to-Host**](#3-host-to-host)
+    - [2. **Internet**](#2-internet)
+    - [1. **Network Access**](#1-network-access)
+  - [Common Application Protocols in the TCP/IP Stack](#common-application-protocols-in-the-tcpip-stack)
+  - [封装与解封装](#封装与解封装)
+  - [TCP vs UDP](#tcp-vs-udp)
+  - [Transmission Control Protocol (TCP)](#transmission-control-protocol-tcp)
+    - [TCP three-way handshake](#tcp-three-way-handshake)
+    - [TCP Features](#tcp-features)
+    - [Sliding window protocol:](#sliding-window-protocol)
+    - [Buffering:](#buffering)
+    - [TCP Packet Format](#tcp-packet-format)
+  - [User Datagram Protocol (UDP)](#user-datagram-protocol-udp)
+- [实际数据传输举例](#实际数据传输举例)
+- [网络构成](#网络构成)
+  - [网络构成要素](#网络构成要素)
+  - [通信介质与数据链路](#通信介质与数据链路)
 
 - ref
   - [36张图详解网络基础知识](https://mp.weixin.qq.com/s/XGSpPNf4IYCXNjd63ERZ0w)

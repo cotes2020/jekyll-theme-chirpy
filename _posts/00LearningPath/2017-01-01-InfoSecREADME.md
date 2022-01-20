@@ -111,6 +111,7 @@ Netstumbler <br> `identify open ports` | - designed for Win
 Aircrack-Ng <br> `Wireless sniffer & injector` | - focus on Replay attacks, de-authentication, fake access points, and others. <br> - It supports exporting data to text files. <br> - It can check Wi-Fi cards and driver capabilities. <br> - It can crack WEP keys and for that, it makes use of FMS attack, PTW attack, and dictionary attacks. <br> - It can crack WPA2-PSK and for that, it makes use of dictionary attacks. <br> <img src="https://i.imgur.com/wgVZxJJ.png" width="600">
 KisMAC <br> `wireless network security in the MAC` |
 wireshark <br> `Sniffing` | <img src="https://i.imgur.com/L1ckSYt.png" width="600">
+Tcpdump <br> `sniffing data packets` | - monitor log TCP and IP traffic communicated through a network
 ---------|------------------------------
 tools | **monitoring network security**
 Splunk |
@@ -135,11 +136,6 @@ XARP <br> `detect ARP poisoning` | <img src="https://i.imgur.com/vWTIp91.png" wi
 dsniff <br> `Sniffing` |
 Countermeasure | detect: Antisniff, ArpWatch, Switch Network switch Port Security features
 ---------|------------------------------
-tools | **Password auditing and packet sniffers cybersecurity tools**
-John The Ripper <br> `PaswdCrack` | <img src="https://i.imgur.com/zq4Ao7o.png" width="600">
-Cain and Abel <br> `PaswdCrack / ARP poisoning` | <img src="https://i.imgur.com/8gSuAdg.png" width="600">
-Tcpdump <br> `sniffing data packets` | - monitor log TCP and IP traffic communicated through a network
----------|------------------------------
 🐰 | **Reconnaissance** step 1 information gethering
 visualping <br> `passive` | <img src="https://i.imgur.com/TV47wYz.png" width="600">
 HTTrack <br> `website mirroring` | <img src="https://i.imgur.com/g0s74oj.png" width="600">
@@ -155,6 +151,21 @@ HUNCHLY <br> `website record` | <img src="https://i.imgur.com/2coiGDl.png" width
 Gophish <br> `phishing` | - opensource phishing platform
 Angry IP Scanner <br> `Scanning` | - scanning the IP addresses and ports. It can scan both on local network and Internet. <br> <img src="https://i.imgur.com/5Qyj91h.png" width="600">
 Sublist3r <br> `enumerate subdomains` | <img src="https://i.imgur.com/6cbDegs.png" width="600">
+---------|------------------------------
+tools | **Password auditing and packet sniffers cybersecurity tools**
+John The Ripper <br> `PaswdCrack` | <img src="https://i.imgur.com/zq4Ao7o.png" width="600">
+Cain and Abel <br> `PaswdCrack / ARP poisoning` | <img src="https://i.imgur.com/8gSuAdg.png" width="600">
+Gobuster <br> `brute-force tools` |
+BruteX <br> `brute-force tools` |
+Dirsearch <br> `web path scanner and can brute force directories and files in webservers` |
+Callow <br> `login brute-force tool`  |
+Secure Shell Bruteforcer (SSB) <br> `brute-force SSH servers`  |
+Thc-Hydra <br> `login cracking`  |
+Patator <br> `brute-force tool with diverse modular`  |
+Pydictor <br> `dictionary hacking powerful tool`  |
+Ncrack <br> `test their networking devices for weak passwords` |
+Hashcat <br> `password recovery tool` |
+
 
 
 
