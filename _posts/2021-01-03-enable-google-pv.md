@@ -146,7 +146,9 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
     ```
     {: file="src/config.py"}
 
-    **Tip:** You can configure a custom domain instead of `https://PROJECT_ID.REGION_ID.r.appspot.com`. But, for the sake of keeping it simple, we will be using the Google provided default URL.
+    > You can configure a custom domain instead of `https://PROJECT_ID.REGION_ID.r.appspot.com`.
+    > But, for the sake of keeping it simple, we will be using the Google provided default URL.
+    {: .prompt-note }
 
 5.  From inside the src/ directory, deploy the app
 

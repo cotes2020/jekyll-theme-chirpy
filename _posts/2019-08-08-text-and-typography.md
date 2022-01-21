@@ -76,7 +76,18 @@ Moon
 
 ## Block Quote
 
-> This line to shows the Block Quote.
+> This line shows the _block quote_.
+
+## Prompts
+
+> An example showing the `note` type prompt.
+{: .prompt-note }
+
+> An example showing the `warning` type prompt.
+{: .prompt-warning }
+
+> An example showing the `danger` type prompt.
+{: .prompt-danger }
 
 ## Tables
 
