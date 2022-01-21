@@ -11,7 +11,7 @@ Consider a one-dimensional harmonic oscillator evolving according to the equatio
 
 $$m \ddot{x} + kx = 0$$
 
-It is possible to solve for $$x \left( t \right)$$ using a geometric intuition solely by investigating the equation of motion, rather than directly finding the general solution analytically.
+It is possible to investigate the essential properties of $$x \left( t \right)$$ using a geometric intuition solely by playing with the equation of motion, rather than directly finding the general solution analytically.
 
 Firstly, for future ease, we define a parameter $$\omega = \sqrt{\frac{k}{m}}$$. Performing this substitution in the equation of motion and dividing both sides by $$\sqrt{mk}$$, we find,
 
