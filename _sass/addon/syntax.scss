@@ -108,6 +108,11 @@ code {
     padding: 3px 5px;
     border-radius: 4px;
     background-color: var(--inline-code-bg);
+
+    blockquote[class^="prompt-"] & {
+      background-color: var(--prompt-code-bg);
+      color: var(--prompt-code-text-color);
+    }
   }
 
   a > &.highlighter-rouge {

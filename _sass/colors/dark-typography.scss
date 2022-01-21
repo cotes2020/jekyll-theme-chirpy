@@ -69,6 +69,13 @@
   --kbd-wrap-color: #6a6a6a;
   --kbd-text-color: #d3d3d3;
   --kbd-bg-color: #242424;
+  --prompt-text-color: rgb(216 212 212 / 75%);
+  --prompt-note-bg: rgba(77, 187, 95, 0.2);
+  --prompt-note-icon-color: rgb(5 223 5 / 68%);
+  --prompt-warning-bg: rgb(90 69 3 / 95%);
+  --prompt-warning-icon-color: rgb(255 165 0 / 80%);
+  --prompt-danger-bg: rgb(86 28 8 / 80%);
+  --prompt-danger-icon-color: rgb(255 0 0 / 60%);
 
   /* tags */
   --tag-border: rgb(59, 79, 88);
@@ -145,4 +152,4 @@
     color-scheme: none;
   }
 
-} // dark-scheme
+} /* dark-scheme */

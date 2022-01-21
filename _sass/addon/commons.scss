@@ -104,6 +104,30 @@ blockquote {
   border-left: 5px solid var(--blockquote-border-color);
   padding-left: 1rem;
   color: var(--blockquote-text-color);
+
+  &[class^="prompt-"] {
+    display: flex;
+    border-left: 0;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+
+    &::before {
+      margin-right: 0.8rem;
+      font-family: "Font Awesome 5 Free";
+      text-align: center;
+      width: 1.25rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0rem;
+    }
+  }
+
+  @include prompt("note", "\f0eb", 400);
+
+  @include prompt("warning", "\f06a");
+
+  @include prompt("danger", "\f071");
 }
 
 kbd {
@@ -1142,32 +1166,6 @@ $sidebar-display: "sidebar-display";
 
   $footer-height: $footer-height-mobile; // overwrite
 
-  #main > div.row:first-child > div:first-child {
-    min-height: calc(100vh - #{$topbar-height} - #{$footer-height});
-  }
-
-  #core-wrapper {
-    min-height: calc(100vh - #{$topbar-height} - #{$footer-height} - #{$bottom-min-height}) !important;
-
-    h1 {
-      margin-top: 2.2rem;
-      font-size: 1.75rem;
-    }
-  }
-
-  #avatar > a {
-    width: 5rem;
-    height: 5rem;
-  }
-
-  .site-subtitle {
-    @include ml-mr(1.8rem);
-  }
-
-  #main-wrapper {
-    padding-bottom: $footer-height;
-  }
-
   footer {
     height: $footer-height;
 
@@ -1184,6 +1182,40 @@ $sidebar-display: "sidebar-display";
     .footer-right {
       text-align: center;
     }
+  }
+
+  #main > div.row:first-child > div:first-child {
+    min-height: calc(100vh - #{$topbar-height} - #{$footer-height});
+  }
+
+  #core-wrapper {
+    min-height: calc(100vh - #{$topbar-height} - #{$footer-height} - #{$bottom-min-height}) !important;
+
+    h1 {
+      margin-top: 2.2rem;
+      font-size: 1.75rem;
+    }
+
+    .post-content {
+      > blockquote[class^=prompt-] {
+        @include ml-mr(-1.25rem);
+        border-radius: 0;
+      }
+    }
+
+  }
+
+  #avatar > a {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .site-subtitle {
+    @include ml-mr(1.8rem);
+  }
+
+  #main-wrapper {
+    padding-bottom: $footer-height;
   }
 
 }
