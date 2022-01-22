@@ -165,6 +165,10 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
 This is an example of `Inline Code`.
 
+## Filepath
+
+Here is the `/path/to/the/file.extend`{: .filepath}.
+
 ## Code block
 
 ### Common

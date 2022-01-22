@@ -13,7 +13,7 @@ This post will guide you how to write a post on _Chirpy_ theme. Even if you have
 
 ## Naming and Path
 
-Create a new file named `YYYY-MM-DD-TITLE.EXTENSION` and put it in the `_posts` of the root directory. Please note that the `EXTENSION` must be one of `md` and `markdown`. If you want to save time of creating files, please consider using the plugin [`Jekyll-Compose`](https://github.com/jekyll/jekyll-compose) to accomplish this.
+Create a new file named `YYYY-MM-DD-TITLE.EXTENSION`{: .filepath} and put it in the `_posts`{: .filepath} of the root directory. Please note that the `EXTENSION`{: .filepath} must be one of `md`{: .filepath} and `markdown`{: .filepath}. If you want to save time of creating files, please consider using the plugin [`Jekyll-Compose`](https://github.com/jekyll/jekyll-compose) to accomplish this.
 
 ## Front Matter
 
@@ -33,7 +33,7 @@ tags: [TAG]     # TAG names should always be lowercase
 
 ### Timezone of Date
 
-In order to accurately record the release date of a post, you should not only set up the `timezone` of _\_config.yml_ but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
+In order to accurately record the release date of a post, you should not only set up the `timezone` of `_config.yml`{: .filepath} but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
 
 ### Categories and Tags
 
@@ -60,7 +60,7 @@ author:
 
 ## Table of Contents
 
-By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to _\_config.yml_ and set the value of variable `toc` to `false`. If you want to turn off TOC for a specific post, add the following to the post's [Front Matter](https://jekyllrb.com/docs/front-matter/):
+By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to `_config.yml`{: .filepath} and set the value of variable `toc` to `false`. If you want to turn off TOC for a specific post, add the following to the post's [Front Matter](https://jekyllrb.com/docs/front-matter/):
 
 ```yaml
 ---
@@ -70,7 +70,7 @@ toc: false
 
 ## Comments
 
-The global switch of comments is defined by variable `comments.active` in the file _\_config.yml_. After selecting a comment system for this variable, comments will be turned on for all posts.
+The global switch of comments is defined by variable `comments.active` in the file `_config.yml`{: .filepath}. After selecting a comment system for this variable, comments will be turned on for all posts.
 
 If you want to close the comment for a specific post, add the following to the **Front Matter** of the post:
 
@@ -171,7 +171,7 @@ The screenshots of the program window can be considered to show the shadow effec
 
 ### CDN URL
 
-If you host the images on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable `img_cdn` of _\_config.yml_ file:
+If you host the images on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable `img_cdn` of `_config.yml`{: .filepath} file:
 
 ```yaml
 img_cdn: https://cdn.com
@@ -269,7 +269,23 @@ There are three types of prompts, `note`, `warning` and `danger`. When writing, 
   {: .prompt-danger }
   ```
 
-## Code Block
+## Syntax
+
+### Inline Code
+
+```md
+`inline code part`
+```
+{: .nolineno }
+
+### Filepath Hightlight
+
+```md
+`/path/to/a/file.extend`{: .filepath}
+```
+{: .nolineno }
+
+### Code Block
 
 Markdown symbols ```` ``` ```` can easily create a code block as follows:
 
@@ -279,7 +295,7 @@ This is a plaintext code snippet.
 ```
 ````
 
-### Specifying Language
+#### Specifying Language
 
 Using ```` ```{language} ```` you will get a code block with syntax highlight:
 
@@ -292,7 +308,7 @@ key: value
 > The Jekyll tag `{% highlight %}` is not compatible with this theme.
 {: .prompt-danger }
 
-### Line Number
+#### Line Number
 
 By default, all languages except `plaintext`, `console`, and `terminal` will display line numbers. When you want to hide the line number of a code block, add the class `nolineno` to it:
 
@@ -303,7 +319,7 @@ echo 'No more line numbers!'
 {: .nolineno }
 ````
 
-### Specifying the Filename
+#### Specifying the Filename
 
 You may have noticed that the code language will be displayed at the top of the code block. If you want to replace it with the file name, you can add the attribute `file` to achieve this:
 
@@ -314,7 +330,7 @@ You may have noticed that the code language will be displayed at the top of the 
 {: file="path/to/file" }
 ````
 
-### Liquid Codes
+#### Liquid Codes
 
 If you want to display the **Liquid** snippet, surround the liquid code with `{% raw %}` and `{% endraw %}`:
 

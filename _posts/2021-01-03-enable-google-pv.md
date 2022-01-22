@@ -37,7 +37,7 @@ It should look like this:
 
 ![google-analytics-data-stream](/posts/20210103/01-google-analytics-data-stream.png){: width="1086" height="542"}
 
-Now, click on the new data stream and grab the **Measurement ID**. It should look something like `G-V6XXXXXXXX`. Copy this to your `_config.yml` file
+Now, click on the new data stream and grab the **Measurement ID**. It should look something like `G-V6XXXXXXXX`. Copy this to your `_config.yml`{: .filepath} file:
 
 ```yaml
 google_analytics:
@@ -115,16 +115,16 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
 1. Clone the **Google Analytics superProxy** project on Github: <https://github.com/googleanalytics/google-analytics-super-proxy> to your local.
 
-2.  Remove the first 2 lines in the [`src/app.yaml`](https://github.com/googleanalytics/google-analytics-super-proxy/blob/master/src/app.yaml#L1-L2) file:
+2.  Remove the first 2 lines in the [`src/app.yaml`{: .filepath}](https://github.com/googleanalytics/google-analytics-super-proxy/blob/master/src/app.yaml#L1-L2) file:
 
     ```diff
     - application: your-project-id
     - version: 1
     ```
 
-3. In `src/config.py`, add the `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` that you gathered from your App Engine Dashboard.
+3. In `src/config.py`{: .filepath}, add the `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET` that you gathered from your App Engine Dashboard.
 
-4.  Enter any random key for `XSRF_KEY`, your `config.py` should look similar to this
+4.  Enter any random key for `XSRF_KEY`, your `config.py`{: .filepath} should look similar to this
 
     ```python
     #!/usr/bin/python2.7
@@ -150,7 +150,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
     > But, for the sake of keeping it simple, we will be using the Google provided default URL.
     {: .prompt-note }
 
-5.  From inside the src/ directory, deploy the app
+5.  From inside the `src/`{: .filepath} directory, deploy the app
 
     ```console
     [root@bc96abf71ef8 src]# gcloud app deploy
@@ -223,7 +223,7 @@ Once all the hard part is done, it is very easy to enable the Page View on Chirp
 
 ![superproxy-dashboard](/posts/20210103/05-superproxy-dashboard.png){: width="1210" height="694"}
 
-Update the `_config.yml` file of [**Chirpy**][chirpy-homepage] project with the values from your dashboard, to look similar to the following:
+Update the `_config.yml`{: .filepath} file of [**Chirpy**][chirpy-homepage] project with the values from your dashboard, to look similar to the following:
 
 ```yaml
 google_analytics:
