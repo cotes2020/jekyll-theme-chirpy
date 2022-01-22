@@ -110,6 +110,13 @@ code {
     background-color: var(--inline-code-bg);
   }
 
+  &.filepath {
+    background-color: inherit;
+    color: var(--filepath-text-color);
+    font-weight: 600;
+    padding: 0;
+  }
+
   a > &.highlighter-rouge {
     padding-bottom: 0; // show link's underlinke
     color: inherit;
@@ -119,7 +126,7 @@ code {
     border-bottom: none;
   }
 
-  blockquote &.highlighter-rouge {
+  blockquote & {
     color: inherit;
   }
 
