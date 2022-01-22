@@ -28,7 +28,8 @@ tags: [TAG]     # TAG names should always be lowercase
 ---
 ```
 
-> **Note**: The posts' _layout_ has been set to `post` by default, so there is no need to add the variable _layout_ in the Front Matter block.
+> The posts' _layout_ has been set to `post` by default, so there is no need to add the variable _layout_ in the Front Matter block.
+{: .prompt-note }
 
 ### Timezone of Date
 
@@ -131,7 +132,10 @@ Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`heig
 
 ### Position
 
-By default, the image is centered, but you can specify the position by using one of the classes `normal`, `left`, and `right`. For example:
+By default, the image is centered, but you can specify the position by using one of the classes `normal`, `left`, and `right`.
+
+> Once the position is specified, the image caption should not be added.
+{: .prompt-warning }
 
 - **Normal position**
 
@@ -155,8 +159,6 @@ By default, the image is centered, but you can specify the position by using one
   ![Desktop View](/assets/img/sample/mockup.png){: .right }
   ```
   {: .nolineno}
-
-> **Limitation**: Once the position of the image is specified, the image caption should not be added.
 
 ### Shadow
 
@@ -245,6 +247,28 @@ pin: true
 ---
 ```
 
+## Prompts
+
+There are three types of prompts, `note`, `warning` and `danger`. When writing, add the class `prompt-{type}` to a blockquote:
+
+- **Note**
+  ```md
+  > Example line for prompt.
+  {: .prompt-note }
+  ```
+
+- **Warning**
+  ```md
+  > Example line for prompt.
+  {: .prompt-warning }
+  ```
+
+- **Danger**
+  ```md
+  > Example line for prompt.
+  {: .prompt-danger }
+  ```
+
 ## Code Block
 
 Markdown symbols ```` ``` ```` can easily create a code block as follows:
@@ -265,7 +289,8 @@ key: value
 ```
 ````
 
-> **Limitation**: The Jekyll style `highlight` tag is not compatible with this theme.
+> The Jekyll tag `{% highlight %}` is not compatible with this theme.
+{: .prompt-danger }
 
 ### Line Number
 

@@ -104,15 +104,15 @@
   }
 }
 
+%sidebar-links {
+  color: rgba(117, 117, 117, 0.9);
+  user-select: none;
+}
+
 /* ---------- scss mixin --------- */
 
 @mixin no-text-decoration {
   text-decoration: none;
-}
-
-%sidebar-links {
-  color: rgba(117, 117, 117, 0.9);
-  user-select: none;
 }
 
 @mixin ml-mr($value) {
@@ -141,4 +141,17 @@
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
+}
+
+@mixin prompt($type, $fw-icon, $icon-weight: 900) {
+  &.prompt-#{$type} {
+    background-color: var(--prompt-#{$type}-bg);
+    color: var(--prompt-text-color);
+
+    &::before {
+      content: $fw-icon;
+      color: var(--prompt-#{$type}-icon-color);
+      font-weight: $icon-weight;
+    }
+  }
 }
