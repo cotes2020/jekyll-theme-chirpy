@@ -1,29 +1,31 @@
 #  The contact options.
 
 -
+   type: linkedin
+   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
+   url:  'https://www.linkedin.com/in/ramon-roldan-de-lara'                  # Fill with your Linkedin homepage
+-
   type: github
   icon: 'fab fa-github'
 -
-  type: twitter
-  icon: 'fab fa-twitter'
+  type: whatsapp
+  icon: 'fab fa-whatsapp'
+  url:  'https://api.whatsapp.com/send?1=pt_BR&phone=5541984588355'
 -
   type: email
   icon: 'fas fa-envelope'
   noblank: true            # open link in current tab
--
-  type: rss
-  icon: 'fas fa-rss'
-  noblank: true
+
+#  type: rss
+#  icon: 'fas fa-rss'
+#  noblank: true
 
 # Uncomment and complete the url below to enable more contact options
 # -
 #   type: mastodon
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your mastodon account page
-# -
-#   type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
+
 # -
 #   type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
