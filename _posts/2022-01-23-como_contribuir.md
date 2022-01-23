@@ -66,15 +66,6 @@ Se você produziu imagens para inserir no seu tutorial, crie uma pasta dentro de
 
 Este não deveria precisar de maiores explicações, não é? Para inserir seu código fonte, basta usar a sintaxe padrão do markdown para código: Conteúdo do código entre uma par de três crases. Um exemplo:
 
-{% raw %}
-```python
-print('Hello world!')
-```
-
-```c++
-std::cout('Hello world!') << std::endl;
-```
-{% endraw %}
 
 ![image info]({{site.baseurl}}/assets/img/imagens/como-contribuir/exemplo-codigo.png)
 
