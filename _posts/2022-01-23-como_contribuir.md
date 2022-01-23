@@ -23,19 +23,24 @@ Antes de começar a escrever o conteúdo propriamente dito, lembre-se de colocar
 
 ```
 ---
-layout: post
-title:  "Seu título aqui"
-date:   2020-12-04 08:25:34 -0300
-categories: categoria1 categoria2 categoria3
-pin: true
+title: O título do seu Artigo
+author:
+  name: Seu Nome
+  link: link para seu github ou linkedin
+date: 2022-01-23 16:42:34 -0300
+categories: [categaria 1, categoria2]
+tags: [tag1 tag2]
+pin: false
 ---
 ```
 
 - Escreva seu título entre aspas duplas (sim, é uma string);
 
+- Escreva seu nome e coloque um link para uma rede social sua: Pode ser seu blog, linkedin ou github. O importante é o leitor te encontrar!
+
 - Modifique a data para a data em que você escreveu seu artigo, o formato da data é ```aaaa-mm-dd``` (ano-mês-dia);
 
-- Escreva em quais categorias seu conteúdo se encaixa (Ex: filtros deepLearning Yolo). As categorias devem ser separadas por espaço e cada artigo deve ter no máximo três categorias.
+- Escreva em quais categorias seu conteúdo se encaixa (Ex: filtros deepLearning Yolo). As categorias devem ser separadas por espaço e cada artigo deve ter no máximo três categorias. O mesmo vale para as tags
 
 
 ### Inserindo Imagens
@@ -86,7 +91,7 @@ Seu artigo deve estar em um arquivo markdown (.md) e deve ser colocado dentro do
 
 ## 3. Deploy local
 
-Você pode testar o blog localmente em sua máquina, assim você testa se o site está funcionando com seu artigo antes de enviar a pull request e quebrar o site blog. As instruções sobre o que você precisa instalar e como rodar subir o site localmente podem ser encontradas [https://github.com/cotes2020/jekyll-theme-chirpy](aqui) . Não seja preguiçoso(a), leia! :)
+Você pode testar o blog localmente em sua máquina, assim você testa se o site está funcionando com seu artigo antes de enviar a pull request e quebrar o site blog. As instruções sobre o que você precisa instalar e como rodar subir o site localmente podem ser encontradas [aqui](https://github.com/cotes2020/jekyll-theme-chirpy) . Não seja preguiçoso(a), leia! :)
 
 
 ## 4. Envie uma Pull Request
