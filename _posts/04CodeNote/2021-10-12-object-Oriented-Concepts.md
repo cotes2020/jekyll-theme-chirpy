@@ -79,15 +79,6 @@ tags: []
   - [静态语言 vs 动态语言](#静态语言-vs-动态语言)
   - [Importing Classes](#importing-classes)
     - [Importing a Single Class](#importing-a-single-class)
-- [Key Concepts](#key-concepts)
-  - [Horizontal vs. Vertical Scaling](#horizontal-vs-vertical-scaling)
-  - [Load Balancer](#load-balancer)
-  - [Database Denormalization and NoSQL](#database-denormalization-and-nosql)
-  - [Database Partitioning (Sharding)](#database-partitioning-sharding)
-  - [Caching](#caching)
-  - [Asynchronous Processing & Queues](#asynchronous-processing--queues)
-  - [Networking Metrics](#networking-metrics)
-  - [MapReduce](#mapreduce)
   - [Considerations](#considerations)
 
 ---
