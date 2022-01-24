@@ -27,8 +27,8 @@ toc: true
       - [**图的遍历**](#图的遍历)
     - [三、算法刷题指南](#三算法刷题指南)
     - [四、总结几句](#四总结几句)
-- [two pointer](#two-pointer)
-  - [two pointer - Array 数组](#two-pointer---array-数组)
+- [🔒🔒🔒 two pointer](#-two-pointer)
+  - [🔒 two pointer - Array 数组](#-two-pointer---array-数组)
     - [26. Remove Duplicates from Sorted Array 有序数组去重（简单）`快慢指针前后走`](#26-remove-duplicates-from-sorted-array-有序数组去重简单快慢指针前后走)
     - [80. Remove Duplicates from Sorted Array II `nums[i]!=nums[i-2]`](#80-remove-duplicates-from-sorted-array-ii-numsinumsi-2)
     - [FU. Each unique element should appear at most K times](#fu-each-unique-element-should-appear-at-most-k-times)
@@ -45,7 +45,7 @@ toc: true
       - [`sort + sliding window` BEST](#sort--sliding-window-best)
     - [696. Count Binary Substrings (Easy)](#696-count-binary-substrings-easy)
       - [Brute Force](#brute-force-1)
-  - [two pointer - 链表](#two-pointer---链表)
+  - [🔒 two pointer - 链表](#-two-pointer---链表)
     - [203. Remove Linked List Elements (Easy)](#203-remove-linked-list-elements-easy)
       - [++++++++++ recursive solution](#-recursive-solution)
     - [237. Delete Node in a Linked List (Easy)](#237-delete-node-in-a-linked-list-easy)
@@ -55,7 +55,7 @@ toc: true
     - [19. Remove Nth Node From End of List remove倒数n节点 `删除倒数n,找倒数n+1`](#19-remove-nth-node-from-end-of-list-remove倒数n节点-删除倒数n找倒数n1)
     - [Delete N Nodes After M Nodes of a Linked List ??????????](#delete-n-nodes-after-m-nodes-of-a-linked-list-)
     - [160. 判断两个单链表是否相交并找出交点](#160-判断两个单链表是否相交并找出交点)
-  - [two pointer - palindrome 回文](#two-pointer---palindrome-回文)
+  - [🔒 two pointer - palindrome 回文](#-two-pointer---palindrome-回文)
     - [2108. Find First Palindromic String in the Array (Easy)](#2108-find-first-palindromic-string-in-the-array-easy)
       - [++++++++++ 2 pointer Check each word](#-2-pointer-check-each-word)
       - [++++++++++ StringBuilder.reverse.equals](#-stringbuilderreverseequals)
@@ -63,12 +63,13 @@ toc: true
     - [1332. Remove Palindromic Subsequences (Easy)](#1332-remove-palindromic-subsequences-easy)
       - [++++++++++ `只有0，1，2 三种答案，aaabbb最多两下消完` Best](#-只有012-三种答案aaabbb最多两下消完-best)
       - [reverse logic also](#reverse-logic-also)
-  - [two pointer - String](#two-pointer---string)
-    - [2000. Reverse Prefix of Word (Easy)](#2000-reverse-prefix-of-word-easy)
+  - [🔒 two pointer - String](#-two-pointer---string)
+    - [917. Reverse Only Letters (Easy) 只反转字母](#917-reverse-only-letters-easy-只反转字母)
+    - [2000. Reverse Prefix of Word (Easy) 到s[i]之前反转](#2000-reverse-prefix-of-word-easy-到si之前反转)
       - [++++++++++ `char[]`](#-char)
       - [++++++++++ `StringBuilder`](#-stringbuilder)
-    - [557. Reverse Words in a String III (Easy)](#557-reverse-words-in-a-string-iii-easy)
-    - [541. Reverse String II (Easy) `2134 6578`](#541-reverse-string-ii-easy-2134-6578)
+    - [557. Reverse Words in a String III (Easy) 一句话单词各自反转](#557-reverse-words-in-a-string-iii-easy-一句话单词各自反转)
+    - [541. Reverse String II (Easy) `2134 6578` k个一组反转](#541-reverse-string-ii-easy-2134-6578-k个一组反转)
     - [942. DI String Match (Easy) `Increase l++; Decrease r--`](#942-di-string-match-easy-increase-l-decrease-r--)
     - [905. Sort Array By Parity (Easy)](#905-sort-array-by-parity-easy)
       - [++++++++++ `new int[i] = nums[l/r]`](#-new-inti--numslr)
@@ -87,13 +88,17 @@ toc: true
       - [++++++++++ `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`](#-new-res-numsi20-resoddindex-oddindex-resevenindex-evenindex)
       - [++++++++++ `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[odd]` BEST](#-forint-i0in-i2-should-be-even-if-odd-check-prev-numodd-best)
 - [数组](#数组)
-  - [TWOSUM问题](#twosum问题)
-    - [1. Two Sum](#1-two-sum)
+  - [🔒🔒🔒 two sum](#-two-sum)
+    - [🔒 1. Two Sum](#-1-two-sum)
+      - [brute force 穷举](#brute-force-穷举)
+      - [哈希表](#哈希表)
     - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
+    - [653. Two Sum IV - Input is a BST (Easy)](#653-two-sum-iv---input-is-a-bst-easy)
   - [前缀和技巧](#前缀和技巧)
     - [303. Range Sum Query - Immutable 计算索引区间/list中指定位置的和 `preSum[i] = preSum[i - 1] + nums[i - 1];`](#303-range-sum-query---immutable-计算索引区间list中指定位置的和-presumi--presumi---1--numsi---1)
     - [560. Subarray Sum Equals K 和为k的子数组 `if (preSum[j] == preSum[i] - k) res++;`](#560-subarray-sum-equals-k-和为k的子数组-if-presumj--presumi---k-res)
     - [304. Range Sum Query 2D - Immutable 二维区域和检索 `图像块之间相互减`](#304-range-sum-query-2d---immutable-二维区域和检索-图像块之间相互减)
+    - [1099.Two-Sum-Less-Than-K (easy) 找Max A[i] + A[j] < K.](#1099two-sum-less-than-k-easy-找max-ai--aj--k)
   - [差分](#差分)
     - [差分数组 `increment(i,j,val)->{diff[i]+=val; diff[j+1]-=val;`](#差分数组-incrementijval-diffival-diffj1-val)
     - [370. 区间加法（中等）`Difference df = new Difference(nums); df.increment(i, j, val);`](#370-区间加法中等difference-df--new-differencenums-dfincrementi-j-val)
@@ -168,8 +173,8 @@ toc: true
     - [环形数组](#环形数组)
   - [单调队列结构](#单调队列结构)
     - [滑动窗口问题](#滑动窗口问题)
-- [Tree](#tree)
-  - [二叉树](#二叉树)
+- [🔒🔒🔒 Tree](#-tree)
+- [🔒🔒🔒 二叉树](#-二叉树)
     - [计算一棵二叉树共有几个节点](#计算一棵二叉树共有几个节点)
     - [翻转二叉树](#翻转二叉树)
     - [填充二叉树节点的右侧指针](#填充二叉树节点的右侧指针)
@@ -177,13 +182,19 @@ toc: true
     - [构造最大二叉树](#构造最大二叉树)
     - [通过前序和中序/后序和中序遍历结果构造二叉树(kong)](#通过前序和中序后序和中序遍历结果构造二叉树kong)
     - [寻找重复子树(kong)](#寻找重复子树kong)
-  - [层序遍历框架](#层序遍历框架)
-    - [二叉树max层级遍历 用Queue和q.size去遍历左右](#二叉树max层级遍历-用queue和qsize去遍历左右)
-    - [多叉树的层序遍历框架  用Queue和q.size去遍历child](#多叉树的层序遍历框架--用queue和qsize去遍历child)
-  - [BFS（广度优先搜索）用Queue和q.size去遍历child + not visited](#bfs广度优先搜索用queue和qsize去遍历child--not-visited)
-    - [111. Minimum Depth of Binary Tree 二叉树min层级遍历 `用Queue和q.size去遍历左右`](#111-minimum-depth-of-binary-tree-二叉树min层级遍历-用queue和qsize去遍历左右)
+  - [🔒🔒 层序遍历框架 BST with Hash/Set](#-层序遍历框架-bst-with-hashset)
+    - [BFS（广度优先搜索）用Queue和q.size去遍历child + not visited](#bfs广度优先搜索用queue和qsize去遍历child--not-visited)
+    - [111. Minimum Depth of Binary Tree 二叉树min层级遍历](#111-minimum-depth-of-binary-tree-二叉树min层级遍历)
+      - [++++++++++ 用Queue和q.size去遍历左右](#-用queue和qsize去遍历左右)
+    - [653. Two Sum IV - Input is a BST (Easy)](#653-two-sum-iv---input-is-a-bst-easy-1)
+      - [++++++++++ recurse solution HashSet](#-recurse-solution-hashset)
+      - [++++++++++ iterative 每个都放到queue里](#-iterative-每个都放到queue里)
+    - [104. Maximum Depth of Binary Tree 二叉树max层级遍历](#104-maximum-depth-of-binary-tree-二叉树max层级遍历)
+      - [++++++++++ 用Queue和q.size去遍历左右](#-用queue和qsize去遍历左右-1)
+    - [559. Maximum Depth of N-ary Tree 多叉树的层序遍历框架](#559-maximum-depth-of-n-ary-tree-多叉树的层序遍历框架)
+      - [++++++++++ 用Queue和q.size去遍历child](#-用queue和qsize去遍历child)
     - [穷举所有可能的密码组合 用Queue和q.size去遍历all](#穷举所有可能的密码组合-用queue和qsize去遍历all)
-  - [二叉搜索树](#二叉搜索树)
+  - [二叉搜索树 BST](#二叉搜索树-bst)
     - [判断 BST 的合法性](#判断-bst-的合法性)
     - [在 BST 中搜索元素](#在-bst-中搜索元素)
     - [在 BST 中插入一个数](#在-bst-中插入一个数)
@@ -243,13 +254,13 @@ toc: true
   - [other](#other-1)
     - [295. Find Median from Data Stream 中位数](#295-find-median-from-data-stream-中位数)
 - [DFS and BFS](#dfs-and-bfs)
-  - [BFS](#bfs)
-    - [752. Open the Lock 解开密码锁最少次数 `用Queue和q.size去遍历all + visited + deads`](#752-open-the-lock-解开密码锁最少次数-用queue和qsize去遍历all--visited--deads)
-      - [BFS](#bfs-1)
+  - [🔒🔒🔒 BFS](#-bfs)
+    - [🔒 752. Open the Lock 解开密码锁最少次数 `用Queue和q.size去遍历all + visited + deads`](#-752-open-the-lock-解开密码锁最少次数-用queue和qsize去遍历all--visited--deads)
+      - [BFS](#bfs)
       - [双向 BFS 优化 `用Queue和q.size去遍历 q1=q2;q2=temp`](#双向-bfs-优化-用queue和qsize去遍历-q1q2q2temp)
-  - [DFS backtrack 回溯算法](#dfs-backtrack-回溯算法)
-    - [46. Permutations 全排列问题 ??????????/](#46-permutations-全排列问题-)
-    - [51. N-Queens N 皇后问题 ??????????](#51-n-queens-n-皇后问题-)
+  - [🔒🔒🔒 DFS backtrack 回溯算法](#-dfs-backtrack-回溯算法)
+    - [🔒 46. Permutations 全排列问题 ??????????/](#-46-permutations-全排列问题-)
+    - [🔒 51. N-Queens N 皇后问题 ??????????](#-51-n-queens-n-皇后问题-)
     - [78. Subsets 子集（中等）](#78-subsets-子集中等)
     - [90. Subsets II](#90-subsets-ii)
     - [77. Combinations](#77-combinations)
@@ -354,11 +365,16 @@ sb.reverse();
 String Str1 = new String("Welcome to Tutorialspoint.com");
 String Str1 = new String(char[] chars);
 Str1.length()
-Str1.toCharArray()
 Str1.charAt()
 Str1.substring(lo, lo+maxLen)
 Str1.indexOf(ch);
 str1.contains("h")
+char[] res = Str1.toCharArray()
+String = String.valueOf(chars);
+String = String.join(" ", array);
+
+
+
 
 String CipherText=""
 CipherText += (char)(cipherMatrix[i] + 65);
@@ -369,10 +385,11 @@ char ch = (char)(i + 97);
 Character.getNumericValue(c);  
 Character.isLowerCase(s.charAt(i));
 Character.toUpperCase(s.charAt(i));
-Character.isWhitespace()
+Character.isWhitespace();
+Character.isLetter(cs[i]);
 
-String.valueOf(char[]);
-String.join(" ", array);
+
+
 
 
 int[] distTo = new int[V];
@@ -447,6 +464,8 @@ Iterator<Character> iter = set.iterator();
 iter.hasNext();
 iter.next();
 
+
+Set<Integer> res = new HashSet<>(); 
 
 Set<Character> set = new HashSet<Character>();
 set.add("kkk");
@@ -845,9 +864,9 @@ N 叉树的遍历框架
 ---
 
 
-# two pointer
+# 🔒🔒🔒 two pointer
 
-## two pointer - Array 数组
+## 🔒 two pointer - Array 数组
 
 原地修改数组
 
@@ -1621,7 +1640,7 @@ class Solution {
 
 
 
-## two pointer - 链表
+## 🔒 two pointer - 链表
 
 ---
 
@@ -1981,7 +2000,7 @@ ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 ---
 
 
-## two pointer - palindrome 回文
+## 🔒 two pointer - palindrome 回文
 
 寻找回文串的核心思想是从中心向两端扩展：
 - 回文串是对称的，所以正着读和倒着读应该是一样的，这一特点是解决回文串问题的关键。
@@ -2175,11 +2194,110 @@ check if the string is same as the reverse string then return 1 otherwise return
 
 ---
 
-## two pointer - String
+## 🔒 two pointer - String
 
 ---
 
-### 2000. Reverse Prefix of Word (Easy)
+### 917. Reverse Only Letters (Easy) 只反转字母
+
+
+[917. Reverse Only Letters](https://leetcode.com/problems/reverse-only-letters/)
+
+Given a string s, reverse the string according to the following rules:
+
+All the characters that are not English letters remain in the same position.
+All the English letters (lowercase or uppercase) should be reversed.
+Return s after reversing it.
+
+Example 1:
+Input: s = "ab-cd"
+Output: "dc-ba"
+
+
+2 pointer
+
+```java
+// string
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Only Letters.
+// Memory Usage: 37.5 MB, less than 54.56% of Java online submissions for Reverse Only Letters.
+
+// while 左全部一遍 右全部一遍
+// while(i < S.length() && !Character.isLetter(chars[i])) i++;
+// while(j>=0 && !Character.isLetter(chars[j])) j--;
+
+class Solution {
+    public String reverseOnlyLetters(String s) {
+        if(s == null || s.length() <= 1) return s;
+        int rp=s.length()-1;
+        int lp=0;
+        char[] res = s.toCharArray();
+        while(rp>=lp){
+            if(!Character.isLetter(res[lp])) lp++;
+            else if(!Character.isLetter(res[rp])) rp--;
+            else {
+                char tmp = res[rp];
+                res[rp] = res[lp];
+                res[lp] = tmp;
+                lp++;
+                rp--;
+            }
+        }
+        return new String(res);
+    }
+}
+
+// stringbuilder
+class Solution {
+    public String reverseOnlyLetters(String s) {
+        int i=0;
+        int j=s.length()-1;
+        StringBuilder sb=new StringBuilder(s);
+        while(i<=j) {
+            char ch1=sb.charAt(i);
+            char ch2=sb.charAt(j);
+            if(!Character.isLetter(ch1)) {
+                i++;
+                continue;
+            }
+            else if(!Character.isLetter(ch2)) {
+                j--;
+                continue;
+            }
+            else {
+                sb.setCharAt(i,ch2);
+                sb.setCharAt(j,ch1);
+                i++;
+                j--;
+            }
+        }
+        return sb.toString();
+    }
+}
+```
+
+all loop once
+
+```java
+// Runtime: 1 ms, faster than 63.68% of Java online submissions for Reverse Only Letters.
+// Memory Usage: 38.9 MB, less than 22.38% of Java online submissions for Reverse Only Letters.
+class Solution {
+    public String reverseOnlyLetters(String s) {
+        StringBuilder res = new StringBuilder();
+        for (int i=s.length()-1; i>=0; i--){
+            if( Character.isLetter( s.charAt(i))) res.append(s.charAt(i));
+        }
+        for (int i=0; i<s.length(); i++){
+            if( !Character.isLetter( s.charAt(i))) res.insert(i, s.charAt(i));
+        }
+        return res.toString();
+    }
+}
+```
+
+
+---
+
+### 2000. Reverse Prefix of Word (Easy) 到s[i]之前反转
 
 [2000. Reverse Prefix of Word](https://leetcode.com/problems/reverse-prefix-of-word/)
 Given a 0-indexed string word and a character ch, reverse the segment of word that starts at index 0 and ends at the index of the first occurrence of ch (inclusive). If the character ch does not exist in word, do nothing.
@@ -2238,7 +2356,7 @@ class Solution {
 
 ---
 
-### 557. Reverse Words in a String III (Easy)
+### 557. Reverse Words in a String III (Easy) 一句话单词各自反转
 
 [557. Reverse Words in a String III](https://leetcode.com/problems/reverse-words-in-a-string-iii/)
 
@@ -2298,7 +2416,7 @@ class Solution {
 ---
 
 
-### 541. Reverse String II (Easy) `2134 6578`
+### 541. Reverse String II (Easy) `2134 6578` k个一组反转
 
 [541. Reverse String II](https://leetcode.com/problems/reverse-string-ii/)
 
@@ -2786,7 +2904,7 @@ class Solution {
 ---
 
 
-## TWOSUM问题
+## 🔒🔒🔒 two sum
 
 对于 TwoSum 问题，一个难点就是给的数组无序。对于一个无序的数组，我们似乎什么技巧也没有，只能暴力穷举所有可能。
 
@@ -2814,7 +2932,7 @@ int[] twoSum(int[] nums, int target) {
 
 ---
 
-### 1. Two Sum
+### 🔒 1. Two Sum
 
 [1. Two Sum](https://leetcode.com/problems/two-sum/)
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -2823,9 +2941,7 @@ You may assume that each input would have exactly one solution, and you may not 
 
 You can return the answer in any order.
 
-
-
-最简单粗暴的办法当然是穷举了：
+#### brute force 穷举
 - 时间复杂度 O(N^2)，空间复杂度 O(1)。
 
 ```java
@@ -2838,9 +2954,11 @@ int[] twoSum(int[] nums, int target) {
 }
 ```
 
-通过一个哈希表减少时间复杂度：
-- 时间复杂度降低到 O(N)，但是需要 O(N) 的空间复杂度
+#### 哈希表
 
+- 减少时间复杂度
+- 时间复杂度降低到 O(N)
+- 需要 O(N) 的空间复杂度
 
 ```java
 // Runtime: 8 ms, faster than 45.82% of Java online submissions for Two Sum.
@@ -2868,13 +2986,12 @@ int[] twoSum(int[] nums, int target) {
 
 [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 
-Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
-
-Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order,
+- find two numbers such that they add up to a specific target number.
+- Let these two numbers be numbers[index1] and numbers[index2] where `1 <= index1 < index2 <= numbers.length`.
+- Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
 
 The tests are generated such that there is exactly one solution. You may not use the same element twice.
-
-
 
 ```java
 // Solution 1 : BinarySearch
@@ -2925,7 +3042,19 @@ public int[] twoSum(int[] numbers, int target) {
 }
 ```
 
+---
 
+
+
+### 653. Two Sum IV - Input is a BST (Easy)
+
+[653. Two Sum IV - Input is a BST (Easy)](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/)
+Given the root of a Binary Search Tree and a target number k,
+- return true if there exist two elements in the BST such that their sum is equal to the given target.
+
+Example 1:
+Input: root = [5,3,6,2,4,null,7], k = 9
+Output: true
 
 
 
@@ -3120,6 +3249,60 @@ class NumMatrix {
 }
 
 ```
+
+
+---
+
+### 1099.Two-Sum-Less-Than-K (easy) 找Max A[i] + A[j] < K.
+
+[1099.Two-Sum-Less-Than-K (easy)](https://leetcode.com/accounts/login/?next=/problems/two-sum-less-than-k/)
+
+Given an array A of integers and integer K,
+return the maximum S such that there exists i < j with A[i] + A[j] = S and S < K.
+If no i, j exist satisfying this equation, return -1.
+
+Example 1:
+
+Input: A = [34,23,1,24,75,33,54,8], K = 60
+Output: 58
+Explanation:
+We can use 34 and 24 to sum 58 which is less than 60.
+Example 2:
+
+Input: A = [10,20,30], K = 15
+Output: -1
+Explanation:
+In this case it's not possible to get a pair sum less that 15.
+
+Note:
+
+1 <= A.length <= 100
+1 <= A[i] <= 1000
+1 <= K <= 2000
+
+Two Point
+
+```java
+class Solution {
+    public int twoSumLessThanK(int[] A, int K) {
+        Arrays.sort(A);
+        int i = 0;
+        int j = A.length - 1;
+        int ans = -1;
+        while (i < j) {
+            if (A[i] + A[j] >= K) {
+                j--;
+            }
+            else {
+                ans = Math.max(ans, A[i] + A[j]);
+                i++;
+            }
+        }
+        return ans;
+    }
+}
+```
+
 
 
 
@@ -5576,13 +5759,13 @@ int[] maxSlidingWindow(int[] nums, int k) {
 
 ---
 
-# Tree
+# 🔒🔒🔒 Tree
 
 
 
 ---
 
-## 二叉树
+# 🔒🔒🔒 二叉树
 
 树的问题就永远逃不开树的递归遍历框架这几行代码：
 - 二叉树题目的一个难点就是，如何把`题目的要求`细化成`每个节点需要做的事情`。
@@ -5829,15 +6012,151 @@ TreeNode build(int[] nums, int lo, int hi) {
  652 题「寻找重复子树」
 
 
+---
+
+## 🔒🔒 层序遍历框架 BST with Hash/Set
+
+
+### BFS（广度优先搜索）用Queue和q.size去遍历child + not visited
+
+BFS 找到的路径一定是最短的，但代价就是空间复杂度可能比 DFS 大很多
+
+BFS 的核心数据结构；
+- cur.adj() 泛指 cur 相邻的节点，比如说二维数组中，cur 上下左右四面的位置就是相邻节点；
+- visited 的主要作用是防止走回头路，大部分时候都是必须的，但是像一般的二叉树结构，没有子节点到父节点的指针，不会走回头路就不需要 visited。
+
+
+```java
+// 输入起点，进行 BFS 搜索
+int BFS(Node start) {
+    Queue<Node> q;     // 核心数据结构
+    Set<Node> visited; // 避免走回头路
+
+    q.offer(start);    // 将起点加入队列
+    visited.add(start);
+    int step = 0; // 记录搜索的步数
+
+    while (!q.isEmpty()) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向四周扩散一步 */
+        for (int i = 0; i < sz; i++) {
+            Node cur = q.poll();
+            /* 将 cur 的相邻节点加入队列 */
+            for (Node x : cur.adj()) {
+                if (x not in visited) {
+                    q.offer(x);
+                    visited.add(x);
+                }
+            }
+        }
+        step++;
+    }
+}
+```
 
 ---
 
-## 层序遍历框架
+### 111. Minimum Depth of Binary Tree 二叉树min层级遍历 
+
+
+[111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
+- Given a binary tree, find its minimum depth.
+- The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+- Note: A leaf is a node with no children.
+
+
+#### ++++++++++ 用Queue和q.size去遍历左右
+
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Minimum Depth of Binary Tree.
+// Memory Usage: 59.3 MB, less than 87.89% of Java online submissions for Minimum Depth of Binary Tree.
+int minDepth(TreeNode root) {
+    if (root == null) return 0;
+    Queue<TreeNode> q = new LinkedList<>();
+    q.offer(root);
+    int depth = 0;
+    while (!q.isEmpty()) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向四周扩散 */
+        for (int i = 0; i < sz; i++) {
+            TreeNode cur = q.poll();
+            /* 判断是否到达终点 */
+            if (cur.left == null && cur.right == null) return depth+1;
+            /* 将 cur 的相邻节点加入队列 */
+            if (cur.left != null) q.offer(cur.left);
+            if (cur.right != null) q.offer(cur.right);
+        }
+        /* 这里增加步数 */
+        depth++;
+    }
+    return depth;
+}
+```
 
 
 ---
 
-### 二叉树max层级遍历 用Queue和q.size去遍历左右
+### 653. Two Sum IV - Input is a BST (Easy)
+
+[653. Two Sum IV - Input is a BST (Easy)](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/)
+Given the root of a Binary Search Tree and a target number k, return true if there exist two elements in the BST such that their sum is equal to the given target.
+
+Example 1:
+Input: root = [5,3,6,2,4,null,7], k = 9
+Output: true
+
+#### ++++++++++ recurse solution HashSet
+
+```java
+// Runtime: 2 ms, faster than 98.42% of Java online submissions for Two Sum IV - Input is a BST.
+// Memory Usage: 40.1 MB, less than 69.32% of Java online submissions for Two Sum IV - Input is a BST.
+
+// o(n) time as we are traversing every node in worst case.
+class Solution {
+    private Set<Integer> res = new HashSet<>();
+    public boolean findTarget(TreeNode root, int k) {  
+        if(root==null) return false;
+        if(res.contains(k-root.val)) return true;
+        res.add(root.val);
+        return findTarget(root.left,k) || findTarget(root.right,k);
+    }
+}
+```
+
+#### ++++++++++ iterative 每个都放到queue里
+
+```java
+// Runtime: 6 ms, faster than 43.30% of Java online submissions for Two Sum IV - Input is a BST.
+// Memory Usage: 48.9 MB, less than 36.20% of Java online submissions for Two Sum IV - Input is a BST.
+
+class Solution { 
+    public boolean findTarget(TreeNode root, int k) {
+        if(root==null) return false;
+        Queue<TreeNode> q = new LinkedList<>();
+        Set<Integer> res = new HashSet<>(); 
+        q.offer(root);
+        while(!q.isEmpty()){
+            TreeNode cur = q.poll();
+            if(root==null) continue;
+            if(res.contains(k-cur.val)) return true;
+            else res.add(cur.val);
+            if(cur.left!=null) q.offer(cur.left);
+            if(cur.right!=null) q.offer(cur.right);
+        }
+        return false;
+    }
+}
+```
+ 
+
+
+
+---
+
+### 104. Maximum Depth of Binary Tree 二叉树max层级遍历 
+
+#### ++++++++++ 用Queue和q.size去遍历左右
 
 [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
 - Given the root of a binary tree, return its maximum depth.
@@ -5900,7 +6219,9 @@ void levelTraverse(TreeNode root) {
 
 ---
 
-### 多叉树的层序遍历框架  用Queue和q.size去遍历child
+### 559. Maximum Depth of N-ary Tree 多叉树的层序遍历框架  
+
+#### ++++++++++ 用Queue和q.size去遍历child
 
 [559. Maximum Depth of N-ary Tree](https://leetcode.com/problems/maximum-depth-of-n-ary-tree/)
 - Given a n-ary tree, find its maximum depth.
@@ -5932,81 +6253,6 @@ void levelTraverse(TreeNode root) {
 ```
 
 ---
-
-## BFS（广度优先搜索）用Queue和q.size去遍历child + not visited
-
-BFS 找到的路径一定是最短的，但代价就是空间复杂度可能比 DFS 大很多
-
-BFS 的核心数据结构；
-- cur.adj() 泛指 cur 相邻的节点，比如说二维数组中，cur 上下左右四面的位置就是相邻节点；
-- visited 的主要作用是防止走回头路，大部分时候都是必须的，但是像一般的二叉树结构，没有子节点到父节点的指针，不会走回头路就不需要 visited。
-
-
-
-```java
-// 输入起点，进行 BFS 搜索
-int BFS(Node start) {
-    Queue<Node> q;     // 核心数据结构
-    Set<Node> visited; // 避免走回头路
-
-    q.offer(start);    // 将起点加入队列
-    visited.add(start);
-    int step = 0; // 记录搜索的步数
-
-    while (!q.isEmpty()) {
-        int sz = q.size();
-        /* 将当前队列中的所有节点向四周扩散一步 */
-        for (int i = 0; i < sz; i++) {
-            Node cur = q.poll();
-            /* 将 cur 的相邻节点加入队列 */
-            for (Node x : cur.adj()) {
-                if (x not in visited) {
-                    q.offer(x);
-                    visited.add(x);
-                }
-            }
-        }
-        step++;
-    }
-}
-```
-
----
-
-### 111. Minimum Depth of Binary Tree 二叉树min层级遍历 `用Queue和q.size去遍历左右`
-
-
-[111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
-- Given a binary tree, find its minimum depth.
-- The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
-- Note: A leaf is a node with no children.
-
-```java
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Minimum Depth of Binary Tree.
-// Memory Usage: 59.3 MB, less than 87.89% of Java online submissions for Minimum Depth of Binary Tree.
-int minDepth(TreeNode root) {
-    if (root == null) return 0;
-    Queue<TreeNode> q = new LinkedList<>();
-    q.offer(root);
-    int depth = 0;
-    while (!q.isEmpty()) {
-        int sz = q.size();
-        /* 将当前队列中的所有节点向四周扩散 */
-        for (int i = 0; i < sz; i++) {
-            TreeNode cur = q.poll();
-            /* 判断是否到达终点 */
-            if (cur.left == null && cur.right == null) return depth+1;
-            /* 将 cur 的相邻节点加入队列 */
-            if (cur.left != null) q.offer(cur.left);
-            if (cur.right != null) q.offer(cur.right);
-        }
-        /* 这里增加步数 */
-        depth++;
-    }
-    return depth;
-}
-```
-
 
 ---
 
@@ -6065,16 +6311,14 @@ void BFS(String target) {
     return;
 }
 ```
+ 
 
 
 ---
 
 
----
 
-
-
-## 二叉搜索树
+## 二叉搜索树 BST
 
 
 ```java
@@ -8947,7 +9191,7 @@ class MedianFinder {
 
 ---
 
-## BFS
+## 🔒🔒🔒 BFS
 
 
 BFS 相对 DFS 的最主要的区别是：BFS 找到的路径一定是最短的，但代价就是空间复杂度可能比 DFS 大很多
@@ -8993,7 +9237,7 @@ int BFS(Node start, Node target) {
 
 ---
 
-### 752. Open the Lock 解开密码锁最少次数 `用Queue和q.size去遍历all + visited + deads`
+### 🔒 752. Open the Lock 解开密码锁最少次数 `用Queue和q.size去遍历all + visited + deads`
 
 [752. Open the Lock](https://labuladong.github.io/algo/4/29/108/)
 - You have a lock in front of you with 4 circular wheels.
@@ -9163,7 +9407,7 @@ while (!q1.isEmpty() && !q2.isEmpty()) {
 
 ---
 
-## DFS backtrack 回溯算法
+## 🔒🔒🔒 DFS backtrack 回溯算法
 
 
 回溯算法其实就是我们常说的 DFS 算法，本质上就是一种暴力穷举算法。
@@ -9200,7 +9444,7 @@ def backtrack(路径, 选择列表):
 
 ---
 
-### 46. Permutations 全排列问题 ??????????/
+### 🔒 46. Permutations 全排列问题 ??????????/
 
 [46. Permutations](https://leetcode.com/problems/permutations/)
 
@@ -9299,7 +9543,7 @@ class Solution {
 ---
 
 
-### 51. N-Queens N 皇后问题 ??????????
+### 🔒 51. N-Queens N 皇后问题 ??????????
 
 [51. N-Queens](https://leetcode.com/problems/n-queens/)
 

@@ -501,6 +501,7 @@ Abstraction refers to the act of representing important and special features wit
 - 用户不需要知道在使用哪些继承类。
 
 
+---
 
 #### 单例模式 Singleton Pattern
 
@@ -575,7 +576,7 @@ pthread_mutex_unlock(&mutex);
 ```
 
 
-
+---
 
 #### 工厂模式 Factory Pattern
 
@@ -631,6 +632,8 @@ class ImageReaderFactory {
 };
 ```
 
+
+---
 
 
 #### Builder
@@ -803,7 +806,7 @@ Adapter,Decorator以及Proxy之间比较相近，虽然说意图上差别很大�
 * Decorator模式的接口一定要包含原有接口，通常来说还要添加新接口。
 * Proxy模式完全可以重新定义一套新的接口
 
- 
+
 
 ---
 
@@ -840,7 +843,7 @@ import packageName.∗;
 ---
 
 ## Access Modifier
-- Defines access type of the method i.e. from where it can be accessed in your application. 
+- Defines access type of the method i.e. from where it can be accessed in your application.
 - **The return type**: The data type of the value returned by the method or void if does not return a value.
 - **Method Name**: the rules for field names apply to method names as well, but the convention is a little different.
 - **Parameter list**: Comma separated list of the input parameters are defined, preceded with their data type, within the enclosed parenthesis. If there are no parameters, you must use empty parentheses ().
@@ -850,7 +853,7 @@ import packageName.∗;
 
 
 
-### java class Access control 
+### java class Access control
 
 **Access level modifiers** determine `whether other classes can use a particular field or invoke a particular method`.
 
@@ -858,20 +861,20 @@ There are two levels of access control:
 - At the top level—`public`, or `package-private` (no explicit modifier).
 - At the member level—`public, private, protected`, or `package-private` (no explicit modifier)
 
-In Java, there 4 type of the access specifiers. 
-- `public`: 
+In Java, there 4 type of the access specifiers.
+- `public`:
   - accessible in all class in your application.
   - that class is visible to all classes everywhere.
   - If a class has no modifier (the default, package-private), it is visible only within its own package (packages are named groups of related classes)
 
 
-- `protected`: 
+- `protected`:
   - accessible within the package in which it is defined and in its subclass(es)(including subclasses declared outside the package)
   - specifies that the member can only be accessed within its own package (as with package-private)
   - and, in addition, by a subclass of its class in another package.
 
 
-- `private`: 
+- `private`:
   - accessible only within the class in which it is defined.
   - specifies that the member can only be accessed in its own class.
 
@@ -886,17 +889,17 @@ In Java, there 4 type of the access specifiers.
 
 A class
 - It is an abstract and user-defined data type.
-- a user defined blueprint or prototype from which objects are created. 
-  - A class is the blueprint of the object, 
+- a user defined blueprint or prototype from which objects are created.
+  - A class is the blueprint of the object,
   - the implementation of the class is the object.
   - The class is not visible to the world, but the object is.
 
-- It represents the set of properties or methods that are common to all objects of one type. 
+- It represents the set of properties or methods that are common to all objects of one type.
 - an extended concept of the structure used in C.
 - It consists of several variables and functions.
 
-- In general, class declarations can include these components, in order: 
-  - **Modifiers**: A class can be public or has default access 
+- In general, class declarations can include these components, in order:
+  - **Modifiers**: A class can be public or has default access
   - **Class name**: The name should begin with a initial letter (capitalized by convention).
   - **Superclass(if any)**: The name of the class’s parent (superclass), if any, preceded by the keyword extends. A class can only extend (subclass) one parent.
   - **Interfaces(if any)**: A comma-separated list of interfaces implemented by the class, if any, preceded by the keyword implements. A class can implement more than one interface.
@@ -950,13 +953,13 @@ Software implementations should achieve robustness, adaptability, and reusabilit
 - a self-contained component
 - consists of methods and properties to make a data useful.
 
-- basic unit of Object Oriented Programming and represents the real life entities. 
-- A typical Java program creates many objects interact by invoking methods. 
-- An object consists of: 
+- basic unit of Object Oriented Programming and represents the real life entities.
+- A typical Java program creates many objects interact by invoking methods.
+- An object consists of:
   - **State** : It is represented by `attributes of an object`. It also reflects the properties of an object.
   - **Behavior** : It is represented by `methods of an object`. It also reflects the response of an object with other objects.
 Identity : It gives a unique name to an object and enables one object to interact with other objects.
-Method: A method is a collection of statements that perform some specific task and return result to the caller. A method can perform some specific task without returning anything. Methods allow us to reuse the code without retyping the code. In Java, every method must be part of some class which is different from languages like C, C++ and Python. 
+Method: A method is a collection of statements that perform some specific task and return result to the caller. A method can perform some specific task without returning anything. Methods allow us to reuse the code without retyping the code. In Java, every method must be part of some class which is different from languages like C, C++ and Python.
 Methods are time savers and help us to reuse the code without retyping the code.
 
 
@@ -2023,111 +2026,6 @@ import car
 ```py
 from car import ElectricCar as EC
 ```
-
-
-.
-
-
-# Key Concepts
-
-## Horizontal vs. Vertical Scaling
-
-* Vertical scaling
-  * increasing the resoures of a specific node.
-  * For example
-  * add additional memory to a server to improve its ability to handle load changes.
-
-* Horizontal scaling
-  * increasing the number of nodes.
-  * For example
-  * add additional servers, thus decreasing the load on any one server.
-
-Vertiacal scaling is generally easer than horizontal scaling, but it's limited.
-
----
-
-## Load Balancer
-
-Typically, some frontend parts of a scalable website will be thrown behind a load balancer. This allows a system to distribute the load evenly so that one server doesn't crash and take down the whole system.
-- To do so, of course, you have to build out a network of cloned servers that all have essentially the same code and access to the same data.
-
----
-
-## Database Denormalization and NoSQL
-
-Joins in a relational database such as SQL can get very slow as the system grows bigger. For this reason, you would generally avoid them.
-
-- **Denormalization** is one part of this.
-  - adding redundant information into a database to speed up reads.
-  - For example, imagine a database describing projects and tasks (in addition to the project table).
-- Or, you can go with a NoSQL database.
-  - A NoSQL database does not support joins and might structure data in a different way.
-  - It is designed to scale better..
-
-
-
----
-
-
-
-## Database Partitioning (Sharding)
-
-- Sharding means splitting the data across multiple machines
-- while ensuring you have a way of figuring out which data is on which machine.
-
-A few common ways of partitioning include:
-
-* **Vertical Partitioning**:
-  * This is basically `partitioning by feature`.
-
-* **Key-Based (or Hash-Based) Partitioning**:
-  * This uses some part of the data to partition it.
-  * A very simple way to do this is to allocate N servers and put the data on `mode(key, n)`.
-  * One issue with this is that the number of servers you have is effectively fixed.
-  * Adding additional servers means reallocating all the data -- a very expensive task.
-
-* **Directory-Based Partitioning**:
-  * In this scheme, you maintain a lookup table for where the data can be found.
-  * This makes it relatively easy to add additional servers, but it comes with two major drawbacks.
-    * First the lookup table can be a single point of failure.
-    * Second, constantly access this table impacts performance.
-
-
----
-
-
-
-## Caching
-
-- An in-memory cache can deliver very rapid results.
-- It is a simple key-value pairing and typically sits between your application layer and your data store.
-
----
-
-
-## Asynchronous Processing & Queues
-
-- Slow operations should ideally be done asynchronously.
-- Otherwise, a user might get stuck waiting and waiting for a process to complete.
-
----
-
-## Networking Metrics
-
-* **Bandwidth**: This is the maximum amount of data that can be transferred in a unit of time. It is typically expressed in bits per seconds.
-* **Throughput**: Whereas bandwidth is the maximum data that can be transferred in a unit of time, throughput is the actual amoutn of data that is transferred.
-* **Latency**: This is how long it takes data to go from one end to the other. That is, it is the delay between the sender sending information (even a very small chunk of data) and the receiver receiving it.
-
----
-
-## MapReduce
-
-A MapReduce program is typically used to process large amounts of data.
-
-* Map takes in some data and emits a pair
-* Reduce takes a key and a set of associated values and reduces them in some way, emitting a new key and value.
-
-MapReduce allows us to do a lot of processing in parallel, which makes processing huge amounts of data more scalable.
 
 
 ---
