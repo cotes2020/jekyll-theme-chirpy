@@ -8,7 +8,7 @@
 {% assign post_short_df = site.data.locales[lang].date_format.post.short %}
 
 <em class="timeago{% if include.class %} {{ include.class }}{% endif %}"
-    date="{{ include.date }}"
+    date="{{ include.date | date_to_xmlschema }}"
     {% if include.tooltip %}
       data-toggle="tooltip"
       data-placement="bottom"
