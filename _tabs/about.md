@@ -132,7 +132,9 @@ Obs.: English - B2 Upper Intermediate according to the Common European Framework
 >### Udemy:
 - [Bootcamp Cientista de Dados: 10 aplicações Web Completas](https://www.udemy.com/certificate/UC-accd2dbf-71ec-4554-b41b-8301b8780b18)
 
+
 >### Linkedin:
+- [Creating Interactive Presentations with Shiny and R - (Certify by NASBA)](https://www.linkedin.com/learning/certificates/3a4921cc5cea7d5b523d50386bca8ce2c084509520b6a70b2cc89e316f0378cd?trk=share_certificate)
 - [Business Foundations](https://www.linkedin.com/learning/certificates/6354ff22ead7e6dcca9bb4ac72f81bcccdf426729b35a3425abbcecabfcd9f8d?trk=share_certificate)
 - [Project Management Foundations: Procurement](https://www.linkedin.com/learning/certificates/798bf429952c6cfb85cbd57b83130dfbb3dd9c64568af61986c0185371657859?trk=share_certificate)
 - [MySQL Essential Training](https://www.linkedin.com/learning/certificates/263168d47be305c7e2b4eadb25ab3584cc154541f1b21d866c94576bca7b0b3a?trk=share_certificate)
