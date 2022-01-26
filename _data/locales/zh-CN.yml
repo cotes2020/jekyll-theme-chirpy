@@ -27,14 +27,6 @@ panel:
   trending_tags: 热门标签
   toc: 文章内容
 
-#  The liquid date format › http://strftime.net/
-date_format:
-  tooltip: '%F, %R %z'
-  post:
-    long: '%F'
-    short: '%m-%d'
-    archive_month: '%m月'
-
 copyright:
   # Shown at the bottom of the post
   license:
@@ -61,11 +53,6 @@ post:
   written_by: 作者
   posted: 发表于
   updated: 更新于
-  timeago:
-    day: 天前
-    hour: 小时前
-    minute: 分钟前
-    just_now: 刚刚
   words: 字
   pageview_measure: 次浏览
   read_time:

@@ -18,11 +18,11 @@ layout: page
   {% endif %}
     <li>
       <div>
-        {% capture this_day %}{{ post.date | date: "%d" }}{% endcapture %}
-        {% capture _mth_df %}{{ site.data.locales[lang].date_format.post.archive_month }}{% endcapture %}
-        {% capture this_month %}{{ post.date | date: _mth_df }}{% endcapture %}
-        <span class="date day">{{ this_day }}</span>
-        <span class="date month small text-muted">{% include no-zero-date.html date_str=this_month %}</span>
+        {% assign ts = post.date | date: '%s' %}
+        <span class="date day" data-ts="{{ ts }}" data-df="DD">{{ post.date | date: "%d" }}</span>
+        <span class="date month small text-muted" data-ts="{{ ts }}" data-df="MMM">
+          {{ post.date | date: '%m' }}
+        </span>
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       </div>
     </li>

@@ -27,14 +27,6 @@ panel:
   trending_tags: Tagar Terpopuler
   toc: Konten
 
-#  The liquid date format › http://strftime.net/
-date_format:
-  tooltip: "%a, %e %b, %Y, %l:%M %p"
-  post:
-    long: "%e %b, %Y"
-    short: "%e %b"
-    archive_month: "%b"
-
 copyright:
   # Shown at the bottom of the post
   license:
@@ -62,11 +54,6 @@ post:
   written_by: Oleh
   posted: Diterbitkan
   updated: Diperbarui
-  timeago:
-    day: hari yang lalu
-    hour: jam yang lalu
-    minute: menit yang lalu
-    just_now: baru saja
   words: kata
   pageview_measure: dilihat
   read_time:

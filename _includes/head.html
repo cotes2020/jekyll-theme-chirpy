@@ -6,13 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  {% if page.layout == 'home' or page.layout == 'post' %}
+  <!-- Allow having a localized datetime different from the appearance language -->
+  {% if site.prefer_datetime_locale %}
+    <meta name="prefer-datetime-locale" content="{{ site.prefer_datetime_locale }}">
+  {% endif %}
 
-    <!-- i18n for `_javascript/utils/timeago.js` -->
-    <meta name="day-prompt" content="{{ site.data.locales[lang].post.timeago.day }}">
-    <meta name="hour-prompt" content="{{ site.data.locales[lang].post.timeago.hour }}">
-    <meta name="minute-prompt" content="{{ site.data.locales[lang].post.timeago.minute }}">
-    <meta name="justnow-prompt" content="{{ site.data.locales[lang].post.timeago.just_now }}">
+  {% if page.layout == 'home' or page.layout == 'post' %}
 
     {% if site.google_analytics.pv.proxy_endpoint %}
       <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">

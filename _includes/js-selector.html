@@ -18,10 +18,29 @@
 {% endif %}
 
 {% if page.layout == 'home'
-    or page.layout == 'categories'
-    or page.layout == 'post'
-    or page.layout == 'page' %}
+      or page.layout == 'post'
+      or page.layout == 'archives'
+      or page.layout == 'category'
+      or page.layout == 'tag' %}
+
+  {% if site.prefer_datetime_locale %}
+    {% assign locale = site.prefer_datetime_locale | downcase %}
+  {% else %}
+    {% assign locale = site.lang | split: '-' | first %}
+  {% endif %}
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1,npm/dayjs@1/locale/{{ locale }}.min.js,npm/dayjs@1/plugin/relativeTime.min.js,npm/dayjs@1/plugin/localizedFormat.min.js"></script>
+{% endif %}
+
+{% if page.layout == 'home'
+      or page.layout == 'categories'
+      or page.layout == 'post'
+      or page.layout == 'page' %}
   {% assign type = page.layout %}
+{% elsif page.layout == 'archives'
+      or page.layout == 'category'
+      or page.layout == 'tag' %}
+  {% assign type = "misc" %}
 {% else %}
   {% assign type = "commons" %}
 {% endif %}

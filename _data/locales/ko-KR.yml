@@ -27,14 +27,6 @@ panel:
   trending_tags: 인기 태그
   toc: 바로가기
 
-#  The liquid date format › http://strftime.net/
-date_format:
-  tooltip: '%F, %R %z'
-  post:
-    long: '%Y년 %m월 %d일'
-    short: '%m월 %d일'
-    archive_month: '%b월'
-
 copyright:
   # Shown at the bottom of the post
   license:
@@ -62,11 +54,6 @@ post:
   written_by: By
   posted: 게시
   updated: 업데이트
-  timeago:
-    day: 일 전
-    hour: 시간 전
-    minute: 분 전
-    just_now: 방금
   words: 단어
   pageview_measure: 조회
   read_time:

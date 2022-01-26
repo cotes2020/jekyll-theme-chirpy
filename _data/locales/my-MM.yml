@@ -27,14 +27,6 @@ panel:
   trending_tags: ခေတ်စားနေသည့်တက်ဂ်များ
   toc: အကြောင်းအရာများ
 
-#  The liquid date format › http://strftime.net/
-date_format:
-  tooltip: '%a, %b %e, %Y, %l:%M %p %z'
-  post:
-    long: '%b %e, %Y'
-    short: '%b %e'
-    archive_month: '%b'
-
 copyright:
   # Shown at the bottom of the post
   license:
@@ -62,11 +54,6 @@ post:
   written_by: ကရေးသားခဲ့သည်။
   posted: တင်ထားခဲ့သည်။
   updated: မွမ်းမံထားခဲ့သည်။
-  timeago:
-    day: လွန်ခဲ့သော ရက်များတွင်း
-    hour: လွန်ခဲ့သော နာရီပိုင်းတွင်း
-    minute: လွန်ခဲ့သော မိနစ်အနည်းငယ်က
-    just_now: အခုလေးတင်
   words: စကားလုံးများ
   pageview_measure: အမြင်များ
   read_time:

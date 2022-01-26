@@ -3,24 +3,13 @@
   See: ${JS_ROOT}/utils/timeago.js
 -->
 
-{% assign tooltip_df = site.data.locales[lang].date_format.tooltip %}
-{% assign post_long_df = site.data.locales[lang].date_format.post.long %}
-{% assign post_short_df = site.data.locales[lang].date_format.post.short %}
-
 <em class="timeago{% if include.class %} {{ include.class }}{% endif %}"
-    date="{{ include.date | date_to_xmlschema }}"
+    data-ts="{{ include.date | date: '%s' }}"
     {% if include.tooltip %}
-      data-toggle="tooltip"
-      data-placement="bottom"
-      title="{{ include.date | date: tooltip_df }}"
+      data-toggle="tooltip" data-placement="bottom" data-tooltip-df="llll"
+    {% endif %}
+    {% if include.capitalize %}
+      data-capitalize="true"
     {% endif %}>
-
-  {%- assign this_year = site.time | date: "%Y" -%}
-  {%- assign post_year = include.date | date: "%Y" -%}
-
-  {%- if post_year == this_year -%}
-    {{ include.date | date: post_short_df }}
-  {%- else -%}
-    {{ include.date | date: post_long_df }}
-  {%- endif -%}
+  {{ include.date | date: '%Y-%m-%d' }}
 </em>
