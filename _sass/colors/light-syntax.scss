@@ -76,8 +76,9 @@
   --code-header-icon-color: #d1d1d1;
   --clipboard-checked-color: #43c743;
 
-  /* the code of prompts */
-  --prompt-code-bg: rgb(219 217 217 / 35%);
-  --prompt-code-text-color: rgb(78 78 84);
+  [class^=prompt-] {
+    --inline-code-bg: #fbfafa;
+    --highlighter-rouge-color: rgb(82 82 82);
+  }
 
 } /* light-syntax */

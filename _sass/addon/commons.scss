@@ -3,35 +3,29 @@
 */
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;900&display=swap');
 
-@mixin mode-toggle($dark-mode: false) {
-  @if $dark-mode {
-    @include dark-scheme;
-  } @else {
-    @include light-scheme;
-  }
-}
+html {
+  @media (prefers-color-scheme: light) {
+    &:not([data-mode]),
+    [data-mode=light] {
+      @include light-scheme;
+    }
 
-html:not([data-mode]),
-html[data-mode=light] {
-  @include mode-toggle();
-}
-
-html[data-mode=dark] {
-  @include mode-toggle(true);
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not([data-mode]),
-  html[data-mode=dark] {
-    @include mode-toggle(true);
+    &[data-mode=dark] {
+      @include dark-scheme;
+    }
   }
 
-  html[data-mode=light] {
-    @include mode-toggle();
-  }
-}
+  @media (prefers-color-scheme: dark) {
+    &:not([data-mode]),
+    &[data-mode=dark] {
+      @include dark-scheme;
+    }
 
-:root {
+    &[data-mode=light] {
+      @include light-scheme;
+    }
+  }
+
   font-size: 16px;
 }
 
@@ -109,10 +103,11 @@ blockquote {
     display: flex;
     border-left: 0;
     border-radius: 6px;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.2rem;
+    color: var(--prompt-text-color);
 
     &::before {
-      margin-right: 0.8rem;
+      margin-right: 1rem;
       font-family: "Font Awesome 5 Free";
       text-align: center;
       width: 1.25rem;

@@ -5,23 +5,27 @@
 @import "colors/light-syntax";
 @import "colors/dark-syntax";
 
-html:not([data-mode]),
-html[data-mode=light] {
-  @include light-syntax;
-}
+html {
+  @media (prefers-color-scheme: light) {
+    &:not([data-mode]),
+    [data-mode=light] {
+      @include light-syntax;
+    }
 
-html[data-mode=dark] {
-  @include dark-syntax;
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not([data-mode]),
-  html[data-mode=dark] {
-    @include dark-syntax;
+    &[data-mode=dark] {
+      @include dark-syntax;
+    }
   }
 
-  html[data-mode=light] {
-    @include light-syntax;
+  @media (prefers-color-scheme: dark) {
+    &:not([data-mode]),
+    &[data-mode=dark] {
+      @include dark-syntax;
+    }
+
+    &[data-mode=light] {
+      @include light-syntax;
+    }
   }
 }
 
@@ -108,11 +112,6 @@ code {
     padding: 3px 5px;
     border-radius: 4px;
     background-color: var(--inline-code-bg);
-  }
-
-  [class^="prompt-"] & {
-    background-color: var(--prompt-code-bg);
-    color: var(--prompt-code-text-color);
   }
 
   &.filepath {
