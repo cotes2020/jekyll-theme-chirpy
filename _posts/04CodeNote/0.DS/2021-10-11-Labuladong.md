@@ -29,15 +29,17 @@ toc: true
     - [四、总结几句](#四总结几句)
 - [🔒🔒🔒 two pointer](#-two-pointer)
   - [🔒 two pointer - Array 数组](#-two-pointer---array-数组)
+    - [83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`](#83-remove-duplicates-from-sorted-list-有序链表去重-快慢指针前后走)
     - [26. Remove Duplicates from Sorted Array 有序数组去重（简单）`快慢指针前后走`](#26-remove-duplicates-from-sorted-array-有序数组去重简单快慢指针前后走)
     - [80. Remove Duplicates from Sorted Array II `nums[i]!=nums[i-2]`](#80-remove-duplicates-from-sorted-array-ii-numsinumsi-2)
     - [FU. Each unique element should appear at most K times](#fu-each-unique-element-should-appear-at-most-k-times)
     - [27. Remove Element 移除元素 （简单）`快慢指针前后走`](#27-remove-element-移除元素-简单快慢指针前后走)
-    - [83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`](#83-remove-duplicates-from-sorted-list-有序链表去重-快慢指针前后走)
     - [283. Move Zeroes 移除0 `快慢指针前后走`](#283-move-zeroes-移除0-快慢指针前后走)
     - [349. Intersection of Two Arrays (Easy)](#349-intersection-of-two-arrays-easy)
       - [++++++++++ `Hash(num1 had), Hash.remove(num2 has)` BEST](#-hashnum1-had-hashremovenum2-has-best)
       - [`sorting, compare, get the same`](#sorting-compare-get-the-same)
+    - [350. Intersection of Two Arrays II (Easy)](#350-intersection-of-two-arrays-ii-easy)
+      - [2 pointer](#2-pointer)
     - [1385. Find the Distance Value Between Two Arrays (Easy)](#1385-find-the-distance-value-between-two-arrays-easy)
       - [brute force](#brute-force)
       - [Binary Search](#binary-search)
@@ -398,6 +400,7 @@ int[].length;
 
 Arrays.asList(int k);
 Arrays.toString(subCoin)
+Arrays.copyOfRange(nums1,0,k);
 Arrays.sort(nums1);
 Arrays.sort(
     envelopes,
@@ -465,7 +468,7 @@ iter.hasNext();
 iter.next();
 
 
-Set<Integer> res = new HashSet<>(); 
+Set<Integer> res = new HashSet<>();
 
 Set<Character> set = new HashSet<Character>();
 set.add("kkk");
@@ -884,6 +887,105 @@ Do not allocate extra space for another array. You must do this by modifying the
 ---
 
 
+### 83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`
+
+[83. Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/submissions/)
+
+Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
+Input: head = [1,1,2]
+Output: [1,2]
+
+```java
+ListNode deleteDuplicates(ListNode head) {
+    if (head == null) return null;
+    ListNode slow = head, fast = head;
+    while (fast != null) {
+        if (fast.val != slow.val) {
+            // nums[slow] = nums[fast];
+            slow.next = fast;
+            // slow++;
+            slow = slow.next;
+        }
+        // fast++
+        fast = fast.next;
+    }
+    // 断开与后面重复元素的连接
+    slow.next = null;
+    return head;
+}
+```
+
+```py
+from basic import LinkedList, Node
+
+# 两个指针
+# Runtime: 40 ms, faster than 84.87% of Python3 online submissions for Remove Duplicates from Sorted List.
+# Memory Usage: 14.2 MB, less than 56.16% of Python3 online submissions for Remove Duplicates from Sorted List.
+def deleteDuplicates(LL):
+    if not LL: return 0
+    slow, fast = LL.head, LL.head
+    if LL.head == None: return LL.head
+    while fast != None:
+        if slow.val != fast.val:
+            slow.next = fast
+            slow = slow.next
+        fast = fast.next
+    slow.next = None
+    # print(LL.val)
+    return LL
+
+# 一个指针
+def deleteDuplicates(LL):
+    cur = LL.head
+    while cur:
+        while cur.next and cur.val == cur.next.val:
+            cur.next = cur.next.next     # skip duplicated node
+        cur = cur.next     # not duplicate of current node, move to next node
+    return LL
+
+# nice for if the values weren't sorted in the linked list
+def deleteDuplicates(LL):
+    dic = {}
+    node = LL.head
+    while node:
+        dic[node.val] = dic.get(node.val, 0) + 1
+        node = node.next
+    node = LL.head
+    while node:
+        tmp = node
+        for _ in range(dic[node.val]):
+            tmp = tmp.next
+        node.next = tmp
+        node = node.next
+    return LL
+
+# recursive
+def deleteDuplicates(LL):
+    if not LL.head: return LL
+    if LL.head.next is not None:
+        if LL.head.val == LL.head.next.val:
+            LL.head.next = LL.head.next.next
+            deleteDuplicates(LL.head)
+        else:
+            deleteDuplicates(LL.head.next)
+    return LL
+
+LL = LinkedList()
+list_num = [0,0,1,2,2,3,3]
+for i in list_num:
+    LL.insert(i)
+LL.printLL()
+
+LL = deleteDuplicates(LL)
+LL.printLL()
+```
+
+
+---
+
+
+
 ### 26. Remove Duplicates from Sorted Array 有序数组去重（简单）`快慢指针前后走`
 
 [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
@@ -894,6 +996,9 @@ Do not allocate extra space for another array. You must do this by modifying the
 - 让慢指针 slow 走在后面，快指针 fast 走在前面探路
 - 找到一个不重复的元素就告诉 slow 并让 slow 前进一步。
 - 这样当 fast 指针遍历完整个数组 nums 后，`nums[0..slow]` 就是不重复元素。
+
+Input: nums = [1,1,2]
+Output: 2, nums = [1,2,_]
 
 ```java
 int removeDuplicates(int[] nums) {
@@ -1047,6 +1152,10 @@ Return k after placing the final result in the first k slots of nums.
 
 Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
 
+Input: nums = [1,1,1,2,2,3]
+Output: 5, nums = [1,1,2,2,3,_]
+
+
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Duplicates from Sorted Array II.
 // Memory Usage: 39.3 MB, less than 39.45% of Java online submissions for Remove Duplicates from Sorted Array II.
@@ -1187,103 +1296,6 @@ def removeElement(nums: List[int], val: int) -> int:
 ---
 
 
-
-### 83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`
-
-[83. Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/submissions/)
-
-Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
-
-
-```java
-ListNode deleteDuplicates(ListNode head) {
-    if (head == null) return null;
-    ListNode slow = head, fast = head;
-    while (fast != null) {
-        if (fast.val != slow.val) {
-            // nums[slow] = nums[fast];
-            slow.next = fast;
-            // slow++;
-            slow = slow.next;
-        }
-        // fast++
-        fast = fast.next;
-    }
-    // 断开与后面重复元素的连接
-    slow.next = null;
-    return head;
-}
-```
-
-```py
-from basic import LinkedList, Node
-
-# 两个指针
-# Runtime: 40 ms, faster than 84.87% of Python3 online submissions for Remove Duplicates from Sorted List.
-# Memory Usage: 14.2 MB, less than 56.16% of Python3 online submissions for Remove Duplicates from Sorted List.
-def deleteDuplicates(LL):
-    if not LL: return 0
-    slow, fast = LL.head, LL.head
-    if LL.head == None: return LL.head
-    while fast != None:
-        if slow.val != fast.val:
-            slow.next = fast
-            slow = slow.next
-        fast = fast.next
-    slow.next = None
-    # print(LL.val)
-    return LL
-
-# 一个指针
-def deleteDuplicates(LL):
-    cur = LL.head
-    while cur:
-        while cur.next and cur.val == cur.next.val:
-            cur.next = cur.next.next     # skip duplicated node
-        cur = cur.next     # not duplicate of current node, move to next node
-    return LL
-
-# nice for if the values weren't sorted in the linked list
-def deleteDuplicates(LL):
-    dic = {}
-    node = LL.head
-    while node:
-        dic[node.val] = dic.get(node.val, 0) + 1
-        node = node.next
-    node = LL.head
-    while node:
-        tmp = node
-        for _ in range(dic[node.val]):
-            tmp = tmp.next
-        node.next = tmp
-        node = node.next
-    return LL
-
-# recursive
-def deleteDuplicates(LL):
-    if not LL.head: return LL
-    if LL.head.next is not None:
-        if LL.head.val == LL.head.next.val:
-            LL.head.next = LL.head.next.next
-            deleteDuplicates(LL.head)
-        else:
-            deleteDuplicates(LL.head.next)
-    return LL
-
-LL = LinkedList()
-list_num = [0,0,1,2,2,3,3]
-for i in list_num:
-    LL.insert(i)
-LL.printLL()
-
-LL = deleteDuplicates(LL)
-LL.printLL()
-```
-
-
----
-
-
 ### 283. Move Zeroes 移除0 `快慢指针前后走`
 
 [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)
@@ -1390,14 +1402,13 @@ def moveZeroes(nums: List[int]) -> None:
 
 
 [349. Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
-Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
+Given two integer arrays nums1 and nums2, 
+- return an array of their intersection. 
+- Each element in the result must be unique and you may return the result in any order.
 
 Example 1:
-
 Input: nums1 = [1,2,2,1], nums2 = [2,2]
 Output: [2]
-
-
 
 #### ++++++++++ `Hash(num1 had), Hash.remove(num2 has)` BEST
 
@@ -1408,7 +1419,7 @@ class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
         HashSet<Integer> set = new HashSet<Integer>();
         ArrayList<Integer> ans = new ArrayList<>();
-        for(int num:nums1) set.add(num);
+        for(int num:nums1) set.add(num); // no repeat
         for(int num:nums2) {
             if(set.contains(num)){
                 ans.add(num);
@@ -1457,6 +1468,48 @@ class Solution {
     }
 }
 ```
+
+
+---
+
+### 350. Intersection of Two Arrays II (Easy)
+
+[350. Intersection of Two Arrays II (Easy)](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
+Given two integer arrays nums1 and nums2, 
+- return an array of their intersection. 
+- Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+
+Example 1:
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2,2]
+
+
+#### 2 pointer 
+
+```java
+// Runtime: 1 ms, faster than 98.65% of Java online submissions for Intersection of Two Arrays II.
+// Memory Usage: 39.3 MB, less than 64.43% of Java online submissions for Intersection of Two Arrays II.
+// O(nlogn) time without extra space
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int i = 0, j = 0, k=0;
+        while(i<nums1.length && j<nums2.length){
+            if(nums1[i] == nums2[j]) {
+                nums1[k++] = nums1[i++]; 
+                j++; 
+            }
+            else if(nums1[i] > nums2[j]) j++; 
+            else i++; 
+        }
+        return Arrays.copyOfRange(nums1,0,k);
+    }
+}
+```
+
+
+
 
 ---
 
@@ -6056,7 +6109,7 @@ int BFS(Node start) {
 
 ---
 
-### 111. Minimum Depth of Binary Tree 二叉树min层级遍历 
+### 111. Minimum Depth of Binary Tree 二叉树min层级遍历
 
 
 [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
@@ -6130,11 +6183,11 @@ class Solution {
 // Runtime: 6 ms, faster than 43.30% of Java online submissions for Two Sum IV - Input is a BST.
 // Memory Usage: 48.9 MB, less than 36.20% of Java online submissions for Two Sum IV - Input is a BST.
 
-class Solution { 
+class Solution {
     public boolean findTarget(TreeNode root, int k) {
         if(root==null) return false;
         Queue<TreeNode> q = new LinkedList<>();
-        Set<Integer> res = new HashSet<>(); 
+        Set<Integer> res = new HashSet<>();
         q.offer(root);
         while(!q.isEmpty()){
             TreeNode cur = q.poll();
@@ -6148,13 +6201,13 @@ class Solution {
     }
 }
 ```
- 
+
 
 
 
 ---
 
-### 104. Maximum Depth of Binary Tree 二叉树max层级遍历 
+### 104. Maximum Depth of Binary Tree 二叉树max层级遍历
 
 #### ++++++++++ 用Queue和q.size去遍历左右
 
@@ -6311,7 +6364,7 @@ void BFS(String target) {
     return;
 }
 ```
- 
+
 
 
 ---
