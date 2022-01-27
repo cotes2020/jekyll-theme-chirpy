@@ -55,7 +55,7 @@ img.preview-img {
   border-bottom: 1px double var(--main-border-color);
   font-size: 0.85rem;
 
-  .post-meta a {
+  .post-meta a:not(:hover) {
     @extend %link-underline;
   }
 }
