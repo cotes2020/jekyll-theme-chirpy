@@ -29,7 +29,7 @@ $$
 
 Indeed, $$\frac{\partial \mathcal{L}}{\partial \left( \partial_{\mu} \phi \right)}$$ transforms like a vector, as second-order terms vanish in inertial coordinates. However, it's not hard to promote the quantity to a tensor in arbitrary coordinates: we simply replace partial derivatives $$\partial_\mu$$ with covariant derivatives $$\nabla_\mu$$, so that all second-order terms involving the Christoffel symbols cancel out. However, let us stick to inertial coordinates as it's much simpler to manipulate expressions in them and later switch to coordinate-independent quantities.
 
-The vectorial quantity we just found will appear repeatedly in this post, so let us simply call it the _canonical 4-momentum field_ $$\pi^\mu$$ in lieu with conjugate momentum in the Lagrangian mechanics of point particles [^1] .
+The vectorial quantity we just found will appear repeatedly in this post, so let us simply call it the _canonical 4-momentum field_ $$\pi^\mu$$ in lieu of conjugate momentum in the Lagrangian mechanics of point particles [^1] .
 
 [^1]: Technically, the quantity described is a momentum _density_ field. However, we will simply refer to it as momentum, much like the Lagrangian density is commonly called the Lagrangian.
 
