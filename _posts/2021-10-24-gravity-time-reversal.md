@@ -83,7 +83,7 @@ The metric tensor $$\pmb{g}$$ provides a complete description of a spacetime. It
 
 $$g_{\mu \nu} = \left\langle \partial_\mu, \partial_\nu \right\rangle$$
 
-where $$\left\{ \partial_\mu \right\}$$ is the set of basis vectors for the tangent space at each event in spacetime. And $$\left\langle \right\rangle$$ is the inner product, spacetime's analogue of the familiar dot product.
+where $$\left\{ \partial_\mu \right\}$$ is coordinate basis for the tangent space at each event in spacetime. And $$\left\langle \right\rangle$$ is the inner product, a generalization of the familiar dot product.
 
 Under time reversal $$t \mapsto - t$$, $$\partial_0 \mapsto - \partial_0$$. As a result,
 
