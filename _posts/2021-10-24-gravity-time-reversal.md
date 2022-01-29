@@ -121,4 +121,4 @@ Then, there are [vector-tensor theories](https://en.wikipedia.org/wiki/Alternati
 
 With such considerations in mind, there is no general answer to the question of how spacetime changes under time reversal. In most cases, it is arbitrary, depending on the scalar or vector field concerned.
 
-But as of now (2021), Einstein's GR is the reasonably correct classical model of gravitation. Speaking of classical models, things may take a turn when a quantum field theory (QFT) of gravitation is discovered. It is still not certain whether the metric will still play a crucial role in a QFT of gravity, or if its time-symmetric nature will be retained in whatever replaces the metric. 'Time' will tell.
+But as of now (2021), Einstein's GR is the reasonably correct classical model of gravitation. Speaking of classical models, things may take a turn when a quantum theory of gravitation is discovered. It is still not certain whether the metric will still play a crucial role in a consistent theory of quantum gravity, or if its time-symmetric nature will be retained in whatever replaces the metric. 'Time' will tell.
