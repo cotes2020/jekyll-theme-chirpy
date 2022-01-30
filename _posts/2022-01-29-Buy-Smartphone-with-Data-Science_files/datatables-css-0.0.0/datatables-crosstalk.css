@@ -1,0 +1,23 @@
+.dt-crosstalk-fade {
+  opacity: 0.2;
+}
+
+html body div.DTS div.dataTables_scrollBody {
+  background: none;
+}
+
+
+/*
+Fix https://github.com/rstudio/DT/issues/563
+If the `table.display` is set to "block" (e.g., pkgdown), the browser will display
+datatable objects strangely. The search panel and the page buttons will still be
+in full-width but the table body will be "compact" and shorter.
+In therory, having this attributes will affect `dom="t"`
+with `display: block` users. But in reality, there should be no one.
+We may remove the below lines in the future if the upstream agree to have this there.
+See https://github.com/DataTables/DataTablesSrc/issues/160
+*/
+
+table.dataTable {
+  display: table;
+}
