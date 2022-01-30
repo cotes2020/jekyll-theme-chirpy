@@ -1,0 +1,737 @@
+<script src="2022-01-29-Buy-Smartphone-with-Data-Science_files/header-attrs-2.11/header-attrs.js"></script>
+
+
+<style>
+.column {
+float: left;
+width: 50%;
+padding: 10px;
+}
+
+.column4 {
+float: left;
+width: 33%;
+padding: 10px;
+}
+
+.column8 {
+float: left;
+width: 66%;
+padding: 10px;
+}
+
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+.center {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 200px;
+}
+</style>
+<p>This post has the main objective to sharing my experience with a business case, where i pretend tell how i buyed a new smartphone using the data science techniques.</p>
+<p>In jan/2021 i needed buy a new smartphone, then I thinking with me: Why not using data science to develop a machine learning model to help me?</p>
+<p><u>This project is divide in 5 parts:</u></p>
+<ol style="list-style-type: decimal">
+<li>Getting the data by web scraping;</li>
+<li>Cleaning the data;</li>
+<li>Start an exploratory analysis in the data;</li>
+<li>Setting the “weights” and create a model to help filter some devices;</li>
+<li>Conclusion: choosing “the best” device.</li>
+</ol>
+<div id="getting-the-data-by-web-scraping" class="section level3">
+<h3>1. Getting the data by web scraping</h3>
+<p>Reading the main URL to obtain data about html page and then start web scraping process</p>
+<pre class="r"><code>aparelhos&lt;- tibble::tibble(url = unique(paste(&#39;https://www.tudocelular.com&#39;, rvest::read_html(&#39;https://www.tudocelular.com/celulares/fichas-tecnicas.html&#39;) %&gt;% rvest::html_elements(xpath = &#39;//*[@id=&quot;cellphones_list&quot;]/article&#39;) %&gt;% rvest::html_nodes(&#39;a&#39;) %&gt;% rvest::html_attr(&#39;href&#39;),sep = &#39;&#39;))) %&gt;%
+  dplyr::filter(stringr::str_detect(string = url, pattern = &#39;ficha&#39;)) %&gt;% dplyr::mutate(url = as.character(url))
+aparelhos</code></pre>
+<pre><code>## # A tibble: 51 × 1
+##    url                                                                          
+##    &lt;chr&gt;                                                                        
+##  1 https://www.tudocelular.com/Gionee/fichas-tecnicas/n7583/Gionee-G13-Pro.html 
+##  2 https://www.tudocelular.com/vivo/fichas-tecnicas/n7581/vivo-Y75-5G.html      
+##  3 https://www.tudocelular.com/TECNO/fichas-tecnicas/n7580/TECNO-Pop-5X.html    
+##  4 https://www.tudocelular.com/Redmi/fichas-tecnicas/n7579/Redmi-Note-11S.html  
+##  5 https://www.tudocelular.com/Redmi/fichas-tecnicas/n7578/Redmi-Note-11-Pro.ht…
+##  6 https://www.tudocelular.com/Redmi/fichas-tecnicas/n7577/Redmi-Note-11-Pro-5G…
+##  7 https://www.tudocelular.com/Redmi/fichas-tecnicas/n7576/Redmi-Note-11.html   
+##  8 https://www.tudocelular.com/Micromax/fichas-tecnicas/n7572/Micromax-In-note-…
+##  9 https://www.tudocelular.com/vivo/fichas-tecnicas/n7567/vivo-Y21A.html        
+## 10 https://www.tudocelular.com/vivo/fichas-tecnicas/n7568/vivo-Y33.html         
+## # … with 41 more rows</code></pre>
+<p>Developing of function to do web scraping and then obtain the data about each device</p>
+<pre class="r"><code>fun_to_get_info &lt;- function(phone) {
+  
+  url_link&lt;- rvest::read_html(as.character(phone))
+  
+  telefone &lt;-tibble::tibble(
+    nomes = url_link %&gt;% rvest::html_elements(xpath = &#39;//*[@id=&quot;controles_titles&quot;]&#39;) %&gt;% rvest::html_nodes(&#39;li&#39;) %&gt;% rvest::html_text() %&gt;% readr::parse_character(),
+    atributos = ifelse(
+      !is.na(url_link %&gt;% rvest::html_elements(xpath = &#39;//*[@id=&quot;phone_columns&quot;]&#39;) %&gt;% rvest::html_nodes(&#39;li&#39;) %&gt;% rvest::html_text() %&gt;% readr::parse_character()),
+      url_link %&gt;% rvest::html_elements(xpath = &#39;//*[@id=&quot;phone_columns&quot;]&#39;) %&gt;% rvest::html_nodes(&#39;li&#39;) %&gt;% rvest::html_text() %&gt;% readr::parse_character(),
+      url_link %&gt;% rvest::html_elements(xpath = &#39;//*[@id=&quot;phone_columns&quot;]&#39;) %&gt;% rvest::html_nodes(&#39;li&#39;) %&gt;% rvest::html_node(&#39;i&#39;) %&gt;% rvest::html_attr(&#39;class&#39;) %&gt;% readr::parse_character()
+    )
+  ) %&gt;% 
+    dplyr::mutate(&#39;Nome do Aparelho&#39; = url_link %&gt;% rvest::html_elements(xpath = &#39;//*[@id=&quot;fwide_column&quot;]/h2&#39;) %&gt;% rvest::html_text())
+  return(telefone)
+}</code></pre>
+<p>Apply function to do download the data and presentation on the beautiful table</p>
+<pre class="r"><code>htop&lt;- purrr::map_dfr(.x = aparelhos$url, .f = fun_to_get_info) %&gt;% 
+  tidyr::pivot_wider(names_from = &#39;nomes&#39;, values_from = atributos, values_fn = list) %&gt;% janitor::clean_names()
+
+knitr::kable(x = slice(htop, 1:5),
+             caption = &quot;The top Devices&quot;)</code></pre>
+<table style="width:100%;">
+<caption><span id="tab:unnamed-chunk-4">Table 1: </span>The top Devices</caption>
+<colgroup>
+<col width="1%" />
+<col width="2%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="1%" />
+<col width="2%" />
+<col width="0%" />
+<col width="0%" />
+<col width="2%" />
+<col width="2%" />
+<col width="3%" />
+<col width="2%" />
+<col width="0%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="3%" />
+<col width="0%" />
+<col width="2%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="2%" />
+<col width="1%" />
+<col width="0%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+<col width="2%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="2%" />
+<col width="0%" />
+<col width="0%" />
+<col width="1%" />
+<col width="0%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+<col width="2%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">nome_do_aparelho</th>
+<th align="left">sistema_operacional</th>
+<th align="left">disponibilidade</th>
+<th align="left">dimensoes</th>
+<th align="left">peso</th>
+<th align="left">hardware</th>
+<th align="left">tela</th>
+<th align="left">camera</th>
+<th align="left">desempenho</th>
+<th align="left">sim_card</th>
+<th align="left">dual_sim</th>
+<th align="left">gsm</th>
+<th align="left">hspa</th>
+<th align="left">lte</th>
+<th align="left">velocidade_maxima_de_download</th>
+<th align="left">velocidade_maxima_de_upload</th>
+<th align="left">processador</th>
+<th align="left">chipset</th>
+<th align="left">x64_bit</th>
+<th align="left">gpu</th>
+<th align="left">ram</th>
+<th align="left">memoria_max</th>
+<th align="left">memoria_expansivel</th>
+<th align="left">polegadas</th>
+<th align="left">resolucao</th>
+<th align="left">densidade_de_pixels</th>
+<th align="left">tipo</th>
+<th align="left">fps</th>
+<th align="left">cores</th>
+<th align="left">megapixel</th>
+<th align="left">estabilizacao</th>
+<th align="left">autofoco</th>
+<th align="left">foco_por_toque</th>
+<th align="left">flash</th>
+<th align="left">localizacao</th>
+<th align="left">deteccao_facial</th>
+<th align="left">camera_frontal</th>
+<th align="left">resolucao_da_gravacao</th>
+<th align="left">auto_focagem_de_video</th>
+<th align="left">fps_da_gravacao</th>
+<th align="left">opcoes_da_camera_frontal</th>
+<th align="left">wi_fi</th>
+<th align="left">bluetooth</th>
+<th align="left">usb</th>
+<th align="left">nfc</th>
+<th align="left">gps</th>
+<th align="left">acelerometro</th>
+<th align="left">proximidade</th>
+<th align="left">giroscopio</th>
+<th align="left">bussola</th>
+<th align="left">tv</th>
+<th align="left">vibracao</th>
+<th align="left">viva_voz</th>
+<th align="left">ampere</th>
+<th align="left">x5g</th>
+<th align="left">aperture_size</th>
+<th align="left">hdr</th>
+<th align="left">dual_shot</th>
+<th align="left">estabilizacao_de_video</th>
+<th align="left">dual_rec</th>
+<th align="left">video_camera_frontal</th>
+<th align="left">impressao_digital</th>
+<th align="left">radio_fm</th>
+<th align="left">outros</th>
+<th align="left">protecao</th>
+<th align="left">tamanho_do_sensor</th>
+<th align="left">angulo_maximo</th>
+<th align="left">irda</th>
+<th align="left">slow_motion</th>
+<th align="left">melhor_preco</th>
+<th align="left">faixa_de_preco</th>
+<th align="left">custo_beneficio</th>
+<th align="left">blink_detection</th>
+<th align="left">autonomia_conversacao</th>
+<th align="left">autonomia_em_standby</th>
+<th align="left">resistencia_a_agua</th>
+<th align="left">barometro</th>
+<th align="left">zoom_otico</th>
+<th align="left">video_hdr</th>
+<th align="left">stereo_sound_rec</th>
+<th align="left">foto_em_video</th>
+<th align="left">segundo_display</th>
+<th align="left">mic_de_reducao_de_ruido</th>
+<th align="left">sar_eu</th>
+<th align="left">preco_amazon</th>
+<th align="left">deteccao_de_sorriso</th>
+<th align="left">preco_submarino</th>
+<th align="left">gesto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Gionee G13 Pro</td>
+<td align="left">HarmonyOS</td>
+<td align="left">2022/1</td>
+<td align="left">158 x 76 x 9.2 mm</td>
+<td align="left">195 gramas</td>
+<td align="left">0 / 10</td>
+<td align="left">0 / 10</td>
+<td align="left">0 / 10</td>
+<td align="left">0 / 10</td>
+<td align="left">Nano</td>
+<td align="left">Dual stand-by</td>
+<td align="left">Quad Band (850/900/1800/1900)</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">300 Mbps</td>
+<td align="left">100 Mbps</td>
+<td align="left">1x 2.0 GHz Cortex-A75 + 3x 1.8 GHz Cortex-A55</td>
+<td align="left">T310 Unisoc</td>
+<td align="left">ok</td>
+<td align="left">PowerVR GE8300</td>
+<td align="left">4 GB</td>
+<td align="left">32 GB</td>
+<td align="left">wrong</td>
+<td align="left">6.26</td>
+<td align="left">720 x 1600 pixel , 4163 x 3122 pixel</td>
+<td align="left">280 ppi</td>
+<td align="left">IPS LCD, Litio</td>
+<td align="left">60 Hz</td>
+<td align="left">16 milhões</td>
+<td align="left">13 Mp + 2 Mp</td>
+<td align="left">Digital</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">LED</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">5 Mp</td>
+<td align="left">Full HD</td>
+<td align="left">ok</td>
+<td align="left">30 fps</td>
+<td align="left">Face Detection</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">Type-C 2.0</td>
+<td align="left">wrong</td>
+<td align="left">A-GPS</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">wrong</td>
+<td align="left">wrong</td>
+<td align="left">wrong</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">3500 mAh</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+</tr>
+<tr class="even">
+<td align="left">vivo Y75 5G</td>
+<td align="left">Android 11 Funtouch 12</td>
+<td align="left">2022/1</td>
+<td align="left">164 x 75.84 x 8.25 mm</td>
+<td align="left">188 gramas</td>
+<td align="left">0 / 10</td>
+<td align="left">0 / 10</td>
+<td align="left">0 / 10</td>
+<td align="left">0 / 10</td>
+<td align="left">Nano</td>
+<td align="left">Dual stand-by</td>
+<td align="left">Quad Band (850/900/1800/1900)</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">2770 Mbps</td>
+<td align="left">-</td>
+<td align="left">2x 2.2 GHz Cortex-A76 + 6x 2.0 GHz Cortex-A55</td>
+<td align="left">Dimensity 700 MediaTek MT6833</td>
+<td align="left">ok</td>
+<td align="left">Mali-G57 MC2</td>
+<td align="left">8 GB</td>
+<td align="left">128 GB</td>
+<td align="left">Slot híbrido SIM/MicroSD MicroSDXC atè 1024 GB</td>
+<td align="left">6.58</td>
+<td align="left">1080 x 2408 pixel, 8165 x 6124 pixel</td>
+<td align="left">401 ppi</td>
+<td align="left">IPS LCD, LiPo</td>
+<td align="left">60 Hz</td>
+<td align="left">16 milhões</td>
+<td align="left">50 Mp + 2 Mp + 2 Mp</td>
+<td align="left">Digital</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">Dual LED</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">16 Mp F 2</td>
+<td align="left">Full HD</td>
+<td align="left">ok</td>
+<td align="left">30 fps</td>
+<td align="left">HDR/Face Detection</td>
+<td align="left">802.11 a/b/g/n/ac</td>
+<td align="left">5.1 com A2DP/LE</td>
+<td align="left">Type-C</td>
+<td align="left">wrong</td>
+<td align="left">A-GPS/GLONASS/BeiDou/Galileo</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">wrong</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">5000 mAh</td>
+<td align="left">ok</td>
+<td align="left">F 1.8 + F 2.4 + F 2.4</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">Full HD, 30fps</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">Wi-Fi DirectWi-Fi hotspotUSB OTG</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+</tr>
+<tr class="odd">
+<td align="left">TECNO Pop 5X</td>
+<td align="left">Android 10 (Go Edition) HiOS</td>
+<td align="left">2022/1</td>
+<td align="left">166 x 75.9 x 8.5 mm</td>
+<td align="left">150 gramas</td>
+<td align="left">0 / 10</td>
+<td align="left">0 / 10</td>
+<td align="left">0 / 10</td>
+<td align="left">0 / 10</td>
+<td align="left">Nano</td>
+<td align="left">Dual stand-by</td>
+<td align="left">Quad Band (850/900/1800/1900)</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">150 Mbps</td>
+<td align="left">50 Mbps</td>
+<td align="left">1.4 GHz Quad Core</td>
+<td align="left">Unisoc SC9832E</td>
+<td align="left">wrong</td>
+<td align="left">Mali-T820 MP1</td>
+<td align="left">2 GB</td>
+<td align="left">32 GB</td>
+<td align="left">MicroSDXC</td>
+<td align="left">6.52</td>
+<td align="left">720 x 1600 pixel , 3266 x 2449 pixel</td>
+<td align="left">269 ppi</td>
+<td align="left">IPS LCD, LiPo</td>
+<td align="left">60 Hz</td>
+<td align="left">16 milhões</td>
+<td align="left">8 Mp + 0.07 Mp + 0.07 Mp</td>
+<td align="left">Digital</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">LED</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">5 Mp F 2</td>
+<td align="left">Full HD</td>
+<td align="left">ok</td>
+<td align="left">30 fps</td>
+<td align="left">Face Detection</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">Micro USB 2.0</td>
+<td align="left">wrong</td>
+<td align="left">A-GPS</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">wrong</td>
+<td align="left">wrong</td>
+<td align="left">wrong</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">4000 mAh</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">ok</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">Wi-Fi hotspot</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+</tr>
+<tr class="even">
+<td align="left">Redmi Note 11S</td>
+<td align="left">Android 11 MIUI 13</td>
+<td align="left">2022/1</td>
+<td align="left">159.9 x 73.9 x 8.1 mm</td>
+<td align="left">179 gramas</td>
+<td align="left">7.9 / 10</td>
+<td align="left">8.5 / 10</td>
+<td align="left">8.5 / 10</td>
+<td align="left">4.8 / 10</td>
+<td align="left">Nano</td>
+<td align="left">Dual stand-by</td>
+<td align="left">Quad Band (850/900/1800/1900)</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">390 Mbps</td>
+<td align="left">150 Mbps</td>
+<td align="left">2x 2.05 GHz Cortex-A76 + 6x 2.0 GHz Cortex-A55</td>
+<td align="left">Helio G96 MediaTek</td>
+<td align="left">ok</td>
+<td align="left">Mali-G57 MC2</td>
+<td align="left">6 GB</td>
+<td align="left">128 GB</td>
+<td align="left">MicroSDXC</td>
+<td align="left">6.43</td>
+<td align="left">1080 x 2400 pixel , 12000 x 9000 pixel</td>
+<td align="left">409 ppi</td>
+<td align="left">AMOLED, LiPo</td>
+<td align="left">90 Hz</td>
+<td align="left">16 milhões</td>
+<td align="left">108 Mp + 8 Mp + 2 Mp + 2 Mp</td>
+<td align="left">Digital</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">LED</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">16 Mp F 2.4</td>
+<td align="left">Full HD</td>
+<td align="left">ok</td>
+<td align="left">30 fps</td>
+<td align="left">Face Detection</td>
+<td align="left">802.11 a/b/g/n/ac</td>
+<td align="left">5.0 com A2DP/LE</td>
+<td align="left">Type-C 2.0</td>
+<td align="left">ok</td>
+<td align="left">A-GPS/GLONASS/BeiDou/Galileo</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">wrong</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">5000 mAh</td>
+<td align="left">NULL</td>
+<td align="left">F 1.9 + F 2.2 + F 2.4 + F 2.4</td>
+<td align="left">ok</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">Full HD, 30fps</td>
+<td align="left">ok</td>
+<td align="left">NULL</td>
+<td align="left">Wi-Fi DirectWi-Fi hotspotUSB OTG</td>
+<td align="left">Gorilla Glass 3</td>
+<td align="left">1/1.52 "</td>
+<td align="left">118 °</td>
+<td align="left">ok</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+</tr>
+<tr class="odd">
+<td align="left">Redmi Note 11 Pro</td>
+<td align="left">Android 11 MIUI 13</td>
+<td align="left">2022/1</td>
+<td align="left">164.19 x 76.1 x 8.12 mm</td>
+<td align="left">202 gramas</td>
+<td align="left">7.9 / 10</td>
+<td align="left">8.4 / 10</td>
+<td align="left">8.5 / 10</td>
+<td align="left">4.8 / 10</td>
+<td align="left">Nano</td>
+<td align="left">Dual stand-by</td>
+<td align="left">Quad Band (850/900/1800/1900)</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">390 Mbps</td>
+<td align="left">150 Mbps</td>
+<td align="left">2x 2.05 GHz Cortex-A76 + 6x 2.0 GHz Cortex-A55</td>
+<td align="left">Helio G96 MediaTek</td>
+<td align="left">ok</td>
+<td align="left">Mali-G57 MC2</td>
+<td align="left">6 GB</td>
+<td align="left">128 GB</td>
+<td align="left">Slot híbrido SIM/MicroSD MicroSDXC atè 1024 GB</td>
+<td align="left">6.67</td>
+<td align="left">1080 x 2400 pixel , 12000 x 9000 pixel</td>
+<td align="left">395 ppi</td>
+<td align="left">AMOLED, LiPo</td>
+<td align="left">120 Hz</td>
+<td align="left">16 milhões</td>
+<td align="left">108 Mp + 8 Mp + 2 Mp + 2 Mp</td>
+<td align="left">Digital</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">LED</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">16 Mp F 2.4</td>
+<td align="left">Full HD</td>
+<td align="left">ok</td>
+<td align="left">30 fps</td>
+<td align="left">Face Detection</td>
+<td align="left">802.11 b/g/n/ac</td>
+<td align="left">5.1 com A2DP/LE</td>
+<td align="left">Type-C 2.0</td>
+<td align="left">ok</td>
+<td align="left">A-GPS/GLONASS/BeiDou/Galileo</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">wrong</td>
+<td align="left">ok</td>
+<td align="left">ok</td>
+<td align="left">5000 mAh</td>
+<td align="left">NULL</td>
+<td align="left">F 1.9 + F 2.2 + F 2.4 + F 2.4</td>
+<td align="left">ok</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">Full HD, 30fps</td>
+<td align="left">ok</td>
+<td align="left">NULL</td>
+<td align="left">Wi-Fi DirectWi-Fi hotspotUSB OTG</td>
+<td align="left">Gorilla Glass 5</td>
+<td align="left">1/1.52 "</td>
+<td align="left">118 °</td>
+<td align="left">ok</td>
+<td align="left">120 fps</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+<td align="left">NULL</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="cleaning-the-data" class="section level3">
+<h3>2. Cleaning the data</h3>
+</div>
+<div id="start-an-exploratory-analysis-in-the-data" class="section level3">
+<h3>3. Start an exploratory analysis in the data</h3>
+</div>
+<div id="setting-the-weights-and-create-a-model-to-help-filter-some-devices" class="section level3">
+<h3>4. Setting the “weights” and create a model to help filter some devices</h3>
+</div>
+<div id="conclusion-choosing-the-best-device" class="section level3">
+<h3>5. Conclusion: choosing “the best” device</h3>
+</div>
