@@ -51,7 +51,7 @@ The above equation is known as the Klein-Gordon equation, named after its discov
 
 ### Linearity
 
-The Klein-Gordon equation is linear, i.e. valid solutions labelled as $$\phi_{\left( i \right)}$$ may be added to yield new valid solutions, as long as they have the same $$m^2$$ (i.e. the same $$m$$ upto sign),
+The Klein-Gordon equation is linear, i.e. valid solutions labelled as $$\phi_{\left( i \right)}$$ may be added to yield new valid solutions, as long as they have the same $$m^2$$ (i.e. the same $$m$$ upto magnitude),
 
 $$
 \begin{aligned}
