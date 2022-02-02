@@ -2,19 +2,19 @@
   The Side Bar
 -->
 
-<div id="sidebar" class="d-flex flex-column align-items-end" lang="{{lang}}">
+<div id="sidebar" class="d-flex flex-column align-items-end">
   <div class="profile-wrapper text-center">
     <div id="avatar">
       <a href="{{ '/' | relative_url }}" alt="avatar" class="mx-auto">
-        {% if site.avatar != '' and site.avatar %}
+        {% if site.avatar != empty and site.avatar %}
           {% capture avatar_url %}
-            {%- if site.avatar contains '://' -%}
+            {% if site.avatar contains '://' %}
               {{ site.avatar }}
-            {%- elsif site.img_cdn != '' and site.img_cdn -%}
+            {% elsif site.img_cdn != empty and site.img_cdn %}
               {{ site.avatar | prepend: site.img_cdn }}
-            {%- else -%}
+            {% else %}
               {{ site.avatar | relative_url }}
-            {%- endif -%}
+            {% endif %}
           {% endcapture %}
           <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
         {% endif %}
