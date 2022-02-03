@@ -44,7 +44,6 @@ The above command will:
 1. Removes some files or directories from your repository:
     - `.travis.yml`{: .filepath}
     - files under `_posts`{: .filepath}
-    - folder `docs`{: .filepath}
 
 2. If the option `--no-gh` is provided, the directory `.github`{: .filepath} will be deleted. Otherwise, set up the GitHub Action workflow by removing the extension `.hook`{: .filepath} of `.github/workflows/pages-deploy.yml.hook`{: .filepath}, and then remove the other files and directories in the folder `.github`{: .filepath}.
 

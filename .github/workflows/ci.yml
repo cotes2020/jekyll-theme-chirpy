@@ -10,7 +10,6 @@ on:
       - '!.github/workflows/ci.yml'
       - '.travis.yml'
       - '.gitignore'
-      - 'docs/**'
       - 'README.md'
       - 'LICENSE'
   pull_request:
