@@ -28,7 +28,7 @@ image:
 
 2. <font color=red> create a unified API frontend for multiple microservices </font>
    - to loosely couple systems
-   - does not compute information from an API.
+   - does not compute information from an API.
 
 3. for developers to create, publish, maintain, monitor, scale, and secure APIs at any scale.
    - in AWS Management Console
@@ -43,7 +43,7 @@ image:
      - Monitor APIs
      - Manage APIs
 
-4. create an API that acts as a “front door” for applications to access data, business logic, or functionality from your back-end services,
+4. create an API that acts as a “front door” for applications to access data, business logic, or functionality from your back-end services
    - designed to handle workloads such as workloads running on EC2,
    - code running on AWS Lambda, or any web application.
 
@@ -59,7 +59,7 @@ image:
 7. SDK generation for iOS, Android, and JavaScript
 
 
-8. OpenAPI Specification, or Swagger, support.
+8. OpenAPI specification, or Swagger, support.
    - Swagger is a specification and complete framework implementation for describing, producing, consuming, and visualizing RESTful web services.
 
 9. Request and response data transformation
@@ -81,7 +81,7 @@ The Amazon API Gateway integrates with:
 - Fargate
   - used to deploy containers but also for its computing power.
 
-
+---
 
 ![Screen Shot 2020-07-10 at 17.03.24](https://i.imgur.com/5VSPDj4.png)
 
