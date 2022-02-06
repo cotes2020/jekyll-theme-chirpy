@@ -39,7 +39,8 @@ toc: true
       - [++++++++++ `Hash(num1 had), Hash.remove(num2 has)` BEST](#-hashnum1-had-hashremovenum2-has-best)
       - [`sorting, compare, get the same`](#sorting-compare-get-the-same)
     - [350. Intersection of Two Arrays II (Easy)](#350-intersection-of-two-arrays-ii-easy)
-      - [2 pointer](#2-pointer)
+      - [2 pointer `Arrays.sort(); 左右指针，Arrays.copyOfRange(nums1,0,k);`](#2-pointer-arrayssort-左右指针arrayscopyofrangenums10k)
+    - [1089. Duplicate Zeros (Easy)](#1089-duplicate-zeros-easy)
     - [1385. Find the Distance Value Between Two Arrays (Easy)](#1385-find-the-distance-value-between-two-arrays-easy)
       - [brute force](#brute-force)
       - [Binary Search](#binary-search)
@@ -76,19 +77,20 @@ toc: true
     - [905. Sort Array By Parity (Easy)](#905-sort-array-by-parity-easy)
       - [++++++++++ `new int[i] = nums[l/r]`](#-new-inti--numslr)
       - [++++++++++ In Place Solution Best](#-in-place-solution-best)
-    - [1768. Merge Strings Alternately (Easy)](#1768-merge-strings-alternately-easy)
+    - [1768. Merge Strings Alternately (Easy) 穿插s,t加字母](#1768-merge-strings-alternately-easy-穿插st加字母)
       - [++++++++++ `for (int i=0; i<Math.max(s1,s2); i++); `](#-for-int-i0-imathmaxs1s2-i-)
       - [++++++++++ substring](#-substring)
-    - [977. Squares of a Sorted Array (Easy)](#977-squares-of-a-sorted-array-easy)
+    - [977. Squares of a Sorted Array (Easy) 每个数字操作后排序](#977-squares-of-a-sorted-array-easy-每个数字操作后排序)
       - [++++++++++ Brute Force Approach](#-brute-force-approach)
       - [++++++++++ `Math.abs(nums[l]) > Math.abs(nums[r])` Best](#-mathabsnumsl--mathabsnumsr-best)
-    - [821. Shortest Distance to a Character (Easy)](#821-shortest-distance-to-a-character-easy)
+    - [821. Shortest Distance to a Character (Easy) 到特定字母距离](#821-shortest-distance-to-a-character-easy-到特定字母距离)
       - [++++++++++ ``Math.min(fromLeft, fromRight)`](#-mathminfromleft-fromright)
       - [++++++++++ `when s.char==c, j=i-1; j=i+1`](#-when-scharc-ji-1-ji1)
       - [++++++++++ `combine 2` BEST](#-combine-2-best)
-    - [922. Sort Array By Parity II (Easy)](#922-sort-array-by-parity-ii-easy)
+    - [922. Sort Array By Parity II (Easy) 按奇偶排序](#922-sort-array-by-parity-ii-easy-按奇偶排序)
       - [++++++++++ `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`](#-new-res-numsi20-resoddindex-oddindex-resevenindex-evenindex)
       - [++++++++++ `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[odd]` BEST](#-forint-i0in-i2-should-be-even-if-odd-check-prev-numodd-best)
+    - [392. Is Subsequence (Easy)](#392-is-subsequence-easy)
 - [数组](#数组)
   - [🔒🔒🔒 two sum](#-two-sum)
     - [🔒 1. Two Sum](#-1-two-sum)
@@ -349,7 +351,6 @@ while(fast.next!=null) {
 2. HashMap
 
 ```java
-
 Math.abs(a-b);
 Math.min(a,b);
 Math.max(a,b);
@@ -363,7 +364,6 @@ sb.toString()
 sb.reverse();
 
 
-
 String Str1 = new String("Welcome to Tutorialspoint.com");
 String Str1 = new String(char[] chars);
 Str1.length()
@@ -374,10 +374,7 @@ str1.contains("h")
 char[] res = Str1.toCharArray()
 String = String.valueOf(chars);
 String = String.join(" ", array);
-
-
-
-
+ 
 String CipherText=""
 CipherText += (char)(cipherMatrix[i] + 65);
 
@@ -389,10 +386,7 @@ Character.isLowerCase(s.charAt(i));
 Character.toUpperCase(s.charAt(i));
 Character.isWhitespace();
 Character.isLetter(cs[i]);
-
-
-
-
+ 
 
 int[] distTo = new int[V];
 Arrays.fill(distTo, Integer.MAX_VALUE);
@@ -1484,7 +1478,11 @@ Input: nums1 = [1,2,2,1], nums2 = [2,2]
 Output: [2,2]
 
 
-#### 2 pointer 
+#### 2 pointer `Arrays.sort(); 左右指针，Arrays.copyOfRange(nums1,0,k);`
+
+1. `Arrays.sort(); 左右指针，Arrays.copyOfRange(nums1,0,k);`
+
+ O(nlogn) time without extra space
 
 ```java
 // Runtime: 1 ms, faster than 98.65% of Java online submissions for Intersection of Two Arrays II.
@@ -1507,6 +1505,142 @@ class Solution {
     }
 }
 ```
+
+
+```java 
+// Runtime: 2 ms, faster than 94.32% of Java online submissions for Intersection of Two Arrays II.
+// Memory Usage: 42.5 MB, less than 11.68% of Java online submissions for Intersection of Two Arrays II.
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        List<Integer> h = new ArrayList<>();
+        int i = 0, j = 0, k=0;
+        while(i<nums1.length && j<nums2.length){
+            if(nums1[i] == nums2[j]) {
+                h.add(nums1[i]);
+                i++; j++; 
+            }
+            else if(nums1[i] > nums2[j]) j++; 
+            else i++; 
+        }
+        int[] res = new int[h.size()];
+        for(int index = 0; index < h.size(); index++) res[index] = h.get(index);
+        return res;
+    }
+}
+```
+
+2.  O(n) time and extra space 100% faster
+
+```java
+public int[] intersect(int[] nums1, int[] nums2) {
+    int map[] = new int[1001];
+    int res[] = new int[1001];
+    int count = 0;
+    for(int i:nums1)
+        map[i]++;
+    for(int i:nums2){
+        if(map[i]>0){
+            res[count++]=i;
+            map[i]--;
+        }
+    }
+    return Arrays.copyOfRange(res,0,count);
+}
+```
+
+
+3. map
+
+
+```java 
+// Runtime: 5 ms, faster than 38.46% of Java online submissions for Intersection of Two Arrays II.
+// Memory Usage: 44.9 MB, less than 5.36% of Java online submissions for Intersection of Two Arrays II.
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        int k=0;
+        for (int i = 0; i < nums1.length; i++) {
+            map.put(nums1[i], map.getOrDefault(nums1[i], 0)+1);
+        }
+        
+        for (int i = 0; i < nums2.length; i++) {
+            if (map.containsKey(nums2[i]) && map.get(nums2[i]) > 0) {
+                nums1[k] = nums2[i];
+                k++;
+            }
+            map.put(nums2[i], map.getOrDefault(nums2[i], 0)-1);
+        }
+        return Arrays.copyOfRange(nums1, 0, k);
+    }
+}
+```
+
+
+---
+
+### 1089. Duplicate Zeros (Easy)
+
+[1089. Duplicate Zeros](https://leetcode.com/problems/duplicate-zeros/)
+Given a fixed-length integer array arr, duplicate each occurrence of zero, shifting the remaining elements to the right.
+
+Note that elements beyond the length of the original array are not written. Do the above modifications to the input array in place and do not return anything.
+
+
+Example 1:
+
+Input: arr = [1,0,2,3,0,4,5,0]
+Output: [1,0,0,2,3,0,0,4]
+Explanation: After calling your function, the input array is modified to: [1,0,0,2,3,0,0,4]
+Example 2:
+
+Input: arr = [1,2,3]
+Output: [1,2,3]
+Explanation: After calling your function, the input array is modified to: [1,2,3]
+
+
+```java
+// Runtime: 2 ms, faster than 66.89% of Java online submissions for Duplicate Zeros.
+// Memory Usage: 43.6 MB, less than 12.50% of Java online submissions for Duplicate Zeros.
+class Solution {
+    public void duplicateZeros(int[] arr) {
+        List<Integer> res = new ArrayList<>();
+        for (int i=0; i<arr.length; i++){
+            if (arr[i]==0){
+                res.add(0);
+                res.add(0);
+            }
+            else {
+                res.add(arr[i]);
+            }
+        }
+        for(int index = 0; index < arr.length; index++) arr[index] = res.get(index);
+    }
+}
+```
+
+
+```java
+// Runtime: 19 ms, faster than 26.93% of Java online submissions for Duplicate Zeros.
+// Memory Usage: 45.4 MB, less than 10.80% of Java online submissions for Duplicate Zeros.
+class Solution {
+    public void duplicateZeros(int[] arr) {
+        int n = arr.length;
+        for (int i=0; i<n-1; i++){
+            if (arr[i]==0){
+                for (int j=n-2; j>i; j--){ 
+                    arr[j+1] = arr[j];
+                }
+                arr[i+1] = 0;
+                i++;
+            }
+        }
+    }
+}
+```
+
+
 
 
 
@@ -2636,7 +2770,7 @@ class Solution {
 
 ---
 
-### 1768. Merge Strings Alternately (Easy)
+### 1768. Merge Strings Alternately (Easy) 穿插s,t加字母
 
 You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
 
@@ -2698,7 +2832,7 @@ Solution {
 
 ---
 
-### 977. Squares of a Sorted Array (Easy)
+### 977. Squares of a Sorted Array (Easy) 每个数字操作后排序
 
 [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/discuss/410331/Java-O(N)-two-pointer.-w-comments.-beats-100)
 Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
@@ -2760,7 +2894,7 @@ class Solution {
 
 ---
 
-### 821. Shortest Distance to a Character (Easy)
+### 821. Shortest Distance to a Character (Easy) 到特定字母距离
 
 [821. Shortest Distance to a Character](https://leetcode.com/problems/shortest-distance-to-a-character/)
 Given a string s and a character c that occurs in s, return an array of integers answer where answer.length == s.length and answer[i] is the distance from index i to the closest occurrence of character c in s.
@@ -2877,7 +3011,7 @@ class Solution {
 ---
 
 
-### 922. Sort Array By Parity II (Easy)
+### 922. Sort Array By Parity II (Easy) 按奇偶排序
 
 [922. Sort Array By Parity II](https://leetcode.com/problems/sort-array-by-parity-ii/)
 Given an array of integers nums, half of the integers in nums are odd, and the other half are even.
@@ -2950,6 +3084,52 @@ class Solution {
     }
 }
 ```
+
+---
+
+### 392. Is Subsequence (Easy)
+
+
+[392. Is Subsequence](https://leetcode.com/problems/is-subsequence/)
+Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+
+A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+
+Example 1:
+
+Input: s = "abc", t = "ahbgdc"
+Output: true
+Example 2:
+
+Input: s = "axc", t = "ahbgdc"
+Output: false
+
+
+
+```java
+// Runtime: 1 ms, faster than 86.20% of Java online submissions for Is Subsequence.
+// Memory Usage: 42.3 MB, less than 6.45% of Java online submissions for Is Subsequence.
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        if (s.isEmpty()) return true;
+        int i=0, j=0;
+        while(i<s.length() && j<t.length()){
+            if(s.charAt(i)==t.charAt(j)) i++;
+            j++;
+        }
+        return i==s.length();
+    }
+}
+```
+
+
+
+
+
+
+
+
+
 
 ---
 # 数组

@@ -15,19 +15,24 @@ import javax.swing.plaf.synth.SynthSpinnerUI;
 import labuladongjava.other.ListNode;
 
 public class Solution {
-    public String reverseOnlyLetters(String s) {
-        StringBuilder res = new StringBuilder();
-        for(int i=s.length()-1 ; i>=0 ; i--){
-            if(Character.isLetter(s.charAt(i))) res.append(s.charAt(i)); 
+    public void duplicateZeros(int[] arr) {
+        List<Integer> res = ArrayList<Integer>();
+        int i=0, j=0;
+        for (i=0; i<arr.length; i++){
+            if (arr[i]==0){
+                res.add(0);
+                res.add(0);
+            }
+            else {
+                res.add(arr[i]);
+            }
+            System.out.println();
         }
-        for(int i=0 ; i<s.length() ; i++) {
-        	if(!Character.isLetter(s.charAt(i))) res.insert(i, s.charAt(i));
-        }
-		return res.toString();
     }
+
     public static void main(String[] args) {
-        String s = new String("7_28]");
+        int[] arr = [1,0,2,3,0,4,5,0];
         Solution res = new Solution();
-        res.reverseOnlyLetters(s);
+        res.duplicateZeros(s);
     } 
 }
