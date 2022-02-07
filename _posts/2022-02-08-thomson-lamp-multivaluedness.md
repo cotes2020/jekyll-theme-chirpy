@@ -111,7 +111,7 @@ $$
 \end{align}
 $$
 
-Not the prettiest-looking function, but it does serve our purpose, judging by its plot in the [diagram](#diagram).
+Not the prettiest-looking function, but it does serve our purpose, judging by its plot in the first [diagram](#diagrams).
 
 At long last, we can state the problem of Thomson's lamp in terms of mathematical elements: what is the value of $$\sigma \left( 2 \right)$$? The expression $$\log_2 \left( 2 - t \right)$$ appears frequently in the formula for $$\sigma \left( t \right)$$, and at $$t=2$$, it is undefined. Therefore, it does not make sense to ask what $$\sigma \left( 2 \right)$$ is!
 
@@ -172,6 +172,6 @@ is undefined, but not diverging. On the other hand, $$\displaystyle{ \lim_{t \to
 
 ## Conclusion
 
-Now that we have solved the problem analytically, it is important to know why we used mathematics here at all. Firstly, we didn't _have_ to use mathematics to investigate this puzzle. It is a logical puzzle, and the role of mathematics here is to simply construct an analysis using tools we already know to be logically consistent. 
+Now that we have solved the problem analytically, it is important to know why we used mathematics here at all. Firstly, we didn't _have_ to use mathematics to investigate this puzzle. It is a logical puzzle, and the role of mathematics here is to simply construct an analysis using tools we already know to be logically consistent.
 
 However, the approach of employing mathematical machinery is enlightening in that the logical problem translates into an analytical one, involving how functions behave and when they break down. Since the calculus of how functions change is a familiar language today, it could be a helpful exercise to express our logical reasoning in this language. It potentially gives us insight into both the mathematics and the logic.
