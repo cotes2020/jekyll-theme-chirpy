@@ -33,9 +33,9 @@ The question is, what is the state of the lamp exactly when two minutes have ela
 
 As there are many plots for this post, I thought of showing them together as [Desmos](https://www.desmos.com/calculator) embeds below. The two embeds are for the discrete and continuous approaches, respectively:
 
-<iframe src="https://www.desmos.com/calculator/xlazqpwvy8?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+<iframe src="https://www.desmos.com/calculator/yyaqqboxun?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 
-<iframe src="https://www.desmos.com/calculator/5x4qhvwdzf?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+<iframe src="https://www.desmos.com/calculator/na17prww8s?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 
 ### Reparameterization
 
