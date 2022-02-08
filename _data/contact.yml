@@ -1,14 +1,5 @@
 #  The contact options.
 -
-  type: rss
-  icon: 'fas fa-rss'
-  noblank: true            # open link in current tab
--
-  type: sitemap
-  icon: fas fa-sitemap
-  url: https://booodaness.github.io/tempus_spatium/sitemap.xml
-  noblank: true
--
   type: quora
   icon: fab fa-quora
   url: 'https://www.quora.com/profile/Siddhartha-Bhattacharjee-45'
@@ -23,7 +14,3 @@
   type: discord
   icon: fab fa-discord
   url: 'https://bit.ly/psi-phi-community'
--
-  type: online-sequencer
-  icon: fas fa-th
-  url: 'https://onlinesequencer.net/members/42571'
