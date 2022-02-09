@@ -76,6 +76,12 @@ If you need to customize the stylesheet, copy the theme's `assets/css/style.scss
 
 Starting from [`v4.1.0`][chirpy-4.1.0], if you want to overwrite the SASS variables defined in `_sass/addon/variables.scss`{: .filepath}, create a new file `_sass/variables-hook.scss`{: .filepath} and assign new values to the target variable in it.
 
+### Customing Static Assets
+
+By default, the source of the static assets is defined by file `_data/assets/cross_origin.yml`{: .filepath }, and you can replace some of these CDNs according to the network conditions in the region where your website is published.
+
+Also, if you want to self-host the static assets, please refer to the [_chirpy-static-assets_](https://github.com/cotes2020/chirpy-static-assets#readme).
+
 ### Running Local Server
 
 You may want to preview the site contents before publishing, so just run it by:
