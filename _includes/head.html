@@ -34,9 +34,20 @@
 
   {% include favicons.html %}
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  {% if site.resources.ignore_env != jekyll.environment and site.resources.self_hosted %}
+
+    <link href="{{ site.data.assets[origin].webfonts | relative_url }}" rel="stylesheet">
+
+  {% else %}
+
+    {% for cdn in site.data.assets[origin].cdns %}
+      <link rel="preconnect" href="{{ cdn.url }}" {{ cdn.args }}>
+      <link rel="dns-prefetch" href="{{ cdn.url }}" {{ cdn.args }}>
+    {% endfor %}
+
+    <link rel="stylesheet" href="{{ site.data.assets[origin].webfonts }}">
+
+  {% endif %}
 
   <!-- GA -->
   {% if jekyll.environment == 'production'
@@ -49,27 +60,31 @@
 
     {% if site.google_analytics.pv.proxy_endpoint %}
       {% assign proxy_url = site.google_analytics.pv.proxy_endpoint
-        | replace: "https://", "" | split: "/" | first | prepend: "https://" %}
-
+          | replace: "https://", "" | split: "/" | first | prepend: "https://" %}
       <link rel="preconnect" href="{{ proxy_url }}" crossorigin="use-credentials">
       <link rel="dns-prefetch" href="{{ proxy_url }}">
     {% endif %}
   {% endif %}
 
-  <!-- jsDelivr CDN -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap.css }}">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ site.data.assets[origin].fontawesome.css }}">
 
-  {% include css-selector.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  {% if site.toc and page.toc %}
+    <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap-toc.css }}">
+  {% endif %}
+
+  {% if page.layout == 'page' or page.layout == 'post' %}
+    <!-- Manific Popup -->
+    <link rel="stylesheet" href="{{ site.data.assets[origin].magnific-popup.css }}">
+  {% endif %}
 
   <!-- JavaScript -->
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="{{ site.data.assets[origin].jquery.js }}"></script>
 
 </head>
