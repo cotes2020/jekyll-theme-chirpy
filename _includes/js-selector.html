@@ -7,21 +7,27 @@
 {% if page.layout == 'post' %}
   {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
     <!-- pv-report needs countup.js -->
-    <script async src="https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js"></script>
+    <script async src="{{ site.data.assets[origin].countup.js }}"></script>
     <script defer src="{{ '/assets/js/dist/pvreport.min.js' | relative_url }}"></script>
   {% endif %}
 {% endif %}
 
 {% if page.layout == 'post' or page.layout == 'page' %}
-  <!-- image lazy-loading & popup -->
-  <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/clipboard@2/dist/clipboard.min.js"></script>
+  <!-- image lazy-loading & popup & clipboard -->
+  {% assign _urls = site.data.assets[origin].magnific-popup.js
+      | append: ',' | append: site.data.assets[origin].lozad.js
+      | append: ',' | append: site.data.assets[origin].clipboard.js
+  %}
+
+  {% include jsdelivr-combine.html urls=_urls %}
+
 {% endif %}
 
 {% if page.layout == 'home'
-      or page.layout == 'post'
-      or page.layout == 'archives'
-      or page.layout == 'category'
-      or page.layout == 'tag' %}
+    or page.layout == 'post'
+    or page.layout == 'archives'
+    or page.layout == 'category'
+    or page.layout == 'tag' %}
 
   {% if site.prefer_datetime_locale %}
     {% assign locale = site.prefer_datetime_locale | downcase %}
@@ -29,24 +35,32 @@
     {% assign locale = site.lang | split: '-' | first %}
   {% endif %}
 
-  <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1,npm/dayjs@1/locale/{{ locale }}.min.js,npm/dayjs@1/plugin/relativeTime.min.js,npm/dayjs@1/plugin/localizedFormat.min.js"></script>
+  {% assign _urls = site.data.assets[origin].dayjs.js.common
+      | append: ',' | append: site.data.assets[origin].dayjs.js.locale
+      | replace: ':LOCALE', locale
+      | append: ',' | append: site.data.assets[origin].dayjs.js.relativeTime
+      | append: ',' | append: site.data.assets[origin].dayjs.js.localizedFormat
+  %}
+
+  {% include jsdelivr-combine.html urls=_urls %}
+
 {% endif %}
 
 {% if page.layout == 'home'
-      or page.layout == 'categories'
-      or page.layout == 'post'
-      or page.layout == 'page' %}
+    or page.layout == 'categories'
+    or page.layout == 'post'
+    or page.layout == 'page' %}
   {% assign type = page.layout %}
 {% elsif page.layout == 'archives'
-      or page.layout == 'category'
-      or page.layout == 'tag' %}
+    or page.layout == 'category'
+    or page.layout == 'tag' %}
   {% assign type = "misc" %}
 {% else %}
   {% assign type = "commons" %}
 {% endif %}
 
-{% assign js = type | prepend: '/assets/js/dist/' | append: '.min.js' %}
-<script defer src="{{ js | relative_url }}"></script>
+{% capture script %}/assets/js/dist/{{ type }}.min.js{% endcapture %}
+<script defer src="{{ script | relative_url }}"></script>
 
 {% if page.math %}
   <!-- MathJax -->
@@ -65,15 +79,14 @@
     }
   };
   </script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  <script src="{{ site.data.assets[origin].polyfill.js }}"></script>
+  <script id="MathJax-script" async src="{{ site.data.assets[origin].mathjax.js }}">
   </script>
 {% endif %}
 
 <!-- commons -->
 
-<script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
+<script src="{{ site.data.assets[origin].bootstrap.js }}"></script>
 
 {% if jekyll.environment == 'production' %}
   <!-- PWA -->

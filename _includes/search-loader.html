@@ -16,7 +16,7 @@
 
 {% capture not_found %}<p class="mt-5">{{ site.data.locales[lang].search.no_results }}</p>{% endcapture %}
 
-<script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script>
+<script src="{{ site.data.assets[origin].search.js }}"></script>
 
 <script>
 SimpleJekyllSearch({
