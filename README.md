@@ -28,7 +28,7 @@
 - Syntax Highlighting
 - Mathematical Expressions
 - Mermaid Diagram & Flowchart
-- Disqus/Utterances Comments
+- Disqus/Utterances/Giscus Comments
 - Search
 - Atom Feeds
 - Google Analytics
