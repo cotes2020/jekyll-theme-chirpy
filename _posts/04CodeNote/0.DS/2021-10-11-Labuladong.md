@@ -15,6 +15,7 @@ toc: true
 - [Labuladong](#labuladong)
   - [re-check](#re-check)
   - [question to ask](#question-to-ask)
+  - [helper](#helper)
   - [basic](#basic)
   - [timeline](#timeline)
   - [学习算法和刷题的框架思维](#学习算法和刷题的框架思维)
@@ -66,6 +67,17 @@ toc: true
     - [1332. Remove Palindromic Subsequences (Easy)](#1332-remove-palindromic-subsequences-easy)
       - [++++++++++ `只有0，1，2 三种答案，aaabbb最多两下消完` Best](#-只有012-三种答案aaabbb最多两下消完-best)
       - [reverse logic also](#reverse-logic-also)
+    - [125. Valid Palindrome 判断回文链表String](#125-valid-palindrome-判断回文链表string)
+      - [++++++++++ Brute-Force](#-brute-force)
+      - [++++++++++ `2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()`](#-2-pointer--sreplacealla-za-z0-9-tolowercase)
+      - [++++++++++ `2 pointer + (x <= y && !Character.isLetterOrDigit(s.charAt(x)) )` best](#-2-pointer--x--y--characterisletterordigitscharatx--best)
+    - [680. Valid Palindrome II (Easy) 可去掉一个字母查看Palindrome](#680-valid-palindrome-ii-easy-可去掉一个字母查看palindrome)
+      - [Brute-Force `validPalindrome+validSubPalindrome`](#brute-force-validpalindromevalidsubpalindrome)
+      - [recursive version](#recursive-version)
+      - [判断回文单链表 - 把原始链表反转存入一条新的链表，然后比较](#判断回文单链表---把原始链表反转存入一条新的链表然后比较)
+      - [判断回文单链表 - 二叉树后序遍历](#判断回文单链表---二叉树后序遍历)
+      - [判断回文单链表 - 用栈结构倒序处理单链表](#判断回文单链表---用栈结构倒序处理单链表)
+      - [判断回文单链表 - 不完全反转链表，仅仅反转部分链表，空间复杂度O(1)。](#判断回文单链表---不完全反转链表仅仅反转部分链表空间复杂度o1)
   - [🔒 two pointer - String](#-two-pointer---string)
     - [917. Reverse Only Letters (Easy) 只反转字母](#917-reverse-only-letters-easy-只反转字母)
     - [2000. Reverse Prefix of Word (Easy) 到s[i]之前反转](#2000-reverse-prefix-of-word-easy-到si之前反转)
@@ -90,7 +102,14 @@ toc: true
     - [922. Sort Array By Parity II (Easy) 按奇偶排序](#922-sort-array-by-parity-ii-easy-按奇偶排序)
       - [++++++++++ `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`](#-new-res-numsi20-resoddindex-oddindex-resevenindex-evenindex)
       - [++++++++++ `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[odd]` BEST](#-forint-i0in-i2-should-be-even-if-odd-check-prev-numodd-best)
-    - [392. Is Subsequence (Easy)](#392-is-subsequence-easy)
+    - [392. Is Subsequence (Easy) `abc inside ahbgdc ?`](#392-is-subsequence-easy-abc-inside-ahbgdc-)
+    - [28. Implement strStr() (Easy)](#28-implement-strstr-easy)
+      - [`use haystack.substring(i,i+l2).equals(needle)`](#use-haystacksubstringiil2equalsneedle)
+    - [844. Backspace String Compare (Easy) `"ab##"=="c#d#"?`](#844-backspace-string-compare-easy-abcd)
+      - [++++++++++ `2 pointer, StringBuilder.add StringBuilder.deleteCharAt(i)`](#-2-pointer-stringbuilderadd-stringbuilderdeletecharati)
+      - [++++++++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop)
+      - [++++++++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop-1)
+  - [345. Reverse Vowels of a String (Easy)](#345-reverse-vowels-of-a-string-easy)
 - [数组](#数组)
   - [🔒🔒🔒 two sum](#-two-sum)
     - [🔒 1. Two Sum](#-1-two-sum)
@@ -159,11 +178,6 @@ toc: true
     - [9. Palindrome Number 判断回文Number](#9-palindrome-number-判断回文number)
       - [reverse half of it **Best**](#reverse-half-of-it-best)
     - [Elimination Game !!! Perform String Shifts !!! Subtree Removal Game with Fibonacci Tree](#elimination-game--perform-string-shifts--subtree-removal-game-with-fibonacci-tree)
-    - [125. Valid Palindrome 判断回文链表String](#125-valid-palindrome-判断回文链表string)
-      - [判断回文单链表 - 把原始链表反转存入一条新的链表，然后比较](#判断回文单链表---把原始链表反转存入一条新的链表然后比较)
-      - [判断回文单链表 - 二叉树后序遍历](#判断回文单链表---二叉树后序遍历)
-      - [判断回文单链表 - 用栈结构倒序处理单链表](#判断回文单链表---用栈结构倒序处理单链表)
-      - [判断回文单链表 - 不完全反转链表，仅仅反转部分链表，空间复杂度O(1)。](#判断回文单链表---不完全反转链表仅仅反转部分链表空间复杂度o1)
   - [排序](#排序)
     - [快速排序](#快速排序)
     - [归并排序](#归并排序)
@@ -343,6 +357,69 @@ while(fast.next!=null) {
 
 ---
 
+## helper
+
+```java
+
+public void swap(char[] chars, int x, int y) {
+    char tmp = chars[x];
+    chars[x] = chars[y];
+    chars[y] = tmp;
+}
+
+public boolean isVowel(char c) {
+    char[] vowels = new char[]{'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+    for (char vow : vowels)
+        if (c == vow) return true;    
+    return false;
+}
+
+
+// Palindrome
+public boolean isPalindrome(String s) {
+    int lo = 0, hi = s.length() - 1;
+    while (lo < hi) {
+        while (lo < hi && !isValid(s.charAt(lo))) lo++;
+        while (lo < hi && !isValid(s.charAt(hi))) hi--;
+        if (lo < hi && isCharDiff(s.charAt(lo), s.charAt(hi))) return false;
+        lo++; hi--;
+    }
+    return true;
+}
+
+private boolean isValid(char ch) {
+    return Character.isLetterOrDigit(ch);
+}
+
+private boolean isCharDiff(char ch1, char ch2) {
+    return Character.toLowerCase(ch1) != Character.toLowerCase(ch2);
+}
+
+private boolean validSubPalindrome(String s, int lo, int hi) {
+    int n = hi - lo + 1;
+    for (int i = 0; i < n / 2; ++i) {
+        int left = lo + i, right = hi - i;
+        if (s.charAt(left) != s.charAt(right)) return false;
+    }
+    return true;
+}
+
+private boolean checkPalindrome(int left, int right, String s) {
+    while (left < right) {
+        if (s.charAt(left++) != s.charAt(right--)) return false;
+    }
+    return true;
+}
+
+
+
+
+
+```
+
+
+
+---
 
 ## basic
 
@@ -355,30 +432,36 @@ Math.abs(a-b);
 Math.min(a,b);
 Math.max(a,b);
 
+// StringBuilder
 StringBuilder sb = new StringBuilder("");
 StringBuffer sb = new StringBuffer(s);
 sb.setCharAt(i, Char);
 sb.append('.');
+sbr.deleteCharAt(index);
 sb.insert(pos[i],'Q');
 sb.toString()
 sb.reverse();
 
+// String
+String str1 = ""
+String str1 = new String("Welcome to Tutorialspoint.com");
+String str1 = new String(char[] chars);
+str1.length()
+str1.charAt()
+str1.indexOf(ch);
+str1.contains("h");
+str1.equals(str2);
+str1.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
 
-String Str1 = new String("Welcome to Tutorialspoint.com");
-String Str1 = new String(char[] chars);
-Str1.length()
-Str1.charAt()
-Str1.substring(lo, lo+maxLen)
-Str1.indexOf(ch);
-str1.contains("h")
-char[] res = Str1.toCharArray()
-String = String.valueOf(chars);
-String = String.join(" ", array);
- 
-String CipherText=""
-CipherText += (char)(cipherMatrix[i] + 65);
+String str2 = str1.substring(lo, lo+maxLen)
+String[] words = str1.split(" ");
 
-String[] words = Str1.split(" ");
+char[] res = str1.toCharArray()
+str1 += (char)(cipherMatrix[i] + 65);
+String str2 = String.valueOf(char[] chars);
+
+String str2 = String.join(" ", array);
+
 
 char ch = (char)(i + 97);
 Character.getNumericValue(c);  
@@ -386,13 +469,16 @@ Character.isLowerCase(s.charAt(i));
 Character.toUpperCase(s.charAt(i));
 Character.isWhitespace();
 Character.isLetter(cs[i]);
- 
+Character.isLetterOrDigit(s.charAt(x))
+
 
 int[] distTo = new int[V];
 Arrays.fill(distTo, Integer.MAX_VALUE);
 int[].length;
 
-Arrays.asList(int k);
+
+List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
+List<Integer> num = Arrays.asList(int k);
 Arrays.toString(subCoin)
 Arrays.copyOfRange(nums1,0,k);
 Arrays.sort(nums1);
@@ -405,12 +491,13 @@ Arrays.sort(
     }
 );
 
-Stack<String> Stack= new Stack<>();
-Stack.push();
-Stack.pop();
-// Access element from top of Stack
-Stack.peek();
-Stack.empty();
+Stack<String> stack = new Stack<>();
+stack.push();
+stack.pop();
+stack.peek(); // Access element from top of Stack
+stack.isEmpty();
+stack.toString();
+stack1.equals(stack2);
 
 ArrayList ans = new ArrayList();
 ArrayList<Integer> ans = new ArrayList<>();
@@ -484,6 +571,7 @@ hm.putIfAbsent(1, new LinkedHashSet<>());
 hm.getOrDefault(val, 0);
 
 
+HashSet<Character> vowels = new HashSet<>();
 HashSet<Integer> set = new HashSet<Integer>();
 set.contains(num);
 set.add(num);
@@ -1396,8 +1484,8 @@ def moveZeroes(nums: List[int]) -> None:
 
 
 [349. Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
-Given two integer arrays nums1 and nums2, 
-- return an array of their intersection. 
+Given two integer arrays nums1 and nums2,
+- return an array of their intersection.
 - Each element in the result must be unique and you may return the result in any order.
 
 Example 1:
@@ -1469,8 +1557,8 @@ class Solution {
 ### 350. Intersection of Two Arrays II (Easy)
 
 [350. Intersection of Two Arrays II (Easy)](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
-Given two integer arrays nums1 and nums2, 
-- return an array of their intersection. 
+Given two integer arrays nums1 and nums2,
+- return an array of their intersection.
 - Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
 
 Example 1:
@@ -1495,11 +1583,11 @@ class Solution {
         int i = 0, j = 0, k=0;
         while(i<nums1.length && j<nums2.length){
             if(nums1[i] == nums2[j]) {
-                nums1[k++] = nums1[i++]; 
-                j++; 
+                nums1[k++] = nums1[i++];
+                j++;
             }
-            else if(nums1[i] > nums2[j]) j++; 
-            else i++; 
+            else if(nums1[i] > nums2[j]) j++;
+            else i++;
         }
         return Arrays.copyOfRange(nums1,0,k);
     }
@@ -1507,7 +1595,7 @@ class Solution {
 ```
 
 
-```java 
+```java
 // Runtime: 2 ms, faster than 94.32% of Java online submissions for Intersection of Two Arrays II.
 // Memory Usage: 42.5 MB, less than 11.68% of Java online submissions for Intersection of Two Arrays II.
 class Solution {
@@ -1519,10 +1607,10 @@ class Solution {
         while(i<nums1.length && j<nums2.length){
             if(nums1[i] == nums2[j]) {
                 h.add(nums1[i]);
-                i++; j++; 
+                i++; j++;
             }
-            else if(nums1[i] > nums2[j]) j++; 
-            else i++; 
+            else if(nums1[i] > nums2[j]) j++;
+            else i++;
         }
         int[] res = new int[h.size()];
         for(int index = 0; index < h.size(); index++) res[index] = h.get(index);
@@ -1554,7 +1642,7 @@ public int[] intersect(int[] nums1, int[] nums2) {
 3. map
 
 
-```java 
+```java
 // Runtime: 5 ms, faster than 38.46% of Java online submissions for Intersection of Two Arrays II.
 // Memory Usage: 44.9 MB, less than 5.36% of Java online submissions for Intersection of Two Arrays II.
 class Solution {
@@ -1564,7 +1652,7 @@ class Solution {
         for (int i = 0; i < nums1.length; i++) {
             map.put(nums1[i], map.getOrDefault(nums1[i], 0)+1);
         }
-        
+
         for (int i = 0; i < nums2.length; i++) {
             if (map.containsKey(nums2[i]) && map.get(nums2[i]) > 0) {
                 nums1[k] = nums2[i];
@@ -1629,7 +1717,7 @@ class Solution {
         int n = arr.length;
         for (int i=0; i<n-1; i++){
             if (arr[i]==0){
-                for (int j=n-2; j>i; j--){ 
+                for (int j=n-2; j>i; j--){
                     arr[j+1] = arr[j];
                 }
                 arr[i+1] = 0;
@@ -2377,6 +2465,389 @@ class Solution {
 
 check if the string is same as the reverse string then return 1 otherwise return 2
 
+---
+
+
+
+### 125. Valid Palindrome 判断回文链表String
+
+[125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
+- A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+- Given a string s, return true if it is a palindrome, or false otherwise.
+
+Example:
+
+Input: "aba"
+Output: True
+
+Input: "race a car"
+Output: false
+
+
+
+#### ++++++++++ Brute-Force
+
+
+```java
+// Time: O(N)
+// Space: O(N)
+public boolean isPalindrome(String s) {
+    StringBuilder sb = new StringBuilder(s.toLowerCase()); // for later comparisons
+    int idx = 0;  
+    // remove non-letter character
+    while (idx < sb.length()) {
+        char ch = sb.charAt(idx);
+        // letter or digit
+        if (Character.isLetterOrDigit(ch)) idx += 1;
+        // not letter
+        else sb.deleteCharAt(idx);
+    }
+    int n = sb.length(); // update length
+    // right-leaning
+    for (int i = 0; i < n / 2; ++i) {
+        int j = n - i - 1;
+        if (sb.charAt(i) != sb.charAt(j)) return false;
+    }
+    return true;
+}
+```
+
+
+
+#### ++++++++++ `2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()`
+
+```java
+// Runtime: 23 ms, faster than 31.39% of Java online submissions for Valid Palindrome.
+// Memory Usage: 39.9 MB, less than 60.42% of Java online submissions for Valid Palindrome.
+// 双指针
+class Solution {
+    public boolean isPalindrome(String s) {
+        String s2 = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int x=0, y=s2.length()-1;
+        if(y<1) return true;
+        while(x<y){
+            if(s2.charAt(x)!=s2.charAt(y)) return false;
+            x++; y--;
+        }
+        return true;
+    }
+}
+```
+
+
+#### ++++++++++ `2 pointer + (x <= y && !Character.isLetterOrDigit(s.charAt(x)) )` best
+
+```java
+// Runtime: 7 ms, faster than 51.59% of Java online submissions for Valid Palindrome.
+// Memory Usage: 43.6 MB, less than 27.79% of Java online submissions for Valid Palindrome.
+public class Solution {
+    public boolean isPalindrome(String s) {
+        int x = 0, y = s.length() - 1;
+        while(x <= y) {
+            while(x <= y && !Character.isLetterOrDigit(s.charAt(x))) x++;
+            while(x <= y && !Character.isLetterOrDigit(s.charAt(y))) y--;
+            if(x <= y && Character.toLowerCase(s.charAt(x)) != Character.toLowerCase(s.charAt(y))) {
+                return false;
+            }
+            x++;
+            y--;
+        }
+        return true;
+    }
+}
+
+
+// Runtime: 4 ms, faster than 76.59% of Java online submissions for Valid Palindrome.
+// Memory Usage: 43.4 MB, less than 30.46% of Java online submissions for Valid Palindrome.
+// Time: O(N)
+// Space: O(1)
+public class Solution {
+    public boolean isPalindrome(String s) {
+        int lo = 0, hi = s.length() - 1;
+        while (lo < hi) {
+            while (lo < hi && !isValid(s.charAt(lo))) lo++;
+            while (lo < hi && !isValid(s.charAt(hi))) hi--;
+            if (lo < hi && isCharDiff(s.charAt(lo), s.charAt(hi))) return false;
+            lo++; hi--;
+        }
+        return true;
+    }
+
+    private boolean isValid(char ch) {
+      return Character.isLetterOrDigit(ch);
+    }
+
+    private boolean isCharDiff(char ch1, char ch2) {
+      return Character.toLowerCase(ch1) != Character.toLowerCase(ch2);
+    }
+}
+```
+
+
+
+```java
+public boolean isPalindrome(String s){
+    char[] charMap = new char[256];
+    for (int i = 0; i < 10; i++)
+        charMap['0'+i] = (char) (1+i);
+        // numeric - don't use 0 as it's reserved for illegal chars
+    for (int i = 0; i < 26; i++)
+        charMap['a'+i] = charMap['A'+i] = (char) (11+i);
+        //alphabetic, ignore cases, continue from 11
+    for (int start = 0, end = s.length()-1; start < end;) {
+        // illegal chars
+        if (charMap[s.charAt(start)] == 0) start++;
+        else if (charMap[s.charAt(end)] == 0) end--;
+        else if (charMap[s.charAt(start++)] != charMap[s.charAt(end--)]) return false;
+    }
+    return true;
+}
+
+
+public class Solution {
+    public boolean isPalindrome(String s) {
+        String actual = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+        String rev = new StringBuffer(actual).reverse().toString();
+        return actual.equals(rev);
+    }
+}
+
+```
+
+---
+
+
+### 680. Valid Palindrome II (Easy) 可去掉一个字母查看Palindrome
+
+[680. Valid Palindrome II](https://leetcode.com/problems/valid-palindrome-ii/)
+Given a string s, return true if the s can be palindrome after deleting at most one character from it.
+
+Example 1:
+Input: s = "aba"
+Output: true
+
+Example 2:
+Input: s = "abca"
+Output: true
+Explanation: You could delete the character 'c'.
+
+Example 3:
+Input: s = "abc"
+Output: false
+
+
+#### Brute-Force `validPalindrome+validSubPalindrome`
+
+Delete each character and then test palindromicity.
+
+When detecting the first mismatch we should consider two cases:
+
+Case 1: Delete the character on the left, and move on.
+Case 2: Delete the character on the right, and move on.
+
+```java
+// Time: O(N^2)
+// Space: O(1)
+// Runtime: 6 ms, faster than 85.93% of Java online submissions for Valid Palindrome II.
+// Memory Usage: 42.9 MB, less than 66.51% of Java online submissions for Valid Palindrome II.
+class Solution {
+    public boolean validPalindrome(String s) {
+      int n = s.length();
+      for (int i = 0; i < n / 2; ++i) {
+        int left = i, right = n - i - 1;
+        if (s.charAt(left) != s.charAt(right)) {
+          return validSubPalindrome(s, left, right - 1) || validSubPalindrome(s, left + 1, right);
+        }
+      }
+      return true;
+    }
+
+    private boolean validSubPalindrome(String s, int lo, int hi) {
+      int n = hi - lo + 1;
+      for (int i = 0; i < n / 2; ++i) {
+        int left = lo + i, right = hi - i;
+        if (s.charAt(left) != s.charAt(right)) return false;
+      }
+      return true;
+    }
+}
+```
+
+
+#### recursive version
+
+```java
+// Runtime: 23 ms, faster than 7.26% of Java online submissions for Valid Palindrome II.
+// Memory Usage: 58.8 MB, less than 5.14% of Java online submissions for Valid Palindrome II.
+// Time: O(N)
+// Space: O(N)
+class Solution {
+    public boolean validPalindrome(String s) {
+        return validSubPalindrome(s, 0, s.length() - 1, true);
+    }
+
+    private boolean validSubPalindrome(String s, int lo, int hi, boolean chance) {
+        // base case
+        if (lo >= hi) return true;  
+        if (s.charAt(lo) != s.charAt(hi)) {
+            if (chance) {
+                return validSubPalindrome(s, lo + 1, hi, false) || validSubPalindrome(s, lo, hi - 1, false);
+            }
+            else return false;
+        }
+        return validSubPalindrome(s, lo + 1, hi - 1, chance);
+    }
+}
+
+// Runtime: 8 ms, faster than 65.71% of Java online submissions for Valid Palindrome II.
+// Memory Usage: 54.5 MB, less than 14.01% of Java online submissions for Valid Palindrome II.
+// Time: O(n), where n is the length of the string
+// Space: O(1), in-place
+class Solution {
+	public boolean validPalindrome(String s) {
+        return isPalindrome(s, 0, s.length() - 1, true);
+    }
+    public boolean isPalindrome(String s, int x, int y, boolean chance){
+        while(x < y){
+            if(s.charAt(x) != s.charAt(y)){
+                if(!chance) return false;  
+                return isPalindrome(s, x + 1, y, false) || isPalindrome(s, x, y - 1, false);
+            }
+            x++;
+            y--;
+        }
+        return true;
+    }
+}
+```
+
+---
+
+
+#### 判断回文单链表 - 把原始链表反转存入一条新的链表，然后比较
+
+point: 单链表无法倒着遍历，无法使用双指针技巧。
+
+把原始链表反转存入一条新的链表，然后比较这两条链表是否相同。
+
+```java
+```
+
+---
+
+#### 判断回文单链表 - 二叉树后序遍历
+
+借助二叉树后序遍历的思路，不需要显式反转原始链表也可以倒序遍历链表
+
+
+
+```java
+void traverse(TreeNode root) {
+    // 前序遍历代码
+    traverse(root.left);
+    // 中序遍历代码
+    traverse(root.right);
+    // 后序遍历代码
+}
+```
+
+
+链表其实也有前序遍历和后序遍历：
+
+```java
+void traverse(ListNode head) {
+    // 前序遍历代码
+    traverse(head.next);
+    // 后序遍历代码
+}
+```
+
+
+正序打印链表中的 val 值，可以在前序遍历位置写代码；
+反之，如果想倒序遍历链表，就可以在后序遍历位置操作：
+
+```java
+/* 倒序打印单链表中的元素值 */
+void traverse(ListNode head) {
+    if (head == null) return;
+    traverse(head.next);
+    // 后序遍历代码
+    print(head.val);
+}
+```
+
+---
+
+#### 判断回文单链表 - 用栈结构倒序处理单链表
+
+模仿双指针实现回文判断的功能：
+- 把链表节点放入一个栈，然后再拿出来，
+- 这时候元素顺序就是反的，只不过我们利用的是递归函数的堆栈而已。
+
+```java
+// 左侧指针
+ListNode left;
+
+boolean isPalindrome(ListNode head) {
+    left = head;
+    return traverse(head);
+}
+
+boolean traverse(ListNode right) {
+    if (right == null) return true;
+    boolean res = traverse(right.next);
+    // 后序遍历代码
+    res = res && (right.val == left.val);
+    left = left.next;
+    return res;
+}
+```
+
+---
+
+#### 判断回文单链表 - 不完全反转链表，仅仅反转部分链表，空间复杂度O(1)。
+
+更好的思路是这样的：
+
+```java
+// 1234 5 6789
+// 1 23 45 67 89
+// 1 2  3  4
+// 先通过 双指针技巧 中的快慢指针来找到链表的中点：
+boolean isPalindrome(ListNode head){
+    ListNode slow=head, fast=head;
+    while(fast!=null&&fast.next!=null){
+        slow=slow.next;
+        fast=fast.next.next;
+    }
+    if(fast!=null){
+        slow=slow.next;
+    }
+    ListNode right=head;
+    ListNode left=reverse(slow);
+    while(right!=null){
+        if(left.val!=right.val) return false;
+        right=right.next, left=left.next;
+    }
+    return true;
+}
+
+ListNode reverse(ListNode head) {
+    ListNode pre = null, cur = head;
+    while (cur != null) {
+        ListNode next = cur.next;
+        cur.next = pre;
+        pre = cur;
+        cur = next;
+    }
+    return pre;
+}
+```
+
+
+- 时间复杂度 O(N)，
+- 空间复杂度 O(1)，已经是最优的了。
+
 
 
 ---
@@ -3087,7 +3558,7 @@ class Solution {
 
 ---
 
-### 392. Is Subsequence (Easy)
+### 392. Is Subsequence (Easy) `abc inside ahbgdc ?`
 
 
 [392. Is Subsequence](https://leetcode.com/problems/is-subsequence/)
@@ -3103,7 +3574,6 @@ Example 2:
 
 Input: s = "axc", t = "ahbgdc"
 Output: false
-
 
 
 ```java
@@ -3122,8 +3592,345 @@ class Solution {
 }
 ```
 
+---
 
 
+### 28. Implement strStr() (Easy) 
+
+[28. Implement strStr()](https://leetcode.com/problems/implement-strstr/)
+Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+Clarification:
+
+What should we return when needle is an empty string? This is a great question to ask during an interview.
+
+For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
+
+
+Example 1:
+Input: haystack = "hello", needle = "ll"
+Output: 2
+
+Example 2:
+Input: haystack = "aaaaa", needle = "bba"
+Output: -1
+
+Example 3:
+Input: haystack = "", needle = ""
+Output: 0
+
+
+```java
+// Runtime: 1385 ms, faster than 21.45% of Java online submissions for Implement strStr().
+// Memory Usage: 41.7 MB, less than 40.16% of Java online submissions for Implement strStr().
+/**
+ * Brute Force string matching.
+ * Time Complexity: O(M * N)
+ * Space Complexity: O(1)
+ * M = Length of haystack string. 
+ * N = length of needle string.
+ */
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if (haystack == null || needle == null) {
+            throw new IllegalArgumentException("Input strings are null");
+        }
+
+        int hLen = haystack.length();
+        int nLen = needle.length();
+        if (nLen == 0) return 0; 
+        if (hLen < nLen) return -1; 
+
+        for (int i = 0; i <= hLen - nLen; i++) {
+            int j = 0;
+            while (j < nLen && haystack.charAt(i + j) == needle.charAt(j)) j++; 
+            if (j == nLen) return i; 
+        }
+        return -1;
+    }
+}
+```
+
+
+
+#### `use haystack.substring(i,i+l2).equals(needle)`
+
+
+```java
+// Runtime: 1009 ms, faster than 28.40% of Java online submissions for Implement strStr().
+// Memory Usage: 117.9 MB, less than 19.54% of Java online submissions for Implement strStr().
+public class Solution {
+    public int strStr(String haystack, String needle) {
+        int l1 = haystack.length(), l2 = needle.length();
+        if (l2 == 0) return 0;
+        if (l1 < l2) return -1; 
+        int threshold = l1 - l2;
+        for (int i = 0; i <= threshold; ++i) {
+            if (haystack.substring(i,i+l2).equals(needle)) return i; 
+        }
+        return -1;
+    }
+}
+
+public class Solution {
+    public int strStr1(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }
+
+    public int strStr(String haystack, String needle) {
+        if (haystack == null || needle == null) return -1;
+        int l1 = haystack.length();
+        int l2 = needle.length();
+        for (int i = 0; i < l1-l2+1; i++) {
+            int count = 0;
+            while (count < l2 && haystack.charAt(i+count) == needle.charAt(count))
+                count++;
+            if (count == l2) return i;
+        }
+        return -1;
+    }
+}
+
+
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if (haystack == null || needle == null) {
+            throw new IllegalArgumentException("Input strings are null");
+        }
+        if (needle.isEmpty() || haystack.equals(needle)) return 0;       
+        
+        int hLen = haystack.length();
+        int nLen = needle.length();
+        if (nLen == 0) return 0; 
+        if (hLen < nLen) return -1; 
+
+        for (int i = 0; i <= hLen - nLen; i++) {
+            String evalString = haystack.substring(i, i + nLen);
+            if (evalString.equals(needle)) return i;
+        }
+        
+        return -1;
+    }
+}
+
+```
+
+
+
+
+---
+
+
+### 844. Backspace String Compare (Easy) `"ab##"=="c#d#"?`
+
+[844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)
+Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character.
+
+Note that after backspacing an empty text, the text will continue empty.
+
+Example 1:
+Input: s = "ab#c", t = "ad#c"
+Output: true
+Explanation: Both s and t become "ac".
+
+Example 2:
+Input: s = "ab##", t = "c#d#"
+Output: true
+Explanation: Both s and t become "".
+
+Example 3:
+Input: s = "a#c", t = "b"
+Output: false
+Explanation: s becomes "c" while t becomes "b".
+
+
+#### ++++++++++ `2 pointer, StringBuilder.add StringBuilder.deleteCharAt(i)`
+
+```java
+// Runtime: 2 ms, faster than 52.02% of Java online submissions for Backspace String Compare.
+// Memory Usage: 42.3 MB, less than 5.04% of Java online submissions for Backspace String Compare.
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        return strEditor(s).equals(strEditor(t));
+    }
+    private String strEditor(String s) {
+        StringBuilder res = new StringBuilder();
+        for(char c: s.toCharArray()){
+            if(c != '#') res.append(c);
+            else if (res.length() !=0) res.deleteCharAt(res.length() - 1);
+        }
+        return res.toString();
+    }
+}
+```
+
+
+#### ++++++++++ `2 pointer, Stack.push / Stack.pop`
+
+```java
+// Runtime: 4 ms, faster than 27.04% of Java online submissions for Backspace String Compare.
+// Memory Usage: 42.3 MB, less than 5.04% of Java online submissions for Backspace String Compare.
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        return strEditor(s).equals(strEditor(t));
+    }
+
+    private String strEditor(String s) {
+        Stack res = new Stack();
+        for(char c: s.toCharArray()){
+            if(c != '#') res.push(c);
+            else if (res.size() !=0) res.pop();
+        }
+        return res.toString();
+    }
+}
+```
+
+
+
+#### ++++++++++ `2 pointer, Stack.push / Stack.pop`
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Backspace String Compare.
+// Memory Usage: 40.3 MB, less than 17.60% of Java online submissions for Backspace String Compare.
+// T: O(n)
+// S: O(1)
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        int pointers = s.length()-1;        
+        int pointert = t.length()-1;
+        while(pointers >= 0 || pointert >= 0){
+            pointers = movePointer(s, pointers);          
+            pointert = movePointer(t, pointert);
+            if(pointers<0 && pointert<0) return true;
+            if(pointers<0 || pointert<0) return false;
+            if(s.charAt(pointers) != t.charAt(pointert)) return false;
+            pointers--;            
+            pointert--;
+        }
+	    return true;
+    }
+
+    private int movePointer(String str, int pointer) {
+        int move = 0;
+        while (pointer >= 0){
+            if(str.charAt(pointer) == '#'){
+                move++;
+                pointer--;
+            }
+            else if(move>0) {
+                move--;
+                pointer--;
+            }
+            else break;
+        }
+        return pointer;
+    }
+}
+```
+
+---
+
+
+## 345. Reverse Vowels of a String (Easy)
+
+[345. Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/)
+
+Given a string s, reverse only all the vowels in the string and return it.
+
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both cases.
+
+Example 1:
+
+Input: s = "hello"
+Output: "holle"
+Example 2:
+
+Input: s = "leetcode"
+Output: "leotcede"
+
+
+`Set<Character> vowels = new HashSet<>();` faster
+
+`List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');`
+
+```java
+// Runtime: 9 ms, faster than 45.23% of Java online submissions for Reverse Vowels of a String.
+// Memory Usage: 42.4 MB, less than 37.36% of Java online submissions for Reverse Vowels of a String.
+class Solution {
+    public String reverseVowels(String s) {
+        int x = 0, y = s.length()-1;
+        List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
+        char[] str = s.toCharArray();
+        while(x<y){
+            if(!vowels.contains(str[x])) x++;            
+            if(!vowels.contains(str[y])) y--;
+            if(vowels.contains(str[x]) && vowels.contains(str[y])){
+                char temp = str[x];
+                str[x] = str[y];
+                str[y] = temp;
+                x++;           
+                y--;
+            }
+        }
+        return new String(str);
+    }
+}
+
+// Runtime: 10 ms, faster than 39.23% of Java online submissions for Reverse Vowels of a String.
+// Memory Usage: 45.1 MB, less than 24.97% of Java online submissions for Reverse Vowels of a String.
+class Solution {
+    public String reverseVowels(String s) {
+        int x = 0, y = s.length()-1;
+        List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
+        char[] str = s.toCharArray();
+        while(x<y){
+            while (x<y && !vowels.contains(str[x])) x++;            
+            while (x<y && !vowels.contains(str[y])) y--;  
+            char temp = str[x];
+            str[x] = str[y];
+            str[y] = temp;
+            x++;           
+            y--;
+        }
+        return new String(str);
+    }
+}
+
+// Runtime: 3 ms, faster than 91.36% of Java online submissions for Reverse Vowels of a String.
+// Memory Usage: 42.4 MB, less than 37.36% of Java online submissions for Reverse Vowels of a String.
+// O(n)
+class Solution {
+    public String reverseVowels(String s) {
+        if(s == null || s.length() < 2) return s;
+        int x = 0, y = s.length()-1;
+
+        Set<Character> vowels = new HashSet<>();
+        vowels.add('a');
+        vowels.add('e');
+        vowels.add('i');
+        vowels.add('o');
+        vowels.add('u');
+        vowels.add('A');
+        vowels.add('E');
+        vowels.add('I');
+        vowels.add('O');
+        vowels.add('U');
+
+        char[] str = s.toCharArray();
+        while(x<y){
+            while (x<y && !vowels.contains(str[x])) x++;            
+            while (x<y && !vowels.contains(str[y])) y--;  
+            char temp = str[x];
+            str[x] = str[y];
+            str[y] = temp;
+            x++;           
+            y--;
+        }
+        return new String(str);
+    }
+}
+```
 
 
 
@@ -3132,6 +3939,7 @@ class Solution {
 
 
 ---
+
 # 数组
 
 ---
@@ -5487,179 +6295,6 @@ class Solution {
 
 
 ---
-
-### 125. Valid Palindrome 判断回文链表String
-
-
-[125. Valid Palindrome]
-- A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
-- Given a string s, return true if it is a palindrome, or false otherwise.
-- Input: s = "A man, a plan, a canal: Panama"
-- Output: true
-
-
-```java
-// Runtime: 23 ms, faster than 31.39% of Java online submissions for Valid Palindrome.
-// Memory Usage: 39.9 MB, less than 60.42% of Java online submissions for Valid Palindrome.
-// 双指针
-class Solution {
-    public boolean isPalindrome(String s) {
-        String scheck = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        int a = 0, b = scheck.length() - 1;
-        while(a<b){
-            if(scheck.charAt(a)!=scheck.charAt(b)) return false;
-            a++; b--;
-        }
-        return true;
-    }
-}
-
-public boolean isPalindrome(String s){
-    char[] charMap = new char[256];
-    for (int i = 0; i < 10; i++)
-        charMap['0'+i] = (char) (1+i);
-        // numeric - don't use 0 as it's reserved for illegal chars
-    for (int i = 0; i < 26; i++)
-        charMap['a'+i] = charMap['A'+i] = (char) (11+i);
-        //alphabetic, ignore cases, continue from 11
-    for (int start = 0, end = s.length()-1; start < end;) {
-        // illegal chars
-        if (charMap[s.charAt(start)] == 0) start++;
-        else if (charMap[s.charAt(end)] == 0) end--;
-        else if (charMap[s.charAt(start++)] != charMap[s.charAt(end--)]) return false;
-    }
-    return true;
-}
-```
-
----
-
-
-#### 判断回文单链表 - 把原始链表反转存入一条新的链表，然后比较
-
-point: 单链表无法倒着遍历，无法使用双指针技巧。
-
-把原始链表反转存入一条新的链表，然后比较这两条链表是否相同。
-
-```java
-```
-
----
-
-#### 判断回文单链表 - 二叉树后序遍历
-
-借助二叉树后序遍历的思路，不需要显式反转原始链表也可以倒序遍历链表
-
-
-
-```java
-void traverse(TreeNode root) {
-    // 前序遍历代码
-    traverse(root.left);
-    // 中序遍历代码
-    traverse(root.right);
-    // 后序遍历代码
-}
-```
-
-
-链表其实也有前序遍历和后序遍历：
-
-```java
-void traverse(ListNode head) {
-    // 前序遍历代码
-    traverse(head.next);
-    // 后序遍历代码
-}
-```
-
-
-正序打印链表中的 val 值，可以在前序遍历位置写代码；
-反之，如果想倒序遍历链表，就可以在后序遍历位置操作：
-
-```java
-/* 倒序打印单链表中的元素值 */
-void traverse(ListNode head) {
-    if (head == null) return;
-    traverse(head.next);
-    // 后序遍历代码
-    print(head.val);
-}
-```
-
----
-
-#### 判断回文单链表 - 用栈结构倒序处理单链表
-
-模仿双指针实现回文判断的功能：
-- 把链表节点放入一个栈，然后再拿出来，
-- 这时候元素顺序就是反的，只不过我们利用的是递归函数的堆栈而已。
-
-```java
-// 左侧指针
-ListNode left;
-
-boolean isPalindrome(ListNode head) {
-    left = head;
-    return traverse(head);
-}
-
-boolean traverse(ListNode right) {
-    if (right == null) return true;
-    boolean res = traverse(right.next);
-    // 后序遍历代码
-    res = res && (right.val == left.val);
-    left = left.next;
-    return res;
-}
-```
-
----
-
-#### 判断回文单链表 - 不完全反转链表，仅仅反转部分链表，空间复杂度O(1)。
-
-更好的思路是这样的：
-
-```java
-// 1234 5 6789
-// 1 23 45 67 89
-// 1 2  3  4
-// 先通过 双指针技巧 中的快慢指针来找到链表的中点：
-boolean isPalindrome(ListNode head){
-    ListNode slow=head, fast=head;
-    while(fast!=null&&fast.next!=null){
-        slow=slow.next;
-        fast=fast.next.next;
-    }
-    if(fast!=null){
-        slow=slow.next;
-    }
-    ListNode right=head;
-    ListNode left=reverse(slow);
-    while(right!=null){
-        if(left.val!=right.val) return false;
-        right=right.next, left=left.next;
-    }
-    return true;
-}
-
-ListNode reverse(ListNode head) {
-    ListNode pre = null, cur = head;
-    while (cur != null) {
-        ListNode next = cur.next;
-        cur.next = pre;
-        pre = cur;
-        cur = next;
-    }
-    return pre;
-}
-```
-
-
-- 时间复杂度 O(N)，
-- 空间复杂度 O(1)，已经是最优的了。
-
-
 ---
 
 

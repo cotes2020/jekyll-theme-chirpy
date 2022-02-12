@@ -8,6 +8,7 @@ image:
 ---
 
 - [API Gateway](#api-gateway)
+- [AWS API Gateway](#aws-api-gateway)
   - [benefits](#benefits)
   - [Security](#security)
     - [Application Firewall](#application-firewall)
@@ -18,9 +19,28 @@ image:
 
 # API Gateway
 
+从单一应用程序切换到微服务时，客户端的行为不能与客户端具有该应用程序的一个入口点的行为相同。
+- 微服务上的某一部分功能与单独实现该应用程序时存在不同。
+- 目前在使用微服务时，客户端必须处理微服务体系结构带来的所有复杂性，例如
+  - 聚合来自各种服务的数据，维护多个端点，客户端和服务器之间的联系增加
+  - 对每个服务进行单独的身份验证等，
+  - 同时客户端对微服务的依赖性也直接导致了重构服务的困难。
+- 一种直观的方法是将这些服务隐藏在新的服务层后面，并提供针对每个客户端量身定制的 API。
+- 该聚合器服务层: API 网关，它是解决此问题的常用方法。 
+
+
+
+
+
+
+
+
 
 ---
 
+# AWS API Gateway
+
+---
 
 ## benefits
 
@@ -100,6 +120,7 @@ a serverless architecture using the API Gateway.
 ---
 
 ## Security
+
 Security with API Gateway falls into three major buckets
 
 ### Application Firewall
