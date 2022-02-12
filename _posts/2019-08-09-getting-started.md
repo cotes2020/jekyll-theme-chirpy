@@ -37,7 +37,7 @@ $ bash tools/init.sh
 ```
 
 > If you don't want to deploy your site on GitHub Pages, append option `--no-gh` at the end of the above command.
-{: .prompt-note }
+{: .prompt-info }
 
 The above command will:
 
