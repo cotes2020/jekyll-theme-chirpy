@@ -211,6 +211,7 @@ img[data-src] {
 
   &.shadow {
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
+    box-shadow: none !important; // cover the Bootstrap 4.6.1 styles
   }
 
   @extend %img-caption;
