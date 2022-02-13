@@ -47,7 +47,7 @@ h1 {
 h2 {
   @extend %heading;
   @extend %section;
-  @extend %anchor-relative;
+  @extend %anchor;
 
   font-size: 1.5rem;
 }

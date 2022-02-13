@@ -205,12 +205,11 @@
       {% endif %}
 
       {% assign id = snippet | split: '"' | first %}
-      {% capture anchor %} <a href="#{{ id }}" class="anchor"><i class="fas fa-hashtag"></i></a>{% endcapture %}
+      {% capture anchor %}<a href="#{{ id }}" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>{% endcapture %}
 
       {% assign left = snippet | split: mark_end | first %}
-      {% assign _start_index = left | size %}
-      {% assign _end_index = snippet | size | minus: 1 %}
-      {% assign right = snippet | slice: _start_index, _end_index %}
+      {% assign right = snippet | slice: left.size, snippet.size %}
+      {% assign left = left | replace: '">', '"><span class="mr-2">' | append: '</span>' %}
 
       {% assign _new_content = _new_content | append: mark_start
           | append: left | append: anchor | append: mark_end | append: right
