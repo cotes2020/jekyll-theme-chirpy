@@ -21,13 +21,20 @@ toc: true
   - [学习算法和刷题的框架思维](#学习算法和刷题的框架思维)
     - [一、数据结构的存储方式](#一数据结构的存储方式)
     - [二、数据结构的基本操作](#二数据结构的基本操作)
-      - [**数组遍历框架**，典型的`线性` `迭代`结构：](#数组遍历框架典型的线性-迭代结构)
+      - [**数组遍历框架**，典型的`线性 迭代`结构：](#数组遍历框架典型的线性-迭代结构)
       - [**链表遍历框架**，兼具`迭代`和`递归`结构：](#链表遍历框架兼具迭代和递归结构)
-      - [**二叉树遍历框架**，典型的`非线性` `递归` `遍历` 结构：](#二叉树遍历框架典型的非线性-递归-遍历-结构)
+      - [**二叉树遍历框架**，典型的`非线性 递归 遍历` 结构：](#二叉树遍历框架典型的非线性-递归-遍历-结构)
       - [二叉树框架 扩展为 **N 叉树的遍历框架**](#二叉树框架-扩展为-n-叉树的遍历框架)
       - [**图的遍历**](#图的遍历)
     - [三、算法刷题指南](#三算法刷题指南)
     - [四、总结几句](#四总结几句)
+- [🔒🔒🔒 two sum](#-two-sum)
+  - [🔒 two sum - Array 数组](#-two-sum---array-数组)
+    - [1. Two Sum (Easy)](#1-two-sum-easy)
+      - [++++++++++ brute force 穷举](#-brute-force-穷举)
+      - [++++++++++ 哈希表](#-哈希表)
+    - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
+    - [653. Two Sum IV - Input is a BST (Easy)](#653-two-sum-iv---input-is-a-bst-easy)
 - [🔒🔒🔒 two pointer](#-two-pointer)
   - [🔒 two pointer - Array 数组](#-two-pointer---array-数组)
     - [83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`](#83-remove-duplicates-from-sorted-list-有序链表去重-快慢指针前后走)
@@ -119,13 +126,22 @@ toc: true
       - [++++++++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop-1)
   - [345. Reverse Vowels of a String (Easy)](#345-reverse-vowels-of-a-string-easy)
 - [Arrays 数组](#arrays-数组)
-  - [basic](#basic-1)
-  - [🔒🔒🔒 two sum](#-two-sum)
-    - [🔒 1. Two Sum](#-1-two-sum)
-      - [brute force 穷举](#brute-force-穷举)
-      - [哈希表](#哈希表)
-    - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
-    - [653. Two Sum IV - Input is a BST (Easy)](#653-two-sum-iv---input-is-a-bst-easy)
+  - [Arrays in Java](#arrays-in-java)
+    - [Create Array](#create-array)
+      - [One-Dimensional Arrays:**](#one-dimensional-arrays)
+      - [Multidimensional Arrays](#multidimensional-arrays)
+    - [Instantiating an Array in Java](#instantiating-an-array-in-java)
+    - [Array Literal](#array-literal)
+    - [Java Array index](#java-array-index)
+    - [Arrays of Objects](#arrays-of-objects)
+    - [Java Array Error](#java-array-error)
+    - [Arrays in Methods](#arrays-in-methods)
+      - [Passing Arrays to Methods](#passing-arrays-to-methods)
+      - [Return Arrays from Methods](#return-arrays-from-methods)
+    - [Class Objects for Arrays](#class-objects-for-arrays)
+    - [Array Members](#array-members)
+    - [Arrays Types, Allowed Element Types](#arrays-types-allowed-element-types)
+    - [Cloning of arrays](#cloning-of-arrays)
   - [前缀和技巧](#前缀和技巧)
     - [303. Range Sum Query - Immutable 计算索引区间/list中指定位置的和 `preSum[i] = preSum[i - 1] + nums[i - 1];`](#303-range-sum-query---immutable-计算索引区间list中指定位置的和-presumi--presumi---1--numsi---1)
     - [560. Subarray Sum Equals K 和为k的子数组 `if (preSum[j] == preSum[i] - k) res++;`](#560-subarray-sum-equals-k-和为k的子数组-if-presumj--presumi---k-res)
@@ -709,7 +725,7 @@ bh.buildHeap(list);
 再具体一步，无非以下几种框架：
 
 
-#### **数组遍历框架**，典型的`线性` `迭代`结构：
+#### **数组遍历框架**，典型的`线性 迭代`结构：
 
 ```java
 void traverse(int[] arr) {
@@ -742,7 +758,7 @@ void traverse(ListNode head) {
 ```
 
 
-#### **二叉树遍历框架**，典型的`非线性` `递归` `遍历` 结构：
+#### **二叉树遍历框架**，典型的`非线性 递归 遍历` 结构：
 
 ```java
 /* 基本的二叉树节点 */
@@ -962,6 +978,171 @@ N 叉树的遍历框架
   - `链表`（链式存储）。
 - **基本操作** 就是`增删查改`，
 - **遍历方式** 无非`迭代`和`递归`。
+
+
+
+---
+
+# 🔒🔒🔒 two sum
+
+## 🔒 two sum - Array 数组 
+
+1. 暴力穷举所有可能。
+   1. 对于 TwoSum 问题，一个难点就是给的数组无序。
+   2. 对于一个无序的数组，我们似乎什么技巧也没有，只能暴力穷举所有可能。
+
+一般情况下，我们会首先把数组排序再考虑双指针技巧。
+HashMap 或者 HashSet 也可以帮助我们处理无序数组相关的简单问题。
+- 设计的核心在于权衡，利用不同的数据结构，可以得到一些针对性的加强。
+
+```java
+int[] twoSum(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int sum = nums[left] + nums[right];
+        if (sum == target) return new int[]{left, right};
+        // 让 sum 大一点
+        else if (sum < target) left++; 
+        // 让 sum 小一点
+        else if (sum > target) right--; 
+    }
+    // 不存在这样两个数
+    return new int[]{-1, -1};
+}
+```
+
+
+---
+
+### 1. Two Sum (Easy)
+
+[1. Two Sum](https://leetcode.com/problems/two-sum/)
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+#### ++++++++++ brute force 穷举
+- 时间复杂度 O(N^2)，空间复杂度 O(1)。
+
+```java
+int[] twoSum(int[] nums, int target) {
+    for (int i = 0; i < nums.length; i++)
+        for (int j = i + 1; j < nums.length; j++)
+            if (nums[j] == target - nums[i]) return new int[] { i, j };
+    // 不存在这么两个数
+    return new int[] {-1, -1};
+}
+```
+
+#### ++++++++++ 哈希表
+
+- 减少时间复杂度
+- Time O(N)
+- Space O(N) 
+
+```java
+// Runtime: 8 ms, faster than 45.82% of Java online submissions for Two Sum.
+// Memory Usage: 43.6 MB, less than 6.09% of Java online submissions for Two Sum.
+
+int[] twoSum(int[] nums, int target) {
+    int n = nums.length;
+    HashMap<Integer, Integer> index = new HashMap<>();
+    // 构造一个哈希表：元素映射到相应的索引
+    for (int i = 0; i < n; i++) index.put(nums[i], i);
+
+    for (int i = 0; i < n; i++) {
+        int other = target - nums[i];
+        // 如果 other 存在且不是 nums[i] 本身
+        if (index.containsKey(other) && index.get(other) != i) return new int[] {i, index.get(other)};
+    }
+    return new int[] {-1, -1};
+}
+```
+
+---
+
+### 167. Two Sum II - Input Array Is Sorted
+
+
+[167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+
+Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order,
+- find two numbers such that they add up to a specific target number.
+- Let these two numbers be numbers[index1] and numbers[index2] where `1 <= index1 < index2 <= numbers.length`.
+- Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+
+```java
+// Solution 1 : BinarySearch
+// Time : O(nlogn)
+// space : O(1)
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int n = numbers.length;
+        for(int i=0;i<n-1;i++){
+           int pos = Arrays.binarySearch(numbers, i+1 , n, target-numbers[i]);
+           if(pos>0) return new int[]{i+1,pos+1};
+        }
+        return null;
+    }
+}
+
+// Solution 2: HashMap
+// Time : O(n)
+// space : O(n)
+// Runtime: 4 ms, faster than 16.01% of Java online submissions for Two Sum II - Input Array Is Sorted.
+// Memory Usage: 42.3 MB, less than 7.27% of Java online submissions for Two Sum II - Input Array Is Sorted.
+public int[] twoSum(int[] numbers, int target) {
+    int n = numbers.length;
+    HashMap<Integer, Integer> index = new HashMap<>();
+    // 构造一个哈希表：元素映射到相应的索引
+    for (int i = 0; i < n; i++) index.put(numbers[i], i);
+    for (int i = 0; i < n; i++) {
+        int other = target - numbers[i];
+        // 如果 other 存在且不是 numbers[i] 本身
+        if (index.containsKey(other) && index.get(other) != i) return new int[] {i+1, index.get(other)+1};
+    }
+    return new int[] {-1, -1};
+}
+
+// Solution 3 : Two pointers
+// Time : O(n)
+// space : O(1)
+// Runtime: 1 ms, faster than 53.58% of Java online submissions for Two Sum II - Input Array Is Sorted.
+// Memory Usage: 41.5 MB, less than 14.83% of Java online submissions for Two Sum II - Input Array Is Sorted.
+public int[] twoSum(int[] numbers, int target) {
+    int l = 0, r = numbers.length - 1;
+    while (numbers[l] + numbers[r] != target) {
+        if (numbers[l] + numbers[r] > target) r--;
+        else l++;
+        if (r == l) return new int[]{};
+    }
+    return new int[]{l + 1, r + 1};
+}
+```
+
+---
+
+
+
+### 653. Two Sum IV - Input is a BST (Easy)
+
+[653. Two Sum IV - Input is a BST (Easy)](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/)
+Given the root of a Binary Search Tree and a target number k,
+- return true if there exist two elements in the BST such that their sum is equal to the given target.
+
+Example 1:
+Input: root = [5,3,6,2,4,null,7], k = 9
+Output: true
+
+
+
+
+
+
 
 
 ---
@@ -1433,7 +1614,7 @@ int removeElement(int[] nums, int val) {
 
 ```py
 
-# =============== 移除0
+#  = 移除0
 # 两个指针
 def moveZeroes(nums: List[int]) -> None:
     # Runtime: 188 ms, faster than 17.89% of Python3 online submissions for Move Zeroes.
@@ -1637,7 +1818,7 @@ class Solution {
 }
 ```
 
-2.  O(n) time and extra space 100% faster
+2. O(n) time and extra space 100% faster
 
 ```java
 public int[] intersect(int[] nums1, int[] nums2) {
@@ -2007,11 +2188,11 @@ Output: [1,2,3,4,5]
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ *   int val;
+ *   ListNode next;
+ *   ListNode() {}
+ *   ListNode(int val) { this.val = val; }
+ *   ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
 
@@ -2078,9 +2259,9 @@ It is guaranteed that the node to be deleted is not a tail node in the list.
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
+ *   int val;
+ *   ListNode next;
+ *   ListNode(int x) { val = x; }
  * }
  */
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Delete Node in a Linked List.
@@ -2153,11 +2334,11 @@ Output: [1,3,4,1,2,6]
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ *   int val;
+ *   ListNode next;
+ *   ListNode() {}
+ *   ListNode(int val) { this.val = val; }
+ *   ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
 // O(n), O(1)
@@ -4181,173 +4362,389 @@ class Solution {
 
 # Arrays 数组
 
+- [https://www.geeksforgeeks.org/arrays-in-java/](https://www.geeksforgeeks.org/arrays-in-java/)
 
-## basic 
 
+
+## Arrays in Java
+ 
+
+Java arrays. 
+* In Java, all arrays are dynamically allocated. (discussed below)
+* Since arrays are objects in Java, we can find their length using the object property _length_. This is different from C/C++, where we find length using sizeof.
+* A Java array variable can also be declared like other variables with [] after the data type.
+* The variables in the array are ordered, and each has an index beginning from 0.
+* Java array can be also be used as a static field, a local variable, or a method parameter.
+* The **size** of an array must be specified by int or short value and not long.
+* The direct superclass of an array type is [Object](https://www.geeksforgeeks.org/object-class-in-java/).
+* Every array type implements the interfaces [Cloneable](https://www.geeksforgeeks.org/marker-interface-java/) and [java.io.Serializable](https://www.geeksforgeeks.org/serialization-in-java/).
+
+An array can contain `primitives (int, char, etc.)` and `object (non-primitive) references of a class` depending on the definition of the array. 
+- primitive data types: the actual values are stored in contiguous memory locations. 
+- class objects, [the actual objects are stored in a heap segment](https://www.geeksforgeeks.org/g-fact-46/).  
+ 
+
+![Arrays](https://media.geeksforgeeks.org/wp-content/uploads/Arrays1.png)
+
+
+
+### Create Array
+
+
+#### One-Dimensional Arrays:** 
+
+The general form of a one-dimensional array declaration is 
+ 
+
+An array declaration has two components: the type and the name. 
+- _type_ declares the element type of the array. 
+- The element type determines the data type of each element that comprises the array. 
+- Like an array of integers, other primitive data types like char, float, double, etc., or user-defined data types (objects of a class). 
+- Thus, the element type for the array determines what type of data the array will hold. 
+
+
+```java
+
+type var-name[];
+type[] var-name;
+
+
+// both are valid declarations
+int intArray[]; 
+int[] intArray; 
+
+byte byteArray[];
+short shortsArray[];
+boolean booleanArray[];
+long longArray[];
+float floatArray[];
+double doubleArray[];
+char charArray[];
+
+// an array of references to objects of
+// the class MyClass (a class created by
+// user)
+MyClass myClassArray[]; 
+
+Object[]  ao,        // array of Object
+Collection[] ca;  // array of Collection of unknown type
+```
+
+
+Although the first declaration establishes that intArray is an array variable, **no actual array exists**. It merely tells the compiler that this variable (intArray) will hold an array of the integer type. To link intArray with an actual, physical array of integers, you must allocate one using **new** and assign it to intArray. 
+
+
+
+#### Multidimensional Arrays
+
+Multidimensional arrays are **arrays of arrays** with each element of the array holding the reference of other arrays. 
+- These are also known as [Jagged Arrays](https://www.geeksforgeeks.org/jagged-array-in-java/). 
+- A multidimensional array is created by appending one set of square brackets ([]) per dimension. Examples: 
+
+```java
+int[] intArray = new int[10][20]; //a 2D array or matrix
+int[] intArray = new int[10][20][10]; //a 3D array
+ 
+public class multiDimensional {
+    public static void main(String args[]) {
+        // declaring and initializing 2D array 
+        int arr[][] = { {2, 7, 9},{3, 6, 1},{7, 4, 2} };  
+    }
+}
+
+// 2 7 9 
+// 3 6 1 
+// 7 4 2 
+```
+
+
+![Blank Diagram - Page 1 (13)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-13.jpeg)
+
+
+ 
+---
+
+### Instantiating an Array in Java
+
+When an array is `declared`, only a **reference** of an array is created. 
+
+To create or give memory to the array, you create an array like this: The general form of _new_ as it applies to one-dimensional arrays appears as follows: 
+
+- _type_ specifies the type of data being allocated, 
+- _size_ determines the number of elements in the array, 
+- _var-name_ is the name of the array variable that is linked to the array.
+- use _new_ to allocate an array, **you must specify the type and number of elements to allocate.**
+
+
+```java
+var-name = new type [size];
+
+int intArray[];    //declaring array
+intArray = new int[20];  // allocating memory to array 
+int[] intArray = new int[20]; // combining both statements in one
+```
+**Note :** 
+
+1. The elements in the array allocated by _new_ will automatically be initialized to **zero** (for numeric types), **false** (for boolean), or **null** (for reference types). Refer [Default array values in Java](https://www.geeksforgeeks.org/default-array-values-in-java/)
+2. Obtaining an array is a two-step process. First, you must declare a variable of the desired array type. Second, you must allocate the memory to hold the array, using new, and assign it to the array variable. Thus, **in Java**, **all arrays are dynamically allocated.**
+
+
+
+### Array Literal
+
+In a situation where the size of the array and variables of the array are already known, array literals can be used. 
+
+* The length of this array determines the length of the created array.
+* There is no need to write the new int[] part in the latest versions of Java.
+
+
+```java
+ int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 }; 
+ // Declaring array literal
+```
+
+### Java Array index
+
+Each element in the array is accessed via its index. 
+- begins with 0 and ends at (total array size)-1. 
+- All the elements of array can be accessed using Java for Loop.
+
+```java
+ // accessing the elements of the specified array
+for (int i = 0; i < arr.length; i++)
+  System.out.println("Element at index " + i +  " : "+ arr[i]);
+```
+
+
+**Java program to illustrate creating an array **
+ 
+```java
+class GFG {
+
+    public static void main (String[] args) {
+
+      // declares an Array of integers. 
+      int[] arr; 
+
+      // allocating memory for 5 integers.
+      arr = new int[5];
+      arr[0] = 10;
+      arr[1] = 20;
+      for(int i = 0; i < arr.length; i++) {
+        System.out.println("Element at index " + i + " : " + arr[i]);
+      }
+    }
+``` 
+
+You can also access java arrays using [foreach loops](https://www.geeksforgeeks.org/for-each-loop-in-java/).  
+ 
+
+![Blank Diagram - Page 1 (10)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-10.jpeg)
+
+
+
+
+### Arrays of Objects
+
+An array of objects is created like an array of primitive type data items in the following way. 
+
+```java
+Student[] arr = new Student[7]; //student is a user-defined class
+```
+The studentArray contains seven memory spaces each of the size of student class in which the address of seven Student objects can be stored. The Student objects have to be instantiated using the constructor of the Student class, and their references should be assigned to the array elements in the following way. 
+
+
+```java
+Student[] arr = new Student[5];
+
+// Java program to illustrate creating an array of objects`
+
+class Student {
+    public int roll_no; 
+    public String name; 
+
+    Student(int roll_no, String name) {
+        this.roll_no = roll_no;
+        this.name = name;
+    }
+}
+
+
+// Elements of the array are objects of a class Student.`
+
+public class GFG {
+    public static void main (String[] args) {
+        // declares an Array of integers. 
+        Student[] arr;
+
+        // allocating memory for 5 objects of type Student. 
+        arr =new Student[5];
+        
+        arr[0] =new Student(1, "aman");
+        arr[1] =new Student(2, "vaibhav");
+        arr[2] =new Student(3, "shikar");
+        arr[3] =new Student(4, "dharmesh");
+        arr[4] =new Student(5, "mohit");
+    }
+}
+```
+
+
+
+### Java Array Error
+
+JVM throws **ArrayIndexOutOfBoundsException** to indicate that the array has been accessed with an illegal index. The index is either negative or greater than or equal to the size of an array.
+```java
+Runtime error:
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 2 at GFG.main(File.java:12)
+```
 
 
 
 ---
 
+### Arrays in Methods
 
-## 🔒🔒🔒 two sum
+#### Passing Arrays to Methods
 
-对于 TwoSum 问题，一个难点就是给的数组无序。对于一个无序的数组，我们似乎什么技巧也没有，只能暴力穷举所有可能。
-
-一般情况下，我们会首先把数组排序再考虑双指针技巧。TwoSum 启发我们，HashMap 或者 HashSet 也可以帮助我们处理无序数组相关的简单问题。
-- 设计的核心在于权衡，利用不同的数据结构，可以得到一些针对性的加强。
+Like variables, we can also pass arrays to methods. For example, the below program passes the array to method _sum_ to calculate the sum of the array’s values.
 
 ```java
-int[] twoSum(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    while (left < right) {
-        int sum = nums[left] + nums[right];
-        if (sum == target) {
-            return new int[]{left, right};
-        } else if (sum < target) {
-            left++; // 让 sum 大一点
-        } else if (sum > target) {
-            right--; // 让 sum 小一点
+public class Test {   
+    // Driver method 
+    public static void main(String args[]) {
+        int arr[] = {3, 1, 2, 5, 4}; 
+        sum(arr);
+    }
+
+    public static void sum(int[] arr) {
+        // getting sum of array values
+        int sum = 0; 
+        for(int i = 0; i < arr.length; i++) sum+=arr[i]; 
+        System.out.println("sum of array values : " + sum);
+    }
+}
+```
+
+---
+
+
+#### Return Arrays from Methods
+
+As usual, a method can also return an array. For example, the below program returns an array from method _m1_. 
+
+```java 
+class Test {   
+    // Driver method
+    public static void main(String args[]) {
+        int arr[] = m1();
+        for(int i = 0; i < arr.length; i++) System.out.print(arr[i]+" ");
+    }
+
+    public static int[] m1() {
+        return new int[]{1, 2, 3}; 
+    }
+
+}
+```
+
+---
+
+
+
+
+
+
+### Class Objects for Arrays
+
+Every array has an associated Class object, shared with all other arrays with the same component type. 
+
+```java
+class Test {
+    public static void main(String args[]) {
+        int intArray[] = new int[3]; 
+        byte byteArray[] =new byte[3]; 
+        short shortsArray[] =new short[3]; 
+        String[] strArray =new String[3]; 
+        System.out.println(intArray.getClass()); 
+        System.out.println(intArray.getClass().getSuperclass());  
+    }
+
+}
+```
+
+
+**Explanation:** 
+
+1. The string “[I” is the run-time type signature for the class object “array with component type _int_.”
+2. The only direct superclass of an array type is [java.lang.Object](https://www.geeksforgeeks.org/object-class-in-java/).
+3. The string “[B” is the run-time type signature for the class object “array with component type _byte_.”
+4. The string “[S” is the run-time type signature for the class object “array with component type _short_.”
+5. The string “[L” is the run-time type signature for the class object “array with component type of a Class.” The Class name is then followed.
+
+
+
+
+### Array Members
+
+Now, as you know that arrays are objects of a class, and a direct superclass of arrays is a class Object. The members of an array type are all of the following: 
+
+* The public final field _length_, which contains the number of components of the array. Length may be positive or zero.
+* All the members inherited from class Object; the only method of Object that is not inherited is its [clone](https://www.geeksforgeeks.org/clone-method-in-java-2/) method.
+* The public method _clone()_, which overrides the clone method in class Object and throws no [checked exceptions](https://www.geeksforgeeks.org/checked-vs-unchecked-exceptions-in-java/).
+
+
+
+
+### Arrays Types, Allowed Element Types
+
+Array Types 
+- Primitive Type Arrays: Any type which can be implicitly promoted to declared type.
+- Object Type Arrays: Either declared type objects or it’s child class objects.
+- Abstract Class Type Arrays: Its child-class objects are allowed.
+- Interface Type Arrays: Its implementation class objects are allowed.
+
+
+
+
+
+
+### Cloning of arrays
+
+When you clone a single-dimensional array, such as Object[], a “deep copy” is performed with the new array containing copies of the original array’s elements as opposed to references.
+
+```java 
+class Test {   
+
+    public static void main(String args[]) {
+        int intArray[] = {1, 2, 3}; 
+        int cloneArray[] = intArray.clone(); 
+        System.out.println(intArray == cloneArray) // false
         }
     }
-    // 不存在这样两个数
-    return new int[]{-1, -1};
 }
 ```
 
+![Blank Diagram - Page 1 (11)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-11.jpeg)
 
----
+A clone of a multi-dimensional array (like Object[]) is a “shallow copy,” however, which is to say that it creates only a single new array with each element array a reference to an original element array, but subarrays are shared. 
 
-### 🔒 1. Two Sum
 
-[1. Two Sum](https://leetcode.com/problems/two-sum/)
-Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
-You may assume that each input would have exactly one solution, and you may not use the same element twice.
+```java  
+class Test {   
 
-You can return the answer in any order.
-
-#### brute force 穷举
-- 时间复杂度 O(N^2)，空间复杂度 O(1)。
-
-```java
-int[] twoSum(int[] nums, int target) {
-    for (int i = 0; i < nums.length; i++)
-        for (int j = i + 1; j < nums.length; j++)
-            if (nums[j] == target - nums[i]) return new int[] { i, j };
-    // 不存在这么两个数
-    return new int[] {-1, -1};
+    public static void main(String args[]) {
+        int intArray[][] = {{1, 2, 3},{4, 5}};  
+        int cloneArray[][] = intArray.clone();  
+        System.out.println(intArray == cloneArray); // false 
+    }
 }
 ```
 
-#### 哈希表
-
-- 减少时间复杂度
-- 时间复杂度降低到 O(N)
-- 需要 O(N) 的空间复杂度
-
-```java
-// Runtime: 8 ms, faster than 45.82% of Java online submissions for Two Sum.
-// Memory Usage: 43.6 MB, less than 6.09% of Java online submissions for Two Sum.
-
-int[] twoSum(int[] nums, int target) {
-    int n = nums.length;
-    HashMap<Integer, Integer> index = new HashMap<>();
-    // 构造一个哈希表：元素映射到相应的索引
-    for (int i = 0; i < n; i++) index.put(nums[i], i);
-
-    for (int i = 0; i < n; i++) {
-        int other = target - nums[i];
-        // 如果 other 存在且不是 nums[i] 本身
-        if (index.containsKey(other) && index.get(other) != i) return new int[] {i, index.get(other)};
-    }
-    return new int[] {-1, -1};
-}
-```
-
----
-
-### 167. Two Sum II - Input Array Is Sorted
-
-
-[167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
-
-Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order,
-- find two numbers such that they add up to a specific target number.
-- Let these two numbers be numbers[index1] and numbers[index2] where `1 <= index1 < index2 <= numbers.length`.
-- Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
-
-The tests are generated such that there is exactly one solution. You may not use the same element twice.
-
-```java
-// Solution 1 : BinarySearch
-// Time : O(nlogn)
-// space : O(1)
-class Solution {
-    public int[] twoSum(int[] numbers, int target) {
-        int n = numbers.length;
-        for(int i=0;i<n-1;i++){
-           int pos = Arrays.binarySearch(numbers, i+1 , n, target-numbers[i]);
-           if(pos>0) return new int[]{i+1,pos+1};
-        }
-        return null;
-    }
-}
-
-// Solution 2: HashMap
-// Time : O(n)
-// space : O(n)
-// Runtime: 4 ms, faster than 16.01% of Java online submissions for Two Sum II - Input Array Is Sorted.
-// Memory Usage: 42.3 MB, less than 7.27% of Java online submissions for Two Sum II - Input Array Is Sorted.
-public int[] twoSum(int[] numbers, int target) {
-    int n = numbers.length;
-    HashMap<Integer, Integer> index = new HashMap<>();
-    // 构造一个哈希表：元素映射到相应的索引
-    for (int i = 0; i < n; i++) index.put(numbers[i], i);
-    for (int i = 0; i < n; i++) {
-        int other = target - numbers[i];
-        // 如果 other 存在且不是 numbers[i] 本身
-        if (index.containsKey(other) && index.get(other) != i) return new int[] {i+1, index.get(other)+1};
-    }
-    return new int[] {-1, -1};
-}
-
-// Solution 3 : Two pointers
-// Time : O(n)
-// space : O(1)
-// Runtime: 1 ms, faster than 53.58% of Java online submissions for Two Sum II - Input Array Is Sorted.
-// Memory Usage: 41.5 MB, less than 14.83% of Java online submissions for Two Sum II - Input Array Is Sorted.
-public int[] twoSum(int[] numbers, int target) {
-    int l = 0, r = numbers.length - 1;
-    while (numbers[l] + numbers[r] != target) {
-        if (numbers[l] + numbers[r] > target) r--;
-        else l++;
-        if (r == l) return new int[]{};
-    }
-    return new int[]{l + 1, r + 1};
-}
-```
-
----
-
-
-
-### 653. Two Sum IV - Input is a BST (Easy)
-
-[653. Two Sum IV - Input is a BST (Easy)](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/)
-Given the root of a Binary Search Tree and a target number k,
-- return true if there exist two elements in the BST such that their sum is equal to the given target.
-
-Example 1:
-Input: root = [5,3,6,2,4,null,7], k = 9
-Output: true
-
-
-
-
-
-
-
+![Blank Diagram - Page 1 (12)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-12.jpeg)
+ 
+  
 ---
 
 
@@ -10580,8 +10977,8 @@ Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
  *
  * Time Complexity: O(N * N!). Number of permutations = P(N,N) = N!. Each permutation takes O(N) to construct
  * T(n) = (x=2->n) ∑ (x-1)!*x(x+1)/2
- *      = (x=1->n-1) ∑ (x)!*x(x-1)/2
- *      = O(N * N!)
+ *    = (x=1->n-1) ∑ (x)!*x(x-1)/2
+ *    = O(N * N!)
  * Space Complexity: O((N-1) * (N-1)!) = O(N * N!). All permutations of the first n-1 numbers.
  */
 class Solution {
@@ -10722,9 +11119,9 @@ class Solution {
  * T(2) = 2 * T(1) + O(N)
  * T(1) = O(1)
  * Thus total number of permutations
- *      = N * (P(N,0) + P(N,1) + ... + P(N, N-2)) + P(N,N-1)
- *      = N * (e * N! - P(N,N-1) - P(N,N)) + N!
- *      = ((e-2)*N + 1) * N!
+ *    = N * (P(N,0) + P(N,1) + ... + P(N, N-2)) + P(N,N-1)
+ *    = N * (e * N! - P(N,N-1) - P(N,N)) + N!
+ *    = ((e-2)*N + 1) * N!
         = (0.718 * N + 1) * N!
  * Also, if there are S(N) solutions, then time taken to generate these solution will be N^2 * S(N).
  * Here number of solutions will be much less than the total number of permutations.
@@ -10873,7 +11270,7 @@ Output: [[],[0]]
       4. 大小为 N 的集合的子集总共有几个？2^N 个
       5. 2^N 个子集是 push_back 添加进 res 的，所以要考虑 push_back 这个操作的效率：
       6. 总的时间复杂度就是 O(N*2^N)，还是比较耗时的。
-   5.  如果不计算储存返回结果所用的空间的，只需要 O(N) 的递归堆栈空间。如果计算 res 所需的空间，应该是 O(N*2^N)。
+   5. 如果不计算储存返回结果所用的空间的，只需要 O(N) 的递归堆栈空间。如果计算 res 所需的空间，应该是 O(N*2^N)。
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Subsets.
@@ -10886,7 +11283,7 @@ Output: [[],[0]]
  * S(n) = 0 × (n C n) + 1 × (n C n-1) + 2 × (n C n-2) + … + n × (n C 0)
  * If we add these two together, we get
  * 2S(n) = n × (n C 0) + n × (n C 1) + … + n × (n C n)
- *       = n × (n C 0 + n C 1 + … + n C n)
+ *     = n × (n C 0 + n C 1 + … + n C n)
  * As per binomial theorem, (n C 0 + n C 1 + … + n C n) = 2^n, so
  * 2*S(n) = n * 2^n => S(n) = n * 2^(n-1)
  *
@@ -11133,7 +11530,7 @@ Output:
  * Backtracking (Recursive Solution)
  *
  * Time complexity = InternalNodes in the RecursionTree   +   K * LeafNodes in RecursionTree
- *                 = (C(N,0) + C(N,1) + ... + C(N,K-1))   +   K * C(N,K)
+ *               = (C(N,0) + C(N,1) + ... + C(N,K-1))   +   K * C(N,K)
  *
  * Space Complexity = O(K) -> Depth of Recursion tree + Size of TempList
  *
