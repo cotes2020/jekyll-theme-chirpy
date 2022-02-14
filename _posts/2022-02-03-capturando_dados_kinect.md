@@ -6,7 +6,7 @@ author:
 date: 2022-02-03 21:14:34 -0300
 categories: [kinect, openkinect, c++]
 tags: [kinect libfreenec c++]
-pin: true
+pin: false
 ---
 
 Neste artigo trago um rápido tutorial para que você possa começar a utilizar o sensor kinect do xbox 360 (Kinect v1) para adquirir imagens RGB e mapa de profundidade. Usaremos a libfreenect (OpenKinect) e a OpenCV em linguagem C++ para aprendermos a obter dados do kinect.
@@ -23,38 +23,52 @@ sudo apt-get install libjpeg-dev libpng-dev libtiff-dev
 sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
 sudo apt-get install libxvidcore-dev libx264-dev
 sudo apt-get install libgtk-3-dev
-sudo apt-get install libatlas-base-dev gfortran
+sudo apt-get install libatlas-base-dev gfortran libeigen3-dev
 
 cd ~
 git clone https://github.com/opencv/opencv.git
-git clone https://github.com/opencv/opencv_contrib.gitcd ~/opencv
-mkdir build
-cd buildcmake -D CMAKE_BUILD_TYPE=RELEASE \
+git clone https://github.com/opencv/opencv_contrib.git
+cd ~/opencv
+mkdir build && cd build
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D CMAKE_INSTALL_PREFIX=/usr/local \
  -D INSTALL_PYTHON_EXAMPLES=OFF \
  -D INSTALL_C_EXAMPLES=ON \
  -D OPENCV_ENABLE_NONFREE=ON \
  -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
- -D BUILD_EXAMPLES=ON ..make -j4
+ -D BUILD_EXAMPLES=ON ..
+make -j4
 sudo make install
 ```
 
 ## Compilando a libfreenect
 
 ```bash
-sudo apt-get install git build-essential libusb-1.0-0-dev
+cd ~
+sudo apt-get install git build-essential libusb-1.0-0-dev cython3 libglfw3-dev
+
+#instalando a librealsense
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+
+sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u
+
+sudo apt-get install librealsense2-dkms
+
+sudo apt-get install librealsense2-utils
 
 # para compilar os exemplos
 sudo apt-get install freeglut3-dev libxmu-dev libxi-dev
 
 git clone https://github.com/OpenKinect/libfreenect
 cd libfreenect
-mkdir build
+mkdir build && cd build
 
-cmake .. -DBUILD_PYTHON3=ON #pra caso você queira utilizar também com python
+cmake -DBUILD_PYTHON3=ON -DCYTHON_EXECUTABLE=/usr/bin/cython3 ..
+#pra caso você queira utilizar também com python
+#lembre-se que você deve ter o python e a numpy instalados para usar as flags acima
 make
-make install
-ldconfig -v
+sudo make install
+sudo ldconfig -v
 
 ```
 
@@ -98,6 +112,8 @@ target_link_libraries(kinect_project  ${OpenCV_LIBS}
 ```
 
 ## Escrevendo o Código
+
+Caso esteja com pressa, o código-fonte completo deste artigo pode ser obtido [aqui](https://github.com/NataliaCarvalho03/kinect-pointCloud/blob/main/Calibration/kinect_calibration.cpp). (Apesar do módulo se chamar Calibration, o código ainda não faz isso).
 
 ### Inicializando a freenect e acessando o dispositivo
 
