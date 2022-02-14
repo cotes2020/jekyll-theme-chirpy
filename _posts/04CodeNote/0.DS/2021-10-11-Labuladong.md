@@ -34,7 +34,19 @@ toc: true
       - [++++++++++ brute force 穷举](#-brute-force-穷举)
       - [++++++++++ 哈希表](#-哈希表)
     - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
+      - [++++++++++ BinarySearch](#-binarysearch)
+      - [++++++++++ HashMap](#-hashmap)
+      - [++++++++++ Two pointers](#-two-pointers)
     - [653. Two Sum IV - Input is a BST (Easy)](#653-two-sum-iv---input-is-a-bst-easy)
+    - [121. Best Time to Buy and Sell Stock (Easy)](#121-best-time-to-buy-and-sell-stock-easy)
+      - [++++++++++ brute force](#-brute-force)
+      - [++++++++++ `2 pointer 求出最小前数，算数求最大`](#-2-pointer-求出最小前数算数求最大)
+    - [238. Product of Array Except Self (Medium)](#238-product-of-array-except-self-medium)
+- [Hash](#hash)
+  - [Hash - Array](#hash---array)
+    - [217. Contains Duplicate (Easy)](#217-contains-duplicate-easy)
+      - [++++++++++ `hash 记住出现过的数字`](#-hash-记住出现过的数字)
+      - [++++++++++ `Sort the array`](#-sort-the-array)
 - [🔒🔒🔒 two pointer](#-two-pointer)
   - [🔒 two pointer - Array 数组](#-two-pointer---array-数组)
     - [83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`](#83-remove-duplicates-from-sorted-list-有序链表去重-快慢指针前后走)
@@ -78,7 +90,7 @@ toc: true
       - [++++++++++ `只有0，1，2 三种答案，aaabbb最多两下消完` Best](#-只有012-三种答案aaabbb最多两下消完-best)
       - [reverse logic also](#reverse-logic-also)
     - [125. Valid Palindrome 判断回文链表String](#125-valid-palindrome-判断回文链表string)
-      - [++++++++++ Brute-Force](#-brute-force)
+      - [++++++++++ Brute-Force](#-brute-force-1)
       - [++++++++++ `2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()`](#-2-pointer--sreplacealla-za-z0-9-tolowercase)
       - [++++++++++ `2 pointer + (x <= y && !Character.isLetterOrDigit(s.charAt(x)) )` best](#-2-pointer--x--y--characterisletterordigitscharatx--best)
     - [680. Valid Palindrome II (Easy) 可去掉一个字母查看Palindrome](#680-valid-palindrome-ii-easy-可去掉一个字母查看palindrome)
@@ -386,6 +398,7 @@ while(fast.next!=null) {
 
 ```java
 
+// Swap
 public void swap(char[] chars, int x, int y) {
     char tmp = chars[x];
     chars[x] = chars[y];
@@ -398,6 +411,7 @@ public boolean isVowel(char c) {
         if (c == vow) return true;    
     return false;
 }
+
 
 
 // Palindrome
@@ -437,18 +451,43 @@ private boolean checkPalindrome(int left, int right, String s) {
 }
 
 
-
+// find something
 public int check_binarySearch(int[] arr, int target) {
     int start = 0, end = arr.length-1;
     while(start<=end) {
         int mid = start + (end - start)/2;
-        if(arr[mid] > target) end = mid - 1; 
+        if(arr[mid] > target) end = mid - 1;
         else if(arr[mid] < target) start = mid + 1;
 
         // return index, for find 01*2 in [0,0]
         else return mid;
     }
     return -1;
+}
+
+
+// find nums*nums in int[]
+public int maxProfit(int[] prices) {
+    int min = Integer.MAX_VALUE, max = 0;
+    for(int p:prices) {
+        min = Math.min(min, p);
+        max = Math.max(p-min, max);
+    }
+    return max;
+}
+
+
+
+// find duplicate using set
+public boolean containsDuplicate(int[] nums) {
+    if (nums == null) throw new IllegalArgumentException("Input array is null");
+    if (nums.length <= 1) return false; 
+    Set<Integer> set = new HashSet<>();
+    for(int num:nums){
+        if(set.contains(num)) return true;
+        set.add(num);
+    }
+    return false;
 }
 
 ```
@@ -467,6 +506,9 @@ public int check_binarySearch(int[] arr, int target) {
 Math.abs(a-b);
 Math.min(a,b);
 Math.max(a,b);
+Integer.MAX_VALU
+Integer.MIN_VALU
+
 
 // StringBuilder
 StringBuilder sb = new StringBuilder("");
@@ -744,13 +786,13 @@ class ListNode {
     int val;
     ListNode next;
 }
-​
+
 void traverse(ListNode head) {
     for (ListNode p = head; p != null; p = p.next) {
         // 迭代访问 p.val
     }
 }
-​
+
 void traverse(ListNode head) {
     // 递归访问 head.val
     traverse(head.next);
@@ -766,7 +808,7 @@ class TreeNode {
     int val;
     TreeNode left, right;
 }
-​
+
 void traverse(TreeNode root) {
     traverse(root.left);
     traverse(root.right);
@@ -786,7 +828,7 @@ class TreeNode {
     int val;
     TreeNode[] children;
 }
-​
+
 void traverse(TreeNode root) {
     for (TreeNode child : root.children) {
         traverse(child);
@@ -855,13 +897,13 @@ int oneSideMax(TreeNode* root) {
 TreeNode buildTree(int[] preorder, int preStart, int preEnd,
                     int[] inorder, int inStart, int inEnd,
                     Map<Integer, Integer> inMap) {
-​
+
     if(preStart > preEnd || inStart > inEnd) return null;
-​
+
     TreeNode root = new TreeNode(preorder[preStart]);
     int inRoot = inMap.get(root.val);
     int numsLeft = inRoot - inStart;
-​
+
     root.left = buildTree(preorder, preStart + 1, preStart + numsLeft,
                           inorder, inStart, inRoot - 1,
                           inMap);
@@ -902,7 +944,7 @@ void traverse(TreeNode* node) {
 
 再举例吧，说几道我们之前文章写过的问题。
 
-​动态规划详解说过凑零钱问题，暴力解法就是遍历一棵 N 叉树：
+ 动态规划详解说过凑零钱问题，暴力解法就是遍历一棵 N 叉树：
 
 ```py
 def coinChange(coins: List[int], amount: int):
@@ -916,7 +958,7 @@ def coinChange(coins: List[int], amount: int):
             if subproblem == -1: continue
             res = min(res, 1 + subproblem)
         return res if res != float('INF') else -1
-​
+
     return dp(amount)
 # 这么多代码看不懂咋办？直接提取出框架，就能看出核心思路了：
 
@@ -942,7 +984,7 @@ def dp(n):
 //         res.add(new LinkedList(track));
 //         return;
 //     }
-// ​
+//  
 //     for (int i = 0; i < nums.length; i++) {
 //         if (track.contains(nums[i]))
 //             continue;
@@ -951,7 +993,7 @@ def dp(n):
 //         backtrack(nums, track);
 //         track.removeLast();
 //     }
-​
+
 // /提取出 N 叉树遍历框架/
 // void backtrack(int[] nums, LinkedList<Integer> track) {
 //     for (int i = 0; i < nums.length; i++) {
@@ -985,7 +1027,7 @@ N 叉树的遍历框架
 
 # 🔒🔒🔒 two sum
 
-## 🔒 two sum - Array 数组 
+## 🔒 two sum - Array 数组
 
 1. 暴力穷举所有可能。
    1. 对于 TwoSum 问题，一个难点就是给的数组无序。
@@ -1002,9 +1044,9 @@ int[] twoSum(int[] nums, int target) {
         int sum = nums[left] + nums[right];
         if (sum == target) return new int[]{left, right};
         // 让 sum 大一点
-        else if (sum < target) left++; 
+        else if (sum < target) left++;
         // 让 sum 小一点
-        else if (sum > target) right--; 
+        else if (sum > target) right--;
     }
     // 不存在这样两个数
     return new int[]{-1, -1};
@@ -1036,22 +1078,59 @@ int[] twoSum(int[] nums, int target) {
 }
 ```
 
+
+
 #### ++++++++++ 哈希表
 
 - 减少时间复杂度
 - Time O(N)
-- Space O(N) 
+- Space O(N)
 
 ```java
+// Runtime: 3 ms, faster than 79.66% of Java online submissions for Two Sum.
+// Memory Usage: 45.8 MB, less than 10.23% of Java online submissions for Two Sum.
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int[] res = new int[2];        
+        for(int i=0; i<nums.length; i++){
+            if(map.containsKey(target-nums[i]) && map.get(target-nums[i]) != i) {
+                res[0] = i;
+                res[1] = map.get(target-nums[i]);
+                break;
+            }
+            map.put(nums[i], i);
+        }
+        return res;
+    }
+}
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int[] res = new int[2];    
+        int ans;
+        for(int i=0; i<nums.length; i++){
+            ans = map.getOrDefault(target-nums[i], -1);
+            if(ans==-1) {
+                res[0] = i;
+                res[1] = ans;
+                break;
+            }
+            else map.put(nums[i], i);
+        }
+        return res;
+    }
+
+
+
 // Runtime: 8 ms, faster than 45.82% of Java online submissions for Two Sum.
 // Memory Usage: 43.6 MB, less than 6.09% of Java online submissions for Two Sum.
-
 int[] twoSum(int[] nums, int target) {
     int n = nums.length;
     HashMap<Integer, Integer> index = new HashMap<>();
     // 构造一个哈希表：元素映射到相应的索引
     for (int i = 0; i < n; i++) index.put(nums[i], i);
-
     for (int i = 0; i < n; i++) {
         int other = target - nums[i];
         // 如果 other 存在且不是 nums[i] 本身
@@ -1075,8 +1154,12 @@ Given a 1-indexed array of integers numbers that is already sorted in non-decrea
 
 The tests are generated such that there is exactly one solution. You may not use the same element twice.
 
+
+
+#### ++++++++++ BinarySearch
+
+
 ```java
-// Solution 1 : BinarySearch
 // Time : O(nlogn)
 // space : O(1)
 class Solution {
@@ -1090,7 +1173,12 @@ class Solution {
     }
 }
 
-// Solution 2: HashMap
+```
+
+
+#### ++++++++++ HashMap
+
+```java
 // Time : O(n)
 // space : O(n)
 // Runtime: 4 ms, faster than 16.01% of Java online submissions for Two Sum II - Input Array Is Sorted.
@@ -1107,8 +1195,11 @@ public int[] twoSum(int[] numbers, int target) {
     }
     return new int[] {-1, -1};
 }
+```
 
-// Solution 3 : Two pointers
+
+#### ++++++++++ Two pointers
+```java
 // Time : O(n)
 // space : O(1)
 // Runtime: 1 ms, faster than 53.58% of Java online submissions for Two Sum II - Input Array Is Sorted.
@@ -1139,6 +1230,215 @@ Input: root = [5,3,6,2,4,null,7], k = 9
 Output: true
 
 
+---
+
+### 121. Best Time to Buy and Sell Stock (Easy)
+
+[121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+
+
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+
+#### ++++++++++ brute force
+
+```java
+// O(n^2) time,
+// O(1) space
+public int maxProfit(int[] prices) {
+    int profit = 0;
+    for (int i = 0; i < prices.length; i++) {
+        for (int j = i; j >= 0; j--) {
+            profit = Math.max(profit, prices[i]-prices[j]);
+        }
+    }
+    return profit;
+}
+```
+
+
+#### ++++++++++ `2 pointer 求出最小前数，算数求最大`
+
+```java
+// Runtime: 2 ms, faster than 83.90% of Java online submissions for Best Time to Buy and Sell Stock.
+// Memory Usage: 83.7 MB, less than 55.95% of Java online submissions for Best Time to Buy and Sell Stock.
+class Solution {
+    public int maxProfit(int[] prices) {
+        int lsf = Integer.MAX_VALUE;
+        int res = 0, cur = 0;
+        for(int i = 0; i < prices.length; i++) {
+            if(lsf > prices[i]) {
+                lsf = prices[i];
+            }
+            cur = prices[i] - lsf;
+            if(res < cur) res = cur;
+        }
+        return res;
+    }
+}
+
+// Runtime: 1 ms, faster than 100.00% of Java online submissions for Best Time to Buy and Sell Stock.
+// Memory Usage: 59 MB, less than 72.76% of Java online submissions for Best Time to Buy and Sell Stock.
+public class Solution {
+    public int maxProfit(int[] prices) {
+        int min = Integer.MAX_VALUE, max = 0;
+        for(int p:prices) {
+            min = Math.min(min, p);
+            max = Math.max(p-min, max);
+        }
+        return max;
+    }
+}
+```
+
+
+
+---
+
+
+### 238. Product of Array Except Self (Medium)
+
+[238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
+Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+You must write an algorithm that runs in O(n) time and without using the division operation.
+
+
+Example 1:
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+
+Example 2:
+Input: nums = [-1,1,0,-3,3]
+Output: [0,0,9,0,0]
+
+
+```java
+// Runtime: 5 ms, faster than 13.80% of Java online submissions for Product of Array Except Self.
+// Memory Usage: 56.8 MB, less than 51.06% of Java online submissions for Product of Array Except Self.
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        left[0] = 1; right[n - 1] = 1;
+        for (int i = 1; i < n; i++)
+            left[i] = left[i - 1] * nums[i - 1];
+        for (int i = n - 2; i >= 0; i--)
+            right[i] = right[i + 1] * nums[i + 1];
+        
+        int[] result = new int[n];
+        for (int i = 0; i < n; i++)
+            result[i] = left[i] * right[i];
+        return result;
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+# Hash
+
+## Hash - Array
+
+### 217. Contains Duplicate (Easy)
+
+[217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+
+Example 1:
+Input: nums = [1,2,3,1]
+Output: true
+
+Example 2:
+Input: nums = [1,2,3,4]
+Output: false
+
+
+
+#### ++++++++++ `hash 记住出现过的数字`
+
+```java
+// Runtime: 6 ms, faster than 93.81% of Java online submissions for Contains Duplicate.
+// Memory Usage: 54.7 MB, less than 68.52% of Java online submissions for Contains Duplicate.
+/**
+ * Using HashSet 
+ * Time Complexity: O(N) 
+ * Space Complexity: O(N)
+ */
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        if (nums == null) throw new IllegalArgumentException("Input array is null");
+        if (nums.length <= 1) return false;
+        Set<Integer> set = new HashSet<>();
+        for(int num:nums){
+            if(set.contains(num)) return true;
+            set.add(num);
+        }
+        return false;
+    }
+}
+```
+
+#### ++++++++++ `Sort the array`
+
+```java
+/**
+ * Sort the array 
+ * Time Complexity: O(N log N) 
+ * Space Complexity: O(Space used by sorting algorithm)
+ */
+class Solution2 {
+    public boolean containsDuplicate(int[] nums) {
+        if (nums == null || nums.length < 2) eturn false; 
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) return true; 
+        } 
+        return false;
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1149,6 +1449,10 @@ Output: true
 
 
 # 🔒🔒🔒 two pointer
+
+
+- [https://leetcode.com/tag/two-pointers/](https://leetcode.com/tag/two-pointers/)
+
 
 ## 🔒 two pointer - Array 数组
 
@@ -4047,7 +4351,7 @@ Explanation: 'e' must have been pressed twice, but it was not in the typed outpu
 
 
 
-#### ++++++++++ 
+#### ++++++++++
 
 ```java
 // Runtime: 1 ms, faster than 73.39% of Java online submissions for Long Pressed Name.
@@ -4058,26 +4362,26 @@ class Solution {
     public boolean isLongPressedName(String name, String typed) {
         int m = name.length(), n = typed.length();
         int i = 0, j = 0;
-        
+
         while(i < m && j < n){
             char c1 = name.charAt(i), c2 = typed.charAt(j);
             if(c1 != c2) return false; // we are handling different chars, no!
-            
+
 			// count of consecutive c1/c2
-            int count1 = 0; 
+            int count1 = 0;
             while(i < m && name.charAt(i) == c1){
                 count1++;
                 i++;
             }
-            
+
 			// count of consecutive c1/c2
-            int count2 = 0; 
+            int count2 = 0;
             while(j < n && typed.charAt(j) == c2){
                 count2++;
                 j++;
-            } 
+            }
             if(count2 < count1) return false;
-        } 
+        }
 		// they both reach the end
         return i == m && j == n;
     }
@@ -4103,16 +4407,16 @@ class Solution {
                 x++;
                 y++;
             } else {
-                if (x!=0 && (name.charAt(x-1) == typed.charAt(y))) y++; 
-                else return false; 
+                if (x!=0 && (name.charAt(x-1) == typed.charAt(y))) y++;
+                else return false;
             }
-            
+
             if(x==nlen && y==tlen) return true;
-            else if(x!=nlen && y==tlen) return false; 
+            else if(x!=nlen && y==tlen) return false;
             else {
                 while(y<tlen){
-                    if (typed.charAt(y-1) == typed.charAt(y)) y++; 
-                    else return false; 
+                    if (typed.charAt(y-1) == typed.charAt(y)) y++;
+                    else return false;
                 }
             }
         }
@@ -4121,12 +4425,12 @@ class Solution {
 }
 
 
-// Time Complexity : O(n) 
+// Time Complexity : O(n)
 // T/S: O(n)/O(1)
 class Solution {
     public boolean isLongPressedName(String name, String typed) {
         if (name.equals(typed)) return true;
-        if (name.length() > typed.length()) return false; 
+        if (name.length() > typed.length()) return false;
         int c = 0;
         for(int i=0; i<typed.length(); i++){
             if(c < name.length() && name.charAt(c) == typed.charAt(i))   c++;
@@ -4367,9 +4671,9 @@ class Solution {
 
 
 ## Arrays in Java
- 
 
-Java arrays. 
+
+Java arrays.
 * In Java, all arrays are dynamically allocated. (discussed below)
 * Since arrays are objects in Java, we can find their length using the object property _length_. This is different from C/C++, where we find length using sizeof.
 * A Java array variable can also be declared like other variables with [] after the data type.
@@ -4379,10 +4683,10 @@ Java arrays.
 * The direct superclass of an array type is [Object](https://www.geeksforgeeks.org/object-class-in-java/).
 * Every array type implements the interfaces [Cloneable](https://www.geeksforgeeks.org/marker-interface-java/) and [java.io.Serializable](https://www.geeksforgeeks.org/serialization-in-java/).
 
-An array can contain `primitives (int, char, etc.)` and `object (non-primitive) references of a class` depending on the definition of the array. 
-- primitive data types: the actual values are stored in contiguous memory locations. 
+An array can contain `primitives (int, char, etc.)` and `object (non-primitive) references of a class` depending on the definition of the array.
+- primitive data types: the actual values are stored in contiguous memory locations.
 - class objects, [the actual objects are stored in a heap segment](https://www.geeksforgeeks.org/g-fact-46/).  
- 
+
 
 ![Arrays](https://media.geeksforgeeks.org/wp-content/uploads/Arrays1.png)
 
@@ -4391,16 +4695,16 @@ An array can contain `primitives (int, char, etc.)` and `object (non-primitive) 
 ### Create Array
 
 
-#### One-Dimensional Arrays:** 
+#### One-Dimensional Arrays:**
 
-The general form of a one-dimensional array declaration is 
- 
+The general form of a one-dimensional array declaration is
 
-An array declaration has two components: the type and the name. 
-- _type_ declares the element type of the array. 
-- The element type determines the data type of each element that comprises the array. 
-- Like an array of integers, other primitive data types like char, float, double, etc., or user-defined data types (objects of a class). 
-- Thus, the element type for the array determines what type of data the array will hold. 
+
+An array declaration has two components: the type and the name.
+- _type_ declares the element type of the array.
+- The element type determines the data type of each element that comprises the array.
+- Like an array of integers, other primitive data types like char, float, double, etc., or user-defined data types (objects of a class).
+- Thus, the element type for the array determines what type of data the array will hold.
 
 
 ```java
@@ -4410,8 +4714,8 @@ type[] var-name;
 
 
 // both are valid declarations
-int intArray[]; 
-int[] intArray; 
+int intArray[];
+int[] intArray;
 
 byte byteArray[];
 short shortsArray[];
@@ -4424,54 +4728,54 @@ char charArray[];
 // an array of references to objects of
 // the class MyClass (a class created by
 // user)
-MyClass myClassArray[]; 
+MyClass myClassArray[];
 
 Object[]  ao,        // array of Object
 Collection[] ca;  // array of Collection of unknown type
 ```
 
 
-Although the first declaration establishes that intArray is an array variable, **no actual array exists**. It merely tells the compiler that this variable (intArray) will hold an array of the integer type. To link intArray with an actual, physical array of integers, you must allocate one using **new** and assign it to intArray. 
+Although the first declaration establishes that intArray is an array variable, **no actual array exists**. It merely tells the compiler that this variable (intArray) will hold an array of the integer type. To link intArray with an actual, physical array of integers, you must allocate one using **new** and assign it to intArray.
 
 
 
 #### Multidimensional Arrays
 
-Multidimensional arrays are **arrays of arrays** with each element of the array holding the reference of other arrays. 
-- These are also known as [Jagged Arrays](https://www.geeksforgeeks.org/jagged-array-in-java/). 
-- A multidimensional array is created by appending one set of square brackets ([]) per dimension. Examples: 
+Multidimensional arrays are **arrays of arrays** with each element of the array holding the reference of other arrays.
+- These are also known as [Jagged Arrays](https://www.geeksforgeeks.org/jagged-array-in-java/).
+- A multidimensional array is created by appending one set of square brackets ([]) per dimension. Examples:
 
 ```java
 int[] intArray = new int[10][20]; //a 2D array or matrix
 int[] intArray = new int[10][20][10]; //a 3D array
- 
+
 public class multiDimensional {
     public static void main(String args[]) {
-        // declaring and initializing 2D array 
+        // declaring and initializing 2D array
         int arr[][] = { {2, 7, 9},{3, 6, 1},{7, 4, 2} };  
     }
 }
 
-// 2 7 9 
-// 3 6 1 
-// 7 4 2 
+// 2 7 9
+// 3 6 1
+// 7 4 2
 ```
 
 
 ![Blank Diagram - Page 1 (13)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-13.jpeg)
 
 
- 
+
 ---
 
 ### Instantiating an Array in Java
 
-When an array is `declared`, only a **reference** of an array is created. 
+When an array is `declared`, only a **reference** of an array is created.
 
-To create or give memory to the array, you create an array like this: The general form of _new_ as it applies to one-dimensional arrays appears as follows: 
+To create or give memory to the array, you create an array like this: The general form of _new_ as it applies to one-dimensional arrays appears as follows:
 
-- _type_ specifies the type of data being allocated, 
-- _size_ determines the number of elements in the array, 
+- _type_ specifies the type of data being allocated,
+- _size_ determines the number of elements in the array,
 - _var-name_ is the name of the array variable that is linked to the array.
 - use _new_ to allocate an array, **you must specify the type and number of elements to allocate.**
 
@@ -4480,10 +4784,10 @@ To create or give memory to the array, you create an array like this: The genera
 var-name = new type [size];
 
 int intArray[];    //declaring array
-intArray = new int[20];  // allocating memory to array 
+intArray = new int[20];  // allocating memory to array
 int[] intArray = new int[20]; // combining both statements in one
 ```
-**Note :** 
+**Note :**
 
 1. The elements in the array allocated by _new_ will automatically be initialized to **zero** (for numeric types), **false** (for boolean), or **null** (for reference types). Refer [Default array values in Java](https://www.geeksforgeeks.org/default-array-values-in-java/)
 2. Obtaining an array is a two-step process. First, you must declare a variable of the desired array type. Second, you must allocate the memory to hold the array, using new, and assign it to the array variable. Thus, **in Java**, **all arrays are dynamically allocated.**
@@ -4492,21 +4796,21 @@ int[] intArray = new int[20]; // combining both statements in one
 
 ### Array Literal
 
-In a situation where the size of the array and variables of the array are already known, array literals can be used. 
+In a situation where the size of the array and variables of the array are already known, array literals can be used.
 
 * The length of this array determines the length of the created array.
 * There is no need to write the new int[] part in the latest versions of Java.
 
 
 ```java
- int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 }; 
+ int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 };
  // Declaring array literal
 ```
 
 ### Java Array index
 
-Each element in the array is accessed via its index. 
-- begins with 0 and ends at (total array size)-1. 
+Each element in the array is accessed via its index.
+- begins with 0 and ends at (total array size)-1.
 - All the elements of array can be accessed using Java for Loop.
 
 ```java
@@ -4517,14 +4821,14 @@ for (int i = 0; i < arr.length; i++)
 
 
 **Java program to illustrate creating an array **
- 
+
 ```java
 class GFG {
 
     public static void main (String[] args) {
 
-      // declares an Array of integers. 
-      int[] arr; 
+      // declares an Array of integers.
+      int[] arr;
 
       // allocating memory for 5 integers.
       arr = new int[5];
@@ -4534,10 +4838,10 @@ class GFG {
         System.out.println("Element at index " + i + " : " + arr[i]);
       }
     }
-``` 
+```
 
 You can also access java arrays using [foreach loops](https://www.geeksforgeeks.org/for-each-loop-in-java/).  
- 
+
 
 ![Blank Diagram - Page 1 (10)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-10.jpeg)
 
@@ -4546,12 +4850,12 @@ You can also access java arrays using [foreach loops](https://www.geeksforgeeks.
 
 ### Arrays of Objects
 
-An array of objects is created like an array of primitive type data items in the following way. 
+An array of objects is created like an array of primitive type data items in the following way.
 
 ```java
 Student[] arr = new Student[7]; //student is a user-defined class
 ```
-The studentArray contains seven memory spaces each of the size of student class in which the address of seven Student objects can be stored. The Student objects have to be instantiated using the constructor of the Student class, and their references should be assigned to the array elements in the following way. 
+The studentArray contains seven memory spaces each of the size of student class in which the address of seven Student objects can be stored. The Student objects have to be instantiated using the constructor of the Student class, and their references should be assigned to the array elements in the following way.
 
 
 ```java
@@ -4560,8 +4864,8 @@ Student[] arr = new Student[5];
 // Java program to illustrate creating an array of objects`
 
 class Student {
-    public int roll_no; 
-    public String name; 
+    public int roll_no;
+    public String name;
 
     Student(int roll_no, String name) {
         this.roll_no = roll_no;
@@ -4574,12 +4878,12 @@ class Student {
 
 public class GFG {
     public static void main (String[] args) {
-        // declares an Array of integers. 
+        // declares an Array of integers.
         Student[] arr;
 
-        // allocating memory for 5 objects of type Student. 
+        // allocating memory for 5 objects of type Student.
         arr =new Student[5];
-        
+
         arr[0] =new Student(1, "aman");
         arr[1] =new Student(2, "vaibhav");
         arr[2] =new Student(3, "shikar");
@@ -4611,16 +4915,16 @@ Like variables, we can also pass arrays to methods. For example, the below progr
 
 ```java
 public class Test {   
-    // Driver method 
+    // Driver method
     public static void main(String args[]) {
-        int arr[] = {3, 1, 2, 5, 4}; 
+        int arr[] = {3, 1, 2, 5, 4};
         sum(arr);
     }
 
     public static void sum(int[] arr) {
         // getting sum of array values
-        int sum = 0; 
-        for(int i = 0; i < arr.length; i++) sum+=arr[i]; 
+        int sum = 0;
+        for(int i = 0; i < arr.length; i++) sum+=arr[i];
         System.out.println("sum of array values : " + sum);
     }
 }
@@ -4631,9 +4935,9 @@ public class Test {
 
 #### Return Arrays from Methods
 
-As usual, a method can also return an array. For example, the below program returns an array from method _m1_. 
+As usual, a method can also return an array. For example, the below program returns an array from method _m1_.
 
-```java 
+```java
 class Test {   
     // Driver method
     public static void main(String args[]) {
@@ -4642,7 +4946,7 @@ class Test {
     }
 
     public static int[] m1() {
-        return new int[]{1, 2, 3}; 
+        return new int[]{1, 2, 3};
     }
 
 }
@@ -4657,16 +4961,16 @@ class Test {
 
 ### Class Objects for Arrays
 
-Every array has an associated Class object, shared with all other arrays with the same component type. 
+Every array has an associated Class object, shared with all other arrays with the same component type.
 
 ```java
 class Test {
     public static void main(String args[]) {
-        int intArray[] = new int[3]; 
-        byte byteArray[] =new byte[3]; 
-        short shortsArray[] =new short[3]; 
-        String[] strArray =new String[3]; 
-        System.out.println(intArray.getClass()); 
+        int intArray[] = new int[3];
+        byte byteArray[] =new byte[3];
+        short shortsArray[] =new short[3];
+        String[] strArray =new String[3];
+        System.out.println(intArray.getClass());
         System.out.println(intArray.getClass().getSuperclass());  
     }
 
@@ -4674,7 +4978,7 @@ class Test {
 ```
 
 
-**Explanation:** 
+**Explanation:**
 
 1. The string “[I” is the run-time type signature for the class object “array with component type _int_.”
 2. The only direct superclass of an array type is [java.lang.Object](https://www.geeksforgeeks.org/object-class-in-java/).
@@ -4687,7 +4991,7 @@ class Test {
 
 ### Array Members
 
-Now, as you know that arrays are objects of a class, and a direct superclass of arrays is a class Object. The members of an array type are all of the following: 
+Now, as you know that arrays are objects of a class, and a direct superclass of arrays is a class Object. The members of an array type are all of the following:
 
 * The public final field _length_, which contains the number of components of the array. Length may be positive or zero.
 * All the members inherited from class Object; the only method of Object that is not inherited is its [clone](https://www.geeksforgeeks.org/clone-method-in-java-2/) method.
@@ -4698,7 +5002,7 @@ Now, as you know that arrays are objects of a class, and a direct superclass of 
 
 ### Arrays Types, Allowed Element Types
 
-Array Types 
+Array Types
 - Primitive Type Arrays: Any type which can be implicitly promoted to declared type.
 - Object Type Arrays: Either declared type objects or it’s child class objects.
 - Abstract Class Type Arrays: Its child-class objects are allowed.
@@ -4713,19 +5017,19 @@ Array Types
 
 
 **single-dimensional array**
-clone a single-dimensional array, such as Object[], 
+clone a single-dimensional array, such as Object[],
 - a “deep copy” is performed with the new array containing copies of the original array’s elements as opposed to references.
 
 
 ![Blank Diagram - Page 1 (11)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-11.jpeg)
 
 
-```java 
+```java
 class Test {   
 
     public static void main(String args[]) {
-        int intArray[] = {1, 2, 3}; 
-        int cloneArray[] = intArray.clone(); 
+        int intArray[] = {1, 2, 3};
+        int cloneArray[] = intArray.clone();
         System.out.println(intArray == cloneArray) // false
         }
     }
@@ -4734,26 +5038,26 @@ class Test {
 
 **multi-dimensional array**
 A clone of a multi-dimensional array (like Object[])
-- a “shallow copy,” 
+- a “shallow copy,”
 - it creates only a single new array with each element array a reference to an original element array
-- **subarrays are shared**. 
+- **subarrays are shared**.
 
 
 ![Blank Diagram - Page 1 (12)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-12.jpeg)
- 
+
 
 ```java  
 class Test {
     public static void main(String args[]) {
         int intArray[][] = {4,5};  
         int cloneArray[][] = intArray.clone();  
-        System.out.println(intArray == cloneArray); // false 
+        System.out.println(intArray == cloneArray); // false
         System.out.println(intArray[0] == cloneArray[0]); // true
-        System.out.println(intArray[1] == cloneArray[1]); // true 
+        System.out.println(intArray[1] == cloneArray[1]); // true
     }
 }
 ```
-  
+
 ---
 
 
@@ -7083,7 +7387,7 @@ class MyQueue {
 - int top() Returns the element on the top of the stack.
 - boolean empty() Returns true if the stack is empty, false otherwise.
 
-pop 操作时间复杂度是 O(N)，其他操作都是 O(1)​。​
+pop 操作时间复杂度是 O(N)，其他操作都是 O(1) 。
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Implement Stack using Queues.
