@@ -148,7 +148,7 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
     > You can configure a custom domain instead of `https://PROJECT_ID.REGION_ID.r.appspot.com`.
     > But, for the sake of keeping it simple, we will be using the Google provided default URL.
-    {: .prompt-note }
+    {: .prompt-info }
 
 5.  From inside the `src/`{: .filepath} directory, deploy the app
 

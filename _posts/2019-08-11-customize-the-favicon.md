@@ -33,6 +33,6 @@ The following table will help you understand the changes to the favicon files:
 | `*.ICO`             | ✓                                 | ✗           |
 
 >  ✓ means keep, ✗ means delete.
-{: .prompt-note }
+{: .prompt-info }
 
 The next time you build the site, the favicon will be replaced with a customized edition.

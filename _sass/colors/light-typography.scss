@@ -69,8 +69,10 @@
   --kbd-text-color: var(--text-color);
   --kbd-bg-color: white;
   --prompt-text-color: rgb(46 46 46 / 77%);
-  --prompt-note-bg: rgb(123 247 144 / 20%);
-  --prompt-note-icon-color: #03b303;
+  --prompt-tip-bg: rgb(123 247 144 / 20%);
+  --prompt-tip-icon-color: #03b303;
+  --prompt-info-bg: #e1f5fe;
+  --prompt-info-icon-color: #0070cb;
   --prompt-warning-bg: rgb(255 243 205);
   --prompt-warning-icon-color: #ef9c03;
   --prompt-danger-bg: rgb(248 215 218 / 56%);
