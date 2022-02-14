@@ -78,9 +78,9 @@ Starting from [`v4.1.0`][chirpy-4.1.0], if you want to overwrite the SASS variab
 
 ### Customing Static Assets
 
-By default, the source of the static assets is defined by file `_data/assets/cross_origin.yml`{: .filepath }, and you can replace some of these CDNs according to the network conditions in the region where your website is published.
+Static assets configuration was introduced in version `5.1.0`. The CDN of the static assets is defined by file `_data/assets/cross_origin.yml`{: .filepath }, and you can replace some of them according to the network conditions in the region where your website is published.
 
-Also, if you want to self-host the static assets, please refer to the [_chirpy-static-assets_](https://github.com/cotes2020/chirpy-static-assets#readme).
+Also, if you'd like to self-host the static assets, please refer to the [_chirpy-static-assets_](https://github.com/cotes2020/chirpy-static-assets#readme).
 
 ### Running Local Server
 
