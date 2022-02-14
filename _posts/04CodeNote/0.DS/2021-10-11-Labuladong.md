@@ -38,7 +38,7 @@ toc: true
     - [283. Move Zeroes 移除0 `快慢指针前后走`](#283-move-zeroes-移除0-快慢指针前后走)
     - [349. Intersection of Two Arrays (Easy)](#349-intersection-of-two-arrays-easy)
       - [++++++++++ `Hash(num1 had), Hash.remove(num2 has)` BEST](#-hashnum1-had-hashremovenum2-has-best)
-      - [`sorting, compare, get the same`](#sorting-compare-get-the-same)
+      - [++++++++++ `sorting, compare, get the same`](#-sorting-compare-get-the-same)
     - [350. Intersection of Two Arrays II (Easy)](#350-intersection-of-two-arrays-ii-easy)
       - [2 pointer `Arrays.sort(); 左右指针，Arrays.copyOfRange(nums1,0,k);`](#2-pointer-arrayssort-左右指针arrayscopyofrangenums10k)
     - [1089. Duplicate Zeros (Easy)](#1089-duplicate-zeros-easy)
@@ -47,8 +47,11 @@ toc: true
       - [Binary Search](#binary-search)
       - [???](#)
       - [`sort + sliding window` BEST](#sort--sliding-window-best)
-    - [696. Count Binary Substrings (Easy)](#696-count-binary-substrings-easy)
-      - [Brute Force](#brute-force-1)
+    - [696. Count Binary Substrings (Easy) 找00110011成对项](#696-count-binary-substrings-easy-找00110011成对项)
+      - [++++++++++ Brute Force `res+=Math.min(pre, cur);`](#-brute-force-resmathminpre-cur)
+    - [1346. Check If N and Its Double Exist (Easy)](#1346-check-if-n-and-its-double-exist-easy)
+      - [++++++++++ Bruteforce `放入HashSet，rotate看出现`](#-bruteforce-放入hashsetrotate看出现)
+      - [++++++++++ BS](#-bs)
   - [🔒 two pointer - 链表](#-two-pointer---链表)
     - [203. Remove Linked List Elements (Easy)](#203-remove-linked-list-elements-easy)
       - [++++++++++ recursive solution](#-recursive-solution)
@@ -103,14 +106,20 @@ toc: true
       - [++++++++++ `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`](#-new-res-numsi20-resoddindex-oddindex-resevenindex-evenindex)
       - [++++++++++ `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[odd]` BEST](#-forint-i0in-i2-should-be-even-if-odd-check-prev-numodd-best)
     - [392. Is Subsequence (Easy) `abc inside ahbgdc ?`](#392-is-subsequence-easy-abc-inside-ahbgdc-)
-    - [28. Implement strStr() (Easy)](#28-implement-strstr-easy)
-      - [`use haystack.substring(i,i+l2).equals(needle)`](#use-haystacksubstringiil2equalsneedle)
+    - [28. Implement strStr() (Easy) ll在hello里](#28-implement-strstr-easy-ll在hello里)
+      - [++++++++++ Brute Force string matching](#-brute-force-string-matching)
+      - [++++++++++ `use haystack.substring(i,i+l2).equals(needle)`](#-use-haystacksubstringiil2equalsneedle)
+      - [++++++++++ KMP solution `Backlog`](#-kmp-solution-backlog)
+    - [925. Long Pressed Name (Easy) "alex"对比"aaleex"](#925-long-pressed-name-easy-alex对比aaleex)
+      - [++++++++++](#-1)
+      - [++++++++++ 2 pointer iterate](#-2-pointer-iterate)
     - [844. Backspace String Compare (Easy) `"ab##"=="c#d#"?`](#844-backspace-string-compare-easy-abcd)
       - [++++++++++ `2 pointer, StringBuilder.add StringBuilder.deleteCharAt(i)`](#-2-pointer-stringbuilderadd-stringbuilderdeletecharati)
       - [++++++++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop)
       - [++++++++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop-1)
   - [345. Reverse Vowels of a String (Easy)](#345-reverse-vowels-of-a-string-easy)
-- [数组](#数组)
+- [Arrays 数组](#arrays-数组)
+  - [basic](#basic-1)
   - [🔒🔒🔒 two sum](#-two-sum)
     - [🔒 1. Two Sum](#-1-two-sum)
       - [brute force 穷举](#brute-force-穷举)
@@ -413,7 +422,18 @@ private boolean checkPalindrome(int left, int right, String s) {
 
 
 
+public int check_binarySearch(int[] arr, int target) {
+    int start = 0, end = arr.length-1;
+    while(start<=end) {
+        int mid = start + (end - start)/2;
+        if(arr[mid] > target) end = mid - 1; 
+        else if(arr[mid] < target) start = mid + 1;
 
+        // return index, for find 01*2 in [0,0]
+        else return mid;
+    }
+    return -1;
+}
 
 ```
 
@@ -549,13 +569,17 @@ iter.hasNext();
 iter.next();
 
 
-Set<Integer> res = new HashSet<>();
 
-Set<Character> set = new HashSet<Character>();
-set.add("kkk");
 
 Set<String> deads = new HashSet<>();
-
+Set<Integer> res = new HashSet<>();
+Set<Character> set = new HashSet<Character>();
+HashSet<Character> set = new HashSet<>();
+HashSet<Integer> set = new HashSet<Integer>();
+set.contains(num);
+set.add(num);
+set.remove(num);
+set.size();
 
 TreeSet<Integer> tree = new TreeSet<>();
 tree.add(number);
@@ -569,14 +593,8 @@ hm.containsKey(key);
 hm.size();
 hm.putIfAbsent(1, new LinkedHashSet<>());
 hm.getOrDefault(val, 0);
+hm.keySet()
 
-
-HashSet<Character> vowels = new HashSet<>();
-HashSet<Integer> set = new HashSet<Integer>();
-set.contains(num);
-set.add(num);
-set.remove(num);
-set.size();
 
 
 LinkedHashSet<Integer> keyList = ;
@@ -1517,7 +1535,7 @@ class Solution {
 }
 ```
 
-#### `sorting, compare, get the same`
+#### ++++++++++ `sorting, compare, get the same`
 
 ```java
 // Runtime: 2 ms, faster than 95.33% of Java online submissions for Intersection of Two Arrays.
@@ -1868,26 +1886,24 @@ class Solution {
 
 ---
 
-### 696. Count Binary Substrings (Easy)
+### 696. Count Binary Substrings (Easy) 找00110011成对项
 
 Give a binary string s, return the number of non-empty substrings that have the same number of 0's and 1's, and all the 0's and all the 1's in these substrings are grouped consecutively.
 
 Substrings that occur multiple times are counted the number of times they occur.
 
 Example 1:
-
 Input: s = "00110011"
 Output: 6
 Explanation: There are 6 substrings that have equal number of consecutive 1's and 0's: "0011", "01", "1100", "10", "0011", and "01".
 Notice that some of these substrings repeat and are counted the number of times they occur.
 Also, "00110011" is not a valid substring because all the 0's (and 1's) are not grouped together.
 
-
 the number that we should add to ans is equal to min(zeros, ones), or pre count
 
-#### Brute Force                            
-Check for every substring either they are valid substring or not. if valid increase the count but time complexity :O(n^3)
+#### ++++++++++ Brute Force `res+=Math.min(pre, cur);`
 
+Check for every substring either they are valid substring or not. if valid increase the count but time complexity :O(n^3)
 
 ```java
 // Runtime: 21 ms, faster than 7.53% of Java online submissions for Count Binary Substrings.
@@ -1910,6 +1926,64 @@ class Solution {
 ```
 
 
+---
+
+
+### 1346. Check If N and Its Double Exist (Easy)
+
+[1346. Check If N and Its Double Exist](https://leetcode.com/problems/check-if-n-and-its-double-exist/)
+Given an array arr of integers, check if there exists two integers N and M such that N is the double of M ( i.e. N = 2 * M).
+
+Example 1:
+Input: arr = [10,2,5,3]
+Output: true
+Explanation: N = 10 is the double of M = 5,that is, 10 = 2 * 5
+
+
+
+#### ++++++++++ Bruteforce `放入HashSet，rotate看出现`
+```java
+// Runtime: 2 ms, faster than 73.80% of Java online submissions for Check If N and Its Double Exist.
+// Memory Usage: 43.5 MB, less than 13.50% of Java online submissions for Check If N and Its Double Exist.
+class Solution {
+    public boolean checkIfExist(int[] arr) {
+        Set<Integer> set = new HashSet<>();
+        for(int num:arr){
+            if (set.contains(2*num) || (num%2 == 0 && set.contains(num/2))) return true;
+            else set.add(num);
+        }
+        return false;
+    }
+}
+```
+
+
+#### ++++++++++ BS
+
+```java
+class Solution {
+    public boolean checkIfExist(int[] arr) {
+        Arrays.sort(arr);
+        int res;
+        for(int i = 0; i<arr.length; i++){
+            res = check_binarySearch(arr, arr[i]*2);
+            if(res != i && res != -1) return true;
+        }
+        return false;
+    }
+
+    public int check_binarySearch(int[] arr, int target) {
+        int start = 0, end = arr.length-1;
+        while(start<=end) {
+            int mid = start + (end - start)/2;
+            if(arr[mid] > target) end = mid - 1;
+            else if(arr[mid] < target) start = mid + 1;
+            else return mid;
+        }
+        return -1;
+    }
+}
+```
 
 ---
 
@@ -3595,7 +3669,7 @@ class Solution {
 ---
 
 
-### 28. Implement strStr() (Easy) 
+### 28. Implement strStr() (Easy) ll在hello里
 
 [28. Implement strStr()](https://leetcode.com/problems/implement-strstr/)
 Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
@@ -3620,6 +3694,9 @@ Input: haystack = "", needle = ""
 Output: 0
 
 
+#### ++++++++++ Brute Force string matching
+
+
 ```java
 // Runtime: 1385 ms, faster than 21.45% of Java online submissions for Implement strStr().
 // Memory Usage: 41.7 MB, less than 40.16% of Java online submissions for Implement strStr().
@@ -3627,7 +3704,7 @@ Output: 0
  * Brute Force string matching.
  * Time Complexity: O(M * N)
  * Space Complexity: O(1)
- * M = Length of haystack string. 
+ * M = Length of haystack string.
  * N = length of needle string.
  */
 class Solution {
@@ -3638,13 +3715,13 @@ class Solution {
 
         int hLen = haystack.length();
         int nLen = needle.length();
-        if (nLen == 0) return 0; 
-        if (hLen < nLen) return -1; 
+        if (nLen == 0) return 0;
+        if (hLen < nLen) return -1;
 
         for (int i = 0; i <= hLen - nLen; i++) {
             int j = 0;
-            while (j < nLen && haystack.charAt(i + j) == needle.charAt(j)) j++; 
-            if (j == nLen) return i; 
+            while (j < nLen && haystack.charAt(i + j) == needle.charAt(j)) j++;
+            if (j == nLen) return i;
         }
         return -1;
     }
@@ -3653,7 +3730,7 @@ class Solution {
 
 
 
-#### `use haystack.substring(i,i+l2).equals(needle)`
+#### ++++++++++ `use haystack.substring(i,i+l2).equals(needle)`
 
 
 ```java
@@ -3663,10 +3740,10 @@ public class Solution {
     public int strStr(String haystack, String needle) {
         int l1 = haystack.length(), l2 = needle.length();
         if (l2 == 0) return 0;
-        if (l1 < l2) return -1; 
+        if (l1 < l2) return -1;
         int threshold = l1 - l2;
         for (int i = 0; i <= threshold; ++i) {
-            if (haystack.substring(i,i+l2).equals(needle)) return i; 
+            if (haystack.substring(i,i+l2).equals(needle)) return i;
         }
         return -1;
     }
@@ -3698,17 +3775,17 @@ class Solution {
             throw new IllegalArgumentException("Input strings are null");
         }
         if (needle.isEmpty() || haystack.equals(needle)) return 0;       
-        
+
         int hLen = haystack.length();
         int nLen = needle.length();
-        if (nLen == 0) return 0; 
-        if (hLen < nLen) return -1; 
+        if (nLen == 0) return 0;
+        if (hLen < nLen) return -1;
 
         for (int i = 0; i <= hLen - nLen; i++) {
             String evalString = haystack.substring(i, i + nLen);
             if (evalString.equals(needle)) return i;
         }
-        
+
         return -1;
     }
 }
@@ -3716,6 +3793,168 @@ class Solution {
 ```
 
 
+#### ++++++++++ KMP solution `Backlog`
+
+```java
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if (haystack == null || needle == null) return -1;
+        int nLen = needle.length();
+        int hLen = haystack.length();
+        if (nLen == 0) return 0;
+        if (hLen == 0) return -1;
+
+        int[] table = kmpLookupTable(needle);
+        int i = 0, j = 0;
+        while (i < hLen && j < nLen) {
+            if (haystack.charAt(i) == needle.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                if (j > 0) j = table[j - 1];
+                else i++;
+            }
+        }
+
+        if (j == nLen) return i - j;
+        return -1;
+    }
+
+    private int[] kmpLookupTable(String s) {
+        int[] table = new int[s.length()];
+        int i = 1;
+        int index = 0;
+        while (i < s.length()) {
+            if (s.charAt(i) == s.charAt(index)) {
+                table[i] = index + 1;
+                index++;
+                i++;
+            } else {
+                if (index > 0) index = table[index - 1];
+                else {
+                    table[i] = 0;
+                    i++;
+                }
+            }
+        }
+        return table;
+    }
+}
+```
+
+
+---
+
+### 925. Long Pressed Name (Easy) "alex"对比"aaleex"
+
+[925. Long Pressed Name](https://leetcode.com/problems/long-pressed-name/)
+Your friend is typing his name into a keyboard. Sometimes, when typing a character c, the key might get long pressed, and the character will be typed 1 or more times.
+
+You examine the typed characters of the keyboard. Return True if it is possible that it was your friends name, with some characters (possibly none) being long pressed.
+
+
+Example 1:
+
+Input: name = "alex", typed = "aaleex"
+Output: true
+Explanation: 'a' and 'e' in 'alex' were long pressed.
+
+Example 2:
+Input: name = "saeed", typed = "ssaaedd"
+Output: false
+Explanation: 'e' must have been pressed twice, but it was not in the typed output.
+
+
+
+#### ++++++++++ 
+
+```java
+// Runtime: 1 ms, faster than 73.39% of Java online submissions for Long Pressed Name.
+// Memory Usage: 42.4 MB, less than 6.21% of Java online submissions for Long Pressed Name.
+// time complexity: O(m + n)
+// space complexity: O(1)
+class Solution {
+    public boolean isLongPressedName(String name, String typed) {
+        int m = name.length(), n = typed.length();
+        int i = 0, j = 0;
+        
+        while(i < m && j < n){
+            char c1 = name.charAt(i), c2 = typed.charAt(j);
+            if(c1 != c2) return false; // we are handling different chars, no!
+            
+			// count of consecutive c1/c2
+            int count1 = 0; 
+            while(i < m && name.charAt(i) == c1){
+                count1++;
+                i++;
+            }
+            
+			// count of consecutive c1/c2
+            int count2 = 0; 
+            while(j < n && typed.charAt(j) == c2){
+                count2++;
+                j++;
+            } 
+            if(count2 < count1) return false;
+        } 
+		// they both reach the end
+        return i == m && j == n;
+    }
+}
+```
+
+
+
+
+#### ++++++++++ 2 pointer iterate
+
+
+```java
+// Runtime: 1 ms, faster than 73.39% of Java online submissions for Long Pressed Name.
+// Memory Usage: 42.4 MB, less than 6.21% of Java online submissions for Long Pressed Name.
+class Solution {
+    public boolean isLongPressedName(String name, String typed) {
+        int nlen = name.length(), tlen = typed.length();
+        if (tlen < nlen) return false;
+        int x=0,y=0;
+        while(x<nlen && y<tlen){
+            if (name.charAt(x) == typed.charAt(y)) {
+                x++;
+                y++;
+            } else {
+                if (x!=0 && (name.charAt(x-1) == typed.charAt(y))) y++; 
+                else return false; 
+            }
+            
+            if(x==nlen && y==tlen) return true;
+            else if(x!=nlen && y==tlen) return false; 
+            else {
+                while(y<tlen){
+                    if (typed.charAt(y-1) == typed.charAt(y)) y++; 
+                    else return false; 
+                }
+            }
+        }
+        return true;
+    }
+}
+
+
+// Time Complexity : O(n) 
+// T/S: O(n)/O(1)
+class Solution {
+    public boolean isLongPressedName(String name, String typed) {
+        if (name.equals(typed)) return true;
+        if (name.length() > typed.length()) return false; 
+        int c = 0;
+        for(int i=0; i<typed.length(); i++){
+            if(c < name.length() && name.charAt(c) == typed.charAt(i))   c++;
+            else if(i == 0 || typed.charAt(i) != typed.charAt(i-1))  return false;
+        }
+        return c == name.length();
+    }
+}
+```
 
 
 ---
@@ -3940,7 +4179,13 @@ class Solution {
 
 ---
 
-# 数组
+# Arrays 数组
+
+
+## basic 
+
+
+
 
 ---
 
