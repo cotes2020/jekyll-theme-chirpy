@@ -4706,12 +4706,19 @@ Array Types
 
 
 
-
+---
 
 
 ### Cloning of arrays
 
-When you clone a single-dimensional array, such as Object[], a “deep copy” is performed with the new array containing copies of the original array’s elements as opposed to references.
+
+**single-dimensional array**
+clone a single-dimensional array, such as Object[], 
+- a “deep copy” is performed with the new array containing copies of the original array’s elements as opposed to references.
+
+
+![Blank Diagram - Page 1 (11)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-11.jpeg)
+
 
 ```java 
 class Test {   
@@ -4725,25 +4732,27 @@ class Test {
 }
 ```
 
-![Blank Diagram - Page 1 (11)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-11.jpeg)
+**multi-dimensional array**
+A clone of a multi-dimensional array (like Object[])
+- a “shallow copy,” 
+- it creates only a single new array with each element array a reference to an original element array
+- **subarrays are shared**. 
 
-A clone of a multi-dimensional array (like Object[]) is a “shallow copy,” however, which is to say that it creates only a single new array with each element array a reference to an original element array, but subarrays are shared. 
-
-
-
-```java  
-class Test {   
-
-    public static void main(String args[]) {
-        int intArray[][] = {{1, 2, 3},{4, 5}};  
-        int cloneArray[][] = intArray.clone();  
-        System.out.println(intArray == cloneArray); // false 
-    }
-}
-```
 
 ![Blank Diagram - Page 1 (12)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-12.jpeg)
  
+
+```java  
+class Test {
+    public static void main(String args[]) {
+        int intArray[][] = {4,5};  
+        int cloneArray[][] = intArray.clone();  
+        System.out.println(intArray == cloneArray); // false 
+        System.out.println(intArray[0] == cloneArray[0]); // true
+        System.out.println(intArray[1] == cloneArray[1]); // true 
+    }
+}
+```
   
 ---
 
