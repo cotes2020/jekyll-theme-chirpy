@@ -7,7 +7,7 @@ toc: true
 image:
 ---
 
-- [API Gateway](#api-gateway)
+- [AWS API Gateway](#aws-api-gateway)
   - [benefits](#benefits)
   - [Security](#security)
     - [Application Firewall](#application-firewall)
@@ -16,11 +16,9 @@ image:
 
 ---
 
-# API Gateway
-
+# AWS API Gateway
 
 ---
-
 
 ## benefits
 
@@ -100,6 +98,7 @@ a serverless architecture using the API Gateway.
 ---
 
 ## Security
+
 Security with API Gateway falls into three major buckets
 
 ### Application Firewall

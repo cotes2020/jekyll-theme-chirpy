@@ -15,19 +15,45 @@ import javax.swing.plaf.synth.SynthSpinnerUI;
 import labuladongjava.other.ListNode;
 
 public class Solution {
-    public String reverseOnlyLetters(String s) {
-        StringBuilder res = new StringBuilder();
-        for(int i=s.length()-1 ; i>=0 ; i--){
-            if(Character.isLetter(s.charAt(i))) res.append(s.charAt(i)); 
+    public boolean backspaceCompare(String s, String t) {
+        var pointerS = s.length() - 1;
+        var pointerT = t.length() - 1;
+    
+        while (pointerS >= 0 || pointerT >= 0) {
+            pointerS = movePointer(s, pointerS);
+            pointerT = movePointer(t, pointerT);
+    
+            if (pointerS < 0 && pointerT < 0) // run out on both strings
+                return true;
+            if (pointerS < 0 || pointerT < 0) // run out on only one string
+                return false;
+            if (s.charAt(pointerS--) != t.charAt(pointerT--)) // character mismatch
+                return false;
         }
-        for(int i=0 ; i<s.length() ; i++) {
-        	if(!Character.isLetter(s.charAt(i))) res.insert(i, s.charAt(i));
-        }
-		return res.toString();
+        return true;
     }
+    
+    private int movePointer(String str, int pointer) {
+        var backspaceCount = 0;
+        while (pointer >= 0) {
+            if (str.charAt(pointer) == '#') { // backspace seen
+                backspaceCount++;
+                pointer--;
+            } else if (backspaceCount > 0) { // letter seen and there were backspaces before
+                backspaceCount--;
+                pointer--;
+            } else {
+                break; // letter seen and there were no backspaces before. We're done here
+            } 
+        }
+        return pointer;
+    }
+
     public static void main(String[] args) {
-        String s = new String("7_28]");
         Solution res = new Solution();
-        res.reverseOnlyLetters(s);
+        String s = new String("aaaaab#c");
+        String t = new String("baaaab#c");
+        boolean anw = res.backspaceCompare(s,t);
+        System.out.println(anw);
     } 
 }
