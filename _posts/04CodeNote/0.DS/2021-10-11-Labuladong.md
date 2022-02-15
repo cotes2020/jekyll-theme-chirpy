@@ -60,21 +60,21 @@ toc: true
     - [23. Merge k Sorted Lists 合并 k 个有序链表 Merge k Sorted Lists](#23-merge-k-sorted-lists-合并-k-个有序链表-merge-k-sorted-lists)
   - [递归反转链表](#递归反转链表)
     - [206. Reverse Linked List 递归反转整个链表 `递归+pointer`](#206-reverse-linked-list-递归反转整个链表-递归pointer)
-      - [----- 递归](#------递归)
-      - [----- 2 pointer](#------2-pointer)
+      - [+++++ 递归](#-递归)
+      - [+++++ 2 pointer](#-2-pointer)
     - [反转链表前 N 个节点](#反转链表前-n-个节点)
     - [92. Reverse Linked List II 反转链表的一部分](#92-reverse-linked-list-ii-反转链表的一部分)
-      - [----- iterative](#------iterative)
-      - [----- recursive](#------recursive)
+      - [+++++ iterative](#-iterative)
+      - [+++++ recursive](#-recursive)
     - [25. Reverse Nodes in k-Group K个一组反转链表](#25-reverse-nodes-in-k-group-k个一组反转链表)
-      - [----- `a,b reverse(), a.next=reverseK(b,k)`](#------ab-reverse-anextreversekbk)
+      - [+++++ `a,b reverse(), a.next=reverseK(b,k)`](#-ab-reverse-anextreversekbk)
     - [143. Reorder List (Medium)](#143-reorder-list-medium)
-      - [----- `Two pointer, find middle, reverse(), combine(n1,n2)`](#------two-pointer-find-middle-reverse-combinen1n2)
-      - [----- `2 pointer. list.add(ListNode), reorder list`](#------2-pointer-listaddlistnode-reorder-list)
+      - [+++++ `Two pointer, find middle, reverse(), combine(n1,n2)`](#-two-pointer-find-middle-reverse-combinen1n2)
+      - [+++++ `2 pointer. list.add(ListNode), reorder list`](#-2-pointer-listaddlistnode-reorder-list)
     - [1721. Swapping Nodes in a Linked List (Medium)](#1721-swapping-nodes-in-a-linked-list-medium)
     - [24. Swap Nodes in Pairs (Medium)](#24-swap-nodes-in-pairs-medium)
-      - [----- `2 pointer and swap`](#------2-pointer-and-swap)
-      - [----- `recursive`](#------recursive-1)
+      - [+++++ `2 pointer and swap`](#-2-pointer-and-swap)
+      - [+++++ `recursive`](#-recursive-1)
     - [example](#example)
       - [870 题「优势洗牌」](#870-题优势洗牌)
   - [左右指针](#左右指针)
@@ -130,14 +130,14 @@ toc: true
   - [🔒🔒 层序遍历框架 BST with Hash/Set](#-层序遍历框架-bst-with-hashset)
     - [BFS（广度优先搜索）用Queue和q.size去遍历child + not visited](#bfs广度优先搜索用queue和qsize去遍历child--not-visited)
     - [111. Minimum Depth of Binary Tree 二叉树min层级遍历](#111-minimum-depth-of-binary-tree-二叉树min层级遍历)
-      - [----- 用Queue和q.size去遍历左右](#------用queue和qsize去遍历左右)
+      - [+++++ 用Queue和q.size去遍历左右](#-用queue和qsize去遍历左右)
     - [653. Two Sum IV - Input is a BST (Easy)](#653-two-sum-iv---input-is-a-bst-easy)
-      - [----- recurse solution HashSet](#------recurse-solution-hashset)
-      - [----- iterative 每个都放到queue里](#------iterative-每个都放到queue里)
+      - [+++++ recurse solution HashSet](#-recurse-solution-hashset)
+      - [+++++ iterative 每个都放到queue里](#-iterative-每个都放到queue里)
     - [104. Maximum Depth of Binary Tree 二叉树max层级遍历](#104-maximum-depth-of-binary-tree-二叉树max层级遍历)
-      - [----- 用Queue和q.size去遍历左右](#------用queue和qsize去遍历左右-1)
+      - [+++++ 用Queue和q.size去遍历左右](#-用queue和qsize去遍历左右-1)
     - [559. Maximum Depth of N-ary Tree 多叉树的层序遍历框架](#559-maximum-depth-of-n-ary-tree-多叉树的层序遍历框架)
-      - [----- 用Queue和q.size去遍历child](#------用queue和qsize去遍历child)
+      - [+++++ 用Queue和q.size去遍历child](#-用queue和qsize去遍历child)
     - [穷举所有可能的密码组合 用Queue和q.size去遍历all](#穷举所有可能的密码组合-用queue和qsize去遍历all)
   - [二叉搜索树 BST](#二叉搜索树-bst)
     - [判断 BST 的合法性](#判断-bst-的合法性)
@@ -249,16 +249,16 @@ toc: true
 - [🔒🔒 two sum](#-two-sum)
   - [🔒 two sum - Array 数组](#-two-sum---array-数组)
     - [1. Two Sum (Easy) `找两个数sum=target`](#1-two-sum-easy-找两个数sumtarget)
-      - [----- brute force 穷举](#------brute-force-穷举)
-      - [----- 哈希表](#------哈希表)
+      - [+++++ brute force 穷举](#-brute-force-穷举)
+      - [+++++ 哈希表](#-哈希表)
     - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
-      - [----- BinarySearch](#------binarysearch)
-      - [----- HashMap](#------hashmap)
-      - [----- Two pointers](#------two-pointers)
+      - [+++++ BinarySearch](#-binarysearch)
+      - [+++++ HashMap](#-hashmap)
+      - [+++++ Two pointers](#-two-pointers)
     - [653. Two Sum IV - Input is a BST (Easy)](#653-two-sum-iv---input-is-a-bst-easy-1)
     - [121. Best Time to Buy and Sell Stock (Easy)](#121-best-time-to-buy-and-sell-stock-easy)
-      - [----- brute force](#------brute-force)
-      - [----- `2 pointer 求出最小前数，算数求最大`](#------2-pointer-求出最小前数算数求最大)
+      - [+++++ brute force](#-brute-force)
+      - [+++++ `2 pointer 求出最小前数，算数求最大`](#-2-pointer-求出最小前数算数求最大)
     - [238. Product of Array Except Self (Medium)](#238-product-of-array-except-self-medium)
     - [`左乘 右乘 result[i] = left[i] * right[i];`](#左乘-右乘-resulti--lefti--righti)
       - [右边数字先计算 再参与计算](#右边数字先计算-再参与计算)
@@ -266,9 +266,9 @@ toc: true
 - [🔒🔒 Hash](#-hash)
   - [🔒 Hash - Array](#-hash---array)
     - [217. Contains Duplicate (Easy)](#217-contains-duplicate-easy)
-      - [----- `hash 记住出现过的数字`](#------hash-记住出现过的数字)
-      - [----- `Sort the array`](#------sort-the-array)
-- [🔒🔒 two pointer](#-two-pointer)
+      - [+++++ `hash 记住出现过的数字`](#-hash-记住出现过的数字)
+      - [+++++ `Sort the array`](#-sort-the-array)
+- [🔒🔒 Two pointer algorithm](#-two-pointer-algorithm)
   - [🔒 two pointer - Array 数组](#-two-pointer---array-数组)
     - [83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`](#83-remove-duplicates-from-sorted-list-有序链表去重-快慢指针前后走)
       - [python](#python)
@@ -280,8 +280,8 @@ toc: true
       - [python](#python-2)
     - [283. Move Zeroes 移除0 `快慢指针前后走`](#283-move-zeroes-移除0-快慢指针前后走)
     - [349. Intersection of Two Arrays (Easy)](#349-intersection-of-two-arrays-easy)
-      - [----- `Hash(num1 had), Hash.remove(num2 has)` BEST](#------hashnum1-had-hashremovenum2-has-best)
-      - [----- `sorting, compare, get the same`](#------sorting-compare-get-the-same)
+      - [+++++ `Hash(num1 had), Hash.remove(num2 has)` BEST](#-hashnum1-had-hashremovenum2-has-best)
+      - [+++++ `sorting, compare, get the same`](#-sorting-compare-get-the-same)
     - [350. Intersection of Two Arrays II (Easy)](#350-intersection-of-two-arrays-ii-easy)
       - [2 pointer `Arrays.sort(); 左右指针，Arrays.copyOfRange(nums1,0,k);`](#2-pointer-arrayssort-左右指针arrayscopyofrangenums10k)
     - [1089. Duplicate Zeros (Easy)](#1089-duplicate-zeros-easy)
@@ -291,13 +291,13 @@ toc: true
       - [???](#-1)
       - [`sort + sliding window` BEST](#sort--sliding-window-best)
     - [696. Count Binary Substrings (Easy) 找00110011成对项](#696-count-binary-substrings-easy-找00110011成对项)
-      - [----- Brute Force `res+=Math.min(pre, cur);`](#------brute-force-resmathminpre-cur)
+      - [+++++ Brute Force `res+=Math.min(pre, cur);`](#-brute-force-resmathminpre-cur)
     - [1346. Check If N and Its Double Exist (Easy)](#1346-check-if-n-and-its-double-exist-easy)
-      - [----- Bruteforce `放入HashSet，rotate看出现`](#------bruteforce-放入hashsetrotate看出现)
-      - [----- BS](#------bs)
+      - [+++++ Bruteforce `放入HashSet，rotate看出现`](#-bruteforce-放入hashsetrotate看出现)
+      - [+++++ BS](#-bs)
   - [🔒 two pointer - 链表](#-two-pointer---链表)
     - [203. Remove Linked List Elements (Easy)](#203-remove-linked-list-elements-easy)
-      - [----- recursive solution](#------recursive-solution)
+      - [+++++ recursive solution](#-recursive-solution)
     - [237. Delete Node in a Linked List (Easy)](#237-delete-node-in-a-linked-list-easy)
     - [876. Middle of the Linked List 寻找单链表的中点](#876-middle-of-the-linked-list-寻找单链表的中点)
     - [2095. Delete the Middle Node of a Linked List (Medium)](#2095-delete-the-middle-node-of-a-linked-list-medium)
@@ -307,16 +307,16 @@ toc: true
     - [160. 判断两个单链表是否相交并找出交点](#160-判断两个单链表是否相交并找出交点)
   - [🔒 two pointer - palindrome 回文](#-two-pointer---palindrome-回文)
     - [2108. Find First Palindromic String in the Array (Easy)](#2108-find-first-palindromic-string-in-the-array-easy)
-      - [----- 2 pointer Check each word](#------2-pointer-check-each-word)
-      - [----- StringBuilder.reverse.equals](#------stringbuilderreverseequals)
+      - [+++++ 2 pointer Check each word](#-2-pointer-check-each-word)
+      - [+++++ StringBuilder.reverse.equals](#-stringbuilderreverseequals)
     - [832. Flipping an Image (Easy) `only same values flip both.`](#832-flipping-an-image-easy-only-same-values-flip-both)
     - [1332. Remove Palindromic Subsequences (Easy)](#1332-remove-palindromic-subsequences-easy)
-      - [----- `只有0，1，2 三种答案，aaabbb最多两下消完` Best](#------只有012-三种答案aaabbb最多两下消完-best)
+      - [+++++ `只有0，1，2 三种答案，aaabbb最多两下消完` Best](#-只有012-三种答案aaabbb最多两下消完-best)
       - [reverse logic also](#reverse-logic-also)
     - [125. Valid Palindrome 判断回文链表String](#125-valid-palindrome-判断回文链表string)
-      - [----- Brute-Force](#------brute-force-1)
-      - [----- `2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()`](#------2-pointer--sreplacealla-za-z0-9-tolowercase)
-      - [----- `2 pointer + (x <= y && !Character.isLetterOrDigit(s.charAt(x)) )` best](#------2-pointer--x--y--characterisletterordigitscharatx--best)
+      - [+++++ Brute-Force](#-brute-force-1)
+      - [+++++ `2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()`](#-2-pointer--sreplacealla-za-z0-9-tolowercase)
+      - [+++++ `2 pointer + (x <= y && !Character.isLetterOrDigit(s.charAt(x)) )` best](#-2-pointer--x--y--characterisletterordigitscharatx--best)
     - [680. Valid Palindrome II (Easy) 可去掉一个字母查看Palindrome](#680-valid-palindrome-ii-easy-可去掉一个字母查看palindrome)
       - [Brute-Force `validPalindrome+validSubPalindrome`](#brute-force-validpalindromevalidsubpalindrome)
       - [recursive version](#recursive-version)
@@ -327,42 +327,41 @@ toc: true
   - [🔒 two pointer - String](#-two-pointer---string)
     - [917. Reverse Only Letters (Easy) 只反转字母](#917-reverse-only-letters-easy-只反转字母)
     - [2000. Reverse Prefix of Word (Easy) 到s[i]之前反转](#2000-reverse-prefix-of-word-easy-到si之前反转)
-      - [----- `char[]`](#------char)
-      - [----- `StringBuilder`](#------stringbuilder)
+      - [+++++ `char[]`](#-char)
+      - [+++++ `StringBuilder`](#-stringbuilder)
     - [557. Reverse Words in a String III (Easy) 一句话单词各自反转](#557-reverse-words-in-a-string-iii-easy-一句话单词各自反转)
     - [541. Reverse String II (Easy) `2134 6578` k个一组反转](#541-reverse-string-ii-easy-2134-6578-k个一组反转)
     - [942. DI String Match (Easy) `Increase l++; Decrease r--`](#942-di-string-match-easy-increase-l-decrease-r--)
     - [905. Sort Array By Parity (Easy)](#905-sort-array-by-parity-easy)
-      - [----- `new int[i] = nums[l/r]`](#------new-inti--numslr)
-      - [----- In Place Solution Best](#------in-place-solution-best)
+      - [+++++ `new int[i] = nums[l/r]`](#-new-inti--numslr)
+      - [+++++ In Place Solution Best](#-in-place-solution-best)
     - [1768. Merge Strings Alternately (Easy) 穿插s,t加字母](#1768-merge-strings-alternately-easy-穿插st加字母)
-      - [----- `for (int i=0; i<Math.max(s1,s2); i++); `](#------for-int-i0-imathmaxs1s2-i-)
-      - [----- substring](#------substring)
+      - [+++++ `for (int i=0; i<Math.max(s1,s2); i++); `](#-for-int-i0-imathmaxs1s2-i-)
+      - [+++++ substring](#-substring)
     - [977. Squares of a Sorted Array (Easy) 每个数字操作后排序](#977-squares-of-a-sorted-array-easy-每个数字操作后排序)
-      - [----- Brute Force Approach](#------brute-force-approach)
-      - [----- `Math.abs(nums[l]) > Math.abs(nums[r])` Best](#------mathabsnumsl--mathabsnumsr-best)
+      - [+++++ Brute Force Approach](#-brute-force-approach)
+      - [+++++ `Math.abs(nums[l]) > Math.abs(nums[r])` Best](#-mathabsnumsl--mathabsnumsr-best)
     - [821. Shortest Distance to a Character (Easy) 到特定字母距离](#821-shortest-distance-to-a-character-easy-到特定字母距离)
-      - [----- ``Math.min(fromLeft, fromRight)`](#------mathminfromleft-fromright)
-      - [----- `when s.char==c, j=i-1; j=i+1`](#------when-scharc-ji-1-ji1)
-      - [----- `combine 2` BEST](#------combine-2-best)
+      - [+++++ ``Math.min(fromLeft, fromRight)`](#-mathminfromleft-fromright)
+      - [+++++ `when s.char==c, j=i-1; j=i+1`](#-when-scharc-ji-1-ji1)
+      - [+++++ `combine 2` BEST](#-combine-2-best)
     - [922. Sort Array By Parity II (Easy) 按奇偶排序](#922-sort-array-by-parity-ii-easy-按奇偶排序)
-      - [----- `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`](#------new-res-numsi20-resoddindex-oddindex-resevenindex-evenindex)
-      - [----- `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[odd]` BEST](#------forint-i0in-i2-should-be-even-if-odd-check-prev-numodd-best)
+      - [+++++ `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`](#-new-res-numsi20-resoddindex-oddindex-resevenindex-evenindex)
+      - [+++++ `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[odd]` BEST](#-forint-i0in-i2-should-be-even-if-odd-check-prev-numodd-best)
     - [392. Is Subsequence (Easy) `abc inside ahbgdc ?`](#392-is-subsequence-easy-abc-inside-ahbgdc-)
     - [28. Implement strStr() (Easy) ll在hello里](#28-implement-strstr-easy-ll在hello里)
-      - [----- Brute Force string matching](#------brute-force-string-matching)
-      - [----- `use haystack.substring(i,i+l2).equals(needle)`](#------use-haystacksubstringiil2equalsneedle)
-      - [----- KMP solution `Backlog`](#------kmp-solution-backlog)
+      - [+++++ Brute Force string matching](#-brute-force-string-matching)
+      - [+++++ `use haystack.substring(i,i+l2).equals(needle)`](#-use-haystacksubstringiil2equalsneedle)
+      - [+++++ KMP solution `Backlog`](#-kmp-solution-backlog)
     - [925. Long Pressed Name (Easy) "alex"对比"aaleex"](#925-long-pressed-name-easy-alex对比aaleex)
       - [-----](#-----)
-      - [----- 2 pointer iterate](#------2-pointer-iterate)
+      - [+++++ 2 pointer iterate](#-2-pointer-iterate)
     - [844. Backspace String Compare (Easy) `"ab##"=="c#d#"?`](#844-backspace-string-compare-easy-abcd)
-      - [----- `2 pointer, StringBuilder.add StringBuilder.deleteCharAt(i)`](#------2-pointer-stringbuilderadd-stringbuilderdeletecharati)
-      - [----- `2 pointer, Stack.push / Stack.pop`](#------2-pointer-stackpush--stackpop)
-      - [----- `2 pointer, Stack.push / Stack.pop`](#------2-pointer-stackpush--stackpop-1)
+      - [+++++ `2 pointer, StringBuilder.add StringBuilder.deleteCharAt(i)`](#-2-pointer-stringbuilderadd-stringbuilderdeletecharati)
+      - [+++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop)
+      - [+++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop-1)
     - [345. Reverse Vowels of a String (Easy)](#345-reverse-vowels-of-a-string-easy)
 - [system design](#system-design)
-
 
 ---
 
@@ -2178,7 +2177,7 @@ ListNode mergeKLists(ListNode[] lists) {
 - Output: [5,4,3,2,1]
 
 
-#### ----- 递归
+#### +++++ 递归
 
 ```java
 // recursion
@@ -2193,7 +2192,7 @@ ListNode reverseList(ListNode head) {
 }
 ```
 
-#### ----- 2 pointer
+#### +++++ 2 pointer
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
@@ -2258,7 +2257,7 @@ ListNode reverseN(ListNode head, int n) {
 - Output: [1,4,3,2,5]
 
 
-#### ----- iterative
+#### +++++ iterative
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List II.
@@ -2298,7 +2297,7 @@ class Solution {
 ```
 
 
-#### ----- recursive
+#### +++++ recursive
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List II.
@@ -2343,7 +2342,7 @@ ListNode reverseN(ListNode head, int n){
 - Output: [2,1,4,3,5]
 
 
-#### ----- `a,b reverse(), a.next=reverseK(b,k)`
+#### +++++ `a,b reverse(), a.next=reverseK(b,k)`
 
 
 ```java
@@ -2396,7 +2395,7 @@ Reorder the list to be on the following form:
 L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 You may not modify the values in the list's nodes. Only nodes themselves may be changed.
 
-#### ----- `Two pointer, find middle, reverse(), combine(n1,n2)`
+#### +++++ `Two pointer, find middle, reverse(), combine(n1,n2)`
 
 ```java
 // Runtime: 1 ms, faster than 99.86% of Java online submissions for Reorder List.
@@ -2440,7 +2439,7 @@ class Solution {
 }
 ```
 
-#### ----- `2 pointer. list.add(ListNode), reorder list`
+#### +++++ `2 pointer. list.add(ListNode), reorder list`
 
 ```java
 // Runtime: 2 ms, faster than 51.01% of Java online submissions for Reorder List.
@@ -2516,7 +2515,7 @@ Input: head = [1,2,3,4]
 Output: [2,1,4,3]
 
 
-#### ----- `2 pointer and swap`
+#### +++++ `2 pointer and swap`
 
 ```java
 class Solution {
@@ -2540,7 +2539,7 @@ class Solution {
 ```
 
 
-#### ----- `recursive`
+#### +++++ `recursive`
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Swap Nodes in Pairs.
@@ -4291,7 +4290,7 @@ int BFS(Node start) {
 - Note: A leaf is a node with no children.
 
 
-#### ----- 用Queue和q.size去遍历左右
+#### +++++ 用Queue和q.size去遍历左右
 
 
 ```java
@@ -4332,7 +4331,7 @@ Example 1:
 Input: root = [5,3,6,2,4,null,7], k = 9
 Output: true
 
-#### ----- recurse solution HashSet
+#### +++++ recurse solution HashSet
 
 ```java
 // Runtime: 2 ms, faster than 98.42% of Java online submissions for Two Sum IV - Input is a BST.
@@ -4350,7 +4349,7 @@ class Solution {
 }
 ```
 
-#### ----- iterative 每个都放到queue里
+#### +++++ iterative 每个都放到queue里
 
 ```java
 // Runtime: 6 ms, faster than 43.30% of Java online submissions for Two Sum IV - Input is a BST.
@@ -4382,7 +4381,7 @@ class Solution {
 
 ### 104. Maximum Depth of Binary Tree 二叉树max层级遍历
 
-#### ----- 用Queue和q.size去遍历左右
+#### +++++ 用Queue和q.size去遍历左右
 
 [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
 - Given the root of a binary tree, return its maximum depth.
@@ -4447,7 +4446,7 @@ void levelTraverse(TreeNode root) {
 
 ### 559. Maximum Depth of N-ary Tree 多叉树的层序遍历框架  
 
-#### ----- 用Queue和q.size去遍历child
+#### +++++ 用Queue和q.size去遍历child
 
 [559. Maximum Depth of N-ary Tree](https://leetcode.com/problems/maximum-depth-of-n-ary-tree/)
 - Given a n-ary tree, find its maximum depth.
@@ -10311,7 +10310,7 @@ You may assume that each input would have exactly one solution, and you may not 
 
 You can return the answer in any order.
 
-#### ----- brute force 穷举
+#### +++++ brute force 穷举
 - 时间复杂度 O(N^2)，空间复杂度 O(1)。
 
 ```java
@@ -10326,7 +10325,7 @@ int[] twoSum(int[] nums, int target) {
 
 
 
-#### ----- 哈希表
+#### +++++ 哈希表
 
 - 减少时间复杂度
 - Time O(N)
@@ -10402,7 +10401,7 @@ The tests are generated such that there is exactly one solution. You may not use
 
 
 
-#### ----- BinarySearch
+#### +++++ BinarySearch
 
 
 ```java
@@ -10422,7 +10421,7 @@ class Solution {
 ```
 
 
-#### ----- HashMap
+#### +++++ HashMap
 
 ```java
 // Time : O(n)
@@ -10444,7 +10443,7 @@ public int[] twoSum(int[] numbers, int target) {
 ```
 
 
-#### ----- Two pointers
+#### +++++ Two pointers
 ```java
 // Time : O(n)
 // space : O(1)
@@ -10494,7 +10493,7 @@ Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-
 Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
 
 
-#### ----- brute force
+#### +++++ brute force
 
 ```java
 // O(n^2) time,
@@ -10511,7 +10510,7 @@ public int maxProfit(int[] prices) {
 ```
 
 
-#### ----- `2 pointer 求出最小前数，算数求最大`
+#### +++++ `2 pointer 求出最小前数，算数求最大`
 
 ```java
 // Runtime: 2 ms, faster than 83.90% of Java online submissions for Best Time to Buy and Sell Stock.
@@ -10668,7 +10667,7 @@ Output: false
 
 
 
-#### ----- `hash 记住出现过的数字`
+#### +++++ `hash 记住出现过的数字`
 
 ```java
 // Runtime: 6 ms, faster than 93.81% of Java online submissions for Contains Duplicate.
@@ -10693,7 +10692,7 @@ class Solution {
 ```
 
 
-#### ----- `Sort the array`
+#### +++++ `Sort the array`
 
 ```java
 /**
@@ -10732,7 +10731,7 @@ class Solution2 {
 ---
 
 
-# 🔒🔒 two pointer
+# 🔒🔒 Two pointer algorithm
 
 
 - [https://leetcode.com/tag/two-pointers/](https://leetcode.com/tag/two-pointers/)
@@ -10943,24 +10942,24 @@ public int removeDuplicates(int[] nums) {
 from collections import OrderedDict
 from typing import List
 
-# Method 1 ----- new list
+# Method 1 +++++ new list
 def removeDuplicates(test_list):
     res = []
     for i in test_list:
         if i not in res:
             res.append(i)
 
-# Method 2 ----- new list
+# Method 2 +++++ new list
 def removeDuplicates(test_list):
     res = []
     [res.append(x) for x in test_list if x not in res]
 
-# Method 3 ------ set(x)
+# Method 3 -+++++ set(x)
 def removeDuplicates(test_list):
     # the ordering of the element is lost
     test_list = list(set(test_list))
 
-# Method 4 ------ Using list comprehension + enumerate()
+# Method 4 -+++++ Using list comprehension + enumerate()
 def removeDuplicates(test_list):
     res = [i for n, i in enumerate(test_list)]
 
@@ -10970,7 +10969,7 @@ def removeDuplicates(test_list):
     # maintain the insertion order as well
     res = list(dict.fromkeys(test_list))
 
-# Method 6 ------ 快慢指针
+# Method 6 -+++++ 快慢指针
 def removeDuplicates(test_list):
     # Runtime: 72 ms, faster than 99.60% of Python3 online submissions for Remove Duplicates from Sorted Array.
     # Memory Usage: 15.7 MB, less than 45.93% of Python3 online submissions for Remove Duplicates from Sorted Array.
@@ -11265,7 +11264,7 @@ Example 1:
 Input: nums1 = [1,2,2,1], nums2 = [2,2]
 Output: [2]
 
-#### ----- `Hash(num1 had), Hash.remove(num2 has)` BEST
+#### +++++ `Hash(num1 had), Hash.remove(num2 has)` BEST
 
 ```java
 // Runtime: 2 ms, faster than 95.44% of Java online submissions for Intersection of Two Arrays.
@@ -11290,7 +11289,7 @@ class Solution {
 }
 ```
 
-#### ----- `sorting, compare, get the same`
+#### +++++ `sorting, compare, get the same`
 
 ```java
 // Runtime: 2 ms, faster than 95.33% of Java online submissions for Intersection of Two Arrays.
@@ -11661,7 +11660,7 @@ the number that we should add to ans is equal to min(zeros, ones), or pre count
 
 
 
-#### ----- Brute Force `res+=Math.min(pre, cur);`
+#### +++++ Brute Force `res+=Math.min(pre, cur);`
 
 Check for every substring either they are valid substring or not. if valid increase the count but time complexity :`O(n^3)`
 
@@ -11701,7 +11700,7 @@ Explanation: N = 10 is the double of M = 5,that is, 10 = 2 * 5
 
 
 
-#### ----- Bruteforce `放入HashSet，rotate看出现`
+#### +++++ Bruteforce `放入HashSet，rotate看出现`
 ```java
 // Runtime: 2 ms, faster than 73.80% of Java online submissions for Check If N and Its Double Exist.
 // Memory Usage: 43.5 MB, less than 13.50% of Java online submissions for Check If N and Its Double Exist.
@@ -11718,7 +11717,7 @@ class Solution {
 ```
 
 
-#### ----- BS
+#### +++++ BS
 
 ```java
 class Solution {
@@ -11813,7 +11812,7 @@ class Solution {
 
 
 
-#### ----- recursive solution
+#### +++++ recursive solution
 
 ```java
 public ListNode removeElements(ListNode head, int val) {
@@ -12141,7 +12140,7 @@ Given an array of strings words, return the first palindromic string in the arra
 A string is palindromic if it reads the same forward and backward.
 
 
-#### ----- 2 pointer Check each word
+#### +++++ 2 pointer Check each word
 
 ```java
 // Runtime: 2 ms, faster than 83.75% of Java online submissions for Find First Palindromic String in the Array.
@@ -12178,7 +12177,7 @@ class Solution {
 ```
 
 
-#### ----- StringBuilder.reverse.equals
+#### +++++ StringBuilder.reverse.equals
 
 ```java
 class Solution {
@@ -12261,7 +12260,7 @@ A string is a subsequence of a given string if it is generated by deleting some 
 
 A string is called palindrome if is one that reads the same backward as well as forward.
 
-#### ----- `只有0，1，2 三种答案，aaabbb最多两下消完` Best
+#### +++++ `只有0，1，2 三种答案，aaabbb最多两下消完` Best
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Palindromic Subsequences.
@@ -12319,7 +12318,7 @@ Output: false
 
 
 
-#### ----- Brute-Force
+#### +++++ Brute-Force
 
 
 ```java
@@ -12348,7 +12347,7 @@ public boolean isPalindrome(String s) {
 
 
 
-#### ----- `2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()`
+#### +++++ `2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()`
 
 ```java
 // Runtime: 23 ms, faster than 31.39% of Java online submissions for Valid Palindrome.
@@ -12369,7 +12368,7 @@ class Solution {
 ```
 
 
-#### ----- `2 pointer + (x <= y && !Character.isLetterOrDigit(s.charAt(x)) )` best
+#### +++++ `2 pointer + (x <= y && !Character.isLetterOrDigit(s.charAt(x)) )` best
 
 ```java
 // Runtime: 7 ms, faster than 51.59% of Java online submissions for Valid Palindrome.
@@ -12806,7 +12805,7 @@ Output: "dcbaefd"
 Explanation: The first occurrence of "d" is at index 3.
 Reverse the part of word from 0 to 3 (inclusive), the resulting string is "dcbaefd".
 
-#### ----- `char[]`
+#### +++++ `char[]`
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Prefix of Word.
@@ -12827,7 +12826,7 @@ class Solution {
 ```
 
 
-#### ----- `StringBuilder`
+#### +++++ `StringBuilder`
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Prefix of Word.
@@ -13014,7 +13013,7 @@ Input: nums = [3,1,2,4]
 Output: [2,4,3,1]
 Explanation: The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
 
-#### ----- `new int[i] = nums[l/r]`
+#### +++++ `new int[i] = nums[l/r]`
 
 ```java
 class Solution {
@@ -13049,7 +13048,7 @@ class Solution {
 }
 ```
 
-#### ----- In Place Solution Best
+#### +++++ In Place Solution Best
 
 ```java
 // Runtime: 1 ms, faster than 98.86% of Java online submissions for Sort Array By Parity.
@@ -13090,7 +13089,7 @@ word1:  a   b   c
 word2:    p   q   r
 merged: a p b q c r
 
-#### ----- `for (int i=0; i<Math.max(s1,s2); i++); `
+#### +++++ `for (int i=0; i<Math.max(s1,s2); i++); `
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Merge Strings Alternately.
@@ -13110,7 +13109,7 @@ class Solution {
 ```
 
 
-#### ----- substring
+#### +++++ substring
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Merge Strings Alternately.
@@ -13150,7 +13149,7 @@ Explanation: After squaring, the array becomes [16,1,0,9,100].
 After sorting, it becomes [0,1,9,16,100].
 
 
-#### ----- Brute Force Approach
+#### +++++ Brute Force Approach
 
 Squares of sorted array seems like the easiest problem
 
@@ -13168,7 +13167,7 @@ class Solution {
 }
 ```
 
-#### ----- `Math.abs(nums[l]) > Math.abs(nums[r])` Best
+#### +++++ `Math.abs(nums[l]) > Math.abs(nums[r])` Best
 
 1. can the values in the array be negative.
 2. can square of values can exceed Integer.MAX_VALUE.
@@ -13217,7 +13216,7 @@ For index 4, there is a tie between the 'e' at index 3 and the 'e' at index 5, b
 The closest occurrence of 'e' for index 8 is at index 6, so the distance is abs(8 - 6) = 2.
 
 
-#### ----- ``Math.min(fromLeft, fromRight)`
+#### +++++ ``Math.min(fromLeft, fromRight)`
 
 ```java
 // Time Complexity: Forward loop & Backward Loop : O(N) + O(N) ~ O(N)
@@ -13248,7 +13247,7 @@ class Solution {
 }
 ```
 
-#### ----- `when s.char==c, j=i-1; j=i+1`
+#### +++++ `when s.char==c, j=i-1; j=i+1`
 
 ```java
 // Runtime: 1 ms, faster than 96.28% of Java online submissions for Shortest Distance to a Character.
@@ -13282,7 +13281,7 @@ class Solution {
 }
 ```
 
-#### ----- `combine 2` BEST
+#### +++++ `combine 2` BEST
 
 ```java
 // Runtime: 1 ms, faster than 96.28% of Java online submissions for Shortest Distance to a Character.
@@ -13333,7 +13332,7 @@ Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
 
 
 
-#### ----- `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`
+#### +++++ `new res, nums[i]%2==0?; res[oddindex] oddindex++, res[evenindex] evenindex++`
 
 ```java
 // Runtime: 2 ms, faster than 98.92% of Java online submissions for Sort Array By Parity II.
@@ -13364,7 +13363,7 @@ class Solution {
 ```
 
 
-#### ----- `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[odd]` BEST
+#### +++++ `for(int i=0;i<n; i+=2) should be even, if (odd), check prev num[odd]` BEST
 
 
 ```java
@@ -13454,7 +13453,7 @@ Input: haystack = "", needle = ""
 Output: 0
 
 
-#### ----- Brute Force string matching
+#### +++++ Brute Force string matching
 
 
 ```java
@@ -13490,7 +13489,7 @@ class Solution {
 
 
 
-#### ----- `use haystack.substring(i,i+l2).equals(needle)`
+#### +++++ `use haystack.substring(i,i+l2).equals(needle)`
 
 
 ```java
@@ -13553,7 +13552,7 @@ class Solution {
 ```
 
 
-#### ----- KMP solution `Backlog`
+#### +++++ KMP solution `Backlog`
 
 ```java
 class Solution {
@@ -13666,7 +13665,7 @@ class Solution {
 
 
 
-#### ----- 2 pointer iterate
+#### +++++ 2 pointer iterate
 
 
 ```java
@@ -13743,7 +13742,7 @@ Output: false
 Explanation: s becomes "c" while t becomes "b".
 
 
-#### ----- `2 pointer, StringBuilder.add StringBuilder.deleteCharAt(i)`
+#### +++++ `2 pointer, StringBuilder.add StringBuilder.deleteCharAt(i)`
 
 ```java
 // Runtime: 2 ms, faster than 52.02% of Java online submissions for Backspace String Compare.
@@ -13764,7 +13763,7 @@ class Solution {
 ```
 
 
-#### ----- `2 pointer, Stack.push / Stack.pop`
+#### +++++ `2 pointer, Stack.push / Stack.pop`
 
 ```java
 // Runtime: 4 ms, faster than 27.04% of Java online submissions for Backspace String Compare.
@@ -13787,7 +13786,7 @@ class Solution {
 
 
 
-#### ----- `2 pointer, Stack.push / Stack.pop`
+#### +++++ `2 pointer, Stack.push / Stack.pop`
 
 ```java
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Backspace String Compare.
