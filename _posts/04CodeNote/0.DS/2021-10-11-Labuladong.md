@@ -268,7 +268,7 @@ toc: true
     - [217. Contains Duplicate (Easy)](#217-contains-duplicate-easy)
       - [+++++ `hash 记住出现过的数字`](#-hash-记住出现过的数字)
       - [+++++ `Sort the array`](#-sort-the-array)
-- [🔒🔒 Two pointer algorithm](#-two-pointer-algorithm)
+- [🔒🔒 Two-pointer technique](#-two-pointer-technique)
   - [🔒 two pointer - Array 数组](#-two-pointer---array-数组)
     - [83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`](#83-remove-duplicates-from-sorted-list-有序链表去重-快慢指针前后走)
       - [python](#python)
@@ -354,7 +354,7 @@ toc: true
       - [+++++ `use haystack.substring(i,i+l2).equals(needle)`](#-use-haystacksubstringiil2equalsneedle)
       - [+++++ KMP solution `Backlog`](#-kmp-solution-backlog)
     - [925. Long Pressed Name (Easy) "alex"对比"aaleex"](#925-long-pressed-name-easy-alex对比aaleex)
-      - [-----](#-----)
+      - [+++++](#-2)
       - [+++++ 2 pointer iterate](#-2-pointer-iterate)
     - [844. Backspace String Compare (Easy) `"ab##"=="c#d#"?`](#844-backspace-string-compare-easy-abcd)
       - [+++++ `2 pointer, StringBuilder.add StringBuilder.deleteCharAt(i)`](#-2-pointer-stringbuilderadd-stringbuilderdeletecharati)
@@ -391,12 +391,32 @@ if (nums == null) throw new IllegalArgumentException("Input array is null");
 
 
 
-// Swap
-public void swap(char[] chars, int x, int y) {
-    char tmp = chars[x];
-    chars[x] = chars[y];
-    chars[y] = tmp;
+// ======================== Swap ========================
+private void swap(char[] str, int i, int j) {
+    char temp = str[i];
+    str[i] = str[j];
+    str[j] = temp;
 }
+
+public void reverse(char[] str) {
+    int n = str.length;
+    for (int i = 0; i < n / 2; i++) {
+        swap(str, i, n - i - 1);
+    }
+}
+public void reverse(char[] str) {
+    int i = 0, j = str.length - 1;
+    while (i < j) {
+        swap(str, i, j);
+        i++;
+        j--;
+    }
+}
+
+
+
+
+
 
 public boolean isVowel(char c) {
     char[] vowels = new char[]{'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
@@ -10711,27 +10731,12 @@ class Solution2 {
     }
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 ---
 
 
-# 🔒🔒 Two pointer algorithm
+# 🔒🔒 Two-pointer technique
 
 
 - [https://leetcode.com/tag/two-pointers/](https://leetcode.com/tag/two-pointers/)
@@ -13625,7 +13630,7 @@ Explanation: 'e' must have been pressed twice, but it was not in the typed outpu
 
 
 
-#### -----
+#### +++++ 
 
 ```java
 // Runtime: 1 ms, faster than 73.39% of Java online submissions for Long Pressed Name.
