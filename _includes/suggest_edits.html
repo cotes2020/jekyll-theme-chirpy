@@ -1,0 +1,5 @@
+{% assign anchor_url = site.repository | append: '/edit/' | append: site.default_branch %}
+{% assign edit_link = anchor_url | append: '/' | append: page.path %}
+<span>
+  <a href='{{edit_link}}'><i class='fas fa-edit'></i> Suggest edits</a>
+</span>

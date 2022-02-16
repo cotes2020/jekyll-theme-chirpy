@@ -32,29 +32,34 @@ tail_includes:
 {% endif %}
 
 <h1 data-toc-skip>{{ page.title }}</h1>
+{% if page.description %}
+  <h2 data-toc-skip>{{ page.description }}</h2>
+{% endif %}
 
 <div class="post-meta text-muted">
 
   <!-- author -->
-  <div>
-    {% capture author_name %}{{ page.author.name | default: site.social.name }}{% endcapture %}
-    {% assign author_link = nil %}
+  {% if page.author != 'Siddhartha Bhattacharjee' %}
+    <div>
+      {% capture author_name %}{{ page.author.name | default: site.social.name }}{% endcapture %}
+      {% assign author_link = nil %}
 
-    {% if page.author.link %}
-      {% assign author_link = page.author.link %}
-    {% elsif author_name == site.social.name %}
-      {% assign author_link = site.social.links[0] %}
-    {% endif %}
-
-    {{ site.data.locales[lang].post.written_by }}
-    <em>
-      {% if author_link %}
-        <a href="{{ author_link }}">{{ author_name }}</a>
-      {% else %}
-        {{ author_name }}
+      {% if page.author.link %}
+        {% assign author_link = page.author.link %}
+      {% elsif author_name == site.social.name %}
+        {% assign author_link = site.social.links[0] %}
       {% endif %}
-    </em>
-  </div>
+
+      {{ site.data.locales[lang].post.written_by }}
+      <em>
+        {% if author_link %}
+          <a href="{{ author_link }}">{{ author_name }}</a>
+        {% else %}
+          {{ author_name }}
+        {% endif %}
+      </em>
+    </div>
+  {% endif %}
 
   <div class="d-flex">
     <div>
@@ -84,6 +89,9 @@ tail_includes:
         {{ site.data.locales[lang].post.pageview_measure }}
       </span>
       {% endif %}
+
+      <!-- suggest edits -->
+      {% include suggest_edits.html %}
     </div>
 
   </div> <!-- .d-flex -->

@@ -26,7 +26,7 @@
   color: var(--text-color);
 }
 
-h1 + .post-meta {
+h1 + h2 + .post-meta {
   span + span::before {
     @include dot;
   }

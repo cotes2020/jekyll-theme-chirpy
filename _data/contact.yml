@@ -1,21 +1,32 @@
 #  The contact options.
-
+-
+  type: quora
+  icon: fab fa-quora
+  url: 'https://www.quora.com/profile/Siddhartha-Bhattacharjee-45'
+-
+   type: stack-overflow
+   icon: 'fab fa-stack-overflow'
+   url:  'https://math.stackexchange.com/users/879669/siddhartha-bhattacharjee?tab=profile'
 -
   type: github
   icon: 'fab fa-github'
 -
-  type: twitter
-  icon: 'fab fa-twitter'
--
-  type: email
-  icon: 'fas fa-envelope'
-  noblank: true            # open link in current tab
--
-  type: rss
-  icon: 'fas fa-rss'
-  noblank: true
+  type: discord
+  icon: fab fa-discord
+  url: 'https://bit.ly/psi-phi-community'
 
 # Uncomment and complete the url below to enable more contact options
+# -
+#   type: twitter
+#   icon: 'fab fa-twitter'
+# -
+#   type: email
+#   icon: 'fas fa-envelope'
+#   noblank: true            # open link in current tab
+# -
+#   type: rss
+#   icon: 'fas fa-rss'
+#   noblank: true
 # -
 #   type: mastodon
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
