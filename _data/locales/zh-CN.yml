@@ -27,25 +27,17 @@ panel:
   trending_tags: 热门标签
   toc: 文章内容
 
-#  The liquid date format › http://strftime.net/
-date_format:
-  tooltip: '%F, %R %z'
-  post:
-    long: '%F'
-    short: '%m-%d'
-    archive_month: '%m月'
-
 copyright:
   # Shown at the bottom of the post
   license:
     template: 本文由作者按照 :LICENSE_NAME 进行授权
-    name: CC BY-NC-SA 4.0
-    link: https://creativecommons.org/licenses/by-nc-sa/4.0/
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
 
   # Displayed in the footer
   brief: 保留部分权利。
   verbose: >-
-    除非另有说明，本网站上的博客文章均由作者根据知识共享署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 许可协议授权。
+    除非另有说明，本网站上的博客文章均由作者按照知识共享署名 4.0 国际 (CC BY 4.0) 许可协议进行授权。
 
 meta: 本站由 :PLATFORM 生成，采用 :THEME 主题。
 
@@ -58,13 +50,9 @@ not_found:
 # ----- Posts related labels -----
 
 post:
-  published:
+  written_by: 作者
+  posted: 发表于
   updated: 更新于
-  timeago:
-    day: 天前
-    hour: 小时前
-    minute: 分钟前
-    just_now: 刚刚
   words: 字
   pageview_measure: 次浏览
   read_time:

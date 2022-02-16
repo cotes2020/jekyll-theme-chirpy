@@ -16,6 +16,20 @@ set -eu
 
 GEM_SPEC="jekyll-theme-chirpy.gemspec"
 
+opt_pre=false
+
+help() {
+  echo "A tool to release new version Chirpy gem"
+  echo
+  echo "Usage:"
+  echo
+  echo "   bash ./tools/release.sh [options]"
+  echo
+  echo "Options:"
+  echo "     -p, --preview            Enable preview mode, only pakcage, and will not modify the branches"
+  echo "     -h, --help               Print this information."
+}
+
 check() {
   if [[ -n $(git status . -s) ]]; then
     echo "Error: Commit unstaged files first, and then run this tool againt."
@@ -43,19 +57,22 @@ release() {
   _version="$(grep "spec.version" jekyll-theme-chirpy.gemspec | sed 's/.*= "//;s/".*//')" # X.Y.Z
   _release_branch="release/${_version%.*}"
 
-  if [[ -z $(git branch -v | grep "$_release_branch") ]]; then
-    # create a new release branch
-    git checkout -b "$_release_branch"
-  else
-    # cherry-pick the latest commit from default branch to release branch
-    _last_commit="$(git rev-parse "$_default_branch")"
-    git checkout "$_release_branch"
-    git cherry-pick "$_last_commit" -m 1
-  fi
+  if [[ $opt_pre = "false" ]]; then
+    # Modify the GitLab release branches
+    if [[ -z $(git branch -v | grep "$_release_branch") ]]; then
+      # create a new release branch
+      git checkout -b "$_release_branch"
+    else
+      # cherry-pick the latest commit from default branch to release branch
+      _last_commit="$(git rev-parse "$_default_branch")"
+      git checkout "$_release_branch"
+      git cherry-pick "$_last_commit" -m 1
+    fi
 
-  # create new tag
-  echo -e "Create tag v$_version\n"
-  git tag "v$_version"
+    # Create a new tag
+    echo -e "Create tag v$_version\n"
+    git tag "v$_version"
+  fi
 
   # build a gem package
   echo -e "Build the gem pakcage for v$_version\n"
@@ -69,5 +86,24 @@ main() {
   check
   release
 }
+
+while (($#)); do
+  opt="$1"
+  case $opt in
+  -p | --preview)
+    opt_pre=true
+    shift
+    ;;
+  -h | --help)
+    help
+    exit 0
+    ;;
+  *)
+    # unknown option
+    help
+    exit 1
+    ;;
+  esac
+done
 
 main
