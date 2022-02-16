@@ -264,7 +264,10 @@ toc: true
       - [+++++ 右边数字先计算 再参与计算](#-右边数字先计算-再参与计算)
       - [+++++ ???????](#-)
     - [724. Find Pivot Index (Easy)](#724-find-pivot-index-easy)
-      - [++++++ Brute Force approach](#-brute-force-approach)
+      - [++++++ Brute Force approach `for i: adding left, adding right`](#-brute-force-approach-for-i-adding-left-adding-right)
+      - [++++++ `2 pointer, left - nums[i] - right`](#-2-pointer-left---numsi---right)
+      - [++++++ `prefix sum. for i: sum[i] - nums[i] == sum[n-1]-sum[i]`](#-prefix-sum-for-i-sumi---numsi--sumn-1-sumi)
+  - [747. Largest Number At Least Twice of Others (Easy)](#747-largest-number-at-least-twice-of-others-easy)
 - [🔒🔒 Hash](#-hash)
   - [🔒 Hash - Array](#-hash---array)
     - [217. Contains Duplicate (Easy)](#217-contains-duplicate-easy)
@@ -341,7 +344,7 @@ toc: true
       - [+++++ `for (int i=0; i<Math.max(s1,s2); i++); `](#-for-int-i0-imathmaxs1s2-i-)
       - [+++++ substring](#-substring)
     - [977. Squares of a Sorted Array (Easy) 每个数字操作后排序](#977-squares-of-a-sorted-array-easy-每个数字操作后排序)
-      - [+++++ Brute Force Approach](#-brute-force-approach-1)
+      - [+++++ Brute Force Approach](#-brute-force-approach)
       - [+++++ `Math.abs(nums[l]) > Math.abs(nums[r])` Best](#-mathabsnumsl--mathabsnumsr-best)
     - [821. Shortest Distance to a Character (Easy) 到特定字母距离](#821-shortest-distance-to-a-character-easy-到特定字母距离)
       - [+++++ ``Math.min(fromLeft, fromRight)`](#-mathminfromleft-fromright)
@@ -10753,7 +10756,6 @@ class Solution {
 
 ---
 
-
 ### 724. Find Pivot Index (Easy)
 
 [724. Find Pivot Index](https://leetcode.com/problems/find-pivot-index/)
@@ -10764,8 +10766,6 @@ The pivot index is the index where the sum of all the numbers strictly to the le
 If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
 
 Return the leftmost pivot index. If no such index exists, return -1.
-
- 
 
 Example 1:
 Input: nums = [1,7,3,6,5,6]
@@ -10790,26 +10790,119 @@ Left sum = 0 (no elements to the left of index 0)
 Right sum = nums[1] + nums[2] = 1 + -1 = 0
 
 
+#### ++++++ Brute Force approach `for i: adding left, adding right`
 
-#### ++++++ Brute Force approach
 ```java
 // Runtime: 548 ms, faster than 5.02% of Java online submissions for Find Pivot Index.
 // Memory Usage: 52.4 MB, less than 16.75% of Java online submissions for Find Pivot Index.
 class Solution {
     public int pivotIndex(int[] nums) {
-    for (int i = 0; i < nums.length; i++) {
-        int sum = 0;
-        int left = 0, right = nums.length - 1;
-        while (left < i) sum += nums[left++]; 
-        while (right > i) sum -= nums[right--]; 
-        if (sum == 0) return left;
+        for (int i = 0; i < nums.length; i++) {
+            int sum = 0;
+            int left = 0, right = nums.length - 1;
+            while (left < i) sum += nums[left++]; 
+            while (right > i) sum -= nums[right--]; 
+            if (sum == 0) return left;
+        }
+        return -1;   
     }
-    return -1;   
-}
 }
 
 ```
 
+
+#### ++++++ `2 pointer, left - nums[i] - right`
+
+```java
+// Runtime: 1 ms, faster than 99.68% of Java online submissions for Find Pivot Index.
+// Memory Usage: 52.6 MB, less than 14.35% of Java online submissions for Find Pivot Index.
+class Solution {
+    public int pivotIndex(int[] nums) { 
+        int sum=0; 
+        for(int num : nums) sum += num;
+        
+        int left = 0;
+        for(int i=0; i<nums.length; i++) {
+            sum -= nums[i];
+            if(left == sum) return i;
+            left += nums[i]; 
+        } 
+        return -1;
+    }
+}
+
+// Runtime: 2 ms, faster than 67.09% of Java online submissions for Find Pivot Index.
+// Memory Usage: 51.7 MB, less than 28.06% of Java online submissions for Find Pivot Index.
+class Solution {
+    public int pivotIndex(int[] nums) { 
+        int sum=0; 
+        for(int num : nums) sum += num;
+        
+        int left = 0, right = 0;
+        for(int i=0; i<nums.length; i++) {
+            right = sum - nums[i];
+            if(left == right) return i;
+            left += nums[i];
+            sum -= nums[i];
+        } 
+        return -1;
+    }
+}
+```
+
+
+#### ++++++ `prefix sum. for i: sum[i] - nums[i] == sum[n-1]-sum[i]`
+
+
+```java
+// TC : O(N)
+// SC : O(1)
+// Runtime: 1 ms, faster than 99.68% of Java online submissions for Find Pivot Index.
+// Memory Usage: 42.8 MB, less than 72.79% of Java online submissions for Find Pivot Index.
+class Solution {
+    public int pivotIndex(int[] nums) { 
+        int n = nums.length;
+        int[] sum= new int[n]; 
+        sum[0] = nums[0];
+        for(int i=1; i<n; i++) sum[i] = sum[i-1] + nums[i];
+        
+        for(int i=0; i<n; i++) { 
+            if(sum[i] - nums[i] == sum[n-1]-sum[i]) return i;
+        } 
+        return -1;
+    }
+}
+```
+
+---
+
+## 747. Largest Number At Least Twice of Others (Easy)
+
+[747. Largest Number At Least Twice of Others](https://leetcode.com/problems/largest-number-at-least-twice-of-others/)
+You are given an integer array nums where the largest integer is unique.
+
+Determine whether the largest element in the array is at least twice as much as every other number in the array. If it is, return the index of the largest element, or return -1 otherwise.
+
+Example 1:
+Input: nums = [3,6,1,0]
+Output: 1
+Explanation: 6 is the largest integer.
+For every other number in the array x, 6 is at least twice as big as x.
+The index of value 6 is 1, so we return 1.
+
+Example 2:
+Input: nums = [1,2,3,4]
+Output: -1
+Explanation: 4 is less than twice the value of 3, so we return -1.
+
+Example 3:
+Input: nums = [1]
+Output: 0
+Explanation: 1 is trivially at least twice the value as any other number because there are no other numbers.
+
+```java
+
+```
 
 
 ---
