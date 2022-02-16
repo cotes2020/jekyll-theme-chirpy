@@ -6,7 +6,7 @@ on:
     paths-ignore:
       - .gitignore
       - README.md
-      - LICENSE
+      - LICENSE.md
 
 jobs:
   continuous-delivery:
