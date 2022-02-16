@@ -30,7 +30,7 @@ toc: true
 - [Arrays 数组](#arrays-数组)
   - [Arrays in Java](#arrays-in-java)
     - [Create Array](#create-array)
-      - [One-Dimensional Arrays:**](#one-dimensional-arrays)
+      - [One-Dimensional Arrays](#one-dimensional-arrays)
       - [Multidimensional Arrays](#multidimensional-arrays)
     - [Instantiating an Array in Java](#instantiating-an-array-in-java)
     - [Array Literal](#array-literal)
@@ -246,8 +246,8 @@ toc: true
       - [698. Partition to K Equal Sum Subsets](#698-partition-to-k-equal-sum-subsets)
       - [215. Kth Largest Element in an Array](#215-kth-largest-element-in-an-array)
 - [题](#题)
-- [🔒🔒 two sum](#-two-sum)
-  - [🔒 two sum - Array 数组](#-two-sum---array-数组)
+- [🔒🔒 Prefix Sum](#-prefix-sum)
+  - [🔒 Prefix Sum - Array 数组](#-prefix-sum---array-数组)
     - [1. Two Sum (Easy) `找两个数sum=target`](#1-two-sum-easy-找两个数sumtarget)
       - [+++++ brute force 穷举](#-brute-force-穷举)
       - [+++++ 哈希表](#-哈希表)
@@ -260,9 +260,11 @@ toc: true
       - [+++++ brute force](#-brute-force)
       - [+++++ `2 pointer 求出最小前数，算数求最大`](#-2-pointer-求出最小前数算数求最大)
     - [238. Product of Array Except Self (Medium)](#238-product-of-array-except-self-medium)
-    - [`左乘 右乘 result[i] = left[i] * right[i];`](#左乘-右乘-resulti--lefti--righti)
-      - [右边数字先计算 再参与计算](#右边数字先计算-再参与计算)
-      - [???????](#)
+      - [+++++ `左乘 右乘 result[i] = left[i] * right[i];`](#-左乘-右乘-resulti--lefti--righti)
+      - [+++++ 右边数字先计算 再参与计算](#-右边数字先计算-再参与计算)
+      - [+++++ ???????](#-)
+    - [724. Find Pivot Index (Easy)](#724-find-pivot-index-easy)
+      - [++++++ Brute Force approach](#-brute-force-approach)
 - [🔒🔒 Hash](#-hash)
   - [🔒 Hash - Array](#-hash---array)
     - [217. Contains Duplicate (Easy)](#217-contains-duplicate-easy)
@@ -288,7 +290,7 @@ toc: true
     - [1385. Find the Distance Value Between Two Arrays (Easy)](#1385-find-the-distance-value-between-two-arrays-easy)
       - [brute force](#brute-force)
       - [Binary Search](#binary-search)
-      - [???](#-1)
+      - [???](#)
       - [`sort + sliding window` BEST](#sort--sliding-window-best)
     - [696. Count Binary Substrings (Easy) 找00110011成对项](#696-count-binary-substrings-easy-找00110011成对项)
       - [+++++ Brute Force `res+=Math.min(pre, cur);`](#-brute-force-resmathminpre-cur)
@@ -339,7 +341,7 @@ toc: true
       - [+++++ `for (int i=0; i<Math.max(s1,s2); i++); `](#-for-int-i0-imathmaxs1s2-i-)
       - [+++++ substring](#-substring)
     - [977. Squares of a Sorted Array (Easy) 每个数字操作后排序](#977-squares-of-a-sorted-array-easy-每个数字操作后排序)
-      - [+++++ Brute Force Approach](#-brute-force-approach)
+      - [+++++ Brute Force Approach](#-brute-force-approach-1)
       - [+++++ `Math.abs(nums[l]) > Math.abs(nums[r])` Best](#-mathabsnumsl--mathabsnumsr-best)
     - [821. Shortest Distance to a Character (Easy) 到特定字母距离](#821-shortest-distance-to-a-character-easy-到特定字母距离)
       - [+++++ ``Math.min(fromLeft, fromRight)`](#-mathminfromleft-fromright)
@@ -354,7 +356,7 @@ toc: true
       - [+++++ `use haystack.substring(i,i+l2).equals(needle)`](#-use-haystacksubstringiil2equalsneedle)
       - [+++++ KMP solution `Backlog`](#-kmp-solution-backlog)
     - [925. Long Pressed Name (Easy) "alex"对比"aaleex"](#925-long-pressed-name-easy-alex对比aaleex)
-      - [+++++](#-2)
+      - [+++++](#-1)
       - [+++++ 2 pointer iterate](#-2-pointer-iterate)
     - [844. Backspace String Compare (Easy) `"ab##"=="c#d#"?`](#844-backspace-string-compare-easy-abcd)
       - [+++++ `2 pointer, StringBuilder.add StringBuilder.deleteCharAt(i)`](#-2-pointer-stringbuilderadd-stringbuilderdeletecharati)
@@ -577,6 +579,48 @@ Integer.MAX_VALU
 Integer.MIN_VALU
 
 
+// Array
+MyClass myClassArray[];
+int myArray[];
+int[] myArray;
+int[] a0 = new int[5];
+int[] a1 = {1, 2, 3};
+a0.length;
+a1[0];
+
+Arrays.fill(a0, Integer.MAX_VALUE);
+Arrays.toString(subCoin)
+Arrays.copyOfRange(nums1,0,k);
+Arrays.sort(nums1);
+Arrays.sort(
+    envelopes,
+    new Comparator<int[]>() {
+        public int compare(int[] a, int[] b) {
+            return a[0] == b[0] ? b[1] - a[1] : a[0] - b[0];
+        }
+    }
+);
+
+List<Integer> v0 = new ArrayList<>();
+List<Integer> v1 = new ArrayList<>(Arrays.asList(array1));
+List<Integer> v2 = v1;                      // another reference to v1, modify v2 will actually modify v1
+List<Integer> v3 = new ArrayList<>(v1);     // make an actual copy of v1, not changing v1
+
+List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
+List<Integer> num = Arrays.asList(int k);
+v1.size()
+v1.get(index)
+v2.set(0, 5); // 0 1 2 3 4 -> change -> 5 1 2 3 4
+v1.add(-1);
+v1.add(1, 6); // 1 2 3 4 5 -> insert -> 1 6 2 3 4 5
+v1.remove(index)
+Collections.sort(v1);
+
+
+
+
+
+
 // StringBuilder
 StringBuilder sb = new StringBuilder("");
 StringBuffer sb = new StringBuffer(s);
@@ -616,25 +660,6 @@ Character.isWhitespace();
 Character.isLetter(cs[i]);
 Character.isLetterOrDigit(s.charAt(x))
 
-
-int[] distTo = new int[V];
-Arrays.fill(distTo, Integer.MAX_VALUE);
-int[].length;
-
-
-List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
-List<Integer> num = Arrays.asList(int k);
-Arrays.toString(subCoin)
-Arrays.copyOfRange(nums1,0,k);
-Arrays.sort(nums1);
-Arrays.sort(
-    envelopes,
-    new Comparator<int[]>() {
-        public int compare(int[] a, int[] b) {
-            return a[0] == b[0] ? b[1] - a[1] : a[0] - b[0];
-        }
-    }
-);
 
 Stack<String> stack = new Stack<>();
 stack.push();
@@ -1089,8 +1114,81 @@ N 叉树的遍历框架
 # Arrays 数组
 
 - [https://www.geeksforgeeks.org/arrays-in-java/](https://www.geeksforgeeks.org/arrays-in-java/)
+- [https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1143/](https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1143/)
 
 
+**Array**
+- an array is a basic data structure to store **a collection of elements sequentially**.
+- But elements can **be accessed randomly** since each element in the array can be identified by an array **index**.
+
+```java
+// "static void main" must be defined in a public class.
+public class Main {
+    public static void main(String[] args) {
+        // 1. Initialize
+        int[] a0 = new int[5];
+        int[] a1 = {1, 2, 3};
+        // 2. Get Length
+        System.out.println("The size of a1 is: " + a1.length);
+        // 3. Access Element
+        System.out.println("The first element is: " + a1[0]);
+        // 4. Iterate all Elements
+        System.out.print("[Version 1] The contents of a1 are:");
+        for (int i = 0; i < a1.length; ++i) System.out.print(" " + a1[i]);
+        System.out.print("[Version 2] The contents of a1 are:");
+        for (int item: a1) System.out.print(" " + item);
+        // 5. Modify Element
+        a1[0] = 4;
+        // 6. Sort
+        Arrays.sort(a1);
+    }
+}
+```
+
+
+
+**Dynamic Array**
+- an array has a **fixed capacity**, need to specify the size of the array when initialize it.
+- Therefore, most programming languages offer built-in **dynamic array**
+  - still a random access list data structure
+  - but with variable size.
+  - For example, we have `vector` in C++ and `ArrayList` in Java.
+
+```java
+// "static void main" must be defined in a public class.
+public class Main {
+    public static void main(String[] args) {
+        // 1. initialize
+        List<Integer> v0 = new ArrayList<>();
+        List<Integer> v1;                           // v1 == null
+        // 2. cast an array to a vector
+        Integer[] a = {0, 1, 2, 3, 4};
+        v1 = new ArrayList<>(Arrays.asList(a));
+        // 3. make a copy
+        List<Integer> v2 = v1;                      // another reference to v1
+        List<Integer> v3 = new ArrayList<>(v1);     // make an actual copy of v1
+        // 3. get length
+        System.out.println("The size of v1 is: " + v1.size());
+        // 4. access element
+        System.out.println("The first element in v1 is: " + v1.get(0));
+        // 5. iterate the vector
+        for (int i = 0; i < v1.size(); ++i) System.out.print(" " + v1.get(i));  // [Version 1]
+        for (int item : v1) System.out.print(" " + item);  // [Version 2]
+        // 6. modify element
+        v2.set(0, 5);       // modify v2 will actually modify v1
+        v3.set(0, -1);
+        // 7. sort
+        Collections.sort(v1);
+        // 8. add new element at the end of the vector
+        v1.add(-1);
+        v1.add(1, 6);
+        // 9. delete the last element
+        v1.remove(v1.size() - 1);
+    }
+}
+```
+
+---
 
 ## Arrays in Java
 
@@ -1117,23 +1215,20 @@ An array can contain `primitives (int, char, etc.)` and `object (non-primitive) 
 ### Create Array
 
 
-#### One-Dimensional Arrays:**
-
-The general form of a one-dimensional array declaration is
-
+#### One-Dimensional Arrays
 
 An array declaration has two components: the type and the name.
-- _type_ declares the element type of the array.
-- The element type determines the data type of each element that comprises the array.
-- Like an array of integers, other primitive data types like char, float, double, etc., or user-defined data types (objects of a class).
-- Thus, the element type for the array determines what type of data the array will hold.
+- _type_
+  - declares the `element type` of the array.
+  - determines the data type of each element that comprises the array.
+  - determines what type of data the array will hold.
+  - Like an array of integers, other primitive data types like char, float, double, etc., or user-defined data types (objects of a class).
 
 
 ```java
 
 type var-name[];
 type[] var-name;
-
 
 // both are valid declarations
 int intArray[];
@@ -1147,9 +1242,7 @@ float floatArray[];
 double doubleArray[];
 char charArray[];
 
-// an array of references to objects of
-// the class MyClass (a class created by
-// user)
+// an array of references to objects of the class
 MyClass myClassArray[];
 
 Object[]  ao,        // array of Object
@@ -1157,7 +1250,9 @@ Collection[] ca;  // array of Collection of unknown type
 ```
 
 
-Although the first declaration establishes that intArray is an array variable, **no actual array exists**. It merely tells the compiler that this variable (intArray) will hold an array of the integer type. To link intArray with an actual, physical array of integers, you must allocate one using **new** and assign it to intArray.
+Although the first declaration establishes that intArray is an array variable, **no actual array exists**.
+- It merely tells the compiler that this variable (intArray) will hold an array of the integer type.
+- To link intArray with an actual, physical array of integers, allocate one using **new** and assign it to intArray.
 
 
 
@@ -10290,9 +10385,9 @@ class Solution {
 
 ---
 
-# 🔒🔒 two sum
+# 🔒🔒 Prefix Sum
 
-## 🔒 two sum - Array 数组
+## 🔒 Prefix Sum - Array 数组
 
 1. 暴力穷举所有可能。
    1. 对于 TwoSum 问题，一个难点就是给的数组无序。
@@ -10587,7 +10682,7 @@ Input: nums = [-1,1,0,-3,3]
 Output: [0,0,9,0,0]
 
 
-### `左乘 右乘 result[i] = left[i] * right[i];`
+#### +++++ `左乘 右乘 result[i] = left[i] * right[i];`
 
 ```java
 // Runtime: 5 ms, faster than 13.80% of Java online submissions for Product of Array Except Self.
@@ -10612,7 +10707,7 @@ class Solution {
 }
 ```
 
-#### 右边数字先计算 再参与计算
+#### +++++ 右边数字先计算 再参与计算
 ```java
 // O(N) time + O(1) space
 class Solution {
@@ -10634,7 +10729,7 @@ class Solution {
 ```
 
 
-#### ???????
+#### +++++ ???????
 
 ```java
 // O(N) time + O(1) space, single loop
@@ -10656,10 +10751,64 @@ class Solution {
 ```
 
 
+---
+
+
+### 724. Find Pivot Index (Easy)
+
+[724. Find Pivot Index](https://leetcode.com/problems/find-pivot-index/)
+Given an array of integers nums, calculate the pivot index of this array.
+
+The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.
+
+If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
+
+Return the leftmost pivot index. If no such index exists, return -1.
+
+ 
+
+Example 1:
+Input: nums = [1,7,3,6,5,6]
+Output: 3
+Explanation:
+The pivot index is 3.
+Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
+Right sum = nums[4] + nums[5] = 5 + 6 = 11
+
+Example 2:
+Input: nums = [1,2,3]
+Output: -1
+Explanation:
+There is no index that satisfies the conditions in the problem statement.
+
+Example 3:
+Input: nums = [2,1,-1]
+Output: 0
+Explanation:
+The pivot index is 0.
+Left sum = 0 (no elements to the left of index 0)
+Right sum = nums[1] + nums[2] = 1 + -1 = 0
 
 
 
+#### ++++++ Brute Force approach
+```java
+// Runtime: 548 ms, faster than 5.02% of Java online submissions for Find Pivot Index.
+// Memory Usage: 52.4 MB, less than 16.75% of Java online submissions for Find Pivot Index.
+class Solution {
+    public int pivotIndex(int[] nums) {
+    for (int i = 0; i < nums.length; i++) {
+        int sum = 0;
+        int left = 0, right = nums.length - 1;
+        while (left < i) sum += nums[left++]; 
+        while (right > i) sum -= nums[right--]; 
+        if (sum == 0) return left;
+    }
+    return -1;   
+}
+}
 
+```
 
 
 
@@ -10731,7 +10880,7 @@ class Solution2 {
     }
 }
 ```
- 
+
 
 ---
 
@@ -13630,7 +13779,7 @@ Explanation: 'e' must have been pressed twice, but it was not in the typed outpu
 
 
 
-#### +++++ 
+#### +++++
 
 ```java
 // Runtime: 1 ms, faster than 73.39% of Java online submissions for Long Pressed Name.
