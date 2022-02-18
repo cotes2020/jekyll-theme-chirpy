@@ -29,7 +29,7 @@ As I already told you, there are several factors that cause slow queries, the bu
 - The length of the rows and keys
 - The key distribution
 
-There are some cases that high-cost queries produce faster result than low-cost ones. In general, the best approach in each situation depends on the business logic and rules that you are working on.
+There are also several cases that high-cost queries produce faster result than low-cost ones (often due to FileSort). In general, the best approach in each situation depends on the business logic and rules that you are working on.
 
 
 #### b. MySQL Explain JSON
