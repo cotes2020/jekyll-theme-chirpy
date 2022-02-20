@@ -1,7 +1,7 @@
 ---
 title: Cloud - Service from Third party Cloud Provider 
 date: 2021-01-11 11:11:11 -0400
-categories: [01LocalandCloud]
+categories: [01Basic]
 tags: [AWS, Cloud, Ali, GCP]
 toc: true
 image:

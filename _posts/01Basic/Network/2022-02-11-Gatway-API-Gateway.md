@@ -1,8 +1,8 @@
 ---
 title: AWS - VPC Gateway - API Gateway
 date: 2022-02-11 11:11:11 -0400
-categories: [01LocalandCloud, Network]
-tags: [AWS, Network]
+categories: [01Basic, Network]
+tags: [Basic, AWS, Network]
 toc: true
 image:
 ---
@@ -121,7 +121,7 @@ API 网关的访问控制功能通常从身份验证机制开始，以确定任�
   - API 网关可以在内部服务之间引入消息安全性，从而使内部服务更加安全，并且在服务之间来回传递的消息经过加密。
   - 即便使用传输层加密（TLS），忽略正确的身份验证也会导致问题。
   - 例如，在 API 请求中使用有效的手机号码，任何人都可以获取个人电子邮件地址和设备标识数据。
-  - 像 OAuth / OpenIDConnect 这样的行业标准强大的身份验证和授权机制，以及 TLS，都是至关重要的。
+  - 像 `OAuth / OpenIDConnect` 这样的行业标准强大的身份验证和授权机制，以及 TLS，都是至关重要的。
 
 - 威胁防护
   - 没有威胁防护，API 网关，其 API 和集成服务器的本机服务基本上是不安全的。

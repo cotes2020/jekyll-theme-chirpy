@@ -7,7 +7,23 @@ toc: true
 image:
 ---
 
-[toc]
+- [Postman](#postman)
+  - [Postman basic](#postman-basic)
+  - [Postman的操作环境](#postman的操作环境)
+  - [Postman install](#postman-install)
+  - [Postman安装](#postman安装)
+  - [Navigating Postman](#navigating-postman)
+    - [main modes:](#main-modes)
+    - [Find and replace](#find-and-replace)
+    - [History](#history)
+    - [Tabs](#tabs)
+    - [Next steps](#next-steps)
+  - [接口请求流程](#接口请求流程)
+    - [GET 请求](#get-请求)
+    - [POST请求](#post请求)
+  - [管理用例—Collections](#管理用例collections)
+  - [身份验证Authentication**](#身份验证authentication)
+  - [extension](#extension)
 
 ---
 
@@ -325,23 +341,22 @@ collections 管理精细化， 这里我们针对不同的请求方式做分组
 ## 身份验证Authentication**  
 
 1. Basic Auth
-
-是基础的验证，所以会比较简单  
-会直接把用户名、密码的信息放在请求的 Header 中
+   1. 是基础的验证，所以会比较简单  
+   2. 会直接把用户名、密码的信息放在请求的 Header 中
 
 2. Digest Auth
-
-要比Basic Auth复杂的多。使用当前填写的值生成authorization header。所以在生成header之前要确保设置的正确性。如果当前的header已经存在，postman会移除之前的header。
+   1. 要比Basic Auth复杂的多。
+   2. 使用当前填写的值生成authorization header。
+   3. 所以在生成header之前要确保设置的正确性。
+   4. 如果当前的header已经存在，postman会移除之前的header。
 
 3. OAuth 1.0
-
-postman的OAuth helper让你签署支持OAuth
-
-1.0基于身份验证的请求。OAuth不用获取access token,你需要去API提供者获取的。OAuth 1.0可以在header或者查询参数中设置value。
+   1. postman的OAuth helper让你签署支持OAuth
+   2. 1.0基于身份验证的请求。OAuth不用获取access token,你需要去API提供者获取的。
+   3. OAuth 1.0可以在header或者查询参数中设置value。
 
 4. OAuth 2.0
-
-postman支持获得OAuth 2.0 token并添加到requests中。
+   1. postman支持获得OAuth 2.0 token并添加到requests中。
 
 
 ---
