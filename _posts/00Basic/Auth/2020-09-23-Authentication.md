@@ -4,7 +4,7 @@ title: Basic - Authentication
 date: 2020-09-23 11:11:11 -0400
 description: 
 excerpt_separator: 
-categories: [01Basic, Authentication]
+categories: [00Basic, Authentication]
 tags: [Basic, Authentication]
 math: true
 # pin: true

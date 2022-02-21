@@ -1,7 +1,7 @@
 ---
 title: AWS - VPC Gateway - API Gateway
 date: 2022-02-11 11:11:11 -0400
-categories: [01Basic, Network]
+categories: [00Basic, Network]
 tags: [Basic, AWS, Network]
 toc: true
 image:
