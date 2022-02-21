@@ -1124,7 +1124,7 @@ base types (also called primitive types):
 - short `16`-bit signed two’s complement integer
 - int `32`-bit signed two’s complement integer
 - long `64`-bit signed two’s complement integer
-- float 32-bit floating-point number (IEEE 754-1985) 
+- float 32-bit floating-point number (IEEE 754-1985)
 - double 64-bit floating-point number (IEEE 754-1985)
 
 ```java
@@ -1136,7 +1136,7 @@ base types (also called primitive types):
 6 inti,j,k=257;
 7 long l = 890L;
 8 float pi = 3.1416F;
-9 double e = 2.71828, a = 6.022e23; 
+9 double e = 2.71828, a = 6.022e23;
 ```
 ---
 
@@ -1144,14 +1144,14 @@ base types (also called primitive types):
 
 Every `object` is an `instance` of a `class`
 - `class` serves as the type of the `object` and as a blueprint
-- defining the data which the object stores and the methods for accessing and modifying that data. 
+- defining the data which the object stores and the methods for accessing and modifying that data.
 
 The critical members of a class in Java are the following:
 - **Instance variables**/**fields**
-  - represent the data associated with an object of a class. 
+  - represent the data associated with an object of a class.
   - Instance variables must have a type, which can either be a base type (such as int, float, or double) or any class type (reference type)
 - **Methods**
-  - blocks of code that can be called to perform actions (similar to functions and procedures in other high-level languages). 
+  - blocks of code that can be called to perform actions (similar to functions and procedures in other high-level languages).
   - Methods can accept parameters as arguments, and their behavior may depend on the object upon which they are invoked and the values of any parameters that are passed.  
   - **accessor method**: returns information to the caller without changing any instance variables
   - **update method** : may change one or more instance variables when called.
@@ -1172,16 +1172,16 @@ public class Counter {
 ```
 a new variable c is **declared** with the syntax:
 - `Counter c;`
-- This establishes the **identifier c**, as a variable of type Counter, 
-- but it does not create a Counter instance. 
-- Classes are known as **reference types** in Java, and a variable of that type (c) is known as a **reference variable**. 
-- A reference variable is capable of storing the location (i.e., memory address) of an object from the declared class. 
-- So we might assign it to reference an existing instance or a newly constructed instance. 
+- This establishes the **identifier c**, as a variable of type Counter,
+- but it does not create a Counter instance.
+- Classes are known as **reference types** in Java, and a variable of that type (c) is known as a **reference variable**.
+- A reference variable is capable of storing the location (i.e., memory address) of an object from the declared class.
+- So we might assign it to reference an existing instance or a newly constructed instance.
 - A reference variable can also store a special value, null, that represents the lack of an object.
-- 
+-
 In Java, a new object is created by using the `new` operator followed by a call to a constructor for the desired class; a constructor is a method that always shares the same name as its class. The new operator returns a reference to the newly created instance; the returned reference is typically assigned to a variable for further use.
 - `Counter c; c = new Counter();`
-- a new Counter is constructed with its reference assigned to the variable c. That relies on a form of the constructor, Counter(), that takes no arguments between the parentheses. (Such a zero-parameter constructor is known as a default constructor.) 
+- a new Counter is constructed with its reference assigned to the variable c. That relies on a form of the constructor, Counter(), that takes no arguments between the parentheses. (Such a zero-parameter constructor is known as a default constructor.)
 
 
 ---
@@ -10872,8 +10872,8 @@ class Solution {
         for (int i = 0; i < nums.length; i++) {
             int sum = 0;
             int left = 0, right = nums.length - 1;
-            while (left < i) sum += nums[left++]; 
-            while (right > i) sum -= nums[right--]; 
+            while (left < i) sum += nums[left++];
+            while (right > i) sum -= nums[right--];
             if (sum == 0) return left;
         }
         return -1;   
@@ -10889,16 +10889,16 @@ class Solution {
 // Runtime: 1 ms, faster than 99.68% of Java online submissions for Find Pivot Index.
 // Memory Usage: 52.6 MB, less than 14.35% of Java online submissions for Find Pivot Index.
 class Solution {
-    public int pivotIndex(int[] nums) { 
-        int sum=0; 
+    public int pivotIndex(int[] nums) {
+        int sum=0;
         for(int num : nums) sum += num;
-        
+
         int left = 0;
         for(int i=0; i<nums.length; i++) {
             sum -= nums[i];
             if(left == sum) return i;
-            left += nums[i]; 
-        } 
+            left += nums[i];
+        }
         return -1;
     }
 }
@@ -10906,17 +10906,17 @@ class Solution {
 // Runtime: 2 ms, faster than 67.09% of Java online submissions for Find Pivot Index.
 // Memory Usage: 51.7 MB, less than 28.06% of Java online submissions for Find Pivot Index.
 class Solution {
-    public int pivotIndex(int[] nums) { 
-        int sum=0; 
+    public int pivotIndex(int[] nums) {
+        int sum=0;
         for(int num : nums) sum += num;
-        
+
         int left = 0, right = 0;
         for(int i=0; i<nums.length; i++) {
             right = sum - nums[i];
             if(left == right) return i;
             left += nums[i];
             sum -= nums[i];
-        } 
+        }
         return -1;
     }
 }
@@ -10932,15 +10932,15 @@ class Solution {
 // Runtime: 1 ms, faster than 99.68% of Java online submissions for Find Pivot Index.
 // Memory Usage: 42.8 MB, less than 72.79% of Java online submissions for Find Pivot Index.
 class Solution {
-    public int pivotIndex(int[] nums) { 
+    public int pivotIndex(int[] nums) {
         int n = nums.length;
-        int[] sum= new int[n]; 
+        int[] sum= new int[n];
         sum[0] = nums[0];
         for(int i=1; i<n; i++) sum[i] = sum[i-1] + nums[i];
-        
-        for(int i=0; i<n; i++) { 
+
+        for(int i=0; i<n; i++) {
             if(sum[i] - nums[i] == sum[n-1]-sum[i]) return i;
-        } 
+        }
         return -1;
     }
 }
