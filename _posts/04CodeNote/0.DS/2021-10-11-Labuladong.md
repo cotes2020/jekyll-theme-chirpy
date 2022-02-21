@@ -17,7 +17,26 @@ toc: true
   - [helper](#helper)
   - [basic](#basic)
   - [timeline](#timeline)
-  - [算法](#算法)
+- [DS](#ds)
+  - [base types](#base-types)
+  - [Classes and Objects](#classes-and-objects)
+    - [Creating and Using Objects](#creating-and-using-objects)
+      - [the Dot operator](#the-dot-operator)
+      - [The assignment](#the-assignment)
+    - [Defining a Class](#defining-a-class)
+      - [Modifiers](#modifiers)
+        - [`Access Control` Modifiers](#access-control-modifiers)
+        - [The `static` Modifier](#the-static-modifier)
+        - [The `abstract` Modifier](#the-abstract-modifier)
+        - [The `final` Modifier](#the-final-modifier)
+    - [Declaring Instance Variables](#declaring-instance-variables)
+    - [Declaring Methods](#declaring-methods)
+      - [Return Types](#return-types)
+      - [Parameters](#parameters)
+      - [Defining Constructors](#defining-constructors)
+    - [The Keyword this](#the-keyword-this)
+- [算法](#算法)
+  - [算法](#算法-1)
     - [一、数据结构的存储方式](#一数据结构的存储方式)
     - [二、数据结构的基本操作](#二数据结构的基本操作)
       - [**数组遍历框架**，典型的`线性 迭代`结构：](#数组遍历框架典型的线性-迭代结构)
@@ -27,8 +46,6 @@ toc: true
       - [**图的遍历**](#图的遍历)
     - [三、算法刷题指南](#三算法刷题指南)
     - [四、总结几句](#四总结几句)
-  - [base types](#base-types)
-  - [Classes and Objects](#classes-and-objects)
 - [Arrays 数组](#arrays-数组)
   - [Arrays in Java](#arrays-in-java)
     - [Create Array](#create-array)
@@ -791,6 +808,446 @@ bh.buildHeap(list);
 2/14: 150
 
 
+---
+
+# DS
+
+---
+
+## base types
+
+base types (also called primitive types):
+- boolean a boolean value: true or false
+- char 16-bit Unicode character
+- byte `8`-bit signed two’s complement integer
+- short `16`-bit signed two’s complement integer
+- int `32`-bit signed two’s complement integer
+- long `64`-bit signed two’s complement integer
+- float 32-bit floating-point number (IEEE 754-1985)
+- double 64-bit floating-point number (IEEE 754-1985)
+
+```java
+boolean flag = true;
+boolean verbose, debug;
+char grade = 'A';
+byteb=12;
+short s = 24;
+inti,j,k=257;
+long l = 890L;
+float pi = 3.1416F;
+double e = 2.71828, a = 6.022e23;
+```
+---
+
+## Classes and Objects
+
+Every `object` is an `instance` of a `class`
+- `class` serves as the type of the `object` and as a blueprint
+- `class` defining the data which the object stores and the methods for accessing and modifying that data.
+
+The critical members of a class in Java are the following:
+- **Instance variables**/**fields**
+  - represent the data associated with an object of a class.
+  - Instance variables must have a type, which can either be a base type (such as int, float, or double) or any class type (reference type)
+- **Methods**
+  - blocks of code that can be called to perform actions (similar to functions and procedures in other high-level languages).
+  - Methods can accept parameters as arguments, and their behavior may depend on the object upon which they are invoked and the values of any parameters that are passed.  
+  - **accessor method**: returns information to the caller without changing any instance variables
+  - **update method** : may change one or more instance variables when called.
+
+
+### Creating and Using Objects
+
+Counter class does not have a `main` method, and so it cannot be run as a complete program. Instead, the purpose of the Counter class is to create instances that might be used as part of a larger program.
+
+```java
+public class Counter {
+    private int count;
+    public Counter() { } // default constructor (count is 0)
+    public Counter(int initial) { count = initial; } // an alternate constructor
+    public int getCount() { return count; }  // an accessor method
+    public void increment() { count++; }  // an update method
+    public void increment(int delta) { count += delta; }  // an update method
+    public void reset() { count = 0; }  // an update method
+}
+
+```
+
+a **new variable c** is **declared** with the syntaxm `Counter c;`
+- This establishes the **identifier c**, as a variable of type Counter,
+- but it does not create a Counter instance.
+- `Classes` are **reference types** in Java, and a variable of that type (`c`) is a **reference variable**.
+  - A reference variable is capable of storing the location (i.e., memory address) of an object from the declared class.
+  - So we might assign it to reference an existing instance or a newly constructed instance.
+  - A reference variable can also store a special value, null, that represents the lack of an object.
+
+a **new object** is **created** by using the `new` operator + a call to a constructor for the class;
+- a constructor: a method that always shares the same name as its class.
+- The `new` operator returns a reference to the instance; the returned reference is typically assigned to a variable for further use.
+- `Counter c; c = new Counter();`
+- a new Counter is constructed with its reference assigned to the variable c. That relies on a form of the constructor, Counter(), that takes no arguments between the parentheses. (Such a zero-parameter constructor is known as a default constructor.)
+
+Three events occur as part of the creation of a new instance of a class:
+- A new **object** is `dynamically allocated in memory`
+  - all **instance variables** are initialized to standard default values.
+  - The default values are `null` for reference variables and `0` for all base types except boolean variables (which
+are `false` by default).
+- The constructor for the **new** object is called with the parameters specified.
+  - The constructor may assign more meaningful values to any of the instance variables, and perform any additional computations that must be done due to the creation of this object.
+- After the constructor returns, the **new** operator `returns a reference (a memory address) to the newly created object`. If the expression is in the form of an assignment statement, then this address is stored in the object variable, so the object variable refers to this newly created object.
+
+
+
+
+#### the Dot operator
+
+![Screen Shot 2022-02-20 at 21.36.51](https://i.imgur.com/Ocr7e7L.png)
+
+One of the primary uses of an `object` **reference variable** is to `access the members of the class for this object`
+
+- an instance of its class.
+
+- to access the **methods** and **instance variables** associated with an `object`.
+- This access is performed with the dot (“.”) operator.
+- call a method associated with an object:
+  - `reference variable name + dot operator + the method name and its parameters`.
+  - `c.increment()`
+- If the dot operator is used on a reference that is currently null, the Java runtime environment will throw a `NullPointerException`.
+
+- If there are several methods with this same name defined for a class, then the Java runtime system uses the one that matches the actual number of parameters sent as arguments, as well as their respective types.
+  - two methods named increment: a zero-parameter form and a one- parameter form.
+  - Java determines which version to call when evaluating commands such as c.increment( ) versus c.increment(3).
+
+- A method’s name combined with the number and types of its parameters is called a **method’s signature**, for it takes all of these parts to determine the actual method to perform for a certain method call.
+  - Note, however, that the signature of a method in Java does not include the type that the method returns, so Java does not allow two methods with the same signature to return different types.
+
+- A `reference variable v` can be viewed as a “pointer” to some `object o`.
+  - the variable is a holder for a remote control that can be used to control the newly created object (the device).
+  - the variable has a way of pointing at the object and asking it to do things or give us access to its data.
+  - Using the remote control analogy, a null reference is a remote control holder that is empty.
+
+
+#### The assignment
+
+the aliasing of two reference variables to the same object is not permanent.
+- may reassign a `reference variable` to a new instance, a different existing instance, or null.
+
+
+```java
+Counter c = new Counter(5);
+Counter d = new Counter(5);
+// d is a distinct instance from the one identified as c.
+
+Counter e = d;
+// a new reference variable named e, and assigns that variable a reference to the existing counter instance currently identified as d.
+// At that point, both variables d and e are aliases for the same object
+```
+
+---
+
+
+
+### Defining a Class
+
+
+#### Modifiers
+
+---
+
+##### `Access Control` Modifiers
+
+- control **the level of access (visibility)** that `the defining class` grants to `other classes` in larger Java program.
+- The ability to limit access among classes supports a key principle of object-orientation ->  **encapsulation**
+
+In general, the different access control modifiers and their meaning are as follows:
+
+**public**
+1. The `public` **class modifier**
+   - designates that all classes may access the defined aspect.
+   - For example
+     - `public class Counter {`
+     - all other classes (such as CounterDemo) are allowed to construct new instances of the `Counter class`, as well as to declare variables and parameters of type Counter.
+
+   - In Java, each public class must be defined in a separate file named class_name.java
+     - for example, file Counter.java for the Counter class definition
+
+2. `public access` for a **particular method of a class**
+   - allows any other class to make a call to that method.
+   - For example
+     - `public int getCount() { return count; }`
+     - the CounterDemo class may call `c.getCount()`.
+
+3. an **instance variable** is declared as public
+   - dot notation can be used to directly access the variable by code in any other class that possesses a reference to an instance of this class.
+   - For example, were the count variable of Counter to be declared as public (which it is not), then the CounterDemo would be allowed to read or modify that variable using a syntax such as c.count.
+
+
+**protected**
+1. The `protected` **class modifier**
+   - designates that access to the defined aspect is only granted to the following groups of other classes:
+     - Classes that are designated as `subclasses of the given class through inheritance`.
+     - Classes that belong to the `same package as the given class`
+
+
+**private**
+1. The `private` **class modifier**
+   - designates that access to a defined member of a class be `granted only to code within that class`. Neither subclasses nor any other classes have access to such members.
+   - For example
+     - defined the `count` **instance variable** of the `Counter` **class** to have private access level.
+     - We were allowed to read or edit its value from within methods of that class (such as getCount, increment, and reset),
+     - but other classes such as `CounterDemo` cannot directly access that field.
+     - Of course, we did provide other public methods to grant outside classes with behaviors that depended on the current count value.
+
+
+**package-private access level**
+- if no explicit access control modifier is given, the defined aspect has what is known as `package-private access level`.
+- This allows other classes in the same package to have access, but not any classes or subclasses from other packages.
+
+
+---
+
+##### The `static` Modifier
+
+- The static modifier in Java can be declared for any `variable` or `method` of a class (or for a nested class)
+
+1. When a **variable of a class** is declared as `static`
+   - its value is associated with the class as a whole, rather than with each individual instance of that class.
+
+   - Static variables are used to store “global” information about a class.
+     - For example, be used to maintain the total number of instances of that class that have been created.
+
+   - Static variables exist even if no instance of their class exists.
+
+2. When a **method of a class** is declared as `static`
+   - associated with the class itself, and not with a particular instance of the class.
+
+   - That means that `the method is not invoked on a particular instance of the class` using the traditional dot notation. Instead, it is typically `invoked using the name of the class` as a qualifier.
+   - For example
+     - in the java.lang package, which is part of the standard Java distribution, there is a `Math` class that provides many static methods, including one named sqrt that computes square roots of numbers.
+     - To compute a square root, you do not need to create an instance of the Math class; that method is called using a syntax such as `Math.sqrt(2)`, with the class name Math as the qualifier before the dot operator.
+
+   - Static methods can be useful for providing utility behaviors related to a class that need not rely on the state of any particular instance of that class.
+
+---
+
+##### The `abstract` Modifier
+1. A **method of a class** may be declared as `abstract`
+   - its signature is provided but without an implementation of the method body.
+   - Abstract methods are an advanced feature of object-oriented programming to be combined with inheritance
+   - In short, any subclass of a class with abstract methods is expected to provide a concrete implementation for each abstract method.
+
+2. A **class** with one or more abstract methods must also be formally declared as abstract, because it is essentially incomplete.
+   - also permissible to declare a class as abstract even if it does not contain any abstract methods.
+   - As a result, Java will not allow any instances of an abstract class to be constructed, although reference variables may be declared with an abstract type.
+
+
+---
+
+##### The `final` Modifier
+1. A **variable** that is declared with the `final` modifier can be initialized as part of that declaration, but can never again be assigned a new value.
+   - If it is a **base type**, then it is a constant.
+   - If a **reference variable** is final, then it will always refer to the same object (even if that object changes its internal state).
+   - If a **member variable of a class** is declared as final, it will typically be declared as `static` as well, because it would be unnecessarily wasteful to have every instance store the identical value when that value can be shared by the entire class.
+
+2. Designating a **method or an entire class** as final has a completely different consequence, only relevant in the context of inheritance.
+   - A `final` **method** cannot be overridden by a subclass,
+   - a `final` **class** cannot even be subclassed.
+
+---
+
+
+
+### Declaring Instance Variables
+
+- When defining a class, we can declare any number of **instance variables**.
+- An important principle of object-orientation is that each instance of a class maintains `its own individual set of instance variables`.
+  - in the case of the Counter class, each instance will store its own (independent) value of count.
+
+- The general syntax for declaring one or more instance variables of a class is as follows:
+
+```java
+[modifiers] type identifier1[=initialValue1], identifier2[=initialValue2];
+private int count;
+
+// Because we did not declare an initial value, it automatically receives the default of zero as a base-type integer.
+```
+
+
+---
+
+
+### Declaring Methods
+
+- A method definition has two parts:
+  - the signature
+    - which defines the name and parameters for a method,
+    - specifies how the method is called
+  - and the body,
+    - which defines what the method does.
+    - specifies what the object will do when it is called.
+
+
+The syntax for defining a method:
+
+```java
+[modifiers] returnType methodName(type1 param1 , ..., typen paramn) {
+    // method body . . .
+}
+```
+
+- the significance of **modifiers** such as public, private, and static.
+- The **returnType** designation defines the type of value returned by the method.
+- The specifies how the method is called can be any valid Java identifier.
+- The list of **parameters** and their types declares the local variables that correspond to the values that are to be passed as arguments to this method.
+- Each type declaration typei can be any Java type name and each parami can be any distinct Java identifier. This list of parameters and their types can be empty, which signifies that there are no values to be passed to this method when it is invoked.
+- These **parameter variables**, as well as the **instance variables** of the class, can be used inside the body of the method. Likewise, other methods of this class can be called from inside the body of a method.
+- When a (nonstatic) method of a class is called, it is invoked on a specific instance of that class and can change the state of that object.
+
+  - For example, the follow- ing method of the Counter class increases the counter’s value by the given amount.
+
+```java
+public void increment(int delta) {
+    count += delta;
+}
+```
+
+Notice that the body of this method uses count, which is an instance variable, and delta, which is a parameter.
+
+
+#### Return Types
+- A method definition must specify the type of value the method will return.
+  - If the method does not return a value, the keyword `void` must be used.
+  - To return a value in Java, the body of the method must use the return keyword, followed by a value of the appropriate return type.
+
+- Java methods can return only one value.
+  - To return multiple values in Java, combine all the values to return in a compound object, whose instance variables include all the values we want to return, and then return a reference to that compound object.
+  - In addition, we can change the internal state of an object that is passed to a method as another way of “returning” multiple results.
+
+
+```java
+public int getCount() {
+    return count;
+}
+```
+
+
+#### Parameters
+- A method’s parameters are defined in a comma-separated list enclosed in parentheses after the name of the method.
+- A parameter consists of two parts, the parameter type and the parameter name.
+-  If a method has no parameters, then only an empty pair of parentheses is used.
+
+
+All parameters in Java are passed by value
+- any time pass a parameter to a method, a copy of that parameter is made for use within the method body.
+  - So if pass an **int variable** to a method, then that variable’s integer value is copied. The method can change the copy but not the original.
+  - If we pass an **object reference** as a parameter to a method, then the reference is copied as well.
+- Remember that we can have many different variables that all refer to the same object.
+- Reassigning the **internal reference variable** inside a method will not change the reference that was passed in.
+
+
+For the sake of demonstration, we will assume that the following two methods were added to an arbitrary class (such as CounterDemo).
+
+```java
+public static void badReset(Counter c) {
+    c = new Counter();
+    // reassigns local name c to a new counter
+}
+
+public static void goodReset(Counter c) {
+    c.reset();
+    // resets the counter sent by the caller
+}
+```
+
+
+Now we will assume that variable strikes refers to an existing Counter instance in some context, and that it currently has a value of 3.
+- If we were to call `badReset(strikes)`, this has no effect on the Counter known as strikes.
+- The body of the badReset method reassigns the (local) parameter variable c to reference a newly created Counter instance;
+  - but this does not change the state of the existing counter that was sent by the caller (i.e., strikes).
+
+In contrast, if we were to call `goodReset(strikes)`, this does indeed reset the caller’s counter back to a value of zero.
+- That is because the `variables c` and `strikes` are both **reference variables** that refer to the same Counter instance.
+- So when c.reset() is called, that is effectively the same as if `strikes.reset()` were called.
+
+
+---
+
+#### Defining Constructors
+
+- A constructor is a special kind of method that is used to `initialize a newly created instance of the class` so that it will be in a consistent and stable initial state.
+- This is typically achieved by initializing each instance variable of the object (unless the default value will suffice),
+
+
+The general syntax for declaring a constructor in Java is as follows:
+
+```java
+modifiers name(type0 parameter0 , ..., typen−1 parametern−1) {
+    // constructor body . . .
+}
+```
+Constructors are defined in a very similar way as other methods of a class, but there are a few important distinctions:
+1. Constructors cannot be static, abstract, or final, so the only modifiers that are allowed are those that affect visibility (i.e., `public, protected, private, or the default package-level` visibility).
+
+2. The name of the constructor must be identical to the name of the class it constructs.
+   1. For example, when defining the Counter class, a constructor must be named Counter as well.
+
+3. We don’t specify a return type for a constructor (not even void). Nor does the body of a constructor explicitly return anything. When a user of a class creates an instance using a syntax such as
+
+Counter d = new Counter(5);
+
+4. the `new` operator is responsible for returning a reference to the new instance to the caller;
+   - the responsibility of the constructor method is only to initialize the state of the new instance.
+
+
+A class can have many constructors, but each must have a different signature, each must be distinguished by the type and number of the parameters it takes.
+- If no constructors are explicitly defined, Java provides an implicit default constructor for the class, having zero arguments and leaving all instance variables initialized to their default values.
+- However, if a class defines one or more nondefault constructors, no default constructor will be provided.
+
+
+As an example, our Counter class defines the following pair of constructors:
+
+```java
+public Counter() { }
+public Counter(int initial) { count = initial; }
+```
+
+
+- The first of these has a trivial body, { }, as the goal for this default constructor is to create a counter with value zero, and that is already the default value of the integer instance variable, count.
+- However, it is still important that we declared such an explicit constructor, because otherwise none would have been provided, given the existence of the nondefault constructor. In that scenario, a user would have been unable to use the syntax, new Counter().
+
+
+---
+
+### The Keyword this
+
+Within the body of a (nonstatic) method in Java, the keyword this is automatically defined as a reference to the instance upon which the method was invoked. That is, if a caller uses a syntax such as thing.foo(a, b, c), then within the body of method foo for that call, the keyword this refers to the object known as thing in the caller’s context. There are three common reasons why this reference is needed from within a method body:
+1. To store the reference in a variable, or send it as a parameter to another method that expects an instance of that type as an argument.
+2. To differentiate between an instance variable and a local variable with the same name. If a local variable is declared in a method having the same name as an instance variable for the class, that name will refer to the local variable within that method body. (We say that the local variable masks the instance variable.) In this case, the instance variable can still be accessed by explicitly using the dot notation with this as the qualifier. For example, some programmers prefer to use the following style for a constructor, with a parameter having the same name as the underlying variable.
+public Counter(int count) {
+this.count = count; // set the instance variable equal to parameter
+}
+3. To allow one constructor body to invoke another constructor body. When one method of a class invokes another method of that same class on the current instance, that is typically done by using the (unqualified) name of the other method. But the syntax for calling a constructor is special. Java allows use of the keyword this to be used as a method within the body of one constructor, so as to invoke another constructor with a different signature.
+This is often useful because all of the initialization steps of one constructor can be reused with appropriate parameterization. As a trivial demonstra- tion of the syntax, we could reimplement the zero-argument version of our Counter constructor to have it invoke the one-argument version sending 0 as an explicit parameter. This would be written as follows:
+public Counter() {
+this(0); // invoke one-parameter constructor with value zero
+}
+We will provide a more meaningful demonstration of this technique in a later example of a CreditCard class in Section 1.7.
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+# 算法
 
 ---
 
@@ -1113,75 +1570,10 @@ N 叉树的遍历框架
 - **遍历方式** 无非`迭代`和`递归`。
 
 
----
 
-## base types
 
-base types (also called primitive types):
-- boolean a boolean value: true or false
-- char 16-bit Unicode character
-- byte `8`-bit signed two’s complement integer
-- short `16`-bit signed two’s complement integer
-- int `32`-bit signed two’s complement integer
-- long `64`-bit signed two’s complement integer
-- float 32-bit floating-point number (IEEE 754-1985)
-- double 64-bit floating-point number (IEEE 754-1985)
 
-```java
-1 boolean flag = true;
-2 boolean verbose, debug;
-3 char grade = 'A';
-4 byteb=12;
-5 short s = 24;
-6 inti,j,k=257;
-7 long l = 890L;
-8 float pi = 3.1416F;
-9 double e = 2.71828, a = 6.022e23;
-```
----
 
-## Classes and Objects
-
-Every `object` is an `instance` of a `class`
-- `class` serves as the type of the `object` and as a blueprint
-- defining the data which the object stores and the methods for accessing and modifying that data.
-
-The critical members of a class in Java are the following:
-- **Instance variables**/**fields**
-  - represent the data associated with an object of a class.
-  - Instance variables must have a type, which can either be a base type (such as int, float, or double) or any class type (reference type)
-- **Methods**
-  - blocks of code that can be called to perform actions (similar to functions and procedures in other high-level languages).
-  - Methods can accept parameters as arguments, and their behavior may depend on the object upon which they are invoked and the values of any parameters that are passed.  
-  - **accessor method**: returns information to the caller without changing any instance variables
-  - **update method** : may change one or more instance variables when called.
-
-1. Counter class does not have a `main` method, and so it cannot be run as a complete program. Instead, the purpose of the Counter class is to create instances that might be used as part of a larger program.
-
-```java
-public class Counter {
-    private int count;
-    public Counter() { } // default constructor (count is 0)
-    public Counter(int initial) { count = initial; } // an alternate constructor
-    public int getCount() { return count; }  // an accessor method
-    public void increment() { count++; }  // an update method
-    public void increment(int delta) { count += delta; }  // an update method
-    public void reset() { count = 0; }  // an update method
-}
-
-```
-a new variable c is **declared** with the syntax:
-- `Counter c;`
-- This establishes the **identifier c**, as a variable of type Counter,
-- but it does not create a Counter instance.
-- Classes are known as **reference types** in Java, and a variable of that type (c) is known as a **reference variable**.
-- A reference variable is capable of storing the location (i.e., memory address) of an object from the declared class.
-- So we might assign it to reference an existing instance or a newly constructed instance.
-- A reference variable can also store a special value, null, that represents the lack of an object.
--
-In Java, a new object is created by using the `new` operator followed by a call to a constructor for the desired class; a constructor is a method that always shares the same name as its class. The new operator returns a reference to the newly created instance; the returned reference is typically assigned to a variable for further use.
-- `Counter c; c = new Counter();`
-- a new Counter is constructed with its reference assigned to the variable c. That relies on a form of the constructor, Counter(), that takes no arguments between the parentheses. (Such a zero-parameter constructor is known as a default constructor.)
 
 
 ---
