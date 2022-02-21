@@ -27,6 +27,8 @@ toc: true
       - [**图的遍历**](#图的遍历)
     - [三、算法刷题指南](#三算法刷题指南)
     - [四、总结几句](#四总结几句)
+  - [base types](#base-types)
+  - [Classes and Objects](#classes-and-objects)
 - [Arrays 数组](#arrays-数组)
   - [Arrays in Java](#arrays-in-java)
     - [Create Array](#create-array)
@@ -1110,6 +1112,76 @@ N 叉树的遍历框架
 - **基本操作** 就是`增删查改`，
 - **遍历方式** 无非`迭代`和`递归`。
 
+
+---
+
+## base types
+
+base types (also called primitive types):
+- boolean a boolean value: true or false
+- char 16-bit Unicode character
+- byte `8`-bit signed two’s complement integer
+- short `16`-bit signed two’s complement integer
+- int `32`-bit signed two’s complement integer
+- long `64`-bit signed two’s complement integer
+- float 32-bit floating-point number (IEEE 754-1985) 
+- double 64-bit floating-point number (IEEE 754-1985)
+
+```java
+1 boolean flag = true;
+2 boolean verbose, debug;
+3 char grade = 'A';
+4 byteb=12;
+5 short s = 24;
+6 inti,j,k=257;
+7 long l = 890L;
+8 float pi = 3.1416F;
+9 double e = 2.71828, a = 6.022e23; 
+```
+---
+
+## Classes and Objects
+
+Every `object` is an `instance` of a `class`
+- `class` serves as the type of the `object` and as a blueprint
+- defining the data which the object stores and the methods for accessing and modifying that data. 
+
+The critical members of a class in Java are the following:
+- **Instance variables**/**fields**
+  - represent the data associated with an object of a class. 
+  - Instance variables must have a type, which can either be a base type (such as int, float, or double) or any class type (reference type)
+- **Methods**
+  - blocks of code that can be called to perform actions (similar to functions and procedures in other high-level languages). 
+  - Methods can accept parameters as arguments, and their behavior may depend on the object upon which they are invoked and the values of any parameters that are passed.  
+  - **accessor method**: returns information to the caller without changing any instance variables
+  - **update method** : may change one or more instance variables when called.
+
+1. Counter class does not have a `main` method, and so it cannot be run as a complete program. Instead, the purpose of the Counter class is to create instances that might be used as part of a larger program.
+
+```java
+public class Counter {
+    private int count;
+    public Counter() { } // default constructor (count is 0)
+    public Counter(int initial) { count = initial; } // an alternate constructor
+    public int getCount() { return count; }  // an accessor method
+    public void increment() { count++; }  // an update method
+    public void increment(int delta) { count += delta; }  // an update method
+    public void reset() { count = 0; }  // an update method
+}
+
+```
+a new variable c is **declared** with the syntax:
+- `Counter c;`
+- This establishes the **identifier c**, as a variable of type Counter, 
+- but it does not create a Counter instance. 
+- Classes are known as **reference types** in Java, and a variable of that type (c) is known as a **reference variable**. 
+- A reference variable is capable of storing the location (i.e., memory address) of an object from the declared class. 
+- So we might assign it to reference an existing instance or a newly constructed instance. 
+- A reference variable can also store a special value, null, that represents the lack of an object.
+- 
+In Java, a new object is created by using the `new` operator followed by a call to a constructor for the desired class; a constructor is a method that always shares the same name as its class. The new operator returns a reference to the newly created instance; the returned reference is typically assigned to a variable for further use.
+- `Counter c; c = new Counter();`
+- a new Counter is constructed with its reference assigned to the variable c. That relies on a form of the constructor, Counter(), that takes no arguments between the parentheses. (Such a zero-parameter constructor is known as a default constructor.) 
 
 
 ---

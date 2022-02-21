@@ -14,46 +14,29 @@ import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import labuladongjava.other.ListNode;
 
-public class Solution {
-    public boolean backspaceCompare(String s, String t) {
-        var pointerS = s.length() - 1;
-        var pointerT = t.length() - 1;
-    
-        while (pointerS >= 0 || pointerT >= 0) {
-            pointerS = movePointer(s, pointerS);
-            pointerT = movePointer(t, pointerT);
-    
-            if (pointerS < 0 && pointerT < 0) // run out on both strings
-                return true;
-            if (pointerS < 0 || pointerT < 0) // run out on only one string
-                return false;
-            if (s.charAt(pointerS--) != t.charAt(pointerT--)) // character mismatch
-                return false;
-        }
-        return true;
-    }
-    
-    private int movePointer(String str, int pointer) {
-        var backspaceCount = 0;
-        while (pointer >= 0) {
-            if (str.charAt(pointer) == '#') { // backspace seen
-                backspaceCount++;
-                pointer--;
-            } else if (backspaceCount > 0) { // letter seen and there were backspaces before
-                backspaceCount--;
-                pointer--;
-            } else {
-                break; // letter seen and there were no backspaces before. We're done here
+public class Solution { 
+    public int dominantIndex(int[] nums) {
+        int n=nums.length; 
+        int slow=-1;
+        int max = nums[0];
+        for(int fast=0; fast<n; fast++) {
+            if(nums[fast]>nums[max]) max=fast;
+            // System.out.println("slow: " + nums[slow]);
+            // System.out.println("fast: " + nums[fast]);
+
+
+            if(nums[fast]>=nums[max]*2 && nums[fast]>nums[max]){
+                slow=fast;
             } 
         }
-        return pointer;
+        return slow;
+        
     }
 
     public static void main(String[] args) {
         Solution res = new Solution();
-        String s = new String("aaaaab#c");
-        String t = new String("baaaab#c");
-        boolean anw = res.backspaceCompare(s,t);
-        System.out.println(anw);
+        int[] nums = {1,2,3,4};
+        int ans = res.dominantIndex(nums);
+        System.out.println("ans:" + ans);
     } 
 }
