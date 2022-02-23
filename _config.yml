@@ -29,7 +29,7 @@ description: >-                        # used by seo meta and the atom feed
   Hacking Blog by tomorrowisnew/noobexploiter. Game Hacking, bug bounties, iot hacking, reverse engineering.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://tomorrowisnew.com'
 
 github:
   username: tomorroisnew             # change to your github username
