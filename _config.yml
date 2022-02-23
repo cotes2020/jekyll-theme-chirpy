@@ -21,21 +21,21 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: Tomorrowisnew                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Tomorrowisnew's Security Blog   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  Hacking Blog by tomorrowisnew/noobexploiter. Game Hacking, bug bounties, iot hacking, reverse engineering.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
 
 github:
-  username: github_username             # change to your github username
+  username: tomorroisnew             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: tomorrowisnew_            # change to your twitter username
 
 social:
   # Change to your full name.
@@ -73,7 +73,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode:   dark
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -83,7 +83,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: download.jpeg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
@@ -164,6 +164,10 @@ defaults:
       path: assets/js/dist
     values:
       swcache: true
+  - scope:
+      path: "img"
+    values:
+      image: true
 
 sass:
   style: compressed
@@ -195,3 +199,4 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
