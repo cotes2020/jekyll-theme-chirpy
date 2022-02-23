@@ -8,7 +8,7 @@ order: 4
 <div align="center" markdown="1">
 # WHOAMI
 
-#### Hi. I am Brandon Roldan, also known with the handle tomorrowisnew, and noobexploiter. I am a self taught hacker, pentester, and security researcher. I am actively participating on bug bounties. I am interested in Reverse Engineering, web sec, Iot Hacking, Game Hacking, and Code Review. 
+#### Hi. I am Brandon Roldan, also known with the handle tomorrowisnew, and noobexploiter. I am a self taught hacker, and an aspiring pentester/security researcher. I am actively participating on bug bounties. I am interested in Reverse Engineering, web sec, Iot Hacking, Game Hacking, and Code Review. 
 
 ##### You can Contact me in my email roldanbrandon62@gmail.com. Alternatively, you can contact me in twitter [@tomorrowisnew_](https://twitter.com/tomorrowisnew_)
 </div>
