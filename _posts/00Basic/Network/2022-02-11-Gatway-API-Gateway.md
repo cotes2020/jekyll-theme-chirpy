@@ -20,6 +20,10 @@ image:
     - [Application Firewall](#application-firewall)
     - [Resource Policy](#resource-policy)
     - [AuthZ](#authz)
+- [Ali API Gateway](#ali-api-gateway)
+  - [basic](#basic-1)
+  - [use case](#use-case)
+    - [API Gateway + Function Compute](#api-gateway--function-compute)
 
 ---
 
@@ -263,14 +267,14 @@ API 网关：开源
      - Monitor APIs
      - Manage APIs
 
-4. create an API that acts as a “front door” for applications to access data, business logic, or functionality from your back-end services
+4. create an API that acts as a “front door” for applications to access data, business logic, or functionality from the back-end services
    - designed to handle workloads such as workloads running on EC2,
    - code running on AWS Lambda, or any web application.
 
 5. security:
    - DDos protection and throttling for the backend
-   - <font color=red> Throttle and monitor requests to protect your backend </font>
-     - if you have a bad actor or someone who has bad code, you can turn off their access to your data
+   - <font color=red> Throttle and monitor requests to protect the backend </font>
+     - if you have a bad actor or someone who has bad code, you can turn off their access to the data
    - <font color=red> authenticate and authorize requests to a backend </font>
    - Reduced latency and DDoS, protection through Amazon CloudFront
 
@@ -285,7 +289,7 @@ API 网关：开源
 
 10. API endpoint works closely with APIs; they supply the ending point for API communication.
 
-11. Host and use multiple versions and stages of your APIs
+11. Host and use multiple versions and stages of the APIs
 12. Create and distribute API keys to developers
 13. Leverage signature version 4 to authorize access to APIs
 
@@ -323,14 +327,14 @@ Security with API Gateway falls into three major buckets
 ### Application Firewall
 
 - enable <font color=red> AWS Web Application Firewall (WAF) for the entire API </font>
-- WAF will inspect all incoming requests and block requests that fail your inspection rules.
+- WAF will inspect all incoming requests and block requests that fail the inspection rules.
 - For example
 - WAF can inspect requests for SQL Injection, Cross Site Scripting, or whitelisted IP addresses.
 
 ### Resource Policy
-- apply a <font color=red> Resource Policy that protects your entire API </font>
+- apply a <font color=red> Resource Policy that protects the entire API </font>
 - an IAM policy applied to the API
-- use this to white/black list client IP ranges or allow AWS accounts and AWS principals to access your API.
+- use this to white/black list client IP ranges or allow AWS accounts and AWS principals to access the API.
 
 
 ### AuthZ
@@ -348,7 +352,160 @@ Security with API Gateway falls into three major buckets
 
 
 
+---
+
+
+# Ali API Gateway
+
+
+## basic
+
+- fully functional API hosting service
+- publish the APIs centrally and offer them to the clients and partners. release the APIs on the Alibaba Cloud API marketplace where other developers may purchase them.
+
+- a full API lifecycle management service. It provides `API definition and publishing, testing, release, and removal`.
+- It can generate SDKs and API instructions and has a visualized debugging tool.
+- increases the efficiency of API management and iterative release.
+- flexibly and securely share their technological innovations leaving them free to focus on strengthening and advancing their businesses.
+
+- provides multiple security and efficiency options that include `attack defenses, anti-replay, request encryption, identity authentication, permission management, and throttling`.
+- has convenient maintenance, observation, and measurement tools, such as monitoring, alarms, and analysis.
+- It also enables speedy and reliable microservice integration, front and back end separation, and robust system integration at low cost.
+
+
+---
+
+## use case
+
+---
+
+### API Gateway + Function Compute  
+
+- use Function Compute to create a function that returns a result to the API Gateway service
+- monitor Alibaba Cloud API Gateway service directly from the Function Compute console.
+
+
+**API Gateway Service**
+1. Create an API in the API Gateway Service
+   1. API Gateway > API Groups > Create API.
+   2. Give the API a name and select the API Group.
+   3. choose `No Certification` and leave the selections access restrictions empty
+   4. ![pic](https://miro.medium.com/max/1200/0*ja4tOqnEnpBpOZRZ.png)
+   5. Configure the API to have a `COMMON` Request Type using HTTP and HTTPS Protocols.
+      1. `subdomain`: the **URL variable** required by the Function Compute function, make a note.
+         1. **full path variable** for Function Compute function is: `http://..subdomain../fcpath/`
+         2. Function Compute currently does not support **Match All Child Paths**.
+      2. **request path** must contain the **Parameter Path** in the **request parameter** within brackets `[]`, For example: `/fcpath/[fcparam]`
+   6. HTTP Method: `POST`
+   7. Request Mode: `Request Parameter Passthrough`.
+   8. ![pic](https://miro.medium.com/max/1200/0*SiQLeBx7VZ4YtzSA.png)
+
+2. Define the path input parameter in the **Input Parameter Definition**.
+   1. ![pic](https://miro.medium.com/max/1200/0*XB-hEDqtx20fsCuX.png)
+
+3. Basic Backend Definition
+   1. choose Function Compute as the Backend Service Type and select the correct Region.
+   2. In the Service and Function name, add the Function Compute Service and Function names.
+   3. For Role Arn, click Get Authorization.
+   4. ![pic](https://miro.medium.com/max/1200/0*gKi9mUk5StYuLfPa.png)
+   5. API Gateway service will automatically populate the field with the correct role details.
+   6. ![pic](https://miro.medium.com/max/1200/0*LG-yYcrF07RsKUzC.png)
+
+4. Backend Service Parameter Configuration, you have the details of the path parameter.
+   1. ![pic](https://miro.medium.com/max/1200/0*xHv8XIsmI2wWRFue.png)
+
+5. define the response in the final tab.
+   1. Scroll down and click Create.
+   2. ![pic](https://miro.medium.com/max/1200/0*rvJi1yow-H8YKjEg.png)
+   3. You should see a successful result. Click OK.
+
+6. Select the API in the list and click Deploy.
+   1. Enter the deployment details and click OK.
+   2. API details > Debug API.
+   3. Add the HTTP protocol.
+   4. Input and a header to reflect `Content-Type = application/json`
+   5. Leave the certification as No Certificate.
+   6. click Send Request.
+   7. ![pic](https://miro.medium.com/max/798/0*L14J9fvL02ZiIx6P.png)
+   8. You should see a 200 request success code in the output.
 
 
 
-.
+
+**Function Compute**
+1. Create a **Function Compute** API Gateway Trigger Function
+   1. Function Compute > add button
+   2. give the service a name and slide open Advanced Settings and scroll down.
+   3. ![pic](https://miro.medium.com/max/1200/0*1CcywlLtZc8Yi8mO.png)
+   4. In Network config, allow Internet access
+   5. In Role Config, configure the `AliyunApiGatewayFullAccess` role > Confirm Authorization Policy.
+
+2. click through to the Service, create a Function.
+   1. Click the add button next to Functions.
+   2. On the template page, select the Empty Function.
+   3. Our API Gateway function does not need a `Function Compute Trigger` so leave the No Trigger setting and click next in `Configure Triggers` tab.
+   4. Give the Function a name and select the runtime environment > Python.
+   5. ![pic](https://miro.medium.com/max/1200/0*6GQv-2IK9TLt4Uow.png)
+   6. Check the details and configure System Policies for accessing the API Gateway cloud resource.
+   7. Click Authorize > Click Confirm Authorization Policy, then Next > Create.
+
+3. code Function Compute function.
+   1. enter the following code into the code section.
+
+    ```py
+    # -*- coding: utf-8 -*-
+    import json
+    def handler(event, context):
+        event = json.loads(event)
+        content = {
+            'path': event['path'],
+            'method': event['httpMethod'],
+            'headers': event['headers'],
+            'queryParameters': event['queryParameters'],
+            'pathParameters': event['pathParameters'],
+        }
+
+        rep = {
+            "isBase64Encoded": "false",
+            "statusCode": "200",
+            "headers": {
+                "x-custom-header": "no"
+            },
+            "body": content
+        }
+        return json.dumps(rep)
+    ```
+
+4. Click Event
+   1. configure the Event parameters.
+   2. ![pic](https://miro.medium.com/max/1200/0*qbEknyv6XgTC2UdQ.png)
+   3. Add the Custom Event parameters and click OK.
+   4. ![pic](https://miro.medium.com/max/1200/0*PvOtw7i9M1Frjdhe.png)
+   5. Click Save and Invoke.
+   6. should see a Success message.
+   7. ![pic](https://miro.medium.com/max/1200/0*rt5gtUFK89s1Svkq.png)
+
+
+
+
+**test the API Gateway**.
+1. API Gateway API
+   1. debug API page.
+   2. The API Gateway is functional.
+   3. ![pic](https://miro.medium.com/max/1200/0*L1UaPUb_Yy9mt7Mh.png)
+
+
+**Monitoring API Gateway with Function Compute**
+1. Function Compute
+   1. click Monitoring
+   2. a Monitoring Service Overview of Function Compute service usage over time.
+   3. Service List tab > API Gateway Service
+   4. a list of all the Functions running as part of the service. Click on a function to see more details.
+   5. ![pic](https://miro.medium.com/max/1200/0*guNAYJdYNJ0rWyxA.png)
+   6. the Function Monitoring Overview page, you will see detailed measurements over time for Total Invocations, their Average Duration, Function Errors, and Maximum Memory Usage for the function.
+   7. Create Alarm Rule
+      1. have the option to set an Alarm that will raise a warning whenever the function is under stress, or load, or erroring on a number of different monitoring parameters.
+   8. Any Alarm Rules you set are listed under the Alarm Rule tab.
+
+Reference:
+- [https://www.alibabacloud.com/blog/using-api-gateway-with-alibaba-clouds-function-compute\_594695?spm=a2c41.12784890.0.0](https://www.alibabacloud.com/blog/using-api-gateway-with-alibaba-clouds-function-compute_594695?spm=a2c41.12784890.0.0)

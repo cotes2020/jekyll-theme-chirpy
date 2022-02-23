@@ -22,12 +22,25 @@
 
 ## basic
 
-Alibaba Cloud Function Compute is a fully-managed event-driven computing service. With Function Compute, you can focus on writing and uploading code, without the need to procure and manage infrastructure resources such as servers. Function Compute prepares computing resources for you, runs code in an elastic and reliable way, and provides features such as log query, performance monitoring, and alert.
+- fully-managed, event-driven computing service for serverless applications
+- can focus on writing and uploading code, without the need to procure and manage infrastructure resources such as servers. Function Compute prepares computing resources for you, runs code in an elastic and reliable way, and provides features such as log query, performance monitoring, and alert.
 
 With Function Compute, you can quickly create any type of applications and services and only pay for the resources actually consumed when you run your code.
 
 
 ![p96487](https://i.imgur.com/126wddr.png)
+
+
+
+- can run many different types of applications, including API gateways, data lake analyses, log stores and backups, web crawlers, and image recognition applications
+- With Function Compute, developing is convenient and reliable.
+- supports many different programming languages including Java, Python, PHP, and NodeJS.
+
+- provides real-time auto scaling and dynamic load balancing for managing heavy traffic bursts within millisecond timeframes.
+- Its compute resources ensure that code is flexible and reliable. Furthermore,
+- offers a Pay-As-You-Go option. No fee is incurred if the code doesn’t run. the code run duration is measured in milliseconds.
+
+
 
 ---
 
@@ -53,6 +66,12 @@ With Function Compute, you can quickly create any type of applications and servi
 ---
 
 ## use case
+
+Some common business scenarios:
+- analysis and management of media assets, such as integrating a range of services that run an elastic and highly available backend video system.
+- have a serverless backend that triggers Function Compute code which then renders dynamic and static webpages housed in Alibaba Cloud’s Object Storage Service.
+- implementing Function Compute to manage real time IoT message processing and the monitoring of data streams.
+
 
 ---
 

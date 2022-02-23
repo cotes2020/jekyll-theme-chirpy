@@ -29,12 +29,14 @@ toc: true
         - [The `static` Modifier](#the-static-modifier)
         - [The `abstract` Modifier](#the-abstract-modifier)
         - [The `final` Modifier](#the-final-modifier)
-    - [Declaring Instance Variables](#declaring-instance-variables)
-    - [Declaring Methods](#declaring-methods)
+    - [Instance Variables](#instance-variables)
+    - [Methods](#methods)
       - [Return Types](#return-types)
       - [Parameters](#parameters)
-      - [Defining Constructors](#defining-constructors)
+      - [Constructors](#constructors)
     - [The Keyword this](#the-keyword-this)
+      - [引用当前类的实例变量](#引用当前类的实例变量)
+      - [调用当前类方法可以使用this关键字调用当前类的方法。](#调用当前类方法可以使用this关键字调用当前类的方法)
 - [算法](#算法)
   - [算法](#算法-1)
     - [一、数据结构的存储方式](#一数据结构的存储方式)
@@ -1008,7 +1010,10 @@ In general, the different access control modifiers and their meaning are as foll
 
 ##### The `static` Modifier
 
-- The static modifier in Java can be declared for any `variable` or `method` of a class (or for a nested class)
+`Math.sqrt(2)`
+
+
+The static modifier in Java can be declared for any `variable` or `method` of a class (or for a nested class)
 
 1. When a **variable of a class** is declared as `static`
    - its value is associated with the class as a whole, rather than with each individual instance of that class.
@@ -1020,8 +1025,8 @@ In general, the different access control modifiers and their meaning are as foll
 
 2. When a **method of a class** is declared as `static`
    - associated with the class itself, and not with a particular instance of the class.
-
-   - That means that `the method is not invoked on a particular instance of the class` using the traditional dot notation. Instead, it is typically `invoked using the name of the class` as a qualifier.
+     - `the method is not invoked on a particular instance of the class` using the traditional dot notation.
+     - Instead, it is typically `invoked using the name of the class` as a qualifier.
    - For example
      - in the java.lang package, which is part of the standard Java distribution, there is a `Math` class that provides many static methods, including one named sqrt that computes square roots of numbers.
      - To compute a square root, you do not need to create an instance of the Math class; that method is called using a syntax such as `Math.sqrt(2)`, with the class name Math as the qualifier before the dot operator.
@@ -1031,6 +1036,7 @@ In general, the different access control modifiers and their meaning are as foll
 ---
 
 ##### The `abstract` Modifier
+
 1. A **method of a class** may be declared as `abstract`
    - its signature is provided but without an implementation of the method body.
    - Abstract methods are an advanced feature of object-oriented programming to be combined with inheritance
@@ -1057,7 +1063,7 @@ In general, the different access control modifiers and their meaning are as foll
 
 
 
-### Declaring Instance Variables
+### Instance Variables
 
 - When defining a class, we can declare any number of **instance variables**.
 - An important principle of object-orientation is that each instance of a class maintains `its own individual set of instance variables`.
@@ -1076,7 +1082,7 @@ private int count;
 ---
 
 
-### Declaring Methods
+### Methods
 
 - A method definition has two parts:
   - the signature
@@ -1132,6 +1138,7 @@ public int getCount() {
 
 
 #### Parameters
+
 - A method’s parameters are defined in a comma-separated list enclosed in parentheses after the name of the method.
 - A parameter consists of two parts, the parameter type and the parameter name.
 -  If a method has no parameters, then only an empty pair of parentheses is used.
@@ -1172,61 +1179,117 @@ In contrast, if we were to call `goodReset(strikes)`, this does indeed reset the
 
 ---
 
-#### Defining Constructors
+#### Constructors
 
-- A constructor is a special kind of method that is used to `initialize a newly created instance of the class` so that it will be in a consistent and stable initial state.
-- This is typically achieved by initializing each instance variable of the object (unless the default value will suffice),
-
-
-The general syntax for declaring a constructor in Java is as follows:
+declaring a constructor in Java:
 
 ```java
 modifiers name(type0 parameter0 , ..., typen−1 parametern−1) {
     // constructor body . . .
 }
 ```
-Constructors are defined in a very similar way as other methods of a class, but there are a few important distinctions:
-1. Constructors cannot be static, abstract, or final, so the only modifiers that are allowed are those that affect visibility (i.e., `public, protected, private, or the default package-level` visibility).
 
-2. The name of the constructor must be identical to the name of the class it constructs.
-   1. For example, when defining the Counter class, a constructor must be named Counter as well.
+**constructor**
 
-3. We don’t specify a return type for a constructor (not even void). Nor does the body of a constructor explicitly return anything. When a user of a class creates an instance using a syntax such as
+- a special kind of method to `initialize a newly created instance of the class` so that it will be in a **consistent and stable initial state**.
 
-Counter d = new Counter(5);
+- This is typically achieved by initializing each instance variable of the object (unless the default value will suffice),
 
-4. the `new` operator is responsible for returning a reference to the new instance to the caller;
-   - the responsibility of the constructor method is only to initialize the state of the new instance.
+- very similar way as other methods of a class, but few important distinctions:
+  1. Constructors cannot be `static, abstract, or final`, so the only modifiers that are allowed are those that affect visibility (i.e., `public, protected, private, or the default package-level` visibility).
 
+  2. The name of the constructor must be identical to the name of the class it constructs.
+     1. For example, defining the Counter class, a constructor must be named Counter as well.
 
-A class can have many constructors, but each must have a different signature, each must be distinguished by the type and number of the parameters it takes.
-- If no constructors are explicitly defined, Java provides an implicit default constructor for the class, having zero arguments and leaving all instance variables initialized to their default values.
-- However, if a class defines one or more nondefault constructors, no default constructor will be provided.
-
-
-As an example, our Counter class defines the following pair of constructors:
-
-```java
-public Counter() { }
-public Counter(int initial) { count = initial; }
-```
+  3. don’t specify a return type for a constructor (not even void).
+     1. Nor does the body of a constructor explicitly return anything.
+     2. When a user of a class creates an instance using a syntax such as `Counter d = new Counter(5);`
+     3. the `new` operator is responsible for returning a reference to the new instance to the caller;
+     4. the responsibility of the constructor method is only to initialize the state of the new instance.
 
 
-- The first of these has a trivial body, { }, as the goal for this default constructor is to create a counter with value zero, and that is already the default value of the integer instance variable, count.
-- However, it is still important that we declared such an explicit constructor, because otherwise none would have been provided, given the existence of the nondefault constructor. In that scenario, a user would have been unable to use the syntax, new Counter().
+- A class can have many constructors, but each must have a different signature
+  - each must be distinguished by the **type and number of the parameters** it takes.
+  - If no constructors are explicitly defined, Java provides an implicit default constructor for the class, having zero arguments and leaving all instance variables initialized to their default values.
+  - However, if a class defines one or more nondefault constructors, no default constructor will be provided.
+  - As an example, our Counter class defines the following pair of constructors:
+
+  ```java
+  public Counter() { }
+  public Counter(int initial) { count = initial; }
+  ```
+
+
+    - The first of these has a trivial body, { }, as the goal for this default constructor is to create a counter with value zero, and that is already the default value of the integer instance variable, count.
+
+    - it is important to declare such an explicit constructor,
+      - because otherwise none would have been provided, given the existence of the nondefault constructor.
+      - In that scenario, a user would have been unable to use the syntax, new Counter().
 
 
 ---
 
 ### The Keyword this
 
-Within the body of a (nonstatic) method in Java, the keyword this is automatically defined as a reference to the instance upon which the method was invoked. That is, if a caller uses a syntax such as thing.foo(a, b, c), then within the body of method foo for that call, the keyword this refers to the object known as thing in the caller’s context. There are three common reasons why this reference is needed from within a method body:
+在java中，这是一个引用当前对象的引用变量。
+
+java this关键字的用法如下：
+1. this关键字可用来引用当前类的实例变量。
+2. this关键字可用于调用当前类方法(隐式)。
+3. this()可以用来调用当前类的构造函数。
+4. this关键字可作为调用方法中的参数传递。
+5. this关键字可作为参数在构造函数调用中传递。
+6. this关键字可用于从方法返回当前类的实例。
+
+#### 引用当前类的实例变量
+
+如果实例变量和参数之间存在歧义，则 this 关键字可用于明确地指定类变量以解决歧义问题。
+- 参数(形式参数)和实例变量(rollno和name)是相同的。 所以要使用this关键字来区分局部变量和实例变量。
+
+```java
+class Student {
+    int rollno;
+    String name;
+    float fee;
+
+    Student(int rollno, String name, float fee) {
+        this.rollno = rollno;
+        this.name = name;
+        this.fee = fee;
+    }
+
+    // 如果局部变量(形式参数)和实例变量不同，则不需要使用this关键字
+    Student(int r, String n, float f) {
+        rollno = r;
+        name = n;
+        fee = f;
+    }
+}
+```
+
+
+#### 调用当前类方法可以使用this关键字调用当前类的方法。
+
+如果不使用this关键字，编译器会在调用方法时自动添加此 this 关键字。
+
+
+
+
+Within the body of a (nonstatic) method in Java, the keyword `this` is automatically defined as a `reference to the instance` upon which the method was invoked.
+
+- if a caller uses a syntax such as thing.foo(a, b, c), then within the body of method foo for that call, the keyword this refers to the object known as thing in the caller’s context.
+
+There are three common reasons why this reference is needed from within a method body:
 1. To store the reference in a variable, or send it as a parameter to another method that expects an instance of that type as an argument.
 2. To differentiate between an instance variable and a local variable with the same name. If a local variable is declared in a method having the same name as an instance variable for the class, that name will refer to the local variable within that method body. (We say that the local variable masks the instance variable.) In this case, the instance variable can still be accessed by explicitly using the dot notation with this as the qualifier. For example, some programmers prefer to use the following style for a constructor, with a parameter having the same name as the underlying variable.
+
+```java
 public Counter(int count) {
 this.count = count; // set the instance variable equal to parameter
 }
-3. To allow one constructor body to invoke another constructor body. When one method of a class invokes another method of that same class on the current instance, that is typically done by using the (unqualified) name of the other method. But the syntax for calling a constructor is special. Java allows use of the keyword this to be used as a method within the body of one constructor, so as to invoke another constructor with a different signature.
+```
+
+1. To allow one constructor body to invoke another constructor body. When one method of a class invokes another method of that same class on the current instance, that is typically done by using the (unqualified) name of the other method. But the syntax for calling a constructor is special. Java allows use of the keyword this to be used as a method within the body of one constructor, so as to invoke another constructor with a different signature.
 This is often useful because all of the initialization steps of one constructor can be reused with appropriate parameterization. As a trivial demonstra- tion of the syntax, we could reimplement the zero-argument version of our Counter constructor to have it invoke the one-argument version sending 0 as an explicit parameter. This would be written as follows:
 public Counter() {
 this(0); // invoke one-parameter constructor with value zero
