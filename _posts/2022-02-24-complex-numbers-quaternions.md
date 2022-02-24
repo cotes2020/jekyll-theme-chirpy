@@ -157,10 +157,10 @@ Now, we have to find the set of four $$4 \times 4$$ matrices, $$B^{i^\prime}_{\p
 
 $$
 \begin{align}
-\begin{pmatrix} a & b & c & d \end{pmatrix} \pmb{B}^{0^\prime}_{\phantom{0^\prime} ki} & = \begin{pmatrix} a & -b & -c & -d \end{pmatrix} \\
-\begin{pmatrix} a & b & c & d \end{pmatrix} \pmb{B}^{1^\prime}_{\phantom{1^\prime} ki} & = \begin{pmatrix} b & a & d & -c \end{pmatrix} \\
-\begin{pmatrix} a & b & c & d \end{pmatrix} \pmb{B}^{2^\prime}_{\phantom{2^\prime} ki} & = \begin{pmatrix} c & d & a & b \end{pmatrix} \\
-\begin{pmatrix} a & b & c & d \end{pmatrix} \pmb{B}^{3^\prime}_{\phantom{3^\prime} ki} & = \begin{pmatrix} -d & c & -b & a \end{pmatrix}
+\begin{pmatrix} a & b & c & d \end{pmatrix} \: \pmb{B}^{0^\prime}_{\phantom{0^\prime} ki} & = \begin{pmatrix} a & -b & -c & -d \end{pmatrix} \\
+\begin{pmatrix} a & b & c & d \end{pmatrix} \: \pmb{B}^{1^\prime}_{\phantom{1^\prime} ki} & = \begin{pmatrix} b & a & d & -c \end{pmatrix} \\
+\begin{pmatrix} a & b & c & d \end{pmatrix} \: \pmb{B}^{2^\prime}_{\phantom{2^\prime} ki} & = \begin{pmatrix} c & d & a & b \end{pmatrix} \\
+\begin{pmatrix} a & b & c & d \end{pmatrix} \: \pmb{B}^{3^\prime}_{\phantom{3^\prime} ki} & = \begin{pmatrix} -d & c & -b & a \end{pmatrix}
 \end{align}
 $$
 
