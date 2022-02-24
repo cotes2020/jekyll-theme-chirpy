@@ -2,10 +2,10 @@
 title: "Algebra Done Tensorially: Part 2 (Algebras Over Fields)"
 description: "A look at 'algebras' and their structure"
 categories: [abstract algebra, representation theory, tensor algebra]
-tags: [tensors]
+tags: [tensors, bilinear products, algebra]
 ---
 
-Welcome to Part 2 of '_Algebra done Tensorially_'. If you haven't already done so, make sure to check out [Part 1 (Bilinear Products)]({% post_url 2021-10-18-bilinear-products %}) before reading this post :) I will start right from where we stopped in Part 1.
+Welcome to Part 2 of '_Algebra Done Tensorially_'. If you haven't already done so, make sure to check out [Part 1 (Bilinear Products)]({% post_url 2021-10-18-bilinear-products %}) before reading this post :) I will start right from where we stopped in Part 1.
 
 ## Recap: bilinear products as linear maps
 
@@ -75,7 +75,7 @@ $$
 
 Therefore, in the basis $$\pmb{\mathcal{B}} \left( \pmb{E}_K \pmb{\Theta}^L, \pmb{E}_I \pmb{\Theta}^J \right) \pmb{E}_J \pmb{\Theta}^I$$, the coordinates of $$\pmb{\Gamma}$$ are $$\Phi^{K}_{\phantom{K} L}$$.
 
-The basis above is not a covariant one. Therefore, it is instead a set of basis functions for the map $$\pmb{\Gamma}$$.
+Note that the basis above is not a covariant one.
 
 ### As a vector space
 
@@ -185,4 +185,4 @@ An algebra is described by its underlying Jacobian. Therefore, the form of the J
 
 ## Wrapping up
 
-This completes the basic concepts we will require to work with algebras tensorially. The exact procedure to do so will be described in the next post, [Algebra Done Tensorially: Part 3a (Clifford Algebras)]().
+This completes the basic concepts we will require to work with algebras tensorially. Examples solidifying these ideas will be seen in the next post, [Algebra Done Tensorially: Part 3 (Complex Numbers and Quaternions)]({% post_url 2022-02-24-complex-numbers-quaternions %}). Then, we will generalize the results to a family of algebras, in [Algebra Done Tensorially: Part 4 (Clifford Algebras)]().

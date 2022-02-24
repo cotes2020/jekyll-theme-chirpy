@@ -2,20 +2,22 @@
 title: "Algebra Done Tensorially: Part 1 (Bilinear Products)"
 description: "A post studying bilinear products in tensor algebra"
 categories: [abstract algebra, representation theory, tensor algebra]
-tags: [tensors]
+tags: [tensors, bilinear products, algebra]
 ---
 
-Welcome to this four-part series of posts. In this first post, I will be exploring bilinear products using tensor analysis. This will be used in the next three posts, namely,
+Welcome to this five-part series of posts:
+
+[Algebra Done Tensorially: Part 1 (Bilinear Products)]({% post_url 2021-10-18-bilinear-products %})
 
 [Algebra Done Tensorially: Part 2 (Algebras Over Fields)]({% post_url 2021-10-23-algebras-over-fields %})
 
-[Algebra Done Tensorially: Part 3a (Clifford Algebras)]()
+[Algebra Done Tensorially: Part 3 (Complex Numbers and Quaternions)]({% post_url 2022-02-24-complex-numbers-quaternions %})
 
-[Algebra Done Tensorially: Part 3b (Clifford Algebras)]()
+[Algebra Done Tensorially: Part 4 (Clifford Algebras)]()
 
-[Algebra Done Tensorially: Part 4 (Lie Algebras)]()
+[Algebra Done Tensorially: Part 5 (Lie Algebras)]()
 
-Since tensors will be used extensively in this series, I thought it best to quickly recap their working. Note that this is _not_ appropriate for first learning the topic. If you haven't already studied tensors, I'd recommend watching [this excellent playlist](https://youtube.com/playlist?list=PLJHszsWbB6hrkmmq57lX8BV-o-YIOFsiG) by YouTuber [Eigenchris](https://www.youtube.com/user/eigenchris).
+In this first post, I will be exploring bilinear products using tensor analysis. Since tensors will be used extensively in this series, I thought it best to quickly recap their working. Note that this is _not_ appropriate as an introduction to tensors. If you haven't already studied tensors, I'd recommend watching [this excellent playlist](https://youtube.com/playlist?list=PLJHszsWbB6hrkmmq57lX8BV-o-YIOFsiG) by YouTuber [Eigenchris](https://www.youtube.com/user/eigenchris).
 
 If you are already aware of how tensors work, skip to [bilinear products](#bilinear_products).
 
