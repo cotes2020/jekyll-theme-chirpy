@@ -8,7 +8,7 @@ Welcome to Part 3 of '_Algebra Done Tensorially_'. It's been a while since [Part
 
 ## Recap: vector algebras
 
-In the [previous post]({% post_url 2021-10-23-algebras-over-fields %}), we had seen that algebras on rank $$1$$ vector spaces are the only ones that are non-redundant in terms of the degrees of freedom of the elements of the vector space (revisit the argument [here]({% post_url 2021-10-23-algebras-over-fields %}#the-jacobian)). This makes things much simpler, as we don't have to bother about general higher-dimensional algebras (for them, the [Gamma tensor]({% post_url 2021-10-23-algebras-over-fields %}#gamma-tensor) is richer in information than the degrees of freedom).
+In the [previous post]({% post_url 2021-10-23-algebras-over-fields %}), we had seen that algebras on rank $$1$$ vector spaces are the only ones that are non-redundant in terms of the degrees of freedom of the elements of the vector space (revisit the argument [here]({% post_url 2021-10-23-algebras-over-fields %}#the-jacobian)). This makes things much simpler, as we don't have to bother about general higher-dimensional algebras (for them, the [J tensor]({% post_url 2021-10-23-algebras-over-fields %}#J-tensor) is richer in information than the degrees of freedom).
 
 Therefore, we are left with the notion of bilinear vector products which act on a vector space as a linear transformation by making the other argument implicit:
 
@@ -30,9 +30,9 @@ The algebra of complex numbers deals with their multiplicative group. Under mult
 
 <a name="invariant_quantity"></a>
 
-However, the elements of $$\text{O} \left( 2 \right)$$ can be defined in a manner which will be useful for later generalization. Namely, when some $$\pmb{\Lambda} \in \text{O} \left( 2 \right)$$ is characterized by a $$\pmb{x} \in \mathbb{R}^2$$, the following quantity is invariant:
+However, the elements of $$\text{O} \left( 2 \right)$$ can be defined in a manner which will be useful for later generalization. Namely, when some $$\pmb{\Lambda} \in \text{O} \left( 2 \right)$$ is characterized by a $$\pmb{\phi} \in \mathbb{R}^2$$, the following quantity is invariant:
 
-$$\frac{\left\langle \pmb{x}, \pmb{x} \right\rangle}{\det \left( \pmb{\Lambda} \right)}$$
+$$\frac{\left\langle \pmb{\phi}, \pmb{\phi} \right\rangle}{\det \left( \pmb{\Lambda} \right)}$$
 
 Now, we will investigate the action of complex numbers on vectors belonging to $$\mathbb{R}^2$$.
 
@@ -122,12 +122,12 @@ Let us now look at the 4-dimensional extension of complex numbers: quaternions.
 
 Let $$\mathbb{H}$$ be the set of quaternions. The multiplicative group of quaternions, $$\left( \mathbb{H}, \times \right)$$ is isomorphic to the 4-dimensional orthogonal group, $$\text{O} \left( 4 \right)$$.
 
-Let us generalize [the invariant quantity](#invariant_quantity) with regard to $$\text{O} \left( 2 \right)$$. For a member of $$\pmb{\Lambda} \in \text{O} \left( 4 \right)$$ characterized by some $$\pmb{x} \in \mathbb{R}^4$$, we have the invariant,
+Let us generalize [the invariant quantity](#invariant_quantity) with regard to $$\text{O} \left( 2 \right)$$. For a member of $$\pmb{\Lambda} \in \text{O} \left( 4 \right)$$ characterized by some $$\pmb{\phi} \in \mathbb{R}^4$$, we have the invariant,
 
 $$
 \begin{align}
-\frac{\left\langle \pmb{x}, \pmb{x} \right\rangle}{\det \left( \Lambda^{i^\prime}_{\phantom{i^\prime} i} \right)} & = 1 \\
-\implies \det \left( \Lambda^{i^\prime}_{\phantom{i^\prime} i} \right) & = \left\langle \pmb{x}, \pmb{x} \right\rangle = \sum_{i=0}^3 \left( x^i \right)^2
+\frac{\left\langle \pmb{\phi}, \pmb{\phi} \right\rangle}{\det \left( \Lambda^{i^\prime}_{\phantom{i^\prime} i} \right)} & = 1 \\
+\implies \det \left( \Lambda^{i^\prime}_{\phantom{i^\prime} i} \right) & = \left\langle \pmb{\phi}, \pmb{\phi} \right\rangle = \sum_{k=0}^3 \left( \phi^k \right)^2
 \end{align}
 $$
 
