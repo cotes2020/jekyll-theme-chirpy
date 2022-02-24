@@ -4,6 +4,7 @@ description: "Constructing the algebra of complex numbers and quaternions, from 
 categories: [abstract algebra, representation theory, tensor algebra]
 tags: [tensors, bilinear products, algebra]
 ---
+
 Welcome to Part 3 of '_Algebra Done Tensorially_'. It's been a while since [Part 1 (Bilinear Products)]({% post_url 2021-10-18-bilinear-products %}) and [Part 2 (Algebras Over Fields)]({% post_url 2021-10-23-algebras-over-fields %}), so let us resume our investigation of algebras without further ado.
 
 ## Recap: vector algebras
@@ -268,9 +269,9 @@ Through the two popular examples of complex numbers and quaternions, we have see
 
 Some problematic aspects of our methods used so far are:
 
-1. The matrix representation for the action of $$\text{O} \left( 4 \right)$$ on $$\mathbb{R}^4$$ was found by contracting its 4 degrees of freedom into 2 independent complex numbers, without justification. Is there a more 'honest' method to find the form of $$\pmb{\Lambda} \left( \pmb{x} \right)$$, solely given the following?
+1. The matrix representation for the action of $$\text{O} \left( 4 \right)$$ on $$\mathbb{R}^4$$ was found by contracting its 4 degrees of freedom into 2 independent complex numbers, without justification. Is there a more 'honest' method to find the form of $$\pmb{\Lambda} \left( \pmb{\phi} \right)$$, solely given the following?
 
-$$\det \left( \pmb{\Lambda} \left( \pmb{x} \right) \right) = \left\langle \pmb{x}, \pmb{x} \right\rangle$$
+$$\det \left( \pmb{\Lambda} \left( \pmb{\phi} \right) \right) = \left\langle \pmb{\phi}, \pmb{\phi} \right\rangle$$
 
 Moreover, how can we use the above coordinate-independent fact to find $$\pmb{\Lambda}$$ in arbitrary coordinates, as opposed to the convenient Cartesian coordinates?
 
