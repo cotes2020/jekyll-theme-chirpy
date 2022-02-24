@@ -8,7 +8,7 @@ Welcome to Part 3 of '_Algebra Done Tensorially_'. It's been a while since [Part
 
 ## Recap: vector algebras
 
-In the [previous post]({% post_url 2021-10-23-algebras-over-fields %}), we had seen that algebras on rank $$1$$ vector spaces are the only ones that are non-redundant in terms of the degrees of freedom of the elements of the vector space (revisit the argument [here]({% post_url 2021-10-23-algebras-over-fields %}#the-jacobian)). This makes things much simpler, as we don't have to bother about general higher-dimensional algebras (for them, the [Gamma tensor]{% post_url 2021-10-23-algebras-over-fields %}#gamma-tensor) is richer in information than the degrees of freedom).
+In the [previous post]({% post_url 2021-10-23-algebras-over-fields %}), we had seen that algebras on rank $$1$$ vector spaces are the only ones that are non-redundant in terms of the degrees of freedom of the elements of the vector space (revisit the argument [here]({% post_url 2021-10-23-algebras-over-fields %}#the-jacobian)). This makes things much simpler, as we don't have to bother about general higher-dimensional algebras (for them, the [Gamma tensor]({% post_url 2021-10-23-algebras-over-fields %}#gamma-tensor) is richer in information than the degrees of freedom).
 
 Therefore, we are left with the notion of bilinear vector products which act on a vector space as a linear transformation by making the other argument implicit:
 
