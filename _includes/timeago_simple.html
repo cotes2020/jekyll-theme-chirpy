@@ -30,6 +30,6 @@
   {% endif %}
 {% endcapture %}
 
-<em>
+<em {% if include.small %}class="small"{% endif %}>
     {{ month_name | append: ' ' | append: day | append: ', ' | append: year }}
 </em>
