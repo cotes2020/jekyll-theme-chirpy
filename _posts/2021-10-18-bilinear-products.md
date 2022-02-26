@@ -45,14 +45,25 @@ $$\pmb{T} \left( \chi_{i_1} \pmb{\theta}^{i_1}, \psi_{i_2} \pmb{\theta}^{i_2}, \
 
 With respect to the previous section, for a tensor $$\pmb{T}$$, its _components_ $$T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q}$$ are defined in the manner,
 
-$$
-\begin{align}
-\pmb{T} \left( \pmb{\theta}^{i_1}, \cdots, \pmb{\theta}^{i_p}, \pmb{e}_{j_1}, \dots, \pmb{e}_{j_q} \right) & = T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q} \: \underset{a=1}{\overset{p}{\bigotimes}} \pmb{e}_{i_a} \underset{b=1}{\overset{q}{\bigotimes}} \pmb{\theta}^{j_b} \\
-T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q}  & = \left\langle \pmb{T} \left( \pmb{\theta}^{i_1}, \cdots, \pmb{\theta}^{i_p}, \pmb{e}_{j_1}, \dots, \pmb{e}_{j_q} \right), \underset{a=1}{\overset{p}{\bigotimes}} \pmb{e}_{i_a} \underset{b=1}{\overset{q}{\bigotimes}} \pmb{\theta}^{j_b} \right\rangle
-\end{align}
-$$
+$$\pmb{T} \left( \pmb{\theta}^{i_1}, \cdots, \pmb{\theta}^{i_p}, \pmb{e}_{j_1}, \dots, \pmb{e}_{j_q} \right) = T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q} \: \underset{a=1}{\overset{p}{\bigotimes}} \pmb{e}_{i_a} \underset{b=1}{\overset{q}{\bigotimes}} \pmb{\theta}^{j_b}$$
 
-where $$\langle \rangle : \underset{i=1}{\overset{p}{\bigotimes}} V \underset{j=1}{\overset{q}{\bigotimes}} V^\text{*} \times \underset{i=1}{\overset{p}{\bigotimes}} V \underset{j=1}{\overset{q}{\bigotimes}} V^\text{*} \mapsto F$$, $$F$$ being the base field of $$V$$.
+The covector basis is defined to act on the vector basis and vice-versa as:
+
+$$\pmb{\theta}^i \left( \pmb{e}_j \right) = \pmb{e}_j \left( \pmb{\theta}^i \right) = \delta^i_{\phantom{i}_j}$$
+
+(The logic behind the above definition is explained in [another post]({% post_url 2021-10-23-covector-basis-definition %}).)
+
+Assuming that covectors act on vectors only and vice-versa under the tensor product, we can extend the action to multiple copies of basis vectors and covectors so that,
+
+$$\underset{a=1}{\overset{p}{\bigotimes}} \pmb{\theta}^{i_a} \underset{b=1}{\overset{q}{\bigotimes}} \pmb{e}_{j_b} : \underset{a=1}{\overset{p}{\bigotimes}} V \underset{b=1}{\overset{q}{\bigotimes}} V^* \mapsto \mathcal{I} \left[ V^{p+q} \right] = \mathcal{I} \left[ \left( V^* \right)^{p+q} \right]$$
+
+where $$\mathcal{I}$$ is the identity map. Now writing the above explicitly, we get,
+
+$$\underset{a=1}{\overset{p}{\bigotimes}} \pmb{\theta}^{i_a} \underset{b=1}{\overset{q}{\bigotimes}} \pmb{e}_{j_b} \left[ \underset{a=1}{\overset{p}{\bigotimes}} \pmb{e}_{k_a} \underset{b=1}{\overset{q}{\bigotimes}} \pmb{\theta}^{l_b} \right] = \prod_{a=1}^p \delta^{i_a}_{\phantom{i_a} k_a} \prod_{b=1}^q \delta^{l_b}_{\phantom{l_b} j_b}$$
+
+The components of a tensor can now be written as,
+
+$$T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q} = \underset{a=1}{\overset{p}{\bigotimes}} \pmb{\theta}^{i_a} \underset{b=1}{\overset{q}{\bigotimes}} \pmb{e}_{j_b} \left[ \pmb{T} \left( \pmb{\theta}^{i_1}, \cdots, \pmb{\theta}^{i_p}, \pmb{e}_{j_1}, \dots, \pmb{e}_{j_q} \right) \right]$$
 
 <a name="tuple_notation"></a>
 
@@ -61,7 +72,7 @@ To simplify our lives, let us represent tuples of indices with their capital let
 $$
 \begin{align}
 \pmb{T} \left( \pmb{\Theta}^I, \pmb{E}_J \right) & = T^K_{\phantom{K} L} \: \pmb{E}_K \pmb{\Theta}^L \\
-T^K_{\phantom{K} L} & = \left\langle \pmb{T} \left( \pmb{\Theta}^I, \pmb{E}_J \right), \pmb{E}_K \pmb{\Theta}^L \right\rangle
+T^K_{\phantom{K} L} & = \pmb{\Theta}^K \pmb{E}_L \left[ \pmb{T} \left( \pmb{\Theta}^I, \pmb{E}_J \right) \right]
 \end{align}
 $$
 
@@ -80,7 +91,7 @@ $$
 \begin{align}
 T^{i_1^\prime \dots i_p^\prime}_{\phantom{i_1^\prime \dots i_p^\prime} j_1^\prime \dots j_q^\prime} & = \Lambda^{i_1^\prime}_{\phantom{i_1^\prime} i_1} \dots \Lambda^{i_p^\prime}_{\phantom{i_p^\prime} i_p} \: T \left( \pmb{\theta}^{i_1}, \dots, \pmb{\theta}^{i_p}, \pmb{e}_{j_1}, \dots, \pmb{e}_{j_q} \right) \Lambda^{j_1}_{\phantom{j_1} j_1^\prime} \dots \Lambda^{j_q}_{\phantom{j_q} j_q^\prime} \\
 T^{i_1^\prime \dots i_p^\prime}_{\phantom{i_1^\prime \dots i_p^\prime} j_1^\prime \dots j_q^\prime} & = \Lambda^{i_1^\prime}_{\phantom{i_1^\prime} i_1} \dots \Lambda^{i_p^\prime}_{\phantom{i_p^\prime} i_p} \: T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q} \Lambda^{j_1}_{\phantom{j_1} j_1^\prime} \dots \Lambda^{j_q}_{\phantom{j_q} j_q^\prime} \\
-T^{i_1^\prime \dots i_p^\prime}_{\phantom{i_1^\prime \dots i_p^\prime} j_1^\prime \dots j_q^\prime} & = \left( \prod_{a=1}^p \prod_{b=1}^q \Lambda^{i_a^\prime}_{\phantom{i_a^\prime} i_a} \Lambda^{j_b}_{\phantom{j_b} j_b^\prime} \right) T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q}
+T^{i_1^\prime \dots i_p^\prime}_{\phantom{i_1^\prime \dots i_p^\prime} j_1^\prime \dots j_q^\prime} & = \left( \prod_{a=1}^p \Lambda^{i_a^\prime}_{\phantom{i_a^\prime} i_a} \prod_{b=1}^q \Lambda^{j_b}_{\phantom{j_b} j_b^\prime} \right) T^{i_1 \dots i_p}_{\phantom{i_1 \dots i_p} j_1 \dots j_q}
 \end{align}
 $$
 
@@ -142,27 +153,27 @@ $$
 \end{align}
 $$
 
-In the context of the above, the components $$B^{J \phantom{I} L \phantom{K} M}_{\phantom{J} I \phantom{L} K \phantom{M} N}$$ of $$\mathcal{B}$$ are defined as,
+In the context of the above, the components $$B^{J \phantom{I} L \phantom{K} M}_{\phantom{J} I \phantom{L} K \phantom{M} N}$$ of $$\mathcal{B}$$ may be defined as,
 
 $$
 \begin{align}
 \pmb{\mathcal{B}} \left( \pmb{E}_I \pmb{\Theta}^J, \pmb{E}_K \pmb{\Theta}^L \right) & = B^{J \phantom{I} L \phantom{K} M}_{\phantom{J} I \phantom{L} K \phantom{M} N} \: \pmb{E}_M \pmb{\Theta}^N \\
-\implies B^{J \phantom{I} L \phantom{K} M}_{\phantom{J} I \phantom{L} K \phantom{M} N} & = \left\langle \pmb{\mathcal{B}} \left( \pmb{E}_I \pmb{\Theta}^J, \pmb{E}_K \pmb{\Theta}^L \right), \pmb{E}_M \pmb{\Theta}^N \right\rangle
+\implies B^{J \phantom{I} L \phantom{K} M}_{\phantom{J} I \phantom{L} K \phantom{M} N} & = \pmb{\Theta}^M \pmb{E}_N \left[ \pmb{\mathcal{B}} \left( \pmb{E}_I \pmb{\Theta}^J, \pmb{E}_K \pmb{\Theta}^L \right) \right]
 \end{align}
 $$
 
 It is noteworthy that in the above, odd tuples i.e. $$I, K, M$$ are indices running from $$1$$ to $$p$$, coupled with $$V$$ ; while even tuples $$J, L, N$$ run from $$1$$ to $$q$$ coupled with $$V^\text{*}$$.
 
-We know that $$\pmb{\mathcal{B}} \left( \pmb{\Phi}, \pmb{T} \right)$$ is a tensor in the same space as its arguments, but that does not immediately justify that the components of $$\pmb{\mathcal{B}}$$ [as we defined them](#components_bilinear_product) transform like tensor components. Instead, we will have to verify that manually,
+We know that $$\pmb{\mathcal{B}} \left( \pmb{\Phi}, \pmb{T} \right)$$ is a tensor in the same space as its arguments, but that does not immediately justify that the components of $$\pmb{\mathcal{B}}$$ as we defined them transform like tensor components. Instead, we will have to verify that manually,
 
 $$
 \begin{align}
-B^{J^\prime \phantom{I^\prime} L^\prime \phantom{K^\prime} M^\prime}_{\phantom{J^\prime} I^\prime \phantom{L^\prime} K^\prime \phantom{M^\prime} N^\prime} & = \left\langle \pmb{\mathcal{B}} \left( \pmb{E}_{I^\prime} \pmb{\Theta}^{J^\prime}, \pmb{E}_{K^\prime} \pmb{\Theta}^{L^\prime} \right), \pmb{E}_{M^\prime} \pmb{\Theta}^{N^\prime} \right\rangle \\
- & = \left\langle \pmb{\mathcal{B}} \left( \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \: \pmb{E}_{I} \pmb{\Theta}^{J}, \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L} \: \pmb{E}_{K} \pmb{\Theta}^{L} \right), \pmb{E}_{M^\prime} \pmb{\Theta}^{N^\prime} \right\rangle \\
- & = \left\langle \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \: \pmb{\mathcal{B}} \left( \pmb{E}_{I} \pmb{\Theta}^{J}, \pmb{E}_{K} \pmb{\Theta}^{L} \right) \: \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L}, \pmb{E}_{M^\prime} \pmb{\Theta}^{N^\prime} \right\rangle \\
- & = \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L} \left\langle \pmb{\mathcal{B}} \left( \pmb{E}_{I} \pmb{\Theta}^{J}, \pmb{E}_{K} \pmb{\Theta}^{L} \right), \pmb{E}_{M^\prime} \pmb{\Theta}^{N^\prime} \right\rangle \\
- & = \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L} \left\langle \pmb{\mathcal{B}} \left( \pmb{E}_{I} \pmb{\Theta}^{J}, \pmb{E}_{K} \pmb{\Theta}^{L} \right), \Lambda^M_{\phantom{M} M^\prime} \Lambda^{N^\prime}_{\phantom{N^\prime} N} \pmb{E}_{M} \pmb{\Theta}^{N} \right\rangle \\
- & = \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L} \Lambda^M_{\phantom{M} M^\prime} \Lambda^{N^\prime}_{\phantom{N^\prime} N} \left\langle \pmb{\mathcal{B}} \left( \pmb{E}_{I} \pmb{\Theta}^{J}, \pmb{E}_{K} \pmb{\Theta}^{L} \right), \pmb{E}_{M} \pmb{\Theta}^{N} \right\rangle \\
+B^{J^\prime \phantom{I^\prime} L^\prime \phantom{K^\prime} M^\prime}_{\phantom{J^\prime} I^\prime \phantom{L^\prime} K^\prime \phantom{M^\prime} N^\prime} & = \pmb{\Theta}^{M^\prime} \pmb{E}_{N^\prime} \left[ \pmb{\mathcal{B}} \left( \pmb{E}_{I^\prime} \pmb{\Theta}^{J^\prime}, \pmb{E}_{K^\prime} \pmb{\Theta}^{L^\prime} \right) \right] \\
+ & = \pmb{\Theta}^{M^\prime} \pmb{E}_{N^\prime} \left[ \pmb{\mathcal{B}} \left( \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \: \pmb{E}_{I} \pmb{\Theta}^{J}, \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L} \: \pmb{E}_{K} \pmb{\Theta}^{L} \right) \right] \\
+ & = \pmb{\Theta}^{M^\prime} \pmb{E}_{N^\prime} \left[ \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \: \pmb{\mathcal{B}} \left( \pmb{E}_{I} \pmb{\Theta}^{J}, \pmb{E}_{K} \pmb{\Theta}^{L} \right) \: \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L} \right] \\
+ & = \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L} \pmb{\Theta}^{M^\prime} \pmb{E}_{N^\prime} \left[ \pmb{\mathcal{B}} \left( \pmb{E}_{I} \pmb{\Theta}^{J}, \pmb{E}_{K} \pmb{\Theta}^{L} \right) \right] \\
+ & = \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L} \left( \Lambda^{M^\prime}_{\phantom{M^\prime} M} \Lambda^{N}_{\phantom{N} N^\prime} \pmb{\Theta}^M \pmb{E}_N \right) \left[ \pmb{\mathcal{B}} \left( \pmb{E}_{I} \pmb{\Theta}^{J}, \pmb{E}_{K} \pmb{\Theta}^{L} \right) \right] \\
+ & = \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L} \Lambda^{M^\prime}_{\phantom{M^\prime} M} \Lambda^{N}_{\phantom{N} N^\prime} \pmb{\Theta}^M \pmb{E}_N \left[ \pmb{\mathcal{B}} \left( \pmb{E}_{I} \pmb{\Theta}^{J}, \pmb{E}_{K} \pmb{\Theta}^{L} \right) \right] \\
  & = \Lambda^I_{\phantom{I} I^\prime} \Lambda^{J^\prime}_{\phantom{J^\prime} J} \Lambda^K_{\phantom{K} K^\prime} \Lambda^{L^\prime}_{\phantom{L^\prime} L} \Lambda^M_{\phantom{M} M^\prime} \Lambda^{N^\prime}_{\phantom{N^\prime} N} \: B^{J \phantom{I} L \phantom{K} M}_{\phantom{J} I \phantom{L} K \phantom{M} N}
 \end{align}
 $$

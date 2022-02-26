@@ -68,7 +68,7 @@ $$
 \begin{align}
 \pmb{J} & = \Lambda^{I^\prime}_{\phantom{I^\prime} I} \Lambda^{J}_{\phantom{L} J^\prime} \: \pmb{E}_{I^\prime J} \pmb{\Theta}^{I J^\prime} \\
  & = \Phi^K_{\phantom{K} L} \: B^{L \phantom{K} J \phantom{I} I^\prime}_{\phantom{L} K \phantom{J} I \phantom{I^\prime} J^\prime} \: \pmb{E}_{I^\prime J} \pmb{\Theta}^{I J^\prime} \\
- & = \Phi^K_{\phantom{K} L} \left\langle \pmb{\mathcal{B}} \left( \pmb{E}_K \pmb{\Theta}^L, \pmb{E}_I \pmb{\Theta}^J \right), \pmb{E}_{I^\prime} \pmb{\Theta}^{J^\prime} \right\rangle \pmb{E}_{I^\prime J} \pmb{\Theta}^{I J^\prime} \\
+ & = \Phi^K_{\phantom{K} L} \pmb{\Theta}^{I^\prime} \pmb{E}_{J^\prime} \left[ \pmb{\mathcal{B}} \left( \pmb{E}_K \pmb{\Theta}^L, \pmb{E}_I \pmb{\Theta}^J \right) \right] \pmb{E}_{I^\prime J} \pmb{\Theta}^{I J^\prime} \\
  & = \Phi^K_{\phantom{K} L} \: \pmb{\mathcal{B}} \left( \pmb{E}_K \pmb{\Theta}^L, \pmb{E}_I \pmb{\Theta}^J \right) \pmb{E}_J \pmb{\Theta}^I
 \end{align}
 $$

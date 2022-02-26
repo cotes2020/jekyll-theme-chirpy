@@ -240,7 +240,7 @@ Given a Jacobian parameterized by a vector space as $$\Lambda^{i^\prime}_{\phant
 
 $$\Lambda^{i^\prime}_{\phantom{i^\prime} i} \left( \phi^k \right) = \phi^k B^{i^\prime}_{\phantom{i^\prime} ki} = \phi^k \gamma_{k \phantom{i^\prime} i}^{\phantom{k} i^\prime}$$
 
-where $$\gamma_{k \phantom{i^\prime} i}^{\phantom{k} i^\prime} = \left\langle \pmb{\gamma}_k, \pmb{\theta}^{i^\prime} \otimes \pmb{e}_{i^\prime} \right\rangle$$.
+where $$\gamma_{k \phantom{i^\prime} i}^{\phantom{k} i^\prime} = \pmb{e}_{i^\prime} \otimes \pmb{\theta}^{i^\prime} \left( \pmb{\gamma}_k \right)$$.
 
 Suppose we want to find the particular $$k^\text{th}$$ gamma matrix instead of summing over $$k$$. To distinguish such dummy indices, let us enclose them in parantheses as $$\left( k \right)$$. Now,
 
