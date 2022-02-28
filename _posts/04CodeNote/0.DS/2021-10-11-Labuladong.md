@@ -36,7 +36,8 @@ toc: true
       - [Constructors](#constructors)
     - [The Keyword this](#the-keyword-this)
       - [引用当前类的实例变量](#引用当前类的实例变量)
-      - [调用当前类方法可以使用this关键字调用当前类的方法。](#调用当前类方法可以使用this关键字调用当前类的方法)
+      - [调用当前类方法](#调用当前类方法)
+      - [调用当前类的构造函数](#调用当前类的构造函数)
 - [算法](#算法)
   - [算法](#算法-1)
     - [一、数据结构的存储方式](#一数据结构的存储方式)
@@ -1241,6 +1242,7 @@ java this关键字的用法如下：
 5. this关键字可作为参数在构造函数调用中传递。
 6. this关键字可用于从方法返回当前类的实例。
 
+
 #### 引用当前类的实例变量
 
 如果实例变量和参数之间存在歧义，则 this 关键字可用于明确地指定类变量以解决歧义问题。
@@ -1248,9 +1250,20 @@ java this关键字的用法如下：
 
 ```java
 class Student {
+    // 实例变量
     int rollno;
     String name;
     float fee;
+
+    Student(int rollno, String name, float fee) { // 局部变量
+        rollno = rollno;
+        name = name;
+        fee = fee;
+    }
+    // output == 0
+    // 在上面的例子中，参数(形式参数)和 实例变量(rollno和name) 是相同的。
+    // 所以要使用this关键字来区分 局部变量 和 实例变量。
+
 
     Student(int rollno, String name, float fee) {
         this.rollno = rollno;
@@ -1268,9 +1281,84 @@ class Student {
 ```
 
 
-#### 调用当前类方法可以使用this关键字调用当前类的方法。
+#### 调用当前类方法
 
-如果不使用this关键字，编译器会在调用方法时自动添加此 this 关键字。
+使用this关键字调用当前类的方法。
+- 如果不使用this关键字，编译器会在调用方法时**自动添加**此 this 关键字。
+
+```java
+class A {
+    void m(){}
+    void n(){
+        m();
+    }
+}
+new A().n();
+
+
+class A {
+    void m(){}
+    void n(){
+        this.m();
+    }
+}
+new A().n();
+```
+
+#### 调用当前类的构造函数
+
+this()构造函数调用
+- 可以用来调用当前类的构造函数。
+- 它用于重用构造函数, 构造函数链接。
+
+**从参数化构造函数调用默认构造函数：**
+
+```java
+class A {
+    A() {
+        System.out.println("hello a");
+    }
+
+    A(int x) {
+        this();
+        System.out.println(x);
+    }
+}
+
+class TestThis5 {
+    public static void main(String args[]) {
+        A a = new A(10);
+    }
+}
+// 执行上面代码输出结果如下:
+hello a
+10
+
+class A {
+    A() {
+        this(5);
+        System.out.println("hello a");
+    }
+
+    A(int x) {
+        System.out.println(x);
+    }
+}
+
+class TestThis6 {
+    public static void main(String args[]) {
+        A a = new A();
+    }
+}
+// 执行上面代码输出结果如下 -
+5
+hello a
+```
+
+
+
+
+
 
 
 
