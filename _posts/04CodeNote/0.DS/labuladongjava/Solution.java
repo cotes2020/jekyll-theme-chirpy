@@ -1,4 +1,5 @@
 package labuladongjava;
+import labuladongjava.other.ListNode;
 
 import java.lang.module.ModuleDescriptor.Builder;
 import java.util.ArrayList;
@@ -8,11 +9,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
 import javax.sound.sampled.Mixer;
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
-import labuladongjava.other.ListNode;
 
 public class Solution { 
     public int dominantIndex(int[] nums) {

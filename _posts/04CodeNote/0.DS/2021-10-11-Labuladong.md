@@ -29,15 +29,19 @@ toc: true
         - [The `static` Modifier](#the-static-modifier)
         - [The `abstract` Modifier](#the-abstract-modifier)
         - [The `final` Modifier](#the-final-modifier)
+          - [final参数**](#final参数)
     - [Instance Variables](#instance-variables)
     - [Methods](#methods)
       - [Return Types](#return-types)
       - [Parameters](#parameters)
       - [Constructors](#constructors)
     - [The Keyword this](#the-keyword-this)
-      - [引用当前类的实例变量](#引用当前类的实例变量)
-      - [调用当前类方法](#调用当前类方法)
-      - [调用当前类的构造函数](#调用当前类的构造函数)
+      - [1. 引用 **当前类** 的实例变量](#1-引用-当前类-的实例变量)
+      - [2. 调用 **当前类** 方法](#2-调用-当前类-方法)
+      - [3. 调用 **当前类** 的构造函数](#3-调用-当前类-的构造函数)
+      - [4. 作为参数 传递给 方法](#4-作为参数-传递给-方法)
+      - [5. 在构造函数调用中 作为参数传递](#5-在构造函数调用中-作为参数传递)
+      - [6. 返回 **当前类** 的实例](#6-返回-当前类-的实例)
 - [算法](#算法)
   - [算法](#算法-1)
     - [一、数据结构的存储方式](#一数据结构的存储方式)
@@ -596,6 +600,14 @@ public ListNode removeElements(ListNode head, int val) {
 1. Two pointers
 2. HashMap
 
+
+1. Arrays
+1. ArrayList
+2. StringBuilder
+3. String
+
+
+
 ```java
 Math.abs(a-b);
 Math.min(a,b);
@@ -1016,23 +1028,72 @@ In general, the different access control modifiers and their meaning are as foll
 
 The static modifier in Java can be declared for any `variable` or `method` of a class (or for a nested class)
 
-1. When a **variable of a class** is declared as `static`
-   - its value is associated with the class as a whole, rather than with each individual instance of that class.
+1. When a **variable of a class** is declared as `static` **静态变量**
+   - its value is associated with the class as a whole, rather than with each individual instance of that class. (可以用于引用所有对象的公共属性(对于每个对象不是唯一的)。如：员工公司名称，学生所在的大学名称。)
 
    - Static variables are used to store “global” information about a class.
      - For example, be used to maintain the total number of instances of that class that have been created.
 
    - Static variables exist even if no instance of their class exists.
+   - 优点：
+     - 能使程序存储器高效(即它节省内存)。
+     - 静态化(使用static关键字修饲)，这个字段将只获得内存一次。
+     - Java静态属性被共享给所有对象
 
-2. When a **method of a class** is declared as `static`
+        ![117100301_14333](https://i.imgur.com/voWmSEo.jpg)
+
+        ```java
+        class Student{  
+            int rollno;  
+            String name;  
+            // String college="ITS";  
+            static String college = "ITS";
+        }
+        Student s1 = new Student(111, "Karan");
+        Student s2 = new Student(222, "Aryan");/
+        ```
+
+
+
+2. When a **method of a class** is declared as `static` **静态方法**
    - associated with the class itself, and not with a particular instance of the class.
      - `the method is not invoked on a particular instance of the class` using the traditional dot notation.
      - Instead, it is typically `invoked using the name of the class` as a qualifier.
+
    - For example
      - in the java.lang package, which is part of the standard Java distribution, there is a `Math` class that provides many static methods, including one named sqrt that computes square roots of numbers.
      - To compute a square root, you do not need to create an instance of the Math class; that method is called using a syntax such as `Math.sqrt(2)`, with the class name Math as the qualifier before the dot operator.
 
    - Static methods can be useful for providing utility behaviors related to a class that need not rely on the state of any particular instance of that class.
+   - 静态方法属于类，而不属于类的对象。
+   - 可以直接调用静态方法，而无需创建类的实例。
+   - 静态方法可以访问静态数据成员，并可以更改静态数据成员的值。
+
+        ```java
+        class Student9 {
+            int rollno;
+            String name;
+            static String college = "ITS";
+
+            static void change() {
+                college = "BBDIT";
+            }
+
+            Student9(int r, String n) {
+                rollno = r;
+                name = n;
+            }
+
+            public static void main(String args[]) {
+                // 直接调用静态方法，而无需创建类的实例。
+                Student9.change();
+                Student9 s1 = new Student9(111, "Karan");  
+            }
+        }
+        // 上面代码执行输出以下结果 -
+        111 Karan BBDIT
+        ```
+
 
 ---
 
@@ -1051,7 +1112,19 @@ The static modifier in Java can be declared for any `variable` or `method` of a 
 ---
 
 ##### The `final` Modifier
-1. A **variable** that is declared with the `final` modifier can be initialized as part of that declaration, but can never again be assigned a new value.
+
+final可以是：
+- 变量
+- 方法
+- 类
+
+final关键字应用有以下几点需要注意：
+- 禁止变量的值被改变；
+- 禁止方法重写；
+- 禁止类继承；
+
+
+1. A **variable** that is declared with the `final` modifier can be initialized as part of that declaration, but **can never again be assigned a new value**.
    - If it is a **base type**, then it is a constant.
    - If a **reference variable** is final, then it will always refer to the same object (even if that object changes its internal state).
    - If a **member variable of a class** is declared as final, it will typically be declared as `static` as well, because it would be unnecessarily wasteful to have every instance store the identical value when that value can be shared by the entire class.
@@ -1059,6 +1132,181 @@ The static modifier in Java can be declared for any `variable` or `method` of a 
 2. Designating a **method or an entire class** as final has a completely different consequence, only relevant in the context of inheritance.
    - A `final` **method** cannot be overridden by a subclass,
    - a `final` **class** cannot even be subclassed.
+
+---
+
+**final变量**
+- 如果将变量设置为final，则不能更改final变量的值(它将是常量)。
+- 要改变final变量的值，这是不可能的，因为一个final变量一次分配一个值永远不能更改。
+
+
+```java
+class Bike9 {
+    final int speedlimit = 90;// final variable
+
+    void run() {
+        speedlimit = 400; // 不可以修改 final 变量的值
+    }
+}
+Bike9 obj = new Bike9();
+obj.run();
+// 上面代码执行后生成以下结果 -
+[编译错误]Compile Time Error
+```
+
+
+**空白final变量**
+
+- 空白或未初始化的final变量
+- 在声明时未`初始化`的final变量
+- 如果要在创建一个对象时初始化变量，并且变量在初始化后就不会被改变
+- 这是非常有用的。 例如员工的PAN CARD号码。它只能在构造函数中初始化。
+
+```java
+class Student{  
+    int id;  
+    String name;  
+    final String PAN_CARD_NUMBER;   
+}
+```
+
+
+初始化空白的final变量
+- 只能在构造函数中
+
+```java
+class Bike10 {
+    final int speedlimit;// blank final variable
+
+    Bike10() { // 在构造函数中初始化
+        speedlimit = 70;
+        System.out.println(speedlimit);
+    }
+}
+new Bike10();
+// 上面代码执行后生成以下结果 -
+70
+```
+
+
+
+静态空白final变量在声明时未初始化的静态final变量称为静态空白final变量。 它只能在静态块中初始化。
+静态空白final变量的示例
+
+
+```java
+class A {
+    static final int data;// static blank final variable
+    static {
+        data = 50;
+    }
+
+    public static void main(String args[]) {
+        System.out.println(A.data);
+    }
+}
+```
+
+
+
+
+
+---
+
+###### final参数**
+- 如果将任何参数声明为final，则不能更改它的值。
+
+```java
+class Bike11 {
+    int cube(final int n) {
+        n = n + 2; // can't be changed as n is final
+        return n;
+    }
+}
+Bike11 b = new Bike11();
+b.cube(5);
+// 上面代码执行后生成以下结果 -
+[编译错误]Compile Time Error
+```
+
+
+
+
+
+---
+
+**final方法**
+- 如果任何方法声明为final，则不能覆盖它。
+
+    ```java
+    class Bike {
+        final void run() {
+            System.out.println("running");
+        }
+    }
+
+    class Honda extends Bike {
+        void run() { // final方法,不可以重写
+            System.out.println("running safely with 100kmph");
+        }
+    }
+    Honda honda = new Honda();
+    honda.run();
+    // 上面代码执行后生成以下结果 -
+    [编译错误]Compile Time Error
+    ```
+
+
+
+- final方法是继承的，但是不能覆盖它。
+
+    ```java
+    class Bike {
+        final void run() {
+            System.out.println("running...");
+        }
+    }
+
+    class Honda2 extends Bike {
+        public static void main(String args[]) {
+            new Honda2().run();
+        }
+    }
+    // 上面代码执行后生成以下结果 -
+    Output:running...
+    ```
+
+
+
+---
+
+**final类**
+- 如果把任何一个类声明为final，则不能扩展它。
+
+
+```java
+// 不可以扩展 final 类
+final class Bike {}
+
+class Honda1 extends Bike {
+    void run() {
+        System.out.println("running safely with 100kmph");
+    }
+}
+Honda1 honda = new Honda();
+honda.run();
+// 上面代码执行后生成以下结果 -
+[编译错误]Compile Time Error
+```
+
+
+---
+
+
+
+
+
+
 
 ---
 
@@ -1235,15 +1483,15 @@ modifiers name(type0 parameter0 , ..., typen−1 parametern−1) {
 在java中，这是一个引用当前对象的引用变量。
 
 java this关键字的用法如下：
-1. this关键字可用来引用当前类的实例变量。
-2. this关键字可用于调用当前类方法(隐式)。
-3. this()可以用来调用当前类的构造函数。
-4. this关键字可作为调用方法中的参数传递。
-5. this关键字可作为参数在构造函数调用中传递。
-6. this关键字可用于从方法返回当前类的实例。
+1. 可用来引用 当前类的实例变量。
+2. 可用于调用 当前类方法(隐式)。
+3. 可用于调用 当前类的构造函数。
+4. 可用于作为调用方法中的参数传递。
+5. 可用于作为参数在构造函数调用中传递。
+6. 可用于从方法返回当前类的实例。
 
 
-#### 引用当前类的实例变量
+#### 1. 引用 **当前类** 的实例变量
 
 如果实例变量和参数之间存在歧义，则 this 关键字可用于明确地指定类变量以解决歧义问题。
 - 参数(形式参数)和实例变量(rollno和name)是相同的。 所以要使用this关键字来区分局部变量和实例变量。
@@ -1281,7 +1529,7 @@ class Student {
 ```
 
 
-#### 调用当前类方法
+#### 2. 调用 **当前类** 方法
 
 使用this关键字调用当前类的方法。
 - 如果不使用this关键字，编译器会在调用方法时**自动添加**此 this 关键字。
@@ -1305,61 +1553,196 @@ class A {
 new A().n();
 ```
 
-#### 调用当前类的构造函数
 
-this()构造函数调用
+
+
+#### 3. 调用 **当前类** 的构造函数
+
+`this()` 构造函数调用
 - 可以用来调用当前类的构造函数。
 - 它用于重用构造函数, 构造函数链接。
 
-**从参数化构造函数调用默认构造函数：**
+**从 参数化构造函数 调用 默认构造函数：**
 
 ```java
 class A {
     A() {
         System.out.println("hello a");
     }
-
     A(int x) {
         this();
         System.out.println(x);
     }
 }
 
-class TestThis5 {
-    public static void main(String args[]) {
-        A a = new A(10);
-    }
-}
-// 执行上面代码输出结果如下:
+A a = new A(10);
+// 输出结果:
 hello a
 10
+```
 
+**从 默认构造函数 调用 参数化构造函数：**
+
+```java
 class A {
     A() {
         this(5);
         System.out.println("hello a");
     }
-
     A(int x) {
         System.out.println(x);
     }
 }
-
-class TestThis6 {
-    public static void main(String args[]) {
-        A a = new A();
-    }
-}
-// 执行上面代码输出结果如下 -
+A a = new A();
+// 输出结果
 5
 hello a
 ```
 
 
+**使用 this() 调用 构造函数**
+
+`this()`构造函数 调用 用于从 构造函数 重用 构造函数。
+- 它维护构造函数之间的链，即它用于构造函数链接。
+
+```java
+class Student {
+    int rollno;
+    String name, course;
+    float fee;
+
+    Student(int rollno, String name, String course) {
+        this.rollno = rollno;
+        this.name = name;
+        this.course = course;
+    }
+
+    Student(int rollno, String name, String course, float fee) {
+        // 注意：调用this()必须是构造函数中的第一个语句。
+        // 不把 this() 语句放在第一行，因此编译不通过。
+        this(rollno, name, course);// reusing constructor
+        this.fee = fee;
+    }
+
+    void display() {
+        System.out.println(rollno + " " + name + " " + course + " " + fee);
+    }
+}
+Student s1 = new Student(111, "ankit", "java");
+Student s2 = new Student(112, "sumit", "java", 6000f);
+s1.display();
+s2.display();
+// 输出结果:
+111 ankit java null
+112 sumit java 6000
+```
 
 
+#### 4. 作为参数 传递给 方法
+
+可以作为方法中的参数传递。
+- 它主要用于事件处理
+
+```java
+class S2 {
+    void m(S2 obj) {
+        System.out.println("hi");
+    }
+    void p() {
+        m(this);
+    }
+}
+S2 s1 = new S2();
+s1.p();
+// 输出结果 -
+hi
+```
+
+这个应用程序可以作为参数传递：
+在事件处理(或)的情况下，必须提供一个类的引用到另一个。 它用于在多个方法中重用一个对象。
 
 
+#### 5. 在构造函数调用中 作为参数传递
+
+也可以在构造函数中传递this关键字。
+- 如果必须在多个类中使用一个对象，可以使用这种方式。
+
+```java
+class B {
+    A4 obj;
+
+    B(A4 obj) {
+        this.obj = obj;
+    }
+    void display() {
+        System.out.println(obj.data);// using data member of A4 class
+    }
+}
+
+class A4 {
+    int data = 10;
+
+    A4() {
+        B b = new B(this);
+        b.display();
+    }
+
+    public static void main(String args[]) {
+        A4 a = new A4();
+    }
+}
+// 输出结果 -
+10
+```
+
+#### 6. 返回 **当前类** 的实例
+
+可以从方法中 this 关键字作为语句返回
+- 在这种情况下，方法的返回类型必须是类类型(非原始)
+
+
+**作为语句返回的语法**
+
+```java
+return_type method_name(){  
+    return this;  
+}
+```
+
+**从方法中返回 为语句的 this 关键字的示例**
+
+```Java
+class A {
+    A getA() {
+        return this;
+    }
+    void msg() {
+        System.out.println("Hello java");
+    }
+}
+new A().getA().msg();
+// 输出结果
+Hello java
+```
+
+**验证 this 关键字**
+this 关键字引用当前类的实例变量。
+- 在这个程序中将打印参考变量，这两个变量的输出是相同的。
+
+
+```Java
+class A5 {
+    void m() {
+        System.out.println(this);// prints same reference ID
+    }
+}
+A5 obj = new A5();
+System.out.println(obj);// prints the reference ID
+obj.m();
+// 输出结果 -
+A5@22b3ea59
+A5@22b3ea59
+```
 
 
 
