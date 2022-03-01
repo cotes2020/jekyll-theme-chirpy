@@ -9,50 +9,50 @@ tags: [narrative]
 
 (_**Disclaimer**: All events narrated in the 'bar' are fictional. Any historical inaccuracies are intentional._)
 
-Two men walk into a bar. They enter just in time, for it starts raining heavily. One man is rather small. "_I'm a point Charge_", says he.
+Two men walk into a bar. They enter just in time, for it starts raining heavily. One man is rather small. "I'm a point Charge", says he.
 
-The other looks athletic. Almost sprinting, he shouts, "_I'm Current_".
+The other looks athletic. Almost sprinting, he shouts, "I'm Current".
 
 The two men then glare at each other. Charge's voice is rather feeble, and Current talks too rapidly. Not surprisingly, much of their argument is inaudible. The situation grows awkward. But it's raining outside and the crowd indoors must watch where this goes.
 
-"_There, there, gentlemen!_", calls a cheery looking bartender. "_Tell me what ye wanta drink._"
+"There, there, gentlemen!", calls a cheery looking bartender. "Tell me what ye wanta drink."
 
-"_Actually, I'd prefer a smoke_", says Charge. "_Photon gas would be fine ._"
+"Actually, I'd prefer a smoke", says Charge. "Photon gas would be fine ."
 
-"_Hah, that's for kids, Charge! I'd like some ferrofluid, please._", announces Current.
+"Hah, that's for kids, Charge! I'd like some ferrofluid, please.", announces Current.
 
-"_Oh yes, you and your magnetic effects. At least I'm a healthy little man who has settled in a good place!_"
+"Oh yes, you and your magnetic effects. At least I'm a healthy little man who has settled in a good place!"
 
-"_You dare speak to me like that, or remember what I did to you in the electromagnetic field back in our country? ..._"
+"You dare speak to me like that, or remember what I did to you in the electromagnetic field back in our country? ..."
 
-"_What's this fight about, if I may, gentlemen?_", asked the bartender sincerely.
+"What's this fight about, if I may, gentlemen?", asked the bartender sincerely.
 
-"_Well, Current here thinks he's more fundamental than me. Clearly, he's not! I mean, look at our descriptions! Here_", Charge hands the bartender a sheet of paper.
+"Well, Current here thinks he's more fundamental than me. Clearly, he's not! I mean, look at our descriptions! Here", Charge hands the bartender a sheet of paper.
 
-The bartender reads, "_Name, Charge. Age, as old as the universe, for charge is conserved. Hm. Nature, scalar. Favourite hobby, staying in equilibrium. Description: **charge is an intrinsic property of particles which interact with the electromagnetic field.**_"
+The bartender reads, "Name, Charge. Age, as old as the universe, for charge is conserved. Hm. Nature, scalar. Favourite hobby, staying in equilibrium. Description: **charge is an intrinsic property of particles which interact with the electromagnetic field.**"
 
-"_Righto. Now, name, Current. Nature, scalar. Favourite hobby, travelling. Description: **Current is the amount of charge passing through a given point in unit time.**_"
+"Righto. Now, name, Current. Nature, scalar. Favourite hobby, travelling. Description: **Current is the amount of charge passing through a given point in unit time.**"
 
-"_Now you tell us, Mr. Bartender, who sounds like a simpler man to you?_"
+"Now you tell us, Mr. Bartender, who sounds like a simpler man to you?"
 
-"_Err, if ye ask me, it has to be this man, Charge. But Current seems to be a good man too_", adds the Bartender quickly, on seeing Current's expression (which is ironically a frozen one).
+"Err, if ye ask me, it has to be this man, Charge. But Current seems to be a good man too", adds the Bartender quickly, on seeing Current's expression (which is ironically a frozen one).
 
-"_But I'm puzzled. Is this all you two were quarrelling about?_"
+"But I'm puzzled. Is this all you two were quarrelling about?"
 
-"_You see, Mr. Bartender, the contrary was agreed upon a few weeks back in the General Conference on Weights and Measures in Paris._", said Current with a glowing face.
+"You see, Mr. Bartender, the contrary was agreed upon a few weeks back in the General Conference on Weights and Measures in Paris.", said Current with a glowing face.
 
-"_Yeah, whenever he says that, the heating effect of Current is visible._", jokes Charge.
+"Yeah, whenever he says that, the heating effect of Current is visible.", jokes Charge.
 
-But the Bartender wasn't buying this story. "_Ye're playing games with me, aren't ya?_"
+But the Bartender wasn't buying this story. "Ye're playing games with me, aren't ya?"
 
-At this point, a curious bystander steps in, carrying a newspaper in his hand. "_They're right, Mr. Bartender. Take a look for yourself._"
+At this point, a curious bystander steps in, carrying a newspaper in his hand. "They're right, Mr. Bartender. Take a look for yourself."
 
 ![Breaking News]({{ site.url }}{{ site.baseurl }}/assets/img/posts/2021-10-15-current-fundamental-quantity/SI_units.png)
 _Breaking news_ [^1]
 
 [^1]: Source: [https://en.wikipedia.org/wiki/International_System_of_Units#Base_units](https://en.wikipedia.org/wiki/International_System_of_Units#Base_units)
 
-"_Now that's confusing! They've defined Current all in terms of Charge and yet Current is a fundamental quantity!_", says a struggling Mr. Bartender.
+"Now that's confusing! They've defined Current all in terms of Charge and yet Current is a fundamental quantity!", says a struggling Mr. Bartender.
 
 ## Interlude: Planck units
 
@@ -70,7 +70,7 @@ The right question is, "why is $$1 \: \text{m}$$ so big relative to a hydrogen a
 
 But nature and physics do not seem to care whether humans are present to observe it, or not. From the perspective of the universe, our common units are arbitrary. Since the job of a physicist is to describe nature fundamentally, he or she often faces a situation where a more 'natural' system of units is required. That is, units that are tied to fundamental things in nature.
 
-### Nature's "_... and these are a few of my favourite things_"
+### Nature's "... and these are a few of my favourite things"
 
 <a name="fundamental_constants"></a>
 
@@ -103,11 +103,11 @@ The importance of these units, in Planck's own words, is,
 
 The bartender is still confused, standing tightly at one spot. Suddenly, a rattle at the door breaks the silence. The man with the fancy newspaper walks up to the door and opens it. A tall man wearing a hat enters and looks around. Before he can even introduce himself, a delighted Mr. Current squeals,
 
-"_Oh, but it is Herr Max Planck himself!_"
+"Oh, but it is Herr Max Planck himself!"
 
 Planck looks around him and immediately understands the situation. After all, he had heard of it in the _Quanta Magazine_. Confidently, he takes 'charge' of the situation and produces a black board.
 
-"_This_", he says, "_is a black body_". Before a mesmerized audience can say anything, he starts writing on it with a chalk. "_Consider the well-known Coulomb's law for the electrostatic force between two charges $$q_1$$ and $$q_2$$_,"
+"This", he says, "is a black body". Before a mesmerized audience can say anything, he starts writing on it with a chalk. "Consider the well-known Coulomb's law for the electrostatic force between two charges $$q_1$$ and $$q_2$$_,"
 
 $$F = k_e \frac{q_1 q_2}{d^2}$$
 
@@ -133,7 +133,7 @@ $$v_e = \sqrt{\frac{2GM}{R}}$$
 
 _Thus, $$\sqrt{G}$$ represents $$\frac{1}{\sqrt{2}}$$ times the escape velocity of a spherical body whose mass is numerically equal to its radius in the system of units concerned._
 
-_Presto, current is more fundamental than charge when it comes to writing it down in terms of nature's deepest facts._"
+_Presto, current is more fundamental than charge when it comes to writing it down in terms of nature's deepest facts."
 
 Saying this, the legendary physicist walks to the counter and picks up a drink. There is a big round of applause, the bartender being the loudest. For the first time in a really long time, Charge and Current smile at each other and shake hands.
 
