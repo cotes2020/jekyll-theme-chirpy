@@ -107,33 +107,33 @@ The bartender is still confused, standing tightly at one spot. Suddenly, a rattl
 
 Planck looks around him and immediately understands the situation. After all, he had heard of it in the _Quanta Magazine_. Confidently, he takes 'charge' of the situation and produces a black board.
 
-"This", he says, "is a black body". Before a mesmerized audience can say anything, he starts writing on it with a chalk. "Consider the well-known Coulomb's law for the electrostatic force between two charges $$q_1$$ and $$q_2$$_,"
+"This", he says, "is a black body". Before a mesmerized audience can say anything, he starts writing on it with a chalk. "Consider the well-known Coulomb's law for the electrostatic force between two charges $$q_1$$ and $$q_2$$,"
 
 $$F = k_e \frac{q_1 q_2}{d^2}$$
 
-_If we are concerned only with the dimensions of the quantities involved, then we have,_
+If we are concerned only with the dimensions of the quantities involved, then we have,
 
 $$q^2 = \frac{Fd^2}{k_e}$$
 
-_Recalling Newton's own gravitational law, and plugging in for $$F d^2$$,_
+Recalling Newton's own gravitational law, and plugging in for $$F d^2$$,
 
 $$q^2 = G \frac{ m^2}{k_e}$$
 
-_Where $$k_e$$ is Coulomb's constant. After applying my units,_
+where $$k_e$$ is Coulomb's constant. After applying my units,
 
 $$q_P^2 = \hbar c$$
 
-_Thus, $$q_P = \sqrt{\hbar c}$$. This is awkward. Surely, the "square root of Planck's constant times the speed of light" does not amount to much. But observe what happens if I work with current instead:_
+Thus, $$q_P = \sqrt{\hbar c}$$. This is awkward. Surely, the "square root of Planck's constant times the speed of light" does not amount to much. But observe what happens if I work with current instead:
 
 $$I_P = \frac{q_P}{t_P} = \frac{c^3}{\sqrt{G}}$$
 
-_Did you know that $$\sqrt{G}$$ **does** have a physical interpretation? The escape velocity $$v_e$$ of a spherical body of mass $$M$$ and radius $$R$$ is given by,_
+Did you know that $$\sqrt{G}$$ **does** have a physical interpretation? The escape velocity $$v_e$$ of a spherical body of mass $$M$$ and radius $$R$$ is given by,
 
 $$v_e = \sqrt{\frac{2GM}{R}}$$
 
-_Thus, $$\sqrt{G}$$ represents $$\frac{1}{\sqrt{2}}$$ times the escape velocity of a spherical body whose mass is numerically equal to its radius in the system of units concerned._
+Thus, $$\sqrt{G}$$ represents $$\frac{1}{\sqrt{2}}$$ times the escape velocity of a spherical body whose mass is numerically equal to its radius in the system of units concerned.
 
-_Presto, current is more fundamental than charge when it comes to writing it down in terms of nature's deepest facts."
+Presto, current is more fundamental than charge when it comes to writing it down in terms of nature's deepest facts."
 
 Saying this, the legendary physicist walks to the counter and picks up a drink. There is a big round of applause, the bartender being the loudest. For the first time in a really long time, Charge and Current smile at each other and shake hands.
 
