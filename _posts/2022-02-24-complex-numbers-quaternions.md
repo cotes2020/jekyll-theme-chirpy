@@ -142,7 +142,7 @@ $$a^2 + b^2 + c^2 + d^2 = \left( a + ib \right) \left( a - ib \right) + \left( c
 
 The simplest solution is to form a $$2 \times 2$$ matrix with the above factors so that the usual expression for the determinant is the same as the above,
 
-$$\Lambda^{i^\prime}_{\phantom{i^\prime} i} = \begin{pmatrix} \left( a + ib \right) & - \left( c+id \right) \\ \left( c - id \right) & \left( a - ib \right) \end{pmatrix}$$
+$$\Lambda^{i^\prime}_{\phantom{i^\prime} i} \equiv \begin{pmatrix} \left( a + ib \right) & - \left( c+id \right) \\ \left( c - id \right) & \left( a - ib \right) \end{pmatrix}$$
 
 Expanding each complex entry in the above matrix as $$2 \times 2$$ matrices, we get,
 
