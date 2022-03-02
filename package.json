@@ -12,12 +12,43 @@
     "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
   },
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy#readme",
-  "dependencies": {
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-insert": "^0.5.0",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
+    "husky": "^7.0.4",
+    "standard-version": "^9.3.2",
     "uglify-js": "^3.14.3"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "standard-version": {
+    "skip": {
+      "commit": true,
+      "tag": true
+    },
+    "types": [{
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "perf",
+        "section": "Improvements"
+      }
+    ]
   }
 }
