@@ -9,10 +9,11 @@
   we suround the markdown table with `<div class="table-wrapper">` and `</div>`
 -->
 
-{% if _content contains '<table>' %}
+{% if _content contains '<table' %}
   {% assign _content = _content
-    | replace: '<table>', '<div class="table-wrapper"><table>'
+    | replace: '<table', '<div class="table-wrapper"><table'
     | replace: '</table>', '</table></div>'
+    | replace: '<code><div class="table-wrapper">', '<code>'
     | replace: '</table></div></code>', '</table></code>'
   %}
 {% endif %}
