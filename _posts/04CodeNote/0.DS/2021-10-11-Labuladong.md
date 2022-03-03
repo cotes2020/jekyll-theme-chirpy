@@ -369,6 +369,7 @@ toc: true
       - [+++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop)
       - [+++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop-1)
     - [345. Reverse Vowels of a String (Easy)](#345-reverse-vowels-of-a-string-easy)
+  - [Cryptography](#cryptography)
 - [system design](#system-design)
 
 ---
@@ -14307,6 +14308,11 @@ class Solution {
 }
 ```
 
+
+---
+
+
+## Cryptography
 
 
 
