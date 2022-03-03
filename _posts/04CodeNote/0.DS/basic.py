@@ -38,3 +38,14 @@ class LinkedList:
       list.append(current.val)
       current = current.next
     print(list)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

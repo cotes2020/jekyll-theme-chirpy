@@ -7,10 +7,17 @@ tags: [Java]
 toc: true
 ---
 
+- [Java - POJO and JavaBeans](#java---pojo-and-javabeans)
+  - [Plain Old Java Objects - POJO](#plain-old-java-objects---pojo)
+    - [Reflection with a POJO](#reflection-with-a-pojo)
+  - [JavaBeans](#javabeans)
+    - [EmployeePojo as a JavaBean](#employeepojo-as-a-javabean)
+    - [Reflection with a JavaBean](#reflection-with-a-javabean)
+
+---
+
 
 # Java - POJO and JavaBeans
-
-[toc]
 
 ---
 

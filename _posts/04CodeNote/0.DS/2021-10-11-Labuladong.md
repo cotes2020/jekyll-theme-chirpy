@@ -17,31 +17,6 @@ toc: true
   - [helper](#helper)
   - [basic](#basic)
   - [timeline](#timeline)
-- [DS](#ds)
-  - [base types](#base-types)
-  - [Classes and Objects](#classes-and-objects)
-    - [Creating and Using Objects](#creating-and-using-objects)
-      - [the Dot operator](#the-dot-operator)
-      - [The assignment](#the-assignment)
-    - [Defining a Class](#defining-a-class)
-      - [Modifiers](#modifiers)
-        - [`Access Control` Modifiers](#access-control-modifiers)
-        - [The `static` Modifier](#the-static-modifier)
-        - [The `abstract` Modifier](#the-abstract-modifier)
-        - [The `final` Modifier](#the-final-modifier)
-          - [final参数**](#final参数)
-    - [Instance Variables](#instance-variables)
-    - [Methods](#methods)
-      - [Return Types](#return-types)
-      - [Parameters](#parameters)
-      - [Constructors](#constructors)
-    - [The Keyword this](#the-keyword-this)
-      - [1. 引用 **当前类** 的实例变量](#1-引用-当前类-的实例变量)
-      - [2. 调用 **当前类** 方法](#2-调用-当前类-方法)
-      - [3. 调用 **当前类** 的构造函数](#3-调用-当前类-的构造函数)
-      - [4. 作为参数 传递给 方法](#4-作为参数-传递给-方法)
-      - [5. 在构造函数调用中 作为参数传递](#5-在构造函数调用中-作为参数传递)
-      - [6. 返回 **当前类** 的实例](#6-返回-当前类-的实例)
 - [算法](#算法)
   - [算法](#算法-1)
     - [一、数据结构的存储方式](#一数据结构的存储方式)
@@ -53,6 +28,8 @@ toc: true
       - [**图的遍历**](#图的遍历)
     - [三、算法刷题指南](#三算法刷题指南)
     - [四、总结几句](#四总结几句)
+- [String](#string)
+- [StringBuilder](#stringbuilder)
 - [Arrays 数组](#arrays-数组)
   - [Arrays in Java](#arrays-in-java)
     - [Create Array](#create-array)
@@ -601,10 +578,10 @@ public ListNode removeElements(ListNode head, int val) {
 2. HashMap
 
 
+3. String
+2. StringBuilder
 1. Arrays
 1. ArrayList
-2. StringBuilder
-3. String
 
 
 
@@ -616,7 +593,65 @@ Integer.MAX_VALU
 Integer.MIN_VALU
 
 
+// Random
+Random rand = new Random();
+rand.setSeed(System.currentTimeMillis()); // use current time as a seed
+int ran = rand.nextInt(n); // from 0 up to but not including n.
+int ran = rand.nextInt();
+int ran = rand.nextDouble(); // between 0.0 and 1.0.
+int ran = rand.nextBoolean();
+
+
+// Char
+char ch = (char)(i + 97);
+Character.getNumericValue(c);  
+Character.isLowerCase(s.charAt(i));
+Character.toUpperCase(s.charAt(i));
+Character.isWhitespace();
+Character.isLetter(cs[i]);
+Character.isLetterOrDigit(s.charAt(x))
+
+// String
+String greeting = "Hello";
+String str1 = ""
+String str1 = new String("Welcome to Tutorialspoint.com");
+String str1 = new String(char[] chars);
+str1 += (char)(cipherMatrix[i] + 65);
+str1.length()
+str1.charAt()
+str1.indexOf(ch);
+str1.contains("h");
+str1.equals(str2);
+str1.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+
+String str2 = str1.substring(lo, lo+maxLen)
+String str2 = String.join(" ", array);
+
+String[] words = str1.split(" ");
+char[] res = str1.toCharArray()
+
+
+String str2 = String.valueOf(char[] chars);
+
+
+
+
+
+// StringBuilder
+StringBuilder sb = new StringBuilder("");
+StringBuffer sb = new StringBuffer(str1);
+sb.setCharAt(i, Char);
+sbr.deleteCharAt(i);
+sb.insert(i,'hi');
+sb.append('hi');
+sb.toString()
+sb.reverse();
+
+
+
 // Array
+elementType[] arrayName = {initialValue0, initialValue1, . . . , initialValueN−1};
+elementType[] arrayName = new elementType[length]
 MyClass myClassArray[];
 int myArray[];
 int[] myArray;
@@ -624,10 +659,17 @@ int[] a0 = new int[5];
 int[] a1 = {1, 2, 3};
 a0.length;
 a1[0];
+a1[0] = 4;
 
+Arrays.equals(A, B)
+Arrays.fill(A, x)
 Arrays.fill(a0, Integer.MAX_VALUE);
-Arrays.toString(subCoin)
-Arrays.copyOfRange(nums1,0,k);
+Arrays.copyOf(A, n)
+// Returns an array of size n such that the first k elements of this array are copied from A, where k = min{n, A.length}. If n > A.length, then the last n − A.length elements in this array will be padded with default values, e.g., 0 for an array of int and null for an array of objects.
+Arrays.copyOfRange(A, s, t)  // order from A[s] to A[t − 1]
+Arrays.toString(A)
+Arrays.binarySearch(A, x)
+
 Arrays.sort(nums1);
 Arrays.sort(
     envelopes,
@@ -638,6 +680,11 @@ Arrays.sort(
     }
 );
 
+
+
+
+
+// ArrayList
 List<Integer> v0 = new ArrayList<>();
 List<Integer> v1 = new ArrayList<>(Arrays.asList(array1));
 List<Integer> v2 = v1;                      // another reference to v1, modify v2 will actually modify v1
@@ -654,48 +701,6 @@ v1.remove(index)
 Collections.sort(v1);
 
 
-
-
-
-
-// StringBuilder
-StringBuilder sb = new StringBuilder("");
-StringBuffer sb = new StringBuffer(s);
-sb.setCharAt(i, Char);
-sb.append('.');
-sbr.deleteCharAt(index);
-sb.insert(pos[i],'Q');
-sb.toString()
-sb.reverse();
-
-// String
-String str1 = ""
-String str1 = new String("Welcome to Tutorialspoint.com");
-String str1 = new String(char[] chars);
-str1.length()
-str1.charAt()
-str1.indexOf(ch);
-str1.contains("h");
-str1.equals(str2);
-str1.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
-
-String str2 = str1.substring(lo, lo+maxLen)
-String[] words = str1.split(" ");
-
-char[] res = str1.toCharArray()
-str1 += (char)(cipherMatrix[i] + 65);
-String str2 = String.valueOf(char[] chars);
-
-String str2 = String.join(" ", array);
-
-
-char ch = (char)(i + 97);
-Character.getNumericValue(c);  
-Character.isLowerCase(s.charAt(i));
-Character.toUpperCase(s.charAt(i));
-Character.isWhitespace();
-Character.isLetter(cs[i]);
-Character.isLetterOrDigit(s.charAt(x))
 
 
 Stack<String> stack = new Stack<>();
@@ -821,962 +826,6 @@ bh.buildHeap(list);
 11/24:94
 11/25:
 2/14: 150
-
-
----
-
-# DS
-
----
-
-## base types
-
-base types (also called primitive types):
-- boolean a boolean value: true or false
-- char 16-bit Unicode character
-- byte `8`-bit signed two’s complement integer
-- short `16`-bit signed two’s complement integer
-- int `32`-bit signed two’s complement integer
-- long `64`-bit signed two’s complement integer
-- float 32-bit floating-point number (IEEE 754-1985)
-- double 64-bit floating-point number (IEEE 754-1985)
-
-```java
-boolean flag = true;
-boolean verbose, debug;
-char grade = 'A';
-byteb=12;
-short s = 24;
-inti,j,k=257;
-long l = 890L;
-float pi = 3.1416F;
-double e = 2.71828, a = 6.022e23;
-```
----
-
-## Classes and Objects
-
-Every `object` is an `instance` of a `class`
-- `class` serves as the type of the `object` and as a blueprint
-- `class` defining the data which the object stores and the methods for accessing and modifying that data.
-
-The critical members of a class in Java are the following:
-- **Instance variables**/**fields**
-  - represent the data associated with an object of a class.
-  - Instance variables must have a type, which can either be a base type (such as int, float, or double) or any class type (reference type)
-- **Methods**
-  - blocks of code that can be called to perform actions (similar to functions and procedures in other high-level languages).
-  - Methods can accept parameters as arguments, and their behavior may depend on the object upon which they are invoked and the values of any parameters that are passed.  
-  - **accessor method**: returns information to the caller without changing any instance variables
-  - **update method** : may change one or more instance variables when called.
-
-
-### Creating and Using Objects
-
-Counter class does not have a `main` method, and so it cannot be run as a complete program. Instead, the purpose of the Counter class is to create instances that might be used as part of a larger program.
-
-```java
-public class Counter {
-    private int count;
-    public Counter() { } // default constructor (count is 0)
-    public Counter(int initial) { count = initial; } // an alternate constructor
-    public int getCount() { return count; }  // an accessor method
-    public void increment() { count++; }  // an update method
-    public void increment(int delta) { count += delta; }  // an update method
-    public void reset() { count = 0; }  // an update method
-}
-
-```
-
-a **new variable c** is **declared** with the syntaxm `Counter c;`
-- This establishes the **identifier c**, as a variable of type Counter,
-- but it does not create a Counter instance.
-- `Classes` are **reference types** in Java, and a variable of that type (`c`) is a **reference variable**.
-  - A reference variable is capable of storing the location (i.e., memory address) of an object from the declared class.
-  - So we might assign it to reference an existing instance or a newly constructed instance.
-  - A reference variable can also store a special value, null, that represents the lack of an object.
-
-a **new object** is **created** by using the `new` operator + a call to a constructor for the class;
-- a constructor: a method that always shares the same name as its class.
-- The `new` operator returns a reference to the instance; the returned reference is typically assigned to a variable for further use.
-- `Counter c; c = new Counter();`
-- a new Counter is constructed with its reference assigned to the variable c. That relies on a form of the constructor, Counter(), that takes no arguments between the parentheses. (Such a zero-parameter constructor is known as a default constructor.)
-
-Three events occur as part of the creation of a new instance of a class:
-- A new **object** is `dynamically allocated in memory`
-  - all **instance variables** are initialized to standard default values.
-  - The default values are `null` for reference variables and `0` for all base types except boolean variables (which
-are `false` by default).
-- The constructor for the **new** object is called with the parameters specified.
-  - The constructor may assign more meaningful values to any of the instance variables, and perform any additional computations that must be done due to the creation of this object.
-- After the constructor returns, the **new** operator `returns a reference (a memory address) to the newly created object`. If the expression is in the form of an assignment statement, then this address is stored in the object variable, so the object variable refers to this newly created object.
-
-
-
-
-#### the Dot operator
-
-![Screen Shot 2022-02-20 at 21.36.51](https://i.imgur.com/Ocr7e7L.png)
-
-One of the primary uses of an `object` **reference variable** is to `access the members of the class for this object`
-
-- an instance of its class.
-
-- to access the **methods** and **instance variables** associated with an `object`.
-- This access is performed with the dot (“.”) operator.
-- call a method associated with an object:
-  - `reference variable name + dot operator + the method name and its parameters`.
-  - `c.increment()`
-- If the dot operator is used on a reference that is currently null, the Java runtime environment will throw a `NullPointerException`.
-
-- If there are several methods with this same name defined for a class, then the Java runtime system uses the one that matches the actual number of parameters sent as arguments, as well as their respective types.
-  - two methods named increment: a zero-parameter form and a one- parameter form.
-  - Java determines which version to call when evaluating commands such as c.increment( ) versus c.increment(3).
-
-- A method’s name combined with the number and types of its parameters is called a **method’s signature**, for it takes all of these parts to determine the actual method to perform for a certain method call.
-  - Note, however, that the signature of a method in Java does not include the type that the method returns, so Java does not allow two methods with the same signature to return different types.
-
-- A `reference variable v` can be viewed as a “pointer” to some `object o`.
-  - the variable is a holder for a remote control that can be used to control the newly created object (the device).
-  - the variable has a way of pointing at the object and asking it to do things or give us access to its data.
-  - Using the remote control analogy, a null reference is a remote control holder that is empty.
-
-
-#### The assignment
-
-the aliasing of two reference variables to the same object is not permanent.
-- may reassign a `reference variable` to a new instance, a different existing instance, or null.
-
-
-```java
-Counter c = new Counter(5);
-Counter d = new Counter(5);
-// d is a distinct instance from the one identified as c.
-
-Counter e = d;
-// a new reference variable named e, and assigns that variable a reference to the existing counter instance currently identified as d.
-// At that point, both variables d and e are aliases for the same object
-```
-
----
-
-
-
-### Defining a Class
-
-
-#### Modifiers
-
----
-
-##### `Access Control` Modifiers
-
-- control **the level of access (visibility)** that `the defining class` grants to `other classes` in larger Java program.
-- The ability to limit access among classes supports a key principle of object-orientation ->  **encapsulation**
-
-In general, the different access control modifiers and their meaning are as follows:
-
-**public**
-1. The `public` **class modifier**
-   - designates that all classes may access the defined aspect.
-   - For example
-     - `public class Counter {`
-     - all other classes (such as CounterDemo) are allowed to construct new instances of the `Counter class`, as well as to declare variables and parameters of type Counter.
-
-   - In Java, each public class must be defined in a separate file named class_name.java
-     - for example, file Counter.java for the Counter class definition
-
-2. `public access` for a **particular method of a class**
-   - allows any other class to make a call to that method.
-   - For example
-     - `public int getCount() { return count; }`
-     - the CounterDemo class may call `c.getCount()`.
-
-3. an **instance variable** is declared as public
-   - dot notation can be used to directly access the variable by code in any other class that possesses a reference to an instance of this class.
-   - For example, were the count variable of Counter to be declared as public (which it is not), then the CounterDemo would be allowed to read or modify that variable using a syntax such as c.count.
-
-
-**protected**
-1. The `protected` **class modifier**
-   - designates that access to the defined aspect is only granted to the following groups of other classes:
-     - Classes that are designated as `subclasses of the given class through inheritance`.
-     - Classes that belong to the `same package as the given class`
-
-
-**private**
-1. The `private` **class modifier**
-   - designates that access to a defined member of a class be `granted only to code within that class`. Neither subclasses nor any other classes have access to such members.
-   - For example
-     - defined the `count` **instance variable** of the `Counter` **class** to have private access level.
-     - We were allowed to read or edit its value from within methods of that class (such as getCount, increment, and reset),
-     - but other classes such as `CounterDemo` cannot directly access that field.
-     - Of course, we did provide other public methods to grant outside classes with behaviors that depended on the current count value.
-
-
-**package-private access level**
-- if no explicit access control modifier is given, the defined aspect has what is known as `package-private access level`.
-- This allows other classes in the same package to have access, but not any classes or subclasses from other packages.
-
-
----
-
-##### The `static` Modifier
-
-`Math.sqrt(2)`
-
-
-The static modifier in Java can be declared for any `variable` or `method` of a class (or for a nested class)
-
-1. When a **variable of a class** is declared as `static` **静态变量**
-   - its value is associated with the class as a whole, rather than with each individual instance of that class. (可以用于引用所有对象的公共属性(对于每个对象不是唯一的)。如：员工公司名称，学生所在的大学名称。)
-
-   - Static variables are used to store “global” information about a class.
-     - For example, be used to maintain the total number of instances of that class that have been created.
-
-   - Static variables exist even if no instance of their class exists.
-   - 优点：
-     - 能使程序存储器高效(即它节省内存)。
-     - 静态化(使用static关键字修饲)，这个字段将只获得内存一次。
-     - Java静态属性被共享给所有对象
-
-        ![117100301_14333](https://i.imgur.com/voWmSEo.jpg)
-
-        ```java
-        class Student{  
-            int rollno;  
-            String name;  
-            // String college="ITS";  
-            static String college = "ITS";
-        }
-        Student s1 = new Student(111, "Karan");
-        Student s2 = new Student(222, "Aryan");/
-        ```
-
-
-
-2. When a **method of a class** is declared as `static` **静态方法**
-   - associated with the class itself, and not with a particular instance of the class.
-     - `the method is not invoked on a particular instance of the class` using the traditional dot notation.
-     - Instead, it is typically `invoked using the name of the class` as a qualifier.
-
-   - For example
-     - in the java.lang package, which is part of the standard Java distribution, there is a `Math` class that provides many static methods, including one named sqrt that computes square roots of numbers.
-     - To compute a square root, you do not need to create an instance of the Math class; that method is called using a syntax such as `Math.sqrt(2)`, with the class name Math as the qualifier before the dot operator.
-
-   - Static methods can be useful for providing utility behaviors related to a class that need not rely on the state of any particular instance of that class.
-   - 静态方法属于类，而不属于类的对象。
-   - 可以直接调用静态方法，而无需创建类的实例。
-   - 静态方法可以访问静态数据成员，并可以更改静态数据成员的值。
-
-        ```java
-        class Student9 {
-            int rollno;
-            String name;
-            static String college = "ITS";
-
-            static void change() {
-                college = "BBDIT";
-            }
-
-            Student9(int r, String n) {
-                rollno = r;
-                name = n;
-            }
-
-            public static void main(String args[]) {
-                // 直接调用静态方法，而无需创建类的实例。
-                Student9.change();
-                Student9 s1 = new Student9(111, "Karan");  
-            }
-        }
-        // 上面代码执行输出以下结果 -
-        111 Karan BBDIT
-        ```
-
-
----
-
-##### The `abstract` Modifier
-
-1. A **method of a class** may be declared as `abstract`
-   - its signature is provided but without an implementation of the method body.
-   - Abstract methods are an advanced feature of object-oriented programming to be combined with inheritance
-   - In short, any subclass of a class with abstract methods is expected to provide a concrete implementation for each abstract method.
-
-2. A **class** with one or more abstract methods must also be formally declared as abstract, because it is essentially incomplete.
-   - also permissible to declare a class as abstract even if it does not contain any abstract methods.
-   - As a result, Java will not allow any instances of an abstract class to be constructed, although reference variables may be declared with an abstract type.
-
-
----
-
-##### The `final` Modifier
-
-final可以是：
-- 变量
-- 方法
-- 类
-
-final关键字应用有以下几点需要注意：
-- 禁止变量的值被改变；
-- 禁止方法重写；
-- 禁止类继承；
-
-
-1. A **variable** that is declared with the `final` modifier can be initialized as part of that declaration, but **can never again be assigned a new value**.
-   - If it is a **base type**, then it is a constant.
-   - If a **reference variable** is final, then it will always refer to the same object (even if that object changes its internal state).
-   - If a **member variable of a class** is declared as final, it will typically be declared as `static` as well, because it would be unnecessarily wasteful to have every instance store the identical value when that value can be shared by the entire class.
-
-2. Designating a **method or an entire class** as final has a completely different consequence, only relevant in the context of inheritance.
-   - A `final` **method** cannot be overridden by a subclass,
-   - a `final` **class** cannot even be subclassed.
-
----
-
-**final变量**
-- 如果将变量设置为final，则不能更改final变量的值(它将是常量)。
-- 要改变final变量的值，这是不可能的，因为一个final变量一次分配一个值永远不能更改。
-
-
-```java
-class Bike9 {
-    final int speedlimit = 90;// final variable
-
-    void run() {
-        speedlimit = 400; // 不可以修改 final 变量的值
-    }
-}
-Bike9 obj = new Bike9();
-obj.run();
-// 上面代码执行后生成以下结果 -
-[编译错误]Compile Time Error
-```
-
-
-**空白final变量**
-
-- 空白或未初始化的final变量
-- 在声明时未`初始化`的final变量
-- 如果要在创建一个对象时初始化变量，并且变量在初始化后就不会被改变
-- 这是非常有用的。 例如员工的PAN CARD号码。它只能在构造函数中初始化。
-
-```java
-class Student{  
-    int id;  
-    String name;  
-    final String PAN_CARD_NUMBER;   
-}
-```
-
-
-初始化空白的final变量
-- 只能在构造函数中
-
-```java
-class Bike10 {
-    final int speedlimit;// blank final variable
-
-    Bike10() { // 在构造函数中初始化
-        speedlimit = 70;
-        System.out.println(speedlimit);
-    }
-}
-new Bike10();
-// 上面代码执行后生成以下结果 -
-70
-```
-
-
-
-静态空白final变量在声明时未初始化的静态final变量称为静态空白final变量。 它只能在静态块中初始化。
-静态空白final变量的示例
-
-
-```java
-class A {
-    static final int data;// static blank final variable
-    static {
-        data = 50;
-    }
-
-    public static void main(String args[]) {
-        System.out.println(A.data);
-    }
-}
-```
-
-
-
-
-
----
-
-###### final参数**
-- 如果将任何参数声明为final，则不能更改它的值。
-
-```java
-class Bike11 {
-    int cube(final int n) {
-        n = n + 2; // can't be changed as n is final
-        return n;
-    }
-}
-Bike11 b = new Bike11();
-b.cube(5);
-// 上面代码执行后生成以下结果 -
-[编译错误]Compile Time Error
-```
-
-
-
-
-
----
-
-**final方法**
-- 如果任何方法声明为final，则不能覆盖它。
-
-    ```java
-    class Bike {
-        final void run() {
-            System.out.println("running");
-        }
-    }
-
-    class Honda extends Bike {
-        void run() { // final方法,不可以重写
-            System.out.println("running safely with 100kmph");
-        }
-    }
-    Honda honda = new Honda();
-    honda.run();
-    // 上面代码执行后生成以下结果 -
-    [编译错误]Compile Time Error
-    ```
-
-
-
-- final方法是继承的，但是不能覆盖它。
-
-    ```java
-    class Bike {
-        final void run() {
-            System.out.println("running...");
-        }
-    }
-
-    class Honda2 extends Bike {
-        public static void main(String args[]) {
-            new Honda2().run();
-        }
-    }
-    // 上面代码执行后生成以下结果 -
-    Output:running...
-    ```
-
-
-
----
-
-**final类**
-- 如果把任何一个类声明为final，则不能扩展它。
-
-
-```java
-// 不可以扩展 final 类
-final class Bike {}
-
-class Honda1 extends Bike {
-    void run() {
-        System.out.println("running safely with 100kmph");
-    }
-}
-Honda1 honda = new Honda();
-honda.run();
-// 上面代码执行后生成以下结果 -
-[编译错误]Compile Time Error
-```
-
-
----
-
-
-
-
-
-
-
----
-
-
-
-### Instance Variables
-
-- When defining a class, we can declare any number of **instance variables**.
-- An important principle of object-orientation is that each instance of a class maintains `its own individual set of instance variables`.
-  - in the case of the Counter class, each instance will store its own (independent) value of count.
-
-- The general syntax for declaring one or more instance variables of a class is as follows:
-
-```java
-[modifiers] type identifier1[=initialValue1], identifier2[=initialValue2];
-private int count;
-
-// Because we did not declare an initial value, it automatically receives the default of zero as a base-type integer.
-```
-
-
----
-
-
-### Methods
-
-- A method definition has two parts:
-  - the signature
-    - which defines the name and parameters for a method,
-    - specifies how the method is called
-  - and the body,
-    - which defines what the method does.
-    - specifies what the object will do when it is called.
-
-
-The syntax for defining a method:
-
-```java
-[modifiers] returnType methodName(type1 param1 , ..., typen paramn) {
-    // method body . . .
-}
-```
-
-- the significance of **modifiers** such as public, private, and static.
-- The **returnType** designation defines the type of value returned by the method.
-- The specifies how the method is called can be any valid Java identifier.
-- The list of **parameters** and their types declares the local variables that correspond to the values that are to be passed as arguments to this method.
-- Each type declaration typei can be any Java type name and each parami can be any distinct Java identifier. This list of parameters and their types can be empty, which signifies that there are no values to be passed to this method when it is invoked.
-- These **parameter variables**, as well as the **instance variables** of the class, can be used inside the body of the method. Likewise, other methods of this class can be called from inside the body of a method.
-- When a (nonstatic) method of a class is called, it is invoked on a specific instance of that class and can change the state of that object.
-
-  - For example, the follow- ing method of the Counter class increases the counter’s value by the given amount.
-
-```java
-public void increment(int delta) {
-    count += delta;
-}
-```
-
-Notice that the body of this method uses count, which is an instance variable, and delta, which is a parameter.
-
-
-#### Return Types
-- A method definition must specify the type of value the method will return.
-  - If the method does not return a value, the keyword `void` must be used.
-  - To return a value in Java, the body of the method must use the return keyword, followed by a value of the appropriate return type.
-
-- Java methods can return only one value.
-  - To return multiple values in Java, combine all the values to return in a compound object, whose instance variables include all the values we want to return, and then return a reference to that compound object.
-  - In addition, we can change the internal state of an object that is passed to a method as another way of “returning” multiple results.
-
-
-```java
-public int getCount() {
-    return count;
-}
-```
-
-
-#### Parameters
-
-- A method’s parameters are defined in a comma-separated list enclosed in parentheses after the name of the method.
-- A parameter consists of two parts, the parameter type and the parameter name.
--  If a method has no parameters, then only an empty pair of parentheses is used.
-
-
-All parameters in Java are passed by value
-- any time pass a parameter to a method, a copy of that parameter is made for use within the method body.
-  - So if pass an **int variable** to a method, then that variable’s integer value is copied. The method can change the copy but not the original.
-  - If we pass an **object reference** as a parameter to a method, then the reference is copied as well.
-- Remember that we can have many different variables that all refer to the same object.
-- Reassigning the **internal reference variable** inside a method will not change the reference that was passed in.
-
-
-For the sake of demonstration, we will assume that the following two methods were added to an arbitrary class (such as CounterDemo).
-
-```java
-public static void badReset(Counter c) {
-    c = new Counter();
-    // reassigns local name c to a new counter
-}
-
-public static void goodReset(Counter c) {
-    c.reset();
-    // resets the counter sent by the caller
-}
-```
-
-
-Now we will assume that variable strikes refers to an existing Counter instance in some context, and that it currently has a value of 3.
-- If we were to call `badReset(strikes)`, this has no effect on the Counter known as strikes.
-- The body of the badReset method reassigns the (local) parameter variable c to reference a newly created Counter instance;
-  - but this does not change the state of the existing counter that was sent by the caller (i.e., strikes).
-
-In contrast, if we were to call `goodReset(strikes)`, this does indeed reset the caller’s counter back to a value of zero.
-- That is because the `variables c` and `strikes` are both **reference variables** that refer to the same Counter instance.
-- So when c.reset() is called, that is effectively the same as if `strikes.reset()` were called.
-
-
----
-
-#### Constructors
-
-declaring a constructor in Java:
-
-```java
-modifiers name(type0 parameter0 , ..., typen−1 parametern−1) {
-    // constructor body . . .
-}
-```
-
-**constructor**
-
-- a special kind of method to `initialize a newly created instance of the class` so that it will be in a **consistent and stable initial state**.
-
-- This is typically achieved by initializing each instance variable of the object (unless the default value will suffice),
-
-- very similar way as other methods of a class, but few important distinctions:
-  1. Constructors cannot be `static, abstract, or final`, so the only modifiers that are allowed are those that affect visibility (i.e., `public, protected, private, or the default package-level` visibility).
-
-  2. The name of the constructor must be identical to the name of the class it constructs.
-     1. For example, defining the Counter class, a constructor must be named Counter as well.
-
-  3. don’t specify a return type for a constructor (not even void).
-     1. Nor does the body of a constructor explicitly return anything.
-     2. When a user of a class creates an instance using a syntax such as `Counter d = new Counter(5);`
-     3. the `new` operator is responsible for returning a reference to the new instance to the caller;
-     4. the responsibility of the constructor method is only to initialize the state of the new instance.
-
-
-- A class can have many constructors, but each must have a different signature
-  - each must be distinguished by the **type and number of the parameters** it takes.
-  - If no constructors are explicitly defined, Java provides an implicit default constructor for the class, having zero arguments and leaving all instance variables initialized to their default values.
-  - However, if a class defines one or more nondefault constructors, no default constructor will be provided.
-  - As an example, our Counter class defines the following pair of constructors:
-
-  ```java
-  public Counter() { }
-  public Counter(int initial) { count = initial; }
-  ```
-
-
-    - The first of these has a trivial body, { }, as the goal for this default constructor is to create a counter with value zero, and that is already the default value of the integer instance variable, count.
-
-    - it is important to declare such an explicit constructor,
-      - because otherwise none would have been provided, given the existence of the nondefault constructor.
-      - In that scenario, a user would have been unable to use the syntax, new Counter().
-
-
----
-
-### The Keyword this
-
-在java中，这是一个引用当前对象的引用变量。
-
-java this关键字的用法如下：
-1. 可用来引用 当前类的实例变量。
-2. 可用于调用 当前类方法(隐式)。
-3. 可用于调用 当前类的构造函数。
-4. 可用于作为调用方法中的参数传递。
-5. 可用于作为参数在构造函数调用中传递。
-6. 可用于从方法返回当前类的实例。
-
-
-#### 1. 引用 **当前类** 的实例变量
-
-如果实例变量和参数之间存在歧义，则 this 关键字可用于明确地指定类变量以解决歧义问题。
-- 参数(形式参数)和实例变量(rollno和name)是相同的。 所以要使用this关键字来区分局部变量和实例变量。
-
-```java
-class Student {
-    // 实例变量
-    int rollno;
-    String name;
-    float fee;
-
-    Student(int rollno, String name, float fee) { // 局部变量
-        rollno = rollno;
-        name = name;
-        fee = fee;
-    }
-    // output == 0
-    // 在上面的例子中，参数(形式参数)和 实例变量(rollno和name) 是相同的。
-    // 所以要使用this关键字来区分 局部变量 和 实例变量。
-
-
-    Student(int rollno, String name, float fee) {
-        this.rollno = rollno;
-        this.name = name;
-        this.fee = fee;
-    }
-
-    // 如果局部变量(形式参数)和实例变量不同，则不需要使用this关键字
-    Student(int r, String n, float f) {
-        rollno = r;
-        name = n;
-        fee = f;
-    }
-}
-```
-
-
-#### 2. 调用 **当前类** 方法
-
-使用this关键字调用当前类的方法。
-- 如果不使用this关键字，编译器会在调用方法时**自动添加**此 this 关键字。
-
-```java
-class A {
-    void m(){}
-    void n(){
-        m();
-    }
-}
-new A().n();
-
-
-class A {
-    void m(){}
-    void n(){
-        this.m();
-    }
-}
-new A().n();
-```
-
-
-
-
-#### 3. 调用 **当前类** 的构造函数
-
-`this()` 构造函数调用
-- 可以用来调用当前类的构造函数。
-- 它用于重用构造函数, 构造函数链接。
-
-**从 参数化构造函数 调用 默认构造函数：**
-
-```java
-class A {
-    A() {
-        System.out.println("hello a");
-    }
-    A(int x) {
-        this();
-        System.out.println(x);
-    }
-}
-
-A a = new A(10);
-// 输出结果:
-hello a
-10
-```
-
-**从 默认构造函数 调用 参数化构造函数：**
-
-```java
-class A {
-    A() {
-        this(5);
-        System.out.println("hello a");
-    }
-    A(int x) {
-        System.out.println(x);
-    }
-}
-A a = new A();
-// 输出结果
-5
-hello a
-```
-
-
-**使用 this() 调用 构造函数**
-
-`this()`构造函数 调用 用于从 构造函数 重用 构造函数。
-- 它维护构造函数之间的链，即它用于构造函数链接。
-
-```java
-class Student {
-    int rollno;
-    String name, course;
-    float fee;
-
-    Student(int rollno, String name, String course) {
-        this.rollno = rollno;
-        this.name = name;
-        this.course = course;
-    }
-
-    Student(int rollno, String name, String course, float fee) {
-        // 注意：调用this()必须是构造函数中的第一个语句。
-        // 不把 this() 语句放在第一行，因此编译不通过。
-        this(rollno, name, course);// reusing constructor
-        this.fee = fee;
-    }
-
-    void display() {
-        System.out.println(rollno + " " + name + " " + course + " " + fee);
-    }
-}
-Student s1 = new Student(111, "ankit", "java");
-Student s2 = new Student(112, "sumit", "java", 6000f);
-s1.display();
-s2.display();
-// 输出结果:
-111 ankit java null
-112 sumit java 6000
-```
-
-
-#### 4. 作为参数 传递给 方法
-
-可以作为方法中的参数传递。
-- 它主要用于事件处理
-
-```java
-class S2 {
-    void m(S2 obj) {
-        System.out.println("hi");
-    }
-    void p() {
-        m(this);
-    }
-}
-S2 s1 = new S2();
-s1.p();
-// 输出结果 -
-hi
-```
-
-这个应用程序可以作为参数传递：
-在事件处理(或)的情况下，必须提供一个类的引用到另一个。 它用于在多个方法中重用一个对象。
-
-
-#### 5. 在构造函数调用中 作为参数传递
-
-也可以在构造函数中传递this关键字。
-- 如果必须在多个类中使用一个对象，可以使用这种方式。
-
-```java
-class B {
-    A4 obj;
-
-    B(A4 obj) {
-        this.obj = obj;
-    }
-    void display() {
-        System.out.println(obj.data);// using data member of A4 class
-    }
-}
-
-class A4 {
-    int data = 10;
-
-    A4() {
-        B b = new B(this);
-        b.display();
-    }
-
-    public static void main(String args[]) {
-        A4 a = new A4();
-    }
-}
-// 输出结果 -
-10
-```
-
-#### 6. 返回 **当前类** 的实例
-
-可以从方法中 this 关键字作为语句返回
-- 在这种情况下，方法的返回类型必须是类类型(非原始)
-
-
-**作为语句返回的语法**
-
-```java
-return_type method_name(){  
-    return this;  
-}
-```
-
-**从方法中返回 为语句的 this 关键字的示例**
-
-```Java
-class A {
-    A getA() {
-        return this;
-    }
-    void msg() {
-        System.out.println("Hello java");
-    }
-}
-new A().getA().msg();
-// 输出结果
-Hello java
-```
-
-**验证 this 关键字**
-this 关键字引用当前类的实例变量。
-- 在这个程序中将打印参考变量，这两个变量的输出是相同的。
-
-
-```Java
-class A5 {
-    void m() {
-        System.out.println(this);// prints same reference ID
-    }
-}
-A5 obj = new A5();
-System.out.println(obj);// prints the reference ID
-obj.m();
-// 输出结果 -
-A5@22b3ea59
-A5@22b3ea59
-```
-
-
-
-Within the body of a (nonstatic) method in Java, the keyword `this` is automatically defined as a `reference to the instance` upon which the method was invoked.
-
-- if a caller uses a syntax such as thing.foo(a, b, c), then within the body of method foo for that call, the keyword this refers to the object known as thing in the caller’s context.
-
-There are three common reasons why this reference is needed from within a method body:
-1. To store the reference in a variable, or send it as a parameter to another method that expects an instance of that type as an argument.
-2. To differentiate between an instance variable and a local variable with the same name. If a local variable is declared in a method having the same name as an instance variable for the class, that name will refer to the local variable within that method body. (We say that the local variable masks the instance variable.) In this case, the instance variable can still be accessed by explicitly using the dot notation with this as the qualifier. For example, some programmers prefer to use the following style for a constructor, with a parameter having the same name as the underlying variable.
-
-```java
-public Counter(int count) {
-this.count = count; // set the instance variable equal to parameter
-}
-```
-
-1. To allow one constructor body to invoke another constructor body. When one method of a class invokes another method of that same class on the current instance, that is typically done by using the (unqualified) name of the other method. But the syntax for calling a constructor is special. Java allows use of the keyword this to be used as a method within the body of one constructor, so as to invoke another constructor with a different signature.
-This is often useful because all of the initialization steps of one constructor can be reused with appropriate parameterization. As a trivial demonstra- tion of the syntax, we could reimplement the zero-argument version of our Counter constructor to have it invoke the one-argument version sending 0 as an explicit parameter. This would be written as follows:
-public Counter() {
-this(0); // invoke one-parameter constructor with value zero
-}
-We will provide a more meaningful demonstration of this technique in a later example of a CreditCard class in Section 1.7.
-
-
-
-
-
-
-
-
-
-
-
 
 
 ---
@@ -2104,8 +1153,61 @@ N 叉树的遍历框架
 - **遍历方式** 无非`迭代`和`递归`。
 
 
+---
 
 
+# String
+
+**String**
+
+- Because it is common to work with sequences of text characters in programs, Java provides support in the form of a String class.
+  - The class provides extensive support for various text-processing tasks
+
+- A **string** instance represents `a sequence of zero or more characters`.
+
+
+- Java uses double quotes to designate string literals.
+    - declare and initialize a String instance as follows: `String title = "Data Structures & Algorithms in Java"`
+
+- Character Indexing
+  - Each character within a string can be referenced by using an index
+
+- Concatenation 级联 `P + Q`
+  - The primary operation for combining strings is called concatenation,
+  - P + Q, which consists of all the characters of P followed by all the characters of Q.
+  - concatenation on two strings: `String term = "over" + "load";`
+
+
+
+- **immutable**
+  - An important trait, String instances are immutable;
+    - once an instance is created and initialized, the value of that instance cannot be changed.
+    - This is an intentional design, it allows for great efficiencies and optimizations within the Java Virtual Machine.
+  - However, as String is a class, a reference type, `variables` of type String can be reassigned to another `string instance` (even if the current string instance cannot be changed)
+
+    ```java
+    String greeting = "Hello";
+    greeting = "Ciao"; // we changed our mind
+
+    greeting = greeting + '!'; // now it is ”Ciao!”
+    ```
+
+    - However, this operation **does create a new string instance**, copying all the characters of the existing string in the process.
+    - For long string (such as DNA sequences), this can be very time consuming.
+
+
+
+
+---
+
+
+
+
+# StringBuilder
+
+**StringBuilder**
+- to support more efficient editing of character strings
+- effectively a mutable version of a string.
 
 
 
@@ -2119,33 +1221,63 @@ N 叉树的遍历框架
 
 
 **Array**
-- an array is a basic data structure to store **a collection of elements sequentially**.
-- But elements can **be accessed randomly** since each element in the array can be identified by an array **index**.
+
+![Screen Shot 2022-03-02 at 00.02.56](https://i.imgur.com/jxXiikI.png)
+
+- basic data structure
+
+- to store **a collection of elements sequentially**
+  - keep track of an **ordered** sequence of related values or objects.
+
+
+- **element**: Each value stored in an array
+
+
+- **capacity**: the length of an array
+  - the length of an array determines the maximum number of things that can be stored in the array
+
+- elements can **be accessed randomly** as each element in the array can be identified by an array **index**.
+
+
+- Out of Bounds Errors
+  - attempt to index into an array a using a number outside the range.
+  - Such a reference is said to be out of bounds.
+  - **buffer overflow attack**
+    - Out of bounds references have been exploited numerous times by hackers to compromise the security of computer systems written in languages other than Java.
+  - As a safety feature, array indices are always checked in Java to see if they are ever out of bounds.
+  - If an array index is out of bounds, the runtime Java environment signals an error condition. The name of this condition is the `ArrayIndexOutOfBoundsException`. This check helps Java avoid a number of security problems, such as buffer overflow attacks.
+
+
+-  an instance of an array is treated as an object by Java, and variables of an array type are reference variables.
+
+- Because arrays are so important, Java provides a class, `java.util.Arrays`, with a number of built-in static methods for performing common tasks on arrays.
 
 ```java
-// "static void main" must be defined in a public class.
-public class Main {
-    public static void main(String[] args) {
-        // 1. Initialize
-        int[] a0 = new int[5];
-        int[] a1 = {1, 2, 3};
-        // 2. Get Length
-        System.out.println("The size of a1 is: " + a1.length);
-        // 3. Access Element
-        System.out.println("The first element is: " + a1[0]);
-        // 4. Iterate all Elements
-        System.out.print("[Version 1] The contents of a1 are:");
-        for (int i = 0; i < a1.length; ++i) System.out.print(" " + a1[i]);
-        System.out.print("[Version 2] The contents of a1 are:");
-        for (int item: a1) System.out.print(" " + item);
-        // 5. Modify Element
-        a1[0] = 4;
-        // 6. Sort
-        Arrays.sort(a1);
-    }
-}
-```
+elementType[] arrayName = {initialValue0, initialValue1, . . . , initialValueN−1};
+elementType[] arrayName = new elementType[length]
+// When arrays are created using the new operator, all of their elements are automatically assigned the default value for the element type.
+// if the element type is numeric, all cells of the array are initialized to zero,
+// if the element type is boolean, all cells are false,
+// if the element type is a reference type, all cells are initialized to null.
 
+int[] a0 = new int[5];
+int[] a1 = {1, 2, 3};
+a1.length;
+a1[0];
+a1[0] = 4;
+for (int i = 0; i < a1.length; ++i) System.out.print(" " + a1[i]);
+for (int item: a1) System.out.print(" " + item);
+Arrays.sort(a1);
+
+Arrays.equals(A, B)
+Arrays.fill(A, x)
+Arrays.copyOf(A, n)
+// Returns an array of size n such that the first k elements of this array are copied from A, where k = min{n, A.length}. If n > A.length, then the last n − A.length elements in this array will be padded with default values, e.g., 0 for an array of int and null for an array of objects.
+Arrays.copyOfRange(A, s, t)  // order from A[s] to A[t − 1]
+Arrays.toString(A)
+Arrays.sort(A)
+Arrays.binarySearch(A, x)
+```
 
 
 **Dynamic Array**
@@ -8808,8 +7940,8 @@ Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
  *
  * Time Complexity: O(N * N!). Number of permutations = P(N,N) = N!. Each permutation takes O(N) to construct
  * T(n) = (x=2->n) ∑ (x-1)!*x(x+1)/2
- *    = (x=1->n-1) ∑ (x)!*x(x-1)/2
- *    = O(N * N!)
+  *  = (x=1->n-1) ∑ (x)!*x(x-1)/2
+  *  = O(N * N!)
  * Space Complexity: O((N-1) * (N-1)!) = O(N * N!). All permutations of the first n-1 numbers.
  */
 class Solution {
@@ -8950,9 +8082,9 @@ class Solution {
  * T(2) = 2 * T(1) + O(N)
  * T(1) = O(1)
  * Thus total number of permutations
- *    = N * (P(N,0) + P(N,1) + ... + P(N, N-2)) + P(N,N-1)
- *    = N * (e * N! - P(N,N-1) - P(N,N)) + N!
- *    = ((e-2)*N + 1) * N!
+  *  = N * (P(N,0) + P(N,1) + ... + P(N, N-2)) + P(N,N-1)
+  *  = N * (e * N! - P(N,N-1) - P(N,N)) + N!
+  *  = ((e-2)*N + 1) * N!
         = (0.718 * N + 1) * N!
  * Also, if there are S(N) solutions, then time taken to generate these solution will be N^2 * S(N).
  * Here number of solutions will be much less than the total number of permutations.
@@ -9114,7 +8246,7 @@ Output: [[],[0]]
  * S(n) = 0 × (n C n) + 1 × (n C n-1) + 2 × (n C n-2) + … + n × (n C 0)
  * If we add these two together, we get
  * 2S(n) = n × (n C 0) + n × (n C 1) + … + n × (n C n)
- *     = n × (n C 0 + n C 1 + … + n C n)
+  *   = n × (n C 0 + n C 1 + … + n C n)
  * As per binomial theorem, (n C 0 + n C 1 + … + n C n) = 2^n, so
  * 2*S(n) = n * 2^n => S(n) = n * 2^(n-1)
  *
@@ -9361,7 +8493,7 @@ Output:
  * Backtracking (Recursive Solution)
  *
  * Time complexity = InternalNodes in the RecursionTree   +   K * LeafNodes in RecursionTree
- *               = (C(N,0) + C(N,1) + ... + C(N,K-1))   +   K * C(N,K)
+  *             = (C(N,0) + C(N,1) + ... + C(N,K-1))   +   K * C(N,K)
  *
  * Space Complexity = O(K) -> Depth of Recursion tree + Size of TempList
  *
@@ -13011,11 +12143,11 @@ Output: [1,2,3,4,5]
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *   int val;
- *   ListNode next;
- *   ListNode() {}
- *   ListNode(int val) { this.val = val; }
- *   ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+  * int val;
+  * ListNode next;
+  * ListNode() {}
+  * ListNode(int val) { this.val = val; }
+  * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
 
@@ -13082,9 +12214,9 @@ It is guaranteed that the node to be deleted is not a tail node in the list.
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *   int val;
- *   ListNode next;
- *   ListNode(int x) { val = x; }
+  * int val;
+  * ListNode next;
+  * ListNode(int x) { val = x; }
  * }
  */
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Delete Node in a Linked List.
@@ -13157,11 +12289,11 @@ Output: [1,3,4,1,2,6]
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *   int val;
- *   ListNode next;
- *   ListNode() {}
- *   ListNode(int val) { this.val = val; }
- *   ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+  * int val;
+  * ListNode next;
+  * ListNode() {}
+  * ListNode(int val) { this.val = val; }
+  * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
 // O(n), O(1)

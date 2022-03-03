@@ -12,6 +12,8 @@ toc: true
 # image: /assets/img/sample/devices-mockup.png
 ---
 
+[toc]
+
 - ref:
   - https://runestone.academy/runestone/books/published/pythonds/BasicDS/toctree.html
   - [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/books/published/pythonds3/BasicDS/ImplementinganOrderedList.html)
@@ -199,7 +201,7 @@ running time:
 
 ---
 
-### Arrays in Java 
+### Arrays in Java
 
 
 `char arr1[] = {'g', 'e'}`

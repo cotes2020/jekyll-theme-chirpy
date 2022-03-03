@@ -9,13 +9,16 @@
 
 
 
+- [Anonymous Classes](#anonymous-classes)
+  - [Anonymous Classes](#anonymous-classes-1)
+  - [Declaring Anonymous Classes](#declaring-anonymous-classes)
+  - [Syntax of Anonymous Classes](#syntax-of-anonymous-classes)
+  - [Accessing Local Variables of the Enclosing Scope, and Declaring and Accessing Members of the Anonymous Class](#accessing-local-variables-of-the-enclosing-scope-and-declaring-and-accessing-members-of-the-anonymous-class)
+  - [Examples of Anonymous Classes](#examples-of-anonymous-classes)
 
 
 
-
-# Anonymous Classes
-
-[toc]
+# Anonymous Classes 
 
 ---
 

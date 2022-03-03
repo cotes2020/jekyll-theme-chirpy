@@ -44,7 +44,8 @@ toc: true
         - [Selection sort in python](#selection-sort-in-python)
         - [analyze the Selection sort](#analyze-the-selection-sort)
       - [The Insertion Sort](#the-insertion-sort)
-        - [`𝑂(𝑛^2)` 往前比大小 拿出记住自己的数字 大数字往后挪 切掉前面的数字继续](#𝑂𝑛2-往前比大小-拿出记住自己的数字-大数字往后挪-切掉前面的数字继续)
+        - [`𝑂(𝑛^2)` 从2nd开始 往前比大小 小数字往前挪](#𝑂𝑛2-从2nd开始-往前比大小-小数字往前挪)
+        - [Insertion Sort in Java](#insertion-sort-in-java)
         - [Insertion Sort in python](#insertion-sort-in-python)
         - [analyze the Insertion sort](#analyze-the-insertion-sort)
       - [The Shell Sort](#the-shell-sort)
@@ -1005,18 +1006,23 @@ You may see that the selection sort makes the same number of comparisons as the 
 
 #### The Insertion Sort
 
-##### `𝑂(𝑛^2)` 往前比大小 拿出记住自己的数字 大数字往后挪 切掉前面的数字继续
+##### `𝑂(𝑛^2)` 从2nd开始 往前比大小 小数字往前挪
+
+- considering one element at a time, placing the element in the correct order relative to those before it.
 
 - It always maintains a sorted sublist in the lower positions of the list.
 - Each new item is then “inserted” back into the previous sublist such that the sorted sublist is one item larger.
 
 ![insertionsort](https://i.imgur.com/96gXhrx.png)
 
-- We begin by assuming that a list with one item (position 0) is already sorted.
+Step
+- We begin by assuming that a list with one item (position 0) is already sorted. (trivially sorted by itself.)
 - On each pass, one for each item 1 through `𝑛−1`, the current item is checked against those in the already sorted sublist.
 - we shift those items that are greater to the right. When we reach a smaller item or the end of the sublist, the current item can be inserted.
 
 ![insertionpass](https://i.imgur.com/s9Wm7lx.png)
+
+![Screen Shot 2022-03-03 at 15.18.37](https://i.imgur.com/0l3PjxJ.png)
 
 the fifth pass in detail.
 - At this point in the algorithm, a sorted sublist of five items consisting of 17, 26, 54, 77, and 93 exists.
@@ -1025,6 +1031,27 @@ the fifth pass in detail.
 - 77 and 54 are also shifted.
 - When the item 26 is encountered, the shifting process stops and 31 is placed in the open position.
 - Now we have a sorted sublist of six items.
+
+
+
+##### Insertion Sort in Java
+
+```java
+// for k from 1 to n − 1 do
+// Insert A[k] at its proper location within A[0], A[1], ..., A[k].
+public static void insertionSort(char[] data) {
+    int n = data.length;
+    for(i=0; i<n-1; i++){
+        char cur = data[i];
+        int j = k;
+        while(j>0 && data[j-1] > data[j]){
+            data[j] = data[j-1];
+            j--;
+        }
+        data[j] = cur;
+    }
+}
+```
 
 
 ##### Insertion Sort in python
@@ -1065,6 +1092,9 @@ print(alist)
 One note about `shifting` versus `exchanging` is also important.
 - In general, a shift operation requires approximately a third of the processing work of an exchange since only one assignment is performed.
 - In benchmark studies, <font color=red> insertion sort will show very good performance </font>.
+
+
+
 
 
 ---
