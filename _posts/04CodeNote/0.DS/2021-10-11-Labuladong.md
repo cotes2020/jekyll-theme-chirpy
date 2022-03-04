@@ -64,6 +64,9 @@ toc: true
     - [singly linked list](#singly-linked-list)
     - [Circularly Linked Lists](#circularly-linked-lists)
     - [doubly linked list](#doubly-linked-list)
+  - [general method](#general-method)
+    - [Equivalence Testing](#equivalence-testing)
+    - [Cloning Data Structures](#cloning-data-structures)
   - [单链表的六大解题套路](#单链表的六大解题套路)
     - [合并两个有序链表 Merge 2 Sorted Lists](#合并两个有序链表-merge-2-sorted-lists)
     - [23. Merge k Sorted Lists 合并 k 个有序链表 Merge k Sorted Lists](#23-merge-k-sorted-lists-合并-k-个有序链表-merge-k-sorted-lists)
@@ -2302,22 +2305,83 @@ size = size - 1;
 
 ### doubly linked list
 
+- there are limitations that stem from the asymmetry of a singly linked list.
+  - can efficiently insert a node at either end of a singly linked list, and can delete a node at the head of a list,
+  - cannot efficiently delete a node at the tail of the list.
+  - cannot efficiently delete an arbitrary node from an interior position of the list if only given a reference to that node, because we cannot determine the node that immediately precedes the node to be deleted (yet, that node needs to have its next reference updated).
+
+![Screen Shot 2022-03-04 at 09.56.42](https://i.imgur.com/dzUHpQI.png)
+
+**doubly linked list**
+- a linked list, each node keeps an explicit reference to the node before it and a reference to the node after it.
+- These lists allow a greater variety of O(1)-time update operations, including insertions and deletions at arbitrary positions within the list.
+- We continue to use the term “next” for the reference to the node that follows another, and we introduce the term “prev” for the reference to the node that precedes it.
+
+
+**Header and Trailer Sentinels**
+- to avoid some special cases when operating near the boundaries of a doubly linked list, it helps to add special nodes at both ends of the list: a `header` node at the beginning of the list, and a `trailer` node at the end of the list.
+- These “dummy” nodes are known as `sentinels/guards`, and they do not store elements of the primary sequence.
+- When using sentinel nodes, an empty list is initialized so that the `next field of the header points to the trailer`, and the `prev field of the trailer points to the header`; the remaining fields of the sentinels are irrelevant (presumably null, in Java).
+- For a nonempty list, the header’s next will refer to a node containing the first real element of a sequence, just as the trailer’s prev references the node containing the last element of a sequence.
+
+
+**Advantage of Using Sentinels**
+- Although we could implement a doubly linked list without sentinel nodes, slight extra memory devoted to the `sentinels greatly simplifies the logic of the operations`.
+  - the header and trailer nodes never change — only the nodes between them change.
+  - treat all insertions in a unified manner, because a new node will always be placed between a pair of existing nodes.
+  - every element that is to be deleted is guaranteed to be stored in a node that has neighbors on each side.
+- contrast
+  - SinglyLinkedList implementation addLast method required a conditional to manage the special case of inserting into an empty list.
+  - In the general case, the new node was linked after the existing tail.
+  - But when adding to an empty list, there is no existing tail; instead it is necessary to reassign head to reference the new node.
+  - The use of a sentinel node in that implementation would eliminate the special case, as there would always be an existing node (possibly the header) before a new node.
+
+
+## general method
+
+
+### Equivalence Testing
+- At the lowest level, if a and b are reference variables, then` expression a == b tests whether a and b refer to the same object` (or if both are set to the null value).
+- higher-level notion of two variables being considered “equivalent” even if they do not actually refer to the same instance of the class. For example, we typically want to consider two String instances to be equivalent to each other if they represent the identical sequence of characters.
+- To support a broader notion of equivalence, all object types support a method named equals.
+- The author of each class has a responsibility to provide an implementation of the equals method, which overrides the one inherited from Object, if there is a more relevant definition for the equivalence of two instances
+
+- Great care must be taken when overriding the notion of equality, as the consistency of Java’s libraries depends upon the **equals method defining** what is known as an **equivalence relation** in mathematics, satisfying the following properties:
+  - `Treatment of null`:
+    - For any nonnull reference variable x,  `x.equals(null) == false` (nothing equals null except null).
+  - `Reflexivity`:
+    - For any nonnull reference variablex, `x.equals(x) == true` (object should equal itself).
+  - `Symmetry`:
+    - For any nonnull reference variablesxandy, `x.equals(y) == y.equals(x)`, should return the same value.
+  - `Transitivity`:
+    - For any nonnull reference variables x, y, and z, if `x.equals(y) == y.equals(z) == true`, then `x.equals(z) == true` as well.
 
 
 
+- Equivalence Testing with Arrays
+  - a == b:
+    - Tests if a and b refer to the same underlying array instance.
+  - a.equals(b):
+    - identical to a == b. Arrays are not a true class type and do not override the Object.equals method.
+  - Arrays.equals(a,b):
+    - This provides a more intuitive notion of equivalence, **returning true if the arrays have the same length and all pairs of corresponding elements are “equal” to each other**.
+    - More specifically, if the array elements are primitives, then it uses the standard == to compare values.
+    - If elements of the arrays are a reference type, then it makes pairwise `comparisons a[k].equals(b[k])` in evaluating the equivalence.
 
+- compound objects
+  - two-dimensional arrays in Java are really one-dimensional arrays nested inside a common one-dimensional array raises an interesting issue with respect to how we think about compound objects
+  - two-dimensional array, b, that has the same entries as a
+    - But the one-dimensional arrays, **the rows of a and b are stored in different memory locations**, even though they have the same internal content.
+    - Therefore
+      - `java.util.Arrays.equals(a,b) == false`
+      - `Arrays.deepEquals(a,b) == true`
 
+---
 
+### Cloning Data Structures
 
-
-
-
-
-
-
-
-
-
+- **abstraction** allows for a data structure to be treated as a single object, even though the encapsulated implementation of the structure might rely on a more complex combination of many objects.
+- each class in Java is responsible for defining whether its instances can be copied, and if so, precisely how the copy is constructed.
 
 
 ---

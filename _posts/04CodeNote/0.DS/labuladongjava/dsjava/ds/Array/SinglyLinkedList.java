@@ -9,7 +9,7 @@ public class SinglyLinkedList<E> {
         }
         public E getElement() {return element;}
         public Node<E> getNext() {return next;}
-        public void serNext(Node<E> m) {next = m;}
+        public void setNext(Node<E> m) {next = m;}
 
     }
 
@@ -39,7 +39,7 @@ public class SinglyLinkedList<E> {
         public void addLast(E e) {
             Node newest = new Node<>(e, null);
             if(size==0) tail = head;
-            tail.serNext(newest);
+            tail.setNext(newest);
             tail = newest;
             size++;
         }
@@ -50,5 +50,19 @@ public class SinglyLinkedList<E> {
             size--;
             return ans;
         } 
+
+        public boolean equals(Object o) {
+            if(o==null) return false;
+            if(getClass() != o.getClass()) return false;
+
+            SinglyLinkedList other = (SinglyLinkedList) o;
+            if(size != other.size) return false;
+            while(head != null) {
+                if( !head.getElement().equals(other.head.getElement()) ) return false;
+                head = head.getNext();
+                other.head = other.head.getNext();
+            }
+            return true;
+        }
     }
 }
