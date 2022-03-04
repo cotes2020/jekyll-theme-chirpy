@@ -16,14 +16,14 @@ Gem::Specification.new do |spec|
 
   spec.metadata = {
     "bug_tracker_uri"   => "https://github.com/cotes2020/jekyll-theme-chirpy/issues",
-    "documentation_uri" => "https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/README.md",
+    "documentation_uri" => "https://github.com/cotes2020/jekyll-theme-chirpy/#readme",
     "homepage_uri"      => "https://cotes2020.github.io/chirpy-demo",
     "source_code_uri"   => "https://github.com/cotes2020/jekyll-theme-chirpy",
     "wiki_uri"          => "https://github.com/cotes2020/jekyll-theme-chirpy/wiki",
     "plugin_type"       => "theme"
   }
 
-  spec.required_ruby_version = ">= 2.4"
+  spec.required_ruby_version = ">= 2.5"
 
   spec.add_runtime_dependency "jekyll", "~> 4.1"
   spec.add_runtime_dependency "jekyll-paginate", "~> 1.1"
