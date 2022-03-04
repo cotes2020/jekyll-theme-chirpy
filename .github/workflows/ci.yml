@@ -1,4 +1,4 @@
-name: 'Continuous Integration'
+name: 'CI'
 on:
   push:
     branches-ignore:
@@ -18,23 +18,20 @@ on:
       - '**'
 
 jobs:
-  ci:
-    runs-on: ${{ matrix.os }}
+  build:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
-
+        ruby: [2.5, 2.6, 2.7, 3]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0  # for posts's lastmod
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-
       - name: Test Site
         run: bash tools/deploy.sh --dry-run
