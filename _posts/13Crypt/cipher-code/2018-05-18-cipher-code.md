@@ -96,6 +96,13 @@ It is a type of substitution cipher in which each letter in the plaintext is rep
 
 ![Caesar_cipher_left_shift_of_3.svg](https://i.imgur.com/RNeQe4K.png)
  
+ 
+- involves replacing each letter in a message with the letter that is a certain number of letters after it in the alphabet.
+  - we might replace each A with D, each B with E, each C with F, and so on, if shifting by three characters.
+  - We continue this approach all the way up to W, which is replaced with Z. Then, we let the substitution pattern wrap around, so that we replace X with A, Y with B, and Z with C.
+
+- a Caesar cipher with a rotation of r encodes the letter having index k with the letter having index (k + r) mod 26, where mod is the modulo operator, which returns the remainder after performing an integer division.
+
 
 
 

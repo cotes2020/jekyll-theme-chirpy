@@ -1644,6 +1644,18 @@ Operators in Java are given preferences, or precedence, that determine the order
 
 ## Control Flow
 
+
+
+### question mark and colon
+
+
+```java
+a = condition ? value1 : value2;
+a>b ? true : false;
+```
+
+
+
 ### The If and Switch Statements
 
 **If Statement**

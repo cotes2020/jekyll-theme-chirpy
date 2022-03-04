@@ -31,6 +31,8 @@ toc: true
 - [String](#string)
 - [StringBuilder](#stringbuilder)
 - [Arrays 数组](#arrays-数组)
+  - [Array](#array)
+  - [Dynamic Array](#dynamic-array)
   - [Arrays in Java](#arrays-in-java)
     - [Create Array](#create-array)
       - [One-Dimensional Arrays](#one-dimensional-arrays)
@@ -58,6 +60,10 @@ toc: true
     - [1109. Corporate Flight Bookings 航班预订统计](#1109-corporate-flight-bookings-航班预订统计)
     - [1094 题「拼车」](#1094-题拼车)
 - [LinkedList](#linkedlist)
+  - [basicc](#basicc)
+    - [singly linked list](#singly-linked-list)
+    - [Circularly Linked Lists](#circularly-linked-lists)
+    - [doubly linked list](#doubly-linked-list)
   - [单链表的六大解题套路](#单链表的六大解题套路)
     - [合并两个有序链表 Merge 2 Sorted Lists](#合并两个有序链表-merge-2-sorted-lists)
     - [23. Merge k Sorted Lists 合并 k 个有序链表 Merge k Sorted Lists](#23-merge-k-sorted-lists-合并-k-个有序链表-merge-k-sorted-lists)
@@ -369,7 +375,8 @@ toc: true
       - [+++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop)
       - [+++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop-1)
     - [345. Reverse Vowels of a String (Easy)](#345-reverse-vowels-of-a-string-easy)
-  - [Cryptography](#cryptography)
+  - [game](#game)
+  - [TicTacToe](#tictactoe)
 - [system design](#system-design)
 
 ---
@@ -629,7 +636,7 @@ String str2 = str1.substring(lo, lo+maxLen)
 String str2 = String.join(" ", array);
 
 String[] words = str1.split(" ");
-char[] res = str1.toCharArray()
+char[] res = str1.toCharArray();
 
 
 String str2 = String.valueOf(char[] chars);
@@ -683,12 +690,10 @@ Arrays.sort(
 
 
 
-
-
 // ArrayList
 List<Integer> v0 = new ArrayList<>();
 List<Integer> v1 = new ArrayList<>(Arrays.asList(array1));
-List<Integer> v2 = v1;                      // another reference to v1, modify v2 will actually modify v1
+List<Integer> v2 = v1;  // another reference to v1, modify v2 will actually modify v1
 List<Integer> v3 = new ArrayList<>(v1);     // make an actual copy of v1, not changing v1
 
 List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
@@ -701,6 +706,41 @@ v1.add(1, 6); // 1 2 3 4 5 -> insert -> 1 6 2 3 4 5
 v1.remove(index)
 Collections.sort(v1);
 
+ArrayList ans = new ArrayList();
+ArrayList<Integer> ans = new ArrayList<>();
+List<List<String>> res = new ArrayList<List<String>>();
+List<int[]> res = new ArrayList<>();
+List<Integer> res = new ArrayList<>();
+ans.add(num);
+ans.size()
+ans.get(i);
+
+
+
+// LinkedList
+List<int[]>[] ll = new LinkedList[n+1];
+LinkedList<Integer> ll = new LinkedList<>();
+ll.size();
+ll.isEmpty();
+
+ll.add(a);
+ll.remove(i);
+
+ll.first();
+ll.last();
+
+ll.addFirst('k');
+ll.addLast('k');
+ll.getFirst();
+ll.getLast();
+ll.pollLast();
+ll.removeFirst();
+ll.removeLast();
+
+Iterator iter = linkedlist.iterator();
+iter.hashNext();
+iter.next();
+
 
 
 
@@ -711,12 +751,6 @@ stack.peek(); // Access element from top of Stack
 stack.isEmpty();
 stack.toString();
 stack1.equals(stack2);
-
-ArrayList ans = new ArrayList();
-ArrayList<Integer> ans = new ArrayList<>();
-ans.add(num);
-ans.size()
-ans.get(i);
 
 
 Vector myVect = new Vector();
@@ -732,27 +766,6 @@ q.push();
 q.poll();
 q.peek();
 q.isEmpty();
-
-
-List<int[]>[] graph = new LinkedList[n+1];
-List<List<String>> res = new ArrayList<List<String>>();
-List<int[]> res = new ArrayList<>();
-List<Integer> res = new ArrayList<>();
-List.length;
-List.add(a);
-List.remove(i);
-
-LinkedList<Integer> linkedlist = new LinkedList<>();
-linkedlist.addFirst('k');
-linkedlist.addLast('k');
-linkedlist.getFirst();
-linkedlist.getLast();
-linkedlist.pollLast();
-linkedlist.isEmpty();
-linkedlist.removeLast();
-Iterator iter = linkedlist.iterator();
-iter.hashNext();
-iter.next();
 
 
 LinkedHashSet<Character> set = new LinkedHashSet<Character>();
@@ -1221,7 +1234,7 @@ N 叉树的遍历框架
 - [https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1143/](https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1143/)
 
 
-**Array**
+## Array
 
 ![Screen Shot 2022-03-02 at 00.02.56](https://i.imgur.com/jxXiikI.png)
 
@@ -1281,8 +1294,12 @@ Arrays.binarySearch(A, x)
 ```
 
 
-**Dynamic Array**
-- an array has a **fixed capacity**, need to specify the size of the array when initialize it.
+## Dynamic Array
+- drawbacks.
+  - insertions and deletions at interior positions of an array can be time consuming if many elements must be shifted.
+
+  - an array has a **fixed capacity**, The capacity of the array must be fixed when it is created, need to specify the size of the array when initialize it.
+
 - Therefore, most programming languages offer built-in **dynamic array**
   - still a random access list data structure
   - but with variable size.
@@ -1393,8 +1410,9 @@ Although the first declaration establishes that intArray is an array variable, *
 #### Multidimensional Arrays
 
 Multidimensional arrays are **arrays of arrays** with each element of the array holding the reference of other arrays.
+- two-dimensional array is sometimes also called a matrix.
 - These are also known as [Jagged Arrays](https://www.geeksforgeeks.org/jagged-array-in-java/).
-- A multidimensional array is created by appending one set of square brackets ([]) per dimension. Examples:
+- A `multidimensional array` is created by appending one set of square brackets ([]) per dimension. Examples:
 
 ```java
 int[] intArray = new int[10][20]; //a 2D array or matrix
@@ -1489,12 +1507,13 @@ class GFG {
         System.out.println("Element at index " + i + " : " + arr[i]);
       }
     }
+  }
 ```
 
 You can also access java arrays using [foreach loops](https://www.geeksforgeeks.org/for-each-loop-in-java/).  
 
 
-![Blank Diagram - Page 1 (10)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-10.jpeg)
+![Blank Diagram](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-10.jpeg)
 
 
 
@@ -1919,7 +1938,7 @@ Example 2:
 Input: A = [10,20,30], K = 15
 Output: -1
 Explanation:
-In this case it's not possible to get a pair sum less that 15.
+In this case its not possible to get a pair sum less that 15.
 
 Note:
 
@@ -2168,6 +2187,138 @@ class Difference{
 
 
 # LinkedList
+
+
+- an alternative to an array-based structure.
+
+- A linked list, in its simplest form, is a collection of nodes that collectively form a linear sequence.
+
+- An important property of a linked list is that `it does not have a predetermined fixed size`; it uses space proportional to its current number of elements.
+
+---
+
+
+## basicc
+
+### singly linked list
+
+- In a **singly linked list**,
+  - each node stores a reference to an object that is an element of the sequence,
+  - as well as a reference to the next node of the list
+
+- `head`
+  - Minimally, the linked list instance must keep a reference to the first node of the list
+  - Without an `explicit reference` to the head, there would be no way to locate that node (or indirectly, any others).
+
+- `tail`
+  - The last node of the list
+  - can be found by traversing the linked list—starting at the head and moving from one node to another by following each node’s next reference. **link/pointer hopping**
+  - identify the tail as the node having null as its next reference.
+  - storing an `explicit reference` to the tail node is a common efficiency to avoid such a traversal. In similar regard, it is common for a linked list instance to keep a count of the total number of nodes that comprise the list (also known as the size of the list), to avoid traversing the list to count the nodes.
+
+
+![Screen Shot 2022-03-03 at 21.26.04](https://i.imgur.com/t0PStKi.png)
+
+
+**Inserting an Element at the Head of a Singly Linked List**
+
+```java
+Algorithm addFirst(e):
+newest=Node(e);
+newest.next = head;
+head = newest;
+size = size + 1;
+```
+
+**Inserting an Element at the Tail of a Singly Linked List**
+
+
+```java
+Algorithm addLast(e):
+newest=Node(e);
+newest.next = null;
+tail.next = newest;
+tail = newest;
+size = size + 1;
+```
+
+**Removing an Element from a Singly Linked List**
+
+```java
+Algorithm removeFirst():
+if head == null:
+    the list is empty;
+head = head.next;
+size = size - 1;
+```
+
+
+**other**
+- Unfortunately, we cannot easily delete the last node of a singly linked list.
+- we must be able to access the node before the last node in order to remove the last node.
+- The only way to access this node is to start from the head of the list and search all the way through the list.
+- to support such an operation efficiently, we will need to make our list **doubly linked**
+
+
+---
+
+
+### Circularly Linked Lists
+
+- there are many applications in which data can be more naturally viewed as having a cyclic order, with well-defined neighboring relationships, but no fixed beginning or end.
+
+- esentially a singularly linked list, the `next reference of the tail node` is set to refer back to the head of the list (rather than null),
+
+![Screen Shot 2022-03-03 at 22.17.09](https://i.imgur.com/4tzqpWi.png)
+
+
+**Round-Robin Scheduling**
+- One of the most important roles of an operating system is in managing the many processes that are currently active on a computer, including the scheduling of those processes on one or more central processing units (CPUs).
+- In order to support the responsiveness of an arbitrary number of concurrent processes, most operating systems allow processes to effectively share use of the CPUs, using some form of an algorithm known as `round-robin scheduling`.
+  - A process is given a short turn to execute, known as a `time slice`,
+  - it is interrupted when the slice ends, even if its job is not yet complete.
+  - Each active process is given its own time slice, taking turns in a cyclic order.
+  - New processes can be added to the system, and processes that complete their work can be removed.
+
+1. traditional linked list
+   1. by repeatedly performing the following steps on linked list L
+      1. process p = L.removeFirst( )
+      2. Give a time slice to process p
+      3. L.addLast(p)
+   2. drawbacks: unnecessarily inefficient to repeatedly throw away a node from one end of the list, only to create a new node for the same element when reinserting it, not to mention the various updates that are performed to decrement and increment the list’s size and to unlink and relink nodes.
+
+2. Circularly Linked List
+   1. on a circularly linked list C:
+      1. Give a time slice to process C.first()
+      2. C.rotate()
+   2. Implementing the new rotate method is quite trivial.
+      1. do not move any nodes or elements
+      2. simply advance the tail reference to point to the node that follows it (the implicit head of the list).
+
+
+---
+
+
+
+### doubly linked list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
@@ -14312,9 +14463,13 @@ class Solution {
 ---
 
 
-## Cryptography
+## game
 
 
+## TicTacToe
+
+- Cells in this array store values that indicate if that cell is empty or stores an X or O.
+- This encoding allows us to have a simple way of testing if a given board configuration is a win for X or O, namely, if the values of a row, column, or diagonal add up to 3 or −3, respectively.
 
 
 
