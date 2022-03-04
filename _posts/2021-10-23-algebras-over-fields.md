@@ -5,7 +5,15 @@ categories: [abstract algebra, representation theory, tensor algebra]
 tags: [tensors, bilinear products, algebra]
 ---
 
-Welcome to Part 2 of '_Algebra Done Tensorially_'. If you haven't already done so, make sure to check out [Part 1 (Bilinear Products)]({% post_url 2021-10-18-bilinear-products %}) before reading this post :) I will start right from where we stopped in Part 1.
+Welcome to Part 2 of 'Algebra Done Tensorially'. If you haven't already done so, make sure to check out the previous post, [Part 1 (Bilinear Products)]({% post_url 2021-10-18-bilinear-products %}) before reading this post :) I will start right from where we stopped in Part 1.
+
+| Parts | Topics |
+| :-- | :-- |
+| [Part 1 (Bilinear Products)]({% post_url 2021-10-18-bilinear-products %})|tensors, bilinear products |
+| [Part 2 (Algebras Over Fields)]({% post_url 2021-10-23-algebras-over-fields %}) |linear maps, algebra, degrees of freedom |
+| [Part 3 (Complex Numbers and Quaternions)]({% post_url 2022-02-24-complex-numbers-quaternions %}) | complex numbers, quaternions, gamma matrices |
+| [Part 4 (Clifford Algebras)]() | in progress |
+| [Part 5 (Lie Algebras)]() | in progress |
 
 ## Recap: bilinear products as linear maps
 

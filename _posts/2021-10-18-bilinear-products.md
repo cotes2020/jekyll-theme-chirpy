@@ -7,15 +7,13 @@ tags: [tensors, bilinear products, algebra]
 
 Welcome to this five-part series of posts:
 
-[Algebra Done Tensorially: Part 1 (Bilinear Products)]({% post_url 2021-10-18-bilinear-products %})
-
-[Algebra Done Tensorially: Part 2 (Algebras Over Fields)]({% post_url 2021-10-23-algebras-over-fields %})
-
-[Algebra Done Tensorially: Part 3 (Complex Numbers and Quaternions)]({% post_url 2022-02-24-complex-numbers-quaternions %})
-
-[Algebra Done Tensorially: Part 4 (Clifford Algebras)]()
-
-[Algebra Done Tensorially: Part 5 (Lie Algebras)]()
+| Parts | Topics |
+| :-- | :-- |
+| [Part 1 (Bilinear Products)]({% post_url 2021-10-18-bilinear-products %})|tensors, bilinear products |
+| [Part 2 (Algebras Over Fields)]({% post_url 2021-10-23-algebras-over-fields %}) |linear maps, algebra, degrees of freedom |
+| [Part 3 (Complex Numbers and Quaternions)]({% post_url 2022-02-24-complex-numbers-quaternions %}) | complex numbers, quaternions, gamma matrices |
+| [Part 4 (Clifford Algebras)]() | in progress |
+| [Part 5 (Lie Algebras)]() | in progress |
 
 In this first post, I will be exploring bilinear products using tensor analysis. Since tensors will be used extensively in this series, I thought it best to quickly recap their working. Note that this is _not_ appropriate as an introduction to tensors. If you haven't already studied tensors, I'd recommend watching [this excellent playlist](https://youtube.com/playlist?list=PLJHszsWbB6hrkmmq57lX8BV-o-YIOFsiG) by YouTuber [Eigenchris](https://www.youtube.com/user/eigenchris).
 
