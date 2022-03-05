@@ -18,6 +18,7 @@ toc: true
   - [basic](#basic)
   - [timeline](#timeline)
 - [算法](#算法)
+  - [Algorithm Analysis](#algorithm-analysis)
   - [算法](#算法-1)
     - [一、数据结构的存储方式](#一数据结构的存储方式)
     - [二、数据结构的基本操作](#二数据结构的基本操作)
@@ -28,27 +29,6 @@ toc: true
       - [**图的遍历**](#图的遍历)
     - [三、算法刷题指南](#三算法刷题指南)
     - [四、总结几句](#四总结几句)
-- [String](#string)
-- [StringBuilder](#stringbuilder)
-- [Arrays 数组](#arrays-数组)
-  - [Array](#array)
-  - [Dynamic Array](#dynamic-array)
-  - [Arrays in Java](#arrays-in-java)
-    - [Create Array](#create-array)
-      - [One-Dimensional Arrays](#one-dimensional-arrays)
-      - [Multidimensional Arrays](#multidimensional-arrays)
-    - [Instantiating an Array in Java](#instantiating-an-array-in-java)
-    - [Array Literal](#array-literal)
-    - [Java Array index](#java-array-index)
-    - [Arrays of Objects](#arrays-of-objects)
-    - [Java Array Error](#java-array-error)
-    - [Arrays in Methods](#arrays-in-methods)
-      - [Passing Arrays to Methods](#passing-arrays-to-methods)
-      - [Return Arrays from Methods](#return-arrays-from-methods)
-    - [Class Objects for Arrays](#class-objects-for-arrays)
-    - [Array Members](#array-members)
-    - [Arrays Types, Allowed Element Types](#arrays-types-allowed-element-types)
-    - [Cloning of arrays](#cloning-of-arrays)
   - [前缀和技巧](#前缀和技巧)
     - [303. Range Sum Query - Immutable 计算索引区间/list中指定位置的和 `preSum[i] = preSum[i - 1] + nums[i - 1];`](#303-range-sum-query---immutable-计算索引区间list中指定位置的和-presumi--presumi---1--numsi---1)
     - [560. Subarray Sum Equals K 和为k的子数组 `if (preSum[j] == preSum[i] - k) res++;`](#560-subarray-sum-equals-k-和为k的子数组-if-presumj--presumi---k-res)
@@ -386,8 +366,12 @@ toc: true
 
 # Labuladong
 
+
+- Problem Solving with Algorithms and Data Structures using Python 3
+- Data Structures and Algorithms in Java, 6th Edition.pdf
 - https://github.com/labuladong/fucking-algorithm
 - https://labuladong.github.io
+
 
 ---
 
@@ -504,7 +488,7 @@ public int check_binarySearch(int[] arr, int target) {
 }
 
 
-// find nums*nums in int[]
+// find nums*nums in int[] 二分查找
 public int maxProfit(int[] prices) {
     int min = Integer.MAX_VALUE, max = 0;
     for(int p:prices) {
@@ -528,6 +512,18 @@ public boolean containsDuplicate(int[] nums) {
     return false;
 }
 
+
+// find x in both a,b,c
+public static boolean disjoint2(int[ ] groupA, int[ ] groupB, int[ ] groupC) {
+        for (int a : groupA) {
+            for (int b : groupB){
+                if (a == b){  // n times
+                    for (int c : groupC) if (a == c) return false;
+                }
+            }
+        }
+        return true;
+    }
 
 
 // ListNode deleteDuplicates
@@ -694,6 +690,11 @@ Arrays.sort(
 
 
 // ArrayList
+ArrayList ans = new ArrayList<>();
+ArrayList<Integer> ans = new ArrayList<>();
+List<List<String>> res = new ArrayList<List<String>>();
+List<int[]> res = new ArrayList<>();
+List<Integer> res = new ArrayList<>();
 List<Integer> v0 = new ArrayList<>();
 List<Integer> v1 = new ArrayList<>(Arrays.asList(array1));
 List<Integer> v2 = v1;  // another reference to v1, modify v2 will actually modify v1
@@ -702,21 +703,21 @@ List<Integer> v3 = new ArrayList<>(v1);     // make an actual copy of v1, not ch
 List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
 List<Integer> num = Arrays.asList(int k);
 v1.size()
+v1.isEmpty();
 v1.get(index)
 v2.set(0, 5); // 0 1 2 3 4 -> change -> 5 1 2 3 4
 v1.add(-1);
 v1.add(1, 6); // 1 2 3 4 5 -> insert -> 1 6 2 3 4 5
 v1.remove(index)
 Collections.sort(v1);
-
-ArrayList ans = new ArrayList();
-ArrayList<Integer> ans = new ArrayList<>();
-List<List<String>> res = new ArrayList<List<String>>();
-List<int[]> res = new ArrayList<>();
-List<Integer> res = new ArrayList<>();
-ans.add(num);
-ans.size()
-ans.get(i);
+v1.firt();
+vq.last();
+v1.before(p);
+v1.after(p);
+v1.addFirst(p);
+v1.addLast(p);
+v1.addBefore(p);
+v1.addAfter(p);
 
 
 
@@ -849,9 +850,22 @@ bh.buildHeap(list);
 
 # 算法
 
+
+---
+
+## Algorithm Analysis
+
+
+
+
+
+
 ---
 
 ## 算法
+
+
+
 
 ---
 
@@ -1169,567 +1183,6 @@ N 叉树的遍历框架
 - **基本操作** 就是`增删查改`，
 - **遍历方式** 无非`迭代`和`递归`。
 
-
----
-
-
-# String
-
-**String**
-
-- Because it is common to work with sequences of text characters in programs, Java provides support in the form of a String class.
-  - The class provides extensive support for various text-processing tasks
-
-- A **string** instance represents `a sequence of zero or more characters`.
-
-
-- Java uses double quotes to designate string literals.
-    - declare and initialize a String instance as follows: `String title = "Data Structures & Algorithms in Java"`
-
-- Character Indexing
-  - Each character within a string can be referenced by using an index
-
-- Concatenation 级联 `P + Q`
-  - The primary operation for combining strings is called concatenation,
-  - P + Q, which consists of all the characters of P followed by all the characters of Q.
-  - concatenation on two strings: `String term = "over" + "load";`
-
-
-
-- **immutable**
-  - An important trait, String instances are immutable;
-    - once an instance is created and initialized, the value of that instance cannot be changed.
-    - This is an intentional design, it allows for great efficiencies and optimizations within the Java Virtual Machine.
-  - However, as String is a class, a reference type, `variables` of type String can be reassigned to another `string instance` (even if the current string instance cannot be changed)
-
-    ```java
-    String greeting = "Hello";
-    greeting = "Ciao"; // we changed our mind
-
-    greeting = greeting + '!'; // now it is ”Ciao!”
-    ```
-
-    - However, this operation **does create a new string instance**, copying all the characters of the existing string in the process.
-    - For long string (such as DNA sequences), this can be very time consuming.
-
-
-
-
----
-
-
-
-
-# StringBuilder
-
-**StringBuilder**
-- to support more efficient editing of character strings
-- effectively a mutable version of a string.
-
-
-
-
----
-
-# Arrays 数组
-
-- [https://www.geeksforgeeks.org/arrays-in-java/](https://www.geeksforgeeks.org/arrays-in-java/)
-- [https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1143/](https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1143/)
-
-
-## Array
-
-![Screen Shot 2022-03-02 at 00.02.56](https://i.imgur.com/jxXiikI.png)
-
-- basic data structure
-
-- to store **a collection of elements sequentially**
-  - keep track of an **ordered** sequence of related values or objects.
-
-
-- **element**: Each value stored in an array
-
-
-- **capacity**: the length of an array
-  - the length of an array determines the maximum number of things that can be stored in the array
-
-- elements can **be accessed randomly** as each element in the array can be identified by an array **index**.
-
-
-- Out of Bounds Errors
-  - attempt to index into an array a using a number outside the range.
-  - Such a reference is said to be out of bounds.
-  - **buffer overflow attack**
-    - Out of bounds references have been exploited numerous times by hackers to compromise the security of computer systems written in languages other than Java.
-  - As a safety feature, array indices are always checked in Java to see if they are ever out of bounds.
-  - If an array index is out of bounds, the runtime Java environment signals an error condition. The name of this condition is the `ArrayIndexOutOfBoundsException`. This check helps Java avoid a number of security problems, such as buffer overflow attacks.
-
-
--  an instance of an array is treated as an object by Java, and variables of an array type are reference variables.
-
-- Because arrays are so important, Java provides a class, `java.util.Arrays`, with a number of built-in static methods for performing common tasks on arrays.
-
-```java
-elementType[] arrayName = {initialValue0, initialValue1, . . . , initialValueN−1};
-elementType[] arrayName = new elementType[length]
-// When arrays are created using the new operator, all of their elements are automatically assigned the default value for the element type.
-// if the element type is numeric, all cells of the array are initialized to zero,
-// if the element type is boolean, all cells are false,
-// if the element type is a reference type, all cells are initialized to null.
-
-int[] a0 = new int[5];
-int[] a1 = {1, 2, 3};
-a1.length;
-a1[0];
-a1[0] = 4;
-for (int i = 0; i < a1.length; ++i) System.out.print(" " + a1[i]);
-for (int item: a1) System.out.print(" " + item);
-Arrays.sort(a1);
-
-Arrays.equals(A, B)
-Arrays.fill(A, x)
-Arrays.copyOf(A, n)
-// Returns an array of size n such that the first k elements of this array are copied from A, where k = min{n, A.length}. If n > A.length, then the last n − A.length elements in this array will be padded with default values, e.g., 0 for an array of int and null for an array of objects.
-Arrays.copyOfRange(A, s, t)  // order from A[s] to A[t − 1]
-Arrays.toString(A)
-Arrays.sort(A)
-Arrays.binarySearch(A, x)
-```
-
-
-## Dynamic Array
-- drawbacks.
-  - insertions and deletions at interior positions of an array can be time consuming if many elements must be shifted.
-
-  - an array has a **fixed capacity**, The capacity of the array must be fixed when it is created, need to specify the size of the array when initialize it.
-
-- Therefore, most programming languages offer built-in **dynamic array**
-  - still a random access list data structure
-  - but with variable size.
-  - For example, we have `vector` in C++ and `ArrayList` in Java.
-
-```java
-// "static void main" must be defined in a public class.
-public class Main {
-    public static void main(String[] args) {
-        // 1. initialize
-        List<Integer> v0 = new ArrayList<>();
-        List<Integer> v1;                           // v1 == null
-        // 2. cast an array to a vector
-        Integer[] a = {0, 1, 2, 3, 4};
-        v1 = new ArrayList<>(Arrays.asList(a));
-        // 3. make a copy
-        List<Integer> v2 = v1;                      // another reference to v1
-        List<Integer> v3 = new ArrayList<>(v1);     // make an actual copy of v1
-        // 3. get length
-        System.out.println("The size of v1 is: " + v1.size());
-        // 4. access element
-        System.out.println("The first element in v1 is: " + v1.get(0));
-        // 5. iterate the vector
-        for (int i = 0; i < v1.size(); ++i) System.out.print(" " + v1.get(i));  // [Version 1]
-        for (int item : v1) System.out.print(" " + item);  // [Version 2]
-        // 6. modify element
-        v2.set(0, 5);       // modify v2 will actually modify v1
-        v3.set(0, -1);
-        // 7. sort
-        Collections.sort(v1);
-        // 8. add new element at the end of the vector
-        v1.add(-1);
-        v1.add(1, 6);
-        // 9. delete the last element
-        v1.remove(v1.size() - 1);
-    }
-}
-```
-
----
-
-## Arrays in Java
-
-
-Java arrays.
-* In Java, all arrays are dynamically allocated. (discussed below)
-* Since arrays are objects in Java, we can find their length using the object property _length_. This is different from C/C++, where we find length using sizeof.
-* A Java array variable can also be declared like other variables with [] after the data type.
-* The variables in the array are ordered, and each has an index beginning from 0.
-* Java array can be also be used as a static field, a local variable, or a method parameter.
-* The **size** of an array must be specified by int or short value and not long.
-* The direct superclass of an array type is [Object](https://www.geeksforgeeks.org/object-class-in-java/).
-* Every array type implements the interfaces [Cloneable](https://www.geeksforgeeks.org/marker-interface-java/) and [java.io.Serializable](https://www.geeksforgeeks.org/serialization-in-java/).
-
-An array can contain `primitives (int, char, etc.)` and `object (non-primitive) references of a class` depending on the definition of the array.
-- primitive data types: the actual values are stored in contiguous memory locations.
-- class objects, [the actual objects are stored in a heap segment](https://www.geeksforgeeks.org/g-fact-46/).  
-
-
-![Arrays](https://media.geeksforgeeks.org/wp-content/uploads/Arrays1.png)
-
-
-
-### Create Array
-
-
-#### One-Dimensional Arrays
-
-An array declaration has two components: the type and the name.
-- _type_
-  - declares the `element type` of the array.
-  - determines the data type of each element that comprises the array.
-  - determines what type of data the array will hold.
-  - Like an array of integers, other primitive data types like char, float, double, etc., or user-defined data types (objects of a class).
-
-
-```java
-
-type var-name[];
-type[] var-name;
-
-// both are valid declarations
-int intArray[];
-int[] intArray;
-
-byte byteArray[];
-short shortsArray[];
-boolean booleanArray[];
-long longArray[];
-float floatArray[];
-double doubleArray[];
-char charArray[];
-
-// an array of references to objects of the class
-MyClass myClassArray[];
-
-Object[]  ao,        // array of Object
-Collection[] ca;  // array of Collection of unknown type
-```
-
-
-Although the first declaration establishes that intArray is an array variable, **no actual array exists**.
-- It merely tells the compiler that this variable (intArray) will hold an array of the integer type.
-- To link intArray with an actual, physical array of integers, allocate one using **new** and assign it to intArray.
-
-
-
-#### Multidimensional Arrays
-
-Multidimensional arrays are **arrays of arrays** with each element of the array holding the reference of other arrays.
-- two-dimensional array is sometimes also called a matrix.
-- These are also known as [Jagged Arrays](https://www.geeksforgeeks.org/jagged-array-in-java/).
-- A `multidimensional array` is created by appending one set of square brackets ([]) per dimension. Examples:
-
-```java
-int[] intArray = new int[10][20]; //a 2D array or matrix
-int[] intArray = new int[10][20][10]; //a 3D array
-
-public class multiDimensional {
-    public static void main(String args[]) {
-        // declaring and initializing 2D array
-        int arr[][] = { {2, 7, 9},{3, 6, 1},{7, 4, 2} };  
-    }
-}
-
-// 2 7 9
-// 3 6 1
-// 7 4 2
-```
-
-
-![Blank Diagram - Page 1 (13)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-13.jpeg)
-
-
-
----
-
-### Instantiating an Array in Java
-
-When an array is `declared`, only a **reference** of an array is created.
-
-To create or give memory to the array, you create an array like this: The general form of _new_ as it applies to one-dimensional arrays appears as follows:
-
-- _type_ specifies the type of data being allocated,
-- _size_ determines the number of elements in the array,
-- _var-name_ is the name of the array variable that is linked to the array.
-- use _new_ to allocate an array, **you must specify the type and number of elements to allocate.**
-
-
-```java
-var-name = new type [size];
-
-int intArray[];    //declaring array
-intArray = new int[20];  // allocating memory to array
-int[] intArray = new int[20]; // combining both statements in one
-```
-**Note :**
-
-1. The elements in the array allocated by _new_ will automatically be initialized to **zero** (for numeric types), **false** (for boolean), or **null** (for reference types). Refer [Default array values in Java](https://www.geeksforgeeks.org/default-array-values-in-java/)
-2. Obtaining an array is a two-step process. First, you must declare a variable of the desired array type. Second, you must allocate the memory to hold the array, using new, and assign it to the array variable. Thus, **in Java**, **all arrays are dynamically allocated.**
-
-
-
-### Array Literal
-
-In a situation where the size of the array and variables of the array are already known, array literals can be used.
-
-* The length of this array determines the length of the created array.
-* There is no need to write the new int[] part in the latest versions of Java.
-
-
-```java
- int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 };
- // Declaring array literal
-```
-
-### Java Array index
-
-Each element in the array is accessed via its index.
-- begins with 0 and ends at (total array size)-1.
-- All the elements of array can be accessed using Java for Loop.
-
-```java
- // accessing the elements of the specified array
-for (int i = 0; i < arr.length; i++)
-  System.out.println("Element at index " + i +  " : "+ arr[i]);
-```
-
-
-**Java program to illustrate creating an array **
-
-```java
-class GFG {
-
-    public static void main (String[] args) {
-
-      // declares an Array of integers.
-      int[] arr;
-
-      // allocating memory for 5 integers.
-      arr = new int[5];
-      arr[0] = 10;
-      arr[1] = 20;
-      for(int i = 0; i < arr.length; i++) {
-        System.out.println("Element at index " + i + " : " + arr[i]);
-      }
-    }
-  }
-```
-
-You can also access java arrays using [foreach loops](https://www.geeksforgeeks.org/for-each-loop-in-java/).  
-
-
-![Blank Diagram](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-10.jpeg)
-
-
-
-
-### Arrays of Objects
-
-An array of objects is created like an array of primitive type data items in the following way.
-
-```java
-Student[] arr = new Student[7]; //student is a user-defined class
-```
-The studentArray contains seven memory spaces each of the size of student class in which the address of seven Student objects can be stored. The Student objects have to be instantiated using the constructor of the Student class, and their references should be assigned to the array elements in the following way.
-
-
-```java
-Student[] arr = new Student[5];
-
-// Java program to illustrate creating an array of objects`
-
-class Student {
-    public int roll_no;
-    public String name;
-
-    Student(int roll_no, String name) {
-        this.roll_no = roll_no;
-        this.name = name;
-    }
-}
-
-
-// Elements of the array are objects of a class Student.`
-
-public class GFG {
-    public static void main (String[] args) {
-        // declares an Array of integers.
-        Student[] arr;
-
-        // allocating memory for 5 objects of type Student.
-        arr =new Student[5];
-
-        arr[0] =new Student(1, "aman");
-        arr[1] =new Student(2, "vaibhav");
-        arr[2] =new Student(3, "shikar");
-        arr[3] =new Student(4, "dharmesh");
-        arr[4] =new Student(5, "mohit");
-    }
-}
-```
-
-
-
-### Java Array Error
-
-JVM throws **ArrayIndexOutOfBoundsException** to indicate that the array has been accessed with an illegal index. The index is either negative or greater than or equal to the size of an array.
-```java
-Runtime error:
-Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 2 at GFG.main(File.java:12)
-```
-
-
-
----
-
-### Arrays in Methods
-
-#### Passing Arrays to Methods
-
-Like variables, we can also pass arrays to methods. For example, the below program passes the array to method _sum_ to calculate the sum of the array’s values.
-
-```java
-public class Test {   
-    // Driver method
-    public static void main(String args[]) {
-        int arr[] = {3, 1, 2, 5, 4};
-        sum(arr);
-    }
-
-    public static void sum(int[] arr) {
-        // getting sum of array values
-        int sum = 0;
-        for(int i = 0; i < arr.length; i++) sum+=arr[i];
-        System.out.println("sum of array values : " + sum);
-    }
-}
-```
-
----
-
-
-#### Return Arrays from Methods
-
-As usual, a method can also return an array. For example, the below program returns an array from method _m1_.
-
-```java
-class Test {   
-    // Driver method
-    public static void main(String args[]) {
-        int arr[] = m1();
-        for(int i = 0; i < arr.length; i++) System.out.print(arr[i]+" ");
-    }
-
-    public static int[] m1() {
-        return new int[]{1, 2, 3};
-    }
-
-}
-```
-
----
-
-
-
-
-
-
-### Class Objects for Arrays
-
-Every array has an associated Class object, shared with all other arrays with the same component type.
-
-```java
-class Test {
-    public static void main(String args[]) {
-        int intArray[] = new int[3];
-        byte byteArray[] =new byte[3];
-        short shortsArray[] =new short[3];
-        String[] strArray =new String[3];
-        System.out.println(intArray.getClass());
-        System.out.println(intArray.getClass().getSuperclass());  
-    }
-
-}
-```
-
-
-**Explanation:**
-
-1. The string “[I” is the run-time type signature for the class object “array with component type _int_.”
-2. The only direct superclass of an array type is [java.lang.Object](https://www.geeksforgeeks.org/object-class-in-java/).
-3. The string “[B” is the run-time type signature for the class object “array with component type _byte_.”
-4. The string “[S” is the run-time type signature for the class object “array with component type _short_.”
-5. The string “[L” is the run-time type signature for the class object “array with component type of a Class.” The Class name is then followed.
-
-
-
-
-### Array Members
-
-Now, as you know that arrays are objects of a class, and a direct superclass of arrays is a class Object. The members of an array type are all of the following:
-
-* The public final field _length_, which contains the number of components of the array. Length may be positive or zero.
-* All the members inherited from class Object; the only method of Object that is not inherited is its [clone](https://www.geeksforgeeks.org/clone-method-in-java-2/) method.
-* The public method _clone()_, which overrides the clone method in class Object and throws no [checked exceptions](https://www.geeksforgeeks.org/checked-vs-unchecked-exceptions-in-java/).
-
-
-
-
-### Arrays Types, Allowed Element Types
-
-Array Types
-- Primitive Type Arrays: Any type which can be implicitly promoted to declared type.
-- Object Type Arrays: Either declared type objects or it’s child class objects.
-- Abstract Class Type Arrays: Its child-class objects are allowed.
-- Interface Type Arrays: Its implementation class objects are allowed.
-
-
-
----
-
-
-### Cloning of arrays
-
-
-**single-dimensional array**
-clone a single-dimensional array, such as Object[],
-- a “deep copy” is performed with the new array containing copies of the original array’s elements as opposed to references.
-
-
-![Blank Diagram - Page 1 (11)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-11.jpeg)
-
-
-```java
-class Test {   
-
-    public static void main(String args[]) {
-        int intArray[] = {1, 2, 3};
-        int cloneArray[] = intArray.clone();
-        System.out.println(intArray == cloneArray) // false
-        }
-    }
-}
-```
-
-**multi-dimensional array**
-A clone of a multi-dimensional array (like Object[])
-- a “shallow copy,”
-- it creates only a single new array with each element array a reference to an original element array
-- **subarrays are shared**.
-
-
-![Blank Diagram - Page 1 (12)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-12.jpeg)
-
-
-```java  
-class Test {
-    public static void main(String args[]) {
-        int intArray[][] = {4,5};  
-        int cloneArray[][] = intArray.clone();  
-        System.out.println(intArray == cloneArray); // false
-        System.out.println(intArray[0] == cloneArray[0]); // true
-        System.out.println(intArray[1] == cloneArray[1]); // true
-    }
-}
-```
 
 ---
 
@@ -2382,6 +1835,77 @@ size = size - 1;
 
 - **abstraction** allows for a data structure to be treated as a single object, even though the encapsulated implementation of the structure might rely on a more complex combination of many objects.
 - each class in Java is responsible for defining whether its instances can be copied, and if so, precisely how the copy is constructed.
+
+- The universal `Object superclass` defines a method named `clone`
+  - can be used to produce shallow copy of an object.
+  - This uses the standard assignment semantics to assign the value of `each field of the new object` equal to the `corresponding field of the existing object` that is being copied.
+  - The reason this is known as a shallow copy is because if the field is a reference type, then an initialization of the form `duplicate.field = original.field` causes the field of the new object to refer to the same underlying instance as the field of the original object.
+
+- A `shallow copy` is not always appropriate for all classes
+  - therefore, Java intentionally **disables use of the clone() method** by
+    - declaring it as protected,
+    - having it throw a CloneNotSupportedException when called.
+  - The author of a class must explicitly declare support for cloning by
+    - formally declaring that the class implements the `Cloneable interface`,
+    - and by declaring a public version of the clone() method.
+  - That public method can simply call the protected one to do the field-by-field assignment that results in a shallow copy, if appropriate. However, for many classes, the class may choose to implement a deeper version of cloning, in which some of the referenced objects are themselves cloned.
+
+
+![Screen Shot 2022-03-04 at 11.13.02](https://i.imgur.com/5l3YSL1.png)
+
+![Screen Shot 2022-03-04 at 11.13.41](https://i.imgur.com/gUZfkkP.png)
+
+
+```java
+int[ ] data = {2, 3, 5, 7, 11, 13, 17, 19};
+int[ ] backup;
+
+backup = data; // warning; not a copy
+backup = data.clone();  // copy
+```
+
+
+**shallow copy**
+- considerations when copying an array that stores `reference types` rather than `primitive types`.
+  - The `clone()` method produces a shallow copy of the array
+  - producing a new array whose cells refer to the same objects referenced by the first array.
+
+![Screen Shot 2022-03-04 at 11.16.26](https://i.imgur.com/jzdkcuy.png)
+
+**deep copy**
+- A **deep copy** of the contact list can be created by iteratively cloning the individual elements, as follows, but only if the Person class is declared as Cloneable.
+
+```java
+Person[ ] guests = new Person[contacts.length];
+for (int k=0; k < contacts.length; k++)
+    guests[k] = (Person) contacts[k].clone(); // returns Object type
+```
+
+**clone on 2D Arrrays**
+- two-dimensional array is really a one-dimensional array storing other one-dimensional arrays, the same distinction between a shallow and deep copy exists.
+- Unfortunately, the java.util.Arrays class does not provide any “deepClone” method.
+
+```java
+// A method for creating a deep copy of a two-dimensional array of integers.
+public static int[][] deepClone(int[][] original){
+    int[][] backup = new int[original.length][];
+    for(int k=0;k<original.length;k++){
+        backup[k] = original[k].clone();
+    }
+    return backup;
+}
+```
+
+
+**Cloning Linked Lists**
+- to making a class cloneable in Java
+  - declaring that it `implements the Cloneable interface`.
+  - implementing a `public version of the clone() method` of the class
+  - By convention, that method should begin by creating a new instance using a call to `super.clone()`, which in our case invokes the method from the Object class
+
+> While the assignment of the size variable is correct, we cannot allow the new list to share the same head value (unless it is null).
+> For a nonempty list to have an independent state, it must have an entirely new chain of nodes, each storing a reference to the corresponding element from the original list.
+> We therefore create a new head node, and then perform a walk through the remainder of the original list while creating and linking new nodes for the new list.
 
 
 ---

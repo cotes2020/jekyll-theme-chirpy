@@ -1,4 +1,4 @@
-public class SinglyLinkedList<E> {
+public class SinglyLinkedList<E> implements Cloneable {
     
     private static class Node<E> {
         private E element;
@@ -63,6 +63,26 @@ public class SinglyLinkedList<E> {
                 other.head = other.head.getNext();
             }
             return true;
+        }
+
+        public SinglyLinkedList<E> clone() throws CloneNoteSupportedException {
+            SinglyLinkedList<E> other = (SinglyLinkedList<E>) super.clone() ;  // safe cast
+            // At this point in the execution, 
+            // the other list has been created as a shallow copy of the original. 
+            // Since our list class has two fields, size and head, the following assignments have been made:
+            // other.size = this.size; 
+            // other.head = this.head;
+            if(size > 0) {
+                other.head = new Node<>(head.getElement(), null);
+                Node<E> cur = head.getNext();
+                Node<E> target = other.head;
+                while(cur != null){
+                    Node<E> newest = new Node<>(cur.getElement(), null);
+                    target.setNext(newest);
+                    cur = cur.getNext();
+                    target = target.getNext();
+                }
+            }
         }
     }
 }
