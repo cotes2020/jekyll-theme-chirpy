@@ -2,7 +2,7 @@
 title: "Components of Covariant Derivative of a Tensor"
 description: "Deriving the components of the covariant derivative of an arbitrary tensor"
 categories: [tensor calculus]
-tags: [tensors, tensor calculus]
+tags: [covariant derivatives, tensors]
 ---
 
 Let us find the covariant derivative of a $$(p, q)$$ tensor $$\pmb{\phi}$$ as a whole by applying the Leibniz law repeatedly:
