@@ -96,10 +96,4 @@ To make the above notation less messy, let us use the tuple index notation:
 
 Using the above notation, we can write the covariant derivative of a tensor, in the component form, as,
 
-$$
-\begin{align}
-\nabla_\rho \phi^M_{\phantom{M} N} & = \partial_\rho \phi^M_{\phantom{M} N} \\
- & + \sum_{i=1}^p \Gamma^{\mu_i}_{\phantom{\mu_i} \rho \sigma} \phi^{M_i^- \sigma M_i^+}_{\phantom{M_i^- \sigma M_i^+} N} \\
- & - \sum_{j=1}^q \Gamma^\sigma_{\phantom{\sigma} \rho \nu_j} \phi^M_{\phantom{M} N_j^- \sigma N_j^+}
-\end{align}
-$$
+$$\nabla_\rho \phi^M_{\phantom{M} N} = \partial_\rho \phi^M_{\phantom{M} N} + \sum_{i=1}^p \Gamma^{\mu_i}_{\phantom{\mu_i} \rho \sigma} \phi^{M_i^- \sigma M_i^+}_{\phantom{M_i^- \sigma M_i^+} N} - \sum_{j=1}^q \Gamma^\sigma_{\phantom{\sigma} \rho \nu_j} \phi^M_{\phantom{M} N_j^- \sigma N_j^+}$$
