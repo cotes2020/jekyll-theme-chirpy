@@ -79,7 +79,6 @@ toc: true
       - [Façade](#façade)
       - [Proxy](#proxy)
 - [2.2. Inheritance](#22-inheritance)
-  - [## 22.1. Introduction: Class Inheritance](#-221-introduction-class-inheritance)
   - [Inheriting Variables and Methods](#inheriting-variables-and-methods)
     - [Mechanics of Defining a Subclass](#mechanics-of-defining-a-subclass)
     - [How the interpreter looks up attributes](#how-the-interpreter-looks-up-attributes)
@@ -2133,17 +2132,11 @@ Adapter,Decorator以及Proxy之间比较相近，虽然说意图上差别很大�
 * Proxy模式完全可以重新定义一套新的接口
 
 
-
+---
 
 # 2.2. Inheritance
 
-
-
----
-
-## 22.1. Introduction: Class Inheritance
----
-
+ 
 ---
 
 ## Inheriting Variables and Methods
