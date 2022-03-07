@@ -7616,6 +7616,7 @@ while (!q1.isEmpty() && !q2.isEmpty()) {
         q2 = temp;
     }
     // ...
+}
 ```
 
 ---
@@ -7764,7 +7765,7 @@ The n-queens puzzle is the problem of placing n queens on an n x n chessboard su
 
 Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
 
-Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
+Each solution contains a distinct board configuration of the n-queens placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
 
 
 ```java
@@ -9475,6 +9476,7 @@ int dp(String s1, int i, String s2, int j) {
     else memo[i][j] = Math.max( dp(s1, i + 1, s2, j), dp(s1, i, s2, j + 1) );
 
     return memo[i][j];
+  }
 ```
 
 2. 自底向上的迭代的动态规划思路
@@ -9673,7 +9675,7 @@ class Solution {
 
 
 [516. Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)
-- Given a string s, find the longest palindromic subsequence's length in s.
+- Given a string s, find the longest palindromic subsequences length in s.
 - A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
 
 Example 1:
@@ -10354,7 +10356,7 @@ class Solution {
         }
         return res;
     }
-
+}
 
 
 // Runtime: 8 ms, faster than 45.82% of Java online submissions for Two Sum.

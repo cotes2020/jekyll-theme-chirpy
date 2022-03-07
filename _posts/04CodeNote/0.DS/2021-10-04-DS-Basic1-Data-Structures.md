@@ -79,6 +79,7 @@ toc: true
 
 # Data Structures - Basic 1 - Data Structures
 
+source:
 - https://runestone.academy/runestone/books/published/pythonds/BasicDS/toctree.html
 - [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/books/published/pythonds3/BasicDS/ImplementinganOrderedList.html)
 - Data Structures and Algorithms in Java, 6th Edition.pdf
