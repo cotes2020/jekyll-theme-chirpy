@@ -17,7 +17,8 @@ toc: true
   - [The 3 Recursion Laws](#the-3-recursion-laws)
   - [examples of the use of recursion](#examples-of-the-use-of-recursion)
     - [The Factorial Function](#the-factorial-function)
-    - [Drawing an English Ruler](#drawing-an-english-ruler)
+    - [Drawing an English Ruler ????????????](#drawing-an-english-ruler-)
+    - [Binary Search](#binary-search)
     - [Calculating the Sum of a List of Numbers](#calculating-the-sum-of-a-list-of-numbers)
     - [returns reverse string](#returns-reverse-string)
     - [check palindrome string](#check-palindrome-string)
@@ -146,7 +147,7 @@ public static int factorial(int n) throws IllegalArgumentException {
 ---
 
 
-### Drawing an English Ruler
+### Drawing an English Ruler ????????????
 
 - For each inch, we place a tick with a numeric label.
 - We denote the length of the tick designating a whole inch as the major tick length.
@@ -177,15 +178,15 @@ public static int factorial(int n) throws IllegalArgumentException {
 --
 -
 --- 2   
-
-
-
-
 ```
 
 
 
+---
 
+### Binary Search
+
+- a classic recursive algorithm, binary search, used to efficiently locate a target value within a sorted sequence of n elements stored in an array.
 
 
 
