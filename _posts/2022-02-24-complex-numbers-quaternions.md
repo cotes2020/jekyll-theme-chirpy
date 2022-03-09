@@ -250,7 +250,7 @@ $$\Lambda^{i^\prime}_{\phantom{i^\prime} i} \left( \phi^k \right) = \phi^k B^{i^
 
 where $$\gamma_{k \phantom{i^\prime} i}^{\phantom{k} i^\prime} = \pmb{e}_{i^\prime} \otimes \pmb{\theta}^{i^\prime} \left( \pmb{\gamma}_k \right)$$.
 
-Suppose we want to find the particular $$k^\text{th}$$ gamma matrix instead of summing over $$k$$. To distinguish such dummy indices, let us enclose them in parantheses as $$\left( k \right)$$. Now,
+Suppose we want to find the particular $$k^\text{th}$$ gamma matrix instead of summing over $$k$$. To distinguish such dummy indices, let us enclose them in parentheses as $$\left( k \right)$$. Now,
 
 $$\phi^{\left( k \right)} \gamma_{\left( k \right) \phantom{i^\prime} i}^{\phantom{\left( k \right)} i^\prime} = \Lambda^{i^\prime}_{\phantom{i^\prime} i} \left( \phi^j \right)$$
 
