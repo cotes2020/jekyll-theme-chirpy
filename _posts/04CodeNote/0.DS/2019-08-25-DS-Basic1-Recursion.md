@@ -19,6 +19,8 @@ toc: true
     - [The Factorial Function](#the-factorial-function)
     - [Drawing an English Ruler ????????????](#drawing-an-english-ruler-)
     - [Binary Search](#binary-search)
+    - [File Systems](#file-systems)
+    - [Recursion Trace](#recursion-trace)
     - [Calculating the Sum of a List of Numbers](#calculating-the-sum-of-a-list-of-numbers)
     - [returns reverse string](#returns-reverse-string)
     - [check palindrome string](#check-palindrome-string)
@@ -186,7 +188,101 @@ public static int factorial(int n) throws IllegalArgumentException {
 
 ### Binary Search
 
-- a classic recursive algorithm, binary search, used to efficiently locate a target value within a sorted sequence of n elements stored in an array.
+**sorted order**
+- Values stored in sorted order within an array. 
+- The numbers at top are the indices.
+
+
+**unsorted**
+- the standard approach to search for a target value is to use a `loop to examine every element`, until either finding the target or exhausting the data set. 
+- This algorithm is known as **linear/sequential search** 
+- runs in O(n) time (i.e., linear time) since every element is inspected in the worst case.
+
+
+**sorted and indexable**
+- a more efficient algorithm.
+- If we consider an arbitrary element of the sequence with value v
+  - all elements prior to that in the sequence have values less than or equal to v,
+  - all elements after that element in the sequence have values greater than or equal to v. 
+- This observation allows us to quickly “home in” on a search target using a variant of the children’s game “high-low.” 
+- We call an element of the sequence a candidate if, at the current stage of the search, we cannot rule out that this item matches the target. 
+- The algorithm maintains two parameters, low and high, such that all the candidate elements have index at least low and at most high. 
+- Initially, low = 0 and high = n − 1. We then compare the target value to the median candidate, that is, the element with index mid = ⌊(low + high)/2⌋ .
+
+
+**binary search**
+- a classic recursive algorithm 
+- to efficiently locate a target value within a sorted sequence of n elements stored in an array.
+
+```java
+public static boolean binarySearch(int[] data, int target, int low, int high) {
+    if(low>high) return false;
+    int mid = (low + high)/2;
+    if(data[mid]==target) return true;
+    else if(data[mid]>target) return binarySearch(data, target, low, mid-1);
+    else return binarySearch(data, target, mid+1, high);
+}
+
+```
+
+---
+
+### File Systems
+
+- Modern operating systems define file-system directories in a recursive way.
+- Given the recursive nature of the file-system representation, it should not come as a surprise that many common behaviors of an operating system:
+  - copying a directory or deleting a directory, are implemented with recursive algorithms. 
+  - computing the total disk usage for all files and directories nested within a particular directory.
+    - We differentiate between the `immediate` disk space used by each entry and the `cumulative` disk space used by that entry and all nested features.
+
+
+Algorithm DiskUsage( path):
+- Input: A string designating a path to a file-system entry
+- Output: The cumulative disk space used by that entry and any nested entries total = size( path) {immediate disk space used by the entry} 
+  - if path represents a directory then
+  - for each child entry stored within directory path do 
+  - total = total + DiskUsage( child) {recursive call}
+  - return total
+
+**java.io.File**
+- To implement a recursive algorithm for computing disk usage in Java, we rely on the `java.io.File` class. 
+- An instance of this class represents an abstract pathname in the operating system and allows for properties of that operating system entry to be queried. 
+  - `new File(pathString) or new File(parentFile, childString)`
+    - A new File instance can be constructed either by providing the full path as a string, or by providing an existing File instance that represents a directory and a string that designates the name of a child entry within that directory.
+  - `file.length()`
+    - Returns the **immediate disk usagE** (measured in bytes) for the operating system entry represented by the File instance (e.g., /user/rt/courses).
+  - `file.isDirectory()`
+    - Returns true if the File instance represents a directory; 
+    - false otherwise.
+  - `file.list()`
+    - Returns an array of strings designating the names of all entries within the given directory.
+      - call this method on the File associated with path `/user/rt/courses/cs016`, 
+      - it returns an array with contents: {"grades","homeworks","programs"}.
+
+```java
+public static long diskUsage(File root) {
+    long disk_usage = root.length();
+    if(root.isDirectory()) {  
+        for(String file: root.list()) {
+            File child = new File(root, file);
+            disk_usage += diskUsage(child);
+        }
+    }
+    System.out.println(disk_usage + "\t" + root);
+    return disk_usage; 
+}
+```
+
+
+
+---
+
+
+### Recursion Trace
+
+a classic Unix/Linux utility named du (for “disk usage”). 
+- It reports the amount of disk space used by a directory and all contents nested within, and can produce a verbose report,
+
 
 
 
