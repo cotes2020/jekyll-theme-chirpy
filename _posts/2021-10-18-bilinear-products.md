@@ -27,7 +27,7 @@ If you are already aware of how tensors work, skip to [bilinear products](#bilin
 
 3. Bilinear products are written in calligraphic font to distinguish them from ordinary tensors.
 
-4. Tuples of indices are repsented by their capital letters, even if the indices belong to different tensors, in which case the tensors are being multiplied in some form, such as through the tensor product, or by multiplying the components. Jump to [tuple index notation](#tuple_notation) to understand this better.
+4. Tuples of indices are represented by their capital letters, even if the indices belong to different tensors, in which case the tensors are being multiplied in some form, such as through the tensor product, or by multiplying the components. Jump to [tuple index notation](#tuple_notation) to understand this better.
 
 ## Tensors
 
