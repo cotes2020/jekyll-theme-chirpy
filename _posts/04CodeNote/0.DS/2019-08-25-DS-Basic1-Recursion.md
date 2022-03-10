@@ -15,6 +15,7 @@ toc: true
 - [Data Structures - Basic 1 - Recursion](#data-structures---basic-1---recursion)
   - [basic](#basic)
   - [The 3 Recursion Laws](#the-3-recursion-laws)
+  - [Analyzing Recursive Algorithms](#analyzing-recursive-algorithms)
   - [examples of the use of recursion](#examples-of-the-use-of-recursion)
     - [The Factorial Function](#the-factorial-function)
     - [Drawing an English Ruler ????????????](#drawing-an-english-ruler-)
@@ -89,12 +90,6 @@ find:
     - This process is used both in the standard case of one method calling a different method, or in the recursive case where a method invokes itself.
     - The key point is to **have a separate frame for each active call**.
 
-
-
-
-
-
-
 ---
 
 
@@ -121,6 +116,20 @@ A recursive algorithm **must `call itself, recursively`**.
 - botton-up
   - use a list or array
   - result = list(n) + list(n-1)
+
+
+---
+
+
+## Analyzing Recursive Algorithms
+
+- With a recursive algorithm, we will account for each operation that is performed based upon the particular activation of the method that manages the flow of control at the time it is executed.
+
+- 
+
+
+
+
 
 
 ---
@@ -189,13 +198,13 @@ public static int factorial(int n) throws IllegalArgumentException {
 ### Binary Search
 
 **sorted order**
-- Values stored in sorted order within an array. 
+- Values stored in sorted order within an array.
 - The numbers at top are the indices.
 
 
 **unsorted**
-- the standard approach to search for a target value is to use a `loop to examine every element`, until either finding the target or exhausting the data set. 
-- This algorithm is known as **linear/sequential search** 
+- the standard approach to search for a target value is to use a `loop to examine every element`, until either finding the target or exhausting the data set.
+- This algorithm is known as **linear/sequential search**
 - runs in O(n) time (i.e., linear time) since every element is inspected in the worst case.
 
 
@@ -203,15 +212,15 @@ public static int factorial(int n) throws IllegalArgumentException {
 - a more efficient algorithm.
 - If we consider an arbitrary element of the sequence with value v
   - all elements prior to that in the sequence have values less than or equal to v,
-  - all elements after that element in the sequence have values greater than or equal to v. 
-- This observation allows us to quickly “home in” on a search target using a variant of the children’s game “high-low.” 
-- We call an element of the sequence a candidate if, at the current stage of the search, we cannot rule out that this item matches the target. 
-- The algorithm maintains two parameters, low and high, such that all the candidate elements have index at least low and at most high. 
+  - all elements after that element in the sequence have values greater than or equal to v.
+- This observation allows us to quickly “home in” on a search target using a variant of the children’s game “high-low.”
+- We call an element of the sequence a candidate if, at the current stage of the search, we cannot rule out that this item matches the target.
+- The algorithm maintains two parameters, low and high, such that all the candidate elements have index at least low and at most high.
 - Initially, low = 0 and high = n − 1. We then compare the target value to the median candidate, that is, the element with index mid = ⌊(low + high)/2⌋ .
 
 
 **binary search**
-- a classic recursive algorithm 
+- a classic recursive algorithm
 - to efficiently locate a target value within a sorted sequence of n elements stored in an array.
 
 ```java
@@ -231,32 +240,32 @@ public static boolean binarySearch(int[] data, int target, int low, int high) {
 
 - Modern operating systems define file-system directories in a recursive way.
 - Given the recursive nature of the file-system representation, it should not come as a surprise that many common behaviors of an operating system:
-  - copying a directory or deleting a directory, are implemented with recursive algorithms. 
+  - copying a directory or deleting a directory, are implemented with recursive algorithms.
   - computing the total disk usage for all files and directories nested within a particular directory.
     - We differentiate between the `immediate` disk space used by each entry and the `cumulative` disk space used by that entry and all nested features.
 
 
 Algorithm DiskUsage( path):
 - Input: A string designating a path to a file-system entry
-- Output: The cumulative disk space used by that entry and any nested entries total = size( path) {immediate disk space used by the entry} 
+- Output: The cumulative disk space used by that entry and any nested entries total = size( path) {immediate disk space used by the entry}
   - if path represents a directory then
-  - for each child entry stored within directory path do 
+  - for each child entry stored within directory path do
   - total = total + DiskUsage( child) {recursive call}
   - return total
 
 **java.io.File**
-- To implement a recursive algorithm for computing disk usage in Java, we rely on the `java.io.File` class. 
-- An instance of this class represents an abstract pathname in the operating system and allows for properties of that operating system entry to be queried. 
+- To implement a recursive algorithm for computing disk usage in Java, we rely on the `java.io.File` class.
+- An instance of this class represents an abstract pathname in the operating system and allows for properties of that operating system entry to be queried.
   - `new File(pathString) or new File(parentFile, childString)`
     - A new File instance can be constructed either by providing the full path as a string, or by providing an existing File instance that represents a directory and a string that designates the name of a child entry within that directory.
   - `file.length()`
     - Returns the **immediate disk usagE** (measured in bytes) for the operating system entry represented by the File instance (e.g., /user/rt/courses).
   - `file.isDirectory()`
-    - Returns true if the File instance represents a directory; 
+    - Returns true if the File instance represents a directory;
     - false otherwise.
   - `file.list()`
     - Returns an array of strings designating the names of all entries within the given directory.
-      - call this method on the File associated with path `/user/rt/courses/cs016`, 
+      - call this method on the File associated with path `/user/rt/courses/cs016`,
       - it returns an array with contents: {"grades","homeworks","programs"}.
 
 ```java
@@ -269,7 +278,7 @@ public static long diskUsage(File root) {
         }
     }
     System.out.println(disk_usage + "\t" + root);
-    return disk_usage; 
+    return disk_usage;
 }
 ```
 
@@ -280,11 +289,26 @@ public static long diskUsage(File root) {
 
 ### Recursion Trace
 
-a classic Unix/Linux utility named du (for “disk usage”). 
+a classic Unix/Linux utility named du (for “disk usage”).
 - It reports the amount of disk space used by a directory and all contents nested within, and can produce a verbose report,
 
-
-
+```bash
+8 /user/rt/courses/cs016/grades
+3 /user/rt/courses/cs016/homeworks/hw1
+2 /user/rt/courses/cs016/homeworks/hw2
+4 /user/rt/courses/cs016/homeworks/hw3
+10 /user/rt/courses/cs016/homeworks
+57 /user/rt/courses/cs016/programs/pr1
+97 /user/rt/courses/cs016/programs/pr2
+74 /user/rt/courses/cs016/programs/pr3
+229 /user/rt/courses/cs016/programs
+249 /user/rt/courses/cs016
+26 /user/rt/courses/cs252/projects/papers/buylow 55 /user/rt/courses/cs252/projects/papers/sellhigh 82 /user/rt/courses/cs252/projects/papers
+4786 /user/rt/courses/cs252/projects/demos/market
+4787 /user/rt/courses/cs252/projects/demos
+4870 /user/rt/courses/cs252/projects 3 /user/rt/courses/cs252/grades 4874 /user/rt/courses/cs252
+5124 /user/rt/courses/
+```
 
 
 

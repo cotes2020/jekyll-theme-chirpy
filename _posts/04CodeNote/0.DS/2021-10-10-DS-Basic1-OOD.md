@@ -2137,7 +2137,7 @@ Adapter,Decorator以及Proxy之间比较相近，虽然说意图上差别很大�
 
 # 2.2. Inheritance
 
- 
+
 ---
 
 ## Inheriting Variables and Methods
