@@ -125,7 +125,7 @@ A recursive algorithm **must `call itself, recursively`**.
 
 - With a recursive algorithm, we will account for each operation that is performed based upon the particular activation of the method that manages the flow of control at the time it is executed.
 
-- 
+-
 
 
 
