@@ -16,12 +16,21 @@ toc: true
   - [basic](#basic)
   - [The 3 Recursion Laws](#the-3-recursion-laws)
   - [Analyzing Recursive Algorithms](#analyzing-recursive-algorithms)
+  - [Examples of Recursion](#examples-of-recursion)
+    - [linear recursion](#linear-recursion)
+      - [Summing the Elements of an Array Recursively](#summing-the-elements-of-an-array-recursively)
+      - [Reversing a Sequence with Recursion](#reversing-a-sequence-with-recursion)
+      - [Recursive Algorithms for Computing Powers](#recursive-algorithms-for-computing-powers)
+      - [Binary Search](#binary-search)
+      - [The Factorial Function](#the-factorial-function)
+    - [Binary Recursion](#binary-recursion)
+      - [Drawing an English Ruler ????????????](#drawing-an-english-ruler-)
+      - [summing the n integers of an array](#summing-the-n-integers-of-an-array)
+  - [Multiple Recursion](#multiple-recursion)
+      - [File Systems Computing Disk Space Usage](#file-systems-computing-disk-space-usage)
+      - [Recursion Trace](#recursion-trace)
+      - [summation puzzles:](#summation-puzzles)
   - [examples of the use of recursion](#examples-of-the-use-of-recursion)
-    - [The Factorial Function](#the-factorial-function)
-    - [Drawing an English Ruler ????????????](#drawing-an-english-ruler-)
-    - [Binary Search](#binary-search)
-    - [File Systems](#file-systems)
-    - [Recursion Trace](#recursion-trace)
     - [Calculating the Sum of a List of Numbers](#calculating-the-sum-of-a-list-of-numbers)
     - [returns reverse string](#returns-reverse-string)
     - [check palindrome string](#check-palindrome-string)
@@ -125,24 +134,189 @@ A recursive algorithm **must `call itself, recursively`**.
 
 - With a recursive algorithm, we will account for each operation that is performed based upon the particular activation of the method that manages the flow of control at the time it is executed.
 
--
+**amortization**
+- get a tighter bound on a series of operations by considering the cumulative effect, rather than assuming that each achieves a worst case。
 
 
+---
 
+
+## Examples of Recursion
+
+- a recursive call starts at most one other: linear recursion.
+- a recursive call may start two others: binary recursion.
+- a recursive call may start three or more others: multiple recursion.
+
+
+---
+
+### linear recursion
+
+**linear recursion**
+- a recursive method is designed so that `each invocation of the body` makes at most one new recursive call.
+
+- A consequence of the definition of linear recursion is that any recursion trace will appear as a single sequence of calls
+
+- linear recursion terminology reflects **the structure of the recursion trace**, not the asymptotic analysis of the **running time**; for example, we have seen that binary search runs in O(log n) time.
+
+
+---
+
+
+#### Summing the Elements of an Array Recursively
+
+```java
+// /∗∗ Returns the sum of the first n integers of the given array. ∗/
+public static int linearSum(int[ ] data, int n) {
+  if (n == 0) return 0;
+  else return linearSum(data, n−1) + data[n−1];
+}
+```
+
+---
+
+
+#### Reversing a Sequence with Recursion
+
+- reversing the n elements of an array, so that the first element becomes the last, the second element becomes second to the last, and so on.
+
+```java
+// Reverses the contents of subarray data[low] through data[high] inclusive.
+public static void reverseArray(int[ ] data, int low, int high) {
+    if(low<high){
+        int temp = data[low];
+        data[low] = data[high];
+        data[high] = temp;
+        reverseArray(data, low+1, high-1);
+    }
+}
+```
+
+> the algorithm is guaranteed to terminate after 1+ n/2 recursive calls,
+> each call involves a constant amount of work, the entire process runs in O(n) time.
 
 
 
 ---
 
-## examples of the use of recursion
+#### Recursive Algorithms for Computing Powers
+
+- raising a number x to an arbitrary nonnegative integer n.
+
+
+1. trivial recursive definition
+
+x^n = x · x^(n−1) for n > 0.
+- runs in O(n) time.
+
+```java
+public static double power(double x, int n) {
+  if (n == 0) return 1;
+  else return x * power(x, n−1);
+}
+```
+
+1. 2nd
+
+`2*2 *2*2* 2*2* 2*2` 2^8
+= `(2*2 *2*2) * (2*2* 2*2)`
+= (2^4)^2
+
+k = n/2 -> (x^k)^2
+
+
+```java
+public static double power(double x, int n) {
+  if(n == 0) return 1;
+  double base = power(x,n/2);
+  double res = base*base;
+  if(n%2==1) res*x;
+  return res;
+}
+```
+
+> time:
+> the number of times divide n by two before getting to one or less is O(log n).
+> Therefore, power results in O(logn) recursive calls.
+> so the total number of operations for computing power(x,n) is O(logn).
+> a significant improvement over the original O(n) time algorithm.
+
+
+> memory usage.
+> The first version has a recursive depth of O(n), O(n) frames are simultaneously stored in memory.
+> Because the recursive depth of the improved version is O(log n), its memory usage is O(log n) as well.
+
 
 ---
 
-### The Factorial Function
+
+#### Binary Search
+
+> linear recursion
+> The code for binary search includes a case analysis, with two branches that lead to a further recursive call,
+> but only one branch is followed during a particular execution of the body.
+
+
+**sorted order**
+- Values stored in sorted order within an array.
+- The numbers at top are the indices.
+
+
+**unsorted**
+- the standard approach to search for a target value is to use a `loop to examine every element`, until either finding the target or exhausting the data set.
+- This algorithm is known as **linear/sequential search**
+- runs in O(n) time (i.e., linear time) since every element is inspected in the worst case.
+
+
+**sorted and indexable**
+- a more efficient algorithm.
+- If we consider an arbitrary element of the sequence with value v
+  - all elements prior to that in the sequence have values less than or equal to v,
+  - all elements after that element in the sequence have values greater than or equal to v.
+- This observation allows us to quickly “home in” on a search target using a variant of the children’s game “high-low.”
+- We call an element of the sequence a candidate if, at the current stage of the search, we cannot rule out that this item matches the target.
+- The algorithm maintains two parameters, low and high, such that all the candidate elements have index at least low and at most high.
+- Initially, low = 0 and high = n − 1. We then compare the target value to the median candidate, that is, the element with index mid = ⌊(low + high)/2⌋ .
+
+
+**binary search**
+- a classic recursive algorithm
+- to efficiently locate a target value within a sorted sequence of n elements stored in an array.
+
+> a constant number of primitive operations are executed during each recursive call of the binary search method. Hence, the running time is proportional to the number of recursive calls performed.
+
+> Initially, the number of candidates is n;
+> after the first call in a binary search, it is at most n/2;
+> after the second call, it is at most n/4; and so on.
+> In general, after the jth call in a binary search, the number of candidate elements remaining is at most n/2^j .
+> In the worst case (an unsuccessful search), the recursive calls stop when there are no more candidate elements.
+> the maximum number of recursive calls performed, is the smallest integer r such that
+> n/2^j < 1
+> n < 2^j
+>
+
+
+```java
+public static boolean binarySearch(int[] data, int target, int low, int high) {
+    if(low>high) return false;
+    int mid = (low + high)/2;
+    if(data[mid]==target) return true;
+    else if(data[mid]>target) return binarySearch(data, target, low, mid-1);
+    else return binarySearch(data, target, mid+1, high);
+}
+
+```
+
+---
+
+#### The Factorial Function
 
 - 5! = 5 · 4 · 3 · 2 · 1 = 120.
 - The factorial function is important because it is known to equal the `number of ways in which n distinct items can be arranged` into a sequence
 - the number of permutations of n items.
+
+> the overall number of operations for computing factorial(n) is O(n)
+> as there are n + 1 activations, each of which accounts for O(1) operations.
 
 ```java
 // 5! = 5 · 4 · 3 · 2 · 1
@@ -155,10 +329,19 @@ public static int factorial(int n) throws IllegalArgumentException {
 }
 ```
 
+
 ---
 
 
-### Drawing an English Ruler ????????????
+### Binary Recursion
+
+- When a method makes two recursive calls
+
+---
+
+
+
+#### Drawing an English Ruler ????????????
 
 - For each inch, we place a tick with a numeric label.
 - We denote the length of the tick designating a whole inch as the major tick length.
@@ -192,51 +375,41 @@ public static int factorial(int n) throws IllegalArgumentException {
 ```
 
 
-
 ---
 
-### Binary Search
+#### summing the n integers of an array
 
-**sorted order**
-- Values stored in sorted order within an array.
-- The numbers at top are the indices.
+Computing the sum of one or zero values is trivial. With two or more values, we can recursively compute the sum of the first half, and the sum of the second half, and add those sums together. Our implementation of such an algorithm, in Code Fragment 5.10, is initially invoked as binarySum(data, 0, n−1).
 
-
-**unsorted**
-- the standard approach to search for a target value is to use a `loop to examine every element`, until either finding the target or exhausting the data set.
-- This algorithm is known as **linear/sequential search**
-- runs in O(n) time (i.e., linear time) since every element is inspected in the worst case.
-
-
-**sorted and indexable**
-- a more efficient algorithm.
-- If we consider an arbitrary element of the sequence with value v
-  - all elements prior to that in the sequence have values less than or equal to v,
-  - all elements after that element in the sequence have values greater than or equal to v.
-- This observation allows us to quickly “home in” on a search target using a variant of the children’s game “high-low.”
-- We call an element of the sequence a candidate if, at the current stage of the search, we cannot rule out that this item matches the target.
-- The algorithm maintains two parameters, low and high, such that all the candidate elements have index at least low and at most high.
-- Initially, low = 0 and high = n − 1. We then compare the target value to the median candidate, that is, the element with index mid = ⌊(low + high)/2⌋ .
-
-
-**binary search**
-- a classic recursive algorithm
-- to efficiently locate a target value within a sorted sequence of n elements stored in an array.
 
 ```java
-public static boolean binarySearch(int[] data, int target, int low, int high) {
-    if(low>high) return false;
-    int mid = (low + high)/2;
-    if(data[mid]==target) return true;
-    else if(data[mid]>target) return binarySearch(data, target, low, mid-1);
-    else return binarySearch(data, target, mid+1, high);
+// /∗∗ Returns the sum of the first n integers of the given array. ∗/
+public static int binarySum(int[ ] data, int low, int high) {
+  if(low>high) retun 0;
+  if(data[low] == data[high]) retun data[low];
+  int mid = (high + low) /2
+  else return binarySum(data, low, mid) + binarySum(data, mid+1, high);
 }
-
 ```
+
+> The size of the range is divided in half at each recursive call, and so the depth of the recursion is 1 + log2 n.
+
+> Therefore, binarySum uses O(log n) amount of additional space, which is a big improvement over the O(n) space used by the linearSum method
+
+> However, the running time of binarySum is O(n), as there are 2n − 1 method calls, each requiring constant time.
 
 ---
 
-### File Systems
+## Multiple Recursion
+
+- process in which a method may make more than two recursive calls.
+
+
+
+
+---
+
+#### File Systems Computing Disk Space Usage
 
 - Modern operating systems define file-system directories in a recursive way.
 - Given the recursive nature of the file-system representation, it should not come as a surprise that many common behaviors of an operating system:
@@ -245,7 +418,7 @@ public static boolean binarySearch(int[] data, int target, int low, int high) {
     - We differentiate between the `immediate` disk space used by each entry and the `cumulative` disk space used by that entry and all nested features.
 
 
-Algorithm DiskUsage( path):
+Algorithm DiskUsage(path):
 - Input: A string designating a path to a file-system entry
 - Output: The cumulative disk space used by that entry and any nested entries total = size( path) {immediate disk space used by the entry}
   - if path represents a directory then
@@ -268,6 +441,15 @@ Algorithm DiskUsage( path):
       - call this method on the File associated with path `/user/rt/courses/cs016`,
       - it returns an array with contents: {"grades","homeworks","programs"}.
 
+> the number of recursive calls made during one invocation was equal to the number of entries within a given directory of the file system.
+
+> there is a constant number of steps reflected in root.length() to compute the disk usage directly at that entry,
+> when the entry is a directory, the body of the diskUsage method includes a for loop that iterates over all entries that are contained within that directory. In the worst case, it is possible that one entry includes n − 1 others.
+> conclude that there are O(n) recursive calls, each of which runs in O(n) time, leading to an overall running time that is O(n^2)
+
+> We therefore conclude that there are O(n) recursive calls, each of which uses O(1) time outside the loop, and that the overall number of operations due to the loop is O(n). Summing all of these bounds, the overall number of operations is O(n).
+
+
 ```java
 public static long diskUsage(File root) {
     long disk_usage = root.length();
@@ -287,7 +469,7 @@ public static long diskUsage(File root) {
 ---
 
 
-### Recursion Trace
+#### Recursion Trace
 
 a classic Unix/Linux utility named du (for “disk usage”).
 - It reports the amount of disk space used by a directory and all contents nested within, and can produce a verbose report,
@@ -309,6 +491,56 @@ a classic Unix/Linux utility named du (for “disk usage”).
 4870 /user/rt/courses/cs252/projects 3 /user/rt/courses/cs252/grades 4874 /user/rt/courses/cs252
 5124 /user/rt/courses/
 ```
+
+---
+
+#### summation puzzles
+
+
+pot + pan = bib
+dog + cat = pig
+boy + girl = baby
+
+
+- If the number of possible configurations is not too large, however, we can use a computer to simply enumerate all the possibilities and test each one
+- Such an algorithm can use multiple recursion to work through the configurations in a systematic way.
+
+
+- To keep the description general enough to be used with other puzzles, we consider an algorithm that enumerates and tests all k-length sequences, without repetitions, chosen from a given universe U.  
+  - Recursively generating the sequences of k − 1 elements
+  - Appending to each such sequence an element not already contained in it.
+  - Throughout the execution of the algorithm, we use a set U to keep track of the elements not contained in the current sequence, so that an element e has not been used yet if and only if e is inU.
+
+- enumerates every possible size-k ordered subset of U, and tests each subset for being a possible solution to our puzzle.
+  - For summation puzzles, U = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} and each position in the sequence corresponds to a given letter
+
+
+Recursion trace for an execution of PuzzleSolve(3, S, U)
+- S is empty and U = {a, b, c}.
+- This execution generates and **tests all permutations of a, b, and c**.
+
+
+Algorithm PuzzleSolve(k, S, U):
+- Input: An integer k, sequence S, and set U
+- Output: An enumeration of all k-length extensions to S using elements in U without repetitions
+- for eache in U do
+  - Add e to the end of S
+  - Remove e from U            {e is now being used}
+  - if k == 1 then
+    - Test whether S is a configuration that solves the puzzle
+    - if S solves the puzzle then
+      - add S to output               {a solution}
+  - else
+    - PuzzleSolve(k − 1, S, U )       {a recursive call}
+  - Remove e from the end of S
+  - Add e back to U
+
+![Screen Shot 2022-03-10 at 11.24.59](https://i.imgur.com/2zRWa1a.png)
+
+
+---
+
+## examples of the use of recursion
 
 
 

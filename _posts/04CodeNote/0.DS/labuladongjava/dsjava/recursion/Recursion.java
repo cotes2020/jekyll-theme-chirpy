@@ -44,6 +44,27 @@ public class Recursion {
         return disk_usage; 
     }
 
+
+    // Returns the sum of the first n integers of the given array
+    public static int linearSum(int[ ] data, int n) {
+        if (n == 0) return 0;
+        else return linearSum(data, n−1) + data[n−1];
+    }
+
+    // Reverses the contents of subarray data[low] through data[high] inclusive.
+    public static void reverseArray(int[ ] data, int low, int high) {
+        if(low<high){
+            int temp = data[low];
+            data[low] = data[high];
+            data[high] = temp;
+            reverseArray(data, low+1, high-1);
+        }
+    }
+
+
+
+
+
     public static void main(String[] args) {
         System.out.println("hi");
         Recursion pr = new Recursion();
