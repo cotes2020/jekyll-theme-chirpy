@@ -16,11 +16,11 @@ toc: true
 - [Linear Structures](#linear-structures)
 - [String](#string)
 - [StringBuilder](#stringbuilder)
-- [Arrays 数组](#arrays-数组)
+- [Arrays 数组 (fixed size)](#arrays-数组-fixed-size)
     - [Create Array](#create-array)
       - [One-Dimensional Arrays](#one-dimensional-arrays)
       - [Multidimensional Arrays](#multidimensional-arrays)
-    - [Instantiating an Array in Java](#instantiating-an-array-in-java)
+      - [Instantiating an Array in Java](#instantiating-an-array-in-java)
     - [method](#method)
     - [Arrays of Objects](#arrays-of-objects)
     - [Java Array Error](#java-array-error)
@@ -28,13 +28,18 @@ toc: true
     - [Array Members](#array-members)
     - [Arrays Types, Allowed Element Types](#arrays-types-allowed-element-types)
     - [Cloning of arrays](#cloning-of-arrays)
-- [List](#list)
-  - [Linked List](#linked-list)
+- [LinkedList (array-based structure) (without fixed size)](#linkedlist-array-based-structure-without-fixed-size)
+  - [basicc](#basicc)
+  - [Abstract Data Type](#abstract-data-type)
     - [Unordered List - Abstract Data Type](#unordered-list---abstract-data-type)
-      - [Unordered List: Linked Lists](#unordered-list-linked-lists)
-      - [Node Class](#node-class)
-        - [Node Class <- unordered linked list  (!!!!!!!!!!!!!)](#node-class---unordered-linked-list--)
-      - [Unordered List Class <- unordered linked list (old)](#unordered-list-class---unordered-linked-list-old)
+    - [singly linked list](#singly-linked-list)
+    - [Circularly Linked Lists](#circularly-linked-lists)
+    - [doubly linked list](#doubly-linked-list)
+  - [general method](#general-method)
+    - [Equivalence Testing](#equivalence-testing)
+    - [Cloning Data Structures](#cloning-data-structures)
+  - [Node Class](#node-class)
+  - [unordered Linked Lists: Unordered List](#unordered-linked-lists-unordered-list)
       - [Unordered List Class <- unordered linked list (new)  (!!!!!!!!!!!!!)](#unordered-list-class---unordered-linked-list-new--)
         - [`is_empty()`](#is_empty)
         - [`add()`](#add)
@@ -46,10 +51,12 @@ toc: true
         - [`append()`](#append)
         - [`insert()`](#insert)
         - [`index()`](#index)
-    - [Ordered List - Abstract Data Type](#ordered-list---abstract-data-type)
+  - [Ordered List - Abstract Data Type](#ordered-list---abstract-data-type)
       - [Ordered List in py (!!!!!!!!!!!!!)](#ordered-list-in-py-)
-  - [Stack](#stack)
-    - [stack operations](#stack-operations)
+- [Stack](#stack)
+    - [Abstract Data Type (ADT)](#abstract-data-type-adt)
+      - [java](#java)
+      - [Python](#python)
     - [code](#code)
       - [Stack <- list  (!!!!!!!!!!!!!)](#stack---list--)
       - [stack in java](#stack-in-java)
@@ -189,7 +196,7 @@ What distinguishes one linear structure from another is `the way in which items 
 
 ---
 
-# Arrays 数组
+# Arrays 数组 (fixed size)
 
 - [https://www.geeksforgeeks.org/arrays-in-java/](https://www.geeksforgeeks.org/arrays-in-java/)
 - [https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1143/](https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1143/)
@@ -276,6 +283,8 @@ An array can contain `primitives (int, char, etc.)` and `object (non-primitive) 
   - As a safety feature, array indices are always checked in Java to see if they are ever out of bounds.
   - If an array index is out of bounds, the runtime Java environment signals an error condition. The name of this condition is the `ArrayIndexOutOfBoundsException`. This check helps Java avoid a number of security problems, such as buffer overflow attacks.
 
+
+---
 
 
 ### Create Array
@@ -414,9 +423,13 @@ Collection[] ca;     // array of Collection of unknown type
 - set(p, e): `O(1)`
 - remove( p): `O(1)`
 
+
+
+
+
 ---
 
-### Instantiating an Array in Java
+#### Instantiating an Array in Java
 
 When an array is `declared`, only a **reference** of an array is created.
 
@@ -670,34 +683,22 @@ System.out.println(intArray[0] == cloneArray[0]); // true
 
 ---
 
-# List
 
-Locations within an array are easily described with an integer `index`.
-- an index of an element `e` in a sequence is equal to the number of elements before `e` in that sequence.
-- By this definition, the first element of a sequence has index `0`, and the last has index `n−1`,
-- `n` denotes the total number of elements.
 
-Functions:
-- size(): Returns the number of elements in the list.
-- isEmpty(): Returns a boolean indicating whether the list is empty.
-- get(i):
-  - Returns the element of the list having index i;
-  - an error condition occurs if i is not in range [0, size( ) − 1].
-- set(i,e):
-  - Replaces th eelementat indexi with e, and returns the old element that was replaced;
-  - an error condition occurs if i is not in range [0, size( ) − 1].
-- add(i, e):
-  - Inserts a new element `e` into the list so that it has index `i`,
-  - moving all subsequent elements one index later in the list;
-  - an error condition occurs if i is not in `range[0,size()]`.
-- remove(i):
-  - Removes and returns the element at index i,
-  - moving all subsequent elements one index earlier in the list;
-  - an error condition occurs if i is not in range [0, size( ) − 1].
+
+# LinkedList (array-based structure) (without fixed size)
+
+- an alternative to an array-based structure.
+
+- A linked list, in its simplest form, is a collection of nodes that collectively form a linear sequence.
+
+- An important property of a linked list is that `it does not have a predetermined fixed size`;
+- it uses space proportional to its current number of elements.
 
 ---
 
-## Linked List
+
+## basicc
 
 - a collection of items
 - each item holds a relative position with respect to the others.
@@ -727,6 +728,30 @@ Functions:
 - Search: `O(n)`
 - Insert: `O(1)`
 - Remove: `O(1)`
+
+
+---
+
+## Abstract Data Type
+
+
+Functions:
+- size(): Returns the number of elements in the list.
+- isEmpty(): Returns a boolean indicating whether the list is empty.
+- get(i):
+  - Returns the element of the list having index i;
+  - an error condition occurs if i is not in range [0, size( ) − 1].
+- set(i,e):
+  - Replaces th eelementat indexi with e, and returns the old element that was replaced;
+  - an error condition occurs if i is not in range [0, size( ) − 1].
+- add(i, e):
+  - Inserts a new element `e` into the list so that it has index `i`,
+  - moving all subsequent elements one index later in the list;
+  - an error condition occurs if i is not in `range[0,size()]`.
+- remove(i):
+  - Removes and returns the element at index i,
+  - moving all subsequent elements one index earlier in the list;
+  - an error condition occurs if i is not in range [0, size( ) − 1].
 
 
 ---
@@ -769,27 +794,268 @@ Functions:
   - removes and returns the item at position pos.
   - It needs the position and returns the item.
 
----
-
-#### Unordered List: Linked Lists
-
-
-![idea2](https://i.imgur.com/SqXvGO8.png)
-
-
-无序表： `unordered list`
-- 一种数据按照相对位置存放的数据集
-- (for easy, assum that no repeat)
-- 无序存放，但是在数据相之间建立`链接指向`, 就可以保持其前后相对位置。
-  - 显示标记 `head` `end`
-- 每个节点 `node` 包含2信息：
-  - 数据本身，指向下一个节点的引用信息`next`
-  - `next=None` 没有下一个节点了
 
 ---
 
 
-#### Node Class
+### singly linked list
+
+- In a **singly linked list**,
+  - each node stores a reference to an object that is an element of the sequence,
+  - as well as a reference to the next node of the list
+
+- `head`
+  - Minimally, the linked list instance must keep a reference to the first node of the list
+  - Without an `explicit reference` to the head, there would be no way to locate that node (or indirectly, any others).
+
+- `tail`
+  - The last node of the list
+  - can be found by traversing the linked list—starting at the head and moving from one node to another by following each node’s next reference. **link/pointer hopping**
+  - identify the tail as the node having null as its next reference.
+  - storing an `explicit reference` to the tail node is a common efficiency to avoid such a traversal. In similar regard, it is common for a linked list instance to keep a count of the total number of nodes that comprise the list (also known as the size of the list), to avoid traversing the list to count the nodes.
+
+
+![Screen Shot 2022-03-03 at 21.26.04](https://i.imgur.com/t0PStKi.png)
+
+
+**Inserting an Element at the Head of a Singly Linked List**
+
+```java
+Algorithm addFirst(e):
+newest=Node(e);
+newest.next = head;
+head = newest;
+size = size + 1;
+```
+
+**Inserting an Element at the Tail of a Singly Linked List**
+
+
+```java
+Algorithm addLast(e):
+newest=Node(e);
+newest.next = null;
+tail.next = newest;
+tail = newest;
+size = size + 1;
+```
+
+**Removing an Element from a Singly Linked List**
+
+```java
+Algorithm removeFirst():
+if head == null:
+    the list is empty;
+head = head.next;
+size = size - 1;
+```
+
+
+**other**
+- Unfortunately, we cannot easily delete the last node of a singly linked list.
+- we must be able to access the node before the last node in order to remove the last node.
+- The only way to access this node is to start from the head of the list and search all the way through the list.
+- to support such an operation efficiently, we will need to make our list **doubly linked**
+
+
+---
+
+
+### Circularly Linked Lists
+
+- there are many applications in which data can be more naturally viewed as having a cyclic order, with well-defined neighboring relationships, but no fixed beginning or end.
+
+- esentially a singularly linked list, the `next reference of the tail node` is set to refer back to the head of the list (rather than null),
+
+![Screen Shot 2022-03-03 at 22.17.09](https://i.imgur.com/4tzqpWi.png)
+
+
+**Round-Robin Scheduling**
+- One of the most important roles of an operating system is in managing the many processes that are currently active on a computer, including the scheduling of those processes on one or more central processing units (CPUs).
+- In order to support the responsiveness of an arbitrary number of concurrent processes, most operating systems allow processes to effectively share use of the CPUs, using some form of an algorithm known as `round-robin scheduling`.
+  - A process is given a short turn to execute, known as a `time slice`,
+  - it is interrupted when the slice ends, even if its job is not yet complete.
+  - Each active process is given its own time slice, taking turns in a cyclic order.
+  - New processes can be added to the system, and processes that complete their work can be removed.
+
+1. traditional linked list
+   1. by repeatedly performing the following steps on linked list L
+      1. process p = L.removeFirst( )
+      2. Give a time slice to process p
+      3. L.addLast(p)
+   2. drawbacks: unnecessarily inefficient to repeatedly throw away a node from one end of the list, only to create a new node for the same element when reinserting it, not to mention the various updates that are performed to decrement and increment the list’s size and to unlink and relink nodes.
+
+2. Circularly Linked List
+   1. on a circularly linked list C:
+      1. Give a time slice to process C.first()
+      2. C.rotate()
+   2. Implementing the new rotate method is quite trivial.
+      1. do not move any nodes or elements
+      2. simply advance the tail reference to point to the node that follows it (the implicit head of the list).
+
+
+---
+
+
+
+### doubly linked list
+
+- there are limitations that stem from the asymmetry of a singly linked list.
+  - can efficiently insert a node at either end of a singly linked list, and can delete a node at the head of a list,
+  - cannot efficiently delete a node at the tail of the list.
+  - cannot efficiently delete an arbitrary node from an interior position of the list if only given a reference to that node, because we cannot determine the node that immediately precedes the node to be deleted (yet, that node needs to have its next reference updated).
+
+![Screen Shot 2022-03-04 at 09.56.42](https://i.imgur.com/dzUHpQI.png)
+
+**doubly linked list**
+- a linked list, each node keeps an explicit reference to the node before it and a reference to the node after it.
+- These lists allow a greater variety of O(1)-time update operations, including insertions and deletions at arbitrary positions within the list.
+- We continue to use the term “next” for the reference to the node that follows another, and we introduce the term “prev” for the reference to the node that precedes it.
+
+
+**Header and Trailer Sentinels**
+- to avoid some special cases when operating near the boundaries of a doubly linked list, it helps to add special nodes at both ends of the list: a `header` node at the beginning of the list, and a `trailer` node at the end of the list.
+- These “dummy” nodes are known as `sentinels/guards`, and they do not store elements of the primary sequence.
+- When using sentinel nodes, an empty list is initialized so that the `next field of the header points to the trailer`, and the `prev field of the trailer points to the header`; the remaining fields of the sentinels are irrelevant (presumably null, in Java).
+- For a nonempty list, the header’s next will refer to a node containing the first real element of a sequence, just as the trailer’s prev references the node containing the last element of a sequence.
+
+
+**Advantage of Using Sentinels**
+- Although we could implement a doubly linked list without sentinel nodes, slight extra memory devoted to the `sentinels greatly simplifies the logic of the operations`.
+  - the header and trailer nodes never change — only the nodes between them change.
+  - treat all insertions in a unified manner, because a new node will always be placed between a pair of existing nodes.
+  - every element that is to be deleted is guaranteed to be stored in a node that has neighbors on each side.
+- contrast
+  - SinglyLinkedList implementation addLast method required a conditional to manage the special case of inserting into an empty list.
+  - In the general case, the new node was linked after the existing tail.
+  - But when adding to an empty list, there is no existing tail; instead it is necessary to reassign head to reference the new node.
+  - The use of a sentinel node in that implementation would eliminate the special case, as there would always be an existing node (possibly the header) before a new node.
+
+
+## general method
+
+
+### Equivalence Testing
+- At the lowest level, if a and b are reference variables, then` expression a == b tests whether a and b refer to the same object` (or if both are set to the null value).
+- higher-level notion of two variables being considered “equivalent” even if they do not actually refer to the same instance of the class. For example, we typically want to consider two String instances to be equivalent to each other if they represent the identical sequence of characters.
+- To support a broader notion of equivalence, all object types support a method named equals.
+- The author of each class has a responsibility to provide an implementation of the equals method, which overrides the one inherited from Object, if there is a more relevant definition for the equivalence of two instances
+
+- Great care must be taken when overriding the notion of equality, as the consistency of Java’s libraries depends upon the **equals method defining** what is known as an **equivalence relation** in mathematics, satisfying the following properties:
+  - `Treatment of null`:
+    - For any nonnull reference variable x,  `x.equals(null) == false` (nothing equals null except null).
+  - `Reflexivity`:
+    - For any nonnull reference variablex, `x.equals(x) == true` (object should equal itself).
+  - `Symmetry`:
+    - For any nonnull reference variablesxandy, `x.equals(y) == y.equals(x)`, should return the same value.
+  - `Transitivity`:
+    - For any nonnull reference variables x, y, and z, if `x.equals(y) == y.equals(z) == true`, then `x.equals(z) == true` as well.
+
+
+
+- Equivalence Testing with Arrays
+  - a == b:
+    - Tests if a and b refer to the same underlying array instance.
+  - a.equals(b):
+    - identical to a == b. Arrays are not a true class type and do not override the Object.equals method.
+  - Arrays.equals(a,b):
+    - This provides a more intuitive notion of equivalence, **returning true if the arrays have the same length and all pairs of corresponding elements are “equal” to each other**.
+    - More specifically, if the array elements are primitives, then it uses the standard == to compare values.
+    - If elements of the arrays are a reference type, then it makes pairwise `comparisons a[k].equals(b[k])` in evaluating the equivalence.
+
+- compound objects
+  - two-dimensional arrays in Java are really one-dimensional arrays nested inside a common one-dimensional array raises an interesting issue with respect to how we think about compound objects
+  - two-dimensional array, b, that has the same entries as a
+    - But the one-dimensional arrays, **the rows of a and b are stored in different memory locations**, even though they have the same internal content.
+    - Therefore
+      - `java.util.Arrays.equals(a,b) == false`
+      - `Arrays.deepEquals(a,b) == true`
+
+---
+
+### Cloning Data Structures
+
+- **abstraction** allows for a data structure to be treated as a single object, even though the encapsulated implementation of the structure might rely on a more complex combination of many objects.
+- each class in Java is responsible for defining whether its instances can be copied, and if so, precisely how the copy is constructed.
+
+- The universal `Object superclass` defines a method named `clone`
+  - can be used to produce shallow copy of an object.
+  - This uses the standard assignment semantics to assign the value of `each field of the new object` equal to the `corresponding field of the existing object` that is being copied.
+  - The reason this is known as a shallow copy is because if the field is a reference type, then an initialization of the form `duplicate.field = original.field` causes the field of the new object to refer to the same underlying instance as the field of the original object.
+
+- A `shallow copy` is not always appropriate for all classes
+  - therefore, Java intentionally **disables use of the clone() method** by
+    - declaring it as protected,
+    - having it throw a CloneNotSupportedException when called.
+  - The author of a class must explicitly declare support for cloning by
+    - formally declaring that the class implements the `Cloneable interface`,
+    - and by declaring a public version of the clone() method.
+  - That public method can simply call the protected one to do the field-by-field assignment that results in a shallow copy, if appropriate. However, for many classes, the class may choose to implement a deeper version of cloning, in which some of the referenced objects are themselves cloned.
+
+
+![Screen Shot 2022-03-04 at 11.13.02](https://i.imgur.com/5l3YSL1.png)
+
+![Screen Shot 2022-03-04 at 11.13.41](https://i.imgur.com/gUZfkkP.png)
+
+
+```java
+int[ ] data = {2, 3, 5, 7, 11, 13, 17, 19};
+int[ ] backup;
+
+backup = data; // warning; not a copy
+backup = data.clone();  // copy
+```
+
+
+**shallow copy**
+- considerations when copying an array that stores `reference types` rather than `primitive types`.
+  - The `clone()` method produces a shallow copy of the array
+  - producing a new array whose cells refer to the same objects referenced by the first array.
+
+![Screen Shot 2022-03-04 at 11.16.26](https://i.imgur.com/jzdkcuy.png)
+
+**deep copy**
+- A **deep copy** of the contact list can be created by iteratively cloning the individual elements, as follows, but only if the Person class is declared as Cloneable.
+
+```java
+Person[ ] guests = new Person[contacts.length];
+for (int k=0; k < contacts.length; k++)
+    guests[k] = (Person) contacts[k].clone(); // returns Object type
+```
+
+**clone on 2D Arrrays**
+- two-dimensional array is really a one-dimensional array storing other one-dimensional arrays, the same distinction between a shallow and deep copy exists.
+- Unfortunately, the java.util.Arrays class does not provide any “deepClone” method.
+
+```java
+// A method for creating a deep copy of a two-dimensional array of integers.
+public static int[][] deepClone(int[][] original){
+    int[][] backup = new int[original.length][];
+    for(int k=0;k<original.length;k++){
+        backup[k] = original[k].clone();
+    }
+    return backup;
+}
+```
+
+
+**Cloning Linked Lists**
+- to making a class cloneable in Java
+  - declaring that it `implements the Cloneable interface`.
+  - implementing a `public version of the clone() method` of the class
+  - By convention, that method should begin by creating a new instance using a call to `super.clone()`, which in our case invokes the method from the Object class
+
+> While the assignment of the size variable is correct, we cannot allow the new list to share the same head value (unless it is null).
+> For a nonempty list to have an independent state, it must have an entirely new chain of nodes, each storing a reference to the corresponding element from the original list.
+> We therefore create a new head node, and then perform a walk through the remainder of the original list while creating and linking new nodes for the new list.
+
+
+---
+
+
+
+
+## Node Class
 
 the constructor that a node is initially created with next set to `None`.
 - sometimes referred to as “grounding the node,”
@@ -798,11 +1064,6 @@ the constructor that a node is initially created with next set to `None`.
 ![node](https://i.imgur.com/CK40mon.png)
 
 ![node2](https://i.imgur.com/b0X4X3K.png)
-
-
----
-
-##### Node Class <- unordered linked list  (!!!!!!!!!!!!!)
 
 ```py
 class Node:
@@ -823,19 +1084,37 @@ class Node:
 
 ---
 
-#### Unordered List Class <- unordered linked list (old)
+## unordered Linked Lists: Unordered List
+
+
+![idea2](https://i.imgur.com/SqXvGO8.png)
+
+
+无序表： `unordered list`
+- 一种数据按照相对位置存放的数据集
+- (for easy, assum that no repeat)
+- 无序存放，但是在数据相之间建立`链接指向`, 就可以保持其前后相对位置。
+  - 显示标记 `head` `end`
+- 每个节点 `node` 包含2信息：
+  - 数据本身，指向下一个节点的引用信息`next`
+  - `next=None` 没有下一个节点了
+
 
 A linked list
 - nothing more than a single chain of nodes with a few well defined properties and methods such as:
+
 - Head Pointer:
   - pointer to the origin, or first node in a linked list.
   - Only when the list has a length of 1 will it’s value be None.
+
 - Tail Pointer:
   - pointer to the last node in a list.
   - When a list has a length of 1, the Head and the Tail refer to the same node.
   - By definition, the Tail will have a next value of None.
+
 - Count*:
-  - We’ll also be keeping track of the number of nodes we have in our linked list. Though this is not strictly necessary, I find it to be more efficient and convenient than iterating through the entire linked list when polling for size.
+  - We also be keeping track of the number of nodes we have in our linked list. Though this is not strictly necessary, I find it to be more efficient and convenient than iterating through the entire linked list when polling for size.
+
 
 ![1_73b9zu3H5pjLd8W0RZPeng](https://i.imgur.com/fFWCFCl.jpg)
 
@@ -1183,17 +1462,26 @@ def index(self, index):
 
 ---
 
-### Ordered List - Abstract Data Type
 
-ordered list.
-- For example, if the list of integers shown above were an ordered list (ascending order), then it could be written as `17, 26, 31, 54, 77, and 93`.
-- Since 17 is the smallest item, it occupies the first position in the list.
-- Likewise, since 93 is the largest, it occupies the last position.
 
-The structure of an ordered list
+
+## Ordered List - Abstract Data Type
+
+
+ordered list
 - a collection of items where **each item** holds a `relative position that is based upon some underlying characteristic of the item`.
+
 - The ordering is typically either ascending or descending and we assume that list items have a meaningful comparison operation that is already defined.
+
 - Many of the ordered list operations are the same as those of the unordered list.
+
+
+- For example
+  - the list of integers were an ordered list (ascending order),
+  - then it could be written as `17, 26, 31, 54, 77, and 93`.
+  - Since 17 is the smallest item, it occupies the first position in the list.
+  - Likewise, since 93 is the largest, it occupies the last position.
+
 
 ---
 
@@ -1232,6 +1520,8 @@ class OrderedList:
             previous.next = current.next
 ```
 
+![orderedsearch](https://i.imgur.com/cXdshUF.png)
+
 ```py
     # 𝑂(n)
     # require the traversal process. Although on average they may need to traverse only half of the nodes, these methods are all 𝑂(𝑛) since in the worst case each will process every node in the list.
@@ -1244,7 +1534,7 @@ class OrderedList:
         return False
 ```
 
-![orderedsearch](https://i.imgur.com/cXdshUF.png)
+![linkedlistinsert](https://i.imgur.com/dZE3tzH.png)
 
 ```py
     # 𝑂(n)
@@ -1268,7 +1558,6 @@ class OrderedList:
             previous.next = temp
 ```
 
-![linkedlistinsert](https://i.imgur.com/dZE3tzH.png)
 
 ```py
 my_list = OrderedList()
@@ -1289,7 +1578,15 @@ print(my_list.search(100))
 
 ---
 
-## Stack
+
+
+
+
+
+
+
+
+# Stack
 
 - a collection of elements, with two principle operations:
   - `push`, which adds to the collection,
@@ -1299,11 +1596,10 @@ print(my_list.search(100))
 - the addition and the removal always takes place at the same end.
   - This end is commonly referred to as the “top” and “base”
 
-**Time Complexity**
-- Access: O(n)
-- Search: O(n)
-- Insert: O(1)
-- Remove: O(1)
+Stack is a `linear data structure`
+- Abstract Data Type
+- follows a particular order in which the operations are performed.
+- LIFO(Last In First Out), FILO(First In Last Out).
 
 
 <kbd>LIFO, last-in first-out</kbd>
@@ -1323,18 +1619,113 @@ Stacks are fundamentally important, as they can be used to `reverse the order of
 ![simplereversal](https://i.imgur.com/in4R6v7.png)
 
 
-Stack is a `linear data structure`
-- Abstract Data Type
-- follows a particular order in which the operations are performed.
-- LIFO(Last In First Out), FILO(First In Last Out).
-
 
 ![Screen Shot 2020-05-26 at 14.28.21](https://i.imgur.com/viZ9E8J.png)
 
 ![Screen Shot 2020-05-26 at 14.29.19](https://i.imgur.com/rTL2FM6.png)
 
+---
 
-### stack operations
+### Abstract Data Type (ADT)
+
+---
+
+#### java
+
+```java
+push(e)     // O(1)
+pop()       // O(1)
+top()       // O(1)
+size()      // O(1)
+isEmpty()   // O(1)
+```
+
+**Time Complexity**
+- Access: O(n)
+- Search: O(n)
+- Insert: O(1)
+- Remove: O(1)
+
+**space usage**
+- Performance of a stack realized by an array. 
+- The space usage is O(N),
+
+
+- In order to formalize abstraction of a stack, define its `application programming interface (API)` in the form of a Java `interface`, which describes the names of the methods that the ADT supports and how they are to be declared and used.
+
+
+- rely on Java’s **generics framework**, allowing the elements stored in the stack to belong to any object `type <E>`. The formal type parameter is used as the parameter type for the push method, and the return type for both pop and top.
+
+- Because of the importance of the stack ADT, Java has included a concrete class named `java.util.Stack` that implements the LIFO semantics of a stack.
+  - However, Java’s Stack class remains only for historic reasons, and its interface is not consistent with most other data structures in the Java library.
+  - the current documentation for the Stack class recommends that it not be used, as LIFO functionality (and more) is provided by a more general data strucure **double-ended queue**  
+
+
+![Screen Shot 2022-03-11 at 00.40.59](https://i.imgur.com/YA3vGtX.png)
+
+
+```java
+public interface Stack<E> {
+    int size();
+    boolean isEmpty();
+    viod push(E e);
+    E top();
+    E pop();
+}
+
+public class ArrayStack<E> implements Stack<E> {
+
+    public static final int CAPACITY = 1000;
+    private E[] data;
+    private int t = -1;
+
+    public ArrayStack() { this(CAPACITY); }
+    public ArrayStack(int capacity) {
+        data = (E[]) new Object[capacity];
+    }
+
+    public int size() {return (t+1);}
+    public boolean isEmpty() {return t==-1;}
+
+    public void push(E e) throws IllegalStateException {
+        if(size()==data.length) throw new IllegalStateException("Stack is full");
+        data[++t] = e;
+    }
+
+    public E top(){
+        return isEmpty()? null: data[t];
+    }
+
+    public E pop(){
+        if(isEmpty()) return null;
+        E ans = data[t];
+        data[t] = null;
+        t--;
+        return E;
+    }
+
+}
+```
+
+**Drawback of This Array-Based Stack Implementation**
+- one negative aspect
+- it relies on a fixed-capacity array, which limits the ultimate size of the stack.
+
+- where a user has a good estimate on the number of items needing to go in the stack, the array-based implementation is hard to beat.
+
+
+two approaches for implementing a stack without such a size limitation and with space always proportional to the actual number of elements stored in the stack. 
+- One approach, singly linked list for storage;
+- more advanced array-based approach that overcomes the limit of a fixed capacity.
+
+
+
+
+
+
+----
+
+#### Python
 
 - `Stack()`
   - creates a new stack that is empty.
@@ -1851,6 +2242,17 @@ def doMath(op, op1, op2):
 
 
 ---
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Queue

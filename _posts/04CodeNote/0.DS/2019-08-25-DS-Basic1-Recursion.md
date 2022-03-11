@@ -23,10 +23,11 @@ toc: true
       - [Recursive Algorithms for Computing Powers](#recursive-algorithms-for-computing-powers)
       - [Binary Search](#binary-search)
       - [The Factorial Function](#the-factorial-function)
+      - [fibonacci](#fibonacci)
     - [Binary Recursion](#binary-recursion)
       - [Drawing an English Ruler ????????????](#drawing-an-english-ruler-)
       - [summing the n integers of an array](#summing-the-n-integers-of-an-array)
-  - [Multiple Recursion](#multiple-recursion)
+    - [Multiple Recursion](#multiple-recursion)
       - [File Systems Computing Disk Space Usage](#file-systems-computing-disk-space-usage)
       - [Recursion Trace](#recursion-trace)
       - [summation puzzles](#summation-puzzles)
@@ -99,6 +100,29 @@ find:
     - This process is used both in the standard case of one method calling a different method, or in the recursive case where a method invokes itself.
     - The key point is to **have a separate frame for each active call**.
 
+
+
+
+**Parameterizing a Recursion**
+
+- A successful recursive design sometimes requires that we redefine the origi- nal problem to facilitate similar-looking subproblems.
+- `binarySearch(data, target)` -> `binarySearch(data, target, low, high)`
+- using the additional parameters to demarcate subarrays as the recursion proceeds.
+
+
+- If we wish to provide a cleaner public interface to an algorithm without exposing the user to the recursive parameterization, a standard technique is to **make the recursive version private**, and to introduce a cleaner public method (that calls the private one with appropriate parameters). 
+
+```java
+// /∗∗ Returns true if the target value is found in the data array. ∗/ 
+public static boolean binarySearch(int[ ] data, int target) {
+  return binarySearch(data, target, 0, data.length − 1); // use parameterized version 
+}
+```
+
+
+
+
+
 ---
 
 
@@ -136,6 +160,7 @@ A recursive algorithm **must `call itself, recursively`**.
 
 **amortization**
 - get a tighter bound on a series of operations by considering the cumulative effect, rather than assuming that each achieves a worst case。
+ 
 
 
 ---
@@ -146,6 +171,50 @@ A recursive algorithm **must `call itself, recursively`**.
 - a recursive call starts at most one other: linear recursion.
 - a recursive call may start two others: binary recursion.
 - a recursive call may start three or more others: multiple recursion.
+
+
+
+**Tail Recursion**
+- the usefulness of recursion comes at a modest cost.
+- Java Virtual Machine must maintain frames that keep track of the state of each nested call. When computer memory is at a premium, it can be beneficial to derive nonrecursive implementations of recursive algorithms.
+
+- In general, we use the stack data structure to convert a recursive algorithm into a nonrecursive algorithm by managing the nesting of the recursive structure ourselves, rather than relying on the interpreter to do so.
+
+- some forms of recursion can be eliminated without any use of auxiliary memory. One such form is known as `tail recursion`.
+- A recursion is a tail recursion if any recursive call that is made from one context is the very last operation in that context, with the return value of the recursive call (if any) immediately returned by the enclosing recursion. 
+- By necessity, a tail recursion must be a linear recursion (since there is no way to make a second recursive call if you must immediately return the result of the first).
+
+```java
+return binarySearch(data, target, mid+1, high);
+return n ∗ factorial(n−1);
+```
+
+```java 
+// /∗∗ Returns true if the target value is found in the data array. ∗/ 
+public static boolean binarySearchIterative(int[ ] data, int target) {
+  int low = 0;
+  int high = data.length − 1; 
+  while (low <= high) {
+    int mid = (low + high) / 2; 
+    if (target == data[mid]) return true;
+    else if (target < data[mid]) high = mid − 1; 
+    else low = mid + 1; 
+  }
+  return false;
+}
+
+// Reverses the contents of the given array. ∗/
+public static void reverseIterative(int[ ] data) {
+  int low = 0, high = data.length − 1; 
+  while (low < high) {
+    int temp = data[low]; 
+    data[low++] = data[high]; 
+    data[high−−] = temp;
+  }
+}
+```
+
+
 
 
 ---
@@ -332,6 +401,27 @@ public static int factorial(int n) throws IllegalArgumentException {
 
 ---
 
+#### fibonacci
+
+
+```java
+public static long[ ] fibonacciGood(int n) {
+  if (n <= 1) {
+    long[ ] answer = {n, 0}; 
+    return answer;
+  } 
+  else {
+    long[ ] temp = fibonacciGood(n − 1);
+    long[ ] answer = {temp[0] + temp[1], temp[0]}; 
+    return answer;
+  }
+}
+```
+ 
+
+
+---
+
 
 ### Binary Recursion
 
@@ -400,7 +490,7 @@ public static int binarySum(int[ ] data, int low, int high) {
 
 ---
 
-## Multiple Recursion
+### Multiple Recursion
 
 - process in which a method may make more than two recursive calls.
 

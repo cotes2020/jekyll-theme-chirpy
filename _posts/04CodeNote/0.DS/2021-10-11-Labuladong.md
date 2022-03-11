@@ -618,6 +618,8 @@ Character.isWhitespace();
 Character.isLetter(cs[i]);
 Character.isLetterOrDigit(s.charAt(x))
 
+
+
 // String
 String greeting = "Hello";
 String str1 = ""
@@ -747,14 +749,22 @@ iter.next();
 
 
 
+// Stack
+Stack<String> st = new Stack<>();
+st.push();
+st.pop();
+st.top();
+st.size();
+st.peek(); // Access element from top of Stack
+st.isEmpty();
+st.toString();
+st.equals(stack2);
 
-Stack<String> stack = new Stack<>();
-stack.push();
-stack.pop();
-stack.peek(); // Access element from top of Stack
-stack.isEmpty();
-stack.toString();
-stack1.equals(stack2);
+
+
+
+
+
 
 
 Vector myVect = new Vector();
