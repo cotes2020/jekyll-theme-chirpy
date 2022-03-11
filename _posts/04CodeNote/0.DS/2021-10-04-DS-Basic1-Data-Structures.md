@@ -54,9 +54,13 @@ toc: true
   - [Ordered List - Abstract Data Type](#ordered-list---abstract-data-type)
       - [Ordered List in py (!!!!!!!!!!!!!)](#ordered-list-in-py-)
 - [Stack](#stack)
-    - [Abstract Data Type (ADT)](#abstract-data-type-adt)
-      - [java](#java)
-      - [Python](#python)
+  - [java](#java)
+    - [Array-Based Stack](#array-based-stack)
+      - [Garbage Collection in Java](#garbage-collection-in-java)
+      - [Drawback of Array-Based Stack](#drawback-of-array-based-stack)
+    - [Singly Linked List](#singly-linked-list-1)
+      - [The Adapter Pattern](#the-adapter-pattern)
+  - [Python](#python)
     - [code](#code)
       - [Stack <- list  (!!!!!!!!!!!!!)](#stack---list--)
       - [stack in java](#stack-in-java)
@@ -67,15 +71,20 @@ toc: true
       - [Balanced Symbols (A General Case)](#balanced-symbols-a-general-case)
       - [convert-integer-into-different-base](#convert-integer-into-different-base)
       - [Infix, Prefix, and Postfix Expressions](#infix-prefix-and-postfix-expressions)
-  - [Queue](#queue)
-    - [code](#code-1)
-      - [queue as a list  (!!!!!!!!!!!!!)](#queue-as-a-list--)
-      - [queue in java](#queue-in-java)
-      - [Simulation: Hot Potato](#simulation-hot-potato)
+- [Queue](#queue)
+  - [Java](#java-1)
+    - [The java.util.Queue Interface in Java](#the-javautilqueue-interface-in-java)
+    - [Array-Based Queue](#array-based-queue)
+    - [Circularly Array-Based Queue](#circularly-array-based-queue)
+    - [Singly Linked List for Queue](#singly-linked-list-for-queue)
+    - [circularly linked list for Queue](#circularly-linked-list-for-queue)
+  - [python](#python-1)
+    - [queue as a list  (!!!!!!!!!!!!!)](#queue-as-a-list--)
+    - [queue in java](#queue-in-java)
       - [Simulation: Printing Tasks](#simulation-printing-tasks)
   - [Deque](#deque)
     - [Deque - Abstract Data Type](#deque---abstract-data-type)
-    - [code](#code-2)
+    - [code](#code-1)
       - [dequeue as a list in py (!!!!!!!!!!!!!)](#dequeue-as-a-list-in-py-)
       - [Palindrome-Checker 回文 对称的单词](#palindrome-checker-回文-对称的单词)
   - [Hashing](#hashing)
@@ -1626,11 +1635,7 @@ Stacks are fundamentally important, as they can be used to `reverse the order of
 
 ---
 
-### Abstract Data Type (ADT)
-
----
-
-#### java
+## java
 
 ```java
 push(e)     // O(1)
@@ -1647,7 +1652,7 @@ isEmpty()   // O(1)
 - Remove: O(1)
 
 **space usage**
-- Performance of a stack realized by an array. 
+- Performance of a stack realized by an array.
 - The space usage is O(N),
 
 
@@ -1672,7 +1677,12 @@ public interface Stack<E> {
     E top();
     E pop();
 }
+```
 
+
+### Array-Based Stack
+
+```java
 public class ArrayStack<E> implements Stack<E> {
 
     public static final int CAPACITY = 1000;
@@ -1703,20 +1713,80 @@ public class ArrayStack<E> implements Stack<E> {
         t--;
         return E;
     }
-
 }
+
+Stack<Integer> S = new ArrayStack<>();
 ```
 
-**Drawback of This Array-Based Stack Implementation**
+
+
+#### Garbage Collection in Java
+
+- the implementation of the `pop` method, set a local variable, answer, to reference the element that is being popped, and then reset `data[t] to null` before decrementing t.
+- The assignment to null was not technically required, as our stack would still operate correctly without it.
+
+
+- Our reason for returning the cell to a null reference is to assist **Java’s garbage collection mechanism**,
+  - searches memory for objects that are no longer actively referenced and reclaims their space for future use.
+  - If we continued to store a reference to the popped element in our array, the stack class would ignore it (eventually overwriting the reference if more elements get added to the stack).
+  - But, if there were no other active references to the element in the user’s application, that spurious reference in the stack’s array would stop Java’s garbage collector from reclaiming the element.
+
+
+
+
+#### Drawback of Array-Based Stack
+
+Drawback of This Array-Based Stack Implementation
 - one negative aspect
 - it relies on a fixed-capacity array, which limits the ultimate size of the stack.
 
 - where a user has a good estimate on the number of items needing to go in the stack, the array-based implementation is hard to beat.
 
 
-two approaches for implementing a stack without such a size limitation and with space always proportional to the actual number of elements stored in the stack. 
-- One approach, singly linked list for storage;
+two approaches for implementing a stack without such a size limitation and with space always proportional to the actual number of elements stored in the stack.
+- One approach, **singly linked list** for storage;
 - more advanced array-based approach that overcomes the limit of a fixed capacity.
+
+
+
+---
+
+### Singly Linked List
+
+- Unlike our array-based implementation, the linked-list approach `has memory usage that is always proportional to the number of actual elements` currently in the stack, and `without an arbitrary capacity limit`.
+
+- since we can insert and delete elements in constant time only at the front. With the top of the stack stored at the front of the list, all methods execute in constant time.
+
+
+#### The Adapter Pattern
+
+- The adapter design pattern applies to any context where we effectively want to modify `an existing class so that its methods` match those of a related, but different, class or interface.
+
+- One general way to apply the adapter pattern is to define a new class in such a way that it contains an instance of the existing class as a hidden field, and then to implement each method of the new class using methods of this hidden instance variable.
+  - By applying the adapter pattern in this way, we have created a new class that performs some of the same functions as an existing class, but repackaged in a more convenient way.
+  - In the context of the stack ADT, adapt our SinglyLinkedList class to define a new LinkedStack class  
+  - This class declares a SinglyLinkedList named list as a private field
+
+![Screen Shot 2022-03-11 at 11.33.35](https://i.imgur.com/fEzYMpe.png)
+
+
+```java
+public class LinkedStack<E> implements Stack<E> {
+  private SinglyLinkedList<E> list = new SinglyLinkedList<>(); // an empty list
+
+  public LinkedStack() { } // new stack relies on the initially empty list
+  public int size() { return list.size(); }
+  public boolean isEmpty() { return list.isEmpty(); }
+  public void push(E element) { list.addFirst(element); }
+  public E top() { return list.first(); }
+  public E pop() { return list.removeFirst(); }
+}
+```
+
+
+
+
+
 
 
 
@@ -1725,7 +1795,7 @@ two approaches for implementing a stack without such a size limitation and with 
 
 ----
 
-#### Python
+## Python
 
 - `Stack()`
   - creates a new stack that is empty.
@@ -2255,21 +2325,10 @@ def doMath(op, op1, op2):
 
 
 
-## Queue
+# Queue
 
 ![basicqueue](https://i.imgur.com/ODLgXMw.png)
 
-
-- a collection of elements,
-- supporting two principle operations:
-  - enqueue, which inserts an element into the queue,
-  - dequeue, which removes an element from the queue
-
-**Time Complexity**:
-- Access: O(n)
-- Search: O(n)
-- Insert: O(1)
-- Remove: O(1)
 
 **Queue**
 
@@ -2289,6 +2348,19 @@ def doMath(op, op1, op2):
 
 ![Screen Shot 2020-05-26 at 22.35.29](https://i.imgur.com/Yqex15c.png)
 
+
+- a collection of elements,
+- supporting two principle operations:
+  - enqueue, which inserts an element into the queue,
+  - dequeue, which removes an element from the queue
+
+**Time Complexity**:
+- Access: O(n)
+- Search: O(n)
+- Insert: O(1)
+- Remove: O(1)
+
+
 - `Queue()`
   - creates a new queue that is empty.
   - It needs no parameters and returns an empty queue.
@@ -2299,6 +2371,14 @@ def doMath(op, op1, op2):
   - removes the front item from the queue.
   - It needs no parameters and **returns the item**.
   - The queue is modified.
+
+- `first()`:
+  - Returns the first element of the queue, without removing it (or null if the queue is empty).
+- `size()`:
+  - Returns the number of elements in the queue.
+- `isEmpty()`:
+  - Returns a boolean indicating whether the queue is empty.
+
 - `is_empty()`
   - tests to see whether the queue is empty.
   - It needs no parameters and returns a boolean value.
@@ -2306,11 +2386,189 @@ def doMath(op, op1, op2):
   - returns the number of items in the queue.
   - It needs no parameters and returns an integer.
 
+
 ---
 
-### code
+## Java
 
-#### queue as a list  (!!!!!!!!!!!!!)
+
+```java
+public interface Queue<E> {
+    int size();
+    boolean isEmpty();
+    void enqueue(E e);
+    E first();
+    E dequeue();
+}
+```
+
+### The java.util.Queue Interface in Java
+
+
+- Java provides a type of queue interface, java.util.Queue, which has functionality similar to the traditional queue ADT, given above, but the documentation for the java.util.Queue interface does not insist that it support only the FIFO principle.
+- When supporting the FIFO principle, the methods of the java.util.Queue interface have the equivalences with the queue ADT shown in Table 6.3.
+
+- The java.util.Queue interface supports two styles for most operations, which vary in the way that they treat exceptional cases.
+
+- When a queue is empty, the remove() and element() methods throw a NoSuchElementException, while the corresponding methods poll() and peek() return null.
+
+- For implementations with a bounded capacity, the add method will throw an IllegalStateException when full, while the offer method ignores the new element and returns false to signal that the element was not accepted.
+
+---
+
+### Array-Based Queue
+
+
+- implemented the LIFO semantics of the Stack ADT using an array (albeit, with a fixed capacity), such that every operation executes in constant time.
+
+- `enqueue`: as elements are inserted into a queue, we store them in an array such that the first element is at index 0, the second element at index 1, and so on.
+
+- `dequeue`:  implement the dequeue operation. The element to be removed is stored at index 0 of the array.
+  - One strategy is to execute a loop to shift all other elements of the queue one cell to the left, so that the front of the queue is again aligned with cell 0 of the array. **Unfortunately, the use of such a loop would result in an O(n) running time for the dequeue method**.
+  - avoiding the loop entirely. replace a dequeued element in the array with a null reference, and maintain an explicit variable f to represent the index of the element that is currently at the front of the queue. Such an algorithm for dequeue would run in O(1) time. **However, there remains a challenge with the revised approach**. With an array of capacity N, we should be able to store up to N elements before reaching any exceptional case. If we repeatedly let the front of the queue drift rightward over time, the back of the queue would reach the end of the underlying array even when there are fewer than N elements currently in the queue. We must decide how to store additional elements in such a configuration.
+
+
+### Circularly Array-Based Queue
+
+- Implementing such a circular view is relatively easy with the modulo operator,
+denoted with the symbol % in Java.
+
+- The modulo operator is ideal for treating an array circularly.
+
+
+```java
+public class ArrayQueue<E> implements Queue<E> {
+
+    private E[] data;
+    private int f=0;
+    private int sz=0;
+
+    // constructors
+    public ArrayQueue(){ this(CAPACITY); }
+    public ArrayQueue(int capacity){
+        data = new Object[capacity];
+    }
+
+    public int size() {return sz;}
+    public boolean isEmpty() {return sz==0;}
+
+    public void enqueue(E e) throws IllegalStateException {
+        if(sz==data.length) throw new IllegalStateException("Queue is full");
+        int avail = (f+sz)%data.length;
+        data[avail] = e;
+        sz++;
+    }
+
+    public E first() {
+        return isEmpty()? null: data[f];
+    }
+
+    // /∗∗ Removes and returns the first element of the queue (null if empty). ∗/
+    public E dequeue() {
+        if(isEmpty()) return null;
+        E ans = data[f];
+        data[f] = null;
+        f = (f+1)% data.length;
+        sz--;
+        return ans;
+    }
+}
+```
+
+
+
+**Analyzing the Efficiency of an Array-Based Queue**
+
+- size: O(1)
+- isEmpty: O(1)
+- first: O(1)
+- enqueue: O(1)
+- dequeue: O(1)
+
+
+---
+
+
+### Singly Linked List for Queue
+
+
+```java
+public class LinkedQueue implements Queue<E> {
+    private SinglyLinkedList<E> list = new SinglyLinkedList<>();
+
+    public LinkedQueue(){}
+    public int size(){return list.size();}
+    public boolean isEmpty(){return list.isEmpty();}
+    public void enqueue(E e){list.addLast(e);}
+    public E first(){return list.first();}
+    public E dequeue(){return list.removeFirst();}
+}
+```
+
+**Analyzing the Efficiency of an Singly Linked List-Based Queue**
+
+- adapt a singly linked list to implement the queue ADT while supporting worst-case O(1)-time for all operations, and without any artificial limit on the capacity.
+
+
+- each method of that class runs in O(1) worst-case time. Therefore, each method of our LinkedQueue adaptation also runs in O(1) worst-case time.
+
+- We also `avoid the need to specify a maximum size for the queue`, as was done in the array-based queue implementation.
+- However, this benefit comes with some expense.
+
+  - Because each node stores a next reference, in addition to the element reference, a linked list uses more space per element than a properly sized array of references.
+
+  - Also, although all methods execute in constant time for both implementations, it seems clear that the operations involving linked lists have a large number of primitive operations per call.
+    - For example,
+    - adding an element to an array-based queue consists primarily of calculating an index with modular arithmetic, storing the element in the array cell, and incrementing the size counter.
+    - For a linked list, an insertion includes the instantiation and initialization of a new node, relinking an existing node to the new node, and incrementing the size counter.
+    - In practice, this makes the linked-list method more expensive than the array-based method.
+
+---
+
+### circularly linked list for Queue
+
+- circularly linked list class that supports all behaviors of a singly linked list, and an additional rotate() method that efficiently moves the first element to the end of the list.
+
+- generalize the Queue interface to define a new CircularQueue interface with such a behavior
+
+
+
+```java
+
+public interface CircularQueue<E> extends Queue<E> {
+  void rotate();
+}
+
+
+public class LinkedCircularQueue implements CircularQueue<E> {
+    private SinglyLinkedList<E> list = new SinglyLinkedList<>();
+
+    public LinkedCircularQueue(){}
+    public int size(){return list.size();}
+    public boolean isEmpty(){return list.isEmpty();}
+    public void enqueue(E e){list.addLast(e);}
+    public E first(){return list.first();}
+    public E dequeue(){return list.removeFirst();}
+    public void rotate(){list.}
+}
+```
+
+
+- This interface can easily be implemented by adapting the CircularlyLinkedList class of Section 3.3 to produce a new LinkedCircularQueue class.
+- This class has an advantage over the traditional LinkedQueue, because a call to Q.rotate() is implemented more efficiently than the combination of calls, Q.enqueue(Q.dequeue()), because no nodes are created, destroyed, or relinked by the implementation of a rotate operation on a circularly linked list.
+
+- A circular queue is an excellent abstraction for applications in which elements are cyclically arranged, such as for multiplayer, turn-based games, or round-robin scheduling of computing processes. In the remainder of this section, we provide a demonstration of the use of a circular queue.
+
+
+
+
+
+---
+
+## python
+
+
+### queue as a list  (!!!!!!!!!!!!!)
 
 ```py
 class Queue:
@@ -2321,7 +2579,7 @@ class Queue:
     def size(self): return len(self.items)
 ```
 
-#### queue in java
+### queue in java
 
 
 ```java
@@ -2416,33 +2674,6 @@ public class Test {
 ---
 
 
-
-#### Simulation: Hot Potato
-
-[code](https://github.com/ocholuo/language/tree/master/0.code/leecode/Algorithms/queue-hot-potato.py)
-
-![hotpotato](https://i.imgur.com/VB33sdN.png)
-
-![namequeue](https://i.imgur.com/k57sicw.png)
-
-> arranged themselves in a circle. One man was designated as number one, and proceeding clockwise they killed every seventh man.
-
-```py
-from pythonds.basic import Queue
-
-def hotPotato(namelist, num):
-    simqueue = Queue()
-    for name in namelist:
-        simqueue.enqueue(name)
-
-    while simqueue.size() > 1:
-        for i in range(num):
-            simqueue.enqueue(simqueue.dequeue())
-        simqueue.dequeue()
-    return simqueue.dequeue()
-
-print(hotPotato(["Bill","David","Susan","Jane","Kent","Brad"],7))
-```
 
 ---
 

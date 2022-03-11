@@ -1,3 +1,5 @@
+package array;
+
 public class SinglyLinkedList<E> implements Cloneable {
     
     private static class Node<E> {
@@ -84,5 +86,5 @@ public class SinglyLinkedList<E> implements Cloneable {
                 }
             }
         }
-    }
+    } 
 }

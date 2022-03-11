@@ -102,14 +102,21 @@ toc: true
     - [归并排序](#归并排序)
 - [stack](#stack)
   - [队列 栈](#队列-栈)
-    - [用栈实现队列](#用栈实现队列)
-    - [用队列实现栈](#用队列实现栈)
+    - [232. Implement Queue using Stacks 用栈实现队列](#232-implement-queue-using-stacks-用栈实现队列)
+    - [225. Implement Stack using Queue 用队列实现栈](#225-implement-stack-using-queue-用队列实现栈)
+  - [code](#code)
+    - [Reversing an Array Using a Stack](#reversing-an-array-using-a-stack)
+    - [Matching Parentheses/Delimiters](#matching-parenthesesdelimiters)
+    - [Matching Tags in a Markup Language](#matching-tags-in-a-markup-language)
   - [单调栈](#单调栈)
     - [返回等长数组for更大的元素](#返回等长数组for更大的元素)
-    - [返回等长数组for更大的元素的index](#返回等长数组for更大的元素的index)
+    - [739. Daily Temperatures 返回等长数组for更大的元素的index](#739-daily-temperatures-返回等长数组for更大的元素的index)
     - [环形数组](#环形数组)
   - [单调队列结构](#单调队列结构)
     - [滑动窗口问题](#滑动窗口问题)
+- [Queue](#queue)
+  - [code](#code-1)
+    - [Simulation: Hot Potato](#simulation-hot-potato)
 - [🔒🔒 Tree](#-tree)
 - [🔒🔒 二叉树](#-二叉树)
     - [计算一棵二叉树共有几个节点](#计算一棵二叉树共有几个节点)
@@ -393,6 +400,18 @@ if (nums == null) throw new IllegalArgumentException("Input array is null");
 
 
 
+// reverse
+public static <E> void reverse(E[] a){
+    Statck<E> buffer = new ArrayStack<>(a.length);
+    for(E data: a){
+        buffer.push(a);
+    }
+    for(int i=0; i<a.length; i++) a[i] = buffer.pop();
+}
+reverse(a);
+
+
+
 
 // ======================== Swap ========================
 private void swap(char[] str, int i, int j) {
@@ -632,6 +651,7 @@ str1.indexOf(ch);
 str1.contains("h");
 str1.equals(str2);
 str1.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+str1.startsWith("/")
 
 String str2 = str1.substring(lo, lo+maxLen)
 String str2 = String.join(" ", array);
@@ -3718,7 +3738,7 @@ void sort(int[] nums, int lo, int hi) {
 ---
 
 
-### 用栈实现队列
+### 232. Implement Queue using Stacks 用栈实现队列
 
 
 [232. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/)
@@ -3777,7 +3797,7 @@ class MyQueue {
 
 ---
 
-### 用队列实现栈
+### 225. Implement Stack using Queue 用队列实现栈
 
 [225. Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues/)
 - Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (push, top, pop, and empty).
@@ -3831,6 +3851,88 @@ class MyStack {
 
 
 
+---
+
+## code
+
+
+### Reversing an Array Using a Stack
+
+- As a consequence of the LIFO protocol, a stack can be used as a general toll to reverse a data sequence.
+
+
+```java
+public static <E> void reverse(E[] a){
+    Statck<E> buffer = new ArrayStack<>(a.length);
+    for(E data: a){
+        buffer.push(a);
+    }
+    for(int i=0; i<a.length; i++) a[i] = buffer.pop();
+}
+reverse(a);
+```
+
+---
+
+
+### Matching Parentheses/Delimiters
+
+- We can use a stack to perform this task with a single left-to-right scan of the original string.
+
+
+```java
+public static boolean isMatched(String expression) {
+    final String opening = "({["; // opening delimiters
+    final String closing = ")}]"; // closing delimiters
+    Stack<String> buffer = new LinkedStack<>();
+    for(Char c: expression.toCharArray()){
+        if(opening.indexOf(c)!= -1) buffer.push(c);
+        else if(closing.indexOf(c)!= -1) {
+            if(buffer.isEmpty()) return false
+            if(closing.indexOf(c) != opening.indexOf(buffer.pop())) return false;
+        }
+    }
+    return buffer.isEmpty();
+}
+```
+
+
+---
+
+### Matching Tags in a Markup Language
+
+- Ideally, an HTML document should have matching tags, although most browsers tolerate a certain number of mismatching tags.
+
+```java
+public static boolean isHTMLMatched(String html) {
+    final String opening = "({["; // opening delimiters
+    final String closing = ")}]"; // closing delimiters
+
+    Stack<String> buffer = new LinkedStack<>();
+    int j = html.indexOf('<');
+    while (j != −1) {
+        int k = html.indexOf(">", j+1)
+        if(k==-1) return false;
+        String tag = html.subSting(j, k)
+        if(!tag.startsWith("/")) buffer.push(tag);
+        else {
+            if(buffer.isEmpty()) return false;
+            if(!tag.subString[1:].equals(buffer.pop())) return false;
+        }
+        j = html.indexOf('<', k+1);
+    }
+    return buffer.isEmpty();
+}
+
+
+```
+
+
+
+
+
+
+
 
 ---
 
@@ -3868,7 +3970,7 @@ vector<int> nextGreaterElement(vector<int>& nums) {
 
 ---
 
-### 返回等长数组for更大的元素的index
+### 739. Daily Temperatures 返回等长数组for更大的元素的index
 
 
 [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
@@ -3977,6 +4079,100 @@ int[] maxSlidingWindow(int[] nums, int k) {
     return arr;
 }
 ```
+
+
+
+
+
+
+
+
+---
+
+# Queue
+
+
+## code
+
+
+
+
+### Simulation: Hot Potato
+
+[code](https://github.com/ocholuo/language/tree/master/0.code/leecode/Algorithms/queue-hot-potato.py)
+
+![hotpotato](https://i.imgur.com/VB33sdN.png)
+
+![namequeue](https://i.imgur.com/k57sicw.png)
+
+> arranged themselves in a circle. One man was designated as number one, and proceeding clockwise they killed every seventh man.
+
+```py
+from pythonds.basic import Queue
+
+def hotPotato(namelist, num):
+    simqueue = Queue()
+    for name in namelist:
+        simqueue.enqueue(name)
+
+    while simqueue.size() > 1:
+        for i in range(num):
+            simqueue.enqueue(simqueue.dequeue())
+        simqueue.dequeue()
+    return simqueue.dequeue()
+
+print(hotPotato(["Bill","David","Susan","Jane","Kent","Brad"],7))
+```
+
+
+- a group of n children 
+- If the leader always uses the strategy of ringing the bell so that every kth person is removed from the circle, for some fixed value k, then determining the winner for a given list of children is known as the Josephus problem
+
+- solve the Josephus problem for a collection of n elements using a **circular queue**
+  - associating the potato with the element at the front of the queue and storing elements in the queue according to their order around the circle. 
+  - passing the potato is equivalent to rotating the first element to the back of the queue. 
+  - After this process has been performed k − 1 times, we remove the front element by dequeuing it from the queue and discarding it. 
+  - a solution that runs in O(n*k) time. 
+
+
+```java
+public interface Queue<E> {
+    int size();
+    boolean isEmpty();
+    void enqueue(E e);
+    E first();
+    E dequeue();
+}
+
+
+public interface CircularQueue<E> extends Queue<E> {
+  void rotate();
+}
+
+public class Josephus {
+    // /∗∗ Computes the winner of the Josephus problem using a circular queue. ∗/ 
+    public static <E> E Josephus(CircularQueue<E> queue, int k) {
+
+    }
+
+    public static <E> CircularQueue<E> buildQueue(E a[]) {
+        CircularQueue<E> list = 
+        return list;
+    }
+
+    public static void main(String[ ] args) {
+        String[] a1 = {"Alice", "Bob", "Cindy", "Doug", "Ed", "Fred"};
+        String[] a2 = {"Gene", "Hope", "Irene", "Jack", "Kim", "Lance"}; 
+        String[] a3 = {"Mike", "Roberto"};
+        System.out.println("First winner is " + Josephus(buildQueue(a1), 3)); System.out.println("Second winner is " + Josephus(buildQueue(a2), 10)); System.out.println("Third winner is " + Josephus(buildQueue(a3), 7));
+    }
+}
+```
+
+
+
+
+
 
 
 
