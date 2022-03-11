@@ -29,7 +29,7 @@ toc: true
   - [Multiple Recursion](#multiple-recursion)
       - [File Systems Computing Disk Space Usage](#file-systems-computing-disk-space-usage)
       - [Recursion Trace](#recursion-trace)
-      - [summation puzzles:](#summation-puzzles)
+      - [summation puzzles](#summation-puzzles)
   - [examples of the use of recursion](#examples-of-the-use-of-recursion)
     - [Calculating the Sum of a List of Numbers](#calculating-the-sum-of-a-list-of-numbers)
     - [returns reverse string](#returns-reverse-string)
@@ -77,7 +77,7 @@ source:
 > Each time we make a recursive call we are solving a smaller problem, until we reach the point where the problem cannot get any smaller.
 
 
-**A truly dynamic programming algorithm will take a more `systematic 系统的 approach` to the problem**.
+**A truly dynamic programming algorithm will take a more `systematic 系统的 approach` to the problem**
 - build from the bottom to top
 
 find:
