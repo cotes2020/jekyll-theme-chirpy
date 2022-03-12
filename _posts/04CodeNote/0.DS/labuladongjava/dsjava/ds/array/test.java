@@ -1,6 +1,7 @@
 package array;
 
-public class CircularlyLinkedList<E> {
+
+public class test<E> {
     
     private static class Node<E> {
         private E element;
@@ -15,7 +16,7 @@ public class CircularlyLinkedList<E> {
 
     }
 
-    public class CircularlyLinkedList<E> { 
+    public class test<E> { 
         private Node<E> tail = null;
         private int size = 0;
         public CircularlyLinkedList(){}
@@ -62,5 +63,8 @@ public class CircularlyLinkedList<E> {
 
     public boolean isEmpty() {
         return false;
+    }
+
+    public void addLast(E e) {
     }
 }

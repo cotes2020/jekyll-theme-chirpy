@@ -1,4 +1,5 @@
-package labuladongjava.other; 
+package array;
+
 
 public class DynamicArrayList<E> implements List<E> { // instance variables {
     

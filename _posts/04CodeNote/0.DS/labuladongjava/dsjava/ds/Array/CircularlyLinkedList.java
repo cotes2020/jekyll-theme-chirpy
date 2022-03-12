@@ -4,6 +4,7 @@ public class CircularlyLinkedList<E> {
 
     private Node<E> tail = null;
     private int size = 0;
+
     public CircularlyLinkedList(){}
 
     // access methods
@@ -33,11 +34,18 @@ public class CircularlyLinkedList<E> {
         addFrist(e);
         tail = tail.getNext(); 
     }
+
     public E removeFirst() {
         if(size<=1) return null;
         Node<E> ans = tail.getNext();
         tail.setNext(ans.getNext());
         size--;
         return ans.getElement();
-    } 
+    }
+
+    public void rotated() {
+        Node<E> temp = tail.getNext().getNext();
+        tail = tail.getNext();
+        tail.setNext(temp);
+    }
 }

@@ -1,4 +1,5 @@
-package labuladongjava.other;
+package array;
+
 
 // 单链表节点的结构
 public class ListNode {

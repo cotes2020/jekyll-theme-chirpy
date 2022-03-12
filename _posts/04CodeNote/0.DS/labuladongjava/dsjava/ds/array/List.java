@@ -1,4 +1,5 @@
-package labuladongjava.other;
+package array;
+
 
 // /∗∗ A simplified version of the java.util.List interface. ∗/
 public interface List<E> {
