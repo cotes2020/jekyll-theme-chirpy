@@ -28,7 +28,12 @@ toc: true
     - [Array Members](#array-members)
     - [Arrays Types, Allowed Element Types](#arrays-types-allowed-element-types)
     - [Cloning of arrays](#cloning-of-arrays)
-- [LinkedList (array-based structure) (without fixed size)](#linkedlist-array-based-structure-without-fixed-size)
+- [List [Interface]](#list-interface)
+  - [differences between ArrayList and LinkedList in Java](#differences-between-arraylist-and-linkedlist-in-java)
+  - [ArrayList [class]](#arraylist-class)
+    - [ArrayList (Simple array-based list) (fixed-capacity)](#arraylist-simple-array-based-list-fixed-capacity)
+    - [Dynamic Arrays fixed-capacity)](#dynamic-arrays-fixed-capacity)
+- [LinkedList (array-based structure) (without fixed size) [class]](#linkedlist-array-based-structure-without-fixed-size-class)
   - [basicc](#basicc)
   - [Abstract Data Type](#abstract-data-type)
     - [Unordered List - Abstract Data Type](#unordered-list---abstract-data-type)
@@ -82,13 +87,16 @@ toc: true
     - [queue as a list  (!!!!!!!!!!!!!)](#queue-as-a-list--)
     - [queue in java](#queue-in-java)
       - [Simulation: Printing Tasks](#simulation-printing-tasks)
-  - [Deque](#deque)
-    - [Deque - Abstract Data Type](#deque---abstract-data-type)
-    - [code](#code-1)
+- [Deque (Double-Ended Queues)](#deque-double-ended-queues)
+  - [Abstract Data Type](#abstract-data-type-1)
+    - [Java](#java-2)
+      - [Circular Array for Deque](#circular-array-for-deque)
+      - [Doubly Linked List for Deque](#doubly-linked-list-for-deque)
+    - [python](#python-2)
       - [dequeue as a list in py (!!!!!!!!!!!!!)](#dequeue-as-a-list-in-py-)
       - [Palindrome-Checker 回文 对称的单词](#palindrome-checker-回文-对称的单词)
-  - [Hashing](#hashing)
-  - [Graph](#graph)
+- [Hashing](#hashing)
+- [Graph](#graph)
 
 
 ---
@@ -100,6 +108,10 @@ source:
 - [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/books/published/pythonds3/BasicDS/ImplementinganOrderedList.html)
 - Data Structures and Algorithms in Java, 6th Edition.pdf
 
+---
+
+
+![Screen Shot 2022-03-12 at 11.19.28](https://i.imgur.com/E5U3yIk.png)
 
 
 
@@ -199,6 +211,8 @@ What distinguishes one linear structure from another is `the way in which items 
 **StringBuilder**
 - to support more efficient editing of character strings
 - effectively a mutable version of a string.
+
+
 
 
 
@@ -695,7 +709,232 @@ System.out.println(intArray[0] == cloneArray[0]); // true
 
 
 
-# LinkedList (array-based structure) (without fixed size)
+
+
+
+
+
+
+
+
+# List [Interface]
+
+
+- designing a single abstraction that is well suited for efficient implementation with either an array or a linked list is challenging, given the very different nature of these two fundamental data structures.
+
+- Locations within an array are easily described with an integer `index`.
+
+- The notion of an element’s index is well defined for a linked list as well,
+- but it is not as convenient of a notion, as there is **no way to efficiently access an element at a given index** without **traversing a portion of the linked list** that depends upon the magnitude of the index.
+
+- With that said, Java defines a general interface, java.util.List, that includes the following index-based methods (and more):
+
+
+```java
+size():
+isEmpty():
+get(i):
+set(i,e):
+add(i, e):
+remove(i)
+
+public interface List<E> {  
+  int size();
+  boolean isEmpty();
+  E get(int i) throws IndexOutOfBoundsException;
+  E set(int i, E e) throws IndexOutOfBoundsException;
+  void add(int i, E e) throws IndexOutOfBoundsException;
+  E remove(int i) throws IndexOutOfBoundsException;
+}
+```
+
+---
+
+
+
+## differences between ArrayList and LinkedList in Java
+
+**ArrayList**	
+1. This class uses a **dynamic array** to store the elements in it. With the introduction of `generics`, this class supports the storage of all types of objects.	
+
+2. Manipulating ArrayList takes more time due to the internal implementation. Whenever we remove an element, internally, the array is traversed and the memory bits are shifted.
+
+3. This class implements a `List` interface. Therefore, this acts as a list.	
+
+4. This class works better when the application demands **storing** the data and **accessing** it.	
+
+
+
+**LinkedList**
+1. This class uses a **doubly linked list** to store the elements in it. Similar to the ArrayList, this class also supports the storage of all types of objects.
+
+2. Manipulating LinkedList takes less time compared to ArrayList because, in a doubly-linked list, there is no concept of shifting the memory bits. The list is traversed and the reference link is changed.
+
+3. This class implements both the `List` interface and the `Deque` interface. Therefore, it can act as a list and a deque.
+
+4. This class works better when the application demands **manipulation** of the stored data.
+
+
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+## ArrayList [class]
+
+- An obvious choice for implementing the list ADT is to use an **array** A, where `A[i]` stores (a reference to) the element with index i.
+
+- a more advanced technique effectively allows an **array-based list** to have unbounded capacity.
+  - **Array list** in Java
+  - or a vector in C++ and in the earliest versions of Java
+
+
+
+### ArrayList (Simple array-based list) (fixed-capacity)
+
+![Screen Shot 2022-03-12 at 12.47.15](https://i.imgur.com/idtRDsF.png)
+
+- With a representation based on an array A, the `get(i)` and `set(i, e)` methods are easy to implement by accessing `A[i]` (assuming i is a legitimate index).
+- Methods `add(i, e)` and `remove(i)` are more time consuming, as they require shifting elements up or down to maintain our rule of always storing an element whose list index is i at index i of the array.
+
+
+Method
+- `size( )`: O(1)
+- `isEmpty( )`: O(1)
+- `get(i)`: O(1)
+- `set(i, e)`: O(1)
+
+- `add(i, e)`: O(n)
+- `remove(i)`: O(n)
+
+
+
+```java
+ArrayList<Integer> al = new ArrayList<Integer>();
+
+
+package list;
+
+
+public class ArrayList<E> implements List<E> { // instance variables {
+
+    // default array capacity
+    public static final int CAPACITY=16;
+    // generic array used for storage
+    private E[] data;
+    private int size = 0;
+
+    // constructors
+    public ArrayList() { this(CAPACITY); }
+
+    // constructs list with given capacity
+    public ArrayList(int capacity) {
+        data = (E[]) new Object[capacity];
+    }
+
+    // public methods
+    public int size() { return size; }
+    public boolean isEmpty() { return size == 0; }
+
+    // utility method
+    // /∗∗ Checks whether the given index is in the range [0, n-1]. ∗/
+    protected void checkIndex(int i, int n) throws IndexOutOfBoundsException {
+        if (i < 0 || i >= n) throw new IndexOutOfBoundsException("Illegal index: " + i);
+    }
+
+    public E get(int i) throws IndexOutOfBoundsException {
+        checkIndex(i, size);
+        return data[i];
+    }
+
+    // /∗∗ Replaces the element at index i with e, and returns the replaced element. ∗/
+    public E set(int i, E e) throws IndexOutOfBoundsException {
+        checkIndex(i, size);
+        E temp = data[i];
+        data[i] = e;
+        return temp;
+    }
+    // /∗∗ Inserts element e to be at index i, shifting all subsequent elements later. ∗/
+    public void add(int i, E e) throws IndexOutOfBoundsException, IllegalStateException {
+        checkIndex(i, size + 1);
+        // not enough capacity
+        if (size == data.length) throw new IllegalStateException("Array is full");
+        // start by shifting rightmost
+        for (int k=size - 1; k >= i; k--) {
+            data[k+1] = data[k];
+        }
+        // ready to place the new element
+        data[i] = e;
+        size++;
+    }
+
+    // /∗∗ Removes/returns the element at index i, shifting subsequent elements earlier. ∗/
+    public E remove(int i) throws IndexOutOfBoundsException {
+        checkIndex(i, size);
+        E temp = data[i];
+        for (int k=i; k < size-1; k++){
+            data[k] = data[k+1];
+        }
+        data[size-1] = null;
+        size--;
+        return temp;
+    }
+}
+```
+
+ 
+
+
+### Dynamic Arrays fixed-capacity)
+
+- `ArrayList`: if a user is unsure of the maximum size that will be reached for a collection, there is risk that either too large of an array will be requested, causing an inefficient waste of memory, or that too small of an array will be requested, causing a fatal error when exhausting that capacity.
+
+- ArrayList class provides a more robust abstraction, allowing a user to add elements to the list, with no apparent limit on the overall capacity.
+
+
+**dynamic array**
+
+- In reality, elements of an ArrayList are stored in a traditional array, and the precise size of that traditional array must be internally declared in order for the system to properly allocate a consecutive piece of memory for its storage. For example
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
+# LinkedList (array-based structure) (without fixed size) [class]
 
 - an alternative to an array-based structure.
 
@@ -831,10 +1070,10 @@ Functions:
 
 ```java
 Algorithm addFirst(e):
-newest=Node(e);
-newest.next = head;
-head = newest;
-size = size + 1;
+  newest=Node(e);
+  newest.next = head;
+  head = newest;
+  size = size + 1;
 ```
 
 **Inserting an Element at the Tail of a Singly Linked List**
@@ -842,21 +1081,21 @@ size = size + 1;
 
 ```java
 Algorithm addLast(e):
-newest=Node(e);
-newest.next = null;
-tail.next = newest;
-tail = newest;
-size = size + 1;
+  newest=Node(e);
+  newest.next = null;
+  tail.next = newest;
+  tail = newest;
+  size = size + 1;
 ```
 
 **Removing an Element from a Singly Linked List**
 
 ```java
 Algorithm removeFirst():
-if head == null:
-    the list is empty;
-head = head.next;
-size = size - 1;
+  if head == null:
+      the list is empty;
+  head = head.next;
+  size = size - 1;
 ```
 
 
@@ -1008,8 +1247,8 @@ size = size - 1;
 
 
 ```java
-int[ ] data = {2, 3, 5, 7, 11, 13, 17, 19};
-int[ ] backup;
+int[] data = {2, 3, 5, 7, 11, 13, 17, 19};
+int[] backup;
 
 backup = data; // warning; not a copy
 backup = data.clone();  // copy
@@ -1027,7 +1266,7 @@ backup = data.clone();  // copy
 - A **deep copy** of the contact list can be created by iteratively cloning the individual elements, as follows, but only if the Person class is declared as Cloneable.
 
 ```java
-Person[ ] guests = new Person[contacts.length];
+Person[] guests = new Person[contacts.length];
 for (int k=0; k < contacts.length; k++)
     guests[k] = (Person) contacts[k].clone(); // returns Object type
 ```
@@ -1090,6 +1329,12 @@ class Node:
 >>> temp.data
 93
 ```
+
+
+
+
+
+
 
 ---
 
@@ -1585,8 +1830,26 @@ print(my_list.search(100))
 
 
 
----
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
 
 
 
@@ -2816,7 +3079,15 @@ for i in range(10):
 
 ---
 
-## Deque
+
+
+
+
+
+# Deque (Double-Ended Queues)
+
+> usually pronounced “deck” to avoid confusion with the dequeue method of the regular queue ADT, which is pronounced like the abbreviation “D.Q.”
+
 
 
 - double-ended queue
@@ -2824,6 +3095,7 @@ for i in range(10):
 - It has two ends,
   - a front and a rear,
   - and the items remain positioned in the collection.
+
 
 What makes a deque different is the unrestrictive nature of adding and removing items.
 - New items can be added at either the front or the rear.
@@ -2836,8 +3108,89 @@ it does not require the LIFO and FIFO orderings that are enforced by those data 
 
 ![basicdeque](https://i.imgur.com/5dSSfi2.png)
 
+---
 
-### Deque - Abstract Data Type
+
+## Abstract Data Type
+
+Method
+- size, isEmpty : O(1)
+- first, last : O(1)
+- addFirst, addLast : O(1)
+- removeFirst, removeLast : O(1)
+
+
+
+
+
+---
+
+
+### Java
+
+- The deque abstract data type is richer than both the stack and the queue ADTs.
+- To provide a symmetrical abstraction, the deque ADT is defined to support the following update methods:
+
+
+- addFirst(e): Insert a new element e at the front of the deque.
+- addLast(e): Insert a new element e at the back of the deque.
+- removeFirst(): Remove and return the first element of the deque (or null if the deque is empty).
+- removeLast(): Remove and return the last element of the deque (or null if the deque is empty).
+
+- first(): Returns the first element of the deque, without removing it (or null if the deque is empty).
+- last(): Returns the last element of the deque, without removing it (or null if the deque is empty).
+- size(): Returns the number of elements in the deque.
+- isEmpty(): Returns a boolean indicating whether the deque is empty.
+
+```java
+package queue;
+
+public interface Deque<E> {
+    int size();
+    boolean isEmpty();
+    E first();
+    E last();
+    void addFirst(E e);
+    void addLast(E e);
+    E removeFirst();
+    E removeLast();
+}
+```
+
+---
+
+
+#### Circular Array for Deque
+
+
+
+#### Doubly Linked List for Deque
+
+
+- Because the deque requires insertion and removal at both ends, a doubly linked list is most appropriate for implementing all operations efficiently.
+- In fact, the DoublyLinkedList class from Section 3.4.1 already implements the entire Deque interface; we simply need to add the declaration “implements Deque<E>” to that class definition in order to use it as a deque.
+
+
+```java
+public class Dequeue implements Deque<E> {
+
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+### python
 
 ![Screen Shot 2020-05-27 at 16.08.22](https://i.imgur.com/1N3DXwM.png)
 
@@ -2868,8 +3221,6 @@ it does not require the LIFO and FIFO orderings that are enforced by those data 
   - It needs no parameters and returns an integer.
 
 ---
-
-### code
 
 #### dequeue as a list in py (!!!!!!!!!!!!!)
 
@@ -2907,9 +3258,16 @@ palchecker("lsdkjfhd")
 palchecker("radar")    
 ```
 
+
+
+
+
+
+
+
 ---
 
-## Hashing
+# Hashing
 
 - Hashing is used to map data of an arbitrary size to data of a fixed size.
 - The values returned by a hash function are called `hash values, hash codes, or simply hashes`.
@@ -2935,7 +3293,8 @@ palchecker("radar")
 
 
 
-## Graph
+
+# Graph
 
 - A Graph is an ordered pair of `G = (V, E)`
   - comprising a set `V of vertices or nodes` together with a `set E of edges or arcs`,

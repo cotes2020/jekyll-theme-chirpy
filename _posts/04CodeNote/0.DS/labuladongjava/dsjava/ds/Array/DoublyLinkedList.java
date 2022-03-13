@@ -23,6 +23,7 @@ public class DoublyLinkedList<E> {
     private int size = 0;
 
     public class DoublyLinkedList<E> { 
+        
         public DoublyLinkedList(){
             head = new Node<>(null, null, null);
             tail = new Node<>(null, head, null);
@@ -68,8 +69,6 @@ public class DoublyLinkedList<E> {
         } 
         public E removeLast() {
             return isEmpty?null: remove(tail.getPrev());
-        } 
-
-        
+        }  
     }
 }
