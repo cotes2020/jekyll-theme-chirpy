@@ -1,6 +1,6 @@
 ---
 categories:
-  - note
+  - memo
 date: 2021-12-26 00:47:00 +0900
 tags:
   - jupyter

@@ -1,6 +1,6 @@
 ---
 categories:
-  - note
+  - article
 date: 2021-02-07 00:00:00 +0900
 tags:
   - python
