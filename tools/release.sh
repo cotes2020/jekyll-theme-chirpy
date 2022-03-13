@@ -10,7 +10,7 @@
 #
 # Usage: run on main branch or the patch branch
 #
-# Requires: Git, Node.js, NPX and RubyGems
+# Requires: Git, NPM and RubyGems
 
 set -eu
 
@@ -36,7 +36,7 @@ FILES=(
 TOOLS=(
   "git"
   "npm"
-  "npx"
+  "standard-version"
   "gem"
 )
 
@@ -143,9 +143,9 @@ resume_config() {
 # auto-generate a new version number to the file 'package.json'
 standard_version() {
   if $opt_pre; then
-    npx standard-version --prerelease rc
+    standard-version --prerelease rc
   else
-    npx standard-version
+    standard-version
   fi
 }
 
