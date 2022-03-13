@@ -87,7 +87,7 @@ Note that the basis above is not a covariant one.
 
 ### As a vector space
 
-Since $$\pmb{J}$$ has a basis $$\pmb{\mathcal{B}} \left( \pmb{E}_K \pmb{\Theta}^L, \pmb{E}_I \pmb{\Theta}^J \right) \pmb{E}_J \pmb{\Theta}^I$$, a corresponding vector space can be constructed from the span of the basis. [^1] Elements belonging to the vector space, by definition, can be added with each other and multipled by scalars:
+Since $$\pmb{J}$$ has a basis $$\pmb{\mathcal{B}} \left( \pmb{E}_K \pmb{\Theta}^L, \pmb{E}_I \pmb{\Theta}^J \right) \pmb{E}_J \pmb{\Theta}^I$$, a corresponding vector space can be constructed from the span of the basis. [^1] Elements belonging to the vector space, by definition, can be added with each other and multiplied by scalars:
 
 [^1]: Technically, what we're constructing here is a [vector bundle](https://en.wikipedia.org/wiki/Vector_bundle) $$\pmb{J}$$ parameterized by the vector space $$\pmb{\Phi}$$.
 
