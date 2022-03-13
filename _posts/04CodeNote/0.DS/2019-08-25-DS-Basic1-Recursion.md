@@ -110,12 +110,12 @@ find:
 - using the additional parameters to demarcate subarrays as the recursion proceeds.
 
 
-- If we wish to provide a cleaner public interface to an algorithm without exposing the user to the recursive parameterization, a standard technique is to **make the recursive version private**, and to introduce a cleaner public method (that calls the private one with appropriate parameters). 
+- If we wish to provide a cleaner public interface to an algorithm without exposing the user to the recursive parameterization, a standard technique is to **make the recursive version private**, and to introduce a cleaner public method (that calls the private one with appropriate parameters).
 
 ```java
-// /∗∗ Returns true if the target value is found in the data array. ∗/ 
+// /∗∗ Returns true if the target value is found in the data array. ∗/
 public static boolean binarySearch(int[ ] data, int target) {
-  return binarySearch(data, target, 0, data.length − 1); // use parameterized version 
+  return binarySearch(data, target, 0, data.length − 1); // use parameterized version
 }
 ```
 
@@ -160,7 +160,7 @@ A recursive algorithm **must `call itself, recursively`**.
 
 **amortization**
 - get a tighter bound on a series of operations by considering the cumulative effect, rather than assuming that each achieves a worst case。
- 
+
 
 
 ---
@@ -181,7 +181,7 @@ A recursive algorithm **must `call itself, recursively`**.
 - In general, we use the stack data structure to convert a recursive algorithm into a nonrecursive algorithm by managing the nesting of the recursive structure ourselves, rather than relying on the interpreter to do so.
 
 - some forms of recursion can be eliminated without any use of auxiliary memory. One such form is known as `tail recursion`.
-- A recursion is a tail recursion if any recursive call that is made from one context is the very last operation in that context, with the return value of the recursive call (if any) immediately returned by the enclosing recursion. 
+- A recursion is a tail recursion if any recursive call that is made from one context is the very last operation in that context, with the return value of the recursive call (if any) immediately returned by the enclosing recursion.
 - By necessity, a tail recursion must be a linear recursion (since there is no way to make a second recursive call if you must immediately return the result of the first).
 
 ```java
@@ -189,26 +189,26 @@ return binarySearch(data, target, mid+1, high);
 return n ∗ factorial(n−1);
 ```
 
-```java 
-// /∗∗ Returns true if the target value is found in the data array. ∗/ 
+```java
+// /∗∗ Returns true if the target value is found in the data array. ∗/
 public static boolean binarySearchIterative(int[ ] data, int target) {
   int low = 0;
-  int high = data.length − 1; 
+  int high = data.length − 1;
   while (low <= high) {
-    int mid = (low + high) / 2; 
+    int mid = (low + high) / 2;
     if (target == data[mid]) return true;
-    else if (target < data[mid]) high = mid − 1; 
-    else low = mid + 1; 
+    else if (target < data[mid]) high = mid − 1;
+    else low = mid + 1;
   }
   return false;
 }
 
 // Reverses the contents of the given array. ∗/
 public static void reverseIterative(int[ ] data) {
-  int low = 0, high = data.length − 1; 
+  int low = 0, high = data.length − 1;
   while (low < high) {
-    int temp = data[low]; 
-    data[low++] = data[high]; 
+    int temp = data[low];
+    data[low++] = data[high];
     data[high−−] = temp;
   }
 }
@@ -407,17 +407,17 @@ public static int factorial(int n) throws IllegalArgumentException {
 ```java
 public static long[ ] fibonacciGood(int n) {
   if (n <= 1) {
-    long[ ] answer = {n, 0}; 
+    long[ ] answer = {n, 0};
     return answer;
-  } 
+  }
   else {
     long[ ] temp = fibonacciGood(n − 1);
-    long[ ] answer = {temp[0] + temp[1], temp[0]}; 
+    long[ ] answer = {temp[0] + temp[1], temp[0]};
     return answer;
   }
 }
 ```
- 
+
 
 
 ---
