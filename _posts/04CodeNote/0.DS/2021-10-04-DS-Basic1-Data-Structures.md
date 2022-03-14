@@ -15,7 +15,8 @@ toc: true
 - [Data Structures - Basic 1 - Data Structures](#data-structures---basic-1---data-structures)
 - [Linear Structures](#linear-structures)
 - [String](#string)
-- [StringBuilder](#stringbuilder)
+  - [String **class**](#string-class)
+  - [StringBuilder **class**](#stringbuilder-class)
 - [Arrays 数组 (fixed size)](#arrays-数组-fixed-size)
     - [Create Array](#create-array)
       - [One-Dimensional Arrays](#one-dimensional-arrays)
@@ -30,12 +31,16 @@ toc: true
     - [Cloning of arrays](#cloning-of-arrays)
 - [List [Interface]](#list-interface)
   - [differences between ArrayList and LinkedList in Java](#differences-between-arraylist-and-linkedlist-in-java)
-  - [ArrayList [class]](#arraylist-class)
+  - [ArrayList **class**](#arraylist-class)
     - [ArrayList (Simple array-based list) (fixed-capacity)](#arraylist-simple-array-based-list-fixed-capacity)
-    - [Dynamic Arrays fixed-capacity)](#dynamic-arrays-fixed-capacity)
-- [LinkedList (array-based structure) (without fixed size) [class]](#linkedlist-array-based-structure-without-fixed-size-class)
-  - [basicc](#basicc)
+    - [Dynamic Arrays (fixed-capacity)](#dynamic-arrays-fixed-capacity)
+- [Positional Lists **Interface**](#positional-lists-interface)
   - [Abstract Data Type](#abstract-data-type)
+    - [java](#java)
+    - [LinkedPositionalList **class** Doubly Linked List for Position](#linkedpositionallist-class-doubly-linked-list-for-position)
+- [LinkedList (array-based structure) (without fixed size) **class**](#linkedlist-array-based-structure-without-fixed-size-class)
+  - [basicc](#basicc)
+  - [Abstract Data Type](#abstract-data-type-1)
     - [Unordered List - Abstract Data Type](#unordered-list---abstract-data-type)
     - [singly linked list](#singly-linked-list)
     - [Circularly Linked Lists](#circularly-linked-lists)
@@ -59,7 +64,7 @@ toc: true
   - [Ordered List - Abstract Data Type](#ordered-list---abstract-data-type)
       - [Ordered List in py (!!!!!!!!!!!!!)](#ordered-list-in-py-)
 - [Stack](#stack)
-  - [java](#java)
+  - [java](#java-1)
     - [Array-Based Stack](#array-based-stack)
       - [Garbage Collection in Java](#garbage-collection-in-java)
       - [Drawback of Array-Based Stack](#drawback-of-array-based-stack)
@@ -77,7 +82,7 @@ toc: true
       - [convert-integer-into-different-base](#convert-integer-into-different-base)
       - [Infix, Prefix, and Postfix Expressions](#infix-prefix-and-postfix-expressions)
 - [Queue](#queue)
-  - [Java](#java-1)
+  - [Java](#java-2)
     - [The java.util.Queue Interface in Java](#the-javautilqueue-interface-in-java)
     - [Array-Based Queue](#array-based-queue)
     - [Circularly Array-Based Queue](#circularly-array-based-queue)
@@ -88,8 +93,8 @@ toc: true
     - [queue in java](#queue-in-java)
       - [Simulation: Printing Tasks](#simulation-printing-tasks)
 - [Deque (Double-Ended Queues)](#deque-double-ended-queues)
-  - [Abstract Data Type](#abstract-data-type-1)
-    - [Java](#java-2)
+  - [Abstract Data Type](#abstract-data-type-2)
+    - [Java](#java-3)
       - [Circular Array for Deque](#circular-array-for-deque)
       - [Doubly Linked List for Deque](#doubly-linked-list-for-deque)
     - [python](#python-2)
@@ -161,6 +166,13 @@ What distinguishes one linear structure from another is `the way in which items 
 
 # String
 
+two algorithms for composing a long string
+
+---
+
+## String **class**
+
+
 **String**
 
 - Because it is common to work with sequences of text characters in programs, Java provides support in the form of a String class.
@@ -206,11 +218,23 @@ What distinguishes one linear structure from another is `the way in which items 
 
 
 
-# StringBuilder
+## StringBuilder **class**
 
 **StringBuilder**
 - to support more efficient editing of character strings
 - effectively a mutable version of a string.
+
+- significantly faster, with empirical evidence that suggested
+  - a quadratic running time for the algorithm with repeated concatenations,
+  - and a linear running time for the algorithm with the StringBuilder.
+
+
+- The StringBuilder class represents a mutable string by storing characters in a dynamic array.
+
+- it guarantees that a series of append operations resulting in a string of length n execute in a combined time of O(n). (Insertions at positions other than the end of a string builder do not carry this guarantee, just as they do not for an ArrayList.)
+
+- In contrast, the repeated use of string concatenation requires quadratic time. that approach is akin to a dynamic array with an arithmetic progression of size one, repeatedly copying all characters from one array to a new array with size one greater than before.
+
 
 
 
@@ -392,13 +416,6 @@ int[] intArray = new int[10][20][10]; //a 3D array
 ![Blank Diagram - Page 1 (13)](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-13.jpeg)
 
 
-**amortization** 分期偿还
-- an algorithmic design pattern
-- amortized analysis,
-  - view the computer as a coin-operated appliance that requires the payment of one cyber-dollar for a constant amount of computing time.
-  - When an operation is executed, we should have enough cyber-dollars available in our current “bank account” to pay for that operation’s running time.
-  - Thus, the total amount of cyber-dollars spent for any computation will be proportional to the total time spent on that computation.
-  - The beauty of using this analysis method is that we can overcharge some operations in order to save up cyber-dollars to pay for others.
 
 ```java
 type var-name[];
@@ -754,14 +771,14 @@ public interface List<E> {
 
 ## differences between ArrayList and LinkedList in Java
 
-**ArrayList**	
-1. This class uses a **dynamic array** to store the elements in it. With the introduction of `generics`, this class supports the storage of all types of objects.	
+**ArrayList**
+1. This class uses a **dynamic array** to store the elements in it. With the introduction of `generics`, this class supports the storage of all types of objects.
 
 2. Manipulating ArrayList takes more time due to the internal implementation. Whenever we remove an element, internally, the array is traversed and the memory bits are shifted.
 
-3. This class implements a `List` interface. Therefore, this acts as a list.	
+3. This class implements a `List` interface. Therefore, this acts as a list.
 
-4. This class works better when the application demands **storing** the data and **accessing** it.	
+4. This class works better when the application demands **storing** the data and **accessing** it.
 
 
 
@@ -793,7 +810,7 @@ public interface List<E> {
 
 
 
-## ArrayList [class]
+## ArrayList **class**
 
 - An obvious choice for implementing the list ADT is to use an **array** A, where `A[i]` stores (a reference to) the element with index i.
 
@@ -895,26 +912,175 @@ public class ArrayList<E> implements List<E> { // instance variables {
 }
 ```
 
- 
+---
 
 
-### Dynamic Arrays fixed-capacity)
+### Dynamic Arrays (fixed-capacity)
 
-- `ArrayList`: if a user is unsure of the maximum size that will be reached for a collection, there is risk that either too large of an array will be requested, causing an inefficient waste of memory, or that too small of an array will be requested, causing a fatal error when exhausting that capacity.
+- `ArrayList`:
+  - has a serious limitation; it `requires that a fixed maximum capacity` be declared, throwing an exception if attempting to add an element once full.
+  - if a user is unsure of the maximum size that will be reached for a collection, there is risk that
+    - either too large of an array will be requested, causing an inefficient waste of memory,
+    - or too small of an array will be requested, causing a fatal error when exhausting that capacity.
 
-- ArrayList class provides a more robust abstraction, allowing a user to add elements to the list, with no apparent limit on the overall capacity.
+- Java’s ArrayList class provides a more robust abstraction, allowing a user to add elements to the list, with no apparent limit on the overall capacity.
+
+- To provide this abstraction, Java relies on an algorithmic sleight of hand that is known as a dynamic array.
+
 
 
 **dynamic array**
 
-- In reality, elements of an ArrayList are stored in a traditional array, and the precise size of that traditional array must be internally declared in order for the system to properly allocate a consecutive piece of memory for its storage. For example
+- In reality, elements of an ArrayList are stored in a traditional array, and the precise size of that traditional array must be internally declared in order for the system to properly allocate a consecutive piece of memory for its storage.
+
+- Because `the system may allocate neighboring memory locations to store other data`, **the capacity of an array cannot be increased by expanding into subsequent cells**.
+
+- The first key to providing the semantics of an unbounded array is that an array list instance maintains an internal array that often has greater capacity than the current length of the list.
+  - For example, while a user may have created a list with five elements, the system may have reserved an underlying array capable of storing eight object references (rather than only five).
+
+- This extra capacity makes it easy to add a new element to the end of the list by using the next available cell of the array.
+
+- If a user continues to add elements to a list, all reserved capacity in the underlying array will eventually be exhausted.
+
+- In that case, the class requests a `new, larger array from the system, and copies all references from the smaller array into the beginning of the new array`.
+  - A commonly used rule is for the new array to have twice the capacity of the existing array that has been filled.
+
+- At that point in time, the old array is no longer needed, so it can be reclaimed by the system.
+
+
+when a call to add a new element risks **overflowing** the current array, perform the following additional steps:
+1. Allocate a new array B with larger capacity.
+2. `SetB[k]=A[k],for k=0,...,n−1`,where n denotes current number of items.
+3. `Set A = B`, henceforth use the new array to support the list.
+4. Insert the new element in the new array.
+
+
+```java
+public void add(int i, E e) throws IndexOutOfBoundsException, IllegalStateException {
+  checkIndex(i, size + 1);
+  if (size == data.length) resize(size*2);
+  for (int k=size - 1; k >= i; k--) data[k+1] = data[k];
+  data[i] = e;
+  size++;
+}
+
+protected void resize(int capacity) {
+  E[] temp = (E[]) new Object[capacity];
+  for(int k=0; k<size; k++) temp[k] = data[k];
+  data = temp;
+}
+```
+
+
+- the original implementation of the ArrayList class includes two constructors:
+  - a default constructor that uses an initial capacity of 16,
+  - and a parameterized constructor that allows the caller to specify a capacity value.
+- With the use of dynamic arrays,
+  - that capacity is no longer a fixed limit.
+  - greater efficiency is achieved when a user selects an initial capacity that matches the actual size of a data set, as this can avoid time spent on intermediate array reallocations and potential space that is wasted by having too large of an array.
+
+
+---
 
 
 
+# Positional Lists **Interface**
+
+**integer/numeric indices**
+- When working with array-based sequences,
+  - integer indices provide an excellent means for describing the location of an element, or the location at which an insertion or deletion should take place.
+  - However, numeric indices are not a good choice for describing positions within a linked list because,
+    - knowing only an element’s index, `the only way to reach it is to traverse the list` incrementally from its beginning or end, counting elements along the way.
+    - not a good abstraction for describing a more local view of a position in a sequence, because the `index of an entry changes over time due to insertions or deletions` that happen earlier in the sequence.
+
+
+to design an abstract data type that provides a way to refer to elements anywhere in a sequence, and to perform arbitrary insertions and deletions.
+- This would allow us to efficiently describe actions
+  - such as a person deciding to leave the line before reaching the front, or allowing a friend to “cut” into line right behind him or her.
+  - a text document can be viewed as a long sequence of characters. A word processor uses the abstraction of a **cursor** to describe a position within the document without explicit use of an integer index, allowing operations such as “delete the character at the cursor” or “insert a new character just after the cursor.”
+  - refer to an inherent position within a document, such as the beginning of a particular chapter, without relying on a character index (or even a chapter number) that may change as the document evolves.
+
+
+to achieve constant time insertions and deletions at arbitrary locations, we effectively need a `reference` to the node at which an element is stored.
+- It is therefore very tempting to develop an ADT in which a node reference serves as the mechanism for describing a position.
+-  DoublyLinkedList has methods addBetween and remove that accept node references as parameters; however, we intentionally declared those methods as private.
+- Unfortunately, the public use of nodes in the ADT would violate the object-oriented design principles of abstraction and encapsulation,
+- There are several reasons to prefer that we encapsulate the nodes of a linked list, for both our sake and for the benefit of users of our abstraction:
 
 
 
+- It will be simpler for users of our data structure if they are not bothered with unnecessary details of our implementation, such as low-level manipulation of nodes, or our reliance on the use of sentinel nodes. Notice that to use the addBetween method of our DoublyLinkedList class to add a node at the beginning of a sequence, the header sentinel must be sent as a parameter.
+- We can provide a more robust data structure if we do not permit users to directly access or manipulate the nodes. We can then ensure that users do not invalidate the consistency of a list by mismanaging the linking of nodes. A more subtle problem arises if a user were allowed to call the addBetween or remove method of our DoublyLinkedList class, sending a node that does not belong to the given list as a parameter. (Go back and look at that code and see why it causes a problem!)
+- By better encapsulating the internal details of our implementation, we have greater flexibility to redesign the data structure and improve its performance. In fact, with a well-designed abstraction, we can provide a notion of a nonnu- meric position, even if using an array-based sequence
 
+
+
+**position**
+- in defining the positional list ADT, introduce the concept of a position
+- formalizes the intuitive notion of the “location” of an element relative to others in the list.
+
+- A position acts as a marker or token within a broader positional list.
+- A position p, associated with some element e in a list L, does not change, even if the index of e changes in L due to insertions or deletions elsewhere in the list. Nor does position p change if we replace the element e stored at p with another element.
+
+- The only way in which a position becomes invalid is if that position (and its element) are explicitly removed from the list.
+
+
+## Abstract Data Type
+
+
+### java
+
+```java
+first( ):
+last():
+before(p):
+after(p):
+isEmpty():
+size():
+
+addFirst(e):
+addLast(e):
+addBefore(p, e):
+addAfter(p, e):
+set(p, e): remove(p):
+```
+
+a demonstration of a typical traversal of a positional list,
+- traverses a list, named guests, that stores string elements, and prints each element while traversing from the beginning of the list to the end.
+
+```java
+Position<String> cursor = guset.first();
+while(cursor!=null){
+  System.out.println(cursor.getElement( ));
+  cursor = guset.after(cursor);
+}
+```
+
+
+```java
+public interface Position {
+    int size( );
+    boolean isEmpty( );
+    Position<E> first( );
+    Position<E> last( );
+    Position<E> before(Position<E> p) throws IllegalArgumentException;
+    Position<E> after(Position<E> p) throws IllegalArgumentException;
+    Position<E> addFirst(E e);
+    Position<E> addLast(E e);
+    Position<E> addBefore(Position<E> p, E e) throws IllegalArgumentException;
+    Position<E> addAfter(Position<E> p, E e) throws IllegalArgumentException;
+    E set(Position<E> p, E e) throws IllegalArgumentException;
+    E remove(Position<E> p) throws IllegalArgumentException;
+}
+```
+
+
+### LinkedPositionalList **class** Doubly Linked List for Position
+
+- The obvious way to identify locations within a linked list are node references.
+- Therefore, we declare the nested Node class of our linked list so as to implement the Position interface, supporting the required getElement method.
+- So the nodes are the positions.
+- the Node class is declared as private, to maintain proper encapsulation. All of the public methods of the positional list rely on the `Position` type, so although we know we are sending and receiving nodes, these are only known to be positions from the outside; as a result, users of our class cannot call any method other than getElement().
 
 
 
@@ -934,7 +1100,7 @@ public class ArrayList<E> implements List<E> { // instance variables {
 
 
 
-# LinkedList (array-based structure) (without fixed size) [class]
+# LinkedList (array-based structure) (without fixed size) **class**
 
 - an alternative to an array-based structure.
 

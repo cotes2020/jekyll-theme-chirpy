@@ -43,7 +43,8 @@ public class ArrayList<E> implements List<E> { // instance variables {
     public void add(int i, E e) throws IndexOutOfBoundsException, IllegalStateException {
         checkIndex(i, size + 1);
         // not enough capacity
-        if (size == data.length) throw new IllegalStateException("Array is full");
+        // if (size == data.length) throw new IllegalStateException("Array is full");
+        if (size == data.length) resize(size*2);
         // start by shifting rightmost
         for (int k=size - 1; k >= i; k--) {
             data[k+1] = data[k];
@@ -65,4 +66,10 @@ public class ArrayList<E> implements List<E> { // instance variables {
         return temp;
     }
     
+    // /∗∗ Resizes internal array to have given capacity >= size. ∗/
+    protected void resize(int capacity) {
+        E[] temp = (E[]) new Object[capacity];
+        for(int k=0; k<size; k++) temp[k] = data[k];
+        data = temp;
+    }
 }

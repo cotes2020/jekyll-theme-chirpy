@@ -25,11 +25,13 @@ toc: true
       - [The Cubic Function and Other Polynomials `f(n) = n3`](#the-cubic-function-and-other-polynomials-fn--n3)
       - [The Exponential Function `f(n) = b^n`](#the-exponential-function-fn--bn)
   - [Asymptotic Analysis 渐近分析](#asymptotic-analysis-渐近分析)
-    - [Big O Notation `f(n)≤c·g(n), for n≥n0`](#big-o-notation-fncgn-for-nn0)
-    - [Big Omega Ω Notation `f(n) ≥ cg(n), for n ≥ n0.`](#big-omega-ω-notation-fn--cgn-for-n--n0)
+    - [Big O Notation `f(n)≤c·g(n), for n≥n0` 最坏情况的度量](#big-o-notation-fncgn-for-nn0-最坏情况的度量)
+    - [Big Omega Ω Notation `f(n) ≥ cg(n), for n ≥ n0.` 算法的最好情况](#big-omega-ω-notation-fn--cgn-for-n--n0-算法的最好情况)
     - [Big Theta Θ Notation `c′g(n) ≤ f (n) ≤ c′′g(n), for n ≥ n0.`](#big-theta-θ-notation-cgn--f-n--cgn-for-n--n0)
     - [Little O Notation](#little-o-notation)
     - [Little ω Omega Notation](#little-ω-omega-notation)
+  - [Amortized analysis](#amortized-analysis)
+    - [running time of operations on dynamic arrays.](#running-time-of-operations-on-dynamic-arrays)
   - [Comparative Analysis 对比分析](#comparative-analysis-对比分析)
     - [T(n)](#tn)
     - [Examples of Algorithm Analysis](#examples-of-algorithm-analysis)
@@ -334,7 +336,7 @@ x=logbn ifandonlyif b^x =n.
 ## Asymptotic Analysis 渐近分析
 
 
-### Big O Notation `f(n)≤c·g(n), for n≥n0`
+### Big O Notation `f(n)≤c·g(n), for n≥n0` 最坏情况的度量
 
 ![bigO](https://i.imgur.com/Sm0gaI0.png)
 
@@ -370,7 +372,7 @@ x=logbn ifandonlyif b^x =n.
 ---
 
 
-### Big Omega Ω Notation `f(n) ≥ cg(n), for n ≥ n0.`
+### Big Omega Ω Notation `f(n) ≥ cg(n), for n ≥ n0.` 算法的最好情况
 
 - 如果存在正数c和N，对于所有的n>=N，有f(n)>=c*g(n)，则f(n)=Omega(g(n))
 
@@ -424,9 +426,57 @@ x=logbn ifandonlyif b^x =n.
 ---
 
 
+## Amortized analysis
+
+
+**amortization** 分期偿还
+- an algorithmic design pattern
+- amortized analysis,
+  - view the computer as a coin-operated appliance that requires the payment of one cyber-dollar for a constant amount of computing time.
+  - When an operation is executed, should have enough cyber-dollars available in our current “bank account” to pay for that operation’s running time.
+  - the total amount of cyber-dollars spent for any computation will be proportional to the total time spent on that computation.
+  - we can overcharge some operations in order to save up cyber-dollars to pay for others.
+
+
+### running time of operations on dynamic arrays.
+
+- the insertion of an element to be the last element in an array list as a push operation.
+
+
+- The strategy of replacing an array with a new, larger array
+  - might at first seem slow, because a single push operation may require Ω(n) time to perform, where n is the current number of elements in the array.
+  - However, by doubling the capacity during an array replacement, our new array allows us to add n further elements before the array must be replaced again.
+  - In this way, there are many simple push operations for each expensive one
+  - a series of push operations on an initially empty **dynamic array** is efficient in terms of its total running time.
+
+
+- Using amortization, performing a sequence of push operations on a dynamic array is actually quite efficient.
+
+
+**Proposition**
+- Let L be an initially empty array list with capacity one, implemented by means of a dynamic array that doubles in size when full.
+- The total time to perform a series of n push operations in L is O(n).
+**Justification**:
+- assume that `one` cyber-dollar for the execution of each **push** operation in L, excluding the time spent for growing the array.
+- assume that **growing the array from size k to size 2k** requires `k` cyber-dollars for the time spent initializing the new array.
+- charge each **push** operation `three` cyber-dollars. Thus, we overcharge each push operation that does not cause an overflow by two cyber-dollars.
+- Think of the two cyber-dollars profited in an insertion that does not grow the array as being “stored” with the cell in which the element was inserted.
+- An overflow occurs when the array L has 2^i elements, for some integer i ≥ 0, and the size of the array used by the array representing L is 2i.
+- Thus, doubling the size of the array will require 2^i cyber-dollars.
+- Fortunately, these cyber-dollars can be found stored in cells 2i−1 through 2i − 1.
+
+- In other words, the amortized running time of each push operation is O(1); hence, the total running time of n push operations is O(n).
 
 
 
+
+
+
+
+
+
+
+---
 
 ## Comparative Analysis 对比分析
 
