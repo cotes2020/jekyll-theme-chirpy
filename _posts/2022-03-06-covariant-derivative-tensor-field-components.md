@@ -1,11 +1,11 @@
 ---
-title: "Components of Covariant Derivative of a Tensor"
+title: "Components of Covariant Derivative of a Tensor Field"
 description: "Deriving the components of the covariant derivative of an arbitrary tensor"
 categories: [tensor calculus]
 tags: [covariant derivatives, tensors]
 ---
 
-Let us find the covariant derivative of a $$(p, q)$$ tensor $$\pmb{\phi}$$ as a whole by applying the Leibniz law repeatedly:
+Let us find the covariant derivative of a rank $$(p, q)$$ tensor tensor $$\pmb{\phi}$$ by applying the Leibniz law repeatedly:
 
 $$\nabla_\rho \left( \pmb{\phi} \otimes \pmb{\psi} \right) = \left( \nabla_\rho \pmb{\phi} \right) \otimes \pmb{\psi} + \pmb{\phi} \otimes \left( \nabla_\rho \pmb{\psi} \right)$$
 
