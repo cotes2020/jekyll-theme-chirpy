@@ -92,7 +92,11 @@
 
         <!-- Add CDN URL -->
         {% if site.img_cdn %}
-          {% assign _src_prefix = site.img_cdn %}
+          {% if site.img_cdn contains '//' %}
+            {% assign _src_prefix = site.img_cdn %}
+          {% else %}
+            {% assign _src_prefix = site.img_cdn | relative_url %}
+          {% endif %}
         {% else %}
           {% assign _src_prefix = site.baseurl %}
         {% endif %}
