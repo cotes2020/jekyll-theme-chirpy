@@ -39,6 +39,7 @@ toc: true
     - [java](#java)
     - [LinkedPositionalList **class** (Doubly Linked List for Position)](#linkedpositionallist-class-doubly-linked-list-for-position)
     - [LinkedPositionalList **class** (Array for Position)](#linkedpositionallist-class-array-for-position)
+- [Iterators](#iterators)
 - [LinkedList (array-based structure) (without fixed size) **class**](#linkedlist-array-based-structure-without-fixed-size-class)
   - [basicc](#basicc)
   - [Abstract Data Type](#abstract-data-type-1)
@@ -1082,7 +1083,7 @@ while(cursor!=null){
 public interface Position<E> {
   /**
   * Returns the element stored at this position.
-  * 
+  *
   ∗ @return the stored element
   ∗ @throws IllegalStateException if position no longer valid
   */
@@ -1142,9 +1143,9 @@ package list;
 //     public LinkedPositionalList(){}
 //     private Node<E> validate(Position<E> p) throws IllegalArgumentException {}
 // }
- 
+
 public class LinkedPositionalList<E> implements PositionalList<E>  {
-    
+
     private static class Node<E> implements Position<E>{
         private E element;
         private Node<E> prev;
@@ -1174,7 +1175,7 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
         public void setNext(Node<E> n) {
             next = n;
         }
-    } 
+    }
     // ----------- end of nested Node class ----------
 
     private Node<E> header;
@@ -1191,10 +1192,10 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
     // private utilities
     // ** Validates the position and returns it as a node. */
     private Node<E> validate(Position<E> p) throws IllegalArgumentException {
-        if (!(p instanceof Node)) throw new IllegalArgumentException("Invalid p"); 
-        Node<E> node = (Node<E>) p; // safe cast 
+        if (!(p instanceof Node)) throw new IllegalArgumentException("Invalid p");
+        Node<E> node = (Node<E>) p; // safe cast
         // convention for defunct node
-        if (node.getNext() == null) throw new IllegalArgumentException("p is no longer in the list"); 
+        if (node.getNext() == null) throw new IllegalArgumentException("p is no longer in the list");
         return node;
     }
     // ** Returns the given node as a Position (or null, if it is a sentinel). */
@@ -1217,7 +1218,7 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
         return node.getNext();
     }
 
-        
+
     // private utilities
     public Position<E> addBetween(E e, Node<E> prev, Node<E> succ) throws IllegalStateException {
         Node<E> node = new Node<>(e, prev, succ);
@@ -1268,31 +1269,51 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
 
 ### LinkedPositionalList **class** (Array for Position)
 
-- if we are going to implement a positional list with an array, we need a different approach. 
-- Instead of storing the elements of L directly in array A, we store a new kind of position object in each cell of A. 
+- if we are going to implement a positional list with an array, we need a different approach.
+- Instead of storing the elements of L directly in array A, we store a new kind of position object in each cell of A.
 - A position p stores the element e as well as the current index i of that element within the list.
 
+![Screen Shot 2022-03-16 at 11.11.56](https://i.imgur.com/WQ3fcfP.png)
 
-- With this representation, 
-  - we can determine the index currently associated with a position, 
-  - and we can determine the position currently associated with a specific index. 
+- With this representation,
+  - we can determine the index currently associated with a position,
+  - and we can determine the position currently associated with a specific index.
   - We can therefore implement an accessor, such as before(p), by finding the index of the given position and using the array to find the neighboring position.
 
 - When an element is inserted or deleted somewhere in the list, we can **loop through** the array to update the index variable stored in all later positions in the list that are shifted during the update.
 
 **Efficiency Trade-Offs with an Array-Based Sequence**
-In this array implementation of a sequence, the addFirst, addBefore, addAfter, and remove methods take O(n) time, because we have to shift position objects to make room for the new position or to fill in the hole created by the removal of the old position (just as in the insert and remove methods based on index). All the other position-based methods take O(1) time.
-  
+- the addFirst, addBefore, addAfter, and remove methods take **O(n)** time, because we have to shift position objects to make room for the new position or to fill in the hole created by the removal of the old position (just as in the insert and remove methods based on index). 
+- All the other position-based methods take **O(1)** time.
+
 
 
 
 ---
 
+# Iterators
+
+- a software design pattern that abstracts `the process of scanning through a sequence of elements, one element at a time.`
+- The underlying elements might be stored in a container class, streaming through a network, or generated by a series of computations.
+
+- In order to unify the treatment and syntax for iterating objects in a way that is independent from a specific organization, Java defines the java.util.Iterator inter- face with the following two methods:
+  - hasNext(): Returns true if there is at least one additional element in the sequence, and false otherwise.
+next(): Returns the next element in the sequence.
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+---
 
 # LinkedList (array-based structure) (without fixed size) **class**
 
