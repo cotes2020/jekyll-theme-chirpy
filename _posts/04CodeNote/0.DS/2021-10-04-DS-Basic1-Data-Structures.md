@@ -29,7 +29,7 @@ toc: true
     - [Array Members](#array-members)
     - [Arrays Types, Allowed Element Types](#arrays-types-allowed-element-types)
     - [Cloning of arrays](#cloning-of-arrays)
-- [List [Interface]](#list-interface)
+- [List **Interface**](#list-interface)
   - [differences between ArrayList and LinkedList in Java](#differences-between-arraylist-and-linkedlist-in-java)
   - [ArrayList **class**](#arraylist-class)
     - [ArrayList (Simple array-based list) (fixed-capacity)](#arraylist-simple-array-based-list-fixed-capacity)
@@ -37,7 +37,7 @@ toc: true
 - [Positional Lists **Interface**](#positional-lists-interface)
   - [Abstract Data Type](#abstract-data-type)
     - [java](#java)
-    - [LinkedPositionalList **class** Doubly Linked List for Position](#linkedpositionallist-class-doubly-linked-list-for-position)
+    - [LinkedPositionalList **class** (Doubly Linked List for Position)](#linkedpositionallist-class-doubly-linked-list-for-position)
 - [LinkedList (array-based structure) (without fixed size) **class**](#linkedlist-array-based-structure-without-fixed-size-class)
   - [basicc](#basicc)
   - [Abstract Data Type](#abstract-data-type-1)
@@ -130,7 +130,7 @@ source:
 
 Linear structures can be thought of as having `two ends`.
 - “left” and the “right”
-- or “front” and the “rear”
+- “front” and the “rear”
 - “top” and the “bottom.”
 
 
@@ -141,6 +141,28 @@ What distinguishes one linear structure from another is `the way in which items 
 - stack, queue, deque, list
 
 
+
+Array:
+- **limit capacity**
+- **O(n) for insert and delete**
+- **have index but need traverse**
+
+表 list：
+- 可以根据索引取值；
+- 缺点：插入和删除是O(n)的
+
+LinkedList:
+- unbounded capacity (n -> 2n)
+- O(1) for insert and delete
+- **have index but need traverse**
+
+
+PositionalList:
+- unbounded capacity (n -> 2n)
+- O(1) for insert and delete
+- **have p for each element, no need traverse**
+
+
 栈 stack：
 - 先进后出 FILO，操作较快；
 - 缺点：查询慢，读非栈顶数值需要`遍历`
@@ -148,10 +170,6 @@ What distinguishes one linear structure from another is `the way in which items 
 队列 queue：
 - 先进先出 FIFO，同样操作较快；
 - 缺点：读取内部数值需要`遍历`
-
-表 list：
-- 可以根据索引取值；
-- 缺点：插入和删除是O(n)的
 
 
 ![Screen Shot 2020-05-27 at 17.33.48](https://i.imgur.com/A4GXdUf.png)
@@ -734,7 +752,7 @@ System.out.println(intArray[0] == cloneArray[0]); // true
 
 
 
-# List [Interface]
+# List **Interface**
 
 
 - designing a single abstraction that is well suited for efficient implementation with either an array or a linked list is challenging, given the very different nature of these two fundamental data structures.
@@ -986,47 +1004,48 @@ protected void resize(int capacity) {
 
 # Positional Lists **Interface**
 
-**integer/numeric indices**
+**Integer/Numeric indices**
 - When working with array-based sequences,
   - integer indices provide an excellent means for describing the location of an element, or the location at which an insertion or deletion should take place.
-  - However, numeric indices are not a good choice for describing positions within a linked list because,
+  - However, not a good choice for describing positions within a linked list because:
     - knowing only an element’s index, `the only way to reach it is to traverse the list` incrementally from its beginning or end, counting elements along the way.
     - not a good abstraction for describing a more local view of a position in a sequence, because the `index of an entry changes over time due to insertions or deletions` that happen earlier in the sequence.
 
 
-to design an abstract data type that provides a way to refer to elements anywhere in a sequence, and to perform arbitrary insertions and deletions.
-- This would allow us to efficiently describe actions
-  - such as a person deciding to leave the line before reaching the front, or allowing a friend to “cut” into line right behind him or her.
-  - a text document can be viewed as a long sequence of characters. A word processor uses the abstraction of a **cursor** to describe a position within the document without explicit use of an integer index, allowing operations such as “delete the character at the cursor” or “insert a new character just after the cursor.”
-  - refer to an inherent position within a document, such as the beginning of a particular chapter, without relying on a character index (or even a chapter number) that may change as the document evolves.
+**Positional**
+- to design an abstract data type that provides a way to refer to elements anywhere in a sequence, and to perform arbitrary insertions and deletions.
+  - it efficiently describe actions:
+    - such as a person deciding to leave the line before reaching the front, or allowing a friend to “cut” into line right behind him or her.
+    - a text document can be viewed as a long sequence of characters. A word processor uses the abstraction of a **cursor** to describe a position within the document without explicit use of an integer index, allowing operations such as “delete the character at the cursor” or “insert a new character just after the cursor.”
+    - refer to an inherent position within a document, such as the beginning of a particular chapter, without relying on a character index (or even a chapter number) that may change as the document evolves.
 
+- to achieve `constant time insertions and deletions` at arbitrary locations, we effectively need a `reference` to the node at which an element is stored.
+  - develop an ADT in which a node reference serves as the mechanism for describing a position.
+  - DoublyLinkedList has methods addBetween and remove that accept node references as parameters; however, we intentionally declared those methods as private.
+  - Unfortunately, the public use of nodes in the ADT would violate the object-oriented design principles of abstraction and encapsulation,
 
-to achieve constant time insertions and deletions at arbitrary locations, we effectively need a `reference` to the node at which an element is stored.
-- It is therefore very tempting to develop an ADT in which a node reference serves as the mechanism for describing a position.
--  DoublyLinkedList has methods addBetween and remove that accept node references as parameters; however, we intentionally declared those methods as private.
-- Unfortunately, the public use of nodes in the ADT would violate the object-oriented design principles of abstraction and encapsulation,
-- There are several reasons to prefer that we encapsulate the nodes of a linked list, for both our sake and for the benefit of users of our abstraction:
-
-
-
-- It will be simpler for users of our data structure if they are not bothered with unnecessary details of our implementation, such as low-level manipulation of nodes, or our reliance on the use of sentinel nodes. Notice that to use the addBetween method of our DoublyLinkedList class to add a node at the beginning of a sequence, the header sentinel must be sent as a parameter.
-- We can provide a more robust data structure if we do not permit users to directly access or manipulate the nodes. We can then ensure that users do not invalidate the consistency of a list by mismanaging the linking of nodes. A more subtle problem arises if a user were allowed to call the addBetween or remove method of our DoublyLinkedList class, sending a node that does not belong to the given list as a parameter. (Go back and look at that code and see why it causes a problem!)
-- By better encapsulating the internal details of our implementation, we have greater flexibility to redesign the data structure and improve its performance. In fact, with a well-designed abstraction, we can provide a notion of a nonnu- meric position, even if using an array-based sequence
-
+  - There are several reasons to prefer that we **encapsulate the nodes of a linked list**, for both our sake and for the benefit of users of our abstraction:
+    - It will be simpler for users of our data structure if they are not bothered with unnecessary details of our implementation, such as low-level manipulation of nodes, or our reliance on the use of sentinel nodes. Notice that to use the addBetween method of our DoublyLinkedList class to add a node at the beginning of a sequence, the header sentinel must be sent as a parameter.
+    - We can provide a more robust data structure if we do not permit users to directly access or manipulate the nodes. We can then ensure that users do not invalidate the consistency of a list by mismanaging the linking of nodes. A more subtle problem arises if a user were allowed to call the addBetween or remove method of our DoublyLinkedList class, sending a node that does not belong to the given list as a parameter. (Go back and look at that code and see why it causes a problem!)
+    - By better encapsulating the internal details of our implementation, we have greater flexibility to redesign the data structure and improve its performance. In fact, with a well-designed abstraction, we can provide a notion of a nonnu- meric position, even if using an array-based sequence
 
 
 **position**
 - in defining the positional list ADT, introduce the concept of a position
-- formalizes the intuitive notion of the “location” of an element relative to others in the list.
+  - formalizes the intuitive notion of the “location” of an element relative to others in the list.
 
 - A position acts as a marker or token within a broader positional list.
 - A position p, associated with some element e in a list L, does not change, even if the index of e changes in L due to insertions or deletions elsewhere in the list. Nor does position p change if we replace the element e stored at p with another element.
 
 - The only way in which a position becomes invalid is if that position (and its element) are explicitly removed from the list.
 
+---
+
 
 ## Abstract Data Type
 
+
+---
 
 ### java
 
@@ -1044,6 +1063,7 @@ addBefore(p, e):
 addAfter(p, e):
 set(p, e): remove(p):
 ```
+
 
 a demonstration of a typical traversal of a positional list,
 - traverses a list, named guests, that stores string elements, and prints each element while traversing from the beginning of the list to the end.
@@ -1075,12 +1095,13 @@ public interface Position {
 ```
 
 
-### LinkedPositionalList **class** Doubly Linked List for Position
+### LinkedPositionalList **class** (Doubly Linked List for Position)
 
-- The obvious way to identify locations within a linked list are node references.
-- Therefore, we declare the nested Node class of our linked list so as to implement the Position interface, supporting the required getElement method.
+- The obvious way to identify locations within a linked list are `node` references.
+- declare the nested Node class of linked list so as to implement the Position interface, supporting the required getElement method.
 - So the nodes are the positions.
-- the Node class is declared as private, to maintain proper encapsulation. All of the public methods of the positional list rely on the `Position` type, so although we know we are sending and receiving nodes, these are only known to be positions from the outside; as a result, users of our class cannot call any method other than getElement().
+- the Node class is declared as private, to maintain proper encapsulation.
+- All of the public methods of the positional list rely on the `Position` type, so although we know we are sending and receiving nodes, these are only known to be positions from the outside; as a result, users of our class cannot call any method other than getElement().
 
 
 
