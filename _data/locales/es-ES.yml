@@ -1,0 +1,78 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Entrada
+  category: Categoría
+  tag: Etiqueta
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Inicio
+  categories: Categorías
+  tags: Etiquetas
+  archives: Archivo
+  about: Sobre mi
+
+# the text displayed in the search bar & search results
+search:
+  hint: Buscar
+  cancel: Cancelar
+  no_results: ¡Oops! No se encuentran resultados.
+
+panel:
+  lastmod: Actualizado recientemente
+  trending_tags: Etiquetas populares
+  toc: Contenido
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: This post is licensed under :LICENSE_NAME by the author.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Some rights reserved.
+  verbose: >-
+    Except where otherwise noted, the blog posts on this site are licensed
+    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+
+meta: Powered by :PLATFORM with :THEME theme.
+
+not_found:
+  statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
+  hint_template: :HEAD_BAK to try finding it again, or search for it on the :ARCHIVES_PAGE.
+  head_back: Head back Home
+  archives_page: Archives page
+
+# ----- Posts related labels -----
+
+post:
+  written_by: Por
+  posted: Publicado
+  updated: Actualizado
+  words: palabras
+  pageview_measure: visitas
+  read_time:
+    unit: min
+    prompt: ' de lectura'
+  relate_posts: Lecturas adicionales
+  share: Compartir
+  button:
+    next: Nuevo
+    previous: Anterior
+    copy_code:
+      succeed: ¡Copiado!
+    share_link:
+      title: Copiar enlace
+      succeed: ¡Enlace copiado!
+  # pinned prompt of posts list on homepage
+  pin_prompt: Fijado
+
+# categories page
+categories:
+  category_measure: categorias
+  post_measure: entradas
