@@ -23,7 +23,30 @@
 
   {% endif %}
 
-  {% seo title=false %}
+  {% capture seo_tags %}
+    {% seo title=false %}
+  {% endcapture %}
+
+  {% if site.img_cdn and seo_tags contains 'og:image' %}
+    {% assign properties = 'og:image,twitter:image' | split: ',' %}
+
+    {% for prop in properties %}
+      {% if site.img_cdn contains '//' %}
+      <!-- `site.img_cdn` cross-origin URL -->
+        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{% endcapture %}
+        {% capture replacement %}<meta property="{{ prop }}" content="{{ site.img_cdn }}{% endcapture %}
+      {% else %}
+        <!-- `site.img_cdn` is a local file path -->
+        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{{ site.baseurl }}{% endcapture %}
+        {% assign replacement = target | append: site.img_cdn %}
+      {% endif %}
+
+      {% assign seo_tags = seo_tags | replace: target, replacement %}
+
+    {% endfor %}
+  {% endif %}
+
+  {{ seo_tags }}
 
   <title>
   {%- unless page.layout == "home" -%}

@@ -11,11 +11,11 @@ tail_includes:
 
 {% include lang.html %}
 
-{% if page.image.src %}
+{% if page.image.path %}
   {% capture bg %}
     {% unless page.image.no_bg %}{{ 'bg' }}{% endunless %}
   {% endcapture %}
-  <img src="{{ page.image.src }}" class="preview-img {{ bg | strip }}"
+  <img src="{{ page.image.path }}" class="preview-img {{ bg | strip }}"
       alt="{{ page.image.alt | default: "Preview Image" }}"
 
       {% if page.image.width %}
