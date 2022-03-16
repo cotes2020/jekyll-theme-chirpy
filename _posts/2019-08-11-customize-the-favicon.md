@@ -1,8 +1,6 @@
 ---
 title: Customize the Favicon
-author:
-  name: Cotes Chung
-  link: https://github.com/cotes2020
+author: cotes
 date: 2019-08-11 00:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [favicon]

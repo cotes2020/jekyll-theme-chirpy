@@ -1,8 +1,6 @@
 ---
 title: Writing a New Post
-author:
-  name: Cotes Chung
-  link: https://github.com/cotes2020
+author: cotes
 date: 2019-08-08 14:10:00 +0800
 categories: [Blogging, Tutorial]
 tags: [writing]
@@ -50,13 +48,26 @@ tags: [bee]
 
 The author information of the post usually does not need to be filled in the _Front Matter_ , they will be obtained from variables `social.name` and the first entry of `social.links` of the configuration file by default. But you can also override it as follows:
 
+Add author information in `_data/authors.yml` (If your website doesn't have this file, don't hesitate to create one.)
+
+```yaml
+<author_id>:
+  name: <full name>
+  twitter: <twitter_of_author>
+  url: <homepage_of_author>
+```
+{: file="_data/authors.yml" }
+
+And then set up the custom author in the post's YAML block:
+
 ```yaml
 ---
-author:
-  name: Full Name
-  link: https://example.com
+author: <author_id>
 ---
 ```
+
+> Another benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
+{: .prompt-info }
 
 ## Table of Contents
 
