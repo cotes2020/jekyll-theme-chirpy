@@ -14,7 +14,7 @@ tabs:
   categories: Categorías
   tags: Etiquetas
   archives: Archivo
-  about: Sobre mi
+  about: Acerca de
 
 # the text displayed in the search bar & search results
 search:
@@ -30,23 +30,23 @@ panel:
 copyright:
   # Shown at the bottom of the post
   license:
-    template: This post is licensed under :LICENSE_NAME by the author.
+    template: Esta entrada está licenciada bajo :LICENSE_NAME por el autor.
     name: CC BY 4.0
     link: https://creativecommons.org/licenses/by/4.0/
 
   # Displayed in the footer
-  brief: Some rights reserved.
+  brief: Algunos derechos reservados.
   verbose: >-
-    Except where otherwise noted, the blog posts on this site are licensed
-    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+    Salvo que se indique explícitamente, las entradas de este blog están licenciadas
+    bajo la Creative Commons Attribution 4.0 International (CC BY 4.0) License por el autor.
 
-meta: Powered by :PLATFORM with :THEME theme.
+meta: Hecho con :PLATFORM usando el tema :THEME.
 
 not_found:
-  statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
-  hint_template: :HEAD_BAK to try finding it again, or search for it on the :ARCHIVES_PAGE.
-  head_back: Head back Home
-  archives_page: Archives page
+  statment: Lo sentimos, hemos perdido esa URL o apunta a algo que no existe.
+  hint_template: :HEAD_BAK para intentar de nuevo, o búscala en la :ARCHIVES_PAGE.
+  head_back: Vuelve a inicio
+  archives_page: Página de archivo
 
 # ----- Posts related labels -----
 
