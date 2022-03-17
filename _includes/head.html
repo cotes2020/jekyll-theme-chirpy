@@ -32,7 +32,7 @@
 
     {% for prop in properties %}
       {% if site.img_cdn contains '//' %}
-      <!-- `site.img_cdn` cross-origin URL -->
+        <!-- `site.img_cdn` is a cross-origin URL -->
         {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{% endcapture %}
         {% capture replacement %}<meta property="{{ prop }}" content="{{ site.img_cdn }}{% endcapture %}
       {% else %}
