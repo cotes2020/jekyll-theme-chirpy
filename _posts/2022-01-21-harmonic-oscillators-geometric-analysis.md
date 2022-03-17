@@ -75,7 +75,7 @@ For readers who might be interested, the above plot can be generated in [SageMat
 ```python
 x, y = var('x y')
 plot = plot_vector_field((y, -x), (x,-3,3), (y,-3,3))
-show(plot, aspect_ratio=1)
+plot.show(aspect_ratio=1)
 ```
 {: file="Sage" }
 
