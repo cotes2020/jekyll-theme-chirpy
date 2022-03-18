@@ -5,6 +5,7 @@ layout: default
 
 {% include lang.html %}
 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 <div class="row">
@@ -14,12 +15,6 @@ layout: default
     <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
 
       <h1 data-toc-skip>{{ page.title }}</h1>
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<span id="busuanzi_container_site_pv">Read by<span id="busuanzi_value_site_pv"></span> people</span>
-
-
 
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published date and author -->
@@ -42,6 +37,12 @@ layout: default
 
           <!-- read time -->
           {% include read-time.html content=content prompt=true %}
+
+          
+          <span id="pv" class="pageviews">
+
+<span id="busuanzi_container_site_pv">read by <span id="busuanzi_value_site_pv"></span> people</span>
+          </span>
 
           <!-- page views -->
           {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
