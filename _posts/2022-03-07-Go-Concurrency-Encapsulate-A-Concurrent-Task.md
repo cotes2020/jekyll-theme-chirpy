@@ -1,5 +1,5 @@
 ---
-title: Go Concurrency: Encapsulate A Concurrent Task
+title: Go Concurrency - Encapsulate A Concurrent Task
 author: Hulua
 date: 2021-03-17 20:55:00 +0800
 categories: [Go, Concurrency]
@@ -43,7 +43,7 @@ func main() {
 
 ```
 
-Let's run the a
+Let's run the above Go program:
 ```console
 $ go run test.go 
 I am doing the task, please wait
