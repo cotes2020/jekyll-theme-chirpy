@@ -172,12 +172,6 @@ jekyll-archives:
     tag: /tags/:name/
     category: /categories/:name/
 
-1
-2
-3
-4
-5
-6
 google_analytics:
   id: 'G-SL395S6583'   # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
