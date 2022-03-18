@@ -4,6 +4,7 @@ author: Hulua
 date: 2021-03-17 20:55:00 +0800
 categories: [Go, Concurrency]
 tags: [go, concurrency, goroutine]
+comments: true
 ---
 
 ## Introduction
