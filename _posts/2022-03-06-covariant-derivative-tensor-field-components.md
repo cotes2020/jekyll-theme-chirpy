@@ -5,7 +5,7 @@ categories: [tensor calculus]
 tags: [covariant derivatives, tensors]
 ---
 
-Let us find the covariant derivative of a rank $$(p, q)$$ tensor tensor $$\pmb{\phi}$$ by applying the Leibniz law repeatedly:
+Let us find the covariant derivative of a rank $$(p, q)$$ tensor field $$\pmb{\phi}$$ by applying the Leibniz law repeatedly:
 
 $$\nabla_\rho \left( \pmb{\phi} \otimes \pmb{\psi} \right) = \left( \nabla_\rho \pmb{\phi} \right) \otimes \pmb{\psi} + \pmb{\phi} \otimes \left( \nabla_\rho \pmb{\psi} \right)$$
 
