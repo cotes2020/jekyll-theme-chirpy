@@ -1283,7 +1283,7 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
 - When an element is inserted or deleted somewhere in the list, we can **loop through** the array to update the index variable stored in all later positions in the list that are shifted during the update.
 
 **Efficiency Trade-Offs with an Array-Based Sequence**
-- the addFirst, addBefore, addAfter, and remove methods take **O(n)** time, because we have to shift position objects to make room for the new position or to fill in the hole created by the removal of the old position (just as in the insert and remove methods based on index). 
+- the addFirst, addBefore, addAfter, and remove methods take **O(n)** time, because we have to shift position objects to make room for the new position or to fill in the hole created by the removal of the old position (just as in the insert and remove methods based on index).
 - All the other position-based methods take **O(1)** time.
 
 
