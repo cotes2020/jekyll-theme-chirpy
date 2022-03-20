@@ -1,6 +1,7 @@
 package list;
 
-public interface PositionList<E> {
+/** An interface for positional lists. */
+public interface PositionalList<E> {
     int size( );
     boolean isEmpty( );
     Position<E> first( );
@@ -13,4 +14,4 @@ public interface PositionList<E> {
     Position<E> addAfter(Position<E> p, E e) throws IllegalArgumentException;
     E set(Position<E> p, E e) throws IllegalArgumentException;
     E remove(Position<E> p) throws IllegalArgumentException;
-}
+  }
