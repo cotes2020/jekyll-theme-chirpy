@@ -50,5 +50,44 @@ I am doing the task, please wait
 Received value from concurrent task: 99
 ```
 
+The above example encapsulate a single task and created a channel to return the result. In most cases, we take advantage of concurrency to split a large computation task and use a few subtasks to accomplish the large task. In this case, we may use a single channel to aggregate results from subtasks. Let's look another example:
+
+
+```go
+package main
+
+import "fmt"
+import "time"
+
+func subTask(id int, resChan chan int) {
+    fmt.Printf("This is sub task %d, now doing the job..\n",id)
+    time.Sleep(time.Second * 3)
+    res := id * 10 //Just assume any computation result
+    resChan <- res
+}
+
+func main() {
+    resChan := make(chan int)
+    for i:=0; i<3; i++ { //assume we have 3 subtask to do the job
+        go subTask(i, resChan)
+    }
+    totalSum := 0
+    for i:=0; i<3; i++ {//Collect result from the 3 subtask
+        totalSum += <-resChan
+    }
+    fmt.Printf("Done at main: total %d\n", totalSum)
+}
+```
+
+```console
+$ go run test.go 
+This is sub task 2, now doing the job..
+This is sub task 0, now doing the job..
+This is sub task 1, now doing the job..
+Done at main: total 30
+```
+
+In this example, we launched three subtasks for a specific task, and the results of the subtasks are sent to a channel. Lastly, the results are agggregated (added) as the final results.
+
 ## Summary
-See, it is very simple to encapsulte a computation task. The main idea is to use Go routine to run the task, and use a channel to transmit the result returned from the task.
+See, it is very simple to write concurrent program with Go.  For the first example, the main idea is to use Go routine to run the task, and use a channel to transmit the result returned from the task. For the second example, we use subtasks and their results are sent to a shared channel for final aggregation. Unlike other programming languages, basically we did not explicicty create any threads. That is the most attractive feature with Go.
