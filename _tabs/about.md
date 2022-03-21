@@ -4,5 +4,11 @@ icon: fas fa-info-circle
 order: 4
 ---
 
+## A few facts about me:
 
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+- Computer Science PhD
+- Worked in the area of machine learning (reinforcement learning)
+- Now working in the area of cloud computing
+- Intersted in kubernetes and Go
+
+
