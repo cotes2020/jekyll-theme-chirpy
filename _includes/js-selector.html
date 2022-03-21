@@ -93,7 +93,7 @@
   <script defer src="{{ '/app.js' | relative_url }}"></script>
 
   <!-- GA -->
-  {% if site.google_analytics.id != empty and site.google_analytics.id %}
+  {% if site.google_analytics.id != empty and site.google_analytics.id and jekyll.environment == 'production' %}
     {% include google-analytics.html %}
   {% endif %}
 
