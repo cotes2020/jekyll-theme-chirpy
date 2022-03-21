@@ -34,16 +34,16 @@ github:
   username: yywe             # change to your github username
 
 twitter:
-  username: wei_yongyong            # change to your twitter username
+  username:             # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Yongyong Wei
+  name: Hulua
   email: stweiyy@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/wei_yongyong      # change to your twitter homepage
+    - https://twitter.com/#      # change to your twitter homepage
     - https://github.com/yywe       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -55,7 +55,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 
 google_analytics:
-  id: ''              # fill in your Google Analytics ID
+  id: 'G-SL395S6583'              # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
@@ -171,11 +171,4 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
-
-google_analytics:
-  id: 'G-SL395S6583'   # fill in your Google Analytics ID
-  # Google Analytics pageviews report settings
-  pv:
-    proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
-    cache_path:       # the local PV cache data, friendly to visitors from GFW region
 
