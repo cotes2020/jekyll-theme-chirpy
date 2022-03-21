@@ -1,5 +1,5 @@
 ---
-title: Go Concurrency - Encapsulate A Concurrent Task
+title: Go Concurrency - Write Concurrent Programs
 author: Hulua
 date: 2021-03-17 20:55:00 +0800
 categories: [Go, Concurrency]
@@ -49,6 +49,8 @@ $ go run test.go
 I am doing the task, please wait
 Received value from concurrent task: 99
 ```
+
+## Split a task with subtasks
 
 The above example encapsulate a single task and created a channel to return the result. In most cases, we take advantage of concurrency to split a large computation task and use a few subtasks to accomplish the large task. In this case, we may use a single channel to aggregate results from subtasks. Let's look another example:
 
