@@ -23,7 +23,7 @@ We had learnt in the previous post that passing only one argument to a bilinear 
 
 $$\Phi^I_{\phantom{I} J} \: B^{J \phantom{I} L \phantom{K} M}_{\phantom{J} I \phantom{L} K \phantom{M} N} = \Lambda^M_{\phantom{M} K} \Lambda^{L}_{\phantom{L} N}$$
 
-Recall that we are using the [tuple index notation](https://booodaness.github.io/tempus_spatium/2021/10/bilinear-products.html#components), where capital letters for indices represent tuples, e.g. $$I \equiv i_1 i_2 \dots i_p$$. The only exception to this rule lies in the notation for the Jacobian, where $$\Lambda^{I^\prime}_{\phantom{I^\prime} I} = \Lambda^{i_1^\prime}_{\phantom{i_1^\prime} i_1} \Lambda^{i_2^\prime}_{\phantom{i_2^\prime} i_2} \dots \Lambda^{i_p^\prime}_{\phantom{i_p^\prime} i_p}$$.
+Recall that we are using the [tuple index notation]({% post_url 2021-10-18-bilinear-products %}#components), where capital letters for indices represent tuples, e.g. $$I \equiv i_1 i_2 \dots i_p$$. The only exception to this rule lies in the notation for the Jacobian, where $$\Lambda^{I^\prime}_{\phantom{I^\prime} I} = \Lambda^{i_1^\prime}_{\phantom{i_1^\prime} i_1} \Lambda^{i_2^\prime}_{\phantom{i_2^\prime} i_2} \dots \Lambda^{i_p^\prime}_{\phantom{i_p^\prime} i_p}$$.
 
 <a name="bilinear_product_linear_map_mixed_indices"></a>
 

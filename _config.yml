@@ -5,7 +5,7 @@ theme: jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
-baseurl: '/tempus_spatium'
+baseurl: '/tempus-spatium'
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -30,7 +30,7 @@ description: >-                                                              # u
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://booodaness.github.io'
-repository: 'https://github.com/Booodaness/tempus_spatium'
+repository: 'https://github.com/Booodaness/tempus-spatium'
 default_branch: 'main'
 
 github:
@@ -86,7 +86,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'https://raw.githubusercontent.com/Booodaness/tempus_spatium/master/assets/img/site/avatar.png'
+avatar: 'https://raw.githubusercontent.com/Booodaness/tempus-spatium/master/assets/img/site/avatar.png'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
@@ -102,7 +102,7 @@ comments:
     issue_term:   # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: Booodaness/tempus_spatium            # <gh-username>/<repo>
+    repo: Booodaness/tempus-spatium            # <gh-username>/<repo>
     repo_id: R_kgDOGikn3Q
     category: Comments
     category_id: DIC_kwDOGikn3c4CATww
