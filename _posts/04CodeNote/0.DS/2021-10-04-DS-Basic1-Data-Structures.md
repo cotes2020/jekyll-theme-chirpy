@@ -1,109 +1,122 @@
 ---
 title: Data Structures - Basic 1 - Data Structures
-# author: Grace JyL
+## author: Grace JyL
 date: 2021-10-10 11:11:11 -0400
 description:
 excerpt_separator:
 categories: [04CodeNote, DS]
 tags:
 math: true
-# pin: true
+## pin: true
 toc: true
-# image: /assets/img/sample/devices-mockup.png
+## image: /assets/img/sample/devices-mockup.png
 ---
 
 - [Data Structures - Basic 1 - Data Structures](#data-structures---basic-1---data-structures)
-- [Linear Structures](#linear-structures)
-- [String](#string)
-  - [String **class**](#string-class)
-  - [StringBuilder **class**](#stringbuilder-class)
-- [Arrays 数组 (fixed size)](#arrays-数组-fixed-size)
-    - [Create Array](#create-array)
-      - [One-Dimensional Arrays](#one-dimensional-arrays)
-      - [Multidimensional Arrays](#multidimensional-arrays)
-      - [Instantiating an Array in Java](#instantiating-an-array-in-java)
-    - [method](#method)
-    - [Arrays of Objects](#arrays-of-objects)
-    - [Java Array Error](#java-array-error)
-    - [Class Objects for Arrays](#class-objects-for-arrays)
-    - [Array Members](#array-members)
-    - [Arrays Types, Allowed Element Types](#arrays-types-allowed-element-types)
-    - [Cloning of arrays](#cloning-of-arrays)
-- [List **Interface**](#list-interface)
-  - [differences between ArrayList and LinkedList in Java](#differences-between-arraylist-and-linkedlist-in-java)
-  - [ArrayList **class**](#arraylist-class)
-    - [ArrayList (Simple array-based list) (fixed-capacity)](#arraylist-simple-array-based-list-fixed-capacity)
-    - [Dynamic Arrays (fixed-capacity)](#dynamic-arrays-fixed-capacity)
-- [Positional Lists **Interface**](#positional-lists-interface)
-  - [Abstract Data Type](#abstract-data-type)
-    - [java](#java)
-    - [LinkedPositionalList **class** (Doubly Linked List for Position)](#linkedpositionallist-class-doubly-linked-list-for-position)
-    - [LinkedPositionalList **class** (Array for Position)](#linkedpositionallist-class-array-for-position)
-- [Iterators](#iterators)
-- [LinkedList (array-based structure) (without fixed size) **class**](#linkedlist-array-based-structure-without-fixed-size-class)
-  - [basicc](#basicc)
-  - [Abstract Data Type](#abstract-data-type-1)
-    - [Unordered List - Abstract Data Type](#unordered-list---abstract-data-type)
-    - [singly linked list](#singly-linked-list)
-    - [Circularly Linked Lists](#circularly-linked-lists)
-    - [doubly linked list](#doubly-linked-list)
-  - [general method](#general-method)
-    - [Equivalence Testing](#equivalence-testing)
-    - [Cloning Data Structures](#cloning-data-structures)
-  - [Node Class](#node-class)
-  - [unordered Linked Lists: Unordered List](#unordered-linked-lists-unordered-list)
-      - [Unordered List Class <- unordered linked list (new)  (!!!!!!!!!!!!!)](#unordered-list-class---unordered-linked-list-new--)
-        - [`is_empty()`](#is_empty)
-        - [`add()`](#add)
-        - [`size`, `search`, and `remove`](#size-search-and-remove)
-          - [`size()`](#size)
-          - [`search(item):`](#searchitem)
-          - [`remove()`](#remove)
-        - [`pop()`](#pop)
-        - [`append()`](#append)
-        - [`insert()`](#insert)
-        - [`index()`](#index)
-  - [Ordered List - Abstract Data Type](#ordered-list---abstract-data-type)
-      - [Ordered List in py (!!!!!!!!!!!!!)](#ordered-list-in-py-)
-- [Stack](#stack)
-  - [java](#java-1)
-    - [Array-Based Stack](#array-based-stack)
-      - [Garbage Collection in Java](#garbage-collection-in-java)
-      - [Drawback of Array-Based Stack](#drawback-of-array-based-stack)
-    - [Singly Linked List](#singly-linked-list-1)
-      - [The Adapter Pattern](#the-adapter-pattern)
-  - [Python](#python)
-    - [code](#code)
-      - [Stack <- list  (!!!!!!!!!!!!!)](#stack---list--)
-      - [stack in java](#stack-in-java)
-      - [Stack <- Linked List](#stack---linked-list)
-      - [Stack Class in Java](#stack-class-in-java)
-      - [reverse char in string](#reverse-char-in-string)
-      - [simple Balanced Parentheses](#simple-balanced-parentheses)
-      - [Balanced Symbols (A General Case)](#balanced-symbols-a-general-case)
-      - [convert-integer-into-different-base](#convert-integer-into-different-base)
-      - [Infix, Prefix, and Postfix Expressions](#infix-prefix-and-postfix-expressions)
-- [Queue](#queue)
-  - [Java](#java-2)
-    - [The java.util.Queue Interface in Java](#the-javautilqueue-interface-in-java)
-    - [Array-Based Queue](#array-based-queue)
-    - [Circularly Array-Based Queue](#circularly-array-based-queue)
-    - [Singly Linked List for Queue](#singly-linked-list-for-queue)
-    - [circularly linked list for Queue](#circularly-linked-list-for-queue)
-  - [python](#python-1)
-    - [queue as a list  (!!!!!!!!!!!!!)](#queue-as-a-list--)
-    - [queue in java](#queue-in-java)
-      - [Simulation: Printing Tasks](#simulation-printing-tasks)
-- [Deque (Double-Ended Queues)](#deque-double-ended-queues)
-  - [Abstract Data Type](#abstract-data-type-2)
-    - [Java](#java-3)
-      - [Circular Array for Deque](#circular-array-for-deque)
-      - [Doubly Linked List for Deque](#doubly-linked-list-for-deque)
-    - [python](#python-2)
-      - [dequeue as a list in py (!!!!!!!!!!!!!)](#dequeue-as-a-list-in-py-)
-      - [Palindrome-Checker 回文 对称的单词](#palindrome-checker-回文-对称的单词)
-- [Hashing](#hashing)
-- [Graph](#graph)
+- [**Linear Structures**](#linear-structures)
+  - [String](#string)
+    - [String **class**](#string-class)
+    - [StringBuilder **class**](#stringbuilder-class)
+  - [Arrays 数组 (fixed size)](#arrays-数组-fixed-size)
+      - [Create Array](#create-array)
+        - [One-Dimensional Arrays](#one-dimensional-arrays)
+        - [Multidimensional Arrays](#multidimensional-arrays)
+        - [Instantiating an Array in Java](#instantiating-an-array-in-java)
+      - [method](#method)
+      - [Arrays of Objects](#arrays-of-objects)
+      - [Java Array Error](#java-array-error)
+      - [Class Objects for Arrays](#class-objects-for-arrays)
+      - [Array Members](#array-members)
+      - [Arrays Types, Allowed Element Types](#arrays-types-allowed-element-types)
+      - [Cloning of arrays](#cloning-of-arrays)
+  - [List **Interface**](#list-interface)
+    - [differences between ArrayList and LinkedList in Java](#differences-between-arraylist-and-linkedlist-in-java)
+    - [ArrayList **class**](#arraylist-class)
+      - [ArrayList (Simple array-based list) (fixed-capacity)](#arraylist-simple-array-based-list-fixed-capacity)
+      - [Dynamic Arrays (fixed-capacity)](#dynamic-arrays-fixed-capacity)
+  - [Positional Lists **Interface**](#positional-lists-interface)
+    - [Abstract Data Type](#abstract-data-type)
+      - [java](#java)
+      - [LinkedPositionalList **class** (Doubly Linked List for Position)](#linkedpositionallist-class-doubly-linked-list-for-position)
+      - [LinkedPositionalList **class** (Array for Position)](#linkedpositionallist-class-array-for-position)
+    - [Case Study: Maintaining Access Frequencies - Favorites list](#case-study-maintaining-access-frequencies---favorites-list)
+      - [Using a Sorted List](#using-a-sorted-list)
+      - [Using the Composition Pattern](#using-the-composition-pattern)
+      - [Using a List with the Move-to-Front Heuristic](#using-a-list-with-the-move-to-front-heuristic)
+      - [Implementing the Move-to-Front Heuristic in Java](#implementing-the-move-to-front-heuristic-in-java)
+  - [LinkedList (array-based structure) (without fixed size) **class**](#linkedlist-array-based-structure-without-fixed-size-class)
+    - [basicc](#basicc)
+    - [Abstract Data Type](#abstract-data-type-1)
+      - [Unordered List - Abstract Data Type](#unordered-list---abstract-data-type)
+      - [singly linked list](#singly-linked-list)
+      - [Circularly Linked Lists](#circularly-linked-lists)
+      - [doubly linked list](#doubly-linked-list)
+    - [general method](#general-method)
+      - [Equivalence Testing](#equivalence-testing)
+      - [Cloning Data Structures](#cloning-data-structures)
+    - [Node Class](#node-class)
+    - [unordered Linked Lists: Unordered List](#unordered-linked-lists-unordered-list)
+        - [Unordered List Class <- unordered linked list (new)  (!!!!!!!!!!!!!)](#unordered-list-class---unordered-linked-list-new--)
+          - [`is_empty()`](#is_empty)
+          - [`add()`](#add)
+          - [`size`, `search`, and `remove`](#size-search-and-remove)
+          - [`pop()`](#pop)
+          - [`append()`](#append)
+          - [`insert()`](#insert)
+          - [`index()`](#index)
+    - [Ordered List - Abstract Data Type](#ordered-list---abstract-data-type)
+        - [Ordered List in py (!!!!!!!!!!!!!)](#ordered-list-in-py-)
+  - [Iterators **Interface**](#iterators-interface)
+  - [Iterable **Interface**](#iterable-interface)
+    - [Implementing Iterators](#implementing-iterators)
+      - [iterators for ArrayList](#iterators-for-arraylist)
+      - [iterators for LinkedPositionalList](#iterators-for-linkedpositionallist)
+  - [Collection **Interface**](#collection-interface)
+    - [List Iterators in Java](#list-iterators-in-java)
+    - [Comparison to Our Positional List ADT](#comparison-to-our-positional-list-adt)
+    - [List-Based Algorithms in the Java Collections Framework](#list-based-algorithms-in-the-java-collections-framework)
+      - [Converting Lists into Arrays](#converting-lists-into-arrays)
+      - [Converting Arrays into Lists](#converting-arrays-into-lists)
+  - [Stack](#stack)
+    - [java](#java-1)
+      - [Array-Based Stack](#array-based-stack)
+        - [Garbage Collection in Java](#garbage-collection-in-java)
+        - [Drawback of Array-Based Stack](#drawback-of-array-based-stack)
+      - [Singly Linked List](#singly-linked-list-1)
+        - [The Adapter Pattern](#the-adapter-pattern)
+    - [Python](#python)
+      - [code](#code)
+        - [Stack <- list  (!!!!!!!!!!!!!)](#stack---list--)
+        - [stack in java](#stack-in-java)
+        - [Stack <- Linked List](#stack---linked-list)
+        - [Stack Class in Java](#stack-class-in-java)
+        - [reverse char in string](#reverse-char-in-string)
+        - [simple Balanced Parentheses](#simple-balanced-parentheses)
+        - [Balanced Symbols (A General Case)](#balanced-symbols-a-general-case)
+        - [convert-integer-into-different-base](#convert-integer-into-different-base)
+        - [Infix, Prefix, and Postfix Expressions](#infix-prefix-and-postfix-expressions)
+  - [Queue](#queue)
+    - [Java](#java-2)
+      - [The java.util.Queue Interface in Java](#the-javautilqueue-interface-in-java)
+      - [Array-Based Queue](#array-based-queue)
+      - [Circularly Array-Based Queue](#circularly-array-based-queue)
+      - [Singly Linked List for Queue](#singly-linked-list-for-queue)
+      - [circularly linked list for Queue](#circularly-linked-list-for-queue)
+    - [python](#python-1)
+      - [queue as a list  (!!!!!!!!!!!!!)](#queue-as-a-list--)
+      - [queue in java](#queue-in-java)
+        - [Simulation: Printing Tasks](#simulation-printing-tasks)
+  - [Deque (Double-Ended Queues)](#deque-double-ended-queues)
+    - [Abstract Data Type](#abstract-data-type-2)
+      - [Java](#java-3)
+        - [Circular Array for Deque](#circular-array-for-deque)
+        - [Doubly Linked List for Deque](#doubly-linked-list-for-deque)
+      - [python](#python-2)
+        - [dequeue as a list in py (!!!!!!!!!!!!!)](#dequeue-as-a-list-in-py-)
+        - [Palindrome-Checker 回文 对称的单词](#palindrome-checker-回文-对称的单词)
+  - [Hashing](#hashing)
+- [**Nonlinear data structures**](#nonlinear-data-structures)
+  - [Graph](#graph)
 
 
 ---
@@ -120,11 +133,47 @@ source:
 
 ![Screen Shot 2022-03-12 at 11.19.28](https://i.imgur.com/E5U3yIk.png)
 
+- `interface` is a type definition that includes public declarations of various methods, an interface cannot include definitions for any of those methods.
 
+
+
+
+- `abstract class` may define concrete implementations for **some of its methods**, while leaving other abstract methods without definition.
+  - An abstract class is designed to serve as a base class, through inheritance, for one or more concrete implementations of an interface.
+  - When some of the functionality of an interface is implemented in an abstract class, less work remains to complete a concrete implementation.
+
+```java
+// interface
+public interface Tree<E> extends Iterable<E> {
+    Position<E> root();
+    Position<E> parent(Position<E> p) throws IllegalStateException;
+    Iterable<Position<E>> children(Position<E> p) throws IllegalStateException;
+
+    int numChildren(Position<E> p) throws IllegalStateException;
+    boolean isInternal(Position<E> p) throws IllegalStateException;
+    boolean isExternal(Position<E> p) throws IllegalStateException;
+    boolean isRoot(Position<E> p) throws IllegalStateException;
+
+    int size();
+    boolean isEmpty();
+
+    Iterator<E> iterator();
+    Iterable<Position<E>> positions();
+}
+
+// abstract class
+public abstract class AbstractTree<E> implements Tree<E> {
+    public boolean isInternal(Position<E> p) {return numChildren(p)>0;}
+    public boolean isExternal(Position<E> p) {return numChildren(p)<0;}
+    public boolean isRoot(Position<E> p) {return p==root();}
+    public boolean isEmpty(){return size()==0;}
+}
+```
 
 ---
 
-# Linear Structures
+# **Linear Structures**
+
 `Stacks, queues, deques, lists`
 - examples of data collections whose items are **ordered** depending on `how they are added or removed`.
 - Once an item is added, it stays in that position relative to the other elements that came before and came after it.
@@ -184,13 +233,13 @@ PositionalList:
 
 
 
-# String
+## String
 
 two algorithms for composing a long string
 
 ---
 
-## String **class**
+### String **class**
 
 
 **String**
@@ -238,7 +287,7 @@ two algorithms for composing a long string
 
 
 
-## StringBuilder **class**
+### StringBuilder **class**
 
 **StringBuilder**
 - to support more efficient editing of character strings
@@ -263,7 +312,7 @@ two algorithms for composing a long string
 
 ---
 
-# Arrays 数组 (fixed size)
+## Arrays 数组 (fixed size)
 
 - [https://www.geeksforgeeks.org/arrays-in-java/](https://www.geeksforgeeks.org/arrays-in-java/)
 - [https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1143/](https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1143/)
@@ -354,10 +403,10 @@ An array can contain `primitives (int, char, etc.)` and `object (non-primitive) 
 ---
 
 
-### Create Array
+#### Create Array
 
 
-#### One-Dimensional Arrays
+##### One-Dimensional Arrays
 
 An array declaration has two components: the type and the name.
 - _type_
@@ -398,7 +447,7 @@ Although the first declaration establishes that intArray is an array variable, *
 
 
 
-#### Multidimensional Arrays
+##### Multidimensional Arrays
 
 
 - drawbacks.
@@ -489,7 +538,7 @@ Collection[] ca;     // array of Collection of unknown type
 
 ---
 
-#### Instantiating an Array in Java
+##### Instantiating an Array in Java
 
 When an array is `declared`, only a **reference** of an array is created.
 
@@ -545,7 +594,7 @@ where the `size` of the array and `variables` of array are already known, array 
 ---
 
 
-### method
+#### method
 
 - Because arrays are so important, Java provides a class, `java.util.Arrays`, with a number of built-in static methods for performing common tasks on arrays.
 
@@ -597,7 +646,7 @@ Space
 
 ---
 
-### Arrays of Objects
+#### Arrays of Objects
 
 An array of objects is created like an array of primitive type data items in the following way.
 
@@ -644,7 +693,7 @@ public class GFG {
 
 ---
 
-### Java Array Error
+#### Java Array Error
 
 JVM throws **ArrayIndexOutOfBoundsException** to indicate that the array has been accessed with an illegal index. The index is either negative or greater than or equal to the size of an array.
 ```java
@@ -655,7 +704,7 @@ Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 2 at GFG.ma
 
 ---
 
-### Class Objects for Arrays
+#### Class Objects for Arrays
 
 Every array has an associated Class object, shared with all other arrays with the same component type.
 
@@ -685,7 +734,7 @@ class Test {
 
 ---
 
-### Array Members
+#### Array Members
 
 Now, as you know that arrays are objects of a class, and a direct superclass of arrays is a class Object. The members of an array type are all of the following:
 
@@ -696,7 +745,7 @@ Now, as you know that arrays are objects of a class, and a direct superclass of 
 
 ---
 
-### Arrays Types, Allowed Element Types
+#### Arrays Types, Allowed Element Types
 
 Array Types
 - Primitive Type Arrays: Any type which can be implicitly promoted to declared type.
@@ -709,7 +758,7 @@ Array Types
 ---
 
 
-### Cloning of arrays
+#### Cloning of arrays
 
 
 **single-dimensional array**
@@ -754,7 +803,7 @@ System.out.println(intArray[0] == cloneArray[0]); // true
 
 
 
-# List **Interface**
+## List **Interface**
 
 
 - designing a single abstraction that is well suited for efficient implementation with either an array or a linked list is challenging, given the very different nature of these two fundamental data structures.
@@ -789,7 +838,7 @@ public interface List<E> {
 
 
 
-## differences between ArrayList and LinkedList in Java
+### differences between ArrayList and LinkedList in Java
 
 **ArrayList**
 1. This class uses a **dynamic array** to store the elements in it. With the introduction of `generics`, this class supports the storage of all types of objects.
@@ -830,7 +879,7 @@ public interface List<E> {
 
 
 
-## ArrayList **class**
+### ArrayList **class**
 
 - An obvious choice for implementing the list ADT is to use an **array** A, where `A[i]` stores (a reference to) the element with index i.
 
@@ -840,7 +889,7 @@ public interface List<E> {
 
 
 
-### ArrayList (Simple array-based list) (fixed-capacity)
+#### ArrayList (Simple array-based list) (fixed-capacity)
 
 ![Screen Shot 2022-03-12 at 12.47.15](https://i.imgur.com/idtRDsF.png)
 
@@ -887,7 +936,7 @@ public class ArrayList<E> implements List<E> { // instance variables {
     public boolean isEmpty() { return size == 0; }
 
     // utility method
-    // /∗∗ Checks whether the given index is in the range [0, n-1]. ∗/
+    // /* Checks whether the given index is in the range [0, n-1]. */
     protected void checkIndex(int i, int n) throws IndexOutOfBoundsException {
         if (i < 0 || i >= n) throw new IndexOutOfBoundsException("Illegal index: " + i);
     }
@@ -897,14 +946,14 @@ public class ArrayList<E> implements List<E> { // instance variables {
         return data[i];
     }
 
-    // /∗∗ Replaces the element at index i with e, and returns the replaced element. ∗/
+    // /** Replaces the element at index i with e, and returns the replaced element. */
     public E set(int i, E e) throws IndexOutOfBoundsException {
         checkIndex(i, size);
         E temp = data[i];
         data[i] = e;
         return temp;
     }
-    // /∗∗ Inserts element e to be at index i, shifting all subsequent elements later. ∗/
+    // /** Inserts element e to be at index i, shifting all subsequent elements later. */
     public void add(int i, E e) throws IndexOutOfBoundsException, IllegalStateException {
         checkIndex(i, size + 1);
         // not enough capacity
@@ -918,7 +967,7 @@ public class ArrayList<E> implements List<E> { // instance variables {
         size++;
     }
 
-    // /∗∗ Removes/returns the element at index i, shifting subsequent elements earlier. ∗/
+    // /** Removes/returns the element at index i, shifting subsequent elements earlier. */
     public E remove(int i) throws IndexOutOfBoundsException {
         checkIndex(i, size);
         E temp = data[i];
@@ -935,7 +984,7 @@ public class ArrayList<E> implements List<E> { // instance variables {
 ---
 
 
-### Dynamic Arrays (fixed-capacity)
+#### Dynamic Arrays (fixed-capacity)
 
 - `ArrayList`:
   - has a serious limitation; it `requires that a fixed maximum capacity` be declared, throwing an exception if attempting to add an element once full.
@@ -1004,7 +1053,7 @@ protected void resize(int capacity) {
 
 
 
-# Positional Lists **Interface**
+## Positional Lists **Interface**
 
 **Integer/Numeric indices**
 - When working with array-based sequences,
@@ -1044,12 +1093,12 @@ protected void resize(int capacity) {
 ---
 
 
-## Abstract Data Type
+### Abstract Data Type
 
 
 ---
 
-### java
+#### java
 
 ```java
 first( ):
@@ -1084,8 +1133,8 @@ public interface Position<E> {
   /**
   * Returns the element stored at this position.
   *
-  ∗ @return the stored element
-  ∗ @throws IllegalStateException if position no longer valid
+  * @return the stored element
+  * @throws IllegalStateException if position no longer valid
   */
   E getElement()throws IllegalArgumentException;
 }
@@ -1109,7 +1158,7 @@ public interface PositionList<E> {
 
 ---
 
-### LinkedPositionalList **class** (Doubly Linked List for Position)
+#### LinkedPositionalList **class** (Doubly Linked List for Position)
 
 - develop a concrete implementation of the PositionalList interface using a doubly linked list.
 
@@ -1267,7 +1316,7 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
 
 ---
 
-### LinkedPositionalList **class** (Array for Position)
+#### LinkedPositionalList **class** (Array for Position)
 
 - if we are going to implement a positional list with an array, we need a different approach.
 - Instead of storing the elements of L directly in array A, we store a new kind of position object in each cell of A.
@@ -1283,39 +1332,214 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
 - When an element is inserted or deleted somewhere in the list, we can **loop through** the array to update the index variable stored in all later positions in the list that are shifted during the update.
 
 **Efficiency Trade-Offs with an Array-Based Sequence**
-- the addFirst, addBefore, addAfter, and remove methods take **O(n)** time, because we have to shift position objects to make room for the new position or to fill in the hole created by the removal of the old position (just as in the insert and remove methods based on index). 
+- the addFirst, addBefore, addAfter, and remove methods take **O(n)** time, because we have to shift position objects to make room for the new position or to fill in the hole created by the removal of the old position (just as in the insert and remove methods based on index).
 - All the other position-based methods take **O(1)** time.
 
 
 
 
----
-
-# Iterators
-
-- a software design pattern that abstracts `the process of scanning through a sequence of elements, one element at a time.`
-- The underlying elements might be stored in a container class, streaming through a network, or generated by a series of computations.
-
-- In order to unify the treatment and syntax for iterating objects in a way that is independent from a specific organization, Java defines the java.util.Iterator inter- face with the following two methods:
-  - hasNext(): Returns true if there is at least one additional element in the sequence, and false otherwise.
-next(): Returns the next element in the sequence.
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ---
 
-# LinkedList (array-based structure) (without fixed size) **class**
+### Case Study: Maintaining Access Frequencies - Favorites list
+
+The positional list ADT is useful in a number of settings.
+
+example
+- a program that simulates a game of cards could model each person’s hand as a positional list
+- Since most people keep cards of the same suit together, inserting and `removing cards from a person’s hand` could be implemented using the methods of the positional list ADT,
+  - the positions being determined by a natural order of the suits.
+  - Likewise, a simple text editor embeds the notion of positional insertion and deletion, since such editors typically perform all updates relative to a cursor, which represents the current position in the list of characters of text being edited.
+
+- consider `maintaining a collection of elements` while keeping track of `the number of times each element is accessed`.
+  - Keeping such access counts allows us to know which elements are among the most popular.
+  - Examples of such scenarios include
+    - a Web browser that keeps track of a user’s most accessed pages,
+    - or a music collection that maintains a list of the most frequently played songs for a user.
+
+- model this with a new **favorites list** ADT that supports:
+  - `size` and `isEmpty` methods
+
+  - `access(e)`: Accesses the element e, adding it to the favorites list if it is not already present, and increments its access count.
+
+  - `remove(e)`: Removes element e from the favorites list, if present.
+
+  - `getFavorites(k)`: Returns an iterable collection of the k most accessed elements.
+
+
+
+#### Using a Sorted List
+
+approach for managing a list of favorites
+- store elements in a linked list, keeping them in nonincreasing order of access counts.
+  - We access or remove an element by searching the list from the most frequently accessed to the least frequently accessed.
+  - Reporting the k most accessed elements is easy, as they are the first k entries of the list.
+- The accessed element’s count increases by one, and so it may become larger than one or more of its preceding neighbors in the list, thereby violating the invariant.
+  - reestablish the sorted invariant using a technique similar to a single pass of the insertion-sort algorithm
+  - perform a backward traversal of the list, starting at the position of the element whose access count has increased, until locate a valid position after which the element can be relocated.
+
+
+#### Using the Composition Pattern
+
+1. define a nonpublic nested class, `Item`, that stores the element and its access count as a single instance.
+2. maintain our `favorites list` as a `PositionalList` of item instances, so that the access count for a user’s element is embedded alongside it in our representation. (An Item is never exposed to a user of a FavoritesList.)
+
+
+```java
+package list;
+
+/** Maintains a list of elements ordered according to access frequency. */
+
+public class FavoritesList<E> {
+    // ---------------- nested Item class ----------------
+    protected static class Item<E> {
+        private E value;
+        private int count = 0;
+        // /∗∗ Constructs new item with initial count of zero. ∗/
+        public Item(E val) {value = val;}
+        public int getCount() {return count;}
+        public E getValue() {return value;}
+        public void increment() {count++;}
+    }
+
+    PositionalList<Item<E>> list = new LinkedPositionalList<>(); // list of Items
+
+    public FavoritesList() {} // constructs initially empty favorites list
+
+    // nonpublic utilities
+    /** Provides shorthand notation to retrieve user's element stored at Position p. */
+    protected E value(Position<Item<E>> p) {return p.getElement().getValue();}
+    /** Provides shorthand notation to retrieve count of item stored at Position p. */
+    protected int count(Position<Item<E>> p) {return p.getElement().getCount();}
+
+    /** Returns Position having element equal to e (or null if not found). */
+    protected Position<Item<E>> findPosition(E e) {
+        Position<Item<E>> walk  = list.first();
+        while(walk!=null && e.equals((walk))) walk = list.after(walk);
+        return walk;
+    }
+
+    // /∗∗ Moves item at Position p earlier in the list based on access count. ∗/
+    protected void moveUp(Position<Item<E>> p) {
+        int cnt = count(p);
+        Position<Item<E>> walk = p;
+        while(walk!=null && count(list.before(walk))<cnt) walk = list.before(walk);
+        if(walk != p) list.addBefore(walk, list.remove(p));
+    }
+
+    // public methods
+    public int size(){return list.size();}
+    public Boolean isEmpty(){return list.isEmpty();}
+
+    // /∗∗ Accesses element e (possibly new), increasing its access count. ∗/
+    public void access(E e){
+        Position<Item<E>> p = findPosition(e);
+        if (p == null) list.addLast(new Item<E>(e));
+        p.getElement().increment();
+        moveUp(p);
+    }
+
+    // /∗∗ Removes element equal to e from the list of favorites (if found). ∗/
+    public void remove(E e){
+        Position<Item<E>> p = findPosition(e);
+        if (p != null) {
+            list.remove(p);
+        }
+    }
+
+    // /∗∗ Returns an iterable collection of the k most frequently accessed elements. ∗/
+    public Iterable<E> getFavorites(int k) throws IllegalArgumentException {
+        if (k < 0 || k > size()) throw new IllegalArgumentException("Invalid k");
+
+        PositionalList<E> result = new LinkedPositionalList<>();
+        Iterator<Item<E>> iter = list.iterator();
+        for (int j=0; j < k; j++) result.addLast(iter.next().getValue());
+        return result;
+    }
+}
+```
+
+---
+
+
+#### Using a List with the Move-to-Front Heuristic
+
+favorites list performs the `access(e) method` in time proportional to the index of e in the favorites list.
+- if e is the k th most popular element in the favorites list, then accessing it takes O(k) time.
+
+**locality of reference**
+- In many real-life access sequences (e.g., Web pages visited by a user),
+- once an element is accessed it is more likely to be accessed again in the near future. Such scenarios are said to possess **locality of reference**.
+
+**move-to-front heuristic**
+- A heuristic that attempts to take advantage of the locality of reference that is present in an access sequence is the **move-to-front heuristic**.
+- each time we access an element we move it all the way to the front of the list.
+- Our hope, of course, is that this element will be accessed again in the near future.
+
+
+**example**
+
+- a scenario in which we have n elements and the following series of n^2 accesses:
+  - element 1 is accessed n times
+  - element 2 is accessed n times
+  - ···
+  - element n is accessed n times.
+
+
+- store the elements sorted by their access counts
+  - inserting each element the first time it is accessed, then
+  - each access to element 1 runs in O(1) time.
+  - each access to element 2 runs in O(2) time.
+  - ···
+  - each access to element n runs in O(n) time.
+
+
+- use the move-to-front heuristic, inserting each element
+the first time it is accessed, then
+  - each subsequent access to element 1 takes O(1) time.
+  - each subsequent access to element 2 takes O(1) time.
+  - ···
+  - each subsequent access to element n runs in O(1) time.
+  - So the running time for performing all the accesses in this case is O(n2).
+
+
+
+**Trade-Offs with the Move-to-Front Heuristic**
+- no longer maintain the elements of the favorites list ordered by their access counts -> when asked to find the k most accessed elements, need to search for them.
+
+- We will implement the getFavorites(k) method as follows:
+  1. We copy all entries of our favorites list into another list, named temp.
+  2. We scan the temp list k times.
+  3. In each scan, we find the entry with the largest access count, remove this entry from temp, and add it to the results.
+
+- This implementation of method getFavorites(k) takes O(kn) time.
+  -  when k is a constant, method getFavorites(k) runs in O(n) time, example, get the “top ten” list.
+  - if k is proportional to n, then the method getFavorites(k) runs in O(n^2) time. This occurs, for example, “top 25%” list.
+
+
+introduce a data structure
+- implement getFavorites in O(n + k log n) time
+- more advanced techniques could be used to perform `getFavorites` in `O(n + k log k)` time.
+- achieve O(n log n) time if we use a standard sorting algorithm to `reorder the temporary list before reporting the top k`
+- this approach would be preferred to the original in the case that k is Ω(log n).
+- (Recall the big-Omega notation introduced in Section 4.3.1 to give an asymptotic lower bound on the running time of an algorithm.)
+- There is a specialized sorting algorithm that can take advantage of the fact that access counts are integers in order to achieve O(n) time for getFavorites, for any value of k.
+
+
+
+#### Implementing the Move-to-Front Heuristic in Java
+
+
+
+
+
+
+
+
+---
+
+## LinkedList (array-based structure) (without fixed size) **class**
 
 - an alternative to an array-based structure.
 
@@ -1327,7 +1551,7 @@ next(): Returns the next element in the sequence.
 ---
 
 
-## basicc
+### basicc
 
 - a collection of items
 - each item holds a relative position with respect to the others.
@@ -1361,7 +1585,7 @@ next(): Returns the next element in the sequence.
 
 ---
 
-## Abstract Data Type
+### Abstract Data Type
 
 
 Functions:
@@ -1385,7 +1609,7 @@ Functions:
 
 ---
 
-### Unordered List - Abstract Data Type
+#### Unordered List - Abstract Data Type
 
 - `List()`
   - creates a new list that is empty.
@@ -1427,7 +1651,7 @@ Functions:
 ---
 
 
-### singly linked list
+#### singly linked list
 
 - In a **singly linked list**,
   - each node stores a reference to an object that is an element of the sequence,
@@ -1490,7 +1714,7 @@ Algorithm removeFirst():
 ---
 
 
-### Circularly Linked Lists
+#### Circularly Linked Lists
 
 - there are many applications in which data can be more naturally viewed as having a cyclic order, with well-defined neighboring relationships, but no fixed beginning or end.
 
@@ -1527,7 +1751,7 @@ Algorithm removeFirst():
 
 
 
-### doubly linked list
+#### doubly linked list
 
 - there are limitations that stem from the asymmetry of a singly linked list.
   - can efficiently insert a node at either end of a singly linked list, and can delete a node at the head of a list,
@@ -1561,10 +1785,10 @@ Algorithm removeFirst():
   - The use of a sentinel node in that implementation would eliminate the special case, as there would always be an existing node (possibly the header) before a new node.
 
 
-## general method
+### general method
 
 
-### Equivalence Testing
+#### Equivalence Testing
 - At the lowest level, if a and b are reference variables, then` expression a == b tests whether a and b refer to the same object` (or if both are set to the null value).
 - higher-level notion of two variables being considered “equivalent” even if they do not actually refer to the same instance of the class. For example, we typically want to consider two String instances to be equivalent to each other if they represent the identical sequence of characters.
 - To support a broader notion of equivalence, all object types support a method named equals.
@@ -1602,7 +1826,7 @@ Algorithm removeFirst():
 
 ---
 
-### Cloning Data Structures
+#### Cloning Data Structures
 
 - **abstraction** allows for a data structure to be treated as a single object, even though the encapsulated implementation of the structure might rely on a more complex combination of many objects.
 - each class in Java is responsible for defining whether its instances can be copied, and if so, precisely how the copy is constructed.
@@ -1684,7 +1908,7 @@ public static int[][] deepClone(int[][] original){
 
 
 
-## Node Class
+### Node Class
 
 the constructor that a node is initially created with next set to `None`.
 - sometimes referred to as “grounding the node,”
@@ -1705,7 +1929,7 @@ class Node:
     def set_next(self, node_next): self._next = node_next
     def __str__(self): return str(self._data)
 
-# create Node objects in the usual way.
+## create Node objects in the usual way.
 >>> temp = Node(93)
 >>> temp.data
 93
@@ -1719,7 +1943,7 @@ class Node:
 
 ---
 
-## unordered Linked Lists: Unordered List
+### unordered Linked Lists: Unordered List
 
 
 ![idea2](https://i.imgur.com/SqXvGO8.png)
@@ -1887,7 +2111,7 @@ print(my_list)
 
 ---
 
-#### Unordered List Class <- unordered linked list (new)  (!!!!!!!!!!!!!)
+##### Unordered List Class <- unordered linked list (new)  (!!!!!!!!!!!!!)
 
 - 无序表必须要有对第一个节点的引用信息
 - 设立属性head，保存对第一个节点的引用空表的head为None
@@ -1902,23 +2126,23 @@ class UnorderedList:
     def __init__(self):
         self.head = None
 
-# Initially when construct a list, there are no items.
+## Initially when construct a list, there are no items.
 mylist = UnorderedList()
 print(mylist.head)
-# None
+## None
 ```
 
 ---
 
-##### `is_empty()`
+###### `is_empty()`
 - the special reference `None` will again be used to state that the head of the list does not refer to anything.
 - Eventually, the example list given earlier will be represented by a linked list as below
 
 ![initlinkedlist](https://i.imgur.com/HugjffZ.png)
 
 ```py
-# checks to see if the head of the list is a reference to None.
-# The result of the boolean expression self.head == None will only be true if there are no nodes in the linked list.
+## checks to see if the head of the list is a reference to None.
+## The result of the boolean expression self.head == None will only be true if there are no nodes in the linked list.
 def is_empty(self):
     return self.head == None
 ```
@@ -1932,7 +2156,7 @@ def is_empty(self):
 
 ---
 
-##### `add()`
+###### `add()`
 - The new item can go anywhere
 - item added to the list will be the last node on the linked list
 
@@ -1949,11 +2173,11 @@ def add(self, item):
 
 ---
 
-##### `size`, `search`, and `remove`
+###### `size`, `search`, and `remove`
 - all based on a technique known as linked list traversal
 - Traversal refers to the process of systematically visiting each node.
 
-###### `size()`
+####### `size()`
 - use an external reference that starts at the first node in the list.
 - visit each node, move the reference to the next node by “traversing” the next reference.
 - traverse the linked list and keep a count of the number of nodes that occurred.
@@ -1970,7 +2194,7 @@ def size(self):
     return count
 ```
 
-###### `search(item):`
+####### `search(item):`
 - Searching for a value in a linked list implementation of an unordered list also uses the traversal technique.
 - visit each node in the linked list, ask whether the data matches the item
 - may not have to traverse all the way to the end of the list.
@@ -1989,7 +2213,7 @@ def search(self, item):
     return False
 ```
 
-###### `remove()`
+####### `remove()`
 - requires two logical steps.
 - traverse the list for the item to remove.
   - Once find the item , must remove it.
@@ -2027,7 +2251,7 @@ def remove(self, item):
 
 ---
 
-##### `pop()`
+###### `pop()`
 
 ```py
 def pop(self, index):
@@ -2036,10 +2260,10 @@ def pop(self, index):
 
 ---
 
-##### `append()`
+###### `append()`
 
 ```py
-# 1. 𝑂(𝑛)
+## 1. 𝑂(𝑛)
 def append(self, item):
     current = self.head
     while current.set_next() is not None:
@@ -2049,13 +2273,13 @@ def append(self, item):
     temp.set_next(current.set_next())
 	current.set_next(temp)
 
-# 2. 𝑂(1)
-# use tail point & head point
+## 2. 𝑂(1)
+## use tail point & head point
 ```
 
 ---
 
-##### `insert()`
+###### `insert()`
 
 ```py
 def insert(self, index, item):
@@ -2082,7 +2306,7 @@ def insert(self, index, item):
 
 ---
 
-##### `index()`
+###### `index()`
 
 ```py
 def index(self, index):
@@ -2100,7 +2324,7 @@ def index(self, index):
 
 
 
-## Ordered List - Abstract Data Type
+### Ordered List - Abstract Data Type
 
 
 ordered list
@@ -2120,7 +2344,7 @@ ordered list
 
 ---
 
-#### Ordered List in py (!!!!!!!!!!!!!)
+##### Ordered List in py (!!!!!!!!!!!!!)
 
 ```py
 class OrderedList:
@@ -2216,12 +2440,382 @@ print(my_list.search(100))
 
 
 
+---
+
+## Iterators **Interface**
+
+- a software design pattern that abstracts `the process of scanning through a sequence of elements, one element at a time.`
+- The underlying elements might be stored in a container class, streaming through a network, or generated by a series of computations.
+
+- to unify the treatment and syntax for iterating objects in a way that is independent from a specific organization, Java defines the java.util.Iterator interface with the following two methods:
+  - `hasNext()`: Returns true if there is at least one additional element in the sequence, and false otherwise.
+  - `next()`: Returns the next element in the sequence.
+
+    - If the next( ) method of an iterator is called when no further elements are available, a `NoSuchElementException` is thrown.
+
+  - `remove()`: Removes from the collection the element returned by the most recent call to next(). Throws an IllegalStateException if next has not yet been called, or if remove was already called since the most recent call to next.
+
+- The combination of these two methods allows a general loop construct for processing elements of the iterator.
+
+
+
+
+---
+
+## Iterable **Interface**
+
+
+**Iterators**
+- A single iterator instance supports only one pass through a collection;
+- calls to next can be made until all elements have been reported,
+- but there is no way to “reset” the iterator back to the beginning of the sequence.
+
+**Iterable**
+- The Iterable Interface and Java’s For-Each Loop
+- for a data structure that wishes to allow repeated iterations can support a method that returns a new iterator, each time it is called.
+- Java defines another parameterized interface, named Iterable, that includes the following single method:
+  - `iterator()`: Returns an iterator of the elements in the collection.
+
+example
+- An instance of a typical collection class in Java, such as an ArrayList, is iterable (but not itself an iterator);
+- it produces an iterator for its collection as the return value of the `iterator()` method.
+- Each call to iterator() returns a new iterator instance, thereby allowing multiple (even simultaneous) traversals of a collection.
+
+**“for-each” loop syntax**
+- Java’s Iterable class also plays a fundamental role in support of the “for-each” loop syntax
+- The loop is supported for any instance, collection, of an iterable class.
+  - ElementType must be the type of object returned by its iterator,
+  - and variable will take on element values within the loopBody.
+
+
+```java
+for (ElementType variable : collection) {
+  loopBody // may refer to ”variable”
+}
+// Essentially, this syntax is shorthand for the following:
+
+Iterator<ElementType> iter = collection.iterator();
+while (iter.hasNext()) {
+  ElementType variable = iter.next();
+  loopBody // may refer to ”variable”
+}
+```
+
+**iterator’s remove method**
+- the iterator’s remove method cannot be invoked when using the for-each loop syntax.
+- Instead, we must explicitly use an iterator.
+  - example
+  - the following loop can be used to remove all negative numbers from an ArrayList of floating-point values.
+
+
+```java
+ArrayList<Double> data; // populate with random numbers (not shown)
+Iterator<Double> walk = data.iterator();
+while (walk.hasNext())
+  if (walk.next() < 0.0) walk.remove( );
+```
+
+---
+
+
+
+### Implementing Iterators
+
+- There are two general styles for implementing iterators that differ in terms of `what work is done when the iterator instance is first created`, and `what work is done each time the iterator is advanced with a call to next()`.
+
+- **snapshot iterator**
+  - snapshot iterator maintains its own private copy of the sequence of elements, which is constructed at the time the iterator object is created.
+  - It effectively records a “snapshot” of the sequence of elements at the time the iterator is created
+  - is therefore unaffected by any subsequent changes to the primary collection that may occur.
+  - Implementing snapshot iterators tends to be very easy, as it requires a simple traversal of the primary structure.
+    - The downside of this style of iterator is that it requires O(n) time and O(n) auxiliary space, upon construction, to copy and store a collection of n elements.
+
+- **lazy iterator**
+  - lazy iterator is one that does not make an upfront copy, instead performing a piecewise traversal of the primary structure only when the next() method is called to request another element.
+  - The advantage of this style of iterator is that it can typically be implemented so the iterator requires only `O(1)` space and `O(1)` construction time.
+  - One downside (or feature) of a lazy iterator is that `its behavior is affected if the primary structure is modified` (by means other than by the iterator’s own remove method) before the iteration completes.
+  - Many of the iterators in Java’s libraries implement a “fail-fast” behavior that immediately invalidates such an iterator if its underlying collection is modified unexpectedly.
+
+
+---
+
+#### iterators for ArrayList
+
+- iteration for the `ArrayList<E> class`.
+
+- have it implement the `Iterable<E> interface`
+- must add an `iterator() method` to that class definition, which returns an instance of an object that implements the `Iterator<E> interface`.
+  - we define a new class, `ArrayIterator`, as a nonstatic nested class of ArrayList
+
+```java
+public class ArrayList<E> implements List<E> { // instance variables {
+    ...
+
+    public Iterator<E> iterator(){
+        return new ArrayIterator();
+    }
+
+    //---------------- nested ArrayIterator class ----------------
+    /**
+    * A (nonstatic) inner class. Note well that each instance contains an implicit
+    * reference to the containing list, allowing it to access the list's members.
+    */
+    private class ArrayIterator implements Iterator<E> {
+        private int j=0;
+        private boolean removeable = false;
+
+        /**
+        * Tests whether the iterator has a next object.
+        * @return true if there are further objects, false otherwise
+        */
+        public boolean hasNext() {return j<size;}
+        public E next() throws NoSuchElementException{
+            if(j==size) throw new NoSuchElementException("No next element.");
+            removeable=true;
+            return data[j++];
+        }
+        public void remove() throws IllegalStateException{
+            if(!removeable) throw new IllegalStateException("nothing to remove");
+            ArrayList.this.remove(j-1);
+            j--;
+            removeable = false;
+        }
+    }
+}
+```
 
 
 
 
 
 
+---
+
+
+#### iterators for LinkedPositionalList
+
+- a first question is whether to support iteration of the `elements` of the list or the `positions` of the list.
+  - iterate through all positions of the list, those positions could be used to access the underlying elements, so support for position iteration is more general.
+  - it is more standard for a container class to support iteration of the core elements, by default, so that the for-each loop syntax could be used to write code such as the following,
+
+**for (String guest : waitlist)**
+- assuming that variable waitlist has type `LinkedPositionalList<String>`
+- For maximum convenience, we will support both forms of iteration.
+  - have the standard `iterator() method`
+    - return an iterator of the elements of the list
+    - so that list class formally implements the Iterable interface for the declared element type.
+  - provide a new `method, positions()`
+    - to iterate through the positions of a list
+    - At first glance, it would seem a natural choice for such a method to return an Iterator.
+    - However, we prefer for the return type of that method to be an instance that is Iterable (and hence, has its own iterator() method that returns an iterator of positions).
+    - Our reason for the extra layer of complexity is that we wish for users of our class to be able to use a for-each loop with a simple syntax such as the following:
+    - `for (Position<String> p : waitlist.positions())`
+
+new support for the iteration of positions and elements of a **LinkedPositionalList**.
+- We define three new inner classes.
+- `PositionIterator`
+  - providing the core functionality of our list iterations.
+  - Whereas the array list iterator maintained the index of the next element to be returned as a field,
+  - this class maintains the position of the next element to be returned (as well as the position of the most recently returned element, to support removal).
+- define a trivial `PositionIterable` inner class,
+  - To support our goal of the positions() method returning an Iterable object
+  - which simply constructs and returns a new `PositionIterator` object each time its `iterator() method` is called.
+  - The positions() method of the top-level class returns a new `PositionIterable` instance.
+  - Our framework relies heavily on these being inner classes, not static nested classes.
+- `iterator() method`
+  - the top-level iterator() method return an iterator of elements (not positions).
+  - Rather than reinvent the wheel, we trivially adapt the PositionIterator class to define a new ElementIterator class, which lazily manages a position iterator instance, while returning the element stored at each position when next() is called.
+
+
+```java
+
+public class LinkedPositionalList<E> implements PositionalList<E>  {
+
+    private static class Node<E> implements Position<E>{}
+    // ----------- end of nested Node class ----------
+    private Node<E> header;
+    private Node<E> trailer;
+    private int size = 0;
+
+    /** Constructs a new empty list. */
+    public LinkedPositionalList(){}  
+
+    /** Returns an iterable representation of the list's positions. */
+    public Iterable<Position<E>> positions( ) {
+        return new PositionIterable(); // create a new instance of the inner class
+    }
+    //---------------- nested PositionIterable class ----------------
+    private class PositionIterable implements Iterable<Position<E>> {
+        public Iterator<Position<E>> iterator() {return new PositionIterator();}
+    }
+    //---------------- nested PositionIterator class ----------------
+    private class PositionIterator implements Iterator<Position<E>> {
+        private Position<E> cursor = first(); // position of the next element to report
+        private Position<E> recent = null;    // position of last reported element
+        public boolean hasNext(){return cursor!=null;}
+        public Position<E> next() throws NoSuchElementException{
+            if(cursor==null) throw new NoSuchElementException("nothing left");
+            recent = cursor;
+            cursor = after(cursor);
+            return recent;
+        }
+        public void remove() throws NoSuchElementException{
+            if(recent==null) throw new NoSuchElementException("nothing to remove");
+            LinkedPositionalList.this.remove(recent); // remove from outer list
+            recent = null; // do not allow remove again until next is called
+        }
+    }
+
+    /** Returns an iterator of the elements stored in the list. */
+    public Iterator<E> iterator( ) {
+        return new ElementIterator( );
+    }
+
+    //---------------- nested ElementIterator class ----------------
+    private class ElementIterator implements Iterator<E> {
+        Iterator<Position<E>> posIterator = new PositionIterator();
+        public boolean hasNext(){return posIterator.hasNext();}
+        public E next() {return posIterator.next().getElement();}
+        public void remove() {posIterator.remove();}
+    }
+
+}
+```
+
+---
+
+
+## Collection **Interface**
+
+- The root interface in the Java collections framework is named Collection.
+- a general interface for any data structure, such as a list, that represents `a collection of elements`.
+
+- The Collection interface includes many methods
+
+- It is a superinterface for other interfaces in the Java Collections Framework that can hold elements, including the java.util interfaces Deque, List, and Queue, and other subinterfaces discussed later in this book, including Set and Map.
+
+
+![Screen Shot 2022-03-16 at 13.50.24](https://i.imgur.com/sU8UJ7o.png)
+
+
+
+
+
+
+---
+
+
+### List Iterators in Java
+
+- The `java.util.LinkedList` class does not expose a position concept to users in its API, as we do in our positional list ADT.
+
+- Instead, the preferred way to access and update a `LinkedList` object in Java, without using indices, is to use a `ListIterator` that is returned by the list’s `listIterator()` method.
+
+- Such an iterator provides forward and backward traversal methods as well as local update methods.
+- It views its current position as being before the first element, between two elements, or after the last element.
+- That is, it uses a list **cursor**, being located between two characters on a screen.
+
+
+the java.util.ListIterator interface includes the following methods:
+- add(e):
+- hasNext():
+- hasPrevious():
+- previous():
+- next():
+- nextIndex():
+- previousIndex():
+- remove():
+- set(e):
+
+
+
+- It is risky to use multiple iterators over the same list while modifying its contents. If insertions, deletions, or replacements are required at multiple “places” in a list, it is safer to use positions to specify these locations.
+
+- But the java.util.LinkedList class does not expose its position objects to the user.
+  - to avoid the risks of modifying a list that has created multiple iterators, the `iterators` have a “fail-fast” feature that invalidates such an iterator if its underlying collection is modified unexpectedly.
+  - For example,
+  - if a java.util.LinkedList object L has returned five different `iterators` and one of them modifies L, a `ConcurrentModificationException` is thrown if any of the other four is subsequently used.
+- Java allows many list `iterators` to be traversing a linked list L at the same time,
+  - but if one of them modifies L (using an add, set, or remove method),
+  - then all the other iterators for L become invalid.
+  - Likewise, if L is modified by one of its own update methods, then all existing iterators for L immediately become invalid.
+
+
+---
+
+### Comparison to Our Positional List ADT
+
+corresponding methods between our (array and positional) list ADTs and the java.util interfaces List and `ListIterator` interfaces,
+
+
+![Screen Shot 2022-03-16 at 14.23.01](https://i.imgur.com/PKw6rFZ.png)
+
+
+---
+
+
+### List-Based Algorithms in the Java Collections Framework
+
+
+- `copy(Ldest , Lsrc)`: Copies all elements of the Lsrc list into corresponding in- dices of the Ldest list.
+- `disjoint(C, D)`: Returns a boolean value indicating whether the collections C and D are disjoint.
+- `fill(L, e)`: Replaces each element of the list L with element e.
+- `frequency(C, e)`: Returns the number of elements in the collection C that are equal to e.
+- `max(C)`: Returns the maximum element in the collection C, based on the natural ordering of its elements.
+- `min(C)`: Returns the minimum element in the collection C, based on the natural ordering of its elements.
+- `replaceAll(L, e, f )`:
+  - Replaces each element in L that is equal to e with element f .
+
+- `reverse(L)`: Reverses the ordering of elements in the list L.
+- `rotate(L, d)`: Rotates the elements in the list L by the distance d (which can be negative), in a circular fashion.
+- `shuffle(L)`: Pseudorandomly permutes the ordering of the elements in the list L.
+- `sort(L)`: Sorts the list L, using the natural ordering of its elements.
+- `swap(L, i, j)`: Swap the elements at indices i and j of list L.
+
+
+---
+
+
+
+#### Converting Lists into Arrays
+
+Lists are a beautiful concept and they can be applied in a number of different contexts,
+- but there are some instances where it would be useful if we could **treat a list like an array**.
+- `java.util.Collection` interface includes the following helpful methods for generating an array that has the same elements as the given collection:
+
+- `toArray()`:
+  - Returns an array of elements of type **Object** containing all the elements in this collection.
+- `toArray(A)`:
+  - Returns an array of elements of the **same element type as A** containing all the elements in this collection.
+
+
+- If the collection is a list, then the returned array will have its elements stored in the same order as that of the original list.
+
+
+---
+
+#### Converting Arrays into Lists
+
+- it is often useful to be able to convert an array into an equivalent list.
+- `java.util.Arrays` class includes the following method:
+
+- `asList(A)`:
+  - Returns a list representation of the array A, with the same element type as the elements of A.
+
+- The list returned by this method `uses the array A as its internal representation` for the list.
+  - So this list is guaranteed to be an array-based list
+  - any changes made to it will automatically be reflected in A.
+  - Because of these types of side effects, use of the `asList` method should always be done with caution, so as to avoid unintended consequences.
+  - But, used with care, this method can often save us a lot of work.
+
+- For instance
+  - to randomly shuffle an array of Integer objects:
+
+```java
+Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8}; // allowed by autoboxing
+List<Integer> listArr = Arrays.asList(arr);
+Collections.shuffle(listArr); // this has side effect of shuffling arr
+```
 
 
 
@@ -2239,7 +2833,7 @@ print(my_list.search(100))
 
 
 
-# Stack
+## Stack
 
 - a collection of elements, with two principle operations:
   - `push`, which adds to the collection,
@@ -2279,7 +2873,7 @@ Stacks are fundamentally important, as they can be used to `reverse the order of
 
 ---
 
-## java
+### java
 
 ```java
 push(e)     // O(1)
@@ -2324,7 +2918,7 @@ public interface Stack<E> {
 ```
 
 
-### Array-Based Stack
+#### Array-Based Stack
 
 ```java
 public class ArrayStack<E> implements Stack<E> {
@@ -2364,7 +2958,7 @@ Stack<Integer> S = new ArrayStack<>();
 
 
 
-#### Garbage Collection in Java
+##### Garbage Collection in Java
 
 - the implementation of the `pop` method, set a local variable, answer, to reference the element that is being popped, and then reset `data[t] to null` before decrementing t.
 - The assignment to null was not technically required, as our stack would still operate correctly without it.
@@ -2378,7 +2972,7 @@ Stack<Integer> S = new ArrayStack<>();
 
 
 
-#### Drawback of Array-Based Stack
+##### Drawback of Array-Based Stack
 
 Drawback of This Array-Based Stack Implementation
 - one negative aspect
@@ -2395,14 +2989,14 @@ two approaches for implementing a stack without such a size limitation and with 
 
 ---
 
-### Singly Linked List
+#### Singly Linked List
 
 - Unlike our array-based implementation, the linked-list approach `has memory usage that is always proportional to the number of actual elements` currently in the stack, and `without an arbitrary capacity limit`.
 
 - since we can insert and delete elements in constant time only at the front. With the top of the stack stored at the front of the list, all methods execute in constant time.
 
 
-#### The Adapter Pattern
+##### The Adapter Pattern
 
 - The adapter design pattern applies to any context where we effectively want to modify `an existing class so that its methods` match those of a related, but different, class or interface.
 
@@ -2439,7 +3033,7 @@ public class LinkedStack<E> implements Stack<E> {
 
 ----
 
-## Python
+### Python
 
 - `Stack()`
   - creates a new stack that is empty.
@@ -2467,21 +3061,21 @@ public class LinkedStack<E> implements Stack<E> {
 ---
 
 
-### code
+#### code
 
 
 ---
 
-#### Stack <- list  (!!!!!!!!!!!!!)
+##### Stack <- list  (!!!!!!!!!!!!!)
 
 consider the performance of the two implementations, there is definitely a difference.
 
 ![Screen Shot 2020-05-26 at 14.45.22](https://i.imgur.com/uxkuJEi.png)
 
 ```py
-# Stack implementation as a list
+## Stack implementation as a list
 
-# the end is at the beginning
+## the end is at the beginning
 class Stack:
     """Stack implementation as a list"""
     def __init__(self): self.items = []
@@ -2492,7 +3086,7 @@ class Stack:
     def peek(self): return self.items[-1]
     def size(self): return len(self.items)
 
-# the top is at the beginning
+## the top is at the beginning
 class Stack:
     def __init__(self): self.items = []
     def isEmpty(self): return self.items == []
@@ -2507,7 +3101,7 @@ s = Stack()
 ```
 
 
-#### stack in java
+##### stack in java
 
 ```java
 class Stack {
@@ -2575,7 +3169,7 @@ class Main {
 
 ---
 
-#### Stack <- Linked List
+##### Stack <- Linked List
 
 ```java
 public class StackAsLinkedList {
@@ -2649,7 +3243,7 @@ public class StackAsLinkedList {
 
 ---
 
-#### Stack Class in Java
+##### Stack Class in Java
 
 ```java
 // Java code for stack implementation
@@ -2694,7 +3288,7 @@ class Test {
 ---
 
 
-#### reverse char in string
+##### reverse char in string
 
 ```py
 from test import testEqual
@@ -2727,7 +3321,7 @@ public class Reversestring {
 ```
 ---
 
-#### simple Balanced Parentheses
+##### simple Balanced Parentheses
 
 [code](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/05CodeNote/0.Leetcode/leepy/020.valid-paretheses.py)
 
@@ -2735,7 +3329,7 @@ public class Reversestring {
 
 ---
 
-#### Balanced Symbols (A General Case)
+##### Balanced Symbols (A General Case)
 
 ```py
 from pythonds.basic import Stack
@@ -2770,19 +3364,19 @@ def matches(open,close):
 
 ---
 
-#### convert-integer-into-different-base
+##### convert-integer-into-different-base
 
 
 ![dectobin](https://i.imgur.com/sdKnZuW.png)
 
 ```py
-# The decimal number 233(10) and its corresponding binary equivalent 11101001(2) are interpreted respectively as
-# 2×10^2+3×10^1+3×10^0
-# and
-# 1×2^7+1×2^6+1×25+0×24+1×23+0×22+0×21+1×20
+## The decimal number 233(10) and its corresponding binary equivalent 11101001(2) are interpreted respectively as
+## 2×10^2+3×10^1+3×10^0
+## and
+## 1×2^7+1×2^6+1×25+0×24+1×23+0×22+0×21+1×20
 
-# convert-integer-into-base(16)
-# Class solution1: stack, put num%16 in stack
+## convert-integer-into-base(16)
+## Class solution1: stack, put num%16 in stack
 def divide_by_base(num, base):
     digits = "0123456789ABCDEF"
     s = Stack()
@@ -2802,8 +3396,8 @@ print(divide_by_base(256,16))
 print(divide_by_base(26,26))
 
 
-# convert-integer-into-binary
-# Class solution1: stack, put num%2 in stack
+## convert-integer-into-binary
+## Class solution1: stack, put num%2 in stack
 def divide_by_2(decimal_num):
     s = Stack()
     while decimal_num > 0:
@@ -2814,13 +3408,13 @@ def divide_by_2(decimal_num):
     while not s.is_empty():
         bin_string += str(s.pop())
     return bin_string
-# print(divide_by_2(42))
-# print(divide_by_2(31))
+## print(divide_by_2(42))
+## print(divide_by_2(31))
 ```
 
 ---
 
-#### Infix, Prefix, and Postfix Expressions
+##### Infix, Prefix, and Postfix Expressions
 
 
 > computers need to know exactly what operators to perform and in what order.
@@ -2854,9 +3448,9 @@ def divide_by_2(decimal_num):
 ![intopost](https://i.imgur.com/avxcc7z.png)
 
 ```py
-# use stack
-# (A+B+D)*C -> (AB+D+)C*
-# A*B+C*D -> AB*+CD*
+## use stack
+## (A+B+D)*C -> (AB+D+)C*
+## A*B+C*D -> AB*+CD*
 def infixToPostfix(infixexpr):
     # Assume the infix expression is a string of tokens delimited by spaces.
     # The operator tokens are *, /, +, and -, along with the left and right parentheses, ( and ).
@@ -2920,7 +3514,7 @@ print(infixToPostfix("( A + B ) * C - ( D - E ) * ( F + G )"))
 ![evalpostfix2](https://i.imgur.com/BuVv3tc.png)
 
 ```py
-# use stack -> calculate Postfix
+## use stack -> calculate Postfix
 def postfixEval(postfixExpr):
     # Create an empty stack called operandStack.
     operandStack = Stack()
@@ -2950,8 +3544,8 @@ def doMath(op, op1, op2):
     elif op == "+": return op1 + op2
     else: return op1 - op2
 
-# print(postfixEval('7 8 + 3 2 + /'))
-# print(postfixEval('17 10 + 3 * 9 /'))
+## print(postfixEval('7 8 + 3 2 + /'))
+## print(postfixEval('17 10 + 3 * 9 /'))
 ```
 
 
@@ -2969,7 +3563,7 @@ def doMath(op, op1, op2):
 
 
 
-# Queue
+## Queue
 
 ![basicqueue](https://i.imgur.com/ODLgXMw.png)
 
@@ -3033,7 +3627,7 @@ def doMath(op, op1, op2):
 
 ---
 
-## Java
+### Java
 
 
 ```java
@@ -3046,7 +3640,7 @@ public interface Queue<E> {
 }
 ```
 
-### The java.util.Queue Interface in Java
+#### The java.util.Queue Interface in Java
 
 
 - Java provides a type of queue interface, java.util.Queue, which has functionality similar to the traditional queue ADT, given above, but the documentation for the java.util.Queue interface does not insist that it support only the FIFO principle.
@@ -3060,7 +3654,7 @@ public interface Queue<E> {
 
 ---
 
-### Array-Based Queue
+#### Array-Based Queue
 
 
 - implemented the LIFO semantics of the Stack ADT using an array (albeit, with a fixed capacity), such that every operation executes in constant time.
@@ -3072,7 +3666,7 @@ public interface Queue<E> {
   - avoiding the loop entirely. replace a dequeued element in the array with a null reference, and maintain an explicit variable f to represent the index of the element that is currently at the front of the queue. Such an algorithm for dequeue would run in O(1) time. **However, there remains a challenge with the revised approach**. With an array of capacity N, we should be able to store up to N elements before reaching any exceptional case. If we repeatedly let the front of the queue drift rightward over time, the back of the queue would reach the end of the underlying array even when there are fewer than N elements currently in the queue. We must decide how to store additional elements in such a configuration.
 
 
-### Circularly Array-Based Queue
+#### Circularly Array-Based Queue
 
 - Implementing such a circular view is relatively easy with the modulo operator,
 denoted with the symbol % in Java.
@@ -3107,7 +3701,7 @@ public class ArrayQueue<E> implements Queue<E> {
         return isEmpty()? null: data[f];
     }
 
-    // /∗∗ Removes and returns the first element of the queue (null if empty). ∗/
+    // /** Removes and returns the first element of the queue (null if empty). */
     public E dequeue() {
         if(isEmpty()) return null;
         E ans = data[f];
@@ -3133,7 +3727,7 @@ public class ArrayQueue<E> implements Queue<E> {
 ---
 
 
-### Singly Linked List for Queue
+#### Singly Linked List for Queue
 
 
 ```java
@@ -3169,7 +3763,7 @@ public class LinkedQueue implements Queue<E> {
 
 ---
 
-### circularly linked list for Queue
+#### circularly linked list for Queue
 
 - circularly linked list class that supports all behaviors of a singly linked list, and an additional rotate() method that efficiently moves the first element to the end of the list.
 
@@ -3209,10 +3803,10 @@ public class LinkedCircularQueue implements CircularQueue<E> {
 
 ---
 
-## python
+### python
 
 
-### queue as a list  (!!!!!!!!!!!!!)
+#### queue as a list  (!!!!!!!!!!!!!)
 
 ```py
 class Queue:
@@ -3223,7 +3817,7 @@ class Queue:
     def size(self): return len(self.items)
 ```
 
-### queue in java
+#### queue in java
 
 
 ```java
@@ -3321,7 +3915,7 @@ public class Test {
 
 ---
 
-#### Simulation: Printing Tasks
+##### Simulation: Printing Tasks
 
 ![simulationsetup](https://i.imgur.com/2RoMcuf.png)
 
@@ -3357,20 +3951,20 @@ If there are 10 students in the lab and each prints twice, then there are 20 pri
 
 
 ```py
-# Create a queue of print tasks. Each task will be given a timestamp upon its arrival. The queue is empty to start.
-# For each second (currentSecond):
-# Does a new print task get created? If so, add it to the queue with the currentSecond as the timestamp.
-# If the printer is not busy and if a task is waiting,
-# Remove the next task from the print queue and assign it to the printer.
-# Subtract the timestamp from the currentSecond to compute the waiting time for that task.
-# Append the waiting time for that task to a list for later processing.
-# Based on the number of pages in the print task, figure out how much time will be required.
-# The printer now does one second of printing if necessary. It also subtracts one second from the time required for that task.
-# If the task has been completed, in other words the time required has reached zero, the printer is no longer busy.
-# After the simulation is complete, compute the average waiting time from the list of waiting times generated.
+## Create a queue of print tasks. Each task will be given a timestamp upon its arrival. The queue is empty to start.
+## For each second (currentSecond):
+## Does a new print task get created? If so, add it to the queue with the currentSecond as the timestamp.
+## If the printer is not busy and if a task is waiting,
+## Remove the next task from the print queue and assign it to the printer.
+## Subtract the timestamp from the currentSecond to compute the waiting time for that task.
+## Append the waiting time for that task to a list for later processing.
+## Based on the number of pages in the print task, figure out how much time will be required.
+## The printer now does one second of printing if necessary. It also subtracts one second from the time required for that task.
+## If the task has been completed, in other words the time required has reached zero, the printer is no longer busy.
+## After the simulation is complete, compute the average waiting time from the list of waiting times generated.
 
 
-# create classes for the three real-world objects described above: Printer, Task, and PrintQueue.
+## create classes for the three real-world objects described above: Printer, Task, and PrintQueue.
 class Printer:
     def __init__(self, ppm):
         self.pagerate = ppm
@@ -3420,13 +4014,13 @@ def newPrintTask():
     num = random.randrange(1,181)
     if num == 180: return True
     else: return False
-# newPrintTask, decides whether a new printing task has been created.
-# return a random integer between 1 and 180.
-# Print tasks arrive once every 180 seconds. By arbitrarily choosing 180 from the range of random integers (line 32), we can simulate this random event.
+## newPrintTask, decides whether a new printing task has been created.
+## return a random integer between 1 and 180.
+## Print tasks arrive once every 180 seconds. By arbitrarily choosing 180 from the range of random integers (line 32), we can simulate this random event.
 
 
-# The simulation function
-# set the total time and the pages per minute for the printer.
+## The simulation function
+## set the total time and the pages per minute for the printer.
 
 def simulation(numSeconds, pagesPerMinute):
     labprinter = Printer(pagesPerMinute)
@@ -3465,7 +4059,7 @@ for i in range(10):
 
 
 
-# Deque (Double-Ended Queues)
+## Deque (Double-Ended Queues)
 
 > usually pronounced “deck” to avoid confusion with the dequeue method of the regular queue ADT, which is pronounced like the abbreviation “D.Q.”
 
@@ -3492,7 +4086,7 @@ it does not require the LIFO and FIFO orderings that are enforced by those data 
 ---
 
 
-## Abstract Data Type
+### Abstract Data Type
 
 Method
 - size, isEmpty : O(1)
@@ -3507,7 +4101,7 @@ Method
 ---
 
 
-### Java
+#### Java
 
 - The deque abstract data type is richer than both the stack and the queue ADTs.
 - To provide a symmetrical abstraction, the deque ADT is defined to support the following update methods:
@@ -3541,11 +4135,11 @@ public interface Deque<E> {
 ---
 
 
-#### Circular Array for Deque
+##### Circular Array for Deque
 
 
 
-#### Doubly Linked List for Deque
+##### Doubly Linked List for Deque
 
 
 - Because the deque requires insertion and removal at both ends, a doubly linked list is most appropriate for implementing all operations efficiently.
@@ -3571,7 +4165,7 @@ public class Dequeue implements Deque<E> {
 ---
 
 
-### python
+#### python
 
 ![Screen Shot 2020-05-27 at 16.08.22](https://i.imgur.com/1N3DXwM.png)
 
@@ -3603,7 +4197,7 @@ public class Dequeue implements Deque<E> {
 
 ---
 
-#### dequeue as a list in py (!!!!!!!!!!!!!)
+##### dequeue as a list in py (!!!!!!!!!!!!!)
 
 ```py
 class Deque:
@@ -3617,7 +4211,7 @@ class Deque:
 ```
 
 
-#### Palindrome-Checker 回文 对称的单词
+##### Palindrome-Checker 回文 对称的单词
 
 ![palindromesetup](https://i.imgur.com/BiBLdwq.png)
 
@@ -3648,7 +4242,7 @@ palchecker("radar")
 
 ---
 
-# Hashing
+## Hashing
 
 - Hashing is used to map data of an arbitrary size to data of a fixed size.
 - The values returned by a hash function are called `hash values, hash codes, or simply hashes`.
@@ -3673,9 +4267,13 @@ palchecker("radar")
 ---
 
 
+# **Nonlinear data structures**
 
 
-# Graph
+---
+
+
+## Graph
 
 - A Graph is an ordered pair of `G = (V, E)`
   - comprising a set `V of vertices or nodes` together with a `set E of edges or arcs`,

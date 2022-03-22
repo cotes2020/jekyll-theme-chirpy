@@ -1,5 +1,8 @@
 package list;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 // public class LinkedPositionalList<E> implements PositionalList<E>  {
 //     private static class Node<E> implements Position<E>{ }
 //     private Node<E> header;
@@ -124,5 +127,65 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
         node.setPrev(null);
         size--;
         return ans;
+    }
+
+    /** Returns an iterable representation of the list's positions. */ 
+    public Iterable<Position<E>> positions( ) {
+        return new PositionIterable(); // create a new instance of the inner class 
+    }
+    //---------------- nested PositionIterable class ----------------
+    private class PositionIterable implements Iterable<Position<E>> {
+        public Iterator<Position<E>> iterator() {return new PositionIterator();} 
+    }
+    //---------------- nested PositionIterator class ----------------
+    private class PositionIterator implements Iterator<Position<E>> {
+        private Position<E> cursor = first(); // position of the next element to report
+        private Position<E> recent = null;    // position of last reported element
+        public boolean hasNext(){return cursor!=null;}
+        public Position<E> next() throws NoSuchElementException{
+            if(cursor==null) throw new NoSuchElementException("nothing left");
+            recent = cursor;
+            cursor = after(cursor);
+            return recent;
+        }
+        public void remove() throws NoSuchElementException{
+            if(recent==null) throw new NoSuchElementException("nothing to remove");
+            LinkedPositionalList.this.remove(recent); // remove from outer list
+            recent = null; // do not allow remove again until next is called
+        }
+    }
+
+
+    /** Returns an iterator of the elements stored in the list. */ 
+    public Iterator<E> iterator( ) { 
+        return new ElementIterator( ); 
+    }
+
+    //---------------- nested ElementIterator class ----------------
+    private class ElementIterator implements Iterator<E> {
+        Iterator<Position<E>> posIterator = new PositionIterator();
+        public boolean hasNext(){return posIterator.hasNext();}
+        public E next() {return posIterator.next().getElement();}
+        public void remove() {posIterator.remove();}
+    }
+
+
+    /** Insertion-sort of a positional list of integers into nondecreasing order */
+    public static void insertionSort(PositionalList<Integer> list) {
+        Position<Integer> marker = list.first(); // last position known to be sorted
+        while(marker!=list.last()){
+            Position<Integer> pivot = list.after(marker); // last position known to be sorted
+            int value = pivot.getElement();
+            int value_m = marker.getElement();
+            if(value > value_m) marker = pivot;
+            else {
+                Position<Integer> walk = marker;
+                while(walk!=list.first() && value < list.before(walk).getElement()){
+                    walk = list.before(walk);
+                }
+                list.remove(pivot);
+                list.addBefore(walk, value);
+            }
+        }
     }
 }

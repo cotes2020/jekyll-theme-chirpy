@@ -59,7 +59,7 @@ toc: true
     - [Generics](#generics)
       - [classic style](#classic-style)
       - [Generics Framework](#generics-framework)
-  - [设计模式](#设计模式)
+  - [object-oriented design pattern 设计模式](#object-oriented-design-pattern-设计模式)
     - [创建型](#创建型)
       - [单例模式 Singleton Pattern](#单例模式-singleton-pattern)
       - [工厂模式 Factory Pattern](#工厂模式-factory-pattern)
@@ -72,12 +72,13 @@ toc: true
       - [Iterator](#iterator)
       - [Template Method](#template-method)
     - [结构型](#结构型)
-      - [适配器 Adapter](#适配器-adapter)
+      - [Adapter 适配器](#adapter-适配器)
       - [Bridge](#bridge)
       - [Composite](#composite)
       - [Decorator](#decorator)
       - [Façade](#façade)
       - [Proxy](#proxy)
+    - [others](#others)
 - [2.2. Inheritance](#22-inheritance)
   - [Inheriting Variables and Methods](#inheriting-variables-and-methods)
     - [Mechanics of Defining a Subclass](#mechanics-of-defining-a-subclass)
@@ -1648,23 +1649,41 @@ public class Student implements Person{
 ---
 
 
-### Generics
+### Generics **Framework**
 
-- Java includes support for writing generic classes and methods that can operate on a variety of data types while often avoiding the need for explicit casts.
-- The generics framework allows us to define a class in terms of a set of formal type parameters, which can then be used as the declared type for variables, parameters, and return values within the class definition. Those formal type parameters are later specified when using the generic class as a type elsewhere in a program.
+- Java includes support for writing `generic classes and methods `that can operate on a variety of data types while often avoiding the need for explicit casts.
 
+- The generics framework allows us to
+  - `define a class in terms of a set of formal type parameters`, which can then be used as the declared type for variables, parameters, and return values within the class definition.
+  - Those formal type parameters are later specified when using the generic class as a type elsewhere in a program.
 
-- To better motivate the use of generics, we consider a simple case study. Often, we wish to treat a pair of related values as a single object, for example, so that the pair can be returned from a method.
-  - A solution is to define a new class whose instances store both values. This is our first example of an object-oriented design pattern known as the **composition design pattern**.
+```java
+public class Pair<A,B> { }
+Pair<String,Double> bid = new Pair<>("ORCL", 32.07);
+Pair<String,Double> bid = new Pair<String,Double>("ORCL", 32.07);
+```
+
+**case study**
+- to treat a pair of related values as a single object, so that the pair can be returned from a method.
   - example, we want `a pair to store a string and a floating-point number`, we could design a custom class for that purpose.
 
+  1. define a new class whose instances store both values. -> an object-oriented design pattern - **composition design pattern**
+
 - However, we might want to store a pair that consists of a Book object and an integer that represents a quantity.
-- **The goal of generic programming**: write a single class that can represent all such pairs.
+
+  2. **The goal of generic programming**: write a single class that can represent all such pairs.
 
 
 #### classic style
+
 - The generics framework was not a part of the original Java language;
-  - it was added as part of Java SE 5. Prior to that, generic programming was implemented by relying heavily on Java’s Object class, which is the universal supertype of all objects (including the wrapper types corresponding to primitives).
+  - it was added as part of Java SE 5.
+
+- Prior to that
+  - generic programming was implemented by relying heavily on Java’s `Object` class
+    - the universal supertype of all objects
+    - including the wrapper types corresponding to primitives
+
 - The drawback
   - involves use of the `accessors`, both of which formally return an Object reference.
   - code became rampant with such explicit casts.
@@ -1704,6 +1723,7 @@ public class Pair<A,B> {  // to enclose the sequence of formal type parameters.
   public A getFirst() { return first; }
   public B getSecond() { return second; }
 }
+
 Pair<String,Double> bid;
 bid = new Pair<>("ORCL", 32.07);               // rely on type inference
 bid = new Pair<String,Double>("ORCL", 32.07);  // give explicit types
@@ -1781,6 +1801,7 @@ public class GenericDemo {
 
 ```java
 public class ShoppingCart<T extends Sellable> {
+}
 ```
 
 - Within that class definition, we would then be allowed to call methods such as description() and lowestPrice() on any instances of type T.
@@ -1799,7 +1820,7 @@ public class ShoppingCart<T extends Sellable> {
 ---
 
 
-## 设计模式
+## object-oriented design pattern 设计模式
 
 所谓的设计模式是指人们在开发软件的过程中，对于一些普适需求而总结的设计模版。根据模式目的可以分为三类：
 
@@ -2056,14 +2077,19 @@ class ImageReaderFactory {
 - 对象的`结构型模式`不是对接口进行组合，而是描述如何对一些对象进行组合，从而实现新功能。
 
 
-#### 适配器 Adapter
+---
 
-意图：适配器(Adapter)将一个类的接口转化成为客户希望的另外一个接口。
+#### Adapter 适配器
+
+意图：Adapter 将一个类的接口转化成为客户希望的另外一个接口。
 - 假设A实现了Foo()接口，
 - 但是B希望A同样实现一个Bar()接口，事实上Foo()基本实现了Bar()接口功能。
 - Adapter模式就是设计一个新类C，C提供Bar()接口，但实现的方式是内部调用 A的Foo()。
 
 在实现层面上可以通过继承和组合两种方式达到目的：C可以继承A，或者C把A作为自己的成员变量。两者孰优孰劣需要视情况而定。
+
+
+---
 
 
 #### Bridge
@@ -2085,8 +2111,12 @@ class ImageReaderFactory {
 
 例子中Shape成为了完全抽象的部分，具体实现完全交给GDI类，若以后需要增加更多的平台支持，开发者也不需要添加更多的Shape子类，只需要扩展GDI即可。总之，抽象部分是和具体实现部分需要独立开来的时候，就可以使用Bridge模式。
 
+---
 
 #### Composite
+
+define a `single object` that is composed of `two or more other objects`.
+
 
 意图：将对象组合成为树形以表示层级结构，对于叶子和非叶子节点对象使用需要有一致性。
 
@@ -2096,6 +2126,7 @@ Composite模式强调在这种层级结构下，
 - 而对于非叶子节点操作不仅仅需要操作自身，还要操作所管理的子节点。
 - 至于遍历子节点和处理顺序是由应用决定的，在Composite模式里面并不做具体规定。
 
+---
 
 #### Decorator
 
@@ -2131,6 +2162,15 @@ Adapter,Decorator以及Proxy之间比较相近，虽然说意图上差别很大�
 * Adapter模式的接口一定要和对接的接口相同。
 * Decorator模式的接口一定要包含原有接口，通常来说还要添加新接口。
 * Proxy模式完全可以重新定义一套新的接口
+
+---
+
+### others
+
+- Template method
+- Position
+- Comparator
+- Locator
 
 
 ---
