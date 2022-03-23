@@ -80,7 +80,9 @@ theme_mode:   dark
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://raw.githubusercontent.com/cotes2020/chirpy-images/main'
+
+#Note: When upgrading, this cannot be synced or updated, otherwise images cannot display
+#img_cdn: 'https://raw.githubusercontent.com/cotes2020/chirpy-images/main'
 
 # the avatar on sidebar, support local or CORS resources
 #avatar: '/commons/avatar.jpg'
@@ -91,7 +93,7 @@ avatar: 'assets/img/favicons/favicon.ico'
 toc: true
 
 comments:
-  active: true         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: disqus         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname:  'hulua-tech-blog'  # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
