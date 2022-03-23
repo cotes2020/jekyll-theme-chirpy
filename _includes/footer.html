@@ -5,6 +5,13 @@
 <footer class="d-flex w-100 justify-content-center">
   <div class="d-flex justify-content-between align-items-center">
     <div class="footer-left">
+      
+      <!-- For site level visit count-->
+      <p class="mb-0">
+        <span id="busuanzi_container_site_pv">Welcome, you are the <span id="busuanzi_value_site_pv"></span>-th visitor of this site</span>
+      </p>
+
+      
       <p class="mb-0">
         © {{ 'now' | date: "%Y" }}
         <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
@@ -13,6 +20,9 @@
           title="{{ site.data.locales[lang].copyright.verbose }}">{{ site.data.locales[lang].copyright.brief }}</span>
         {% endif %}
       </p>
+
+
+
     </div>
 
     <div class="footer-right">
@@ -34,4 +44,5 @@
     </div>
 
   </div> <!-- div.d-flex -->
+  
 </footer>
