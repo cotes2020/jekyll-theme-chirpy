@@ -10,6 +10,39 @@
   font-family: 'Lato', 'Microsoft Yahei', sans-serif;
 }
 
+%section {
+  #core-wrapper & {
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+
+    &:focus {
+      outline: none; /* avoid outline in Safari */
+    }
+  }
+}
+
+%anchor {
+  .anchor {
+    font-size: 80%;
+  }
+
+  @media (hover: hover) {
+    .anchor {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.25s ease-in, visibility 0s ease-in 0.25s;
+    }
+
+    &:hover {
+      .anchor {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.25s ease-in, visibility 0s ease-in 0s;
+      }
+    }
+  }
+}
+
 %tag-hover {
   background: var(--tag-hover);
   transition: background 0.35s ease-in-out;
@@ -39,35 +72,42 @@
   transition: color 0.35s ease-in-out;
 }
 
+%no-cursor {
+  user-select: none;
+}
+
 %no-bottom-border {
   border-bottom: none;
-}
-
-%section {
-  #post-wrapper & {
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-}
-
-%anchor {
-  padding-top: 3.5rem;
-  margin-top: -2.5rem;
 }
 
 %cursor-pointer {
   cursor: pointer;
 }
 
-/* ---------- scss mixin --------- */
+%normal-font-style {
+  font-style: normal;
+}
 
-@mixin no-text-decoration {
-  text-decoration: none;
+%img-caption {
+  + em {
+    display: block;
+    text-align: center;
+    font-style: normal;
+    font-size: 80%;
+    padding: 0;
+    color: #6d6c6c;
+  }
 }
 
 %sidebar-links {
   color: rgba(117, 117, 117, 0.9);
   user-select: none;
+}
+
+/* ---------- scss mixin --------- */
+
+@mixin no-text-decoration {
+  text-decoration: none;
 }
 
 @mixin ml-mr($value) {
@@ -84,26 +124,10 @@
   opacity: 0.6;
 }
 
-@mixin semi-bold {
-  font-weight: 600;
-}
-
 @mixin label($font-size: 1rem, $font-weight: 600, $color: var(--label-color)) {
   color: $color;
   font-size: $font-size;
   font-weight: $font-weight;
-}
-
-@mixin panel-label {
-  @include label(inherit);
-
-  display: block;
-  line-height: 1.2;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  margin-top: 0;
-  margin-bottom: 0;
-  letter-spacing: -0.02em;
 }
 
 @mixin align-center {
@@ -112,4 +136,16 @@
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
+}
+
+@mixin prompt($type, $fw-icon, $icon-weight: 900) {
+  &.prompt-#{$type} {
+    background-color: var(--prompt-#{$type}-bg);
+
+    &::before {
+      content: $fw-icon;
+      color: var(--prompt-#{$type}-icon-color);
+      font-weight: $icon-weight;
+    }
+  }
 }

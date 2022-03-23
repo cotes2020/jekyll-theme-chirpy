@@ -11,7 +11,7 @@ const insert = require('gulp-insert');
 const fs = require('fs');
 
 const JS_SRC = '_javascript';
-const JS_DEST = `assets/js/dist/`;
+const JS_DEST = `assets/js/dist`;
 
 function concatJs(files, output) {
   return src(files)
@@ -66,8 +66,17 @@ const pageJs = () => {
       `${JS_SRC}/commons/*.js`,
       `${JS_SRC}/utils/checkbox.js`,
       `${JS_SRC}/utils/img-extra.js`,
-      `${JS_SRC}/utils/clipboard.js`
+      `${JS_SRC}/utils/clipboard.js`,
+      `${JS_SRC}/utils/smooth-scroll.js`
     ], 'page'
+  );
+};
+
+const miscJs = () => {
+  return concatJs([
+      `${JS_SRC}/commons/*.js`,
+      `${JS_SRC}/utils/locale-datetime.js`
+    ], 'misc'
   );
 };
 
@@ -76,7 +85,8 @@ const pvreportJs = () => {
   return concatJs(`${JS_SRC}/utils/pageviews.js`, 'pvreport');
 };
 
-const buildJs = parallel(commonsJs, homeJs, postJs, categoriesJs, pageJs, pvreportJs);
+const buildJs = parallel(
+  commonsJs, homeJs, postJs, categoriesJs, pageJs, miscJs, pvreportJs);
 
 exports.build = series(buildJs, minifyJs);
 
@@ -85,8 +95,7 @@ exports.liveRebuild = () => {
 
   watch([
       `${ JS_SRC }/commons/*.js`,
-      `${ JS_SRC }/utils/*.js`,
-      `${ JS_SRC }/lib/*.js`
+      `${ JS_SRC }/utils/*.js`
     ],
     buildJs
   );

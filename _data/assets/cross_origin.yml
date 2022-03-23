@@ -1,0 +1,62 @@
+# CDNs
+
+cdns:
+  # Google Fonts
+  - url: https://fonts.googleapis.com
+  - url: https://fonts.gstatic.com
+    args: crossorigin
+  - url: https://fonts.googleapis.com
+  # jsDelivr CDN
+  - url: https://cdn.jsdelivr.net
+
+# fonts
+
+webfonts: https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap
+
+# Libraries
+
+jquery:
+  js: https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
+
+bootstrap:
+  css: https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css
+  js: https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js
+
+bootstrap-toc:
+  css: https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css
+  js: https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js
+
+fontawesome:
+  css: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css
+
+search:
+  js: https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js
+
+mermaid:
+  js: https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js
+
+dayjs:
+  js:
+    common: https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js
+    locale: https://cdn.jsdelivr.net/npm/dayjs@1/locale/:LOCALE.min.js
+    relativeTime: https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.min.js
+    localizedFormat: https://cdn.jsdelivr.net/npm/dayjs@1/plugin/localizedFormat.min.js
+
+countup:
+  js: https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js
+
+magnific-popup:
+  css: https://cdn.jsdelivr.net/npm/magnific-popup@1/dist/magnific-popup.min.css
+  js: https://cdn.jsdelivr.net/npm/magnific-popup@1/dist/jquery.magnific-popup.min.js
+
+lozad:
+  js: https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js
+
+clipboard:
+  js:  https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
+
+polyfill:
+  js: https://polyfill.io/v3/polyfill.min.js?features=es6
+
+mathjax:
+  js: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
