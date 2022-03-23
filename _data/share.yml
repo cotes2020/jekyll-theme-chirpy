@@ -13,7 +13,7 @@ platforms:
   -
     type: Telegram
     icon: "fab fa-telegram"
-    link: "https://telegram.me/share?text=TITLE&url=URL"
+    link: "https://t.me/share/url?url=URL&text=TITLE"
 
   # Uncomment below if you need to.
   # -

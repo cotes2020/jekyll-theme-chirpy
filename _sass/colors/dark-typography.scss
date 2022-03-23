@@ -8,8 +8,6 @@
   --mask-bg: rgb(68, 69, 70);
   --main-wrapper-bg: rgb(27, 27, 30);
   --main-border-color: rgb(44, 45, 45);
-  --scrollbar-track-bg: rgba(0, 0, 0, 0.3);
-  --scrollbar-thumb-bg: rgb(173 171 171 / 50%);
 
   /* Common color */
   --text-color: rgb(175, 176, 177);
@@ -67,6 +65,19 @@
   --card-bg: rgb(39, 40, 43);
   --card-border-color: rgb(53, 53, 60);
   --card-box-shadow: var(--main-wrapper-bg);
+  --preview-img-bg: radial-gradient(circle, rgb(22 22 24) 0%, rgb(32 32 32) 100%);
+  --kbd-wrap-color: #6a6a6a;
+  --kbd-text-color: #d3d3d3;
+  --kbd-bg-color: #242424;
+  --prompt-text-color: rgb(216 212 212 / 75%);
+  --prompt-tip-bg: rgba(77, 187, 95, 0.2);
+  --prompt-tip-icon-color: rgb(5 223 5 / 68%);
+  --prompt-info-bg: rgb(7 59 104 / 80%);
+  --prompt-info-icon-color: #0075d1;
+  --prompt-warning-bg: rgb(90 69 3 / 95%);
+  --prompt-warning-icon-color: rgb(255 165 0 / 80%);
+  --prompt-danger-bg: rgb(86 28 8 / 80%);
+  --prompt-danger-icon-color: #cd0202;
 
   /* tags */
   --tag-border: rgb(59, 79, 88);
@@ -84,12 +95,8 @@
   --timeline-color: rgb(63, 65, 68);
   --timeline-year-dot-color: var(--timeline-color);
 
-  /* Footer */
-  --footer-bg-color: var(--main-wrapper-bg);
-  --footer-link: rgb(171, 171, 171);
-
-  .post-content img {
-    filter: brightness(90%);
+  .post img[data-src] {
+    filter: brightness(95%);
   }
 
   hr {
@@ -139,7 +146,12 @@
         rgb(39, 39, 45),
         rgb(26, 26, 30)
       );
-
   }
 
-} // dark-scheme
+  color-scheme: dark;
+
+  #disqus_thread {
+    color-scheme: none;
+  }
+
+} /* dark-scheme */

@@ -6,7 +6,7 @@ layout: page
 {% include lang.html %}
 
 {% assign pinned = site.posts | where: "pin", "true" %}
-{% assign default = site.posts | where_exp: "item", "item.pin != true" %}
+{% assign default = site.posts | where_exp: "item", "item.pin != true and item.hidden != true" %}
 
 {% assign posts = "" | split: "" %}
 
@@ -54,27 +54,30 @@ layout: page
     <div class="post-content">
       <p>
         {% include no-linenos.html content=post.content %}
-        {{ content | markdownify | strip_html | truncate: 200 }}
+        {{ content | markdownify | strip_html | truncate: 200 | escape }}
       </p>
     </div>
 
-    <div class="post-meta text-muted d-flex justify-content-between">
+    <div class="post-meta text-muted d-flex">
 
-      <div>
+      <div class="mr-auto">
         <!-- posted date -->
         <i class="far fa-calendar fa-fw"></i>
-        {% include timeago.html date=post.date tooltip=true %}
+        {% include timeago.html date=post.date tooltip=true capitalize=true %}
 
         <!-- time to read -->
         <i class="far fa-clock fa-fw"></i>
         {% include read-time.html content=post.content %}
 
-        <!-- page views -->
-        {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
-        <i class="far fa-eye fa-fw"></i>
-        <span id="pv_{{-post.title-}}" class="pageviews">
-          <i class="fas fa-spinner fa-spin fa-fw"></i>
-        </span>
+        <!-- categories -->
+        {% if post.categories.size > 0 %}
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          {% for category in post.categories %}
+            {{ category }}
+            {%- unless forloop.last -%},{%- endunless -%}
+          {% endfor %}
+          </span>
         {% endif %}
       </div>
 
