@@ -36,11 +36,12 @@ layout: default
           {% include read-time.html content=content prompt=true %}
 
           
+          <!-- Note here is page pv, not site pv-->
           <span id="pv" class="pageviews">
-            <span id="busuanzi_container_site_pv">read by <span id="busuanzi_value_site_pv"></span> people</span>
+            <span id="busuanzi_container_page_pv">read by <span id="busuanzi_value_page_pv"></span> people</span>
           </span>
 
-          <!-- page views -->
+          <!-- page views from superProxy, outdated -->
           {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
           <span id="pv" class="pageviews">
             <i class="fas fa-spinner fa-spin fa-fw"></i>
