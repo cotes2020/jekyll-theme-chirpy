@@ -1,7 +1,7 @@
 ---
 title: Go Concurrency - Use Channel to Simulate Mutex
 author: Hulua
-date: 2021-03-22 20:55:00 +0800
+date: 2022-03-22 20:55:00 +0800
 categories: [Go, Concurrency]
 tags: [go, concurrency, goroutine]
 ---
