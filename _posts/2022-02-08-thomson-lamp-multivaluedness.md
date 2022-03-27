@@ -21,7 +21,7 @@ $$
  & = \sum_{n=1}^\infty \frac{1}{2^n} \\
  \implies S - \frac{1}{2} S & = \sum_{n=0}^\infty \frac{1}{2^n} - \sum_{n=1}^\infty \frac{1}{2^n} \\
  \frac{1}{2} S & = \frac{1}{2^0} \\
- \implies S & = 2 \: . \: \blacksquare
+ \implies S & = 2
 \end{align}
 $$
 

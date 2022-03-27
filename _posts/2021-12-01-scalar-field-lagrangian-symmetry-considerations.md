@@ -9,7 +9,7 @@ Welcome to another post on, well, you guessed it: scalar field theory. Today, we
 
 Common arguments for assuming the form of the Lagrangian in question either take motivation from too specific systems such as chains (which are promoted to scalar fields using a procedure that does not work for higher-rank field theories), or extremely formal analogies with the point-particle Lagrangian. I will, instead, use an approach I find easy to remember.
 
-Since the method has to do with the stress-energy tensor for scalar fields and what it physically means, most of this post elaborates on the same. However, if you are aware of the logic and properties of the stress-energy tensor, feel free to skip to [the end](#scalar_field_lagrangian).
+Since the method has to do with the energy-momentum tensor for scalar fields and what it physically means, most of this post elaborates on the same. However, if you are aware of the logic and properties of the energy-momentum tensor, feel free to skip to [the end](#scalar_field_lagrangian).
 
 ## Canonical 4-momentum field
 
@@ -85,15 +85,15 @@ $$
 
 Voila, we have found a conserved Noether current for scalar fields!
 
-## Stress-energy tensor
+## Energy-momentum tensor
 
 ### Definition
 
-In the above derivation, $$\left[ \pi^\mu \partial_\nu \phi - \delta^\mu_{\phantom{\mu} \nu} \mathcal{L} \right]$$ forms the components of the canonical stress-energy tensor with a lowered index,
+In the above derivation, $$\left[ \pi^\mu \partial_\nu \phi - \delta^\mu_{\phantom{\mu} \nu} \mathcal{L} \right]$$ forms the components of the canonical energy-momentum tensor with a lowered index,
 
 $$T^\mu_{\phantom{\mu} \nu} = \pi^\mu \partial_\nu \phi - \delta^\mu_{\phantom{\mu} \nu} \mathcal{L}$$
 
-Generally, the stress-energy tensor (motivated by the dynamics of discrete sets of particles) is employed as a $$\left( 2, 0 \right)$$ or $$\left( 0, 2 \right)$$ tensor. We can readily obtain the same by raising/lowering indices in the tensor above:
+Generally, the energy-momentum tensor (motivated by the dynamics of discrete sets of particles) is employed as a $$\left( 2, 0 \right)$$ or $$\left( 0, 2 \right)$$ tensor. We can readily obtain the same by raising/lowering indices in the tensor above:
 
 $$T^{\mu \nu} =  \pi^\mu \partial^\nu \phi - \eta^{\mu \nu} \: \mathcal{L}$$
 
@@ -109,11 +109,11 @@ $$
 
 which is a set of $$4$$ equations, one for each $$\nu$$ [^2] .
 
-[^2]: We could bring the metric out from the partial derivative as in inertial coordinates, the metric is constant. In non-inertial coordinates, we'd instead work with covariant derivatives, and assuming metric compatibility of the connection, the metric can, again, be treated as a constant. Therefore, the expression for the stress-energy tensor in curvilinear coordinates and even general relativity (where it is dubbed the 'canonical' stress-energy tensor to distinguish it from the stress-energy tensor appearing in the Einstein field equations) is trivially obtainable: we simple replace the Minkowski metric with a metric tensor.
+[^2]: We could bring the metric out from the partial derivative as in inertial coordinates, the metric is constant. In non-inertial coordinates, we'd instead work with covariant derivatives, and assuming metric compatibility of the connection, the metric can, again, be treated as a constant. Therefore, the expression for the energy-momentum tensor in curvilinear coordinates and even general relativity (where it is dubbed the 'canonical' energy-momentum tensor to distinguish it from the energy-momentum tensor appearing in the Einstein field equations) is trivially obtainable: we simple replace the Minkowski metric with a metric tensor.
 
 ### Physical interpretation
 
-To understand the physical meaning of the stress-energy tensor, let us express its vanishing divergence as a continuity equation. Recall that:
+To understand the physical meaning of the energy-momentum tensor, let us express its vanishing divergence as a continuity equation. Recall that:
 
 $$\partial_\mu T^{\mu \nu} = 0$$
 
@@ -123,13 +123,13 @@ $$\partial_0 T^{0 \nu} + \partial_i T^{i \nu} = 0$$
 
 We may interpret this as the continuity equation for $$\pi^\nu$$. Then, $$T^{i \nu}$$ is the flux of $$\pi^\nu$$ through a surface of constant $$x^i$$. Or in spacetime, $$T^{\mu \nu}$$ is the flux of $$\pi^\nu$$ through a surface of constant $$x^\mu$$.
 
-So, this is what the stress-energy tensor really encodes: _the flux of canonical 4-momentum in spacetime_ [^3] .
+So, this is what the energy-momentum tensor really encodes: _the flux of canonical 4-momentum in spacetime_ [^3] .
 
-[^3]: In general relativity, the canonical stress-energy tensor does not necessarily encode momentum flux like the stress-energy tensor appearing in the Einstein field equations. However, the distinction is not important in special relativity.
+[^3]: In general relativity, the canonical energy-momentum tensor does not necessarily encode momentum flux like the energy-momentum tensor appearing in the Einstein field equations. However, the distinction is not important in special relativity.
 
 ### Symmetry
 
-In the above picture of the stress-energy tensor, we find an interesting property: the stress-energy tensor is totally symmetric, i.e. $$T^{\mu \nu} = T^{\nu \mu}$$. Let's see why.
+In the above picture of the energy-momentum tensor, we find an interesting property: the energy-momentum tensor is totally symmetric, i.e. $$T^{\mu \nu} = T^{\nu \mu}$$. Let's see why.
 
 Recall that $$T^{\mu \nu}$$ is the flux of $$\pi^\nu$$ perpendicular to $$\pmb{e}_\mu$$. Now consider what it means for $$\pi^\nu$$ to have a flux perpendicular to $$\pmb{e}_\mu$$ : energy density $$\pi^0$$ is being transported along $$\pmb{e}_\mu$$ with conjugate-momentum $$\pi^i$$ in the $$\pmb{e}_\nu$$ direction. But due to conjugate-momentum in the direction $$\pmb{e}_\nu$$, there must flux perpendicular to the same, so $$T^{\nu \mu} = T^{\mu \nu}$$.
 
@@ -137,7 +137,7 @@ Recall that $$T^{\mu \nu}$$ is the flux of $$\pi^\nu$$ perpendicular to $$\pmb{e
 
 ## Scalar field Lagrangian
 
-Recalling the stress-energy tensor for a scalar field and its symmetry, we can assert,
+Recalling the energy-momentum tensor for a scalar field and its symmetry, we can assert,
 
 $$\pi^\mu \partial^\nu \phi - \eta^{\mu \nu} \mathcal{L} = \pi^\nu \partial^\mu \phi - \eta^{\nu \mu} \mathcal{L}$$
 
