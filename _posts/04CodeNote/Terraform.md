@@ -408,7 +408,6 @@ module "servers" {
 ```
 
 
-
 **Published Modules**
 
 In addition to modules from the local filesystem, Terraform can load modules from a public or private registry. This makes it possible to publish modules for others to use, and to use modules that others have published.
