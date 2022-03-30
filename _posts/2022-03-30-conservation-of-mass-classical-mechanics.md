@@ -48,7 +48,7 @@ We have thus found a time-invariant quantity associated with the said symmetry. 
 
 ### Symmetry under linear translation
 
-Suppose we displace a system linearly along a vector $$\pmb{Q}$$. The infinitesimal transformation dictated by $$\pmb{Q}$$ is then of the form,
+Suppose we translate a system linearly along a vector $$\pmb{X}$$. The infinitesimal transformation dictated by $$\pmb{X}$$ is then of the form,
 
 $$\pmb{x}_{i} \to \pmb{x}_{i} + \epsilon \: \pmb{X}$$
 
