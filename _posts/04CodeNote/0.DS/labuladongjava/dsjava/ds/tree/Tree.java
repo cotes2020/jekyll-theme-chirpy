@@ -16,5 +16,6 @@ public interface Tree<E> extends Iterable<E> {
     boolean isEmpty();
 
     Iterator<E> iterator();
+    
     Iterable<Position<E>> positions();
 }

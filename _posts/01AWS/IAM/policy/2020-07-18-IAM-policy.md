@@ -7,7 +7,35 @@ toc: true
 image:
 ---
 
-[toc]
+- [IAM policy](#iam-policy)
+  - [IAM JSON policy elements reference](#iam-json-policy-elements-reference)
+    - [IAM JSON policy elements: Version](#iam-json-policy-elements-version)
+    - [IAM JSON policy elements: Id](#iam-json-policy-elements-id)
+    - [IAM JSON policy elements: Statement (required)](#iam-json-policy-elements-statement-required)
+    - [IAM JSON policy elements: Sid (statement ID)](#iam-json-policy-elements-sid-statement-id)
+    - [IAM JSON policy elements: Effect (required)](#iam-json-policy-elements-effect-required)
+    - [AWS JSON policy elements: Principal](#aws-json-policy-elements-principal)
+    - [AWS JSON policy elements: NotPrincipal](#aws-json-policy-elements-notprincipal)
+    - [IAM JSON policy elements: Action](#iam-json-policy-elements-action)
+    - [IAM JSON policy elements: NotAction](#iam-json-policy-elements-notaction)
+    - [IAM JSON policy elements: Resource](#iam-json-policy-elements-resource)
+    - [IAM JSON policy elements: NotResource](#iam-json-policy-elements-notresource)
+    - [IAM JSON policy elements: Condition](#iam-json-policy-elements-condition)
+      - [String condition operators](#string-condition-operators)
+      - [Numeric condition operators](#numeric-condition-operators)
+      - [Date condition operators](#date-condition-operators)
+      - [Boolean condition operators](#boolean-condition-operators)
+      - [Binary condition operators](#binary-condition-operators)
+      - [IP address condition operators](#ip-address-condition-operators)
+      - [Amazon Resource Name (ARN) condition operators](#amazon-resource-name-arn-condition-operators)
+      - [...IfExists condition operators](#ifexists-condition-operators)
+      - [Condition operator to check existence of condition keys](#condition-operator-to-check-existence-of-condition-keys)
+    - [Variables and tags](#variables-and-tags)
+    - [Supported data types](#supported-data-types)
+  - [example](#example)
+  - [AWS: Allows access based on date and time](#aws-allows-access-based-on-date-and-time)
+  - [AWS: Denies access to AWS based on the requested Region](#aws-denies-access-to-aws-based-on-the-requested-region)
+  - [AWS: Denies access to AWS based on the source IP](#aws-denies-access-to-aws-based-on-the-source-ip)
 
 ---
 

@@ -1,4 +1,11 @@
 
+
+
+
+
+
+
+
 - [ApsaraDB RDS](#apsaradb-rds)
   - [benefit](#benefit)
   - [RDS editions](#rds-editions)
@@ -81,7 +88,7 @@
    6. scenario: Production databases for large- and medium-sized enterprises, such as online retailers, automobile companies, and ERP providers
 
 
-4. Enterprise Edition	
+4. **Enterprise Edition**
    1. **RDS MySQL 5.7** supports the Enterprise Edition.
    2. the DB system has `one master instance and two slave instances`. 
    3. Data is replicated between the master and slave instances through multiple replicas to guarantee data consistency and finance-level reliability. 
