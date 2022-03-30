@@ -277,9 +277,7 @@ Through the two popular examples of complex numbers and quaternions, we have see
 
 Some problematic aspects of our methods used so far are:
 
-1. The matrix representation for the action of $$\text{O} \left( 4 \right)$$ on $$\mathbb{R}^4$$ was found by contracting its 4 degrees of freedom into 2 independent complex numbers, without justification. Is there a more 'honest' method to find the form of $$\pmb{\Lambda} \left( \pmb{\phi} \right)$$, solely given the following? Moreover, how can we use the following coordinate-independent fact to find $$\pmb{\Lambda}$$ in arbitrary coordinates, as opposed to the convenient Cartesian coordinates?
-
-$$\det \left( \pmb{\Lambda} \left( \pmb{\phi} \right) \right) = \left\langle \pmb{\phi}, \pmb{\phi} \right\rangle$$
+1. The matrix representation for the action of $$\text{O} \left( 4 \right)$$ on $$\mathbb{R}^4$$ was found by contracting its 4 degrees of freedom into 2 independent complex numbers, without justification. Is there a more 'honest' method to find the form of $$\pmb{\Lambda} \left( \pmb{\phi} \right)$$? Moreover, how can we find $$\pmb{\Lambda}$$ in arbitrary coordinates, as opposed to the convenient Cartesian coordinates?
 
 2. We had to find the components of $$B^{i^\prime}_{\phantom{i^\prime} k i}$$ by brute force. Is there a more efficient, symbolical method to directly express the whole tensor $$B^{i^\prime}_{\phantom{i^\prime} k i}$$ in terms of known objects such as the given Jacobian $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$?
 
