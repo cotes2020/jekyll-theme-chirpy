@@ -14,7 +14,9 @@
   - [Variables and Outputs](#variables-and-outputs)
     - [Input Variables](#input-variables)
       - [Arguments](#arguments)
+    - [Output Values](#output-values)
     - [Modules](#modules)
+    - [局部参数（Local Values）](#局部参数local-values)
 - [Template](#template)
   - [AWS](#aws)
     - [provision an EC2 instance](#provision-an-ec2-instance)
@@ -230,6 +232,13 @@ module "aws_vpc" {
 ## Variables and Outputs
 
 
+- Input variables are like function arguments.
+- Output values are like function return values.
+- Local values are like a function's temporary local variables.
+
+
+
+
 ---
 
 ### Input Variables
@@ -267,6 +276,8 @@ variable "docker_ports" {
 
 
 ```
+
+---
 
 
 #### Arguments
@@ -316,8 +327,6 @@ variable "image_id" {
 
 
 
-
-
 `sensitive`
 
 - Limits Terraform UI output when the variable is used in configuration.
@@ -331,12 +340,45 @@ variable "image_id" {
 
 - Specify if the variable can be null within the module.
 
+---
+
+
+
+### Output Values
+
+- 在很多时候，我们需要将在云环境上创建的实例某些属性暴露给用户，比如创建的虚拟机需要暴露网卡地址，创建的web server需要暴露访问地址
+- Output Values 可以将实例的属性或者组合的属性暴露给用户，最大程度降低用户访问实例资源的可能。
+- Output可以有很多设置
+  - 比如sensitive可以保证输出参数在控制台不可见，但是在模块内部可见。
+  - depends_on可以显示指定出参的依赖资源
+
+
+
+举个栗子：我们需要创建一个mysql数据库，用户实际上不需要关心mysql创建的虚拟机是什么，但是用户需要知道mysql虚拟的IP、访问端口等，因此我们通过定义Output来将mysql的相关信息返回
+
+```bash
+output "mysql_ip" {
+  value = aws_instance.server.private_ip
+}
+
+output "mysql_port" {
+  value = var.port
+}
+# 第一个参数mysql_ip是创建的虚拟机实例的IP地址，
+# 第二个参数mysql_port是用户输入或者默认的端口地址
+```
 
 
 
 ---
 
 ### Modules
+
+- 模块可以包含多个Terraform配置文件（模板）
+- 主要是为了方便资源重用、复杂场景模块化需要。
+- 在同一个工作目录内定义一系列.tf文件，来整合一个复杂场景，充分利用一些基础资源等等。
+
+
 
 Modules are containers for multiple resources that are used together.
 - A module consists of a collection of `.tf and/or .tf.json` files kept together in a directory.
@@ -372,11 +414,100 @@ module "servers" {
 In addition to modules from the local filesystem, Terraform can load modules from a public or private registry. This makes it possible to publish modules for others to use, and to use modules that others have published.
 
 
+---
 
 
 
 
 
+### 局部参数（Local Values）
+
+- 局部参数可以在某一个模块内定义
+- 主要用途是方便在同一个模块中多次使用
+  - locals 通常在 module 內用於重複使用，
+  - 常常用來將 variable 的值拿來運算或者特殊處理。
+
+
+- 一般来说是常量。
+
+- Once a local value is declared, you can reference it in expressions as `local.<NAME>`
+
+```bash
+# A set of related local values can be declared together 
+locals {
+  service_name = "forum"
+  owner        = "Community Team"
+}
+
+locals {
+  # Ids for multiple sets of EC2 instances, merged together
+  instance_ids = concat(aws_instance.blue.*.id, aws_instance.green.*.id)
+}
+
+locals {
+  # Common tags to be assigned to all resources
+  common_tags = {
+    Service = local.service_name
+    Owner   = local.owner
+  }
+}
+```
+
+
+
+1. 多個 variable 一次餵給 resource。
+
+```bash
+# Define the common tags for all resources
+locals {
+  common_tags = {
+    Component   = "awesome-app"
+    Environment = "production"
+  }
+}
+
+# Create a resource that blends the common tags with instance-specific tags.
+resource "aws_instance" "example" {
+  # ...
+  tags = local.common_tags
+}
+
+resource "aws_instance" "server" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+  tags = "${
+    merge(
+      local.common_tags,
+      map(
+        "Name", "awesome-app-server",
+        "Role", "server"
+      )
+    )
+  }"
+}
+```
+
+
+2. locals 內可以包含 locals 進行多次處理後才給 resource。
+
+```bash
+# Ids for multiple sets of EC2 instances, merged together
+locals {
+  instance_ids = "${concat(aws_instance.blue.*.id, aws_instance.green.*.id)}"
+}
+
+# A computed default name prefix
+locals {
+  default_name_prefix = "${var.project_name}-web"
+  name_prefix         = "${var.name_prefix != "" ? var.name_prefix : local.default_name_prefix}"
+}
+
+# Local values can be interpolated elsewhere using the "local." prefix.
+resource "aws_s3_bucket" "files" {
+  bucket = "${local.name_prefix}-files"
+  # ...
+}
+```
 
 
 
