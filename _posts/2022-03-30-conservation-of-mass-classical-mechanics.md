@@ -158,4 +158,4 @@ Presto, the total mass of a closed system is conserved!
 
 ## Conclusion
 
-From the above exercise, we see that the conservation of mass is not an isolated experimental fact in classical mechanics. In fact, it follows from two very fundamental ideas, the conservation of total linear momentum and principle of relativity. The former in turn emerges from the symmetry of systems under infinitesimal linear translations. The principle of relativity, on the other hand, is a consequence of the equations of motion being second-order, thereby making the dynamics of a system invariant.
+From the above exercise, we see that the conservation of mass is not an isolated experimental fact in classical mechanics. In fact, it follows from two very fundamental ideas, the conservation of total linear momentum and principle of relativity. The former in turn emerges from the symmetry of systems under infinitesimal linear translations. The principle of relativity, on the other hand, is a consequence of the equations of motion being second-order, thereby making the dynamics of a system invariant no matter the reference frame.
