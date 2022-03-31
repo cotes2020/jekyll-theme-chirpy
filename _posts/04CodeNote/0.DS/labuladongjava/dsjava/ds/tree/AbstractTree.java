@@ -108,5 +108,27 @@ public abstract class AbstractTree<E> implements Tree<E> {
     }
 
 
+    // /∗∗ Prints parenthesized representation of subtree of T rooted at p. ∗/
+    public static <E> void parenthesize(Tree<E> T, Position<E> p) {
+        System.out.print(p.getElement());
+        if (T.isInternal(p)) {
+            boolean firstTime = true;
+            for(Position<E> c : T.children(p)){
+                System.out.print( (firstTime ? " (" : ", ") ); // determine proper punctuation
+                firstTime = false;
+                parenthesize(T, c);
+            }
+            System.out.print(")");
+        }
+    }
+
+
+    public static <E> int layout(BinaryTree<E> T, Position<E> p, int d, int x) { 
+        if (T.left(p) != null) x = layout(T, T.left(p), d+1, x);
+        p.getElement().setX(x++);
+        p.getElement().setY(d);
+        if (T.left(p) != null) x = layout(T, T.left(p), d+1, x);
+        return x;
+    }
 
 }

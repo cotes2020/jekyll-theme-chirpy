@@ -131,6 +131,9 @@ source:
 ---
 
 
+## overall
+
+
 ![Screen Shot 2022-03-12 at 11.19.28](https://i.imgur.com/E5U3yIk.png)
 
 - `interface` is a type definition that includes public declarations of various methods, an interface cannot include definitions for any of those methods.
@@ -169,6 +172,31 @@ public abstract class AbstractTree<E> implements Tree<E> {
     public boolean isEmpty(){return size()==0;}
 }
 ```
+
+---
+
+## pic
+
+
+![Screen Shot 2022-03-30 at 23.09.46](https://i.imgur.com/d5zsdsm.png)
+
+![Screen Shot 2022-03-30 at 23.09.11](https://i.imgur.com/fh9u45n.png)
+
+![Screen Shot 2022-03-30 at 23.10.31](https://i.imgur.com/EVre39t.png)
+
+![Screen Shot 2022-03-30 at 23.11.03](https://i.imgur.com/vTpySID.png)
+
+![Screen Shot 2022-03-30 at 23.11.30](https://i.imgur.com/jXuGFMr.png)
+
+![Screen Shot 2022-03-30 at 23.11.52](https://i.imgur.com/J5zPC2H.png)
+
+![Screen Shot 2022-03-30 at 23.12.35](https://i.imgur.com/mjpWPaR.png)
+
+![Screen Shot 2022-03-30 at 23.13.05](https://i.imgur.com/AJmKGPj.png)
+
+![Screen Shot 2022-03-30 at 23.14.03](https://i.imgur.com/FHFB955.png)
+
+
 
 ---
 
@@ -4235,6 +4263,11 @@ palchecker("radar")
 
 
 
+---
+
+
+
+## Priority Queues
 
 
 
