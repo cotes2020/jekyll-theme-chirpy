@@ -136,11 +136,11 @@ Now, we will apply a Galilean transformation on the original frame. By the princ
 $$
 \begin{align}
 \frac{d}{dt} \sum_i m_i \: \pmb{R} \left( \dot{\pmb{x}}_i + \pmb{v} \right) & = \pmb{0} \\
-\frac{d}{dt} \sum_i m_i \pmb{R} \: \dot{\pmb{x}}_i + \frac{d}{dt} \left( \sum_i m_i \right) \pmb{R} \: \pmb{v} & = \pmb{0}
+\frac{d}{dt} \sum_i m_i \pmb{R} \: \dot{\pmb{x}}_i + \frac{d}{dt} \left( \sum_i m_i \: \pmb{R} \: \pmb{v} \right) & = \pmb{0}
 \end{align}
 $$
 
-As $$\pmb{R}$$ is a linear transformation and $$\dot{R} = \pmb{O}$$,
+As $$\pmb{R}$$ is a linear transformation and $$\dot{R} = \pmb{O}$$ and $$\dot{\pmb{v}} = \pmb{0}$$,
 
 $$
 \begin{align}
