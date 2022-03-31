@@ -66,9 +66,9 @@ Thus, the total momentum, specifically _linear_ momentum, of a system is conserv
 
 For a system of particles symmetric under infinitesimal linear translations, its Lagrangian looks like so in Cartesian coordinates:
 
-$$L \left( \left\{ \pmb{x}_{i} \right\}_i, \left\{ \dot{\pmb{x}}_{i} \right\}_i \right) = \sum_i \frac{1}{2} m_i \dot{\pmb{x}}_{i} \cdot \dot{\pmb{x}}_{i} - V \left( \left\{ \pmb{x}_{i} \right\}_i \right)$$
+$$L \left( \left\{ \pmb{x}_{i} \right\}_i, \left\{ \dot{\pmb{x}}_{i} \right\}_i \right) = \sum_i \frac{1}{2} m_i \dot{\pmb{x}}_{i} \cdot \dot{\pmb{x}}_{i} - V \left( \left\{ \pmb{x}_{i} - \pmb{x}_j \right\}_{i, j} \right)$$
 
-where $$\left\{ m_i \right\}_i$$ are the masses of the particles. The Lagrangian does not explicitly depend on time as we are considering closed systems only.
+where $$\left\{ m_i \right\}_i$$ are the masses of the particles. The Lagrangian does not explicitly depend on time as we are considering closed systems only. Secondly, the potential energy is a function of only the relative positions of the particles with respect to each other, i.e. $$V : \mathbb{A}^4 \to \mathbb{R}$$ (thus, translating the system does not affect its potential energy).
 
 Now, the conjugate momentum (here linear momentum) of each particle is,
 
