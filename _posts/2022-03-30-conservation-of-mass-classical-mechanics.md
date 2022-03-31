@@ -95,7 +95,7 @@ Galilean transformations are specifically the transformations that leave interva
 
 The invariance of physical laws under such transformations is called the principle of relativity.
 
-### Structure of Galilean group
+### Galilean group
 
 There are 3 independent kinds of Galilean transformations.
 
@@ -123,7 +123,7 @@ $$
 
 where $$T$$ denotes 'transpose' and $$\pmb{I}$$ is the identity operator.
 
-Any Galilean transformation is a direct product of the above transformations. Together, they form the Galilean group $$G$$ which acts on $$\mathbb{A}^4$$.
+Any Galilean transformation is a direct product of the above transformations. Together, they form the Galilean group $$G$$ over $$\mathbb{A}^4$$.
 
 ## Conservation of total mass
 
