@@ -127,8 +127,8 @@ blockquote {
 }
 
 mjx-container {
-  overflow: auto;
-  padding: 0.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 kbd {
