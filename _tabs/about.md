@@ -16,12 +16,8 @@ And know the place for the first time.
 
 The purpose of this blog is to embark on such a journey, into the without and the within. It aims to delve into not only physics and mathematics, but also how they play with each other and existence. In this light, there are four domains of interest:
 
-```mermaid
-graph TD
-    1(Mathematics) -->
-    2.1(Ontology) & 2.2(Mathematical <br/>physics) -->
-    3(Physics)
-```
+![Domains]({{ site.url }}{{ site.baseurl }}/assets/img/site/domains_dark.svg){: style="max-width: 90%" }{: width="285" }
+_Domains_
 
 I will be posting on topics from the above fields that I find interesting, such as abstract algebra, analysis, discrete mathematics, differential geometry, classical mechanics, field  theory (including general relativity), quantum mechanics, consciousness, free will and so on. I will assume the reader is aware of some of the foundational mathematics underlying these ideas (save the ones to do with ontology, which involve nearly no math). However, there are plenty of posts which start from basic concepts and examples, whose essence I hope to capture without involving heavy mathematical machinery.
 
