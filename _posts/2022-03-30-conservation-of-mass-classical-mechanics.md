@@ -2,7 +2,7 @@
 title: "Conservation of Mass in Classical Mechanics"
 description: "The origin of conservation of mass in classical mechanics"
 categories: [classical mechanics]
-tags: [mass, symmetry]
+tags: [mass, symmetry, affine space]
 ---
 
 In this post, we will derive the conservation of total mass of a closed system from simpler physical facts, within the framework of classical mechanics. We will first recall the key concepts which will be used to build the argument, namely:

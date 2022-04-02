@@ -2,7 +2,7 @@
 title: "Components of Covariant Derivative of a Tensor Field"
 description: "Deriving the components of the covariant derivative of an arbitrary tensor field"
 categories: [tensor calculus]
-tags: [covariant derivatives, tensors]
+tags: [tensors]
 ---
 
 Let us find the covariant derivative of a rank $$(p, q)$$ tensor field $$\pmb{\phi}$$ by applying the Leibniz law repeatedly:
