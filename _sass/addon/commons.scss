@@ -126,6 +126,11 @@ blockquote {
   @include prompt("danger", "\f071");
 }
 
+mjx-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 kbd {
   font-family: inherit;
   display: inline-block;
