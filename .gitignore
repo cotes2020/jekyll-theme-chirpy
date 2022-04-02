@@ -5,6 +5,7 @@
 !.nojekyll
 !.travis.yml
 !.husky
+!.commitlintrc.json
 
 # bundler cache
 _site
