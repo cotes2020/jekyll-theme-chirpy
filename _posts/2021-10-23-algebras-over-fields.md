@@ -27,7 +27,7 @@ Recall that we are using the [tuple index notation]({% post_url 2021-10-18-bilin
 
 <a name="bilinear_product_linear_map_mixed_indices"></a>
 
-You will have noticed that generally, a Jacobian is of the form $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$, since it maps the unprimed vector space to the primed vector space. In contrast, there are no primed indices in the [component form for a linear map constructed from a bilinear product](#tuple_notation). Let us fix this little ambiguity,
+You will have noticed that generally, a Jacobian is of the form $$\Lambda^{i^\prime}_{\phantom{i^\prime} i}$$, since it maps the unprimed vector space to the primed vector space. In contrast, there are no primed indices in the [component form for a linear map constructed from a bilinear product]({% post_url 2021-10-18-bilinear-products %}#tuple_notation). Let us fix this little ambiguity,
 
 $$\Phi^K_{\phantom{K} L} \: B^{L \phantom{K} J \phantom{I} I^\prime}_{\phantom{L} K \phantom{J} I \phantom{I^\prime} J^\prime} = \Lambda^{I^\prime}_{\phantom{I^\prime} I} \Lambda^{J}_{\phantom{L} J^\prime}$$
 
