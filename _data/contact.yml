@@ -4,16 +4,20 @@
   icon: 'fab fa-quora'
   url: 'https://www.quora.com/profile/Siddhartha-Bhattacharjee-45'
 -
-  type: github
-  icon: 'fab fa-github'
--
   type: discord
   icon: 'fab fa-discord'
   url: 'https://bit.ly/psi-phi-community'
 -
-   type: stack-overflow
-   icon: 'fab fa-stack-overflow'
-   url:  'https://math.stackexchange.com/users/879669/siddhartha-bhattacharjee?tab=profile'
+  type: reddit
+  icon: 'fab fa-reddit'
+  url: 'https://www.reddit.com/user/Booodaness'
+-
+  type: stack-overflow
+  icon: 'fab fa-stack-overflow'
+  url:  'https://math.stackexchange.com/users/879669/siddhartha-bhattacharjee?tab=profile'
+-
+  type: github
+  icon: 'fab fa-github'
 -
   type: online-sequencer
   icon: 'fas fa-music'
