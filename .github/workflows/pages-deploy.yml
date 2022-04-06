@@ -2,7 +2,7 @@ name: 'Automatic build'
 on:
   push:
     branches:
-      - yuji96/main
+      - main
     paths-ignore:
       - .gitignore
       - README.md
