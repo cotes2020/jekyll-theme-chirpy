@@ -1,11 +1,14 @@
 ---
 categories:
   - article
-date: 2021-02-07 00:00:00 +0900
+date: 2022-02-07 00:00:00 +0900
 tags:
   - python
 title: Python でファイルを相対的に読み込む方法
 ---
+
+> こちらの記事と同じ内容です。  
+> <https://blog.shinonome.io/python-importfile/>
 
 こんにちは。今まで、C++, JavaScript, R などの言語に触れたことはありますが、結局 Python に返ってきてしまう Yuji です。
 
