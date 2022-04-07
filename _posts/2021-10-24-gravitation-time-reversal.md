@@ -1,8 +1,8 @@
 ---
 title: "All the World's Not a Stage"
-description: "How gravity behaves under time reversal"
-categories: [classical mechanics, general relativity]
-tags: [time, symmetry]
+description: "How gravitation behaves under time reversal"
+categories: [general relativity]
+tags: [gravitation, time symmetry]
 ---
 
 ## A story without a film

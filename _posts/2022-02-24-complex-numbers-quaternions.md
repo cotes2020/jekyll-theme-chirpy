@@ -1,7 +1,7 @@
 ---
 title: "Algebra Done Tensorially: Part 3 (Complex Numbers and Quaternions)"
 description: "Constructing the algebra of complex numbers and quaternions, from their multiplicative groups"
-categories: [abstract algebra, representation theory, tensor algebra]
+categories: [representation theory]
 tags: [tensors, bilinear products, algebra]
 ---
 
