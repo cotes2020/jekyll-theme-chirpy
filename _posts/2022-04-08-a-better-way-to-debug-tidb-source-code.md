@@ -7,11 +7,11 @@ tags: [TiDB, debug]
 ---
 
 
-TiDB (https://github.com/pingcap/tidb) is an interesting SQL database written in Golang. One major difference compared with popular exsiting relational databases is that in TiDB storage is separated as an independant runtime. The database (SQL) layer will call the storage layer to access data.
+[TiDB]( https://github.com/pingcap/tidb ) is an interesting SQL database written in Golang. One major difference compared with popular exsiting relational databases is that in TiDB storage is separated as an independant runtime. The database (SQL) layer will call the storage layer to access data.
 
 For database learners, most of us actually will only be interest in the SQL part, i.e, from SQL statment in string form how we can get the query result. Although other parts like server or authtication are also essential parts for a database product, we do not really care about them if we just need to learn database principles.
 
-The official document (https://pingcap.github.io/tidb-dev-guide/understand-tidb/the-lifecycle-of-a-statement.html) demenstrated the whole lifecyle of an SQL statement in the production environment, and we can follow https://pingcap.github.io/tidb-dev-guide/get-started/debug-and-profile.html to debug TiDB.
+The official [document](https://pingcap.github.io/tidb-dev-guide/understand-tidb/the-lifecycle-of-a-statement.html) demenstrated the whole lifecyle of an SQL statement in the production environment, and we can follow this [guide](https://pingcap.github.io/tidb-dev-guide/get-started/debug-and-profile.html) to debug TiDB.
 
 However, the above debug process is cubersome. You will launch the database server, use MySQL client to send SQL querys. This is not really nessesary if we just want to track the execution of a single SQL statement.  Meanwhile, when you set a break point and want to observe your expected SQL statement, the debugger will also break if it encounter some other statements triggered by the server itself or some other components, this is annoying. Is there a better way to debug a single SQL statement?
 
