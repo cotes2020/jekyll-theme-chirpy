@@ -196,8 +196,6 @@ public abstract class AbstractTree<E> implements Tree<E> {
 
 ![Screen Shot 2022-03-30 at 23.14.03](https://i.imgur.com/FHFB955.png)
 
-
-
 ---
 
 # **Linear Structures**

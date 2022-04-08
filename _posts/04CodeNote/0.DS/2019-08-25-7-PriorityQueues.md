@@ -13,31 +13,43 @@ toc: true
 ---
 
 
-- [Data Structures - Basic 1 - Priority Queues](#data-structures---basic-1---priority-queues)
-  - [Priority Queues](#priority-queues)
-    - [ADT: Priority Queue in java](#adt-priority-queue-in-java)
-    - [Implementing a Priority Queue](#implementing-a-priority-queue)
-      - [Entry **Interface**](#entry-interface)
-      - [PriorityQueue **Interface**](#priorityqueue-interface)
-      - [defining comparisons](#defining-comparisons)
-        - [Comparable **Interface**](#comparable-interface)
-        - [Comparator **Interface**](#comparator-interface)
-      - [AbstractPriorityQueue **Abstract base class**](#abstractpriorityqueue-abstract-base-class)
-      - [UnsortedPriorityQueue **class** Unsorted List](#unsortedpriorityqueue-class-unsorted-list)
-      - [SortedPriorityQueue **class** sorted List](#sortedpriorityqueue-class-sorted-list)
-      - [import java.util.PriorityQueue](#import-javautilpriorityqueue)
-  - [Binary Heap 堆](#binary-heap-堆)
-    - [The Heap Data Structure](#the-heap-data-structure)
-      - [The Height of a Heap](#the-height-of-a-heap)
-    - [Implementing a Priority Queue with a Heap](#implementing-a-priority-queue-with-a-heap)
-      - [Complete Binary Tree [Array-Based]](#complete-binary-tree-array-based)
-      - [priority queue [heap-based]](#priority-queue-heap-based)
-      - [max heap in java](#max-heap-in-java)
-      - [min heap in python](#min-heap-in-python)
-      - [heap in python](#heap-in-python)
-        - [`insert`](#insert)
-        - [`delMin`](#delmin)
+- [# Data Structures - Basic 1 - Priority Queues](#-data-structures---basic-1---priority-queues)
+- [Priority Queues](#priority-queues)
+  - [ADT: Priority Queue in java](#adt-priority-queue-in-java)
+  - [Implementing a Priority Queue](#implementing-a-priority-queue)
+    - [Entry **Interface**](#entry-interface)
+    - [PriorityQueue **Interface**](#priorityqueue-interface)
+    - [defining comparisons](#defining-comparisons)
+      - [Comparable **Interface**](#comparable-interface)
+      - [Comparator **Interface**](#comparator-interface)
+    - [AbstractPriorityQueue **Abstract base class**](#abstractpriorityqueue-abstract-base-class)
+    - [UnsortedPriorityQueue **class** Unsorted List](#unsortedpriorityqueue-class-unsorted-list)
+    - [SortedPriorityQueue **class** sorted List](#sortedpriorityqueue-class-sorted-list)
+    - [import java.util.PriorityQueue](#import-javautilpriorityqueue)
+- [Binary Heap 堆](#binary-heap-堆)
+  - [The Heap Data Structure](#the-heap-data-structure)
+    - [The Height of a Heap](#the-height-of-a-heap)
+- [Implement Priority Queue](#implement-priority-queue)
+  - [Implementing a Priority Queue with a Heap](#implementing-a-priority-queue-with-a-heap)
+    - [Complete Binary Tree **Array-Based**](#complete-binary-tree-array-based)
+    - [priority queue **heap-based**](#priority-queue-heap-based)
+      - [heap in java](#heap-in-java)
         - [analyze the binary heap](#analyze-the-binary-heap)
+      - [max heap in java](#max-heap-in-java)
+        - [min heap in python](#min-heap-in-python)
+  - [Bottom-Up Heap Construction](#bottom-up-heap-construction)
+    - [Implementation in Java](#implementation-in-java)
+      - [Asymptotic Analysis of Bottom-Up Heap Construction](#asymptotic-analysis-of-bottom-up-heap-construction)
+  - [java.util.PriorityQueue **Class**](#javautilpriorityqueue-class)
+- [Sorting with a Priority Queue](#sorting-with-a-priority-queue)
+  - [Selection-Sort](#selection-sort)
+  - [Insertion-Sort](#insertion-sort)
+  - [Heap-Sort](#heap-sort)
+  - [Implementing Heap-Sort In-Place](#implementing-heap-sort-in-place)
+- [Adaptable Priority Queues](#adaptable-priority-queues)
+  - [The Adaptable Priority Queue ADT](#the-adaptable-priority-queue-adt)
+    - [Location-Aware Entries](#location-aware-entries)
+    - [Implementing an Adaptable Priority Queue](#implementing-an-adaptable-priority-queue)
 
 
 - ref
@@ -48,7 +60,6 @@ toc: true
 ---
 
 # Data Structures - Basic 1 - Priority Queues
-
 ---
 
 ## Priority Queues
@@ -609,6 +620,10 @@ Justification:
 ---
 
 
+
+## Implement Priority Queue
+
+
 ### Implementing a Priority Queue with a Heap
 
 
@@ -682,7 +697,7 @@ to efficiently perform various priority queue methods using a heap.
 ---
 
 
-#### Complete Binary Tree [Array-Based]
+#### Complete Binary Tree **Array-Based**
 - array-based binary tree is especially suitable for a complete binary tree.
 - the elements of the tree are stored in an `array-based list A` such that the element at position p is stored in A with index equal to the level number f(p) of p, defined as follows:
   - If p is the root,then f(p)=0.
@@ -709,12 +724,11 @@ The **array-based heap representation**
 ---
 
 
-#### priority queue [heap-based]
+#### priority queue **heap-based**
 
-- Java implementation of a heap-based priority queue. Although we think of our heap as a binary tree, we do not formally
+- Java implementation of a heap-based priority queue.
 
-- think of our heap as a binary tree
-  - but do not formally use the binary tree ADT.
+- Although we think of our heap as a binary tree, we do not formally think of our heap as a binary tree, do not formally use the binary tree ADT.
   - prefer to use the more efficient array-based representation of a tree,
   - maintaining a Java `ArrayList` of entry composites.
   - To allow us to formalize our algorithms using tree-like terminology of parent, left, and right, the class includes protected utility methods that compute the **level numbering** of a parent or child of another position
@@ -728,6 +742,131 @@ The **array-based heap representation**
 
 
 
+---
+
+##### heap in java
+
+
+
+```java
+package pq;
+
+/** An implementation of a priority queue using an array-based heap. */
+public class HeapPriorityQueue<K,V> extends AbstractPriorityQueue<K,V> {
+
+    /** primary collection of priority queue entries */
+    protected ArrayList<Entry<K,V>> heap = new ArrayList<>();
+
+    /** Creates an empty priority queue based on the natural ordering of its keys. */
+    public HeapPriorityQueue() { super(); }
+    /** Creates an empty priority queue using the given comparator to order keys. */
+    public HeapPriorityQueue(Comparator<K> comp) { super(comp); }
+
+    // protected utilities
+    protected int parent(int j) { return (j-1) / 2; } // truncating division
+    protected int left(int j) { return 2*j + 1; }
+    protected int right(int j) { return 2*j + 2; }
+    protected boolean hasLeft(int j) { return left(j) < heap.size(); }
+    protected boolean hasRight(int j) { return right(j) < heap.size(); }
+
+    /** Exchanges the entries at indices i and j of the array list. */
+    protected void swap(int i, int j) {
+        Entry<K,V> temp = heap.get(i);
+        heap.set(i, heap.get(j));
+        heap.set(j, temp);
+    }
+
+    /** Moves the entry at index j higher, if necessary, to restore the heap property. */
+    protected void upheap(int j) {
+        while (j > 0) { // continue until reaching root (or break statement)
+            int p = parent(j);
+            if (compare(heap.get(j), heap.get(p)) >= 0) break; // heap property verified
+            swap(j, p);
+            j = p; // continue from the parent's location
+        }
+    }
+
+    /** Moves the entry at index j lower, if necessary, to restore the heap property. */
+    protected void downheap(int j) {
+        while (hasLeft(j)) { // continue to bottom (or break statement)
+            int leftIndex = left(j);
+            int smallChildIndex = leftIndex;  // although right may be smaller
+            if (hasRight(j)) {
+                int rightIndex = right(j);
+                if (compare(heap.get(leftIndex), heap.get(rightIndex)) > 0) smallChildIndex = rightIndex; // right child is smaller
+            }
+            if (compare(heap.get(smallChildIndex), heap.get(j)) >= 0) break; // heap property has been restored
+            swap(j, smallChildIndex);
+            j = smallChildIndex;  // continue at position of the child
+        }
+    }
+
+    // public methods
+    /** Returns the number of items in the priority queue. */
+    public int size( ) { return heap.size( ); }
+    /** Returns (but does not remove) an entry with minimal key (if any). */
+    public Entry<K,V> min( ) {
+        if (heap.isEmpty()) return null;
+        return heap.get(0);
+    }
+
+    /** Inserts a key-value pair and returns the entry created. */
+    public Entry<K,V> insert(K key, V value) throws IllegalArgumentException {
+        checkKey(key); // auxiliary key-checking method (could throw exception)
+        Entry<K,V> newest = new PQEntry<>(key, value);
+        heap.add(newest); // add to the end of the list
+        upheap(heap.size() - 1); // upheap newly added entry
+        return newest;
+    }
+
+    /** Removes and returns an entry with minimal key (if any). */
+    public Entry<K,V> removeMin( ) {
+        if (heap.isEmpty()) return null;
+        Entry<K,V> answer = heap.get(0);
+        swap(0, heap.size() - 1); // put minimum item at the end
+        heap.remove(heap.size() - 1); // and remove it from the list;
+        downheap(0); // then fix new root
+        return answer;
+    }
+}
+```
+
+
+
+---
+
+
+###### analyze the binary heap
+
+- assuming that
+  - two keys can be compared in O(1) time
+  - and the heap T is implemented with an array-based or linked-based tree representation.
+
+In short, each of the priority queue ADT methods can be performed in O(1) or in O(logn) time, where n is the number of entries at the time the method is executed.
+
+
+The analysis of the running time of the methods is based on the following:
+- The heap T has n nodes, each storing a reference to a key-value entry.
+- The `height of heap T is O(log n)`, since T is complete
+- The **min** operation runs in `O(1)`: the root of the tree contains such an element.
+- for **insert** and **removeMin**: Locating the last position of a heap can be performed in `O(1)` time for an array-based representation, or `O(log n)` time for a linked-tree representation
+- In the worst case, **up-heap and down-heap bubbling** perform a number of swaps equal to the height of T `O(log n)`
+
+
+
+- size, isEmpty, min: `𝑂(1)`
+- insert: `𝑂(log𝑛)`
+- removeMin: `𝑂(log𝑛)`
+- up-heap and down-heap bubbling: `𝑂(log𝑛)`
+
+
+
+
+
+---
+
+
+
 
 
 
@@ -738,7 +877,7 @@ The **array-based heap representation**
 
 
 
-#### max heap in java
+##### max heap in java
 
 `swim(int k)`
 
@@ -839,101 +978,10 @@ public class MaxPQ
 ```
 
 
-
-
-
-
-
 ---
 
-#### min heap in python
 
-- `BinaryHeap()`
-  - creates a new, empty, binary heap.
-- `insert(k)`
-  - adds a new item to the heap.
-- `findMin()`
-  - returns the item with the minimum key value, leaving item in the heap.
-- `delMin()`
-  - returns the item with the minimum key value, removing the item from the heap.
-- `isEmpty()`
-  - returns true if the heap is empty, false otherwise.
-- `size()`
-  - returns the number of items in the heap.
-- `buildHeap(list)`
-  - builds a new heap from a list of keys.
-
-
-```py
-from pythonds.trees import BinHeap
-
-class BinHeap:
-    def __init__(self):
-        self.heapList = [0]
-        self.currentSize = 0
-
-    def percUp(self,i):
-        while i // 2 > 0:
-          if self.heapList[i] < self.heapList[i // 2]:
-             tmp = self.heapList[i // 2]
-             self.heapList[i // 2] = self.heapList[i]
-             self.heapList[i] = tmp
-          i = i // 2
-
-    def insert(self,k):
-      self.heapList.append(k)
-      self.currentSize = self.currentSize + 1
-      self.percUp(self.currentSize)
-
-    def percDown(self,i):
-      while (i * 2) <= self.currentSize:
-          mc = self.minChild(i)
-          if self.heapList[i] > self.heapList[mc]:
-              tmp = self.heapList[i]
-              self.heapList[i] = self.heapList[mc]
-              self.heapList[mc] = tmp
-          i = mc
-
-    def minChild(self,i):
-      if i * 2 + 1 > self.currentSize:
-          return i * 2
-      else:
-          if self.heapList[i*2] < self.heapList[i*2+1]:
-              return i * 2
-          else:
-              return i * 2 + 1
-
-    def delMin(self):
-      retval = self.heapList[1]
-      self.heapList[1] = self.heapList[self.currentSize]
-      self.currentSize = self.currentSize - 1
-      self.heapList.pop()
-      self.percDown(1)
-      return retval
-
-    def buildHeap(self,alist):
-      i = len(alist) // 2
-      self.currentSize = len(alist)
-      self.heapList = [0] + alist[:]
-      while (i > 0):
-          self.percDown(i)
-          i = i - 1
-
-bh = BinHeap()
-bh.buildHeap([9,5,6,2,3])
-
-print(bh.delMin())
-print(bh.delMin())
-print(bh.delMin())
-print(bh.delMin())
-print(bh.delMin())
-```
-
-Notice that no matter the order that we add items to the heap, the smallest is removed each time.  
-
----
-
-#### heap in python
+heap in python
 
 ```py
 # an empty binary heap has a single zero as the first element of heapList and that this zero is not used, but is there so that simple integer division can be used in later methods.
@@ -944,7 +992,8 @@ class BinHeap:
 ```
 
 
-##### `insert`
+
+`insert`
 - most efficient way to add an item to a list is to simply append the item to the end of the list.
 - The good news about appending is that it guarantees that we will maintain the complete tree property.
 - The bad news about appending is that we will very likely violate the heap structure property.
@@ -983,7 +1032,8 @@ def insert(self,k):
 ```
 
 
-##### `delMin`
+
+`delMin`
 
 > to keep complete binary tree, replace the last item with the root
 
@@ -1089,11 +1139,515 @@ Using the fact that you can build a heap from a list in `𝑂(𝑛)` time, you w
 
 
 
-##### analyze the binary heap
 
-- find the smallest: `𝑂(1)`
-- insert: `𝑂(log𝑛)`
-- removal: `𝑂(log𝑛)`
+
+---
+
+
+###### min heap in python
+
+- `BinaryHeap()`
+  - creates a new, empty, binary heap.
+- `insert(k)`
+  - adds a new item to the heap.
+- `findMin()`
+  - returns the item with the minimum key value, leaving item in the heap.
+- `delMin()`
+  - returns the item with the minimum key value, removing the item from the heap.
+- `isEmpty()`
+  - returns true if the heap is empty, false otherwise.
+- `size()`
+  - returns the number of items in the heap.
+- `buildHeap(list)`
+  - builds a new heap from a list of keys.
+
+
+```py
+from pythonds.trees import BinHeap
+
+class BinHeap:
+    def __init__(self):
+        self.heapList = [0]
+        self.currentSize = 0
+
+    def percUp(self,i):
+        while i // 2 > 0:
+          if self.heapList[i] < self.heapList[i // 2]:
+             tmp = self.heapList[i // 2]
+             self.heapList[i // 2] = self.heapList[i]
+             self.heapList[i] = tmp
+          i = i // 2
+
+    def insert(self,k):
+      self.heapList.append(k)
+      self.currentSize = self.currentSize + 1
+      self.percUp(self.currentSize)
+
+    def percDown(self,i):
+      while (i * 2) <= self.currentSize:
+          mc = self.minChild(i)
+          if self.heapList[i] > self.heapList[mc]:
+              tmp = self.heapList[i]
+              self.heapList[i] = self.heapList[mc]
+              self.heapList[mc] = tmp
+          i = mc
+
+    def minChild(self,i):
+      if i * 2 + 1 > self.currentSize:
+          return i * 2
+      else:
+          if self.heapList[i*2] < self.heapList[i*2+1]:
+              return i * 2
+          else:
+              return i * 2 + 1
+
+    def delMin(self):
+      retval = self.heapList[1]
+      self.heapList[1] = self.heapList[self.currentSize]
+      self.currentSize = self.currentSize - 1
+      self.heapList.pop()
+      self.percDown(1)
+      return retval
+
+    def buildHeap(self,alist):
+      i = len(alist) // 2
+      self.currentSize = len(alist)
+      self.heapList = [0] + alist[:]
+      while (i > 0):
+          self.percDown(i)
+          i = i - 1
+
+bh = BinHeap()
+bh.buildHeap([9,5,6,2,3])
+
+print(bh.delMin())
+print(bh.delMin())
+print(bh.delMin())
+print(bh.delMin())
+print(bh.delMin())
+```
+
+Notice that no matter the order that we add items to the heap, the smallest is removed each time.  
+
+---
+
+
+
+
+
+### Bottom-Up Heap Construction
+
+
+- If we start with an initially empty heap, n successive calls to the insert operation will run in `O(nlogn)` time in the worst case.
+- However, if `all n key-value pairs to be stored in the heap are given in advance`, such as during the first phase of the heap-sort algorithm, there is an alternative bottom-up construction method that runs in `O(n)` time.
+
+
+In this section, we describe the bottom-up heap construction, and provide an implementation that can be used by the constructor of a heap-based priority queue.
+
+
+For simplicity of exposition, we describe this bottom-up heap construction assuming
+- the number of keys, n, is an integer that `n = 2^(h+1) − 1`
+  - the heap is a complete binary tree with every level being full,
+- so the heap has height `h = log(n + 1) − 1`.
+- Viewed non recursively, bottom-up heap construction consists of the following `h + 1 = log(n + 1)` steps:
+
+
+
+![Screen Shot 2022-04-01 at 13.20.09](https://i.imgur.com/nJevOoi.png)
+
+1. construct `(n + 1)/2` elementary heaps storing one entry each.
+2. form `(n+1)/4` heaps, each storing three entries, by joining pairs of elementary heaps and adding a new entry.
+   1. The new entry is placed at the root and may have to be swapped with the entry stored at a child to preserve the heap-order property.
+3. form `(n + 1)/8` heaps, each storing 7 entries, by joining pairs of 3-entry heaps (constructed in the previous step) and adding a new entry. The new entry is placed initially at the root, but may have to move down with a down-heap bubbling to preserve the heap-order property.
+4. In the generic i^th step, 2 ≤ i ≤ h, we form `(n+1)/2^i` heaps, each storing 2i −1 entries, by joining pairs of heaps storing (2i−1 − 1) entries (constructed in the previous step) and adding a new entry. The new entry is placed initially at the root, but may have to move down with a down-heap bubbling to preserve the heap-order property.
+5. In the last ste, form the final heap,
+   1. storing all the n entries, by joining two heaps storing `(n − 1)/2` entries (constructed in the previous step)
+   2. and adding a new entry.
+   3. The new entry is placed initially at the root, but may have to move down with a down-heap bubbling to preserve the heap-order property.
+
+
+---
+
+
+
+#### Implementation in Java
+
+
+Implementing a bottom-up heap construction is quite easy, given the existence of a “down-heap” utility method.
+
+- The “merging” of two equally sized heaps that are subtrees of a common position p can be accomplished simply by down-heaping p’s entry.
+  - For example, that is what happened to the key 14 in going from Figure 9.5(f ) to (g).
+
+- With our array-based representation of a heap
+  - if we initially store all n entries in arbitrary order within the array,
+  - we can implement the bottom-up heap construction process with a single loop that makes a call to downheap from each position of the tree, as long as those calls are ordered starting with the deepest level and ending with the root of the tree.
+- In fact, that loop can start with the deepest internal position, since there is no effect when down-heap is called at an external position.
+
+
+- augment the original HeapPriorityQueue class to provide support for the **bottom-up construction** of an initial collection.
+- a nonpublic utility method, `heapify`, that calls downheap on each nonleaf position, beginning with the deepest and concluding with a call at the root of the tree.
+- an additional constructor for the class that accepts an initial sequence of keys and values, parameterized as two coordinate arrays that are presumed to have the same length.
+  - create new entries,
+  - pairing the first key with the first value, the second key with the second value, and so on.
+  - then call the heapify utility to establish the heap ordering.
+- For brevity, we omit a similar constructor that accepts a nondefault comparator for the priority queue.
+
+
+
+##### Asymptotic Analysis of Bottom-Up Heap Construction
+- `Bottom-up heap construction` is **asymptotically faster** than incrementally inserting n entries into an initially empty heap.
+- it performing a single down-heap operation at each position in the tree, rather than a single up-heap operation from each.
+- Since more nodes are closer to the bottom of a tree than the top, the sum of the downward paths is linear
+
+
+**Proposition 9.3**:
+- Bottom-up construction of a heap with n entries takes O(n) time, assuming two keys can be compared in O(1) time.
+**Justification**:
+- The primary cost of the construction is due to the **down-heap steps** performed at `each nonleaf position`.
+- Let `πv` denote the path of T from nonleaf node v to its “inorder successor” leaf
+  - the path that starts at v, goes to the right child of v, and then goes down leftward until it reaches a leaf.
+- Although, `πv` is not necessarily the path followed by the down-heap bubbling step from v, its number of edges `∥πv∥` is proportional to the height of the subtree rooted at v, and thus a bound on the complexity of the down-heap operation at v.
+- The total running time of the bottom-up heap construction algorithm is therefore bounded by the `sum ∑v ∥πv∥`.
+- For intuition, Figure 9.6 illustrates the justification “visually,” marking each edge with the label of the nonleaf node v whose path `πv` contains that edge.
+
+
+
+
+- We claim that the paths `πv` for all nonleaf v are edge-disjoint, and thus the sum of the path lengths is bounded by the number of total edges in the tree, hence O(n). To show this, we consider what we term “right-leaning” and “left-leaning” edges (i.e., those going from a parent to a right, respectively left, child). A particular right- leaning edge e can only be part of the path `πv` for node v that is the parent in the relationship represented by e. Left-leaning edges can be partitioned by considering the leaf that is reached if continuing down leftward until reaching a leaf. Each nonleaf node only uses left-leaning edges in the group leading to that nonleaf node’s inorder successor. Since each nonleaf node must have a different inorder successor, no two such paths can contain the same left-leaning edge.
+- We conclude that the bottom-up construction of heap T takes `O(n)` time.
+
+
+
+---
+
+
+### java.util.PriorityQueue **Class**
+
+There is no priority queue interface built into Java, but Java does include a **class**, `java.util.PriorityQueue`, which implements the `java.util.Queue` **interface**.
+
+
+- Instead of adding and removing elements according to the standard FIFO policy used by most queues
+- `java.util.PriorityQueue` **class** processes its entries according to a priority
+  - The “front” of the queue will always be a minimal element
+  - with priorities based either on the natural ordering of the elements, or in accordance with a `comparator` **object** sent as a parameter when constructing the priority queue.
+  - java.util.PriorityQueue class relies on a single element type. That element is effectively treated as a key.
+  - If a user wishes to insert distinct keys and values, the burden is on the user to define and insert appropriate composite objects, and to ensure that those objects can be compared based on their keys.
+
+- The java.util.PriorityQueue class is implemented with a heap
+  - so it guarantees `O(logn)` time performance for methods `add` and `remove`,
+  - and `O(1)` constant-time performance for accessors `peek`, `size`, and `isEmpty`.
+  - In addition, it provides a parameterized method, `remove(e)` that removes a specific element e from the priority queue runs in `O(n)` time, performing a sequential search to locate the element within the heap.
+
+![Screen Shot 2022-04-08 at 01.02.45](https://i.imgur.com/IJfWqbT.png)
+
+
+---
+
+
+
+
+## Sorting with a Priority Queue
+
+
+The algorithm for sorting a `sequence S` with a `priority queue P` is quite simple and consists of the following two phases:
+1. insert the elements of `S` as keys into an initially empty `priority queue P` by means of a series of n insert operations, one for each element.
+2. extract the elements from P in nondecreasing order by means of a series of n removeMin operations, putting them back into S in that order.
+
+
+The algorithm works correctly for any priority queue P, no matter how P is implemented.
+- but the running time of the algorithm is determined by running times of operations insert and removeMin, which do depend on how P is implemented.
+- Indeed, pqSort should be considered more a sorting “scheme” than a sorting “algorithm,” because it does not specify how the priority queue P is implemented.
+- The pqSort scheme is the paradigm of several popular sorting algorithms, including selection-sort, insertion-sort, and heap-sort.
+
+
+---
+
+
+### Selection-Sort
+
+
+![Screen Shot 2022-04-08 at 01.17.26](https://i.imgur.com/Ortlmyb.png)
+
+> If we implement P with an unsorted list
+
+
+- In Phase 1 of the pqSort scheme, we insert all elements into a priority queue P;
+  - takes `O(n)` time, insert each element in O(1) time.
+- in Phase 2 we repeatedly `remove the minimal element from P` using the **removeMin** method.
+  - the running time of each **removeMin** operation is proportional to the size of P.
+    - the bottleneck computation is the <font color=red> repeated “selection” of the minimum element in Phase 2. </font>
+    - For this reason, this algorithm is better known as **selection-sort**  
+    - the bottleneck is in Phase 2: `repeatedly remove an entry with smallest key from the priority queue P`.
+      - The size of P starts at n and incrementally decreases with each removeMin until it becomes 0.
+      - Thus, the first removeMin operation takes time O(n),
+      - the second one takes time O(n − 1), and so on,
+      - until the last (nth) operation takes time O(1).
+      - Therefore, the total time needed for the second phase is `􏰎∑n 􏰏 O(n+(n−1)+···+2+1)`
+      - ∑ni=1 i = n(n + 1)/2.
+    - Phase 2 takes time` O(n^2)`, as does the entire selection-sort algorithm.
+
+---
+
+
+### Insertion-Sort
+
+> implement the priority queue P using a sorted list
+
+
+- then the running time of Phase 2 improves to O(n), for each operation removeMin on P now takes O(1) time.
+- Unfortunately, Phase 1 now becomes the bottleneck for the running time,
+  - in the worst case, each insert operation takes time proportional to the size of P.
+  - This sorting algorithm is therefore better known as **insertion-sort**
+  - for the bottleneck in this sorting algorithm involves the <font color=red> repeated “insertion” of a new element at the appropriate position in a sorted list </font>.
+
+
+- In Phase 1, we repeatedly remove the first element of S and insert it into P.
+
+- In Phase 2, we repeatedly perform the removeMin operation on P and add the returned element to the end of S.
+
+- Analyzing the running time of Phase 1 of insertion-sort, we note that it is `􏰎∑n 􏰏 O(1+2+...+(n−1)+n)`
+- Phase 1 runs in `O(n^2)` time, and hence, so does the entire insertion-sort algorithm.
+
+
+- Alternatively, we could change our definition of insertion-sort so that we `insert elements starting from the end of the priority-queue list` in Phase 1, in which case performing insertion-sort on a sequence that is already sorted would run in O(n) time.
+- Indeed, the running time of insertion-sort in this case is `O(n+I)`, where I is the number of inversions in the sequence, that is, the number of pairs of elements that start out in the input sequence in the wrong relative order.
+
+
+---
+
+### Heap-Sort
+
+- priority queue with heap: all the methods in the priority queue ADT run in logarithmic time or better.
+  - Hence, this realization is suitable for applications where fast running times are sought for all the priority queue methods.
+
+
+consider the pqSort scheme using a heap-based implementation of the priority queue.
+
+- During Phase 1, `O(n log n)` time.
+  - since the heap has i entries after the operation is performed, the i th **insert** operation takes `O(log i)` time.
+  - It could be improved to O(n) with the bottom-up heap construction
+
+- During the second phase of method pqSort
+  - the j th **removeMin** operation runs in `O(log(n − j + 1))`, since the heap has `n − j + 1` entries at the time the operation is performed.
+  - Summing over all j, this phase takes `O(nlogn)` time,
+  - so the entire priority-queue sorting algorithm runs in `O(nlogn)` time when we use a heap to implement the priority queue.
+- This sorting algorithm is better known as **heap-sort**
+
+
+**Proposition 9.4**:
+- The heap-sort algorithm sorts a sequence S of n elements in O(n log n) time, assuming two elements of S can be compared in O(1) time.
+- the O(n log n) running time of heap-sort is considerably better than the O(n^2) selection-sort and insertion-sort.
+
+
+
+
+---
+
+### Implementing Heap-Sort In-Place
+
+- If the `sequence S` to be sorted is implemented by means of an array-based sequence, such as an ArrayList in Java, we can speed up heap-sort and reduce its space requirement by a constant factor by using a portion of the array itself to store the heap, thus avoiding the use of an auxiliary heap data structure.
+
+This is accomplished by modifying the algorithm as follows:
+1. redefine the heap operations to be a maximum-oriented heap
+   1. each position key >= its children.
+   2. This can be done by recoding the algorithm/providing a new comparator that reverses the outcome of each comparison.
+   3. At any time during the execution of the algorithm,
+      1. we use the left portion of `S`, up to a certain index i − 1, to store the `entries of the heap`,
+      2. and the right portion of `S`, from index i to n − 1, to store the `elements of the sequence`.
+   4. Thus, the first i elements of S (at indices 0,...,i−1) provide the array-list representation of the heap.
+
+
+Implementing
+1. In the first phase of the algorithm, we start with an empty heap and move the boundary between the heap and the sequence from left to right, one step at a time.
+   1. In step i, for i = 1,...,n, we expand the heap by adding the element at index i − 1.
+
+2. In the second phase of the algorithm, we start with an empty sequence and move the boundary between the heap and the sequence from right to left, one step at a time.
+   1. At step i, for i = 1,...,n, we remove a maximal element from the heap and store it at index n − i.
+
+
+In general, we say that a sorting algorithm is **in-place** if it uses only a `small amount of memory` in addition to the sequence storing the objects to be sorted.
+- The variation of heap-sort above qualifies as in-place;
+- instead of transferring elements out of the sequence and then back in, we simply rearrange them.  
+
+
+![Screen Shot 2022-04-08 at 01.51.31](https://i.imgur.com/pXjmBUs.png)
+
+
+---
+
+
+## Adaptable Priority Queues
+
+
+The methods of the priority queue ADT are sufficient for most basic applications of priority queues, such as sorting. However, there are situations in which additional methods would be useful
+
+
+Example: the standby airline passenger application.
+- A standby passenger with a pessimistic attitude may become tired of waiting and decide to leave ahead of the boarding time, requesting to be removed from the waiting list.
+  - Thus, we would like to remove from the priority queue the entry associated with this passenger.
+  - Operation `removeMin` does not suffice since the passenger leaving does not necessarily have first priority.
+  - In- stead, we want a new operation, remove, that removes an arbitrary entry.
+- Another standby passenger finds her gold frequent-flyer card and shows it to the agent.
+  - Thus, her priority has to be modified accordingly.
+  - To achieve this change of priority, have a new operation `replaceKey` to replace the key of an existing entry with a new key.
+- Finally, a third standby passenger notices her name is misspelled on the ticket and asks it to be corrected.
+  - To update the passenger’s record. have a new operation `replaceValue`, allowing us to replace the value of an existing entry with a new value.
+
+
+
+### The Adaptable Priority Queue ADT
+
+The above scenarios motivate the definition of a new adaptable priority queue ADT that extends the priority queue ADT with additional functionality.
+
+
+To implement methods `remove`, `replaceKey`, and `replaceValue` efficiently
+- need a mechanism for finding a user’s element within a priority queue, ideally in a way that avoids performing a linear search through the entire collection.
+- in priority queue ADT, `insert(k, v)` formally returns an instance of type Entry to the user.
+- to be able to update or remove an entry in our new adaptable priority queue ADT, the user must retain that Entry object as a token that can be sent back as a parameter to identify the relevant entry. Formally, the adaptable priority queue ADT includes the following methods:
+  - `remove(e)`: Removes entry e from the priority queue.
+  - `replaceKey(e, k)`: Replaces the key of existing entry e with k.
+  - `replaceValue(e, v)`: Replaces the value of existing entry e with v.
+
+
+#### Location-Aware Entries
+
+To allow an entry instance to encode a location within a priority queue
+- extend the PQEntry class, adding a third field that designates the current index of an entry within the array-based representation of the heap
+- When perform priority queue operations on our heap, causing entries to be relocated within structure, make sure to update the third field of each affected entry to reflect its new index within the array.
+- example,
+  - after a call to removeMin().
+  - The heap operation causes the minimal entry, (4,C), to be removed,
+  - and the last entry, (16,X), to be temporarily moved from the last position to the root, followed by a down-heap bubble phase.
+  - During the down-heap, element (16,X) is swapped with its left child, (5,A), at index 1 of the list, then swapped with its right child, (9,F), at index 4 of the list.
+  - In the final configuration, the last field for all affected entries has been modified to reflect their new location.
+
+
+![Screen Shot 2022-04-08 at 02.05.53](https://i.imgur.com/ZjEu5GT.png)
+
+
+![Screen Shot 2022-04-08 at 02.03.07](https://i.imgur.com/XGPiRjh.png)
+
+
+![Screen Shot 2022-04-08 at 02.08.26](https://i.imgur.com/OKkQjxI.png)
+
+
+
+#### Implementing an Adaptable Priority Queue
+
+
+Java implementation of an adaptable priority queue as a subclass of the HeapPriorityQueue class
+
+- defining a nested `AdaptablePQEntry` class extends the inherited PQEntry class, augmenting it with an additional index field.
+  - The inherited insert method is overridden, create and initialize an instance of the AdaptablePQEntry class (not the original PQEntry class).
+
+- original `HeapPriorityQueue` class relies exclusively on a protected swap method for all low-level data movement during up-heap or down-heap operations.
+
+- The `AdaptablePriorityQueue` class overrides that utility in order to update the stored indices of our location-aware entries when they are relocated (as discussed on the previous page).
+
+- When an entry is sent as a parameter to remove, replaceKey, or replaceValue, we rely on the new index field of that entry to designate where the element resides in the heap (a fact that is easily validated).
+  - When a key of an existing entry is replaced, that new key may violate the heap-order property by being either too big or too small. We provide a new bubble utility that determines whether an up- heap or down-heap bubbling step is warranted. When removing an arbitrary entry, we replace it with the last entry in the heap (to maintain the complete binary tree property) and perform the bubbling step, since the displaced element may have a key that is too large or too small for its new location.
+
+- Performance of Adaptable Priority Queue Implementations
+  - The performance of an adaptable priority queue by means of our location-aware heap structure is summarized in Table 9.5. The new class provides the same asymp- totic efficiency and space usage as the nonadaptive version, and provides logarith- mic performance for the new locator-based remove and replaceKey methods, and constant-time performance for the new replaceValuemethod.
+
+  - `size, isEmpty, min`: O(1)
+  - `insert`: O(log n)
+  - `remove`: O(log n)
+  - `removeMin`: O(log n)
+  - `replaceKey`: O(log n)
+  - `replaceValue`: O(1)
+
+
+```java
+package pq;
+
+import java.util.Comparator;
+
+// /∗∗ An implementation of an adaptable priority queue using an array-based heap. ∗/
+public class HeapAdaptablePriorityQueue<K,V> extends HeapPriorityQueue<K,V> implements AdaptablePriorityQueue{
+
+    //---------------- nested AdaptablePQEntry class ----------------
+    // /∗∗ Extension of the PQEntry to include location information. ∗/
+    protected static class AdaptablePQEntry<K,V> extends PQEntry<K,V> {
+        private int index;
+        public AdaptablePQEntry(K key, V value, int j){
+            super(key, value);
+            index = j;
+        }
+        public int getIndex(){return index;}
+        public void setIndex(int j) {index = j;}
+    }
+
+
+    public HeapAdaptablePriorityQueue(){ super(); }
+    public HeapAdaptablePriorityQueue(Comparator<K> comp){ super(comp); }
+
+    // protected utilites
+    // /∗∗ Validates an entry to ensure it is location-aware. ∗/
+    protected AdaptablePQEntry<K,V> validate(Entry<K,V> entry) throws IllegalArgumentException {
+        if (!(entry instanceof AdaptablePQEntry)) throw new IllegalArgumentException("Invalid entry"); AdaptablePQEntry<K,V> locator = (AdaptablePQEntry<K,V>) entry;
+        int j = locator.getIndex();
+        if (j >= heap.size() || heap.get(j) != locator) throw new IllegalArgumentException("Invalid entry");
+        return locator;
+    }
+
+    // /∗∗ Exchanges the entries at indices i and j of the array list. ∗/
+    // safe
+    protected void swap(int i, int j) {
+        super.swap(i,j);
+        ((AdaptablePQEntry<K,V>) heap.get(i)).setIndex(i);
+        ((AdaptablePQEntry<K,V>) heap.get(j)).setIndex(j);
+    }
+
+
+    // /∗∗ Restores the heap property by moving the entry at index j upward/downward.∗/
+    protected void bubble(int j) {
+        if (j > 0 && compare(heap.get(j), heap.get(parent(j))) < 0) upheap(j);
+        else downheap(j); // although it might not need to move
+    }
+
+    // /∗∗ Inserts a key-value pair and returns the entry created. ∗/
+    public Entry<K,V> insert(K key, V value) throws IllegalArgumentException {
+        checkKey(key); // might throw an exception
+        Entry<K,V> newest = new AdaptablePQEntry<>(key, value, heap.size());
+        heap.add(newest); // add to the end of the list
+        upheap(heap.size() - 1); // upheap newly added entry
+        return newest;
+    }
+
+
+    // /∗∗ Removes the given entry from the priority queue. ∗/
+    public void remove(Entry<K,V> entry) throws IllegalArgumentException {
+        AdaptablePQEntry<K,V> locator = validate(entry);
+        int j = locator.getIndex( );
+        if (j == heap.size( ) - 1) heap.remove(heap.size() - 1);
+        else {
+            swap(j, heap.size( ) - 1);
+            heap.remove(heap.size( ) - 1);
+            bubble(j);
+        }
+    }
+
+
+    // /∗∗ Replaces the key of an entry. ∗/
+    public void replaceKey(Entry<K,V> entry, K key) throws IllegalArgumentException {
+        AdaptablePQEntry<K,V> locator = validate(entry);
+        checkKey(key);
+        locator.setKey(key);
+        bubble(locator.getIndex());
+    }
+
+
+    // /∗∗ Replaces the value of an entry. ∗/
+    public void replaceValue(Entry<K,V> entry, V value) throws IllegalArgumentException {
+        AdaptablePQEntry<K,V> locator = validate(entry);
+        locator.setValue(value); // method inherited from PQEntry
+    }
+}
+```
+
+
+
 
 
 

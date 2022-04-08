@@ -215,10 +215,10 @@ Flexible environment
 
 ![Screen Shot 2021-02-09 at 00.23.50](https://i.imgur.com/vFIOA1G.png) 
 
-App Engine standard environment
+**App Engine standard environment**
 - who want the service to take maximum control of their application's deployment and scaling.
 
-Kubernetes Engine 
+**Kubernetes Engine**
 - gives the application owner the full flexibility of Kubernetes.
 
 App Engine flexible edition is somewhere in between. 
