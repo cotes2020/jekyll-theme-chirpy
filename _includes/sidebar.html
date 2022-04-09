@@ -13,7 +13,7 @@
             {% elsif site.img_cdn != empty and site.img_cdn %}
               {{ site.avatar | prepend: site.img_cdn }}
             {% else %}
-              {{ site.avatar | relative_url }}
+              {{ site.avatar | strip | relative_url }}
             {% endif %}
           {% endcapture %}
           <img src="{{ avatar_url | strip }}" alt="avatar" onerror="this.style.display='none'">
