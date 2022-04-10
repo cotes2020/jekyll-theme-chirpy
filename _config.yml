@@ -172,15 +172,15 @@ defaults:
 sass:
   style: compressed
 
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  profile: false
-  blanklines: false
-  ignore:
-    envs: [development]
-
+#compress_html:
+#  clippings: all
+#  comments: all
+#  endings: all
+#  profile: false
+#  blanklines: false
+#  ignore:
+#    envs: [development]
+#  sometimes it works when not compressed, but not work when compressed
 exclude:
   - '*.gem'
   - '*.gemspec'
