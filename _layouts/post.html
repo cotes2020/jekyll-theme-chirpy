@@ -75,12 +75,29 @@ tail_includes:
       <!-- read time -->
       {% include read-time.html content=content prompt=true %}
 
-      <!-- Note here is page pv, not site pv-->
+      <!-- Note with busuanzi here is page pv, not site pv-->
+      <!-- busuanzi has issues with safari
       <span id="pv" class="pageviews">
-        <span id="busuanzi_container_page_pv">read by <span id="busuanzi_value_page_pv"></span> people</span>
+        <span id="busuanzi_container_page_pv">read by <em><span id="busuanzi_value_page_pv"></span> people</em></span>
+      </span> -->
+
+      <!--  One advantage with busuanzi: update realtime-->
+
+      <!-- use Google analytics data (no realtime update) -->
+      <span>
+        read by 
+        <em id="mypv" class="pageviews">
+          <i class="fas fa-spinner fa-spin fa-fw"></i>
+        </em>
+         visitor
       </span>
 
-      <!-- page views -->
+      <!-- Thumbs up-->
+      <span><i class="far fa-thumbs-up fa-fw" id="thumbsupbtn" ></i>
+        <span><em id="{{page.url | replace : '/', '' | replace : '-', '' | downcase }}" class="num_of_likes">30</em></span>
+      </span>
+
+      <!-- page views (old due to proxy_endpoint not support new version) -->
       {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
       <span>
         <em id="pv" class="pageviews">
@@ -147,3 +164,85 @@ tail_includes:
   </div><!-- .post-tail-bottom -->
 
 </div><!-- div.post-tail-wrapper -->
+
+<script>
+  $(function () {
+    //Get likes count
+    //Only one element meet the condition thus safe to do so
+    var elemID = null
+    $(".num_of_likes").map(function () { elemID = $(this).attr("id") })
+    $.ajax({
+      url: 'https://my-api-service-344803.uc.r.appspot.com/apis/data/countlikes',
+      type: 'GET',
+      data: { "pids": [elemID] },
+      traditional: true,
+      success: function (data) {
+        $.each(data, function (key, val) {
+          $('#' + key).text(val)
+        })
+      },
+      error: function (xhr, textStatus) {
+        console.log('error in ajax')
+        console.log(xhr)
+        console.log(textStatus)
+      }
+    })
+
+    //Get page visit count
+    var pageUrl = "{{ page.url }}"
+    $.ajax({
+      url: 'https://my-api-service-344803.uc.r.appspot.com/apis/pageviews',
+      type: 'GET',
+      data: { "path": pageUrl},
+      dataType: "json",
+      success: function (data) {
+        /*Due to history reason, url upper/lower case are different
+          {
+        "/posts/Go-Concurrency-Stop-Signal-And-Timeout/": 12,
+        "/posts/go-concurrency-stop-signal-and-timeout/": 7
+          }, thus here justify*/
+        $.each(data, function (key, val) {
+          if (key === pageUrl) {
+            $('#mypv').text(val)
+          }
+        })
+      },
+      error: function (xhr, textStatus) {
+        console.log('error in ajax')
+        console.log(xhr)
+        console.log(textStatus)
+      }
+    })
+
+    //Get IP address
+    var ipAddr = null
+    $.getJSON('https://api.db-ip.com/v2/free/self', function (data) {
+      console.log(JSON.stringify(data, null, 2));
+      ipAddr = data.ipAddress
+    })
+
+    //Bind like button with click event
+    $('#thumbsupbtn').click(function () {
+      if (ipAddr !== null && elemID !== null) {
+        $.ajax({
+          url: 'https://my-api-service-344803.uc.r.appspot.com/apis/data/likeaction',
+          type: 'POST',
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          data: JSON.stringify({ "pid": elemID, "ip": ipAddr}),
+          traditional: true,
+          success: function (data) {
+              $('#'+elemID).text(data.likenumber)
+          },
+          error: function (xhr, textStatus) {
+            console.log('error in ajax')
+            console.log(xhr)
+            console.log(textStatus)
+          }
+        })
+      }
+    })
+
+
+  });
+</script>

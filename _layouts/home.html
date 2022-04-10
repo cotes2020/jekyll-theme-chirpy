@@ -79,6 +79,11 @@ layout: page
           {% endfor %}
           </span>
         {% endif %}
+
+        <!-- Thumbs up-->
+        <i class="far fa-thumbs-up fa-fw" ></i>
+        <span id="{{post.url |  replace : '/', '' | replace : '-', '' | downcase}}" class="num_of_likes"></span>
+
       </div>
 
       {% if post.pin %}
@@ -99,3 +104,30 @@ layout: page
 {% if paginator.total_pages > 0 %}
   {% include post-paginator.html %}
 {% endif %}
+
+<script type="text/javascript">
+  $(function () {
+    /*One reason we cannot use post URL as postID cause firestore 
+    has special treat with '/' in URL, thus we remote '/' to generate
+    post ID, and use postID to operate likes data. 
+    */
+    var postIDs = []
+    $(".num_of_likes").map(function () { postIDs.push($(this).attr("id")) })
+    $.ajax({
+      url: 'https://my-api-service-344803.uc.r.appspot.com/apis/data/countlikes',
+      type: 'GET',
+      data: { "pids": postIDs },
+      traditional: true,
+      success: function (data) {
+        $.each(data, function (key, val) {
+          $('#' + key).text(val)
+        })
+      },
+      error: function (xhr, textStatus) {
+        console.log('error in ajax')
+        console.log(xhr)
+        console.log(textStatus)
+      }
+    })
+  })
+</script>

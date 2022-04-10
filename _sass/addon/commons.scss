@@ -33,7 +33,7 @@ body {
   background: var(--body-bg);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
+  font-family: sans-serif, 'Source Sans Pro', 'Microsoft Yahei';
 }
 
 /* --- Typography --- */
@@ -428,7 +428,7 @@ img[data-src] {
 }
 
 .post-meta {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   word-spacing: 1px;
 
   a {
@@ -1507,8 +1507,9 @@ $sidebar-display: "sidebar-display";
     }
   }
 
+  /*Here is for true post-content*/
   .post-content {
-    font-size: 1.03rem;
+    font-size: 1.2rem;
   }
 
   footer > div.d-felx {

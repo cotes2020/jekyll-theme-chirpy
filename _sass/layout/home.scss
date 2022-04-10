@@ -4,7 +4,7 @@
 
 .pagination {
   color: var(--btn-patinator-text-color);
-  font-family: 'Lato', sans-serif;
+  font-family:  sans-serif,'Lato';
 
   a:hover {
     text-decoration: none;
@@ -67,13 +67,13 @@
     }
 
     h1 {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       margin: 0;
     }
 
     .post-meta {
       i {
-        font-size: 0.73rem;
+        font-size: 0.85rem;
 
         &:not(:first-child) {
           margin-left: 1.2rem;
@@ -88,6 +88,7 @@
     .post-content {
       margin-top: 0.6rem;
       margin-bottom: 0.6rem;
+      font-size: 1.0rem;
       color: var(--post-list-text-color);
 
       > p {

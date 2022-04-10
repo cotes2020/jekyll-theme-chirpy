@@ -6,12 +6,19 @@
   <div class="d-flex justify-content-between align-items-center text-muted">
     <div class="footer-left">
       
-      <!-- For site level visit count, note here is site pv-->
+      <!-- For site level visit count, note here is site pv
       <p class="mb-0">
         <span id="busuanzi_container_site_pv">Welcome, the site has been visited <span id="busuanzi_value_site_pv"></span> times.</span>
       </p>
+      -->
+      <p class="mb-0">
+        <span>Welcome, the site has been visited 
+          <em id="my_pv_from_google" class="pageviews">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </em>
+          times.
+      </p>
 
-      
       <p class="mb-0">
         © {{ 'now' | date: "%Y" }}
         <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
@@ -46,3 +53,28 @@
   </div> <!-- div.d-flex -->
   
 </footer>
+
+<script>
+$(function () {
+    //Get approximate page visit count using path "/"
+    pageUrlroot = "/"
+    $.ajax({
+      url: 'https://my-api-service-344803.uc.r.appspot.com/apis/pageviews',
+      type: 'GET',
+      data: { "path": "/"},
+      dataType: "json",
+      success: function (data) {
+        $.each(data, function (key, val) {
+          if (key === pageUrlroot) {
+            $('#my_pv_from_google').text(val)
+          }
+        })
+      },
+      error: function (xhr, textStatus) {
+        console.log('error in ajax')
+        console.log(xhr)
+        console.log(textStatus)
+      }
+    })
+})
+</script>
