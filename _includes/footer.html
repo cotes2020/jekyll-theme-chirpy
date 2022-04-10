@@ -56,8 +56,8 @@
 
 <script>
 $(function () {
-    //Get approximate page visit count using path "/"
-    pageUrlroot = "/"
+    /*Get approximate page visit count using path */
+    pageUrlroot = "/";
     $.ajax({
       url: 'https://my-api-service-344803.uc.r.appspot.com/apis/pageviews',
       type: 'GET',
@@ -71,10 +71,10 @@ $(function () {
         })
       },
       error: function (xhr, textStatus) {
-        console.log('error in ajax')
-        console.log(xhr)
-        console.log(textStatus)
+        console.log('error in ajax');
+        console.log(xhr);
+        console.log(textStatus);
       }
-    })
-})
+    });
+});
 </script>

@@ -111,8 +111,8 @@ layout: page
     has special treat with '/' in URL, thus we remote '/' to generate
     post ID, and use postID to operate likes data. 
     */
-    var postIDs = []
-    $(".num_of_likes").map(function () { postIDs.push($(this).attr("id")) })
+    var postIDs = [];
+    $(".num_of_likes").map(function () { postIDs.push($(this).attr("id")) });
     $.ajax({
       url: 'https://my-api-service-344803.uc.r.appspot.com/apis/data/countlikes',
       type: 'GET',
@@ -124,10 +124,10 @@ layout: page
         })
       },
       error: function (xhr, textStatus) {
-        console.log('error in ajax')
-        console.log(xhr)
-        console.log(textStatus)
+        console.log('error in ajax');
+        console.log(xhr);
+        console.log(textStatus);
       }
-    })
-  })
+    });
+  });
 </script>

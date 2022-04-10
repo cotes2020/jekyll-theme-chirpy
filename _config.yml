@@ -172,15 +172,16 @@ defaults:
 sass:
   style: compressed
 
-#compress_html:
-#  clippings: all
-#  comments: all
-#  endings: all
-#  profile: false
-#  blanklines: false
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
 #  ignore:
 #    envs: [development]
 #  sometimes it works when not compressed, but not work when compressed
+#  in JS code, add semi-colon as mush as possible, single line comment not allowed
 exclude:
   - '*.gem'
   - '*.gemspec'
