@@ -16,7 +16,9 @@ webfonts: https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:w
 # Libraries
 
 jquery:
-  js: https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
+  js: https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
+  #js: https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
+
 
 bootstrap:
   css: https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css
