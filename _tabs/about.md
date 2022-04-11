@@ -17,9 +17,9 @@ order: 4
 
 
 ## <i class='fas fa-university'></i> **Educational Background**
-Bachelor of Business Administration - Positive University - 2016<br/>
-Six Sigma: Green Belt - Catholic Pontiff University - 2022 (On going)
-
+I have a degree in Bachelor of Business Administration - Positive University - 12/2016<br/>
+Pos graduate in Lean Six Sigma: Green Belt - Catholic Pontiff University - (Conclusion in 06/2022)<br/>
+Pos graduate in Data Science - Catholic Pontiff University - (Scheduled for start in 05/2022)
 
 ## <i class="fas fa-user-tie"></i> **Summary**
 Passionate about data and technology, I have + 3 years of experience working daily with R, SQL and Python.<br/><br/>
@@ -32,10 +32,10 @@ Working together with multidisciplinary teams, I had the opportunity to particip
 
 <i class="fas fa-rocket"></i> **Expertise:**<br/>
 * Procurement and Strategic Sourcing
-* Programming in R, SQL, Python and VBA.
+* OOP (Project Oriented Programmin) in R, SQL, Python and VBA.
 * Statistical Modeling, Web Scraping, Machine Learning, RPA.
 * Data Visualization and Dashboards: Excel, Power BI, Tableau, Flexdashboard, Rmarkdown, Shiny, Google Data Studio
-* Project Management, team Management, methodology agile and Six Sigma
+* Project Management, Team Management, methodology agile, Six Sigma, Scrum, Kambam
 
 
 #### I knowledge in:
@@ -44,8 +44,9 @@ Working together with multidisciplinary teams, I had the opportunity to particip
 * Data Visualization, Dashboards and Web Application Development.
 * ERPs: Benner, SAP and TOTVS.
 * Statistical Modeling, Web Scraping, Machine Learning, Text Mining
-* Git, GitHub, Git Actions, LaTeX, Markdown, HTML, Ruby, Jekyll, RPA
+* Git, GitHub, Git Actions, LaTeX, Markdown, HTML, Ruby, Jekyll, RPA, Docker, API
 * Rstudio, VScode, MySQL, Minitab
+* Cloud-computing, Clean Code, SQL, NoSQL, Microservices, SOLID
 
 
 ### <i class="fas fa-language"></i> **Languages:**
@@ -118,7 +119,7 @@ Obs.: English - B2 Upper Intermediate according to the Common European Framework
 > ### Udo Heuer - *CNC Lathe Operator* - Since Jul/2010 until Mar/2012
 - Machining of ferrous and non-ferrous materials according to the technical drawing guaranteeing the quality in the finished products.
 
-> ### Caixa Econômica Federal (CEF) - *Intern* - Since Jun/2008 until Sep/2013
+> ### Caixa Econômica Federal (CEF) - *Intern* - Since Jun/2008 until Feb/2010
 - Regional Warehouse: Control of entries and exits, conference of invoices, organization and evaluation of stock obsolescence.
 
 ## <i class="fas fa-paperclip"></i> Diplomas:
@@ -142,3 +143,4 @@ Obs.: English - B2 Upper Intermediate according to the Common European Framework
 - [Learning Markdown](https://www.linkedin.com/learning/certificates/e2ea1ac7bc10be6db362a536b9d4e4624725166fb7574043401339e2740b8ac3?trk=share_certificate)
 - [Learning Git and GitHub](https://www.linkedin.com/learning/certificates/e5ca7c6bf4d9c93fcaa0850f30b451b7b4d8a16f5cd3c9fd9a4d9308a707b6d1?trk=share_certificate)
 - [Learning Linux Shell Scripting](https://www.linkedin.com/learning/certificates/c9f381cff4996608e8952ce9093d3b42d11d9640b8fa920e95a1696b752e0d39?trk=share_certificate)
+- [Strategic Thinking (Certify by PMI)](https://www.linkedin.com/learning/certificates/37fd786f11432a9902b8faf9706b8e67a9eea5626ba30ce218e3a819cf54505c?trk=share_certificate)
