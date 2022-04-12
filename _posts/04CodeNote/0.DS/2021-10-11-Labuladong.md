@@ -242,6 +242,8 @@ toc: true
       - [+++++ HashMap](#-hashmap)
     - [3 sum](#3-sum)
       - [++++++ `i + 2 sum(Hash+Set)`](#-i--2-sumhashset)
+- [🔒🔒 Prefix Sum](#-prefix-sum)
+  - [🔒 Prefix Sum - Array 数组](#-prefix-sum---array-数组)
     - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
       - [+++++ BinarySearch](#-binarysearch)
       - [+++++ HashMap](#-hashmap-1)
@@ -9982,7 +9984,31 @@ use set/hash to remove duplicate
 #### ++++++ `i + 2 sum(Hash+Set)`
 
 ```java
-
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Set<List<Integer>> res = new HashSet<>();
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int n = nums.length;
+        Arrays.sort(nums);
+        
+        // if length is less than 3, return empty result set
+        if (n < 3 || nums[0] > 0) return new ArrayList(res); 
+        
+        for(int i = 0 ; i < nums.length;i++) map.put(nums[i], i); 
+        
+        for(int i=0;i<n-1;i++){ 
+            for(int j=i+1;j<n;j++) {
+                
+                int target = 0-nums[i]-nums[j]; 
+                if (map.containsKey(target) && map.get(target)>j ){
+                    res.add(Arrays.asList(nums[i], nums[j], target)); 
+                }
+            }
+        }   
+        return new ArrayList(res); 
+    }
+}
+```
 
 
 
