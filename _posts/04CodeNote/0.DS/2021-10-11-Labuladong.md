@@ -9990,22 +9990,22 @@ class Solution {
         HashMap<Integer,Integer> map = new HashMap<>();
         int n = nums.length;
         Arrays.sort(nums);
-        
+
         // if length is less than 3, return empty result set
-        if (n < 3 || nums[0] > 0) return new ArrayList(res); 
-        
-        for(int i = 0 ; i < nums.length;i++) map.put(nums[i], i); 
-        
-        for(int i=0;i<n-1;i++){ 
+        if (n < 3 || nums[0] > 0) return new ArrayList(res);
+
+        for(int i = 0 ; i < nums.length;i++) map.put(nums[i], i);
+
+        for(int i=0;i<n-1;i++){
             for(int j=i+1;j<n;j++) {
-                
-                int target = 0-nums[i]-nums[j]; 
+
+                int target = 0-nums[i]-nums[j];
                 if (map.containsKey(target) && map.get(target)>j ){
-                    res.add(Arrays.asList(nums[i], nums[j], target)); 
+                    res.add(Arrays.asList(nums[i], nums[j], target));
                 }
             }
         }   
-        return new ArrayList(res); 
+        return new ArrayList(res);
     }
 }
 ```
