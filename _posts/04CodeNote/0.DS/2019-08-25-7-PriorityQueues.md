@@ -13,43 +13,43 @@ toc: true
 ---
 
 
-- [# Data Structures - Basic 1 - Priority Queues](#-data-structures---basic-1---priority-queues)
-- [Priority Queues](#priority-queues)
-  - [ADT: Priority Queue in java](#adt-priority-queue-in-java)
-  - [Implementing a Priority Queue](#implementing-a-priority-queue)
-    - [Entry **Interface**](#entry-interface)
-    - [PriorityQueue **Interface**](#priorityqueue-interface)
-    - [defining comparisons](#defining-comparisons)
-      - [Comparable **Interface**](#comparable-interface)
-      - [Comparator **Interface**](#comparator-interface)
-    - [AbstractPriorityQueue **Abstract base class**](#abstractpriorityqueue-abstract-base-class)
-    - [UnsortedPriorityQueue **class** Unsorted List](#unsortedpriorityqueue-class-unsorted-list)
-    - [SortedPriorityQueue **class** sorted List](#sortedpriorityqueue-class-sorted-list)
-    - [import java.util.PriorityQueue](#import-javautilpriorityqueue)
-- [Binary Heap 堆](#binary-heap-堆)
-  - [The Heap Data Structure](#the-heap-data-structure)
-    - [The Height of a Heap](#the-height-of-a-heap)
-- [Implement Priority Queue](#implement-priority-queue)
-  - [Implementing a Priority Queue with a Heap](#implementing-a-priority-queue-with-a-heap)
-    - [Complete Binary Tree **Array-Based**](#complete-binary-tree-array-based)
-    - [priority queue **heap-based**](#priority-queue-heap-based)
-      - [heap in java](#heap-in-java)
-        - [analyze the binary heap](#analyze-the-binary-heap)
-      - [max heap in java](#max-heap-in-java)
-        - [min heap in python](#min-heap-in-python)
-  - [Bottom-Up Heap Construction](#bottom-up-heap-construction)
-    - [Implementation in Java](#implementation-in-java)
-      - [Asymptotic Analysis of Bottom-Up Heap Construction](#asymptotic-analysis-of-bottom-up-heap-construction)
-  - [java.util.PriorityQueue **Class**](#javautilpriorityqueue-class)
-- [Sorting with a Priority Queue](#sorting-with-a-priority-queue)
-  - [Selection-Sort](#selection-sort)
-  - [Insertion-Sort](#insertion-sort)
-  - [Heap-Sort](#heap-sort)
-  - [Implementing Heap-Sort In-Place](#implementing-heap-sort-in-place)
-- [Adaptable Priority Queues](#adaptable-priority-queues)
-  - [The Adaptable Priority Queue ADT](#the-adaptable-priority-queue-adt)
-    - [Location-Aware Entries](#location-aware-entries)
-    - [Implementing an Adaptable Priority Queue](#implementing-an-adaptable-priority-queue)
+- [Data Structures Basic 1 Priority Queues](#data-structures-basic-1-priority-queues)
+  - [Priority Queues](#priority-queues)
+    - [ADT: Priority Queue in java](#adt-priority-queue-in-java)
+    - [Implementing a Priority Queue](#implementing-a-priority-queue)
+      - [Entry **Interface**](#entry-interface)
+      - [PriorityQueue **Interface**](#priorityqueue-interface)
+      - [defining comparisons](#defining-comparisons)
+        - [Comparable **Interface**](#comparable-interface)
+        - [Comparator **Interface**](#comparator-interface)
+      - [AbstractPriorityQueue **Abstract base class**](#abstractpriorityqueue-abstract-base-class)
+      - [UnsortedPriorityQueue **class** Unsorted List](#unsortedpriorityqueue-class-unsorted-list)
+      - [SortedPriorityQueue **class** sorted List](#sortedpriorityqueue-class-sorted-list)
+      - [import java.util.PriorityQueue](#import-javautilpriorityqueue)
+  - [Binary Heap 堆](#binary-heap-堆)
+    - [The Heap Data Structure](#the-heap-data-structure)
+      - [The Height of a Heap](#the-height-of-a-heap)
+  - [Implement Priority Queue](#implement-priority-queue)
+    - [Implementing a Priority Queue with a Heap](#implementing-a-priority-queue-with-a-heap)
+      - [Complete Binary Tree **Array-Based**](#complete-binary-tree-array-based)
+      - [priority queue **heap-based**](#priority-queue-heap-based)
+        - [heap in java](#heap-in-java)
+          - [analyze the binary heap](#analyze-the-binary-heap)
+        - [max heap in java](#max-heap-in-java)
+          - [min heap in python](#min-heap-in-python)
+    - [Bottom-Up Heap Construction](#bottom-up-heap-construction)
+      - [Implementation in Java](#implementation-in-java)
+        - [Asymptotic Analysis of Bottom-Up Heap Construction](#asymptotic-analysis-of-bottom-up-heap-construction)
+    - [java.util.PriorityQueue **Class**](#javautilpriorityqueue-class)
+  - [Sorting with a Priority Queue](#sorting-with-a-priority-queue)
+    - [Selection-Sort](#selection-sort)
+    - [Insertion-Sort](#insertion-sort)
+    - [Heap-Sort](#heap-sort)
+    - [Implementing Heap-Sort In-Place](#implementing-heap-sort-in-place)
+  - [Adaptable Priority Queues](#adaptable-priority-queues)
+    - [The Adaptable Priority Queue ADT](#the-adaptable-priority-queue-adt)
+      - [Location-Aware Entries](#location-aware-entries)
+      - [Implementing an Adaptable Priority Queue](#implementing-an-adaptable-priority-queue)
 
 
 - ref
@@ -59,7 +59,11 @@ toc: true
 
 ---
 
-# Data Structures - Basic 1 - Priority Queues
+
+# Data Structures Basic 1 Priority Queues
+
+
+
 ---
 
 ## Priority Queues

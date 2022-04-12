@@ -9984,6 +9984,10 @@ use set/hash to remove duplicate
 #### ++++++ `i + 2 sum(Hash+Set)`
 
 ```java
+// Runtime: 1729 ms, faster than 5.01% of Java online submissions for 3Sum.
+// Memory Usage: 148.5 MB, less than 7.69% of Java online submissions for 3Sum.
+// time: O(n^2) 
+// space: O(n)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         Set<List<Integer>> res = new HashSet<>();
@@ -10011,7 +10015,35 @@ class Solution {
 ```
 
 
+```java
 
+
+// time: O(n^2) 
+// space: O(1)
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        
+        
+        List<List<Integer>> res = new ArrayList<>();
+        int n = nums.length;
+        
+        Arrays.sort(nums);
+        
+        // if length is less than 3, return empty result set
+        if (n < 3 || nums[0] > 0) return res;
+        
+        for(int i=0;i<n-1;i++){ 
+            int j=i+1, k=n-1; 
+            while(j<k){
+                if(0-nums[i]==nums[j]+nums[k]) res.add(new ArrayList(nums[i]+nums[j]+nums[k]));
+                else if(0-nums[i]<nums[j]+nums[k]) k--;
+                else if(0-nums[i]>nums[j]+nums[k]) j++;
+            }
+        }   
+        return res; 
+    } 
+}
+```
 
 
 
