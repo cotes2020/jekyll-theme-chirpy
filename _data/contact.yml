@@ -1,12 +1,12 @@
 #  The contact options.
 -
+  type: discord
+  icon: 'fab fa-discord'
+  url: 'https://booodaness.github.io/psi-phi/'
+-
   type: quora
   icon: 'fab fa-quora'
   url: 'https://www.quora.com/profile/Siddhartha-Bhattacharjee-45'
--
-  type: discord
-  icon: 'fab fa-discord'
-  url: 'https://bit.ly/psi-phi-community'
 -
   type: reddit
   icon: 'fab fa-reddit'
