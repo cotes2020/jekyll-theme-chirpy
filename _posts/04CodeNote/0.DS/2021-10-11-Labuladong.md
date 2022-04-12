@@ -69,26 +69,6 @@ toc: true
       - [+++++ `recursive`](#-recursive-1)
     - [example](#example)
       - [870 题「优势洗牌」](#870-题优势洗牌)
-  - [左右指针](#左右指针)
-    - [二分查找](#二分查找)
-    - [在有序数组中搜索指定元素](#在有序数组中搜索指定元素)
-      - [704. Binary Search 寻找一个数（基本的二分搜索）](#704-binary-search-寻找一个数基本的二分搜索)
-      - [寻找左侧边界的二分搜索](#寻找左侧边界的二分搜索)
-        - [278. First Bad Version](#278-first-bad-version)
-      - [寻找右侧边界的二分查找](#寻找右侧边界的二分查找)
-      - [34. Find First and Last Position of Element in Sorted Array 寻找左右边界的二分搜索](#34-find-first-and-last-position-of-element-in-sorted-array-寻找左右边界的二分搜索)
-      - [二分搜索算法运用](#二分搜索算法运用)
-      - [example](#example-1)
-        - [875. Koko Eating Bananas](#875-koko-eating-bananas)
-        - [运送货物？？？？？？？？？？？？？？](#运送货物)
-        - [https://labuladong.github.io/algo/2/21/59/ ？？？？](#httpslabuladonggithubioalgo22159-)
-    - [两数之和](#两数之和)
-    - [344. Reverse String 反转数组](#344-reverse-string-反转数组)
-    - [滑动窗口技巧 `right++, missing==0, left++`](#滑动窗口技巧-right-missing0-left)
-      - [最小覆盖子串](#最小覆盖子串)
-      - [567. Permutation in String 字符串排列](#567-permutation-in-string-字符串排列)
-      - [438. Find All Anagrams in a String 找所有字母异位词](#438-find-all-anagrams-in-a-string-找所有字母异位词)
-      - [3. Longest Substring Without Repeating Characters 最长无重复子串](#3-longest-substring-without-repeating-characters-最长无重复子串)
   - [链表的环](#链表的环)
     - [判断单链表是否包含环](#判断单链表是否包含环)
     - [142. Linked List Cycle II 计算链表中环起点](#142-linked-list-cycle-ii-计算链表中环起点)
@@ -210,8 +190,9 @@ toc: true
     - [77. Combinations](#77-combinations)
 - [功能](#功能)
   - [设计朋友圈时间线](#设计朋友圈时间线)
-- [动态规划](#动态规划)
-  - [斐波那契数列](#斐波那契数列)
+- [🔒🔒 动态规划](#-动态规划)
+  - [🔒 动态规划](#-动态规划-1)
+    - [斐波那契数列](#斐波那契数列)
   - [动态规划解法](#动态规划解法)
     - [322. Coin Change 凑零钱 ` for i, for coin, dp[i] = Math.min(dp[i], dp[i-coin]+1);`](#322-coin-change-凑零钱--for-i-for-coin-dpi--mathmindpi-dpi-coin1)
       - [暴力解法](#暴力解法-1)
@@ -226,7 +207,17 @@ toc: true
     - [514. Freedom Trail 自由之路（困难）??????](#514-freedom-trail-自由之路困难)
   - [加权有向图 最短路径](#加权有向图-最短路径)
     - [787. K 站中转内最便宜的航班（中等）](#787-k-站中转内最便宜的航班中等)
-  - [子序列](#子序列)
+  - [🔒 子序列](#-子序列)
+  - [🔒 SubArray](#-subarray)
+    - [152. Maximum Product Subarray (Medium)](#152-maximum-product-subarray-medium)
+      - [+++++ `record max and min`](#-record-max-and-min)
+  - [🔒 子序列 - 一维dp数组](#-子序列---一维dp数组)
+    - [53. Maximum Subarray 最大子序和（Easy)](#53-maximum-subarray-最大子序和easy)
+      - [+++++ `int[] dp, max = Math.max(max, dp[i])`](#-int-dp-max--mathmaxmax-dpi)
+      - [+++++ 状态压缩 `dp[i] 仅仅和 dp[i-1] 的状态有关`](#-状态压缩-dpi-仅仅和-dpi-1-的状态有关)
+    - [217. Contains Duplicate (Easy)](#217-contains-duplicate-easy)
+      - [+++++ `hash 记住出现过的数字`](#-hash-记住出现过的数字)
+      - [+++++ `Sort the array` better](#-sort-the-array-better)
     - [300. Longest Increasing Subsequence 最长递增子序列](#300-longest-increasing-subsequence-最长递增子序列)
     - [1143. Longest Common Subsequence 最长公共子序列](#1143-longest-common-subsequence-最长公共子序列)
     - [583. Delete Operation for Two Strings 两个字符串的删除操作](#583-delete-operation-for-two-strings-两个字符串的删除操作)
@@ -238,42 +229,60 @@ toc: true
       - [消除重叠子问题](#消除重叠子问题)
     - [72. Edit Distance 编辑距离（困难）](#72-edit-distance-编辑距离困难)
     - [354. Russian Doll Envelopes 俄罗斯套娃信封问题（困难）](#354-russian-doll-envelopes-俄罗斯套娃信封问题困难)
-    - [53 最大子序和（简单)](#53-最大子序和简单)
   - [背包类型问题](#背包类型问题)
     - [子集背包问题](#子集背包问题)
       - [416. Partition Equal Subset Sum 分割等和子集（中等）](#416-partition-equal-subset-sum-分割等和子集中等)
       - [698. Partition to K Equal Sum Subsets](#698-partition-to-k-equal-sum-subsets)
       - [215. Kth Largest Element in an Array](#215-kth-largest-element-in-an-array)
-- [题](#题)
-- [🔒🔒 Prefix Sum](#-prefix-sum)
-  - [🔒 Prefix Sum - Array 数组](#-prefix-sum---array-数组)
+- [🔒🔒 Hash](#-hash)
+  - [🔒 Hash - Array int[]](#-hash---array-int)
     - [1. Two Sum (Easy) `找两个数sum=target`](#1-two-sum-easy-找两个数sumtarget)
       - [+++++ brute force 穷举](#-brute-force-穷举)
-      - [+++++ 哈希表](#-哈希表)
+      - [+++++ two pointer](#-two-pointer)
+      - [+++++ HashMap](#-hashmap)
+    - [3 sum](#3-sum)
+      - [++++++ `i + 2 sum(Hash+Set)`](#-i--2-sumhashset)
     - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
       - [+++++ BinarySearch](#-binarysearch)
-      - [+++++ HashMap](#-hashmap)
+      - [+++++ HashMap](#-hashmap-1)
       - [+++++ Two pointers](#-two-pointers)
     - [653. Two Sum IV - Input is a BST (Easy)](#653-two-sum-iv---input-is-a-bst-easy-1)
-    - [121. Best Time to Buy and Sell Stock (Easy)](#121-best-time-to-buy-and-sell-stock-easy)
-      - [+++++ brute force](#-brute-force)
-      - [+++++ `2 pointer 求出最小前数，算数求最大`](#-2-pointer-求出最小前数算数求最大)
     - [238. Product of Array Except Self (Medium)](#238-product-of-array-except-self-medium)
       - [+++++ `左乘 右乘 result[i] = left[i] * right[i];`](#-左乘-右乘-resulti--lefti--righti)
-      - [+++++ 右边数字先计算 再参与计算](#-右边数字先计算-再参与计算)
+      - [+++++ `右边数字先计算 再参与计算`](#-右边数字先计算-再参与计算)
       - [+++++ ???????](#-)
     - [724. Find Pivot Index (Easy)](#724-find-pivot-index-easy)
       - [++++++ Brute Force approach `for i: adding left, adding right`](#-brute-force-approach-for-i-adding-left-adding-right)
       - [++++++ `2 pointer, left - nums[i] - right`](#-2-pointer-left---numsi---right)
       - [++++++ `prefix sum. for i: sum[i] - nums[i] == sum[n-1]-sum[i]`](#-prefix-sum-for-i-sumi---numsi--sumn-1-sumi)
   - [747. Largest Number At Least Twice of Others (Easy)](#747-largest-number-at-least-twice-of-others-easy)
-- [🔒🔒 Hash](#-hash)
-  - [🔒 Hash - Array](#-hash---array)
-    - [217. Contains Duplicate (Easy)](#217-contains-duplicate-easy)
-      - [+++++ `hash 记住出现过的数字`](#-hash-记住出现过的数字)
-      - [+++++ `Sort the array`](#-sort-the-array)
-- [🔒🔒 Two-pointer technique](#-two-pointer-technique)
+- [🔒🔒 Two-pointer 左右指针](#-two-pointer-左右指针)
+  - [two pointer + BS - 二分查找 / 在有序数组中搜索指定元素](#two-pointer--bs---二分查找--在有序数组中搜索指定元素)
+    - [153. Find Minimum in Rotated Sorted Array Medium](#153-find-minimum-in-rotated-sorted-array-medium)
+      - [+++++ `2 pointer + BS, l,m,r -> nums[m]<nums[m-1] return nums[m]`](#-2-pointer--bs-lmr---numsmnumsm-1-return-numsm)
+    - [寻找右侧边界的二分查找](#寻找右侧边界的二分查找)
+    - [33. Search in Rotated Sorted Array (Medium)](#33-search-in-rotated-sorted-array-medium)
+      - [++++++ `BS chop`](#-bs-chop)
+    - [34. Find First and Last Position of Element in Sorted Array (Medium) 寻找左右边界的二分搜索](#34-find-first-and-last-position-of-element-in-sorted-array-medium-寻找左右边界的二分搜索)
+      - [+++++ `BS: find first + find last`](#-bs-find-first--find-last)
+    - [704. Binary Search 寻找一个数（基本的二分搜索）](#704-binary-search-寻找一个数基本的二分搜索)
+    - [寻找左侧边界的二分搜索](#寻找左侧边界的二分搜索)
+    - [278. First Bad Version](#278-first-bad-version)
+    - [二分搜索算法运用](#二分搜索算法运用)
+    - [875. Koko Eating Bananas](#875-koko-eating-bananas)
+    - [运送货物？？？？？？？？？？？？？？](#运送货物)
+    - [https://labuladong.github.io/algo/2/21/59/ ？？？？](#httpslabuladonggithubioalgo22159-)
+    - [167. Two Sum II - Input Array Is Sorted 两数之和](#167-two-sum-ii---input-array-is-sorted-两数之和)
+    - [344. Reverse String 反转数组](#344-reverse-string-反转数组)
+    - [滑动窗口技巧 `right++, missing==0, left++`](#滑动窗口技巧-right-missing0-left)
+    - [76. Minimum Window Substring 最小覆盖子串](#76-minimum-window-substring-最小覆盖子串)
+    - [567. Permutation in String 字符串排列](#567-permutation-in-string-字符串排列)
+    - [438. Find All Anagrams in a String 找所有字母异位词](#438-find-all-anagrams-in-a-string-找所有字母异位词)
+    - [3. Longest Substring Without Repeating Characters 最长无重复子串](#3-longest-substring-without-repeating-characters-最长无重复子串)
   - [🔒 two pointer - Array 数组](#-two-pointer---array-数组)
+    - [121. Best Time to Buy and Sell Stock (Easy)](#121-best-time-to-buy-and-sell-stock-easy)
+      - [+++++ brute force](#-brute-force)
+      - [+++++ `2 pointer 求出最小前数，算数求最大`](#-2-pointer-求出最小前数算数求最大)
     - [83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`](#83-remove-duplicates-from-sorted-list-有序链表去重-快慢指针前后走)
       - [python](#python)
     - [26. Remove Duplicates from Sorted Array 有序数组去重（简单）`快慢指针前后走`](#26-remove-duplicates-from-sorted-array-有序数组去重简单快慢指针前后走)
@@ -299,6 +308,9 @@ toc: true
     - [1346. Check If N and Its Double Exist (Easy)](#1346-check-if-n-and-its-double-exist-easy)
       - [+++++ Bruteforce `放入HashSet，rotate看出现`](#-bruteforce-放入hashsetrotate看出现)
       - [+++++ BS](#-bs)
+    - [33. Search in Rotated Sorted Array !!!!!!](#33-search-in-rotated-sorted-array-)
+    - [81. Search in Rotated Sorted Array II !!!!!!](#81-search-in-rotated-sorted-array-ii-)
+    - [154. Find Minimum in Rotated Sorted Array II + FollowUp !!!!!!](#154-find-minimum-in-rotated-sorted-array-ii--followup-)
   - [🔒 two pointer - 链表](#-two-pointer---链表)
     - [203. Remove Linked List Elements (Easy)](#203-remove-linked-list-elements-easy)
       - [+++++ recursive solution](#-recursive-solution)
@@ -680,7 +692,7 @@ sb.reverse();
 
 // Array
 Type[] arrayName = {initialValue0, initialValue1, . . . , initialValueN−1};
-Type[] arrayName = new Type[length] 
+Type[] arrayName = new Type[length]
 
 Type myArray[];
 Type[] myArray;
@@ -2638,863 +2650,6 @@ int[] advantageCount(int[] nums1, int[] nums2) {
 
 
 
----
-
-## 左右指针
-
-只要数组有序，就应该想到双指针技巧
-
----
-
-### 二分查找
-
-最简单的二分算法，旨在突出它的双指针特性：
-- 分析二分查找的一个技巧是：不要出现 else，而是把所有情况用 else if 写清楚，这样可以清楚地展现所有细节。
-- left + (right - left) / 2 就和 (left + right) / 2 的结果相同，但是有效防止了 left 和 right 太大直接相加导致溢出。
-
-
-
-```java
-int binarySearch(int[] nums, int target) {
-    int left = 0;
-    int right = nums.length - 1;
-    while(left <= right) {
-        // int mid = (right + left) / 2;
-        int mid = left + (right - left) / 2;
-        if(nums[mid] == target) return mid;
-        else if (nums[mid] < target) left = mid + 1;
-        else if (nums[mid] > target) right = mid - 1;
-    }
-    return -1;
-}
-```
-
----
-
-### 在有序数组中搜索指定元素
-
----
-
-#### 704. Binary Search 寻找一个数（基本的二分搜索）
-
-- 初始化 right 的赋值是 nums.length - 1，最后一个元素的索引，而不是 nums.length。
-- `nums.length - 1` 两端都闭区间 [left, right]
-  - while(left <= right) 的终止条件是 left == right + 1，
-  - [right + 1, right]，
-  - 或者带个具体的数字进去 [3, 2]，可见这时候区间为空，因为没有数字既大于等于 3 又小于等于 2 的吧。所以这时候 while 循环终止是正确的，直接返回 -1 即可。
-
-
-- `nums.length` 左闭右开区间 [left, right)
-  - while(left < right) 的终止条件是 left == right [right, right]，
-  - 或者带个具体的数字进去 [2, 2]，这时候区间非空，还有一个数 2，但此时 while 循环终止了。也就是说这区间 [2, 2] 被漏掉了，索引 2 没有被搜索，如果这时候直接返回 -1 就是错误的。
-
-
-[704. Binary Search](https://leetcode.com/problems/binary-search/)
-
-Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
-
-You must write an algorithm with O(log n) runtime complexity.
-
-Example 1:
-
-Input: nums = [-1,0,3,5,9,12], target = 9
-Output: 4
-
-
-```java
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Binary Search.
-// Memory Usage: 51.7 MB, less than 16.03% of Java online submissions for Binary Search.
-
-public int search(int[] nums, int target) {
-    if (nums.length == 0) return -1;
-    int left=0, right=nums.length-1;
-    while(left<=right){
-        int mid = left + (right-left)/2;
-        if(nums[mid]==target) return mid;
-        else if(nums[mid]<target) left=mid+1;
-        else if(nums[mid]>target) right=mid-1;
-    }
-    return -1;
-}
-```
-
-- 这个算法存在局限性。
-- 比如说给你有序数组 nums = [1,2,2,2,3]，target 为 2，此算法返回的索引是 2，没错。但是如果我想得到 target 的左侧边界，即索引 1，或者我想得到 target 的右侧边界，即索引 3，这样的话此算法是无法处理的。
-
----
-
-#### 寻找左侧边界的二分搜索
-
-
-
-```java
-int left_bound(int[] nums, int target) {
-    if (nums.length == 0) return -1;
-    int left = 0;
-    int right = nums.length; // 注意
-
-    while (left < right) { // 注意
-        int mid = left + (right - left) / 2;
-        if (nums[mid] == target) right = mid;
-        else if (nums[mid] < target) left = mid + 1;
-        else if (nums[mid] > target) right = mid; // 注意
-        }
-    }
-    return left;
-}
-
-int left_bound(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    // 搜索区间为 [left, right]
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        // 搜索区间变为 [mid+1, right]
-        if (nums[mid] < target) left = mid + 1;
-        // 搜索区间变为 [left, mid-1]
-        else if (nums[mid] > target) right = mid - 1;
-        // 收缩右侧边界
-        else if (nums[mid] == target) right = mid - 1;
-    }
-    // 检查出界情况
-    if (left >= nums.length || nums[left] != target) return -1;
-    return left;
-}
-```
-
----
-
-
-##### 278. First Bad Version
-
-
-[278. First Bad Version](https://leetcode.com/problems/first-bad-version/)
-
-You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
-
-Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
-
-You are given an API bool isBadVersion(version) which returns whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.
-
-Example 1:
-
-Input: n = 5, bad = 4
-Output: 4
-Explanation:
-call isBadVersion(3) -> false
-call isBadVersion(5) -> true
-call isBadVersion(4) -> true
-Then 4 is the first bad version.
-
-
-```java
-// Runtime: 13 ms, faster than 49.29% of Java online submissions for First Bad Version.
-// Memory Usage: 36.1 MB, less than 29.13% of Java online submissions for First Bad Version.
-public int firstBadVersion(int n) {
-    if (isBadVersion(1)) return 1;
-    int left=0, right=n;
-    while(left<right){
-        int mid = left+(right-left)/2;
-        if(isBadVersion(mid)) right=mid;
-        else left=mid+1;
-    }
-    return left;
-}
-```
-
-
-
----
-
-
-
-#### 寻找右侧边界的二分查找
-
-```java
-int left_bound(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    // 搜索区间为 [left, right]
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        // 搜索区间变为 [mid+1, right]
-        if (nums[mid] < target) right = mid + 1;
-        // 搜索区间变为 [left, mid-1]
-        else if (nums[mid] > target) right = mid - 1;
-        // 收缩右侧边界
-        else if (nums[mid] == target) right = mid + 1;
-    }
-    // 检查出界情况
-    if (right<0 || nums[right] != target) return -1;
-    return right;
-}
-```
-
----
-
-
-#### 34. Find First and Last Position of Element in Sorted Array 寻找左右边界的二分搜索
-
-[34. Find First and Last Position of Element in Sorted Array]
-
-Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
-
-If target is not found in the array, return [-1, -1].
-
-You must write an algorithm with O(log n) runtime complexity.
-
-
-
-Example 1:
-
-Input: nums = [5,7,7,8,8,10], target = 8
-Output: [3,4]
-
-
-
-```java
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Find First and Last Position of Element in Sorted Array.
-// Memory Usage: 44.4 MB, less than 6.19% of Java online submissions for Find First and Last Position of Element in Sorted Array.
-
-int binary_search(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    while(left <= right) {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] < target) left = mid + 1;
-        else if (nums[mid] > target) right = mid - 1;
-        // 直接返回
-        else if(nums[mid] == target) return mid;
-    }
-    // 直接返回
-    return -1;
-}
-
-int left_bound(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] < target) left = mid + 1;
-        else if (nums[mid] > target) right = mid - 1;
-        // 别返回，锁定左侧边界
-        else if (nums[mid] == target) right = mid - 1;
-    }
-    // 最后要检查 left 越界的情况
-    if (left >= nums.length || nums[left] != target) return -1;
-    return left;
-}
-
-int right_bound(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] < target) left = mid + 1;
-        else if (nums[mid] > target) right = mid - 1;
-        // 别返回，锁定右侧边界
-        else if (nums[mid] == target) left = mid + 1;
-    }
-    // 最后要检查 right 越界的情况
-    if (right < 0 || nums[right] != target)
-        return -1;
-    return right;
-}
-```
-
----
-
-#### 二分搜索算法运用
-
-二分搜索的原型就是在「有序数组」中搜索一个元素target，返回该元素对应的索引。
-
-- 如果该元素不存在，那可以返回一个什么特殊值，这种细节问题只要微调算法实现就可实现。
-
-- 还有一个重要的问题，如果「有序数组」中存在多个target元素，那么这些元素肯定挨在一起，这里就涉及到算法应该返回最左侧的那个target元素的索引还是最右侧的那个target元素的索引，「搜索左侧边界」和「搜索右侧边界」
-
-
-从题目中抽象出一个自变量 x，一个关于 x 的函数 f(x)，以及一个目标值 target。
-
-- 同时，x, f(x), target 还要满足以下条件：
-
-- 1、f(x) 必须是在 x 上的单调函数（单调增单调减都可以）。
-
-- 2、题目是让你计算满足约束条件 f(x) == target 时的 x 的值。
-
-```java
-int f(int x, int[] nums) {
-    return nums[x];
-}
-
-int left_bound(int[] nums, int target) {
-    if (nums.length == 0) return -1;
-    int left = 0, right = nums.length;
-
-    while (left < right) {
-        int mid = left + (right - left) / 2;
-        // 当找到 target 时，收缩右侧边界
-        if (f(mid, nums) == target) right = mid;
-        else if (f(mid, nums) < target) left = mid + 1;
-        else if (f(mid, nums) > target) right = mid;
-    }
-    return left;
-}
-
-
-// 主函数，在 f(x) == target 的约束下求 x 的最值
-int solution(int[] nums, int target) {
-    if (nums.length == 0) return -1;
-    // 问自己：自变量 x 的最小值是多少？
-    int left = ...;
-    // 问自己：自变量 x 的最大值是多少？
-    int right = ... + 1;
-
-    while (left < right) {
-        int mid = left + (right - left) / 2;
-        if (f(mid) == target) {
-            // 问自己：题目是求左边界还是右边界？
-            // ...
-        } else if (f(mid) < target) {
-            // 问自己：怎么让 f(x) 大一点？
-            // ...
-        } else if (f(mid) > target) {
-            // 问自己：怎么让 f(x) 小一点？
-            // ...
-        }
-    }
-    return left;
-}
-```
-
----
-
-#### example
-
-##### 875. Koko Eating Bananas
-
-[875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
-
-Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.
-
-Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
-
-Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.
-
-Return the minimum integer k such that she can eat all the bananas within h hours.
-
-
-Example 1:
-
-Input: piles = [3,6,7,11], h = 8
-Output: 4
-
-```java
-// Runtime: 21 ms, faster than 37.05% of Java online submissions for Koko Eating Bananas.
-// Memory Usage: 52.4 MB, less than 7.41% of Java online submissions for Koko Eating Bananas.
-
-// 定义：速度为 x 时，需要 f(x) 小时吃完所有香蕉
-// f(x) 随着 x 的增加单调递减
-int f(int[] piles, int x) {
-    int hours = 0;
-    for (int i = 0; i < piles.length; i++) {
-        hours += piles[i] / x;
-        if (piles[i] % x > 0) hours++;
-    }
-    return hours;
-}
-
-public int minEatingSpeed(int[] piles, int H) {
-    int left = 1, right = 1000000000 + 1;
-
-    while (left < right) {
-        int mid = left + (right - left) / 2;
-
-        // // 搜索左侧边界，则需要收缩右侧边界
-        // if (f(piles, mid) == H) right = mid;
-        // // 需要让 f(x) 的返回值大一些
-        // else if (f(piles, mid) < H) right = mid;
-        // // 需要让 f(x) 的返回值小一些
-        // else if (f(piles, mid) > H) left = mid + 1;
-
-        // if (f(piles, mid) <= H) right = mid;
-        if (f(piles, mid) <= H) right = mid-1;
-        // 需要让 f(x) 的返回值小一些
-        else left = mid + 1;
-    }
-    return left;
-}
-```
-
-
----
-
-##### 运送货物？？？？？？？？？？？？？？
-
-[1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
-
-A conveyor belt has packages that must be shipped from one port to another within days days.
-
-The ith package on the conveyor belt has a weight of weights[i]. Each day, we load the ship with packages on the conveyor belt (in the order given by weights). We may not load more weight than the maximum weight capacity of the ship.
-
-Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within days days.
-
-
-
-Example 1:
-
-Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5
-Output: 15
-
-
-x = capacity
-target = D
-weights[i]
-
-
-
-```java
-public int f(int[] weights, int x){
-    int days=0;
-    int left = 0;
-    for(int wei : weights){
-        if(wei>x)
-        days += (left+wei)/x;
-        left = (left+wei)%x;
-    }
-    return days;
-}
-
-
-
-public int shipWithinDays(int[] weights, int days){
-    int left=0; right=
-}
-
-
-```
-
----
-
-
-##### https://labuladong.github.io/algo/2/21/59/ ？？？？
-
-
-
-
----
-
-
-### 两数之和
-
-
-[167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
-
-Given a (索引是从 1 开始的) `1-indexed array` of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
-
-Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
-
-The tests are generated such that there is exactly one solution. You may not use the same element twice.
-
-```java
-int[] twoSum(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    while (left < right) {
-        int sum = nums[left] + nums[right];
-        // 题目要求的索引是从 1 开始的
-        if (sum == target) return new int[]{left + 1, right + 1};
-        // 让 sum 大一点
-        else if (sum < target) left++;
-        // 让 sum 小一点
-        else if (sum > target) right--;
-    }
-    return new int[]{-1, -1};
-}
-```
-
-
----
-
-
-### 344. Reverse String 反转数组
-
-一般编程语言都会提供 reverse 函数
-
-[344. Reverse String](https://leetcode.com/problems/reverse-string/)
-
-Write a function that reverses a string. The input string is given as an array of characters s.
-
-You must do this by modifying the input array in-place with O(1) extra memory.
-
-反转一个 char[] 类型的字符数组
-
-
-```java
-// Runtime: 1 ms, faster than 95.40% of Java online submissions for Reverse String.
-// Memory Usage: 45.6 MB, less than 89.34% of Java online submissions for Reverse String.
-
-void reverseString(char[] arr) {
-    int left = 0, right = arr.length - 1;
-    while (left < right) {
-        // 交换 arr[left] 和 arr[right]
-        char temp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = temp;
-        left++; right--;
-    }
-}
-```
-
----
-
-### 滑动窗口技巧 `right++, missing==0, left++`
-
-维护一个窗口，不断滑动，然后更新答案么。
-
-该算法的大致逻辑, 时间复杂度是 O(N)，比字符串暴力算法要高效得多。
-
-```java
-int left = 0, right = 0;
-
-while (right < s.size()) {
-    // 增大窗口
-    window.add(s[right]);
-    right++;
-
-    while (window needs shrink) {
-        // 缩小窗口
-        window.remove(s[left]);
-        left++;
-    }
-}
-```
-
-```java
-/* 滑动窗口算法框架 */
-void slidingWindow(string s, string t) {
-    unordered_map<char, int> need, window;
-
-    for (char c : t) need[c]++;
-
-    int left = 0, right = 0;
-    int valid = 0;
-
-    while (right < s.size()) {
-        // c 是将移入窗口的字符
-        char c = s[right];
-        // 右移窗口
-        right++;
-        // 进行窗口内数据的一系列更新
-        ...
-
-        /*** debug 输出的位置 ***/
-        printf("window: [%d, %d)\n", left, right);
-        /********************/
-
-        // 判断左侧窗口是否要收缩
-        while (window needs shrink) {
-            // d 是将移出窗口的字符
-            char d = s[left];
-            // 左移窗口
-            left++;
-            // 进行窗口内数据的一系列更新
-            ...
-        }
-    }
-}
-```
-
-
----
-
-#### 最小覆盖子串
-
-[76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
-
-- Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window.
-- If there is no such substring, return the empty string "".
-- The testcases will be generated such that the answer is unique.
-- A substring is a contiguous sequence of characters within the string.
-
-暴力解法，代码大概是这样的：
-```java
-for (int i = 0; i < s.size(); i++)
-    for (int j = i + 1; j < s.size(); j++)
-        if s[i:j] 包含 t 的所有字母:
-            更新答案
-
-```
-
-
-滑动窗口算法的思路:
-
-1. 我们在字符串 S 中使用双指针中的左右指针技巧，初始化 left = right = 0，把索引左闭右开区间 [left, right) 称为一个「窗口」。
-
-2. 我们先不断地增加 right 指针扩大窗口 [left, right)，直到窗口中的字符串符合要求（包含了 T 中的所有字符）。
-
-3. 此时，我们停止增加 right，转而不断增加 left 指针缩小窗口 [left, right)，直到窗口中的字符串不再符合要求（不包含 T 中的所有字符了）。同时，每次增加 left，我们都要更新一轮结果。
-
-4. 重复第 2 和第 3 步，直到 right 到达字符串 S 的尽头。
-
-```java
-public static String minWindow(String s, String t) {
-    Map<Character, Integer> need = new HashMap<>();
-    for(char i:t.toCharArray()) need.put(i, need.getOrDefault(i,0)+1); // {A:2, B:1}
-
-    int start=0, len = s.length()+1;
-    int left=0, right=0, valid=0;
-    int missing = t.length(); //The number of chars are missing.
-
-    Map<Character, Integer> win = new HashMap<>();
-    while(right<s.length()){
-        right++;
-
-        char x = s.charAt(right);
-        if(need.containsKey(x)){
-            win.put(x, win.getOrDefault(x,0)+1);
-            if(win.get(x) == need.get(x)) valid++;
-        }
-
-        while(valid == need.size()){
-            if(right-left < len){
-                start=left;
-                len = right-left;
-            }
-
-            char y = s.charAt(left);
-            left++;
-            if(need.containsKey(y)){
-                if(win.get(y) == need.get(y)) valid--;
-                win.put(y, win.get(y)-1);
-            }
-        }
-    }
-    return len==s.length()+1 ? "" : s.substring(start,start+len);
-}
-
-// Runtime: 10 ms, faster than 70.54% of Java online submissions for Minimum Window Substring.
-// Memory Usage: 39.1 MB, less than 82.86% of Java online submissions for Minimum Window Substring.
-class Solution {
-    public String minWindow(String s, String t) {
-        if(s==null || t==null) throw new IllegalArgumentException("Input string is null");
-        if(s.length() < t.length()) return "";
-        HashMap<Character, Integer> map = new HashMap<>();
-        for(int i=0;i<t.length();i++) map.put(t.charAt(i), map.getOrDefault(t.charAt(i), 0)+1);
-        int left=0, right=0;
-        int start=0, len = Integer.MAX_VALUE;
-        int missing = t.length();
-        while(right<s.length()){
-            char x = s.charAt(right);
-            if(map.containsKey(x)){
-                int countX = map.get(x);
-                if(countX > 0) missing--;
-                map.put(x, countX-1);
-            }
-            right++;
-            while(missing==0){
-                if(right-left < len){
-                    start=left;
-                    len = right-left;
-                }
-                char y = s.charAt(left);
-                if(map.containsKey(y)){
-                    int countY = map.get(y);
-                    if(countY == 0) missing++;
-                    map.put(y, countY+1);
-                }
-                left++;
-            }
-        }
-        return len==Integer.MAX_VALUE ? "" : s.substring(start, start+len);
-    }
-}
-```
-
----
-
-
-#### 567. Permutation in String 字符串排列
-
-[567. Permutation in String](https://leetcode.com/problems/permutation-in-string/)
-
-Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
-
-In other words, return true if one of s1's permutations is the substring of s2.
-
-
-
-Example 1:
-
-Input: s1 = "ab", s2 = "eidbaooo"
-Output: true
-Explanation: s2 contains one permutation of s1 ("ba").
-
-
-```java
-// 判断 s 中是否存在 t 的排列
-bool checkInclusion(string t, string s) {
-    unordered_map<char, int> need, window;
-    for (char c : t) need[c]++;
-
-    int left = 0, right = 0;
-    int valid = 0;
-    while (right < s.size()) {
-        char c = s[right];
-        right++;
-        // 进行窗口内数据的一系列更新
-        if (need.count(c)) {
-            window[c]++;
-            if (window[c] == need[c])
-                valid++;
-        }
-
-        // 判断左侧窗口是否要收缩
-        while (right - left >= t.size()) {
-            // 在这里判断是否找到了合法的子串
-            if (valid == need.size())
-                return true;
-            char d = s[left];
-            left++;
-            // 进行窗口内数据的一系列更新
-            if (need.count(d)) {
-                if (window[d] == need[d])
-                    valid--;
-                window[d]--;
-            }
-        }
-    }
-    // 未找到符合条件的子串
-    return false;
-}
-
-// Runtime: 12 ms, faster than 48.78% of Java online submissions for Permutation in String.
-// Memory Usage: 38.9 MB, less than 91.88% of Java online submissions for Permutation in String.
-class Solution {
-    public boolean checkInclusion(String s1, String s2) {
-        if(s1==null || s2==null) throw new IllegalArgumentException("Input string is null");
-        if(s1.length()>s2.length()) return false;
-
-        int left=0, right=0;
-        int start=0, len=Integer.MAX_VALUE;
-        int missing=s1.length();
-
-        HashMap<Character, Integer> map = new HashMap<>();
-        for(int i=0;i<s1.length();i++) map.put(s1.charAt(i), map.getOrDefault(s1.charAt(i), 0)+1);
-
-        while(right<s2.length()){
-            char x = s2.charAt(right);
-            if(map.containsKey(x)){
-                if(map.get(x)>0) missing--;
-                map.put(x, map.get(x)-1);
-            }
-            right++;
-
-            while(missing==0){
-                if(right-left==s1.length()) return true;
-                char y = s2.charAt(left);
-                if(map.containsKey(y)){
-                    if(map.get(y)==0) missing++;
-                    map.put(y, map.get(y)+1);
-                }
-                left++;
-            }
-        }
-        return false;
-    }
-}
-```
-
----
-
-
-#### 438. Find All Anagrams in a String 找所有字母异位词
-
-[438. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
-
-- Given two strings s and p,
-- return an array of all the start indices of `p's anagrams in s`.
-- You may return the answer in any order.
-- An `Anagram` is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
-
-Example 1:
-
-Input: s = "cbaebabacd", p = "abc"
-Output: [0,6]
-
-1. size same
-2. missing==0
-
-
-```java
-// Runtime: 29 ms, faster than 34.79% of Java online submissions for Find All Anagrams in a String.
-// Memory Usage: 45.6 MB, less than 10.47% of Java online submissions for Find All Anagrams in a String.
-class Solution {
-    public List<Integer> findAnagrams(String s, String p) {
-        HashMap<Character, Integer> map = new HashMap<>();
-        for(int i=0; i<p.length(); i++) map.put(p.charAt(i), map.getOrDefault(p.charAt(i),0)+1);
-
-        List<Integer> res = new ArrayList<>();
-
-        int left=0, right=0;
-        int missing=p.length();
-
-        while(right<s.length()){
-            char x = s.charAt(right);
-            if(map.containsKey(x)){
-                if(map.get(x)>0) missing--;
-                map.put(x, map.get(x)-1);
-            }
-            right++;
-
-            while(missing==0 && left<s.length()){
-                if(right-left==p.length()) res.add(left);
-                char y = s.charAt(left);
-                if(map.containsKey(y)){
-                    if(map.get(y)==0) missing++;
-                    map.put(y, map.get(y)+1);
-                }
-                left++;
-            }
-        }
-        return res;
-    }
-}
-```
-
-
----
-
-
-#### 3. Longest Substring Without Repeating Characters 最长无重复子串
-
-[3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-
-Given a string s, find the length of the longest substring without repeating characters.
-
-Example 1:
-
-Input: s = "abcabcbb"
-Output: 3
-Explanation: The answer is "abc", with the length of 3.
-
-```java
-public int lengthOfLongestSubstring(String s) {
-    HashMap<Character, Integer> map = new HashMap<>();
-    int left=0, right=0;
-    int res=0;
-
-    while(right<s.length()){
-        char x = s.charAt(right);
-        map.put(x, map.getOrDefault(x, 0)+1);
-        right++;
-
-        while(map.get(x)>1){
-            char y = s.charAt(left);
-            left++;
-            map.put(y, map.get(y)-1);
-        }
-        res=Math.max(res,right-left);
-    }
-    return res;
-}
-```
-
-
-
 
 ---
 
@@ -4126,28 +3281,28 @@ print(hotPotato(["Bill","David","Susan","Jane","Kent","Brad"],7))
 ```
 
 
-- a group of n children 
+- a group of n children
 - If the leader always uses the strategy of ringing the bell so that every kth person is removed from the circle, for some fixed value k, then determining the winner for a given list of children is known as the Josephus problem
 
 - solve the Josephus problem for a collection of n elements using a **circular queue**
-  - associating the potato with the element at the front of the queue and storing elements in the queue according to their order around the circle. 
-  - passing the potato is equivalent to rotating the first element to the back of the queue. 
-  - After this process has been performed k − 1 times, we remove the front element by dequeuing it from the queue and discarding it. 
-  - a solution that runs in O(n*k) time. 
+  - associating the potato with the element at the front of the queue and storing elements in the queue according to their order around the circle.
+  - passing the potato is equivalent to rotating the first element to the back of the queue.
+  - After this process has been performed k − 1 times, we remove the front element by dequeuing it from the queue and discarding it.
+  - a solution that runs in O(n*k) time.
 
 
 ```java
 public class Josephus {
-    
-    // /∗∗ Computes the winner of the Josephus problem using a circular queue. ∗/ 
+
+    // /∗∗ Computes the winner of the Josephus problem using a circular queue. ∗/
     public static <E> E Josephus (CircularQueue<E> queue, int k) {
         if(queue.isEmpty()) return null;
         while(queue.size()>2){
             for(int i=0; i<k; i++) queue.rotate();
             E e = queue.dequeue();
-            System.out.println("" + e + " is out"); 
+            System.out.println("" + e + " is out");
             k--;
-        } 
+        }
         return queue.dequeue();
     }
 
@@ -4162,11 +3317,11 @@ public class Josephus {
         // String[] a1 = {"Alice", "Bob", "Cindy", "Ed", "Fred"};
         // String[] a1 = {"Bob", "Cindy", "Ed", "Fred"};
         // String[] a1 = {"Bob", "Ed", "Fred"};
-        // String[] a1 = {"Fred"}; 
-        String[] a2 = {"Gene", "Hope", "Irene", "Jack", "Kim", "Lance"}; 
+        // String[] a1 = {"Fred"};
+        String[] a2 = {"Gene", "Hope", "Irene", "Jack", "Kim", "Lance"};
         String[] a3 = {"Mike", "Roberto"};
-        System.out.println("First winner is " + Josephus(buildQueue(a1), 3)); 
-        System.out.println("Second winner is " + Josephus(buildQueue(a2), 10)); 
+        System.out.println("First winner is " + Josephus(buildQueue(a1), 3));
+        System.out.println("Second winner is " + Josephus(buildQueue(a2), 10));
         System.out.println("Third winner is " + Josephus(buildQueue(a3), 7));
     }
 }
@@ -8662,7 +7817,10 @@ class Twitter {
 
 ---
 
-# 动态规划
+
+
+
+# 🔒🔒 动态规划
 
 
 求解动态规划的核心问题是穷举。
@@ -8676,7 +7834,14 @@ class Twitter {
 
 
 
-## 斐波那契数列
+
+## 🔒 动态规划
+
+---
+
+
+
+### 斐波那契数列
 
 [509. Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)
 
@@ -9534,11 +8699,10 @@ int dp(int s, int k) {
 
 
 
-
 ---
 
 
-## 子序列
+## 🔒 子序列
 
 一个字符串，它的子序列有多少种可能？起码是指数级的吧，这种情况下，不用动态规划技巧，还想怎么着呢？
 
@@ -9585,6 +8749,268 @@ dp 数组的含义
 2. 只涉及一个字符串/数组时（比如本文要讲的最长回文子序列）
    1. 在子数组array[i..j]中
    2. 我们要求的子序列（最长回文子序列）的长度为dp[i][j]。
+
+
+---
+
+
+
+## 🔒 SubArray
+
+
+
+---
+
+### 152. Maximum Product Subarray (Medium)
+
+[152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
+
+Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
+
+The test cases are generated so that the answer will fit in a 32-bit integer.
+
+A subarray is a contiguous subsequence of the array.
+
+
+
+Example 1:
+Input: nums = [2,3,-2,4]
+Output: 6
+Explanation: [2,3] has the largest product 6.
+
+Example 2:
+Input: nums = [-2,0,-1]
+Output: 0
+Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
+
+
+1. brute force: try every subarray O(n^2)
+
+
+---
+
+
+#### +++++ `record max and min`
+
+```java
+// Runtime: 1 ms, faster than 97.53% of Java online submissions for Maximum Product Subarray.
+// Memory Usage: 42.6 MB, less than 84.37% of Java online submissions for Maximum Product Subarray.
+
+class Solution {
+    public int maxProduct(int[] A) {
+        if(A.length==1) return A[0];
+        int max = A[0], min = A[0], ans = A[0];
+            for (int i = 1; i < A.length; i++) {
+                int temp = max * A[i];
+                max = Math.max(Math.max(max * A[i], min * A[i]), A[i]);
+                min = Math.min(Math.min(temp, min * A[i]), A[i]);
+                if (max > ans) {
+                    ans = max;
+                }
+            }
+            return ans;
+        }
+
+
+// Runtime: 1 ms, faster than 97.53% of Java online submissions for Maximum Product Subarray.
+// Memory Usage: 41.8 MB, less than 99.74% of Java online submissions for Maximum Product Subarray.
+    public int maxProduct(int[] A) {
+        if(A.length==1) return A[0];
+        int max = A[0], min = max, ans=max;
+            for (int i = 1; i < A.length; i++) {
+                if(A[i] >=0) {
+                    max = Math.max(max * A[i], A[i]);
+                    min = Math.min(min * A[i], A[i]);
+                }
+                else{
+                    int temp = max;
+                    max = Math.max(min * A[i], A[i]);
+                    min = Math.min(temp * A[i], A[i]);
+                }
+                if (max > ans) {
+                    ans = max;
+                }
+            }
+            return ans;
+    }
+}
+```
+
+
+---
+
+
+
+
+
+---
+
+
+
+
+## 🔒 子序列 - 一维dp数组
+
+---
+
+
+
+
+
+### 53. Maximum Subarray 最大子序和（Easy)
+
+[53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+
+Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+A subarray is a contiguous part of an array.
+
+Example 1:
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+
+Example 2:
+Input: nums = [1]
+Output: 1
+
+
+
+
+#### +++++ `int[] dp, max = Math.max(max, dp[i])`
+
+```java
+// Runtime: 1 ms, faster than 100.00% of Java online submissions for Maximum Subarray.
+// Memory Usage: 51.8 MB, less than 85.97% of Java online submissions for Maximum Subarray.
+//    1. 复杂度是 O(N)，
+//    2. 空间复杂度也是 O(N)
+int maxSubArray(int[] nums) {
+    int n = nums.length;
+    int[] dp = new int[n];
+    // base case
+    // 第一个元素前面没有子数组
+    dp[0] = nums[0];
+    int max = dp[0];
+    for(int i = 1; i < n; i++) {
+        // 状态转移方程
+        dp[i] = Math.max(nums[i], nums[i] + dp[i - 1]);
+        // 得到 nums 的最大子数组
+        max = Math.max(max, dp[i]);
+    }
+    return max;
+}
+```
+
+
+
+---
+
+#### +++++ 状态压缩 `dp[i] 仅仅和 dp[i-1] 的状态有关`
+
+```java
+// Runtime: 1 ms, faster than 100.00% of Java online submissions for Maximum Subarray.
+// Memory Usage: 49.2 MB, less than 78.66% of Java online submissions for Maximum Subarray.
+int maxSubArray(int[] nums) {
+    int num_pre = nums[0];
+    int num_cur;        
+    int max = nums[0];
+    for(int i = 1; i < nums.length; i++) {
+        // 状态转移方程
+        num_cur = Math.max(nums[i], nums[i] + num_pre);
+        num_pre = num_cur;
+        // 得到 nums 的最大子数组
+        max = Math.max(max, num_cur);
+    }
+    return max;
+}
+
+
+// not best
+// Runtime: 3 ms, faster than 19.59% of Java online submissions for Maximum Subarray.
+// Memory Usage: 73.6 MB, less than 54.46% of Java online submissions for Maximum Subarray.
+int maxSubArray(int[] nums) {
+    int max = nums[0];
+    for(int i=1;i<nums.length;i++){
+        nums[i] = Math.max(nums[i], nums[i-1] + nums[i]);
+        max = Math.max(max, nums[i]);
+    }
+    return max;
+}
+```
+
+
+
+
+
+
+---
+
+### 217. Contains Duplicate (Easy)
+
+[217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+Example 1:
+Input: nums = [1,2,3,1]
+Output: true
+
+Example 2:
+Input: nums = [1,2,3,4]
+Output: false
+
+
+
+#### +++++ `hash 记住出现过的数字`
+
+```java
+// Runtime: 6 ms, faster than 93.81% of Java online submissions for Contains Duplicate.
+// Memory Usage: 54.7 MB, less than 68.52% of Java online submissions for Contains Duplicate.
+/**
+ * Using HashSet
+ * Time Complexity: O(N)
+ * Space Complexity: O(N)
+ */
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        if (nums == null) throw new IllegalArgumentException("Input array is null");
+        if (nums.length <= 1) return false;
+        Set<Integer> set = new HashSet<>();
+        for(int num:nums){
+            if(set.contains(num)) return true;
+            set.add(num);
+        }
+        return false;
+    }
+}
+```
+
+
+#### +++++ `Sort the array` better
+
+```java
+// Runtime: 25 ms, faster than 18.05% of Java online submissions for Contains Duplicate.
+// Memory Usage: 69.3 MB, less than 49.48% of Java online submissions for Contains Duplicate.
+/**
+ * Sort the array
+ * Time Complexity: O(N log N)
+ * Space Complexity: O(Space used by sorting algorithm)
+ */
+class Solution2 {
+    public boolean containsDuplicate(int[] nums) {
+        if (nums == null || nums.length < 2) return false;
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) return true;
+        }
+        return false;
+    }
+}
+```
+
+---
+
+
+
+
 
 
 
@@ -10186,63 +9612,6 @@ public int lengthOfLIS(int[] nums) {
 
 ---
 
-### 53 最大子序和（简单)
-
-1. simple
-   1. 复杂度是 O(N)，
-   2. 空间复杂度也是 O(N)
-
-```java
-// Runtime: 2 ms, faster than 41.34% of Java online submissions for Maximum Subarray.
-// Memory Usage: 47.7 MB, less than 98.44% of Java online submissions for Maximum Subarray.
-
-int maxSubArray(int[] nums) {
-    int n = nums.length;
-    if(n == 0) return 0;
-
-    int[] dp = new int[n];
-    // base case
-    // 第一个元素前面没有子数组
-    dp[0] = nums[0];
-    int res = dp[0];
-
-    for(int i = 1; i < n; i++) {
-        // 状态转移方程
-        dp[i] = Math.max(nums[i], nums[i] + dp[i - 1]);
-        // 得到 nums 的最大子数组
-        res = Math.max(res, dp[i]);
-    }
-    return res;
-}
-```
-
-2. 状态压缩
-   1. dp[i] 仅仅和 dp[i-1] 的状态有关
-
-```java
-// Runtime: 1 ms, faster than 100.00% of Java online submissions for Maximum Subarray.
-// Memory Usage: 49.2 MB, less than 78.66% of Java online submissions for Maximum Subarray.
-int maxSubArray(int[] nums) {
-    int n = nums.length;
-    if(n == 0) return 0;
-    int res = dp[0];
-    int num_pre = nums[0];
-    int num_cur;
-
-    for(int i = 1; i < n; i++) {
-        // 状态转移方程
-        num_cur = Math.max(nums[i], nums[i] + num_pre);
-        num_pre = num_cur;
-        // 得到 nums 的最大子数组
-        res = Math.max(res, num_cur);
-    }
-    return res;
-}
-```
-
-
----
-
 
 ## 背包类型问题
 
@@ -10464,41 +9833,18 @@ class Solution {
 ---
 
 
-# 题
 
 
 ---
 
-# 🔒🔒 Prefix Sum
-
-## 🔒 Prefix Sum - Array 数组
-
-1. 暴力穷举所有可能。
-   1. 对于 TwoSum 问题，一个难点就是给的数组无序。
-   2. 对于一个无序的数组，我们似乎什么技巧也没有，只能暴力穷举所有可能。
-
-一般情况下，我们会首先把数组排序再考虑双指针技巧。
-HashMap 或者 HashSet 也可以帮助我们处理无序数组相关的简单问题。
-- 设计的核心在于权衡，利用不同的数据结构，可以得到一些针对性的加强。
-
-```java
-int[] twoSum(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    while (left < right) {
-        int sum = nums[left] + nums[right];
-        if (sum == target) return new int[]{left, right};
-        // 让 sum 大一点
-        else if (sum < target) left++;
-        // 让 sum 小一点
-        else if (sum > target) right--;
-    }
-    // 不存在这样两个数
-    return new int[]{-1, -1};
-}
-```
-
+# 🔒🔒 Hash
 
 ---
+
+## 🔒 Hash - Array int[]
+
+---
+
 
 ### 1. Two Sum (Easy) `找两个数sum=target`
 
@@ -10509,8 +9855,11 @@ You may assume that each input would have exactly one solution, and you may not 
 
 You can return the answer in any order.
 
+
 #### +++++ brute force 穷举
-- 时间复杂度 O(N^2)，空间复杂度 O(1)。
+
+- 时间复杂度 O(N^2)
+- 空间复杂度 O(1)。
 
 ```java
 int[] twoSum(int[] nums, int target) {
@@ -10523,8 +9872,28 @@ int[] twoSum(int[] nums, int target) {
 ```
 
 
+#### +++++ two pointer
 
-#### +++++ 哈希表
+```java
+// Runtime: 66 ms, faster than 29.51% of Java online submissions for Two Sum.
+// Memory Usage: 45 MB, less than 60.12% of Java online submissions for Two Sum.
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        for(int i=0; i<nums.length-1; i++){
+            int j = i+1;
+            while(j<nums.length){
+                if(nums[j]==target-nums[i]) return new int[]{i,j};
+                else j++;
+            }
+        }
+        return new int[]{0,0};
+    }
+}
+```
+
+
+#### +++++ HashMap
 
 - 减少时间复杂度
 - Time O(N)
@@ -10533,7 +9902,17 @@ int[] twoSum(int[] nums, int target) {
 ```java
 // Runtime: 3 ms, faster than 79.66% of Java online submissions for Two Sum.
 // Memory Usage: 45.8 MB, less than 10.23% of Java online submissions for Two Sum.
+
 class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<nums.length; i++){
+            if(map.containsKey(target-nums[i])) return new int[]{i, map.get(target-nums[i])};
+            else map.put(nums[i], i);
+        }
+        return new int[]{-1, -1};
+    }
+
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int[] res = new int[2];        
@@ -10585,6 +9964,67 @@ int[] twoSum(int[] nums, int target) {
 ```
 
 ---
+
+
+### 3 sum
+
+
+1. brute force
+
+```java
+sort();
+i+j+k=target;
+use set/hash to remove duplicate
+```
+
+
+
+#### ++++++ `i + 2 sum(Hash+Set)`
+
+```java
+
+
+
+
+
+
+
+
+---
+
+# 🔒🔒 Prefix Sum
+
+## 🔒 Prefix Sum - Array 数组
+
+1. 暴力穷举所有可能。
+   1. 对于 TwoSum 问题，一个难点就是给的数组无序。
+   2. 对于一个无序的数组，我们似乎什么技巧也没有，只能暴力穷举所有可能。
+
+一般情况下，我们会首先把数组排序再考虑双指针技巧。
+HashMap 或者 HashSet 也可以帮助我们处理无序数组相关的简单问题。
+- 设计的核心在于权衡，利用不同的数据结构，可以得到一些针对性的加强。
+
+```java
+int[] twoSum(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int sum = nums[left] + nums[right];
+        if (sum == target) return new int[]{left, right};
+        // 让 sum 大一点
+        else if (sum < target) left++;
+        // 让 sum 小一点
+        else if (sum > target) right--;
+    }
+    // 不存在这样两个数
+    return new int[]{-1, -1};
+}
+```
+
+
+---
+
+
+
 
 ### 167. Two Sum II - Input Array Is Sorted
 
@@ -10674,79 +10114,8 @@ Input: root = [5,3,6,2,4,null,7], k = 9
 Output: true
 
 
----
-
-### 121. Best Time to Buy and Sell Stock (Easy)
-
-[121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-You are given an array prices where prices[i] is the price of a given stock on the ith day.
-
-You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
-
-Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
-
-Example 1:
-Input: prices = [7,1,5,3,6,4]
-Output: 5
-Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
-Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
-
-
-#### +++++ brute force
-
-```java
-// O(n^2) time,
-// O(1) space
-public int maxProfit(int[] prices) {
-    int profit = 0;
-    for (int i = 0; i < prices.length; i++) {
-        for (int j = i; j >= 0; j--) {
-            profit = Math.max(profit, prices[i]-prices[j]);
-        }
-    }
-    return profit;
-}
-```
-
-
-#### +++++ `2 pointer 求出最小前数，算数求最大`
-
-```java
-// Runtime: 2 ms, faster than 83.90% of Java online submissions for Best Time to Buy and Sell Stock.
-// Memory Usage: 83.7 MB, less than 55.95% of Java online submissions for Best Time to Buy and Sell Stock.
-class Solution {
-    public int maxProfit(int[] prices) {
-        int lsf = Integer.MAX_VALUE;
-        int res = 0, cur = 0;
-        for(int i = 0; i < prices.length; i++) {
-            if(lsf > prices[i]) {
-                lsf = prices[i];
-            }
-            cur = prices[i] - lsf;
-            if(res < cur) res = cur;
-        }
-        return res;
-    }
-}
-
-// Runtime: 1 ms, faster than 100.00% of Java online submissions for Best Time to Buy and Sell Stock.
-// Memory Usage: 59 MB, less than 72.76% of Java online submissions for Best Time to Buy and Sell Stock.
-public class Solution {
-    public int maxProfit(int[] prices) {
-        int min = Integer.MAX_VALUE, max = 0;
-        for(int p:prices) {
-            min = Math.min(min, p);
-            max = Math.max(p-min, max);
-        }
-        return max;
-    }
-}
-```
-
-
 
 ---
-
 
 ### 238. Product of Array Except Self (Medium)
 
@@ -10755,7 +10124,7 @@ Given an integer array nums, return an array answer such that answer[i] is equal
 
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 
-You must write an algorithm that runs in O(n) time and without using the division operation.
+You must write an algorithm that runs in O(n) time and **without using the division operation**.
 
 Example 1:
 Input: nums = [1,2,3,4]
@@ -10769,8 +10138,8 @@ Output: [0,0,9,0,0]
 #### +++++ `左乘 右乘 result[i] = left[i] * right[i];`
 
 ```java
-// Runtime: 5 ms, faster than 13.80% of Java online submissions for Product of Array Except Self.
-// Memory Usage: 56.8 MB, less than 51.06% of Java online submissions for Product of Array Except Self.
+// Runtime: 1 ms, faster than 100.00% of Java online submissions for Product of Array Except Self.
+// Memory Usage: 51 MB, less than 82.69% of Java online submissions for Product of Array Except Self.
 // O(N) time + O(N) space
 class Solution {
     public int[] productExceptSelf(int[] nums) {
@@ -10791,7 +10160,10 @@ class Solution {
 }
 ```
 
-#### +++++ 右边数字先计算 再参与计算
+
+
+
+#### +++++ `右边数字先计算 再参与计算`
 ```java
 // O(N) time + O(1) space
 class Solution {
@@ -10990,67 +10362,213 @@ Explanation: 1 is trivially at least twice the value as any other number because
 
 
 
-# 🔒🔒 Hash
-
-## 🔒 Hash - Array
-
-### 217. Contains Duplicate (Easy)
-
-[217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
-Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+---
 
 
-Example 1:
-Input: nums = [1,2,3,1]
-Output: true
+# 🔒🔒 Two-pointer 左右指针
 
-Example 2:
-Input: nums = [1,2,3,4]
-Output: false
+
+- [https://leetcode.com/tag/two-pointers/](https://leetcode.com/tag/two-pointers/)
 
 
 
-#### +++++ `hash 记住出现过的数字`
+只要数组有序，就应该想到双指针技巧
+
+
+
+
+---
+
+## two pointer + BS - 二分查找 / 在有序数组中搜索指定元素
+
+
+
+最简单的二分算法，旨在突出它的双指针特性：
+- 分析二分查找的一个技巧是：不要出现 else，而是把所有情况用 else if 写清楚，这样可以清楚地展现所有细节。
+- left + (right - left) / 2 就和 (left + right) / 2 的结果相同，但是有效防止了 left 和 right 太大直接相加导致溢出。
+
+
 
 ```java
-// Runtime: 6 ms, faster than 93.81% of Java online submissions for Contains Duplicate.
-// Memory Usage: 54.7 MB, less than 68.52% of Java online submissions for Contains Duplicate.
+int binarySearch(int[] nums, int target) {
+    int left = 0;
+    int right = nums.length - 1;
+    while(left <= right) {
+        // int mid = (right + left) / 2;
+        int mid = left + (right - left) / 2;
+        if(nums[mid] == target) return mid;
+        else if (nums[mid] < target) left = mid + 1;
+        else if (nums[mid] > target) right = mid - 1;
+    }
+    return -1;
+}
+```
+
+
+
+---
+
+
+
+### 153. Find Minimum in Rotated Sorted Array Medium
+
+
+[153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+
+Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:
+- [4,5,6,7,0,1,2] if it was rotated 4 times.
+- [0,1,2,4,5,6,7] if it was rotated 7 times.
+- Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
+
+Given the sorted rotated array nums of unique elements, return the minimum element of this array.
+
+You must write an algorithm that runs in `O(log n)` time.
+
+Example 1:
+Input: nums = [3,4,5,1,2]
+Output: 1
+Explanation: The original array was [1,2,3,4,5] rotated 3 times.
+
+Example 2:
+Input: nums = [4,5,6,7,0,1,2]
+Output: 0
+Explanation: The original array was [0,1,2,4,5,6,7] and it was rotated 4 times.
+
+
+#### +++++ `2 pointer + BS, l,m,r -> nums[m]<nums[m-1] return nums[m]`
+
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Find Minimum in Rotated Sorted Array.
+// Memory Usage: 41.6 MB, less than 94.52% of Java online submissions for Find Minimum in Rotated Sorted Array.
 /**
- * Using HashSet
- * Time Complexity: O(N)
- * Space Complexity: O(N)
+ * Modified Binary Search
+ *
+ * Time Complexity: O(log N)
+ *
+ * Space Complexity: O(1)
+ *
+ * N = Length of the input array.
  */
 class Solution {
-    public boolean containsDuplicate(int[] nums) {
-        if (nums == null) throw new IllegalArgumentException("Input array is null");
-        if (nums.length <= 1) return false;
-        Set<Integer> set = new HashSet<>();
-        for(int num:nums){
-            if(set.contains(num)) return true;
-            set.add(num);
+    public int findMin(int[] nums) {
+        int len=nums.length;
+        if (len == 1 || nums[0] < nums[len - 1]) {
+            return nums[0];
         }
-        return false;
+        if (len == 2) {
+            return Math.min(nums[0], nums[1]);
+        }
+        int l=0, r=nums.length-1;
+        while(l<r){
+            int m=(l+r)/2;
+            // System.out.println(nums[l] + ", " + nums[m] + ", " + nums[r]);
+            if(m>0 && nums[m]<nums[m-1]) return nums[m];
+            if(nums[l]<=nums[m] && nums[m]>nums[r]) l=m+1;
+            else r=m-1;
+        }
+        return nums[l];
     }
 }
 ```
 
 
-#### +++++ `Sort the array`
+
+
+---
+
+
+### 寻找右侧边界的二分查找
 
 ```java
-/**
- * Sort the array
- * Time Complexity: O(N log N)
- * Space Complexity: O(Space used by sorting algorithm)
- */
-class Solution2 {
-    public boolean containsDuplicate(int[] nums) {
-        if (nums == null || nums.length < 2) eturn false;
-        Arrays.sort(nums);
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] == nums[i - 1]) return true;
+int left_bound(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    // 搜索区间为 [left, right]
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        // 搜索区间变为 [mid+1, right]
+        if (nums[mid] < target) right = mid + 1;
+        // 搜索区间变为 [left, mid-1]
+        else if (nums[mid] > target) right = mid - 1;
+        // 收缩右侧边界
+        else if (nums[mid] == target) right = mid + 1;
+    }
+    // 检查出界情况
+    if (right<0 || nums[right] != target) return -1;
+    return right;
+}
+```
+
+
+
+
+---
+
+
+### 33. Search in Rotated Sorted Array (Medium)
+
+[33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+There is an integer array nums sorted in ascending order (with distinct values).
+
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+
+Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+
+Example 1:
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+
+Example 2:
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+
+Example 3:
+Input: nums = [1], target = 0
+Output: -1
+
+
+
+#### ++++++ `BS chop`
+
+```java
+// Runtime: 1 ms, faster than 68.23% of Java online submissions for Search in Rotated Sorted Array.
+// Memory Usage: 42.7 MB, less than 50.59% of Java online submissions for Search in Rotated Sorted Array.
+
+class Solution {
+    public int search(int[] nums, int target) {
+        if (nums.length == 0) return -1;
+        return searchTarget(nums, target);
+    }
+
+    public int searchTarget(int[] nums, int target) {
+        int l=0, r=nums.length-1;
+        while(l<r){
+            int m=(l+r)/2;
+            // base case:
+            if(nums[m]==target) return m;
+            if(nums[r] < target && target < nums[l]) return -1;
+
+            // if left part in good order
+            if(nums[l] <= nums[m]){
+                // l < t < m, drop right part
+                if(nums[l] <= target && target < nums[m]) r=m-1;
+                // l < m < t, drop left part
+                else l=m+1;
+            }
+
+            // if left part: small, 0 , big
+            } else {
+                // m < t < r, drop left part
+                if(nums[m] < target && target <= nums[r]) l=m+1;
+                // t < m < r, drop right part
+                else r=m-1;
+            }
         }
-        return false;
+        return nums[l] == target ? l : -1;
     }
 }
 ```
@@ -11059,11 +10577,794 @@ class Solution2 {
 ---
 
 
-# 🔒🔒 Two-pointer technique
+
+### 34. Find First and Last Position of Element in Sorted Array (Medium) 寻找左右边界的二分搜索
+
+[34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+
+Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+If target is not found in the array, return [-1, -1].
+
+You must write an algorithm with O(log n) runtime complexity.
+
+Example 1:
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
 
 
-- [https://leetcode.com/tag/two-pointers/](https://leetcode.com/tag/two-pointers/)
+#### +++++ `BS: find first + find last`
 
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Find First and Last Position of Element in Sorted Array.
+// Memory Usage: 44.4 MB, less than 6.19% of Java online submissions for Find First and Last Position of Element in Sorted Array.
+    public int[] searchRange(int[] nums, int target) {
+        if(nums==null || nums.length==0) return new int[]{-1,-1};
+        int[] result = new int[2];
+        result[0] = findFirst(nums, target);
+        result[1] = findLast(nums, target);
+        return result;
+    }
+
+    private int findFirst(int[] nums, int target){
+        int res = -1;
+        int l = 0, r = nums.length - 1;
+        while(l <= r){
+            int m = (l + r) / 2;
+            if(target <= nums[m]) r = m - 1;
+            else l = m + 1;
+            if(nums[m] == target) res = m;
+        }
+        return res;
+    }
+
+    private int findLast(int[] nums, int target){
+        int res = -1;
+        int l = 0, r = nums.length - 1;
+        while(l <= r){
+            int m = (l + r) / 2;            
+            if(nums[m] <= target) l = m + 1;
+            else r = m - 1;
+            if(nums[m] == target) res = m;
+        }
+        return res;
+    }
+```
+
+
+
+---
+
+### 704. Binary Search 寻找一个数（基本的二分搜索）
+
+- 初始化 right 的赋值是 nums.length - 1，最后一个元素的索引，而不是 nums.length。
+- `nums.length - 1` 两端都闭区间 [left, right]
+  - while(left <= right) 的终止条件是 left == right + 1，
+  - [right + 1, right]，
+  - 或者带个具体的数字进去 [3, 2]，可见这时候区间为空，因为没有数字既大于等于 3 又小于等于 2 的吧。所以这时候 while 循环终止是正确的，直接返回 -1 即可。
+
+
+- `nums.length` 左闭右开区间 [left, right)
+  - while(left < right) 的终止条件是 left == right [right, right]，
+  - 或者带个具体的数字进去 [2, 2]，这时候区间非空，还有一个数 2，但此时 while 循环终止了。也就是说这区间 [2, 2] 被漏掉了，索引 2 没有被搜索，如果这时候直接返回 -1 就是错误的。
+
+
+[704. Binary Search](https://leetcode.com/problems/binary-search/)
+
+Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+Example 1:
+
+Input: nums = [-1,0,3,5,9,12], target = 9
+Output: 4
+
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Binary Search.
+// Memory Usage: 51.7 MB, less than 16.03% of Java online submissions for Binary Search.
+
+public int search(int[] nums, int target) {
+    if (nums.length == 0) return -1;
+    int left=0, right=nums.length-1;
+    while(left<=right){
+        int mid = left + (right-left)/2;
+        if(nums[mid]==target) return mid;
+        else if(nums[mid]<target) left=mid+1;
+        else if(nums[mid]>target) right=mid-1;
+    }
+    return -1;
+}
+```
+
+- 这个算法存在局限性。
+- 比如说给你有序数组 nums = [1,2,2,2,3]，target 为 2，此算法返回的索引是 2，没错。但是如果我想得到 target 的左侧边界，即索引 1，或者我想得到 target 的右侧边界，即索引 3，这样的话此算法是无法处理的。
+
+---
+
+### 寻找左侧边界的二分搜索
+
+
+
+```java
+int left_bound(int[] nums, int target) {
+    if (nums.length == 0) return -1;
+    int left = 0;
+    int right = nums.length; // 注意
+
+    while (left < right) { // 注意
+        int mid = left + (right - left) / 2;
+        if (nums[mid] == target) right = mid;
+        else if (nums[mid] < target) left = mid + 1;
+        else if (nums[mid] > target) right = mid; // 注意
+        }
+    }
+    return left;
+}
+
+int left_bound(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    // 搜索区间为 [left, right]
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        // 搜索区间变为 [mid+1, right]
+        if (nums[mid] < target) left = mid + 1;
+        // 搜索区间变为 [left, mid-1]
+        else if (nums[mid] > target) right = mid - 1;
+        // 收缩右侧边界
+        else if (nums[mid] == target) right = mid - 1;
+    }
+    // 检查出界情况
+    if (left >= nums.length || nums[left] != target) return -1;
+    return left;
+}
+```
+
+---
+
+
+### 278. First Bad Version
+
+
+[278. First Bad Version](https://leetcode.com/problems/first-bad-version/)
+
+You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
+
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
+
+You are given an API bool isBadVersion(version) which returns whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.
+
+Example 1:
+
+Input: n = 5, bad = 4
+Output: 4
+Explanation:
+call isBadVersion(3) -> false
+call isBadVersion(5) -> true
+call isBadVersion(4) -> true
+Then 4 is the first bad version.
+
+
+```java
+// Runtime: 13 ms, faster than 49.29% of Java online submissions for First Bad Version.
+// Memory Usage: 36.1 MB, less than 29.13% of Java online submissions for First Bad Version.
+public int firstBadVersion(int n) {
+    if (isBadVersion(1)) return 1;
+    int left=0, right=n;
+    while(left<right){
+        int mid = left+(right-left)/2;
+        if(isBadVersion(mid)) right=mid;
+        else left=mid+1;
+    }
+    return left;
+}
+```
+
+
+
+---
+
+
+
+### 二分搜索算法运用
+
+二分搜索的原型就是在「有序数组」中搜索一个元素target，返回该元素对应的索引。
+
+- 如果该元素不存在，那可以返回一个什么特殊值，这种细节问题只要微调算法实现就可实现。
+
+- 还有一个重要的问题，如果「有序数组」中存在多个target元素，那么这些元素肯定挨在一起，这里就涉及到算法应该返回最左侧的那个target元素的索引还是最右侧的那个target元素的索引，「搜索左侧边界」和「搜索右侧边界」
+
+
+从题目中抽象出一个自变量 x，一个关于 x 的函数 f(x)，以及一个目标值 target。
+
+- 同时，x, f(x), target 还要满足以下条件：
+
+- 1、f(x) 必须是在 x 上的单调函数（单调增单调减都可以）。
+
+- 2、题目是让你计算满足约束条件 f(x) == target 时的 x 的值。
+
+```java
+int f(int x, int[] nums) {
+    return nums[x];
+}
+
+int left_bound(int[] nums, int target) {
+    if (nums.length == 0) return -1;
+    int left = 0, right = nums.length;
+
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        // 当找到 target 时，收缩右侧边界
+        if (f(mid, nums) == target) right = mid;
+        else if (f(mid, nums) < target) left = mid + 1;
+        else if (f(mid, nums) > target) right = mid;
+    }
+    return left;
+}
+
+
+// 主函数，在 f(x) == target 的约束下求 x 的最值
+int solution(int[] nums, int target) {
+    if (nums.length == 0) return -1;
+    // 问自己：自变量 x 的最小值是多少？
+    int left = ...;
+    // 问自己：自变量 x 的最大值是多少？
+    int right = ... + 1;
+
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (f(mid) == target) {
+            // 问自己：题目是求左边界还是右边界？
+            // ...
+        } else if (f(mid) < target) {
+            // 问自己：怎么让 f(x) 大一点？
+            // ...
+        } else if (f(mid) > target) {
+            // 问自己：怎么让 f(x) 小一点？
+            // ...
+        }
+    }
+    return left;
+}
+```
+
+---
+
+
+
+### 875. Koko Eating Bananas
+
+[875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
+
+Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.
+
+Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
+
+Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.
+
+Return the minimum integer k such that she can eat all the bananas within h hours.
+
+
+Example 1:
+
+Input: piles = [3,6,7,11], h = 8
+Output: 4
+
+```java
+// Runtime: 21 ms, faster than 37.05% of Java online submissions for Koko Eating Bananas.
+// Memory Usage: 52.4 MB, less than 7.41% of Java online submissions for Koko Eating Bananas.
+
+// 定义：速度为 x 时，需要 f(x) 小时吃完所有香蕉
+// f(x) 随着 x 的增加单调递减
+int f(int[] piles, int x) {
+    int hours = 0;
+    for (int i = 0; i < piles.length; i++) {
+        hours += piles[i] / x;
+        if (piles[i] % x > 0) hours++;
+    }
+    return hours;
+}
+
+public int minEatingSpeed(int[] piles, int H) {
+    int left = 1, right = 1000000000 + 1;
+
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+
+        // // 搜索左侧边界，则需要收缩右侧边界
+        // if (f(piles, mid) == H) right = mid;
+        // // 需要让 f(x) 的返回值大一些
+        // else if (f(piles, mid) < H) right = mid;
+        // // 需要让 f(x) 的返回值小一些
+        // else if (f(piles, mid) > H) left = mid + 1;
+
+        // if (f(piles, mid) <= H) right = mid;
+        if (f(piles, mid) <= H) right = mid-1;
+        // 需要让 f(x) 的返回值小一些
+        else left = mid + 1;
+    }
+    return left;
+}
+```
+
+
+---
+
+### 运送货物？？？？？？？？？？？？？？
+
+[1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
+
+A conveyor belt has packages that must be shipped from one port to another within days days.
+
+The ith package on the conveyor belt has a weight of weights[i]. Each day, we load the ship with packages on the conveyor belt (in the order given by weights). We may not load more weight than the maximum weight capacity of the ship.
+
+Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within days days.
+
+
+
+Example 1:
+
+Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5
+Output: 15
+
+
+x = capacity
+target = D
+weights[i]
+
+
+
+```java
+public int f(int[] weights, int x){
+    int days=0;
+    int left = 0;
+    for(int wei : weights){
+        if(wei>x)
+        days += (left+wei)/x;
+        left = (left+wei)%x;
+    }
+    return days;
+}
+
+
+
+public int shipWithinDays(int[] weights, int days){
+    int left=0; right=
+}
+
+
+```
+
+---
+
+
+### https://labuladong.github.io/algo/2/21/59/ ？？？？
+
+
+
+
+---
+
+
+### 167. Two Sum II - Input Array Is Sorted 两数之和
+
+
+[167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+
+Given a (索引是从 1 开始的) `1-indexed array` of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+
+```java
+int[] twoSum(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int sum = nums[left] + nums[right];
+        // 题目要求的索引是从 1 开始的
+        if (sum == target) return new int[]{left + 1, right + 1};
+        // 让 sum 大一点
+        else if (sum < target) left++;
+        // 让 sum 小一点
+        else if (sum > target) right--;
+    }
+    return new int[]{-1, -1};
+}
+```
+
+
+---
+
+
+### 344. Reverse String 反转数组
+
+一般编程语言都会提供 reverse 函数
+
+[344. Reverse String](https://leetcode.com/problems/reverse-string/)
+
+Write a function that reverses a string. The input string is given as an array of characters s.
+
+You must do this by modifying the input array in-place with O(1) extra memory.
+
+反转一个 char[] 类型的字符数组
+
+
+```java
+// Runtime: 1 ms, faster than 95.40% of Java online submissions for Reverse String.
+// Memory Usage: 45.6 MB, less than 89.34% of Java online submissions for Reverse String.
+
+void reverseString(char[] arr) {
+    int left = 0, right = arr.length - 1;
+    while (left < right) {
+        // 交换 arr[left] 和 arr[right]
+        char temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+        left++; right--;
+    }
+}
+```
+
+---
+
+### 滑动窗口技巧 `right++, missing==0, left++`
+
+维护一个窗口，不断滑动，然后更新答案么。
+
+该算法的大致逻辑, 时间复杂度是 O(N)，比字符串暴力算法要高效得多。
+
+```java
+int left = 0, right = 0;
+
+while (right < s.size()) {
+    // 增大窗口
+    window.add(s[right]);
+    right++;
+
+    while (window needs shrink) {
+        // 缩小窗口
+        window.remove(s[left]);
+        left++;
+    }
+}
+```
+
+```java
+/* 滑动窗口算法框架 */
+void slidingWindow(string s, string t) {
+    unordered_map<char, int> need, window;
+
+    for (char c : t) need[c]++;
+
+    int left = 0, right = 0;
+    int valid = 0;
+
+    while (right < s.size()) {
+        // c 是将移入窗口的字符
+        char c = s[right];
+        // 右移窗口
+        right++;
+        // 进行窗口内数据的一系列更新
+        ...
+
+        /*** debug 输出的位置 ***/
+        printf("window: [%d, %d)\n", left, right);
+        /********************/
+
+        // 判断左侧窗口是否要收缩
+        while (window needs shrink) {
+            // d 是将移出窗口的字符
+            char d = s[left];
+            // 左移窗口
+            left++;
+            // 进行窗口内数据的一系列更新
+            ...
+        }
+    }
+}
+```
+
+
+---
+
+### 76. Minimum Window Substring 最小覆盖子串
+
+[76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
+
+- Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window.
+- If there is no such substring, return the empty string "".
+- The testcases will be generated such that the answer is unique.
+- A substring is a contiguous sequence of characters within the string.
+
+暴力解法，代码大概是这样的：
+```java
+for (int i = 0; i < s.size(); i++)
+    for (int j = i + 1; j < s.size(); j++)
+        if s[i:j] 包含 t 的所有字母:
+            更新答案
+
+```
+
+
+滑动窗口算法的思路:
+
+1. 我们在字符串 S 中使用双指针中的左右指针技巧，初始化 left = right = 0，把索引左闭右开区间 [left, right) 称为一个「窗口」。
+
+2. 我们先不断地增加 right 指针扩大窗口 [left, right)，直到窗口中的字符串符合要求（包含了 T 中的所有字符）。
+
+3. 此时，我们停止增加 right，转而不断增加 left 指针缩小窗口 [left, right)，直到窗口中的字符串不再符合要求（不包含 T 中的所有字符了）。同时，每次增加 left，我们都要更新一轮结果。
+
+4. 重复第 2 和第 3 步，直到 right 到达字符串 S 的尽头。
+
+```java
+public static String minWindow(String s, String t) {
+    Map<Character, Integer> need = new HashMap<>();
+    for(char i:t.toCharArray()) need.put(i, need.getOrDefault(i,0)+1); // {A:2, B:1}
+
+    int start=0, len = s.length()+1;
+    int left=0, right=0, valid=0;
+    int missing = t.length(); //The number of chars are missing.
+
+    Map<Character, Integer> win = new HashMap<>();
+    while(right<s.length()){
+        right++;
+
+        char x = s.charAt(right);
+        if(need.containsKey(x)){
+            win.put(x, win.getOrDefault(x,0)+1);
+            if(win.get(x) == need.get(x)) valid++;
+        }
+
+        while(valid == need.size()){
+            if(right-left < len){
+                start=left;
+                len = right-left;
+            }
+
+            char y = s.charAt(left);
+            left++;
+            if(need.containsKey(y)){
+                if(win.get(y) == need.get(y)) valid--;
+                win.put(y, win.get(y)-1);
+            }
+        }
+    }
+    return len==s.length()+1 ? "" : s.substring(start,start+len);
+}
+
+// Runtime: 10 ms, faster than 70.54% of Java online submissions for Minimum Window Substring.
+// Memory Usage: 39.1 MB, less than 82.86% of Java online submissions for Minimum Window Substring.
+class Solution {
+    public String minWindow(String s, String t) {
+        if(s==null || t==null) throw new IllegalArgumentException("Input string is null");
+        if(s.length() < t.length()) return "";
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(int i=0;i<t.length();i++) map.put(t.charAt(i), map.getOrDefault(t.charAt(i), 0)+1);
+        int left=0, right=0;
+        int start=0, len = Integer.MAX_VALUE;
+        int missing = t.length();
+        while(right<s.length()){
+            char x = s.charAt(right);
+            if(map.containsKey(x)){
+                int countX = map.get(x);
+                if(countX > 0) missing--;
+                map.put(x, countX-1);
+            }
+            right++;
+            while(missing==0){
+                if(right-left < len){
+                    start=left;
+                    len = right-left;
+                }
+                char y = s.charAt(left);
+                if(map.containsKey(y)){
+                    int countY = map.get(y);
+                    if(countY == 0) missing++;
+                    map.put(y, countY+1);
+                }
+                left++;
+            }
+        }
+        return len==Integer.MAX_VALUE ? "" : s.substring(start, start+len);
+    }
+}
+```
+
+---
+
+
+### 567. Permutation in String 字符串排列
+
+[567. Permutation in String](https://leetcode.com/problems/permutation-in-string/)
+
+Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
+
+In other words, return true if one of s1's permutations is the substring of s2.
+
+
+
+Example 1:
+
+Input: s1 = "ab", s2 = "eidbaooo"
+Output: true
+Explanation: s2 contains one permutation of s1 ("ba").
+
+
+```java
+// 判断 s 中是否存在 t 的排列
+bool checkInclusion(string t, string s) {
+    unordered_map<char, int> need, window;
+    for (char c : t) need[c]++;
+
+    int left = 0, right = 0;
+    int valid = 0;
+    while (right < s.size()) {
+        char c = s[right];
+        right++;
+        // 进行窗口内数据的一系列更新
+        if (need.count(c)) {
+            window[c]++;
+            if (window[c] == need[c])
+                valid++;
+        }
+
+        // 判断左侧窗口是否要收缩
+        while (right - left >= t.size()) {
+            // 在这里判断是否找到了合法的子串
+            if (valid == need.size())
+                return true;
+            char d = s[left];
+            left++;
+            // 进行窗口内数据的一系列更新
+            if (need.count(d)) {
+                if (window[d] == need[d])
+                    valid--;
+                window[d]--;
+            }
+        }
+    }
+    // 未找到符合条件的子串
+    return false;
+}
+
+// Runtime: 12 ms, faster than 48.78% of Java online submissions for Permutation in String.
+// Memory Usage: 38.9 MB, less than 91.88% of Java online submissions for Permutation in String.
+class Solution {
+    public boolean checkInclusion(String s1, String s2) {
+        if(s1==null || s2==null) throw new IllegalArgumentException("Input string is null");
+        if(s1.length()>s2.length()) return false;
+
+        int left=0, right=0;
+        int start=0, len=Integer.MAX_VALUE;
+        int missing=s1.length();
+
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(int i=0;i<s1.length();i++) map.put(s1.charAt(i), map.getOrDefault(s1.charAt(i), 0)+1);
+
+        while(right<s2.length()){
+            char x = s2.charAt(right);
+            if(map.containsKey(x)){
+                if(map.get(x)>0) missing--;
+                map.put(x, map.get(x)-1);
+            }
+            right++;
+
+            while(missing==0){
+                if(right-left==s1.length()) return true;
+                char y = s2.charAt(left);
+                if(map.containsKey(y)){
+                    if(map.get(y)==0) missing++;
+                    map.put(y, map.get(y)+1);
+                }
+                left++;
+            }
+        }
+        return false;
+    }
+}
+```
+
+---
+
+
+### 438. Find All Anagrams in a String 找所有字母异位词
+
+[438. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
+
+- Given two strings s and p,
+- return an array of all the start indices of `p's anagrams in s`.
+- You may return the answer in any order.
+- An `Anagram` is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+Example 1:
+
+Input: s = "cbaebabacd", p = "abc"
+Output: [0,6]
+
+1. size same
+2. missing==0
+
+
+```java
+// Runtime: 29 ms, faster than 34.79% of Java online submissions for Find All Anagrams in a String.
+// Memory Usage: 45.6 MB, less than 10.47% of Java online submissions for Find All Anagrams in a String.
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(int i=0; i<p.length(); i++) map.put(p.charAt(i), map.getOrDefault(p.charAt(i),0)+1);
+
+        List<Integer> res = new ArrayList<>();
+
+        int left=0, right=0;
+        int missing=p.length();
+
+        while(right<s.length()){
+            char x = s.charAt(right);
+            if(map.containsKey(x)){
+                if(map.get(x)>0) missing--;
+                map.put(x, map.get(x)-1);
+            }
+            right++;
+
+            while(missing==0 && left<s.length()){
+                if(right-left==p.length()) res.add(left);
+                char y = s.charAt(left);
+                if(map.containsKey(y)){
+                    if(map.get(y)==0) missing++;
+                    map.put(y, map.get(y)+1);
+                }
+                left++;
+            }
+        }
+        return res;
+    }
+}
+```
+
+
+---
+
+
+### 3. Longest Substring Without Repeating Characters 最长无重复子串
+
+[3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+Given a string s, find the length of the longest substring without repeating characters.
+
+Example 1:
+
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+
+```java
+public int lengthOfLongestSubstring(String s) {
+    HashMap<Character, Integer> map = new HashMap<>();
+    int left=0, right=0;
+    int res=0;
+
+    while(right<s.length()){
+        char x = s.charAt(right);
+        map.put(x, map.getOrDefault(x, 0)+1);
+        right++;
+
+        while(map.get(x)>1){
+            char y = s.charAt(left);
+            left++;
+            map.put(y, map.get(y)-1);
+        }
+        res=Math.max(res,right-left);
+    }
+    return res;
+}
+```
+
+
+
+
+---
 
 ## 🔒 two pointer - Array 数组
 
@@ -11083,6 +11384,79 @@ Do not allocate extra space for another array. You must do this by modifying the
 ---
 
 
+
+### 121. Best Time to Buy and Sell Stock (Easy)
+
+[121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+
+#### +++++ brute force
+
+```java
+// O(n^2) time,
+// O(1) space
+public int maxProfit(int[] prices) {
+    int profit = 0;
+    for (int i = 0; i < prices.length; i++) {
+        for (int j = i; j >= 0; j--) {
+            profit = Math.max(profit, prices[i]-prices[j]);
+        }
+    }
+    return profit;
+}
+```
+
+
+#### +++++ `2 pointer 求出最小前数，算数求最大`
+
+```java
+// Runtime: 2 ms, faster than 83.90% of Java online submissions for Best Time to Buy and Sell Stock.
+// Memory Usage: 83.7 MB, less than 55.95% of Java online submissions for Best Time to Buy and Sell Stock.
+class Solution {
+    public int maxProfit(int[] prices) {
+        int lsf = Integer.MAX_VALUE;
+        int res = 0, cur = 0;
+        for(int i = 0; i < prices.length; i++) {
+            if(lsf > prices[i]) lsf = prices[i];
+            cur = prices[i] - lsf;
+            if(res < cur) res = cur;
+        }
+        return res;
+    }
+}
+
+// Runtime: 1 ms, faster than 100.00% of Java online submissions for Best Time to Buy and Sell Stock.
+// Memory Usage: 59 MB, less than 72.76% of Java online submissions for Best Time to Buy and Sell Stock.
+public class Solution {
+    public int maxProfit(int[] prices) {
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for(int walk:prices) {
+            min = Math.min(min, walk);
+            max = Math.max(max, walk-min);
+        }
+        return max;
+    }
+}
+```
+
+
+
+---
+
+
+
 ### 83. Remove Duplicates from Sorted List 有序链表去重 `快慢指针前后走`
 
 [83. Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/submissions/)
@@ -11093,7 +11467,7 @@ Input: head = [1,1,2]
 Output: [1,2]
 
 ```java
-ListNode deleteDuplicates(ListNode head) {
+ListNode deleteDuplicates(ListNode head ) {
     if (head == null) return null;
     ListNode slow = head, fast = head;
     while (fast != null) {
@@ -12075,6 +12449,40 @@ class Solution {
 ---
 
 
+
+### 33. Search in Rotated Sorted Array !!!!!!
+
+
+
+
+
+
+
+
+
+---
+
+### 81. Search in Rotated Sorted Array II !!!!!!
+
+
+
+
+
+
+
+---
+
+### 154. Find Minimum in Rotated Sorted Array II + FollowUp !!!!!!
+
+
+
+
+
+
+
+
+
+---
 
 ## 🔒 two pointer - 链表
 
