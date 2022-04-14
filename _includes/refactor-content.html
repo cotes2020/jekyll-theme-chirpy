@@ -217,7 +217,7 @@
       {% assign left = left | replace: '">', '"><span class="mr-2">' | append: '</span>' %}
 
       {% assign _new_content = _new_content | append: mark_start
-          | append: left | append: anchor | append: mark_end | append: right
+          | append: left | append: anchor | append: right
       %}
 
     {% endfor %}
