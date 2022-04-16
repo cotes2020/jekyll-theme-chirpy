@@ -7,7 +7,7 @@ tags: [spacetime interval]
 
 ## The problem
 
-One of the celebrated results of Einstein's special theory of relativity is that no physical object can travel faster than light, no matter the frame of reference. One popular explanation for this is that as an object approaches the speed of light, its relativistic kinetic energy $$E = \gamma mc^2$$ [^1] tends to infinity. Thus, it would require infinite energy to propel a body (with mass, at least) to the speed of light or beyond.
+One of the celebrated results of Einstein's special theory of relativity is that no physical object can travel faster than light, no matter the frame of reference. A popular explanation for this is that as an object approaches the speed of light, its relativistic kinetic energy $$E = \gamma mc^2$$ [^1] tends to infinity. Thus, it would require infinite energy to propel a body (with mass, at least) to the speed of light or beyond.
 
 [^1]: Here, $$\gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}$$ is the Lorentz factor, $$m$$ is the mass of the body (a Lorentz invariant) and $$c$$ is the speed of light in vacuum.
 
