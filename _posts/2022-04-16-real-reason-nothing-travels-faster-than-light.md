@@ -71,7 +71,7 @@ Let us now investigate when $$ds^2$$ is zero or non-zero, and what these physica
 
 ## Trajectories
 
-Let us generalize our problem from tracking a pulse of light to tracking any physical body, with the coordinates $$x^i$$. Then, the trajectory of a body is defined, in local coordinates, as the function $$x^i \left( x^0 \right) = x^i \left( ct \right)$$. [^3]
+We now generalize our problem from tracking a pulse of light to tracking any physical body, with the coordinates $$x^i$$. Then, the trajectory of a body is defined, in local coordinates, as the function $$x^i \left( x^0 \right) = x^i \left( ct \right)$$. [^3]
 
 [^3]: In general, a trajectory is of the form $$x^i \left( \lambda \right)$$ where $$\lambda$$ is any scalar parameter (not necessarily time).
 
