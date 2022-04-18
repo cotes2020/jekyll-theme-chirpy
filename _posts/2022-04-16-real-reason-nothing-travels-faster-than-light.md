@@ -7,7 +7,7 @@ tags: [spacetime interval]
 
 ## The problem
 
-One of the celebrated results of Einstein's special theory of relativity is that no physical object can travel faster than light, no matter the frame of reference. A popular explanation for this is that as an object approaches the speed of light, its relativistic kinetic energy $$E = \gamma mc^2$$ [^1] tends to infinity. Thus, it would require infinite energy to propel a body (with mass, at least) to the speed of light or beyond.
+One of the celebrated results of Einstein's special theory of relativity is that no physical object can travel faster than light, no matter the frame of reference. A popular explanation for this is that as an object approaches the speed of light, its relativistic energy $$E = \gamma mc^2$$ [^1] tends to infinity. Thus, it would require infinite energy to propel a body (with mass, at least) to the speed of light or beyond.
 
 [^1]: Here, $$\gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}$$ is the Lorentz factor, $$m$$ is the mass of the body (a Lorentz invariant) and $$c$$ is the speed of light in vacuum.
 
@@ -21,7 +21,9 @@ Similarly, the flaw in the following logic,
 
 $$\gamma \left( v \right) \notin \left[ 1, \infty \right) \forall \: v>c \implies v \ngtr c$$
 
-is that perhaps the way measurable quantities like $$E$$ and $$p$$ depend on $$\gamma$$ is an artefact of knowingly or unknowingly assuming $$v<c$$. Unless we are very cautious, there is freedom for 'reality' being something like:
+is that perhaps the way measurable quantities like $$E$$ and $$p$$ depend on $$\gamma$$ is an artefact of knowingly or unknowingly assuming $$v<c$$. Unless we are very cautious, there is freedom for 'reality' being something like (for particles with mass): [^2]
+
+[^2]: For particles without mass, $$E=pc$$ from the energy-momentum relation $$E^2 = m^2 c^4 + p^2 c^2$$. As $$\gamma \to \infty$$ for $$v \to c$$ and the 4-velocity squared is constant $$U_\mu U^\mu = \gamma \left( c^2 - v^2 \right) = c^2$$, it can be shown that $$c^2 - v^2 \to 0$$ i.e. $$v=c$$. Thus, massless particles always travel along null trajectories!
 
 $$E \left( v \right) = \begin{cases} \gamma mc^2 & v < c \\ E_+ \left( v \right) & v>c \end{cases}$$
 
@@ -29,7 +31,7 @@ $$\lim_{v \to c^-} E \left( v \right) = \lim_{v \to c^+} E_+ \left( v \right) = 
 
 $$E \in \mathbb{R}^+ \cup \left\{ 0 \right\}$$
 
-Note that we have assumed $$E \left( v \right)$$ is non-negative throughout, for it to represent a physically sensible kinetic energy. In this overall picture, it is not surprising that $$E \left( v \right)$$ for $$v>c$$ may assume strange values if we forcefully plug in such $$v$$'s for the $$v < c$$ case.
+Note that we have assumed $$E \left( v \right)$$ is non-negative throughout, for it to represent a physically sensible total energy. In this overall picture, it is not surprising that $$E \left( v \right)$$ for $$v>c$$ may assume strange values if we forcefully plug in such $$v$$'s for the $$v < c$$ case.
 
 Another way to think of the whole problem is that the manner in which we assign physical meaning to observables based on their values, is tautological — it tells us nothing about the universe in itself. On the other hand, physical arguments have an inherent logical structure that prevails 'beneath' the observables. To analytically demonstrate the incoherence of an observable with a certain value, we must investigate the corresponding physical scenario and find its logical inconsistency by reasoning. Otherwise, there always exists the pathological possibility that we have overlooked certain assumptions which are leading to the mathematical breakdown (and _not_ the physics).
 
@@ -57,11 +59,11 @@ The above invariant is precisely the infinitesimal spacetime interval squared,
 
 $$ds^2 = dx_\nu dx^\nu = dx^\mu \eta_{\mu \nu} dx^\nu$$
 
-if we define the metric tensor $$\eta_{\mu \nu}$$ in local coordinates as, [^2]
+if we define the metric tensor $$\eta_{\mu \nu}$$ in local coordinates as, [^3]
 
 $$\begin{align} \eta_{00} & = 1 \\ \eta_{ij} & = - g_{ij} \\ \eta_{i 0} & = \eta_{0 i} = 0 \end{align}$$
 
-[^2]: This is the particle physicist's sign convention for the metric, $$\left( +, -, -, - \right)$$. The opposite choice is the relativist's sign convention.
+[^3]: This is the particle physicist's sign convention for the metric, $$\left( +, -, -, - \right)$$. The opposite choice is the relativist's sign convention.
 
 where $$g_{ij}$$ is the spatial metric tensor for the chosen coordinate system. The last equation says that in local coordinates, space and time are orthogonal. This is true in all inertial frames (in local coordinates). Hence, the timelike and spacetimelike components of the metric are invariant, although the spacelike components $$-g_{ij}$$ transform like a rank-2 tensor.
 
@@ -73,31 +75,31 @@ $$\Delta s^2 = \int_A^B ds^2 = \Delta x_\mu \Delta x^\mu$$
 
 Let us now investigate when $$ds^2$$ is zero or non-zero, and what these physically represent.
 
-## Trajectories
+## World lines
 
-We now generalize our problem from tracking a pulse of light to tracking any physical body, with the coordinates $$x^i$$. Then, the trajectory of a body is defined, in local coordinates, as the function $$x^i \left( x^0 \right) = x^i \left( ct \right)$$. [^3]
+We now generalize our problem from tracking a pulse of light to tracking any physical body, with the coordinates $$x^i$$. Then, the world line (trajectory in spacetime) of a body is defined, in local coordinates, as the function $$x^i \left( x^0 \right) = x^i \left( ct \right)$$. [^4]
 
-[^3]: In general, a trajectory is of the form $$x^i \left( \lambda \right)$$ where $$\lambda$$ is any scalar parameter (not necessarily time).
+[^4]: In general, a world line is of the form $$x^i \left( \lambda \right)$$ where $$\lambda$$ is any scalar parameter (not necessarily time).
 
-### Null trajectories
+### Null world lines
 
-A null trajectory is one along which $$ds^2$$ is null, or zero. As we have already seen, $$ds^2=0$$ for bodies travelling at the speed of light $$c$$.
+A null world line is one along which $$ds^2$$ is null, or zero. As we have already seen, $$ds^2=0$$ for bodies travelling at the speed of light $$c$$.
 
-### Timelike trajectories
+### Timelike world line
 
-Timelike trajectories satisfy $$ds^2 > 0$$. They are called 'timelike' as $$ds^2 = c^2 dt^2 - dx_i dx^i >0$$ when the timelike part $$c^2 dt^2$$ is greater than the spacelike part $$dx_i dx^i$$.
+Timelike world lines satisfy $$ds^2 > 0$$. They are called 'timelike' as $$ds^2 = c^2 dt^2 - dx_i dx^i >0$$ when the timelike part $$c^2 dt^2$$ is greater than the spacelike part $$dx_i dx^i$$.
 
-As $$ds^2$$ is an invariant, if $$ds^2>0$$ in one inertial frame, so must it be in all other frames. In other words, a timelike trajectory is timelike no matter the frame of reference.
+As $$ds^2$$ is an invariant, if $$ds^2>0$$ in one inertial frame, so must it be in all other frames. In other words, a timelike world line is timelike no matter the frame of reference.
 
-### Spacelike trajectories
+### Spacelike world line
 
-Similar to timelike trajectories, we may define spacelike trajectories for which $$ds^2<0$$ (the spacelike part of $$ds^2$$ is greater than the timelike part $$c^2 dt^2$$).
+Similar to timelike world lines, we may define spacelike world lines for which $$ds^2<0$$ (the spacelike part of $$ds^2$$ is greater than the timelike part $$c^2 dt^2$$).
 
 Again, if $$ds^2<0$$ in one frame, this must be true in all frames.
 
 ## The paradox
 
-Consider a body moving along a spacelike trajectory in some frame. We have,
+Consider a body moving along a spacelike world line in some frame. We have,
 
 $$ds^2 = c^2 dt^2 - dx_i dx^i < 0$$
 
@@ -131,7 +133,7 @@ Thus, we can safely say that indeed, no body can travel faster than light in any
 
 ## Conclusion (instantaneously inertial frames)
 
-There is some unfinished business in our argument. The argument primarily stands on the invariance of $$ds^2$$, derived from the invariance of the speed of light in _inertial_ frames. The body we are tracking may very well be moving non-uniformly, which begs the question of why the sign of $$ds^2$$ for its trajectory must be the same in an inertial reference frame, and its own not-necessarily-inertial frame.
+There is some unfinished business in our argument. The argument primarily stands on the invariance of $$ds^2$$, derived from the invariance of the speed of light in _inertial_ frames. The body we are tracking may very well be moving non-uniformly, which begs the question of why the sign of $$ds^2$$ for its world line must be the same in an inertial reference frame, and its own not-necessarily-inertial frame.
 
 This is where the idea of instantaneously inertial frames comes in. If we 'split' the non-uniform motion of a body into infinitesimal steps, the motion along each step behaves just like uniform motion.
 
