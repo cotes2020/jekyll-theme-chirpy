@@ -53,13 +53,13 @@ The above invariant is precisely the infinitesimal spacetime interval squared,
 
 $$ds^2 = dx_\nu dx^\nu = dx^\mu \eta_{\mu \nu} dx^\nu$$
 
-if we define the metric tensor $$\eta_{\mu \nu}$$ in local coordinates as,
+if we define the metric tensor $$\eta_{\mu \nu}$$ in local coordinates as, [^2]
 
 $$\begin{align} \eta_{00} & = 1 \\ \eta_{ij} & = - g_{ij} \\ \eta_{i 0} & = \eta_{0 i} = 0 \end{align}$$
 
-where $$g_{ij}$$ is the spatial metric tensor for the chosen coordinate system. [^2] The last equation says that in local coordinates, space and time are orthogonal. This is true in all inertial frames (in local coordinates). Hence, the timelike and spacetimelike components of the metric are invariant, although the spacelike components $$-g_{ij}$$ transform like a rank-2 tensor.
+[^2]: This is the particle physicist's sign convention for the metric, $$\left( +, -, -, - \right)$$. The opposite choice is the relativist's sign convention.
 
-[^2]: This is the particle physicist's sign convention for the metric, $$\left( +, -, -, - \right)$$.
+where $$g_{ij}$$ is the spatial metric tensor for the chosen coordinate system. The last equation says that in local coordinates, space and time are orthogonal. This is true in all inertial frames (in local coordinates). Hence, the timelike and spacetimelike components of the metric are invariant, although the spacelike components $$-g_{ij}$$ transform like a rank-2 tensor.
 
 On the other hand, in arbitrary coordinates, $$\eta_{\mu \nu}$$ transforms as a whole like the components of a rank-2 tensor. Therefore, $$ds^2 = dx^\mu \eta_{\mu \nu} dx^\nu$$ is always invariant, even when it is not zero. This also allows us to meaningfully venture beyond the case $$ds^2 = 0$$ and consider $$ds^2 \neq 0$$.
 
