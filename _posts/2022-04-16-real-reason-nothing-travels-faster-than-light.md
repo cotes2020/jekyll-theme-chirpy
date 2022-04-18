@@ -23,7 +23,7 @@ $$\gamma \left( v \right) \notin \left[ 1, \infty \right) \forall \: v>c \implie
 
 is that perhaps the way measurable quantities like $$E$$ and $$p$$ depend on $$\gamma$$ is an artefact of knowingly or unknowingly assuming $$v<c$$. Unless we are very cautious, there is freedom for 'reality' being something like (for particles with mass): [^2]
 
-[^2]: For particles without mass, $$E=pc$$ from the energy-momentum relation $$E^2 = m^2 c^4 + p^2 c^2$$. As $$\gamma \to \infty$$ for $$v \to c$$ and the 4-velocity squared is constant $$U_\mu U^\mu = \gamma \left( c^2 - v^2 \right) = c^2$$, it can be shown that $$c^2 - v^2 \to 0$$ i.e. $$v=c$$. Thus, massless particles always travel along null trajectories!
+[^2]: For particles without mass, $$E=pc$$ from the energy-momentum relation $$E^2 = m^2 c^4 + p^2 c^2$$. As their relativistic energy is completely kinetic, massless particles travel only at $$v=c$$ i.e. along null world lines.
 
 $$E \left( v \right) = \begin{cases} \gamma mc^2 & v < c \\ E_+ \left( v \right) & v>c \end{cases}$$
 
