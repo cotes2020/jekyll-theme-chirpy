@@ -29,7 +29,7 @@ $$\lim_{v \to c^+} E_+ \left( v \right) = E \left( c \right) = \infty$$
 
 $$E \in \mathbb{R}^+ \cup \left\{ 0 \right\}$$
 
-Note that we have assumed $$E \left( v \right)$$ is continuous (except at $$c$$, where $$E \left( c \right) \notin \mathbb{R}$$ ) and non-negative, which are some basic characteristics of a physically sensible kinetic energy. In such a picture, it is not surprising that $$E \left( v \right)$$ for $$v>c$$ may assume strange values if we forcefully plug in such $$v$$'s for the $$v \leq c$$ case.
+Note that we have assumed $$E \left( v \right)$$ is continuous (except at $$v=c$$, where $$E \left( c \right) \notin \mathbb{R}$$ ) and non-negative, which are some basic characteristics of a physically sensible kinetic energy. In such a picture, it is not surprising that $$E \left( v \right)$$ for $$v>c$$ may assume strange values if we forcefully plug in such $$v$$'s for the $$v \leq c$$ case.
 
 Another way to think of the whole problem is that the manner in which we assign physical meaning to observables based on their values, is tautological — it tells us nothing about the universe in itself. On the other hand, physical arguments have an inherent logical structure that prevails 'beneath' the observables. To analytically demonstrate the incoherence of an observable with a certain value, we must investigate the corresponding physical scenario and find its logical inconsistency by reasoning. Otherwise, there always exists the pathological possibility that we have overlooked certain assumptions which are leading to the mathematical breakdown (and _not_ the physics).
 
