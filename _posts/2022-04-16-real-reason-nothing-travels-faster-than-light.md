@@ -133,9 +133,9 @@ This is where the idea of instantaneously inertial frames comes in. If we 'split
 
 Or, we can construct the argument in the reverse fashion. Suppose we restrict ourselves to uniform motion. Then, the correctness of our argument is straightforward as the body's own frame is inertial. Now, nothing stops us from considering inertial motion lasting for tiny time intervals, with acceleration in between. For all these intervals, the law 'the body cannot travel faster than light' can be verified individually. As the 'gaps' of acceleration tend to zero, the motion of the body tends to continuous non-uniform motion, and the law holds at each instant.
 
-Of course, rigorously demonstrating the above formally involves calculus as we cannot simply assume that the discontinuous motion in question, does, in fact, reduce to continuous motion in the appropriate limit. The entire exercise, if done rigorously, is surprisingly rich as it involves measure theory, analysis and topology! I will perhaps explore it in the future in a series of posts.
+Of course, rigorously demonstrating the above formally involves calculus as we cannot simply assume that the discontinuous motion in question, does, in fact, reduce to continuous motion in the appropriate limit. The entire exercise, if done rigorously, is unexpectedly rich as it involves measure theory, analysis and topology! I will perhaps explore it in the future in a series of posts.
 
-Until then, I leave it to the reader to question how much rigorour is necessary to prove, in a foolproof manner, that no body can travel faster than light. Asking such questions can be, contrary to immediate thoughts, of immense practical value. On a related note, Terence Tao said (in his elegant lectures on analysis),
+Until then, I leave it to the reader to question how much rigorour is necessary to prove, in a foolproof manner, that no physical body can travel faster than light. Asking such questions can be, surprisingly or not, of immense practical value. On a related note (but in the context of pure mathematics), Terence Tao said, in his elegant lectures on analysis,
 
 > Moreover,
 as you learn analysis you will develop an “analytical way of thinking”,
