@@ -23,9 +23,13 @@ $$\gamma \left( v \right) \notin \left[ 1, \infty \right) \forall \: v>c \implie
 
 is that perhaps the way measurable quantities like $$E$$ and $$p$$ depend on $$\gamma$$ is an artefact of knowingly or unknowingly assuming $$v<c$$. Unless we are very cautious, there is freedom for 'reality' being something like:
 
-$$E \left( v \right) = \begin{cases} \gamma mc^2 & v \leq c \\ ? & v>c \end{cases}$$
+$$E \left( v \right) = \begin{cases} \gamma mc^2 & v \leq c \\ E_+ \left( v \right) & v>c \end{cases}$$
 
-such that the limiting case $$v \to c$$ applied to the second scenario gives the functional value $$E \left( c \right)$$, and $$E \in \mathbb{R}^+ \cup \left\{ 0 \right\}$$. I.e., $$E \left( v \right)$$ is continuous and non-negative, which are some basic characteristics of a physically sensible kinetic energy. In such a picture, it is not surprising that $$E \left( v \right)$$ for $$v>c$$ may assume strange values if we forcefully plug in such $$v$$'s for the $$v < c$$ case.
+$$\lim_{v \to c^+} E_+ \left( v \right) = E \left( c \right) = \infty$$
+
+$$E \in \mathbb{R}^+ \cup \left\{ 0 \right\}$$
+
+Note that we have assumed $$E \left( v \right)$$ is continuous and non-negative, which are some basic characteristics of a physically sensible kinetic energy. In such a picture, it is not surprising that $$E \left( v \right)$$ for $$v>c$$ may assume strange values if we forcefully plug in such $$v$$'s for the $$v \leq c$$ case.
 
 Another way to think of the whole problem is that the manner in which we assign physical meaning to observables based on their values, is tautological — it tells us nothing about the universe in itself. On the other hand, physical arguments have an inherent logical structure that prevails 'beneath' the observables. To analytically demonstrate the incoherence of an observable with a certain value, we must investigate the corresponding physical scenario and find its logical inconsistency by reasoning. Otherwise, there always exists the pathological possibility that we have overlooked certain assumptions which are leading to the mathematical breakdown (and _not_ the physics).
 
