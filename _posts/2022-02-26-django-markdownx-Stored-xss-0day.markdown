@@ -1,7 +1,7 @@
 ---
 layout:	post
 title:	"Unauthenticated Stored XSS on Django-Markdownx"
-date:	2022-02-26
+date:	2022-03-02
 categories: [Hacking, Code Review]
 image: /img/markdownx-xss-popup.PNG
 tags: [Hacking, Code Review, Django, Web]
