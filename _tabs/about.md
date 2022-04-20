@@ -144,3 +144,7 @@ Obs.: English - B2 Upper Intermediate according to the Common European Framework
 - [Learning Git and GitHub](https://www.linkedin.com/learning/certificates/e5ca7c6bf4d9c93fcaa0850f30b451b7b4d8a16f5cd3c9fd9a4d9308a707b6d1?trk=share_certificate)
 - [Learning Linux Shell Scripting](https://www.linkedin.com/learning/certificates/c9f381cff4996608e8952ce9093d3b42d11d9640b8fa920e95a1696b752e0d39?trk=share_certificate)
 - [Strategic Thinking (Certify by PMI)](https://www.linkedin.com/learning/certificates/37fd786f11432a9902b8faf9706b8e67a9eea5626ba30ce218e3a819cf54505c?trk=share_certificate)
+- [(Object-Oriented Programming - OOP) Fundamentos de Programação: Design voltado a objetos](https://www.linkedin.com/learning/certificates/d5266c34ca2a5402afb01f60bc0a5a9a2e5047b6a07d1273b2f2fe21ac33b4ac?trk=share_certificate)
+- [Learning R](https://www.linkedin.com/learning/certificates/a81b2050d5f019eb6a5fc67e440cf7279af59886014678d5e72ba8f937354b9e?trk=share_certificate)
+### DataCamp:
+- [Machine Learning for Everyone](https://www.datacamp.com/statement-of-accomplishment/course/339efc72286d69d17748c4ab9ef6d59cf3aa3722)
