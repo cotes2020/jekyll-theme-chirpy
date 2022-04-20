@@ -3,7 +3,7 @@ layout:	post
 title:	"Changedetection CSRF to Local File Disclosure"
 date:	2022-04-20
 categories: [Hacking, Code Review]
-image: /img/changedetection-io-3.png
+image: /img/changedetection-io-3.PNG
 tags: [Hacking, Code Review, Django, Web]
 ---
 
