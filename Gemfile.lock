@@ -120,6 +120,7 @@ DEPENDENCIES
   html-proofer (~> 3.18)
   jekyll-feed
   jekyll-paginate
+  jekyll-redirect-from
   jekyll-seo-tag
   jekyll-sitemap
   jekyll-theme-chirpy!
