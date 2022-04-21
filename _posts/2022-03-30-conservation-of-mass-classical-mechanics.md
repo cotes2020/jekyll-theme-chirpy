@@ -17,7 +17,7 @@ Then, we will construct [the main argument]({% post_url 2022-03-30-conservation-
 
 ### Noether's theorem
 
-Consider a system of particles with generalized coordinates $$\left\{ \pmb{q}_{i} \right\}_i$$ and conjugate momenta $$\left\{ \pmb{p}_{i} \right\}_i$$. Let the system be infinitesimally displaced as,
+Consider a system of particles with generalized coordinates $$\left\{ \pmb{q}_{i} \right\}$$ and conjugate momenta $$\left\{ \pmb{p}_{i} \right\}$$. Let the system be infinitesimally displaced as,
 
 $$\pmb{q}_{i} \to \pmb{q}_{i} + \epsilon \: \pmb{Q}$$
 
@@ -66,9 +66,9 @@ Thus, the total momentum, specifically _linear_ momentum, of a system is conserv
 
 For a system of particles symmetric under infinitesimal linear translations, its Lagrangian looks like so in Cartesian coordinates:
 
-$$L \left( \left\{ \pmb{x}_{i} \right\}_i, \left\{ \dot{\pmb{x}}_{i} \right\}_i \right) = \sum_i \frac{1}{2} m_i \dot{\pmb{x}}_{i} \cdot \dot{\pmb{x}}_{i} - V \left( \left\{ \pmb{x}_{i} - \pmb{x}_j \right\}_{i, j} \right)$$
+$$L \left( \left\{ \pmb{x}_{i} \right\}, \left\{ \dot{\pmb{x}}_{i} \right\} \right) = \sum_i \frac{1}{2} m_i \dot{\pmb{x}}_{i} \cdot \dot{\pmb{x}}_{i} - V \left( \left\{ \pmb{x}_{i} - \pmb{x}_j \right\} \right)$$
 
-where $$\left\{ m_i \right\}_i$$ are the masses of the particles. The Lagrangian does not explicitly depend on time as we are considering closed systems only. Secondly, the potential energy is a function of only the relative positions of the particles with respect to each other, i.e. $$V : \mathbb{A}^4 \to \mathbb{R}$$ (thus, translating the system does not affect its potential energy).
+where $$\left\{ m_i \right\}$$ are the masses of the particles. The Lagrangian does not explicitly depend on time as we are considering closed systems only. Secondly, the potential energy is a function of only the relative positions of the particles with respect to each other, i.e. $$V : \mathbb{A}^4 \to \mathbb{R}$$ (thus, translating the system does not affect its potential energy).
 
 Now, the conjugate momentum (here linear momentum) of each particle is,
 
