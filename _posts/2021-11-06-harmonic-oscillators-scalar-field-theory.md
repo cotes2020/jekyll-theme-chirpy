@@ -2,7 +2,7 @@
 title: "Harmonic Oscillators in Scalar Field Theory"
 description: "How harmonic oscillators emerge in scalar field theory"
 categories: [classical field theory]
-tags: [harmonic oscillators, scalar field theory]
+tags: [harmonic oscillators, scalar field theory, linearity]
 ---
 
 Once again, let us see how classical scalar field theory naturally gives rise to common natural phenomena.  Today, we will derive the evolution of harmonic oscillators.
