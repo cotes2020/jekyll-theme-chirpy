@@ -2,7 +2,7 @@
 title: "A Tale of Two Quantities"
 description: "Which is more fundamental — charge or current?"
 categories: [measurement]
-tags: [narrative]
+tags: [narrative, fundamentality]
 ---
 
 ## The war

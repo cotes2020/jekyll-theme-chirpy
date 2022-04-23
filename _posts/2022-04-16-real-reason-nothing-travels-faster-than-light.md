@@ -2,7 +2,7 @@
 title: "The Real Reason Nothing Travels Faster Than Light"
 description: "Proving the famous statement analytically"
 categories: [special relativity]
-tags: [spacetime interval]
+tags: [spacetime interval, reductio ad absurdum]
 ---
 
 ## The problem
