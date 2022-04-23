@@ -12,13 +12,6 @@
   icon: 'fab fa-reddit'
   url: 'https://www.reddit.com/user/Booodaness'
 -
-  type: github
-  icon: 'fab fa-github'
--
-  type: orcid
-  icon: fab fa-orcid
-  url: 'https://orcid.org/0000-0001-9510-2066'
--
   type: stack-overflow
   icon: 'fab fa-stack-overflow'
   url:  'https://math.stackexchange.com/users/879669/siddhartha-bhattacharjee?tab=profile'
@@ -26,6 +19,13 @@
   type: online-sequencer
   icon: 'fas fa-music'
   url: 'https://onlinesequencer.net/members/42571'
+-
+  type: github
+  icon: 'fab fa-github'
+-
+  type: orcid
+  icon: fab fa-orcid
+  url: 'https://orcid.org/0000-0001-9510-2066'
 -
   type: email
   icon: 'fas fa-envelope'
