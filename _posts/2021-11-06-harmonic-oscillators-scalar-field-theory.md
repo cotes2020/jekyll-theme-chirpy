@@ -1,7 +1,7 @@
 ---
 title: "Harmonic Oscillators in Scalar Field Theory"
 description: "How harmonic oscillators emerge in scalar field theory"
-categories: [field theory]
+categories: [classical field theory]
 tags: [harmonic oscillators, scalar field theory]
 ---
 
