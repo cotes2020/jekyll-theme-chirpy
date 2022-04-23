@@ -137,7 +137,7 @@ Let us summarize the results by answering the original questions:
 
 $$\sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi} = 0$$
 
-2) When is $$\phi$$ a linear combination of the solutions $$\left\{ \phi_{\left( i \right)} \right\}$$? Well, for some unspecified $$\left\{ \phi_{\left( i \right)} \right\}$$, we could be in a stroke of luck and automatically have the above constraint to hold true. However, if we want it to be true for arbitrary solutions, we must only look at linear combinations of these solutions to generate new solutions.
+2) When is $$\phi$$ a linear combination of the solutions $$\left\{ \phi_{\left( i \right)} \right\}$$? Well, for some unspecified $$\left\{ \phi_{\left( i \right)} \right\}$$, we could be in a stroke of luck and automatically have the above constraint to be true. However, if we want it to be true for arbitrary solutions, we must only look at linear combinations of these solutions to generate new solutions.
 
 In other words, there are _always_ $$\phi$$'s which are linear combinations of $$\left\{ \phi_{\left( i \right)} \right\}$$ (and an infinite number of them), although there could be other $$\phi$$'s which are non-trivial, non-linear combinations of the solutions.
 
