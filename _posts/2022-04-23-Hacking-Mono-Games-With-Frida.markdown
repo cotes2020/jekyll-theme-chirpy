@@ -13,10 +13,10 @@ Recently, i've been practicing game hacking frida. Frida is an excellent tool fo
 
 # Game Plan
 Before we start, make sure you have an ide and frida installed.
-The game plan on hacking mono games is simple. Here is a diagram i made summarizing it.
-![](/img/Frida1.png)
-First, we will get the mono library which we will use. Then, we will need to set our thread to the root domain. So when we later compile functions using `mono_compile_method` (we will talk about this later.), it will work. Next, we will get all the assemblies. Assemblies are the inidividual dll's that are loaded by the mono library.
-![](/img/frida2.PNG)
+The game plan on hacking mono games is simple. Here is a diagram i made summarizing it.    
+![](/img/Frida1.png)        
+First, we will get the mono library which we will use. Then, we will need to set our thread to the root domain. So when we later compile functions using `mono_compile_method` (we will talk about this later.), it will work. Next, we will get all the assemblies. Assemblies are the inidividual dll's that are loaded by the mono library.      
+![](/img/frida2.PNG)        
 Then, we will get the class that we need from the assembly. Then, we will get the function in the class, and get its address. Then, we can do whatever we want. Lets get started
 
 # Coding
@@ -59,8 +59,8 @@ function GetAssemblyCsharpCallback(MonoAssemblyObject, user_data){ //Function to
 mono_assembly_foreach(new NativeCallback(GetAssemblyCsharpCallback, 'void', ['pointer', 'pointer']), ptr(0))
 ```
 Here, i made a new function, `GetAssemblyCsharpCallback`, the first argument is the Mono Assembly Object. It will get the name of the Assembly using `mono_assembly_get_name`, and if it is equals to `Assembly-CSharp`, set our AssemblyCsharpAssembly variable to the image of it.
-AssemblyCsharp contains all the game logic. Next, we are gonna get our target class on it, the `NewMovement` class.
-![](/img/frida3.PNG)
+AssemblyCsharp contains all the game logic. Next, we are gonna get our target class on it, the `NewMovement` class.    
+![](/img/frida3.PNG)     
 This is the class of our player. We will use `mono_class_from_name` to get our Mono class object
 ```js
 var hMono = Process.getModuleByName("mono-2.0-bdwgc.dll") //Hook the mono module
@@ -180,8 +180,8 @@ Interceptor.attach(NewMovement_Update, {
 
 ## Function Calling
 Now for function calling, lets call the jump function.
-To get the address of it, we will use again `mono_class_get_method_from_name` and `mono_compile_method`. For this example, we will get rid of the ManipulateHealth method and instead, call the SuperCharge function.
-![](/img/frida5.PNG)
+To get the address of it, we will use again `mono_class_get_method_from_name` and `mono_compile_method`. For this example, we will get rid of the ManipulateHealth method and instead, call the SuperCharge function.     
+![](/img/frida5.PNG)       
 ```js
 ...
 function SuperCharge(Player){
@@ -201,8 +201,8 @@ Interceptor.attach(NewMovement_Update, {
     }
   }
 });
-```
-![](/img/frida6.gif)
+```    
+![](/img/frida6.gif)       
 
 # Ending
 As you can see, frida is a powerful tool. The hardest part of this is learning and understanding the documentation. I hope this writeup will be a guide to future hackers that are also finding problems in hacking mono games. Thanks for reading.
