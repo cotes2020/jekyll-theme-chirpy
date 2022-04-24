@@ -147,7 +147,7 @@ In the notation for the solutions $$\left\{ \phi_{\left( i \right)} \right\}$$, 
 
 $$\phi = \sum_i C_{\left( i \right)} \phi_{\left( i \right)} \: \vert \: \partial_\mu C_{\left( i \right)} = 0$$
 
-Therefore, in the abstract sense, each solution $$\phi_{\left( i \right)}$$ is, in fact, behaving like a basis vector, with the coefficients $$C_{\left( i \right)}$$ forming the components! However, the index $$i$$ here is abstract and not related to the coordinates $$x^\mu$$ as in objects like $$\partial_\mu = \frac{\partial}{\partial x^\mu}$$, so it is still better to retain the paranetheses. However, we can apply the Einstein summation convention here as it need not be restricted to 'honest' indices:
+Therefore, in the abstract sense, each solution $$\phi_{\left( i \right)}$$ is, in fact, behaving like a basis vector, with the coefficients $$C_{\left( i \right)}$$ forming the components! However, the index $$i$$ here is abstract and not related to the coordinates $$x^\mu$$ as in objects like $$\partial_\mu = \frac{\partial}{\partial x^\mu}$$, so it is still better to retain the parentheses. However, we can apply the Einstein summation convention here as it need not be restricted to 'honest' indices:
 
 $$\phi = C^{\left( i \right)} \phi_{\left( i \right)}$$
 
