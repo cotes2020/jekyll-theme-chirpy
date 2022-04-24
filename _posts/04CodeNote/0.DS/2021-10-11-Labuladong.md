@@ -9986,7 +9986,7 @@ use set/hash to remove duplicate
 ```java
 // Runtime: 1729 ms, faster than 5.01% of Java online submissions for 3Sum.
 // Memory Usage: 148.5 MB, less than 7.69% of Java online submissions for 3Sum.
-// time: O(n^2) 
+// time: O(n^2)
 // space: O(n)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
@@ -10018,30 +10018,30 @@ class Solution {
 ```java
 
 
-// time: O(n^2) 
+// time: O(n^2)
 // space: O(1)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        
-        
+
+
         List<List<Integer>> res = new ArrayList<>();
         int n = nums.length;
-        
+
         Arrays.sort(nums);
-        
+
         // if length is less than 3, return empty result set
         if (n < 3 || nums[0] > 0) return res;
-        
-        for(int i=0;i<n-1;i++){ 
-            int j=i+1, k=n-1; 
+
+        for(int i=0;i<n-1;i++){
+            int j=i+1, k=n-1;
             while(j<k){
                 if(0-nums[i]==nums[j]+nums[k]) res.add(new ArrayList(nums[i]+nums[j]+nums[k]));
                 else if(0-nums[i]<nums[j]+nums[k]) k--;
                 else if(0-nums[i]>nums[j]+nums[k]) j++;
             }
         }   
-        return res; 
-    } 
+        return res;
+    }
 }
 ```
 
@@ -10417,6 +10417,65 @@ Explanation: 1 is trivially at least twice the value as any other number because
 
 
 ---
+
+# 🔒🔒 One-pointer 左右指针
+
+
+---
+
+## one pointer
+
+---
+
+### oreo count
+
+Count down the Oreo.
+
+```java
+class Run {
+    public static int test(String word) {  
+        int count_o = 0, count_re = 0;
+        int original = 0, count = 0;
+        int point = 0;
+        while(point < word.length()){
+            if (point < word.length()-3 && word.substring(point, point+4).equals("oreo")){
+                point = point+4;
+                original++;
+            }
+            else if(point < word.length()-1 && word.substring(point, point+2).equals("re")) {
+                count_re++;
+                point = point+2;
+            }
+            else if(word.charAt(point)=='o') {
+                count_o++;
+                point++;
+            }
+        }   
+        // pair o is more than re, only care about o/2
+        if (count_o/2 - count_re>=0){  
+            count = count + count_o/2 + count_o%2;
+        }
+        // re is more than pair o, only care about re
+        else count = count + count_re;
+
+        return count;
+    }   
+
+    public static void main(String[] args) {   
+        System.out.println("correct ans: 1 -> " + "my: " + test("o"));
+        System.out.println("correct ans: 2 -> " + "my: " + test("ooo"));
+        System.out.println("correct ans: 4 -> " + "my: " + test("rererereo"));
+        System.out.println("correct ans: 2 -> " + "my: " + test("oreoooo"));
+        System.out.println("correct ans: 2 -> " + "my: " + test("ooreoreoo"));
+        System.out.println("correct ans: 5 -> " + "my: " + test("ooooooorererereoore"));
+        System.out.println("correct ans: 15 -> " + "my: " + test("oooooooooooooooooooooooooooorererereoore"));
+        System.out.println("correct ans: 0 -> " + "my: " + test("oreooreooreo"));
+
+    }
+}
+```
+
+
 
 
 
