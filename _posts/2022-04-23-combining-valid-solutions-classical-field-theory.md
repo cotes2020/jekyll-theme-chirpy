@@ -77,7 +77,7 @@ $$
  & = \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\nu \phi_{\left( i \right)} \right)} \left[ \frac{\partial \phi}{\partial \phi_{\left( i \right)}} \frac{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)}{\partial \left( \partial_\nu \phi_{\left( i \right)} \right)} \right]^{-1} \\
  & = \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\nu \phi_{\left( i \right)} \right)} \left[ \frac{\partial \phi}{\partial \phi_{\left( i \right)}} \delta^\nu_{\phantom{\nu} \mu} \right]^{-1} \\
  & = \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\nu \phi_{\left( i \right)} \right)} \left( \frac{\partial \phi}{\partial \phi_{\left( i \right)}} \right)^{-1} \delta^\mu_{\phantom{\mu} \nu} \\
- & = \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \frac{\partial \phi_{\left( i \right)}}{\partial \phi} \\
+ & = \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \frac{\partial \phi_{\left( i \right)}}{\partial \phi}
 \end{align}
 $$
 
