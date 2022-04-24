@@ -242,6 +242,8 @@ toc: true
       - [+++++ HashMap](#-hashmap)
     - [3 sum](#3-sum)
       - [++++++ `i + 2 sum(Hash+Set)`](#-i--2-sumhashset)
+        - [++++++ `best: 2 pointer`](#-best-2-pointer)
+    - [11. Container With Most Water (Medium)](#11-container-with-most-water-medium)
 - [🔒🔒 Prefix Sum](#-prefix-sum)
   - [🔒 Prefix Sum - Array 数组](#-prefix-sum---array-数组)
     - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
@@ -10015,34 +10017,82 @@ class Solution {
 ```
 
 
+##### ++++++ `best: 2 pointer`
+
 ```java
-
-
-// time: O(n^2) 
+// Runtime: 27 ms, faster than 74.56% of Java online submissions for 3Sum.
+// Memory Usage: 58.7 MB, less than 67.33% of Java online submissions for 3Sum.
+// time: O(nlogn + ^2) 
 // space: O(1)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        
-        
-        List<List<Integer>> res = new ArrayList<>();
-        int n = nums.length;
-        
+        List<List<Integer>> res = new ArrayList<List<Integer>>(); 
         Arrays.sort(nums);
         
         // if length is less than 3, return empty result set
-        if (n < 3 || nums[0] > 0) return res;
+        if (nums.length < 3 || nums[0] > 0 || nums[nums.length-1] < 0)  return res;
         
-        for(int i=0;i<n-1;i++){ 
-            int j=i+1, k=n-1; 
-            while(j<k){
-                if(0-nums[i]==nums[j]+nums[k]) res.add(new ArrayList(nums[i]+nums[j]+nums[k]));
-                else if(0-nums[i]<nums[j]+nums[k]) k--;
+        for(int i=0;i<nums.length-2;i++){  
+            // current i is same as previous, it will create duplicate result
+            if(i > 0 && nums[i] == nums[i-1]) continue;
+            
+            int j=i+1, k=nums.length-1; 
+            while(j<k){ 
+                if (0-nums[i]<nums[j]+nums[k]) k--;
                 else if(0-nums[i]>nums[j]+nums[k]) j++;
+                else {
+                    while(j<k && nums[j]==nums[j+1]) j++;
+                    while(j<k && nums[k]==nums[k-1]) k--; 
+                    res.add( Arrays.asList(nums[i], nums[j], nums[k]) );
+                    j++;
+                    k--;
+                }
             }
         }   
-        return res; 
+        return res;
     } 
 }
+```
+
+
+
+---
+
+
+### 11. Container With Most Water (Medium)
+
+[11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
+
+ 
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+
+
+1. Brute Froce
+   1. the total states is C(n, 2)= n * (n - 1) / 2, we have to enumerate all these states to get the max area.
+
+ 
+```java
+// Time Complexity: O(n^2)
+// Space Complexity: O(1)
+public int maxArea(int[] height) {  
+        int max = 0; 
+        for(int i=0;i<height.length-1; i++) {
+            int curxa = i, curya=height[i]; 
+            for(int j=i+1; j<height.length; j++) {
+                int curxb = j, curyb=height[j];
+                max = Math.max(max, (curxb-curxa) * Math.min(curya,curyb));   
+            }
+        }
+        return max; 
+    }
 ```
 
 

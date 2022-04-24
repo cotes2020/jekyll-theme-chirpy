@@ -1,38 +1,32 @@
- 
+import java.util.*;
+
 public class Test {
 
-    public int[] searchRange(int[] nums, int target) { 
-        int[] result = new int[2];
-        result[0] = findFirst(nums, target);
-        int y = findFirst(nums, target+1);
-        System.out.println("y: " + y); 
+    public int maxArea(int[] height) {  
+        int max = 0; 
+        for(int i=0;i<height.length-1; i++) {
+            int curxa = i, curya=height[i]; 
+            for(int j=i+1; j<height.length; j++) {
+                int curxb = j, curyb=height[j];
+                max = Math.max(max, (curxb-curxa) * Math.min(curya,curyb)); 
+                System.out.println("xa:"+curxa+"ya:"+curya+"xb:"+curxb+"yb:"+curyb);
+                System.out.println("max:"+max);
 
-        result[1] = y==-1? nums.length-1: y-1 ;
-        return result;
-    }
-
-    
-    public int findFirst(int[] nums, int target) {
-        int res=-1;
-        int l=0, r=nums.length-1;
-        while(l<=r){
-            int m=(l+r)/2;
-            if(target<=nums[m]) r=m-1;
-            else l=m+1;
-            if(nums[m]==target) res=m; 
+            }
         }
-        return res;
+        return max; 
     }
-
+    
     public static void main(String[] args) {
         System.out.println("run");
         Test run = new Test();
-        int[] nums = new int[]{5,8,8,8,8,10};
-        int target = 8;
-        int[] ans = run.searchRange(nums, target);
-        // System.out.println(ans); 
+        int[] nums = new int[]{0,2};
+        // int target = 8;
+        int ans = run.maxArea(nums);
+        System.out.println(ans); 
         
-        for(int x : ans) System.out.println(x);
+        // for(List<Integer> x : ans) System.out.println(x);
+        // for(int x : ans) System.out.println(x);
     }
     
 }
