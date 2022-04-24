@@ -1,26 +1,26 @@
 ---
 layout:	post
 title:	"Hacking Mono Games With Frida"
-date:	2022-04-23
-categories: [Hacking, Code Review]
-image: /img/changedetection-io-3.PNG
-tags: [Hacking, Code Review, Django, Web]
+date:	2022-04-24
+categories: [Hacking, Game Hacking]
+image: /img/Frida1.png
+tags: [Hacking, Game Hacking, Mono, Frida]
 ---
 
 
 # INTRODUCTION
-Recently, i've been practicing game hacking frida. Frida is an excellent tool for hacking. It allows us to make scripts in javascript, and is very flexible, a script, we made can be run on any architecture. Making it great for android game hacking. But there is one problem i encountered often. Games are compiled in mono and i dont know how to hack mono games and there is almost no resource about it except for the documentation. Mono games works differently than native games. So, i decided to make a writeup about it after hours of reading the documentation and reading the source code. Lets get started. 
+Recently, i've been practicing game hacking frida. Frida is an excellent tool for hacking. It allows us to make scripts in javascript, and is very flexible, a script, we made can be run on any architecture. Making it great for android game hacking. But there is one problem i encountered often. Games are compiled in mono and i dont know how to hack mono games and there is almost no resource about it except for the documentation. Mono games works differently than native games. So, i decided to make a writeup about it after hours of reading the documentation and reading the source code. Lets get started.
 
 # Game Plan
-Before we start, make sure you have an ide and frida installed.     
+Before we start, make sure you have an ide and frida installed.
 The game plan on hacking mono games is simple. Here is a diagram i made summarizing it.
-![](/img/Frida1.png)     
-First, we will get the mono library which we will use. Then, we will need to set our thread to the root domain. So when we later compile functions using `mono_compile_method` (we will talk about this later.), it will work. Next, we will get all the assemblies. Assemblies are the inidividual dll's that are loaded by the mono library. 
-![](/img/frida2.PNG)      
+![](/img/Frida1.png)
+First, we will get the mono library which we will use. Then, we will need to set our thread to the root domain. So when we later compile functions using `mono_compile_method` (we will talk about this later.), it will work. Next, we will get all the assemblies. Assemblies are the inidividual dll's that are loaded by the mono library.
+![](/img/frida2.PNG)
 Then, we will get the class that we need from the assembly. Then, we will get the function in the class, and get its address. Then, we can do whatever we want. Lets get started
 
 # Coding
-For this writeup, i will be hacking ultrakill once again since i already worked with it before and know its classes and functions already.    
+For this writeup, i will be hacking ultrakill once again since i already worked with it before and know its classes and functions already.
 First, we will get the mono library. In ultrakill, the mono library is named `mono-2.0-bdwgc.dll`. We can get it using `getModuleByName` which will give us a module object.
 ```js
 var hMono = Process.getModuleByName("mono-2.0-bdwgc.dll")
@@ -53,14 +53,14 @@ function GetAssemblyCsharpCallback(MonoAssemblyObject, user_data){ //Function to
     if(ImageName.readUtf8String() == "Assembly-CSharp"){ //Check if it is the Assembly-CSharp
         console.log("AssemblyCsharp Found. Assembly object at :" + MonoAssemblyImageObject)
         AssemblyCsharpAssembly = MonoAssemblyImageObject
-    } 
+    }
 }
 
 mono_assembly_foreach(new NativeCallback(GetAssemblyCsharpCallback, 'void', ['pointer', 'pointer']), ptr(0))
 ```
-Here, i made a new function, `GetAssemblyCsharpCallback`, the first argument is the Mono Assembly Object. It will get the name of the Assembly using `mono_assembly_get_name`, and if it is equals to `Assembly-CSharp`, set our AssemblyCsharpAssembly variable to the image of it.    
+Here, i made a new function, `GetAssemblyCsharpCallback`, the first argument is the Mono Assembly Object. It will get the name of the Assembly using `mono_assembly_get_name`, and if it is equals to `Assembly-CSharp`, set our AssemblyCsharpAssembly variable to the image of it.
 AssemblyCsharp contains all the game logic. Next, we are gonna get our target class on it, the `NewMovement` class.
-![](/img/frida3.PNG)          
+![](/img/frida3.PNG)
 This is the class of our player. We will use `mono_class_from_name` to get our Mono class object
 ```js
 var hMono = Process.getModuleByName("mono-2.0-bdwgc.dll") //Hook the mono module
@@ -80,7 +80,7 @@ function GetAssemblyCsharpCallback(MonoAssemblyObject, user_data){
     if(ImageName.readUtf8String() == "Assembly-CSharp"){
         console.log("AssemblyCsharp Found. Assembly object at :" + MonoAssemblyImageObject)
         AssemblyCsharpAssembly = MonoAssemblyImageObject
-    } 
+    }
 }
 
 mono_assembly_foreach(new NativeCallback(GetAssemblyCsharpCallback, 'void', ['pointer', 'pointer']), ptr(0))
@@ -90,7 +90,7 @@ var mono_class_from_name = new NativeFunction(hMono.getExportByName("mono_class_
 
 var NewMovementClass = mono_class_from_name(ptr(AssemblyCsharpAssembly), Memory.allocUtf8String(""), Memory.allocUtf8String("NewMovement"))
 ```
-The mono_class_from_name takes 3 parameter, the first is the Assembly image, the next is the namespace, and the last is the name of the class. It accepts the second and third parameter as `const char*`, so we will use `Memory.allocUtf8String`, to alloc a const char to memory, and return a pointer to it.     
+The mono_class_from_name takes 3 parameter, the first is the Assembly image, the next is the namespace, and the last is the name of the class. It accepts the second and third parameter as `const char*`, so we will use `Memory.allocUtf8String`, to alloc a const char to memory, and return a pointer to it.
 Now, we will get the Update method. we can do that with the function `mono_class_get_method_from_name`. It will return a mono method object, then we will pass it to `mono_compile_method` to get it's address
 ```js
 var hMono = Process.getModuleByName("mono-2.0-bdwgc.dll") //Hook the mono module
@@ -110,7 +110,7 @@ function GetAssemblyCsharpCallback(MonoAssemblyObject, user_data){
     if(ImageName.readUtf8String() == "Assembly-CSharp"){
         console.log("AssemblyCsharp Found. Assembly object at :" + MonoAssemblyImageObject)
         AssemblyCsharpAssembly = MonoAssemblyImageObject
-    } 
+    }
 }
 
 mono_assembly_foreach(new NativeCallback(GetAssemblyCsharpCallback, 'void', ['pointer', 'pointer']), ptr(0))
@@ -179,7 +179,7 @@ Interceptor.attach(NewMovement_Update, {
 ```
 
 ## Function Calling
-Now for function calling, lets call the jump function.    
+Now for function calling, lets call the jump function.
 To get the address of it, we will use again `mono_class_get_method_from_name` and `mono_compile_method`. For this example, we will get rid of the ManipulateHealth method and instead, call the SuperCharge function.
 ![](/img/frida5.PNG)
 ```js
@@ -187,7 +187,7 @@ To get the address of it, we will use again `mono_class_get_method_from_name` an
 function SuperCharge(Player){
     var SuperChargeMethod = mono_class_get_method_from_name(NewMovementClass, Memory.allocUtf8String("SuperCharge"), 0)
     var SuperChargeAddress = mono_compile_method(SuperChargeMethod)
-    var SuperChargeFunction = new NativeFunction(SuperChargeAddress, 'void', ['pointer']) 
+    var SuperChargeFunction = new NativeFunction(SuperChargeAddress, 'void', ['pointer'])
     SuperChargeFunction(Player)
 }
 
@@ -196,7 +196,7 @@ Interceptor.attach(NewMovement_Update, {
   onEnter(args) {
     if(!LocalPlayer || LocalPlayer.toString() != args[0].toString()){
       console.log("LocalPlayer Found: " + args[0].toString())
-      LocalPlayer = args[0] 
+      LocalPlayer = args[0]
       SuperCharge(args[0])
     }
   }
