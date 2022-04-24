@@ -243,7 +243,6 @@ toc: true
     - [3 sum](#3-sum)
       - [++++++ `i + 2 sum(Hash+Set)`](#-i--2-sumhashset)
         - [++++++ `best: 2 pointer`](#-best-2-pointer)
-    - [11. Container With Most Water (Medium)](#11-container-with-most-water-medium)
 - [🔒🔒 Prefix Sum](#-prefix-sum)
   - [🔒 Prefix Sum - Array 数组](#-prefix-sum---array-数组)
     - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
@@ -260,6 +259,9 @@ toc: true
       - [++++++ `2 pointer, left - nums[i] - right`](#-2-pointer-left---numsi---right)
       - [++++++ `prefix sum. for i: sum[i] - nums[i] == sum[n-1]-sum[i]`](#-prefix-sum-for-i-sumi---numsi--sumn-1-sumi)
   - [747. Largest Number At Least Twice of Others (Easy)](#747-largest-number-at-least-twice-of-others-easy)
+- [🔒🔒 One-pointer 左右指针](#-one-pointer-左右指针)
+  - [one pointer](#one-pointer)
+    - [oreo count](#oreo-count)
 - [🔒🔒 Two-pointer 左右指针](#-two-pointer-左右指针)
   - [two pointer + BS - 二分查找 / 在有序数组中搜索指定元素](#two-pointer--bs---二分查找--在有序数组中搜索指定元素)
     - [153. Find Minimum in Rotated Sorted Array Medium](#153-find-minimum-in-rotated-sorted-array-medium)
@@ -10019,16 +10021,6 @@ class Solution {
 
 ##### ++++++ `best: 2 pointer`
 
-<<<<<<< HEAD
-```java
-// Runtime: 27 ms, faster than 74.56% of Java online submissions for 3Sum.
-// Memory Usage: 58.7 MB, less than 67.33% of Java online submissions for 3Sum.
-// time: O(nlogn + ^2) 
-// space: O(1)
-class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>(); 
-=======
 // time: O(n^2)
 // space: O(1)
 class Solution {
@@ -10038,21 +10030,9 @@ class Solution {
         List<List<Integer>> res = new ArrayList<>();
         int n = nums.length;
 
->>>>>>> 85dfb385d8a33dd9be7b4b5236876d8891ff932d
         Arrays.sort(nums);
 
         // if length is less than 3, return empty result set
-<<<<<<< HEAD
-        if (nums.length < 3 || nums[0] > 0 || nums[nums.length-1] < 0)  return res;
-        
-        for(int i=0;i<nums.length-2;i++){  
-            // current i is same as previous, it will create duplicate result
-            if(i > 0 && nums[i] == nums[i-1]) continue;
-            
-            int j=i+1, k=nums.length-1; 
-            while(j<k){ 
-                if (0-nums[i]<nums[j]+nums[k]) k--;
-=======
         if (n < 3 || nums[0] > 0) return res;
 
         for(int i=0;i<n-1;i++){
@@ -10060,7 +10040,6 @@ class Solution {
             while(j<k){
                 if(0-nums[i]==nums[j]+nums[k]) res.add(new ArrayList(nums[i]+nums[j]+nums[k]));
                 else if(0-nums[i]<nums[j]+nums[k]) k--;
->>>>>>> 85dfb385d8a33dd9be7b4b5236876d8891ff932d
                 else if(0-nums[i]>nums[j]+nums[k]) j++;
                 else {
                     while(j<k && nums[j]==nums[j+1]) j++;
@@ -10072,11 +10051,7 @@ class Solution {
             }
         }   
         return res;
-<<<<<<< HEAD
     } 
-=======
-    }
->>>>>>> 85dfb385d8a33dd9be7b4b5236876d8891ff932d
 }
 ```
 
