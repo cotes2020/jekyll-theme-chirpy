@@ -1,0 +1,21 @@
+<!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+{% assign wrap_elem = include.wrap | default: 'em' %}
+
+{% if site.prefer_datetime_locale == 'en' or lang == 'en' %}
+  {% assign df_strftime = '%b %e, %Y' %}
+  {% assign df_dayjs = 'll' %}
+{% else %}
+  {% assign df_strftime = '%F' %}
+  {% assign df_dayjs = 'YYYY-MM-DD' %}
+{% endif %}
+
+<{{ wrap_elem }} class="{% if include.class %}{{ include.class }}{% endif %}"
+    data-ts="{{ include.date | date: '%s' }}"
+    data-df="{{ df_dayjs }}"
+    {% if include.tooltip %}data-toggle="tooltip" data-placement="bottom"{% endif %}>
+  {{ include.date | date: df_strftime }}
+</{{ wrap_elem }}>

@@ -61,14 +61,14 @@ tail_includes:
       <!-- published date -->
       <span>
         {{ site.data.locales[lang].post.posted }}
-        {% include timeago.html date=page.date tooltip=true %}
+        {% include datetime.html date=page.date tooltip=true %}
       </span>
 
       <!-- lastmod date -->
       {% if page.last_modified_at %}
       <span>
         {{ site.data.locales[lang].post.updated }}
-        {% include timeago.html date=page.last_modified_at tooltip=true %}
+        {% include datetime.html date=page.last_modified_at tooltip=true %}
       </span>
       {% endif %}
 
