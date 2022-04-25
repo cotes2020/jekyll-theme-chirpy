@@ -441,7 +441,7 @@ img[data-src] {
       margin-right: 2px;
     }
 
-    &:hover {
+    &:not([class]):hover {
       @extend %link-hover;
     }
   }

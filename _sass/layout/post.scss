@@ -41,8 +41,7 @@ h1 + .post-meta {
 }
 
 img.preview-img {
-  margin-top: 3.75rem;
-  margin-bottom: 0;
+  margin: 0;
   border-radius: 6px;
 
   &.bg[data-loaded=true] {
