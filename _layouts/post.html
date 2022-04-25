@@ -35,46 +35,46 @@ tail_includes:
 
 <div class="post-meta text-muted">
 
-  <!-- author -->
   <div>
-    {% capture author_name %}{{ site.data.authors[page.author].name | default: site.social.name }}{% endcapture %}
-    {% assign author_link = nil %}
+    <!-- published date -->
+    <span>
+      {{ site.data.locales[lang].post.posted }}
+      {% include datetime.html date=page.date tooltip=true %}
+    </span>
 
-    {% if page.author %}
-      {% assign author_link = site.data.authors[page.author].url %}
-    {% elsif author_name == site.social.name %}
-      {% assign author_link = site.social.links[0] %}
+    <!-- lastmod date -->
+    {% if page.last_modified_at %}
+    <span>
+      {{ site.data.locales[lang].post.updated }}
+      {% include datetime.html date=page.last_modified_at tooltip=true %}
+    </span>
     {% endif %}
-
-    {{ site.data.locales[lang].post.written_by }}
-    <em>
-      {% if author_link %}
-        <a href="{{ author_link }}">{{ author_name }}</a>
-      {% else %}
-        {{ author_name }}
-      {% endif %}
-    </em>
   </div>
 
-  <div class="d-flex">
-    <div>
-      <!-- published date -->
-      <span>
-        {{ site.data.locales[lang].post.posted }}
-        {% include datetime.html date=page.date tooltip=true %}
-      </span>
+  <div class="d-flex justify-content-between">
+    <!-- author -->
+    <span>
+      {% capture author_name %}{{ site.data.authors[page.author].name | default: site.social.name }}{% endcapture %}
+      {% assign author_link = nil %}
 
-      <!-- lastmod date -->
-      {% if page.last_modified_at %}
-      <span>
-        {{ site.data.locales[lang].post.updated }}
-        {% include datetime.html date=page.last_modified_at tooltip=true %}
-      </span>
+      {% if page.author %}
+        {% assign author_link = site.data.authors[page.author].url %}
+      {% elsif author_name == site.social.name %}
+        {% assign author_link = site.social.links[0] %}
       {% endif %}
 
-      <!-- read time -->
-      {% include read-time.html content=content prompt=true %}
+      {{ site.data.locales[lang].post.written_by }}
 
+      <em>
+        {% if author_link %}
+          <a href="{{ author_link }}">{{ author_name }}</a>
+        {% else %}
+        {{ author_name }}
+        {% endif %}
+      </em>
+    </span>
+
+    <div>
       <!-- page views -->
       {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
       <span>
@@ -84,6 +84,9 @@ tail_includes:
         {{ site.data.locales[lang].post.pageview_measure }}
       </span>
       {% endif %}
+
+      <!-- read time -->
+      {% include read-time.html content=content prompt=true %}
     </div>
 
   </div> <!-- .d-flex -->
