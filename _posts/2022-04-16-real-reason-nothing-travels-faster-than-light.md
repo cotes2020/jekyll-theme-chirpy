@@ -63,7 +63,7 @@ if we define the metric tensor $$\eta_{\mu \nu}$$ in local coordinates as, [^3]
 
 $$\begin{align} \eta_{00} & = 1 \\ \eta_{ij} & = - g_{ij} \\ \eta_{i 0} & = \eta_{0 i} = 0 \end{align}$$
 
-[^3]: This is the particle physicist's sign convention for the metric, $$\left( +, -, -, - \right)$$. The opposite choice is the relativist's sign convention.
+[^3]: This is the 'mostly minus' or particle physicist's sign convention for the metric, $$\left( +, -, -, - \right)$$. The opposite choice is the 'mostly plus' or relativist's sign convention.
 
 where $$g_{ij}$$ is the spatial metric tensor for the chosen coordinate system. The last equation says that in local coordinates, space and time are orthogonal. This is true in all inertial frames (in local coordinates). Hence, the timelike and spacetimelike components of the metric are invariant, although the spacelike components $$-g_{ij}$$ transform like a rank-2 tensor.
 
