@@ -10043,7 +10043,7 @@ class Solution {
                 else if(0-nums[i]>nums[j]+nums[k]) j++;
                 else {
                     while(j<k && nums[j]==nums[j+1]) j++;
-                    while(j<k && nums[k]==nums[k-1]) k--; 
+                    while(j<k && nums[k]==nums[k-1]) k--;
                     res.add( Arrays.asList(nums[i], nums[j], nums[k]) );
                     j++;
                     k--;
@@ -10051,7 +10051,7 @@ class Solution {
             }
         }   
         return res;
-    } 
+    }
 }
 ```
 
@@ -10071,7 +10071,7 @@ Return the maximum amount of water a container can store.
 
 Notice that you may not slant the container.
 
- 
+
 Input: height = [1,8,6,2,5,4,8,3,7]
 Output: 49
 
@@ -10079,20 +10079,20 @@ Output: 49
 1. Brute Froce
    1. the total states is C(n, 2)= n * (n - 1) / 2, we have to enumerate all these states to get the max area.
 
- 
+
 ```java
 // Time Complexity: O(n^2)
 // Space Complexity: O(1)
 public int maxArea(int[] height) {  
-        int max = 0; 
+        int max = 0;
         for(int i=0;i<height.length-1; i++) {
-            int curxa = i, curya=height[i]; 
+            int curxa = i, curya=height[i];
             for(int j=i+1; j<height.length; j++) {
                 int curxb = j, curyb=height[j];
                 max = Math.max(max, (curxb-curxa) * Math.min(curya,curyb));   
             }
         }
-        return max; 
+        return max;
     }
 ```
 
