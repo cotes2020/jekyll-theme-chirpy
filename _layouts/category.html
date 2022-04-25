@@ -3,6 +3,8 @@ layout: page
 # The Category layout
 ---
 
+{% include lang.html %}
+
 <div id="page-category">
   <h1 class="pl-lg-2">
     <i class="far fa-folder-open fa-fw text-muted"></i>
@@ -15,9 +17,7 @@ layout: page
     <li class="d-flex justify-content-between pl-md-3 pr-md-3">
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       <span class="dash flex-grow-1"></span>
-      <span class="text-muted small" data-ts="{{ post.date | date: '%s' }}" data-df="ll">
-        {{ post.date | date: '%Y-%m-%d' }}
-      </span>
+      {% include datetime.html date=post.date wrap='span' class='text-muted small' %}
     </li>
     {% endfor %}
   </ul>

@@ -11,12 +11,31 @@ tail_includes:
 
 {% include lang.html %}
 
-{% if page.image.path %}
-  {% capture bg %}
-    {% unless page.image.no_bg %}{{ 'bg' }}{% endunless %}
-  {% endcapture %}
-  <img src="{{ page.image.path }}" class="preview-img {{ bg | strip }}"
-      alt="{{ page.image.alt | default: "Preview Image" }}"
+<h1 data-toc-skip>{{ page.title }}</h1>
+
+<div class="post-meta text-muted">
+    <!-- published date -->
+    <span>
+      {{ site.data.locales[lang].post.posted }}
+      {% include datetime.html date=page.date tooltip=true %}
+    </span>
+
+    <!-- lastmod date -->
+    {% if page.last_modified_at %}
+    <span>
+      {{ site.data.locales[lang].post.updated }}
+      {% include datetime.html date=page.last_modified_at tooltip=true %}
+    </span>
+    {% endif %}
+
+  {% if page.image.path %}
+    {% capture bg %}
+      {% unless page.image.no_bg %}{{ 'bg' }}{% endunless %}
+    {% endcapture %}
+
+    <div class="mt-3 mb-3">
+      <img src="{{ page.image.path }}" class="preview-img {{ bg | strip }}"
+        alt="{{ page.image.alt | default: "Preview Image" }}"
 
       {% if page.image.width %}
         width="{{ page.image.width }}"
@@ -29,52 +48,38 @@ tail_includes:
       {% elsif page.image.h %}
         height="{{ page.image.h }}"
       {% endif %}>
-{% endif %}
 
-<h1 data-toc-skip>{{ page.title }}</h1>
+      {% if page.image.alt %}
+        <figcaption class="pt-2 pb-2">{{ page.image.alt }}</figcaption>
+      {% endif %}
 
-<div class="post-meta text-muted">
+    </div>
+  {% endif %}
 
-  <!-- author -->
-  <div>
-    {% capture author_name %}{{ site.data.authors[page.author].name | default: site.social.name }}{% endcapture %}
-    {% assign author_link = nil %}
+  <div class="d-flex justify-content-between">
+    <!-- author -->
+    <span>
+      {% capture author_name %}{{ site.data.authors[page.author].name | default: site.social.name }}{% endcapture %}
+      {% assign author_link = nil %}
 
-    {% if page.author %}
-      {% assign author_link = site.data.authors[page.author].url %}
-    {% elsif author_name == site.social.name %}
-      {% assign author_link = site.social.links[0] %}
-    {% endif %}
+      {% if page.author %}
+        {% assign author_link = site.data.authors[page.author].url %}
+      {% elsif author_name == site.social.name %}
+        {% assign author_link = site.social.links[0] %}
+      {% endif %}
 
-    {{ site.data.locales[lang].post.written_by }}
-    <em>
-      {% if author_link %}
-        <a href="{{ author_link }}">{{ author_name }}</a>
-      {% else %}
+      {{ site.data.locales[lang].post.written_by }}
+
+      <em>
+        {% if author_link %}
+          <a href="{{ author_link }}">{{ author_name }}</a>
+        {% else %}
         {{ author_name }}
-      {% endif %}
-    </em>
-  </div>
+        {% endif %}
+      </em>
+    </span>
 
-  <div class="d-flex">
     <div>
-      <!-- published date -->
-      <span>
-        {{ site.data.locales[lang].post.posted }}
-        {% include timeago.html date=page.date tooltip=true %}
-      </span>
-
-      <!-- lastmod date -->
-      {% if page.last_modified_at %}
-      <span>
-        {{ site.data.locales[lang].post.updated }}
-        {% include timeago.html date=page.last_modified_at tooltip=true %}
-      </span>
-      {% endif %}
-
-      <!-- read time -->
-      {% include read-time.html content=content prompt=true %}
-
       <!-- page views -->
       {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
       <span>
@@ -84,6 +89,9 @@ tail_includes:
         {{ site.data.locales[lang].post.pageview_measure }}
       </span>
       {% endif %}
+
+      <!-- read time -->
+      {% include read-time.html content=content prompt=true %}
     </div>
 
   </div> <!-- .d-flex -->
