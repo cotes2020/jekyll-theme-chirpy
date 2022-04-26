@@ -21,7 +21,7 @@ Consider a system of particles with generalized coordinates $$\left\{ \pmb{q}_{i
 
 $$\pmb{q}_{i} \to \pmb{q}_{i} + \epsilon \: \pmb{Q}$$
 
-where $$\epsilon$$ is a very small constant and $$\pmb{Q}$$ is said to be the _generator_ of the above transformation. The variation in the generalized coordinates is,
+where $$\epsilon$$ is a very small constant and $$\pmb{Q}$$ is the functional derivative of $$\pmb{q}_i$$, i.e. $$\frac{\delta \pmb{q}_i}{\delta t}$$. The variation in the generalized coordinates is,
 
 $$\delta \pmb{q}_{i} = \epsilon \: \pmb{Q}$$
 
