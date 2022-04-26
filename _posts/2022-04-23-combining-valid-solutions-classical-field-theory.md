@@ -147,11 +147,19 @@ In the notation for the solutions $$\left\{ \phi_{\left( i \right)} \right\}$$, 
 
 $$\phi = \sum_i C_{\left( i \right)} \phi_{\left( i \right)} \: \vert \: \partial_\mu C_{\left( i \right)} = 0$$
 
-Therefore, in the abstract sense, each solution $$\phi_{\left( i \right)}$$ is, in fact, behaving like a basis vector, with the coefficients $$C_{\left( i \right)}$$ forming the components! However, the index $$i$$ here is abstract and not related to the coordinates $$x^\mu$$ as in objects like $$\partial_\mu = \frac{\partial}{\partial x^\mu}$$, so it is still better to retain the parentheses. However, we can apply the Einstein summation convention here as it need not be restricted to 'honest' indices:
+Therefore, in the abstract sense, each solution $$\phi_{\left( i \right)}$$ is, in fact, behaving like a basis vector, with the coefficients $$C_{\left( i \right)}$$ forming the components! However, the index $$i$$ here is abstract and not related to the coordinates $$x^\mu$$ as in objects like $$\partial_\mu = \frac{\partial}{\partial x^\mu}$$, so it is still better to retain the parentheses. Nevertheless, we can apply the Einstein summation convention here as it need not be restricted to 'honest' indices:
 
 $$\phi = C^{\left( i \right)} \phi_{\left( i \right)}$$
 
 where $$C^{\left( i \right)} = \delta^{\left( i \right)}_{\phantom{\left( i \right)} \left( j \right)} C_{\left( i \right)}$$.
+
+The application of the Einstein summation convention here is further justified by the fact that in the context of our derivations, upper and lower $$\left( i \right)$$ indices have repeatedly appeared along with the summation operation $$\sum \limits_{i}$$. For example,
+
+$$\partial_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = \frac{\partial \mathcal{L}}{\partial \phi} + \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
+
+Hence, the summation symbol becomes redundant and we can write:
+
+$$\partial_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = \frac{\partial \mathcal{L}}{\partial \phi} + \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
 
 ### Finishing note
 
