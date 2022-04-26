@@ -36,13 +36,13 @@ $$
 \delta L & = \sum_i \frac{\partial L}{\partial \pmb{q}_{i}} \cdot \delta \pmb{q}_{i} + \sum_i \frac{\partial L}{\partial \dot{\pmb{q}}_{i}} \cdot \delta \dot{\pmb{q}}_{i} \\
  & = \sum_i \dot{\pmb{p}}_{i} \cdot \delta \pmb{q}_{i} + \sum_i \pmb{p}_{i} \cdot \delta \dot{\pmb{q}}_{i} \\
  & = \frac{d}{dt} \left( \sum_i \pmb{p}_{i} \cdot \delta \pmb{q}_{i} \right) \\
- & = \frac{1}{\epsilon} \frac{d}{dt} \left( \sum_i \pmb{p}_{i} \cdot \frac{\delta \dot{\pmb{q}_i}}{\delta t} \right)
+ & = \epsilon \: \frac{d}{dt} \left( \sum_i \pmb{p}_{i} \cdot \frac{\delta \pmb{q}_i}{\delta t} \right)
 \end{align}
 $$
 
 If the system is symmetric under the said transformation, its action remains invariant, which implies the variation of its Lagrangian must be zero. It thus follows,
 
-$$\frac{d}{dt} \left( \sum_i \pmb{p}_{i} \cdot \frac{\delta \dot{\pmb{q}_i}}{\delta t} \right) = 0$$
+$$\frac{d}{dt} \left( \sum_i \pmb{p}_{i} \cdot \frac{\delta \pmb{q}_i}{\delta t} \right) = 0$$
 
 We have thus found a time-invariant quantity associated with the said symmetry. This is Noether's theorem.
 
@@ -50,13 +50,13 @@ We have thus found a time-invariant quantity associated with the said symmetry. 
 
 Suppose we translate a system linearly along a vector $$\pmb{X}$$. The infinitesimal transformation dictated by $$\pmb{X}$$ is then of the form,
 
-$$\pmb{x}_{i} \to \pmb{x}_{i} + \epsilon \frac{\delta \pmb{x}}{\delta t}$$
+$$\pmb{x}_{i} \to \pmb{x}_{i} + \epsilon \frac{\delta \pmb{x}_i}{\delta t}$$
 
-Here, we have switched from q's to x's as the Cartesian coordinate system naturally incorporates linear translation via direct addition of coordinates. Taking $$\frac{\delta \dot{\pmb{x}}}{\delta t} = 0$$, Noether's theorem gives us,
+Here, we have switched from q's to x's as the Cartesian coordinate system naturally incorporates linear translation via direct addition of coordinates. Taking $$\frac{d}{dt} \frac{\delta \pmb{x}_i}{\delta t} = 0$$, Noether's theorem gives us,
 
-$$\frac{d}{dt} \left( \sum_i \pmb{p}_{i} \right) \cdot \frac{\delta \pmb{x}}{\delta t} = 0$$
+$$\frac{d}{dt} \left( \sum_i \pmb{p}_{i} \right) \cdot \frac{\delta \pmb{x}_i}{\delta t} = 0$$
 
-If the above is true for all $$\frac{\delta \pmb{x}}{\delta t} \in \mathbb{A}^4 \left( \mathbb{R} \right)$$ where $$\mathbb{A}^n \left( \mathbb{R} \right)$$ is the affine 4-dimensional space over the reals, we must have,
+If the above is true for all $$\frac{\delta \pmb{x}_i}{\delta t} \in \mathbb{A}^4$$ where $$\mathbb{A}^4$$ is the affine 4-dimensional space, we must have,
 
 $$\frac{d}{dt} \sum_i \pmb{p}_{i} = \pmb{0}$$
 
