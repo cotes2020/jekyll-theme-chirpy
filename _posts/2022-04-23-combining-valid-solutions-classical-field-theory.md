@@ -151,7 +151,7 @@ Therefore, in the abstract sense, each solution $$\phi_{\left( i \right)}$$ is, 
 
 $$\phi = C^{\left( i \right)} \phi_{\left( i \right)}$$
 
-where $$C^{\left( i \right)} = \delta^{\left( i \right)}_{\phantom{\left( i \right)} \left( j \right)} C_{\left( i \right)}$$.
+where $$C^{\left( i \right)} = \delta^{\left( i \right) \left( j \right)} C_{\left( j \right)}$$.
 
 The application of the Einstein summation convention here is further justified by the fact that in the context of our derivations, upper and lower $$\left( i \right)$$ indices have repeatedly appeared along with the summation operation $$\sum \limits_{i}$$. For example,
 
