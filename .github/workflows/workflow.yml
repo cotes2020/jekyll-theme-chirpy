@@ -1,0 +1,14 @@
+on: 
+  release:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send repo to Dataverse 
+        uses: atrisovic/dataverse-uploader@master
+        with:
+          DATAVERSE_TOKEN: ${{secrets.DATAVERSE_TOKEN}}
+          DATAVERSE_SERVER: https://dataverse.harvard.edu/dataverse/siddhartha-bhattacharjee
+          DATAVERSE_DATASET_DOI: doi:10.7910/DVN/3EIYUZ
