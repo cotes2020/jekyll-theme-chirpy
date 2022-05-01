@@ -75,8 +75,6 @@ This project is powered by various facilities. Given below are links to their do
 
 2. Click the 'Suggest edits' link in the post's metadata.
 
-!['Suggest edits link'](https://raw.githubusercontent.com/Booodaness/tempus-spatium/main/assets/img/site/suggest_edits.png)
-
 #### General
 
 1. [Fork this repository](https://github.com/Booodaness/tempus-spatium/fork).
@@ -87,5 +85,16 @@ This project is powered by various facilities. Given below are links to their do
 
 4. Optionally, document the changes in the request's review page.
 
-## Citing
+## Copyright
 
+### Using post contents
+
+Except where otherwise noted, the blog posts on this site are licensed under the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+
+This means that any individual or group of individuals can reuse and modify the material as long as:
+
+1. The purpose is non-commercial in nature.
+
+2. Credit is given to the author by mentioning their name (Siddhartha Bhattacharjee) and linking to the original content.
+
+3. The new material must be distributed under the same license.
