@@ -94,9 +94,7 @@ This project is powered by various facilities. Given below are links to their do
 
 ## Copyright
 
-### Using post contents
-
-Except where otherwise noted, the blog posts on this site are licensed under the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+Except where otherwise noted, the blog posts on this site are [licensed](LICENCE.md) under the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
 
 This means that any individual or group of individuals can reuse and modify the material as long as:
 
@@ -105,3 +103,11 @@ This means that any individual or group of individuals can reuse and modify the 
 2. Credit is given to the author by mentioning their name (Siddhartha Bhattacharjee) and linking to the original content.
 
 3. The new material must be distributed under the same license.
+
+For publications, authors may cite this project as BibTeX:
+
+```
+@misc{https://doi.org/10.7910/dvn/3eiyuz, doi = {10.7910/DVN/3EIYUZ}, url = {https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/3EIYUZ}, author = {Bhattacharjee, Siddhartha}, title = {Tempus Spatium}, publisher = {Harvard Dataverse}, year = {2022}}
+```
+
+
