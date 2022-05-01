@@ -1,5 +1,10 @@
 # Tempus Spatium
 
+[![DOI](<https://img.shields.io/badge/DOI-10.7910/DVN/3EIYUZ-blue>)](https://www.doi.org/10.7910/DVN/3EIYUZ) 
+[![Copyright](https://img.shields.io/badge/copyright-CC%20BY--NC--SA%204.0-important)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![Automatic build](https://github.com/Booodaness/tempus-spatium/actions/workflows/pages-deploy.yml/badge.svg)](https://github.com/Booodaness/tempus-spatium/actions/workflows/pages-deploy.yml)
+[![Website](https://img.shields.io/website?down_color=critical&down_message=down&up_color=success&up_message=up&url=https%3A%2F%2Fbooodaness.github.io%2Ftempus-spatium%2F)](https://booodaness.github.io/tempus-spatium/)
+
 ## About
 
 A blog for physics, mathematics and philosophy, maintained by Siddhartha Bhattacharjee. Detailed description in the blog's [about](https://booodaness.github.io/tempus-spatium/about/) page.
