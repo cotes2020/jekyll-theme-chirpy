@@ -12,3 +12,5 @@ jobs:
           DATAVERSE_TOKEN: ${{secrets.DATAVERSE_TOKEN}}
           DATAVERSE_SERVER: https://dataverse.harvard.edu/dataverse/siddhartha-bhattacharjee
           DATAVERSE_DATASET_DOI: doi:10.7910/DVN/3EIYUZ
+          DELETE: True
+          PUBLISH: True
