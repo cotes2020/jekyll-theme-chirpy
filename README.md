@@ -75,6 +75,8 @@ This project is powered by various facilities. Given below are links to their do
 
 2. Click the 'Suggest edits' link in the post's metadata.
 
+3. Follow the steps below.
+
 #### General
 
 1. [Fork this repository](https://github.com/Booodaness/tempus-spatium/fork).
