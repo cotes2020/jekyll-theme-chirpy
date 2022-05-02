@@ -91,4 +91,33 @@ This project is powered by various facilities. Given below are links to their do
 
 4. Optionally, document the changes in the request's review page.
 
+## Using the work
+
+### Adaptation
+
+Except where otherwise noted, the blog posts on this site are [licensed](LICENCE.md) under [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Hence, any individual or group of individuals can reuse and modify the material as long as:
+
+1. The purpose is non-commercial.
+
+2. Credit is given to the author by mentioning their name (Siddhartha Bhattacharjee) and linking to the original content.
+
+3. The new material must be distributed under the same license.
+
+### Citation
+
+The blog posts can be cited as BibTeX in the form,
+
+```
+@article{bhattacharjee:2022,
+  title={<post_title>},
+  author={Siddhartha Bhattacharjee},
+  journal={Tempus Spatium},
+  url={https://booodaness.github.io/tempus-spatium/<post_name>},
+  year={2022},
+  publisher={GitHub Pages}}
+```
+
+where `post_title` is the title of the post and `post_name` is the part of its URL succeeding `https://booodaness.github.io`.
 
