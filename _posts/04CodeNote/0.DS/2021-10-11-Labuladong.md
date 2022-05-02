@@ -240,7 +240,7 @@ toc: true
       - [+++++ brute force 穷举](#-brute-force-穷举)
       - [+++++ two pointer](#-two-pointer)
       - [+++++ HashMap](#-hashmap)
-    - [3 sum](#3-sum)
+    - [15. 3 sum (Medium)](#15-3-sum-medium)
       - [++++++ `i + 2 sum(Hash+Set)`](#-i--2-sumhashset)
         - [++++++ `best: 2 pointer`](#-best-2-pointer)
 - [🔒🔒 Prefix Sum](#-prefix-sum)
@@ -286,6 +286,8 @@ toc: true
     - [438. Find All Anagrams in a String 找所有字母异位词](#438-find-all-anagrams-in-a-string-找所有字母异位词)
     - [3. Longest Substring Without Repeating Characters 最长无重复子串](#3-longest-substring-without-repeating-characters-最长无重复子串)
   - [🔒 two pointer - Array 数组](#-two-pointer---array-数组)
+    - [11. Container With Most Water (Medium)](#11-container-with-most-water-medium)
+      - [+++++ 2 pointer `l++, r--`](#-2-pointer-l-r--)
     - [121. Best Time to Buy and Sell Stock (Easy)](#121-best-time-to-buy-and-sell-stock-easy)
       - [+++++ brute force](#-brute-force)
       - [+++++ `2 pointer 求出最小前数，算数求最大`](#-2-pointer-求出最小前数算数求最大)
@@ -383,9 +385,33 @@ toc: true
       - [+++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop)
       - [+++++ `2 pointer, Stack.push / Stack.pop`](#-2-pointer-stackpush--stackpop-1)
     - [345. Reverse Vowels of a String (Easy)](#345-reverse-vowels-of-a-string-easy)
-  - [game](#game)
-  - [TicTacToe](#tictactoe)
+- [🔒🔒 bit operation](#-bit-operation)
+  - [🔒 bit operation - basic](#-bit-operation---basic)
+    - [**Bit Hack #1. Check if the integer is even or odd.** `x&1==0? even: odd`](#bit-hack-1-check-if-the-integer-is-even-or-odd-x10-even-odd)
+    - [**Bit Hack #2. Test if the n-th bit is set.** `x & (1<<n) ?`](#bit-hack-2-test-if-the-n-th-bit-is-set-x--1n-)
+    - [**Bit Hack #3. Set the n-th bit.** `x | (1<<n)`](#bit-hack-3-set-the-n-th-bit-x--1n)
+    - [**Bit Hack #4. Unset the n-th bit.** `x & ~(1<<n)`](#bit-hack-4-unset-the-n-th-bit-x--1n)
+    - [**Bit Hack #5. Toggle the n-th bit.** `x ^ (1<<n)`](#bit-hack-5-toggle-the-n-th-bit-x--1n)
+    - [**Bit Hack #6. Turn off the rightmost 1-bit.** `x & (x-1)`](#bit-hack-6-turn-off-the-rightmost-1-bit-x--x-1)
+    - [**Bit Hack #7. Isolate the rightmost 1-bit.** `x & (-x)`](#bit-hack-7-isolate-the-rightmost-1-bit-x---x)
+    - [**Bit Hack #8. Right propagate the rightmost 1-bit.** `x | (x-1)`](#bit-hack-8-right-propagate-the-rightmost-1-bit-x--x-1)
+    - [**Bit Hack #9. Isolate the rightmost 0-bit.** `~x & (x+1)`](#bit-hack-9-isolate-the-rightmost-0-bit-x--x1)
+    - [**Bit Hack #10. Turn on the rightmost 0-bit.** `x | (x+1)`](#bit-hack-10-turn-on-the-rightmost-0-bit-x--x1)
+    - [Bonus stuff](#bonus-stuff)
+  - [🔒 bit operation - Binary](#-bit-operation---binary)
+    - [338. Counting Bits (Easy)](#338-counting-bits-easy)
+      - [+++++ `check each, Integar.bitCount(n)`](#-check-each-integarbitcountn)
+      - [+++++ `DP + bit operation`](#-dp--bit-operation)
+    - [191. Number of 1 Bits (Easy)](#191-number-of-1-bits-easy)
+      - [+++++ **Brian Kernighan Algorithm**](#-brian-kernighan-algorithm)
+      - [+++++ `&检查每一个1，然后carry`](#-检查每一个1然后carry)
+      - [+++++ `use Integer`](#-use-integer)
+    - [371. Sum of Two Integers (Medium)](#371-sum-of-two-integers-medium)
+      - [+++++ `bit operation carry`](#-bit-operation-carry)
+      - [+++++ Recursive](#-recursive-2)
 - [system design](#system-design)
+- [game](#game)
+  - [TicTacToe](#tictactoe)
 
 ---
 
@@ -9972,7 +9998,25 @@ int[] twoSum(int[] nums, int target) {
 ---
 
 
-### 3 sum
+### 15. 3 sum (Medium)
+
+[3 sum](https://leetcode.com/problems/3sum/)
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+Notice that the solution set must not contain duplicate triplets.
+
+ 
+Example 1:
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+
+Example 2:
+Input: nums = []
+Output: []
+
+Example 3:
+Input: nums = [0]
+Output: []
 
 
 1. brute force
@@ -10021,15 +10065,14 @@ class Solution {
 
 ##### ++++++ `best: 2 pointer`
 
+```java
 // time: O(n^2)
 // space: O(1)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-
-
+        
         List<List<Integer>> res = new ArrayList<>();
         int n = nums.length;
-
         Arrays.sort(nums);
 
         // if length is less than 3, return empty result set
@@ -10060,41 +10103,6 @@ class Solution {
 ---
 
 
-### 11. Container With Most Water (Medium)
-
-[11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
-You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
-
-Find two lines that together with the x-axis form a container, such that the container contains the most water.
-
-Return the maximum amount of water a container can store.
-
-Notice that you may not slant the container.
-
- 
-Input: height = [1,8,6,2,5,4,8,3,7]
-Output: 49
-
-
-1. Brute Froce
-   1. the total states is C(n, 2)= n * (n - 1) / 2, we have to enumerate all these states to get the max area.
-
- 
-```java
-// Time Complexity: O(n^2)
-// Space Complexity: O(1)
-public int maxArea(int[] height) {  
-        int max = 0; 
-        for(int i=0;i<height.length-1; i++) {
-            int curxa = i, curya=height[i]; 
-            for(int j=i+1; j<height.length; j++) {
-                int curxb = j, curyb=height[j];
-                max = Math.max(max, (curxb-curxa) * Math.min(curya,curyb));   
-            }
-        }
-        return max; 
-    }
-```
 
 
 
@@ -11551,6 +11559,94 @@ Do not allocate extra space for another array. You must do this by modifying the
 
 ---
 
+### 11. Container With Most Water (Medium)
+
+[11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
+
+ 
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+
+
+1. Brute Froce
+   1. the total states is C(n, 2)= n * (n - 1) / 2, we have to enumerate all these states to get the max area.
+
+ 
+```java
+// Time Complexity: O(n^2)
+// Space Complexity: O(1)
+public int maxArea(int[] height) {  
+        int max = 0; 
+        for(int i=0;i<height.length-1; i++) {
+            int curxa = i, curya=height[i]; 
+            for(int j=i+1; j<height.length; j++) {
+                int curxb = j, curyb=height[j];
+                max = Math.max(max, (curxb-curxa) * Math.min(curya,curyb));   
+            }
+        }
+        return max; 
+    }
+```
+
+
+#### +++++ 2 pointer `l++, r--`
+
+```java
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+
+class Solution {
+
+// Runtime: 4 ms, faster than 70.57% of Java online submissions for Container With Most Water.
+// Memory Usage: 73.6 MB, less than 64.81% of Java online submissions for Container With Most Water.
+    public int maxArea(int[] height) { 
+        int result = 0;
+        for(int i=0,j=height.length-1 ; i<j; ){
+            // get current area
+            int area = Math.min(height[i],height[j])*(j-i);
+            result = Math.max(area,result);
+            //move the pointers
+            if(height[i]<height[j]) i++; 
+            else j--; 
+        }
+        return result;
+    } 
+
+// Runtime: 3 ms, faster than 93.93% of Java online submissions for Container With Most Water.
+// Memory Usage: 81.4 MB, less than 25.65% of Java online submissions for Container With Most Water.
+    public int maxArea(int[] height) { 
+        int max=0,ar=0;
+        int l=0, r=height.length-1;
+        while(l<r) {
+            if(height[r]<height[l]) {
+                ar=(r-l)*(height[r]);
+                r--;
+            }
+            else {
+                ar=(r-l)*(height[l]);
+                l++;
+            }
+            // max=Math.max(max,ar); 
+            if (ar > max) max = ar; // better
+        }
+        return max;
+    }
+}
+```
+
+
+
+
+
+---
 
 
 ### 121. Best Time to Buy and Sell Stock (Easy)
@@ -14834,11 +14930,842 @@ class Solution {
 }
 ```
 
+ 
+---
+
+
+
+# 🔒🔒 bit operation
+
+
+```java
+
+
+// 1         00000001    (same as 1<<0)
+// n<<1      00000010
+// n<<2      00000100
+// n<<3      00001000
+// n<<4      00010000
+// n<<5      00100000
+// n<<6      01000000
+// n<<7      10000000
+
+
+// ~1        11111110  (same as ~(1<<0))
+// ~(n<<1)   11111101
+// ~(n<<2)   11111011
+// ~(n<<3)   11110111
+// ~(n<<4)   11101111
+// ~(n<<5)   11011111
+// ~(n<<6)   10111111
+// ~(n<<7)   01111111
+
+```
+
+
 
 ---
 
 
-## game
+## 🔒 bit operation - basic
+ 
+
+---
+ 
+
+### **Bit Hack #1. Check if the integer is even or odd.** `x&1==0? even: odd`
+
+```java
+if ((x & 1) == 0) x is even 
+else x is odd 
+```
+
+- the binary representation of 'x', `bit _b0_ contributes to either 1 or 0`. 
+- By AND-ing 'x' with 1 it `eliminate all the other bits than _b0_`. 
+  - an integer is odd, only if the `least significant bit _b0_ is 1`. 
+  - If the result 0, `bit _b0_ was 0`, 'x' was even, 
+
+```java
+// take integer 43, which is odd.
+// the least significant bit _b0_ is 1 (in bold) 
+    00101011
+&   00000001   (note: 1 is the same as 00000001)
+    --------
+    00000001
+
+
+// look at -43. Just as a reminder, a quick way to find negative of a given number in two's complement representation is to invert all bits and add one.
+// the last bit is 1, and the integer is odd.
+
+
+// integer 98. In binary 98 is 1100010.
+// the bit _b0_ of original integer 98 was 0. Thus the given integer is even.
+    01100010
+&   00000001
+    --------
+    00000000
+
+
+// negative -98. It's 10011110.
+// bit _b0_ is 0, the result is 0, meaning -98 is even
+```
+
+
+---
+
+### **Bit Hack #2. Test if the n-th bit is set.** `x & (1<<n) ?`
+
+
+```java
+if (x & (1<<n)) n-th bit is set 
+else n-th bit is not set
+```
+
+
+- `(x & 1)` tests if the **first bit** is set.
+- to tests if n-th bit is set.
+  - shifting that first 1-bit n positions to the left and then doing the same AND operation
+  - it eliminates all bits but n-th.
+
+```java
+// when shift 1 several positions to the left:
+1         00000001    (same as 1<<0)
+1<<1      00000010
+1<<2      00000100
+1<<3      00001000
+1<<4      00010000
+1<<5      00100000
+1<<6      01000000
+1<<7      10000000
+
+// Now if we AND 'x' with 1 shifted n positions to the left we effectively eliminate all the bits but n-th bit in 'x'. 
+// If the result after AND-ing is 0, then that bit must have been 0, otherwise that bit was set.
+
+// examples.
+
+// Does 122 have 3rd bit set? 
+122 & (1<<3)
+// 122 is 01111010 in binary
+// (1<<3) is 00001000.
+    01111010
+&   00001000
+    --------
+    00001000
+// the result is not 0, so yes, 122 has the 3rd bit set.
+
+
+// What about -33? Does it have the 5th bit set?
+    11011111      (-33 in binary)
+&   00100000     (1<<5)
+    --------
+    00000000
+// Result is 0, so the 5th bit is not set.
+```
+
+---
+
+
+
+### **Bit Hack #3. Set the n-th bit.** `x | (1<<n)`
+
+```java
+y = x | (1<<n)
+
+
+// The result of OR-ing a variable with a value that has n-th bit set is turning that n-th bit on. 
+
+// OR-ing any value with 0 leaves the value the same; 
+// but OR-ing it with 1 changes it to 1 (if it wasn't already). 
+```
+
+
+```java
+// value 120, to turn on the 2nd bit.
+    01111000    (120 in binary)
+|   00000100    (1<<2)
+    --------
+    01111100
+
+// -120 and 6th bit?
+    10001000   (-120 in binary)
+|   01000000   (1<<6)
+    --------
+    11001000
+```
+
+---
+
+
+
+### **Bit Hack #4. Unset the n-th bit.** `x & ~(1<<n)`
+
+make nth bit 0.
+- helper: all 1 and nth bit 0
+
+```java
+y = x & ~(1<<n)
+
+// ~(1<<n)
+// turns on (0) all the bits except n-th. 
+// ~1        11111110  (same as ~(1<<0))
+// ~(1<<1)   11111101
+// ~(1<<2)   11111011
+// ~(1<<3)   11110111
+// ~(1<<4)   11101111
+// ~(1<<5)   11011111
+// ~(1<<6)   10111111
+// ~(1<<7)   01111111
+```
+
+
+
+```java
+// The effect of AND-ing variable 'x' with this quantity is eliminating n-th bit. 
+// It does not matter if the n-th bit was 0 or 1, AND-ing it with 0 sets it to 0.
+
+// unset 4th bit in 127:
+    01111111    (127 in binary)
+&   11101111    (~(1<<4))
+    --------
+    01101111
+```
+
+
+
+### **Bit Hack #5. Toggle the n-th bit.** `x ^ (1<<n)`
+
+nth
+- if 1 -> 0,
+- if 0 -> 1,
+
+rest as same &1
+
+
+
+
+```java
+y = x ^ (1<<n)
+
+// The result of XOR-ing something with something else is that if both bits are the same, the result is 0, otherwise it's 1. 
+// if n-th bit was 1, XOR-ing it with 1 changes it to 0; 
+// if it was 0, then XOR-ing with with 1 changes it to 1;
+
+// toggle 5th bit in value 01110101:
+    01110101
+^   00100000
+    --------
+    01010101
+
+// 5th bit originally 0
+    01010101
+^   00100000
+    --------
+    01110101
+```
+
+
+### **Bit Hack #6. Turn off the rightmost 1-bit.** `x & (x-1)`
+
+1010
+1001
+->
+1000
+
+
+
+```java
+y = x & (x-1)
+
+// For example,
+// given 001010**1**0 (the rightmost 1-bit in bold) it turns it into 00101000. 
+// given 00010000 it turns it into 0, as there is just a single 1-bit.
+
+    01010111    (x)
+&   01010110    (x-1)
+    --------
+    01010110
+
+    01011000    (x)
+&   01010111    (x-1)
+    --------
+    01010000
+
+    10000000    (x = -128)
+&   01111111    (x-1 = 127 (with overflow))
+    --------
+    00000000
+
+    11111111    (x = all bits 1)
+&   11111110    (x-1)
+    --------
+    11111110
+
+    00000000    (x = no rightmost 1-bits)
+&   11111111    (x-1)
+    --------
+    00000000
+```
+    
+---
+
+
+### **Bit Hack #7. Isolate the rightmost 1-bit.** `x & (-x)`
+
+1010
+
+1001 x-1
+0110 -(x-1)
+
+0010
+
+
+1010
+0101 ~x 
+0110 ~x+1
+
+0010
+
+
+```JAVA
+y = x & (-x)
+```
+ 
+
+```java
+// finds the rightmost 1-bit and sets all the other bits to 0. 
+// The end result has only that one rightmost 1-bit set. 
+// For example, 01010**1**00 (rightmost bit in bold) gets turned into 00000100.
+
+// 01010100
+// 01010011
+
+// 00000100
+
+// Here are some more examples:
+
+    10111100  (x)
+&   01000100  (-x)
+    --------
+    00000100
+
+    01110000  (x)
+&   10010000  (-x)
+    --------
+    00010000
+
+    00000001  (x)
+&   11111111  (-x)
+    --------
+    00000001
+
+    10000000  (x = -128)
+&   10000000  (-x = -128)
+    --------
+    10000000
+
+    11111111  (x = all bits one)
+&   00000001  (-x)
+    --------
+    00000001
+
+    00000000  (x = all bits 0, no rightmost 1-bit)
+&   00000000  (-x)
+    --------
+    00000000
+```
+
+
+---
+
+
+### **Bit Hack #8. Right propagate the rightmost 1-bit.** `x | (x-1)`
+
+01010000 
+01001111 x-1
+->
+01011111
+
+```java
+y = x | (x-1)
+
+// Given a value 01010000 
+// turns it into 01011111. 
+// All the 0-bits right to the rightmost 1-bit got turned into ones.
+
+    10111100  (x)
+|   10111011  (x-1)
+    --------
+    10111111
+
+    01110111  (x)
+|   01110110  (x-1)
+    --------
+    01110111
+
+    00000001  (x)
+|   00000000  (x-1)
+    --------
+    00000001
+
+    10000000  (x = -128)
+|   01111111  (x-1 = 127)
+    --------
+    11111111
+
+    11111111  (x = -1)
+|   11111110  (x-1 = -2)
+    --------
+    11111111
+
+    00000000  (x)
+|   11111111  (x-1)
+    --------
+    11111111
+``` 
+
+---
+
+
+
+### **Bit Hack #9. Isolate the rightmost 0-bit.** `~x & (x+1)`
+
+
+10101011
+10101100 x+1
+01010100 ~x 
+
+00000100
+
+```java
+y = ~x & (x+1)
+// finds the rightmost 0-bit, turns off all bits, and sets this bit to 1 in the result. 
+// number 10101**0**11, 
+// producing 00000100.
+
+More examples:
+
+    10111100  (x)
+    --------
+    01000011  (~x)
+&   10111101  (x+1)
+    --------
+    00000001
+
+    01110111  (x)
+    --------
+    10001000  (~x)
+&   01111000  (x+1)
+    --------
+    00001000
+
+    00000001  (x)
+    --------
+    11111110  (~x)
+&   00000010  (x+1)
+    --------
+    00000010
+
+    10000000  (x = -128)
+    --------
+    01111111  (~x)
+&   10000001  (x+1)
+    --------
+    00000001
+
+    11111111  (x = no rightmost 0-bit)
+    --------
+    00000000  (~x)
+&   00000000  (x+1)
+    --------
+    00000000
+
+    00000000  (x)
+    --------
+    11111111  (~x)
+&   00000001  (x+1)
+    --------
+    00000001
+```
+
+ 
+
+### **Bit Hack #10. Turn on the rightmost 0-bit.** `x | (x+1)`
+
+
+10100011 
+
+10100100 x+1 
+
+10100111
+
+
+
+
+
+```java
+y = x | (x+1)
+
+// This hack changes the rightmost 0-bit into 1. 
+// given an integer 10100011 it turns it into 10100111.
+
+// More examples:
+
+    10111100  (x)
+|   10111101  (x+1)
+    --------
+    10111101
+
+    01110111  (x)
+|   01111000  (x+1)
+    --------
+    01111111
+
+    00000001  (x)
+|   00000010  (x+1)
+    --------
+    00000011
+
+    10000000  (x = -128)
+|   10000001  (x+1)
+    --------
+    10000001
+
+    11111111  (x = no rightmost 0-bit)
+|   00000000  (x+1)
+    --------
+    11111111
+
+    00000000  (x)
+|   00000001  (x+1)
+    --------
+    00000001
+```
+
+
+
+### Bonus stuff
+
+utility functions to print binary values of **8 bit signed integers** in Perl, Python and C.
+
+1. Print binary representation in Perl:
+
+```Perl
+sub int_to_bin {
+  my $num = shift;
+  print unpack "B8", pack "c", $num;
+}
+
+#print it from command
+# perl -wle 'print unpack "B8", pack "c", shift' <integer>
+
+# For example:
+perl -wle 'print unpack &#34;B8&#34;, pack &#34;c&#34;, shift' 113
+01110001
+
+perl -wle 'print unpack &#34;B8&#34;, pack &#34;c&#34;, shift' -128
+10000000
+```
+
+2. Print binary number in Python:
+
+```py
+def int_to_bin(num, bits=8):
+    r = ''
+    while bits:
+        r = ('1' if num&1 else '0') + r
+        bits = bits - 1
+        num = num >> 1
+    print r
+```
+
+3. Print binary representation in C:
+
+```c
+void int_to_bin(int num) {
+  char str\[9\] = {0};
+  int i;
+  for (i=7; i>=0; i--) {
+    str\[i\] = (num&1)?'1':'0';
+    num >>= 1;
+  }
+  printf("%s\\n", str);
+}
+ ```
+ 
+
+
+---
+
+
+## 🔒 bit operation - Binary
+
+
+---
+
+
+
+
+
+
+### 338. Counting Bits (Easy)
+
+[338. Counting Bits]([Easy](https://leetcode.com/problems/counting-bits/))
+Given an integer n, return an array ans of length n + 1 such that for each i (0 <= i <= n), ans[i] is the number of 1's in the binary representation of i.
+
+Example 1:
+Input: n = 2
+Output: [0,1,1]
+Explanation:
+0 --> 0
+1 --> 1
+2 --> 10
+
+Example 2:
+Input: n = 5
+Output: [0,1,1,2,1,2]
+Explanation:
+0 --> 0
+1 --> 1
+2 --> 10
+3 --> 11
+4 --> 100
+5 --> 101
+
+
+
+#### +++++ `check each, Integar.bitCount(n)`
+
+```java
+// Runtime: 1 ms, faster than 99.96% of Java online submissions for Counting Bits.
+// Memory Usage: 46.6 MB, less than 78.95% of Java online submissions for Counting Bits.
+
+
+class Solution {
+    public int[] countBits(int n) {
+        int[] res = new int[n+1]; 
+        for(int i=0; i<n+1; i++){
+            res[i] = Integer.bitCount(i);
+        }
+        return res;
+    } 
+}
+```
+
+
+#### +++++ `DP + bit operation`
+
+Explaination.
+Take number X for example, 10011001.
+Divide it in 2 parts:
+1. the last digit ( 1 or 0, which is " i&1 ", equivalent to " i%2 " )
+2. the other digits ( the number of 1, which is " f[i >> 1] ", equivalent to " f[i/2] " )
+
+10011001
+= 1001100 + 1
+= res[i>>1] + 1?
+
+
+```java
+// Runtime: 3 ms, faster than 45.42% of Java online submissions for Counting Bits.
+// Memory Usage: 48.3 MB, less than 32.29% of Java online submissions for Counting Bits.
+public int[] countBits(int num) {
+    int[] f = new int[num + 1];
+    for (int i=1; i<=num; i++) f[i] = f[i >> 1] + (i & 1);
+    // for (int i=1; i<=num; i++) f[i] = f[i/2] + (i%2);
+    return f;
+}
+```
+
+
+---
+
+### 191. Number of 1 Bits (Easy)
+
+[191. Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/)
+Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
+
+Note:
+- Note that in some languages, such as Java, there is no unsigned integer type. In this case, the input will be given as a signed integer type. It should not affect your implementation, as the integer's internal binary representation is the same, whether it is signed or unsigned.
+- In Java, the compiler represents the signed integers using 2's complement notation. Therefore, in Example 3, the input represents the signed integer. -3.
+ 
+
+Example 1:
+Input: n = 00000000000000000000000000001011
+Output: 3
+Explanation: The input binary string 00000000000000000000000000001011 has a total of three '1' bits.
+
+Example 2:
+Input: n = 00000000000000000000000010000000
+Output: 1
+Explanation: The input binary string 00000000000000000000000010000000 has a total of one '1' bit.
+
+
+
+
+#### +++++ **Brian Kernighan Algorithm**
+
+- Using Brian Kernighan Algorithm, we will not check/compare or loop through all the 32 bits present but only count the set bits 
+- Suppose we have a number 10000000000000010000000000000001 (32 bits), now using this algorithm we will skip the 0's bit and directly jump to set bit(1's bit) and we don't have to go through each bit to count set bits i.e. the loop will be executed only for 3 times for the mentioned example and not for 32 times.
+
+
+
+
+#### +++++ `&检查每一个1，然后carry`
+
+
+
+```java
+// Time: O(m), where m is the number of set bits
+// Space: O(1), in-place
+
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int res=0;
+        if(n==0) return res;
+        while(n!=0) { 
+            res = res + (n&1);
+            // need to use bit shifting unsigned operation >>>
+            // >> depends on sign extension
+            n=n>>>1;
+        }
+        return res;
+    }
+}
+```
+
+
+
+
+#### +++++ `use Integer`
+
+```java
+// Runtime: 1 ms, faster than 78.81% of Java online submissions for Number of 1 Bits.
+// Memory Usage: 41.3 MB, less than 47.87% of Java online submissions for Number of 1 Bits.
+
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        return Integer.bitCount(n);
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+### 371. Sum of Two Integers (Medium)
+
+[371. Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/)
+Given two integers a and b, return the sum of the two integers without using the operators + and -.
+
+Example 1:
+Input: a = 1, b = 2
+Output: 3
+
+Example 2:
+Input: a = 2, b = 3
+Output: 5
+
+
+
+#### +++++ `bit operation carry`
+
+```java
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Sum of Two Integers.
+// Memory Usage: 41.5 MB, less than 13.39% of Java online submissions for Sum of Two Integers.
+class Solution {
+    public int getSum(int a, int b) {
+        int xor=a^b, carry=a&b;
+        while(carry != 0){
+            a = xor;
+            b = carry << 1;
+            xor = a^b;
+            carry = a&b;
+        }
+        return xor;
+    }
+}
+
+
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Sum of Two Integers.
+// Memory Usage: 40.9 MB, less than 41.89% of Java online submissions for Sum of Two Integers.
+class Solution {
+    public int getSum(int a, int b) {
+        int xor;
+        while(b != 0){
+            xor=a^b; 
+            b=(a&b)<<1;
+            a=xor;
+        }
+        return a;
+    }
+}
+```
+
+
+#### +++++ Recursive
+
+```java
+// T/S: O(1)/O(1)
+// Runtime: 0 ms, faster than 100.00% of Java online submissions for Sum of Two Integers.
+// Memory Usage: 38.8 MB, less than 92.07% of Java online submissions for Sum of Two Integers.
+class Solution {
+    public int getSum(int a, int b) {
+        if(b == 0) return a;
+        return getSum(a^b, (a&b)<<1); 
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+.
+
+
+---
+
+# system design
+
+https://github.com/donnemartin/system-design-primer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
+
+---
+
+
+# game
 
 
 ## TicTacToe
@@ -14849,14 +15776,6 @@ class Solution {
 
 
 
-
-
-
----
-
-# system design
-
-https://github.com/donnemartin/system-design-primer
 
 
 

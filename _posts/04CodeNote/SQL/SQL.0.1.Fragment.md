@@ -1408,27 +1408,27 @@ UNIQUE	| 搜索指定表中的每一行，确保唯一性（无重复）。
 
 实例
 
-```
-假设 COMPANY 表有以下记录：
+```sql
+-- 假设 COMPANY 表有以下记录：
+-- ID          NAME        AGE         ADDRESS     SALARY
+-- ----------  ----------  ----------  ----------  ----------
+-- 1           Paul        32          California  20000.0
+-- 2           Allen       25          Texas       15000.0
+-- 3           Teddy       23          Norway      20000.0
+-- 4           Mark        25          Rich-Mond   65000.0
+-- 5           David       27          Texas       85000.0
+-- 6           Kim         22          South-Hall  45000.0
+-- 7           James       24          Houston     10000.0
 
-ID          NAME        AGE         ADDRESS     SALARY
-----------  ----------  ----------  ----------  ----------
-1           Paul        32          California  20000.0
-2           Allen       25          Texas       15000.0
-3           Teddy       23          Norway      20000.0
-4           Mark        25          Rich-Mond   65000.0
-5           David       27          Texas       85000.0
-6           Kim         22          South-Hall  45000.0
-7           James       24          Houston     10000.0
-
-
-
-sqlite> SELECT * FROM COMPANY WHERE AGE >= 25 AND SALARY >= 65000;
-// SELECT 语句列出了 AGE 大于等于 25 且工资大于等于 65000.00 的所有记录：
-ID          NAME        AGE         ADDRESS     SALARY
-----------  ----------  ----------  ----------  ----------
-4           Mark        25          Rich-Mond   65000.0
-5           David       27          Texas       85000.0
+sqlite> 
+SELECT * FROM COMPANY
+ WHERE AGE >= 25 
+ AND SALARY >= 65000;
+-- // SELECT 语句列出了 AGE 大于等于 25 且工资大于等于 65000.00 的所有记录：
+-- ID          NAME        AGE         ADDRESS     SALARY
+-- ----------  ----------  ----------  ----------  ----------
+-- 4           Mark        25          Rich-Mond   65000.0
+-- 5           David       27          Texas       85000.0
 
 sqlite> SELECT * FROM COMPANY WHERE AGE >= 25 OR SALARY >= 65000;
 // SELECT 语句列出了 AGE 大于等于 25 或工资大于等于 65000.00 的所有记录：
@@ -1516,7 +1516,10 @@ ID          NAME        AGE         ADDRESS     SALARY
 1           Paul        32          California  20000.0
 ```
 
+---
+
 ### SQLite 位运算符
+
 位运算符作用于位，并逐位执行操作。真值表 `&`, `| `, `~` ：
 
 ```
