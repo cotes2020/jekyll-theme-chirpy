@@ -10005,7 +10005,7 @@ Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]
 
 Notice that the solution set must not contain duplicate triplets.
 
- 
+
 Example 1:
 Input: nums = [-1,0,1,2,-1,-4]
 Output: [[-1,-1,2],[-1,0,1]]
@@ -10070,7 +10070,7 @@ class Solution {
 // space: O(1)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        
+
         List<List<Integer>> res = new ArrayList<>();
         int n = nums.length;
         Arrays.sort(nums);
@@ -10086,7 +10086,7 @@ class Solution {
                 else if(0-nums[i]>nums[j]+nums[k]) j++;
                 else {
                     while(j<k && nums[j]==nums[j+1]) j++;
-                    while(j<k && nums[k]==nums[k-1]) k--; 
+                    while(j<k && nums[k]==nums[k-1]) k--;
                     res.add( Arrays.asList(nums[i], nums[j], nums[k]) );
                     j++;
                     k--;
@@ -10094,7 +10094,7 @@ class Solution {
             }
         }   
         return res;
-    } 
+    }
 }
 ```
 
@@ -11570,7 +11570,7 @@ Return the maximum amount of water a container can store.
 
 Notice that you may not slant the container.
 
- 
+
 Input: height = [1,8,6,2,5,4,8,3,7]
 Output: 49
 
@@ -11578,20 +11578,20 @@ Output: 49
 1. Brute Froce
    1. the total states is C(n, 2)= n * (n - 1) / 2, we have to enumerate all these states to get the max area.
 
- 
+
 ```java
 // Time Complexity: O(n^2)
 // Space Complexity: O(1)
 public int maxArea(int[] height) {  
-        int max = 0; 
+        int max = 0;
         for(int i=0;i<height.length-1; i++) {
-            int curxa = i, curya=height[i]; 
+            int curxa = i, curya=height[i];
             for(int j=i+1; j<height.length; j++) {
                 int curxb = j, curyb=height[j];
                 max = Math.max(max, (curxb-curxa) * Math.min(curya,curyb));   
             }
         }
-        return max; 
+        return max;
     }
 ```
 
@@ -11607,22 +11607,22 @@ class Solution {
 
 // Runtime: 4 ms, faster than 70.57% of Java online submissions for Container With Most Water.
 // Memory Usage: 73.6 MB, less than 64.81% of Java online submissions for Container With Most Water.
-    public int maxArea(int[] height) { 
+    public int maxArea(int[] height) {
         int result = 0;
         for(int i=0,j=height.length-1 ; i<j; ){
             // get current area
             int area = Math.min(height[i],height[j])*(j-i);
             result = Math.max(area,result);
             //move the pointers
-            if(height[i]<height[j]) i++; 
-            else j--; 
+            if(height[i]<height[j]) i++;
+            else j--;
         }
         return result;
-    } 
+    }
 
 // Runtime: 3 ms, faster than 93.93% of Java online submissions for Container With Most Water.
 // Memory Usage: 81.4 MB, less than 25.65% of Java online submissions for Container With Most Water.
-    public int maxArea(int[] height) { 
+    public int maxArea(int[] height) {
         int max=0,ar=0;
         int l=0, r=height.length-1;
         while(l<r) {
@@ -11634,7 +11634,7 @@ class Solution {
                 ar=(r-l)*(height[l]);
                 l++;
             }
-            // max=Math.max(max,ar); 
+            // max=Math.max(max,ar);
             if (ar > max) max = ar; // better
         }
         return max;
@@ -14930,7 +14930,7 @@ class Solution {
 }
 ```
 
- 
+
 ---
 
 
@@ -14968,26 +14968,26 @@ class Solution {
 
 
 ## 🔒 bit operation - basic
- 
+
 
 ---
- 
+
 
 ### **Bit Hack #1. Check if the integer is even or odd.** `x&1==0? even: odd`
 
 ```java
-if ((x & 1) == 0) x is even 
-else x is odd 
+if ((x & 1) == 0) x is even
+else x is odd
 ```
 
-- the binary representation of 'x', `bit _b0_ contributes to either 1 or 0`. 
-- By AND-ing 'x' with 1 it `eliminate all the other bits than _b0_`. 
-  - an integer is odd, only if the `least significant bit _b0_ is 1`. 
-  - If the result 0, `bit _b0_ was 0`, 'x' was even, 
+- the binary representation of 'x', `bit _b0_ contributes to either 1 or 0`.
+- By AND-ing 'x' with 1 it `eliminate all the other bits than _b0_`.
+  - an integer is odd, only if the `least significant bit _b0_ is 1`.
+  - If the result 0, `bit _b0_ was 0`, 'x' was even,
 
 ```java
 // take integer 43, which is odd.
-// the least significant bit _b0_ is 1 (in bold) 
+// the least significant bit _b0_ is 1 (in bold)
     00101011
 &   00000001   (note: 1 is the same as 00000001)
     --------
@@ -15017,7 +15017,7 @@ else x is odd
 
 
 ```java
-if (x & (1<<n)) n-th bit is set 
+if (x & (1<<n)) n-th bit is set
 else n-th bit is not set
 ```
 
@@ -15038,12 +15038,12 @@ else n-th bit is not set
 1<<6      01000000
 1<<7      10000000
 
-// Now if we AND 'x' with 1 shifted n positions to the left we effectively eliminate all the bits but n-th bit in 'x'. 
+// Now if we AND 'x' with 1 shifted n positions to the left we effectively eliminate all the bits but n-th bit in 'x'.
 // If the result after AND-ing is 0, then that bit must have been 0, otherwise that bit was set.
 
 // examples.
 
-// Does 122 have 3rd bit set? 
+// Does 122 have 3rd bit set?
 122 & (1<<3)
 // 122 is 01111010 in binary
 // (1<<3) is 00001000.
@@ -15072,10 +15072,10 @@ else n-th bit is not set
 y = x | (1<<n)
 
 
-// The result of OR-ing a variable with a value that has n-th bit set is turning that n-th bit on. 
+// The result of OR-ing a variable with a value that has n-th bit set is turning that n-th bit on.
 
-// OR-ing any value with 0 leaves the value the same; 
-// but OR-ing it with 1 changes it to 1 (if it wasn't already). 
+// OR-ing any value with 0 leaves the value the same;
+// but OR-ing it with 1 changes it to 1 (if it wasn't already).
 ```
 
 
@@ -15106,7 +15106,7 @@ make nth bit 0.
 y = x & ~(1<<n)
 
 // ~(1<<n)
-// turns on (0) all the bits except n-th. 
+// turns on (0) all the bits except n-th.
 // ~1        11111110  (same as ~(1<<0))
 // ~(1<<1)   11111101
 // ~(1<<2)   11111011
@@ -15120,7 +15120,7 @@ y = x & ~(1<<n)
 
 
 ```java
-// The effect of AND-ing variable 'x' with this quantity is eliminating n-th bit. 
+// The effect of AND-ing variable 'x' with this quantity is eliminating n-th bit.
 // It does not matter if the n-th bit was 0 or 1, AND-ing it with 0 sets it to 0.
 
 // unset 4th bit in 127:
@@ -15146,8 +15146,8 @@ rest as same &1
 ```java
 y = x ^ (1<<n)
 
-// The result of XOR-ing something with something else is that if both bits are the same, the result is 0, otherwise it's 1. 
-// if n-th bit was 1, XOR-ing it with 1 changes it to 0; 
+// The result of XOR-ing something with something else is that if both bits are the same, the result is 0, otherwise it's 1.
+// if n-th bit was 1, XOR-ing it with 1 changes it to 0;
 // if it was 0, then XOR-ing with with 1 changes it to 1;
 
 // toggle 5th bit in value 01110101:
@@ -15177,7 +15177,7 @@ y = x ^ (1<<n)
 y = x & (x-1)
 
 // For example,
-// given 001010**1**0 (the rightmost 1-bit in bold) it turns it into 00101000. 
+// given 001010**1**0 (the rightmost 1-bit in bold) it turns it into 00101000.
 // given 00010000 it turns it into 0, as there is just a single 1-bit.
 
     01010111    (x)
@@ -15205,7 +15205,7 @@ y = x & (x-1)
     --------
     00000000
 ```
-    
+
 ---
 
 
@@ -15220,7 +15220,7 @@ y = x & (x-1)
 
 
 1010
-0101 ~x 
+0101 ~x
 0110 ~x+1
 
 0010
@@ -15229,11 +15229,11 @@ y = x & (x-1)
 ```JAVA
 y = x & (-x)
 ```
- 
+
 
 ```java
-// finds the rightmost 1-bit and sets all the other bits to 0. 
-// The end result has only that one rightmost 1-bit set. 
+// finds the rightmost 1-bit and sets all the other bits to 0.
+// The end result has only that one rightmost 1-bit set.
 // For example, 01010**1**00 (rightmost bit in bold) gets turned into 00000100.
 
 // 01010100
@@ -15280,7 +15280,7 @@ y = x & (-x)
 
 ### **Bit Hack #8. Right propagate the rightmost 1-bit.** `x | (x-1)`
 
-01010000 
+01010000
 01001111 x-1
 ->
 01011111
@@ -15288,8 +15288,8 @@ y = x & (-x)
 ```java
 y = x | (x-1)
 
-// Given a value 01010000 
-// turns it into 01011111. 
+// Given a value 01010000
+// turns it into 01011111.
 // All the 0-bits right to the rightmost 1-bit got turned into ones.
 
     10111100  (x)
@@ -15321,7 +15321,7 @@ y = x | (x-1)
 |   11111111  (x-1)
     --------
     11111111
-``` 
+```
 
 ---
 
@@ -15332,14 +15332,14 @@ y = x | (x-1)
 
 10101011
 10101100 x+1
-01010100 ~x 
+01010100 ~x
 
 00000100
 
 ```java
 y = ~x & (x+1)
-// finds the rightmost 0-bit, turns off all bits, and sets this bit to 1 in the result. 
-// number 10101**0**11, 
+// finds the rightmost 0-bit, turns off all bits, and sets this bit to 1 in the result.
+// number 10101**0**11,
 // producing 00000100.
 
 More examples:
@@ -15387,14 +15387,14 @@ More examples:
     00000001
 ```
 
- 
+
 
 ### **Bit Hack #10. Turn on the rightmost 0-bit.** `x | (x+1)`
 
 
-10100011 
+10100011
 
-10100100 x+1 
+10100100 x+1
 
 10100111
 
@@ -15405,7 +15405,7 @@ More examples:
 ```java
 y = x | (x+1)
 
-// This hack changes the rightmost 0-bit into 1. 
+// This hack changes the rightmost 0-bit into 1.
 // given an integer 10100011 it turns it into 10100111.
 
 // More examples:
@@ -15491,7 +15491,7 @@ void int_to_bin(int num) {
   printf("%s\\n", str);
 }
  ```
- 
+
 
 
 ---
@@ -15542,12 +15542,12 @@ Explanation:
 
 class Solution {
     public int[] countBits(int n) {
-        int[] res = new int[n+1]; 
+        int[] res = new int[n+1];
         for(int i=0; i<n+1; i++){
             res[i] = Integer.bitCount(i);
         }
         return res;
-    } 
+    }
 }
 ```
 
@@ -15587,7 +15587,7 @@ Write a function that takes an unsigned integer and returns the number of '1' bi
 Note:
 - Note that in some languages, such as Java, there is no unsigned integer type. In this case, the input will be given as a signed integer type. It should not affect your implementation, as the integer's internal binary representation is the same, whether it is signed or unsigned.
 - In Java, the compiler represents the signed integers using 2's complement notation. Therefore, in Example 3, the input represents the signed integer. -3.
- 
+
 
 Example 1:
 Input: n = 00000000000000000000000000001011
@@ -15604,7 +15604,7 @@ Explanation: The input binary string 00000000000000000000000010000000 has a tota
 
 #### +++++ **Brian Kernighan Algorithm**
 
-- Using Brian Kernighan Algorithm, we will not check/compare or loop through all the 32 bits present but only count the set bits 
+- Using Brian Kernighan Algorithm, we will not check/compare or loop through all the 32 bits present but only count the set bits
 - Suppose we have a number 10000000000000010000000000000001 (32 bits), now using this algorithm we will skip the 0's bit and directly jump to set bit(1's bit) and we don't have to go through each bit to count set bits i.e. the loop will be executed only for 3 times for the mentioned example and not for 32 times.
 
 
@@ -15623,7 +15623,7 @@ public class Solution {
     public int hammingWeight(int n) {
         int res=0;
         if(n==0) return res;
-        while(n!=0) { 
+        while(n!=0) {
             res = res + (n&1);
             // need to use bit shifting unsigned operation >>>
             // >> depends on sign extension
@@ -15704,7 +15704,7 @@ class Solution {
     public int getSum(int a, int b) {
         int xor;
         while(b != 0){
-            xor=a^b; 
+            xor=a^b;
             b=(a&b)<<1;
             a=xor;
         }
@@ -15723,7 +15723,7 @@ class Solution {
 class Solution {
     public int getSum(int a, int b) {
         if(b == 0) return a;
-        return getSum(a^b, (a&b)<<1); 
+        return getSum(a^b, (a&b)<<1);
     }
 }
 ```
