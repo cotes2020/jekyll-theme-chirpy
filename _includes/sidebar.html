@@ -5,7 +5,7 @@
 <div id="sidebar" class="d-flex flex-column align-items-end">
   <div class="profile-wrapper text-center">
     <div id="avatar">
-      <a href="{{ '/' | relative_url }}" class="mx-auto">
+      <a href="{{ '/' | relative_url }}" alt="avatar" class="mx-auto">
         {% if site.avatar != empty and site.avatar %}
           {% capture avatar_url %}
             {% if site.avatar contains '://' %}
@@ -16,7 +16,7 @@
               {{ site.avatar | relative_url }}
             {% endif %}
           {% endcapture %}
-          <img src="{{ avatar_url | strip }}" alt="avatar" onerror="this.style.display='none'">
+          <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
         {% endif %}
       </a>
     </div>
@@ -65,12 +65,17 @@
 
     {% for entry in site.data.contact %}
       {% capture url %}
-        {%- if entry.type == 'github' -%}
-          https://github.com/{{ site.github.username }}
+        {%- if entry.type == 'github1' -%}
+          https://github.com/{{ site.github1.username }}
+        {%- elsif entry.type == 'github2' -%}
+          https://github.com/{{ site.github2.username }}
         {%- elsif entry.type == 'twitter' -%}
           https://twitter.com/{{ site.twitter.username }}
-        {%- elsif entry.type == 'email' -%}
-          {% assign email = site.social.email | split: '@' %}
+        {%- elsif entry.type == 'email1' -%}
+          {% assign email = site.email1 | split: '@' %}
+          javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
+        {%- elsif entry.type == 'email2' -%}
+          {% assign email = site.email2 | split: '@' %}
           javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
         {%- elsif entry.type == 'rss' -%}
           {{ "/feed.xml" | relative_url }}
@@ -82,7 +87,13 @@
       {% if url %}
       <a href="{{ url }}" aria-label="{{ entry.type }}"
         {% unless entry.noblank %}target="_blank" rel="noopener"{% endunless %}>
-        <i class="{{ entry.icon }}"></i>
+        {%- if entry.type == 'github1' -%}
+          <i class="{{ entry.icon }}" style="color: #cdb699"></i>
+        {%- elsif entry.type == 'email1' -%}
+          <i class="{{ entry.icon }}" style="color: #cdb699"></i>
+        {%- else -%}
+          <i class="{{ entry.icon }}" style="color: #e3b3c6"></i>
+        {%- endif -%}
       </a>
       {% endif %}
 

@@ -1,19 +1,19 @@
 #  The contact options.
 
 -
-  type: github
+  type: github1
   icon: 'fab fa-github'
 -
-  type: twitter
-  icon: 'fab fa-twitter'
+  type: email1
+  icon: 'fas fa-envelope'
+  noblank: true
 -
-  type: email
+  type: github2
+  icon: 'fab fa-github'
+-
+  type: email2
   icon: 'fas fa-envelope'
   noblank: true            # open link in current tab
--
-  type: rss
-  icon: 'fas fa-rss'
-  noblank: true
 
 # Uncomment and complete the url below to enable more contact options
 # -
