@@ -41,7 +41,8 @@ h1 + .post-meta {
 }
 
 img.preview-img {
-  margin: 0;
+  margin-top: 3.75rem;
+  margin-bottom: 0;
   border-radius: 6px;
 
   &.bg[data-loaded=true] {
@@ -172,8 +173,6 @@ nav[data-toggle=toc] {
 
   em {
     @extend %normal-font-style;
-
-    color: var(--relate-post-date);
   }
 
   .card {
@@ -193,6 +192,10 @@ nav[data-toggle=toc] {
       transform: translate3d(0, -3px, 0);
       box-shadow: 0 10px 15px -4px rgba(0, 0, 0, 0.15);
     }
+  }
+
+  .timeago {
+    color: var(--relate-post-date);
   }
 
   p {

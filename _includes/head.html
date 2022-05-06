@@ -23,30 +23,7 @@
 
   {% endif %}
 
-  {% capture seo_tags %}
-    {% seo title=false %}
-  {% endcapture %}
-
-  {% if site.img_cdn and seo_tags contains 'og:image' %}
-    {% assign properties = 'og:image,twitter:image' | split: ',' %}
-
-    {% for prop in properties %}
-      {% if site.img_cdn contains '//' %}
-        <!-- `site.img_cdn` is a cross-origin URL -->
-        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{% endcapture %}
-        {% capture replacement %}<meta property="{{ prop }}" content="{{ site.img_cdn }}{% endcapture %}
-      {% else %}
-        <!-- `site.img_cdn` is a local file path -->
-        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{{ site.baseurl }}{% endcapture %}
-        {% assign replacement = target | append: site.img_cdn %}
-      {% endif %}
-
-      {% assign seo_tags = seo_tags | replace: target, replacement %}
-
-    {% endfor %}
-  {% endif %}
-
-  {{ seo_tags }}
+  {% seo title=false %}
 
   <title>
   {%- unless page.layout == "home" -%}
@@ -109,8 +86,16 @@
   <!-- JavaScript -->
 
   <script src="{{ site.data.assets[origin].jquery.js }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+      }
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-  {% unless site.theme_mode %}
-    {% include mode-toggle.html %}
-  {% endunless %}
 </head>

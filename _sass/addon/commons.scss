@@ -93,6 +93,7 @@ img {
   height: auto;
 }
 
+
 blockquote {
   border-left: 5px solid var(--blockquote-border-color);
   padding-left: 1rem;
@@ -124,11 +125,6 @@ blockquote {
   @include prompt("warning", "\f06a");
 
   @include prompt("danger", "\f071");
-}
-
-mjx-container {
-  overflow-x: auto;
-  overflow-y: hidden;
 }
 
 kbd {
@@ -441,7 +437,7 @@ img[data-src] {
       margin-right: 2px;
     }
 
-    &:not([class]):hover {
+    &:hover {
       @extend %link-hover;
     }
   }
@@ -648,7 +644,7 @@ $sidebar-display: "sidebar-display";
   overflow-y: auto;
   width: $sidebar-width;
   z-index: 99;
-  background: var(--sidebar-bg);
+  background-image: url('https://images.unsplash.com/photo-1633181882188-4ed247c9f864?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=868&q=80');
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
@@ -689,7 +685,6 @@ $sidebar-display: "sidebar-display";
 
     img {
       width: 100%;
-      height: 100%;
       -webkit-transition: transform 0.5s;
       -moz-transition: transform 0.5s;
       transition: transform 0.5s;
@@ -710,7 +705,7 @@ $sidebar-display: "sidebar-display";
       font-weight: 900;
       font-size: 1.5rem;
       letter-spacing: 0.5px;
-      color: rgba(134, 133, 133, 99%);
+      color: #eee;
     }
   }
 
