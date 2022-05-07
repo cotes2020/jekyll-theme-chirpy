@@ -9,7 +9,6 @@ tags: []
 ---
 
 ## Mermaid로 flow chart 넣기
----
 
 ### Mermaid?
 ---
@@ -26,10 +25,10 @@ graph LR
 이런식으로 직관적으로 작성된 스크립트를 다이어그램으로 변환시켜준다.
 
 <div class="mermaid">
-  graph LR
-  A(랜딩페이지)-->B[자동로그인 확인]
-  B-->C(로그인 페이지)
-  B-->D(메인페이지)
+  graph LR;
+  A(랜딩페이지)-->B[자동로그인 확인];
+  B-->C(로그인 페이지);
+  B-->D(메인페이지);
 </div>
 
 &nbsp;
@@ -56,7 +55,10 @@ jekyll에서 Mermaid를 렌더링해야 하는 방법으로 검색하면 다음�
 
 그래서 직접 Mermaid를 html 파일에 임베딩하기로 하였다.
 
-#### Embedding MermaidPermalink
+&nbsp;
+
+**Embedding MermaidPermalink**
+
 Mermaid-js에 들어가보면 해당 js file의 CDN이 존재한다.
 각 html 문서 앞에 아래 항목을 공통적으로 집어 넣어준다. 이 블로그에서는 _includes\head.html에 넣어주었다. 그냥 html 문서에 공통으로 들어가는 부분에 추가해주면 된다.
 
@@ -69,15 +71,17 @@ Mermaid-js에 들어가보면 해당 js file의 CDN이 존재한다.
 
 ```markdown
 <div class="mermaid">
-  graph LR
-  A(랜딩페이지)-->B[자동로그인 확인]
-  B-->C(로그인 페이지)
-  B-->D(메인페이지)
+  graph LR;
+  A(랜딩페이지)-->B[자동로그인 확인];
+  B-->C(로그인 페이지);
+  B-->D(메인페이지);
 </div>
 ```
 
+&nbsp;
+
 ## MathJax 수식 넣기
----
+
 ### MathJax?
 ---
 MathJax는 MathML, LaTeX 및 ASCIIMathML 마크 업을 사용하여 웹 브라우저에 수학 표기법을 표시하는 크로스 브라우저 JavaScript 라이브러리이다. MathJax는 아파치 라이선스에 따라 오픈 소스 소프트웨어로 제공된다.
