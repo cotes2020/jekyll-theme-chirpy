@@ -9,6 +9,7 @@ image:
 
 - [VPC endpoint](#vpc-endpoint)
   - [without VPC endpoint](#without-vpc-endpoint)
+  - [with **S3 VPC endpoint**](#with-s3-vpc-endpoint)
   - [basic](#basic)
   - [3 types of VPC endpoints](#3-types-of-vpc-endpoints)
     - [Interface endpoint](#interface-endpoint)
@@ -24,14 +25,11 @@ image:
 
 ## without VPC endpoint
 
-
-![image](https://i.imgur.com/nTiSXWl.png)
-
 **workflow**:
 - the EC2 instance is in a public subnet, has access to the internet
 - the EC2 instance can reach the AWS S3 URL to copy the file from the S3 bucket
 
-
+![image](https://i.imgur.com/nTiSXWl.png)
 
 ![image](https://i.imgur.com/DcLHLMW.jpg)
 
@@ -43,13 +41,12 @@ S3 access from a private subnet doesn’t work, because:
   - can’t reach the AWS S3 URL, and the request will time out
 
 ## with **S3 VPC endpoint**
-- provides a way for an S3 request to be routed through to the Amazon S3 service, without having to connect a subnet to an internet gateway.
-- ![image-1](https://i.imgur.com/858oda3.png)
+- provides a way for an S3 request to be routed through to the Amazon S3 service, without having to connect a subnet to an internet gateway. 
 - S3 VPC endpoint is what’s known as a gateway endpoint. It works by adding an entry to the route table of a subnet, forwarding S3 traffic to the S3 VPC endpoint.
 - have a route for requests with a destination s3.eu-west-1.amazonaws.com to target the VPC endpoint. Therefore any S3 requests will be routed through to S3.
 - ![route-table-with-s3-endpoint-small](https://i.imgur.com/o1oIQZJ.png)
 
-
+![image-1](https://i.imgur.com/858oda3.png)
 
 
 ---
@@ -81,14 +78,14 @@ S3 access from a private subnet doesn’t work, because:
 
 ### Interface endpoint
 
-A VPC interface endpoint is <font color=blue> an elastic network interface </font> 
+A VPC interface endpoint is <font color=red> an elastic network interface </font> 
 
 - a logical networking component in a VPC 
 - represents a **virtual network card** with a `private IP address` from the IP address range of your subnet.
 - use DNS names to resolve requests to a public AWS service.
-- It serves as an entry point for <font color=blue> traffic destined to a supported AWS/VPC endpoint service </font>
+- It serves as an entry point for <font color=red> traffic destined to a supported AWS/VPC endpoint service </font>
 
-- **Interface endpoints** are powered by <font color=blue> AWS PrivateLink </font>
+- **Interface endpoints** are powered by <font color=red> AWS PrivateLink </font>
   - AWS PrivateLink
     - a technology that enables you to <font color=blue> privately access services by using private IP addresses. </font>
   - connect to services that are powered by <font color=blue> AWS PrivateLink </font>
@@ -118,6 +115,7 @@ A VPC interface endpoint is <font color=blue> an elastic network interface </fon
   - When a private instance needs to access a supported AWS public services such as DynamoDB or S3 without leaving the AWS network
 
 
+---
 
 
 ### Gateway Load Balancer endpoints

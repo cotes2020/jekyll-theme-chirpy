@@ -190,6 +190,9 @@ toc: true
     - [77. Combinations](#77-combinations)
 - [功能](#功能)
   - [设计朋友圈时间线](#设计朋友圈时间线)
+- [🔒🔒 Map](#-map)
+  - [Application](#application)
+    - [Application: Counting Word Frequencies](#application-counting-word-frequencies)
 - [🔒🔒 动态规划](#-动态规划)
   - [🔒 动态规划](#-动态规划-1)
     - [斐波那契数列](#斐波那契数列)
@@ -7850,7 +7853,50 @@ class Twitter {
 ---
 
 
+# 🔒🔒 Map
 
+
+## Application
+
+
+### Application: Counting Word Frequencies
+
+- begin with an empty map, mapping words to their integer frequencies. 
+- first scan through the input, considering adjacent alphabetic characters to be words, which we then convert to lowercase. 
+- For each word found, we attempt to retrieve its current frequency from the map using the get method, with a yet unseen word having frequency zero. 
+- We then (re)set its frequency to be one more to reflect the current occurrence of the word. 
+- After processing the entire input, we loop through the entrySet() of the map to determine which word has the most occurrences.
+
+
+```java
+public class WordCount {
+    public static void main(String[] args) {
+        Map<String, Integer> freq = new ChainHashMap<>();
+        Scanner doc = new Scanner(System.in).useDelimiter("[^a-zA-Z]+");
+        while(doc.hasNext()){
+            String word = doc.next().toLowerCase();
+            Integer count = freq.get(word);
+            if(count==null) count=0;
+            freq.put(word, count++);
+        }
+        int maxCount = 0;
+        Sting maxWord = "";
+        for(Entry<Sting, Integer> ent : freq.entrySet()){
+            if(ent.getValue()>maxCount){
+                maxWord = ent.getKet();
+                maxCount = ent.getValue(); 
+            } 
+        }
+        System.out.print("The most frequent word is '" + maxWord);
+        System.out.println("' with " + maxCount + " occurrences."); 
+    }
+}
+
+```
+
+
+
+---
 
 # 🔒🔒 动态规划
 
