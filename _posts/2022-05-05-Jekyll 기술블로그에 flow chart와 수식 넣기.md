@@ -1,5 +1,5 @@
 ---
-title: Jekyll 기술블로그에 flow chart와 수식 넣기 (Feat. Mermaid, MathJax)
+title: Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)
 author:
   name: Bean
   link: https://github.com/beanie00
@@ -8,27 +8,27 @@ categories: [etc, 기술블로그]
 tags: []
 ---
 
-## Mermaid로 flow chart 넣기
+## Add flow chart using Mermaid
 
 ### Mermaid?
 ---
 
-Mermaid는 스크립트로 각종 다이어그램을 그려주는 JavaScript이다.
+Mermaid is a JavaScript library which draws flowchart diagrams from script.
 
 ```
 graph LR
-  A(랜딩페이지)-->B[자동로그인 확인]
-  B-->C(로그인 페이지)
-  B-->D(메인페이지)
+  A(landing page)-->B[check auto login]
+  B-->C(login page)
+  B-->D(main page)
 ```
 
-이런식으로 직관적으로 작성된 스크립트를 다이어그램으로 변환시켜준다.
+In this way, it intuitively converts a written script into a diagram.
 
 <div class="mermaid">
   graph LR;
-  A(랜딩페이지)-->B[자동로그인 확인];
-  B-->C(로그인 페이지);
-  B-->D(메인페이지);
+  A(landing page)-->B[check auto login];
+  B-->C(login page);
+  B-->D(main page);
 </div>
 
 &nbsp;
@@ -36,59 +36,57 @@ graph LR
 ### Rendering Mermaid in jekyll
 ---
 
-지금 보여지고 있는 기술블로그에서 사용중인 Jekyll Chirpy 테마를 사용중이다.
-가이드 문서에는 포스팅 헤드에 다음을 추가하면 `'''mermaid` 로 mermaid를 사용할 수 있다고 되어 있다.
-
+This tech blog was made using the Jekyll Chipy theme.
+According to guide document for the Jekyll Chirpy theme, when writing a post, we can use mermaid by adding `'''mermaid` if the following is inserted on posting head.
 ```yaml
 ---
 mermaid: true
 ---
 ```
 
-하지만 무슨 이유에선지 잘 되지 않아 다른 방법을 찾아보았다.
+However, for some reason, it didn't work. So I looked for another way.
 
-jekyll에서 Mermaid를 렌더링해야 하는 방법으로 검색하면 다음의 2가지 방법이 나온다.
+Searching for methods to render Mermaid on Jekyll gives the following two results.
 * [jekyll-mermaid](https://github.com/jasonbellamy/jekyll-mermaid)
 * [jekyll-spaceship](https://github.com/jeffreytse/jekyll-spaceship)
 
-하지만 둘다 직접 적용해보니 잘 적용되지 않았다.
+But, both of these methods didn't work well either.
 
-그래서 직접 Mermaid를 html 파일에 임베딩하기로 하였다.
+So, I decided to just embed Mermaid directly in the html file.
 
 &nbsp;
 
 **Embedding MermaidPermalink**
 
-Mermaid-js에 들어가보면 해당 js file의 CDN이 존재한다.
-각 html 문서 앞에 아래 항목을 공통적으로 집어 넣어준다. 이 블로그에서는 _includes\head.html에 넣어주었다. 그냥 html 문서에 공통으로 들어가는 부분에 추가해주면 된다.
+Checking the Mermaid-js file, I could check the CDN of the corresponding js file.
+Mermaid was successfuly rendered after entering this CDN in each html document. I inserted it in _includes/head.html for this blogpost, but it should be sufficient to just add it on common html elements.
 
-```javascript
+```html
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 ```
 
-그리고 블로그 포스팅 .md 파일 내에서 다음과 같이 사용해주면 된다.
+And then, mermaid can be called within .md files like the following.
 
 ```markdown
 <div class="mermaid">
   graph LR;
-  A(랜딩페이지)-->B[자동로그인 확인];
-  B-->C(로그인 페이지);
-  B-->D(메인페이지);
+  A(landing page)-->B[Check auto login];
+  B-->C(login page);
+  B-->D(main);
 </div>
 ```
 
 &nbsp;
 
-## MathJax 수식 넣기
+## Adding MathJax mathematical expression
 
 ### MathJax?
 ---
-MathJax는 MathML, LaTeX 및 ASCIIMathML 마크 업을 사용하여 웹 브라우저에 수학 표기법을 표시하는 크로스 브라우저 JavaScript 라이브러리이다. MathJax는 아파치 라이선스에 따라 오픈 소스 소프트웨어로 제공된다.
-
+MathJax is a cross-browser JavaScript library that uses MathML, LaTeX, and ASCIIMathML markup to display mathematical notation in a web browser. MathJax is provided as open source software under the Apache License.
 ### Rendering MathJax in jekyll
 ---
-flow chart와 비슷하게 _includes\head.html에 다음의 코드를 추가하면 사용할 수 있다.
+Similar to flow chart, it can be used by adding the following code to _includes/head.html.
 
 ```html
 <script type="text/x-mathjax-config">
@@ -101,4 +99,5 @@ flow chart와 비슷하게 _includes\head.html에 다음의 코드를 추가하�
 </script>
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 ```
-그러면 라텍스 문법으로 작성된 수식이 잘 렌더링된다.
+
+Then, formulas written in latex grammar are rendered well!

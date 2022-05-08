@@ -1,5 +1,5 @@
 ---
-title: Single layer perceptron 구현 (from scratch)
+title: Implement Single layer perceptron (from scratch)
 author:
   name: Bean
   link: https://github.com/beanie00

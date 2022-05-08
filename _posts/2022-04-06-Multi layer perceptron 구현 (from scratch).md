@@ -1,5 +1,5 @@
 ---
-title: Multi layer perceptron 구현 (from scratch)
+title: Implement Multi layer perceptron (from scratch)
 author:
   name: Bean
   link: https://github.com/beanie00

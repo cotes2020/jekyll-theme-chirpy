@@ -59,22 +59,21 @@ tail_includes:
   <div class="d-flex justify-content-between">
     <!-- author -->
     <span>
-      {% capture author_name %}{{ site.data.authors[page.author].name | default: site.social.name }}{% endcapture %}
+      {% capture author_name %}{{ page.author.name | default: site.social.name }}{% endcapture %}
       {% assign author_link = nil %}
 
-      {% if page.author %}
-        {% assign author_link = site.data.authors[page.author].url %}
+      {% if page.author.link %}
+        {% assign author_link = page.author.link %}
       {% elsif author_name == site.social.name %}
         {% assign author_link = site.social.links[0] %}
       {% endif %}
 
       {{ site.data.locales[lang].post.written_by }}
-
       <em>
         {% if author_link %}
           <a href="{{ author_link }}">{{ author_name }}</a>
         {% else %}
-        {{ author_name }}
+          {{ author_name }}
         {% endif %}
       </em>
     </span>

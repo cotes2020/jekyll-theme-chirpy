@@ -1,5 +1,5 @@
 ---
-title: Multi layer perceptron 과적합 방지
+title: Prevent Multi layer perceptron Overfitting
 author:
   name: Bean
   link: https://github.com/beanie00
@@ -8,18 +8,19 @@ categories: [AI, basic]
 tags: []
 ---
 
-기존의 Multi layer perceptron 학습 코드를 보면 training error가 학습이 진행됨에 따라 지속적으로 감소함을 알 수 있다. error가 계속 감소한다는 것은 학습이 잘되고 있다는 뜻일 수 있지만 마냥 좋은 징조는 아니다. 파라미터가 training data의 특징을 너무 학습해 training data로는 성능이 좋지만 새로운 데이터에서는 오히려 안좋은 성능을 보이는 `과접합`이 일어날 수 있기 때문이다.
+Looking at the existing multi-layer perceptron learning results, it can be seen that the training error continuously decreases as learning progresses. Decreasing error generally means the training is going well, but it may not always be the case. `Overfitting` may be occuring, where the model follows too closely to the training data, and may not be able to perform as well on data outside the training data set.
 
-## Validation error 확인
+## Checking Validation error
 ---
 
-과접합을 확인해보기 위해서는 training error외에 별도로 validation error를 확인해보면 된다. `training error`는 학습 데이터가 학습 상에서 발생하는 에러를 나타내는 반면 `validation error`는 학습 중인 파라미터로 학습 데이터 외에 새로운 데이터(validate data)를 예측해서 나오는 에러를 말한다. `validation error`를 구하기 위해서는 먼저 데이터를 training data와 test data로 분리해야 한다. 이는 `sklearn.model_selection`의 `train_test_split` 함수를 이용해 간단히 구할 수 있다.
+In order to check the overfitting, validation error should be checked together with training error. `training error` refers to errors that occurs during training with the training data, whereas `validation error` refers to an error that occurs by predicting new data (validation data). In order to obtain `validation error`, the data must first be divided into training dataset and test dataset. This can be done simply by using the `train_test_split` function of `sklearn.model_selection`.
+
 
 ```python
   X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size =0.2)
 ```
 
-다음으로 validation error를 계산해보자. 다음의 함수로 에러를 계산할 수 있다. validation data에 대하여 현재까지 학습된 파라미터로 값을 예측한 뒤 예측 에러를 계산하였다.
+Next, let's calculate the validation error. The error can be calculated with the following function. For the validation data, the error between predicted value using the model trained so far and the actual value was calculated.
 
 ```python
 def ThreeLayerPerceptron_validation_error(X_valid, y_valid, w1, b1, w2, b2, wOut, bOut):
@@ -42,7 +43,7 @@ def ThreeLayerPerceptron_validation_error(X_valid, y_valid, w1, b1, w2, b2, wOut
     return mu
 ```
 
-이 validation error를 train 코드에 추가해보자. 이전 코드와 동일한 부분은 ...로 생략하였다.
+Let's add this validation error to the train code. The same part as the previous code was omitted with ....
 
 ```python
 def ThreeLayerPerceptron_train(X_train, y_train, X_valid, y_valid, p=20, q=10, eta=1e-3):
@@ -69,7 +70,7 @@ def ThreeLayerPerceptron_train(X_train, y_train, X_valid, y_valid, p=20, q=10, e
     return w1, b1, w2, b2, wOut, bOut, mu
 ```
 
-이렇게 학습을 돌린 후 training error와 validation error를 plot 해보면, 아래와 같이 training error은 계속 감소하지만 validation error는 어느 구간 이후로 증가함을 확인할 수 있다. 이 부분이 과적합이 일어나는 부분이다.
+Plotting the training error and validation error after running training in this way, it can be seen that the training error continues to decrease as shown below, but the validation error increases after a certain section. This is where overfitting occurs.
 
 <div style="text-align: left">
    <img src="/assets/img/post_images/overfitting1.png" />
@@ -77,15 +78,16 @@ def ThreeLayerPerceptron_train(X_train, y_train, X_valid, y_valid, p=20, q=10, e
 
 &nbsp;
 
-## Early stopping term과 weight decay term을 추가해 과적합을 방지하자.
+## Prevent overfitting adding Early stopping term and weight decay term
 ---
-과적합을 확인했으니 여러 방법으로 과적합을 방지해보자.
+
+Now that overfitting has been identified, let's try to prevent it in several ways.
 
 ### Early stopping
 ---
-Early stopping은 위 그래프에서 validation error가 증가 추세로 가기 전에 학습을 종료시키는 방법을 말한다.
+Early stopping refers to a method of terminating training before the validation error in the graph above enters an increasing trend.
 
-아래는 Early stopping 구현 코드이다. 이전의 validation error값과 비교하여 10번 연속하여 validation error가 계속 증가하면 학습을 종료해주었다.
+Below is the early stopping implementation code. When the validation error continues to increase 10 times in a row compared to the previous validation error value, learning is terminated.
 
 ```python
 class EarlyStopping():
@@ -105,7 +107,7 @@ class EarlyStopping():
 ### Weight decay
 ---
 
-학습을 할 때, Loss function이 작아지는 방향으로만 단순하게 학습을 진행하면 오히려 특정 가중치 값들이 커지며 결과가 나빠질 수 있다. Weight decay는 학습 중 weight가 너무 큰 값을 가지지 않도록 Loss function에 weight가 커질 경우에 대한 패널티 항목을 집어넣는다. 이 패널티 항목으로 많이 쓰이는 것이 L1 Regularization과 L2 Regularization이다. Weight decay를 적용하면 overfitting을 벗어날 수 있다. 이번 구현에서는 L2 방식을 사용하였다.
+Overfitting can be avoided by applying weight decay. When learning, if the learning is carried out simply in the direction in which the loss function becomes smaller, the specific weight values ​​will rather increase and the result may deteriorate. Weight decay exerts a penalty when the weight becomes large in the loss function, so that the weight does not have a too large value during training. L1 regularization and L2 regularization are widely used as the penalty. In this implementation, the L2 method is used.
 
 ```python
 def l2_penalty(w):
@@ -113,10 +115,10 @@ def l2_penalty(w):
 ```
 
 &nbsp;
-## 최종 MLP training 코드
+## Final MLP training code
 ---
 
-이렇게 구현된 최종 MLP 코드는 다음과 같다.
+The final MLP code implementation is as follows.
 
 
 ```python
@@ -199,5 +201,5 @@ def ThreeLayerPerceptron_train(X_train, y_train, X_valid, y_valid, p=20, q=10, e
 
 ***
 
-#### 참고 내용 출처 :
+#### references :
 * [https://light-tree.tistory.com/216](https://light-tree.tistory.com/216)
