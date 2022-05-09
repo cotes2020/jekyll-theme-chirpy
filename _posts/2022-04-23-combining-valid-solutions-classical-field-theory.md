@@ -9,7 +9,7 @@ A popular theme in some field theories is linearity — wherein valid solutions 
 
 In classical field theory, we build a unified framework which reproduces the myriad of different field theories in different physical contexts. It is only assumed that the classical fields obey some basic principles, such as locality, Lorentz invariance and the principle of stationary action. [^1]
 
-[^1]: We can add further structure to field theories by introducing different forms of what is called 'gauge invariance'. But that is beyond the scope of this post.
+[^1]: We can add further structure to field theories by introducing what are called 'gauge symmetries'. This is explored in the post [Gauge Invariance in Classical Field Theory]({% post_url 2022-05-10-gauge-invariance-classical-field-theory %}).
 
 This makes us wonder, that in the general construct of classical field theory, when are solutions of field equations linear? And can they be combined in ways other than adding and scaling, to generate new solutions? Let us find for ourselves.
 
@@ -19,7 +19,7 @@ For simplicity, we will stick to real-valued scalar fields in inertial coordinat
 
 Suppose we have a Lagrangian density $$\mathcal{L}$$ and a set of scalar fields $$\left\{ \phi_{\left( i \right)} \right\}$$ which independently obey the Euler-Lagrange equations for the given Lagrangian:
 
-$$\frac{\partial \mathcal{L}}{\partial \phi_{\left( i \right)}} = \partial_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)}$$
+$$\frac{\partial \mathcal{L}}{\partial \phi_{\left( i \right)}} = \nabla_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)}$$
 
 The parentheses around the index $$i$$ remind us that it is not a tensorial index, but a label for each scalar field.
 
@@ -35,7 +35,7 @@ Therefore, we can frame our problem as a twofold question:
 
 1) When is the following true?
 
-$$\frac{\partial \mathcal{L}}{\partial \phi} = \partial_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)}$$
+$$\frac{\partial \mathcal{L}}{\partial \phi} = \nabla_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)}$$
 
 2) If the above is true, when is $$\phi$$ permitted to be of the following form?
 
@@ -55,12 +55,12 @@ The multivariable chain rule from calculus will be used throughout.
 
 ### Expanding the Euler-Lagrange equations
 
-Let us begin by expanding the left hand side of the equations of motion $$\frac{\partial \mathcal{L}}{\partial \phi} = \partial_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)}$$, in terms of the solutions $$\left\{ \phi_{\left( i \right)} \right\}$$,
+Let us begin by expanding the left hand side of the equations of motion $$\frac{\partial \mathcal{L}}{\partial \phi} = \nabla_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)}$$, in terms of the solutions $$\left\{ \phi_{\left( i \right)} \right\}$$,
 
 $$
 \begin{align}
 \frac{\partial \mathcal{L}}{\partial \phi} & = \sum_i \frac{\partial \mathcal{L}}{\partial \phi_{\left( i \right)}} \frac{\partial \phi_{\left( i \right)}}{\partial \phi} \\
- & = \sum_i \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \right) \frac{\partial \phi_{\left( i \right)}}{\partial \phi}
+ & = \sum_i \nabla_\mu \left( \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \right) \frac{\partial \phi_{\left( i \right)}}{\partial \phi}
 \end{align}
 $$
 
@@ -83,18 +83,18 @@ $$
 
 That was lengthy, but in the end, we have a relatively compact result! In the last step, we took the inverse of the partial derivative $$\frac{\partial \phi}{\partial \phi_{\left( i \right)}}$$ as simply its reciprocal. This is because for the independent set of functions $$\left\{ \phi_{\left( i \right)} \right\}$$, we have $$\frac{\partial \phi}{\partial \phi_{\left( i \right)}} = \frac{d \phi}{d \phi_{\left( i \right)}}$$, which is a difference quotient.
 
-Finally, we differentiate the expression obtained in accordance with the right hand side of the Euler-Lagrange equations,
+Finally, we find the divergence of the expression obtained in accordance with the right hand side of the Euler-Lagrange equations,
 
 $$
 \begin{align}
-\partial_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} & = \partial_\mu \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \frac{\partial \phi_{\left( i \right)}}{\partial \phi} \\
- & = \sum_i \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \right) \frac{\partial \phi_{\left( i \right)}}{\partial \phi} + \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}
+\nabla_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} & = \nabla_\mu \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \frac{\partial \phi_{\left( i \right)}}{\partial \phi} \\
+ & = \sum_i \nabla_\mu \left( \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \right) \frac{\partial \phi_{\left( i \right)}}{\partial \phi} + \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}
 \end{align}
 $$
 
 Plugging in the expression for the first term in the previous expansion $$\frac{\partial \mathcal{L}}{\partial \phi}$$,
 
-$$\partial_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = \frac{\partial \mathcal{L}}{\partial \phi} + \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
+$$\nabla_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = \frac{\partial \mathcal{L}}{\partial \phi} + \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
 
 Thus, we have obtained the equations of motion of a general coordinate $$\phi \left( \left\{ \phi_{\left( i \right)}\right\} \right)$$ constructed from a set of solution fields. However, for $$\phi$$ to be a valid solution, it must obey the Euler-Lagrange equations for the given Lagrangian, which requires us to set:
 
@@ -155,14 +155,14 @@ where $$C^{\left( i \right)} = \delta^{\left( i \right) \left( j \right)} C_{\le
 
 The application of the Einstein summation convention here is further justified by the fact that in the context of our derivations, upper and lower $$\left( i \right)$$ indices have repeatedly appeared along with the summation operation $$\sum \limits_{i}$$. For example,
 
-$$\partial_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = \frac{\partial \mathcal{L}}{\partial \phi} + \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
+$$\nabla_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = \frac{\partial \mathcal{L}}{\partial \phi} + \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
 
 Hence, the summation symbol becomes redundant and we can write:
 
-$$\partial_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = \frac{\partial \mathcal{L}}{\partial \phi} + \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
+$$\nabla_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = \frac{\partial \mathcal{L}}{\partial \phi} + \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
 
 ### Finishing note
 
-More importantly than the notation, we see a linear structure in classical field theory, namely in solutions to field equations of the form of the Euler-Lagrange equations. This is the beginning of the portal into the application of linear algebraic notions in classical field theory. The bridge between linear algebra (and the more general tensor algebra) and field theory is an exciting place, so hopefully, we'll tread it in the future!
+All in all, we see a linear structure in classical field theory, namely in solutions to field equations of the form of the Euler-Lagrange equations. This is the beginning of the portal into the application of linear algebraic notions in classical field theory. The bridge between linear algebra (and the more general tensor algebra) and field theory is an exciting place, so hopefully, we'll tread it in the future!
 
 I also hope you enjoyed this reading post (thanks for doing! :) Cheers.
