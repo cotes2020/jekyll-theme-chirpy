@@ -447,12 +447,10 @@ if (nums == null) throw new IllegalArgumentException("Input array is null");
 
 
 
-// reverse
+// reverse with stack
 public static <E> void reverse(E[] a){
     Statck<E> buffer = new ArrayStack<>(a.length);
-    for(E data: a){
-        buffer.push(a);
-    }
+    for(E data: a) buffer.push(a);
     for(int i=0; i<a.length; i++) a[i] = buffer.pop();
 }
 reverse(a);
@@ -7861,10 +7859,10 @@ class Twitter {
 
 ### Application: Counting Word Frequencies
 
-- begin with an empty map, mapping words to their integer frequencies. 
-- first scan through the input, considering adjacent alphabetic characters to be words, which we then convert to lowercase. 
-- For each word found, we attempt to retrieve its current frequency from the map using the get method, with a yet unseen word having frequency zero. 
-- We then (re)set its frequency to be one more to reflect the current occurrence of the word. 
+- begin with an empty map, mapping words to their integer frequencies.
+- first scan through the input, considering adjacent alphabetic characters to be words, which we then convert to lowercase.
+- For each word found, we attempt to retrieve its current frequency from the map using the get method, with a yet unseen word having frequency zero.
+- We then (re)set its frequency to be one more to reflect the current occurrence of the word.
 - After processing the entire input, we loop through the entrySet() of the map to determine which word has the most occurrences.
 
 
@@ -7884,11 +7882,11 @@ public class WordCount {
         for(Entry<Sting, Integer> ent : freq.entrySet()){
             if(ent.getValue()>maxCount){
                 maxWord = ent.getKet();
-                maxCount = ent.getValue(); 
-            } 
+                maxCount = ent.getValue();
+            }
         }
         System.out.print("The most frequent word is '" + maxWord);
-        System.out.println("' with " + maxCount + " occurrences."); 
+        System.out.println("' with " + maxCount + " occurrences.");
     }
 }
 
