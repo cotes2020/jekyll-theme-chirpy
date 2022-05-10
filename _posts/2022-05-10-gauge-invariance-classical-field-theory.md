@@ -29,7 +29,7 @@ We assume such transformations are bijective and differentiable. Thus, the numbe
 
 1) We [noted]({% post_url 2022-04-23-combining-valid-solutions-classical-field-theory %}#new-notation-for-solutions) in the previous post that despite the solution fields' index $$\left( i \right)$$ not being physical in the sense of tensor indices, it behaves very similar to one. This will become further evident in this post, and to save us from the hassle of writing the parantheses around the index repeatedly, we will simply omit them.
 
-2) However, to distinguish the above indices from the indices $$i, j, k$$ etc. fequently used to denote spacelike components, we will use $$a, b, c$$ and so on (nevertheless, we will not need to refer to spacelike indices separately in this post). Furthermore, we write these Latin indices after Greek indices since the latter ones are geometric and hence, of higher 'priority'.
+2) However, to distinguish the above indices from the indices $$i, j, k$$ etc. fequently used to denote spacelike components, we will use $$a, b, c$$ and so on (nevertheless, we will not need to refer to spacelike indices separately in this post).
 
 3) Transformation of coordinate fields and their functions will be accented with tildes. For example, when $$\phi_a \to \widetilde{\phi}_a$$, conjugate momenta $$\pi^\mu_{\phantom{\mu} a}$$ are mapped as $$\pi^\mu_{\phantom{\mu} a} \to \widetilde{\pi}^\mu_{\phantom{\mu} a}$$.
 
