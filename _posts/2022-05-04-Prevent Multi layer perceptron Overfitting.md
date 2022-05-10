@@ -1,11 +1,15 @@
 ---
 title: Prevent Multi layer perceptron Overfitting
-author:
-  name: Bean
-  link: https://github.com/beanie00
+author: Bean
 date: 2022-05-03 23:10:00 +0800
 categories: [AI, basic]
 tags: []
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover:  assets/img/post_images/ai_cover2.jpg
 ---
 
 Looking at the existing multi-layer perceptron learning results, it can be seen that the training error continuously decreases as learning progresses. Decreasing error generally means the training is going well, but it may not always be the case. `Overfitting` may be occuring, where the model follows too closely to the training data, and may not be able to perform as well on data outside the training data set.

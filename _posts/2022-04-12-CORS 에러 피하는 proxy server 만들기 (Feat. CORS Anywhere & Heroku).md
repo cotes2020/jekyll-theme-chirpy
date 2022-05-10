@@ -1,11 +1,15 @@
 ---
 title: CORS 에러 피하는 proxy server 만들기 (Feat. CORS Anywhere & Heroku)
-author:
-  name: Bean
-  link: https://github.com/beanie00
+author: Bean
 date: 2022-04-12 16:32:00 +0800
 categories: [Web frontend, React]
 tags: [Catty]
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover: assets/img/post_images/catty_cover2.png
 ---
 
 ## CORS란?

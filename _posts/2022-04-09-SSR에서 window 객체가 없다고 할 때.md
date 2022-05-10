@@ -1,11 +1,15 @@
 ---
 title: When SSR says that there is no window object
-author:
-  name: Bean
-  link: https://github.com/beanie00
+author: Bean
 date: 2022-04-09 16:32:00 +0800
 categories: [Web frontend, React]
 tags: [Catty, Next]
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover: assets/img/post_images/next_cover.png
 ---
 
 ## Use typeof

@@ -1,17 +1,21 @@
-## Template › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
-# -------------------------------------
-# {author_id}:
-#   name: {full name}
-#   twitter: {twitter_of_author}
-#   url: {homepage_of_author}
-# -------------------------------------
-
-cotes:
-  name: Cotes Chung
-  twitter: cotes2020
-  url: https://github.com/cotes2020/
-
-sille_bille:
-  name: Dinesh Prasanth Moluguwan Krishnamoorthy
-  twitter: dinesh_MKD
-  url: https://github.com/SilleBille/
+Pig:
+  username: Pig
+  name: Skinnig
+  # url_full: http://jekyllt.github.io/jasper2/
+  # url: jekyllt.github.io/jasper2
+  bio: I'm Dong Hyeok Kim (Skinnig) BS student @ KAIST CS & Back End Software Engineer & Co-founder @ DearPlants
+  picture: assets/images/ghost.png
+  facebook: False
+  twitter: False
+  cover: False
+Bean:
+  username: Bean
+  name: Beanie
+  location: Daejeon, South Korea
+  # url_full: http://hannah.wf/
+  # url: hannah.wf
+  bio: Hello, I’m Beanie, always pondering and crafting services to make life fun and convenient
+  picture: assets/img/style/beanie.png
+  facebook: False
+  twitter: False
+  cover: assets/img/style/beanie_cover.jpg

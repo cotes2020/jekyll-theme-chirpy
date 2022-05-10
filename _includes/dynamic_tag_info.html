@@ -1,0 +1,8 @@
+<!-- dynamically loading backgrounds for tags,  descriptions and page titles -->
+{% assign decoded_url = page.url | url_decode %}
+{% for tag in site.data.tags %}
+    {% if decoded_url contains tag[1].name %}
+        {% assign cover = tag[1].cover %}
+        {% assign tag_description = tag[1].description %}
+    {% endif %}
+{% endfor %}

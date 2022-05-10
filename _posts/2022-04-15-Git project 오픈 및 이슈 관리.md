@@ -6,6 +6,7 @@ author:
 date: 2022-04-15 16:32:00 +0800
 categories: [etc, git]
 tags: []
+cover: assets/img/post_images/github_cover.jpeg
 ---
 
 처음에 Catty 서비스를 개발할 때 어짜피 1인 개발이라 따로 프로젝트 관리를 하지 않았다. 그렇지만 크롬익스텐션, 앱, 웹 3가지를 한꺼번에 관리해야하고 기능이 조금씩 복잡해지면서 체계적으로 프로젝트를 관리할 필요성을 느끼게 되었다. 예전에 프로젝트 관리용으로 `Jira`나 `Notion`을 써봤지만 아무래도 개발 프로젝트는 git repo에 프로젝트를 열어 관리하는 게 최고인 듯 하다.

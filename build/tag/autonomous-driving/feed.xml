@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="http://localhost:4000/tag/autonomous-driving/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-05-11T07:10:55+09:00</updated>
+  <id>http://localhost:4000/tag/autonomous-driving/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">PIGBEAN Tech blog | </title>
+  
+
+  
+    <subtitle>Seize the day</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training</title>
+      <link href="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2" rel="alternate" type="text/html" title="RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training" />
+      <published>2022-04-30T17:32:00+09:00</published>
+      <updated>2022-04-30T17:32:00+09:00</updated>
+      <id>http://localhost:4000/%EC%9E%90%EC%9C%A8%20%EC%A3%BC%ED%96%89%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-2</id>
+      <content type="html" xml:base="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2">&lt;p&gt;This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This paper is based on the previous study with very similar settings but difference
+model.&lt;/li&gt;
+  &lt;li&gt;The DDPG algorithm(previously used) seems to have not much high convergence
+during training&lt;/li&gt;
+  &lt;li&gt;Instead, use SAC(Soft Actor Critic) algorithm
+    &lt;ul&gt;
+      &lt;li&gt;Robustness, stability and well-convergence&lt;/li&gt;
+      &lt;li&gt;State-of-the-art off-policy actor critic deep reinforcement learning algorithm based on the maximum entropy reinforcement learning framework&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Single-Q SAC Algorithm : use SAC with some slight differences due to the method of combining imitation learning and reinforcement learning
+    &lt;ul&gt;
+      &lt;li&gt;The original SAC has two target parameters for Q-function&lt;/li&gt;
+      &lt;li&gt;However, with previous experiment, the average return over 5 runs of 3 million iterations of SAC algorithm with double-A and SAC algorithm with single-Q are quite similar, so they only use one target parameter for each network and do not update the temperature parameter α for simplicity&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;Although using pure SAC can result in a good performance, it still has a lower
+average accumulated reward after 100 episodes than their method.
+    &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/sc3.png&quot; width=&quot;70%&quot; /&gt;
+&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Autonomous driving" />
+      
+        <category term="Reinforcement learning" />
+      
+        <category term="paper" />
+      
+
+      
+        <summary type="html">This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings</title>
+      <link href="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1" rel="alternate" type="text/html" title="RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings" />
+      <published>2022-04-30T10:32:00+09:00</published>
+      <updated>2022-04-30T10:32:00+09:00</updated>
+      <id>http://localhost:4000/%EC%9E%90%EC%9C%A8%20%EC%A3%BC%ED%96%89%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id>
+      <content type="html" xml:base="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training&lt;/code&gt;, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.&lt;/p&gt;
+
+&lt;p&gt;More specifically, in the image-based autonomous driving task, imitation learning and reinforcement learning are combined and used together to utilize each others’ strength. The difference between the two papers is that the first paper uses DDPG as reinforcement learning whereas the second paper uses SAC.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;The problem of generating control decision given a monocular camera image and other auxiliary vehicle sensors’ outputs has aroused a lot of interest in recent years.&lt;/li&gt;
+  &lt;li&gt;Conducting imitation learning towards given human policy might produce a relative well-performed policy
+    &lt;ul&gt;
+      &lt;li&gt;However, limitation on the possible policy performance and the potential lack of generalizability for unseen situations.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Instead, using RL in a simulator and then transfer the learned policy to real world is very popular in recent research.
+    &lt;ul&gt;
+      &lt;li&gt;Nonetheless, when the state and action spaces are huge or high dimensional, pure RL algorithm training process usually diverges.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;They present a method which combines these two methods and thus leverage both their advantages for this image-based autonomous driving task.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;(1) pre-training(imitation learning) -&amp;gt; (2) fine-tuning(DDPG)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Network architecture
+    &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/rl_driving1_1.png&quot; width=&quot;70%&quot; /&gt;
+&lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;ResNet-34 architecture
+        &lt;ul&gt;
+          &lt;li&gt;One of CNN network for deep reinforcement learning tasks like environmental perception, model compression, and object detection&lt;/li&gt;
+          &lt;li&gt;Use ResNet-34 as the backbone structure for both actor and critic networks&lt;/li&gt;
+          &lt;li&gt;The simple and light ResNet-34 out performs other architectures with attention module integrated in terms of both final testing loss and the generated policy’s performance.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Imitation learning phase
+    &lt;ul&gt;
+      &lt;li&gt;Aim to generate a good initial policy&lt;/li&gt;
+      &lt;li&gt;Consider current image input and current vehicle speed as our current state inputs, and throttle, brake from zero to one and steering from minus one to positive one as our control outputs&lt;/li&gt;
+      &lt;li&gt;Use Huber loss : to less sensitive to outliers and can make the training process more stable compared to MSE as a result.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Reinforcement learning phase
+    &lt;ul&gt;
+      &lt;li&gt;Reward : distance to the nearest obstacle and current velocity
+        &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/rl_driving1_2.png&quot; /&gt;
+&lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Continuous and deterministic policy setting : to prevent possible catastrophic effect under undesired behavior.&lt;/li&gt;
+      &lt;li&gt;In order to combine with imitation learning, they make several changes on the original DDPG
+        &lt;ul&gt;
+          &lt;li&gt;actor, critic networks
+            &lt;ul&gt;
+              &lt;li&gt;actor network : give all the weights of the pre-trained actor network to the actor networks used in the DDPG.&lt;/li&gt;
+              &lt;li&gt;critic network : give all the weights except the final fully connected layer to critic networks used in the DDPG.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;replay pool : train actor and critic networks using the samples collected under imitation learning’s generated policy. Then, use normal DDPG to collect new experience&lt;/li&gt;
+          &lt;li&gt;removing OU noise&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;experiments&quot;&gt;Experiments&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Imitation learning phase
+    &lt;ul&gt;
+      &lt;li&gt;Use an Xbox controller to control the car under various weather and lighting conditions and record the data using Airsim API&lt;/li&gt;
+      &lt;li&gt;1000 for each episode and terminates when a collision happens.&lt;/li&gt;
+      &lt;li&gt;Randomly choose the weather condition and the initial position of the car before each episode starts and calculate a 5 episodes’ average accumulated reward as the criteria.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;RL phase
+    &lt;ul&gt;
+      &lt;li&gt;Same setting as imitation learnin phase&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Results
+    &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img width=&quot;70%&quot; src=&quot;/assets/img/post_images/rl_driving1_3.png&quot; /&gt;
+&lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Eventually, their proposed method achieves a considerable performance boost from the original imitation learning’s learned policy while the pure DDPG never performs well and does not show any improving trend.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Bean</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Autonomous driving" />
+      
+        <category term="Reinforcement learning" />
+      
+        <category term="paper" />
+      
+
+      
+        <summary type="html">Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings and Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

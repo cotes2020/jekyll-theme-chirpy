@@ -1,0 +1,96 @@
+<p><code class="language-plaintext highlighter-rouge">Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings</code> and <code class="language-plaintext highlighter-rouge">Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training</code>, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.</p>
+
+<p>More specifically, in the image-based autonomous driving task, imitation learning and reinforcement learning are combined and used together to utilize each others’ strength. The difference between the two papers is that the first paper uses DDPG as reinforcement learning whereas the second paper uses SAC.</p>
+
+<h2 id="background">Background</h2>
+<hr />
+<ul>
+  <li>The problem of generating control decision given a monocular camera image and other auxiliary vehicle sensors’ outputs has aroused a lot of interest in recent years.</li>
+  <li>Conducting imitation learning towards given human policy might produce a relative well-performed policy
+    <ul>
+      <li>However, limitation on the possible policy performance and the potential lack of generalizability for unseen situations.</li>
+    </ul>
+  </li>
+  <li>Instead, using RL in a simulator and then transfer the learned policy to real world is very popular in recent research.
+    <ul>
+      <li>Nonetheless, when the state and action spaces are huge or high dimensional, pure RL algorithm training process usually diverges.</li>
+    </ul>
+  </li>
+  <li>They present a method which combines these two methods and thus leverage both their advantages for this image-based autonomous driving task.</li>
+</ul>
+
+<h2 id="proposed-method">Proposed method</h2>
+<hr />
+
+<p>(1) pre-training(imitation learning) -&gt; (2) fine-tuning(DDPG)</p>
+<ul>
+  <li>Network architecture
+    <div style="text-align: left">
+  <img src="/assets/img/post_images/rl_driving1_1.png" width="70%" />
+</div>
+    <ul>
+      <li>ResNet-34 architecture
+        <ul>
+          <li>One of CNN network for deep reinforcement learning tasks like environmental perception, model compression, and object detection</li>
+          <li>Use ResNet-34 as the backbone structure for both actor and critic networks</li>
+          <li>The simple and light ResNet-34 out performs other architectures with attention module integrated in terms of both final testing loss and the generated policy’s performance.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Imitation learning phase
+    <ul>
+      <li>Aim to generate a good initial policy</li>
+      <li>Consider current image input and current vehicle speed as our current state inputs, and throttle, brake from zero to one and steering from minus one to positive one as our control outputs</li>
+      <li>Use Huber loss : to less sensitive to outliers and can make the training process more stable compared to MSE as a result.</li>
+    </ul>
+  </li>
+  <li>Reinforcement learning phase
+    <ul>
+      <li>Reward : distance to the nearest obstacle and current velocity
+        <div style="text-align: left">
+  <img src="/assets/img/post_images/rl_driving1_2.png" />
+</div>
+      </li>
+      <li>Continuous and deterministic policy setting : to prevent possible catastrophic effect under undesired behavior.</li>
+      <li>In order to combine with imitation learning, they make several changes on the original DDPG
+        <ul>
+          <li>actor, critic networks
+            <ul>
+              <li>actor network : give all the weights of the pre-trained actor network to the actor networks used in the DDPG.</li>
+              <li>critic network : give all the weights except the final fully connected layer to critic networks used in the DDPG.</li>
+            </ul>
+          </li>
+          <li>replay pool : train actor and critic networks using the samples collected under imitation learning’s generated policy. Then, use normal DDPG to collect new experience</li>
+          <li>removing OU noise</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="experiments">Experiments</h2>
+<hr />
+
+<ul>
+  <li>Imitation learning phase
+    <ul>
+      <li>Use an Xbox controller to control the car under various weather and lighting conditions and record the data using Airsim API</li>
+      <li>1000 for each episode and terminates when a collision happens.</li>
+      <li>Randomly choose the weather condition and the initial position of the car before each episode starts and calculate a 5 episodes’ average accumulated reward as the criteria.</li>
+    </ul>
+  </li>
+  <li>RL phase
+    <ul>
+      <li>Same setting as imitation learnin phase</li>
+    </ul>
+  </li>
+  <li>Results
+    <div style="text-align: left">
+  <img width="70%" src="/assets/img/post_images/rl_driving1_3.png" />
+</div>
+    <ul>
+      <li>Eventually, their proposed method achieves a considerable performance boost from the original imitation learning’s learned policy while the pure DDPG never performs well and does not show any improving trend.</li>
+    </ul>
+  </li>
+</ul>

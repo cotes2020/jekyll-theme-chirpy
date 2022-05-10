@@ -1,11 +1,15 @@
 ---
 title: Implement Single layer perceptron (from scratch)
-author:
-  name: Bean
-  link: https://github.com/beanie00
+author: Bean
 date: 2022-03-30 09:32:00 +0800
 categories: [AI, basic]
 tags: []
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover:  assets/img/post_images/ai_cover2.jpg
 ---
 
 ```python

@@ -1,0 +1,53 @@
+{% assign words_per_minute = site.words_per_minute | default: 200 %}
+
+    <article class="post-card {{ page.next.class }}{% unless page.next.cover %} no-image{% endunless %}">
+        {% if page.next.cover %}
+            <a class="post-card-image-link" href="{{ site.baseurl }}{{ page.next.url | remove_first: '/' }}">
+                <div class="post-card-image" style="background-image: url({{ site.baseurl }}{{ page.next.cover }})"></div>
+            </a>
+        {% endif %}
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="{{ site.baseurl }}{{ page.next.url | remove_first: '/' }}">
+                <header class="post-card-header">
+                    {% if page.next.tags.size > 0 %}
+                        {% for tag in page.next.tags %}
+                            {% if forloop.index == page.next.tags.size %}
+                                <span class="post-card-tags">{{ tag | capitalize }}</span>
+                            {% else %}
+                               <span class="post-card-tags">{{ tag | capitalize }}</span>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
+                    <h2 class="post-card-title">{{ page.next.title }}</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    {% if page.next.excerpt %}
+                        <p>{{ page.next.excerpt | strip_html | truncatewords: 33, "" }}</p>
+                    {% else %}
+                        <p>{{ page.next.content | strip_html | truncatewords: 33, "" }}</p>
+                    {% endif %}
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                {% for author in site.data.authors %}
+                    {% if author[1].username == page.next.author %}
+                        {% if author[1].picture %}
+                        <img class="author-profile-image" src="{{ site.baseurl }}{{ author[1].picture }}" alt="{{ author[1].name }}" />
+                        {% endif %}
+                        <span class="post-card-author">
+                            <a href="{{ site.baseurl }}author/{{ page.next.author }}/">{{ author[1].name }}</a>
+                        </span>
+                    {% endif %}
+                {% endfor %}
+                <span class="reading-time">
+                    {% assign words = page.next.content | strip_html | number_of_words %}
+                    {% if words <= words_per_minute %}
+                      1 min read
+                    {% else %}
+                      {{ words | divided_by:words_per_minute }} min read
+                    {% endif %}
+                </span>
+            </footer>
+        </div>
+    </article>

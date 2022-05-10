@@ -1,11 +1,15 @@
 ---
 title: RxJava(3) - Observable
-author:
-  name: Bean
-  link: https://github.com/beanie00
+author: Bean
 date: 2022-01-13 16:13:00 +0800
 categories: [Mobile frontend, Android]
 tags: [RxJava]
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover:  assets/img/post_images/rxjava_cover.jpeg
 ---
 
 

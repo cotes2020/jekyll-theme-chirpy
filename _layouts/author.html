@@ -1,0 +1,64 @@
+---
+layout: default
+current: author
+title: Author Page
+cover: false
+class: 'author-template'
+navigation: True
+label: Author
+logo: 'assets/images/ghost.png'
+---
+<!-- < default}} -->
+<!-- The tag above means - insert everything in this file into the {body} of the default.hbs template -->
+
+<!-- #author  -->
+<!-- Everything inside the #author tags pulls data from the author -->
+{% for author in site.data.authors %}
+    {% if author[1].username == page.author %}
+    <header class="site-header outer {% if author[1].cover or page.cover %}" style="background-image: url({{ site.baseurl }}{% if author[1].cover %}{{ author[1].cover }}{% elsif page.cover %}{{ page.cover }}{% endif %}) {% else %}no-cover{% endif %}">
+        <div class="inner">
+            {% include site-nav.html %}
+            <div class="site-header-content">
+                {% if author[1].picture %}
+                    <img class="author-profile-image" src="{{ site.baseurl }}{{ author[1].picture }}" alt="{{ page.author }}" />
+                {% endif %}
+                <h1 class="site-title">{{ author[1].name }}</h1>
+                {% if author[1].bio %}
+                    <h2 class="author-bio">{{ author[1].bio }}</h2>
+                {% endif %}
+                <div class="author-meta">
+                    {% if author[1].location %}
+                        <div class="author-location">{{ author[1].location }} <span class="bull">&bull;</span></div>
+                    {% endif %}
+                    <div class="author-stats">
+                        {% if paginator.total_posts == 0 %}No posts{% elsif paginator.total_posts == 1 %}1 post{% else %}{{ paginator.total_posts }} posts{% endif %} <span class="bull">&bull;</span>
+                    </div>
+                    {% if author[1].url %}
+                        <a class="social-link social-link-wb" href="{{ author[1].url_full }}" target="_blank" rel="noopener">{% include website.html %}</a>
+                    {% endif %}
+                    {% if author[1].twitter %}
+                        <a class="social-link social-link-tw" href="https://twitter.com/{{ author[1].twitter }}" target="_blank" rel="noopener">{% include twitter.html %}</a>
+                    {% endif %}
+                    {% if author[1].facebook %}
+                        <a class="social-link social-link-fb" href="https://facebook.com/{{ author[1].facebook }}" target="_blank" rel="noopener">{% include facebook.html %}</a>
+                    {% endif %}
+                    <a class="social-link social-link-rss" href="https://feedly.com/i/subscription/feed/{{ site.url }}{{ site.baseurl }}author/{{ page.author }}/feed.xml" target="_blank" rel="noopener">{% include rss.html %}</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endif %}
+{% endfor %}
+<!-- /author -->
+
+<!-- The main content area -->
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <div class="post-feed">
+            <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
+            {%  include post-card.html %}
+        </div>
+
+    </div>
+</main>

@@ -1,66 +1,48 @@
 ---
 layout: default
+current: page
+class: page-template
+disqus: false
 ---
 
-{% include lang.html %}
+<!-- < default -->
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
 
-{% include assets-origin.html %}
+<!-- The big featured header, it uses blog cover image as a BG if available -->
+<header class="site-header outer">
+    <div class="inner">
+        {% include site-nav.html %}
+    </div>
+</header>
 
-<div class="row">
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
 
-  <!-- core -->
-  <div id="core-wrapper" class="col-12 col-lg-11 col-xl-8">
-    <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
 
-    {% capture _content %}
-      {% if layout.refactor or page.layout == 'page' %}
-        {% include refactor-content.html content=content %}
-      {% else %}
-        {{ content }}
-      {% endif %}
-    {% endcapture %}
+        <article class="post-full {% if page.tags.size > 0 %}{% for tag in page.tags %} tag-{{ tag | slugify: "latin" }}{% endfor %}{% endif %} {{ page.subclass }} {% unless page.cover %}no-image{% endunless %}">
 
-    {% if page.layout == 'page' or page.collection == 'tabs'%}
-      {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
-      <h1 class="dynamic-title">
-        {{ title }}
-      </h1>
-      <div class="post-content">
-        {{ _content }}
-      </div>
-    {% else %}
-      {{ _content }}
-    {% endif %}
+            <header class="post-full-header">
+                <h1 class="post-full-title">{{ page.title }}</h1>
+            </header>
+
+            {% if page.cover %}
+            <figure class="post-full-image" style="background-image: url({{ site.baseurl }}{{ page.cover }})">
+            </figure>
+            {% endif %}
+
+            <section class="post-full-content">
+                {{ content }}
+            </section>
+
+        </article>
 
     </div>
-  </div> <!-- #core-wrapper -->
+</main>
 
-  <!-- pannel -->
-  <div id="panel-wrapper" class="col-xl-3 pl-2 text-muted">
+<!-- /post -->
 
-    <div class="access">
-      {% include update-list.html %}
-      {% include trending-tags.html %}
-    </div>
-
-    {% for _include in layout.pannel_includes %}
-      {% assign _include_path = _include | append: '.html' %}
-      {% include {{ _include_path }} %}
-    {% endfor %}
-  </div>
-
-</div>
-
-<!-- tail -->
-{% if layout.tail_includes %}
-<div class="row">
-  <div class="col-12 col-lg-11 col-xl-8">
-    <div id="tail-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
-      {% for _include in layout.tail_includes %}
-        {% assign _include_path = _include | append: '.html' %}
-        {% include {{ _include_path }} %}
-      {% endfor %}
-    </div>
-  </div>
-</div> <!-- .row -->
-{% endif %}
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+{% include page-scripts.html %}

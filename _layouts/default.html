@@ -1,57 +1,139 @@
----
-layout: compress
-# Default layout
----
-
 <!DOCTYPE html>
+<html>
+<head>
 
-{% include lang.html %}
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-{% include assets-origin.html %}
+    <!-- Base Meta -->
+    {% include dynamic_title.html %}
+    <title>{% if title %}{{ title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
 
-{% capture prefer_mode %}
-  {% if site.theme_mode %}
-    data-mode="{{ site.theme_mode }}"
-  {% endif %}
-{% endcapture %}
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    {% include head.html %}
 
-<html lang="{{ site.lang }}"{{ prefer_mode }}>
+</head>
+<body class="{% if paginator.page > 1 %}paged archive-template{% elsif page.class %}{{ page.class }}{% else %}home-template{% endif %}">
 
-  {% include head.html %}
-
-  <body data-spy="scroll" data-target="#toc" data-topbar-visible="true">
-
-    {% include sidebar.html %}
-
-    {% include topbar.html %}
-
-    <div id="main-wrapper">
-      <div id="main">
-
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
         {{ content }}
 
-        {% include footer.html %}
+        <!-- Previous/next page links - displayed on every page -->
+        {% if paginator.total_posts > site.paginate %}
+            {% if page.class == 'home-template' %}
+                {% include post_pagination.html %}
+            {% elsif page.class == 'page-template' %}
+                {% include post_pagination.html %}
+            {% elsif page.class == 'author-template' %}
+                {% include author_pagination.html %}
+            {% elsif page.class == 'tag-template' %}
+                {% include tag_pagination.html %}
+            {% else %}
+                {% include post_pagination.html %}
+            {% endif %}
+        {% endif %}
 
-      </div>
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a> &copy; {{  site.time | date: '%Y' }}</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="{{ site.baseurl }}">Latest Posts</a>
+                    {% if site.facebook %}<a href="https://facebook.com/{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a>{% endif %}
+                    {% if site.twitter %}<a href="https://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener">Twitter</a>{% endif %}
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
 
-      {% include search-results.html %}
+    </div>
 
-    </div> <!-- #main-wrapper -->
-
-    {% if page.mermaid %}
-      {% include mermaid.html %}
+    <!-- The big email subscribe modal content -->
+    {% if site.subscribers %}
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                {% if site.logo %}
+                    <img class="subscribe-overlay-logo" src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}" />
+                {% endif %}
+                <h1 class="subscribe-overlay-title">Subscribe to {{ site.title }}</h1>
+                <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
+                {% include subscribe-form.html placeholder="youremail@example.com" %}
+            </div>
+        </div>
     {% endif %}
 
-    <div id="mask"></div>
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
 
-    <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
-      <i class="fas fa-angle-up"></i>
-    </a>
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="{{ site.baseurl }}assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
 
-    {% include search-loader.html %}
 
-    {% include js-selector.html %}
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('{{ paginator.total_pages }}');
+    </script>
+    <script src="{{ site.baseurl }}assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
 
-  </body>
+    {% if paginator.total_pages > site.paginate %}
+    <script>
+        var maxPages = parseInt('{{ paginator.total_pages }}');
+    </script>
+    <script src="{{ site.baseurl }}assets/js/infinitescroll.js"></script>
+    {% endif %}
 
+
+    <!-- Add Google Analytics  -->
+    {% include analytics.html %}
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    {% if page.class == "post-template" %}
+        {% include post-scripts.html %}
+    {% elsif page.class == "page-template" %}
+        {% include page-scripts.html %}
+    {% endif %}
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
 </html>

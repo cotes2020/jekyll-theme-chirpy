@@ -1,11 +1,15 @@
 ---
 title: Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)
-author:
-  name: Bean
-  link: https://github.com/beanie00
+author: Bean
 date: 2022-05-05 09:13:00 +0800
 categories: [etc, 기술블로그]
 tags: []
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover:  assets/img/post_images/jekyll_cover.jpeg
 ---
 
 ## Add flow chart using Mermaid

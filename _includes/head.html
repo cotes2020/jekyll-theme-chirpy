@@ -1,101 +1,69 @@
-<!--
-  The Head
--->
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    <link rel="shortcut icon" href="{{ site.url }}{{ site.baseurl }}{{ site.favicon }}" type="image/png" />
+    <link rel="canonical" href="{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove_first: '/' }}" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% if page.content and page.current == 'post' or page.current == 'about' %}
+        {% assign excerpt = page.content | strip_html | truncatewords: 50, "" %}
+     {% endif %} <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{% if title %}{{ title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta property="og:description" content="{% if excerpt %}{{ excerpt }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    <meta property="og:url" content="{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove_first: '/' }}" />
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% else %}{{ site.cover }}{% endif %}" />
+    <meta property="article:publisher" content="https://www.facebook.com/{{ site.facebook }}" />{% if excerpt %}
+    <meta property="article:author" content="https://www.facebook.com/{{ site.facebook }}" />
+    <meta property="article:published_time" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% elsif post.date %}{{ post.date | date_to_xmlschema }}{% endif %}" />
+    <meta property="article:modified_time" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% elsif post.date %}{{ post.date | date_to_xmlschema }}{% endif %}" />{% endif %}{% if page.tags.size > 0 %}
+    <meta property="article:tag" content="{{ page.tags | first | capitalizeall }}" />{% endif %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{% if title %}{{ title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta name="twitter:description" content="{% if excerpt %}{{ excerpt }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    <meta name="twitter:url" content="{{ site.url }}{{ site.baseurl }}" />
+    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% else %}{{ site.cover }}{% endif %}" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="{{ site.title }}" />{% if page.tags.size > 0 %}
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="{{ page.tags | first | capitalizeall }}" />{% endif %}
+    <meta name="twitter:site" content="@{{ site.twitter }}" />
+    <meta name="twitter:creator" content="@{{ site.twitter }}" />{% if excerpt %}
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />{% else %}
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />{% endif %}
 
-  <!-- Allow having a localized datetime different from the appearance language -->
-  {% if site.prefer_datetime_locale %}
-    <meta name="prefer-datetime-locale" content="{{ site.prefer_datetime_locale }}">
-  {% endif %}
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ site.title }}",
+        "logo": "{{ site.url }}{{ site.baseurl }}{{ site.logo }}"
+    },
+    "url": "{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove_first: '/' }}",
+    "image": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}{{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% else %}{{ site.cover }}{% endif %}",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove_first: '/' }}"
+    },
+    "description": "{% if excerpt %}{{ excerpt }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+}
+    </script>
 
-  {% if page.layout == 'home' or page.layout == 'post' %}
-
-    {% if site.google_analytics.pv.proxy_endpoint %}
-      <meta name="pv-proxy-endpoint" content="{{ site.google_analytics.pv.proxy_endpoint }}">
-    {% endif %}
-
-    {% if site.google_analytics.pv.cache_path %}
-      <meta name="pv-cache-path" content="{{ site.google_analytics.pv.cache_path | relative_url }}">
-    {% endif %}
-
-  {% endif %}
-
-  {% seo title=false %}
-
-  <title>
-  {%- unless page.layout == "home" -%}
-    {{ page.title | append: " | "}}
-  {%- endunless -%}
-    {{ site.title }}
-  </title>
-
-  {% include favicons.html %}
-
-  {% if site.resources.ignore_env != jekyll.environment and site.resources.self_hosted %}
-
-    <link href="{{ site.data.assets[origin].webfonts | relative_url }}" rel="stylesheet">
-
-  {% else %}
-
-    {% for cdn in site.data.assets[origin].cdns %}
-      <link rel="preconnect" href="{{ cdn.url }}" {{ cdn.args }}>
-      <link rel="dns-prefetch" href="{{ cdn.url }}" {{ cdn.args }}>
-    {% endfor %}
-
-    <link rel="stylesheet" href="{{ site.data.assets[origin].webfonts }}">
-
-  {% endif %}
-
-  <!-- GA -->
-  {% if jekyll.environment == 'production'
-      and site.google_analytics.id != empty and site.google_analytics.id %}
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
-
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-
-    {% if site.google_analytics.pv.proxy_endpoint %}
-      {% assign proxy_url = site.google_analytics.pv.proxy_endpoint
-          | replace: "https://", "" | split: "/" | first | prepend: "https://" %}
-      <link rel="preconnect" href="{{ proxy_url }}" crossorigin="use-credentials">
-      <link rel="dns-prefetch" href="{{ proxy_url }}">
-    {% endif %}
-  {% endif %}
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap.css }}">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ site.data.assets[origin].fontawesome.css }}">
-
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-
-  {% if site.toc and page.toc %}
-    <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap-toc.css }}">
-  {% endif %}
-
-  {% if page.layout == 'page' or page.layout == 'post' %}
-    <!-- Manific Popup -->
-    <link rel="stylesheet" href="{{ site.data.assets[origin].magnific-popup.css }}">
-  {% endif %}
-
-  <!-- JavaScript -->
-
-  <script src="{{ site.data.assets[origin].jquery.js }}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true});</script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        inlineMath: [['$','$']]
-      }
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
     });
-  </script>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </script> -->
 
-</head>
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" href="{{ site.baseurl }}feed.xml" />

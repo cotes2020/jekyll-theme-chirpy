@@ -1,12 +1,16 @@
 ---
 title: CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)
-author:
-  name: Bean
-  link: https://github.com/beanie00
+author: Bean
 date: 2022-04-09 16:32:00 +0800
 categories: [Web frontend, React]
 tags: [Catty, Next]
 mermaid: true
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover: assets/img/post_images/catty_cover2.png
 ---
 
 처음에 Catty 웹앱은 리액트 CSR로 개발되었다. CSR로 개발한 이유라면 SSR이 익숙치 않았고, 좀 더 빨리 프로토타입을 개발하고 싶어서 정도였던 거 같다.

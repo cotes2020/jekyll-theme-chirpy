@@ -1,11 +1,15 @@
 ---
 title: RxJava(2) - Reactive Streams
-author:
-  name: Bean
-  link: https://github.com/beanie00
+author: Bean
 date: 2022-01-10 22:42:00 +0800
 categories: [Mobile frontend, Android]
 tags: [RxJava]
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover:  assets/img/post_images/rxjava_cover.jpeg
 ---
 
 앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.

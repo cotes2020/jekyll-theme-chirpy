@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Automating emails with AWS SES</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Seize the day" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/img/favicons/favicon-32x32.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/Automating-emails-with-AWS-SES" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="PIGBEAN Tech blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Automating emails with AWS SES" />
+    <meta property="og:description" content="It’s pretty common for services to automatically send out welcome emails on sign-up. Given the positive influence these emails had on understanding the service I just signed up for, I decided to try adding on one to Catty as well.   Set up SES and verify an email address SES" />
+    <meta property="og:url" content="http://localhost:4000/Automating-emails-with-AWS-SES" />
+    <meta property="og:image" content="http://localhost:4000/assets/img/post_images/catty_cover2.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/false" />
+    <meta property="article:author" content="https://www.facebook.com/false" />
+    <meta property="article:published_time" content="2022-04-23T17:32:00+09:00" />
+    <meta property="article:modified_time" content="2022-04-23T17:32:00+09:00" />
+    <meta property="article:tag" content="Catty" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Automating emails with AWS SES" />
+    <meta name="twitter:description" content="It’s pretty common for services to automatically send out welcome emails on sign-up. Given the positive influence these emails had on understanding the service I just signed up for, I decided to try adding on one to Catty as well.   Set up SES and verify an email address SES" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/catty_cover2.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="PIGBEAN Tech blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Catty" />
+    <meta name="twitter:site" content="@false" />
+    <meta name="twitter:creator" content="@false" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "PIGBEAN Tech blog",
+        "logo": "http://localhost:4000/assets/img/favicons/android-chrome-256x256.png"
+    },
+    "url": "http://localhost:4000/Automating-emails-with-AWS-SES",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/img/post_images/catty_cover2.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/Automating-emails-with-AWS-SES"
+    },
+    "description": "It’s pretty common for services to automatically send out welcome emails on sign-up. Given the positive influence these emails had on understanding the service I just signed up for, I decided to try adding on one to Catty as well.   Set up SES and verify an email address SES"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Automating emails with AWS SES" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/img/favicons/android-chrome-256x256.png" alt="PIGBEAN Tech blog" /></a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/Catty/">Catty</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-catty post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="23 April 2022">23 April 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/catty/'>CATTY</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Automating emails with AWS SES</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/img/post_images/catty_cover2.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>It’s pretty common for services to automatically send out welcome emails on sign-up. Given the positive influence these emails had on understanding the service I just signed up for, I decided to try adding on one to Catty as well.</p>
+
+<p> </p>
+
+<h2 id="set-up-ses-and-verify-an-email-address">Set up SES and verify an email address</h2>
+
+<hr />
+
+<p>SES only allows emails to be sent from verified sources to prevent impersonating random email accounts. So before working with email templates, a verified identity must be registered first.</p>
+
+<p>Creating a identity is simple. After navigating to SES on the AWS console, under the <em>verified identities</em> tab, click on <em>create identity</em>. Then select identity type as <em>email address</em> and input the desired sender email and save.</p>
+
+<p>This should send a verification email to the registered email account, and just follow the procedures described in the email.</p>
+
+<p> </p>
+<h2 id="creating-email-template-on-ses">Creating email template on SES</h2>
+
+<hr />
+
+<p>First, I wrote the welcome email template to be sent to new users with HTML.</p>
+
+<div style="text-align: left">
+  <img src="/assets/img/post_images/email.png" />
+</div>
+
+<p>The HTML document can be registered to SES via either AWS SDK or AWS CLI. Using AWS SDK means I have to create a new Lambda function to programmatically call the API, which seemed like too much extra work, I decided to use the CLI instead. Perhaps committing to using AWS SDK can come later when the service expands and new templates need to be added often.</p>
+
+<p>Install AWS CLI
+<a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html</a></p>
+
+<p>Save AWS account credentials on CLI</p>
+
+<p><a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html">https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html</a></p>
+
+<p>According to the CLI documentation, <em>create-template</em> command takes the following as inputs:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">TemplateName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span> <span class="cm">/*Name of template*/</span>
+  <span class="dl">"</span><span class="s2">SubjectPart</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span> <span class="cm">/*Email title*/</span>
+  <span class="dl">"</span><span class="s2">TextPart</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span> <span class="cm">/*Email content as text, in the case where HTML is not supported*/</span>
+  <span class="dl">"</span><span class="s2">HtmlPart</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span> <span class="cm">/*Email HTML content as ESCAPED string*/</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>For escaping the HTML content, I used the following online tool.
+<a href="https://www.freeformatter.com/json-escape.html">https://www.freeformatter.com/json-escape.html</a></p>
+
+<p>After saving the inputs as a .json file and executing the command</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">aws</span> <span class="o">--</span><span class="nx">profile</span> <span class="nx">myprofile</span> <span class="nx">ses</span> <span class="nx">create</span><span class="o">-</span><span class="nx">template</span> <span class="o">--</span><span class="nx">cli</span><span class="o">-</span><span class="nx">input</span><span class="o">-</span><span class="nx">json</span> <span class="nx">file</span><span class="p">:</span><span class="c1">//path\to\json\file</span>
+</code></pre></div></div>
+
+<p>I received the success message and could see the template uploaded on the AWS console.</p>
+
+<p> </p>
+<h2 id="sending-templated-email-on-aws-cli">Sending templated email on AWS CLI</h2>
+
+<hr />
+
+<p>Before implementing a Lambda function to send emails, it’s always good to check if the template works as intended with the CLI.</p>
+
+<p>Similar to the create-template process, the CLI documentation states that send-templated-email mainly requires the following inputs.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">Source</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span> <span class="cm">/*Sender email verified on SES*/</span>
+<span class="dl">"</span><span class="s2">Template</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span> <span class="cm">/*Name of template to use*/</span>
+<span class="dl">"</span><span class="s2">Destination</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>  <span class="cm">/*Reciever email list*/</span>
+	<span class="dl">"</span><span class="s2">ToAddresses</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span> <span class="p">...],</span>
+  <span class="dl">"</span><span class="s2">CcAddresses</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span> <span class="p">...],</span>
+  <span class="dl">"</span><span class="s2">BccAddresses</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span> <span class="p">...]</span>
+<span class="p">},</span>
+<span class="dl">"</span><span class="s2">TemplateData</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span> <span class="cm">/*JSON string mapping parameters referenced in the template.
+												   The parameters MUST account for every variable in the template
+                           Or the email will not get through*/</span>
+</code></pre></div></div>
+
+<p>Again, save the following inputs as .json and execute the following command</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">aws</span> <span class="o">--</span><span class="nx">profile</span> <span class="nx">myprofile</span> <span class="nx">ses</span> <span class="nx">send</span><span class="o">-</span><span class="nx">templated</span><span class="o">-</span><span class="nx">email</span> <span class="o">--</span><span class="nx">cli</span><span class="o">-</span><span class="nx">input</span><span class="o">-</span><span class="nx">json</span> <span class="nx">file</span><span class="p">:</span><span class="c1">//path\to\json\file</span>
+</code></pre></div></div>
+
+<p>and I received a email identifier and I should see a new email on the receiver account, but nothing seemed to have come through!</p>
+
+<p>After scouring online for possible problems, apparently there might be some problems with the declaring the styles separately in the HTML…</p>
+
+<p> </p>
+<h2 id="updating-email-templates">Updating email templates</h2>
+
+<hr />
+
+<p>After changing everything in the HTML to inline styling, update the .json file used for creating template with the new HTML string.</p>
+
+<p>This time however, calling the create-template command again with the same file will cause an error saying that the template name already exists.</p>
+
+<p>Instead, the update-template command should be used like the following</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">aws</span> <span class="o">--</span><span class="nx">profile</span> <span class="nx">myprofile</span> <span class="nx">ses</span> <span class="nx">update</span><span class="o">-</span><span class="nx">template</span> <span class="o">--</span><span class="nx">cli</span><span class="o">-</span><span class="nx">input</span><span class="o">-</span><span class="nx">json</span> <span class="nx">file</span><span class="p">:</span><span class="c1">//path\to\json\file</span>
+</code></pre></div></div>
+
+<p>or delete the existing template with</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">aws</span> <span class="o">--</span><span class="nx">profile</span> <span class="nx">myprofile</span> <span class="nx">ses</span> <span class="k">delete</span><span class="o">-</span><span class="nx">template</span> <span class="o">--</span><span class="nx">template</span><span class="o">-</span><span class="nx">name</span> <span class="nx">templatename</span>
+</code></pre></div></div>
+
+<p>and use create-template to recreate it again.</p>
+
+<p>Retrying the email sending process on CLI and checking that it sends the desired email to the receiver account, it’s time to create an API with Lambda for the service to call.</p>
+
+<p> </p>
+<h2 id="sending-templated-email-with-aws-sdk">Sending templated email with AWS SDK</h2>
+
+<hr />
+
+<p>Set up the usual serverless framework and create the function to send emails through SES</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">send</span><span class="p">(</span><span class="nx">_data</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">_data</span><span class="p">)</span> <span class="k">as</span> <span class="nx">emailParams</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">sendParams</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">Content</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">Template</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">TemplateData</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">templateParams</span><span class="p">),</span>
+                <span class="na">TemplateName</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">template</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">Destination</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">ToAddresses</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">destination</span>
+        <span class="p">},</span>
+        <span class="na">FromEmailAddress</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sender@email.com</span><span class="dl">"</span>
+    <span class="p">};</span>
+    <span class="kd">const</span> <span class="nx">sendResult</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ses</span><span class="p">.</span><span class="nx">sendEmail</span><span class="p">(</span><span class="nx">sendParams</span><span class="p">).</span><span class="nx">promise</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+        <span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">).</span><span class="k">catch</span><span class="p">(</span>
+        <span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">);</span>
+    <span class="k">return</span> <span class="nx">sendResult</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>and the API handler</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">sendEmail</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">event received</span><span class="dl">"</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+    <span class="k">try</span><span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ses</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sendEmail</span><span class="p">:</span>
+    <span class="nx">handler</span><span class="p">:</span> <span class="nx">handler</span><span class="p">.</span><span class="nx">sendEmail</span>
+    <span class="nx">events</span><span class="p">:</span>
+      <span class="o">-</span> <span class="nx">http</span><span class="p">:</span>
+          <span class="nx">path</span><span class="p">:</span> <span class="o">/</span><span class="nx">email</span>
+          <span class="nx">method</span><span class="p">:</span> <span class="nx">post</span>
+          <span class="nx">cors</span><span class="p">:</span> <span class="kc">true</span>
+</code></pre></div></div>
+
+<p>And it’s complete! Now Catty service can call this API to send welcome emails to new users on sign-up. The API currently receives template name to account for multiple types of emails required to be sent in the future.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/images/ghost.png" alt="Pig" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/Pig">Skinnig</a></h4>
+                                
+                                    <p>I'm Dong Hyeok Kim (Skinnig) BS student @ KAIST CS & Back End Software Engineer & Co-founder @ DearPlants</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/Pig">Read More</a>
+                        </div>
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            var this_page_url = 'http://localhost:4000/Automating-emails-with-AWS-SES';
+                            var this_page_identifier = '/Automating emails with AWS SES';
+                            var this_page_title = 'Automating emails with AWS SES';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://PIGBEAN.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/img/style/bean.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; PIGBEAN Tech blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/catty/">Catty</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">리소스 기반 노트 작성 서비스 Catty 소개</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)">크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0">웹앱 클립보드 리스너 만들기</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/catty/">
+                                
+                                    See all 10 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/iTerm%EC%9C%BC%EB%A1%9C-MAC-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%BE%B8%EB%AF%B8%EA%B8%B0">
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/iterm_cover.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/iTerm%EC%9C%BC%EB%A1%9C-MAC-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%BE%B8%EB%AF%B8%EA%B8%B0">
+                <header class="post-card-header">
+                    
+
+                    <h2 class="post-card-title">iTerm으로 MAC 터미널 꾸미기</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>어느 순간 개발하다가 요즘 제일 많이 쳐다보는게 1등 VS Code 2등 terminal라는 걸 깨달았다. 생각보다 terminal을 들여다보고 개발하는 시간이 길었는데, 이왕 이렇게 많이 볼 거 좀 더 이쁘면 좋겠다는 생각이 들어 terminal을 꾸며보았다.</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Bean/">Beanie</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0">
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/readmode_cover.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Catty</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Extension</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 웹사이트를 읽기모드로 바꿔주는 기능의 앱도 인기를 끌고 있다.</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Bean/">Beanie</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+                <img src="/assets/img/favicons/favicon-32x32.png" alt="PIGBEAN Tech blog icon" />
+            
+            <span>PIGBEAN Tech blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Automating emails with AWS SES</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Automating+emails+with+AWS+SES&amp;url=https://beanie00.github.io/Automating-emails-with-AWS-SES"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://beanie00.github.io/Automating-emails-with-AWS-SES"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">PIGBEAN Tech blog</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -1,203 +1,95 @@
-# The Site Configuration
+# Jekyll configuration
+markdown: kramdown
+highlighter: rouge
+paginate: 100 # it will paginate after this number
+language: 'ko'
+words_per_minute: 200
 
-# Import the theme
-theme: jekyll-theme-chirpy
+# edit baseurl to simply '/' if using as your personal page (instead of a project page)
+baseurl: /
 
-# Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
-# and doesn't have a custom domain.
-baseurl: ''
+# Website info
+title: PIGBEAN Tech blog
+description: Seize the day
+cover: assets/img/style/bean.jpg
+logo: assets/img/favicons/android-chrome-256x256.png
+logo_dark: assets/img/favicons/favicon-32x32.png
+favicon: assets/img/favicons/favicon-32x32.png
+CNAME: #add cname for website to be created
 
-# The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
-# If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
-# otherwise, the layout language will use the default value of 'en'.
-lang: en
+# Social info
+navigation: True # show the navbar links
+subscribers: False # you need to connect an external service for this to work,
+# if 'True' the submit button is disabled for now, but you can change that
+# by editing `_includes/subscribe-form.html`
+twitter: False # replace by your username
+facebook: False # replace by your username
 
-# Additional parameters for datetime localization, optional. › https://github.com/iamkun/dayjs/tree/dev/src/locale
-prefer_datetime_locale:
+# Disqus
+disqus: True
+disqus_shortname: PIGBEAN # replace with your disqus username
 
-# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Seoul
+# Google Analytics
+google_analytics: UA-69281367-1 # replace with your GA tracking identifier
 
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-# ↓ --------------------------
+# Permalinks
+permalink: /:title
+# permalink: /author/:author
+# permalink: /tag/:tag
 
-title: PIGBEAN Tech Blog                          # the main title
+# Authors' info in `_data/authors.yml`
+# Tags' info in `_data/tags_info.yml`
 
-tagline: Seize the day.   # it will display as the sub-title
+# gems and other configs
+plugins_dir: [_plugins]
+plugins: [jekyll-paginate, jekyll-feed]
 
-description: >-                        # used by seo meta and the atom feed
-  Two SW devs, 🐽와 🥜, blogging on projects and tech topics.
+feed:
+  path: feed.xml
 
-# fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://beanie00.github.io'
+# Additional settings available on the front-matter
+# Site logo in the index.html (as in demo.ghost.io)
+# Author's page cover in _layouts/author.html
+# The same for page.html and tag.html layouts
+# Post's page cover as a per-post basis _posts/...
+# Disqus comments as a per-post basis
+# ...
 
-github1:
-  username: beanie00             # change to your github username
+# Settings for building master branch with travis-ci
+# with jekyll-travis
 
-github2:
-  username: kimdh98             # change to your github username
-
-twitter:
-  username: twitter_username            # change to your twitter username
-
-email1: beaniejh0@gmail.com
-email2: clovis9870@gmail.com
-
-social:
-  # Change to your full name.
-  # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: pigbean
-  email: pigbean.official@gmail.com             # change to your email address
-  links:
-    # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/beanie00       # change to your github homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
-
-google_site_verification:               # fill in to your verification string
-
-# ↑ --------------------------
-# The end of `jekyll-seo-tag` settings
-
-google_analytics:
-  id:                 # fill in your Google Analytics ID
-  # Google Analytics pageviews report settings
-  pv:
-    proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
-    cache_path:       # the local PV cache data, friendly to visitors from GFW region
-
-# Prefer color scheme setting.
-#
-# Note: Keep empty will follow the system prefer color by default,
-# and there will be a toggle to switch the theme between dark and light
-# on the bottom left of the sidebar.
-#
-# Available options:
-#
-#     light  - Use the light color scheme
-#     dark   - Use the dark color scheme
-#
-theme_mode:   # [light|dark]
-
-# The CDN endpoint for images.
-# Notice that once it is assigned, the CDN url
-# will be added to all image (site avatar & posts' images) paths starting with '/'
-#
-# e.g. 'https://cdn.com'
-img_cdn:
-
-# the avatar on sidebar, support local or CORS resources
-avatar: https://images.unsplash.com/photo-1633674863345-b8eeb3aad69c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80
-
-# boolean type, the global switch for ToC in posts.
-toc: true
-
-comments:
-  active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
-  # The active options are as follows:
-  disqus:
-    shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-  # utterances settings › https://utteranc.es/
-  utterances:
-    repo:         # <gh-username>/<repo>
-    issue_term:   # < url | pathname | title | ...>
-  # Giscus options › https://giscus.app
-  giscus:
-    repo:             # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
-    mapping:          # optional, default to 'pathname'
-    input_position:   # optional, default to 'bottom'
-    lang:             # optional, default to the value of `site.lang`
-
-# Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
-assets:
-  self_host:
-    enabled:      # boolean, keep empty means false
-    # specify the Jekyll environment, empty means both
-    # only works if `assets.self_host.enabled` is 'true'
-    env:          # [development|production]
-
-paginate: 10
-
-# ------------ The following options are not recommended to be modified ------------------
-
-kramdown:
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:   # Rouge Options › https://github.com/jneen/rouge#full-options
-    css_class: highlight
-    # default_lang: console
-    span:
-      line_numbers: false
-    block:
-      line_numbers: true
-      start_line: 1
-
-collections:
-  tabs:
-    output: true
-    sort_by: order
-
-defaults:
-  - scope:
-      path: ''          # An empty string here means all files in the project
-      type: posts
-    values:
-      layout: post
-      comments: true    # Enable comments in posts.
-      toc: true         # Display TOC column in posts.
-      # DO NOT modify the following parameter unless you are confident enough
-      # to update the code of all other post links in this project.
-      permalink: /posts/:title/
-  - scope:
-      path: _drafts
-    values:
-      comments: true
-  - scope:
-      path: ''
-      type: tabs             # see `site.collections`
-    values:
-      layout: page
-      permalink: /:title/
-  - scope:
-      path: assets/img/favicons
-    values:
-      swcache: true
-  - scope:
-      path: assets/js/dist
-    values:
-      swcache: true
-
-sass:
-  style: compressed
-
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  profile: false
-  blanklines: false
-  ignore:
-    envs: [development]
+# Settings for deploy rake task
+# Username and repo of Github repo, e.g.
+# https://github.com/USERNAME/REPO.git
+# username defaults to ENV['GIT_NAME'] used by Travis
+# repo defaults to USERNAME.github.io
+# Branch defaults to "source" for USERNAME.github.io
+# or "master" otherwise
+safe: False
+lsi: False
+username: beanie00
+repo: beanie00.github.io
+branch: master
+relative_source: ./
+destination: ./build
+production_url:  https://beanie00.github.io/
+source_url:  https://github.com/beanie00/beanie00.github.io
 
 exclude:
-  - '*.gem'
-  - '*.gemspec'
-  - tools
-  - README.md
-  - LICENSE
-  - gulpfile.js
+  - assets/css
   - node_modules
-  - package*.json
-
-jekyll-archives:
-  enabled: [categories, tags]
-  layouts:
-    category: category
-    tag: tag
-  permalinks:
-    tag: /tags/:name/
-    category: /categories/:name/
+  - vendor
+  - .travis.yml
+  - Gemfile
+  - Gemfile.lock
+  - GHOST.txt
+  - gulpfile.js
+  - LICENSE
+  - package.json
+  - package-lock.json
+  - Rakefile
+  - README.md
+  - script.py
+  - changelog.md
+  - "*.Rmd"
+  - .git*

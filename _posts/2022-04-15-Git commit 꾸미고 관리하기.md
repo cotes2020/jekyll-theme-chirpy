@@ -6,6 +6,7 @@ author:
 date: 2022-04-15 19:19:00 +0800
 categories: [etc, git]
 tags: []
+cover: assets/img/post_images/github_cover.jpeg
 ---
 
 Git 커밋 정리는 이전부터 해야지 마음먹었는데 계속 미루고 있었다. 계속 미루면 안될 거 같아 Git project 오픈하면서 같이 정리해보았다. 우선 커밋 메시지 템플릿은 검색하니까 많이 나왔다. 다 비슷한 내용인데 그 중 괜찮은 템플릿을 가져왔다.

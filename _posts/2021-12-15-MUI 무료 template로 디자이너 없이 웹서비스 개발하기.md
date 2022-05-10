@@ -1,11 +1,15 @@
 ---
 title: MUI 무료 template로 디자이너 없이 웹서비스 개발하기
-author:
-  name: Bean
-  link: https://github.com/beanie00
+author: Bean
 date: 2021-12-15 13:21:00 +0800
 categories: [Projects]
 tags: []
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover:  assets/img/post_images/mui_cover.jpg
 ---
 
 회사 개발 프로젝트로 빠르게 웹앱을 개발해야 할 일이 생겼다. 그렇지만 팀리소스가 부족해 디자이너가 없는 상황에서 웹서비스를 개발해야 했다. 개발하는 서비스는 `로우로깅` 서비스로, 체크리스트 형식으로 쉽고 빠르게 회사에 맞는 개인정보 처리방침을 생성해주고 이 내용을 기반으로 변호사 온라인 상담을 받을 수 있도록 지원해주는 서비스 이다. 서비스는 [https://www.lawlogging.kr/](https://www.lawlogging.kr/)에서 확인할 수 있다.

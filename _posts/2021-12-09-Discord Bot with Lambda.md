@@ -1,11 +1,15 @@
 ---
 title: Discord Bot with Lambda
-author:
-  name: Pig
-  link: https://github.com/kimdh98
+author: Pig
 date: 2021-12-09 13:21:00 +0800
 categories: [Projects]
 tags: [Discord, Lambda]
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover:  assets/img/post_images/discord.jpg
 ---
 
 ## Prerequisites
@@ -21,7 +25,7 @@ Set up a discord bot interactions endpoint with AWS Lambda and API Gateway to ac
 
 ## Experiment Journal
 
-After reminiscing with a friend about the good old days of playing minecraft together in our server, we decided to start up a fresh new server and get back into it(a~~ll roads lead down to minecraft..~~). 
+After reminiscing with a friend about the good old days of playing minecraft together in our server, we decided to start up a fresh new server and get back into it(a~~ll roads lead down to minecraft..~~).
 
 ![Fun times...](/assets/img/post_images/discord1.jpg)
 
@@ -40,13 +44,13 @@ After setting up a bot profile on [discord](https://discord.com/developers/appli
 ![Untitled](/assets/img/post_images/discord7.png)
 
 1. Respond to a PING request
-    
+
     ![Official discord documentation on PING request](/assets/img/post_images/discord4.png)
-    
+
     Official discord documentation on PING request
-    
+
     To test if the server is ready to respond to the bot’s requests, it will send out a PING request to the server, signified as a type 1(PING) request. Responding to this request is simple, the server just needs to return a similar response of type 1(PONG). I’ve done this by defining a special type 1 response in my response wrapper function.
-    
+
     ```jsx
     export const response = (data: string, type: number) => {
         if (type == 1) {
@@ -67,7 +71,7 @@ After setting up a bot profile on [discord](https://discord.com/developers/appli
                 "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, RefreshToken, X-Requested-With",
                 "Access-Control-Allow-Credentials": false,
             },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 type: 4,
                 data: {
                     tts: false,
@@ -77,21 +81,21 @@ After setting up a bot profile on [discord](https://discord.com/developers/appli
         };
     }
     ```
-    
+
 2. Validate request signatures
-    
+
     ![Official discord documentation on validating signatures](/assets/img/post_images/discord5.png)
-    
+
     Official discord documentation on validating signatures
-    
+
     As the documentation explains, this step is required by discord to ensure that our server does not allow access from anywhere except our bot. The bot will send a 'x-signature-ed25519’ in the request header, which is the encoded form of the request body and current timestamp. The request will also include the used timestamp in the headers as 'x-signature-timestamp’.
-    
+
     Validating the signature requires the use of a NaCl library for Javascript, tweetnacl. Since NaCl library is not part of the standard libraries on Lambda, adding a layer is required. To do this, I created an independent node package containing the NaCl library with npm, and zipped it up to be used as a layer in my project directory.
-    
+
     ![Untitled](/assets/img/post_images/discord6.png)
-    
+
     Then, I added the following lines to serverless.yml to add this layer to deployment package
-    
+
     ```jsx
     layers:
       serverbotLayer:
@@ -100,27 +104,27 @@ After setting up a bot profile on [discord](https://discord.com/developers/appli
         compatibleRuntimes: nodejs12.x
         description: "node modules for serverbot"
     ```
-    
+
     One last preparation step to validate incoming signature is finding out my bot’s public key, which can be found under the ‘general information’ section of the bot page. Remember to keep this key stored safely elsewhere and refer to it instead of exposing it in the code.
-    
+
     ![제목 없음.png](/assets/img/post_images/discord2.png)
-    
+
     Now, all that’s left is to follow discord documentation’s sample code and validate the incoming signatures.
-    
+
     ```jsx
     export const discordHandler = async (event: lambda.APIGatewayProxyEvent, context: lambda.Context) => {
         console.log('event receieved: ', event);
         const signature = event.headers['x-signature-ed25519'];
         const timestamp = event.headers['x-signature-timestamp'];
         const body = event.body; // rawBody is expected to be a string, not raw bytes
-        
+
         const isVerified = nacl.sign.detached.verify(
           Buffer.from(timestamp + body),
           Buffer.from(signature, 'hex'),
           Buffer.from(secrets.PUBLIC_KEY, 'hex')
         );
         const data = JSON.parse(event.body);
-        if (isVerified) { 
+        if (isVerified) {
     		//on valid signature
             try {
                 switch (data.type) {
@@ -146,11 +150,11 @@ After setting up a bot profile on [discord](https://discord.com/developers/appli
         }
     }
     ```
-    
+
 3. Set up the endpoint with Serverless framework
-    
+
     Register the discordHandler function on serverless.yml and deploy!
-    
+
     ```jsx
     functions:
       discordHandler:
@@ -162,9 +166,9 @@ After setting up a bot profile on [discord](https://discord.com/developers/appli
               path: /
               method: post
     ```
-    
+
     After the function has been uploaded to lambda, I can now register the endpoint on the bot without any errors.
-    
+
     ![Copy and paste the endpoint url from API gateway here](/assets/img/post_images/discord3.png)
-    
+
     Copy and paste the endpoint url from API gateway here

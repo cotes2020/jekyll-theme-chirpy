@@ -1,11 +1,15 @@
 ---
 title: Automating emails with AWS SES
-author:
-  name: Pig
-  link: https://github.com/beanie00
+author: Pig
 date: 2022-04-23 16:32:00 +0800
 categories: [Projects]
 tags: [Catty]
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover: assets/img/post_images/catty_cover2.png
 ---
 
 It’s pretty common for services to automatically send out welcome emails on sign-up. Given the positive influence these emails had on understanding the service I just signed up for, I decided to try adding on one to Catty as well.

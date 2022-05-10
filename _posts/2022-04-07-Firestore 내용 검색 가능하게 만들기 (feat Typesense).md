@@ -1,11 +1,15 @@
 ---
 title: Firestore 내용 검색 가능하게 만들기 (Feat. Typesense)
-author:
-  name: Bean
-  link: https://github.com/beanie00
+author: Bean
 date: 2022-04-09 16:32:00 +0800
 categories: [Web frontend, React]
 tags: [Catty, Typesense]
+layout: post
+current: post
+class: post-template
+subclass: 'post'
+navigation: True
+cover: assets/img/post_images/catty_cover2.png
 ---
 
 Firestore는 전체 텍스트 검색이 되지 않는다. [Firebase 공식 문서](https://firebase.google.com/docs/firestore/solutions/search?provider=typesense)에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 `Elastic`, `Algolia`, `Typesense` 3가지 인데 그 중에서 Catty 서비스에는 [Typesense](https://typesense.org/)를 사용하였다. 원하는 기능이 다 있으면서 가격이 가장 합리적이기 때문이다. 뿐만 아니라 사실 돈을 지불하는 부분은 클라우드 서비스이고 도커에 별도로 시스템을 구축한다면 그마저도 내지 않아도 괜찮다. 그렇지만 지금은 별도의 시스템을 만들 여력이 없기 때문에 그냥 돈내고 클라우드 서비스를 사용했다.
