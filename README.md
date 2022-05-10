@@ -2,6 +2,7 @@
 
 [![Automatic build](https://github.com/Booodaness/tempus-spatium/actions/workflows/pages-deploy.yml/badge.svg)](https://github.com/Booodaness/tempus-spatium/actions/workflows/pages-deploy.yml)
 [![Website](https://img.shields.io/website?down_color=critical&down_message=down&up_color=success&up_message=up&url=https%3A%2F%2Fbooodaness.github.io%2Ftempus-spatium%2F)](https://booodaness.github.io/tempus-spatium/)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Booodaness/tempus-spatium)](https://github.com/Booodaness/tempus-spatium/commits/main)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-important)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## About
@@ -120,4 +121,3 @@ The blog posts can be cited as BibTeX in the form,
 ```
 
 where `post_title` is the title of the post and `post_name` is the part of its URL succeeding `https://booodaness.github.io`.
-
