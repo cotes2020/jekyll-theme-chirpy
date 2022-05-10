@@ -9,7 +9,7 @@ image:
 
 - [Question during interview](#question-during-interview)
   - [AWS](#aws)
-    - [receive and read the offset with data](#receive-and-read-the-offset-with-data)
+    - [Streaming packet processing](#streaming-packet-processing)
     - [calculate number of 1s in the binary form.](#calculate-number-of-1s-in-the-binary-form)
     - [1 亚麻order](#1-亚麻order)
   - [Apple](#apple)
@@ -36,9 +36,14 @@ image:
 ---
 
 
-### receive and read the offset with data
+### Streaming packet processing
+
+receive and read the offset with data
 
 start read with 0.
+
+A packet is defined with two elements
+
 - {offset:1, data [12, 4]}
 - {offset:0, data [0]}
 
