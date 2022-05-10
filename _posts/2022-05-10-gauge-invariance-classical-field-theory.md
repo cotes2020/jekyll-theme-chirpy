@@ -136,20 +136,7 @@ As the dependency of both Lagrangians on the field is the same, we have in gener
 
 $$\widehat{\mathcal{L}} = \mathcal{L} \left( \phi, \dots \right)$$
 
-Since the new Lagrangian is gauge-invariant, the only derivatives of the field it can contain are covariant derivatives. Let us find the dependency of the new Lagrangian on the covariant derivatives of the fields:
-
-$$
-\begin{align}
-\frac{\partial \widehat{\mathcal{L}}}{\partial \left( D_\mu \widetilde{\phi}^a \right)} & = \frac{\partial \widehat{\mathcal{L}}}{\partial \left( \partial_\nu \widetilde{\phi}^b \right)} \frac{\partial \left( \partial_\nu \widetilde{\phi}_a \right)}{\partial \left( D_\mu \widetilde{\phi}_b \right)} \\
- & = \frac{\partial \mathcal{L}}{\partial \left( \partial_\nu \widetilde{\phi}^b \right)} \frac{\partial}{\partial \left( D_\mu \widetilde{\phi}_b \right)} \left( D_\nu \widetilde{\phi}_b + \widetilde{\phi}_c G^c_{\phantom{c} \nu b} \right) \\
- & = \frac{\partial \mathcal{L}}{\partial \left( \partial_\nu \widetilde{\phi}^b \right)} \delta^\mu_{\phantom{\mu} \nu} \\
- & = \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \widetilde{\phi}^b \right)}
-\end{align}
-$$
-
-In the second step, we replaced $$\displaystyle{ \frac{\partial \widehat{\mathcal{L}}}{\partial \left( \partial_\nu \widetilde{\phi}^b \right)} }$$ with $$\displaystyle{ \frac{\partial \mathcal{L}}{\partial \left( \partial_\nu \widetilde{\phi}^b \right)} }$$ as it is only $$\mathcal{L}$$ that truly depends on the partial derivatives of the fields. If in any situation, the covariant derivatives reduce to partial derivatives, we must also have $$\widehat{\mathcal{L}}$$ reduce to $$\mathcal{L}$$.
-
-Thus, we see that $$\mathcal{L}$$ depends on the covariant derivatives of the field in the same way as $$\mathcal{L}$$ depends on the partial derivatives of the same. Hence,
+Since the new Lagrangian is gauge-invariant, the only derivatives of the field it can contain are covariant derivatives. For the new Lagrangian to preserve as many properties of the original Lagrangian as possible, we simply replace the partial derivatives in the latter with covariant derivatives. Thus, we find,
 
 $$\widehat{\mathcal{L}} = \mathcal{L} \left( \phi, D_\mu \phi \right)$$
 
@@ -161,6 +148,6 @@ Therefore, the recipe for introducing gauge symmetry into a Lagrangian is to sim
 
 ## Conclusion
 
-At last, we have successfully found a Lagrangian which preserves the gauge invariance of physical solution fields. Now, we are left to explore the deep facts it reveals about nature. The most striking among them is the conservation of charge, which emerges in scalar electrodynamics from the gauge invariance of complex-valued fields under $$U \left( 1 \right)$$. I shall try to cover it in a future series on quantum mechanics.
+At last, we have successfully found a Lagrangian which preserves the gauge invariance of physical solution fields. Now, we are left to explore the deep facts it reveals about nature. One of the most striking among them is the conservation of charge, which emerges in scalar electrodynamics from the gauge invariance of complex-valued fields under $$U \left( 1 \right)$$. I shall try to cover it in a future series on quantum mechanics.
 
 However, the manner in which the said conservation law emerges (continuity equation) can be seen even in classical field theory. I did not cover it here as it would make the post too long. So, it will be the subject of a new post in the near future. Stay tuned! :)
