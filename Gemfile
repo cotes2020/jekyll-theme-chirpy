@@ -6,3 +6,4 @@ gem "rake", "~> 13.0.3"
 gem "slugify", "~> 1.0.7"
 
 gem "webrick", "~> 1.7"
+gem "html-proofer"
