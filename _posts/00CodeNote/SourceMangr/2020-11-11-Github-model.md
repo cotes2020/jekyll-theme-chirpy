@@ -1,13 +1,18 @@
 ---
 title: GitHub - A successful Git branching model
 date: 2020-11-11 11:11:11 -0400
-categories: [00CodeNote]
+categories: [00CodeNote, SourceMagr]
 tags: [git]
 toc: true
 image:
 ---
 
-[toc]
+- [A successful Git branching model](#a-successful-git-branching-model)
+  - [The main branches](#the-main-branches)
+  - [Supporting branches](#supporting-branches)
+    - [Feature branches](#feature-branches)
+    - [Release branches](#release-branches)
+    - [Hotfix branches](#hotfix-branches)
 
 ---
 
