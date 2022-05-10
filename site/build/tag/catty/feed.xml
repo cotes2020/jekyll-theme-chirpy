@@ -1,0 +1,1306 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="http://localhost:4000/tag/catty/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-05-11T07:24:52+09:00</updated>
+  <id>http://localhost:4000/tag/catty/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">PIGBEAN Tech blog | </title>
+  
+
+  
+    <subtitle>Seize the day</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title>
+      <link href="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" />
+      <published>2022-05-10T13:32:00+09:00</published>
+      <updated>2022-05-10T13:32:00+09:00</updated>
+      <id>http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EB%B0%98%20%EB%85%B8%ED%8A%B8%20%EC%9E%91%EC%84%B1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20Catty%20%EC%86%8C%EA%B0%9C</id>
+      <content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;catty-서비스가-뭔데&quot;&gt;Catty 서비스가 뭔데?&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/catty.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Catty는 리소스 기반의 노트 작성 서비스이다. 당장 나를 포함해 많은 사람들이 과제를 하거나 보고서를 작성하거나 스터디를 할 때, 인터넷 상의 다양한 자료들을 참고하여 글을 적곤 한다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/catty_introduce6.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;그렇지만 글을 적으면서 리서치를 하다보면 이렇게 탭이 많아지기 일수이다. 이렇게 되면 어떤 탭이 어떤 내용을 담고 있는 지 확인도 어려워지고, 탭을 계속 왔다갔다 하며 글을 적어야 해서 시간도 오래걸리고 불편하다.&lt;/p&gt;
+
+&lt;p&gt;또한 개인적으로 지하철이나 버스에서 이동하면서 자료조사를 하는 경우가 많은 데 이렇게 찾은 자료들은 막상 글을 쓰면서 참고하려고 하면 어디에 저장되어 있는 지 찾기가 어렵다. 결국 유용했던 리소스를 다시 뒤져가며 찾거나 포기하고 새로 리서치를 시작할 때도 있다.&lt;/p&gt;
+
+&lt;p&gt;Catty는 이런 불편함에서 시작해서 여러 리소스를 활용하여 노트를 작성하기에 편리한 다양한 기능들을 녹였다.&lt;/p&gt;
+
+&lt;!-- * 핵심 키워드
+  * 리소스 수집 / 리소스 하이라이트 / 노트 작성
+
+* 기술 스택
+  * `React` `Next` `typescript` `Redux-toolkit` `tailwind css` `eslint` `prettier` `Typesense` `Firestore` `AWS Lambda` `AWS S3` `Vercel` --&gt;
+
+&lt;p&gt;Catty 서비스는 크게 &lt;strong&gt;리소스 수집&lt;/strong&gt;, &lt;strong&gt;리소스 하이라이트&lt;/strong&gt;, &lt;strong&gt;노트 작성&lt;/strong&gt; 3개의 기능으로 나뉜다. 각각의 기능을 아래에서 더 자세히 설명하였다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;1-리소스-수집&quot;&gt;&lt;strong&gt;(1) 리소스 수집&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;Catty에서는 모바일-웹에서 편리하게 자료를 수집할 수 있는 다양한 방법들을 지원한다. Catty의 웹클리퍼, 앱을 이용하면 한 번의 클릭으로 웹상의 리소스를 바로 수집할 수 있다!&lt;/p&gt;
+
+&lt;p&gt;자료를 수집할 때 폴더와 태그를 선택할 수 있다. 태그는 인스타그램 태그 남기듯이 자료를 수집할 때 메모에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt;과 함께 태그를 남겨 추가할 수 있다. 이 태그가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(3) 노트 작성&lt;/code&gt;에서 노트 작성할 때 참고할 자료들의 기준이 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;크롬-익스텐션웹클리퍼&quot;&gt;크롬 익스텐션(웹클리퍼)&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;아래 동영상에서 보여지듯이 Catty 웹클리퍼를 통해 버튼 클릭만으로 웹페이지 url, 스크린샷, 그리고 유튜브 영상 캡쳐를 바로 수집할 수 있다.&lt;/p&gt;
+&lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
+  &lt;source src=&quot;/assets/img/post_images/catty_introduce1.mov&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;Catty 크롬 익스텐션은 &lt;a href=&quot;https://chrome.google.com/webstore/detail/catty-web-clipper/kjajbpgmgnojjjjihidkagemppicbjpg&quot;&gt;https://chrome.google.com/webstore/detail/catty-web-clipper/kjajbpgmgnojjjjihidkagemppicbjpg&lt;/a&gt;에서 다운받을 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;모바일앱&quot;&gt;모바일앱&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;모바일앱에서도 다양한 타입의 자료를 추가할 수 있다. 특히 바로가기 기능을 통해 앱을 열지 않고 상단바의 버튼 클릭으로 자료를 추가할 수도 있다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/catty_introduce7.png&quot; width=&quot;60%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;웹앱&quot;&gt;웹앱&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;웹앱에서는 아래 그림의 화살표가 가리키는 패널에 파일을 드래그 드롭으로 끌어다 놓거나 버튼을 클릭하여 자료를 추가할 수 있다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/catty_introduce3.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;2-리소스-하이라이트&quot;&gt;&lt;strong&gt;(2) 리소스 하이라이트&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;또한 Catty에서는 리소스 하이라이트 기능을 제공한다. 수집한 리소스에서 특히 중요한 부분을 기록하고, 또한 이렇게 하이라이트한 부분을 통해서 자료 검색도 가능하다. 각각의 자료 타입에 대한 하이라이트 사용 예시는 아래에서 확인할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;북마크-하이라이트&quot;&gt;북마크 하이라이트&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;Catty 웹에서 수집한 북마크 자료를 보다 읽기 편한 읽기모드로 확인할 수 있다. 이 읽기모드에서 중요한 내용을 드래그 하면 하이라이트 팝업이 뜬다. 여기서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add highlight&lt;/code&gt; 버튼을 누르면 북마크 하이라이트가 추가된다.&lt;/p&gt;
+
+&lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
+  &lt;source src=&quot;/assets/img/post_images/catty_introduce2.mov&quot; type=&quot;video/webm&quot; /&gt;
+&lt;/video&gt;
+&lt;!-- &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;video width=&quot;100%&quot; controls src=&quot;/assets/img/post_images/catty_introduce2.mov&quot;&gt;&lt;/video&gt;
+&lt;/div&gt; --&gt;
+
+&lt;h3 id=&quot;유튜브-하이라이트&quot;&gt;유튜브 하이라이트&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;Catty 웹에서 수집한 북마크 자료를 보다 읽기 편한 읽기모드로 확인할 수 있다. 이 읽기모드에서 중요한 내용을 드래그 하면 하이라이트 팝업이 뜬다. 여기서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add highlight&lt;/code&gt; 버튼을 누르면 북마크 하이라이트가 추가된다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/catty_introduce5.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;pdf-하이라이트&quot;&gt;PDF 하이라이트&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;업로드한 PDF 파일이나 북마크 중 url이 ‘.pdf’로 끝나는 자료는 PDF 최적화 보기가 제공된다. 이 PDF view에서 북마크 때와 마찬가지로 중요한 내용을 드래그 한 뒤 메모를 추가하여 하이라이트를 남길 수 있다.&lt;/p&gt;
+&lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
+  &lt;source src=&quot;/assets/img/post_images/catty_introduce4.mov&quot; type=&quot;video/webm&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;3-노트-작성&quot;&gt;&lt;strong&gt;(3) 노트 작성&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;이제 이렇게 수집한 자료들을 듀얼뷰로 동시에 확인하며 노트를 작성할 수 있다! 앞서 모은 자료들 중 노트를 쓸 때 참고하고 싶은 자료들의 폴더와 태그를 지정하면 그 자료들을 참고할 수 있다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/catty_introduce9.png&quot; width=&quot;70%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;
+ 
+이제 이렇게 보다 빠르고 쉽게 나만의 노트를 작성할 준비가 모두 끝났다!&lt;/p&gt;
+
+&lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
+  &lt;source src=&quot;/assets/img/post_images/catty_introduce8.mov&quot; type=&quot;video/webm&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;&lt;br /&gt;
+ 
+마지막으로 Network 탭으로 이동하면, 이렇게 수집하고, 작성한 리소스를 태그를 기준으로 연결된 그래프 뷰로 확인할 수 있다. 이 그래프 뷰에서 각각의 노드를 누르면 해당 태그의 자료들을 모아보거나 노트를 확인할 수 있다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/network.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;
+ 
+p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattynote.com/&quot;&gt;https://www.cattynote.com/&lt;/a&gt;에서 무료로 사용해볼 수 있어요. 놀러오세요!&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Catty" />
+      
+
+      
+        <summary type="html">작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)</title>
+      <link href="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)" rel="alternate" type="text/html" title="크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)" />
+      <published>2022-04-29T10:32:00+09:00</published>
+      <updated>2022-04-29T10:32:00+09:00</updated>
+      <id>http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20400mb%EC%97%90%EC%84%9C%204mb%EB%A1%9C%20%EC%A4%84%EC%9D%B4%EA%B8%B0(..)</id>
+      <content type="html" xml:base="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)">&lt;p&gt;사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.&lt;/p&gt;
+
+&lt;p&gt;크롬 익스텐션은 배포 할 때 zip 형식으로 개발 파일을 올려야 한다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension_size1.png&quot; width=&quot;50%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;그래서 별 생각없이 익스텐션을 개발하던 폴더 전체를 zip으로 압축해서 배포해왔다. 그런데 배포된 크롬 익스텐션을 다운받을 때 너무 오래 걸려서 확인해보니까 파일 크기가 200mb(!)로 확인되었다. 다른 익스텐션의 파일 크기는 거의 1~5mb로 매우 작은데 Catty만 유독 커서 확인해보니 Catty 개발 폴더가 400mb를 차지하고 있었다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension_size2.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Catty 디렉토리는 아래와 같이 구성되어 있는데, 더 세부적으로는 git 관련 내용이 저장되어 있는 .git 폴더가 200mb, npm 설치 파일이 들어있는 popup/node_modules 폴더가 200mb를 차지했다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;content_scripts
+background.js
+background.html
+popup
+   ├── node_modules
+   ├── src
+   └── package.json
+manifest.json
+package.json
+.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;따로 익스텐션 배포할 때 이 파일들이 제외되지는 않는가보다. (너무 많은 걸 바랬나)&lt;/p&gt;
+
+&lt;p&gt;고로 이 폴더들을 제외하고 배포해야 하는데 .git 폴더도 없애면 git 설정을 다시해야하고, node_modules 폴더도 로컬에서 업데이트할 때 계속 필요해서 없애면 안되어서 고민하다가 그냥 이 두 폴더를 잠시 다른 곳에 옮긴 다음에 zip 압축을 하고, 그 후 다시 폴더를 가져오는 식으로 했다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension_size3.png&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt; 
+그 결과 새로 배포된 버전은 1mb 정도로 파일 크기가 줄어들었다!!&lt;/p&gt;
+
+&lt;p&gt;더 좋은 방법이 있을 거 같긴한데 아직은 잘 모르겠다. npm 모듈 중에 build하면서 바로 zip 파일을 생성해주는 것도 있는데 지금 디렉토리 구조가 popup 폴더 내에 또 package.json이 있고 여기서 node_modules가 생성되는 구조라 이 폴더에서 활용하기는 어려울 거 같다.(popup 내에서 build와 zip을 같이하면 popup 폴더 빌드 파일만 zip으로 압축된다.) 매번 배포할 때마다 폴더를 임시로 옮겼다가 돌려놓는게 많이 비효율적인 거 같긴해서 방법을 더 고민해봐야겠다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Catty" />
+      
+        <category term="Extension" />
+      
+
+      
+        <summary type="html">사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">웹앱 클립보드 리스너 만들기</title>
+      <link href="http://localhost:4000/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0" rel="alternate" type="text/html" title="웹앱 클립보드 리스너 만들기" />
+      <published>2022-04-28T17:32:00+09:00</published>
+      <updated>2022-04-28T17:32:00+09:00</updated>
+      <id>http://localhost:4000/%EC%9B%B9%EC%95%B1%20%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C%20%EB%A6%AC%EC%8A%A4%EB%84%88%20%EB%A7%8C%EB%93%A4%EA%B8%B0</id>
+      <content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0">&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;video controls=&quot;&quot; width=&quot;100%&quot;&gt;
+      &lt;source src=&quot;/assets/img/post_images/clipboard_listener.mov&quot; type=&quot;video/mp4&quot; /&gt;
+   &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;위의 영상처럼 Catty 웹앱에서는 유저가 웹사이트 url을 복사하면 이를 화면에 띄워 바로 url을 추가할 수 있도록 한다. 이 기능은 생각보다 간단한데, 사실 아래 코드가 전부이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getClipboardData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setClipboardText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setClipboardType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;prevText&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;setInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newText&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clipboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startsWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;prevText&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newText&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startsWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;https://catty-serverless-test&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;setClipboardText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;setClipboardType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;prevText&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newText&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 코드에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setInterval&lt;/code&gt; 함수를 통해 1초마다 클립보드의 텍스트를 확인하고 이 데이터가 url이면 화면에 띄우도록 하였다.&lt;/p&gt;
+
+&lt;p&gt;브라우저에서 JavaScript를 사용하여 클립보드를 데이터를 쓰거나 읽으려면 ClipboardAPI를 사용하면 된다. ClipboardAPI는 Promise 기반으로 클립 보드 내용을 비동기식으로 접근할 수 있는 새로운 API이다. 하지만 비교적 최신 스펙으로 아직 지원되지 않는 브라우저가 많다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/clipboard_listener1.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;클립보드에 저장된 텍스트 내용은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;navigator.clipboard.readText()&lt;/code&gt;로 불러올 수 있다. 텍스트 말고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read()&lt;/code&gt; 함수를 이용해 이미지 등의 데이터도 가져올 수 있는데, 이는 다음에 구현하는 걸로 남겨두었다.&lt;/p&gt;
+
+&lt;p&gt;참고로, 이번에 구현한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readText()&lt;/code&gt; 는 Chrome66 이상에서, 임의 데이터를 가져오는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read()&lt;/code&gt; 함수는 Chrome 76 이상에서 지원된다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Catty" />
+      
+
+      
+        <summary type="html"></summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Automating emails with AWS SES</title>
+      <link href="http://localhost:4000/Automating-emails-with-AWS-SES" rel="alternate" type="text/html" title="Automating emails with AWS SES" />
+      <published>2022-04-23T17:32:00+09:00</published>
+      <updated>2022-04-23T17:32:00+09:00</updated>
+      <id>http://localhost:4000/Automating%20emails%20with%20AWS%20SES</id>
+      <content type="html" xml:base="http://localhost:4000/Automating-emails-with-AWS-SES">&lt;p&gt;It’s pretty common for services to automatically send out welcome emails on sign-up. Given the positive influence these emails had on understanding the service I just signed up for, I decided to try adding on one to Catty as well.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-ses-and-verify-an-email-address&quot;&gt;Set up SES and verify an email address&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;SES only allows emails to be sent from verified sources to prevent impersonating random email accounts. So before working with email templates, a verified identity must be registered first.&lt;/p&gt;
+
+&lt;p&gt;Creating a identity is simple. After navigating to SES on the AWS console, under the &lt;em&gt;verified identities&lt;/em&gt; tab, click on &lt;em&gt;create identity&lt;/em&gt;. Then select identity type as &lt;em&gt;email address&lt;/em&gt; and input the desired sender email and save.&lt;/p&gt;
+
+&lt;p&gt;This should send a verification email to the registered email account, and just follow the procedures described in the email.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;creating-email-template-on-ses&quot;&gt;Creating email template on SES&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;First, I wrote the welcome email template to be sent to new users with HTML.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/email.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The HTML document can be registered to SES via either AWS SDK or AWS CLI. Using AWS SDK means I have to create a new Lambda function to programmatically call the API, which seemed like too much extra work, I decided to use the CLI instead. Perhaps committing to using AWS SDK can come later when the service expands and new templates need to be added often.&lt;/p&gt;
+
+&lt;p&gt;Install AWS CLI
+&lt;a href=&quot;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&quot;&gt;https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Save AWS account credentials on CLI&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html&quot;&gt;https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;According to the CLI documentation, &lt;em&gt;create-template&lt;/em&gt; command takes the following as inputs:&lt;/p&gt;
+
+&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;TemplateName&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/*Name of template*/&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;SubjectPart&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/*Email title*/&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;TextPart&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/*Email content as text, in the case where HTML is not supported*/&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;HtmlPart&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/*Email HTML content as ESCAPED string*/&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For escaping the HTML content, I used the following online tool.
+&lt;a href=&quot;https://www.freeformatter.com/json-escape.html&quot;&gt;https://www.freeformatter.com/json-escape.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;After saving the inputs as a .json file and executing the command&lt;/p&gt;
+
+&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;aws&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myprofile&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ses&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//path\to\json\file&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I received the success message and could see the template uploaded on the AWS console.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;sending-templated-email-on-aws-cli&quot;&gt;Sending templated email on AWS CLI&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Before implementing a Lambda function to send emails, it’s always good to check if the template works as intended with the CLI.&lt;/p&gt;
+
+&lt;p&gt;Similar to the create-template process, the CLI documentation states that send-templated-email mainly requires the following inputs.&lt;/p&gt;
+
+&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Source&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/*Sender email verified on SES*/&lt;/span&gt;
+&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Template&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/*Name of template to use*/&lt;/span&gt;
+&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Destination&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;cm&quot;&gt;/*Reciever email list*/&lt;/span&gt;
+	&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;ToAddresses&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...],&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;CcAddresses&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...],&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;BccAddresses&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;TemplateData&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/*JSON string mapping parameters referenced in the template.
+												   The parameters MUST account for every variable in the template
+                           Or the email will not get through*/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Again, save the following inputs as .json and execute the following command&lt;/p&gt;
+
+&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;aws&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myprofile&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ses&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;templated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//path\to\json\file&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and I received a email identifier and I should see a new email on the receiver account, but nothing seemed to have come through!&lt;/p&gt;
+
+&lt;p&gt;After scouring online for possible problems, apparently there might be some problems with the declaring the styles separately in the HTML…&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;updating-email-templates&quot;&gt;Updating email templates&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;After changing everything in the HTML to inline styling, update the .json file used for creating template with the new HTML string.&lt;/p&gt;
+
+&lt;p&gt;This time however, calling the create-template command again with the same file will cause an error saying that the template name already exists.&lt;/p&gt;
+
+&lt;p&gt;Instead, the update-template command should be used like the following&lt;/p&gt;
+
+&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;aws&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myprofile&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ses&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//path\to\json\file&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;or delete the existing template with&lt;/p&gt;
+
+&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;aws&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myprofile&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ses&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;templatename&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and use create-template to recreate it again.&lt;/p&gt;
+
+&lt;p&gt;Retrying the email sending process on CLI and checking that it sends the desired email to the receiver account, it’s time to create an API with Lambda for the service to call.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;sending-templated-email-with-aws-sdk&quot;&gt;Sending templated email with AWS SDK&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Set up the usual serverless framework and create the function to send emails through SES&lt;/p&gt;
+
+&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;emailParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sendParams&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;TemplateData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;templateParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;TemplateName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;Destination&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;ToAddresses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;destination&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;FromEmailAddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;sender@email.com&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sendResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sendResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and the API handler&lt;/p&gt;
+
+&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sendEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;event received&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;sendEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendEmail&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;cors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And it’s complete! Now Catty service can call this API to send welcome emails to new users on sign-up. The API currently receives template name to account for multiple types of emails required to be sent in the future.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Skinnig</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Catty" />
+      
+
+      
+        <summary type="html">It’s pretty common for services to automatically send out welcome emails on sign-up. Given the positive influence these emails had on understanding the service I just signed up for, I decided to try adding on one to Catty as well.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기</title>
+      <link href="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0" rel="alternate" type="text/html" title="크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기" />
+      <published>2022-04-23T17:32:00+09:00</published>
+      <updated>2022-04-23T17:32:00+09:00</updated>
+      <id>http://localhost:4000/%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C%20%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C%20read%20mode%EB%A1%9C%20%EC%9D%BD%EA%B8%B0</id>
+      <content type="html" xml:base="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0">&lt;p&gt;웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 웹사이트를 읽기모드로 바꿔주는 기능의 앱도 인기를 끌고 있다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/read-mode1.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Catty 서비스의 크롬 익스텐션에도 현재 띄워져 있는 화면의 웹사이트를 수집할 때, 해당 사이트의 Readable html(읽기에 편한 요소만 분리한 html)를 함께 저장하여 웹앱에서 읽기모드로 확인할 수 있도록 기능 구현을 해두었다. 그리고 이번 글에서 이 읽기모드 구현에 대해 정리해두려고 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;읽기모드를-어떻게-구현하면-좋을까&quot;&gt;읽기모드를 어떻게 구현하면 좋을까?&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;읽기모드를 구현하려면 웹페이지에서 본문만 추출해 낼 필요가 있지만, 모든 블로그는 독자적인 포맷을 가지고 있고, 이 각각의 포맷들을 하나하나 분석해가며 본문을 찾아내는 건 많은 수고를 필요로 한다. 다행히 이런 수고스러움을 덜어주는 고마운 라이브러리가 있다. 바로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mozilla/readability&lt;/code&gt; 라이브러리(&lt;a href=&quot;https://github.com/mozilla/readability&quot;&gt;https://github.com/mozilla/readability&lt;/a&gt;)이다.&lt;/p&gt;
+
+&lt;p&gt;이 라이브러리는 모질라에서 개발중인 노드js 라이브러리로 파이어폭스의 일기모드 기능을 독립적으로 제공한다.&lt;/p&gt;
+
+&lt;p&gt;이 라이브러리 사용법은 간단하다. 우선 크롬익스텐션에서 북마크를 저장할 때 readable HTML을 구할 것이므로 북마크 저장 코드가 구현되어 있는 content_script.js에 아래 코드를 구현하였다. readability 라이브러리를 import하고 아래 코드를 실행하면 읽기모드의 html 코드를 구할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getReadableHtml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;readability&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Readability&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cloneNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;article&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;readability&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Could not parse HTML document with Readability&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;참고-내용-출처-&quot;&gt;참고 내용 출처 :&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.44bits.io/ko/post/generate-full-feed-by-using-mozilla-readability&quot;&gt;https://www.44bits.io/ko/post/generate-full-feed-by-using-mozilla-readability&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Catty" />
+      
+        <category term="Extension" />
+      
+
+      
+        <summary type="html">웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 웹사이트를 읽기모드로 바꿔주는 기능의 앱도 인기를 끌고 있다.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">랜딩페이지 제작을 위한 갖가지 시행착오들…(아임웹-&amp;gt;우피-&amp;gt;리액트 라이브러리)</title>
+      <link href="http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4/" rel="alternate" type="text/html" title="랜딩페이지 제작을 위한 갖가지 시행착오들...(아임웹-&gt;우피-&gt;리액트 라이브러리)" />
+      <published>2022-04-20T17:32:00+09:00</published>
+      <updated>2022-04-20T17:32:00+09:00</updated>
+      <id>http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%A0%9C%EC%9E%91%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EA%B0%96%EA%B0%80%EC%A7%80%20%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4...</id>
+      <content type="html" xml:base="http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4/">&lt;p&gt;크던 작던 거의 모든 서비스에는 그에 맞는 랜딩페이지가 있다. 나도 서비스를 만들면서 랜딩페이지를 제작하려고 많이 알아봤는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;빠르게 만들 수 있고&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;유지보수가 쉬운&lt;/code&gt; 랜딩페이지 제작툴을 많이 서치했다.&lt;/p&gt;
+
+&lt;p&gt;그렇지만 아이러니하게도 좋다고 생각하고 사용한 툴이 불편해서 옮기고 옮기고 하다보니 결국 리액트로 직접 개발하는게 나름 가장 괜찮은 방법(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;빠르고, 유지보수 쉽고, 공짜&lt;/code&gt;)이란 걸 깨달았다(!?)&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;웹사이트-빌더아임웹을-이용해볼까&quot;&gt;웹사이트 빌더(아임웹)을 이용해볼까?&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;처음에는 아임웹 같은 웹사이트 빌더를 사용하면 가장 쉽고 빠르게 만들 수 있을 거라고 생각했다. 그렇지만 이런 빌더에서 제공하는 기능만 사용할 수 있어 사이트 디자인을 자유롭게 할 수 없었다. 또한 모바일 최적화 기능을 제공하기는 하지만 자동으로 모바일-웹 변환을 해주는 것이 아니라 별도의 작업으로 또 모바일 버전을 만들어야 했다. 이런 툴을 사용해서 정말 괜찮은 랜딩페이지를 만드려면 포토샵이나 일러로 따로 디자인 작업을 많이 한 다음에 빌더에서는 합치기만 해야 그나마 잘 나오는 거 같다. 무엇보다 문제가 되었던게 가격이었는데 다국어 페이지(한국어, 영어 동시 지원)를 만드려면 한달에 5만원(..)의 비용을 지불해야 했다. 그렇다고 한국어/영어 간의 도메인 전환이 매끄러운 것도 아니어서 많이 불편했다.&lt;/p&gt;
+
+&lt;p&gt;빌더를 만지작 거리면서 랜딩페이지를 완성을 하긴 했다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/landingpage1.png&quot; /&gt;
+&lt;/div&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/landingpage2.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;그렇다면-노션으로-만드는-건-어떨까&quot;&gt;그렇다면 노션으로 만드는 건 어떨까?&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;그래서 그 다음으로 생각한 것이 노션으로 웹사이트를 만드는 것이었다. 요즘 스타트업들이 노션으로 resume도 많이 만들고 랜딩페이지 및 채용사이트도 많이 만들곤 한다. 그러다보니 노션으로 웹사이트를 만드는 것을 도와주는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;우피&lt;/code&gt; 같은 서비스도 등장하였다. 노션은 이미지나 표 등 다양한 형식을 담을 수 있으면서 페이지 이동이 자유롭고 무엇보다 빠르게 제작할 수 있어 괜찮은 방법이라고 생각했다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;우피&lt;/code&gt; 서비스 사용에는 월 5000의 비용이 청구된다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/landingpage3.png&quot; /&gt;
+&lt;/div&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/landingpage4.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;그렇게 열심히 노션을 꾸미고 우피에 도메인 연결을 해서 배포까지 완료하였다. 이전보다 깔끔해지고 또 수정도 쉬워지고 무엇보다 가격이 5만원에서 5천원으로 줄어서(..) 좋긴 했으나 그러나 디자인 형식이 제한되어 있다는 점과 웹앱과 랜딩페이지가 다른 플랫폼에서 관리되고 있다는 것이 여전히 불편했다. 그리고 개인적으로는 아직까지는 우피의 기능이 많지 않아 5000원의 가격이 점점 아깝다는 생각도 들었다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;이럴바엔-그냥-리액트로-개발을-하자&quot;&gt;이럴바엔 그냥 리액트로 개발을 하자!&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;그래서 결국 돌고돌아 그냥 리액트로 직접 개발을 하기로 했다. 개발을 하기에 앞서 여러 landing page template를 찾아보았다. 그중에서 MIT 라이센스이면서 괜찮아 보이는 것 몇가지를 참고해서 랜딩페이지를 제작하였다. 사실 대부분은 그냥 간단한 작업들이었고 조금 특징적인 거라면 동영상처럼 스크롤이 내려갈 때 마다 그 위치의 component가 올라오는 것 정도 있을 거 같다.&lt;/p&gt;
+
+&lt;h3 id=&quot;lazyshow-구현&quot;&gt;LazyShow 구현&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;video width=&quot;100%&quot; controls=&quot;&quot; Autoplay=&quot;autoplay&quot; src=&quot;/assets/img/post_images/landingpage5.mov&quot;&gt;&lt;/video&gt;
+&lt;/div&gt;
+
+&lt;p&gt;이 기능은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;framer-motion&lt;/code&gt; 이라는 라이브러리를 사용하면 구현할 수 있다. 아래 이 슬라이브 뷰의 구현 코드를 정리하였다.&lt;/p&gt;
+
+&lt;p&gt;먼저 useOnScreen hook를 정의하여 컴포넌트가 화면에 들어오는 순간을 캐치하도록 하고, 이 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;framer-motion&lt;/code&gt;을 이용해 해당 컴포넌트에 애니메이션을 주는 방식으로 구현 가능하다.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import React, { MutableRefObject, useEffect, useRef, useState } from &apos;react&apos;;
+
+import { motion, useAnimation } from &apos;framer-motion&apos;;
+
+function useOnScreen(
+  ref: MutableRefObject&lt;span class=&quot;nt&quot;&gt;&amp;lt;HTMLDivElement&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;,
+  rootMargin = &apos;0px&apos;
+) {
+  const [isIntersecting, setIntersecting] = useState(false);
+
+  useEffect(() =&amp;gt; {
+    let currentRef: any = null;
+    const observer = new IntersectionObserver(
+      ([entry]) =&amp;gt; {
+        if (entry?.isIntersecting) setIntersecting(entry?.isIntersecting);
+      },
+      {
+        rootMargin,
+      }
+    );
+    if (ref &lt;span class=&quot;err&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ref?.current) {
+      currentRef = ref.current;
+      observer.observe(currentRef);
+    }
+    return () =&amp;gt; {
+      observer.unobserve(currentRef);
+    };
+  }, [ref, rootMargin]); // Empty array ensures that effect is only run on mount and unmount
+
+  return isIntersecting;
+}
+
+const LazyShow = ({ children }: { children: React.ReactChild }) =&amp;gt; {
+  const controls = useAnimation();
+  const rootRef = useRef&lt;span class=&quot;nt&quot;&gt;&amp;lt;HTMLDivElement&amp;gt;&lt;/span&gt;(null);
+  const onScreen = useOnScreen(rootRef);
+  const initial = { opacity: 0, y: 50 }
+  useEffect(() =&amp;gt; {
+    if (onScreen) {
+      controls.start({
+        y: 0,
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+          ease: &apos;easeOut&apos;,
+        },
+      });
+    }
+  }, [onScreen, controls]);
+  return (
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;motion.div&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;className=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;lazy-div&quot;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{rootRef}&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;initial=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{initial}&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;animate=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{controls}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      {children}
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/motion.div&amp;gt;&lt;/span&gt;
+  );
+};
+
+export default LazyShow;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이렇게 구현하니 무엇보다 돈이 안들고! 또 웹앱과 랜딩페이지가 하나의 폴더 안에 있어 관리하기가 매우매우 편리해졌다. 완성된 랜딩페이지는 &lt;a href=&quot;https://www.cattynote.com/&quot;&gt;https://www.cattynote.com/&lt;/a&gt;에 접속해서 확인할 수 있다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Catty" />
+      
+
+      
+        <summary type="html">크던 작던 거의 모든 서비스에는 그에 맞는 랜딩페이지가 있다. 나도 서비스를 만들면서 랜딩페이지를 제작하려고 많이 알아봤는데 빠르게 만들 수 있고 유지보수가 쉬운 랜딩페이지 제작툴을 많이 서치했다.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">CORS 에러 피하는 proxy server 만들기 (Feat. CORS Anywhere &amp;amp; Heroku)</title>
+      <link href="http://localhost:4000/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)" rel="alternate" type="text/html" title="CORS 에러 피하는 proxy server 만들기 (Feat. CORS Anywhere &amp; Heroku)" />
+      <published>2022-04-12T17:32:00+09:00</published>
+      <updated>2022-04-12T17:32:00+09:00</updated>
+      <id>http://localhost:4000/CORS%20%EC%97%90%EB%9F%AC%20%ED%94%BC%ED%95%98%EB%8A%94%20proxy%20server%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20(Feat.%20CORS%20Anywhere%20&amp;%20Heroku)</id>
+      <content type="html" xml:base="http://localhost:4000/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&amp;-Heroku)">&lt;h2 id=&quot;cors란&quot;&gt;CORS란?&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;프론트개발을 하다보면 CORS 에러를 정말정말 많이 접하게 된다. CORS는 cross-origin resource sharing 의 약자로 교차 출처 리소스 공유라고 표현된다.&lt;/p&gt;
+
+&lt;p&gt;이 CORS 문제가 발생하는 이유는 한마디로 &lt;strong&gt;보안&lt;/strong&gt; 때문이다.&lt;/p&gt;
+
+&lt;p&gt;CORS는 내가 운영하는 웹사이트에서 (피싱 위험이 있는) 다른 웹사이트의 request가 넘어오게 되면, 응답을 받지 않고 에러가 발생되도록 한다.&lt;/p&gt;
+
+&lt;p&gt;아무런 CORS 설정을 하지 않으면 &lt;strong&gt;동일 도메인&lt;/strong&gt; + &lt;strong&gt;동일 포트&lt;/strong&gt;로 넘어온 request는 잘 받지만 그렇지 않은 경우 모두 요청을 거절하게 된다.&lt;/p&gt;
+
+&lt;p&gt;많이 쓰는 AWS S3도 사실 내 웹사이트에서 S3가 위치하는 외부 도메인으로 요청을 보내 그곳에 저장된 데이터를 받아오는 것이기 때문에 아무런 설정이 없으면 CORS 에러가 발생된다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;이런-cors-에러는-서버를-건드릴-수-있다면-서버를-수정하는-게-제일-간단하다&quot;&gt;이런 CORS 에러는 서버를 건드릴 수 있다면 서버를 수정하는 게 제일 간단하다.&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;HTTP 응답헤더 Access-Control-Allow-Origin : * 혹은 Access-Control-Allow-Origin: 허용하고자 하는 도메인 설정해주면 해결이 되며, express에서는 이를 쉽게 해결해주는 미들웨어를 제공해준다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const express = require(&apos;express&apos;)
+const cors = require(&apos;cors&apos;)
+const app = express()
+
+app.use(cors())
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;언급한 S3 CORS 에러의 경우 S3 버킷 설정을 수정하여 해결할 수 있고 이 내용은 &lt;a href=&quot;&quot;&gt;AWS S3 쉽게 사용하자&lt;/a&gt;에서 다루고 있다.&lt;/p&gt;
+
+&lt;p&gt;그렇지만 이번에 CORS 에러를 해결해야 하는 경우는 Catty 웹앱에서 유저가 북마크한 웹사이트 주소의 html 응답을 받아와야 하는 경우라 서버 수정이 불가능한 경우였다. (크롬 익스텐션에서 웹사이트를 북마크하면 readable한 html이 함께 저장되지만-&lt;a href=&quot;&quot;&gt;크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기&lt;/a&gt; 참고) 웹앱에서 주소를 복사-붙여넣기 하여 북마크를 저장한 경우에는 별도로 html 응답을 받아와야 했다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;프론트에서는-프록시-서버를-구축하여-에러를-해결할-수-있다&quot;&gt;프론트에서는 프록시 서버를 구축하여 에러를 해결할 수 있다.&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;그렇지만 프록시 서버를 직접 구축하는 것은 귀찮다. 또한 이미 사용되고 있는 프록시 서버도 웹에 검색하면 몇개 나오는데, 이런 것들은 내가 테스트해봤을 때 거의 작동하지 않았고 작동하더라도 됐다 안됐다 해서 배포 프로덕트에서 사용할 수는 없었다. 이럴 때 CORS Anywhere와 Heroku를 이용하여 빠르고 간단하게 프록시 서버를 구축할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;cors-anywhere란&quot;&gt;CORS Anywhere란?&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Rob--W/cors-anywhere&quot;&gt;CORS Anywhere&lt;/a&gt;는 프록시 된 요청에 CORS 헤더를 추가하는 NodeJS 프록시다. MIT 라이선스로 자유롭게 사용할 수 있다. whitelist, blacklist, rate limit 등의 다양한 설정도 간단하게 할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;heroku로-cors-anywhere-배포하기&quot;&gt;Heroku로 CORS Anywhere 배포하기&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;원래 Vercel을 쓰고 있어서 Vercel로 배포할 까 했는 데 Vercel은 정책상 프록시 서버 배포를 막고 있는 듯했다. 그래서 별도로 Heroku 계정을 만들어서 사용하였다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;참고-내용-출처-&quot;&gt;참고 내용 출처 :&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://donggov.tistory.com/132&quot;&gt;https://donggov.tistory.com/132&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://velog.io/@kimtaeeeny/CORS-%EC%99%80-%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95-express-proxy-FE-study8&quot;&gt;https://velog.io/@kimtaeeeny/CORS-%EC%99%80-%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95-express-proxy-FE-study8&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Catty" />
+      
+
+      
+        <summary type="html">CORS란?</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">When SSR says that there is no window object</title>
+      <link href="http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C" rel="alternate" type="text/html" title="When SSR says that there is no window object" />
+      <published>2022-04-09T17:32:00+09:00</published>
+      <updated>2022-04-09T17:32:00+09:00</updated>
+      <id>http://localhost:4000/SSR%EC%97%90%EC%84%9C%20window%20%EA%B0%9D%EC%B2%B4%EA%B0%80%20%EC%97%86%EB%8B%A4%EA%B3%A0%20%ED%95%A0%20%EB%95%8C</id>
+      <content type="html" xml:base="http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C">&lt;h2 id=&quot;use-typeof&quot;&gt;Use typeof&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(window){...} // window is not defined error occur
+
+if(typeof window !== undefined) {...} // No error
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;use-useeffect&quot;&gt;Use useEffect&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;useEffect(()=&amp;gt;{
+	// Use window object inside useEffect
+},[])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;if-nextjs-project-use-dynamic&quot;&gt;(if Next.js project) Use dynamic&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dynamic&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;next/dynamic&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ComponentsWithNoSSR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// When passing props in typescript, an interface is defined.&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./components/Component&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Import items to be used as components.&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ssr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Set ssr option as false.&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;App&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    	&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Components&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Those components can be loaded as SSR.&lt;/span&gt;
+
+    	&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ComponentsWithNoSSR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Since that component is ssr:false, it doesn&apos;t do server-side rendering.&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Catty" />
+      
+        <category term="Next" />
+      
+
+      
+        <summary type="html">Use typeof ```html if(window){…} // window is not defined error occur</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)</title>
+      <link href="http://localhost:4000/CSR-project%EB%A5%BC-SSR%EB%A1%9C-%EC%98%AE%EA%B8%B0%EA%B8%B0-(3.31~4.08)" rel="alternate" type="text/html" title="CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)" />
+      <published>2022-04-09T17:32:00+09:00</published>
+      <updated>2022-04-09T17:32:00+09:00</updated>
+      <id>http://localhost:4000/CSR%20project%EB%A5%BC%20SSR%EB%A1%9C%20%EC%98%AE%EA%B8%B0%EA%B8%B0%20(3.31~4.08)</id>
+      <content type="html" xml:base="http://localhost:4000/CSR-project%EB%A5%BC-SSR%EB%A1%9C-%EC%98%AE%EA%B8%B0%EA%B8%B0-(3.31~4.08)">&lt;p&gt;처음에 Catty 웹앱은 리액트 CSR로 개발되었다. CSR로 개발한 이유라면 SSR이 익숙치 않았고, 좀 더 빨리 프로토타입을 개발하고 싶어서 정도였던 거 같다.
+그러나 SEO 대응하면서 이슈가 발생했고 Next.js로 옮겨가야하나 생각했지만 일이 너무 커질 거 같아 CSR에서 SEO 비스무리하게 할 수 있는 다양한 툴들로 나름 SEO 최적화를 해보려고 하였다.&lt;/p&gt;
+
+&lt;p&gt;하지만…결국 다 포기하고 Next.js로 옮겨가게 되었다…ㅎ 기존의 리액트 프로젝트를 Next로 옮기는데 1주일 정도 소요되었다. 이번 글에서는 갈아엎기 까지 CSR을 고수하기 위해서 한 여러 시행착오와 결국 Next.js 로 옮기며 겪은 다양한 에러에 대해서 남겨보려고 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;react-snap과-react-helmat-라이브러리&quot;&gt;react-snap과 react-helmat 라이브러리&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;먼저 CSR에서 react-snap이라는 라이브러리를 사용할 수 있다. &lt;a href=&quot;https://byseop.netlify.app/csr-seo/&quot;&gt;https://byseop.netlify.app/csr-seo/&lt;/a&gt;
+그렇지만 블로그를 참고해서 다 적용을 하니까 재밌는 문제가 발생하였다.&lt;/p&gt;
+
+&lt;p&gt;Catty 처음 진입 로직은 다음과 같이 설계되어 있는데,&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+  graph LR;
+  A(랜딩페이지)--&amp;gt;B[자동로그인 확인];
+  B--&amp;gt;C(로그인 페이지);
+  B--&amp;gt;D(메인페이지);
+&lt;/div&gt;
+
+&lt;p&gt;메인페이지에 진입하기 전에 랜딩페이지의 DOM을 생성하고 이를 없애지 않은 채로 메인페이지에 들어가다보니 메인페이지의 배경화면으로 랜딩페이지의 DOM이 남아있는 문제가 생겼다. 이외에도 CSS가 많이 깨지고, 무엇보다 react-snap이 최근 2년 동안 업데이트를 하지 않은 정지된 라이브러리 같아 그냥 이런식말고 다른 방법을 찾기로 결정했다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;webpack과-babel-설정을-통해-nextjs-없이-ssr-구축&quot;&gt;webpack과 babel 설정을 통해 Next.js 없이 SSR 구축&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;그러던 중 &lt;a href=&quot;https://minoo.medium.com/next-js-%EC%B2%98%EB%9F%BC-server-side-rendering-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-7608e82a0ab1&quot;&gt;React로 Next.js 처럼 Server-side-rendering 구현하기&lt;/a&gt; 라는 미디엄 포스팅을 발견하였고 괜찮은 거 같아 프로젝트에 적용해보았다. 적용하는 건 이 블로그 포스팅을 따라한 것이 전부라 따로 적지는 않을 것이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;window-is-not-defined-에러&quot;&gt;window is not defined 에러&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;그렇게 다 설정을 완료했는데 window, document, self 등 객체에 접근할 때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;not defined&lt;/code&gt; error가 발생하였다.&lt;/p&gt;
+
+&lt;p&gt;window 객체는 브라우저의 요소들과 자바스크립트 엔진, 그리고 모든 변수를 담고 있는 객체이다. 인터넷 브라우저를 보면 위에 탭들도 있고, 주소창도 있고, 즐겨찾기, 툴바 등이 있다. 그 다음부터는 이제 웹사이트가 표시된다. 여기서 브라우저 전체를 담당하는 게 window 객체이고, 웹사이트만 담당하는게 document 객체라고 볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이런 window, document 브라우저 객체는 말그대로 &lt;strong&gt;브라우저&lt;/strong&gt;의 객체이기 때문에 서버에는 존재하지 않는다. 따라서 SSR으로 이 브라우저 객체에 접근하려고 하면 에러가 발생한다. 이런 에러를 해결하기 위한 방법은 다음 포스팅(&lt;a href=&quot;&quot;&gt;SSR에서 window 객체가 없다고 할 때&lt;/a&gt;) 에 정리해두었다. Catty 웹앱도 이런 방법들을 이용하여 에러를 해결하려고 했지만, Catty 웹앱은 외부 라이브러리를 사용해서 useEffect에 넣지 못하는 상황이 있었다. 그래서 Next.js의 dynamic 기능 처럼 특정 component에서만 SSR을 끄고 싶었지만, 지금 webpack 구성에서 맞는 방법을 찾지 못하였다(..) 그래서 결국 특정 컴포넌트에서 SSR을 끌 수 있게 하는 dynamic 기능이 있는 Next.js로 옮겨가게 되었다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;reactjs-프로젝트를-nextjs로-옮기기&quot;&gt;React.js 프로젝트를 Next.js로 옮기기&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;결국 돌고돌아 Next.js로 옮겨가게 되었다. 지금 프로젝트 폴더에서 Next.js을 import하면 예상치 못한 충돌이 발생할 수 있을 거 같아, 새롭게 Next.js로 프로젝트 폴더를 만들어서 기존 코드 파일을 하나씩 옮기기로 하였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;nextjs란&quot;&gt;Next.js란?&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;먼저 시작하기 전에 Next.js를 한 번 짚고 넘어갈 것이다. &lt;a href=&quot;https://nextjs.org/&quot;&gt;Next.js&lt;/a&gt;는 React 프레임워크이다. Next.js는 크게 다음의 기능을 지원한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;다이나믹 라우트를 지원하는 직관적인 페이지 기반의 라우팅 시스템&lt;/li&gt;
+  &lt;li&gt;각 페이지 마다 기본적으로 사전 렌더링, SSG(Static Generation)과 SSR(Server-Side Rendering)을 지원한다.&lt;/li&gt;
+  &lt;li&gt;빠른 페이지 로딩을 위한 자동 코드 스플릿팅&lt;/li&gt;
+  &lt;li&gt;최적화된 프리페칭을 이용한 클라이언트 사이드 라우팅&lt;/li&gt;
+  &lt;li&gt;Built-in CSS과 Sass 지원, 그리고 다른 CSS-in-JS 라이브러리 지원&lt;/li&gt;
+  &lt;li&gt;개발 환경에서의 빠른 리프레시 지원&lt;/li&gt;
+  &lt;li&gt;서버리스 환경에서 API를 구축하기 위한 API라우트&lt;/li&gt;
+  &lt;li&gt;넓은 확장성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이처럼 많은 기능을 제공하고 있는 Next.js는 세계적으로 유명한 기업들을 포함하여 수많은 웹사이트와 웹 애플리케이션에서 사용되고 있다. Next.js 세팅하는 법은 검색해보면 많이 나와서 건너띄고 Next.js 사용하면서 특징적이라고 생각하는 부분만 따로 정리하겠다.&lt;/p&gt;
+
+&lt;h3 id=&quot;pages와-nextlink&quot;&gt;pages와 Next/Link&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Next.js를 사용하면서 다음과 같이 폴더 구조를 짰다.&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+// 어플리케이션에 사용되는 정적 파일들
+public
+  └── asset
+        ├── images
+        └── icons
+
+// 어플리케이션의 기능에 사용되는 소스들
+src
+  ├── component                    // 컴포넌트들 모음
+  │      ├── common                // 공통적으로 사용되는 컴포넌트들
+  │      └── 페이지별 컴포넌트          // 각 페이지에서 사용되는 컴포넌트
+  ├── containers                   // 컨테이너(store값이 전달된 컴포넌트)들 모음
+  │      ├── common                // 공통적으로 사용되는 컨테이너
+  │      └── 페이지별 컨테이너          // 각 페이지에서 사용되는 컨테이너
+  ├── store                        // redux store 관련 파일 모음
+  │      ├── modules
+  │      └── index.js
+  ├── utils                        // util 함수 모듬
+  │      ├── hooks
+  │      └── 기타 util 함수들
+  ├── theme                       // 테마 관련 파일 모음
+  │      ├── globals.css
+  │      └── Home.modules.css
+  └── styles                      // 스타일 관련 파일 모음
+         ├── globals.css
+         └── Home.modules.css
+
+// 페이지를 담당하는 컴포넌트(폴더구조로 url 결정)
+pages
+  │                         // (❗ Nextjs에서는 Routing 시스템이 파일/폴더 구조로 되어있다.)
+  ├── index.tsx
+  ├── _app.tsx              // 각 페이지별로 공통적으로 쓰는 부분에 대한 리펙토링을 해주는 곳
+  │                         // (index.js파일과 같은 역할, 모든 페이지에서 쓰는 스타일, 레이아웃 을 넣어 주기)
+  ├── _document.tsx         //  meta태그를 정의 및 전체 페이지의 구조를 만들어준다
+  │                         // (index.html파일과 같은 역할, html body와 같은 기본 태그들의 속성지정하여 어플리케이션의 구조를 만들어 주는 파일)
+  ├── api                   // axios를 이용하여 서버와의 통신 로직을 담당
+  └── product
+        └── [id].tsx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다른 부분은 기존과 비슷한데, pages라는 폴더가 새로 생겼다. 이 페이지 폴더가 쉽게 말해 Next.js의 라우팅 시스템을 구성한다.
+pages의 index.tsx 파일은 ‘localhost:3000’에 접속했을 때 뜨는 화면이 되고, pages의 ‘sample-folder/sample-file.tsx’의 파일은 ‘localhost:3000/sample-folder/sample-file’에 접속해서 뜨는 화면이 된다.&lt;/p&gt;
+
+&lt;p&gt;페이지 라우팅은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;Link href=&quot;/경로&quot;&amp;gt;&lt;/code&gt;를 사용하면 된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import Link from &apos;next/Link&apos;;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;    // pages 내 about 파일로 라우팅 됨(파일명 = 경로)
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&amp;gt;&lt;/span&gt; 이동하기 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Link&amp;gt;&lt;/span&gt;
+// (만약 &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&amp;gt;&lt;/span&gt;태그를 사용하지 않는다면 해당 컴포넌트가 onClick props를 전달받아서 실행할 수 있게 해야한다)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;redux&quot;&gt;Redux&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;기존에 react 프로젝트에서 Redux를 사용했기 때문에 Next.js에서도 계속해서 Redux를 사용하였다. 먼저 Redux를 사용하기 위해 필요한 라이브러리들을 설치해줘야한다.
+이 때, Next에서 redux를 사용하기 위해서는 next-redux-wrapper가 필요하기 때문에 함께 설치해준다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;redux&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;redux&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;redux&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapper&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그리고 다음의 블로그 &lt;a href=&quot;https://kir93.tistory.com/entry/NextJS-Redux-Toolkit-next-redux-wrapper-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0&quot;&gt;https://kir93.tistory.com/entry/NextJS-Redux-Toolkit-next-redux-wrapper&lt;/a&gt;를 참고해서 추가 설정을 했다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dynamic&quot;&gt;dynamic&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;Next.js에서도 마찬가지로 서버사이드에서는 브라우저 객체를 사용할 수 없기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 에러가 뜬다. 따라서 브라우저 객체를 사용하는 컴포넌트에서는 SSR을 꺼두어야 하는데, &lt;a href=&quot;&quot;&gt;SSR에서 window 객체가 없다고 할 때&lt;/a&gt; 글에 정리했듯이 다음과 같이 SSR을 꺼서 에러를 방지할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import dynamic from &apos;next/dynamic&apos;
+
+const ComponentsWithNoSSR = dynamic&lt;span class=&quot;nt&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;props:type&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;}&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;( // typescript에서 props를 전달할때 interface를 정의해줍니다.
+  () =&amp;gt; import(&apos;./components/Component&apos;), // Component로 사용할 항목을 import합니다.
+  { ssr: false } // ssr옵션을 false로 설정해줍니다.
+);
+
+const App = () =&amp;gt; {
+  return(
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+    	&lt;span class=&quot;nt&quot;&gt;&amp;lt;Components/&amp;gt;&lt;/span&gt; // 해당 컴포넌트는 SSR로 불러올 수 있습니다.
+
+    	&lt;span class=&quot;nt&quot;&gt;&amp;lt;ComponentsWithNoSSR/&amp;gt;&lt;/span&gt; // 해당 컴포넌트는 ssr:false이기 때문에 서버사이드 렌더를 하지않습니다.
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  )
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;nextimage&quot;&gt;next/Image&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;기존에 이미지는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt; 태그를 사용하여 추가하였지만, Next.js에서 이렇게 사용하면 warning을 띄운다. 물론 warning을 무시하고 계속 사용해도 서비스가 잘 돌아가긴 하지만 next/Image가 Next.js에서 이미지를 표시하는 데 최적화되어 있다고 하여 next/Image로 다 수정하였다. next/Image는 기존 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt; 태그와 거의 비슷한데, width/hight를 명시해주거나, layout props에 ‘fill’이라고 명시해줘야 한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import Image from &apos;next/Image&apos;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;80px&apos;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;80px&apos;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{sampleImage}&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onError=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{onHandledError}&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;sample image&apos;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;layout=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;fill&apos;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;objectFit=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cover&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;unoptimized&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;loader=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{loaderProp}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Image&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{sampleImage}&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;sample image&apos;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{64}&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{64}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;seo&quot;&gt;SEO&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;처음에 SSR을 쓰려고 했던 근본적인 이유 중 하나였던 SEO를 마지막으로 설정해주었다. SEO는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;next/head&lt;/code&gt; 라이브러리를 사용하면 쉽게 설정할 수 있다. 다음에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;next/head&lt;/code&gt;로 SEO를 설정한 코드를 정리하였다. 이 SEO 컴포넌트를 SEO를 설정하고 싶은 컴포넌트에 추가하면 SEO 설정이 끝난다!&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import Head from &apos;next/head&apos;
+
+export default function SEO({ title, siteTitle, description, creator, image, summary }) {
+  return (
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Head&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;{`${title} | ${siteTitle}`}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;description&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{description}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;og:type&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;website&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;og:title&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{title}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;og:description&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{description}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;og:site_name&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{siteTitle}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;og:type&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{&quot;website&quot;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;og:image&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{image}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;twitter:card&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;summary&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;twitter:creator&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{creator}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;twitter:title&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{title}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;twitter:description&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{description}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;image_src&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{image}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemProp=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;image&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{image}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fb:pages&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Catty, my knowledge base&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Head&amp;gt;&lt;/span&gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;참고-내용-출처-&quot;&gt;참고 내용 출처 :&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://velog.io/@kirin/Next.js-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B5%AC%EC%A1%B0&quot;&gt;https://velog.io/@kirin/Next.js-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B5%AC%EC%A1%B0&lt;/a&gt;
+&lt;a href=&quot;https://www.zerocho.com/category/JavaScript/post/573b321aa54b5e8427432946&quot;&gt;https://www.zerocho.com/category/JavaScript/post/573b321aa54b5e8427432946&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Catty" />
+      
+        <category term="Next" />
+      
+
+      
+        <summary type="html">처음에 Catty 웹앱은 리액트 CSR로 개발되었다. CSR로 개발한 이유라면 SSR이 익숙치 않았고, 좀 더 빨리 프로토타입을 개발하고 싶어서 정도였던 거 같다. 그러나 SEO 대응하면서 이슈가 발생했고 Next.js로 옮겨가야하나 생각했지만 일이 너무 커질 거 같아 CSR에서 SEO 비스무리하게 할 수 있는 다양한 툴들로 나름 SEO 최적화를 해보려고 하였다.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Firestore 내용 검색 가능하게 만들기 (Feat. Typesense)</title>
+      <link href="http://localhost:4000/Firestore-%EB%82%B4%EC%9A%A9-%EA%B2%80%EC%83%89-%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0-(feat-Typesense)" rel="alternate" type="text/html" title="Firestore 내용 검색 가능하게 만들기 (Feat. Typesense)" />
+      <published>2022-04-09T17:32:00+09:00</published>
+      <updated>2022-04-09T17:32:00+09:00</updated>
+      <id>http://localhost:4000/Firestore%20%EB%82%B4%EC%9A%A9%20%EA%B2%80%EC%83%89%20%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20(feat%20Typesense)</id>
+      <content type="html" xml:base="http://localhost:4000/Firestore-%EB%82%B4%EC%9A%A9-%EA%B2%80%EC%83%89-%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0-(feat-Typesense)">&lt;p&gt;Firestore는 전체 텍스트 검색이 되지 않는다. &lt;a href=&quot;https://firebase.google.com/docs/firestore/solutions/search?provider=typesense&quot;&gt;Firebase 공식 문서&lt;/a&gt;에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Elastic&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Algolia&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Typesense&lt;/code&gt; 3가지 인데 그 중에서 Catty 서비스에는 &lt;a href=&quot;https://typesense.org/&quot;&gt;Typesense&lt;/a&gt;를 사용하였다. 원하는 기능이 다 있으면서 가격이 가장 합리적이기 때문이다. 뿐만 아니라 사실 돈을 지불하는 부분은 클라우드 서비스이고 도커에 별도로 시스템을 구축한다면 그마저도 내지 않아도 괜찮다. 그렇지만 지금은 별도의 시스템을 만들 여력이 없기 때문에 그냥 돈내고 클라우드 서비스를 사용했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;firestore-대신-typesense&quot;&gt;Firestore 대신 Typesense&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Typesense를 사용하려고 맘먹고 보니 Firestore랑 Typesense를 이중으로 사용할 필요는 없어서 Typesense를 메인으로 사용하고, Firestore은 보조 역할로만 남겨두었다. 좀 더 구체적으로는 메인 DB를 Typesense로 하되 Typesense에 저장이 안되는 data type(object)만 Firestore에 별도로 저장했다. 또한, 크롬 익스텐션과 모바일에서는 Firestore에 리소스를 저장하고 Firebase cloud function을 통해 서버에서 firestore에 들어온 데이터를 typesensedp 넘기도록 구현하였다. 굳이 이렇게 비효율적으로 하는 이유는 크롬 익스텐션과 모바일에서 typesense를 사용할 최적의 방법을 못찾았기 때문인데(..) 사실 좀만 더 서치하면 찾을 수 있을 것도 같으나 우선 별 문제없이 잘 돌아가고 있어 다른 이슈에 비해 우선순위가 많이 밀려있긴 하다.&lt;/p&gt;
+
+&lt;p&gt;Typesense의 단점이라면 다른 서비스에 비해 참고 문서를 찾기가 어렵다. 물론 공식 문서가 잘되어 있긴 하나 헷갈리는 부분이 있을 때 다른 서비스에 비해 관련 리소스를 찾기 조금 어려운 편이었다. 그래서 이번 글에서 Typesense를 이용하면서 알게된 내용들을 조금 정리해보려고 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;typesense-환경-설정&quot;&gt;Typesense 환경 설정&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;우선 Typesense를 사용하기 위해서는 &lt;a href=&quot;https://cloud.typesense.org/clusters&quot;&gt;https://cloud.typesense.org/clusters&lt;/a&gt; Typesense cloud에 들어가서 collection을 생성해야 한다. collection 이름과 각 field의 이름과 type을 적어둔 다음에 create를 누르면 collection이 생성된다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/typesense1.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;다음에 웹앱을 개발하는 코드로 돌아가서 다음의 initialization 코드를 추가한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Typesense&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;typesense&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TYPESENSE_HOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NEXT_PUBLIC_TYPESENSE_HOST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TYPESENSE_ADMIN_API_KEY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NEXT_PUBLIC_TYPESENSE_ADMIN_API_KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TYPESENSE_SEARCH_API_KEY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Typesense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TYPESENSE_HOST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;443&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;protocol&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;apiKey&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TYPESENSE_ADMIN_API_KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;connectionTimeoutSeconds&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;이렇게 하면 Typesense를 사용할 기초 작업이 모두 끝났다.&lt;/p&gt;
+
+&lt;h2 id=&quot;document-추가수정삭제&quot;&gt;document 추가/수정/삭제&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Typesense collection에 데이터가 추가되는 단위는 document이다. 이 collection, document 개념은 firestore와 동일하다.&lt;/p&gt;
+
+&lt;p&gt;document를 typesense에 추가/수정/삭제하는 방법은 매우매우 간단하다. 추가와 수정의 경우에는 각각 추가/수정할 내용을 object type으로 만들어서 넣어주면 끝난다.
+또한 document 삭제의 경우에도 해당 document id로 한 줄의 코드를 실행하면 끝이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;document 추가
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;upsert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;document 수정
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;document 삭제
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;document-검색&quot;&gt;document 검색&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Typesense의 강점이자 조금 복잡한 부분은 이 검색 부분이다. 아래 짧은 코드로 Collection에서 다양한 조건으로 document를 검색할 수 있다. 요소들을 하나씩 뜯어 살펴보자.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;searchField&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;drop_tokens_threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;query_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;per_page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;filter_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;sort_by&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;inserted_date:desc&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;searchResults&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;searchResults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hits&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hits&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;q와-drop_tokens_threshold&quot;&gt;q와 drop_tokens_threshold&lt;/h3&gt;
+&lt;p&gt;q에 검색하고 싶은 단어를 명시하면 그 단어가 포함된 document들을 가져온다. 이 때 ‘hello world’처럼 띄어쓰기로 구분해서 검색하고 싶은 단어를 여러개 지정할 수 있다. 이러면 hello와 world를 모두 포함하는 document를 검색하게 된다. 그렇지만 이렇게 띄어쓰기로 구분된 단어들을 모두 포함하는 document를 찾으면 충분한 양의 검색결과가 없을 경우도 많이 생길 것이다. 이 때, 더 세부적으로 들어가서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;drop_tokens_threshold&lt;/code&gt;을 설정하면 내가 원하는 양의 검색 결과가 나올 때 까지 단어들을 빼면서 검색할 수 있다. 즉, hello와 world를 모두 포함하는 document가 많이 없으면 hello를 빼고 world로만으로 검색해보고 반대로 hello로만으로도 검색을 해보고 할 수 있다. 참고로 띄어쓰기로 구분된 단어들을 AND로 연결하는 AND 검색은 지원하지만 OR 검색(hello 또는 world를 포함하는 document)은 지원하지 않는다.&lt;/p&gt;
+
+&lt;h3 id=&quot;query_by&quot;&gt;query_by&lt;/h3&gt;
+&lt;p&gt;query_by는 collection field 중 어떤 field를 기반으로 검색할 것인지를 명시할 수 있는 부분이다. 예로 collection의 document가 아래와 같은 object 일 때,&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;memo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;inserted_date&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;query_by를 memo로 설정하면 메모에 q의 단어가 포함되어 있는 document들을 검색한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;page&quot;&gt;page&lt;/h3&gt;
+&lt;p&gt;page는 우리가 일반적으로 게시판앱에서 볼 수 있는 그 페이지를 생각하면 된다. collection에서 몇번 째 페이지의 document들을 가져올 지 결정한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;per_page&quot;&gt;per_page&lt;/h3&gt;
+&lt;p&gt;per_page는 페이지 당 몇개의 document를 리스트할 지를 결정한다. per_page가 20이면 한 페이지당 20개의 document를 가져오게 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;filter_by&quot;&gt;filter_by&lt;/h3&gt;
+&lt;p&gt;filter_by는 다양한 필터를 설정할 수 있는 term이다. 예로 특정 날짜 범위의 document를 검색하거나, 특정 tag를 포함하고 있는 document만 검색할 수 있다. tag는 string 타입으로 작성해야 한다. 여러개 필드의 태그는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt;로 구분한다. 또한 sampleTag1 또는 sampleTag2를 포함하는 tag로 필터링을 하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tags:[sampleTag1, sampleTag2]&lt;/code&gt;와 같이 쓰면 된다.&lt;/p&gt;
+
+&lt;p&gt;필터 string 예시는 다음과 같다.&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filter_string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`tags:[sampleTag1, sampleTag2] &amp;amp;&amp;amp; name: sampleName`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;sort_by&quot;&gt;sort_by&lt;/h3&gt;
+&lt;p&gt;sort_by는 이름에서 직관적으로 알 수 있듯이 정렬 조건을 설정하는 부분이다. 정렬 기준이 되는 field명과 오름차순인지, 내림차순인지만 명시하면 된다. 조금 주의할 것은 아직은 string sorting이 안되고 숫자로만 sorting이 가능하다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Catty" />
+      
+        <category term="Typesense" />
+      
+
+      
+        <summary type="html">Firestore는 전체 텍스트 검색이 되지 않는다. Firebase 공식 문서에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 Elastic, Algolia, Typesense 3가지 인데 그 중에서 Catty 서비스에는 Typesense를 사용하였다. 원하는 기능이 다 있으면서 가격이 가장 합리적이기 때문이다. 뿐만 아니라 사실 돈을 지불하는 부분은 클라우드 서비스이고 도커에 별도로 시스템을 구축한다면 그마저도 내지 않아도 괜찮다. 그렇지만 지금은 별도의 시스템을 만들 여력이 없기 때문에 그냥 돈내고 클라우드 서비스를 사용했다.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

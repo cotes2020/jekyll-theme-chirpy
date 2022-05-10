@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>MVVM 패턴과 AAC</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Seize the day" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/img/favicons/favicon-32x32.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="PIGBEAN Tech blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MVVM 패턴과 AAC" />
+    <meta property="og:description" content="이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.   앱 아키텍쳐의 원칙 안드로이드 앱에는 여러 앱 구성요소가 포함된다. 액티비티 : 사용자와 상호작용하기 위한 진입점. (Activity) 서비스 : 백그라운드에서 앱을 계속 실행하기 위한" />
+    <meta property="og:url" content="http://localhost:4000/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC" />
+    <meta property="og:image" content="http://localhost:4000/assets/img/post_images/mvvm_cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/false" />
+    <meta property="article:author" content="https://www.facebook.com/false" />
+    <meta property="article:published_time" content="2021-10-25T21:55:00+09:00" />
+    <meta property="article:modified_time" content="2021-10-25T21:55:00+09:00" />
+    <meta property="article:tag" content="Design Patterns" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MVVM 패턴과 AAC" />
+    <meta name="twitter:description" content="이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.   앱 아키텍쳐의 원칙 안드로이드 앱에는 여러 앱 구성요소가 포함된다. 액티비티 : 사용자와 상호작용하기 위한 진입점. (Activity) 서비스 : 백그라운드에서 앱을 계속 실행하기 위한" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/mvvm_cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="PIGBEAN Tech blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Design Patterns" />
+    <meta name="twitter:site" content="@false" />
+    <meta name="twitter:creator" content="@false" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "PIGBEAN Tech blog",
+        "logo": "http://localhost:4000/assets/img/favicons/android-chrome-256x256.png"
+    },
+    "url": "http://localhost:4000/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/img/post_images/mvvm_cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC"
+    },
+    "description": "이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.   앱 아키텍쳐의 원칙 안드로이드 앱에는 여러 앱 구성요소가 포함된다. 액티비티 : 사용자와 상호작용하기 위한 진입점. (Activity) 서비스 : 백그라운드에서 앱을 계속 실행하기 위한"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="MVVM 패턴과 AAC" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/img/favicons/android-chrome-256x256.png" alt="PIGBEAN Tech blog" /></a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/Catty/">Catty</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-design-patterns tag-mvvm tag-aac post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="25 October 2021">25 October 2021</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/design-patterns/'>DESIGN PATTERNS</a>,
+                            
+                        
+                            
+                               <a href='/tag/mvvm/'>MVVM</a>,
+                            
+                        
+                            
+                               <a href='/tag/aac/'>AAC</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">MVVM 패턴과 AAC</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/img/post_images/mvvm_cover.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.
+<br />
+ </p>
+<h2 id="앱-아키텍쳐의-원칙">앱 아키텍쳐의 원칙</h2>
+<hr />
+
+<p>안드로이드 앱에는 여러 앱 구성요소가 포함된다.</p>
+
+<ol>
+  <li>액티비티 : 사용자와 상호작용하기 위한 진입점. (Activity)</li>
+  <li>서비스 : 백그라운드에서 앱을 계속 실행하기 위한 다목적 진입점. (Service)</li>
+  <li>콘텐츠 제공자 : 파일 시스템, SQLite, 데이터베이스, 웹이나 앱이 액세스할 수 있는 저장 가능한 앱 데이터의
+ 공유 가능한 형태들을 관리한다. (ContentProvider)</li>
+  <li>브로드캐스트 수신자 : 시스템이 사용자 플로우 밖에서 이벤트를 앱에 전달하도록 지원하는 구성 요소.
+ 앱이 시스템 전체의 브로드캐스트 알림에 응답할 수 있도록 해준다.
+ 가 대표가 된다. (BroadcastReceiver)</li>
+</ol>
+
+<p>개발자는 앱 매니페스트에서 앱 구성요소의 대부분을 선언하고 안드로이드 OS에서는 매니페스트를 확인해서 기기의 사용자 환경에 앱을 통합하는 방법을 결정한다.</p>
+
+<p>휴대폰에서는 앱 실행 중 전화가 오거나, 램 공간이 부족해서 OS에서 새로운 앱 실행을 위해 일부 앱을 강제 종료 시킬 수 있다.
+이러한 환경 조건을 고려해 볼 때 앱 구성요소는 개별적이고 비순차적으로 실행될 수 있고, 운영체제나 사용자가 언제든지 앱 구성요소를 제거할 수 있게 되는데, 이런 경우들은 직접 제어할 수 없기 때문에</p>
+
+<ol>
+  <li>앱 구성요소에 데이터나 상태를 저장해서는 안되며,</li>
+  <li>앱 구성요소가 서로 종속되어서는 안된다.</li>
+</ol>
+
+<p>따라서 아래의 아키텍쳐 원칙이 제안되고 있다.
+<br />
+ </p>
+<h3 id="관심사-분리">관심사 분리</h3>
+<hr />
+
+<p>코드를 작성할 때 Activity나 Fragment와 같은 UI 기반의 클래스는 UI 및 OS 상호작용을 처리하는 로집만 포함해야 한다. 이는 UI 클래스를 최대한 가볍게 유지하여 Lifecycle 관련 문제를 피하기 위함이다.</p>
+
+<p>UI 클래스는 무언가를 소유하는 것이 아닌 구현된 앱의 내용을 띄워주는 클래스 일 뿐이며 따라서 OS는 메모리 부족과 같은 특정한 상황이 발생되면 언제든지 UI 클래스를 제거할 수 있다. (제거하더라도 앱 기반이 되는 내용이 복구가 되면 <strong>UI클래스는 단지 내용을 띄우는 수단에 불구하기 때문에</strong> 같은 내용이 화면에 표시될 수 있다.)</p>
+
+<p>따라서 UI 클래스로부터 UI, OS 상호작용을 제외한 다은 로직을 분리하여 UI 클래스에 대한 의존성을 최소화하는 것이 앱 관리 측면에서 좋다.
+<br />
+ </p>
+<h3 id="모델에서-ui-도출">모델에서 UI 도출</h3>
+<hr />
+
+<p>UI는 Model에서 만들어져야 한다. Model은 앱의 데이터 처리를 담당하는 컴포넌트로, 앱의 View 객체 및 앱 컴포넌트와 독립되어 있으므로 앱의 Lifecycle에 영향을 받지 않는다.
+(네트워크가 끊어져도 앱이 죽지 않고, 메모리 확보를 위해 앱이 강제종료되어도 데이터가 살아있는 앱)
+<br />
+ 
+<br />
+ </p>
+<h2 id="mvvm-개요">MVVM 개요</h2>
+<hr />
+
+<p>이런 앱 아키텍쳐의 원칙에 따라 <strong>MVC 패턴의 단점을 보완</strong>하고자 등장한 디자인 패턴이 바로 <strong>MVVM</strong> 이다. <strong>MVVM</strong> 은 기존 MVC 에서처럼 <strong>Controller 에게 막중한 역할을 부여하기보다,</strong> 이 <strong>동작 자체를 분리하여</strong> 동작의 흐름을 더욱 <strong>체계적으로 만들어주고 유지보수를 편리하게</strong> 할 수 있도록 해주는 디자인 패턴이다.
+<strong>MVVM 은 Model, View, ViewModel</strong> 로 이루어져 있다. 대충 이름으로 구성을 파악해보면 MVC 패턴이 Model, View, Controller로 이루어져 있던 것과 비교하여 MVVM 패턴에서는 Controller가 사라지고 대신 ViewModel이 생겼다. 그렇다고 ViewModel이 Controller의 역할을 가져갔다고 볼 순 없고, Controller의 역할이 축소되며 View와 통합되었고 ViewModel이 새롭게 등장하였다고 이해하는 게 좋다.</p>
+
+<p>MVC 패턴과 비교하여 MVVM 패턴을 자세히 살펴보자. 아래 이미지는 이해하기 좋아서 https://aonee.tistory.com/48 에서 가져왔다.</p>
+
+<p><img src="/assets/img/post_images/mvvm1.png" alt="Untitled" /></p>
+
+<ul>
+  <li><strong>View</strong>
+    <ul>
+      <li>사용자의 Action을 받는 곳</li>
+      <li>Activity/Fragment가 View의 역할</li>
+      <li>ViewModel의 데이터를 관찰하여 UI 갱신</li>
+    </ul>
+  </li>
+  <li><strong>ViewModel</strong>
+    <ul>
+      <li>View의 데이터 요청을 Model로 전달</li>
+      <li>Model이 전달해주는 데이터를 받음</li>
+      <li>View에서는 ViewModel을 알고 있지만, ViewModel은 View를 알지 못함</li>
+    </ul>
+  </li>
+  <li><strong>Model</strong>
+    <ul>
+      <li>앱의 데이터 처리를 담당</li>
+      <li>ViewModel이 요청한 데이터를 반환</li>
+      <li>Room, Realm 등의 DB 사용이나 Retrofit을 통한 백엔드 API 호출(네트워킹)이 보편적으로 이루어짐</li>
+    </ul>
+  </li>
+</ul>
+
+<p>ViewModel은 View와 Model 사이에서 데이터를 관리하고 바인딩해주는 요소이다. View가 원하는 데이터를 ViewModel이 들고있는데 따라서 View에서 ViewModel가 가지고 있는 데이터를 관찰(Observing)한다. 이를 통해 View가 데이터에 직접 접근하는 것이 아니라 UI 업데이트에만 집중할 수 있다.</p>
+
+<p>일반적으로 ViewModel과 View는 1:n의 관계이다. 따라서 View는 자신이 이용할 ViewModel을 선택하여 상태 변화 알림을 받게 된다. ViewModel은 View가 쉽게 사용할 수 있도록 Model의 데이터를 가공하여 View에게 제공한다.
+<br />
+ 
+<br />
+ </p>
+<h2 id="aac">AAC</h2>
+<hr />
+
+<p>MVVM 패턴은 많은 장점이 있지만 초보자가 쉽게 사용하기 다소 어렵다. 따러서 MVVM 패턴이 진입 장벽이 크다는 문제를 해결하기 위해서 구글에서 AAC라는 것을 제공한다.</p>
+
+<blockquote>
+  <p><strong>AAC</strong>(Android Architecture Components)는 테스트와 유지보수가 쉬운 앱을 디자인할 수 있도록 돕는 라이브러리의 모음</p>
+</blockquote>
+
+<p><img src="/assets/img/post_images/mvvm3.png" alt="Untitled" /></p>
+
+<p>구조도를 확인하면 각 구성요소가 아래 계층의 구성요소에만 종속됨을 알 수 있다.</p>
+<ul>
+  <li>Activity / Fragment -&gt; ViewModel</li>
+  <li>ViewModel -&gt; Repository,</li>
+  <li>Repository는 유일하게 여러 다른 클래스에 종속되는데, Local DB(Room) / Server DB(Retrofit)에 종속된다.</li>
+</ul>
+
+<p>이는 ViewModel에 어디에서 가져온 데이터든지 일관성있는 데이터를 제공해주기 위함이다. 위와 같이 설계할 경우 네트워크 연결과 관계없이, 얼마나 오랜만에 앱을 켰든지간에 앱에서는 Room DB에 저장해놓았던 데이터를 통해 UI를 미리 표시해준다. 그리고 이 데이터가 오래된 경우에는 Repository를 통해 데이터를 Update하게된다.</p>
+
+<p>이제 AAC의 각 구성요소를 자세히 확인해보자.</p>
+
+<h3 id="view">View</h3>
+<hr />
+
+<p>UI Controller을 담당하는 Activity, Fragment이다. 화면에 무엇을 그릴 지 결정하고, 사용자와 상호작용한다. 데이터의 변화를 감지하기 위한 옵저버를 가지고 있다.
+<br />
+ </p>
+<h3 id="viewmodel">ViewModel</h3>
+<hr />
+
+<p>ViewModel은 앱의 Lifecycle을 고려하여 <strong>UI 관련 데이터를 저장하고 관리하는 컴포넌트</strong>이다. AAC의 ViewModel은 안드로이드에서 자체적으로 <strong>안드로이드의 생명주기를 고려해서</strong> 만든 ViewModel로, MVVM에서의 ViewModel과는 전혀 다른 개념이다. Activity/Fragment 당 하나의 ViewModel만 생성 가능하다. 다음 그림을 살펴보자.</p>
+
+<p><img src="/assets/img/post_images/mvvm2.png" alt="Untitled" /></p>
+
+<p>이처럼 메모리 누수, 화면 회전과 같은 상황에서도 Data를 잘 저장할 수 있다.
+UI Controller로부터 UI 관련 데이터 저장 및 관리를 분리하여 ViewModel이 담당하도록 하면 다음과 같은 문제를 해결할 수 있다.</p>
+<ul>
+  <li>안드로이드 프레임워크는 특정 작업이나 완전히 통제할 수 없는 기기 이벤트에 대한 응답으로 UI Controller를 제거하거나 다시 만들 수 있는데, 이런 경우 <strong>UI Controller에 저장된 모든 일시적인 UI 관련 데이터가 삭제</strong>된다. 단순한 데이터의 경우 <code class="language-plaintext highlighter-rouge">onSaveInstanceState()</code> 메서드를 사용하여 복구할 수 있지만 대용량의 데이터의 경우엔 불가능하다.</li>
+  <li>UI Controller에서 데이터를 위한 비동기 호출을 한다면 <strong>메모리 누수 가능성을 방지하기 위한 많은 유지 관리</strong>가 필요하며, 위에서와 같이 데이터를 복귀해야 하는 경우 <strong>비동기 호출을 다시해야 해서 리소스가 낭비</strong>된다.</li>
+  <li>UI Controller에서 DB나 네트워크로부터 데이터를 로드하도록 하면 구분된 다른 클래스로 역할이 분담되지 않고 단일 클래스가 혼자서 앱의 모든 작업을 처리하려고 할 수 있다. 이 경우 <strong>테스트가 훨씬 더 어려워진다.</strong>
+<br />
+ </li>
+</ul>
+
+<h3 id="live-data">Live Data</h3>
+<hr />
+
+<p>LiveData는 <strong>식별 가능한 데이터 홀더 클래스</strong>로 다른 앱 컴포넌트의 Lifecycle을 인식하며, 이를 통해 <strong>활성 상태에 있는 앱 컴포넌트 옵저버에게만 업데이트 정보를 알린다.</strong></p>
+
+<p>LiveData를 사용하면 다음과 같은 이점이 있다.</p>
+<ul>
+  <li><strong>UI와 데이터 상태의 일치 보장</strong>: LiveData는 <code class="language-plaintext highlighter-rouge">Observer Pattern</code>을 따르며 Lifecycle 상태가 변경될 때마다 <code class="language-plaintext highlighter-rouge">Observer</code> 객체에 알린다. 또 앱 데이터의 변경이 발생할 때마다 관찰자에게 알려 UI를 업데이트할 수 있도록 한다.</li>
+  <li><strong>메모리 누수 없음</strong>: <code class="language-plaintext highlighter-rouge">Observer</code>는 Lifecycle 객체에 결합되어 있으며 연결된 객체의 Lifecycle이 끝나면 자동으로 삭제된다.</li>
+  <li><strong>중지된 활동으로 인한 비정상 종료 없음</strong>: 활동이 백 스택에 있을 때를 비롯하여 <code class="language-plaintext highlighter-rouge">Observer</code>가 비활성 상태에 있으면 어떤 LiveData 이벤트도 받지 않는다.</li>
+  <li><strong>Lifecycle을 더 이상 수동으로 처리하지 않음</strong>: UI 컴포넌트는 관련 데이터를 관찰하기만 할 뿐 관찰을 중지하거나 다시 시작하지 않으며, LiveData가 이를 자동으로 관리한다.</li>
+  <li><strong>최신 데이터 유지</strong>: 컴포넌트가 비활성화되면 다시 활성화될 때 최신 데이터를 수신한다.</li>
+  <li><strong>적절한 구성 변경</strong>: 기기 회전과 같은 구성 변경으로 인해 액티비티나 프래그먼트가 다시 생성되면 최신 데이터를 즉시 받게 된다.</li>
+  <li><strong>리소스 공유</strong>: 앱에서 시스템 서비스를 공유할 수 있도록 싱글톤 패턴을 사용하는 LiveData 객체를 확장하여 시스템 서비스를 래핑할 수 있다.</li>
+</ul>
+
+<p>LiveData 객체는 다음과 같은 순서로 사용된다.</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">ViewModel</code> 클래스 내에서 특정 유형의 데이터를 보유할 <code class="language-plaintext highlighter-rouge">LiveData</code>의 인스턴스를 만든다.</li>
+  <li><code class="language-plaintext highlighter-rouge">onChanged()</code> 메서드를 정의하는 <code class="language-plaintext highlighter-rouge">Observer</code> 객체를 UI Controller에 만든다. <code class="language-plaintext highlighter-rouge">onChanged()</code> 메서드는 <code class="language-plaintext highlighter-rouge">LiveData</code> 객체가 보유한 데이터가 변경될 경우 발생하는 작업을 제어한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">observe()</code> 메서드를 사용하여 <code class="language-plaintext highlighter-rouge">LiveData</code> 객체에 <code class="language-plaintext highlighter-rouge">Observer</code> 객체를 연결한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">LiveData</code> 객체를 업데이트하는 경우 <code class="language-plaintext highlighter-rouge">MutableLiveData</code> 클래스는 <code class="language-plaintext highlighter-rouge">setValue(T)</code> 또는 <code class="language-plaintext highlighter-rouge">postValue(T)</code> 메서드로 <code class="language-plaintext highlighter-rouge">LiveData</code> 객체에 저장된 값을 수정한다.</li>
+</ol>
+
+<h3 id="repository">Repository</h3>
+<hr />
+
+<p>ViewModel과 상호작용하기 위해 잘 정리된 데이터 API를 들고 있는 클래스이다. 앱에 필요한 데이터 (내장 DB or 외부 DB)를 가져온다. ViewModel은 DB나 서버에 직접 접근하지 않고, Repository에 접근하는 것으로 앱의 데이터를 관리한다.
+<br />
+ </p>
+<h3 id="roomdatabase">RoomDatabase</h3>
+<hr />
+
+<p>Room 라이브러리는 SQLite에 추상화 레이어를 제공하여 원활한 DB 액세스를 지원하고 SQLite를 완벽히 활용할 수 있게 하는 라이브러리이다. Room 라이브러리를 사용하면 앱을 실행하는 기기에서 앱 데이터의 캐시를 만들 수 있으며, 이 캐시를 통해 사용자는 인터넷 연결 여부와 관계없이 앱에 있는 주요 정보를 일관된 형태로 볼 수 있다. Room에 대해서는 다음 포스팅에서 더 자세히 설명할 예정이다.
+<br />
+ 
+<br />
+ </p>
+<h2 id="mvvm-장단점">MVVM 장단점</h2>
+<hr />
+
+<p><strong>장점</strong></p>
+
+<ul>
+  <li>계속 데이터를 관찰하고 있기 때문에 UI 업데이트가 간편하다.</li>
+  <li>모듈화 되어 있어 유지보수에 용이하다.</li>
+  <li>View가 직접 Model에 접근하지 않아 Activity/Fragment 라이프 사이클에 의존하지 않는다.</li>
+</ul>
+
+<p><strong>단점</strong></p>
+
+<ul>
+  <li>아무래도 MVC 패턴보다는 처음 익숙해지는 데 시간이 많이 걸린다. (어렵다)</li>
+</ul>
+
+<p><br />
+ </p>
+
+<hr />
+
+<h4 id="참고-내용-출처-">참고 내용 출처 :</h4>
+<ul>
+  <li><a href="https://kimyunseok.tistory.com/152">https://kimyunseok.tistory.com/152</a></li>
+  <li><a href="https://velog.io/@hwi\_chance/Android-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-AAC">https://velog.io/@hwi_chance/Android-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-AAC</a></li>
+  <li><a href="https://aonee.tistory.com/48">https://aonee.tistory.com/48</a></li>
+</ul>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Bean" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/Bean">Beanie</a></h4>
+                                
+                                    <p>Hello, I’m Beanie, always pondering and crafting services to make life fun and convenient</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/Bean">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            var this_page_url = 'http://localhost:4000/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC';
+                            var this_page_identifier = '/MVVM 패턴과 AAC';
+                            var this_page_title = 'MVVM 패턴과 AAC';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://PIGBEAN.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/img/style/bean.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; PIGBEAN Tech blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/design-patterns/">Design patterns</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/MVC-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB">MVC 패턴</a></li>
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/design-patterns/">
+                                
+                                    See all 1 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/LeetCode-1.-Two-Sum">
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/coding_cover.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/LeetCode-1.-Two-Sum">
+                <header class="post-card-header">
+                    
+
+                    <h2 class="post-card-title">LeetCode - 1. Two Sum</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>Pig Code
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Skinnig" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Pig/">Skinnig</a>
+                        </span>
+                    
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/MVC-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB">
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/mvc_cover.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/MVC-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Design patterns</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Mvc</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">MVC 패턴</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>디자인 패턴
+
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Bean/">Beanie</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      2 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+                <img src="/assets/img/favicons/favicon-32x32.png" alt="PIGBEAN Tech blog icon" />
+            
+            <span>PIGBEAN Tech blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">MVVM 패턴과 AAC</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=MVVM+%ED%8C%A8%ED%84%B4%EA%B3%BC+AAC&amp;url=https://beanie00.github.io/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://beanie00.github.io/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">PIGBEAN Tech blog</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="http://localhost:4000/tag/mvc/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-05-11T08:05:41+09:00</updated>
+  <id>http://localhost:4000/tag/mvc/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">PIGBEAN Tech blog | </title>
+  
+
+  
+    <subtitle>Seize the day</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">MVC 패턴</title>
+      <link href="http://localhost:4000/MVC-%ED%8C%A8%ED%84%B4" rel="alternate" type="text/html" title="MVC 패턴" />
+      <published>2021-10-21T21:55:00+09:00</published>
+      <updated>2021-10-21T21:55:00+09:00</updated>
+      <id>http://localhost:4000/MVC%20%ED%8C%A8%ED%84%B4</id>
+      <content type="html" xml:base="http://localhost:4000/MVC-%ED%8C%A8%ED%84%B4">&lt;h2 id=&quot;디자인-패턴&quot;&gt;디자인 패턴&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;디자인 패턴은 소프트웨어 개발 시 어떠어떠한 구조로 코드를 짜면 &lt;strong&gt;개발의 효율성과 유지보수성, 운용성이 높아지며 프로그램의 최적화에 도움이 된다&lt;/strong&gt;는 것이 경험적으로 정립된 것이다. 디자인패턴에 대한 위키피디아의 설명은 아래와 같다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;소프트웨어 개발 방법에서 사용되는 디자인 패턴은, 프로그램 개발에서 자주 나타나는 과제를 해결하기 위한 방법 중 하나로, 과거의 &lt;strong&gt;소프트웨어 개발 과정에서 발견된 설계의 노하우를 축적하여 이름을 붙여, 이후에 재이용하기 좋은 형태로 특정의 규약을 묶어서 정리한 것&lt;/strong&gt;이다. 알고리즘과 같이 프로그램 코드로 바로 변환될 수 있는 형태는 아니지만, 특정한 상황에서 구조적인 문제를 해결하는 방식을 설명해 준다. &lt;a href=&quot;https://ko.wikipedia.org/wiki/%EB%94%94%EC%9E%90%EC%9D%B8_%ED%8C%A8%ED%84%B4&quot;&gt;위키피디아&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;앱 개발시 유명한 디자인 패턴으로는 MVC, MVVM, MVP 패턴이 있는 데 그 중 MVC, MVVM 패턴을 자세히 정리해보았다. 이번 글에서는 MVC 패턴을, 다음 글에서는 MVVM 패턴을 다뤄보고자 한다.
+&lt;br /&gt;
+ 
+&lt;br /&gt;
+ &lt;/p&gt;
+&lt;h2 id=&quot;mvc-개요&quot;&gt;MVC 개요&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;MVC패턴의 MVC는 Model View Controller의 약자이다. 아래 그림은 MVC 패턴의 동작을 도식화 한 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/img/post_images/mvc1.png&quot; alt=&quot;MVC1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;각각을 좀 더 자세히 살펴보자&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Model (Data)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;어플리케이션에 사용되는 데이터&lt;/li&gt;
+      &lt;li&gt;View와 Controller에 묶이지 않아 재사용이 가능함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;View&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;사용자가 보는 화면&lt;/li&gt;
+      &lt;li&gt;유저가 화면에 어떤 입력(Action; 터치, 키보드 입력 등)을 하든 View는 어떻게 반응해야할지 모르며 Controller의 지시에 따라 행동함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Controller&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;유저 입력 이벤트의 컨트롤타워&lt;/li&gt;
+      &lt;li&gt;사용자가 어떤 입력을 할 경우 상황을 파악하고 화면 업데이트에 관한 지시를 내림&lt;/li&gt;
+      &lt;li&gt;유저의 입력에 대해 Controller만이 반응하고, 이후 Controller가 View, Model과 소통하면서 지시를 내려 화면 변화를 이끌어냄&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이렇게 정의로만 봐서는 이해하기가 어렵다. 개인적으로는 실제 이벤트가 발생했을 때 각각이 어떻게 동작하는 것인지, 동작 순서를 따져봤을 때 이해가 훨씬 쉬웠다.
+&lt;br /&gt;
+ 
+&lt;br /&gt;
+ &lt;/p&gt;
+&lt;h2 id=&quot;이벤트-발생시-mvc-동작-순서&quot;&gt;이벤트 발생시 MVC 동작 순서&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/img/post_images/mvc2.png&quot; alt=&quot;MVC2&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Controller : 사용자 이벤트 발생&lt;/li&gt;
+  &lt;li&gt;Controller : 사용자 이벤트 발생 후 Update가 필요한지 Model에 확인&lt;/li&gt;
+  &lt;li&gt;Model : 데이터 Update가 필요한지 여부 판별&lt;/li&gt;
+  &lt;li&gt;Model : Update가 필요한 경우 View에 알림&lt;/li&gt;
+  &lt;li&gt;View : Model로부터 Update 이벤트 수신&lt;/li&gt;
+  &lt;li&gt;View : Model에 필요한 데이터 요청&lt;/li&gt;
+  &lt;li&gt;Model : 요청받은 데이터를 View에 전송&lt;/li&gt;
+  &lt;li&gt;View : Model로부터 실제 필요한 데이터를 수신받아 View 갱신&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;즉, 어떠한 유저 입력이 발생하면 먼저 Controller가 상황을 파악하여 보이는 화면의 업데이트가 필요한지 Model을 통해 확인한다. Model은 업데이트 여부를 판별하여 업데이트가 필요할 경우 View에게 알리고, View는 또다시 Model에게 필요한 데이터를 요청한다. Model은 View가 필요하다고 요청한 데이터를 전송해주고, View는 이 데이터를 받아 갱신한다.
+&lt;br /&gt;
+ 
+&lt;br /&gt;
+ &lt;/p&gt;
+&lt;h2 id=&quot;안드로이드에서의-mvc-패턴의-특징&quot;&gt;안드로이드에서의 MVC 패턴의 특징&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;웹에서 적용된 MVC는 View와 Control이 완전히 분리된 상태를 의미한다. 하지만 안드로이드에서는 특징적이게도 Activity 혹은 Fragment와 같은 View들이 View와 Control을 모두 가지고 있다. 이는 예시 코드를 보면 바로 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;예시 코드)&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MainActivity&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AppCompatActivity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Bundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// View**&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;setContentView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;activity_main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;RecyclerView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recyclerView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findViewById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rv_main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;recyclerView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// Control**&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SetContentView(R.layout.activity_main) -&amp;gt; View 관련된 메소드&lt;/li&gt;
+  &lt;li&gt;recyclerView.setOnClickListener -&amp;gt; Control 관련된 메소드&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이처럼 안드로이드에는 View와 Control이 함께 공존한다.&lt;/p&gt;
+
+&lt;p&gt;따라서 위의 MVC 패턴의 동작순서는 안드로이드에서 아래와 같이 진행 될 것이다.
+&lt;img src=&quot;assets/img/post_images/mvc3.png&quot; alt=&quot;MVC3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;따라서,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;안드로이드에서는 Class 하나로 MVC 가 처리 가능한 구조로 만들어진다.&lt;/li&gt;
+  &lt;li&gt;프로젝트가 커지고 메소드 숫자가 많아지면 코드 파악이 어려워진다.&lt;/li&gt;
+  &lt;li&gt;메소드와 클래스를 적절히 분리하면서 복잡도를 관리해야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;
+ &lt;/p&gt;
+
+&lt;h2 id=&quot;mvc-패턴의-장단점&quot;&gt;MVC 패턴의 장단점&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;이런 MVC 패턴의 장단점을 정리하면 다음과 같다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;장점&lt;/th&gt;
+      &lt;th&gt;단점&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;개발기간 감소&lt;br /&gt;: Activity 에서 모든 동작을 처리해주면 된다.&lt;/td&gt;
+      &lt;td&gt;하나의 클래스에 코드양 증가&lt;br /&gt;: 액티비티 하나에서 모든 기능을 구현할 수 있기 때문에 코드양이 많아진다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;코드 분석 용이&lt;br /&gt;: 오히려 한 곳에 모여있기 때문에 가독성에 유리하다.&lt;/td&gt;
+      &lt;td&gt;유지보수의 어려움&lt;br /&gt;: 코드 유지보수를 하다가 까딱했다간 &lt;strong&gt;UI 프레임 스킵 현상 및 메모리 릭 (Memory Leak)의 위험&lt;/strong&gt;에 빠질지도 모른다&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;View와 Model의 결합도 상승&lt;br /&gt;: 대부분의 코드를 View에서 Model을 직접 호출하여 사용하기 때문에 결합도가 높아진다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;테스트코드 작성의 어려움&lt;br /&gt;: 작성한다 하더라도 UI 위주의 테스트 코드만 작성 가능하다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Design patterns" />
+      
+        <category term="MVC" />
+      
+
+      
+        <summary type="html">디자인 패턴</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

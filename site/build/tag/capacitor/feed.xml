@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="http://localhost:4000/tag/capacitor/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-05-11T07:24:52+09:00</updated>
+  <id>http://localhost:4000/tag/capacitor/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">PIGBEAN Tech blog | </title>
+  
+
+  
+    <subtitle>Seize the day</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">(작성중) Capacitor와 Vue.js를 이용해서 cross-platform 모바일 앱 개발하기</title>
+      <link href="http://localhost:4000/Capacitor%EC%99%80-Vue.js%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-cross-platform-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%95%B1-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0" rel="alternate" type="text/html" title="(작성중) Capacitor와 Vue.js를 이용해서 cross-platform 모바일 앱 개발하기" />
+      <published>2021-11-30T14:21:00+09:00</published>
+      <updated>2021-11-30T14:21:00+09:00</updated>
+      <id>http://localhost:4000/Capacitor%EC%99%80%20Vue.js%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C%20cross-platform%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%95%B1%20%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0</id>
+      <content type="html" xml:base="http://localhost:4000/Capacitor%EC%99%80-Vue.js%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-cross-platform-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%95%B1-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0">&lt;p&gt;이번 글에서는 21.10월부터 21.11월 2달 동안 외주 개발 프로젝트 개발한 하이브리드 앱에 Vue.js와 Capacitor를 적용해본 경험을 공유하려고 한다. 결론적으로 말하면 많이 불편했고 다시는 사용하지 않을 방법이다. 이후에 하이브리드 앱은 &lt;a href=&quot;https://beanie00.github.io/posts/리액트 웹뷰에 네이티브 기능 연결해서 하이브리드 앱을 만들자&quot;&gt;리액트 웹뷰로 하이브리드 앱을 만들자&lt;/a&gt; 포스팅에서 적은 것 처럼 웹뷰에 Capacitor를 붙이는 대신 네이티브 기능을 다이렉트로 붙이는 방향으로 작업하였다.&lt;/p&gt;
+
+&lt;h2 id=&quot;왜-이-프레임워크를-선택했나&quot;&gt;왜 이 프레임워크를 선택했나&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;우선 주어진 상황은 기존에 조금 구현된 Vue.js 코드를 참고할 수 있었고, 빠듯한 시간 내에 웹과 앱을 모두 구현해야 했다. 그래서 조금 있는 Vue.js 코드를 활용하기 위하여 Vue.js를 프론트엔드 프레임워크로 선택하였고, 모바일앱은 Vue.js로 모바일 웹앱을 구현한 뒤, Capacitor을 통해 cross-platform으로 개발하기로 결정하였다. (하지만 결국 조금있던 Vue.js 코드는 별로 도움이 되지 못하였고, 사실상 처음부터 짜는게 되긴 했다.)&lt;/p&gt;
+
+&lt;h2 id=&quot;capacitor란&quot;&gt;Capacitor란?&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;capacitor-세팅&quot;&gt;Capacitor 세팅&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;capacitor의-플러그인들&quot;&gt;Capacitor의 플러그인들&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;이 프로젝트에서 모바일앱을 개발할 때 Status bar 디자인을 수정하고 사진, 영상을 촬영한 후 전송하는 등의 네이티브 기능 구현이 필요했다. 이렇게 네이티브 기능을 사용해야 할 때 Capacitor의 플러그인을 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;그렇지만 개발하다보니 꽤 불편했는데, 개인적으로 느낀 Capacitor의 단점은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;네이티브 소스보다 느리고 무겁다.&lt;/li&gt;
+  &lt;li&gt;프레임워크&lt;/li&gt;
+  &lt;li&gt;제공되지 않는 플러그인이 많음&lt;/li&gt;
+  &lt;li&gt;플러그인 버그&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;그래서 사실상 편하려고 쓴 프레임워크지만 기능 부족 / 버그 등의 이유로 네이티브 코드를 직접 건드릴 일이 왕왕 생겼다. 그러다보니 이럴바에는 복잡하게 이러지 말고 네이티브를 직접 건드리는 게 낫겠다는 생각이 들었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@lyslg1018/ionic-capacitor-ae9f7e691e70&quot;&gt;https://medium.com/@lyslg1018/ionic-capacitor-ae9f7e691e70&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Vue" />
+      
+        <category term="Capacitor" />
+      
+
+      
+        <summary type="html">이번 글에서는 21.10월부터 21.11월 2달 동안 외주 개발 프로젝트 개발한 하이브리드 앱에 Vue.js와 Capacitor를 적용해본 경험을 공유하려고 한다. 결론적으로 말하면 많이 불편했고 다시는 사용하지 않을 방법이다. 이후에 하이브리드 앱은 리액트 웹뷰로 하이브리드 앱을 만들자 포스팅에서 적은 것 처럼 웹뷰에 Capacitor를 붙이는 대신 네이티브 기능을 다이렉트로 붙이는 방향으로 작업하였다.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

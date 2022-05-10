@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="http://localhost:4000/tag/recommandation-system/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-05-11T07:24:52+09:00</updated>
+  <id>http://localhost:4000/tag/recommandation-system/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">PIGBEAN Tech blog | </title>
+  
+
+  
+    <subtitle>Seize the day</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">RecSys &amp;amp; RL - A Deep Reinforcement Learning Framework for News Recommendation</title>
+      <link href="http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1" rel="alternate" type="text/html" title="RecSys &amp; RL - A Deep Reinforcement Learning Framework for News Recommendation" />
+      <published>2022-05-01T17:32:00+09:00</published>
+      <updated>2022-05-01T17:32:00+09:00</updated>
+      <id>http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%20%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id>
+      <content type="html" xml:base="http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;딥러닝 모델을 활용한 기존 뉴스 추천 시스템의 취약점&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;다이나믹하게 변하는 뉴스의 특성과 뉴스에 대한 유저의 선호도 변화를 고려할 때, online learning 이 필요하다. 하지만 기존의 뉴스 추천 시스템은 …&lt;/li&gt;
+  &lt;li&gt;기존 추천 시스템은 유저 feedback로 오직 click/no click 정보만 고려했다. 따라서 뉴스를 탐색하면서 실수로 잘못 누른 기사와 정말 읽고 싶어서 찾아서 들어간 기사의 reward는 확실히 달라야하지만 이러한 특성은 잡아내지 못하였다.&lt;/li&gt;
+  &lt;li&gt;기존 추천 시스템은 유저에게 유사한 뉴스를 계속 추천하려는 경향이 있다. 그렇지만 이렇게 계속 비슷한 뉴스를 추천해주면 주제에 대한 사용자의 흥미가 쉽게 떨어진다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
+&lt;p&gt;이러한 취약점을 극복하기 위하여 이 논문에서는 DQN을 활용한 다음과 같은 추천시스템을 제안한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;유저와 아이템(뉴스)간의 복잡한 관계를 모델링하는 대신에, online news recommendation의 다이나믹한 특성에 집중하여 future reward를 모델링한다.
+(기존의 MAB 방법들과 다름)&lt;/li&gt;
+  &lt;li&gt;MDP(Markov Decision Process)를 적용하여 이용하여 모델의 future reward를 활용할 수 있다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;더 나아가 MDP framework를 continuous state와 action representation와 함께 사용하여 쉽게 확장할 수 있고, 모든 (state, action, reward) tuple을 활용하여 모델 파라미터를 효율적으로 학습할 수 있다.
+(기존의 MAP 방법들과 다름)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Exploration strategy로 Dueling Bandit Gradient Descent exploration strategy를 활용
+    &lt;ul&gt;
+      &lt;li&gt;Improve recommendation diversity&lt;/li&gt;
+      &lt;li&gt;avoid the harm to recommendation accuracy induced by classical exploration strategies (ex&amp;gt; e-greedy, Upper Confidence Bound)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;model-framework&quot;&gt;Model framework&lt;/h3&gt;
+
+&lt;h2 id=&quot;experiment&quot;&gt;Experiment&lt;/h2&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Recommandation System" />
+      
+        <category term="Reinforcement learning" />
+      
+        <category term="paper" />
+      
+
+      
+        <summary type="html">Introduction 딥러닝 모델을 활용한 기존 뉴스 추천 시스템의 취약점 다이나믹하게 변하는 뉴스의 특성과 뉴스에 대한 유저의 선호도 변화를 고려할 때, online learning 이 필요하다. 하지만 기존의 뉴스 추천 시스템은 … 기존 추천 시스템은 유저 feedback로 오직 click/no click 정보만 고려했다. 따라서 뉴스를 탐색하면서 실수로 잘못 누른 기사와 정말 읽고 싶어서 찾아서 들어간 기사의 reward는 확실히 달라야하지만 이러한 특성은 잡아내지 못하였다. 기존 추천 시스템은 유저에게 유사한 뉴스를 계속 추천하려는 경향이 있다. 그렇지만 이렇게 계속 비슷한 뉴스를 추천해주면 주제에 대한 사용자의 흥미가 쉽게 떨어진다.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
