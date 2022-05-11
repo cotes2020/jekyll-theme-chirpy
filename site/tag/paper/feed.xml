@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/paper/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T11:18:03+09:00</updated>
+  <updated>2022-05-11T12:25:27+09:00</updated>
   <id>http://localhost:4000/tag/paper/feed.xml</id>
 
   
@@ -287,7 +287,7 @@ average accumulated reward after 100 episodes than their method.
       
 
       <author>
-          <name>Bean</name>
+          <name>Beanie</name>
         
         
       </author>

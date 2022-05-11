@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-11T11:18:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">PIGBEAN Tech blog</title><subtitle>Seize the day</subtitle><entry><title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title><link href="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" /><published>2022-05-10T13:32:00+09:00</published><updated>2022-05-10T13:32:00+09:00</updated><id>http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EB%B0%98%20%EB%85%B8%ED%8A%B8%20%EC%9E%91%EC%84%B1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20Catty%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-11T12:25:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">PIGBEAN Tech blog</title><subtitle>Seize the day</subtitle><entry><title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title><link href="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" /><published>2022-05-10T13:32:00+09:00</published><updated>2022-05-10T13:32:00+09:00</updated><id>http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EB%B0%98%20%EB%85%B8%ED%8A%B8%20%EC%9E%91%EC%84%B1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20Catty%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;catty-서비스가-뭔데&quot;&gt;Catty 서비스가 뭔데?&lt;/h2&gt;
 &lt;hr /&gt;
@@ -156,7 +156,7 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
 &lt;/ul&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/mf3.png&quot; width=&quot;70%&quot; /&gt;
+  &lt;img src=&quot;/assets/img/post_images/mf3.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;&lt;br /&gt;
@@ -292,12 +292,12 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
   &lt;li&gt;(3개의 행렬로 분해되는) SVD방식에서는 null을 대체한 0값이 하나의 값으로 적용돼서 학습 후에도 0에 근사한 예측값이 도출된다.
 즉, null에 대한 예측이 제대로 이루어지지 못한다.
     &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/mf1.png&quot; width=&quot;70%&quot; /&gt;
+  &lt;img src=&quot;/assets/img/post_images/mf1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;(2개의 행렬로 분해되는) MF방식은 모델을 학습하는 과정(SGD)에서 null(0)값을 제외하고 계산하는 구조이며, 이렇게 학습된 행렬 P,Q를 통해 null에 대한 예측도 정확하게 할 수 있다.
     &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/mf2.png&quot; width=&quot;70%&quot; /&gt;
+  &lt;img src=&quot;/assets/img/post_images/mf2.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -815,12 +815,12 @@ average accumulated reward after 100 episodes than their method.
       &lt;li&gt;Eventually, their proposed method achieves a considerable performance boost from the original imitation learning’s learned policy while the pure DDPG never performs well and does not show any improving trend.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Bean</name></author><category term="Reinforcement learning" /><category term="Autonomous driving" /><category term="Autonomous driving" /><category term="Reinforcement learning" /><category term="paper" /><summary type="html">Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings and Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.</summary></entry><entry><title type="html">크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)</title><link href="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)" rel="alternate" type="text/html" title="크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)" /><published>2022-04-29T10:32:00+09:00</published><updated>2022-04-29T10:32:00+09:00</updated><id>http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20400mb%EC%97%90%EC%84%9C%204mb%EB%A1%9C%20%EC%A4%84%EC%9D%B4%EA%B8%B0(..)</id><content type="html" xml:base="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)">&lt;p&gt;사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Beanie</name></author><category term="Reinforcement learning" /><category term="Autonomous driving" /><category term="Autonomous driving" /><category term="Reinforcement learning" /><category term="paper" /><summary type="html">Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings and Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.</summary></entry><entry><title type="html">크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)</title><link href="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)" rel="alternate" type="text/html" title="크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)" /><published>2022-04-29T10:32:00+09:00</published><updated>2022-04-29T10:32:00+09:00</updated><id>http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20400mb%EC%97%90%EC%84%9C%204mb%EB%A1%9C%20%EC%A4%84%EC%9D%B4%EA%B8%B0(..)</id><content type="html" xml:base="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)">&lt;p&gt;사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.&lt;/p&gt;
 
 &lt;p&gt;크롬 익스텐션은 배포 할 때 zip 형식으로 개발 파일을 올려야 한다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/extension_size1.png&quot; width=&quot;50%&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension_size1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;그래서 별 생각없이 익스텐션을 개발하던 폴더 전체를 zip으로 압축해서 배포해왔다. 그런데 배포된 크롬 익스텐션을 다운받을 때 너무 오래 걸려서 확인해보니까 파일 크기가 200mb(!)로 확인되었다. 다른 익스텐션의 파일 크기는 거의 1~5mb로 매우 작은데 Catty만 유독 커서 확인해보니 Catty 개발 폴더가 400mb를 차지하고 있었다.&lt;/p&gt;
@@ -848,7 +848,7 @@ package.json
 
 &lt;p&gt;고로 이 폴더들을 제외하고 배포해야 하는데 .git 폴더도 없애면 git 설정을 다시해야하고, node_modules 폴더도 로컬에서 업데이트할 때 계속 필요해서 없애면 안되어서 고민하다가 그냥 이 두 폴더를 잠시 다른 곳에 옮긴 다음에 zip 압축을 하고, 그 후 다시 폴더를 가져오는 식으로 했다.&lt;/p&gt;
 
-&lt;div style=&quot;text-align: left&quot;&gt;
+&lt;div style=&quot;text-align: left&quot; width=&quot;100%&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/extension_size3.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt; 

@@ -180,7 +180,7 @@ into the {body} of the default.hbs template -->
 <p>크롬 익스텐션은 배포 할 때 zip 형식으로 개발 파일을 올려야 한다.</p>
 
 <div style="text-align: left">
-   <img src="/assets/img/post_images/extension_size1.png" width="50%" />
+   <img src="/assets/img/post_images/extension_size1.png" width="100%" />
 </div>
 
 <p>그래서 별 생각없이 익스텐션을 개발하던 폴더 전체를 zip으로 압축해서 배포해왔다. 그런데 배포된 크롬 익스텐션을 다운받을 때 너무 오래 걸려서 확인해보니까 파일 크기가 200mb(!)로 확인되었다. 다른 익스텐션의 파일 크기는 거의 1~5mb로 매우 작은데 Catty만 유독 커서 확인해보니 Catty 개발 폴더가 400mb를 차지하고 있었다.</p>
@@ -208,7 +208,7 @@ package.json
 
 <p>고로 이 폴더들을 제외하고 배포해야 하는데 .git 폴더도 없애면 git 설정을 다시해야하고, node_modules 폴더도 로컬에서 업데이트할 때 계속 필요해서 없애면 안되어서 고민하다가 그냥 이 두 폴더를 잠시 다른 곳에 옮긴 다음에 zip 압축을 하고, 그 후 다시 폴더를 가져오는 식으로 했다.</p>
 
-<div style="text-align: left">
+<div style="text-align: left" width="100%">
    <img src="/assets/img/post_images/extension_size3.png" width="100%" />
 </div>
 <p> 
@@ -456,10 +456,10 @@ package.json
             
                 
 
-    <article class="post-card ">
+    <article class="post-card post-template">
         
             <a class="post-card-image-link" href="/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/driving_cover.jpg)"></div>
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/driving_cover2.jpg)"></div>
             </a>
         
         <div class="post-card-content">
@@ -494,11 +494,18 @@ package.json
                     
                 
                     
+                        
+                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Bean/">Beanie</a>
+                        </span>
+                    
                 
                 <span class="reading-time">
                     
                     
-                      3 min read
+                      4 min read
                     
                 </span>
             </footer>

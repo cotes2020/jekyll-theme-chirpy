@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/author/Bean/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T11:18:03+09:00</updated>
+  <updated>2022-05-11T12:25:27+09:00</updated>
   <id>http://localhost:4000/author/Bean/feed.xml</id>
 
   
@@ -327,7 +327,7 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
 &lt;/ul&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/mf3.png&quot; width=&quot;70%&quot; /&gt;
+  &lt;img src=&quot;/assets/img/post_images/mf3.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;&lt;br /&gt;
@@ -463,12 +463,12 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
   &lt;li&gt;(3개의 행렬로 분해되는) SVD방식에서는 null을 대체한 0값이 하나의 값으로 적용돼서 학습 후에도 0에 근사한 예측값이 도출된다.
 즉, null에 대한 예측이 제대로 이루어지지 못한다.
     &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/mf1.png&quot; width=&quot;70%&quot; /&gt;
+  &lt;img src=&quot;/assets/img/post_images/mf1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;(2개의 행렬로 분해되는) MF방식은 모델을 학습하는 과정(SGD)에서 null(0)값을 제외하고 계산하는 구조이며, 이렇게 학습된 행렬 P,Q를 통해 null에 대한 예측도 정확하게 할 수 있다.
     &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/mf2.png&quot; width=&quot;70%&quot; /&gt;
+  &lt;img src=&quot;/assets/img/post_images/mf2.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -996,6 +996,139 @@ average accumulated reward after 100 episodes than their method.
     </entry>
   
     <entry>
+      <title type="html">RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings</title>
+      <link href="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1" rel="alternate" type="text/html" title="RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings" />
+      <published>2022-04-30T10:32:00+09:00</published>
+      <updated>2022-04-30T10:32:00+09:00</updated>
+      <id>http://localhost:4000/%EC%9E%90%EC%9C%A8%20%EC%A3%BC%ED%96%89%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id>
+      <content type="html" xml:base="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training&lt;/code&gt;, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.&lt;/p&gt;
+
+&lt;p&gt;More specifically, in the image-based autonomous driving task, imitation learning and reinforcement learning are combined and used together to utilize each others’ strength. The difference between the two papers is that the first paper uses DDPG as reinforcement learning whereas the second paper uses SAC.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;The problem of generating control decision given a monocular camera image and other auxiliary vehicle sensors’ outputs has aroused a lot of interest in recent years.&lt;/li&gt;
+  &lt;li&gt;Conducting imitation learning towards given human policy might produce a relative well-performed policy
+    &lt;ul&gt;
+      &lt;li&gt;However, limitation on the possible policy performance and the potential lack of generalizability for unseen situations.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Instead, using RL in a simulator and then transfer the learned policy to real world is very popular in recent research.
+    &lt;ul&gt;
+      &lt;li&gt;Nonetheless, when the state and action spaces are huge or high dimensional, pure RL algorithm training process usually diverges.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;They present a method which combines these two methods and thus leverage both their advantages for this image-based autonomous driving task.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;(1) pre-training(imitation learning) -&amp;gt; (2) fine-tuning(DDPG)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Network architecture
+    &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/rl_driving1_1.png&quot; width=&quot;70%&quot; /&gt;
+&lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;ResNet-34 architecture
+        &lt;ul&gt;
+          &lt;li&gt;One of CNN network for deep reinforcement learning tasks like environmental perception, model compression, and object detection&lt;/li&gt;
+          &lt;li&gt;Use ResNet-34 as the backbone structure for both actor and critic networks&lt;/li&gt;
+          &lt;li&gt;The simple and light ResNet-34 out performs other architectures with attention module integrated in terms of both final testing loss and the generated policy’s performance.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Imitation learning phase
+    &lt;ul&gt;
+      &lt;li&gt;Aim to generate a good initial policy&lt;/li&gt;
+      &lt;li&gt;Consider current image input and current vehicle speed as our current state inputs, and throttle, brake from zero to one and steering from minus one to positive one as our control outputs&lt;/li&gt;
+      &lt;li&gt;Use Huber loss : to less sensitive to outliers and can make the training process more stable compared to MSE as a result.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Reinforcement learning phase
+    &lt;ul&gt;
+      &lt;li&gt;Reward : distance to the nearest obstacle and current velocity
+        &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/rl_driving1_2.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Continuous and deterministic policy setting : to prevent possible catastrophic effect under undesired behavior.&lt;/li&gt;
+      &lt;li&gt;In order to combine with imitation learning, they make several changes on the original DDPG
+        &lt;ul&gt;
+          &lt;li&gt;actor, critic networks
+            &lt;ul&gt;
+              &lt;li&gt;actor network : give all the weights of the pre-trained actor network to the actor networks used in the DDPG.&lt;/li&gt;
+              &lt;li&gt;critic network : give all the weights except the final fully connected layer to critic networks used in the DDPG.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;replay pool : train actor and critic networks using the samples collected under imitation learning’s generated policy. Then, use normal DDPG to collect new experience&lt;/li&gt;
+          &lt;li&gt;removing OU noise&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;experiments&quot;&gt;Experiments&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Imitation learning phase
+    &lt;ul&gt;
+      &lt;li&gt;Use an Xbox controller to control the car under various weather and lighting conditions and record the data using Airsim API&lt;/li&gt;
+      &lt;li&gt;1000 for each episode and terminates when a collision happens.&lt;/li&gt;
+      &lt;li&gt;Randomly choose the weather condition and the initial position of the car before each episode starts and calculate a 5 episodes’ average accumulated reward as the criteria.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;RL phase
+    &lt;ul&gt;
+      &lt;li&gt;Same setting as imitation learnin phase&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Results
+    &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img width=&quot;100%&quot; src=&quot;/assets/img/post_images/rl_driving1_3.png&quot; /&gt;
+&lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Eventually, their proposed method achieves a considerable performance boost from the original imitation learning’s learned policy while the pure DDPG never performs well and does not show any improving trend.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Autonomous driving" />
+      
+        <category term="Reinforcement learning" />
+      
+        <category term="paper" />
+      
+
+      
+        <summary type="html">Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings and Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
       <title type="html">크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)</title>
       <link href="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)" rel="alternate" type="text/html" title="크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)" />
       <published>2022-04-29T10:32:00+09:00</published>
@@ -1006,7 +1139,7 @@ average accumulated reward after 100 episodes than their method.
 &lt;p&gt;크롬 익스텐션은 배포 할 때 zip 형식으로 개발 파일을 올려야 한다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/extension_size1.png&quot; width=&quot;50%&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension_size1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;그래서 별 생각없이 익스텐션을 개발하던 폴더 전체를 zip으로 압축해서 배포해왔다. 그런데 배포된 크롬 익스텐션을 다운받을 때 너무 오래 걸려서 확인해보니까 파일 크기가 200mb(!)로 확인되었다. 다른 익스텐션의 파일 크기는 거의 1~5mb로 매우 작은데 Catty만 유독 커서 확인해보니 Catty 개발 폴더가 400mb를 차지하고 있었다.&lt;/p&gt;
@@ -1034,7 +1167,7 @@ package.json
 
 &lt;p&gt;고로 이 폴더들을 제외하고 배포해야 하는데 .git 폴더도 없애면 git 설정을 다시해야하고, node_modules 폴더도 로컬에서 업데이트할 때 계속 필요해서 없애면 안되어서 고민하다가 그냥 이 두 폴더를 잠시 다른 곳에 옮긴 다음에 zip 압축을 하고, 그 후 다시 폴더를 가져오는 식으로 했다.&lt;/p&gt;
 
-&lt;div style=&quot;text-align: left&quot;&gt;
+&lt;div style=&quot;text-align: left&quot; width=&quot;100%&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/extension_size3.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt; 
@@ -1064,52 +1197,6 @@ package.json
 
       
         <summary type="html">사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">iTerm으로 MAC 터미널 꾸미기</title>
-      <link href="http://localhost:4000/iTerm%EC%9C%BC%EB%A1%9C-MAC-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%BE%B8%EB%AF%B8%EA%B8%B0" rel="alternate" type="text/html" title="iTerm으로 MAC 터미널 꾸미기" />
-      <published>2022-04-28T17:32:00+09:00</published>
-      <updated>2022-04-28T17:32:00+09:00</updated>
-      <id>http://localhost:4000/iTerm%EC%9C%BC%EB%A1%9C%20MAC%20%ED%84%B0%EB%AF%B8%EB%84%90%20%EA%BE%B8%EB%AF%B8%EA%B8%B0</id>
-      <content type="html" xml:base="http://localhost:4000/iTerm%EC%9C%BC%EB%A1%9C-MAC-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%BE%B8%EB%AF%B8%EA%B8%B0">&lt;p&gt;어느 순간 개발하다가 요즘 제일 많이 쳐다보는게 1등 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VS Code&lt;/code&gt; 2등 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terminal&lt;/code&gt;라는 생각이 번뜩 들었다.&lt;/p&gt;
-
-&lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/어이없음.jpg&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;생각보다 terminal을 들여다보고 개발하는 시간이 길었는데, 이왕 이렇게 많이 볼 거 좀 더 이쁘면 좋겠다는 생각이 들어 terminal을 꾸며보았다.&lt;/p&gt;
-
-&lt;p&gt;iTerm을 설치하고 커스터마이징 하는 법은 이 &lt;a href=&quot;https://ooeunz.tistory.com/21&quot;&gt;https://ooeunz.tistory.com/21&lt;/a&gt; 블로그를 주로 참고하였다.&lt;/p&gt;
-
-&lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/iterm.png&quot; width=&quot;100%&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;따란~ 그 결과 이렇게 이쁜 나만의 터미널이 완성되었다.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Beanie</name>
-        
-        
-      </author>
-
-      
-
-      
-
-      
-        <summary type="html">어느 순간 개발하다가 요즘 제일 많이 쳐다보는게 1등 VS Code 2등 terminal라는 생각이 번뜩 들었다.</summary>
       
 
       

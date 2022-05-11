@@ -28,7 +28,9 @@ Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이�
 
 이처럼 Observable은 데이터 흐름에 맞게 알림을 보내 Observer가 데이터를 사용할 수 있도록 한다. 즉, Observable을 이용해 데이터를 회수하고 변환하는 메커니즘을 정의하고, Observer은 이를 구독해 데이터가 준비되면 이에 반응한다.
 
-![Image](/assets/img/post_images/rxjava3-1.png)
+<div style="text-align: left">
+    <img src="/assets/img/post_images/rxjava3-1.png" width="100%"/>
+</div>
 
 그림에서 처럼 Observer pattern은 다음의 순서로 동작한다.
 
@@ -156,7 +158,9 @@ onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 �
 &nbsp;
 > just()나 create()는 단일 데이터를 다룬다. 단일 데이터가 아닐때는 fromXXX() 계열 함수를 사용한다. **배열, 리스트 등의 자료구조나 Future, Callable, Publisher 등은 from으로 시작하는 연산자를 통해 간단히 Observable로 변환할 수 있다.** 원래 RxJava 1.x에서는 from()과 fromCallable() 함수만 사용했었다. 그런데 from() 함수를 배열, 반복자, 비동기 계산 등에 모두 사용하다 보니 모호함이 있었다. 따라서 RxJava2에서는 from() 함수를 세분화했고 그중 하나가 아래 소개하는 fromArray() 함수이다.
 
-![from](/assets/img/post_images/rxjava3_from.png)
+<div style="text-align: left">
+    <img src="/assets/img/post_images/rxjava3_from.png" width="100%"/>
+</div>
 
 * `fromArray()` 함수
 
@@ -196,7 +200,9 @@ Observable 스트림 이외에도 특별한 목적으로 사용되는 `Single`, 
 ### Single
 ---
 
-![Single](/assets/img/post_images/rxjava3_single.png)
+<div style="text-align: left">
+    <img src="/assets/img/post_images/rxjava3_single.png" width="100%"/>
+</div>
 Single은 단일 아이템만 발행한다. 이 특징 때문에 http 요청/응답 같은 이벤트 처리에 많이 쓰인다. Single을 사용해 http 이벤트에 실행 결과에 따른 **응답 메시지** 를 전달받아 추후 프로그램에 활용할 수 있다. 데이터를 한 번만 발행하기 때문에 onNext(), onComplete() 대신 `onSuccess()`를 사용해 데이터 발행이 완료됨을 알려준다. 오류처리는 Observable과 마찬가지로 `onError()`을 사용한다.
 
 ```
@@ -230,7 +236,9 @@ Completed
 ### Maybe
 ---
 
-![Maybe](/assets/img/post_images/rxjava3_maybe.png)
+<div style="text-align: left">
+    <img src="/assets/img/post_images/rxjava3_maybe.png" width="100%"/>
+</div>
 Maybe는 Single과 Completable을 합쳐둔 느낌이다. Single처럼 아이템을 하나만 발행할 수도 있고, Completable처럼 발행하지 않을 수도 있다. 따라서 아이템을 발행했을 때에는 onSuccess()를 호출하고, 발행하지 않을 때에는 onComplete()를 호출한다. onSuccess() 이후에 다시 onComplete()를 호출할 필요는 없다.
 
 \

@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/design-patterns/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T11:18:03+09:00</updated>
+  <updated>2022-05-11T12:25:27+09:00</updated>
   <id>http://localhost:4000/tag/design-patterns/feed.xml</id>
 
   
@@ -97,7 +97,9 @@
 
 &lt;p&gt;MVC 패턴과 비교하여 MVVM 패턴을 자세히 살펴보자. 아래 이미지는 이해하기 좋아서 https://aonee.tistory.com/48 에서 가져왔다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/post_images/mvvm1.png&quot; alt=&quot;Untitled&quot; /&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/mvvm1.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;View&lt;/strong&gt;
@@ -296,7 +298,9 @@ UI Controller로부터 UI 관련 데이터 저장 및 관리를 분리하여 Vie
 
 &lt;p&gt;MVC패턴의 MVC는 Model View Controller의 약자이다. 아래 그림은 MVC 패턴의 동작을 도식화 한 것이다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/img/post_images/mvc1.png&quot; alt=&quot;MVC1&quot; /&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/mvc1.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
 
 &lt;p&gt;각각을 좀 더 자세히 살펴보자&lt;/p&gt;
 &lt;ul&gt;
@@ -329,7 +333,9 @@ UI Controller로부터 UI 관련 데이터 저장 및 관리를 분리하여 Vie
 &lt;h2 id=&quot;이벤트-발생시-mvc-동작-순서&quot;&gt;이벤트 발생시 MVC 동작 순서&lt;/h2&gt;
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/img/post_images/mvc2.png&quot; alt=&quot;MVC2&quot; /&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/mvc2.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Controller : 사용자 이벤트 발생&lt;/li&gt;
@@ -378,8 +384,10 @@ UI Controller로부터 UI 관련 데이터 저장 및 관리를 분리하여 Vie
 
 &lt;p&gt;이처럼 안드로이드에는 View와 Control이 함께 공존한다.&lt;/p&gt;
 
-&lt;p&gt;따라서 위의 MVC 패턴의 동작순서는 안드로이드에서 아래와 같이 진행 될 것이다.
-&lt;img src=&quot;assets/img/post_images/mvc3.png&quot; alt=&quot;MVC3&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;따라서 위의 MVC 패턴의 동작순서는 안드로이드에서 아래와 같이 진행 될 것이다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/mvc3.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
 
 &lt;p&gt;따라서,&lt;/p&gt;
 

@@ -101,7 +101,10 @@ public interface Subscriber<T> {
 \
 &nbsp;
 이를 토대로 다음과 같은 flow를 만들 수 있다.
-  ![Reactive streams flow](/assets/img/post_images/rxjava2-1.png)
+  <div style="text-align: left">
+    <img src="/assets/img/post_images/rxjava2-1.png" width="100%"/>
+  </div>
+
 1. Publisher에서 사용할 Subscription을 구현한다.
 2. Publisher에서 전달(publishing)할 data를 만든다.
 3. Publisher는 subscribe() 메서드를 통해 subscriber를 등록한다.

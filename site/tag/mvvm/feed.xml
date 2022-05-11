@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/mvvm/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T11:18:03+09:00</updated>
+  <updated>2022-05-11T12:25:27+09:00</updated>
   <id>http://localhost:4000/tag/mvvm/feed.xml</id>
 
   
@@ -97,7 +97,9 @@
 
 &lt;p&gt;MVC 패턴과 비교하여 MVVM 패턴을 자세히 살펴보자. 아래 이미지는 이해하기 좋아서 https://aonee.tistory.com/48 에서 가져왔다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/post_images/mvvm1.png&quot; alt=&quot;Untitled&quot; /&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/mvvm1.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;View&lt;/strong&gt;

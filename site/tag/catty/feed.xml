@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/catty/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T11:18:03+09:00</updated>
+  <updated>2022-05-11T12:25:27+09:00</updated>
   <id>http://localhost:4000/tag/catty/feed.xml</id>
 
   
@@ -194,7 +194,7 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
 &lt;p&gt;크롬 익스텐션은 배포 할 때 zip 형식으로 개발 파일을 올려야 한다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/extension_size1.png&quot; width=&quot;50%&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension_size1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;그래서 별 생각없이 익스텐션을 개발하던 폴더 전체를 zip으로 압축해서 배포해왔다. 그런데 배포된 크롬 익스텐션을 다운받을 때 너무 오래 걸려서 확인해보니까 파일 크기가 200mb(!)로 확인되었다. 다른 익스텐션의 파일 크기는 거의 1~5mb로 매우 작은데 Catty만 유독 커서 확인해보니 Catty 개발 폴더가 400mb를 차지하고 있었다.&lt;/p&gt;
@@ -222,7 +222,7 @@ package.json
 
 &lt;p&gt;고로 이 폴더들을 제외하고 배포해야 하는데 .git 폴더도 없애면 git 설정을 다시해야하고, node_modules 폴더도 로컬에서 업데이트할 때 계속 필요해서 없애면 안되어서 고민하다가 그냥 이 두 폴더를 잠시 다른 곳에 옮긴 다음에 zip 압축을 하고, 그 후 다시 폴더를 가져오는 식으로 했다.&lt;/p&gt;
 
-&lt;div style=&quot;text-align: left&quot;&gt;
+&lt;div style=&quot;text-align: left&quot; width=&quot;100%&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/extension_size3.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt; 
@@ -605,11 +605,11 @@ package.json
   
     <entry>
       <title type="html">랜딩페이지 제작을 위한 갖가지 시행착오들…(아임웹-&amp;gt;우피-&amp;gt;리액트 라이브러리)</title>
-      <link href="http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4/" rel="alternate" type="text/html" title="랜딩페이지 제작을 위한 갖가지 시행착오들...(아임웹-&gt;우피-&gt;리액트 라이브러리)" />
+      <link href="http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4" rel="alternate" type="text/html" title="랜딩페이지 제작을 위한 갖가지 시행착오들...(아임웹-&gt;우피-&gt;리액트 라이브러리)" />
       <published>2022-04-20T17:32:00+09:00</published>
       <updated>2022-04-20T17:32:00+09:00</updated>
-      <id>http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%A0%9C%EC%9E%91%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EA%B0%96%EA%B0%80%EC%A7%80%20%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4...</id>
-      <content type="html" xml:base="http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4/">&lt;p&gt;크던 작던 거의 모든 서비스에는 그에 맞는 랜딩페이지가 있다. 나도 서비스를 만들면서 랜딩페이지를 제작하려고 많이 알아봤는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;빠르게 만들 수 있고&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;유지보수가 쉬운&lt;/code&gt; 랜딩페이지 제작툴을 많이 서치했다.&lt;/p&gt;
+      <id>http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%A0%9C%EC%9E%91%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EA%B0%96%EA%B0%80%EC%A7%80%20%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</id>
+      <content type="html" xml:base="http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4">&lt;p&gt;크던 작던 거의 모든 서비스에는 그에 맞는 랜딩페이지가 있다. 나도 서비스를 만들면서 랜딩페이지를 제작하려고 많이 알아봤는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;빠르게 만들 수 있고&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;유지보수가 쉬운&lt;/code&gt; 랜딩페이지 제작툴을 많이 서치했다.&lt;/p&gt;
 
 &lt;p&gt;그렇지만 아이러니하게도 좋다고 생각하고 사용한 툴이 불편해서 옮기고 옮기고 하다보니 결국 리액트로 직접 개발하는게 나름 가장 괜찮은 방법(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;빠르고, 유지보수 쉽고, 공짜&lt;/code&gt;)이란 걸 깨달았다(!?)&lt;/p&gt;
 

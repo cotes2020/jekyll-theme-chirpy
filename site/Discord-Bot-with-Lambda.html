@@ -192,7 +192,9 @@ into the {body} of the default.hbs template -->
 
 <p>After reminiscing with a friend about the good old days of playing minecraft together in our server, we decided to start up a fresh new server and get back into it(a<del>ll roads lead down to minecraft..</del>).</p>
 
-<p><img src="/assets/img/post_images/discord1.jpg" alt="Fun times..." /></p>
+<div style="text-align: left">
+   <img src="/assets/img/post_images/discord1.jpg" width="100%" />
+</div>
 
 <p>Fun times…</p>
 
@@ -206,139 +208,149 @@ into the {body} of the default.hbs template -->
 
 <p>After setting up a bot profile on <a href="https://discord.com/developers/applications">discord</a>, I needed to make a backend application on Lambda to serve the bot. On the <a href="https://discord.com/developers/docs/interactions/receiving-and-responding">official discord documentation</a>, there are two base prerequisites the server needs to fulfill for the api endpoint to be registered as a bot interaction endpoint. Attempting to register the endpoint before meeting the requirements will resulted in an error in discord.</p>
 
-<p><img src="/assets/img/post_images/discord7.png" alt="Untitled" /></p>
+<div style="text-align: left">
+   <img src="/assets/img/post_images/discord7.png" width="100%" />
+</div>
 
 <ol>
-  <li>
-    <p>Respond to a PING request</p>
-
-    <p><img src="/assets/img/post_images/discord4.png" alt="Official discord documentation on PING request" /></p>
-
-    <p>Official discord documentation on PING request</p>
-
-    <p>To test if the server is ready to respond to the bot’s requests, it will send out a PING request to the server, signified as a type 1(PING) request. Responding to this request is simple, the server just needs to return a similar response of type 1(PONG). I’ve done this by defining a special type 1 response in my response wrapper function.</p>
-
-    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">export</span> <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="p">(</span><span class="nx">data</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">type</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-     <span class="k">if</span> <span class="p">(</span><span class="nx">type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-         <span class="k">return</span> <span class="p">{</span>
-             <span class="na">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-             <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-                 <span class="dl">"</span><span class="s2">Access-Control-Allow-Origin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
-                 <span class="dl">"</span><span class="s2">Access-Control-Allow-Headers</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Content-Type, Access-Control-Allow-Headers, Authorization, RefreshToken, X-Requested-With</span><span class="dl">"</span><span class="p">,</span>
-                 <span class="dl">"</span><span class="s2">Access-Control-Allow-Credentials</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-             <span class="p">},</span>
-             <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="mi">1</span> <span class="p">})</span>
-         <span class="p">};</span>
-     <span class="p">}</span>
-     <span class="k">return</span> <span class="p">{</span>
-         <span class="na">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-         <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-             <span class="dl">"</span><span class="s2">Access-Control-Allow-Origin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
-             <span class="dl">"</span><span class="s2">Access-Control-Allow-Headers</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Content-Type, Access-Control-Allow-Headers, Authorization, RefreshToken, X-Requested-With</span><span class="dl">"</span><span class="p">,</span>
-             <span class="dl">"</span><span class="s2">Access-Control-Allow-Credentials</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-         <span class="p">},</span>
-         <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-             <span class="na">type</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-             <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-                 <span class="na">tts</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-                 <span class="na">content</span><span class="p">:</span> <span class="nx">data</span>
-             <span class="p">}</span>
-         <span class="p">})</span>
-     <span class="p">};</span>
- <span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Validate request signatures</p>
-
-    <p><img src="/assets/img/post_images/discord5.png" alt="Official discord documentation on validating signatures" /></p>
-
-    <p>Official discord documentation on validating signatures</p>
-
-    <p>As the documentation explains, this step is required by discord to ensure that our server does not allow access from anywhere except our bot. The bot will send a ‘x-signature-ed25519’ in the request header, which is the encoded form of the request body and current timestamp. The request will also include the used timestamp in the headers as ‘x-signature-timestamp’.</p>
-
-    <p>Validating the signature requires the use of a NaCl library for Javascript, tweetnacl. Since NaCl library is not part of the standard libraries on Lambda, adding a layer is required. To do this, I created an independent node package containing the NaCl library with npm, and zipped it up to be used as a layer in my project directory.</p>
-
-    <p><img src="/assets/img/post_images/discord6.png" alt="Untitled" /></p>
-
-    <p>Then, I added the following lines to serverless.yml to add this layer to deployment package</p>
-
-    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">layers</span><span class="p">:</span>
-   <span class="nx">serverbotLayer</span><span class="p">:</span>
-     <span class="kr">package</span><span class="p">:</span>
-       <span class="nx">artifact</span><span class="p">:</span> <span class="nx">layers</span><span class="o">/</span><span class="nx">minecraft_server</span><span class="p">.</span><span class="nx">zip</span>
-     <span class="nx">compatibleRuntimes</span><span class="p">:</span> <span class="nx">nodejs12</span><span class="p">.</span><span class="nx">x</span>
-     <span class="nx">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">node modules for serverbot</span><span class="dl">"</span>
-</code></pre></div>    </div>
-
-    <p>One last preparation step to validate incoming signature is finding out my bot’s public key, which can be found under the ‘general information’ section of the bot page. Remember to keep this key stored safely elsewhere and refer to it instead of exposing it in the code.</p>
-
-    <p><img src="/assets/img/post_images/discord2.png" alt="제목 없음.png" /></p>
-
-    <p>Now, all that’s left is to follow discord documentation’s sample code and validate the incoming signatures.</p>
-
-    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">export</span> <span class="kd">const</span> <span class="nx">discordHandler</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">:</span> <span class="nx">lambda</span><span class="p">.</span><span class="nx">APIGatewayProxyEvent</span><span class="p">,</span> <span class="nx">context</span><span class="p">:</span> <span class="nx">lambda</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">event receieved: </span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
-     <span class="kd">const</span> <span class="nx">signature</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">x-signature-ed25519</span><span class="dl">'</span><span class="p">];</span>
-     <span class="kd">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">x-signature-timestamp</span><span class="dl">'</span><span class="p">];</span>
-     <span class="kd">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span> <span class="c1">// rawBody is expected to be a string, not raw bytes</span>
-
-     <span class="kd">const</span> <span class="nx">isVerified</span> <span class="o">=</span> <span class="nx">nacl</span><span class="p">.</span><span class="nx">sign</span><span class="p">.</span><span class="nx">detached</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span>
-       <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">timestamp</span> <span class="o">+</span> <span class="nx">body</span><span class="p">),</span>
-       <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">signature</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">),</span>
-       <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">secrets</span><span class="p">.</span><span class="nx">PUBLIC_KEY</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">)</span>
-     <span class="p">);</span>
-     <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-     <span class="k">if</span> <span class="p">(</span><span class="nx">isVerified</span><span class="p">)</span> <span class="p">{</span>
- 		<span class="c1">//on valid signature</span>
-         <span class="k">try</span> <span class="p">{</span>
-             <span class="k">switch</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-                     <span class="k">return</span> <span class="nx">response</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">//respond to ping request</span>
-                     <span class="p">}</span>
-             <span class="p">}</span>
-         <span class="p">}</span>
-         <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-             <span class="k">return</span> <span class="nx">response</span><span class="p">(</span><span class="dl">"</span><span class="s2">An error has occured: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">error</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-         <span class="p">}</span>
-     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
- 		<span class="c1">//invalid signature</span>
-         <span class="k">return</span> <span class="p">{</span>
-             <span class="na">statusCode</span><span class="p">:</span> <span class="mi">401</span><span class="p">,</span>
-             <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-                 <span class="dl">"</span><span class="s2">Access-Control-Allow-Origin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
-                 <span class="dl">"</span><span class="s2">Access-Control-Allow-Headers</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Content-Type, Access-Control-Allow-Headers, Authorization, RefreshToken, X-Requested-With</span><span class="dl">"</span><span class="p">,</span>
-                 <span class="dl">"</span><span class="s2">Access-Control-Allow-Credentials</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-             <span class="p">},</span>
-             <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">invalid request signature</span><span class="dl">"</span>
-         <span class="p">};</span>
-     <span class="p">}</span>
- <span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Set up the endpoint with Serverless framework</p>
-
-    <p>Register the discordHandler function on serverless.yml and deploy!</p>
-
-    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">functions</span><span class="p">:</span>
-   <span class="nx">discordHandler</span><span class="p">:</span>
-     <span class="nx">handler</span><span class="p">:</span> <span class="nx">handler</span><span class="p">.</span><span class="nx">discordHandler</span>
-     <span class="nx">layers</span><span class="p">:</span>
-       <span class="o">-</span> <span class="p">{</span> <span class="na">Ref</span><span class="p">:</span> <span class="nx">ServerbotLayerLambdaLayer</span> <span class="p">}</span> <span class="c1">//lambda layer reference</span>
-     <span class="nl">events</span><span class="p">:</span>
-       <span class="o">-</span> <span class="nx">http</span><span class="p">:</span>
-           <span class="nx">path</span><span class="p">:</span> <span class="o">/</span>
-           <span class="nx">method</span><span class="p">:</span> <span class="nx">post</span>
-</code></pre></div>    </div>
-
-    <p>After the function has been uploaded to lambda, I can now register the endpoint on the bot without any errors.</p>
-
-    <p><img src="/assets/img/post_images/discord3.png" alt="Copy and paste the endpoint url from API gateway here" /></p>
-
-    <p>Copy and paste the endpoint url from API gateway here</p>
-  </li>
+  <li>Respond to a PING request</li>
 </ol>
+<div style="text-align: left">
+    <img src="/assets/img/post_images/discord4.png" width="100%" />
+</div>
+
+<p>Official discord documentation on PING request</p>
+
+<p>To test if the server is ready to respond to the bot’s requests, it will send out a PING request to the server, signified as a type 1(PING) request. Responding to this request is simple, the server just needs to return a similar response of type 1(PONG). I’ve done this by defining a special type 1 response in my response wrapper function.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="p">(</span><span class="nx">data</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">type</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="na">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+            <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">"</span><span class="s2">Access-Control-Allow-Origin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">Access-Control-Allow-Headers</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Content-Type, Access-Control-Allow-Headers, Authorization, RefreshToken, X-Requested-With</span><span class="dl">"</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">Access-Control-Allow-Credentials</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="mi">1</span> <span class="p">})</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+            <span class="dl">"</span><span class="s2">Access-Control-Allow-Origin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">Access-Control-Allow-Headers</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Content-Type, Access-Control-Allow-Headers, Authorization, RefreshToken, X-Requested-With</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">Access-Control-Allow-Credentials</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+            <span class="na">type</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">tts</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="na">content</span><span class="p">:</span> <span class="nx">data</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+    <span class="s2">```
+
+2. Validate request signatures
+
+&lt;div style="text-align: left"&gt;
+    &lt;img src="/assets/img/post_images/discord5.png" width="100%"/&gt;
+&lt;/div&gt;
+
+Official discord documentation on validating signatures
+
+As the documentation explains, this step is required by discord to ensure that our server does not allow access from anywhere except our bot. The bot will send a 'x-signature-ed25519’ in the request header, which is the encoded form of the request body and current timestamp. The request will also include the used timestamp in the headers as 'x-signature-timestamp’.
+
+Validating the signature requires the use of a NaCl library for Javascript, tweetnacl. Since NaCl library is not part of the standard libraries on Lambda, adding a layer is required. To do this, I created an independent node package containing the NaCl library with npm, and zipped it up to be used as a layer in my project directory.
+
+&lt;div style="text-align: left"&gt;
+    &lt;img src="/assets/img/post_images/discord6.png" width="100%"/&gt;
+&lt;/div&gt;
+
+Then, I added the following lines to serverless.yml to add this layer to deployment package
+
+```</span><span class="nx">jsx</span>
+<span class="nx">layers</span><span class="p">:</span>
+    <span class="nx">serverbotLayer</span><span class="p">:</span>
+    <span class="kr">package</span><span class="p">:</span>
+        <span class="nx">artifact</span><span class="p">:</span> <span class="nx">layers</span><span class="o">/</span><span class="nx">minecraft_server</span><span class="p">.</span><span class="nx">zip</span>
+    <span class="nx">compatibleRuntimes</span><span class="p">:</span> <span class="nx">nodejs12</span><span class="p">.</span><span class="nx">x</span>
+    <span class="nx">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">node modules for serverbot</span><span class="dl">"</span>
+</code></pre></div></div>
+
+<p>One last preparation step to validate incoming signature is finding out my bot’s public key, which can be found under the ‘general information’ section of the bot page. Remember to keep this key stored safely elsewhere and refer to it instead of exposing it in the code.</p>
+
+<div style="text-align: left">
+    <img src="/assets/img/post_images/discord2.png" width="100%" />
+</div>
+
+<p>Now, all that’s left is to follow discord documentation’s sample code and validate the incoming signatures.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">discordHandler</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">:</span> <span class="nx">lambda</span><span class="p">.</span><span class="nx">APIGatewayProxyEvent</span><span class="p">,</span> <span class="nx">context</span><span class="p">:</span> <span class="nx">lambda</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">event receieved: </span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">signature</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">x-signature-ed25519</span><span class="dl">'</span><span class="p">];</span>
+    <span class="kd">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">x-signature-timestamp</span><span class="dl">'</span><span class="p">];</span>
+    <span class="kd">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span> <span class="c1">// rawBody is expected to be a string, not raw bytes</span>
+
+    <span class="kd">const</span> <span class="nx">isVerified</span> <span class="o">=</span> <span class="nx">nacl</span><span class="p">.</span><span class="nx">sign</span><span class="p">.</span><span class="nx">detached</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span>
+        <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">timestamp</span> <span class="o">+</span> <span class="nx">body</span><span class="p">),</span>
+        <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">signature</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">),</span>
+        <span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">secrets</span><span class="p">.</span><span class="nx">PUBLIC_KEY</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isVerified</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//on valid signature</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="nx">response</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">//respond to ping request</span>
+                    <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">(</span><span class="dl">"</span><span class="s2">An error has occured: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">error</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">//invalid signature</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="na">statusCode</span><span class="p">:</span> <span class="mi">401</span><span class="p">,</span>
+            <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">"</span><span class="s2">Access-Control-Allow-Origin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">Access-Control-Allow-Headers</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Content-Type, Access-Control-Allow-Headers, Authorization, RefreshToken, X-Requested-With</span><span class="dl">"</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">Access-Control-Allow-Credentials</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">invalid request signature</span><span class="dl">"</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Set up the endpoint with Serverless framework</li>
+</ol>
+
+<p>Register the discordHandler function on serverless.yml and deploy!</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">functions</span><span class="p">:</span>
+    <span class="nx">discordHandler</span><span class="p">:</span>
+    <span class="nx">handler</span><span class="p">:</span> <span class="nx">handler</span><span class="p">.</span><span class="nx">discordHandler</span>
+    <span class="nx">layers</span><span class="p">:</span>
+        <span class="o">-</span> <span class="p">{</span> <span class="na">Ref</span><span class="p">:</span> <span class="nx">ServerbotLayerLambdaLayer</span> <span class="p">}</span> <span class="c1">//lambda layer reference</span>
+    <span class="nl">events</span><span class="p">:</span>
+        <span class="o">-</span> <span class="nx">http</span><span class="p">:</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="o">/</span>
+            <span class="nx">method</span><span class="p">:</span> <span class="nx">post</span>
+</code></pre></div></div>
+
+<p>After the function has been uploaded to lambda, I can now register the endpoint on the bot without any errors.</p>
+
+<div style="text-align: left">
+    <img src="/assets/img/post_images/discord3.png" width="100%" />
+</div>
+
+<p>Copy and paste the endpoint url from API gateway here</p>
 
                 </div>
             </section>
