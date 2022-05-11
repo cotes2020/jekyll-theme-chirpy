@@ -12,6 +12,14 @@ navigation: True
 cover:  assets/img/post_images/ai_cover2.jpg
 ---
 
+이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.
+
+<div style="text-align: left">
+   <img src="/assets/img/post_images/single.png" width="100%"/>
+</div>
+
+전체 코드는 아래와 같다.
+
 ```python
 class SingleLayerPerceptron(object):
 
@@ -40,3 +48,11 @@ def net_input(self, X):
 def predict(self, X):
     return np.tanh(self.net_input(X))
 ```
+
+\
+&nbsp;
+
+***
+
+#### 이미지 출처 :
+ * [https://www.tutorialspoint.com/tensorflow/tensorflow_single_layer_perceptron.htm](https://www.tutorialspoint.com/tensorflow/tensorflow_single_layer_perceptron.htm)

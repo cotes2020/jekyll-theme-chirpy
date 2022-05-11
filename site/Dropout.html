@@ -11,7 +11,7 @@
 
 
 
-    <title>Dropout</title>
+    <title>(작성중) Dropout</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -42,7 +42,7 @@
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Dropout" />
+    <meta property="og:title" content="(작성중) Dropout" />
     <meta property="og:description" content="Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다. Solution of Overfitting 일반적으로 머신 러닝에서 the curse of dimensionality라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다. 이런 경우가 Overfitting이라고 불리며," />
     <meta property="og:url" content="http://localhost:4000/Dropout" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
@@ -51,7 +51,7 @@
     <meta property="article:published_time" content="2022-05-07T17:32:00+09:00" />
     <meta property="article:modified_time" content="2022-05-07T17:32:00+09:00" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Dropout" />
+    <meta name="twitter:title" content="(작성중) Dropout" />
     <meta name="twitter:description" content="Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다. Solution of Overfitting 일반적으로 머신 러닝에서 the curse of dimensionality라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다. 이런 경우가 Overfitting이라고 불리며," />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
@@ -95,7 +95,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Dropout" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="(작성중) Dropout" href="/feed.xml" />
 
 
 </head>
@@ -151,7 +151,7 @@ into the {body} of the default.hbs template -->
                     <time class="post-full-meta-date" datetime=" 7 May 2022"> 7 May 2022</time>
                     
                 </section>
-                <h1 class="post-full-title">Dropout</h1>
+                <h1 class="post-full-title">(작성중) Dropout</h1>
             </header>
 
             
@@ -166,7 +166,7 @@ into the {body} of the default.hbs template -->
 <h2 id="solution-of-overfitting">Solution of Overfitting</h2>
 <hr />
 <p>일반적으로 머신 러닝에서 <code class="language-plaintext highlighter-rouge">the curse of dimensionality</code>라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다.
-이런 경우가 Overfitting이라고 불리며, 이러한 Overfitting을 방지하기 위한 방법은 크게 아래 세가지 방법이 있다.</p>
+이런 경우가 Overfitting이라고 불리며, 이러한 Overfitting을 방지하기 위한 방법은 크게 아래 두가지 방법이 있다.</p>
 
 <ul>
   <li>
@@ -174,16 +174,9 @@ into the {body} of the default.hbs template -->
 Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것이다. 데이터의 수가 부족하므로 보편적인 분류를 하지 못하고 훈련데이터에 너무 많은 영향을 받게 된다. 따라서 더 많은 데이터로 학습을 돌려주면 Overfitting을 어느 정도 방지할 수 있다. 하지만 보통의 경우 데이터를 수집하는 것이 매우 비싼 과정이기 때문에 이 방법은 사용하기 어렵다.</p>
   </li>
   <li>
-    <p>feature 갯수 줄이기
-feature의 갯수를 줄이는 것이다. 이들 문제는 multinomial classification에서도 다뤘었는데, 서로 비중이 다른 feature가 섞여서 weight에 대해 경합을 하면 오히려 좋지 않은 결과가 나왔었다. 그래서, feature 갯수를 줄이는 것이 중요한데, 이 부분은 deep learning에서는 중요하지 않다고 말씀하셨다. deep learning은 sigmoid 대신 LeRU 함수 계열을 사용하는 것도 있고 바로 뒤에 나오는 dropout을 통해 feature를 스스로 줄일 수 있는 방법도 있기 때문에.</p>
+    <p>Regularization
+다음으로 Regularization을 사용하여 Overfitting을 방지할 수 있다. <a href="">Prevent Multi layer perceptron Overfitting</a>에서 소개한 weight decay도 이 Regularization 기법에 포함된다. Regularization은 모델이 학습 데이터에 지나치게 의존하지 않도록 panelty를 부과하는 것이다. 깊은(deep) 모델 일 수록 representation 능력이 너무 좋아 쉽게 Overfitting이 될 수 있다. 이를 방지하기 위해 Regularization 기법들은 일부러 representation 성능에 제한을 주는 것이다. 이 글의 토픽인 Dropout도 Regularization 방법 중 하나이다.</p>
   </li>
-</ul>
-
-<p>출처: https://pythonkim.tistory.com/42 [파이쿵]</p>
-
-<ul>
-  <li>Regularization
-다음으로 Regularization을 사용하여 Overfitting을 방지할 수 있다. <a href="">Prevent Multi layer perceptron Overfitting</a>에서 소개한 weight decay도 이 Regularization 기법에 포함된다. Regularization은 모델이 학습 데이터에 지나치게 의존하지 않도록 panelty를 부과하는 것이다. 깊은(deep) 모델 일 수록 representation 능력이 너무 좋아 쉽게 Overfitting이 될 수 있다. 이를 방지하기 위해 Regularization 기법들은 일부러 representation 성능에 제한을 주는 것이다. 이 글의 토픽인 Dropout도 Regularization 방법 중 하나이다.</li>
 </ul>
 
 <p> </p>
@@ -203,12 +196,12 @@ feature의 갯수를 줄이는 것이다. 이들 문제는 multinomial classific
 
 <p>정리하면 아래 그림과 같이 학습 시에는 뉴런은 존재할 확률 p로 학습을 진행하고, 실행할 때는 각각의 network에서 얻어진 가중치에 존재 확률 p를 곱해준다.</p>
 <div style="text-align: left">
-   <img src="/assets/img/post_images/dropout1.png" />
+   <img src="/assets/img/post_images/dropout1.png" width="100%" />
 </div>
 
 <h3 id="probabilistic-apporach">Probabilistic apporach</h3>
 <div style="text-align: left">
-   <img src="/assets/img/post_images/dropout2.png" />
+   <img src="/assets/img/post_images/dropout2.png" width="100%" />
 </div>
 <h3 id="combinatorial-approach">Combinatorial approach</h3>
 
@@ -229,7 +222,10 @@ feature의 갯수를 줄이는 것이다. 이들 문제는 multinomial classific
 <h3 id="dropout-효과의-수학적-증명-deep-neural-networks">Dropout 효과의 수학적 증명 (deep neural networks)</h3>
 <hr />
 
-<p><a href="https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;blogId=laonple&amp;logNo=220818841217">https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;blogId=laonple&amp;logNo=220818841217</a></p>
+<p>참고 내용 출처 :</p>
+<ul>
+  <li><a href="https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;blogId=laonple&amp;logNo=220818841217">https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;blogId=laonple&amp;logNo=220818841217</a></li>
+</ul>
 
                 </div>
             </section>
@@ -273,11 +269,11 @@ feature의 갯수를 줄이는 것이다. 이들 문제는 multinomial classific
                         var disqus_config = function () {
                             var this_page_url = 'http://localhost:4000/Dropout';
                             var this_page_identifier = '/Dropout';
-                            var this_page_title = 'Dropout';
+                            var this_page_title = '(작성중) Dropout';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
-                            s.src = 'https://PIGBEAN.disqus.com/embed.js';
+                            s.src = 'https://Beanie.disqus.com/embed.js';
                             s.setAttribute('data-timestamp', +new Date());
                             (d.head || d.body).appendChild(s);
                         })();
@@ -303,7 +299,7 @@ feature의 갯수를 줄이는 것이다. 이들 문제는 multinomial classific
     <article class="post-card post-template">
         
             <a class="post-card-image-link" href="/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/catty_cover.jpg)"></div>
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/catty.png)"></div>
             </a>
         
         <div class="post-card-content">
@@ -421,13 +417,13 @@ feature의 갯수를 줄이는 것이다. 이들 문제는 multinomial classific
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Dropout</div>
+    <div class="floating-header-title">(작성중) Dropout</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Dropout&amp;url=https://beanie00.github.io/Dropout"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%28%EC%9E%91%EC%84%B1%EC%A4%91%29+Dropout&amp;url=https://beanie00.github.io/Dropout"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 

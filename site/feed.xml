@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-11T08:05:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">PIGBEAN Tech blog</title><subtitle>Seize the day</subtitle><entry><title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title><link href="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" /><published>2022-05-10T13:32:00+09:00</published><updated>2022-05-10T13:32:00+09:00</updated><id>http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EB%B0%98%20%EB%85%B8%ED%8A%B8%20%EC%9E%91%EC%84%B1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20Catty%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-11T11:18:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">PIGBEAN Tech blog</title><subtitle>Seize the day</subtitle><entry><title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title><link href="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" /><published>2022-05-10T13:32:00+09:00</published><updated>2022-05-10T13:32:00+09:00</updated><id>http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EB%B0%98%20%EB%85%B8%ED%8A%B8%20%EC%9E%91%EC%84%B1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20Catty%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;catty-서비스가-뭔데&quot;&gt;Catty 서비스가 뭔데?&lt;/h2&gt;
 &lt;hr /&gt;
 
-&lt;div style=&quot;text-align: left&quot;&gt;
+&lt;!-- &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/catty.png&quot; /&gt;
-&lt;/div&gt;
+&lt;/div&gt; --&gt;
 
 &lt;p&gt;Catty는 리소스 기반의 노트 작성 서비스이다. 당장 나를 포함해 많은 사람들이 과제를 하거나 보고서를 작성하거나 스터디를 할 때, 인터넷 상의 다양한 자료들을 참고하여 글을 적곤 한다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/catty_introduce6.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/catty_introduce6.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;그렇지만 글을 적으면서 리서치를 하다보면 이렇게 탭이 많아지기 일수이다. 이렇게 되면 어떤 탭이 어떤 내용을 담고 있는 지 확인도 어려워지고, 탭을 계속 왔다갔다 하며 글을 적어야 해서 시간도 오래걸리고 불편하다.&lt;/p&gt;
@@ -54,7 +54,7 @@
 &lt;hr /&gt;
 &lt;p&gt;웹앱에서는 아래 그림의 화살표가 가리키는 패널에 파일을 드래그 드롭으로 끌어다 놓거나 버튼을 클릭하여 자료를 추가할 수 있다.&lt;/p&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/catty_introduce3.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/catty_introduce3.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt; &lt;/p&gt;
@@ -78,7 +78,7 @@
 &lt;p&gt;Catty 웹에서 수집한 북마크 자료를 보다 읽기 편한 읽기모드로 확인할 수 있다. 이 읽기모드에서 중요한 내용을 드래그 하면 하이라이트 팝업이 뜬다. 여기서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add highlight&lt;/code&gt; 버튼을 누르면 북마크 하이라이트가 추가된다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/catty_introduce5.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/catty_introduce5.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;h3 id=&quot;pdf-하이라이트&quot;&gt;PDF 하이라이트&lt;/h3&gt;
@@ -109,7 +109,7 @@
  
 마지막으로 Network 탭으로 이동하면, 이렇게 수집하고, 작성한 리소스를 태그를 기준으로 연결된 그래프 뷰로 확인할 수 있다. 이 그래프 뷰에서 각각의 노드를 누르면 해당 태그의 자료들을 모아보거나 노트를 확인할 수 있다.&lt;/p&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/network.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/network.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;&lt;br /&gt;
@@ -307,16 +307,16 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;참고-내용-출처-&quot;&gt;참고 내용 출처 :&lt;/h4&gt;
+&lt;p&gt;참고 내용 출처 :&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://sungkee-book.tistory.com/12&quot;&gt;https://sungkee-book.tistory.com/12&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;임일, 『Python을 이용한 개인화 추천시스템』, 청람(2020)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Beanie</name></author><category term="추천시스템" /><category term="추천시스템" /><summary type="html">추천시스템의 기초적인 내용을 잘 알지 못한채로 강화학습으로 추천 알고리즘을 구현하는 논문들을 몇개 읽다보니 구현의 기반이 되는 중요한 원리를 계속 놓치고 있는 듯한 기분이 들었다. 그래서 Python을 이용한 개인화 추천시스템 책을 사서 읽고, 또 다양한 블로그 포스팅을 보며 추천시스템에 대한 공부를 더 깊이 해보았다.</summary></entry><entry><title type="html">Dropout</title><link href="http://localhost:4000/Dropout" rel="alternate" type="text/html" title="Dropout" /><published>2022-05-07T17:32:00+09:00</published><updated>2022-05-07T17:32:00+09:00</updated><id>http://localhost:4000/Dropout</id><content type="html" xml:base="http://localhost:4000/Dropout">&lt;p&gt;Dropout은 &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Beanie</name></author><category term="추천시스템" /><category term="추천시스템" /><summary type="html">추천시스템의 기초적인 내용을 잘 알지 못한채로 강화학습으로 추천 알고리즘을 구현하는 논문들을 몇개 읽다보니 구현의 기반이 되는 중요한 원리를 계속 놓치고 있는 듯한 기분이 들었다. 그래서 Python을 이용한 개인화 추천시스템 책을 사서 읽고, 또 다양한 블로그 포스팅을 보며 추천시스템에 대한 공부를 더 깊이 해보았다.</summary></entry><entry><title type="html">(작성중) Dropout</title><link href="http://localhost:4000/Dropout" rel="alternate" type="text/html" title="(작성중) Dropout" /><published>2022-05-07T17:32:00+09:00</published><updated>2022-05-07T17:32:00+09:00</updated><id>http://localhost:4000/Dropout</id><content type="html" xml:base="http://localhost:4000/Dropout">&lt;p&gt;Dropout은 &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.&lt;/p&gt;
 
 &lt;h2 id=&quot;solution-of-overfitting&quot;&gt;Solution of Overfitting&lt;/h2&gt;
 &lt;hr /&gt;
 &lt;p&gt;일반적으로 머신 러닝에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;the curse of dimensionality&lt;/code&gt;라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다.
-이런 경우가 Overfitting이라고 불리며, 이러한 Overfitting을 방지하기 위한 방법은 크게 아래 세가지 방법이 있다.&lt;/p&gt;
+이런 경우가 Overfitting이라고 불리며, 이러한 Overfitting을 방지하기 위한 방법은 크게 아래 두가지 방법이 있다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -324,16 +324,9 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
 Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것이다. 데이터의 수가 부족하므로 보편적인 분류를 하지 못하고 훈련데이터에 너무 많은 영향을 받게 된다. 따라서 더 많은 데이터로 학습을 돌려주면 Overfitting을 어느 정도 방지할 수 있다. 하지만 보통의 경우 데이터를 수집하는 것이 매우 비싼 과정이기 때문에 이 방법은 사용하기 어렵다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;feature 갯수 줄이기
-feature의 갯수를 줄이는 것이다. 이들 문제는 multinomial classification에서도 다뤘었는데, 서로 비중이 다른 feature가 섞여서 weight에 대해 경합을 하면 오히려 좋지 않은 결과가 나왔었다. 그래서, feature 갯수를 줄이는 것이 중요한데, 이 부분은 deep learning에서는 중요하지 않다고 말씀하셨다. deep learning은 sigmoid 대신 LeRU 함수 계열을 사용하는 것도 있고 바로 뒤에 나오는 dropout을 통해 feature를 스스로 줄일 수 있는 방법도 있기 때문에.&lt;/p&gt;
+    &lt;p&gt;Regularization
+다음으로 Regularization을 사용하여 Overfitting을 방지할 수 있다. &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서 소개한 weight decay도 이 Regularization 기법에 포함된다. Regularization은 모델이 학습 데이터에 지나치게 의존하지 않도록 panelty를 부과하는 것이다. 깊은(deep) 모델 일 수록 representation 능력이 너무 좋아 쉽게 Overfitting이 될 수 있다. 이를 방지하기 위해 Regularization 기법들은 일부러 representation 성능에 제한을 주는 것이다. 이 글의 토픽인 Dropout도 Regularization 방법 중 하나이다.&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;출처: https://pythonkim.tistory.com/42 [파이쿵]&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Regularization
-다음으로 Regularization을 사용하여 Overfitting을 방지할 수 있다. &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서 소개한 weight decay도 이 Regularization 기법에 포함된다. Regularization은 모델이 학습 데이터에 지나치게 의존하지 않도록 panelty를 부과하는 것이다. 깊은(deep) 모델 일 수록 representation 능력이 너무 좋아 쉽게 Overfitting이 될 수 있다. 이를 방지하기 위해 Regularization 기법들은 일부러 representation 성능에 제한을 주는 것이다. 이 글의 토픽인 Dropout도 Regularization 방법 중 하나이다.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt; &lt;/p&gt;
@@ -353,12 +346,12 @@ feature의 갯수를 줄이는 것이다. 이들 문제는 multinomial classific
 
 &lt;p&gt;정리하면 아래 그림과 같이 학습 시에는 뉴런은 존재할 확률 p로 학습을 진행하고, 실행할 때는 각각의 network에서 얻어진 가중치에 존재 확률 p를 곱해준다.&lt;/p&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/dropout1.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/dropout1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;h3 id=&quot;probabilistic-apporach&quot;&gt;Probabilistic apporach&lt;/h3&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/dropout2.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/dropout2.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 &lt;h3 id=&quot;combinatorial-approach&quot;&gt;Combinatorial approach&lt;/h3&gt;
 
@@ -379,7 +372,10 @@ feature의 갯수를 줄이는 것이다. 이들 문제는 multinomial classific
 &lt;h3 id=&quot;dropout-효과의-수학적-증명-deep-neural-networks&quot;&gt;Dropout 효과의 수학적 증명 (deep neural networks)&lt;/h3&gt;
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;amp;blogId=laonple&amp;amp;logNo=220818841217&quot;&gt;https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;amp;blogId=laonple&amp;amp;logNo=220818841217&lt;/a&gt;&lt;/p&gt;</content><author><name>Beanie</name></author><category term="AI" /><category term="basic" /><summary type="html">Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.</summary></entry><entry><title type="html">Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)</title><link href="http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0" rel="alternate" type="text/html" title="Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)" /><published>2022-05-05T10:13:00+09:00</published><updated>2022-05-05T10:13:00+09:00</updated><id>http://localhost:4000/Jekyll%20%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90%20flow%20chart%EC%99%80%20%EC%88%98%EC%8B%9D%20%EB%84%A3%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0">&lt;h2 id=&quot;add-flow-chart-using-mermaid&quot;&gt;Add flow chart using Mermaid&lt;/h2&gt;
+&lt;p&gt;참고 내용 출처 :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;amp;blogId=laonple&amp;amp;logNo=220818841217&quot;&gt;https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;amp;blogId=laonple&amp;amp;logNo=220818841217&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Beanie</name></author><category term="AI" /><category term="basic" /><summary type="html">Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.</summary></entry><entry><title type="html">Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)</title><link href="http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0" rel="alternate" type="text/html" title="Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)" /><published>2022-05-05T10:13:00+09:00</published><updated>2022-05-05T10:13:00+09:00</updated><id>http://localhost:4000/Jekyll%20%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90%20flow%20chart%EC%99%80%20%EC%88%98%EC%8B%9D%20%EB%84%A3%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0">&lt;h2 id=&quot;add-flow-chart-using-mermaid&quot;&gt;Add flow chart using Mermaid&lt;/h2&gt;
 
 &lt;h3 id=&quot;mermaid&quot;&gt;Mermaid?&lt;/h3&gt;
 &lt;hr /&gt;
@@ -529,7 +525,7 @@ Mermaid was successfuly rendered after entering this CDN in each html document. 
 &lt;p&gt;Plotting the training error and validation error after running training in this way, it can be seen that the training error continues to decrease as shown below, but the validation error increases after a certain section. This is where overfitting occurs.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/overfitting1.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/overfitting1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt; &lt;/p&gt;
@@ -775,7 +771,7 @@ average accumulated reward after 100 episodes than their method.
     &lt;ul&gt;
       &lt;li&gt;Reward : distance to the nearest obstacle and current velocity
         &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/rl_driving1_2.png&quot; /&gt;
+  &lt;img src=&quot;/assets/img/post_images/rl_driving1_2.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
       &lt;/li&gt;
       &lt;li&gt;Continuous and deterministic policy setting : to prevent possible catastrophic effect under undesired behavior.&lt;/li&gt;
@@ -813,7 +809,7 @@ average accumulated reward after 100 episodes than their method.
   &lt;/li&gt;
   &lt;li&gt;Results
     &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img width=&quot;70%&quot; src=&quot;/assets/img/post_images/rl_driving1_3.png&quot; /&gt;
+  &lt;img width=&quot;100%&quot; src=&quot;/assets/img/post_images/rl_driving1_3.png&quot; /&gt;
 &lt;/div&gt;
     &lt;ul&gt;
       &lt;li&gt;Eventually, their proposed method achieves a considerable performance boost from the original imitation learning’s learned policy while the pure DDPG never performs well and does not show any improving trend.&lt;/li&gt;
@@ -830,7 +826,7 @@ average accumulated reward after 100 episodes than their method.
 &lt;p&gt;그래서 별 생각없이 익스텐션을 개발하던 폴더 전체를 zip으로 압축해서 배포해왔다. 그런데 배포된 크롬 익스텐션을 다운받을 때 너무 오래 걸려서 확인해보니까 파일 크기가 200mb(!)로 확인되었다. 다른 익스텐션의 파일 크기는 거의 1~5mb로 매우 작은데 Catty만 유독 커서 확인해보니 Catty 개발 폴더가 400mb를 차지하고 있었다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/extension_size2.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension_size2.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt; &lt;/p&gt;
@@ -853,12 +849,14 @@ package.json
 &lt;p&gt;고로 이 폴더들을 제외하고 배포해야 하는데 .git 폴더도 없애면 git 설정을 다시해야하고, node_modules 폴더도 로컬에서 업데이트할 때 계속 필요해서 없애면 안되어서 고민하다가 그냥 이 두 폴더를 잠시 다른 곳에 옮긴 다음에 zip 압축을 하고, 그 후 다시 폴더를 가져오는 식으로 했다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/extension_size3.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension_size3.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt; 
 그 결과 새로 배포된 버전은 1mb 정도로 파일 크기가 줄어들었다!!&lt;/p&gt;
 
-&lt;p&gt;더 좋은 방법이 있을 거 같긴한데 아직은 잘 모르겠다. npm 모듈 중에 build하면서 바로 zip 파일을 생성해주는 것도 있는데 지금 디렉토리 구조가 popup 폴더 내에 또 package.json이 있고 여기서 node_modules가 생성되는 구조라 이 폴더에서 활용하기는 어려울 거 같다.(popup 내에서 build와 zip을 같이하면 popup 폴더 빌드 파일만 zip으로 압축된다.) 매번 배포할 때마다 폴더를 임시로 옮겼다가 돌려놓는게 많이 비효율적인 거 같긴해서 방법을 더 고민해봐야겠다.&lt;/p&gt;</content><author><name>Beanie</name></author><category term="Web frontend" /><category term="React" /><category term="Catty" /><category term="Extension" /><summary type="html">사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.</summary></entry><entry><title type="html">웹앱 클립보드 리스너 만들기</title><link href="http://localhost:4000/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0" rel="alternate" type="text/html" title="웹앱 클립보드 리스너 만들기" /><published>2022-04-28T17:32:00+09:00</published><updated>2022-04-28T17:32:00+09:00</updated><id>http://localhost:4000/%EC%9B%B9%EC%95%B1%20%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C%20%EB%A6%AC%EC%8A%A4%EB%84%88%20%EB%A7%8C%EB%93%A4%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0">&lt;div style=&quot;text-align: left&quot;&gt;
+&lt;p&gt;더 좋은 방법이 있을 거 같긴한데 아직은 잘 모르겠다. npm 모듈 중에 build하면서 바로 zip 파일을 생성해주는 것도 있는데 지금 디렉토리 구조가 popup 폴더 내에 또 package.json이 있고 여기서 node_modules가 생성되는 구조라 이 폴더에서 활용하기는 어려울 거 같다.(popup 내에서 build와 zip을 같이하면 popup 폴더 빌드 파일만 zip으로 압축된다.) 매번 배포할 때마다 폴더를 임시로 옮겼다가 돌려놓는게 많이 비효율적인 거 같긴해서 방법을 더 고민해봐야겠다.&lt;/p&gt;</content><author><name>Beanie</name></author><category term="Web frontend" /><category term="React" /><category term="Catty" /><category term="Extension" /><summary type="html">사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.</summary></entry><entry><title type="html">웹앱 클립보드 리스너 만들기</title><link href="http://localhost:4000/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0" rel="alternate" type="text/html" title="웹앱 클립보드 리스너 만들기" /><published>2022-04-28T17:32:00+09:00</published><updated>2022-04-28T17:32:00+09:00</updated><id>http://localhost:4000/%EC%9B%B9%EC%95%B1%20%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C%20%EB%A6%AC%EC%8A%A4%EB%84%88%20%EB%A7%8C%EB%93%A4%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0">&lt;p&gt;Catty 웹앱에서는 아래 영상처럼 유저가 웹사이트 url을 복사하면 이를 화면에 띄워 바로 url을 추가할 수 있도록 하는 기능이 있다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
    &lt;video controls=&quot;&quot; width=&quot;100%&quot;&gt;
       &lt;source src=&quot;/assets/img/post_images/clipboard_listener.mov&quot; type=&quot;video/mp4&quot; /&gt;
    &lt;/video&gt;
@@ -866,7 +864,7 @@ package.json
 
 &lt;p&gt; &lt;/p&gt;
 
-&lt;p&gt;위의 영상처럼 Catty 웹앱에서는 유저가 웹사이트 url을 복사하면 이를 화면에 띄워 바로 url을 추가할 수 있도록 한다. 이 기능은 생각보다 간단한데, 사실 아래 코드가 전부이다.&lt;/p&gt;
+&lt;p&gt;Catty 서비스 말고도 네이버 등의 서비스에서도 클립보드에 복사해 둔 url을 가져와 그 주소로 바로 이동하게 해준다. 이런 기능은 어떻게 구현하는 걸까? 이 클립보드 리스너 기능은 생각보다 간단한데, 사실 아래 코드가 전부이다.&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getClipboardData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setClipboardText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setClipboardType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;prevText&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;
@@ -889,9 +887,9 @@ package.json
 &lt;p&gt;브라우저에서 JavaScript를 사용하여 클립보드를 데이터를 쓰거나 읽으려면 ClipboardAPI를 사용하면 된다. ClipboardAPI는 Promise 기반으로 클립 보드 내용을 비동기식으로 접근할 수 있는 새로운 API이다. 하지만 비교적 최신 스펙으로 아직 지원되지 않는 브라우저가 많다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/clipboard_listener1.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/clipboard_listener1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;클립보드에 저장된 텍스트 내용은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;navigator.clipboard.readText()&lt;/code&gt;로 불러올 수 있다. 텍스트 말고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read()&lt;/code&gt; 함수를 이용해 이미지 등의 데이터도 가져올 수 있는데, 이는 다음에 구현하는 걸로 남겨두었다.&lt;/p&gt;
 
-&lt;p&gt;참고로, 이번에 구현한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readText()&lt;/code&gt; 는 Chrome66 이상에서, 임의 데이터를 가져오는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read()&lt;/code&gt; 함수는 Chrome 76 이상에서 지원된다.&lt;/p&gt;</content><author><name>Beanie</name></author><category term="Web frontend" /><category term="React" /><category term="Catty" /><summary type="html"></summary></entry></feed>
+&lt;p&gt;참고로, 이번에 구현한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readText()&lt;/code&gt; 는 Chrome66 이상에서, 임의 데이터를 가져오는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read()&lt;/code&gt; 함수는 Chrome 76 이상에서 지원된다.&lt;/p&gt;</content><author><name>Beanie</name></author><category term="Web frontend" /><category term="React" /><category term="Catty" /><summary type="html">Catty 웹앱에서는 아래 영상처럼 유저가 웹사이트 url을 복사하면 이를 화면에 띄워 바로 url을 추가할 수 있도록 하는 기능이 있다.</summary></entry></feed>

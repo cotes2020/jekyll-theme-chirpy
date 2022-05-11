@@ -34,7 +34,7 @@ This should send a verification email to the registered email account, and just 
 First, I wrote the welcome email template to be sent to new users with HTML.
 
 <div style="text-align: left" >
-  <img src="/assets/img/post_images/email.png" />
+  <img src="/assets/img/post_images/email.png" width="100%"/>
 </div>
 
 The HTML document can be registered to SES via either AWS SDK or AWS CLI. Using AWS SDK means I have to create a new Lambda function to programmatically call the API, which seemed like too much extra work, I decided to use the CLI instead. Perhaps committing to using AWS SDK can come later when the service expands and new templates need to be added often.

@@ -59,10 +59,12 @@ app.use(cors())
 
 원래 Vercel을 쓰고 있어서 Vercel로 배포할 까 했는 데 Vercel은 정책상 프록시 서버 배포를 막고 있는 듯했다. 그래서 별도로 Heroku 계정을 만들어서 사용하였다.
 
+\
+
 &nbsp;
 
 ***
 
-#### 참고 내용 출처 :
+참고 내용 출처 :
 * [https://donggov.tistory.com/132](https://donggov.tistory.com/132)
 * [https://velog.io/@kimtaeeeny/CORS-%EC%99%80-%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95-express-proxy-FE-study8](https://velog.io/@kimtaeeeny/CORS-%EC%99%80-%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95-express-proxy-FE-study8)

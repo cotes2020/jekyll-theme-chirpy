@@ -27,7 +27,7 @@ Typesense의 단점이라면 다른 서비스에 비해 참고 문서를 찾기�
 우선 Typesense를 사용하기 위해서는 [https://cloud.typesense.org/clusters](https://cloud.typesense.org/clusters) Typesense cloud에 들어가서 collection을 생성해야 한다. collection 이름과 각 field의 이름과 type을 적어둔 다음에 create를 누르면 collection이 생성된다.
 
 <div style="text-align: left">
-   <img src="/assets/img/post_images/typesense1.png" />
+   <img src="/assets/img/post_images/typesense1.png" width="100%"/>
 </div>
 
 다음에 웹앱을 개발하는 코드로 돌아가서 다음의 initialization 코드를 추가한다.

@@ -77,7 +77,7 @@ def ThreeLayerPerceptron_train(X_train, y_train, X_valid, y_valid, p=20, q=10, e
 Plotting the training error and validation error after running training in this way, it can be seen that the training error continues to decrease as shown below, but the validation error increases after a certain section. This is where overfitting occurs.
 
 <div style="text-align: left">
-   <img src="/assets/img/post_images/overfitting1.png" />
+   <img src="/assets/img/post_images/overfitting1.png" width="100%"/>
 </div>
 
 &nbsp;

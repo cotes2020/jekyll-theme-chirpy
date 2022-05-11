@@ -45,7 +45,7 @@
     <meta property="og:title" content="리소스 기반 노트 작성 서비스 Catty 소개" />
     <meta property="og:description" content="작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다. Catty 서비스가 뭔데? Catty는 리소스 기반의 노트 작성 서비스이다. 당장 나를 포함해 많은 사람들이 과제를 하거나 보고서를 작성하거나 스터디를 할 때, 인터넷 상의" />
     <meta property="og:url" content="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" />
-    <meta property="og:image" content="http://localhost:4000/assets/img/post_images/catty_cover.jpg" />
+    <meta property="og:image" content="http://localhost:4000/assets/img/post_images/catty.png" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
     <meta property="article:author" content="https://www.facebook.com/false" />
     <meta property="article:published_time" content="2022-05-10T13:32:00+09:00" />
@@ -55,7 +55,7 @@
     <meta name="twitter:title" content="리소스 기반 노트 작성 서비스 Catty 소개" />
     <meta name="twitter:description" content="작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다. Catty 서비스가 뭔데? Catty는 리소스 기반의 노트 작성 서비스이다. 당장 나를 포함해 많은 사람들이 과제를 하거나 보고서를 작성하거나 스터디를 할 때, 인터넷 상의" />
     <meta name="twitter:url" content="http://localhost:4000/" />
-    <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/catty_cover.jpg" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/catty.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="PIGBEAN Tech blog" />
     <meta name="twitter:label2" content="Filed under" />
@@ -77,7 +77,7 @@
     "url": "http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C",
     "image": {
         "@type": "ImageObject",
-        "url": "http://localhost:4000/assets/img/post_images/catty_cover.jpg",
+        "url": "http://localhost:4000/assets/img/post_images/catty.png",
         "width": 2000,
         "height": 666
     },
@@ -165,7 +165,7 @@ into the {body} of the default.hbs template -->
             </header>
 
             
-            <figure class="post-full-image" style="background-image: url(/assets/img/post_images/catty_cover.jpg)">
+            <figure class="post-full-image" style="background-image: url(/assets/img/post_images/catty.png)">
             </figure>
             
 
@@ -176,14 +176,14 @@ into the {body} of the default.hbs template -->
 <h2 id="catty-서비스가-뭔데">Catty 서비스가 뭔데?</h2>
 <hr />
 
-<div style="text-align: left">
+<!-- <div style="text-align: left">
    <img src="/assets/img/post_images/catty.png" />
-</div>
+</div> -->
 
 <p>Catty는 리소스 기반의 노트 작성 서비스이다. 당장 나를 포함해 많은 사람들이 과제를 하거나 보고서를 작성하거나 스터디를 할 때, 인터넷 상의 다양한 자료들을 참고하여 글을 적곤 한다.</p>
 
 <div style="text-align: left">
-   <img src="/assets/img/post_images/catty_introduce6.png" />
+   <img src="/assets/img/post_images/catty_introduce6.png" width="100%" />
 </div>
 
 <p>그렇지만 글을 적으면서 리서치를 하다보면 이렇게 탭이 많아지기 일수이다. 이렇게 되면 어떤 탭이 어떤 내용을 담고 있는 지 확인도 어려워지고, 탭을 계속 왔다갔다 하며 글을 적어야 해서 시간도 오래걸리고 불편하다.</p>
@@ -227,7 +227,7 @@ into the {body} of the default.hbs template -->
 <hr />
 <p>웹앱에서는 아래 그림의 화살표가 가리키는 패널에 파일을 드래그 드롭으로 끌어다 놓거나 버튼을 클릭하여 자료를 추가할 수 있다.</p>
 <div style="text-align: left">
-   <img src="/assets/img/post_images/catty_introduce3.png" />
+   <img src="/assets/img/post_images/catty_introduce3.png" width="100%" />
 </div>
 
 <p> </p>
@@ -251,7 +251,7 @@ into the {body} of the default.hbs template -->
 <p>Catty 웹에서 수집한 북마크 자료를 보다 읽기 편한 읽기모드로 확인할 수 있다. 이 읽기모드에서 중요한 내용을 드래그 하면 하이라이트 팝업이 뜬다. 여기서 <code class="language-plaintext highlighter-rouge">Add highlight</code> 버튼을 누르면 북마크 하이라이트가 추가된다.</p>
 
 <div style="text-align: left">
-   <img src="/assets/img/post_images/catty_introduce5.png" />
+   <img src="/assets/img/post_images/catty_introduce5.png" width="100%" />
 </div>
 
 <h3 id="pdf-하이라이트">PDF 하이라이트</h3>
@@ -282,7 +282,7 @@ into the {body} of the default.hbs template -->
  
 마지막으로 Network 탭으로 이동하면, 이렇게 수집하고, 작성한 리소스를 태그를 기준으로 연결된 그래프 뷰로 확인할 수 있다. 이 그래프 뷰에서 각각의 노드를 누르면 해당 태그의 자료들을 모아보거나 노트를 확인할 수 있다.</p>
 <div style="text-align: left">
-   <img src="/assets/img/post_images/network.png" />
+   <img src="/assets/img/post_images/network.png" width="100%" />
 </div>
 
 <p><br />
@@ -335,7 +335,7 @@ p.s. Catty 서비스가 더 궁금하다면 <a href="https://www.cattynote.com/"
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
-                            s.src = 'https://PIGBEAN.disqus.com/embed.js';
+                            s.src = 'https://Beanie.disqus.com/embed.js';
                             s.setAttribute('data-timestamp', +new Date());
                             (d.head || d.body).appendChild(s);
                         })();
@@ -543,7 +543,7 @@ p.s. Catty 서비스가 더 궁금하다면 <a href="https://www.cattynote.com/"
                 <header class="post-card-header">
                     
 
-                    <h2 class="post-card-title">Dropout</h2>
+                    <h2 class="post-card-title">(작성중) Dropout</h2>
                 </header>
                 <section class="post-card-excerpt">
                     

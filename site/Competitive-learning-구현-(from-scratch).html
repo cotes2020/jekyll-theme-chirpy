@@ -166,7 +166,7 @@ into the {body} of the default.hbs template -->
 <p>Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고, 그 중 거리가 가장 짧은 가중 벡터 하나만 선택한다. 그 가중 벡터가 승자 노드이다. 오직 승자 노드의 가중 벡터만 갱신된다. 그래서 경쟁 학습 네트워크는 승자독식 네트워크(winner-take-all networks)라고도 불린다.</p>
 
 <div style="text-align: left">
-   <img src="/assets/img/post_images/competitive1.png" />
+   <img src="/assets/img/post_images/competitive1.png" width="100%" />
 </div>
 
 <h2 id="competitive-learning-구현">Competitive learning 구현</h2>
@@ -288,16 +288,19 @@ into the {body} of the default.hbs template -->
 
 <h3 id="6개의-군집으로-분류">6개의 군집으로 분류</h3>
 <div style="text-align: left">
-   <img src="/assets/img/post_images/competitive2.png" />
+   <img src="/assets/img/post_images/competitive2.png" width="100%" />
 </div>
 
 <h3 id="8개의-군집으로-분류">8개의 군집으로 분류</h3>
 <div style="text-align: left">
-   <img src="/assets/img/post_images/competitive3.png" />
+   <img src="/assets/img/post_images/competitive3.png" width="100%" />
 </div>
 
-<p> </p>
-<h4 id="참고-내용-출처-">참고 내용 출처 :</h4>
+<p><br />
+ </p>
+
+<hr />
+<p>참고 내용 출처 :</p>
 <ul>
   <li><a href="https://roboticist.tistory.com/516">https://roboticist.tistory.com/516</a></li>
 </ul>
@@ -348,7 +351,7 @@ into the {body} of the default.hbs template -->
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
-                            s.src = 'https://PIGBEAN.disqus.com/embed.js';
+                            s.src = 'https://Beanie.disqus.com/embed.js';
                             s.setAttribute('data-timestamp', +new Date());
                             (d.head || d.body).appendChild(s);
                         })();

@@ -12,6 +12,14 @@ navigation: True
 cover:  assets/img/post_images/ai_cover2.jpg
 ---
 
+이번 글에서는 아래 그림과 같은 네트워크의 2개의 hidden layer을 가진 Multi Layer Perceptron(MLP)을 python 코드로 구현한 코드를 담았다.
+
+<div style="text-align: left">
+   <img src="/assets/img/post_images/mlp.png" width="100%"/>
+</div>
+
+전체 코드는 아래와 같다.
+
 ```python
 def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015):
   import numpy as np
@@ -101,3 +109,11 @@ def ThreeLayerPerceptron_pred(X_test, w1, b1, w2, b2, wOut, bOut, mu):
 
   return np.array(pred)
 ```
+
+\
+&nbsp;
+
+***
+
+#### 이미지 출처 :
+ * [https://www.researchgate.net/figure/A-simple-MLP-with-two-hidden-layers_fig3_2225172302](https://www.researchgate.net/figure/A-simple-MLP-with-two-hidden-layers_fig3_222517230)

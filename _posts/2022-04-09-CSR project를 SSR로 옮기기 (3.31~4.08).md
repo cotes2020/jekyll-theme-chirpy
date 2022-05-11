@@ -228,7 +228,7 @@ export default function SEO({ title, siteTitle, description, creator, image, sum
 
 ***
 
-#### 참고 내용 출처 :
+참고 내용 출처 :
 [https://velog.io/@kirin/Next.js-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B5%AC%EC%A1%B0](https://velog.io/@kirin/Next.js-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B5%AC%EC%A1%B0)
 [https://www.zerocho.com/category/JavaScript/post/573b321aa54b5e8427432946](https://www.zerocho.com/category/JavaScript/post/573b321aa54b5e8427432946)
 

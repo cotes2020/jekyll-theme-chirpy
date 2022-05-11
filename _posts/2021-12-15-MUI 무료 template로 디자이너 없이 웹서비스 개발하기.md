@@ -23,7 +23,7 @@ B2B 서비스이라 `심플` `깔끔`한 디자인의 서비스를 생각했다.
 여러개 다양한 템플릿을 서치하다가 MUI에서 제공하는 [Minimal - Client & Admin Dashboard](https://mui.com/store/#populars)가 괜찮아 보여 이 템플릿을 사용하기로 결정했다. 다양한 코드 예시가 있고 디자인도 깔끔해서 마음에 들었다. 이 템플릿은 칸반보드, 채팅, billing 등 광범위한 페이지와 컴포넌트로 구성되어 있는데 사실 이걸 다 사용하려면 최소 69달러로 라이센스를 사야한다. 로우로깅 서비스에는 이런 복잡한 기능까지 필요없어서 간소화된 [무료 데모](https://github.com/minimal-ui-kit/material-kit-react)를 이용하였다.
 
 <div style="text-align: left">
-  <img src="/assets/img/post_images/mui1.png" />
+  <img src="/assets/img/post_images/mui1.png" width="100%"/>
 </div>
 
 이 무료 디자인 데모는 다음과 같이 생겼다.
@@ -76,7 +76,7 @@ MUI 디자인이 리액트 개발에 많이 쓰이기도 하고, 개발 폴더�
 ***
 
 <div style="text-align: left">
-  <img src="/assets/img/post_images/mui2.png" />
+  <img src="/assets/img/post_images/mui2.png" width="100%"/>
 </div>
 
 완성된 서비스 디자인은 다음과 같다. 다양한 컴포넌트들을 활용해서 디자인을 하니까 서비스 UIUX 디자인을 하는 데 하루이틀 정도면 충분했고 개발도 빠르게 진행할 수 있었다. 제대로 각잡고 서비스를 개발하려면 기획-UIUX 디자인-개발의 정석 프로세스를 따르는 게 좋겠지만 이렇게 적은 리소스로 빠르게 MVP를 개발하려고 한다면 시도해봄직한 방법인 듯 하다.

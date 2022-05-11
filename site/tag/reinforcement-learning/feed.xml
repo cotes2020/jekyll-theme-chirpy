@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/reinforcement-learning/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T08:05:41+09:00</updated>
+  <updated>2022-05-11T11:18:03+09:00</updated>
   <id>http://localhost:4000/tag/reinforcement-learning/feed.xml</id>
 
   
@@ -234,7 +234,7 @@ average accumulated reward after 100 episodes than their method.
     &lt;ul&gt;
       &lt;li&gt;Reward : distance to the nearest obstacle and current velocity
         &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/rl_driving1_2.png&quot; /&gt;
+  &lt;img src=&quot;/assets/img/post_images/rl_driving1_2.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
       &lt;/li&gt;
       &lt;li&gt;Continuous and deterministic policy setting : to prevent possible catastrophic effect under undesired behavior.&lt;/li&gt;
@@ -272,7 +272,7 @@ average accumulated reward after 100 episodes than their method.
   &lt;/li&gt;
   &lt;li&gt;Results
     &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img width=&quot;70%&quot; src=&quot;/assets/img/post_images/rl_driving1_3.png&quot; /&gt;
+  &lt;img width=&quot;100%&quot; src=&quot;/assets/img/post_images/rl_driving1_3.png&quot; /&gt;
 &lt;/div&gt;
     &lt;ul&gt;
       &lt;li&gt;Eventually, their proposed method achieves a considerable performance boost from the original imitation learning’s learned policy while the pure DDPG never performs well and does not show any improving trend.&lt;/li&gt;

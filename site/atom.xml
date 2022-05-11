@@ -23,7 +23,7 @@
     
       
       <item>
-        <title>Dropout</title>
+        <title>(작성중) Dropout</title>
         
           <description>&lt;p&gt;Dropout은 &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.&lt;/p&gt;
 
@@ -151,11 +151,7 @@
       <item>
         <title>웹앱 클립보드 리스너 만들기</title>
         
-          <description>&lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;video controls=&quot;&quot; width=&quot;100%&quot;&gt;
-      &lt;source src=&quot;/assets/img/post_images/clipboard_listener.mov&quot; type=&quot;video/mp4&quot; /&gt;
-   &lt;/video&gt;
-&lt;/div&gt;
+          <description>&lt;p&gt;Catty 웹앱에서는 아래 영상처럼 유저가 웹사이트 url을 복사하면 이를 화면에 띄워 바로 url을 추가할 수 있도록 하는 기능이 있다.&lt;/p&gt;
 
 </description>
         
@@ -170,7 +166,7 @@
       <item>
         <title>iTerm으로 MAC 터미널 꾸미기</title>
         
-          <description>&lt;p&gt;어느 순간 개발하다가 요즘 제일 많이 쳐다보는게 1등 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VS Code&lt;/code&gt; 2등 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terminal&lt;/code&gt;라는 걸 깨달았다. 생각보다 terminal을 들여다보고 개발하는 시간이 길었는데, 이왕 이렇게 많이 볼 거 좀 더 이쁘면 좋겠다는 생각이 들어 terminal을 꾸며보았다.&lt;/p&gt;
+          <description>&lt;p&gt;어느 순간 개발하다가 요즘 제일 많이 쳐다보는게 1등 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VS Code&lt;/code&gt; 2등 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terminal&lt;/code&gt;라는 생각이 번뜩 들었다.&lt;/p&gt;
 
 </description>
         
@@ -200,7 +196,7 @@
       <item>
         <title>크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기</title>
         
-          <description>&lt;p&gt;웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 웹사이트를 읽기모드로 바꿔주는 기능의 앱도 인기를 끌고 있다.&lt;/p&gt;
+          <description>&lt;p&gt;웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 이렇게 웹사이트에서 불필요한 정보를 제거하고, 읽기에 편한 모드(읽기모드)로 바꿔주는 기능의 간단한 앱도 인기를 끌고 있다.&lt;/p&gt;
 
 </description>
         
@@ -340,10 +336,7 @@ if(window){…} // window is not defined error occur&lt;/p&gt;
       <item>
         <title>Implement Multi layer perceptron (from scratch)</title>
         
-          <description>&lt;p&gt;```python
-def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015):
-  import numpy as np
-  import matplotlib.pyplot as plt&lt;/p&gt;
+          <description>&lt;p&gt;이번 글에서는 아래 그림과 같은 네트워크의 2개의 hidden layer을 가진 Multi Layer Perceptron(MLP)을 python 코드로 구현한 코드를 담았다.&lt;/p&gt;
 
 </description>
         
@@ -358,8 +351,7 @@ def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015):
       <item>
         <title>Implement Single layer perceptron (from scratch)</title>
         
-          <description>&lt;p&gt;```python
-class SingleLayerPerceptron(object):&lt;/p&gt;
+          <description>&lt;p&gt;이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.&lt;/p&gt;
 
 </description>
         

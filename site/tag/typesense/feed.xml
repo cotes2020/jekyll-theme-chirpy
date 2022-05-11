@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/typesense/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T08:05:41+09:00</updated>
+  <updated>2022-05-11T11:18:03+09:00</updated>
   <id>http://localhost:4000/tag/typesense/feed.xml</id>
 
   
@@ -54,7 +54,7 @@
 &lt;p&gt;우선 Typesense를 사용하기 위해서는 &lt;a href=&quot;https://cloud.typesense.org/clusters&quot;&gt;https://cloud.typesense.org/clusters&lt;/a&gt; Typesense cloud에 들어가서 collection을 생성해야 한다. collection 이름과 각 field의 이름과 type을 적어둔 다음에 create를 누르면 collection이 생성된다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/typesense1.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/typesense1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;다음에 웹앱을 개발하는 코드로 돌아가서 다음의 initialization 코드를 추가한다.&lt;/p&gt;

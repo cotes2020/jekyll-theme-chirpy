@@ -43,7 +43,7 @@
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Implement Single layer perceptron (from scratch)" />
-    <meta property="og:description" content="class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def train(self, X, y): self.w_ = np.zeros(X.shape[1]) self.b_ = 0.5 self.errors_ = [] for _ in range(self.epochs): errors = 0 for xi, target in zip(X, y): update = self.eta * (target - self.predict(xi)) self.w_ += update * xi" />
+    <meta property="og:description" content="이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다. 전체 코드는 아래와 같다. class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def train(self, X, y): self.w_ = np.zeros(X.shape[1]) self.b_ = 0.5 self.errors_ = [] for _ in range(self.epochs): errors = 0" />
     <meta property="og:url" content="http://localhost:4000/Single-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -52,7 +52,7 @@
     <meta property="article:modified_time" content="2022-03-30T10:32:00+09:00" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Implement Single layer perceptron (from scratch)" />
-    <meta name="twitter:description" content="class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def train(self, X, y): self.w_ = np.zeros(X.shape[1]) self.b_ = 0.5 self.errors_ = [] for _ in range(self.epochs): errors = 0 for xi, target in zip(X, y): update = self.eta * (target - self.predict(xi)) self.w_ += update * xi" />
+    <meta name="twitter:description" content="이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다. 전체 코드는 아래와 같다. class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def train(self, X, y): self.w_ = np.zeros(X.shape[1]) self.b_ = 0.5 self.errors_ = [] for _ in range(self.epochs): errors = 0" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -82,7 +82,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/Single-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)"
     },
-    "description": "class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def train(self, X, y): self.w_ = np.zeros(X.shape[1]) self.b_ = 0.5 self.errors_ = [] for _ in range(self.epochs): errors = 0 for xi, target in zip(X, y): update = self.eta * (target - self.predict(xi)) self.w_ += update * xi"
+    "description": "이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다. 전체 코드는 아래와 같다. class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def train(self, X, y): self.w_ = np.zeros(X.shape[1]) self.b_ = 0.5 self.errors_ = [] for _ in range(self.epochs): errors = 0"
 }
     </script>
 
@@ -161,7 +161,15 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SingleLayerPerceptron</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+                    <p>이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.</p>
+
+<div style="text-align: left">
+   <img src="/assets/img/post_images/single.png" width="100%" />
+</div>
+
+<p>전체 코드는 아래와 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SingleLayerPerceptron</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
 <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="bp">self</span><span class="p">.</span><span class="n">eta</span> <span class="o">=</span> <span class="n">eta</span>
@@ -188,6 +196,16 @@ into the {body} of the default.hbs template -->
 <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">net_input</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
 </code></pre></div></div>
+
+<p><br />
+ </p>
+
+<hr />
+
+<h4 id="이미지-출처-">이미지 출처 :</h4>
+<ul>
+  <li><a href="https://www.tutorialspoint.com/tensorflow/tensorflow_single_layer_perceptron.htm">https://www.tutorialspoint.com/tensorflow/tensorflow_single_layer_perceptron.htm</a></li>
+</ul>
 
                 </div>
             </section>
@@ -235,7 +253,7 @@ into the {body} of the default.hbs template -->
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
-                            s.src = 'https://PIGBEAN.disqus.com/embed.js';
+                            s.src = 'https://Beanie.disqus.com/embed.js';
                             s.setAttribute('data-timestamp', +new Date());
                             (d.head || d.body).appendChild(s);
                         })();
@@ -273,10 +291,7 @@ into the {body} of the default.hbs template -->
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>```python
-def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015):
-  import numpy as np
-  import matplotlib.pyplot as plt
+                        <p>이번 글에서는 아래 그림과 같은 네트워크의 2개의 hidden layer을 가진 Multi Layer Perceptron(MLP)을 python 코드로 구현한 코드를 담았다.
 
 </p>
                     

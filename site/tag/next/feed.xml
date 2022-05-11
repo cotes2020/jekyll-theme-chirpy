@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/next/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T08:05:41+09:00</updated>
+  <updated>2022-05-11T11:18:03+09:00</updated>
   <id>http://localhost:4000/tag/next/feed.xml</id>
 
   
@@ -318,8 +318,8 @@ export default function SEO({ title, siteTitle, description, creator, image, sum
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;참고-내용-출처-&quot;&gt;참고 내용 출처 :&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&quot;https://velog.io/@kirin/Next.js-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B5%AC%EC%A1%B0&quot;&gt;https://velog.io/@kirin/Next.js-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B5%AC%EC%A1%B0&lt;/a&gt;
+&lt;p&gt;참고 내용 출처 :
+&lt;a href=&quot;https://velog.io/@kirin/Next.js-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B5%AC%EC%A1%B0&quot;&gt;https://velog.io/@kirin/Next.js-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B5%AC%EC%A1%B0&lt;/a&gt;
 &lt;a href=&quot;https://www.zerocho.com/category/JavaScript/post/573b321aa54b5e8427432946&quot;&gt;https://www.zerocho.com/category/JavaScript/post/573b321aa54b5e8427432946&lt;/a&gt;&lt;/p&gt;</content>
 
       

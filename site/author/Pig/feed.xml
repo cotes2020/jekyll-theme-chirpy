@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/author/Pig/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T08:05:41+09:00</updated>
+  <updated>2022-05-11T11:18:03+09:00</updated>
   <id>http://localhost:4000/author/Pig/feed.xml</id>
 
   
@@ -61,7 +61,7 @@
 &lt;p&gt;First, I wrote the welcome email template to be sent to new users with HTML.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/email.png&quot; /&gt;
+  &lt;img src=&quot;/assets/img/post_images/email.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;The HTML document can be registered to SES via either AWS SDK or AWS CLI. Using AWS SDK means I have to create a new Lambda function to programmatically call the API, which seemed like too much extra work, I decided to use the CLI instead. Perhaps committing to using AWS SDK can come later when the service expands and new templates need to be added often.&lt;/p&gt;

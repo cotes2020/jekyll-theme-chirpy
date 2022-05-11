@@ -114,7 +114,7 @@ public interface Subscriber<T> {
 
 ***
 
-#### 참고 내용 출처 :
+참고 내용 출처 :
   * [https://jongmin92.github.io/2019/11/05/Java/reactive-1/](https://jongmin92.github.io/2019/11/05/Java/reactive-1/)
   * [https://sabarada.tistory.com/98](https://sabarada.tistory.com/98)
   * 스다 토모유키, 『RxJava 리액티브 프로그래밍』, 이승룔, (주)도서출판 길벗(2019)

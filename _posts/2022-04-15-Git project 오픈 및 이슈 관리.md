@@ -29,5 +29,5 @@ cover: assets/img/post_images/github_cover.jpeg
 ---
 마지막으로 Git 프로젝트를 생성하고 이슈와 연결할 수 있다. 간단하게 설정할 수 있는데, 프로젝트를 생성할 때 **Project template**을 `Automated kanban` 이나 `Automated kanban with review`를 사용하면 git이 알아서 다 연동해준다.
 <div style="text-align: left">
-  <img src="/assets/img/post_images/git issue1.png" />
+  <img src="/assets/img/post_images/git issue1.png" width="100%"/>
 </div>

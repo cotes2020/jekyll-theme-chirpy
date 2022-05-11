@@ -44,14 +44,14 @@ Git 커밋 정리는 이전부터 해야지 마음먹었는데 계속 미루고 
 
 또한, 커밋을 이슈와 연결시킬 수 있는데 `#20`처럼 이슈 번호를 커밋에 남기면 아래와 같이 해당 이슈에 기록이 생성된다.
 <div style="text-align: left">
-  <img src="/assets/img/post_images/git commit2.png" />
+  <img src="/assets/img/post_images/git commit2.png" width="100%"/>
 </div>
 
 &nbsp;
 
 또 특히 `종료 키워드 + #이슈번호` 이렇게 커밋에 남기면 자동으로 이슈가 종료된다.
 <div style="text-align: left">
-  <img src="/assets/img/post_images/git commit1.png" />
+  <img src="/assets/img/post_images/git commit1.png" width="100%"/>
 </div>
 
 &nbsp;

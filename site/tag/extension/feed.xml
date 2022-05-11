@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/extension/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T08:05:41+09:00</updated>
+  <updated>2022-05-11T11:18:03+09:00</updated>
   <id>http://localhost:4000/tag/extension/feed.xml</id>
 
   
@@ -50,7 +50,7 @@
 &lt;p&gt;그래서 별 생각없이 익스텐션을 개발하던 폴더 전체를 zip으로 압축해서 배포해왔다. 그런데 배포된 크롬 익스텐션을 다운받을 때 너무 오래 걸려서 확인해보니까 파일 크기가 200mb(!)로 확인되었다. 다른 익스텐션의 파일 크기는 거의 1~5mb로 매우 작은데 Catty만 유독 커서 확인해보니 Catty 개발 폴더가 400mb를 차지하고 있었다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/extension_size2.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension_size2.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt; &lt;/p&gt;
@@ -73,7 +73,7 @@ package.json
 &lt;p&gt;고로 이 폴더들을 제외하고 배포해야 하는데 .git 폴더도 없애면 git 설정을 다시해야하고, node_modules 폴더도 로컬에서 업데이트할 때 계속 필요해서 없애면 안되어서 고민하다가 그냥 이 두 폴더를 잠시 다른 곳에 옮긴 다음에 zip 압축을 하고, 그 후 다시 폴더를 가져오는 식으로 했다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/extension_size3.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension_size3.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt; 
 그 결과 새로 배포된 버전은 1mb 정도로 파일 크기가 줄어들었다!!&lt;/p&gt;
@@ -114,10 +114,10 @@ package.json
       <published>2022-04-23T17:32:00+09:00</published>
       <updated>2022-04-23T17:32:00+09:00</updated>
       <id>http://localhost:4000/%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C%20%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C%20read%20mode%EB%A1%9C%20%EC%9D%BD%EA%B8%B0</id>
-      <content type="html" xml:base="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0">&lt;p&gt;웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 웹사이트를 읽기모드로 바꿔주는 기능의 앱도 인기를 끌고 있다.&lt;/p&gt;
+      <content type="html" xml:base="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0">&lt;p&gt;웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 이렇게 웹사이트에서 불필요한 정보를 제거하고, 읽기에 편한 모드(읽기모드)로 바꿔주는 기능의 간단한 앱도 인기를 끌고 있다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/read-mode1.png&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/read-mode1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt; &lt;/p&gt;
@@ -150,8 +150,10 @@ package.json
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;참고-내용-출처-&quot;&gt;참고 내용 출처 :&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.44bits.io/ko/post/generate-full-feed-by-using-mozilla-readability&quot;&gt;https://www.44bits.io/ko/post/generate-full-feed-by-using-mozilla-readability&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;참고 내용 출처 :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.44bits.io/ko/post/generate-full-feed-by-using-mozilla-readability&quot;&gt;https://www.44bits.io/ko/post/generate-full-feed-by-using-mozilla-readability&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
 
       
       
@@ -174,7 +176,7 @@ package.json
       
 
       
-        <summary type="html">웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 웹사이트를 읽기모드로 바꿔주는 기능의 앱도 인기를 끌고 있다.</summary>
+        <summary type="html">웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 이렇게 웹사이트에서 불필요한 정보를 제거하고, 읽기에 편한 모드(읽기모드)로 바꿔주는 기능의 간단한 앱도 인기를 끌고 있다.</summary>
       
 
       

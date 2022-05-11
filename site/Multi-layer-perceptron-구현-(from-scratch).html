@@ -43,7 +43,7 @@
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Implement Multi layer perceptron (from scratch)" />
-    <meta property="og:description" content="def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015): import numpy as np import matplotlib.pyplot as plt # 0: Random initialize the relevant data w1 = 2*np.random.rand(p , X_train.shape[1]) - 0.5 # Layer 1 b1 = np.random.rand(p) w2 = 2*np.random.rand(q , p) - 0.5 # Layer 2 b2 = np.random.rand(q) wOut = 2*np.random.rand(q)" />
+    <meta property="og:description" content="이번 글에서는 아래 그림과 같은 네트워크의 2개의 hidden layer을 가진 Multi Layer Perceptron(MLP)을 python 코드로 구현한 코드를 담았다. 전체 코드는 아래와 같다. def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015): import numpy as np import matplotlib.pyplot as plt # 0: Random initialize the relevant data w1 = 2*np.random.rand(p , X_train.shape[1]) - 0.5" />
     <meta property="og:url" content="http://localhost:4000/Multi-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -52,7 +52,7 @@
     <meta property="article:modified_time" content="2022-04-06T10:32:00+09:00" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Implement Multi layer perceptron (from scratch)" />
-    <meta name="twitter:description" content="def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015): import numpy as np import matplotlib.pyplot as plt # 0: Random initialize the relevant data w1 = 2*np.random.rand(p , X_train.shape[1]) - 0.5 # Layer 1 b1 = np.random.rand(p) w2 = 2*np.random.rand(q , p) - 0.5 # Layer 2 b2 = np.random.rand(q) wOut = 2*np.random.rand(q)" />
+    <meta name="twitter:description" content="이번 글에서는 아래 그림과 같은 네트워크의 2개의 hidden layer을 가진 Multi Layer Perceptron(MLP)을 python 코드로 구현한 코드를 담았다. 전체 코드는 아래와 같다. def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015): import numpy as np import matplotlib.pyplot as plt # 0: Random initialize the relevant data w1 = 2*np.random.rand(p , X_train.shape[1]) - 0.5" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -82,7 +82,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/Multi-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)"
     },
-    "description": "def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015): import numpy as np import matplotlib.pyplot as plt # 0: Random initialize the relevant data w1 = 2*np.random.rand(p , X_train.shape[1]) - 0.5 # Layer 1 b1 = np.random.rand(p) w2 = 2*np.random.rand(q , p) - 0.5 # Layer 2 b2 = np.random.rand(q) wOut = 2*np.random.rand(q)"
+    "description": "이번 글에서는 아래 그림과 같은 네트워크의 2개의 hidden layer을 가진 Multi Layer Perceptron(MLP)을 python 코드로 구현한 코드를 담았다. 전체 코드는 아래와 같다. def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015): import numpy as np import matplotlib.pyplot as plt # 0: Random initialize the relevant data w1 = 2*np.random.rand(p , X_train.shape[1]) - 0.5"
 }
     </script>
 
@@ -161,7 +161,15 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ThreeLayerPerceptron_train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">0.0015</span><span class="p">):</span>
+                    <p>이번 글에서는 아래 그림과 같은 네트워크의 2개의 hidden layer을 가진 Multi Layer Perceptron(MLP)을 python 코드로 구현한 코드를 담았다.</p>
+
+<div style="text-align: left">
+   <img src="/assets/img/post_images/mlp.png" width="100%" />
+</div>
+
+<p>전체 코드는 아래와 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ThreeLayerPerceptron_train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">0.0015</span><span class="p">):</span>
   <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
   <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
@@ -249,6 +257,16 @@ into the {body} of the default.hbs template -->
   <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p><br />
+ </p>
+
+<hr />
+
+<h4 id="이미지-출처-">이미지 출처 :</h4>
+<ul>
+  <li><a href="https://www.researchgate.net/figure/A-simple-MLP-with-two-hidden-layers_fig3_222517230">https://www.researchgate.net/figure/A-simple-MLP-with-two-hidden-layers_fig3_2225172302</a></li>
+</ul>
+
                 </div>
             </section>
 
@@ -295,7 +313,7 @@ into the {body} of the default.hbs template -->
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
-                            s.src = 'https://PIGBEAN.disqus.com/embed.js';
+                            s.src = 'https://Beanie.disqus.com/embed.js';
                             s.setAttribute('data-timestamp', +new Date());
                             (d.head || d.body).appendChild(s);
                         })();
@@ -387,8 +405,7 @@ into the {body} of the default.hbs template -->
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>```python
-class SingleLayerPerceptron(object):
+                        <p>이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.
 
 </p>
                     

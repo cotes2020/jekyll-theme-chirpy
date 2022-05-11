@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/rxjava/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T08:05:41+09:00</updated>
+  <updated>2022-05-11T11:18:03+09:00</updated>
   <id>http://localhost:4000/tag/rxjava/feed.xml</id>
 
   
@@ -284,7 +284,7 @@ Maybe는 Single과 Completable을 합쳐둔 느낌이다. Single처럼 아이템
  &lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;h4 id=&quot;참고-내용-출처-&quot;&gt;참고 내용 출처 :&lt;/h4&gt;
+&lt;p&gt;참고 내용 출처 :&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://blog.yena.io/studynote/&quot;&gt;https://blog.yena.io/studynote/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://12bme.tistory.com/570&quot;&gt;https://12bme.tistory.com/570&lt;/a&gt;&lt;/li&gt;
@@ -447,7 +447,7 @@ Maybe는 Single과 Completable을 합쳐둔 느낌이다. Single처럼 아이템
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;참고-내용-출처-&quot;&gt;참고 내용 출처 :&lt;/h4&gt;
+&lt;p&gt;참고 내용 출처 :&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://jongmin92.github.io/2019/11/05/Java/reactive-1/&quot;&gt;https://jongmin92.github.io/2019/11/05/Java/reactive-1/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://sabarada.tistory.com/98&quot;&gt;https://sabarada.tistory.com/98&lt;/a&gt;&lt;/li&gt;
@@ -654,7 +654,7 @@ Maybe는 Single과 Completable을 합쳐둔 느낌이다. Single처럼 아이템
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;참고-내용-출처-&quot;&gt;참고 내용 출처 :&lt;/h4&gt;
+&lt;p&gt;참고 내용 출처 :&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;인프런 - Kevin의 알기 쉬운 RxJava 1부&lt;/li&gt;
   &lt;li&gt;RxJava 리액티브 프로그래밍&lt;/li&gt;

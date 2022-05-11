@@ -23,7 +23,7 @@ PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 
 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), ..., (xn,yn)들이 타원형으로 분포되어 있을 때
 
 <div style="text-align: left">
-   <img src="/assets/img/post_images/pca2.png" />
+   <img src="/assets/img/post_images/pca2.png" width="100%"/>
 </div>
 
 이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법 그림에서와 같이 e1, e2 두 개의 벡터로 데이터 분포를 설명하는 것이다. e1의 방향과 크기, 그리고 e2의 방향과 크기를 알면 이 데이터 분포가 어떤 형태인지를 가장 단순하면서도 효과적으로 파악할 수 있다.
@@ -120,10 +120,15 @@ def pca_oja(type):
 위의 코드로 학습을 시키면 다음의 결과를 확인할 수 있다.
 
 <div style="text-align: left">
-   <img src="/assets/img/post_images/pca1.png" />
+   <img src="/assets/img/post_images/pca1.png" width="100%"/>
 </div>
 
+\
 &nbsp;
-#### 참고 내용 출처 :
+
+***
+
+&nbsp;
+참고 내용 출처 :
 * [https://darkpgmr.tistory.com/110](https://darkpgmr.tistory.com/110)
 * [http://www.aistudy.com/neural/hebbian_learning.htm](http://www.aistudy.com/neural/hebbian_learning.htm)

@@ -237,7 +237,7 @@ Maybe는 Single과 Completable을 합쳐둔 느낌이다. Single처럼 아이템
 &nbsp;
 
 ***
-#### 참고 내용 출처 :
+참고 내용 출처 :
 * [https://blog.yena.io/studynote/](https://blog.yena.io/studynote/)
 * [https://12bme.tistory.com/570](https://12bme.tistory.com/570)
 * 스다 토모유키, 『RxJava 리액티브 프로그래밍』, 이승룔, (주)도서출판 길벗(2019)
