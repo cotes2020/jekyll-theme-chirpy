@@ -140,9 +140,14 @@ Since the new Lagrangian is gauge-invariant, the only derivatives of the field i
 
 $$\widehat{\mathcal{L}} = \mathcal{L} \left( \phi, D_\mu \phi \right)$$
 
-We define the covariant derivative of a general field in the following manner (chain rule), so that the properties of a derivative are retained and covariant derivatives can meaningfully reduce to geometric covariant derivatives in a suitable gauge:
+We define the covariant derivative of a general field in the following manner (chain rule), so that the properties of a derivative are retained and covariant derivatives can meaningfully reduce to geometric covariant derivatives in a gauge where $$G^b_{\phantom{b} \mu a} = 0$$,
 
-$$D_\mu \phi = \frac{\partial \phi}{\partial \phi_a} D_\mu \phi_a$$
+$$
+\begin{align}
+D_\mu \phi & = \frac{\partial \phi}{\partial \phi_a} D_\mu \phi_a \\
+ & = \frac{\partial \phi}{\partial \phi_a} \left( \partial_\mu \phi_a - \phi_b G^b_{\phantom{b} \mu a} \right)
+\end{align}
+$$
 
 Therefore, the recipe for introducing gauge symmetry into a Lagrangian is to simply replace geometric covariant derivatives with covariant derivatives.
 
