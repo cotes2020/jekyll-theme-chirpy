@@ -15,10 +15,12 @@ cover:  assets/img/post_images/ai_cover2.jpg
 이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.
 
 <div style="text-align: left">
-   <img src="/assets/img/post_images/single.png" width="100%"/>
+   <img src="/assets/img/post_images/single.png" width="70%"/>
 </div>
 
-전체 코드는 아래와 같다.
+\
+&nbsp;
+전체 코드는 아래와 같다. Single layer perceptron은 구현이 매우 간단한데, 실제 값과 예측값의 오차를 적당한 비율로 wight parameter에 더해가는 식으로 학습해주면 된다.
 
 ```python
 class SingleLayerPerceptron(object):

@@ -11,7 +11,7 @@
 
 
 
-    <title>(작성중) Dropout</title>
+    <title>Dropout</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -42,8 +42,8 @@
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="(작성중) Dropout" />
-    <meta property="og:description" content="Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다. Solution of Overfitting 일반적으로 머신 러닝에서 the curse of dimensionality라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다. 이런 경우가 Overfitting이라고 불리며," />
+    <meta property="og:title" content="Dropout" />
+    <meta property="og:description" content="Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다. Solution of Overfitting   일반적으로 머신 러닝에서 the curse of dimensionality라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다. 이런 경우가 Overfitting이라고" />
     <meta property="og:url" content="http://localhost:4000/Dropout" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -51,8 +51,8 @@
     <meta property="article:published_time" content="2022-05-07T17:32:00+09:00" />
     <meta property="article:modified_time" content="2022-05-07T17:32:00+09:00" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="(작성중) Dropout" />
-    <meta name="twitter:description" content="Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다. Solution of Overfitting 일반적으로 머신 러닝에서 the curse of dimensionality라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다. 이런 경우가 Overfitting이라고 불리며," />
+    <meta name="twitter:title" content="Dropout" />
+    <meta name="twitter:description" content="Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다. Solution of Overfitting   일반적으로 머신 러닝에서 the curse of dimensionality라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다. 이런 경우가 Overfitting이라고" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -61,7 +61,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -82,7 +92,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/Dropout"
     },
-    "description": "Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다. Solution of Overfitting 일반적으로 머신 러닝에서 the curse of dimensionality라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다. 이런 경우가 Overfitting이라고 불리며,"
+    "description": "Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다. Solution of Overfitting   일반적으로 머신 러닝에서 the curse of dimensionality라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다. 이런 경우가 Overfitting이라고"
 }
     </script>
 
@@ -95,7 +105,8 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="(작성중) Dropout" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Dropout" href="/feed.xml" />
+
 
 
 </head>
@@ -151,7 +162,7 @@ into the {body} of the default.hbs template -->
                     <time class="post-full-meta-date" datetime=" 7 May 2022"> 7 May 2022</time>
                     
                 </section>
-                <h1 class="post-full-title">(작성중) Dropout</h1>
+                <h1 class="post-full-title">Dropout</h1>
             </header>
 
             
@@ -164,30 +175,38 @@ into the {body} of the default.hbs template -->
                     <p>Dropout은 <a href="">Prevent Multi layer perceptron Overfitting</a>에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.</p>
 
 <h2 id="solution-of-overfitting">Solution of Overfitting</h2>
-<hr />
+<p> </p>
+
 <p>일반적으로 머신 러닝에서 <code class="language-plaintext highlighter-rouge">the curse of dimensionality</code>라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다.
 이런 경우가 Overfitting이라고 불리며, 이러한 Overfitting을 방지하기 위한 방법은 크게 아래 두가지 방법이 있다.</p>
 
 <ul>
   <li>
-    <p>데이터 수 늘려주기
-Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것이다. 데이터의 수가 부족하므로 보편적인 분류를 하지 못하고 훈련데이터에 너무 많은 영향을 받게 된다. 따라서 더 많은 데이터로 학습을 돌려주면 Overfitting을 어느 정도 방지할 수 있다. 하지만 보통의 경우 데이터를 수집하는 것이 매우 비싼 과정이기 때문에 이 방법은 사용하기 어렵다.</p>
+    <p>데이터 수 늘려주기</p>
+
+    <p>Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것이다. 데이터의 수가 부족하므로 보편적인 분류를 하지 못하고 훈련데이터에 너무 많은 영향을 받게 된다. 따라서 더 많은 데이터로 학습을 돌려주면 Overfitting을 어느 정도 방지할 수 있다. 하지만 보통의 경우 데이터를 수집하는 것이 매우 비싼 과정이기 때문에 이 방법은 사용하기 어렵다.</p>
   </li>
   <li>
-    <p>Regularization
-다음으로 Regularization을 사용하여 Overfitting을 방지할 수 있다. <a href="">Prevent Multi layer perceptron Overfitting</a>에서 소개한 weight decay도 이 Regularization 기법에 포함된다. Regularization은 모델이 학습 데이터에 지나치게 의존하지 않도록 panelty를 부과하는 것이다. 깊은(deep) 모델 일 수록 representation 능력이 너무 좋아 쉽게 Overfitting이 될 수 있다. 이를 방지하기 위해 Regularization 기법들은 일부러 representation 성능에 제한을 주는 것이다. 이 글의 토픽인 Dropout도 Regularization 방법 중 하나이다.</p>
+    <p>Regularization</p>
+
+    <p>다음으로 regulariztion을 사용하여 Overfitting을 방지할 수 있다. <a href="">Prevent Multi layer perceptron Overfitting</a>에서 소개한 weight decay도 이 regularization 기법에 포함된다. Regularization은 모델이 학습 데이터에 지나치게 의존하지 않도록 panelty를 부과하는 것이다. 깊은(deep) 모델 일 수록 representation 능력이 너무 좋아 쉽게 Overfitting이 될 수 있다. 이를 방지하기 위해 regularization 기법들은 일부러 representation 성능에 제한을 주는 것이다. 이 글의 토픽인 Dropout도 regularization 방법 중 하나이다.</p>
   </li>
 </ul>
 
 <p> </p>
-<h2 id="committe-machine">Committe Machine</h2>
-<hr />
-<p>Ensemble average</p>
+<h2 id="committee-machine">Committee Machine</h2>
+<p><br />
+ </p>
+<div style="text-align: left">
+   <img src="/assets/img/post_images/dropout3.png" width="100%" />
+</div>
+<p>Committee Machine은 그림과 같이 서로 다른 network 집단을 만든 다음에 각각 독립적으로 학습시킨 뒤, 마지막에 합쳐서 결과를 내는 방법이다. 이런 방식을 Ensemble average라고 한다. 마치, 전무가 한 명에게 물어보는 것보다 전문가 여러명에게 물어본 후 결과를 취합하면 예상치 못한 bias나 오류를 방지할 수 있는 겻과 같다.</p>
 
 <p> </p>
 <h2 id="dropout">Dropout</h2>
-<hr />
-<p>Committe Machine의 예처럼 학습을 할 때, 서로 다른 학습데이터를 통해 모델을 학습시키거나 모델이 서로 다른 구조를 가지면 학습 성능을 개선할 수 있다. 이런 방법을 Model Combination이라고 한다.
+<p><br />
+ 
+Committe Machine의 예처럼 학습을 할 때, 서로 다른 학습데이터를 통해 모델을 학습시키거나 모델이 서로 다른 구조를 가지면 학습 성능을 개선할 수 있다. 이런 방법을 Model Combination이라고 한다.
 하지만 모델이 복잡한 경우 하나의 모델을 훈련시키는 것도 어려운데 여러개의 네트워크를 훈련시키는 것은 매우 어렵다. 또한 이렇게 학습을 시켰다고 해도 이렇게 학습된 모델을 실행할 때도 연산 시간이 오래걸린다.</p>
 
 <p>따라서 Dropout 기법은 모델을 여러개 만들 지 않고 모델 결합이 여러 형태를 가지게 하여 Model Combination과 비슷한 효과를 내게 한다. 네트워크를 학습하는 동안 랜덤하게 일부 뉴런을 생략해버리면, 뉴런의 조합의 지수함수 만큼 다양한 모델을 학습 시키는 것과 비슷해진다. n개의 뉴런이 있다고 하면 $2^{n}$개의 서로 다른 모델이 생성된다.</p>
@@ -198,33 +217,114 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
 <div style="text-align: left">
    <img src="/assets/img/post_images/dropout1.png" width="100%" />
 </div>
-
-<h3 id="probabilistic-apporach">Probabilistic apporach</h3>
 <div style="text-align: left">
-   <img src="/assets/img/post_images/dropout2.png" width="100%" />
+   <img src="/assets/img/post_images/dropout4.png" width="100%" />
 </div>
-<h3 id="combinatorial-approach">Combinatorial approach</h3>
 
+<p> </p>
 <h3 id="dropout-효과">Dropout 효과</h3>
-<hr />
-<p>그렇다면 이런 방식으로 어떻게 regulation 효과를 얻을 수 있는 것일까?</p>
+<p> 
+그렇다면 이런 방식으로 어떻게 regulation 효과를 얻을 수 있는 것일까?</p>
 
 <ul>
-  <li>co-adaptation 방지
-먼저 학습을 시키다보면, 학습 데이터에 의해 각각의 weight들이 서로</li>
-  <li>hidden neuron들의 activity가 좀 더 드문드문(sparsity) 해진다.</li>
+  <li>
+    <p>co-adaptation 방지</p>
+
+    <p>먼저 학습을 시키다보면, 학습 데이터에 의해 같은 층의 각각의 weight들이 서로 같아지는 경우가 생긴다. 이렇게 되면 이 이상 학습이 진행되어도 이 노드들은 같은 일을 수행하게 되어 불필요한 중복이 생겨 컴퓨팅 파워, 메모리 낭비로 이어진다. 드롭아웃은 임의로 노드들을 생략하는 데 이때, 이러한 상호 적응 중인 노드들 중 일부는 생략하고 일부는 생략하지 않게 되므로 학습 중 상호 적응이 발생한 노드들이 분리될 수 있어서 상호 적응 문제를 회피할 수 있게 된다.</p>
+  </li>
+  <li>
+    <p>hidden neuron들의 activity가 좀 더 드문드문(sparsity) 해진다.</p>
+  </li>
 </ul>
 
-<h3 id="dropout-효과의-수학적-증명-single-linear-unit">Dropout 효과의 수학적 증명 (single linear unit)</h3>
-<hr />
-<h3 id="dropout-효과의-수학적-증명-single-sigmoidal-unit">Dropout 효과의 수학적 증명 (single sigmoidal unit)</h3>
-<hr />
-<h3 id="dropout-효과의-수학적-증명-deep-neural-networks">Dropout 효과의 수학적 증명 (deep neural networks)</h3>
-<hr />
+<h3 id="dropout의-regularization-효과의-수학적-증명-single-linear-unit">Dropout의 regularization 효과의 수학적 증명 (single linear unit)</h3>
+<p> 
+먼저 non-linear function이 없는 single linear unit에 대하여 dropout의 regularization 효과를 살펴볼 것이다. 이후 non-linear function이 있는 경우를 살펴볼 예정이다. multilayer 로의 확장도 비슷한 방식으로 여러 layer에 대하여 계산하여 얻을 수 있다.</p>
 
-<p>참고 내용 출처 :</p>
+<p>Dropout의 regularization 효과를 확인하기 위하여 Ensemble average를 사용하는 test network error와 training에서 사용되는 $2^{n}$개의 dropout network error을 비교해 볼 것이다. 즉,</p>
+
+\[\begin{cases}
+ &amp; E_{ENS} = \frac{1}{2}(t-O_{ENS})^{2} = \frac{1}{2}(t-\sum_{i=1}^{n}p_{i}w_{i}I_{i})^{2} \\
+ &amp; E_{D} = \frac{1}{2}(t-O_{D})^{2} = \frac{1}{2}(t-\sum_{i=1}^{n}\delta _{i}w_{i}I_{i})^{2}
+\end{cases}\]
+
+<p>을 비교해본다.
+만약 test network error와 dropout network error가 거의 같다면 굳이 dropout network을 쓸 이유가 없어진다. 하나의 학습만 진행하는 test network 보다 학습에 훨씬 더 많은 시간이 소요되기 때문이다. 따라서, 이 두 네트워크의 에러를 비교해보는 것이 dropout의 필요성 및 정규화 효과를 확인해볼 수 있는 좋은 방법이 된다.</p>
+
+<p>두 네트워크의 학습 과정을 비교해보기 위하여 gradient를 구하여 비교하였다.</p>
+
+\[\begin{cases}
+ &amp; \frac{\partial E_{ENS}}{\partial W_{i}} = -(t-O_{ENS})p_{i}I_{i} \\
+ &amp; \frac{\partial E_{D}}{\partial W_{i}} = -(t-O_{D})\delta _{i}I_{i} = -t\delta _{i}I_{i}+w_{i}\delta _{i}^{2}I_{i}^{2}+\sum_{j\neq i}^{}w_{j}\delta _{i}\delta _{j}I_{i}I_{j}
+\end{cases}\]
+
+<p>이제, $E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right )$ 와 $E\left ( \frac{\partial E_{ENS}}{\partial w_{i}} \right )$ 를 구해보자.
+먼저, $E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right )$ 는</p>
+
+\[E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right ) = -(t-E(O_{D}|\delta _{i}=1) )p_{i}I_{i}\]
+
+<p>이 때,</p>
+
+\[E(\delta _{i}^{2}) = E(\delta _{i})=p_i ~(\because \delta _{i}=0, 1)\]
+
+<p>이므로,</p>
+
+\[E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right ) = -tp_{i}I_{i}+w_{i}p_{i}I_{i}^{2}+\sum_{j\neq i}^{}w_{i}p_{i}p_{j}I_{i}I_{j}\]
+
+<p>또한, $\sum w_{i}p_{i}p_{j}I_{i}I_{j}=\sum_{k=1}^{n}p_{k}w_{k}I_{k} \times p_{i}I_{i} - w_{i}I_{i}^{2}p_{i} = O_{ENS}P_{i}I_{i}-w_{i}I_{i}^{2}p_{i}$ 이므로</p>
+
+\[E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right ) = -(t-O_{ENS})p_{i}I_{i} + w_{i}I_{i}^{2}(p_{i})(1-p_{i})
+\\
+= \frac{\partial E_{ENS}}{\partial w_{i}}+w_{i}I_{i}^{2}Var\delta _{i}=\frac{\partial E_{ENS}}{\partial W_{i}}+w_{i}Var\left ( \delta _{i}I_{i} \right )\]
+
+\[\therefore  E_{D} = E_{ENS} + \frac{1}{2}\sum_{i=1}^{n}w_{i}^{2}I_{i}^{2}Var\delta _{i}\]
+
+<p>이 때, 이 식은 weight decay에서 $E=E_{0}+\alpha \left| w\right|^{2}$ 와 같이 generalization capability를 높이기 위하여 추가 loss term 을 더해준 것과 같은 형태이다. 따라서 Single linear unit에서, dropout network는 inference network(Ensemble average network)에 weight decay term을 추가한 것과 같다. 따라서 weight decay term을 추가하는 것과 동일하게 generalization 효과가 생긴다.</p>
+
+<h3 id="dropout-regularization-효과의-수학적-증명-single-sigmoidal-unit">Dropout regularization 효과의 수학적 증명 (single sigmoidal unit)</h3>
+<p> 
+비슷한 방식으로, 이번에는 non-linear function이 있는 경우를 살펴보자.  non-linear function이 없는 경우와 마찬가지로 $\frac{\partial E_{ENS}}{\partial w_{i}}$ 와 $\frac{\partial E_{D}}{\partial w_{i}}$ 를 비교해서 확인할 수 있다.</p>
+
+<p>이 때, Error는 cross entropy loss function을 이용하였고, 따라서 다음의 에러 텀을 구할 수 있다.</p>
+
+\[E = -(t-logO + (1-t)log(1-O)), ~~O=\sigma(s)=\frac{1}{(1+ce^{-\lambda s})}\]
+
+<p>이 때, $ \frac{\partial E}{\partial w} = \frac{\partial E}{\partial O} \frac{\partial O}{\partial S} \frac{\partial S}{\partial w} $ 이고,</p>
+
+<p>$ \frac{\partial E}{\partial O} = -t \frac{1}{O} + (1-t) \frac{1}{1-O}, ~~\frac{\partial O}{\partial S} = \lambda O (1-O) $ 이므로,</p>
+
+<p>$ \frac{\partial E}{\partial w} = -\lambda(t-O)\frac{\partial S}{\partial w} $ 이다.</p>
+
+<p>따라서 두 gradient는,</p>
+
+\[\begin{cases}
+ &amp; \frac{\partial E_{ENS}}{\partial w_{i}} = \lambda(t-\sigma(U))p_{i}I_{i} = - \lambda  \left ( t-\sigma \left ( \sum_{j}^{}w_{j}p_{j}I_{j} \right ) \right )p_{i}I_{i} \\
+ &amp; \frac{\partial E_{D}}{\partial w_{i}}  = \lambda(t- O)\delta _{i}I_{i} = - \lambda  \left ( t-\sigma \left ( \sum_{j}^{}w_{j}\delta _{j}I_{j} \right ) \right )\delta _{i}I_{i}
+\end{cases}\]
+
+<p>이 된다.</p>
+
+<p>마지막으로 $E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right )$ 을 계산하면,</p>
+
+\[E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right ) = -\lambda \left ( t - E \left [ \sigma \left ( \sum_{j}^{} w_{j}\delta _{j} I_{j} | \delta_{i} = 1 \right ) \right ] \right )p_{i}I_{i}
+\\
+\approx -\lambda\left ( t-\sigma \left ( \sum_{j}^{} w_{j}p_{j}I_{j} - w_{i}p_{i}I_{i} + w_{i}I_{i}\right ) \right )p_{i}I_{i}
+\\
+\approx -\lambda \left ( t-\sigma(S_{ENS}) - \sigma^{'}(S_{ENS})I_{i}w_{i}(1-p_{i}) \right )p_{i}I_{i}
+\\
+= \frac{\partial E_{ENS}}{\partial w_{i}}+\lambda \sigma ^{'}(U)w_{i}Var(\delta _{i}I_{i}))\]
+
+\[\therefore  E_{D} = E_{ENS} + \frac{1}{2} \lambda \sigma ^{'}(U)\sum_{i=1}^{n}w_{i}^{2}I_{i}^{2}Var\left ( \delta _{i} \right )\]
+
+<p>따라서, 이 경우도 만찬가지로 Ensemble average network에 weight decay term을 사용한 것과 형태가 같고, 따라서 정규화 역할을 한다.</p>
+
+<p><br />
+ 
+참고 내용 출처 :</p>
 <ul>
+  <li>KAIST EE538 Neural Networks lecture</li>
   <li><a href="https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;blogId=laonple&amp;logNo=220818841217">https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;blogId=laonple&amp;logNo=220818841217</a></li>
+  <li><a href="https://hyeonnii.tistory.com/254">https://hyeonnii.tistory.com/254</a></li>
 </ul>
 
                 </div>
@@ -269,7 +369,7 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
                         var disqus_config = function () {
                             var this_page_url = 'http://localhost:4000/Dropout';
                             var this_page_identifier = '/Dropout';
-                            var this_page_title = '(작성중) Dropout';
+                            var this_page_title = 'Dropout';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -417,13 +517,13 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">(작성중) Dropout</div>
+    <div class="floating-header-title">Dropout</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%28%EC%9E%91%EC%84%B1%EC%A4%91%29+Dropout&amp;url=https://beanie00.github.io/Dropout"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Dropout&amp;url=https://beanie00.github.io/Dropout"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 

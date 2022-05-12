@@ -61,7 +61,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -96,6 +106,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="MUI 무료 template로 디자이너 없이 웹서비스 개발하기" href="/feed.xml" />
+
 
 
 </head>
@@ -167,7 +178,7 @@ into the {body} of the default.hbs template -->
 
 <p> </p>
 <h2 id="mui-minimal---client--admin-dashboard-템플릿">MUI Minimal - Client &amp; Admin Dashboard 템플릿</h2>
-<hr />
+<p> </p>
 
 <p>여러개 다양한 템플릿을 서치하다가 MUI에서 제공하는 <a href="https://mui.com/store/#populars">Minimal - Client &amp; Admin Dashboard</a>가 괜찮아 보여 이 템플릿을 사용하기로 결정했다. 다양한 코드 예시가 있고 디자인도 깔끔해서 마음에 들었다. 이 템플릿은 칸반보드, 채팅, billing 등 광범위한 페이지와 컴포넌트로 구성되어 있는데 사실 이걸 다 사용하려면 최소 69달러로 라이센스를 사야한다. 로우로깅 서비스에는 이런 복잡한 기능까지 필요없어서 간소화된 <a href="https://github.com/minimal-ui-kit/material-kit-react">무료 데모</a>를 이용하였다.</p>
 
@@ -220,7 +231,6 @@ package.json
 
 <p> </p>
 <h2 id="빠르게-완성">빠르게 완성!!</h2>
-<hr />
 
 <div style="text-align: left">
   <img src="/assets/img/post_images/mui2.png" width="100%" />
@@ -379,6 +389,13 @@ package.json
                 <section class="post-card-excerpt">
                     
                         <p>Prerequisites
+ 
+
+  Set up an AWS account
+  Knowledge on setting up basic Lambda function with Serverless framework
+  Experience with Javscript/Typescript
+  Set up a bot profile on discord
+
 
 </p>
                     

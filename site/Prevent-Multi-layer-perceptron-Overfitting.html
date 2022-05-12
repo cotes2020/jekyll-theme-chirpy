@@ -61,7 +61,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -96,6 +106,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="Prevent Multi layer perceptron Overfitting" href="/feed.xml" />
+
 
 
 </head>
@@ -164,7 +175,7 @@ into the {body} of the default.hbs template -->
                     <p>Looking at the existing multi-layer perceptron learning results, it can be seen that the training error continuously decreases as learning progresses. Decreasing error generally means the training is going well, but it may not always be the case. <code class="language-plaintext highlighter-rouge">Overfitting</code> may be occuring, where the model follows too closely to the training data, and may not be able to perform as well on data outside the training data set.</p>
 
 <h2 id="checking-validation-error">Checking Validation error</h2>
-<hr />
+<p> </p>
 
 <p>In order to check the overfitting, validation error should be checked together with training error. <code class="language-plaintext highlighter-rouge">training error</code> refers to errors that occurs during training with the training data, whereas <code class="language-plaintext highlighter-rouge">validation error</code> refers to an error that occurs by predicting new data (validation data). In order to obtain <code class="language-plaintext highlighter-rouge">validation error</code>, the data must first be divided into training dataset and test dataset. This can be done simply by using the <code class="language-plaintext highlighter-rouge">train_test_split</code> function of <code class="language-plaintext highlighter-rouge">sklearn.model_selection</code>.</p>
 
@@ -228,12 +239,11 @@ into the {body} of the default.hbs template -->
 <p> </p>
 
 <h2 id="prevent-overfitting-adding-early-stopping-term-and-weight-decay-term">Prevent overfitting adding Early stopping term and weight decay term</h2>
-<hr />
+<p> </p>
 
 <p>Now that overfitting has been identified, let’s try to prevent it in several ways.</p>
 
 <h3 id="early-stopping">Early stopping</h3>
-<hr />
 <p>Early stopping refers to a method of terminating training before the validation error in the graph above enters an increasing trend.</p>
 
 <p>Below is the early stopping implementation code. When the validation error continues to increase 10 times in a row compared to the previous validation error value, learning is terminated.</p>
@@ -253,7 +263,6 @@ into the {body} of the default.hbs template -->
 </code></pre></div></div>
 
 <h3 id="weight-decay">Weight decay</h3>
-<hr />
 
 <p>Overfitting can be avoided by applying weight decay. When learning, if the learning is carried out simply in the direction in which the loss function becomes smaller, the specific weight values ​​will rather increase and the result may deteriorate. Weight decay exerts a penalty when the weight becomes large in the loss function, so that the weight does not have a too large value during training. L1 regularization and L2 regularization are widely used as the penalty. In this implementation, the L2 method is used.</p>
 
@@ -263,7 +272,7 @@ into the {body} of the default.hbs template -->
 
 <p> </p>
 <h2 id="final-mlp-training-code">Final MLP training code</h2>
-<hr />
+<p> </p>
 
 <p>The final MLP code implementation is as follows.</p>
 
@@ -436,6 +445,8 @@ into the {body} of the default.hbs template -->
                 <section class="post-card-excerpt">
                     
                         <p>Add flow chart using Mermaid
+ 
+Mermaid?
 
 </p>
                     

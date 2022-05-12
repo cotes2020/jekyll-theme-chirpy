@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/discord/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T12:25:27+09:00</updated>
+  <updated>2022-05-12T16:02:32+09:00</updated>
   <id>http://localhost:4000/tag/discord/feed.xml</id>
 
   
@@ -40,7 +40,7 @@
       <updated>2021-12-09T14:21:00+09:00</updated>
       <id>http://localhost:4000/Discord%20Bot%20with%20Lambda</id>
       <content type="html" xml:base="http://localhost:4000/Discord-Bot-with-Lambda">&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
-
+&lt;p&gt; &lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Set up an AWS account&lt;/li&gt;
   &lt;li&gt;Knowledge on setting up basic Lambda function with Serverless framework&lt;/li&gt;
@@ -49,12 +49,14 @@
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;goal&quot;&gt;Goal&lt;/h2&gt;
-
-&lt;p&gt;Set up a discord bot interactions endpoint with AWS Lambda and API Gateway to activate/deactivate Minecraft server hosted on EC2 with commands&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+Set up a discord bot interactions endpoint with AWS Lambda and API Gateway to activate/deactivate Minecraft server hosted on EC2 with commands&lt;/p&gt;
 
 &lt;h2 id=&quot;experiment-journal&quot;&gt;Experiment Journal&lt;/h2&gt;
-
-&lt;p&gt;After reminiscing with a friend about the good old days of playing minecraft together in our server, we decided to start up a fresh new server and get back into it(a&lt;del&gt;ll roads lead down to minecraft..&lt;/del&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+After reminiscing with a friend about the good old days of playing minecraft together in our server, we decided to start up a fresh new server and get back into it(a&lt;del&gt;ll roads lead down to minecraft..&lt;/del&gt;).&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/discord1.jpg&quot; width=&quot;100%&quot; /&gt;
@@ -237,7 +239,7 @@ Then, I added the following lines to serverless.yml to add this layer to deploym
       
 
       
-        <summary type="html">Prerequisites</summary>
+        <summary type="html">Prerequisites   Set up an AWS account Knowledge on setting up basic Lambda function with Serverless framework Experience with Javscript/Typescript Set up a bot profile on discord</summary>
       
 
       

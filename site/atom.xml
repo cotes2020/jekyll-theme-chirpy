@@ -23,7 +23,7 @@
     
       
       <item>
-        <title>(작성중) Dropout</title>
+        <title>Dropout</title>
         
           <description>&lt;p&gt;Dropout은 &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.&lt;/p&gt;
 
@@ -56,6 +56,8 @@
         <title>Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)</title>
         
           <description>&lt;h2 id=&quot;add-flow-chart-using-mermaid&quot;&gt;Add flow chart using Mermaid&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h3 id=&quot;mermaid&quot;&gt;Mermaid?&lt;/h3&gt;
 
 </description>
         
@@ -164,21 +166,6 @@
     
       
       <item>
-        <title>iTerm으로 MAC 터미널 꾸미기</title>
-        
-          <description>&lt;p&gt;어느 순간 개발하다가 요즘 제일 많이 쳐다보는게 1등 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VS Code&lt;/code&gt; 2등 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terminal&lt;/code&gt;라는 생각이 번뜩 들었다.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Thu, 28 Apr 2022 17:32:00 +0900</pubDate>
-        <link>
-        http://localhost:4000/iTerm%EC%9C%BC%EB%A1%9C-MAC-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%BE%B8%EB%AF%B8%EA%B8%B0</link>
-        <guid isPermaLink="true">http://localhost:4000/iTerm%EC%9C%BC%EB%A1%9C-MAC-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%BE%B8%EB%AF%B8%EA%B8%B0</guid>
-      </item>
-      
-    
-      
-      <item>
         <title>Automating emails with AWS SES</title>
         
           <description>&lt;p&gt;It’s pretty common for services to automatically send out welcome emails on sign-up. Given the positive influence these emails had on understanding the service I just signed up for, I decided to try adding on one to Catty as well.&lt;/p&gt;
@@ -257,7 +244,7 @@
         <title>CORS 에러 피하는 proxy server 만들기 (Feat. CORS Anywhere &amp; Heroku)</title>
         
           <description>&lt;h2 id=&quot;cors란&quot;&gt;CORS란?&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 </description>
         
@@ -273,9 +260,6 @@
         <title>When SSR says that there is no window object</title>
         
           <description>&lt;h2 id=&quot;use-typeof&quot;&gt;Use typeof&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;```html
-if(window){…} // window is not defined error occur&lt;/p&gt;
 
 </description>
         
@@ -367,8 +351,7 @@ if(window){…} // window is not defined error occur&lt;/p&gt;
         <title>PCA learning 구현 (from scratch)</title>
         
           <description>&lt;h2 id=&quot;pca란&quot;&gt;PCA란?&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 
 </description>
         
@@ -384,8 +367,7 @@ if(window){…} // window is not defined error occur&lt;/p&gt;
         <title>Competitive learning 구현 (from scratch)</title>
         
           <description>&lt;h2 id=&quot;competitive-learning이란&quot;&gt;Competitive learning이란?&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고, 그 중 거리가 가장 짧은 가중 벡터 하나만 선택한다. 그 가중 벡터가 승자 노드이다. 오직 승자 노드의 가중 벡터만 갱신된다. 그래서 경쟁 학습 네트워크는 승자독식 네트워크(winner-take-all networks)라고도 불린다.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 
 </description>
         
@@ -416,7 +398,7 @@ if(window){…} // window is not defined error occur&lt;/p&gt;
         <title>RxJava(3) - Observable</title>
         
           <description>&lt;h2 id=&quot;observable-이란&quot;&gt;Observable 이란&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 </description>
         
@@ -431,11 +413,7 @@ if(window){…} // window is not defined error occur&lt;/p&gt;
       <item>
         <title>RxJava(2) - Reactive Streams</title>
         
-          <description>&lt;p&gt;앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.
-&lt;br /&gt;
- &lt;/p&gt;
-&lt;h2 id=&quot;reactive-streams란&quot;&gt;Reactive Streams란&lt;/h2&gt;
-&lt;hr /&gt;
+          <description>&lt;p&gt;앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.&lt;/p&gt;
 
 </description>
         
@@ -481,6 +459,13 @@ if(window){…} // window is not defined error occur&lt;/p&gt;
         <title>Discord Bot with Lambda</title>
         
           <description>&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Set up an AWS account&lt;/li&gt;
+  &lt;li&gt;Knowledge on setting up basic Lambda function with Serverless framework&lt;/li&gt;
+  &lt;li&gt;Experience with Javscript/Typescript&lt;/li&gt;
+  &lt;li&gt;Set up a bot profile on discord&lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
         
@@ -508,150 +493,13 @@ if(window){…} // window is not defined error occur&lt;/p&gt;
     
       
       <item>
-        <title>LeetCode - 201. Bitwise AND of Numbers Range</title>
-        
-          <description>&lt;h3 id=&quot;pig-code&quot;&gt;Pig Code&lt;/h3&gt;
-
-</description>
-        
-        <pubDate>Tue, 09 Nov 2021 22:55:00 +0900</pubDate>
-        <link>
-        http://localhost:4000/LeetCode-201.-Bitwise-AND-of-Numbers-Range</link>
-        <guid isPermaLink="true">http://localhost:4000/LeetCode-201.-Bitwise-AND-of-Numbers-Range</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>LeetCode - 96. Unique Binary Search Trees</title>
-        
-          <description>&lt;h3 id=&quot;pig-code&quot;&gt;Pig Code&lt;/h3&gt;
-
-</description>
-        
-        <pubDate>Tue, 09 Nov 2021 21:55:00 +0900</pubDate>
-        <link>
-        http://localhost:4000/LeetCode-96.-Unique-Binary-Search-Trees</link>
-        <guid isPermaLink="true">http://localhost:4000/LeetCode-96.-Unique-Binary-Search-Trees</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>LeetCode - 4. Median of Two Sorted Arrays</title>
-        
-          <description>&lt;h3 id=&quot;pig-code&quot;&gt;Pig Code&lt;/h3&gt;
-
-</description>
-        
-        <pubDate>Tue, 09 Nov 2021 21:55:00 +0900</pubDate>
-        <link>
-        http://localhost:4000/LeetCode-4.-Median-of-Two-Sorted-Arrays</link>
-        <guid isPermaLink="true">http://localhost:4000/LeetCode-4.-Median-of-Two-Sorted-Arrays</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>LeetCode - 3. Longest Substring Without Repeating Characters</title>
-        
-          <description>&lt;h3 id=&quot;pig-code&quot;&gt;Pig Code&lt;/h3&gt;
-
-</description>
-        
-        <pubDate>Tue, 09 Nov 2021 21:55:00 +0900</pubDate>
-        <link>
-        http://localhost:4000/LeetCode-3.-Longest-Substring-Without-Repeating-Characters</link>
-        <guid isPermaLink="true">http://localhost:4000/LeetCode-3.-Longest-Substring-Without-Repeating-Characters</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>LeetCode - 2. Add Two Numbers</title>
-        
-          <description>&lt;h3 id=&quot;bean-code&quot;&gt;Bean code&lt;/h3&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;/**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
- */&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;addTwoNumbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;overflow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;l1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;l2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;overflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;overflow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;overflow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;l1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;l2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;overflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;l1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;l1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;l1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;l2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;l2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;l2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextNode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;preNode&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;nx&quot;&gt;preNode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                    &lt;span class=&quot;nx&quot;&gt;nextNode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;preNode&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;preNode&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ListNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        
-        <pubDate>Tue, 09 Nov 2021 21:55:00 +0900</pubDate>
-        <link>
-        http://localhost:4000/LeetCode-2.-Add-Two-Numbers</link>
-        <guid isPermaLink="true">http://localhost:4000/LeetCode-2.-Add-Two-Numbers</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>LeetCode - 1. Two Sum</title>
-        
-          <description>&lt;h3 id=&quot;pig-code&quot;&gt;Pig Code&lt;/h3&gt;
-
-</description>
-        
-        <pubDate>Tue, 09 Nov 2021 21:55:00 +0900</pubDate>
-        <link>
-        http://localhost:4000/LeetCode-1.-Two-Sum</link>
-        <guid isPermaLink="true">http://localhost:4000/LeetCode-1.-Two-Sum</guid>
-      </item>
-      
-    
-      
-      <item>
         <title>MVVM 패턴과 AAC</title>
         
           <description>&lt;p&gt;이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.
 &lt;br /&gt;
  &lt;/p&gt;
 &lt;h2 id=&quot;앱-아키텍쳐의-원칙&quot;&gt;앱 아키텍쳐의 원칙&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 </description>
         
@@ -667,7 +515,7 @@ if(window){…} // window is not defined error occur&lt;/p&gt;
         <title>MVC 패턴</title>
         
           <description>&lt;h2 id=&quot;디자인-패턴&quot;&gt;디자인 패턴&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 </description>
         

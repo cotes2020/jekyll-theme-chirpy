@@ -58,7 +58,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="2000" />
     <meta property="og:image:height" content="666" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -93,6 +103,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="PIGBEAN Tech blog" href="/feed.xml" />
+
 
 
 </head>
@@ -208,7 +219,7 @@ into the {body} of the default.hbs template -->
                 <header class="post-card-header">
                     
 
-                    <h2 class="post-card-title">(작성중) Dropout</h2>
+                    <h2 class="post-card-title">Dropout</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -234,7 +245,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      2 min read
+                      7 min read
                     
                 </span>
             </footer>
@@ -305,6 +316,8 @@ into the {body} of the default.hbs template -->
                 <section class="post-card-excerpt">
                     
                         <p>Add flow chart using Mermaid
+ 
+Mermaid?
 
 </p>
                     
@@ -649,50 +662,6 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card home-template">
         
-            <a class="post-card-image-link" href="/iTerm%EC%9C%BC%EB%A1%9C-MAC-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%BE%B8%EB%AF%B8%EA%B8%B0">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/iterm_cover.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/iTerm%EC%9C%BC%EB%A1%9C-MAC-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%BE%B8%EB%AF%B8%EA%B8%B0">
-                <header class="post-card-header">
-                    
-
-                    <h2 class="post-card-title">iTerm으로 MAC 터미널 꾸미기</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>어느 순간 개발하다가 요즘 제일 많이 쳐다보는게 1등 VS Code 2등 terminal라는 생각이 번뜩 들었다.
-
-</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/Bean/">Beanie</a>
-                        </span>
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-    <article class="post-card home-template">
-        
             <a class="post-card-image-link" href="/Automating-emails-with-AWS-SES">
                 <div class="post-card-image" style="background-image: url(/assets/img/post_images/catty_cover2.png)"></div>
             </a>
@@ -947,7 +916,7 @@ into the {body} of the default.hbs template -->
                 <section class="post-card-excerpt">
                     
                         <p>CORS란?
-
+ 
 
 </p>
                     
@@ -1002,9 +971,6 @@ into the {body} of the default.hbs template -->
                 <section class="post-card-excerpt">
                     
                         <p>Use typeof
-
-```html
-if(window){…} // window is not defined error occur
 
 </p>
                     
@@ -1222,7 +1188,7 @@ if(window){…} // window is not defined error occur
                 <span class="reading-time">
                     
                     
-                      2 min read
+                      3 min read
                     
                 </span>
             </footer>
@@ -1289,8 +1255,7 @@ if(window){…} // window is not defined error occur
                 <section class="post-card-excerpt">
                     
                         <p>PCA란?
-
-PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다.
+ 
 
 </p>
                     
@@ -1334,7 +1299,10 @@ PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>Competitive learning이란? Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의</p>
+                        <p>Competitive learning이란?
+ 
+
+</p>
                     
                 </section>
             </a>
@@ -1427,7 +1395,7 @@ PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 
                 <section class="post-card-excerpt">
                     
                         <p>Observable 이란
-
+ 
 
 </p>
                     
@@ -1479,10 +1447,6 @@ PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 
                     
                         <p>앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.
 
- 
-Reactive Streams란
-
-
 </p>
                     
                 </section>
@@ -1503,7 +1467,7 @@ Reactive Streams란
                 <span class="reading-time">
                     
                     
-                      4 min read
+                      5 min read
                     
                 </span>
             </footer>
@@ -1628,6 +1592,13 @@ Reactive Streams란
                 <section class="post-card-excerpt">
                     
                         <p>Prerequisites
+ 
+
+  Set up an AWS account
+  Knowledge on setting up basic Lambda function with Serverless framework
+  Experience with Javscript/Typescript
+  Set up a bot profile on discord
+
 
 </p>
                     
@@ -1710,268 +1681,6 @@ Reactive Streams란
 
     <article class="post-card home-template">
         
-            <a class="post-card-image-link" href="/LeetCode-201.-Bitwise-AND-of-Numbers-Range">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/coding_cover.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/LeetCode-201.-Bitwise-AND-of-Numbers-Range">
-                <header class="post-card-header">
-                    
-
-                    <h2 class="post-card-title">LeetCode - 201. Bitwise AND of Numbers Range</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>Pig Code
-
-</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Skinnig" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/Pig/">Skinnig</a>
-                        </span>
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-    <article class="post-card home-template">
-        
-            <a class="post-card-image-link" href="/LeetCode-96.-Unique-Binary-Search-Trees">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/coding_cover.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/LeetCode-96.-Unique-Binary-Search-Trees">
-                <header class="post-card-header">
-                    
-
-                    <h2 class="post-card-title">LeetCode - 96. Unique Binary Search Trees</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>Pig Code
-
-</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Skinnig" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/Pig/">Skinnig</a>
-                        </span>
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-    <article class="post-card home-template">
-        
-            <a class="post-card-image-link" href="/LeetCode-4.-Median-of-Two-Sorted-Arrays">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/coding_cover.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/LeetCode-4.-Median-of-Two-Sorted-Arrays">
-                <header class="post-card-header">
-                    
-
-                    <h2 class="post-card-title">LeetCode - 4. Median of Two Sorted Arrays</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>Pig Code
-
-</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Skinnig" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/Pig/">Skinnig</a>
-                        </span>
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-    <article class="post-card home-template">
-        
-            <a class="post-card-image-link" href="/LeetCode-3.-Longest-Substring-Without-Repeating-Characters">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/coding_cover.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/LeetCode-3.-Longest-Substring-Without-Repeating-Characters">
-                <header class="post-card-header">
-                    
-
-                    <h2 class="post-card-title">LeetCode - 3. Longest Substring Without Repeating Characters</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>Pig Code
-
-</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Skinnig" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/Pig/">Skinnig</a>
-                        </span>
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-    <article class="post-card home-template">
-        
-            <a class="post-card-image-link" href="/LeetCode-2.-Add-Two-Numbers">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/coding_cover.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/LeetCode-2.-Add-Two-Numbers">
-                <header class="post-card-header">
-                    
-
-                    <h2 class="post-card-title">LeetCode - 2. Add Two Numbers</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>Bean code /** * Definition for singly-linked list. * function ListNode(val, next) { * this.val = (val===undefined ? 0 : val) * this.next = (next===undefined ? null : next) * } */ /**</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Skinnig" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/Pig/">Skinnig</a>
-                        </span>
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      3 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-    <article class="post-card home-template">
-        
-            <a class="post-card-image-link" href="/LeetCode-1.-Two-Sum">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/coding_cover.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/LeetCode-1.-Two-Sum">
-                <header class="post-card-header">
-                    
-
-                    <h2 class="post-card-title">LeetCode - 1. Two Sum</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>Pig Code
-
-</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Skinnig" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/Pig/">Skinnig</a>
-                        </span>
-                    
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-    <article class="post-card home-template">
-        
             <a class="post-card-image-link" href="/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC">
                 <div class="post-card-image" style="background-image: url(/assets/img/post_images/mvvm_cover.jpg)"></div>
             </a>
@@ -2003,7 +1712,7 @@ Reactive Streams란
 
  
 앱 아키텍쳐의 원칙
-
+ 
 
 </p>
                     
@@ -2058,7 +1767,7 @@ Reactive Streams란
                 <section class="post-card-excerpt">
                     
                         <p>디자인 패턴
-
+ 
 
 </p>
                     

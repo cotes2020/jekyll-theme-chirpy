@@ -18,7 +18,31 @@ cover:  assets/img/post_images/ai_cover2.jpg
    <img src="/assets/img/post_images/mlp.png" width="100%"/>
 </div>
 
-전체 코드는 아래와 같다.
+\
+&nbsp;
+바로 이전 글에서, Single layer perceptron은 오차를 적당한 비율로 weight vector에 더해주는 게 끝이었는데 MLP는 여러개의 layer가 있고, non-linear function도 추가되어 식이 더 복잡하다.
+
+먼저 각각의 layer에 대해 feed forward 과정을 진행해주고, 이 값을 기반으로 backpropagation을 수행해준다.
+
+Backpropagation은 아래의 계산된 Backpropagation error를 weight vector에 적당한 비율로 더해주며 진행되었다.
+
+$$E\equiv \sum_{i=1}^{M}E_{i}=\frac{1}{2}\sum_{s=1}^{S}\sum_{i=1}^{M}(t_{i}^{s}-y_{i}^{s})^{2}$$
+
+$$W_{ij}^{(123)}[n+1]=W_{ij}^{(123)}[n]-\eta ^{(123)}[n]\frac{\partial E}{\partial W_{ij}^{(123)}}[n]$$
+
+각각의 레이어에서 error를 계산하면 다음과 같다.
+
+$$\frac{\partial E}{\partial W_{ij}^{(3)}}=-\sum_{s=1}^{S}\delta _{i}^{(3)s}h_{j}^{(2)s}, \delta _{i}^{(3)s}\equiv -\frac{\partial E}{\partial \hat{y}_{i}^{s}}=f'(\hat{y}_{i}^{s})(t_{i}^{s}-y_{i}^{s}) $$
+
+$$\frac{\partial E}{\partial W_{jk}^{(2)}}=-\sum_{s=1}^{S}\delta _{j}^{(2)s}h_{k}^{(1)s},
+~~\delta _{i}^{(2)s}\equiv -\frac{\partial E}{\partial \hat{h}_{j}^{(2)s}}=f'(\hat{h}_{j}^{(2)s})\sum_{i=1}^{M}\delta _{i}^{(3)s}W_{ij}^{(3)}$$
+
+$$\frac{\partial E}{\partial W_{kl}^{(1)}}=-\sum_{s=1}^{S}\delta _{j}^{(1)s}x_{l}^{s},
+~~\delta _{i}^{(1)s}\equiv -\frac{\partial E}{\partial \hat{h}_{k}^{(1)s}}=f'(\hat{h}_{k}^{(1)s})\sum_{j=1}^{N_{2}}\delta _{i}^{(2)s}W_{jk}^{(2)}$$
+
+\
+&nbsp;
+이 내용을 기반으로 Three layer perceptron을 구현해보았다.
 
 ```python
 def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015):

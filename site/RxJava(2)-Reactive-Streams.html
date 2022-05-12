@@ -43,7 +43,7 @@
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="RxJava(2) - Reactive Streams" />
-    <meta property="og:description" content="앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.   Reactive Streams란 라이브러리나 프레임워크에 상관없이 데이터 스트림을 비동기로 다룰 수 있는 공통 메커니즘으로, 이 메커니즘을 편리하게 사용할 수 있는 인터페이스를 제공한다. 즉," />
+    <meta property="og:description" content="앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.   Reactive Streams란   라이브러리나 프레임워크에 상관없이 데이터 스트림을 비동기로 다룰 수 있는 공통 메커니즘으로, 이 메커니즘을 편리하게 사용할 수 있는 인터페이스를 제공한다." />
     <meta property="og:url" content="http://localhost:4000/RxJava(2)-Reactive-Streams" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/rxjava_cover.jpeg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -53,7 +53,7 @@
     <meta property="article:tag" content="Rxjava" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="RxJava(2) - Reactive Streams" />
-    <meta name="twitter:description" content="앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.   Reactive Streams란 라이브러리나 프레임워크에 상관없이 데이터 스트림을 비동기로 다룰 수 있는 공통 메커니즘으로, 이 메커니즘을 편리하게 사용할 수 있는 인터페이스를 제공한다. 즉," />
+    <meta name="twitter:description" content="앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.   Reactive Streams란   라이브러리나 프레임워크에 상관없이 데이터 스트림을 비동기로 다룰 수 있는 공통 메커니즘으로, 이 메커니즘을 편리하게 사용할 수 있는 인터페이스를 제공한다." />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/rxjava_cover.jpeg" />
     <meta name="twitter:label1" content="Written by" />
@@ -64,7 +64,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -85,7 +95,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/RxJava(2)-Reactive-Streams"
     },
-    "description": "앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.   Reactive Streams란 라이브러리나 프레임워크에 상관없이 데이터 스트림을 비동기로 다룰 수 있는 공통 메커니즘으로, 이 메커니즘을 편리하게 사용할 수 있는 인터페이스를 제공한다. 즉,"
+    "description": "앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.   Reactive Streams란   라이브러리나 프레임워크에 상관없이 데이터 스트림을 비동기로 다룰 수 있는 공통 메커니즘으로, 이 메커니즘을 편리하게 사용할 수 있는 인터페이스를 제공한다."
 }
     </script>
 
@@ -99,6 +109,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="RxJava(2) - Reactive Streams" href="/feed.xml" />
+
 
 
 </head>
@@ -171,11 +182,11 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.
-<br />
- </p>
+                    <p>앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.</p>
+
+<p> </p>
 <h2 id="reactive-streams란">Reactive Streams란</h2>
-<hr />
+<p> </p>
 
 <p>라이브러리나 프레임워크에 상관없이 데이터 스트림을 비동기로 다룰 수 있는 공통 메커니즘으로, 이 메커니즘을 편리하게 사용할 수 있는 인터페이스를 제공한다. 즉, Reactive Streams는 인터페이스만 제공하고 구현은 각 라이브러리와 프레임워크에서 한다.</p>
 
@@ -193,7 +204,6 @@ into the {body} of the default.hbs template -->
 
 <p> </p>
 <h3 id="reactive-stream의-목적">Reactive Stream의 목적</h3>
-<hr />
 
 <p>계속적으로 들어오는 스트림 데이터를 효율적으로 처리하기 위해서는 비동기 시스템이 효과적이다. <strong>비동기 처리를 하면서 가장 중요한 문제는 데이터를 받는 곳에서 데이터를 예측 가능한 범위 내에서 신중하게 제어할 수 있도록 해야한다는 것</strong> 이다. Publisher는 Subscriber의 상태에 상관없이 데이터를 전달하는데만 집중하기 때문에 보내는 속도와 처리 속도가 다를 수 있다.</p>
 
@@ -219,7 +229,6 @@ into the {body} of the default.hbs template -->
 
 <p> </p>
 <h3 id="backpressure-배압">BackPressure (배압)</h3>
-<hr />
 
 <p>앞서 Reactive Stream의 목적이 backpressure을 이용하고 비동기 스트림의 표준을 제공하는 것이라고 언급했다. BackPressure을 더 자세히 살펴보자. 배압은 한마디로 데이터 통지량을 제어하는 기능을 말한다. <a href="https://www.reactivemanifesto.org/ko/glossary">리액티브 선언문 용어집</a> 에서는 BackPressure을 다음과 같이 설명하고 있다.</p>
 
@@ -234,7 +243,7 @@ into the {body} of the default.hbs template -->
 <p><br />
  </p>
 <h2 id="reactive-streams의-구성">Reactive Streams의 구성</h2>
-<hr />
+<p> </p>
 
 <p>Reactive Stream은 데이터를 만들어 통지하는 <strong>Publisher(생산자)</strong> 와 통지된 데이터를 받아 처리하는 <strong>Subscriber(소비자)</strong> 로 구성된다. Subscriber가 Publisher를 <strong>구독(subscribe)</strong> 하면 Publisher가 통지한 데이터를 Subscriber가 받을 수 있다.</p>
 
@@ -277,8 +286,7 @@ into the {body} of the default.hbs template -->
   </li>
 </ul>
 
-<p><br />
- 
+<p> 
 이를 토대로 다음과 같은 flow를 만들 수 있다.</p>
 <div style="text-align: left">
     <img src="/assets/img/post_images/rxjava2-1.png" width="100%" />
@@ -293,8 +301,7 @@ into the {body} of the default.hbs template -->
   <li>Subscription의 request()에는 조건에 따라 Subscriber의 onNext(), onComplete() 또는 onError()를 호출합니다. 그러면 Subscriber의 해당 메서드의 로직에 따라 request() 또는 cancle()로 제어하게 된다.</li>
 </ol>
 
-<p><br />
- </p>
+<p> </p>
 
 <hr />
 
@@ -441,8 +448,6 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                
-                                  
                                     
                                         
                                         
@@ -462,18 +467,6 @@ into the {body} of the default.hbs template -->
                                             <li><a href="/RxJava(1)-%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD">RxJava(1) - 개요</a></li>
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -525,7 +518,7 @@ into the {body} of the default.hbs template -->
                 <section class="post-card-excerpt">
                     
                         <p>Observable 이란
-
+ 
 
 </p>
                     

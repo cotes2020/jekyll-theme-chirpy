@@ -14,7 +14,7 @@ cover:  assets/img/post_images/rxjava_cover.jpeg
 
 
 ## Observable 이란
-***
+&nbsp;
 
 Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이해하는 것은 RxJava를 활용하는 데 매우 중요하다. 옵저버 패턴의 정의는 다음과 같다.
 
@@ -40,13 +40,11 @@ Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이�
 
 데이터를 발행할 때 null은 발행할 수 없다.
 
-\
 &nbsp;
 ## Emit & Subscribe
-***
+&nbsp;
 
 ### Observable의 데이터 발행 (Emit)
----
 
 Observable이 데이터를 발행 한 후 보내는 알림에는 세 가지 종류가 있다.
 
@@ -64,7 +62,6 @@ public interface Emitter<@NonNull T> {
 * `onError` : 오류가 발생했음을 알림, 이후에 onNext와 onComplete가 발생하지 않음
 
 ### Subscribe
----
 
 구독(Subscribe)이란 단순하게 수신한 데이터를 가지고 할 행동을 정의하는 것이다. Observer는 `subsribe()` 메소드에서 수신한 각각의 알림에 대해 실행할 내용을 지정한다.
 
@@ -80,10 +77,9 @@ Disposable class는 구독의 정상적인 해지를 돕는다.
 onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 이상 데이터를 발행하지 않도록 구독을 해지한다.
 또한 isDisposed()를 통해 구독이 해지되었는지 확인할 수 있다.
 
-\
 &nbsp;
 ## Observable 생성하기
-***
+&nbsp;
 
 이제 본격적으로 Observable을 사용해보자. RxJava에서는 **연산자(Operator)** 를 통해 기존 데이터를 참조, 변형하여 Observable을 생성할 수 있다. Observable을 생성하는 함수를 **팩토리 함수** 라고 하는데, 이 팩토리 함수는 다음 표처럼 구분할 수 있다.
 
@@ -154,7 +150,6 @@ onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 �
     3. 에러가 발생했을때는 오직 onError 이벤트로만 에러를 전달해야 한다.
     4. 배압(back pressure)을 직접 처리해야 한다.
 
-\
 &nbsp;
 > just()나 create()는 단일 데이터를 다룬다. 단일 데이터가 아닐때는 fromXXX() 계열 함수를 사용한다. **배열, 리스트 등의 자료구조나 Future, Callable, Publisher 등은 from으로 시작하는 연산자를 통해 간단히 Observable로 변환할 수 있다.** 원래 RxJava 1.x에서는 from()과 fromCallable() 함수만 사용했었다. 그런데 from() 함수를 배열, 반복자, 비동기 계산 등에 모두 사용하다 보니 모호함이 있었다. 따라서 RxJava2에서는 from() 함수를 세분화했고 그중 하나가 아래 소개하는 fromArray() 함수이다.
 
@@ -190,15 +185,13 @@ onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 �
     PIGBEAN Tech Blog
     ```
 
-\
 &nbsp;
 ## 다양한 Observable의 형태
-***
+&nbsp;
 
 Observable 스트림 이외에도 특별한 목적으로 사용되는 `Single`, `Maybe`, `Completable` 등의 특별한 스트림이 있다. 이들은 Observable로 변환될 수 있고, 반대로 Observable도 이들 스트림으로 변환될 수 있다.
 
 ### Single
----
 
 <div style="text-align: left">
     <img src="/assets/img/post_images/rxjava3_single.png" width="100%"/>
@@ -216,7 +209,6 @@ Success
 
 &nbsp;
 ### Completable
----
 
 Completable은 아이템을 발생하지 않고, 정상적으로 실행이 종료되었는 지에 대해 확인할 때 사용된다. http 이벤트를 처리할 때 응답 메시지를 받아보지 않고 그냥 http 이벤트가 잘 종료되었는 지만 확인하고 싶다면 Completable을 쓰면 된다. 아이템을 발행하지 않기 때문에 onNext()와 Single에서 쓰였던 onSuccess()는 쓰지 않고 `onComplete()`와 `onError()`만을 사용한다.
 
@@ -234,7 +226,6 @@ Completed
 
 &nbsp;
 ### Maybe
----
 
 <div style="text-align: left">
     <img src="/assets/img/post_images/rxjava3_maybe.png" width="100%"/>

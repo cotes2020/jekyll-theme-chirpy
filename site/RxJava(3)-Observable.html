@@ -43,7 +43,7 @@
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="RxJava(3) - Observable" />
-    <meta property="og:description" content="Observable 이란 Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이해하는 것은 RxJava를 활용하는 데 매우 중요하다. 옵저버 패턴의 정의는 다음과 같다. 옵저버 패턴(observer pattern) 은 객체의 상태 변화를 관찰하는 관찰자들, 즉 옵저버들의 목록을 객체에 등록하여 상태 변화가 있을 때마다 메서드 등을 통해 객체가 직접 목록의 각 옵저버에게 통지하도록 하는 디자인" />
+    <meta property="og:description" content="Observable 이란   Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이해하는 것은 RxJava를 활용하는 데 매우 중요하다. 옵저버 패턴의 정의는 다음과 같다. 옵저버 패턴(observer pattern) 은 객체의 상태 변화를 관찰하는 관찰자들, 즉 옵저버들의 목록을 객체에 등록하여 상태 변화가 있을 때마다 메서드 등을 통해 객체가 직접 목록의 각 옵저버에게 통지하도록 하는" />
     <meta property="og:url" content="http://localhost:4000/RxJava(3)-Observable" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/rxjava_cover.jpeg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -53,7 +53,7 @@
     <meta property="article:tag" content="Rxjava" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="RxJava(3) - Observable" />
-    <meta name="twitter:description" content="Observable 이란 Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이해하는 것은 RxJava를 활용하는 데 매우 중요하다. 옵저버 패턴의 정의는 다음과 같다. 옵저버 패턴(observer pattern) 은 객체의 상태 변화를 관찰하는 관찰자들, 즉 옵저버들의 목록을 객체에 등록하여 상태 변화가 있을 때마다 메서드 등을 통해 객체가 직접 목록의 각 옵저버에게 통지하도록 하는 디자인" />
+    <meta name="twitter:description" content="Observable 이란   Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이해하는 것은 RxJava를 활용하는 데 매우 중요하다. 옵저버 패턴의 정의는 다음과 같다. 옵저버 패턴(observer pattern) 은 객체의 상태 변화를 관찰하는 관찰자들, 즉 옵저버들의 목록을 객체에 등록하여 상태 변화가 있을 때마다 메서드 등을 통해 객체가 직접 목록의 각 옵저버에게 통지하도록 하는" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/rxjava_cover.jpeg" />
     <meta name="twitter:label1" content="Written by" />
@@ -64,7 +64,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -85,7 +95,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/RxJava(3)-Observable"
     },
-    "description": "Observable 이란 Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이해하는 것은 RxJava를 활용하는 데 매우 중요하다. 옵저버 패턴의 정의는 다음과 같다. 옵저버 패턴(observer pattern) 은 객체의 상태 변화를 관찰하는 관찰자들, 즉 옵저버들의 목록을 객체에 등록하여 상태 변화가 있을 때마다 메서드 등을 통해 객체가 직접 목록의 각 옵저버에게 통지하도록 하는 디자인"
+    "description": "Observable 이란   Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이해하는 것은 RxJava를 활용하는 데 매우 중요하다. 옵저버 패턴의 정의는 다음과 같다. 옵저버 패턴(observer pattern) 은 객체의 상태 변화를 관찰하는 관찰자들, 즉 옵저버들의 목록을 객체에 등록하여 상태 변화가 있을 때마다 메서드 등을 통해 객체가 직접 목록의 각 옵저버에게 통지하도록 하는"
 }
     </script>
 
@@ -99,6 +109,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="RxJava(3) - Observable" href="/feed.xml" />
+
 
 
 </head>
@@ -172,7 +183,7 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <h2 id="observable-이란">Observable 이란</h2>
-<hr />
+<p> </p>
 
 <p>Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이해하는 것은 RxJava를 활용하는 데 매우 중요하다. 옵저버 패턴의 정의는 다음과 같다.</p>
 
@@ -204,13 +215,11 @@ into the {body} of the default.hbs template -->
 
 <p>데이터를 발행할 때 null은 발행할 수 없다.</p>
 
-<p><br />
- </p>
+<p> </p>
 <h2 id="emit--subscribe">Emit &amp; Subscribe</h2>
-<hr />
+<p> </p>
 
 <h3 id="observable의-데이터-발행-emit">Observable의 데이터 발행 (Emit)</h3>
-<hr />
 
 <p>Observable이 데이터를 발행 한 후 보내는 알림에는 세 가지 종류가 있다.</p>
 
@@ -229,7 +238,6 @@ into the {body} of the default.hbs template -->
 </ul>
 
 <h3 id="subscribe">Subscribe</h3>
-<hr />
 
 <p>구독(Subscribe)이란 단순하게 수신한 데이터를 가지고 할 행동을 정의하는 것이다. Observer는 <code class="language-plaintext highlighter-rouge">subsribe()</code> 메소드에서 수신한 각각의 알림에 대해 실행할 내용을 지정한다.</p>
 
@@ -244,10 +252,9 @@ into the {body} of the default.hbs template -->
 onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 이상 데이터를 발행하지 않도록 구독을 해지한다.
 또한 isDisposed()를 통해 구독이 해지되었는지 확인할 수 있다.</p>
 
-<p><br />
- </p>
+<p> </p>
 <h2 id="observable-생성하기">Observable 생성하기</h2>
-<hr />
+<p> </p>
 
 <p>이제 본격적으로 Observable을 사용해보자. RxJava에서는 <strong>연산자(Operator)</strong> 를 통해 기존 데이터를 참조, 변형하여 Observable을 생성할 수 있다. Observable을 생성하는 함수를 <strong>팩토리 함수</strong> 라고 하는데, 이 팩토리 함수는 다음 표처럼 구분할 수 있다.</p>
 
@@ -334,8 +341,7 @@ onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 �
   </li>
 </ul>
 
-<p><br />
- </p>
+<p> </p>
 <blockquote>
   <p>just()나 create()는 단일 데이터를 다룬다. 단일 데이터가 아닐때는 fromXXX() 계열 함수를 사용한다. <strong>배열, 리스트 등의 자료구조나 Future, Callable, Publisher 등은 from으로 시작하는 연산자를 통해 간단히 Observable로 변환할 수 있다.</strong> 원래 RxJava 1.x에서는 from()과 fromCallable() 함수만 사용했었다. 그런데 from() 함수를 배열, 반복자, 비동기 계산 등에 모두 사용하다 보니 모호함이 있었다. 따라서 RxJava2에서는 from() 함수를 세분화했고 그중 하나가 아래 소개하는 fromArray() 함수이다.</p>
 </blockquote>
@@ -373,15 +379,13 @@ onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 �
   </li>
 </ul>
 
-<p><br />
- </p>
+<p> </p>
 <h2 id="다양한-observable의-형태">다양한 Observable의 형태</h2>
-<hr />
+<p> </p>
 
 <p>Observable 스트림 이외에도 특별한 목적으로 사용되는 <code class="language-plaintext highlighter-rouge">Single</code>, <code class="language-plaintext highlighter-rouge">Maybe</code>, <code class="language-plaintext highlighter-rouge">Completable</code> 등의 특별한 스트림이 있다. 이들은 Observable로 변환될 수 있고, 반대로 Observable도 이들 스트림으로 변환될 수 있다.</p>
 
 <h3 id="single">Single</h3>
-<hr />
 
 <div style="text-align: left">
     <img src="/assets/img/post_images/rxjava3_single.png" width="100%" />
@@ -397,7 +401,6 @@ onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 �
 
 <p> </p>
 <h3 id="completable">Completable</h3>
-<hr />
 
 <p>Completable은 아이템을 발생하지 않고, 정상적으로 실행이 종료되었는 지에 대해 확인할 때 사용된다. http 이벤트를 처리할 때 응답 메시지를 받아보지 않고 그냥 http 이벤트가 잘 종료되었는 지만 확인하고 싶다면 Completable을 쓰면 된다. 아이템을 발행하지 않기 때문에 onNext()와 Single에서 쓰였던 onSuccess()는 쓰지 않고 <code class="language-plaintext highlighter-rouge">onComplete()</code>와 <code class="language-plaintext highlighter-rouge">onError()</code>만을 사용한다.</p>
 
@@ -413,7 +416,6 @@ Completed
 
 <p> </p>
 <h3 id="maybe">Maybe</h3>
-<hr />
 
 <div style="text-align: left">
     <img src="/assets/img/post_images/rxjava3_maybe.png" width="100%" />
@@ -567,8 +569,6 @@ Completed
                                   
                                 
                                   
-                                
-                                  
                                     
                                   
                                 
@@ -588,18 +588,6 @@ Completed
                                             <li><a href="/RxJava(1)-%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD">RxJava(1) - 개요</a></li>
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -702,10 +690,6 @@ Completed
                     
                         <p>앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.
 
- 
-Reactive Streams란
-
-
 </p>
                     
                 </section>
@@ -726,7 +710,7 @@ Reactive Streams란
                 <span class="reading-time">
                     
                     
-                      4 min read
+                      5 min read
                     
                 </span>
             </footer>

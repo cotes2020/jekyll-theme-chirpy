@@ -13,11 +13,11 @@ cover:  assets/img/post_images/ai_cover2.jpg
 ---
 
 ## PCA란?
----
+&nbsp;
+
 PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다.
 
 ### 주성분이란?
----
 주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다.
 
 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), ..., (xn,yn)들이 타원형으로 분포되어 있을 때
@@ -34,7 +34,6 @@ PCA는 데이터 하나 하나에 대한 성분을 분석하는 것이 아니라
 따라서 1차 주성분은 e1 벡터, 2차 주성분은 e2 벡터라고 할 수 있다.
 
 ### PCA 계산
----
 PCA는 2차원 데이터 집합에 대해 PCA를 수행하면 2개의 서로 수직인 주성분 벡터를 반환하고, 3차원 점들에 대해 PCA를 수행하면 3개의 서로 수직인 주성분 벡터들을 반환한다.
 
 이 PCA는 SVD decomposition Scikit-learn의 내장 라이브러리를 이용하여 구할 수도 있지만 이번에는 머신러닝 학습을 통하여 구해보았다. 이렇게 학습을 통해 PCA를 구하기 위해서는 Hebbian learning을 알아야 한다.
@@ -42,7 +41,7 @@ PCA는 2차원 데이터 집합에 대해 PCA를 수행하면 2개의 서로 수
 &nbsp;
 
 ## Hebbian learning
----
+&nbsp;
 
 Hebbian learning은 1949년 캐나다 심리학자인 Donal Hebb가 제안한 Hebb의 학습 가설에 근거한 학습 규칙이다. 신경학적인 측면에서 사람이 어떻게 학습하는 가에 대한 비교적 간단한 학습 이론에 대해 살펴보자. 중심적인 아이디어는 다음과 같다.
 > 두 개의 뉴런 A, B 가 서로 반복적이고 지속적으로 점화(firing)하여 어느 한쪽 또는 양쪽 모두에 어떤 변화를 야기한다면 상호간의 점화의 효율 (weight) 은 점점 커지게 된다.
@@ -54,8 +53,10 @@ $w_{ij}(t+1) = w_{ij}(t) + \eta y_{j}(t)x_{i}(t)$
 
 그러나 Hebbian learning 식을 그대로 사용하면 nomalization 문제가 발생한다. (즉, w값이 발산한다.) 따라서 w 벡터의 크기를 1로 고정하거나, oja rule을 사용하여 nomalization을 방지하는 방향으로 풀이를 진행하였다. 각각의 코드는 아래와 같다.
 
+&nbsp;
 ## PCA learning 코드
----
+&nbsp;
+
 ```python
 def pca_hebbian_learning(type):
   if (type == 1):
@@ -115,8 +116,10 @@ def pca_oja(type):
   plot_first_pca(type, "Oja's rule", W_oja)
 ```
 
+&nbsp;
 ## PCA learning 결과
----
+\
+&nbsp;
 위의 코드로 학습을 시키면 다음의 결과를 확인할 수 있다.
 
 <div style="text-align: left">

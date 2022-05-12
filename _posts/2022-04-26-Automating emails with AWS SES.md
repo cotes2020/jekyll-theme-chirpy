@@ -17,8 +17,7 @@ It’s pretty common for services to automatically send out welcome emails on si
 &nbsp;
 
 ## Set up SES and verify an email address
-
----
+&nbsp;
 
 SES only allows emails to be sent from verified sources to prevent impersonating random email accounts. So before working with email templates, a verified identity must be registered first.
 
@@ -28,8 +27,7 @@ This should send a verification email to the registered email account, and just 
 
 &nbsp;
 ## Creating email template on SES
-
----
+&nbsp;
 
 First, I wrote the welcome email template to be sent to new users with HTML.
 
@@ -70,8 +68,7 @@ I received the success message and could see the template uploaded on the AWS co
 
 &nbsp;
 ## Sending templated email on AWS CLI
-
----
+&nbsp;
 
 Before implementing a Lambda function to send emails, it’s always good to check if the template works as intended with the CLI.
 
@@ -102,8 +99,7 @@ After scouring online for possible problems, apparently there might be some prob
 
 &nbsp;
 ## Updating email templates
-
----
+&nbsp;
 
 After changing everything in the HTML to inline styling, update the .json file used for creating template with the new HTML string.
 
@@ -127,8 +123,7 @@ Retrying the email sending process on CLI and checking that it sends the desired
 
 &nbsp;
 ## Sending templated email with AWS SDK
-
----
+&nbsp;
 
 Set up the usual serverless framework and create the function to send emails through SES
 

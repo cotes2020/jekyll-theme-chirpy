@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/extension/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T12:25:27+09:00</updated>
+  <updated>2022-05-12T16:02:32+09:00</updated>
   <id>http://localhost:4000/tag/extension/feed.xml</id>
 
   
@@ -125,13 +125,16 @@ package.json
 &lt;p&gt;Catty 서비스의 크롬 익스텐션에도 현재 띄워져 있는 화면의 웹사이트를 수집할 때, 해당 사이트의 Readable html(읽기에 편한 요소만 분리한 html)를 함께 저장하여 웹앱에서 읽기모드로 확인할 수 있도록 기능 구현을 해두었다. 그리고 이번 글에서 이 읽기모드 구현에 대해 정리해두려고 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;읽기모드를-어떻게-구현하면-좋을까&quot;&gt;읽기모드를 어떻게 구현하면 좋을까?&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;읽기모드를 구현하려면 웹페이지에서 본문만 추출해 낼 필요가 있지만, 모든 블로그는 독자적인 포맷을 가지고 있고, 이 각각의 포맷들을 하나하나 분석해가며 본문을 찾아내는 건 많은 수고를 필요로 한다. 다행히 이런 수고스러움을 덜어주는 고마운 라이브러리가 있다. 바로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mozilla/readability&lt;/code&gt; 라이브러리(&lt;a href=&quot;https://github.com/mozilla/readability&quot;&gt;https://github.com/mozilla/readability&lt;/a&gt;)이다.&lt;/p&gt;
 
 &lt;p&gt;이 라이브러리는 모질라에서 개발중인 노드js 라이브러리로 파이어폭스의 일기모드 기능을 독립적으로 제공한다.&lt;/p&gt;
 
-&lt;p&gt;이 라이브러리 사용법은 간단하다. 우선 크롬익스텐션에서 북마크를 저장할 때 readable HTML을 구할 것이므로 북마크 저장 코드가 구현되어 있는 content_script.js에 아래 코드를 구현하였다. readability 라이브러리를 import하고 아래 코드를 실행하면 읽기모드의 html 코드를 구할 수 있다.&lt;/p&gt;
+&lt;h2 id=&quot;간단하게-readability-라이브러리-사용하기&quot;&gt;간단하게 readability 라이브러리 사용하기&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+이 라이브러리 사용법은 간단하다. 우선 크롬익스텐션에서 북마크를 저장할 때 readable HTML을 구할 것이므로 북마크 저장 코드가 구현되어 있는 content_script.js에 아래 코드를 구현하였다. readability 라이브러리를 import하고 아래 코드를 실행하면 읽기모드의 html 코드를 구할 수 있다.&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getReadableHtml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;readability&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Readability&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cloneNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;

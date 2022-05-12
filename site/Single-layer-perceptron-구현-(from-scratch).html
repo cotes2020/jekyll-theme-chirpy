@@ -43,7 +43,7 @@
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Implement Single layer perceptron (from scratch)" />
-    <meta property="og:description" content="이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다. 전체 코드는 아래와 같다. class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def train(self, X, y): self.w_ = np.zeros(X.shape[1]) self.b_ = 0.5 self.errors_ = [] for _ in range(self.epochs): errors = 0" />
+    <meta property="og:description" content="이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.   전체 코드는 아래와 같다. Single layer perceptron은 구현이 매우 간단한데, 실제 값과 예측값의 오차를 적당한 비율로 wight parameter에 더해가는 식으로 학습해주면 된다. class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def" />
     <meta property="og:url" content="http://localhost:4000/Single-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -52,7 +52,7 @@
     <meta property="article:modified_time" content="2022-03-30T10:32:00+09:00" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Implement Single layer perceptron (from scratch)" />
-    <meta name="twitter:description" content="이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다. 전체 코드는 아래와 같다. class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def train(self, X, y): self.w_ = np.zeros(X.shape[1]) self.b_ = 0.5 self.errors_ = [] for _ in range(self.epochs): errors = 0" />
+    <meta name="twitter:description" content="이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.   전체 코드는 아래와 같다. Single layer perceptron은 구현이 매우 간단한데, 실제 값과 예측값의 오차를 적당한 비율로 wight parameter에 더해가는 식으로 학습해주면 된다. class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -61,7 +61,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -82,7 +92,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/Single-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)"
     },
-    "description": "이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다. 전체 코드는 아래와 같다. class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def train(self, X, y): self.w_ = np.zeros(X.shape[1]) self.b_ = 0.5 self.errors_ = [] for _ in range(self.epochs): errors = 0"
+    "description": "이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.   전체 코드는 아래와 같다. Single layer perceptron은 구현이 매우 간단한데, 실제 값과 예측값의 오차를 적당한 비율로 wight parameter에 더해가는 식으로 학습해주면 된다. class SingleLayerPerceptron(object): def __init__(self, eta=0.01, epochs=50): self.eta = eta self.epochs = epochs def"
 }
     </script>
 
@@ -96,6 +106,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="Implement Single layer perceptron (from scratch)" href="/feed.xml" />
+
 
 
 </head>
@@ -164,10 +175,12 @@ into the {body} of the default.hbs template -->
                     <p>이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.</p>
 
 <div style="text-align: left">
-   <img src="/assets/img/post_images/single.png" width="100%" />
+   <img src="/assets/img/post_images/single.png" width="70%" />
 </div>
 
-<p>전체 코드는 아래와 같다.</p>
+<p><br />
+ 
+전체 코드는 아래와 같다. Single layer perceptron은 구현이 매우 간단한데, 실제 값과 예측값의 오차를 적당한 비율로 wight parameter에 더해가는 식으로 학습해주면 된다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SingleLayerPerceptron</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
@@ -313,7 +326,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      2 min read
+                      3 min read
                     
                 </span>
             </footer>
@@ -342,8 +355,7 @@ into the {body} of the default.hbs template -->
                 <section class="post-card-excerpt">
                     
                         <p>PCA란?
-
-PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다.
+ 
 
 </p>
                     

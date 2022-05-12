@@ -64,7 +64,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -99,6 +109,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="랜딩페이지 제작을 위한 갖가지 시행착오들...(아임웹->우피->리액트 라이브러리)" href="/feed.xml" />
+
 
 
 </head>
@@ -177,7 +188,7 @@ into the {body} of the default.hbs template -->
 
 <p> </p>
 <h2 id="웹사이트-빌더아임웹을-이용해볼까">웹사이트 빌더(아임웹)을 이용해볼까?</h2>
-<hr />
+<p> </p>
 
 <p>처음에는 아임웹 같은 웹사이트 빌더를 사용하면 가장 쉽고 빠르게 만들 수 있을 거라고 생각했다. 그렇지만 이런 빌더에서 제공하는 기능만 사용할 수 있어 사이트 디자인을 자유롭게 할 수 없었다. 또한 모바일 최적화 기능을 제공하기는 하지만 자동으로 모바일-웹 변환을 해주는 것이 아니라 별도의 작업으로 또 모바일 버전을 만들어야 했다. 이런 툴을 사용해서 정말 괜찮은 랜딩페이지를 만드려면 포토샵이나 일러로 따로 디자인 작업을 많이 한 다음에 빌더에서는 합치기만 해야 그나마 잘 나오는 거 같다. 무엇보다 문제가 되었던게 가격이었는데 다국어 페이지(한국어, 영어 동시 지원)를 만드려면 한달에 5만원(..)의 비용을 지불해야 했다. 그렇다고 한국어/영어 간의 도메인 전환이 매끄러운 것도 아니어서 많이 불편했다.</p>
 
@@ -192,7 +203,7 @@ into the {body} of the default.hbs template -->
 
 <p> </p>
 <h2 id="그렇다면-노션으로-만드는-건-어떨까">그렇다면 노션으로 만드는 건 어떨까?</h2>
-<hr />
+<p> </p>
 
 <p>그래서 그 다음으로 생각한 것이 노션으로 웹사이트를 만드는 것이었다. 요즘 스타트업들이 노션으로 resume도 많이 만들고 랜딩페이지 및 채용사이트도 많이 만들곤 한다. 그러다보니 노션으로 웹사이트를 만드는 것을 도와주는 <code class="language-plaintext highlighter-rouge">우피</code> 같은 서비스도 등장하였다. 노션은 이미지나 표 등 다양한 형식을 담을 수 있으면서 페이지 이동이 자유롭고 무엇보다 빠르게 제작할 수 있어 괜찮은 방법이라고 생각했다. <code class="language-plaintext highlighter-rouge">우피</code> 서비스 사용에는 월 5000의 비용이 청구된다.</p>
 
@@ -207,12 +218,11 @@ into the {body} of the default.hbs template -->
 
 <p> </p>
 <h2 id="이럴바엔-그냥-리액트로-개발을-하자">이럴바엔 그냥 리액트로 개발을 하자!</h2>
-<hr />
+<p> </p>
 
 <p>그래서 결국 돌고돌아 그냥 리액트로 직접 개발을 하기로 했다. 개발을 하기에 앞서 여러 landing page template를 찾아보았다. 그중에서 MIT 라이센스이면서 괜찮아 보이는 것 몇가지를 참고해서 랜딩페이지를 제작하였다. 사실 대부분은 그냥 간단한 작업들이었고 조금 특징적인 거라면 동영상처럼 스크롤이 내려갈 때 마다 그 위치의 component가 올라오는 것 정도 있을 거 같다.</p>
 
 <h3 id="lazyshow-구현">LazyShow 구현</h3>
-<hr />
 
 <div style="text-align: left">
   <video width="100%" controls="" Autoplay="autoplay" src="/assets/img/post_images/landingpage5.mov"></video>
@@ -415,8 +425,6 @@ export default LazyShow;
                                   
                                 
                                   
-                                
-                                  
                                     
                                         
                                         
@@ -471,18 +479,6 @@ export default LazyShow;
                                         
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   

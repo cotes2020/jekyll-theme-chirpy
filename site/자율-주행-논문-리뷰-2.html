@@ -43,7 +43,7 @@
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training" />
-    <meta property="og:description" content="This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead. Background This paper is based on the previous study with very similar settings but difference model. The" />
+    <meta property="og:description" content="This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead. Background   This paper is based on the previous study with very similar settings but difference model." />
     <meta property="og:url" content="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/driving_cover2.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -53,7 +53,7 @@
     <meta property="article:tag" content="Autonomous Driving" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training" />
-    <meta name="twitter:description" content="This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead. Background This paper is based on the previous study with very similar settings but difference model. The" />
+    <meta name="twitter:description" content="This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead. Background   This paper is based on the previous study with very similar settings but difference model." />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/driving_cover2.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -64,7 +64,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -85,7 +95,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2"
     },
-    "description": "This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead. Background This paper is based on the previous study with very similar settings but difference model. The"
+    "description": "This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead. Background   This paper is based on the previous study with very similar settings but difference model."
 }
     </script>
 
@@ -99,6 +109,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training" href="/feed.xml" />
+
 
 
 </head>
@@ -182,7 +193,7 @@ into the {body} of the default.hbs template -->
                     <p>This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.</p>
 
 <h2 id="background">Background</h2>
-<hr />
+<p> </p>
 
 <ul>
   <li>This paper is based on the previous study with very similar settings but difference
@@ -198,7 +209,7 @@ during training</li>
 </ul>
 
 <h2 id="proposed-method">Proposed method</h2>
-<hr />
+<p> </p>
 
 <ul>
   <li>Single-Q SAC Algorithm : use SAC with some slight differences due to the method of combining imitation learning and reinforcement learning
@@ -210,7 +221,7 @@ during training</li>
 </ul>
 
 <h2 id="results">Results</h2>
-<hr />
+<p> </p>
 <ul>
   <li>Although using pure SAC can result in a good performance, it still has a lower
 average accumulated reward after 100 episodes than their method.
@@ -328,20 +339,6 @@ average accumulated reward after 100 episodes than their method.
                                             <li><a href="/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings</a></li>
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   

@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/rxjava/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T12:25:27+09:00</updated>
+  <updated>2022-05-12T16:02:32+09:00</updated>
   <id>http://localhost:4000/tag/rxjava/feed.xml</id>
 
   
@@ -40,7 +40,7 @@
       <updated>2022-01-13T17:13:00+09:00</updated>
       <id>http://localhost:4000/RxJava(3)%20-%20Observable</id>
       <content type="html" xml:base="http://localhost:4000/RxJava(3)-Observable">&lt;h2 id=&quot;observable-이란&quot;&gt;Observable 이란&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이해하는 것은 RxJava를 활용하는 데 매우 중요하다. 옵저버 패턴의 정의는 다음과 같다.&lt;/p&gt;
 
@@ -72,13 +72,11 @@
 
 &lt;p&gt;데이터를 발행할 때 null은 발행할 수 없다.&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;emit--subscribe&quot;&gt;Emit &amp;amp; Subscribe&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;h3 id=&quot;observable의-데이터-발행-emit&quot;&gt;Observable의 데이터 발행 (Emit)&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;p&gt;Observable이 데이터를 발행 한 후 보내는 알림에는 세 가지 종류가 있다.&lt;/p&gt;
 
@@ -97,7 +95,6 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;subscribe&quot;&gt;Subscribe&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;p&gt;구독(Subscribe)이란 단순하게 수신한 데이터를 가지고 할 행동을 정의하는 것이다. Observer는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;subsribe()&lt;/code&gt; 메소드에서 수신한 각각의 알림에 대해 실행할 내용을 지정한다.&lt;/p&gt;
 
@@ -112,10 +109,9 @@
 onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 이상 데이터를 발행하지 않도록 구독을 해지한다.
 또한 isDisposed()를 통해 구독이 해지되었는지 확인할 수 있다.&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;observable-생성하기&quot;&gt;Observable 생성하기&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;이제 본격적으로 Observable을 사용해보자. RxJava에서는 &lt;strong&gt;연산자(Operator)&lt;/strong&gt; 를 통해 기존 데이터를 참조, 변형하여 Observable을 생성할 수 있다. Observable을 생성하는 함수를 &lt;strong&gt;팩토리 함수&lt;/strong&gt; 라고 하는데, 이 팩토리 함수는 다음 표처럼 구분할 수 있다.&lt;/p&gt;
 
@@ -202,8 +198,7 @@ onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 �
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;just()나 create()는 단일 데이터를 다룬다. 단일 데이터가 아닐때는 fromXXX() 계열 함수를 사용한다. &lt;strong&gt;배열, 리스트 등의 자료구조나 Future, Callable, Publisher 등은 from으로 시작하는 연산자를 통해 간단히 Observable로 변환할 수 있다.&lt;/strong&gt; 원래 RxJava 1.x에서는 from()과 fromCallable() 함수만 사용했었다. 그런데 from() 함수를 배열, 반복자, 비동기 계산 등에 모두 사용하다 보니 모호함이 있었다. 따라서 RxJava2에서는 from() 함수를 세분화했고 그중 하나가 아래 소개하는 fromArray() 함수이다.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -241,15 +236,13 @@ onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 �
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;다양한-observable의-형태&quot;&gt;다양한 Observable의 형태&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;Observable 스트림 이외에도 특별한 목적으로 사용되는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Single&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Maybe&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Completable&lt;/code&gt; 등의 특별한 스트림이 있다. 이들은 Observable로 변환될 수 있고, 반대로 Observable도 이들 스트림으로 변환될 수 있다.&lt;/p&gt;
 
 &lt;h3 id=&quot;single&quot;&gt;Single&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
     &lt;img src=&quot;/assets/img/post_images/rxjava3_single.png&quot; width=&quot;100%&quot; /&gt;
@@ -265,7 +258,6 @@ onComplete 이벤트가 발생하면 dispose()를 호출해 Observable이 더 �
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;completable&quot;&gt;Completable&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;p&gt;Completable은 아이템을 발생하지 않고, 정상적으로 실행이 종료되었는 지에 대해 확인할 때 사용된다. http 이벤트를 처리할 때 응답 메시지를 받아보지 않고 그냥 http 이벤트가 잘 종료되었는 지만 확인하고 싶다면 Completable을 쓰면 된다. 아이템을 발행하지 않기 때문에 onNext()와 Single에서 쓰였던 onSuccess()는 쓰지 않고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onComplete()&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onError()&lt;/code&gt;만을 사용한다.&lt;/p&gt;
 
@@ -281,7 +273,6 @@ Completed
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;maybe&quot;&gt;Maybe&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
     &lt;img src=&quot;/assets/img/post_images/rxjava3_maybe.png&quot; width=&quot;100%&quot; /&gt;
@@ -318,7 +309,7 @@ Completed
       
 
       
-        <summary type="html">Observable 이란</summary>
+        <summary type="html">Observable 이란  </summary>
       
 
       
@@ -331,11 +322,11 @@ Completed
       <published>2022-01-10T23:42:00+09:00</published>
       <updated>2022-01-10T23:42:00+09:00</updated>
       <id>http://localhost:4000/RxJava(2)%20-%20Reactive%20Streams</id>
-      <content type="html" xml:base="http://localhost:4000/RxJava(2)-Reactive-Streams">&lt;p&gt;앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.
-&lt;br /&gt;
- &lt;/p&gt;
+      <content type="html" xml:base="http://localhost:4000/RxJava(2)-Reactive-Streams">&lt;p&gt;앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;reactive-streams란&quot;&gt;Reactive Streams란&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;라이브러리나 프레임워크에 상관없이 데이터 스트림을 비동기로 다룰 수 있는 공통 메커니즘으로, 이 메커니즘을 편리하게 사용할 수 있는 인터페이스를 제공한다. 즉, Reactive Streams는 인터페이스만 제공하고 구현은 각 라이브러리와 프레임워크에서 한다.&lt;/p&gt;
 
@@ -353,7 +344,6 @@ Completed
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;reactive-stream의-목적&quot;&gt;Reactive Stream의 목적&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;p&gt;계속적으로 들어오는 스트림 데이터를 효율적으로 처리하기 위해서는 비동기 시스템이 효과적이다. &lt;strong&gt;비동기 처리를 하면서 가장 중요한 문제는 데이터를 받는 곳에서 데이터를 예측 가능한 범위 내에서 신중하게 제어할 수 있도록 해야한다는 것&lt;/strong&gt; 이다. Publisher는 Subscriber의 상태에 상관없이 데이터를 전달하는데만 집중하기 때문에 보내는 속도와 처리 속도가 다를 수 있다.&lt;/p&gt;
 
@@ -379,7 +369,6 @@ Completed
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;backpressure-배압&quot;&gt;BackPressure (배압)&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;p&gt;앞서 Reactive Stream의 목적이 backpressure을 이용하고 비동기 스트림의 표준을 제공하는 것이라고 언급했다. BackPressure을 더 자세히 살펴보자. 배압은 한마디로 데이터 통지량을 제어하는 기능을 말한다. &lt;a href=&quot;https://www.reactivemanifesto.org/ko/glossary&quot;&gt;리액티브 선언문 용어집&lt;/a&gt; 에서는 BackPressure을 다음과 같이 설명하고 있다.&lt;/p&gt;
 
@@ -394,7 +383,7 @@ Completed
 &lt;p&gt;&lt;br /&gt;
  &lt;/p&gt;
 &lt;h2 id=&quot;reactive-streams의-구성&quot;&gt;Reactive Streams의 구성&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;Reactive Stream은 데이터를 만들어 통지하는 &lt;strong&gt;Publisher(생산자)&lt;/strong&gt; 와 통지된 데이터를 받아 처리하는 &lt;strong&gt;Subscriber(소비자)&lt;/strong&gt; 로 구성된다. Subscriber가 Publisher를 &lt;strong&gt;구독(subscribe)&lt;/strong&gt; 하면 Publisher가 통지한 데이터를 Subscriber가 받을 수 있다.&lt;/p&gt;
 
@@ -437,8 +426,7 @@ Completed
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;
- 
+&lt;p&gt; 
 이를 토대로 다음과 같은 flow를 만들 수 있다.&lt;/p&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
     &lt;img src=&quot;/assets/img/post_images/rxjava2-1.png&quot; width=&quot;100%&quot; /&gt;
@@ -453,8 +441,7 @@ Completed
   &lt;li&gt;Subscription의 request()에는 조건에 따라 Subscriber의 onNext(), onComplete() 또는 onError()를 호출합니다. 그러면 Subscriber의 해당 메서드의 로직에 따라 request() 또는 cancle()로 제어하게 된다.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -484,7 +471,7 @@ Completed
       
 
       
-        <summary type="html">앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.   Reactive Streams란</summary>
+        <summary type="html">앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.</summary>
       
 
       
@@ -503,11 +490,11 @@ Completed
 
 &lt;p&gt;만약 구글드라이브 내에 한 번이라도 스크린샷, 사진 용 폴더가 생성이 되었다면 폴더 아이디를 통해 추가 폴더 생성 과정없이 바로 자료를 저장하지만, 미리 생성되어 있던 폴더가 없거나 저장과정에서 어떤 오류가 발생하면 루트 폴더 생성 → 스크린샷/사진 폴더 생성 → 자료 저장의 과정을 밟아야 했고 이 과정에서 콜백이 증가하면서 콜백 복잡도가 증가(callback hell)하게 되었다.&lt;/p&gt;
 
-&lt;p&gt;그래서 우선적으로 RxJava를 이용하여 이런 부분을 리팩토링 하고 점차 다른 부분도 RxJava를 적용해 나가보았다.
-&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt;그래서 우선적으로 RxJava를 이용하여 이런 부분을 리팩토링 하고 점차 다른 부분도 RxJava를 적용해 나가보았다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;rxjava란&quot;&gt;RxJava란&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;RxJava는 자바(Java)에서 리액티브 프로그래밍을 구현하는 데 사용하는 라이브러리이다. 이벤트 처리와 같은 비동기 처리에 최적화되었으며, 2.0 버전부터 Reactive Streams 사양을 구현한다.&lt;/p&gt;
 
@@ -535,13 +522,11 @@ Completed
 
 &lt;p&gt;RxJava는 2016년 10월에 완전히 새로 작성한 RxJava 2.0을 발표했다. RxJava 2.0은 RxJava 1.x를 Reactive-Streams 스펙 기반으로 새롭게 개선한 것이므로 공통점도 많고 차이점도 많다.&lt;/p&gt;
 
-&lt;p&gt;Reactive-Stream 스펙은 자바8에 도입된 Stream API와 Observable 기반의 리액티브 프로그래밍을 포괄하는 표준 스펙으로 자바 9에 도입되었다.
-&lt;br /&gt;
- 
-&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt;Reactive-Stream 스펙은 자바8에 도입된 Stream API와 Observable 기반의 리액티브 프로그래밍을 포괄하는 표준 스펙으로 자바 9에 도입되었다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;리액티브-프로그래밍이란&quot;&gt;리액티브 프로그래밍이란&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;앞서 RxJava는 자바에서 리액티브 프로그래밍을 구현하는 데 사용하는 라이브러리라고 하였다. 그런데 리액티브 프로그래밍이 정확히 뭘까?
 정의상으로 리액티브 프로그래밍은 &lt;strong&gt;변화의 전파&lt;/strong&gt;와 &lt;strong&gt;데이터 흐름&lt;/strong&gt;과 관련된 &lt;strong&gt;선언적 프로그래밍&lt;/strong&gt; 패러다임이다.&lt;/p&gt;
@@ -555,11 +540,11 @@ Completed
 
 &lt;p&gt;예를 들어, GPS 위치 정보가 변경될 때의 데이터 전송 흐름을 상상해보자. 이동해서 위치 정보가 변경될 때마다 데이터를 전송하고 이동을 멈추면 데이터 전송도 중지하는 것처럼 생성되는 데이터를 한 번에 보내지 않고 각각의 데이터가 생성될 때마다 순서대로 보낸다. 이런 데이터 흐름을 데이터 스트림(data stream)이라고 한다. 이 것은 이미 생성된 데이터 집합인 리스트(list) 같은 컬렉션(collection)과는 다르게 앞으로 발생할 가능성이 있는 데이터까지도 포함하는 데이터 집합체이다.&lt;/p&gt;
 
-&lt;p&gt;좀 더 쉽게 이해하기 위해 명령형 프로그래밍과 비교해보자.
-&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt;좀 더 쉽게 이해하기 위해 명령형 프로그래밍과 비교해보자.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;명령형-프로그래밍-vs-리액티브-프로그래밍&quot;&gt;명령형 프로그래밍 vs 리액티브 프로그래밍&lt;/h3&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;명령형 프로그래밍 방식은 변경이 발생했는 지 질문해서 응답에 따라 데이터를 가져오는 pull 방식이지만, 리액티브 프로그래밍은 데이터 소스가 변경된 데이터를 밀어주는(push) 방식이다.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -584,18 +569,18 @@ Completed
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;리액티브-프로그래밍-장점&quot;&gt;리액티브 프로그래밍 장점&lt;/h3&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;리액티브 프로그래밍을 이용하면 비동기처리를 쉽게 구현할 수 있다&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;리액티브 프로그래밍에서 데이터를 생산하는 측은 데이터를 전달하는 것까지만 책임진다. 그러므로 데이터를 생산하는 측은 데이터를 소비하는 측이 전달받은 데이터로 무엇을 하는 지는 몰라도 된다. 또한, 데이터를 생산하는 측은 데이터를 소비하는 측에서 무엇을 하든지 관계가 없으므로 소비하는 측의 처리를 기다릴 필요가 없다. 그러므로 데이터를 통지한 후 데이터를 소비하는 측에서 데이터를 처리하는 도중이라도 데이터를 생산하는 측은 바로 다음 데이터를 처리할 수 있다. 이처럼 비동기 처리를 쉽게 구현 가능하다.
-&lt;br /&gt;
- 
-&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt;리액티브 프로그래밍에서 데이터를 생산하는 측은 데이터를 전달하는 것까지만 책임진다. 그러므로 데이터를 생산하는 측은 데이터를 소비하는 측이 전달받은 데이터로 무엇을 하는 지는 몰라도 된다. 또한, 데이터를 생산하는 측은 데이터를 소비하는 측에서 무엇을 하든지 관계가 없으므로 소비하는 측의 처리를 기다릴 필요가 없다. 그러므로 데이터를 통지한 후 데이터를 소비하는 측에서 데이터를 처리하는 도중이라도 데이터를 생산하는 측은 바로 다음 데이터를 처리할 수 있다. 이처럼 비동기 처리를 쉽게 구현 가능하다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;리액티브-프로그래밍을-위해-알아야-될-것들&quot;&gt;리액티브 프로그래밍을 위해 알아야 될 것들&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;리액티브 프로그래밍을 더 잘 이해하기 위해 알아두면 좋은 내용들을 정리해보았다.&lt;/p&gt;
 
@@ -611,10 +596,9 @@ Completed
   &lt;li&gt;리액티브 기본 동작 흐름 : 데이터 발행 -&amp;gt; 데이터 가공 -&amp;gt; 데이터 구독 -&amp;gt; 결과 처리&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;rxjava의-특징&quot;&gt;RxJava의 특징&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;다시 RxJava로 돌아와 RxJava의 특징을 살펴보면 다음과 같다.&lt;/p&gt;
 
@@ -628,13 +612,11 @@ Completed
   &lt;li&gt;함수형 프로그래밍의 영향을 받아 함수형 인터페이스를 인자로 전달받는 메서드를 사용해 대부분의 처리를 구현&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;rxjava를-어떻게-공부하면-좋을까&quot;&gt;RxJava를 어떻게 공부하면 좋을까&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;h3 id=&quot;rxjava-공부가-어려운-이유&quot;&gt;RxJava 공부가 어려운 이유&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;자바는 thread 기반의 프로그래밍인데 반해 RxJava는 비동기 프로그래밍을 위한 라이브러리라서 개념과 접근 방식이 다르다.
@@ -646,11 +628,10 @@ Completed
   &lt;li&gt;따라서 함수형 연산자를 어떻게 활용해야할 지 몰라 RxJava를 이용한 코딩에 어려움을 느낄 수 있다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;따라서 다음의 순서로 RxJava를 학습하는 것을 추천한다.
-&lt;br /&gt;
- &lt;/p&gt;
+&lt;p&gt;따라서 다음의 순서로 RxJava를 학습하는 것을 추천한다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;rxjava-추천-학습-순서&quot;&gt;RxJava 추천 학습 순서&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Observable 클래스를 명확하게 이해&lt;/li&gt;

@@ -43,7 +43,7 @@
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Competitive learning 구현 (from scratch)" />
-    <meta property="og:description" content="Competitive learning이란? Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고, 그" />
+    <meta property="og:description" content="Competitive learning이란?   Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고," />
     <meta property="og:url" content="http://localhost:4000/Competitive-learning-%EA%B5%AC%ED%98%84-(from-scratch)" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -52,7 +52,7 @@
     <meta property="article:modified_time" content="2022-03-24T10:32:00+09:00" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Competitive learning 구현 (from scratch)" />
-    <meta name="twitter:description" content="Competitive learning이란? Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고, 그" />
+    <meta name="twitter:description" content="Competitive learning이란?   Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고," />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -61,7 +61,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -82,7 +92,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/Competitive-learning-%EA%B5%AC%ED%98%84-(from-scratch)"
     },
-    "description": "Competitive learning이란? Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고, 그"
+    "description": "Competitive learning이란?   Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고,"
 }
     </script>
 
@@ -96,6 +106,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="Competitive learning 구현 (from scratch)" href="/feed.xml" />
+
 
 
 </head>
@@ -162,15 +173,17 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <h2 id="competitive-learning이란">Competitive learning이란?</h2>
-<hr />
+<p> </p>
+
 <p>Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고, 그 중 거리가 가장 짧은 가중 벡터 하나만 선택한다. 그 가중 벡터가 승자 노드이다. 오직 승자 노드의 가중 벡터만 갱신된다. 그래서 경쟁 학습 네트워크는 승자독식 네트워크(winner-take-all networks)라고도 불린다.</p>
 
 <div style="text-align: left">
    <img src="/assets/img/post_images/competitive1.png" width="100%" />
 </div>
 
+<p> </p>
 <h2 id="competitive-learning-구현">Competitive learning 구현</h2>
-<hr />
+<p> </p>
 
 <p>먼저 learning에 사용될 데이터 샘플을 생성해준다.</p>
 
@@ -274,8 +287,10 @@ into the {body} of the default.hbs template -->
   <span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p> </p>
 <h2 id="competitive-learning-결과">Competitive learning 결과</h2>
-<hr />
+<p> </p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">S</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">XY</span> <span class="o">=</span> <span class="n">makeSample</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
 <span class="n">w</span> <span class="o">=</span> <span class="n">competitive_learning</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
@@ -390,8 +405,7 @@ into the {body} of the default.hbs template -->
                 <section class="post-card-excerpt">
                     
                         <p>PCA란?
-
-PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다.
+ 
 
 </p>
                     

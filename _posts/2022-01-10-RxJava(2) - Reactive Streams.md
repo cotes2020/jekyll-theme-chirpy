@@ -13,10 +13,10 @@ cover:  assets/img/post_images/rxjava_cover.jpeg
 ---
 
 앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.
-\
+
 &nbsp;
 ## Reactive Streams란
-***
+&nbsp;
 
 라이브러리나 프레임워크에 상관없이 데이터 스트림을 비동기로 다룰 수 있는 공통 메커니즘으로, 이 메커니즘을 편리하게 사용할 수 있는 인터페이스를 제공한다. 즉, Reactive Streams는 인터페이스만 제공하고 구현은 각 라이브러리와 프레임워크에서 한다.
 
@@ -30,7 +30,6 @@ java의 RxJava, Spring5 Webflux의 Core에 있는 ProjectReactor 프로젝트 �
 
 &nbsp;
 ### Reactive Stream의 목적
----
 
 계속적으로 들어오는 스트림 데이터를 효율적으로 처리하기 위해서는 비동기 시스템이 효과적이다. **비동기 처리를 하면서 가장 중요한 문제는 데이터를 받는 곳에서 데이터를 예측 가능한 범위 내에서 신중하게 제어할 수 있도록 해야한다는 것** 이다. Publisher는 Subscriber의 상태에 상관없이 데이터를 전달하는데만 집중하기 때문에 보내는 속도와 처리 속도가 다를 수 있다.
 
@@ -52,7 +51,6 @@ java의 RxJava, Spring5 Webflux의 Core에 있는 ProjectReactor 프로젝트 �
 
 &nbsp;
 ### BackPressure (배압)
----
 
 앞서 Reactive Stream의 목적이 backpressure을 이용하고 비동기 스트림의 표준을 제공하는 것이라고 언급했다. BackPressure을 더 자세히 살펴보자. 배압은 한마디로 데이터 통지량을 제어하는 기능을 말한다. [리액티브 선언문 용어집](https://www.reactivemanifesto.org/ko/glossary) 에서는 BackPressure을 다음과 같이 설명하고 있다.
 
@@ -65,7 +63,7 @@ java의 RxJava, Spring5 Webflux의 Core에 있는 ProjectReactor 프로젝트 �
 \
 &nbsp;
 ## Reactive Streams의 구성
-***
+&nbsp;
 
 Reactive Stream은 데이터를 만들어 통지하는 **Publisher(생산자)** 와 통지된 데이터를 받아 처리하는 **Subscriber(소비자)** 로 구성된다. Subscriber가 Publisher를 **구독(subscribe)** 하면 Publisher가 통지한 데이터를 Subscriber가 받을 수 있다.
 
@@ -98,7 +96,6 @@ public interface Subscriber<T> {
     * 데이터 개수를 요청하고 구독을 해지하는 인터페잏스
     * n개의 데이터를 요청하는 request와 구독을 취소하는 cancel을 갖는다.
 
-\
 &nbsp;
 이를 토대로 다음과 같은 flow를 만들 수 있다.
   <div style="text-align: left">
@@ -112,7 +109,6 @@ public interface Subscriber<T> {
 5. Suscriber는 Subscription 메서드의 request() 또는 cancel()을 호출을 통해 data의 흐름을 제어할 수 있다.
 6. Subscription의 request()에는 조건에 따라 Subscriber의 onNext(), onComplete() 또는 onError()를 호출합니다. 그러면 Subscriber의 해당 메서드의 로직에 따라 request() 또는 cancle()로 제어하게 된다.
 
-\
 &nbsp;
 
 ***

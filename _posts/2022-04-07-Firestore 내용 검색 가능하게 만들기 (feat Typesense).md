@@ -15,14 +15,14 @@ cover: assets/img/post_images/catty_cover2.png
 Firestore는 전체 텍스트 검색이 되지 않는다. [Firebase 공식 문서](https://firebase.google.com/docs/firestore/solutions/search?provider=typesense)에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 `Elastic`, `Algolia`, `Typesense` 3가지 인데 그 중에서 Catty 서비스에는 [Typesense](https://typesense.org/)를 사용하였다. 원하는 기능이 다 있으면서 가격이 가장 합리적이기 때문이다. 뿐만 아니라 사실 돈을 지불하는 부분은 클라우드 서비스이고 도커에 별도로 시스템을 구축한다면 그마저도 내지 않아도 괜찮다. 그렇지만 지금은 별도의 시스템을 만들 여력이 없기 때문에 그냥 돈내고 클라우드 서비스를 사용했다.
 
 ## Firestore 대신 Typesense
----
+&nbsp;
 
 Typesense를 사용하려고 맘먹고 보니 Firestore랑 Typesense를 이중으로 사용할 필요는 없어서 Typesense를 메인으로 사용하고, Firestore은 보조 역할로만 남겨두었다. 좀 더 구체적으로는 메인 DB를 Typesense로 하되 Typesense에 저장이 안되는 data type(object)만 Firestore에 별도로 저장했다. 또한, 크롬 익스텐션과 모바일에서는 Firestore에 리소스를 저장하고 Firebase cloud function을 통해 서버에서 firestore에 들어온 데이터를 typesensedp 넘기도록 구현하였다. 굳이 이렇게 비효율적으로 하는 이유는 크롬 익스텐션과 모바일에서 typesense를 사용할 최적의 방법을 못찾았기 때문인데(..) 사실 좀만 더 서치하면 찾을 수 있을 것도 같으나 우선 별 문제없이 잘 돌아가고 있어 다른 이슈에 비해 우선순위가 많이 밀려있긴 하다.
 
 Typesense의 단점이라면 다른 서비스에 비해 참고 문서를 찾기가 어렵다. 물론 공식 문서가 잘되어 있긴 하나 헷갈리는 부분이 있을 때 다른 서비스에 비해 관련 리소스를 찾기 조금 어려운 편이었다. 그래서 이번 글에서 Typesense를 이용하면서 알게된 내용들을 조금 정리해보려고 한다.
 
 ## Typesense 환경 설정
----
+&nbsp;
 
 우선 Typesense를 사용하기 위해서는 [https://cloud.typesense.org/clusters](https://cloud.typesense.org/clusters) Typesense cloud에 들어가서 collection을 생성해야 한다. collection 이름과 각 field의 이름과 type을 적어둔 다음에 create를 누르면 collection이 생성된다.
 
@@ -50,7 +50,7 @@ const client = new Typesense.Client({
 이렇게 하면 Typesense를 사용할 기초 작업이 모두 끝났다.
 
 ## document 추가/수정/삭제
----
+&nbsp;
 
 Typesense collection에 데이터가 추가되는 단위는 document이다. 이 collection, document 개념은 firestore와 동일하다.
 
@@ -76,7 +76,7 @@ document를 typesense에 추가/수정/삭제하는 방법은 매우매우 간�
   ```
 
 ## document 검색
----
+&nbsp;
 
 Typesense의 강점이자 조금 복잡한 부분은 이 검색 부분이다. 아래 짧은 코드로 Collection에서 다양한 조건으로 document를 검색할 수 있다. 요소들을 하나씩 뜯어 살펴보자.
 

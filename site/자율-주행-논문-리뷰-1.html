@@ -64,7 +64,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -99,6 +109,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings" href="/feed.xml" />
+
 
 
 </head>
@@ -184,7 +195,7 @@ into the {body} of the default.hbs template -->
 <p>More specifically, in the image-based autonomous driving task, imitation learning and reinforcement learning are combined and used together to utilize each others’ strength. The difference between the two papers is that the first paper uses DDPG as reinforcement learning whereas the second paper uses SAC.</p>
 
 <h2 id="background">Background</h2>
-<hr />
+<p> </p>
 <ul>
   <li>The problem of generating control decision given a monocular camera image and other auxiliary vehicle sensors’ outputs has aroused a lot of interest in recent years.</li>
   <li>Conducting imitation learning towards given human policy might produce a relative well-performed policy
@@ -201,9 +212,9 @@ into the {body} of the default.hbs template -->
 </ul>
 
 <h2 id="proposed-method">Proposed method</h2>
-<hr />
-
-<p>(1) pre-training(imitation learning) -&gt; (2) fine-tuning(DDPG)</p>
+<p><br />
+ 
+(1) pre-training(imitation learning) -&gt; (2) fine-tuning(DDPG)</p>
 <ul>
   <li>Network architecture
     <div style="text-align: left">
@@ -251,7 +262,7 @@ into the {body} of the default.hbs template -->
 </ul>
 
 <h2 id="experiments">Experiments</h2>
-<hr />
+<p> </p>
 
 <ul>
   <li>Imitation learning phase
@@ -384,20 +395,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   

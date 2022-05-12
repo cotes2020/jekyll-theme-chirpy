@@ -13,7 +13,7 @@ cover: assets/img/post_images/next_cover.png
 ---
 
 ## Use typeof
----
+
 ```html
 if(window){...} // window is not defined error occur
 
@@ -22,7 +22,7 @@ if(typeof window !== undefined) {...} // No error
 
 &nbsp;
 ## Use useEffect
----
+
 ```html
 useEffect(()=>{
 	// Use window object inside useEffect
@@ -31,7 +31,7 @@ useEffect(()=>{
 
 &nbsp;
 ## (if Next.js project) Use dynamic
----
+
 ```javascript
 import dynamic from 'next/dynamic'
 

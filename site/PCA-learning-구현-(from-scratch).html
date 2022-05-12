@@ -43,7 +43,7 @@
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="PCA learning 구현 (from scratch)" />
-    <meta property="og:description" content="PCA란? PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다. 주성분이란? 주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다. 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때 이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법 그림에서와" />
+    <meta property="og:description" content="PCA란?   PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다. 주성분이란? 주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다. 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때 이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법" />
     <meta property="og:url" content="http://localhost:4000/PCA-learning-%EA%B5%AC%ED%98%84-(from-scratch)" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -52,7 +52,7 @@
     <meta property="article:modified_time" content="2022-03-24T10:32:00+09:00" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="PCA learning 구현 (from scratch)" />
-    <meta name="twitter:description" content="PCA란? PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다. 주성분이란? 주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다. 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때 이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법 그림에서와" />
+    <meta name="twitter:description" content="PCA란?   PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다. 주성분이란? 주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다. 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때 이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -61,7 +61,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -82,7 +92,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/PCA-learning-%EA%B5%AC%ED%98%84-(from-scratch)"
     },
-    "description": "PCA란? PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다. 주성분이란? 주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다. 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때 이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법 그림에서와"
+    "description": "PCA란?   PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다. 주성분이란? 주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다. 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때 이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법"
 }
     </script>
 
@@ -96,6 +106,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="PCA learning 구현 (from scratch)" href="/feed.xml" />
+
 
 
 </head>
@@ -162,11 +173,11 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <h2 id="pca란">PCA란?</h2>
-<hr />
+<p> </p>
+
 <p>PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다.</p>
 
 <h3 id="주성분이란">주성분이란?</h3>
-<hr />
 <p>주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다.</p>
 
 <p>좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때</p>
@@ -183,7 +194,6 @@ into the {body} of the default.hbs template -->
 따라서 1차 주성분은 e1 벡터, 2차 주성분은 e2 벡터라고 할 수 있다.</p>
 
 <h3 id="pca-계산">PCA 계산</h3>
-<hr />
 <p>PCA는 2차원 데이터 집합에 대해 PCA를 수행하면 2개의 서로 수직인 주성분 벡터를 반환하고, 3차원 점들에 대해 PCA를 수행하면 3개의 서로 수직인 주성분 벡터들을 반환한다.</p>
 
 <p>이 PCA는 SVD decomposition Scikit-learn의 내장 라이브러리를 이용하여 구할 수도 있지만 이번에는 머신러닝 학습을 통하여 구해보았다. 이렇게 학습을 통해 PCA를 구하기 위해서는 Hebbian learning을 알아야 한다.</p>
@@ -191,7 +201,7 @@ into the {body} of the default.hbs template -->
 <p> </p>
 
 <h2 id="hebbian-learning">Hebbian learning</h2>
-<hr />
+<p> </p>
 
 <p>Hebbian learning은 1949년 캐나다 심리학자인 Donal Hebb가 제안한 Hebb의 학습 가설에 근거한 학습 규칙이다. 신경학적인 측면에서 사람이 어떻게 학습하는 가에 대한 비교적 간단한 학습 이론에 대해 살펴보자. 중심적인 아이디어는 다음과 같다.</p>
 <blockquote>
@@ -205,8 +215,10 @@ into the {body} of the default.hbs template -->
 
 <p>그러나 Hebbian learning 식을 그대로 사용하면 nomalization 문제가 발생한다. (즉, w값이 발산한다.) 따라서 w 벡터의 크기를 1로 고정하거나, oja rule을 사용하여 nomalization을 방지하는 방향으로 풀이를 진행하였다. 각각의 코드는 아래와 같다.</p>
 
+<p> </p>
 <h2 id="pca-learning-코드">PCA learning 코드</h2>
-<hr />
+<p> </p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pca_hebbian_learning</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
   <span class="k">if</span> <span class="p">(</span><span class="nb">type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
     <span class="n">S</span> <span class="o">=</span> <span class="n">S1</span>
@@ -265,9 +277,11 @@ into the {body} of the default.hbs template -->
   <span class="n">plot_first_pca</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="s">"Oja's rule"</span><span class="p">,</span> <span class="n">W_oja</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p> </p>
 <h2 id="pca-learning-결과">PCA learning 결과</h2>
-<hr />
-<p>위의 코드로 학습을 시키면 다음의 결과를 확인할 수 있다.</p>
+<p><br />
+ 
+위의 코드로 학습을 시키면 다음의 결과를 확인할 수 있다.</p>
 
 <div style="text-align: left">
    <img src="/assets/img/post_images/pca1.png" width="100%" />
@@ -419,7 +433,10 @@ into the {body} of the default.hbs template -->
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>Competitive learning이란? Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의</p>
+                        <p>Competitive learning이란?
+ 
+
+</p>
                     
                 </section>
             </a>

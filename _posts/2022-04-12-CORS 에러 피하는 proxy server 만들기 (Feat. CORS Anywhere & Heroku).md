@@ -13,7 +13,7 @@ cover: assets/img/post_images/catty_cover2.png
 ---
 
 ## CORS란?
-***
+&nbsp;
 
 프론트개발을 하다보면 CORS 에러를 정말정말 많이 접하게 된다. CORS는 cross-origin resource sharing 의 약자로 교차 출처 리소스 공유라고 표현된다.
 
@@ -27,7 +27,7 @@ CORS는 내가 운영하는 웹사이트에서 (피싱 위험이 있는) 다른 
 
 &nbsp;
 ## 이런 CORS 에러는 서버를 건드릴 수 있다면 서버를 수정하는 게 제일 간단하다.
-***
+&nbsp;
 
 HTTP 응답헤더 Access-Control-Allow-Origin : * 혹은 Access-Control-Allow-Origin: 허용하고자 하는 도메인 설정해주면 해결이 되며, express에서는 이를 쉽게 해결해주는 미들웨어를 제공해준다.
 
@@ -45,21 +45,31 @@ app.use(cors())
 
 &nbsp;
 ## 프론트에서는 프록시 서버를 구축하여 에러를 해결할 수 있다.
-***
+&nbsp;
 
 그렇지만 프록시 서버를 직접 구축하는 것은 귀찮다. 또한 이미 사용되고 있는 프록시 서버도 웹에 검색하면 몇개 나오는데, 이런 것들은 내가 테스트해봤을 때 거의 작동하지 않았고 작동하더라도 됐다 안됐다 해서 배포 프로덕트에서 사용할 수는 없었다. 이럴 때 CORS Anywhere와 Heroku를 이용하여 빠르고 간단하게 프록시 서버를 구축할 수 있다.
 
 ### CORS Anywhere란?
-------
 
 [CORS Anywhere](https://github.com/Rob--W/cors-anywhere)는 프록시 된 요청에 CORS 헤더를 추가하는 NodeJS 프록시다. MIT 라이선스로 자유롭게 사용할 수 있다. whitelist, blacklist, rate limit 등의 다양한 설정도 간단하게 할 수 있다.
 
 ### Heroku로 CORS Anywhere 배포하기
-------
 
 원래 Vercel을 쓰고 있어서 Vercel로 배포할 까 했는 데 Vercel은 정책상 프록시 서버 배포를 막고 있는 듯했다. 그래서 별도로 Heroku 계정을 만들어서 사용하였다.
 
-\
+Heroku로 CORS Anywhere을 배포하는 방법은 [https://nhj12311.tistory.com/278](https://nhj12311.tistory.com/278) 이 블로그 글을 참고하였다. 배포 방법이 어렵진 않아서 블로그 글만 보고 따라하니 금방 배포할 수 있었다.
+
+그 결과 이렇게 빌드가 잘되어 Proxy 서버가 잘 동작함을 확인할 수 있다!
+
+<div style="text-align: left">
+  <img src="/assets/img/post_images/proxy.png" width="100%"/>
+  <p style="font-size: medium; text-align: center;">[빌드 로그]</p>
+</div>
+
+<div style="text-align: left">
+  <img src="/assets/img/post_images/proxy1.png" width="100%"/>
+  <p style="font-size: medium; text-align: center;">[완성된 proxy 서버에 들어가면 이렇게 나온다!]</p>
+</div>
 
 &nbsp;
 

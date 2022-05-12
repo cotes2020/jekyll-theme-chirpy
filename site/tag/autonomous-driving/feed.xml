@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/autonomous-driving/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T12:25:27+09:00</updated>
+  <updated>2022-05-12T16:02:32+09:00</updated>
   <id>http://localhost:4000/tag/autonomous-driving/feed.xml</id>
 
   
@@ -42,7 +42,7 @@
       <content type="html" xml:base="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2">&lt;p&gt;This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.&lt;/p&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;This paper is based on the previous study with very similar settings but difference
@@ -58,7 +58,7 @@ during training&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Single-Q SAC Algorithm : use SAC with some slight differences due to the method of combining imitation learning and reinforcement learning
@@ -70,7 +70,7 @@ during training&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Although using pure SAC can result in a good performance, it still has a lower
 average accumulated reward after 100 episodes than their method.
@@ -121,7 +121,7 @@ average accumulated reward after 100 episodes than their method.
 &lt;p&gt;More specifically, in the image-based autonomous driving task, imitation learning and reinforcement learning are combined and used together to utilize each others’ strength. The difference between the two papers is that the first paper uses DDPG as reinforcement learning whereas the second paper uses SAC.&lt;/p&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;The problem of generating control decision given a monocular camera image and other auxiliary vehicle sensors’ outputs has aroused a lot of interest in recent years.&lt;/li&gt;
   &lt;li&gt;Conducting imitation learning towards given human policy might produce a relative well-performed policy
@@ -138,9 +138,9 @@ average accumulated reward after 100 episodes than their method.
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
-&lt;hr /&gt;
-
-&lt;p&gt;(1) pre-training(imitation learning) -&amp;gt; (2) fine-tuning(DDPG)&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+(1) pre-training(imitation learning) -&amp;gt; (2) fine-tuning(DDPG)&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Network architecture
     &lt;div style=&quot;text-align: left&quot;&gt;
@@ -188,7 +188,7 @@ average accumulated reward after 100 episodes than their method.
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;experiments&quot;&gt;Experiments&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Imitation learning phase

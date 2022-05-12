@@ -13,9 +13,8 @@ cover:  assets/img/post_images/jekyll_cover.jpeg
 ---
 
 ## Add flow chart using Mermaid
-
+&nbsp;
 ### Mermaid?
----
 
 Mermaid is a JavaScript library which draws flowchart diagrams from script.
 
@@ -38,7 +37,6 @@ In this way, it intuitively converts a written script into a diagram.
 &nbsp;
 
 ### Rendering Mermaid in jekyll
----
 
 This tech blog was made using the Jekyll Chipy theme.
 According to guide document for the Jekyll Chirpy theme, when writing a post, we can use mermaid by adding `'''mermaid` if the following is inserted on posting head.
@@ -84,12 +82,12 @@ And then, mermaid can be called within .md files like the following.
 &nbsp;
 
 ## Adding MathJax mathematical expression
+&nbsp;
 
 ### MathJax?
----
 MathJax is a cross-browser JavaScript library that uses MathML, LaTeX, and ASCIIMathML markup to display mathematical notation in a web browser. MathJax is provided as open source software under the Apache License.
 ### Rendering MathJax in jekyll
----
+&nbsp;
 Similar to flow chart, it can be used by adding the following code to _includes/head.html.
 
 ```html

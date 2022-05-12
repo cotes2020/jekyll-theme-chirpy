@@ -64,7 +64,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -99,6 +109,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)" href="/feed.xml" />
+
 
 
 </head>
@@ -181,7 +192,8 @@ into the {body} of the default.hbs template -->
 <p>하지만…결국 다 포기하고 Next.js로 옮겨가게 되었다…ㅎ 기존의 리액트 프로젝트를 Next로 옮기는데 1주일 정도 소요되었다. 이번 글에서는 갈아엎기 까지 CSR을 고수하기 위해서 한 여러 시행착오와 결국 Next.js 로 옮기며 겪은 다양한 에러에 대해서 남겨보려고 한다.</p>
 
 <h2 id="react-snap과-react-helmat-라이브러리">react-snap과 react-helmat 라이브러리</h2>
-<hr />
+<p> </p>
+
 <p>먼저 CSR에서 react-snap이라는 라이브러리를 사용할 수 있다. <a href="https://byseop.netlify.app/csr-seo/">https://byseop.netlify.app/csr-seo/</a>
 그렇지만 블로그를 참고해서 다 적용을 하니까 재밌는 문제가 발생하였다.</p>
 
@@ -199,12 +211,11 @@ into the {body} of the default.hbs template -->
 <p> </p>
 
 <h2 id="webpack과-babel-설정을-통해-nextjs-없이-ssr-구축">webpack과 babel 설정을 통해 Next.js 없이 SSR 구축</h2>
-<hr />
+<p> </p>
 
 <p>그러던 중 <a href="https://minoo.medium.com/next-js-%EC%B2%98%EB%9F%BC-server-side-rendering-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-7608e82a0ab1">React로 Next.js 처럼 Server-side-rendering 구현하기</a> 라는 미디엄 포스팅을 발견하였고 괜찮은 거 같아 프로젝트에 적용해보았다. 적용하는 건 이 블로그 포스팅을 따라한 것이 전부라 따로 적지는 않을 것이다.</p>
 
 <h3 id="window-is-not-defined-에러">window is not defined 에러</h3>
-<hr />
 
 <p>그렇게 다 설정을 완료했는데 window, document, self 등 객체에 접근할 때 <code class="language-plaintext highlighter-rouge">not defined</code> error가 발생하였다.</p>
 
@@ -215,12 +226,11 @@ into the {body} of the default.hbs template -->
 <p> </p>
 
 <h2 id="reactjs-프로젝트를-nextjs로-옮기기">React.js 프로젝트를 Next.js로 옮기기</h2>
-<hr />
+<p> </p>
 
 <p>결국 돌고돌아 Next.js로 옮겨가게 되었다. 지금 프로젝트 폴더에서 Next.js을 import하면 예상치 못한 충돌이 발생할 수 있을 거 같아, 새롭게 Next.js로 프로젝트 폴더를 만들어서 기존 코드 파일을 하나씩 옮기기로 하였다.</p>
 
 <h3 id="nextjs란">Next.js란?</h3>
-<hr />
 
 <p>먼저 시작하기 전에 Next.js를 한 번 짚고 넘어갈 것이다. <a href="https://nextjs.org/">Next.js</a>는 React 프레임워크이다. Next.js는 크게 다음의 기능을 지원한다.</p>
 <ul>
@@ -237,7 +247,6 @@ into the {body} of the default.hbs template -->
 <p>이처럼 많은 기능을 제공하고 있는 Next.js는 세계적으로 유명한 기업들을 포함하여 수많은 웹사이트와 웹 애플리케이션에서 사용되고 있다. Next.js 세팅하는 법은 검색해보면 많이 나와서 건너띄고 Next.js 사용하면서 특징적이라고 생각하는 부분만 따로 정리하겠다.</p>
 
 <h3 id="pages와-nextlink">pages와 Next/Link</h3>
-<hr />
 
 <p>Next.js를 사용하면서 다음과 같이 폴더 구조를 짰다.</p>
 
@@ -296,7 +305,7 @@ pages의 index.tsx 파일은 ‘localhost:3000’에 접속했을 때 뜨는 화
 </code></pre></div></div>
 
 <h3 id="redux">Redux</h3>
-<hr />
+
 <p>기존에 react 프로젝트에서 Redux를 사용했기 때문에 Next.js에서도 계속해서 Redux를 사용하였다. 먼저 Redux를 사용하기 위해 필요한 라이브러리들을 설치해줘야한다.
 이 때, Next에서 redux를 사용하기 위해서는 next-redux-wrapper가 필요하기 때문에 함께 설치해준다.</p>
 
@@ -306,7 +315,7 @@ pages의 index.tsx 파일은 ‘localhost:3000’에 접속했을 때 뜨는 화
 <p>그리고 다음의 블로그 <a href="https://kir93.tistory.com/entry/NextJS-Redux-Toolkit-next-redux-wrapper-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0">https://kir93.tistory.com/entry/NextJS-Redux-Toolkit-next-redux-wrapper</a>를 참고해서 추가 설정을 했다.</p>
 
 <h3 id="dynamic">dynamic</h3>
-<hr />
+
 <p>Next.js에서도 마찬가지로 서버사이드에서는 브라우저 객체를 사용할 수 없기 때문에 <code class="language-plaintext highlighter-rouge">window is not defined</code> 에러가 뜬다. 따라서 브라우저 객체를 사용하는 컴포넌트에서는 SSR을 꺼두어야 하는데, <a href="">SSR에서 window 객체가 없다고 할 때</a> 글에 정리했듯이 다음과 같이 SSR을 꺼서 에러를 방지할 수 있다.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import dynamic from 'next/dynamic'
@@ -328,7 +337,7 @@ const App = () =&gt; {
 </code></pre></div></div>
 
 <h3 id="nextimage">next/Image</h3>
-<hr />
+
 <p>기존에 이미지는 <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> 태그를 사용하여 추가하였지만, Next.js에서 이렇게 사용하면 warning을 띄운다. 물론 warning을 무시하고 계속 사용해도 서비스가 잘 돌아가긴 하지만 next/Image가 Next.js에서 이미지를 표시하는 데 최적화되어 있다고 하여 next/Image로 다 수정하였다. next/Image는 기존 <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> 태그와 거의 비슷한데, width/hight를 명시해주거나, layout props에 ‘fill’이라고 명시해줘야 한다.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Image from 'next/Image'
@@ -352,7 +361,7 @@ const App = () =&gt; {
 </code></pre></div></div>
 
 <h3 id="seo">SEO</h3>
-<hr />
+
 <p>처음에 SSR을 쓰려고 했던 근본적인 이유 중 하나였던 SEO를 마지막으로 설정해주었다. SEO는 <code class="language-plaintext highlighter-rouge">next/head</code> 라이브러리를 사용하면 쉽게 설정할 수 있다. 다음에 <code class="language-plaintext highlighter-rouge">next/head</code>로 SEO를 설정한 코드를 정리하였다. 이 SEO 컴포넌트를 SEO를 설정하고 싶은 컴포넌트에 추가하면 SEO 설정이 끝난다!</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Head from 'next/head'
@@ -516,8 +525,6 @@ export default function SEO({ title, siteTitle, description, creator, image, sum
                                   
                                 
                                   
-                                
-                                  
                                     
                                         
                                         
@@ -572,18 +579,6 @@ export default function SEO({ title, siteTitle, description, creator, image, sum
                                         
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -655,9 +650,6 @@ export default function SEO({ title, siteTitle, description, creator, image, sum
                 <section class="post-card-excerpt">
                     
                         <p>Use typeof
-
-```html
-if(window){…} // window is not defined error occur
 
 </p>
                     

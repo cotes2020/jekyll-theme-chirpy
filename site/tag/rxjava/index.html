@@ -58,7 +58,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="2000" />
     <meta property="og:image:height" content="666" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -93,6 +103,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="Tag Page" href="/feed.xml" />
+
 
 
 </head>
@@ -178,7 +189,7 @@
                 <section class="post-card-excerpt">
                     
                         <p>Observable 이란
-
+ 
 
 </p>
                     
@@ -230,10 +241,6 @@
                     
                         <p>앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.
 
- 
-Reactive Streams란
-
-
 </p>
                     
                 </section>
@@ -254,7 +261,7 @@ Reactive Streams란
                 <span class="reading-time">
                     
                     
-                      4 min read
+                      5 min read
                     
                 </span>
             </footer>

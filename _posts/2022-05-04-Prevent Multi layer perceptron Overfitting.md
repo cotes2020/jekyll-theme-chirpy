@@ -15,7 +15,7 @@ cover:  assets/img/post_images/ai_cover2.jpg
 Looking at the existing multi-layer perceptron learning results, it can be seen that the training error continuously decreases as learning progresses. Decreasing error generally means the training is going well, but it may not always be the case. `Overfitting` may be occuring, where the model follows too closely to the training data, and may not be able to perform as well on data outside the training data set.
 
 ## Checking Validation error
----
+&nbsp;
 
 In order to check the overfitting, validation error should be checked together with training error. `training error` refers to errors that occurs during training with the training data, whereas `validation error` refers to an error that occurs by predicting new data (validation data). In order to obtain `validation error`, the data must first be divided into training dataset and test dataset. This can be done simply by using the `train_test_split` function of `sklearn.model_selection`.
 
@@ -83,12 +83,11 @@ Plotting the training error and validation error after running training in this 
 &nbsp;
 
 ## Prevent overfitting adding Early stopping term and weight decay term
----
+&nbsp;
 
 Now that overfitting has been identified, let's try to prevent it in several ways.
 
 ### Early stopping
----
 Early stopping refers to a method of terminating training before the validation error in the graph above enters an increasing trend.
 
 Below is the early stopping implementation code. When the validation error continues to increase 10 times in a row compared to the previous validation error value, learning is terminated.
@@ -109,7 +108,6 @@ class EarlyStopping():
 ```
 
 ### Weight decay
----
 
 Overfitting can be avoided by applying weight decay. When learning, if the learning is carried out simply in the direction in which the loss function becomes smaller, the specific weight values ​​will rather increase and the result may deteriorate. Weight decay exerts a penalty when the weight becomes large in the loss function, so that the weight does not have a too large value during training. L1 regularization and L2 regularization are widely used as the penalty. In this implementation, the L2 method is used.
 
@@ -120,7 +118,7 @@ def l2_penalty(w):
 
 &nbsp;
 ## Final MLP training code
----
+&nbsp;
 
 The final MLP code implementation is as follows.
 

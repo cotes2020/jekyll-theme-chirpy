@@ -64,7 +64,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -99,6 +109,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="RxJava(1) - 개요" href="/feed.xml" />
+
 
 
 </head>
@@ -177,11 +188,11 @@ into the {body} of the default.hbs template -->
 
 <p>만약 구글드라이브 내에 한 번이라도 스크린샷, 사진 용 폴더가 생성이 되었다면 폴더 아이디를 통해 추가 폴더 생성 과정없이 바로 자료를 저장하지만, 미리 생성되어 있던 폴더가 없거나 저장과정에서 어떤 오류가 발생하면 루트 폴더 생성 → 스크린샷/사진 폴더 생성 → 자료 저장의 과정을 밟아야 했고 이 과정에서 콜백이 증가하면서 콜백 복잡도가 증가(callback hell)하게 되었다.</p>
 
-<p>그래서 우선적으로 RxJava를 이용하여 이런 부분을 리팩토링 하고 점차 다른 부분도 RxJava를 적용해 나가보았다.
-<br />
- </p>
+<p>그래서 우선적으로 RxJava를 이용하여 이런 부분을 리팩토링 하고 점차 다른 부분도 RxJava를 적용해 나가보았다.</p>
+
+<p> </p>
 <h2 id="rxjava란">RxJava란</h2>
-<hr />
+<p> </p>
 
 <p>RxJava는 자바(Java)에서 리액티브 프로그래밍을 구현하는 데 사용하는 라이브러리이다. 이벤트 처리와 같은 비동기 처리에 최적화되었으며, 2.0 버전부터 Reactive Streams 사양을 구현한다.</p>
 
@@ -209,13 +220,11 @@ into the {body} of the default.hbs template -->
 
 <p>RxJava는 2016년 10월에 완전히 새로 작성한 RxJava 2.0을 발표했다. RxJava 2.0은 RxJava 1.x를 Reactive-Streams 스펙 기반으로 새롭게 개선한 것이므로 공통점도 많고 차이점도 많다.</p>
 
-<p>Reactive-Stream 스펙은 자바8에 도입된 Stream API와 Observable 기반의 리액티브 프로그래밍을 포괄하는 표준 스펙으로 자바 9에 도입되었다.
-<br />
- 
-<br />
- </p>
+<p>Reactive-Stream 스펙은 자바8에 도입된 Stream API와 Observable 기반의 리액티브 프로그래밍을 포괄하는 표준 스펙으로 자바 9에 도입되었다.</p>
+
+<p> </p>
 <h2 id="리액티브-프로그래밍이란">리액티브 프로그래밍이란</h2>
-<hr />
+<p> </p>
 
 <p>앞서 RxJava는 자바에서 리액티브 프로그래밍을 구현하는 데 사용하는 라이브러리라고 하였다. 그런데 리액티브 프로그래밍이 정확히 뭘까?
 정의상으로 리액티브 프로그래밍은 <strong>변화의 전파</strong>와 <strong>데이터 흐름</strong>과 관련된 <strong>선언적 프로그래밍</strong> 패러다임이다.</p>
@@ -229,11 +238,11 @@ into the {body} of the default.hbs template -->
 
 <p>예를 들어, GPS 위치 정보가 변경될 때의 데이터 전송 흐름을 상상해보자. 이동해서 위치 정보가 변경될 때마다 데이터를 전송하고 이동을 멈추면 데이터 전송도 중지하는 것처럼 생성되는 데이터를 한 번에 보내지 않고 각각의 데이터가 생성될 때마다 순서대로 보낸다. 이런 데이터 흐름을 데이터 스트림(data stream)이라고 한다. 이 것은 이미 생성된 데이터 집합인 리스트(list) 같은 컬렉션(collection)과는 다르게 앞으로 발생할 가능성이 있는 데이터까지도 포함하는 데이터 집합체이다.</p>
 
-<p>좀 더 쉽게 이해하기 위해 명령형 프로그래밍과 비교해보자.
-<br />
- </p>
+<p>좀 더 쉽게 이해하기 위해 명령형 프로그래밍과 비교해보자.</p>
+
+<p> </p>
 <h3 id="명령형-프로그래밍-vs-리액티브-프로그래밍">명령형 프로그래밍 vs 리액티브 프로그래밍</h3>
-<hr />
+<p> </p>
 <blockquote>
   <p>명령형 프로그래밍 방식은 변경이 발생했는 지 질문해서 응답에 따라 데이터를 가져오는 pull 방식이지만, 리액티브 프로그래밍은 데이터 소스가 변경된 데이터를 밀어주는(push) 방식이다.</p>
 </blockquote>
@@ -258,18 +267,18 @@ into the {body} of the default.hbs template -->
 </ul>
 
 <h3 id="리액티브-프로그래밍-장점">리액티브 프로그래밍 장점</h3>
-<hr />
+<p> </p>
 <blockquote>
   <p>리액티브 프로그래밍을 이용하면 비동기처리를 쉽게 구현할 수 있다</p>
 </blockquote>
 
-<p>리액티브 프로그래밍에서 데이터를 생산하는 측은 데이터를 전달하는 것까지만 책임진다. 그러므로 데이터를 생산하는 측은 데이터를 소비하는 측이 전달받은 데이터로 무엇을 하는 지는 몰라도 된다. 또한, 데이터를 생산하는 측은 데이터를 소비하는 측에서 무엇을 하든지 관계가 없으므로 소비하는 측의 처리를 기다릴 필요가 없다. 그러므로 데이터를 통지한 후 데이터를 소비하는 측에서 데이터를 처리하는 도중이라도 데이터를 생산하는 측은 바로 다음 데이터를 처리할 수 있다. 이처럼 비동기 처리를 쉽게 구현 가능하다.
-<br />
- 
-<br />
- </p>
+<p>리액티브 프로그래밍에서 데이터를 생산하는 측은 데이터를 전달하는 것까지만 책임진다. 그러므로 데이터를 생산하는 측은 데이터를 소비하는 측이 전달받은 데이터로 무엇을 하는 지는 몰라도 된다. 또한, 데이터를 생산하는 측은 데이터를 소비하는 측에서 무엇을 하든지 관계가 없으므로 소비하는 측의 처리를 기다릴 필요가 없다. 그러므로 데이터를 통지한 후 데이터를 소비하는 측에서 데이터를 처리하는 도중이라도 데이터를 생산하는 측은 바로 다음 데이터를 처리할 수 있다. 이처럼 비동기 처리를 쉽게 구현 가능하다.</p>
+
+<p> </p>
+
+<p> </p>
 <h2 id="리액티브-프로그래밍을-위해-알아야-될-것들">리액티브 프로그래밍을 위해 알아야 될 것들</h2>
-<hr />
+<p> </p>
 
 <p>리액티브 프로그래밍을 더 잘 이해하기 위해 알아두면 좋은 내용들을 정리해보았다.</p>
 
@@ -285,10 +294,9 @@ into the {body} of the default.hbs template -->
   <li>리액티브 기본 동작 흐름 : 데이터 발행 -&gt; 데이터 가공 -&gt; 데이터 구독 -&gt; 결과 처리</li>
 </ul>
 
-<p><br />
- </p>
+<p> </p>
 <h2 id="rxjava의-특징">RxJava의 특징</h2>
-<hr />
+<p> </p>
 
 <p>다시 RxJava로 돌아와 RxJava의 특징을 살펴보면 다음과 같다.</p>
 
@@ -302,13 +310,11 @@ into the {body} of the default.hbs template -->
   <li>함수형 프로그래밍의 영향을 받아 함수형 인터페이스를 인자로 전달받는 메서드를 사용해 대부분의 처리를 구현</li>
 </ul>
 
-<p><br />
- </p>
+<p> </p>
 <h2 id="rxjava를-어떻게-공부하면-좋을까">RxJava를 어떻게 공부하면 좋을까</h2>
-<hr />
+<p> </p>
 
 <h3 id="rxjava-공부가-어려운-이유">RxJava 공부가 어려운 이유</h3>
-<hr />
 
 <ul>
   <li>자바는 thread 기반의 프로그래밍인데 반해 RxJava는 비동기 프로그래밍을 위한 라이브러리라서 개념과 접근 방식이 다르다.
@@ -320,11 +326,10 @@ into the {body} of the default.hbs template -->
   <li>따라서 함수형 연산자를 어떻게 활용해야할 지 몰라 RxJava를 이용한 코딩에 어려움을 느낄 수 있다.</li>
 </ul>
 
-<p>따라서 다음의 순서로 RxJava를 학습하는 것을 추천한다.
-<br />
- </p>
+<p>따라서 다음의 순서로 RxJava를 학습하는 것을 추천한다.</p>
+
+<p> </p>
 <h3 id="rxjava-추천-학습-순서">RxJava 추천 학습 순서</h3>
-<hr />
 
 <ol>
   <li>Observable 클래스를 명확하게 이해</li>
@@ -482,8 +487,6 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                
-                                  
                                     
                                         
                                         
@@ -503,18 +506,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -566,10 +557,6 @@ into the {body} of the default.hbs template -->
                 <section class="post-card-excerpt">
                     
                         <p>앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.
-
- 
-Reactive Streams란
-
 
 </p>
                     

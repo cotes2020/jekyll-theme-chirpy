@@ -43,7 +43,7 @@
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="MVVM 패턴과 AAC" />
-    <meta property="og:description" content="이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.   앱 아키텍쳐의 원칙 안드로이드 앱에는 여러 앱 구성요소가 포함된다. 액티비티 : 사용자와 상호작용하기 위한 진입점. (Activity) 서비스 : 백그라운드에서 앱을 계속 실행하기 위한" />
+    <meta property="og:description" content="이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.   앱 아키텍쳐의 원칙   안드로이드 앱에는 여러 앱 구성요소가 포함된다. 액티비티 : 사용자와 상호작용하기 위한 진입점. (Activity) 서비스 : 백그라운드에서 앱을 계속 실행하기" />
     <meta property="og:url" content="http://localhost:4000/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/mvvm_cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -53,7 +53,7 @@
     <meta property="article:tag" content="Design Patterns" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="MVVM 패턴과 AAC" />
-    <meta name="twitter:description" content="이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.   앱 아키텍쳐의 원칙 안드로이드 앱에는 여러 앱 구성요소가 포함된다. 액티비티 : 사용자와 상호작용하기 위한 진입점. (Activity) 서비스 : 백그라운드에서 앱을 계속 실행하기 위한" />
+    <meta name="twitter:description" content="이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.   앱 아키텍쳐의 원칙   안드로이드 앱에는 여러 앱 구성요소가 포함된다. 액티비티 : 사용자와 상호작용하기 위한 진입점. (Activity) 서비스 : 백그라운드에서 앱을 계속 실행하기" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/mvvm_cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -64,7 +64,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -85,7 +95,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC"
     },
-    "description": "이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.   앱 아키텍쳐의 원칙 안드로이드 앱에는 여러 앱 구성요소가 포함된다. 액티비티 : 사용자와 상호작용하기 위한 진입점. (Activity) 서비스 : 백그라운드에서 앱을 계속 실행하기 위한"
+    "description": "이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.   앱 아키텍쳐의 원칙   안드로이드 앱에는 여러 앱 구성요소가 포함된다. 액티비티 : 사용자와 상호작용하기 위한 진입점. (Activity) 서비스 : 백그라운드에서 앱을 계속 실행하기"
 }
     </script>
 
@@ -99,6 +109,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="MVVM 패턴과 AAC" href="/feed.xml" />
+
 
 
 </head>
@@ -183,7 +194,7 @@ into the {body} of the default.hbs template -->
 <br />
  </p>
 <h2 id="앱-아키텍쳐의-원칙">앱 아키텍쳐의 원칙</h2>
-<hr />
+<p> </p>
 
 <p>안드로이드 앱에는 여러 앱 구성요소가 포함된다.</p>
 
@@ -211,7 +222,6 @@ into the {body} of the default.hbs template -->
 <br />
  </p>
 <h3 id="관심사-분리">관심사 분리</h3>
-<hr />
 
 <p>코드를 작성할 때 Activity나 Fragment와 같은 UI 기반의 클래스는 UI 및 OS 상호작용을 처리하는 로집만 포함해야 한다. 이는 UI 클래스를 최대한 가볍게 유지하여 Lifecycle 관련 문제를 피하기 위함이다.</p>
 
@@ -221,7 +231,6 @@ into the {body} of the default.hbs template -->
 <br />
  </p>
 <h3 id="모델에서-ui-도출">모델에서 UI 도출</h3>
-<hr />
 
 <p>UI는 Model에서 만들어져야 한다. Model은 앱의 데이터 처리를 담당하는 컴포넌트로, 앱의 View 객체 및 앱 컴포넌트와 독립되어 있으므로 앱의 Lifecycle에 영향을 받지 않는다.
 (네트워크가 끊어져도 앱이 죽지 않고, 메모리 확보를 위해 앱이 강제종료되어도 데이터가 살아있는 앱)
@@ -230,7 +239,7 @@ into the {body} of the default.hbs template -->
 <br />
  </p>
 <h2 id="mvvm-개요">MVVM 개요</h2>
-<hr />
+<p> </p>
 
 <p>이런 앱 아키텍쳐의 원칙에 따라 <strong>MVC 패턴의 단점을 보완</strong>하고자 등장한 디자인 패턴이 바로 <strong>MVVM</strong> 이다. <strong>MVVM</strong> 은 기존 MVC 에서처럼 <strong>Controller 에게 막중한 역할을 부여하기보다,</strong> 이 <strong>동작 자체를 분리하여</strong> 동작의 흐름을 더욱 <strong>체계적으로 만들어주고 유지보수를 편리하게</strong> 할 수 있도록 해주는 디자인 패턴이다.
 <strong>MVVM 은 Model, View, ViewModel</strong> 로 이루어져 있다. 대충 이름으로 구성을 파악해보면 MVC 패턴이 Model, View, Controller로 이루어져 있던 것과 비교하여 MVVM 패턴에서는 Controller가 사라지고 대신 ViewModel이 생겼다. 그렇다고 ViewModel이 Controller의 역할을 가져갔다고 볼 순 없고, Controller의 역할이 축소되며 View와 통합되었고 ViewModel이 새롭게 등장하였다고 이해하는 게 좋다.</p>
@@ -273,7 +282,7 @@ into the {body} of the default.hbs template -->
 <br />
  </p>
 <h2 id="aac">AAC</h2>
-<hr />
+<p> </p>
 
 <p>MVVM 패턴은 많은 장점이 있지만 초보자가 쉽게 사용하기 다소 어렵다. 따러서 MVVM 패턴이 진입 장벽이 크다는 문제를 해결하기 위해서 구글에서 AAC라는 것을 제공한다.</p>
 
@@ -295,13 +304,11 @@ into the {body} of the default.hbs template -->
 <p>이제 AAC의 각 구성요소를 자세히 확인해보자.</p>
 
 <h3 id="view">View</h3>
-<hr />
 
 <p>UI Controller을 담당하는 Activity, Fragment이다. 화면에 무엇을 그릴 지 결정하고, 사용자와 상호작용한다. 데이터의 변화를 감지하기 위한 옵저버를 가지고 있다.
 <br />
  </p>
 <h3 id="viewmodel">ViewModel</h3>
-<hr />
 
 <p>ViewModel은 앱의 Lifecycle을 고려하여 <strong>UI 관련 데이터를 저장하고 관리하는 컴포넌트</strong>이다. AAC의 ViewModel은 안드로이드에서 자체적으로 <strong>안드로이드의 생명주기를 고려해서</strong> 만든 ViewModel로, MVVM에서의 ViewModel과는 전혀 다른 개념이다. Activity/Fragment 당 하나의 ViewModel만 생성 가능하다. 다음 그림을 살펴보자.</p>
 
@@ -318,7 +325,6 @@ UI Controller로부터 UI 관련 데이터 저장 및 관리를 분리하여 Vie
 </ul>
 
 <h3 id="live-data">Live Data</h3>
-<hr />
 
 <p>LiveData는 <strong>식별 가능한 데이터 홀더 클래스</strong>로 다른 앱 컴포넌트의 Lifecycle을 인식하며, 이를 통해 <strong>활성 상태에 있는 앱 컴포넌트 옵저버에게만 업데이트 정보를 알린다.</strong></p>
 
@@ -342,13 +348,11 @@ UI Controller로부터 UI 관련 데이터 저장 및 관리를 분리하여 Vie
 </ol>
 
 <h3 id="repository">Repository</h3>
-<hr />
 
 <p>ViewModel과 상호작용하기 위해 잘 정리된 데이터 API를 들고 있는 클래스이다. 앱에 필요한 데이터 (내장 DB or 외부 DB)를 가져온다. ViewModel은 DB나 서버에 직접 접근하지 않고, Repository에 접근하는 것으로 앱의 데이터를 관리한다.
 <br />
  </p>
 <h3 id="roomdatabase">RoomDatabase</h3>
-<hr />
 
 <p>Room 라이브러리는 SQLite에 추상화 레이어를 제공하여 원활한 DB 액세스를 지원하고 SQLite를 완벽히 활용할 수 있게 하는 라이브러리이다. Room 라이브러리를 사용하면 앱을 실행하는 기기에서 앱 데이터의 캐시를 만들 수 있으며, 이 캐시를 통해 사용자는 인터넷 연결 여부와 관계없이 앱에 있는 주요 정보를 일관된 형태로 볼 수 있다. Room에 대해서는 다음 포스팅에서 더 자세히 설명할 예정이다.
 <br />
@@ -356,7 +360,7 @@ UI Controller로부터 UI 관련 데이터 저장 및 관리를 분리하여 Vie
 <br />
  </p>
 <h2 id="mvvm-장단점">MVVM 장단점</h2>
-<hr />
+<p> </p>
 
 <p><strong>장점</strong></p>
 
@@ -532,20 +536,6 @@ UI Controller로부터 UI 관련 데이터 저장 및 관리를 분리하여 Vie
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
                                     
                                   
                                 
@@ -577,36 +567,44 @@ UI Controller로부터 UI 관련 데이터 저장 및 관리를 분리하여 Vie
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/LeetCode-1.-Two-Sum">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/coding_cover.jpg)"></div>
+            <a class="post-card-image-link" href="/Capacitor%EC%99%80-Vue.js%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-cross-platform-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%95%B1-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0">
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/vue_cover.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/LeetCode-1.-Two-Sum">
+            <a class="post-card-content-link" href="/Capacitor%EC%99%80-Vue.js%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-cross-platform-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%95%B1-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0">
                 <header class="post-card-header">
                     
+                        
+                            
+                               <span class="post-card-tags">Vue</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Capacitor</span>
+                            
+                        
+                    
 
-                    <h2 class="post-card-title">LeetCode - 1. Two Sum</h2>
+                    <h2 class="post-card-title">(작성중) Capacitor와 Vue.js를 이용해서 cross-platform 모바일 앱 개발하기</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>Pig Code
-
-</p>
+                        <p>이번 글에서는 21.10월부터 21.11월 2달 동안 외주 개발 프로젝트 개발한 하이브리드 앱에 Vue.js와 Capacitor를 적용해본 경험을 공유하려고 한다. 결론적으로 말하면 많이 불편했고 다시는 사용하지 않을 방법이다. 이후에 하이브리드 앱은 리액트 웹뷰로 하이브리드 앱을</p>
                     
                 </section>
             </a>
             <footer class="post-card-meta">
                 
                     
+                
+                    
                         
-                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Skinnig" />
+                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
                         
                         <span class="post-card-author">
-                            <a href="/author/Pig/">Skinnig</a>
+                            <a href="/author/Bean/">Beanie</a>
                         </span>
-                    
-                
                     
                 
                 <span class="reading-time">
@@ -651,7 +649,7 @@ UI Controller로부터 UI 관련 데이터 저장 및 관리를 분리하여 Vie
                 <section class="post-card-excerpt">
                     
                         <p>디자인 패턴
-
+ 
 
 </p>
                     

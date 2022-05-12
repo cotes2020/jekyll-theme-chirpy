@@ -64,7 +64,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -99,6 +109,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기" href="/feed.xml" />
+
 
 
 </head>
@@ -186,13 +197,16 @@ into the {body} of the default.hbs template -->
 <p>Catty 서비스의 크롬 익스텐션에도 현재 띄워져 있는 화면의 웹사이트를 수집할 때, 해당 사이트의 Readable html(읽기에 편한 요소만 분리한 html)를 함께 저장하여 웹앱에서 읽기모드로 확인할 수 있도록 기능 구현을 해두었다. 그리고 이번 글에서 이 읽기모드 구현에 대해 정리해두려고 한다.</p>
 
 <h2 id="읽기모드를-어떻게-구현하면-좋을까">읽기모드를 어떻게 구현하면 좋을까?</h2>
-<hr />
+<p> </p>
 
 <p>읽기모드를 구현하려면 웹페이지에서 본문만 추출해 낼 필요가 있지만, 모든 블로그는 독자적인 포맷을 가지고 있고, 이 각각의 포맷들을 하나하나 분석해가며 본문을 찾아내는 건 많은 수고를 필요로 한다. 다행히 이런 수고스러움을 덜어주는 고마운 라이브러리가 있다. 바로 <code class="language-plaintext highlighter-rouge">mozilla/readability</code> 라이브러리(<a href="https://github.com/mozilla/readability">https://github.com/mozilla/readability</a>)이다.</p>
 
 <p>이 라이브러리는 모질라에서 개발중인 노드js 라이브러리로 파이어폭스의 일기모드 기능을 독립적으로 제공한다.</p>
 
-<p>이 라이브러리 사용법은 간단하다. 우선 크롬익스텐션에서 북마크를 저장할 때 readable HTML을 구할 것이므로 북마크 저장 코드가 구현되어 있는 content_script.js에 아래 코드를 구현하였다. readability 라이브러리를 import하고 아래 코드를 실행하면 읽기모드의 html 코드를 구할 수 있다.</p>
+<h2 id="간단하게-readability-라이브러리-사용하기">간단하게 readability 라이브러리 사용하기</h2>
+<p><br />
+ 
+이 라이브러리 사용법은 간단하다. 우선 크롬익스텐션에서 북마크를 저장할 때 readable HTML을 구할 것이므로 북마크 저장 코드가 구현되어 있는 content_script.js에 아래 코드를 구현하였다. readability 라이브러리를 import하고 아래 코드를 실행하면 읽기모드의 html 코드를 구할 수 있다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getReadableHtml</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">readability</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Readability</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
@@ -343,8 +357,6 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                
-                                  
                                     
                                         
                                         
@@ -399,18 +411,6 @@ into the {body} of the default.hbs template -->
                                         
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   

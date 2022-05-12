@@ -64,7 +64,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -99,6 +109,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="When SSR says that there is no window object" href="/feed.xml" />
+
 
 
 </head>
@@ -176,7 +187,7 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <h2 id="use-typeof">Use typeof</h2>
-<hr />
+
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if(window){...} // window is not defined error occur
 
 if(typeof window !== undefined) {...} // No error
@@ -184,7 +195,7 @@ if(typeof window !== undefined) {...} // No error
 
 <p> </p>
 <h2 id="use-useeffect">Use useEffect</h2>
-<hr />
+
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>useEffect(()=&gt;{
 	// Use window object inside useEffect
 },[])
@@ -192,7 +203,7 @@ if(typeof window !== undefined) {...} // No error
 
 <p> </p>
 <h2 id="if-nextjs-project-use-dynamic">(if Next.js project) Use dynamic</h2>
-<hr />
+
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">dynamic</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">next/dynamic</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">ComponentsWithNoSSR</span> <span class="o">=</span> <span class="nx">dynamic</span><span class="o">&lt;</span><span class="p">{</span><span class="na">props</span><span class="p">:</span><span class="nx">type</span><span class="p">;}</span><span class="o">&gt;</span><span class="p">(</span> <span class="c1">// When passing props in typescript, an interface is defined.</span>
@@ -338,8 +349,6 @@ if(typeof window !== undefined) {...} // No error
                                   
                                 
                                   
-                                
-                                  
                                     
                                         
                                         
@@ -394,18 +403,6 @@ if(typeof window !== undefined) {...} // No error
                                         
                                         
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                                   
@@ -473,7 +470,7 @@ if(typeof window !== undefined) {...} // No error
                 <section class="post-card-excerpt">
                     
                         <p>CORS란?
-
+ 
 
 </p>
                     

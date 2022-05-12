@@ -43,7 +43,7 @@
     <meta property="og:site_name" content="PIGBEAN Tech blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)" />
-    <meta property="og:description" content="Add flow chart using Mermaid Mermaid? Mermaid is a JavaScript library which draws flowchart diagrams from script. graph LR A(landing page)--&gt;B[check auto login] B--&gt;C(login page) B--&gt;D(main page) In this way, it intuitively converts a written script into a diagram. graph LR; A(landing page)--&gt;B[check auto login]; B--&gt;C(login page); B--&gt;D(main page);  " />
+    <meta property="og:description" content="Add flow chart using Mermaid   Mermaid? Mermaid is a JavaScript library which draws flowchart diagrams from script. graph LR A(landing page)--&gt;B[check auto login] B--&gt;C(login page) B--&gt;D(main page) In this way, it intuitively converts a written script into a diagram. graph LR; A(landing page)--&gt;B[check auto login]; B--&gt;C(login page); B--&gt;D(main page);" />
     <meta property="og:url" content="http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/jekyll_cover.jpeg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -52,7 +52,7 @@
     <meta property="article:modified_time" content="2022-05-05T10:13:00+09:00" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)" />
-    <meta name="twitter:description" content="Add flow chart using Mermaid Mermaid? Mermaid is a JavaScript library which draws flowchart diagrams from script. graph LR A(landing page)--&gt;B[check auto login] B--&gt;C(login page) B--&gt;D(main page) In this way, it intuitively converts a written script into a diagram. graph LR; A(landing page)--&gt;B[check auto login]; B--&gt;C(login page); B--&gt;D(main page);  " />
+    <meta name="twitter:description" content="Add flow chart using Mermaid   Mermaid? Mermaid is a JavaScript library which draws flowchart diagrams from script. graph LR A(landing page)--&gt;B[check auto login] B--&gt;C(login page) B--&gt;D(main page) In this way, it intuitively converts a written script into a diagram. graph LR; A(landing page)--&gt;B[check auto login]; B--&gt;C(login page); B--&gt;D(main page);" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/jekyll_cover.jpeg" />
     <meta name="twitter:label1" content="Written by" />
@@ -61,7 +61,17 @@
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
     <meta property="og:image:height" content="933" />
-
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -82,7 +92,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0"
     },
-    "description": "Add flow chart using Mermaid Mermaid? Mermaid is a JavaScript library which draws flowchart diagrams from script. graph LR A(landing page)--&gt;B[check auto login] B--&gt;C(login page) B--&gt;D(main page) In this way, it intuitively converts a written script into a diagram. graph LR; A(landing page)--&gt;B[check auto login]; B--&gt;C(login page); B--&gt;D(main page);  "
+    "description": "Add flow chart using Mermaid   Mermaid? Mermaid is a JavaScript library which draws flowchart diagrams from script. graph LR A(landing page)--&gt;B[check auto login] B--&gt;C(login page) B--&gt;D(main page) In this way, it intuitively converts a written script into a diagram. graph LR; A(landing page)--&gt;B[check auto login]; B--&gt;C(login page); B--&gt;D(main page);"
 }
     </script>
 
@@ -96,6 +106,7 @@
 
     <meta name="generator" content="Jekyll 3.6.2" />
     <link rel="alternate" type="application/rss+xml" title="Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)" href="/feed.xml" />
+
 
 
 </head>
@@ -162,9 +173,8 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <h2 id="add-flow-chart-using-mermaid">Add flow chart using Mermaid</h2>
-
+<p> </p>
 <h3 id="mermaid">Mermaid?</h3>
-<hr />
 
 <p>Mermaid is a JavaScript library which draws flowchart diagrams from script.</p>
 
@@ -186,7 +196,6 @@ into the {body} of the default.hbs template -->
 <p> </p>
 
 <h3 id="rendering-mermaid-in-jekyll">Rendering Mermaid in jekyll</h3>
-<hr />
 
 <p>This tech blog was made using the Jekyll Chipy theme.
 According to guide document for the Jekyll Chirpy theme, when writing a post, we can use mermaid by adding <code class="language-plaintext highlighter-rouge">'''mermaid</code> if the following is inserted on posting head.</p>
@@ -231,13 +240,13 @@ Mermaid was successfuly rendered after entering this CDN in each html document. 
 <p> </p>
 
 <h2 id="adding-mathjax-mathematical-expression">Adding MathJax mathematical expression</h2>
+<p> </p>
 
 <h3 id="mathjax">MathJax?</h3>
-<hr />
 <p>MathJax is a cross-browser JavaScript library that uses MathML, LaTeX, and ASCIIMathML markup to display mathematical notation in a web browser. MathJax is provided as open source software under the Apache License.</p>
 <h3 id="rendering-mathjax-in-jekyll">Rendering MathJax in jekyll</h3>
-<hr />
-<p>Similar to flow chart, it can be used by adding the following code to _includes/head.html.</p>
+<p> 
+Similar to flow chart, it can be used by adding the following code to _includes/head.html.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/x-mathjax-config"</span><span class="nt">&gt;</span>
   <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>

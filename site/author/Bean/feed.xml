@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/author/Bean/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-11T12:25:27+09:00</updated>
+  <updated>2022-05-12T16:02:32+09:00</updated>
   <id>http://localhost:4000/author/Bean/feed.xml</id>
 
   
@@ -42,7 +42,7 @@
       <content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;catty-서비스가-뭔데&quot;&gt;Catty 서비스가 뭔데?&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;!-- &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/catty.png&quot; /&gt;
@@ -70,13 +70,13 @@
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;1-리소스-수집&quot;&gt;&lt;strong&gt;(1) 리소스 수집&lt;/strong&gt;&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;Catty에서는 모바일-웹에서 편리하게 자료를 수집할 수 있는 다양한 방법들을 지원한다. Catty의 웹클리퍼, 앱을 이용하면 한 번의 클릭으로 웹상의 리소스를 바로 수집할 수 있다!&lt;/p&gt;
+&lt;p&gt; 
+Catty에서는 모바일-웹에서 편리하게 자료를 수집할 수 있는 다양한 방법들을 지원한다. Catty의 웹클리퍼, 앱을 이용하면 한 번의 클릭으로 웹상의 리소스를 바로 수집할 수 있다!&lt;/p&gt;
 
 &lt;p&gt;자료를 수집할 때 폴더와 태그를 선택할 수 있다. 태그는 인스타그램 태그 남기듯이 자료를 수집할 때 메모에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt;과 함께 태그를 남겨 추가할 수 있다. 이 태그가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(3) 노트 작성&lt;/code&gt;에서 노트 작성할 때 참고할 자료들의 기준이 된다.&lt;/p&gt;
 
 &lt;h3 id=&quot;크롬-익스텐션웹클리퍼&quot;&gt;크롬 익스텐션(웹클리퍼)&lt;/h3&gt;
-&lt;hr /&gt;
+
 &lt;p&gt;아래 동영상에서 보여지듯이 Catty 웹클리퍼를 통해 버튼 클릭만으로 웹페이지 url, 스크린샷, 그리고 유튜브 영상 캡쳐를 바로 수집할 수 있다.&lt;/p&gt;
 &lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
   &lt;source src=&quot;/assets/img/post_images/catty_introduce1.mov&quot; type=&quot;video/mp4&quot; /&gt;
@@ -85,14 +85,14 @@
 &lt;p&gt;Catty 크롬 익스텐션은 &lt;a href=&quot;https://chrome.google.com/webstore/detail/catty-web-clipper/kjajbpgmgnojjjjihidkagemppicbjpg&quot;&gt;https://chrome.google.com/webstore/detail/catty-web-clipper/kjajbpgmgnojjjjihidkagemppicbjpg&lt;/a&gt;에서 다운받을 수 있다.&lt;/p&gt;
 
 &lt;h3 id=&quot;모바일앱&quot;&gt;모바일앱&lt;/h3&gt;
-&lt;hr /&gt;
+
 &lt;p&gt;모바일앱에서도 다양한 타입의 자료를 추가할 수 있다. 특히 바로가기 기능을 통해 앱을 열지 않고 상단바의 버튼 클릭으로 자료를 추가할 수도 있다.&lt;/p&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/catty_introduce7.png&quot; width=&quot;60%&quot; /&gt;
 &lt;/div&gt;
 
 &lt;h3 id=&quot;웹앱&quot;&gt;웹앱&lt;/h3&gt;
-&lt;hr /&gt;
+
 &lt;p&gt;웹앱에서는 아래 그림의 화살표가 가리키는 패널에 파일을 드래그 드롭으로 끌어다 놓거나 버튼을 클릭하여 자료를 추가할 수 있다.&lt;/p&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/catty_introduce3.png&quot; width=&quot;100%&quot; /&gt;
@@ -100,11 +100,11 @@
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;2-리소스-하이라이트&quot;&gt;&lt;strong&gt;(2) 리소스 하이라이트&lt;/strong&gt;&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;또한 Catty에서는 리소스 하이라이트 기능을 제공한다. 수집한 리소스에서 특히 중요한 부분을 기록하고, 또한 이렇게 하이라이트한 부분을 통해서 자료 검색도 가능하다. 각각의 자료 타입에 대한 하이라이트 사용 예시는 아래에서 확인할 수 있다.&lt;/p&gt;
+&lt;p&gt; 
+또한 Catty에서는 리소스 하이라이트 기능을 제공한다. 수집한 리소스에서 특히 중요한 부분을 기록하고, 또한 이렇게 하이라이트한 부분을 통해서 자료 검색도 가능하다. 각각의 자료 타입에 대한 하이라이트 사용 예시는 아래에서 확인할 수 있다.&lt;/p&gt;
 
 &lt;h3 id=&quot;북마크-하이라이트&quot;&gt;북마크 하이라이트&lt;/h3&gt;
-&lt;hr /&gt;
+
 &lt;p&gt;Catty 웹에서 수집한 북마크 자료를 보다 읽기 편한 읽기모드로 확인할 수 있다. 이 읽기모드에서 중요한 내용을 드래그 하면 하이라이트 팝업이 뜬다. 여기서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add highlight&lt;/code&gt; 버튼을 누르면 북마크 하이라이트가 추가된다.&lt;/p&gt;
 
 &lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
@@ -115,7 +115,7 @@
 &lt;/div&gt; --&gt;
 
 &lt;h3 id=&quot;유튜브-하이라이트&quot;&gt;유튜브 하이라이트&lt;/h3&gt;
-&lt;hr /&gt;
+
 &lt;p&gt;Catty 웹에서 수집한 북마크 자료를 보다 읽기 편한 읽기모드로 확인할 수 있다. 이 읽기모드에서 중요한 내용을 드래그 하면 하이라이트 팝업이 뜬다. 여기서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add highlight&lt;/code&gt; 버튼을 누르면 북마크 하이라이트가 추가된다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
@@ -123,7 +123,7 @@
 &lt;/div&gt;
 
 &lt;h3 id=&quot;pdf-하이라이트&quot;&gt;PDF 하이라이트&lt;/h3&gt;
-&lt;hr /&gt;
+
 &lt;p&gt;업로드한 PDF 파일이나 북마크 중 url이 ‘.pdf’로 끝나는 자료는 PDF 최적화 보기가 제공된다. 이 PDF view에서 북마크 때와 마찬가지로 중요한 내용을 드래그 한 뒤 메모를 추가하여 하이라이트를 남길 수 있다.&lt;/p&gt;
 &lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
   &lt;source src=&quot;/assets/img/post_images/catty_introduce4.mov&quot; type=&quot;video/webm&quot; /&gt;
@@ -131,8 +131,8 @@
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;3-노트-작성&quot;&gt;&lt;strong&gt;(3) 노트 작성&lt;/strong&gt;&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;이제 이렇게 수집한 자료들을 듀얼뷰로 동시에 확인하며 노트를 작성할 수 있다! 앞서 모은 자료들 중 노트를 쓸 때 참고하고 싶은 자료들의 폴더와 태그를 지정하면 그 자료들을 참고할 수 있다.&lt;/p&gt;
+&lt;p&gt; 
+이제 이렇게 수집한 자료들을 듀얼뷰로 동시에 확인하며 노트를 작성할 수 있다! 앞서 모은 자료들 중 노트를 쓸 때 참고하고 싶은 자료들의 폴더와 태그를 지정하면 그 자료들을 참고할 수 있다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/catty_introduce9.png&quot; width=&quot;70%&quot; /&gt;
@@ -184,38 +184,46 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
     </entry>
   
     <entry>
-      <title type="html">(작성중) Dropout</title>
-      <link href="http://localhost:4000/Dropout" rel="alternate" type="text/html" title="(작성중) Dropout" />
+      <title type="html">Dropout</title>
+      <link href="http://localhost:4000/Dropout" rel="alternate" type="text/html" title="Dropout" />
       <published>2022-05-07T17:32:00+09:00</published>
       <updated>2022-05-07T17:32:00+09:00</updated>
       <id>http://localhost:4000/Dropout</id>
       <content type="html" xml:base="http://localhost:4000/Dropout">&lt;p&gt;Dropout은 &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.&lt;/p&gt;
 
 &lt;h2 id=&quot;solution-of-overfitting&quot;&gt;Solution of Overfitting&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
+
 &lt;p&gt;일반적으로 머신 러닝에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;the curse of dimensionality&lt;/code&gt;라는 이야기를 한다. 요약하면 ‘더 많은 파라미터’, ‘더 복잡한 모델’은 데이터의 수가 적을 경우 거의 암기해버리기 때문에 문제가 된다는 얘기이다.
 이런 경우가 Overfitting이라고 불리며, 이러한 Overfitting을 방지하기 위한 방법은 크게 아래 두가지 방법이 있다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;데이터 수 늘려주기
-Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것이다. 데이터의 수가 부족하므로 보편적인 분류를 하지 못하고 훈련데이터에 너무 많은 영향을 받게 된다. 따라서 더 많은 데이터로 학습을 돌려주면 Overfitting을 어느 정도 방지할 수 있다. 하지만 보통의 경우 데이터를 수집하는 것이 매우 비싼 과정이기 때문에 이 방법은 사용하기 어렵다.&lt;/p&gt;
+    &lt;p&gt;데이터 수 늘려주기&lt;/p&gt;
+
+    &lt;p&gt;Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것이다. 데이터의 수가 부족하므로 보편적인 분류를 하지 못하고 훈련데이터에 너무 많은 영향을 받게 된다. 따라서 더 많은 데이터로 학습을 돌려주면 Overfitting을 어느 정도 방지할 수 있다. 하지만 보통의 경우 데이터를 수집하는 것이 매우 비싼 과정이기 때문에 이 방법은 사용하기 어렵다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Regularization
-다음으로 Regularization을 사용하여 Overfitting을 방지할 수 있다. &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서 소개한 weight decay도 이 Regularization 기법에 포함된다. Regularization은 모델이 학습 데이터에 지나치게 의존하지 않도록 panelty를 부과하는 것이다. 깊은(deep) 모델 일 수록 representation 능력이 너무 좋아 쉽게 Overfitting이 될 수 있다. 이를 방지하기 위해 Regularization 기법들은 일부러 representation 성능에 제한을 주는 것이다. 이 글의 토픽인 Dropout도 Regularization 방법 중 하나이다.&lt;/p&gt;
+    &lt;p&gt;Regularization&lt;/p&gt;
+
+    &lt;p&gt;다음으로 regulariztion을 사용하여 Overfitting을 방지할 수 있다. &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서 소개한 weight decay도 이 regularization 기법에 포함된다. Regularization은 모델이 학습 데이터에 지나치게 의존하지 않도록 panelty를 부과하는 것이다. 깊은(deep) 모델 일 수록 representation 능력이 너무 좋아 쉽게 Overfitting이 될 수 있다. 이를 방지하기 위해 regularization 기법들은 일부러 representation 성능에 제한을 주는 것이다. 이 글의 토픽인 Dropout도 regularization 방법 중 하나이다.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt; &lt;/p&gt;
-&lt;h2 id=&quot;committe-machine&quot;&gt;Committe Machine&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;Ensemble average&lt;/p&gt;
+&lt;h2 id=&quot;committee-machine&quot;&gt;Committee Machine&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+ &lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/dropout3.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;Committee Machine은 그림과 같이 서로 다른 network 집단을 만든 다음에 각각 독립적으로 학습시킨 뒤, 마지막에 합쳐서 결과를 내는 방법이다. 이런 방식을 Ensemble average라고 한다. 마치, 전무가 한 명에게 물어보는 것보다 전문가 여러명에게 물어본 후 결과를 취합하면 예상치 못한 bias나 오류를 방지할 수 있는 겻과 같다.&lt;/p&gt;
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;dropout&quot;&gt;Dropout&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;Committe Machine의 예처럼 학습을 할 때, 서로 다른 학습데이터를 통해 모델을 학습시키거나 모델이 서로 다른 구조를 가지면 학습 성능을 개선할 수 있다. 이런 방법을 Model Combination이라고 한다.
+&lt;p&gt;&lt;br /&gt;
+ 
+Committe Machine의 예처럼 학습을 할 때, 서로 다른 학습데이터를 통해 모델을 학습시키거나 모델이 서로 다른 구조를 가지면 학습 성능을 개선할 수 있다. 이런 방법을 Model Combination이라고 한다.
 하지만 모델이 복잡한 경우 하나의 모델을 훈련시키는 것도 어려운데 여러개의 네트워크를 훈련시키는 것은 매우 어렵다. 또한 이렇게 학습을 시켰다고 해도 이렇게 학습된 모델을 실행할 때도 연산 시간이 오래걸린다.&lt;/p&gt;
 
 &lt;p&gt;따라서 Dropout 기법은 모델을 여러개 만들 지 않고 모델 결합이 여러 형태를 가지게 하여 Model Combination과 비슷한 효과를 내게 한다. 네트워크를 학습하는 동안 랜덤하게 일부 뉴런을 생략해버리면, 뉴런의 조합의 지수함수 만큼 다양한 모델을 학습 시키는 것과 비슷해진다. n개의 뉴런이 있다고 하면 $2^{n}$개의 서로 다른 모델이 생성된다.&lt;/p&gt;
@@ -226,33 +234,114 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/dropout1.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
-
-&lt;h3 id=&quot;probabilistic-apporach&quot;&gt;Probabilistic apporach&lt;/h3&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/dropout2.png&quot; width=&quot;100%&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/dropout4.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
-&lt;h3 id=&quot;combinatorial-approach&quot;&gt;Combinatorial approach&lt;/h3&gt;
 
+&lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;dropout-효과&quot;&gt;Dropout 효과&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;그렇다면 이런 방식으로 어떻게 regulation 효과를 얻을 수 있는 것일까?&lt;/p&gt;
+&lt;p&gt; 
+그렇다면 이런 방식으로 어떻게 regulation 효과를 얻을 수 있는 것일까?&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;co-adaptation 방지
-먼저 학습을 시키다보면, 학습 데이터에 의해 각각의 weight들이 서로&lt;/li&gt;
-  &lt;li&gt;hidden neuron들의 activity가 좀 더 드문드문(sparsity) 해진다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;co-adaptation 방지&lt;/p&gt;
+
+    &lt;p&gt;먼저 학습을 시키다보면, 학습 데이터에 의해 같은 층의 각각의 weight들이 서로 같아지는 경우가 생긴다. 이렇게 되면 이 이상 학습이 진행되어도 이 노드들은 같은 일을 수행하게 되어 불필요한 중복이 생겨 컴퓨팅 파워, 메모리 낭비로 이어진다. 드롭아웃은 임의로 노드들을 생략하는 데 이때, 이러한 상호 적응 중인 노드들 중 일부는 생략하고 일부는 생략하지 않게 되므로 학습 중 상호 적응이 발생한 노드들이 분리될 수 있어서 상호 적응 문제를 회피할 수 있게 된다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;hidden neuron들의 activity가 좀 더 드문드문(sparsity) 해진다.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;dropout-효과의-수학적-증명-single-linear-unit&quot;&gt;Dropout 효과의 수학적 증명 (single linear unit)&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;h3 id=&quot;dropout-효과의-수학적-증명-single-sigmoidal-unit&quot;&gt;Dropout 효과의 수학적 증명 (single sigmoidal unit)&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;h3 id=&quot;dropout-효과의-수학적-증명-deep-neural-networks&quot;&gt;Dropout 효과의 수학적 증명 (deep neural networks)&lt;/h3&gt;
-&lt;hr /&gt;
+&lt;h3 id=&quot;dropout의-regularization-효과의-수학적-증명-single-linear-unit&quot;&gt;Dropout의 regularization 효과의 수학적 증명 (single linear unit)&lt;/h3&gt;
+&lt;p&gt; 
+먼저 non-linear function이 없는 single linear unit에 대하여 dropout의 regularization 효과를 살펴볼 것이다. 이후 non-linear function이 있는 경우를 살펴볼 예정이다. multilayer 로의 확장도 비슷한 방식으로 여러 layer에 대하여 계산하여 얻을 수 있다.&lt;/p&gt;
 
-&lt;p&gt;참고 내용 출처 :&lt;/p&gt;
+&lt;p&gt;Dropout의 regularization 효과를 확인하기 위하여 Ensemble average를 사용하는 test network error와 training에서 사용되는 $2^{n}$개의 dropout network error을 비교해 볼 것이다. 즉,&lt;/p&gt;
+
+\[\begin{cases}
+ &amp;amp; E_{ENS} = \frac{1}{2}(t-O_{ENS})^{2} = \frac{1}{2}(t-\sum_{i=1}^{n}p_{i}w_{i}I_{i})^{2} \\
+ &amp;amp; E_{D} = \frac{1}{2}(t-O_{D})^{2} = \frac{1}{2}(t-\sum_{i=1}^{n}\delta _{i}w_{i}I_{i})^{2}
+\end{cases}\]
+
+&lt;p&gt;을 비교해본다.
+만약 test network error와 dropout network error가 거의 같다면 굳이 dropout network을 쓸 이유가 없어진다. 하나의 학습만 진행하는 test network 보다 학습에 훨씬 더 많은 시간이 소요되기 때문이다. 따라서, 이 두 네트워크의 에러를 비교해보는 것이 dropout의 필요성 및 정규화 효과를 확인해볼 수 있는 좋은 방법이 된다.&lt;/p&gt;
+
+&lt;p&gt;두 네트워크의 학습 과정을 비교해보기 위하여 gradient를 구하여 비교하였다.&lt;/p&gt;
+
+\[\begin{cases}
+ &amp;amp; \frac{\partial E_{ENS}}{\partial W_{i}} = -(t-O_{ENS})p_{i}I_{i} \\
+ &amp;amp; \frac{\partial E_{D}}{\partial W_{i}} = -(t-O_{D})\delta _{i}I_{i} = -t\delta _{i}I_{i}+w_{i}\delta _{i}^{2}I_{i}^{2}+\sum_{j\neq i}^{}w_{j}\delta _{i}\delta _{j}I_{i}I_{j}
+\end{cases}\]
+
+&lt;p&gt;이제, $E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right )$ 와 $E\left ( \frac{\partial E_{ENS}}{\partial w_{i}} \right )$ 를 구해보자.
+먼저, $E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right )$ 는&lt;/p&gt;
+
+\[E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right ) = -(t-E(O_{D}|\delta _{i}=1) )p_{i}I_{i}\]
+
+&lt;p&gt;이 때,&lt;/p&gt;
+
+\[E(\delta _{i}^{2}) = E(\delta _{i})=p_i ~(\because \delta _{i}=0, 1)\]
+
+&lt;p&gt;이므로,&lt;/p&gt;
+
+\[E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right ) = -tp_{i}I_{i}+w_{i}p_{i}I_{i}^{2}+\sum_{j\neq i}^{}w_{i}p_{i}p_{j}I_{i}I_{j}\]
+
+&lt;p&gt;또한, $\sum w_{i}p_{i}p_{j}I_{i}I_{j}=\sum_{k=1}^{n}p_{k}w_{k}I_{k} \times p_{i}I_{i} - w_{i}I_{i}^{2}p_{i} = O_{ENS}P_{i}I_{i}-w_{i}I_{i}^{2}p_{i}$ 이므로&lt;/p&gt;
+
+\[E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right ) = -(t-O_{ENS})p_{i}I_{i} + w_{i}I_{i}^{2}(p_{i})(1-p_{i})
+\\
+= \frac{\partial E_{ENS}}{\partial w_{i}}+w_{i}I_{i}^{2}Var\delta _{i}=\frac{\partial E_{ENS}}{\partial W_{i}}+w_{i}Var\left ( \delta _{i}I_{i} \right )\]
+
+\[\therefore  E_{D} = E_{ENS} + \frac{1}{2}\sum_{i=1}^{n}w_{i}^{2}I_{i}^{2}Var\delta _{i}\]
+
+&lt;p&gt;이 때, 이 식은 weight decay에서 $E=E_{0}+\alpha \left| w\right|^{2}$ 와 같이 generalization capability를 높이기 위하여 추가 loss term 을 더해준 것과 같은 형태이다. 따라서 Single linear unit에서, dropout network는 inference network(Ensemble average network)에 weight decay term을 추가한 것과 같다. 따라서 weight decay term을 추가하는 것과 동일하게 generalization 효과가 생긴다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dropout-regularization-효과의-수학적-증명-single-sigmoidal-unit&quot;&gt;Dropout regularization 효과의 수학적 증명 (single sigmoidal unit)&lt;/h3&gt;
+&lt;p&gt; 
+비슷한 방식으로, 이번에는 non-linear function이 있는 경우를 살펴보자.  non-linear function이 없는 경우와 마찬가지로 $\frac{\partial E_{ENS}}{\partial w_{i}}$ 와 $\frac{\partial E_{D}}{\partial w_{i}}$ 를 비교해서 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이 때, Error는 cross entropy loss function을 이용하였고, 따라서 다음의 에러 텀을 구할 수 있다.&lt;/p&gt;
+
+\[E = -(t-logO + (1-t)log(1-O)), ~~O=\sigma(s)=\frac{1}{(1+ce^{-\lambda s})}\]
+
+&lt;p&gt;이 때, $ \frac{\partial E}{\partial w} = \frac{\partial E}{\partial O} \frac{\partial O}{\partial S} \frac{\partial S}{\partial w} $ 이고,&lt;/p&gt;
+
+&lt;p&gt;$ \frac{\partial E}{\partial O} = -t \frac{1}{O} + (1-t) \frac{1}{1-O}, ~~\frac{\partial O}{\partial S} = \lambda O (1-O) $ 이므로,&lt;/p&gt;
+
+&lt;p&gt;$ \frac{\partial E}{\partial w} = -\lambda(t-O)\frac{\partial S}{\partial w} $ 이다.&lt;/p&gt;
+
+&lt;p&gt;따라서 두 gradient는,&lt;/p&gt;
+
+\[\begin{cases}
+ &amp;amp; \frac{\partial E_{ENS}}{\partial w_{i}} = \lambda(t-\sigma(U))p_{i}I_{i} = - \lambda  \left ( t-\sigma \left ( \sum_{j}^{}w_{j}p_{j}I_{j} \right ) \right )p_{i}I_{i} \\
+ &amp;amp; \frac{\partial E_{D}}{\partial w_{i}}  = \lambda(t- O)\delta _{i}I_{i} = - \lambda  \left ( t-\sigma \left ( \sum_{j}^{}w_{j}\delta _{j}I_{j} \right ) \right )\delta _{i}I_{i}
+\end{cases}\]
+
+&lt;p&gt;이 된다.&lt;/p&gt;
+
+&lt;p&gt;마지막으로 $E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right )$ 을 계산하면,&lt;/p&gt;
+
+\[E\left ( \frac{\partial E_{D}}{\partial w_{i}} \right ) = -\lambda \left ( t - E \left [ \sigma \left ( \sum_{j}^{} w_{j}\delta _{j} I_{j} | \delta_{i} = 1 \right ) \right ] \right )p_{i}I_{i}
+\\
+\approx -\lambda\left ( t-\sigma \left ( \sum_{j}^{} w_{j}p_{j}I_{j} - w_{i}p_{i}I_{i} + w_{i}I_{i}\right ) \right )p_{i}I_{i}
+\\
+\approx -\lambda \left ( t-\sigma(S_{ENS}) - \sigma^{&apos;}(S_{ENS})I_{i}w_{i}(1-p_{i}) \right )p_{i}I_{i}
+\\
+= \frac{\partial E_{ENS}}{\partial w_{i}}+\lambda \sigma ^{&apos;}(U)w_{i}Var(\delta _{i}I_{i}))\]
+
+\[\therefore  E_{D} = E_{ENS} + \frac{1}{2} \lambda \sigma ^{&apos;}(U)\sum_{i=1}^{n}w_{i}^{2}I_{i}^{2}Var\left ( \delta _{i} \right )\]
+
+&lt;p&gt;따라서, 이 경우도 만찬가지로 Ensemble average network에 weight decay term을 사용한 것과 형태가 같고, 따라서 정규화 역할을 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+ 
+참고 내용 출처 :&lt;/p&gt;
 &lt;ul&gt;
+  &lt;li&gt;KAIST EE538 Neural Networks lecture&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;amp;blogId=laonple&amp;amp;logNo=220818841217&quot;&gt;https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;amp;blogId=laonple&amp;amp;logNo=220818841217&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hyeonnii.tistory.com/254&quot;&gt;https://hyeonnii.tistory.com/254&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
 
       
@@ -295,8 +384,9 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;추천-알고리즘-분류&quot;&gt;추천 알고리즘 분류&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;먼저, MF는 추천 알고리즘의 한 종류인데, 추천 알고리즘 중 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;모벨 기반 알고리즘&lt;/code&gt;에 속한다. 이 모델 기반의 알고리즘 이외에도 메모리 기반의 추천 알고리즘도 있다. 이 둘의 차이점을 간단히 정리하면 아래와 같다.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+먼저, MF는 추천 알고리즘의 한 종류인데, 추천 알고리즘 중 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;모벨 기반 알고리즘&lt;/code&gt;에 속한다. 이 모델 기반의 알고리즘 이외에도 메모리 기반의 추천 알고리즘도 있다. 이 둘의 차이점을 간단히 정리하면 아래와 같다.&lt;/p&gt;
 
 &lt;h3 id=&quot;메모리-기반-추천-알고리즘-memory-based-rs&quot;&gt;메모리 기반 추천 알고리즘 (memory-based RS)&lt;/h3&gt;
 
@@ -315,8 +405,9 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;matrix-factorizationmf-알고리즘-원리&quot;&gt;Matrix Factorization(MF) 알고리즘 원리&lt;/h2&gt;
-
-&lt;p&gt;MF 알고리즘은 유저가 아이템에 대해 평가한 정보를 담고 있는 (user x item) 데이터 행렬을 (user x feature)의 유저 행렬과 (item x freature)의 아이템 행렬로 쪼개서 분석하는 방식을 의미한다.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+MF 알고리즘은 유저가 아이템에 대해 평가한 정보를 담고 있는 (user x item) 데이터 행렬을 (user x feature)의 유저 행렬과 (item x freature)의 아이템 행렬로 쪼개서 분석하는 방식을 의미한다.&lt;/p&gt;
 
 &lt;p&gt;좀 더 formal하게는 R: [user x item] 형태의 full-matrix(평가 데이터)를&lt;/p&gt;
 
@@ -394,7 +485,7 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;mf-기반-추천-알고리즘-과정&quot;&gt;MF 기반 추천 알고리즘 과정&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;그렇다면 주어진 user, item의 관계를 P, Q로 어떻게 분해할 수 있을까? R을 P, Q로 분해하는 알고리즘을 간단히 나타내면 아래와 같다.&lt;/p&gt;
 
@@ -409,7 +500,9 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;sgdstochastic-gradient-decent를-사용한-mf-알고리즘&quot;&gt;SGD(Stochastic Gradient Decent)를 사용한 MF 알고리즘&lt;/h2&gt;
-&lt;p&gt;SGD 방법을 적용해서 P, Q 행렬을 최적화하는 방법을 알아보자&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+SGD 방법을 적용해서 P, Q 행렬을 최적화하는 방법을 알아보자&lt;/p&gt;
 
 &lt;h3 id=&quot;objective-function&quot;&gt;Objective Function&lt;/h3&gt;
 &lt;p&gt;P, Q를 학습할 때 사용되는 목적함수는 다음과 같다. 이 목적 함수는 두가지 텀으로 나뉜다.&lt;/p&gt;
@@ -439,8 +532,9 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;mf-최적-파라미터-찾기&quot;&gt;MF 최적 파라미터 찾기&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;쉽게 예상할 수 있듯이 잠재요인수 K와 iteration에 따라 예측의 정확도가 달라질 것이다. 최적의 K와 iteration은 다음의 방법으로 구해볼 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+쉽게 예상할 수 있듯이 잠재요인수 K와 iteration에 따라 예측의 정확도가 달라질 것이다. 최적의 K와 iteration은 다음의 방법으로 구해볼 수 있다.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;K를 50~260까지 넓은 범위에서 10간격으로 RMSE를 계산해 최적값을 찾는다. 이 때, iteration으로 충분히 큰 수를 준다.&lt;/li&gt;
@@ -452,8 +546,9 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;mf-vs-svd&quot;&gt;MF vs SVD&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;MF와 SVD는 모두 데이터 분석과 기계학습에 널리 사용되고 있고, 유사한 점이 많아 추천시스템 용어로 같은 의미로 사용이 되곤 한다.
+&lt;p&gt;&lt;br /&gt;
+ 
+MF와 SVD는 모두 데이터 분석과 기계학습에 널리 사용되고 있고, 유사한 점이 많아 추천시스템 용어로 같은 의미로 사용이 되곤 한다.
 결론부터 말하자면 명백히 둘은 다른 기법이고, 실제로 SVD기법은 추천시스템에서 거의 사용되지 않는다.&lt;/p&gt;
 
 &lt;p&gt;먼저, SVD 방식에서는 행렬이 3개로 분할되지만 MF 방식에서는 2개로 분해된다.
@@ -517,9 +612,8 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
       <updated>2022-05-05T10:13:00+09:00</updated>
       <id>http://localhost:4000/Jekyll%20%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90%20flow%20chart%EC%99%80%20%EC%88%98%EC%8B%9D%20%EB%84%A3%EA%B8%B0</id>
       <content type="html" xml:base="http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0">&lt;h2 id=&quot;add-flow-chart-using-mermaid&quot;&gt;Add flow chart using Mermaid&lt;/h2&gt;
-
+&lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;mermaid&quot;&gt;Mermaid?&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;p&gt;Mermaid is a JavaScript library which draws flowchart diagrams from script.&lt;/p&gt;
 
@@ -541,7 +635,6 @@ Overfitting의 원인 중 하나는 데이터의 양이 충분하지 않은 것�
 &lt;p&gt; &lt;/p&gt;
 
 &lt;h3 id=&quot;rendering-mermaid-in-jekyll&quot;&gt;Rendering Mermaid in jekyll&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;p&gt;This tech blog was made using the Jekyll Chipy theme.
 According to guide document for the Jekyll Chirpy theme, when writing a post, we can use mermaid by adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&apos;&apos;&apos;mermaid&lt;/code&gt; if the following is inserted on posting head.&lt;/p&gt;
@@ -586,13 +679,13 @@ Mermaid was successfuly rendered after entering this CDN in each html document. 
 &lt;p&gt; &lt;/p&gt;
 
 &lt;h2 id=&quot;adding-mathjax-mathematical-expression&quot;&gt;Adding MathJax mathematical expression&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;h3 id=&quot;mathjax&quot;&gt;MathJax?&lt;/h3&gt;
-&lt;hr /&gt;
 &lt;p&gt;MathJax is a cross-browser JavaScript library that uses MathML, LaTeX, and ASCIIMathML markup to display mathematical notation in a web browser. MathJax is provided as open source software under the Apache License.&lt;/p&gt;
 &lt;h3 id=&quot;rendering-mathjax-in-jekyll&quot;&gt;Rendering MathJax in jekyll&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;Similar to flow chart, it can be used by adding the following code to _includes/head.html.&lt;/p&gt;
+&lt;p&gt; 
+Similar to flow chart, it can be used by adding the following code to _includes/head.html.&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/x-mathjax-config&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;MathJax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Hub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
@@ -624,7 +717,7 @@ Mermaid was successfuly rendered after entering this CDN in each html document. 
       
 
       
-        <summary type="html">Add flow chart using Mermaid</summary>
+        <summary type="html">Add flow chart using Mermaid   Mermaid?</summary>
       
 
       
@@ -640,7 +733,7 @@ Mermaid was successfuly rendered after entering this CDN in each html document. 
       <content type="html" xml:base="http://localhost:4000/Prevent-Multi-layer-perceptron-Overfitting">&lt;p&gt;Looking at the existing multi-layer perceptron learning results, it can be seen that the training error continuously decreases as learning progresses. Decreasing error generally means the training is going well, but it may not always be the case. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Overfitting&lt;/code&gt; may be occuring, where the model follows too closely to the training data, and may not be able to perform as well on data outside the training data set.&lt;/p&gt;
 
 &lt;h2 id=&quot;checking-validation-error&quot;&gt;Checking Validation error&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;In order to check the overfitting, validation error should be checked together with training error. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;training error&lt;/code&gt; refers to errors that occurs during training with the training data, whereas &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;validation error&lt;/code&gt; refers to an error that occurs by predicting new data (validation data). In order to obtain &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;validation error&lt;/code&gt;, the data must first be divided into training dataset and test dataset. This can be done simply by using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;train_test_split&lt;/code&gt; function of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sklearn.model_selection&lt;/code&gt;.&lt;/p&gt;
 
@@ -704,12 +797,11 @@ Mermaid was successfuly rendered after entering this CDN in each html document. 
 &lt;p&gt; &lt;/p&gt;
 
 &lt;h2 id=&quot;prevent-overfitting-adding-early-stopping-term-and-weight-decay-term&quot;&gt;Prevent overfitting adding Early stopping term and weight decay term&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;Now that overfitting has been identified, let’s try to prevent it in several ways.&lt;/p&gt;
 
 &lt;h3 id=&quot;early-stopping&quot;&gt;Early stopping&lt;/h3&gt;
-&lt;hr /&gt;
 &lt;p&gt;Early stopping refers to a method of terminating training before the validation error in the graph above enters an increasing trend.&lt;/p&gt;
 
 &lt;p&gt;Below is the early stopping implementation code. When the validation error continues to increase 10 times in a row compared to the previous validation error value, learning is terminated.&lt;/p&gt;
@@ -729,7 +821,6 @@ Mermaid was successfuly rendered after entering this CDN in each html document. 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;weight-decay&quot;&gt;Weight decay&lt;/h3&gt;
-&lt;hr /&gt;
 
 &lt;p&gt;Overfitting can be avoided by applying weight decay. When learning, if the learning is carried out simply in the direction in which the loss function becomes smaller, the specific weight values ​​will rather increase and the result may deteriorate. Weight decay exerts a penalty when the weight becomes large in the loss function, so that the weight does not have a too large value during training. L1 regularization and L2 regularization are widely used as the penalty. In this implementation, the L2 method is used.&lt;/p&gt;
 
@@ -739,7 +830,7 @@ Mermaid was successfuly rendered after entering this CDN in each html document. 
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;final-mlp-training-code&quot;&gt;Final MLP training code&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;The final MLP code implementation is as follows.&lt;/p&gt;
 
@@ -927,7 +1018,7 @@ Mermaid was successfuly rendered after entering this CDN in each html document. 
       <content type="html" xml:base="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2">&lt;p&gt;This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.&lt;/p&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;This paper is based on the previous study with very similar settings but difference
@@ -943,7 +1034,7 @@ during training&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Single-Q SAC Algorithm : use SAC with some slight differences due to the method of combining imitation learning and reinforcement learning
@@ -955,7 +1046,7 @@ during training&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Although using pure SAC can result in a good performance, it still has a lower
 average accumulated reward after 100 episodes than their method.
@@ -1006,7 +1097,7 @@ average accumulated reward after 100 episodes than their method.
 &lt;p&gt;More specifically, in the image-based autonomous driving task, imitation learning and reinforcement learning are combined and used together to utilize each others’ strength. The difference between the two papers is that the first paper uses DDPG as reinforcement learning whereas the second paper uses SAC.&lt;/p&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;The problem of generating control decision given a monocular camera image and other auxiliary vehicle sensors’ outputs has aroused a lot of interest in recent years.&lt;/li&gt;
   &lt;li&gt;Conducting imitation learning towards given human policy might produce a relative well-performed policy
@@ -1023,9 +1114,9 @@ average accumulated reward after 100 episodes than their method.
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
-&lt;hr /&gt;
-
-&lt;p&gt;(1) pre-training(imitation learning) -&amp;gt; (2) fine-tuning(DDPG)&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+(1) pre-training(imitation learning) -&amp;gt; (2) fine-tuning(DDPG)&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Network architecture
     &lt;div style=&quot;text-align: left&quot;&gt;
@@ -1073,7 +1164,7 @@ average accumulated reward after 100 episodes than their method.
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;experiments&quot;&gt;Experiments&lt;/h2&gt;
-&lt;hr /&gt;
+&lt;p&gt; &lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Imitation learning phase
