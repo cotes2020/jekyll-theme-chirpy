@@ -122,15 +122,15 @@ We have proposed that the general equations of motion for physical fields are,
 
 $$\frac{\partial \mathcal{L}}{\partial \widetilde{\phi}^a} - D_\mu \widetilde{\pi}^\mu_{\phantom{\mu} a} = 0$$
 
-Now, let us find a suitable gauge-invariant Lagrangian $$\widehat{\mathcal{L}}$$ which indeed gives the above equations of motion.
+Now, let us find a suitable gauge-invariant Lagrangian $$\widehat{\mathcal{L}}$$ which yields equations of motion of the above form (thereby not requiring us to switch the gauge).
 
-Firstly, we can say from the form of the equations of motion that the divergence of the new conjugate momenta, say $$\widehat{\pi}^\mu_{\phantom{\mu} a}$$, is
+Firstly, we can say from the form of the equations of motion that the divergence of the new conjugate momenta, say $$\widehat{\pi}^\mu_{\phantom{\mu} a}$$, are
 
 $$\nabla_\mu \widehat{\pi}^\mu_{\phantom{\mu} a} = D_\mu \widetilde{\pi}^\mu_{\phantom{\mu} a}$$
 
 which implies,
 
-$$\frac{\partial \widehat{\mathcal{L}}}{\partial \widetilde{\phi}^a} = \frac{\partial \mathcal{L}}{\partial \widetilde{\phi}^a}$$
+$$\frac{\partial \widehat{\mathcal{L}}}{\partial \phi^a} = \frac{\partial \mathcal{L}}{\partial \widetilde{\phi}^a}$$
 
 As the dependency of both Lagrangians on the field is the same, we have in general,
 
