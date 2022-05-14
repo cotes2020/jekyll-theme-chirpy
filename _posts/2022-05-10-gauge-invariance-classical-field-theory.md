@@ -140,12 +140,13 @@ Since the new Lagrangian is gauge-invariant, the only derivatives of the field i
 
 $$\widehat{\mathcal{L}} = \mathcal{L} \left( \phi, D_\mu \phi \right)$$
 
-We define the covariant derivative of a general field in the following manner (chain rule), so that the properties of a derivative are retained and covariant derivatives can meaningfully reduce to geometric covariant derivatives in a gauge where $$G^b_{\phantom{b} \mu a} = 0$$,
+We define the covariant derivative of a general scalar field in the following manner (chain rule), so that the properties of a derivative are retained and covariant derivatives can meaningfully reduce to geometric covariant derivatives in a gauge where $$G^b_{\phantom{b} \mu a} = 0$$,
 
 $$
 \begin{align}
 D_\mu \phi & = \frac{\partial \phi}{\partial \phi_a} D_\mu \phi_a \\
- & = \frac{\partial \phi}{\partial \phi_a} \left( \partial_\mu \phi_a - \phi_b G^b_{\phantom{b} \mu a} \right)
+ & = \frac{\partial \phi}{\partial \phi_a} \left( \partial_\mu \phi_a - \phi_b G^b_{\phantom{b} \mu a} \right) \\
+ & = \partial_\mu \phi - \phi_b G^b_{\phantom{b} \mu a} \frac{\partial \phi}{\partial \phi_a}
 \end{align}
 $$
 
