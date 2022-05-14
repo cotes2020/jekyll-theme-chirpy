@@ -53,14 +53,9 @@ $$\partial_\mu \frac{\partial \widetilde{\phi}_a}{\partial \phi_c} = 0$$
 
 Lastly, for the above to be generally true, the fields in the new gauge must be of the form,
 
-$$
-\begin{align}
-\widetilde{\phi}_a & = C^b_{\phantom{b} a} \phi_b \\
-\text{where} \: \partial_\mu C^b_{\phantom{b} a} & = 0
-\end{align}
-$$
+$$\widetilde{\phi}_a = C^b_{\phantom{b} a} \phi_b \\$$
 
-This is precisely the notion of linearity: linear combinations of solution fields obey the same equations of motion as the original.
+where $$\partial_\mu C^b_{\phantom{b} a} = 0$$. This is precisely the notion of linearity: linear combinations of solution fields obey the same equations of motion as the original.
 
 ## Conclusion
 
