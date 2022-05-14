@@ -61,6 +61,4 @@ where $$\partial_\mu C^b_{\phantom{b} a} = 0$$. This is precisely the notion of 
 
 We have thus found a new way to interpret the above statement on linearity. Namely, linear combinations constitute the most general gauge transformations under which a given Lagrangian is automatically gauge-invariant (as covariant derivatives reduce to the usual geometric covariant derivatives).
 
-However, such gauge transformations are somewhat boring; what if we consider linear combinations, but with the coefficients $$C^b_{\phantom{b} a}$$ varying across spacetime? What are the features of such a field theory?
-
-Answering that will bring us to an exciting premise in field theory: conformal symmetry. Stay tuned for a post on the same, in the near future! Thanks for reading :)
+Thanks for reading! :)
