@@ -7,3 +7,4 @@ gem "slugify", "~> 1.0.7"
 
 gem "webrick", "~> 1.7"
 gem "html-proofer"
+gem 'jekyll-sitemap'
