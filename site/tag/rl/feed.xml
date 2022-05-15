@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="http://localhost:4000/tag/rl/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-05-15T19:06:19+09:00</updated>
+  <id>http://localhost:4000/tag/rl/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">PIGBEAN Tech blog | </title>
+  
+
+  
+    <subtitle>Seize the day</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">(Reinforcement learning) Value Function Approximation</title>
+      <link href="http://localhost:4000/(RL)-Value-Function-Approximation" rel="alternate" type="text/html" title="(Reinforcement learning) Value Function Approximation" />
+      <published>2022-05-13T13:23:00+09:00</published>
+      <updated>2022-05-13T13:23:00+09:00</updated>
+      <id>http://localhost:4000/(RL)%20Value%20Function%20Approximation</id>
+      <content type="html" xml:base="http://localhost:4000/(RL)-Value-Function-Approximation">&lt;p&gt;이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다. 이 글은 David Silver의 강화학습 강의와 KAIST EE619 강화학습 수업에서 공부한 내용을 바탕으로 작성하였다.&lt;/p&gt;
+
+&lt;h2 id=&quot;tabular-methods&quot;&gt;Tabular Methods&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;규모가 작은 MDP 모델의 경우, state와 action을 Table에 저장하여 사용할 수 있다. 더 정확히는 value function을 사용하는 DP 문제의 경우, 모든 state s는 V(s) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vector&lt;/code&gt;을 가질 것이다. 또한, action-value function을 사용하는 MC, TD의 경우 모든 state-action 쌍 (s, a)에 대하여 Q(s, a) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;matrix&lt;/code&gt;가 존재한다. 이렇게 행렬로 만들어 푸는 방식을 &lt;strong&gt;Tabular Methods&lt;/strong&gt;라고 한다. 하지만 이런 Tabular Method는 state와 action의 차원이 무지하게 커지는 실생활 문제에 Generalization을 할 수 없다.&lt;/p&gt;
+
+&lt;p&gt;다음의 문제들을 생각해보자.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Backgammon: $10^{20}$ states&lt;/li&gt;
+  &lt;li&gt;Compoter Go: $10^{170}$ states&lt;/li&gt;
+  &lt;li&gt;Robot: continuous state space&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이런 경우, 특히나 continuous state space를 가지는 경우에는 특히나 Table만으로 핸들링이 불가능하고 따라서 새로운 방법이 필요하다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;parameterizing-value-function&quot;&gt;Parameterizing value function&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+그렇다면 실생활에 강화학습을 적용하기 위해서는 어떤 방법을 이용해야 할까? state와 action을 table로 구현하는 대신에, $ w$라는 새로운 변수를 통해 &lt;strong&gt;value function&lt;/strong&gt;을 함수화함으로써 문제를 해결할 수 있다.
+먼저, value function을 function approximation을 이용하여 추정해준다.&lt;/p&gt;
+
+\[\hat{V}_{w}(s) \approx V^{\pi}(s) ~~ or ~~\hat{Q}_{w}(s, a) \approx V^{\pi}(s, a)\]
+
+&lt;p&gt;다음으로, seen states(방문한 states)로 부터 unseen states(아직 방문하지 않은 states)로 일반화시킨다.
+마지막으로 MC나 TD learning을 이용하여 파라미터 $w$를 학습하면 value function의 optimal한 추정치를 얻을 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이를 그림으로 다시 확인해보면,&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/value_approximation.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;state가 함수의 input으로 넣고, $w$라는 parameter를 지나 action value function을 output으로 받는 과정이 된다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;on-policy-prediction-with-function-approximation&quot;&gt;On-Policy Prediction with Function Approximation&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h3 id=&quot;loss-function-mean-square-value-errormsve&quot;&gt;Loss Function: Mean-Square Value Error(MSVE)&lt;/h3&gt;
+&lt;p&gt;On-Policy Prediction problem은 state value function을 추정해나가는 과정이다.
+True value function $V^{\pi}(s)$ 와 Approximation function $\hat{V} _{w}(s)$ 가 있을 때, 두 함수가 최대한 같아지도록 $\hat{V} _{w}(s)$ 을 학습시키는 것이 목표이다.
+이 때, 두 함수의 차이를 Mean-Square Value Error(MSVE)으로 가늠해볼 수 있다.&lt;/p&gt;
+
+\[J(w) = MSE(w) = E_{\pi} = \left [ V^{\pi}(s) - \hat{V}_{w}(s) \right ]^{2} \\ = \sum_{s\in S}^{}\mu^{\pi}(s)\left [ V^{\pi}(s) - \hat{V}_{w}(s) \right ]^{2}\]
+
+&lt;p&gt;여기서 $\mu^{\pi}(s)$ 는 $\pi$ 에 대한 on-policy distribution 이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;on-policy-distribution&quot;&gt;On-Policy Distribution&lt;/h3&gt;
+&lt;p&gt;MSVE는 두 함수 간의 weighted $L_{2}$ distance 이다. 이떄 각 s에 대해서 weighting importance는 on-policy distribution $d^{\pi}(s)$ 에 의해 주어진다.
+$d^{\pi}(s)$ 을 정의하는 한 가지 방법은&lt;/p&gt;
+
+&lt;h3 id=&quot;stochastic-gradient-descent&quot;&gt;Stochastic Gradient Descent&lt;/h3&gt;
+&lt;p&gt;학습은 정의된 MSVE에 대해서 stochastic gradient descent 방법을 통해 진행해준다. Stochastic gradient의 목표는 MSE loss를 최소화하는 vector $w$ 를 찾는 것이다.
+Stochastic Gradient Descent을 수행하는 과정은 다음과 같다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Mean-Square Loss Function: 미분가능한 함수로 주어진다.
+    &lt;ul&gt;
+      &lt;li&gt;만약 loss function이 미분가능하지 않다면, subgradient를 사용한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;True Gradient: 먼저 loss function의 true gradient를 계산한다.
+    &lt;ul&gt;
+      &lt;li&gt;True gradient : $\sum_{s}^{}\mu^{\pi}(s) \left [ \left ( V^{\pi}(s) - \hat{V_{w}}(s) \right) \bigtriangledown \hat{V_{w}}(s) \right ]$&lt;/li&gt;
+      &lt;li&gt;weight update : $ w_{t+1} = w_{t} + \alpha \sum_{s}^{}\mu^{\pi}(s) \left [ \left ( V^{\pi}(s) - \hat{V_{w}}(s) \right) \bigtriangledown \hat{V_{w}}(s) \right ] $&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Sampling the Gradient: 이후 샘플을 통해 stochastic gradient 방법으로 true gradient를 추정한다. 이런 방식을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sample the gradient&lt;/code&gt; 라고 한다. 2번에서 True expectation $\sum_{s\in S}^{}\mu^{\pi}(s)$ 이 &lt;strong&gt;$\mu^{\pi}(s)$ 로 부터 생성된 하나의 샘플 $s_{t}$ 로 계산한 sample mean&lt;/strong&gt; 으로 대체된다.
+    &lt;ul&gt;
+      &lt;li&gt;Stochastic gradient : $\left [ \left ( V^{\pi}(s_{t}) - \hat{V_{w}}(s_{t}) \right) \bigtriangledown \hat{V_{w}}(s_{t}) \right ]$&lt;/li&gt;
+      &lt;li&gt;weight update : $ w_{t+1} = w_{t} + \alpha \left ( V^{\pi}(s_{t}) - \hat{V_{w}}(s_{t}) \right) \bigtriangledown \hat{V_{w}}(s_{t}) $&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;$\mu^{\pi}(s)$로 부터 샘플을 충분히 많이 추출한다면, sample-based SG는 true gradient 로 수렴한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;on-policy-mc-td-learning&quot;&gt;On-Policy MC, TD Learning&lt;/h3&gt;
+&lt;p&gt;gradient를 계산하기 위해서, $s_{t}, V^{\pi}(s_{t})$ 의 true value가 필요하지만 이 값은 알기 힘들다. 따라서 $V^{\pi}(s_{t})$ 를 추정치인 MC, TD or TD( $\lambda$ ) 추청값으로 대체한다. 각각의 추정치로 대체하면,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Gradient MC for Value Function Estimation: $ w_{t+1} = w_{t} + \alpha \left ( G_{t} - \hat{V_{w}}(s_{t}) \right) \bigtriangledown \hat{V_{w}}(s_{t}) $&lt;/li&gt;
+  &lt;li&gt;Semi-Gradient TD for Value Function Estimation: $ w_{t+1} = w_{t} + \alpha \left ( r_{t+1} + \gamma \hat{V_{w}}(s_{t+1}) - \hat{V_{w}}(s_{t}) \right) \bigtriangledown \hat{V_{w}}(s_{t}) $&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;on-policy-control-with-function-approximation&quot;&gt;On-Policy Control with Function Approximation&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;prediction-vs-control&quot;&gt;Prediction vs Control&lt;/h3&gt;
+&lt;p&gt;On-Policy Control을 다루기에 앞서 Prediction과 Control의 차이를 복습해보자. Perdiction과 Control의 차이는 policy에 대한 목표와 관련이 있다.&lt;/p&gt;
+
+&lt;p&gt;먼저 RL에서 prediction task는 policy가 주어진 상황에서 이 policy가 얼마나 잘 동작하는 지를 측정하는 것을 목표로 한다. 따라서, 주어신 state에서 total reward를 예측하기 위해서 $\pi(\left.\begin{matrix}
+a\end{matrix}\right|s)$ 가 고정되어 있다.
+반면에 control task는 policy가 고정되어 있지 않으며 최적 policy를 찾는 것을 목표로 한다. 즉, 임의의 주어진 상태에서 total reward의 예측값을 가장 크게 하는 policy $\pi(\left.\begin{matrix}
+a\end{matrix}\right|s)$ 를 찾는다.&lt;/p&gt;
+
+&lt;h3 id=&quot;control-with-value-function-approximation&quot;&gt;Control with Value Function Approximation&lt;/h3&gt;
+&lt;p&gt;Control 과정은 다시 Policy evaluation 과정과 Policy improvement 과정으로 나뉜다. 이 때, model-free를 위해서 action-value function을 사용한다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/function_approx1.jpeg&quot; width=&quot;80%&quot; /&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Policy evaluation : $\hat{Q}_{w}$ 를 $Q^{\pi}$로 추정&lt;/li&gt;
+  &lt;li&gt;Policy improvement : action value function에 $ \epsilon - greedy $ 한 action을 취함으로써 improve 진행&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;loss-function-mean-square-value-errormsve-1&quot;&gt;Loss Function: Mean-Square Value Error(MSVE)&lt;/h3&gt;
+&lt;p&gt;Prediction 때와 똑같이 MSVE를 구해보면,&lt;/p&gt;
+
+\[J(w) = MSE(w) = E_{\pi} = \left [ Q^{\pi}(s) - \hat{Q}_{w}(s) \right ]^{2} \\ = \sum_{s, a}^{}\mu^{\pi}(s, a)\left [ Q^{\pi}(s, a) - \hat{Q}_{w}(s, a) \right ]^{2}\]
+
+\[- \frac{1}{2} \bigtriangledown  J(w) = \sum_{s, a}^{}\mu^{\pi}(s, a)\left ( Q^{\pi}(s, a) - \hat{Q}_{w}(s, a) \right ) \bigtriangledown \hat{Q}_{w}(s, a)\]
+
+&lt;h3 id=&quot;stochastic-gradient-descent-1&quot;&gt;Stochastic Gradient Descent&lt;/h3&gt;
+&lt;p&gt;policy $\pi$ 에서 샘플링한 $(s_{t}, a_{t})$에 대하여 MSVE 값을 이용해서 stochastic gradient descent or semi-gradient를 수행한다.&lt;/p&gt;
+
+\[\Delta w =  - \hat{\frac{1}{2}\bigtriangledown J(w)} = (Q^{\pi}(s_{t}, a_{t}) - \hat{Q}_{w_{t}}(s_t, a_{t})) \bigtriangledown \hat{Q}_{w_{t}}(s_t, a_{t})\]
+
+&lt;p&gt;또한, Prediction 마찬가지로 true action value function $ Q^{\pi}(s_{t}, a_{t}) $ 을 알 수 없기 때문에 MC, TD target을 사용한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;For gradient MC:
+ $ w_{t+1} = w_{t} + \alpha \left ( G_{t} - \hat{Q_{w}}(s_{t}, a_{t}) \right) \bigtriangledown \hat{Q_{w}}(s_{t}, a_{t}) $&lt;/li&gt;
+  &lt;li&gt;For semi-gradient TD:
+ $ w_{t+1} = w_{t} + \alpha \left ( r_{t+1} + \gamma \hat{Q_{w}}(s_{t+1}, a_{t+1}) - \hat{Q_{w}}(s_{t}, a_{t+1}) \right) \bigtriangledown \hat{Q_{w}}(s_{t}, a_{t+1}) $&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- &amp;nbsp;
+## Off-Policy Prediction and Control with Function Approximation --&gt;
+
+&lt;p&gt; 
+&lt;br /&gt;
+ &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;참고 내용 출처 :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;KAIST EE619 Mathmatical Foundations of Reinforcement Learning&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stats.stackexchange.com/questions/340462/what-is-predicted-and-controlled-in-reinforcement-learning&quot;&gt;https://stats.stackexchange.com/questions/340462/what-is-predicted-and-controlled-in-reinforcement-learning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="RL" />
+      
+
+      
+        <summary type="html">이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다. 이 글은 David Silver의 강화학습 강의와 KAIST EE619 강화학습 수업에서 공부한 내용을 바탕으로 작성하였다.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Q-learning &amp;amp; Double Q-learning 구현</title>
+      <link href="http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84" rel="alternate" type="text/html" title="Q-learning &amp; Double Q-learning 구현" />
+      <published>2022-05-12T13:23:00+09:00</published>
+      <updated>2022-05-12T13:23:00+09:00</updated>
+      <id>http://localhost:4000/Q-learning%20&amp;%20Double%20Q-learning%20%EA%B5%AC%ED%98%84</id>
+      <content type="html" xml:base="http://localhost:4000/Q-learning-&amp;-Double-Q-learning-%EA%B5%AC%ED%98%84">&lt;h2 id=&quot;q-learning과-double-q-learning&quot;&gt;Q-learning과 Double Q-learning&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;q-learning&quot;&gt;Q-learning&lt;/h3&gt;
+&lt;p&gt;Q-learning 은 Off-policy learning 알고리즘 중 하나이며 Off-policy learning 알고리즘 중에서도 TD Control Off-policy 방식이다. Off-policy learning 알고리즘 중 Off-policy MC와 Off-policy TD가 있지만 Importance sampling 문제 때문에 사용이 어렵다. Q-learning는 Importance sampling이 필요없는 방법으로 보다 유용하다. Q-learning이 유일한 TD Control Off-policy 방식은 아니지만 유명하고 잘 알려져 있는 이유는 구현이 매우 쉽기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;Q-learning은 Bellman optimality backup operation을 샘플 기반으로 추산하여 optimal action-value function Q(s, a)를 찾아간다. 그리고 이 추산치는 아래 수식에서 볼 수 있듯이, behavior policy과 target policy의 영향을 받지 않고 단지 action-value function에만 영향을 받는다.&lt;/p&gt;
+
+\[Q(s, a) \leftarrow  Q(s, a) +  (r + max Q(s&apos;, a&apos;)-Q(s,a))\]
+
+&lt;p&gt;따라서 Importance sampling(behavior policy과 target policy 사이의 상관관계를 지워주기 위해서 사용)을 할 이유 자체가 사라진다.&lt;/p&gt;
+
+&lt;h3 id=&quot;double-q-learning&quot;&gt;Double Q-learning&lt;/h3&gt;
+&lt;p&gt;언뜻보면 On-policy TD Control인 SARSA나 다른 Off-policy learning 알고리즘에 비해서 장점만 있어 보이지만, Maximization bias라는 단점이 존재한다. Maximization bias는 Q-Learner가 가치함수 Q(s, a)를 실제 값보다 높게 평가하는 문제이다. 이는 MDP의 stochasticity 때문에 발생한다.&lt;/p&gt;
+
+&lt;p&gt;이런 Maximization bias를 방지하기 위한 방법들도 여러가지가 개발이 되었는 데 그 중 하나가 Double Q-learning이다. Double Q-learning은 Maximization bias를 single estimator의 문제점으로 규정하고, 이에 대한 대안으로 double estimator를 제안한다.&lt;/p&gt;
+
+&lt;p&gt;Double Q-learning은 서로 독립된 두개의 Q-functions Q1(s, a)와 Q2(s, a)를 만들고 각각 1/2의 확률로 업데이트를 해준다. 이런 방식으로 알고리즘이 동작하면 Maximization bias가 어느 정도 해결됨이 알려져있다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;q-learning과-double-q-learning-구현&quot;&gt;Q-learning과 Double Q-learning 구현&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;본격적으로 Q-learning과 Double Q-learning을 구현해보자. 구현은 제공받은 Gridworld Class와 Q-learning, Deep Q-learning class의 skeleton을 활용하여, Q-learning, Deep Q-learning class의 method와 Gridworld 및 policy를 visualization 하는 함수를 구현하였다.&lt;/p&gt;
+
+&lt;h3 id=&quot;gridworld-visualization&quot;&gt;Gridworld visualization&lt;/h3&gt;
+&lt;p&gt;학습을 돌린 Grid world의 환경을 확인하기 위하여 Grid world 인스턴스를 파라미터로 받는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paint_maps()&lt;/code&gt; 함수를 먼저 구현해주었다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;paint_maps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;savefig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Grid World&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# Placing the initial state on a grid for illustration
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;initials&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;initials&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# Placing the trap states on a grid for illustration
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;traps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminal_states&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;traps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# Placing the terminal state on a grid for illustration
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;terminals&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;terminals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# Make a discrete color bar with labels
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;States&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Initial&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;State&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Trap&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;States&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Terminal&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;State&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;#F9FFA4&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;#B4FF9F&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;#FFA1A1&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;#FFD59E&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ListedColormap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()])&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;norm_bins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;norm_bins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm_bins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm_bins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;## Make normalizer and formatter
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matplotlib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BoundaryNorm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm_bins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matplotlib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ticker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FuncFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;diff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;norm_bins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;norm_bins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;tickz&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;norm_bins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initials&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;traps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;terminals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cmap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colorbar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ticks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tickz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xlim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ylim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yticks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xticks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;k&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminal_states&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;X&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;center&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;center&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;O&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;center&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;center&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;savefig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;savefig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;./gridworld.png&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;코드 실행 결과로 확인한 Gridworld는 다음과 같이 생겼다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot; width=&quot;100%&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/gridworld.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;q-learning-구현&quot;&gt;Q-learning 구현&lt;/h3&gt;
+&lt;p&gt;다음으로 Q-learning의 각 method를 구현하였다. 구현 상세 내용은 코드 내 주석을 통해 나타내었다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Q_learning&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q_table&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;prob&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uniform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# epsilon의 확률로 random하게 action을 선택
+&lt;/span&gt;       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prob&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;epsilon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;action_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;choice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# 1-epsilon의 확률로 해당 state에서 가장 높은 Q값을 추산하고 있는 action을 선택
+&lt;/span&gt;       &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;action_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argmax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;actions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;action_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_state&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# action의 list index를 계산
+&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;a_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;actions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# Q-Learning target : reward + gamma * (다음 state에서 추산하고 있는 가장 높은 Q값)
+&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;td_target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gamma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# update : Q-Learning target에서 Q(s, a)를 뺀값을 업데이트 해준다.
+&lt;/span&gt;       &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;td_target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_max_Q_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;max_Q_table&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env_row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env_col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# 가능한 모든 state를 돌면서 최대 Q값을 찾아 max_Q_table에 업데이트 해준다.
+&lt;/span&gt;       &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env_row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env_col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+               &lt;span class=&quot;n&quot;&gt;max_Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)].&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_Q_table&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Q-learning 학습이 잘 되었는 지 직관적으로 확인하기 위하여 10000번 에피소드 마다의 학습된 policy를 도식화해보았다. 점점 더 나은 policy로 잘 가고 있는 것을 확인할 수 있다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot; width=&quot;100%&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/q_learning_policy.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;이 policy를 그리기 위해 구현한 코드는 다음과 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;plot_policy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;d_symbols&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;↑&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;→&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;↓&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;←&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;#F9FFA4&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;#B4FF9F&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;#FFA1A1&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;#FFD59E&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;# Placing the initial state on a grid for illustration
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;initials&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;initials&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# Placing the trap states on a grid for illustration
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;traps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminal_states&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;traps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# Placing the terminal state on a grid for illustration
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;terminals&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;terminals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ListedColormap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()])&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initials&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;traps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interpolation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;nearest&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cmap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_xticks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_yticks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spine&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;spine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_visible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_xticklabels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([])&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_yticklabels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([])&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tick_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;x&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;w&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tick_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;y&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;w&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;which&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;minor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linestyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;-&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linewidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tick_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;which&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;minor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bottom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argmax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d_symbols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;va&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;black&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;double-q-learning-구현&quot;&gt;Double Q-learning 구현&lt;/h3&gt;
+&lt;p&gt;마찬가지로 Double Q-learning의 각 method를 구현하였다. 구현 상세 내용은 코드 내 주석을 통해 나타내었다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Double_Q_learning&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q_table&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;prob&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uniform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# epsilon의 확률로 random하게 action을 선택
+&lt;/span&gt;       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prob&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;epsilon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;action_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;choice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# 1-epsilon의 확률로 해당 state에서 가장 높은 Q값을 추산하고 있는 action을 선택
+&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# 이 때 기준이 되는 Q값은 Q1, Q2값의 합
+&lt;/span&gt;       &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+           &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;action_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argmax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;actions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;action_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_state&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# 0.5의 확률로 Q1을 업데이트
+&lt;/span&gt;       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+           &lt;span class=&quot;c1&quot;&gt;# action의 list index를 계산
+&lt;/span&gt;           &lt;span class=&quot;n&quot;&gt;a_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;actions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;c1&quot;&gt;# Q1 table에서 next state에서 가장 큰 Q값을 가지고 있는 action의 index를 계산
+&lt;/span&gt;           &lt;span class=&quot;n&quot;&gt;q1_a_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argmax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+           &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gamma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q1_a_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# 나머지 0.5의 확률로 Q2를 업데이트
+&lt;/span&gt;       &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+           &lt;span class=&quot;c1&quot;&gt;# action의 list index를 계산
+&lt;/span&gt;           &lt;span class=&quot;n&quot;&gt;a_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;actions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;c1&quot;&gt;# Q2 table에서 next state에서 가장 큰 Q값을 가지고 있는 action의 index를 계산
+&lt;/span&gt;           &lt;span class=&quot;n&quot;&gt;q2_a_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argmax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+           &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gamma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q2_a_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_max_Q_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;max_Q_table&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env_row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env_col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+       &lt;span class=&quot;c1&quot;&gt;# 가능한 모든 state를 돌면서 최대 Q값을 찾아 max_Q_table에 업데이트 해준다. 이 때, Q1, Q2 중 Q2값을 기준으로 하였다.
+&lt;/span&gt;       &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env_row_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env_col_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+               &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                   &lt;span class=&quot;n&quot;&gt;max_Q_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)].&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_Q_table&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;마찬가지로 Double Q-learning 학습이 잘 되었는 지 직관적으로 확인하기 위하여 10000 에피소드마다 policy를 그려보았다. Double Q-learning policy를 그리는 데 Q-learning policy를 그릴 때와 같은 코드를 사용하였다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot; width=&quot;100%&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/double_q_learning_policy.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;구현-결과-확인&quot;&gt;구현 결과 확인&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;구현을 완료한 이후 학습된 두 모델의 max Q-function을 뽑아 plot 해보았다. 이 결과를 plot하는 데에는 제공받은 함수를 이용하였다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot; width=&quot;100%&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/q-learning.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;이 그래프를 살펴보면 Q-learning의 max Q value과 Double Q-learning의 값이 최대 50정도까지 차이가 난다. 전반적으로 Q-learning에서 Q value값이 Double Q-learning에서의 값보다 overestimate 되었음을 확인할 수 있다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="RL" />
+      
+        <category term="coding" />
+      
+
+      
+        <summary type="html">Q-learning과 Double Q-learning  </summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">RecSys &amp;amp; RL - A Deep Reinforcement Learning Framework for News Recommendation</title>
+      <link href="http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1" rel="alternate" type="text/html" title="RecSys &amp; RL - A Deep Reinforcement Learning Framework for News Recommendation" />
+      <published>2022-05-01T17:32:00+09:00</published>
+      <updated>2022-05-01T17:32:00+09:00</updated>
+      <id>http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%20%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id>
+      <content type="html" xml:base="http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;p&gt;이 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt; 
+딥러닝 모델을 활용한 기존 뉴스 추천 시스템의 취약점&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;다이나믹하게 변하는 뉴스의 특성과 뉴스에 대한 유저의 선호도 변화를 고려할 때, online learning 이 필요하다. 기존에도 뉴스 특성과 유저 선호도의 다이나믹한 변화를 반영하는 online recommendation model이 있기는 했지만, 이 모델들은 현재의 reward(e.g. Click Trhough Rate)만 최적화하기 때문에 현재의 추천이 미래에 가져올 효과가 무시되었다.&lt;/li&gt;
+  &lt;li&gt;기존 추천 시스템은 유저 feedback로 오직 click/no click 정보만 고려했다. 따라서 뉴스를 탐색하면서 실수로 잘못 누른 기사와 정말 읽고 싶어서 찾아서 들어간 기사의 reward는 확실히 달라야하지만 이러한 특성은 잡아내지 못하였다.&lt;/li&gt;
+  &lt;li&gt;기존 추천 시스템은 유저에게 유사한 뉴스를 계속 추천하려는 경향이 있다. 그렇지만 이렇게 계속 비슷한 뉴스를 추천해주면 주제에 대한 사용자의 흥미가 쉽게 떨어진다.
+    &lt;ul&gt;
+      &lt;li&gt;이 논문이 쓰여질 당시 State-of-art 강화학습 방식은 많은 경우 간단한 $ \epsilon - greedy $ 방식이나 Upper Confidence Bound (UCB)를 활용해왔다. 하지만 $ \epsilon - greedy $ 은 유저가 전혀 관심없어하는 아이템을 추천할 수도 있고, UCB는 cold-starter 문제가 존재한다.(기존 데이터가 많이 없다면 reward 추청이 부정확함)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
+&lt;p&gt; 
+이러한 취약점을 극복하기 위하여 이 논문에서는 DQN을 활용한 다음과 같은 추천시스템을 제안한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Contextual Multi-Armed Bandit models
+    &lt;ul&gt;
+      &lt;li&gt;최근에 몇몇 사람들이 더욱 복잡한 유저 아이템 관계를 모델링하기 위하여 bandit을 clustering based collaborative filtering이나 matrix factorization과 합치고, reward function을 결정하기 위하여 social network 관계를 활용하는 시도를 하였다.&lt;/li&gt;
+      &lt;li&gt;하지만 논문에서 제안하는 모델은 이전 모델과는 다른데, 논문의 모델은 Markov Decision Process (MDP)를 적용하여, 모델의 future reward를 활용할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Markov Decision Process models
+    &lt;ul&gt;
+      &lt;li&gt;유저와 아이템(뉴스)간의 복잡한 관계를 모델링하는 대신에, online news recommendation의 다이나믹한 특성에 집중하여 future reward를 모델링한다.
+(기존의 Marti-Armed Bandit (MAB) 방법들과 다름)&lt;/li&gt;
+      &lt;li&gt;더 나아가 MDP framework를 continuous state와 action representation와 함께 사용하여 쉽게 확장할 수 있고, 모든 (state, action, reward) tuple을 활용하여 모델 파라미터를 효율적으로 학습할 수 있다.
+(기존의 MAP 방법들과 다름)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;또한, 추천에 다양성을 증가시키기 위하여 Exploration strategy로 Dueling Bandit Gradient Descent exploration strategy를 활용하는데, 여기에는 두 가지 이유가 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;recommendation 다양성을 증가시키기 위함&lt;/li&gt;
+  &lt;li&gt;고전적인 exploration strategies (ex&amp;gt; e-greedy, Upper Confidence Bound)로 부터 발생하는 recommendation accuracy 감소를 막기 위함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;model-framework&quot;&gt;Model framework&lt;/h3&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/recsys1.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;위 그림에서 볼 수 있듯이, 논문의 모델은 offline 방식과 online 방식으로 나뉘어져 있다.
+offline stage에서는 미리 수집해둔 데이터(user-news click logs)에 Deep Q-Network를 적용하여 reward를 예측한다. 이 offline 방식을 통하여 4가지의 feature(News, User, User news, Context)가 추출된다.
+그런 다음, online stage에서는 실제 작동하는 online service를 통하여 recommendation agent G가 직접 유저와 상호작용하며 network를 업데이트 해나간다.
+온라인 업데이트 과정은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;(1) PUSH:
+유저가 뉴스 요청을 보내면, recommendation agent G는 해당 유저의 features와 뉴스 후보군(현재 추천 받은 리스트와 유사도가 높은 기사 무작위 추출)을 받아 추천할 top-k 뉴스 리스트를 생성한다.
+(2) FEEDBACK:
+유저는 뉴스 추천 리스트를 보고 각각의 아이템을 클릭하거나, 클릭하지 않음으로서 feedback을 준다.
+(3) MINOR UPDATE
+각 timestamp마다 exploitation network와 exploration network를 비교하여, 만약 exploration network의 성능이 더 좋다면, 현재 network를 exploration network쪽으로 업데이트 하고, 반대로 exploitation network의 성능이 더 좋다면 그대로 둔다.
+(4) MAJOR UPDATE
+특정 정해둔 시간이 지나고 난 후, &lt;strong&gt;experience replay&lt;/strong&gt; technique을 사용하여 네트워크를 업데이트 한다. 좀 더 자세하게, 사용자 feedback과 메모리에 저장 된 user activeness를 추가한다. (agent가 최근의 click, activeness 기록을 유지)&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;experiment&quot;&gt;Experiment&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;offline-part&quot;&gt;Offline Part&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;상업 뉴스 추천 앱에서 수집된 데이터를 사용한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;online-part&quot;&gt;Online Part&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;offline data로 모델을 pre-train&lt;/li&gt;
+  &lt;li&gt;실험용 앱을 배포하여 한달 동안 운영. 실험군을 그룹으로 나눠 각 그룹에 테스트할 모델로 추천된 뉴스를 보여준다.&lt;/li&gt;
+  &lt;li&gt;유저로부터 뉴스 요청이 들어갈 때마다 뉴스를 추천해주고 이들 뉴스에 대한 유저 피드백(click or not)이 기록된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;overall-experiment-flow&quot;&gt;Overall experiment flow&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;먼저 offline data로 모델을 학습한다.&lt;/li&gt;
+  &lt;li&gt;Online 뉴스 앱에 같은 비율로 각각 다른 테스트 모델을 배정한다.&lt;/li&gt;
+  &lt;li&gt;Online으로 배포한 뉴스 앱에 유저가 들어와서 뉴스를 요청하면, candidates 기사 세트를 배정된 모델에 보낸다.&lt;/li&gt;
+  &lt;li&gt;모델을 Current network와 Explore network로 나누어 candidates 기사 input을 적용한다. (PUSH 과정)
+    &lt;ul&gt;
+      &lt;li&gt;이 때, Explore network는 current network 모델에서의 가중치 파라미터를 Gaussian Random Noise기법을 통해 업데이트한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+    &lt;img src=&quot;/assets/img/post_images/drn2.png&quot; width=&quot;70%&quot; /&gt;
+  &lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;두 모델에서 반환하는 리스트를 합쳐 유저의 reward가 발생할 때까지 기다리고 두 모델의 reward를 비교한다. (FEEDBACK 과정)&lt;/li&gt;
+  &lt;li&gt;만약 Explore network의 성능이 더 좋다면, Explore network의 파라미터를 다음 step의 파라미터로 업데이트 한다. (MINOR UPDATE 과정)&lt;/li&gt;
+  &lt;li&gt;Major update 업데이트를 위해 설정된 시간이 되기 전까지 2~6 과정을 반복한다. 이 과정에서 user activeness에 대한 정보를 memory에 추가한다.&lt;/li&gt;
+  &lt;li&gt;메모리에 있는 데이터(recent historical click &amp;amp; user activeness records) 중 batch size만큼 샘플링해서 모델을 업데이트한다. (MAJOR UPDATE 과정)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;실험 결과, 논문의 방법으로 추천 정확도와 추천 다양성을 상당히 향상시킬 수 있었다.&lt;/li&gt;
+  &lt;li&gt;이후 실험에서 유저를 여러 그룹을 나누어서(heavy users and one-time users 등) 모델을 디자인하면 더 의미있을 것이다.
+    &lt;ul&gt;
+      &lt;li&gt;만약 각 유저 그룹에서 서로 다른 패턴이 발견되면 더 많은 인사이트를 얻을 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;references-&quot;&gt;references :&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://jisoo-coding.tistory.com/27&quot;&gt;https://jisoo-coding.tistory.com/27&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="RecSys" />
+      
+        <category term="RL" />
+      
+        <category term="paper" />
+      
+
+      
+        <summary type="html">이 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training</title>
+      <link href="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2" rel="alternate" type="text/html" title="RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training" />
+      <published>2022-04-30T17:32:00+09:00</published>
+      <updated>2022-04-30T17:32:00+09:00</updated>
+      <id>http://localhost:4000/%EC%9E%90%EC%9C%A8%20%EC%A3%BC%ED%96%89%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-2</id>
+      <content type="html" xml:base="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2">&lt;p&gt;This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This paper is based on the previous study with very similar settings but difference
+model.&lt;/li&gt;
+  &lt;li&gt;The DDPG algorithm(previously used) seems to have not much high convergence
+during training&lt;/li&gt;
+  &lt;li&gt;Instead, use SAC(Soft Actor Critic) algorithm
+    &lt;ul&gt;
+      &lt;li&gt;Robustness, stability and well-convergence&lt;/li&gt;
+      &lt;li&gt;State-of-the-art off-policy actor critic deep reinforcement learning algorithm based on the maximum entropy reinforcement learning framework&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Single-Q SAC Algorithm : use SAC with some slight differences due to the method of combining imitation learning and reinforcement learning
+    &lt;ul&gt;
+      &lt;li&gt;The original SAC has two target parameters for Q-function&lt;/li&gt;
+      &lt;li&gt;However, with previous experiment, the average return over 5 runs of 3 million iterations of SAC algorithm with double-A and SAC algorithm with single-Q are quite similar, so they only use one target parameter for each network and do not update the temperature parameter α for simplicity&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Although using pure SAC can result in a good performance, it still has a lower
+average accumulated reward after 100 episodes than their method.
+    &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/sc3.png&quot; width=&quot;70%&quot; /&gt;
+&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Autonomous driving" />
+      
+        <category term="RL" />
+      
+        <category term="paper" />
+      
+
+      
+        <summary type="html">This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings</title>
+      <link href="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1" rel="alternate" type="text/html" title="RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings" />
+      <published>2022-04-30T10:32:00+09:00</published>
+      <updated>2022-04-30T10:32:00+09:00</updated>
+      <id>http://localhost:4000/%EC%9E%90%EC%9C%A8%20%EC%A3%BC%ED%96%89%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id>
+      <content type="html" xml:base="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training&lt;/code&gt;, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.&lt;/p&gt;
+
+&lt;p&gt;More specifically, in the image-based autonomous driving task, imitation learning and reinforcement learning are combined and used together to utilize each others’ strength. The difference between the two papers is that the first paper uses DDPG as reinforcement learning whereas the second paper uses SAC.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The problem of generating control decision given a monocular camera image and other auxiliary vehicle sensors’ outputs has aroused a lot of interest in recent years.&lt;/li&gt;
+  &lt;li&gt;Conducting imitation learning towards given human policy might produce a relative well-performed policy
+    &lt;ul&gt;
+      &lt;li&gt;However, limitation on the possible policy performance and the potential lack of generalizability for unseen situations.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Instead, using RL in a simulator and then transfer the learned policy to real world is very popular in recent research.
+    &lt;ul&gt;
+      &lt;li&gt;Nonetheless, when the state and action spaces are huge or high dimensional, pure RL algorithm training process usually diverges.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;They present a method which combines these two methods and thus leverage both their advantages for this image-based autonomous driving task.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+(1) pre-training(imitation learning) -&amp;gt; (2) fine-tuning(DDPG)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Network architecture
+    &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/rl_driving1_1.png&quot; width=&quot;70%&quot; /&gt;
+&lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;ResNet-34 architecture
+        &lt;ul&gt;
+          &lt;li&gt;One of CNN network for deep reinforcement learning tasks like environmental perception, model compression, and object detection&lt;/li&gt;
+          &lt;li&gt;Use ResNet-34 as the backbone structure for both actor and critic networks&lt;/li&gt;
+          &lt;li&gt;The simple and light ResNet-34 out performs other architectures with attention module integrated in terms of both final testing loss and the generated policy’s performance.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Imitation learning phase
+    &lt;ul&gt;
+      &lt;li&gt;Aim to generate a good initial policy&lt;/li&gt;
+      &lt;li&gt;Consider current image input and current vehicle speed as our current state inputs, and throttle, brake from zero to one and steering from minus one to positive one as our control outputs&lt;/li&gt;
+      &lt;li&gt;Use Huber loss : to less sensitive to outliers and can make the training process more stable compared to MSE as a result.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Reinforcement learning phase
+    &lt;ul&gt;
+      &lt;li&gt;Reward : distance to the nearest obstacle and current velocity
+        &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/rl_driving1_2.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Continuous and deterministic policy setting : to prevent possible catastrophic effect under undesired behavior.&lt;/li&gt;
+      &lt;li&gt;In order to combine with imitation learning, they make several changes on the original DDPG
+        &lt;ul&gt;
+          &lt;li&gt;actor, critic networks
+            &lt;ul&gt;
+              &lt;li&gt;actor network : give all the weights of the pre-trained actor network to the actor networks used in the DDPG.&lt;/li&gt;
+              &lt;li&gt;critic network : give all the weights except the final fully connected layer to critic networks used in the DDPG.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;replay pool : train actor and critic networks using the samples collected under imitation learning’s generated policy. Then, use normal DDPG to collect new experience&lt;/li&gt;
+          &lt;li&gt;removing OU noise&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;experiments&quot;&gt;Experiments&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Imitation learning phase
+    &lt;ul&gt;
+      &lt;li&gt;Use an Xbox controller to control the car under various weather and lighting conditions and record the data using Airsim API&lt;/li&gt;
+      &lt;li&gt;1000 for each episode and terminates when a collision happens.&lt;/li&gt;
+      &lt;li&gt;Randomly choose the weather condition and the initial position of the car before each episode starts and calculate a 5 episodes’ average accumulated reward as the criteria.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;RL phase
+    &lt;ul&gt;
+      &lt;li&gt;Same setting as imitation learnin phase&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Results
+    &lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img width=&quot;100%&quot; src=&quot;/assets/img/post_images/rl_driving1_3.png&quot; /&gt;
+&lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Eventually, their proposed method achieves a considerable performance boost from the original imitation learning’s learned policy while the pure DDPG never performs well and does not show any improving trend.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Autonomous driving" />
+      
+        <category term="RL" />
+      
+        <category term="paper" />
+      
+
+      
+        <summary type="html">Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings and Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

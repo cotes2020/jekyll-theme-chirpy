@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Q-learning & Double Q-learning 구현</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Seize the day" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/img/favicons/favicon-32x32.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="PIGBEAN Tech blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Q-learning & Double Q-learning 구현" />
+    <meta property="og:description" content="Q-learning과 Double Q-learning   Q-learning Q-learning 은 Off-policy learning 알고리즘 중 하나이며 Off-policy learning 알고리즘 중에서도 TD Control Off-policy 방식이다. Off-policy learning 알고리즘 중 Off-policy MC와 Off-policy TD가 있지만 Importance sampling 문제 때문에 사용이 어렵다. Q-learning는 Importance sampling이 필요없는 방법으로 보다 유용하다. Q-learning이 유일한 TD Control Off-policy 방식은 아니지만 유명하고" />
+    <meta property="og:url" content="http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84" />
+    <meta property="og:image" content="http://localhost:4000/assets/img/post_images/ai_cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/false" />
+    <meta property="article:author" content="https://www.facebook.com/false" />
+    <meta property="article:published_time" content="2022-05-12T13:23:00+09:00" />
+    <meta property="article:modified_time" content="2022-05-12T13:23:00+09:00" />
+    <meta property="article:tag" content="Rl" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Q-learning & Double Q-learning 구현" />
+    <meta name="twitter:description" content="Q-learning과 Double Q-learning   Q-learning Q-learning 은 Off-policy learning 알고리즘 중 하나이며 Off-policy learning 알고리즘 중에서도 TD Control Off-policy 방식이다. Off-policy learning 알고리즘 중 Off-policy MC와 Off-policy TD가 있지만 Importance sampling 문제 때문에 사용이 어렵다. Q-learning는 Importance sampling이 필요없는 방법으로 보다 유용하다. Q-learning이 유일한 TD Control Off-policy 방식은 아니지만 유명하고" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/ai_cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="PIGBEAN Tech blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Rl" />
+    <meta name="twitter:site" content="@false" />
+    <meta name="twitter:creator" content="@false" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "PIGBEAN Tech blog",
+        "logo": "http://localhost:4000/assets/img/favicons/android-chrome-256x256.png"
+    },
+    "url": "http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/img/post_images/ai_cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84"
+    },
+    "description": "Q-learning과 Double Q-learning   Q-learning Q-learning 은 Off-policy learning 알고리즘 중 하나이며 Off-policy learning 알고리즘 중에서도 TD Control Off-policy 방식이다. Off-policy learning 알고리즘 중 Off-policy MC와 Off-policy TD가 있지만 Importance sampling 문제 때문에 사용이 어렵다. Q-learning는 Importance sampling이 필요없는 방법으로 보다 유용하다. Q-learning이 유일한 TD Control Off-policy 방식은 아니지만 유명하고"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Q-learning & Double Q-learning 구현" href="/feed.xml" />
+
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/img/favicons/android-chrome-256x256.png" alt="PIGBEAN Tech blog" /></a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/Catty/">Catty</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-rl tag-coding post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="12 May 2022">12 May 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/rl/'>RL</a>,
+                            
+                        
+                            
+                               <a href='/tag/coding/'>CODING</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Q-learning & Double Q-learning 구현</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/img/post_images/ai_cover.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h2 id="q-learning과-double-q-learning">Q-learning과 Double Q-learning</h2>
+<p> </p>
+
+<h3 id="q-learning">Q-learning</h3>
+<p>Q-learning 은 Off-policy learning 알고리즘 중 하나이며 Off-policy learning 알고리즘 중에서도 TD Control Off-policy 방식이다. Off-policy learning 알고리즘 중 Off-policy MC와 Off-policy TD가 있지만 Importance sampling 문제 때문에 사용이 어렵다. Q-learning는 Importance sampling이 필요없는 방법으로 보다 유용하다. Q-learning이 유일한 TD Control Off-policy 방식은 아니지만 유명하고 잘 알려져 있는 이유는 구현이 매우 쉽기 때문이다.</p>
+
+<p>Q-learning은 Bellman optimality backup operation을 샘플 기반으로 추산하여 optimal action-value function Q(s, a)를 찾아간다. 그리고 이 추산치는 아래 수식에서 볼 수 있듯이, behavior policy과 target policy의 영향을 받지 않고 단지 action-value function에만 영향을 받는다.</p>
+
+\[Q(s, a) \leftarrow  Q(s, a) +  (r + max Q(s', a')-Q(s,a))\]
+
+<p>따라서 Importance sampling(behavior policy과 target policy 사이의 상관관계를 지워주기 위해서 사용)을 할 이유 자체가 사라진다.</p>
+
+<h3 id="double-q-learning">Double Q-learning</h3>
+<p>언뜻보면 On-policy TD Control인 SARSA나 다른 Off-policy learning 알고리즘에 비해서 장점만 있어 보이지만, Maximization bias라는 단점이 존재한다. Maximization bias는 Q-Learner가 가치함수 Q(s, a)를 실제 값보다 높게 평가하는 문제이다. 이는 MDP의 stochasticity 때문에 발생한다.</p>
+
+<p>이런 Maximization bias를 방지하기 위한 방법들도 여러가지가 개발이 되었는 데 그 중 하나가 Double Q-learning이다. Double Q-learning은 Maximization bias를 single estimator의 문제점으로 규정하고, 이에 대한 대안으로 double estimator를 제안한다.</p>
+
+<p>Double Q-learning은 서로 독립된 두개의 Q-functions Q1(s, a)와 Q2(s, a)를 만들고 각각 1/2의 확률로 업데이트를 해준다. 이런 방식으로 알고리즘이 동작하면 Maximization bias가 어느 정도 해결됨이 알려져있다.</p>
+
+<p> </p>
+<h2 id="q-learning과-double-q-learning-구현">Q-learning과 Double Q-learning 구현</h2>
+<p> </p>
+
+<p>본격적으로 Q-learning과 Double Q-learning을 구현해보자. 구현은 제공받은 Gridworld Class와 Q-learning, Deep Q-learning class의 skeleton을 활용하여, Q-learning, Deep Q-learning class의 method와 Gridworld 및 policy를 visualization 하는 함수를 구현하였다.</p>
+
+<h3 id="gridworld-visualization">Gridworld visualization</h3>
+<p>학습을 돌린 Grid world의 환경을 확인하기 위하여 Grid world 인스턴스를 파라미터로 받는 <code class="language-plaintext highlighter-rouge">paint_maps()</code> 함수를 먼저 구현해주었다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">paint_maps</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+   <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span><span class="p">))</span>
+   <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Grid World'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+   <span class="c1"># Placing the initial state on a grid for illustration
+</span>   <span class="n">initials</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span><span class="p">])</span>
+   <span class="n">initials</span><span class="p">[</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+   <span class="c1"># Placing the trap states on a grid for illustration
+</span>   <span class="n">traps</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span><span class="p">])</span>
+   <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">env</span><span class="p">.</span><span class="n">terminal_states</span><span class="p">:</span>
+       <span class="k">if</span> <span class="n">t</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+           <span class="n">traps</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+   <span class="c1"># Placing the terminal state on a grid for illustration
+</span>   <span class="n">terminals</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span><span class="p">])</span>
+   <span class="n">terminals</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">3</span>
+
+   <span class="c1"># Make a discrete color bar with labels
+</span>   <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'States'</span><span class="p">,</span> <span class="s">'Initial</span><span class="se">\n</span><span class="s">State'</span><span class="p">,</span> <span class="s">'Trap</span><span class="se">\n</span><span class="s">States'</span><span class="p">,</span> <span class="s">'Terminal</span><span class="se">\n</span><span class="s">State'</span><span class="p">]</span>
+   <span class="n">colors</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s">'#F9FFA4'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s">'#B4FF9F'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">'#FFA1A1'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s">'#FFD59E'</span><span class="p">}</span>
+
+   <span class="n">cm</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="n">colors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">.</span><span class="n">keys</span><span class="p">()])</span>
+   <span class="n">norm_bins</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sort</span><span class="p">([</span><span class="o">*</span><span class="n">colors</span><span class="p">.</span><span class="n">keys</span><span class="p">()])</span> <span class="o">+</span> <span class="mf">0.5</span>
+   <span class="n">norm_bins</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">norm_bins</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">norm_bins</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+   <span class="c1">## Make normalizer and formatter
+</span>   <span class="n">norm</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">BoundaryNorm</span><span class="p">(</span><span class="n">norm_bins</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">clip</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+   <span class="n">fmt</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">ticker</span><span class="p">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="n">labels</span><span class="p">[</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
+
+   <span class="n">diff</span> <span class="o">=</span> <span class="n">norm_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">norm_bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+   <span class="n">tickz</span> <span class="o">=</span> <span class="n">norm_bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">diff</span> <span class="o">/</span> <span class="mi">2</span>
+   <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">initials</span> <span class="o">+</span> <span class="n">traps</span> <span class="o">+</span> <span class="n">terminals</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+   <span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">tickz</span><span class="p">)</span>
+
+   <span class="n">plt</span><span class="p">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">))</span>
+   <span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">((</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">))</span>
+   <span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">row_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+   <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+   <span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'k'</span><span class="p">)</span>
+
+   <span class="k">for</span> <span class="n">loc</span> <span class="ow">in</span> <span class="n">env</span><span class="p">.</span><span class="n">terminal_states</span><span class="p">:</span>
+       <span class="n">plt</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">'X'</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'center'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+   <span class="n">plt</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">row_max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'O'</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'center'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+
+   <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+       <span class="n">plt</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">'./gridworld.png'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>코드 실행 결과로 확인한 Gridworld는 다음과 같이 생겼다.</p>
+<div style="text-align: left" width="100%">
+   <img src="/assets/img/post_images/gridworld.png" width="100%" />
+</div>
+
+<h3 id="q-learning-구현">Q-learning 구현</h3>
+<p>다음으로 Q-learning의 각 method를 구현하였다. 구현 상세 내용은 코드 내 주석을 통해 나타내었다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Q_learning</span><span class="p">():</span>
+   <span class="k">def</span> <span class="nf">get_Q_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q_table</span>
+
+   <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+       <span class="n">prob</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+       <span class="c1"># epsilon의 확률로 random하게 action을 선택
+</span>       <span class="k">if</span> <span class="n">prob</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="p">.</span><span class="n">epsilon</span><span class="p">:</span>
+           <span class="n">action_index</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+       <span class="c1"># 1-epsilon의 확률로 해당 state에서 가장 높은 Q값을 추산하고 있는 action을 선택
+</span>       <span class="k">else</span><span class="p">:</span>
+           <span class="n">action_index</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q_table</span><span class="p">[</span><span class="n">state</span><span class="p">].</span><span class="n">argmax</span><span class="p">()</span>
+
+       <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">actions</span><span class="p">[</span><span class="n">action_index</span><span class="p">]</span>
+
+   <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_state</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">):</span>
+       <span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">current_state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span>
+       <span class="c1"># action의 list index를 계산
+</span>       <span class="n">a_index</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">actions</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+       <span class="c1"># Q-Learning target : reward + gamma * (다음 state에서 추산하고 있는 가장 높은 Q값)
+</span>       <span class="n">td_target</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q_table</span><span class="p">[</span><span class="n">ns</span><span class="p">].</span><span class="nb">max</span><span class="p">()</span>
+       <span class="c1"># update : Q-Learning target에서 Q(s, a)를 뺀값을 업데이트 해준다.
+</span>       <span class="bp">self</span><span class="p">.</span><span class="n">Q_table</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">a_index</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">td_target</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q_table</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">a_index</span><span class="p">])</span>
+
+   <span class="k">def</span> <span class="nf">get_max_Q_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="n">max_Q_table</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">env_row_max</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">env_col_max</span><span class="p">))</span>
+       <span class="c1"># 가능한 모든 state를 돌면서 최대 Q값을 찾아 max_Q_table에 업데이트 해준다.
+</span>       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">env_row_max</span><span class="p">):</span>
+           <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">env_col_max</span><span class="p">):</span>
+               <span class="n">max_Q_table</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q_table</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)].</span><span class="nb">max</span><span class="p">()</span>
+
+       <span class="k">return</span> <span class="n">max_Q_table</span>
+</code></pre></div></div>
+
+<p>Q-learning 학습이 잘 되었는 지 직관적으로 확인하기 위하여 10000번 에피소드 마다의 학습된 policy를 도식화해보았다. 점점 더 나은 policy로 잘 가고 있는 것을 확인할 수 있다.</p>
+
+<div style="text-align: left" width="100%">
+   <img src="/assets/img/post_images/q_learning_policy.png" width="100%" />
+</div>
+
+<p>이 policy를 그리기 위해 구현한 코드는 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plot_policy</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">pi</span><span class="p">):</span>
+   <span class="n">d_symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s">'↑'</span><span class="p">,</span> <span class="s">'→'</span><span class="p">,</span> <span class="s">'↓'</span><span class="p">,</span> <span class="s">'←'</span><span class="p">]</span>
+   <span class="n">colors</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s">'#F9FFA4'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s">'#B4FF9F'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">'#FFA1A1'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s">'#FFD59E'</span><span class="p">}</span>
+   <span class="c1"># Placing the initial state on a grid for illustration
+</span>   <span class="n">initials</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span><span class="p">])</span>
+   <span class="n">initials</span><span class="p">[</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+   <span class="c1"># Placing the trap states on a grid for illustration
+</span>   <span class="n">traps</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span><span class="p">])</span>
+   <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">env</span><span class="p">.</span><span class="n">terminal_states</span><span class="p">:</span>
+       <span class="k">if</span> <span class="n">t</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+           <span class="n">traps</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+   <span class="c1"># Placing the terminal state on a grid for illustration
+</span>   <span class="n">terminals</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span><span class="p">])</span>
+   <span class="n">terminals</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">3</span>
+
+   <span class="n">cm</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="n">colors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">.</span><span class="n">keys</span><span class="p">()])</span>
+   <span class="n">ax</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">initials</span><span class="o">+</span><span class="n">traps</span><span class="o">+</span><span class="n">terminals</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">'nearest'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">)</span>
+
+   <span class="n">ax</span><span class="p">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+   <span class="n">ax</span><span class="p">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">col_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+   <span class="k">for</span> <span class="n">edge</span><span class="p">,</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+       <span class="n">spine</span><span class="p">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+   <span class="n">ax</span><span class="p">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
+   <span class="n">ax</span><span class="p">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+   <span class="n">ax</span><span class="p">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">'x'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s">'w'</span><span class="p">)</span>
+   <span class="n">ax</span><span class="p">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">'y'</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s">'w'</span><span class="p">)</span>
+
+   <span class="n">ax</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s">"minor"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"w"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">'-'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+   <span class="n">ax</span><span class="p">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s">"minor"</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">col_max</span><span class="p">):</span>
+       <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">row_max</span><span class="p">):</span>
+           <span class="n">direction</span> <span class="o">=</span> <span class="n">pi</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">)].</span><span class="n">argmax</span><span class="p">()</span>
+           <span class="n">direction</span> <span class="o">=</span> <span class="n">d_symbols</span><span class="p">[</span><span class="n">direction</span><span class="p">]</span>
+           <span class="n">ax</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="double-q-learning-구현">Double Q-learning 구현</h3>
+<p>마찬가지로 Double Q-learning의 각 method를 구현하였다. 구현 상세 내용은 코드 내 주석을 통해 나타내었다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Double_Q_learning</span><span class="p">():</span>
+   <span class="k">def</span> <span class="nf">get_Q_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q_table</span>
+
+   <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+       <span class="n">prob</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+       <span class="c1"># epsilon의 확률로 random하게 action을 선택
+</span>       <span class="k">if</span> <span class="n">prob</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="p">.</span><span class="n">epsilon</span><span class="p">:</span>
+           <span class="n">action_index</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+       <span class="c1"># 1-epsilon의 확률로 해당 state에서 가장 높은 Q값을 추산하고 있는 action을 선택
+</span>       <span class="c1"># 이 때 기준이 되는 Q값은 Q1, Q2값의 합
+</span>       <span class="k">else</span><span class="p">:</span>
+           <span class="bp">self</span><span class="p">.</span><span class="n">Q_table</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q1</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q2</span><span class="p">[</span><span class="n">state</span><span class="p">]</span>
+           <span class="n">action_index</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q_table</span><span class="p">[</span><span class="n">state</span><span class="p">].</span><span class="n">argmax</span><span class="p">()</span>
+       <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">actions</span><span class="p">[</span><span class="n">action_index</span><span class="p">]</span>
+
+   <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_state</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">):</span>
+       <span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">current_state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span>
+       <span class="c1"># 0.5의 확률로 Q1을 업데이트
+</span>       <span class="k">if</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+           <span class="c1"># action의 list index를 계산
+</span>           <span class="n">a_index</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">actions</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+           <span class="c1"># Q1 table에서 next state에서 가장 큰 Q값을 가지고 있는 action의 index를 계산
+</span>           <span class="n">q1_a_index</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q1</span><span class="p">[</span><span class="n">ns</span><span class="p">].</span><span class="n">argmax</span><span class="p">()</span>
+           <span class="bp">self</span><span class="p">.</span><span class="n">Q1</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">a_index</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q2</span><span class="p">[</span><span class="n">ns</span><span class="p">][</span><span class="n">q1_a_index</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q1</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">a_index</span><span class="p">])</span>
+       <span class="c1"># 나머지 0.5의 확률로 Q2를 업데이트
+</span>       <span class="k">else</span><span class="p">:</span>
+           <span class="c1"># action의 list index를 계산
+</span>           <span class="n">a_index</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">actions</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+           <span class="c1"># Q2 table에서 next state에서 가장 큰 Q값을 가지고 있는 action의 index를 계산
+</span>           <span class="n">q2_a_index</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q2</span><span class="p">[</span><span class="n">ns</span><span class="p">].</span><span class="n">argmax</span><span class="p">()</span>
+           <span class="bp">self</span><span class="p">.</span><span class="n">Q2</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">a_index</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q1</span><span class="p">[</span><span class="n">ns</span><span class="p">][</span><span class="n">q2_a_index</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q2</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">a_index</span><span class="p">])</span>
+
+   <span class="k">def</span> <span class="nf">get_max_Q_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="n">max_Q_table</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">env_row_max</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">env_col_max</span><span class="p">))</span>
+       <span class="c1"># 가능한 모든 state를 돌면서 최대 Q값을 찾아 max_Q_table에 업데이트 해준다. 이 때, Q1, Q2 중 Q2값을 기준으로 하였다.
+</span>       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">env_row_max</span><span class="p">):</span>
+           <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">env_col_max</span><span class="p">):</span>
+               <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q2</span><span class="p">:</span>
+                   <span class="n">max_Q_table</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">Q2</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)].</span><span class="nb">max</span><span class="p">()</span>
+
+       <span class="k">return</span> <span class="n">max_Q_table</span>
+</code></pre></div></div>
+
+<p>마찬가지로 Double Q-learning 학습이 잘 되었는 지 직관적으로 확인하기 위하여 10000 에피소드마다 policy를 그려보았다. Double Q-learning policy를 그리는 데 Q-learning policy를 그릴 때와 같은 코드를 사용하였다.</p>
+
+<div style="text-align: left" width="100%">
+   <img src="/assets/img/post_images/double_q_learning_policy.png" width="100%" />
+</div>
+
+<p> </p>
+<h2 id="구현-결과-확인">구현 결과 확인</h2>
+<p> </p>
+
+<p>구현을 완료한 이후 학습된 두 모델의 max Q-function을 뽑아 plot 해보았다. 이 결과를 plot하는 데에는 제공받은 함수를 이용하였다.</p>
+
+<div style="text-align: left" width="100%">
+   <img src="/assets/img/post_images/q-learning.png" width="100%" />
+</div>
+
+<p>이 그래프를 살펴보면 Q-learning의 max Q value과 Double Q-learning의 값이 최대 50정도까지 차이가 난다. 전반적으로 Q-learning에서 Q value값이 Double Q-learning에서의 값보다 overestimate 되었음을 확인할 수 있다.</p>
+
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Bean" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/Bean">Beanie</a></h4>
+                                
+                                    <p>Hello, I’m Beanie, always pondering and crafting services to make life fun and convenient</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/Bean">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            var this_page_url = 'http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84';
+                            var this_page_identifier = '/Q-learning & Double Q-learning 구현';
+                            var this_page_title = 'Q-learning & Double Q-learning 구현';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://Beanie.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/img/style/bean3.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; PIGBEAN Tech blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/rl/">Rl</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/(RL)-Value-Function-Approximation">(Reinforcement learning) Value Function Approximation</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">RecSys & RL - A Deep Reinforcement Learning Framework for News Recommendation</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2">RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/rl/">
+                                
+                                    See all 4 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/(RL)-Value-Function-Approximation">
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/ai_cover.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/(RL)-Value-Function-Approximation">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Rl</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">(Reinforcement learning) Value Function Approximation</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다. 이 글은 David Silver의 강화학습 강의와 KAIST EE619 강화학습 수업에서 공부한 내용을 바탕으로 작성하였다.
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Bean/">Beanie</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      6 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Dropout">
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/ai_cover2.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Dropout">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ai</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Dropout (Mathmatical approach)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>Dropout은 Prevent Multi layer perceptron Overfitting에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Bean/">Beanie</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      7 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+                <img src="/assets/img/favicons/favicon-32x32.png" alt="PIGBEAN Tech blog icon" />
+            
+            <span>PIGBEAN Tech blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Q-learning & Double Q-learning 구현</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Q-learning+%26+Double+Q-learning+%EA%B5%AC%ED%98%84&amp;url=https://beanie00.github.io/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://beanie00.github.io/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">PIGBEAN Tech blog</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

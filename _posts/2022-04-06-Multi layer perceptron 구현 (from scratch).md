@@ -3,7 +3,7 @@ title: Implement Multi layer perceptron (from scratch)
 author: Bean
 date: 2022-04-06 09:32:00 +0800
 categories: [AI, basic]
-tags: []
+tags: [AI, coding]
 layout: post
 current: post
 class: post-template
@@ -67,36 +67,36 @@ def ThreeLayerPerceptron_train(X_train, Y_train, p=20, q=10, eta=0.0015):
     vec_y = []
     for I in range(0, X_train.shape[0]-1):
 
-        # 1: input the data
-        x = X_train[I]
+      # 1: input the data
+      x = X_train[I]
 
-        # 2: Start the algorithm
+      # 2: Start the algorithm
 
-        # 2.1: Feed forward
-        z1 = ReLU_act(np.dot(w1, x) + b1) # output layer 1
-        z2 = ReLU_act(np.dot(w2, z1) + b2) # output layer 2
-        y = sigmoid_act(np.dot(wOut, z2) + bOut) # Output of the Output layer
+      # 2.1: Feed forward
+      z1 = ReLU_act(np.dot(w1, x) + b1) # output layer 1
+      z2 = ReLU_act(np.dot(w2, z1) + b2) # output layer 2
+      y = sigmoid_act(np.dot(wOut, z2) + bOut) # Output of the Output layer
 
 
-        #2.2: Compute the output layer's error
-        delta_Out = 1/2 * (y-Y_train[I]) * sigmoid_act(y, der=True)
+      #2.2: Compute the output layer's error
+      delta_Out = 1/2 * (y-Y_train[I]) * sigmoid_act(y, der=True)
 
-        #2.3: Backpropagate
-        delta_2 = delta_Out * wOut * ReLU_act(z2, der=True) # Second Layer Error
-        delta_1 = np.dot(delta_2, w2) * ReLU_act(z1, der=True) # First Layer Error
+      #2.3: Backpropagate
+      delta_2 = delta_Out * wOut * ReLU_act(z2, der=True) # Second Layer Error
+      delta_1 = np.dot(delta_2, w2) * ReLU_act(z1, der=True) # First Layer Error
 
-        # 3: Gradient descent
-        wOut = wOut - eta*delta_Out*z2  # Outer Layer
-        bOut = bOut - eta*delta_Out
+      # 3: Gradient descent
+      wOut = wOut - eta*delta_Out*z2  # Outer Layer
+      bOut = bOut - eta*delta_Out
 
-        w2 = w2 - eta*np.kron(delta_2, z1).reshape(q,p) # Hidden Layer 2
-        b2 = b2 -  eta*delta_2
+      w2 = w2 - eta*np.kron(delta_2, z1).reshape(q,p) # Hidden Layer 2
+      b2 = b2 -  eta*delta_2
 
-        w1 = w1 - eta*np.kron(delta_1, x).reshape(p, x.shape[0])
-        b1 = b1 - eta*delta_1
+      w1 = w1 - eta*np.kron(delta_1, x).reshape(p, x.shape[0])
+      b1 = b1 - eta*delta_1
 
-        # 4. Computation of the loss function
-        mu.append((y-Y_train[I])**2)
+      # 4. Computation of the loss function
+      mu.append((y-Y_train[I])**2)
 
     epoch_loss.append(np.mean(mu))
 
@@ -139,5 +139,5 @@ def ThreeLayerPerceptron_pred(X_test, w1, b1, w2, b2, wOut, bOut, mu):
 
 ***
 
-#### 이미지 출처 :
+이미지 출처 :
  * [https://www.researchgate.net/figure/A-simple-MLP-with-two-hidden-layers_fig3_2225172302](https://www.researchgate.net/figure/A-simple-MLP-with-two-hidden-layers_fig3_222517230)

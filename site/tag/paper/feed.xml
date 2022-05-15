@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/paper/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-12T16:02:32+09:00</updated>
+  <updated>2022-05-15T19:06:19+09:00</updated>
   <id>http://localhost:4000/tag/paper/feed.xml</id>
 
   
@@ -39,36 +39,122 @@
       <published>2022-05-01T17:32:00+09:00</published>
       <updated>2022-05-01T17:32:00+09:00</updated>
       <id>http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%20%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id>
-      <content type="html" xml:base="http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;딥러닝 모델을 활용한 기존 뉴스 추천 시스템의 취약점&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;다이나믹하게 변하는 뉴스의 특성과 뉴스에 대한 유저의 선호도 변화를 고려할 때, online learning 이 필요하다. 하지만 기존의 뉴스 추천 시스템은 …&lt;/li&gt;
-  &lt;li&gt;기존 추천 시스템은 유저 feedback로 오직 click/no click 정보만 고려했다. 따라서 뉴스를 탐색하면서 실수로 잘못 누른 기사와 정말 읽고 싶어서 찾아서 들어간 기사의 reward는 확실히 달라야하지만 이러한 특성은 잡아내지 못하였다.&lt;/li&gt;
-  &lt;li&gt;기존 추천 시스템은 유저에게 유사한 뉴스를 계속 추천하려는 경향이 있다. 그렇지만 이렇게 계속 비슷한 뉴스를 추천해주면 주제에 대한 사용자의 흥미가 쉽게 떨어진다.&lt;/li&gt;
-&lt;/ul&gt;
+      <content type="html" xml:base="http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;p&gt;이 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.&lt;/p&gt;
 
-&lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
-&lt;p&gt;이러한 취약점을 극복하기 위하여 이 논문에서는 DQN을 활용한 다음과 같은 추천시스템을 제안한다.&lt;/p&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt; 
+딥러닝 모델을 활용한 기존 뉴스 추천 시스템의 취약점&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;유저와 아이템(뉴스)간의 복잡한 관계를 모델링하는 대신에, online news recommendation의 다이나믹한 특성에 집중하여 future reward를 모델링한다.
-(기존의 MAB 방법들과 다름)&lt;/li&gt;
-  &lt;li&gt;MDP(Markov Decision Process)를 적용하여 이용하여 모델의 future reward를 활용할 수 있다.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;더 나아가 MDP framework를 continuous state와 action representation와 함께 사용하여 쉽게 확장할 수 있고, 모든 (state, action, reward) tuple을 활용하여 모델 파라미터를 효율적으로 학습할 수 있다.
-(기존의 MAP 방법들과 다름)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Exploration strategy로 Dueling Bandit Gradient Descent exploration strategy를 활용
+  &lt;li&gt;다이나믹하게 변하는 뉴스의 특성과 뉴스에 대한 유저의 선호도 변화를 고려할 때, online learning 이 필요하다. 기존에도 뉴스 특성과 유저 선호도의 다이나믹한 변화를 반영하는 online recommendation model이 있기는 했지만, 이 모델들은 현재의 reward(e.g. Click Trhough Rate)만 최적화하기 때문에 현재의 추천이 미래에 가져올 효과가 무시되었다.&lt;/li&gt;
+  &lt;li&gt;기존 추천 시스템은 유저 feedback로 오직 click/no click 정보만 고려했다. 따라서 뉴스를 탐색하면서 실수로 잘못 누른 기사와 정말 읽고 싶어서 찾아서 들어간 기사의 reward는 확실히 달라야하지만 이러한 특성은 잡아내지 못하였다.&lt;/li&gt;
+  &lt;li&gt;기존 추천 시스템은 유저에게 유사한 뉴스를 계속 추천하려는 경향이 있다. 그렇지만 이렇게 계속 비슷한 뉴스를 추천해주면 주제에 대한 사용자의 흥미가 쉽게 떨어진다.
     &lt;ul&gt;
-      &lt;li&gt;Improve recommendation diversity&lt;/li&gt;
-      &lt;li&gt;avoid the harm to recommendation accuracy induced by classical exploration strategies (ex&amp;gt; e-greedy, Upper Confidence Bound)&lt;/li&gt;
+      &lt;li&gt;이 논문이 쓰여질 당시 State-of-art 강화학습 방식은 많은 경우 간단한 $ \epsilon - greedy $ 방식이나 Upper Confidence Bound (UCB)를 활용해왔다. 하지만 $ \epsilon - greedy $ 은 유저가 전혀 관심없어하는 아이템을 추천할 수도 있고, UCB는 cold-starter 문제가 존재한다.(기존 데이터가 많이 없다면 reward 추청이 부정확함)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;model-framework&quot;&gt;Model framework&lt;/h3&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
+&lt;p&gt; 
+이러한 취약점을 극복하기 위하여 이 논문에서는 DQN을 활용한 다음과 같은 추천시스템을 제안한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Contextual Multi-Armed Bandit models
+    &lt;ul&gt;
+      &lt;li&gt;최근에 몇몇 사람들이 더욱 복잡한 유저 아이템 관계를 모델링하기 위하여 bandit을 clustering based collaborative filtering이나 matrix factorization과 합치고, reward function을 결정하기 위하여 social network 관계를 활용하는 시도를 하였다.&lt;/li&gt;
+      &lt;li&gt;하지만 논문에서 제안하는 모델은 이전 모델과는 다른데, 논문의 모델은 Markov Decision Process (MDP)를 적용하여, 모델의 future reward를 활용할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Markov Decision Process models
+    &lt;ul&gt;
+      &lt;li&gt;유저와 아이템(뉴스)간의 복잡한 관계를 모델링하는 대신에, online news recommendation의 다이나믹한 특성에 집중하여 future reward를 모델링한다.
+(기존의 Marti-Armed Bandit (MAB) 방법들과 다름)&lt;/li&gt;
+      &lt;li&gt;더 나아가 MDP framework를 continuous state와 action representation와 함께 사용하여 쉽게 확장할 수 있고, 모든 (state, action, reward) tuple을 활용하여 모델 파라미터를 효율적으로 학습할 수 있다.
+(기존의 MAP 방법들과 다름)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
+&lt;p&gt;또한, 추천에 다양성을 증가시키기 위하여 Exploration strategy로 Dueling Bandit Gradient Descent exploration strategy를 활용하는데, 여기에는 두 가지 이유가 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;recommendation 다양성을 증가시키기 위함&lt;/li&gt;
+  &lt;li&gt;고전적인 exploration strategies (ex&amp;gt; e-greedy, Upper Confidence Bound)로 부터 발생하는 recommendation accuracy 감소를 막기 위함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;model-framework&quot;&gt;Model framework&lt;/h3&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/recsys1.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;위 그림에서 볼 수 있듯이, 논문의 모델은 offline 방식과 online 방식으로 나뉘어져 있다.
+offline stage에서는 미리 수집해둔 데이터(user-news click logs)에 Deep Q-Network를 적용하여 reward를 예측한다. 이 offline 방식을 통하여 4가지의 feature(News, User, User news, Context)가 추출된다.
+그런 다음, online stage에서는 실제 작동하는 online service를 통하여 recommendation agent G가 직접 유저와 상호작용하며 network를 업데이트 해나간다.
+온라인 업데이트 과정은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;(1) PUSH:
+유저가 뉴스 요청을 보내면, recommendation agent G는 해당 유저의 features와 뉴스 후보군(현재 추천 받은 리스트와 유사도가 높은 기사 무작위 추출)을 받아 추천할 top-k 뉴스 리스트를 생성한다.
+(2) FEEDBACK:
+유저는 뉴스 추천 리스트를 보고 각각의 아이템을 클릭하거나, 클릭하지 않음으로서 feedback을 준다.
+(3) MINOR UPDATE
+각 timestamp마다 exploitation network와 exploration network를 비교하여, 만약 exploration network의 성능이 더 좋다면, 현재 network를 exploration network쪽으로 업데이트 하고, 반대로 exploitation network의 성능이 더 좋다면 그대로 둔다.
+(4) MAJOR UPDATE
+특정 정해둔 시간이 지나고 난 후, &lt;strong&gt;experience replay&lt;/strong&gt; technique을 사용하여 네트워크를 업데이트 한다. 좀 더 자세하게, 사용자 feedback과 메모리에 저장 된 user activeness를 추가한다. (agent가 최근의 click, activeness 기록을 유지)&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;experiment&quot;&gt;Experiment&lt;/h2&gt;
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;</content>
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;offline-part&quot;&gt;Offline Part&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;상업 뉴스 추천 앱에서 수집된 데이터를 사용한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;online-part&quot;&gt;Online Part&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;offline data로 모델을 pre-train&lt;/li&gt;
+  &lt;li&gt;실험용 앱을 배포하여 한달 동안 운영. 실험군을 그룹으로 나눠 각 그룹에 테스트할 모델로 추천된 뉴스를 보여준다.&lt;/li&gt;
+  &lt;li&gt;유저로부터 뉴스 요청이 들어갈 때마다 뉴스를 추천해주고 이들 뉴스에 대한 유저 피드백(click or not)이 기록된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;overall-experiment-flow&quot;&gt;Overall experiment flow&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;먼저 offline data로 모델을 학습한다.&lt;/li&gt;
+  &lt;li&gt;Online 뉴스 앱에 같은 비율로 각각 다른 테스트 모델을 배정한다.&lt;/li&gt;
+  &lt;li&gt;Online으로 배포한 뉴스 앱에 유저가 들어와서 뉴스를 요청하면, candidates 기사 세트를 배정된 모델에 보낸다.&lt;/li&gt;
+  &lt;li&gt;모델을 Current network와 Explore network로 나누어 candidates 기사 input을 적용한다. (PUSH 과정)
+    &lt;ul&gt;
+      &lt;li&gt;이 때, Explore network는 current network 모델에서의 가중치 파라미터를 Gaussian Random Noise기법을 통해 업데이트한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+    &lt;img src=&quot;/assets/img/post_images/drn2.png&quot; width=&quot;70%&quot; /&gt;
+  &lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;두 모델에서 반환하는 리스트를 합쳐 유저의 reward가 발생할 때까지 기다리고 두 모델의 reward를 비교한다. (FEEDBACK 과정)&lt;/li&gt;
+  &lt;li&gt;만약 Explore network의 성능이 더 좋다면, Explore network의 파라미터를 다음 step의 파라미터로 업데이트 한다. (MINOR UPDATE 과정)&lt;/li&gt;
+  &lt;li&gt;Major update 업데이트를 위해 설정된 시간이 되기 전까지 2~6 과정을 반복한다. 이 과정에서 user activeness에 대한 정보를 memory에 추가한다.&lt;/li&gt;
+  &lt;li&gt;메모리에 있는 데이터(recent historical click &amp;amp; user activeness records) 중 batch size만큼 샘플링해서 모델을 업데이트한다. (MAJOR UPDATE 과정)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;실험 결과, 논문의 방법으로 추천 정확도와 추천 다양성을 상당히 향상시킬 수 있었다.&lt;/li&gt;
+  &lt;li&gt;이후 실험에서 유저를 여러 그룹을 나누어서(heavy users and one-time users 등) 모델을 디자인하면 더 의미있을 것이다.
+    &lt;ul&gt;
+      &lt;li&gt;만약 각 유저 그룹에서 서로 다른 패턴이 발견되면 더 많은 인사이트를 얻을 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;references-&quot;&gt;references :&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://jisoo-coding.tistory.com/27&quot;&gt;https://jisoo-coding.tistory.com/27&lt;/a&gt;&lt;/p&gt;</content>
 
       
       
@@ -85,15 +171,15 @@
       
 
       
-        <category term="Recommandation System" />
+        <category term="RecSys" />
       
-        <category term="Reinforcement learning" />
+        <category term="RL" />
       
         <category term="paper" />
       
 
       
-        <summary type="html">Introduction 딥러닝 모델을 활용한 기존 뉴스 추천 시스템의 취약점 다이나믹하게 변하는 뉴스의 특성과 뉴스에 대한 유저의 선호도 변화를 고려할 때, online learning 이 필요하다. 하지만 기존의 뉴스 추천 시스템은 … 기존 추천 시스템은 유저 feedback로 오직 click/no click 정보만 고려했다. 따라서 뉴스를 탐색하면서 실수로 잘못 누른 기사와 정말 읽고 싶어서 찾아서 들어간 기사의 reward는 확실히 달라야하지만 이러한 특성은 잡아내지 못하였다. 기존 추천 시스템은 유저에게 유사한 뉴스를 계속 추천하려는 경향이 있다. 그렇지만 이렇게 계속 비슷한 뉴스를 추천해주면 주제에 대한 사용자의 흥미가 쉽게 떨어진다.</summary>
+        <summary type="html">이 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.</summary>
       
 
       
@@ -164,7 +250,7 @@ average accumulated reward after 100 episodes than their method.
       
         <category term="Autonomous driving" />
       
-        <category term="Reinforcement learning" />
+        <category term="RL" />
       
         <category term="paper" />
       
@@ -297,7 +383,7 @@ average accumulated reward after 100 episodes than their method.
       
         <category term="Autonomous driving" />
       
-        <category term="Reinforcement learning" />
+        <category term="RL" />
       
         <category term="paper" />
       

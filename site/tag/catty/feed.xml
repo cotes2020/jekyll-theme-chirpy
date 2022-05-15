@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/catty/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-12T16:02:32+09:00</updated>
+  <updated>2022-05-15T19:06:19+09:00</updated>
   <id>http://localhost:4000/tag/catty/feed.xml</id>
 
   
@@ -36,17 +36,16 @@
     <entry>
       <title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title>
       <link href="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" />
-      <published>2022-05-10T13:32:00+09:00</published>
-      <updated>2022-05-10T13:32:00+09:00</updated>
+      <published>2022-05-13T16:32:00+09:00</published>
+      <updated>2022-05-13T16:32:00+09:00</updated>
       <id>http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EB%B0%98%20%EB%85%B8%ED%8A%B8%20%EC%9E%91%EC%84%B1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20Catty%20%EC%86%8C%EA%B0%9C</id>
       <content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;catty-서비스가-뭔데&quot;&gt;Catty 서비스가 뭔데?&lt;/h2&gt;
+&lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
+  &lt;source src=&quot;/assets/img/post_images/catty_introduce.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
 &lt;p&gt; &lt;/p&gt;
-
-&lt;!-- &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/catty.png&quot; /&gt;
-&lt;/div&gt; --&gt;
 
 &lt;p&gt;Catty는 리소스 기반의 노트 작성 서비스이다. 당장 나를 포함해 많은 사람들이 과제를 하거나 보고서를 작성하거나 스터디를 할 때, 인터넷 상의 다양한 자료들을 참고하여 글을 적곤 한다.&lt;/p&gt;
 
@@ -155,7 +154,14 @@ Catty에서는 모바일-웹에서 편리하게 자료를 수집할 수 있는 �
 
 &lt;p&gt;&lt;br /&gt;
  
-p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattynote.com/&quot;&gt;https://www.cattynote.com/&lt;/a&gt;에서 무료로 사용해볼 수 있어요. 놀러오세요!&lt;/p&gt;</content>
+p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattynote.com/&quot;&gt;https://www.cattynote.com/&lt;/a&gt;에서 무료로 사용해볼 수 있어요. 놀러오세요!&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+ &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;목업 이미지 출처 : &lt;a href=&quot;www.freepik.com&quot;&gt;www.freepik.com&lt;/a&gt;&lt;/p&gt;</content>
 
       
       
@@ -855,7 +861,11 @@ app.use(cors())
       <published>2022-04-09T17:32:00+09:00</published>
       <updated>2022-04-09T17:32:00+09:00</updated>
       <id>http://localhost:4000/SSR%EC%97%90%EC%84%9C%20window%20%EA%B0%9D%EC%B2%B4%EA%B0%80%20%EC%97%86%EB%8B%A4%EA%B3%A0%20%ED%95%A0%20%EB%95%8C</id>
-      <content type="html" xml:base="http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C">&lt;h2 id=&quot;use-typeof&quot;&gt;Use typeof&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C">&lt;p&gt;앞선 글에서 언급하였듯, 서버사이드에서는 브라우저 객체를 사용할 수 없다. 따라서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 등의 에러를 종종 볼  수 있다. 이번 글에는 이렇게 서버사이드에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 류의 에러가 발생했을 때 해결할 수 있는 3가지 방법을 담았다.&lt;/p&gt;
+
+&lt;h2 id=&quot;use-typeof&quot;&gt;Use typeof&lt;/h2&gt;
+&lt;p&gt;먼저, 서버사이드에서는 브라우저 객체가 없으므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeof window&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;undefined&lt;/code&gt;이다.
+따라서&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt; typeof window !== undefined&lt;/code&gt; 조건을 통해 서버사이드에서의 호출을 막을 수 있다.&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(window){...} // window is not defined error occur
 
@@ -865,6 +875,8 @@ if(typeof window !== undefined) {...} // No error
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;use-useeffect&quot;&gt;Use useEffect&lt;/h2&gt;
 
+&lt;p&gt;DOM 형성 후에 실행되는 hook이다. 따라서 useEffect 안의 코드는 서버 사이드가 아니라 브라우저에서 실행됨이 보장된다.&lt;/p&gt;
+
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;useEffect(()=&amp;gt;{
 	// Use window object inside useEffect
 },[])
@@ -872,6 +884,8 @@ if(typeof window !== undefined) {...} // No error
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;if-nextjs-project-use-dynamic&quot;&gt;(if Next.js project) Use dynamic&lt;/h2&gt;
+
+&lt;p&gt;마지막으로 Next.js를 사용한다면 Next.js 자체적으로 지원한느 방법인 dynamic 사용하여 해당 컴포넌트만 서버사이드 렌더링을 끄는 방법으로 해결할 수 있다.&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dynamic&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;next/dynamic&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;
 
@@ -912,7 +926,7 @@ if(typeof window !== undefined) {...} // No error
       
 
       
-        <summary type="html">Use typeof</summary>
+        <summary type="html">앞선 글에서 언급하였듯, 서버사이드에서는 브라우저 객체를 사용할 수 없다. 따라서 window is not defined 등의 에러를 종종 볼 수 있다. 이번 글에는 이렇게 서버사이드에서 window is not defined 류의 에러가 발생했을 때 해결할 수 있는 3가지 방법을 담았다.</summary>
       
 
       
@@ -1170,7 +1184,9 @@ export default function SEO({ title, siteTitle, description, creator, image, sum
       <published>2022-04-09T17:32:00+09:00</published>
       <updated>2022-04-09T17:32:00+09:00</updated>
       <id>http://localhost:4000/Firestore%20%EB%82%B4%EC%9A%A9%20%EA%B2%80%EC%83%89%20%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20(feat%20Typesense)</id>
-      <content type="html" xml:base="http://localhost:4000/Firestore-%EB%82%B4%EC%9A%A9-%EA%B2%80%EC%83%89-%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0-(feat-Typesense)">&lt;p&gt;Firestore는 전체 텍스트 검색이 되지 않는다. &lt;a href=&quot;https://firebase.google.com/docs/firestore/solutions/search?provider=typesense&quot;&gt;Firebase 공식 문서&lt;/a&gt;에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Elastic&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Algolia&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Typesense&lt;/code&gt; 3가지 인데 그 중에서 Catty 서비스에는 &lt;a href=&quot;https://typesense.org/&quot;&gt;Typesense&lt;/a&gt;를 사용하였다. 원하는 기능이 다 있으면서 가격이 가장 합리적이기 때문이다. 뿐만 아니라 사실 돈을 지불하는 부분은 클라우드 서비스이고 도커에 별도로 시스템을 구축한다면 그마저도 내지 않아도 괜찮다. 그렇지만 지금은 별도의 시스템을 만들 여력이 없기 때문에 그냥 돈내고 클라우드 서비스를 사용했다.&lt;/p&gt;
+      <content type="html" xml:base="http://localhost:4000/Firestore-%EB%82%B4%EC%9A%A9-%EA%B2%80%EC%83%89-%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0-(feat-Typesense)">&lt;p&gt;Firestore는 전체 텍스트 검색이 되지 않는다. &lt;a href=&quot;https://firebase.google.com/docs/firestore/solutions/search?provider=typesense&quot;&gt;Firebase 공식 문서&lt;/a&gt;에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Elastic&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Algolia&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Typesense&lt;/code&gt; 3가지 인데 그 중에서 Catty 서비스에는 &lt;a href=&quot;https://typesense.org/&quot;&gt;Typesense&lt;/a&gt;를 사용하였다.&lt;/p&gt;
+
+&lt;p&gt;Catty 서비스에 typesense를 사용한 이유는 원하는 기능이 다 있으면서 가격이 가장 합리적이기 때문이다. 뿐만 아니라 사실 돈을 지불하는 부분은 클라우드 서비스이고 도커에 별도로 시스템을 구축한다면 그마저도 내지 않아도 괜찮다. 그렇지만 지금은 별도의 시스템을 만들 여력이 없기 때문에 그냥 돈내고 클라우드 서비스를 사용했다.&lt;/p&gt;
 
 &lt;h2 id=&quot;firestore-대신-typesense&quot;&gt;Firestore 대신 Typesense&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -1307,7 +1323,7 @@ export default function SEO({ title, siteTitle, description, creator, image, sum
       
 
       
-        <summary type="html">Firestore는 전체 텍스트 검색이 되지 않는다. Firebase 공식 문서에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 Elastic, Algolia, Typesense 3가지 인데 그 중에서 Catty 서비스에는 Typesense를 사용하였다. 원하는 기능이 다 있으면서 가격이 가장 합리적이기 때문이다. 뿐만 아니라 사실 돈을 지불하는 부분은 클라우드 서비스이고 도커에 별도로 시스템을 구축한다면 그마저도 내지 않아도 괜찮다. 그렇지만 지금은 별도의 시스템을 만들 여력이 없기 때문에 그냥 돈내고 클라우드 서비스를 사용했다.</summary>
+        <summary type="html">Firestore는 전체 텍스트 검색이 되지 않는다. Firebase 공식 문서에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 Elastic, Algolia, Typesense 3가지 인데 그 중에서 Catty 서비스에는 Typesense를 사용하였다.</summary>
       
 
       

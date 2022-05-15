@@ -50,6 +50,7 @@
     <meta property="article:author" content="https://www.facebook.com/false" />
     <meta property="article:published_time" content="2022-03-24T10:32:00+09:00" />
     <meta property="article:modified_time" content="2022-03-24T10:32:00+09:00" />
+    <meta property="article:tag" content="Ai" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Competitive learning 구현 (from scratch)" />
     <meta name="twitter:description" content="Competitive learning이란?   Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고," />
@@ -57,6 +58,8 @@
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/ai_cover2.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="PIGBEAN Tech blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ai" />
     <meta name="twitter:site" content="@false" />
     <meta name="twitter:creator" content="@false" />
     <meta property="og:image:width" content="1400" />
@@ -72,6 +75,11 @@
         });
     </script>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -155,11 +163,22 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  post ">
+        <article class="post-full  tag-ai tag-coding post ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
                     <time class="post-full-meta-date" datetime="24 March 2022">24 March 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ai/'>AI</a>,
+                            
+                        
+                            
+                               <a href='/tag/coding/'>CODING</a>
+                            
+                        
                     
                 </section>
                 <h1 class="post-full-title">Competitive learning 구현 (from scratch)</h1>
@@ -177,7 +196,7 @@ into the {body} of the default.hbs template -->
 
 <p>Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고, 그 중 거리가 가장 짧은 가중 벡터 하나만 선택한다. 그 가중 벡터가 승자 노드이다. 오직 승자 노드의 가중 벡터만 갱신된다. 그래서 경쟁 학습 네트워크는 승자독식 네트워크(winner-take-all networks)라고도 불린다.</p>
 
-<div style="text-align: left">
+<div style="text-align: left" width="100%">
    <img src="/assets/img/post_images/competitive1.png" width="100%" />
 </div>
 
@@ -384,6 +403,137 @@ into the {body} of the default.hbs template -->
     <div class="inner">
         <div class="read-next-feed">
             
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/img/style/bean3.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; PIGBEAN Tech blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ai/">Ai</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Dropout">Dropout (Mathmatical approach)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Multi-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)">Implement Multi layer perceptron (from scratch)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Single-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)">Implement Single layer perceptron (from scratch)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ai/">
+                                
+                                    See all 4 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -398,6 +548,16 @@ into the {body} of the default.hbs template -->
         <div class="post-card-content">
             <a class="post-card-content-link" href="/PCA-learning-%EA%B5%AC%ED%98%84-(from-scratch)">
                 <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Ai</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Coding</span>
+                            
+                        
                     
 
                     <h2 class="post-card-title">PCA learning 구현 (from scratch)</h2>
@@ -449,6 +609,12 @@ into the {body} of the default.hbs template -->
         <div class="post-card-content">
             <a class="post-card-content-link" href="/LeetCode-1510.-Stone-Game-IV">
                 <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Coding</span>
+                            
+                        
                     
 
                     <h2 class="post-card-title">LeetCode - 1510. Stone Game IV</h2>

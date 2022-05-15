@@ -14,7 +14,7 @@
 
 </description>
         
-        <pubDate>Tue, 10 May 2022 13:32:00 +0900</pubDate>
+        <pubDate>Fri, 13 May 2022 16:32:00 +0900</pubDate>
         <link>
         http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C</link>
         <guid isPermaLink="true">http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C</guid>
@@ -23,7 +23,38 @@
     
       
       <item>
-        <title>Dropout</title>
+        <title>(Reinforcement learning) Value Function Approximation</title>
+        
+          <description>&lt;p&gt;이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다. 이 글은 David Silver의 강화학습 강의와 KAIST EE619 강화학습 수업에서 공부한 내용을 바탕으로 작성하였다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 13 May 2022 13:23:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/(RL)-Value-Function-Approximation</link>
+        <guid isPermaLink="true">http://localhost:4000/(RL)-Value-Function-Approximation</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Q-learning &amp; Double Q-learning 구현</title>
+        
+          <description>&lt;h2 id=&quot;q-learning과-double-q-learning&quot;&gt;Q-learning과 Double Q-learning&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 12 May 2022 13:23:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84</link>
+        <guid isPermaLink="true">http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Dropout (Mathmatical approach)</title>
         
           <description>&lt;p&gt;Dropout은 &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.&lt;/p&gt;
 
@@ -87,13 +118,7 @@
       <item>
         <title>RecSys &amp; RL - A Deep Reinforcement Learning Framework for News Recommendation</title>
         
-          <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;딥러닝 모델을 활용한 기존 뉴스 추천 시스템의 취약점&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;다이나믹하게 변하는 뉴스의 특성과 뉴스에 대한 유저의 선호도 변화를 고려할 때, online learning 이 필요하다. 하지만 기존의 뉴스 추천 시스템은 …&lt;/li&gt;
-  &lt;li&gt;기존 추천 시스템은 유저 feedback로 오직 click/no click 정보만 고려했다. 따라서 뉴스를 탐색하면서 실수로 잘못 누른 기사와 정말 읽고 싶어서 찾아서 들어간 기사의 reward는 확실히 달라야하지만 이러한 특성은 잡아내지 못하였다.&lt;/li&gt;
-  &lt;li&gt;기존 추천 시스템은 유저에게 유사한 뉴스를 계속 추천하려는 경향이 있다. 그렇지만 이렇게 계속 비슷한 뉴스를 추천해주면 주제에 대한 사용자의 흥미가 쉽게 떨어진다.&lt;/li&gt;
-&lt;/ul&gt;
+          <description>&lt;p&gt;이 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.&lt;/p&gt;
 
 </description>
         
@@ -259,7 +284,7 @@
       <item>
         <title>When SSR says that there is no window object</title>
         
-          <description>&lt;h2 id=&quot;use-typeof&quot;&gt;Use typeof&lt;/h2&gt;
+          <description>&lt;p&gt;앞선 글에서 언급하였듯, 서버사이드에서는 브라우저 객체를 사용할 수 없다. 따라서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 등의 에러를 종종 볼  수 있다. 이번 글에는 이렇게 서버사이드에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 류의 에러가 발생했을 때 해결할 수 있는 3가지 방법을 담았다.&lt;/p&gt;
 
 </description>
         
@@ -290,7 +315,7 @@
       <item>
         <title>Firestore 내용 검색 가능하게 만들기 (Feat. Typesense)</title>
         
-          <description>&lt;p&gt;Firestore는 전체 텍스트 검색이 되지 않는다. &lt;a href=&quot;https://firebase.google.com/docs/firestore/solutions/search?provider=typesense&quot;&gt;Firebase 공식 문서&lt;/a&gt;에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Elastic&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Algolia&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Typesense&lt;/code&gt; 3가지 인데 그 중에서 Catty 서비스에는 &lt;a href=&quot;https://typesense.org/&quot;&gt;Typesense&lt;/a&gt;를 사용하였다. 원하는 기능이 다 있으면서 가격이 가장 합리적이기 때문이다. 뿐만 아니라 사실 돈을 지불하는 부분은 클라우드 서비스이고 도커에 별도로 시스템을 구축한다면 그마저도 내지 않아도 괜찮다. 그렇지만 지금은 별도의 시스템을 만들 여력이 없기 때문에 그냥 돈내고 클라우드 서비스를 사용했다.&lt;/p&gt;
+          <description>&lt;p&gt;Firestore는 전체 텍스트 검색이 되지 않는다. &lt;a href=&quot;https://firebase.google.com/docs/firestore/solutions/search?provider=typesense&quot;&gt;Firebase 공식 문서&lt;/a&gt;에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Elastic&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Algolia&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Typesense&lt;/code&gt; 3가지 인데 그 중에서 Catty 서비스에는 &lt;a href=&quot;https://typesense.org/&quot;&gt;Typesense&lt;/a&gt;를 사용하였다.&lt;/p&gt;
 
 </description>
         
@@ -443,7 +468,7 @@
       <item>
         <title>MUI 무료 template로 디자이너 없이 웹서비스 개발하기</title>
         
-          <description>&lt;p&gt;회사 개발 프로젝트로 빠르게 웹앱을 개발해야 할 일이 생겼다. 그렇지만 팀리소스가 부족해 디자이너가 없는 상황에서 웹서비스를 개발해야 했다. 개발하는 서비스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;로우로깅&lt;/code&gt; 서비스로, 체크리스트 형식으로 쉽고 빠르게 회사에 맞는 개인정보 처리방침을 생성해주고 이 내용을 기반으로 변호사 온라인 상담을 받을 수 있도록 지원해주는 서비스 이다. 서비스는 &lt;a href=&quot;https://www.lawlogging.kr/&quot;&gt;https://www.lawlogging.kr/&lt;/a&gt;에서 확인할 수 있다.&lt;/p&gt;
+          <description>&lt;p&gt;회사 개발 프로젝트로 빠르게 웹앱을 개발해야 할 일이 생겼다. 그렇지만 팀리소스가 부족해 디자이너가 없는 상황에서 웹서비스를 개발해야 했다.&lt;/p&gt;
 
 </description>
         

@@ -3,7 +3,7 @@ title: PCA learning 구현 (from scratch)
 author: Bean
 date: 2022-03-24 09:32:00 +0800
 categories: [AI, basic]
-tags: []
+tags: [AI, coding]
 layout: post
 current: post
 class: post-template

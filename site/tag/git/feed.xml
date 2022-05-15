@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="http://localhost:4000/tag/git/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-05-15T19:06:19+09:00</updated>
+  <id>http://localhost:4000/tag/git/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">PIGBEAN Tech blog | </title>
+  
+
+  
+    <subtitle>Seize the day</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Git commit 꾸미고 관리하기</title>
+      <link href="http://localhost:4000/Git-commit-%EA%BE%B8%EB%AF%B8%EA%B3%A0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0" rel="alternate" type="text/html" title="Git commit 꾸미고 관리하기" />
+      <published>2022-04-15T20:19:00+09:00</published>
+      <updated>2022-04-15T20:19:00+09:00</updated>
+      <id>http://localhost:4000/Git%20commit%20%EA%BE%B8%EB%AF%B8%EA%B3%A0%20%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</id>
+      <content type="html" xml:base="http://localhost:4000/Git-commit-%EA%BE%B8%EB%AF%B8%EA%B3%A0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0">&lt;p&gt;Git 커밋 정리는 이전부터 해야지 마음먹었는데 계속 미루고 있었다. 계속 미루면 안될 거 같아 Git project 오픈하면서 같이 정리해보았다. 우선 커밋 메시지 템플릿은 검색하니까 많이 나왔다. 다 비슷한 내용인데 그 중 괜찮은 템플릿을 가져왔다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;################
+# &amp;lt;타입&amp;gt; : &amp;lt;제목&amp;gt; 의 형식으로 제목을 아래 공백줄에 작성
+# 제목은 50자 이내 / 변경사항이 &quot;무엇&quot;인지 명확히 작성 / 끝에 마침표 금지
+# 예) feat : 로그인 기능 추가
+
+# 바로 아래 공백은 지우지 마세요 (제목과 본문의 분리를 위함)
+
+################
+# 본문(구체적인 내용)을 아랫줄에 작성
+# 여러 줄의 메시지를 작성할 땐 &quot;-&quot;로 구분 (한 줄은 72자 이내)
+
+################
+# 꼬릿말(footer)을 아랫줄에 작성 (현재 커밋과 관련된 이슈 번호 추가 등)
+# 예) close / fix / resolve #7
+
+################
+# feat : ✨ 새로운 기능 추가
+# fix : 🐛 버그 수정
+# docs : 📝 문서 수정
+# test : ✅ 테스트 코드 추가
+# refact : ♻️ 코드 리팩토링
+# style : 💄 코드 의미에 영향을 주지 않는 변경사항
+# chore : 🔧 빌드 부분 혹은 패키지 매니저 수정사항
+################
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 템플릿을 프로젝트 폴더에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitmessage.txt&lt;/code&gt; 라는 이름의 파일로 추가하면 자동으로 이후에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit&lt;/code&gt;을 할 때마다 이 템플릿이 떠서 템플릿을 참고해서 커밋 메시지를 작성할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;또한, 커밋을 이슈와 연결시킬 수 있는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#20&lt;/code&gt;처럼 이슈 번호를 커밋에 남기면 아래와 같이 해당 이슈에 기록이 생성된다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/git commit2.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;또 특히 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;종료 키워드 + #이슈번호&lt;/code&gt; 이렇게 커밋에 남기면 자동으로 이슈가 종료된다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/git commit1.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;종료키워드는 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;close&lt;/li&gt;
+  &lt;li&gt;closes&lt;/li&gt;
+  &lt;li&gt;closed&lt;/li&gt;
+  &lt;li&gt;fix&lt;/li&gt;
+  &lt;li&gt;fixes&lt;/li&gt;
+  &lt;li&gt;fixed&lt;/li&gt;
+  &lt;li&gt;resolve&lt;/li&gt;
+  &lt;li&gt;resolves&lt;/li&gt;
+  &lt;li&gt;resolved&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Git" />
+      
+
+      
+        <summary type="html">Git 커밋 정리는 이전부터 해야지 마음먹었는데 계속 미루고 있었다. 계속 미루면 안될 거 같아 Git project 오픈하면서 같이 정리해보았다. 우선 커밋 메시지 템플릿은 검색하니까 많이 나왔다. 다 비슷한 내용인데 그 중 괜찮은 템플릿을 가져왔다.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Git project 오픈 및 이슈 관리</title>
+      <link href="http://localhost:4000/Git-project-%EC%98%A4%ED%94%88-%EB%B0%8F-%EC%9D%B4%EC%8A%88-%EA%B4%80%EB%A6%AC" rel="alternate" type="text/html" title="Git project 오픈 및 이슈 관리" />
+      <published>2022-04-15T17:32:00+09:00</published>
+      <updated>2022-04-15T17:32:00+09:00</updated>
+      <id>http://localhost:4000/Git%20project%20%EC%98%A4%ED%94%88%20%EB%B0%8F%20%EC%9D%B4%EC%8A%88%20%EA%B4%80%EB%A6%AC</id>
+      <content type="html" xml:base="http://localhost:4000/Git-project-%EC%98%A4%ED%94%88-%EB%B0%8F-%EC%9D%B4%EC%8A%88-%EA%B4%80%EB%A6%AC">&lt;p&gt;처음에 Catty 서비스를 개발할 때 어짜피 1인 개발이라 따로 프로젝트 관리를 하지 않았다. 그렇지만 크롬익스텐션, 앱, 웹 3가지를 한꺼번에 관리해야하고 기능이 조금씩 복잡해지면서 체계적으로 프로젝트를 관리할 필요성을 느끼게 되었다. 예전에 프로젝트 관리용으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Jira&lt;/code&gt;나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Notion&lt;/code&gt;을 써봤지만 아무래도 개발 프로젝트는 git repo에 프로젝트를 열어 관리하는 게 최고인 듯 하다.&lt;/p&gt;
+
+&lt;h2 id=&quot;이슈-라벨-꾸미기&quot;&gt;이슈 라벨 꾸미기&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/issue1.png&quot; width=&quot;70%&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;먼저 깃 이슈 관리에 사용될 라벨을 꾸며주었다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;🐞 BugFix&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;📃 Docs&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;✨ Feature&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;💪 Enhancement&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;🔨 Refactor&lt;/code&gt; 등 기본적인 이슈 라벨과 추가로 몇번 코드 migrate 작업을 진행해 Migrate 태그도 추가해주었다.
+또한, 사실 서비스의 많은 인상이 처음에 결정됨에도 불구하고 자꾸 개발하다보면 이런 부분을 놓치게 되어 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;🥰 First impression&lt;/code&gt;이라는 라벨을 따로 둬서 첫인상에 영향을 줄 수 있는 이슈를 별도로 관리하였다.&lt;/p&gt;
+
+&lt;h2 id=&quot;이슈-템플릿-추가하기&quot;&gt;이슈 템플릿 추가하기&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+또한, 이슈를 추가할 때 같은 형식으로 추가할 수 있도록 템플릿을 만들 수 있다. 이슈 템플릿 만드는 법은 다음의 블로그를 참고했다.
+&lt;a href=&quot;https://shinsunyoung.tistory.com/35&quot;&gt;https://shinsunyoung.tistory.com/35&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;git-프로젝트와-이슈-연결하기&quot;&gt;Git 프로젝트와 이슈 연결하기&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+마지막으로 Git 프로젝트를 생성하고 이슈와 연결할 수 있다. 간단하게 설정할 수 있는데, 프로젝트를 생성할 때 &lt;strong&gt;Project template&lt;/strong&gt;을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Automated kanban&lt;/code&gt; 이나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Automated kanban with review&lt;/code&gt;를 사용하면 git이 알아서 다 연동해준다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+  &lt;img src=&quot;/assets/img/post_images/git issue1.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Beanie</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Git" />
+      
+
+      
+        <summary type="html">처음에 Catty 서비스를 개발할 때 어짜피 1인 개발이라 따로 프로젝트 관리를 하지 않았다. 그렇지만 크롬익스텐션, 앱, 웹 3가지를 한꺼번에 관리해야하고 기능이 조금씩 복잡해지면서 체계적으로 프로젝트를 관리할 필요성을 느끼게 되었다. 예전에 프로젝트 관리용으로 Jira나 Notion을 써봤지만 아무래도 개발 프로젝트는 git repo에 프로젝트를 열어 관리하는 게 최고인 듯 하다.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

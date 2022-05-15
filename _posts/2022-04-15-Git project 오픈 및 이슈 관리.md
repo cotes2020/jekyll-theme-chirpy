@@ -3,7 +3,7 @@ title: Git project 오픈 및 이슈 관리
 author: Bean
 date: 2022-04-15 16:32:00 +0800
 categories: [etc, git]
-tags: []
+tags: [Git]
 cover: assets/img/post_images/github_cover.jpeg
 layout: post
 current: post

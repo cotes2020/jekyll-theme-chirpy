@@ -3,7 +3,7 @@ title: Git commit 꾸미고 관리하기
 author: Bean
 date: 2022-04-15 19:19:00 +0800
 categories: [etc, git]
-tags: []
+tags: [Git]
 cover: assets/img/post_images/github_cover.jpeg
 layout: post
 current: post

@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/next/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-12T16:02:32+09:00</updated>
+  <updated>2022-05-15T19:06:19+09:00</updated>
   <id>http://localhost:4000/tag/next/feed.xml</id>
 
   
@@ -39,7 +39,11 @@
       <published>2022-04-09T17:32:00+09:00</published>
       <updated>2022-04-09T17:32:00+09:00</updated>
       <id>http://localhost:4000/SSR%EC%97%90%EC%84%9C%20window%20%EA%B0%9D%EC%B2%B4%EA%B0%80%20%EC%97%86%EB%8B%A4%EA%B3%A0%20%ED%95%A0%20%EB%95%8C</id>
-      <content type="html" xml:base="http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C">&lt;h2 id=&quot;use-typeof&quot;&gt;Use typeof&lt;/h2&gt;
+      <content type="html" xml:base="http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C">&lt;p&gt;앞선 글에서 언급하였듯, 서버사이드에서는 브라우저 객체를 사용할 수 없다. 따라서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 등의 에러를 종종 볼  수 있다. 이번 글에는 이렇게 서버사이드에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 류의 에러가 발생했을 때 해결할 수 있는 3가지 방법을 담았다.&lt;/p&gt;
+
+&lt;h2 id=&quot;use-typeof&quot;&gt;Use typeof&lt;/h2&gt;
+&lt;p&gt;먼저, 서버사이드에서는 브라우저 객체가 없으므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeof window&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;undefined&lt;/code&gt;이다.
+따라서&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt; typeof window !== undefined&lt;/code&gt; 조건을 통해 서버사이드에서의 호출을 막을 수 있다.&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(window){...} // window is not defined error occur
 
@@ -49,6 +53,8 @@ if(typeof window !== undefined) {...} // No error
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;use-useeffect&quot;&gt;Use useEffect&lt;/h2&gt;
 
+&lt;p&gt;DOM 형성 후에 실행되는 hook이다. 따라서 useEffect 안의 코드는 서버 사이드가 아니라 브라우저에서 실행됨이 보장된다.&lt;/p&gt;
+
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;useEffect(()=&amp;gt;{
 	// Use window object inside useEffect
 },[])
@@ -56,6 +62,8 @@ if(typeof window !== undefined) {...} // No error
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;if-nextjs-project-use-dynamic&quot;&gt;(if Next.js project) Use dynamic&lt;/h2&gt;
+
+&lt;p&gt;마지막으로 Next.js를 사용한다면 Next.js 자체적으로 지원한느 방법인 dynamic 사용하여 해당 컴포넌트만 서버사이드 렌더링을 끄는 방법으로 해결할 수 있다.&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dynamic&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;next/dynamic&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;
 
@@ -96,7 +104,7 @@ if(typeof window !== undefined) {...} // No error
       
 
       
-        <summary type="html">Use typeof</summary>
+        <summary type="html">앞선 글에서 언급하였듯, 서버사이드에서는 브라우저 객체를 사용할 수 없다. 따라서 window is not defined 등의 에러를 종종 볼 수 있다. 이번 글에는 이렇게 서버사이드에서 window is not defined 류의 에러가 발생했을 때 해결할 수 있는 3가지 방법을 담았다.</summary>
       
 
       

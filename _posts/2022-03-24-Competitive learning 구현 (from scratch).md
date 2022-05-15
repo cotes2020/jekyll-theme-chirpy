@@ -3,7 +3,7 @@ title: Competitive learning 구현 (from scratch)
 author: Bean
 date: 2022-03-24 09:32:00 +0800
 categories: [AI, basic]
-tags: []
+tags: [AI, coding]
 layout: post
 current: post
 class: post-template
@@ -17,7 +17,7 @@ cover:  assets/img/post_images/ai_cover2.jpg
 
 Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고, 그 중 거리가 가장 짧은 가중 벡터 하나만 선택한다. 그 가중 벡터가 승자 노드이다. 오직 승자 노드의 가중 벡터만 갱신된다. 그래서 경쟁 학습 네트워크는 승자독식 네트워크(winner-take-all networks)라고도 불린다.
 
-<div style="text-align: left">
+<div style="text-align: left" width="100%">
    <img src="/assets/img/post_images/competitive1.png" width="100%"/>
 </div>
 

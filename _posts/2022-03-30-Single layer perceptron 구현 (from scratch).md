@@ -3,7 +3,7 @@ title: Implement Single layer perceptron (from scratch)
 author: Bean
 date: 2022-03-30 09:32:00 +0800
 categories: [AI, basic]
-tags: []
+tags: [AI, coding]
 layout: post
 current: post
 class: post-template
@@ -56,5 +56,5 @@ def predict(self, X):
 
 ***
 
-#### 이미지 출처 :
+이미지 출처 :
  * [https://www.tutorialspoint.com/tensorflow/tensorflow_single_layer_perceptron.htm](https://www.tutorialspoint.com/tensorflow/tensorflow_single_layer_perceptron.htm)
