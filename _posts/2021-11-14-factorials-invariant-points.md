@@ -62,7 +62,7 @@ There are infinite allowed choices for a converging Laplace transform, but the o
 
 Given a transformation $$\mathcal{T}$$, how can we find an $$\mathcal{S}$$ or equivalently, some $$\sigma \left( z \right)$$ ?
 
-The trick is to convert $$\mathcal{T}$$ to a differential operator and use the Laplace transform. If $$\mathcal{T}$$ is already a differential operator, the job is easier. If not, some work is required, which is a subject of linear algebra and measure theory.
+The trick is to convert $$\mathcal{T}$$ to a differential operator and use the Laplace transform. If $$\mathcal{T}$$ is already a differential operator, the job is easier. If not, some work is required, which is a subject of functional analysis.
 
 Suppose a given differential operator $$\mathcal{T}$$ has some $$\mathcal{S}$$. We identify that $$\mathcal{S}$$ is formed from an ordinary function $$\sigma \left( z \right)$$. Invoking the idea of Laplace transforms, we can define an invertible map $$\mathcal{L} : \mathcal{T} \mapsto \mathcal{S}$$ (here, $$\mathcal{T}$$ and $$\mathcal{S}$$ represent the spaces of all possible $$\mathcal{T}$$'s and $$\mathcal{S}$$'s) so that,
 
