@@ -313,8 +313,34 @@ a\end{matrix}\right|s)$ 를 찾는다.</p>
  $ w_{t+1} = w_{t} + \alpha \left ( r_{t+1} + \gamma \hat{Q_{w}}(s_{t+1}, a_{t+1}) - \hat{Q_{w}}(s_{t}, a_{t+1}) \right) \bigtriangledown \hat{Q_{w}}(s_{t}, a_{t+1}) $</li>
 </ul>
 
-<!-- &nbsp;
-## Off-Policy Prediction and Control with Function Approximation -->
+<p> </p>
+<h2 id="off-policy-prediction-and-control-with-function-approximation">Off-Policy Prediction and Control with Function Approximation</h2>
+<p> </p>
+
+<h3 id="off-policy-td-prediction-vpis-importance-sampling">Off-Policy TD Prediction ($V^{\pi}$(s)): Importance Sampling</h3>
+<p>Target policy $\pi$, Behavior policy $\beta$ 에 대하여 먼저 Tabular case를 다시 살펴보자.</p>
+
+\[V(s_{t}) \leftarrow V(s_{t}) + \alpha \left (  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma V(s_{t+1})) - V(s_{t}) \right )\]
+
+\[V(s_{t}) \leftarrow V(s_{t}) + \alpha  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma V(s_{t+1}) - V(s_{t}))\]
+
+<p>이를 바탕으로 이전과 비슷한 방식으로 Stochastic Gradient Descent을 적용해 weight update 식을 구하면 다음과 같다.</p>
+
+\[w_{t+1} = w_{t} + \alpha \left (  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma \hat{V}_{w_{t}}(s_{t+1})) - \hat{V}_{w_{t}}(s_{t}) \right ) \bigtriangledown \hat{V}_{w_{t}}(s_{t})\]
+
+\[w_{t+1} = w_{t} + \alpha  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma \hat{V}_{w_{t}}(s_{t+1}) - \hat{V}_{w_{t}}(s_{t})) \bigtriangledown  \hat{V}_{w_{t}}(s_{t})\]
+
+<p> </p>
+<h3 id="off-policy-td-control-action-value-function">Off-Policy TD Control (Action-Value Function)</h3>
+<p>Control의 경우에도 Tabular case를 다시 살펴보면,</p>
+
+\[Q(s_{t}, a_{t}) \leftarrow Q(s_{t}, a_{t}) + \alpha\left ( r_{t+1} + \gamma \sum_{a}^{} \pi(\left.\begin{matrix}
+a\end{matrix}\right|s_{t+1})Q(s_{t+1}, a) - Q(s_{t}, a_{t}) \right )\]
+
+<p>Function approximatation의 경우로 발전시키면 다음과 같이 된다.</p>
+
+\[w_{t+1} = w_{t} + \alpha\left ( r_{t+1} + \gamma \sum_{a}^{} \pi(\left.\begin{matrix}
+a\end{matrix}\right|s_{t+1}) \hat{Q}_{w_{t}}(s_{t+1}, a) - \hat{Q}_{w_{t}}(s_{t}, a_{t}) \right ) \bigtriangledown  \hat{Q}_{w_{t}}(s_{t}, a_{t})\]
 
 <p> 
 <br />
@@ -412,6 +438,8 @@ a\end{matrix}\right|s)$ 를 찾는다.</p>
                         <div class="read-next-card-content">
                             <ul>
                                 
+                                
+                                  
                                 
                                   
                                 
@@ -530,26 +558,33 @@ a\end{matrix}\right|s)$ 를 찾는다.</p>
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">
-                <div class="post-card-image" style="background-image: url(/assets/img/post_images/catty.png)"></div>
+            <a class="post-card-image-link" href="/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/catty_cover2.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">
+            <a class="post-card-content-link" href="/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Catty</span>
+                               <span class="post-card-tags">Catty</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Extension</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">리소스 기반 노트 작성 서비스 Catty 소개</h2>
+                    <h2 class="post-card-title">웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.
+                        <p>Catty 서비스는 크롬 익스텐션과 함께 사용해야 가장 편리하고 효과적으로 사용할 수 있다. 따라서 웹앱에 들어온 사람들 중에 아직 크롬 익스텐션을 설치하지 않은 사람들에게 아래와 같이 크롬 익스텐션을 설치하라는 알림을 띄우고자 하였다.
+
+   
+
 
 </p>
                     
@@ -571,7 +606,7 @@ a\end{matrix}\right|s)$ 를 찾는다.</p>
                 <span class="reading-time">
                     
                     
-                      3 min read
+                      1 min read
                     
                 </span>
             </footer>

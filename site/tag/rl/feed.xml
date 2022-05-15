@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/rl/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-15T19:06:19+09:00</updated>
+  <updated>2022-05-15T22:46:19+09:00</updated>
   <id>http://localhost:4000/tag/rl/feed.xml</id>
 
   
@@ -165,8 +165,34 @@ a\end{matrix}\right|s)$ 를 찾는다.&lt;/p&gt;
  $ w_{t+1} = w_{t} + \alpha \left ( r_{t+1} + \gamma \hat{Q_{w}}(s_{t+1}, a_{t+1}) - \hat{Q_{w}}(s_{t}, a_{t+1}) \right) \bigtriangledown \hat{Q_{w}}(s_{t}, a_{t+1}) $&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;!-- &amp;nbsp;
-## Off-Policy Prediction and Control with Function Approximation --&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;off-policy-prediction-and-control-with-function-approximation&quot;&gt;Off-Policy Prediction and Control with Function Approximation&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;off-policy-td-prediction-vpis-importance-sampling&quot;&gt;Off-Policy TD Prediction ($V^{\pi}$(s)): Importance Sampling&lt;/h3&gt;
+&lt;p&gt;Target policy $\pi$, Behavior policy $\beta$ 에 대하여 먼저 Tabular case를 다시 살펴보자.&lt;/p&gt;
+
+\[V(s_{t}) \leftarrow V(s_{t}) + \alpha \left (  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma V(s_{t+1})) - V(s_{t}) \right )\]
+
+\[V(s_{t}) \leftarrow V(s_{t}) + \alpha  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma V(s_{t+1}) - V(s_{t}))\]
+
+&lt;p&gt;이를 바탕으로 이전과 비슷한 방식으로 Stochastic Gradient Descent을 적용해 weight update 식을 구하면 다음과 같다.&lt;/p&gt;
+
+\[w_{t+1} = w_{t} + \alpha \left (  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma \hat{V}_{w_{t}}(s_{t+1})) - \hat{V}_{w_{t}}(s_{t}) \right ) \bigtriangledown \hat{V}_{w_{t}}(s_{t})\]
+
+\[w_{t+1} = w_{t} + \alpha  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma \hat{V}_{w_{t}}(s_{t+1}) - \hat{V}_{w_{t}}(s_{t})) \bigtriangledown  \hat{V}_{w_{t}}(s_{t})\]
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h3 id=&quot;off-policy-td-control-action-value-function&quot;&gt;Off-Policy TD Control (Action-Value Function)&lt;/h3&gt;
+&lt;p&gt;Control의 경우에도 Tabular case를 다시 살펴보면,&lt;/p&gt;
+
+\[Q(s_{t}, a_{t}) \leftarrow Q(s_{t}, a_{t}) + \alpha\left ( r_{t+1} + \gamma \sum_{a}^{} \pi(\left.\begin{matrix}
+a\end{matrix}\right|s_{t+1})Q(s_{t+1}, a) - Q(s_{t}, a_{t}) \right )\]
+
+&lt;p&gt;Function approximatation의 경우로 발전시키면 다음과 같이 된다.&lt;/p&gt;
+
+\[w_{t+1} = w_{t} + \alpha\left ( r_{t+1} + \gamma \sum_{a}^{} \pi(\left.\begin{matrix}
+a\end{matrix}\right|s_{t+1}) \hat{Q}_{w_{t}}(s_{t+1}, a) - \hat{Q}_{w_{t}}(s_{t}, a_{t}) \right ) \bigtriangledown  \hat{Q}_{w_{t}}(s_{t}, a_{t})\]
 
 &lt;p&gt; 
 &lt;br /&gt;

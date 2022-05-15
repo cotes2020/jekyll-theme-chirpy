@@ -14,10 +14,28 @@
 
 </description>
         
-        <pubDate>Fri, 13 May 2022 16:32:00 +0900</pubDate>
+        <pubDate>Sun, 15 May 2022 16:32:00 +0900</pubDate>
         <link>
         http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C</link>
         <guid isPermaLink="true">http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기</title>
+        
+          <description>&lt;p&gt;Catty 서비스는 크롬 익스텐션과 함께 사용해야 가장 편리하고 효과적으로 사용할 수 있다. 따라서 웹앱에 들어온 사람들 중에 아직 크롬 익스텐션을 설치하지 않은 사람들에게 아래와 같이 크롬 익스텐션을 설치하라는 알림을 띄우고자 하였다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+
+</description>
+        
+        <pubDate>Sun, 15 May 2022 03:21:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0</guid>
       </item>
       
     

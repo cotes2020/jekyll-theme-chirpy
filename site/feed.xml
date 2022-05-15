@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-15T19:06:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">PIGBEAN Tech blog</title><subtitle>Seize the day</subtitle><entry><title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title><link href="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" /><published>2022-05-13T16:32:00+09:00</published><updated>2022-05-13T16:32:00+09:00</updated><id>http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EB%B0%98%20%EB%85%B8%ED%8A%B8%20%EC%9E%91%EC%84%B1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20Catty%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-15T22:46:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">PIGBEAN Tech blog</title><subtitle>Seize the day</subtitle><entry><title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title><link href="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" /><published>2022-05-15T16:32:00+09:00</published><updated>2022-05-15T16:32:00+09:00</updated><id>http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EB%B0%98%20%EB%85%B8%ED%8A%B8%20%EC%9E%91%EC%84%B1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20Catty%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;catty-서비스가-뭔데&quot;&gt;Catty 서비스가 뭔데?&lt;/h2&gt;
 &lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
@@ -120,7 +120,43 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
 
 &lt;hr /&gt;
 
-&lt;p&gt;목업 이미지 출처 : &lt;a href=&quot;www.freepik.com&quot;&gt;www.freepik.com&lt;/a&gt;&lt;/p&gt;</content><author><name>Beanie</name></author><category term="Projects" /><category term="Catty" /><summary type="html">작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.</summary></entry><entry><title type="html">(Reinforcement learning) Value Function Approximation</title><link href="http://localhost:4000/(RL)-Value-Function-Approximation" rel="alternate" type="text/html" title="(Reinforcement learning) Value Function Approximation" /><published>2022-05-13T13:23:00+09:00</published><updated>2022-05-13T13:23:00+09:00</updated><id>http://localhost:4000/(RL)%20Value%20Function%20Approximation</id><content type="html" xml:base="http://localhost:4000/(RL)-Value-Function-Approximation">&lt;p&gt;이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다. 이 글은 David Silver의 강화학습 강의와 KAIST EE619 강화학습 수업에서 공부한 내용을 바탕으로 작성하였다.&lt;/p&gt;
+&lt;p&gt;목업 이미지 출처 : &lt;a href=&quot;www.freepik.com&quot;&gt;www.freepik.com&lt;/a&gt;&lt;/p&gt;</content><author><name>Beanie</name></author><category term="Projects" /><category term="Catty" /><summary type="html">작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.</summary></entry><entry><title type="html">웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기</title><link href="http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0" rel="alternate" type="text/html" title="웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기" /><published>2022-05-15T03:21:00+09:00</published><updated>2022-05-15T03:21:00+09:00</updated><id>http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C%20%ED%8A%B9%EC%A0%95%20%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%20%EC%84%A4%EC%B9%98%20%EC%97%AC%EB%B6%80%20%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">&lt;p&gt;Catty 서비스는 크롬 익스텐션과 함께 사용해야 가장 편리하고 효과적으로 사용할 수 있다. 따라서 웹앱에 들어온 사람들 중에 아직 크롬 익스텐션을 설치하지 않은 사람들에게 아래와 같이 크롬 익스텐션을 설치하라는 알림을 띄우고자 하였다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left&quot;&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;그러기 위해서는 먼저 웹앱에서 해당 유저의 Catty 크롬 익스텐션 설치 여부를 파악할 수 있어야 한다.&lt;/p&gt;
+
+&lt;p&gt;이 기능은 크롬 익스텐션에서 이미지 하나를 웹에서 접근가능하게 설정해두고, 웹에서 해당 이미지를 불러오는 것을 시도한 다음, 이 시도의 성공/실패 여부를 판단하는 것으로 구현할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;먼저, 크롬 익스텐션의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;manifest.json&lt;/code&gt;에서 체크하려고 하는 이미지를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;web_accessible_resources&lt;/code&gt;에 추가해준다.&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;web_accessible_resources&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/images/Jcrop.gif&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/images/pixel.png&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그런 다음 웹앱에 다음 함수를 추가한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;useEffect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;detectExtension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CHROME_EXTENSION_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;detectExtension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;extensionId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;chrome-extension://&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;extensionId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/images/pixel.png&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;setExtensionInstalled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onerror&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;setExtensionInstalled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이렇게 설정해두면 해당 함수가 있는 컴포넌트가 mount 될 때, 확인하고 싶은 CHROME_EXTENSION_ID의 images/pixel.png 이미지 로드를 시도한다. 이 때 로드가 실패하면 CHROME_EXTENSION_ID가 존재하지 않는 다는 뜻이므로 설치를 하라는 알림을 띄우면 된다.&lt;/p&gt;</content><author><name>Beanie</name></author><category term="Web frontend" /><category term="React" /><category term="Catty" /><category term="extension" /><summary type="html">Catty 서비스는 크롬 익스텐션과 함께 사용해야 가장 편리하고 효과적으로 사용할 수 있다. 따라서 웹앱에 들어온 사람들 중에 아직 크롬 익스텐션을 설치하지 않은 사람들에게 아래와 같이 크롬 익스텐션을 설치하라는 알림을 띄우고자 하였다.</summary></entry><entry><title type="html">(Reinforcement learning) Value Function Approximation</title><link href="http://localhost:4000/(RL)-Value-Function-Approximation" rel="alternate" type="text/html" title="(Reinforcement learning) Value Function Approximation" /><published>2022-05-13T13:23:00+09:00</published><updated>2022-05-13T13:23:00+09:00</updated><id>http://localhost:4000/(RL)%20Value%20Function%20Approximation</id><content type="html" xml:base="http://localhost:4000/(RL)-Value-Function-Approximation">&lt;p&gt;이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다. 이 글은 David Silver의 강화학습 강의와 KAIST EE619 강화학습 수업에서 공부한 내용을 바탕으로 작성하였다.&lt;/p&gt;
 
 &lt;h2 id=&quot;tabular-methods&quot;&gt;Tabular Methods&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -246,8 +282,34 @@ a\end{matrix}\right|s)$ 를 찾는다.&lt;/p&gt;
  $ w_{t+1} = w_{t} + \alpha \left ( r_{t+1} + \gamma \hat{Q_{w}}(s_{t+1}, a_{t+1}) - \hat{Q_{w}}(s_{t}, a_{t+1}) \right) \bigtriangledown \hat{Q_{w}}(s_{t}, a_{t+1}) $&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;!-- &amp;nbsp;
-## Off-Policy Prediction and Control with Function Approximation --&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;off-policy-prediction-and-control-with-function-approximation&quot;&gt;Off-Policy Prediction and Control with Function Approximation&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;off-policy-td-prediction-vpis-importance-sampling&quot;&gt;Off-Policy TD Prediction ($V^{\pi}$(s)): Importance Sampling&lt;/h3&gt;
+&lt;p&gt;Target policy $\pi$, Behavior policy $\beta$ 에 대하여 먼저 Tabular case를 다시 살펴보자.&lt;/p&gt;
+
+\[V(s_{t}) \leftarrow V(s_{t}) + \alpha \left (  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma V(s_{t+1})) - V(s_{t}) \right )\]
+
+\[V(s_{t}) \leftarrow V(s_{t}) + \alpha  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma V(s_{t+1}) - V(s_{t}))\]
+
+&lt;p&gt;이를 바탕으로 이전과 비슷한 방식으로 Stochastic Gradient Descent을 적용해 weight update 식을 구하면 다음과 같다.&lt;/p&gt;
+
+\[w_{t+1} = w_{t} + \alpha \left (  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma \hat{V}_{w_{t}}(s_{t+1})) - \hat{V}_{w_{t}}(s_{t}) \right ) \bigtriangledown \hat{V}_{w_{t}}(s_{t})\]
+
+\[w_{t+1} = w_{t} + \alpha  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma \hat{V}_{w_{t}}(s_{t+1}) - \hat{V}_{w_{t}}(s_{t})) \bigtriangledown  \hat{V}_{w_{t}}(s_{t})\]
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h3 id=&quot;off-policy-td-control-action-value-function&quot;&gt;Off-Policy TD Control (Action-Value Function)&lt;/h3&gt;
+&lt;p&gt;Control의 경우에도 Tabular case를 다시 살펴보면,&lt;/p&gt;
+
+\[Q(s_{t}, a_{t}) \leftarrow Q(s_{t}, a_{t}) + \alpha\left ( r_{t+1} + \gamma \sum_{a}^{} \pi(\left.\begin{matrix}
+a\end{matrix}\right|s_{t+1})Q(s_{t+1}, a) - Q(s_{t}, a_{t}) \right )\]
+
+&lt;p&gt;Function approximatation의 경우로 발전시키면 다음과 같이 된다.&lt;/p&gt;
+
+\[w_{t+1} = w_{t} + \alpha\left ( r_{t+1} + \gamma \sum_{a}^{} \pi(\left.\begin{matrix}
+a\end{matrix}\right|s_{t+1}) \hat{Q}_{w_{t}}(s_{t+1}, a) - \hat{Q}_{w_{t}}(s_{t}, a_{t}) \right ) \bigtriangledown  \hat{Q}_{w_{t}}(s_{t}, a_{t})\]
 
 &lt;p&gt; 
 &lt;br /&gt;
@@ -1271,99 +1333,4 @@ average accumulated reward after 100 episodes than their method.
   &lt;img src=&quot;/assets/img/post_images/sc3.png&quot; width=&quot;70%&quot; /&gt;
 &lt;/div&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Beanie</name></author><category term="RL" /><category term="Autonomous driving" /><category term="Autonomous driving" /><category term="RL" /><category term="paper" /><summary type="html">This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.</summary></entry><entry><title type="html">RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings</title><link href="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1" rel="alternate" type="text/html" title="RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings" /><published>2022-04-30T10:32:00+09:00</published><updated>2022-04-30T10:32:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EC%9C%A8%20%EC%A3%BC%ED%96%89%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training&lt;/code&gt;, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.&lt;/p&gt;
-
-&lt;p&gt;More specifically, in the image-based autonomous driving task, imitation learning and reinforcement learning are combined and used together to utilize each others’ strength. The difference between the two papers is that the first paper uses DDPG as reinforcement learning whereas the second paper uses SAC.&lt;/p&gt;
-
-&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The problem of generating control decision given a monocular camera image and other auxiliary vehicle sensors’ outputs has aroused a lot of interest in recent years.&lt;/li&gt;
-  &lt;li&gt;Conducting imitation learning towards given human policy might produce a relative well-performed policy
-    &lt;ul&gt;
-      &lt;li&gt;However, limitation on the possible policy performance and the potential lack of generalizability for unseen situations.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Instead, using RL in a simulator and then transfer the learned policy to real world is very popular in recent research.
-    &lt;ul&gt;
-      &lt;li&gt;Nonetheless, when the state and action spaces are huge or high dimensional, pure RL algorithm training process usually diverges.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;They present a method which combines these two methods and thus leverage both their advantages for this image-based autonomous driving task.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;proposed-method&quot;&gt;Proposed method&lt;/h2&gt;
-&lt;p&gt;&lt;br /&gt;
- 
-(1) pre-training(imitation learning) -&amp;gt; (2) fine-tuning(DDPG)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Network architecture
-    &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/rl_driving1_1.png&quot; width=&quot;70%&quot; /&gt;
-&lt;/div&gt;
-    &lt;ul&gt;
-      &lt;li&gt;ResNet-34 architecture
-        &lt;ul&gt;
-          &lt;li&gt;One of CNN network for deep reinforcement learning tasks like environmental perception, model compression, and object detection&lt;/li&gt;
-          &lt;li&gt;Use ResNet-34 as the backbone structure for both actor and critic networks&lt;/li&gt;
-          &lt;li&gt;The simple and light ResNet-34 out performs other architectures with attention module integrated in terms of both final testing loss and the generated policy’s performance.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Imitation learning phase
-    &lt;ul&gt;
-      &lt;li&gt;Aim to generate a good initial policy&lt;/li&gt;
-      &lt;li&gt;Consider current image input and current vehicle speed as our current state inputs, and throttle, brake from zero to one and steering from minus one to positive one as our control outputs&lt;/li&gt;
-      &lt;li&gt;Use Huber loss : to less sensitive to outliers and can make the training process more stable compared to MSE as a result.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Reinforcement learning phase
-    &lt;ul&gt;
-      &lt;li&gt;Reward : distance to the nearest obstacle and current velocity
-        &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img src=&quot;/assets/img/post_images/rl_driving1_2.png&quot; width=&quot;100%&quot; /&gt;
-&lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;Continuous and deterministic policy setting : to prevent possible catastrophic effect under undesired behavior.&lt;/li&gt;
-      &lt;li&gt;In order to combine with imitation learning, they make several changes on the original DDPG
-        &lt;ul&gt;
-          &lt;li&gt;actor, critic networks
-            &lt;ul&gt;
-              &lt;li&gt;actor network : give all the weights of the pre-trained actor network to the actor networks used in the DDPG.&lt;/li&gt;
-              &lt;li&gt;critic network : give all the weights except the final fully connected layer to critic networks used in the DDPG.&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;replay pool : train actor and critic networks using the samples collected under imitation learning’s generated policy. Then, use normal DDPG to collect new experience&lt;/li&gt;
-          &lt;li&gt;removing OU noise&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;experiments&quot;&gt;Experiments&lt;/h2&gt;
-&lt;p&gt; &lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Imitation learning phase
-    &lt;ul&gt;
-      &lt;li&gt;Use an Xbox controller to control the car under various weather and lighting conditions and record the data using Airsim API&lt;/li&gt;
-      &lt;li&gt;1000 for each episode and terminates when a collision happens.&lt;/li&gt;
-      &lt;li&gt;Randomly choose the weather condition and the initial position of the car before each episode starts and calculate a 5 episodes’ average accumulated reward as the criteria.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;RL phase
-    &lt;ul&gt;
-      &lt;li&gt;Same setting as imitation learnin phase&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Results
-    &lt;div style=&quot;text-align: left&quot;&gt;
-  &lt;img width=&quot;100%&quot; src=&quot;/assets/img/post_images/rl_driving1_3.png&quot; /&gt;
-&lt;/div&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Eventually, their proposed method achieves a considerable performance boost from the original imitation learning’s learned policy while the pure DDPG never performs well and does not show any improving trend.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Beanie</name></author><category term="RL" /><category term="Autonomous driving" /><category term="Autonomous driving" /><category term="RL" /><category term="paper" /><summary type="html">Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings and Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Beanie</name></author><category term="RL" /><category term="Autonomous driving" /><category term="Autonomous driving" /><category term="RL" /><category term="paper" /><summary type="html">This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.</summary></entry></feed>

@@ -120,8 +120,34 @@ $$ \Delta w =  - \hat{\frac{1}{2}\bigtriangledown J(w)} = (Q^{\pi}(s_{t}, a_{t})
 * For semi-gradient TD:
    $ w_{t+1} = w_{t} + \alpha \left ( r_{t+1} + \gamma \hat{Q_{w}}(s_{t+1}, a_{t+1}) - \hat{Q_{w}}(s_{t}, a_{t+1}) \right) \bigtriangledown \hat{Q_{w}}(s_{t}, a_{t+1}) $
 
-<!-- &nbsp;
-## Off-Policy Prediction and Control with Function Approximation -->
+&nbsp;
+## Off-Policy Prediction and Control with Function Approximation
+&nbsp;
+
+### Off-Policy TD Prediction ($V^{\pi}$(s)): Importance Sampling
+Target policy $\pi$, Behavior policy $\beta$ 에 대하여 먼저 Tabular case를 다시 살펴보자.
+
+$$ V(s_{t}) \leftarrow V(s_{t}) + \alpha \left (  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma V(s_{t+1})) - V(s_{t}) \right ) $$
+
+$$ V(s_{t}) \leftarrow V(s_{t}) + \alpha  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma V(s_{t+1}) - V(s_{t}))  $$
+
+이를 바탕으로 이전과 비슷한 방식으로 Stochastic Gradient Descent을 적용해 weight update 식을 구하면 다음과 같다.
+
+$$ w_{t+1} = w_{t} + \alpha \left (  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma \hat{V}_{w_{t}}(s_{t+1})) - \hat{V}_{w_{t}}(s_{t}) \right ) \bigtriangledown \hat{V}_{w_{t}}(s_{t}) $$
+
+$$ w_{t+1} = w_{t} + \alpha  \frac{\left.\begin{matrix} \pi(a_{t}\end{matrix}\right|s_{t})}{\left.\begin{matrix} \beta(a_{t}\end{matrix}\right|s_{t})} (r_{t+1} + \gamma \hat{V}_{w_{t}}(s_{t+1}) - \hat{V}_{w_{t}}(s_{t})) \bigtriangledown  \hat{V}_{w_{t}}(s_{t}) $$
+
+&nbsp;
+### Off-Policy TD Control (Action-Value Function)
+Control의 경우에도 Tabular case를 다시 살펴보면,
+
+$$ Q(s_{t}, a_{t}) \leftarrow Q(s_{t}, a_{t}) + \alpha\left ( r_{t+1} + \gamma \sum_{a}^{} \pi(\left.\begin{matrix}
+a\end{matrix}\right|s_{t+1})Q(s_{t+1}, a) - Q(s_{t}, a_{t}) \right ) $$
+
+Function approximatation의 경우로 발전시키면 다음과 같이 된다.
+
+$$ w_{t+1} = w_{t} + \alpha\left ( r_{t+1} + \gamma \sum_{a}^{} \pi(\left.\begin{matrix}
+a\end{matrix}\right|s_{t+1}) \hat{Q}_{w_{t}}(s_{t+1}, a) - \hat{Q}_{w_{t}}(s_{t}, a_{t}) \right ) \bigtriangledown  \hat{Q}_{w_{t}}(s_{t}, a_{t}) $$
 
 &nbsp;
 \

@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/extension/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-15T19:06:19+09:00</updated>
+  <updated>2022-05-15T22:46:19+09:00</updated>
   <id>http://localhost:4000/tag/extension/feed.xml</id>
 
   
@@ -34,51 +34,48 @@
 
   
     <entry>
-      <title type="html">크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)</title>
-      <link href="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)" rel="alternate" type="text/html" title="크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)" />
-      <published>2022-04-29T10:32:00+09:00</published>
-      <updated>2022-04-29T10:32:00+09:00</updated>
-      <id>http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20400mb%EC%97%90%EC%84%9C%204mb%EB%A1%9C%20%EC%A4%84%EC%9D%B4%EA%B8%B0(..)</id>
-      <content type="html" xml:base="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)">&lt;p&gt;사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.&lt;/p&gt;
-
-&lt;p&gt;크롬 익스텐션은 배포 할 때 zip 형식으로 개발 파일을 올려야 한다.&lt;/p&gt;
-
+      <title type="html">웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기</title>
+      <link href="http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0" rel="alternate" type="text/html" title="웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기" />
+      <published>2022-05-15T03:21:00+09:00</published>
+      <updated>2022-05-15T03:21:00+09:00</updated>
+      <id>http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C%20%ED%8A%B9%EC%A0%95%20%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%20%EC%84%A4%EC%B9%98%20%EC%97%AC%EB%B6%80%20%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0</id>
+      <content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">&lt;p&gt;Catty 서비스는 크롬 익스텐션과 함께 사용해야 가장 편리하고 효과적으로 사용할 수 있다. 따라서 웹앱에 들어온 사람들 중에 아직 크롬 익스텐션을 설치하지 않은 사람들에게 아래와 같이 크롬 익스텐션을 설치하라는 알림을 띄우고자 하였다.&lt;/p&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/extension_size1.png&quot; width=&quot;100%&quot; /&gt;
+   &lt;img src=&quot;/assets/img/post_images/extension.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
 
-&lt;p&gt;그래서 별 생각없이 익스텐션을 개발하던 폴더 전체를 zip으로 압축해서 배포해왔다. 그런데 배포된 크롬 익스텐션을 다운받을 때 너무 오래 걸려서 확인해보니까 파일 크기가 200mb(!)로 확인되었다. 다른 익스텐션의 파일 크기는 거의 1~5mb로 매우 작은데 Catty만 유독 커서 확인해보니 Catty 개발 폴더가 400mb를 차지하고 있었다.&lt;/p&gt;
+&lt;p&gt;그러기 위해서는 먼저 웹앱에서 해당 유저의 Catty 크롬 익스텐션 설치 여부를 파악할 수 있어야 한다.&lt;/p&gt;
 
-&lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/extension_size2.png&quot; width=&quot;100%&quot; /&gt;
-&lt;/div&gt;
+&lt;p&gt;이 기능은 크롬 익스텐션에서 이미지 하나를 웹에서 접근가능하게 설정해두고, 웹에서 해당 이미지를 불러오는 것을 시도한 다음, 이 시도의 성공/실패 여부를 판단하는 것으로 구현할 수 있다.&lt;/p&gt;
 
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt;Catty 디렉토리는 아래와 같이 구성되어 있는데, 더 세부적으로는 git 관련 내용이 저장되어 있는 .git 폴더가 200mb, npm 설치 파일이 들어있는 popup/node_modules 폴더가 200mb를 차지했다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;content_scripts
-background.js
-background.html
-popup
-   ├── node_modules
-   ├── src
-   └── package.json
-manifest.json
-package.json
-.git
+&lt;p&gt;먼저, 크롬 익스텐션의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;manifest.json&lt;/code&gt;에서 체크하려고 하는 이미지를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;web_accessible_resources&lt;/code&gt;에 추가해준다.&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;web_accessible_resources&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/images/Jcrop.gif&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/images/pixel.png&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;따로 익스텐션 배포할 때 이 파일들이 제외되지는 않는가보다. (너무 많은 걸 바랬나)&lt;/p&gt;
+&lt;p&gt;그런 다음 웹앱에 다음 함수를 추가한다.&lt;/p&gt;
 
-&lt;p&gt;고로 이 폴더들을 제외하고 배포해야 하는데 .git 폴더도 없애면 git 설정을 다시해야하고, node_modules 폴더도 로컬에서 업데이트할 때 계속 필요해서 없애면 안되어서 고민하다가 그냥 이 두 폴더를 잠시 다른 곳에 옮긴 다음에 zip 압축을 하고, 그 후 다시 폴더를 가져오는 식으로 했다.&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;useEffect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;detectExtension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CHROME_EXTENSION_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;
 
-&lt;div style=&quot;text-align: left&quot; width=&quot;100%&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/extension_size3.png&quot; width=&quot;100%&quot; /&gt;
-&lt;/div&gt;
-&lt;p&gt; 
-그 결과 새로 배포된 버전은 1mb 정도로 파일 크기가 줄어들었다!!&lt;/p&gt;
+  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;detectExtension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;extensionId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;chrome-extension://&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;extensionId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/images/pixel.png&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-&lt;p&gt;더 좋은 방법이 있을 거 같긴한데 아직은 잘 모르겠다. npm 모듈 중에 build하면서 바로 zip 파일을 생성해주는 것도 있는데 지금 디렉토리 구조가 popup 폴더 내에 또 package.json이 있고 여기서 node_modules가 생성되는 구조라 이 폴더에서 활용하기는 어려울 거 같다.(popup 내에서 build와 zip을 같이하면 popup 폴더 빌드 파일만 zip으로 압축된다.) 매번 배포할 때마다 폴더를 임시로 옮겼다가 돌려놓는게 많이 비효율적인 거 같긴해서 방법을 더 고민해봐야겠다.&lt;/p&gt;</content>
+    &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;setExtensionInstalled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onerror&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;setExtensionInstalled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이렇게 설정해두면 해당 함수가 있는 컴포넌트가 mount 될 때, 확인하고 싶은 CHROME_EXTENSION_ID의 images/pixel.png 이미지 로드를 시도한다. 이 때 로드가 실패하면 CHROME_EXTENSION_ID가 존재하지 않는 다는 뜻이므로 설치를 하라는 알림을 띄우면 된다.&lt;/p&gt;</content>
 
       
       
@@ -97,89 +94,11 @@ package.json
       
         <category term="Catty" />
       
-        <category term="Extension" />
+        <category term="extension" />
       
 
       
-        <summary type="html">사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기</title>
-      <link href="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0" rel="alternate" type="text/html" title="크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기" />
-      <published>2022-04-23T17:32:00+09:00</published>
-      <updated>2022-04-23T17:32:00+09:00</updated>
-      <id>http://localhost:4000/%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C%20%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C%20read%20mode%EB%A1%9C%20%EC%9D%BD%EA%B8%B0</id>
-      <content type="html" xml:base="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0">&lt;p&gt;웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 이렇게 웹사이트에서 불필요한 정보를 제거하고, 읽기에 편한 모드(읽기모드)로 바꿔주는 기능의 간단한 앱도 인기를 끌고 있다.&lt;/p&gt;
-
-&lt;div style=&quot;text-align: left&quot;&gt;
-   &lt;img src=&quot;/assets/img/post_images/read-mode1.png&quot; width=&quot;100%&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt;Catty 서비스의 크롬 익스텐션에도 현재 띄워져 있는 화면의 웹사이트를 수집할 때, 해당 사이트의 Readable html(읽기에 편한 요소만 분리한 html)를 함께 저장하여 웹앱에서 읽기모드로 확인할 수 있도록 기능 구현을 해두었다. 그리고 이번 글에서 이 읽기모드 구현에 대해 정리해두려고 한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;읽기모드를-어떻게-구현하면-좋을까&quot;&gt;읽기모드를 어떻게 구현하면 좋을까?&lt;/h2&gt;
-&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt;읽기모드를 구현하려면 웹페이지에서 본문만 추출해 낼 필요가 있지만, 모든 블로그는 독자적인 포맷을 가지고 있고, 이 각각의 포맷들을 하나하나 분석해가며 본문을 찾아내는 건 많은 수고를 필요로 한다. 다행히 이런 수고스러움을 덜어주는 고마운 라이브러리가 있다. 바로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mozilla/readability&lt;/code&gt; 라이브러리(&lt;a href=&quot;https://github.com/mozilla/readability&quot;&gt;https://github.com/mozilla/readability&lt;/a&gt;)이다.&lt;/p&gt;
-
-&lt;p&gt;이 라이브러리는 모질라에서 개발중인 노드js 라이브러리로 파이어폭스의 일기모드 기능을 독립적으로 제공한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;간단하게-readability-라이브러리-사용하기&quot;&gt;간단하게 readability 라이브러리 사용하기&lt;/h2&gt;
-&lt;p&gt;&lt;br /&gt;
- 
-이 라이브러리 사용법은 간단하다. 우선 크롬익스텐션에서 북마크를 저장할 때 readable HTML을 구할 것이므로 북마크 저장 코드가 구현되어 있는 content_script.js에 아래 코드를 구현하였다. readability 라이브러리를 import하고 아래 코드를 실행하면 읽기모드의 html 코드를 구할 수 있다.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getReadableHtml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;readability&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Readability&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cloneNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;article&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;readability&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Could not parse HTML document with Readability&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt; &lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;참고 내용 출처 :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.44bits.io/ko/post/generate-full-feed-by-using-mozilla-readability&quot;&gt;https://www.44bits.io/ko/post/generate-full-feed-by-using-mozilla-readability&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>Beanie</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Catty" />
-      
-        <category term="Extension" />
-      
-
-      
-        <summary type="html">웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 이렇게 웹사이트에서 불필요한 정보를 제거하고, 읽기에 편한 모드(읽기모드)로 바꿔주는 기능의 간단한 앱도 인기를 끌고 있다.</summary>
+        <summary type="html">Catty 서비스는 크롬 익스텐션과 함께 사용해야 가장 편리하고 효과적으로 사용할 수 있다. 따라서 웹앱에 들어온 사람들 중에 아직 크롬 익스텐션을 설치하지 않은 사람들에게 아래와 같이 크롬 익스텐션을 설치하라는 알림을 띄우고자 하였다.</summary>
       
 
       
