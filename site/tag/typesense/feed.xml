@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="http://localhost:4000/tag/typesense/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:13:29+09:00</updated>
-  <id>http://localhost:4000/tag/typesense/feed.xml</id>
+  <link href="/tag/typesense/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2022-05-16T00:43:24+09:00</updated>
+  <id>/tag/typesense/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">Firestore 내용 검색 가능하게 만들기 (Feat. Typesense)</title>
-      <link href="http://localhost:4000/Firestore-%EB%82%B4%EC%9A%A9-%EA%B2%80%EC%83%89-%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0-(feat-Typesense)" rel="alternate" type="text/html" title="Firestore 내용 검색 가능하게 만들기 (Feat. Typesense)" />
+      <link href="/Make-Firestore-content-searchable-(feat-Typesense)" rel="alternate" type="text/html" title="Firestore 내용 검색 가능하게 만들기 (Feat. Typesense)" />
       <published>2022-04-09T17:32:00+09:00</published>
       <updated>2022-04-09T17:32:00+09:00</updated>
-      <id>http://localhost:4000/Firestore%20%EB%82%B4%EC%9A%A9%20%EA%B2%80%EC%83%89%20%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20(feat%20Typesense)</id>
-      <content type="html" xml:base="http://localhost:4000/Firestore-%EB%82%B4%EC%9A%A9-%EA%B2%80%EC%83%89-%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0-(feat-Typesense)">&lt;p&gt;Firestore는 전체 텍스트 검색이 되지 않는다. &lt;a href=&quot;https://firebase.google.com/docs/firestore/solutions/search?provider=typesense&quot;&gt;Firebase 공식 문서&lt;/a&gt;에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Elastic&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Algolia&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Typesense&lt;/code&gt; 3가지 인데 그 중에서 Catty 서비스에는 &lt;a href=&quot;https://typesense.org/&quot;&gt;Typesense&lt;/a&gt;를 사용하였다.&lt;/p&gt;
+      <id>/Make%20Firestore%20content%20searchable%20(feat%20Typesense)</id>
+      <content type="html" xml:base="/Make-Firestore-content-searchable-(feat-Typesense)">&lt;p&gt;Firestore는 전체 텍스트 검색이 되지 않는다. &lt;a href=&quot;https://firebase.google.com/docs/firestore/solutions/search?provider=typesense&quot;&gt;Firebase 공식 문서&lt;/a&gt;에서도 Cloud Firestore은 문서 텍스트 필드 검색이 지원되지 않으며 타사 전용 서비스를 사용하라고 추천하고 있다. 여기서 추천하는 서비스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Elastic&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Algolia&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Typesense&lt;/code&gt; 3가지 인데 그 중에서 Catty 서비스에는 &lt;a href=&quot;https://typesense.org/&quot;&gt;Typesense&lt;/a&gt;를 사용하였다.&lt;/p&gt;
 
 &lt;p&gt;Catty 서비스에 typesense를 사용한 이유는 원하는 기능이 다 있으면서 가격이 가장 합리적이기 때문이다. 뿐만 아니라 사실 돈을 지불하는 부분은 클라우드 서비스이고 도커에 별도로 시스템을 구축한다면 그마저도 내지 않아도 괜찮다. 그렇지만 지금은 별도의 시스템을 만들 여력이 없기 때문에 그냥 돈내고 클라우드 서비스를 사용했다.&lt;/p&gt;
 

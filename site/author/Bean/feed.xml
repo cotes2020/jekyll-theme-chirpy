@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="http://localhost:4000/author/Bean/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:13:29+09:00</updated>
-  <id>http://localhost:4000/author/Bean/feed.xml</id>
+  <link href="/author/Bean/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2022-05-16T00:43:24+09:00</updated>
+  <id>/author/Bean/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title>
-      <link href="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" />
+      <link href="/Introduce-Catty,-the-resource-based-note-taking-app" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" />
       <published>2022-05-15T16:32:00+09:00</published>
       <updated>2022-05-15T16:32:00+09:00</updated>
-      <id>http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EB%B0%98%20%EB%85%B8%ED%8A%B8%20%EC%9E%91%EC%84%B1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20Catty%20%EC%86%8C%EA%B0%9C</id>
-      <content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
+      <id>/Introduce%20Catty,%20the%20resource%20based%20note-taking%20app</id>
+      <content type="html" xml:base="/Introduce-Catty,-the-resource-based-note-taking-app">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;catty-서비스가-뭔데&quot;&gt;Catty 서비스가 뭔데?&lt;/h2&gt;
 &lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
@@ -191,11 +191,11 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
   
     <entry>
       <title type="html">웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기</title>
-      <link href="http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0" rel="alternate" type="text/html" title="웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기" />
+      <link href="/Check-installation-of-specific-chrome-extension-on-the-web-app" rel="alternate" type="text/html" title="웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기" />
       <published>2022-05-15T03:21:00+09:00</published>
       <updated>2022-05-15T03:21:00+09:00</updated>
-      <id>http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C%20%ED%8A%B9%EC%A0%95%20%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%20%EC%84%A4%EC%B9%98%20%EC%97%AC%EB%B6%80%20%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0</id>
-      <content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">&lt;p&gt;Catty 서비스는 크롬 익스텐션과 함께 사용해야 가장 편리하고 효과적으로 사용할 수 있다. 따라서 웹앱에 들어온 사람들 중에 아직 크롬 익스텐션을 설치하지 않은 사람들에게 아래와 같이 크롬 익스텐션을 설치하라는 알림을 띄우고자 하였다.&lt;/p&gt;
+      <id>/Check%20installation%20of%20specific%20chrome%20extension%20on%20the%20web%20app</id>
+      <content type="html" xml:base="/Check-installation-of-specific-chrome-extension-on-the-web-app">&lt;p&gt;Catty 서비스는 크롬 익스텐션과 함께 사용해야 가장 편리하고 효과적으로 사용할 수 있다. 따라서 웹앱에 들어온 사람들 중에 아직 크롬 익스텐션을 설치하지 않은 사람들에게 아래와 같이 크롬 익스텐션을 설치하라는 알림을 띄우고자 하였다.&lt;/p&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/extension.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
@@ -263,11 +263,11 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
   
     <entry>
       <title type="html">(Reinforcement learning) Value Function Approximation</title>
-      <link href="http://localhost:4000/(RL)-Value-Function-Approximation" rel="alternate" type="text/html" title="(Reinforcement learning) Value Function Approximation" />
+      <link href="/(RL)-Value-Function-Approximation" rel="alternate" type="text/html" title="(Reinforcement learning) Value Function Approximation" />
       <published>2022-05-13T13:23:00+09:00</published>
       <updated>2022-05-13T13:23:00+09:00</updated>
-      <id>http://localhost:4000/(RL)%20Value%20Function%20Approximation</id>
-      <content type="html" xml:base="http://localhost:4000/(RL)-Value-Function-Approximation">&lt;p&gt;이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다. 이 글은 David Silver의 강화학습 강의와 KAIST EE619 강화학습 수업에서 공부한 내용을 바탕으로 작성하였다.&lt;/p&gt;
+      <id>/(RL)%20Value%20Function%20Approximation</id>
+      <content type="html" xml:base="/(RL)-Value-Function-Approximation">&lt;p&gt;이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다. 이 글은 David Silver의 강화학습 강의와 KAIST EE619 강화학습 수업에서 공부한 내용을 바탕으로 작성하였다.&lt;/p&gt;
 
 &lt;h2 id=&quot;tabular-methods&quot;&gt;Tabular Methods&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -462,11 +462,11 @@ a\end{matrix}\right|s_{t+1}) \hat{Q}_{w_{t}}(s_{t+1}, a) - \hat{Q}_{w_{t}}(s_{t}
   
     <entry>
       <title type="html">Q-learning &amp;amp; Double Q-learning 구현</title>
-      <link href="http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84" rel="alternate" type="text/html" title="Q-learning &amp; Double Q-learning 구현" />
+      <link href="/Implement-Q-learning-&-Double-Q-learning" rel="alternate" type="text/html" title="Q-learning &amp; Double Q-learning 구현" />
       <published>2022-05-12T13:23:00+09:00</published>
       <updated>2022-05-12T13:23:00+09:00</updated>
-      <id>http://localhost:4000/Q-learning%20&amp;%20Double%20Q-learning%20%EA%B5%AC%ED%98%84</id>
-      <content type="html" xml:base="http://localhost:4000/Q-learning-&amp;-Double-Q-learning-%EA%B5%AC%ED%98%84">&lt;h2 id=&quot;q-learning과-double-q-learning&quot;&gt;Q-learning과 Double Q-learning&lt;/h2&gt;
+      <id>/Implement%20Q-learning%20&amp;%20Double%20Q-learning</id>
+      <content type="html" xml:base="/Implement-Q-learning-&amp;-Double-Q-learning">&lt;h2 id=&quot;q-learning과-double-q-learning&quot;&gt;Q-learning과 Double Q-learning&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
 
 &lt;h3 id=&quot;q-learning&quot;&gt;Q-learning&lt;/h3&gt;
@@ -727,11 +727,11 @@ a\end{matrix}\right|s_{t+1}) \hat{Q}_{w_{t}}(s_{t+1}, a) - \hat{Q}_{w_{t}}(s_{t}
   
     <entry>
       <title type="html">Dropout (Mathmatical approach)</title>
-      <link href="http://localhost:4000/Dropout" rel="alternate" type="text/html" title="Dropout (Mathmatical approach)" />
+      <link href="/Dropout" rel="alternate" type="text/html" title="Dropout (Mathmatical approach)" />
       <published>2022-05-07T17:32:00+09:00</published>
       <updated>2022-05-07T17:32:00+09:00</updated>
-      <id>http://localhost:4000/Dropout</id>
-      <content type="html" xml:base="http://localhost:4000/Dropout">&lt;p&gt;Dropout은 &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.&lt;/p&gt;
+      <id>/Dropout</id>
+      <content type="html" xml:base="/Dropout">&lt;p&gt;Dropout은 &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.&lt;/p&gt;
 
 &lt;h2 id=&quot;solution-of-overfitting&quot;&gt;Solution of Overfitting&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -914,11 +914,11 @@ Committe Machine의 예처럼 학습을 할 때, 서로 다른 학습데이터�
   
     <entry>
       <title type="html">Matrix Factorization(MF) 기반 추천시스템</title>
-      <link href="http://localhost:4000/MF-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C" rel="alternate" type="text/html" title="Matrix Factorization(MF) 기반 추천시스템" />
+      <link href="/RecSys-based-on-MF" rel="alternate" type="text/html" title="Matrix Factorization(MF) 기반 추천시스템" />
       <published>2022-05-07T17:32:00+09:00</published>
       <updated>2022-05-07T17:32:00+09:00</updated>
-      <id>http://localhost:4000/MF%20%EA%B8%B0%EB%B0%98%20%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C</id>
-      <content type="html" xml:base="http://localhost:4000/MF-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C">&lt;p&gt;추천시스템의 기초적인 내용을 잘 알지 못한채로 강화학습으로 추천 알고리즘을 구현하는 논문들을 몇개 읽다보니 구현의 기반이 되는 중요한 원리를 계속 놓치고 있는 듯한 기분이 들었다. 그래서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python을 이용한 개인화 추천시스템&lt;/code&gt; 책을 사서 읽고, 또 다양한 블로그 포스팅을 보며 추천시스템에 대한 공부를 더 깊이 해보았다.&lt;/p&gt;
+      <id>/RecSys%20based%20on%20MF</id>
+      <content type="html" xml:base="/RecSys-based-on-MF">&lt;p&gt;추천시스템의 기초적인 내용을 잘 알지 못한채로 강화학습으로 추천 알고리즘을 구현하는 논문들을 몇개 읽다보니 구현의 기반이 되는 중요한 원리를 계속 놓치고 있는 듯한 기분이 들었다. 그래서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python을 이용한 개인화 추천시스템&lt;/code&gt; 책을 사서 읽고, 또 다양한 블로그 포스팅을 보며 추천시스템에 대한 공부를 더 깊이 해보았다.&lt;/p&gt;
 
 &lt;p&gt;공부를 하다 보니 추천시스템에서 &lt;strong&gt;Matrix Factorization&lt;/strong&gt;이 매우 중요하다는 것을 느꼈다. MF는 Collaborative Filtering의 한 종류로, Netflix Prize에서 처음 등장하여 엄청난 성능 향상을 보임으로써 추천 시스템 분야의 혁신을 일으켰다고 한다. 기존에 많이 사용되었던 컨텐츠 기반 추천 알고리즘은 Data Sparsity와 Scalibility에 취약했다.(사용자나 아이템이 늘어날수록 Sparsity가 증가하게 되는데, CF는 결측값을 임의로 채워서 추천하다보니 성능이 떨어진다. 반면 MF는 결측값을 아예 사용하지 않아 성능을 유지할 수 있다.)&lt;/p&gt;
 
@@ -1151,11 +1151,11 @@ MF와 SVD는 모두 데이터 분석과 기계학습에 널리 사용되고 있�
   
     <entry>
       <title type="html">Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)</title>
-      <link href="http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0" rel="alternate" type="text/html" title="Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)" />
+      <link href="/Add-flow-chart-and-mathematical-expression-on-Jekyll-tech-blog" rel="alternate" type="text/html" title="Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)" />
       <published>2022-05-05T10:13:00+09:00</published>
       <updated>2022-05-05T10:13:00+09:00</updated>
-      <id>http://localhost:4000/Jekyll%20%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90%20flow%20chart%EC%99%80%20%EC%88%98%EC%8B%9D%20%EB%84%A3%EA%B8%B0</id>
-      <content type="html" xml:base="http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0">&lt;h2 id=&quot;add-flow-chart-using-mermaid&quot;&gt;Add flow chart using Mermaid&lt;/h2&gt;
+      <id>/Add%20flow%20chart%20and%20mathematical%20expression%20on%20Jekyll%20tech%20blog</id>
+      <content type="html" xml:base="/Add-flow-chart-and-mathematical-expression-on-Jekyll-tech-blog">&lt;h2 id=&quot;add-flow-chart-using-mermaid&quot;&gt;Add flow chart using Mermaid&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;mermaid&quot;&gt;Mermaid?&lt;/h3&gt;
 
@@ -1270,11 +1270,11 @@ Similar to flow chart, it can be used by adding the following code to _includes/
   
     <entry>
       <title type="html">Prevent Multi layer perceptron Overfitting</title>
-      <link href="http://localhost:4000/Prevent-Multi-layer-perceptron-Overfitting" rel="alternate" type="text/html" title="Prevent Multi layer perceptron Overfitting" />
+      <link href="/Prevent-Multi-layer-perceptron-Overfitting" rel="alternate" type="text/html" title="Prevent Multi layer perceptron Overfitting" />
       <published>2022-05-04T00:10:00+09:00</published>
       <updated>2022-05-04T00:10:00+09:00</updated>
-      <id>http://localhost:4000/Prevent%20Multi%20layer%20perceptron%20Overfitting</id>
-      <content type="html" xml:base="http://localhost:4000/Prevent-Multi-layer-perceptron-Overfitting">&lt;p&gt;Looking at the existing multi-layer perceptron learning results, it can be seen that the training error continuously decreases as learning progresses. Decreasing error generally means the training is going well, but it may not always be the case. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Overfitting&lt;/code&gt; may be occuring, where the model follows too closely to the training data, and may not be able to perform as well on data outside the training data set.&lt;/p&gt;
+      <id>/Prevent%20Multi%20layer%20perceptron%20Overfitting</id>
+      <content type="html" xml:base="/Prevent-Multi-layer-perceptron-Overfitting">&lt;p&gt;Looking at the existing multi-layer perceptron learning results, it can be seen that the training error continuously decreases as learning progresses. Decreasing error generally means the training is going well, but it may not always be the case. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Overfitting&lt;/code&gt; may be occuring, where the model follows too closely to the training data, and may not be able to perform as well on data outside the training data set.&lt;/p&gt;
 
 &lt;h2 id=&quot;checking-validation-error&quot;&gt;Checking Validation error&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -1488,11 +1488,11 @@ Similar to flow chart, it can be used by adding the following code to _includes/
   
     <entry>
       <title type="html">RecSys &amp;amp; RL - A Deep Reinforcement Learning Framework for News Recommendation</title>
-      <link href="http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1" rel="alternate" type="text/html" title="RecSys &amp; RL - A Deep Reinforcement Learning Framework for News Recommendation" />
+      <link href="/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1" rel="alternate" type="text/html" title="RecSys &amp; RL - A Deep Reinforcement Learning Framework for News Recommendation" />
       <published>2022-05-01T17:32:00+09:00</published>
       <updated>2022-05-01T17:32:00+09:00</updated>
-      <id>http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%20%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id>
-      <content type="html" xml:base="http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;p&gt;이 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.&lt;/p&gt;
+      <id>/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%20%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id>
+      <content type="html" xml:base="/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;p&gt;이 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.&lt;/p&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt; 
@@ -1641,11 +1641,11 @@ offline stage에서는 미리 수집해둔 데이터(user-news click logs)에 De
   
     <entry>
       <title type="html">RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training</title>
-      <link href="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2" rel="alternate" type="text/html" title="RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training" />
+      <link href="/RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training" rel="alternate" type="text/html" title="RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training" />
       <published>2022-04-30T17:32:00+09:00</published>
       <updated>2022-04-30T17:32:00+09:00</updated>
-      <id>http://localhost:4000/%EC%9E%90%EC%9C%A8%20%EC%A3%BC%ED%96%89%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-2</id>
-      <content type="html" xml:base="http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2">&lt;p&gt;This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.&lt;/p&gt;
+      <id>/RL%20-%20Autonomous%20Driving%20Based%20on%20Modified%20SAC%20Algorithm%20through%20Imitation%20Learning%20Pre-training</id>
+      <content type="html" xml:base="/RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training">&lt;p&gt;This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.&lt;/p&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;

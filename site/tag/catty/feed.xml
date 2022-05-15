@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="http://localhost:4000/tag/catty/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:13:29+09:00</updated>
-  <id>http://localhost:4000/tag/catty/feed.xml</id>
+  <link href="/tag/catty/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2022-05-16T00:43:24+09:00</updated>
+  <id>/tag/catty/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title>
-      <link href="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" />
+      <link href="/Introduce-Catty,-the-resource-based-note-taking-app" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" />
       <published>2022-05-15T16:32:00+09:00</published>
       <updated>2022-05-15T16:32:00+09:00</updated>
-      <id>http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4%20%EA%B8%B0%EB%B0%98%20%EB%85%B8%ED%8A%B8%20%EC%9E%91%EC%84%B1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20Catty%20%EC%86%8C%EA%B0%9C</id>
-      <content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
+      <id>/Introduce%20Catty,%20the%20resource%20based%20note-taking%20app</id>
+      <content type="html" xml:base="/Introduce-Catty,-the-resource-based-note-taking-app">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;catty-서비스가-뭔데&quot;&gt;Catty 서비스가 뭔데?&lt;/h2&gt;
 &lt;video controls=&quot;&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; width=&quot;100%&quot;&gt;
@@ -191,11 +191,11 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
   
     <entry>
       <title type="html">웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기</title>
-      <link href="http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0" rel="alternate" type="text/html" title="웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기" />
+      <link href="/Check-installation-of-specific-chrome-extension-on-the-web-app" rel="alternate" type="text/html" title="웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기" />
       <published>2022-05-15T03:21:00+09:00</published>
       <updated>2022-05-15T03:21:00+09:00</updated>
-      <id>http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C%20%ED%8A%B9%EC%A0%95%20%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%20%EC%84%A4%EC%B9%98%20%EC%97%AC%EB%B6%80%20%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0</id>
-      <content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">&lt;p&gt;Catty 서비스는 크롬 익스텐션과 함께 사용해야 가장 편리하고 효과적으로 사용할 수 있다. 따라서 웹앱에 들어온 사람들 중에 아직 크롬 익스텐션을 설치하지 않은 사람들에게 아래와 같이 크롬 익스텐션을 설치하라는 알림을 띄우고자 하였다.&lt;/p&gt;
+      <id>/Check%20installation%20of%20specific%20chrome%20extension%20on%20the%20web%20app</id>
+      <content type="html" xml:base="/Check-installation-of-specific-chrome-extension-on-the-web-app">&lt;p&gt;Catty 서비스는 크롬 익스텐션과 함께 사용해야 가장 편리하고 효과적으로 사용할 수 있다. 따라서 웹앱에 들어온 사람들 중에 아직 크롬 익스텐션을 설치하지 않은 사람들에게 아래와 같이 크롬 익스텐션을 설치하라는 알림을 띄우고자 하였다.&lt;/p&gt;
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/extension.png&quot; width=&quot;100%&quot; /&gt;
 &lt;/div&gt;
@@ -263,11 +263,11 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
   
     <entry>
       <title type="html">크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)</title>
-      <link href="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)" rel="alternate" type="text/html" title="크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)" />
+      <link href="/Reduce-chrome-extension-file-size-from-400mb-to-4mb(/)" rel="alternate" type="text/html" title="크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)" />
       <published>2022-04-29T10:32:00+09:00</published>
       <updated>2022-04-29T10:32:00+09:00</updated>
-      <id>http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20400mb%EC%97%90%EC%84%9C%204mb%EB%A1%9C%20%EC%A4%84%EC%9D%B4%EA%B8%B0(..)</id>
-      <content type="html" xml:base="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)">&lt;p&gt;사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.&lt;/p&gt;
+      <id>/Reduce-chrome-extension-file-size-from-400mb-to-4mb(/Reduce%20chrome%20extension%20file%20size%20from%20400mb%20to%204mb(..)</id>
+      <content type="html" xml:base="/Reduce-chrome-extension-file-size-from-400mb-to-4mb(/)">&lt;p&gt;사실 이 이슈는 신경을 안써서 생겨난 해프닝이긴 한데 그래도 적잖이 당황했어서 정리해두기로 했다.&lt;/p&gt;
 
 &lt;p&gt;크롬 익스텐션은 배포 할 때 zip 형식으로 개발 파일을 올려야 한다.&lt;/p&gt;
 
@@ -338,11 +338,11 @@ package.json
   
     <entry>
       <title type="html">웹앱 클립보드 리스너 만들기</title>
-      <link href="http://localhost:4000/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0" rel="alternate" type="text/html" title="웹앱 클립보드 리스너 만들기" />
+      <link href="/Making-web-app-clipboard-listener" rel="alternate" type="text/html" title="웹앱 클립보드 리스너 만들기" />
       <published>2022-04-28T17:32:00+09:00</published>
       <updated>2022-04-28T17:32:00+09:00</updated>
-      <id>http://localhost:4000/%EC%9B%B9%EC%95%B1%20%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C%20%EB%A6%AC%EC%8A%A4%EB%84%88%20%EB%A7%8C%EB%93%A4%EA%B8%B0</id>
-      <content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0">&lt;p&gt;Catty 웹앱에서는 아래 영상처럼 유저가 웹사이트 url을 복사하면 이를 화면에 띄워 바로 url을 추가할 수 있도록 하는 기능이 있다.&lt;/p&gt;
+      <id>/Making%20web%20app%20clipboard%20listener</id>
+      <content type="html" xml:base="/Making-web-app-clipboard-listener">&lt;p&gt;Catty 웹앱에서는 아래 영상처럼 유저가 웹사이트 url을 복사하면 이를 화면에 띄워 바로 url을 추가할 수 있도록 하는 기능이 있다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;video controls=&quot;&quot; width=&quot;100%&quot;&gt;
@@ -410,11 +410,11 @@ package.json
   
     <entry>
       <title type="html">Automating emails with AWS SES</title>
-      <link href="http://localhost:4000/Automating-emails-with-AWS-SES" rel="alternate" type="text/html" title="Automating emails with AWS SES" />
+      <link href="/Automating-emails-with-AWS-SES" rel="alternate" type="text/html" title="Automating emails with AWS SES" />
       <published>2022-04-23T17:32:00+09:00</published>
       <updated>2022-04-23T17:32:00+09:00</updated>
-      <id>http://localhost:4000/Automating%20emails%20with%20AWS%20SES</id>
-      <content type="html" xml:base="http://localhost:4000/Automating-emails-with-AWS-SES">&lt;p&gt;It’s pretty common for services to automatically send out welcome emails on sign-up. Given the positive influence these emails had on understanding the service I just signed up for, I decided to try adding on one to Catty as well.&lt;/p&gt;
+      <id>/Automating%20emails%20with%20AWS%20SES</id>
+      <content type="html" xml:base="/Automating-emails-with-AWS-SES">&lt;p&gt;It’s pretty common for services to automatically send out welcome emails on sign-up. Given the positive influence these emails had on understanding the service I just signed up for, I decided to try adding on one to Catty as well.&lt;/p&gt;
 
 &lt;p&gt; &lt;/p&gt;
 
@@ -603,11 +603,11 @@ package.json
   
     <entry>
       <title type="html">크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기</title>
-      <link href="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0" rel="alternate" type="text/html" title="크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기" />
+      <link href="/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0" rel="alternate" type="text/html" title="크롬 익스텐션으로 웹사이트 북마크해서 read mode로 읽기" />
       <published>2022-04-23T17:32:00+09:00</published>
       <updated>2022-04-23T17:32:00+09:00</updated>
-      <id>http://localhost:4000/%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C%20%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C%20read%20mode%EB%A1%9C%20%EC%9D%BD%EA%B8%B0</id>
-      <content type="html" xml:base="http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0">&lt;p&gt;웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 이렇게 웹사이트에서 불필요한 정보를 제거하고, 읽기에 편한 모드(읽기모드)로 바꿔주는 기능의 간단한 앱도 인기를 끌고 있다.&lt;/p&gt;
+      <id>/%ED%81%AC%EB%A1%AC%20%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C%20%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C%20read%20mode%EB%A1%9C%20%EC%9D%BD%EA%B8%B0</id>
+      <content type="html" xml:base="/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0">&lt;p&gt;웹사이트에서 뉴스나 미디엄(Medium) 등의 블로그 글을 읽을 때, 광고나 기타 불필요한 정보를 제거하고 본문 내용만 집중해서 볼 수 있으면 편리할 것이다. 크롬 확장 프로그램 중에는 이렇게 웹사이트에서 불필요한 정보를 제거하고, 읽기에 편한 모드(읽기모드)로 바꿔주는 기능의 간단한 앱도 인기를 끌고 있다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/read-mode1.png&quot; width=&quot;100%&quot; /&gt;
@@ -681,11 +681,11 @@ package.json
   
     <entry>
       <title type="html">랜딩페이지 제작을 위한 갖가지 시행착오들…(아임웹-&amp;gt;우피-&amp;gt;리액트 라이브러리)</title>
-      <link href="http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4" rel="alternate" type="text/html" title="랜딩페이지 제작을 위한 갖가지 시행착오들...(아임웹-&gt;우피-&gt;리액트 라이브러리)" />
+      <link href="/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4" rel="alternate" type="text/html" title="랜딩페이지 제작을 위한 갖가지 시행착오들...(아임웹-&gt;우피-&gt;리액트 라이브러리)" />
       <published>2022-04-20T17:32:00+09:00</published>
       <updated>2022-04-20T17:32:00+09:00</updated>
-      <id>http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%A0%9C%EC%9E%91%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EA%B0%96%EA%B0%80%EC%A7%80%20%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</id>
-      <content type="html" xml:base="http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4">&lt;p&gt;크던 작던 거의 모든 서비스에는 그에 맞는 랜딩페이지가 있다. 나도 서비스를 만들면서 랜딩페이지를 제작하려고 많이 알아봤는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;빠르게 만들 수 있고&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;유지보수가 쉬운&lt;/code&gt; 랜딩페이지 제작툴을 많이 서치했다.&lt;/p&gt;
+      <id>/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%A0%9C%EC%9E%91%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EA%B0%96%EA%B0%80%EC%A7%80%20%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</id>
+      <content type="html" xml:base="/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4">&lt;p&gt;크던 작던 거의 모든 서비스에는 그에 맞는 랜딩페이지가 있다. 나도 서비스를 만들면서 랜딩페이지를 제작하려고 많이 알아봤는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;빠르게 만들 수 있고&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;유지보수가 쉬운&lt;/code&gt; 랜딩페이지 제작툴을 많이 서치했다.&lt;/p&gt;
 
 &lt;p&gt;그렇지만 아이러니하게도 좋다고 생각하고 사용한 툴이 불편해서 옮기고 옮기고 하다보니 결국 리액트로 직접 개발하는게 나름 가장 괜찮은 방법(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;빠르고, 유지보수 쉽고, 공짜&lt;/code&gt;)이란 걸 깨달았다(!?)&lt;/p&gt;
 
@@ -829,11 +829,11 @@ export default LazyShow;
   
     <entry>
       <title type="html">CORS 에러 피하는 proxy server 만들기 (Feat. CORS Anywhere &amp;amp; Heroku)</title>
-      <link href="http://localhost:4000/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)" rel="alternate" type="text/html" title="CORS 에러 피하는 proxy server 만들기 (Feat. CORS Anywhere &amp; Heroku)" />
+      <link href="/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)" rel="alternate" type="text/html" title="CORS 에러 피하는 proxy server 만들기 (Feat. CORS Anywhere &amp; Heroku)" />
       <published>2022-04-12T17:32:00+09:00</published>
       <updated>2022-04-12T17:32:00+09:00</updated>
-      <id>http://localhost:4000/CORS%20%EC%97%90%EB%9F%AC%20%ED%94%BC%ED%95%98%EB%8A%94%20proxy%20server%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20(Feat.%20CORS%20Anywhere%20&amp;%20Heroku)</id>
-      <content type="html" xml:base="http://localhost:4000/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&amp;-Heroku)">&lt;h2 id=&quot;cors란&quot;&gt;CORS란?&lt;/h2&gt;
+      <id>/CORS%20%EC%97%90%EB%9F%AC%20%ED%94%BC%ED%95%98%EB%8A%94%20proxy%20server%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20(Feat.%20CORS%20Anywhere%20&amp;%20Heroku)</id>
+      <content type="html" xml:base="/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&amp;-Heroku)">&lt;h2 id=&quot;cors란&quot;&gt;CORS란?&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;프론트개발을 하다보면 CORS 에러를 정말정말 많이 접하게 된다. CORS는 cross-origin resource sharing 의 약자로 교차 출처 리소스 공유라고 표현된다.&lt;/p&gt;
@@ -929,11 +929,11 @@ app.use(cors())
   
     <entry>
       <title type="html">When SSR says that there is no window object</title>
-      <link href="http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C" rel="alternate" type="text/html" title="When SSR says that there is no window object" />
+      <link href="/When-SSR-says-that-there-is-no-window-object" rel="alternate" type="text/html" title="When SSR says that there is no window object" />
       <published>2022-04-09T17:32:00+09:00</published>
       <updated>2022-04-09T17:32:00+09:00</updated>
-      <id>http://localhost:4000/SSR%EC%97%90%EC%84%9C%20window%20%EA%B0%9D%EC%B2%B4%EA%B0%80%20%EC%97%86%EB%8B%A4%EA%B3%A0%20%ED%95%A0%20%EB%95%8C</id>
-      <content type="html" xml:base="http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C">&lt;p&gt;앞선 글에서 언급하였듯, 서버사이드에서는 브라우저 객체를 사용할 수 없다. 따라서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 등의 에러를 종종 볼  수 있다. 이번 글에는 이렇게 서버사이드에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 류의 에러가 발생했을 때 해결할 수 있는 3가지 방법을 담았다.&lt;/p&gt;
+      <id>/When%20SSR%20says%20that%20there%20is%20no%20window%20object</id>
+      <content type="html" xml:base="/When-SSR-says-that-there-is-no-window-object">&lt;p&gt;앞선 글에서 언급하였듯, 서버사이드에서는 브라우저 객체를 사용할 수 없다. 따라서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 등의 에러를 종종 볼  수 있다. 이번 글에는 이렇게 서버사이드에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 류의 에러가 발생했을 때 해결할 수 있는 3가지 방법을 담았다.&lt;/p&gt;
 
 &lt;h2 id=&quot;use-typeof&quot;&gt;Use typeof&lt;/h2&gt;
 &lt;p&gt;먼저, 서버사이드에서는 브라우저 객체가 없으므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeof window&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;undefined&lt;/code&gt;이다.
@@ -1007,11 +1007,11 @@ if(typeof window !== undefined) {...} // No error
   
     <entry>
       <title type="html">CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)</title>
-      <link href="http://localhost:4000/CSR-project%EB%A5%BC-SSR%EB%A1%9C-%EC%98%AE%EA%B8%B0%EA%B8%B0-(3.31~4.08)" rel="alternate" type="text/html" title="CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)" />
+      <link href="/Move-CSR-project-to-SSR-(3.31~4.08)" rel="alternate" type="text/html" title="CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)" />
       <published>2022-04-09T17:32:00+09:00</published>
       <updated>2022-04-09T17:32:00+09:00</updated>
-      <id>http://localhost:4000/CSR%20project%EB%A5%BC%20SSR%EB%A1%9C%20%EC%98%AE%EA%B8%B0%EA%B8%B0%20(3.31~4.08)</id>
-      <content type="html" xml:base="http://localhost:4000/CSR-project%EB%A5%BC-SSR%EB%A1%9C-%EC%98%AE%EA%B8%B0%EA%B8%B0-(3.31~4.08)">&lt;p&gt;처음에 Catty 웹앱은 리액트 CSR로 개발되었다. CSR로 개발한 이유라면 SSR이 익숙치 않았고, 좀 더 빨리 프로토타입을 개발하고 싶어서 정도였던 거 같다.
+      <id>/Move%20CSR%20project%20to%20SSR%20(3.31~4.08)</id>
+      <content type="html" xml:base="/Move-CSR-project-to-SSR-(3.31~4.08)">&lt;p&gt;처음에 Catty 웹앱은 리액트 CSR로 개발되었다. CSR로 개발한 이유라면 SSR이 익숙치 않았고, 좀 더 빨리 프로토타입을 개발하고 싶어서 정도였던 거 같다.
 그러나 SEO 대응하면서 이슈가 발생했고 Next.js로 옮겨가야하나 생각했지만 일이 너무 커질 거 같아 CSR에서 SEO 비스무리하게 할 수 있는 다양한 툴들로 나름 SEO 최적화를 해보려고 하였다.&lt;/p&gt;
 
 &lt;p&gt;하지만…결국 다 포기하고 Next.js로 옮겨가게 되었다…ㅎ 기존의 리액트 프로젝트를 Next로 옮기는데 1주일 정도 소요되었다. 이번 글에서는 갈아엎기 까지 CSR을 고수하기 위해서 한 여러 시행착오와 결국 Next.js 로 옮기며 겪은 다양한 에러에 대해서 남겨보려고 한다.&lt;/p&gt;

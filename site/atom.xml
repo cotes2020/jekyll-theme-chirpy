@@ -4,7 +4,7 @@
     <title> - Articles</title>
     <description>Seize the day</description>
     <link>
-    http://localhost:4000</link>
+    </link>
     
       
       <item>
@@ -16,8 +16,8 @@
         
         <pubDate>Sun, 15 May 2022 16:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C</link>
-        <guid isPermaLink="true">http://localhost:4000/%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98-%EB%85%B8%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-Catty-%EC%86%8C%EA%B0%9C</guid>
+        /Introduce-Catty,-the-resource-based-note-taking-app</link>
+        <guid isPermaLink="true">/Introduce-Catty,-the-resource-based-note-taking-app</guid>
       </item>
       
     
@@ -34,8 +34,8 @@
         
         <pubDate>Sun, 15 May 2022 03:21:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0</link>
-        <guid isPermaLink="true">http://localhost:4000/%EC%9B%B9%EC%95%B1%EC%97%90%EC%84%9C-%ED%8A%B9%EC%A0%95-%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%EC%84%A4%EC%B9%98-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0</guid>
+        /Check-installation-of-specific-chrome-extension-on-the-web-app</link>
+        <guid isPermaLink="true">/Check-installation-of-specific-chrome-extension-on-the-web-app</guid>
       </item>
       
     
@@ -49,8 +49,8 @@
         
         <pubDate>Fri, 13 May 2022 13:23:00 +0900</pubDate>
         <link>
-        http://localhost:4000/(RL)-Value-Function-Approximation</link>
-        <guid isPermaLink="true">http://localhost:4000/(RL)-Value-Function-Approximation</guid>
+        /(RL)-Value-Function-Approximation</link>
+        <guid isPermaLink="true">/(RL)-Value-Function-Approximation</guid>
       </item>
       
     
@@ -65,8 +65,8 @@
         
         <pubDate>Thu, 12 May 2022 13:23:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84</link>
-        <guid isPermaLink="true">http://localhost:4000/Q-learning-&-Double-Q-learning-%EA%B5%AC%ED%98%84</guid>
+        /Implement-Q-learning-&-Double-Q-learning</link>
+        <guid isPermaLink="true">/Implement-Q-learning-&-Double-Q-learning</guid>
       </item>
       
     
@@ -80,8 +80,8 @@
         
         <pubDate>Sat, 07 May 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Dropout</link>
-        <guid isPermaLink="true">http://localhost:4000/Dropout</guid>
+        /Dropout</link>
+        <guid isPermaLink="true">/Dropout</guid>
       </item>
       
     
@@ -95,8 +95,8 @@
         
         <pubDate>Sat, 07 May 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/MF-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C</link>
-        <guid isPermaLink="true">http://localhost:4000/MF-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C</guid>
+        /RecSys-based-on-MF</link>
+        <guid isPermaLink="true">/RecSys-based-on-MF</guid>
       </item>
       
     
@@ -112,8 +112,8 @@
         
         <pubDate>Thu, 05 May 2022 10:13:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0</link>
-        <guid isPermaLink="true">http://localhost:4000/Jekyll-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-flow-chart%EC%99%80-%EC%88%98%EC%8B%9D-%EB%84%A3%EA%B8%B0</guid>
+        /Add-flow-chart-and-mathematical-expression-on-Jekyll-tech-blog</link>
+        <guid isPermaLink="true">/Add-flow-chart-and-mathematical-expression-on-Jekyll-tech-blog</guid>
       </item>
       
     
@@ -127,8 +127,8 @@
         
         <pubDate>Wed, 04 May 2022 00:10:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Prevent-Multi-layer-perceptron-Overfitting</link>
-        <guid isPermaLink="true">http://localhost:4000/Prevent-Multi-layer-perceptron-Overfitting</guid>
+        /Prevent-Multi-layer-perceptron-Overfitting</link>
+        <guid isPermaLink="true">/Prevent-Multi-layer-perceptron-Overfitting</guid>
       </item>
       
     
@@ -142,8 +142,8 @@
         
         <pubDate>Sun, 01 May 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1</link>
-        <guid isPermaLink="true">http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1</guid>
+        /%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1</link>
+        <guid isPermaLink="true">/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1</guid>
       </item>
       
     
@@ -157,8 +157,8 @@
         
         <pubDate>Sat, 30 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2</link>
-        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-2</guid>
+        /RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training</link>
+        <guid isPermaLink="true">/RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training</guid>
       </item>
       
     
@@ -172,8 +172,8 @@
         
         <pubDate>Sat, 30 Apr 2022 10:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1</link>
-        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EC%9C%A8-%EC%A3%BC%ED%96%89-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1</guid>
+        /RL-Improved-Reinforcement-Learning-through-Imitation-Learning-Pretraining-Towards-Image-based-Autonomous-Driving</link>
+        <guid isPermaLink="true">/RL-Improved-Reinforcement-Learning-through-Imitation-Learning-Pretraining-Towards-Image-based-Autonomous-Driving</guid>
       </item>
       
     
@@ -187,8 +187,8 @@
         
         <pubDate>Fri, 29 Apr 2022 10:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)</link>
-        <guid isPermaLink="true">http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-400mb%EC%97%90%EC%84%9C-4mb%EB%A1%9C-%EC%A4%84%EC%9D%B4%EA%B8%B0(/)</guid>
+        /Reduce-chrome-extension-file-size-from-400mb-to-4mb(/)</link>
+        <guid isPermaLink="true">/Reduce-chrome-extension-file-size-from-400mb-to-4mb(/)</guid>
       </item>
       
     
@@ -202,8 +202,8 @@
         
         <pubDate>Thu, 28 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0</link>
-        <guid isPermaLink="true">http://localhost:4000/%EC%9B%B9%EC%95%B1-%ED%81%B4%EB%A6%BD%EB%B3%B4%EB%93%9C-%EB%A6%AC%EC%8A%A4%EB%84%88-%EB%A7%8C%EB%93%A4%EA%B8%B0</guid>
+        /Making-web-app-clipboard-listener</link>
+        <guid isPermaLink="true">/Making-web-app-clipboard-listener</guid>
       </item>
       
     
@@ -217,8 +217,8 @@
         
         <pubDate>Sat, 23 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Automating-emails-with-AWS-SES</link>
-        <guid isPermaLink="true">http://localhost:4000/Automating-emails-with-AWS-SES</guid>
+        /Automating-emails-with-AWS-SES</link>
+        <guid isPermaLink="true">/Automating-emails-with-AWS-SES</guid>
       </item>
       
     
@@ -232,8 +232,8 @@
         
         <pubDate>Sat, 23 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0</link>
-        <guid isPermaLink="true">http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0</guid>
+        /%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0</link>
+        <guid isPermaLink="true">/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0</guid>
       </item>
       
     
@@ -247,8 +247,8 @@
         
         <pubDate>Wed, 20 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</link>
-        <guid isPermaLink="true">http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</guid>
+        /%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</link>
+        <guid isPermaLink="true">/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</guid>
       </item>
       
     
@@ -262,8 +262,8 @@
         
         <pubDate>Fri, 15 Apr 2022 20:19:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Git-commit-%EA%BE%B8%EB%AF%B8%EA%B3%A0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</link>
-        <guid isPermaLink="true">http://localhost:4000/Git-commit-%EA%BE%B8%EB%AF%B8%EA%B3%A0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</guid>
+        /Git-commit-%EA%BE%B8%EB%AF%B8%EA%B3%A0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</link>
+        <guid isPermaLink="true">/Git-commit-%EA%BE%B8%EB%AF%B8%EA%B3%A0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</guid>
       </item>
       
     
@@ -277,8 +277,8 @@
         
         <pubDate>Fri, 15 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Git-project-%EC%98%A4%ED%94%88-%EB%B0%8F-%EC%9D%B4%EC%8A%88-%EA%B4%80%EB%A6%AC</link>
-        <guid isPermaLink="true">http://localhost:4000/Git-project-%EC%98%A4%ED%94%88-%EB%B0%8F-%EC%9D%B4%EC%8A%88-%EA%B4%80%EB%A6%AC</guid>
+        /Open-git-project-and-manage-issue</link>
+        <guid isPermaLink="true">/Open-git-project-and-manage-issue</guid>
       </item>
       
     
@@ -293,8 +293,8 @@
         
         <pubDate>Tue, 12 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)</link>
-        <guid isPermaLink="true">http://localhost:4000/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)</guid>
+        /CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)</link>
+        <guid isPermaLink="true">/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)</guid>
       </item>
       
     
@@ -308,8 +308,8 @@
         
         <pubDate>Sat, 09 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C</link>
-        <guid isPermaLink="true">http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C</guid>
+        /When-SSR-says-that-there-is-no-window-object</link>
+        <guid isPermaLink="true">/When-SSR-says-that-there-is-no-window-object</guid>
       </item>
       
     
@@ -324,8 +324,8 @@
         
         <pubDate>Sat, 09 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/CSR-project%EB%A5%BC-SSR%EB%A1%9C-%EC%98%AE%EA%B8%B0%EA%B8%B0-(3.31~4.08)</link>
-        <guid isPermaLink="true">http://localhost:4000/CSR-project%EB%A5%BC-SSR%EB%A1%9C-%EC%98%AE%EA%B8%B0%EA%B8%B0-(3.31~4.08)</guid>
+        /Move-CSR-project-to-SSR-(3.31~4.08)</link>
+        <guid isPermaLink="true">/Move-CSR-project-to-SSR-(3.31~4.08)</guid>
       </item>
       
     
@@ -339,8 +339,8 @@
         
         <pubDate>Sat, 09 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Firestore-%EB%82%B4%EC%9A%A9-%EA%B2%80%EC%83%89-%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0-(feat-Typesense)</link>
-        <guid isPermaLink="true">http://localhost:4000/Firestore-%EB%82%B4%EC%9A%A9-%EA%B2%80%EC%83%89-%EA%B0%80%EB%8A%A5%ED%95%98%EA%B2%8C-%EB%A7%8C%EB%93%A4%EA%B8%B0-(feat-Typesense)</guid>
+        /Make-Firestore-content-searchable-(feat-Typesense)</link>
+        <guid isPermaLink="true">/Make-Firestore-content-searchable-(feat-Typesense)</guid>
       </item>
       
     
@@ -354,8 +354,8 @@
         
         <pubDate>Fri, 08 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EB%B7%B0%EC%97%90-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B8%B0%EB%8A%A5-%EC%97%B0%EA%B2%B0%ED%95%B4%EC%84%9C-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%95%B1%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%9E%90</link>
-        <guid isPermaLink="true">http://localhost:4000/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EB%B7%B0%EC%97%90-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B8%B0%EB%8A%A5-%EC%97%B0%EA%B2%B0%ED%95%B4%EC%84%9C-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%95%B1%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%9E%90</guid>
+        /%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EB%B7%B0%EC%97%90-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B8%B0%EB%8A%A5-%EC%97%B0%EA%B2%B0%ED%95%B4%EC%84%9C-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%95%B1%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%9E%90</link>
+        <guid isPermaLink="true">/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EB%B7%B0%EC%97%90-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B8%B0%EB%8A%A5-%EC%97%B0%EA%B2%B0%ED%95%B4%EC%84%9C-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%95%B1%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%9E%90</guid>
       </item>
       
     
@@ -369,8 +369,8 @@
         
         <pubDate>Wed, 06 Apr 2022 10:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Multi-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)</link>
-        <guid isPermaLink="true">http://localhost:4000/Multi-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)</guid>
+        /Implement-Multi-layer-perceptron-(from-scratch)</link>
+        <guid isPermaLink="true">/Implement-Multi-layer-perceptron-(from-scratch)</guid>
       </item>
       
     
@@ -384,8 +384,8 @@
         
         <pubDate>Wed, 30 Mar 2022 10:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Single-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)</link>
-        <guid isPermaLink="true">http://localhost:4000/Single-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)</guid>
+        /Implement-Single-layer-perceptron-(from-scratch)</link>
+        <guid isPermaLink="true">/Implement-Single-layer-perceptron-(from-scratch)</guid>
       </item>
       
     
@@ -400,8 +400,8 @@
         
         <pubDate>Thu, 24 Mar 2022 10:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/PCA-learning-%EA%B5%AC%ED%98%84-(from-scratch)</link>
-        <guid isPermaLink="true">http://localhost:4000/PCA-learning-%EA%B5%AC%ED%98%84-(from-scratch)</guid>
+        /Implement-PCA-learning-(from-scratch)</link>
+        <guid isPermaLink="true">/Implement-PCA-learning-(from-scratch)</guid>
       </item>
       
     
@@ -416,8 +416,8 @@
         
         <pubDate>Thu, 24 Mar 2022 10:32:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Competitive-learning-%EA%B5%AC%ED%98%84-(from-scratch)</link>
-        <guid isPermaLink="true">http://localhost:4000/Competitive-learning-%EA%B5%AC%ED%98%84-(from-scratch)</guid>
+        /Implement-Competitive-learning-(from-scratch)</link>
+        <guid isPermaLink="true">/Implement-Competitive-learning-(from-scratch)</guid>
       </item>
       
     
@@ -431,8 +431,8 @@
         
         <pubDate>Sat, 22 Jan 2022 21:55:00 +0900</pubDate>
         <link>
-        http://localhost:4000/LeetCode-1510.-Stone-Game-IV</link>
-        <guid isPermaLink="true">http://localhost:4000/LeetCode-1510.-Stone-Game-IV</guid>
+        /LeetCode-1510.-Stone-Game-IV</link>
+        <guid isPermaLink="true">/LeetCode-1510.-Stone-Game-IV</guid>
       </item>
       
     
@@ -447,8 +447,8 @@
         
         <pubDate>Thu, 13 Jan 2022 17:13:00 +0900</pubDate>
         <link>
-        http://localhost:4000/RxJava(3)-Observable</link>
-        <guid isPermaLink="true">http://localhost:4000/RxJava(3)-Observable</guid>
+        /RxJava(3)-Observable</link>
+        <guid isPermaLink="true">/RxJava(3)-Observable</guid>
       </item>
       
     
@@ -462,8 +462,8 @@
         
         <pubDate>Mon, 10 Jan 2022 23:42:00 +0900</pubDate>
         <link>
-        http://localhost:4000/RxJava(2)-Reactive-Streams</link>
-        <guid isPermaLink="true">http://localhost:4000/RxJava(2)-Reactive-Streams</guid>
+        /RxJava(2)-Reactive-Streams</link>
+        <guid isPermaLink="true">/RxJava(2)-Reactive-Streams</guid>
       </item>
       
     
@@ -477,8 +477,8 @@
         
         <pubDate>Mon, 10 Jan 2022 21:55:00 +0900</pubDate>
         <link>
-        http://localhost:4000/RxJava(1)-%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD</link>
-        <guid isPermaLink="true">http://localhost:4000/RxJava(1)-%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD</guid>
+        /RxJava(1)-introduction</link>
+        <guid isPermaLink="true">/RxJava(1)-introduction</guid>
       </item>
       
     
@@ -492,8 +492,8 @@
         
         <pubDate>Wed, 15 Dec 2021 14:21:00 +0900</pubDate>
         <link>
-        http://localhost:4000/MUI-%EB%AC%B4%EB%A3%8C-template%EB%A1%9C-%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88-%EC%97%86%EC%9D%B4-%EC%9B%B9%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0</link>
-        <guid isPermaLink="true">http://localhost:4000/MUI-%EB%AC%B4%EB%A3%8C-template%EB%A1%9C-%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88-%EC%97%86%EC%9D%B4-%EC%9B%B9%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0</guid>
+        /Develop-web-service-without-designer-with-using-MUI-free-template</link>
+        <guid isPermaLink="true">/Develop-web-service-without-designer-with-using-MUI-free-template</guid>
       </item>
       
     
@@ -514,8 +514,8 @@
         
         <pubDate>Thu, 09 Dec 2021 14:21:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Discord-Bot-with-Lambda</link>
-        <guid isPermaLink="true">http://localhost:4000/Discord-Bot-with-Lambda</guid>
+        /Discord-Bot-with-Lambda</link>
+        <guid isPermaLink="true">/Discord-Bot-with-Lambda</guid>
       </item>
       
     
@@ -529,8 +529,8 @@
         
         <pubDate>Tue, 30 Nov 2021 14:21:00 +0900</pubDate>
         <link>
-        http://localhost:4000/Capacitor%EC%99%80-Vue.js%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-cross-platform-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%95%B1-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0</link>
-        <guid isPermaLink="true">http://localhost:4000/Capacitor%EC%99%80-Vue.js%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-cross-platform-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%95%B1-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0</guid>
+        /Develop-cross-platform-mobile-app-using-Capacitor-and-Vue.js</link>
+        <guid isPermaLink="true">/Develop-cross-platform-mobile-app-using-Capacitor-and-Vue.js</guid>
       </item>
       
     
@@ -548,8 +548,8 @@
         
         <pubDate>Mon, 25 Oct 2021 21:55:00 +0900</pubDate>
         <link>
-        http://localhost:4000/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC</link>
-        <guid isPermaLink="true">http://localhost:4000/MVVM-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB%E1%84%80%E1%85%AA-AAC</guid>
+        /MVVM-pattern-and-AAC</link>
+        <guid isPermaLink="true">/MVVM-pattern-and-AAC</guid>
       </item>
       
     
@@ -564,8 +564,8 @@
         
         <pubDate>Thu, 21 Oct 2021 21:55:00 +0900</pubDate>
         <link>
-        http://localhost:4000/MVC-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB</link>
-        <guid isPermaLink="true">http://localhost:4000/MVC-%E1%84%91%E1%85%A2%E1%84%90%E1%85%A5%E1%86%AB</guid>
+        /MVC-pattern</link>
+        <guid isPermaLink="true">/MVC-pattern</guid>
       </item>
       
     

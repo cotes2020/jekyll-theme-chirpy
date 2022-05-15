@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="http://localhost:4000/tag/aac/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:13:29+09:00</updated>
-  <id>http://localhost:4000/tag/aac/feed.xml</id>
+  <link href="/tag/aac/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2022-05-16T00:43:24+09:00</updated>
+  <id>/tag/aac/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">MVVM 패턴과 AAC</title>
-      <link href="http://localhost:4000/MVVM-%ED%8C%A8%ED%84%B4%EA%B3%BC-AAC" rel="alternate" type="text/html" title="MVVM 패턴과 AAC" />
+      <link href="/MVVM-pattern-and-AAC" rel="alternate" type="text/html" title="MVVM 패턴과 AAC" />
       <published>2021-10-25T21:55:00+09:00</published>
       <updated>2021-10-25T21:55:00+09:00</updated>
-      <id>http://localhost:4000/MVVM%20%ED%8C%A8%ED%84%B4%EA%B3%BC%20AAC</id>
-      <content type="html" xml:base="http://localhost:4000/MVVM-%ED%8C%A8%ED%84%B4%EA%B3%BC-AAC">&lt;p&gt;이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.
+      <id>/MVVM%20pattern%20and%20AAC</id>
+      <content type="html" xml:base="/MVVM-pattern-and-AAC">&lt;p&gt;이전 글에서 디자인 패턴 중 MVC 패턴을 다뤄보았다. 이번 글에서는 안드로이드 개발에서 더욱 선호되는 MVVM 패턴과 MVVM 패턴 적용을 더 쉽게 해주는 AAC에 대해서 살펴보려고 한다.
 &lt;br /&gt;
  &lt;/p&gt;
 &lt;h2 id=&quot;앱-아키텍쳐의-원칙&quot;&gt;앱 아키텍쳐의 원칙&lt;/h2&gt;

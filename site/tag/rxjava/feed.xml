@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="http://localhost:4000/tag/rxjava/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:13:29+09:00</updated>
-  <id>http://localhost:4000/tag/rxjava/feed.xml</id>
+  <link href="/tag/rxjava/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2022-05-16T00:43:24+09:00</updated>
+  <id>/tag/rxjava/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">RxJava(3) - Observable</title>
-      <link href="http://localhost:4000/RxJava(3)-Observable" rel="alternate" type="text/html" title="RxJava(3) - Observable" />
+      <link href="/RxJava(3)-Observable" rel="alternate" type="text/html" title="RxJava(3) - Observable" />
       <published>2022-01-13T17:13:00+09:00</published>
       <updated>2022-01-13T17:13:00+09:00</updated>
-      <id>http://localhost:4000/RxJava(3)%20-%20Observable</id>
-      <content type="html" xml:base="http://localhost:4000/RxJava(3)-Observable">&lt;h2 id=&quot;observable-이란&quot;&gt;Observable 이란&lt;/h2&gt;
+      <id>/RxJava(3)%20-%20Observable</id>
+      <content type="html" xml:base="/RxJava(3)-Observable">&lt;h2 id=&quot;observable-이란&quot;&gt;Observable 이란&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;Observable은 RxJava의 가장 핵심적인 요소이다. Observable을 잘 이해하는 것은 RxJava를 활용하는 데 매우 중요하다. 옵저버 패턴의 정의는 다음과 같다.&lt;/p&gt;
@@ -318,11 +318,11 @@ Completed
   
     <entry>
       <title type="html">RxJava(2) - Reactive Streams</title>
-      <link href="http://localhost:4000/RxJava(2)-Reactive-Streams" rel="alternate" type="text/html" title="RxJava(2) - Reactive Streams" />
+      <link href="/RxJava(2)-Reactive-Streams" rel="alternate" type="text/html" title="RxJava(2) - Reactive Streams" />
       <published>2022-01-10T23:42:00+09:00</published>
       <updated>2022-01-10T23:42:00+09:00</updated>
-      <id>http://localhost:4000/RxJava(2)%20-%20Reactive%20Streams</id>
-      <content type="html" xml:base="http://localhost:4000/RxJava(2)-Reactive-Streams">&lt;p&gt;앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.&lt;/p&gt;
+      <id>/RxJava(2)%20-%20Reactive%20Streams</id>
+      <content type="html" xml:base="/RxJava(2)-Reactive-Streams">&lt;p&gt;앞선 글에서 RxJava가 Reactive Streams 사양을 구현한다고 하였다. 따라서 Reactive Streams이 뭔지 자세히 알면 RxJava를 더 쉽게 이해할 수 있다. 그래서 이번 글에서는 Reactive Streams을 더 알아보았다.&lt;/p&gt;
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;reactive-streams란&quot;&gt;Reactive Streams란&lt;/h2&gt;
@@ -480,11 +480,11 @@ Completed
   
     <entry>
       <title type="html">RxJava(1) - 개요</title>
-      <link href="http://localhost:4000/RxJava(1)-%EA%B0%9C%EC%9A%94" rel="alternate" type="text/html" title="RxJava(1) - 개요" />
+      <link href="/RxJava(1)-introduction" rel="alternate" type="text/html" title="RxJava(1) - 개요" />
       <published>2022-01-10T21:55:00+09:00</published>
       <updated>2022-01-10T21:55:00+09:00</updated>
-      <id>http://localhost:4000/RxJava(1)%20-%20%EA%B0%9C%EC%9A%94</id>
-      <content type="html" xml:base="http://localhost:4000/RxJava(1)-%EA%B0%9C%EC%9A%94">&lt;p&gt;Catty 서비스를 개발하면서 그동안 미뤄뒀던 RxJava에 대한 공부와 함께 서비스에 코드를 적용해보았다.&lt;/p&gt;
+      <id>/RxJava(1)%20-%20introduction</id>
+      <content type="html" xml:base="/RxJava(1)-introduction">&lt;p&gt;Catty 서비스를 개발하면서 그동안 미뤄뒀던 RxJava에 대한 공부와 함께 서비스에 코드를 적용해보았다.&lt;/p&gt;
 
 &lt;p&gt;Catty 서비스의 경우 서비스를 통해서 촬영한 스크린샷과 사진을 구글 드라브에 바로 연동을 하도록 되어 있다. 이 때 구글 드라이브에 ‘Catty’라는 루트 폴더를 생성하고, 그 루트 폴더 내에 각각 스크린샷, 사진 저장용 폴더를 생성한 후 그 속에 사진을 저장하도록 구조가 잡혀있었다.&lt;/p&gt;
 

@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="http://localhost:4000/tag/next/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:13:29+09:00</updated>
-  <id>http://localhost:4000/tag/next/feed.xml</id>
+  <link href="/tag/next/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2022-05-16T00:43:24+09:00</updated>
+  <id>/tag/next/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">When SSR says that there is no window object</title>
-      <link href="http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C" rel="alternate" type="text/html" title="When SSR says that there is no window object" />
+      <link href="/When-SSR-says-that-there-is-no-window-object" rel="alternate" type="text/html" title="When SSR says that there is no window object" />
       <published>2022-04-09T17:32:00+09:00</published>
       <updated>2022-04-09T17:32:00+09:00</updated>
-      <id>http://localhost:4000/SSR%EC%97%90%EC%84%9C%20window%20%EA%B0%9D%EC%B2%B4%EA%B0%80%20%EC%97%86%EB%8B%A4%EA%B3%A0%20%ED%95%A0%20%EB%95%8C</id>
-      <content type="html" xml:base="http://localhost:4000/SSR%EC%97%90%EC%84%9C-window-%EA%B0%9D%EC%B2%B4%EA%B0%80-%EC%97%86%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EB%95%8C">&lt;p&gt;앞선 글에서 언급하였듯, 서버사이드에서는 브라우저 객체를 사용할 수 없다. 따라서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 등의 에러를 종종 볼  수 있다. 이번 글에는 이렇게 서버사이드에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 류의 에러가 발생했을 때 해결할 수 있는 3가지 방법을 담았다.&lt;/p&gt;
+      <id>/When%20SSR%20says%20that%20there%20is%20no%20window%20object</id>
+      <content type="html" xml:base="/When-SSR-says-that-there-is-no-window-object">&lt;p&gt;앞선 글에서 언급하였듯, 서버사이드에서는 브라우저 객체를 사용할 수 없다. 따라서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 등의 에러를 종종 볼  수 있다. 이번 글에는 이렇게 서버사이드에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;window is not defined&lt;/code&gt; 류의 에러가 발생했을 때 해결할 수 있는 3가지 방법을 담았다.&lt;/p&gt;
 
 &lt;h2 id=&quot;use-typeof&quot;&gt;Use typeof&lt;/h2&gt;
 &lt;p&gt;먼저, 서버사이드에서는 브라우저 객체가 없으므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeof window&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;undefined&lt;/code&gt;이다.
@@ -113,11 +113,11 @@ if(typeof window !== undefined) {...} // No error
   
     <entry>
       <title type="html">CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)</title>
-      <link href="http://localhost:4000/CSR-project%EB%A5%BC-SSR%EB%A1%9C-%EC%98%AE%EA%B8%B0%EA%B8%B0-(3.31~4.08)" rel="alternate" type="text/html" title="CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)" />
+      <link href="/Move-CSR-project-to-SSR-(3.31~4.08)" rel="alternate" type="text/html" title="CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)" />
       <published>2022-04-09T17:32:00+09:00</published>
       <updated>2022-04-09T17:32:00+09:00</updated>
-      <id>http://localhost:4000/CSR%20project%EB%A5%BC%20SSR%EB%A1%9C%20%EC%98%AE%EA%B8%B0%EA%B8%B0%20(3.31~4.08)</id>
-      <content type="html" xml:base="http://localhost:4000/CSR-project%EB%A5%BC-SSR%EB%A1%9C-%EC%98%AE%EA%B8%B0%EA%B8%B0-(3.31~4.08)">&lt;p&gt;처음에 Catty 웹앱은 리액트 CSR로 개발되었다. CSR로 개발한 이유라면 SSR이 익숙치 않았고, 좀 더 빨리 프로토타입을 개발하고 싶어서 정도였던 거 같다.
+      <id>/Move%20CSR%20project%20to%20SSR%20(3.31~4.08)</id>
+      <content type="html" xml:base="/Move-CSR-project-to-SSR-(3.31~4.08)">&lt;p&gt;처음에 Catty 웹앱은 리액트 CSR로 개발되었다. CSR로 개발한 이유라면 SSR이 익숙치 않았고, 좀 더 빨리 프로토타입을 개발하고 싶어서 정도였던 거 같다.
 그러나 SEO 대응하면서 이슈가 발생했고 Next.js로 옮겨가야하나 생각했지만 일이 너무 커질 거 같아 CSR에서 SEO 비스무리하게 할 수 있는 다양한 툴들로 나름 SEO 최적화를 해보려고 하였다.&lt;/p&gt;
 
 &lt;p&gt;하지만…결국 다 포기하고 Next.js로 옮겨가게 되었다…ㅎ 기존의 리액트 프로젝트를 Next로 옮기는데 1주일 정도 소요되었다. 이번 글에서는 갈아엎기 까지 CSR을 고수하기 위해서 한 여러 시행착오와 결국 Next.js 로 옮기며 겪은 다양한 에러에 대해서 남겨보려고 한다.&lt;/p&gt;

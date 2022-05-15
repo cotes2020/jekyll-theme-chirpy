@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>PCA learning 구현 (from scratch)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Seize the day" />
+    <link rel="shortcut icon" href="/assets/img/favicons/favicon-32x32.png" type="image/png" />
+    <link rel="canonical" href="/Implement-PCA-learning-(from-scratch)" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+    <meta name="google-site-verification" content="X86eN2H5lW1jy6i7OLmOjBAyCf4N8PPVT0sBdIH57LE" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="PIGBEAN Tech blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PCA learning 구현 (from scratch)" />
+    <meta property="og:description" content="PCA란?   PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다. 주성분이란? 주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다. 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때 이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법" />
+    <meta property="og:url" content="/Implement-PCA-learning-(from-scratch)" />
+    <meta property="og:image" content="/assets/img/post_images/ai_cover2.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/false" />
+    <meta property="article:author" content="https://www.facebook.com/false" />
+    <meta property="article:published_time" content="2022-03-24T10:32:00+09:00" />
+    <meta property="article:modified_time" content="2022-03-24T10:32:00+09:00" />
+    <meta property="article:tag" content="Ai" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PCA learning 구현 (from scratch)" />
+    <meta name="twitter:description" content="PCA란?   PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다. 주성분이란? 주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다. 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때 이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법" />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image" content="/assets/img/post_images/ai_cover2.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="PIGBEAN Tech blog" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ai" />
+    <meta name="twitter:site" content="@false" />
+    <meta name="twitter:creator" content="@false" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "PIGBEAN Tech blog",
+        "logo": "/assets/img/favicons/android-chrome-256x256.png"
+    },
+    "url": "/Implement-PCA-learning-(from-scratch)",
+    "image": {
+        "@type": "ImageObject",
+        "url": "/assets/img/post_images/ai_cover2.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/Implement-PCA-learning-(from-scratch)"
+    },
+    "description": "PCA란?   PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다. 주성분이란? 주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다. 좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때 이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="PCA learning 구현 (from scratch)" href="/feed.xml" />
+
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="/"><img src="/assets/img/favicons/android-chrome-256x256.png" alt="PIGBEAN Tech blog" /></a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/Catty/">Catty</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-ai tag-coding post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="24 March 2022">24 March 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ai/'>AI</a>,
+                            
+                        
+                            
+                               <a href='/tag/coding/'>CODING</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">PCA learning 구현 (from scratch)</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/img/post_images/ai_cover2.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h2 id="pca란">PCA란?</h2>
+<p> </p>
+
+<p>PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다.</p>
+
+<h3 id="주성분이란">주성분이란?</h3>
+<p>주성분은 그 방향으로 데이터들의 분산이 가장 큰 방향벡터를 의미한다.</p>
+
+<p>좀더 구체적으로 보면 아래 그림과 같이 2차원 좌표평면에 n개의 점 데이터 (x1,y1), (x2,y2), …, (xn,yn)들이 타원형으로 분포되어 있을 때</p>
+
+<div style="text-align: left">
+   <img src="/assets/img/post_images/pca2.png" width="100%" />
+</div>
+
+<p>이 데이터들의 분포 특성을 2개의 벡터로 가장 잘 설명할 수 있는 방법 그림에서와 같이 e1, e2 두 개의 벡터로 데이터 분포를 설명하는 것이다. e1의 방향과 크기, 그리고 e2의 방향과 크기를 알면 이 데이터 분포가 어떤 형태인지를 가장 단순하면서도 효과적으로 파악할 수 있다.</p>
+
+<p>PCA는 데이터 하나 하나에 대한 성분을 분석하는 것이 아니라, 여러 데이터들이 모여 하나의 분포를 이룰 때 이 분포의 주성분을 분석해 주는 방법이다.</p>
+
+<p>위의 그림에서 e1 방향을 따라 데이터들의 분산(흩어진 정도)이 가장 크다. 그리고 e1에 수직이면서 그 다음으로 데이터들의 분산이 가장 큰 방향은 e2이다.
+따라서 1차 주성분은 e1 벡터, 2차 주성분은 e2 벡터라고 할 수 있다.</p>
+
+<h3 id="pca-계산">PCA 계산</h3>
+<p>PCA는 2차원 데이터 집합에 대해 PCA를 수행하면 2개의 서로 수직인 주성분 벡터를 반환하고, 3차원 점들에 대해 PCA를 수행하면 3개의 서로 수직인 주성분 벡터들을 반환한다.</p>
+
+<p>이 PCA는 SVD decomposition Scikit-learn의 내장 라이브러리를 이용하여 구할 수도 있지만 이번에는 머신러닝 학습을 통하여 구해보았다. 이렇게 학습을 통해 PCA를 구하기 위해서는 Hebbian learning을 알아야 한다.</p>
+
+<p> </p>
+
+<h2 id="hebbian-learning">Hebbian learning</h2>
+<p> </p>
+
+<p>Hebbian learning은 1949년 캐나다 심리학자인 Donal Hebb가 제안한 Hebb의 학습 가설에 근거한 학습 규칙이다. 신경학적인 측면에서 사람이 어떻게 학습하는 가에 대한 비교적 간단한 학습 이론에 대해 살펴보자. 중심적인 아이디어는 다음과 같다.</p>
+<blockquote>
+  <p>두 개의 뉴런 A, B 가 서로 반복적이고 지속적으로 점화(firing)하여 어느 한쪽 또는 양쪽 모두에 어떤 변화를 야기한다면 상호간의 점화의 효율 (weight) 은 점점 커지게 된다.
+이 간단한 규칙은 나중에 개발되는 많은 신경망 모델들의 학습 규칙의 토대가 된다.</p>
+</blockquote>
+
+<p>이 Hebb의 학습 가설에 근거한 Hebbian 학습 규칙은 가장 오래되고 단순한 형태의 학습 규칙이다. 이 규칙은 <strong>만약 연접(synapse) 양쪽의 뉴런이 동시에 또 반복적으로 활성화되었다면 그 두 뉴런 사이의 연결강도가 강화된다</strong>는 관찰에 근거한다. 수학적으로는 다음 식으로 나타낼 수 있다.</p>
+
+<p>$w_{ij}(t+1) = w_{ij}(t) + \eta y_{j}(t)x_{i}(t)$</p>
+
+<p>그러나 Hebbian learning 식을 그대로 사용하면 nomalization 문제가 발생한다. (즉, w값이 발산한다.) 따라서 w 벡터의 크기를 1로 고정하거나, oja rule을 사용하여 nomalization을 방지하는 방향으로 풀이를 진행하였다. 각각의 코드는 아래와 같다.</p>
+
+<p> </p>
+<h2 id="pca-learning-코드">PCA learning 코드</h2>
+<p> </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pca_hebbian_learning</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">S1</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">S2</span>
+  <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+
+  <span class="c1"># Normalizing X
+</span>  <span class="n">norm_X</span> <span class="o">=</span> <span class="n">X</span><span class="o">-</span><span class="n">X</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">norm_X</span> <span class="o">=</span> <span class="n">norm_X</span><span class="o">/</span><span class="n">X</span><span class="p">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+  <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="n">prev_W</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+  <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.0001</span>
+  <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-8</span>
+
+  <span class="k">while</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">prev_W</span> <span class="o">-</span> <span class="n">W</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">:</span>
+      <span class="n">prev_W</span> <span class="o">=</span> <span class="n">W</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+
+      <span class="n">Ys</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">norm_X</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+      <span class="n">W</span> <span class="o">+=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">Ys</span><span class="o">*</span><span class="n">norm_X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+      <span class="c1"># Normalizing W
+</span>      <span class="n">W</span> <span class="o">=</span> <span class="n">W</span> <span class="o">/</span> <span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+  <span class="k">print</span><span class="p">(</span><span class="s">"***Using hebbian learning***</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">'eigenvector :</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="p">[</span><span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]])</span>
+  <span class="n">plot_first_pca</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="s">"hebbian learning"</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">pca_oja</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">S1</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">S2</span>
+  <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+
+  <span class="c1"># Normalizing X
+</span>  <span class="n">norm_X</span> <span class="o">=</span> <span class="n">X</span><span class="o">-</span><span class="n">X</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">norm_X</span> <span class="o">=</span> <span class="n">norm_X</span><span class="o">/</span><span class="n">X</span><span class="p">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+  <span class="c1"># Apply the Oja's rule
+</span>  <span class="n">W_oja</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="n">prev_W_oja</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+  <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.0001</span>
+  <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1e-8</span>
+
+  <span class="k">while</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">prev_W_oja</span> <span class="o">-</span> <span class="n">W_oja</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">:</span>
+      <span class="n">prev_W_oja</span> <span class="o">=</span> <span class="n">W_oja</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+
+      <span class="n">Ys</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">norm_X</span><span class="p">,</span> <span class="n">W_oja</span><span class="p">)</span>
+      <span class="n">W_oja</span> <span class="o">+=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">Ys</span><span class="o">*</span><span class="n">norm_X</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">Ys</span><span class="p">)</span><span class="o">*</span><span class="n">W_oja</span><span class="p">.</span><span class="n">T</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+  <span class="k">print</span><span class="p">(</span><span class="s">"***Using Oja's rule***</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">'eigenvector :</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="p">[</span><span class="n">W_oja</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">W_oja</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]])</span>
+  <span class="n">plot_first_pca</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="s">"Oja's rule"</span><span class="p">,</span> <span class="n">W_oja</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p> </p>
+<h2 id="pca-learning-결과">PCA learning 결과</h2>
+<p><br />
+ 
+위의 코드로 학습을 시키면 다음의 결과를 확인할 수 있다.</p>
+
+<div style="text-align: left">
+   <img src="/assets/img/post_images/pca1.png" width="100%" />
+</div>
+
+<p><br />
+ </p>
+
+<hr />
+
+<p> 
+참고 내용 출처 :</p>
+<ul>
+  <li><a href="https://darkpgmr.tistory.com/110">https://darkpgmr.tistory.com/110</a></li>
+  <li><a href="http://www.aistudy.com/neural/hebbian_learning.htm">http://www.aistudy.com/neural/hebbian_learning.htm</a></li>
+</ul>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Bean" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/Bean">Beanie</a></h4>
+                                
+                                    <p>Hello, I’m Beanie, always pondering and crafting services to make life fun and convenient</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/Bean">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            var this_page_url = '/Implement-PCA-learning-(from-scratch)';
+                            var this_page_identifier = '/Implement PCA learning (from scratch)';
+                            var this_page_title = 'PCA learning 구현 (from scratch)';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://Beanie.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/img/style/bean3.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; PIGBEAN Tech blog &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ai/">Ai</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Dropout">Dropout (Mathmatical approach)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Implement-Multi-layer-perceptron-(from-scratch)">Implement Multi layer perceptron (from scratch)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Implement-Single-layer-perceptron-(from-scratch)">Implement Single layer perceptron (from scratch)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ai/">
+                                
+                                    See all 4 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Implement-Single-layer-perceptron-(from-scratch)">
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/ai_cover2.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Implement-Single-layer-perceptron-(from-scratch)">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Ai</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Coding</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Implement Single layer perceptron (from scratch)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Bean/">Beanie</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Implement-Competitive-learning-(from-scratch)">
+                <div class="post-card-image" style="background-image: url(/assets/img/post_images/ai_cover2.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Implement-Competitive-learning-(from-scratch)">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Ai</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Coding</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Competitive learning 구현 (from scratch)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>Competitive learning이란?
+ 
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Bean/">Beanie</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      2 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="/">
+            
+                <img src="/assets/img/favicons/favicon-32x32.png" alt="PIGBEAN Tech blog icon" />
+            
+            <span>PIGBEAN Tech blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">PCA learning 구현 (from scratch)</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=PCA+learning+%EA%B5%AC%ED%98%84+%28from+scratch%29&amp;url=https://beanie00.github.io/Implement-PCA-learning-(from-scratch)"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://beanie00.github.io/Implement-PCA-learning-(from-scratch)"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="/">PIGBEAN Tech blog</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

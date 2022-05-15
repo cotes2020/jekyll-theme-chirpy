@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="http://localhost:4000/tag/ai/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:13:29+09:00</updated>
-  <id>http://localhost:4000/tag/ai/feed.xml</id>
+  <link href="/tag/ai/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2022-05-16T00:43:24+09:00</updated>
+  <id>/tag/ai/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">Dropout (Mathmatical approach)</title>
-      <link href="http://localhost:4000/Dropout" rel="alternate" type="text/html" title="Dropout (Mathmatical approach)" />
+      <link href="/Dropout" rel="alternate" type="text/html" title="Dropout (Mathmatical approach)" />
       <published>2022-05-07T17:32:00+09:00</published>
       <updated>2022-05-07T17:32:00+09:00</updated>
-      <id>http://localhost:4000/Dropout</id>
-      <content type="html" xml:base="http://localhost:4000/Dropout">&lt;p&gt;Dropout은 &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.&lt;/p&gt;
+      <id>/Dropout</id>
+      <content type="html" xml:base="/Dropout">&lt;p&gt;Dropout은 &lt;a href=&quot;&quot;&gt;Prevent Multi layer perceptron Overfitting&lt;/a&gt;에서와 같이 딥러닝 학습에서 발생하는 문제인 Overfitting을 해소하기 위한 방법 중 하나이다.&lt;/p&gt;
 
 &lt;h2 id=&quot;solution-of-overfitting&quot;&gt;Solution of Overfitting&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -222,11 +222,11 @@ Committe Machine의 예처럼 학습을 할 때, 서로 다른 학습데이터�
   
     <entry>
       <title type="html">Implement Multi layer perceptron (from scratch)</title>
-      <link href="http://localhost:4000/Multi-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)" rel="alternate" type="text/html" title="Implement Multi layer perceptron (from scratch)" />
+      <link href="/Implement-Multi-layer-perceptron-(from-scratch)" rel="alternate" type="text/html" title="Implement Multi layer perceptron (from scratch)" />
       <published>2022-04-06T10:32:00+09:00</published>
       <updated>2022-04-06T10:32:00+09:00</updated>
-      <id>http://localhost:4000/Multi%20layer%20perceptron%20%EA%B5%AC%ED%98%84%20(from%20scratch)</id>
-      <content type="html" xml:base="http://localhost:4000/Multi-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)">&lt;p&gt;이번 글에서는 아래 그림과 같은 네트워크의 2개의 hidden layer을 가진 Multi Layer Perceptron(MLP)을 python 코드로 구현한 코드를 담았다.&lt;/p&gt;
+      <id>/Implement%20Multi%20layer%20perceptron%20(from%20scratch)</id>
+      <content type="html" xml:base="/Implement-Multi-layer-perceptron-(from-scratch)">&lt;p&gt;이번 글에서는 아래 그림과 같은 네트워크의 2개의 hidden layer을 가진 Multi Layer Perceptron(MLP)을 python 코드로 구현한 코드를 담았다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/mlp.png&quot; width=&quot;100%&quot; /&gt;
@@ -386,11 +386,11 @@ Committe Machine의 예처럼 학습을 할 때, 서로 다른 학습데이터�
   
     <entry>
       <title type="html">Implement Single layer perceptron (from scratch)</title>
-      <link href="http://localhost:4000/Single-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)" rel="alternate" type="text/html" title="Implement Single layer perceptron (from scratch)" />
+      <link href="/Implement-Single-layer-perceptron-(from-scratch)" rel="alternate" type="text/html" title="Implement Single layer perceptron (from scratch)" />
       <published>2022-03-30T10:32:00+09:00</published>
       <updated>2022-03-30T10:32:00+09:00</updated>
-      <id>http://localhost:4000/Single%20layer%20perceptron%20%EA%B5%AC%ED%98%84%20(from%20scratch)</id>
-      <content type="html" xml:base="http://localhost:4000/Single-layer-perceptron-%EA%B5%AC%ED%98%84-(from-scratch)">&lt;p&gt;이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.&lt;/p&gt;
+      <id>/Implement%20Single%20layer%20perceptron%20(from%20scratch)</id>
+      <content type="html" xml:base="/Implement-Single-layer-perceptron-(from-scratch)">&lt;p&gt;이번 글에서는 아래 그림과 같은 네트워크의 Single layer perceptron을 python 코드로 구현한 코드를 담았다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align: left&quot;&gt;
    &lt;img src=&quot;/assets/img/post_images/single.png&quot; width=&quot;70%&quot; /&gt;
@@ -468,11 +468,11 @@ Committe Machine의 예처럼 학습을 할 때, 서로 다른 학습데이터�
   
     <entry>
       <title type="html">PCA learning 구현 (from scratch)</title>
-      <link href="http://localhost:4000/PCA-learning-%EA%B5%AC%ED%98%84-(from-scratch)" rel="alternate" type="text/html" title="PCA learning 구현 (from scratch)" />
+      <link href="/Implement-PCA-learning-(from-scratch)" rel="alternate" type="text/html" title="PCA learning 구현 (from scratch)" />
       <published>2022-03-24T10:32:00+09:00</published>
       <updated>2022-03-24T10:32:00+09:00</updated>
-      <id>http://localhost:4000/PCA%20learning%20%EA%B5%AC%ED%98%84%20(from%20scratch)</id>
-      <content type="html" xml:base="http://localhost:4000/PCA-learning-%EA%B5%AC%ED%98%84-(from-scratch)">&lt;h2 id=&quot;pca란&quot;&gt;PCA란?&lt;/h2&gt;
+      <id>/Implement%20PCA%20learning%20(from%20scratch)</id>
+      <content type="html" xml:base="/Implement-PCA-learning-(from-scratch)">&lt;h2 id=&quot;pca란&quot;&gt;PCA란?&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;PCA는 분포된 데이터들의 주성분(Principal Component)를 찾아주는 방법이다.&lt;/p&gt;
@@ -629,11 +629,11 @@ Committe Machine의 예처럼 학습을 할 때, 서로 다른 학습데이터�
   
     <entry>
       <title type="html">Competitive learning 구현 (from scratch)</title>
-      <link href="http://localhost:4000/Competitive-learning-%EA%B5%AC%ED%98%84-(from-scratch)" rel="alternate" type="text/html" title="Competitive learning 구현 (from scratch)" />
+      <link href="/Implement-Competitive-learning-(from-scratch)" rel="alternate" type="text/html" title="Competitive learning 구현 (from scratch)" />
       <published>2022-03-24T10:32:00+09:00</published>
       <updated>2022-03-24T10:32:00+09:00</updated>
-      <id>http://localhost:4000/Competitive%20learning%20%EA%B5%AC%ED%98%84%20(from%20scratch)</id>
-      <content type="html" xml:base="http://localhost:4000/Competitive-learning-%EA%B5%AC%ED%98%84-(from-scratch)">&lt;h2 id=&quot;competitive-learning이란&quot;&gt;Competitive learning이란?&lt;/h2&gt;
+      <id>/Implement%20Competitive%20learning%20(from%20scratch)</id>
+      <content type="html" xml:base="/Implement-Competitive-learning-(from-scratch)">&lt;h2 id=&quot;competitive-learning이란&quot;&gt;Competitive learning이란?&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;Competitive learning(경쟁 학습)은 비지도 학습이다. Competitive learning은 입력 벡터들을 군집화(clustering) 하는데 사용된다. 아래 같은 경쟁 학습 네트워크가 있다고 하자. 이 네트워크는 4 차원 입력 벡터들을 세 클러스터로 군집화 한다. 한 클러스터의 중심(centroid)은 가중 벡터(weight vector) 하나로 표현된다. 경쟁 학습은 한 입력 벡터에서 모든 가중 벡터까지의 거리를 구하고, 그 중 거리가 가장 짧은 가중 벡터 하나만 선택한다. 그 가중 벡터가 승자 노드이다. 오직 승자 노드의 가중 벡터만 갱신된다. 그래서 경쟁 학습 네트워크는 승자독식 네트워크(winner-take-all networks)라고도 불린다.&lt;/p&gt;

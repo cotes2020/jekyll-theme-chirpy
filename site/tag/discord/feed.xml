@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="http://localhost:4000/tag/discord/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:13:29+09:00</updated>
-  <id>http://localhost:4000/tag/discord/feed.xml</id>
+  <link href="/tag/discord/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2022-05-16T00:43:24+09:00</updated>
+  <id>/tag/discord/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">Discord Bot with Lambda</title>
-      <link href="http://localhost:4000/Discord-Bot-with-Lambda" rel="alternate" type="text/html" title="Discord Bot with Lambda" />
+      <link href="/Discord-Bot-with-Lambda" rel="alternate" type="text/html" title="Discord Bot with Lambda" />
       <published>2021-12-09T14:21:00+09:00</published>
       <updated>2021-12-09T14:21:00+09:00</updated>
-      <id>http://localhost:4000/Discord%20Bot%20with%20Lambda</id>
-      <content type="html" xml:base="http://localhost:4000/Discord-Bot-with-Lambda">&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+      <id>/Discord%20Bot%20with%20Lambda</id>
+      <content type="html" xml:base="/Discord-Bot-with-Lambda">&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Set up an AWS account&lt;/li&gt;
