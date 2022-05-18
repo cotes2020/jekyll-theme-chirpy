@@ -7,13 +7,9 @@ order: 6
 ![Graph](https://raw.githubusercontent.com/Booodaness/Scientific-Notes/master/!Common/!Assets/Images/graph.png)
 _Graph of the project_
 
-[_Scientific Notes_](https://github.com/Booodaness/Scientific-Notes) is a collaboration on [GitHub](https://github.com/) for maintaining open-source notes on mathematical physics, physics and mathematics. I originally started this project to make my local notes accessible whether or not they are later assimilated into blog posts on this site. However, it soon became a standalone effort to meet certain ends this blog cannot.
+[_Scientific Notes_](https://github.com/Booodaness/Scientific-Notes) is a collaboration on [GitHub](https://github.com/) for maintaining open-source notes on mathematical physics, physics and mathematics. I originally started the project to make my local notes accessible whether or not they are later assimilated into blog posts on this site. However, it soon became standalone, with a different workflow. Primarily, the notes in the repository are more dynamic, while the blog focuses more on the ease to follow up. Since collaboration is dynamic, _Scientific Notes_ is better suited for writing, while the blog is typically friendlier to read.
 
-For instance, the notes in the repository are updated frequently, which would be difficult to track in a blog. Secondly, the flexibility of notes offers more opportunity for collaboration, which needless to say, has its benefits for both readers and writers.
-
-The experience of writing notes together should be as simple as possible, so that authors and readers can focus more on the content. To facilitate this need, we use the beautiful, free and open-source application [Obsidian](https://obsidian.md/).
-
-Briefly put, Obsidian lets users build a knowledge base using local Markdown files and the power of hypertext. Obsidian also offers high extensibility through hundreds of powerful plugins. This lets us do a variety of things, from [drawing diagrams](https://github.com/zsviczian/obsidian-excalidraw-plugin) and [typesetting LaTeX at high speed](https://github.com/artisticat1/obsidian-latex-suite), to [syncing the notes via Git](https://github.com/denolehov/obsidian-git).
+The experience of writing notes together should be as simple as possible, so that authors and readers can focus more on the content. To meet this end, we use the beautiful, free and open-source application [Obsidian](https://obsidian.md/). Briefly put, Obsidian lets users build a knowledge base using local Markdown files and the power of hypertext. It also offers high extensibility through hundreds of powerful plugins. This lets one do a variety of things, from [drawing diagrams](https://github.com/zsviczian/obsidian-excalidraw-plugin) and [typesetting LaTeX at high speed](https://github.com/artisticat1/obsidian-latex-suite), to [syncing the notes via Git](https://github.com/denolehov/obsidian-git).
 
 The features of Obsidian are too many to put here, so it's time for some pictures to speak the words:
 
