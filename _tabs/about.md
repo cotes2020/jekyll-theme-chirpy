@@ -15,7 +15,7 @@ And know the place for the first time.
 
 The purpose of this blog is to embark on such a journey, into the without and the within. It aims to delve into not only physics and mathematics, but also how they play with each other and reality itself. In this light, there are the following domains of interest:
 
-![Domains]({{ site.url }}{{ site.baseurl }}/assets/img/site/domains_dark.svg)
+![Domains]({{ site.url }}{{ site.baseurl }}/assets/img/site/about/domains_dark.svg)
 _Domains_
 
 I will be posting on topics from the above fields that I find interesting, such as abstract algebra, analysis, topology, differential geometry, discrete mathematics, classical mechanics, special and general relativity, quantum mechanics, classical and quantum field theory, quantum gravity, free will, consciousness and so on. I will assume the reader is aware of some of the foundational mathematics underlying these ideas (save the ones to do with philosophy, which involve little or no math). That said, there are many posts which try to capture the essence and underlying ideas, without using heavy mathematical machinery.
