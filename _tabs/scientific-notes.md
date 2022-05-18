@@ -7,7 +7,7 @@ order: 6
 ![Graph](https://raw.githubusercontent.com/Booodaness/Scientific-Notes/master/!Common/!Assets/Images/graph.png)
 _Graph of the project_
 
-[_Scientific Notes_](https://github.com/Booodaness/Scientific-Notes) is a collaboration on [GitHub](https://github.com/) for maintaining open-source notes on mathematical physics, physics and mathematics. I originally started this project to make my local notes accessible whether or not they are later assimilated into blog posts on this site. However, the project soon became standalone to meet certain ends this blog cannot.
+[_Scientific Notes_](https://github.com/Booodaness/Scientific-Notes) is a collaboration on [GitHub](https://github.com/) for maintaining open-source notes on mathematical physics, physics and mathematics. I originally started this project to make my local notes accessible whether or not they are later assimilated into blog posts on this site. However, it soon became a standalone effort to meet certain ends this blog cannot.
 
 For instance, the notes in the repository are updated frequently, which would be difficult to track in a blog. Secondly, the flexibility of notes offers more opportunity for collaboration, which needless to say, has its benefits for both readers and writers.
 
