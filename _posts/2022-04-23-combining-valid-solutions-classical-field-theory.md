@@ -64,7 +64,7 @@ $$
 \end{align}
 $$
 
-Now, expand $$\frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \right) \phi}$$ and later apply the partial derivative operator $$\partial_\mu$$ for the right hand side of the equations of motion,
+Now, expand $$\frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \right) \phi}$$ and later find the divergence of the right hand side of the equations of motion,
 
 $$
 \begin{align}
@@ -83,7 +83,7 @@ $$
 
 That was lengthy, but in the end, we have a relatively compact result! In the last step, we took the inverse of the partial derivative $$\frac{\partial \phi}{\partial \phi_{\left( i \right)}}$$ as simply its reciprocal. This is because for the independent set of functions $$\left\{ \phi_{\left( i \right)} \right\}$$, we have $$\frac{\partial \phi}{\partial \phi_{\left( i \right)}} = \frac{d \phi}{d \phi_{\left( i \right)}}$$, which is a difference quotient.
 
-Finally, we find the divergence of the expression obtained in accordance with the right hand side of the Euler-Lagrange equations,
+Finally, we find the divergence of the expression obtained in accordance with the Euler-Lagrange equations,
 
 $$
 \begin{align}
