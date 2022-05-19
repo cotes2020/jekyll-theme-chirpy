@@ -37,4 +37,4 @@ That said, the very personalized approach of Obsidian may get in the way of coll
 
 Contributions from any and every person are protected, and individual pools are edited only using pull requests, unless the pool is one's own. Any pull request is also accompanied by remarks and discussion to ensure that there is no conflict of interests.
 
-All in all, _Scientific Notes_, like _Tempus Spatium_, is an experiment for exploring theoretical physics and mathematics. Feel free to visit [the project's GitHub repository](https://github.com/Booodaness/Scientific-Notes) to star it, read it on your computer or contribute to it!
+All in all, _Scientific Notes_, like _Tempus Spatium_, is an experiment for exploring theoretical physics and mathematics. Feel free to visit [the project's GitHub repository](https://github.com/Booodaness/Scientific-Notes) to star it, download it or contribute to it!
