@@ -35,6 +35,6 @@ The elegant features of Obsidian increased my productivity considerably not only
 
 That said, the very personalized approach of Obsidian may get in the way of collaboration, since each contributor, in all probability, has a very unique way of making notes on a particular topic. To deal with this, we simply have independent 'pools' that authors make their own notes in. One can think of the root directory of _Scientific Notes_ as a library, with different sections corresponding to different authors. Apart from such pools, there is also a common pool where authors can directly collaborate on notes.
 
-Contributions from any and every person are protected, and individual pools are not encouraged to be changed without pull requests, unless the changed pool is one's own. Any change is accompanied by remarks and discussion to ensure that there is no conflict of interests.
+Contributions from any and every person are protected, and individual pools are edited only using pull requests, unless the pool is one's own. Any pull request is also accompanied by remarks and discussion to ensure that there is no conflict of interests.
 
 All in all, _Scientific Notes_, like _Tempus Spatium_, is an experiment for exploring theoretical physics and mathematics. Feel free to visit [the project's GitHub repository](https://github.com/Booodaness/Scientific-Notes) to star it, read it on your computer or contribute to it!
