@@ -29,7 +29,10 @@ _Outgoing links_
 _Graph view_
 
 ![Excalidraw]({{ site.url }}{{ site.baseurl }}/assets/img/site/scientific-notes/excalidraw.png)
-_Diagram made using Excalidraw plugin_
+_Diagram made with Excalidraw plugin_
+
+![Git]({{ site.url }}{{ site.baseurl }}/assets/img/site/scientific-notes/excalidraw.png)
+_Git integration with Obsidian Git plugin_
 
 The elegant features of Obsidian increased my productivity considerably not only when it came to taking down mathematical notes, but also analyzing them deeply. In general, I would highly recommend the application to anyone who intends to make digital notes on complex, interconnected topics.
 
