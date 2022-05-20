@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="/tag/capacitor/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:43:24+09:00</updated>
-  <id>/tag/capacitor/feed.xml</id>
+  <link href="http://localhost:4000/tag/capacitor/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-05-20T03:25:59+09:00</updated>
+  <id>http://localhost:4000/tag/capacitor/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">(작성중) Capacitor와 Vue.js를 이용해서 cross-platform 모바일 앱 개발하기</title>
-      <link href="/Develop-cross-platform-mobile-app-using-Capacitor-and-Vue.js" rel="alternate" type="text/html" title="(작성중) Capacitor와 Vue.js를 이용해서 cross-platform 모바일 앱 개발하기" />
+      <link href="http://localhost:4000/Develop-cross-platform-mobile-app-using-Capacitor-and-Vue.js" rel="alternate" type="text/html" title="(작성중) Capacitor와 Vue.js를 이용해서 cross-platform 모바일 앱 개발하기" />
       <published>2021-11-30T14:21:00+09:00</published>
       <updated>2021-11-30T14:21:00+09:00</updated>
-      <id>/Develop%20cross-platform%20mobile%20app%20using%20Capacitor%20and%20Vue.js</id>
-      <content type="html" xml:base="/Develop-cross-platform-mobile-app-using-Capacitor-and-Vue.js">&lt;p&gt;이번 글에서는 21.10월부터 21.11월 2달 동안 외주 개발 프로젝트 개발한 하이브리드 앱에 Vue.js와 Capacitor를 적용해본 경험을 공유하려고 한다. 결론적으로 말하면 많이 불편했고 다시는 사용하지 않을 방법이다. 이후에 하이브리드 앱은 &lt;a href=&quot;https://beanie00.github.io/posts/리액트 웹뷰에 네이티브 기능 연결해서 하이브리드 앱을 만들자&quot;&gt;리액트 웹뷰로 하이브리드 앱을 만들자&lt;/a&gt; 포스팅에서 적은 것 처럼 웹뷰에 Capacitor를 붙이는 대신 네이티브 기능을 다이렉트로 붙이는 방향으로 작업하였다.&lt;/p&gt;
+      <id>http://localhost:4000/Develop%20cross-platform%20mobile%20app%20using%20Capacitor%20and%20Vue.js</id>
+      <content type="html" xml:base="http://localhost:4000/Develop-cross-platform-mobile-app-using-Capacitor-and-Vue.js">&lt;p&gt;이번 글에서는 21.10월부터 21.11월 2달 동안 외주 개발 프로젝트 개발한 하이브리드 앱에 Vue.js와 Capacitor를 적용해본 경험을 공유하려고 한다. 결론적으로 말하면 많이 불편했고 다시는 사용하지 않을 방법이다. 이후에 하이브리드 앱은 &lt;a href=&quot;https://beanie00.github.io/posts/리액트 웹뷰에 네이티브 기능 연결해서 하이브리드 앱을 만들자&quot;&gt;리액트 웹뷰로 하이브리드 앱을 만들자&lt;/a&gt; 포스팅에서 적은 것 처럼 웹뷰에 Capacitor를 붙이는 대신 네이티브 기능을 다이렉트로 붙이는 방향으로 작업하였다.&lt;/p&gt;
 
 &lt;h2 id=&quot;왜-이-프레임워크를-선택했나&quot;&gt;왜 이 프레임워크를 선택했나&lt;/h2&gt;
 &lt;hr /&gt;

@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="/tag/paper/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:43:24+09:00</updated>
-  <id>/tag/paper/feed.xml</id>
+  <link href="http://localhost:4000/tag/paper/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-05-20T03:25:59+09:00</updated>
+  <id>http://localhost:4000/tag/paper/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">RecSys &amp;amp; RL - A Deep Reinforcement Learning Framework for News Recommendation</title>
-      <link href="/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1" rel="alternate" type="text/html" title="RecSys &amp; RL - A Deep Reinforcement Learning Framework for News Recommendation" />
+      <link href="http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1" rel="alternate" type="text/html" title="RecSys &amp; RL - A Deep Reinforcement Learning Framework for News Recommendation" />
       <published>2022-05-01T17:32:00+09:00</published>
       <updated>2022-05-01T17:32:00+09:00</updated>
-      <id>/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%20%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id>
-      <content type="html" xml:base="/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;p&gt;이 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.&lt;/p&gt;
+      <id>http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%20%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%85%BC%EB%AC%B8%20%EB%A6%AC%EB%B7%B0-1</id>
+      <content type="html" xml:base="http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">&lt;p&gt;이 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.&lt;/p&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt; 
@@ -188,11 +188,11 @@ offline stage에서는 미리 수집해둔 데이터(user-news click logs)에 De
   
     <entry>
       <title type="html">RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training</title>
-      <link href="/RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training" rel="alternate" type="text/html" title="RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training" />
+      <link href="http://localhost:4000/RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training" rel="alternate" type="text/html" title="RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training" />
       <published>2022-04-30T17:32:00+09:00</published>
       <updated>2022-04-30T17:32:00+09:00</updated>
-      <id>/RL%20-%20Autonomous%20Driving%20Based%20on%20Modified%20SAC%20Algorithm%20through%20Imitation%20Learning%20Pre-training</id>
-      <content type="html" xml:base="/RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training">&lt;p&gt;This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.&lt;/p&gt;
+      <id>http://localhost:4000/RL%20-%20Autonomous%20Driving%20Based%20on%20Modified%20SAC%20Algorithm%20through%20Imitation%20Learning%20Pre-training</id>
+      <content type="html" xml:base="http://localhost:4000/RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training">&lt;p&gt;This paper is a follow-up to the paper written 2 years ago. Although the core idea is the same, since the previously used DDPG algorithm did not converge well, SAC was used instead.&lt;/p&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -265,11 +265,11 @@ average accumulated reward after 100 episodes than their method.
   
     <entry>
       <title type="html">RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings</title>
-      <link href="/RL-Improved-Reinforcement-Learning-through-Imitation-Learning-Pretraining-Towards-Image-based-Autonomous-Driving" rel="alternate" type="text/html" title="RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings" />
+      <link href="http://localhost:4000/RL-Improved-Reinforcement-Learning-through-Imitation-Learning-Pretraining-Towards-Image-based-Autonomous-Driving" rel="alternate" type="text/html" title="RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings" />
       <published>2022-04-30T10:32:00+09:00</published>
       <updated>2022-04-30T10:32:00+09:00</updated>
-      <id>/RL%20-%20Improved%20Reinforcement%20Learning%20through%20Imitation%20Learning%20Pretraining%20Towards%20Image-based%20Autonomous%20Driving</id>
-      <content type="html" xml:base="/RL-Improved-Reinforcement-Learning-through-Imitation-Learning-Pretraining-Towards-Image-based-Autonomous-Driving">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training&lt;/code&gt;, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.&lt;/p&gt;
+      <id>http://localhost:4000/RL%20-%20Improved%20Reinforcement%20Learning%20through%20Imitation%20Learning%20Pretraining%20Towards%20Image-based%20Autonomous%20Driving</id>
+      <content type="html" xml:base="http://localhost:4000/RL-Improved-Reinforcement-Learning-through-Imitation-Learning-Pretraining-Towards-Image-based-Autonomous-Driving">&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Autonomous Driving Based on Modified SAC Algotirhm through Imitation Learning Pre-training&lt;/code&gt;, which will be covered in the next article, were written in the lab of Prof. Dong Eui Chang at KAIST and deal with how to improve autonomous driving learning using reinforcement learning.&lt;/p&gt;
 
 &lt;p&gt;More specifically, in the image-based autonomous driving task, imitation learning and reinforcement learning are combined and used together to utilize each others’ strength. The difference between the two papers is that the first paper uses DDPG as reinforcement learning whereas the second paper uses SAC.&lt;/p&gt;
 

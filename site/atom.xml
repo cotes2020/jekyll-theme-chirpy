@@ -4,7 +4,7 @@
     <title> - Articles</title>
     <description>Seize the day</description>
     <link>
-    </link>
+    http://localhost:4000</link>
     
       
       <item>
@@ -14,10 +14,76 @@
 
 </description>
         
-        <pubDate>Sun, 15 May 2022 16:32:00 +0900</pubDate>
+        <pubDate>Mon, 16 May 2022 16:32:00 +0900</pubDate>
         <link>
-        /Introduce-Catty,-the-resource-based-note-taking-app</link>
-        <guid isPermaLink="true">/Introduce-Catty,-the-resource-based-note-taking-app</guid>
+        http://localhost:4000/Introduce-Catty,-the-resource-based-note-taking-app</link>
+        <guid isPermaLink="true">http://localhost:4000/Introduce-Catty,-the-resource-based-note-taking-app</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Transformer</title>
+        
+          <description>&lt;p&gt;&lt;strong&gt;Transformer은 recurrence나 convolution없이 attention만을 사용하는 새로운 sequence transduction model&lt;/strong&gt;이다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 16 May 2022 13:02:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/Transformer</link>
+        <guid isPermaLink="true">http://localhost:4000/Transformer</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Deep Q-Network(DQN) 구현</title>
+        
+          <description>&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;dqn-이란&quot;&gt;DQN 이란?&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 16 May 2022 13:02:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/Implement-DQN</link>
+        <guid isPermaLink="true">http://localhost:4000/Implement-DQN</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Bidirectional Associative Memory 구현</title>
+        
+          <description>&lt;h2 id=&quot;bidirectional-associative-memory-bam-이란&quot;&gt;Bidirectional Associative Memory (BAM) 이란?&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+ 
+BAM 은 Hopfield model을 확장한 모델이다.
+여기서 또 Hopfield model이라는 것이 등장하는 데(..), 잠시 정리하고 넘어가자.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 16 May 2022 11:47:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/Implement-Bidirectional-Associative-Memory</link>
+        <guid isPermaLink="true">http://localhost:4000/Implement-Bidirectional-Associative-Memory</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Uploading Files to S3 with Presigned URL</title>
+        
+          <description>&lt;p&gt;AWS S3 is a great place to keep online service assets such as images or large files. The AWS SDK provides the &lt;a href=&quot;https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property&quot;&gt;putObject&lt;/a&gt; function to upload binaries to S3. This comes in handy for uploading files from the server, but to do this on frontend application, the S3 bucket either needs to have complete public access(obviously bad for security), or the frontend application needs to some secret aws credentials that allows access to S3, which comes with a risk of the secret keys being exposed.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 15 May 2022 15:18:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/Uploading-Files-to-S3-with-Presigned-URL</link>
+        <guid isPermaLink="true">http://localhost:4000/Uploading-Files-to-S3-with-Presigned-URL</guid>
       </item>
       
     
@@ -34,8 +100,8 @@
         
         <pubDate>Sun, 15 May 2022 03:21:00 +0900</pubDate>
         <link>
-        /Check-installation-of-specific-chrome-extension-on-the-web-app</link>
-        <guid isPermaLink="true">/Check-installation-of-specific-chrome-extension-on-the-web-app</guid>
+        http://localhost:4000/Check-installation-of-specific-chrome-extension-on-the-web-app</link>
+        <guid isPermaLink="true">http://localhost:4000/Check-installation-of-specific-chrome-extension-on-the-web-app</guid>
       </item>
       
     
@@ -43,14 +109,14 @@
       <item>
         <title>(Reinforcement learning) Value Function Approximation</title>
         
-          <description>&lt;p&gt;이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다. 이 글은 David Silver의 강화학습 강의와 KAIST EE619 강화학습 수업에서 공부한 내용을 바탕으로 작성하였다.&lt;/p&gt;
+          <description>&lt;p&gt;이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다.&lt;/p&gt;
 
 </description>
         
         <pubDate>Fri, 13 May 2022 13:23:00 +0900</pubDate>
         <link>
-        /(RL)-Value-Function-Approximation</link>
-        <guid isPermaLink="true">/(RL)-Value-Function-Approximation</guid>
+        http://localhost:4000/(RL)-Value-Function-Approximation</link>
+        <guid isPermaLink="true">http://localhost:4000/(RL)-Value-Function-Approximation</guid>
       </item>
       
     
@@ -65,8 +131,8 @@
         
         <pubDate>Thu, 12 May 2022 13:23:00 +0900</pubDate>
         <link>
-        /Implement-Q-learning-&-Double-Q-learning</link>
-        <guid isPermaLink="true">/Implement-Q-learning-&-Double-Q-learning</guid>
+        http://localhost:4000/Implement-Q-learning-&-Double-Q-learning</link>
+        <guid isPermaLink="true">http://localhost:4000/Implement-Q-learning-&-Double-Q-learning</guid>
       </item>
       
     
@@ -80,8 +146,8 @@
         
         <pubDate>Sat, 07 May 2022 17:32:00 +0900</pubDate>
         <link>
-        /Dropout</link>
-        <guid isPermaLink="true">/Dropout</guid>
+        http://localhost:4000/Dropout</link>
+        <guid isPermaLink="true">http://localhost:4000/Dropout</guid>
       </item>
       
     
@@ -89,14 +155,14 @@
       <item>
         <title>Matrix Factorization(MF) 기반 추천시스템</title>
         
-          <description>&lt;p&gt;추천시스템의 기초적인 내용을 잘 알지 못한채로 강화학습으로 추천 알고리즘을 구현하는 논문들을 몇개 읽다보니 구현의 기반이 되는 중요한 원리를 계속 놓치고 있는 듯한 기분이 들었다. 그래서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python을 이용한 개인화 추천시스템&lt;/code&gt; 책을 사서 읽고, 또 다양한 블로그 포스팅을 보며 추천시스템에 대한 공부를 더 깊이 해보았다.&lt;/p&gt;
+          <description>&lt;p&gt;추천시스템의 기초적인 내용을 잘 알지 못한채로 추천 알고리즘을 구현하는 논문들을 몇개 읽다보니 구현의 기반이 되는 중요한 원리를 계속 놓치고 있는 듯한 기분이 들었다. 그래서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python을 이용한 개인화 추천시스템&lt;/code&gt; 책을 사서 읽고, 또 다양한 블로그 포스팅을 보며 추천시스템에 대한 공부를 더 깊이 해보았다.&lt;/p&gt;
 
 </description>
         
         <pubDate>Sat, 07 May 2022 17:32:00 +0900</pubDate>
         <link>
-        /RecSys-based-on-MF</link>
-        <guid isPermaLink="true">/RecSys-based-on-MF</guid>
+        http://localhost:4000/RecSys-based-on-MF</link>
+        <guid isPermaLink="true">http://localhost:4000/RecSys-based-on-MF</guid>
       </item>
       
     
@@ -112,8 +178,8 @@
         
         <pubDate>Thu, 05 May 2022 10:13:00 +0900</pubDate>
         <link>
-        /Add-flow-chart-and-mathematical-expression-on-Jekyll-tech-blog</link>
-        <guid isPermaLink="true">/Add-flow-chart-and-mathematical-expression-on-Jekyll-tech-blog</guid>
+        http://localhost:4000/Add-flow-chart-and-mathematical-expression-on-Jekyll-tech-blog</link>
+        <guid isPermaLink="true">http://localhost:4000/Add-flow-chart-and-mathematical-expression-on-Jekyll-tech-blog</guid>
       </item>
       
     
@@ -127,8 +193,8 @@
         
         <pubDate>Wed, 04 May 2022 00:10:00 +0900</pubDate>
         <link>
-        /Prevent-Multi-layer-perceptron-Overfitting</link>
-        <guid isPermaLink="true">/Prevent-Multi-layer-perceptron-Overfitting</guid>
+        http://localhost:4000/Prevent-Multi-layer-perceptron-Overfitting</link>
+        <guid isPermaLink="true">http://localhost:4000/Prevent-Multi-layer-perceptron-Overfitting</guid>
       </item>
       
     
@@ -142,8 +208,8 @@
         
         <pubDate>Sun, 01 May 2022 17:32:00 +0900</pubDate>
         <link>
-        /%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1</link>
-        <guid isPermaLink="true">/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1</guid>
+        http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1</link>
+        <guid isPermaLink="true">http://localhost:4000/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1</guid>
       </item>
       
     
@@ -157,8 +223,8 @@
         
         <pubDate>Sat, 30 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training</link>
-        <guid isPermaLink="true">/RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training</guid>
+        http://localhost:4000/RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training</link>
+        <guid isPermaLink="true">http://localhost:4000/RL-Autonomous-Driving-Based-on-Modified-SAC-Algorithm-through-Imitation-Learning-Pre-training</guid>
       </item>
       
     
@@ -172,8 +238,8 @@
         
         <pubDate>Sat, 30 Apr 2022 10:32:00 +0900</pubDate>
         <link>
-        /RL-Improved-Reinforcement-Learning-through-Imitation-Learning-Pretraining-Towards-Image-based-Autonomous-Driving</link>
-        <guid isPermaLink="true">/RL-Improved-Reinforcement-Learning-through-Imitation-Learning-Pretraining-Towards-Image-based-Autonomous-Driving</guid>
+        http://localhost:4000/RL-Improved-Reinforcement-Learning-through-Imitation-Learning-Pretraining-Towards-Image-based-Autonomous-Driving</link>
+        <guid isPermaLink="true">http://localhost:4000/RL-Improved-Reinforcement-Learning-through-Imitation-Learning-Pretraining-Towards-Image-based-Autonomous-Driving</guid>
       </item>
       
     
@@ -187,8 +253,8 @@
         
         <pubDate>Fri, 29 Apr 2022 10:32:00 +0900</pubDate>
         <link>
-        /Reduce-chrome-extension-file-size-from-400mb-to-4mb(/)</link>
-        <guid isPermaLink="true">/Reduce-chrome-extension-file-size-from-400mb-to-4mb(/)</guid>
+        http://localhost:4000/Reduce-chrome-extension-file-size-from-400mb-to-4mb(/)</link>
+        <guid isPermaLink="true">http://localhost:4000/Reduce-chrome-extension-file-size-from-400mb-to-4mb(/)</guid>
       </item>
       
     
@@ -202,8 +268,8 @@
         
         <pubDate>Thu, 28 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /Making-web-app-clipboard-listener</link>
-        <guid isPermaLink="true">/Making-web-app-clipboard-listener</guid>
+        http://localhost:4000/Making-web-app-clipboard-listener</link>
+        <guid isPermaLink="true">http://localhost:4000/Making-web-app-clipboard-listener</guid>
       </item>
       
     
@@ -217,8 +283,8 @@
         
         <pubDate>Sat, 23 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /Automating-emails-with-AWS-SES</link>
-        <guid isPermaLink="true">/Automating-emails-with-AWS-SES</guid>
+        http://localhost:4000/Automating-emails-with-AWS-SES</link>
+        <guid isPermaLink="true">http://localhost:4000/Automating-emails-with-AWS-SES</guid>
       </item>
       
     
@@ -232,8 +298,8 @@
         
         <pubDate>Sat, 23 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0</link>
-        <guid isPermaLink="true">/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0</guid>
+        http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0</link>
+        <guid isPermaLink="true">http://localhost:4000/%ED%81%AC%EB%A1%AC-%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B6%81%EB%A7%88%ED%81%AC%ED%95%B4%EC%84%9C-read-mode%EB%A1%9C-%EC%9D%BD%EA%B8%B0</guid>
       </item>
       
     
@@ -247,8 +313,8 @@
         
         <pubDate>Wed, 20 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</link>
-        <guid isPermaLink="true">/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</guid>
+        http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</link>
+        <guid isPermaLink="true">http://localhost:4000/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%9C%EC%9E%91%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%96%EA%B0%80%EC%A7%80-%EC%8B%9C%ED%96%89%EC%B0%A9%EC%98%A4%EB%93%A4</guid>
       </item>
       
     
@@ -262,8 +328,8 @@
         
         <pubDate>Fri, 15 Apr 2022 20:19:00 +0900</pubDate>
         <link>
-        /Git-commit-%EA%BE%B8%EB%AF%B8%EA%B3%A0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</link>
-        <guid isPermaLink="true">/Git-commit-%EA%BE%B8%EB%AF%B8%EA%B3%A0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</guid>
+        http://localhost:4000/Git-commit-%EA%BE%B8%EB%AF%B8%EA%B3%A0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</link>
+        <guid isPermaLink="true">http://localhost:4000/Git-commit-%EA%BE%B8%EB%AF%B8%EA%B3%A0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0</guid>
       </item>
       
     
@@ -277,8 +343,8 @@
         
         <pubDate>Fri, 15 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /Open-git-project-and-manage-issue</link>
-        <guid isPermaLink="true">/Open-git-project-and-manage-issue</guid>
+        http://localhost:4000/Open-git-project-and-manage-issue</link>
+        <guid isPermaLink="true">http://localhost:4000/Open-git-project-and-manage-issue</guid>
       </item>
       
     
@@ -293,8 +359,8 @@
         
         <pubDate>Tue, 12 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)</link>
-        <guid isPermaLink="true">/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)</guid>
+        http://localhost:4000/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)</link>
+        <guid isPermaLink="true">http://localhost:4000/CORS-%EC%97%90%EB%9F%AC-%ED%94%BC%ED%95%98%EB%8A%94-proxy-server-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-CORS-Anywhere-&-Heroku)</guid>
       </item>
       
     
@@ -308,8 +374,8 @@
         
         <pubDate>Sat, 09 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /When-SSR-says-that-there-is-no-window-object</link>
-        <guid isPermaLink="true">/When-SSR-says-that-there-is-no-window-object</guid>
+        http://localhost:4000/When-SSR-says-that-there-is-no-window-object</link>
+        <guid isPermaLink="true">http://localhost:4000/When-SSR-says-that-there-is-no-window-object</guid>
       </item>
       
     
@@ -324,8 +390,8 @@
         
         <pubDate>Sat, 09 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /Move-CSR-project-to-SSR-(3.31~4.08)</link>
-        <guid isPermaLink="true">/Move-CSR-project-to-SSR-(3.31~4.08)</guid>
+        http://localhost:4000/Move-CSR-project-to-SSR-(3.31~4.08)</link>
+        <guid isPermaLink="true">http://localhost:4000/Move-CSR-project-to-SSR-(3.31~4.08)</guid>
       </item>
       
     
@@ -339,8 +405,8 @@
         
         <pubDate>Sat, 09 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /Make-Firestore-content-searchable-(feat-Typesense)</link>
-        <guid isPermaLink="true">/Make-Firestore-content-searchable-(feat-Typesense)</guid>
+        http://localhost:4000/Make-Firestore-content-searchable-(feat-Typesense)</link>
+        <guid isPermaLink="true">http://localhost:4000/Make-Firestore-content-searchable-(feat-Typesense)</guid>
       </item>
       
     
@@ -354,8 +420,8 @@
         
         <pubDate>Fri, 08 Apr 2022 17:32:00 +0900</pubDate>
         <link>
-        /%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EB%B7%B0%EC%97%90-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B8%B0%EB%8A%A5-%EC%97%B0%EA%B2%B0%ED%95%B4%EC%84%9C-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%95%B1%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%9E%90</link>
-        <guid isPermaLink="true">/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EB%B7%B0%EC%97%90-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B8%B0%EB%8A%A5-%EC%97%B0%EA%B2%B0%ED%95%B4%EC%84%9C-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%95%B1%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%9E%90</guid>
+        http://localhost:4000/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EB%B7%B0%EC%97%90-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B8%B0%EB%8A%A5-%EC%97%B0%EA%B2%B0%ED%95%B4%EC%84%9C-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%95%B1%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%9E%90</link>
+        <guid isPermaLink="true">http://localhost:4000/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9B%B9%EB%B7%B0%EC%97%90-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B8%B0%EB%8A%A5-%EC%97%B0%EA%B2%B0%ED%95%B4%EC%84%9C-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%95%B1%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%9E%90</guid>
       </item>
       
     
@@ -369,8 +435,8 @@
         
         <pubDate>Wed, 06 Apr 2022 10:32:00 +0900</pubDate>
         <link>
-        /Implement-Multi-layer-perceptron-(from-scratch)</link>
-        <guid isPermaLink="true">/Implement-Multi-layer-perceptron-(from-scratch)</guid>
+        http://localhost:4000/Implement-Multi-layer-perceptron-(from-scratch)</link>
+        <guid isPermaLink="true">http://localhost:4000/Implement-Multi-layer-perceptron-(from-scratch)</guid>
       </item>
       
     
@@ -384,8 +450,8 @@
         
         <pubDate>Wed, 30 Mar 2022 10:32:00 +0900</pubDate>
         <link>
-        /Implement-Single-layer-perceptron-(from-scratch)</link>
-        <guid isPermaLink="true">/Implement-Single-layer-perceptron-(from-scratch)</guid>
+        http://localhost:4000/Implement-Single-layer-perceptron-(from-scratch)</link>
+        <guid isPermaLink="true">http://localhost:4000/Implement-Single-layer-perceptron-(from-scratch)</guid>
       </item>
       
     
@@ -400,8 +466,8 @@
         
         <pubDate>Thu, 24 Mar 2022 10:32:00 +0900</pubDate>
         <link>
-        /Implement-PCA-learning-(from-scratch)</link>
-        <guid isPermaLink="true">/Implement-PCA-learning-(from-scratch)</guid>
+        http://localhost:4000/Implement-PCA-learning-(from-scratch)</link>
+        <guid isPermaLink="true">http://localhost:4000/Implement-PCA-learning-(from-scratch)</guid>
       </item>
       
     
@@ -416,8 +482,8 @@
         
         <pubDate>Thu, 24 Mar 2022 10:32:00 +0900</pubDate>
         <link>
-        /Implement-Competitive-learning-(from-scratch)</link>
-        <guid isPermaLink="true">/Implement-Competitive-learning-(from-scratch)</guid>
+        http://localhost:4000/Implement-Competitive-learning-(from-scratch)</link>
+        <guid isPermaLink="true">http://localhost:4000/Implement-Competitive-learning-(from-scratch)</guid>
       </item>
       
     
@@ -431,8 +497,8 @@
         
         <pubDate>Sat, 22 Jan 2022 21:55:00 +0900</pubDate>
         <link>
-        /LeetCode-1510.-Stone-Game-IV</link>
-        <guid isPermaLink="true">/LeetCode-1510.-Stone-Game-IV</guid>
+        http://localhost:4000/LeetCode-1510.-Stone-Game-IV</link>
+        <guid isPermaLink="true">http://localhost:4000/LeetCode-1510.-Stone-Game-IV</guid>
       </item>
       
     
@@ -447,8 +513,8 @@
         
         <pubDate>Thu, 13 Jan 2022 17:13:00 +0900</pubDate>
         <link>
-        /RxJava(3)-Observable</link>
-        <guid isPermaLink="true">/RxJava(3)-Observable</guid>
+        http://localhost:4000/RxJava(3)-Observable</link>
+        <guid isPermaLink="true">http://localhost:4000/RxJava(3)-Observable</guid>
       </item>
       
     
@@ -462,8 +528,8 @@
         
         <pubDate>Mon, 10 Jan 2022 23:42:00 +0900</pubDate>
         <link>
-        /RxJava(2)-Reactive-Streams</link>
-        <guid isPermaLink="true">/RxJava(2)-Reactive-Streams</guid>
+        http://localhost:4000/RxJava(2)-Reactive-Streams</link>
+        <guid isPermaLink="true">http://localhost:4000/RxJava(2)-Reactive-Streams</guid>
       </item>
       
     
@@ -477,8 +543,8 @@
         
         <pubDate>Mon, 10 Jan 2022 21:55:00 +0900</pubDate>
         <link>
-        /RxJava(1)-introduction</link>
-        <guid isPermaLink="true">/RxJava(1)-introduction</guid>
+        http://localhost:4000/RxJava(1)-introduction</link>
+        <guid isPermaLink="true">http://localhost:4000/RxJava(1)-introduction</guid>
       </item>
       
     
@@ -492,8 +558,8 @@
         
         <pubDate>Wed, 15 Dec 2021 14:21:00 +0900</pubDate>
         <link>
-        /Develop-web-service-without-designer-with-using-MUI-free-template</link>
-        <guid isPermaLink="true">/Develop-web-service-without-designer-with-using-MUI-free-template</guid>
+        http://localhost:4000/Develop-web-service-without-designer-with-using-MUI-free-template</link>
+        <guid isPermaLink="true">http://localhost:4000/Develop-web-service-without-designer-with-using-MUI-free-template</guid>
       </item>
       
     
@@ -514,8 +580,8 @@
         
         <pubDate>Thu, 09 Dec 2021 14:21:00 +0900</pubDate>
         <link>
-        /Discord-Bot-with-Lambda</link>
-        <guid isPermaLink="true">/Discord-Bot-with-Lambda</guid>
+        http://localhost:4000/Discord-Bot-with-Lambda</link>
+        <guid isPermaLink="true">http://localhost:4000/Discord-Bot-with-Lambda</guid>
       </item>
       
     
@@ -529,8 +595,8 @@
         
         <pubDate>Tue, 30 Nov 2021 14:21:00 +0900</pubDate>
         <link>
-        /Develop-cross-platform-mobile-app-using-Capacitor-and-Vue.js</link>
-        <guid isPermaLink="true">/Develop-cross-platform-mobile-app-using-Capacitor-and-Vue.js</guid>
+        http://localhost:4000/Develop-cross-platform-mobile-app-using-Capacitor-and-Vue.js</link>
+        <guid isPermaLink="true">http://localhost:4000/Develop-cross-platform-mobile-app-using-Capacitor-and-Vue.js</guid>
       </item>
       
     
@@ -548,8 +614,8 @@
         
         <pubDate>Mon, 25 Oct 2021 21:55:00 +0900</pubDate>
         <link>
-        /MVVM-pattern-and-AAC</link>
-        <guid isPermaLink="true">/MVVM-pattern-and-AAC</guid>
+        http://localhost:4000/MVVM-pattern-and-AAC</link>
+        <guid isPermaLink="true">http://localhost:4000/MVVM-pattern-and-AAC</guid>
       </item>
       
     
@@ -564,8 +630,8 @@
         
         <pubDate>Thu, 21 Oct 2021 21:55:00 +0900</pubDate>
         <link>
-        /MVC-pattern</link>
-        <guid isPermaLink="true">/MVC-pattern</guid>
+        http://localhost:4000/MVC-pattern</link>
+        <guid isPermaLink="true">http://localhost:4000/MVC-pattern</guid>
       </item>
       
     

@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
-  <link href="/tag/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="/" rel="alternate" type="text/html" />
-  <updated>2022-05-16T00:43:24+09:00</updated>
-  <id>/tag/feed.xml</id>
+  <link href="http://localhost:4000/tag/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-05-20T03:25:59+09:00</updated>
+  <id>http://localhost:4000/tag/feed.xml</id>
 
   
   
@@ -35,11 +35,11 @@
   
     <entry>
       <title type="html">Matrix Factorization(MF) 기반 추천시스템</title>
-      <link href="/RecSys-based-on-MF" rel="alternate" type="text/html" title="Matrix Factorization(MF) 기반 추천시스템" />
+      <link href="http://localhost:4000/RecSys-based-on-MF" rel="alternate" type="text/html" title="Matrix Factorization(MF) 기반 추천시스템" />
       <published>2022-05-07T17:32:00+09:00</published>
       <updated>2022-05-07T17:32:00+09:00</updated>
-      <id>/RecSys%20based%20on%20MF</id>
-      <content type="html" xml:base="/RecSys-based-on-MF">&lt;p&gt;추천시스템의 기초적인 내용을 잘 알지 못한채로 강화학습으로 추천 알고리즘을 구현하는 논문들을 몇개 읽다보니 구현의 기반이 되는 중요한 원리를 계속 놓치고 있는 듯한 기분이 들었다. 그래서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python을 이용한 개인화 추천시스템&lt;/code&gt; 책을 사서 읽고, 또 다양한 블로그 포스팅을 보며 추천시스템에 대한 공부를 더 깊이 해보았다.&lt;/p&gt;
+      <id>http://localhost:4000/RecSys%20based%20on%20MF</id>
+      <content type="html" xml:base="http://localhost:4000/RecSys-based-on-MF">&lt;p&gt;추천시스템의 기초적인 내용을 잘 알지 못한채로 추천 알고리즘을 구현하는 논문들을 몇개 읽다보니 구현의 기반이 되는 중요한 원리를 계속 놓치고 있는 듯한 기분이 들었다. 그래서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Python을 이용한 개인화 추천시스템&lt;/code&gt; 책을 사서 읽고, 또 다양한 블로그 포스팅을 보며 추천시스템에 대한 공부를 더 깊이 해보았다.&lt;/p&gt;
 
 &lt;p&gt;공부를 하다 보니 추천시스템에서 &lt;strong&gt;Matrix Factorization&lt;/strong&gt;이 매우 중요하다는 것을 느꼈다. MF는 Collaborative Filtering의 한 종류로, Netflix Prize에서 처음 등장하여 엄청난 성능 향상을 보임으로써 추천 시스템 분야의 혁신을 일으켰다고 한다. 기존에 많이 사용되었던 컨텐츠 기반 추천 알고리즘은 Data Sparsity와 Scalibility에 취약했다.(사용자나 아이템이 늘어날수록 Sparsity가 증가하게 되는데, CF는 결측값을 임의로 채워서 추천하다보니 성능이 떨어진다. 반면 MF는 결측값을 아예 사용하지 않아 성능을 유지할 수 있다.)&lt;/p&gt;
 
@@ -263,7 +263,7 @@ MF와 SVD는 모두 데이터 분석과 기계학습에 널리 사용되고 있�
       
 
       
-        <summary type="html">추천시스템의 기초적인 내용을 잘 알지 못한채로 강화학습으로 추천 알고리즘을 구현하는 논문들을 몇개 읽다보니 구현의 기반이 되는 중요한 원리를 계속 놓치고 있는 듯한 기분이 들었다. 그래서 Python을 이용한 개인화 추천시스템 책을 사서 읽고, 또 다양한 블로그 포스팅을 보며 추천시스템에 대한 공부를 더 깊이 해보았다.</summary>
+        <summary type="html">추천시스템의 기초적인 내용을 잘 알지 못한채로 추천 알고리즘을 구현하는 논문들을 몇개 읽다보니 구현의 기반이 되는 중요한 원리를 계속 놓치고 있는 듯한 기분이 들었다. 그래서 Python을 이용한 개인화 추천시스템 책을 사서 읽고, 또 다양한 블로그 포스팅을 보며 추천시스템에 대한 공부를 더 깊이 해보았다.</summary>
       
 
       
