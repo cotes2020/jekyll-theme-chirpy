@@ -23,7 +23,7 @@ timezone: Europe/Moscow
 
 title: TheSharpOwl                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Welcome to my blog!   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
@@ -48,7 +48,7 @@ social:
     - https://github.com/TheSharpOwl       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/mohamadziadalkabakibi/
 
 google_site_verification:               # fill in to your verification string
 
