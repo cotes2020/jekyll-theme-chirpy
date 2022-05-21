@@ -29,7 +29,7 @@ description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'thesharpowl.github.io'
+url: 'https://TheSharpOwl.github.io'
 
 github:
   username: TheSharpOwl             # change to your github username
