@@ -1,6 +1,6 @@
 ---
 title: (Reinforcement learning) Value Function Approximation
-author: Bean
+author: Beanie
 date: 2022-05-13 12:23:00 +0800
 categories: [AI, RL]
 tags: [RL]
@@ -12,7 +12,7 @@ navigation: True
 cover:  assets/img/post_images/ai_cover.jpg
 ---
 
-이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다.
+이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 정리해보려고 한다.
 
 이 글은 David Silver의 강화학습 강의와 KAIST EE619 강화학습 수업에서 공부한 내용을 바탕으로 작성하였다.
 

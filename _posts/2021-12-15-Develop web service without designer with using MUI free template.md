@@ -1,6 +1,6 @@
 ---
 title: MUI 무료 template로 디자이너 없이 웹서비스 개발하기
-author: Bean
+author: Beanie
 date: 2021-12-15 13:21:00 +0800
 categories: [Projects]
 tags: []

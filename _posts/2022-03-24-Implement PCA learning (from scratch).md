@@ -1,6 +1,6 @@
 ---
 title: PCA learning 구현 (from scratch)
-author: Bean
+author: Beanie
 date: 2022-03-24 09:32:00 +0800
 categories: [AI, basic]
 tags: [AI, coding]

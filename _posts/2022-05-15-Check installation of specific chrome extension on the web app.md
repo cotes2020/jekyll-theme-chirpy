@@ -1,6 +1,6 @@
 ---
 title: 웹앱에서 특정 크롬 익스텐션 설치 여부 확인하기
-author: Bean
+author: Beanie
 date: 2022-05-15 02:21:00 +0800
 categories: [Web frontend, React]
 tags: [Catty, extension]

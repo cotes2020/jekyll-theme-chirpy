@@ -1,6 +1,6 @@
 ---
 title: When SSR says that there is no window object
-author: Bean
+author: Beanie
 date: 2022-04-09 16:32:00 +0800
 categories: [Web frontend, React]
 tags: [Catty, Next]

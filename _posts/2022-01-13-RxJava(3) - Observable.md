@@ -1,6 +1,6 @@
 ---
 title: RxJava(3) - Observable
-author: Bean
+author: Beanie
 date: 2022-01-13 16:13:00 +0800
 categories: [Mobile frontend, Android]
 tags: [RxJava]

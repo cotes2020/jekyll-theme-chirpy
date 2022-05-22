@@ -29,7 +29,7 @@ production stylesheet in assets/built/screen.css
 @import "global.css";
 
 body {
-    background: #f4f8fb;
+    background: #fff;
 }
 
 .img {
@@ -60,7 +60,7 @@ body {
 .site-main {
     z-index: 100;
     flex-grow: 1;
-    background-color: aquamarine;
+    background-color: #dee8f9;
 }
 
 /* Full width page blocks */
@@ -165,7 +165,7 @@ body {
 }
 
 .site-logo {
-    max-height: 45px;
+    max-height: 55px;
 }
 
 .site-description {
@@ -388,7 +388,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     overflow: hidden;
     margin: 0 20px 40px;
     min-height: 300px;
-    background: #fff center center;
+    background: #f2f6fc center center;
     background-size: cover;
     border-radius: 5px;
     box-shadow: rgba(39,44,49,0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;

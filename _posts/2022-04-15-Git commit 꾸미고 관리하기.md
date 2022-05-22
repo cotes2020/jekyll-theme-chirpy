@@ -1,6 +1,6 @@
 ---
 title: Git commit 꾸미고 관리하기
-author: Bean
+author: Beanie
 date: 2022-04-15 19:19:00 +0800
 categories: [etc, git]
 tags: [Git]

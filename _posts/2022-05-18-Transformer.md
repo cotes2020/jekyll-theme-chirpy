@@ -1,6 +1,6 @@
 ---
 title: Transformer
-author: Bean
+author: Beanie
 date: 2022-05-16 12:02:00 +0800
 categories: [AI, basic]
 tags: [AI]
@@ -12,8 +12,11 @@ navigation: True
 cover:  assets/img/post_images/ai_cover2.jpg
 ---
 
-**Transformer은 recurrence나 convolution없이 attention만을 사용하는 새로운 sequence transduction model**이다.
+**Transformer은 recurrence나 convolution없이 attention만을 사용하는 새로운 sequence transduction model**이다. Transformer은 `Attention Is All You Need` 라는 논문에서 처음으로 제안되었다.
 
+이 Transformer을 처음 접하고 개념이 복잡해서 유튜브 영상이나 블로그 글들을 찾아보면서 이해를 해보려고 시도했지만 결국에는 이게 처음 제안된 논문을 정독하는 게 가장 도움이 되었다. 그래서 이번 글에서는 Transformer가 제안된 `Attention Is All You Need` 을 정리해보기로 하였다.
+
+&nbsp;
 ## Background
 &nbsp;
 
@@ -96,5 +99,22 @@ Adam optimizer을 사용하였다.
 ## Result
 &nbsp;
 
-### Machine Translation
-### Model Variance
+* Base Model만으로도 충분히 최고 성능을 보였으며,
+* 특히 Big Model의 경우 state-of-the-art를 상당한 수준으로 갱신하는 성능을 보여주었다.
+  * WMT 2014 English to German 번역 과제에서 big transformer 모델이 앙상블 모델을 포함한 기존 모델 보다 2.0 BLEU 이상으로 더 좋은 성능을 내었다.
+  * WMT 2014 English to French 번역 과제에서 big transformer 모델이 이전의 다른 single model보다 training 비용은 1/4로 줄었음에도 BLEU는 더 좋았다.
+
+&nbsp;
+## Conclusion
+&nbsp;
+
+많이 언급하였듯이, Transformer는 recurrence와 convolution을 모두 제거한, 오직 attention에만 의존하는 새로운 종류의 모델이다. 이 모델은 계산량을 줄이고 병렬화를 적용해 학습 속도가 훨씬 빠를 뿐만 아니라 그 성능 또한 state-of-the-art를 달성하는 수준에 이르렀다. 또한 이러한 attention에 기반한 모델은 다른 task들에 적용할 수도 있다. 비단 텍스트뿐만 아니라 이미지, 오디오나 비디오 등의 상대적으로 큰 입력-출력을 요하는 task들에 효과적으로 사용할 수 있을 것이다.
+
+
+\
+&nbsp;
+
+---
+
+참고 내용 출처 :
+* https://greeksharifa.github.io/nlp(natural%20language%20processing)%20/%20rnns/2019/08/17/Attention-Is-All-You-Need/

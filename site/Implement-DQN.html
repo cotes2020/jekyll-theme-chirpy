@@ -34,18 +34,18 @@
     <![endif]-->
     
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <meta name="description" content="Seize the day" />
-    <link rel="shortcut icon" href="http://localhost:4000/assets/img/favicons/favicon-32x32.png" type="image/png" />
+    <meta name="description" content="Beanie & Kaze's tech blog" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/img/favicons/favicon.png" type="image/png" />
     <link rel="canonical" href="http://localhost:4000/Implement-DQN" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
     <meta name="google-site-verification" content="X86eN2H5lW1jy6i7OLmOjBAyCf4N8PPVT0sBdIH57LE" />
 
      <!--title below is coming from _includes/dynamic_title-->
-    <meta property="og:site_name" content="PIGBEAN Tech blog" />
+    <meta property="og:site_name" content="Beanie in the wind" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Deep Q-Network(DQN) 구현" />
-    <meta property="og:description" content="  DQN 이란?     DQN 구현   Environment 먼저, 이번 DQN 구현은 제공받은 2개의 GridWorld 환경을 기반으로 진행하였다. 먼저 첫번째 GridWorld는 그림과 같다. 그림에서 볼 수 있듯이 이 환경은 노란 동그라미, 빨간 네모, 녹색 네모로 구성되어 있다. 각각을 살펴보면, 노란 동그라미 : agent의 움직임을 나타낸다. 빨간 네모 : 폭탄이" />
+    <meta property="og:description" content="  DQN 이란?   이전에 (Reinforcement learning) Value Function Approximation 포스팅에서 Value function approximation에 대하여 다루었다. 요약하면 강화학습에서 간단한 table 형태로 학습을 하게 되면 학습이 극도로 느려지는 문제가 있어 value function을 다양하게 근사하여 활용한다. 이러한 approximator로 Neural Network를 사용할 수도 있다. 이번 글에서 소개할 Deep Q-Networks(DQN)은 Q-learning 알고리즘의 Q(Action-value) 함수를" />
     <meta property="og:url" content="http://localhost:4000/Implement-DQN" />
     <meta property="og:image" content="http://localhost:4000/assets/img/post_images/ai_cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/false" />
@@ -55,11 +55,11 @@
     <meta property="article:tag" content="Rl" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Deep Q-Network(DQN) 구현" />
-    <meta name="twitter:description" content="  DQN 이란?     DQN 구현   Environment 먼저, 이번 DQN 구현은 제공받은 2개의 GridWorld 환경을 기반으로 진행하였다. 먼저 첫번째 GridWorld는 그림과 같다. 그림에서 볼 수 있듯이 이 환경은 노란 동그라미, 빨간 네모, 녹색 네모로 구성되어 있다. 각각을 살펴보면, 노란 동그라미 : agent의 움직임을 나타낸다. 빨간 네모 : 폭탄이" />
+    <meta name="twitter:description" content="  DQN 이란?   이전에 (Reinforcement learning) Value Function Approximation 포스팅에서 Value function approximation에 대하여 다루었다. 요약하면 강화학습에서 간단한 table 형태로 학습을 하게 되면 학습이 극도로 느려지는 문제가 있어 value function을 다양하게 근사하여 활용한다. 이러한 approximator로 Neural Network를 사용할 수도 있다. 이번 글에서 소개할 Deep Q-Networks(DQN)은 Q-learning 알고리즘의 Q(Action-value) 함수를" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/img/post_images/ai_cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="PIGBEAN Tech blog" />
+    <meta name="twitter:data1" content="Beanie in the wind" />
     <meta name="twitter:label2" content="Filed under" />
     <meta name="twitter:data2" content="Rl" />
     <meta name="twitter:site" content="@false" />
@@ -88,8 +88,8 @@
     "@type": "Website",
     "publisher": {
         "@type": "Organization",
-        "name": "PIGBEAN Tech blog",
-        "logo": "http://localhost:4000/assets/img/favicons/android-chrome-256x256.png"
+        "name": "Beanie in the wind",
+        "logo": "http://localhost:4000/assets/img/favicons/logo.png"
     },
     "url": "http://localhost:4000/Implement-DQN",
     "image": {
@@ -102,7 +102,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/Implement-DQN"
     },
-    "description": "  DQN 이란?     DQN 구현   Environment 먼저, 이번 DQN 구현은 제공받은 2개의 GridWorld 환경을 기반으로 진행하였다. 먼저 첫번째 GridWorld는 그림과 같다. 그림에서 볼 수 있듯이 이 환경은 노란 동그라미, 빨간 네모, 녹색 네모로 구성되어 있다. 각각을 살펴보면, 노란 동그라미 : agent의 움직임을 나타낸다. 빨간 네모 : 폭탄이"
+    "description": "  DQN 이란?   이전에 (Reinforcement learning) Value Function Approximation 포스팅에서 Value function approximation에 대하여 다루었다. 요약하면 강화학습에서 간단한 table 형태로 학습을 하게 되면 학습이 극도로 느려지는 문제가 있어 value function을 다양하게 근사하여 활용한다. 이러한 approximator로 Neural Network를 사용할 수도 있다. 이번 글에서 소개할 Deep Q-Networks(DQN)은 Q-learning 알고리즘의 Q(Action-value) 함수를"
 }
     </script>
 
@@ -135,7 +135,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/img/favicons/android-chrome-256x256.png" alt="PIGBEAN Tech blog" /></a>
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/img/favicons/logo.png" alt="Beanie in the wind" /></a>
             
         
         
@@ -195,7 +195,45 @@ into the {body} of the default.hbs template -->
                 <div class="kg-card-markdown">
                     <p> </p>
 <h2 id="dqn-이란">DQN 이란?</h2>
-<p> </p>
+<p> 
+이전에 <a href="">(Reinforcement learning) Value Function Approximation 포스팅</a>에서 Value function approximation에 대하여 다루었다. 요약하면 강화학습에서 간단한 table 형태로 학습을 하게 되면 학습이 극도로 느려지는 문제가 있어 value function을 다양하게 근사하여 활용한다.</p>
+
+<p>이러한 approximator로 Neural Network를 사용할 수도 있다. 이번 글에서 소개할 Deep Q-Networks(DQN)은 Q-learning 알고리즘의 Q(Action-value) 함수를 딥러닝으로 근사하는 알고리즘으로, DeepMind에서 발표한 <a href="https://arxiv.org/pdf/1312.5602.pdf"><code class="language-plaintext highlighter-rouge">Playing Atari with Deep Reinforcement</code></a> 라는 연구에서 제안되었다.</p>
+
+<p>이 DQN 논문에서는 raw pixel을 input으로 받아, value function(≈future rewards)를 output으로 반환하는 Q-Learning의 parameter를 학습하는 Convolutional Neural Network(CNN)을 사용하였다. 즉, 고차원의 sensory input을 통해 control policies를 다이렉트로 학습하는 Deep learning model이라고 볼 수 있다.</p>
+
+<p>그렇다면 이전에는 왜 강화학습에 딥러닝을 활용하지 못했을까? 사실 딥러닝과 강화학습이 고차원의 데이터를 활용하는 방법은 무척 다르다. 몇가지 예시로</p>
+<ul>
+  <li>Deep-Learning 기반 방법들은 hand-labelled training dataset을 필요로 하지만, Reinforcement Learning에서는 오로지 delay와 노이즈가 포함된 스칼라값인 Reward만을 통해서 학습된다. 더욱이나 그 reward 조차 sparse, noisy, and delay한 성격을 가진다.</li>
+  <li>Deep Learning에서는 data sample이 i.i.d하다는 가정이 있다. 하지만, Reinforcement Learning의 경우 현재의 state가 어디인 지에 따라 가능한 다음 state가 결정된다. 즉, 독립적이지 않고 종속적이며, state간의 correlation(상관관계)또한 크다.</li>
+  <li>에이전트가 학습함에 따라 policy가 달라지면서, 학습 데이터의 분산(distribution) 자체도 시간에 따라 변한다. 반면 딥러닝은 고정된 기본 분산(fixed underlying distribution)을 가정한다.</li>
+</ul>
+
+<p>이러한 강화학습에 이유로 딥러닝 기법을 이전에는 바로 적용하지 못하였다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Playing Atari with Deep Reinforcement</code> 논문도 예외없이 이러한 문제에 직면했는데, 논문에서는 이 문제를 해결하기 위하여 <strong>Experience replay</strong> 와 <strong>Target network</strong> 라는 방법을 제안하였다. 이 두 특징적인 방법을 통하여 성공적으로 딥러닝을 강화학습에 적용하여 고차원 데이터를 처리할 수 있게 되었다.</p>
+
+<h3 id="experience-replay">Experience replay</h3>
+<p>들어오는 입력을 순서대로 사용하면 데이터 간의 연관성이 너무 커지게 된다. 따라서 최근 n개의 데이터를 계속해서 저장하고, 네트워크를 학습할 때는 저장한 데이터 중 몇개를 무작위로 샘플하여 사용한다.</p>
+
+<h3 id="target-network">Target network</h3>
+<p>Target network 설명은 <a href="https://jsideas.net/dqn/">https://jsideas.net/dqn/</a>의 당나귀 예시가 이해하기 좋았다. 이 블로그의 설명을 차용하면</p>
+
+<blockquote>
+  <p>일반적인 Q Learning은 당나귀 뒤에 올라타 낚시대로 당근을 드리우고 당나귀가 곧게 걷기를 바라는 것과 같다. 당근을 든 손을 곧게만 유지하면 당나귀가 직진할 것이라고 생각하지만, 실제로는 잘 안된다. 당나귀와 사람, 그리고 낚시대와 당근이 모두 연결되어 있기에, 당나귀가 움직이면 올라탄 사람도 흔들리고 그에 따라 당근도 흔들린다. 결국 영상에서처럼 당나귀는 직선으로 이동하는데 실패한다.</p>
+</blockquote>
+
+<blockquote>
+  <p>당근의 위치를 Q 함수의 타겟 $(r+max_{a’}Q(s^{‘}, a^{‘}))$ 으로, 당나귀의 움직임을 추정치(Q)로 대입해보면 된다. 타겟과 추정치의 오차를 줄여야하는데, Q의 변화에 따라 타겟과 추정치가 모두 함께 변화하면 안정적인 학습(이동)이 어려워진다.</p>
+</blockquote>
+
+<blockquote>
+  <p>DQN에서는 당나귀와 당근을 분리시키는 Fixed Q Targets 방법을 사용해서 문제를 해결한다. Q함수를 추정하는 네트워크(local network)와 Target을 설정하는데 사용하는 네트워크(target network)로 추정과 평가를 분리한다. 당나귀 등에서 내려서 낚시대를 드리우면, 당근의 위치는 더이상 당나귀의 움직임에 영향을 받지 않는다.</p>
+</blockquote>
+
+<blockquote>
+  <p>그리고 target network의 업데이트 주기를 local network보다 더 느리게 만듦으로써 목표가 자주 휘청이지 않도록 한다. DQN 구현에서는 local network가 4번 업데이트될 때 한번씩 target network의 파라미터를 local network의 파라미터를 사용해 soft update한다.</p>
+</blockquote>
 
 <p> </p>
 <h2 id="dqn-구현">DQN 구현</h2>
@@ -254,21 +292,33 @@ DQN 구현은 <strong>neural network 생성</strong>, <strong>action 선택</str
 
     <p>이 모델에 n_features 크기의 state 벡터가 들어오면 모델의 prediction으로 얻은 예측된 reward 값과 true reward 값의 에러가 작아지도록 내부 weight 값을 조정한다. 이를 계속 반복하다보면 예측된 reward가 true reward와 같아지는 방향으로 (최적 policy를 찾는 방향으로) 학습되게 된다.</p>
 
-    <p>좀 더 구체적으로 학습 과정을 model.fit()과 model.predict() 함수로 다시 나눌 수 있다. 각각을 살펴보면,
-  model.fit(state, true_reward, epochs=1, verbose)
-  주어진 state에서 true reward를 예측하도록 학습한다.
-  model.predict(state)
-  unseen input에 대하여 reward를 예측한다.</p>
+    <p>좀 더 구체적으로 학습 과정을 <code class="language-plaintext highlighter-rouge">model.fit()</code>과 <code class="language-plaintext highlighter-rouge">model.predict()</code> 함수로 다시 나눌 수 있다. 각각을 살펴보면,</p>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">model.fit(state, true_reward, epochs=1, verbose)</code>
+        <ul>
+          <li>주어진 state에서 true reward를 예측하도록 학습한다.</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">model.predict(state)</code>
+        <ul>
+          <li>unseen input에 대하여 reward를 예측한다.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>이 <code class="language-plaintext highlighter-rouge">model.fit()</code>과 <code class="language-plaintext highlighter-rouge">model.predict()</code>를 학습 과정에서 활용하며 최적 policy를 찾아나갔다.</p>
   </li>
-  <li>
-    <p><strong>action 선택</strong> (<code class="language-plaintext highlighter-rouge">choose_action()</code> 함수)</p>
+  <li><strong>action 선택</strong> (<code class="language-plaintext highlighter-rouge">choose_action()</code> 함수)
+    <ul>
+      <li>e_greedy 확률로는 random 하게 action을 선택하고, 1 - (e-greedy) 확률로는 모델에서 예측한 reward가 가장 큰 action을 선택한다.</li>
+    </ul>
   </li>
-  <li>
-    <p><strong>experience를 메모리에 저장</strong> (<code class="language-plaintext highlighter-rouge">store_transition()</code> 함수)</p>
+  <li><strong>experience를 메모리에 저장</strong> (<code class="language-plaintext highlighter-rouge">store_transition()</code> 함수)
+    <ul>
+      <li>experience replay 방식으로 experience를 재활용 위하여 학습을 메모리에 저장해둔다.</li>
+    </ul>
   </li>
-  <li>
-    <p><strong>메모리의 experience를 이용하여 학습</strong> (<code class="language-plaintext highlighter-rouge">learn()</code> 함수)</p>
-  </li>
+  <li><strong>메모리의 experience를 이용하여 학습</strong> (<code class="language-plaintext highlighter-rouge">learn()</code> 함수)</li>
 </ul>
 
 <p>이 과정을 통합하여 구현된 전체 DQN Class 코드는 아래와 같다.</p>
@@ -320,15 +370,22 @@ DQN 구현은 <strong>neural network 생성</strong>, <strong>action 선택</str
        <span class="bp">self</span><span class="p">.</span><span class="n">memory</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">next_s</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
 
    <span class="k">def</span> <span class="nf">choose_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
-       <span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_features</span><span class="p">])</span>
-       <span class="k">if</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="p">.</span><span class="n">e_greedy</span><span class="p">:</span>
+       <span class="c1"># e_greedy 확률로는 random 하게 action을 선택하고, 1 - (e-greedy) 확률로는 모델에서 예측한 reward가 가장 큰 action을 선택한다.
+</span>       <span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_features</span><span class="p">])</span>
+
+       <span class="c1"># e_greedy 확률로 random 하게 action을 선택
+</span>       <span class="k">if</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="p">.</span><span class="n">e_greedy</span><span class="p">:</span>
            <span class="k">return</span> <span class="n">random</span><span class="p">.</span><span class="n">randrange</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">n_actions</span><span class="p">)</span>
-       <span class="n">act_values</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+       <span class="c1">#  1 - (e-greedy) 확률로 모델을 통해 예측한 reward가 가장 큰 action을 선택
+</span>       <span class="n">act_values</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">act_values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># returns action
 </span>
    <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-       <span class="n">minibatch</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">memory</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">batch_size</span><span class="p">)</span>
-       <span class="k">for</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span> <span class="ow">in</span> <span class="n">minibatch</span><span class="p">:</span>
+       <span class="c1"># 메모리에 저장된 experience에서 batch_size만큼 랜덤하게 선택
+</span>       <span class="n">minibatch</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">memory</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">batch_size</span><span class="p">)</span>
+       <span class="c1"># 선택된 각각의 experience에 대하여 모델이 실제 experience로 얻은 reward 방향으로 값을 잘 예측하도록 학습을 진행
+</span>       <span class="k">for</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span> <span class="ow">in</span> <span class="n">minibatch</span><span class="p">:</span>
            <span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_features</span><span class="p">])</span>
            <span class="n">next_state</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">next_state</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_features</span><span class="p">])</span>
            <span class="n">target</span> <span class="o">=</span> <span class="n">reward</span>
@@ -434,6 +491,19 @@ DQN 구현은 <strong>neural network 생성</strong>, <strong>action 선택</str
   </li>
 </ul>
 
+<p>그래프를 비교해보면 두번째 Gridworld로 돌렸을 때, 보다 빨리, 적은 분산으로 최적 policy를 찾아가는 것으로 보인다. 하지만 두번째 Gridworld는 리워드 10을 주는 sub optimal한 경우가 추가 되었기 때문에 자칫하면 리워드 20을 주는 보물을 찾아가는 대신에 10을 주는 sub optimal에 빠질 수 있다. 그럴 경우 batch size를 키우거나, 학습이 진행되어 감에 따라 learning rate 서서히 감소시킴으로써 sub optimal에 빠지는 것을 방지할 수 있다.</p>
+
+<p><br />
+ </p>
+
+<hr />
+
+<p>참고 내용 출처 :</p>
+<ul>
+  <li><a href="http://wiki.hash.kr/index.php/DQN">http://wiki.hash.kr/index.php/DQN</a></li>
+  <li><a href="https://velog.io/@sjinu/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC-7.-DQNDeep-Q-NEtwork">https://velog.io/@sjinu/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC-7.-DQNDeep-Q-NEtwork</a></li>
+</ul>
+
                 </div>
             </section>
 
@@ -449,17 +519,17 @@ DQN 구현은 <strong>neural network 생성</strong>, <strong>action 선택</str
                     
                         <section class="author-card">
                             
-                                <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Bean" />
+                                <img class="author-profile-image" src="/assets/img/style/beanie.svg" alt="Beanie" />
                             
                             <section class="author-card-content">
-                                <h4 class="author-card-name"><a href="/author/Bean">Beanie</a></h4>
+                                <h4 class="author-card-name"><a href="/author/Beanie">Beanie</a></h4>
                                 
                                     <p>Hello, I’m Beanie, always pondering and crafting services to make life fun and convenient</p>
                                 
                             </section>
                         </section>
                         <div class="post-full-footer-right">
-                            <a class="author-card-button" href="/author/Bean">Read More</a>
+                            <a class="author-card-button" href="/author/Beanie">Read More</a>
                         </div>
                     
                 
@@ -504,11 +574,11 @@ DQN 구현은 <strong>neural network 생성</strong>, <strong>action 선택</str
                 
                     <article class="read-next-card"
                         
-                            style="background-image: url(/assets/img/style/bean3.jpg)"
+                            style="background-image: url(/assets/img/style/sky.png)"
                         
                     >
                         <header class="read-next-card-header">
-                            <small class="read-next-card-header-sitetitle">&mdash; PIGBEAN Tech blog &mdash;</small>
+                            <small class="read-next-card-header-sitetitle">&mdash; Beanie in the wind &mdash;</small>
                             
                                 <h3 class="read-next-card-header-title"><a href="/tag/rl/">Rl</a></h3>
                             
@@ -519,6 +589,15 @@ DQN 구현은 <strong>neural network 생성</strong>, <strong>action 선택</str
                             <ul>
                                 
                                 
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/RecSys-&-RL-Top-%F0%9D%90%BE-Off-Policy-Correction-for-a-REINFORCE-Recommender-System">(작성중) RecSys & RL - Top-𝐾 Off-Policy Correction for a REINFORCE Recommender System</a></li>
+                                        
+                                    
                                   
                                 
                                   
@@ -562,8 +641,6 @@ DQN 구현은 <strong>neural network 생성</strong>, <strong>action 선택</str
                                   
                                     
                                         
-                                        
-                                            <li><a href="/%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-1">RecSys & RL - A Deep Reinforcement Learning Framework for News Recommendation</a></li>
                                         
                                     
                                   
@@ -637,7 +714,7 @@ DQN 구현은 <strong>neural network 생성</strong>, <strong>action 선택</str
                         <footer class="read-next-card-footer">
                             <a href="/tag/rl/">
                                 
-                                    See all 5 posts  →
+                                    See all 6 posts  →
                                 
                             </a>
                         </footer>
@@ -670,7 +747,7 @@ DQN 구현은 <strong>neural network 생성</strong>, <strong>action 선택</str
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>Transformer은 recurrence나 convolution없이 attention만을 사용하는 새로운 sequence transduction model이다.
+                        <p>Transformer은 recurrence나 convolution없이 attention만을 사용하는 새로운 sequence transduction model이다. Transformer은 Attention Is All You Need 라는 논문에서 처음으로 제안되었다.
 
 </p>
                     
@@ -682,17 +759,17 @@ DQN 구현은 <strong>neural network 생성</strong>, <strong>action 선택</str
                 
                     
                         
-                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
+                        <img class="author-profile-image" src="/assets/img/style/beanie.svg" alt="Beanie" />
                         
                         <span class="post-card-author">
-                            <a href="/author/Bean/">Beanie</a>
+                            <a href="/author/Beanie/">Beanie</a>
                         </span>
                     
                 
                 <span class="reading-time">
                     
                     
-                      4 min read
+                      5 min read
                     
                 </span>
             </footer>
@@ -742,10 +819,10 @@ BAM 은 Hopfield model을 확장한 모델이다.
                 
                     
                         
-                        <img class="author-profile-image" src="/assets/img/style/beanie.png" alt="Beanie" />
+                        <img class="author-profile-image" src="/assets/img/style/beanie.svg" alt="Beanie" />
                         
                         <span class="post-card-author">
-                            <a href="/author/Bean/">Beanie</a>
+                            <a href="/author/Beanie/">Beanie</a>
                         </span>
                     
                 
@@ -770,9 +847,9 @@ BAM 은 Hopfield model을 확장한 모델이다.
     <div class="floating-header-logo">
         <a href="http://localhost:4000/">
             
-                <img src="/assets/img/favicons/favicon-32x32.png" alt="PIGBEAN Tech blog icon" />
+                <img src="/assets/img/favicons/logo.png" alt="Beanie in the wind icon" />
             
-            <span>PIGBEAN Tech blog</span>
+            <span>Beanie in the wind</span>
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
@@ -812,7 +889,7 @@ BAM 은 Hopfield model을 확장한 모델이다.
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="http://localhost:4000/">PIGBEAN Tech blog</a> &copy; 2022</section>
+                <section class="copyright"><a href="http://localhost:4000/">Beanie in the wind</a> &copy; 2022</section>
                 <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>

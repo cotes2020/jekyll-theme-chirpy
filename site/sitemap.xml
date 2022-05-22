@@ -157,8 +157,12 @@
 <lastmod>2022-05-16T13:02:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/RecSys-&amp;-RL-Top-%F0%9D%90%BE-Off-Policy-Correction-for-a-REINFORCE-Recommender-System</loc>
+<lastmod>2022-05-20T16:03:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/Introduce-Catty,-the-resource-based-note-taking-app</loc>
-<lastmod>2022-05-16T16:32:00+09:00</lastmod>
+<lastmod>2022-05-20T16:32:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
@@ -167,10 +171,10 @@
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/author/Pig/</loc>
+<loc>http://localhost:4000/author/Kaze/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/author/Bean/</loc>
+<loc>http://localhost:4000/author/Beanie/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/tag/design-patterns/</loc>

@@ -1,6 +1,6 @@
 ---
 title: RL - Autonomous Driving Based on Modified SAC Algorithm through Imitation Learning Pre-training
-author: Bean
+author: Beanie
 date: 2022-04-30 16:32:00 +0800
 categories: [RL, Autonomous driving]
 tags: [Autonomous driving, RL, paper]

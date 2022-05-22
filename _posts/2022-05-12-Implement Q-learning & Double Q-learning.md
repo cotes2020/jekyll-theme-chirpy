@@ -1,6 +1,6 @@
 ---
 title: Q-learning & Double Q-learning 구현
-author: Bean
+author: Beanie
 date: 2022-05-12 12:23:00 +0800
 categories: [AI, RL]
 tags: [RL, coding]

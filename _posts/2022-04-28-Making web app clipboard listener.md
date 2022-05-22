@@ -1,6 +1,6 @@
 ---
 title: 웹앱 클립보드 리스너 만들기
-author: Bean
+author: Beanie
 date: 2022-04-28 16:32:00 +0800
 categories: [Web frontend, React]
 tags: [Catty]

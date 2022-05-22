@@ -1,6 +1,6 @@
 ---
 title: (작성중) Capacitor와 Vue.js를 이용해서 cross-platform 모바일 앱 개발하기
-author: Bean
+author: Beanie
 date: 2021-11-30 13:21:00 +0800
 categories: [Projects]
 tags: [Vue, Capacitor]

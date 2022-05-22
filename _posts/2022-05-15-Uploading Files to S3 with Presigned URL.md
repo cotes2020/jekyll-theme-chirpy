@@ -1,6 +1,6 @@
 ---
 title: Uploading Files to S3 with Presigned URL
-author: Pig
+author: Kaze
 date: 2022-05-15 14:18:00 +0800
 categories: [Backend]
 tags: [Catty]

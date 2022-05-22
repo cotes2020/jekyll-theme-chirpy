@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/catty/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-05-20T03:25:59+09:00</updated>
+  <updated>2022-05-22T19:09:32+09:00</updated>
   <id>http://localhost:4000/tag/catty/feed.xml</id>
 
   
@@ -12,11 +12,11 @@
   
 
   
-    <title type="html">PIGBEAN Tech blog | </title>
+    <title type="html">Beanie in the wind | </title>
   
 
   
-    <subtitle>Seize the day</subtitle>
+    <subtitle>Beanie &amp; Kaze&apos;s tech blog</subtitle>
   
 
   
@@ -36,8 +36,8 @@
     <entry>
       <title type="html">리소스 기반 노트 작성 서비스 Catty 소개</title>
       <link href="http://localhost:4000/Introduce-Catty,-the-resource-based-note-taking-app" rel="alternate" type="text/html" title="리소스 기반 노트 작성 서비스 Catty 소개" />
-      <published>2022-05-16T16:32:00+09:00</published>
-      <updated>2022-05-16T16:32:00+09:00</updated>
+      <published>2022-05-20T16:32:00+09:00</published>
+      <updated>2022-05-20T16:32:00+09:00</updated>
       <id>http://localhost:4000/Introduce%20Catty,%20the%20resource%20based%20note-taking%20app</id>
       <content type="html" xml:base="http://localhost:4000/Introduce-Catty,-the-resource-based-note-taking-app">&lt;p&gt;작년 11월부터 틈틈히 공부겸 사이드 프로젝트 겸 Catty 서비스를 개발하였다. 이번 글에서는 Catty에 넣은 다양한 기능들을 소개하고 다음글에서는 회고 형식으로 지금껏 개발하면서 느끼고 생각한 것들을 정리해보려고 한다.&lt;/p&gt;
 
@@ -296,7 +296,7 @@ p.s. Catty 서비스가 더 궁금하다면 &lt;a href=&quot;https://www.cattyno
       
 
       <author>
-          <name>Skinnig</name>
+          <name>Kaze</name>
         
         
       </author>
@@ -786,7 +786,7 @@ package.json
       
 
       <author>
-          <name>Skinnig</name>
+          <name>Kaze</name>
         
         
       </author>

@@ -1,6 +1,6 @@
 ---
 title: 크롬 익스텐션 파일 크기 400mb에서 4mb로 줄이기(..)
-author: Bean
+author: Beanie
 date: 2022-04-29 09:32:00 +0800
 categories: [Web frontend, React]
 tags: [Catty, Extension]

@@ -1,6 +1,6 @@
 ---
 title: MVC 패턴
-author: Bean
+author: Beanie
 date: 2021-10-21 20:55:00 +0800
 categories: [Mobile frontend, Android]
 tags: [Design patterns, MVC]

@@ -1,6 +1,6 @@
 ---
 title: Implement Multi layer perceptron (from scratch)
-author: Bean
+author: Beanie
 date: 2022-04-06 09:32:00 +0800
 categories: [AI, basic]
 tags: [AI, coding]

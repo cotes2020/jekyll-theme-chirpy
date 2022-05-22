@@ -1,6 +1,6 @@
 ---
 title: Firestore 내용 검색 가능하게 만들기 (Feat. Typesense)
-author: Bean
+author: Beanie
 date: 2022-04-09 16:32:00 +0800
 categories: [Web frontend, React]
 tags: [Catty, Typesense]

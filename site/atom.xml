@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> - Articles</title>
-    <description>Seize the day</description>
+    <description>Beanie &amp; Kaze&apos;s tech blog</description>
     <link>
     http://localhost:4000</link>
     
@@ -14,7 +14,7 @@
 
 </description>
         
-        <pubDate>Mon, 16 May 2022 16:32:00 +0900</pubDate>
+        <pubDate>Fri, 20 May 2022 16:32:00 +0900</pubDate>
         <link>
         http://localhost:4000/Introduce-Catty,-the-resource-based-note-taking-app</link>
         <guid isPermaLink="true">http://localhost:4000/Introduce-Catty,-the-resource-based-note-taking-app</guid>
@@ -23,9 +23,24 @@
     
       
       <item>
+        <title>(작성중) RecSys &amp; RL - Top-𝐾 Off-Policy Correction for a REINFORCE Recommender System</title>
+        
+          <description>&lt;p&gt;이전에 읽었던 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A Deep Reinforcement Learning Framework for News Recommendation&lt;/code&gt; 논문은 알고리즘 구현 코드를 찾기가 어려웠다. 그래서 알고리즘 코드가 같이 있으면서 적당히 challenging한 논문을 다시 찾아보았고 이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Top-𝐾 Off-Policy Correction for a REINFORCE Recommender System&lt;/code&gt; 이 가장 괜찮아보여 읽어보았다. 이후 여러 샘플 코드를 참고하여 public dataset으로 직접 구현까지 해볼 예정이다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 20 May 2022 16:03:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/RecSys-&-RL-Top-%F0%9D%90%BE-Off-Policy-Correction-for-a-REINFORCE-Recommender-System</link>
+        <guid isPermaLink="true">http://localhost:4000/RecSys-&-RL-Top-%F0%9D%90%BE-Off-Policy-Correction-for-a-REINFORCE-Recommender-System</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Transformer</title>
         
-          <description>&lt;p&gt;&lt;strong&gt;Transformer은 recurrence나 convolution없이 attention만을 사용하는 새로운 sequence transduction model&lt;/strong&gt;이다.&lt;/p&gt;
+          <description>&lt;p&gt;&lt;strong&gt;Transformer은 recurrence나 convolution없이 attention만을 사용하는 새로운 sequence transduction model&lt;/strong&gt;이다. Transformer은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Attention Is All You Need&lt;/code&gt; 라는 논문에서 처음으로 제안되었다.&lt;/p&gt;
 
 </description>
         
@@ -42,7 +57,8 @@
         
           <description>&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;dqn-이란&quot;&gt;DQN 이란?&lt;/h2&gt;
-&lt;p&gt; &lt;/p&gt;
+&lt;p&gt; 
+이전에 &lt;a href=&quot;&quot;&gt;(Reinforcement learning) Value Function Approximation 포스팅&lt;/a&gt;에서 Value function approximation에 대하여 다루었다. 요약하면 강화학습에서 간단한 table 형태로 학습을 하게 되면 학습이 극도로 느려지는 문제가 있어 value function을 다양하게 근사하여 활용한다.&lt;/p&gt;
 
 </description>
         
@@ -109,7 +125,7 @@ BAM 은 Hopfield model을 확장한 모델이다.
       <item>
         <title>(Reinforcement learning) Value Function Approximation</title>
         
-          <description>&lt;p&gt;이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 다루고자 한다.&lt;/p&gt;
+          <description>&lt;p&gt;이번 글에서는 강화학습 기본 개념 중 Value function approximation에 대해 정리해보려고 한다.&lt;/p&gt;
 
 </description>
         
@@ -202,7 +218,7 @@ BAM 은 Hopfield model을 확장한 모델이다.
       <item>
         <title>RecSys &amp; RL - A Deep Reinforcement Learning Framework for News Recommendation</title>
         
-          <description>&lt;p&gt;이 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.&lt;/p&gt;
+          <description>&lt;p&gt;이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A Deep Reinforcement Learning Framework for News Recommendation&lt;/code&gt; 논문은 강화학습을 통하여 성능 좋은 뉴스 추천 시스템을 만드는 방법에 대한 내용을 담고 있다. 2018년에 작성되었으며 www 학회에 accept 되었다.&lt;/p&gt;
 
 </description>
         

@@ -1,6 +1,6 @@
 ---
 title: RL - Improved Reinforcement Learning through Imitation Learning Pretraining Towards Image-based Autonomous Drivings
-author: Bean
+author: Beanie
 date: 2022-04-30 09:32:00 +0800
 categories: [RL, Autonomous driving]
 tags: [Autonomous driving, RL, paper]

@@ -1,6 +1,6 @@
 ---
 title: Implement Single layer perceptron (from scratch)
-author: Bean
+author: Beanie
 date: 2022-03-30 09:32:00 +0800
 categories: [AI, basic]
 tags: [AI, coding]

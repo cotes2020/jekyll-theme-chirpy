@@ -1,6 +1,6 @@
 ---
 title: Git project 오픈 및 이슈 관리
-author: Bean
+author: Beanie
 date: 2022-04-15 16:32:00 +0800
 categories: [etc, git]
 tags: [Git]

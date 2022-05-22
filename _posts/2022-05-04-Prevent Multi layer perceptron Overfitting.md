@@ -1,6 +1,6 @@
 ---
 title: Prevent Multi layer perceptron Overfitting
-author: Bean
+author: Beanie
 date: 2022-05-03 23:10:00 +0800
 categories: [AI, basic]
 tags: []

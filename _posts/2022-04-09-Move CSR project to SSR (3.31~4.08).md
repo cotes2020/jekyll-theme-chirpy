@@ -1,6 +1,6 @@
 ---
 title: CSR project(create-react-app)를 SSR(Next.js)로 옮기기 (3.31~4.08)
-author: Bean
+author: Beanie
 date: 2022-04-09 16:32:00 +0800
 categories: [Web frontend, React]
 tags: [Catty, Next]

@@ -1,6 +1,6 @@
 ---
 title: Matrix Factorization(MF) 기반 추천시스템
-author: Bean
+author: Beanie
 date: 2022-05-07 16:32:00 +0800
 categories: [추천시스템]
 tags: [추천시스템]

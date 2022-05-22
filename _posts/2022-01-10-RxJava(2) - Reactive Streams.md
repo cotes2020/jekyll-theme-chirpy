@@ -1,6 +1,6 @@
 ---
 title: RxJava(2) - Reactive Streams
-author: Bean
+author: Beanie
 date: 2022-01-10 22:42:00 +0800
 categories: [Mobile frontend, Android]
 tags: [RxJava]

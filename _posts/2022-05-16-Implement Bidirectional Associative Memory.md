@@ -1,6 +1,6 @@
 ---
 title: Bidirectional Associative Memory 구현
-author: Bean
+author: Beanie
 date: 2022-05-16 10:47:00 +0800
 categories: [AI, basic]
 tags: [AI]

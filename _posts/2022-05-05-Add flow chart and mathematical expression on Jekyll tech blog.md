@@ -1,6 +1,6 @@
 ---
 title: Add flow chart and mathematical expression on Jekyll tech blog (Feat. Mermaid, MathJax)
-author: Bean
+author: Beanie
 date: 2022-05-05 09:13:00 +0800
 categories: [etc, 기술블로그]
 tags: []

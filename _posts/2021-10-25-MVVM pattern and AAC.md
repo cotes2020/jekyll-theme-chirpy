@@ -1,6 +1,6 @@
 ---
 title: MVVM 패턴과 AAC
-author: Bean
+author: Beanie
 date: 2021-10-25 20:55:00 +0800
 categories: [Mobile frontend, Android]
 tags: [Design patterns, MVVM, AAC]

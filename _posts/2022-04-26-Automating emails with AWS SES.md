@@ -1,6 +1,6 @@
 ---
 title: Automating emails with AWS SES
-author: Pig
+author: Kaze
 date: 2022-04-23 16:32:00 +0800
 categories: [Projects]
 tags: [Catty]

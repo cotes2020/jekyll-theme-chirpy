@@ -10,10 +10,10 @@ subclass: 'post page'
 
 ### Two SW devs, 🐽와 🥜, blogging on projects and tech topics.
 
-* 🐽 (Pig)
+* 🐽 (Kaze)
     * [github](https://github.com/kimdh98)
     * [linkedin](https://www.linkedin.com/in/dong-hyeok-kim-b3033421a/)
 
-* 🥜 (Bean)
+* 🥜 (Beanie)
     * [github](https://github.com/beanie00)
     * [linkedin](https://www.linkedin.com/in/beanie00/)

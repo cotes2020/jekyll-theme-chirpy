@@ -1,6 +1,6 @@
 ---
 title: Discord Bot with Lambda
-author: Pig
+author: Kaze
 date: 2021-12-09 13:21:00 +0800
 categories: [Projects]
 tags: [Discord, Lambda]
