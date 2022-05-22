@@ -30,7 +30,7 @@ var some_variable is integer
 
 4. A dummy Scanner just to explain the idea : 
 
-```
+```C++
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -116,7 +116,7 @@ Bison file consists of 4 parts :
 
 6. Let's take a look at this example and I will explain it after that :
 
-```
+```C++
 %require "3.2"
 %define api.pure full
 
@@ -185,7 +185,7 @@ int yylex(YYSTYPE *lvalp)
          ```Bison -d file_name.y```
 
         then you can see at the beginning :
-        ```
+        ```c++
         enum yytokentype
         {
         YYEMPTY = -2,
@@ -215,7 +215,7 @@ int yylex(YYSTYPE *lvalp)
 * I have missed an important thing in Bison, which is not adding a rule for the empty case (because it works for this example only). Therefore, running this bison will print ``syntax error`` (supposing that you will add a main function and call ``yyparse()`` from there). So don't forget to do that when you are writing a real parser.
 
 7. I suggest that you stop here and try to modify our ``get_next_token()`` such that we can do this in Bison :
-    ```
+    ```C++
     int yylex(YYSTYPE *lvalp)
     {
         return get_next_token(lvalp);
@@ -230,7 +230,7 @@ int yylex(YYSTYPE *lvalp)
 
 8. After changing ``yylex`` and adding the signature of ``get_next_token`` in the previous step, we will modify our ``scanner.cpp`` file  so that it would work with the parser:
 
-```
+```C++
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -312,7 +312,7 @@ int main()
 
 For easier compliation use a make file :
 
-```
+```make
 example: Scanner.c Parser.y 
 	bison -d Parser.y
 	gcc Scanner.c Parser.tab.c -o program
@@ -320,7 +320,7 @@ example: Scanner.c Parser.y
 ```
 
 Now running ``make`` then ``./program``, gives the following output:<br>
-```
+```shell
 defined a variable x with type int
 ```
 

@@ -17,7 +17,7 @@ In this post, I'll talk about how can you use Bison's C++ API. Take a look at th
 <br>
 3. Now let's write a simple Scanner in C++ (same idea as the C one) :<br>
 
-```
+```c++
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -107,7 +107,7 @@ int main()
 ### **Note that in Bison's C++ API, a class ``Parser`` is generated unlike in the C API were we have only functions.**<br>
 5. Take a look at this Bison with C++ example (I will explain after that) :
 
-```
+```c++
 %require "3.2"
 %language "C++"
 %define api.value.type variant
@@ -198,7 +198,7 @@ int main()
 <br>
 <br>
 Now inside ``Parser.tab.hpp`` there's :
-```
+```c++
 static symbol_type make_IDENT (const std::string& v)
 {
   return symbol_type (token::IDENT, v);
@@ -209,7 +209,7 @@ static symbol_type make_IDENT (const std::string& v)
 ``token::IDENT`` where ``token`` is an enum and ``IDENT`` is one of the values which that enum can take.
 
 * There are similar functions and enum values for the other tokens `` VAR, INT, IS`` but for example we have:
-``` 
+```c++
 static symbol_type make_VAR ()
 {
   return symbol_type (token::VAR);
@@ -221,7 +221,7 @@ Now it's time to integrate our Bison parser with our C++ scanner using the make_
 
 The scanner will have this code : (comments might be repeated for the final version and for better understanding)
 
-```
+```c++
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -300,7 +300,7 @@ namespace yy
 
 and for the parser code :
 
-```
+```c++
 %require "3.2"
 %language "C++"
 %define api.value.type variant
