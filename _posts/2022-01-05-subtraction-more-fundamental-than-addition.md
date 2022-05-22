@@ -1,6 +1,6 @@
 ---
-title: "Subtraction Is More Fundamental Than Addition"
-description: "Or, how field theory doesn't leave us much choice"
+title: "Vector Subtraction Is More Fundamental Than Addition"
+description: "Why subtraction is more general than addition in the sense of vectors"
 categories: [geometry]
 tags: [affine space]
 ---
@@ -41,11 +41,11 @@ This idea not only has important implications in physics, but also in mathematic
 
 ## When addition is removed
 
-Galileo's enlightenment may be summarized as physical space simply not having a unique notion of _addition_. This is motivated by the idea that adding a vector to an entire vector space corresponds to translating the vector space along the vector. This, in turn, implies shifting the origin, which Galileo found to do nothing to physical laws and parameters.
+Galileo's enlightenment may be summarized as physical space simply not having a unique notion of _addition_. This is motivated by the idea that adding a vector to an entire vector space corresponds to translating the vector space along the vector. This, in turn, implies shifting the origin, which Galileo found to do nothing to physical laws.
 
-Therefore, physical space is a structure that remains invariant under translations. More generally, we consider the idea of an affine n-space, which is a vector space $$\mathbb{A}^n$$ that remains invariant under the action of the additive group of $$\mathbb{R}^n$$, $$\left( \mathbb{R}^n, + \right)$$. Therefore, adding vectors in an affine space makes no sense — we can repeatedly add arbitrary vectors without changing the meaning of the original vector.
+Therefore, physical space is a structure that remains invariant under translations. More generally, we consider the idea of an affine n-space, which is a vector space $$\mathbb{A}^n$$ that remains invariant under the action of the additive group of $$\mathbb{R}^n$$, $$\left( \mathbb{R}^n, + \right)$$. Thus, adding vectors in an affine space makes no sense — we can repeatedly add arbitrary vectors without changing the meaning of the original vector.
 
-Stated differently, in $$\mathbb{A}^n$$, one can _identify_ all points, $$\pmb{u} \leftrightarrow \pmb{u} + \pmb{v} : \pmb{u}, \pmb{v} \in \mathbb{A}^n$$.
+Stated differently, in $$\mathbb{A}^n$$, one can _identify_ all points, $$\pmb{u} \leftrightarrow \pmb{u} + \pmb{v} : \pmb{u}, \pmb{v} \in \mathbb{A}^n$$. Here, 'identification' is a kind of equivalence relation on the original, Euclidean space $$\mathbb{R}^n$$.
 
 Some immediate consequences of there being no notion of addition in $$\mathbb{A}^n$$ are:
 
@@ -62,7 +62,7 @@ $$
 \end{align}
 $$
 
-The above mathematical statements precisely encode and generalize Galileo's enlightening picture of our universe.
+The above statements quantitatively state and generalize Galileo's enlightening intuition.
 
 ## The sole survivor
 
