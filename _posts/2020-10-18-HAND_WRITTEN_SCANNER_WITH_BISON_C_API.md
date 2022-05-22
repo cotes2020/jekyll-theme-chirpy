@@ -30,7 +30,7 @@ var some_variable is integer
 
 4. A dummy Scanner just to explain the idea : 
 
-```C++
+```c
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -116,7 +116,7 @@ Bison file consists of 4 parts :
 
 6. Let's take a look at this example and I will explain it after that :
 
-```C++
+```c
 %require "3.2"
 %define api.pure full
 
@@ -185,7 +185,7 @@ int yylex(YYSTYPE *lvalp)
          ```Bison -d file_name.y```
 
         then you can see at the beginning :
-        ```c++
+        ```c
         enum yytokentype
         {
         YYEMPTY = -2,
@@ -230,7 +230,7 @@ int yylex(YYSTYPE *lvalp)
 
 8. After changing ``yylex`` and adding the signature of ``get_next_token`` in the previous step, we will modify our ``scanner.cpp`` file  so that it would work with the parser:
 
-```C++
+```c
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
