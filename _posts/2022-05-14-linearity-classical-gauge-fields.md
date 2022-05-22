@@ -35,7 +35,7 @@ $$
 \begin{align}
 \phi^a & = \delta^{a b} \phi_b \\
 \widetilde{\pi}^\mu_{\phantom{\mu} a} & = \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi^a \right)} \\
-D_\mu \widetilde{\pi}^\mu_{\phantom{\mu} a} & = \nabla_\mu \widetilde{\pi}^\mu_{\phantom{\mu} a} + \widetilde{\pi}^\mu_{\phantom{\mu} b} G^b_{\phantom{b} \mu a} \\ \\
+D_\mu \widetilde{\pi}^\mu_{\phantom{\mu} a} & = \nabla_\mu \widetilde{\pi}^\mu_{\phantom{\mu} a} - \widetilde{\pi}^\mu_{\phantom{\mu} b} G^b_{\phantom{b} \mu a} \\ \\
 G^b_{\phantom{b} \mu a} & = J^b_{\phantom{b} c} \partial_\mu J^c_{\phantom{c} a} \\
 J^b_{\phantom{b} a} & = \frac{\partial \widetilde{\phi}_a}{\partial \phi_b}
 \end{align}
