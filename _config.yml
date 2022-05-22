@@ -99,7 +99,7 @@ comments:
     issue_term:   # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo:             # <gh-username>/<repo>
+    repo:             TheSharpOwl/TheSharpOwl.github.io
     repo_id:
     category:
     category_id:
