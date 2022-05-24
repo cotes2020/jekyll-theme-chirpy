@@ -44,9 +44,6 @@ meta: Hecho con :PLATFORM usando el tema :THEME.
 
 not_found:
   statment: Lo sentimos, hemos perdido esa URL o apunta a algo que no existe.
-  hint_template: :HEAD_BAK para intentar de nuevo, o búscala en la :ARCHIVES_PAGE.
-  head_back: Vuelve a inicio
-  archives_page: Página de archivo
 
 # ----- Posts related labels -----
 

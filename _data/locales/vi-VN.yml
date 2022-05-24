@@ -42,9 +42,6 @@ meta: Trang web này được tạo bởi :PLATFORM với chủ đề :THEME.
 
 not_found:
   statment: Xin lỗi, chúng tôi đã đặt nhầm URL hoặc đường dẫn trỏ đến một trang nào đó không tồn tại.
-  hint_template: :HEAD_BAK để thử lại, hoặc tìm kiếm trong :ARCHIVES_PAGE.
-  head_back: Quay về Trang chủ
-  archives_page: trang Lưu trữ
 
 # ----- Posts related labels -----
 

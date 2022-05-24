@@ -44,9 +44,6 @@ meta: Propulsé par :PLATFORM avec le thème :THEME
 
 not_found:
   statment: Désolé, nous avons égaré cette URL ou elle pointe vers quelque chose qui n'existe pas.
-  hint_template: :HEAD_BAK pour essayer de la retrouver, ou recherchez-la dans :ARCHIVES_PAGE.
-  head_back: Retourner à l'accueil
-  archives_page: Page d'archives
 
 # ----- Posts related labels -----
 

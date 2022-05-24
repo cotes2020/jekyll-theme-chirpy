@@ -44,9 +44,6 @@ meta: Feito com :PLATFORM usando o tema :THEME.
 
 not_found:
   statment: Desculpe, a página não foi encontrada.
-  hint_template: :HEAD_BAK para tentar encontrar novamente, ou procure na :ARCHIVES_PAGE.
-  head_back: Vá para a página inicial
-  archives_page: Página de arquivos
 
 # ----- Posts related labels -----
 

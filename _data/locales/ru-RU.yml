@@ -44,9 +44,6 @@ meta: Powered by :PLATFORM with :THEME theme.
 
 not_found:
   statment: Извините, эта ссылка указывает на ресурс который не существует.
-  hint_template: :HEAD_BAK чтобы снова осуществить поиск, или поищите :ARCHIVES_PAGE.
-  head_back: Вернитесь на домашнюю страницу
-  archives_page: архиве
 
 # ----- Posts related labels -----
 
