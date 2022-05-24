@@ -1,8 +1,8 @@
-package map;
-
-import java.security.KeyStore.Entry;
+package map; 
+import pq.*;
 
 public abstract class AbstractMap implements Map<K,V>{ 
+
     public boolean isEmpty() {return size()==0;}
 
     // /---------------- nested MapEntry class ----------------
@@ -13,8 +13,10 @@ public abstract class AbstractMap implements Map<K,V>{
             k=key;
             v=value;
         }
+        // public methods of the Entry interface
         public getKey() {return k;}
         public getValue() {return v;}
+        // utilities not exposed as part of the Entry interface
         protected void setKey(K key) {k=key;}
         protected V setValue(V value) {
             V old = v;
@@ -25,11 +27,32 @@ public abstract class AbstractMap implements Map<K,V>{
 
     // // Support for public keySet method...
     private class KeyIterator implements Iterator<K> {
-        private Iterator<Entry<K,V>> entries = entrySet().iterator();
+        private Iterator<Entry<K,V>> entries = entrySet().iterator(); // reuse entrySet
         public boolean hasNext(){return entries.hasNext();}
-        public K next(){return entries.next().getKey();} 
-        public K remove(){throw new UnsupportedOperationException();} 
+        public K next(){return entries.next().getKey();}  // return key
+        public void remove(){throw new UnsupportedOperationException();} 
     }
+
+    private class KeyIterable implements Iterable<K> {
+        public Iterator<K> iterator() { return new KeyIterator(); } 
+    }
+
+    public Iterable<K> keySet( ) { return new KeyIterable( ); }
+
+
+    // Support for public values method...
+    private class ValueIterator implements Iterator<V> {
+        private Iterator<Entry<K,V>> entries = entrySet().iterator(); // reuse entrySet
+        public boolean hasNext(){return entries.hasNext();}
+        public V next(){return entries.next().getKey();}  // return key
+        public void remove(){throw new UnsupportedOperationException();} 
+    }
+
+    private class ValueIterable implements Iterable<V> {
+        public Iterator<K> iterator() { return new ValueIterator(); } 
+    }
+
+    public Iterable<V> values( ) { return new ValueIterable( ); }
 
 
 
