@@ -7,7 +7,7 @@ tags: [gauge invariance, symmetry]
 
 In [Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-valid-solutions-classical-field-theory %}), we have seen how an arbitrary field $$\phi$$ constructed from a class of solutions $$\left\{ \phi_{\left( i \right)} \right\}$$ for some equations of motion, must obey:
 
-$$\nabla_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = \nabla_\mu \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
+$$\frac{\partial \mathcal{L}}{\partial \phi} - \nabla_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = - \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
 
 We further interpreted the new field $$\phi$$ as being physical only if the above equation resembled the Euler-Lagrange equations. This in general, turned out to be true when $$\phi$$ is a linear combination of the solution fields $$\left\{ \phi_{\left( i \right)} \right\}$$.
 
@@ -35,15 +35,15 @@ We assume such transformations are bijective and differentiable. Thus, the numbe
 
 We do not accent the index itself in the manner of priming regular indices. To demonstrate the reason, consider only one solution $$\phi$$, which corresponds to a scalar in the context of coordinate fields. Now, transforming it to some new coordinate $$\widetilde{\phi}$$ does not leave it invariant, unlike for real scalars. Therefore, despite possessing similarity with tensor indices, the coordinate fields' indices must be handled carefully.
 
-4. Analogous to Jacobian tensors in geometry, we define the following scalar quantity:
+4) Analogous to Jacobian tensors in geometry, we define the following scalar quantity: [^2]
 
 $$J^b_{\phantom{b} a} = \frac{\partial \widetilde{\phi}_a}{\partial \phi_b}$$
 
-5. We employ the Einstein summation convention. For example, from the equation of motion for a coordinate $$\widetilde{\phi}_a \left( \left\{ \phi_b \right\} \right)$$ constructed from solution coordinates (as seen in the beginning of this post), and the above notation, we can write, [^2]
+5) We employ the Einstein summation convention. For example,
 
-$$\nabla_\mu \widetilde{\pi}^\mu_{\phantom{\mu} a} = \nabla_\mu \left( J^b_{\phantom{b} a} \pi^\mu_{\phantom{\mu} b} \right)$$
+$$\widetilde{\pi}^\mu_{\phantom{\mu} a} = J^b_{\phantom{b} a} \pi^\mu_{\phantom{\mu} b}$$
 
-6. We define the dual of a coordinate field as,
+6) We define the dual of a coordinate field as,
 
 $$\phi^a = \delta^{a b} \phi_b$$
 
