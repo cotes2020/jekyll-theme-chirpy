@@ -31,9 +31,9 @@ title: About
 
 2. #### [Roll Chat Bot](https://github.com/TheSharpOwl/Roll) : Chatbot made with Python using Microsoft’s QnA framework and deployed on Heroku and using REST API to communicate with the QnA service. Planning to add features such as weather and reminders soon.
 <div style="text-align:center">
-<img src="https://github.com/TheSharpOwl/TheSharpOwl.github.io/raw/master/files/roll_1.jpg" alt="roll_screen_shot1" width="270"/>
-<img src="https://github.com/TheSharpOwl/TheSharpOwl.github.io/raw/master/files/roll_2.jpg" alt="roll_screen_shot2" width="270"/>
-<img src="https://github.com/TheSharpOwl/TheSharpOwl.github.io/raw/master/files/roll_3.jpg" alt="roll_screen_shot3" width="270"/>
+<img src="https://github.com/TheSharpOwl/TheSharpOwl.github.io/raw/master/files/roll_1.jpg" alt="roll_screen_shot1" width="250"/>
+<img src="https://github.com/TheSharpOwl/TheSharpOwl.github.io/raw/master/files/roll_2.jpg" alt="roll_screen_shot2" width="250"/>
+<img src="https://github.com/TheSharpOwl/TheSharpOwl.github.io/raw/master/files/roll_3.jpg" alt="roll_screen_shot3" width="250"/>
 </div>
 
 3. #### [Snake Game](https://github.com/TheSharpOwl/SnakeGame) : Classic game made with C++ using Win32API (still working on using Direct3D12 for drawing)
