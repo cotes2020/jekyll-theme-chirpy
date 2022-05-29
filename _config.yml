@@ -25,11 +25,11 @@ title: 개발사전                          # the main title
 
 tagline: 서버개발자 backend 영상처리   # it will display as the sub-title
 
-description: 꾸준히 개발지식을 정리해요  # used by seo meta and the atom feed
+description:   # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://yunsoo-choi.github.io'
 
 github:
   username: yunsoo-choi            # change to your github username
