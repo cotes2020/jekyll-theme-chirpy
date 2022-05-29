@@ -23,9 +23,9 @@ timezone: Asia/Seoul
 
 title: 개발사전                          # the main title
 
-tagline: 꾸준히 개발지식을 정리해요   # it will display as the sub-title
+tagline: 서버개발자 backend 영상처리   # it will display as the sub-title
 
-description:                         # used by seo meta and the atom feed
+description: 꾸준히 개발지식을 정리해요  # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
@@ -45,7 +45,7 @@ social:
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://github.com/yunsoo-choi       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
