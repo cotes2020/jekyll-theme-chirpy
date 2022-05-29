@@ -32,7 +32,7 @@ description:                         # used by seo meta and the atom feed
 url: ''
 
 github:
-  username: dev-choi            # change to your github username
+  username: yunsoo-choi            # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
@@ -40,8 +40,8 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: 
-  email:              # change to your email address
+  name: dev-choi
+  email: yyss241@gamil.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username      # change to your twitter homepage
