@@ -29,7 +29,7 @@ description: 꾸준히 개발지식을 정리해요  # used by seo meta and the 
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://yunsoo-choi.github.io'
+url: ''
 
 github:
   username: yunsoo-choi            # change to your github username
