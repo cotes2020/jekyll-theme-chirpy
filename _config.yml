@@ -21,7 +21,7 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title:                           # the main title
+title: 개발사전                          # the main title
 
 tagline: A text-focused Jekyll theme   # it will display as the sub-title
 
