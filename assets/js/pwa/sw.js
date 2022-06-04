@@ -6,7 +6,7 @@ permalink: '/sw.js'
 
 self.importScripts('{{ "/assets/js/data/swcache.js" | relative_url }}');
 
-const cacheName = 'chirpy-{{ "now" | date: "%Y%m%d.%H%M" }}';
+const cacheName = 'chirpy-{{ "now" | date: "%Y%m%d.%H%M%S" }}';
 
 function verifyDomain(url) {
   for (const domain of allowedDomains) {
@@ -28,60 +28,62 @@ function isExcluded(url) {
   return false;
 }
 
-self.addEventListener('install', e => {
-  self.skipWaiting();
-  e.waitUntil(
+self.addEventListener('install', event => {
+  event.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll(resource);
     })
   );
 });
 
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keyList => {
+      return Promise.all(
+        keyList.map(key => {
+          if (key !== cacheName) {
+            return caches.delete(key);
+          }
+        })
+      );
+    })
+  );
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
+    caches.match(event.request).then(response => {
+      if (response) {
+        return response;
+      }
+
+      return fetch(event.request).then(response => {
+        const url = event.request.url;
+
+        if (event.request.method !== 'GET' ||
+              !verifyDomain(url) ||
+              isExcluded(url)) {
           return response;
         }
 
-        return fetch(event.request)
-          .then(response => {
-            const url = event.request.url;
+        /*
+          see: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
+        */
+        let responseToCache = response.clone();
 
-            if (event.request.method !== 'GET' ||
-              !verifyDomain(url) ||
-              isExcluded(url)) {
-              return response;
-            }
+        caches.open(cacheName).then(cache => {
+          /* console.log('[sw] Caching new resource: ' + event.request.url); */
+          cache.put(event.request, responseToCache);
+        });
 
-            /*
-              see: <https://developers.google.com/web/fundamentals/primers/service-workers#cache_and_return_requests>
-             */
-            let responseToCache = response.clone();
-
-            caches.open(cacheName)
-              .then(cache => {
-                /* console.log('[sw] Caching new resource: ' + event.request.url); */
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          });
-      })
-    );
-});
-
-self.addEventListener('activate', e => {
-  e.waitUntil(
-    caches.keys().then(keyList => {
-          return Promise.all(
-            keyList.map(key => {
-              if(key !== cacheName) {
-                return caches.delete(key);
-              }
-            })
-          );
+        return response;
+      });
     })
   );
 });
