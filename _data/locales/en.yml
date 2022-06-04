@@ -45,6 +45,10 @@ meta: Powered by :PLATFORM with :THEME theme.
 not_found:
   statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
 
+notification:
+  update_found: A new version of content is available.
+  update: Update
+
 # ----- Posts related labels -----
 
 post:
