@@ -108,7 +108,9 @@ Hence, any individual or group of individuals can reuse and modify the material 
 
 ### Citation
 
-The blog posts can be cited as BibTeX in the form,
+#### Posts
+
+Blog posts can be cited as BibTeX,
 
 ```
 @article{bhattacharjee:2022,
@@ -120,4 +122,18 @@ The blog posts can be cited as BibTeX in the form,
   publisher={GitHub Pages}}
 ```
 
-where `post_title` is the title of the post and `post_name` is the part of its URL succeeding `https://booodaness.github.io`.
+Where, `post_title` is the title of the post and `post_name` is the part of its URL succeeding `https://booodaness.github.io`.
+
+#### Repository
+
+To cite this repository as a dataset, use the BibTeX,
+
+```
+@misc{Bhattacharjee_Tempus_Spatium,
+author = {Bhattacharjee, Siddhartha},
+title = {{Tempus Spatium}},
+url = {https://booodaness.github.io/tempus-spatium/}
+}
+```
+
+See [CITATION.cff](CITATION.cff) for more details.
