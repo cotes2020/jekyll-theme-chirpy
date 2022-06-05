@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: >-
+  If you use content from this repository in your
+  work, please cite it using the metadata below.
+title: Tempus Spatium
+abstract: Physics, mathematics and philosophy by Siddhartha Bhattacharjee.
+type: dataset
+authors:
+  - family-names: Bhattacharjee
+    given-names: Siddhartha
+    email: sidb@tempus-spatium.8shield.net
+    orcid: 'https://orcid.org/0000-0001-9510-2066'
+keywords:
+  - classical field theory
+  - classical mechanics
+  - quantum mechanics
+  - representation theory
+license: CC BY-NC-SA 4.0
+url: https://booodaness.github.io/tempus-spatium/
+
