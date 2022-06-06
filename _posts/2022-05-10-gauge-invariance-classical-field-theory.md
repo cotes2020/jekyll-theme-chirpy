@@ -156,4 +156,4 @@ Therefore, the recipe for introducing gauge symmetry into a Lagrangian is to sim
 
 At last, we have successfully found a Lagrangian which preserves the gauge invariance of physical solution fields. Now, we are left to explore the deep facts it reveals about nature. One of the most striking among them is the conservation of charge, which emerges in scalar electrodynamics from the gauge invariance of complex-valued fields under $$U \left( 1 \right)$$. I shall try to cover it in a future series on quantum mechanics.
 
-However, the manner in which the said conservation law emerges (continuity equation) can be seen even in classical field theory. I did not cover it here as it would make the post too long. So, it will be the subject of a new post in the near future. Stay tuned! :)
+However, the manner in which the said conservation law emerges (continuity equation) can be seen even in classical field theory. I did not cover it here as it would make the post too long. So, it will be the subject of a new post in the future. Stay tuned! :)
