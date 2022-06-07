@@ -8,15 +8,17 @@ title: About
 # MIT License
 ---
 ## Mohamad Ziad Alkabakibi
-### C++ Developer @[RoadAR](https://www.road.ly/) and 4th year Software Engineering Bachelor. <br>
+### C++ Developer @[RoadAR](https://www.road.ly/)<br>
 <br>
 
 * ### [Resume Link](https://github.com/TheSharpOwl/TheSharpOwl.github.io/raw/master/files/resume.pdf)
 * ### Github: [TheSharpOwl](https://github.com/TheSharpOwl) 
 * ### Codeforces: [Silver_](http://codeforces.com/profile/Silver_)
 * ### [Linkedin](https://www.linkedin.com/in/mohamad-ziad-a-999771118/)
+* ### Bachelor Thesis: Overcoming restrictions of GPU graphical pipeline with Mesh Shaders [Download](https://github.com/TheSharpOwl/TheSharpOwl.github.io/raw/master/files/thesis.pdf)
 * ### [Youtube Channel](https://www.youtube.com/channel/UCypgX5uHk5ezqPCVKIVq2ow) I just upload demos for my projects or some gameplay clips.
 <br>
+
 # Experience:
 
 * #### **Programming** : C++ (favorite), Golang, C#, Python.
