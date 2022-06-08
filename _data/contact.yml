@@ -12,6 +12,10 @@
   icon: 'fab fa-reddit'
   url: 'https://www.reddit.com/user/Booodaness'
 -
+  type: instagram
+  icon: 'fab fa-instagram'
+  url: 'https://www.instagram.com/sid31415/'
+-
   type: github
   icon: 'fab fa-github'
 -
