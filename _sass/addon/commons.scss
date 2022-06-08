@@ -1377,7 +1377,7 @@ $sidebar-display: "sidebar-display";
   }
 
   #search-wrapper {
-    max-width: 210px;
+    max-width: $search-max-width;
   }
 
   #search-result-wrapper {
@@ -1541,9 +1541,18 @@ $sidebar-display: "sidebar-display";
     left: $sidebar-width-large;
   }
 
+  #search-wrapper {
+    margin-right: calc(#{$main-content-max-width} * 0.25 - #{$search-max-width});
+  }
+
   #topbar,
   #main {
     max-width: $main-content-max-width;
+  }
+
+  #core-wrapper,
+  #tail-wrapper {
+    padding-right: 4.5rem !important;
   }
 
   #back-to-top {
