@@ -18,13 +18,10 @@ if ('serviceWorker' in navigator) {
     .then(registration => {
       if (registration) {
         registration.addEventListener('updatefound', () => {
-          /* console.log('updatefound'); */
           let serviceWorker = registration.installing;
 
           serviceWorker.addEventListener('statechange', () => {
-            /* console.log(`statechange -> ${serviceWorker.state}`); */
             if (serviceWorker.state === 'installed') {
-              /* console.log('installed'); */
               if (navigator.serviceWorker.controller) {
                 $notification.toast('show');
                 /* in case the user ignores the notification */
@@ -39,9 +36,14 @@ if ('serviceWorker' in navigator) {
           $notification.toast('hide');
         });
 
-        /* there's a new Service Worker waiting to be activated */
         if (localStorage.getItem(keyWaiting)) {
-          $notification.toast('show');
+          if (registration.waiting) {
+            /* there's a new Service Worker waiting to be activated */
+            $notification.toast('show');
+          } else {
+            /* closed all open pages after receiving notification */
+            localStorage.removeItem(keyWaiting);
+          }
         }
       }
     });
