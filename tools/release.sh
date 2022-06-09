@@ -184,19 +184,12 @@ build_gem() {
 release() {
   _version="$1" # X.Y.Z
 
-  if $opt_pre; then
-    $opt_pre
-    exit 0
-  fi
-
   git checkout "$PROD_BRANCH"
   git merge --no-ff --no-edit "$working_branch"
 
   # Create a new tag on production branch
   echo -e "Create tag v$_version\n"
   git tag "v$_version"
-
-  build_gem
 
   # merge from patch branch to the staging branch
   # NOTE: This may break due to merge conflicts, so it may need to be resolved manually.
@@ -224,11 +217,14 @@ main() {
   echo -e "Bump version number to $_version\n"
   bump "$_version"
 
-  release "$_version"
+  build_gem
 
-  # Undo all changes on Git
-  $opt_pre && git reset --hard && git clean -fd
-
+  if [[ $opt_pre = true ]]; then
+    # Undo all changes on Git
+    git reset --hard && git clean -fd
+  else
+    release "$_version"
+  fi
 }
 
 while (($#)); do
