@@ -1,6 +1,6 @@
 {
   "name": "jekyll-theme-chirpy",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "A minimal, responsive, and powerful Jekyll theme for presenting professional writing.",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
     "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
   },
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy#readme",
-  "dependencies": {
+  "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-insert": "^0.5.0",

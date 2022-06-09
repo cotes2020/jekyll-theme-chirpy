@@ -9,8 +9,8 @@ layout: default
 <div class="row">
 
   <!-- core -->
-  <div id="core-wrapper" class="col-12 col-lg-11 col-xl-8">
-    <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+  <div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4">
+    <div class="post pl-1 pr-1 pl-md-2 pr-md-2">
 
     {% capture _content %}
       {% if layout.refactor or page.layout == 'page' %}
@@ -54,13 +54,11 @@ layout: default
 <!-- tail -->
 {% if layout.tail_includes %}
 <div class="row">
-  <div class="col-12 col-lg-11 col-xl-8">
-    <div id="tail-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
-      {% for _include in layout.tail_includes %}
-        {% assign _include_path = _include | append: '.html' %}
-        {% include {{ _include_path }} %}
-      {% endfor %}
-    </div>
+  <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4">
+    {% for _include in layout.tail_includes %}
+      {% assign _include_path = _include | append: '.html' %}
+      {% include {{ _include_path }} %}
+    {% endfor %}
   </div>
-</div> <!-- .row -->
+</div>
 {% endif %}

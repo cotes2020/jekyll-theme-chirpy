@@ -20,7 +20,7 @@ tabs:
 search:
   hint: search
   cancel: Cancel
-  no_results: Oops! No result founds.
+  no_results: Oops! No results found.
 
 panel:
   lastmod: Recently Updated
@@ -44,9 +44,10 @@ meta: Powered by :PLATFORM with :THEME theme.
 
 not_found:
   statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
-  hint_template: :HEAD_BAK to try finding it again, or search for it on the :ARCHIVES_PAGE.
-  head_back: Head back Home
-  archives_page: Archives page
+
+notification:
+  update_found: A new version of content is available.
+  update: Update
 
 # ----- Posts related labels -----
 
@@ -74,5 +75,9 @@ post:
 
 # categories page
 categories:
-  category_measure: categories
-  post_measure: posts
+  category_measure:
+    singular: category
+    plural: categories
+  post_measure:
+    singular: post
+    plural: posts

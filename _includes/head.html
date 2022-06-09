@@ -23,7 +23,30 @@
 
   {% endif %}
 
-  {% seo title=false %}
+  {% capture seo_tags %}
+    {% seo title=false %}
+  {% endcapture %}
+
+  {% if site.img_cdn and seo_tags contains 'og:image' %}
+    {% assign properties = 'og:image,twitter:image' | split: ',' %}
+
+    {% for prop in properties %}
+      {% if site.img_cdn contains '//' %}
+        <!-- `site.img_cdn` is a cross-origin URL -->
+        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{% endcapture %}
+        {% capture replacement %}<meta property="{{ prop }}" content="{{ site.img_cdn }}{% endcapture %}
+      {% else %}
+        <!-- `site.img_cdn` is a local file path -->
+        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{{ site.baseurl }}{% endcapture %}
+        {% assign replacement = target | append: site.img_cdn %}
+      {% endif %}
+
+      {% assign seo_tags = seo_tags | replace: target, replacement %}
+
+    {% endfor %}
+  {% endif %}
+
+  {{ seo_tags }}
 
   <title>
   {%- unless page.layout == "home" -%}
@@ -45,7 +68,7 @@
       <link rel="dns-prefetch" href="{{ cdn.url }}" {{ cdn.args }}>
     {% endfor %}
 
-    <link rel="stylesheet" href="{{ site.data.assets[origin].webfonts }}">
+    <link rel="stylesheet" href="{{ site.data.assets[origin].webfonts | relative_url }}">
 
   {% endif %}
 
@@ -67,24 +90,27 @@
   {% endif %}
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap.css }}">
+  <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap.css | relative_url}}">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ site.data.assets[origin].fontawesome.css }}">
+  <link rel="stylesheet" href="{{ site.data.assets[origin].fontawesome.css | relative_url }}">
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
   {% if site.toc and page.toc %}
-    <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap-toc.css }}">
+    <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap-toc.css | relative_url }}">
   {% endif %}
 
   {% if page.layout == 'page' or page.layout == 'post' %}
     <!-- Manific Popup -->
-    <link rel="stylesheet" href="{{ site.data.assets[origin].magnific-popup.css }}">
+    <link rel="stylesheet" href="{{ site.data.assets[origin].magnific-popup.css | relative_url }}">
   {% endif %}
 
   <!-- JavaScript -->
 
-  <script src="{{ site.data.assets[origin].jquery.js }}"></script>
+  <script src="{{ site.data.assets[origin].jquery.js | relative_url }}"></script>
 
+  {% unless site.theme_mode %}
+    {% include mode-toggle.html %}
+  {% endunless %}
 </head>

@@ -2,7 +2,7 @@
   The paginator for post list on HomgPage.
 -->
 
-<ul class="pagination align-items-center mt-4 mb-0 pl-lg-2">
+<ul class="pagination align-items-center mt-4 mb-5 pl-lg-2">
   <!-- left arrow -->
   {% if paginator.previous_page %}
     {% assign prev_url = paginator.previous_page_path | relative_url %}
@@ -47,7 +47,7 @@
     {% if show %}
       <!-- show number -->
       <li class="page-item {% if i == paginator.page %} active{% endif %}">
-        <a class="page-link btn-box-shadow" href="{{ site.baseurl }}/{% if i > 1%}page{{ i }}/{% endif %}">{{ i }}</a>
+        <a class="page-link btn-box-shadow" href="{% if i > 1 %}{{ site.paginate_path | replace: ':num', i | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}">{{ i }}</a>
       </li>
     {% else %}
       <!-- hide number -->

@@ -31,9 +31,9 @@ jobs:
 
 stages:
   - name: Upgrade
-    if: branch =~ /^v(\d)+(\.(\d)+){2}$/ OR tag IS present
+    if: branch = production
   - name: Starter
-    if: branch =~ /^v(\d)+(\.(\d)+){2}$/ OR tag IS present
+    if: branch = production
   - name: Docs
     if: branch = docs
 

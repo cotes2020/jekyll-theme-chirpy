@@ -1,8 +1,6 @@
 ---
 title: Enable Google Page Views
-author:
-  name: Dinesh Prasanth Moluguwan Krishnamoorthy
-  link: https://github.com/SilleBille
+author: sille_bille
 date: 2021-01-03 18:32:00 -0500
 categories: [Blogging, Tutorial]
 tags: [google analytics, pageviews]

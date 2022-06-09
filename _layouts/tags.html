@@ -14,7 +14,9 @@ layout: page
 
   {% for t in sorted_tags %}
     <div>
-      <a class="tag" href="{{ site.baseurl }}/tags/{{ t | slugify | url_encode }}/">{{ t }}<span class="text-muted">{{ site.tags[t].size }}</span></a>
+      <a class="tag" href="{{ t | slugify | url_encode | prepend: '/tags/' | append: '/' | relative_url }}">
+        {{ t }}<span class="text-muted">{{ site.tags[t].size }}</span>
+      </a>
     </div>
   {% endfor %}
 

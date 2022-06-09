@@ -43,9 +43,10 @@ meta: 本站由 :PLATFORM 生成，采用 :THEME 主题。
 
 not_found:
   statment: 抱歉，我们放错了该 URL，或者它指向了不存在的内容。
-  hint_template: :HEAD_BAK尝试再次查找它，或在:ARCHIVES_PAGE上搜索它。
-  head_back: 返回主页
-  archives_page: 归档页面
+
+notification:
+  update_found: 发现新版本的内容。
+  update: 更新
 
 # ----- Posts related labels -----
 

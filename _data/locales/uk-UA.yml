@@ -44,9 +44,10 @@ meta: Powered by :PLATFORM with :THEME theme.
 
 not_found:
   statment: Вибачте, це посилання вказує на ресурс, що не існує.
-  hint_template: :HEAD_BAK аби здійснити пошук, або пошукайте в :ARCHIVES_PAGE.
-  head_back: Поверніться на домашню сторінку
-  archives_page: архіві
+
+notification:
+  update_found: Доступна нова версія вмісту.
+  update: Оновлення
 
 # ----- Posts related labels -----
 

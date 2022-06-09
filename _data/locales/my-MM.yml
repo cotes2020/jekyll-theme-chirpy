@@ -44,9 +44,10 @@ meta: Powered by :PLATFORM with :THEME theme.
 
 not_found:
   statment: ဝမ်းနည်းပါသည်၊ ကျွန်ုပ်တို့သည် အဆိုပါ URL ကို မှားယွင်းစွာ နေရာချထားခြင်း သို့မဟုတ် ၎င်းသည် မရှိသောအရာကို ညွှန်ပြနေပါသည်။
-  hint_template: ၎င်းကို ထပ်မံရှာဖွေရန် :HEAD_BAK , သို့မဟုတ် :ARCHIVES_PAGE တွင်ရှာပါ။
-  head_back: အဓိကစာမျက်နှာသို့ပြန်သွားပါ။
-  archives_page: မှတ်တမ်း​တိုက် စာမျက်နှာ။
+
+notification:
+  update_found: အကြောင်းအရာဗားရှင်းအသစ်ကို ရနိုင်ပါပြီ။
+  update: အပ်ဒိတ်
 
 # ----- Posts related labels -----
 

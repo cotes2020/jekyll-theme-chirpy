@@ -19,18 +19,14 @@ layout: compress
 
   {% include head.html %}
 
-  {% unless site.theme_mode %}
-    {% include mode-toggle.html %}
-  {% endunless %}
-
   <body data-spy="scroll" data-target="#toc" data-topbar-visible="true">
 
     {% include sidebar.html %}
 
     {% include topbar.html %}
 
-    <div id="main-wrapper">
-      <div id="main">
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div id="main" class="container pl-xl-4 pr-xl-4">
 
         {{ content }}
 
@@ -51,6 +47,23 @@ layout: compress
     <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
       <i class="fas fa-angle-up"></i>
     </a>
+
+    {% if site.pwa.enabled %}
+      <div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+        data-animation="true" data-autohide="false">
+        <div class="toast-header">
+          <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body text-center pt-0">
+          <p class="pl-2 pr-2 mb-3">{{ site.data.locales[lang].notification.update_found }}</p>
+          <button type="button" class="btn btn-primary" aria-label="Update">
+            {{ site.data.locales[lang].notification.update }}
+          </button>
+        </div>
+      </div>
+    {% endif %}
 
     {% include search-loader.html %}
 

@@ -9,10 +9,10 @@
     <p>{{ page.previous.title }}</p>
   </a>
   {% else %}
-  <span class="btn btn-outline-primary disabled"
+  <div class="btn btn-outline-primary disabled"
     prompt="{{ site.data.locales[lang].post.button.previous }}">
     <p>-</p>
-  </span>
+  </div>
   {% endif %}
 
   {% if page.next.url %}
@@ -21,10 +21,10 @@
     <p>{{ page.next.title }}</p>
   </a>
   {% else %}
-  <span class="btn btn-outline-primary disabled"
+  <div class="btn btn-outline-primary disabled"
     prompt="{{ site.data.locales[lang].post.button.next }}">
     <p>-</p>
-  </span>
+  </div>
   {% endif %}
 
 </div>

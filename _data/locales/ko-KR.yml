@@ -44,9 +44,10 @@ meta: Powered by :PLATFORM with :THEME theme.
 
 not_found:
   statment: 해당 URL은 존재하지 않습니다.
-  hint_template: :HEAD_BAK을 눌러 다시 찾거나 :ARCHIVES_PAGE에서 검색해 주세요.
-  head_back: 홈으로 돌아가기
-  archives_page: 아카이브 페이지
+
+notification:
+  update_found: 새 버전의 콘텐츠를 사용할 수 있습니다.
+  update: 업데이트
 
 # ----- Posts related labels -----
 

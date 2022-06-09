@@ -9,10 +9,11 @@
   we suround the markdown table with `<div class="table-wrapper">` and `</div>`
 -->
 
-{% if _content contains '<table>' %}
+{% if _content contains '<table' %}
   {% assign _content = _content
-    | replace: '<table>', '<div class="table-wrapper"><table>'
+    | replace: '<table', '<div class="table-wrapper"><table'
     | replace: '</table>', '</table></div>'
+    | replace: '<code><div class="table-wrapper">', '<code>'
     | replace: '</table></div></code>', '</table></code>'
   %}
 {% endif %}
@@ -91,7 +92,11 @@
 
         <!-- Add CDN URL -->
         {% if site.img_cdn %}
-          {% assign _src_prefix = site.img_cdn %}
+          {% if site.img_cdn contains '//' %}
+            {% assign _src_prefix = site.img_cdn %}
+          {% else %}
+            {% assign _src_prefix = site.img_cdn | relative_url %}
+          {% endif %}
         {% else %}
           {% assign _src_prefix = site.baseurl %}
         {% endif %}
@@ -212,7 +217,7 @@
       {% assign left = left | replace: '">', '"><span class="mr-2">' | append: '</span>' %}
 
       {% assign _new_content = _new_content | append: mark_start
-          | append: left | append: anchor | append: mark_end | append: right
+          | append: left | append: anchor | append: right
       %}
 
     {% endfor %}
