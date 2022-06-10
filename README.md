@@ -5,6 +5,8 @@
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Booodaness/tempus-spatium)](https://github.com/Booodaness/tempus-spatium/commits/main)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-important)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
+![Logo](assets/img/site/avatar.png)
+
 ## About
 
 A blog for physics, mathematics and philosophy, maintained by Siddhartha Bhattacharjee. Detailed description in the blog's [about](https://booodaness.github.io/tempus-spatium/about/) page.
