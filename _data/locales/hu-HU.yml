@@ -47,6 +47,10 @@ meta: Készítve :PLATFORM motorral :THEME témával.
 not_found:
   statment: Sajnáljuk, az URL-t rosszul helyeztük el, vagy valami nem létezőre mutat.
 
+notification:
+  update_found: Elérhető a tartalom új verziója.
+  update: Frissítés
+
 # ----- Posts related labels -----
 
 post:
