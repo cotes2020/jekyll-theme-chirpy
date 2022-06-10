@@ -79,7 +79,7 @@ post:
 categories:
   category_measure:
     singular: kategória
-    plural: kategóriák
+    plural: kategória
   post_measure:
     singular: bejegyzés
-    plural: bejegyzések
+    plural: bejegyzés
