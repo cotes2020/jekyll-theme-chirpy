@@ -1,0 +1,78 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: 投稿
+  category: カテゴリ
+  tag: タグ
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: ホーム
+  categories: カテゴリ
+  tags: タグ
+  archives: 投稿日順
+  about: 自己紹介
+
+# the text displayed in the search bar & search results
+search:
+  hint: 検索
+  cancel: キャンセル
+  no_results: 該当する記事が見つかりませんでした。
+
+panel:
+  lastmod: 最近の投稿
+  trending_tags: タグ
+  toc: 目次
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: This post is licensed under :LICENSE_NAME by the author.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Some rights reserved.
+  verbose: >-
+    Except where otherwise noted, the blog posts on this site are licensed
+    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+
+meta: Powered by :PLATFORM with :THEME theme.
+
+not_found:
+  statment: URLで指定されたコンテンツが存在しません。
+  hint_template: :HEAD_BAK でもう一度探すか、 :ARCHIVES_PAGE で検索してみてください。
+  head_back: ホームに戻る
+  archives_page: 過去記事ページ
+
+# ----- Posts related labels -----
+
+post:
+  written_by: 執筆
+  posted: 投稿
+  updated: 最終更新
+  words: 文字
+  pageview_measure: views
+  read_time:
+    unit: 分
+    prompt: くらいで読めるはず
+  relate_posts: 関連記事
+  share: Share
+  button:
+    next: Newer
+    previous: Older
+    copy_code:
+      succeed: Copied!
+    share_link:
+      title: Copy link
+      succeed: Link copied successfully!
+  # pinned prompt of posts list on homepage
+  pin_prompt: Pinned
+
+# categories page
+categories:
+  category_measure: カテゴリ
+  post_measure: 投稿
