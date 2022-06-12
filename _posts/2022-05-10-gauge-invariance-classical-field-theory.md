@@ -81,7 +81,7 @@ $$
 \end{align}
 $$
 
-## Covariant derivatives
+## Gauge covariant derivatives
 
 Faced with the above problem, we are forced to modify the Lagrangian so that the new equations of motion (structurally Euler-Lagrange equations) are the above, thereby introducing gauge invariance.
 
@@ -108,13 +108,13 @@ we have,
 
 $$D_\mu \widetilde{\pi}^\mu_{\phantom{\mu} a} = \nabla_\mu \widetilde{\pi}^\mu_{\phantom{\mu} a} - \widetilde{\pi}^\mu_{\phantom{\mu} c} G^c_{\phantom{b} \mu a}$$
 
-The above quantity is the covariant derivative of conjugate momentum. Here, we are adding correction terms to the usual geometric covariant derivative, much like the latter are correction terms added to partial derivatives:
+The above quantity is the gauge covariant derivative of conjugate momentum. Here, we are adding correction terms to the usual covariant derivative, much like the latter are correction terms added to partial derivatives:
 
 $$\nabla_\mu \omega_\nu = \partial_\mu \omega_\nu - \omega_\rho \Gamma^\rho_{\phantom{\rho} \mu \nu}$$
 
 This also demonstrates the striking correspondance between the Christoffel symbols $$\Gamma^\rho_{\phantom{\rho} \mu \nu} = dx^\rho \left( \nabla_\mu \partial_\nu \right)$$ in geometry and the coefficients $$G^c_{\phantom{b} \mu a} = J^c_{\phantom{c} b} \partial_\mu J^b_{\phantom{b} a}$$ in the previous equation.
 
-In retrospect, choosing the indices of the fields to be downstairs was a good choice, as otherwise, the sign of the correction terms in the covariant derivative would be inverted with respect to the geometric case.
+In retrospect, choosing the indices of the fields to be downstairs was a good choice, for otherwise, the sign of the correction terms in the covariant derivative would be inverted with respect to the geometric case.
 
 ## Lagrangian
 
@@ -136,11 +136,11 @@ As the dependency of both Lagrangians on the field is the same, we have in gener
 
 $$\widehat{\mathcal{L}} = \mathcal{L} \left( \phi, \dots \right)$$
 
-Since the new Lagrangian is gauge-invariant, the only derivatives of the field it can contain are covariant derivatives. For the new Lagrangian to preserve as many properties of the original Lagrangian as possible, we simply replace the partial derivatives in the latter with covariant derivatives. Thus, we find,
+Since the new Lagrangian is gauge-invariant, the only derivatives of the field it can contain are gauge covariant derivatives. Therefore, we replace any covariant derivatives in the original Lagrangian with gauge covariant derivatives:
 
 $$\widehat{\mathcal{L}} = \mathcal{L} \left( \phi, D_\mu \phi \right)$$
 
-We define the covariant derivative of a general scalar field in the following manner (chain rule), so that the properties of a derivative are retained and covariant derivatives can meaningfully reduce to geometric covariant derivatives in a gauge where $$G^b_{\phantom{b} \mu a} = 0$$,
+We define the gauge covariant derivative of a general scalar field in the following manner (chain rule), so that the properties of derivatives are retained and gauge covariant derivatives can meaningfully reduce to covariant derivatives in any gauge where $$G^b_{\phantom{b} \mu a} = 0$$,
 
 $$
 \begin{align}
@@ -150,10 +150,8 @@ D_\mu \phi & = \frac{\partial \phi}{\partial \phi_a} D_\mu \phi_a \\
 \end{align}
 $$
 
-Therefore, the recipe for introducing gauge symmetry into a Lagrangian is to simply replace geometric covariant derivatives with covariant derivatives.
-
 ## Conclusion
 
-At last, we have successfully found a Lagrangian which preserves the gauge invariance of physical solution fields. Now, we are left to explore the deep facts it reveals about nature. One of the most striking among them is the conservation of charge, which emerges in scalar electrodynamics from the gauge invariance of complex-valued fields under $$U \left( 1 \right)$$. I shall try to cover it in a future series on quantum mechanics.
+We have, at last, found a Lagrangian which preserves the gauge invariance of physical solution fields. Now, we are left to explore the deep facts it reveals about nature. One of the most striking among them is the conservation of charge, which emerges in scalar electrodynamics from the gauge invariance of complex-valued fields under $$U \left( 1 \right)$$. I shall try to cover it in a future series on quantum mechanics.
 
 However, the manner in which the said conservation law emerges (continuity equation) can be seen even in classical field theory. I did not cover it here as it would make the post too long. So, it will be the subject of a new post in the future. Stay tuned! :)

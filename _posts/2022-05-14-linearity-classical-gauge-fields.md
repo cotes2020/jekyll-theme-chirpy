@@ -7,7 +7,7 @@ tags: [linearity, gauge invariance, symmetry]
 
 In [Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-valid-solutions-classical-field-theory %}), we showed that any linear combination of valid solutions to classical field equations, is in turn a solution.
 
-We then took the idea of solution fields behaving like coordinates further, in [Gauge Invariance in Classical Field Theory]({% post_url 2022-05-10-gauge-invariance-classical-field-theory %}). Here, we found that it is possible for certain differentiable transformations of solution fields to be new solution fields. To admit such families of solutions (where each choice is called a 'gauge') into the Lagrangian, we replace geometric covariant derivatives with the gauge-invariant covariant derivatives. This is functionally equivalent to replacing partial derivatives with geometric covariant derivatives to allow general covariance, in differential geometry.
+We then took the idea of solution fields behaving like coordinates further, in [Gauge Invariance in Classical Field Theory]({% post_url 2022-05-10-gauge-invariance-classical-field-theory %}). Here, we found that it is possible for certain differentiable transformations of solution fields to be new solution fields. To admit such families of solutions (where each choice is called a 'gauge') into the Lagrangian, we replace covariant derivatives with the gauge-invariant gauge covariant derivatives. This is functionally equivalent to replacing partial derivatives with covariant derivatives to allow general covariance, in differential geometry.
 
 For this post, it is best to read the ones mentioned above as we will rely on the concepts and notation in them. Armed with their ideas, we will now go against the chronology of the said posts i.e. we will begin with gauge fields and derive their linearity.
 
@@ -43,7 +43,7 @@ $$
 
 ### Invariance of equations of motion
 
-Now, we ask, when are the fields in the new gauge still valid solutions for the equations of motion in the _original_ gauge? The most general such scenario is when covariant derivatives reduce to geometric covariant derivatives under the said gauge transformation, thereby preserving the form of the equations of motion. Here, we find,
+Now, we ask, when are the fields in the new gauge still valid solutions for the equations of motion in the _original_ gauge? The most general such scenario is when gauge covariant derivatives reduce to covariant derivatives under the said gauge transformation, thereby preserving the form of the equations of motion. Here, we find,
 
 $$G^b_{\phantom{b} \mu a} = J^b_{\phantom{b} c} \partial_\mu J^c_{\phantom{c} a} = 0$$
 
@@ -59,6 +59,6 @@ where $$\partial_\mu C^b_{\phantom{b} a} = 0$$. This is precisely the notion of 
 
 ## Conclusion
 
-We have thus found a new way to interpret the above statement on linearity. Namely, linear combinations constitute the most general gauge transformations under which a given Lagrangian is automatically gauge-invariant (as covariant derivatives reduce to the usual geometric covariant derivatives).
+We have thus found a new way to interpret the above statement on linearity. Namely, linear combinations constitute the most general gauge transformations under which a given Lagrangian is automatically gauge-invariant (as gauge covariant derivatives reduce to covariant derivatives).
 
-Thanks for reading! :)
+Thanks for reading!
