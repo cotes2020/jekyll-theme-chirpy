@@ -112,7 +112,7 @@ The above quantity is the gauge covariant derivative of conjugate momentum. Here
 
 $$\nabla_\mu \omega_\nu = \partial_\mu \omega_\nu - \omega_\rho \Gamma^\rho_{\phantom{\rho} \mu \nu}$$
 
-This also demonstrates the striking correspondance between the Christoffel symbols $$\Gamma^\rho_{\phantom{\rho} \mu \nu} = dx^\rho \left( \nabla_\mu \partial_\nu \right)$$ in geometry and the coefficients $$G^c_{\phantom{b} \mu a} = J^c_{\phantom{c} b} \partial_\mu J^b_{\phantom{b} a}$$ in the previous equation.
+This also demonstrates the correspondance between the connection coefficients $$\Gamma^\rho_{\phantom{\rho} \mu \nu} = dx^\rho \left( \nabla_\mu \partial_\nu \right)$$ in geometry and the gauge connection coefficients $$G^c_{\phantom{b} \mu a} = J^c_{\phantom{c} b} \partial_\mu J^b_{\phantom{b} a}$$ in the previous equation.
 
 In retrospect, choosing the indices of the fields to be downstairs was a good choice, for otherwise, the sign of the correction terms in the covariant derivative would be inverted with respect to the geometric case.
 
