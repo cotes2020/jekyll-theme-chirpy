@@ -369,9 +369,12 @@ nav[data-toggle=toc] {
 }
 
 .post-thumbnail {
+  padding-top: 0.83333rem;
+  height: 100%;
   border: 0;
   border-radius: 5px 5px 0 0;
   display: block;
+  margin-bottom: 1.66667em;
   position: relative;
   width: 100%;
 
@@ -383,8 +386,9 @@ nav[data-toggle=toc] {
 
   img {
     border-radius: 5px 5px 0 0;
-    height: 100px;
+    height: 100%;
     left: 0;
+    object-fit: cover;
     position: absolute;
     top: 0;
     width: 100%;
