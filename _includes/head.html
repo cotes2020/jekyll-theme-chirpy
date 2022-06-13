@@ -1,7 +1,8 @@
 <!--
   The Head
 -->
-{% assign origin = 'cross_origin' %}
+{% assign origin = 'cross_origin' %} {{ site.data.assets[origin].webfonts |
+relative_url }}
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta
