@@ -368,22 +368,7 @@ nav[data-toggle=toc] {
   }
 }
 
-.post-thumbnail {
-  padding-top: 0.83333rem;
-  height: 100%;
-  border: 0;
-  border-radius: 5px 5px 0 0;
-  display: block;
-  margin-bottom: 1.66667em;
-  position: relative;
-  width: 100%;
-
-  &:before {
-    content: "";
-    display: block;
-    padding-top: 66.666%;
-  }
-
+.thumbnail {
   img {
     border-radius: 5px 5px 0 0;
     height: 100%;
