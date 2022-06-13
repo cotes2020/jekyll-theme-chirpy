@@ -1,0 +1,11 @@
+{% assign img = include.img | split: '.' %}
+<picture>
+  <source
+    type="image/webp"
+    srcset="/assets/img/posts/{{ page.slug }}/{{ img[0] }}.webp"
+  />
+  <img
+    src="/assets/img/posts/{{ page.slug }}/{{ include.img }}"
+    alt="{{ include.alt }}"
+  />
+</picture>
