@@ -26,7 +26,8 @@ tail_includes:
     {{ site.data.locales[lang].post.updated }} {% include datetime.html
     date=page.last_modified_at tooltip=true %}
   </span>
-  {% endif %} {% if page.image.name %}
+  {% endif %} {% if page.image.name %} {% assign webp_img = page.image.name |
+  split: '.' %}
   <div class="mt-3 mb-3">
     <figure>
       <picture>
