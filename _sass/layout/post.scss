@@ -369,13 +369,11 @@ nav[data-toggle=toc] {
 }
 
 .thumbnail {
-  img {
-    border-radius: 5px 5px 0 0;
-    height: 100%;
-    left: 0;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
+  border-radius: 5px 5px 0 0;
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
