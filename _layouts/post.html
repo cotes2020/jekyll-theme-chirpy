@@ -36,7 +36,7 @@ tail_includes:
           srcset="/assets/img/posts/{{ page.slug }}{{ webp_img[0] | relative_url }}.webp"
         />
         <img src="/assets/img/posts/{{ page.slug }}{{ page.image.name |
-        relative_url }}" class="thumbnail" alt="{{ page.image.alt | | default:
+        relative_url }}" class="thumbnail" alt="{{ page.image.alt | default:
         "Preview Image" }}" />
       </picture>
       {% if page.image.alt %}
