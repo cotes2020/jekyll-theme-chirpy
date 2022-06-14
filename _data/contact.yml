@@ -2,29 +2,29 @@
 
 -
   type: github
-  icon: 'fab fa-github'
+  icon: 'bi bi-github'
 -
   type: twitter
-  icon: 'fab fa-twitter'
+  icon: 'bi bi-twitter'
 -
   type: email
-  icon: 'fas fa-envelope'
+  icon: 'bi bi-envelope'
   noblank: true            # open link in current tab
 -
   type: rss
-  icon: 'fas fa-rss'
+  icon: 'bi bi-rss'
   noblank: true
 
 # Uncomment and complete the url below to enable more contact options
 # -
 #   type: mastodon
-#   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
+#   icon: 'bi bi-mastodon'   # icons powered by https://icons.getbootstrap.com/
 #   url:  ''                  # Fill with your mastodon account page
 # -
 #   type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
+#   icon: 'bi bi-linkedin'   # icons powered by https://icons.getbootstrap.com/
 #   url:  ''                  # Fill with your Linkedin homepage
 # -
 #   type: stack-overflow
-#   icon: 'fab fa-stack-overflow'
+#   icon: 'bi bi-stack-overflow'
 #   url:  ''                  # Fill with your stackoverflow homepage

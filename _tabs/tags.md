@@ -1,6 +1,6 @@
 ---
 layout: tags
 title: Tags
-icon: fas fa-tag
+icon: bi bi-tags-fill
 order: 2
 ---

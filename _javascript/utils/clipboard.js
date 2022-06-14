@@ -6,9 +6,9 @@
  *   - clipboard.js (https://github.com/zenorocha/clipboard.js)
  */
 
-$(function() {
+$(function () {
   const btnSelector = '.code-header>button';
-  const ICON_SUCCESS = 'fas fa-check';
+  const ICON_SUCCESS = 'bi bi-check';
   const ATTR_TIMEOUT = 'timeout';
   const ATTR_TITLE_SUCCEED = 'data-title-succeed';
   const ATTR_TITLE_ORIGIN = 'data-original-title';

@@ -162,11 +162,11 @@
 
       {% if _left contains 'file="' %}
         {% assign _label_text = _left | split: 'file="' | last | split: '"' | first %}
-        {% assign _label_icon = 'far fa-file-code' %}
+        {% assign _label_icon = 'bi bi-file-code' %}
       {% else %}
         {% assign _lang = _left | split: 'language-' | last | split: ' ' | first %}
         {% capture _label_text %}{% include language-alias.html language=_lang %}{% endcapture %}
-        {% assign _label_icon = 'fas fa-code small' %}
+        {% assign _label_icon = 'bi bi-code-slash small' %}
       {% endif %}
 
       {% capture _label %}
@@ -178,7 +178,7 @@
           | append: _label
           | append: '<button aria-label="copy" data-title-succeed="'
           | append: site.data.locales[lang].post.button.copy_code.succeed
-          | append: '"><i class="far fa-clipboard"></i></button></div>'
+          | append: '"><i class="bi bi-clipboard"></i></button></div>'
           | append: '<div class="highlight"><code>'
       %}
 
@@ -210,7 +210,7 @@
       {% endif %}
 
       {% assign id = snippet | split: '"' | first %}
-      {% capture anchor %}<a href="#{{ id }}" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>{% endcapture %}
+      {% capture anchor %}<a href="#{{ id }}" class="anchor text-muted"><i class="bi bi-hash"></i></a>{% endcapture %}
 
       {% assign left = snippet | split: mark_end | first %}
       {% assign right = snippet | slice: left.size, snippet.size %}

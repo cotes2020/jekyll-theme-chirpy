@@ -1,7 +1,6 @@
 ---
 layout: archives
 title: Archives
-icon: fas fa-archive
+icon: bi bi-archive-fill
 order: 3
 ---
-

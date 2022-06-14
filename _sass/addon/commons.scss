@@ -182,9 +182,8 @@ footer {
   }
 }
 
-i { /* fontawesome icons */
-  &.far,
-  &.fas {
+i { /* bootstrap icons */
+  &.bi {
     @extend %no-cursor;
   }
 }
@@ -424,7 +423,7 @@ img[data-src] {
 
 }
 
-.pageviews .fa-spinner {
+.pageviews .bi-arrow-repeat {
   font-size: 80%;
 }
 
