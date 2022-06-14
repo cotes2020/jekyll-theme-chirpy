@@ -368,6 +368,31 @@ nav[data-toggle=toc] {
   }
 }
 
+.post-title-img {
+  height: 100%;
+  border: 0;
+  border-radius: 5px 5px 0 0;
+  display: block;
+  position: relative;
+  width: 100%;
+
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 66.666%;
+  }
+
+  img {
+    border-radius: 5px 5px 0 0;
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
 .thumbnail {
   height: 100%;
   border: 0;
