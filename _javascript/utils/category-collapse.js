@@ -11,7 +11,7 @@ $(function () {
   collapse.on("hide.bs.collapse", function () { /* Bootstrap collapse events. */
     const parentId = parentPrefix + $(this).attr("id").substring(childPrefix.length);
     if (parentId) {
-      $(`#${parentId} .bi.bi-folder2-open`).attr("class", "bi bi-folder-fill");
+      $(`#${parentId} .bi.bi-folder-open`).attr("class", "bi bi-folder");
       $(`#${parentId} i.bi`).addClass("rotate");
       $(`#${parentId}`).removeClass("hide-border-bottom");
     }
@@ -21,7 +21,7 @@ $(function () {
   collapse.on("show.bs.collapse", function () {
     const parentId = parentPrefix + $(this).attr("id").substring(childPrefix.length);
     if (parentId) {
-      $(`#${parentId} .bi.bi-folder-fill`).attr("class", "bi bi-folder2-open");
+      $(`#${parentId} .bi.bi-folder`).attr("class", "bi bi-folder-open");
       $(`#${parentId} i.bi`).removeClass("rotate");
       $(`#${parentId}`).addClass("hide-border-bottom");
     }

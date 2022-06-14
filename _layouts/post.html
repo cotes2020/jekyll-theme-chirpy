@@ -102,7 +102,7 @@ tail_includes:
   <!-- tags -->
   {% if page.tags.size > 0 %}
   <div class="post-tags">
-    <i class="bi bi-tags-fill mr-1"></i>
+    <i class="bi bi-tags mr-1"></i>
     {% for tag in page.tags %}
     <a
       href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/"

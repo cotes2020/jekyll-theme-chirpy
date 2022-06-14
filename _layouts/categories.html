@@ -81,7 +81,7 @@ assign sub_categories = sub_categories | push: second_category %} {% endunless
     <ul class="list-group">
       {% for sub_category in sub_categories %}
       <li class="list-group-item">
-        <i class="bi bi-folder-fill"></i>
+        <i class="bi bi-folder"></i>
 
         {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify |
         url_encode }}/{% endcapture %}

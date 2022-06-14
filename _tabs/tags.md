@@ -1,6 +1,6 @@
 ---
 layout: tags
 title: Tags
-icon: bi bi-tags-fill
+icon: bi bi-tags
 order: 2
 ---
