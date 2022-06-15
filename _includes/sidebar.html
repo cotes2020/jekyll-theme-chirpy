@@ -49,11 +49,12 @@
     </li> <!-- .nav-item -->
     {% endfor %}
     <!-- external links -->
-    {% for external_link in site.data.external_links %}
+    {% for entry in site.data.external_links %}
     <li class="nav-item">
-      <a href="{{ external_link.url | relative_url }}" class="nav-link">
-        <i class="fa-fw {{ external_link.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
-        <span>{{ external_link.title | upcase }}</span>
+      <a href="{{ entry.url | relative_url }}" class="nav-link"
+        {% unless entry.noblank %}target="_blank" rel="noopener"{% endunless %}>
+        <i class="fa-fw {{ entry.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
+        <span>{{ entry.title | upcase }}</span>
       </a>
     </li>
     {% endfor %}

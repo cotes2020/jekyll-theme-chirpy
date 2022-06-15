@@ -4,6 +4,7 @@
 - title: External Link
   url: https://example.com
   icon: "fas fa-external-link-alt"
+  noblank: true # open link in current tab
 # - title: Another External
 #   url: https://example.net
 #   icon: "fas fa-info-circle"
