@@ -1,0 +1,9 @@
+#  External links to be added to the sidebar.
+#  Icons from <https://fontawesome.com/>
+
+- title: External Link
+  url: https://example.com
+  icon: "fas fa-external-link-alt"
+# - title: Another External
+#   url: https://example.net
+#   icon: "fas fa-info-circle"
