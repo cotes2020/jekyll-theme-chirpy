@@ -8,7 +8,10 @@ title: About
 # MIT License
 ---
 ## Mohamad Ziad Alkabakibi
-### C++ Developer @[RoadAR](https://www.road.ly/)<br>
+### C++ Developer at <a href="https://road.ly/" target="_blank"><img src="https://thumb.tildacdn.com/tild3062-3238-4231-a436-663638313033/-/resize/158x/-/format/webp/image_1.png" width="15%" height="20%"></a>
+<br>
+
+### Currently working with Embedded Systems, interested in Game Development.
 <br>
 
 * ### [Resume Link](https://github.com/TheSharpOwl/TheSharpOwl.github.io/raw/master/files/resume.pdf)
