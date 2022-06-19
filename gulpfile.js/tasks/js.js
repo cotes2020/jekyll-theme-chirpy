@@ -47,6 +47,7 @@ const postJs = () => {
       `${JS_SRC}/utils/locale-datetime.js`,
       `${JS_SRC}/utils/checkbox.js`,
       `${JS_SRC}/utils/clipboard.js`,
+      `${JS_SRC}/utils/plotly-latest.min.js`,
       // 'smooth-scroll.js' must be called after ToC is ready
       `${JS_SRC}/utils/smooth-scroll.js`
     ], 'post'

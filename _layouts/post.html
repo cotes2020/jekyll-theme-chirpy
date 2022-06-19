@@ -58,27 +58,7 @@ tail_includes:
 
   <div class="d-flex justify-content-between">
     <!-- author -->
-    <span>
-      {% capture author_name %}{{ site.data.authors[page.author].name | default: site.social.name }}{% endcapture %}
-      {% assign author_link = nil %}
-
-      {% if page.author %}
-        {% assign author_link = site.data.authors[page.author].url %}
-      {% elsif author_name == site.social.name %}
-        {% assign author_link = site.social.links[0] %}
-      {% endif %}
-
-      {{ site.data.locales[lang].post.written_by }}
-
-      <em>
-        {% if author_link %}
-          <a href="{{ author_link }}">{{ author_name }}</a>
-        {% else %}
-        {{ author_name }}
-        {% endif %}
-      </em>
-    </span>
-
+    <span></span>
     <div>
       <!-- page views -->
       {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
@@ -100,6 +80,14 @@ tail_includes:
 
 <div class="post-content">
   {{ content }}
+
+  <hr>
+  <h4>Sponsoring</h4>
+  <p>If you think of something really helpful, please consider sponsoring me! Any support is well appreciated! &#128516;&#128516;&#128516;</p>
+  <a href="https://ko-fi.com/yunpengtai"><img src="{{ site.kofi }}"></a>
+  <a href="https://s2.loli.net/2022/06/19/wfh2rnYBq8vzZuD.jpg"><img src="{{ site.wechatPay }}"> </a>
+  <a href="https://s2.loli.net/2022/06/19/kxm7wo8f3zTrcWt.jpg"><img src="{{ site.aliPay }}"></a>
+
 </div>
 
 <div class="post-tail-wrapper text-muted">
