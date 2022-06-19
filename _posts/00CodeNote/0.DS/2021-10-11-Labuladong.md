@@ -402,13 +402,17 @@ toc: true
     - [**Bit Hack #10. Turn on the rightmost 0-bit.** `x | (x+1)`](#bit-hack-10-turn-on-the-rightmost-0-bit-x--x1)
     - [Bonus stuff](#bonus-stuff)
   - [🔒 bit operation - Binary](#-bit-operation---binary)
+    - [268. Missing Number (Easy)](#268-missing-number-easy)
+      - [XOR](#xor)
+      - [SUM](#sum)
+      - [Binary Search](#binary-search-1)
     - [338. Counting Bits (Easy)](#338-counting-bits-easy)
       - [+++++ `check each, Integar.bitCount(n)`](#-check-each-integarbitcountn)
       - [+++++ `DP + bit operation`](#-dp--bit-operation)
     - [191. Number of 1 Bits (Easy)](#191-number-of-1-bits-easy)
       - [+++++ **Brian Kernighan Algorithm**](#-brian-kernighan-algorithm)
-      - [+++++ `&检查每一个1，然后carry`](#-检查每一个1然后carry)
-      - [+++++ `use Integer`](#-use-integer)
+      - [+++++ `&检查每一个 last 1，然后carry`](#-检查每一个-last-1然后carry)
+      - [+++++ `use Integer.bitCount(n);`](#-use-integerbitcountn)
     - [371. Sum of Two Integers (Medium)](#371-sum-of-two-integers-medium)
       - [+++++ `bit operation carry`](#-bit-operation-carry)
       - [+++++ Recursive](#-recursive-2)
@@ -15546,10 +15550,37 @@ void int_to_bin(int num) {
 
 ---
 
+### 268. Missing Number (Easy) 
+
+Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array. 
+
+Example 1:
+Input: nums = [3,0,1]
+Output: 2
+Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
+
+Example 2:
+Input: nums = [0,1]
+Output: 2
+Explanation: n = 2 since there are 2 numbers, so all numbers are in the range [0,2]. 2 is the missing number in the range since it does not appear in nums.
+
+
+#### XOR
+
+
+#### SUM
+
+
+#### Binary Search 
+
+```java
+
+
+```
 
 
 
-
+---
 
 ### 338. Counting Bits (Easy)
 
@@ -15631,8 +15662,7 @@ Write a function that takes an unsigned integer and returns the number of '1' bi
 Note:
 - Note that in some languages, such as Java, there is no unsigned integer type. In this case, the input will be given as a signed integer type. It should not affect your implementation, as the integer's internal binary representation is the same, whether it is signed or unsigned.
 - In Java, the compiler represents the signed integers using 2's complement notation. Therefore, in Example 3, the input represents the signed integer. -3.
-
-
+s
 Example 1:
 Input: n = 00000000000000000000000000001011
 Output: 3
@@ -15644,19 +15674,13 @@ Output: 1
 Explanation: The input binary string 00000000000000000000000010000000 has a total of one '1' bit.
 
 
-
-
 #### +++++ **Brian Kernighan Algorithm**
 
 - Using Brian Kernighan Algorithm, we will not check/compare or loop through all the 32 bits present but only count the set bits
 - Suppose we have a number 10000000000000010000000000000001 (32 bits), now using this algorithm we will skip the 0's bit and directly jump to set bit(1's bit) and we don't have to go through each bit to count set bits i.e. the loop will be executed only for 3 times for the mentioned example and not for 32 times.
 
 
-
-
-#### +++++ `&检查每一个1，然后carry`
-
-
+#### +++++ `&检查每一个 last 1，然后carry`
 
 ```java
 // Time: O(m), where m is the number of set bits
@@ -15679,9 +15703,7 @@ public class Solution {
 ```
 
 
-
-
-#### +++++ `use Integer`
+#### +++++ `use Integer.bitCount(n);`
 
 ```java
 // Runtime: 1 ms, faster than 78.81% of Java online submissions for Number of 1 Bits.
@@ -15694,14 +15716,6 @@ public class Solution {
     }
 }
 ```
-
-
-
-
-
-
-
-
 
 
 
@@ -15740,7 +15754,7 @@ class Solution {
         return xor;
     }
 }
-
+ 
 
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Sum of Two Integers.
 // Memory Usage: 40.9 MB, less than 41.89% of Java online submissions for Sum of Two Integers.
@@ -15771,6 +15785,8 @@ class Solution {
     }
 }
 ```
+
+---
 
 
 
