@@ -1,0 +1,9 @@
+{% if include.block %}
+  {%- assign block_style = "btn-block" -%}
+{%- else -%}
+  {%- assign block_style = "" -%}
+{%- endif -%}
+
+<a class="m-1 btn btn-{{ include.style | default: 'outline-primary' }} btn-{{ include.size | default: 'md' }} {{ block_style }}" href="{{ include.link | default: '#' }}">
+  {{ include.text | default: "Button" }}
+</a>

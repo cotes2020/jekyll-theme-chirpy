@@ -2,5 +2,5 @@
 layout: tags
 title: Tags
 icon: bi bi-tags
-order: 2
+order: 3
 ---

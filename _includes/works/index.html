@@ -1,0 +1,59 @@
+
+<div class="card-columns m-3 mt-5">
+
+    <!-- Remote works -->
+    {% for remote_work in page.remote_works %}
+
+      {%- for repo in site.github.public_repositories -%}
+
+        {%- if remote_work == repo.name -%}
+
+          {%- assign work = repo -%}
+          {%- assign words = work.name | split: '-' -%}
+
+          {%- capture titlecase -%}
+            {%- for word in words -%}
+              {{ word | capitalize | append: ' ' }}
+            {%- endfor -%}
+          {%- endcapture -%}
+
+          {%- assign work_type  = "remote" -%}
+          {%- assign work_id    = work.name -%}
+          {%- assign work_img   = false -%}
+          {%- assign work_name  = titlecase | strip -%}
+          {%- assign work_desc  = work.description -%}
+          {%- assign work_url   = work.html_url -%}
+          {%- assign work_tools = work.topics -%}
+          {%- assign external      = true -%}
+
+          {% include works/work-card.html %}
+
+        {%- endif -%}
+
+      {%- endfor -%}
+
+    {% endfor %}
+
+    <!-- Local works -->
+    {% for work in site.works %}
+
+      {%- assign work_type  = "local" -%}
+      {%- assign work_id    = work.name | slugify -%}
+      {%- assign work_img   = work.image -%}
+      {%- assign work_name  = work.name -%}
+      {%- assign work_desc  = work.description -%}
+      {%- assign work_tools = work.tools -%}
+
+      {%- if work.external_url -%}
+        {%- assign work_url = work.external_url -%}
+        {%- assign external    = true -%}
+      {%- else -%}
+        {%- assign work_url = work.url | relative_url -%}
+        {%- assign external    = false -%}
+      {%- endif -%}
+
+      {% include works/work-card.html %}
+
+    {% endfor %}
+
+  </div>

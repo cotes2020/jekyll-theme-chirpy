@@ -118,6 +118,7 @@ assets:
 pwa:
   enabled: true   # the option for PWA feature
 
+# Pagination Settings
 paginate: 10
 
 # ------------ The following options are not recommended to be modified ------------------
@@ -137,6 +138,9 @@ collections:
   tabs:
     output: true
     sort_by: order
+  works:
+    output: true
+    permalink: /works/:title/
 
 defaults:
   - scope:
@@ -149,6 +153,14 @@ defaults:
       # DO NOT modify the following parameter unless you are confident enough
       # to update the code of all other post links in this project.
       permalink: /posts/:title/
+  - scope:
+      path: _works
+      type: works
+    values:
+      layout: work
+      comments: false
+      toc: false
+      permalink: /works/:title/
   - scope:
       path: _drafts
     values:
@@ -183,11 +195,11 @@ compress_html:
 webp:
   enabled: true
   quality: 75
-  img_dir: ["/assets/img/"]
+  img_dir: ["assets/img/"]
   nested: true
   formats: [".jpeg", ".jpg", ".png", ".tiff"]
   gifs: [".gif"]
-  regenerate: false
+  regenerate: true
   webp_path: nil
   exclude: []
   append_ext: false
@@ -219,3 +231,4 @@ plugins:
   - jekyll-sitemap
   - jekyll-webp
   - jemoji
+  - jekyll-github-metadata

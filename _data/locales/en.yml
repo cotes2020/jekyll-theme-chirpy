@@ -15,6 +15,7 @@ tabs:
   tags: Tags
   archives: Archives
   about: About
+  works: Works
 
 # the text displayed in the search bar & search results
 search:
@@ -40,7 +41,7 @@ copyright:
     Except where otherwise noted, the blog posts on this site are licensed
     under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
 
-meta: Powered by :PLATFORM with :THEME theme.
+meta: Powered by :PLATFORM
 
 not_found:
   statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
@@ -61,6 +62,28 @@ post:
     unit: min
     prompt: read
   relate_posts: Further Reading
+  share: Share
+  button:
+    next: Newer
+    previous: Older
+    copy_code:
+      succeed: Copied!
+    share_link:
+      title: Copy link
+      succeed: Link copied successfully!
+  # pinned prompt of posts list on homepage
+  pin_prompt: Pinned
+
+work:
+  written_by: By
+  posted: Posted
+  updated: Updated
+  words: words
+  pageview_measure: views
+  read_time:
+    unit: min
+    prompt: read
+  relate_works: Additional Works
   share: Share
   button:
     next: Newer

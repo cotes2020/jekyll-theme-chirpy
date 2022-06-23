@@ -15,7 +15,7 @@
   --heading-color: black;
   --blockquote-border-color: #eee;
   --blockquote-text-color: #9a9a9a;
-  --link-color: #2a408e;
+  --link-color: #f75307;
   --link-underline-color: #dee2e6;
   --button-bg: #fff;
   --btn-border-color: #e9ecef;
@@ -23,7 +23,7 @@
   --btn-backtotop-border-color: #f1f1f1;
   --btn-box-shadow: #eaeaea;
   --checkbox-color: #c5c5c5;
-  --checkbox-checked-color: #07a8f7;
+  --checkbox-checked-color: var(--link-color);
 
   /* Sidebar */
   --sidebar-bg: #eeeeee;
@@ -51,8 +51,9 @@
   --pin-color: #999fa4;
 
   /* Posts */
+  --toc-highlight: rgb(243, 177, 116);
   --btn-share-hover-color: var(--link-color);
-  --card-border-color: #f1f1f1;
+  --card-border-color: #b9b9b9;
   --card-box-shadow: rgba(234, 234, 234, 0.7686274509803922);
   --label-color: #616161;
   --relate-post-date: rgba(30, 55, 70, 0.4);
@@ -78,6 +79,16 @@
   --prompt-danger-bg: rgb(248 215 218 / 56%);
   --prompt-danger-icon-color: #df3c30;
 
+  /* posts' toc, override BS */
+  nav[data-toggle=toc] .nav-link.active,
+  nav[data-toggle=toc] .nav-link.active:focus,
+  nav[data-toggle=toc] .nav-link.active:hover,
+  nav[data-toggle=toc] .nav > li > a:focus,
+  nav[data-toggle=toc] .nav > li > a:hover {
+    color: var(--toc-highlight) !important;
+    border-left-color: var(--toc-highlight) !important;
+  }
+
   [class^=prompt-] {
     --link-underline-color: rgb(219 216 216);
   }
@@ -86,9 +97,17 @@
   --categories-hover-bg: var(--btn-border-color);
   --categories-icon-hover-color: darkslategray;
 
+  /* Skill Bar */
+  --skill-bar-bg: rgb(226, 226, 226);
+
+  /* Timeline */
+  --timeline-bg: rgb(236, 205, 185);
+
   /* Archive */
   --timeline-color: rgba(0, 0, 0, 0.075);
   --timeline-node-bg: #c2c6cc;
   --timeline-year-dot-color: #ffffff;
-
+  .text-themed {
+    color: #343a40;
+  }
 } /* light-scheme */

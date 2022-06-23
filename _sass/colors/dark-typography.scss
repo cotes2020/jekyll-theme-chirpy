@@ -6,17 +6,17 @@
   /* Framework color */
   --body-bg: var(--main-wrapper-bg);
   --mask-bg: rgb(68, 69, 70);
-  --main-wrapper-bg: rgb(27, 27, 30);
+  --main-wrapper-bg: rgb(10, 10, 10);
   --main-border-color: rgb(44, 45, 45);
 
   /* Common color */
   --text-color: rgb(175, 176, 177);
   --text-muted-color: rgb(107, 116, 124);
-  --heading-color: #cccccc;
+  --heading-color: #8e5a2a;
   --blockquote-border-color: rgb(66, 66, 66);
   --blockquote-text-color: rgb(117, 117, 117);
-  --link-color: rgb(138, 180, 248);
-  --link-underline-color: rgb(82, 108, 150);
+  --link-color: #664f3a;
+  --link-underline-color: rgb(150, 107, 82);
   --button-bg: rgb(39, 40, 43);
   --btn-border-color: rgb(63, 65, 68);
   --btn-backtotop-color: var(--text-color);
@@ -52,13 +52,13 @@
   --pin-color: inherit;
 
   /* Posts */
-  --toc-highlight: rgb(116, 178, 243);
+  --toc-highlight: rgb(243, 177, 116);
   --tag-bg: rgb(41, 40, 40);
-  --tag-hover: rgb(43, 56, 62);
+  --tag-hover: rgb(62, 52, 43);
   --tb-odd-bg: rgba(42, 47, 53, 0.52); /* odd rows of the posts' table */
   --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
   --tb-border-color: var(--tb-odd-bg);
-  --footnote-target-bg: rgb(63, 81, 181);
+  --footnote-target-bg: rgb(181, 106, 63);
   --btn-share-color: #6c757d;
   --btn-share-hover-color: #bfc1ca;
   --relate-post-date: var(--text-muted-color);
@@ -72,8 +72,8 @@
   --prompt-text-color: rgb(216 212 212 / 75%);
   --prompt-tip-bg: rgba(77, 187, 95, 0.2);
   --prompt-tip-icon-color: rgb(5 223 5 / 68%);
-  --prompt-info-bg: rgb(7 59 104 / 80%);
-  --prompt-info-icon-color: #0075d1;
+  --prompt-info-bg: rgba(104, 43, 7, 0.8);
+  --prompt-info-icon-color: #d14d00;
   --prompt-warning-bg: rgb(90 69 3 / 95%);
   --prompt-warning-icon-color: rgb(255 165 0 / 80%);
   --prompt-danger-bg: rgb(86 28 8 / 80%);
@@ -89,6 +89,12 @@
   --categories-border: rgb(64, 66, 69);
   --categories-hover-bg: rgb(73, 75, 76);
   --categories-icon-hover-color: white;
+
+  /* Skill Bar */
+  --skill-bar-bg: rgb(44, 40, 37);
+
+  /* Timeline */
+  --timeline-bg: rgb(61, 54, 49);
 
   /* archives */
   --timeline-node-bg: rgb(150, 152, 156);
@@ -153,5 +159,8 @@
   #disqus_thread {
     color-scheme: none;
   }
-
+  .text-themed {
+    color: rgba(255,255,255,0.9);
+  }
 } /* dark-scheme */
+

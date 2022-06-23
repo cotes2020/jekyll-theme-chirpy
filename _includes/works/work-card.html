@@ -1,0 +1,21 @@
+<div class="wow animated fadeIn" data-wow-delay=".15s">
+    <a href="{{ work_url }}" class="work card text-themed" {%- if external and site.open_new_tab -%} target="_blank" {%- endif -%}>
+      {%- if work_img -%}
+      <img id="{{ work_id }}-img" class="card-img-top" src="{{ work_img }}" alt="{{ work_name }}" />
+      {%- endif -%}
+      <div class="card-body">
+        <h5 id="{{ work_id }}-name" class="card-title">
+            {%- if work_type == "remote" -%}
+            <i class="fab fa-github" data-toggle="tooltip" data-placement="bottom" data-delay="250" title="GitHub Repository"></i> |&nbsp;
+            {%- endif -%}
+          {{ work_name }}
+        </h5>
+        <p id="{{ work_id }}-desc" class="card-text">{{ work_desc }}</p>
+        <p id="{{ work_id }}-tools" class="card-text">
+          {%- for tool in work_tools -%}
+          <span class="badge badge-pill text-primary border border-primary ml-1">{{ tool }}</span>
+          {%- endfor -%}
+        </p>
+      </div>
+    </a>
+  </div>
