@@ -5,7 +5,7 @@ permalink: /works/
 icon: bi bi-list
 order: 5
 weight: 1
-remote_projects:
+remote_works:
   - pyarr
   - atomic-calendar-revive
 ---
