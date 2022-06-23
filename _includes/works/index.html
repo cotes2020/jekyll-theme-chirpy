@@ -2,9 +2,11 @@
 <div class="card-columns m-3 mt-5">
 
     <!-- Remote works -->
+    {{ site.github.public_repositories }}
     {% for remote_work in page.remote_works %}
 
       {%- for repo in site.github.public_repositories -%}
+
 
         {%- if remote_work == repo.name -%}
 
