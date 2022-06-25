@@ -52,7 +52,9 @@ layout: page
     <div class="post-content">
       <p>
         {% include no-linenos.html content=post.content %}
+        <!-- extract excerpt-block from content -->
         {% assign excerptParts = post.excerpt | split: "<!-- excerpt-start -->" %}
+        <!-- check if the excerpt tag exists -->
         {% if excerptParts.size == 1 %}
         {{ content | markdownify | strip_html | truncate: 200 | escape }}
         {% else %}
