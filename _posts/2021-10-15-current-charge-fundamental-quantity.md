@@ -1,8 +1,8 @@
 ---
 title: "A Tale of Two Quantities"
 description: "Which is more fundamental — charge or current?"
-categories: [measurement]
-tags: [narrative, fundamentality]
+categories: [electromagnetism]
+tags: [measurement, narrative]
 ---
 
 ## The war
