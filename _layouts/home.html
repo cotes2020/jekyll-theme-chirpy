@@ -52,7 +52,12 @@ layout: page
     <div class="post-content">
       <p>
         {% include no-linenos.html content=post.content %}
+        {% assign excerptParts = post.excerpt | split: "<!-- excerpt-start -->" %}
+        {% if excerptParts.size == 1 %}
         {{ content | markdownify | strip_html | truncate: 200 | escape }}
+        {% else %}
+        {{ excerptParts[1] | markdownify | strip_html | truncate: 200 | escape }}
+        {% endif %}
       </p>
     </div>
 

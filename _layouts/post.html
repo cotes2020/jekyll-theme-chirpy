@@ -99,7 +99,12 @@ tail_includes:
 </div> <!-- .post-meta -->
 
 <div class="post-content">
+  {% assign contentParts = content | split: "<!-- excerpt-end -->" %}
+  {% if contentParts.size == 1 %}
   {{ content }}
+  {% else %}
+  {{ contentParts[1] }}
+  {% endif %}
 </div>
 
 <div class="post-tail-wrapper text-muted">
