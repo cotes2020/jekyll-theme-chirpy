@@ -9,7 +9,7 @@ tags: [Hacking, Code Review, Django, Web]
 
 
 # INTRODUCTION
-Changedetection.io is a famous open source self hosted website change detection monitoring and notification service with over 4k github stars and over 1m+ docker pull. In this writeup, i will show you a bug that i found, that allows an unauthenticated user to bypass the authentication and also achieve a local file disclosure post authentication. For this attack to be successful, the victim should have selenium installed. This has been fixed by the maintainers in the latest version. <https://github.com/dgtlmoon/changedetection.io/commit/5483f5d694ffc0c480245a54bb7c688fa6748428>, <https://github.com/dgtlmoon/changedetection.io/commit/f2fa63848022453d35a8249184c8d56015121283>
+Changedetection.io is a famous open source self hosted website change detection monitoring and notification service with over 4k github stars and over 1m+ docker pull. In this writeup, i will show you a bug that i found, that allows an unauthenticated user to bypass the authentication and also achieve a local file disclosure post authentication. For this attack to be successful, the victim should have selenium installed
 
 # CODE REVIEW
 The application is made in flask. Routing in flask is done using the decorator `route()`. You can learn more about flask auditing in <https://github.com/tomorroisnew/Code-Review-Notes/blob/main/Python/Flask.md>    
