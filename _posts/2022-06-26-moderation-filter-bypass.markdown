@@ -3,7 +3,7 @@ layout:	post
 title:	"Moderation Filter Bypass in support.mozilla.org"
 date:	2022-06-26
 categories: [Hacking, Bug Bounty]
-image: /img/markdownx-xss-popup.PNG
+image: /img/moderate1.png
 tags: [Hacking, Code Review, Django, Web, Bug Bounty]
 ---
 
