@@ -1,0 +1,48 @@
+---
+layout: page
+# The Archives of posts.
+---
+
+{% include lang.html %}
+
+{% if site.prefer_datetime_locale == 'en' or lang == 'en' %}
+  {% assign df_strftime_m = '%b' %}
+  {% assign df_dayjs_m = 'MMM' %}
+{% else %}
+  {% assign df_strftime_m = '/ %m' %}
+  {% assign df_dayjs_m = '/ MM' %}
+{% endif %}
+
+<div id="archives" class="pl-xl-2">
+{% for post in site.posts %}
+  {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+  {% capture pre_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
+  {% if forloop.first %}
+    {% assign last_day = "" %}
+    {% assign last_month = "" %}
+  <span class="lead">{{this_year}}</span>
+  <ul class="list-unstyled">
+  {% endif %}
+    <li>
+      <div>
+        {% assign ts = post.date | date: '%s' %}
+        <span class="date day" data-ts="{{ ts }}" data-df="DD">
+          {{ post.date | date: "%d" }}
+        </span>
+        <span class="date month small text-muted" data-ts="{{ ts }}" data-df="{{ df_dayjs_m }}">
+          {{ post.date | date: df_strftime_m }}
+        </span>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </div>
+    </li>
+  {% if forloop.last %}
+  </ul>
+  {% elsif this_year != pre_year %}
+  </ul>
+  <span class="lead">{{pre_year}}</span>
+  <ul class="list-unstyled">
+    {% assign last_day = "" %}
+    {% assign last_month = "" %}
+  {% endif %}
+{% endfor %}
+</div>

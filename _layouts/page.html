@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+{% include lang.html %}
+
+{% include assets-origin.html %}
+
+<div class="row">
+
+  <!-- core -->
+  <div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4">
+    <div class="post pl-1 pr-1 pl-md-2 pr-md-2">
+
+    {% capture _content %}
+      {% if layout.refactor or page.layout == 'page' %}
+        {% include refactor-content.html content=content %}
+      {% else %}
+        {{ content }}
+      {% endif %}
+    {% endcapture %}
+
+    {% if page.layout == 'page' or page.collection == 'tabs'%}
+      {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
+      <h1 class="dynamic-title">
+        {{ title }}
+      </h1>
+      <div class="post-content">
+        {{ _content }}
+      </div>
+    {% else %}
+      {{ _content }}
+    {% endif %}
+
+    </div>
+  </div> <!-- #core-wrapper -->
+
+  <!-- pannel -->
+  <div id="panel-wrapper" class="col-xl-3 pl-2 text-muted">
+
+    <div class="access">
+      {% include update-list.html %}
+      {% include trending-tags.html %}
+    </div>
+
+    {% for _include in layout.pannel_includes %}
+      {% assign _include_path = _include | append: '.html' %}
+      {% include {{ _include_path }} %}
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- tail -->
+{% if layout.tail_includes %}
+<div class="row">
+  <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4">
+    {% for _include in layout.tail_includes %}
+      {% assign _include_path = _include | append: '.html' %}
+      {% include {{ _include_path }} %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

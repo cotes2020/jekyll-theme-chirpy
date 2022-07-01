@@ -1,0 +1,282 @@
+<!--
+  Refactor the HTML structure.
+-->
+
+{% assign _content = include.content %}
+
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+{% if _content contains '<table' %}
+  {% assign _content = _content
+    | replace: '<table', '<div class="table-wrapper"><table'
+    | replace: '</table>', '</table></div>'
+    | replace: '<code><div class="table-wrapper">', '<code>'
+    | replace: '</table></div></code>', '</table></code>'
+  %}
+{% endif %}
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+{% if _content contains '<pre class="highlight">' %}
+  {% assign _content = _content
+    | replace: '<div class="highlight"><pre class="highlight"><code', '<div class="highlight"><code'
+    | replace: '</code></pre></div>', '</code></div>'
+  %}
+{% endif %}
+
+<!-- Add attribute 'hide-bullet' to the checkbox list -->
+
+{% if _content contains '<li class="task-list-item"><' %}
+  {% assign _content = _content
+    | replace: '"task-list-item"><', '"task-list-item" hide-bullet><'
+  %}
+{% endif %}
+
+<!-- images -->
+
+{% assign IMG_TAG = '<img ' %}
+
+{% if _content contains IMG_TAG %}
+  {% assign _img_content = nil %}
+  {% assign _img_snippets = _content | split: IMG_TAG %}
+
+  {% for _img_snippet in _img_snippets %}
+    {% if forloop.first %}
+      {% assign _img_content = _img_snippet %}
+      {% continue %}
+    {% endif %}
+
+    {% assign _width = nil %}
+    {% assign _height = nil %}
+    {% assign _src = nil %}
+
+    {% assign _left = _img_snippet | split: '>' | first %}
+    {% assign _right = _img_snippet | remove: _left %}
+
+    {% assign _left = _left | remove: ' /' %}
+    {% assign _left = _left | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
+    {% assign _attrs = _left | split: ' ' %}
+
+    {% for _attr in _attrs %}
+      {% assign _pair = _attr | split: '=' %}
+      {% if _pair.size < 2 %}
+        {% continue %}
+      {% endif %}
+
+      {% capture _key %}{{ _pair | first }}{% endcapture %}
+      {% capture _value %}{{ _pair | last | replace: '"', '' }}{% endcapture %}
+
+      {% case _key %}
+        {% when 'width' %}
+          {% assign _width = _value %}
+        {% when 'height' %}
+          {% assign _height = _value %}
+        {% when 'src' %}
+          {% assign _src = _value %}
+      {% endcase %}
+
+      {% if _width and _height and _src %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% if _src %}
+      {% unless _src contains '://' %}
+
+        <!-- Add CDN URL -->
+        {% if site.img_cdn %}
+          {% if site.img_cdn contains '//' %}
+            {% assign _src_prefix = site.img_cdn %}
+          {% else %}
+            {% assign _src_prefix = site.img_cdn | relative_url %}
+          {% endif %}
+        {% else %}
+          {% assign _src_prefix = site.baseurl %}
+        {% endif %}
+
+        <!-- Add image path -->
+        {% if page.img_path %}
+          {% assign _path = page.img_path %}
+          {% assign last_char = _path | slice: -1 %}
+
+          {% unless last_char == '/' %}
+            {% assign _path = _path | append: '/' %}
+          {% endunless %}
+
+          {% assign _src_prefix = _src_prefix | append: _path %}
+        {% endif %}
+
+        {% assign _final_src = _src_prefix | append: _src %}
+        {% assign _left = _left | replace: _src, _final_src %}
+
+      {% endunless %}
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      {% assign _left = _left | replace: 'src=', 'data-src=' %}
+
+    {% endif %}
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    {% if _width and _height %}
+      {%- capture _svg -%}
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ _width }} {{ _height }}'%3E%3C/svg%3E"
+      {%- endcapture -%}
+
+      {% assign _left =  _svg | append: ' ' | append: _left %}
+    {% endif %}
+
+    <!-- Bypass the HTML-proofer test -->
+    {% assign _left = _left | append: ' data-proofer-ignore' %}
+
+    {% assign _img_content = _img_content | append: IMG_TAG | append: _left | append: _right %}
+
+  {% endfor %}
+
+  {% assign _content = _img_content %}
+
+{% endif %}
+
+<!-- Add header for code snippets -->
+
+{% if _content contains '<div class="highlight"><code>' %}
+  {% assign _code_spippets = _content | split: '<div class="highlight"><code>' %}
+  {% assign _new_content = '' %}
+
+  {% for _snippet in _code_spippets %}
+
+    {% if forloop.last %}
+      {% assign _new_content = _new_content | append: _snippet %}
+
+    {% else %}
+
+      {% assign _left = _snippet | split: '><' | last%}
+
+      {% if _left contains 'file="' %}
+        {% assign _label_text = _left | split: 'file="' | last | split: '"' | first %}
+        {% assign _label_icon = 'far fa-file-code' %}
+      {% else %}
+        {% assign _lang = _left | split: 'language-' | last | split: ' ' | first %}
+        {% capture _label_text %}{% include language-alias.html language=_lang %}{% endcapture %}
+        {% assign _label_icon = 'fas fa-code small' %}
+      {% endif %}
+
+      {% capture _label %}
+        <span data-label-text="{{ _label_text | strip }}"><i class="{{ _label_icon }}"></i></span>
+      {% endcapture %}
+
+      {% assign _new_content = _new_content | append: _snippet
+          | append: '<div class="code-header">'
+          | append: _label
+          | append: '<button aria-label="copy" data-title-succeed="'
+          | append: site.data.locales[lang].post.button.copy_code.succeed
+          | append: '"><i class="far fa-clipboard"></i></button></div>'
+          | append: '<div class="highlight"><code>'
+      %}
+
+    {% endif %}
+
+  {% endfor %}
+
+  {% assign _content = _new_content %}
+
+{% endif %}
+
+<!-- Create heading anchors -->
+
+{% assign heading_levels = '2,3,4,5' | split: ',' %}
+{% assign _heading_content = _content %}
+
+{% for level in heading_levels %}
+  {% capture mark_start %}<h{{ level }} id="{% endcapture %}
+  {% capture mark_end %}</h{{ level }}>{% endcapture %}
+
+  {% if _heading_content contains mark_start %}
+    {% assign _new_content = nil %}
+    {% assign heading_snippets = _heading_content | split: mark_start %}
+
+    {% for snippet in heading_snippets %}
+      {% if forloop.first %}
+        {% assign _new_content = snippet %}
+        {% continue %}
+      {% endif %}
+
+      {% assign id = snippet | split: '"' | first %}
+      {% capture anchor %}<a href="#{{ id }}" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>{% endcapture %}
+
+      {% assign left = snippet | split: mark_end | first %}
+      {% assign right = snippet | slice: left.size, snippet.size %}
+      {% assign left = left | replace: '">', '"><span class="mr-2">' | append: '</span>' %}
+
+      {% assign _new_content = _new_content | append: mark_start
+          | append: left | append: anchor | append: right
+      %}
+
+    {% endfor %}
+
+    {% assign _heading_content = _new_content %}
+
+  {% endif %}
+{% endfor %}
+
+{% assign _content = _heading_content %}
+
+<!-- Wrap prompt element of blockquote with the <div> tag -->
+
+{% assign blockquote_start = '<blockquote class=' %}
+{% assign blockquote_end = '</blockquote>' %}
+{% assign cls_prefix = 'prompt-' %}
+
+{% if _content contains blockquote_start %}
+
+  {% assign _prompt_content = nil %}
+  {% assign _prompt_snippets = _content | split: blockquote_start %}
+
+  {% for _snippet in _prompt_snippets %}
+
+    {% if forloop.first %}
+      {% assign _prompt_content =  _snippet %}
+      {% continue %}
+    {% endif %}
+
+    {% assign left = _snippet | split: blockquote_end | first %}
+    {% assign right = _snippet | slice: left.size, _snippet.size %}
+
+    {% assign cls_str = left | split: '>' | first %}
+    {% assign cls_array = cls_str | remove: '"' | split: ' ' %}
+    {% assign is_prompt = false %}
+
+    {% for cls in cls_array %}
+      {% if cls contains cls_prefix %}
+        {% assign is_prompt = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% unless is_prompt %}
+      {% assign _prompt_content = _prompt_content | append: blockquote_start | append: _snippet %}
+      {% continue %}
+    {% endunless %}
+
+    {% assign left = left | slice: cls_str.size, left.size %}
+    {% assign left = cls_str | append: '><div' | append: left | append: '</div>' %}
+
+    {% assign _prompt_content = _prompt_content | append: blockquote_start | append: left | append: right %}
+
+  {% endfor %}
+
+  {% assign _content = _prompt_content %}
+
+{% endif %}
+
+<!-- return -->
+
+{{ _content }}

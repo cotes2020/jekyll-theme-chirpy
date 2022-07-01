@@ -1,0 +1,27 @@
+<!--
+ Post sharing snippet
+-->
+
+<div class="share-wrapper">
+  <span class="share-label text-muted mr-1">{{ site.data.locales[lang].post.share }}</span>
+  <span class="share-icons">
+    {% capture title %}{{ page.title }} - {{ site.title }}{% endcapture %}
+    {% assign title = title | url_encode %}
+    {% assign url = page.url | absolute_url | url_encode %}
+
+    {% for share in site.data.share.platforms %}
+      {% assign link = share.link | replace: 'TITLE', title | replace: 'URL', url %}
+        <a href="{{ link }}" data-toggle="tooltip" data-placement="top"
+          title="{{ share.type }}" target="_blank" rel="noopener" aria-label="{{ share.type }}">
+          <i class="fa-fw {{ share.icon }}"></i>
+        </a>
+    {% endfor %}
+
+    <i id="copy-link" class="fa-fw fas fa-link small"
+        data-toggle="tooltip" data-placement="top"
+        title="{{ site.data.locales[lang].post.button.share_link.title }}"
+        data-title-succeed="{{ site.data.locales[lang].post.button.share_link.succeed }}">
+    </i>
+
+  </span>
+</div>

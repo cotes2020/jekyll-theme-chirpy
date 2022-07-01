@@ -1,0 +1,18 @@
+---
+layout: compress
+swcache: true
+---
+
+[
+  {% for post in site.posts %}
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "categories": {{ post.categories | join: ', ' | jsonify }},
+    "tags": {{ post.tags | join: ', ' | jsonify }},
+    "date": "{{ post.date }}",
+    {% include no-linenos.html content=post.content %}
+    "snippet": {{ content | strip_html | strip_newlines | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

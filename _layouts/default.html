@@ -1,0 +1,74 @@
+---
+layout: compress
+# Default layout
+---
+
+<!DOCTYPE html>
+
+{% include lang.html %}
+
+{% include assets-origin.html %}
+
+{% capture prefer_mode %}
+  {% if site.theme_mode %}
+    data-mode="{{ site.theme_mode }}"
+  {% endif %}
+{% endcapture %}
+
+<html lang="{{ site.lang }}"{{ prefer_mode }}>
+
+  {% include head.html %}
+
+  <body data-spy="scroll" data-target="#toc" data-topbar-visible="true">
+
+    {% include sidebar.html %}
+
+    {% include topbar.html %}
+
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div id="main" class="container pl-xl-4 pr-xl-4">
+
+        {{ content }}
+
+        {% include footer.html %}
+
+      </div>
+
+      {% include search-results.html %}
+
+    </div> <!-- #main-wrapper -->
+
+    {% if page.mermaid %}
+      {% include mermaid.html %}
+    {% endif %}
+
+    <div id="mask"></div>
+
+    <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    {% if site.pwa.enabled %}
+      <div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+        data-animation="true" data-autohide="false">
+        <div class="toast-header">
+          <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body text-center pt-0">
+          <p class="pl-2 pr-2 mb-3">{{ site.data.locales[lang].notification.update_found }}</p>
+          <button type="button" class="btn btn-primary" aria-label="Update">
+            {{ site.data.locales[lang].notification.update }}
+          </button>
+        </div>
+      </div>
+    {% endif %}
+
+    {% include search-loader.html %}
+
+    {% include js-selector.html %}
+
+  </body>
+
+</html>

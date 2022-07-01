@@ -1,0 +1,151 @@
+/*
+* Mainly scss modules, only imported to `assets/css/main.scss`
+*/
+
+/* ---------- scss placeholder --------- */
+
+%heading {
+  color: var(--heading-color);
+  font-weight: 400;
+  font-family: 'Lato', 'Microsoft Yahei', sans-serif;
+}
+
+%section {
+  #core-wrapper & {
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+
+    &:focus {
+      outline: none; /* avoid outline in Safari */
+    }
+  }
+}
+
+%anchor {
+  .anchor {
+    font-size: 80%;
+  }
+
+  @media (hover: hover) {
+    .anchor {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.25s ease-in, visibility 0s ease-in 0.25s;
+    }
+
+    &:hover {
+      .anchor {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.25s ease-in, visibility 0s ease-in 0s;
+      }
+    }
+  }
+}
+
+%tag-hover {
+  background: var(--tag-hover);
+  transition: background 0.35s ease-in-out;
+}
+
+%table-cell {
+  padding: 0.4rem 1rem;
+  font-size: 95%;
+  white-space: nowrap;
+}
+
+%link-hover {
+  color: #d2603a !important;
+  border-bottom: 1px solid #d2603a;
+  text-decoration: none;
+}
+
+%link-color {
+  color: var(--link-color);
+}
+
+%link-underline {
+  border-bottom: 1px solid var(--link-underline-color);
+}
+
+%clickable-transition {
+  transition: color 0.35s ease-in-out;
+}
+
+%no-cursor {
+  user-select: none;
+}
+
+%no-bottom-border {
+  border-bottom: none;
+}
+
+%cursor-pointer {
+  cursor: pointer;
+}
+
+%normal-font-style {
+  font-style: normal;
+}
+
+%img-caption {
+  + em {
+    display: block;
+    text-align: center;
+    font-style: normal;
+    font-size: 80%;
+    padding: 0;
+    color: #6d6c6c;
+  }
+}
+
+%sidebar-links {
+  color: rgba(117, 117, 117, 0.9);
+  user-select: none;
+}
+
+/* ---------- scss mixin --------- */
+
+@mixin no-text-decoration {
+  text-decoration: none;
+}
+
+@mixin ml-mr($value) {
+  margin-left: $value;
+  margin-right: $value;
+}
+
+@mixin pl-pr($val) {
+  padding-left: $val;
+  padding-right: $val;
+}
+
+@mixin input-placeholder {
+  opacity: 0.6;
+}
+
+@mixin label($font-size: 1rem, $font-weight: 600, $color: var(--label-color)) {
+  color: $color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+
+@mixin align-center {
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+@mixin prompt($type, $fw-icon, $icon-weight: 900) {
+  &.prompt-#{$type} {
+    background-color: var(--prompt-#{$type}-bg);
+
+    &::before {
+      content: $fw-icon;
+      color: var(--prompt-#{$type}-icon-color);
+      font-weight: $icon-weight;
+    }
+  }
+}

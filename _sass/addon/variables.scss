@@ -1,0 +1,34 @@
+/*
+ * The SCSS variables
+ */
+
+/* sidebar */
+
+$sidebar-width: 260px !default;        /* the basic width */
+$sidebar-width-small: 210px !default;  /* screen width: >= 850px, <= 1199px (iPad landscape) */
+$sidebar-width-large: 350px !default;  /* screen width: >= 1650px */
+
+/* tabs of sidebar */
+
+$tab-count: 5 !default;   /* backward compatible (version <= 4.0.2) */
+$tab-height: 3rem !default;
+$tab-cursor-height: 1.6rem !default;
+
+$cursor-width: 2px !default;    /* the cursor width of the selected tab */
+
+/* other framework sizes */
+
+$topbar-height: 3rem !default;
+
+$search-max-width: 210px !default;
+
+$footer-height: 5rem !default;
+$footer-height-mobile: 6rem !default;   /* screen width: <= 576px */
+
+$main-content-max-width: 1250px !default;
+
+$bottom-min-height: 35rem !default;
+
+/* syntax highlight */
+
+$code-font-size: 0.85rem !default;

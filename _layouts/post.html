@@ -1,0 +1,152 @@
+---
+layout: page
+refactor: true
+pannel_includes:
+  - toc
+tail_includes:
+  - related-posts
+  - post-nav
+  - comments
+---
+
+{% include lang.html %}
+
+<h1 data-toc-skip>{{ page.title }}</h1>
+
+<div class="post-meta text-muted">
+    <!-- published date -->
+    <span>
+      {{ site.data.locales[lang].post.posted }}
+      {% include datetime.html date=page.date tooltip=true %}
+    </span>
+
+    <!-- lastmod date -->
+    {% if page.last_modified_at %}
+    <span>
+      {{ site.data.locales[lang].post.updated }}
+      {% include datetime.html date=page.last_modified_at tooltip=true %}
+    </span>
+    {% endif %}
+
+  {% if page.image.path %}
+    {% capture bg %}
+      {% unless page.image.no_bg %}{{ 'bg' }}{% endunless %}
+    {% endcapture %}
+
+    <div class="mt-3 mb-3">
+      <img src="{{ page.image.path }}" class="preview-img {{ bg | strip }}"
+        alt="{{ page.image.alt | default: "Preview Image" }}"
+
+      {% if page.image.width %}
+        width="{{ page.image.width }}"
+      {% elsif page.image.w %}
+        width="{{ page.image.w }}"
+      {% endif %}
+
+      {% if page.image.height %}
+        height="{{ page.image.height }}"
+      {% elsif page.image.h %}
+        height="{{ page.image.h }}"
+      {% endif %}>
+
+      {% if page.image.alt %}
+        <figcaption class="pt-2 pb-2">{{ page.image.alt }}</figcaption>
+      {% endif %}
+
+    </div>
+  {% endif %}
+
+  <div class="d-flex justify-content-between">
+    <!-- author -->
+    <span>
+      {% capture author_name %}{{ site.data.authors[page.author].name | default: site.social.name }}{% endcapture %}
+      {% assign author_link = nil %}
+
+      {% if page.author %}
+        {% assign author_link = site.data.authors[page.author].url %}
+      {% elsif author_name == site.social.name %}
+        {% assign author_link = site.social.links[0] %}
+      {% endif %}
+
+      {{ site.data.locales[lang].post.written_by }}
+
+      <em>
+        {% if author_link %}
+          <a href="{{ author_link }}">{{ author_name }}</a>
+        {% else %}
+        {{ author_name }}
+        {% endif %}
+      </em>
+    </span>
+
+    <div>
+      <!-- page views -->
+      {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
+      <span>
+        <em id="pv" class="pageviews">
+          <i class="fas fa-spinner fa-spin fa-fw"></i>
+        </em>
+        {{ site.data.locales[lang].post.pageview_measure }}
+      </span>
+      {% endif %}
+
+      <!-- read time -->
+      {% include read-time.html content=content prompt=true %}
+    </div>
+
+  </div> <!-- .d-flex -->
+
+</div> <!-- .post-meta -->
+
+<div class="post-content">
+  {{ content }}
+</div>
+
+<div class="post-tail-wrapper text-muted">
+
+  <!-- categories -->
+  {% if page.categories.size > 0 %}
+  <div class="post-meta mb-3">
+    <i class="far fa-folder-open fa-fw mr-1"></i>
+    {% for category in page.categories %}
+      <a href='{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/'>{{ category }}</a>
+      {%- unless forloop.last -%}, {%- endunless -%}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- tags -->
+  {% if page.tags.size > 0 %}
+  <div class="post-tags">
+    <i class="fa fa-tags fa-fw mr-1"></i>
+      {% for tag in page.tags %}
+      <a href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/"
+          class="post-tag no-text-decoration" >
+        {{- tag -}}
+      </a>
+      {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="post-tail-bottom
+    d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+    <div class="license-wrapper">
+
+      {% if site.data.locales[lang].copyright.license.template %}
+
+        {% capture _replacement %}
+        <a href="{{ site.data.locales[lang].copyright.license.link }}">
+          {{ site.data.locales[lang].copyright.license.name }}
+        </a>
+        {% endcapture %}
+
+        {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
+
+      {% endif %}
+    </div>
+
+    {% include post-sharing.html %}
+
+  </div><!-- .post-tail-bottom -->
+
+</div><!-- div.post-tail-wrapper -->
