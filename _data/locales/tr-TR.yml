@@ -25,7 +25,7 @@ search:
 panel:
   lastmod: Yeni Güncellendi
   trending_tags: Yükselen Etiketler
-  toc: İçerikler
+  toc: İçindekiler
 
 copyright:
   # Shown at the bottom of the post
@@ -37,8 +37,7 @@ copyright:
   # Displayed in the footer
   brief: Bazı hakları saklıdır.
   verbose: >-
-    Aksi belirtilmediği sürece, bu sitedeki gönderiler lisanslıdır.
-    Creative Commons Atıf 4.0 Uluslararası (CC BY 4.0) Lisansı altındadır.
+    Aksi belirtilmediği sürece, bu sitedeki gönderiler Creative Commons Atıf 4.0 Uluslararası (CC BY 4.0) Lisansı altındadır.
     Kısaca sayfa linkini de vererek paylaşabilir veya düzenleyip paylaşabilirsin.
 
 meta: :PLATFORM ve :THEME teması ile yapıldı.
@@ -54,8 +53,8 @@ notification:
 
 post:
   written_by: Yazan
-  posted: Gönderildi
-  updated: Güncellendi
+  posted: Gönderilme Tarihi
+  updated: Güncellenme Tarihi
   words: sözcük
   pageview_measure: görüntülenme
   read_time:
