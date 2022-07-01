@@ -18,7 +18,7 @@ tabs:
 
 # the text displayed in the search bar & search results
 search:
-  hint: ararım seni her yerde...
+  hint: Ara...
   cancel: İptal
   no_results: Hop! Öyle bir şey bulamadım.
 

@@ -10,43 +10,42 @@ baseurl: ''
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: tr-TR
+lang: en
 
 # Additional parameters for datetime localization, optional. › https://github.com/iamkun/dayjs/tree/dev/src/locale
 prefer_datetime_locale:
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Europe/Istanbul
+timezone: Asia/Shanghai
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: HüzünlüArtemis                          # the main title
+title: Chirpy                          # the main title
 
-tagline: Revese Engineering and Malware Analysis   # it will display as the sub-title
+tagline: A text-focused Jekyll theme   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A place where you can find Reversing Engineering CTF challenges writeups,
-  Malware Analysis reports and some low-level geeky stuff
+  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://huzunluartemis.vercel.app'
+url: ''
 
 github:
-  username: HuzunluArtemis             # change to your github username
+  username: github_username             # change to your github username
 
 twitter:
-  username: HuzunluArtemis            # change to your twitter username
+  username: twitter_username            # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: HuzunluArtemis
-  email: huzunluartemis@tuta.io            # change to your email address
+  name: your_full_name
+  email: example@doamin.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/HuzunluArtemis      # change to your twitter homepage
-    - https://github.com/HuzunluArtemis       # change to your github homepage
+    - https://twitter.com/username      # change to your twitter homepage
+    - https://github.com/username       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -81,19 +80,19 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 
+img_cdn: 'https://raw.githubusercontent.com/cotes2020/chirpy-images/main'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/assets/img/avatar.png'
+avatar: '/commons/avatar.jpg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
 
 comments:
-  active: disqus         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
-    shortname: huzunluartemis   # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+    shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
     repo:         # <gh-username>/<repo>
@@ -149,7 +148,7 @@ defaults:
       toc: true         # Display TOC column in posts.
       # DO NOT modify the following parameter unless you are confident enough
       # to update the code of all other post links in this project.
-      permalink: /:title/
+      permalink: /posts/:title/
   - scope:
       path: _drafts
     values:

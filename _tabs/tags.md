@@ -1,6 +1,6 @@
 ---
 layout: tags
-title: Etiketler
+title: Tags
 icon: fas fa-tag
 order: 2
 ---
