@@ -28,6 +28,11 @@ tagline: A text-focused Jekyll theme   # it will display as the sub-title
 description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
+# Used to detemine custom excerpt tag. Include `<!-- excerpt-start -->` and `<!-- excerpt-end -->` in the post.
+# This will be the excepty on home page.
+excerpt_separator: <!-- excerpt-end -->
+
+
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
 
