@@ -47,7 +47,7 @@ not_found:
 
 notification:
   update_found: İçeriğin yeni bir sürümü mevcut.
-  update: Güncelleme
+  update: Güncelle
 
 # ----- Posts related labels -----
 
