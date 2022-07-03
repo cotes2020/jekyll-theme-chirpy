@@ -7,20 +7,20 @@ tags: [GitHub, Organization, sw마에스트로]
 
 # GitHub organization 만들기
 
-## 참고링크
+### 참고링크
 
 [GitHub에서 협업 용 단체(Organization) 만드는 방법](https://www.lainyzine.com/ko/article/how-to-create-an-organization-for-collaboration-on-github/)
 
-### 1. 소개
+## 0. 소개
 
 sw마에스트로 팀빌딩이 끝났고 멘토 매칭도 한분만 남겨 둔 상황이다. 본격적으로 개발에 들어가기 전, github organization을 만들어 보려 한다.
 
-### 2. organization 만들기
+## 1. organization 만들기
 
 위 참고링크 따라서 만들었다. 쉬우므로 생략.
 ![1](https://user-images.githubusercontent.com/64428916/169953320-0dde2839-8d25-4472-8fef-a24f4d902185.png)
 
-### 3. 기존 레포 가져오기
+## 2. 기존 레포 가져오기
 
 첨에 아래와 같은 에러가 발생했다. private 레포를 가져오려고 한게 문제였던 것 같다.
 
