@@ -23,7 +23,7 @@ timezone: Asia/Seoul
 
 title: 개발사전                          # the main title
 
-tagline: 꾸준히 개발지식을 정리해요   # it will display as the sub-title
+tagline: [~블로그 이사중입니다~] 꾸준히 개발지식을 정리해요   # it will display as the sub-title
 
 description:   # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
