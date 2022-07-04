@@ -10094,7 +10094,7 @@ class Solution {
         // if length is less than 3, return empty result set
         if (n < 3 || nums[0] > 0) return new ArrayList(res);
 
-        for(int i = 0 ; i < nums.length;i++) map.put(nums[i], i);
+        for(int i = 0 ; i < nums.length; i++) map.put(nums[i], i);
 
         for(int i=0;i<n-1;i++){
             for(int j=i+1;j<n;j++) {
@@ -10126,12 +10126,16 @@ class Solution {
         // if length is less than 3, return empty result set
         if (n < 3 || nums[0] > 0) return res;
 
+        // left to tight
         for(int i=0;i<n-1;i++){
+            //  i j ------ k
             int j=i+1, k=n-1;
             while(j<k){
-                if(0-nums[i]==nums[j]+nums[k]) res.add(new ArrayList(nums[i]+nums[j]+nums[k]));
-                else if(0-nums[i]<nums[j]+nums[k]) k--;
-                else if(0-nums[i]>nums[j]+nums[k]) j++;
+                if(0==nums[i]+nums[j]+nums[k]) res.add(new ArrayList(nums[i]+nums[j]+nums[k]));
+                // need smaller number
+                else if(0<nums[i]+nums[j]+nums[k]) k--;
+                // need biger number
+                else if(0>nums[i]+nums[j]+nums[k]) j++;
                 else {
                     while(j<k && nums[j]==nums[j+1]) j++;
                     while(j<k && nums[k]==nums[k-1]) k--;
