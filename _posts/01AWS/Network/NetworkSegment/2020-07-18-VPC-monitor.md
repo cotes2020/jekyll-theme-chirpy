@@ -1,5 +1,5 @@
 ---
-title: AWS - VPC - Logging and monitoring for Amazon VPC
+title: AWS - VPC - Log and monitor
 date: 2020-07-18 11:11:11 -0400
 categories: [01AWS, Network]
 tags: [AWS, Network, VPC]
@@ -7,10 +7,11 @@ toc: true
 image:
 ---
 
-- [Logging and monitoring for Amazon VPC](#logging-and-monitoring-for-amazon-vpc)
+- [Log and monitor for Amazon VPC](#log-and-monitor-for-amazon-vpc)
   - [Monitoring NAT gateways using Amazon CloudWatch](#monitoring-nat-gateways-using-amazon-cloudwatch)
   - [VPC Flow Logs](#vpc-flow-logs)
     - [Flow logs basics](#flow-logs-basics)
+    - [create a flow log](#create-a-flow-log)
     - [Flow log records](#flow-log-records)
     - [Flow log limitations](#flow-log-limitations)
     - [Flow logs pricing](#flow-logs-pricing)
@@ -18,7 +19,7 @@ image:
 
 ---
 
-# Logging and monitoring for Amazon VPC
+# Log and monitor for Amazon VPC
 
 
 use automated monitoring tools to watch components in VPC and report when something is wrong:
@@ -51,11 +52,9 @@ For more information about Amazon CloudWatch, see the Amazon CloudWatch User Gui
 
 ## VPC Flow Logs
 
+> to monitor VPC traffic
 
 > to verify that the configured network access rules are working as expected
-
-
-
 
 ### Flow logs basics
 VPC Flow Logs
@@ -73,7 +72,7 @@ VPC Flow Logs
    - create metrics to identify trends and patterns.
 
 
-3. <font color=red> enable flow log </font> 
+3. <font color=red> enable flow log </font>
    - Flow logs can be enabled/created at the following levels:
      - VPC.
      - Subnet.
@@ -86,8 +85,6 @@ VPC Flow Logs
    - Flow log data is collected outside of the path of network traffic
      - therefore does not affect network throughput or latency.
      - create or delete flow logs without any risk of impact to network performance.
-
-
 
 
 5. can be published to <font color=red> Amazon CloudWatch Logs or Amazon S3 </font>
@@ -124,15 +121,14 @@ Not all traffic is monitored, e.g. the following traffic is excluded:
 
 ---
 
+### create a flow log
+
 To create a flow log, you specify:
 - `The resource` for which to create the flow log
 - `The type` of traffic to capture (accepted traffic, rejected traffic, or all traffic)
 - `The destinations` to publish the flow log data
 
 ![flow-logs-diagram](https://i.imgur.com/sBGBdBd.png)
-
-
-
 
 
 You can create flow logs for network interfaces that are created by other AWS services, such as:
@@ -155,6 +151,7 @@ delete
 - To delete an existing log stream, use the CloudWatch Logs console.
 - To delete existing log file objects, use the Amazon S3 console.
 - After you've deleted a flow log, it can take several minutes to stop collecting data.
+
 
 ---
 
@@ -260,7 +257,7 @@ Collect (Data Ingestion)	| $0.50 per GB
 Store (Archival)	| $0.03 per GB
 Analyze (Logs Insights queries)	| $0.005 per GB of data scanned
 
-
+---
 
 ### price
 
@@ -322,7 +319,7 @@ Total Ingestion Charges = $2,560 + $3,072 + $1,536 + $1126.40 = $8,294.40
 
 
 
-
+---
 
 ref:
 - [*VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html)
