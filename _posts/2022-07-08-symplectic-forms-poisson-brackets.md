@@ -139,14 +139,14 @@ To summarize, we have found how symplectic forms blend into Hamiltonian mechanic
 
 For further reading, visit the following:
 
-1. [Poisson bracket](https://en.wikipedia.org/wiki/Poisson_bracket)
+- [Poisson bracket](https://en.wikipedia.org/wiki/Poisson_bracket)
 
-2. [Symplectic geometry](https://en.wikipedia.org/wiki/Symplectic_geometry)
+- [Symplectic geometry](https://en.wikipedia.org/wiki/Symplectic_geometry)
 
-3. [Symplectic manifold](https://en.wikipedia.org/wiki/Symplectic_manifold)
+- [Symplectic manifold](https://en.wikipedia.org/wiki/Symplectic_manifold)
 
-4. [Symplectic form](https://mathworld.wolfram.com/SymplecticForm.html)
+- [Symplectic form](https://mathworld.wolfram.com/SymplecticForm.html)
 
-5. [Exterior derivative](https://en.wikipedia.org/wiki/Exterior_derivative)
+- [Exterior derivative](https://en.wikipedia.org/wiki/Exterior_derivative)
 
-6. [Special Relativity and Flat Spacetime](https://preposterousuniverse.com/wp-content/uploads/grnotes-one.pdf)
+- [Special Relativity and Flat Spacetime](https://preposterousuniverse.com/wp-content/uploads/grnotes-one.pdf)
