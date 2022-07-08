@@ -135,7 +135,7 @@ To understand how the above works on a symplectic manifold, we will have to expl
 
 ## Conclusion
 
-To summarize, we have found how symplectic forms blend into Hamiltonian mechanics, via the structure of Poisson brackets. Subsequently, we explored the important properties of symplectic forms and also their form as maps, in both coordinate-dependent and coordinate-independent form.
+To summarize, we have found how symplectic forms blend into Hamiltonian mechanics, via the structure of Poisson brackets. Subsequently, we explored the important properties of symplectic forms and also their form as maps, in both coordinate-dependent and coordinate-independent representation.
 
 For further reading, visit the following:
 
