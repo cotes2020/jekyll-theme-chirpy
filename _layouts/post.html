@@ -92,6 +92,11 @@ tail_includes:
 
       <!-- read time -->
       {% include read-time.html content=content prompt=true %}
+
+      <!-- view on github -->
+      {% if page.view_on_github %}
+        {% include view_on_github.html %}
+      {% endif %}
     </div>
 
   </div> <!-- .d-flex -->
