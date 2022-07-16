@@ -131,6 +131,13 @@ mjx-container {
   overflow-y: hidden;
 }
 
+/* display math */
+span.kdmath > mjx-container {
+  display: block;
+  text-align: center;
+  margin: 1rem;
+}
+
 kbd {
   font-family: inherit;
   display: inline-block;
