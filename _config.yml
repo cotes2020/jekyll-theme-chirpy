@@ -132,6 +132,8 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
+  math_engine: ~ # tell kramdown to leave math expressions alone, otherwise kramdown will 
+                 # automatically convert delimiters like "\[", "$$" to something unwanted.
 
 collections:
   tabs:
