@@ -64,24 +64,7 @@
 
 {% if page.math %}
   <!-- MathJax -->
-  <script>
-  /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
-  MathJax = {
-    tex: {
-      inlineMath: [              /* start/end delimiter pairs for in-line math */
-        ['$','$'],
-        ['\\(','\\)']
-      ],
-      displayMath: [             /* start/end delimiter pairs for display math */
-        ['$$', '$$'],
-        ['\\[', '\\]']
-      ]
-    }
-  };
-  </script>
-  <script src="{{ site.data.assets[origin].polyfill.js | relative_url }}"></script>
-  <script id="MathJax-script" async src="{{ site.data.assets[origin].mathjax.js | relative_url }}">
-  </script>
+  {% include math.html %}
 {% endif %}
 
 <!-- commons -->
