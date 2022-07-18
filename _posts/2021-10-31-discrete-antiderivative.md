@@ -1,7 +1,7 @@
 ---
 title: "The Discrete Antiderivative Operator"
 description: "Finding an expression for the discrete antiderivative of a function"
-categories: [discrete calculus]
+categories: [discrete mathematics]
 ---
 
 ## Discrete derivative operator
