@@ -1,7 +1,7 @@
 ---
 title: Linear and Polynomial Regression
 author: 이채준
-date: 2022-07-21
+date: 2021-01-03 18:32:00 -0500
 categories: [Study]
 tags: []
 ---
