@@ -1,7 +1,7 @@
 ---
 title: Linear and Polynomial Regression
-author: Chaejun Lee
-date: 2021-01-03 18:32:00 -0500
+author: RealJuney
+date: 2022-07-21
 categories: [Study]
 tags: []
 ---
