@@ -2,7 +2,7 @@
 ## Blog For Machine Learning Study
 
 ## TEAM
-0archlinux0  
+0ArchLinux0  
 RealJuney  
 
 
