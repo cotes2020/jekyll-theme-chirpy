@@ -98,7 +98,7 @@ flush() {
 
   shopt -s dotglob nullglob
   mv "$_backup_dir"/* .
-  [[ -f ".nojekyll" ]] || echo "" >".nojekyll"
+  # [[ -f ".nojekyll" ]] || echo "" >".nojekyll"
 }
 
 deploy() {
@@ -119,7 +119,7 @@ deploy() {
 main() {
   init
   build
-  test
+  # test
   resume_site_dir
 
   if $_opt_dry_run; then
