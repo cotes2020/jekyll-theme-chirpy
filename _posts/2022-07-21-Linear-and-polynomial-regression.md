@@ -36,7 +36,7 @@ The point where gradient of the loss function is equal to 0 is the point where t
 ![](/assets/img/regression/img5.png)
 
 
-### Polynomial Regression
+## Polynomial Regression
 Polynomial Regression is similar but models a relationship as a polynomial function.
 We can calculate the parameters similarly, but instead of matrix X we use a matrix called 'feature matrix'. Example below.
 ![](/assets/img/regression/img6.png)
