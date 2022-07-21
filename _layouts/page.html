@@ -19,7 +19,6 @@ layout: default
         {{ content }}
       {% endif %}
     {% endcapture %}
-
     {% if page.layout == 'page' or page.collection == 'tabs'%}
       {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
       <h1 class="dynamic-title">
