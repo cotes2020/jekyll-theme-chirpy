@@ -83,6 +83,17 @@ toc: true
           - [授权响应](#授权响应-2)
       - [example](#example-1)
         - [通过 OIDC 协议实现 SSO 单点登录](#通过-oidc-协议实现-sso-单点登录)
+        - [创建自己的用户目录](#创建自己的用户目录)
+        - [架设自己的 OIDC Provider](#架设自己的-oidc-provider)
+        - [在 OIDC Provider 申请 Client](#在-oidc-provider-申请-client)
+        - [修改配置文件](#修改配置文件)
+        - [启动 node-oidc-provider](#启动-node-oidc-provider)
+        - [编写第一个应用](#编写第一个应用)
+        - [编写第二个应用](#编写第二个应用)
+        - [向 OIDC Provider 发起登录请求](#向-oidc-provider-发起登录请求)
+        - [Web App 从 OIDC Provider 获取用户信息](#web-app-从-oidc-provider-获取用户信息)
+        - [登录第二个 Web App](#登录第二个-web-app)
+        - [登录态管理](#登录态管理)
 - [compare](#compare)
 
 
@@ -602,7 +613,7 @@ http://someurl/login (session id:123456)
 
 - can grant access to only a subset of data
   - one `token` for one `API`
-  - just give specific right: make transaction, just search ....
+  - just give specific right: make transaction, just search ...
 
 
 token has 3 part: `header.payload.signature`
@@ -1100,6 +1111,7 @@ Content-type: application/json; charset=utf-8
 
 ![pi](https://www.wangbase.com/blogimg/asset/201904/bg2019040905.jpg)
 
+
 ```bash
 # 客户端通过将用户重定向到授权服务端来发起一个授权流程，
 # A 网站提供一个链接，用户点击后就会跳转到 B 网站，授权用户数据给 A 网站使用。
@@ -1428,7 +1440,7 @@ WantedBy=multi-user.target
 
 nginx 配置
 
-```bash
+```
 location /oauth2/ {
         proxy_pass       http://127.0.0.1:4180;
         proxy_set_header Host                    $host;
@@ -1864,6 +1876,10 @@ OpenID vs OpenID Connect
 ---
 
 
+
+
+
+
 ### OpenID Connect(OIDC) 协议
 
 <font color=red> OAuth2与资源访问和共享有关，而OIDC与用户身份验证有关。 </font>
@@ -1918,8 +1934,31 @@ OIDC在2014年发行。虽然它不是第一个idp标准，但从可用性、简
     - 通过 Access Token 从认证服务的 UserInfo Endpoint 接口获取更详细的用户信息。
 
 
+
 - 它规定了其他应用，例如你开发的应用 A（XX 邮件系统），应用 B（XX 聊天系统），应用 C（XX 文档系统），如何到你的中央数据表中取出用户数据，
 - 约定了交互方式、安全规范等，确保了你的用户能够在访问所有应用时，只需登录一遍，而不是反反复复地输入密码，而且遵循这些规范，你的用户认证环节会很安全。
+
+
+
+
+用户目录
+- 系统的总用户表就像一本书一样，书的封皮上写着“所有用户”四个字。
+- 打开第一页，就是目录，里面列满了用户的名字，翻到对应的页码就能看到这个人的邮箱，手机号，生日信息等等。
+- 无论你开发多少个应用，要确保你有一份这些应用所有用户信息的 truth source。
+- 所有的注册、认证、注销都要到你的用户目录中进行增加、查询、删除操作。
+- 你要做的就是创建一个中央数据表，专门用于存储用户信息，不论这个用户是来自 A 应用、B 应用还是 C 应用。
+
+
+
+OIDC Provider
+- 经常见到一些网站的登录页面上有「使用 Github 登录」、「使用 Google 登录」这样的按钮。
+- 要想集成这样的功能，你要先去 Github 那里注册一个 OAuth App，填写一些资料，然后 Github 分配给你一对 id 和 key。
+- 此时 Github 扮演的角色就是 OIDC Provider，你要做的就是把 Github 的这种角色的行为，搬到你自己的服务器来。
+
+在 Github 上面搜索 OIDC Provider 会有很多结果：
+- JS：https://github.com/panva/node-oidc-provider
+- Golang：https://github.com/dexidp/dex
+- Python：https://github.com/juanifioren/django-oidc-provider
 
 
 
@@ -2249,17 +2288,43 @@ response_type对应的身份验证方式:
 
 ##### Authorization code 授权码方式
 
+以下是 OIDC 授权码模式的交互模式，你的应用和 OP 之间要通过这样的交互方式来获取用户信息。
+
 - 使用授权码方式时，所有Token从Token端点返回。
 - 授权码将授权code返回给客户端，然后客户端可以将其直接交换为`id_token`和Access Token。
 - 这样的好处是不会向User-Agent及可能访问User-Agent的其它恶意应用公开任何Token。
 - 授权服务器还可以在交换Access Token的授权code之前对客户端进行身份验证。
 - 授权code适用于可以安全的维护其自身和授权服务器之间的客户端机密的客户端。
 
+
+![2020032710565066](https://i.imgur.com/D5E1e5p.png)
+
+OIDC Provider 对外暴露一些接口
+
+- 授权接口 Authorization Endpoint
+  - 每次调用这个接口，就像是对 OIDC Provider 喊话：我要登录，如第一步所示。
+  - 然后 OIDC Provider 会检查当前用户在 OIDC Provider 的登录状态，
+    - 如果是未登录状态，OIDC Provider 会弹出一个登录框，与终端用户确认身份，登录成功后会将一个临时授权码（一个随机字符串）发到你的应用（业务回调地址）；
+    - 如果是已登录状态，OIDC Provider 会将浏览器直接重定向到你的应用（业务回调地址），并携带临时授权码（一个随机字符串）。如第二、三步所示。
+
+- token 接口 Token Endpoint
+  - 每次调用这个接口，就像是对 OIDC Provider 说：这是我的授权码，给我换一个 access_token。如第四、五步所示。
+
+- 用户信息接口 UserInfo Endpoint
+  - 每次调用这个接口，就像是对 OIDC Provider 说：这是我的 access_token，给我换一下用户信息。到此用户信息获取完毕。
+
+为什么这么麻烦？直接返回用户信息不行吗？
+- 因为安全，
+- code 的有效期一般只有十分钟，而且一次使用过后作废。
+- OIDC 协议授权码模式中，只有 code 的传输经过了用户的浏览器，一旦泄露，攻击者很难抢在应用服务器拿这个 code 换 token 之前，先去 OP 使用这个 code 换掉 token。
+- 而如果 access_token 的传输经过浏览器，一般 access_token 的有效期都是一个小时左右，攻击者可以利用 access_token 获取用户的信息，而应用服务器和 OP 也很难察觉到，更不必说去手动撤退了。
+- 如果直接传输用户信息，那安全性就更低了。
+- 一句话：避免让攻击者偷走用户信息。
+
+
 ---
 
 ###### 授权步骤
-
-![2020032710565066](https://i.imgur.com/D5E1e5p.png)
 
 1. `Client (RP)`
    1. 准备一个包含 **所需请求参数** 的 **身份验证请求**
@@ -2481,7 +2546,7 @@ HTTP/1.1 302 Found
   Location: https://client.example.org/cb#
     access_token=SlAV32hkKG
     &token_type=bearer
-    &id_token=eyJ0...ZXso
+    &id_token=eyJ0```ZXso
     &expires_in=3600
     &state=af0ifjsldkj
 ```
@@ -2540,7 +2605,7 @@ HTTP/1.1
 HTTP/1.1 302 Found
   Location: https://client.example.org/cb#
     code=SplxlOBeZQQYbYS6WxSbIA
-    &id_token=eyJ0...ZXso
+    &id_token=eyJ0```ZXso
     &state=af0ifjsldkj
 ```
 
@@ -2568,123 +2633,100 @@ SSO
 
 ##### 创建自己的用户目录
 
-用户目录
-- 系统的总用户表就像一本书一样，书的封皮上写着“所有用户”四个字。
-- 打开第一页，就是目录，里面列满了用户的名字，翻到对应的页码就能看到这个人的邮箱，手机号，生日信息等等。
-- 无论你开发多少个应用，要确保你有一份这些应用所有用户信息的 truth source。
-- 所有的注册、认证、注销都要到你的用户目录中进行增加、查询、删除操作。
-- 你要做的就是创建一个中央数据表，专门用于存储用户信息，不论这个用户是来自 A 应用、B 应用还是 C 应用。
 
+##### 架设自己的 OIDC Provider
 
 OIDC Provider
 
-什么是 OIDC Provider 呢？我来举一个例子：你经常见到一些网站的登录页面上有「使用 Github 登录」、「使用 Google 登录」这样的按钮。要想集成这样的功能，你要先去 Github 那里注册一个 OAuth App，填写一些资料，然后 Github 分配给你一对 id 和 key。 此时 Github 扮演的角色就是 OIDC Provider，你要做的就是把 Github 的这种角色的行为，搬到你自己的服务器来。
-
-在 Github 上面搜索 OIDC Provider 会有很多结果：
-
-JS：https://github.com/panva/node-oidc-provider
-
-Golang：https://github.com/dexidp/dex
-
-Python：https://github.com/juanifioren/django-oidc-provider
-
-...
-
-不再一一列举，你需要选择适合你的编程语言的 OIDC Provider 包，然后让它在你的服务器上运行起来。本文使用 JS 语言的 node-oidc-provider。
+- 本文使用 JS 语言的 node-oidc-provider。
 
 示例代码 Github
 
-可以在 Github 找到本文示例代码：
+- 可以在 Github 找到本文示例代码：https://github.com/Authing/implement-oidc-sso-demo.git
 
-https://github.com/Authing/implement-oidc-sso-demo.git
-
-创建文件夹
-
-我们首先创建一个文件夹，用于存放代码：
-
+```bash
+# 创建文件夹，用于存放代码：
 $ mkdir demo
 $ cd demo
-1
-克隆仓库
 
-然后我们将 https://github.com/panva/node-oidc-provider.git 仓库 clone 到本地
-
+# 克隆仓库
+# 将 https://github.com/panva/node-oidc-provider.git 仓库 clone 到本地
 $ git clone https://github.com/panva/node-oidc-provider.git
-安装依赖
 
+# 安装依赖
 $ cd node-oidc-provider
 $ npm install
-1
-在 OIDC Provider 申请一个 Client
-
-上一步讲到，Github 会分配给你一对 id 和 key，这一步其实就是你在 Github 申请了一个 Client。那么如何向我们自己的服务器上的 OIDC Provider 申请一对这样的 id 和 key 呢？
-
-以 node-oidc-provider 举例，最快的获得一个 Client 的方法就是将 OIDC Client 所需的元数据直接写入 node-oidc-provider 的配置文件里面。
+```
 
 
+##### 在 OIDC Provider 申请 Client
+- Github 会分配给你一对 id 和 key
+  - 这一步其实就是你在 Github 申请了一个 Client。
+  - 在 Github 上填写应用信息，然后提交，会发送一个 HTTP 请求到 Github 服务器。
+  - Github 服务器会生成一对 id 和 key，还会把它们与你的应用信息存储到 Github 自己的数据库里。
 
-Wait wait wait，跨度有些大，这两者之间有什么关系？首先我们看，在 Github 上填写应用信息，然后提交，会发送一个 HTTP 请求到 Github 服务器。Github 服务器会生成一对 id 和 key，还会把它们与你的应用信息存储到 Github 自己的数据库里。所以，我们将 OIDC Client 所需的元数据直接写入到配置文件，可以理解成，我们在自己的数据库里手动插入了一条数据，为自己指定了一对 id 和 key 还有其他的一些 OIDC Client 信息。
+- 如何向我们自己的服务器上的 OIDC Provider 申请一对这样的 id 和 key 呢
+  - 以 node-oidc-provider 举例，
+  - 最快的获得一个 Client 的方法就是将 OIDC Client 所需的元数据直接写入 node-oidc-provider 的配置文件里面。
+  - 将 OIDC Client 所需的元数据直接写入到配置文件，可以理解成，我们在自己的数据库里手动插入了一条数据，为自己指定了一对 id 和 key 还有其他的一些 OIDC Client 信息。
 
-修改配置文件
+
+
+##### 修改配置文件
 
 进入 node-oidc-provider 项目下的 example 文件夹：
 
+```yaml
 $ cd ./example
-编辑 ./support/configuration.js ，更改第 16 行的 clients 配置，我们为自己指定了一个 client_id 和一个 client_secret，其中的 grant_types 为授权模式，authorization_code 即授权码模式，redirect_uris 数组是允许的业务回调地址，需要填写 Web App 应用的地址，OIDC Provider 会将临时授权码发送到这个地址，以便后续换取 token。
+
+# 编辑 ./support/configuration.js
+# 更改第 16 行的 clients 配置，
+# 为自己指定了一个 client_id 和一个 client_secret，
+# 其中的 grant_types 为授权模式，authorization_code 授权码模式，
+# redirect_uris 数组是允许的业务回调地址，需要填写 Web App 应用的地址, OIDC Provider 会将临时授权码发送到这个地址，以便后续换取 token。
 
 module.exports = {
-  clients: [
-    {
+  clients: [{
       client_id: '1',
       client_secret: '1',
-      grant_types: ['refresh_token', 'authorization_code'],
-      redirect_uris: ['http://localhost:8080/app1.html', 'http://localhost:8080/app2.html'],
+      grant_types: [
+        'refresh_token',
+        'authorization_code'
+      ],
+      redirect_uris: [
+        'http://baidu.com',
+        'http://localhost:8080/app1.html',
+        'http://localhost:8080/app2.html'
+      ],
     },
   ],
-...
+```
 
 
 
-启动 node-oidc-provider
+
+
+##### 启动 node-oidc-provider
 
 在 node-oidc-provider/example 文件夹下，运行以下命令来启动我们的 OP：
 
+```bash
 $ node express.js
-到现在，我们的准备工作已经完成了，在讲如何在 Web App 中进行单点登录之前，我们先了解一下 OIDC 授权码模式。刚刚提到的许多术语：授权码模式、业务回调地址、临时授权码，可能这些概念你会感到陌生，下文会详细介绍。
-
-OIDC 授权码模式
-
-以下是 OIDC 授权码模式的交互模式，你的应用和 OP 之间要通过这样的交互方式来获取用户信息。
+```
+到现在，我们的准备工作已经完成了
 
 
 
-我们的 OIDC Provider 对外暴露一些接口
 
-授权接口
 
-每次调用这个接口，就像是对 OIDC Provider 喊话：我要登录，如第一步所示。
-
-然后 OIDC Provider 会检查当前用户在 OIDC Provider 的登录状态，如果是未登录状态，OIDC Provider 会弹出一个登录框，与终端用户确认身份，登录成功后会将一个临时授权码（一个随机字符串）发到你的应用（业务回调地址）；如果是已登录状态，OIDC Provider 会将浏览器直接重定向到你的应用（业务回调地址），并携带临时授权码（一个随机字符串）。如第二、三步所示。
-
-token 接口
-
-每次调用这个接口，就像是对 OIDC Provider 说：这是我的授权码，给我换一个 access_token。如第四、五步所示。
-
-用户信息接口
-
-每次调用这个接口，就像是对 OIDC Provider 说：这是我的 access_token，给我换一下用户信息。到此用户信息获取完毕。
-
-为什么这么麻烦？直接返回用户信息不行吗？
-
-因为安全，关于 OIDC 协议的安全性，又可以展开很大的篇幅，现在简单解释一下：code 的有效期一般只有十分钟，而且一次使用过后作废。OIDC 协议授权码模式中，只有 code 的传输经过了用户的浏览器，一旦泄露，攻击者很难抢在应用服务器拿这个 code 换 token 之前，先去 OP 使用这个 code 换掉 token。而如果 access_token 的传输经过浏览器，一般 access_token 的有效期都是一个小时左右，攻击者可以利用 access_token 获取用户的信息，而应用服务器和 OP 也很难察觉到，更不必说去手动撤退了。如果直接传输用户信息，那安全性就更低了。一句话：避免让攻击者偷走用户信息。
-
-编写第一个应用
+##### 编写第一个应用
 
 我们创建一个 app1.html 文件来编写第一个应用 demo，在 demo/app 目录下创建：
 
+```js
 $ touch app1.html
-并写入以下内容：
 
+// 并写入以下内容：
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -2692,26 +2734,31 @@ $ touch app1.html
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>第一个应用</title>
   </head>
+
   <body>
-    <a href="http://localhost:3000/auth?client_id=1&redirect_uri=http://localhost:8080/app1.html&scope=openid profile&response_type=code&state=455356436">登录</a>
+    <a href="http://localhost:3000/auth?client_id=1
+      &redirect_uri=http://localhost:8080/app1.html
+      &scope=openid profile
+      &response_type=code
+      &state=455356436">
+      登录
+    </a>
+
   </body>
 </html>
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-编写第二个应用
+```
+
+
+
+
+
+##### 编写第二个应用
 
 我们创建一个 app2.html 文件来编写第二个应用 demo，注意 redirect_uri 的变化，在 demo/app 目录下创建：
 
+```js
 $ touch app2.html
-并写入以下内容：
+// 并写入以下内容：
 
 <!DOCTYPE html>
 <html lang="en">
@@ -2721,185 +2768,189 @@ $ touch app2.html
     <title>第二个应用</title>
   </head>
   <body>
-    <a href="http://localhost:3000/auth?client_id=1&redirect_uri=http://localhost:8080/app2.html&scope=openid profile&response_type=code&state=455356436">登录</a>
+    <a href="http://localhost:3000/auth?client_id=1
+      &redirect_uri=http://localhost:8080/app2.html
+      &scope=openid profile
+      &response_type=code
+      &state=455356436">
+      登录
+    </a>
   </body>
 </html>
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-向 OIDC Provider 发起登录请求
+```
+
+
+
+##### 向 OIDC Provider 发起登录请求
 
 现在我们启动一个 web 服务器，推荐使用 http-server
 
+```bash
 $ npm install -g http-server # 安装 http-server
 $ cd demo/app
 $ http-server .
-1
-2
-我们访问第一个应用：http://localhost:8080/app1.html
+```
 
 
+1. 我们访问第一个应用：http://localhost:8080/app1.html
+2. 点击「登录」，也就是访问 OIDC Provider 的授权接口。
+3. 然后我们来到了 OIDC Provider 交互环节，OIDC Provider 发现用户没有登录，要求用户先登录。
+4. node-oidc-provider demo 会放通任意用户名 + 密码
+   1. 但是你在真正实施单点登录时，你必须使用你的用户目录即中央数据表中的用户数据来鉴权用户
+   2. 相关的代码可能会涉及到数据库适配器，自定义用户查询逻辑，这些在 node-oidc-provider 包的相关配置中需要自行插入。
 
-然后点击「登录」，也就是访问 OIDC Provider 的授权接口。然后我们来到了 OIDC Provider 交互环节，OIDC Provider 发现用户没有登录，要求用户先登录。node-oidc-provider demo 会放通任意用户名 + 密码，但是你在真正实施单点登录时，你必须使用你的用户目录即中央数据表中的用户数据来鉴权用户，相关的代码可能会涉及到数据库适配器，自定义用户查询逻辑，这些在 node-oidc-provider 包的相关配置中需要自行插入。
+5. 点击「登录」，转到确权页面，这个页面会显示你的应用需要获取那些用户权限，本例中请求用户授权获取他的基础资料。
 
+6. 点击「继续」，完成在 OP 的登录，之后 OP 会将浏览器重定向到预先设置的业务回调地址，所以我们又回到了 app1.html。
 
-
-现在点击「登录」，转到确权页面，这个页面会显示你的应用需要获取那些用户权限，本例中请求用户授权获取他的基础资料。
-
-
-
-点击「继续」，完成在 OP 的登录，之后 OP 会将浏览器重定向到预先设置的业务回调地址，所以我们又回到了 app1.html。
-
-
-
-在 url query 中有一个 code 参数，这个参数就是临时授权码。code 最终对应一条用户信息，接下来看我们如何获取用户信息。
-
-Web App 从 OIDC Provider 获取用户信息
-
-事实上，code 可以直接发送到后端，然后在后端使用 code 换取 access_token。这里我使用 postman 演示如何通过 code 换取 access_token。
-
-你可以使用 curl 命令来发送 HTTP 请求：
-
-$ curl --location --request POST 'http://localhost:3000/token' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'client_id=1' \
---data-urlencode 'client_secret=1' \
---data-urlencode 'redirect_uri=http://localhost:8080/app2.html' \
---data-urlencode 'code=QL10pBYMjVSw5B3Ir3_KdmgVPCLFOMfQHOcclKd2tj1' \
---data-urlencode 'grant_type=authorization_code'
-1
-2
-3
-4
-5
-6
+7. 在 url query 中有一个 code 参数，这个参数就是临时授权码。
+   1. code 最终对应一条用户信息，接下来看我们如何获取用户信息。
 
 
-获取到 access_token 之后，我们可以使用 access_token 访问 OP 上面的资源，主要用于获取用户信息，即你的应用从你的用户目录中读取一条用户信息。
+##### Web App 从 OIDC Provider 获取用户信息
 
-你可以使用 curl 来发送 HTTP 请求：
+code 可以直接发送到后端，然后在后端使用 code 换取 access_token。
 
-$ curl --location --request POST 'http://localhost:3000/me' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'access_token=I6WB2g0Rq9G307pPVTDhN5vKuyC9eWjrGjxsO2j6jm-'
-1
-2
+
+```bash
+# 用 curl 命令来发送 HTTP 请求：
+
+$ curl --location \
+  --request POST 'http://localhost:3000/token' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'client_id=1' \
+  --data-urlencode 'client_secret=1' \
+  --data-urlencode 'redirect_uri=http://localhost:8080/app2.html' \
+  --data-urlencode 'code=QL10pBYMjVSw5B3Ir3_KdmgVPCLFOMfQHOcclKd2tj1' \
+  --data-urlencode 'grant_type=authorization_code'
+
+
+# 获取到 access_token 之后，我们可以使用 access_token 访问 OP 上面的资源
+# 主要用于获取用户信息，即你的应用从你的用户目录中读取一条用户信息。
+
+# 你可以使用 curl 来发送 HTTP 请求：
+$ curl --location \
+  --request POST 'http://localhost:3000/me' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'access_token=I6WB2g0Rq9G307pPVTDhN5vKuyC9eWjrGjxsO2j6jm-'
+```
+
+
+用 postman 演示如何通过 code 换取 access_token。
 
 
 到此，App 1 的登录已经完成，接下来，让我们看进入 App 2 是怎样的情形。
 
-登录第二个 Web App
-
-我们打开第二个应用，http://localhost:8080/app2.html
-
-然后点击「登录」。
 
 
 
-用户已经在 App 1 登录时与 OP 建立了会话，User ←→ OP 已经是登录状态，所以 OP 检查到之后，没有再让用户输入登录凭证，而是直接将用户重定向回业务地址，并返回了授权码 code。
+
+##### 登录第二个 Web App
 
 
 
-同样，App 2 使用 code 换 access_token
+1. 打开第二个应用，http://localhost:8080/app2.html
 
-curl 命令代码：
-
-$ curl --location --request POST 'http://localhost:3000/token' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'client_id=1' \
---data-urlencode 'client_secret=1' \
---data-urlencode 'redirect_uri=http://localhost:8080/app2.html' \
---data-urlencode 'code=QL10pBYMjVSw5B3Ir3_KdmgVPCLFOMfQHOcclKd2tj1' \
---data-urlencode 'grant_type=authorization_code'
-1
-2
-3
-4
-5
-6
+2. 然后点击「登录」。
 
 
-再使用 access_token 换用户信息，可以看到，是同一个用户。
 
-curl 命令代码：
+3. 用户已经在 App 1 登录时与 OP 建立了会话，User ←→ OP 已经是登录状态
+   1. 所以 OP 检查到之后，没有再让用户输入登录凭证，而是直接将用户重定向回业务地址，并返回了授权码 code。
 
-$ curl --location --request POST 'http://localhost:3000/me' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'access_token=I6WB2g0Rq9G307pPVTDhN5vKuyC9eWjrGjxsO2j6jm-'
-1
-2
+3. 同样，App 2 使用 code 换 access_token
+
+```bash
+# curl 命令代码：
+$ curl --location \
+  --request POST 'http://localhost:3000/token' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'client_id=1' \
+  --data-urlencode 'client_secret=1' \
+  --data-urlencode 'redirect_uri=http://localhost:8080/app2.html' \
+  --data-urlencode 'code=QL10pBYMjVSw5B3Ir3_KdmgVPCLFOMfQHOcclKd2tj1' \
+  --data-urlencode 'grant_type=authorization_code'
+
+# 再使用 access_token 换用户信息，可以看到，是同一个用户。
+
+# curl 命令代码：
+$ curl --location \
+  --request POST 'http://localhost:3000/me' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'access_token=I6WB2g0Rq9G307pPVTDhN5vKuyC9eWjrGjxsO2j6jm-'
+```
 
 
 到此，我们实现了 App 1 与 App 2 之间的账号打通与单点登录。
 
-登录态管理
 
-到目前为止，看起来还不错，我们已经实现了两个应用之间账号的统一，而且在 App 1 中登录时输入一次密码，在 App 2 中登录，无需再次让用户输入密码进行登录，可以直接返回授权码到业务地址然后完成后续的用户信息获取。
 
-现在我们来考虑一下退出问题
+##### 登录态管理
 
-只退出 App 1 而不退出 App 2
-
-这个问题实质上是登录态的管理问题。我们应该管理三个会话：User ←→ App 1、User ←→ App 2、User ←→ OP。
+**单点登录**
+- 实现了两个应用之间账号的统一，而且在 App 1 中登录时输入一次密码，在 App 2 中登录，无需再次让用户输入密码进行登录，可以直接返回授权码到业务地址然后完成后续的用户信息获取。
 
 
 
-当 OP 给 App 1 返回 code 时，App 1 的后端在完成用户信息获取后，应该与浏览器建立会话，也就是说 App 1 与用户需要自己保持一套自己的登录状态，方式上可以通过 App 1 自签的 JWT Token 或 App 1 的 cookie-session。对于 App 2，也是同样的做法。
+退出问题
+
+**只退出 App 1 而不退出 App 2**
+
+![20200327105659964](https://i.imgur.com/8lM2DWf.png)
+
+这个问题实质上是登录态的管理问题。我们应该管理三个会话：
+- User ←→ App 1、
+- User ←→ App 2、
+- User ←→ OP。
+
+当 OP 给 App 1 返回 code 时，App 1 的后端在完成用户信息获取后，应该与浏览器建立会话，也就是说 App 1 与用户需要自己保持一套自己的登录状态，方式上可以通过 App 1 自签的 JWT Token 或 App 1 的 cookie-session。
+
+对于 App 2，也是同样的做法。
 
 当用户在 App 1 退出时，App 1 只需清理掉自己的登录状态就完成了退出，而用户访问 App 2 时，仍然和 App 2 存在会话，因此用户在 App 2 是登录状态。
 
-同时退出 App 1 和 App 2
-
-刚才说到单点登录，与之相对的就是单点登出，即用户只需退出一次，就能在所有的应用中退出，变成未登录状态。
-
-最先想到的是这种方式，我们在 OIDC Provider 进行登出。
 
 
+**同时退出 App 1 和 App 2**
 
-之后我们的状态是这样的：
+![20200327105700129](https://i.imgur.com/xua0Iz0.png)
 
+单点登出，即用户只需退出一次，就能在所有的应用中退出，变成未登录状态。
 
+1. 在 OIDC Provider 进行登出。
+2. 因为用户和 App 1 , App 2 之间的会话同样依然保持，所以用户在 App 1 和 App 2 的状态仍然是登录态。
 
-好吧，其实没有任何效果，因为用户和 App 1 之间的会话依然保持，用户和 App 2 之间的会话同样依然保持，所以用户在 App 1 和 App 2 的状态仍然是登录态。
+所以，有没有什么办法在用户从 OIDC Provider 登出之后，App 1 和 App 2 的会话也被切断呢？我们可以通过 `OIDC Session Mangement` 来解决这个问题。
 
-所以，有没有什么办法在用户从 OIDC Provider 登出之后，App 1 和 App 2 的会话也被切断呢？我们可以通过 OIDC Session Mangement 来解决这个问题。
-
-简单来说，App 1 的前端需要轮询 OP，不断询问 OP：用户在你那还登录着吗？如果答案是否定的，App 1 主动将用户踢下线，并将会话释放掉，让用户重新登录，App 2 也是同样的操作。
-
+简单来说，App 1 的前端需要轮询 OP
+- 不断询问 OP：用户在你那还登录着吗？
+- 如果答案是否定的，App 1 主动将用户踢下线，并将会话释放掉，让用户重新登录，
+- App 2 也是同样的操作。
 
 
 当用户在 OP 登出后，App 1、App 2 轮询 OP 时会收到用户已经从 OP 登出的响应，接下来，应该释放掉自己的会话状态，并将用户踢出系统，重新登录。
 
-刚刚我们提到 OIDC Session Management，这部分的核心就是两个 iframe，一个是我们自己应用中写的（以下叫做 RP iframe），用于不断发送 PostMessage 给 OP iframe，OP iframe 负责查询用户登录状态，并返回给 RP iframe。
-
-让我们把这部分的代码加上：
+OIDC Session Management
+- 这部分的核心就是两个 iframe
+- 一个是我们自己应用中写的（以下叫做 RP iframe），用于不断发送 PostMessage 给 OP iframe，
+- OP iframe 负责查询用户登录状态，并返回给 RP iframe。
+ 
 
 首先打开 node-oidc-provider 的 sessionManangement 功能，编辑 ./support/configuration.js 文件，在 42 行附近，进行以下修改：
 
-...
+```yaml
 features: {
   sessionManagement: {
     enabled: true,
     keepHeaders: false,
   },
 },
-...
-1
-2
-3
-4
-5
-6
-7
+```
+
+
 然后和 app1.html、app2.html 平级新建一个 rp.html 文件，并加入以下内容：
 
+```java
 <script>
   var stat = 'unchanged';
   var url = new URL(window.parent.location);
@@ -2932,42 +2983,15 @@ features: {
     }
   }
 </script>
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
+```
+
+
 在 app1.html 和 app2.html 中加入两个 iframe 标签：
 
 <iframe src="rp.html" hidden></iframe>
 <iframe src="http://localhost:3000/session/check" id="op" hidden></iframe>
-1
+
+
 使用 Ctrl + C 关闭我们的 node-oidc-provider 和 http-server，然后再次启动。访问 app1.html，打开浏览器控制台，会得到以下信息，这意味着，用户当前处于未登录状态，应该进行 App 自身会话的销毁等操作
 
 
@@ -3008,113 +3032,7 @@ Authing 对开发者十分友好，提供丰富的 SDK，进行快速集成。
 
 如果你不想关心登录的细节，将 Authing 集成到你的系统必定能够大幅提升开发效率，能够将更多的精力集中到核心业务上。
 
-欢迎体验：https://authing.cn
 
-实现单点登录：https://docs.authing.cn/authing/quickstart/implement-sso-with-authing
-
-相关阅读
-
-为什么所有软件都应该使用单点登录来管理用户？
-用 Authing 10 分钟实现单点登录
-案例 | 在 Odoo 中集成 Authing 完成单点登录
-Authing 插件上架 Odoo 官方市场，单点登录即可拥有
-本文由博客一文多发平台 OpenWrite 发布！
-
-龙归科技
-关注
-
-1
-
-
-1
-
-14
-
-
-评论 1 您还未登录，请先 登录 后发表或查看评论
-相关推荐
-django-oidc-provider备忘录
-JosephThatwho的博客
- 580
-Server RSA Keys: 用于给ID Tokens加密。 django-oidc-provider自带’OIDC_USERINFO’的settings,默认指向一个函数，该函数调用claims（一个字典）和user（user 实例），返回claims（字典），该字典包含所有函数中声明的属性。可以自己定义，并在settings中以点分隔的路径字符串指定该函数。 ...
-django-oidc-provider：Djangonauts的OpenID Connect和OAuth2提供程序实现
-02-04
-Django OpenID Connect提供程序 关于OpenID OpenID Connect是基于OAuth 2.0协议的简单身份层，它允许计算客户端基于授权服务器执行的身份验证来验证最终用户的身份，以及获取有关最终​​用户的基本配置文件信息。用户以可互操作且类似于REST的方式使用。 例如 。 关于包装 django-oidc-provider可以帮助您直接提供将OpenID Connect（和OAuth2）功能添加到Django项目所需的所有端点，数据和逻辑。 支持Python 3和2。也是django的最新版本。
-vue项目使用oidc-client实现单点登陆_stubborn丶lili的...
-7-9
-1. 安装oidc-client ​​​​​​​npm install --save vuex npm install oidc-client 2. 单点登录所需配置项:oidc.js exportconstidentityServerBase ='http://baidu.com';//目标服务器登录地址 ...
-如何基于Security实现OIDC单点登录?_zlt2000的博客
-6-19
-如何基于Security实现OIDC单点登录? 一、说明 本文主要是给大家介绍OIDC的核心概念以及如何通过对Spring Security的授权码模式进行扩展来实现 OIDC 的单点登录。 OIDC是 OpenID Connect 的简称,OIDC=(Identity, Authentication) + OAuth 2.0...
-Express 集成 OIDC 单点登录指南
-Authing的博客
- 202
-本文以基于 Node.js 平台 Express 框架为例，以及集成 Node.js 身份认证中间件 Passport.js，详细介绍 Express 如何集成 Authing OIDC 单点登录。 OIDC 协议：OIDC（OpenID Connect）是一个基于 OAuth2 协议的身份认证标准协议。OIDC 使用 OAuth2 的授权服务器来为第三方客户端提供用户的身份认证，并把对应的身份认证信息传递给客户端，且可以适用于各种类型的客户端。 Passport ：Passport 是 Node.js 的
-spring security 单点登录_Spring Security 5 集成 Authing OIDC 单点登录指南
-weixin_34442022的博客
- 352
-本文以 Spring 生态中用于提供认证及访问权限控制的 Spring Security 5 为例，详细介绍 Spring Security 5 如何接入 Authing OIDC。Spring Security 是一个提供安全访问控制解决方案的安全框架。它提供了一组可以在 Spring 应用上下文中配置的 Bean，充分利用了 Spring IoC，DI（控制反转 Inversion of Co...
-单点登录协议有哪些?CAS、OAuth、OIDC、SAML有何异同?
-6-14
-CAS、OAuth、OIDC、SAML有何异同? 单点登录实现中,系统之间的协议对接是非常重要的一环,一般涉及的标准协议类型有 CAS、OAuth、OpenID Connect、SAML,本文将对四种主流 SSO协议进行概述性的介绍,并比较其异同,读者亦可按图索骥、厘清...
-基于IdentityServer4的OIDC实现单点登录(SSO)原理简析
-dotNET跨平台
- 1052
-﻿﻿# 写在前面IdentityServer4的学习断断续续，兜兜转转，走了不少弯路，也花了不少时间。可能是因为没有阅读源码，也没有特别系统的学习资料，相关文章很多园子里的大佬都有涉及，...
-vue项目使用oidc-client实现单点登陆
-  270
-vue使用oidc-client实现OAuth2.0验证
-基于OIDC实现单点登录SSO、第三方登录
-u012324798的博客
- 6177
-OIDC联合身份认证机制背景概念1 OIDC身份认证协议2 基于OIDC实现SSO2.1 统一登录2.1.1 流程2.1.2 RP相关接口2.1.3 OP相关接口2.2 统一登出2.2.1 流程2.2.2 RP需要在向OP注册时提供2.2.3 RP相关接口2.2.4 OP相关接口2.3 持续监视2.3.1 流程2.3.2 RP相关接口2.3.3 OP相关接口3 在OIDC的SSO中集成第三方登录（...
-SAML还是OIDC，单点登录的协议如何选择？
-最新发布
-OneAuth身份云
- 35
-如何选择单点登录的协议 SAML还是OIDC有很多开发者会在开发单点登录的时候，因为选择SAML还是OIDC的协议犹豫不决。有很多开发者会在开发单点登录的时候，因为选择SAML还是OIDC的协议犹豫不决。那么我们在开发的时候如何选择合适的协议？在作出选择之前，除了协议规范本身，我们需要先了解下协议诞生和背景和解决的问题，以便于我们提出问题、分析问题、并解决问题。关于SAML协议2001-2005年期间，SaaS应用程序的率先在美国爆炸式增长，给身份管理带来了挑战。转眼间，企业纷纷采用SaaS服务，使得IT部
-Confluence 企业 OIDC 单点登录指南
-Authing的博客
- 688
-本文以 Atlassian 公司的团队协作软件 Confluence 为例，详细介绍 Confluence 如何接入 Authing OIDC。另外，Atlassian 公司的项目追踪软件 Jira，代码管理软件 Bitbucket 也是以相同的方式接入 Authing OIDC。 前置工作 假设我们本地已搭建好的 Confluence 环境，登录帐号后，进入 confluence 配置页面, 选择管理应用，添加 miniOrange OAuth Client 应用，用于配置接入 OIDC 信息。.
-oidc-demo:Authing OIDC 后端处理方式，基本示例
-05-08
-oidc-demo Authing OIDC RP 端处理方式，基本示例。 帮助不熟悉 OIDC 流程处理方式的开发者熟悉 OIDC 的处理过程。示例中包括 code 换 token，token 换用户信息，受保护资源受访问时判断用户是否有权限，有权限时返回资源，无权限时重定向到 Authing OIDC 登录授权页面。 参考文档 若以上文档无法访问，请将域名改为 learn.authing.cn。 如何运行 克隆该项目： git clone https://github.com/Authing/oidc-demo/ 然后运行： $ yarn $ node index.js Demo 及原理讲解 基础配置 const port = 8888; const oidcAppId = 'OIDC 应用 AppId'; const oidcAppSecret = 'OIDC 应用 AppSecre
-django 备忘
-Coder
- 637
-1) django 上传问 class CachedImage(models.Model): url = models.CharField(max_length=255, unique=True) photo = models.ImageField(upload_to=photo_path, blank=True) def cache(self): ""
-mozilla-django-oidc:Django OpenID Connect库
-05-01
-mozilla-django-oidc 轻量级身份验证和访问管理库，用于与启用了OpenID Connect的身份验证服务集成。 文献资料 完整文档位于 。 设计原则 保持最小/轻巧 尽可能少地存储authn / authz工件 通过覆盖身份验证后端允许自定义功能 主要支持OIDC授权码流程 允许发布以Mozilla为中心的authn / authz功能 针对所有受支持的Python / Django版本进行测试 由测试和审核的E2E 运行单元测试 使用tox可以运行您拥有的许多不同版本的Python。 如果尚未安装（和可执行文件） tox ，则可以将其安装在系统Python中，也可以安装在。 安装后，只需在项目根目录中执行即可。 $ tox tox相当于为tox.ini文件中提到的每个组合安装虚拟环境。 例如，如果您的系统没有python3.4那些tox测试将被跳过。 为了实现
-python搭建服务器_python搭建服务器-阿里云开发者社区
-weixin_39761255的博客
- 142
-python搭建服务器以快捷著称，实际上，我们也可以使用python搭建简易的服务器。1.环境配置当然首先得搭建python的开发环境，对于mac和linux的用户来说，一般python是自带的，当然，如果没有的话也可以很方便地进行安装，在终端输入以下命令：sudo apt-get updatesudo apt-get install python即可进行快速集成安装。对于windows用户，可以...
-node-oidc-provider-example:使用oidc-provider启动并运行OpenID Connect Provider实例的分步方法
-05-06
-oidc-provider的示例设置 通过遵循此示例，您将在Heroku上设置实例。 先决条件 节点^ 12.19.0 || ^ 14.15.0 安装了heroku cli（ which heroku ） 认证的heroku cli（ heroku whoami ） get 吉特 从开始。 NB oidc提供者绝不限于仅在heroku上运行或仅使用展示的选项运行。 用户交互也仅旨在显示如何提供和维护这些交互。 诸如注册，密码重置和安全措施（如csrf，速率限制，验证码）之类的功能全在您身上，并不属于oidc-provider提供的协议实现的一部分。 支持的部署包括将OP安装到现有的nodejs应用程序，例如，connect，express，fastify，hapi，koa或nest。 使用集群模式运行的服务器分布在haproxy，nginx，ELB之后的多个主机上，或者直接公
-Django 实现网站登录认证机制
-Bcdfxg的博客
- 701
-在我们构建一个网站的时候，想要对网站的资源进行访问控制，那么添加身份认证机制就是一个非常必要的办法 只有当访问者进行用户登录认证之后，才能对其开放网页的访问权限，甚至可以对用户进行分级管理，按照用户级别赋予用户不同的权限
-oidcfederation:描述如何使用OpenID Connect进行多边联合的文档
-04-03
-OpenID Connect联盟 描述如何使用OpenID Connect（OIDC）进行多边联合的文档。 文本和HTML版本可以在草稿目录中找到。 建立草稿 pip install xml2rfc xml2rfc draft/openid-connect-federation-1_0.xml -v 3 --text -o draft/openid-connect-federation-1_0.txt xml2rfc draft/openid-connect-federation-1_0.xml -v 3 --html -o draft/openid-connect-federation-1_0.html
-node-oidc-provider：适用于Node.js的OpenID Certified:trade_mark:OAuth 2.0授权服务器实施
-02-04
-oidc提供者 oidc-provider是具有并已实现许多其他功能和标准的OAuth 2.0授权服务器。 目录 实施的规格和功能 以下规范由oidc-provider实现。 请注意，并非默认情况下所有功能都已启用，请查看配置部分以了解如何启用它们。 和 授权（授权代码流，隐式流，混合流） UserInfo端点和ID令牌，包括签名和加密 通过值或引用传递请求对象，包括签名和加密 公共和成对主题标识符类型 脱机访问/刷新令牌授予 客户证书授予 客户端身份验证client_secret_jwt和private_key_jwt方法 和 以下规范草案由oidc-provider实现。 更
-[OIDC&&Oauth2 ] 理解Oauth2授权框架
-zh_coder
- 6801
-一.  什么是Oauth2授权框架?   Oauth2是一种通用的开放式的面向个人(即用户)网络授权方案，它的前身是Oauth1。但是由于Oauth1设计复杂，易用性差，所以Oauth2与Oauth1并不兼容。 二. Oauth2.0的应用场景        我们拿csdn登录来举个栗子，来看csdn的登录页面下方:                  其
-sso-dashboard:SSO仪表板的python flask实现。 OIDC用于身份验证，消息总线用于警报管道
-05-14
-Mozilla-IAM单一登录仪表板 SSO仪表板的python flask实现。 OIDC用于身份验证，消息总线用于警报管道。 上面是今天存在的仪表板原型。 屏幕截图将随着仪表板UI的发展而更新。 贡献者 安德鲁·克鲁格[：andrew] 该项目使用的项目 烧瓶 雷迪斯 金佳 烧瓶上证所 独角兽 MUI-CSS框架 码头工人 特征 服务器端事件安全警报 控制用户看到的应用程序 用户个人资料编辑器 全球安全警报 IHaveBeenPwned集成 用户警报确认/升级 认证流程 所有身份验证均对auth0执行。 由于应用程序的性质，仅在“扩展配置文件”完成之前，这将仅限于Mozilla LDAP登录。 授权流程 这个应用程式在技术上不提供授权。 但是，它确实使用规则语法检查文件，以确定用户仪表板中应包含哪些应用程序。 规则文件存在于dashboard / data / apps.yml中。
-pyoidc, 在 python 中，一个完整的OpenID连接实现.zip
-————————————————
-版权声明：本文为CSDN博主「龙归科技」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/u010987134/article/details/105136499
 
 
 

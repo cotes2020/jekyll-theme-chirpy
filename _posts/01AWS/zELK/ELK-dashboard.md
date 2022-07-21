@@ -1,7 +1,19 @@
 
 
 
-[toc]
+- [Visualizing AWS CloudTrail Events using Kibana](#visualizing-aws-cloudtrail-events-using-kibana)
+  - [create chart](#create-chart)
+    - [the number of API events logged by CloudTrail on the account in the last hour.](#the-number-of-api-events-logged-by-cloudtrail-on-the-account-in-the-last-hour)
+    - [types of errorCode errors](#types-of-errorcode-errors)
+  - [AWS Blog solution](#aws-blog-solution)
+    - [Creating a CloudTrail trail](#creating-a-cloudtrail-trail)
+    - [Creating an Amazon ES domain (Elasticsearch cluster)](#creating-an-amazon-es-domain-elasticsearch-cluster)
+    - [Creating an Amazon Cognito user pool and identity pool](#creating-an-amazon-cognito-user-pool-and-identity-pool)
+    - [Creating an EC2 instance](#creating-an-ec2-instance)
+    - [Configuring a proxy](#configuring-a-proxy)
+    - [Creating an SSH tunnel](#creating-an-ssh-tunnel)
+    - [Streaming CloudWatch Logs data to Amazon ES](#streaming-cloudwatch-logs-data-to-amazon-es)
+    - [Visualizing the CloudTrail events using Kibana](#visualizing-the-cloudtrail-events-using-kibana)
 
 
 

@@ -74,6 +74,8 @@ Storage
 
 ## Databases
 Databases
+- Databases
+  - Redis
 - Databases Ali
   - PolarDB for MySQL
   - PolarDB for Oracle
@@ -100,6 +102,7 @@ Databases
   - Database Autonomy Service (DAS)
   - Database Gateway (DG)
   - Advanced Database&Application Migration
+- Databases AWS
 
 
 ## Security
