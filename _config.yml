@@ -29,10 +29,10 @@ description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://pph41.github.io'
 
 github:
-  username: github_username             # change to your github username
+  username: pph41            # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
@@ -40,7 +40,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
+  name: kingsu
   email: example@doamin.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
