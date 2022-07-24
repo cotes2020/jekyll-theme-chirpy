@@ -15588,7 +15588,7 @@ Explanation: n = 2 since there are 2 numbers, so all numbers are in the range [0
 
 ### 338. Counting Bits (Easy)
 
-[338. Counting Bits]([Easy](https://leetcode.com/problems/counting-bits/))
+[338. Counting Bits](https://leetcode.com/problems/counting-bits/)
 Given an integer n, return an array ans of length n + 1 such that for each i (0 <= i <= n), ans[i] is the number of 1's in the binary representation of i.
 
 Example 1:
