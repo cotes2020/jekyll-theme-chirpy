@@ -1,7 +1,7 @@
 <!-- ---
 title: Virtulization - Docker Note
 date: 2020-11-26 11:11:11 -0400
-categories: [00Basic, VMyContainer, Containers]
+categories: [00Basic, VMandContainer, Containers]
 tags: [Linux, VMs, Docker]
 math: true
 image:

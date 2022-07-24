@@ -16,6 +16,6 @@ const (
 
 func main() {
 	fmt.Printf("Hello, %s %v !\n", names[1:2], pi)
-	// name[0] = "Bob"
-	// fmt.Printf("Hello, %s %v !\n", name[0], pi)
+	names[0] = "Bob"
+	fmt.Printf("Hello, %s %v !\n", names[0], pi)
 }

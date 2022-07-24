@@ -1,7 +1,7 @@
 ---
 title: Virtualization
 date: 2020-11-26 11:11:11 -0400
-categories: [00Basic, VMyContainer, VMs]
+categories: [00Basic, VMandContainer, VMs]
 tags: [Linux, VMs]
 math: true
 image:

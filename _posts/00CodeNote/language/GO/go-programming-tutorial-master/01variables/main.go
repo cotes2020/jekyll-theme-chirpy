@@ -6,7 +6,7 @@ import (
 
 func main() {
 	var name = "Bill"
-	fmt.Printf("Hello, %s!", name)
+	fmt.Printf("Hello, %s!\n", name)
 	names := "Bob"
-	fmt.Printf("Hello, %s!", names)
+	fmt.Printf("Hello, %s!\n", names)
 }

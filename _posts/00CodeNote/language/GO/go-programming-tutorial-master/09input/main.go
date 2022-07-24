@@ -12,8 +12,8 @@ func main() {
 		if input == "stop" {
 			break
 		} else {
-			fmt.Printf("You Entered: %v", input)
 			fmt.Println("You Entered:", input)
+			fmt.Printf("You Entered: %v", input)
 			break
 		}
 	}
