@@ -75,7 +75,7 @@ toc: true
 - [回文链表 Palindromic](#回文链表-palindromic)
   - [other](#other)
     - [9. Palindrome Number 判断回文Number](#9-palindrome-number-判断回文number)
-      - [reverse half of it **Best**](#reverse-half-of-it-best)
+      - [+++++ reverse half of it **Best**](#-reverse-half-of-it-best)
     - [Elimination Game !!! Perform String Shifts !!! Subtree Removal Game with Fibonacci Tree](#elimination-game--perform-string-shifts--subtree-removal-game-with-fibonacci-tree)
   - [排序](#排序)
     - [快速排序](#快速排序)
@@ -251,7 +251,7 @@ toc: true
     - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
       - [+++++ BinarySearch](#-binarysearch)
       - [+++++ HashMap](#-hashmap-1)
-      - [+++++ Two pointers](#-two-pointers)
+      - [+++++ Two pointers `start from 2 sides`](#-two-pointers-start-from-2-sides)
     - [653. Two Sum IV - Input is a BST (Easy)](#653-two-sum-iv---input-is-a-bst-easy-1)
     - [238. Product of Array Except Self (Medium)](#238-product-of-array-except-self-medium)
       - [+++++ `左乘 右乘 result[i] = left[i] * right[i];`](#-左乘-右乘-resulti--lefti--righti)
@@ -281,7 +281,6 @@ toc: true
     - [875. Koko Eating Bananas](#875-koko-eating-bananas)
     - [运送货物？？？？？？？？？？？？？？](#运送货物)
     - [https://labuladong.github.io/algo/2/21/59/ ？？？？](#httpslabuladonggithubioalgo22159-)
-    - [167. Two Sum II - Input Array Is Sorted 两数之和](#167-two-sum-ii---input-array-is-sorted-两数之和)
     - [344. Reverse String 反转数组](#344-reverse-string-反转数组)
     - [滑动窗口技巧 `right++, missing==0, left++`](#滑动窗口技巧-right-missing0-left)
     - [76. Minimum Window Substring 最小覆盖子串](#76-minimum-window-substring-最小覆盖子串)
@@ -342,7 +341,6 @@ toc: true
       - [reverse logic also](#reverse-logic-also)
     - [125. Valid Palindrome 判断回文链表String](#125-valid-palindrome-判断回文链表string)
       - [+++++ Brute-Force](#-brute-force-1)
-      - [+++++ `2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()`](#-2-pointer--sreplacealla-za-z0-9-tolowercase)
       - [+++++ `2 pointer + (x <= y && !Character.isLetterOrDigit(s.charAt(x)) )` best](#-2-pointer--x--y--characterisletterordigitscharatx--best)
     - [680. Valid Palindrome II (Easy) 可去掉一个字母查看Palindrome](#680-valid-palindrome-ii-easy-可去掉一个字母查看palindrome)
       - [Brute-Force `validPalindrome+validSubPalindrome`](#brute-force-validpalindromevalidsubpalindrome)
@@ -2810,7 +2808,9 @@ ListNode detectCycle(ListNode head) {
 - For example, 121 is palindrome while 123 is not.
 
 
-#### reverse half of it **Best**
+
+
+#### +++++ reverse half of it **Best**
 
 O(1) space solution
 
@@ -10206,7 +10206,23 @@ Given a 1-indexed array of integers numbers that is already sorted in non-decrea
 - Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
 
 The tests are generated such that there is exactly one solution. You may not use the same element twice.
+ 
 
+```java
+int[] twoSum(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int sum = nums[left] + nums[right];
+        // 题目要求的索引是从 1 开始的
+        if (sum == target) return new int[]{left + 1, right + 1};
+        // 让 sum 大一点
+        else if (sum < target) left++;
+        // 让 sum 小一点
+        else if (sum > target) right--;
+    }
+    return new int[]{-1, -1};
+}
+```
 
 
 #### +++++ BinarySearch
@@ -10246,12 +10262,24 @@ public int[] twoSum(int[] numbers, int target) {
         // 如果 other 存在且不是 numbers[i] 本身
         if (index.containsKey(other) && index.get(other) != i) return new int[] {i+1, index.get(other)+1};
     }
-    return new int[] {-1, -1};
+    return new int[]{};
 }
+
+// Runtime: 4 ms, faster than 20.33% of Java online submissions for Two Sum II - Input Array Is Sorted.
+// Memory Usage: 50.5 MB, less than 13.31% of Java online submissions for Two Sum II - Input Array Is Sorted.
+    public int[] twoSum(int[] numbers, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<numbers.length; i++){
+            if(map.containsKey(target-numbers[i])) return new int[]{map.get(target-numbers[i]), i+1};
+            map.put(numbers[i], i+1);
+        }
+        return new int[]{};
+    }
+
 ```
 
 
-#### +++++ Two pointers
+#### +++++ Two pointers `start from 2 sides`
 ```java
 // Time : O(n)
 // space : O(1)
@@ -11174,33 +11202,6 @@ public int shipWithinDays(int[] weights, int days){
 
 ---
 
-
-### 167. Two Sum II - Input Array Is Sorted 两数之和
-
-
-[167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
-
-Given a (索引是从 1 开始的) `1-indexed array` of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
-
-Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
-
-The tests are generated such that there is exactly one solution. You may not use the same element twice.
-
-```java
-int[] twoSum(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    while (left < right) {
-        int sum = nums[left] + nums[right];
-        // 题目要求的索引是从 1 开始的
-        if (sum == target) return new int[]{left + 1, right + 1};
-        // 让 sum 大一点
-        else if (sum < target) left++;
-        // 让 sum 小一点
-        else if (sum > target) right--;
-    }
-    return new int[]{-1, -1};
-}
-```
 
 
 ---
@@ -13371,60 +13372,60 @@ Output: false
 
 
 #### +++++ Brute-Force
+ 
+
+```java
+// Runtime: 1263 ms, faster than 5.01% of Java online submissions for Valid Palindrome.
+// Memory Usage: 47.2 MB, less than 26.08% of Java online submissions for Valid Palindrome.
+
+// 2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()
+class Solution {
+    public boolean isPalindrome(String s) {
+        s = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();   // mose time consumming.
+        int r=0, l=s.length()-1;  
+        while(r<l){ 
+            if(s.charAt(r)==s.charAt(l)){
+                r++; l--;
+            }
+            else return false;
+        } 
+        return true;
+    }
+}
+```
+ 
 
 
 ```java
 // Time: O(N)
 // Space: O(N)
 public boolean isPalindrome(String s) {
-    StringBuilder sb = new StringBuilder(s.toLowerCase()); // for later comparisons
+    s = s.toLowerCase(); // for later comparisons
     int idx = 0;  
     // remove non-letter character
-    while (idx < sb.length()) {
-        char ch = sb.charAt(idx);
+    while (idx < s.length()) {
+        char ch = s.charAt(idx);
         // letter or digit
         if (Character.isLetterOrDigit(ch)) idx += 1;
         // not letter
-        else sb.deleteCharAt(idx);
+        else s.deleteCharAt(idx);
     }
-    int n = sb.length(); // update length
+    int n = s.length(); // update length
     // right-leaning
     for (int i = 0; i < n / 2; ++i) {
         int j = n - i - 1;
-        if (sb.charAt(i) != sb.charAt(j)) return false;
+        if (s.charAt(i) != s.charAt(j)) return false;
     }
     return true;
 }
-```
-
-
-
-#### +++++ `2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()`
-
-```java
-// Runtime: 23 ms, faster than 31.39% of Java online submissions for Valid Palindrome.
-// Memory Usage: 39.9 MB, less than 60.42% of Java online submissions for Valid Palindrome.
-// 双指针
-class Solution {
-    public boolean isPalindrome(String s) {
-        String s2 = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        int x=0, y=s2.length()-1;
-        if(y<1) return true;
-        while(x<y){
-            if(s2.charAt(x)!=s2.charAt(y)) return false;
-            x++; y--;
-        }
-        return true;
-    }
-}
-```
+``` 
 
 
 #### +++++ `2 pointer + (x <= y && !Character.isLetterOrDigit(s.charAt(x)) )` best
 
 ```java
-// Runtime: 7 ms, faster than 51.59% of Java online submissions for Valid Palindrome.
-// Memory Usage: 43.6 MB, less than 27.79% of Java online submissions for Valid Palindrome.
+// Runtime: 4 ms, faster than 87.40% of Java online submissions for Valid Palindrome.
+// Memory Usage: 44 MB, less than 45.98% of Java online submissions for Valid Palindrome.
 public class Solution {
     public boolean isPalindrome(String s) {
         int x = 0, y = s.length() - 1;
@@ -13434,8 +13435,7 @@ public class Solution {
             if(x <= y && Character.toLowerCase(s.charAt(x)) != Character.toLowerCase(s.charAt(y))) {
                 return false;
             }
-            x++;
-            y--;
+            x++; y--;
         }
         return true;
     }
@@ -13489,6 +13489,8 @@ public boolean isPalindrome(String s){
 }
 
 
+// Runtime: 864 ms, faster than 19.35% of Java online submissions for Valid Palindrome.
+// Memory Usage: 47.5 MB, less than 19.37% of Java online submissions for Valid Palindrome.
 public class Solution {
     public boolean isPalindrome(String s) {
         String actual = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
@@ -13498,6 +13500,9 @@ public class Solution {
 }
 
 ```
+
+
+
 
 ---
 
