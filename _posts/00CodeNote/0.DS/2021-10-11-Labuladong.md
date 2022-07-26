@@ -440,7 +440,12 @@ toc: true
 3. values are in long or Integer.
 4. is given array sorted.(even if the example are sorted) this helped me in google interview interviewer told me that this is nice question. (I was not asked this question but a question where sample cases where sorted )
 
+
+
+
 ---
+
+
 
 ## helper
 
@@ -762,16 +767,21 @@ Arrays.sort(
 // ArrayList
 ArrayList ans = new ArrayList<>();
 ArrayList<Integer> ans = new ArrayList<>();
+
 List<List<String>> res = new ArrayList<List<String>>();
-List<int[]> res = new ArrayList<>();
-List<Integer> res = new ArrayList<>();
+
+List<int[]> res = new ArrayList<>(); 
+
 List<Integer> v0 = new ArrayList<>();
+
+List<Integer> v1 = Arrays.asList(int k);
 List<Integer> v1 = new ArrayList<>(Arrays.asList(array1));
+
 List<Integer> v2 = v1;  // another reference to v1, modify v2 will actually modify v1
 List<Integer> v3 = new ArrayList<>(v1);     // make an actual copy of v1, not changing v1
 
 List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
-List<Integer> num = Arrays.asList(int k);
+
 v1.size()
 v1.isEmpty();
 v1.get(index)
@@ -792,8 +802,12 @@ v1.addAfter(p);
 
 
 // LinkedList
+
 List<int[]>[] ll = new LinkedList[n+1];
 LinkedList<Integer> ll = new LinkedList<>();
+
+List<List<Integer>> output = new LinkedList();
+
 ll.size();
 ll.isEmpty();
 
