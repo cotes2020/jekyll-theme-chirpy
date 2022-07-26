@@ -10086,21 +10086,26 @@ use set/hash to remove duplicate
 // space: O(n)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        Set<List<Integer>> res = new HashSet<>();
-        HashMap<Integer,Integer> map = new HashMap<>();
-        int n = nums.length;
-        Arrays.sort(nums);
 
+        Set<List<Integer>> res = new HashSet<>();
         // if length is less than 3, return empty result set
+        int n = nums.length;
         if (n < 3 || nums[0] > 0) return new ArrayList(res);
 
-        for(int i = 0 ; i < nums.length; i++) map.put(nums[i], i);
+        HashMap<Integer,Integer> map = new HashMap<>();
+        Arrays.sort(nums);
 
-        for(int i=0;i<n-1;i++){
-            for(int j=i+1;j<n;j++) {
+        for(int i = 0 ; i < n; i++) map.put(nums[i], i);
+
+        for(int i=0; i<n-1; i++){
+
+            for(int j=i+1; j<n; j++) {
 
                 int target = 0-nums[i]-nums[j];
+
+                // x y -> find z (x<y<z)
                 if (map.containsKey(target) && map.get(target)>j ){
+
                     res.add(Arrays.asList(nums[i], nums[j], target));
                 }
             }
@@ -10114,34 +10119,38 @@ class Solution {
 ##### ++++++ `best: 2 pointer`
 
 ```java
+// Runtime: 27 ms, faster than 81.71% of Java online submissions for 3Sum.
+// Memory Usage: 59.1 MB, less than 51.67% of Java online submissions for 3Sum.
 // time: O(n^2)
 // space: O(1)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
 
-        List<List<Integer>> res = new ArrayList<>();
-        int n = nums.length;
-        Arrays.sort(nums);
-
+        List<List<Integer>> res = new q1    `````````````<>();
         // if length is less than 3, return empty result set
+        int n = nums.length;
         if (n < 3 || nums[0] > 0) return res;
 
+        Arrays.sort(nums);
+
         // left to tight
-        for(int i=0;i<n-1;i++){
-            //  i j ------ k
-            int j=i+1, k=n-1;
-            while(j<k){
-                if(0==nums[i]+nums[j]+nums[k]) res.add(new ArrayList(nums[i]+nums[j]+nums[k]));
-                // need smaller number
-                else if(0<nums[i]+nums[j]+nums[k]) k--;
-                // need biger number
-                else if(0>nums[i]+nums[j]+nums[k]) j++;
-                else {
-                    while(j<k && nums[j]==nums[j+1]) j++;
-                    while(j<k && nums[k]==nums[k-1]) k--;
-                    res.add( Arrays.asList(nums[i], nums[j], nums[k]) );
-                    j++;
-                    k--;
+        for(int i=0; i<n-2; i++){
+            if (i == 0 || nums[i] != nums[i - 1] ){ 
+            // if (i == 0 || (i > 0 && nums[i] != nums[i - 1])){ 
+                //  i j ------ k
+                int j=i+1, k=n-1;
+                while(j<k){
+                    if(0==nums[i]+nums[j]+nums[k]) {
+                        res.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                        while(j<k && nums[j]==nums[j+1]) j++;
+                        while(j<k && nums[k]==nums[k-1]) k--;
+                        j++;
+                        k--;
+                    }
+                    // need smaller number
+                    else if(0<nums[i]+nums[j]+nums[k]) k--;
+                    // need biger number
+                    else j++;
                 }
             }
         }   
@@ -10149,14 +10158,7 @@ class Solution {
     }
 }
 ```
-
-
-
----
-
-
-
-
+ 
 
 
 ---
