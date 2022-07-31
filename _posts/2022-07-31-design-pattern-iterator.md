@@ -39,7 +39,15 @@ for (int i = 0; i < arr.length; i++) {
 
 Aggregate의 추상 메소드인 iterator의 return type이 iterator interpace이기 때문이다.
 
-## 3. Interator 인터페이스
+## 3. Q&A
+
+Q. 데이터의 처음부터 끝까지 훑는 것이 아닌, 중간의 일부부만을 참조하려면 어떻게 해야하나?
+
+- 중간만 참조하는 iterator를 만들어야 한다. 하나의 ConcreteAggregate에 대해 여러 ConcreteIterator를 만들 수 있다.
+
+Q. 자료구조 원본의 index 접근이 더 편리하지 않을까? 왜 원본을 0부터 끝까지 직접 참조하지 않을까?
+
+- 원본 노출을 하지 않기 위해서이다. 즉, Iterator 패턴은 자료구조의 원본을 지킬 수 있는 보안 패턴이다. 원본은 감춘채 거기에 있는 데이터를 탐색할 수 있게 된다.
 
 ## 참고문헌
 

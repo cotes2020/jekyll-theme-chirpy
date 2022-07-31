@@ -9,8 +9,8 @@ tags: [react, react-query]
 
 ## 참고자료
 
-[react-query 공식 문서](https://react-query-beta.tanstack.com/)
-[카카오페이 프론트엔드 개발자들이 React Query를 선택한 이유](https://tech.kakaopay.com/post/react-query-1/)
+[react-query 공식 문서](https://react-query-beta.tanstack.com/) <br>
+[카카오페이 프론트엔드 개발자들이 React Query를 선택한 이유](https://tech.kakaopay.com/post/react-query-1/) <br>
 [React Query 사용법](https://velog.io/@leehyunho2001/React-Query-uuj3rjo7)
 
 ## 0. 소개
