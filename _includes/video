@@ -1,0 +1,70 @@
+{% capture video_id %}{{ include.id }}{% endcapture %}
+{% capture video_provider %}{{ include.provider }}{% endcapture %}
+{% capture video_danmaku %}{{ include.danmaku | default: 0 }}{% endcapture %}
+
+{% capture video_src %}
+  {% case video_provider %}
+  {% when "vimeo" %}
+    https://player.vimeo.com/video/{{ video_id }}?dnt=true
+  {% when "youtube" %}
+    https://www.youtube-nocookie.com/embed/{{ video_id }}
+  {% when "google-drive" %}
+    https://drive.google.com/file/d/{{ video_id }}/preview
+  {% when "bilibili" %}
+    https://player.bilibili.com/player.html?bvid={{ video_id }}&page=1&as_wide=1&high_quality=1&danmaku={{ video_danmaku }}
+  {% when "archive" %}
+    https://archive.org/embed/{{ video_id }}
+  {% when "att" %}
+    https://techchannel.att.com/embed/index?mediaID={{ video_id }}
+  {% when "soundcloud" %}
+    https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ video_id }}
+  {% endcase %}
+{% endcapture %}
+
+{% capture video_width  %}
+  {% case video_provider %}
+  {% when "vimeo" %}
+      500
+  {% when "youtube" %}
+      700
+  {% when "google-drive" %}
+      700
+  {% when "bilibili" %}
+      700
+  {% when "archive" %}
+      700
+  {% when "att" %}
+      700
+  {% when "soundcloud" %}
+      700
+  {% endcase %}
+{% endcapture %}
+
+{% capture video_height %}
+  {% case video_provider %}
+  {% when "vimeo" %}
+      281
+  {% when "youtube" %}
+      480 
+  {% when "google-drive" %}
+      480 
+  {% when "bilibili" %}
+      480 
+  {% when "archive" %}
+      480 
+  {% when "att" %}
+      480 
+  {% when "soundcloud" %}
+      480 
+  {% endcase %}
+{% endcapture %}
+
+
+{% assign video_src = video_src | strip %}
+
+<!-- Courtesy of embedresponsively.com //-->
+{% unless video_src == "" %}
+  <div class="responsive-video-container">
+      <iframe src="{{ video_src }}" frameborder="0" width="{{ video_width }}" height="{{ video_height }}" webkitAllowFullScreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+{% endunless %}
