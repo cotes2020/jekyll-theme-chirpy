@@ -45,16 +45,19 @@ tags: [디자인패턴, Adapter 패턴]
 ## 3. 객체 어댑터와 클래스 어댑터
 
 1. 객체 어댑터
-   <img width="673" alt="스크린샷 2022-08-08 오전 1 32 51" src="https://user-images.githubusercontent.com/64428916/183301456-c32fc4a8-53a1-4152-bd18-4f4647eb50f4.png">
+
+ <img width="673" alt="스크린샷 2022-08-08 오전 1 32 51" src="https://user-images.githubusercontent.com/64428916/183301456-c32fc4a8-53a1-4152-bd18-4f4647eb50f4.png">
 
 2. 클래스 어댑터
-   <img width="673" alt="스크린샷 2022-08-08 오전 1 33 21" src="https://user-images.githubusercontent.com/64428916/183301458-8027a84c-8a29-4289-879d-3d0438a3df80.png">
+
+ <img width="673" alt="스크린샷 2022-08-08 오전 1 33 21" src="https://user-images.githubusercontent.com/64428916/183301458-8027a84c-8a29-4289-879d-3d0438a3df80.png">
 
 - 객체 어댑터는 구성으로 Adaptee에 요청을 전달하는 반면, 클래스 어댑터는 Target과 Adaptee 모두 서브클래스로 만들어서 사용한다.
 
 책에서 소개하는 예제로 코드를 살펴보자.
 
 [객체 어댑터 - 위임을 사용한 Adapter 패턴]
+
 <img width="648" alt="스크린샷 2022-08-08 오전 1 33 53" src="https://user-images.githubusercontent.com/64428916/183301485-29cb69c2-fe6a-4b34-b40c-501b8c82f9a2.png">
 
 - Adapter는 Adaptee로 구성되어 있다. Adapter의 몸든 요청은 Adaptee에게 위임된다.
@@ -113,6 +116,7 @@ public class Banner {
 ```
 
 [클래스 어댑터 - 상속을 사용한 Adapter 패턴]
+
 <img width="648" alt="스크린샷 2022-08-08 오전 1 34 02" src="https://user-images.githubusercontent.com/64428916/183301487-1d6c2b65-1079-43f2-96c4-db5053d318cf.png">
 
 - `PrintBanner` 클래스가 `Banner`클래스를 확장해서 `showWithParen`, `showWithAster` 메소드를 상속받는다.
