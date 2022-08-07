@@ -17,13 +17,13 @@ tags: [디자인패턴, Adapter 패턴]
 - **특정 클래스 인터페이스**를 **클라이언트에서 요구하는 다른 인터페이스**로 변환한다.
 - Wrappter 패턴이라고도 부른다.
 
-![sequence diagram](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/870594ef-f523-47cf-a15f-48c97523529d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220804%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220804T072049Z&X-Amz-Expires=86400&X-Amz-Signature=98d10a2d12f89eab038f5e66dc33f12fc1fa31c874fe5842f8be0185d61f3a7b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+<img width="473" alt="스크린샷 2022-08-08 오전 1 31 06" src="https://user-images.githubusercontent.com/64428916/183301438-20c25bd3-3f63-44ea-a1c6-fc784f710496.png">
 
 - 클라이언트에서는 Target Interface를 호출하는 것처럼 보인다. 하지만 클라이언트의 요청을 받은 Adapter는 자신이 감싸고 있는 Adaptee에게 실질적인 처리를 위임한다. Adapter가 Adaptee를 감싸고 있는 것 때문에 Wrapper 패턴이라고도 불린다.
 
 ## 2. Adapter 패턴의 등장인물
 
-![adapter](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f488ca5a-2a12-4e82-8289-32f8f6c70ba3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220804%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220804T072205Z&X-Amz-Expires=86400&X-Amz-Signature=b118c76b7dfb5647b4a51de232d8a6b56e99fce4df87084d3c908c5beaf956c1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+<img width="613" alt="스크린샷 2022-08-08 오전 1 31 28" src="https://user-images.githubusercontent.com/64428916/183301454-0e641a16-f1c0-417e-bea0-6add07f961f1.png">
 
 - Client
 
@@ -45,17 +45,17 @@ tags: [디자인패턴, Adapter 패턴]
 ## 3. 객체 어댑터와 클래스 어댑터
 
 1. 객체 어댑터
-   ![객체 어댑터](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/506ee314-05bf-4878-9546-33526db89e94/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220804%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220804T072419Z&X-Amz-Expires=86400&X-Amz-Signature=3dd0480c3f71822adce9ea15c9843be02775e4b9fb76adc90eb65b3f8eb4ca7a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+   <img width="673" alt="스크린샷 2022-08-08 오전 1 32 51" src="https://user-images.githubusercontent.com/64428916/183301456-c32fc4a8-53a1-4152-bd18-4f4647eb50f4.png">
 
 2. 클래스 어댑터
-   ![클래스 어댑터](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ae6b508b-5448-456f-9f26-72af9d7bacf0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220804%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220804T072502Z&X-Amz-Expires=86400&X-Amz-Signature=96028b9303dc74fc67b89de41609e0bbd9d6c854d89100e213339729ba67f82c&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+   <img width="673" alt="스크린샷 2022-08-08 오전 1 33 21" src="https://user-images.githubusercontent.com/64428916/183301458-8027a84c-8a29-4289-879d-3d0438a3df80.png">
 
 - 객체 어댑터는 구성으로 Adaptee에 요청을 전달하는 반면, 클래스 어댑터는 Target과 Adaptee 모두 서브클래스로 만들어서 사용한다.
 
 책에서 소개하는 예제로 코드를 살펴보자.
 
 [객체 어댑터 - 위임을 사용한 Adapter 패턴]
-![객체 어댑터](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4c12b290-235f-4ce3-8e4a-e61fd229d76e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220804%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220804T072943Z&X-Amz-Expires=86400&X-Amz-Signature=7965b8af934a87084027e6114721bfd115a2ac3432c4e39c11e06cb5f57ee833&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+<img width="648" alt="스크린샷 2022-08-08 오전 1 33 53" src="https://user-images.githubusercontent.com/64428916/183301485-29cb69c2-fe6a-4b34-b40c-501b8c82f9a2.png">
 
 - Adapter는 Adaptee로 구성되어 있다. Adapter의 몸든 요청은 Adaptee에게 위임된다.
 - `PrintBanner` 클래스는 `banner` 필드에서 `Banner` 클래스의 인터페이스를 가진다.
@@ -113,7 +113,7 @@ public class Banner {
 ```
 
 [클래스 어댑터 - 상속을 사용한 Adapter 패턴]
-![클래스 어댑터](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/158a7326-f8e7-4c82-8450-16aebeba949b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220804%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220804T073319Z&X-Amz-Expires=86400&X-Amz-Signature=ba7c85d47cb5ae94b215684ad2e9bcfa81ffd734fae9c2425d306e95b5f7c8e5&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+<img width="648" alt="스크린샷 2022-08-08 오전 1 34 02" src="https://user-images.githubusercontent.com/64428916/183301487-1d6c2b65-1079-43f2-96c4-db5053d318cf.png">
 
 - `PrintBanner` 클래스가 `Banner`클래스를 확장해서 `showWithParen`, `showWithAster` 메소드를 상속받는다.
 
