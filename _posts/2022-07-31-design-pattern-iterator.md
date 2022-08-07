@@ -2,7 +2,7 @@
 title: "디자인 패턴 - Iterator 패턴에 대해 알아보자"
 date: 2022-07-31 00:56:00 +0900
 categories: [디자인패턴]
-tags: [디자인패턴, iterator패턴]
+tags: [디자인패턴, Iterator 패턴]
 ---
 
 # 디자인 패턴 - Iterator 패턴에 대해 알아보자
