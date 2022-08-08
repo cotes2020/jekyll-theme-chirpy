@@ -25,7 +25,7 @@ layout: page
     {% assign last_year = cur_year %}
   {% endif %}
 
-  <li class="d-flex align-items-center">
+  <li>
   {% assign ts = post.date | date: '%s' %}
     <span class="date day" data-ts="{{ ts }}" data-df="DD">{{ post.date | date: "%d" }}</span>
     <span class="date month small text-muted ml-1" data-ts="{{ ts }}" data-df="{{ df_dayjs_m }}">
