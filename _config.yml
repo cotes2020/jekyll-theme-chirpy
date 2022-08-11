@@ -1,4 +1,3 @@
-# The Site Configuration
 
 # Import the theme
 theme: jekyll-theme-chirpy
@@ -16,23 +15,23 @@ lang: en
 prefer_datetime_locale:
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Seoul
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: 개발자 꿈나무 장인규라고 합니다.                     # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: 백엔드 개발자를 희망하는 중!   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  개발자 꿈나무 장인규 입니다. 현재 인천대학교 컴퓨터 공학부에 재학중이며, 웹과 어플리케이션 서비스 개발에 큰 관심을 가지고 있습니다.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://redforest0607.github.io'
 
 github:
-  username: github_username             # change to your github username
+  username: RedForest0607             # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
@@ -40,12 +39,12 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@doamin.com             # change to your email address
+  name: In Gyu Jang
+  email: jjanga0607@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://github.com/RedForest0607      # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -80,10 +79,10 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://raw.githubusercontent.com/cotes2020/chirpy-images/main'
+img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/commons/avatar.jpg'
+avatar: /assets/img/Profile.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
