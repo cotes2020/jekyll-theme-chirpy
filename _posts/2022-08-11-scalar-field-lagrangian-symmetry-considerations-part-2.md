@@ -80,14 +80,14 @@ where $$\left\{ g_n \vert n = 1, 2, \dots \right\}$$ are a set of coupling const
 
 ### Complex scalar field theory
 
-At last, let us venture towards the scalar field theory of complex-valued fields. In this model, every field $$\phi$$ has a corresponding dual $$\overline{\phi}$$ which maps it to a real, $$\overline{\phi} \phi \in \mathbb{R}$$. Here, juxtaposition of complex numbers represents complex multiplication, dictated by a bilinear map corresponding to $$\text{SO} \left( 2 \right)$$. For readers who are interested, [Algebra Done Tensorially: Part 2 (Algebras Over Fields)]({% post_url 2021-10-23-algebras-over-fields %}) explores complex algebra from a tensor algebraic perspective.
+At last, let us venture towards the scalar field theory of complex-valued fields. In this model, every field $$\phi$$ has a corresponding dual $$\phi^\ast$$ which maps it to a real, $$\phi^\ast \phi \in \mathbb{R}$$. Here, juxtaposition of complex numbers represents complex multiplication, dictated by a bilinear map corresponding to $$\text{SO} \left( 2 \right)$$. For readers who are interested, [Algebra Done Tensorially: Part 2 (Algebras Over Fields)]({% post_url 2021-10-23-algebras-over-fields %}) explores complex algebra from a tensor algebraic perspective.
 
-In the notation we have used so far, $$\phi^a$$ represents the components of $$\phi$$ while $$\phi_a$$ represents those of $$\overline{\phi}$$. In particular,
+In the notation we have used so far, $$\phi^a$$ represents the components of $$\phi$$ while $$\phi_a$$ represents those of $$\phi^\ast$$. In particular,
 
 $$
 \begin{align}
 \phi & = \phi^a e_a \\
-\overline{\phi} & = \phi_a \theta^a \\
+\phi^\ast & = \phi_a \theta^a \\
 \theta^a \left( e_b \right) & = e_b \left( \theta^a \right) = \delta^a_{\phantom{a} b}
 \end{align}
 $$
@@ -96,7 +96,7 @@ The intuition for the last equation has been elaborated in [Demystifying the Def
 
 Thus, from the above discussion, the full Lagrangian for complex scalar fields (with gauge scalar potential terms) is,
 
-$$\mathcal{L} = \frac{1}{2} D_\mu \overline{\phi} D^\mu \phi - \frac{1}{2} m^2 \overline{\phi} \phi - \sum_{n=2}^\infty \frac{1}{n!} g_n \left( \overline{\phi} \phi \right)^{2n}$$
+$$\mathcal{L} = \frac{1}{2} D_\mu \phi^\ast D^\mu \phi - \frac{1}{2} m^2 \phi^\ast \phi - \sum_{n=2}^\infty \frac{1}{n!} g_n \left( \phi^\ast \phi \right)^{2n}$$
 
 ## Conclusion
 
