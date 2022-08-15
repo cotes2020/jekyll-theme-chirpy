@@ -1,7 +1,7 @@
 ---
 title: GCP - Development in the cloud
 date: 2021-01-01 11:11:11 -0400
-categories: [01GCP, Compute]
+categories: [01GCP, Dev]
 tags: [GCP]
 toc: true
 image:

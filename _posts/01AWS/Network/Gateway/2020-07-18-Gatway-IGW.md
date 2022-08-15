@@ -60,9 +60,12 @@ image:
 
 
 - enable access to or from the internet for instances in a VPC subnet, you must ensure:
+  - Create an internet gateway 
   - <font color=red> Attach an internet gateway to VPC </font>
   - <font color=red> subnet's route table points to the internet gateway </font>
+    - Add a route to your subnet's route table that directs internet-bound traffic to the internet gateway.
   - instances in subnet have <font color=red> public / Elastic IP addresses </font>
+    - (public IPv4 address, Elastic IP address, or IPv6 address)
   - <font color=red> NACLs and security groups </font> allow the relevant traffic to flow to and from your instance.
 
 

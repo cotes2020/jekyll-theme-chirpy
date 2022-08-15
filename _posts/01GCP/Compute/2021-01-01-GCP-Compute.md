@@ -10,6 +10,16 @@ image:
 - [Google Cloud Computing Solutions](#google-cloud-computing-solutions)
   - [Cloud Computing](#cloud-computing)
   - [Google Cloud Computing Solutions](#google-cloud-computing-solutions-1)
+  - [IaaS](#iaas)
+    - [Compute Engine](#compute-engine)
+  - [PaaS](#paas)
+    - [App Engine](#app-engine)
+  - [Serverless](#serverless)
+    - [Cloud Function](#cloud-function)
+  - [container - Stateless](#container---stateless)
+    - [Cloud Run](#cloud-run)
+  - [container - Hybrid](#container---hybrid)
+    - [GKE Kubernetes Engine](#gke-kubernetes-engine)
   - [which compute service to you adopt](#which-compute-service-to-you-adopt)
 
 ---
@@ -51,6 +61,19 @@ image:
 
 > GCP products that provide the compute infrastructure for applications
 
+3 Compute
+
+![Screen Shot 2022-08-15 at 00.11.25](https://i.imgur.com/QauFUMT.png)
+
+![Screen Shot 2022-08-14 at 23.53.19](https://i.imgur.com/zqLCHjW.jpg)
+
+![Screen Shot 2022-08-14 at 23.54.09](https://i.imgur.com/GrvWJPN.jpg)
+
+![Screen Shot 2022-08-15 at 00.11.35](https://i.imgur.com/7tbu3te.png)
+
+
+IaaS vs PaaS vs Serverless:
+
 ![Screen Shot 2021-06-27 at 1.20.06 AM](https://i.imgur.com/tXqN8CH.png)
 
 ![Screen Shot 2021-02-12 at 13.25.46](https://i.imgur.com/uuTClRK.png)
@@ -59,6 +82,14 @@ image:
 
 ![Screen Shot 2021-02-09 at 23.26.11](https://i.imgur.com/Zghiw6i.png)
 
+---
+
+
+## IaaS
+
+### Compute Engine
+
+![Screen Shot 2021-02-14 at 21.27.28](https://i.imgur.com/pKrLZLF.png)
 
 - <font color=red> Compute Engine </font>
   - [detailed page](https://ocholuo.github.io/posts/Compute-engine/)
@@ -80,7 +111,17 @@ image:
     - best option when other computing options don't support your applications or requirements
       - easily lift and shift your on-premises workloads into GCP without rewriting the applications or making any changes.
 
-![Screen Shot 2021-02-14 at 21.27.28](https://i.imgur.com/pKrLZLF.png)
+
+---
+
+
+## PaaS
+
+
+### App Engine
+
+![Screen Shot 2021-02-14 at 21.28.45](https://i.imgur.com/0ngmPQq.png)
+
 
 - <font color=red> App Engine </font>
   - [detailed page](https://ocholuo.github.io/posts/app-engine/)
@@ -121,47 +162,16 @@ image:
       - RESTful APIs are easy for developers to work with and extend.
       - And App Engine makes them easy to operate
 
-![Screen Shot 2021-02-14 at 21.28.45](https://i.imgur.com/0ngmPQq.png)
+---
 
-- <font color=red> GKE Kubernetes Engine</font>
-  - [detailed page](https://ocholuo.github.io/posts/kubernete-engine/)
-  - A managed environment for deploying containerized applications
-  - to run containerized applications on a Cloud environment that Google Cloud manages for you under the administrative control.
-  - containerization, a way to package code that's designed to be highly portable and to use resources very efficiently.
-  - Kubernetes, a way to orchestrate code in those containers.
 
-![Screen Shot 2021-02-14 at 21.30.41](https://i.imgur.com/JZUUrNV.png)
+## Serverless
 
-- <font color=red> Cloud Run </font>
-  - serverless
-  - builds, deploys, and manages modern stateless workloads.
-    - can build the applications in any language using whatever frameworks and tools
-    - deploy them in seconds without manage and maintain the server infrastructure.
-      - distracts way all the infrastructure management
-      - such as provisioning, configuring, managing those servers
-      - only focus on developing applications.
-    - run request or event driven stateless workloads
-      - without having to worry bout servers.  
-  - automatically scales up and down from zero
-    - depending upon traffic almost instantaneously
-    - no worry about scale configuration.
-  - pay for only the resources used
-    - calculated down to the nearest 100 milliseconds.
-    - no pay for those over provisioned resources.
-  - gives the choice of running the containers
-    - with fully managed or in the own GKE cluster.
-    - deploy the stateless containers with a consistent developer experience to a fully managed environment or to the own GKE cluster.
-    - This common experiences enabled by Knative
-      - Cloud Run is built on Knative
-        - an open source Kubernetes based platform.
-        - an open API and runtime environment built on top of Kubernetes.
-  - gives the freedom to move the workloads across different environments and platforms,
-    - either fully managed on GCP, on GKE
-    - or anywhere a Knative runs.
-  - enables you to deploy stateless containers
-    - that listen for requests or events delivered via HTTP requests.
+---
 
-![Screen Shot 2021-02-14 at 21.32.19](https://i.imgur.com/PWNsn3v.png)
+### Cloud Function
+
+![Screen Shot 2021-02-14 at 21.33.08](https://i.imgur.com/Hf2hreB.png)
 
 - <font color=red> Cloud Function </font>
   - <font color=blue> functions as a Service </font>
@@ -214,7 +224,67 @@ image:
       - such as virtual assistance, chat bots
       - video or image analysis, and sentiment analysis.
 
-![Screen Shot 2021-02-14 at 21.33.08](https://i.imgur.com/Hf2hreB.png)
+---
+
+
+## container - Stateless
+
+
+---
+
+### Cloud Run
+
+![Screen Shot 2021-02-14 at 21.32.19](https://i.imgur.com/PWNsn3v.png)
+
+- <font color=red> Cloud Run </font>
+  - serverless
+  - builds, deploys, and manages modern stateless workloads.
+    - can build the applications in any language using whatever frameworks and tools
+    - deploy them in seconds without manage and maintain the server infrastructure.
+      - distracts way all the infrastructure management
+      - such as provisioning, configuring, managing those servers
+      - only focus on developing applications.
+    - run request or event driven stateless workloads
+      - without having to worry bout servers.  
+  - automatically scales up and down from zero
+    - depending upon traffic almost instantaneously
+    - no worry about scale configuration.
+  - pay for only the resources used
+    - calculated down to the nearest 100 milliseconds.
+    - no pay for those over provisioned resources.
+  - gives the choice of running the containers
+    - with fully managed or in the own GKE cluster.
+    - deploy the stateless containers with a consistent developer experience to a fully managed environment or to the own GKE cluster.
+    - This common experiences enabled by Knative
+      - Cloud Run is built on Knative
+        - an open source Kubernetes based platform.
+        - an open API and runtime environment built on top of Kubernetes.
+  - gives the freedom to move the workloads across different environments and platforms,
+    - either fully managed on GCP, on GKE
+    - or anywhere a Knative runs.
+  - enables you to deploy stateless containers
+    - that listen for requests or events delivered via HTTP requests.
+
+---
+
+
+## container - Hybrid
+
+
+---
+
+
+### GKE Kubernetes Engine
+
+![Screen Shot 2021-02-14 at 21.30.41](https://i.imgur.com/JZUUrNV.png)
+
+- <font color=red> GKE Kubernetes Engine </font>
+  - [detailed page](https://ocholuo.github.io/posts/kubernete-engine/)
+  - A managed environment for deploying containerized applications
+  - to run containerized applications on a Cloud environment that Google Cloud manages for you under the administrative control.
+  - containerization, a way to package code that's designed to be highly portable and to use resources very efficiently.
+  - Kubernetes, a way to orchestrate code in those containers.
+
 
 ---
 

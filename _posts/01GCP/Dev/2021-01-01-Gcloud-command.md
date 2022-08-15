@@ -1,11 +1,12 @@
 ---
 title: GCP - Gcloud Commnad
 date: 2021-01-01 11:11:11 -0400
-categories: [01GCP]
+categories: [01GCP, Dev]
 tags: [GCP]
 toc: true
 image:
 ---
+ 
 
 - [GCP - Gcloud Command](#gcp---gcloud-command)
   - [Network](#network)

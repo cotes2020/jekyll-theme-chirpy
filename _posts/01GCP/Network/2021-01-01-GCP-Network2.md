@@ -1,5 +1,5 @@
 ---
-title: GCP - Cloud network
+title: GCP - GCP Network
 date: 2021-01-01 11:11:11 -0400
 categories: [01GCP, Network]
 tags: [GCP]
@@ -24,6 +24,29 @@ image:
 
 
 ---
+
+# GCP Network
+
+## basic
+
+
+![Screen Shot 2022-08-15 at 00.24.46](https://i.imgur.com/sBbiUs9.png)
+
+![Screen Shot 2022-08-15 at 00.24.55](https://i.imgur.com/ikiYBca.jpg)
+
+![Screen Shot 2022-08-15 at 00.25.05](https://i.imgur.com/gFb0cHL.png)
+
+
+
+![Screen Shot 2022-08-15 at 00.25.30](https://i.imgur.com/j1FEI7v.jpg)
+
+
+![Screen Shot 2022-08-15 at 00.25.45](https://i.imgur.com/Qu3FE9e.png)
+
+
+
+---
+
 
 
 # Cloud Interconnect and Peering
