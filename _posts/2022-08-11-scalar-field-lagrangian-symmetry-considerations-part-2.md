@@ -68,7 +68,7 @@ $$\mathcal{L} = \frac{1}{2} D_\mu \phi_a D^\mu \phi^a - \frac{1}{2} m^2 \phi_a \
 
 To realize the power of the above argument, consider a single indexed field $$\phi$$ (we didn't have to index it explicitly as there is only one!). Now, our argument becomes the following. We cannot have $$\phi$$ appear in the Lagrangian, since it is not a gauge scalar (much like $$\phi_a$$ is not, for a theory with more gauge indices). As a matter of fact, no odd power of $$\phi$$ is a gauge scalar, since an odd power corresponds to a free gauge index,
 
-$$\phi^{2n+1} = \phi^{2n} \cdot \phi \leftrightarrow \left( \phi_a \phi^a \right)^n \phi_a$$
+$$\phi^{2n+1} = \phi^{2n} \cdot \phi \leftrightarrow \left( \phi_b \phi^b \right)^n \phi_a$$
 
 Therefore, only even powers of $$\phi$$ can appear in the Lagrangian, which is a gauge scalar. This internal working of the field $$\phi$$ would not come to limelight without the idea of gauge invariance and multiples degrees of freedom - thus providing an excellent theoretical justification for gauge field theories.
 
@@ -80,14 +80,14 @@ where $$\left\{ g_n \vert n = 1, 2, \dots \right\}$$ are a set of coupling const
 
 ### Complex scalar field theory
 
-At last, let us venture towards the scalar field theory of complex-valued fields. In this model, every field $$\phi$$ has a corresponding dual $$\phi^\ast$$ which maps it to a real, $$\phi^\ast \phi \in \mathbb{R}$$. Here, juxtaposition of complex numbers represents complex multiplication, dictated by a bilinear map corresponding to $$\text{SO} \left( 2 \right)$$. For readers who are interested, [Algebra Done Tensorially: Part 2 (Algebras Over Fields)]({% post_url 2021-10-23-algebras-over-fields %}) explores complex algebra from a tensor algebraic perspective.
+At last, let us venture towards the scalar field theory of complex-valued fields. In this model, every field $$\phi$$ has a corresponding dual $$\bar{\phi}$$ which maps it to a real, $$\bar{\phi} \phi \in \mathbb{R}$$. Here, juxtaposition of complex numbers represents complex multiplication, dictated by a bilinear map corresponding to $$\text{SO} \left( 2 \right)$$. For readers who are interested, [Algebra Done Tensorially: Part 2 (Algebras Over Fields)]({% post_url 2021-10-23-algebras-over-fields %}) explores complex algebra from a tensor algebraic perspective.
 
-In the notation we have used so far, $$\phi^a$$ represents the components of $$\phi$$ while $$\phi_a$$ represents those of $$\phi^\ast$$. In particular,
+In the notation we have used so far, $$\phi^a$$ represents the components of $$\phi$$ while $$\phi_a$$ represents those of $$\bar{\phi}$$. In particular,
 
 $$
 \begin{align}
 \phi & = \phi^a e_a \\
-\phi^\ast & = \phi_a \theta^a \\
+\bar{\phi} & = \phi_a \theta^a \\
 \theta^a \left( e_b \right) & = e_b \left( \theta^a \right) = \delta^a_{\phantom{a} b}
 \end{align}
 $$
@@ -96,7 +96,7 @@ The intuition for the last equation has been elaborated in [Demystifying the Def
 
 Thus, from the above discussion, the full Lagrangian for complex scalar fields (with gauge scalar potential terms) is,
 
-$$\mathcal{L} = \frac{1}{2} D_\mu \phi^\ast D^\mu \phi - \frac{1}{2} m^2 \phi^\ast \phi - \sum_{n=2}^\infty \frac{1}{n!} g_n \left( \phi^\ast \phi \right)^{2n}$$
+$$\mathcal{L} = \frac{1}{2} D_\mu \bar{\phi} D^\mu \phi - \frac{1}{2} m^2 \bar{\phi} \phi - \sum_{n=2}^\infty \frac{1}{n!} g_n \left( \bar{\phi} \phi \right)^{2n}$$
 
 ## Conclusion
 
