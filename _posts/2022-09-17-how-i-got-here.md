@@ -7,3 +7,4 @@ categories: technical, blog
 
 At last up and running ... I hope.
 well it seem I still got problems ...
+to make it run as it should
