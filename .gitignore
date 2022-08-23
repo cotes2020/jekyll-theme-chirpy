@@ -9,7 +9,7 @@
 !.versionrc.json
 
 # bundler cache
-_site
+# _site
 vendor
 
 # rubygem

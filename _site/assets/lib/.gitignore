@@ -1,0 +1,4 @@
+# hidden files
+.*
+!.git*
+!.editorconfig
