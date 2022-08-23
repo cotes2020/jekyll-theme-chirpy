@@ -1,13 +1,13 @@
 ---
 title: Classification of Fashion Article Images Based on Improved Random Forest and VGG-IE Algorithm
-author: cotes
+author: adria
 date: 2022-08-08 11:33:00 +0800
 categories: [Publications]
 tags: [Computer Vision, deep learning, random forest, VGG]
 math: true
 mermaid: true
 image:
-  path: /commons/public1.png
+  path: /commons/pub1.png
   width: 800
   height: 500
   alt: test.
