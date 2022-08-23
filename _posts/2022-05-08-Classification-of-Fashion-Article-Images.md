@@ -1,6 +1,5 @@
 ---
-title: Classification of Fashion Article Images Based on Improved
-Random Forest and VGG-IE Algorithm
+title: Classification of Fashion Article Images Based on Improved Random Forest and VGG-IE Algorithm
 author: cotes
 date: 2022-08-08 11:33:00 +0800
 categories: [Blogging, Demo]
@@ -15,7 +14,6 @@ image:
 ---
 
 This post is to show Markdown syntax rendering on [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), you can also use it as an example of writing. Now, let's start looking at text and typography.
-
 
 ## Abustruct
 
