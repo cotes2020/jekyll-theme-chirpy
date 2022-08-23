@@ -13,8 +13,9 @@ Intelligence Association (AAIA)](https://cn.aaia-ai.org/). I'm going to apply fo
 
 Hope technology makes our life better ^-^.
 
-My private email: coliapaston@163.com
-My university email：kedong@mail.hfut.edu.cn
+
+My private email: coliapaston@163.com<br>
+My university email：kedong@mail.hfut.edu.cn<br>
 My AAIA working email：KeAdria.D@aaia-ai.org
 
 
@@ -30,6 +31,6 @@ My AAIA working email：KeAdria.D@aaia-ai.org
 
 
 
-我的私人邮箱是：coliapaston@163.com
-我的学校邮箱是：kedong@mail.hfut.edu.cn
+我的私人邮箱是：coliapaston@163.com<br>
+我的学校邮箱是：kedong@mail.hfut.edu.cn<br>
 我的aaia工作邮箱是：KeAdria.D@aaia-ai.org
