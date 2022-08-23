@@ -23,29 +23,29 @@ timezone: Asia/Shanghai
 
 title: Adria                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Machine Learning, Deep Learning, CV, SER   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  A computer science student.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://keadriadong.github.io/'
 
 github:
-  username: github_username             # change to your github username
+  username: keadriadong             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: KeAdriaDong            # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@doamin.com             # change to your email address
+  name: Ke (Adria) Dong / 董珂
+  email: kedong@mail.hfut.edu.cn            # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/KeAdriaDong      # change to your twitter homepage
+    - https://github.com/keadriadong       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -73,7 +73,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode: light  # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -83,7 +83,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: "/commons/avatar.jpg"
 
 # boolean type, the global switch for ToC in posts.
 toc: true
