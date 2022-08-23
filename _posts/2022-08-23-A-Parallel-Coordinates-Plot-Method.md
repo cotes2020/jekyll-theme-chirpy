@@ -1,5 +1,5 @@
 ---
-title: A Parallel Coordinates Plot Method Based on Unsupervised Feature Selection for High-Dimensional Data Visualizatio
+title: A Parallel Coordinates Plot Method Based on Unsupervised Feature Selection for High-Dimensional Data Visualization
 author: adria
 date: 2022-08-23 11:33:00 +0800
 categories: [Publications]
