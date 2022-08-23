@@ -84,7 +84,6 @@ setup_gh() {
 backup() {
   mv "$SITE_DIR"/* "$_backup_dir"
   mv .git "$_backup_dir"
-  mv .gitmodules "$_backup_dir"  # <===== ADD THIS
 
   # When adding custom domain from Github website,
   # the CANME only exist on `gh-pages` branch
