@@ -68,7 +68,7 @@ Update the variables of `_config.yml`{: .filepath} as needed. Some of them are t
 - `timezone`
 - `lang`
 
-### Customing Stylesheet
+### Customizing Stylesheet
 
 If you need to customize the stylesheet, copy the theme's `assets/css/style.scss`{: .filepath} to the same path on your Jekyll site, and then add the custom style at the end of the style file.
 
