@@ -1,5 +1,5 @@
 ---
-title: GCP - GCP Network
+title: GCP - GCP connection
 date: 2021-01-01 11:11:11 -0400
 categories: [01GCP, Network]
 tags: [GCP]
@@ -7,6 +7,8 @@ toc: true
 image:
 ---
 
+- [GCP Network](#gcp-network)
+  - [basic](#basic)
 - [Cloud Interconnect and Peering](#cloud-interconnect-and-peering)
   - [Dedicated connections and Partner Interconnect](#dedicated-connections-and-partner-interconnect)
     - [IPsec VPN tunnels](#ipsec-vpn-tunnels)

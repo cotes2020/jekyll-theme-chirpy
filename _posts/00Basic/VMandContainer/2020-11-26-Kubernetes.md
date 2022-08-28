@@ -874,7 +874,12 @@ status:
   updatedReplicas: 1
 
 
+# HorizontalPodAutoscalers
+kubectl get hpa       
 
+
+# view on workers in a cold state without any traffic.
+kubectl get nodes -L role 
 ```
 
 

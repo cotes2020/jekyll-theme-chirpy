@@ -95,7 +95,7 @@ IaaS vs PaaS vs Serverless:
   - [detailed page](https://ocholuo.github.io/posts/Compute-engine/)
   - <font color=blue> Infrastructure as a Service </font>
   - A managed environment for deploying virtual machines
-  - Fully customizable VMs
+  - Fully customizable **VMs**
     - Compute Engine offers virtual machines that run on GCP
     - create and run virtual machines on Google infrastructure.
     - run virtual machines on demand in the Cloud.  

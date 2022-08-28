@@ -1,5 +1,5 @@
 ---
-title: GCP - modern Hybrid on Multi-Cloud Computing (Anthos)
+title: GCP - Compute migrate
 date: 2021-01-01 11:11:11 -0400
 categories: [01GCP, Compute]
 tags: [GCP]
@@ -7,20 +7,34 @@ toc: true
 image:
 ---
 
-- [modern Hybrid on Multi-Cloud Computing (Anthos)](#modern-hybrid-on-multi-cloud-computing-anthos)
-  - [Traditional: on-premises distributed systems architecture](#traditional-on-premises-distributed-systems-architecture)
-  - [Modern: hybrid on multi-cloud architecture](#modern-hybrid-on-multi-cloud-architecture)
-- [Anthos](#anthos)
-  - [overview](#overview)
-  - [build modern hybrid infrastructure stack](#build-modern-hybrid-infrastructure-stack)
+- [Compute migrate](#compute-migrate)
+  - [modern Hybrid on Multi-Cloud Computing](#modern-hybrid-on-multi-cloud-computing)
+    - [Traditional: on-premises distributed systems architecture](#traditional-on-premises-distributed-systems-architecture)
+    - [Modern: hybrid on multi-cloud architecture](#modern-hybrid-on-multi-cloud-architecture)
+  - [Migration](#migration)
+    - [Migrate for VM](#migrate-for-vm)
+    - [Migrate for Compute Engine](#migrate-for-compute-engine)
+    - [Migrate for Container - `Anthos`](#migrate-for-container---anthos)
+      - [build modern hybrid infrastructure stack](#build-modern-hybrid-infrastructure-stack)
+    - [Migrate for big data - `Transfer Appliance`](#migrate-for-big-data---transfer-appliance)
+    - [Migrate for IAM](#migrate-for-iam)
+  - [Deployment methods](#deployment-methods)
+  - [.](#)
 
 ---
 
-# modern Hybrid on Multi-Cloud Computing (Anthos)
+# Compute migrate
+
+
 
 ---
 
-## Traditional: on-premises distributed systems architecture
+
+## modern Hybrid on Multi-Cloud Computing
+
+---
+
+### Traditional: on-premises distributed systems architecture
 
 ![Screen Shot 2021-02-07 at 23.20.20](https://i.imgur.com/dX9TDe3.png)
 
@@ -45,16 +59,16 @@ image:
 
 
 > what if you need more computing power now, not months from now?
-> 
+>
 > What if the company wants to begin to relocate some workloads away from on-premises to the Cloud to take advantage of lower cost and higher availability, but is unwilling or unable to move the enterprise application from the on-premises network?
-> 
+>
 > What if you want to use specialized products and services that only available in the Cloud?
-> 
+>
 > This is where a modern hybrid or multi-cloud architecture can help.
 
 ---
 
-## Modern: hybrid on multi-cloud architecture
+### Modern: hybrid on multi-cloud architecture
 
 - creating an environment uniquely suited to the company's needs.
   - keep parts of the systems infrastructure on-premises
@@ -72,11 +86,35 @@ image:
 
 ---
 
-# Anthos
+## Migration
+
 
 ---
 
-## overview
+
+
+### Migrate for VM
+
+![Screen Shot 2022-08-16 at 23.14.33](https://i.imgur.com/iIJ4hkf.png)
+
+---
+
+
+### Migrate for Compute Engine
+
+![Screen Shot 2022-08-16 at 23.14.48](https://i.imgur.com/UI4omjt.png)
+
+![Screen Shot 2022-08-16 at 23.15.17](https://i.imgur.com/pOHzmTN.png)
+
+
+---
+
+### Migrate for Container - `Anthos`
+
+
+![Screen Shot 2022-08-16 at 23.15.26](https://i.imgur.com/CQimUze.png)
+
+![Screen Shot 2022-08-16 at 23.15.37](https://i.imgur.com/qoT2fh4.png)
 
 - modern solution for <font color=blue> hybrid and multi-cloud distributed systems and service management </font>
   - powered by the latest innovations in distributed systems, and service management software from Google.
@@ -94,7 +132,7 @@ image:
 
 ---
 
-## build modern hybrid infrastructure stack
+#### build modern hybrid infrastructure stack
 
 ![Screen Shot 2021-02-07 at 23.50.31](https://i.imgur.com/7LTuSeN.png)
 
@@ -158,18 +196,86 @@ image:
   - managing the complexity of owning clusters across environments.
 
 
+---
+
+
+### Migrate for big data - `Transfer Appliance`
+
+
+
+![Screen Shot 2022-08-16 at 23.15.56](https://i.imgur.com/ft78tg5.png)
+
+
+---
+
+
+
+### Migrate for IAM
+
+
+![Screen Shot 2022-08-16 at 23.16.34](https://i.imgur.com/I5KqbRd.jpg)
+
+![Screen Shot 2022-08-16 at 23.16.43](https://i.imgur.com/4C6tS1O.jpg)
+
+
+
+---
+
+## Deployment methods
+
+Blue green deployments
+
+- 2 environments, arbitrarily called blue, and green
+- toggle between the two of them.
+- Imagine
+  - green environment is currently serving traffic,
+  - use the blue environment to test out the latest version,
+  - and once you're happy with the results, just switch the traffic over to blue,
+  - and you just repeat this process.
+
+![Screen Shot 2022-08-25 at 00.31.08](https://i.imgur.com/RY6hVRf.png)
+
+
+
+Rolling deployments
+
+- Rolling deployments progressively replace a resource with another version until everything has been updated.
+- Imagine
+  - have five resources all on version 100, and you wanna roll out version 101, without impacting users,
+  - so you update the resources one at a time, making sure there are no failures until everything is up to date.
+
+![Screen Shot 2022-08-25 at 00.39.39](https://i.imgur.com/k26ROyK.png)
 
 
 
 
+canary deployments
+
+- Canary deployments get their name from a mining practice, which involved bringing canaries into coalmines, because their death was an indicator of lethal gases.
+- The process is similar in software though, without the potential ethical debates.
+- Imagine
+  - A new version is introduced into the current group of resources and it's monitored.
+  - If there are problems, then only a small portion of the total user base are going to experience those problems.
+  - Once everything's working as it should, that version can be fully deployed.
 
 
+![Screen Shot 2022-08-25 at 00.40.02](https://i.imgur.com/syhSKBf.png)
 
+Traffic splitting deployments
 
+- Traffic splitting diverts traffic to a different version of a resource
+- use cases for this.
+  - the classic A/B testing use case.
+    - You have two versions that you want to see how users respond to,
+    - and so you split the traffic between those two versions,
+    - you monitor for whatever it is you're looking to see,
+    - once you know which one is more successful, that is the one that you can actually deploy.
 
+![Screen Shot 2022-08-25 at 00.40.25](https://i.imgur.com/dErLBSq.png)
 
 
 
 
 
 .
+---

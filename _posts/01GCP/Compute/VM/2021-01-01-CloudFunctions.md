@@ -77,3 +77,10 @@ Cloud Functions
     - such as virtual assistance, video or image analysis, and sentiment analysis. 
 
 
+
+
+
+- Min Instance: keep app warm
+- Loneger processung: 60min
+- Larger instances
+- More regions

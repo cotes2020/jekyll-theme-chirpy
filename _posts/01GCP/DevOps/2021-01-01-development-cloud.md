@@ -1,13 +1,14 @@
 ---
 title: GCP - Development in the cloud
 date: 2021-01-01 11:11:11 -0400
-categories: [01GCP, Dev]
+categories: [01GCP, DevOps]
 tags: [GCP]
 toc: true
 image:
 ---
 
 - [Development in the cloud](#development-in-the-cloud)
+  - [DevOps](#devops)
   - [development.](#development)
     - [Cloud Source Repositories](#cloud-source-repositories)
   - [Infrastructure as code](#infrastructure-as-code)
@@ -24,6 +25,24 @@ image:
 
 
 # Development in the cloud
+
+
+![Screen Shot 2022-08-16 at 23.32.22](https://i.imgur.com/izRxtgt.jpg)
+
+![Screen Shot 2022-08-16 at 23.32.42](https://i.imgur.com/Nt0AZ8o.png)
+
+
+
+---
+
+
+## DevOps
+
+
+![Screen Shot 2022-08-16 at 23.33.12](https://i.imgur.com/oNtXBE6.png)
+
+
+
 
 ---
 
