@@ -9,16 +9,19 @@ image:
 
 - [Big Data](#big-data)
   - [Google Cloud Big Data Platform](#google-cloud-big-data-platform)
-  - [Ingest](#ingest)
-    - [Cloud Pub/Sub](#cloud-pubsub)
-  - [Store](#store)
-    - [Cloud BigQuery](#cloud-bigquery)
-  - [Process](#process)
-    - [Cloud Dataproc](#cloud-dataproc)
-    - [cloud Dataflow](#cloud-dataflow)
-  - [Visualize](#visualize)
-  - [cloud composer and data fustion](#cloud-composer-and-data-fustion)
-  - [Cloud Datalab](#cloud-datalab)
+  - [Data](#data)
+    - [Ingest](#ingest)
+      - [Cloud Pub/Sub](#cloud-pubsub)
+    - [Store](#store)
+      - [Cloud BigQuery](#cloud-bigquery)
+    - [Process](#process)
+      - [Cloud Dataproc](#cloud-dataproc)
+      - [cloud Dataflow](#cloud-dataflow)
+    - [Visualize](#visualize)
+  - [Pipieline](#pipieline)
+    - [cloud composer](#cloud-composer)
+    - [data fustion](#data-fustion)
+    - [Cloud Datalab](#cloud-datalab)
 
 ---
 
@@ -59,17 +62,17 @@ image:
 
 
 
-
+## Data 
 
 
 ---
 
-## Ingest
+### Ingest
 
 ![Screen Shot 2022-08-16 at 23.30.02](https://i.imgur.com/8qhlqlm.png)
 
 
-### Cloud Pub/Sub
+#### Cloud Pub/Sub
 
 - Cloud publishers/subscribers
 
@@ -119,12 +122,12 @@ image:
 
 
 
-## Store
+### Store
 
 ![Screen Shot 2022-08-16 at 23.30.22](https://i.imgur.com/VBtAA1Q.jpg)
 
 
-### Cloud BigQuery
+#### Cloud BigQuery
 
 - if data needs to run more in the way of exploring a vast sea of data.
   - instead of a dynamic pipeline
@@ -179,12 +182,12 @@ image:
 ---
 
 
-## Process
+### Process
 
 ![Screen Shot 2022-08-16 at 23.30.50](https://i.imgur.com/1nNvpeN.jpg)
 
 
-### Cloud Dataproc
+#### Cloud Dataproc
 
 
 > Hadoop jobs Running on-premises
@@ -233,7 +236,7 @@ Once the data is in a cluster,
 ---
 
 
-### cloud Dataflow
+#### cloud Dataflow
 
 <img src="https://i.imgur.com/jcqmkNv.png" width="200">
 
@@ -302,24 +305,39 @@ pipelines
 
 
 
-## Visualize
+### Visualize
 
 ![Screen Shot 2022-08-16 at 23.31.05](https://i.imgur.com/6wiJxJw.jpg)
 
 ---
 
 
-## cloud composer and data fustion
+
+
+
+
+
+
+## Pipieline 
+
+
+
+### cloud composer
 
 ![Screen Shot 2022-08-16 at 23.31.31](https://i.imgur.com/WCwSReV.jpg)
+
+
+### data fustion
 
 ![Screen Shot 2022-08-16 at 23.31.56](https://i.imgur.com/ZG0BuZa.jpg)
 
 
 
+
+
 ---
 
-## Cloud Datalab
+### Cloud Datalab
 
 > Scientists have long used lab notebooks to organize their thoughts and explore their data.
 
@@ -361,5 +379,14 @@ Cloud Datalab
 - existing packages for statistics, machine learning, and so on.
 
 
----
+
+
+
+
+
+
+
+
+
+
 .

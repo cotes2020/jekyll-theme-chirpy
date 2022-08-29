@@ -10,6 +10,9 @@ image:
 - [Google Cloud Computing Solutions](#google-cloud-computing-solutions)
   - [Cloud Computing](#cloud-computing)
   - [Google Cloud Computing Solutions](#google-cloud-computing-solutions-1)
+    - [Compute type](#compute-type)
+    - [compare](#compare)
+    - [IaaS vs PaaS vs Serverless](#iaas-vs-paas-vs-serverless)
   - [IaaS](#iaas)
     - [Compute Engine](#compute-engine)
   - [PaaS](#paas)
@@ -61,9 +64,8 @@ image:
 
 > GCP products that provide the compute infrastructure for applications
 
-3 Compute
+### Compute type
 
-![Screen Shot 2022-08-15 at 00.11.25](https://i.imgur.com/QauFUMT.png)
 
 ![Screen Shot 2022-08-14 at 23.53.19](https://i.imgur.com/zqLCHjW.jpg)
 
@@ -72,7 +74,15 @@ image:
 ![Screen Shot 2022-08-15 at 00.11.35](https://i.imgur.com/7tbu3te.png)
 
 
-IaaS vs PaaS vs Serverless:
+### compare
+
+
+![Screen Shot 2022-08-15 at 00.11.25](https://i.imgur.com/QauFUMT.png)
+
+![Screen Shot 2022-08-28 at 16.41.39](https://i.imgur.com/jny3hPU.png)
+
+
+### IaaS vs PaaS vs Serverless
 
 ![Screen Shot 2021-06-27 at 1.20.06 AM](https://i.imgur.com/tXqN8CH.png)
 

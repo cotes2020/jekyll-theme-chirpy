@@ -8,7 +8,8 @@ image:
 ---
 
 - [Development in the cloud](#development-in-the-cloud)
-  - [DevOps](#devops)
+  - [devOps](#devops)
+  - [Cloud Build](#cloud-build)
   - [development.](#development)
     - [Cloud Source Repositories](#cloud-source-repositories)
   - [Infrastructure as code](#infrastructure-as-code)
@@ -35,8 +36,10 @@ image:
 
 ---
 
+## devOps
 
-## DevOps
+
+## Cloud Build
 
 
 ![Screen Shot 2022-08-16 at 23.33.12](https://i.imgur.com/oNtXBE6.png)

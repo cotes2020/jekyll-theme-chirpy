@@ -12,6 +12,11 @@ image:
   - [compute options](#compute-options)
   - [create a virtual machine instance](#create-a-virtual-machine-instance)
   - [VM access and lifecycle](#vm-access-and-lifecycle)
+  - [price](#price)
+  - [images](#images)
+  - [boot disk](#boot-disk)
+  - [Common Compute Engine actions](#common-compute-engine-actions)
+  - [disk snapshiots](#disk-snapshiots)
 
 ---
 
@@ -19,6 +24,8 @@ image:
 # Google Cloud Computing - Compute Engine
 
 ---
+
+![Screen Shot 2022-08-14 at 23.53.19](https://i.imgur.com/zqLCHjW.jpg)
 
 ![Screen Shot 2021-06-27 at 1.25.24 AM](https://i.imgur.com/5oKaZlZ.png)
 
@@ -35,6 +42,7 @@ Compute Engine
     - select predefined VM configurations
     - create customized configurations
 - <font color=red> no upfront investments </font>
+- <font color=red> Lift and shift </font>
 
 - choice:
   - have <font color=blue> complete control over your infrastructure </font>

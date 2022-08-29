@@ -34,8 +34,9 @@ image:
 
 Cloud Functions
 
-- an event-driven, serverless compute service 
+- an <font color=red> event-driven </font>, serverless compute service 
   - for simple single purpose functions that are attached to events. 
+  - <font color=blue> event-driven, the function gets executed when a particular event occurs. </font>
 
 - create single-purpose functions that respond to events without servers or runtime binaries.
   - just write code in JavaScript for a Node.js environment that GCP provides 

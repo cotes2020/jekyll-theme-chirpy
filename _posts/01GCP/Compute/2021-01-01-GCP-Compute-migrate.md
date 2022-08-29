@@ -14,12 +14,11 @@ image:
   - [Migration](#migration)
     - [Migrate for VM](#migrate-for-vm)
     - [Migrate for Compute Engine](#migrate-for-compute-engine)
-    - [Migrate for Container - `Anthos`](#migrate-for-container---anthos)
+    - [Anthos (Migrate for Container / from VM to Container)](#anthos-migrate-for-container--from-vm-to-container)
       - [build modern hybrid infrastructure stack](#build-modern-hybrid-infrastructure-stack)
-    - [Migrate for big data - `Transfer Appliance`](#migrate-for-big-data---transfer-appliance)
+    - [Transfer Appliance (Migrate for big data)](#transfer-appliance-migrate-for-big-data)
     - [Migrate for IAM](#migrate-for-iam)
   - [Deployment methods](#deployment-methods)
-  - [.](#)
 
 ---
 
@@ -109,7 +108,7 @@ image:
 
 ---
 
-### Migrate for Container - `Anthos`
+### Anthos (Migrate for Container / from VM to Container)
 
 
 ![Screen Shot 2022-08-16 at 23.15.26](https://i.imgur.com/CQimUze.png)
@@ -199,7 +198,7 @@ image:
 ---
 
 
-### Migrate for big data - `Transfer Appliance`
+### Transfer Appliance (Migrate for big data)
 
 
 
@@ -278,4 +277,3 @@ Traffic splitting deployments
 
 
 .
----
