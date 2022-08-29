@@ -57,25 +57,25 @@ tail_includes:
   {% endif %}
 
   <div class="d-flex justify-content-between">
-    <!-- author -->
+    <!-- author(s) -->
     <span>
-      {% capture author_name %}{{ site.data.authors[page.author].name | default: site.social.name }}{% endcapture %}
-      {% assign author_link = nil %}
-
       {% if page.author %}
-        {% assign author_link = site.data.authors[page.author].url %}
-      {% elsif author_name == site.social.name %}
-        {% assign author_link = site.social.links[0] %}
+        {% assign authors = page.author %}
+      {% elsif page.authors %}
+        {% assign authors = page.authors %}
       {% endif %}
 
       {{ site.data.locales[lang].post.written_by }}
 
       <em>
-        {% if author_link %}
-          <a href="{{ author_link }}">{{ author_name }}</a>
-        {% else %}
-        {{ author_name }}
-        {% endif %}
+      {% if authors %}
+        {% for author in authors %}
+          <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
+          {% unless forloop.last %}</em>, <em>{% endunless %}
+        {% endfor %}
+      {% else %}
+        <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
+      {% endif %}
       </em>
     </span>
 
