@@ -19,7 +19,7 @@ order: 4
 ## <i class='fas fa-university'></i> **Educational Background**
 I have a degree in Bachelor of Business Administration - Positive University - 12/2016<br/>
 Pos graduate in Lean Six Sigma: Green Belt - Catholic Pontiff University - (Conclusion in 06/2022)<br/>
-Pos graduate in Data Science - Catholic Pontiff University - (Scheduled for start in 05/2022)
+Pos graduate in Data Science - Catholic Pontiff University - (Scheduled for start in 11/2022)
 
 ## <i class="fas fa-user-tie"></i> **Summary**
 Passionate about data and technology, I have + 3 years of experience working daily with R, SQL and Python.<br/><br/>
@@ -146,5 +146,8 @@ Obs.: English - B2 Upper Intermediate according to the Common European Framework
 - [Strategic Thinking (Certify by PMI)](https://www.linkedin.com/learning/certificates/37fd786f11432a9902b8faf9706b8e67a9eea5626ba30ce218e3a819cf54505c?trk=share_certificate)
 - [(Object-Oriented Programming - OOP) Fundamentos de Programação: Design voltado a objetos](https://www.linkedin.com/learning/certificates/d5266c34ca2a5402afb01f60bc0a5a9a2e5047b6a07d1273b2f2fe21ac33b4ac?trk=share_certificate)
 - [Learning R](https://www.linkedin.com/learning/certificates/a81b2050d5f019eb6a5fc67e440cf7279af59886014678d5e72ba8f937354b9e?trk=share_certificate)
+- [Crisis Communication (Certify By Linkedin and NASBA)](https://www.linkedin.com/learning/certificates/395c33bc1579a103d6d1663bd437efadc538f8aae49b684ac2ab563c092ba072?trk=share_certificate)
+- [Measuring Team Performance (Certify by Linkedin and NASBA)](https://www.linkedin.com/learning/certificates/c155f1bfe231667ae88bc1a7c17a68430a74b523a176f9e7f330e19f0ef0e948?trk=share_certificate)
+- [Measuring Team Performance (Certify by Linkedin and PMI)](https://www.linkedin.com/learning/certificates/6e89aa2fa9ae4b49396ac9bdb3b27014b7a74ee7b29520c1475994ef60ea5d39?trk=share_certificate)
 ### DataCamp:
 - [Machine Learning for Everyone](https://www.datacamp.com/statement-of-accomplishment/course/339efc72286d69d17748c4ab9ef6d59cf3aa3722)
