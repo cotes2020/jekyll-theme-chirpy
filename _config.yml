@@ -83,7 +83,7 @@ theme_mode:   # [light|dark]
 img_cdn: 'https://raw.githubusercontent.com/cotes2020/chirpy-images/main'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fhdqwalls.com%2Fdownload%2Fwrench-watch-dogs-2-video-game-wb-3840x2160.jpg&f=1&nofb=1'
+avatar: 'https://cdn.vox-cdn.com/thumbor/LiQ5chM9nIRXEEg2VqaP6EDoQ4U=/0x0:1920x1080/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/53263711/Watch_Dogs_2_Wallpapers_Backgrounds_2.0.jpg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
