@@ -16,10 +16,14 @@ platforms:
     link: "https://t.me/share/url?url=URL&text=TITLE"
 
   # Uncomment below if you need to.
-  # -
-  #   type: Linkedin
-  #   icon: "fab fa-linkedin"
-  #   link: "https://www.linkedin.com/sharing/share-offsite/?url=URL"
+  -
+    type: Linkedin
+    icon: "fab fa-linkedin"
+    link: "https://www.linkedin.com/sharing/share-offsite/?url=URL"
+  -
+    type: Whatsapp
+    icon: "fab fa-whatsapp"
+    link: "https://web.whatsapp.com://send?text=TITLE&URL"
   #
   # -
   #   type: Weibo

@@ -1,26 +1,23 @@
----
-layout: compress
----
 
-{% assign favicon_path = "/assets/img/favicons" | relative_url %}
 
 {
-  "name": "{{ site.title }}",
-  "short_name": "{{ site.title }}",
-  "description": "{{ site.description }}",
+  "name": "Mj0ln1r's Blog",
+  "short_name": "Mj0ln1r's Blog",
+  "description": "Blog of a confident CTF Player and Cybersecurity enthusiast.",
   "icons": [
     {
-      "src": "{{ favicon_path }}/android-chrome-192x192.png",
+      "src": "/assets/img/favicons/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "{{ favicon_path }}/android-chrome-512x512.png",
+      "src": "/assets/img/favicons/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }],
-  "start_url": "{{ '/index.html' | relative_url }}",
+  "start_url": "/index.html",
   "theme_color": "#2a1e6b",
   "background_color": "#ffffff",
   "display": "fullscreen"
 }
+

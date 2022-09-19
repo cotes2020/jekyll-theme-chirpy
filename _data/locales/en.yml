@@ -30,17 +30,16 @@ panel:
 copyright:
   # Shown at the bottom of the post
   license:
-    template: This post is licensed under :LICENSE_NAME by the author.
-    name: CC BY 4.0
-    link: https://creativecommons.org/licenses/by/4.0/
+    template: This post is written by Mj0ln1r.
+    name: TheMj0ln1r
+    link: https://github.com/themj0ln1r/
 
   # Displayed in the footer
-  brief: Some rights reserved.
+  brief: All rights reserved.
   verbose: >-
-    Except where otherwise noted, the blog posts on this site are licensed
-    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+    All the rights reserved by TheMj0ln1r
 
-meta: Powered by :PLATFORM with :THEME theme.
+meta: Powered by Mj0ln1r with :PLATFORM.
 
 not_found:
   statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.

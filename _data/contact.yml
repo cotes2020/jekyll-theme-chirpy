@@ -7,24 +7,24 @@
   type: twitter
   icon: 'fab fa-twitter'
 -
-  type: email
-  icon: 'fas fa-envelope'
-  noblank: true            # open link in current tab
--
-  type: rss
-  icon: 'fas fa-rss'
-  noblank: true
+  type: instagram
+  icon: 'fab fa-instagram'
+  url: 'https://instagram.com/charanu23.03/'          # open link in current tab
 
 # Uncomment and complete the url below to enable more contact options
 # -
 #   type: mastodon
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your mastodon account page
-# -
-#   type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
+-
+  type: linkedin
+  icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
+  url:  'https://www.linkedin.com/in/mj0ln1r'                  # Fill with your Linkedin homepage
 # -
 #   type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
 #   url:  ''                  # Fill with your stackoverflow homepage
+-
+  type: Website
+  icon: 'fab fa-chrome'
+  url: 'https://themj0ln1r.github.io/mj0ln1rs-website/'

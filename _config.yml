@@ -16,39 +16,40 @@ lang: en
 prefer_datetime_locale:
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Kolkata
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: Mj0ln1r                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: CTF Player | Cybergeek   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  A confident CTF Player from invaders team.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://themj0ln1r.github.io'
 
 github:
-  username: github_username             # change to your github username
+  username: TheMj0ln1r             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
-
+  username: TheMj0ln1r            # change to your twitter username
+linkedin:
+  username: mj0ln1r
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@doamin.com             # change to your email address
+  name: Mj0ln1r
+  email: PlayerMj0ln1r@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username      # change to your twitter homepage
     - https://github.com/username       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/username
 
 google_site_verification:               # fill in to your verification string
 
@@ -73,17 +74,17 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode:    [dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://raw.githubusercontent.com/cotes2020/chirpy-images/main'
+img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/commons/avatar.jpg'
+avatar: https://ctftime.org/media/cache/0c/d4/0cd4d15a7ecf13d0fb4c3a8284c8550f.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
