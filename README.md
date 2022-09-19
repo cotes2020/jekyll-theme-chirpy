@@ -1,4 +1,4 @@
-# Mj0ln1's Blog
+# Mj0ln1's Personal Blog
 
 ### Hi guys, this is my personal blog where i post all my writeups and projects details.
 
