@@ -20,7 +20,8 @@ layout: default
       {% endif %}
     {% endcapture %}
 
-    {% if page.layout == 'page' or page.collection == 'tabs'%}
+    {% if page.collection == 'tabs' %}
+      {% assign tab_key = page.title | downcase %}
       {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
       <h1 class="dynamic-title">
         {{ title }}
