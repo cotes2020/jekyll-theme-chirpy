@@ -2,35 +2,51 @@
   Style for Archives
 */
 
-%date-timeline {
-  content: "";
-  width: 4px;
-  left: 75px;
-  display: inline-block;
-  float: left;
-  position: relative;
-  background-color: var(--timeline-color);
-}
-
 #archives {
   letter-spacing: 0.03rem;
 
-  span.lead {
+  $timeline-width: 4px;
+
+  %timeline {
+    content: "";
+    width: $timeline-width;
+    position: relative;
+    float: left;
+    background-color: var(--timeline-color);
+  }
+
+  .year {
+    height: 3.5rem;
     font-size: 1.5rem;
     position: relative;
-    left: 8px;
+    left: 2px;
+    margin-left: -$timeline-width;
+
+    &::before {
+      @extend %timeline;
+
+      height: 72px;
+      left: 79px;
+      bottom: 16px;
+    }
+
+    &:first-child::before {
+      @extend %timeline;
+
+      height: 32px;
+      top: 24px;
+    }
 
     &::after { /* Year dot */
       content: "";
-      display: block;
+      display: inline-block;
       position: relative;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       border-radius: 50%;
       width: 12px;
       height: 12px;
-      top: -26px;
-      left: 63px;
+      left: 21.5px;
       border: 3px solid;
       background-color: var(--timeline-year-dot-color);
       border-color: var(--timeline-node-bg);
@@ -38,101 +54,82 @@
       z-index: 1;
     }
 
-    &:not(:first-child) {
-      position: relative;
-      left: 4px;
-
-      &::after {
-        left: 67px;
-      }
-    }
-
-  } // #archives span.lead
+  }
 
   ul {
     li {
       font-size: 1.1rem;
       line-height: 3rem;
-
-      div {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-
-        a {
-          /* post title in Archvies */
-          margin-left: 2.5rem;
-          position: relative;
-          top: 0.1rem;
-        }
-      }
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &:nth-child(odd) {
         background-color: var(--main-wrapper-bg, #fff);
         background-image: linear-gradient(to left, #fff, #fbfbfb, #fbfbfb, #fbfbfb, #fff);
       }
 
-      &::after {
-        @extend %date-timeline;
+      &::before {
+        @extend %timeline;
 
-        height: 2.8rem;
-        top: -1.3rem;
-      }
-
-      &:first-child::before {
-        @extend %date-timeline;
-
-        height: 3.06rem;
-        top: -1.61rem;
+        top: 0;
+        left: 77px;
+        height: 3.1rem;
       }
     }
 
-    &:not(:last-child) > li:last-child::after {
-      height: 3.4rem;
+    &:last-child li:last-child::before {
+      height: 1.5rem;
     }
 
-    &:last-child > li:last-child::after {
-      display: none;
-    }
-  } // #archives ul
+  } /* #archives ul */
 
   .date {
     white-space: nowrap;
     display: inline-block;
+    position: relative;
+    right: 0.5rem;
 
     &.month {
       width: 1.4rem;
       text-align: center;
-
-      ~ a::before {
-        /* A dot for Month and Day */
-        content: "";
-        display: inline-block;
-        position: relative;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
-        width: 8px;
-        height: 8px;
-        float: left;
-        top: 1.35rem;
-        left: 69px;
-        background-color: var(--timeline-node-bg);
-        box-shadow: 0 0 3px 0 #c2c6cc;
-        z-index: 1;
-      }
     }
 
     &.day {
       font-size: 85%;
       font-family: 'Lato', sans-serif;
-      text-align: center;
-      margin-right: -2px;
-      width: 1.2rem;
-      position: relative;
-      left: -0.15rem;
+
     }
-  } // #archives .date
+  }
+
+  a {
+    /* post title in Archvies */
+    margin-left: 2.5rem;
+    position: relative;
+    top: 0.1rem;
+
+    &:hover {
+      border-bottom: none;
+    }
+
+    &::before {
+      /* the dot before post title */
+      content: "";
+      display: inline-block;
+      position: relative;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      float: left;
+      top: 1.35rem;
+      left: 71px;
+      background-color: var(--timeline-node-bg);
+      box-shadow: 0 0 3px 0 #c2c6cc;
+      z-index: 1;
+    }
+  }
 
 } // #archives
 

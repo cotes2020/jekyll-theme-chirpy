@@ -293,6 +293,10 @@ nav[data-toggle=toc] {
         @include btn-sharing-color(rgb(39, 159, 217));
       }
 
+      &.fa-linkedin {
+        @include btn-sharing-color(rgb(0, 119, 181));
+      }
+
       &.fa-weibo {
         @include btn-sharing-color(rgb(229, 20, 43));
       }

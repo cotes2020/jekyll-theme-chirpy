@@ -48,7 +48,7 @@ tags: [bee]
 
 The author information of the post usually does not need to be filled in the _Front Matter_ , they will be obtained from variables `social.name` and the first entry of `social.links` of the configuration file by default. But you can also override it as follows:
 
-Add author information in `_data/authors.yml` (If your website doesn't have this file, don't hesitate to create one.)
+Adding author information in `_data/authors.yml` (If your website doesn't have this file, don't hesitate to create one).
 
 ```yaml
 <author_id>:
@@ -58,15 +58,21 @@ Add author information in `_data/authors.yml` (If your website doesn't have this
 ```
 {: file="_data/authors.yml" }
 
-And then set up the custom author in the post's YAML block:
+
+And then use `author` to specify a single entry or `authors` to specify multiple entries:
 
 ```yaml
 ---
-author: <author_id>
+author: <author_id>                     # for single entry
+# or
+authors: [<author1_id>, <author2_id>]   # for multiple entries
 ---
 ```
 
-> Another benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
+
+Having said that, the key `author` can also identify multiple entries.
+
+> The benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
 {: .prompt-info }
 
 ## Table of Contents
@@ -247,6 +253,8 @@ image:
 Except for `alt`, all other options are necessary, especially the `width` and `height`, which are related to user experience and web page loading performance. The above section "[Size](#size)" also mentions this.
 
 Starting from _Chirpy v5.0.0_, the attributes `height` and `width` can be abbreviated: `height` → `h`, `width` → `w`. In addition, the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the  attribute `path` only needs the image file name.
+
+Starting from _Chirpy v5.2.0_, the property for the preview image is changed to `image.path`. If upgrading the theme from a prior version, you will have to update posts' metadata to use new image property.
 
 ## Pinned Posts
 
