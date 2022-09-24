@@ -1,4 +1,4 @@
-name: "Build and deploy"
+name: "Build and Deploy"
 on:
   push:
     branches:
@@ -60,7 +60,6 @@ jobs:
           path: "_site${{ steps.pages.outputs.base_path }}"
 
   deploy:
-    name: "Deploy site"
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
