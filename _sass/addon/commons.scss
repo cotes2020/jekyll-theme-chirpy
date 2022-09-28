@@ -148,11 +148,10 @@ kbd {
 }
 
 footer {
-  @include pl-pr(1.5rem);
-
   font-size: 0.8rem;
+  background-color: var(--main-wrapper-bg);
 
-  > div.d-flex {
+  div.d-flex {
     height: $footer-height;
     line-height: 1.2rem;
     padding-bottom: 1rem;
@@ -1052,8 +1051,6 @@ $sidebar-display: "sidebar-display";
 }
 
 #core-wrapper {
-  min-height: calc(100vh - #{$topbar-height} - #{$footer-height});
-
   .categories,
   #tags,
   #archives {
@@ -1084,7 +1081,7 @@ $sidebar-display: "sidebar-display";
 #main-wrapper {
   background-color: var(--main-wrapper-bg);
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - #{$footer-height});
 
   @include pl-pr(0);
 }
@@ -1189,7 +1186,7 @@ $sidebar-display: "sidebar-display";
   footer {
     height: $footer-height-mobile;
 
-    > div.d-flex {
+    div.d-flex {
       padding: 1.5rem 0;
       flex-wrap: wrap;
       -ms-flex-pack: distribute !important;
@@ -1294,7 +1291,8 @@ $sidebar-display: "sidebar-display";
   }
 
   #topbar,
-  #main {
+  #main,
+  footer > .container {
     max-width: 100%;
   }
 
@@ -1352,7 +1350,7 @@ $sidebar-display: "sidebar-display";
 
 /* Phone & Pad */
 @media all and (min-width: 577px) and (max-width: 1199px) {
-  footer > .d-flex > div {
+  footer .d-flex > div {
     width: 312px;
   }
 }
@@ -1364,7 +1362,7 @@ $sidebar-display: "sidebar-display";
     overflow-y: scroll;
   }
 
-  #main-wrapper {
+  #main-wrapper, footer {
     margin-left: $sidebar-width;
   }
 
@@ -1393,10 +1391,6 @@ $sidebar-display: "sidebar-display";
   #back-to-top {
     bottom: 5.5rem;
     right: 5%;
-  }
-
-  #topbar {
-    @include pl-pr(2rem);
   }
 
   #topbar-title {
@@ -1438,7 +1432,7 @@ $sidebar-display: "sidebar-display";
   }
 
   #topbar-wrapper {
-    left: 210px;
+    left: $sidebar-width-small;
   }
 
   #search-results > div {
@@ -1456,8 +1450,8 @@ $sidebar-display: "sidebar-display";
     font-size: 90%;
   }
 
-  #main-wrapper {
-    margin-left: 210px;
+  #main-wrapper, footer {
+    margin-left: $sidebar-width-small;
   }
 
   #breadcrumb {
@@ -1520,8 +1514,10 @@ $sidebar-display: "sidebar-display";
     font-size: 1.03rem;
   }
 
-  footer > div.d-felx {
-    width: 85%;
+  footer {
+    div.d-felx {
+      width: 85%;
+    }
   }
 
 }
@@ -1533,7 +1529,7 @@ $sidebar-display: "sidebar-display";
 }
 
 @media all and (min-width: 1650px) {
-  #main-wrapper {
+  #main-wrapper, footer {
     margin-left: $sidebar-width-large;
   }
 
@@ -1546,7 +1542,8 @@ $sidebar-display: "sidebar-display";
   }
 
   #topbar,
-  #main {
+  #main,
+  footer > .container {
     max-width: $main-content-max-width;
   }
 
