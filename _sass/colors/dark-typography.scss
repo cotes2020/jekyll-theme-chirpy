@@ -4,9 +4,9 @@
 
 @mixin dark-scheme {
   /* Framework color */
-  --body-bg: var(--main-wrapper-bg);
+  --body-bg: var(--main-bg);
   --mask-bg: rgb(68, 69, 70);
-  --main-wrapper-bg: rgb(27, 27, 30);
+  --main-bg: rgb(27, 27, 30);
   --main-border-color: rgb(44, 45, 45);
 
   /* Common color */
@@ -21,7 +21,7 @@
   --btn-border-color: rgb(63, 65, 68);
   --btn-backtotop-color: var(--text-color);
   --btn-backtotop-border-color: var(--btn-border-color);
-  --btn-box-shadow: var(--main-wrapper-bg);
+  --btn-box-shadow: var(--main-bg);
   --card-header-bg: rgb(51, 50, 50);
   --label-color: rgb(108, 117, 125);
   --checkbox-color: rgb(118 120 121);
@@ -64,7 +64,7 @@
   --relate-post-date: var(--text-muted-color);
   --card-bg: rgb(39, 40, 43);
   --card-border-color: rgb(53, 53, 60);
-  --card-box-shadow: var(--main-wrapper-bg);
+  --card-box-shadow: var(--main-bg);
   --preview-img-bg: radial-gradient(circle, rgb(22 22 24) 0%, rgb(32 32 32) 100%);
   --kbd-wrap-color: #6a6a6a;
   --kbd-text-color: #d3d3d3;

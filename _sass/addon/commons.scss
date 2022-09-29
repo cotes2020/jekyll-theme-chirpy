@@ -149,7 +149,7 @@ kbd {
 
 footer {
   font-size: 0.8rem;
-  background-color: var(--main-wrapper-bg);
+  background-color: var(--main-bg);
 
   div.d-flex {
     height: $footer-height;
@@ -1079,7 +1079,7 @@ $sidebar-display: "sidebar-display";
 /* --- main wrapper --- */
 
 #main-wrapper {
-  background-color: var(--main-wrapper-bg);
+  background-color: var(--main-bg);
   position: relative;
   min-height: calc(100vh - #{$footer-height});
 
