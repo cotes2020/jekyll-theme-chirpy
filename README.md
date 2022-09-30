@@ -102,4 +102,4 @@ This work is published under [MIT](https://github.com/cotes2020/jekyll-theme-chi
 <!-- ReadMe links -->
 
 [jb]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
-[cn-donation]: https://cotes.gitee.io/alipay-wechat-donation/
+[cn-donation]: https://cotes2020.github.io/sponsor/
