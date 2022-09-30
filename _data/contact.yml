@@ -4,8 +4,9 @@
   type: github
   icon: 'fab fa-github'
 -
-  type: twitter
-  icon: 'fab fa-twitter'
+  type: facebook
+  icon: 'fab fa-facebook'
+  url : 'https://www.facebook.com/rabistone.choi.90'
 -
   type: email
   icon: 'fas fa-envelope'
