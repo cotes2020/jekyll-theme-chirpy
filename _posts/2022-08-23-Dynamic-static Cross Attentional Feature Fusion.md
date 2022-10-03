@@ -1,8 +1,7 @@
 ---
-title: Dynamic-static Cross Attentional Feature Fusion Method for Speech
-Emotion Recognition
+title: Dynamic-static Cross Attentional Feature Fusion Method for Speech Emotion Recognition
 author: adria
-date: 2022-08-12 11:33:00 +0800
+date: 2022-9-3 11:33:00 +0800
 categories: [Publications]
 tags: [Speech Emotion Recognition, Attention Mechanism, Feature Fusion]
 math: true
