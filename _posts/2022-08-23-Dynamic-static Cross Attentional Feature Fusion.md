@@ -1,5 +1,6 @@
 ---
-title: MobileNetV2 Model for Image Classification
+title: Dynamic-static Cross Attentional Feature Fusion Method for Speech
+Emotion Recognition
 author: adria
 date: 2022-08-12 11:33:00 +0800
 categories: [Publications]
