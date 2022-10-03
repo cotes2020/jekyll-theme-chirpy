@@ -23,3 +23,6 @@ This paper can be found in [A Simulation Model Based on Artificial System to Ana
 
 ## Reference
 **Dong, K.**, Wang, Y. and Fan, W., 2021, June. A Simulation Model Based on Artificial System to Analyze Correlation between Journal Impact Factor and Article Quality. In 2021 International Wireless Communications and Mobile Computing (IWCMC) (pp. 527-531). IEEE.
+
+## Download
+<a href="/commons/pubs/SMB.pdf"></a>
