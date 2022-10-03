@@ -24,3 +24,6 @@ This paper can be found in [A Parallel Coordinates Plot Method Based on Unsuperv
 
 ## Reference
 Lou, J., **Dong, K.** and Wang, M., 2021, June. A Parallel Coordinates Plot Method Based on Unsupervised Feature Selection for High-Dimensional Data Visualization. In 2021 International Wireless Communications and Mobile Computing (IWCMC) (pp. 532-536). IEEE.
+
+## Download
+<a href="/commons/pubs/PCP.pdf">PCP.pdf</a>

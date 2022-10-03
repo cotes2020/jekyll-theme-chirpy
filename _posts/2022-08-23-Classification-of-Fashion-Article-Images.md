@@ -25,3 +25,6 @@ Random Forest and VGG-IE Algorithm](https://www.worldscientific.com/doi/abs/10.1
 
 ## Reference
 Liu, J., Zheng, Y., **Dong, K.**, Yu, H., Zhou, J., Jiang, Y., Jiang, Z., Guo, S. and Ding, R., 2020. Classification of fashion article images based on improved random forest and VGG-IE algorithm. International Journal of Pattern Recognition and Artificial Intelligence, 34(03), p.2051004.
+
+## Download
+<a href="/commons/pubs/RF-VGG.pdf">RF-VGG.pdf</a>

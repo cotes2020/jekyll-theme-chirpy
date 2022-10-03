@@ -24,3 +24,6 @@ This paper can be found in [MobileNetV2 Model for Image Classification](https://
 
 ## Reference
 **Dong, K.**, Zhou, C., Ruan, Y. and Li, Y., 2020, December. Mobilenetv2 model for image classification. In 2020 2nd International Conference on Information Technology and Computer Application (ITCA) (pp. 476-480). IEEE.
+
+## Download
+<a href="/commons/pubs/MobileNet.pdf">MobileNet.pdf</a>
