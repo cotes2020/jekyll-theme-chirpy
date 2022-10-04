@@ -1,0 +1,26 @@
+name: Prettier
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }} # so PRs resolve to correct branch
+          fetch-depth: 0 # needed for only_changed below
+          persist-credentials: false # don't save the DBK_INFRA_BOT_GITHUB_TOKEN
+      - run: git config --global user.name "infra-bot" && git config --global user.email "mark@mark@mpierce.io"
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.2
+        with:
+          commit_message: "Prettier"
+          only_changed: True
+          github_token: ${{ secrets.INFRA_BOT_GITHUB_TOKEN }}
+          prettier_options: --write . # the . targets all files which prettier _can_ parse, and ignores all others
