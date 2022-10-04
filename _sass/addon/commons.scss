@@ -76,14 +76,6 @@ h5 {
   font-size: 1.1rem;
 }
 
-ol,
-ul {
-  ol,
-  ul {
-    margin-bottom: 1rem;
-  }
-}
-
 a {
   @extend %link-color;
 }
@@ -468,6 +460,25 @@ img[data-src] {
 
   }
 
+  > ol,
+  > ul {
+    $start-padding: 1.25rem;
+
+    padding-inline-start: $start-padding;
+    margin: 1.25rem 0;
+
+    li {
+      margin: 0.5rem 0;
+      padding-left: 0.4rem;
+    }
+
+    ol,
+    ul {
+      padding-inline-start: $start-padding;
+      margin: 0.75rem 0;
+    }
+  }
+
   ul {
     /* attribute 'hide-bullet' was added by liquid */
     .task-list-item[hide-bullet] {
@@ -491,26 +502,6 @@ img[data-src] {
     }
 
   } /* ul */
-
-  > ol,
-  > ul {
-    padding-left: 2rem;
-
-    li {
-      ol,
-      ul { /* sub list */
-        padding-left: 2rem;
-        margin-top: 0.3rem;
-      }
-    }
-
-  }
-
-  > ol {
-    li {
-      padding-left: 0.25em;
-    }
-  }
 
   dl > dd {
     margin-left: 1rem;
