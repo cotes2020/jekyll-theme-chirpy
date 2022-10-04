@@ -13,5 +13,9 @@ order: 4
 </div>
 
 <div class="row">
+{% include about/certs.html title="Certifications" source=site.data.certs %}
+</div>
+
+<div class="row">
 {% include about/timeline.html %}
 </div>

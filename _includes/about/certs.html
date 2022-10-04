@@ -1,0 +1,19 @@
+<div class="col-lg">
+  <h2>{{ include.title }}</h2>
+
+  {% for cert in include.source %} {% cycle '
+  <div class="row gh-1 gv-4">
+    ','','', '' %}
+    <div class="col-3">
+      <a href="{{ cert.url }}" target="_blank">
+        <img src="{{ cert.image }}" />
+        <p class="text-center">
+          {% if cert.provider %}{{ cert.provider }}<br />{% endif %}{% if
+          cert.name %}{{ cert.name }}{% endif %}
+        </p>
+      </a>
+    </div>
+    {% cycle '','','','
+  </div>
+  ' %} {% endfor %}
+</div>

@@ -19,8 +19,8 @@ jquery:
   js: https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
 
 bootstrap:
-  css: https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css
-  js: https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js
+  css: https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css
+  js: https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js
 
 bootstrap-toc:
   css: https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css
