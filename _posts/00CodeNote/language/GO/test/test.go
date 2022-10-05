@@ -1,44 +1,52 @@
 package main
 
-import (
-	"flag"
+import {
 	"fmt"
-	"os"
-)
+	"eventbridge-delete-bucket-encryption-godata"
+	
+}
+type Vehicle interface {
+	Structure() []string // Common Method
+	Speed() string
+}
 
-var name = flag.String("name", "Tom", "Input your name")
-var age = flag.Int("age", 18, "Input your age")
-var f = flag.Bool("isVIP", false, "Is VIP")
-var postCode int
+type Human interface {
+	Structure() []string // Common Method
+	Performance() string
+}
 
-func init() {
-	flag.IntVar(&postCode, "postcode", 1234, "Input your post code")
+type Car string
+
+func (c Car) Structure() []string {
+	var parts = []string{"ECU", "Engine", "Air Filters", "Wipers", "Gas Task"}
+	return parts
+}
+
+func (c Car) Speed() string {
+	fmt.Println("Car input:\t", c)
+	return "200 Km/Hrs"
+}
+
+type Man string
+
+func (m Man) Structure() []string {
+	var parts = []string{"Brain", "Heart", "Nose", "Eyelashes", "Stomach"}
+	return parts
+}
+
+func (m Man) Performance() string {
+	fmt.Println("Man input:\t", m)
+	return "8 Hrs/Day"
 }
 
 func main() {
-	//接受命令行参数
-	flag.Parse()
+	var bmw Vehicle
+	bmw = Car("World Top Brand")
 
-	fmt.Println("name:", *name)
-	fmt.Println("age:", *age)
-	fmt.Println("VIP:", *f)
-	fmt.Println("postCode:", postCode)
+	var labour Human
+	labour = Man("Software Developer")
 
-	//返回没有被解析的命令行参数
-	fmt.Println("reduntant tail:", flag.Args())
-
-	//返回没有被解析的命令行参数的个数
-	fmt.Println(flag.NArg())
-
-	//命令行设置的参数个数
-	fmt.Println(flag.NFlag())
-
-	//return input 参数
-	args := os.Args
-	fmt.Println("Args:", args)
-
-	paramCnt := flag.NArg()
-	for cnt := 0; cnt < paramCnt; cnt++ {
-		fmt.Println(flag.Arg(cnt))
+	for i, j := range bmw.Structure() {
+		fmt.Printf("%-15s <=====> %15s\n", j, labour.Structure()[i])
 	}
 }
