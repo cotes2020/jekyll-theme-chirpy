@@ -1049,6 +1049,10 @@ $sidebar-display: "sidebar-display";
       @extend %no-bottom-border;
     }
   }
+
+  @at-root .row:only-child > #{&} {
+    padding-bottom: 3rem;
+  }
 }
 
 #mask {
