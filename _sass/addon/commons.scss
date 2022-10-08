@@ -91,21 +91,25 @@ blockquote {
   color: var(--blockquote-text-color);
 
   &[class^="prompt-"] {
+    display: flex;
     border-left: 0;
     border-radius: 6px;
-    padding: 0.75rem 1.2rem 0.75rem 3rem;
+    padding: 1rem;
     color: var(--prompt-text-color);
 
     &::before {
       font-family: "Font Awesome 5 Free";
       text-align: center;
       width: 1.25rem;
-      position: absolute;
-      left: 2.5rem;
+      margin-right: 0.75rem;
     }
 
-    p:last-child {
-      margin-bottom: 0rem;
+    > div {
+      max-width: calc(100% - 2rem);
+
+      > :last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -1199,12 +1203,11 @@ $sidebar-display: "sidebar-display";
 
     .post-content {
       > blockquote[class^=prompt-] {
+        @include pl-pr(1.25rem);
         @include ml-mr(-1.25rem);
-        border-radius: 0;
 
-        &::before {
-          left: 1rem;
-        }
+        border-radius: 0;
+        max-width: none;
       }
     }
 
