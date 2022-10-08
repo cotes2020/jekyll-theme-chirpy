@@ -29,11 +29,11 @@ html {
 }
 
 body {
-  line-height: 1.75rem;
   background: var(--body-bg);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
+  line-height: 1.75;
 }
 
 /* --- Typography --- */
@@ -440,7 +440,6 @@ img[data-src] {
 
 .post-content {
   font-size: 1.08rem;
-  line-height: 1.8;
   margin-top: 2rem;
   overflow-wrap: break-word;
 
@@ -461,20 +460,17 @@ img[data-src] {
 
   > ol,
   > ul {
-    $start-padding: 1.25rem;
-
-    padding-inline-start: $start-padding;
-    margin: 1.25rem 0;
+    padding-inline-start: 1.75rem;
 
     li {
-      margin: 0.5rem 0;
+      margin: 0.25rem 0;
       padding-left: 0.4rem;
     }
 
     ol,
     ul {
-      padding-inline-start: $start-padding;
-      margin: 0.75rem 0;
+      padding-inline-start: 1.25rem;
+      margin: 0.5rem 0;
     }
   }
 
@@ -484,7 +480,7 @@ img[data-src] {
       list-style-type: none;
 
       > i { /* checkbox icon */
-        margin: 0 0.4rem 0.2rem -1.4rem;
+        margin: 0 0.5rem 0.2rem -1.4rem;
         vertical-align: middle;
         color: var(--checkbox-color);
 

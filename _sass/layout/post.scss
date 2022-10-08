@@ -146,13 +146,16 @@ img.preview-img {
   animation: fade-up 0.8s;
 }
 
-#toc li a {
-  font-size: 0.8rem;
+#toc {
+  ul.nav.navbar-nav {
+    margin: 0.5rem 0;
+    padding: 0;
 
-  &.nav-link:not(.active) {
-    color: inherit;
+    li {
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
   }
-
 }
 
 nav[data-toggle=toc] {
