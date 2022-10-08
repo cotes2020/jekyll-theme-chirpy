@@ -461,20 +461,17 @@ img[data-src] {
 
   > ol,
   > ul {
-    $start-padding: 1.25rem;
-
-    padding-inline-start: $start-padding;
-    margin: 1.25rem 0;
+    padding-inline-start: 1.75rem;
 
     li {
-      margin: 0.5rem 0;
+      margin: 0.25rem 0;
       padding-left: 0.4rem;
     }
 
     ol,
     ul {
-      padding-inline-start: $start-padding;
-      margin: 0.75rem 0;
+      padding-inline-start: 1.25rem;
+      margin: 0.5rem 0;
     }
   }
 
