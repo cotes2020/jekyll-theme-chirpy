@@ -1,0 +1,66 @@
+{
+    "configuration": {
+        "Arn": "arn:aws:eks:us-west-2: 000202273767:cluster/corp-accounting",
+        "CertificateAuthorityData": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJeE1USXdNVEUzTlRBd05sb1hEVE14TVRFeU9URTNOVEF3Tmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBUG43CmpYRUhGQVgwNis0UUpjbHR3NFJZM0c1Vk90RkgxcjhMOWlZL1VMSVFlQ0pjdjErUjhtVkhuWkNkMGJwMXpyWUIKMXNzMlJuMDFxY0c3a0xwai9qWGlldGdWVmY3cVduUTZSL3FKVlZxSGZjUThpUG1IanBGTEFYQnU5QTI3d2VZNwp0UVdCV0lhNThCbW9ob0diSnY3RkNxK0JoQllYQkhCODAwL1VwWm9OZlU4RnFZMTJJWGRBRXVrSHQwS3RXUklSCjZlRWxxN0l2TnppQy9DcmMvald1bmVQUlBjMERMTUZ6NUk3MTRkWDBkUStxVkh4dXNvNHl3eEZxL1o2SEZTNTMKR29WVnBtd0VpVGE0Umt1eS9CWWI4My9CdWZTTEFQaFVNWGxnZnlDMzlNMDdkejlqd0NNTEJIUWVYcGN0bFo2Zgp1UUlER2VnZWdoT3E4QnVqcnJjQ0F3RUFBYU5DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZFaDBsSGlVVHRKeDFNWFVvSDJUZlg2TWI1RURNQTBHQ1NxR1NJYjMKRFFFQkN3VUFBNElCQVFEZHkraVRvZWV4MTRZYjVCWjgyaU5OZDhYc0Y0bTBiMzVNRHR0VkhPSnN2VWpPZWFqaApJYjV6SFY2SkhnaEVnVFQwL2F5SHJhcTk5dkVCaHdZaDRSQXJvcUIxOGlCWVkxZ21Xb1ZlL3ZZMVBIaHRqc2xxCnRVaysvY2NZSm9Ec0s3dlVaQ0pXNEZIak5DZTA1eDIwTnZPYU1TcTA5dHU1dDVpVVprQ2hiQXdhTUw4Y203MWUKVnpyand0VWNMTHhVQnpLVWJNTzFraVZJK29seE5NTmFaYnVoREVERkJlMVZ5bXNZVExKWjB2RzJtRGFodEp4TgppSG1vUlk2QWZFR1RlemEvU1FHQ2hRaFEycVlaQ2VOOWpFdG9kYk5lWW80YVg0MGcwYVlyWDRxZ3VVamxiRldQCnFVMGtPZlhaRHVHTHhySm0zRndlOVl1bk5SMWdsNndHa1dCUQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg\\u003d\\u003d",
+        "Endpoint": "https: //5C42A6C6931FB72EB07DB65413A8DA8D.gr7.us-west-2.eks.amazonaws.com",
+        "Name": "corp-accounting",
+        "ResourcesVpcConfig": {
+            "SecurityGroupIds": [
+                "sg-0d9dd1fc8b4860d09"
+            ],
+            "SubnetIds": [
+                "subnet-0ebdfc2880277c181",
+                "subnet-07f9ec694e2361dde",
+                "subnet-02bdc535a3b3c9753"
+            ]
+        },
+        "RoleArn": "arn:aws:iam::000202273767:role/corp-accounting-iam-stack-EKSServiceRole-R5NVSYSP0TY5",
+        "Version": "1.20",
+        "Tags": [
+            {
+                "Key": "apple_tagging_standard",
+                "Value": "https://quip-apple.com/ywvaAWzKsUsN"
+            },
+            {
+                "Key": "aws:cloudformation:stack-name",
+                "Value": "corp-accounting-cluster-stack"
+            },
+            {
+                "Key": "apple_sys_tag_version",
+                "Value": "2020-04-29"
+            },
+            {
+                "Key": "apple_sys_owner_div",
+                "Value": "0056"
+            },
+            {
+                "Key": "aws:cloudformation:stack-id",
+                "Value": "arn:aws:cloudformation:us-west-2:000202273767:stack/corp-accounting-cluster-stack/c1856180-52cd-11ec-af4b-0203778a50e1"
+            },
+            {
+                "Key": "apple_sys_owner_dept",
+                "Value": "0210"
+            },
+            {
+                "Key": "apple_sys_sub_env",
+                "Value": "dev"
+            },
+            {
+                "Key": "apple_sys_app_id",
+                "Value": "UNDEFINED"
+            },
+            {
+                "Key": "apple_sys_env",
+                "Value": "dev"
+            },
+            {
+                "Key": "aws:cloudformation:logical-id",
+                "Value": "EKSCluster"
+            },
+            {
+                "Key": "apple_sys_app_name",
+                "Value": "fdt-devops-dev-3767"
+            }
+        ]
+    }
+}
