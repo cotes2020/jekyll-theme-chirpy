@@ -1195,6 +1195,10 @@ $sidebar-display: "sidebar-display";
     }
   }
 
+  #main-wrapper {
+    min-height: calc(100vh - #{$footer-height-mobile});
+  }
+
   #core-wrapper {
     min-height: calc(100vh - #{$topbar-height} - #{$footer-height-mobile}) !important;
 
@@ -1259,13 +1263,18 @@ $sidebar-display: "sidebar-display";
     overflow-x: hidden;
   }
 
+  footer {
+    @include slide;
+  }
+
   [#{$sidebar-display}] {
     #sidebar {
       transform: translateX(0);
     }
 
     #topbar-wrapper,
-    #main-wrapper {
+    #main-wrapper,
+    footer {
       transform: translateX(#{$sidebar-width});
     }
   }
