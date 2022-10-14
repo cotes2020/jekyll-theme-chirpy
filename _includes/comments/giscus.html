@@ -20,7 +20,7 @@
       "data-category": "{{ site.comments.giscus.category }}",
       "data-category-id": "{{ site.comments.giscus.category_id }}",
       "data-mapping": "{{ site.comments.giscus.mapping | default: 'pathname' }}",
-      "data-reactions-enabled": "1",
+      "data-reactions-enabled": "{{ site.comments.giscus.reactions_enabled | default: '1' }}",
       "data-emit-metadata": "0",
       "data-theme": initTheme,
       "data-input-position": "{{ site.comments.giscus.input_position | default: 'bottom' }}",
