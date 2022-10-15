@@ -24,6 +24,7 @@ function minifyJs() {
   return src(`${ JS_DEST }/*.js`)
     .pipe(insert.prepend(fs.readFileSync(`${ JS_SRC }/copyright`, 'utf8')))
     .pipe(uglify({output: {comments: /^!|@preserve|@license|@cc_on/i}}))
+    .pipe(insert.append('\n'))
     .pipe(dest(JS_DEST));
 }
 

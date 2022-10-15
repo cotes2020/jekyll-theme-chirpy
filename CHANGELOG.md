@@ -20,7 +20,7 @@ All notable changes to this project will be documented in this file. See [standa
 * code contains spaces in headings ([#644](https://github.com/cotes2020/jekyll-theme-chirpy/issues/644)) ([3fa1bf3](https://github.com/cotes2020/jekyll-theme-chirpy/commit/3fa1bf305451f645a7f3aa93863b076463c8f165))
 * correct spelling of `panel` ([#686](https://github.com/cotes2020/jekyll-theme-chirpy/issues/686)) ([b288587](https://github.com/cotes2020/jekyll-theme-chirpy/commit/b288587c1c3d113a1c52c2d25fb46cddda348961))
 * correct the i18n for tab titles ([0c5b697](https://github.com/cotes2020/jekyll-theme-chirpy/commit/0c5b697fd3b283b6a5c926742b61ed49d8688c18))
-* the `code` doesn’t wrap inside the prompt ([#626](https://github.com/cotes2020/jekyll-theme-chirpy/issues/626)) ([378b65a](https://github.com/cotes2020/jekyll-theme-chirpy/commit/378b65a0617787813519dde74d6f741f255eff3d))
+* the `code` doesn't wrap inside the prompt ([#626](https://github.com/cotes2020/jekyll-theme-chirpy/issues/626)) ([378b65a](https://github.com/cotes2020/jekyll-theme-chirpy/commit/378b65a0617787813519dde74d6f741f255eff3d))
 
 ## [5.2.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.2.0...v5.2.1) (2022-06-17)
 
