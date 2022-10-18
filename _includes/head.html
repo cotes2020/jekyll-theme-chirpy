@@ -6,11 +6,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Allow having a localized datetime different from the appearance language -->
-  {% if site.prefer_datetime_locale %}
-    <meta name="prefer-datetime-locale" content="{{ site.prefer_datetime_locale }}">
-  {% endif %}
-
   {% if page.layout == 'home' or page.layout == 'post' %}
 
     {% if site.google_analytics.pv.proxy_endpoint %}
