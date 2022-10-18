@@ -34,7 +34,7 @@
     <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
       <a href="{{ '/' | relative_url }}" class="nav-link">
         <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
-        <span>{{ site.data.locales[lang].tabs.home | upcase }}</span>
+        <span>{{ site.data.locales[site.lang].tabs.home | upcase }}</span>
       </a>
     </li>
     <!-- the real tabs -->
@@ -44,7 +44,7 @@
         <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
         {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
 
-        <span>{{ site.data.locales[lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+        <span>{{ site.data.locales[site.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
       </a>
     </li> <!-- .nav-item -->
     {% endfor %}
