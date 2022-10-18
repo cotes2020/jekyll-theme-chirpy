@@ -73,6 +73,13 @@ post:
   # pinned prompt of posts list on homepage
   pin_prompt: 핀
 
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: '%Y/%m/%d'
+    dayjs: 'YYYY/MM/DD'
+
 # categories page
 categories:
   category_measure: 카테고리

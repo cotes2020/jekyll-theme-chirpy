@@ -73,6 +73,16 @@ post:
   # pinned prompt of posts list on homepage
   pin_prompt: Pinned
 
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: '%b %e, %Y'
+    dayjs: 'll'
+  archives:
+    strftime: '%b'
+    dayjs: 'MMM'
+
 # categories page
 categories:
   category_measure:
