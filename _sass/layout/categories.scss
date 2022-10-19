@@ -28,10 +28,8 @@
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
-
   }
-
-} // .categories
+} /* .categories */
 
 .category-trigger {
   width: 1.7rem;
@@ -40,17 +38,17 @@
   text-align: center;
   color: #6c757d !important;
 
-  &:hover {
-    i {
-      color: var(--categories-icon-hover-color);
-    }
-  }
-
   i {
     position: relative;
     height: 0.7rem;
     width: 1rem;
     transition: transform 300ms ease;
+  }
+
+  &:hover {
+    i {
+      color: var(--categories-icon-hover-color);
+    }
   }
 }
 

@@ -76,9 +76,8 @@
   --code-header-icon-color: #d1d1d1;
   --clipboard-checked-color: #43c743;
 
-  [class^=prompt-] {
+  [class^="prompt-"] {
     --inline-code-bg: #fbfafa;
-    --highlighter-rouge-color: rgb(82 82 82);
+    --highlighter-rouge-color: rgb(82, 82, 82);
   }
-
 } /* light-syntax */

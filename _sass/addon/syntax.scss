@@ -8,22 +8,22 @@
 html {
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
-    &[data-mode=light] {
+    &[data-mode="light"] {
       @include light-syntax;
     }
 
-    &[data-mode=dark] {
+    &[data-mode="dark"] {
       @include dark-syntax;
     }
   }
 
   @media (prefers-color-scheme: dark) {
     &:not([data-mode]),
-    &[data-mode=dark] {
+    &[data-mode="dark"] {
       @include dark-syntax;
     }
 
-    &[data-mode=light] {
+    &[data-mode="light"] {
       @include light-syntax;
     }
   }
@@ -98,7 +98,6 @@ $code-radius: 6px;
   .gp {
     user-select: none;
   }
-
 } /* .highlight */
 
 code {
@@ -152,16 +151,15 @@ td.rouge-code {
     border-bottom: none !important;
     pointer-events: none;
   }
-
 }
 
 /* Hide line numbers for default, console, and terminal code snippets */
 div {
-  &[class^='highlighter-rouge'],
+  &[class^="highlighter-rouge"],
+  &.nolineno,
   &.language-plaintext.highlighter-rouge,
   &.language-console.highlighter-rouge,
-  &.language-terminal.highlighter-rouge,
-  &.nolineno {
+  &.language-terminal.highlighter-rouge {
     pre.lineno {
       display: none;
     }
@@ -252,6 +250,10 @@ div {
       }
     }
 
+    &:focus {
+      outline: none;
+    }
+
     &:not([timeout]):hover {
       background-color: rgba(128, 128, 128, 0.37);
 
@@ -259,18 +261,12 @@ div {
         color: white;
       }
     }
-
-    &:focus {
-      outline: none;
-    }
-
   }
-
 }
 
 @media all and (max-width: 576px) {
   .post-content {
-    > div[class^='language-'] {
+    > div[class^="language-"] {
       @include ml-mr(-1.25rem);
 
       border-radius: 0;
