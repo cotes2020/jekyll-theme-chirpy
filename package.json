@@ -18,6 +18,8 @@
     "gulp-insert": "^0.5.0",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
+    "stylelint": "^14.14.0",
+    "stylelint-config-standard-scss": "^5.0.0",
     "uglify-js": "^3.14.3"
   }
 }
