@@ -180,6 +180,11 @@ i { /* fontawesome icons */
   }
 }
 
+@-webkit-keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -189,6 +194,7 @@ img[data-src] {
   margin: 0.5rem 0;
 
   &[data-loaded="true"] {
+    -webkit-animation: fade-in linear 0.5s;
     animation: fade-in linear 0.5s;
   }
 
@@ -203,6 +209,7 @@ img[data-src] {
   }
 
   &.shadow {
+    -webkit-filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
     box-shadow: none !important; /* cover the Bootstrap 4.6.1 styles */
   }
@@ -219,7 +226,7 @@ img[data-src] {
   margin-bottom: 4rem;
 
   &:only-child {
-    position: -webkit-sticky; /* Safari */
+    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -307,8 +314,9 @@ img[data-src] {
     &:target:not([scroll-focus]),
     &[scroll-focus="true"] > p {
       background-color: var(--footnote-target-bg);
+      width: -moz-fit-content;
+      width: -webkit-fit-content;
       width: fit-content;
-      -webkit-transition: background-color 1.5s ease-in-out; /* Safari prior 6.1 */
       transition: background-color 1.5s ease-in-out;
     }
   }
@@ -320,7 +328,6 @@ img[data-src] {
     @include pl-pr(2px);
 
     border-bottom-style: none !important;
-    -webkit-transition: background-color 1.5s ease-in-out; /* Safari prior 6.1 */
     transition: background-color 1.5s ease-in-out;
   }
 
@@ -456,6 +463,7 @@ img[data-src] {
 
   > ol,
   > ul {
+    -webkit-padding-start: 1.75rem;
     padding-inline-start: 1.75rem;
 
     li {
@@ -465,6 +473,7 @@ img[data-src] {
 
     ol,
     ul {
+      -webkit-padding-start: 1.25rem;
       padding-inline-start: 1.25rem;
       margin: 0.5rem 0;
     }
@@ -559,7 +568,6 @@ img[data-src] {
 }
 
 .flex-grow-1 {
-  -ms-flex-positive: 1 !important;
   flex-grow: 1 !important;
 }
 
@@ -651,9 +659,8 @@ $sidebar-display: "sidebar-display";
       border-radius: 50%;
       border: 2px solid rgba(222, 222, 222, 0.7);
       overflow: hidden;
+      -webkit-transform: translateZ(0);
       transform: translateZ(0); /* fixed the zoom in Safari */
-      -webkit-transition: border-color 0.35s ease-in-out;
-      -moz-transition: border-color 0.35s ease-in-out;
       transition: border-color 0.35s ease-in-out;
 
       &:hover {
@@ -664,13 +671,11 @@ $sidebar-display: "sidebar-display";
     img {
       width: 100%;
       height: 100%;
-      -webkit-transition: transform 0.5s;
-      -moz-transition: transform 0.5s;
+      transition: -webkit-transform 0.5s;
       transition: transform 0.5s;
+      transition: transform 0.5s, -webkit-transform 0.5s;
 
       &:hover {
-        -ms-transform: scale(1.2);
-        -moz-transform: scale(1.2);
         -webkit-transform: scale(1.2);
         transform: scale(1.2);
       }
@@ -697,6 +702,8 @@ $sidebar-display: "sidebar-display";
     word-spacing: 1px;
     margin: 0.2rem 1.5rem 0.5rem 1.5rem;
     min-height: 3rem; /* avoid vertical shifting in multi-line words */
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
   }
 
@@ -833,9 +840,6 @@ $sidebar-display: "sidebar-display";
 
 @media (hover: hover) {
   #sidebar ul > li:last-child::after {
-    -webkit-transition: top 0.5s ease;
-    -moz-transition: top 0.5s ease;
-    -o-transition: top 0.5s ease;
     transition: top 0.5s ease;
   }
 }
@@ -940,9 +944,8 @@ $sidebar-display: "sidebar-display";
     background: center;
 
     &.form-control {
-      &::-webkit-input-placeholder { @include input-placeholder; }
       &::-moz-placeholder { @include input-placeholder; }
-      &:-ms-input-placeholder { @include input-placeholder; }
+      &::-webkit-input-placeholder { @include input-placeholder; }
       &::placeholder { @include input-placeholder; }
     }
   }
@@ -1094,7 +1097,9 @@ $sidebar-display: "sidebar-display";
   height: $size;
   border-radius: 50%;
   border: 1px solid var(--btn-backtotop-border-color);
+  transition: -webkit-transform 0.2s ease-out;
   transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out, -webkit-transform 0.2s ease-out;
   -webkit-transition: transform 0.2s ease-out;
 
   i {
@@ -1110,6 +1115,13 @@ $sidebar-display: "sidebar-display";
 }
 
 #notification {
+  @-webkit-keyframes popup {
+    from {
+      opacity: 0;
+      bottom: 0;
+    }
+  }
+
   @keyframes popup {
     from {
       opacity: 0;
@@ -1147,7 +1159,9 @@ $sidebar-display: "sidebar-display";
       position: fixed;
       left: 50%;
       bottom: 20%;
+      -webkit-transform: translateX(-50%);
       transform: translateX(-50%);
+      -webkit-animation: popup 0.8s;
       animation: popup 0.8s;
     }
   }
@@ -1169,7 +1183,6 @@ $sidebar-display: "sidebar-display";
     div.d-flex {
       padding: 1.5rem 0;
       flex-wrap: wrap;
-      -ms-flex-pack: distribute !important;
       justify-content: space-around !important;
     }
 
@@ -1233,10 +1246,8 @@ $sidebar-display: "sidebar-display";
     $basic: transform 0.4s ease;
 
     @if $append {
-      -webkit-transition: $basic, $append;
       transition: $basic, $append;
     } @else {
-      -webkit-transition: $basic;
       transition: $basic;
     }
   }
@@ -1252,12 +1263,14 @@ $sidebar-display: "sidebar-display";
 
   [#{$sidebar-display}] {
     #sidebar {
+      -webkit-transform: translateX(0);
       transform: translateX(0);
     }
 
     #topbar-wrapper,
     #main-wrapper,
     footer {
+      -webkit-transform: translateX(#{$sidebar-width});
       transform: translateX(#{$sidebar-width});
     }
   }
@@ -1269,8 +1282,6 @@ $sidebar-display: "sidebar-display";
     -webkit-transform: translateX(-#{$sidebar-width});
 
     .cursor {
-      -webkit-transition: none;
-      -moz-transition: none;
       transition: none;
     }
   }
@@ -1318,8 +1329,6 @@ $sidebar-display: "sidebar-display";
   }
 
   #tags {
-    -webkit-box-pack: center !important;
-    -ms-flex-pack: center !important;
     justify-content: center !important;
   }
 
@@ -1392,8 +1401,6 @@ $sidebar-display: "sidebar-display";
 /* Pad horizontal */
 @media all and (min-width: 992px) and (max-width: 1199px) {
   #main .col-lg-11 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 96%;
     flex: 0 0 96%;
     max-width: 96%;
   }
@@ -1461,8 +1468,6 @@ $sidebar-display: "sidebar-display";
   }
 
   #main > div.row {
-    -webkit-box-pack: center !important;
-    -ms-flex-pack: center !important;
     justify-content: center !important;
   }
 }
@@ -1479,7 +1484,6 @@ $sidebar-display: "sidebar-display";
   }
 
   #search-input {
-    -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
 
@@ -1626,8 +1630,6 @@ $sidebar-display: "sidebar-display";
       $icon-block-size: 2rem;
 
       &.justify-content-center {
-        -webkit-box-pack: start !important;
-        -ms-flex-pack: start !important;
         justify-content: flex-start !important;
       }
 
@@ -1652,6 +1654,7 @@ $sidebar-display: "sidebar-display";
           position: absolute;
           top: 50%;
           left: 50%;
+          -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
         }
       }

@@ -96,6 +96,7 @@
   --timeline-year-dot-color: var(--timeline-color);
 
   .post img[data-src] {
+    -webkit-filter: brightness(95%);
     filter: brightness(95%);
   }
 

@@ -16,7 +16,7 @@
   i {
     @extend %category-icon-color;
 
-    font-size: 86%; // fontawesome icons
+    font-size: 86%; /* fontawesome icons */
   }
 
   .list-group-item {
@@ -42,7 +42,9 @@
     position: relative;
     height: 0.7rem;
     width: 1rem;
+    transition: -webkit-transform 300ms ease;
     transition: transform 300ms ease;
+    transition: transform 300ms ease, -webkit-transform 300ms ease;
   }
 
   &:hover {
@@ -52,14 +54,13 @@
   }
 }
 
-@media (hover: hover) { // only works on desktop
+@media (hover: hover) { /* only works on desktop */
   .category-trigger:hover {
     background-color: var(--categories-hover-bg);
   }
 }
 
 .rotate {
-  -ms-transform: rotate(-90deg); /* IE 9 */
-  -webkit-transform: rotate(-90deg); /* Safari 3-8 */
+  -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }

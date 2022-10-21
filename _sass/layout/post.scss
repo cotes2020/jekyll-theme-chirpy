@@ -80,6 +80,8 @@ h1 + .post-meta {
 
   .share-wrapper {
     vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
 
     .share-icons {
@@ -203,6 +205,20 @@ h1 + .post-meta {
   }
 } /* .post-navigation */
 
+@-webkit-keyframes fade-up {
+  from {
+    opacity: 0;
+    position: relative;
+    top: 2rem;
+  }
+
+  to {
+    opacity: 1;
+    position: relative;
+    top: 0;
+  }
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -223,6 +239,7 @@ h1 + .post-meta {
   position: sticky;
   top: 4rem;
   transition: top 0.2s ease-in-out;
+  -webkit-animation: fade-up 0.8s;
   animation: fade-up 0.8s;
 }
 
@@ -277,8 +294,6 @@ nav[data-toggle="toc"] {
     border-color: var(--card-border-color);
     background-color: var(--card-bg);
     box-shadow: 0 0 5px 0 var(--card-box-shadow);
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 
     h3 {
@@ -323,7 +338,6 @@ nav[data-toggle="toc"] {
   }
 
   .post-tail-bottom {
-    -ms-flex-wrap: wrap-reverse !important;
     flex-wrap: wrap-reverse !important;
 
     > div:first-child {
