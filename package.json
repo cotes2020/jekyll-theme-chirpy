@@ -12,6 +12,10 @@
     "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
   },
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy#readme",
+  "scripts": {
+    "test": "npx stylelint _sass/**/*.scss",
+    "fixlint": "npx stylelint _sass/**/*.scss --fix"
+  },
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
