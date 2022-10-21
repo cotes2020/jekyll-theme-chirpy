@@ -6,7 +6,7 @@
 
 /* A tool for locale datetime */
 const LocaleHelper = (function () {
-  const locale = $('html').attr('lang').substr(0, 2)
+  const locale = $('html').attr('lang').substr(0, 2);
   const attrTimestamp = 'data-ts';
   const attrDateFormat = 'data-df';
 

@@ -28,7 +28,7 @@ $(function() {
       const hash = decodeURI(this.hash);
       let toFootnoteRef = RegExp(/^#fnref:/).test(hash);
       let toFootnote = toFootnoteRef ? false : RegExp(/^#fn:/).test(hash);
-      let selector = hash.includes(":") ? hash.replace(/\:/g, "\\:") : hash;
+      let selector = hash.includes(":") ? hash.replace(/:/g, "\\:") : hash;
       let $target = $(selector);
 
       let isMobileViews = $topbarTitle.is(":visible");
