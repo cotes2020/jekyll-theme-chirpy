@@ -3,7 +3,7 @@ layout: post
 title: Hello World!
 date: 2021-07-14 10:39:56 +0800
 Author: Sokranotes
-tags: [blog building, ]
+tags: [blog building, recording, learning]
 comments: true
 categories: recording blog_building
 toc: true
@@ -54,16 +54,16 @@ jekyll serve
 3. 侧边栏下方图标修改，去掉多余的图标，并进行了分隔
 4. 文章分享修改
 5. 添加MathJax以更好的支持LaTeX公式
-6. 开启基于Disqus的评论（评论需要科学上网）
+6. 开启基于Disqus的评论
 
 ### 4 部署到GitHub
 
 1. 确认本地修改完成之后，记录过的文件
 2. fork [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) 并克隆到本地
 3. 在项目根目录下安装依赖
-  `$ bundle`
+    `$ bundle`
 4. 文件初始化，在Windows下需要在Git command中运行
-  `$ bash tools/init.sh`
+    `$ bash tools/init.sh`
 5. 修改
   1. 项目名称
   2. `_config.yml`配置文件

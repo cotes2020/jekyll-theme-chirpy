@@ -3,9 +3,9 @@ layout: post
 title: 古典音乐私人地图
 date: 2022-10-15 14:36:35 +0800
 Author: Sokranotes
-tags: [thinking, blog]
+tags: [recording]
 comments: true
-categories: thinking
+categories: recording
 typora-root-url: ..
 
 ---
