@@ -468,30 +468,38 @@ img[data-src] {
 
     li {
       margin: 0.25rem 0;
-      padding-left: 0.4rem;
+      padding-left: 0.25rem;
     }
 
     ol,
     ul {
-      -webkit-padding-start: 1.25rem;
-      padding-inline-start: 1.25rem;
+      -webkit-padding-start: 1rem;
+      padding-inline-start: 1rem;
       margin: 0.5rem 0;
     }
   }
 
-  ul {
-    /* attribute 'hide-bullet' was added by liquid */
-    .task-list-item[hide-bullet] {
+  ul.task-list {
+    -webkit-padding-start: 1.25rem;
+    padding-inline-start: 1.25rem;
+
+    li {
       list-style-type: none;
+      padding-left: 0;
 
       > i { /* checkbox icon */
-        margin: 0 0.5rem 0.2rem -1.4rem;
-        vertical-align: middle;
+        width: 2rem;
+        margin-left: -1.25rem;
         color: var(--checkbox-color);
 
         &.checked {
           color: var(--checkbox-checked-color);
         }
+      }
+
+      ul {
+        -webkit-padding-start: 1.75rem;
+        padding-inline-start: 1.75rem;
       }
     }
 
