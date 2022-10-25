@@ -10,7 +10,7 @@ baseurl: ''
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: ch
+lang: zh
 
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
@@ -30,10 +30,10 @@ description: >-                        # used by seo meta and the atom feed
 url: 'https://sn-mumu.github.io'
 
 github:
-  username: sn-mumu.cn             # change to your github username
+  username: sn-mumu             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: Mumu02550238            # change to your twitter username
 
 social:
   # Change to your full name.
@@ -43,7 +43,7 @@ social:
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/Mumu02550238      # change to your twitter homepage
-    - https://github.com/sn-mumu       # change to your github homepage
+    - https://github.com/sn-mumu     # change to your github homepage
     # Uncomment below to add more social links
     - https://blog.csdn.net/weixin_43509037
     # - https://www.linkedin.com/in/username
