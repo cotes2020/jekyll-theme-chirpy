@@ -19,9 +19,9 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 睦mu                          # the main title
+title: 睦mu的博客                          # the main title
 
-tagline: 睦mu的博客   # it will display as the sub-title
+tagline: 欢迎来到睦mu的博客   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
