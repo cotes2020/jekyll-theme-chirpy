@@ -2,7 +2,7 @@
 title: 在Linux系统上扩展swap空间
 author: mumu
 date: 2020-10-25 16:48:00 +0800
-categories: [操作]
+categories: [Linux,内存,swap]
 tags: [Linux,swap,内存]
 pin: true
 ---
