@@ -14,7 +14,7 @@
 </div>
 {% endcapture %}
 
-{% capture not_found %}<p class="mt-5">{{ site.data.locales[lang].search.no_results }}</p>{% endcapture %}
+{% capture not_found %}<p class="mt-5">{{ site.data.locales[site.lang].search.no_results }}</p>{% endcapture %}
 
 <script src="{{ site.data.assets[origin].search.js | relative_url }}"></script>
 

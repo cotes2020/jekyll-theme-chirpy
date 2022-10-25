@@ -31,11 +31,15 @@
   %}
 {% endif %}
 
-<!-- Add attribute 'hide-bullet' to the checkbox list -->
-
-{% if _content contains '<li class="task-list-item"><' %}
+<!-- Change the icon of checkbox -->
+{% if _content contains '<input type="checkbox"' %}
   {% assign _content = _content
-    | replace: '"task-list-item"><', '"task-list-item" hide-bullet><'
+    | replace:
+        '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />',
+        '<i class="fas fa-check-circle fa-fw checked"></i>'
+    | replace:
+        '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />',
+        '<i class="far fa-circle fa-fw"></i>'
   %}
 {% endif %}
 
@@ -177,7 +181,7 @@
           | append: '<div class="code-header">'
           | append: _label
           | append: '<button aria-label="copy" data-title-succeed="'
-          | append: site.data.locales[lang].post.button.copy_code.succeed
+          | append: site.data.locales[site.lang].post.button.copy_code.succeed
           | append: '"><i class="far fa-clipboard"></i></button></div>'
           | append: '<div class="highlight"><code>'
       %}

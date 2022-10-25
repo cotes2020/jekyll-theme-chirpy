@@ -9,21 +9,19 @@ tail_includes:
   - comments
 ---
 
-{% include lang.html %}
-
 <h1 data-toc-skip>{{ page.title }}</h1>
 
 <div class="post-meta text-muted">
     <!-- published date -->
     <span>
-      {{ site.data.locales[lang].post.posted }}
+      {{ site.data.locales[site.lang].post.posted }}
       {% include datetime.html date=page.date tooltip=true %}
     </span>
 
     <!-- lastmod date -->
     {% if page.last_modified_at %}
     <span>
-      {{ site.data.locales[lang].post.updated }}
+      {{ site.data.locales[site.lang].post.updated }}
       {% include datetime.html date=page.last_modified_at tooltip=true %}
     </span>
     {% endif %}
@@ -65,7 +63,7 @@ tail_includes:
         {% assign authors = page.authors %}
       {% endif %}
 
-      {{ site.data.locales[lang].post.written_by }}
+      {{ site.data.locales[site.lang].post.written_by }}
 
       <em>
       {% if authors %}
@@ -86,7 +84,7 @@ tail_includes:
         <em id="pv" class="pageviews">
           <i class="fas fa-spinner fa-spin fa-fw"></i>
         </em>
-        {{ site.data.locales[lang].post.pageview_measure }}
+        {{ site.data.locales[site.lang].post.pageview_measure }}
       </span>
       {% endif %}
 
@@ -132,15 +130,15 @@ tail_includes:
     d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
     <div class="license-wrapper">
 
-      {% if site.data.locales[lang].copyright.license.template %}
+      {% if site.data.locales[site.lang].copyright.license.template %}
 
         {% capture _replacement %}
-        <a href="{{ site.data.locales[lang].copyright.license.link }}">
-          {{ site.data.locales[lang].copyright.license.name }}
+        <a href="{{ site.data.locales[site.lang].copyright.license.link }}">
+          {{ site.data.locales[site.lang].copyright.license.name }}
         </a>
         {% endcapture %}
 
-        {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
+        {{ site.data.locales[site.lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
 
       {% endif %}
     </div>

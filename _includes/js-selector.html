@@ -29,11 +29,7 @@
     or page.layout == 'category'
     or page.layout == 'tag' %}
 
-  {% if site.prefer_datetime_locale %}
-    {% assign locale = site.prefer_datetime_locale | downcase %}
-  {% else %}
-    {% assign locale = site.lang | split: '-' | first %}
-  {% endif %}
+  {% assign locale = site.lang | split: '-' | first %}
 
   {% assign _urls = site.data.assets[origin].dayjs.js.common
       | append: ',' | append: site.data.assets[origin].dayjs.js.locale

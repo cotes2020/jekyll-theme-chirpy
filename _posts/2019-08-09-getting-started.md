@@ -113,7 +113,7 @@ Now publish your Jekyll site:
 
 1. Browse to your repository on GitHub. Select the tab _Settings_, then click _Pages_ in the left navigation bar. Then, in the **Source** section (under _Build and deployment_), select [**GitHub Actions**][pages-workflow-src] from the dropdown menu.
 
-2. Push any commit to remote to trigger the GitHub Actions workflow. In the _Actions_ tab of your repository, you should see the "Deploy Jekyll with GitHub Pages" workflow with at least one job running. Once the build is complete and successful, the site should be deployed automatically.
+2. Push any commit to remote to trigger the GitHub Actions workflow. In the _Actions_ tab of your repository, you should see the workflow _Build and Deploy_ running. Once the build is complete and successful, the site should be deployed automatically.
 
 3. Visit your website at the address indicated by GitHub.
 

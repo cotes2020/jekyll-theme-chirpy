@@ -33,7 +33,7 @@ search:
   js: https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js
 
 mermaid:
-  js: https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js
+  js: https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js
 
 dayjs:
   js:
@@ -53,7 +53,7 @@ lozad:
   js: https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js
 
 clipboard:
-  js:  https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
+  js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
 polyfill:
   js: https://polyfill.io/v3/polyfill.min.js?features=es6

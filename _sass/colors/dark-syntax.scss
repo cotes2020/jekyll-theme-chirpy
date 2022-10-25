@@ -3,7 +3,24 @@
  */
 
 @mixin dark-syntax {
+  --highlight-bg-color: #252525;
+  --highlighter-rouge-color: #de6b18;
+  --highlight-lineno-color: #6c6c6d;
+  --inline-code-bg: #272822;
+  --code-header-text-color: #6a6a6a;
+  --code-header-muted-color: rgb(60, 60, 60);
+  --code-header-icon-color: rgb(86, 86, 86);
+  --clipboard-checked-color: #2bcc2b;
+  --filepath-text-color: #bdbdbd;
+
+  pre { color: #bfbfbf; } /* override Bootstrap */
+
+  .highlight {
+    .gp { color: #818c96; }
+  }
+
   /* syntax highlight colors from https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css */
+
   .highlight pre { background-color: var(--highlight-bg-color); }
   .highlight .hll { background-color: var(--highlight-bg-color); }
   .highlight .c { color: #75715e; } /* Comment */
@@ -67,22 +84,4 @@
   .highlight .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
   .highlight .gd { color: #f92672; background-color: #561c08; } /* Generic.Deleted & Diff Deleted */
   .highlight .gi { color: #a6e22e; background-color: #0b5858; } /* Generic.Inserted & Diff Inserted */
-
-  /* -----  custom styles ------ */
-
-  --highlight-bg-color: #252525;
-  --highlighter-rouge-color: #de6b18;
-  --highlight-lineno-color: #6c6c6d;
-  --inline-code-bg: #272822;
-  --code-header-text-color: #6a6a6a;
-  --code-header-muted-color: rgb(60 60 60);
-  --code-header-icon-color: rgb(86 86 86);
-  --clipboard-checked-color: #2bcc2b;
-  --filepath-text-color: #bdbdbd;
-
-  .highlight {
-    .gp { color: #818c96; }
-  }
-
-  pre { color: #bfbfbf; } /* override Bootstrap */
 }
