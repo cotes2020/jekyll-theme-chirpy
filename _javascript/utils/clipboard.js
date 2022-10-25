@@ -1,4 +1,4 @@
-/*
+/**
  * Clipboard functions
  *
  * Dependencies:
@@ -6,128 +6,128 @@
  *   - clipboard.js (https://github.com/zenorocha/clipboard.js)
  */
 
-$(function() {
-  const btnSelector = '.code-header>button';
-  const ICON_SUCCESS = 'fas fa-check';
-  const ATTR_TIMEOUT = 'timeout';
-  const ATTR_TITLE_SUCCEED = 'data-title-succeed';
-  const ATTR_TITLE_ORIGIN = 'data-original-title';
-  const TIMEOUT = 2000; // in milliseconds
+$(function () {
+    const btnSelector = '.code-header>button';
+    const ICON_SUCCESS = 'fas fa-check';
+    const ATTR_TIMEOUT = 'timeout';
+    const ATTR_TITLE_SUCCEED = 'data-title-succeed';
+    const ATTR_TITLE_ORIGIN = 'data-original-title';
+    const TIMEOUT = 2000; // in milliseconds
 
-  function isLocked(node) {
-    if ($(node)[0].hasAttribute(ATTR_TIMEOUT)) {
-      let timeout = $(node).attr(ATTR_TIMEOUT);
-      if (Number(timeout) > Date.now()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  function lock(node) {
-    $(node).attr(ATTR_TIMEOUT, Date.now() + TIMEOUT);
-  }
-
-  function unlock(node) {
-    $(node).removeAttr(ATTR_TIMEOUT);
-  }
-
-  /* --- Copy code block --- */
-
-  // Initial the clipboard.js object
-  const clipboard = new ClipboardJS(btnSelector, {
-    target(trigger) {
-      let codeBlock = trigger.parentNode.nextElementSibling;
-      return codeBlock.querySelector('code .rouge-code');
-    }
-  });
-
-  $(btnSelector).tooltip({
-    trigger: 'hover',
-    placement: 'left'
-  });
-
-  function getIcon(btn) {
-    let iconNode = $(btn).children();
-    return iconNode.attr('class');
-  }
-
-  const ICON_DEFAULT = getIcon(btnSelector);
-
-  function showTooltip(btn) {
-    const succeedTitle = $(btn).attr(ATTR_TITLE_SUCCEED);
-    $(btn).attr(ATTR_TITLE_ORIGIN, succeedTitle).tooltip('show');
-  }
-
-  function hideTooltip(btn) {
-    $(btn).tooltip('hide').removeAttr(ATTR_TITLE_ORIGIN);
-  }
-
-  function setSuccessIcon(btn) {
-    let btnNode = $(btn);
-    let iconNode = btnNode.children();
-    iconNode.attr('class', ICON_SUCCESS);
-  }
-
-  function resumeIcon(btn) {
-    let btnNode = $(btn);
-    let iconNode = btnNode.children();
-    iconNode.attr('class', ICON_DEFAULT);
-  }
-
-  clipboard.on('success', (e) => {
-    e.clearSelection();
-
-    const trigger = e.trigger;
-    if (isLocked(trigger)) {
-      return;
+    function isLocked(node) {
+        if ($(node)[0].hasAttribute(ATTR_TIMEOUT)) {
+            let timeout = $(node).attr(ATTR_TIMEOUT);
+            if (Number(timeout) > Date.now()) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    setSuccessIcon(trigger);
-    showTooltip(trigger);
-    lock(trigger);
-
-    setTimeout(() => {
-      hideTooltip(trigger);
-      resumeIcon(trigger);
-      unlock(trigger);
-    }, TIMEOUT);
-
-  });
-
-  /* --- Post link sharing --- */
-
-  $('#copy-link').click((e) => {
-
-    let target = $(e.target);
-
-    if (isLocked(target)) {
-      return;
+    function lock(node) {
+        $(node).attr(ATTR_TIMEOUT, Date.now() + TIMEOUT);
     }
 
-    // Copy URL to clipboard
+    function unlock(node) {
+        $(node).removeAttr(ATTR_TIMEOUT);
+    }
 
-    const url = window.location.href;
-    const $temp = $("<input>");
+    /* --- Copy code block --- */
 
-    $("body").append($temp);
-    $temp.val(url).select();
-    document.execCommand("copy");
-    $temp.remove();
+    // Initial the clipboard.js object
+    const clipboard = new ClipboardJS(btnSelector, {
+        target(trigger) {
+            let codeBlock = trigger.parentNode.nextElementSibling;
+            return codeBlock.querySelector('code .rouge-code');
+        }
+    });
 
-    // Switch tooltip title
+    $(btnSelector).tooltip({
+        trigger: 'hover',
+        placement: 'left'
+    });
 
-    const defaultTitle = target.attr(ATTR_TITLE_ORIGIN);
-    const succeedTitle = target.attr(ATTR_TITLE_SUCCEED);
+    function getIcon(btn) {
+        let iconNode = $(btn).children();
+        return iconNode.attr('class');
+    }
 
-    target.attr(ATTR_TITLE_ORIGIN, succeedTitle).tooltip('show');
-    lock(target);
+    const ICON_DEFAULT = getIcon(btnSelector);
 
-    setTimeout(() => {
-      target.attr(ATTR_TITLE_ORIGIN, defaultTitle);
-      unlock(target);
-    }, TIMEOUT);
+    function showTooltip(btn) {
+        const succeedTitle = $(btn).attr(ATTR_TITLE_SUCCEED);
+        $(btn).attr(ATTR_TITLE_ORIGIN, succeedTitle).tooltip('show');
+    }
 
-  });
+    function hideTooltip(btn) {
+        $(btn).tooltip('hide').removeAttr(ATTR_TITLE_ORIGIN);
+    }
+
+    function setSuccessIcon(btn) {
+        let btnNode = $(btn);
+        let iconNode = btnNode.children();
+        iconNode.attr('class', ICON_SUCCESS);
+    }
+
+    function resumeIcon(btn) {
+        let btnNode = $(btn);
+        let iconNode = btnNode.children();
+        iconNode.attr('class', ICON_DEFAULT);
+    }
+
+    clipboard.on('success', (e) => {
+        e.clearSelection();
+
+        const trigger = e.trigger;
+        if (isLocked(trigger)) {
+            return;
+        }
+
+        setSuccessIcon(trigger);
+        showTooltip(trigger);
+        lock(trigger);
+
+        setTimeout(() => {
+            hideTooltip(trigger);
+            resumeIcon(trigger);
+            unlock(trigger);
+        }, TIMEOUT);
+
+    });
+
+    /* --- Post link sharing --- */
+
+    $('#copy-link').click((e) => {
+
+        let target = $(e.target);
+
+        if (isLocked(target)) {
+            return;
+        }
+
+        // Copy URL to clipboard
+
+        const url = window.location.href;
+        const $temp = $("<input>");
+
+        $("body").append($temp);
+        $temp.val(url).select();
+        document.execCommand("copy");
+        $temp.remove();
+
+        // Switch tooltip title
+
+        const defaultTitle = target.attr(ATTR_TITLE_ORIGIN);
+        const succeedTitle = target.attr(ATTR_TITLE_SUCCEED);
+
+        target.attr(ATTR_TITLE_ORIGIN, succeedTitle).tooltip('show');
+        lock(target);
+
+        setTimeout(() => {
+            target.attr(ATTR_TITLE_ORIGIN, defaultTitle);
+            unlock(target);
+        }, TIMEOUT);
+
+    });
 
 });
