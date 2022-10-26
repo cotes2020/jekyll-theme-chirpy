@@ -1,6 +1,6 @@
 ---
 title: "React UI-demo"
-author: cotes
+author: hyun
 categories: [study, react]
 tag: [UI]
 math: true
@@ -11,7 +11,7 @@ mermaid: true
 
 ## 지금까지 한 것 정리
 
-`React` => 화면 구성 기능만 제공
+ `React` => 화면 구성 기능만 제공
 
 UI 전용 `framework`
 
