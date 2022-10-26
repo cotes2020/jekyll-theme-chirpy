@@ -100,7 +100,7 @@ layout: page
       </div> <!-- .post-meta -->
 
       <div class="post-list-content">
-        {{ post.excerpt | strip_html | truncatewords: 45, '...' | strip_newlines }}
+        {{ post.excerpt | strip_html | truncatewords: 25, '...' | strip_newlines }}
         <p class="text-right"><a href="{{ post.url }}">read more...</a></p>
     </div>
 
