@@ -59,7 +59,6 @@
   .post-preview {
     padding-top: 1.5rem;
     padding-bottom: 3rem;
-    border-bottom: 1px solid var(--main-border-color);
 
     a:hover {
       @extend %link-hover;
@@ -72,6 +71,7 @@
     }
 
     .post-meta {
+      margin: 1rem 0;
       i {
         font-size: 0.73rem;
 
