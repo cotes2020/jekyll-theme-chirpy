@@ -9,7 +9,7 @@ pin: true
 
 # 在Linux系统上扩展swap空间
 
-## 一、what is swap？
+## 一、what is swap?
 
 SWAP的作用类似Windows系统下的“虚拟内存”。当物理内存不足时，拿出部分硬盘空间当SWAP分区（虚拟成内存）使用，从而解决内存容量不足的情况。
 
