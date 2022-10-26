@@ -461,8 +461,8 @@ img[data-src] {
     }
   }
 
-  > ol,
-  > ul {
+  ol,
+  ul {
     -webkit-padding-start: 1.75rem;
     padding-inline-start: 1.75rem;
 
@@ -473,8 +473,8 @@ img[data-src] {
 
     ol,
     ul {
-      -webkit-padding-start: 1rem;
-      padding-inline-start: 1rem;
+      -webkit-padding-start: 1.25rem;
+      padding-inline-start: 1.25rem;
       margin: 0.5rem 0;
     }
   }
