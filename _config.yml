@@ -24,7 +24,7 @@ title: 睦mu的博客                          # the main title
 tagline: 欢迎来到睦mu的博客   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  生活 | 工作 | 学习 | 分享 
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://sn-mumu.github.io'
@@ -91,14 +91,14 @@ comments:
   active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
-    shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+    shortname: sn-mumu   # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo:         # <gh-username>/<repo>
+    repo: sn-mumu/sn-mumu.github.io         # <gh-username>/<repo>
     issue_term:   # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo:              # <gh-username>/<repo>
+    repo: sn-mumu/sn-mumu.github.io              # <gh-username>/<repo>
     repo_id:
     category:
     category_id:
