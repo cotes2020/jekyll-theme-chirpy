@@ -26,5 +26,5 @@
 #   url:  ''                  # Fill with your Linkedin homepage
 -
   type: CSDN
-  icon: 'fa-solid fa-copyright'
+  icon: 'fas fa-solid fa-copyright'
   url:  'https://blog.csdn.net/weixin_43509037'                  
