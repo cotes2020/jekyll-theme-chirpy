@@ -25,6 +25,6 @@
 #   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your Linkedin homepage
 -
-  type: stack-overflow
-  icon: 'fab fa-stack-overflow'
-  url:  'https://www.baidu.com'                  # Fill with your stackoverflow homepage
+  type: CSDN
+  icon: 'fa-solid fa-copyright'
+  url:  'https://blog.csdn.net/weixin_43509037'                  
