@@ -110,6 +110,7 @@ code {
     word-break: break-word;
     border-radius: 4px;
     background-color: var(--inline-code-bg);
+    font-weight: bold;
   }
 
   &.filepath {

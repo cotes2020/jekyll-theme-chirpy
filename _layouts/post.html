@@ -9,7 +9,30 @@ tail_includes:
   - comments
 ---
 
-<h1 data-toc-skip>{{ page.title }}</h1>
+<div class="avatar2Wrapper">
+  <div id="avatar2">
+    <a href="{{ '/' | relative_url }}" class="mx-auto">
+      {% if site.avatar != empty and site.avatar %}
+      {% capture avatar_url %}
+      {% if site.avatar contains '://' %}
+      {{ site.avatar }}
+      {% elsif site.img_cdn != empty and site.img_cdn %}
+      {{ site.avatar | prepend: site.img_cdn }}
+      {% else %}
+      {{ site.avatar | relative_url }}
+      {% endif %}
+      {% endcapture %}
+      <img src="{{ avatar_url | strip }}" alt="avatar" onerror="this.style.display='none'">
+      {% endif %}
+    </a>
+  </div>
+  <div>
+    <a href="{{ site.social.links[1] }}">{{ site.social.name }}</a>
+    <div>{{ site.tagline }}</div>
+  </div>
+</div>
+
+<h1 data-toc-skip id="title-h1">{{ page.title }}</h1>
 
 <div class="post-meta text-muted">
     <!-- published date -->

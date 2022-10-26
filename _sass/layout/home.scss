@@ -4,7 +4,7 @@
 
 .pagination {
   color: var(--btn-patinator-text-color);
-  font-family: Lato, sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans KR","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
 
   a:hover {
     text-decoration: none;
@@ -58,8 +58,7 @@
 
   .post-preview {
     padding-top: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--main-border-color);
+    padding-bottom: 3rem;
 
     a:hover {
       @extend %link-hover;
@@ -67,10 +66,12 @@
 
     h1 {
       font-size: 1.4rem;
-      margin: 0;
+      margin: 1rem 0;
+      font-weight: bold;
     }
 
     .post-meta {
+      margin: 1rem 0;
       i {
         font-size: 0.73rem;
 
@@ -126,6 +127,50 @@
       }
     }
   }
+
+  .avatar2Wrapper {
+    display: flex;
+    margin-top: 1rem;
+    gap: 1rem;
+    align-items: center;
+    
+    #avatar2 {
+      > a {
+        display: block;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        border: 2px solid rgba(222, 222, 222, 0.7);
+        overflow: hidden;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0); /* fixed the zoom in Safari */
+        transition: border-color 0.35s ease-in-out;
+    
+        &:hover {
+          border-color: white;
+        }
+      }
+    
+      img {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        transition: -webkit-transform 0.5s;
+        transition: transform 0.5s;
+        transition: transform 0.5s, -webkit-transform 0.5s;
+      }
+    } /* #avatar */
+
+    a {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    div {
+      height: 100%;
+      font-size: 0.8em;
+    }
+  }
 }
 
 /* Sidebar is visible */
@@ -168,6 +213,10 @@
       display: none;
     }
   } /* .pagination */
+
+  .avatar2Wrapper {
+    display: none;
+  }
 }
 
 /* Panel hidden */

@@ -2,6 +2,13 @@
   The common styles
 */
 
+@font-face {
+  font-family: 'HallymGothic-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
 html {
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
@@ -25,23 +32,32 @@ html {
     }
   }
 
-  font-size: 16px;
+  font-size: 14px;
 }
 
 body {
   background: var(--body-bg);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
+  font-family: 'HallymGothic-Regular';
   line-height: 1.75;
 }
 
 /* --- Typography --- */
 
+#title-h1 {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: var(--text-color);
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans KR","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+}
+
 h1 {
   @extend %heading;
-
   font-size: 1.9rem;
+  font-weight: bold;
+  color: #a4a40f;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans KR","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
 }
 
 h2 {
@@ -50,6 +66,9 @@ h2 {
   @extend %anchor;
 
   font-size: 1.5rem;
+  font-weight: bold;
+  color: #d6d632;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans KR","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
 }
 
 h3 {
@@ -58,6 +77,8 @@ h3 {
   @extend %anchor;
 
   font-size: 1.2rem;
+  font-weight: bold;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans KR","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
 }
 
 h4 {
@@ -66,6 +87,8 @@ h4 {
   @extend %anchor;
 
   font-size: 1.15rem;
+  font-weight: bold;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans KR","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
 }
 
 h5 {
@@ -74,6 +97,8 @@ h5 {
   @extend %anchor;
 
   font-size: 1.1rem;
+  font-weight: bold;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans KR","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
 }
 
 a {
@@ -98,7 +123,6 @@ blockquote {
     color: var(--prompt-text-color);
 
     &::before {
-      font-family: "Font Awesome 5 Free";
       text-align: center;
       width: 1.25rem;
       margin-right: 0.75rem;
@@ -125,7 +149,6 @@ mjx-container {
 }
 
 kbd {
-  font-family: inherit;
   display: inline-block;
   vertical-align: middle;
   line-height: 1.3rem;
@@ -405,6 +428,7 @@ img[data-src] {
     /* created by `_includes/img-extra.html` */
     &.popup {
       cursor: zoom-in;
+      outline: none;
 
       > img[data-src]:not(.normal):not(.left):not(.right) {
         @include align-center;
@@ -1028,7 +1052,6 @@ $sidebar-display: "sidebar-display";
   display: none;
   font-size: 1.1rem;
   font-weight: 600;
-  font-family: sans-serif;
   color: var(--topbar-text-color);
   text-align: center;
   width: 70%;
@@ -1144,7 +1167,6 @@ $sidebar-display: "sidebar-display";
   }
 
   .toast-body {
-    font-family: Lato, sans-serif;
     line-height: 1.25rem;
 
     button {
@@ -1185,6 +1207,9 @@ $sidebar-display: "sidebar-display";
 */
 
 @media all and (max-width: 576px) {
+  html {
+    font-size: 12px;
+  }
   footer {
     height: $footer-height-mobile;
 
@@ -1673,3 +1698,34 @@ $sidebar-display: "sidebar-display";
     } /* .sidebar-bottom */
   } /* #sidebar */
 } /* min-width: 1650px */
+
+.avatar2Wrapper {
+  display: flex;
+  align-items: center;
+
+  #avatar2 {
+    > a {
+      display: block;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      border: 2px solid rgba(222, 222, 222, 0.7);
+      overflow: hidden;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0); /* fixed the zoom in Safari */
+      transition: border-color 0.35s ease-in-out;
+  
+      &:hover {
+        border-color: white;
+      }
+    }
+  
+    img {
+      width: 100%;
+      height: 100%;
+      transition: -webkit-transform 0.5s;
+      transition: transform 0.5s;
+      transition: transform 0.5s, -webkit-transform 0.5s;
+    }
+  } /* #avatar */
+}
