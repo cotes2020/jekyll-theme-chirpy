@@ -3,9 +3,10 @@ layout: page
 # The Home page layout
 ---
 
-{% include lang.html %} {% assign pinned = site.posts | where: "pin", "true" %}
-{% assign default = site.posts | where_exp: "item", "item.pin != true and
-item.hidden != true" %} {% assign posts = "" | split: "" %}
+{% assign pinned = site.posts | where: "pin", "true" %}
+{% assign default = site.posts | where_exp: "item", "item.pin != true and item.hidden != true" %}
+
+{% assign posts = "" | split: "" %}
 
 <!-- Get pinned posts -->
 
@@ -56,7 +57,7 @@ endfor %} {% endif %}
       {% if post.pin %}
       <div class="pin">
         <i class="bi bi-pin-angle"></i>
-        <span>{{ site.data.locales[lang].post.pin_prompt }}</span>
+        <span>{{ site.data.locales[site.lang].post.pin_prompt }}</span>
       </div>
       {% endif %}
     </div>

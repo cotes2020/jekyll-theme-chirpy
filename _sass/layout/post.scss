@@ -26,6 +26,15 @@
   color: var(--text-color);
 }
 
+img.preview-img {
+  margin: 0;
+  border-radius: 6px;
+
+  &.bg[data-loaded="true"] {
+    background: var(--preview-img-bg);
+  }
+}
+
 h1 + .post-meta {
   span + span::before {
     @include dot;
@@ -40,23 +49,36 @@ h1 + .post-meta {
   }
 }
 
-img.preview-img {
-  margin: 0;
-  border-radius: 6px;
-
-  &.bg[data-loaded=true] {
-    background: var(--preview-img-bg);
-  }
-}
-
 .post-tail-wrapper {
   margin-top: 6rem;
   border-bottom: 1px double var(--main-border-color);
   font-size: 0.85rem;
 
+  .post-tail-bottom a {
+    color: inherit;
+  }
+
+  .license-wrapper {
+    line-height: 1.2rem;
+
+    > a {
+      color: var(--text-color);
+
+      &:hover {
+        @extend %link-hover;
+      }
+    }
+
+    span:last-child {
+      font-size: 0.85rem;
+    }
+  } /* .license-wrapper */
+
   .post-meta a:not(:hover) {
     @extend %link-underline;
   }
+
+  
 }
 
 .post-tags {
@@ -121,8 +143,21 @@ img.preview-img {
     margin-top: 0.3rem;
     white-space: normal;
   }
-
 } /* .post-navigation */
+
+@-webkit-keyframes fade-up {
+  from {
+    opacity: 0;
+    position: relative;
+    top: 2rem;
+  }
+
+  to {
+    opacity: 1;
+    position: relative;
+    top: 0;
+  }
+}
 
 @keyframes fade-up {
   from {
@@ -130,6 +165,7 @@ img.preview-img {
     position: relative;
     top: 2rem;
   }
+
   to {
     opacity: 1;
     position: relative;
@@ -143,19 +179,23 @@ img.preview-img {
   position: sticky;
   top: 4rem;
   transition: top 0.2s ease-in-out;
+  -webkit-animation: fade-up 0.8s;
   animation: fade-up 0.8s;
 }
 
-#toc li a {
-  font-size: 0.8rem;
+#toc {
+  ul.nav.navbar-nav {
+    margin: 0.5rem 0;
+    padding: 0;
 
-  &.nav-link:not(.active) {
-    color: inherit;
+    li {
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
   }
-
 }
 
-nav[data-toggle=toc] {
+nav[data-toggle="toc"] {
   .nav {
     .nav > li > a.active {
       font-weight: 600 !important;
@@ -176,25 +216,6 @@ nav[data-toggle=toc] {
     color: var(--relate-post-date);
   }
 
-  .card {
-    border-color: var(--card-border-color);
-    background-color: var(--card-bg);
-    box-shadow: 0 0 5px 0 var(--card-box-shadow);
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-
-    h3 {
-      @extend %text-color;
-    }
-
-    &:hover {
-      -webkit-transform: translate3d(0, -3px, 0);
-      transform: translate3d(0, -3px, 0);
-      box-shadow: 0 10px 15px -4px rgba(0, 0, 0, 0.15);
-    }
-  }
-
   p {
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
@@ -209,20 +230,20 @@ nav[data-toggle=toc] {
     text-decoration: none;
   }
 
-  ul {
-    list-style-type: none;
-    padding-inline-start: 1.5rem;
+  .card {
+    border-color: var(--card-border-color);
+    background-color: var(--card-bg);
+    box-shadow: 0 0 5px 0 var(--card-box-shadow);
+    transition: all 0.3s ease-in-out;
 
-    > li::before {
-      background: #c2c9d4;
-      width: 5px;
-      height: 5px;
-      border-radius: 1px;
-      display: block;
-      content: "";
-      position: relative;
-      top: 1rem;
-      right: 1rem;
+    h3 {
+      @extend %text-color;
+    }
+
+    &:hover {
+      -webkit-transform: translate3d(0, -3px, 0);
+      transform: translate3d(0, -3px, 0);
+      box-shadow: 0 10px 15px -4px rgba(0, 0, 0, 0.15);
     }
   }
 }
@@ -234,14 +255,9 @@ nav[data-toggle=toc] {
     margin-bottom: 2rem;
   }
 
-  #disqus_thread {
+  #disqus_thread { /* stylelint-disable-line selector-id-pattern */
     min-height: 8.5rem;
   }
-
-}
-
-.post-tail-bottom a {
-  color: inherit;
 }
 
 %btn-share-hovor {
@@ -314,30 +330,12 @@ nav[data-toggle=toc] {
   }
 }
 
-.license-wrapper {
-  line-height: 1.2rem;
-
-  > a {
-    color: var(--text-color);
-
-    &:hover {
-      @extend %link-hover;
-    }
-  }
-
-  span:last-child {
-    font-size: 0.85rem;
-  }
-
-} /* .license-wrapper */
-
 @media all and (max-width: 576px) {
   .preview-img[data-src] {
     margin-top: 2.2rem;
   }
 
   .post-tail-bottom {
-    -ms-flex-wrap: wrap-reverse !important;
     flex-wrap: wrap-reverse !important;
 
     > div:first-child {

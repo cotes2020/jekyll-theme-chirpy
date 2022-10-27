@@ -20,18 +20,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         ruby: [2.5, 2.6, 2.7, 3]
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0  # for posts's lastmod
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+
       - name: Test Site
-        run: bash tools/deploy.sh --dry-run
+        run: bash tools/test.sh

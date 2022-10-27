@@ -1,4 +1,4 @@
-/*
+/**
  * Tab 'Categories' expand/close effect.
  */
 

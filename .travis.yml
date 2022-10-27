@@ -16,13 +16,16 @@ before_script: git -C "$HOME" clone "$BUILDER_REPO" --depth=1 -q
 jobs:
   include:
     - stage: Upgrade
+      cache: bundler
       git:
         depth: false  # for posts' lastmod
       script: eval "$BUILD_CMD"
+
     - stage: Starter
       language: minimal
       install: true   # skip install step
       script: eval "$FLUSH_STARTER"
+
     - stage: Docs
       cache: bundler
       git:

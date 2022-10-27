@@ -12,7 +12,7 @@ swcache: true
     "tags": {{ post.tags | join: ', ' | jsonify }},
     "date": "{{ post.date }}",
     {% include no-linenos.html content=post.content %}
-    "snippet": {{ content | strip_html | strip_newlines | jsonify }}
+    "snippet": {{ content | strip_html | strip_newlines | truncate: 200 | jsonify }}
   }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]

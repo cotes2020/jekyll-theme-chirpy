@@ -1,7 +1,7 @@
 ---
 layout: page
 refactor: true
-pannel_includes:
+panel_includes:
   - toc
 tail_includes:
   - related-posts
@@ -9,16 +9,51 @@ tail_includes:
   - comments
 ---
 
-{% include lang.html %}
-
 <h1 data-toc-skip>{{ page.title }}</h1>
 
 <div class="post-meta text-muted">
+<<<<<<< HEAD
   <!-- published date -->
   <span>
     {{ site.data.locales[lang].post.posted }} {% include datetime.html
     date=page.date tooltip=true %}
   </span>
+=======
+    <!-- published date -->
+    <span>
+      {{ site.data.locales[site.lang].post.posted }}
+      {% include datetime.html date=page.date tooltip=true %}
+    </span>
+
+    <!-- lastmod date -->
+    {% if page.last_modified_at %}
+    <span>
+      {{ site.data.locales[site.lang].post.updated }}
+      {% include datetime.html date=page.last_modified_at tooltip=true %}
+    </span>
+    {% endif %}
+
+  {% if page.image.path %}
+    {% capture bg %}
+      {% unless page.image.no_bg %}{{ 'bg' }}{% endunless %}
+    {% endcapture %}
+
+    <div class="mt-3 mb-3">
+      <img src="{{ page.image.path }}" class="preview-img {{ bg | strip }}"
+        alt="{{ page.image.alt | default: "Preview Image" }}"
+
+      {% if page.image.width %}
+        width="{{ page.image.width }}"
+      {% elsif page.image.w %}
+        width="{{ page.image.w }}"
+      {% endif %}
+
+      {% if page.image.height %}
+        height="{{ page.image.height }}"
+      {% elsif page.image.h %}
+        height="{{ page.image.h }}"
+      {% endif %}>
+>>>>>>> e107a2e759836510216ea8567aa8b203decace31
 
   <!-- lastmod date -->
   {% if page.last_modified_at %}
@@ -40,26 +75,32 @@ tail_includes:
         default: "Preview Image" }}" />
       </picture>
       {% if page.image.alt %}
-      <figcaption class="pt-2 pb-2">{{ page.image.alt }}</figcaption>
+        <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
       {% endif %}
     </figure>
   </div>
   {% endif %}
 
   <div class="d-flex justify-content-between">
-    <!-- author -->
+    <!-- author(s) -->
     <span>
-      {% capture author_name %}{{ site.data.authors[page.author].name | default:
-      site.social.name }}{% endcapture %} {% assign author_link = nil %} {% if
-      page.author %} {% assign author_link = site.data.authors[page.author].url
-      %} {% elsif author_name == site.social.name %} {% assign author_link =
-      site.social.links[0] %} {% endif %} {{
-      site.data.locales[lang].post.written_by }}
+      {% if page.author %}
+        {% assign authors = page.author %}
+      {% elsif page.authors %}
+        {% assign authors = page.authors %}
+      {% endif %}
+
+      {{ site.data.locales[site.lang].post.written_by }}
 
       <em>
-        {% if author_link %}
-        <a href="{{ author_link }}">{{ author_name }}</a>
-        {% else %} {{ author_name }} {% endif %}
+      {% if authors %}
+        {% for author in authors %}
+          <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
+          {% unless forloop.last %}</em>, <em>{% endunless %}
+        {% endfor %}
+      {% else %}
+        <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
+      {% endif %}
       </em>
     </span>
 
@@ -71,7 +112,7 @@ tail_includes:
         <em id="pv" class="pageviews">
           <i class="bi bi-arrow-repeat"></i>
         </em>
-        {{ site.data.locales[lang].post.pageview_measure }}
+        {{ site.data.locales[site.lang].post.pageview_measure }}
       </span>
       {% endif %}
 
@@ -118,13 +159,18 @@ tail_includes:
     class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"
   >
     <div class="license-wrapper">
-      {% if site.data.locales[lang].copyright.license.template %} {% capture
-      _replacement %}
-      <a href="{{ site.data.locales[lang].copyright.license.link }}">
-        {{ site.data.locales[lang].copyright.license.name }}
-      </a>
-      {% endcapture %} {{ site.data.locales[lang].copyright.license.template |
-      replace: ':LICENSE_NAME', _replacement }} {% endif %}
+
+      {% if site.data.locales[site.lang].copyright.license.template %}
+
+        {% capture _replacement %}
+        <a href="{{ site.data.locales[site.lang].copyright.license.link }}">
+          {{ site.data.locales[site.lang].copyright.license.name }}
+        </a>
+        {% endcapture %}
+
+        {{ site.data.locales[site.lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
+
+      {% endif %}
     </div>
 
     {% include post-sharing.html %}

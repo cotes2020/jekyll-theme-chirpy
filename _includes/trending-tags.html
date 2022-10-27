@@ -37,7 +37,7 @@
 
 {% if trending_tags.size > 0 %}
   <div id="access-tags">
-    <div class="panel-heading">{{- site.data.locales[lang].panel.trending_tags -}}</div>
+    <div class="panel-heading">{{- site.data.locales[site.lang].panel.trending_tags -}}</div>
     <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
 
     {% for tag_name in trending_tags %}

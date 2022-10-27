@@ -26,7 +26,7 @@
 {% if update_list.size > 0 %}
 
   <div id="access-lastmod" class="post">
-    <div class="panel-heading">{{- site.data.locales[lang].panel.lastmod -}}</div>
+    <div class="panel-heading">{{- site.data.locales[site.lang].panel.lastmod -}}</div>
     <ul class="post-content pl-0 pb-1 ml-1 mt-2">
       {% for item in update_list %}
         {% assign index = item | split: "::" | last | plus: 0 %}
