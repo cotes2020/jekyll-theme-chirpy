@@ -13,7 +13,7 @@ typora-root-url: ..
 # Hello, world!
 
 
-![img](/assets/img/avatar.jpg)
+![img](/assets/img/2021-07-13-hello jekyll/avatar.jpg)
 
 
 ## 博客搭建过程
@@ -65,12 +65,31 @@ jekyll serve
 4. 文件初始化，在Windows下需要在Git command中运行
     `$ bash tools/init.sh`
 5. 修改
-  1. 项目名称
-  2. `_config.yml`配置文件
-6. 推送一个commit以触发GitHub Actions workflow，build完毕且成功远端会自动出现一个新分支`gh-pages`
-7. 选择`gh-pages`分支作为Page的发布源
+  6. 项目名称
+  7. `_config.yml`配置文件
+8. 推送一个commit以触发GitHub Actions workflow，build完毕且成功远端会自动出现一个新分支`gh-pages`
+9. 选择`gh-pages`分支作为Page的发布源
 
+## 博客重建过程
 
+### 1 获取到原已建好博客的项目文件
+
+### 2 Windows下安装依赖
+
+下载[RubyInstaller](https://rubyinstaller.org/)并安装
+
+注意版本：Jekyll 4.0.2依赖的Ruby版本**Ruby(>= 2.4, < 3.0)**
+
+### 3 本地安装Jekyll并解决项目依赖
+
+```shell
+// 安装Jekyll
+gem install jekyll
+// 解决依赖问题
+bundle add webrick
+// 本地预览
+bundle exec jekyll s
+```
 
 
 ## 文章头部格式说明
