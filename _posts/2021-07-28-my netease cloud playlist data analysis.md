@@ -7,6 +7,7 @@ tags: [recording]
 comments: true
 categories: recording
 typora-root-url: ..
+
 ---
 
 ## 摘要
@@ -52,19 +53,19 @@ typora-root-url: ..
 
 图1中，次数前5多的曲目标记为金黄色，前20中的其他曲目标记为蓝色，绿色标记为排名第50的曲目。TOP100所有曲目总播放次数达23519次，平均播放次数235.19次，前22首曲子的播放次数超过了平均，包含4首纯音乐。其中7首曲子名字过长被遮挡，见[遮挡曲目](#遮挡曲目)。
 
-<img src="/assets/img/2021-07-28-my netease cloud playlist data analysis/图1次数图.png" alt="次数图" style="zoom: 25%;" />
+<img src="/assets/img/2021-07-28-my netease cloud playlist data analysis/p1.png" alt="次数图" style="zoom: 25%;" />
 
 <center>图1 次数图</center>
 
 从图2中可看出，播放次数呈现长尾分布，其中78%的曲目落在[106, 216]这个区间当中，其中19%落在(216, 545]这个区间中，而只有3%落在区间(600, 2626]中。
 
-![次数分布图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图2次数分布图.png)
+![次数分布图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p2.png)
 
 <center>图2 次数分布图</center>
 
 如图3所示，在这100首曲子中，排名前5的曲目的播放次数占到了总播放次数的25%，前20占到了总数的48%，前50占到了总数的72%。
 
-<img src="/assets/img/2021-07-28-my netease cloud playlist data analysis/图3次数占比图.png" alt="占比图" style="zoom: 80%;" />
+<img src="/assets/img/2021-07-28-my netease cloud playlist data analysis/p3.png" alt="占比图" style="zoom: 80%;" />
 
 <center>图3 次数占比图</center>
 
@@ -72,19 +73,19 @@ typora-root-url: ..
 
 图4中的颜色表示同上。所有曲目总播放时间达1922.7小时，平均播放19.227小时。前28首曲子的播放时间超过了平均，包含2首纯音乐。
 
-<img src="/assets/img/2021-07-28-my netease cloud playlist data analysis/图4总时间图.png" style="zoom:25%;" />
+<img src="/assets/img/2021-07-28-my netease cloud playlist data analysis/p4.png" style="zoom:25%;" />
 
 <center>图4 总时间图</center>
 
 从图5中可看出，时间分布同播放次数分布同相同，也呈现长尾分布，但较次数分布相比更加缓和，其中72%的曲目落在(3, 20]这个区间当中，其中26%落在(20, 80]这个区间中，而只有2%落在区间(80, 210]中。
 
-![时间分布图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图5时间分布图.png)
+![时间分布图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p5.png)
 
 <center>图5 时间分布图</center>
 
 由图6可知，时间占比图同次数占比图类似，但是时间分配不平衡更加明显，100首曲子中，排名前5的曲目的播放次数占到了总播放次数的27%，前20占到了总数的55%，前50占到了总数的81%。
 
-<img src="/assets/img/2021-07-28-my netease cloud playlist data analysis/图6时间占比图.png" style="zoom:80%;" />
+<img src="/assets/img/2021-07-28-my netease cloud playlist data analysis/p6.png" style="zoom:80%;" />
 
 <center>图6 时间占比图</center>
 
@@ -94,11 +95,11 @@ typora-root-url: ..
 
 从播放次数上看，由图7和图8可知，纯音乐的平均次数最高，但是纯音乐总次数占比只有7.9%，而古典音乐总次数占比为87.6%，且平均次数也较高，为237.7次。
 
-![不同风格音乐次数图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图7不同风格音乐次数图.png)
+![不同风格音乐次数图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p7.png)
 
 <center>图7 不同风格音乐次数图</center>
 
-![不同风格音乐总次数占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图8不同风格音乐总次数占比图.png)
+![不同风格音乐总次数占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p8.png)
 
 <center>图8 不同风格音乐总次数占比图</center>
 
@@ -106,11 +107,11 @@ typora-root-url: ..
 
 综合次数和时间两方面可以得出结论，总体上音乐风格偏爱古典音乐，也包含部分纯音乐，流行音乐。
 
-![不同风格音乐时间图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图9不同风格音乐时间图.png)
+![不同风格音乐时间图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p9.png)
 
 <center>图9 不同风格音乐时间图</center>
 
-![不同风格音乐总时间占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图10不同风格音乐总时间占比图.png)
+![不同风格音乐总时间占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p10.png)
 
 <center>图10 不同风格音乐总时间占比图</center>
 
@@ -122,7 +123,7 @@ typora-root-url: ..
 
 如图11，用不用颜色对不同时期的作曲家加以区分：绿色表示巴洛克（Baroque）时期，金黄色表示古典主义（Classical）时期，粉红色表示浪漫主义（Romantic）时期，蓝色表示20世纪（20st century）。23位作曲家作品的时间跨度接近500年。
 
-![作曲家时代总览图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图11作曲家时代总览图.png)
+![作曲家时代总览图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p11.png)
 
 <center>图11 作曲家时代总览图</center>
 
@@ -130,23 +131,23 @@ typora-root-url: ..
 
 由图12可知，依据播放次数来看，Johann Sebastian Bach，Antonio Lucio Vivaldi以及Ludwig van Beethoven的作品听得最多，远超其他作曲家的作品，曲目分别有21首，18首以及11首。
 
-![作曲家次数分布图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图12作曲家次数分布图.png)
+![作曲家次数分布图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p12.png)
 
 <center>图12 作曲家次数分布图</center>
 
 而如图13，依据占比图可知，J.S.Bach的作品在86首古典作品中占24%，Vivaldi和Beethoven的作品分别占21%和13%。这三位作曲家的作品在全部古典作品中总占比58%，而作品出现次数更少的作曲家们的占比约为：4次9%，3次11%，2次9%，1次13%。
 
-![作曲家次数占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图13作曲家次数占比图.png)
+![作曲家次数占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p13.png)
 
 <center>图13 作曲家次数占比图</center>
 
 #### 播放时间分析
 
-![作曲家时间分布图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图14作曲家时间分布图.png)
+![作曲家时间分布图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p14.png)
 
 <center>图14 作曲家时间分布图</center>
 
-![作曲家时间占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图15作曲家时间占比图.png)
+![作曲家时间占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p15.png)
 
 <center>图15 作曲家时间占比图</center>
 
@@ -154,19 +155,19 @@ typora-root-url: ..
 
 根据图14可知，其中巴洛克时期听得作品次数最多，其次是浪漫主义时期，然后是古典主义时期，最后是20世纪作曲家的作品，其中97%分布在巴洛克时期，古典主义时期以及浪漫主义时期。
 
-![作曲家次数占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图16作曲家次数占比图.png)
+![作曲家次数占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p16.png)
 
 <center>图16 作曲家次数占比图</center>
 
 但是据图17可知，虽然浪漫主义时期作品次数只占27%，但是时间占比却达到了48%，而作品次数占比最高的巴洛克时期占比51%，但是总时间却只占比30%，说明浪漫主义时期上榜TOP100的作品虽然次数不如巴洛克时期作品，但是单曲时长比较长。
 
-![作曲家时间占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图17作曲家时间占比图.png)
+![作曲家时间占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p17.png)
 
 <center>图17 作曲家时间占比图</center>
 
 由图18也可以证明浪漫主义时期单曲时长较巴洛克时期相比更长，为6'32''，从这幅图中也能看出，音乐风格倾向于单曲时长较长的曲子，这其中也是因为通常一部作品由几个乐章组成，而单个乐章的长度同流行歌曲相比也非常长。不过其中也不乏一些短小的作品，如巴洛克时期维瓦尔第的四季，李斯特和肖邦的一些较短的钢琴练习曲等。
 
-![作曲家作品平均时间图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图18作曲家作品平均时间图.png)
+![作曲家作品平均时间图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p18.png)
 
 <center>图18 作曲家作品平均时间图</center>
 
@@ -174,7 +175,7 @@ typora-root-url: ..
 
 根据曲目的编制对曲目进行手动划分，得到下图19，不难看出，更偏向于大编制的协奏曲和管弦曲目，solo也占据了一席之地，但是室内乐和solo这样的小编制还是略少与大编制的协奏曲和管弦曲目。
 
-![不同编制曲目占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/图19不同编制曲目占比图.png)
+![不同编制曲目占比图](/assets/img/2021-07-28-my netease cloud playlist data analysis/p19.png)
 
 <center>图19 不同编制曲目占比图</center>
 
