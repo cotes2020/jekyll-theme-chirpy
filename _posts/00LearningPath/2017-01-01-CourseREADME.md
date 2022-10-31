@@ -68,7 +68,7 @@ sleepy....
 | **cloudacademy** ==========                                                                                                                                                                |
 | Certification: `Google Professional Cloud Architect Exam Preparation`                                                                                                                      | ✏️    |
 | **GCP Webpage** ==========                                                                                                                                                                 |
-| [all learning path]((https://cloud.google.com/training#learning-paths))                                                                                                                    |
+| [all learning path](https://cloud.google.com/training#learning-paths)                                                                                                                      |
 
 
 
