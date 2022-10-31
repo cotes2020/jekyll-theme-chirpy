@@ -23,7 +23,7 @@
 # Output: false
 
 
-class Solution(object):
+class Solution:
     def isHappy(self, n):
         # set for all number that wont provide 1
         seen=set()

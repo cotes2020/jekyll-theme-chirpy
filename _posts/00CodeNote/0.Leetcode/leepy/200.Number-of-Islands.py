@@ -1,6 +1,3 @@
-
-
-
 # 200. Number of Islands
 # Medium
 
@@ -89,7 +86,7 @@
 
 
 # ---------------------- solution py ----------------------
-class Solution(object):
+class Solution:
     def numIslands(self, grid):
         if grid is [] or len(grid) == 0:
             return 0

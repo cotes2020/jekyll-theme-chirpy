@@ -28,7 +28,7 @@
 
 
 # Definition for a binary tree node.
-class TreeNode(object):
+class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
@@ -112,7 +112,7 @@ class Solution:
 
 # Runtime: 20 ms, faster than 82.46% of Python online submissions for Symmetric Tree.
 # Memory Usage: 13.9 MB, less than 6.32% of Python online submissions for Symmetric Tree.
-class Solution(object):
+class Solution:
     def traverse(self, root1, root2):
         if (root1, root2) == (None, None):
             return True
@@ -154,7 +154,7 @@ class Solution(object):
 # Runtime: 22 ms, faster than 60.46% of Python online submissions for Symmetric Tree.
 # Memory Usage: 13.7 MB, less than 44.59% of Python online submissions for Symmetric Tree.
 
-class Solution(object):
+class Solution:
     def isSymmetric(self, root):
         # edge cases
         if not root.left or not root.right:

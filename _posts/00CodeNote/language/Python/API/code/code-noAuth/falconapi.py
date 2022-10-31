@@ -2,7 +2,7 @@ import falcon
 import json
 
 
-class CompaniesResource(object):
+class CompaniesResource:
     companies = [{'id': 1, 'name': 'Company One'},
                  {'id': 2, 'name': 'Company Two'}]
 

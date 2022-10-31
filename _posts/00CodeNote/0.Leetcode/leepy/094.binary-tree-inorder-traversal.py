@@ -40,14 +40,14 @@
 
 
 # Definition for a binary tree node.
-class TreeNode(object):
+class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
 
-class Solution(object):
+class Solution:
 
     # Runtime: 24 ms, faster than 21.04% of Python online submissions for Binary Tree Inorder Traversal.
     # Memory Usage: 13.4 MB, less than 76.61% of Python online submissions for Binary Tree Inorder Traversal.
@@ -67,7 +67,7 @@ class Solution(object):
 # Memory Usage: 13.6 MB, less than 19.47% of Python online submissions for Binary Tree Inorder Traversal.
 
 
-class Solution(object):
+class Solution:
     def __init__(self):
         self.final = []
 

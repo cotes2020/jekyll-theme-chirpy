@@ -1,5 +1,3 @@
-
-
 # 206. Reverse Linked List
 
 # Reverse a singly linked list.
@@ -22,7 +20,7 @@
 # solution 1 ----------------------------- linea 3 point
 # Time complexity = O(n)
 # Space compexity - O(1)
-class Solution(object):
+class Solution:
     def reverseList(self, head):
         if head is None:
             return head

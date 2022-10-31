@@ -1,4 +1,3 @@
-
 # 21. Merge Two Sorted Lists
 # Easy
 # Merge two sorted linked lists and return it as a sorted list. The list should be made by splicing together the nodes of the first two lists.
@@ -21,7 +20,7 @@
 # -100 <= Node.val <= 100
 # Both l1 and l2 are sorted in non-decreasing order.
 
-class ListNode(object):
+class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None

@@ -1,5 +1,3 @@
-
-
 # =============== 有序数组去重
 from collections import OrderedDict
 from typing import List
@@ -386,7 +384,7 @@ class Solution:
 # merging them into one sorted list:
 # 1->1->2->3->4->4->5->6
 
-class Solution(object):
+class Solution:
 
     def mergeKLists(self, lists):
         if not lists: return None

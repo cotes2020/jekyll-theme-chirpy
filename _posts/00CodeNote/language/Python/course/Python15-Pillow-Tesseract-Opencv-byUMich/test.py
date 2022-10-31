@@ -1,5 +1,3 @@
-
-
 from PIL import Image
 im = Image.open('./img1.png')
 # Lets display the image inline
