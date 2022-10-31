@@ -24,11 +24,11 @@ def bf(message):
                 if num < 0:
                     num = num + len(LETTERS)
                 translated = translated + LETTERS[num]
-                print('Find!! #%s: %s' % (key, translated))
+                print('Find!! #{}: {}'.format(key, translated))
             #   break
             else:
                 translated = translated + symbol
-        print('Hacking key #%s: %s' % (key, translated))
+        print('Hacking key #{}: {}'.format(key, translated))
 
 
 message = 'GIEWIVrGMTLIVrHIQS'  # encrypted message

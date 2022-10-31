@@ -53,7 +53,7 @@ class GraphyAL:
     def addVertex(self, key):
         if key not in self.vertList.keys():
             print(
-                'Vertex {0} not present in Graph, adding it automatically.'.format(key))
+                'Vertex {} not present in Graph, adding it automatically.'.format(key))
             newVertex = Vertex(key)
             self.vertList[key] = newVertex
             self.numVertices += 1

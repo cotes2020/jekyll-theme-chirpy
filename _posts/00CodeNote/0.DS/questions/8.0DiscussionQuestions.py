@@ -63,7 +63,7 @@ class GraphyAM:
 
     def getIndex(self, key):
         if key not in self.vertList.keys():
-            print('Vertex {0} not present in Graph.'.format(key))
+            print('Vertex {} not present in Graph.'.format(key))
             index = -1
         else:
             newVertex = self.vertList[key]
@@ -72,7 +72,7 @@ class GraphyAM:
     # {"id":vertex}
     def addVertex(self, key):
         if key not in self.vertList.keys():
-            print('Vertex {0} not present in Graph, adding it automatically.'.format(key))
+            print('Vertex {} not present in Graph, adding it automatically.'.format(key))
             newVertex = Vertex(key)
             self.vertList[key] = newVertex
             self.numVertices += 1
@@ -180,7 +180,7 @@ class GraphyAL:
     # {"id":vertex}
     def addVertex(self, key):
         if key not in self.vertList.keys():
-            print('Vertex {0} not present in Graph, adding it automatically.'.format(key))
+            print('Vertex {} not present in Graph, adding it automatically.'.format(key))
             newVertex = Vertex(key)
             self.vertList[key] = newVertex
             self.numVertices += 1
