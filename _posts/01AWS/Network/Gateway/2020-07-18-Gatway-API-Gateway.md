@@ -12,7 +12,7 @@ image:
   - [Security](#security)
     - [Application Firewall](#application-firewall)
     - [Resource Policy](#resource-policy)
-    - [AuthZ](#authz)
+    - [Authorization](#authorization)
 
 ---
 
@@ -114,7 +114,8 @@ Security with API Gateway falls into three major buckets
 - use this to white/black list client IP ranges or allow AWS accounts and AWS principals to access your API.
 
 
-### AuthZ
+### Authorization
+
 - IAM:
   - This AuthZ option requires clients to sign requests with the AWS v4 signing process.
   - The associated IAM role or user must have permissions to perform the `execute-api:Invoke` action against the API.
