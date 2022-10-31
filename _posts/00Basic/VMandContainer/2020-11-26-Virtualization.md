@@ -72,7 +72,7 @@ However
    3. a dependency upgrade for one application might cause another to simply stop working.
 
 solve this problem with:
-1. rigorous software engineering policies.  
+1. rigorous software engineering policies.
    - lock down the dependencies that no application is allowed to make changes,
    - but this leads to new problems because dependencies do need to be upgraded occasionally.
 2. add integration tests to ensure that applications work.
@@ -375,12 +375,12 @@ $ virt-install --name my-ubunry
                --memory 2014
                --disk size=60, format=QCOW2,
                                path=/var/lib/libvirt/images/my-ubuntu.qcow2 # default
-               --cdrom ~/Downloads/ubuntu.iso                     
+               --cdrom ~/Downloads/ubuntu.iso
 $ virt-install --name my-ubunry
                --memory 2014
                --disk size=60, format=QCOW2,
                                path=/var/lib/libvirt/images/my-ubuntu.qcow2 # default
-               --cdrom ~/Downloads/ubuntu.iso  
+               --cdrom ~/Downloads/ubuntu.iso
 ```
 
 ![Screen Shot 2020-11-28 at 22.27.13](https://i.imgur.com/VloX38m.png)

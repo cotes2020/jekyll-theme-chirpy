@@ -50,7 +50,7 @@ visualize [AWS CloudTrail](http://aws.amazon.com/cloudtrail) events, near real t
 3. For **Aggregation** type in the X-axis, choose **Terms**.
 4. For **Field**, search for and choose _eventName.keyword_.
 5. For **Order by**, choose **Metric**: **Number of Events**.
- 
+
 ![pic](https://d2908q01vomqb2.cloudfront.net/972a67c48192728a34979d9a35164c1295401b71/2020/08/11/dashboard-2-1024x525.png)
 
 
@@ -63,12 +63,12 @@ create a time series graph to check for the different _errorCode_ errors that Cl
 1. choose **TSVP**.
 4. For **Group by**, choose **Terms**.
 5. For **By**, choose **errorCode.keyword**.
- 
+
 The following screenshot shows a graph with the occurrences of ResourceNotFound errors in the last hour.
 
 ![pic](https://d2908q01vomqb2.cloudfront.net/972a67c48192728a34979d9a35164c1295401b71/2020/08/11/dashboard-3-1024x525.png)
 
- 
+
 
 
 ---
@@ -80,7 +80,7 @@ In this solution:
 - Because the cost of the Amazon ES cluster increases as log data grows, you may want to use cheaper storage tiers within the Amazon ES leveraging the [UltraWarm](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/ultrawarm.html) feature.
 
 
-**Solution Overview**  
+**Solution Overview**
 - got the <font color=red> CloudTrail events </font>
 - send the CloudTrail events to <font color=red> Amazon CloudWatch Logs </font>
 - CloudWatch Logs trigger <font color=red> Lambda function </font> to send the Trail Events to an Amazon Elasticsearch Index.
@@ -90,11 +90,11 @@ In this solution:
 
 ![pic](https://d2908q01vomqb2.cloudfront.net/972a67c48192728a34979d9a35164c1295401b71/2020/08/11/Cloudtrail_Kibana.png)
 
-**Prerequisites**   
+**Prerequisites**
 - An AWS account
 - An IAM user with access to AWS resources used in this solution
 
-**High-level approach**  
+**High-level approach**
 - CloudTrail is enabled on the AWS account when you create it.
 - use the **Event history** page on the CloudTrail console
   - to view, search, download, archive, analyze, and respond
@@ -121,10 +121,10 @@ To implement this visualization solution using Kibana, you complete the followin
      - **SSE-KMS encryption** – Use an existing key or create one based on the needs
 
    - can create up to five trails for a Region.
-   - After create a trail, CloudTrail automatically starts logging API calls and related events in the account to the Amazon S3 bucket that you specify.  
+   - After create a trail, CloudTrail automatically starts logging API calls and related events in the account to the Amazon S3 bucket that you specify.
 
    - To stop logging, turn off logging for the trail or delete it. 
-   - set up a trail that delivers a [single copy of management events in each Region free of charge](https://aws.amazon.com/cloudtrail/pricing/).  
+   - set up a trail that delivers a [single copy of management events in each Region free of charge](https://aws.amazon.com/cloudtrail/pricing/).
 
 
 2. CloudTrail events > CloudWatch log.
@@ -142,14 +142,14 @@ To implement this visualization solution using Kibana, you complete the followin
 
 ### Creating an Amazon ES domain (Elasticsearch cluster)
 
-Placing the Amazon ES domain within a VPC 
+Placing the Amazon ES domain within a VPC
 - provides inherent strong layer of security
 - recommended for production clusters.
 
 
 search the Elasticsearch index using Kibana
 - configure an SSH tunnel to access Kibana from outside the VPC.
-- can also use an NGINX proxy or client VPN to access Kibana from outside a VPC, along with [Amazon Cognito](http://aws.amazon.com/cognito) authentication.  
+- can also use an NGINX proxy or client VPN to access Kibana from outside a VPC, along with [Amazon Cognito](http://aws.amazon.com/cognito) authentication.
   1. Create an Amazon Cognito user pool and identity pool.
   2. Create an EC2 instance in a public subnet in the same VPC that the Elasticsearch domain is in.
   3. Use a browser add-on, such as FoxyProxy, to configure a SOCKS proxy.
@@ -160,7 +160,7 @@ search the Elasticsearch index using Kibana
 
 ### Creating an Amazon Cognito user pool and identity pool
 
-create the Amazon ES production cluster beforehand and modify the access policy, 
+create the Amazon ES production cluster beforehand and modify the access policy,
 
 When creating the Amazon ES domain, complete the following steps:
 
@@ -175,9 +175,9 @@ When creating the Amazon ES domain, complete the following steps:
     1. Select VPC access.
     2. Select the VPC where you want to create the cluster and associated subnets.
     3. Select the security group to use for the Amazon ES domain
-9. if want to use fine-grained access control, powered by Open Distro for Elasticsearch. 
+9. if want to use fine-grained access control, powered by Open Distro for Elasticsearch.
     - [Fine-Grained Access Control in Amazon Elasticsearch Service](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/fgac.html).
-10. Enable Amazon Cognito authentication and choose the user pool and identity pool 
+10. Enable Amazon Cognito authentication and choose the user pool and identity pool
     - ![pic](https://d2908q01vomqb2.cloudfront.net/972a67c48192728a34979d9a35164c1295401b71/2020/08/11/Cognito_Authorization-1024x463.png)
 11. Amazon ES domain access policy: access policy similar to the following and update the placeholders:
 
@@ -229,7 +229,7 @@ After you complete these steps, create an SSH tunnel to access the Kibana dashbo
    - Replace _mykeypair.pem_ with the key pair for the EC2 instance
    - replace change _public\_dns\_name_ with the public DNS of the _tunnel\_ec2_ EC2 instance.                         
    - `ssh -i "mykeypair.pem" ec2-user@public_dns_name -ND 8157`
-2. Enter the Kibana endpoint in the browser. 
+2. Enter the Kibana endpoint in the browser.
    - The Amazon Cognito login page for Kibana appears.
 3. Use the Amazon Cognito user ID and password to log in to the dashboard.
 
@@ -240,7 +240,7 @@ After you complete these steps, create an SSH tunnel to access the Kibana dashbo
 ### Streaming CloudWatch Logs data to Amazon ES
 
 - the Amazon ES cluster is ready to use
-- configure a CloudWatch Logs log group 
+- configure a CloudWatch Logs log group
   - stream the data it receives to the Amazon ES cluster in near-real time through a CloudWatch Logs subscription.
   - [Streaming CloudWatch Logs Data to Amazon Elasticsearch Service](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_ES_Stream.html).
 - For **Log format**, choose **AWS CloudTrail**.
@@ -269,16 +269,16 @@ access the Kibana endpoint shown in the Amazon ES cluster overview and create a 
 
 1. On the Amazon ES console, choose the domain.
 2. On the Overview page, copy the Kibana endpoint.
-3. In the web browser, choose Use proxy Kibana Proxy for all URLs to enable FoxyProxy. 
+3. In the web browser, choose Use proxy Kibana Proxy for all URLs to enable FoxyProxy.
 4. When prompted, enter the Amazon Cognito user name and password to log in to Kibana.
 5. On the Add Data to Kibana page
-   - choose Use Elasticsearch data, 
+   - choose Use Elasticsearch data,
    - and connect to the Amazon ES index.
    - ![pic](https://d2908q01vomqb2.cloudfront.net/972a67c48192728a34979d9a35164c1295401b71/2020/08/11/Kibana-Fornt-Page.png)
 6. When you’re connected, enter _cwl-\*_ as the index pattern.
 7. Enter _eventTime_ as the time filter field.
 
-8. now go to the **Discover** tab 
+8. now go to the **Discover** tab
    - to add specific fields as filters and search for them. In the following screenshot, I selected fields specific to error events logged in CloudTrail to find the issues.
 
 ![pic](https://d2908q01vomqb2.cloudfront.net/972a67c48192728a34979d9a35164c1295401b71/2020/08/11/dashboard-1-1024x487.png)

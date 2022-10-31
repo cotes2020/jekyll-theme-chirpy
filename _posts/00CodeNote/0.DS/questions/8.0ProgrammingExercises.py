@@ -11,19 +11,19 @@ class Vertex:
         self.color = 'white'
         self.distance = 0
         self.pred = None
-    
+
     def __str__(self) -> str:
         return str(self.id) + ' connectedTo: ' + str([x.id for x in self.connectedTo])
 
     def addNeighbor(self, nbr, weight=0):
         self.connectedTo[nbr] = weight
-    
+
     def getConnections(self):
         return self.connectedTo.keys()
 
     def getId(self):
         return self.id
-    
+
     def getWeight(self, nbr):
         return self.connectedTo[nbr]
 
@@ -33,14 +33,14 @@ class Vertex:
 
     def getColor(self):
         return self.color
-    
+
     def setDistance(self, number):
         self.distance = number
         return self.distance
-    
+
     def getDistance(self):
         return self.distance
-    
+
     def setPred(self, pred):
         self.pred = pred
         return self.pred
@@ -61,36 +61,36 @@ class GraphyAM:
 
     def getIndex(self, key):
         if key not in self.vertList.keys():
-            print("Vertex {0} not present in Graph.".format(key))
+            print('Vertex {0} not present in Graph.'.format(key))
             index = -1
         else:
             newVertex = self.vertList[key]
         return newVertex
-    
+
     # {"id":vertex}
     def addVertex(self, key):
         if key not in self.vertList.keys():
-            print("Vertex {0} not present in Graph, adding it automatically.".format(key))
+            print('Vertex {0} not present in Graph, adding it automatically.'.format(key))
             newVertex = Vertex(key)
             self.vertList[key] = newVertex
             self.numVertices += 1
         else:
             newVertex = self.vertList[key]
         return newVertex
-    
+
     def getVertex(self, n):
         if n in self.vertList:
             return self.vertList[n]
         else: return None
-    
+
     def getVertices(self):
         # returns the names of all of the vertices in the graph
         return self.vertList.keys()
-    
+
     def addEdge(self, f,t, weight=0):
-        if f not in self.vertList: 
+        if f not in self.vertList:
             newVertex=self.addVertex(f)
-        if t not in self.vertList: 
+        if t not in self.vertList:
             newVertex=self.addVertex(t)
         # action on the Vertex property
         fvert=self.getVertex(f)
@@ -107,25 +107,25 @@ class GraphyAM:
             if tvert.id == key:
                 indexT = n
             n+=1
-        print("indexF", indexF, "indexT", indexT)
+        print('indexF', indexF, 'indexT', indexT)
         self.am[indexT][indexF] = weight
-    
+
     def print_graph(self):
-        print("\n")
+        print('\n')
         name_str = ''
         for key in self.vertList.keys():
-            name_str += key + ' ,' 
-        name_list = name_str.replace(" ,", "")
+            name_str += key + ' ,'
+        name_list = name_str.replace(' ,', '')
         print(name_list)
         row = 0
-        print("  " , name_str)
+        print('  ' , name_str)
         for i in self.am:
             # print(row)
             if row < self.numVertices:
                 print(name_list[row], i)
                 row += 1
             else:
-                print("0", i)
+                print('0', i)
 
 class GraphyAL:
     def __init__(self) -> None:
@@ -137,11 +137,11 @@ class GraphyAL:
 
     def __contains__(self, n):
         return n in self.vertList
-    
+
     # {"id":vertex}
     def addVertex(self, key):
         if key not in self.vertList.keys():
-            print("Vertex {0} not present in Graph, adding it automatically.".format(key))
+            print('Vertex {0} not present in Graph, adding it automatically.'.format(key))
             newVertex = Vertex(key)
             self.vertList[key] = newVertex
             self.numVertices += 1
@@ -151,35 +151,35 @@ class GraphyAL:
         if n in self.vertList.keys():
             return n
         else: return None
-    
+
     def getVertexitem(self, n):
         if n in self.vertList.keys():
             return self.vertList[n]
         else: return None
-    
+
     def getVertices(self):
         # returns the names of all of the vertices in the graph
         return self.vertList.keys()
-    
+
     def addEdge(self, f,t, weight=0):
-        if f not in self.vertList.keys(): 
+        if f not in self.vertList.keys():
             fvert = self.addVertex(f)
-        if t not in self.vertList.keys(): 
+        if t not in self.vertList.keys():
             tvert = self.addVertex(t)
         fvert = self.vertList[f]
         tvert = self.vertList[t]
         fvert.addNeighbor(tvert, weight)
-    
+
     def print_list(self):
         print(self.vertList.keys())
 
-        print("From    To      Cost")
+        print('From    To      Cost')
 
         for id in self.vertList.keys():
             vert = self.vertList[id]
             connectList = vert.connectedTo
             for i in connectList:
-                print(id, "     ", i.id, "     ", vert.getWeight(i))
+                print(id, '     ', i.id, '     ', vert.getWeight(i))
 
 
 
@@ -214,7 +214,7 @@ def dfs_topo(g, vertextargetid):
 # g.addEdge('2', '3', 7)
 # g.addEdge('3', '4', 7)
 # g.addEdge('4', '5', 7)
-# g.addEdge('5', '6', 13) 
+# g.addEdge('5', '6', 13)
 # g.print_list()
 # print(g.vertList)
 
@@ -255,7 +255,7 @@ def dfs_scc(g, vertextargetid):
 # g.addEdge('4', '5', 7)
 # g.addEdge('6', '4', 5)
 # g.addEdge('1', '6', 5)
-# g.addEdge('5', '6', 13) 
+# g.addEdge('5', '6', 13)
 # dfs_topo(g, '1')
 
 
@@ -270,7 +270,7 @@ def run(g):
     articulationPoiny_list = [False] * g.numVertices
     visitTime = [-1] * g.numVertices
     lowTime = [-1] * g.numVertices
-    visited_list = [] 
+    visited_list = []
     time = 0
     for i in range(g.numVertices):
         if visitTime[i] == -1:
@@ -293,7 +293,7 @@ def dfs_scc(g, i, time, visitTime, lowTime, articulationPoiny_list, visited_list
         if v not in visited_list:
             i += 1
             dfs_scc(g, i, time, visitTime, lowTime, articulationPoiny_list, visited_list)
-            v.scc_parent = vertex_s 
+            v.scc_parent = vertex_s
             # elif:
             #     # meet back edge
             #             if v.parent != vertex_s:
@@ -314,7 +314,7 @@ g.addEdge('3', '6', 10)
 g.addEdge('4', '5', 7)
 g.addEdge('6', '4', 5)
 g.addEdge('1', '6', 5)
-g.addEdge('5', '6', 13) 
+g.addEdge('5', '6', 13)
 # print(g.numVertices)
 run(g)
 
@@ -325,27 +325,27 @@ run(g)
 # Python program to find strongly connected components in a given
 # directed graph using Tarjan's algorithm (single DFS)
 #Complexity : O(V+E)
-  
+
 from collections import defaultdict
-  
+
 #This class represents an directed graph
 # using adjacency list representation
 class Graph:
-  
+
     def __init__(self,vertices):
         #No. of vertices
         self.V= vertices
-         
+
         # default dictionary to store graph
         self.graph = defaultdict(list)
-         
+
         self.Time = 0
-  
+
     # function to add an edge to graph
     def addEdge(self,u,v):
         self.graph[u].append(v)
-         
-  
+
+
     '''A recursive function that find finds and prints strongly connected
     components using DFS traversal
     u --> The vertex to be visited next
@@ -359,28 +359,28 @@ class Graph:
                   a node is in stack
     '''
     def SCCUtil(self,u, low, disc, stackMember, st):
-        print("-----------------u:", u)
+        print('-----------------u:', u)
         # Initialize discovery time and low value
         disc[u] = self.Time
         low[u] = self.Time
         self.Time += 1
         stackMember[u] = True
         st.append(u)
- 
+
         # Go through all vertices adjacent to this
         for v in self.graph[u]:
-            print("---------v:", v)
-             
+            print('---------v:', v)
+
             # If v is not visited yet, then recur for it
             if disc[v] == -1 :
-             
+
                 self.SCCUtil(v, low, disc, stackMember, st)
- 
+
                 # Check if the subtree rooted with v has a connection to
                 # one of the ancestors of u
                 # Case 1 (per above discussion on Disc and Low value)
                 low[u] = min(low[u], low[v])
-                         
+
             # elif stackMember[v] == True:
             #     '''Update low value of 'u' only if 'v' is still in stack
             #     (i.e. it's a back edge, not cross edge).
@@ -388,22 +388,22 @@ class Graph:
             #     low[u] = min(low[u], disc[v])
             low[u] = min(low[u], disc[v])
 
-        print("last check")
+        print('last check')
         # head node found, pop the stack and print an SCC
         w = -1 #To store stack extracted vertices
-        print("---------u:", u, "low[u]:", low[u], "disc[u]:", disc[u])
+        print('---------u:', u, 'low[u]:', low[u], 'disc[u]:', disc[u])
         if low[u] == disc[u]:
             while w != u:
                 w = st.pop()
                 print(w),
                 stackMember[w] = False
-                 
-            print("")
-             
+
+            print('')
+
     #The function to do DFS traversal.
     # It uses recursive SCCUtil()
     def SCC(self):
-  
+
         # Mark all the vertices as not visited
         # and Initialize parent and visited,
         # and ap(articulation point) arrays
@@ -411,8 +411,8 @@ class Graph:
         low = [-1] * (self.V)
         stackMember = [False] * (self.V)
         st =[]
-         
- 
+
+
         # Call the recursive helper function
         # to find articulation points
         # in DFS tree rooted with vertex 'i'
@@ -427,7 +427,7 @@ g1.addEdge(0, 2)
 g1.addEdge(2, 1)
 g1.addEdge(0, 3)
 g1.addEdge(3, 4)
-print("SSC in first graph ")
+print('SSC in first graph ')
 g1.SCC()
 
 

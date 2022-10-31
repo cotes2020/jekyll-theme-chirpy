@@ -2,7 +2,7 @@ package BT;
 
 
 public class BSTLowestAncestor {
-    
+
     // public void bstLowestAncestor(Node node, int key1, int key2) {
     //     if(node==null) {
     //         return;

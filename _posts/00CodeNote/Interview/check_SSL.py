@@ -1,16 +1,17 @@
 """ Alibaba Cloud Function Compute Example """
 
-import    sys
-import    datetime
-import    socket
-import    json
-import    ssl
-import    time
-import    myemail
-import    myhtml
+import sys
+import datetime
+import socket
+import json
+import ssl
+import time
+import myemail
+import myhtml
 
 PROGRAM_MODE_CMDLINE = 0    # The program operates from the command line
-PROGRAM_MODE_ACS_FUNC = 1    # The program operates as a Alibaba Cloud Function Compute function
+# The program operates as a Alibaba Cloud Function Compute function
+PROGRAM_MODE_ACS_FUNC = 1
 
 g_program_mode = PROGRAM_MODE_ACS_FUNC
 #g_program_mode = PROGRAM_MODE_CMDLINE
@@ -19,15 +20,17 @@ g_days_left = 14        # Warn if a certificate will expire in less than this nu
 
 g_no_send = False        # if set, don't actually send an email. This is used for debugging
 
-g_only_send_notices = False # If set, only send emails if a certificate will expire soon or on error
+# If set, only send emails if a certificate will expire soon or on error
+g_only_send_notices = False
 
-g_email_required = False    # This is set during processing if a warning or error was detected
+# This is set during processing if a warning or error was detected
+g_email_required = False
 
 g_hostnames = [
-    "neoprime.xyz",
-    "api.neoprime.xyz",
-    "cdn.neoprime.xyz",
-    "www.neoprime.xyz",
+    'neoprime.xyz',
+    'api.neoprime.xyz',
+    'cdn.neoprime.xyz',
+    'www.neoprime.xyz',
 ]
 
 email_params = {
@@ -50,14 +53,13 @@ dm_account = {
 dm_account['Debug'] = 0
 dm_account['Account'] = ''
 dm_account['Alias'] = ''
-dm_account['host'] = "dm.ap-southeast-1.aliyuncs.com"
-dm_account['url'] = "https://dm.ap-southeast-1.aliyuncs.com/"
-
+dm_account['host'] = 'dm.ap-southeast-1.aliyuncs.com'
+dm_account['url'] = 'https://dm.ap-southeast-1.aliyuncs.com/'
 
 
 def add_row(body, domain, status, expires, issuerName, names, flag_hl):
     """ Add a row to the HTML table """
-    #build the url
+    # build the url
     url = '<a href="https://' + domain + '">' + domain + '</a>'
     # begin a new table row
     if flag_hl is False:
@@ -88,31 +90,29 @@ def send(account, credentials, params):
     myemail.sendEmail(credentials, account, params, g_no_send)
 
 
-
 def ssl_get_cert(hostname):
-    """ 
+    """
     This function returns an SSL certificate from a host
-    This SSL certificate contains information about the certificate 
+    This SSL certificate contains information about the certificate
     such as the domain name, and expiration date.
     """
     context = ssl.create_default_context()
-    conn = context.wrap_socket( socket.socket(socket.AF_INET),
-                                server_hostname=hostname)
+    conn = context.wrap_socket(socket.socket(socket.AF_INET),
+                               server_hostname=hostname)
     # 3 second timeout because Function Compute has runtime limitations
     conn.settimeout(3.0)
     try:
         conn.connect((hostname, 443))
     except Exception as ex:
-        print("{}: Exception: {}".format(hostname, ex), file=sys.stderr)
+        print('{}: Exception: {}'.format(hostname, ex), file=sys.stderr)
         return False, str(ex)
     host_ssl_info = conn.getpeercert()
     return host_ssl_info, ''
 
 
-
 def get_ssl_info(host):
-    """ 
-    This function retrieves the SSL certificate for host 
+    """
+    This function retrieves the SSL certificate for host
     If we receive an error, retry up to three times waiting 10 seconds each time.
     """
     retry = 0
@@ -161,7 +161,6 @@ def get_ssl_issuer_name(ssl_info):
     return issuerName
 
 
-
 def get_ssl_subject_alt_names(ssl_info):
     """ Return the Subject Alt Names """
     altNames = ''
@@ -175,10 +174,9 @@ def get_ssl_subject_alt_names(ssl_info):
     return altNames
 
 
-
 def process_hostnames(msg_body, hostnames):
-    """ 
-    Process the SSL certificate for each hostname 
+    """
+    Process the SSL certificate for each hostname
     """
 
     # pylint: disable=global-statement
@@ -196,28 +194,29 @@ def process_hostnames(msg_body, hostnames):
             g_email_required = True
             continue
 
-        #print(ssl_info)
+        # print(ssl_info)
         issuerName = get_ssl_issuer_name(ssl_info)
         altNames = get_ssl_subject_alt_names(ssl_info)
-        l_expires = datetime.datetime.strptime(ssl_info['notAfter'], ssl_date_fmt)
+        l_expires = datetime.datetime.strptime(
+            ssl_info['notAfter'], ssl_date_fmt)
         remaining = l_expires - datetime.datetime.utcnow()
         if remaining < datetime.timedelta(days=0):
             # cert has already expired - uhoh!
-            cert_status = "Expired"
+            cert_status = 'Expired'
             f_expired = True
             g_email_required = True
         elif remaining < datetime.timedelta(days=g_days_left):
             # expires sooner than the buffer
-            cert_status = "Time to Renew"
+            cert_status = 'Time to Renew'
             f_expired = True
             g_email_required = True
         else:
             # everything is fine
-            cert_status = "OK"
+            cert_status = 'OK'
             f_expired = False
-        msg_body = add_row(msg_body, host, cert_status, str(l_expires), issuerName, altNames, f_expired)
+        msg_body = add_row(msg_body, host, cert_status, str(
+            l_expires), issuerName, altNames, f_expired)
     return msg_body
-
 
 
 def main_cmdline():
@@ -235,7 +234,7 @@ def main_cmdline():
         sys.exit(1)
 
     now = datetime.datetime.utcnow()
-    date = now.strftime("%a, %d %b %Y %H:%M:%S GMT")
+    date = now.strftime('%a, %d %b %Y %H:%M:%S GMT')
 
     msg_body = ''
     msg_body = myhtml.build_body_top()
@@ -250,9 +249,8 @@ def main_cmdline():
     msg_body = myhtml.build_body_bottom(msg_body)
     email_params['Body'] = msg_body
     email_params['BodyText'] = ''
-    #print(msg_body)
+    # print(msg_body)
     send(dm_account, cred, email_params)
-
 
 
 def main_acs_func(event, context):
@@ -268,7 +266,7 @@ def main_acs_func(event, context):
     cred['securityToken'] = context.credentials.securityToken
 
     now = datetime.datetime.utcnow()
-    date = now.strftime("%a, %d %b %Y %H:%M:%S GMT")
+    date = now.strftime('%a, %d %b %Y %H:%M:%S GMT')
 
     msg_body = ''
     msg_body = myhtml.build_body_top()
@@ -283,23 +281,20 @@ def main_acs_func(event, context):
     msg_body = myhtml.build_body_bottom(msg_body)
     email_params['Body'] = msg_body
     email_params['BodyText'] = ''
-    #print(msg_body)
+    # print(msg_body)
     send(dm_account, cred, email_params)
     return msg_body
 
 
-
-
-
 def handler(event, context):
     """ This is the Function Compute entry point """
-    body = ""
+    body = ''
     body = main_acs_func(event, context)
     res = {
         'isBase64Encoded': False,
         'statusCode': 200,
         'headers': {
-            'content-type' : 'text/html'
+            'content-type': 'text/html'
         },
         'body': body
     }

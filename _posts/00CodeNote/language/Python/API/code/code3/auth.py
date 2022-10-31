@@ -10,7 +10,7 @@ auth = Blueprint('auth', __name__)
 @auth.route('/adduser', methods=['GET'])
 def adduser():
    # return render_template('adduser.html')
-   return make_response("Add user Page", 200)
+   return make_response('Add user Page', 200)
 # http GET http://127.0.0.1:5000/adduser
 
 
@@ -26,11 +26,11 @@ def adduser_post():
    # check the username, usery the database, get the first one
    user = User.query.filter_by(db_username=username).first()
    if user:
-      print("username already Exists")
-      return make_response(jsonify({"status": 400, "Add user":False, "Error Message": "username not available or already exsisted"}), 400)
+      print('username already Exists')
+      return make_response(jsonify({'status': 400, 'Add user':False, 'Error Message': 'username not available or already exsisted'}), 400)
    new_user = User(
-      db_username=username, 
-      db_flname=fLname, 
+      db_username=username,
+      db_flname=fLname,
       db_password=generate_password_hash(password, method='sha256'),
       db_engine=engine
       )
@@ -38,7 +38,7 @@ def adduser_post():
    db.session.commit()
    # return render_template('adduser.html')
    # return redirect(url_for('auth.login'))
-   return make_response(jsonify({"status": 200, "new_user": content}), 201)
+   return make_response(jsonify({'status': 200, 'new_user': content}), 201)
 # echo '{"username":"a",  "Firstname Lastname":"x", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/adduser
 # echo '{"username":"ab",  "Firstname Lastname":"doubleuser", "password":"123",  "Mother’s Favorite Search Engine":"c"}' | http POST http://127.0.0.1:5000/adduser
 
@@ -48,7 +48,7 @@ def adduser_post():
 @auth.route('/login', methods=['GET'])
 def login():
    # return render_template('login.html')
-   return make_response("User Login Page", 200)
+   return make_response('User Login Page', 200)
 # http GET http://127.0.0.1:5000/login
 
 @auth.route('/login', methods=['POST'])
@@ -62,16 +62,16 @@ def login_post():
    if user and check_password_hash(user.db_password, password):
       # login_user(user, remember=remember)
       login_user(user)
-      username = user.db_username 
+      username = user.db_username
       flname = user.db_flname
       engine = user.db_engine
-      userinfo = {"username": username, "Firstname Lastname":flname, "Mother’s Favorite Search Engine" :engine}
+      userinfo = {'username': username, 'Firstname Lastname':flname, 'Mother’s Favorite Search Engine' :engine}
       # return redirect(url_for('main.profile'))
-      return make_response(jsonify({"status": 200, "Sucessful login": True, "current_user.is_authenticated": current_user.is_authenticated, "userinfo": userinfo}), 200)
+      return make_response(jsonify({'status': 200, 'Sucessful login': True, 'current_user.is_authenticated': current_user.is_authenticated, 'userinfo': userinfo}), 200)
    # wrong username and passwd:
-   else: 
+   else:
       # return redirect("auth.login")
-      return make_response(jsonify({"status": 401,"reason": "Username or Password Error"}), 401)   
+      return make_response(jsonify({'status': 401,'reason': 'Username or Password Error'}), 401)
 # echo '{"username":"a", "password":"123"}' | http POST http://127.0.0.1:5000/login
 # echo '{"username":"a", "password":"wrongpasswd"}' | http POST http://127.0.0.1:5000/login
 
@@ -81,7 +81,7 @@ def login_post():
 # @login_required
 def logout():
    logout_user()
-   return make_response(jsonify({"status": 200, "Session": "Sucessful logout"}), 200)
+   return make_response(jsonify({'status': 200, 'Session': 'Sucessful logout'}), 200)
    # if current_user.is_authenticated:
    #    logout_user()
    #    # return redirect('main.index')

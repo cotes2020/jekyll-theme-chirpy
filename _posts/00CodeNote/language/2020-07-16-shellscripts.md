@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [00CodeNote]
 tags: [Script]
 math: true
-image: 
+image:
 ---
 
 
@@ -1445,9 +1445,9 @@ causes a block of code to be executed over and over, `as long as the exit status
 - example of a program that counts from zero to nine:
 
       #!/bin/bash
-      number=0                           
-      while [ "$number" -lt 10 ]; do     
-          echo "Number = $number"         
+      number=0
+      while [ "$number" -lt 10 ]; do
+          echo "Number = $number"
           number=$((number + 1))
       done
 
@@ -1737,7 +1737,7 @@ many programs, particularly ones from the GNU Project, support both short and lo
 Here is the code we will use to process our command line:
 
 ```py
-interactive=  
+interactive=
 filename=~/sysinfo_page.html
 
 while [ "$1" != "" ]; do

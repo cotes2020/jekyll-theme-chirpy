@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Stack;
 
 public class BTTraversalLevelSpecialOrder {
-    
+
     // Two stack to print in spiral way
     public void BTTraversalLevelSpecialOrderwithTwoStack(Node node) {
         if(node == null) {
@@ -93,7 +93,7 @@ public class BTTraversalLevelSpecialOrder {
             while (levelcount != 0) {
                 current = dq.pollFirst();
                 System.out.print(current.data + " ");
-                if(current.left != null){ 
+                if(current.left != null){
                     dq.offerLast(current.left);
                     currentcount ++;
                 }

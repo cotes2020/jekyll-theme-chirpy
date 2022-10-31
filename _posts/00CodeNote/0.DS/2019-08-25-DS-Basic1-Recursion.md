@@ -137,7 +137,7 @@ all recursive algorithms must obey three important laws:
 
 - A recursive algorithm **must `change its state` and `move toward the base case`**.
   - A change of state means that some data that the algorithm is using is modified.
-  - Usually `the data that represents problem gets smaller` in some way.  
+  - Usually `the data that represents problem gets smaller` in some way.
 
 
 A recursive algorithm **must `call itself, recursively`**.
@@ -436,7 +436,7 @@ public static long[ ] fibonacciGood(int n) {
 - For each inch, we place a tick with a numeric label.
 - We denote the length of the tick designating a whole inch as the major tick length.
 - Between the marks for whole inches, the ruler contains a series of minor ticks, placed at intervals of 1/2 inch, 1/4 inch, and so on.
-- As the size of the interval decreases by half, the tick length decreases by one.  
+- As the size of the interval decreases by half, the tick length decreases by one.
 
 
 - The English ruler pattern is a simple example of a fractal, that is, a shape that has a self-recursive structure at various levels of magnification.
@@ -461,7 +461,7 @@ public static long[ ] fibonacciGood(int n) {
 -
 --
 -
---- 2   
+--- 2
 ```
 
 
@@ -543,7 +543,7 @@ Algorithm DiskUsage(path):
 ```java
 public static long diskUsage(File root) {
     long disk_usage = root.length();
-    if(root.isDirectory()) {  
+    if(root.isDirectory()) {
         for(String file: root.list()) {
             File child = new File(root, file);
             disk_usage += diskUsage(child);
@@ -596,7 +596,7 @@ boy + girl = baby
 - Such an algorithm can use multiple recursion to work through the configurations in a systematic way.
 
 
-- To keep the description general enough to be used with other puzzles, we consider an algorithm that enumerates and tests all k-length sequences, without repetitions, chosen from a given universe U.  
+- To keep the description general enough to be used with other puzzles, we consider an algorithm that enumerates and tests all k-length sequences, without repetitions, chosen from a given universe U.
   - Recursively generating the sequences of k − 1 elements
   - Appending to each such sequence an element not already contained in it.
   - Throughout the execution of the algorithm, we use a set U to keep track of the elements not contained in the current sequence, so that an element e has not been used yet if and only if e is inU.
@@ -1290,7 +1290,7 @@ def recMC(coinValueList,change):
   return minCoins
 
 print(recMC([1,5,10,25],63))
-```  
+```
 
 
 The trouble with the algorithm is that it is extremely inefficient.
@@ -1330,7 +1330,7 @@ def recDC(coinValueList,change,knownResults):
         numCoins = 1 + recDC(coinValueList, change-i, knownResults)
         if numCoins < minCoins:
            minCoins = numCoins
-           knownResults[change] = minCoins  
+           knownResults[change] = minCoins
   print(knownResults)
   return minCoins
 print(recDC([1,5,10,25],63,[0]*64))

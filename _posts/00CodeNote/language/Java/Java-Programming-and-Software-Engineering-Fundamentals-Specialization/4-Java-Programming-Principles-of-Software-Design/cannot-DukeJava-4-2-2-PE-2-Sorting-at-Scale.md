@@ -77,4 +77,3 @@ depth to largest depth.
    - Then this method should call Collections.sort on this ArrayList and use the TitleLastAndMagnitudeComparator to sort the earthquakes.
    - You should be able to see that the earthquakes are sorted by the last word in their title, and those with the same last word are sorted by magnitude.
    - Modify this method to print out the QuakeEntry in the ArrayList in position 10 (which is actually the 11th element in the ArrayList) after sorting and printing out all the elements.
-

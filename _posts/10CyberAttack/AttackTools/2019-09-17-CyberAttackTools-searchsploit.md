@@ -121,7 +121,7 @@ Microsoft Windows XP/2003 - 'afd.sys' Local Privilege Escalation (K-plugin) (MS0
 Microsoft Windows XP/2003 - 'afd.sys' Local Privilege Escalation (MS11-080)            | windows/local/18176.py
 --------------------------------------------------------------------------------------- ---------------------------------
 
-# Note, SearchSploit uses an AND operator, not an OR operator. 
+# Note, SearchSploit uses an AND operator, not an OR operator.
 # The more terms that are used, the more results will be filtered out.
 # Pro Tip: Do not use abbreviations (use SQL Injection, not SQLi).
 # Pro Tip: If you are not receiving the expected results, try searching more broadly by using more general terms (use Kernel 2.6 or Kernel 2.x, not Kernel 2.6.25).
@@ -132,8 +132,8 @@ Microsoft Windows XP/2003 - 'afd.sys' Local Privilege Escalation (MS11-080)     
 # Title Searching
 
 ```bash
-# By default, searchsploit will check BOTH the title of the exploit as well as the path. 
-# Depending on the search criteria, this may bring up false positives (especially when searching for terms that match platforms and version numbers). 
+# By default, searchsploit will check BOTH the title of the exploit as well as the path.
+# Depending on the search criteria, this may bring up false positives (especially when searching for terms that match platforms and version numbers).
 # Searches can be restricted to the titles by using the -t option:
 
 $ searchsploit -t oracle windows
@@ -161,8 +161,8 @@ $ searchsploit oracle windows | wc -l
 # Removing Unwanted Results
 
 ```bash
-# remove unwanted results 
-# remove multiple terms by separating the value with a | (pipe). 
+# remove unwanted results
+# remove multiple terms by separating the value with a | (pipe).
 
 $ searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
 --------------------------------------------------------------------------------------- ---------------------------------
@@ -214,7 +214,7 @@ $ searchsploit linux kernel 3.2 | wc -l
 # Piping Output (Alternative Method of Removing Unwanted Results)
 
 ```bash
-# The output from searchsploit can be piped into any other program, which is especially useful when outputting the results in JSON format (using the -j option). With this, it is possible to remove any unwanted exploits by using grep. 
+# The output from searchsploit can be piped into any other program, which is especially useful when outputting the results in JSON format (using the -j option). With this, it is possible to remove any unwanted exploits by using grep.
 # In the following example, we use grep to filter out any "Denial of Service (DoS)" results.
 $ searchsploit XnView | grep -v '/dos/'
 --------------------------------------------------------------------------------------- ---------------------------------
@@ -276,8 +276,8 @@ $ /usr/share/exploitdb/exploits/windows_x86/local/39446.py
 # Copy To Folder
 
 ```bash
-# We recommend that you do not alter the exploits in your local copy of the database. 
-# Instead, make a copy of ones that are of interest and use them from a working directory. 
+# We recommend that you do not alter the exploits in your local copy of the database.
+# Instead, make a copy of ones that are of interest and use them from a working directory.
 # By using the -m option, we are able to select as many exploits we like to be copied into the same folder that we are currently in:
 $ searchsploit MS14-040
 --------------------------------------------------------------------------------------- ---------------------------------
@@ -305,7 +305,7 @@ File Type: Python script, ASCII text executable, with CRLF line terminators
 
 Copied to: /root/39525.py
 
-# You do not have to give the exact EDB-ID value (such as "39446"); 
+# You do not have to give the exact EDB-ID value (such as "39446");
 # SearchSploit is able to automatically extract it from a path given to it (such as "39525").
 
 ```
@@ -315,8 +315,8 @@ Copied to: /root/39525.py
 # Exploit-DB Online
 
 ```bash
-# The Exploit Database repository is the main core of Exploit-DB, making SearchSploit efficient and easy to use. 
-# However, some of the exploit metadata (such as screenshots, setup files, tags, and vulnerability mappings) are not included. 
+# The Exploit Database repository is the main core of Exploit-DB, making SearchSploit efficient and easy to use.
+# However, some of the exploit metadata (such as screenshots, setup files, tags, and vulnerability mappings) are not included.
 # To access them, need to check the website. quickly generate the links to exploits of interest by using the -w option:
 
 $ searchsploit WarFTP 1.65 -w

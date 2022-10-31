@@ -1,5 +1,5 @@
 ---
-title: AWS - boto3 - boto3.resource('dynamodb') - DynamoDB 
+title: AWS - boto3 - boto3.resource('dynamodb') - DynamoDB
 date: 2020-07-18 11:11:11 -0400
 categories: [01AWS, boto3]
 tags: [AWS]
@@ -371,5 +371,3 @@ table.delete()
 
 
 ---
-
-

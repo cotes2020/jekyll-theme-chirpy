@@ -57,7 +57,7 @@ Prisma Cloud provides support for role-based access control (RBAC)
 
 **Prisma Cloud Permission Groups**
 - 4 <kbd>permission groups</kbd> predefined
-- and a fifth permission group that combines the permissions of two of the predefined groups.  
+- and a fifth permission group that combines the permissions of two of the predefined groups.
 
 
 
@@ -304,7 +304,7 @@ set the `enterprise level settings` to build standard training models for `Unusu
    - mandates that user attribution be included in the alert payloads.
 
 ### Set Up Anomaly Policy Thresholds
-`to define different thresholds for anomaly detection` for **Unusual Entity Behavior Analysis (UEBA)** that correspond to policies which analyze audit events, and for **unusual network activity** that correspond to policies which analyze network flow logs. 
+`to define different thresholds for anomaly detection` for **Unusual Entity Behavior Analysis (UEBA)** that correspond to policies which analyze audit events, and for **unusual network activity** that correspond to policies which analyze network flow logs.
 
 to define your preference for when you want to alert notifications based on the severity assigned to the anomaly policy.
 
@@ -325,10 +325,10 @@ If you want to exclude one or more IP addresses or a CIDR block from generating 
       2. Medium: The behavioral models are based on observing at least 25 events over 15 days.
       3. High: The behavioral models are based on observing at least 50 events over 30 days.
 4. Define Alert Disposition.
-   1. when want to be notified of an alert, based on the severity of the issue —low, medium, high. 
+   1. when want to be notified of an alert, based on the severity of the issue —low, medium, high.
    2. The alert severity is based on the severity associated with the policy that triggers an alert.
-   3. You can profile every activity by location or user activity. 
-      1. The `activity-based anomalies` identify any activities which have not been consistently performed in the past. 
+   3. You can profile every activity by location or user activity.
+      1. The `activity-based anomalies` identify any activities which have not been consistently performed in the past.
       2. The `location based anomalies` identify locations from which activities have not been performed in the past.
    4. Choose the disposition (in some cases you may only have two to choose from):
       1. Conservative:
@@ -341,7 +341,7 @@ If you want to exclude one or more IP addresses or a CIDR block from generating 
          1. For unusual user activity—Report on either unknown location or service to classify an anomaly.
          2. For account hijacking—Report on unknown browser and Operating System, or impossible time travel.
 
-> When you change Training Model Threshold or Alert Disposition the existing alerts are resolved and new ones are regenerated based on the new setting. 
+> When you change Training Model Threshold or Alert Disposition the existing alerts are resolved and new ones are regenerated based on the new setting.
 > It might take a while for the new anomaly alerts to show on the Alerts page.
 
 **For unusual network activity**

@@ -60,9 +60,9 @@ Pytest 是用于测试 Python 应用的 Python 库。 它是鼻子测试和单�
 
 使用以下命令安装 Pytest：
 
-    $ pip install pytest 
+    $ pip install pytest
 
-### 运行 pytest 
+### 运行 pytest
 
 pytest 不带任何参数，将查看当前工作目录（或其他一些预配置的目录）以及测试文件的所有子目录，并运行找到的测试代码。
 
@@ -143,12 +143,12 @@ def test_max():
 
 # ---
 # $ pytest min_max_test.py
-# == test session starts ==== 
+# == test session starts ====
 # platform win32 -- Python 3.7.0, pytest-5.0.1, py-1.8.0, pluggy-0.12.0
 # rootdir: C:\Users\Jano\Documents\pyprogs\pytest
 # collected 2 items
 # min_max_test.py  [100%]
-# == 2 passed in 0.03 seconds == 
+# == 2 passed in 0.03 seconds ==
 
 ```
 
@@ -158,12 +158,12 @@ def test_max():
 
 ### pytest 跳过
 
-使用跳过装饰器，我们可以跳过指定的测试。 
-- 跳过测试有多种原因。 
+使用跳过装饰器，我们可以跳过指定的测试。
+- 跳过测试有多种原因。
 - 例如，数据库/在线服务目前不可用，或者我们跳过了 Windows 上针对 Linux 的特定测试。
 
 ```py
-# skipping.py 
+# skipping.py
 
     #!/usr/bin/env python3
     import algo
@@ -176,19 +176,19 @@ def test_max():
         assert val == 1
 
     def test_max():
-        values = (2, 
+        values = (2,
         val = algo.max(values)
         assert val == 6
 
 # 在示例中，`test_min()`被跳过。
 
 #     $ pytest min_max_test.py
-#     ===== test session starts ==== 
+#     ===== test session starts ====
 #     platform win32 -- Python 3.7.0, pytest-5.0.1, py-1.8.0, pluggy-0.12.0
 #     rootdir: C:\Users\Jano\Documents\pyprogs\pytest
 #     collected 2 items
 #     min_max_test.py s.   [100%]
-#     = 1 passed, 1 skipped in 0.04 seconds = 
+#     = 1 passed, 1 skipped in 0.04 seconds =
 ```
 在测试文件名后面的输出中，s 代表跳过的和。 通过。
 
@@ -196,7 +196,7 @@ def test_max():
 ---
 
 
-### pytest 标记 
+### pytest 标记
 
 使用标记将测试组织为单元。
 
@@ -229,15 +229,15 @@ def test_max():
     def test_b2():
         assert "falcon" == f"fal{'con'}"
 
-# 两组由标记 a 和 b 标识的测试。 
+# 两组由标记 a 和 b 标识的测试。
 # 这些单元由`pytest -m a marking.py`和`pytest -m b marking.py`运行。
 ```
 
 ---
 
-### Pytest 参数化测试 
+### Pytest 参数化测试
 
-- 通过参数化测试，我们可以向断言中添加多个值。 
+- 通过参数化测试，我们可以向断言中添加多个值。
 - 使用`@pytest.mark.parametrize`标记。
 
 ```py
@@ -249,16 +249,16 @@ def test_max():
     import pytest
 
     @pytest.mark.parametrize("data, expected", [
-        ((2, 3, 1, 4, 6), 1), 
-        ((5, -2, 0, 9, 12), -2), 
+        ((2, 3, 1, 4, 6), 1),
+        ((5, -2, 0, 9, 12), -2),
         ((200, 100, 0, 300, 400), 0)])
     def test_min(data, expected):
         val = algo.min(data)
         assert val == expected
 
     @pytest.mark.parametrize("data, expected", [
-        ((2, 3, 1, 4, 6), 6), 
-        ((5, -2, 0, 9, 12), 12), 
+        ((2, 3, 1, 4, 6), 6),
+        ((5, -2, 0, 9, 12), 12),
         ((200, 100, 0, 300, 400), 400)])
     def test_max(data, expected):
         val = algo.max(data)
@@ -267,8 +267,8 @@ def test_max():
 # 使用多个输入数据测试这两个功能。
 
     @pytest.mark.parametrize("data, expected", [
-        ((2, 3, 1, 4, 6), 1), 
-        ((5, -2, 0, 9, 12), -2), 
+        ((2, 3, 1, 4, 6), 1),
+        ((5, -2, 0, 9, 12), -2),
         ((200, 100, 0, 300, 400), 0)])
     def test_min(data, expected):
         val = algo.min(data)
@@ -290,7 +290,7 @@ Pytest 输出告知有六次运行。
 
 ---
 
-### pytest 夹具 
+### pytest 夹具
 
 - 测试需要在一组已知对象的背景下进行。 这组对象称为测试夹具。
 
@@ -318,11 +318,11 @@ Fixtures
                   vals[j] = vals[i]
                   vals[i] = _min
       return vals
-    ...  
+    ...
 
 
 # `fixtures.py`
-# 我们用夹具测试选择排序。 
+# 我们用夹具测试选择排序。
 
     #!/usr/bin/env python3
     import algo
@@ -331,7 +331,7 @@ Fixtures
     @pytest.fixture
     def data():
         return [3, 2, 1, 5, -3, 2, 0, -2, 11, 9]
-    # 我们的测试装置仅返回一些测试数据。 
+    # 我们的测试装置仅返回一些测试数据。
     # 请注意，我们通过其名称引用此灯具：`data`。
 
     def test_sel_sort(data):
@@ -347,7 +347,7 @@ Fixtures
 #     fixtures.py  [100%]
 #     == 1 passed in 0.02 seconds ===
 ```
- 
+
 ```py
 # vim test_4.py
 import pytest
@@ -446,7 +446,7 @@ def test_answer():
 
 ---
 
-## Pytest 布局 
+## Pytest 布局
 
 Python 测试可以多种方式组织。 测试可以集成在 Python 包中，也可以放在包外。
 
@@ -548,7 +548,7 @@ Python 测试可以多种方式组织。 测试可以集成在 Python 包中，�
     import utils.srel
     import pytest
     @pytest.mark.parametrize(
-        "word, expected", 
+        "word, expected",
         [('kayak', True), ('civic', True), ('forest', False)])
     def test_palindrome(word, expected):
         val = utils.srel.is_palindrome(word)
@@ -573,7 +573,7 @@ Python 测试可以多种方式组织。 测试可以集成在 Python 包中，�
 ```
 
 
-### 外部测试 
+### 外部测试
 
 下一个示例显示了应用源布局，其中测试未集成在包内。
 
@@ -631,7 +631,7 @@ mock = MagicMock(side_effect=[1, 2, 3])
 mock = MagicMock()
 mock.side_effect = [1, 2, 3]
 
->>> mock() 
+>>> mock()
 1
 >>> mock()
 2
@@ -696,13 +696,13 @@ def bar():
     # return {}
 
 def foobar():
-    return FooBar().hello()  
+    return FooBar().hello()
     # return 'hello'
 
 fb = FooBar()
 
 def hello():
-    return fb.msg     
+    return fb.msg
     # self.msg = 'test'
 ```
 

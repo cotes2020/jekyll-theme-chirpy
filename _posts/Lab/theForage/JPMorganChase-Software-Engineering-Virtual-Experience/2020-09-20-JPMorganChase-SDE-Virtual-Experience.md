@@ -572,9 +572,9 @@ class Graph extends Component<IProps, {}> {
       //   top_ask_price: 'avg',
       //   top_bid_price: 'avg',
       //   timestamp: 'distinct count',
-      elem.setAttribute('view', 'y_line');  
+      elem.setAttribute('view', 'y_line');
       // the type of graph
-      elem.setAttribute('row-pivots', '["timestamp"]');    
+      elem.setAttribute('row-pivots', '["timestamp"]');
       // takes care of x-axis.
       // This allows us to map each datapoint based on the timestamp it has.
       // Without this, the x-axis is blank.
@@ -584,7 +584,7 @@ class Graph extends Component<IProps, {}> {
       elem.setAttribute('aggregates', JSON.stringify({
       // ‘aggregates’ handle the cases of duplicated data we observed way back in task 2 and consolidate them as just one data point.
       // In our case we only want to consider a data point unique if it has a timestamp. Otherwise, we will average out the all the values of the other non-unique fields these ‘similar’ datapoints before treating them as one (e.g. ratio, price_abc, …)
-        price_abc: 'avg',    
+        price_abc: 'avg',
         price_def: 'avg',
         ratio: 'avg',
         timestamp: 'distinct count',

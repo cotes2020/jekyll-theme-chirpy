@@ -1,9 +1,6 @@
 #
 
 
-
-
-
 # 15. 3Sum
 # Medium
 
@@ -25,7 +22,6 @@
 # Output: []
 
 
-
 # # ---------------------- solution py ----------------------
 # # 3 sum > 2 sum
 # class Solution:
@@ -44,7 +40,7 @@
 #             #  [-100, ....., 1, 13] no way to become 0
 #             if (nums[i] + nums[n-2] + nums[n-1] < 0):
 #                 continue
-            
+
 #             #  [-100, -100, -1, -1, 2, 3]  minus the duplicate
 #             if i > 0 and nums[i] == nums[i-1]:
 #                 continue
@@ -55,18 +51,18 @@
 #             while l < r:
 #                 s = nums[i] + nums[l] + nums[r]
 #                 if s < 0:
-#                     l +=1 
+#                     l +=1
 #                 elif s > 0:
 #                     r -= 1
 #                 else:
 #                     res.append((nums[i], nums[l], nums[r]))
-                    
+
 #                     # minus duplicate
 
 #                     # [-100, -100, -1, -1, 1, 1, 2, 3]
 #                     while l < r and nums[l] == nums[l+1]:
 #                         l += 1
-                    
+
 #                     # # [-100, -100, -1, -1, 1, 1, 2, 3]
 #                     while l < r and nums[r] == nums[r-1]:
 #                         r -= 1
@@ -77,11 +73,9 @@
 # # Memory Usage: 16.9 MB, less than 96.04% of Python3 online submissions for 3Sum.
 
 
-
-
 # ---------------------- solution py ----------------------
 class Solution(object):
-        # exception: 
+        # exception:
         if len(nums) < 3:
             return []
 
@@ -93,16 +87,16 @@ class Solution(object):
         for index, x in enumerate(nums[:-2]):
 
             # [1,2,3] no way to become 0
-            if (nums[index] + nums[index+1] + nums[index+2] > 0): 
+            if (nums[index] + nums[index+1] + nums[index+2] > 0):
                 return res
             #  [-100, ....., 1, 13] no way to become 0
             if (nums[index] + nums[-2] + nums[-1] < 0):
-                continue  
-            
-            # minus duplicate
-            if index >= 1 and x == nums[index-1]: 
                 continue
-            
+
+            # minus duplicate
+            if index >= 1 and x == nums[index-1]:
+                continue
+
             dic = {}
             # loop from x+1 to end
             for y in nums[index+1:]:
@@ -116,13 +110,7 @@ class Solution(object):
 # Memory Usage: 18.1 MB, less than 16.93% of Python3 online submissions for 3Sum.
 
 
-
 if __name__ == '__main__':
     # begin
     s = Solution()
-    print(s.threeSum([-1,0,1,2,-1,-4])
-
-
-
-
-#
+    print(s.threeSum([-1, 0, 1, 2, -1, -4])

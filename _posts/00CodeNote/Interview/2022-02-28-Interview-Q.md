@@ -53,20 +53,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class Amazon { 
+public class Amazon {
     // value
     private HashMap<Integer, int[]> map = new HashMap<>();
     private int offset = 0;
     private int index = 0;
-    
-    public void receive(int offsetnumber, int[] data) { 
+
+    public void receive(int offsetnumber, int[] data) {
         // check the parameter
         // start it
-        map.put(offsetnumber, data); 
+        map.put(offsetnumber, data);
         System.out.println("adding: key: " + offsetnumber + ", value: " + Arrays.toString(data));
     }
-    
-    public void read(){ 
+
+    public void read(){
         Object ans;
         ArrayList<Object> res = readdata();
         if((Boolean) res.get(0)) ans = res.get(1);
@@ -75,55 +75,55 @@ public class Amazon {
     }
 
     public ArrayList<Object> readdata(){
-        ArrayList<Object> res = new ArrayList<Object>();  
+        ArrayList<Object> res = new ArrayList<Object>();
         if(map.containsKey(offset)) {
             res.add(true);
             int[] datas = map.get(offset);
-            int n = datas.length;   
+            int n = datas.length;
             if(n==1){
                 res.add(datas[0]);
                 // System.out.println("offset: " + offset + ", one value: " + ans);
-                offset++; 
-                return res;
-            } 
-            res.add(datas[index]);
-            if(index == n-1) {  
-                // System.out.println("offset: " + offset + ", last value: " + ans);
-                index=0;  
                 offset++;
                 return res;
             }
-            // System.out.println("offset: " + offset + ", current value: " + ans); 
-            index++; 
-            return res; 
+            res.add(datas[index]);
+            if(index == n-1) {
+                // System.out.println("offset: " + offset + ", last value: " + ans);
+                index=0;
+                offset++;
+                return res;
+            }
+            // System.out.println("offset: " + offset + ", current value: " + ans);
+            index++;
+            return res;
         }
-        // System.out.println("The offset is not stored: " + offset);   
+        // System.out.println("The offset is not stored: " + offset);
         res.add(false);
         return res;
     }
 
     public static void main(String[] args) {
         Amazon run = new Amazon();
-        run.read(); 
+        run.read();
 
         int offsetnumber = 1;
         int[] data = {12, 4};
         run.receive(offsetnumber, data);
 
-        run.read(); 
-        
+        run.read();
+
         int offsetnumber2 = 0;
         int[] data2 = {100};
-        run.receive(offsetnumber2, data2); 
-        
-        run.read(); 
-        run.read(); 
-        run.read(); 
-        run.read(); 
-        run.read(); 
-        run.read(); 
+        run.receive(offsetnumber2, data2);
+
+        run.read();
+        run.read();
+        run.read();
+        run.read();
+        run.read();
+        run.read();
     }
-} 
+}
 ```
 
 
@@ -164,7 +164,7 @@ def NumberOf1(self, n):
 //     ["a8 act zoo"]
 // }
 
-// Output: 
+// Output:
 // {
 //     ["g1 act car"],
 //     ["a8 act zoo"],
@@ -207,7 +207,7 @@ public class solution200927{
                     // first compare the content
                     int alphcompare = split1[1].compareTo(split2[1]);
                     if (alphcompare != 0){
-                        return alphcompare; 
+                        return alphcompare;
                         // > 0 split2, split1
                         // < 0 split1, split2
                     }
@@ -231,8 +231,8 @@ public class solution200927{
         Arrays.sort(logs, myComp);
         return logs;
     }
-    
- 
+
+
 
     // my
     String alph = "abcdefghijklmnopqrstuvwxyz";
@@ -280,19 +280,19 @@ public class solution200927{
         // }
         return result;
     }
-    
-    
+
+
     public static void main(String[] args) {
         List<String> orderList = Arrays.asList("a abc", "a 12", "a echo");
         int numOrders = orderList.size();
-        
+
         solution200927 pr = new solution200927();
 
         System.out.println("hello");
 
         List<String> result = pr.prioritizedOrders(numOrders, orderList);
         // System.out.println("result is: " + result);
-        
+
     }
 }
 ```
@@ -343,21 +343,21 @@ print(primelist + nonprimelist)
 
 ### 2022-2
 
-I will give you a tree. I'll give you an input 
-- For every input will be in lines every line has two numbers, a and b. 
+I will give you a tree. I'll give you an input
+- For every input will be in lines every line has two numbers, a and b.
 - So whenever you receive a line like that means that there is node a connected to node b.
-- That's how I will describe the three to you. 
+- That's how I will describe the three to you.
 - I will guarantee to you that this is a three it's not internal graph.
-- I want you to write the system that will answer quesryz of the form. What is the distance if I want to go from node A to node B? 
-- Because it's tree you're gonna hear that every node is connected to every other node. 
+- I want you to write the system that will answer quesryz of the form. What is the distance if I want to go from node A to node B?
+- Because it's tree you're gonna hear that every node is connected to every other node.
 - so I want you to write efficient code that will help to answer a query just like that. The tree can have 1000s of nodes and the queries that we need to ask maybe like millions or billions of queries, so I want something fast.
 
-the input is an array of pairs 
+the input is an array of pairs
 - input (1,3),(1,4),(1,5),(3,6),(5,8)
 - query: distance from 1 to 8.
 
 
-```java 
+```java
 class Node {
     int data;
     Node left = null, right = null;
@@ -365,9 +365,9 @@ class Node {
         this.data = data;
     }
 }
- 
+
 class Main {
-    
+
     public static boolean isNodePresent(Node root, Node node) {
         // base case
         if (root == null) {
@@ -379,45 +379,45 @@ class Main {
         }
         return isNodePresent(root.left, node) || isNodePresent(root.right, node);
     }
- 
+
 
     public static int findLevel(Node root, Node node, int level) {
         // base case
-        if (root == null) return Integer.MIN_VALUE; 
+        if (root == null) return Integer.MIN_VALUE;
 
         // return level if the node is found
-        if (root == node) return level; 
+        if (root == node) return level;
         // search node in the subtree
         int left = findLevel(root.left, node, level + 1);
-        if (left != Integer.MIN_VALUE) return left;  
+        if (left != Integer.MIN_VALUE) return left;
         return findLevel(root.right, node, level + 1);
     }
- 
+
     // Function to find the lowest common ancestor of given nodes `x` and `y`,
     // where both `x` and `y` are present in the binary tree.
     public static Node findLCA(Node root, Node x, Node y) {
         // base case 1: if the tree is empty
-        if (root == null) return null; 
+        if (root == null) return null;
         // base case 2: if either `x` or `y` is found
-        if (root == x || root == y) return root; 
- 
+        if (root == x || root == y) return root;
+
         // recursively check if `x` or `y` exists in the left subtree
-        Node left = findLCA(root.left, x, y); 
+        Node left = findLCA(root.left, x, y);
         // recursively check if `x` or `y` exists in the right subtree
         Node right = findLCA(root.right, x, y);
 
         // if `x` is found in one subtree and `y` is found in the other subtree,
         // update lca to the current node
-        if (left != null && right != null) return root; 
- 
+        if (left != null && right != null) return root;
+
         // if `x` and `y` exist in the left subtree
-        if (left != null) return left; 
+        if (left != null) return left;
         // if `x` and `y` exist in the right subtree
-        if (right != null) return right; 
- 
+        if (right != null) return right;
+
         return null;
     }
- 
+
     // Function to find the distance between node `x` and node `y` in a
     // given binary tree rooted at `root` node
     public static int findDistance(Node root, Node x, Node y) {
@@ -428,28 +428,28 @@ class Main {
         int lev_y = findLevel(root, y, 0);
 
         if(lev_x == 0 or lev_y == 0)
- 
+
         // call LCA procedure only if both `x` and `y` are present in the tree
         if (isNodePresent(root, y) && isNodePresent(root, x)) {
             lca = findLCA(root, x, y);
         }
-        else return Integer.MIN_VALUE; 
- 
+        else return Integer.MIN_VALUE;
+
         // return distance of `x` from lca + distance of `y` from lca
         return findLevel(lca, x, 0) + findLevel(lca, y, 0);
- 
+
         /*
             The above statement is equivalent to the following:
- 
+
             return findLevel(root, x, 0) + findLevel(root, y, 0) -
                     2*findLevel(root, lca, 0);
- 
+
             We can avoid calling the `isNodePresent()` function by using
             return values of the `findLevel()` function to check if
             `x` and `y` are present in the tree or not.
         */
     }
- 
+
     public static void main(String[] args) {
         /* Construct the following tree
               1
@@ -460,7 +460,7 @@ class Main {
             4   5   6
                /     \
               7       8
-        */ 
+        */
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
@@ -468,7 +468,7 @@ class Main {
         root.right.left = new Node(5);
         root.right.right = new Node(6);
         root.right.left.left = new Node(7);
-        root.right.right.right = new Node(8); 
+        root.right.right.right = new Node(8);
         // find the distance between node 7 and node 6
         System.out.print(findDistance(root, root.right.left.left, root.right.right));
     }
@@ -478,8 +478,8 @@ class Main {
 
 
 ---
- 
- 
+
+
 ### encrypt the ebs by default
 
 
@@ -510,11 +510,11 @@ def lambda_handler(event, context):
 ## IBM
 
 ---
- 
+
 
 ### 1. Merge sorted arrays
 
-> Back-End Developer 
+> Back-End Developer
 > 3 question:
 
 Input:
@@ -566,7 +566,7 @@ def merge(nums1, m, nums2, n):
     # n != 0 : rest of put to the head nums1[:n]
     # n <= 0: when nums2 finsih
     # m != 0 : keep those m
-    if m <= 0:  
+    if m <= 0:
         nums1[:n] = nums2[:n]
     print(nums1)
 # Runtime: 36 ms, faster than 62.64% of Python3 online submissions for Merge Sorted Array.
@@ -657,7 +657,7 @@ def rearrangeArray(arr, n) :
     # Adding numbers from sorted array to new array accordingly
     ArrIndex = 0
 
-    # Traverse from begin and end simultaneously  
+    # Traverse from begin and end simultaneously
     i = 0
     j = n-1
 
@@ -703,10 +703,10 @@ Output: 1 -2  1
 
 # ------------solution 1: loop ljk------------
 def findTriplets(arr, n, sum):
-    for i in range(0, n - 2):  
-        for j in range(i + 1, n - 1):  
+    for i in range(0, n - 2):
+        for j in range(i + 1, n - 1):
             for k in range(j + 1, n):
-                if (arr[i] + arr[j] + arr[k] == sum):  
+                if (arr[i] + arr[j] + arr[k] == sum):
                     print(arr[i], " ", arr[j], " ", arr[k])
 # Time Complexity: O(n3).
 # As three nested for loops have been used.
@@ -864,7 +864,7 @@ print(count)
 ```
 
 ---
- 
+
 
 ### 1. Partitioning Array
 
@@ -1083,7 +1083,7 @@ if __name__ == '__main__':
 
 
 
-```py 
+```py
 def findNumber(targetN, targetL):
     listL = len(targetL)
 
@@ -1212,43 +1212,43 @@ print("count: ", count)
 
 Instructions
 
-Implement a RESTful API that supports 4 operations: 
-- adding a user, 
-- authenticating, 
-- retrieving user details, 
-- and logging out. 
-- The user details should be stored in a persistent back-end data store such as Sqlite or even a text file. 
+Implement a RESTful API that supports 4 operations:
+- adding a user,
+- authenticating,
+- retrieving user details,
+- and logging out.
+- The user details should be stored in a persistent back-end data store such as Sqlite or even a text file.
 - Password and session generation mechanisms should follow current secure development best practices.
 
-While many mechanisms exist for `secure storage and generation`, this exercise is to determine how you would implement these solutions for yourself. 
-While you may write in any language you want, an example of libraries and frameworks to use in a Python project would be using `hashlib`, but not Flask’s HTTPBasicAuth - we would like to see how you implement those mechanisms. 
+While many mechanisms exist for `secure storage and generation`, this exercise is to determine how you would implement these solutions for yourself.
+While you may write in any language you want, an example of libraries and frameworks to use in a Python project would be using `hashlib`, but not Flask’s HTTPBasicAuth - we would like to see how you implement those mechanisms.
 Do not `JWT tokens` unless you’re implementing the algorithms, management, and token creation yourself.
 
 Finally, include a `README` file that describes your project, the overall flow for a user, why you made any specific architectural decisions, and what you would change given appropriate frameworks, libraries, etc.
 
 Don’t spend more than 3 hours on this - the code is not meant to be production-ready, it is meant to show your understanding of best practices and how these interesting challenges work in your code.
 No deployment or infrastructure is necessary, code running on localhost is sufficient.
-   
+
 
 Testing
-Test data will be username, Firstname Lastname, password, and Mother’s Favorite Search Engine. 
+Test data will be username, Firstname Lastname, password, and Mother’s Favorite Search Engine.
 
 Some possible values to test with might be:
 gh0st,William L. Simon,,Searx
 jet-setter,Frank Abignale,r0u7!nG,Bing
-kvothe,Patrick Rothfuss,3##Heel7sa*9-zRwT,Duck Duck Go 
-tpratchett,Terry Pratchett,Thats Sir Terry to you!,Google 
+kvothe,Patrick Rothfuss,3##Heel7sa*9-zRwT,Duck Duck Go
+tpratchett,Terry Pratchett,Thats Sir Terry to you!,Google
 lmb,Lois McMaster Bujold,null,Yandex
 
 
 Final Project
-The final project deliverable should include 
-- `the source code` of your application, 
-- a `README` file targeting other engineers, 
-- and a plain `text dump of your data store with test data loaded`, 
-- and at least 2 users logged in. 
+The final project deliverable should include
+- `the source code` of your application,
+- a `README` file targeting other engineers,
+- and a plain `text dump of your data store with test data loaded`,
+- and at least 2 users logged in.
 - This can be in a tar file, zip file, or as separate attachments.
-  
+
 
 
 

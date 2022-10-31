@@ -20,7 +20,7 @@ public class CHillCipher {
             cipherMatrix[i] = 0;
             for (x = 0; x < 3; x++) {
                 cipherMatrix[i] += keyMatrix[i][x] * messageVector[x];
-            } 
+            }
             cipherMatrix[i] = cipherMatrix[i] % 26;
         }
     }
@@ -56,7 +56,6 @@ public class CHillCipher {
         String key = "GYBNQKURP";
 
         HillCipher(message, key);
- 
+
     }
 }
-

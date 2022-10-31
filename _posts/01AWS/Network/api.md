@@ -24,41 +24,41 @@ Container technology married with microservices is a natural fit.  A container u
 
 2. You need a container management framework
    - components deploying by hand is no longer fun or safe.
-   - Similarly monitoring them and numerous other management tasks are best done by a container management framework.  
-   - This is what Docker Swarm, Kubernetes, Mesos and other products do.  
+   - Similarly monitoring them and numerous other management tasks are best done by a container management framework.
+   - This is what Docker Swarm, Kubernetes, Mesos and other products do.
    - The container management framework is critical for some security functions as well.  It provides the ability to deploy containers safely.
 
 3. You need to make it reliable
    - Active/Active and Active / Passive servers, service discovery and registration, heartbeats, transaction protocols, replication of databases and other means.
-   - Most likely you will use a service registry and heartbeat with active/active servers for most of your reliability.  
+   - Most likely you will use a service registry and heartbeat with active/active servers for most of your reliability.
    - bring in a message queue or some other transactional system.   Databases typically have their own reliability mechanisms.   Your service needs to support these components and all the other pieces they need to implement fast recovery of failed components and hardware.
    - Today, a lot of this can be implemented by policy and with standard components like Zookeeper, Consul, etcd which allow you to monitor heartbeats set up automatic restart and restore configuration instantly.
 
 1. You need scalability
-   - You need components to help you scale your API service.   
-   - Having a microservice architecture doesn’t automatically make it scalable.   
+   - You need components to help you scale your API service.
+   - Having a microservice architecture doesn’t automatically make it scalable.
    - Kubernetes for instance has the ability to monitor and keep load constant across a bunch of containers in a cluster.   You can say, for instance, when the load on these containers goes above 50% on any server create a new instance automatically.   You can use this to scale single microservice to multiple instances and keep response time consistent across your service even as load builds rapidly.
    - Sometimes this type of scaling is not enough.  You may need a more policy based scaling component that can scale multiple components in different ways depending on different load indications.
 
 2. You need DevOps Fullstack Automation with security
-   - evelopment environment, test environment, production or other staging environments need to be completely in sync in order to be sure that when you deploy something it actually works.  
+   - evelopment environment, test environment, production or other staging environments need to be completely in sync in order to be sure that when you deploy something it actually works.
    - In order to achieve the improvement in agility the cloud can give you, you need a finely automated infrastructure that you can replicate stacks of components reliably over and over.
-   - deploy multiple production environments for different regions, different customers or for any number of reasons.  
-   - Different APIs may share a lot of similar underlying infrastructure.   
+   - deploy multiple production environments for different regions, different customers or for any number of reasons.
+   - Different APIs may share a lot of similar underlying infrastructure.
    - If you have multiple APIs automating your stacks will make it easier to deploy new APIs and new services.
    - do a synthetic test of your APIs or services with 1000 times the load you expect like AWS and Netflix and other sophisticated services in the cloud do.
    - It is critical that the DevOps automation include automatic security configuration and checks otherwise mistakes will be made.  People are notoriously bad at doing routine tedious things over and over.   Expecting that you can do security as a separate function from DevOps is a mistake.
 
 3. You need to upgrade the stack of all these things regularly
    - In the past many companies were scared to do upgrades because they put the production environment at risk.   Therefore, companies let the components become stale and let upgrades go for a year or more before trying a big upgrade.
-   - As components are upgraded frequently these upgrades provide needed performance, security or bug fixes that your customers will need.  Since a component microservices architecture shares services across all components if one service needs the upgrade you will end up upgrading all the uses of that microservice component.   
+   - As components are upgraded frequently these upgrades provide needed performance, security or bug fixes that your customers will need.  Since a component microservices architecture shares services across all components if one service needs the upgrade you will end up upgrading all the uses of that microservice component.
    - Therefore, you will be forced to upgrade more frequently and you will be forced to test all your stack and components with the new upgrade.
-   - Since so many upgrades are coming through you will need a way to do these upgrades with minimal interruption.   
+   - Since so many upgrades are coming through you will need a way to do these upgrades with minimal interruption.
    - Several other components can help you make upgrades and security patches without bringing down any users of your services.
 
 1. You need to have test suites for the stacks not just the API
-   - Since you will be upgrading your components many times a year you will want to build test suites to test your stack of components in your service to see if any upgrade or security patch breaks some part of the stack.   
-   - The new upgrade may seem great and when you test it against your application it works fine but other components in the stack that are not your responsibility may use that component and they may not work with the upgrade.   
+   - Since you will be upgrading your components many times a year you will want to build test suites to test your stack of components in your service to see if any upgrade or security patch breaks some part of the stack.
+   - The new upgrade may seem great and when you test it against your application it works fine but other components in the stack that are not your responsibility may use that component and they may not work with the upgrade.
    - So, you need to build test suites before you deploy anything to production for your stacks so you can run the test suites against a deployed copy of your production environment to see if anything breaks.
 
 2. You need to keep the automation up to date and the test suites for the stacks
@@ -70,14 +70,14 @@ Container technology married with microservices is a natural fit.  A container u
 3. You need to understand the costs of the components in your stack and to manage that cost
    - Finally, you have all of this infrastructure working and your APIs are secure, reliable, scalable, upgradable, automated.  You can make as many changes to your APIs as before and you are seeing a successful service that is growing.   You are ecstatic.
    - costs of your infrastructure are growing non-linearly
-   - get a bill from your cloud provider that shows you thousands of lines of detail but you have no idea how to translate those servers and usage to the underlying services.  
+   - get a bill from your cloud provider that shows you thousands of lines of detail but you have no idea how to translate those servers and usage to the underlying services.
    - figure out what is taking the most money or if that is reasonable.
 
-4. You need to implement a data gathering and instrument all your services so they produce information you can use to diagnose what is using what and how you could save money.   
-   - Maybe some services shouldn’t be scaled arbitrarly.   
-   - Possibly you should limit the scaling to a certain amount.  
-   - Maybe a configuration change or frequency of doing something could drastically improve the costs.  
-   - Possibly a component you selected is too expensive using way more resources than it should.  
+4. You need to implement a data gathering and instrument all your services so they produce information you can use to diagnose what is using what and how you could save money.
+   - Maybe some services shouldn’t be scaled arbitrarly.
+   - Possibly you should limit the scaling to a certain amount.
+   - Maybe a configuration change or frequency of doing something could drastically improve the costs.
+   - Possibly a component you selected is too expensive using way more resources than it should.
    - Maybe this is a bug or a different component which does substantially the same function is less expensive.
 
 5. You need to instrument your services and make that instrumentation part of your automation and you need to build the analysis tools or use tools to mine the data to find where your problems are or how you might be able to save money.
@@ -108,7 +108,7 @@ AWS AppSync allows you to create flexible APIs that access and combine multiple 
 
 #### REST APIs
 
-Architecting a REST API is structured around creating combinations of resources and methods.  
+Architecting a REST API is structured around creating combinations of resources and methods.
 - Resources are paths that are present in the request URL and methods are HTTP actions that you take against the resource.
 - For example
 - define a resource called “cart”: `http://myapi.somecompany.com/cart`
@@ -120,7 +120,7 @@ With API Gateway, you would implement the API like this:
 
 ![Arch-comparison-1-1024x565](https://i.imgur.com/nVf8A6F.jpg)
 
-Behind the scenes, you can integrate with nearly any backend to provide the compute logic, data persistence, or business work flows.  
+Behind the scenes, you can integrate with nearly any backend to provide the compute logic, data persistence, or business work flows.
 - For example
 - configure an AWS Lambda function to perform the addition of an item to a shopping cart (HTTP POST).
 - use API Gateway to directly interact with AWS services like Amazon DynamoDB.
@@ -135,7 +135,7 @@ RESTful APIs tend to use Path and Query parameters to inject dynamic values into
 
 
 when you need to add functionality to your API
-- the typical approach would be to add additional resources.  
+- the typical approach would be to add additional resources.
 - For example
 - add a checkout function, you could add a resource called `/cart/checkout`
 
@@ -195,7 +195,7 @@ AppSync also provides other powerful features that are not possible with REST AP
    - <font color=blue> the request must wait for a response from the backend integration (RDS) </font>
 
    - This API accepts GET requests to retrieve a user’s cart
-     - by using a Lambda function to perform SQL queries against a relational database managed in RDS.  
+     - by using a Lambda function to perform SQL queries against a relational database managed in RDS.
      - If receive a large burst of traffic,
        - both API Gateway and Lambda will scale in response to the traffic.
        - but relational databases typically have limited memory/cpu capacity and will quickly exhaust the total number of connections.
@@ -203,7 +203,7 @@ AppSync also provides other powerful features that are not possible with REST AP
    - solution
      1. <font color=red> defining API Keys and requiring your clients to deliver a key with incoming requests. </font>
         - to track each application or client who is consuming your API.
-        - to create Usage Plans and throttle your clients according to the plan you define.  
+        - to create Usage Plans and throttle your clients according to the plan you define.
         - For example, you if you know your architecture is capable of of sustaining 200 requests per second, you should define a Usage plan that sets a rate of 200 RPS and optionally configure a quota to allow a certain number of requests by day, week, or month.
 
 
@@ -216,11 +216,11 @@ AppSync also provides other powerful features that are not possible with REST AP
 
 
 2. <font color=red> an asynchronous, loosely coupled architecture </font>
-   - A decoupled architecture 
-   - separates the data ingestion from the data processing and allows you to scale each system separately. 
-   
-   - This architecture enables ingestion of orders directly into a <font color=blue> highly scalable and durable data store </font> such as Amazon Simple Queue Service (SQS).  
-   - the backend can process these orders at any speed that is suitable for your business requirements and system ability.  
+   - A decoupled architecture
+   - separates the data ingestion from the data processing and allows you to scale each system separately.
+
+   - This architecture enables ingestion of orders directly into a <font color=blue> highly scalable and durable data store </font> such as Amazon Simple Queue Service (SQS).
+   - the backend can process these orders at any speed that is suitable for your business requirements and system ability.
    - Most importantly, <font color=blue> the health of the backend processing system does not impact your ability to continue accepting orders </font>
 
 

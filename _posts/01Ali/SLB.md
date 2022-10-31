@@ -121,7 +121,7 @@ Like the network types, there are two types of instance specifications available
   - max connections, which is the maximum number of connections allowed before new connection requests are dropped.
   - Connections per second, which is the rate at which new connections are established per second before new connection requests are dropped.
   - And `queries per second`, which is the number of HTTP or HTTPS requests that can be processed per second before new connection requests are dropped.
-    - The queries per second metric is available only for Layer-7 SLB listeners.  
+    - The queries per second metric is available only for Layer-7 SLB listeners.
 
 
 ### charges

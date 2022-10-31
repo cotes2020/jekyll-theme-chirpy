@@ -141,7 +141,7 @@ different Cloud Interconnect and Peering services available to connect the infra
 
 - These service providers have existing physical connections to Google's network that they make available for their customers to use.
 - After you establish connectivity with the service provider, you can request a **Partner Interconnect connection** from the service provider,
-- then establish a **BGP session** between the `Cloud router` and `on-premise router` to start passing traffic between the networks.  
+- then establish a **BGP session** between the `Cloud router` and `on-premise router` to start passing traffic between the networks.
 - can be configured to offer a 99.9% or a 99.99% uptime SLA between Google and the service provider.
 
 
@@ -191,7 +191,7 @@ different Cloud Interconnect and Peering services available to connect the infra
 # Cloud VPN
 
 
-- securely connects the on-premise network to the GCP VPC network through an **IPSec VPN tunnel**.  
+- securely connects the on-premise network to the GCP VPC network through an **IPSec VPN tunnel**.
 - Traffic traveling between the two networks is encrypted by one VPN gateway. Then decrypted by the other VPN gateway.
   - protects the data as it travels over the public internet.
   - That's why Cloud VPN is useful for low volume data connections.

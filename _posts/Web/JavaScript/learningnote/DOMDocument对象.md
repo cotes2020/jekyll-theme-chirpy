@@ -8,7 +8,7 @@ document.activeElement	返回当前获取焦点元素
 document.addEventListener()	向文档添加句柄
 document.adoptNode(node)	从另外一个文档返回 adapded 节点到当前文档。
 document.anchors	返回对文档中所有 Anchor 对象的引用。
-document.applets	
+document.applets
 返回对文档中所有 Applet 对象的引用。
 
 注意: HTML5 已不支持 <applet> 元素。

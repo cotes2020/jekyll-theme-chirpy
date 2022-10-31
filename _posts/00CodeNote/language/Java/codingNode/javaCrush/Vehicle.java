@@ -1,7 +1,7 @@
 package JAVA.javaCrush;
 
 public interface Vehicle {
-    
+
     // fianl means it is a constant and it cannot be changed
     final int gears = 5;
 

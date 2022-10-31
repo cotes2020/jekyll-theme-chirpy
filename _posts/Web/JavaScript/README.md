@@ -58,8 +58,3 @@ let square = new Square(5);
 square.calaArea()
 square.calcPerimeter()
 ```
-
-
-
-
-

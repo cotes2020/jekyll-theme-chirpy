@@ -11,6 +11,6 @@ public class Sort {
                 j--;
             }
             data[j] = cur;
-        } 
+        }
     }
 }

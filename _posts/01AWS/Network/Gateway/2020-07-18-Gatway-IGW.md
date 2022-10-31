@@ -50,7 +50,7 @@ image:
         - Public IPv4 addresses are never attached to the resource's network interface.
 
     - to <font color=red> perform SNAT network address translation for instances that were assigned public IPv4 addresses </font>
-      - a record has the mappings of private to public IPs, 
+      - a record has the mappings of private to public IPs,
       - and the IGW performs SNAT on the associated resource.
         - When the IGW receives a packet from a resource with a public IP
         - it will adjust the packets.
@@ -60,7 +60,7 @@ image:
 
 
 - enable access to or from the internet for instances in a VPC subnet, you must ensure:
-  - Create an internet gateway 
+  - Create an internet gateway
   - <font color=red> Attach an internet gateway to VPC </font>
   - <font color=red> subnet's route table points to the internet gateway </font>
     - Add a route to your subnet's route table that directs internet-bound traffic to the internet gateway.

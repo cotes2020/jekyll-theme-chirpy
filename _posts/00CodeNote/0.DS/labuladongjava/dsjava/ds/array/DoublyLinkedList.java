@@ -1,7 +1,7 @@
 package array;
 
 public class DoublyLinkedList<E> {
-    
+
     private static class Node<E> {
         private E element;
         private Node<E> prev;
@@ -22,8 +22,8 @@ public class DoublyLinkedList<E> {
     private Node<E> tail;
     private int size = 0;
 
-    public class DoublyLinkedList<E> { 
-        
+    public class DoublyLinkedList<E> {
+
         public DoublyLinkedList(){
             head = new Node<>(null, null, null);
             tail = new Node<>(null, head, null);
@@ -35,7 +35,7 @@ public class DoublyLinkedList<E> {
         public boolean isEmpty() {return size == 0;}
 
         public E first() {
-            return isEmpty()? null:head.getNext().getElement(); 
+            return isEmpty()? null:head.getNext().getElement();
         }
         public E last() {
             return isEmpty()? null:tail.getPrev().getElement();
@@ -48,7 +48,7 @@ public class DoublyLinkedList<E> {
             suc.setPrev(newest);
             size++;
         }
-        private E remove(Node<E> e){ 
+        private E remove(Node<E> e){
             Node<E> pre = e.getPrev();
             Node<E> suc = e.getNext();
             pre.setNext(suc);
@@ -57,18 +57,18 @@ public class DoublyLinkedList<E> {
             return e.getElement();
         }
 
-        
+
         public void addFrist(E e) {
-            addBetween(e, head, head.getNext()); 
+            addBetween(e, head, head.getNext());
         }
         public void addLast(E e) {
             addBetween(e, tail.getPrev(), tail);
         }
         public E removeFirst() {
             return isEmpty?null: remove(head.getNext());
-        } 
+        }
         public E removeLast() {
             return isEmpty?null: remove(tail.getPrev());
-        }  
+        }
     }
 }

@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, Basic]
 tags: [Linux, Sysadmin]
 math: true
-image: 
+image:
 ---
 
 # users and accounts

@@ -41,22 +41,22 @@ App Engine
   - deploy an application on App Engine
     - hand App Engine the code
     - and the App Engine service takes care of the rest.
-  - focus on code and run code in the Cloud 
+  - focus on code and run code in the Cloud
     - without worry about infrastructure.
-    - focus on building applications instead of deploying and managing the environment. 
+    - focus on building applications instead of deploying and managing the environment.
     - Google deal with all the provisioning and resource management.
-      - no worry about building the highly reliable and scalable infrastructure 
+      - no worry about building the highly reliable and scalable infrastructure
       - zero server management or configuration deployments for deploying applications
       - The App Engine platform manages the hardware and networking infrastructure for the code.
 
 - provides built-in services that many web applications need.
   - code the application to take advantage of these services and App Engine provides them.
   - `NoSQL databases, in-memory caching, load balancing, health checks, logging` and a `way to authenticate users`.
-  - could also `run container workloads`. 
+  - could also `run container workloads`.
   - `Stackdriver monitoring, logging, and diagnostics`
-    - such as debugging and error reporting are also tightly integrated with App Engine. 
-    - use Stackdriver's real time debugging features to analyze and debug your source code. 
-    - Stackdriver integrates with tools such as Cloud SDK, cloud source repositories, IntelliJ, Visual Studio, and PowerShell. 
+    - such as debugging and error reporting are also tightly integrated with App Engine.
+    - use Stackdriver's real time debugging features to analyze and debug your source code.
+    - Stackdriver integrates with tools such as Cloud SDK, cloud source repositories, IntelliJ, Visual Studio, and PowerShell.
   - App Engine also supports `version control and traffic splitting`.
 
 - scale the application automatically in response to the amount of traffic it receives.
@@ -67,16 +67,16 @@ App Engine
 - App Engine offers two environments:
   - standard and flexible
 
-- App Engine supports popular languages like Java and Node.js, Python, PHP, C#, .NET, Ruby, and Go. 
- 
+- App Engine supports popular languages like Java and Node.js, Python, PHP, C#, .NET, Ruby, and Go.
+
 - especially suited for applications
   - where the workload is highly variable or unpredictable
   - like web applications and mobile backend.
-  - for websites, mobile apps, gaming backends, 
+  - for websites, mobile apps, gaming backends,
   - and as a way to present a RESTful API to the Internet
     - an application program interface
-    - resembles the way a web browser interacts with the web server. 
-    - RESTful APIs are easy for developers to work with and extend. 
+    - resembles the way a web browser interacts with the web server.
+    - RESTful APIs are easy for developers to work with and extend.
     - And App Engine makes them easy to operate
 
 
@@ -112,7 +112,7 @@ App Engine
 <font color=red> runtime </font>
 
 - App Engine's term for this kind of binary is the runtime.
-- In App Engine Standard Environment, use a runtime provided by Google.  
+- In App Engine Standard Environment, use a runtime provided by Google.
 - App Engine Standard Environment provides runtimes for specific versions of Java, Python, PHP and Go.
 - The runtimes also include libraries that support App Engine APIs.
 - for many applications, the Standard Environment runtimes and libraries may be all you need.
@@ -166,10 +166,10 @@ use App Engine Standard Environment in practice
 - not sandbox constraints
   - App Engine flexible environment lets you specify the container your App Engine runs in.
   - Your application runs inside Docker containers on Google Compute Engine Virtual Machines, VMs.
-- App Engine manages these Compute Engine machines for you.  
+- App Engine manages these Compute Engine machines for you.
   - health checked, healed as necessary,
   - critical backward-compatible updates to their operating systems are automatically applied.
-- you  
+- you
   - choose which geographical region they run in
   - and focus on your code.
 - App Engine flexible environment apps use standard run times,
@@ -211,9 +211,9 @@ Flexible environment
 ---
 
 
-### App Engine and Kubernetes Engine.  
+### App Engine and Kubernetes Engine.
 
-![Screen Shot 2021-02-09 at 00.23.50](https://i.imgur.com/vFIOA1G.png) 
+![Screen Shot 2021-02-09 at 00.23.50](https://i.imgur.com/vFIOA1G.png)
 
 **App Engine standard environment**
 - who want the service to take maximum control of their application's deployment and scaling.
@@ -221,7 +221,7 @@ Flexible environment
 **Kubernetes Engine**
 - gives the application owner the full flexibility of Kubernetes.
 
-App Engine flexible edition is somewhere in between. 
+App Engine flexible edition is somewhere in between.
 Also, App Engine environment treats containers as a means to an end, but for Kubernetes Engine, containers are a fundamental organizing principle.
 
 

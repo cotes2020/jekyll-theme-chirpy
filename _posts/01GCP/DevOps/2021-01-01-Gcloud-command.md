@@ -6,7 +6,7 @@ tags: [GCP]
 toc: true
 image:
 ---
- 
+
 
 - [GCP - Command](#gcp---command)
 
@@ -18,10 +18,10 @@ image:
 
 The SDK includes two types of tools.
 - a collection of `client libraries` that applications can use to interact with GCP services.
-- a set of `command-line tools`, including 
+- a set of `command-line tools`, including
   - **gcloud**: managing all services other than Cloud Storage, BigQuery, and Kubernetes.
-  - gsutil, 
-  - bq, 
+  - gsutil,
+  - bq,
   - **kubectl**: Kubernetes
 
 

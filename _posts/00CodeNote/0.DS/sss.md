@@ -496,7 +496,7 @@ class UnorderedList:
         return False
 
 
-    # """    
+    # """
     # Remove node from start of list
     # (Head)[1] -> [2] -> [3](Tail)
     #        (Head)[2] -> [3](Tail)
@@ -506,7 +506,7 @@ class UnorderedList:
             self.head = self.head.next
             self.count -= 1
             if self.count == 0:
-                self.tail = None  
+                self.tail = None
 
     # """
     # Remove node from end of list
@@ -892,7 +892,3 @@ print(my_list.size())
 print(my_list.search(93))
 print(my_list.search(100))
 ```
-
-
-
-

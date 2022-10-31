@@ -1,3 +1,9 @@
+from sklearn.metrics import mean_absolute_error
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -11,14 +17,15 @@ y = X_full.SalePrice
 X_full.drop(['SalePrice'], axis=1, inplace=True)
 
 # Break off vdalidation set from training data
-X_train_full, X_valid_full, y_train, y_valid = train_test_split(X_full, y, train_size=0.8, test_size=0.2, random_state=0)
+X_train_full, X_valid_full, y_train, y_valid = train_test_split(
+    X_full, y, train_size=0.8, test_size=0.2, random_state=0)
 
 # find cardinality
 categorical_cols = [col for col in X_train_full.columns
-            if X_train_full[col].nunique() < 10
-            and X_train_full[col].dtype == "Object"]
+                    if X_train_full[col].nunique() < 10
+                    and X_train_full[col].dtype == 'Object']
 numerical_cols = [col for col in X_train_full.columns
-            if X_train_full[col].dtype in ['int64', 'float64']]
+                  if X_train_full[col].dtype in ['int64', 'float64']]
 
 
 # Keep selected columns only
@@ -31,14 +38,6 @@ X_test = X_test_full[my_cols].copy()
 
 X_train.head()
 
-
-
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error
 
 # Preprocessing for numerical data
 # SimpleImputer() -> Approach 2 (Imputation) 用其他数值代替
@@ -67,7 +66,7 @@ clf = Pipeline(
         ('preprocessor', preprocessor),
         ('model', model)])
 
-# Preprocessing of training data, fit model 
+# Preprocessing of training data, fit model
 clf.fit(X_train, y_train)
 
 # Preprocessing of validation data, get predictions
@@ -77,14 +76,11 @@ print('MAE:', mean_absolute_error(y_valid, preds))
 # MAE: 17861.780102739725
 
 
-
-
-
 # ===================== Step 1: Improve the performance
 # Part A
 # define the own preprocessing steps and random forest model.
 
-# Preprocessing for numerical data 
+# Preprocessing for numerical data
 # 数值型数据的预处理
 numerical_transformer = SimpleImputer(
     # strategy='constant') # MAE too high
@@ -96,7 +92,7 @@ numerical_transformer = SimpleImputer(
 categorical_transformer = Pipeline(
     steps=[
         ('imputer', SimpleImputer(strategy='most_frequent')),
-        ('onehot', OneHotEncoder(handle_unknown='ignore',sparse=False))
+        ('onehot', OneHotEncoder(handle_unknown='ignore', sparse=False))
     ]
 )
 
@@ -113,8 +109,8 @@ model = RandomForestRegressor(n_estimators=100, random_state=0)
 
 
 # Part B
-# have defined a pipeline in Part A that achieves lower MAE than the code above. 
-# You're encouraged to take the time here and try out many different approaches, to see how low you can get the MAE! 
+# have defined a pipeline in Part A that achieves lower MAE than the code above.
+# You're encouraged to take the time here and try out many different approaches, to see how low you can get the MAE!
 
 # Bundle preprocessing and modeling code in a pipeline
 my_pipeline = Pipeline(
@@ -122,7 +118,7 @@ my_pipeline = Pipeline(
         ('preprocessor', preprocessor),
         ('model', model)])
 
-# Preprocessing of training data, fit model 
+# Preprocessing of training data, fit model
 my_pipeline.fit(X_train, y_train)
 
 # Preprocessing of validation data, get predictions
@@ -131,8 +127,6 @@ preds = my_pipeline.predict(X_valid)
 # Evaluate the model
 score = mean_absolute_error(y_valid, preds)
 print('MAE:', score)
-
-
 
 
 # Step 2: Generate test predictions

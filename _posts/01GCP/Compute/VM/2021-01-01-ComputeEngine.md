@@ -38,7 +38,7 @@ Compute Engine
 - <font color=red> Fully customizable VMs </font>
   - Compute Engine offers virtual machines that run on GCP
   - create and run virtual machines on Google infrastructure.
-  - run virtual machines on demand in the Cloud.  
+  - run virtual machines on demand in the Cloud.
     - select predefined VM configurations
     - create customized configurations
 - <font color=red> no upfront investments </font>
@@ -107,7 +107,7 @@ Compute Engine
 - machine learning and data processing that can take advantage of GPUs, many GCP zones have GPU's available for you.
 - Just like physical computers need disks, so do VM.
 
-Virtual machines need <font color=red> block storage </font>  
+Virtual machines need <font color=red> block storage </font>
 - (2 main  choices)
 1. 2 persistent storage
    - standard or SSD.
@@ -149,10 +149,10 @@ Virtual machines need <font color=red> block storage </font>
   - have a workload that no human being is sitting around waiting to finish
   - such as batch job analyzing large dataset
 - benifit:
-  - save money  
+  - save money
   - cost less per hour but can be terminated by Google Cloud at any time.
 - different from an ordinary Compute Engine VM in only one respect.
-  - given compute engine permission to terminate it if it's resources are needed elsewhere.  
+  - given compute engine permission to terminate it if it's resources are needed elsewhere.
   - make sure the job able to be stopped and restarted.
 - can't convert a non-preemptible instance into a preemptible one.
   - must be made at VM creation.

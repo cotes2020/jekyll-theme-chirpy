@@ -19,7 +19,7 @@ public class BTTraversal {
             preorder(node.right);
         }
     }
-    
+
 
     public void preorderwithStack(Node node) {
         if(node == null) {

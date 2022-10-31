@@ -7,7 +7,7 @@ import java.util.Queue;
 // use queue
 
 public class BSTTraversalLevelOrder {
-    
+
     public void levelOrderTraversal(Node node) {
         if(node == null) {
             System.out.println("Please enter a valid tree!");
@@ -32,7 +32,7 @@ public class BSTTraversalLevelOrder {
     }
 
     public static void main(String args[]){
-        
+
         BinaryTree bt = new BinaryTree();
         Node head = null;
         head = bt.addNode(10, head);

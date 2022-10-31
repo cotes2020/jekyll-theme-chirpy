@@ -11,4 +11,4 @@ sudo systemctl start nessusd.service
 3. advanced: all por
 4. ass: scan fo all wen
 5. save
-6. 
+6.

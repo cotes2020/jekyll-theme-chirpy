@@ -1,4 +1,4 @@
- 
+
 
 # EKS
 
@@ -13,15 +13,15 @@
 
 ## Aceess
 
-User accounts versus service accounts 
+User accounts versus service accounts
 - user
-  - User accounts are for humans. 
+  - User accounts are for humans.
   - Service accounts are for processes, which run in pods.
 - name
-  - User accounts are intended to be global. Names must be unique across all namespaces of a cluster. 
+  - User accounts are intended to be global. Names must be unique across all namespaces of a cluster.
   - Service accounts are namespaced.
 - permission
-  - Typically, a cluster's user accounts might be synced from a corporate database, where new user account creation requires special privileges and is tied to complex business processes. 
+  - Typically, a cluster's user accounts might be synced from a corporate database, where new user account creation requires special privileges and is tied to complex business processes.
   - Service account creation is intended to be more lightweight, allowing cluster users to create service accounts for specific tasks by following the principle of least privilege.
 - Auditing considerations for humans and service accounts may differ.
 - A config bundle for a complex system may include definition of various service accounts for components of that system. Because service accounts can be created without many constraints and have namespaced names, such config is portable.
@@ -40,31 +40,31 @@ User accounts versus service accounts
 
 ## use case
 
-### Enabling cross-account access to EKS cluster resources 
+### Enabling cross-account access to EKS cluster resources
 
-Often customers manage their AWS environments separated using multiple AWS accounts. 
-- They do not want production resources to interact or coexist with development or staging resources. 
+Often customers manage their AWS environments separated using multiple AWS accounts.
+- They do not want production resources to interact or coexist with development or staging resources.
 - While this provides the benefits of better resource isolation, it increases the access management overhead.
 
 access
-- User access to multiple accounts can be managed by leveraging temporary AWS security credentials using `AWS Security Token Service (STS) and IAM roles`. 
-- But what if the resources, say, containerized workloads or pods in an EKS cluster hosted in one account wants to interact with the EKS cluster resources hosted in another account? 
-  - use fine-grained roles at the pod level using `IAM Roles for Service Accounts (IRSA)`.  
+- User access to multiple accounts can be managed by leveraging temporary AWS security credentials using `AWS Security Token Service (STS) and IAM roles`.
+- But what if the resources, say, containerized workloads or pods in an EKS cluster hosted in one account wants to interact with the EKS cluster resources hosted in another account?
+  - use fine-grained roles at the pod level using `IAM Roles for Service Accounts (IRSA)`.
 
 ---
 
 **Scenario**
 
-- a customer with multiple accounts – dev, stg, and prod 
-- wants to manage the resources from a continuous integration (CI) account. 
-- An EKS cluster in this CI account needs to access AWS resources to these target accounts. 
+- a customer with multiple accounts – dev, stg, and prod
+- wants to manage the resources from a continuous integration (CI) account.
+- An EKS cluster in this CI account needs to access AWS resources to these target accounts.
 - One simple way to `grant access to the pods in the CI account` to target cross-account resources:
   - Create roles in these target accounts
   - Grant assume role permissions to the CI account EKS cluster node instance profile on the target account roles
   - And finally, trust this cluster node instance profile in the target account’s role(s)
 
 
-Though this will allow the EKS cluster in the CI account to communicate with the AWS resources in the target accounts, it grants **any pod running on this node** access to this role. 
+Though this will allow the EKS cluster in the CI account to communicate with the AWS resources in the target accounts, it grants **any pod running on this node** access to this role.
 - At AWS, we always insist to follow the standard security advice of granting least privilege, or granting only the permissions required to perform a task. Start with a minimum set of permissions and grant additional permissions as necessary.
 
 ---
@@ -73,9 +73,9 @@ Though this will allow the EKS cluster in the CI account to communicate with the
 
 ![Screen Shot 2022-10-19 at 11.58.46](https://i.imgur.com/Hqu1Por.png)
 
-IAM supports federated users using **OpenID Connect (OIDC)**. 
-- Amazon EKS hosts a `public OIDC discovery endpoint` per **cluster** containing the **signing keys** for the `ProjectedServiceAccountToken` JSON web tokens 
-- so external systems, like IAM, can validate and accept the OIDC tokens issued by Kubernetes.  
+IAM supports federated users using **OpenID Connect (OIDC)**.
+- Amazon EKS hosts a `public OIDC discovery endpoint` per **cluster** containing the **signing keys** for the `ProjectedServiceAccountToken` JSON web tokens
+- so external systems, like IAM, can validate and accept the OIDC tokens issued by Kubernetes.
 
 
 ---
@@ -86,11 +86,11 @@ IAM supports federated users using **OpenID Connect (OIDC)**.
 - IAM role + IAM policy
 - Kubenert service account -> IAM role
 
- 
+
 ##### Setup OIDC in CI account
 
 1. Fetch the CI account cluster’s OIDC issuer URL
-   1. for EKS cluster version is 1.13+, it will have an OpenID Connect issuer URL. 
+   1. for EKS cluster version is 1.13+, it will have an OpenID Connect issuer URL.
    2. get this URL from the Amazon EKS console directly, or use CLI command to retrieve it.
 
 ```bash
@@ -152,7 +152,7 @@ aws iam create-policy \
 
 1. Create an IAM role
    1. Create an `IAM role` in the CI account, ci-account-iam-role
-   2. associate it **IAM policy** 
+   2. associate it **IAM policy**
 
 ```json
 // Create the role.
@@ -161,7 +161,7 @@ aws iam create-role \
   --assume-role-policy-document file://trust-relationship.json \
   --description "my-role-description"
 
-// Attach IAM policy 
+// Attach IAM policy
 aws iam attach-role-policy \
   --role-name my-role \
   --policy-arn=arn:aws:iam::$account_id:policy/my-policy
@@ -172,7 +172,7 @@ aws iam attach-role-policy \
 
 1. Once the role is created
    1. associate it with **Kubernetes service account**
-   2. attach the IAM policy that you want to associate with the serviceaccount. 
+   2. attach the IAM policy that you want to associate with the serviceaccount.
    3. the **serviceaccount** must be able to assume role to the target account, so grant the following assume role permissions.
    4. Note that if you haven’t created the target account IAM role, please proceed to step 4 and complete configuring the target AWS account and then finish associating this policy.
 
@@ -198,28 +198,28 @@ aws iam attach-role-policy \
 ##### Setup Kubernetes serviceaccount in CI account
 
 
-2. Creat the serviceaccount 
+2. Creat the serviceaccount
    1. associate **IAM Role** with **Kubernetes service account**
-   2. attach the IAM policy that you want to associate with the serviceaccount. 
+   2. attach the IAM policy that you want to associate with the serviceaccount.
 
 1. Setup IAM role
    1. associate it with **trust relationship** to the cluster’s OIDC provider
-      1. pecify the service-account, namespace to restrict the access. 
-      2. specifying ci-namespace and ci-serviceaccount for namespace and serviceaccount respectively. 
+      1. pecify the service-account, namespace to restrict the access.
+      2. specifying ci-namespace and ci-serviceaccount for namespace and serviceaccount respectively.
       3. Replace the OIDC_PROVIDER with the provider URL saved in the previous step.
 
 
 
 ```bash
-# Set variables 
+# Set variables
 export cluster_name=dev-medusa-01
 export namespace=default
 export service_account=medusa-core
-export my_role=eks-medusa-core 
+export my_role=eks-medusa-core
 export policy_arn=arn:aws:iam::350842811077:policy/medusa-coe-config-policy
-# Set AWS account ID 
+# Set AWS account ID
 account_id=$(aws sts get-caller-identity --query "Account" --output text)
-# Set cluster's OIDC identity provider 
+# Set cluster's OIDC identity provider
 oidc_provider=$(aws eks describe-cluster \
   --name dev-medusa-01 \
   --query "cluster.identity.oidc.issuer" \
@@ -237,7 +237,7 @@ eksctl create iamserviceaccount \
   --approve
 
 
-# ============= 2 
+# ============= 2
 cat >my-service-account.yaml <<EOF
 apiVersion: v1
 kind: ServiceAccount
@@ -272,7 +272,7 @@ EOF
 
 
 1. Configuring the Kubernetes
-   1. In Kubernetes, define the IAM role to associate with a service account in the cluster by adding the `eks.amazonaws.com/role-arn` annotation to the service account. 
+   1. In Kubernetes, define the IAM role to associate with a service account in the cluster by adding the `eks.amazonaws.com/role-arn` annotation to the service account.
    2. annotate the service account associated with the cluster in the CI account with the role ARN as shown below.
 
 
@@ -289,12 +289,12 @@ The equivalent kubectl command is:
 
 ```bash
 
-# Annotate service account with the IAM role Arn that you want the service account to assume. 
-# Replace my-role with the name of the existing IAM role. 
-# Suppose that you allowed a role from a different AWS account than the account that the cluster is in to assume the role. 
+# Annotate service account with the IAM role Arn that you want the service account to assume.
+# Replace my-role with the name of the existing IAM role.
+# Suppose that you allowed a role from a different AWS account than the account that the cluster is in to assume the role.
 # Then, make sure to specify the AWS account and role from the other account. For more information, see Cross-account IAM permissions.
 $ kubectl annotate serviceaccount \
-  -n $namespace $service_account eks.amazonaws.com/role-arn=arn:aws:iam::$account_id:role/my-role 
+  -n $namespace $service_account eks.amazonaws.com/role-arn=arn:aws:iam::$account_id:role/my-role
 ```
 
 
@@ -303,11 +303,11 @@ $ kubectl annotate serviceaccount \
 
 
 
-##### Confirm the role and service account 
+##### Confirm the role and service account
 
 
-```bash 
-# Confirm that the role and service account are configured correctly. 
+```bash
+# Confirm that the role and service account are configured correctly.
 aws iam get-role \
   --role-name $my_role \
   --query Role.AssumeRolePolicyDocument
@@ -356,7 +356,7 @@ kubectl describe serviceaccount $service_account -n default
 ```
 
 
- 
+
 
 
 ##### configure a pod to use a service account
@@ -368,17 +368,17 @@ kubectl describe serviceaccount $service_account -n default
 
 ```bash
 
-# Set variables 
+# Set variables
 export cluster_name=dev-medusa-01
 export namespace=default
 export service_account=medusa-core
 export my_app=medusa-core
 export my_pod=medusa-core-5bbf4dd447-rshjm
-export my_role=eks-medusa-core 
+export my_role=eks-medusa-core
 export policy_arn=arn:aws:iam::350842811077:policy/medusa-coe-config-policy
-# Set AWS account ID 
+# Set AWS account ID
 account_id=$(aws sts get-caller-identity --query "Account" --output text)
-# Set cluster's OIDC identity provider 
+# Set cluster's OIDC identity provider
 oidc_provider=$(aws eks describe-cluster \
   --name dev-medusa-01 \
   --query "cluster.identity.oidc.issuer" \
@@ -405,12 +405,12 @@ spec:
         image: public.ecr.aws/nginx/nginx:1.21
 EOF
 
-# Deploy the manifest 
-kubectl apply -f my-deployment.yaml 
+# Deploy the manifest
+kubectl apply -f my-deployment.yaml
 ```
 
 
-2. confirm 
+2. confirm
 
 ```bash
 # View the pods that were deployed with the deployment in the previous step.
@@ -432,7 +432,7 @@ kubectl describe pod $my_pod | grep AWS_WEB_IDENTITY_TOKEN_FILE:
 AWS_WEB_IDENTITY_TOKEN_FILE:  /var/run/secrets/eks.amazonaws.com/serviceaccount/token
 
 
-# Confirm that the deployment is using the service account. 
+# Confirm that the deployment is using the service account.
 kubectl describe deployment $my_app | grep "Service Account"
 ```
 
@@ -440,15 +440,15 @@ kubectl describe deployment $my_app | grep "Service Account"
    1. When a pod uses AWS credentials from an IAM role that's associated with a service account, the AWS CLI or other SDKs in the containers for that pod use the credentials that are provided by that role. If you don't restrict access to the credentials that are provided to the Amazon EKS node IAM role, the pod still has access to these credentials. For more information, see Restrict access to the instance profile assigned to the worker node.
    2. If the pods can't interact with the services as you expected, complete the following steps to confirm the configured.
       1. Confirm that the pods use an AWS SDK version that supports assuming an IAM role through an OpenID Connect web identity token file. For more information, see Using a supported AWS SDK.
-      2. Confirm that the deployment is using the service account. 
+      2. Confirm that the deployment is using the service account.
       3. If the pods still can't access services, review the steps that are described in Configuring a Kubernetes service account to assume an IAM role to confirm that the role and service account are configured properly.
- 
+
 
 
 ##### Configuring the target account
 
 1. Configuring the target account – IAM role and policy permissions
-   1. In target account, create an IAM role named `target-account-iam-role` with a trust relationship that allows AssumeRole permissions to CI account’s IAM role created in the previous step 
+   1. In target account, create an IAM role named `target-account-iam-role` with a trust relationship that allows AssumeRole permissions to CI account’s IAM role created in the previous step
 
 ```json
 {
@@ -467,7 +467,7 @@ kubectl describe deployment $my_app | grep "Service Account"
 ```
 
 1. Configuring the target account – IAM policy
-   1. create an IAM policy with the necessary permissions the service account’s pods in CI account cluster would need to manage.  
+   1. create an IAM policy with the necessary permissions the service account’s pods in CI account cluster would need to manage.
    2. Note that if you haven’t created associated the target policy to the CI account, please do the association before proceeding with the next step.
 
 ```json
@@ -492,7 +492,7 @@ kubectl describe deployment $my_app | grep "Service Account"
 
 1. Verifying the cross-account access to AWS resources
    1. Now that the IAM access roles and policies are configured at both the ends- CI and target accounts, we create a sample Kubernetes pod in the CI cluster and test the cross-account access to AWS resources of the target account.
-   2. save the below contents to a file named `awsconfig-configmap.yaml`. 
+   2. save the below contents to a file named `awsconfig-configmap.yaml`.
 
 ```bash
 # This configmap is to set the AWS CLI profiles used in the deployment pod.
@@ -513,7 +513,7 @@ kubectl create configmap awsconfig-configmap \
 
 
 
-# Let us create another configMap resource to store the installation scripts. 
+# Let us create another configMap resource to store the installation scripts.
 # Name a file named script-configmap.yaml and save the below contents into the file.
 
 #!/bin/bash
@@ -531,7 +531,7 @@ kubectl version
 # Create the second Kubernetes configMap resource with the below kubectl command.
 kubectl create configmap script-configmap \
     --from-file=script.sh=script-configmap.yaml \
-    -n ci-namespace 
+    -n ci-namespace
 ```
 
 
@@ -583,7 +583,7 @@ spec:
 
 
 ```bash
-# Apply the pod manifest file to create a test container pod 
+# Apply the pod manifest file to create a test container pod
 kubectl apply -f test-deployment.yaml
 
 
@@ -605,7 +605,7 @@ aws sts get-caller-identity --profile target-env
 
 
 
-# The pod now has basic list permissions on the AWS resources as defined in the previous step. 
+# The pod now has basic list permissions on the AWS resources as defined in the previous step.
 # Below command should output the list of EKS clusters in the target account.
 aws eks list-clusters --region <AWS_REGION> --profile target-env
 
@@ -616,7 +616,7 @@ aws eks list-clusters --region <AWS_REGION> --profile target-env
 aws eks describe-cluster \
     --name <TARGET_EKS_CLUSTER_NAME> \
     --region <AWS_REGION> \
-    --profile target-env 
+    --profile target-env
 ```
 
 
@@ -626,7 +626,7 @@ aws eks describe-cluster \
 
 For the CI account cluster pod to access and manage the target cluster’s resources, you must edit the aws-auth configmap of the cluster in the target account by adding the role to the system:masters group. Below is how the configmap should look after the changes.
 
-```yaml            
+```yaml
   mapRoles: |
 . . .
     - groups:
@@ -650,8 +650,7 @@ aws eks update-kubeconfig \
 
 
 # The pod should now be able to access the target cluster’s kube resources. Verify by issuing some sample kubectl get calls to access the target account’s EKS resources.
-kubectl get namespaces     
+kubectl get namespaces
 
 kubectl get pods -n kube-system
 ```
-

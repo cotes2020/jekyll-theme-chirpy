@@ -29,7 +29,7 @@ The classes provided are:
 
 
 - The class QuakeEntry
-  - has a `constructor` that requires `latitude, longitude, magnitude, title, and depth`. 
+  - has a `constructor` that requires `latitude, longitude, magnitude, title, and depth`.
   - It has several `get` methods and a `toString` method.
 
 ```java
@@ -40,7 +40,7 @@ public class QuakeEntry implements Comparable<QuakeEntry> {
     private double depth;
     private double magnitude;
 
-    public QuakeEntry(double lat, double lon, double mag, String t, double d) { 
+    public QuakeEntry(double lat, double lon, double mag, String t, double d) {
         myLocation = new Location(lat,lon);
         magnitude = mag;
         title = t;
@@ -187,14 +187,14 @@ public class EarthQuakeParser {
         System.out.println("# quakes = "+list.size());
 
     }
-    
+
 }
 ```
 
 
 - The class EarthQuakeClient
-  - has been started for you and creates an EarthQuakeParser to read in an earthquake data file, creating an ArrayList of QuakeEntrys. 
-  - You can test the program with the method `createCSV` to store an ArrayList of the earthquake data and print a CSV file. 
+  - has been started for you and creates an EarthQuakeParser to read in an earthquake data file, creating an ArrayList of QuakeEntrys.
+  - You can test the program with the method `createCSV` to store an ArrayList of the earthquake data and print a CSV file.
   - You will complete the methods that filter magnitude and distance in this class and add additional methods to it.
 
 ```java
@@ -231,7 +231,7 @@ public class EarthQuakeClient {
 
 
 - The class ClosestQuakes
-  - to find the ten closest quakes to a particular location. 
+  - to find the ten closest quakes to a particular location.
   - You will complete this method.
 
 ```java
@@ -250,7 +250,7 @@ Modify the `EarthQuakeClient` class:
 ```java
 // 1. Write the method `filterByMagnitude`:
 // two parameters, an ArrayList of type QuakeEntry named quakeData, and a double named magMin.
-// return an ArrayList of type QuakeEntry of all the earthquakes from quakeData that have a magnitude larger than magMin. 
+// return an ArrayList of type QuakeEntry of all the earthquakes from quakeData that have a magnitude larger than magMin.
 // Notice that we have already created an ArrayList named answer for you to store those earthquakes that satisfy this requirement.
 
     // ------------------------------------------------------------
@@ -280,7 +280,7 @@ Modify the `EarthQuakeClient` class:
     // EarthQuakeParser.read(source) = ArrayList<QuakeEntry> list {QuakeEntry1, QuakeEntry2, QuakeEntry3, ...}
     // for each QuakeEntry return QuakeEntry.getMagnitude() > 5.0
     // ------------------------------------------------------------
-    // this method reads data on earthquakes from a file, stores a QuakeEntry for each earthquake read in the ArrayList named list, and prints out the number of earthquakes read in. 
+    // this method reads data on earthquakes from a file, stores a QuakeEntry for each earthquake read in the ArrayList named list, and prints out the number of earthquakes read in.
     public void bigQuakes() {
         EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
@@ -302,7 +302,7 @@ Modify the `EarthQuakeClient` class:
 
     // ------------------------------------------------------------
     // ArrayList<QuakeEntry> quakeData {QuakeEntry1, QuakeEntry2, QuakeEntry3, ...}
-    // call filterByDistance to calculate each QuakeEntry distance, 
+    // call filterByDistance to calculate each QuakeEntry distance,
     // print out the earthquakes within 1000 Kilometers to a specified city
     // ------------------------------------------------------------
     public ArrayList<QuakeEntry> filterByDistanceFrom(ArrayList<QuakeEntry> quakeData, double distMax, Location from) {
@@ -330,7 +330,7 @@ Modify the `EarthQuakeClient` class:
 
     // ------------------------------------------------------------
     // EarthQuakeParser.read(source) = ArrayList<QuakeEntry> list {QuakeEntry1, QuakeEntry2, QuakeEntry3, ...}
-    // call filterByDistance to calculate each QuakeEntry distance, 
+    // call filterByDistance to calculate each QuakeEntry distance,
     // print out the earthquakes within 1000 Kilometers to a specified city
     // ------------------------------------------------------------
     // For each earthquake found, print the distance from the earthquake to the specified city, followed by the information about the city (use getInfo()
@@ -395,7 +395,7 @@ Modify the `EarthQuakeClient` class:
 
     // ------------------------------------------------------------
     // EarthQuakeParser.read(source) = ArrayList<QuakeEntry> list {QuakeEntry1, QuakeEntry2, QuakeEntry3, ...}
-    // call filterByDepth to calculate each QuakeEntry Depth, 
+    // call filterByDepth to calculate each QuakeEntry Depth,
     // print out the earthquakes within Depth range
     // ------------------------------------------------------------
     public void quakesOfDepth() {
@@ -423,7 +423,7 @@ add new methods to one class, the EarthQuakeClient class:
 
 // 1. Write the method `filterByPhrase`
 // has three parameters:
-//     an ArrayList of type QuakeEntry named quakeData, 
+//     an ArrayList of type QuakeEntry named quakeData,
 //     a String named where, that indicates where to search in the title and has one of three values: (“start”, ”end”, or “any”),
 //     a String named phrase, indicating the phrase to search for in the title of the earthquake.
 // The title of the earthquake can be obtained through the `getInfo()` method.
@@ -465,7 +465,7 @@ add new methods to one class, the EarthQuakeClient class:
         ArrayList<QuakeEntry> quakeData  = parser.read(source);
         System.out.println("read data for "+ quakeData.size()+" quakes");
 
-        // String where = "end"; 
+        // String where = "end";
         // String phrase = "California";
         // ArrayList<QuakeEntry> qeByPhrase = filterByPhrase(quakeData, where, phrase);
         // for(QuakeEntry qe : qeByPhrase){
@@ -473,8 +473,8 @@ add new methods to one class, the EarthQuakeClient class:
         // }
         // System.out.println("Found " + qeByPhrase.size() + " quakes that match " + phrase + " at " + where);
 
-        
-        // String where = "any"; 
+
+        // String where = "any";
         // String phrase = "Creek";
         // ArrayList<QuakeEntry> qeByPhrase = filterByPhrase(quakeData, where, phrase);
         // for(QuakeEntry qe : qeByPhrase){
@@ -482,8 +482,8 @@ add new methods to one class, the EarthQuakeClient class:
         // }
         // System.out.println("Found " + qeByPhrase.size() + " quakes that match " + phrase + " at " + where);
 
-        
-        // String where = "start"; 
+
+        // String where = "start";
         // String phrase = "Explosion";
         // ArrayList<QuakeEntry> qeByPhrase = filterByPhrase(quakeData, where, phrase);
         // for(QuakeEntry qe : qeByPhrase){
@@ -491,7 +491,7 @@ add new methods to one class, the EarthQuakeClient class:
         // }
         // System.out.println("Found " + qeByPhrase.size() + " quakes that match " + phrase + " at " + where);
 
-        String where = "start"; 
+        String where = "start";
         String phrase = "Quarry Blast";
         ArrayList<QuakeEntry> qeByPhrase = filterByPhrase(quakeData, where, phrase);
         for(QuakeEntry qe : qeByPhrase){
@@ -499,7 +499,7 @@ add new methods to one class, the EarthQuakeClient class:
         }
         System.out.println("Found " + qeByPhrase.size() + " quakes that match " + phrase + " at " + where);
 
-        where = "end"; 
+        where = "end";
         phrase = "Alaska";
         qeByPhrase = filterByPhrase(quakeData, where, phrase);
         for(QuakeEntry qe : qeByPhrase){
@@ -507,8 +507,8 @@ add new methods to one class, the EarthQuakeClient class:
         }
         System.out.println("Found " + qeByPhrase.size() + " quakes that match " + phrase + " at " + where);
 
-        
-        where = "any"; 
+
+        where = "any";
         phrase = "Can";
         qeByPhrase = filterByPhrase(quakeData, where, phrase);
         for(QuakeEntry qe : qeByPhrase){
@@ -530,7 +530,7 @@ Modify the `ClosestQuakes` class:
 
 ```java
 
-// 1. The method `findClosestQuakes` 
+// 1. The method `findClosestQuakes`
 // reads in data on earthquakes storing them in the ArrayList list, prints how many quakes there are.
 // It sets a location variable named jakarta to the location of the city Jakarta.
 // It then calls the method getClosest to determine the ten closest earthquakes in list and prints information about those quakes and how close they are to Jakarta.
@@ -565,7 +565,7 @@ Modify the `ClosestQuakes` class:
 
 // 2. Complete the method `getClosest`.
 // has three parameters,
-//     an ArrayList of type QuakeEntry named quakeData, 
+//     an ArrayList of type QuakeEntry named quakeData,
 //     a Location named current,
 //     and an int named howMany.
 // find the closest number of howMany earthquakes to the current Location, return them in an ArrayList of type QuakeEntry.

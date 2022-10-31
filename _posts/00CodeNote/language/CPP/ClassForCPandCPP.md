@@ -270,7 +270,7 @@ int main ()
 **%b** | As for s, but interpret character escapes in backslash notation in the string argument. printf会*解析*格式指示符和参数列表中的*转义字符*, 其后的参数列表需要用双引号. 无双引号，简单输出全部字符。
 
 ```
-$ printf "hello %c, %s. \n" "China" "World"    
+$ printf "hello %c, %s. \n" "China" "World"
 hello C, World
 //%c只头字母
 
@@ -279,7 +279,7 @@ hello	world, welcome to\tChina
 //%s全部简单输出
 //%数字s 表示空格大小
 
-$ printf "hello %b see u\n" hjkl\taa.   
+$ printf "hello %b see u\n" hjkl\taa.
 hello hjkltaa see u
 
 $ printf "hello %b see u\n" "hjkl\taa"
@@ -336,7 +336,7 @@ hello a
 
 ```
 $ printf "hello %#s. \n" "world, hey"
-hello world, hey.        
+hello world, hey.
 //#对%s格式类型无影响
 
 $ printf "this is octonary number: %o. \n" "123"
@@ -496,7 +496,7 @@ printf("Hello, %s. \n", name);
 ```
 
 **printf** ("想要输出的语句");
-**scanf** ("**%s**", **&** name);       
+**scanf** ("**%s**", **&** name);
 **printf** ("Hello, **%s**. \n", name);
 
 

@@ -13,17 +13,17 @@ public class FavoritesList<E> {
         public E getValue() {return value;}
         public void increment() {count++;}
     }
-    
+
     PositionalList<Item<E>> list = new LinkedPositionalList<>(); // list of Items
-    
+
     public FavoritesList() {} // constructs initially empty favorites list
-    
+
     // nonpublic utilities
     /** Provides shorthand notation to retrieve user's element stored at Position p. */
     protected E value(Position<Item<E>> p) {return p.getElement().getValue();}
     /** Provides shorthand notation to retrieve count of item stored at Position p. */
     protected int count(Position<Item<E>> p) {return p.getElement().getCount();}
-    
+
     /** Returns Position having element equal to e (or null if not found). */
     protected Position<Item<E>> findPosition(E e) {
         Position<Item<E>> walk  = list.first();
@@ -62,13 +62,10 @@ public class FavoritesList<E> {
     // /∗∗ Returns an iterable collection of the k most frequently accessed elements. ∗/
     public Iterable<E> getFavorites(int k) throws IllegalArgumentException {
         if (k < 0 || k > size()) throw new IllegalArgumentException("Invalid k");
-        
+
         PositionalList<E> result = new LinkedPositionalList<>();
         Iterator<Item<E>> iter = list.iterator();
-        for (int j=0; j < k; j++) result.addLast(iter.next().getValue()); 
+        for (int j=0; j < k; j++) result.addLast(iter.next().getValue());
         return result;
     }
 }
-    
-    
-    

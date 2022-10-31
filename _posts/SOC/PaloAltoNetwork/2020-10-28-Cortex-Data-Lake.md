@@ -90,7 +90,7 @@ Here are the products and services that can send logs to Cortex Data Lake:
 sources | log type | Note
 ---|---|---
 **Palo Alto Networks Firewalls** [link](https://www.paloaltonetworks.com/products/product-selection) | firewalls log | onboard individual firewalls directly to Cortex Data Lake. Use the `Explore app` to view all log records that the firewalls forward to Cortex Data Lake.
-**Panorama-Managed Firewalls** [link](https://www.paloguard.com/Panorama.asp)| firewalls log | onboard firewalls to Cortex Data Lake at scale, instead of onboarding each individual firewall. All Cortex Data Lake logs are visible directly in Panorama. 
+**Panorama-Managed Firewalls** [link](https://www.paloguard.com/Panorama.asp)| firewalls log | onboard firewalls to Cortex Data Lake at scale, instead of onboarding each individual firewall. All Cortex Data Lake logs are visible directly in Panorama.
 **Prisma Access** | the logs, ACC, and reports from Panorama for remote network and mobile user traffic | Prisma Access deploys and manages the security infrastructure globally to secure remote networks and mobile users. Prisma Access logs directly to Cortex Data Lake. <br> - To enable logging for Prisma Access, must purchase a Cortex Data Lake license. <br> - Log traffic does not use the licensed bandwidth purchased for Prisma Access.
 **Cortex XDR** | Cortex XDR alerts are automatically written to Cortex Data Lake as log records | other apps can read and respond to alerts. <br> - These log records are not visible in `Explore`; <br> - can use `Log Forwarding app` to forward XDR alerts to the email or Syslog destination and configure email alert notifications within XDR.
 
@@ -118,7 +118,7 @@ Log Type | Description
 . | <kbd>Cortex XDR Logs</kbd>
 `alert` | Information for all alerts raised in Cortex XDR.
 `xdr` | (Cortex XDR Pro per Endpoint only) All EDR data collected on the endpoint.
-. | <kbd>Common Logs</kbd> |  
+. | <kbd>Common Logs</kbd> |
 `config` / Configuration logs | entries for changes to the firewall configuration.
 `system` / System logs | entries for each system event on the firewall.
 . | <kbd>Firewall Logs</kbd> |
@@ -221,7 +221,7 @@ Before you start sending logs to Cortex™ Data Lake, you must:
   - Connect Firewalls to Cortex Data Lake
 - Sending log data to Cortex Data Lake from
   - [Cortex Data Lake License](https://docs.paloaltonetworks.com/cortex/cortex-data-lake/cortex-data-lake-getting-started/get-started-with-cortex-data-lake/license-activation.html#id183GAI00VDE)
-  - **Connect the firewall to Cortex Data Lake**.   
+  - **Connect the firewall to Cortex Data Lake**.
   - other sources
   - Panorama-managed firewalls	Forward Logs to Cortex Data Lake (Panorama-Managed)
   - Prisma™ Access	Configure the Service Infrastructure

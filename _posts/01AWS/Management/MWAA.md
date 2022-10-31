@@ -112,10 +112,10 @@ Benefits of using Amazon MWAA
     - integrated with AWS security services to enable secure access to customer data
     - supports single sign-on using the same AWS credentials to access the Apache Airflow UI.
   - as well as hundreds of built-in and community-created operators and sensors
-  - services on other cloud platforms.  
+  - services on other cloud platforms.
   - and popular third-party tools
     - such as Apache Hadoop, Presto, Hive, and Spark to perform data processing tasks.
-- Amazon MWAA is committed to maintaining compatibility with the Amazon MWAA API,  
+- Amazon MWAA is committed to maintaining compatibility with the Amazon MWAA API,
 
 
 <font color=red> Containers </font>
@@ -215,7 +215,7 @@ Each environment has an Airflow Scheduler and 1 or more Airflow Workers, managed
 Amazon Managed Workflows for Apache Airflow (MWAA) uses
 - the Amazon VPC,
 - DAG code and supporting files in the Amazon S3 storage bucket to create an environment.
-  - You specify the location of the Amazon S3 bucket, the path to the DAG code, and any custom plugins or dependencies on the Amazon MWAA console when you create an environment.  
+  - You specify the location of the Amazon S3 bucket, the path to the DAG code, and any custom plugins or dependencies on the Amazon MWAA console when you create an environment.
 
 
 ### Prerequisites
@@ -296,7 +296,7 @@ Amazon Managed Workflows for Apache Airflow (MWAA) uses
   - it uses the VPC network that you created for Amazon MWAA, and adds the other necessary networking components.
   - it automatically installs the version of Apache Airflow that you specify, including workers, scheduler, and web server.
     - The environment includes a link to access the Apache Airflow UI in the environment.
-    - You can create up to 10 environments per account per Region, and each environment can include multiple DAGs.  
+    - You can create up to 10 environments per account per Region, and each environment can include multiple DAGs.
 
 
 Amazon MWAA console > Create environment
@@ -347,7 +347,7 @@ Amazon MWAA console > Create environment
   - Under <font color=red> Web server access </font>
     - Web server access to the Airflow UI is always protected by a secure login using IAM
       - can have web server access on a public network to login over the Internet,
-      - or on a private network in your VPC.  
+      - or on a private network in your VPC.
     - <font color=blue> Public Network </font>
       - This creates a public URL to access the Apache Airflow user interface in the environment.
     - <font color=blue> Private Network </font>
@@ -377,7 +377,7 @@ Amazon MWAA console > Create environment
         - and the AWS-managed <font color=blue> Amazon Aurora PostgreSQL metadata database </font>
           - where the Apache Airflow scheduler creates task instances.
     - Each environment includes a scheduler, a web server, and a worker.
-      - Workers automatically scale up and down according to the workload.  
+      - Workers automatically scale up and down according to the workload.
 
   - Under <font color=red> Encryption </font>
   - ![mwaa-encryption-1-1024x286](https://i.imgur.com/3rXU8Dr.png)
@@ -405,7 +405,7 @@ Amazon MWAA console > Create environment
     - For Airflow configuration options
     - ![mwaa-airflow-configuration-1024x603](https://i.imgur.com/5tdBfTD.png)
       - When you create an environment Apache Airflow is installed using the default configuration options.
-      - If you add a custom configuration option, Apache Airflow uses the value from the custom configuration instead of the default.  
+      - If you add a custom configuration option, Apache Airflow uses the value from the custom configuration instead of the default.
       - add a customer configuration option
       - Select the configuration option to use a custom value for, then enter the Custom value.
 
@@ -430,13 +430,13 @@ Amazon MWAA console > Create environment
 To use Amazon Managed Workflows for Apache Airflow (MWAA), you must use an account, user, or role
 with the necessary permissions.
 
-The resources and services used in an Amazon MWAA environment are not accessible to all IAM entities (users, roles, or groups). 
-- must create a policy that grants your Apache Airflow users permission to access these resources. 
+The resources and services used in an Amazon MWAA environment are not accessible to all IAM entities (users, roles, or groups).
+- must create a policy that grants your Apache Airflow users permission to access these resources.
 - For example
-  - grant access to your Apache Airflow development team. 
-- Amazon MWAA uses these policies to validate whether a user has the permissions needed to perform an action on the AWS console or via the APIs used by an environment. 
+  - grant access to your Apache Airflow development team.
+- Amazon MWAA uses these policies to validate whether a user has the permissions needed to perform an action on the AWS console or via the APIs used by an environment.
 
-use the JSON policies in this topic to create a policy for your Apache Airflow users in IAM, and then attach the policy to a user, group, or role in IAM. 
+use the JSON policies in this topic to create a policy for your Apache Airflow users in IAM, and then attach the policy to a user, group, or role in IAM.
 
 Here are the policies available:
 - `AmazonMWAAFullConsoleAccess`
@@ -452,9 +452,9 @@ Here are the policies available:
 
 
 4. Apache Airflow UI access policy: `AmazonMWAAWebServerAccess`
-   - A user may need access to the AmazonMWAAWebServerAccess permissions policy if they need to access the Apache Airflow UI. 
-   - It does not allow the user to view environments on the Amazon MWAA console or use the Amazon MWAA APIs to perform any actions. 
-   - Specify the Admin, Op, User, Viewer or the Public role in {airflow-role} to customize the level of access for the user of the web token. 
+   - A user may need access to the AmazonMWAAWebServerAccess permissions policy if they need to access the Apache Airflow UI.
+   - It does not allow the user to view environments on the Amazon MWAA console or use the Amazon MWAA APIs to perform any actions.
+   - Specify the Admin, Op, User, Viewer or the Public role in {airflow-role} to customize the level of access for the user of the web token.
    - For more information, see Default Roles in the Apache Airflow reference guide.
    - Note: Amazon MWAA does not support custom Apache Airflow role-based access control (RBAC) roles as of yet.
 
@@ -474,7 +474,7 @@ Here are the policies available:
 
 ---
 
-### 5. Using the Airflow UI  
+### 5. Using the Airflow UI
 
 - In the Amazon MWAA console, look for the new environment and click on **Open Airflow UI**.
 - A new browser window is created and I am authenticated with a secure login via AWS IAM.
@@ -572,7 +572,7 @@ Here’s the full source code of the DAG:
         s3c = boto3.client('s3')
         indata = requests.get(download_http)
         n=0
-        with zipfile.ZipFile(io.BytesIO(indata.content)) as z:       
+        with zipfile.ZipFile(io.BytesIO(indata.content)) as z:
             zList=z.namelist()
             print(zList)
             for i in zList:
@@ -580,7 +580,7 @@ Here’s the full source code of the DAG:
                 zfiledata = BytesIO(z.read(i))
                 n += 1
                 s3c.put_object(Bucket=s3_bucket_name, Key=s3_key+i+'/'+i, Body=zfiledata)
-    def clean_up_csv_fn(**kwargs):    
+    def clean_up_csv_fn(**kwargs):
         ti = kwargs['task_instance']
         queryId = ti.xcom_pull(key='return_value', task_ids='join_athena_tables' )
         print(queryId)
@@ -593,7 +593,7 @@ Here’s the full source code of the DAG:
         outfileStr=infileStr.replace('"e"', '')
         outfile = StringIO(outfileStr)
         s3c.put_object(Bucket=s3_bucket_name, Key=cleanKey, Body=outfile.getvalue())
-    def s3_to_redshift(**kwargs):    
+    def s3_to_redshift(**kwargs):
         ti = kwargs['task_instance']
         queryId = ti.xcom_pull(key='return_value', task_ids='join_athena_tables' )
         print(queryId)
@@ -660,12 +660,12 @@ Here’s the full source code of the DAG:
         clean_up_csv = PythonOperator(
             task_id="clean_up_csv",
             python_callable=clean_up_csv_fn,
-            provide_context=True     
+            provide_context=True
         )
         transfer_to_redshift = PythonOperator(
             task_id="transfer_to_redshift",
             python_callable=s3_to_redshift,
-            provide_context=True     
+            provide_context=True
         )
         check_s3_for_key >> files_to_s3 >> create_athena_movie_table >> join_athena_tables >> clean_up_csv >> transfer_to_redshift
         files_to_s3 >> create_athena_ratings_table >> join_athena_tables

@@ -10,32 +10,32 @@
 Table of Contents
 
 - EC2
-  - Client 
-  - Paginators 
-  - Waiters 
-  - Service Resource 
-  - ClassicAddress 
-  - DhcpOptions 
-  - Image 
-  - Instance 
-  - InternetGateway 
-  - KeyPair 
-  - KeyPairInfo 
-  - NetworkAcl 
-  - NetworkInterface 
-  - NetworkInterfaceAssociation 
-  - PlacementGroup 
+  - Client
+  - Paginators
+  - Waiters
+  - Service Resource
+  - ClassicAddress
+  - DhcpOptions
+  - Image
+  - Instance
+  - InternetGateway
+  - KeyPair
+  - KeyPairInfo
+  - NetworkAcl
+  - NetworkInterface
+  - NetworkInterfaceAssociation
+  - PlacementGroup
   - Route e)
-  - RouteTable 
-  - RouteTableAssociation 
-  - SecurityGroup 
-  - Snapshot 
-  - Subnet 
-  - Tag 
-  - Volume 
-  - Vpc 
-  - VpcPeeringConnection 
-  - VpcAddress 
+  - RouteTable
+  - RouteTableAssociation
+  - SecurityGroup
+  - Snapshot
+  - Subnet
+  - Tag
+  - Volume
+  - Vpc
+  - VpcPeeringConnection
+  - VpcAddress
 
 ---
 
@@ -176,730 +176,730 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 ami_launch_index
 
 - _(integer) --_
-    
+
     The AMI launch index, which can be used to find this instance in the launch group.
-    
+
 
 architecture
 
 - _(string) --_
-    
+
     The architecture of the image.
-    
+
 
 block_device_mappings
 
 - _(list) --_
-    
+
     Any block device mapping entries for the instance.
-    
+
     - _(dict) --_
-        
+
         Describes a block device mapping.
-        
+
         - **DeviceName** _(string) --_
-            
+
             The device name (for example, /dev/sdh or xvdh ).
-            
+
         - **Ebs** _(dict) --_
-            
+
             Parameters used to automatically set up EBS volumes when the instance is launched.
-            
+
             - **AttachTime** _(datetime) --_
-                
+
                 The time stamp when the attachment initiated.
-                
+
             - **DeleteOnTermination** _(boolean) --_
-                
+
                 Indicates whether the volume is deleted on instance termination.
-                
+
             - **Status** _(string) --_
-                
+
                 The attachment state.
-                
+
             - **VolumeId** _(string) --_
-                
+
                 The ID of the EBS volume.
-                
+
 
 capacity_reservation_id
 
 - _(string) --_
-    
+
     The ID of the Capacity Reservation.
-    
+
 
 capacity_reservation_specification
 
 - _(dict) --_
-    
+
     Information about the Capacity Reservation targeting option.
-    
+
     - **CapacityReservationPreference** _(string) --_
-        
+
         Describes the instance's Capacity Reservation preferences. Possible preferences include:
-        
+
         - open - The instance can run in any open Capacity Reservation that has matching attributes (instance type, platform, Availability Zone).
         - none - The instance avoids running in a Capacity Reservation even if one is available. The instance runs in On-Demand capacity.
     - **CapacityReservationTarget** _(dict) --_
-        
+
         Information about the targeted Capacity Reservation or Capacity Reservation group.
-        
+
         - **CapacityReservationId** _(string) --_
-            
+
             The ID of the targeted Capacity Reservation.
-            
+
         - **CapacityReservationResourceGroupArn** _(string) --_
-            
+
             The ARN of the targeted Capacity Reservation group.
-            
+
 
 client_token
 
 - _(string) --_
-    
+
     The idempotency token you provided when you launched the instance, if applicable.
-    
+
 
 cpu_options
 
 - _(dict) --_
-    
+
     The CPU options for the instance.
-    
+
     - **CoreCount** _(integer) --_
-        
+
         The number of CPU cores for the instance.
-        
+
     - **ThreadsPerCore** _(integer) --_
-        
+
         The number of threads per CPU core.
-        
+
 
 ebs_optimized
 
 - _(boolean) --_
-    
+
     Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
-    
+
 
 elastic_gpu_associations
 
 - _(list) --_
-    
+
     The Elastic GPU associated with the instance.
-    
+
     - _(dict) --_
-        
+
         Describes the association between an instance and an Elastic Graphics accelerator.
-        
+
         - **ElasticGpuId** _(string) --_
-            
+
             The ID of the Elastic Graphics accelerator.
-            
+
         - **ElasticGpuAssociationId** _(string) --_
-            
+
             The ID of the association.
-            
+
         - **ElasticGpuAssociationState** _(string) --_
-            
+
             The state of the association between the instance and the Elastic Graphics accelerator.
-            
+
         - **ElasticGpuAssociationTime** _(string) --_
-            
+
             The time the Elastic Graphics accelerator was associated with the instance.
-            
+
 
 elastic_inference_accelerator_associations
 
 - _(list) --_
-    
+
     The elastic inference accelerator associated with the instance.
-    
+
     - _(dict) --_
-        
+
         Describes the association between an instance and an elastic inference accelerator.
-        
+
         - **ElasticInferenceAcceleratorArn** _(string) --_
-            
+
             The Amazon Resource Name (ARN) of the elastic inference accelerator.
-            
+
         - **ElasticInferenceAcceleratorAssociationId** _(string) --_
-            
+
             The ID of the association.
-            
+
         - **ElasticInferenceAcceleratorAssociationState** _(string) --_
-            
+
             The state of the elastic inference accelerator.
-            
+
         - **ElasticInferenceAcceleratorAssociationTime** _(datetime) --_
-            
+
             The time at which the elastic inference accelerator is associated with an instance.
-            
+
 
 ena_support
 
 - _(boolean) --_
-    
+
     Specifies whether enhanced networking with ENA is enabled.
-    
+
 
 enclave_options
 
 - _(dict) --_
-    
+
     Indicates whether the instance is enabled for AWS Nitro Enclaves.
-    
+
     - **Enabled** _(boolean) --_
-        
+
         If this parameter is set to true , the instance is enabled for AWS Nitro Enclaves; otherwise, it is not enabled for AWS Nitro Enclaves.
-        
+
 
 hibernation_options
 
 - _(dict) --_
-    
+
     Indicates whether the instance is enabled for hibernation.
-    
+
     - **Configured** _(boolean) --_
-        
+
         If this parameter is set to true , your instance is enabled for hibernation; otherwise, it is not enabled for hibernation.
-        
+
 
 hypervisor
 
 - _(string) --_
-    
+
     The hypervisor type of the instance. The value xen is used for both Xen and Nitro hypervisors.
-    
+
 
 iam_instance_profile
 
 - _(dict) --_
-    
+
     The IAM instance profile associated with the instance, if applicable.
-    
+
     - **Arn** _(string) --_
-        
+
         The Amazon Resource Name (ARN) of the instance profile.
-        
+
     - **Id** _(string) --_
-        
+
         The ID of the instance profile.
-        
+
 
 image_id
 
 - _(string) --_
-    
+
     The ID of the AMI used to launch the instance.
-    
+
 
 instance_id
 
 - _(string) --_
-    
+
     The ID of the instance.
-    
+
 
 instance_lifecycle
 
 - _(string) --_
-    
+
     Indicates whether this is a Spot Instance or a Scheduled Instance.
-    
+
 
 instance_type
 
 - _(string) --_
-    
+
     The instance type.
-    
+
 
 kernel_id
 
 - _(string) --_
-    
+
     The kernel associated with this instance, if applicable.
-    
+
 
 key_name
 
 - _(string) --_
-    
+
     The name of the key pair, if this instance was launched with an associated key pair.
-    
+
 
 launch_time
 
 - _(datetime) --_
-    
+
     The time the instance was launched.
-    
+
 
 licenses
 
 - _(list) --_
-    
+
     The license configurations.
-    
+
     - _(dict) --_
-        
+
         Describes a license configuration.
-        
+
         - **LicenseConfigurationArn** _(string) --_
-            
+
             The Amazon Resource Name (ARN) of the license configuration.
-            
+
 
 metadata_options
 
 - _(dict) --_
-    
+
     The metadata options for the instance.
-    
+
     - **State** _(string) --_
-        
+
         The state of the metadata option changes.
-        
+
         > pending - The metadata options are being updated and the instance is not ready to process metadata traffic with the new selection.
-        > 
+        >
         > applied - The metadata options have been successfully applied on the instance.
-        
+
     - **HttpTokens** _(string) --_
-        
+
         The state of token usage for your instance metadata requests. If the parameter is not specified in the request, the default state is optional .
-        
+
         If the state is optional , you can choose to retrieve instance metadata with or without a signed token header on your request. If you retrieve the IAM role credentials without a token, the version 1.0 role credentials are returned. If you retrieve the IAM role credentials using a valid signed token, the version 2.0 role credentials are returned.
-        
+
         If the state is required , you must send a signed token header with any instance metadata retrieval requests. In this state, retrieving the IAM role credential always returns the version 2.0 credentials; the version 1.0 credentials are not available.
-        
+
     - **HttpPutResponseHopLimit** _(integer) --_
-        
+
         The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel.
-        
+
         Default: 1
-        
+
         Possible values: Integers from 1 to 64
-        
+
     - **HttpEndpoint** _(string) --_
-        
+
         This parameter enables or disables the HTTP metadata endpoint on your instances. If the parameter is not specified, the default state is enabled .
-        
+
         Note
-        
+
         If you specify a value of disabled , you will not be able to access your instance metadata.
-        
+
 
 monitoring
 
 - _(dict) --_
-    
+
     The monitoring for the instance.
-    
+
     - **State** _(string) --_
-        
+
         Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
-        
+
 
 network_interfaces_attribute
 
 - _(list) --_
-    
+
     [EC2-VPC] The network interfaces for the instance.
-    
+
     - _(dict) --_
-        
+
         Describes a network interface.
-        
+
         - **Association** _(dict) --_
-            
+
             The association information for an Elastic IPv4 associated with the network interface.
-            
+
             - **CarrierIp** _(string) --_
-                
+
                 The carrier IP address associated with the network interface.
-                
+
             - **IpOwnerId** _(string) --_
-                
+
                 The ID of the owner of the Elastic IP address.
-                
+
             - **PublicDnsName** _(string) --_
-                
+
                 The public DNS name.
-                
+
             - **PublicIp** _(string) --_
-                
+
                 The public IP address or Elastic IP address bound to the network interface.
-                
+
         - **Attachment** _(dict) --_
-            
+
             The network interface attachment.
-            
+
             - **AttachTime** _(datetime) --_
-                
+
                 The time stamp when the attachment initiated.
-                
+
             - **AttachmentId** _(string) --_
-                
+
                 The ID of the network interface attachment.
-                
+
             - **DeleteOnTermination** _(boolean) --_
-                
+
                 Indicates whether the network interface is deleted when the instance is terminated.
-                
+
             - **DeviceIndex** _(integer) --_
-                
+
                 The index of the device on the instance for the network interface attachment.
-                
+
             - **Status** _(string) --_
-                
+
                 The attachment state.
-                
+
             - **NetworkCardIndex** _(integer) --_
-                
+
                 The index of the network card.
-                
+
         - **Description** _(string) --_
-            
+
             The description.
-            
+
         - **Groups** _(list) --_
-            
+
             One or more security groups.
-            
+
             - _(dict) --_
-                
+
                 Describes a security group.
-                
+
                 - **GroupName** _(string) --_
-                    
+
                     The name of the security group.
-                    
+
                 - **GroupId** _(string) --_
-                    
+
                     The ID of the security group.
-                    
+
         - **Ipv6Addresses** _(list) --_
-            
+
             One or more IPv6 addresses associated with the network interface.
-            
+
             - _(dict) --_
-                
+
                 Describes an IPv6 address.
-                
+
                 - **Ipv6Address** _(string) --_
-                    
+
                     The IPv6 address.
-                    
+
         - **MacAddress** _(string) --_
-            
+
             The MAC address.
-            
+
         - **NetworkInterfaceId** _(string) --_
-            
+
             The ID of the network interface.
-            
+
         - **OwnerId** _(string) --_
-            
+
             The ID of the AWS account that created the network interface.
-            
+
         - **PrivateDnsName** _(string) --_
-            
+
             The private DNS name.
-            
+
         - **PrivateIpAddress** _(string) --_
-            
+
             The IPv4 address of the network interface within the subnet.
-            
+
         - **PrivateIpAddresses** _(list) --_
-            
+
             One or more private IPv4 addresses associated with the network interface.
-            
+
             - _(dict) --_
-                
+
                 Describes a private IPv4 address.
-                
+
                 - **Association** _(dict) --_
-                    
+
                     The association information for an Elastic IP address for the network interface.
-                    
+
                     - **CarrierIp** _(string) --_
-                        
+
                         The carrier IP address associated with the network interface.
-                        
+
                     - **IpOwnerId** _(string) --_
-                        
+
                         The ID of the owner of the Elastic IP address.
-                        
+
                     - **PublicDnsName** _(string) --_
-                        
+
                         The public DNS name.
-                        
+
                     - **PublicIp** _(string) --_
-                        
+
                         The public IP address or Elastic IP address bound to the network interface.
-                        
+
                 - **Primary** _(boolean) --_
-                    
+
                     Indicates whether this IPv4 address is the primary private IP address of the network interface.
-                    
+
                 - **PrivateDnsName** _(string) --_
-                    
+
                     The private IPv4 DNS name.
-                    
+
                 - **PrivateIpAddress** _(string) --_
-                    
+
                     The private IPv4 address of the network interface.
-                    
+
         - **SourceDestCheck** _(boolean) --_
-            
+
             Indicates whether to validate network traffic to or from this network interface.
-            
+
         - **Status** _(string) --_
-            
+
             The status of the network interface.
-            
+
         - **SubnetId** _(string) --_
-            
+
             The ID of the subnet.
-            
+
         - **VpcId** _(string) --_
-            
+
             The ID of the VPC.
-            
+
         - **InterfaceType** _(string) --_
-            
+
             Describes the type of network interface.
-            
+
             Valid values: interface | efa
-            
+
 
 outpost_arn
 
 - _(string) --_
-    
+
     The Amazon Resource Name (ARN) of the Outpost.
-    
+
 
 placement
 
 - _(dict) --_
-    
+
     The location where the instance launched, if applicable.
-    
+
     - **AvailabilityZone** _(string) --_
-        
+
         The Availability Zone of the instance.
-        
+
         If not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria for the Region.
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     - **Affinity** _(string) --_
-        
+
         The affinity setting for the instance on the Dedicated Host. This parameter is not supported for the [ImportInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html) command.
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     - **GroupName** _(string) --_
-        
+
         The name of the placement group the instance is in.
-        
+
     - **PartitionNumber** _(integer) --_
-        
+
         The number of the partition the instance is in. Valid only if the placement group strategy is set to partition .
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     - **HostId** _(string) --_
-        
+
         The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the [ImportInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html) command.
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     - **Tenancy** _(string) --_
-        
+
         The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the [ImportInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html) command.
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     - **SpreadDomain** _(string) --_
-        
+
         Reserved for future use.
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     - **HostResourceGroupArn** _(string) --_
-        
+
         The ARN of the host resource group in which to launch the instances. If you specify a host resource group ARN, omit the **Tenancy** parameter or set it to host .
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
 
 platform
 
 - _(string) --_
-    
+
     The value is Windows for Windows instances; otherwise blank.
-    
+
 
 private_dns_name
 
 - _(string) --_
-    
+
     (IPv4 only) The private DNS hostname name assigned to the instance. This DNS hostname can only be used inside the Amazon EC2 network. This name is not available until the instance enters the running state.
-    
+
     [EC2-VPC] The Amazon-provided DNS server resolves Amazon-provided private DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If you are not using the Amazon-provided DNS server in your VPC, your custom domain name servers must resolve the hostname as appropriate.
-    
+
 
 private_ip_address
 
 - _(string) --_
-    
+
     The private IPv4 address assigned to the instance.
-    
+
 
 product_codes
 
 - _(list) --_
-    
+
     The product codes attached to this instance, if applicable.
-    
+
     - _(dict) --_
-        
+
         Describes a product code.
-        
+
         - **ProductCodeId** _(string) --_
-            
+
             The product code.
-            
+
         - **ProductCodeType** _(string) --_
-            
+
             The type of product code.
-            
+
 
 public_dns_name
 
 - _(string) --_
-    
+
     (IPv4 only) The public DNS name assigned to the instance. This name is not available until the instance enters the running state. For EC2-VPC, this name is only available if you've enabled DNS hostnames for your VPC.
-    
+
 
 public_ip_address
 
 - _(string) --_
-    
+
     The public IPv4 address, or the Carrier IP address assigned to the instance, if applicable.
-    
+
     A Carrier IP address only applies to an instance launched in a subnet associated with a Wavelength Zone.
-    
+
 
 ramdisk_id
 
 - _(string) --_
-    
+
     The RAM disk associated with this instance, if applicable.
-    
+
 
 root_device_name
 
 - _(string) --_
-    
+
     The device name of the root device volume (for example, /dev/sda1 ).
-    
+
 
 root_device_type
 
 - _(string) --_
-    
+
     The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.
-    
+
 
 security_groups
 
 - _(list) --_
-    
+
     The security groups for the instance.
-    
+
     - _(dict) --_
-        
+
         Describes a security group.
-        
+
         - **GroupName** _(string) --_
-            
+
             The name of the security group.
-            
+
         - **GroupId** _(string) --_
-            
+
             The ID of the security group.
-            
+
 
 source_dest_check
 
 - _(boolean) --_
-    
+
     Specifies whether to enable an instance launched in a VPC to perform NAT. This controls whether source/destination checking is enabled on the instance. A value of true means that checking is enabled, and false means that checking is disabled. The value must be false for the instance to perform NAT. For more information, see [NAT Instances](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html) in the _Amazon Virtual Private Cloud User Guide_ .
-    
+
 
 spot_instance_request_id
 
 - _(string) --_
-    
+
     If the request is a Spot Instance request, the ID of the request.
-    
+
 
 sriov_net_support
 
 - _(string) --_
-    
+
     Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.
-    
+
 
 state
 
 - _(dict) --_
-    
+
     The current state of the instance.
-    
+
     - **Code** _(integer) --_
-        
+
         The state of the instance as a 16-bit unsigned integer.
-        
+
         The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-        
+
         The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-        
+
         The valid values for instance-state-code will all be in the range of the low byte and they are:
-        
+
         - 0 : pending
         - 16 : running
         - 32 : shutting-down
         - 48 : terminated
         - 64 : stopping
         - 80 : stopped
-        
+
         You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-        
+
     - **Name** _(string) --_
-        
+
         The current state of the instance.
-        
+
 
 state_reason
 
 - _(dict) --_
-    
+
     The reason for the most recent state transition.
-    
+
     - **Code** _(string) --_
-        
+
         The reason code for the state change.
-        
+
     - **Message** _(string) --_
-        
+
         The message for the state change.
-        
+
         - Server.InsufficientInstanceCapacity : There was insufficient capacity available to satisfy the launch request.
         - Server.InternalError : An internal error caused the instance to terminate during launch.
         - Server.ScheduledStop : The instance was stopped due to a scheduled retirement.
@@ -916,53 +916,53 @@ state_reason
 state_transition_reason
 
 - _(string) --_
-    
+
     The reason for the most recent state transition. This might be an empty string.
-    
+
 
 subnet_id
 
 - _(string) --_
-    
+
     [EC2-VPC] The ID of the subnet in which the instance is running.
-    
+
 
 tags
 
 - _(list) --_
-    
+
     Any tags assigned to the instance.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 virtualization_type
 
 - _(string) --_
-    
+
     The virtualization type of the instance.
-    
+
 
 vpc_id
 
 - _(string) --_
-    
+
     [EC2-VPC] The ID of the VPC in which the instance is running.
-    
+
 
 References
 
@@ -1024,18 +1024,18 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Groups** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of one or more of the VPC's security groups. You cannot specify security groups from a different VPC.
-    
+
     - _(string) --_
 - **VpcId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of a ClassicLink-enabled VPC.
-    
+
 
 Return type
 
@@ -1052,11 +1052,11 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     - **Return** _(boolean) --_
-        
+
         Returns true if the request succeeds; otherwise, it returns an error.
-        
+
 
 attach_volume(kwargs_)
 
@@ -1088,17 +1088,17 @@ response = instance.attach_volume(
 Parameters
 
 - **Device** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The device name (for example, /dev/sdh or xvdh ).
-    
+
 - **VolumeId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the EBS volume. The volume and instance must be within the same Availability Zone.
-    
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -1121,33 +1121,33 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     Describes volume attachment details.
-    
+
     - **AttachTime** _(datetime) --_
-        
+
         The time stamp when the attachment initiated.
-        
+
     - **Device** _(string) --_
-        
+
         The device name.
-        
+
     - **InstanceId** _(string) --_
-        
+
         The ID of the instance.
-        
+
     - **State** _(string) --_
-        
+
         The attachment state of the volume.
-        
+
     - **VolumeId** _(string) --_
-        
+
         The ID of the volume.
-        
+
     - **DeleteOnTermination** _(boolean) --_
-        
+
         Indicates whether the EBS volume is deleted on instance termination.
-        
+
 
 console_output(kwargs_)
 
@@ -1172,11 +1172,11 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Latest** (_boolean_) --
-    
+
     When enabled, retrieves the latest console output for the instance.
-    
+
     Default: disabled (false )
-    
+
 
 Return type
 
@@ -1195,19 +1195,19 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     - **InstanceId** _(string) --_
-        
+
         The ID of the instance.
-        
+
     - **Output** _(string) --_
-        
+
         The console output, base64-encoded. If you are using a command line tool, the tool decodes the output for you.
-        
+
     - **Timestamp** _(datetime) --_
-        
+
         The time at which the output was last updated.
-        
+
 
 create_image(kwargs_)
 
@@ -1259,146 +1259,146 @@ image = instance.create_image(
 Parameters
 
 - **BlockDeviceMappings** (_list_) --
-    
+
     The block device mappings. This parameter cannot be used to modify the encryption status of existing volumes or snapshots. To create an AMI with encrypted snapshots, use the CopyImage action.
-    
+
     - _(dict) --_
-        
+
         Describes a block device mapping.
-        
+
         - **DeviceName** _(string) --_
-            
+
             The device name (for example, /dev/sdh or xvdh ).
-            
+
         - **VirtualName** _(string) --_
-            
+
             The virtual device name (ephemeral N). Instance store volumes are numbered starting from 0. An instance type with 2 available instance store volumes can specify mappings for ephemeral0 and ephemeral1 . The number of available instance store volumes depends on the instance type. After you connect to the instance, you must mount the volume.
-            
+
             NVMe instance store volumes are automatically enumerated and assigned a device name. Including them in your block device mapping has no effect.
-            
+
             Constraints: For M3 instances, you must specify instance store volumes in the block device mapping for the instance. When you launch an M3 instance, we ignore any instance store volumes specified in the block device mapping for the AMI.
-            
+
         - **Ebs** _(dict) --_
-            
+
             Parameters used to automatically set up EBS volumes when the instance is launched.
-            
+
             - **DeleteOnTermination** _(boolean) --_
-                
+
                 Indicates whether the EBS volume is deleted on instance termination. For more information, see [Preserving Amazon EBS volumes on instance termination](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination) in the Amazon Elastic Compute Cloud User Guide.
-                
+
             - **Iops** _(integer) --_
-                
+
                 The number of I/O operations per second (IOPS). For gp3 , io1 , and io2 volumes, this represents the number of IOPS that are provisioned for the volume. For gp2 volumes, this represents the baseline performance of the volume and the rate at which the volume accumulates I/O credits for bursting.
-                
+
                 The following are the supported values for each volume type:
-                
+
                 - gp3 : 3,000-16,000 IOPS
                 - io1 : 100-64,000 IOPS
                 - io2 : 100-64,000 IOPS
-                
+
                 For io1 and io2 volumes, we guarantee 64,000 IOPS only for [Instances built on the Nitro System](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances) . Other instance families guarantee performance up to 32,000 IOPS.
-                
+
                 This parameter is required for io1 and io2 volumes. The default for gp3 volumes is 3,000 IOPS. This parameter is not supported for gp2 , st1 , sc1 , or standard volumes.
-                
+
             - **SnapshotId** _(string) --_
-                
+
                 The ID of the snapshot.
-                
+
             - **VolumeSize** _(integer) --_
-                
+
                 The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size. If you specify a snapshot, the default is the snapshot size. You can specify a volume size that is equal to or larger than the snapshot size.
-                
+
                 The following are the supported volumes sizes for each volume type:
-                
+
                 - gp2 and gp3 :1-16,384
                 - io1 and io2 : 4-16,384
                 - st1 : 500-16,384
                 - sc1 : 500-16,384
                 - standard : 1-1,024
             - **VolumeType** _(string) --_
-                
+
                 The volume type. For more information, see [Amazon EBS volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) in the _Amazon Elastic Compute Cloud User Guide_ . If the volume type is io1 or io2 , you must specify the IOPS that the volume supports.
-                
+
             - **KmsKeyId** _(string) --_
-                
+
                 Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-                
+
                 This parameter is only supported on BlockDeviceMapping objects called by [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html) , [RequestSpotFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html) , and [RequestSpotInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html) .
-                
+
             - **Throughput** _(integer) --_
-                
+
                 The throughput that the volume supports, in MiB/s.
-                
+
                 This parameter is valid only for gp3 volumes.
-                
+
                 Valid Range: Minimum value of 125. Maximum value of 1000.
-                
+
             - **Encrypted** _(boolean) --_
-                
+
                 Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot. The effect of setting the encryption state to true depends on the volume origin (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more information, see [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters) in the _Amazon Elastic Compute Cloud User Guide_ .
-                
+
                 In no case can you remove encryption from an encrypted volume.
-                
+
                 Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see [Supported instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances) .
-                
+
                 This parameter is not returned by .
-                
+
         - **NoDevice** _(string) --_
-            
+
             Suppresses the specified device included in the block device mapping of the AMI.
-            
+
 - **Description** (_string_) -- A description for the new image.
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Name** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     A name for the new image.
-    
+
     Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(_)
-    
+
 - **NoReboot** (_boolean_) -- By default, Amazon EC2 attempts to shut down and reboot the instance before creating the image. If the No Reboot option is set, Amazon EC2 doesn't shut down the instance before creating the image. When this option is used, file system integrity on the created image can't be guaranteed.
 - **TagSpecifications** (_list_) --
-    
+
     The tags to apply to the AMI and snapshots on creation. You can tag the AMI, the snapshots, or both.
-    
+
     - To tag the AMI, the value for ResourceType must be image .
     - To tag the snapshots that are created of the root volume and of other EBS volumes that are attached to the instance, the value for ResourceType must be snapshot . The same tag is applied to all of the snapshots that are created.
-    
+
     If you specify other values for ResourceType , the request fails.
-    
+
     To tag an AMI or snapshot after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-    
+
     - _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
         - **ResourceType** _(string) --_
-            
+
             The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id975)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id977)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
+
             To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-            
+
         - **Tags** _(list) --_
-            
+
             The tags to apply to the resource.
-            
+
             - _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 - **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 - **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 
 Return type
 
@@ -1432,27 +1432,27 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Return type
 
@@ -1486,27 +1486,27 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Tags** (_list_) --
-    
+
     The tags to delete. Specify a tag key and an optional tag value to delete specific tags. If you specify a tag key without a tag value, we delete any tag with this key regardless of its value. If you specify a tag key with an empty string as the tag value, we delete the tag only if its value is an empty string.
-    
+
     If you omit this parameter, we delete all user-defined tags for the specified resources. We do not delete AWS-generated tags (tags that have the aws: prefix).
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Returns
 
@@ -1529,13 +1529,13 @@ response = instance.describe_attribute(
 Parameters
 
 - **Attribute** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The instance attribute.
-    
+
     Note: The enaSupport attribute is not supported at this time.
-    
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -1612,173 +1612,173 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     Describes an instance attribute.
-    
+
     - **Groups** _(list) --_
-        
+
         The security groups associated with the instance.
-        
+
         - _(dict) --_
-            
+
             Describes a security group.
-            
+
             - **GroupName** _(string) --_
-                
+
                 The name of the security group.
-                
+
             - **GroupId** _(string) --_
-                
+
                 The ID of the security group.
-                
+
     - **BlockDeviceMappings** _(list) --_
-        
+
         The block device mapping of the instance.
-        
+
         - _(dict) --_
-            
+
             Describes a block device mapping.
-            
+
             - **DeviceName** _(string) --_
-                
+
                 The device name (for example, /dev/sdh or xvdh ).
-                
+
             - **Ebs** _(dict) --_
-                
+
                 Parameters used to automatically set up EBS volumes when the instance is launched.
-                
+
                 - **AttachTime** _(datetime) --_
-                    
+
                     The time stamp when the attachment initiated.
-                    
+
                 - **DeleteOnTermination** _(boolean) --_
-                    
+
                     Indicates whether the volume is deleted on instance termination.
-                    
+
                 - **Status** _(string) --_
-                    
+
                     The attachment state.
-                    
+
                 - **VolumeId** _(string) --_
-                    
+
                     The ID of the EBS volume.
-                    
+
     - **DisableApiTermination** _(dict) --_
-        
+
         If the value is true , you can't terminate the instance through the Amazon EC2 console, CLI, or API; otherwise, you can.
-        
+
         - **Value** _(boolean) --_
-            
+
             The attribute value. The valid values are true or false .
-            
+
     - **EnaSupport** _(dict) --_
-        
+
         Indicates whether enhanced networking with ENA is enabled.
-        
+
         - **Value** _(boolean) --_
-            
+
             The attribute value. The valid values are true or false .
-            
+
     - **EnclaveOptions** _(dict) --_
-        
+
         To enable the instance for AWS Nitro Enclaves, set this parameter to true ; otherwise, set it to false .
-        
+
         - **Enabled** _(boolean) --_
-            
+
             If this parameter is set to true , the instance is enabled for AWS Nitro Enclaves; otherwise, it is not enabled for AWS Nitro Enclaves.
-            
+
     - **EbsOptimized** _(dict) --_
-        
+
         Indicates whether the instance is optimized for Amazon EBS I/O.
-        
+
         - **Value** _(boolean) --_
-            
+
             The attribute value. The valid values are true or false .
-            
+
     - **InstanceId** _(string) --_
-        
+
         The ID of the instance.
-        
+
     - **InstanceInitiatedShutdownBehavior** _(dict) --_
-        
+
         Indicates whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown).
-        
+
         - **Value** _(string) --_
-            
+
             The attribute value. The value is case-sensitive.
-            
+
     - **InstanceType** _(dict) --_
-        
+
         The instance type.
-        
+
         - **Value** _(string) --_
-            
+
             The attribute value. The value is case-sensitive.
-            
+
     - **KernelId** _(dict) --_
-        
+
         The kernel ID.
-        
+
         - **Value** _(string) --_
-            
+
             The attribute value. The value is case-sensitive.
-            
+
     - **ProductCodes** _(list) --_
-        
+
         A list of product codes.
-        
+
         - _(dict) --_
-            
+
             Describes a product code.
-            
+
             - **ProductCodeId** _(string) --_
-                
+
                 The product code.
-                
+
             - **ProductCodeType** _(string) --_
-                
+
                 The type of product code.
-                
+
     - **RamdiskId** _(dict) --_
-        
+
         The RAM disk ID.
-        
+
         - **Value** _(string) --_
-            
+
             The attribute value. The value is case-sensitive.
-            
+
     - **RootDeviceName** _(dict) --_
-        
+
         The device name of the root device volume (for example, /dev/sda1 ).
-        
+
         - **Value** _(string) --_
-            
+
             The attribute value. The value is case-sensitive.
-            
+
     - **SourceDestCheck** _(dict) --_
-        
+
         Indicates whether source/destination checking is enabled. A value of true means that checking is enabled, and false means that checking is disabled. This value must be false for a NAT instance to perform NAT.
-        
+
         - **Value** _(boolean) --_
-            
+
             The attribute value. The valid values are true or false .
-            
+
     - **SriovNetSupport** _(dict) --_
-        
+
         Indicates whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.
-        
+
         - **Value** _(string) --_
-            
+
             The attribute value. The value is case-sensitive.
-            
+
     - **UserData** _(dict) --_
-        
+
         The user data.
-        
+
         - **Value** _(string) --_
-            
+
             The attribute value. The value is case-sensitive.
-            
+
 
 detach_classic_link_vpc(kwargs_)
 
@@ -1797,11 +1797,11 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **VpcId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the VPC to which the instance is linked.
-    
+
 
 Return type
 
@@ -1818,11 +1818,11 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     - **Return** _(boolean) --_
-        
+
         Returns true if the request succeeds; otherwise, it returns an error.
-        
+
 
 detach_volume(kwargs_)
 
@@ -1848,11 +1848,11 @@ Parameters
 - **Device** (_string_) -- The device name.
 - **Force** (_boolean_) -- Forces detachment if the previous detachment attempt did not occur cleanly (for example, logging into an instance, unmounting the volume, and detaching normally). This option can lead to data loss or a corrupted file system. Use this option only as a last resort to detach a volume from a failed instance. The instance won't have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures.
 - **VolumeId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the volume.
-    
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -1875,33 +1875,33 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     Describes volume attachment details.
-    
+
     - **AttachTime** _(datetime) --_
-        
+
         The time stamp when the attachment initiated.
-        
+
     - **Device** _(string) --_
-        
+
         The device name.
-        
+
     - **InstanceId** _(string) --_
-        
+
         The ID of the instance.
-        
+
     - **State** _(string) --_
-        
+
         The attachment state of the volume.
-        
+
     - **VolumeId** _(string) --_
-        
+
         The ID of the volume.
-        
+
     - **DeleteOnTermination** _(boolean) --_
-        
+
         Indicates whether the EBS volume is deleted on instance termination.
-        
+
 
 get_available_subresources()
 
@@ -1994,128 +1994,128 @@ response = instance.modify_attribute(
 Parameters
 
 - **SourceDestCheck** (_dict_) --
-    
+
     Specifies whether source/destination checking is enabled. A value of true means that checking is enabled, and false means that checking is disabled. This value must be false for a NAT instance to perform NAT.
-    
+
     - **Value** _(boolean) --_
-        
+
         The attribute value. The valid values are true or false .
-        
+
 - **Attribute** (_string_) -- The name of the attribute.
 - **BlockDeviceMappings** (_list_) --
-    
+
     Modifies the DeleteOnTermination attribute for volumes that are currently attached. The volume must be owned by the caller. If no value is specified for DeleteOnTermination , the default is true and the volume is deleted when the instance is terminated.
-    
+
     To add instance store volumes to an Amazon EBS-backed instance, you must add them when you launch the instance. For more information, see [Updating the block device mapping when launching an instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     - _(dict) --_
-        
+
         Describes a block device mapping entry.
-        
+
         - **DeviceName** _(string) --_
-            
+
             The device name (for example, /dev/sdh or xvdh ).
-            
+
         - **Ebs** _(dict) --_
-            
+
             Parameters used to automatically set up EBS volumes when the instance is launched.
-            
+
             - **DeleteOnTermination** _(boolean) --_
-                
+
                 Indicates whether the volume is deleted on instance termination.
-                
+
             - **VolumeId** _(string) --_
-                
+
                 The ID of the EBS volume.
-                
+
         - **NoDevice** _(string) --_
-            
+
             suppress the specified device included in the block device mapping.
-            
+
         - **VirtualName** _(string) --_
-            
+
             The virtual device name.
-            
+
 - **DisableApiTermination** (_dict_) --
-    
+
     If the value is true , you can't terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use this parameter for Spot Instances.
-    
+
     - **Value** _(boolean) --_
-        
+
         The attribute value. The valid values are true or false .
-        
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **EbsOptimized** (_dict_) --
-    
+
     Specifies whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.
-    
+
     - **Value** _(boolean) --_
-        
+
         The attribute value. The valid values are true or false .
-        
+
 - **EnaSupport** (_dict_) --
-    
+
     Set to true to enable enhanced networking with ENA for the instance.
-    
+
     This option is supported only for HVM instances. Specifying this option with a PV instance can make it unreachable.
-    
+
     - **Value** _(boolean) --_
-        
+
         The attribute value. The valid values are true or false .
-        
+
 - **Groups** (_list_) --
-    
+
     [EC2-VPC] Changes the security groups of the instance. You must specify at least one security group, even if it's just the default security group for the VPC. You must specify the security group ID, not the security group name.
-    
+
     - _(string) --_
 - **InstanceInitiatedShutdownBehavior** (_dict_) --
-    
+
     Specifies whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown).
-    
+
     - **Value** _(string) --_
-        
+
         The attribute value. The value is case-sensitive.
-        
+
 - **InstanceType** (_dict_) --
-    
+
     Changes the instance type to the specified value. For more information, see [Instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) . If the instance type is not valid, the error returned is InvalidInstanceAttributeValue .
-    
+
     - **Value** _(string) --_
-        
+
         The attribute value. The value is case-sensitive.
-        
+
 - **Kernel** (_dict_) --
-    
+
     Changes the instance's kernel to the specified value. We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html) .
-    
+
     - **Value** _(string) --_
-        
+
         The attribute value. The value is case-sensitive.
-        
+
 - **Ramdisk** (_dict_) --
-    
+
     Changes the instance's RAM disk to the specified value. We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html) .
-    
+
     - **Value** _(string) --_
-        
+
         The attribute value. The value is case-sensitive.
-        
+
 - **SriovNetSupport** (_dict_) --
-    
+
     Set to simple to enable enhanced networking with the Intel 82599 Virtual Function interface for the instance.
-    
+
     There is no way to disable enhanced networking with the Intel 82599 Virtual Function interface at this time.
-    
+
     This option is supported only for HVM instances. Specifying this option with a PV instance can make it unreachable.
-    
+
     - **Value** _(string) --_
-        
+
         The attribute value. The value is case-sensitive.
-        
+
 - **UserData** (_dict_) --
-    
+
     Changes the instance's user data to the specified value. If you are using an AWS SDK or command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text.
-    
+
     - **Value** _(bytes) --_
 - **Value** (_string_) -- A new value for the attribute. Use only with the kernel , ramdisk , userData , disableApiTermination , or instanceInitiatedShutdownBehavior attribute.
 
@@ -2164,25 +2164,25 @@ Returns
 
 - _(dict) --_
     - **InstanceMonitorings** _(list) --_
-        
+
         The monitoring information.
-        
+
         - _(dict) --_
-            
+
             Describes the monitoring of an instance.
-            
+
             - **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             - **Monitoring** _(dict) --_
-                
+
                 The monitoring for the instance.
-                
+
                 - **State** _(string) --_
-                    
+
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
-                    
+
 
 password_data(kwargs_)
 
@@ -2226,17 +2226,17 @@ Returns
 
 - _(dict) --_
     - **InstanceId** _(string) --_
-        
+
         The ID of the Windows instance.
-        
+
     - **PasswordData** _(string) --_
-        
+
         The password of the instance. Returns an empty string if the password is not available.
-        
+
     - **Timestamp** _(datetime) --_
-        
+
         The time the data was last updated.
-        
+
 
 reboot(kwargs_)
 
@@ -2303,11 +2303,11 @@ Parameters
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **EndTime** (_datetime_) -- The time at which the reported instance health state ended.
 - **ReasonCodes** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The reason codes that describe the health state of your instance.
-    
+
     - instance-stuck-in-state : My instance is stuck in a state.
     - unresponsive : My instance is unresponsive.
     - not-accepting-credentials : My instance is not accepting my credentials.
@@ -2317,15 +2317,15 @@ Parameters
     - performance-ebs-volume : My instance is experiencing performance problems that I believe are related to an EBS volume.
     - performance-other : My instance is experiencing performance problems.
     - other : [explain using the description parameter]
-    
+
     - _(string) --_
 - **StartTime** (_datetime_) -- The time at which the reported instance health state began.
 - **Status** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The status of all instances listed.
-    
+
 
 Returns
 
@@ -2350,15 +2350,15 @@ response = instance.reset_attribute(
 Parameters
 
 - **Attribute** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The attribute to reset.
-    
+
     Warning
-    
+
     You can only reset the following attributes: kernel | ramdisk | sourceDestCheck . To change an instance attribute, use ModifyInstanceAttribute .
-    
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Returns
@@ -2487,73 +2487,73 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     - **StartingInstances** _(list) --_
-        
+
         Information about the started instances.
-        
+
         - _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             - **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             - **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             - **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 stop(kwargs_)
 
@@ -2584,18 +2584,18 @@ response = instance.stop(
 Parameters
 
 - **Hibernate** (_boolean_) --
-    
+
     Hibernates the instance if the instance was enabled for hibernation at launch. If the instance cannot hibernate successfully, a normal shutdown occurs. For more information, see [Hibernate your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     Default: false
-    
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Force** (_boolean_) --
-    
+
     Forces the instances to stop. The instances do not have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures. This option is not recommended for Windows instances.
-    
+
     Default: false
-    
+
 
 Return type
 
@@ -2624,73 +2624,73 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     - **StoppingInstances** _(list) --_
-        
+
         Information about the stopped instances.
-        
+
         - _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             - **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             - **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             - **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 terminate(kwargs_)
 
@@ -2746,71 +2746,71 @@ Returns
 
 - _(dict) --_
     - **TerminatingInstances** _(list) --_
-        
+
         Information about the terminated instances.
-        
+
         - _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             - **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             - **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             - **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 unmonitor(kwargs_)
 
@@ -2851,25 +2851,25 @@ Returns
 
 - _(dict) --_
     - **InstanceMonitorings** _(list) --_
-        
+
         The monitoring information.
-        
+
         - _(dict) --_
-            
+
             Describes the monitoring of an instance.
-            
+
             - **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             - **Monitoring** _(dict) --_
-                
+
                 The monitoring for the instance.
-                
+
                 - **State** _(string) --_
-                    
+
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
-                    
+
 
 Collections
 
@@ -2917,9 +2917,9 @@ volume_iterator = instance.volumes.filter(
 Parameters
 
 - **VolumeIds** (_list_) --
-    
+
     The volume IDs.
-    
+
     - _(string) --_
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **MaxResults** (_integer_) -- The maximum number of volume results returned by DescribeVolumes in paginated output. When this parameter is used, DescribeVolumes only returns MaxResults results in a single page along with a NextToken response element. The remaining results of the initial request can be seen by sending another DescribeVolumes request with the returned NextToken value. This value can be between 5 and 500; if MaxResults is given a value larger than 500, only 500 results are returned. If this parameter is not used, then DescribeVolumes returns all results. You cannot specify this parameter and the volume IDs parameter in the same request.
@@ -3024,16 +3024,16 @@ vpc_address_iterator = instance.vpc_addresses.filter(
 Parameters
 
 - **PublicIps** (_list_) --
-    
+
     One or more Elastic IP addresses.
-    
+
     Default: Describes all your Elastic IP addresses.
-    
+
     - _(string) --_
 - **AllocationIds** (_list_) --
-    
+
     [EC2-VPC] Information about the allocation IDs.
-    
+
     - _(string) --_
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
@@ -3122,9 +3122,9 @@ instance.wait_until_exists(
 Parameters
 
 - **Filters** (_list_) --
-    
+
     The filters.
-    
+
     - affinity - The affinity setting for an instance running on a Dedicated Host (default | host ).
     - architecture - The instance architecture (i386 | x86_64 | arm64 ).
     - availability-zone - The Availability Zone of the instance.
@@ -3212,11 +3212,11 @@ Parameters
     - tenancy - The tenancy of an instance (dedicated | default | host ).
     - virtualization-type - The virtualization type of the instance (paravirtual | hvm ).
     - vpc-id - The ID of the VPC that the instance is running in.
-    
+
     - _(dict) --_
-        
+
         A filter name and value pair that is used to return a more specific list of results from a describe operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs. The filters supported by a describe operation are documented with the describe operation. For example:
-        
+
         - DescribeAvailabilityZones
         - DescribeImages
         - DescribeInstances
@@ -3227,15 +3227,15 @@ Parameters
         - DescribeTags
         - DescribeVolumes
         - DescribeVpcs
-        
+
         - **Name** _(string) --_
-            
+
             The name of the filter. Filter names are case-sensitive.
-            
+
         - **Values** _(list) --_
-            
+
             The filter values. Filter values are case-sensitive.
-            
+
             - _(string) --_
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **MaxResults** (_integer_) -- The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned NextToken value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
@@ -3270,9 +3270,9 @@ instance.wait_until_running(
 Parameters
 
 - **Filters** (_list_) --
-    
+
     The filters.
-    
+
     - affinity - The affinity setting for an instance running on a Dedicated Host (default | host ).
     - architecture - The instance architecture (i386 | x86_64 | arm64 ).
     - availability-zone - The Availability Zone of the instance.
@@ -3360,11 +3360,11 @@ Parameters
     - tenancy - The tenancy of an instance (dedicated | default | host ).
     - virtualization-type - The virtualization type of the instance (paravirtual | hvm ).
     - vpc-id - The ID of the VPC that the instance is running in.
-    
+
     - _(dict) --_
-        
+
         A filter name and value pair that is used to return a more specific list of results from a describe operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs. The filters supported by a describe operation are documented with the describe operation. For example:
-        
+
         - DescribeAvailabilityZones
         - DescribeImages
         - DescribeInstances
@@ -3375,15 +3375,15 @@ Parameters
         - DescribeTags
         - DescribeVolumes
         - DescribeVpcs
-        
+
         - **Name** _(string) --_
-            
+
             The name of the filter. Filter names are case-sensitive.
-            
+
         - **Values** _(list) --_
-            
+
             The filter values. Filter values are case-sensitive.
-            
+
             - _(string) --_
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **MaxResults** (_integer_) -- The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned NextToken value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
@@ -3418,9 +3418,9 @@ instance.wait_until_stopped(
 Parameters
 
 - **Filters** (_list_) --
-    
+
     The filters.
-    
+
     - affinity - The affinity setting for an instance running on a Dedicated Host (default | host ).
     - architecture - The instance architecture (i386 | x86_64 | arm64 ).
     - availability-zone - The Availability Zone of the instance.
@@ -3508,11 +3508,11 @@ Parameters
     - tenancy - The tenancy of an instance (dedicated | default | host ).
     - virtualization-type - The virtualization type of the instance (paravirtual | hvm ).
     - vpc-id - The ID of the VPC that the instance is running in.
-    
+
     - _(dict) --_
-        
+
         A filter name and value pair that is used to return a more specific list of results from a describe operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs. The filters supported by a describe operation are documented with the describe operation. For example:
-        
+
         - DescribeAvailabilityZones
         - DescribeImages
         - DescribeInstances
@@ -3523,15 +3523,15 @@ Parameters
         - DescribeTags
         - DescribeVolumes
         - DescribeVpcs
-        
+
         - **Name** _(string) --_
-            
+
             The name of the filter. Filter names are case-sensitive.
-            
+
         - **Values** _(list) --_
-            
+
             The filter values. Filter values are case-sensitive.
-            
+
             - _(string) --_
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **MaxResults** (_integer_) -- The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned NextToken value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
@@ -3566,9 +3566,9 @@ instance.wait_until_terminated(
 Parameters
 
 - **Filters** (_list_) --
-    
+
     The filters.
-    
+
     - affinity - The affinity setting for an instance running on a Dedicated Host (default | host ).
     - architecture - The instance architecture (i386 | x86_64 | arm64 ).
     - availability-zone - The Availability Zone of the instance.
@@ -3656,11 +3656,11 @@ Parameters
     - tenancy - The tenancy of an instance (dedicated | default | host ).
     - virtualization-type - The virtualization type of the instance (paravirtual | hvm ).
     - vpc-id - The ID of the VPC that the instance is running in.
-    
+
     - _(dict) --_
-        
+
         A filter name and value pair that is used to return a more specific list of results from a describe operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs. The filters supported by a describe operation are documented with the describe operation. For example:
-        
+
         - DescribeAvailabilityZones
         - DescribeImages
         - DescribeInstances
@@ -3671,15 +3671,15 @@ Parameters
         - DescribeTags
         - DescribeVolumes
         - DescribeVpcs
-        
+
         - **Name** _(string) --_
-            
+
             The name of the filter. Filter names are case-sensitive.
-            
+
         - **Values** _(list) --_
-            
+
             The filter values. Filter values are case-sensitive.
-            
+
             - _(string) --_
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **MaxResults** (_integer_) -- The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned NextToken value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
@@ -3741,58 +3741,58 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 attachments
 
 - _(list) --_
-    
+
     Any VPCs attached to the internet gateway.
-    
+
     - _(dict) --_
-        
+
         Describes the attachment of a VPC to an internet gateway or an egress-only internet gateway.
-        
+
         - **State** _(string) --_
-            
+
             The current state of the attachment. For an internet gateway, the state is available when attached to a VPC; otherwise, this value is not returned.
-            
+
         - **VpcId** _(string) --_
-            
+
             The ID of the VPC.
-            
+
 
 internet_gateway_id
 
 - _(string) --_
-    
+
     The ID of the internet gateway.
-    
+
 
 owner_id
 
 - _(string) --_
-    
+
     The ID of the AWS account that owns the internet gateway.
-    
+
 
 tags
 
 - _(list) --_
-    
+
     Any tags assigned to the internet gateway.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Actions
 
@@ -3815,11 +3815,11 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **VpcId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the VPC.
-    
+
 
 Returns
 
@@ -3849,27 +3849,27 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Return type
 
@@ -3917,11 +3917,11 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **VpcId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the VPC.
-    
+
 
 Returns
 
@@ -4015,53 +4015,53 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 key_fingerprint
 
 - _(string) --_
-    
+
     The SHA-1 digest of the DER encoded private key.
-    
+
 
 key_material
 
 - _(string) --_
-    
+
     An unencrypted PEM encoded RSA private key.
-    
+
 
 key_name
 
 - _(string) --_
-    
+
     The name of the key pair.
-    
+
 
 key_pair_id
 
 - _(string) --_
-    
+
     The ID of the key pair.
-    
+
 
 tags
 
 - _(list) --_
-    
+
     Any tags applied to the key pair.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Actions
 
@@ -4150,46 +4150,46 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 key_fingerprint
 
 - _(string) --_
-    
+
     If you used CreateKeyPair to create the key pair, this is the SHA-1 digest of the DER encoded private key. If you used ImportKeyPair to provide AWS the public key, this is the MD5 public key fingerprint as specified in section 4 of RFC4716.
-    
+
 
 key_name
 
 - _(string) --_
-    
+
     The name of the key pair.
-    
+
 
 key_pair_id
 
 - _(string) --_
-    
+
     The ID of the key pair.
-    
+
 
 tags
 
 - _(list) --_
-    
+
     Any tags applied to the key pair.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Actions
 
@@ -4318,135 +4318,135 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 associations
 
 - _(list) --_
-    
+
     Any associations between the network ACL and one or more subnets
-    
+
     - _(dict) --_
-        
+
         Describes an association between a network ACL and a subnet.
-        
+
         - **NetworkAclAssociationId** _(string) --_
-            
+
             The ID of the association between a network ACL and a subnet.
-            
+
         - **NetworkAclId** _(string) --_
-            
+
             The ID of the network ACL.
-            
+
         - **SubnetId** _(string) --_
-            
+
             The ID of the subnet.
-            
+
 
 entries
 
 - _(list) --_
-    
+
     One or more entries (rules) in the network ACL.
-    
+
     - _(dict) --_
-        
+
         Describes an entry in a network ACL.
-        
+
         - **CidrBlock** _(string) --_
-            
+
             The IPv4 network range to allow or deny, in CIDR notation.
-            
+
         - **Egress** _(boolean) --_
-            
+
             Indicates whether the rule is an egress rule (applied to traffic leaving the subnet).
-            
+
         - **IcmpTypeCode** _(dict) --_
-            
+
             ICMP protocol: The ICMP type and code.
-            
+
             - **Code** _(integer) --_
-                
+
                 The ICMP code. A value of -1 means all codes for the specified ICMP type.
-                
+
             - **Type** _(integer) --_
-                
+
                 The ICMP type. A value of -1 means all types.
-                
+
         - **Ipv6CidrBlock** _(string) --_
-            
+
             The IPv6 network range to allow or deny, in CIDR notation.
-            
+
         - **PortRange** _(dict) --_
-            
+
             TCP or UDP protocols: The range of ports the rule applies to.
-            
+
             - **From** _(integer) --_
-                
+
                 The first port in the range.
-                
+
             - **To** _(integer) --_
-                
+
                 The last port in the range.
-                
+
         - **Protocol** _(string) --_
-            
+
             The protocol number. A value of "-1" means all protocols.
-            
+
         - **RuleAction** _(string) --_
-            
+
             Indicates whether to allow or deny the traffic that matches the rule.
-            
+
         - **RuleNumber** _(integer) --_
-            
+
             The rule number for the entry. ACL entries are processed in ascending order by rule number.
-            
+
 
 is_default
 
 - _(boolean) --_
-    
+
     Indicates whether this is the default network ACL for the VPC.
-    
+
 
 network_acl_id
 
 - _(string) --_
-    
+
     The ID of the network ACL.
-    
+
 
 owner_id
 
 - _(string) --_
-    
+
     The ID of the AWS account that owns the network ACL.
-    
+
 
 tags
 
 - _(list) --_
-    
+
     Any tags assigned to the network ACL.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 vpc_id
 
 - _(string) --_
-    
+
     The ID of the VPC for the network ACL.
-    
+
 
 References
 
@@ -4497,56 +4497,56 @@ Parameters
 - **CidrBlock** (_string_) -- The IPv4 network range to allow or deny, in CIDR notation (for example 172.16.0.0/24 ). We modify the specified CIDR block to its canonical form; for example, if you specify 100.68.0.18/18 , we modify it to 100.68.0.0/18 .
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Egress** (_boolean_) --
-    
+
     **[REQUIRED]**
-    
+
     Indicates whether this is an egress rule (rule is applied to traffic leaving the subnet).
-    
+
 - **IcmpTypeCode** (_dict_) --
-    
+
     ICMP protocol: The ICMP or ICMPv6 type and code. Required if specifying protocol 1 (ICMP) or protocol 58 (ICMPv6) with an IPv6 CIDR block.
-    
+
     - **Code** _(integer) --_
-        
+
         The ICMP code. A value of -1 means all codes for the specified ICMP type.
-        
+
     - **Type** _(integer) --_
-        
+
         The ICMP type. A value of -1 means all types.
-        
+
 - **Ipv6CidrBlock** (_string_) -- The IPv6 network range to allow or deny, in CIDR notation (for example 2001:db8:1234:1a00::/64 ).
 - **PortRange** (_dict_) --
-    
+
     TCP or UDP protocols: The range of ports the rule applies to. Required if specifying protocol 6 (TCP) or 17 (UDP).
-    
+
     - **From** _(integer) --_
-        
+
         The first port in the range.
-        
+
     - **To** _(integer) --_
-        
+
         The last port in the range.
-        
+
 - **Protocol** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The protocol number. A value of "-1" means all protocols. If you specify "-1" or a protocol number other than "6" (TCP), "17" (UDP), or "1" (ICMP), traffic on all ports is allowed, regardless of any ports or ICMP types or codes that you specify. If you specify protocol "58" (ICMPv6) and specify an IPv4 CIDR block, traffic for all ICMP types and codes allowed, regardless of any that you specify. If you specify protocol "58" (ICMPv6) and specify an IPv6 CIDR block, you must specify an ICMP type and code.
-    
+
 - **RuleAction** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     Indicates whether to allow or deny the traffic that matches the rule.
-    
+
 - **RuleNumber** (_integer_) --
-    
+
     **[REQUIRED]**
-    
+
     The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
-    
+
     Constraints: Positive integer from 1 to 32766. The range 32767 to 65535 is reserved for internal use.
-    
+
 
 Returns
 
@@ -4576,27 +4576,27 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Return type
 
@@ -4645,17 +4645,17 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Egress** (_boolean_) --
-    
+
     **[REQUIRED]**
-    
+
     Indicates whether the rule is an egress rule.
-    
+
 - **RuleNumber** (_integer_) --
-    
+
     **[REQUIRED]**
-    
+
     The rule number of the entry to delete.
-    
+
 
 Returns
 
@@ -4720,11 +4720,11 @@ response = network_acl.replace_association(
 Parameters
 
 - **AssociationId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the current association between the original network ACL and the subnet.
-    
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -4742,11 +4742,11 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     - **NewAssociationId** _(string) --_
-        
+
         The ID of the new association.
-        
+
 
 replace_entry(kwargs_)
 
@@ -4779,56 +4779,56 @@ Parameters
 - **CidrBlock** (_string_) -- The IPv4 network range to allow or deny, in CIDR notation (for example 172.16.0.0/24 ).
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Egress** (_boolean_) --
-    
+
     **[REQUIRED]**
-    
+
     Indicates whether to replace the egress rule.
-    
+
     Default: If no value is specified, we replace the ingress rule.
-    
+
 - **IcmpTypeCode** (_dict_) --
-    
+
     ICMP protocol: The ICMP or ICMPv6 type and code. Required if specifying protocol 1 (ICMP) or protocol 58 (ICMPv6) with an IPv6 CIDR block.
-    
+
     - **Code** _(integer) --_
-        
+
         The ICMP code. A value of -1 means all codes for the specified ICMP type.
-        
+
     - **Type** _(integer) --_
-        
+
         The ICMP type. A value of -1 means all types.
-        
+
 - **Ipv6CidrBlock** (_string_) -- The IPv6 network range to allow or deny, in CIDR notation (for example 2001:bd8:1234:1a00::/64 ).
 - **PortRange** (_dict_) --
-    
+
     TCP or UDP protocols: The range of ports the rule applies to. Required if specifying protocol 6 (TCP) or 17 (UDP).
-    
+
     - **From** _(integer) --_
-        
+
         The first port in the range.
-        
+
     - **To** _(integer) --_
-        
+
         The last port in the range.
-        
+
 - **Protocol** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The protocol number. A value of "-1" means all protocols. If you specify "-1" or a protocol number other than "6" (TCP), "17" (UDP), or "1" (ICMP), traffic on all ports is allowed, regardless of any ports or ICMP types or codes that you specify. If you specify protocol "58" (ICMPv6) and specify an IPv4 CIDR block, traffic for all ICMP types and codes allowed, regardless of any that you specify. If you specify protocol "58" (ICMPv6) and specify an IPv6 CIDR block, you must specify an ICMP type and code.
-    
+
 - **RuleAction** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     Indicates whether to allow or deny the traffic that matches the rule.
-    
+
 - **RuleNumber** (_integer_) --
-    
+
     **[REQUIRED]**
-    
+
     The rule number of the entry to replace.
-    
+
 
 Returns
 
@@ -4914,297 +4914,297 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 association_attribute
 
 - _(dict) --_
-    
+
     The association information for an Elastic IP address (IPv4) associated with the network interface.
-    
+
     - **AllocationId** _(string) --_
-        
+
         The allocation ID.
-        
+
     - **AssociationId** _(string) --_
-        
+
         The association ID.
-        
+
     - **IpOwnerId** _(string) --_
-        
+
         The ID of the Elastic IP address owner.
-        
+
     - **PublicDnsName** _(string) --_
-        
+
         The public DNS name.
-        
+
     - **PublicIp** _(string) --_
-        
+
         The address of the Elastic IP address bound to the network interface.
-        
+
     - **CustomerOwnedIp** _(string) --_
-        
+
         The customer-owned IP address associated with the network interface.
-        
+
     - **CarrierIp** _(string) --_
-        
+
         The carrier IP address associated with the network interface.
-        
+
         This option is only available when the network interface is in a subnet which is associated with a Wavelength Zone.
-        
+
 
 attachment
 
 - _(dict) --_
-    
+
     The network interface attachment.
-    
+
     - **AttachTime** _(datetime) --_
-        
+
         The timestamp indicating when the attachment initiated.
-        
+
     - **AttachmentId** _(string) --_
-        
+
         The ID of the network interface attachment.
-        
+
     - **DeleteOnTermination** _(boolean) --_
-        
+
         Indicates whether the network interface is deleted when the instance is terminated.
-        
+
     - **DeviceIndex** _(integer) --_
-        
+
         The device index of the network interface attachment on the instance.
-        
+
     - **NetworkCardIndex** _(integer) --_
-        
+
         The index of the network card.
-        
+
     - **InstanceId** _(string) --_
-        
+
         The ID of the instance.
-        
+
     - **InstanceOwnerId** _(string) --_
-        
+
         The AWS account ID of the owner of the instance.
-        
+
     - **Status** _(string) --_
-        
+
         The attachment state.
-        
+
 
 availability_zone
 
 - _(string) --_
-    
+
     The Availability Zone.
-    
+
 
 description
 
 - _(string) --_
-    
+
     A description.
-    
+
 
 groups
 
 - _(list) --_
-    
+
     Any security groups for the network interface.
-    
+
     - _(dict) --_
-        
+
         Describes a security group.
-        
+
         - **GroupName** _(string) --_
-            
+
             The name of the security group.
-            
+
         - **GroupId** _(string) --_
-            
+
             The ID of the security group.
-            
+
 
 interface_type
 
 - _(string) --_
-    
+
     The type of network interface.
-    
+
 
 ipv6_addresses
 
 - _(list) --_
-    
+
     The IPv6 addresses associated with the network interface.
-    
+
     - _(dict) --_
-        
+
         Describes an IPv6 address associated with a network interface.
-        
+
         - **Ipv6Address** _(string) --_
-            
+
             The IPv6 address.
-            
+
 
 mac_address
 
 - _(string) --_
-    
+
     The MAC address.
-    
+
 
 network_interface_id
 
 - _(string) --_
-    
+
     The ID of the network interface.
-    
+
 
 outpost_arn
 
 - _(string) --_
-    
+
     The Amazon Resource Name (ARN) of the Outpost.
-    
+
 
 owner_id
 
 - _(string) --_
-    
+
     The AWS account ID of the owner of the network interface.
-    
+
 
 private_dns_name
 
 - _(string) --_
-    
+
     The private DNS name.
-    
+
 
 private_ip_address
 
 - _(string) --_
-    
+
     The IPv4 address of the network interface within the subnet.
-    
+
 
 private_ip_addresses
 
 - _(list) --_
-    
+
     The private IPv4 addresses associated with the network interface.
-    
+
     - _(dict) --_
-        
+
         Describes the private IPv4 address of a network interface.
-        
+
         - **Association** _(dict) --_
-            
+
             The association information for an Elastic IP address (IPv4) associated with the network interface.
-            
+
             - **AllocationId** _(string) --_
-                
+
                 The allocation ID.
-                
+
             - **AssociationId** _(string) --_
-                
+
                 The association ID.
-                
+
             - **IpOwnerId** _(string) --_
-                
+
                 The ID of the Elastic IP address owner.
-                
+
             - **PublicDnsName** _(string) --_
-                
+
                 The public DNS name.
-                
+
             - **PublicIp** _(string) --_
-                
+
                 The address of the Elastic IP address bound to the network interface.
-                
+
             - **CustomerOwnedIp** _(string) --_
-                
+
                 The customer-owned IP address associated with the network interface.
-                
+
             - **CarrierIp** _(string) --_
-                
+
                 The carrier IP address associated with the network interface.
-                
+
                 This option is only available when the network interface is in a subnet which is associated with a Wavelength Zone.
-                
+
         - **Primary** _(boolean) --_
-            
+
             Indicates whether this IPv4 address is the primary private IPv4 address of the network interface.
-            
+
         - **PrivateDnsName** _(string) --_
-            
+
             The private DNS name.
-            
+
         - **PrivateIpAddress** _(string) --_
-            
+
             The private IPv4 address.
-            
+
 
 requester_id
 
 - _(string) --_
-    
+
     The ID of the entity that launched the instance on your behalf (for example, AWS Management Console or Auto Scaling).
-    
+
 
 requester_managed
 
 - _(boolean) --_
-    
+
     Indicates whether the network interface is being managed by AWS.
-    
+
 
 source_dest_check
 
 - _(boolean) --_
-    
+
     Indicates whether traffic to or from the instance is validated.
-    
+
 
 status
 
 - _(string) --_
-    
+
     The status of the network interface.
-    
+
 
 subnet_id
 
 - _(string) --_
-    
+
     The ID of the subnet.
-    
+
 
 tag_set
 
 - _(list) --_
-    
+
     Any tags assigned to the network interface.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 vpc_id
 
 - _(string) --_
-    
+
     The ID of the VPC.
-    
+
 
 References
 
@@ -5254,11 +5254,11 @@ Parameters
 
 - **AllowReassignment** (_boolean_) -- Indicates whether to allow an IP address that is already assigned to another network interface or instance to be reassigned to the specified network interface.
 - **PrivateIpAddresses** (_list_) --
-    
+
     One or more IP addresses to be assigned as a secondary private IP address to the network interface. You can't specify this parameter when also specifying a number of secondary IP addresses.
-    
+
     If you don't specify an IP address, Amazon EC2 automatically selects an IP address within the subnet range.
-    
+
     - _(string) --_
 - **SecondaryPrivateIpAddressCount** (_integer_) -- The number of secondary IP addresses to assign to the network interface. You can't specify this parameter when also specifying private IP addresses.
 
@@ -5282,23 +5282,23 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     - **NetworkInterfaceId** _(string) --_
-        
+
         The ID of the network interface.
-        
+
     - **AssignedPrivateIpAddresses** _(list) --_
-        
+
         The private IP addresses assigned to the network interface.
-        
+
         - _(dict) --_
-            
+
             Describes the private IP addresses assigned to a network interface.
-            
+
             - **PrivateIpAddress** _(string) --_
-                
+
                 The private IP address assigned to the network interface.
-                
+
 
 attach(kwargs_)
 
@@ -5318,18 +5318,18 @@ response = network_interface.attach(
 Parameters
 
 - **DeviceIndex** (_integer_) --
-    
+
     **[REQUIRED]**
-    
+
     The index of the device for the network interface attachment.
-    
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **InstanceId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the instance.
-    
+
 - **NetworkCardIndex** (_integer_) -- The index of the network card. Some instance types support multiple network cards. The primary network interface must be assigned to network card index 0. The default is network card index 0.
 
 Return type
@@ -5348,17 +5348,17 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     Contains the output of AttachNetworkInterface.
-    
+
     - **AttachmentId** _(string) --_
-        
+
         The ID of the network interface attachment.
-        
+
     - **NetworkCardIndex** _(integer) --_
-        
+
         The index of the network card.
-        
+
 
 create_tags(kwargs_)
 
@@ -5384,27 +5384,27 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Return type
 
@@ -5491,81 +5491,81 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     Contains the output of DescribeNetworkInterfaceAttribute.
-    
+
     - **Attachment** _(dict) --_
-        
+
         The attachment (if any) of the network interface.
-        
+
         - **AttachTime** _(datetime) --_
-            
+
             The timestamp indicating when the attachment initiated.
-            
+
         - **AttachmentId** _(string) --_
-            
+
             The ID of the network interface attachment.
-            
+
         - **DeleteOnTermination** _(boolean) --_
-            
+
             Indicates whether the network interface is deleted when the instance is terminated.
-            
+
         - **DeviceIndex** _(integer) --_
-            
+
             The device index of the network interface attachment on the instance.
-            
+
         - **NetworkCardIndex** _(integer) --_
-            
+
             The index of the network card.
-            
+
         - **InstanceId** _(string) --_
-            
+
             The ID of the instance.
-            
+
         - **InstanceOwnerId** _(string) --_
-            
+
             The AWS account ID of the owner of the instance.
-            
+
         - **Status** _(string) --_
-            
+
             The attachment state.
-            
+
     - **Description** _(dict) --_
-        
+
         The description of the network interface.
-        
+
         - **Value** _(string) --_
-            
+
             The attribute value. The value is case-sensitive.
-            
+
     - **Groups** _(list) --_
-        
+
         The security groups associated with the network interface.
-        
+
         - _(dict) --_
-            
+
             Describes a security group.
-            
+
             - **GroupName** _(string) --_
-                
+
                 The name of the security group.
-                
+
             - **GroupId** _(string) --_
-                
+
                 The ID of the security group.
-                
+
     - **NetworkInterfaceId** _(string) --_
-        
+
         The ID of the network interface.
-        
+
     - **SourceDestCheck** _(dict) --_
-        
+
         Indicates whether source/destination checking is enabled.
-        
+
         - **Value** _(boolean) --_
-            
+
             The attribute value. The valid values are true or false .
-            
+
 
 detach(kwargs_)
 
@@ -5584,15 +5584,15 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Force** (_boolean_) --
-    
+
     Specifies whether to force a detachment.
-    
+
     Note
-    
+
     - Use the Force parameter only as a last resort to detach a network interface from a failed instance.
     - If you use the Force parameter to detach a network interface, you might not be able to attach a different network interface to the same index on the instance without first stopping and starting the instance.
     - If you force the detachment of a network interface, the [instance metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) might not get updated. This means that the attributes associated with the detached network interface might still be visible. The instance metadata will get updated when you stop and start the instance.
-    
+
 
 Returns
 
@@ -5652,39 +5652,39 @@ response = network_interface.modify_attribute(
 Parameters
 
 - **Attachment** (_dict_) --
-    
+
     Information about the interface attachment. If modifying the 'delete on termination' attribute, you must specify the ID of the interface attachment.
-    
+
     - **AttachmentId** _(string) --_
-        
+
         The ID of the network interface attachment.
-        
+
     - **DeleteOnTermination** _(boolean) --_
-        
+
         Indicates whether the network interface is deleted when the instance is terminated.
-        
+
 - **Description** (_dict_) --
-    
+
     A description for the network interface.
-    
+
     - **Value** _(string) --_
-        
+
         The attribute value. The value is case-sensitive.
-        
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Groups** (_list_) --
-    
+
     Changes the security groups for the network interface. The new set of groups you specify replaces the current set. You must specify at least one group, even if it's just the default security group in the VPC. You must specify the ID of the security group, not the name.
-    
+
     - _(string) --_
 - **SourceDestCheck** (_dict_) --
-    
+
     Indicates whether source/destination checking is enabled. A value of true means checking is enabled, and false means checking is disabled. This value must be false for a NAT instance to perform NAT. For more information, see [NAT Instances](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html) in the _Amazon Virtual Private Cloud User Guide_ .
-    
+
     - **Value** _(boolean) --_
-        
+
         The attribute value. The valid values are true or false .
-        
+
 
 Returns
 
@@ -5807,30 +5807,30 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 carrier_ip
 
 - _(string) --_
-    
+
     The carrier IP address associated with the network interface.
-    
+
 
 ip_owner_id
 
 - _(string) --_
-    
+
     The ID of the owner of the Elastic IP address.
-    
+
 
 public_dns_name
 
 - _(string) --_
-    
+
     The public DNS name.
-    
+
 
 public_ip
 
 - _(string) --_
-    
+
     The public IP address or Elastic IP address bound to the network interface.
-    
+
 
 References
 
@@ -5965,60 +5965,60 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 group_id
 
 - _(string) --_
-    
+
     The ID of the placement group.
-    
+
 
 group_name
 
 - _(string) --_
-    
+
     The name of the placement group.
-    
+
 
 partition_count
 
 - _(integer) --_
-    
+
     The number of partitions. Valid only if **strategy** is set to partition .
-    
+
 
 state
 
 - _(string) --_
-    
+
     The state of the placement group.
-    
+
 
 strategy
 
 - _(string) --_
-    
+
     The placement strategy.
-    
+
 
 tags
 
 - _(list) --_
-    
+
     Any tags applied to the placement group.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Actions
 
@@ -6135,27 +6135,27 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Returns
 
@@ -6181,11 +6181,11 @@ instance_iterator = placement_group.instances.filter(
 Parameters
 
 - **InstanceIds** (_list_) --
-    
+
     The instance IDs.
-    
+
     Default: Describes all your instances.
-    
+
     - _(string) --_
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **MaxResults** (_integer_) -- The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned NextToken value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
@@ -6264,25 +6264,25 @@ Returns
 
 - _(dict) --_
     - **InstanceMonitorings** _(list) --_
-        
+
         The monitoring information.
-        
+
         - _(dict) --_
-            
+
             Describes the monitoring of an instance.
-            
+
             - **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             - **Monitoring** _(dict) --_
-                
+
                 The monitoring for the instance.
-                
+
                 - **State** _(string) --_
-                    
+
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
-                    
+
 
 page_size(kwargs_)
 
@@ -6385,73 +6385,73 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     - **StartingInstances** _(list) --_
-        
+
         Information about the started instances.
-        
+
         - _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             - **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             - **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             - **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 stop(kwargs_)
 
@@ -6482,18 +6482,18 @@ response = placement_group.instances.stop(
 Parameters
 
 - **Hibernate** (_boolean_) --
-    
+
     Hibernates the instance if the instance was enabled for hibernation at launch. If the instance cannot hibernate successfully, a normal shutdown occurs. For more information, see [Hibernate your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     Default: false
-    
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Force** (_boolean_) --
-    
+
     Forces the instances to stop. The instances do not have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures. This option is not recommended for Windows instances.
-    
+
     Default: false
-    
+
 
 Return type
 
@@ -6522,73 +6522,73 @@ Returns
 **Response Structure**
 
 - _(dict) --_
-    
+
     - **StoppingInstances** _(list) --_
-        
+
         Information about the stopped instances.
-        
+
         - _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             - **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             - **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             - **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 terminate(kwargs_)
 
@@ -6644,71 +6644,71 @@ Returns
 
 - _(dict) --_
     - **TerminatingInstances** _(list) --_
-        
+
         Information about the terminated instances.
-        
+
         - _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             - **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             - **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             - **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 - **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     - 0 : pending
                     - 16 : running
                     - 32 : shutting-down
                     - 48 : terminated
                     - 64 : stopping
                     - 80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 - **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 unmonitor(kwargs_)
 
@@ -6749,25 +6749,25 @@ Returns
 
 - _(dict) --_
     - **InstanceMonitorings** _(list) --_
-        
+
         The monitoring information.
-        
+
         - _(dict) --_
-            
+
             Describes the monitoring of an instance.
-            
+
             - **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             - **Monitoring** _(dict) --_
-                
+
                 The monitoring for the instance.
-                
+
                 - **State** _(string) --_
-                    
+
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
-                    
+
 
 [Route](#id1248)
 --------------------------------------------------------
@@ -6837,79 +6837,79 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 carrier_gateway_id
 
 - _(string) --_
-    
+
     The ID of the carrier gateway.
-    
+
 
 destination_ipv6_cidr_block
 
 - _(string) --_
-    
+
     The IPv6 CIDR block used for the destination match.
-    
+
 
 destination_prefix_list_id
 
 - _(string) --_
-    
+
     The prefix of the AWS service.
-    
+
 
 egress_only_internet_gateway_id
 
 - _(string) --_
-    
+
     The ID of the egress-only internet gateway.
-    
+
 
 gateway_id
 
 - _(string) --_
-    
+
     The ID of a gateway attached to your VPC.
-    
+
 
 instance_id
 
 - _(string) --_
-    
+
     The ID of a NAT instance in your VPC.
-    
+
 
 instance_owner_id
 
 - _(string) --_
-    
+
     The AWS account ID of the owner of the instance.
-    
+
 
 local_gateway_id
 
 - _(string) --_
-    
+
     The ID of the local gateway.
-    
+
 
 nat_gateway_id
 
 - _(string) --_
-    
+
     The ID of a NAT gateway.
-    
+
 
 network_interface_id
 
 - _(string) --_
-    
+
     The ID of the network interface.
-    
+
 
 origin
 
 - _(string) --_
-    
+
     Describes how the route was created.
-    
+
     - CreateRouteTable - The route was automatically created when the route table was created.
     - CreateRoute - The route was manually added to the route table.
     - EnableVgwRoutePropagation - The route was propagated by route propagation.
@@ -6917,23 +6917,23 @@ origin
 state
 
 - _(string) --_
-    
+
     The state of the route. The blackhole state indicates that the route's target isn't available (for example, the specified gateway isn't attached to the VPC, or the specified NAT instance has been terminated).
-    
+
 
 transit_gateway_id
 
 - _(string) --_
-    
+
     The ID of a transit gateway.
-    
+
 
 vpc_peering_connection_id
 
 - _(string) --_
-    
+
     The ID of a VPC peering connection.
-    
+
 
 Actions
 
@@ -7103,178 +7103,178 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 associations_attribute
 
 - _(list) --_
-    
+
     The associations between the route table and one or more subnets or a gateway.
-    
+
     - _(dict) --_
-        
+
         Describes an association between a route table and a subnet or gateway.
-        
+
         - **Main** _(boolean) --_
-            
+
             Indicates whether this is the main route table.
-            
+
         - **RouteTableAssociationId** _(string) --_
-            
+
             The ID of the association.
-            
+
         - **RouteTableId** _(string) --_
-            
+
             The ID of the route table.
-            
+
         - **SubnetId** _(string) --_
-            
+
             The ID of the subnet. A subnet ID is not returned for an implicit association.
-            
+
         - **GatewayId** _(string) --_
-            
+
             The ID of the internet gateway or virtual private gateway.
-            
+
         - **AssociationState** _(dict) --_
-            
+
             The state of the association.
-            
+
             - **State** _(string) --_
-                
+
                 The state of the association.
-                
+
             - **StatusMessage** _(string) --_
-                
+
                 The status message, if applicable.
-                
+
 
 owner_id
 
 - _(string) --_
-    
+
     The ID of the AWS account that owns the route table.
-    
+
 
 propagating_vgws
 
 - _(list) --_
-    
+
     Any virtual private gateway (VGW) propagating routes.
-    
+
     - _(dict) --_
-        
+
         Describes a virtual private gateway propagating route.
-        
+
         - **GatewayId** _(string) --_
-            
+
             The ID of the virtual private gateway.
-            
+
 
 route_table_id
 
 - _(string) --_
-    
+
     The ID of the route table.
-    
+
 
 routes_attribute
 
 - _(list) --_
-    
+
     The routes in the route table.
-    
+
     - _(dict) --_
-        
+
         Describes a route in a route table.
-        
+
         - **DestinationCidrBlock** _(string) --_
-            
+
             The IPv4 CIDR block used for the destination match.
-            
+
         - **DestinationIpv6CidrBlock** _(string) --_
-            
+
             The IPv6 CIDR block used for the destination match.
-            
+
         - **DestinationPrefixListId** _(string) --_
-            
+
             The prefix of the AWS service.
-            
+
         - **EgressOnlyInternetGatewayId** _(string) --_
-            
+
             The ID of the egress-only internet gateway.
-            
+
         - **GatewayId** _(string) --_
-            
+
             The ID of a gateway attached to your VPC.
-            
+
         - **InstanceId** _(string) --_
-            
+
             The ID of a NAT instance in your VPC.
-            
+
         - **InstanceOwnerId** _(string) --_
-            
+
             The AWS account ID of the owner of the instance.
-            
+
         - **NatGatewayId** _(string) --_
-            
+
             The ID of a NAT gateway.
-            
+
         - **TransitGatewayId** _(string) --_
-            
+
             The ID of a transit gateway.
-            
+
         - **LocalGatewayId** _(string) --_
-            
+
             The ID of the local gateway.
-            
+
         - **CarrierGatewayId** _(string) --_
-            
+
             The ID of the carrier gateway.
-            
+
         - **NetworkInterfaceId** _(string) --_
-            
+
             The ID of the network interface.
-            
+
         - **Origin** _(string) --_
-            
+
             Describes how the route was created.
-            
+
             - CreateRouteTable - The route was automatically created when the route table was created.
             - CreateRoute - The route was manually added to the route table.
             - EnableVgwRoutePropagation - The route was propagated by route propagation.
         - **State** _(string) --_
-            
+
             The state of the route. The blackhole state indicates that the route's target isn't available (for example, the specified gateway isn't attached to the VPC, or the specified NAT instance has been terminated).
-            
+
         - **VpcPeeringConnectionId** _(string) --_
-            
+
             The ID of a VPC peering connection.
-            
+
 
 tags
 
 - _(list) --_
-    
+
     Any tags assigned to the route table.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 vpc_id
 
 - _(string) --_
-    
+
     The ID of the VPC.
-    
+
 
 References
 
@@ -7376,11 +7376,11 @@ Parameters
 - **TransitGatewayId** (_string_) -- The ID of a transit gateway.
 - **LocalGatewayId** (_string_) -- The ID of the local gateway.
 - **CarrierGatewayId** (_string_) --
-    
+
     The ID of the carrier gateway.
-    
+
     You can only use this option when the VPC contains a subnet which is associated with a Wavelength Zone.
-    
+
 - **NetworkInterfaceId** (_string_) -- The ID of a network interface.
 - **VpcPeeringConnectionId** (_string_) -- The ID of a VPC peering connection.
 
@@ -7416,27 +7416,27 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     - _(dict) --_
-        
+
         Describes a tag.
-        
+
         - **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         - **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Return type
 
@@ -7562,52 +7562,52 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 association_state
 
 - _(dict) --_
-    
+
     The state of the association.
-    
+
     - **State** _(string) --_
-        
+
         The state of the association.
-        
+
     - **StatusMessage** _(string) --_
-        
+
         The status message, if applicable.
-        
+
 
 gateway_id
 
 - _(string) --_
-    
+
     The ID of the internet gateway or virtual private gateway.
-    
+
 
 main
 
 - _(boolean) --_
-    
+
     Indicates whether this is the main route table.
-    
+
 
 route_table_association_id
 
 - _(string) --_
-    
+
     The ID of the association.
-    
+
 
 route_table_id
 
 - _(string) --_
-    
+
     The ID of the route table.
-    
+
 
 subnet_id
 
 - _(string) --_
-    
+
     The ID of the subnet. A subnet ID is not returned for an implicit association.
-    
+
 
 References
 
@@ -7678,11 +7678,11 @@ Parameters
 
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 - **RouteTableId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the new route table to associate with the subnet.
-    
+
 
 Return type
 
@@ -7750,306 +7750,306 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 description
 
 *   _(string) --_
-    
+
     A description of the security group.
-    
+
 
 group_id
 
 *   _(string) --_
-    
+
     The ID of the security group.
-    
+
 
 group_name
 
 *   _(string) --_
-    
+
     The name of the security group.
-    
+
 
 ip_permissions
 
 *   _(list) --_
-    
+
     The inbound rules associated with the security group.
-    
+
     *   _(dict) --_
-        
+
         Describes a set of permissions for a security group rule.
-        
+
         *   **FromPort** _(integer) --_
-            
+
             The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **IpProtocol** _(string) --_
-            
+
             The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
-            
+
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-            
+
         *   **IpRanges** _(list) --_
-            
+
             The IPv4 ranges.
-            
+
             *   _(dict) --_
-                
+
                 Describes an IPv4 range.
-                
+
                 *   **CidrIp** _(string) --_
-                    
+
                     The IPv4 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv4 address, use the /32 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv4 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **Ipv6Ranges** _(list) --_
-            
+
             [VPC only] The IPv6 ranges.
-            
+
             *   _(dict) --_
-                
+
                 [EC2-VPC only] Describes an IPv6 range.
-                
+
                 *   **CidrIpv6** _(string) --_
-                    
+
                     The IPv6 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv6 address, use the /128 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv6 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **PrefixListIds** _(list) --_
-            
+
             [VPC only] The prefix list IDs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a prefix list ID.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this prefix list ID.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **PrefixListId** _(string) --_
-                    
+
                     The ID of the prefix.
-                    
+
         *   **ToPort** _(integer) --_
-            
+
             The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of -1 indicates all ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **UserIdGroupPairs** _(list) --_
-            
+
             The security group and AWS account ID pairs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a security group and AWS account ID pair.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this user ID group pair.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **GroupId** _(string) --_
-                    
+
                     The ID of the security group.
-                    
+
                 *   **GroupName** _(string) --_
-                    
+
                     The name of the security group. In a request, use this parameter for a security group in EC2-Classic or a default VPC only. For a security group in a nondefault VPC, use the security group ID.
-                    
+
                     For a referenced security group in another VPC, this value is not returned if the referenced security group is deleted.
-                    
+
                 *   **PeeringStatus** _(string) --_
-                    
+
                     The status of a VPC peering connection, if applicable.
-                    
+
                 *   **UserId** _(string) --_
-                    
+
                     The ID of an AWS account.
-                    
+
                     For a referenced security group in another VPC, the account ID of the referenced security group is returned in the response. If the referenced security group is deleted, this value is not returned.
-                    
+
                     [EC2-Classic] Required when adding or removing rules that reference a security group in another AWS account.
-                    
+
                 *   **VpcId** _(string) --_
-                    
+
                     The ID of the VPC for the referenced security group, if applicable.
-                    
+
                 *   **VpcPeeringConnectionId** _(string) --_
-                    
+
                     The ID of the VPC peering connection, if applicable.
-                    
+
 
 ip_permissions_egress
 
 *   _(list) --_
-    
+
     [VPC only] The outbound rules associated with the security group.
-    
+
     *   _(dict) --_
-        
+
         Describes a set of permissions for a security group rule.
-        
+
         *   **FromPort** _(integer) --_
-            
+
             The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **IpProtocol** _(string) --_
-            
+
             The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
-            
+
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-            
+
         *   **IpRanges** _(list) --_
-            
+
             The IPv4 ranges.
-            
+
             *   _(dict) --_
-                
+
                 Describes an IPv4 range.
-                
+
                 *   **CidrIp** _(string) --_
-                    
+
                     The IPv4 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv4 address, use the /32 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv4 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **Ipv6Ranges** _(list) --_
-            
+
             [VPC only] The IPv6 ranges.
-            
+
             *   _(dict) --_
-                
+
                 [EC2-VPC only] Describes an IPv6 range.
-                
+
                 *   **CidrIpv6** _(string) --_
-                    
+
                     The IPv6 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv6 address, use the /128 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv6 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **PrefixListIds** _(list) --_
-            
+
             [VPC only] The prefix list IDs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a prefix list ID.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this prefix list ID.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **PrefixListId** _(string) --_
-                    
+
                     The ID of the prefix.
-                    
+
         *   **ToPort** _(integer) --_
-            
+
             The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of -1 indicates all ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **UserIdGroupPairs** _(list) --_
-            
+
             The security group and AWS account ID pairs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a security group and AWS account ID pair.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this user ID group pair.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **GroupId** _(string) --_
-                    
+
                     The ID of the security group.
-                    
+
                 *   **GroupName** _(string) --_
-                    
+
                     The name of the security group. In a request, use this parameter for a security group in EC2-Classic or a default VPC only. For a security group in a nondefault VPC, use the security group ID.
-                    
+
                     For a referenced security group in another VPC, this value is not returned if the referenced security group is deleted.
-                    
+
                 *   **PeeringStatus** _(string) --_
-                    
+
                     The status of a VPC peering connection, if applicable.
-                    
+
                 *   **UserId** _(string) --_
-                    
+
                     The ID of an AWS account.
-                    
+
                     For a referenced security group in another VPC, the account ID of the referenced security group is returned in the response. If the referenced security group is deleted, this value is not returned.
-                    
+
                     [EC2-Classic] Required when adding or removing rules that reference a security group in another AWS account.
-                    
+
                 *   **VpcId** _(string) --_
-                    
+
                     The ID of the VPC for the referenced security group, if applicable.
-                    
+
                 *   **VpcPeeringConnectionId** _(string) --_
-                    
+
                     The ID of the VPC peering connection, if applicable.
-                    
+
 
 owner_id
 
 *   _(string) --_
-    
+
     The AWS account ID of the owner of the security group.
-    
+
 
 tags
 
 *   _(list) --_
-    
+
     Any tags assigned to the security group.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 vpc_id
 
 *   _(string) --_
-    
+
     [VPC only] The ID of the VPC for the security group.
-    
+
 
 Actions
 
@@ -8121,125 +8121,125 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **IpPermissions** (_list_) --
-    
+
     The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the same set of permissions.
-    
+
     *   _(dict) --_
-        
+
         Describes a set of permissions for a security group rule.
-        
+
         *   **FromPort** _(integer) --_
-            
+
             The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **IpProtocol** _(string) --_
-            
+
             The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
-            
+
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-            
+
         *   **IpRanges** _(list) --_
-            
+
             The IPv4 ranges.
-            
+
             *   _(dict) --_
-                
+
                 Describes an IPv4 range.
-                
+
                 *   **CidrIp** _(string) --_
-                    
+
                     The IPv4 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv4 address, use the /32 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv4 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **Ipv6Ranges** _(list) --_
-            
+
             [VPC only] The IPv6 ranges.
-            
+
             *   _(dict) --_
-                
+
                 [EC2-VPC only] Describes an IPv6 range.
-                
+
                 *   **CidrIpv6** _(string) --_
-                    
+
                     The IPv6 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv6 address, use the /128 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv6 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **PrefixListIds** _(list) --_
-            
+
             [VPC only] The prefix list IDs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a prefix list ID.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this prefix list ID.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **PrefixListId** _(string) --_
-                    
+
                     The ID of the prefix.
-                    
+
         *   **ToPort** _(integer) --_
-            
+
             The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of -1 indicates all ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **UserIdGroupPairs** _(list) --_
-            
+
             The security group and AWS account ID pairs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a security group and AWS account ID pair.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this user ID group pair.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **GroupId** _(string) --_
-                    
+
                     The ID of the security group.
-                    
+
                 *   **GroupName** _(string) --_
-                    
+
                     The name of the security group. In a request, use this parameter for a security group in EC2-Classic or a default VPC only. For a security group in a nondefault VPC, use the security group ID.
-                    
+
                     For a referenced security group in another VPC, this value is not returned if the referenced security group is deleted.
-                    
+
                 *   **PeeringStatus** _(string) --_
-                    
+
                     The status of a VPC peering connection, if applicable.
-                    
+
                 *   **UserId** _(string) --_
-                    
+
                     The ID of an AWS account.
-                    
+
                     For a referenced security group in another VPC, the account ID of the referenced security group is returned in the response. If the referenced security group is deleted, this value is not returned.
-                    
+
                     [EC2-Classic] Required when adding or removing rules that reference a security group in another AWS account.
-                    
+
                 *   **VpcId** _(string) --_
-                    
+
                     The ID of the VPC for the referenced security group, if applicable.
-                    
+
                 *   **VpcPeeringConnectionId** _(string) --_
-                    
+
                     The ID of the VPC peering connection, if applicable.
-                    
+
 *   **CidrIp** (_string_) -- Not supported. Use a set of IP permissions to specify the CIDR.
 *   **FromPort** (_integer_) -- Not supported. Use a set of IP permissions to specify the port.
 *   **IpProtocol** (_string_) -- Not supported. Use a set of IP permissions to specify the protocol name or number.
@@ -8317,154 +8317,154 @@ response = security_group.authorize_ingress(
 Parameters
 
 *   **CidrIp** (_string_) --
-    
+
     The IPv4 address range, in CIDR format. You can't specify this parameter when specifying a source security group. To specify an IPv6 address range, use a set of IP permissions.
-    
+
     Alternatively, use a set of IP permissions to specify multiple rules and a description for the rule.
-    
+
 *   **FromPort** (_integer_) --
-    
+
     The start of port range for the TCP and UDP protocols, or an ICMP type number. For the ICMP type number, use -1 to specify all types. If you specify all ICMP types, you must specify all codes.
-    
+
     Alternatively, use a set of IP permissions to specify multiple rules and a description for the rule.
-    
+
 *   **GroupName** (_string_) -- [EC2-Classic, default VPC] The name of the security group. You must specify either the security group ID or the security group name in the request.
 *   **IpPermissions** (_list_) --
-    
+
     The sets of IP permissions.
-    
+
     *   _(dict) --_
-        
+
         Describes a set of permissions for a security group rule.
-        
+
         *   **FromPort** _(integer) --_
-            
+
             The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **IpProtocol** _(string) --_
-            
+
             The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
-            
+
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-            
+
         *   **IpRanges** _(list) --_
-            
+
             The IPv4 ranges.
-            
+
             *   _(dict) --_
-                
+
                 Describes an IPv4 range.
-                
+
                 *   **CidrIp** _(string) --_
-                    
+
                     The IPv4 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv4 address, use the /32 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv4 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **Ipv6Ranges** _(list) --_
-            
+
             [VPC only] The IPv6 ranges.
-            
+
             *   _(dict) --_
-                
+
                 [EC2-VPC only] Describes an IPv6 range.
-                
+
                 *   **CidrIpv6** _(string) --_
-                    
+
                     The IPv6 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv6 address, use the /128 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv6 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **PrefixListIds** _(list) --_
-            
+
             [VPC only] The prefix list IDs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a prefix list ID.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this prefix list ID.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **PrefixListId** _(string) --_
-                    
+
                     The ID of the prefix.
-                    
+
         *   **ToPort** _(integer) --_
-            
+
             The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of -1 indicates all ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **UserIdGroupPairs** _(list) --_
-            
+
             The security group and AWS account ID pairs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a security group and AWS account ID pair.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this user ID group pair.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **GroupId** _(string) --_
-                    
+
                     The ID of the security group.
-                    
+
                 *   **GroupName** _(string) --_
-                    
+
                     The name of the security group. In a request, use this parameter for a security group in EC2-Classic or a default VPC only. For a security group in a nondefault VPC, use the security group ID.
-                    
+
                     For a referenced security group in another VPC, this value is not returned if the referenced security group is deleted.
-                    
+
                 *   **PeeringStatus** _(string) --_
-                    
+
                     The status of a VPC peering connection, if applicable.
-                    
+
                 *   **UserId** _(string) --_
-                    
+
                     The ID of an AWS account.
-                    
+
                     For a referenced security group in another VPC, the account ID of the referenced security group is returned in the response. If the referenced security group is deleted, this value is not returned.
-                    
+
                     [EC2-Classic] Required when adding or removing rules that reference a security group in another AWS account.
-                    
+
                 *   **VpcId** _(string) --_
-                    
+
                     The ID of the VPC for the referenced security group, if applicable.
-                    
+
                 *   **VpcPeeringConnectionId** _(string) --_
-                    
+
                     The ID of the VPC peering connection, if applicable.
-                    
+
 *   **IpProtocol** (_string_) --
-    
+
     The IP protocol name (tcp , udp , icmp ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ). To specify icmpv6 , use a set of IP permissions.
-    
+
     [VPC only] Use -1 to specify all protocols. If you specify -1 or a protocol other than tcp , udp , or icmp , traffic on all ports is allowed, regardless of any ports you specify.
-    
+
     Alternatively, use a set of IP permissions to specify multiple rules and a description for the rule.
-    
+
 *   **SourceSecurityGroupName** (_string_) -- [EC2-Classic, default VPC] The name of the source security group. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the start of the port range, the IP protocol, and the end of the port range. Creates rules that grant full ICMP, UDP, and TCP access. To create a rule with a specific IP protocol and port range, use a set of IP permissions instead. For EC2-VPC, the source security group must be in the same VPC.
 *   **SourceSecurityGroupOwnerId** (_string_) -- [nondefault VPC] The AWS account ID for the source security group, if the source security group is in a different account. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the IP protocol, the start of the port range, and the end of the port range. Creates rules that grant full ICMP, UDP, and TCP access. To create a rule with a specific IP protocol and port range, use a set of IP permissions instead.
 *   **ToPort** (_integer_) --
-    
+
     The end of port range for the TCP and UDP protocols, or an ICMP code number. For the ICMP code number, use -1 to specify all codes. If you specify all ICMP types, you must specify all codes.
-    
+
     Alternatively, use a set of IP permissions to specify multiple rules and a description for the rule.
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Returns
@@ -8495,27 +8495,27 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Return type
 
@@ -8657,125 +8657,125 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **IpPermissions** (_list_) --
-    
+
     The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the same set of permissions.
-    
+
     *   _(dict) --_
-        
+
         Describes a set of permissions for a security group rule.
-        
+
         *   **FromPort** _(integer) --_
-            
+
             The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **IpProtocol** _(string) --_
-            
+
             The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
-            
+
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-            
+
         *   **IpRanges** _(list) --_
-            
+
             The IPv4 ranges.
-            
+
             *   _(dict) --_
-                
+
                 Describes an IPv4 range.
-                
+
                 *   **CidrIp** _(string) --_
-                    
+
                     The IPv4 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv4 address, use the /32 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv4 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **Ipv6Ranges** _(list) --_
-            
+
             [VPC only] The IPv6 ranges.
-            
+
             *   _(dict) --_
-                
+
                 [EC2-VPC only] Describes an IPv6 range.
-                
+
                 *   **CidrIpv6** _(string) --_
-                    
+
                     The IPv6 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv6 address, use the /128 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv6 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **PrefixListIds** _(list) --_
-            
+
             [VPC only] The prefix list IDs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a prefix list ID.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this prefix list ID.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **PrefixListId** _(string) --_
-                    
+
                     The ID of the prefix.
-                    
+
         *   **ToPort** _(integer) --_
-            
+
             The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of -1 indicates all ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **UserIdGroupPairs** _(list) --_
-            
+
             The security group and AWS account ID pairs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a security group and AWS account ID pair.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this user ID group pair.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **GroupId** _(string) --_
-                    
+
                     The ID of the security group.
-                    
+
                 *   **GroupName** _(string) --_
-                    
+
                     The name of the security group. In a request, use this parameter for a security group in EC2-Classic or a default VPC only. For a security group in a nondefault VPC, use the security group ID.
-                    
+
                     For a referenced security group in another VPC, this value is not returned if the referenced security group is deleted.
-                    
+
                 *   **PeeringStatus** _(string) --_
-                    
+
                     The status of a VPC peering connection, if applicable.
-                    
+
                 *   **UserId** _(string) --_
-                    
+
                     The ID of an AWS account.
-                    
+
                     For a referenced security group in another VPC, the account ID of the referenced security group is returned in the response. If the referenced security group is deleted, this value is not returned.
-                    
+
                     [EC2-Classic] Required when adding or removing rules that reference a security group in another AWS account.
-                    
+
                 *   **VpcId** _(string) --_
-                    
+
                     The ID of the VPC for the referenced security group, if applicable.
-                    
+
                 *   **VpcPeeringConnectionId** _(string) --_
-                    
+
                     The ID of the VPC peering connection, if applicable.
-                    
+
 *   **CidrIp** (_string_) -- Not supported. Use a set of IP permissions to specify the CIDR.
 *   **FromPort** (_integer_) -- Not supported. Use a set of IP permissions to specify the port.
 *   **IpProtocol** (_string_) -- Not supported. Use a set of IP permissions to specify the protocol name or number.
@@ -8834,131 +8834,131 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **Return** _(boolean) --_
-        
+
         Returns true if the request succeeds; otherwise, returns an error.
-        
+
     *   **UnknownIpPermissions** _(list) --_
-        
+
         The outbound rules that were unknown to the service. In some cases, unknownIpPermissionSet might be in a different format from the request parameter.
-        
+
         *   _(dict) --_
-            
+
             Describes a set of permissions for a security group rule.
-            
+
             *   **FromPort** _(integer) --_
-                
+
                 The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-                
+
             *   **IpProtocol** _(string) --_
-                
+
                 The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
-                
+
                 [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-                
+
             *   **IpRanges** _(list) --_
-                
+
                 The IPv4 ranges.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes an IPv4 range.
-                    
+
                     *   **CidrIp** _(string) --_
-                        
+
                         The IPv4 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv4 address, use the /32 prefix length.
-                        
+
                     *   **Description** _(string) --_
-                        
+
                         A description for the security group rule that references this IPv4 address range.
-                        
+
                         Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                        
+
             *   **Ipv6Ranges** _(list) --_
-                
+
                 [VPC only] The IPv6 ranges.
-                
+
                 *   _(dict) --_
-                    
+
                     [EC2-VPC only] Describes an IPv6 range.
-                    
+
                     *   **CidrIpv6** _(string) --_
-                        
+
                         The IPv6 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv6 address, use the /128 prefix length.
-                        
+
                     *   **Description** _(string) --_
-                        
+
                         A description for the security group rule that references this IPv6 address range.
-                        
+
                         Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                        
+
             *   **PrefixListIds** _(list) --_
-                
+
                 [VPC only] The prefix list IDs.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes a prefix list ID.
-                    
+
                     *   **Description** _(string) --_
-                        
+
                         A description for the security group rule that references this prefix list ID.
-                        
+
                         Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                        
+
                     *   **PrefixListId** _(string) --_
-                        
+
                         The ID of the prefix.
-                        
+
             *   **ToPort** _(integer) --_
-                
+
                 The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of -1 indicates all ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-                
+
             *   **UserIdGroupPairs** _(list) --_
-                
+
                 The security group and AWS account ID pairs.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes a security group and AWS account ID pair.
-                    
+
                     *   **Description** _(string) --_
-                        
+
                         A description for the security group rule that references this user ID group pair.
-                        
+
                         Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                        
+
                     *   **GroupId** _(string) --_
-                        
+
                         The ID of the security group.
-                        
+
                     *   **GroupName** _(string) --_
-                        
+
                         The name of the security group. In a request, use this parameter for a security group in EC2-Classic or a default VPC only. For a security group in a nondefault VPC, use the security group ID.
-                        
+
                         For a referenced security group in another VPC, this value is not returned if the referenced security group is deleted.
-                        
+
                     *   **PeeringStatus** _(string) --_
-                        
+
                         The status of a VPC peering connection, if applicable.
-                        
+
                     *   **UserId** _(string) --_
-                        
+
                         The ID of an AWS account.
-                        
+
                         For a referenced security group in another VPC, the account ID of the referenced security group is returned in the response. If the referenced security group is deleted, this value is not returned.
-                        
+
                         [EC2-Classic] Required when adding or removing rules that reference a security group in another AWS account.
-                        
+
                     *   **VpcId** _(string) --_
-                        
+
                         The ID of the VPC for the referenced security group, if applicable.
-                        
+
                     *   **VpcPeeringConnectionId** _(string) --_
-                        
+
                         The ID of the VPC peering connection, if applicable.
-                        
+
 
 revoke_ingress(kwargs_)
 
@@ -9031,125 +9031,125 @@ Parameters
 *   **FromPort** (_integer_) -- The start of port range for the TCP and UDP protocols, or an ICMP type number. For the ICMP type number, use -1 to specify all ICMP types.
 *   **GroupName** (_string_) -- [EC2-Classic, default VPC] The name of the security group. You must specify either the security group ID or the security group name in the request.
 *   **IpPermissions** (_list_) --
-    
+
     The sets of IP permissions. You can't specify a source security group and a CIDR IP address range in the same set of permissions.
-    
+
     *   _(dict) --_
-        
+
         Describes a set of permissions for a security group rule.
-        
+
         *   **FromPort** _(integer) --_
-            
+
             The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **IpProtocol** _(string) --_
-            
+
             The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
-            
+
             [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-            
+
         *   **IpRanges** _(list) --_
-            
+
             The IPv4 ranges.
-            
+
             *   _(dict) --_
-                
+
                 Describes an IPv4 range.
-                
+
                 *   **CidrIp** _(string) --_
-                    
+
                     The IPv4 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv4 address, use the /32 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv4 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **Ipv6Ranges** _(list) --_
-            
+
             [VPC only] The IPv6 ranges.
-            
+
             *   _(dict) --_
-                
+
                 [EC2-VPC only] Describes an IPv6 range.
-                
+
                 *   **CidrIpv6** _(string) --_
-                    
+
                     The IPv6 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv6 address, use the /128 prefix length.
-                    
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this IPv6 address range.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                    
+
         *   **PrefixListIds** _(list) --_
-            
+
             [VPC only] The prefix list IDs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a prefix list ID.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this prefix list ID.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **PrefixListId** _(string) --_
-                    
+
                     The ID of the prefix.
-                    
+
         *   **ToPort** _(integer) --_
-            
+
             The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of -1 indicates all ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-            
+
         *   **UserIdGroupPairs** _(list) --_
-            
+
             The security group and AWS account ID pairs.
-            
+
             *   _(dict) --_
-                
+
                 Describes a security group and AWS account ID pair.
-                
+
                 *   **Description** _(string) --_
-                    
+
                     A description for the security group rule that references this user ID group pair.
-                    
+
                     Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                    
+
                 *   **GroupId** _(string) --_
-                    
+
                     The ID of the security group.
-                    
+
                 *   **GroupName** _(string) --_
-                    
+
                     The name of the security group. In a request, use this parameter for a security group in EC2-Classic or a default VPC only. For a security group in a nondefault VPC, use the security group ID.
-                    
+
                     For a referenced security group in another VPC, this value is not returned if the referenced security group is deleted.
-                    
+
                 *   **PeeringStatus** _(string) --_
-                    
+
                     The status of a VPC peering connection, if applicable.
-                    
+
                 *   **UserId** _(string) --_
-                    
+
                     The ID of an AWS account.
-                    
+
                     For a referenced security group in another VPC, the account ID of the referenced security group is returned in the response. If the referenced security group is deleted, this value is not returned.
-                    
+
                     [EC2-Classic] Required when adding or removing rules that reference a security group in another AWS account.
-                    
+
                 *   **VpcId** _(string) --_
-                    
+
                     The ID of the VPC for the referenced security group, if applicable.
-                    
+
                 *   **VpcPeeringConnectionId** _(string) --_
-                    
+
                     The ID of the VPC peering connection, if applicable.
-                    
+
 *   **IpProtocol** (_string_) -- The IP protocol name (tcp , udp , icmp ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ). Use -1 to specify all.
 *   **SourceSecurityGroupName** (_string_) -- [EC2-Classic, default VPC] The name of the source security group. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the start of the port range, the IP protocol, and the end of the port range. For EC2-VPC, the source security group must be in the same VPC. To revoke a specific rule for an IP protocol and port range, use a set of IP permissions instead.
 *   **SourceSecurityGroupOwnerId** (_string_) -- [EC2-Classic] The AWS account ID of the source security group, if the source security group is in a different account. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the IP protocol, the start of the port range, and the end of the port range. To revoke a specific rule for an IP protocol and port range, use a set of IP permissions instead.
@@ -9207,131 +9207,131 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **Return** _(boolean) --_
-        
+
         Returns true if the request succeeds; otherwise, returns an error.
-        
+
     *   **UnknownIpPermissions** _(list) --_
-        
+
         The inbound rules that were unknown to the service. In some cases, unknownIpPermissionSet might be in a different format from the request parameter.
-        
+
         *   _(dict) --_
-            
+
             Describes a set of permissions for a security group rule.
-            
+
             *   **FromPort** _(integer) --_
-                
+
                 The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A value of -1 indicates all ICMP/ICMPv6 types. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-                
+
             *   **IpProtocol** _(string) --_
-                
+
                 The IP protocol name (tcp , udp , icmp , icmpv6 ) or number (see [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ).
-                
+
                 [VPC only] Use -1 to specify all protocols. When authorizing security group rules, specifying -1 or a protocol number other than tcp , udp , icmp , or icmpv6 allows traffic on all ports, regardless of any port range you specify. For tcp , udp , and icmp , you must specify a port range. For icmpv6 , the port range is optional; if you omit the port range, traffic for all types and codes is allowed.
-                
+
             *   **IpRanges** _(list) --_
-                
+
                 The IPv4 ranges.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes an IPv4 range.
-                    
+
                     *   **CidrIp** _(string) --_
-                        
+
                         The IPv4 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv4 address, use the /32 prefix length.
-                        
+
                     *   **Description** _(string) --_
-                        
+
                         A description for the security group rule that references this IPv4 address range.
-                        
+
                         Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                        
+
             *   **Ipv6Ranges** _(list) --_
-                
+
                 [VPC only] The IPv6 ranges.
-                
+
                 *   _(dict) --_
-                    
+
                     [EC2-VPC only] Describes an IPv6 range.
-                    
+
                     *   **CidrIpv6** _(string) --_
-                        
+
                         The IPv6 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv6 address, use the /128 prefix length.
-                        
+
                     *   **Description** _(string) --_
-                        
+
                         A description for the security group rule that references this IPv6 address range.
-                        
+
                         Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-                        
+
             *   **PrefixListIds** _(list) --_
-                
+
                 [VPC only] The prefix list IDs.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes a prefix list ID.
-                    
+
                     *   **Description** _(string) --_
-                        
+
                         A description for the security group rule that references this prefix list ID.
-                        
+
                         Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                        
+
                     *   **PrefixListId** _(string) --_
-                        
+
                         The ID of the prefix.
-                        
+
             *   **ToPort** _(integer) --_
-                
+
                 The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code. A value of -1 indicates all ICMP/ICMPv6 codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.
-                
+
             *   **UserIdGroupPairs** _(list) --_
-                
+
                 The security group and AWS account ID pairs.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes a security group and AWS account ID pair.
-                    
+
                     *   **Description** _(string) --_
-                        
+
                         A description for the security group rule that references this user ID group pair.
-                        
+
                         Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
-                        
+
                     *   **GroupId** _(string) --_
-                        
+
                         The ID of the security group.
-                        
+
                     *   **GroupName** _(string) --_
-                        
+
                         The name of the security group. In a request, use this parameter for a security group in EC2-Classic or a default VPC only. For a security group in a nondefault VPC, use the security group ID.
-                        
+
                         For a referenced security group in another VPC, this value is not returned if the referenced security group is deleted.
-                        
+
                     *   **PeeringStatus** _(string) --_
-                        
+
                         The status of a VPC peering connection, if applicable.
-                        
+
                     *   **UserId** _(string) --_
-                        
+
                         The ID of an AWS account.
-                        
+
                         For a referenced security group in another VPC, the account ID of the referenced security group is returned in the response. If the referenced security group is deleted, this value is not returned.
-                        
+
                         [EC2-Classic] Required when adding or removing rules that reference a security group in another AWS account.
-                        
+
                     *   **VpcId** _(string) --_
-                        
+
                         The ID of the VPC for the referenced security group, if applicable.
-                        
+
                     *   **VpcPeeringConnectionId** _(string) --_
-                        
+
                         The ID of the VPC peering connection, if applicable.
-                        
+
 
 [Snapshot](#id1252)
 --------------------------------------------------------------
@@ -9405,116 +9405,116 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 data_encryption_key_id
 
 *   _(string) --_
-    
+
     The data encryption key identifier for the snapshot. This value is a unique identifier that corresponds to the data encryption key that was used to encrypt the original volume or snapshot copy. Because data encryption keys are inherited by volumes created from snapshots, and vice versa, if snapshots share the same data encryption key identifier, then they belong to the same volume/snapshot lineage. This parameter is only returned by DescribeSnapshots .
-    
+
 
 description
 
 *   _(string) --_
-    
+
     The description for the snapshot.
-    
+
 
 encrypted
 
 *   _(boolean) --_
-    
+
     Indicates whether the snapshot is encrypted.
-    
+
 
 kms_key_id
 
 *   _(string) --_
-    
+
     The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS) customer master key (CMK) that was used to protect the volume encryption key for the parent volume.
-    
+
 
 owner_alias
 
 *   _(string) --_
-    
+
     The AWS owner alias, from an Amazon-maintained list (amazon ). This is not the user-configured AWS account alias set using the IAM console.
-    
+
 
 owner_id
 
 *   _(string) --_
-    
+
     The AWS account ID of the EBS snapshot owner.
-    
+
 
 progress
 
 *   _(string) --_
-    
+
     The progress of the snapshot, as a percentage.
-    
+
 
 snapshot_id
 
 *   _(string) --_
-    
+
     The ID of the snapshot. Each snapshot receives a unique identifier when it is created.
-    
+
 
 start_time
 
 *   _(datetime) --_
-    
+
     The time stamp when the snapshot was initiated.
-    
+
 
 state
 
 *   _(string) --_
-    
+
     The snapshot state.
-    
+
 
 state_message
 
 *   _(string) --_
-    
+
     Encrypted Amazon EBS snapshots are copied asynchronously. If a snapshot copy operation fails (for example, if the proper AWS Key Management Service (AWS KMS) permissions are not obtained) this field displays error state details to help you diagnose why the error occurred. This parameter is only returned by DescribeSnapshots .
-    
+
 
 tags
 
 *   _(list) --_
-    
+
     Any tags assigned to the snapshot.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 volume_id
 
 *   _(string) --_
-    
+
     The ID of the volume that was used to create the snapshot. Snapshots created by the CopySnapshot action have an arbitrary volume ID that should not be used for any purpose.
-    
+
 
 volume_size
 
 *   _(integer) --_
-    
+
     The size of the volume, in GiB.
-    
+
 
 References
 
@@ -9567,75 +9567,75 @@ Parameters
 
 *   **Description** (_string_) -- A description for the EBS snapshot.
 *   **DestinationRegion** (_string_) --
-    
+
     The destination Region to use in the PresignedUrl parameter of a snapshot copy operation. This parameter is only valid for specifying the destination Region in a PresignedUrl parameter, where it is required.
-    
+
     The snapshot copy is sent to the regional endpoint that you sent the HTTP request to (for example, ec2.us-east-1.amazonaws.com ). With the AWS CLI, this is specified using the --region parameter or the default Region in your AWS configuration file.
-    
+
     > Please note that this parameter is automatically populated if it is not provided. Including this parameter is not required
-    
+
 *   **Encrypted** (_boolean_) -- To encrypt a copy of an unencrypted snapshot if encryption by default is not enabled, enable encryption using this parameter. Otherwise, omit this parameter. Encrypted snapshots are encrypted, even if you omit this parameter and encryption by default is not enabled. You cannot set this parameter to false. For more information, see [Amazon EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 *   **KmsKeyId** (_string_) --
-    
+
     The identifier of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use for Amazon EBS encryption. If this parameter is not specified, your AWS managed CMK for EBS is used. If KmsKeyId is specified, the encrypted state must be true .
-    
+
     You can specify the CMK using any of the following:
-    
+
     *   Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
     *   Key alias. For example, alias/ExampleAlias.
     *   Key ARN. For example, arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
     *   Alias ARN. For example, arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
-    
+
     AWS authenticates the CMK asynchronously. Therefore, if you specify an ID, alias, or ARN that is not valid, the action can appear to complete, but eventually fails.
-    
+
 *   **PresignedUrl** (_string_) --
-    
+
     When you copy an encrypted source snapshot using the Amazon EC2 Query API, you must supply a pre-signed URL. This parameter is optional for unencrypted snapshots. For more information, see [Query requests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html) .
-    
+
     The PresignedUrl should use the snapshot source endpoint, the CopySnapshot action, and include the SourceRegion , SourceSnapshotId , and DestinationRegion parameters. The PresignedUrl must be signed using AWS Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in [Authenticating Requests: Using Query Parameters (AWS Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html) in the _Amazon Simple Storage Service API Reference_ . An invalid or improperly signed PresignedUrl will cause the copy operation to fail asynchronously, and the snapshot will move to an error state.
-    
+
     > Please note that this parameter is automatically populated if it is not provided. Including this parameter is not required
-    
+
 *   **SourceRegion** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the Region that contains the snapshot to be copied.
-    
+
 *   **TagSpecifications** (_list_) --
-    
+
     The tags to apply to the new snapshot.
-    
+
     *   _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
         *   **ResourceType** _(string) --_
-            
+
             The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id1076)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id1078)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
+
             To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-            
+
         *   **Tags** _(list) --_
-            
+
             The tags to apply to the resource.
-            
+
             *   _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 *   **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 *   **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -9659,31 +9659,31 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **SnapshotId** _(string) --_
-        
+
         The ID of the new snapshot.
-        
+
     *   **Tags** _(list) --_
-        
+
         Any tags applied to the new snapshot.
-        
+
         *   _(dict) --_
-            
+
             Describes a tag.
-            
+
             *   **Key** _(string) --_
-                
+
                 The key of the tag.
-                
+
                 Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                
+
             *   **Value** _(string) --_
-                
+
                 The value of the tag.
-                
+
                 Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                
+
 
 create_tags(kwargs_)
 
@@ -9709,27 +9709,27 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Return type
 
@@ -9783,11 +9783,11 @@ response = snapshot.describe_attribute(
 Parameters
 
 *   **Attribute** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The snapshot attribute you would like to view.
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -9817,43 +9817,43 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **CreateVolumePermissions** _(list) --_
-        
+
         The users and groups that have the permissions for creating volumes from the snapshot.
-        
+
         *   _(dict) --_
-            
+
             Describes the user or group to be added or removed from the list of create volume permissions for a volume.
-            
+
             *   **Group** _(string) --_
-                
+
                 The group to be added or removed. The possible value is all .
-                
+
             *   **UserId** _(string) --_
-                
+
                 The AWS account ID to be added or removed.
-                
+
     *   **ProductCodes** _(list) --_
-        
+
         The product codes.
-        
+
         *   _(dict) --_
-            
+
             Describes a product code.
-            
+
             *   **ProductCodeId** _(string) --_
-                
+
                 The product code.
-                
+
             *   **ProductCodeType** _(string) --_
-                
+
                 The type of product code.
-                
+
     *   **SnapshotId** _(string) --_
-        
+
         The ID of the EBS snapshot.
-        
+
 
 get_available_subresources()
 
@@ -9923,51 +9923,51 @@ Parameters
 
 *   **Attribute** (_string_) -- The snapshot attribute to modify. Only volume creation permissions can be modified.
 *   **CreateVolumePermission** (_dict_) --
-    
+
     A JSON representation of the snapshot attribute modification.
-    
+
     *   **Add** _(list) --_
-        
+
         Adds the specified AWS account ID or group to the list.
-        
+
         *   _(dict) --_
-            
+
             Describes the user or group to be added or removed from the list of create volume permissions for a volume.
-            
+
             *   **Group** _(string) --_
-                
+
                 The group to be added or removed. The possible value is all .
-                
+
             *   **UserId** _(string) --_
-                
+
                 The AWS account ID to be added or removed.
-                
+
     *   **Remove** _(list) --_
-        
+
         Removes the specified AWS account ID or group from the list.
-        
+
         *   _(dict) --_
-            
+
             Describes the user or group to be added or removed from the list of create volume permissions for a volume.
-            
+
             *   **Group** _(string) --_
-                
+
                 The group to be added or removed. The possible value is all .
-                
+
             *   **UserId** _(string) --_
-                
+
                 The AWS account ID to be added or removed.
-                
+
 *   **GroupNames** (_list_) --
-    
+
     The group to modify for the snapshot.
-    
+
     *   _(string) --_
 *   **OperationType** (_string_) -- The type of operation to perform to the attribute.
 *   **UserIds** (_list_) --
-    
+
     The account ID to modify for the snapshot.
-    
+
     *   _(string) --_
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
@@ -10007,11 +10007,11 @@ response = snapshot.reset_attribute(
 Parameters
 
 *   **Attribute** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The attribute to reset. Currently, only the attribute for permission to create volumes can be reset.
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Returns
@@ -10053,9 +10053,9 @@ snapshot.wait_until_completed(
 Parameters
 
 *   **Filters** (_list_) --
-    
+
     The filters.
-    
+
     *   description - A description of the snapshot.
     *   encrypted - Indicates whether the snapshot is encrypted (true | false )
     *   owner-alias - The owner alias, from an Amazon-maintained list (amazon ). This is not the user-configured AWS account alias set using the IAM console. We recommend that you use the related parameter instead of this filter.
@@ -10068,11 +10068,11 @@ Parameters
     *   tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
     *   volume-id - The ID of the volume the snapshot is for.
     *   volume-size - The size of the volume, in GiB.
-    
+
     *   _(dict) --_
-        
+
         A filter name and value pair that is used to return a more specific list of results from a describe operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs. The filters supported by a describe operation are documented with the describe operation. For example:
-        
+
         *   DescribeAvailabilityZones
         *   DescribeImages
         *   DescribeInstances
@@ -10083,27 +10083,27 @@ Parameters
         *   DescribeTags
         *   DescribeVolumes
         *   DescribeVpcs
-        
+
         *   **Name** _(string) --_
-            
+
             The name of the filter. Filter names are case-sensitive.
-            
+
         *   **Values** _(list) --_
-            
+
             The filter values. Filter values are case-sensitive.
-            
+
             *   _(string) --_
 *   **MaxResults** (_integer_) -- The maximum number of snapshot results returned by DescribeSnapshots in paginated output. When this parameter is used, DescribeSnapshots only returns MaxResults results in a single page along with a NextToken response element. The remaining results of the initial request can be seen by sending another DescribeSnapshots request with the returned NextToken value. This value can be between 5 and 1,000; if MaxResults is given a value larger than 1,000, only 1,000 results are returned. If this parameter is not used, then DescribeSnapshots returns all results. You cannot specify this parameter and the snapshot IDs parameter in the same request.
 *   **NextToken** (_string_) -- The NextToken value returned from a previous paginated DescribeSnapshots request where MaxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the NextToken value. This value is null when there are no more results to return.
 *   **OwnerIds** (_list_) --
-    
+
     Scopes the results to snapshots with the specified owners. You can specify a combination of AWS account IDs, self , and amazon .
-    
+
     *   _(string) --_
 *   **RestorableByUserIds** (_list_) --
-    
+
     The IDs of the AWS accounts that can create volumes from the snapshot.
-    
+
     *   _(string) --_
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
@@ -10185,161 +10185,161 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 assign_ipv6_address_on_creation
 
 *   _(boolean) --_
-    
+
     Indicates whether a network interface created in this subnet (including a network interface created by RunInstances ) receives an IPv6 address.
-    
+
 
 availability_zone
 
 *   _(string) --_
-    
+
     The Availability Zone of the subnet.
-    
+
 
 availability_zone_id
 
 *   _(string) --_
-    
+
     The AZ ID of the subnet.
-    
+
 
 available_ip_address_count
 
 *   _(integer) --_
-    
+
     The number of unused private IPv4 addresses in the subnet. The IPv4 addresses for any stopped instances are considered unavailable.
-    
+
 
 cidr_block
 
 *   _(string) --_
-    
+
     The IPv4 CIDR block assigned to the subnet.
-    
+
 
 customer_owned_ipv4_pool
 
 *   _(string) --_
-    
+
     The customer-owned IPv4 address pool associated with the subnet.
-    
+
 
 default_for_az
 
 *   _(boolean) --_
-    
+
     Indicates whether this is the default subnet for the Availability Zone.
-    
+
 
 ipv6_cidr_block_association_set
 
 *   _(list) --_
-    
+
     Information about the IPv6 CIDR blocks associated with the subnet.
-    
+
     *   _(dict) --_
-        
+
         Describes an IPv6 CIDR block associated with a subnet.
-        
+
         *   **AssociationId** _(string) --_
-            
+
             The association ID for the CIDR block.
-            
+
         *   **Ipv6CidrBlock** _(string) --_
-            
+
             The IPv6 CIDR block.
-            
+
         *   **Ipv6CidrBlockState** _(dict) --_
-            
+
             Information about the state of the CIDR block.
-            
+
             *   **State** _(string) --_
-                
+
                 The state of a CIDR block.
-                
+
             *   **StatusMessage** _(string) --_
-                
+
                 A message about the status of the CIDR block, if applicable.
-                
+
 
 map_customer_owned_ip_on_launch
 
 *   _(boolean) --_
-    
+
     Indicates whether a network interface created in this subnet (including a network interface created by RunInstances ) receives a customer-owned IPv4 address.
-    
+
 
 map_public_ip_on_launch
 
 *   _(boolean) --_
-    
+
     Indicates whether instances launched in this subnet receive a public IPv4 address.
-    
+
 
 outpost_arn
 
 *   _(string) --_
-    
+
     The Amazon Resource Name (ARN) of the Outpost.
-    
+
 
 owner_id
 
 *   _(string) --_
-    
+
     The ID of the AWS account that owns the subnet.
-    
+
 
 state
 
 *   _(string) --_
-    
+
     The current state of the subnet.
-    
+
 
 subnet_arn
 
 *   _(string) --_
-    
+
     The Amazon Resource Name (ARN) of the subnet.
-    
+
 
 subnet_id
 
 *   _(string) --_
-    
+
     The ID of the subnet.
-    
+
 
 tags
 
 *   _(list) --_
-    
+
     Any tags assigned to the subnet.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 vpc_id
 
 *   _(string) --_
-    
+
     The ID of the VPC the subnet is in.
-    
+
 
 References
 
@@ -10545,626 +10545,626 @@ instance = subnet.create_instances(
 Parameters
 
 *   **BlockDeviceMappings** (_list_) --
-    
+
     The block device mapping entries.
-    
+
     *   _(dict) --_
-        
+
         Describes a block device mapping.
-        
+
         *   **DeviceName** _(string) --_
-            
+
             The device name (for example, /dev/sdh or xvdh ).
-            
+
         *   **VirtualName** _(string) --_
-            
+
             The virtual device name (ephemeral N). Instance store volumes are numbered starting from 0. An instance type with 2 available instance store volumes can specify mappings for ephemeral0 and ephemeral1 . The number of available instance store volumes depends on the instance type. After you connect to the instance, you must mount the volume.
-            
+
             NVMe instance store volumes are automatically enumerated and assigned a device name. Including them in your block device mapping has no effect.
-            
+
             Constraints: For M3 instances, you must specify instance store volumes in the block device mapping for the instance. When you launch an M3 instance, we ignore any instance store volumes specified in the block device mapping for the AMI.
-            
+
         *   **Ebs** _(dict) --_
-            
+
             Parameters used to automatically set up EBS volumes when the instance is launched.
-            
+
             *   **DeleteOnTermination** _(boolean) --_
-                
+
                 Indicates whether the EBS volume is deleted on instance termination. For more information, see [Preserving Amazon EBS volumes on instance termination](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination) in the Amazon Elastic Compute Cloud User Guide.
-                
+
             *   **Iops** _(integer) --_
-                
+
                 The number of I/O operations per second (IOPS). For gp3 , io1 , and io2 volumes, this represents the number of IOPS that are provisioned for the volume. For gp2 volumes, this represents the baseline performance of the volume and the rate at which the volume accumulates I/O credits for bursting.
-                
+
                 The following are the supported values for each volume type:
-                
+
                 *   gp3 : 3,000-16,000 IOPS
                 *   io1 : 100-64,000 IOPS
                 *   io2 : 100-64,000 IOPS
-                
+
                 For io1 and io2 volumes, we guarantee 64,000 IOPS only for [Instances built on the Nitro System](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances) . Other instance families guarantee performance up to 32,000 IOPS.
-                
+
                 This parameter is required for io1 and io2 volumes. The default for gp3 volumes is 3,000 IOPS. This parameter is not supported for gp2 , st1 , sc1 , or standard volumes.
-                
+
             *   **SnapshotId** _(string) --_
-                
+
                 The ID of the snapshot.
-                
+
             *   **VolumeSize** _(integer) --_
-                
+
                 The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size. If you specify a snapshot, the default is the snapshot size. You can specify a volume size that is equal to or larger than the snapshot size.
-                
+
                 The following are the supported volumes sizes for each volume type:
-                
+
                 *   gp2 and gp3 :1-16,384
                 *   io1 and io2 : 4-16,384
                 *   st1 : 500-16,384
                 *   sc1 : 500-16,384
                 *   standard : 1-1,024
             *   **VolumeType** _(string) --_
-                
+
                 The volume type. For more information, see [Amazon EBS volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) in the _Amazon Elastic Compute Cloud User Guide_ . If the volume type is io1 or io2 , you must specify the IOPS that the volume supports.
-                
+
             *   **KmsKeyId** _(string) --_
-                
+
                 Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-                
+
                 This parameter is only supported on BlockDeviceMapping objects called by [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html) , [RequestSpotFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html) , and [RequestSpotInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html) .
-                
+
             *   **Throughput** _(integer) --_
-                
+
                 The throughput that the volume supports, in MiB/s.
-                
+
                 This parameter is valid only for gp3 volumes.
-                
+
                 Valid Range: Minimum value of 125. Maximum value of 1000.
-                
+
             *   **Encrypted** _(boolean) --_
-                
+
                 Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot. The effect of setting the encryption state to true depends on the volume origin (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more information, see [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters) in the _Amazon Elastic Compute Cloud User Guide_ .
-                
+
                 In no case can you remove encryption from an encrypted volume.
-                
+
                 Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see [Supported instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances) .
-                
+
                 This parameter is not returned by .
-                
+
         *   **NoDevice** _(string) --_
-            
+
             Suppresses the specified device included in the block device mapping of the AMI.
-            
+
 *   **ImageId** (_string_) -- The ID of the AMI. An AMI ID is required to launch an instance and must be specified here or in a launch template.
 *   **InstanceType** (_string_) --
-    
+
     The instance type. For more information, see [Instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     Default: m1.small
-    
+
 *   **Ipv6AddressCount** (_integer_) --
-    
+
     [EC2-VPC] The number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet. You cannot specify this option and the option to assign specific IPv6 addresses in the same request. You can specify this option if you've specified a minimum number of instances to launch.
-    
+
     You cannot specify this option and the network interfaces option in the same request.
-    
+
 *   **Ipv6Addresses** (_list_) --
-    
+
     [EC2-VPC] The IPv6 addresses from the range of the subnet to associate with the primary network interface. You cannot specify this option and the option to assign a number of IPv6 addresses in the same request. You cannot specify this option if you've specified a minimum number of instances to launch.
-    
+
     You cannot specify this option and the network interfaces option in the same request.
-    
+
     *   _(dict) --_
-        
+
         Describes an IPv6 address.
-        
+
         *   **Ipv6Address** _(string) --_
-            
+
             The IPv6 address.
-            
+
 *   **KernelId** (_string_) --
-    
+
     The ID of the kernel.
-    
+
     Warning
-    
+
     We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
 *   **KeyName** (_string_) --
-    
+
     The name of the key pair. You can create a key pair using [CreateKeyPair](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html) or [ImportKeyPair](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html) .
-    
+
     Warning
-    
+
     If you do not specify a key pair, you can't connect to the instance unless you choose an AMI that is configured to allow users another way to log in.
-    
+
 *   **MaxCount** (_integer_) --
-    
+
     **[REQUIRED]**
-    
+
     The maximum number of instances to launch. If you specify more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches the largest possible number of instances above MinCount .
-    
+
     Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ.
-    
+
 *   **MinCount** (_integer_) --
-    
+
     **[REQUIRED]**
-    
+
     The minimum number of instances to launch. If you specify a minimum that is more instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches no instances.
-    
+
     Constraints: Between 1 and the maximum number you're allowed for the specified instance type. For more information about the default limits, and how to request an increase, see [How many instances can I run in Amazon EC2](http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ.
-    
+
 *   **Monitoring** (_dict_) --
-    
+
     Specifies whether detailed monitoring is enabled for the instance.
-    
+
     *   **Enabled** _(boolean) --_ **[REQUIRED]**
-        
+
         Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
-        
+
 *   **Placement** (_dict_) --
-    
+
     The placement for the instance.
-    
+
     *   **AvailabilityZone** _(string) --_
-        
+
         The Availability Zone of the instance.
-        
+
         If not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria for the Region.
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     *   **Affinity** _(string) --_
-        
+
         The affinity setting for the instance on the Dedicated Host. This parameter is not supported for the [ImportInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html) command.
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     *   **GroupName** _(string) --_
-        
+
         The name of the placement group the instance is in.
-        
+
     *   **PartitionNumber** _(integer) --_
-        
+
         The number of the partition the instance is in. Valid only if the placement group strategy is set to partition .
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     *   **HostId** _(string) --_
-        
+
         The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the [ImportInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html) command.
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     *   **Tenancy** _(string) --_
-        
+
         The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the [ImportInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html) command.
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     *   **SpreadDomain** _(string) --_
-        
+
         Reserved for future use.
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
     *   **HostResourceGroupArn** _(string) --_
-        
+
         The ARN of the host resource group in which to launch the instances. If you specify a host resource group ARN, omit the **Tenancy** parameter or set it to host .
-        
+
         This parameter is not supported by [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet) .
-        
+
 *   **RamdiskId** (_string_) --
-    
+
     The ID of the RAM disk to select. Some kernels require additional drivers at launch. Check the kernel requirements for information about whether you need to specify a RAM disk. To find kernel requirements, go to the AWS Resource Center and search for the kernel ID.
-    
+
     Warning
-    
+
     We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
 *   **SecurityGroupIds** (_list_) --
-    
+
     The IDs of the security groups. You can create a security group using [CreateSecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html) .
-    
+
     If you specify a network interface, you must specify any security groups as part of the network interface.
-    
+
     *   _(string) --_
 *   **SecurityGroups** (_list_) --
-    
+
     [EC2-Classic, default VPC] The names of the security groups. For a nondefault VPC, you must use security group IDs instead.
-    
+
     If you specify a network interface, you must specify any security groups as part of the network interface.
-    
+
     Default: Amazon EC2 uses the default security group.
-    
+
     *   _(string) --_
 *   **UserData** (_string_) --
-    
+
     The user data to make available to the instance. For more information, see [Running commands on your Linux instance at launch](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) (Linux) and [Adding User Data](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data) (Windows). If you are using a command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text. User data is limited to 16 KB.
-    
+
     > **This value will be base64 encoded automatically. Do not base64 encode this value prior to performing the operation.**
-    
+
 *   **AdditionalInfo** (_string_) -- Reserved.
 *   **ClientToken** (_string_) --
-    
+
     Unique, case-sensitive identifier you provide to ensure the idempotency of the request. If you do not specify a client token, a randomly generated token is used for the request to ensure idempotency.
-    
+
     For more information, see [Ensuring Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html) .
-    
+
     Constraints: Maximum 64 ASCII characters
-    
+
     This field is autopopulated if not provided.
-    
+
 *   **DisableApiTermination** (_boolean_) --
-    
+
     If you set this parameter to true , you can't terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. To change this attribute after launch, use [ModifyInstanceAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html) . Alternatively, if you set InstanceInitiatedShutdownBehavior to terminate , you can terminate the instance by running the shutdown command from the instance.
-    
+
     Default: false
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **EbsOptimized** (_boolean_) --
-    
+
     Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance.
-    
+
     Default: false
-    
+
 *   **IamInstanceProfile** (_dict_) --
-    
+
     The IAM instance profile.
-    
+
     *   **Arn** _(string) --_
-        
+
         The Amazon Resource Name (ARN) of the instance profile.
-        
+
     *   **Name** _(string) --_
-        
+
         The name of the instance profile.
-        
+
 *   **InstanceInitiatedShutdownBehavior** (_string_) --
-    
+
     Indicates whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown).
-    
+
     Default: stop
-    
+
 *   **NetworkInterfaces** (_list_) --
-    
+
     The network interfaces to associate with the instance. If you specify a network interface, you must specify any security groups and subnets as part of the network interface.
-    
+
     *   _(dict) --_
-        
+
         Describes a network interface.
-        
+
         *   **AssociatePublicIpAddress** _(boolean) --_
-            
+
             Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true .
-            
+
         *   **DeleteOnTermination** _(boolean) --_
-            
+
             If set to true , the interface is deleted when the instance is terminated. You can specify true only if creating a new network interface when launching an instance.
-            
+
         *   **Description** _(string) --_
-            
+
             The description of the network interface. Applies only if creating a network interface when launching an instance.
-            
+
         *   **DeviceIndex** _(integer) --_
-            
+
             The position of the network interface in the attachment order. A primary network interface has a device index of 0.
-            
+
             If you specify a network interface when launching an instance, you must specify the device index.
-            
+
         *   **Groups** _(list) --_
-            
+
             The IDs of the security groups for the network interface. Applies only if creating a network interface when launching an instance.
-            
+
             *   _(string) --_
         *   **Ipv6AddressCount** _(integer) --_
-            
+
             A number of IPv6 addresses to assign to the network interface. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. You cannot specify this option and the option to assign specific IPv6 addresses in the same request. You can specify this option if you've specified a minimum number of instances to launch.
-            
+
         *   **Ipv6Addresses** _(list) --_
-            
+
             One or more IPv6 addresses to assign to the network interface. You cannot specify this option and the option to assign a number of IPv6 addresses in the same request. You cannot specify this option if you've specified a minimum number of instances to launch.
-            
+
             *   _(dict) --_
-                
+
                 Describes an IPv6 address.
-                
+
                 *   **Ipv6Address** _(string) --_
-                    
+
                     The IPv6 address.
-                    
+
         *   **NetworkInterfaceId** _(string) --_
-            
+
             The ID of the network interface.
-            
+
             If you are creating a Spot Fleet, omit this parameter because you can’t specify a network interface ID in a launch specification.
-            
+
         *   **PrivateIpAddress** _(string) --_
-            
+
             The private IPv4 address of the network interface. Applies only if creating a network interface when launching an instance. You cannot specify this option if you're launching more than one instance in a [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html) request.
-            
+
         *   **PrivateIpAddresses** _(list) --_
-            
+
             One or more private IPv4 addresses to assign to the network interface. Only one private IPv4 address can be designated as primary. You cannot specify this option if you're launching more than one instance in a [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html) request.
-            
+
             *   _(dict) --_
-                
+
                 Describes a secondary private IPv4 address for a network interface.
-                
+
                 *   **Primary** _(boolean) --_
-                    
+
                     Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can be designated as primary.
-                    
+
                 *   **PrivateIpAddress** _(string) --_
-                    
+
                     The private IPv4 addresses.
-                    
+
         *   **SecondaryPrivateIpAddressCount** _(integer) --_
-            
+
             The number of secondary private IPv4 addresses. You can't specify this option and specify more than one private IP address using the private IP addresses option. You cannot specify this option if you're launching more than one instance in a [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html) request.
-            
+
         *   **SubnetId** _(string) --_
-            
+
             The ID of the subnet associated with the network interface. Applies only if creating a network interface when launching an instance.
-            
+
         *   **AssociateCarrierIpAddress** _(boolean) --_
-            
+
             Indicates whether to assign a carrier IP address to the network interface.
-            
+
             You can only assign a carrier IP address to a network interface that is in a subnet in a Wavelength Zone. For more information about carrier IP addresses, see Carrier IP addresses in the AWS Wavelength Developer Guide.
-            
+
         *   **InterfaceType** _(string) --_
-            
+
             The type of network interface.
-            
+
             To create an Elastic Fabric Adapter (EFA), specify efa . For more information, see [Elastic Fabric Adapter](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-            
+
             If you are not creating an EFA, specify interface or omit this parameter.
-            
+
             Valid values: interface | efa
-            
+
         *   **NetworkCardIndex** _(integer) --_
-            
+
             The index of the network card. Some instance types support multiple network cards. The primary network interface must be assigned to network card index 0. The default is network card index 0.
-            
+
 *   **PrivateIpAddress** (_string_) --
-    
+
     [EC2-VPC] The primary IPv4 address. You must specify a value from the IPv4 address range of the subnet.
-    
+
     Only one private IP address can be designated as primary. You can't specify this option if you've specified the option to designate a private IP address as the primary IP address in a network interface specification. You cannot specify this option if you're launching more than one instance in the request.
-    
+
     You cannot specify this option and the network interfaces option in the same request.
-    
+
 *   **ElasticGpuSpecification** (_list_) --
-    
+
     An elastic GPU to associate with the instance. An Elastic GPU is a GPU resource that you can attach to your Windows instance to accelerate the graphics performance of your applications. For more information, see [Amazon EC2 Elastic GPUs](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     *   _(dict) --_
-        
+
         A specification for an Elastic Graphics accelerator.
-        
+
         *   **Type** _(string) --_ **[REQUIRED]**
-            
+
             The type of Elastic Graphics accelerator. For more information about the values to specify for Type , see [Elastic Graphics Basics](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html#elastic-graphics-basics) , specifically the Elastic Graphics accelerator column, in the _Amazon Elastic Compute Cloud User Guide for Windows Instances_ .
-            
+
 *   **ElasticInferenceAccelerators** (_list_) --
-    
+
     An elastic inference accelerator to associate with the instance. Elastic inference accelerators are a resource you can attach to your Amazon EC2 instances to accelerate your Deep Learning (DL) inference workloads.
-    
+
     You cannot specify accelerators from different generations in the same request.
-    
+
     *   _(dict) --_
-        
+
         Describes an elastic inference accelerator.
-        
+
         *   **Type** _(string) --_ **[REQUIRED]**
-            
+
             The type of elastic inference accelerator. The possible values are eia1.medium , eia1.large , eia1.xlarge , eia2.medium , eia2.large , and eia2.xlarge .
-            
+
         *   **Count** _(integer) --_
-            
+
             The number of elastic inference accelerators to attach to the instance.
-            
+
             Default: 1
-            
+
 *   **TagSpecifications** (_list_) --
-    
+
     The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The specified tags are applied to all instances or volumes that are created during launch. To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-    
+
     *   _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
         *   **ResourceType** _(string) --_
-            
+
             The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id1089)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id1091)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
+
             To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-            
+
         *   **Tags** _(list) --_
-            
+
             The tags to apply to the resource.
-            
+
             *   _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 *   **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 *   **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 *   **LaunchTemplate** (_dict_) --
-    
+
     The launch template to use to launch the instances. Any parameters that you specify in RunInstances override the same parameters in the launch template. You can specify either the name or ID of a launch template, but not both.
-    
+
     *   **LaunchTemplateId** _(string) --_
-        
+
         The ID of the launch template.
-        
+
     *   **LaunchTemplateName** _(string) --_
-        
+
         The name of the launch template.
-        
+
     *   **Version** _(string) --_
-        
+
         The version number of the launch template.
-        
+
         Default: The default version for the launch template.
-        
+
 *   **InstanceMarketOptions** (_dict_) --
-    
+
     The market (purchasing) option for the instances.
-    
+
     For RunInstances , persistent Spot Instance requests are only supported when **InstanceInterruptionBehavior** is set to either hibernate or stop .
-    
+
     *   **MarketType** _(string) --_
-        
+
         The market type.
-        
+
     *   **SpotOptions** _(dict) --_
-        
+
         The options for Spot Instances.
-        
+
         *   **MaxPrice** _(string) --_
-            
+
             The maximum hourly price you're willing to pay for the Spot Instances. The default is the On-Demand price.
-            
+
         *   **SpotInstanceType** _(string) --_
-            
+
             The Spot Instance request type. For [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances) , persistent Spot Instance requests are only supported when **InstanceInterruptionBehavior** is set to either hibernate or stop .
-            
+
         *   **BlockDurationMinutes** _(integer) --_
-            
+
             The required duration for the Spot Instances (also known as Spot blocks), in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
-            
+
             The duration period starts as soon as your Spot Instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot Instance for termination and provides a Spot Instance termination notice, which gives the instance a two-minute warning before it terminates.
-            
+
             You can't specify an Availability Zone group or a launch group if you specify a duration.
-            
+
             New accounts or accounts with no previous billing history with AWS are not eligible for Spot Instances with a defined duration (also known as Spot blocks).
-            
+
         *   **ValidUntil** _(datetime) --_
-            
+
             The end date of the request, in UTC format (_YYYY_ -_MM_ -_DD_ T*HH* :_MM_ :_SS_ Z). Supported only for persistent requests.
-            
+
             *   For a persistent request, the request remains active until the ValidUntil date and time is reached. Otherwise, the request remains active until you cancel it.
             *   For a one-time request, ValidUntil is not supported. The request remains active until all instances launch or you cancel the request.
         *   **InstanceInterruptionBehavior** _(string) --_
-            
+
             The behavior when a Spot Instance is interrupted. The default is terminate .
-            
+
 *   **CreditSpecification** (_dict_) --
-    
+
     The credit option for CPU usage of the burstable performance instance. Valid values are standard and unlimited . To change this attribute after launch, use [ModifyInstanceCreditSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html) . For more information, see [Burstable performance instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     Default: standard (T2 instances) or unlimited (T3/T3a instances)
-    
+
     *   **CpuCredits** _(string) --_ **[REQUIRED]**
-        
+
         The credit option for CPU usage of a T2, T3, or T3a instance. Valid values are standard and unlimited .
-        
+
 *   **CpuOptions** (_dict_) --
-    
+
     The CPU options for the instance. For more information, see [Optimizing CPU options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     *   **CoreCount** _(integer) --_
-        
+
         The number of CPU cores for the instance.
-        
+
     *   **ThreadsPerCore** _(integer) --_
-        
+
         The number of threads per CPU core. To disable multithreading for the instance, specify a value of 1 . Otherwise, specify the default value of 2 .
-        
+
 *   **CapacityReservationSpecification** (_dict_) --
-    
+
     Information about the Capacity Reservation targeting option. If you do not specify this parameter, the instance's Capacity Reservation preference defaults to open , which enables it to run in any open Capacity Reservation that has matching attributes (instance type, platform, Availability Zone).
-    
+
     *   **CapacityReservationPreference** _(string) --_
-        
+
         Indicates the instance's Capacity Reservation preferences. Possible preferences include:
-        
+
         *   open - The instance can run in any open Capacity Reservation that has matching attributes (instance type, platform, Availability Zone).
         *   none - The instance avoids running in a Capacity Reservation even if one is available. The instance runs as an On-Demand Instance.
     *   **CapacityReservationTarget** _(dict) --_
-        
+
         Information about the target Capacity Reservation or Capacity Reservation group.
-        
+
         *   **CapacityReservationId** _(string) --_
-            
+
             The ID of the Capacity Reservation in which to run the instance.
-            
+
         *   **CapacityReservationResourceGroupArn** _(string) --_
-            
+
             The ARN of the Capacity Reservation resource group in which to run the instance.
-            
+
 *   **HibernationOptions** (_dict_) --
-    
+
     Indicates whether an instance is enabled for hibernation. For more information, see [Hibernate your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     You can't enable hibernation and AWS Nitro Enclaves on the same instance.
-    
+
     *   **Configured** _(boolean) --_
-        
+
         If you set this parameter to true , your instance is enabled for hibernation.
-        
+
         Default: false
-        
+
 *   **LicenseSpecifications** (_list_) --
-    
+
     The license configurations.
-    
+
     *   _(dict) --_
-        
+
         Describes a license configuration.
-        
+
         *   **LicenseConfigurationArn** _(string) --_
-            
+
             The Amazon Resource Name (ARN) of the license configuration.
-            
+
 *   **MetadataOptions** (_dict_) --
-    
+
     The metadata options for the instance. For more information, see [Instance metadata and user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) .
-    
+
     *   **HttpTokens** _(string) --_
-        
+
         The state of token usage for your instance metadata requests. If the parameter is not specified in the request, the default state is optional .
-        
+
         If the state is optional , you can choose to retrieve instance metadata with or without a signed token header on your request. If you retrieve the IAM role credentials without a token, the version 1.0 role credentials are returned. If you retrieve the IAM role credentials using a valid signed token, the version 2.0 role credentials are returned.
-        
+
         If the state is required , you must send a signed token header with any instance metadata retrieval requests. In this state, retrieving the IAM role credentials always returns the version 2.0 credentials; the version 1.0 credentials are not available.
-        
+
     *   **HttpPutResponseHopLimit** _(integer) --_
-        
+
         The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel.
-        
+
         Default: 1
-        
+
         Possible values: Integers from 1 to 64
-        
+
     *   **HttpEndpoint** _(string) --_
-        
+
         This parameter enables or disables the HTTP metadata endpoint on your instances. If the parameter is not specified, the default state is enabled .
-        
+
         Note
-        
+
         If you specify a value of disabled , you will not be able to access your instance metadata.
-        
+
 *   **EnclaveOptions** (_dict_) --
-    
+
     Indicates whether the instance is enabled for AWS Nitro Enclaves. For more information, see [What is AWS Nitro Enclaves?](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html) in the _AWS Nitro Enclaves User Guide_ .
-    
+
     You can't enable AWS Nitro Enclaves and hibernation on the same instance.
-    
+
     *   **Enabled** _(boolean) --_
-        
+
         To enable the instance for AWS Nitro Enclaves, set this parameter to true .
-        
+
 
 Return type
 
@@ -11223,81 +11223,81 @@ Parameters
 *   **Description** (_string_) -- A description for the network interface.
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Groups** (_list_) --
-    
+
     The IDs of one or more security groups.
-    
+
     *   _(string) --_
 *   **Ipv6AddressCount** (_integer_) -- The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically selects the IPv6 addresses from the subnet range. You can't use this option if specifying specific IPv6 addresses. If your subnet has the AssignIpv6AddressOnCreation attribute set to true , you can specify 0 to override this setting.
 *   **Ipv6Addresses** (_list_) --
-    
+
     One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. You can't use this option if you're specifying a number of IPv6 addresses.
-    
+
     *   _(dict) --_
-        
+
         Describes an IPv6 address.
-        
+
         *   **Ipv6Address** _(string) --_
-            
+
             The IPv6 address.
-            
+
 *   **PrivateIpAddress** (_string_) -- The primary private IPv4 address of the network interface. If you don't specify an IPv4 address, Amazon EC2 selects one for you from the subnet's IPv4 CIDR range. If you specify an IP address, you cannot indicate any IP addresses specified in privateIpAddresses as primary (only one IP address can be designated as primary).
 *   **PrivateIpAddresses** (_list_) --
-    
+
     One or more private IPv4 addresses.
-    
+
     *   _(dict) --_
-        
+
         Describes a secondary private IPv4 address for a network interface.
-        
+
         *   **Primary** _(boolean) --_
-            
+
             Indicates whether the private IPv4 address is the primary private IPv4 address. Only one IPv4 address can be designated as primary.
-            
+
         *   **PrivateIpAddress** _(string) --_
-            
+
             The private IPv4 addresses.
-            
+
 *   **SecondaryPrivateIpAddressCount** (_integer_) --
-    
+
     The number of secondary private IPv4 addresses to assign to a network interface. When you specify a number of secondary IPv4 addresses, Amazon EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You can't specify this option and specify more than one private IP address using privateIpAddresses .
-    
+
     The number of IP addresses you can assign to a network interface varies by instance type. For more information, see [IP Addresses Per ENI Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) in the _Amazon Virtual Private Cloud User Guide_ .
-    
+
 *   **InterfaceType** (_string_) -- Indicates the type of network interface. To create an Elastic Fabric Adapter (EFA), specify efa . For more information, see [Elastic Fabric Adapter](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) in the _Amazon Elastic Compute Cloud User Guide_ .
 *   **TagSpecifications** (_list_) --
-    
+
     The tags to apply to the new network interface.
-    
+
     *   _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
         *   **ResourceType** _(string) --_
-            
+
             The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id1094)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id1096)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
+
             To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-            
+
         *   **Tags** _(list) --_
-            
+
             The tags to apply to the resource.
-            
+
             *   _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 *   **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 *   **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 
 Return type
 
@@ -11331,27 +11331,27 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Return type
 
@@ -11471,27 +11471,27 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Returns
 
@@ -11517,11 +11517,11 @@ instance_iterator = subnet.instances.filter(
 Parameters
 
 *   **InstanceIds** (_list_) --
-    
+
     The instance IDs.
-    
+
     Default: Describes all your instances.
-    
+
     *   _(string) --_
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **MaxResults** (_integer_) -- The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned NextToken value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
@@ -11600,25 +11600,25 @@ Returns
 
 *   _(dict) --_
     *   **InstanceMonitorings** _(list) --_
-        
+
         The monitoring information.
-        
+
         *   _(dict) --_
-            
+
             Describes the monitoring of an instance.
-            
+
             *   **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             *   **Monitoring** _(dict) --_
-                
+
                 The monitoring for the instance.
-                
+
                 *   **State** _(string) --_
-                    
+
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
-                    
+
 
 page_size(kwargs_)
 
@@ -11721,73 +11721,73 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **StartingInstances** _(list) --_
-        
+
         Information about the started instances.
-        
+
         *   _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             *   **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             *   **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             *   **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 stop(kwargs_)
 
@@ -11818,18 +11818,18 @@ response = subnet.instances.stop(
 Parameters
 
 *   **Hibernate** (_boolean_) --
-    
+
     Hibernates the instance if the instance was enabled for hibernation at launch. If the instance cannot hibernate successfully, a normal shutdown occurs. For more information, see [Hibernate your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     Default: false
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Force** (_boolean_) --
-    
+
     Forces the instances to stop. The instances do not have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures. This option is not recommended for Windows instances.
-    
+
     Default: false
-    
+
 
 Return type
 
@@ -11858,73 +11858,73 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **StoppingInstances** _(list) --_
-        
+
         Information about the stopped instances.
-        
+
         *   _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             *   **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             *   **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             *   **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 terminate(kwargs_)
 
@@ -11980,71 +11980,71 @@ Returns
 
 *   _(dict) --_
     *   **TerminatingInstances** _(list) --_
-        
+
         Information about the terminated instances.
-        
+
         *   _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             *   **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             *   **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             *   **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 unmonitor(kwargs_)
 
@@ -12085,25 +12085,25 @@ Returns
 
 *   _(dict) --_
     *   **InstanceMonitorings** _(list) --_
-        
+
         The monitoring information.
-        
+
         *   _(dict) --_
-            
+
             Describes the monitoring of an instance.
-            
+
             *   **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             *   **Monitoring** _(dict) --_
-                
+
                 The monitoring for the instance.
-                
+
                 *   **State** _(string) --_
-                    
+
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
-                    
+
 
 network_interfaces
 
@@ -12148,11 +12148,11 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **NetworkInterfaceIds** (_list_) --
-    
+
     One or more network interface IDs.
-    
+
     Default: Describes all your network interfaces.
-    
+
     *   _(string) --_
 *   **NextToken** (_string_) -- The token to retrieve the next page of results.
 *   **MaxResults** (_integer_) -- The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results. You cannot specify this parameter and the network interface IDs parameter in the same request.
@@ -12271,9 +12271,9 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 resource_type
 
 *   _(string) --_
-    
+
     The resource type.
-    
+
 
 Actions
 
@@ -12415,158 +12415,158 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 attachments
 
 *   _(list) --_
-    
+
     Information about the volume attachments.
-    
+
     *   _(dict) --_
-        
+
         Describes volume attachment details.
-        
+
         *   **AttachTime** _(datetime) --_
-            
+
             The time stamp when the attachment initiated.
-            
+
         *   **Device** _(string) --_
-            
+
             The device name.
-            
+
         *   **InstanceId** _(string) --_
-            
+
             The ID of the instance.
-            
+
         *   **State** _(string) --_
-            
+
             The attachment state of the volume.
-            
+
         *   **VolumeId** _(string) --_
-            
+
             The ID of the volume.
-            
+
         *   **DeleteOnTermination** _(boolean) --_
-            
+
             Indicates whether the EBS volume is deleted on instance termination.
-            
+
 
 availability_zone
 
 *   _(string) --_
-    
+
     The Availability Zone for the volume.
-    
+
 
 create_time
 
 *   _(datetime) --_
-    
+
     The time stamp when volume creation was initiated.
-    
+
 
 encrypted
 
 *   _(boolean) --_
-    
+
     Indicates whether the volume is encrypted.
-    
+
 
 fast_restored
 
 *   _(boolean) --_
-    
+
     Indicates whether the volume was created using fast snapshot restore.
-    
+
 
 iops
 
 *   _(integer) --_
-    
+
     The number of I/O operations per second (IOPS). For gp3 , io1 , and io2 volumes, this represents the number of IOPS that are provisioned for the volume. For gp2 volumes, this represents the baseline performance of the volume and the rate at which the volume accumulates I/O credits for bursting.
-    
+
 
 kms_key_id
 
 *   _(string) --_
-    
+
     The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS) customer master key (CMK) that was used to protect the volume encryption key for the volume.
-    
+
 
 multi_attach_enabled
 
 *   _(boolean) --_
-    
+
     Indicates whether Amazon EBS Multi-Attach is enabled.
-    
+
 
 outpost_arn
 
 *   _(string) --_
-    
+
     The Amazon Resource Name (ARN) of the Outpost.
-    
+
 
 size
 
 *   _(integer) --_
-    
+
     The size of the volume, in GiBs.
-    
+
 
 snapshot_id
 
 *   _(string) --_
-    
+
     The snapshot from which the volume was created, if applicable.
-    
+
 
 state
 
 *   _(string) --_
-    
+
     The volume state.
-    
+
 
 tags
 
 *   _(list) --_
-    
+
     Any tags assigned to the volume.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 throughput
 
 *   _(integer) --_
-    
+
     The throughput that the volume supports, in MiB/s.
-    
+
 
 volume_id
 
 *   _(string) --_
-    
+
     The ID of the volume.
-    
+
 
 volume_type
 
 *   _(string) --_
-    
+
     The volume type.
-    
+
 
 Actions
 
@@ -12602,17 +12602,17 @@ response = volume.attach_to_instance(
 Parameters
 
 *   **Device** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The device name (for example, /dev/sdh or xvdh ).
-    
+
 *   **InstanceId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the instance.
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -12635,33 +12635,33 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     Describes volume attachment details.
-    
+
     *   **AttachTime** _(datetime) --_
-        
+
         The time stamp when the attachment initiated.
-        
+
     *   **Device** _(string) --_
-        
+
         The device name.
-        
+
     *   **InstanceId** _(string) --_
-        
+
         The ID of the instance.
-        
+
     *   **State** _(string) --_
-        
+
         The attachment state of the volume.
-        
+
     *   **VolumeId** _(string) --_
-        
+
         The ID of the volume.
-        
+
     *   **DeleteOnTermination** _(boolean) --_
-        
+
         Indicates whether the EBS volume is deleted on instance termination.
-        
+
 
 create_snapshot(kwargs_)
 
@@ -12703,39 +12703,39 @@ Parameters
 
 *   **Description** (_string_) -- A description for the snapshot.
 *   **TagSpecifications** (_list_) --
-    
+
     The tags to apply to the snapshot during creation.
-    
+
     *   _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
         *   **ResourceType** _(string) --_
-            
+
             The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id1122)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id1124)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
+
             To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-            
+
         *   **Tags** _(list) --_
-            
+
             The tags to apply to the resource.
-            
+
             *   _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 *   **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 *   **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -12770,27 +12770,27 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Return type
 
@@ -12842,11 +12842,11 @@ response = volume.describe_attribute(
 Parameters
 
 *   **Attribute** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The attribute of the volume. This parameter is required.
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -12873,35 +12873,35 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **AutoEnableIO** _(dict) --_
-        
+
         The state of autoEnableIO attribute.
-        
+
         *   **Value** _(boolean) --_
-            
+
             The attribute value. The valid values are true or false .
-            
+
     *   **ProductCodes** _(list) --_
-        
+
         A list of product codes.
-        
+
         *   _(dict) --_
-            
+
             Describes a product code.
-            
+
             *   **ProductCodeId** _(string) --_
-                
+
                 The product code.
-                
+
             *   **ProductCodeType** _(string) --_
-                
+
                 The type of product code.
-                
+
     *   **VolumeId** _(string) --_
-        
+
         The ID of the volume.
-        
+
 
 describe_status(kwargs_)
 
@@ -12910,9 +12910,9 @@ Describes the status of the specified volumes. Volume status provides the result
 The DescribeVolumeStatus operation provides the following information about the specified volumes:
 
 > _Status_ : Reflects the current status of the volume. The possible values are ok , impaired , warning , or insufficient-data . If all checks pass, the overall status of the volume is ok . If the check fails, the overall status is impaired . If the status is insufficient-data , then the checks might still be taking place on your volume at the time. We recommend that you retry the request. For more information about volume status, see [Monitoring the status of your volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-> 
+>
 > _Events_ : Reflect the cause of a volume status and might require you to take action. For example, if your volume returns an impaired status, then the volume event might be potential-data-inconsistency . This means that your volume has been affected by an issue with the underlying host, has all I/O operations disabled, and might have inconsistent data.
-> 
+>
 > _Actions_ : Reflect the actions you might have to take in response to an event. For example, if the status of the volume is impaired and the volume event shows potential-data-inconsistency , then the action shows enable-volume-io . This means that you may want to enable the I/O operations for the volume by calling the EnableVolumeIO action and then check the volume for data consistency.
 
 Volume status is based on the volume status checks, and does not reflect the volume state. Therefore, volume status does not indicate volumes in the error state (for example, when a volume is incapable of accepting I/O.)
@@ -12938,9 +12938,9 @@ response = volume.describe_status(
 Parameters
 
 *   **Filters** (_list_) --
-    
+
     The filters.
-    
+
     *   action.code - The action code for the event (for example, enable-volume-io ).
     *   action.description - A description of the action.
     *   action.event-id - The event ID associated with the action.
@@ -12953,11 +12953,11 @@ Parameters
     *   volume-status.details-name - The cause for volume-status.status (io-enabled | io-performance ).
     *   volume-status.details-status - The status of volume-status.details-name (for io-enabled : passed | failed ; for io-performance : normal | degraded | severely-degraded | stalled ).
     *   volume-status.status - The status of the volume (ok | impaired | warning | insufficient-data ).
-    
+
     *   _(dict) --_
-        
+
         A filter name and value pair that is used to return a more specific list of results from a describe operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs. The filters supported by a describe operation are documented with the describe operation. For example:
-        
+
         *   DescribeAvailabilityZones
         *   DescribeImages
         *   DescribeInstances
@@ -12968,15 +12968,15 @@ Parameters
         *   DescribeTags
         *   DescribeVolumes
         *   DescribeVpcs
-        
+
         *   **Name** _(string) --_
-            
+
             The name of the filter. Filter names are case-sensitive.
-            
+
         *   **Values** _(list) --_
-            
+
             The filter values. Filter values are case-sensitive.
-            
+
             *   _(string) --_
 *   **MaxResults** (_integer_) -- The maximum number of volume results returned by DescribeVolumeStatus in paginated output. When this parameter is used, the request only returns MaxResults results in a single page along with a NextToken response element. The remaining results of the initial request can be seen by sending another request with the returned NextToken value. This value can be between 5 and 1,000; if MaxResults is given a value larger than 1,000, only 1,000 results are returned. If this parameter is not used, then DescribeVolumeStatus returns all results. You cannot specify this parameter and the volume IDs parameter in the same request.
 *   **NextToken** (_string_) -- The NextToken value to include in a future DescribeVolumeStatus request. When the results of the request exceed MaxResults , this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
@@ -13037,127 +13037,127 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **NextToken** _(string) --_
-        
+
         The token to use to retrieve the next page of results. This value is null when there are no more results to return.
-        
+
     *   **VolumeStatuses** _(list) --_
-        
+
         Information about the status of the volumes.
-        
+
         *   _(dict) --_
-            
+
             Describes the volume status.
-            
+
             *   **Actions** _(list) --_
-                
+
                 The details of the operation.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes a volume status operation code.
-                    
+
                     *   **Code** _(string) --_
-                        
+
                         The code identifying the operation, for example, enable-volume-io .
-                        
+
                     *   **Description** _(string) --_
-                        
+
                         A description of the operation.
-                        
+
                     *   **EventId** _(string) --_
-                        
+
                         The ID of the event associated with this operation.
-                        
+
                     *   **EventType** _(string) --_
-                        
+
                         The event type associated with this operation.
-                        
+
             *   **AvailabilityZone** _(string) --_
-                
+
                 The Availability Zone of the volume.
-                
+
             *   **OutpostArn** _(string) --_
-                
+
                 The Amazon Resource Name (ARN) of the Outpost.
-                
+
             *   **Events** _(list) --_
-                
+
                 A list of events associated with the volume.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes a volume status event.
-                    
+
                     *   **Description** _(string) --_
-                        
+
                         A description of the event.
-                        
+
                     *   **EventId** _(string) --_
-                        
+
                         The ID of this event.
-                        
+
                     *   **EventType** _(string) --_
-                        
+
                         The type of this event.
-                        
+
                     *   **NotAfter** _(datetime) --_
-                        
+
                         The latest end time of the event.
-                        
+
                     *   **NotBefore** _(datetime) --_
-                        
+
                         The earliest start time of the event.
-                        
+
                     *   **InstanceId** _(string) --_
-                        
+
                         The ID of the instance associated with the event.
-                        
+
             *   **VolumeId** _(string) --_
-                
+
                 The volume ID.
-                
+
             *   **VolumeStatus** _(dict) --_
-                
+
                 The volume status.
-                
+
                 *   **Details** _(list) --_
-                    
+
                     The details of the volume status.
-                    
+
                     *   _(dict) --_
-                        
+
                         Describes a volume status.
-                        
+
                         *   **Name** _(string) --_
-                            
+
                             The name of the volume status.
-                            
+
                         *   **Status** _(string) --_
-                            
+
                             The intended status of the volume status.
-                            
+
                 *   **Status** _(string) --_
-                    
+
                     The status of the volume.
-                    
+
             *   **AttachmentStatuses** _(list) --_
-                
+
                 Information about the instances to which the volume is attached.
-                
+
                 *   _(dict) --_
-                    
+
                     Information about the instances to which the volume is attached.
-                    
+
                     *   **IoPerformance** _(string) --_
-                        
+
                         The maximum IOPS supported by the attached instance.
-                        
+
                     *   **InstanceId** _(string) --_
-                        
+
                         The ID of the attached instance.
-                        
+
 
 detach_from_instance(kwargs_)
 
@@ -13205,33 +13205,33 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     Describes volume attachment details.
-    
+
     *   **AttachTime** _(datetime) --_
-        
+
         The time stamp when the attachment initiated.
-        
+
     *   **Device** _(string) --_
-        
+
         The device name.
-        
+
     *   **InstanceId** _(string) --_
-        
+
         The ID of the instance.
-        
+
     *   **State** _(string) --_
-        
+
         The attachment state of the volume.
-        
+
     *   **VolumeId** _(string) --_
-        
+
         The ID of the volume.
-        
+
     *   **DeleteOnTermination** _(boolean) --_
-        
+
         Indicates whether the EBS volume is deleted on instance termination.
-        
+
 
 enable_io(kwargs_)
 
@@ -13302,13 +13302,13 @@ response = volume.modify_attribute(
 Parameters
 
 *   **AutoEnableIO** (_dict_) --
-    
+
     Indicates whether the volume should be auto-enabled for I/O operations.
-    
+
     *   **Value** _(boolean) --_
-        
+
         The attribute value. The valid values are true or false .
-        
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Returns
@@ -13383,21 +13383,21 @@ Parameters
 *   **MaxResults** (_integer_) -- The maximum number of snapshot results returned by DescribeSnapshots in paginated output. When this parameter is used, DescribeSnapshots only returns MaxResults results in a single page along with a NextToken response element. The remaining results of the initial request can be seen by sending another DescribeSnapshots request with the returned NextToken value. This value can be between 5 and 1,000; if MaxResults is given a value larger than 1,000, only 1,000 results are returned. If this parameter is not used, then DescribeSnapshots returns all results. You cannot specify this parameter and the snapshot IDs parameter in the same request.
 *   **NextToken** (_string_) -- The NextToken value returned from a previous paginated DescribeSnapshots request where MaxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the NextToken value. This value is null when there are no more results to return.
 *   **OwnerIds** (_list_) --
-    
+
     Scopes the results to snapshots with the specified owners. You can specify a combination of AWS account IDs, self , and amazon .
-    
+
     *   _(string) --_
 *   **RestorableByUserIds** (_list_) --
-    
+
     The IDs of the AWS accounts that can create volumes from the snapshot.
-    
+
     *   _(string) --_
 *   **SnapshotIds** (_list_) --
-    
+
     The snapshot IDs.
-    
+
     Default: Describes the snapshots for which you have create volume permissions.
-    
+
     *   _(string) --_
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
@@ -13548,144 +13548,144 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 cidr_block
 
 *   _(string) --_
-    
+
     The primary IPv4 CIDR block for the VPC.
-    
+
 
 cidr_block_association_set
 
 *   _(list) --_
-    
+
     Information about the IPv4 CIDR blocks associated with the VPC.
-    
+
     *   _(dict) --_
-        
+
         Describes an IPv4 CIDR block associated with a VPC.
-        
+
         *   **AssociationId** _(string) --_
-            
+
             The association ID for the IPv4 CIDR block.
-            
+
         *   **CidrBlock** _(string) --_
-            
+
             The IPv4 CIDR block.
-            
+
         *   **CidrBlockState** _(dict) --_
-            
+
             Information about the state of the CIDR block.
-            
+
             *   **State** _(string) --_
-                
+
                 The state of the CIDR block.
-                
+
             *   **StatusMessage** _(string) --_
-                
+
                 A message about the status of the CIDR block, if applicable.
-                
+
 
 dhcp_options_id
 
 *   _(string) --_
-    
+
     The ID of the set of DHCP options you've associated with the VPC.
-    
+
 
 instance_tenancy
 
 *   _(string) --_
-    
+
     The allowed tenancy of instances launched into the VPC.
-    
+
 
 ipv6_cidr_block_association_set
 
 *   _(list) --_
-    
+
     Information about the IPv6 CIDR blocks associated with the VPC.
-    
+
     *   _(dict) --_
-        
+
         Describes an IPv6 CIDR block associated with a VPC.
-        
+
         *   **AssociationId** _(string) --_
-            
+
             The association ID for the IPv6 CIDR block.
-            
+
         *   **Ipv6CidrBlock** _(string) --_
-            
+
             The IPv6 CIDR block.
-            
+
         *   **Ipv6CidrBlockState** _(dict) --_
-            
+
             Information about the state of the CIDR block.
-            
+
             *   **State** _(string) --_
-                
+
                 The state of the CIDR block.
-                
+
             *   **StatusMessage** _(string) --_
-                
+
                 A message about the status of the CIDR block, if applicable.
-                
+
         *   **NetworkBorderGroup** _(string) --_
-            
+
             The name of the unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS advertises IP addresses, for example, us-east-1-wl1-bos-wlz-1 .
-            
+
         *   **Ipv6Pool** _(string) --_
-            
+
             The ID of the IPv6 address pool from which the IPv6 CIDR block is allocated.
-            
+
 
 is_default
 
 *   _(boolean) --_
-    
+
     Indicates whether the VPC is the default VPC.
-    
+
 
 owner_id
 
 *   _(string) --_
-    
+
     The ID of the AWS account that owns the VPC.
-    
+
 
 state
 
 *   _(string) --_
-    
+
     The current state of the VPC.
-    
+
 
 tags
 
 *   _(list) --_
-    
+
     Any tags assigned to the VPC.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 vpc_id
 
 *   _(string) --_
-    
+
     The ID of the VPC.
-    
+
 
 References
 
@@ -13719,11 +13719,11 @@ response = vpc.associate_dhcp_options(
 Parameters
 
 *   **DhcpOptionsId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the DHCP options set, or default to associate no DHCP options with the VPC.
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Returns
@@ -13755,18 +13755,18 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Groups** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of one or more of the VPC's security groups. You cannot specify security groups from a different VPC.
-    
+
     *   _(string) --_
 *   **InstanceId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of an EC2-Classic instance to link to the ClassicLink-enabled VPC.
-    
+
 
 Return type
 
@@ -13783,11 +13783,11 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **Return** _(boolean) --_
-        
+
         Returns true if the request succeeds; otherwise, it returns an error.
-        
+
 
 attach_internet_gateway(kwargs_)
 
@@ -13807,11 +13807,11 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **InternetGatewayId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the internet gateway.
-    
+
 
 Returns
 
@@ -13846,39 +13846,39 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **TagSpecifications** (_list_) --
-    
+
     The tags to assign to the network ACL.
-    
+
     *   _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
         *   **ResourceType** _(string) --_
-            
+
             The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id1143)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id1145)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
+
             To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-            
+
         *   **Tags** _(list) --_
-            
+
             The tags to apply to the resource.
-            
+
             *   _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 *   **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 *   **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 
 Return type
 
@@ -13917,39 +13917,39 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **TagSpecifications** (_list_) --
-    
+
     The tags to assign to the route table.
-    
+
     *   _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
         *   **ResourceType** _(string) --_
-            
+
             The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id1148)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id1150)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
+
             To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-            
+
         *   **Tags** _(list) --_
-            
+
             The tags to apply to the resource.
-            
+
             *   _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 *   **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 *   **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 
 Return type
 
@@ -13997,63 +13997,63 @@ security_group = vpc.create_security_group(
 Parameters
 
 *   **Description** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     A description for the security group. This is informational only.
-    
+
     Constraints: Up to 255 characters in length
-    
+
     Constraints for EC2-Classic: ASCII characters
-    
+
     Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-    
+
 *   **GroupName** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The name of the security group.
-    
+
     Constraints: Up to 255 characters in length. Cannot start with sg- .
-    
+
     Constraints for EC2-Classic: ASCII characters
-    
+
     Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=&;{}!$*
-    
+
 *   **TagSpecifications** (_list_) --
-    
+
     The tags to assign to the security group.
-    
+
     *   _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
         *   **ResourceType** _(string) --_
-            
+
             The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id1153)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id1155)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
+
             To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-            
+
         *   **Tags** _(list) --_
-            
+
             The tags to apply to the resource.
-            
+
             *   _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 *   **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 *   **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -14109,56 +14109,56 @@ subnet = vpc.create_subnet(
 Parameters
 
 *   **TagSpecifications** (_list_) --
-    
+
     The tags to assign to the subnet.
-    
+
     *   _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
         *   **ResourceType** _(string) --_
-            
+
             The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id1158)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id1160)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
+
             To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-            
+
         *   **Tags** _(list) --_
-            
+
             The tags to apply to the resource.
-            
+
             *   _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 *   **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 *   **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 *   **AvailabilityZone** (_string_) --
-    
+
     The Availability Zone or Local Zone for the subnet.
-    
+
     Default: AWS selects one for you. If you create more than one subnet in your VPC, we do not necessarily select a different zone for each subnet.
-    
+
     To create a subnet in a Local Zone, set this value to the Local Zone ID, for example us-west-2-lax-1a . For information about the Regions that support Local Zones, see [Available Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     To create a subnet in an Outpost, set this value to the Availability Zone for the Outpost and specify the Outpost ARN.
-    
+
 *   **AvailabilityZoneId** (_string_) -- The AZ ID or the Local Zone ID of the subnet.
 *   **CidrBlock** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The IPv4 network range for the subnet, in CIDR notation. For example, 10.0.0.0/24 . We modify the specified CIDR block to its canonical form; for example, if you specify 100.68.0.18/18 , we modify it to 100.68.0.0/18 .
-    
+
 *   **Ipv6CidrBlock** (_string_) -- The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.
 *   **OutpostArn** (_string_) -- The Amazon Resource Name (ARN) of the Outpost. If you specify an Outpost ARN, you must also specify the Availability Zone of the Outpost subnet.
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
@@ -14195,27 +14195,27 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Return type
 
@@ -14261,11 +14261,11 @@ response = vpc.describe_attribute(
 Parameters
 
 *   **Attribute** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The VPC attribute.
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Return type
@@ -14289,27 +14289,27 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **VpcId** _(string) --_
-        
+
         The ID of the VPC.
-        
+
     *   **EnableDnsHostnames** _(dict) --_
-        
+
         Indicates whether the instances launched in the VPC get DNS hostnames. If this attribute is true , instances in the VPC get DNS hostnames; otherwise, they do not.
-        
+
         *   **Value** _(boolean) --_
-            
+
             The attribute value. The valid values are true or false .
-            
+
     *   **EnableDnsSupport** _(dict) --_
-        
+
         Indicates whether DNS resolution is enabled for the VPC. If this attribute is true , the Amazon DNS server resolves DNS hostnames for your instances to their corresponding IP addresses; otherwise, it does not.
-        
+
         *   **Value** _(boolean) --_
-            
+
             The attribute value. The valid values are true or false .
-            
+
 
 detach_classic_link_instance(kwargs_)
 
@@ -14329,11 +14329,11 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **InstanceId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the instance to unlink from the VPC.
-    
+
 
 Return type
 
@@ -14350,11 +14350,11 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **Return** _(boolean) --_
-        
+
         Returns true if the request succeeds; otherwise, it returns an error.
-        
+
 
 detach_internet_gateway(kwargs_)
 
@@ -14374,11 +14374,11 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **InternetGatewayId** (_string_) --
-    
+
     **[REQUIRED]**
-    
+
     The ID of the internet gateway.
-    
+
 
 Returns
 
@@ -14417,9 +14417,9 @@ Returns
 
 *   _(dict) --_
     *   **Return** _(boolean) --_
-        
+
         Returns true if the request succeeds; otherwise, it returns an error.
-        
+
 
 enable_classic_link(kwargs_)
 
@@ -14454,9 +14454,9 @@ Returns
 
 *   _(dict) --_
     *   **Return** _(boolean) --_
-        
+
         Returns true if the request succeeds; otherwise, it returns an error.
-        
+
 
 get_available_subresources()
 
@@ -14505,25 +14505,25 @@ response = vpc.modify_attribute(
 Parameters
 
 *   **EnableDnsHostnames** (_dict_) --
-    
+
     Indicates whether the instances launched in the VPC get DNS hostnames. If enabled, instances in the VPC get DNS hostnames; otherwise, they do not.
-    
+
     You cannot modify the DNS resolution and DNS hostnames attributes in the same request. Use separate requests for each attribute. You can only enable DNS hostnames if you've enabled DNS support.
-    
+
     *   **Value** _(boolean) --_
-        
+
         The attribute value. The valid values are true or false .
-        
+
 *   **EnableDnsSupport** (_dict_) --
-    
+
     Indicates whether the DNS resolution is supported for the VPC. If enabled, queries to the Amazon provided DNS server at the 169.254.169.253 IP address, or the reserved IP address at the base of the VPC network range "plus two" succeed. If disabled, the Amazon provided DNS service in the VPC that resolves public DNS hostnames to IP addresses is not enabled.
-    
+
     You cannot modify the DNS resolution and DNS hostnames attributes in the same request. Use separate requests for each attribute.
-    
+
     *   **Value** _(boolean) --_
-        
+
         The attribute value. The valid values are true or false .
-        
+
 
 Returns
 
@@ -14581,52 +14581,52 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **PeerOwnerId** (_string_) --
-    
+
     The AWS account ID of the owner of the accepter VPC.
-    
+
     Default: Your AWS account ID
-    
+
 *   **PeerVpcId** (_string_) -- The ID of the VPC with which you are creating the VPC peering connection. You must specify this parameter in the request.
 *   **PeerRegion** (_string_) --
-    
+
     The Region code for the accepter VPC, if the accepter VPC is located in a Region other than the Region in which you make the request.
-    
+
     Default: The Region in which you make the request.
-    
+
 *   **TagSpecifications** (_list_) --
-    
+
     The tags to assign to the peering connection.
-    
+
     *   _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
         *   **ResourceType** _(string) --_
-            
+
             The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id1173)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id1175)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
+
             To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
-            
+
         *   **Tags** _(list) --_
-            
+
             The tags to apply to the resource.
-            
+
             *   _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 *   **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 *   **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 
 Return type
 
@@ -14683,11 +14683,11 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **VpcPeeringConnectionIds** (_list_) --
-    
+
     One or more VPC peering connection IDs.
-    
+
     Default: Describes all your VPC peering connections.
-    
+
     *   _(string) --_
 *   **NextToken** (_string_) -- The token for the next page of results.
 *   **MaxResults** (_integer_) -- The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
@@ -14794,27 +14794,27 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Tags** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 Returns
 
@@ -14840,11 +14840,11 @@ instance_iterator = vpc.instances.filter(
 Parameters
 
 *   **InstanceIds** (_list_) --
-    
+
     The instance IDs.
-    
+
     Default: Describes all your instances.
-    
+
     *   _(string) --_
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **MaxResults** (_integer_) -- The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned NextToken value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
@@ -14923,25 +14923,25 @@ Returns
 
 *   _(dict) --_
     *   **InstanceMonitorings** _(list) --_
-        
+
         The monitoring information.
-        
+
         *   _(dict) --_
-            
+
             Describes the monitoring of an instance.
-            
+
             *   **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             *   **Monitoring** _(dict) --_
-                
+
                 The monitoring for the instance.
-                
+
                 *   **State** _(string) --_
-                    
+
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
-                    
+
 
 page_size(kwargs_)
 
@@ -15044,73 +15044,73 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **StartingInstances** _(list) --_
-        
+
         Information about the started instances.
-        
+
         *   _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             *   **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             *   **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             *   **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 stop(kwargs_)
 
@@ -15141,18 +15141,18 @@ response = vpc.instances.stop(
 Parameters
 
 *   **Hibernate** (_boolean_) --
-    
+
     Hibernates the instance if the instance was enabled for hibernation at launch. If the instance cannot hibernate successfully, a normal shutdown occurs. For more information, see [Hibernate your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     Default: false
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **Force** (_boolean_) --
-    
+
     Forces the instances to stop. The instances do not have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures. This option is not recommended for Windows instances.
-    
+
     Default: false
-    
+
 
 Return type
 
@@ -15181,73 +15181,73 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **StoppingInstances** _(list) --_
-        
+
         Information about the stopped instances.
-        
+
         *   _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             *   **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             *   **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             *   **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 terminate(kwargs_)
 
@@ -15303,71 +15303,71 @@ Returns
 
 *   _(dict) --_
     *   **TerminatingInstances** _(list) --_
-        
+
         Information about the terminated instances.
-        
+
         *   _(dict) --_
-            
+
             Describes an instance state change.
-            
+
             *   **CurrentState** _(dict) --_
-                
+
                 The current state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
             *   **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             *   **PreviousState** _(dict) --_
-                
+
                 The previous state of the instance.
-                
+
                 *   **Code** _(integer) --_
-                    
+
                     The state of the instance as a 16-bit unsigned integer.
-                    
+
                     The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values between 256 and 65,535. These numerical values are used for internal purposes and should be ignored.
-                    
+
                     The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values between 0 and 255.
-                    
+
                     The valid values for instance-state-code will all be in the range of the low byte and they are:
-                    
+
                     *   0 : pending
                     *   16 : running
                     *   32 : shutting-down
                     *   48 : terminated
                     *   64 : stopping
                     *   80 : stopped
-                    
+
                     You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in decimal.
-                    
+
                 *   **Name** _(string) --_
-                    
+
                     The current state of the instance.
-                    
+
 
 unmonitor(kwargs_)
 
@@ -15408,25 +15408,25 @@ Returns
 
 *   _(dict) --_
     *   **InstanceMonitorings** _(list) --_
-        
+
         The monitoring information.
-        
+
         *   _(dict) --_
-            
+
             Describes the monitoring of an instance.
-            
+
             *   **InstanceId** _(string) --_
-                
+
                 The ID of the instance.
-                
+
             *   **Monitoring** _(dict) --_
-                
+
                 The monitoring for the instance.
-                
+
                 *   **State** _(string) --_
-                    
+
                     Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.
-                    
+
 
 internet_gateways
 
@@ -15471,11 +15471,11 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **InternetGatewayIds** (_list_) --
-    
+
     One or more internet gateway IDs.
-    
+
     Default: Describes all your internet gateways.
-    
+
     *   _(string) --_
 *   **NextToken** (_string_) -- The token for the next page of results.
 *   **MaxResults** (_integer_) -- The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
@@ -15579,11 +15579,11 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **NetworkAclIds** (_list_) --
-    
+
     One or more network ACL IDs.
-    
+
     Default: Describes all your network ACLs.
-    
+
     *   _(string) --_
 *   **NextToken** (_string_) -- The token for the next page of results.
 *   **MaxResults** (_integer_) -- The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
@@ -15687,11 +15687,11 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **NetworkInterfaceIds** (_list_) --
-    
+
     One or more network interface IDs.
-    
+
     Default: Describes all your network interfaces.
-    
+
     *   _(string) --_
 *   **NextToken** (_string_) -- The token to retrieve the next page of results.
 *   **MaxResults** (_integer_) -- The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results. You cannot specify this parameter and the network interface IDs parameter in the same request.
@@ -15795,11 +15795,11 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **VpcPeeringConnectionIds** (_list_) --
-    
+
     One or more VPC peering connection IDs.
-    
+
     Default: Describes all your VPC peering connections.
-    
+
     *   _(string) --_
 *   **NextToken** (_string_) -- The token for the next page of results.
 *   **MaxResults** (_integer_) -- The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
@@ -15903,11 +15903,11 @@ Parameters
 
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **RouteTableIds** (_list_) --
-    
+
     One or more route table IDs.
-    
+
     Default: Describes all your route tables.
-    
+
     *   _(string) --_
 *   **NextToken** (_string_) -- The token for the next page of results.
 *   **MaxResults** (_integer_) -- The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
@@ -16013,18 +16013,18 @@ security_group_iterator = vpc.security_groups.filter(
 Parameters
 
 *   **GroupIds** (_list_) --
-    
+
     The IDs of the security groups. Required for security groups in a nondefault VPC.
-    
+
     Default: Describes all your security groups.
-    
+
     *   _(string) --_
 *   **GroupNames** (_list_) --
-    
+
     [EC2-Classic and default VPC only] The names of the security groups. You can specify either the security group name or the security group ID. For security groups in a nondefault VPC, use the group-name filter to describe security groups by name.
-    
+
     Default: Describes all your security groups.
-    
+
     *   _(string) --_
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **NextToken** (_string_) -- The token to request the next page of results.
@@ -16128,11 +16128,11 @@ subnet_iterator = vpc.subnets.filter(
 Parameters
 
 *   **SubnetIds** (_list_) --
-    
+
     One or more subnet IDs.
-    
+
     Default: Describes all your subnets.
-    
+
     *   _(string) --_
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **NextToken** (_string_) -- The token for the next page of results.
@@ -16223,9 +16223,9 @@ vpc.wait_until_available(
 Parameters
 
 *   **Filters** (_list_) --
-    
+
     One or more filters.
-    
+
     *   cidr - The primary IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two digits (for example, /28 ).
     *   cidr-block-association.cidr-block - An IPv4 CIDR block associated with the VPC.
     *   cidr-block-association.association-id - The association ID for an IPv4 CIDR block associated with the VPC.
@@ -16241,11 +16241,11 @@ Parameters
     *   tag :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA , specify tag:Owner for the filter name and TeamA for the filter value.
     *   tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
     *   vpc-id - The ID of the VPC.
-    
+
     *   _(dict) --_
-        
+
         A filter name and value pair that is used to return a more specific list of results from a describe operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs. The filters supported by a describe operation are documented with the describe operation. For example:
-        
+
         *   DescribeAvailabilityZones
         *   DescribeImages
         *   DescribeInstances
@@ -16256,15 +16256,15 @@ Parameters
         *   DescribeTags
         *   DescribeVolumes
         *   DescribeVpcs
-        
+
         *   **Name** _(string) --_
-            
+
             The name of the filter. Filter names are case-sensitive.
-            
+
         *   **Values** _(list) --_
-            
+
             The filter values. Filter values are case-sensitive.
-            
+
             *   _(string) --_
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **NextToken** (_string_) -- The token for the next page of results.
@@ -16299,9 +16299,9 @@ vpc.wait_until_exists(
 Parameters
 
 *   **Filters** (_list_) --
-    
+
     One or more filters.
-    
+
     *   cidr - The primary IPv4 CIDR block of the VPC. The CIDR block you specify must exactly match the VPC's CIDR block for information to be returned for the VPC. Must contain the slash followed by one or two digits (for example, /28 ).
     *   cidr-block-association.cidr-block - An IPv4 CIDR block associated with the VPC.
     *   cidr-block-association.association-id - The association ID for an IPv4 CIDR block associated with the VPC.
@@ -16317,11 +16317,11 @@ Parameters
     *   tag :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA , specify tag:Owner for the filter name and TeamA for the filter value.
     *   tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
     *   vpc-id - The ID of the VPC.
-    
+
     *   _(dict) --_
-        
+
         A filter name and value pair that is used to return a more specific list of results from a describe operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs. The filters supported by a describe operation are documented with the describe operation. For example:
-        
+
         *   DescribeAvailabilityZones
         *   DescribeImages
         *   DescribeInstances
@@ -16332,15 +16332,15 @@ Parameters
         *   DescribeTags
         *   DescribeVolumes
         *   DescribeVpcs
-        
+
         *   **Name** _(string) --_
-            
+
             The name of the filter. Filter names are case-sensitive.
-            
+
         *   **Values** _(list) --_
-            
+
             The filter values. Filter values are case-sensitive.
-            
+
             *   _(string) --_
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **NextToken** (_string_) -- The token for the next page of results.
@@ -16412,180 +16412,180 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 accepter_vpc_info
 
 *   _(dict) --_
-    
+
     Information about the accepter VPC. CIDR block information is only returned when describing an active VPC peering connection.
-    
+
     *   **CidrBlock** _(string) --_
-        
+
         The IPv4 CIDR block for the VPC.
-        
+
     *   **Ipv6CidrBlockSet** _(list) --_
-        
+
         The IPv6 CIDR block for the VPC.
-        
+
         *   _(dict) --_
-            
+
             Describes an IPv6 CIDR block.
-            
+
             *   **Ipv6CidrBlock** _(string) --_
-                
+
                 The IPv6 CIDR block.
-                
+
     *   **CidrBlockSet** _(list) --_
-        
+
         Information about the IPv4 CIDR blocks for the VPC.
-        
+
         *   _(dict) --_
-            
+
             Describes an IPv4 CIDR block.
-            
+
             *   **CidrBlock** _(string) --_
-                
+
                 The IPv4 CIDR block.
-                
+
     *   **OwnerId** _(string) --_
-        
+
         The AWS account ID of the VPC owner.
-        
+
     *   **PeeringOptions** _(dict) --_
-        
+
         Information about the VPC peering connection options for the accepter or requester VPC.
-        
+
         *   **AllowDnsResolutionFromRemoteVpc** _(boolean) --_
-            
+
             Indicates whether a local VPC can resolve public DNS hostnames to private IP addresses when queried from instances in a peer VPC.
-            
+
         *   **AllowEgressFromLocalClassicLinkToRemoteVpc** _(boolean) --_
-            
+
             Indicates whether a local ClassicLink connection can communicate with the peer VPC over the VPC peering connection.
-            
+
         *   **AllowEgressFromLocalVpcToRemoteClassicLink** _(boolean) --_
-            
+
             Indicates whether a local VPC can communicate with a ClassicLink connection in the peer VPC over the VPC peering connection.
-            
+
     *   **VpcId** _(string) --_
-        
+
         The ID of the VPC.
-        
+
     *   **Region** _(string) --_
-        
+
         The Region in which the VPC is located.
-        
+
 
 expiration_time
 
 *   _(datetime) --_
-    
+
     The time that an unaccepted VPC peering connection will expire.
-    
+
 
 requester_vpc_info
 
 *   _(dict) --_
-    
+
     Information about the requester VPC. CIDR block information is only returned when describing an active VPC peering connection.
-    
+
     *   **CidrBlock** _(string) --_
-        
+
         The IPv4 CIDR block for the VPC.
-        
+
     *   **Ipv6CidrBlockSet** _(list) --_
-        
+
         The IPv6 CIDR block for the VPC.
-        
+
         *   _(dict) --_
-            
+
             Describes an IPv6 CIDR block.
-            
+
             *   **Ipv6CidrBlock** _(string) --_
-                
+
                 The IPv6 CIDR block.
-                
+
     *   **CidrBlockSet** _(list) --_
-        
+
         Information about the IPv4 CIDR blocks for the VPC.
-        
+
         *   _(dict) --_
-            
+
             Describes an IPv4 CIDR block.
-            
+
             *   **CidrBlock** _(string) --_
-                
+
                 The IPv4 CIDR block.
-                
+
     *   **OwnerId** _(string) --_
-        
+
         The AWS account ID of the VPC owner.
-        
+
     *   **PeeringOptions** _(dict) --_
-        
+
         Information about the VPC peering connection options for the accepter or requester VPC.
-        
+
         *   **AllowDnsResolutionFromRemoteVpc** _(boolean) --_
-            
+
             Indicates whether a local VPC can resolve public DNS hostnames to private IP addresses when queried from instances in a peer VPC.
-            
+
         *   **AllowEgressFromLocalClassicLinkToRemoteVpc** _(boolean) --_
-            
+
             Indicates whether a local ClassicLink connection can communicate with the peer VPC over the VPC peering connection.
-            
+
         *   **AllowEgressFromLocalVpcToRemoteClassicLink** _(boolean) --_
-            
+
             Indicates whether a local VPC can communicate with a ClassicLink connection in the peer VPC over the VPC peering connection.
-            
+
     *   **VpcId** _(string) --_
-        
+
         The ID of the VPC.
-        
+
     *   **Region** _(string) --_
-        
+
         The Region in which the VPC is located.
-        
+
 
 status
 
 *   _(dict) --_
-    
+
     The status of the VPC peering connection.
-    
+
     *   **Code** _(string) --_
-        
+
         The status of the VPC peering connection.
-        
+
     *   **Message** _(string) --_
-        
+
         A message that provides more information about the status, if applicable.
-        
+
 
 tags
 
 *   _(list) --_
-    
+
     Any tags assigned to the resource.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 vpc_peering_connection_id
 
 *   _(string) --_
-    
+
     The ID of the VPC peering connection.
-    
+
 
 References
 
@@ -16693,169 +16693,169 @@ Returns
 
 *   _(dict) --_
     *   **VpcPeeringConnection** _(dict) --_
-        
+
         Information about the VPC peering connection.
-        
+
         *   **AccepterVpcInfo** _(dict) --_
-            
+
             Information about the accepter VPC. CIDR block information is only returned when describing an active VPC peering connection.
-            
+
             *   **CidrBlock** _(string) --_
-                
+
                 The IPv4 CIDR block for the VPC.
-                
+
             *   **Ipv6CidrBlockSet** _(list) --_
-                
+
                 The IPv6 CIDR block for the VPC.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes an IPv6 CIDR block.
-                    
+
                     *   **Ipv6CidrBlock** _(string) --_
-                        
+
                         The IPv6 CIDR block.
-                        
+
             *   **CidrBlockSet** _(list) --_
-                
+
                 Information about the IPv4 CIDR blocks for the VPC.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes an IPv4 CIDR block.
-                    
+
                     *   **CidrBlock** _(string) --_
-                        
+
                         The IPv4 CIDR block.
-                        
+
             *   **OwnerId** _(string) --_
-                
+
                 The AWS account ID of the VPC owner.
-                
+
             *   **PeeringOptions** _(dict) --_
-                
+
                 Information about the VPC peering connection options for the accepter or requester VPC.
-                
+
                 *   **AllowDnsResolutionFromRemoteVpc** _(boolean) --_
-                    
+
                     Indicates whether a local VPC can resolve public DNS hostnames to private IP addresses when queried from instances in a peer VPC.
-                    
+
                 *   **AllowEgressFromLocalClassicLinkToRemoteVpc** _(boolean) --_
-                    
+
                     Indicates whether a local ClassicLink connection can communicate with the peer VPC over the VPC peering connection.
-                    
+
                 *   **AllowEgressFromLocalVpcToRemoteClassicLink** _(boolean) --_
-                    
+
                     Indicates whether a local VPC can communicate with a ClassicLink connection in the peer VPC over the VPC peering connection.
-                    
+
             *   **VpcId** _(string) --_
-                
+
                 The ID of the VPC.
-                
+
             *   **Region** _(string) --_
-                
+
                 The Region in which the VPC is located.
-                
+
         *   **ExpirationTime** _(datetime) --_
-            
+
             The time that an unaccepted VPC peering connection will expire.
-            
+
         *   **RequesterVpcInfo** _(dict) --_
-            
+
             Information about the requester VPC. CIDR block information is only returned when describing an active VPC peering connection.
-            
+
             *   **CidrBlock** _(string) --_
-                
+
                 The IPv4 CIDR block for the VPC.
-                
+
             *   **Ipv6CidrBlockSet** _(list) --_
-                
+
                 The IPv6 CIDR block for the VPC.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes an IPv6 CIDR block.
-                    
+
                     *   **Ipv6CidrBlock** _(string) --_
-                        
+
                         The IPv6 CIDR block.
-                        
+
             *   **CidrBlockSet** _(list) --_
-                
+
                 Information about the IPv4 CIDR blocks for the VPC.
-                
+
                 *   _(dict) --_
-                    
+
                     Describes an IPv4 CIDR block.
-                    
+
                     *   **CidrBlock** _(string) --_
-                        
+
                         The IPv4 CIDR block.
-                        
+
             *   **OwnerId** _(string) --_
-                
+
                 The AWS account ID of the VPC owner.
-                
+
             *   **PeeringOptions** _(dict) --_
-                
+
                 Information about the VPC peering connection options for the accepter or requester VPC.
-                
+
                 *   **AllowDnsResolutionFromRemoteVpc** _(boolean) --_
-                    
+
                     Indicates whether a local VPC can resolve public DNS hostnames to private IP addresses when queried from instances in a peer VPC.
-                    
+
                 *   **AllowEgressFromLocalClassicLinkToRemoteVpc** _(boolean) --_
-                    
+
                     Indicates whether a local ClassicLink connection can communicate with the peer VPC over the VPC peering connection.
-                    
+
                 *   **AllowEgressFromLocalVpcToRemoteClassicLink** _(boolean) --_
-                    
+
                     Indicates whether a local VPC can communicate with a ClassicLink connection in the peer VPC over the VPC peering connection.
-                    
+
             *   **VpcId** _(string) --_
-                
+
                 The ID of the VPC.
-                
+
             *   **Region** _(string) --_
-                
+
                 The Region in which the VPC is located.
-                
+
         *   **Status** _(dict) --_
-            
+
             The status of the VPC peering connection.
-            
+
             *   **Code** _(string) --_
-                
+
                 The status of the VPC peering connection.
-                
+
             *   **Message** _(string) --_
-                
+
                 A message that provides more information about the status, if applicable.
-                
+
         *   **Tags** _(list) --_
-            
+
             Any tags assigned to the resource.
-            
+
             *   _(dict) --_
-                
+
                 Describes a tag.
-                
+
                 *   **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
                 *   **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
         *   **VpcPeeringConnectionId** _(string) --_
-            
+
             The ID of the VPC peering connection.
-            
+
 
 delete(kwargs_)
 
@@ -16890,9 +16890,9 @@ Returns
 
 *   _(dict) --_
     *   **Return** _(boolean) --_
-        
+
         Returns true if the request succeeds; otherwise, it returns an error.
-        
+
 
 get_available_subresources()
 
@@ -16953,9 +16953,9 @@ Returns
 
 *   _(dict) --_
     *   **Return** _(boolean) --_
-        
+
         Returns true if the request succeeds; otherwise, it returns an error.
-        
+
 
 reload()
 
@@ -17000,9 +17000,9 @@ vpc_peering_connection.wait_until_exists(
 Parameters
 
 *   **Filters** (_list_) --
-    
+
     One or more filters.
-    
+
     *   accepter-vpc-info.cidr-block - The IPv4 CIDR block of the accepter VPC.
     *   accepter-vpc-info.owner-id - The AWS account ID of the owner of the accepter VPC.
     *   accepter-vpc-info.vpc-id - The ID of the accepter VPC.
@@ -17015,11 +17015,11 @@ Parameters
     *   tag :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA , specify tag:Owner for the filter name and TeamA for the filter value.
     *   tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
     *   vpc-peering-connection-id - The ID of the VPC peering connection.
-    
+
     *   _(dict) --_
-        
+
         A filter name and value pair that is used to return a more specific list of results from a describe operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs. The filters supported by a describe operation are documented with the describe operation. For example:
-        
+
         *   DescribeAvailabilityZones
         *   DescribeImages
         *   DescribeInstances
@@ -17030,15 +17030,15 @@ Parameters
         *   DescribeTags
         *   DescribeVolumes
         *   DescribeVpcs
-        
+
         *   **Name** _(string) --_
-            
+
             The name of the filter. Filter names are case-sensitive.
-            
+
         *   **Values** _(list) --_
-            
+
             The filter values. Filter values are case-sensitive.
-            
+
             *   _(string) --_
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **NextToken** (_string_) -- The token for the next page of results.
@@ -17111,109 +17111,109 @@ Attributes provide access to the properties of a resource. Attributes are lazy-l
 association_id
 
 *   _(string) --_
-    
+
     The ID representing the association of the address with an instance in a VPC.
-    
+
 
 carrier_ip
 
 *   _(string) --_
-    
+
     The carrier IP address associated. This option is only available for network interfaces which reside in a subnet in a Wavelength Zone (for example an EC2 instance).
-    
+
 
 customer_owned_ip
 
 *   _(string) --_
-    
+
     The customer-owned IP address.
-    
+
 
 customer_owned_ipv4_pool
 
 *   _(string) --_
-    
+
     The ID of the customer-owned address pool.
-    
+
 
 domain
 
 *   _(string) --_
-    
+
     Indicates whether this Elastic IP address is for use with instances in EC2-Classic (standard ) or instances in a VPC (vpc ).
-    
+
 
 instance_id
 
 *   _(string) --_
-    
+
     The ID of the instance that the address is associated with (if any).
-    
+
 
 network_border_group
 
 *   _(string) --_
-    
+
     The name of the unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS advertises IP addresses.
-    
+
 
 network_interface_id
 
 *   _(string) --_
-    
+
     The ID of the network interface.
-    
+
 
 network_interface_owner_id
 
 *   _(string) --_
-    
+
     The ID of the AWS account that owns the network interface.
-    
+
 
 private_ip_address
 
 *   _(string) --_
-    
+
     The private IP address associated with the Elastic IP address.
-    
+
 
 public_ip
 
 *   _(string) --_
-    
+
     The Elastic IP address.
-    
+
 
 public_ipv4_pool
 
 *   _(string) --_
-    
+
     The ID of an address pool.
-    
+
 
 tags
 
 *   _(list) --_
-    
+
     Any tags assigned to the Elastic IP address.
-    
+
     *   _(dict) --_
-        
+
         Describes a tag.
-        
+
         *   **Key** _(string) --_
-            
+
             The key of the tag.
-            
+
             Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-            
+
         *   **Value** _(string) --_
-            
+
             The value of the tag.
-            
+
             Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-            
+
 
 References
 
@@ -17265,11 +17265,11 @@ Parameters
 *   **AllowReassociation** (_boolean_) -- [EC2-VPC] For a VPC in an EC2-Classic account, specify true to allow an Elastic IP address that is already associated with an instance or network interface to be reassociated with the specified instance or network interface. Otherwise, the operation fails. In a VPC in an EC2-VPC-only account, reassociation is automatic, therefore you can specify false to ensure the operation fails if the Elastic IP address is already associated with another resource.
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 *   **NetworkInterfaceId** (_string_) --
-    
+
     [EC2-VPC] The ID of the network interface. If the instance has more than one network interface, you must specify a network interface ID.
-    
+
     For EC2-VPC, you can specify either the instance ID or the network interface ID, but not both.
-    
+
 *   **PrivateIpAddress** (_string_) -- [EC2-VPC] The primary or secondary private IP address to associate with the Elastic IP address. If no private IP address is specified, the Elastic IP address is associated with the primary private IP address.
 
 Return type
@@ -17287,11 +17287,11 @@ Returns
 **Response Structure**
 
 *   _(dict) --_
-    
+
     *   **AssociationId** _(string) --_
-        
+
         [EC2-VPC] The ID that represents the association of the Elastic IP address with an instance.
-        
+
 
 get_available_subresources()
 
@@ -17345,15 +17345,15 @@ Parameters
 
 *   **PublicIp** (_string_) -- [EC2-Classic] The Elastic IP address. Required for EC2-Classic.
 *   **NetworkBorderGroup** (_string_) --
-    
+
     The set of Availability Zones, Local Zones, or Wavelength Zones from which AWS advertises IP addresses.
-    
+
     If you provide an incorrect network border group, you will receive an InvalidAddress.NotFound error. For more information, see [Error Codes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html) .
-    
+
     Note
-    
+
     You cannot use a network border group with EC2 Classic. If you attempt this operation on EC2 classic, you will receive an InvalidParameterCombination error. For more information, see [Error Codes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html) .
-    
+
 *   **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 
 Returns

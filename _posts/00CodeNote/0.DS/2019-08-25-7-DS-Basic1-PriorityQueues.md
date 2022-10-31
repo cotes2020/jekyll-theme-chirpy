@@ -518,7 +518,7 @@ https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html#add(E)
 ---
 
 
-## Binary Heap 堆  
+## Binary Heap 堆
 
 two strategies for implementing a priority queue ADT demonstrate an trade-off.
 - using an `unsorted` list to store entries
@@ -548,12 +548,12 @@ take advantage of the logarithmic nature of the binary tree
 - A balanced binary tree has roughly the same number of nodes in the left and right subtrees of the root.
 - keep the tree balanced by creating a <font color=red> complete binary tree </font>.
   - A complete binary tree is a tree in which each level has all of its nodes.
-  - The exception to this is the bottom level of the tree, which we fill in from left to right.  
+  - The exception to this is the bottom level of the tree, which we fill in from left to right.
 
 ![heapOrder](https://i.imgur.com/FzGkeOJ.png)
 
 
-- The binary heap has two common variations:  
+- The binary heap has two common variations:
   - min heap, the <font color=red> smallest key is always at the front </font>,
   - max heap, the <font color=red> largest key value is always at the front </font>.
 
@@ -1002,7 +1002,7 @@ class BinHeap:
 - The good news about appending is that it guarantees that we will maintain the complete tree property.
 - The bad news about appending is that we will very likely violate the heap structure property.
 - However, it is possible to write a method to regain the **heap structure property** by comparing the newly added item with its parent.
-  - If the newly added item is less than its parent, then we can swap the item with its parent.  
+  - If the newly added item is less than its parent, then we can swap the item with its parent.
 
 ![percUp](https://i.imgur.com/xWvuclU.png)
 
@@ -1048,7 +1048,7 @@ restore our heap in two steps.
 - First, restore the root item by taking the last item in the list and moving it to the root position.
   - It maintains our heap structure property.
   - But we have probably destroyed the heap order property of our binary heap.
-- Second, restore the heap order property by pushing the new root node down the tree to its proper position.  
+- Second, restore the heap order property by pushing the new root node down the tree to its proper position.
   - to maintain the heap order property,
   - swap the root with its smallest child less than the root.
   - After the initial swap, we may repeat the swapping process with a `node` and `its children` until the node is swapped into a position on the tree where it is already less than both children.
@@ -1102,7 +1102,7 @@ build a heap by inserting each key one at a time.
 - Therefore, to insert `𝑛` keys into the heap would require a total of `𝑂(𝑛log𝑛)` operations.
 
 
-if we start with an entire list then we can build the whole heap in `𝑂(𝑛)` operations.   
+if we start with an entire list then we can build the whole heap in `𝑂(𝑛)` operations.
 
 ```py
 def buildHeap(self, alist):
@@ -1231,7 +1231,7 @@ print(bh.delMin())
 print(bh.delMin())
 ```
 
-Notice that no matter the order that we add items to the heap, the smallest is removed each time.  
+Notice that no matter the order that we add items to the heap, the smallest is removed each time.
 
 ---
 
@@ -1380,7 +1380,7 @@ The algorithm works correctly for any priority queue P, no matter how P is imple
 - in Phase 2 we repeatedly `remove the minimal element from P` using the **removeMin** method.
   - the running time of each **removeMin** operation is proportional to the size of P.
     - the bottleneck computation is the <font color=red> repeated “selection” of the minimum element in Phase 2. </font>
-    - For this reason, this algorithm is better known as **selection-sort**  
+    - For this reason, this algorithm is better known as **selection-sort**
     - the bottleneck is in Phase 2: `repeatedly remove an entry with smallest key from the priority queue P`.
       - The size of P starts at n and incrementally decreases with each removeMin until it becomes 0.
       - Thus, the first removeMin operation takes time O(n),
@@ -1471,7 +1471,7 @@ Implementing
 
 In general, we say that a sorting algorithm is **in-place** if it uses only a `small amount of memory` in addition to the sequence storing the objects to be sorted.
 - The variation of heap-sort above qualifies as in-place;
-- instead of transferring elements out of the sequence and then back in, we simply rearrange them.  
+- instead of transferring elements out of the sequence and then back in, we simply rearrange them.
 
 
 ![Screen Shot 2022-04-08 at 01.51.31](https://i.imgur.com/pXjmBUs.png)

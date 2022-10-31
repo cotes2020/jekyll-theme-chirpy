@@ -30,7 +30,7 @@ The policy document named giveaccesstotopiconly is added to the user to give the
 
 ```yaml
 AWSTemplateFormatVersion: "2010-09-09"
-Resources:  
+Resources:
   myuser:
     # declare an AWS::IAM::User resource to create an IAM user.
     Type: AWS::IAM::User
@@ -80,7 +80,7 @@ Resources:
 The AssumeRolePolicyDocument
 - describes who can assume the role, and under what conditions.
 - The trust policy that is associated with this role. Trust policies define which entities can assume the role.
-- can associate only one trust policy with a role.  
+- can associate only one trust policy with a role.
 
 The ManagedPolicyArns
 - ARNs of policies that describe what someone assuming that role can do.

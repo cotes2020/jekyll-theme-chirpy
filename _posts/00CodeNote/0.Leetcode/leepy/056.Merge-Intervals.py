@@ -16,7 +16,8 @@
 # # ---------------------- solution py ----------------------
 class Solution:
     def merge(self, intervals):
-        if len(intervals) == 0: return []
+        if len(intervals) == 0:
+            return []
         intervals.sort(key=lambda x: x[0])
         merged = []
         for interval in intervals:
@@ -26,12 +27,11 @@ class Solution:
             if not merged or merged[-1][1] < interval[0]:
                 merged.append(interval)
             else:
-            # otherwise, there is overlap, merge the current and previous intervals.
+                # otherwise, there is overlap, merge the current and previous intervals.
                 merged[-1][1] = max(merged[-1][1], interval[1])
         return merged
 # # Runtime: 60 ms, faster than 93.79% of Python online submissions for Merge Intervals.
 # # Memory Usage: 15.6 MB, less than 30.00% of Python online submissions for Merge Intervals.
-
 
 
 # ---------------------- solution py ----------------------

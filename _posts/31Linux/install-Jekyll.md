@@ -59,7 +59,7 @@ $ bundle exec jekyll serve
 
 ---
 
-## github 
+## github
 
 ```
 $ git init

@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, Basic]
 tags: [Linux]
 math: true
-image: 
+image:
 ---
 
 # Deploy systems
@@ -111,7 +111,7 @@ to install a few packages first:
 
 ```shell
 # install
-$ sudo yum install qemu-kvm libvirt virt-manager libvirt-client  
+$ sudo yum install qemu-kvm libvirt virt-manager libvirt-client
 
 
 # install by group

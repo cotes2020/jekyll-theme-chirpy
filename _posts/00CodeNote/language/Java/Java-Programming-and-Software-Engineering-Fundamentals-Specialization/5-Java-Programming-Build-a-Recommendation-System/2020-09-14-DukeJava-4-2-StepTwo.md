@@ -299,7 +299,7 @@ public class MovieRunnerAverage {
 // write a method getID
 // has one String parameter named title, the title of a movie.
 // This method returns the movie ID of this movie.
-// If the title is not found, return an appropriate message such as “NO SUCH TITLE.”  
+// If the title is not found, return an appropriate message such as “NO SUCH TITLE.”
 // Note that the movie title must be spelled exactly as it appears in the movie data files.
 
     public String getID(String title) {

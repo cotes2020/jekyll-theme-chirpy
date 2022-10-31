@@ -2,8 +2,8 @@
 title: HTTP Referer
 # author: Grace JyL
 date: 2020-04-25 11:11:11 -0400
-description: 
-excerpt_separator: 
+description:
+excerpt_separator:
 categories: [Web, HTTP]
 tags: [Web, HTTP]
 math: true

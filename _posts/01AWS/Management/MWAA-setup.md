@@ -371,7 +371,7 @@ Instead of hard-coding the variables in the DAG code, we choose to supply these 
     TO_DATE = Variable.get('TO_DATE')
 ```
 
-2. create a JSON formatted file named `variables.json`  
+2. create a JSON formatted file named `variables.json`
 
 ```json
     {

@@ -234,7 +234,7 @@ configure a virtual IP address 192.168.20.1 on the Firewall.
 using Wireshark
 
 1. Start Menu > Wireshark: **internal** interface: Capture > Start.
-2. Google Chrome: http://www.panlabs.com  
+2. Google Chrome: http://www.panlabs.com
 3. Wait 5 to 10 seconds and reopen Wireshark and then click the Stop capturing
 4. save the Wireshark packet capture: File > Save As > Desktop > packetcapture > Save
 

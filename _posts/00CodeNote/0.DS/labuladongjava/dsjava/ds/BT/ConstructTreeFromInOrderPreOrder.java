@@ -2,14 +2,14 @@ package BT;
 
 
 public class ConstructTreeFromInOrderPreOrder {
-    
+
     private int index = 0;
     public Node createTree(int inorder[],int preorder[]){
         Node result =  createTree(inorder,preorder,0,inorder.length-1);
         index = 0;
         return result;
     }
-    
+
     private Node createTree(int inorder[],int preorder[], int start, int end){
         if(start > end){
             return null;

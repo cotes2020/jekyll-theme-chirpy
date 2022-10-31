@@ -26,9 +26,9 @@ toc: true
   - [Networking Metrics](#networking-metrics)
   - [MapReduce](#mapreduce)
   - [Considerations](#considerations)
- 
+
 ---
- 
+
 
 # System Design - Key Concepts
 
@@ -78,12 +78,12 @@ In some cases, you're being asked to design a single feature or algorithm, but y
 ## Horizontal vs. Vertical Scaling
 
 * Vertical scaling
-  * increasing the resoures of a specific node. 
-  * For example 
+  * increasing the resoures of a specific node.
+  * For example
   * add additional memory to a server to improve its ability to handle load changes.
 
 * Horizontal scaling
-  * increasing the number of nodes. 
+  * increasing the number of nodes.
   * For example
   * add additional servers, thus decreasing the load on any one server.
 
@@ -93,7 +93,7 @@ Vertiacal scaling is generally easer than horizontal scaling, but it's limited.
 
 ## Load Balancer
 
-Typically, some frontend parts of a scalable website will be thrown behind a load balancer. This allows a system to distribute the load evenly so that one server doesn't crash and take down the whole system. 
+Typically, some frontend parts of a scalable website will be thrown behind a load balancer. This allows a system to distribute the load evenly so that one server doesn't crash and take down the whole system.
 - To do so, of course, you have to build out a network of cloned servers that all have essentially the same code and access to the same data.
 
 ---
@@ -102,11 +102,11 @@ Typically, some frontend parts of a scalable website will be thrown behind a loa
 
 Joins in a relational database such as SQL can get very slow as the system grows bigger. For this reason, you would generally avoid them.
 
-- **Denormalization** is one part of this. 
-  - adding redundant information into a database to speed up reads. 
+- **Denormalization** is one part of this.
+  - adding redundant information into a database to speed up reads.
   - For example, imagine a database describing projects and tasks (in addition to the project table).
-- Or, you can go with a NoSQL database. 
-  - A NoSQL database does not support joins and might structure data in a different way. 
+- Or, you can go with a NoSQL database.
+  - A NoSQL database does not support joins and might structure data in a different way.
   - It is designed to scale better..
 
 
@@ -117,24 +117,24 @@ Joins in a relational database such as SQL can get very slow as the system grows
 
 ## Database Partitioning (Sharding)
 
-- Sharding means splitting the data across multiple machines 
+- Sharding means splitting the data across multiple machines
 - while ensuring you have a way of figuring out which data is on which machine.
 
 A few common ways of partitioning include:
 
-* **Vertical Partitioning**: 
+* **Vertical Partitioning**:
   * This is basically `partitioning by feature`.
 
-* **Key-Based (or Hash-Based) Partitioning**: 
-  * This uses some part of the data to partition it. 
-  * A very simple way to do this is to allocate N servers and put the data on `mode(key, n)`. 
-  * One issue with this is that the number of servers you have is effectively fixed. 
+* **Key-Based (or Hash-Based) Partitioning**:
+  * This uses some part of the data to partition it.
+  * A very simple way to do this is to allocate N servers and put the data on `mode(key, n)`.
+  * One issue with this is that the number of servers you have is effectively fixed.
   * Adding additional servers means reallocating all the data -- a very expensive task.
 
-* **Directory-Based Partitioning**: 
-  * In this scheme, you maintain a lookup table for where the data can be found. 
-  * This makes it relatively easy to add additional servers, but it comes with two major drawbacks. 
-    * First the lookup table can be a single point of failure. 
+* **Directory-Based Partitioning**:
+  * In this scheme, you maintain a lookup table for where the data can be found.
+  * This makes it relatively easy to add additional servers, but it comes with two major drawbacks.
+    * First the lookup table can be a single point of failure.
     * Second, constantly access this table impacts performance.
 
 
@@ -144,7 +144,7 @@ A few common ways of partitioning include:
 
 ## Caching
 
-- An in-memory cache can deliver very rapid results. 
+- An in-memory cache can deliver very rapid results.
 - It is a simple key-value pairing and typically sits between your application layer and your data store.
 
 ---
@@ -152,7 +152,7 @@ A few common ways of partitioning include:
 
 ## Asynchronous Processing & Queues
 
-- Slow operations should ideally be done asynchronously. 
+- Slow operations should ideally be done asynchronously.
 - Otherwise, a user might get stuck waiting and waiting for a process to complete.
 
 ---
@@ -165,7 +165,7 @@ A few common ways of partitioning include:
 
 ---
 
-## MapReduce 
+## MapReduce
 
 A MapReduce program is typically used to process large amounts of data.
 
@@ -177,19 +177,16 @@ MapReduce allows us to do a lot of processing in parallel, which makes processin
 
 ---
 
-## Considerations 
+## Considerations
 
 * **Failures**: Essentially any part of a system can fail. You'll need to plan for many or all of these failures.
-* **Availability and Reliability**: 
-  * Availability is a function of `the percentage of time` the system is operatoinal. 
+* **Availability and Reliability**:
+  * Availability is a function of `the percentage of time` the system is operatoinal.
   * Redliability is a function of `the probability` that the system is operational for a certain unit of time.
-* **Read-heavy vs. Write-heavy**: 
-  * Whether an application will do a lot of reads or a lot of writes implacts the design. 
-  * If it's write-heavy, you could consider queuing up the writes (but think about potential failure here!). 
+* **Read-heavy vs. Write-heavy**:
+  * Whether an application will do a lot of reads or a lot of writes implacts the design.
+  * If it's write-heavy, you could consider queuing up the writes (but think about potential failure here!).
   * If it's read-heavy, you might want to cache.
-* **Security**: 
-  * Security threats can, of course, be devastating for a system. 
+* **Security**:
+  * Security threats can, of course, be devastating for a system.
   * Think about the tyupes of issues a system might face and design around thos.
-
-  
-  

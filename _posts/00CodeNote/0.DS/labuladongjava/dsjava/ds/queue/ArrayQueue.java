@@ -22,7 +22,7 @@ public class ArrayQueue<E> implements Queue<E> {
         sz++;
     }
 
-    public E first() { 
+    public E first() {
         return isEmpty()? null: data[f];
     }
 
@@ -34,5 +34,5 @@ public class ArrayQueue<E> implements Queue<E> {
         f = (f+1)% data.length;
         sz--;
         return ans;
-    } 
+    }
 }

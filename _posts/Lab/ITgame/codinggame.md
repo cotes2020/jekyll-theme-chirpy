@@ -62,7 +62,7 @@ an anonymous function, it is equivalent to:
 
 ```
 def func(p):
-   return p.totalScore     
+   return p.totalScore
 ```
 
 Now max becomes:

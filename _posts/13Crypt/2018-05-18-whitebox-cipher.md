@@ -78,8 +78,8 @@ to successfully hide the keys given this scenario, take the steps for white-box 
 
 
 - Fault injection attacks: modifying the white box execution so the output cipher text is wrong, not expected
-- 
-- 
+-
+-
 
 
 

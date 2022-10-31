@@ -88,8 +88,8 @@ If another company collects personal information through your child-directed sit
 ## Step 2: Post a Privacy Policy that Complies with COPPA.
 
 
-Assuming you’re covered by COPPA, the next step is to post a privacy policy. 
-- It must clearly and comprehensively describe how personal information collected online from kids under 13 is handled. 
+Assuming you’re covered by COPPA, the next step is to post a privacy policy.
+- It must clearly and comprehensively describe how personal information collected online from kids under 13 is handled.
 - The notice must describe not only _your_ practices, but also the practices of any others collecting personal information on your site or service — for example, plug-ins or ad networks.
 
 Include a link to your privacy policy on your homepage and anywhere you collect personal information from children. If you operate a site or service directed to a general audience, but have a separate section for kids, post a link to your privacy policy on the homepage of the kids’ part of your site or service.
@@ -97,7 +97,7 @@ Include a link to your privacy policy on your homepage and anywhere you collect 
 
 To comply with COPPA, your privacy policy should be clear and easy to read. Don’t add any unrelated or confusing information. Here’s what your policy must include:
 
-* **A list of all operators collecting personal information.** 
+* **A list of all operators collecting personal information.**
   * Name each third party operator, such as an advertising network or social network plug-in, that collects or maintains children’s personal information through your site or service. For each, include a name and contact information (address, telephone number, and email address). If more than one is collecting information, it’s okay to give contact information for only one as long as that company will respond to all inquiries from parents about your site or service’s practices. Even so, you still have to list all third parties in your privacy policy.
 * **A description of the personal information collected and how it’s used.** Your policy must describe:
   * the types of personal information collected from children (for example, name, address, email address, hobbies, etc.);
@@ -150,13 +150,13 @@ Acceptable methods include having the parent:
 * verify a picture of a driver's license of other photo ID submitted by the parent and then comparing that photo to a second photo submitted by the parent, [using facial recognition technology](https://www.ftc.gov/system/files/documents/public_statements/881633/151119riyocoppaletter.pdf).
 
 
-If you will use a child’s personal information only for internal purposes and won’t disclose it, you may use a method known as “email plus.” 
-- Under that method, send an email to the parent and have them respond with their consent. 
-- Then you must send a confirmation to the parent via email, letter, or phone call. 
+If you will use a child’s personal information only for internal purposes and won’t disclose it, you may use a method known as “email plus.”
+- Under that method, send an email to the parent and have them respond with their consent.
+- Then you must send a confirmation to the parent via email, letter, or phone call.
 - If you use email plus, you must let the parent know they can revoke their consent anytime.
 
 
-You must give parents the option of allowing the collection and use of their child's personal information without agreeing to disclosing that information to third parties. 
+You must give parents the option of allowing the collection and use of their child's personal information without agreeing to disclosing that information to third parties.
 - If you make changes to the collection, use, or disclosure practices the parent already agreed to, you must send the parent a new notice and get their consent.
 
 [Check the chart for the narrow exceptions](https://www.ftc.gov/tips-advice/business-center/guidance/childrens-online-privacy-protection-rule-six-step-compliance#chart) to the general rule that you must get parental consent before collecting personal information from kids. Even if you fall within an exception to the consent requirement, you still may have specific notice requirements.
@@ -185,11 +185,11 @@ Any time you’re communicating with a parent about personal information already
 
 ## Step 6: Implement Reasonable Procedures to Protect the Security of Kids’ Personal Information.
 
-COPPA requires you to establish and maintain reasonable procedures to protect the confidentiality, security, and integrity of personal information collected from children. 
-- Minimize what you collect in the first place. 
-- Take reasonable steps to release personal information only to service providers and third parties capable of maintaining its confidentiality, security, and integrity. 
-- Get assurances they’ll live up to those responsibilities. 
-- Hold on to personal information only as long as is reasonably necessary for the purpose for which it was collected. 
+COPPA requires you to establish and maintain reasonable procedures to protect the confidentiality, security, and integrity of personal information collected from children.
+- Minimize what you collect in the first place.
+- Take reasonable steps to release personal information only to service providers and third parties capable of maintaining its confidentiality, security, and integrity.
+- Get assurances they’ll live up to those responsibilities.
+- Hold on to personal information only as long as is reasonably necessary for the purpose for which it was collected.
 - Securely dispose of it once you no longer have a legitimate reason for retaining it.
 
 

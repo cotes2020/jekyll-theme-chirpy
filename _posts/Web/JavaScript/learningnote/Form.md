@@ -74,7 +74,7 @@ web development
     - required, placeholder, min, max
     - halt the submit process if any required elements are empty.
     - alot of required, paired error novalidate.
-    - `pattern` 
+    - `pattern`
       - work with input type = text and required the input have a specific form: (Regularexpression)
         - [0-9]{5}
         - [a-zA-Z]+
@@ -109,10 +109,10 @@ zip code with number:
 ## radio button
 
 `name='food'`
-- only one choice: 
+- only one choice:
 - 多选一的 options share a single name.
 
-`checked='ture'`: 
+`checked='ture'`:
 - 默认check项
 
 
@@ -126,22 +126,3 @@ zip code with number:
 
 <input type='submit'>
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

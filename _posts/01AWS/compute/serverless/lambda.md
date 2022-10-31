@@ -5,7 +5,7 @@
   - [Asynchronous Invokes](#asynchronous-invokes)
   - [Poll-Based Invokes](#poll-based-invokes)
 
-In our first post, we talked about general design patterns to enable massive scale with serverless applications. 
+In our first post, we talked about general design patterns to enable massive scale with serverless applications.
 
 
 
@@ -14,13 +14,13 @@ In our first post, we talked about general design patterns to enable massive sca
 
 https://aws.amazon.com/blogs/architecture/understanding-the-different-ways-to-invoke-lambda-functions/
 
-![Screen-Shot-2019-06-27-at-2.23.51-PM-1024x510](https://i.imgur.com/AoCgNOQ.png) 
+![Screen-Shot-2019-06-27-at-2.23.51-PM-1024x510](https://i.imgur.com/AoCgNOQ.png)
 
 
 ### Synchronous Invokes
 
 - the most straight forward way to invoke the Lambda functions.
-- the functions execute immediately whe perform the Lambda Invoke API call. 
+- the functions execute immediately whe perform the Lambda Invoke API call.
 - This can be accomplished through a variety of options, including using the CLI or any of the supported SDKs.
 
 exampl:
@@ -34,8 +34,8 @@ aws lambda invoke \
     —payload  “[JSON string here]”
 ```
 
-> The Invocation-type flag specifies a value of “RequestResponse”. 
-> This instructs AWS to execute the Lambda function and wait for the function to complete. 
+> The Invocation-type flag specifies a value of “RequestResponse”.
+> This instructs AWS to execute the Lambda function and wait for the function to complete.
 
 - When perform a synchronous invoke, you are responsible for checking the response and determining if there was an error and if you should retry the invoke.
 
@@ -78,8 +78,8 @@ Here is a list of services that invoke Lambda functions asynchronously:
 
 
 ### Poll-Based Invokes
-- This invocation model is designed to allow you to integrate with AWS Stream and Queue based services with no code or server management. 
-- Lambda will poll the following services on the behalf, retrieve records, and invoke the functions. 
+- This invocation model is designed to allow you to integrate with AWS Stream and Queue based services with no code or server management.
+- Lambda will poll the following services on the behalf, retrieve records, and invoke the functions.
 
 The following are supported services:
 - Amazon Kinesis
@@ -87,7 +87,6 @@ The following are supported services:
 - Amazon DynamoDB Streams
 
 
-- AWS will manage the poller on the behalf and perform Synchronous invokes of the function with this type of integration. 
-- The retry behavior for this model is based on data expiration in the data source. 
+- AWS will manage the poller on the behalf and perform Synchronous invokes of the function with this type of integration.
+- The retry behavior for this model is based on data expiration in the data source.
 - For example, Kinesis Data streams store records for 24 hours by default (up to 168 hours). The specific details of each integration are linked above.
-

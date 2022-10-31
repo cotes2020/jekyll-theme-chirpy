@@ -44,7 +44,7 @@ basic approche for the ML
 5. Break off validation set from training data `X_train, X_valid, y_train, y_valid = train_test_split()`
 6. test head `X_train.head()`
 7. defines different random forest models `model = RandomForestRegressor(n_estimators=50, random_state=0)`
-8. define a function returns the mean absolute error (MAE) from the validation set. 
+8. define a function returns the mean absolute error (MAE) from the validation set.
 
   ```py
   def score_model(model, X_t=X_train, X_v=X_valid, y_t=y_train, y_v=y_valid):
@@ -72,8 +72,8 @@ basic approche for the ML
 # =============================== Set up code checking
 import os
 if not os.path.exists("../input/train.csv"):
-    os.symlink("../input/home-data-for-ml-course/train.csv", "../input/train.csv")  
-    os.symlink("../input/home-data-for-ml-course/test.csv", "../input/test.csv")  
+    os.symlink("../input/home-data-for-ml-course/train.csv", "../input/train.csv")
+    os.symlink("../input/home-data-for-ml-course/test.csv", "../input/test.csv")
 
 from learntools.core import binder
 binder.bind(globals())
@@ -103,7 +103,7 @@ X_train, X_valid, y_train, y_valid = train_test_split(
 
 X_train.head()
 #      LotArea	YearBuilt	1stFlrSF	2ndFlrSF	FullBath	BedroomAbvGr	TotRmsAbvGrd
-# Id							
+# Id
 # 619	11694	2007	1828	0	2	3	9
 # 871	6600	1962	894	0	1	2	5
 # 93	13360	1921	964	0	1	2	5
@@ -123,8 +123,8 @@ models = [model_1, model_2, model_3, model_4, model_5]
 
 
 # =============================== select the best model out of the five
-# define a function score_model(), returns the mean absolute error (MAE) from the validation set. 
-# the best model will obtain the lowest MAE. 
+# define a function score_model(), returns the mean absolute error (MAE) from the validation set.
+# the best model will obtain the lowest MAE.
 from sklearn.metrics import mean_absolute_error
 ​
 # Function for comparing different models
@@ -145,7 +145,7 @@ for i in range(0, len(models)):
 
 
 
-### Step 1: Evaluate several models 
+### Step 1: Evaluate several models
 
 ```py
 # Fill in the best model
@@ -154,7 +154,7 @@ best_model = model_3
 
 
 ### Step 2: Generate test predictions
- 
+
 
 ```py
 # Define a model
@@ -189,7 +189,7 @@ output.to_csv('submission.csv', index=False)
   X = X_data_full.select_dtypes(exclude=['object'])
   X_test = X_test_full.select_dtypes(exclude=['object'])
   ```
-  
+
 4. Break off validation set from training data `X_train, X_valid, y_train, y_valid = train_test_split()`
 5. test head `X_train.head()`
 
@@ -202,7 +202,7 @@ output.to_csv('submission.csv', index=False)
       print(missing_val_count_by_column[missing_val_count_by_column > 0])
       ```
    3. Function for comparing different approachesop054
-   
+
       ```py
       def score_model(model, X_t=X_train, X_v=X_valid, y_t=y_train, y_v=y_valid):
           model.fit(X_t, y_t)
@@ -220,23 +220,23 @@ output.to_csv('submission.csv', index=False)
   # MAE (Drop columns with missing values): 17837.82570776256
   ```
 
-8. **Imputation** impute missing values with the mean value along each column. 
+8. **Imputation** impute missing values with the mean value along each column.
 
   ```py
   from sklearn.impute import SimpleImputer
   my_imputer = SimpleImputer()
   imputed_X_train = pd.DataFrame(my_imputer.fit_transform(X_train))
   imputed_X_valid = pd.DataFrame(my_imputer.transform(X_valid))
-      
+
   imputed_X_train.columns = X_train.columns
   imputed_X_valid.columns = X_valid.columns
-      
+
   print(score_dataset(imputed_X_train, imputed_X_valid, y_train, y_valid))
   # MAE (Imputation): 18062.894611872147
   ```
 
 9. **Generate test predictions**
-   1. Part A: preprocess the training and validation data. 
+   1. Part A: preprocess the training and validation data.
    2. Part B: preprocess test data
 
       ```py
@@ -246,7 +246,7 @@ output.to_csv('submission.csv', index=False)
 
       final_X_train.columns = X_train.columns
       final_X_valid.columns = X_valid.columns
-      
+
       final_X_test = pd.DataFrame(final_imputer.transform(X_test))
       preds_test = model.predict(final_X_test)
 
@@ -282,7 +282,7 @@ X_train, X_valid, y_train, y_valid = train_test_split(
 # print the first five rows of the data.
 X_train.head()
 #   	MSSubClass	LotFrontage	LotArea	OverallQual	OverallCond	YearBuilt	YearRemodAdd	MasVnrArea	BsmtFinSF1	BsmtFinSF2	...	GarageArea	WoodDeckSF	OpenPorchSF	EnclosedPorch	3SsnPorch	ScreenPorch	PoolArea	MiscVal	MoSold	YrSold
-# Id						 															
+# Id
 # 619	20	90.0	11694	9	5	2007	2007	452.0	48	0	...	774	0	108	0	0	260	0	0	7	2007
 # 871	20	60.0	6600	5	5	1962	1962	0.0	0	0	...	308	0	0	0	0	0	0	0	8	2009
 # 93	30	80.0	13360	5	7	1921	2006	0.0	713	0	...	432	0	0	44	0	0	0	0	8	2009
@@ -318,15 +318,15 @@ def score_dataset(X_train, X_valid, y_train, y_valid):
     return mean_absolute_error(y_valid, preds)\
 ```
 
-Since there are relatively few missing entries in the data 
+Since there are relatively few missing entries in the data
 - (the column with the greatest percentage of missing values is missing less than 20% of its entries)
-- we can expect that dropping columns is unlikely to yield good results. 
+- we can expect that dropping columns is unlikely to yield good results.
 - This is because we'd be throwing away a lot of valuable data, and so imputation will likely perform better.
 
 
 ### Step 2: Drop columns with missing values
 
-> preprocess the data in `X_train` and `X_valid` to remove columns with missing values. 
+> preprocess the data in `X_train` and `X_valid` to remove columns with missing values.
 > Set the preprocessed DataFrames to `reduced_X_train` and reduced_X_valid, respectively.
 
 
@@ -348,8 +348,8 @@ print(score_dataset(reduced_X_train, reduced_X_valid, y_train, y_valid))
 
 ### Step 3: Imputation
 
-> impute missing values with the mean value along each column. 
-> Set the preprocessed DataFrames to imputed_X_train and imputed_X_valid. 
+> impute missing values with the mean value along each column.
+> Set the preprocessed DataFrames to imputed_X_train and imputed_X_valid.
 > Make sure that the column names match those in `X_train` and X_valid.
 
 
@@ -372,12 +372,12 @@ print(score_dataset(imputed_X_train, imputed_X_valid, y_train, y_valid))
 ```
 
 
-thre are so few missing values in the dataset, we'd expect imputation to perform better than dropping columns entirely. 
-- However, we see that dropping columns performs slightly better! 
-- While this can probably partially be attributed to noise in the dataset, another potential explanation is that the imputation method is not a great match to this dataset. 
-- That is, maybe instead of filling in the mean value, it makes more sense to set every missing value to a value of 0, to fill in the most frequently encountered value, or to use some other method. 
-- For instance, consider the GarageYrBlt column (which indicates the year that the garage was built). It's likely that in some cases, a missing value could indicate a house that does not have a garage. 
-- Does it make more sense to fill in the median value along each column in this case? Or could we get better results by filling in the minimum value along each column? 
+thre are so few missing values in the dataset, we'd expect imputation to perform better than dropping columns entirely.
+- However, we see that dropping columns performs slightly better!
+- While this can probably partially be attributed to noise in the dataset, another potential explanation is that the imputation method is not a great match to this dataset.
+- That is, maybe instead of filling in the mean value, it makes more sense to set every missing value to a value of 0, to fill in the most frequently encountered value, or to use some other method.
+- For instance, consider the GarageYrBlt column (which indicates the year that the garage was built). It's likely that in some cases, a missing value could indicate a house that does not have a garage.
+- Does it make more sense to fill in the median value along each column in this case? Or could we get better results by filling in the minimum value along each column?
 - It's not quite clear what's best in this case, but perhaps we can rule out some options immediately - for instance, setting missing values in this column to 0 is likely to yield horrible results!
 
 
@@ -385,13 +385,13 @@ thre are so few missing values in the dataset, we'd expect imputation to perform
 
 #### Part A
 
-- Use the next code cell to preprocess the training and validation data. 
-- Set the preprocessed DataFrames to final_X_train and final_X_valid. 
+- Use the next code cell to preprocess the training and validation data.
+- Set the preprocessed DataFrames to final_X_train and final_X_valid.
 
 You can use any approach of your choosing here! in order for this step to be marked as correct, you need only ensure:
 - the preprocessed DataFrames have the same number of columns,
 - the preprocessed DataFrames have no missing values,
-- `final_X_train` and `y_train` have the same number of rows, 
+- `final_X_train` and `y_train` have the same number of rows,
 - `final_X_valid` and `y_valid` have the same number of rows.
 
 
@@ -415,7 +415,7 @@ print(mean_absolute_error(y_valid, preds_valid))
 
 #### Part B
 
-- Use the next code cell to preprocess your test data. 
+- Use the next code cell to preprocess your test data.
 - Make sure that you use a method that agrees with how you preprocessed the training and validation data, and set the preprocessed test features to final_X_test.
 
 Then, use the preprocessed test features and the trained model to generate test predictions in preds_test.

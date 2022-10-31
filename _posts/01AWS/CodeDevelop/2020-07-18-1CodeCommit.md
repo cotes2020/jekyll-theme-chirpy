@@ -47,13 +47,13 @@ With CodeCommit, you can:
      - CodeCommit repositories are auto encrypted at rest and in transit through AWS Key Management Service (AWS KMS) using customer-specific keys.
      - You can transfer your files to and from AWS CodeCommit using HTTPS or SSH, as you prefer.
    - Access Control
-     - AWS CodeCommit uses AWS Identity and Access Management to control and monitor who can access the data and how, when, and where they can access it. 
+     - AWS CodeCommit uses AWS Identity and Access Management to control and monitor who can access the data and how, when, and where they can access it.
      - CodeCommit also helps you monitor your repositories via `AWS CloudTrail and AWS CloudWatch`.
 
 
 3. <font color=red> Work collaboratively on code </font>
    - CodeCommit repositories <font color=blue> support pull requests </font>
-     - provide a mechanism to request code reviews and discuss code with collaborators. 
+     - provide a mechanism to request code reviews and discuss code with collaborators.
    - users can review and comment on each other's code changes before merging them to branches;
       - easily <font color=blue> commit, branch, and merge </font> the code to easily maintain control of team’s projects.
    - notifications that automatically send emails to users about pull requests and comments; and more.
@@ -72,26 +72,26 @@ With CodeCommit, you can:
 7. <font color=red> Easy Access and Integration </font>
    - Easily migrate files from other remote repositories.
      - migrate to CodeCommit from any Git-based repository.
-   - use the AWS Management Console, AWS CLI, and AWS SDKs to manage your repositories. 
-   - can also use Git commands or Git graphical tools to interact with your repository source files. 
-     - AWS CodeCommit supports all Git commands and works with your existing Git tools. 
+   - use the AWS Management Console, AWS CLI, and AWS SDKs to manage your repositories.
+   - can also use Git commands or Git graphical tools to interact with your repository source files.
+     - AWS CodeCommit supports all Git commands and works with your existing Git tools.
      - You can integrate with your development environment plugins or continuous integration/continuous delivery systems.
 
 
 8. <font color=red> High Availability and Durability </font>
-   - AWS CodeCommit stores your repositories in Amazon S3 and Amazon DynamoDB.  
+   - AWS CodeCommit stores your repositories in Amazon S3 and Amazon DynamoDB.
    - encrypted data is redundantly stored across multiple facilities.
    - increases the availability and durability of the repository data.
    - Unlimited Repositories
      - create as many repositories as you need
-     - up to 1,000 repositories by default and no limits upon request. 
+     - up to 1,000 repositories by default and no limits upon request.
      - You can store and version any kind of file, including application assets such as images and libraries alongside your code.
 
 
 9. Notifications and Custom Scripts
-   - receive notifications for events impacting your repositories. 
-   - Notifications will come in the form of Amazon SNS notifications. 
-   - Each notification will include a status message as well as a link to the resources whose event generated that notification. 
+   - receive notifications for events impacting your repositories.
+   - Notifications will come in the form of Amazon SNS notifications.
+   - Each notification will include a status message as well as a link to the resources whose event generated that notification.
    - Additionally, using AWS CodeCommit repository triggers, you can send notifications and create HTTP webhooks with Amazon SNS or invoke AWS Lambda functions in response to the repository events you choose.
 
 ---

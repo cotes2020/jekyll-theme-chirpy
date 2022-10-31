@@ -269,7 +269,7 @@ example:
 ```bash
 # detailed monitoring
 # The number of metrics sent by EC2 instance as detailed monitoring is dependent on the EC2 instance type
-# This example assumes 7 metrics, which covers the most commonly used instance types.  
+# This example assumes 7 metrics, which covers the most commonly used instance types.
 If application runs on 10 EC2 instances 24x7 for a 30-day month, and enable EC2 Detailed Monitoring on all instances:
 Total number of metrics: 7 metrics per instance * 10 instances = 70 metrics
 Monthly CloudWatch Metrics Charges @$0.30 per custom metric: 70 * $0.30 = $21

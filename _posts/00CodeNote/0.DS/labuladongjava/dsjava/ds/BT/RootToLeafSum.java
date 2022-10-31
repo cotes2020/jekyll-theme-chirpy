@@ -6,9 +6,9 @@ import java.util.List;
 
 
 public class RootToLeafSum {
-    
+
     public boolean issumexist(Node node, int key, List<Node> path) {
-        
+
         if (node == null) {
             return false;
         }
@@ -39,7 +39,7 @@ public class RootToLeafSum {
 
 
     public static void main(String args[]){
-        
+
         BinaryTree bt = new BinaryTree();
         Node head = null;
         head = bt.addNode(10, head);
@@ -64,7 +64,7 @@ public class RootToLeafSum {
             System.out.println("Have path for sum ");
             result.forEach(node -> System.out.print(node.data + " "));
         }else{
-            System.out.println("No path for sum "); 
+            System.out.println("No path for sum ");
         }
     }
 }

@@ -14,7 +14,7 @@ image: /assets/img/note/prisma.png
 
 [toc]
 
---- 
+---
 
 
 # Cortex SOAR Security Orchestration
@@ -58,7 +58,7 @@ an environment with applications targeted at current security operations team ne
    - These reports can be edited, customized, or created new and can help meet compliance requirements.
 
 5. Playbook and Orchestration Force Multiplier
-   - playbooks help realize a concrete benefit of orchestration.   
+   - playbooks help realize a concrete benefit of orchestration.
      - Analysts develop habits of using go-to technologies in their workflows.
      - These habits exclude other technologies that may be available to the SOC.
      - Cortex XSOAR can tie all these technologies together with a single command or task.
@@ -103,7 +103,7 @@ an environment with applications targeted at current security operations team ne
 
 **Business Use Cases**
 - `MTTRs` (reduce customers' mean time to response) and `SLAs` (achieve their service level agreements).
-- Customers commonly have security SLAs with no specific tools to implement them. The SLA discussion can be productive when it moves to how Cortex XSOAR enforces SLAs at the task and playbook level.  
+- Customers commonly have security SLAs with no specific tools to implement them. The SLA discussion can be productive when it moves to how Cortex XSOAR enforces SLAs at the task and playbook level.
 - Orchestration, automation, and incident management are all good discussions around MTTR.
 
 
@@ -301,7 +301,7 @@ Cortex XSOAR provides a comprehensive, end-to-end treatment of incidents by secu
     - can show different pages for `Phishing incidents vs. Cortex XDR Prevent incidents vs. SIEM correlations`.
     - can add or remove fields, define custom fields, and remove, add, or reorder sections on the page.
     - We can also build views that show things beyond data in incident fields.
-    - For example, we can show such things as a visualization of a database lookup.  
+    - For example, we can show such things as a visualization of a database lookup.
 
 - Response
   - Cortex XSOAR works with products that enforce and provide response actions such as Cortex XDR and next-generation firewalls.
@@ -315,7 +315,7 @@ Cortex XSOAR provides a comprehensive, end-to-end treatment of incidents by secu
 
 - self-documenting procedures that query, analyze, and perform other actions on incidents using the information associated with those incidents.
 - organize and document security monitoring orchestration and response activities for Cortex XSOAR.
-- Playbooks for common investigation scenarios, such as phishing, come out-of-the-box and customers can create their own playbooks.  
+- Playbooks for common investigation scenarios, such as phishing, come out-of-the-box and customers can create their own playbooks.
 
 - **Playbooks and Tasks**
   - Playbooks comprise of tasks that each perform a specific action.

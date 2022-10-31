@@ -13,7 +13,7 @@ image:
 
 
 # Template - Nested Stack
- 
+
 
 ```json
 // root.json
@@ -22,7 +22,7 @@ image:
     "Resources" : {
         "myStack" : {
 	       "Type" : "AWS::CloudFormation::Stack",
-	       "Properties" : { 
+	       "Properties" : {
               "TemplateURL" : "https://s3.amazonaws.com/stacker730/noretain.json",
               "TimeoutInMinutes" : "60"
 	       }
@@ -55,7 +55,7 @@ image:
                "TemplateURL" : "https://s3.amazonaws.com/stacker730/noretain.json",
                "TimeoutInMinutes" : "60"
             }
-         }    
+         }
     }
 }
 ```

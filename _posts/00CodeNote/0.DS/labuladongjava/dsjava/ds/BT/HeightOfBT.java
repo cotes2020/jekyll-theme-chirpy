@@ -25,6 +25,6 @@ public class HeightOfBT {
         head = bt.addNode(-1, head);
         head = bt.addNode(21, head);
         System.out.println(bt.height(head));
-        
+
     }
 }

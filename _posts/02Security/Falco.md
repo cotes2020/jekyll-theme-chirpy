@@ -22,7 +22,7 @@
 
 - 开源云原生运行时安全工具
 - 事实上也是Kubernetes威胁检测引擎。
-  
+
 - 是一种旨在检测异常活动的系统行为监控程序。
 
 - 是一种开源的审计工具，
@@ -192,7 +192,7 @@ kafka:
 
 ![t010e47727cebe5ca9b](https://i.imgur.com/3WT8nRV.jpg)
 
- 
+
 
 
 ---
@@ -223,7 +223,7 @@ yum -y install falco
 ### 批量部署&更新规则
 
 - 批量部署和更新规则
-- 可以使用saltstack 或者 ansible 下发对应shell脚本来完成 
+- 可以使用saltstack 或者 ansible 下发对应shell脚本来完成
 
 批量部署
 

@@ -13,13 +13,13 @@ image:
 
 
 # Template - setup S3_Website_Bucket_With_No_Retain_On_Delete
- 
+
 S3_Website_Bucket_With_No_Retain_On_Delete:
-- create a publicly accessible S3 bucket configured for website access 
+- create a publicly accessible S3 bucket configured for website access
 - with no deletion policy
 
 
-**WARNING** This template creates an S3 bucket that will be deleted when the stack is deleted.  
+**WARNING** This template creates an S3 bucket that will be deleted when the stack is deleted.
 
 
 ```json
@@ -79,10 +79,10 @@ S3_Website_Bucket_With_No_Retain_On_Delete:
 # Template - setup S3_Website_Bucket_With_Retain_On_Delete
 
 S3_Website_Bucket_With_Retain_On_Delete:
-- create a publicly accessible S3 bucket configured for website access 
+- create a publicly accessible S3 bucket configured for website access
 - with a deletion policy of retail on delete.
 
-**WARNING** This template creates an S3 bucket that will NOT be deleted when the stack is deleted.  
+**WARNING** This template creates an S3 bucket that will NOT be deleted when the stack is deleted.
 
 
 ```yaml
@@ -105,15 +105,15 @@ Resources:
     DeletionPolicy: Retain
 Outputs:
   WebsiteURL:
-    Value: !GetAtt 
+    Value: !GetAtt
       - S3Bucket
       - WebsiteURL
     Description: URL for website hosted on S3
   S3BucketSecureURL:
-    Value: !Join 
+    Value: !Join
       - ''
       - - 'https://'
-        - !GetAtt 
+        - !GetAtt
           - S3Bucket
           - DomainName
     Description: Name of S3 bucket to hold website content

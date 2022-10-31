@@ -16,7 +16,10 @@
 # print (list(enumerate(l1)))
 
 
-# ======================== Python 
+# ======================== Python
+from typing import List
+
+
 def twoSum(nums, target):
     """
     :type nums: List[int]
@@ -34,14 +37,13 @@ def twoSum(nums, target):
     ans = {}
     # for every num
     # [(0, 'eat'), (1, 'sleep'), (2, 'repeat')]
-    for i , num in list(enumerate(nums)):
+    for i, num in list(enumerate(nums)):
         if num in ans.keys():
             return [ans[num], i]
         # the other part
         ans[target-num] = i
 
 
-from typing import List
 def twoSum(nums: List[int], target: int) -> List[int]:
     hashmap = {}
     for idx, value in enumerate(nums):
@@ -53,8 +55,6 @@ def twoSum(nums: List[int], target: int) -> List[int]:
 nums = [2, 7, 11, 15]
 target = 9
 print(twoSum(nums=nums, target=target))
-
-
 
 
 # # ---------------------- solution java   Approach 1: Brute Force  ----------------------
@@ -97,8 +97,6 @@ print(twoSum(nums=nums, target=target))
 # # Space complexity : O(1)O(1).
 
 
-
-
 # # ---------------------- solution java   Approach 2: Two-pass Hash Table  ----------------------
 # A hash table.
 # more efficient way to check if the complement exists in the array.
@@ -128,7 +126,6 @@ print(twoSum(nums=nums, target=target))
 # Memory Usage: 39.4 MB, less than 77.83% of Java online submissions for Two Sum.
 
 
-
 # Approach 3: One-pass Hash Table
 # It turns out we can do it in one-pass. While we iterate and inserting elements into the table, we also look back to check if current elements complement already exists in the table. If it exists, we have found a solution and return immediately.
 
@@ -152,8 +149,6 @@ print(twoSum(nums=nums, target=target))
 # Space complexity : O(n). The extra space required depends on the number of items stored in the hash table, which stores at most nn elements.
 
 
-
-
 # Java 8, only 3ms runtime (99.94% faster than all submissions):
 #
 # class Solution {
@@ -172,15 +167,6 @@ print(twoSum(nums=nums, target=target))
 # }
 
 
-
-
-
-
-
-
-
-
-
 # # ---------------------- solution py ----------------------
 # class Solution(object):
 #     def twoSum(nums, target):
@@ -196,10 +182,6 @@ print(twoSum(nums=nums, target=target))
 # Memory Usage: 14.1 MB, less than 5.13% of Python online submissions for Two Sum.
 
 
-
-
-
-
 # # ---------------------- solution py ----------------------
 # enumerate(), (index, value) 阅过放入dic
 # 在看目标结果是否已在dic里,
@@ -213,10 +195,6 @@ print(twoSum(nums=nums, target=target))
 #                 a[num] = index
 # # Runtime: 28 ms, faster than 98.66% of Python online submissions for Two Sum.
 # # Memory Usage: 14.2 MB, less than 5.13% of Python online submissions for Two Sum.
-
-
-
-
 
 
 # # ---------------------- solution py ----------------------
@@ -244,12 +222,8 @@ print(twoSum(nums=nums, target=target))
 #         return []
 
 
-
-
 # if __name__ == '__main__':
 #     # begin
 #     s = Solution()
 #     # print(s.twoSum([2, 7, 11, 15], 9))
 #     print(s.twoSum([3,2,4], 6))
-
-

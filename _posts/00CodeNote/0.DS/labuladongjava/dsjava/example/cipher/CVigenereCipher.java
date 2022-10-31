@@ -1,6 +1,6 @@
 
 
-public class CVigenereCipher { 
+public class CVigenereCipher {
 
     // convert the lower case character to Upper case
     static String LowerToUpper(String s) {
@@ -14,14 +14,14 @@ public class CVigenereCipher {
         return s;
     }
 
-    // generates the key in a cyclic manner until 
+    // generates the key in a cyclic manner until
     // it's length is equal to the length of original text
     // ABCABCABC
     static String generateKey(String str, String key) {
         int x = str.length();
         int i=0;
-        while(key.length() != str.length()) { 
-            if (x == i) i = 0; 
+        while(key.length() != str.length()) {
+            if (x == i) i = 0;
             key+=(key.charAt(i++));
         }
         return key;
@@ -33,9 +33,9 @@ public class CVigenereCipher {
         String cipher_text="";
         for (int i = 0; i < str.length(); i++) {
             // converting in range 0-25
-            int x = (str.charAt(i) + key.charAt(i)) %26; 
+            int x = (str.charAt(i) + key.charAt(i)) %26;
             // convert into alphabets(ASCII)
-            x += 'A'; 
+            x += 'A';
             cipher_text+=(char)(x);
         }
         return cipher_text;
@@ -59,7 +59,7 @@ public class CVigenereCipher {
     public static void main(String[] args) {
         String Str = "GEEKSFORGEEKS";
         String Keyword = "AYUSH";
-        
+
         String str = LowerToUpper(Str);
         String keyword = LowerToUpper(Keyword);
 

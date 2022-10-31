@@ -22,11 +22,11 @@ Resource Link: https://www.coursera.org/learn/java-programming-recommender/suppl
 ---
 
 The class <kbd>Movie</kbd>
-- a Plain Old Java Object (POJO) class for storing the data about one movie. 
+- a Plain Old Java Object (POJO) class for storing the data about one movie.
 - It includes the following items:
   - Eight `private variables` to represent information about a movie
   - A `constructor` with eight parameters to initialize the private variables
-  - Eight `getter` methods to return the private information 
+  - Eight `getter` methods to return the private information
     - such as the method `getGenres`: returns a String of all the genres for this movie.
   - A `toString` method: represent movie information as a String for easy print.
 
@@ -95,11 +95,11 @@ public class Movie {
 ```
 
 The class <kbd>Rating</kbd>
-- POJO class for storing the data about one rating of an item. 
+- POJO class for storing the data about one rating of an item.
 - It includes
   - Two `private variables` to represent information about a rating:
   - A `constructor` with two parameters to initialize the private variables.
-  - Two `getter` methods 
+  - Two `getter` methods
     - `getItem`
     - `getValue`
   - A `toString` method: represent rating information as a String.
@@ -137,25 +137,25 @@ public class Rating implements Comparable<Rating> {
 
 
 The class <kbd>Rater</kbd>
-- keeps track of one rater and all their ratings. 
+- keeps track of one rater and all their ratings.
 - This class includes:
   - Two `private variables`:
   - A `constructor` with one parameter of the ID for the rater.
   - A method `addRating`
-    - two parameters, a String named item, a double named rating. 
+    - two parameters, a String named item, a double named rating.
     - A new Rating is created and added to myRatings.
   - A method `getID`
     - no parameters
     - get the ID of the rater.
   - A method `getRating`
     - one parameter item.
-    - returns the double rating of this item if it is in myRatings. 
+    - returns the double rating of this item if it is in myRatings.
     - Otherwise this method returns -1.
   - A method `numRatings`
     - returns the number of ratings this rater has.
   - A method `getItemsRated`
     - no parameters.
-    - returns an ArrayList of Strings representing a list of all the items that have been rated. 
+    - returns an ArrayList of Strings representing a list of all the items that have been rated.
 
 
 ```java
@@ -262,8 +262,8 @@ import org.apache.commons.csv.*;
 public class FirstRatings{
 
 
-// 1. Write a method named loadMovies 
-// has one parameter, a String named filename. 
+// 1. Write a method named loadMovies
+// has one parameter, a String named filename.
 // process every record from the CSV file whose name is filename, a file of movie information, and return an ArrayList of type Movie with all of the movie data from the file.
 
     // loadMovies -> movieData [Movie, Movie, Movie, Movie, ...]
@@ -285,7 +285,7 @@ public class FirstRatings{
                 movieData.add(temp);
                 // System.out.println(temp);
             }
-        } 
+        }
         catch(Exception ioe) {
             System.out.println("IOException caught");
         }
@@ -294,8 +294,8 @@ public class FirstRatings{
 
 
 // 2. Write a void method named testLoadMovies
-// Call the method loadMovies on the file and store the result in an ArrayList local variable. Print the number of movies, and print each movie. 
-// 5 movies in ratedmovies_short.csv . 
+// Call the method loadMovies on the file and store the result in an ArrayList local variable. Print the number of movies, and print each movie.
+// 5 movies in ratedmovies_short.csv .
 // 3143 movies in ratedmoviesfull.csv.
 // Add code to determine how many movies include the Comedy genre. (ratedmovies_short.csv, there is only one.)
 // Add code to determine how many movies are greater than 150 minutes in length. (ratedmovies_short.csv, there are two.)
@@ -339,7 +339,7 @@ public class FirstRatings{
                 }
                 mNum = dmap.get(dname) > mNum? dmap.get(dname):mNum;
             }
-        }         
+        }
         for(String dname : dmap.keySet()) {
             if(dmap.get(dname) == mNum) {
                 directorsWithMaxMovies.add(dname);
@@ -366,9 +366,9 @@ public class FirstRatings{
 
 
 // 3. write a method named loadRaters
-// has one parameter named filename. 
+// has one parameter named filename.
 // process every record from the CSV file whose name is filename, a file of raters and their ratings
-// return an ArrayList of type Rater with all the rater data from the file. 
+// return an ArrayList of type Rater with all the rater data from the file.
 
     // -> raterData [Rater, Rater, Rater, ...]
     // -> raterList [String: [Rating, Rating, Rating], String: [Rating, Rating, Rating], ...]
@@ -388,7 +388,7 @@ public class FirstRatings{
                 double ratingValue = Double.parseDouble(csvr.get("rating"));
                 String raterID = csvr.get("rater_id");
                 Rating tempRating = new Rating(ratingItem, ratingValue);
-                
+
                 // System.out.println(raterID);
                 if(raterList.containsKey(raterID)){
                     // System.out.println("has");
@@ -417,15 +417,15 @@ public class FirstRatings{
 
 
 // Write a void method named testLoadRaters
-// Call the method loadRaters on the file ratings_short.csv and store the result in a local ArrayList variable. Print the total number of raters. Then for each rater, print the rater’s ID and the number of ratings they did on one line, followed by each rating (both the movie ID and the rating given) on a separate line. 
+// Call the method loadRaters on the file ratings_short.csv and store the result in a local ArrayList variable. Print the total number of raters. Then for each rater, print the rater’s ID and the number of ratings they did on one line, followed by each rating (both the movie ID and the rating given) on a separate line.
 // (ratings_short.csv, five raters; ratings.csv, 1048 raters)
-// Add code to find the number of ratings for a particular rater you specify in your code. For example, if you run this code on the rater whose rater_id is 2 for the file ratings_short.csv, you will see they have three ratings. 
+// Add code to find the number of ratings for a particular rater you specify in your code. For example, if you run this code on the rater whose rater_id is 2 for the file ratings_short.csv, you will see they have three ratings.
 
 // Add code to find the maximum number of ratings by any rater. Determine how many raters have this maximum number of ratings and who those raters are. If you run this code on the file ratings_short.csv, you will see rater 2 has three ratings, the maximum number of ratings of all the raters, and that there is only one rater with three ratings.
 
 // Add code to find the number of ratings a particular movie has. If you run this code on the file ratings_short.csv for the movie “1798709”, you will see it was rated by four raters.
 
-// Add code to determine how many different movies have been rated by all these raters. If you run this code on the file ratings_short.csv, you will see there were four movies rated. 
+// Add code to determine how many different movies have been rated by all these raters. If you run this code on the file ratings_short.csv, you will see there were four movies rated.
 
     // -> raterData [Rater, Rater, Rater, ...]
     // -> raterList [String: [Rating, Rating, Rating], String: [Rating, Rating, Rating], ...]

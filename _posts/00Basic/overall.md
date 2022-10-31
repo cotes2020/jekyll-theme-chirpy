@@ -1,5 +1,5 @@
 ---
-title: Cloud - Service from Third party Cloud Provider 
+title: Cloud - Service from Third party Cloud Provider
 date: 2021-01-11 11:11:11 -0400
 categories: [00Basic]
 tags: [AWS, Cloud, Ali, GCP]
@@ -29,7 +29,7 @@ image:
 
 ---
 
-# Service from Third party Cloud Provider 
+# Service from Third party Cloud Provider
 
 ---
 
@@ -81,7 +81,7 @@ Databases
   - PolarDB for Oracle
   - PolarDB for PostgreSQL
   - PolarDB-X
-  - [x] ApsaraDB for RDS 
+  - [x] ApsaraDB for RDS
   - ApsaraDB for OceanBase
   - ApsaraDB for MyBase
   - ApsaraDB for Lindorm (in invitational preview)
@@ -245,9 +245,9 @@ IoT
   - Link IoT Edge
 
 
-## Enterprise Applications and Services 
+## Enterprise Applications and Services
 
-Enterprise Applications and Services 
+Enterprise Applications and Services
 - Enterprise Applications and Services - Ali
 - CloudQuotation
 - ICP Filing

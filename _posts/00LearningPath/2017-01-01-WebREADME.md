@@ -28,8 +28,8 @@ Path: `https://github.com/ocholuo/language/tree/master/0.project/webdemo/`
 - Change every pixel <br> <img src="/assets/img/webdemoimage/demo-DLTP-MiniProject.png" width="150" alt="DLTP-MiniProject"> <br> <img src="/assets/img/webdemoimage/demo-dogrey.png" width="150" alt="dogrey"> <img src="/assets/img/webdemoimage/demo-dored.png" width="150" alt="dored"> <br> <img src="/assets/img/webdemoimage/demo-dorainbow.png" width="150" alt="dorainbow"> <img src="/assets/img/webdemoimage/demo-doblur.png" width="150" alt="doblur"> | .
 [DLTP-GreenScreenWeb](https://github.com/ocholuo/language/tree/master/0.project/jsdemo/1.0-DLTP-GreenScreenWeb) - 200830 | ✔️
 - Exchange every pixel <br> <img src="/assets/img/webdemoimage/demo-GreenScreen1.png" width="300" alt="GreenScreen1"> <br> <img src="/assets/img/webdemoimage/demo-GreenScreen2.png" width="300" alt="GreenScreen1"> | .
-[DLTP-Practise](https://github.com/ocholuo/language/tree/master/0.project/jsdemo/1.0-DLTP-Practise) - 200830 | ✔️ 
-[DLTP-Steganography](https://github.com/ocholuo/language/tree/master/0.project/jsdemo/1.0-DLTP-Steganography) - 200830 | ✔️ 
+[DLTP-Practise](https://github.com/ocholuo/language/tree/master/0.project/jsdemo/1.0-DLTP-Practise) - 200830 | ✔️
+[DLTP-Steganography](https://github.com/ocholuo/language/tree/master/0.project/jsdemo/1.0-DLTP-Steganography) - 200830 | ✔️
 - for base image, only take first 4 digit <br> - `pixel.setRed`(clearbitsforbasepixel(`pixel.getRed()`)) <br> - `return var clearnum =  Math.floor(colornum/16)*16` <br> - for hide image, only take first 4 digit <br> - `pixel.setRed`(clearbitsforhidepixel(`pixel.getRed()`)) <br> - `return var clearnum =  Math.floor(colornum/16)` <br> - then combine(baseimg, hideimg) <br> - `pixel.setBlue(bp.getBlue() + hp.getBlue())` <br> <img src="https://i.imgur.com/7er13Ts.png" width="300" alt="GreenScreen1"> | .
 
 ---
@@ -44,7 +44,7 @@ Path: `https://github.com/ocholuo/language/tree/master/0.project/webdemo/`
 <img src="/assets/img/webdemoimage/demo-mywebsite.jpg" width="300" alt="mywebsite"> |
 [css cheat sheet](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0csscheatsheet)| ✔️ |
 <img src="/assets/img/webdemoimage/demo-csscheatsheet.png" width="300" alt="csscheatsheet"> |
-[Number Guess Game](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0NumberGuessGame)  | ✔️ |        
+[Number Guess Game](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0NumberGuessGame)  | ✔️ |
 <img src="/assets/img/webdemoimage/demo-NumberGuessGame.png" width="300" alt="NumberGuessGame"> |
 [Silly Story Generator](https://github.com/ocholuo/language/tree/master/0.project/webdemo/0.0SillyStoryGenerator)| ✔️ |
 <img src="/assets/img/webdemoimage/demo-SillyStoryGenerator.png" width="300" alt="SillyStoryGenerator"> |

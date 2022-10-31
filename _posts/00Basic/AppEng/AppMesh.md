@@ -45,7 +45,7 @@ toc: true
 ---
 
 
-## basic  
+## basic
 
 - distributed systems enable lots use cases, but also introduce all sorts of new issues.
 
@@ -113,7 +113,7 @@ from a few larger central computers to hundreds and thousands of small services
 
   - For a while, it was expected that the people `building networked services and applications would deal with the challenges` presented above.
     - In our flow control example, it meant that the application itself had to contain logic to make sure we did not overload a service with packets.
-    - This networking-heavy logic sat side by side with your business logic.  
+    - This networking-heavy logic sat side by side with your business logic.
 
 
 ---

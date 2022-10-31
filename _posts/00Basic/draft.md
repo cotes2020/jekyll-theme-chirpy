@@ -224,7 +224,7 @@ outgoing email to detect and block unauthorized data transfers, and monitor data
   - A buffer zone between the Internet and an internal network. Internet clients can access the services hosted
 on servers in the DMZ, but the DMZ provides a layer of protection for the internal network.
 
-- **DNS**  
+- **DNS**
   - Domain Name System.
   - A service used to resolve host names to IP addresses. DNS zones include records such as A records for IPv4 addresses and AAAA records for IPv6 addresses.
 
@@ -9530,7 +9530,7 @@ This example tested connectivity with an IP address in a local network, but you 
   - malware changes the **name resolution process** to prevent systems from reaching the Windows Update server and getting updates.
 
 
-can ping the host name of a remote system and verify that name resolution is working.  
+can ping the host name of a remote system and verify that name resolution is working.
 
 ```bash
 ping getcertifiedgetahead.com

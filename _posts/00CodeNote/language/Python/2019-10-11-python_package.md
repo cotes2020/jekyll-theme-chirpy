@@ -36,7 +36,7 @@ mypackage/
 def as_int(a):
     return int(a)
 
-# Test function for module  
+# Test function for module
 def _test():
     assert as_int('1') == 1
 
@@ -73,7 +73,7 @@ from .mymodule import as_int
 def add(a, b):
     return as_int(a) + as_int(b)
 
-# Test function for module  
+# Test function for module
 def _test():
     assert add('1', '1') == 2
 
@@ -91,7 +91,7 @@ solution:
   - would be to avoid using relative imports, and just use...
   - `from mymodule import as_int`
 
-- if it's not unique, or your package structure is more complex, 
+- if it's not unique, or your package structure is more complex,
   - include the directory containing your package directory in PYTHONPATH, and do it like this...
   - `from mypackage.mymodule import as_int`
 

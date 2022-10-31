@@ -97,9 +97,9 @@ image:
          - A namespace contains the CloudWatch metric that you want, for example, AWS/EC2.
        - Metric:
          - the variable you want to measure, for example, CPU Utilization.
-       - Statistic:  
+       - Statistic:
          - can be an average, sum, minimum, maximum, sample count, a predefined percentile, or a custom percentile.
-       - Period:  
+       - Period:
          - the evaluation period for the alarm.
          - When the alarm is evaluated, each period is aggregated into one data point.
        - Conditions:
@@ -132,7 +132,7 @@ image:
 9.  Alarms and action
     - key components of a CloudWatch alarm
       - 3 states:
-        - insufficient: 
+        - insufficient:
           - no enough data to judge the state
           - alarms are often start in this state
         - alarm
@@ -147,7 +147,7 @@ image:
           - metric math expression
       - <font color=blue> metrics </font>
         - measured data points over time.
-      - <font color=blue> action </font>  
+      - <font color=blue> action </font>
         - action can produce an email or even work in conjunction with Auto Scaling groups.
       - <font color=blue> period </font> :
          - period is related to its threshold.
@@ -160,7 +160,7 @@ image:
         - automatically send notification to an Simple Notification Service (Amazon SNS) topic
         - triggers or perform an EC2 Auto Scaling in or out or EC2 action based on metrics
         - create alarm to monitor any Amazon CloudWatch metric in account
-        - terminate, reboot, or recover an EC2 instance  
+        - terminate, reboot, or recover an EC2 instance
     - <font color=blue> create alarms on </font>
       - the CPU utilization of an EC2 instance,
       - Elastic Load Balancing request latency,

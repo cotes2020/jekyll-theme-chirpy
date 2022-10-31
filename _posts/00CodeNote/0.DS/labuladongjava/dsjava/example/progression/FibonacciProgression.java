@@ -11,9 +11,9 @@ public class FibonacciProgression extends Progression {
     public FibonacciProgression(long fir_num ,long sec_num) {
         super(fir_num);
         pre = sec_num - fir_num;
-    } 
+    }
 
-    // /∗∗ Advances the current value to the next value of the progression. ∗/ 
+    // /∗∗ Advances the current value to the next value of the progression. ∗/
     protected void advance() {
         long temp = pre;
         pre = current;

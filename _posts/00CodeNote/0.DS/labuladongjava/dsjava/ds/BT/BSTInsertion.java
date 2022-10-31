@@ -14,7 +14,7 @@ public class BSTInsertion {
 
         Node parent = null;
         Node current = root;
-        
+
         while (current != null) {
             parent = current;
             if (data < parent.data) {

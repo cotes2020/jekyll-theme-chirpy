@@ -19,22 +19,22 @@ toc: true
 # Autonomous System (AS)
 
 `AS` autonomous system 自治系統
-- a network under a single administrative control. 
-- Assumes the Internet is an arbitrarily interconnected set of AS's. 
-  - **local traffic**: traffic that `originates at or terminates on nodes within an AS` 
+- a network under a single administrative control.
+- Assumes the Internet is an arbitrarily interconnected set of AS's.
+  - **local traffic**: traffic that `originates at or terminates on nodes within an AS`
   - **transit traffic**: traffic that `passes through an AS`.
 
 classify AS's into 3 types:
-- **Stub AS**: 
-  - an AS that has only a single connection to one other AS; 
-  - such an AS will only carry local traffic 
+- **Stub AS**:
+  - an AS that has only a single connection to one other AS;
+  - such an AS will only carry local traffic
   - (small corporation)
-- **Multihomed AS**: 
-  - an AS that has connections to more than one other AS, but refuses to carry transit traffic 
+- **Multihomed AS**:
+  - an AS that has connections to more than one other AS, but refuses to carry transit traffic
   - (large corporation at the top)
-- **Transit AS**: 
-  - an AS that has connections to more than one other AS, 
-  - and is designed to carry both transit and local traffic 
+- **Transit AS**:
+  - an AS that has connections to more than one other AS,
+  - and is designed to carry both transit and local traffic
   - (backbone providers)
 
 
@@ -48,8 +48,8 @@ classify AS's into 3 types:
 
 - 各個路由器扮演的角色 
   - `Backbone Area` 中:
-    - `Autonomous System Boundary Router (ASBR)` 
-      - 自治系統邊界router. 
+    - `Autonomous System Boundary Router (ASBR)`
+      - 自治系統邊界router.
       - 用來連接外部路由網域和自治系統。 
       - OSPF: Backbone Router.
       - IS-IS: L2 Router。
@@ -65,11 +65,11 @@ classify AS's into 3 types:
     - IS-IS: L1/L2 Routers。
 
 自治系統編號 
-- 分辨不同的自治系統 
+- 分辨不同的自治系統
   - 透過 `自治系統編號(ASN)` 來區別。
   - 世界上多個組織可以使用自己私有的自治系統編號，以便於和他們的ISP業者之間透過BGP協定連線，
-- 因此，自治系統編號又分為: 
-  - 私有的自治系統編號, 
+- 因此，自治系統編號又分為:
+  - 私有的自治系統編號,
   - 公有並透過註冊之後的自治系統編號.
 - 每個ISP業者必須登記公開至少一個ASN，用於BGP協定。
   - ASN極重要，是等一下用於路由協定設定時辨識自治系統的重要條件, 是識別各個網路的指標。 
@@ -82,31 +82,31 @@ classify AS's into 3 types:
 ---
 
 
-# Different Routing Protocols 
+# Different Routing Protocols
 
 ---
 
-## Interior vs Exterior Gateway Protocols 
+## Interior vs Exterior Gateway Protocols
 
 Routing protocols can categorized based on the scope of their operation:
 
-- **Interior Gateway Protocols (IGP)** 
+- **Interior Gateway Protocols (IGP)**
   - operate within an autonomous system (AS)
-  - used to `exchange routing information`. 
+  - used to `exchange routing information`.
     - Link-state routing protocols: OSPF, IS-IS
-    - Distance-vector routing protocols: RIPv1, RIPv2, IGRP, EIGRP, 
+    - Distance-vector routing protocols: RIPv1, RIPv2, IGRP, EIGRP,
 
-- **Exterior Gateway Protocols (EGP)** 
-  - operate between autonomous systems. 
+- **Exterior Gateway Protocols (EGP)**
+  - operate between autonomous systems.
   - Used for `exchanging routing information between autonomous systems`.
-    - BGP (Border Gateway Protocol) , 
-    - path vector routing protocol, 
+    - BGP (Border Gateway Protocol) ,
+    - path vector routing protocol,
 
 > example:
 - `R1 and R2` are in one AS (AS 65002).
-- `R3 and R4` are in one AS (AS 65003). 
-- `router ISP1` is a router in a separate autonomous system (AS 65001), run by a service provider. 
-- **EGP Border Gateway Protocol** is used to exchange routing information between the service provider’s AS and each of the other autonomous systems. 
+- `R3 and R4` are in one AS (AS 65003).
+- `router ISP1` is a router in a separate autonomous system (AS 65001), run by a service provider.
+- **EGP Border Gateway Protocol** is used to exchange routing information between the service provider’s AS and each of the other autonomous systems.
 
 
 

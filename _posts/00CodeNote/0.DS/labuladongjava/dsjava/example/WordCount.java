@@ -1,5 +1,5 @@
 package map;
- 
+
 import java.util.Map;
 import java.util.Scanner;
 
@@ -19,10 +19,10 @@ public class WordCount {
         for(Entry<Sting, Integer> ent : freq.entrySet()){
             if(ent.getValue()>maxCount){
                 maxWord = ent.getKet();
-                maxCount = ent.getValue(); 
-            } 
+                maxCount = ent.getValue();
+            }
         }
         System.out.print("The most frequent word is '" + maxWord);
-        System.out.println("' with " + maxCount + " occurrences."); 
+        System.out.println("' with " + maxCount + " occurrences.");
     }
 }

@@ -29,7 +29,7 @@ image:
     - [Applying access levels](#applying-access-levels)
     - [Enabling device trust and security with Endpoint Verification](#enabling-device-trust-and-security-with-endpoint-verification)
 
---- 
+---
 
 # Zero-trust BeyondCorp
 
@@ -100,7 +100,7 @@ change security posture
     - Strong phishing-resistant authentication to ensure that users are who they say they are.
   - all built into the Chrome Browser with no agents required.
   - real-time alerts
-    - Continuous authorization for every interaction between a user and a BeyondCorp-protected resource.  
+    - Continuous authorization for every interaction between a user and a BeyondCorp-protected resource.
     - End-to-end security from user to app and app to app (including microsegmentation) inspired by the BeyondProd architecture.
     - Automated public trust SSL certificate lifecycle management for internet-facing BeyondCorp endpoints powered by Google Trust Services.
 
@@ -167,7 +167,7 @@ When to use
 - manage access for apps on Google Cloud, other clouds, and on-premises,
 - define and enforce access policies based on user, device, and other contextual factors,
 - and make apps more accessible and responsive through Google's global network.
-- can also apply BeyondCorp Enterprise to Google Workspace apps.  
+- can also apply BeyondCorp Enterprise to Google Workspace apps.
 
 
 Common use cases
@@ -280,7 +280,7 @@ BeyondCorp Enterprise works by leveraging four Google Cloud offerings:
     - The end result is an inventory of all the corporate and personal devices accessing your corporate resources.
   - Once enabled through the Google Workspace Admin Console
     - deploy the Endpoint Verification Chrome extension to corporate devices.
-    - Employees can also install it on their managed, personal devices.  
+    - Employees can also install it on their managed, personal devices.
   - The attributes collected can be used by Access Context Manager to control access to Google Cloud and Google Workspace resources.
 
 ![Screen Shot 2021-02-15 at 15.18.56](https://i.imgur.com/uJdAtls.png)
@@ -316,7 +316,7 @@ BeyondCorp Enterprise works by leveraging four Google Cloud offerings:
     - for your Google Cloud resources accessed by HTTPS and SSH/TCP traffic.
   - establish a <font color=blue> resource-level access control model </font>
     - grant members access to your HTTPS apps and resources.
-    - instead of relying on network-level firewalls.  
+    - instead of relying on network-level firewalls.
   - enables employees to access corporate apps and resources from untrusted networks without the use of a VPN.
     - Once secured, resources are accessible to any employee, from any device, on any network, that meets the access rules and conditions.
   - Extended BeyondCorp Enterprise resources can limit access based on properties
@@ -406,7 +406,7 @@ BeyondCorp Enterprise works by leveraging four Google Cloud offerings:
 - use the investigation tool to learn more about alert notifications.
 
 View the Rules audit log
-- Use the Rules audit log to track user attempts to share sensitive data.  
+- Use the Rules audit log to track user attempts to share sensitive data.
 - The Rules audit log tracks Device ID and Device Type audit data types for BeyondCorp-related events.
 
 View security dashboard reports
@@ -451,7 +451,7 @@ Secure the Google Cloud app and all its resources by selecting one of the follow
 - App Engine standard and flexible environment
 - Compute Engine
 - Google Kubernetes Engine
-- extend IAP to non-Google Cloud environments like on-premises as well as other clouds.  
+- extend IAP to non-Google Cloud environments like on-premises as well as other clouds.
 
 
 #### Virtual machine resources

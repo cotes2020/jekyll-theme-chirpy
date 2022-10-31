@@ -5,7 +5,7 @@ package BT;
 // time O(n)
 
 public class SameBT {
-    
+
     public boolean sameBT(Node root1, Node root2) {
         if (root1 == null && root2 == null) {
             return true;
@@ -30,7 +30,7 @@ public class SameBT {
         root2 = bt.addNode(20, root2);
         root2 = bt.addNode(15, root2);
         root2 = bt.addNode(2, root2);
-        
+
         SameBT st = new SameBT();
         assert st.sameBT(root1, root2);
     }

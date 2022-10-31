@@ -2,8 +2,8 @@
 title: Meow's Testing Tools - Windows Server 2012 Management Tools
 # author: Grace JyL
 date: 2019-09-17 11:11:11 -0400
-description: 
-excerpt_separator: 
+description:
+excerpt_separator:
 categories: [10CyberAttack, CyberAttackTools]
 tags: [CyberAttack, CyberAttackTools]
 math: true
@@ -40,7 +40,7 @@ network.
 
 /ALL                  Displays all the shares including the $ shares
 
-/domain[:DomainName]  Specifies the domain for which you want to view the available computers. 
+/domain[:DomainName]  Specifies the domain for which you want to view the available computers.
                       If you omit DomainName, /domain displays all of the domains in the network.
 
 ```
@@ -48,17 +48,17 @@ network.
 
 ```c
 
-net view 
-- returns the computers in the current domain or network. 
+net view
+- returns the computers in the current domain or network.
 - only show computers that have file and printer sharing enabled.
 
-net view /all 
+net view /all
 - shows all shares available, including administrative shares like C$ and admin$
 
-net view /domain:contoso.com 
+net view /domain:contoso.com
 - list all of the sharing computers in the contoso.com domain
 
-net view /all /domain 
+net view /all /domain
 - shows all shares (regular and administrative) in the domain
 
 net localgroup "administrator”
@@ -138,7 +138,7 @@ The command completed successfully
 
 nltest /domain_trusts /all_trusts
 
-nltest /domain_trusts 
+nltest /domain_trusts
 List of domain trusts:
     0: forthcoffee forthcoffee.com (NT 5) (Forest Tree Root) (Primary Domain)
 The command completed successfully

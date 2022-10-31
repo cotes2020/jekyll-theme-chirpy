@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class StackOverFlow {
 
-    static Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>(); 
+    static Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
 
     static int[] parent = new int[100];
     static boolean[] visited = new boolean[100];
@@ -28,7 +28,7 @@ public class StackOverFlow {
                 if(s == nodeb) {
                     loop= false;
                     break;
-                } 
+                }
                 q.add(s);
             }
         }
@@ -50,7 +50,7 @@ public class StackOverFlow {
         for (int i = 0; i < childs.size(); i++) {
             if( !visited[childs.get(i)] ) return childs.get(i);
         }
-        return null; 
+        return null;
     }
 
 
@@ -62,14 +62,14 @@ public class StackOverFlow {
         for (int i=1; i<=n; i++) {
             List<Integer> l1= new ArrayList<Integer>();
             map.put(i,l1);
-        }  
+        }
         for (int i=0; i<n-1; i++) {
             int u = in.nextInt();
             int v = in.nextInt();
             map.get(u).add(v);
             map.get(v).add(u);
-        } 
+        }
         findingDistanceBetweenTwoNodes(1, 3);
     }
-    
+
 }

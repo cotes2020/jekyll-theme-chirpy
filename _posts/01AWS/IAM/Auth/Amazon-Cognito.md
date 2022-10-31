@@ -9,7 +9,7 @@
 
 ---
 
-Authorizing functionality of an application based on group membership is a best practice. 
+Authorizing functionality of an application based on group membership is a best practice.
 
 If you’re building APIs with [Amazon API Gateway](https://aws.amazon.com/api-gateway/) and you need fine-grained access control for the users, use [Amazon Cognito](https://aws.amazon.com/cognito/).
 
@@ -112,38 +112,38 @@ Based on this example policy
 **For this solution, need the following prerequisites**:
 
 - The [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/) installed and [configured for use](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
-- Python 3.6 or later, to package Python code for Lambda  
+- Python 3.6 or later, to package Python code for Lambda
   - recommend use a [virtual environment](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) or [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/) to isolate the solution from the rest of the Python environment.
 - An [IAM](https://aws.amazon.com/iam/) role or user with enough permissions to create `Amazon Cognito User Pool, IAM Role, Lambda, IAM Policy, API Gateway and DynamoDB table`.
 - The GitHub repository for the solution.
   - [download it](https://github.com/aws-samples/amazon-cognito-api-gateway/archive/refs/heads/main.zip),
   - or [Git](https://git-scm.com/) command to download it from the terminal.
-        
+
 
 **To implement this reference architecture, utilizing the following services**:
 
 [Amazon Cognito](http://aws.amazon.com/cognito) to support a **user pool** for the user base.
-- A user pool is a user directory in Amazon Cognito. 
-- With a user pool, the users can log in to the web or mobile app through Amazon Cognito. 
-- use the Amazon Cognito user directory directly, as this sample solution creates an Amazon Cognito user. 
+- A user pool is a user directory in Amazon Cognito.
+- With a user pool, the users can log in to the web or mobile app through Amazon Cognito.
+- use the Amazon Cognito user directory directly, as this sample solution creates an Amazon Cognito user.
 - However, the users can also log in through `social IdPs, OpenID Connect (OIDC), and SAML IdPs`
 
 
 [Lambda](http://aws.amazon.com/lambda) to serve the APIs.
 - Lambda as backing API service
-- Initially, create a Lambda function that serves the APIs. 
+- Initially, create a Lambda function that serves the APIs.
 - API Gateway forwards all requests to the Lambda function to serve up the requests.
 
 [API Gateway](https://aws.amazon.com/api-gateway) to secure and publish the APIs.
 - creates an Amazon Cognito user pool, a Lambda function, and an API Gateway instance.
-- Next integrate the API Gateway instance with the Lambda function created. 
-- This API Gateway instance serves as an entry point for the upstream service. 
+- Next integrate the API Gateway instance with the Lambda function created.
+- This API Gateway instance serves as an entry point for the upstream service.
 - configures [proxy integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html) with Lambda and deploys an API Gateway stage.
 
 ---
 
 ## Deploy the sample solution
- 
+
 ```bash
 $ git clone https://github.com/aws-samples/amazon-cognito-api-gateway.git
 $ cd amazon-cognito-api-gateway
@@ -163,7 +163,7 @@ Successfully created CloudFormation stack.
 
 To validate that an Amazon Cognito user has been created successfully, run the following command to open the Amazon Cognito UI in the browser and then log in with the credentials.
 
-> **Note:** 
+> **Note:**
 > When you run this command, it returns the user name and password that you should use to log in.
 
 ```bash
@@ -173,7 +173,7 @@ Username: cognitouser
 Password: xxxxxxxx
 ```
 
-Alternatively, you can open the CloudFormation stack and get the [Amazon Cognito hosted UI](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-app-integration.html) URL from the stack outputs. 
+Alternatively, you can open the CloudFormation stack and get the [Amazon Cognito hosted UI](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-app-integration.html) URL from the stack outputs.
 - The URL is the value assigned to the `CognitoHostedUiUrl` variable.
 
 ![Figure 2: CloudFormation Outputs - CognitoHostedUiUrl](https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2021/05/19/Building-fine-grained-authorization-2.png)
@@ -181,7 +181,7 @@ Alternatively, you can open the CloudFormation stack and get the [Amazon Cognito
 
 ### Validate Amazon Cognito JWT upon login
 
-Since we haven’t installed a web application that would respond to the redirect request, Amazon Cognito will redirect to localhost, which might look like an error. 
+Since we haven’t installed a web application that would respond to the redirect request, Amazon Cognito will redirect to localhost, which might look like an error.
 - The key aspect is that after a successful log in, there is a URL similar to the following in the navigation bar of the browser:
 - http://localhost/#id_token=eyJraWQiOiJicVhMYWFlaTl4aUhzTnY3W
 
@@ -191,7 +191,7 @@ Since we haven’t installed a web application that would respond to the redirec
 ## Test the API configuration
 
 To protect the API with Amazon Cognito so that only authorized users can access it
-- verify that the configuration is correct and the API is served by API Gateway. 
+- verify that the configuration is correct and the API is served by API Gateway.
 
 ```bash
 # makes a curl request to API Gateway to retrieve data from the API service.
@@ -204,7 +204,7 @@ $ bash ./helper.sh curl-api
         {"id":4,"name":"Fish"}
     ]
 }
-# The expected result is that the response will be a list of pets. 
+# The expected result is that the response will be a list of pets.
 # In this case, the setup is correct: API Gateway is serving the API.
 ```
 
@@ -217,23 +217,23 @@ To protect the API, the following is required:
 
 1. **DynamoDB** to store the policy that will be evaluated by the API Gateway to make an authorization decision.
 2. A **Lambda function** to verify the user’s access token and look up the policy in DynamoDB.
- 
+
 
 ### Lambda authorizer
 
 - an API Gateway feature that uses a Lambda function to control access to an API.
-- use a [Lambda authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html) to implement a custom authorization scheme that uses a bearer token authentication strategy. 
-- When a client makes a request to one of the API operations, the API Gateway calls the Lambda authorizer. 
-- The Lambda authorizer takes the identity of the caller as input and returns an IAM policy as the output. 
-- The output is the policy that is returned in DynamoDB and evaluated by the API Gateway. 
+- use a [Lambda authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html) to implement a custom authorization scheme that uses a bearer token authentication strategy.
+- When a client makes a request to one of the API operations, the API Gateway calls the Lambda authorizer.
+- The Lambda authorizer takes the identity of the caller as input and returns an IAM policy as the output.
+- The output is the policy that is returned in DynamoDB and evaluated by the API Gateway.
 - If there is no policy mapped to the caller identity, Lambda will generate a deny policy and request will be denied.
 
 
 
 ### DynamoDB table
 
-- a key-value and document database that delivers single-digit millisecond performance at any scale. 
-- ideal for this use case to ensure that the Lambda authorizer can quickly process the bearer token, look up the policy, and return it to API Gateway. 
+- a key-value and document database that delivers single-digit millisecond performance at any scale.
+- ideal for this use case to ensure that the Lambda authorizer can quickly process the bearer token, look up the policy, and return it to API Gateway.
 - [Control access for invoking an API](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html).
 
 create the DynamoDB table for the Lambda authorizer to look up the policy, which is mapped to an Amazon Cognito group.
@@ -242,10 +242,10 @@ create the DynamoDB table for the Lambda authorizer to look up the policy, which
   - Policy, which is returned to API Gateway to evaluate the policy.
 
 ![Figure 3: DynamoDB item](https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2021/05/19/Building-fine-grained-authorization-3.png)
- 
+
 Based on this policy
-- the user that is part of the Amazon Cognito group `pet-veterinarian` is allowed to make API requests to endpoints 
-  - `https://_<domain>_/_<api-gateway-stage>_/petstore/v1/\*` 
+- the user that is part of the Amazon Cognito group `pet-veterinarian` is allowed to make API requests to endpoints
+  - `https://_<domain>_/_<api-gateway-stage>_/petstore/v1/\*`
   - and `https://_<domain>_/_<api-gateway-stage>_/petstore/v2/status` for `GET` requests only.
 
 ---
@@ -263,8 +263,8 @@ Successfully updated CloudFormation stack.
 ## Test the custom authorizer setup
 
 Begin the testing with the following request, which doesn’t include an access token.
-- The request is denied with the message **Unauthorized**. 
-- the Amazon API Gateway expects a header named _Authorization_ (case sensitive) in the request. 
+- The request is denied with the message **Unauthorized**.
+- the Amazon API Gateway expects a header named _Authorization_ (case sensitive) in the request.
 - If there’s no authorization header, the request is denied before it reaches the lambda authorizer. This is a way to filter out requests that don’t include required information.
 
 ```bash
@@ -272,7 +272,7 @@ $ bash ./helper.sh curl-api
 {"message":"Unauthorized"}
 ```
 
-pass the required header 
+pass the required header
 - but the token is invalid, it wasn’t issued by Amazon Cognito but is a simple JWT-format token stored in `./helper.sh`. [decode and verify an Amazon Cognito JSON token](https://aws.amazon.com/premiumsupport/knowledge-center/decode-verify-cognito-json-token/).
 - This time the message is different. The Lambda authorizer received the request and identified the token as invalid and responded with the message **User is not authorized to access this resource**.
 
@@ -280,13 +280,13 @@ pass the required header
 $ bash ./helper.sh curl-api-invalid-token
 {"Message":"User is not authorized to access this resource"}
 ```
- 
+
 To make a successful request to the protected API, the code will need to perform the following steps:
 1. Use a user name and password to authenticate against the Amazon Cognito user pool.
 2. Acquire the tokens (id token, access token, and refresh token).
 3. Make an `HTTPS (TLS) request` to **API Gateway** and pass the access token in the headers.
-   - Before the request is forwarded to the API service, API Gateway receives the request and passes it to the Lambda authorizer. 
-   - The authorizer performs the following steps. 
+   - Before the request is forwarded to the API service, API Gateway receives the request and passes it to the Lambda authorizer.
+   - The authorizer performs the following steps.
    - If any of the steps fail, the request is denied.
      1. Retrieve the public keys from Amazon Cognito.
      2. Cache the public keys so the Lambda authorizer doesn’t have to make additional calls to Amazon Cognito as long as the Lambda execution environment isn’t shut down.
@@ -309,15 +309,15 @@ The access token has claims such as Amazon Cognito assigned groups, user name, t
     }
 ```
 
-Finally, programmatically log in to Amazon Cognito UI, acquire a valid access token, and make a request to API Gateway. 
+Finally, programmatically log in to Amazon Cognito UI, acquire a valid access token, and make a request to API Gateway.
 - call the protected API.
-- receive a response with data from the API service. 
+- receive a response with data from the API service.
 
 ```bash
 $ bash ./helper.sh curl-protected-api
 {"pets":[{"id":1,"name":"Birds"},{"id":2,"name":"Cats"},{"id":3,"name":"Dogs"},{"id":4,"name":"Fish"}]}
 ```
- 
+
 
 Steps that the example code performed:
 
@@ -341,10 +341,9 @@ clean up all the resources associated with this solution:
 
 ```bash
 $ bash ./helper.sh cf-delete-stack
-```   
+```
 
 ### Advanced IAM policies to further control the API
 
 With IAM, you can create advanced policies to further refine access to the APIs.
 - [condition keys that can be used in API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies-aws-condition-keys.html), their use in an [IAM policy with conditions](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html), and how [policy evaluation logic](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html) determines whether to allow or deny a request.
-

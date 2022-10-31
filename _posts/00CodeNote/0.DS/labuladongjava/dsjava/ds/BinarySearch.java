@@ -1,4 +1,4 @@
-package labuladongjava.other; 
+package labuladongjava.other;
 
 // 二分搜索
 
@@ -10,7 +10,7 @@ public class BinarySearch {
         int right = array.length - 1;
         while(left <= right) {
             int mid = (left+right)/2;
-    
+
             if(key == array[mid]) {
                 return mid;
             }
@@ -24,13 +24,3 @@ public class BinarySearch {
         return -1;
     }
 }
-
-
-
-
-
-
-
-
-
-

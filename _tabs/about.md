@@ -7,7 +7,7 @@ order: 4
 ---
 
 > A CYBER SECURITY PRACTICIAN
-> 
+>
 <br>
 <p align="center">
 
@@ -49,7 +49,7 @@ Bright, eager, passionate practician, and an enthusiast of InfoSec with an MS (H
 
 Chess, piano and dance are three constructive hobbies I pursue.
 
-I love chocolate! 🍫  
+I love chocolate! 🍫
 
 
 <!-- # EXPERIENCE
@@ -89,7 +89,7 @@ I have worked on a number of projects during my studies, some of which include:
 ## LAB EXERCISES
 
 Lab exercises designed by Syracuse university:
-- [Syracuse university - SEED Lab - XSS Attack Lab](https://ocholuo.github.io/posts/SEED-Labs-CrossSiteScripting-Attack-Lab/) - Self Replicating Worm attack on vulnerable web app  
+- [Syracuse university - SEED Lab - XSS Attack Lab](https://ocholuo.github.io/posts/SEED-Labs-CrossSiteScripting-Attack-Lab/) - Self Replicating Worm attack on vulnerable web app
 <!-- Set UID Attack Lab - Exploiting setuid and LD_PRELOAD env variable. -->
 <!-- MD5 Attack Lab - Attack Merkle Damgard construction of MD5 using collisions. -->
 - [Netdevgroup - PAN8 Cybersecurity Essentials](https://ocholuo.github.io/posts/PAN8-Cybersecurity-Essentials/)

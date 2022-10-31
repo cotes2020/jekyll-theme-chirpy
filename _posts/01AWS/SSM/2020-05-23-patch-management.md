@@ -144,10 +144,10 @@ OS
    - [Upgrade the Python requests module on Amazon Linux instances that use a proxy server](https://github.com/awsdocs/aws-systems-manager-user-guide/blob/main/doc_source/sysman-proxy-with-ssm-agent-al-python-requests.md)
 
 2. macOS
-   - macOS 10.14.x (Mojave) and 10.15.x (Catalina)  
+   - macOS 10.14.x (Mojave) and 10.15.x (Catalina)
 
 3. Windows
-   - Windows Server 2008 through Windows Server 2019, including R2 versions.  
+   - Windows Server 2008 through Windows Server 2019, including R2 versions.
    - As of January 14, 2020, Windows Server 2008 is no longer supported for feature or security updates from Microsoft.
    - Legacy AMIs for Windows Server 2008 and 2008 R2 still include version 2 of SSM Agent preinstalled
      - but Systems Manager no longer officially supports 2008 versions
@@ -175,7 +175,7 @@ There are usually two **preconfigured repositories (repos)** on an instance:
 | `amzn-updates/latest` | `amzn-updates-Base` |
 
 
-**Note**  
+**Note**
 - All updates are downloaded from the remote repos configured on the instance.
   - so the instance must be able to connect to the repos so the patching can be performed.
 
@@ -221,7 +221,7 @@ On Debian Server, the Systems Manager patch baseline service uses preconfigured 
   - For this, Systems Manager performs the equivalent of a `sudo apt-get update` command
 - Packages are then filtered from `debian-security codename` repos. This means that
   - on Debian Server 8, Patch Manager only identifies upgrades that are part of `debian-security jessie`.
-    - On Debian Server 8 only: Because some Debian `Server 8.*` instances refer to an obsolete package repository (`jessie-backports`), Patch Manager performs additional steps to ensure that patching operations succeed.  
+    - On Debian Server 8 only: Because some Debian `Server 8.*` instances refer to an obsolete package repository (`jessie-backports`), Patch Manager performs additional steps to ensure that patching operations succeed.
   - On Debian Server 9, only upgrades that are part of `debian-security stretch` are identified.
   - On Debian Server 10, only upgrades that are part of `debian-security buster` are identified.
 
@@ -275,7 +275,7 @@ On Red Hat Enterprise Linux, the Systems Manager patch baseline service uses pre
 
 Note that repo locations differ between RHEL 7 and RHEL 8:
 
-RHEL 7  
+RHEL 7
 
 The following repo IDs are associated with RHUI 2.
 - RHUI 3 launched in December 2019 and introduced a different naming scheme for Yum repository IDs.
@@ -287,7 +287,7 @@ The following repo IDs are associated with RHUI 2.
 | `rhui-REGION-rhel-server-releases/7Server/x86_64`  | `Red Hat Enterprise Linux Server 7 (RPMs)`                        |
 | `rhui-REGION-rhel-server-rh-common/7Server/x86_64` | `Red Hat Enterprise Linux Server 7 RH Common (RPMs)`              |
 
-RHEL 8  
+RHEL 8
 
 | **Repo ID**                   | **Repo name**                                                        |
 | ----------------------------- | -------------------------------------------------------------------- |
@@ -323,7 +323,7 @@ On Microsoft Windows OSs, Patch Manager retrieves a list of available updates th
 
 Patch Manager continuously monitors for new updates in every AWS Region. The list of available updates is refreshed in each Region at least once per day. When the patch information from Microsoft is processed, Patch Manager removes updates that were replaced by later updates from its patch list . Therefore, only the most recent update is displayed and made available for installation. For example, if `KB4012214` replaces `KB3135456`, only `KB4012214` is made available as an update in Patch Manager.
 
-**Note**  
+**Note**
 Patch Manager only makes available patches for Windows Server OS versions that are supported for Patch Manager. For example, Patch Manager can't be used to patch Windows RT.
 
 
@@ -349,11 +349,11 @@ On Linux systems
 > You can also specify a single alternative source repository that applies to all versions of a supported OS.
 
 To specify alternative patch source repositories
-1. **Example: Using the console**   
+1. **Example: Using the console**
    - use the **Patch sources** section on the **Create patch baseline** page.
    - For information about using the **Patch sources** options, see [Creating a custom patch baseline](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-baseline-console-linux.html).
 
-2. **Example: Using the AWS CLI**  
+2. **Example: Using the AWS CLI**
    - using the `--sources` option
    - see [Create a patch baseline with custom repositories for different OS versions](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-cli-commands.html#patch-manager-cli-commands-create-patch-baseline-mult-sources).
    - `aws ssm create-patch-baseline --cli-input-json file://my-patch-repository.json`
@@ -361,7 +361,7 @@ To specify alternative patch source repositories
 
 ### considerations for alternative repositories
 
-1. **Only specified repositories are used for patching**  
+1. **Only specified repositories are used for patching**
    - Specifying alternative repositories doesn't mean specifying *additional* repositories.
    - you must also specify the default repositories as part of the **alternative patch source configuration** if you want their updates to be applied.
    - Running a **custom patch baseline** that specifies **alternative patch repositories** for an instance doesn't make those repositories the new default repositories.
@@ -373,7 +373,7 @@ To specify alternative patch source repositories
 > If you want to include the **Extra Packages for Enterprise Linux (EPEL) repository** in the patching operations, you must specify all three repositories as alternative repositories.
 
 
-2. **Patching behavior for YUM-based distributions depends on the updateinfo.xml manifest**  
+2. **Patching behavior for YUM-based distributions depends on the updateinfo.xml manifest**
    - When you specify **alternative patch repositories** for `YUM-based distributions`,
      - such as Amazon Linux or Amazon Linux 2, Red Hat Enterprise Linux, or CentOS,
    - patching behavior depends on whether the repository includes an update manifest in the form of a complete and correctly formatted `updateinfo.xml` file.
@@ -391,18 +391,18 @@ To specify alternative patch source repositories
 
 ### Sample uses for alternative patch source repositories
 
-**Example 1 – Nonsecurity Updates for Ubuntu Server**  
+**Example 1 – Nonsecurity Updates for Ubuntu Server**
 - using Patch Manager to install security patches on a fleet of Ubuntu Server instances using the `AWS-provided predefined patch baseline` **AWS-UbuntuDefaultPatchBaseline**.
 - create a `new patch baseline` that is based on this default, but specify in the approval rules that you want `nonsecurity related updates` that are part of the default distribution to be installed as well.
 - When this patch baseline is run against the instances, patches for both security and nonsecurity issues are applied.
 - You can also choose to approve nonsecurity patches in the patch exceptions you specify for a baseline.
 
-**Example 2 - Personal Package Archives (PPA) for Ubuntu Server**  
+**Example 2 - Personal Package Archives (PPA) for Ubuntu Server**
 - Ubuntu Server instances are running software that is distributed through a [Personal Package Archives (PPA) for Ubuntu](https://launchpad.net/ubuntu/+ppas).
 - create a patch baseline that specifies a PPA repository that you have configured on the instance as the source repository for the patching operation.
 - Then use Run Command to run the `patch baseline document` on the instances.
 
-**Example 3 – Internal Corporate Applications on Amazon Linux**  
+**Example 3 – Internal Corporate Applications on Amazon Linux**
 - to run some applications needed for industry regulatory compliance on the Amazon Linux instances.
 - configure a repository for these applications on the instances, use YUM to initially install the applications, and then update or create a new patch baseline to include this new corporate repository.
 - After this you can use Run Command to run the **AWS-RunPatchBaseline** document with the `Scan` option to see if the corporate package is listed among the installed packages and is up to date on the instance.
@@ -489,7 +489,7 @@ On Amazon Linux and Amazon Linux 2, the patch selection process is as follows:
    - For example, if non-security updates are permitted, they are installed when the auto-approval time arrives.
 
 2. Each **update notice** in `updateinfo.xml` includes `several attributes`
-   - Update notice attributes: denote the properties of the packages in the notice, as described in the following table.  
+   - Update notice attributes: denote the properties of the packages in the notice, as described in the following table.
    - list of supported values: `describe-patch-properties`
    - <font color=blue> type </font>
      - Corresponds to the value of the `Classification key attribute` in the patch baseline's PatchFilter data type.
@@ -511,7 +511,7 @@ On Amazon Linux and Amazon Linux 2, the patch selection process is as follows:
 3. The product of the instance is determined by SSM Agent.
    - This attribute corresponds to the value of the Product key attribute in the patch baseline's [PatchFilter](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html) data type.
 
-4. Packages are selected for the update according to the following guidelines.    
+4. Packages are selected for the update according to the following guidelines.
    - **Pre-defined default patch baselines** provided by AWS and **custom patch baselines** where the `Approved patches include non-security updates is not selected`
      - For each update notice in `updateinfo.xml`
      - the patch baseline is used as a filter, allowing only the qualified packages to be included in the update.
@@ -528,15 +528,15 @@ On Amazon Linux and Amazon Linux 2, the patch selection process is as follows:
 
 ### Key differences between Linux and Windows patching
 
-**Difference 1: Patch evaluation**  
-- **Linux**  
+**Difference 1: Patch evaluation**
+- **Linux**
   - Systems Manager evaluates `patch baseline rules` and the `list of approved and rejected patches` on *each* managed instance.
   - Systems Manager must evaluate patching on each instance because the service `retrieves the list of known patches and updates from the repositories` that are configured on the instance.
 - **Windows**
   - For Windows patching, Systems Manager evaluates `patch baseline rules` and the `list of approved and rejected patches` *directly in the service*.
   - It can do this because Windows patches are pulled from a single repository (Windows Update).
 
-**Difference 2: `Not Applicable` patches**  
+**Difference 2: `Not Applicable` patches**
 - Due to the large number of available packages for Linux OSs, Systems Manager does not report details about patches in the *Not Applicable* state.
 - A `Not Applicable` patch is,
 - for example,
@@ -544,17 +544,17 @@ On Amazon Linux and Amazon Linux 2, the patch selection process is as follows:
 - Systems Manager does report the number of `Not Applicable` patches in the summary, but if you call the [DescribeInstancePatches](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribeInstancePatches.html) API for an instance, the returned data does not include patches with a state of `Not Applicable`. This behavior is different from Windows.
 
 
-**Difference 3: SSM document support**  
+**Difference 3: SSM document support**
 - The `AWS-ApplyPatchBaseline` Systems Manager document (SSM document) doesn't support Linux instances.
 - For applying patch baselines to **Linux, macOS, and Windows Server managed instances**, the recommended SSM document is `AWS-RunPatchBaseline`.
 
-**Difference 4: Application patches**  
+**Difference 4: Application patches**
 - The primary focus of Patch Manager is applying patches to OSs.
-- However, you can also use Patch Manager to apply patches to some applications on the instances.  
-- **Linux**  
+- However, you can also use Patch Manager to apply patches to some applications on the instances.
+- **Linux**
   - Patch Manager uses the configured repositories for updates, and <font color=blue> does not differentiate between OSs and application patches </font>.
   - use Patch Manager to define which repositories to fetch updates from.
-- **Windows**  
+- **Windows**
   - apply approval rules, as well as *Approved* and *Rejected* patch exceptions, for applications released by Microsoft, s
   - uch as Microsoft Word 2016 and Microsoft Exchange Server 2016.
 
@@ -573,7 +573,7 @@ A **patching configuration** defines a `unique patching operation`.
 
 To create a patching configuration
 - use the Configure patching page
-- or run a one-time manual patching operation on a set of instances.  
+- or run a one-time manual patching operation on a set of instances.
 
 
 ## SSM documents for patching instances
@@ -626,13 +626,13 @@ This SSM document provides **basic patching functionality**
 - **AWS-InstallSpecificWindowsUpdates**
 
 > The three legacy documents perform different functions
-> - can be achieve by using different parameter settings with the SSM document **AWS-InstallWindowsUpdates**.  
+> - can be achieve by using different parameter settings with the SSM document **AWS-InstallWindowsUpdates**.
 
 ---
 
 #### AWS-RunPatchBaseline
 
-> Replaces legacy documents: 
+> Replaces legacy documents:
 > AWS-ApplyPatchBaseline
 > The legacy document applies only to Windows Server instances
 > and does not provide support for application patching.
@@ -640,14 +640,14 @@ This SSM document provides **basic patching functionality**
 1. Available in all AWS Regions.
 2. This SSM document **control patch approvals using the patch baseline currently specified as the "default" for an OS type**.
    - Installs patches on the instances or scans instances to determine whether any qualified patches are missing.
-     - This document supports Linux, macOS, and Windows Server instances. 
+     - This document supports Linux, macOS, and Windows Server instances.
      - The document will perform the appropriate actions for each platform.
-   - can apply patches for both OSs and applications. 
+   - can apply patches for both OSs and applications.
      - On Windows Server, application support is limited to updates for Microsoft applications.
-     - For Linux OSs, compliance information is provided for patches from both the default source repository configured on an instance and from any alternative source repositories you specify in a custom patch baseline.  
+     - For Linux OSs, compliance information is provided for patches from both the default source repository configured on an instance and from any alternative source repositories you specify in a custom patch baseline.
 
-3. This SSM document performs patching operations on instances for <font color=red> both security related and other types of updates </font>. 
-   - When the document is run, it uses the **patch baseline currently specified as the "default"** for an OS type if no **patch group** is specified. 
+3. This SSM document performs patching operations on instances for <font color=red> both security related and other types of updates </font>.
+   - When the document is run, it uses the **patch baseline currently specified as the "default"** for an OS type if no **patch group** is specified.
    - Otherwise, it uses the **patch baseline that is associated with the patch group**
 
 4. Reports patch compliance information that you can view using the Systems Manager Compliance tools.
@@ -658,100 +658,100 @@ This SSM document provides **basic patching functionality**
 
 **[ Windows ]**
 
-On Windows Server instances, the **AWS-RunPatchBaseline** document 
+On Windows Server instances, the **AWS-RunPatchBaseline** document
 - downloads and invokes a PowerShell module
-- downloads a **snapshot of the patch baseline** that applies to the instance. 
+- downloads a **snapshot of the patch baseline** that applies to the instance.
 - This **patch baseline snapshot** contains a `list of approved patches` that is compiled by querying the patch baseline against a Windows Server Update Services (WSUS) server.
-- this list is passed to the Windows Update API, which controls downloading and installing the approved patches as appropriate. 
+- this list is passed to the Windows Update API, which controls downloading and installing the approved patches as appropriate.
 
 
 **[ Linux ]**
 
-On Linux instances, the **AWS-RunPatchBaseline** document 
+On Linux instances, the **AWS-RunPatchBaseline** document
 - invokes a Python module
-- downloads a **snapshot of the patch baseline** that applies to the instance. 
-- This **patch baseline snapshot** uses the `defined rules and lists of approved and blocked patches` to drive the appropriate package manager for each instance type: 
-  - Amazon Linux, Amazon Linux 2, CentOS, Oracle Linux, and RHEL 7 instances use YUM. For YUM operations, Patch Manager requires `Python 2.6` or later. 
+- downloads a **snapshot of the patch baseline** that applies to the instance.
+- This **patch baseline snapshot** uses the `defined rules and lists of approved and blocked patches` to drive the appropriate package manager for each instance type:
+  - Amazon Linux, Amazon Linux 2, CentOS, Oracle Linux, and RHEL 7 instances use YUM. For YUM operations, Patch Manager requires `Python 2.6` or later.
   - RHEL 8 instances use DNF. For DNF operations, Patch Manager requires `Python 2` or `Python 3`. (Neither version is installed by default on RHEL 8. You must install one or the other manually.)
-  - Debian Server and Ubuntu Server instances use APT. For APT operations, Patch Manager requires `Python 3`. 
+  - Debian Server and Ubuntu Server instances use APT. For APT operations, Patch Manager requires `Python 3`.
   - SUSE Linux Enterprise Server instances use Zypper. For Zypper operations, Patch Manager requires `Python 2.6` or later.
 
 
 **[ macOS ]**
 
-On macOS instances, the `AWS-RunPatchBaseline` document 
+On macOS instances, the `AWS-RunPatchBaseline` document
 - invokes a Python module
-- downloads a **snapshot of the patch baseline** that applies to the instance. 
+- downloads a **snapshot of the patch baseline** that applies to the instance.
 - Next, a Python subprocess invokes the AWS Command Line Interface (AWS CLI) on the instance to `retrieve the installation and update information` for the specified package managers and to drive the appropriate package manager for each update package.
 
 
 **snapshot**
-- Each snapshot is specific to an AWS account, patch group, OS, and snapshot ID. 
-- The snapshot is delivered through a presigned S3 URL, which expires 24 hours after the snapshot is created. 
-- After the URL expires, to apply the same snapshot content to other instances, generate a new presigned Amazon S3 URL up to three days after the snapshot was created. 
+- Each snapshot is specific to an AWS account, patch group, OS, and snapshot ID.
+- The snapshot is delivered through a presigned S3 URL, which expires 24 hours after the snapshot is created.
+- After the URL expires, to apply the same snapshot content to other instances, generate a new presigned Amazon S3 URL up to three days after the snapshot was created.
 
-After all approved and applicable updates have been installed, with reboots performed as necessary, patch compliance information is generated on an instance and reported back to Patch Manager. 
-- `RebootOption`: `NoReboot` in the `AWS-RunPatchBaseline` document, the instance is not rebooted after Patch Manager runs.  
- 
- 
+After all approved and applicable updates have been installed, with reboots performed as necessary, patch compliance information is generated on an instance and reported back to Patch Manager.
+- `RebootOption`: `NoReboot` in the `AWS-RunPatchBaseline` document, the instance is not rebooted after Patch Manager runs.
+
+
 **AWS-RunPatchBaseline parameters**
-- supports five parameters. 
-- The `Operation` parameter is required. 
-- The `InstallOverrideList`, `BaselineOverride`, and `RebootOption` parameters are optional. 
-- `Snapshot-ID` is technically optional, but we recommend that you supply a custom value for it when you run `AWS-RunPatchBaseline` outside of a maintenance window. 
+- supports five parameters.
+- The `Operation` parameter is required.
+- The `InstallOverrideList`, `BaselineOverride`, and `RebootOption` parameters are optional.
+- `Snapshot-ID` is technically optional, but we recommend that you supply a custom value for it when you run `AWS-RunPatchBaseline` outside of a maintenance window.
 - Patch Manager can supply the custom value automatically when the document is run as part of a maintenance window operation.
-- 
- 
+-
+
 Parameter name: `Operation`
 - **Usage**: Required.
-- **Options**: 
+- **Options**:
   - `Scan`
-    - `AWS-RunPatchBaseline` determines the patch compliance state of the instance and reports this information back to Patch Manager. 
-    - `Scan` does not prompt updates to be installed or instances to be rebooted. 
-    - Instead, the operation identifies where updates are missing that are approved and applicable to the instance. 
+    - `AWS-RunPatchBaseline` determines the patch compliance state of the instance and reports this information back to Patch Manager.
+    - `Scan` does not prompt updates to be installed or instances to be rebooted.
+    - Instead, the operation identifies where updates are missing that are approved and applicable to the instance.
   - `Install`
-    - `AWS-RunPatchBaseline` attempts to install the approved and applicable updates that are missing from the instance. 
-    - Patch compliance information generated as part of an `Install` operation does not list any missing updates, but might report updates that are in a failed state if the installation of the update did not succeed for any reason. 
-    - Whenever an update is installed on an instance, the instance is rebooted to ensure the update is both installed and active. 
-    - Exception: If the `RebootOption` parameter is set to `NoReboot` in the `AWS-RunPatchBaseline` document, the instance is not rebooted after Patch Manager runs. 
-  
+    - `AWS-RunPatchBaseline` attempts to install the approved and applicable updates that are missing from the instance.
+    - Patch compliance information generated as part of an `Install` operation does not list any missing updates, but might report updates that are in a failed state if the installation of the update did not succeed for any reason.
+    - Whenever an update is installed on an instance, the instance is rebooted to ensure the update is both installed and active.
+    - Exception: If the `RebootOption` parameter is set to `NoReboot` in the `AWS-RunPatchBaseline` document, the instance is not rebooted after Patch Manager runs.
+
 If a patch specified by the baseline rules is installed *before* Patch Manager updates the instance, the system might not reboot as expected. This can happen when a patch is installed manually by a user or installed automatically by another program, such as the `unattended-upgrades` package on Ubuntu Server.
 
 
 
 Parameter name: `Snapshot ID`
 - **Usage**: Optional.
-- `Snapshot ID` is a unique ID (GUID) used by Patch Manager 
+- `Snapshot ID` is a unique ID (GUID) used by Patch Manager
 - to ensure that <font color=red> a set of instances that are patched in a single operation all have the exact same set of approved patches </font>
 - Although the parameter is defined as optional, our best practice recommendation depends on whether or not you are running **AWS-RunPatchBaseline** in a maintenance window, as described in the following table.
 
-**AWS-RunPatchBaseline best practices**  
+**AWS-RunPatchBaseline best practices**
 
 Running AWS-RunPatchBaseline inside a maintenance window
-- Do not supply a Snapshot ID. Patch Manager will supply it for you. 
-- Systems Manager provides a GUID value based on the `maintenance window execution ID`. 
-- This ensures that a correct ID is used for all the invocations of `AWS-RunPatchBaseline` in that maintenance window.  
-- If you do specify a value in this scenario, note that the snapshot of the patch baseline might not remain in place for more than three days. 
-- After that, a new snapshot will be generated even if you specify the same ID after the snapshot expires. 
+- Do not supply a Snapshot ID. Patch Manager will supply it for you.
+- Systems Manager provides a GUID value based on the `maintenance window execution ID`.
+- This ensures that a correct ID is used for all the invocations of `AWS-RunPatchBaseline` in that maintenance window.
+- If you do specify a value in this scenario, note that the snapshot of the patch baseline might not remain in place for more than three days.
+- After that, a new snapshot will be generated even if you specify the same ID after the snapshot expires.
 
 
 Running AWS-RunPatchBaseline outside of a maintenance window
 - Generate and specify a custom GUID value for the Snapshot ID.
 - When you are not using a maintenance window to run `AWS-RunPatchBaseline`, we recommend that you generate and specify a unique Snapshot ID for each patch baseline, particularly if you are running the `AWS-RunPatchBaseline` document on multiple instances in the same operation. If you do not specify an ID in this scenario, Systems Manager generates a different Snapshot ID for each instance the command is sent to. This might result in varying sets of patches being specified among the instances. For instance, say that you are running the `AWS-RunPatchBaseline` document directly via Run Command, a capability of AWS Systems Manager, and targeting a group of 50 instances. Specifying a custom Snapshot ID results in the generation of a single baseline snapshot that is used to evaluate and patch all the instances, ensuring that they end up in a consistent state.
 
-> You can use any tool capable of generating a GUID to generate a value for the Snapshot ID parameter. 
-> For example, in PowerShell, you can use the `New-Guid` cmdlet to generate a GUID in the format of `12345699-9405-4f69-bc5e-9315aEXAMPLE`.  | 
+> You can use any tool capable of generating a GUID to generate a value for the Snapshot ID parameter.
+> For example, in PowerShell, you can use the `New-Guid` cmdlet to generate a GUID in the format of `12345699-9405-4f69-bc5e-9315aEXAMPLE`.  |
 
 
 
 Parameter name: `InstallOverrideList`
 - **Usage**: Optional.
-- `InstallOverrideList` lets you specify an `https/S3 path-style URL` to a list of patches to be installed. 
-- This patch installation list, in YAML format, <font color=blue> overrides the patches specified by the current default patch baseline. </font> 
-- provides more granular control over which patches are installed on the instances. 
-- Be aware that **compliance reports** reflect `patch states` according to what’s specified in the patch baseline, not what you specify in an `InstallOverrideList` list of patches. 
-  - so Scan operations ignore the `InstallOverrideList` parameter. 
-  - This is to ensure that compliance reports consistently reflect patch states according to policy rather than what was approved for a specific patching operation. 
+- `InstallOverrideList` lets you specify an `https/S3 path-style URL` to a list of patches to be installed.
+- This patch installation list, in YAML format, <font color=blue> overrides the patches specified by the current default patch baseline. </font>
+- provides more granular control over which patches are installed on the instances.
+- Be aware that **compliance reports** reflect `patch states` according to what’s specified in the patch baseline, not what you specify in an `InstallOverrideList` list of patches.
+  - so Scan operations ignore the `InstallOverrideList` parameter.
+  - This is to ensure that compliance reports consistently reflect patch states according to policy rather than what was approved for a specific patching operation.
 
 **Valid URL formats**
 - **https URL format**:
@@ -766,12 +766,12 @@ Parameter name: `InstallOverrideList`
   ```
 
 - Valid YAML content formats
-  - The formats to specify patches in the list depends on the OS of the instance. 
+  - The formats to specify patches in the list depends on the OS of the instance.
   - The general format, however, is as follows:
 
 	```
 	patches:
-		- 
+		-
 			id: '{patch-d}'
 			title: '{patch-title}'
 			{additional-fields}:{values}
@@ -780,10 +780,10 @@ Parameter name: `InstallOverrideList`
 
 [ Linux ]
 
-**id**  
+**id**
 The **id** field is required. Use it to specify patches using the package name and architecture. For example: `'dhclient.x86_64'`. You can use wildcards in id to indicate multiple packages. For example: `'dhcp*'` and `'dhcp*1.*'`.
 
-**Title**  
+**Title**
 The **title** field is optional, but on Linux systems it does provide additional filtering capabilities. If you use **title**, it should contain the package version information in the one of the following formats:
 
 YUM/SUSE Linux Enterprise Server (SLES):
@@ -798,11 +798,11 @@ APT
 {name}.{architecture}:{version}
 ```
 
-For Linux patch titles, you can use one or more wildcards in any position to expand the number of package matches. For example: `'*32:9.8.2-0.*.rc1.57.amzn1'`. 
+For Linux patch titles, you can use one or more wildcards in any position to expand the number of package matches. For example: `'*32:9.8.2-0.*.rc1.57.amzn1'`.
 
-For example: 
-- apt package version 1.2.25 is currently installed on the instance, but version 1.2.27 is now available. 
-- You add apt.amd64 version 1.2.27 to the patch list. It depends on apt utils.amd64 version 1.2.27, but apt-utils.amd64 version 1.2.25 is specified in the list. 
+For example:
+- apt package version 1.2.25 is currently installed on the instance, but version 1.2.27 is now available.
+- You add apt.amd64 version 1.2.27 to the patch list. It depends on apt utils.amd64 version 1.2.27, but apt-utils.amd64 version 1.2.25 is specified in the list.
 
 In this case, apt version 1.2.27 will be blocked from installation and reported as “Failed-NonCompliant.”
 
@@ -810,30 +810,30 @@ In this case, apt version 1.2.27 will be blocked from installation and reported 
 
 Parameter name: `RebootOption`
 - **Usage**: Optional.
-- **Options**: 
+- **Options**:
   - `RebootIfNeeded`
-    - the instance is rebooted if 
-      - Patch Manager installed new patches, 
-      - or if it detected any patches with a status of `INSTALLED_PENDING_REBOOT` during the `Install` operation. 
-    - The `INSTALLED_PENDING_REBOOT` status can mean that the option `NoReboot` was selected the last time the `Install` operation was run. 
+    - the instance is rebooted if
+      - Patch Manager installed new patches,
+      - or if it detected any patches with a status of `INSTALLED_PENDING_REBOOT` during the `Install` operation.
+    - The `INSTALLED_PENDING_REBOOT` status can mean that the option `NoReboot` was selected the last time the `Install` operation was run.
     - (Patches installed outside of Patch Manager are never given a status of `INSTALLED_PENDING_REBOOT`.)
-    - When you choose the `RebootIfNeeded` option, Patch Manager does not evaluate whether a reboot is *required* by the patch. 
+    - When you choose the `RebootIfNeeded` option, Patch Manager does not evaluate whether a reboot is *required* by the patch.
     - A reboot occurs whenever there are missing packages or packages with a status of `INSTALLED_PENDING_REBOOT`.
 
   - `NoReboot`
-    - Patch Manager does not reboot an instance even if it installed patches during the `Install` operation. 
-    - This option is useful if you know that the instances don't require rebooting after patches are applied, or you have applications or processes running on an instance that should not be disrupted by a patching operation reboot. 
-    - It is also useful when you want more control over the timing of instance reboots, such as by using a maintenance window.  
+    - Patch Manager does not reboot an instance even if it installed patches during the `Install` operation.
+    - This option is useful if you know that the instances don't require rebooting after patches are applied, or you have applications or processes running on an instance that should not be disrupted by a patching operation reboot.
+    - It is also useful when you want more control over the timing of instance reboots, such as by using a maintenance window.
     - If you choose the `NoReboot` option and a patch is installed, the patch is assigned a status of `InstalledPendingReboot`. The instance itself, however, is marked as `Non-Compliant`. After a reboot occurs and a `Scan` operation is run, the instance status is updated to `Compliant`.
 
-**Patch installation tracking file**: 
-- To track patch installation, especially patches that were installed since the last system reboot, 
+**Patch installation tracking file**:
+- To track patch installation, especially patches that were installed since the last system reboot,
 - Systems Manager maintains a file on the managed instance.
-- Do not delete or modify the tracking file. If this file is deleted or corrupted, the patch compliance report for the instance is inaccurate. 
+- Do not delete or modify the tracking file. If this file is deleted or corrupted, the patch compliance report for the instance is inaccurate.
 - If this happens, reboot the instance and <font color=red> run a patch Scan operation to restore the file </font>
 
 This tracking file is stored in the following locations on the managed instances:
-- Linux OSs: 
+- Linux OSs:
   - `/var/log/amazon/ssm/patch-configuration/patch-states-configuration.json`
   - `/var/log/amazon/ssm/patch-configuration/patch-inventory-from-last-operation.json`
 - Windows Server OS:
@@ -842,8 +842,8 @@ This tracking file is stored in the following locations on the managed instances
 
 Parameter name: `BaselineOverride`
 - **Usage**: Optional.
-- define patching preferences at runtime using the `BaselineOverride` parameter. 
-- This baseline override is maintained as a JSON object in an S3 bucket. 
+- define patching preferences at runtime using the `BaselineOverride` parameter.
+- This baseline override is maintained as a JSON object in an S3 bucket.
 - It ensures patching operations use the provided baselines that match the host OS instead of applying the rules from the default patch baseline
 
 ---
@@ -898,26 +898,26 @@ The following four SSM documents are still available for use in the patching ope
 ## predefined and custom patch baselines
 
 <font color=red> patch baseline </font>
-- defines which patches are approved for installation on the instances. 
-- You can 
-  - specify approved or rejected patches one by one. 
-  - create auto-approval rules to specify that certain types of updates (for example, critical updates) should be automatically approved. 
-  - The rejected list overrides both the rules and the approve list. 
+- defines which patches are approved for installation on the instances.
+- You can
+  - specify approved or rejected patches one by one.
+  - create auto-approval rules to specify that certain types of updates (for example, critical updates) should be automatically approved.
+  - The rejected list overrides both the rules and the approve list.
 
 To use a list of approved patches to install specific packages
-- first remove all auto-approval rules. 
-- If you explicitly identify a patch as rejected, it will not be approved or installed, even if it matches all of the criteria in an auto-approval rule. 
+- first remove all auto-approval rules.
+- If you explicitly identify a patch as rejected, it will not be approved or installed, even if it matches all of the criteria in an auto-approval rule.
 - Also, a patch is installed on an instance only if it applies to the software on the instance, even if the patch has otherwise been approved for the instance.
 
 
-Patch Manager provides 
+Patch Manager provides
 1. <font color=red> predefined patch baselines </font>
-   - for each of the OSs supported by Patch Manager. 
-   - use these baselines as they are currently configured (you can't customize them) 
+   - for each of the OSs supported by Patch Manager.
+   - use these baselines as they are currently configured (you can't customize them)
 2. <font color=red> create the own custom patch baselines </font>
-   - for greater control over which patches are approved or rejected for the environment. 
-   - Also, the predefined baselines assign a compliance level of `Unspecified` to all patches installed using those baselines. 
-   - For compliance values to be assigned, you can create a copy of a predefined baseline and specify the compliance values you want to assign to patches. 
+   - for greater control over which patches are approved or rejected for the environment.
+   - Also, the predefined baselines assign a compliance level of `Unspecified` to all patches installed using those baselines.
+   - For compliance values to be assigned, you can create a copy of a predefined baseline and specify the compliance values you want to assign to patches.
 
 
 ## predefined baselines
@@ -925,128 +925,128 @@ Patch Manager provides
 The following table describes the predefined patch baselines provided with Patch Manager.
 
 1. `AWS-AmazonLinuxDefaultPatchBaseline` Amazon Linux
-   - Approves all OS patches that are 
+   - Approves all OS patches that are
      - classified as "Security" or "Bugfix"
-     - and that have a severity level of "Critical" or "Important". 
-   - Patches are **auto-approved seven days** after release.
-   
-2. `AWS-AmazonLinux2DefaultPatchBaseline` Amazon Linux 2 
-   - Approves all OS patches that are 
-     - classified as "Security" or "Bugfix"
-     - and that have a severity level of "Critical" or "Important". 
+     - and that have a severity level of "Critical" or "Important".
    - Patches are **auto-approved seven days** after release.
 
-3. `AWS-CentOSDefaultPatchBaseline` CentOS 
+2. `AWS-AmazonLinux2DefaultPatchBaseline` Amazon Linux 2
+   - Approves all OS patches that are
+     - classified as "Security" or "Bugfix"
+     - and that have a severity level of "Critical" or "Important".
+   - Patches are **auto-approved seven days** after release.
+
+3. `AWS-CentOSDefaultPatchBaseline` CentOS
    - including <font color=red> nonsecurity updates </font>
    - Approves all updates **seven days after they become available**
 
 
-4. `AWS-DebianDefaultPatchBaseline` Debian Server 
-   - **Immediately approves** all OS security-related patches that have a priority of "Required", "Important", "Standard," "Optional," or "Extra." 
-   - There is no wait before approval because reliable release dates are not available in the repos. 
+4. `AWS-DebianDefaultPatchBaseline` Debian Server
+   - **Immediately approves** all OS security-related patches that have a priority of "Required", "Important", "Standard," "Optional," or "Extra."
+   - There is no wait before approval because reliable release dates are not available in the repos.
 
 
-5. `AWS-MacOSDefaultPatchBaseline` macOS 
-   - Approves all OS patches that are classified as "Security". Also approves all packages with a current update. 
+5. `AWS-MacOSDefaultPatchBaseline` macOS
+   - Approves all OS patches that are classified as "Security". Also approves all packages with a current update.
 
 
-6. `AWS-OracleLinuxDefaultPatchBaseline` Oracle Linux 
-   - Approves all OS patches that are 
+6. `AWS-OracleLinuxDefaultPatchBaseline` Oracle Linux
+   - Approves all OS patches that are
      - classified as "Security" or "Bugfix"
-     - have a severity level of "Important" or "Moderate". 
-   - Patches are **auto-approved seven days** after release.  
-
-7. `AWS-RedHatDefaultPatchBaseline`   Red Hat Enterprise Linux (RHEL)   
-   - Approves all OS patches that are 
-     - classified as "Security" or "Bugfix"
-     - and that have a severity level of "Critical" or "Important". 
+     - have a severity level of "Important" or "Moderate".
    - Patches are **auto-approved seven days** after release.
- 
 
-8. `AWS-SuseDefaultPatchBaseline` SUSE Linux Enterprise Server (SLES) 
-   - Approves all OS patches that are classified as "Security" and with a severity of "Critical" or "Important". 
-   - Patches are **auto-approved seven days** after release.  
-
-
-9. `AWS-UbuntuDefaultPatchBaseline`  Ubuntu Server  
-    - Immediately approves all OS security-related patches that have a priority of "Required", "Important", "Standard," "Optional," or "Extra." 
-    - There is no wait before approval because reliable release dates are not available in the repos.  
- 
-
-10. `AWS-DefaultPatchBaseline`  Windows Server  
-    - Approves all Windows Server OS patches that are classified as "CriticalUpdates" or "SecurityUpdates" and that have an MSRC severity of "Critical" or "Important". 
-    - Patches are **auto-approved seven days** after release.  
+7. `AWS-RedHatDefaultPatchBaseline`   Red Hat Enterprise Linux (RHEL)
+   - Approves all OS patches that are
+     - classified as "Security" or "Bugfix"
+     - and that have a severity level of "Critical" or "Important".
+   - Patches are **auto-approved seven days** after release.
 
 
-11. `AWS-WindowsPredefinedPatchBaseline-OS`  Windows Server  
-    - Approves all Windows Server OS patches that are classified as "CriticalUpdates" or "SecurityUpdates" and that have an MSRC severity of "Critical" or "Important". 
-    - Patches are **auto-approved seven days** after release.  
+8. `AWS-SuseDefaultPatchBaseline` SUSE Linux Enterprise Server (SLES)
+   - Approves all OS patches that are classified as "Security" and with a severity of "Critical" or "Important".
+   - Patches are **auto-approved seven days** after release.
 
-12. `AWS-WindowsPredefinedPatchBaseline-OS-Applications` Windows Server 
+
+9. `AWS-UbuntuDefaultPatchBaseline`  Ubuntu Server
+    - Immediately approves all OS security-related patches that have a priority of "Required", "Important", "Standard," "Optional," or "Extra."
+    - There is no wait before approval because reliable release dates are not available in the repos.
+
+
+10. `AWS-DefaultPatchBaseline`  Windows Server
+    - Approves all Windows Server OS patches that are classified as "CriticalUpdates" or "SecurityUpdates" and that have an MSRC severity of "Critical" or "Important".
+    - Patches are **auto-approved seven days** after release.
+
+
+11. `AWS-WindowsPredefinedPatchBaseline-OS`  Windows Server
+    - Approves all Windows Server OS patches that are classified as "CriticalUpdates" or "SecurityUpdates" and that have an MSRC severity of "Critical" or "Important".
+    - Patches are **auto-approved seven days** after release.
+
+12. `AWS-WindowsPredefinedPatchBaseline-OS-Applications` Windows Server
     - For the Windows Server OS,
-      - approves all patches that are classified as "CriticalUpdates" or "SecurityUpdates" 
-      - and that have an MSRC severity of "Critical" or "Important". 
-    - For Microsoft applications, 
-      - approves all patches. 
-    - Patches for both OS and applications are **auto-approved seven days** after release. 
+      - approves all patches that are classified as "CriticalUpdates" or "SecurityUpdates"
+      - and that have an MSRC severity of "Critical" or "Important".
+    - For Microsoft applications,
+      - approves all patches.
+    - Patches for both OS and applications are **auto-approved seven days** after release.
 
 
 ## custom baselines
 
 create the own patch baseline
 - you can <font color=red> choose which patches to auto-approve by using the following categories </font>.
-  - <font color=red> OS </font>: 
+  - <font color=red> OS </font>:
     - Windows, Amazon Linux, Ubuntu Server, and so on.
-  - <font color=red> Product name (for OSs) </font>: 
+  - <font color=red> Product name (for OSs) </font>:
     - For example, RHEL 6.5, Amazon Linux 2014.09, Windows Server 2012, Windows Server 2012 R2, and so on.
-  - <font color=red> Product name (for Microsoft applications on Windows Server only) </font>: 
+  - <font color=red> Product name (for Microsoft applications on Windows Server only) </font>:
     - For example, Word 2016, BizTalk Server, and so on.
-  - <font color=red> Classification </font>: 
+  - <font color=red> Classification </font>:
     - For example, critical updates, security updates, and so on.
-  - <font color=red> Severity </font>: 
+  - <font color=red> Severity </font>:
     - For example, critical, important, and so on.
 
-- For each approval rule, you can choose to specify an **auto-approval delay** or specify a **patch approval cutoff date**. 
+- For each approval rule, you can choose to specify an **auto-approval delay** or specify a **patch approval cutoff date**.
   - Because it's not possible to reliably determine the release dates of update packages for Ubuntu Server, the auto-approval options are not supported for this OS.
-  - An **auto-approval delay**: 
-    - the number of days to wait after the patch was released, before the patch is automatically approved for patching. 
+  - An **auto-approval delay**:
+    - the number of days to wait after the patch was released, before the patch is automatically approved for patching.
     - For example
-      - create a rule using the `CriticalUpdates` classification 
-      - and configure it for seven days auto-approval delay, 
+      - create a rule using the `CriticalUpdates` classification
+      - and configure it for seven days auto-approval delay,
       - then a new critical patch released on July 7 is automatically approved on July 14.
-    - If a Linux repository doesn’t provide release date information for packages, 
-      - Systems Manager uses the build time of the package as the auto-approval delay for Amazon Linux, Amazon Linux 2, RHEL, and CentOS. 
+    - If a Linux repository doesn’t provide release date information for packages,
+      - Systems Manager uses the build time of the package as the auto-approval delay for Amazon Linux, Amazon Linux 2, RHEL, and CentOS.
       - If the system isn't able to find the build time of the package, Systems Manager treats the auto-approval delay as having a value of zero.
 
-  - **auto-approval cutoff date**, 
-    - Patch Manager automatically applies all patches released on or before that date. 
+  - **auto-approval cutoff date**,
+    - Patch Manager automatically applies all patches released on or before that date.
     - For example
-      - specify July 7, 2020, as the cutoff date, 
+      - specify July 7, 2020, as the cutoff date,
       - no patches released on or after July 8, 2020, are installed automatically.
 
-- specify a compliance severity level. 
-  - If an approved patch is reported as missing, `Compliance Level` is the severity of the compliance violation. 
+- specify a compliance severity level.
+  - If an approved patch is reported as missing, `Compliance Level` is the severity of the compliance violation.
 
 > multiple **patch baselines** - different **auto-approval delays or cutoff dates**
-> deploy patches at different rates to different instances. 
+> deploy patches at different rates to different instances.
 > For example
-> create separate patch baselines, auto-approval delays, andcutoff dates for development and production environments. 
-> This enables you to test patches in the development environment before they get deployed in the production environment. 
+> create separate patch baselines, auto-approval delays, andcutoff dates for development and production environments.
+> This enables you to test patches in the development environment before they get deployed in the production environment.
 
 to create a patch baseline:
-- Patch Manager provides one predefined patch baseline for each supported OS. 
+- Patch Manager provides one predefined patch baseline for each supported OS.
   - These predefined patch baselines are used as the default patch baselines for each OS type
-  - unless you create the own patch baseline and designate it as the default for the corresponding OS type. 
+  - unless you create the own patch baseline and designate it as the default for the corresponding OS type.
 
-- For Windows Server, three predefined patch baselines are provided. 
+- For Windows Server, three predefined patch baselines are provided.
   - The configuration settings in these two patch baselines are the same.
-    - `AWS-DefaultPatchBaseline`: the default patch baseline for Windows Server instances, unless specify a different patch baseline. 
-    - `AWS-WindowsPredefinedPatchBaseline-OS`, was created to distinguish it from the third predefined patch baseline for Windows Server. 
-    - <font color=red> support only OS updates on the Windows OS itself </font>. 
+    - `AWS-DefaultPatchBaseline`: the default patch baseline for Windows Server instances, unless specify a different patch baseline.
+    - `AWS-WindowsPredefinedPatchBaseline-OS`, was created to distinguish it from the third predefined patch baseline for Windows Server.
+    - <font color=red> support only OS updates on the Windows OS itself </font>.
   - `AWS-WindowsPredefinedPatchBaseline-OS-Applications`, can be used to apply patches to both the Windows Server OS and supported Microsoft applications.
 
 - For on-premises servers and virtual machines (VMs)
-  - Patch Manager attempts to use the custom default patch baseline. 
+  - Patch Manager attempts to use the custom default patch baseline.
   - If no custom default patch baseline exists, the system uses the **predefined patch baseline** for the corresponding OS.
 
 
@@ -1061,39 +1061,39 @@ to create a patch baseline:
 
 # patch groups
 
-use a **patch group** to associate instances with a specific patch baseline in Patch Manager. 
-- ensure deploying the appropriate patches, based on the associated patch baseline rules, to the correct set of instances. 
-- avoid deploying patches before they have been adequately tested. 
+use a **patch group** to associate instances with a specific patch baseline in Patch Manager.
+- ensure deploying the appropriate patches, based on the associated patch baseline rules, to the correct set of instances.
+- avoid deploying patches before they have been adequately tested.
 - For example
-  - create patch groups for different environments (such as Development, Test, and Production) 
-  - and register each patch group to an appropriate patch baseline. 
+  - create patch groups for different environments (such as Development, Test, and Production)
+  - and register each patch group to an appropriate patch baseline.
 - A patch group can be registered with only one patch baseline for each operating system type.
 - An instance can only be in one patch group.
 
 
 run `AWS-RunPatchBaseline`
-- target managed instances using **instance ID or tags**. 
+- target managed instances using **instance ID or tags**.
 - SSM Agent and Patch Manager then evaluate which patch baseline to use based on the patch group value that you added to the instance.
 
-create a patch group by using EC2 tags. 
-- unlike other tagging scenarios across Systems Manager, a patch group *must* be defined with the tag key: **Patch Group**. 
-- Note that the key is case-sensitive. 
+create a patch group by using EC2 tags.
+- unlike other tagging scenarios across Systems Manager, a patch group *must* be defined with the tag key: **Patch Group**.
+- Note that the key is case-sensitive.
 - You can specify any value, for example "web servers," but the key must be **Patch Group**.
 
 
 After you create a patch group and tag instances
-- register the patch group with a patch baseline. 
-- Registering the patch group with a patch baseline ensures that the instances within the patch group use the rules defined in the associated patch baseline. 
+- register the patch group with a patch baseline.
+- Registering the patch group with a patch baseline ensures that the instances within the patch group use the rules defined in the associated patch baseline.
 
 
 ## How it works
 
 when a maintenance window is configured to send a command to patch using Patch Manager.
 - the system `runs the task to apply a patch baseline to an instance`
-- **SSM Agent** verifies that a **patch group** value is defined for the instance. 
+- **SSM Agent** verifies that a **patch group** value is defined for the instance.
 - If the instance is assigned to a patch group
-  - Patch Manager then verifies which patch baseline is registered to that group. 
-  - if a patch baseline is found for that group, Patch Manager notifies SSM Agent to use the associated patch baseline. 
+  - Patch Manager then verifies which patch baseline is registered to that group.
+  - if a patch baseline is found for that group, Patch Manager notifies SSM Agent to use the associated patch baseline.
 - if an instance isn't configured for a patch group
   - Patch Manager automatically notifies SSM Agent to use the currently configured default patch baseline.
 
@@ -1121,42 +1121,42 @@ two Windows Server patch baselines:
 
 The general process to scan or install patches using Run Command:
 
-1. **Send a command to patch**: 
-   - Use the Systems Manager console, SDK, AWS Command Line Interface (AWS CLI), or AWS Tools for Windows PowerShell 
-   - to send a Run Command task using the document `AWS-RunPatchBaseline`. 
+1. **Send a command to patch**:
+   - Use the Systems Manager console, SDK, AWS Command Line Interface (AWS CLI), or AWS Tools for Windows PowerShell
+   - to send a Run Command task using the document `AWS-RunPatchBaseline`.
    - The diagram shows a **Run Command task**: to patch managed instances by targeting the tag `key=OS,value=Windows`.
 
-2. **Patch baseline determination**: 
+2. **Patch baseline determination**:
    - SSM Agent verifies the patch group tags applied to the EC2 instance and queries Patch Manager for the corresponding patch baseline.
 
    - **Matching patch group value associated with patch baseline:**
 
-     1. SSM Agent receives the command issued in Step 1 to begin a patching operation. 
-     2. SSM Agent validates that the EC2 instances have the **patch group tag-value** `DEV` applied 
+     1. SSM Agent receives the command issued in Step 1 to begin a patching operation.
+     2. SSM Agent validates that the EC2 instances have the **patch group tag-value** `DEV` applied
      3. queries Patch Manager for an associated patch baseline.
      4. Patch Manager verifies that patch baseline `pb-9876543210abcdef0` has the patch group `DEV` associated and notifies SSM Agent.
      5. SSM Agent `retrieves a patch baseline snapshot` from Patch Manager based on the **approval rules and exceptions** configured in `pb-9876543210abcdef0` and proceeds to the next step.
 
    - **No patch group tag added to instance:**
 
-     1. SSM Agent receives the command issued in Step 1 to begin a patching operation. 
-     2. SSM Agent validates that the EC2 instances don't have a `Patch Group` tag applied 
+     1. SSM Agent receives the command issued in Step 1 to begin a patching operation.
+     2. SSM Agent validates that the EC2 instances don't have a `Patch Group` tag applied
      3. SSM Agent queries Patch Manager for the **default Windows patch baseline**.
      4. Patch Manager verifies that the default Windows Server patch baseline is `pb-0123456789abcdef0` and notifies SSM Agent.
      5. SSM Agent `retrieves a patch baseline snapshot` from Patch Manager based on the approval rules and exceptions configured in the default patch baseline `pb-0123456789abcdef0` and proceeds to the next step.
 
    - **No matching patch group value associated with a patch baseline:**
 
-     1. SSM Agent receives the command issued in Step 1 to begin a patching operation. 
+     1. SSM Agent receives the command issued in Step 1 to begin a patching operation.
      2. SSM Agent validates that the EC2 instances have the patch group tag-value `QA` applied
      3. queries Patch Manager for an associated patch baseline.
      4. Patch Manager does not find a patch baseline that has the patch group `QA` associated.
      5. Patch Manager notifies SSM Agent to use the **default Windows patch baseline** `pb-0123456789abcdef0`.
      6. SSM Agent `retrieves a patch baseline snapshot` from Patch Manager based on the approval rules and exceptions configured in the default patch baseline `pb-0123456789abcdef0` and proceeds to the next step.
 
-3. **Patch scan or install**: 
+3. **Patch scan or install**:
    - After determining the appropriate patch baseline to use
-   - SSM Agent begins either `scanning for or installing patches` based on the operation value specified in Step 1. 
+   - SSM Agent begins either `scanning for or installing patches` based on the operation value specified in Step 1.
    - The patches that are scanned for or installed are determined by the approval rules and patch exceptions defined in the **patch baseline snapshot** provided by Patch Manager.
 
 

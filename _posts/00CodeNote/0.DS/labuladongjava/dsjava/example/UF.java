@@ -4,7 +4,7 @@ public class UF{
     private int count;
     private int[] parent;
     private int[] size;
-    
+
     public UF(int n){
         parent = new int[n];
         size = new int[n];
@@ -14,7 +14,7 @@ public class UF{
         }
         this.count = n;
     }
-    
+
     public int find(int x) {
         while(parent[x]!=x) {
             parent[x] = parent[parent[x]];
@@ -22,11 +22,11 @@ public class UF{
         }
         return x;
     }
-    
+
     public int count() {
         return count;
     }
-    
+
     public void union(int p, int q) {
         int rootP = find(p);
         int rootQ = find(q);
@@ -39,7 +39,7 @@ public class UF{
             size[rootQ] += size[rootP];
         }
     }
-    
+
     public boolean connected(int p, int q) {
         int rootP = find(p);
         int rootQ = find(q);

@@ -86,7 +86,7 @@ Properties:
       # The configuration details for any global resource are the same in all regions. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources.
       ResourceTypes:
         - "AWS::EC2::Volume"
-      # A comma-separated list that specifies the types of AWS resources for which AWS Config records configuration changes  
+      # A comma-separated list that specifies the types of AWS resources for which AWS Config records configuration changes
   # The Amazon Resource Name (ARN) of the IAM role that is used to make read or write requests to the delivery channel and to get configuration details for supported AWS resources.
   RoleARN:
       Fn::GetAtt:
@@ -184,7 +184,7 @@ Properties:
   # You can specify a value for MaximumExecutionFrequency when:
   # use an AWS managed rule that is triggered at a periodic frequency.
   # the custom rule is triggered when AWS Config delivers the configuration snapshot.
-  # By default, rules with a periodic trigger are evaluated every 24 hours.  
+  # By default, rules with a periodic trigger are evaluated every 24 hours.
   # Allowed values: One_Hour | Six_Hours | Three_Hours | Twelve_Hours | TwentyFour_Hours
   MaximumExecutionFrequency: String
 
@@ -193,7 +193,7 @@ Properties:
   # - a combination of one resource type and one resource ID,
   # - or a combination of a tag key and value.
   # Specify a scope to constrain the resources that can trigger an evaluation for the rule.
-  # If do not specify a scope, evaluations are triggered when any resource in the recording group changes.  
+  # If do not specify a scope, evaluations are triggered when any resource in the recording group changes.
   Scope:
     # The ID of the only AWS resource that want to trigger an evaluation for the rule.
     # If specify a resource ID, must specify one resource type for ComplianceResourceTypes.
@@ -201,7 +201,7 @@ Properties:
     # The resource types of only those AWS resources that you want to trigger an evaluation for the rule.
     # can only specify one type if you also specify a resource ID for ComplianceResourceId.
     ComplianceResourceTypes:
-      - String 
+      - String
       - "AWS::EC2::Volume"
     # The tag key that is applied to only those AWS resources that you want to trigger an evaluation for the rule.
     TagKey: String
@@ -533,7 +533,7 @@ Resources:
             - s3:CreateBucket
             - s3:DeleteBucket
             - events:*
-            - config:*      
+            - config:*
             Effect: Allow
             Resource: "*"
           - Action: iam:PassRole

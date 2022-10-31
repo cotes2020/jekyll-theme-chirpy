@@ -60,7 +60,7 @@ SSL缺省只进行server端的认证，客户端的认证是可选的。
 
 ---
 
-### Phase I of Handshake Protocol:  
+### Phase I of Handshake Protocol:
 
 ![Pasted Graphic 17](https://i.imgur.com/jyjhio1.png)
 

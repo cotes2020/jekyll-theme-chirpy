@@ -1,6 +1,6 @@
 package array;
 
-public class CircularlyLinkedList<E> { 
+public class CircularlyLinkedList<E> {
 
     private Node<E> tail = null;
     private int size = 0;
@@ -12,7 +12,7 @@ public class CircularlyLinkedList<E> {
     public boolean isEmpty() {return size == 0;}
 
     public E first() {
-        return isEmpty()? null:tail.getNext().getElement(); 
+        return isEmpty()? null:tail.getNext().getElement();
     }
     public E last() {
         return isEmpty()? null:tail.getElement();
@@ -32,7 +32,7 @@ public class CircularlyLinkedList<E> {
     }
     public void addLast(E e) {
         addFrist(e);
-        tail = tail.getNext(); 
+        tail = tail.getNext();
     }
 
     public E removeFirst() {

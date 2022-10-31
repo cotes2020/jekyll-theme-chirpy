@@ -56,12 +56,12 @@ import unittest
 # 被测函数
 def add(a, b):
     return a + b
-    
+
 # 测试用例
 class demoTest(unittest.TestCase):
     def test_add_4_5(self):
         self.assertEquals(add(4,5),9)
-        
+
 # 主函数
 if __name__ == '__main__':
     unittest.main()
@@ -139,7 +139,7 @@ class TestDict(unittest.TestCase):
    - 不以`test`开头的方法不被认为是测试方法，测试的时候不会被执行。
    - 对每一类测试都需要编写一个`test_xxx()`方法。
 3. `unittest.TestCase`提供了很多内置的条件判断，调用这些方法就可以断言输出是否是我们所期望的。
-   
+
    - 最常用的断言就是`assertEquals()`：
 
         ```py
@@ -154,7 +154,7 @@ class TestDict(unittest.TestCase):
         # 比如通过`d['empty']`访问不存在的key时，断言会抛出`KeyError`：
         with self.assertRaises(KeyError):
             value = d['empty']
-            
+
         # 通过`d.empty`访问不存在的key时，我们期待抛出`AttributeError`：
         with self.assertRaises(AttributeError):
             value = d.empty

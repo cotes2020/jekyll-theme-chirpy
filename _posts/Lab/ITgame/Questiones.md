@@ -118,7 +118,7 @@ for i in permutations([1, 2, 3, 4], 3):
     for j in range(0, len(i)):
         k = k + str(i[j])
     a.append(k)
-    print (int(k))      
+    print (int(k))
     # 123
     # 124
     # 132

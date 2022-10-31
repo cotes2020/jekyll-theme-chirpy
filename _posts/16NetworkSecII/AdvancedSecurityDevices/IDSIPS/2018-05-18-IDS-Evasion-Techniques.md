@@ -220,7 +220,7 @@ Examples:
 attacker `delivers data in multiple, smallsized packets` to the target computer
 - `deliver the payload over multiple packets over long periods of time`
   - effective against IDS that `do not reconstruct packets before checking them again through intrusion signatures`
-  - Many IDS `stop reassembly if they do not receive packets within a certain time`  
+  - Many IDS `stop reassembly if they do not receive packets within a certain time`
   - If attackers are aware of delays in packet reassembly at the IDS, they add delays between packet transmissions to bypass the reassembly
   - IDS become useless if the target host keeps sessions active for a longer time than the IDS reassembly time
 

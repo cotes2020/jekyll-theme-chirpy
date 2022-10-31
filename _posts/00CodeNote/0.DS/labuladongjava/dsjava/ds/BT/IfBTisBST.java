@@ -9,7 +9,7 @@ public class IfBTisBST {
     public boolean isBST(Node root){
         return ifBTisBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
-    
+
     private boolean ifBTisBST(Node node, int min, int max) {
         if(node == null) {return true;}
         if(node.data < min || node.data > max) {return false;}
@@ -25,10 +25,10 @@ public class IfBTisBST {
         root = bt.addNode(17, root);
         root = bt.addNode(20, root);
         root = bt.addNode(0, root);
-        
+
         IfBTisBST isBST = new IfBTisBST();
         assert isBST.isBST(root);
         System.out.println(isBST.isBST(root));
     }
-    
+
 }

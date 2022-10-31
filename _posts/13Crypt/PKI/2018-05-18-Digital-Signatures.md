@@ -6,7 +6,7 @@ tags: [cryptography]
 toc: true
 image:
 ---
- 
+
 
 [toc]
 
@@ -25,7 +25,7 @@ Digital certificates
   - used to assert the online identities of individuals, computers, and other entities on a network.
 - They are issued by certification authorities (CAs)
   - who validate the identity of the certificate-holder both before the certificate is issued and when the certificate is used.
-- Common uses include business scenarios requiring authentication, encryption, and digital signing.  
+- Common uses include business scenarios requiring authentication, encryption, and digital signing.
 
 
 1. <font color=red> combine asymmetric cryptography and hashing </font>
@@ -59,16 +59,16 @@ Digital certificates
 
 The certificate purpose can be one of four settings:
 
-- <font color=red> Encryption.</font> A certificate with this purpose will contain cryptographic keys for encryption and decryption.  
+- <font color=red> Encryption.</font> A certificate with this purpose will contain cryptographic keys for encryption and decryption.
 
-- <font color=red> Signature.</font> A certificate with this purpose will contain cryptographic keys for signing data only.  
+- <font color=red> Signature.</font> A certificate with this purpose will contain cryptographic keys for signing data only.
 
-- <font color=red> Signature and encryption.</font> A certificate with this purpose covers all primary uses of a certificate’s cryptographic key, including encryption of data, decryption of data, initial logon, or digitally signing data.  
+- <font color=red> Signature and encryption.</font> A certificate with this purpose covers all primary uses of a certificate’s cryptographic key, including encryption of data, decryption of data, initial logon, or digitally signing data.
 
 - <font color=red> Signature and smartcard logon.</font> A certificate with this purpose allows for initial logon with a smart card, and digitally signing data; it cannot be used for data encryption.
 
 SSL is probably the first protocol to use digital certificates.
-- Now a days they are widely used where ever there is a need for signing and encryption.  
+- Now a days they are widely used where ever there is a need for signing and encryption.
 
 
 Certificate:
@@ -155,24 +155,23 @@ Digital Signature Standard (DSS).
 
 ## Certificate Issues
 
-Before clients use a certificate, they first verify it is valid with some checks. 
+Before clients use a certificate, they first verify it is valid with some checks.
 
-different certificate issues that can result in an invalid certificate. 
-- Browsers typically display an error describing the issue and encouraging users not to use the certificate. 
-- Applications that detect a certificate issue might display an error using a certificate, but they are typically coded to not use it. 
+different certificate issues that can result in an invalid certificate.
+- Browsers typically display an error describing the issue and encouraging users not to use the certificate.
+- Applications that detect a certificate issue might display an error using a certificate, but they are typically coded to not use it.
 
 Some of the common issues are:
-- Expired. 
-  - The first check is to ensure that it isn’t expired. 
+- Expired.
+  - The first check is to ensure that it isn’t expired.
   - If the certificate is expired, the computer system typically gives the user an error indicating the certificate is not valid.
-- Certificate not trusted. 
-  - The next check is to see if the certificate was issued by a trusted CA. 
+- Certificate not trusted.
+  - The next check is to see if the certificate was issued by a trusted CA.
 
 - Example
-  - Windows system will look in the `Trusted Root Certification Authority store` 
-  - If the system doesn’t have a copy of the CA’s certificate, it will indicate the certificate is not trusted. 
+  - Windows system will look in the `Trusted Root Certification Authority store`
+  - If the system doesn’t have a copy of the CA’s certificate, it will indicate the certificate is not trusted.
   - Users can override this warning, though there are often warnings encouraging users not to continue.
-- Improper certificate and key management. 
+- Improper certificate and key management.
   - Private keys should remain private.
   - If the certificates holding the private keys aren’t managed properly, it can compromise the certificate.
-

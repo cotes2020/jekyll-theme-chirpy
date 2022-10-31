@@ -276,7 +276,7 @@ DEPARTMENT    SHAWMOO
 ```sql
 SQL> SELECT * FROM department;
 
-DCODE    NAME                 PHONE       CHAIR   
+DCODE    NAME                 PHONE       CHAIR
 -------------------------------------------------
 CS     Computer Science    703-333-3333   10005
 

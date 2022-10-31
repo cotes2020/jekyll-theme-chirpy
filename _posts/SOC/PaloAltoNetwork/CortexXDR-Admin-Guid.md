@@ -365,7 +365,7 @@ To set up Directory Sync:
   - See the Directory Sync Service Getting Started Guide for instructions.
 - STEP 2 | Pair the Directory Sync to Cortex XDR apps.
   - Pairing can occur during Cortex XDR activation or after activate Cortex XDR apps.
-- STEP 3 | After activate and pair Cortex XDR apps with Directory Sync, must define which Active    
+- STEP 3 | After activate and pair Cortex XDR apps with Directory Sync, must define which Active
   - Directory domain the analytics engine should use.
 Wait about ten minutes after have paired Directory Sync before do this.
 

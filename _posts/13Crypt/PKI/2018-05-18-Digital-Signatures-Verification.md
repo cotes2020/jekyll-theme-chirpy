@@ -82,13 +82,13 @@ If Alice wanted to ensure the privacy of her message to Bob, she could add a ste
 ## Obtaining a Certificate From CA
 
 obtain a certificate for your business from commercial CAs.
-- The Issuing entities of commercial CAs provide certificate with a cost.  
+- The Issuing entities of commercial CAs provide certificate with a cost.
 
 - User without key
   - directly approach to a issuing CA
   - issuing CA will generate a Key pair on user's behalf.
   - give the private key and certificate containing the public key with Issuing CA's signature to user
-    - after all necessary validations as per CA's policy.  
+    - after all necessary validations as per CA's policy.
 
 - User with key
   - User generate key and CSR then send to Issuing CA for a certificate.
@@ -102,13 +102,13 @@ obtain a certificate for your business from commercial CAs.
 
 User must keep the private key secret.
 - If private key is compromised or lost then issuing CA must be informed.
-- CAs keep the certificates in Certificate Revocation List whose private keys believed to have been compromised or lost.  
+- CAs keep the certificates in Certificate Revocation List whose private keys believed to have been compromised or lost.
 
 self signed certificates
 - You can yourself be a CA and issue your own certificates
 - but for commercial purpose your self signed certificated will not be trusted.
 - Only established and well known CAs self signed certificates are trusted.
-- Root certificate of a CA is always self signed.  
+- Root certificate of a CA is always self signed.
 
 ---
 

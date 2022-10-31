@@ -93,7 +93,7 @@ differences between Docker and Traditional Virtualization.
 - The **traditional Virtual Machine technology** :
   - <font color=red> virtualize a set of hardwares to </font>
     - run a complete operation system
-    - and run the required application process on the system.  
+    - and run the required application process on the system.
     - <font color=red> runs a full-blown “guest” operating system </font> with virtual access to host resources through a hypervisor.
     - VMs incur a lot of overhead beyond what is being consumed by your application logic.
 
@@ -433,9 +433,9 @@ $ docker image ls
 
 ---
 
-### `docker pull ubuntu:18.04`获取镜像 
+### `docker pull ubuntu:18.04`获取镜像
 
-`docker pull` 
+`docker pull`
 - Docker Hub 上有大量的高质量的镜像可以用，
 - 从 Docker Image 仓库获取镜像
 
@@ -469,7 +469,7 @@ $ docker pull ubuntu:18.04
 
 ---
 
-### `docker run -it --rm ubuntu:18.04 bash` 运行 
+### `docker run -it --rm ubuntu:18.04 bash` 运行
 
 - 以镜像为基础启动并运行一个容器。
   - -i :交互式操作
@@ -985,7 +985,7 @@ $ docker import http://example.com/exampleimage.tgz example/imagerepo
 ---
 
 
-### `docker container rm ubuntu` 删除容器 
+### `docker container rm ubuntu` 删除容器
 
 
 ```bash

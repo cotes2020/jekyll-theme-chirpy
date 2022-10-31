@@ -2,8 +2,8 @@
 title: SEED Labs – Cross-Site Scripting Attack Lab
 # author: Grace JyL
 date: 2020-08-20 11:11:11 -0400
-description: 
-excerpt_separator: 
+description:
+excerpt_separator:
 categories: [Lab, SEED]
 tags: [Lab, XSS]
 math: true
@@ -36,7 +36,7 @@ toc: true
 
 ## Task 2 : Posting a malicious message to display cookies
 - When a user14 navigates to user11's account
-- user14's cookie gets displayed. 
+- user14's cookie gets displayed.
 - By design, the browser does not display the code, it runs it.
 
 ```js
@@ -53,8 +53,8 @@ toc: true
 ---
 
 ## Task 3 : Stealing cookies from the victim’s machine
-- provide code in the 'about me' section 
-  - obtain the cookie without having to be preset when the account of user11 is visited. 
+- provide code in the 'about me' section
+  - obtain the cookie without having to be preset when the account of user11 is visited.
 - injects a code that basically is a `GET request` for an image and also adds the cookie of the victim in the url itself.
 
 ```js
@@ -89,15 +89,15 @@ Connection: keep-alive
 ---
 
 ## Task 4 : session hijacking using the stolen cookies
-- stealing the session of a legitimate user by using their cookie and then add the victim as a friend. 
+- stealing the session of a legitimate user by using their cookie and then add the victim as a friend.
 
 ### capture the GET request packet
-- the process of adding a friend has to be known to the attacker. 
-  - the attacker creates another account say samy. 
-  - This account can be added as a friend to user11's account to observe the process of adding a friend. 
-- The attacker logs in to the account of samy and visits user11. 
+- the process of adding a friend has to be known to the attacker.
+  - the attacker creates another account say samy.
+  - This account can be added as a friend to user11's account to observe the process of adding a friend.
+- The attacker logs in to the account of samy and visits user11.
   - Then he enables the inspect mode of the browser
-  - watch the requests and cookies as he adds user11 as a friend to samy. 
+  - watch the requests and cookies as he adds user11 as a friend to samy.
 - The friend adding process then shows a `GET request`
   - `http网址www.xsslabelgg.com/action/friends/add?friend=43&__elgg_ts=15281&__elgg_token=f0aaabcel`
   -                                                 userid &   Time Stamp  &  Security Token
@@ -130,20 +130,20 @@ Connection: keep-alive
 ```
 
 - If the web app does not match passwords (or the case when we have the password of the intended victim)
-- can simply use a python script to use the authentication and use requests module to send a `GET request` and the attack will have been executed. 
-- The code 
-  - take the input from the nc command, split into sections to get the required cookies and the tokens. 
-  - send a request to the desired link using the `HTTPBasicAuth` module and the cookies and parameters set along with the `GET request`. 
+- can simply use a python script to use the authentication and use requests module to send a `GET request` and the attack will have been executed.
+- The code
+  - take the input from the nc command, split into sections to get the required cookies and the tokens.
+  - send a request to the desired link using the `HTTPBasicAuth` module and the cookies and parameters set along with the `GET request`.
   - This can be used in cases when the script file we make is bigger than the allowed number of characters inside the text box that has the vulnerability.
 
 To actually make other accounts execute the malicious code, the code needs to be in the same place where the previous codes to obtain cookie and the tokens were placed. This is the case when the password of the victim is not held with the attacker.
 - use the following code in javascript using AJAX
-- store it into the 'about me' section of user11. 
+- store it into the 'about me' section of user11.
 
-This code forms the `GET request` to duplicate the add friend action of the web app. 
-- When the victim say alice views the homepage of the attacker user11, 
-- her browser will read this code 
-- execute the javascript inside the tags. 
+This code forms the `GET request` to duplicate the add friend action of the web app.
+- When the victim say alice views the homepage of the attacker user11,
+- her browser will read this code
+- execute the javascript inside the tags.
 - Since the user is logged in while the code is executed, the attack will run smoothly and user11 will be added to the friend list of alice.
 
 
@@ -362,8 +362,8 @@ ff.send(params);
     var header = "<script id=\"worm\" type=\"text/javascript\" >";
 
     // innerHTML only gives us the inside part of the code, not including the surrounding script tags.
-    var copy = document.getElementById("worm").innerHTML; 
-    
+    var copy = document.getElementById("worm").innerHTML;
+
     var tail = "</" + "script>";
     var wormCode = encodeURIComponent(header+copy+tail);
     alert(jsCode);
@@ -415,28 +415,28 @@ params = "__elgg_ts=".concat(ts)
 ff.send(params);
 ```
 
-- The `escape()` function converts the `inner strings` to `URLencoding` for http transfer. 
-- Now when a user views the profile of user11, 
-- the user's account will have its 'about me' section set to "User-11-is-great". 
-- Also the code itself will be copied to the user's page. 
-- Also now since the code is in the user's page, whenever a user views the account of this user, the code will get executed and the new user will also have his account modified. 
-- The add friend exploit can also e added to the above code as a new `XMLHttpRequest` part. 
+- The `escape()` function converts the `inner strings` to `URLencoding` for http transfer.
+- Now when a user views the profile of user11,
+- the user's account will have its 'about me' section set to "User-11-is-great".
+- Also the code itself will be copied to the user's page.
+- Also now since the code is in the user's page, whenever a user views the account of this user, the code will get executed and the new user will also have his account modified.
+- The add friend exploit can also e added to the above code as a new `XMLHttpRequest` part.
 - That code will become the exact replica of the famous Samy's worm attack of 2005.
 
 ---
 
 ## Task 7 : Countermeasures
-- Elgg have a built in countermeasures to defend XSS attack. 
+- Elgg have a built in countermeasures to defend XSS attack.
   - a custom built security plugin `HTMLawed 1.8` on the Elgg web application which on activation
-  - validates the user input and removes the tags from the input. 
-  - This specific plugin is registered to the function `filter_tags` in the `elgg/ engine/lib/input.php` file. 
-  - The countermeasures have been deactivated and commented out to make the attack work. 
-    - To turn on the countermeasure, login to the application as admin, goto `administration -> plugins`, and select security and spam in the dropdown menu. The `HTMLawed 1.8 plugin` is below. This can now be activated. 
+  - validates the user input and removes the tags from the input.
+  - This specific plugin is registered to the function `filter_tags` in the `elgg/ engine/lib/input.php` file.
+  - The countermeasures have been deactivated and commented out to make the attack work.
+    - To turn on the countermeasure, login to the application as admin, goto `administration -> plugins`, and select security and spam in the dropdown menu. The `HTMLawed 1.8 plugin` is below. This can now be activated.
 
 
 - another built-in PHP method called `htmlspecialchars()`
-  - to encode the special characters in the user input, such as encoding `"<" to &lt`, `">" to &gt;`, etc. 
-  - Go to the directory `elgg/views/default/output` and find the function call `htmlspecialchars` in `text.php, tagcloud.php, tags.php, access.php, tag.php, friendlytime.php, url.php, dropdown.php, email.php` and `confirmlink.php` files. 
+  - to encode the special characters in the user input, such as encoding `"<" to &lt`, `">" to &gt;`, etc.
+  - Go to the directory `elgg/views/default/output` and find the function call `htmlspecialchars` in `text.php, tagcloud.php, tags.php, access.php, tag.php, friendlytime.php, url.php, dropdown.php, email.php` and `confirmlink.php` files.
   - Uncomment the corresponding `htmlspecialchars` function calls in each file.
 
 ---
@@ -445,7 +445,7 @@ The above was a detailed description of an XSS attack taking examples from the r
 
 The above is a documentation of a lab experiment by the name XSS attack lab (Elgg) from publicly available seed labs by Syracuse University.
 
-Seed Labs Copyright © Wenliang Du, Syracuse University. 
+Seed Labs Copyright © Wenliang Du, Syracuse University.
 I do not own any software mentioned in the above document.
 
 ---

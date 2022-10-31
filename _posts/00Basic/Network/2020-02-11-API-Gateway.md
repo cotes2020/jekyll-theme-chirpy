@@ -268,7 +268,7 @@ API 网关：开源
 
 ---
 
-### API Gateway + Function Compute  
+### API Gateway + Function Compute
 
 - use Function Compute to create a function that returns a result to the API Gateway service
 - monitor Alibaba Cloud API Gateway service directly from the Function Compute console.

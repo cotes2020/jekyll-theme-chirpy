@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, Sysadmin]
 tags: [Linux, Sysadmin, Setup, Firewall]
 math: true
-image: 
+image:
 ---
 
 
@@ -168,10 +168,10 @@ look at some of the rules, check the status of UFW:
     Status: active
          To                         Action      From
          --                         ------      ----
-    [ 1] 53/udp                     ALLOW IN    Anywhere                  
-    [ 2] 22                         ALLOW IN    Anywhere                  
-    [ 3] 53/udp (v6)                ALLOW IN    Anywhere (v6)             
-    [ 4] 22 (v6)                    ALLOW IN    Anywhere (v6)  
+    [ 1] 53/udp                     ALLOW IN    Anywhere
+    [ 2] 22                         ALLOW IN    Anywhere
+    [ 3] 53/udp (v6)                ALLOW IN    Anywhere (v6)
+    [ 4] 22 (v6)                    ALLOW IN    Anywhere (v6)
 
 
     // rules created actually alots
@@ -189,13 +189,13 @@ look at some of the rules, check the status of UFW:
 
 
     $ sudo ufw show raw | grep 22
-         229    10988 ufw-after-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-         224    10736 ufw-after-logging-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-         224    10736 ufw-reject-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-         224    10736 ufw-track-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-         229    10988 ufw-not-local  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+         229    10988 ufw-after-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+         224    10736 ufw-after-logging-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+         224    10736 ufw-reject-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+         224    10736 ufw-track-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+         229    10988 ufw-not-local  all  --  *      *       0.0.0.0/0            0.0.0.0/0
            0        0 ACCEPT     udp  --  *      *       0.0.0.0/0            224.0.0.251          udp dpt:5353
-         229    10988 ufw-user-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+         229    10988 ufw-user-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
          229    10988 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            ADDRTYPE match dst-type LOCAL
           22     2164 ACCEPT     udp  --  *      *       0.0.0.0/0            0.0.0.0/0            ctstate NEW
            0        0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            tcp dpt:22
@@ -220,37 +220,37 @@ $ sudo ufw show raw
 IPV4 (raw):
 
 Chain INPUT (policy DROP 0 packets, 0 bytes)
-    pkts      bytes target     prot opt in     out     source               destination         
-     314    22701 ufw-before-logging-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-     314    22701 ufw-before-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-     140     7041 ufw-after-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-     136     6841 ufw-after-logging-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-     136     6841 ufw-reject-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-     136     6841 ufw-track-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+    pkts      bytes target     prot opt in     out     source               destination
+     314    22701 ufw-before-logging-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+     314    22701 ufw-before-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+     140     7041 ufw-after-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+     136     6841 ufw-after-logging-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+     136     6841 ufw-reject-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+     136     6841 ufw-track-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0
 
 Chain FORWARD (policy DROP 0 packets, 0 bytes)
-    pkts      bytes target     prot opt in     out     source               destination         
-       0        0 ufw-before-logging-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-       0        0 ufw-before-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-       0        0 ufw-after-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-       0        0 ufw-after-logging-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-       0        0 ufw-reject-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-       0        0 ufw-track-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+    pkts      bytes target     prot opt in     out     source               destination
+       0        0 ufw-before-logging-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+       0        0 ufw-before-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+       0        0 ufw-after-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+       0        0 ufw-after-logging-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+       0        0 ufw-reject-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+       0        0 ufw-track-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0
 
 Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
-    pkts      bytes target     prot opt in     out     source               destination         
-     132    13843 ufw-before-logging-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-     132    13843 ufw-before-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-      12     1156 ufw-after-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-      12     1156 ufw-after-logging-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-      12     1156 ufw-reject-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
-      12     1156 ufw-track-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+    pkts      bytes target     prot opt in     out     source               destination
+     132    13843 ufw-before-logging-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+     132    13843 ufw-before-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+      12     1156 ufw-after-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+      12     1156 ufw-after-logging-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+      12     1156 ufw-reject-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0
+      12     1156 ufw-track-output  all  --  *      *       0.0.0.0/0            0.0.0.0/0
 
 Chain ufw-after-forward (1 references)
-    pkts      bytes target     prot opt in     out     source               destination         
+    pkts      bytes target     prot opt in     out     source               destination
 
 Chain ufw-after-input (1 references)
-    pkts      bytes target     prot opt in     out     source               destination         
+    pkts      bytes target     prot opt in     out     source               destination
        0        0 ufw-skip-to-policy-input  udp  --  *      *       0.0.0.0/0            0.0.0.0/0            udp dpt:137
        0        0 ufw-skip-to-policy-input  udp  --  *      *       0.0.0.0/0            0.0.0.0/0            udp dpt:138
        0        0 ufw-skip-to-policy-input  tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            tcp dpt:139
@@ -260,28 +260,28 @@ Chain ufw-after-input (1 references)
        0        0 ufw-skip-to-policy-input  all  --  *      *       0.0.0.0/0            0.0.0.0/0            ADDRTYPE match dst-type BROADCAST
 
 Chain ufw-after-logging-forward (1 references)
-    pkts      bytes target     prot opt in     out     source               destination         
+    pkts      bytes target     prot opt in     out     source               destination
        0        0 LOG        all  --  *      *       0.0.0.0/0            0.0.0.0/0            limit: avg 3/min burst 10 LOG flags 0 level 4 prefix "[UFW BLOCK] "
 
 Chain ufw-after-logging-input (1 references)
-    pkts      bytes target     prot opt in     out     source               destination         
+    pkts      bytes target     prot opt in     out     source               destination
       49     2294 LOG        all  --  *      *       0.0.0.0/0            0.0.0.0/0            limit: avg 3/min burst 10 LOG flags 0 level 4 prefix "[UFW BLOCK] "
 
 Chain ufw-after-logging-output (1 references)
-    pkts      bytes target     prot opt in     out     source               destination         
+    pkts      bytes target     prot opt in     out     source               destination
 
 Chain ufw-after-output (1 references)
-    pkts      bytes target     prot opt in     out     source               destination         
+    pkts      bytes target     prot opt in     out     source               destination
 
 Chain ufw-before-forward (1 references)
-    pkts      bytes target     prot opt in     out     source               destination         
+    pkts      bytes target     prot opt in     out     source               destination
        0        0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED
        0        0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0            icmptype 3
        0        0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0            icmptype 4
        0        0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0            icmptype 11
        0        0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0            icmptype 12
        0        0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0            icmptype 8
-       0        0 ufw-user-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+       0        0 ufw-user-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0
 
 
 ```

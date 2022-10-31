@@ -64,7 +64,7 @@ import re
 
     y=re.findall('^F.+:',x)   # greedy: it will give back the largest one.
     print(y)
-    ['From: sing the : ']    
+    ['From: sing the : ']
 
     y=re.findall('^F.+?:',x)  # dont be greedy: add '?'
     print(y)
@@ -83,7 +83,7 @@ import re
     data='From admin@google.com Sat Jan 5 09:14:23'
 
     # find the email adress
-    y=re.findall('\S+@\S+', data)  
+    y=re.findall('\S+@\S+', data)
     y=re.findall('^From (\S+@\S+)', data)   # parentheses, where to start and stop extract
 
     # find the hostname

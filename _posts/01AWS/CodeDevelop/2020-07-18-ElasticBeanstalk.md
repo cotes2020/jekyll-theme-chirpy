@@ -24,7 +24,7 @@ image:
 
 ## basics
 
-- AWS compute service option.  
+- AWS compute service option.
 - PaaS
 
 - deploys your code on:

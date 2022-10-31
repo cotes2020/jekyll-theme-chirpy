@@ -24,17 +24,17 @@
 # 4
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
-# 2. Trace the algorithm for creating an expression tree for the expression (4∗8)/6−3. 
+# 2. Trace the algorithm for creating an expression tree for the expression (4∗8)/6−3.
 from pythonds.basic import Stack
-from pythonds.trees import BinaryTree 
+from pythonds.trees import BinaryTree
 
 # def calculate(a, operator, b):
 #     if operator == '+': return a + b
 #     elif operator == '-': return a - b
 #     elif operator == '/': return a // b
 #     else: return a * b
+
 
 def expression_tree(input_word):
     char_list = input_word.split()
@@ -43,7 +43,7 @@ def expression_tree(input_word):
     tStack.push(eTree)
     cur_tree = eTree
     for char in char_list:
-        if char == "(":
+        if char == '(':
             cur_tree.insertLeft('')
             tStack.push(cur_tree)
             cur_tree = cur_tree.getLeftChild()
@@ -60,67 +60,69 @@ def expression_tree(input_word):
                 cur_tree.setRootVal(int(char))
                 cur_tree = tStack.pop()
             except ValueError:
-                raise ValueError("token '{}' is not a valid integer".format(char))
+                raise ValueError(
+                    "token '{}' is not a valid integer".format(char))
     return eTree
 # input_word = '( 4 * 8 ) / 6 - 3'
 # etree = expression_tree(input_word)
 # print(etree)
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
-# 3. Consider the following list of integers: [1,2,3,4,5,6,7,8,9,10]. 
+# 3. Consider the following list of integers: [1,2,3,4,5,6,7,8,9,10].
 # Show the binary search tree resulting from inserting the integers in the list.
-alist = [1,2,3,4,5,6,7,8,9,10]
+alist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-from pythonds.trees import BinaryTree
 
 class BST:
     def __init__(self, i):
         self.value = i
         self.lchild = None
-        self.rchild = None 
+        self.rchild = None
         self.parent = None
 
     def set_value(self, value): self.value = value
-    
+
     def get_value(self): return self.value
 
-    def set_lchild(self, node): 
+    def set_lchild(self, node):
         self.lchild = node
         node.parent = self
 
-    def set_rchild(self, node): 
+    def set_rchild(self, node):
         self.rchild = node
         node.parent = self
 
     def get_lchild(self): return self.lchild
     def get_rchild(self): return self.rchild
 
-    def put_node(self, node, i): 
+    def put_node(self, node, i):
         new_node = BST(i)
-        print("====node.value", node.value)
+        print('====node.value', node.value)
 
         if node == None or node.value == None:
             node = new_node
-            print("item ", i, "is child of node", node.value)
-            
-        if i == node.value: return node
+            print('item ', i, 'is child of node', node.value)
+
+        if i == node.value:
+            return node
 
         elif i > node.value:
-            print(i, ">", node.value)
-            if node.rchild == None: 
-                print("item ", i, "is rchild of node", node.value)
+            print(i, '>', node.value)
+            if node.rchild == None:
+                print('item ', i, 'is rchild of node', node.value)
                 node.rchild = new_node
                 node.set_rchild(new_node)
-            else: node.put_node(node.rchild, i)
+            else:
+                node.put_node(node.rchild, i)
         else:
-            print(i, "<", node.value)
-            if node.lchild == None: 
-                print("item ", i, "is lchild of node", node.value)
+            print(i, '<', node.value)
+            if node.lchild == None:
+                print('item ', i, 'is lchild of node', node.value)
                 node.lchild = new_node
                 node.set_lchild(new_node)
-            else: node.put_node(node.lchild, i)
+            else:
+                node.put_node(node.lchild, i)
         return node
 
 # eTree = BST(None)
@@ -129,10 +131,10 @@ class BST:
 # for i in alist:
 #     print(i)
 #     eTree = eTree.put_node(eTree, i)
- 
+
 
 # -------------------------------------- Excercises -------------------------------------------------
-# 4. Consider the following list of integers: [10,9,8,7,6,5,4,3,2,1]. 
+# 4. Consider the following list of integers: [10,9,8,7,6,5,4,3,2,1].
 # Show the binary search tree resulting from inserting the integers in the list.
 # eTree = BST(None)
 # alist = [10,9,8,7,6,5,4,3,2,1]
@@ -141,34 +143,34 @@ class BST:
 #     eTree = eTree.put_node(eTree, i)
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
-# 5. Generate a random list of integers. 
+# 5. Generate a random list of integers.
 # Show the binary heap tree resulting from inserting the integers on the list one at a time.
 class BHT():
 
-    def __init__(self): 
+    def __init__(self):
         self.heapList = [0]
         self.currentSize = 0
 
     def insert(self, k):
-        print("insert ", k)
+        print('insert ', k)
         self.heapList.append(k)
-        print("self.heapList: ", self.heapList)
+        print('self.heapList: ', self.heapList)
         self.currentSize += 1
         self.percUp(self.currentSize)
         print(self.heapList)
 
     def percUp(self, i):
-        while i // 2 > 0:  
+        while i // 2 > 0:
             # 第一个数字大    8，5, 6-> 5，6, 8
             if self.heapList[i] < self.heapList[i // 2]:
-                print(" change the position ", self.heapList[i], "<-", self.heapList[i // 2])
+                print(' change the position ',
+                      self.heapList[i], '<-', self.heapList[i // 2])
                 tmp = self.heapList[i // 2]
                 self.heapList[i // 2] = self.heapList[i]
                 self.heapList[i] = tmp
-            i= i//2
-      
+            i = i//2
+
 # bhTree = BHT()
 # alist = [5,9,11,14,18,19,21,33,17,27]
 # for i in alist:
@@ -212,26 +214,22 @@ class BHT():
 # [0, 5, 7, 11, 14, 9, 19, 21, 33, 17, 27, 18]
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
 # 6. Using the list from the previous question, show the binary heap tree resulting from using the list as a parameter to the buildHeap method. Show both the tree and list form.
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
-# 7. Draw the binary search tree that results from inserting the following keys in the order given: 
+# 7. Draw the binary search tree that results from inserting the following keys in the order given:
 # 68,88,61,89,94,50,4,76,66, and 82.
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
-# 8. Generate a random list of integers. 
+# 8. Generate a random list of integers.
 # Draw the binary search tree resulting from inserting the integers on the list.
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
-# 9. Consider the following list of integers: [1,2,3,4,5,6,7,8,9,10]. 
+# 9. Consider the following list of integers: [1,2,3,4,5,6,7,8,9,10].
 # Show the binary heap resulting from inserting the integers one at a time.
 # bhTree = BHT()
 # alist = [1,2,3,4,5,6,7,8,9,10]
@@ -270,9 +268,8 @@ class BHT():
 # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
-# 10. Consider the following list of integers: [10,9,8,7,6,5,4,3,2,1]. 
+# 10. Consider the following list of integers: [10,9,8,7,6,5,4,3,2,1].
 # Show the binary heap resulting from inserting the integers one at a time.
 
 # bhTree = BHT()
@@ -331,17 +328,15 @@ class BHT():
 # [0, 1, 2, 5, 4, 3, 9, 6, 10, 7, 8]
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
-# 11. Consider the two different techniques we used for implementing traversals of a binary tree. 
+# 11. Consider the two different techniques we used for implementing traversals of a binary tree.
 # Why must we check before the call to preorder when implementing as a method, whereas we could check inside the call when implementing as a function?
-
 
 
 # -------------------------------------- Excercises -------------------------------------------------
 # 12. Show the function calls needed to build the following binary tree.
 # class BHT():
-#     def __init__(self): 
+#     def __init__(self):
 #         self.heapList = [0]
 #         self.currentSize = 0
 #         self.value = [0]
@@ -357,7 +352,7 @@ class BHT():
 #         print(self.value)
 
 #     def percUp(self, i):
-#         while i // 2 > 0:  
+#         while i // 2 > 0:
 #             # 第一个数字大    8，5, 6-> 5，6, 8
 #             if self.heapList[i] < self.heapList[i // 2]:
 #                 print(" change the position ", self.heapList[i], "<-", self.heapList[i // 2])
@@ -412,9 +407,6 @@ class BHT():
 # [0, 'language', 'complied', 'interpreted', 'C', 'Java', 'Python', 'Scheme']
 
 
-
-
-
 # -------------------------------------- Excercises -------------------------------------------------
 # Given the following tree, perform the appropriate rotations to bring it back into balance.
 #       B
@@ -422,167 +414,147 @@ class BHT():
 #           |
 #       D       F
 #   c
- 
-from pythonds.trees import BinaryTree
+
 
 class BST:
     def __init__(self, i):
         self.value = i
         self.bvalue = 0
         self.lchild = None
-        self.rchild = None 
+        self.rchild = None
         self.parent = None
 
     def set_value(self, value): self.value = value
     def get_value(self): return self.value
     def get_bvalue(self): return self.bvalue
 
-    def set_lchild(self, node): 
+    def set_lchild(self, node):
         self.lchild = node
         node.parent = self
 
-    def set_rchild(self, node): 
+    def set_rchild(self, node):
         self.rchild = node
         node.parent = self
 
     def get_lchild(self): return self.lchild
     def get_rchild(self): return self.rchild
-    
+
     def islChild(self, node): return node.parent.lchild == node
     def isrChild(self, node): return node.parent.rchild == node
 
-    def put_node(self, node, i): 
+    def put_node(self, node, i):
         new_node = BST(i)
-        print("====node.value", node.value)
+        print('====node.value', node.value)
 
         if node == None or node.value == None:
             node = new_node
-            print("item ", i, "is child of node", node.value, "bvalue ", node.bvalue)
-            
-        if i == node.value: return node
+            print('item ', i, 'is child of node',
+                  node.value, 'bvalue ', node.bvalue)
+
+        if i == node.value:
+            return node
 
         elif i > node.value:
-            print(i, ">", node.value)
-            if node.rchild == None: 
+            print(i, '>', node.value)
+            if node.rchild == None:
                 # node.rchild = new_node
                 node.set_rchild(new_node)
-                print("item ", i, "is rchild of node", node.value, "bvalue ", node.bvalue)
+                print('item ', i, 'is rchild of node',
+                      node.value, 'bvalue ', node.bvalue)
                 new_node.updateBalance(new_node)
 
-            else: node.put_node(node.rchild, i)
+            else:
+                node.put_node(node.rchild, i)
         else:
-            print(i, "<", node.value)
+            print(i, '<', node.value)
             if node.lchild == None:
                 # node.lchild = new_node
                 node.set_lchild(new_node)
-                print("item ", i, "is lchild of node", node.value, "bvalue ", node.bvalue)
+                print('item ', i, 'is lchild of node',
+                      node.value, 'bvalue ', node.bvalue)
                 new_node.updateBalance(new_node)
-            else: node.put_node(node.lchild, i)
+            else:
+                node.put_node(node.lchild, i)
 
         return node
 
     def updateBalance(self, node):
-        print(node.value, "bvalue is ", node.bvalue)
-        if node.bvalue >1 or node.bvalue <-1:
+        print(node.value, 'bvalue is ', node.bvalue)
+        if node.bvalue > 1 or node.bvalue < -1:
             node.reban(node)
         if node.parent != None:
-            if node.islChild(node): 
+            if node.islChild(node):
                 node.parent.bvalue += 1
-                print(node.parent.value, " bvalue +1: ", node.bvalue)
-            elif node.isrChild(node): 
+                print(node.parent.value, ' bvalue +1: ', node.bvalue)
+            elif node.isrChild(node):
                 node.parent.bvalue -= 1
-                print(node.parent.value, " bvalue -1: ", node.bvalue)
+                print(node.parent.value, ' bvalue -1: ', node.bvalue)
             if node.parent.bvalue != 0:
                 node.updateBalance(node.parent)
-
 
     def reban(self, node):
         # node.hight
         return
 
 
-        
 #       B
 #   A       E
 #           |
 #       D       F
 #   c
-
-bTree = BST("B")
-bTree = bTree.put_node(bTree, "A")
-bTree = bTree.put_node(bTree, "E")
-bTree = bTree.put_node(bTree, "D")
-bTree = bTree.put_node(bTree, "F")
-bTree = bTree.put_node(bTree.rchild.lchild, "C")
-
-
-
-
-
+bTree = BST('B')
+bTree = bTree.put_node(bTree, 'A')
+bTree = bTree.put_node(bTree, 'E')
+bTree = bTree.put_node(bTree, 'D')
+bTree = bTree.put_node(bTree, 'F')
+bTree = bTree.put_node(bTree.rchild.lchild, 'C')
 
 
 # -------------------------------------- Excercises -------------------------------------------------
 # Using the following as a starting point, derive the equation that gives the updated balance factor for node D.
 
 
-
-
-
-
-
-
 # 7.22. Programming Exercises
-
 
 
 # -------------------------------------- Excercises -------------------------------------------------
 # Extend the buildParseTree function to handle mathematical expressions that do not have spaces between every character.
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
 # Modify the buildParseTree and evaluate functions to handle boolean statements (and, or, and not). Remember that “not” is a unary operator, so this will complicate your code somewhat.
-
 
 
 # -------------------------------------- Excercises -------------------------------------------------
 # Using the findSuccessor method, write a non-recursive inorder traversal for a binary search tree.
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
 # Modify the code for a binary search tree to make it threaded. Write a non-recursive inorder traversal method for the threaded binary search tree. A threaded binary tree maintains a reference from each node to its successor.
-
 
 
 # -------------------------------------- Excercises -------------------------------------------------
 # Modify our implementation of the binary search tree so that it handles duplicate keys properly. That is, if a key is already in the tree then the new payload should replace the old rather than add another node with the same key.
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
 # Create a binary heap with a limited heap size. In other words, the heap only keeps track of the n most important items. If the heap grows in size to more than n items the least important item is dropped.
-
 
 
 # -------------------------------------- Excercises -------------------------------------------------
 # Clean up the printexp function so that it does not include an ‘extra’ set of parentheses around each number.
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
 # Using the buildHeap method, write a sorting function that can sort a list in 𝑂(𝑛log𝑛) time.
-
 
 
 # -------------------------------------- Excercises -------------------------------------------------
 # Write a function that takes a parse tree for a mathematical expression and calculates the derivative of the expression with respect to some variable.
 
 
-
 # -------------------------------------- Excercises -------------------------------------------------
 # Implement a binary heap as a max heap.
-
 
 
 # -------------------------------------- Excercises -------------------------------------------------

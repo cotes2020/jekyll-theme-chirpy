@@ -424,7 +424,7 @@ secret
 
 
 
----  
+---
 
 ## 架构设计考虑
 
@@ -723,10 +723,10 @@ kubectl [flags]
 kubectl [command]
 
 
-$ kubectl get nodes  
+$ kubectl get nodes
 # NAME       STATUS   ROLES                  AGE   VERSION
 # minikube   Ready    control-plane,master   53s   v1.23.3
-$ kubectl get pod   
+$ kubectl get pod
 $ kubectl get services
 
 
@@ -783,12 +783,12 @@ distrubuted system and containers
 
 
 ```bash
-$ kubectl create deployment NAME --image=image [-dry-run]           
+$ kubectl create deployment NAME --image=image [-dry-run]
 
 $ kubectl create deployment nginx-depl --image=nginx
 
 
-$ kubectl get deployment                
+$ kubectl get deployment
 # NAME         READY   UP-TO-DATE   AVAILABLE   AGE
 # nginx-depl   1/1     1            1           36s
 
@@ -875,11 +875,11 @@ status:
 
 
 # HorizontalPodAutoscalers
-kubectl get hpa       
+kubectl get hpa
 
 
 # view on workers in a cold state without any traffic.
-kubectl get nodes -L role 
+kubectl get nodes -L role
 ```
 
 

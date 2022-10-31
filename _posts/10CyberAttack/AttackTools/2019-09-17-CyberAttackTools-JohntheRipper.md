@@ -56,10 +56,10 @@ john --format=raw-md5 /usr/wordlist/rockyou.txt /usr/Desktop/passwdhash.txt
 
 ## different passwd
 
-1. Windows passwords: 
+1. Windows passwords:
    - hash from hashdump in Meterpreter — John
 
-2. Linux passwords: 
+2. Linux passwords:
    - captured shadow file, passwd file — unshadow program
    - early days of Unix, there was a single file stored user info and passwords were
    - Problem:
@@ -81,5 +81,3 @@ Once you have the two files merged by unshadow, run John against it to acquire t
   - `$6$`: hashed using the secure hash algorithm with 512 bits for the output (SHA-512 ).
 - What comes after that is the hashed password that John will be comparing against.
 - John isn't the only way to obtain passwords from local files.
-
-

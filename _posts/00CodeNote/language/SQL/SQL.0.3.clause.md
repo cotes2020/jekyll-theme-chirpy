@@ -139,7 +139,7 @@ SELECT * FROM Persons LIMIT 5;
 SELECT * FROM Persons WHERE ROWNUM <=5;
 SELECT TOP 50 PERCENT * FROM Websites;
 SELECT TOP 5 * from table
-SELECT TOP 5 * from table order by id desc  
+SELECT TOP 5 * from table order by id desc
 // desc 表示降序排列 asc 表示升序
 ```
 
@@ -513,7 +513,7 @@ SQL> UPDATE table_name SET key_no =rownum;
      commit;
 
 第三步：将key_no置为非空
-SQL> ALERT TABLE table_name MODIFY key_no   int   not null;           
+SQL> ALERT TABLE table_name MODIFY key_no   int   not null;
 
 
 第四步：查找主键

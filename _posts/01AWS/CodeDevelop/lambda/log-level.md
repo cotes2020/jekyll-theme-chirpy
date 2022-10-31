@@ -18,7 +18,7 @@
 
 use `logger`
 - to log messages that you want to see.
-- By default, there are 5 standard levels indicating the severity of events.  
+- By default, there are 5 standard levels indicating the severity of events.
   - `CRITICAL` (highest severity)
   - `ERROR`
   - `WARNING`
@@ -61,13 +61,13 @@ the `debug()` and `info()` messages didn’t get logged.
   - this function can only be called once.
 
   - commonly used parameters for `basicConfig()` are the following:
-    - `level`: 
+    - `level`:
       - The root logger will be set to the specified severity level.
     - `filename`: This specifies the file.
     - `filemode`: If filename is given, the file is opened in this mode. The default is a, which means append.
     - `format`: the format of the log message.
   - using the level parameter, set what level of log messages to record.
-  - passing the constants available in the class, and this would enable all logging calls at or above that level to be logged. 
+  - passing the constants available in the class, and this would enable all logging calls at or above that level to be logged.
 
 ```py
 import logging
@@ -139,8 +139,8 @@ logging.error(f'{name} raised an error')
 
 ### Capturing Stack Traces
 1. `logging.error()`
-   - The logging module allows you to capture the full stack traces in an application. 
-   - Exception information can be captured if the `exc_info` parameter is passed as `True` 
+   - The logging module allows you to capture the full stack traces in an application.
+   - Exception information can be captured if the `exc_info` parameter is passed as `True`
 
 ```py
 import logging
@@ -164,7 +164,7 @@ except Exception as e:
    - logs a message with level `ERROR` and adds exception information to the message.
      - `logging.exception()` would show a log at the level of `ERROR`.
      - If you don’t want that
-       - call any of the other logging methods from `debug()` to `critical()` 
+       - call any of the other logging methods from `debug()` to `critical()`
        - and pass the `exc_info` parameter as `True`.
    - calling `logging.exception()` is like calling `logging.error(exc_info=True)`.
    - But since this method always dumps exception information, it should only be called from an exception handler.
@@ -288,11 +288,11 @@ Resources:
   - useful to set multiple handlers for the same logger but want different severity levels for each of them.
   - For example
   - logs with level `WARNING` and above to be logged to the console,
-  - but everything with level `ERROR` and above should also be saved to a file.  
+  - but everything with level `ERROR` and above should also be saved to a file.
 
 
-1. creating a `LogRecord` 
-   - it holds all the information of the event 
+1. creating a `LogRecord`
+   - it holds all the information of the event
    - and passing it to all the Handlers it has: `c_handler` and `f_handler`.
 2. `c_handler`
    - a `StreamHandler` with level `WARNING`
@@ -389,7 +389,7 @@ format=%(asctime)s - %(name)s - %(levelname)s - %(message)s
 ```
 
 In the above file
-- two loggers, one handler, and one formatter. 
+- two loggers, one handler, and one formatter.
 - After their names are defined, they are configured by adding the words logger, handler, and formatter before their names separated by an underscore.
 
 To load this config file
@@ -457,7 +457,7 @@ logger.debug('This is a debug message')
 
 ## lambda logger
 
-### Standard structured keys 
+### Standard structured keys
 
 Logger will include the following keys to structured logging, by default:
 
@@ -476,7 +476,7 @@ Logger will include the following keys to structured logging, by default:
 
 ---
 
-### Capturing Lambda context info 
+### Capturing Lambda context info
 enrich structured logs with key Lambda context information via inject_lambda_context.
 
 
@@ -540,7 +540,7 @@ from aws_lambda_powertools import Logger
 logger = Logger()
 
 
-# 1. `structure_logs` method 
+# 1. `structure_logs` method
 #    - append your own keys to your existing Logger via `structure_logs(append=True, **kwargs)` method.
 #    - Omitting append=True will reset the existing structured logs to standard keys + keys provided as arguments
 
@@ -562,7 +562,7 @@ def handler(event, context):
 
 
 # 2. extra parameter¶
-#    - Extra parameter is available for all log levels' methods (implemented in the standard logging library) 
+#    - Extra parameter is available for all log levels' methods (implemented in the standard logging library)
 #      - e.g. logger.info, logger.warning.
 #    - It accepts any dictionary, and all keyword arguments will be added as part of the root structure of the logs for that log statement.
 #    - Any keyword argument added using extra will not be persisted for subsequent messages.
@@ -612,7 +612,7 @@ def inject_payment_id(event):
     logger.structure_logs(append=True, payment_id=event.get("payment_id"))
 ```
 
-1. Logger will create a **parent logger** named `payment` and a **child logger** named `payment.shared`. 
+1. Logger will create a **parent logger** named `payment` and a **child logger** named `payment.shared`.
 2. Changes in either parent or child logger will be propagated bi-directionally.
 3. Child loggers will be named after the following convention `{service}.{filename}`
 4. If you forget to use child param but the service name is the same of the parent, we will return the existing parent Logger instead.

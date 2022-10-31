@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [00CodeNote, LinuxNote]
 tags: [Linux, Boot]
 math: true
-image: 
+image:
 ---
 
 # CompTIA Linux+ XK0-004

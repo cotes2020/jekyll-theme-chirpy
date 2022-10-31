@@ -21,13 +21,13 @@ image:
 - <font color=red> analyze the behavior of the resources and identify potential security issues </font>
   - Analyzes the VPC encironment for potential security issuse.
   - identify EC2 instances for common security vulnerabilities.
-  - asses EC2s for vulnerabilities or deviations from best practices. 
+  - asses EC2s for vulnerabilities or deviations from best practices.
 
 - helps <font color=red> improve the security and compliance </font> of applications deployed on AWS.
 
-- Inspector uses a defined template and assesses the environment. 
+- Inspector uses a defined template and assesses the environment.
   - Providees the findings and recommends steps to resolve any potential security issues found.
-  - define a collection of resources to include in the <font color=blue> assessment target </font> 
+  - define a collection of resources to include in the <font color=blue> assessment target </font>
   - then create an <font color=blue> assessment template </font> to launch a security assessment run of that target.
   - <font color=red> analyze EC2 instances against pre-defined security templates </font> to check for vulnerabilities
 
@@ -39,7 +39,7 @@ image:
   - The name of the finding
   - The <font color=blue> severity level </font> of severity of the finding
   - The description of the finding
-  - <font color=blue> prioritized steps for remediation  </font> 
+  - <font color=blue> prioritized steps for remediation  </font>
   - findings can be reviewed directly or as part of detailed assessment reports which are available via the Amazon Inspector console or API.
 
 - Amazon Inspector includes a <font color=red> knowledge base with hundreds of rules </font>

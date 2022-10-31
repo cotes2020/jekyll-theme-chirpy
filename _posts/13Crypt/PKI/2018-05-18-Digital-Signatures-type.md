@@ -6,7 +6,7 @@ tags: [cryptography]
 toc: true
 image:
 ---
- 
+
 
 [toc]
 
@@ -364,10 +364,10 @@ TBSCertificate  ::=  SEQUENCE  {
                              -- If present, version MUST be v2 or v3
         extensions      \[3\]  EXPLICIT Extensions OPTIONAL
                              -- If present, version MUST be v3
-        }  
+        }
 AlgorithmIdentifier  ::=  SEQUENCE  {
         algorithm               OBJECT IDENTIFIER,
-        parameters              ANY DEFINED BY algorithm OPTIONAL  }  
+        parameters              ANY DEFINED BY algorithm OPTIONAL  }
 
 
 More definitions will follow for CertificateSerialNumber, Name, Validity etc
@@ -403,20 +403,20 @@ The base format of certificates is (CER) or (DER).
 
 ---
 
-#### PEM (Privacy Enhanced Mail) Encoding  
+#### PEM (Privacy Enhanced Mail) Encoding
 
 - The most commonly used encoding schema for X.509 certificate files
   - supported by almost all applications
   - the extension of the certificate is `.pem`
 
 - The full specification of PEM is in [RFC 1421](http://tools.ietf.org/html/rfc1421).
-- But the idea of PEM encoding on X.509 certificates is very simple:  
-  - Encode the content with Base64 encoding.  
+- But the idea of PEM encoding on X.509 certificates is very simple:
+  - Encode the content with Base64 encoding.
   - Enclose the Base64 encoding output between two lines:
   - `"-----BEGIN CERTIFICATE-----" and "-----END CERTIFICATE-----"`
 
 
-sample of a PEM encoded X.509 certificate:  
+sample of a PEM encoded X.509 certificate:
 
 ```
 -----BEGIN CERTIFICATE-----
@@ -438,7 +438,7 @@ PEM-based certificates can be used for just about anything.
 
 ---
 
-#### DER (Distinguished Encoding Rules) Encoding  
+#### DER (Distinguished Encoding Rules) Encoding
 
 
 - another popular encoding used to store X.509 certificate files.
@@ -451,22 +451,22 @@ PEM-based certificates can be used for just about anything.
 - For example,
 - in BER a boolean value of true can be encoded in 255 ways,
 - while in DER there is only one way to encode a boolean value of true.
-- The full specification of DER is in [RFC 1421](http://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf).  
+- The full specification of DER is in [RFC 1421](http://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf).
 
-X.509 certificate files encode in DER are binary files, which can not be view with text editors. DER encoded certificate files are supported by almost all applications. The file extensions for DER encoded certificates are .cer, .der, .crt  
+X.509 certificate files encode in DER are binary files, which can not be view with text editors. DER encoded certificate files are supported by almost all applications. The file extensions for DER encoded certificates are .cer, .der, .crt
 
 
 ---
 
-#### PKCS Formats  
+#### PKCS Formats
 
 - a group of public-key cryptography standards devised and published by RSA Security.
 - As such, RSA Security and its research division, RSA Labs, had an interest in promoting and facilitating the use of public-key techniques.
 - To that end, they developed (from the early 1990s onwards) the PKCS standards.
 - They retained control over them, announcing that they would make changes/improvements as they deemed necessary, and so the PKCS standards were not, in a significant sense, actual industry standards, despite the name.
-- Some, but not all, have in recent years begun to move into standards organizations like the IETF PKIX working group.  
+- Some, but not all, have in recent years begun to move into standards organizations like the IETF PKIX working group.
 
-The file extensions in this case are .p7b, .p7c, .p12, .pfx etc.  
+The file extensions in this case are .p7b, .p7c, .p12, .pfx etc.
 
 
 - .pfx: Personal Information Exchange
@@ -506,7 +506,7 @@ view certificate link
 
 
 - the certificate owned by State Bank of India.
-- "Issued by" field is issued by VeriSign Class 3 Extended Validation SSL SGC CA.  
+- "Issued by" field is issued by VeriSign Class 3 Extended Validation SSL SGC CA.
 
 
 
@@ -514,7 +514,7 @@ view certificate link
 
 
 - details > "Show" dropdown filters them for better viewing.
-- seeing the subject, SBI, and its detail Distinguished Name (DN). On the right issuer's DN.  
+- seeing the subject, SBI, and its detail Distinguished Name (DN). On the right issuer's DN.
 
 
 ![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-det-ver1.png?attredirects=0)
@@ -522,8 +522,8 @@ view certificate link
 
 
 - "Extensions Only" from the show dropdown.
-- seeing CRL Distribution point and on the right AIA location.  
-  - Every certificate normally points to a CRL given by its issuer.  
+- seeing CRL Distribution point and on the right AIA location.
+  - Every certificate normally points to a CRL given by its issuer.
 - click to download the CRL
 
 
@@ -537,7 +537,7 @@ view certificate link
 - Certificate viewer allows you see other certificates in the chain by highlighting a certificate and click on the "View Certificate" button as shown on the right below.
 - VeriSign is a two tier CA,
   - where "VeriSign" is the Root
-  - "VeriSign Class 3 Extended Validation SSL SGC CA" is a Issuing CA.  
+  - "VeriSign Class 3 Extended Validation SSL SGC CA" is a Issuing CA.
 
 
 ![link](https://sites.google.com/site/ddmwsst/digital-certificates/cert-path.png?attredirects=0)
@@ -545,7 +545,7 @@ view certificate link
 
 see Issuer CA's certificate.
 - for root certificate the "Issued to" or "Subject" and "Issued by" or "Issuer" fields are same.
-- So this is a self signed certificate.  
+- So this is a self signed certificate.
 
 ![link](https://sites.google.com/site/ddmwsst/digital-certificates/issuer-cert.png?attredirects=0)
 
@@ -554,4 +554,3 @@ see Issuer CA's certificate.
 
 
 ---
- 

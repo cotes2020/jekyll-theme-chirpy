@@ -69,7 +69,7 @@ nmap -sO # IP protocol scan
 
 
 nmap -O -v 0.0.0.1 -oA output.txt   # detail, verbositive level
-nmap -O -vv 0.0.0.1 -oA output.txt 
+nmap -O -vv 0.0.0.1 -oA output.txt
 
 nmap -F 0.0.0.1-50      # fast mode. 100 most popular port
 nmap -T4 -A -v 0.0.0.0  # advanced
@@ -118,7 +118,7 @@ Get HTTP headers of web services     	nmap --script=http-headers 192.168.1.0/24
 Find web apps from known paths       	nmap --script=http-enum 192.168.1.0/24
 # Detect Heartbleed SSL Vulnerability
 nmap -sV -p 443 --script=ssl-heartbleed 192.168.1.0/24
-# Find Information about IP address	
+# Find Information about IP address
 nmap --script=asn-query,whois,ip-geolocation-maxmind 192.168.1.0/24
 
 nmap -6 --hop-limit

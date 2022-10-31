@@ -19,7 +19,7 @@ AWSTemplateFormatVersion: 2010-09-09
 
 Description: Template to create an EC2 instance and enable SSH
 
-Parameters: 
+Parameters:
   KeyName:
     Description: Name of SSH KeyPair
     Type: 'AWS::EC2::KeyPair::KeyName'
@@ -47,7 +47,7 @@ Resources:
         ToPort: 22
         CidrIp: 0.0.0.0/0
 
-Outputs: 
+Outputs:
   InstanceID:
     Description: The Instance ID
     Value: !Ref MyEC2Instance

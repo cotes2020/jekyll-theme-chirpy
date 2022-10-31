@@ -46,58 +46,58 @@ In Java, reuse code using an `Is-A relationship` or `Has-A relationship`.
 ## code example
 
 ```java
-package relationsdemo;  
+package relationsdemo;
 
-public class Bike  {  
-    private String color;  
-    private int maxSpeed;  
-    public void bikeInfo()  {  
-        System.out.println("Bike Color= "+color + " Max Speed= " + maxSpeed);  
-    }  
-    public void setColor(String color)  {  
-        this.color = color;  
-    }  
-    public void setMaxSpeed(int maxSpeed)  {  
-        this.maxSpeed = maxSpeed;  
-    }  
-}  
+public class Bike  {
+    private String color;
+    private int maxSpeed;
+    public void bikeInfo()  {
+        System.out.println("Bike Color= "+color + " Max Speed= " + maxSpeed);
+    }
+    public void setColor(String color)  {
+        this.color = color;
+    }
+    public void setMaxSpeed(int maxSpeed)  {
+        this.maxSpeed = maxSpeed;
+    }
+}
 
-public class Engine  {  
-    public void start() {  
-        System.out.println("Started:");  
-    }  
-    public void stop() {  
-        System.out.println("Stopped:");  
-    }  
+public class Engine  {
+    public void start() {
+        System.out.println("Started:");
+    }
+    public void stop() {
+        System.out.println("Stopped:");
+    }
 }
 
 
 // ====================================================================
 
 
-public class Pulsar extends Bike {     
+public class Pulsar extends Bike {
 // Pulsar is a type of bike that extends the Bike class that shows that Pulsar is a Bike.
 // All the methods like setColor( ), bikeInfo( ), setMaxSpeed( ) are used because of the Is-A relationship of the Pulsar class with the Bike class.
 
-    public void PulsarStartDemo() {  
-        Engine PulsarEngine = new Engine();  
+    public void PulsarStartDemo() {
+        Engine PulsarEngine = new Engine();
         // Pulsar also uses an Engine's method, stop, using composition.
-        PulsarEngine.stop();  
-    }  
+        PulsarEngine.stop();
+    }
 }
 
 
 // ====================================================================
 
-public class Demo  {  
-    public static void main(String[] args)  {  
-        Pulsar myPulsar = new Pulsar();  
-        myPulsar.setColor("BLACK");  
-        myPulsar.setMaxSpeed(136);  
-        myPulsar.bikeInfo();  
-        myPulsar.PulsarStartDemo();  
-    }  
-}  
+public class Demo  {
+    public static void main(String[] args)  {
+        Pulsar myPulsar = new Pulsar();
+        myPulsar.setColor("BLACK");
+        myPulsar.setMaxSpeed(136);
+        myPulsar.bikeInfo();
+        myPulsar.PulsarStartDemo();
+    }
+}
 
 
 ```

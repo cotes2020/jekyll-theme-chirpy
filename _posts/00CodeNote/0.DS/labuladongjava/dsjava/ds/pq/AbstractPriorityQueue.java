@@ -1,11 +1,11 @@
-package pq; 
+package pq;
 
 
 
 
 // This provides a nested PQEntry class that composes a key and a value into a single object, and support for managing a comparator.
 public abstract class AbstractPriorityQueue<K,V> implements PriorityQueue<K,V> {
-    
+
     //---------------- nested PQEntry class ----------------
     protected static class PQEntry<K,V> implements Entry<K,V> {
         private K k;

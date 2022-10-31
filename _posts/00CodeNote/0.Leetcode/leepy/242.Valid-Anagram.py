@@ -15,7 +15,6 @@
 # Output: false
 
 
-
 # # ---------------------- solution java ----------------------
 # # find the char list, sort, see if equals
 # public boolean isAnagram(String s, String t) {
@@ -35,37 +34,23 @@
 # # It depends on how the function is designed. For example, the function parameter types can be changed to char[].
 
 
-
-
-
-
-
-
 # ---------------------- solution py ----------------------
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         # exception:
         if len(s) != len(t):
             return False
-        if s == t: 
+        if s == t:
             return True
         return sorted(s) == sorted(t)
 # Runtime: 40 ms, faster than 86.87% of Python3 online submissions for Valid Anagram.
 # Memory Usage: 14.8 MB, less than 21.44% of Python3 online submissions for Valid Anagram.
 
 
-
-
-
-
-
 # ---------------------- solution py ----------------------
 # from collections import Counter
 # def isAnagram(self, s: str, t: str) -> bool:
 #         return Counter(s) == Counter(t)
-
-
-
 
 
 # ---------------------- solution py ----------------------
@@ -94,19 +79,6 @@ class Solution:
 #             if chars[c] != 0:
 #                 return False
 #         return True
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #

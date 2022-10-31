@@ -123,7 +123,7 @@
       - [What are Beats?](#what-are-beats)
       - [What is the ELK Stack used for?](#what-is-the-elk-stack-used-for)
 
- 
+
 Check out the other sections of this guide to understand more advanced topics related to working with Elasticsearch, Logstash, Kibana and Beats.
 
 Elasticsearch
@@ -635,20 +635,20 @@ For a more detailed explanation of the different search types, check out the [Ki
 
 Below is a list of some tips and best practices for using the above-mentioned search types:
 
-*   Use free-text searches for quickly searching for a specific string. Use double quotes (“string”) to look for an exact match.  
+*   Use free-text searches for quickly searching for a specific string. Use double quotes (“string”) to look for an exact match.
     Example: “USA“
 *   Use the * wildcard symbol to replace any number of characters and the ? wildcard symbol to replace only one character.
-*   Use the _exists_ prefix for a field to search for logs that have that field.  
+*   Use the _exists_ prefix for a field to search for logs that have that field.
     Example: _exists_:response
-*   You can search a range within a field.  
+*   You can search a range within a field.
     Examples: If you use brackets [], this means that the results are inclusive. If you use {}, this means that the results are exclusive.
 *   When using logical statements (e.g. AND, OR, TO) within a search, use capital letters. Example: response:[400 TO 500]
-*   Use -,! and NOT to define negative terms.  
+*   Use -,! and NOT to define negative terms.
     Example: response:[400 TO 500] AND NOT response:404
 *   Proximity searches are useful for searching terms within a specific character proximity. Example: [categovi~2] will a search for all the terms that are within two changes from [categovi]. Proximity searches use a lot of resources – use wisely!
-*   Field level search for non analyzed fields work differently than free text search.  
+*   Field level search for non analyzed fields work differently than free text search.
     Example: If the field value is Error – searching for field:*rror will not return the right answer.
-*   If you don’t specify a logical operator, the default one is OR.  
+*   If you don’t specify a logical operator, the default one is OR.
     Example: searching for Error Exception will run a search for Error OR Exception
 *   Using leading wildcards is a very expensive query and should be avoided when possible.
 
@@ -1029,10 +1029,10 @@ Kafka also exposes a plethora of operational metrics, some of which are extremel
 
 ### Logstash
 
-Knowing how many Logstash instances to run is an art unto itself and the answer depends on a great many of factors: volume of data, number of pipelines, size of your Elasticsearch cluster, buffer size, accepted latency — to name just a few.  
-Deploy a scalable queuing mechanism with different scalable workers. When a queue is too busy, scale additional workers to read into Elasticsearch.  
-Once you’ve determined the number of Logstash instances required, run each one of them in a different AZ (on AWS). This comes at a cost due to data transfer but will guarantee a more resilient data pipeline.  
-You should also separate Logstash and Elasticsearch by using different machines for them. This is critical because they both run as JVMs and consume large amounts of memory, which makes them unable to run on the same machine effectively.  
+Knowing how many Logstash instances to run is an art unto itself and the answer depends on a great many of factors: volume of data, number of pipelines, size of your Elasticsearch cluster, buffer size, accepted latency — to name just a few.
+Deploy a scalable queuing mechanism with different scalable workers. When a queue is too busy, scale additional workers to read into Elasticsearch.
+Once you’ve determined the number of Logstash instances required, run each one of them in a different AZ (on AWS). This comes at a cost due to data transfer but will guarantee a more resilient data pipeline.
+You should also separate Logstash and Elasticsearch by using different machines for them. This is critical because they both run as JVMs and consume large amounts of memory, which makes them unable to run on the same machine effectively.
 Hardware specs vary, but it is recommended allocating a maximum of 30 GB or half of the memory on each machine for Logstash. In some scenarios, however, making room for caches and buffers is also a good best practice.
 
 ### Elasticsearch cluster
@@ -1211,7 +1211,7 @@ So, verify that a) your data pipeline is working as expected and indexing data i
 
 ### Can not connect to Elasticsearch
 
-A common glitch when setting up Kibana is to misconfigure the connection with Elasticsearch, resulting in the following message when you open Kibana:  
+A common glitch when setting up Kibana is to misconfigure the connection with Elasticsearch, resulting in the following message when you open Kibana:
 ![Cannot connect to Elasticsearch](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
 
 ![Cannot connect to Elasticsearch](https://logz.io/wp-content/uploads/2018/08/image11.png)
@@ -1232,7 +1232,7 @@ Try and avoid using wildcard queries if possible, especially when performed agai
 
 Some Kibana-specific configurations can cause your browser to crash. For example, depending on your browser and system settings, changing the value of the discover:sampleSize setting to a high number can easily cause Kibana to freeze.
 
-That is why the good folks at Elastic have placed a warning at the top of the page that is supposed to convince us to be extra careful. Anyone with a guess on how successful this warning is?  
+That is why the good folks at Elastic have placed a warning at the top of the page that is supposed to convince us to be extra careful. Anyone with a guess on how successful this warning is?
 ![Advanced settings](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
 
 ![Advanced settings](https://logz.io/wp-content/uploads/2018/08/image13-1-1024x513.png)
@@ -1364,7 +1364,7 @@ Read more about SIEM and ELK [here](https://logz.io/blog/siem-dashboard-aws-elk-
 
 [Business Intelligence](https://logz.io/blog/what-is-business-intelligence/) (BI) is the use of software, tools, and applications to analyze an organization’s raw data with the goal of optimizing decisions, improving collaboration, and increasing overall performance.
 
-The process involves collecting and analyzing large sets of data from varied data sources: databases, supply chains, personnel records, manufacturing data, sales and marketing campaigns, and more. The data itself might be stored in internal data warehouses, private clouds or public clouds, and the engineering involved in extracting and processing the data (ETL) has given rise to a number of technologies, both proprietary and open source.  
+The process involves collecting and analyzing large sets of data from varied data sources: databases, supply chains, personnel records, manufacturing data, sales and marketing campaigns, and more. The data itself might be stored in internal data warehouses, private clouds or public clouds, and the engineering involved in extracting and processing the data (ETL) has given rise to a number of technologies, both proprietary and open source.
 As with the previous use cases outlined here, the ELK Stack comes in handy for pulling data from these varied data sources into one centralized location for analysis. For example, we might pull [web server access logs](https://logz.io/blog/apache-log-analyzer/) to learn how our users are accessing our website, We might tap into our [CRM system](https://logz.io/blog/analyze-salesforce-elk-stack/) to learn more about our leads and users, or we might check out the data our marketing automation tool provides.
 
 There are a whole bunch of proprietary tools used for precisely this purpose. But the ELK Stack is a cheaper and open source option to perform almost all of the actions these tools provide.
@@ -1518,4 +1518,3 @@ The ELK Stack is most commonly used as a log analytics tool. Its popularity lies
 _Much of our content covers the open source Elastic Stack and the iteration of it that appears within the_ _[Logz.io](https://logz.io/)_ _platform. Some features are unavailable in one version and available in the other._
 
 [DCRP_shortcode style="0" image="1" excerpt="0" date="0" postsperpage="3" columns="3"]
- 

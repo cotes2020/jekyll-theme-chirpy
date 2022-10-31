@@ -12,7 +12,7 @@ import java.util.Queue;
 
 
 public class BTTraversalLevelByLevel {
-    
+
     // Level Printing with two queue
 
     public void levelByLevelWithTwoQueue(Node node) {
@@ -57,7 +57,7 @@ public class BTTraversalLevelByLevel {
         q.offer(null);
         while (!q.isEmpty()) {
             current = q.poll();
-            if (current != null) {           
+            if (current != null) {
                 System.out.print(current.data+ " ");
                 if(current.left != null){
                     q.offer(current.left);
@@ -77,7 +77,7 @@ public class BTTraversalLevelByLevel {
     }
 
 
-    
+
     public void levelByLevelWithOneQueueandCounter(Node node) {
         if(node == null) return;
         Node current;
@@ -89,7 +89,7 @@ public class BTTraversalLevelByLevel {
             while (levelcount != 0) {
                 current = q.poll();
                 System.out.print(current.data + " ");
-                if(current.left != null){ 
+                if(current.left != null){
                     q.offer(current.left);
                     currentcount ++;
                 }

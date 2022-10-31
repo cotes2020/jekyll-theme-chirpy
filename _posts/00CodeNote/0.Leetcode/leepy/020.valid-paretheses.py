@@ -5,7 +5,7 @@
 # An input string is valid if:
 # Open brackets must be closed by the same type of brackets.
 # Open brackets must be closed in the correct order.
- 
+
 # Example 1:
 # Input: s = "()"
 # Output: true
@@ -25,7 +25,7 @@
 # Example 5:
 # Input: s = "{[]}"
 # Output: true
- 
+
 # Constraints:
 # 1 <= s.length <= 104
 # s consists of parentheses only '()[]{}'.
@@ -48,11 +48,11 @@ def isValid(s):
     for char in s:
         if char in out_dict:
             # if opening bracket add into stack
-            stack.append(char)   
-        elif (not stack) or (char != out_dict[stack.pop()]): 
+            stack.append(char)
+        elif (not stack) or (char != out_dict[stack.pop()]):
             # if closing bracket map with the correct opening bracket
-            return False         
-    return stack == [] 
+            return False
+    return stack == []
     # if len(stack) == 0:
     #     return True
     # return False
@@ -61,7 +61,7 @@ def isValid(s):
 
 # use dic + stack
 def isValid(s):
-    map={"(": ")", "{": "}", "[": "]"}
+    map={'(': ')', '{': '}', '[': ']'}
     stack=[]
     for ch in s:
         if len(stack)==0:
@@ -78,8 +78,8 @@ def isValid(s):
 # use stack
 def par_checker(symbol_string):
     s = Stack()
-    map = {"(": ")", "[": "]",  "{": "}"}
-    for symbol in "([{":
+    map = {'(': ')', '[': ']',  '{': '}'}
+    for symbol in '([{':
         if symbol in map:
             s.stack(symbol)
         elif (not s.is_empty()) and symbol == map.get(s.peek()):
@@ -91,14 +91,14 @@ def par_checker(symbol_string):
 
 # stack
 def matches(opener, closer):
-    openers = "({["
-    closers = ")}]"
+    openers = '({['
+    closers = ')}]'
     return openers.index(opener) == closers.index(closer)
 
 def par_checker(symbol_string):
     s = Stack()
     for i in symbol_string:
-        if i in "([{":
+        if i in '([{':
             s.stack(i)
         elif (not s.is_empty()) and matches(s.pop(),i):
             continue
@@ -127,13 +127,13 @@ def isValid(self, s: str) -> bool:
 # # Memory Usage: 14 MB, less than 5.22% of Python3 online submissions for Valid Parentheses.
 
 
-# == JAVA== 
+# == JAVA==
 # import java.util.HashMap;
 # import java.util.Stack;
 # class Solution {
 #     // Hash table that takes care of the mappings.
 #     private HashMap<Character, Character> mappings;
-  
+
 #     // Initialize hash map with mappings. This simply makes the code easier to read.
 #     public Solution() {
 #       this.mappings = new HashMap<Character, Character>();
@@ -141,22 +141,22 @@ def isValid(self, s: str) -> bool:
 #       this.mappings.put('}', '{');
 #       this.mappings.put(']', '[');
 #     }
-  
+
 #     public boolean isValid(String s) {
-  
+
 #       // Initialize a stack to be used in the algorithm.
 #       Stack<Character> stack = new Stack<Character>();
-  
+
 #       for (int i = 0; i < s.length(); i++) {
 #         char c = s.charAt(i);
-  
+
 #         // If the current character is a closing bracket.
 #         // Input: ( )[]{}, ([)]
 #         if (this.mappings.containsKey(c)) {
-  
+
 #           // Get the top element of the stack. If the stack is empty, set a dummy value of '#'
 #           char topElement = stack.empty() ? '#' : stack.pop();
-  
+
 #           // If the mapping for this bracket doesn't match the stack's top element, return false.
 #           if (topElement != this.mappings.get(c)) {
 #             return false;
@@ -174,7 +174,7 @@ def isValid(self, s: str) -> bool:
 # 		return null;
 # 	}
 # }
- 
+
 
 
 # print(par_checker("((())(()"))  #expected False
@@ -183,4 +183,4 @@ def isValid(self, s: str) -> bool:
 # print(par_checker("(()"))  # expected False
 # print(par_checker(")("))  # expected False
 
-print(isValid("()"))
+print(isValid('()'))

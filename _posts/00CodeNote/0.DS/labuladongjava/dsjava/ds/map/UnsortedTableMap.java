@@ -4,7 +4,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 
 public class UnsortedTableMap extends AbstractMap<K,V> {
-    
+
     // /∗∗ Underlying storage for the map of entries. ∗/
     private ArrayList<MapEntry<K,V>> table = new ArrayList<>();
 
@@ -34,7 +34,7 @@ public class UnsortedTableMap extends AbstractMap<K,V> {
 
     // /∗∗ Associates given value with given key, replacing a previous value (if any). ∗/
     public V put(K key, V value){
-        int ans = findIndex(key); 
+        int ans = findIndex(key);
         if(ans == -1) {
             table.add(new MapEntry<>(key, value)); // add new entry
             return null;
@@ -44,12 +44,12 @@ public class UnsortedTableMap extends AbstractMap<K,V> {
 
     // /∗∗ Removes the entry with the specified key (if any) and returns its value. ∗/
     public V remove(K key){
-        int index = findIndex(key); 
+        int index = findIndex(key);
         int n = size();
         if(index == -1) return null; // not found
         V pre = table.get(index).getValue();
         if(index != n-1) table.set(index, table.get(n-1));
-        
+
         table.remove(n-1);
         return pre; // key already exists
     }

@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [00CodeNote, LinuxNote]
 tags: [Linux, LFCE, Pluralsight]
 math: true
-image: 
+image:
 ---
 
 
@@ -45,7 +45,7 @@ access.conf       console.perms.d  namespace.d     pwquality.conf.d
 chroot.conf       group.conf       namespace.init  sepermit.conf
 console.apps      limits.conf      opasswd         time.conf
 console.handlers  limits.d         pam_env.conf
-console.perms     namespace.conf   
+console.perms     namespace.conf
 pwquality.conf //(configure policy for passwd)
 
 ```

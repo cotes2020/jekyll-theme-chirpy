@@ -2,32 +2,33 @@ from flask import Flask, make_response, jsonify, request
 
 api = Flask(__name__)
 
-user1 = { "username": "gh0st", 
-          "Firstname Lastname": "William L. Simon", 
-          "password": "", 
-          "Mother’s Favorite Search Engine": "Searx"}
+user1 = {'username': 'gh0st',
+         'Firstname Lastname': 'William L. Simon',
+         'password': '',
+         'Mother’s Favorite Search Engine': 'Searx'}
 
-user2 = { "username":"jet-setter", 
-          "Firstname Lastname":"Frank Abignale",
-          "password":"r0u7!nG", 
-          "Mother’s Favorite Search Engine":"Bing"}
+user2 = {'username': 'jet-setter',
+         'Firstname Lastname': 'Frank Abignale',
+         'password': 'r0u7!nG',
+         'Mother’s Favorite Search Engine': 'Bing'}
 
-user3 = { "username":"kvothe", 
-          "Firstname Lastname":"Patrick Rothfuss",
-          "password":"3##Heel7sa*9-zRwT", 
-          "Mother’s Favorite Search Engine":"Duck Duck Go"}
+user3 = {'username': 'kvothe',
+         'Firstname Lastname': 'Patrick Rothfuss',
+         'password': '3##Heel7sa*9-zRwT',
+         'Mother’s Favorite Search Engine': 'Duck Duck Go'}
 
-user4 = { "username":"tpratchett", 
-          "Firstname Lastname":"Terry Pratchett",
-          "password":"Thats Sir Terry to you!", 
-          "Mother’s Favorite Search Engine":"Google"}
+user4 = {'username': 'tpratchett',
+         'Firstname Lastname': 'Terry Pratchett',
+         'password': 'Thats Sir Terry to you!',
+         'Mother’s Favorite Search Engine': 'Google'}
 
-user5 = { "username":"lmb", 
-          "Firstname Lastname":"Lois McMaster Bujold",
-          "password":"null", 
-          "Mother’s Favorite Search Engine":"Yandex"}
+user5 = {'username': 'lmb',
+         'Firstname Lastname': 'Lois McMaster Bujold',
+         'password': 'null',
+         'Mother’s Favorite Search Engine': 'Yandex'}
 
-userlist = {"gh0st":user1, "jet-setter":user2, "kvothe":user3, "tpratchett":user4, "lmb":user5}
+userlist = {'gh0st': user1, 'jet-setter': user2,
+            'kvothe': user3, 'tpratchett': user4, 'lmb': user5}
 
 
 # operation on the all user information
@@ -51,8 +52,8 @@ def singal_user(user_username):
         user = userlist.get(user_username, {})
         if user:
             return make_response(jsonify(user), 200)
-        else: # username not exits
-            return make_response(jsonify({}), 404)  
+        else:  # username not exits
+            return make_response(jsonify({}), 404)
     if request.method == 'PUT':
         content = request.json
         userlist[user_username] = content
@@ -62,7 +63,7 @@ def singal_user(user_username):
         if user_username in userlist.keys():
             del userlist[user_username]
             return make_response(jsonify({}), 204)
-        else: # username not exits
+        else:  # username not exits
             return make_response(jsonify({}), 404)
 
 

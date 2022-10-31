@@ -12,14 +12,14 @@ class Node {
     Node(int data) {
         this.data = data;
         this.childs = new ArrayList<>();
-    } 
+    }
 
     Node(int data, int child_data) {
-        this.data = data; 
+        this.data = data;
         this.childs.add(new Node(child_data));
-    } 
+    }
 
-    public void print_childs_list() { 
+    public void print_childs_list() {
         List<Integer> childs_value = new ArrayList<>();
         for(Node child : this.childs) {
             childs_value.add(child.data);
@@ -27,4 +27,3 @@ class Node {
         System.out.println(childs_value);
     }
 }
- 

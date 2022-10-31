@@ -5,7 +5,7 @@ description:
 categories: [00CodeNote, JavaNote]
 tags: [Java]
 toc: true
---- 
+---
 
 [toc]
 
@@ -104,5 +104,3 @@ add methods in the QuakeSortInPlace class to sort the quakes by depth, from larg
 
 5. Modify the testSort method to call to sortByMagnitudeWithCheck
    - Run your program on any data files earthquakeDataSampleSix1.atom (should sort after 3 passes) and earthquakeDataSampleSix2.atom (should sort after 4 passes). Both of these files have five earthquakes.
-
-

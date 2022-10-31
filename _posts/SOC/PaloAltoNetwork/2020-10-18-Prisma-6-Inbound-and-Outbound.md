@@ -90,7 +90,7 @@ Inbound Integration Platforms
 - `Tenable`
   - cloud-hosted **Vulnerability Management solution**
   - provides actionable insight into entire infrastructure's security risks. Prisma Cloud ingest its host findings to generate alerts.
-  - provide accurate visibility and insight about dynamic assets and vulnerabilities in changing environments like the public cloud.  
+  - provide accurate visibility and insight about dynamic assets and vulnerabilities in changing environments like the public cloud.
   - ingest and present vulnerability data within Prisma Cloud.
   - The `Tenable.io integration` works with three cloud service providers: `AWS, Azure, and GCP`.
   - Qualys integration works only with `AWS and Azure`.
@@ -246,7 +246,7 @@ Prisma Cloud provides support for system `RESTful APIs`.
 - Responses
   - All responses will be in JSON format.
 - HTTP Methods
-  - The Prisma Cloud Rest API supports the following HTTP methods: `POST, PUT, GET, OPTIONS, DELETE, and PATCH`.  
+  - The Prisma Cloud Rest API supports the following HTTP methods: `POST, PUT, GET, OPTIONS, DELETE, and PATCH`.
 
 
 <kbd>Demo: Using the Prisma Cloud API</kbd>

@@ -9,32 +9,32 @@
 Table of Contents
 
 - EC2
-  - Client 
-  - Paginators 
-  - Waiters 
-  - Service Resource 
-  - ClassicAddress 
-  - DhcpOptions 
-  - Image 
-  - Instance 
-  - InternetGateway 
-  - KeyPair 
-  - KeyPairInfo 
-  - NetworkAcl 
-  - NetworkInterface 
-  - NetworkInterfaceAssociation 
-  - PlacementGroup 
+  - Client
+  - Paginators
+  - Waiters
+  - Service Resource
+  - ClassicAddress
+  - DhcpOptions
+  - Image
+  - Instance
+  - InternetGateway
+  - KeyPair
+  - KeyPairInfo
+  - NetworkAcl
+  - NetworkInterface
+  - NetworkInterfaceAssociation
+  - PlacementGroup
   - Route e)
-  - RouteTable 
-  - RouteTableAssociation 
-  - SecurityGroup 
-  - Snapshot 
-  - Subnet 
-  - Tag 
-  - Volume 
-  - Vpc 
-  - VpcPeeringConnection 
-  - VpcAddress 
+  - RouteTable
+  - RouteTableAssociation
+  - SecurityGroup
+  - Snapshot
+  - Subnet
+  - Tag
+  - Volume
+  - Vpc
+  - VpcPeeringConnection
+  - VpcAddress
 
 
 ---
@@ -45,7 +45,7 @@ Table of Contents
 _class_ EC2.Client
 
 - A low-level client representing Amazon Elastic Compute Cloud (EC2)
-- Amazon Elastic Compute Cloud (Amazon EC2) provides secure and resizable computing capacity in the AWS cloud. 
+- Amazon Elastic Compute Cloud (Amazon EC2) provides secure and resizable computing capacity in the AWS cloud.
 - Using Amazon EC2 eliminates the need to invest in hardware up front, so you can develop and deploy applications faster.
 
 
@@ -510,8 +510,8 @@ Accepts the Convertible Reserved Instance exchange quote described in the GetRes
 ```py
 response = ec2client.accept_reserved_instances_exchange_quote(
     DryRun=True|False,
-    # (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. 
-    # If you have the required permissions, the error response is DryRunOperation . 
+    # (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response.
+    # If you have the required permissions, the error response is DryRunOperation .
     # Otherwise, it is UnauthorizedOperation .
     ReservedInstanceIds=['string'],
     # (_list_) -- [REQUIRED] The IDs of the Convertible Reserved Instances to exchange for another Convertible Reserved Instance of the same or higher value.
@@ -526,7 +526,7 @@ response = ec2client.accept_reserved_instances_exchange_quote(
     ]
 )
 ```
-            
+
 Return
 - Return type: dict
 - **Response Syntax**
@@ -545,7 +545,7 @@ Return
 
 ## transit_gateway
 
-### accept_transit_gateway_multicast_domain_associations(kwargs_) 
+### accept_transit_gateway_multicast_domain_associations(kwargs_)
 
 Accepts a request to associate subnets with a transit gateway multicast domain.
 
@@ -562,8 +562,8 @@ response = ec2client.accept_transit_gateway_multicast_domain_associations(
     ],
     # The IDs of the subnets to associate with the transit gateway multicast domain.
     DryRun=True|False
-    # (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. 
-    # If you have the required permissions, the error response is DryRunOperation . 
+    # (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response.
+    # If you have the required permissions, the error response is DryRunOperation .
     # Otherwise, it is UnauthorizedOperation .
 )
 ```
@@ -580,7 +580,7 @@ Return
         'TransitGatewayAttachmentId': 'string',
         'ResourceId': 'string',
         'ResourceType': 'vpc'|'vpn'|'direct-connect-gateway'|'connect'|'peering'|'tgw-peering',
-        # (string) -- The type of resource, for example a VPC attachment.  
+        # (string) -- The type of resource, for example a VPC attachment.
         'ResourceOwnerId': 'string',
         'Subnets': [
             # (list) --The subnets associated with the multicast domain.
@@ -597,8 +597,8 @@ Return
 
 ---
 
-### accept_transit_gateway_peering_attachment(kwargs_) 
-- Accepts a transit gateway peering attachment request. 
+### accept_transit_gateway_peering_attachment(kwargs_)
+- Accepts a transit gateway peering attachment request.
 - The peering attachment must be in the pendingAcceptance state.
 
 **Request Syntax**
@@ -613,7 +613,7 @@ response = ec2client.accept_transit_gateway_peering_attachment(
 Parameters
 
 - **TransitGatewayAttachmentId** (_string_) -- [REQUIRED] The ID of the transit gateway attachment.
-    
+
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 Return
 - Return type: dict
@@ -652,82 +652,82 @@ Return
 **Response Structure**
 
 - _(dict) --_
-    
+
   - **TransitGatewayPeeringAttachment** _(dict) --_
-        
+
         The transit gateway peering attachment.
-        
-      - **TransitGatewayAttachmentId** (string) -- The ID of the transit gateway peering attachment.            
+
+      - **TransitGatewayAttachmentId** (string) -- The ID of the transit gateway peering attachment.
       - **RequesterTgwInfo** _(dict) --_
-            
-            Information about the requester transit gateway.            
+
+            Information about the requester transit gateway.
           - **TransitGatewayId** _(string) --_
-                
+
                 The ID of the transit gateway.
-            
+
           - **OwnerId** _(string) --_
-                
+
                 The AWS account ID of the owner of the transit gateway.
-            
+
           - **Region** _(string) --_
-                
+
                 The Region of the transit gateway.
-            
+
       - **AccepterTgwInfo** _(dict) --_
-            
-            Information about the accepter transit gateway.            
+
+            Information about the accepter transit gateway.
           - **TransitGatewayId** _(string) --_
-                
+
                 The ID of the transit gateway.
-            
+
           - **OwnerId** _(string) --_
-                
+
                 The AWS account ID of the owner of the transit gateway.
-            
+
           - **Region** _(string) --_
-                
+
                 The Region of the transit gateway.
-            
+
       - **Status** _(dict) --_
-            
-            The status of the transit gateway peering attachment.            
+
+            The status of the transit gateway peering attachment.
           - **Code** _(string) --_
-                
+
                 The status code.
-            
+
           - **Message** _(string) --_
-                
+
                 The status message, if applicable.
-            
-      - **State** (string) -- The state of the transit gateway peering attachment. Note that the initiating state has been deprecated.            
+
+      - **State** (string) -- The state of the transit gateway peering attachment. Note that the initiating state has been deprecated.
       - **CreationTime** _(datetime) --_
-            
-            The time the transit gateway peering attachment was created.            
-      - **Tags** (list) --The tags for the transit gateway peering attachment.            
+
+            The time the transit gateway peering attachment was created.
+      - **Tags** (list) --The tags for the transit gateway peering attachment.
           - _(dict) --_
-                
+
                 Describes a tag.
-                
+
               - **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
               - **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 
 ---
 
 ### accept_transit_gateway_vpc_attachment(kwargs_)
 
 - Accepts a request to attach a VPC to a transit gateway.
-- The VPC attachment must be in the `pendingAcceptance` state. 
-  - Use `DescribeTransitGatewayVpcAttachments` to view your pending VPC attachment requests. 
+- The VPC attachment must be in the `pendingAcceptance` state.
+  - Use `DescribeTransitGatewayVpcAttachments` to view your pending VPC attachment requests.
   - Use `RejectTransitGatewayVpcAttachment` to reject a VPC attachment request.
 
 **Request Syntax**
@@ -822,8 +822,8 @@ Return
 
 ### accept_vpc_peering_connection(kwargs_)
 
-- Accept a VPC peering connection request. 
-- To accept a request, the VPC peering connection must be in the pending-acceptance state, and you must be the owner of the peer VPC. 
+- Accept a VPC peering connection request.
+- To accept a request, the VPC peering connection must be in the pending-acceptance state, and you must be the owner of the peer VPC.
 - Use `DescribeVpcPeeringConnections` to view your outstanding VPC peering connection requests.
 
 > For an inter-Region VPC peering connection request, you must accept the VPC peering connection in the Region of the accepter VPC.
@@ -833,7 +833,7 @@ Return
 ```py
 
 # DescribeVpcPeeringConnections
-paginator = ec2client.get_paginator('describe_vpc_peering_connections') 
+paginator = ec2client.get_paginator('describe_vpc_peering_connections')
 
 # Accept a VPC peering connection request
 response = ec2client.accept_vpc_peering_connection(
@@ -917,7 +917,7 @@ Return
 
 - You can perform this operation at most once every 10 seconds, even if you specify different address ranges each time.
 
-We recommend that you stop advertising the BYOIP CIDR from other locations when you advertise it from AWS. 
+We recommend that you stop advertising the BYOIP CIDR from other locations when you advertise it from AWS.
 - To minimize down time, you can configure your AWS resources to use an address from a BYOIP CIDR before it is advertised, and then simultaneously stop advertising it from the current location and start advertising it through AWS.
 
 It can take a few minutes before traffic to the specified addresses starts routing to AWS because of BGP propagation delays.
@@ -959,21 +959,21 @@ Return
 
 ### allocate_address(kwargs_)
 
-- Allocates an Elastic IP address to your AWS account. 
-- After you <font color=blue> allocate the Elastic IP address </font> , associate it with an instance or network interface. 
-  - allocate an Elastic IP address from 
-    - an address pool owned by AWS 
+- Allocates an Elastic IP address to your AWS account.
+- After you <font color=blue> allocate the Elastic IP address </font> , associate it with an instance or network interface.
+  - allocate an Elastic IP address from
+    - an address pool owned by AWS
     - or from an address pool created from a public IPv4 address range that you have brought to AWS for use with your AWS resources using bring your own IP addresses (BYOIP).
-  - An Elastic IP address is for use either in the EC2-Classic platform or in a VPC. 
-  - By default, you can allocate 
-    - 5 Elastic IP addresses for EC2-Classic per Region 
+  - An Elastic IP address is for use either in the EC2-Classic platform or in a VPC.
+  - By default, you can allocate
+    - 5 Elastic IP addresses for EC2-Classic per Region
     - 5 Elastic IP addresses for EC2-VPC per Region.
   - You can allocate a carrier IP address which is a public IP address from a telecommunication carrier, to a network interface which resides in a subnet in a Wavelength Zone (for example an EC2 instance).
 
 - After you <font color=blue> release an Elastic IP address </font> , it is released to the IP address pool and can be allocated to a different AWS account.
-  - [EC2-VPC] If you release an Elastic IP address, you might be able to recover it. 
-  - You cannot recover an Elastic IP address that you released after it is allocated to another AWS account. 
-  - You cannot recover an Elastic IP address for EC2-Classic. 
+  - [EC2-VPC] If you release an Elastic IP address, you might be able to recover it.
+  - You cannot recover an Elastic IP address that you released after it is allocated to another AWS account.
+  - You cannot recover an Elastic IP address for EC2-Classic.
   - To attempt to recover an Elastic IP address that you released, specify it in this operation.
 
 
@@ -988,16 +988,16 @@ response = ec2client.allocate_address(
     Address='string',
     # (_string_) -- [EC2-VPC] The Elastic IP address to recover or an IPv4 address from an address pool.
     PublicIpv4Pool='string',
-    # (_string_) -- The ID of an address pool that you own. 
-    # Use this parameter to let Amazon EC2 select an address from the address pool. 
+    # (_string_) -- The ID of an address pool that you own.
+    # Use this parameter to let Amazon EC2 select an address from the address pool.
     # To specify a specific address from the address pool, use the Address parameter instead.
     NetworkBorderGroup='string',
-    # (_string_) -- A unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS advertises IP addresses. 
+    # (_string_) -- A unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS advertises IP addresses.
     # Use this parameter to limit the IP address to this location. IP addresses cannot move between network border groups.
     CustomerOwnedIpv4Pool='string',
     # (_string_) -- The ID of a customer-owned address pool. Use this parameter to let Amazon EC2 select an address from the address pool. Alternatively, specify a specific address from the address pool.
     DryRun=True|False,
-    TagSpecifications=[  
+    TagSpecifications=[
         # The tags to assign to the Elastic IP address.
         {
             'ResourceType': 'client-vpn-endpoint'|'customer-gateway'|'dedicated-host'|'dhcp-options'|'egress-only-internet-gateway'|'elastic-ip'|'elastic-gpu'|'export-image-task'|'export-instance-task'|'fleet'|'fpga-image'|'host-reservation'|'image'|'import-image-task'|'import-snapshot-task'|'instance'|'internet-gateway'|'key-pair'|'launch-template'|'local-gateway-route-table-vpc-association'|'natgateway'|'network-acl'|'network-interface'|'network-insights-analysis'|'network-insights-path'|'placement-group'|'reserved-instances'|'route-table'|'security-group'|'snapshot'|'spot-fleet-request'|'spot-instances-request'|'subnet'|'traffic-mirror-filter'|'traffic-mirror-session'|'traffic-mirror-target'|'transit-gateway'|'transit-gateway-attachment'|'transit-gateway-connect-peer'|'transit-gateway-multicast-domain'|'transit-gateway-route-table'|'volume'|'vpc'|'vpc-peering-connection'|'vpn-connection'|'vpn-gateway'|'vpc-flow-log',
@@ -1029,7 +1029,7 @@ Return
     'CustomerOwnedIp': 'string',
     'CustomerOwnedIpv4Pool': 'string',
     'CarrierIp': 'string'
-    # (string) -- The carrier IP address. This option is only available for network interfaces which reside in a subnet in a Wavelength Zone (for example an EC2 instance).  
+    # (string) -- The carrier IP address. This option is only available for network interfaces which reside in a subnet in a Wavelength Zone (for example an EC2 instance).
 }
 ```
 
@@ -1106,66 +1106,66 @@ response = ec2client.allocate_hosts(
 Parameters
 
 - **AutoPlacement** (_string_) --
-    
+
     Indicates whether the host accepts any untargeted instance launches that match its instance type configuration, or if it only accepts Host tenancy instance launches that specify its unique host ID. For more information, see [Understanding Instance Placement and Host Affinity](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding) in the _Amazon EC2 User Guide for Linux Instances_ .
-    
+
     Default: on
-    
+
 - **AvailabilityZone** (_string_) -- [REQUIRED] The Availability Zone in which to allocate the Dedicated Host.
-    
+
 - **ClientToken** (_string_) -- Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see [How to Ensure Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html) .
 - **InstanceType** (_string_) --
-    
+
     Specifies the instance type to be supported by the Dedicated Hosts. If you specify an instance type, the Dedicated Hosts support instances of the specified instance type only.
-    
+
     If you want the Dedicated Hosts to support multiple instance types in a specific instance family, omit this parameter and specify **InstanceFamily** instead. You cannot specify **InstanceType** and **InstanceFamily** in the same request.
-    
+
 - **InstanceFamily** (_string_) --
-    
+
     Specifies the instance family to be supported by the Dedicated Hosts. If you specify an instance family, the Dedicated Hosts support multiple instance types within that instance family.
-    
+
     If you want the Dedicated Hosts to support a specific instance type only, omit this parameter and specify **InstanceType** instead. You cannot specify **InstanceFamily** and **InstanceType** in the same request.
-    
+
 - **Quantity** (_integer_) --
-    
+
     **[REQUIRED]**
-    
+
     The number of Dedicated Hosts to allocate to your account with these parameters.
-    
+
 - **TagSpecifications** (_list_) --
-    
+
     The tags to apply to the Dedicated Host during creation.
-    
+
   - _(dict) --_
-        
+
         The tags to apply to a resource when the resource is being created.
-        
+
       - **ResourceType** (string) -- The type of resource to tag. Currently, the resource types that support tagging on creation are: capacity-reservation | carrier-gateway | client-vpn-endpoint | customer-gateway | dedicated-host | dhcp-options | egress-only-internet-gateway | elastic-ip | elastic-gpu | export-image-task | export-instance-task | fleet | fpga-image | host-reservation | image | import-image-task | import-snapshot-task | instance | internet-gateway | ipv4pool-ec2 | ipv6pool-ec2 | key-pair | launch-template | local-gateway-route-table-vpc-association | placement-group | prefix-list | natgateway | network-acl | network-interface | reserved-instances [|](#id13)route-table | security-group | snapshot | spot-fleet-request | spot-instances-request | snapshot | subnet | traffic-mirror-filter | traffic-mirror-session | traffic-mirror-target | transit-gateway | transit-gateway-attachment | transit-gateway-multicast-domain | transit-gateway-route-table | volume [|](#id15)vpc | vpc-peering-connection | vpc-endpoint (for interface and gateway endpoints) | vpc-endpoint-service (for AWS PrivateLink) | vpc-flow-log | vpn-connection | vpn-gateway .
-            
-            To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .            
-      - **Tags** (list) --The tags to apply to the resource.            
+
+            To tag a resource after it has been created, see [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html) .
+      - **Tags** (list) --The tags to apply to the resource.
           - _(dict) --_
-                
+
                 Describes a tag.
-                
+
               - **Key** _(string) --_
-                    
+
                     The key of the tag.
-                    
+
                     Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with aws: .
-                    
+
               - **Value** _(string) --_
-                    
+
                     The value of the tag.
-                    
+
                     Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
-                    
+
 - **HostRecovery** (_string_) --
-    
+
     Indicates whether to enable or disable host recovery for the Dedicated Host. Host recovery is disabled by default. For more information, see [Host Recovery](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html) in the _Amazon Elastic Compute Cloud User Guide_ .
-    
+
     Default: off
-    
+
 Return
 - Return type: dict
 - **Response Syntax**
@@ -1181,11 +1181,11 @@ Return
 **Response Structure**
 
 - (dict) -- Contains the output of AllocateHosts.
-    
+
   - **HostIds** _(list) --_
-        
+
         The ID of the allocated Dedicated Host. This is used to launch an instance onto a specific host.
-        
+
       - _(string) --_
 
 apply_security_groups_to_client_vpn_target_network(kwargs_)[¶](#EC2.Client.apply_security_groups_to_client_vpn_target_network "Permalink to this definition")
@@ -1208,15 +1208,15 @@ response = ec2client.apply_security_groups_to_client_vpn_target_network(
 Parameters
 
 - **ClientVpnEndpointId** (_string_) -- [REQUIRED] The ID of the Client VPN endpoint.
-    
+
 - **VpcId** (_string_) -- [REQUIRED] The ID of the VPC in which the associated target network is located.
-    
+
 - **SecurityGroupIds** (_list_) --
-    
+
     **[REQUIRED]**
-    
+
     The IDs of the security groups to apply to the associated target network. Up to 5 security groups can be applied to an associated target network.
-    
+
   - _(string) --_
 - **DryRun** (_boolean_) -- Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation . Otherwise, it is UnauthorizedOperation .
 Return
@@ -1234,23 +1234,23 @@ Return
 **Response Structure**
 
 - _(dict) --_
-    
+
   - **SecurityGroupIds** _(list) --_
-        
+
         The IDs of the applied security groups.
-        
+
       - _(string) --_
 
 
 
---- 
+---
 
-### assign_ipv6_addresses(kwargs_) 
+### assign_ipv6_addresses(kwargs_)
 
 - Assigns one or more IPv6 addresses to the specified network interface.
   - specify one or more specific IPv6 addresses,
-  - specify the number of IPv6 addresses to be automatically assigned from within the subnet's IPv6 CIDR block range. 
-- You can assign as many IPv6 addresses to a network interface as you can assign private IPv4 addresses, and the limit varies per instance type. 
+  - specify the number of IPv6 addresses to be automatically assigned from within the subnet's IPv6 CIDR block range.
+- You can assign as many IPv6 addresses to a network interface as you can assign private IPv4 addresses, and the limit varies per instance type.
 
 You must specify either the IPv6 addresses or the IPv6 address count in the request.
 
@@ -1259,11 +1259,11 @@ You must specify either the IPv6 addresses or the IPv6 address count in the requ
 ```py
 response = ec2client.assign_ipv6_addresses(
     Ipv6AddressCount=123,
-    # (_integer_) -- The number of IPv6 addresses to assign to the network interface. 
+    # (_integer_) -- The number of IPv6 addresses to assign to the network interface.
     # Amazon EC2 automatically selects the IPv6 addresses from the subnet range. You can't use this option if specifying specific IPv6 addresses.
     Ipv6Addresses=[
         'string',
-        # _(string) -- One or more specific IPv6 addresses to be assigned to the network interface. 
+        # _(string) -- One or more specific IPv6 addresses to be assigned to the network interface.
         # You can't use this option if you're specifying a number of IPv6 addresses.
     ],
     NetworkInterfaceId='string'
@@ -1275,4 +1275,3 @@ response = ec2client.assign_ipv6_addresses(
 Return
 - Return type: dict
 - **Response Syntax**
-

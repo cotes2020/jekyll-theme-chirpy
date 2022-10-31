@@ -1,29 +1,29 @@
 # 101. Symmetric Tree
 # Easy
 # Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
- 
+
 # Example 1:
-    #           1
-    #        /     \  
-    #      2         2  
-    #     /  \      /  \
-    #   3     4    4     3
+#           1
+#        /     \
+#      2         2
+#     /  \      /  \
+#   3     4    4     3
 # Input: root = [1,2,2,3,4,4,3]
 # Output: true
 
 # Example 2:
-    #           1
-    #        /     \  
-    #      2         2  
-    #        \         \
-    #         3         3
+#           1
+#        /     \
+#      2         2
+#        \         \
+#         3         3
 # Input: root = [1,2,2,null,3,null,3]
 # Output: false
- 
+
 # Constraints:
 # The number of nodes in the tree is in the range [1, 1000].
 # -100 <= Node.val <= 100
- 
+
 # Follow up: Could you solve it both recursively and iteratively?
 
 
@@ -47,7 +47,7 @@ class Solution:
             root1, root2 = stack1.pop(), stack2.pop()
             if (root1, root2) == (None, None):
                 continue
-            elif not (root1 and root2): 
+            elif not (root1 and root2):
                 return False
             elif root1.val != root2.val:
                 return False
@@ -55,7 +55,7 @@ class Solution:
             stack1.append(root1.left)
             stack2.append(root2.left)
             stack2.append(root2.right)
-        return not (stack1 or stack2) 
+        return not (stack1 or stack2)
 
 # (Faster, More Memory)
     def isSymmetric(self, root):
@@ -90,7 +90,6 @@ class Solution:
         return False
 
 
-
 # Top-down Recursion
 # Runtime: 34 ms, faster than 12.71% of Python online submissions for Symmetric Tree.
 # Memory Usage: 13.5 MB, less than 92.74% of Python online submissions for Symmetric Tree.
@@ -114,7 +113,7 @@ class Solution:
 # Runtime: 20 ms, faster than 82.46% of Python online submissions for Symmetric Tree.
 # Memory Usage: 13.9 MB, less than 6.32% of Python online submissions for Symmetric Tree.
 class Solution(object):
-    def traverse(self, root1, root2 ):
+    def traverse(self, root1, root2):
         if (root1, root2) == (None, None):
             return True
         if root1 is None or root2 is None:
@@ -126,35 +125,30 @@ class Solution(object):
         if left and right and root1.val == root2.val:
             return True
         return False
-		
+
     def isSymmetric(self, root):
         if root is None:
             return True
         return self.traverse(root.left, root.right)
-
-
-
 
     def isSymmetric(self, root):
         def pprint(now):
             # if not now:
             if now is None:
                 return ['_']
-            
+
             if now.left is None and now.right is None:
                 return [str(now.val)]
-            
+
             return pprint(now.left) + [str(now.val)] + pprint(now.right)
-        
+
         if root is not None \
-            and root.left is not None \
-            and root.right is not None \
-            and root.left.val != root.right.val:
-                return False
-        
+                and root.left is not None \
+                and root.right is not None \
+                and root.left.val != root.right.val:
+            return False
+
         return pprint(root.left) == pprint(root.right)[::-1]
-
-
 
 
 # Runtime: 22 ms, faster than 60.46% of Python online submissions for Symmetric Tree.
@@ -170,18 +164,18 @@ class Solution(object):
                 return False
         if root.left.val != root.right.val:
             return False
-        
+
         # initialize two queues
         q_left = [root.left]
         q_right = [root.right]
-        
+
         # run normal bfs on the left subtree
         # run reversed bfs on the right subtree
-        
+
         while len(q_left):
             new_left, new_right = [], []
             for node_l, node_r in zip(q_left, q_right):
-                
+
                 # check structure
                 if node_l.left or node_r.right:
                     if node_l.left and node_r.right:
@@ -193,7 +187,7 @@ class Solution(object):
                             return False
                     else:
                         return False
-                
+
                 # same as before
                 if node_l.right or node_r.left:
                     if node_l.right and node_r.left:
@@ -204,8 +198,8 @@ class Solution(object):
                             return False
                     else:
                         return False
-            
+
             q_left = new_left
             q_right = new_right
-                    
+
         return True

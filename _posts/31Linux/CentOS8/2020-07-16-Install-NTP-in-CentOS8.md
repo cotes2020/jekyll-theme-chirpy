@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, CentOS8]
 tags: [Linux, Install, NTP, CentOS8]
 math: true
-image: 
+image:
 ---
 
 
@@ -123,7 +123,7 @@ $ systemctl restart chronyd
 
 // show the current time sources (NTP server) that chronyd is accessing,
 # chronyc sources
-MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+MS Name/IP address         Stratum Poll Reach LastRx Last sample
 ===============================================================================
 ^* server0.psdemo.local          3   6     1    19  -1066us[-1066us] +/-   68ms
 

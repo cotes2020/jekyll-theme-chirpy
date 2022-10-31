@@ -432,7 +432,7 @@ In addition to modules from the local filesystem, Terraform can load modules fro
 - Once a local value is declared, you can reference it in expressions as `local.<NAME>`
 
 ```bash
-# A set of related local values can be declared together 
+# A set of related local values can be declared together
 locals {
   service_name = "forum"
   owner        = "Community Team"
@@ -561,7 +561,7 @@ resource "aws_vpc" "example" {
 
 
 
-$ terraform plan  
+$ terraform plan
 
 # automatically updates configurations in the current directory for readability and consistency.
 $ terraform fmt

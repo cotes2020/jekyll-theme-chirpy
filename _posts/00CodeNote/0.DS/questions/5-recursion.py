@@ -1,4 +1,4 @@
- 
+
 # --------------------------------------------------------------------------------------------------
 # check the reverse words
 def reverse(s):
@@ -21,7 +21,7 @@ def reverse(s):
 # --------------------------------------------------------------------------------------------------
 # check the mirror words
 def removeWhite(s):
-    s = s.replace(" ", "").replace("'","").replace('"','')
+    s = s.replace(' ', '').replace("'",'').replace('"','')
     return s
 
 def isPal(s):
@@ -94,11 +94,11 @@ def main():
     coinsUsed = [0]*(amnt+1)
     coinCount = [0]*(amnt+1)
 
-    print("Making change for",amnt,"requires")
-    print(dpMakeChange(clist,amnt,coinCount,coinsUsed),"coins")
-    print("They are:")
+    print('Making change for',amnt,'requires')
+    print(dpMakeChange(clist,amnt,coinCount,coinsUsed),'coins')
+    print('They are:')
     printCoins(coinsUsed,amnt)
-    print("The used list is as follows:")
+    print('The used list is as follows:')
     print(coinsUsed)
 
 # main()
@@ -108,28 +108,28 @@ def main():
 
 # -------------------------------------- Excercises -------------------------------------------------
 # Write a recursive function to compute the factorial of a number.
-# Factorial of a non-negative integer, is multiplication of all integers smaller than or equal to n. 
+# Factorial of a non-negative integer, is multiplication of all integers smaller than or equal to n.
 # For example factorial of 6 is 6*5*4*3*2*1 which is 720.
- 
+
 # recursion:
 def factorial_recursion(number):
-    if number == 1: 
+    if number == 1:
         factorial = 1
-    else: 
+    else:
         factorial = number * factorial_recursion(number-1)
     print(factorial)
     return factorial
 
 def factorial_recursion(number):
     if number <= 1: return 1
-    return number * factorial_recursion(number-1) 
+    return number * factorial_recursion(number-1)
 
-def factorial_recursion(number): 
-    return 1 if (number == 1 or number == 0) else number*factorial_recursion(number-1) 
+def factorial_recursion(number):
+    return 1 if (number == 1 or number == 0) else number*factorial_recursion(number-1)
 
 # Iterative Solution: O(n)
-# Factorial can also be calculated iteratively as recursion can be costly for large numbers. 
-# Here we have shown the iterative approach using both for and while loop. 
+# Factorial can also be calculated iteratively as recursion can be costly for large numbers.
+# Here we have shown the iterative approach using both for and while loop.
 def factorial(n):
     res = 1
     for i in range(2, n+1):
@@ -148,7 +148,7 @@ def factorial(n):
 
 
 # Factorial of a large number
-# not possible to store these many digits even if we use long long int. 
+# not possible to store these many digits even if we use long long int.
 # Input : 100
 # Output : 933262154439441526816992388562667004-
 #          907159682643816214685929638952175999-
@@ -217,7 +217,7 @@ def Fibonacci(number):
     arr[2] = 1
     arr[3] = 3
     arr[4] = 5
-    if number in arr.keys(): 
+    if number in arr.keys():
         return arr[number]
     for i in range(5, number+1):
         arr[i] = i-1 + i-2
@@ -228,19 +228,19 @@ def Fibonacci(number):
 
 
 # -------------------------------------- Excercises -------------------------------------------------
-# Write a program to solve the following problem: 
-# You have two jugs: a 4-gallon jug and a 3-gallon jug. 
-# Neither of the jugs have markings on them. 
-# There is a pump that can be used to fill the jugs with water. 
+# Write a program to solve the following problem:
+# You have two jugs: a 4-gallon jug and a 3-gallon jug.
+# Neither of the jugs have markings on them.
+# There is a pump that can be used to fill the jugs with water.
 # How can you get exactly two gallons of water in the 4-gallon jug?
 
-# The operations you can perform are: 
+# The operations you can perform are:
 # Empty a Jug
 # Fill a Jug
 # Pour water from one jug to the other until one of the jugs is either empty or full.
 
 # m < n
-# Solution 1 (Always pour from m liter jug into n liter jug) 
+# Solution 1 (Always pour from m liter jug into n liter jug)
 # Fill the m litre jug and empty it into n liter jug.
 # Whenever the m liter jug becomes empty fill it.
 # Whenever the n liter jug becomes full empty it.
@@ -254,15 +254,15 @@ class Tree:
 
     def printTree(self):
         if self.child == []:
-            print("root ", self.data, "have no child")
+            print('root ', self.data, 'have no child')
         else:
             root = self
-            print("root ", root.data, "have child")
+            print('root ', root.data, 'have child')
             leaf = {}
             child_1st_list = []
             child_1st = root.child
             for i in child_1st:
-                print("1st child:", i.data) 
+                print('1st child:', i.data)
                 self.printChild(i)
 
     def printNode(self, Node):
@@ -270,12 +270,12 @@ class Tree:
 
     def printChild(self, node):
         if node.child == []:
-            print(node.data, "has no child")
+            print(node.data, 'has no child')
         else:
             child_list = []
             for i in node.child:
                 child_list.append(i.data)
-            leaf = {"parent": node.data, "child": child_list}
+            leaf = {'parent': node.data, 'child': child_list}
             print(leaf)
 
     def insert(self, parent_node, child_node):
@@ -283,8 +283,8 @@ class Tree:
             child_node.parent = parent_node
             parent_node.child.append(child_node)
         else:
-            print("not tree yet")
-            print("setup tree")
+            print('not tree yet')
+            print('setup tree')
             self.data = child_node.data
 
 # t = Tree((0,0))
@@ -300,7 +300,7 @@ class Tree:
 # print(" +++++++ add child 2")
 # t.insert(t, child2)
 # # t.printChild(child1)
- 
+
 # child3 = Tree((0,3))
 # print(" +++++++ add child 3")
 # t.insert(child1, child3)
@@ -312,22 +312,22 @@ class Tree:
 def add_water(big, small, big_size, small_size):
     # Whenever the m liter jug becomes empty fill it.
     if small == 0:
-        print("refill small")
+        print('refill small')
         small = small_size
     # Whenever the n liter jug becomes full empty it.
     if big == big_size:
-        print("empty big")
+        print('empty big')
         big = 0
     # Fill the m litre jug and empty it into n liter jug.
     if big+small < big_size:
-        print("big <- all small")
+        print('big <- all small')
         big = small
         small = 0
     else:
-        print("big <- small, small still have some")
+        print('big <- small, small still have some')
         small = big+small - big_size
         big = big_size
-    print("end:", big, small)
+    print('end:', big, small)
     return (big, small)
 
 def jugs(target, jug_list):
@@ -336,28 +336,28 @@ def jugs(target, jug_list):
     number_dic = {}
 
     i = 0
-    while target != big:   
-        print(" ============= step:", i)
-        print("start:", big, small)
-        big, small = add_water(big, small, big_size, small_size) 
+    while target != big:
+        print(' ============= step:', i)
+        print('start:', big, small)
+        big, small = add_water(big, small, big_size, small_size)
         if big not in number_dic.keys():
             number_dic[big] = i
         target_index = i
         i += 1
 
     for i in number_dic.keys():
-        print("for number: ", i, "need step: ", number_dic[i])
+        print('for number: ', i, 'need step: ', number_dic[i])
 
-    print(" ============= for target: ", target, "need step: ", target_index)
+    print(' ============= for target: ', target, 'need step: ', target_index)
 
 # jugs(1, (4, 3))
 
 
 # -------------------------------------- Excercises -------------------------------------------------
-# Write a program that solves the following problem: 
-# Three missionaries and three cannibals come to a river and find a boat that holds two people. 
-# Everyone must get across the river to continue on the journey. 
-# However, if the cannibals ever outnumber > the missionaries on either bank, the missionaries will be eaten. 
+# Write a program that solves the following problem:
+# Three missionaries and three cannibals come to a river and find a boat that holds two people.
+# Everyone must get across the river to continue on the journey.
+# However, if the cannibals ever outnumber > the missionaries on either bank, the missionaries will be eaten.
 # Find a series of crossings that will get everyone safely to the other side of the river.
 
 # initial configuration (3 missionaries and cannibals)
@@ -379,7 +379,7 @@ class MandC():
         self.g = 0
         self.f = 0  #f = g+h
         self.father = None
-        self.node = [m, c, b] 
+        self.node = [m, c, b]
 
     def print_state(self, start, end, on_boat):
         print(start, end, on_boat)
@@ -402,17 +402,17 @@ class MandC():
     def is_failure(self, start):
         missionaries, cannibals = start['m'], start['c']
         # boat = self.state_vars[2]
-        
+
         ### missionaries on right side AND more cannibals than missionaries
         if missionaries > 0 or cannibals > 0:
             return True
         return
 
-    def get_possible_moves(self): 
+    def get_possible_moves(self):
         # moves = [(1, 0), (2, 0), (0, 1), (0, 2), (1, 1)]
         # 3 action
         action_dict = {
-            "right": [
+            'right': [
                 # 2 on boat
                 {'c': 1, 'm': 1, 'b': 1},
                 {'c': 0, 'm': 2, 'b': 1},
@@ -421,7 +421,7 @@ class MandC():
                 {'c': 0, 'm': 1, 'b': 1},
                 {'c': 1, 'm': 0, 'b': 1},
             ],
-            "left": [
+            'left': [
                 # 2 on boat
                 {'c': 1, 'm': 1, 'b': 0},
                 {'c': 0, 'm': 2, 'b': 0},
@@ -434,7 +434,7 @@ class MandC():
         return action_dict
 
     def __str__(self):
-        return "MCState[{}]".format(self.state_vars)
+        return 'MCState[{}]'.format(self.state_vars)
 
     def __repr__(self):
         return str(self)
@@ -442,14 +442,14 @@ class MandC():
 
     def check_status(self, start, end, action, possible_list):
         if start == {'c': 0, 'm': 0, 'b': 0}:
-            status = 'finished' 
+            status = 'finished'
             return [action], True
         elif start['c'] > start['m'] and start['m'] != 0:
-            status = "GG"
+            status = 'GG'
         elif end['c'] > end['m'] and end['m'] != 0:
-            status = "GG"
+            status = 'GG'
         else:
-            status = "safe"
+            status = 'safe'
             possible_list.append(action)
         print(status)
         return possible_list, False
@@ -464,7 +464,7 @@ class MandC():
         mock_from = dict(from_loc)
         mock_to = dict(to_loc)
         if mock_from['c'] >= move['c'] and mock_from['m'] >= move['m']:
-            print(" ============ ", mock_from, " - boat move: ", move)
+            print(' ============ ', mock_from, ' - boat move: ', move)
             mock_from['c'] = mock_from['c'] - move['c']
             mock_from['m'] = mock_from['m'] - move['m']
             mock_to['c'] = mock_to['c'] + move['c']
@@ -472,39 +472,39 @@ class MandC():
             mock_from['b'] = 0
             mock_to['b'] = 1
         else:
-            print(" ============ boat move can not be done:", move)
-        return mock_from, mock_to 
+            print(' ============ boat move can not be done:', move)
+        return mock_from, mock_to
 
 
     def movement(self, start, end):
         action_dict = self.get_possible_moves()
         possible_list = []
         boat = start['b']
-        
+
         if boat == 1:
             for action in action_dict['right']:
-                print("++++++ boat from start to end")
-                print("++++++ form", start)
+                print('++++++ boat from start to end')
+                print('++++++ form', start)
                 mock_from, mock_to = self.gogogo(start, end, action)
-                print(" ============ start_status: ", mock_from)
-                print(" ============ end_status: ", mock_to)
+                print(' ============ start_status: ', mock_from)
+                print(' ============ end_status: ', mock_to)
                 possible_list, stop_process = \
                     self.check_status(mock_from, mock_to, action, possible_list)
-        else: 
+        else:
             for action in action_dict['left']:
-                print("++++++ boat from end to start")
-                print("++++++ form", end)
+                print('++++++ boat from end to start')
+                print('++++++ form', end)
                 mock_from, mock_to = self.gogogo(end, start, action)
-                print(" ============ start_status: ", mock_to)
-                print(" ============ end_status: ", mock_from) 
+                print(' ============ start_status: ', mock_to)
+                print(' ============ end_status: ', mock_from)
                 possible_list, stop_process = \
-                    self.check_status(mock_to, mock_from, action, possible_list) 
+                    self.check_status(mock_to, mock_from, action, possible_list)
             if stop_process:
-                return start, end, possible_list, stop_process 
+                return start, end, possible_list, stop_process
         print(possible_list)
         return start, end, possible_list, stop_process
 
-        
+
     def main(self, start, end):
         action_dict = self.get_possible_moves()
         for action in action_dict['right']:
@@ -528,7 +528,7 @@ class MandC():
             if stop_process == True:
                 return possible_list
             else:
-                print("need more")
+                print('need more')
                 for i in possible_list:
             # possible_list = self.main(start, end)
         return possible_list
@@ -546,7 +546,7 @@ run = MandC(start, end, on_boat)
 # print("possible_list:", possible_list)
 
 action = run.main(start, end)
-print("action:", action)
+print('action:', action)
 
 
 
@@ -587,18 +587,18 @@ def safe(s):
         return False
     else:
         return True
- 
+
 # 启发函数
 def h(s):
     return s.m + s.c - K * s.b
     # return M - s.m + C - s.c
- 
+
 def equal(a, b):
     if a.node == b.node:
         return 1,b
     else:
         return 0,b
- 
+
 # 判断当前状态与父状态是否一致
 def back(new, s):
     if s.father is None:
@@ -616,16 +616,16 @@ def back(new, s):
 def open_sort(l):
     the_key = operator.attrgetter('f')  # 指定属性排序的key
     l.sort(key=the_key)
- 
- 
+
+
 # 扩展节点时在open表和closed表中找原来是否存在相同mcb属性的节点
 def in_list(new, l):
     for item in l:
         if new.node == item.node:
             return True, item
     return False, None
- 
- 
+
+
 def A_star(s):
     A=[]
     global open_list, closed_list
@@ -646,7 +646,7 @@ def A_star(s):
         get=open_list[0]
         open_list.remove(get)  # 将get从open表移出
         closed_list.append(get)  # 将get加入closed表
- 
+
         # 以下得到一个get的新子节点new并考虑是否放入openlist
         for i in range(M+1):  # 上船传教士
             for j in range(C+1):  # 上船野人
@@ -682,8 +682,8 @@ def A_star(s):
            # print(o.father)
         #print(a)
     return(A)
-                        
- 
+
+
 # 递归打印路径
 def printPath(f):
     if f is None:
@@ -691,12 +691,12 @@ def printPath(f):
     printPath(f.father)
     #注意print()语句放在递归调用前和递归调用后的区别。放在后实现了倒叙输出
     print(f.node )
- 
- 
+
+
 if __name__ == '__main__':
     print ('有%d个传教士，%d个野人，船容量:%d' % (M, C, K))
     final = A_star(init)
-    print("有{}种方案".format(len(final)))
+    print('有{}种方案'.format(len(final)))
     if final:
         for i in(final):
             print ('有解，解为：')
@@ -707,11 +707,11 @@ if __name__ == '__main__':
 
 
 # -------------------------------------- Excercises -------------------------------------------------
-# Suppose you are a computer scientist/art thief who has broken into a major art gallery. 
-# All you have with you to haul out your stolen art is your knapsack which only holds W pounds of art, 
-# but for every piece of art you know its value and its weight. 
-# Write a dynamic programming function to help you maximize your profit. 
-# Here is a sample problem for you to use to get started: 
+# Suppose you are a computer scientist/art thief who has broken into a major art gallery.
+# All you have with you to haul out your stolen art is your knapsack which only holds W pounds of art,
+# but for every piece of art you know its value and its weight.
+# Write a dynamic programming function to help you maximize your profit.
+# Here is a sample problem for you to use to get started:
 # Suppose your knapsack can hold a total weight of 20. You have 5 items as follows:
 # item     weight      value
 #   1        2           3

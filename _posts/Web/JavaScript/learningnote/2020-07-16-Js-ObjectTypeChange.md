@@ -75,7 +75,7 @@ function () {}.constructor         // 返回函数 Function(){ [native code] }
 
 
 ```js
-String(100 + 23)       // 将数字表达式转换为字符串并返回  
+String(100 + 23)       // 将数字表达式转换为字符串并返回
 (100 + 23).toString()  // Number 方法 toString()
 // Number 方法
 toString()

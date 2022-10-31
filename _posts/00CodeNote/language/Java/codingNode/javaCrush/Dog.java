@@ -25,16 +25,16 @@ public class Dog {
         // add2();
         // speak();
     }
-    
+
     public static void display() {
       System.out.println("I'm a dog!");
       // but static can call this.age
       // cannot specific a instance
-    } 
+    }
 
     public void display2() {
         System.out.println("I'm a dog!");
-    } 
+    }
 
 
     public void speak() {
@@ -60,4 +60,3 @@ public class Dog {
     //     // private: no other class or package able to use it, but this class
     // }
 }
-

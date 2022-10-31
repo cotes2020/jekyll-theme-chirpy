@@ -3,7 +3,7 @@ Distributed systems are a type of software environment or computer system that h
 
 
 
- 
+
 
 
 In simple words, it means “distributed” as compared to being “centralized” or a single point of contact for all communications and processing between computing devices. For example, Distributed file systems allow several physical storage devices, such as disk drives, to appear as one large storage resource to computer applications. The distributed operating system manages separate resources but appears from the user’s perspective as a unified whole with its own namespace (e.g., files are given names independent of their location).
@@ -19,7 +19,7 @@ A distributed system may need to manage resources that are local only to one of 
 
 
 
- 
+
 
 5. What have distributed computing techniques?
 Distributed Computing is the science that deals with distributed systems. A distributed system can be defined as a collection of independent computers that appear to its users as if they were one single computer. It may sound simple, but designing and building these kinds of applications requires special expertise because you have to deal with many different components at once: communication links between machines, processors on each machine or device, operating systems running locally on every node in the network etc. Designing fault-tolerant distributed applications brings additional challenges since there might not always be alternatives for communication paths when some parts go down (e.g., due to maintenance). These types of applications must also take into account what happens when nodes join or leave the distributed system at runtime.
@@ -37,7 +37,7 @@ Aircraft control systems employ similar principles by using information from dif
 Peer-to-peer networking apps like BitTorrent (for downloading)
 
 
- 
+
 
 8. What are the types of distributed systems?
 Following are some main types of distributed systems:
@@ -70,9 +70,9 @@ In a distributed system, the program executes concurrently and there is no globa
 
 
 
- 
 
- 
+
+
 
 13. Why We Need Openness?
 The openness of the distributed system is determined primarily by its ability to offer new resource-sharing services. Open systems are characterized as one in which their key interfaces for accessing shared resources and information on how they work, who’s using them at any given time etc., can be made available through publication or broadcasting – this allows all members without access limitations so long as there is someone present with permission from administrators acting locally (or otherwise). It could also take form when diverse hardware/software platforms coexist within an ecosystem where interactions occur between these separate entities due solely thanks partially because each has something unique that complements another’s design approach well enough allowing further development opportunities based on what works best.
@@ -94,7 +94,7 @@ When you run something asynchronously it means that is non-blocking, meaning the
 
 
 
- 
+
 
 19. What Is Round-Robin Load Balancing?
 one of the most simple ways to distribute client requests over a set of servers can be round-robin load balance. This means that when it comes to handling each request, instead of going down one list and then back again as we did before with modRNom (and hated), our program will be making use of only two different groups: workers and clients.
@@ -156,7 +156,7 @@ At-Least-Once: The at-least-once approach for sending messages means that either
 Exactly-Once: With the at-least-once messaging approach, we can only hope that our processes lead to the delivery of some messages more than once. Ideally, we want to get exactly-once delivery of messages. But sometimes life just isn’t fair and you can’t always get what your heart desires!
 
 
- 
+
 
 35. How a local call and a remote call are different from each other?
 A major difference between remote and local calls is that the remote call can fail often, without any warning. This may happen all of sudden or perhaps gradually over time as more people use it (which would be inconvenient). On the other hand, local calls generally don’t fail and these can be handle easily.

@@ -750,9 +750,9 @@ DROP TABLE database_name.table_name;
 ```
 
 ```
-sqlite>.tables     
+sqlite>.tables
 COMPANY       test.COMPANY
-//先确认 COMPANY 表已经存在，然后我们将其从数据库中删除。  
+//先确认 COMPANY 表已经存在，然后我们将其从数据库中删除。
 //结果 COMPANY 表已存在数据库中，接下来让我们把它从数据库中删除.
 
 sqlite>DROP TABLE COMPANY;
@@ -798,7 +798,7 @@ EXPLAIN QUERY PLAN SELECT statement...;
 **语法**: 两种基本语法.
 
 ```
-INSERT INTO TABLE_NAME [(column1, column2, column3,...columnN)]  
+INSERT INTO TABLE_NAME [(column1, column2, column3,...columnN)]
 INSERT INTO TABLE_NAME VALUES (value1, value2, value3,...valueN);
 //在这里，column1, column2,...columnN 是要插入数据的表中的列的名称。
 ```
@@ -1369,7 +1369,7 @@ SQLite 没有一个单独的用于存储日期和/或时间的存储类，但 SQ
 **实例**:
 
 ```
-$sqlite3 testDB.db      
+$sqlite3 testDB.db
 SQLite version 3.7.15.2 2013-01-09 11:53:05
 Enter ".help" for instructions
 Enter SQL statements terminated with a ";"
@@ -1449,7 +1449,7 @@ Error: database main is already in use；
 如果数据库是在内存中或者是临时数据库，则该数据库将被摧毁，且内容将会丢失。
 
 ```
-DETACH DATABASE 'Alias-Name';  
+DETACH DATABASE 'Alias-Name';
 //Alias-Name与之前 ATTACH 语句附加数据库时所用到的别名相同。
 ```
 

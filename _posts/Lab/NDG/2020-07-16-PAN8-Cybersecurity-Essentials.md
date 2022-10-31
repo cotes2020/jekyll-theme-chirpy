@@ -553,9 +553,9 @@ test connectivity to the Firewall.
    - In the **certificates – [Console Root]** window,
      - click `Certificates (Local Computer)` in the left side pane, to expand the section.
      - right-click the Trusted Root Certification Authorities folder. Then, click on All Tasks > Import...
-     - Certificate Import Wizard window, 
+     - Certificate Import Wizard window,
        - click the Browse... button.
-       - select Personal Information Exchange (*.pfx;*.p12) from the File Type dropdown in the lower- right. 
+       - select Personal Information Exchange (*.pfx;*.p12) from the File Type dropdown in the lower- right.
        - select the cert_lab-firewall.p12 file. Finally, click the Open button.
        - click the Next button.
        - type paloalto: passphrase
@@ -564,12 +564,12 @@ test connectivity to the Firewall.
        - click the Finish Button.OK button.
 
 
-5. Google Chrome: https://192.168.1.254 
+5. Google Chrome: https://192.168.1.254
 6. login prompt from the Firewall.
    - Notice the ! icon in the address bar from before is now showing a secured padlock icon. Click on the padlock icon.
    - In the popup, click the Details link
    - In the Developer Tools pane on the right, notice the message “This page is secure (valid HTTPS)”. Below, under the Valid Certificate section, you will see the message “The connection to this site is using a valid, trusted server certificate.”
-   
+
 
 ---
 
@@ -581,7 +581,7 @@ test connectivity to the Firewall.
    - type Pal0Alt0
    - sh /tg/malware.sh
    - Wait 10 minutes to let the script generate malware traffic.
-   
+
 ### 6.2 Find Malware Threat in the Application Command Center
 review Threat Activity and Blocked Activity in the Application Command Center.
 
@@ -595,17 +595,17 @@ review Threat Activity and Blocked Activity in the Application Command Center.
 
 ## Lab 7: Decrypting SSL Inbound Traffic
 
-### 7.1 `Download the SSL Certificate` from DMZ Server 
-use `WinSCP` to download the certificate and key that is being used on the DMZ server. 
+### 7.1 `Download the SSL Certificate` from DMZ Server
+use `WinSCP` to download the certificate and key that is being used on the DMZ server.
 - WinSCP is a free, open-source tool, used to transfer secure files between clients.
 
 
 1. open WinSCP
-2. In the Login window, 
+2. In the Login window,
    - click on `edl-webserver` on the left. Then, click the `Login` button.
-   - Select `/ <root>` from the dropdown in the top-middle. 
+   - Select `/ <root>` from the dropdown in the top-middle.
    - Then, double-click on `ssl-inbound`.
-   - Press CTRL + A to highlight `dmz-server.key` and `dmz-server.crt`. 
+   - Press CTRL + A to highlight `dmz-server.key` and `dmz-server.crt`.
    - Then, click the Download button at the top.
 
 3. terminate the edl-webserver session.
@@ -617,24 +617,24 @@ import the SSL Certificate you downloaded from the DMZ server to the Firewall. T
 
 1. Device > Certificate Management > Certificates: `Import` button at the bottom-center of the center section.
    - **Import Certificate** window
-     - name: type `SSL Inbound Cert`. 
-     - Browse: `dmz-server.crt`. 
+     - name: type `SSL Inbound Cert`.
+     - Browse: `dmz-server.crt`.
      - Click the checkbox for Import private key.
-       - Browse: `dmz-server.key`. 
+       - Browse: `dmz-server.key`.
      - type paloalto for the Passphrase
      - OK button.
-  
+
 2. Verify the SSL Inbound Cert is showing a status of valid.
 
 
-### 7.3 Create a `Decryption Profile` 
-create a decryption profile. 
-- Decryption profiles allow administrators to perform checks on both decrypted traffic and traffic that would have been excluded from decryption. 
+### 7.3 Create a `Decryption Profile`
+create a decryption profile.
+- Decryption profiles allow administrators to perform checks on both decrypted traffic and traffic that would have been excluded from decryption.
 - After a decryption profile is created, it can then be attached to a decryption policy rule that will enforce the profile settings.
 
 1. Objects > Decryption Profile > Add
-   - **Decryption Profile** window, 
-   - name: type `SSL Inbound Inspection`. 
+   - **Decryption Profile** window,
+   - name: type `SSL Inbound Inspection`.
    - Then, click the OK button.
 2. Verify the SSL Inbound Inspection Decryption Profile was created.
 
@@ -643,20 +643,20 @@ create a decryption profile.
 create a decryption policy. Decryption Policies allow administrators to stop threats that would otherwise remain hidden in encrypted traffic and help prevent sensitive content from leaving an organization.
 
 1. Policies > **Decryption**: Add.
-   - Decryption Policy Rule window, 
+   - Decryption Policy Rule window,
      - type `Decrypt SSL Inbound Inspection` in the Name field.
      - Source tab.
        - Add in the Source Zone section: `inside`.
      - Destination tab
        - Add in the Destination Zone section: `dmz`.
      - Service/URL Category tab.
-       - Add in the Service column: `service-http`. 
-       - Add in the Service column: `service-https`. 
-     - Options tab. 
-       - select Decrypt for the Action. 
-       - select `SSL Inbound Inspection` in the Type 
-       - select `SSL Inbound Cert` in the Certificate 
-       - select `SSL Inbound Inspection` in the Decryption Profile field. 
+       - Add in the Service column: `service-http`.
+       - Add in the Service column: `service-https`.
+     - Options tab.
+       - select Decrypt for the Action.
+       - select `SSL Inbound Inspection` in the Type
+       - select `SSL Inbound Cert` in the Certificate
+       - select `SSL Inbound Inspection` in the Decryption Profile field.
        - Finally, click the OK button.
 
 ### 7.5 Commit and Test Decryption Policy
@@ -675,13 +675,13 @@ test the decryption policy you created earlier.
 
 
 7.  Monitor > Logs > **Traffic**: refresh icon.
-8.  Look for traffic associated with the application of ssl and the Decrypted column is set to yes. 
+8.  Look for traffic associated with the application of ssl and the Decrypted column is set to yes.
     - Open the Detailed Log View of the traffic to analyze the traffic from the Client machine of 192.168.1.20 to the DMZ server of 192.168.50.10.
     - In the **Detailed Log View** window
-      - the Destination section: 192.168.50.10 and Port 443 to the dmz zone of the DMZ server. 
+      - the Destination section: 192.168.50.10 and Port 443 to the dmz zone of the DMZ server.
       - Then, in the Flags section, notice the flag Decrypted is set and click the Close button.
 
-### 7.6 Disable Decryption Policy 
+### 7.6 Disable Decryption Policy
 disable the decryption policy you created earlier. Then, after committing the changes to the Firewall, you will monitor traffic logs to determine if traffic is still being decrypted.
 
 
@@ -692,12 +692,12 @@ disable the decryption policy you created earlier. Then, after committing the ch
 
 
 5. Monitor > Logs > Traffic. Then, click the refresh icon.
-6. Look for traffic associated with the application of ssl and the Decrypted column is set to no. 
+6. Look for traffic associated with the application of ssl and the Decrypted column is set to no.
    - Open the Detailed Log View of the traffic to analyze the traffic from the Client machine of 192.168.1.20 to the DMZ server of 192.168.50.10.
-   - Detailed Log View window, 
-   - Destination section: 192.168.50.10 and Port 443 to the dmz zone of the DMZ server. 
+   - Detailed Log View window,
+   - Destination section: 192.168.50.10 and Port 443 to the dmz zone of the DMZ server.
    - Flags section, notice the flag for Decrypted is not set.
-   
+
 
 
 

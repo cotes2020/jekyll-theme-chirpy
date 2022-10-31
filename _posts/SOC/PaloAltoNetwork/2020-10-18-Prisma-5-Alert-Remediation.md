@@ -26,7 +26,7 @@ In Prisma Cloud, an `alert` occurs when an `alert rule` has been configured that
 
 Resolving Open Alerts
 - Resources in the targeted environment that are in violation of any policy in the alert rule will trigger the alert.
-- Once the alert is asserted, open alerts can be resolved in one of three ways.  
+- Once the alert is asserted, open alerts can be resolved in one of three ways.
 - **Manual Remediation**
   - log in to public cloud account directly and `reconfigure the resource` so that it is no longer in violation of the policy.
   - applies to all alert types and not just to config alerts.

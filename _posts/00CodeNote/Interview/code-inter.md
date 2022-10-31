@@ -59,9 +59,9 @@ In some cases, you're being asked to design a single feature or algorithm, but y
 ---
 
 
-like write a script to scrape information from a website, 
+like write a script to scrape information from a website,
 
-or implement basic ciphers or make a power password brute force tool to generate credentials and store successful logins. 
+or implement basic ciphers or make a power password brute force tool to generate credentials and store successful logins.
 
 And then they also might cover things like intrusion detection, analysis, malware, and security architecture.
 

@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, CentOS8]
 tags: [Linux, CentOS8]
 math: true
-image: 
+image:
 ---
 
 
@@ -43,7 +43,7 @@ $ more /etc/yum.conf
 cachedir=/var/cache/yum/$basearch/$releasever  //where YUM caches packages locally with performing installations.
 keepcache=0                //  after done installation, delet the cache
 debuglevel=2
-logfile=/var/log/yum.log   
+logfile=/var/log/yum.log
 exactarch=1
 obsoletes=1
 gpgcheck=1
@@ -254,8 +254,8 @@ $ vi /etc/yum.repos.d/custom.repo
 // change
 [http]
 name=Local HTTP repository
-baseurl=http://192.168.1.1/custom  
-// default http Document root for HTTP server  
+baseurl=http://192.168.1.1/custom
+// default http Document root for HTTP server
 enabled=1
 gpgcheck=0
 // for system want to use this repo

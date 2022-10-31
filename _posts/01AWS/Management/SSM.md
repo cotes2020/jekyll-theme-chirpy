@@ -123,7 +123,7 @@
     - provides information about AWS Health events that can affect the account.
     - The information is presented in two ways:
       - a dashboard that shows recent and upcoming events organized by category,
-      - and a full event log that shows all events from the past 90 days.  
+      - and a full event log that shows all events from the past 90 days.
 
 ---
 
@@ -173,7 +173,7 @@
   - requesting, approving, implementing, and reporting on operational changes to the application configuration and infrastructure.
   - managing changes to both AWS resources and on-premises resources.
   - single delegated administrator account using AWS Organizations, manage changes across multiple AWS accounts in multiple AWS Regions.
-  - local account, manage changes for a single AWS account.  
+  - local account, manage changes for a single AWS account.
 
 - Systems Manager Automation
   - automate common maintenance and deployment tasks.
@@ -240,7 +240,7 @@
   - without the need to open inbound ports, maintain bastion hosts, or manage SSH keys.
   - automating common administrative tasks across groups of instances
     - such as registry edits, user management, and software and patch installations.
-  - manage the EC2 instances through an interactive one-click browser-based shell or through the AWS CLI.  
+  - manage the EC2 instances through an interactive one-click browser-based shell or through the AWS CLI.
 - integration with AWS IAM
   - can apply granular permissions to control the actions users can perform on instances.
 - provides secure and auditable instance management

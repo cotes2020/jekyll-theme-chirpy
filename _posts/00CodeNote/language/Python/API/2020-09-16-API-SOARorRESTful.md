@@ -36,7 +36,7 @@ helpful video for basic concepte before start:
 
 ## Web Services API
 
-In recent years, there is a tendency to move some business logic to the client side, in a architecture known as `Rich Internet Application (RIA)`. 
+In recent years, there is a tendency to move some business logic to the client side, in a architecture known as `Rich Internet Application (RIA)`.
 - In RIA, the server provides the clients with data retrieval and storage services, becoming a `'web service' or 'remote API'`.
 
 

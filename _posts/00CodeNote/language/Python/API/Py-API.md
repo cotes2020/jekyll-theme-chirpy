@@ -95,9 +95,9 @@ def refund(transaction_id):
             message = error['message']
 
         if code == 1:
-            raise errors.Refused(code, message) from e        
+            raise errors.Refused(code, message) from e
         elif code == 2:
-            raise errors.Stolen(code, message) from e        
+            raise errors.Stolen(code, message) from e
         else:
             raise errors.PaymentGatewayError(code, message) from e
 
@@ -282,9 +282,9 @@ def charge(amount,token,timeout=5):
             message = error['message']
 
         if code == 1:
-            raise errors.Refused(code, message) from e        
+            raise errors.Refused(code, message) from e
         elif code == 2:
-            raise errors.Stolen(code, message) from e        
+            raise errors.Stolen(code, message) from e
         else:
             raise errors.PaymentGatewayError(code, message) from e
 
@@ -329,7 +329,7 @@ def charge(amount,token,timeout=5):
 
     data = response.json()
 
-    charge_response = ChargeResponse(        
+    charge_response = ChargeResponse(
         uid=uuid.UID(data['uid']),
         amount=data['amount'],
         token=data['token'],
@@ -375,7 +375,7 @@ payment_session.cookies.policy = BlockAll()
 
 def charge(amount,token,timeout=5):
     # ...
-    response = payment_session.post( ... )    
+    response = payment_session.post( ... )
     # ...
 ```
 
@@ -537,9 +537,9 @@ from payment import errors
 
 def TestApp(TestCase):
 
-    @mock.patch('payment.charge')    
+    @mock.patch('payment.charge')
     def test_should_charge_user_for_product(self, mock_charge):
-        mock_charge.return_value = ChargeResponse(            
+        mock_charge.return_value = ChargeResponse(
             uid='test-uid',
             amount=1000,
             token='test-token',
@@ -549,9 +549,9 @@ def TestApp(TestCase):
         charge_user_for_product(user, product)
         self.assertEqual(user.approved_transactions, 1)
 
-    @mock.patch('payment.charge')    
+    @mock.patch('payment.charge')
     def test_should_suspend_user_if_stolen(self, mock_charge):
-        mock_charge.side_effect = errors.Stolen        
+        mock_charge.side_effect = errors.Stolen
         charge_user_for_product(user, product)
         self.assertEqual(user.is_active, False)
 ```
@@ -671,7 +671,7 @@ import requests
 resp = requests.get('https://todolist.example.com/tasks/')
 
 # This means something went wrong.
-if resp.status_code != 200:    
+if resp.status_code != 200:
     raise ApiError('GET /tasks/ {}'.format(resp.status_code))
 
 # and transforms it into a Python list of dictionaries by json.loads().

@@ -296,7 +296,7 @@ One additional analysis issue needs to be addressed. In the recursive solution s
 - The analysis that we did above assumed that the slice operator takes `constant time`.
 - However, we know that the slice operator in Python is actually `O(k)`.
 - This means that the binary search using slice will not perform in strict logarithmic time.
-- Luckily this can be remedied by passing the list along with the starting and ending indices.  
+- Luckily this can be remedied by passing the list along with the starting and ending indices.
 
 Even though a binary search is generally better than a sequential search, it is important to note that
 - **for small values of n, the additional cost of sorting is probably not worth it.**
@@ -323,7 +323,7 @@ A hash table is a collection of items which are stored in such a way as to make 
 - Each position of the hash table, often called a `slot`, can hold an item and is named by an integer value starting at 0.
 - For example, we will have a slot named 0, a slot named 1, a slot named 2, and so on.
 - Initially, the hash table contains no items so every slot is empty.
-- We can implement a hash table by using a list with each element initialized to the special Python value `None`.  
+- We can implement a hash table by using a list with each element initialized to the special Python value `None`.
 
 ![hashtable](https://i.imgur.com/kBYvacm.png)
 
@@ -1354,7 +1354,7 @@ def sq(arr, l, r):
 
 The quickSort function invokes a recursive function, quickSortHelper. quickSortHelper begins with the same base case as the merge sort.
 - If the length of the list is less than or equal to one, it is already sorted.
-- If it is greater, then it can be partitioned and recursively sorted.  
+- If it is greater, then it can be partitioned and recursively sorted.
 
 ```py
 def quickSort(alist):

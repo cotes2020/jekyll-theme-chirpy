@@ -46,7 +46,7 @@ image:
 An event in CloudTrail is the record of an activity in an AWS account.
 
 - This activity can be an action taken by a user, role, or service that is monitorable by CloudTrail.
-- CloudTrail events provide a history of both API and non-API account activity 
+- CloudTrail events provide a history of both API and non-API account activity
   - made through the AWS Management Console, AWS SDKs, command line tools, and other AWS services.
 - types of events that can be logged in CloudTrail:
   - <font color=blue> management events </font>
@@ -59,7 +59,7 @@ An event in CloudTrail is the record of an activity in an AWS account.
 
 
 ### Management Events
-- information about <font color=red> control plane/ management operations </font> performed on resources in AWS account. 
+- information about <font color=red> control plane/ management operations </font> performed on resources in AWS account.
 - Example management events include:
   - Configuring security
     - IAM `AttachRolePolicy` API operations...
@@ -69,8 +69,8 @@ An event in CloudTrail is the record of an activity in an AWS account.
     - EC2 `CreateSubnet` API operations...
   - Setting up logging
     - CloudTrail `CreateTrail` API operations...
-- Management events can also include non-API events that occur in your account. 
-  - For example, 
+- Management events can also include non-API events that occur in your account.
+  - For example,
   - when a user signs in to your account, CloudTrail logs the `ConsoleLogin` event.
 
 
@@ -79,7 +79,7 @@ An event in CloudTrail is the record of an activity in an AWS account.
 - Data events are <font color=blue> disabled by default </font> when create a trail
   - must explicitly add to a trail the supported resources or resource types for which you want to collect activity.
 
-- information about the <font color=red> data plane/resource operations </font> performed on or in a resource. 
+- information about the <font color=red> data plane/resource operations </font> performed on or in a resource.
   - Data events are often high-volume activities.
 
 - The following two data types are recorded:
@@ -96,7 +96,7 @@ An event in CloudTrail is the record of an activity in an AWS account.
     - must explicitly enable Insights event collection on a new or existing trail.
   - If you have Insights events enabled, CloudTrail detects unusual activity,
 - Insights events are logged to a different folder or prefix in the destination S3 bucket for your trail.
- 
+
 - Insights events provide relevant information,
   - such as the associated API, incident time, and statistics
   - can also see the type of insight and the incident time period when you view Insights events on the CloudTrail console.
@@ -105,12 +105,12 @@ An event in CloudTrail is the record of an activity in an AWS account.
 - Insights events are logged only when CloudTrail detects changes in your account's API usage that <font color=red> differ significantly from the account's typical usage patterns </font>
 
 - Examples of activity that might generate Insights events include:
-  - Your account typically logs no more than 20 Amazon S3 deleteBucket API calls per minute, 
-    - but your account starts to log an average of 100 deleteBucket API calls per minute. 
-    - An Insights event is logged at the start of the unusual activity, 
+  - Your account typically logs no more than 20 Amazon S3 deleteBucket API calls per minute,
+    - but your account starts to log an average of 100 deleteBucket API calls per minute.
+    - An Insights event is logged at the start of the unusual activity,
     - and another Insights event is logged to mark the end of the unusual activity.
-  - Your account typically logs 20 calls per minute to the Amazon EC2 `AuthorizeSecurityGroupIngress` API, 
-    - but your account starts to log zero calls to AuthorizeSecurityGroupIngress. 
+  - Your account typically logs 20 calls per minute to the Amazon EC2 `AuthorizeSecurityGroupIngress` API,
+    - but your account starts to log zero calls to AuthorizeSecurityGroupIngress.
     - An Insights event is logged at the start of the unusual activity, and ten minutes later, when the unusual activity ends, another Insights event is logged to mark the end of the unusual activity.
 
 
@@ -128,9 +128,9 @@ An event in CloudTrail is the record of an activity in an AWS account.
 
 ### Trails
 - a configuration that enables delivery of CloudTrail events to an S3 bucket, CloudWatch Logs, and CloudWatch Events.
-- You can use a trail to 
-  - filter the CloudTrail events you want delivered, 
-  - encrypt your CloudTrail event log files with an AWS KMS key, 
+- You can use a trail to
+  - filter the CloudTrail events you want delivered,
+  - encrypt your CloudTrail event log files with an AWS KMS key,
   - set up Amazon SNS notifications for log file delivery.
 
 
@@ -140,13 +140,13 @@ An event in CloudTrail is the record of an activity in an AWS account.
 - helps define a uniform event logging strategy for your organization.
 - create an organization trail
   - a trail with the name that you give it will be created in every AWS account that belongs to your organization.
-  - Users with CloudTrail permissions in member accounts will be able to see this trail (including the trail ARN) when they 
-    - log into the AWS CloudTrail console from their AWS accounts, 
+  - Users with CloudTrail permissions in member accounts will be able to see this trail (including the trail ARN) when they
+    - log into the AWS CloudTrail console from their AWS accounts,
     - or run AWS CLI commands such as describe-trails (although member accounts must use the ARN for the organization trail, and not the name, when using the AWS CLI).
-  - but users in member accounts will not have sufficient permissions to 
-    - delete the organization trail, 
-    - turn logging on or off, 
-    - change what types of events are logged, 
+  - but users in member accounts will not have sufficient permissions to
+    - delete the organization trail,
+    - turn logging on or off,
+    - change what types of events are logged,
     - or otherwise alter the organization trail in any way.
 
 

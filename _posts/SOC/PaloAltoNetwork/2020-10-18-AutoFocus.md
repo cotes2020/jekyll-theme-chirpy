@@ -1,5 +1,5 @@
 ---
-title: Palo Alto Networks - AutoFocus - Prioritize, Research, and Mitigate Threats 
+title: Palo Alto Networks - AutoFocus - Prioritize, Research, and Mitigate Threats
 date: 2020-10-18 11:11:11 -0400
 description:
 excerpt_separator:
@@ -13,7 +13,7 @@ image: /assets/img/note/prisma.png
 
 [toc]
 
---- 
+---
 
 
 # AutoFocus: Prioritize, Research, and Mitigate Threats

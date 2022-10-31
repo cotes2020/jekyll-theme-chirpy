@@ -60,7 +60,7 @@ image:
   - Cloud Source Repositories
     - keep code private to a GCP project
     - use IAM permissions to protect it,
-    - and not have to maintain the Git instance theself.  
+    - and not have to maintain the Git instance theself.
 
 ---
 
@@ -100,14 +100,14 @@ image:
 - an Infrastructure Management Service for GCP resources.
 
 - use a template.
-  - a specification of what the environment should look like.  
+  - a specification of what the environment should look like.
 
 - automates the creation and management of the Google Cloud Platform resources
 
-- To use it  
+- To use it
   - create a template file
     - using either the YAML markup language or Python
-    - describes the components of the environment  
+    - describes the components of the environment
   - give the template to Deployment Manager
     - figures out and does the actions needed to create the environment the template describes.
 

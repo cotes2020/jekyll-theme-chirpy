@@ -11,7 +11,7 @@ math: true
 toc: true
 image: /assets/img/note/tls-ssl-handshake.png
 ---
- 
+
 - [网络协议](#网络协议)
 - [The OSI Model](#the-osi-model)
   - [Layers in OSI](#layers-in-osi)
@@ -178,7 +178,7 @@ OSI 参考模型将网络协议提供的服务分成 7 层，并定义每一层�
   - a more relevant model is developed by the United States Department of Defense (DoD). The DoD model / TCP/IP stack.
 
 - Network Control Protocol (NCP):
-  - An older protocol, similar to the TCP/IP protocol suite,  
+  - An older protocol, similar to the TCP/IP protocol suite,
   - a protocol used on ARPANET (the predecessor to the Internet),
   - provided features similar to (not as robust) to TCP/IP suite of protocols.
 
@@ -208,7 +208,7 @@ OSI 参考模型将网络协议提供的服务分成 7 层，并定义每一层�
 - 路由器接收数据后，首先查看最外层封装的以太网头部信息，当目的 MAC 地址是自己时，就会将以太网头部解封装，查看数据的 IP 地址。
 - 根据 IP 路由表做出转发决定时，路由器会把下一跳设备的 MAC 地址作为以太网头部的目的 MAC 地址，重新封装以太网头部并将数据转发出去。
 - 转发数据的网络设备和应用层的数据，就像快递员和包裹一样。快递员根据目的地址运送包裹，不必了解包裹里的具体内容。
- 
+
 
 ### 4. **Application Layer**:
 - `representation, encoding and dialog control issues`.
@@ -491,7 +491,7 @@ TCP Header
 - `HeaderLength`:
   - The TCP header is of variable length, HdrLen gives the length of the header in 32-bit words. Also known as Offset field.
 - `AdvertisedWindow`:
-  - how many bytes a device can receive before expecting an acknowledgment. 	
+  - how many bytes a device can receive before expecting an acknowledgment.
   - offers flow control.
 - `Flags`:
   - relay control information between TCP peers. Used to determine the conditions and status of the TCP connection.

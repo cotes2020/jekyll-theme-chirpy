@@ -20,13 +20,13 @@ package JAVA.javaCrush;
 public class JavaCrushCourse {
 
     public static void main(String[] args) {
-        
-        // constructor 
-        // specifies how to create objects of this class. 
+
+        // constructor
+        // specifies how to create objects of this class.
         // code that gets run when an object is created to initialize that object.
-        // constructor looks like a function but has no return type. 
+        // constructor looks like a function but has no return type.
         // And is named the same as the class.
-        
+
         // abstraction.
         // The details of how a object works can remain hidden from us as long as we know what it does.
 
@@ -56,7 +56,7 @@ public class JavaCrushCourse {
         //     System.out.println(arr[i]);
         // }
 
-        
+
         // 2. usual count method
         // int count = 0;
         // for (int element:arr) {
@@ -97,7 +97,7 @@ public class JavaCrushCourse {
 
         // 5. do while:
         // Scanner sc = new Scanner(System.in);
-        // int x;     
+        // int x;
         // do {
         //     System.out.println("Type number: ");
         //     x = sc.nextInt();
@@ -137,7 +137,7 @@ public class JavaCrushCourse {
         // System.out.println(t2);
 
 
-        // 8. lists: 
+        // 8. lists:
         // ArrayList<Integer> t = new ArrayList<Integer>();  // no size need
         // t.add(5);
         // t.remove(5)
@@ -150,8 +150,8 @@ public class JavaCrushCourse {
         // System.out.println(t.subList(1,3));
 
 
-        
-        // 8. LinkedList: 
+
+        // 8. LinkedList:
         // LinkedList<Integer> t = new LinkedList<Integer>();
         // t.add(5);
         // t.remove(5);
@@ -193,8 +193,8 @@ public class JavaCrushCourse {
         // System.out.println(m);
         // System.out.println(m.get("tim"));
         // {tim=5, sd=5}
-        
-        
+
+
         // 11. HashMap: unique key, no order, so fast.
         // Map m = new HashMap();
         // m.put("tim", 5);
@@ -227,14 +227,14 @@ public class JavaCrushCourse {
         // }
         // System.out.println(m);
 
-        
+
         // 13. sort
         // int[] x = {1,2,3,4,6,3,2,5,3,1,4,6,0};
         // Arrays.sort(x, 3,6);
         // for (int i:x) {
         //     System.out.print(i+",");
         // }
-        
+
 
         // tim("Tim!!!!!", 4);
         // System.out.println(add2(6));
@@ -249,7 +249,7 @@ public class JavaCrushCourse {
         // tim.setAge(5);
         // tim.add2();  private method is not usable
         // System.out.println(tim.getAge());
-    
+
 
 
         // 16. inherit
@@ -391,7 +391,7 @@ public class JavaCrushCourse {
             return Car.SEDAN == ((Car)arg0).getStyle();
         }
     });
-    
+
     Runnable r = ()-> System.out.print("Run method");
     // is equivalent to
     Runnable r = new Runnable() {

@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, Sysadmin]
 tags: [Linux, Sysadmin, OnePage]
 math: true
-image: 
+image:
 ---
 
 # Linux - ubuntu command
@@ -18,7 +18,7 @@ image:
 ```
 sudo lshw -C network
 
-*-network               
+*-network
    description:   Wireless interface
    product:       BCM4313 802.11bgn Wireless Network Adapter
    vendor:        Broadcom Corporation
@@ -326,7 +326,7 @@ Options
 
 * The operator:
     * `+`: causes the permissions selected to be added to the existing permissions of each file;
-    * `-`: causes them to be removed;  
+    * `-`: causes them to be removed;
     * `=`: causes them to be the only permissions that the file has.
 
 * The letters `rwxXstugo`: the new permissions for the affected users:
@@ -373,7 +373,7 @@ df -h  用 M 和 G 做单位显示文件系统空间信息 -h 意思是 human-re
 
 ##### `du` 显示目录的空间使用信息
 `du -sh` directory
--s 意思 summary  
+-s 意思 summary
 -h 意思 human-readable
 
 ```
@@ -548,7 +548,7 @@ $ sudo `usermod` `-g` **Group_Name** **User_Name**
 
 #### change name or id
 1.
-usermod -u <NEWUID> <LOGIN>    
+usermod -u <NEWUID> <LOGIN>
 groupmod -g <NEWGID> <GROUP>
 find / -user <OLDUID> -exec chown -h <NEWUID> {} \;
 find / -group <OLDGID> -exec chgrp -h <NEWGID> {} \;

@@ -2,8 +2,8 @@
 title: Meow's Testing Tools - OpenVAS
 # author: Grace JyL
 date: 2019-09-17 11:11:11 -0400
-description: 
-excerpt_separator: 
+description:
+excerpt_separator:
 categories: [10CyberAttack, CyberAttackTools]
 tags: [CyberAttack, CyberAttackTools, OpenVAS]
 math: true
@@ -104,10 +104,10 @@ Once `openvas-setup` completes its process, the OpenVAS manager, scanner, and GS
 ```bash
 root@kali:~# root@kali:~# netstat -antp
 Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
-tcp        0      0 127.0.0.1:80            0.0.0.0:*               LISTEN      4782/gsad           
-tcp        0      0 127.0.0.1:9392          0.0.0.0:*               LISTEN      4774/gsad           
-tcp        0      0 127.0.0.1:9390          0.0.0.0:*               LISTEN      4776/openvasmd      
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:80            0.0.0.0:*               LISTEN      4782/gsad
+tcp        0      0 127.0.0.1:9392          0.0.0.0:*               LISTEN      4774/gsad
+tcp        0      0 127.0.0.1:9390          0.0.0.0:*               LISTEN      4776/openvasmd
 # 9392 is for WebGUI/OpenVAS Web Interface.
 # TCP ports 9390 and 9392 listening on your loopback interface.
 
@@ -258,8 +258,8 @@ With our more finely-tuned scan settings and target selection, the results of ou
 ## Automating OpenVAS
 
 `openvas-automate.sh` by mgeeky
-- a semi-interactive Bash script 
-- prompts you for a scan type and takes care of the rest. 
+- a semi-interactive Bash script
+- prompts you for a scan type and takes care of the rest.
 - The scan configs are hard-coded in the script so if you want to use your customized configs, added under the “targets” section.
 
 ```bash
@@ -291,7 +291,7 @@ Please select an option: 5
 ```
 
 [script](https://github.com/c610/tmp/blob/master/code16.py) by code16
-- interacting with OpenVAS. 
+- interacting with OpenVAS.
 - need to make some slight edits to customize the scan type.
 
 ```bash
@@ -347,7 +347,7 @@ Simply run:
 ```
 # latest (9)
 docker run -d -p 443:443 --name openvas mikesplain/openvas
-docker run -d -p 443:443 -p 9390:9390 -p 9391:9391 -e OV_ADMIN_USERNAME=admin -e OV_PASSWORD=admin --name openvas mikesplain/openvas:8 
+docker run -d -p 443:443 -p 9390:9390 -p 9391:9391 -e OV_ADMIN_USERNAME=admin -e OV_PASSWORD=admin --name openvas mikesplain/openvas:8
 docker run -d -p 443:443 -p 9390:9390 -p 9391:9391 -e OV_ADMIN_USERNAME=admin -e OV_PASSWORD=admin --name openvas mikesplain/openvas:9
 
 # 9
@@ -457,12 +457,12 @@ To run:
 ---
 
 #### LDAP Support (experimental)
-Openvas do not support full ldap integration but only per-user authentication. 
-- A workaround is in place here by syncing ldap admin user(defined by `LDAP_ADMIN_FILTER `) with openvas admin users everytime the app start up.  
+Openvas do not support full ldap integration but only per-user authentication.
+- A workaround is in place here by syncing ldap admin user(defined by `LDAP_ADMIN_FILTER `) with openvas admin users everytime the app start up.
 - To use this, just need to specify the required ldap env variables:
 
 ```
-docker run -d -p 443:443 -p 9390:9390 --name openvas -e LDAP_HOST=your.ldap.host -e LDAP_BIND_DN=uid=binduid,dc=company,dc=com -e LDAP_BASE_DN=cn=accounts,dc=company,dc=com -e LDAP_AUTH_DN=uid=%s,cn=users,cn=accounts,dc=company,dc=com -e LDAP_ADMIN_FILTER=memberOf=cn=admins,cn=groups,cn=accounts,dc=company,dc=com -e LDAP_PASSWORD=password -e OV_PASSWORD=admin mikesplain/openvas 
+docker run -d -p 443:443 -p 9390:9390 --name openvas -e LDAP_HOST=your.ldap.host -e LDAP_BIND_DN=uid=binduid,dc=company,dc=com -e LDAP_BASE_DN=cn=accounts,dc=company,dc=com -e LDAP_AUTH_DN=uid=%s,cn=users,cn=accounts,dc=company,dc=com -e LDAP_ADMIN_FILTER=memberOf=cn=admins,cn=groups,cn=accounts,dc=company,dc=com -e LDAP_PASSWORD=password -e OV_PASSWORD=admin mikesplain/openvas
 ```
 
 ---

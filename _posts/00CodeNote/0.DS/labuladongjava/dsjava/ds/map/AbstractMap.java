@@ -1,7 +1,7 @@
-package map; 
+package map;
 import pq.*;
 
-public abstract class AbstractMap implements Map<K,V>{ 
+public abstract class AbstractMap implements Map<K,V>{
 
     public boolean isEmpty() {return size()==0;}
 
@@ -21,7 +21,7 @@ public abstract class AbstractMap implements Map<K,V>{
         protected V setValue(V value) {
             V old = v;
             v = value;
-            return old; 
+            return old;
         }
     }
 
@@ -30,11 +30,11 @@ public abstract class AbstractMap implements Map<K,V>{
         private Iterator<Entry<K,V>> entries = entrySet().iterator(); // reuse entrySet
         public boolean hasNext(){return entries.hasNext();}
         public K next(){return entries.next().getKey();}  // return key
-        public void remove(){throw new UnsupportedOperationException();} 
+        public void remove(){throw new UnsupportedOperationException();}
     }
 
     private class KeyIterable implements Iterable<K> {
-        public Iterator<K> iterator() { return new KeyIterator(); } 
+        public Iterator<K> iterator() { return new KeyIterator(); }
     }
 
     public Iterable<K> keySet( ) { return new KeyIterable( ); }
@@ -45,11 +45,11 @@ public abstract class AbstractMap implements Map<K,V>{
         private Iterator<Entry<K,V>> entries = entrySet().iterator(); // reuse entrySet
         public boolean hasNext(){return entries.hasNext();}
         public V next(){return entries.next().getKey();}  // return key
-        public void remove(){throw new UnsupportedOperationException();} 
+        public void remove(){throw new UnsupportedOperationException();}
     }
 
     private class ValueIterable implements Iterable<V> {
-        public Iterator<K> iterator() { return new ValueIterator(); } 
+        public Iterator<K> iterator() { return new ValueIterator(); }
     }
 
     public Iterable<V> values( ) { return new ValueIterable( ); }
@@ -58,5 +58,5 @@ public abstract class AbstractMap implements Map<K,V>{
 
 
 
-    
+
 }

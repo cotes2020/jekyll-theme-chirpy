@@ -348,7 +348,7 @@ The general HTTP authentication framework is used by several authentication sche
 
 ![HTTPAuth](https://i.imgur.com/HMO7vyi.png)
 
-1. client access come protected URL: `https://some.url`   
+1. client access come protected URL: `https://some.url`
 
 2. server check the request has `Authorization header` with `valid usrname and passwd`
 
@@ -411,7 +411,7 @@ export default function auth(req, res, next) {
   return unauthorized(res);
 };
 
-function unauthorized(res) {  
+function unauthorized(res) {
   res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
   return res.send(401);
 };
@@ -475,7 +475,7 @@ the user ID and password are passed over the network as clear text
    3. The `auth_basic_user_file directive` : points to a `.htpasswd file` containing the encrypted user credentials, just like Apache
 
       ```
-      location /status {                                       
+      location /status {
           auth_basic           "Access to the staging site";
           auth_basic_user_file /etc/apache2/.htpasswd;
       }
@@ -795,7 +795,7 @@ app.use(
 Example usage - (to check out the validity/content of the token, you can use `jwt.io`):
 
 ```baSH
-curl --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ" my-website.com  
+curl --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ" my-website.com
 ```
 
 
@@ -836,7 +836,7 @@ The cons:
 
 
 **代理授权**
-- 代理授权是一种允许第三方应用访问用户数据的方法。  
+- 代理授权是一种允许第三方应用访问用户数据的方法。
 - 有两种`代理授权`的方式：
   - 一是你将账号密码提供给第三方应用，以便它们可以代表你来登陆账号并且访问数据；
   - 二是你通过 OAuth 授权第三方应用访问你的数据，而无需提供密码。（我相信我们都不会选择交出我们的密码！）
@@ -1141,7 +1141,7 @@ https://b.com/oauth/token?
 
 # B 网站收到请求以后，就会颁发令牌。
 # 向`redirect_uri`指定的网址，发送一段 JSON 数据。
-{    
+{
   "access_token":"ACCESS_TOKEN",
   "token_type":"bearer",
   "expires_in":2592000,
@@ -1184,7 +1184,7 @@ https://b.com/oauth/token?
    - 具体做法是向`redirect_uri`指定的网址，发送一段 JSON 数据。
 
     ```json
-    {    
+    {
       "access_token":"ACCESS_TOKEN",
       "token_type":"bearer",
       "expires_in":2592000,
@@ -1795,7 +1795,7 @@ ingress.extensions/nginx unchanged
 ingress.extensions/nginx-oauth2 unchanged
 
 
-$ kubectl -n kube-system get po,svc,ing |grep nginx                        
+$ kubectl -n kube-system get po,svc,ing |grep nginx
 pod/nginx-5ddcc6cb74-rnjlx                    1/1     Running   0          3m
    80/TCP                      3m
 ingress.extensions/nginx               nginx-test.ssgeek.com             80, 443   3m
@@ -2934,7 +2934,7 @@ OIDC Session Management
 - 这部分的核心就是两个 iframe
 - 一个是我们自己应用中写的（以下叫做 RP iframe），用于不断发送 PostMessage 给 OP iframe，
 - OP iframe 负责查询用户登录状态，并返回给 RP iframe。
- 
+
 
 首先打开 node-oidc-provider 的 sessionManangement 功能，编辑 ./support/configuration.js 文件，在 42 行附近，进行以下修改：
 

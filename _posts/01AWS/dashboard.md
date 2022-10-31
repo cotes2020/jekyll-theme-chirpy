@@ -47,7 +47,7 @@
 
 - users with the highest risk score
 - user with the most recent risk activity
-- 
+-
 
 
 

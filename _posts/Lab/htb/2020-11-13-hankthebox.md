@@ -18,7 +18,7 @@ tags: [Lab, HackTheBox]
 
 ## starting point
 
-Connections to the lab environment are made with OpenVPN, which comes pre-installed on Parrot and Kali. 
+Connections to the lab environment are made with OpenVPN, which comes pre-installed on Parrot and Kali.
 - There are multiple different lab networks on Hack The Box, and you will require a connection pack for each.
 
 Once you have downloaded your `.ovpn` connection pack on your virtual machine, you can connect to the lab network with the following terminal command: `sudo openvpn example.ovpn`
@@ -27,7 +27,7 @@ Once you have downloaded your `.ovpn` connection pack on your virtual machine, y
 
 ```java
 ports=$(nmap -p- --min-rate=1000 -T4 10.10.10.27 | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)
-nmap -sC -sV -p$ports 10.10.10.27 
+nmap -sC -sV -p$ports 10.10.10.27
 // Ports 445 and 1433 are open, which are associated with file sharing (SMB) and SQL Server.
 
 smbclient -N -L \\\\10.10.10.27\\
@@ -45,7 +45,7 @@ smbclient -N \\\\10.10.10.27\\backups
  	<Configuration ConfiguredType="Property" Path="\Package.Connections[Destination].Properties[ConnectionString]" ValueType="String">
  		<ConfiguredValue>Data Source=.;Password=M3g4c0rp123;User ID=ARCHETYPE\sql_svc;Initial Catalog=Catalog;Provider=SQLNCLI10.1;Persist Security Info=True;Auto Translate=False;</ConfiguredValue>
  	</Configuration>
- </DTSConfiguration> 
+ </DTSConfiguration>
 
 // We see that it contains a SQL connection string, containing credentials for the local Windows user ARCHETYPE\sql_svc
 

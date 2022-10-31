@@ -54,7 +54,7 @@ image:
 
 - Prometheus' model stores all recorded values in the database, in contrast with systems such as Graphite and RRD that store data in a custom —usually lower- resolution that degrades over time.
 
-- This permits fine grained results in queries at the expense of storage.  
+- This permits fine grained results in queries at the expense of storage.
   - Although Prometheus' storage engine is very efficient, it is better to keep the metrics retention period shorter rathen than longer.
   - Typical values span from 15 days to a few months.
 

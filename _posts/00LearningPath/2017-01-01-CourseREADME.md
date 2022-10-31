@@ -92,7 +92,7 @@ sleepy....
 | Automating Infrastructure on Google Cloud with Terraform                                      | Automating Infrastructure on Google Cloud with Terraform                                    |
 | Deploy and Manage Cloud Environments                                                          | _None_                                                                                      |
 | Optimize Costs for Google Kubernetes Engine                                                   | _None_                                                                                      |
-  
+
 
 
 

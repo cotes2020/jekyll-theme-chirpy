@@ -70,7 +70,7 @@
 // }
 
 // printPersons(
-//     roster, 
+//     roster,
 //     new CheckPersonEligibleForSelectiveService()
 // );
 
@@ -124,7 +124,7 @@
 // }
 
 
-// p -> p.getGender() == Person.Sex.MALE 
+// p -> p.getGender() == Person.Sex.MALE
 //     && p.getAge() >= 18
 //     && p.getAge() <= 25
 
@@ -144,21 +144,21 @@
 // // The following example, Calculator, is an example of lambda expressions that take more than one formal parameter:
 
 // public class Calculator {
-  
+
 //     interface IntegerMath {
-//         int operation(int a, int b);   
+//         int operation(int a, int b);
 //     }
-  
+
 //     public int operateBinary(int a, int b, IntegerMath op) {
 //         return op.operation(a, b);
 //     }
- 
+
 //     public static void main(String... args) {
 //         Calculator myApp = new Calculator();
 //         IntegerMath addition = (a, b) -> a + b;
 //         IntegerMath subtraction = (a, b) -> a - b;
 //         System.out.println("40 + 2 = " + myApp.operateBinary(40, 2, addition));
-//         System.out.println("20 - 10 = " + myApp.operateBinary(20, 10, subtraction));    
+//         System.out.println("20 - 10 = " + myApp.operateBinary(20, 10, subtraction));
 //     }
 // }
 
@@ -182,7 +182,7 @@
 //             // the error "local variables referenced from a lambda expression
 //             // must be final or effectively final" in statement A:
 //             // x = 99;
-            
+
 //             Consumer<Integer> myConsumer = (y) -> {
 //                 System.out.println("x = " + x); // Statement A
 //                 System.out.println("y = " + y);

@@ -190,7 +190,7 @@ Which Dashboard information verifies that Prisma Cloud is ingesting data? 524509
 - number of Resources
 
 
-Which two platforms support outbound integration? (Choose two)  
+Which two platforms support outbound integration? (Choose two)
 - "Splunk, Jira"
 
 

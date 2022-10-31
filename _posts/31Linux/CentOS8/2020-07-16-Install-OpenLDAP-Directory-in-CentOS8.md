@@ -1,10 +1,10 @@
 ---
-title: Linux - Install OpenLDAP Directory in CentOS8 
+title: Linux - Install OpenLDAP Directory in CentOS8
 date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, CentOS8]
 tags: [Linux, Install, OpenLDAP, CentOS8]
 math: true
-image: 
+image:
 ---
 
 # Install OpenLDAP Directory in CentOS 8
@@ -39,26 +39,26 @@ step 2: open the Port
 
 # netstat -ltn
 Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State      
-tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN     
-tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN     
-tcp        0      0 0.0.0.0:20048           0.0.0.0:*               LISTEN     
-tcp        0      0 0.0.0.0:38481           0.0.0.0:*               LISTEN     
-tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN     
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
-tcp        0      0 0.0.0.0:44855           0.0.0.0:*               LISTEN     
-tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN     
-tcp        0      0 0.0.0.0:2049            0.0.0.0:*               LISTEN     
-tcp6       0      0 :::48649                :::*                    LISTEN     
-tcp6       0      0 :::5355                 :::*                    LISTEN     
-tcp6       0      0 :::111                  :::*                    LISTEN     
-tcp6       0      0 :::20048                :::*                    LISTEN     
-tcp6       0      0 :::80  http             :::*                    LISTEN     
-tcp6       0      0 :::22  ssh              :::*                    LISTEN     
-tcp6       0      0 ::1:631                 :::*                    LISTEN     
-tcp6       0      0 :::443 https            :::*                    LISTEN     
-tcp6       0      0 :::36287                :::*                    LISTEN     
-tcp6       0      0 :::2049                 :::*                    LISTEN     
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:20048           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:38481           0.0.0.0:*               LISTEN
+tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:44855           0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:2049            0.0.0.0:*               LISTEN
+tcp6       0      0 :::48649                :::*                    LISTEN
+tcp6       0      0 :::5355                 :::*                    LISTEN
+tcp6       0      0 :::111                  :::*                    LISTEN
+tcp6       0      0 :::20048                :::*                    LISTEN
+tcp6       0      0 :::80  http             :::*                    LISTEN
+tcp6       0      0 :::22  ssh              :::*                    LISTEN
+tcp6       0      0 ::1:631                 :::*                    LISTEN
+tcp6       0      0 :::443 https            :::*                    LISTEN
+tcp6       0      0 :::36287                :::*                    LISTEN
+tcp6       0      0 :::2049                 :::*                    LISTEN
 
 # firewall-cmd --permanent --add-service=ldap
 

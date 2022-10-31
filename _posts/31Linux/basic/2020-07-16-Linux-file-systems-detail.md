@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, Basic]
 tags: [Linux, Sysadmin]
 math: true
-image: 
+image:
 ---
 
 # file systems
@@ -141,7 +141,7 @@ block : 给定 block 的大小
 
 将sda6分区格式化为ext3格式
 
-    mfks -t ext3 /dev/sda6  
+    mfks -t ext3 /dev/sda6
 
 
 

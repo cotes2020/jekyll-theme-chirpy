@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, CentOS8]
 tags: [Linux, Setup, NFS, Authentication]
 math: true
-image: 
+image:
 ---
 
 
@@ -81,7 +81,7 @@ $ ll /
 drwxrwxr-x.   2 nobody marketing       6 May  1 22:23 marketing
 
 $ sudo vi /etc/exports
-// /marketing server?.psdemo.local(rw)  
+// /marketing server?.psdemo.local(rw)
 
 $ sudo exportfs -arv
 ```

@@ -154,7 +154,7 @@ filter just the ienabled policy
 
 
 ---
- 
+
 ## Alerts
 
 Alerts are generated after public cloud account connects to Prisma Cloud.

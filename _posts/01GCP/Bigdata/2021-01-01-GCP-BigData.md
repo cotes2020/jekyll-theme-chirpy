@@ -45,7 +45,7 @@ image:
 
 - Apache Hadoop
   - an open source framework for big data.
-  - It is based on the <font color=red> MapReduce programming model </font> which Google invented and published.  
+  - It is based on the <font color=red> MapReduce programming model </font> which Google invented and published.
     - <font color=red> "Map function" </font>
       - runs in parallel with a massive dataset to produce intermediate results.
     - <font color=red> "Reduce function" </font>
@@ -62,7 +62,7 @@ image:
 
 
 
-## Data 
+## Data
 
 
 ---
@@ -83,7 +83,7 @@ image:
 
 - <font color=red> use for IoT applications </font>
 
-- <font color=red> decoupled systems </font> , and scale independently.  
+- <font color=red> decoupled systems </font> , and scale independently.
   - offers on-demand scalability to one million messages per second and beyond.
 
 - support many-to-many asynchronous messaging service.
@@ -318,7 +318,7 @@ pipelines
 
 
 
-## Pipieline 
+## Pipieline
 
 
 

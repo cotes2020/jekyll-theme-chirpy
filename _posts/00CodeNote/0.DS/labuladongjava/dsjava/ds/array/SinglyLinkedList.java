@@ -2,7 +2,7 @@ package array;
 
 
 public class SinglyLinkedList<E> implements Cloneable {
-    
+
     private static class Node<E> {
         private E element;
         private Node<E> next;
@@ -27,7 +27,7 @@ public class SinglyLinkedList<E> implements Cloneable {
         public boolean isEmpty() {return size == 0;}
 
         public E first() {
-            return isEmpty()? null:head.getElement(); 
+            return isEmpty()? null:head.getElement();
         }
         public E last() {
             return isEmpty()? null:tail.getElement();
@@ -52,7 +52,7 @@ public class SinglyLinkedList<E> implements Cloneable {
             head = head.next;
             size--;
             return ans;
-        } 
+        }
 
         public boolean equals(Object o) {
             if(o==null) return false;
@@ -70,10 +70,10 @@ public class SinglyLinkedList<E> implements Cloneable {
 
         public SinglyLinkedList<E> clone() throws CloneNoteSupportedException {
             SinglyLinkedList<E> other = (SinglyLinkedList<E>) super.clone() ;  // safe cast
-            // At this point in the execution, 
-            // the other list has been created as a shallow copy of the original. 
+            // At this point in the execution,
+            // the other list has been created as a shallow copy of the original.
             // Since our list class has two fields, size and head, the following assignments have been made:
-            // other.size = this.size; 
+            // other.size = this.size;
             // other.head = this.head;
             if(size > 0) {
                 other.head = new Node<>(head.getElement(), null);
@@ -87,5 +87,5 @@ public class SinglyLinkedList<E> implements Cloneable {
                 }
             }
         }
-    } 
+    }
 }

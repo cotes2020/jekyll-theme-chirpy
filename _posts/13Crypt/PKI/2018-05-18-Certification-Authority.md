@@ -8,48 +8,48 @@ image:
 ---
 
 [toc]
- 
+
 
 - ref:
   - [Basics of Digital Certificates and Certificate Authority](https://sites.google.com/site/ddmwsst/digital-certificates#TOC-PEM-Privacy-Enhanced-Mail-Encoding)
 
 
---- 
+---
 
 # Authority
 
 
 ---
 
-## Registration authorities (RAs): 
+## Registration authorities (RAs):
 - assist Certificate authorities (CAs)
-  - RA help offload work from the CA.   
-- verify users’ identities prior to issuing digital certificates. 
-  - providing certificates to users, requires server, CAs can become overloaded and need assistance.  
+  - RA help offload work from the CA.
+- verify users’ identities prior to issuing digital certificates.
+  - providing certificates to users, requires server, CAs can become overloaded and need assistance.
 - operates as an intermediary in the process:
   - <font color=red> distribute keys </font>
   - <font color=red> accept registrations for a digital certificate for CA </font>
   - <font color=red> register, authenticate and validate identities, allowing CAs to remotely validate user identities </font>
     - require proof of identity from the individual requesting a certificate
-    - validate this information 
+    - validate this information
     - then advise the CA to generate a certificate
-      - The CA will 
-      - digitally sign the certificate using its private key. 
-      - use the RA-provided information to generate a digital certificate, 
-      - integrate the necessary data into the certificate fields and send a copy of the certificate to the user. 
+      - The CA will
+      - digitally sign the certificate using its private key.
+      - use the RA-provided information to generate a digital certificate,
+      - integrate the necessary data into the certificate fields and send a copy of the certificate to the user.
   - <font color=red> The RA doesn’t directly issue certificates, CA do it </font>
 
 
 ---
 
 ## CA - Certificate Authority
- 
-- offer notarization services for digital certificates. 
+
+- offer notarization services for digital certificates.
   - issuing, revoking, and distributing certificates.
   - To obtain a digital certificate from a reputable CA, you must prove your identify to the satisfaction of the CA.
 
 - issues digital certificates (contain a public key and the identity of the owner)
-  - private key is not made available publicly, 
+  - private key is not made available publicly,
   - but kept secret by the end user who generated the key pair.
 
 - The certificate is also a confirmation or validation by the CA that the public key contained in the certificate belongs to the person, organization, server or other entity noted in the certificate.
@@ -58,56 +58,56 @@ image:
 
 - CAs use a variety of standards and tests to do so.
 
-- In essence, the Certificate Authority is responsible for saying "yes, this person is who they say they are, and we, the CA, verify that".  
+- In essence, the Certificate Authority is responsible for saying "yes, this person is who they say they are, and we, the CA, verify that".
 
 If the user trusts the CA and can verify the CA's signature, then he can also verify that a certain public key does indeed belong to whoever is identified in the certificate.
 - Browsers maintain list of well known CAs root certificates.
 - Aside from commercial CAs, some providers issue digital certificates to the public at no cost.
 - Large institutions or government entities may have their own CAs.
 
-- can be online (common) / offline. 
-  - Online CA: 
-    - most. always connected and accessible. 
-  - Offline CA: 
-    - usually for a root CA that has been isolated from network access. 
-  - since isolated, compromised are reduced.  
+- can be online (common) / offline.
+  - Online CA:
+    - most. always connected and accessible.
+  - Offline CA:
+    - usually for a root CA that has been isolated from network access.
+  - since isolated, compromised are reduced.
 
-- can be either private or public, 
-  - public CAs: 
+- can be either private or public,
+  - public CAs:
     - very large. make money by selling certificates.
-    - providing certificates to the general public. 
-    - the public CA must be trusted. 
-  - Private CAs: 
+    - providing certificates to the general public.
+    - the public CA must be trusted.
+  - Private CAs:
     - Many operating system providers allow their systems to be configured as CA systems
-    - to generate internal certificates used within business/large external settings. 
+    - to generate internal certificates used within business/large external settings.
     - single service running on a server within a private network
 
 
 ```
-The major CAs: 
+The major CAs:
 - Symantec
 - Thawte
 - GeoTrust
 - GlobalSign
-- Comodo Limited 
-- Starfield Technologies 
-- GoDaddy 
+- Comodo Limited
+- Starfield Technologies
+- GoDaddy
 - DigiCert
-- Network Solutions, LLC 
-- Entrust 
+- Network Solutions, LLC
+- Entrust
 ```
 
 
-Nothing is preventing any organization from simply setting up shop as a CA. 
-- the certificates issued by a CA are only as good as the trust placed in the CA that issued them. 
+Nothing is preventing any organization from simply setting up shop as a CA.
+- the certificates issued by a CA are only as good as the trust placed in the CA that issued them.
 - This is an important item to consider:
-  - receiving a digital certificate from a third party. 
-  - If don’t recognize and trust the name of the CA that issued the certificate, 
-  - shouldn’t place any trust in the certificate at all. 
+  - receiving a digital certificate from a third party.
+  - If don’t recognize and trust the name of the CA that issued the certificate,
+  - shouldn’t place any trust in the certificate at all.
 
-- PKI relies on a hierarchy of trust relationships: 
-  - If you configure your browser to trust a CA, 
-  - it will automatically trust all of the digital certificates issued by that CA. 
+- PKI relies on a hierarchy of trust relationships:
+  - If you configure your browser to trust a CA,
+  - it will automatically trust all of the digital certificates issued by that CA.
 - Browser developers preconfigure browsers to trust the major CAs to avoid placing this burden on users.
 
 
@@ -172,13 +172,13 @@ Three Tier Hierarchy
     - configured to issue certificates to the Issuing CA that is restricted in what type of certificates it issues.
     - can also be used as an administrative boundary.
       - only issue certain certificates from subordinates of the Policy CA, and perform a certain level of verification before issuing certificates,
-      - but the policy is only enforced from an administrative not technical perspective.  
+      - but the policy is only enforced from an administrative not technical perspective.
 
 - when revoke a number of CAs due to a key compromise,
   - can perform it at the Second Tier level, leaving other “branches from the root” available.
 
 - Second Tier CAs in this hierarchy can, like the Root, be kept offline.
- 
+
 
 ---
 
@@ -188,7 +188,7 @@ When you get a certificate for your public key from a commercial CA
 - then <font color=red> your certificate is associated with a chain of certificates / trust </font>
 - The number of certificates in the chain depends on the CA's hierarchical structure.
 - The following image shows a certificate chain for a two tier CA.
-- The owners/users certificate is signed by a Issuing CA and issuing CA's certificate is signed by the Root CA. Root CA's certificate is self signed.  
+- The owners/users certificate is signed by a Issuing CA and issuing CA's certificate is signed by the Root CA. Root CA's certificate is self signed.
 
 
 ![Certificate Chain](https://sites.google.com/site/ddmwsst/digital-certificates/chain-of-trust.gif?attredirects=0)
@@ -198,31 +198,31 @@ During a User's certificate validation by a browser or a program,
 - browser needs to validate the signature by finding the public key of the next issuing CA or intermediate CA.
 - The process will continue until the root certificate is reached.
 - Root CA is self signed and must be trusted by the browser at the end.
-- Browsers keep all well known CAs root certificates in their trust store.  
+- Browsers keep all well known CAs root certificates in their trust store.
 
 
 ---
 
-### The most common trust model: 
+### The most common trust model:
 
-hierarchical / centralized trust model. 
-- the public CA creates the first CA, root CA. 
+hierarchical / centralized trust model.
+- the public CA creates the first CA, root CA.
 - If the organization is large, it can create intermediate and child CAs.
-  - it includes a section used to store intermediate CA certificates. 
+  - it includes a section used to store intermediate CA certificates.
 - A large trust chain works like this:
-  - The root CA issues certificates to intermediate CAs. 
+  - The root CA issues certificates to intermediate CAs.
   - Intermediate CAs issue certificates to child CAs.
   - Child CAs issue certificates to devices or end users.
 
 
 web of trust / decentralized trust model
-- sometimes used with PGP and GPG. 
-- A web of trust uses self-signed certificates, and a third party vouches for these certificates. 
+- sometimes used with PGP and GPG.
+- A web of trust uses self-signed certificates, and a third party vouches for these certificates.
 - Example
-  - five of your friends trust a certificate, you can trust the certificate. 
-- If the third party is a reliable source, 
-  - the web of trust provides a secure alternative. 
-- if the third party does not adequately verify certificates, 
+  - five of your friends trust a certificate, you can trust the certificate.
+- If the third party is a reliable source,
+  - the web of trust provides a secure alternative.
+- if the third party does not adequately verify certificates,
   - the use of certificates that shouldn’t be trusted.
 
 
@@ -244,7 +244,7 @@ When a client or application is validating a certificate
 AIA location is
 - the repository where the CA certificate is stored
 - so that it can be downloaded by clients or applications validating a certificate.
-- The AIA location is included in the AIA extension of a certificate.  
+- The AIA location is included in the AIA extension of a certificate.
 
 
 
@@ -255,7 +255,7 @@ AIA location is
 A CRL Distribution Point (CDP)
 - where clients or applications that are validating a certificate download the certificate revocation list (CRL) to obtain revocation status.
 - CA’s periodically publish CRLs to allow clients and applications to determine if a certificate has been revoked.
-- CRLs contain the serial number of the certificate that has been revoked, a timestamp indicating when the certificate was revoked, as well as the reason for revocation.  
+- CRLs contain the serial number of the certificate that has been revoked, a timestamp indicating when the certificate was revoked, as well as the reason for revocation.
 
 ---
 
@@ -264,7 +264,7 @@ A CRL Distribution Point (CDP)
 A digital certificate
 - binds a user, computer, or service’s identity to a public key by providing information about the subject of the certificate, the validity of the certificate, and applications and services that can use the certificate.
 
-- Certificates issued in PKIs are structured to meet these objectives based on standards established by the Public-Key Infrastructure (X.509) Working Group (PKIX) of the Internet Engineering Tasks Force (IETF).  
+- Certificates issued in PKIs are structured to meet these objectives based on standards established by the Public-Key Infrastructure (X.509) Working Group (PKIX) of the Internet Engineering Tasks Force (IETF).
 
 
 
@@ -275,7 +275,7 @@ A digital certificate
 Certificate Validation Process
 Before it trusts certificates, Browsers/applications perform a validation check to ensure that certificates are valid and that they have a valid certification path.
 - The status of a public key certificate is determined through three distinct, but interrelated, processes.
-- But this may vary slightly based on implementations.  
+- But this may vary slightly based on implementations.
 
 ---
 
@@ -306,8 +306,8 @@ A certificate store
 - In Java Environment certificates are stored in JKS files and are pointed by System Properties
 
 ```java
-\-Djavax.net.ssl.keyStore=${some path}/keystore.jks  
-\-Djavax.net.ssl.trustStore=${some path}/cacerts.jks  
+\-Djavax.net.ssl.keyStore=${some path}/keystore.jks
+\-Djavax.net.ssl.trustStore=${some path}/cacerts.jks
 \-Djavax.net.ssl.keyStorePassword=key-store-password
 ```
 
@@ -324,24 +324,24 @@ Each chain is built by using a combination of the certificates available in the 
 - The status code indicates whether the individual certificate is:
 
   - Signature-valid
-    - Is the signature valid?  
+    - Is the signature valid?
 
   - Time-valid
     - Are the certificate start and expiration dates properly configured,
     - has the start date not occurred yet,
-    - or has the certificate expired?  
+    - or has the certificate expired?
 
   - Expired
-    - Has the certificate expired?  
+    - Has the certificate expired?
 
   - Revoked
-    - Has the certificate been revoked?  
+    - Has the certificate been revoked?
 
   - Time-nested
-    - Have any of the certificates that are higher in the PKI hierarchy expired?  
+    - Have any of the certificates that are higher in the PKI hierarchy expired?
 
   - Any other restrictions on the certificate
-    - For example, is the certificate being used for a purpose other than has been intended?  
+    - For example, is the certificate being used for a purpose other than has been intended?
 
 
 - Each status code has a <font color=red> precedence </font> assigned to it.
@@ -357,7 +357,7 @@ Each chain is built by using a combination of the certificates available in the 
 
 path validation
 - For each certificate in the chain, the certificate chain engine must select a certificate of the issuing CA.
-- This process is repeated until a self-signed certificate is reached (typically, this is a root CA certificate).  
+- This process is repeated until a self-signed certificate is reached (typically, this is a root CA certificate).
 
 There are different processes that can be used to select the certificate for an issuing CA.
 - The actual process that is used is based on whether the certificate currently being investigated has the Authority Key Identifier (AKI) extension defined.
@@ -365,10 +365,10 @@ There are different processes that can be used to select the certificate for an 
 
   - Exact match
     - If the AKI extension contains the issuer’s user name and issuer serial number, only certificates that match on user name and serial number will be chosen in the chain-building process.
-    - As a further test, the issuer name on the issued certificate must match the subject name on the issuer certificate.  
+    - As a further test, the issuer name on the issued certificate must match the subject name on the issuer certificate.
 
   - Key match
-    - If the AKI extension only contains public key information, only certificates that contain the indicated public key in the Subject Key Identifier (SKI) extension will be chosen as valid issuers.  
+    - If the AKI extension only contains public key information, only certificates that contain the indicated public key in the Subject Key Identifier (SKI) extension will be chosen as valid issuers.
 
   - Name match.
     - If no information exists in the AKI, or if the AKI does not exist in the certificate, the certificate will be marked as “name match.” In name matching, the subject name of a certificate must match the issuer name in the current certificate in order for the certificate to be chosen as a valid issuer.
@@ -380,9 +380,9 @@ In all cases, even if a matching certificate is not found in the store, the curr
 
 #### Caching
 
-Certificate chaining: 
-- combines all the certificates from the root CA down to the certificate issued to the end user. 
-  - In a small organization, the root CA can simply issue certificates to the devices and end users. 
+Certificate chaining:
+- combines all the certificates from the root CA down to the certificate issued to the end user.
+  - In a small organization, the root CA can simply issue certificates to the devices and end users.
   - not necessary to have intermediate / child CAs.
 
 

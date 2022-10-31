@@ -124,34 +124,34 @@ man-in-the-middle attack:
 4. make sure all switches are safe from ARP poisoning.
    - use the command: `ip dhcp snooping`
 5. **No MAC Address**: 
-   - ARP request is IP address to MAC address (IP-to-MAC). 
+   - ARP request is IP address to MAC address (IP-to-MAC).
    - If users were to use tools to sniff packets and to find a ARP request without a MAC address. it is highly suspicious.
 6. Keeping track of IP-to-MAC: 
-   - keeping track of your device’s communication sessions of IP-to-MAC. 
+   - keeping track of your device’s communication sessions of IP-to-MAC.
    - New IP-to-MAC can cause suspicion.
 7. Tools vs Tools: 
    - Many software tools are out there to help protect users from malicious attacks.
    - many ARP poisoning tools: AntiARP, ARPon, ArpStar, XARP.
 
-### XARP 
+### XARP
 
 ![XARP](https://i.imgur.com/vWTIp91.png)
 XARP is security tool users can download and use.
 - performs ARP poisoning detection to detect
-- Notify and respond to ARP poisoning. 
+- Notify and respond to ARP poisoning.
 - allows users to have multiple added layers of passive and active defense against ARP Poisoning.
-- XARP has several Modules that have specific functions. 
-- If those conditions are violated they will generate a notification for the User. 
+- XARP has several Modules that have specific functions.
+- If those conditions are violated they will generate a notification for the User.
 - `ChangeFilter`: 
-  - Module keeps tracks of IP-to-Mac Adress mapping. 
+  - Module keeps tracks of IP-to-Mac Adress mapping.
   - Every ARP Packet contains a mapping of IP-to-MAC addresses. ARP request contains the IP-to-MAC mapping of the sender. ARP replies to contain the IP-to-MAC mapping of the machine resolved. Every mapping is inserted into a database. If a mapping is monitored that break current mapping, an alert is generated. Using Network discoverers, the database is filled quickly and more reliably than without network discoverers.
 - `CorruptFilter`: 
-  - ARP packets have a special restriction. 
-  - Ethernet Source Mac Address has to match the ARP source MAC address. 
-  - Furthermore, there are a field in the ARP packet that has restrictions regarding the values they can adopt. This module checks these values correctness. 
+  - ARP packets have a special restriction.
+  - Ethernet Source Mac Address has to match the ARP source MAC address.
+  - Furthermore, there are a field in the ARP packet that has restrictions regarding the values they can adopt. This module checks these values correctness.
   - ProxyARP servers will generate false alerts because they answer ARP request for other machines and thus not contain the saim ethernet source MAC address and ARP mapping source MAC.
 - `DirectRequestFilter`: 
-  - ARP request needs to be sent to the broadcast MAC address. 
+  - ARP request needs to be sent to the broadcast MAC address.
   - Some DSL Routers want to know which machines are currently online for their web management interface. Therefore they send out ARP requests which have the specific MAC address entered in the Ethernet packet. Such packets are also used by ARP spoofing software to spoof only a specific machine and not all machines on a network.
 - `IPFilter`: 
   - An ARP mappings may contain certain IP addresses. These include broadcast and multicast as well as localhost addresses.
@@ -166,7 +166,7 @@ XARP is security tool users can download and use.
 
 
 ---
-   
+
 
 
 

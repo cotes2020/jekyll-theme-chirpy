@@ -28,7 +28,7 @@ tags: [HTML]
   <li>Coffee</li>
   <li>Tea</li>
   <li>Milk</li>
-</ul>  
+</ul>
 
 // Ordered HTML List
 <ol>
@@ -127,7 +127,7 @@ tags: [HTML]
     <th rowspan="2">Telephone:</th>     // Cells that Span Many rows
   </tr>
     <td>1</td>
-    <td>1.1</td>    
+    <td>1.1</td>
   </tr>
   <tr>
     <td>2</td>
@@ -156,12 +156,12 @@ add an id attribute to the table:
 <head>
 <style>
 
-table {            
+table {
   width:100%;
 }
 
 // 主要，可控制全部
-table, th, td {               
+table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
   padding: 15px;
@@ -198,13 +198,3 @@ table#t01 th {
 </table>
 
 ```
-
-
-
-
-
-
-
-
-
-

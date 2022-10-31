@@ -1,4 +1,4 @@
-package tree; 
+package tree;
 import java.util.Iterator;
 import list.*;
 
@@ -16,6 +16,6 @@ public interface Tree<E> extends Iterable<E> {
     boolean isEmpty();
 
     Iterator<E> iterator();
-    
+
     Iterable<Position<E>> positions();
 }

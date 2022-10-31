@@ -1,8 +1,6 @@
 
 package queue;
 
-public interface CircularQueue<E> extends Queue<E> { 
+public interface CircularQueue<E> extends Queue<E> {
     void rotate();
 }
-
- 

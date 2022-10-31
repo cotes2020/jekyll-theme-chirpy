@@ -177,7 +177,7 @@ image:
 ![Screen Shot 2021-02-03 at 22.38.07](https://i.imgur.com/zQFaWOA.png)
 
 4 type of storage class:
-Regional, Multi-regional, Nearline, and Coldline.  
+Regional, Multi-regional, Nearline, and Coldline.
 
 ![Screen Shot 2021-06-29 at 1.12.07 AM](https://i.imgur.com/DeMifDh.png)
 
@@ -189,8 +189,8 @@ Regional, Multi-regional, Nearline, and Coldline.
   - Object stored in a multi region or dual region are geo redundant
 
 
-- Nearline and Coldline are backup and archival storage.  
-- All of the storage classes are accessed in comparable ways using the cloud storage API and they all offer millisecond access times.  
+- Nearline and Coldline are backup and archival storage.
+- All of the storage classes are accessed in comparable ways using the cloud storage API and they all offer millisecond access times.
 
 
 - pricing
@@ -246,7 +246,7 @@ used in
 
 - low-cost
 - highly durable service
-- for **storing infrequently accessed data**.  
+- for **storing infrequently accessed data**.
   - For example,
   - data backup, long tailed multimedia content, and data archiving.
   - when plan to read or modify the data once a month or less on average.
@@ -271,13 +271,13 @@ used in
 
 #### Archive storage
 
-> best choice for data that you plan to access less than once a year.  
+> best choice for data that you plan to access less than once a year.
 
 - the lowest cost
 - highly durable storage service
 - for data archiving, online backup and disaster recovery.
 - data is available within milliseconds, not hours or days.
-- Though the typical availability is comparible to nearline and coldline storage. Archive storage also has higher costs for data access and operations as well as a 365 day minimum storage duration.  
+- Though the typical availability is comparible to nearline and coldline storage. Archive storage also has higher costs for data access and operations as well as a 365 day minimum storage duration.
 
 
 ---
@@ -300,7 +300,7 @@ used in
     - offline transfer appliance
       - a rackable, high-capacity storage server that you lease from Google Cloud.
       - connect it to your network, load it with data, and then ship it to an upload facility where the data is uploaded to cloud storage.
-      - securely transfer up to a petabyte of data on a single appliance.  
+      - securely transfer up to a petabyte of data on a single appliance.
 
 - other ways of getting your data into cloud storage as this storage option is tightly integrated with many of the Google cloud platform products and services.
 - For example

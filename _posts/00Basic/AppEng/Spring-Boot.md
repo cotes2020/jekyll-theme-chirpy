@@ -10,13 +10,13 @@
 
 ## Spring Boot
 
-- Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。 
+- Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。
 - 该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。
 
-- helps you to create stand-alone, production-grade Spring-based applications that you can run. We take an opinionated view of the Spring platform and third-party libraries, so that you can get started with minimum fuss. 
+- helps you to create stand-alone, production-grade Spring-based applications that you can run. We take an opinionated view of the Spring platform and third-party libraries, so that you can get started with minimum fuss.
 - Most Spring Boot applications need very little Spring configuration.
 
-- use Spring Boot to create Java applications that can be started by using java -jar or more traditional war deployments. 
+- use Spring Boot to create Java applications that can be started by using java -jar or more traditional war deployments.
 - We also provide a command line tool that runs “spring scripts”.
 
 

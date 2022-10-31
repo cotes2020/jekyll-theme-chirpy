@@ -30,7 +30,7 @@ image:
 - <font color=red> real-time guidance </font>
   - to provision resources guid following AWS <font color=blue> best practices </font> and staying within limits.
   - provides valuable guidance for architecting your AWS environment and workloads,
-  - but doesn't include AWS service health information.  
+  - but doesn't include AWS service health information.
 
 - auto service, during implement ells right and problems.
 

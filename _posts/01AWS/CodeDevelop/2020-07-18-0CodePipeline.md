@@ -109,7 +109,7 @@ You can create, access, and manage your pipelines using any of the following int
 
 2. AWS Command Line Interface (AWS CLI):
    - Provides commands for a broad set of AWS services, including AWS Data Pipeline
-   - supported on Windows, macOS, and Linux.  
+   - supported on Windows, macOS, and Linux.
 
 3. AWS SDKs
    - Provides language-specific APIs and takes care of many of the connection details, such as calculating signatures, handling request retries, and error handling.
@@ -127,7 +127,7 @@ You can create, access, and manage your pipelines using any of the following int
 AWS Data Pipeline works with the following services <font color=red> to store data </font>
 
 - <font color=blue> Amazon DynamoDB </font>
-  - fully managed NoSQL database with fast performance at a low cost.  
+  - fully managed NoSQL database with fast performance at a low cost.
 
 - <font color=blue> Amazon RDS </font>
   - fully managed relational database that scales to large datasets.

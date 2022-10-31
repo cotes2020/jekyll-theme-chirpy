@@ -89,8 +89,8 @@ postman的安装方法分好几种:
    - ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181030002023904.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz,size_16,color_FFFFFF,t_70)
 
 2. Postman电脑客户端安装
-   1. macOS安装  
-   2. Windows安装  
+   1. macOS安装
+   2. Windows安装
    3. Linux安装
       - [ubuntu安装postman](https://blog.csdn.net/qianmosolo/article/details/79353632)
       - [Ubuntu16.04上安装Postman应用程序](https://blog.bluematador.com/posts/postman-how-to-install-on-ubuntu-1604/?utm\_source=hootsuite&utm\_medium=twitter&utm\_campaign=)
@@ -247,11 +247,11 @@ GET请求：
 GET请求的请求头与请求参数如在接口文档中无特别声明时，可以不填。
 ```
 
-![这里写图片描述](https://img-blog.csdn.net/20180523233825152?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)  
+![这里写图片描述](https://img-blog.csdn.net/20180523233825152?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
-> 这里会有请求的响应状态码，响应时间，以及响应大小  
+> 这里会有请求的响应状态码，响应时间，以及响应大小
 
-![这里写图片描述](https://img-blog.csdn.net/20180523234132434?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)  
+![这里写图片描述](https://img-blog.csdn.net/20180523234132434?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 > 响应体示例： 响应的格式可以有多种, 一般情况下，自定义接口是 json格式的响应体
 
@@ -264,32 +264,32 @@ GET请求的请求头与请求参数如在接口文档中无特别声明时，�
 
 1. **POST请求一：表单提交**
 
-下图示例中设置了请求方法，请求URL，请求参数，但是没有设置请求头  
-在我的使用过程中，请求头是根据请求参数的形式自动生成的  
+下图示例中设置了请求方法，请求URL，请求参数，但是没有设置请求头
+在我的使用过程中，请求头是根据请求参数的形式自动生成的
 请求头中的Content-Type与请求参数的格式之间是有关联关系，比如：
 
 
 ![这里写图片描述](https://img-blog.csdn.net/20180524000345232?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 
-![这里写图片描述](https://img-blog.csdn.net/20180523234739215?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)  
+![这里写图片描述](https://img-blog.csdn.net/20180523234739215?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 ![这里写图片描述](https://img-blog.csdn.net/20180523234748383?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 2. **POST请求二：json提交**
 
-下图中，当我们选择JSON(application/json) 是会自动帮我们设置 headers 为 application/json  
-在这里就不截图 举例了，朋友们可以自行去查看  
+下图中，当我们选择JSON(application/json) 是会自动帮我们设置 headers 为 application/json
+在这里就不截图 举例了，朋友们可以自行去查看
 
-![这里写图片描述](https://img-blog.csdn.net/2018052400054291?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)  
+![这里写图片描述](https://img-blog.csdn.net/2018052400054291?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 
 3. **POST请求三：xml提交**
 
-![这里写图片描述](https://img-blog.csdn.net/20180524000901598?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)  
+![这里写图片描述](https://img-blog.csdn.net/20180524000901598?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 
-4. **POST请求四：二进制文件提交**  
+4. **POST请求四：二进制文件提交**
 
 ![这里写图片描述](https://img-blog.csdn.net/20180524001010654?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
@@ -307,24 +307,24 @@ Collections集合：也就是将多个接口请求可以放在一起，并管理
 - 接口请求可以放在同一个collection里
 - 一个工程一个Collection，这样方便查找及统一处理数据。
 
-![这里写图片描述](https://img-blog.csdn.net/20180524001252769?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)  
+![这里写图片描述](https://img-blog.csdn.net/20180524001252769?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 ![这里写图片描述](https://img-blog.csdn.net/2018052400150515?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
-1. 创建Collections > + > Name:”abc” > Description:”demo” > Create Collections.  
+1. 创建Collections > + > Name:”abc” > Description:”demo” > Create Collections.
 
 2. 在Collections里添加请求
 
-在右侧准备好接口请求的所有数据，并验证后，点击save按钮。  
+在右侧准备好接口请求的所有数据，并验证后，点击save按钮。
 ![这里写图片描述](https://img-blog.csdn.net/2018052400243724?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 保存好之后就可以在这里看到啦，之后要再次调用时可以点击这里，方便快捷
 
 ![这里写图片描述](https://img-blog.csdn.net/20180524002002823?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
-collections 管理精细化， 这里我们针对不同的请求方式做分组  
+collections 管理精细化， 这里我们针对不同的请求方式做分组
 
-添加子文件夹  
+添加子文件夹
 ![这里写图片描述](https://img-blog.csdn.net/20180524002857320?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 ![这里写图片描述](https://img-blog.csdn.net/20180524002953353?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
@@ -338,10 +338,10 @@ collections 管理精细化， 这里我们针对不同的请求方式做分组
 ---
 
 
-## 身份验证Authentication**  
+## 身份验证Authentication**
 
 1. Basic Auth
-   1. 是基础的验证，所以会比较简单  
+   1. 是基础的验证，所以会比较简单
    2. 会直接把用户名、密码的信息放在请求的 Header 中
 
 2. Digest Auth

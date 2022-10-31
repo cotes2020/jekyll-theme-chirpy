@@ -1,9 +1,9 @@
 
-public interface Transpotable { 
+public interface Transpotable {
 
     // /∗∗ Returns the weight in grams. ∗/
     public int weight();
-    // /∗∗ Returns whether the object is hazardous. ∗/ 
+    // /∗∗ Returns whether the object is hazardous. ∗/
     public boolean isHazardous();
 
 }

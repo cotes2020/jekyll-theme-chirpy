@@ -275,7 +275,7 @@ databases, queues, caches, etc. as being very different categories of tools.
   - Instead, the work is broken down into tasks that can be performed efficiently on a single tool, and those different tools are stitched together using application code.
   - For example
     - an **application-managed caching layer** (using `Memcached` or similar), or a **full-text search server** (such as Elasticsearch or Solr) separate from your main database,
-    - it is normally the application code’s responsibility to keep those caches and indexes in sync with the main database.  
+    - it is normally the application code’s responsibility to keep those caches and indexes in sync with the main database.
 
 ![Screen Shot 2021-10-20 at 1.19.51 AM](https://i.imgur.com/NEFsLUg.png)
 
@@ -330,7 +330,7 @@ The things that can go wrong are called **faults**:
 - A **fault** is usually defined as `one component of the system deviating 偏离 from its spec`
 - whereas **failure** is when `the system as a whole stops providing the required service to the user`.
 - It is impossible to reduce the probability of a fault to zero;
-  - therefore it is usually best to design `fault-tolerance mechanisms` that **prevent faults from causing failures**.  
+  - therefore it is usually best to design `fault-tolerance mechanisms` that **prevent faults from causing failures**.
 
 
 Counterintuitively 直觉相反, in such fault-tolerant systems, it can make sense to increase the rate of faults by triggering them deliberately
@@ -1016,7 +1016,7 @@ The difference between the approaches is particularly noticeable in situations w
 - For example
 - currently storing each user’s full name in one field, and to store the first name and last name separately:
 - In a document database:
-  - writing new documents with the new fields and have code in the application that handles the case when old documents are read.  
+  - writing new documents with the new fields and have code in the application that handles the case when old documents are read.
 
 ```java
 if (user && user.name && !user.first_name) {
@@ -2407,7 +2407,7 @@ Imagine Alice and Bob are two on-call doctors for a particular shift. Imagine bo
     │    and shift_id = 1234                ├─ if (currently_on_call >= 2) {
     │  }                                    │    update doctors
     │                                       │    set on_call = false
-    └─ COMMIT TRANSACTION                   │    where name = 'Bob'  
+    └─ COMMIT TRANSACTION                   │    where name = 'Bob'
                                             │    and shift_id = 1234
                                             │  }
                                             │

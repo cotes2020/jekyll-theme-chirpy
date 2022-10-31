@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, Basic]
 tags: [Linux]
 math: true
-image: 
+image:
 ---
 
 # Security of linux

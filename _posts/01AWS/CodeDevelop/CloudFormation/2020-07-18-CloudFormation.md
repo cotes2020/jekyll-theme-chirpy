@@ -11,7 +11,7 @@ image:
 
 ---
 
-#  AWS CloudFormation   
+#  AWS CloudFormation
 
 > Infrastructure as code solution.
 
@@ -118,7 +118,7 @@ Templates can be created by
   - allows visualize using a drag and drop interface.
   - drag and drop resources onto a design area to automatically generate a JSON/YAML-formatted CloudFormation template
   - edite properties of the JSON or YAML template on same page.
-  - can open and edite Existing CloudFormation templates  
+  - can open and edite Existing CloudFormation templates
 
 YAML or JSON
 - JavaScript Object Notation (JSON) / YAML-formatted templates.
@@ -143,7 +143,7 @@ Organizing template:
   - no too many things inside of one template across numerous applications.
   - application template that supports several applications,
     - changes to the template will affect several applications
-    - changes can cause all of the applications to be retested.  
+    - changes can cause all of the applications to be retested.
 - share template could potentially break
   - things that are specific to your environment,
     - such as Amazon EC2 key pairs, security group names, subnet IDs, and EBS—snapshot IDs.
@@ -387,7 +387,7 @@ AWS CloudFormation StackSets
 ```yml
 AWSTemplateFormatVersion: 2010-09-09
 
-# text string that describes the template    
+# text string that describes the template
 Description: Template to create an EC2 instance and enable SSH
 
 
@@ -762,7 +762,7 @@ Resources:
     - AWS CloudFormation prepopulates AWS-specific parameter types with valid values.
     - user doesn't have to remember and correctly enter a specific name or ID.
       - just select from a drop-down list.
-      - can search for values by ID, name, or Name tag value.  
+      - can search for values by ID, name, or Name tag value.
   - For example
     - AWS values such as Amazon EC2 key pair names and VPC IDs.
     - use the `AWS::EC2::KeyPair::KeyName` parameter type,
@@ -912,7 +912,7 @@ Parameters:
 
 
 use the `Ref` intrinsic function to reference a parameter, and AWS CloudFormation uses the parameter's value to provision the stack.
-- You can reference parameters from the `Resources` and `Outputs` sections of the same template.  
+- You can reference parameters from the `Resources` and `Outputs` sections of the same template.
 
 ---
 
@@ -1127,7 +1127,7 @@ Resources:
 - Depending on the environment, to specify different configurations, such as which database it points to.
 - use “Condition” to evaluate this, and specify appropriate resources for each environment.
 
-- Build environment with conditions:  
+- Build environment with conditions:
   - when the target environment is development DEV.
     - only one set of resources in one Availability Zone is launched
   - When this template is used in production PROD
@@ -1245,7 +1245,7 @@ Resources:
 
 
 
-## Metadata: data about the data  
+## Metadata: data about the data
   ￼
 ![Screen Shot 2020-06-26 at 10.44.06](https://i.imgur.com/xGuoh3a.png)
 
@@ -1276,7 +1276,7 @@ Metadata:
 - to specify authentication credentials for files or sources that you specify with the `AWS::CloudFormation::Init` resource.
 - To include authentication information,
   - use the uris property if the source is a URI
-  - ues the buckets property if the source is an Amazon S3 bucket.  
+  - ues the buckets property if the source is an Amazon S3 bucket.
 
   - can also specify authentication information for files directly in the `AWS::CloudFormation::Init` resource.
     - The files key of the resource contains a property named authentication.
@@ -1678,8 +1678,8 @@ The DependsOn attribute should be used when
 1. Stack output
 
 ```yaml
-# the output named BackupLoadBalancerDNSName 
-# returns the DNS name for the resource with the logical ID BackupLoadBalancer only when the CreateProdResources condition is true. 
+# the output named BackupLoadBalancerDNSName
+# returns the DNS name for the resource with the logical ID BackupLoadBalancer only when the CreateProdResources condition is true.
 # (The second output shows how to specify multiple outputs.)
 Outputs:
   BackupLoadBalancerDNSName:
@@ -1694,7 +1694,7 @@ Outputs:
 2. Cross-stack output
 
 ```yaml
-# the output named StackVPC returns the ID of a VPC, 
+# the output named StackVPC returns the ID of a VPC,
 # and then exports the value for cross-stack referencing with the name VPCID appended to the stack's name.
 Outputs:
   StackVPC:
@@ -1749,7 +1749,7 @@ cfnVerifier
 - The template includes a <font color=red> ServiceToken </font>
   - from the third-party resource provider
   - used for authentication.
-- The template also includes any provider-defined parameters required for the custom resource.  
+- The template also includes any provider-defined parameters required for the custom resource.
 
 - AWS CloudFormation
   - communicates with the custom resource provider by using Amazon Simple Notification Service SNS—message that includes

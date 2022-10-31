@@ -1,5 +1,5 @@
 public class ArrayStack<E> implements Stack<E> {
-    
+
     public static final int CAPACITY = 1000;
     private E[] data;
     private int t = -1;
@@ -17,7 +17,7 @@ public class ArrayStack<E> implements Stack<E> {
         data[++t] = e;
     }
 
-    public E top(){ 
+    public E top(){
         return isEmpty()? null: data[t];
     }
 
@@ -25,7 +25,7 @@ public class ArrayStack<E> implements Stack<E> {
         if(isEmpty()) return null;
         E ans = data[t];
         data[t] = null;
-        t--; 
+        t--;
         return E;
     }
 

@@ -169,7 +169,7 @@ student_objects = [
     Student('dave', 'B', 10),
 ]
 # sort by age:
-sorted(student_objects, key=lambda student: student.age)   
+sorted(student_objects, key=lambda student: student.age)
 # sort by age:
 sorted(student_tuples, key=itemgetter(2))
 [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
@@ -568,16 +568,16 @@ for filename in glob.glob('*.txt'):
 
 Arguments:
 - An iterable sequence to be filtered.
-- a function that accepts an argument and returns bool 
+- a function that accepts an argument and returns bool
   - i.e. True or False based on it’s logic.
 
 Returns:
 - A new sequence of filtered contents.
 
 Logic:
-- filter() iterates over all elements in the sequence and for each element it calls the given callback function. 
+- filter() iterates over all elements in the sequence and for each element it calls the given callback function.
 - If this function returns False then that element is skipped
-- returned True, elements are added into a new list. 
+- returned True, elements are added into a new list.
 - In the end it returns a new list with filtered contents based on the function passed to it as argument.
 
 ```py
@@ -591,7 +591,7 @@ def isOfLengthFour(strObj):
 # Filter a list of strings in Python using filter()
 listOfStr = ['hi', 'this' , 'is', 'a', 'very', 'simple', 'string' , 'for', 'us']
 filteredList = list(filter(isOfLengthFour , listOfStr))
-# called isOfLengthFour() for each string element. 
+# called isOfLengthFour() for each string element.
 # filteredList:  ['hi', 'is', 'us']
 
 

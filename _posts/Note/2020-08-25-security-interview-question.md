@@ -1031,7 +1031,7 @@ Where do you get your security news from?
 
 
 2. What is virtualization?
-   - Virtualization is the process of creating a software-based, virtual version of something(compute storage, servers, application, etc.). 
+   - Virtualization is the process of creating a software-based, virtual version of something(compute storage, servers, application, etc.).
    - These virtual versions or environments are created from a single physical hardware system.
    - Virtualization lets you split one system into many different sections which act like separate, distinct individual systems.
    - A software called Hypervisor makes this kind of splitting possible.

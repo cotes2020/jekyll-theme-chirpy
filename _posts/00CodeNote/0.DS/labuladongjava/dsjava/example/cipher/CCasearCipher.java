@@ -18,10 +18,10 @@ public class CCCasearipher {
             // else ch = (char)(charvalue);
             else ch = (char)( (charvalue - 97) % 26 + 97 );
             sb.append(ch);
-        } 
+        }
         return sb.toString();
     }
-    
+
     static String decrypt(String cipherText, int key){
         StringBuffer sb = new StringBuffer();
         for(int i=0; i < cipherText.length(); i++){
@@ -35,7 +35,7 @@ public class CCCasearipher {
                     ch = (char)(charvalue + 26);
                     System.err.println(charvalue);
                     System.out.println("ch: " + ch);
-                } 
+                }
                 else ch = (char)(charvalue);
                 // ch = (char)( (charvalue) % 26 + 65 );
             }
@@ -44,7 +44,7 @@ public class CCCasearipher {
                     ch = (char)(charvalue + 97);
                     System.err.println(charvalue);
                     System.out.println("ch: " + ch);
-                } 
+                }
                 else ch = (char)(charvalue);
             }
                 // ch = (char)( (charvalue - 97) % 26 + 97 );
@@ -58,7 +58,7 @@ public class CCCasearipher {
         String text = "ATTACKATONCEYy";
         int s = 4;
         String cipherTxt = encrypt(text, s);
-        String decryptTxt = decrypt(cipherTxt, s); 
+        String decryptTxt = decrypt(cipherTxt, s);
         System.out.println("Text  : " + text);
         System.out.println("Shift : " + s);
         System.out.println("Cipher: " + cipherTxt);
@@ -66,14 +66,13 @@ public class CCCasearipher {
 
         String text2 = "I am studying Data Encryption";
         String cipherTxt2 = encrypt(text2, s);
-        String decryptTxt2 = decrypt(cipherTxt2, s); 
+        String decryptTxt2 = decrypt(cipherTxt2, s);
         System.out.println("Text  : " + text2);
         System.out.println("Shift : " + s);
         System.out.println("Cipher: " + cipherTxt2);
         System.out.println("decrpty: " + decryptTxt2);
 
 
-        
+
     }
 }
-

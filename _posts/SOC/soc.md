@@ -12,21 +12,21 @@
 
 security operations center
 - detects, analyzes, and responds to security events
-- SOC will become the main entity responsible for cybersecurity goals and results. 
-- As a security hub, a SOC is a rich tapestry made up of people, data visibility, tools, integration with outside sources, and processes. 
-- All these elements are necessary to achieve and continuously improve security results. 
+- SOC will become the main entity responsible for cybersecurity goals and results.
+- As a security hub, a SOC is a rich tapestry made up of people, data visibility, tools, integration with outside sources, and processes.
+- All these elements are necessary to achieve and continuously improve security results.
 - A SOC can be internal to an organization or hired as a managed service.
 
 
 ### Role of SOCs in an Organization
 
-1. `Detection and Response Tools` 
+1. `Detection and Response Tools`
    - `endpoint detection and response (EDR)` tools: determine a response to alerts received from SIEMs.
-   - specifically help detection, investigation, response, and prevention of endpoint threats. 
+   - specifically help detection, investigation, response, and prevention of endpoint threats.
    - They also focus specifically on endpoints and need to be chosen, bought, installed, learned, and maintained as a separate product for endpoints.
 
 2. `Automation and Improvement`
-   - SOCs track their own work for automation and continuous improvement for both SecOps and incident analysis and response. 
+   - SOCs track their own work for automation and continuous improvement for both SecOps and incident analysis and response.
    - These improvement and automation efforts work best with repeatable, documented, and modifiable workflows.
 
 3. SEIMs and SOCs
@@ -35,9 +35,9 @@ security operations center
 
 
 4. SOAR Products
-   - `Security Orchestration, Automation, and Response (SOAR)`: 
-   - address both automation and continuous improvement. 
-   - facilitate the arrangement of tasks into a workflow. 
+   - `Security Orchestration, Automation, and Response (SOAR)`:
+   - address both automation and continuous improvement.
+   - facilitate the arrangement of tasks into a workflow.
    - automate tasks to speed up incident response.
 
 ```

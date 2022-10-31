@@ -177,7 +177,7 @@ CodeDeploy is able to deploy applications to three compute platforms:
    - The original task set is terminated after a successful deployment.
    - manage the way in which traffic is shifted to the updated task set during a deployment by choosing
      - <font color=blue> canary, linear, or all-at-once configuration </font>
-     - Amazon ECS blue/green deployments are supported using both CodeDeploy and AWS CloudFormation.  
+     - Amazon ECS blue/green deployments are supported using both CodeDeploy and AWS CloudFormation.
 
 
 CodeDeploy component	| EC2/On-Premises	| AWS Lambda	| Amazon ECS
@@ -468,7 +468,7 @@ appspec.yml  // must be in the root
 
 3. upload it to an Amazon S3 bucket or Git repository.
 
-4. use CodeDeploy to deploy the revision.  
+4. use CodeDeploy to deploy the revision.
 
 
 

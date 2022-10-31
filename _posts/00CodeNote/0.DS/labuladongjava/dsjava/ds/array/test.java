@@ -2,7 +2,7 @@ package array;
 
 
 public class test<E> {
-    
+
     private static class Node<E> {
         private E element;
         private Node<E> next;
@@ -16,7 +16,7 @@ public class test<E> {
 
     }
 
-    public class test<E> { 
+    public class test<E> {
         private Node<E> tail = null;
         private int size = 0;
         public CircularlyLinkedList(){}
@@ -26,7 +26,7 @@ public class test<E> {
         public boolean isEmpty() {return size == 0;}
 
         public E first() {
-            return isEmpty()? null:tail.getNext().getElement(); 
+            return isEmpty()? null:tail.getNext().getElement();
         }
         public E last() {
             return isEmpty()? null:tail.getElement();
@@ -46,7 +46,7 @@ public class test<E> {
         }
         public void addLast(E e) {
             addFrist(e);
-            tail = tail.getNext(); 
+            tail = tail.getNext();
         }
         public E removeFirst() {
             if(size<=1) return null;
@@ -54,7 +54,7 @@ public class test<E> {
             tail.setNext(ans.getNext());
             size--;
             return ans.getElement();
-        } 
+        }
     }
 
     public int size() {

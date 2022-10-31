@@ -204,7 +204,7 @@ inputs:
   # The name of the Amazon CloudWatch Logs (CloudWatch Logs) group to send session logs at the end of the sessions.
   cloudWatchLogGroupName: ''
   # the log group you specified in the cloudWatchLogGroupName input must be encrypted.
-  cloudWatchEncryptionEnabled: true  
+  cloudWatchEncryptionEnabled: true
   # If set to true, a continuous stream of session data logs are sent to the cloudWatch log group
   # If set to false, session logs are sent to the log group at the end of the sessions.
   cloudWatchStreamingEnabled: true
@@ -534,7 +534,7 @@ aws ssm start-session \
 To restrict access to the default or any session document
 - add a condition element to the user's IAM policy that validates whether the user has explicit access to a session document.
 - When this condition is applied, the user must specify a value for the `--document-name` option of the `start-session` AWS CLI command.
-- This value is either the default Session Manager session document or a custom session document you created.  
+- This value is either the default Session Manager session document or a custom session document you created.
 
 ```json
 // performs a session document access check.
@@ -575,7 +575,7 @@ To restrict access to the default or any session document
 #### end user policies for Session Manager
 - create IAM end user policies for Session Manager.
 - allows users to start sessions from only the Session Manager console / AWS CLI / EC2 console, or from all three.
-- These policies provide end users the ability to start a session to a particular instance and the ability to end only their own sessions.  
+- These policies provide end users the ability to start a session to a particular instance and the ability to end only their own sessions.
 
 
 ```yaml
@@ -633,11 +633,11 @@ Statement:
       # the condition statement lets a user end only the instance i-02573cafcfEXAMPLE.
       ssm:resourceTag/aws:ssmmessages:target-id:
       - i-02573cafcfEXAMPLE
-      # for cases where the caller type is User. The value you supply for aws:ssmmessages:session-id is the ID of the user.  
+      # for cases where the caller type is User. The value you supply for aws:ssmmessages:session-id is the ID of the user.
       ssm:resourceTag/aws:ssmmessages:session-id"
       - "AIDIODR4TAW7CSEXAMPLE"
       # for cases where the caller type is AssumedRole. You can use the {aws:userid} variable for the value you supply for aws:ssmmessages:session-id. Alternatively, you can hardcode a role ID for the value you supply for aws:ssmmessages:session-id. If you hardcode a role ID, you must provide the value in the format role-id:caller-specified-role-name. For example, AIDIODR4TAW7CSEXAMPLE:MyRole.
-      - ${aws:userid}  
+      - ${aws:userid}
 
 
 ```
@@ -648,7 +648,7 @@ Statement:
 - provide administrators the ability to
   - start a session to instances that are tagged with `Key=Finance,Value=WebServers`,
   - create, update, and delete preferences,
-  - end only their own sessions.  
+  - end only their own sessions.
 
 
 ```yaml
@@ -755,7 +755,7 @@ sudo cd /etc/sudoers.d
 
 # 打开名为 ssm-agent-users 的文件进行编辑。
 
-# 删除 sudo 访问权限，请删除以下行：    
+# 删除 sudo 访问权限，请删除以下行：
 ssm-user ALL=(ALL) NOPASSWD:ALL
 
 # 要恢复 sudo 访问权限，请添加以下行：
@@ -795,15 +795,15 @@ ssm-user ALL=(ALL) NOPASSWD:ALL
 
 透過 session manager 去達成 scp ，基本上透過 AWS 文件 [session-manager-getting-started-enable-ssh-connections](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started-enable-ssh-connections.html) 上的描述，可以得知是利用 Proxycommand 透過 AWS tunnel 直接連接到我們的 EC2 機器上。
 
-編輯 `~/.ssh/config` 並加入  
+編輯 `~/.ssh/config` 並加入
 
 ```bash
-# SSH over Session Manager  
-host i-* mi-*  
- ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters'portNumber=%p'"  
+# SSH over Session Manager
+host i-* mi-*
+ ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters'portNumber=%p'"
 
 # 就可以使用
-scp -i -i /path/my-key-pair.pem test123 ubuntu@i-0b0d92751733d1234:~/test123  
+scp -i -i /path/my-key-pair.pem test123 ubuntu@i-0b0d92751733d1234:~/test123
 # 還是要利用一開始設定好的 key pair 去做連線。
 ```
 
@@ -826,11 +826,11 @@ scp -i -i /path/my-key-pair.pem test123 ubuntu@i-0b0d92751733d1234:~/test123
 
 
 ```bash
-host i-* mi-*  
- ProxyCommand ~/.ssh/aws-ssm-ec2-proxy-command.sh %h %r %p  
+host i-* mi-*
+ ProxyCommand ~/.ssh/aws-ssm-ec2-proxy-command.sh %h %r %p
 
 # 就不用在帶一把 key 去做認證了
-scp test123 ubuntu@i-0b0d92751733d1234:~/test123  
+scp test123 ubuntu@i-0b0d92751733d1234:~/test123
 ```
 
 
@@ -847,7 +847,7 @@ scp test123 ubuntu@i-0b0d92751733d1234:~/test123
 aws ssm start-session \
   --target i-0b0d92751733d1234 \
   --document-name AWS-StartPortForwardingSession \
-  --parameters '{"portNumber":["80"],"localPortNumber":["9999"]}'  
+  --parameters '{"portNumber":["80"],"localPortNumber":["9999"]}'
 ```
 
 

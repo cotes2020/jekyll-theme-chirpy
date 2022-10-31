@@ -888,7 +888,7 @@ make content private
 
 ![Screen Shot 2021-01-22 at 12.30.06](https://i.imgur.com/oGIQIXW.png)
 
-> When your Amazon Cloudfront CDN distributions are using AWS S3 as an origin, the distributions content should be kept private and delivered only via Cloudfront network, using an origin access identity to regulate access. 
+> When your Amazon Cloudfront CDN distributions are using AWS S3 as an origin, the distributions content should be kept private and delivered only via Cloudfront network, using an origin access identity to regulate access.
 
 
 
@@ -897,7 +897,7 @@ In general, using an S3 bucket as the origin for a CloudFront distribution
 - or restrict the access.
   - restrict access by <font color=red> CloudFront signed URLs or signed cookies </font>
   - to restrict access to view files by the direct S3 URL for the file.
-  - let them only access the files by the CloudFront URL, so the protections work.  
+  - let them only access the files by the CloudFront URL, so the protections work.
 
 
 <font color=red> Origin access identity </font>
@@ -906,10 +906,10 @@ In general, using an S3 bucket as the origin for a CloudFront distribution
   - restrict access to S3 content by creating an OAI, a special CloudFront user.
   - CloudFront OAI gets objects from S3 on behalf of the users.
   - Direct access to the objects through S3 URLs will be denied.
-- Cloudfront distributions can be much more cost effective 
-  - the price for CloudFront data transfer is lower than the price for S3 data transfer. 
-- downloads are faster 
-  - only the CloudFront service is used to deliver the application objects instead of S3 
+- Cloudfront distributions can be much more cost effective
+  - the price for CloudFront data transfer is lower than the price for S3 data transfer.
+- downloads are faster
+  - only the CloudFront service is used to deliver the application objects instead of S3
   - because the objects are copied to all edge locations within the distribution in order to be stored closer to your users.
 
 
@@ -954,18 +954,18 @@ aws cloudfront list-distributions \
 # |   E7GGTQ8UCFC4G   |
 # |   G31A16G5KZMUX   |
 # |   D8E6G5KZMPDT0   |
-# +-------------------+ 
+# +-------------------+
 
 
 # return multiple values using query argument
 aws cloudfront list-distributions \
   --output text
-  --query "DistributionList.Items[*].Origins.Items[*].{id:Id,name:DomainName}" 
-  
+  --query "DistributionList.Items[*].Origins.Items[*].{id:Id,name:DomainName}"
+
 aws cloudfront list-distributions \
   --output text
-  --query "DistributionList.Items[*].{id:Id, origin:Origins.Items[0].Id}[?origin=='S3-BUCKET_NAME'].id" 
- 
+  --query "DistributionList.Items[*].{id:Id, origin:Origins.Items[0].Id}[?origin=='S3-BUCKET_NAME'].id"
+
 
 # expose the name of the origin access identity set for each S3 origin entry associated with the selected AWS Cloudfront distribution:
 aws cloudfront get-distribution-config \
@@ -974,7 +974,7 @@ aws cloudfront get-distribution-config \
 aws cloudfront get-distribution-config \
 	--id E7GGTQ8UCFC4G \
 	--query 'DistributionConfig.Origins.Items[*].S3OriginConfig.OriginAccessIdentity'
- 
+
 ```
 
 
@@ -1014,7 +1014,7 @@ To ensure access by only CloudFront URLs, regardless of whether the URLs are sig
    - When your users access your S3 files through CloudFront,
      - the CloudFront origin access identity gets the files on behalf of your users.
    - If your users request files directly by using S3 URLs, they're denied access.
-   - The origin access identity has permission to access files in your S3 bucket, but users don't.  
+   - The origin access identity has permission to access files in your S3 bucket, but users don't.
 
 
 An AWS account can have up to 100 CloudFront origin access identities (OAIs)
@@ -1026,7 +1026,7 @@ An AWS account can have up to 100 CloudFront origin access identities (OAIs)
    - CloudFront console
      - can create an OAI and add it to the distribution at the same time.
    - CloudFront API version 2009-09-09 or later.
-     - create an OAI, and then you add it to your distribution.  
+     - create an OAI, and then you add it to your distribution.
 
 
 ---
@@ -1111,7 +1111,7 @@ An AWS account can have up to 100 CloudFront origin access identities (OAIs)
 
 
 ```bash
-# Run get-distribution-config command to extract the configuration metadata from the Cloudfront distribution that you want to reconfigure 
+# Run get-distribution-config command to extract the configuration metadata from the Cloudfront distribution that you want to reconfigure
 # returns the configuration details of an AWS Cloudfront CDN distribution identified by the ID E7GGTQ8UCFC4G:
 aws cloudfront get-distribution-config \
 	--id E7GGTQ8UCFC4G
@@ -1162,7 +1162,7 @@ aws cloudfront get-distribution-config \
 }
 
 # to enable origin access identity for other Cloudfront CDN distributions
-# Run update-distribution to update your AWS Cloudfront distribution in order to enable origin access identity and restrict user access to the S3 bucket used as distribution origin. 
+# Run update-distribution to update your AWS Cloudfront distribution in order to enable origin access identity and restrict user access to the S3 bucket used as distribution origin.
 # updates an AWS CloudFront CDN web distribution with the ID E7GGTQ8UCFC4G and the ETag E1VEIGDP0YISPR, using the JSON configuration document named cloudfront-distconfig-enable-oai.json, created at the previous step:
 aws cloudfront update-distribution \
 	--id E7GGTQ8UCFC4G \
@@ -1197,7 +1197,7 @@ Note the following:
 - it is easier to use S3 bucket policies than object ACLs
   - S3 bucket policies
     - can add files to the bucket without updating permissions.
-  - object ACLs  
+  - object ACLs
     - give more fine-grained control
     - it granting permissions on each individual file.
 
@@ -1273,7 +1273,7 @@ S3 canonical IDs:
 - can refer to different kinds of AWS identities, not just CloudFront OAIs
 - so difficult to determine which identity a canonical ID refers to.
 - Also, when use the OAI’s canonical ID in a bucket policy, AWS replaces the canonical ID with the OAI’s ARN.
-  - When you write a policy that specifies an OAI’s canonical ID and then later view the same policy, the canonical ID has been replaced by the corresponding ARN.  
+  - When you write a policy that specifies an OAI’s canonical ID and then later view the same policy, the canonical ID has been replaced by the corresponding ARN.
 
 ---
 
@@ -1351,7 +1351,7 @@ to grant access to an OAI using an ACL
 
 ### Using an OAI in S3 Regions that Support Only Signature Version 4 Authentication
 
-Newer S3 Regions require that you use <font color=red> Signature Version 4 </font> for authenticated requests.  
+Newer S3 Regions require that you use <font color=red> Signature Version 4 </font> for authenticated requests.
 - when create an origin access identity and add it to a CloudFront distribution,
 - CloudFront typically uses Signature Version 4 for authentication when it requests files in your S3 bucket.
 
@@ -1359,7 +1359,7 @@ Newer S3 Regions require that you use <font color=red> Signature Version 4 </fon
 
 * to submit `PUT` requests to CloudFront to upload files to your S3 bucket
   * must add an `x-amz-content-sha256` header to the request.
-  * The header value must contain an SHA256 hash of the body of the request.  
+  * The header value must contain an SHA256 hash of the body of the request.
 
 * `POST` requests are not supported.
 

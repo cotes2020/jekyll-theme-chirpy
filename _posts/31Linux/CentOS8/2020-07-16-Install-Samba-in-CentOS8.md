@@ -1,10 +1,10 @@
 ---
-title: Linux - Install Samba in CentOS8 
+title: Linux - Install Samba in CentOS8
 date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, CentOS8]
 tags: [Linux, Install, Samba, CentOS8]
 math: true
-image: 
+image:
 ---
 
 # Install Samba in CentOS8

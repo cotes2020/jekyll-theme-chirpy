@@ -132,7 +132,7 @@ containers
   - package your code with all the dependencies it needs, and the engine that executes your container, is responsible for making them available at runtime.
 
 - Microservices
-  - application are created using independent stateless components or microservices runningn in containers  
+  - application are created using independent stateless components or microservices runningn in containers
   - loosely coupled, fine-grained components.
   - allows the operating system to scale and also upgrade components of an application without affecting the application as a whole.
 
@@ -232,7 +232,7 @@ Containers power to isolate workloads is derived from the composition of several
 
 ## container image
 
-- A container image is structured in layers.  
+- A container image is structured in layers.
   - The Container manifest:
     - The file, tool to build the image reads instructions
   - Docker formatted Container Image:
@@ -312,7 +312,7 @@ Container layer
 1. download containerized software from a <font color=red> container registry </font>
    - use publicly available open source Container images as a base for images or for unmodified use.
    - Google maintains a Container Registry, `gcr.Io`.
-     - contains many public, open source images  
+     - contains many public, open source images
        - find Container images and other public repositories, Docker Hub Registry, GitLab and others.
      - Google Container Registry is integrated with Cloud IAM.
        - can use it to store your images that aren't public.
@@ -325,7 +325,7 @@ Container layer
 
 
 3. build your own container using <font color=red> Cloud Build </font>
-   - a managed service  
+   - a managed service
    - for building Containers that's also integrated with Cloud IAM.
    - Cloud build can retrieve the source code for your builds from a variety of different storage locations.
      - Cloud Source Repositories, Cloud Storage, which is GCP is Object Storage service or git compatible repositories like GitHub and Bitbucket to generate a buildup Cloud Build, you define as series of steps.
@@ -369,15 +369,15 @@ software to build Container images and to run them.
 2. Enforce a Zero-Trust Identity and Access Management (IAM) Policy
 3. Ensure End-to-End Encryption for Secure Network Channels
 4. Inject Secrets into Containers in Runtime
-   1. Follow a zero-trust security policy in managing the Secrets definition parameters for AWS containers. 
-   2. Secrets include login credentials, certificates and API keys used by applications and services to access other system components. 
+   1. Follow a zero-trust security policy in managing the Secrets definition parameters for AWS containers.
+   2. Secrets include login credentials, certificates and API keys used by applications and services to access other system components.
    3. For example, use AWS Secrets manager for secure storage of Secrets credentials instead of baking them into the container.
 5. Regulatory Compliance as the Bare Minimum not target Security
-   1. Follow the guidelines of the applicable security regulations in your country and industry, but treat them as a bare minimum and not an end-goal of your ECS security plan. 
+   1. Follow the guidelines of the applicable security regulations in your country and industry, but treat them as a bare minimum and not an end-goal of your ECS security plan.
    2. AWS helps deploy compliance-focused baseline environments especially focused on the following guidelines across most of the popular regulations such as HIPAA, PCI-DSS and GDPR, among others (some already mentioned) including understanding the shared responsibility model, enforcing strong IAM policy controls, leveraging the built-in tools / visibility provided by the cloud service provider and having the processes and technology in place to investigate and respond to incidents that may impact your ECS workloads.
 6. Gather the Right Data
-   1. Configure your container environments to communicate relevant security data and log data to the built-in AWS monitoring tools such as CloudWatch and CloudTrail. 
-   2. These tools can be used to collect data insights at the hardware, service, and cluster level.  
+   1. Configure your container environments to communicate relevant security data and log data to the built-in AWS monitoring tools such as CloudWatch and CloudTrail.
+   2. These tools can be used to collect data insights at the hardware, service, and cluster level.
 
 7. Best Practices for AWS Fargate:
    1. a serverless service that provides the option of fully managed and abstracted infrastructure for containerized applications managed using AWS ECS. The AWS Fargate service performs tasks such as provisioning, management, and security of the underlying container infrastructure while users simply specify the resource requirements for their containers.
@@ -385,11 +385,11 @@ software to build Container images and to run them.
 
 
 8. Construct Secure Container Images
-   1. Container images consist of multiple layers, each defining the configurations, dependencies and libraries required to run a containerized application. 
-   2. Security of container images should be seen as your first line of defense against cyberattacks or infringements facing your containerized applications. Constructing secure container images is critical to enforce container bounds and prevent adversaries from accessing the Host OS and Kernel. 
-   3. A few ECS container image security best practices that should be considered include 
-      1. using minimal or distroless images, 
-      2. image scanning for vulnerabilities, 
+   1. Container images consist of multiple layers, each defining the configurations, dependencies and libraries required to run a containerized application.
+   2. Security of container images should be seen as your first line of defense against cyberattacks or infringements facing your containerized applications. Constructing secure container images is critical to enforce container bounds and prevent adversaries from accessing the Host OS and Kernel.
+   3. A few ECS container image security best practices that should be considered include
+      1. using minimal or distroless images,
+      2. image scanning for vulnerabilities,
       3. and avoiding running containers as privileged.
 
 
@@ -399,22 +399,22 @@ software to build Container images and to run them.
 
 
 1. Automated Data Collection
-   1. Cloud scaling allows you to scale your investigation resources too, not just your applications. Collect and process container data in parallel triggered by an analyst or other detection or orchestration tool (e.g., SOAR) to get valuable information to analysts more quickly and reduce your time to incident containment and resolution. 
-   
+   1. Cloud scaling allows you to scale your investigation resources too, not just your applications. Collect and process container data in parallel triggered by an analyst or other detection or orchestration tool (e.g., SOAR) to get valuable information to analysts more quickly and reduce your time to incident containment and resolution.
+
 2. Level of Visibility
-   1. While the visibility provided by built-in CSP tools (e.g. AWS CloudWatch and CloudTrail) is important, these data sources alone are not sufficient to perform an in-depth investigation. 
-   2. Leveraging third-party incident and threat intelligence capabilities prove vital to gain a deeper level of visibility across container assets. 
-   3. In this context, the useful data to include as part of your investigation are 
-      1. the system logs and files from within the container, 
-      2. the containers running processes and active network connections, 
-      3. the container host system and container runtime logs (if accessible), 
-      4. the container host memory (if accessible) and the AWS VPC flow logs for the VPC the container is attached to. 
-   4. If data collection wasn't baked into the container declaration before the need to investigate arose, you need to rely on data you can actively interrogate out of the container. Or if you’re using ECS on Fargate, taking an image of the running container or the container host isn’t an option as the underlying AWS infrastructure is shared with no access to the end customers. 
-   5. In this case, the /proc directory gives us a snapshot of the volatile state of the container, much like a memory dump. Using this ‘snapshot’ we can build a basic picture of what is going on in the container at that time, such as running processes, active network connections, open files etc. This data provides a foundation of what you need to correlate with other data sources such as firewall logs, network subnet flows etc during an investigation to understand the actions carried out by an attacker. 
+   1. While the visibility provided by built-in CSP tools (e.g. AWS CloudWatch and CloudTrail) is important, these data sources alone are not sufficient to perform an in-depth investigation.
+   2. Leveraging third-party incident and threat intelligence capabilities prove vital to gain a deeper level of visibility across container assets.
+   3. In this context, the useful data to include as part of your investigation are
+      1. the system logs and files from within the container,
+      2. the containers running processes and active network connections,
+      3. the container host system and container runtime logs (if accessible),
+      4. the container host memory (if accessible) and the AWS VPC flow logs for the VPC the container is attached to.
+   4. If data collection wasn't baked into the container declaration before the need to investigate arose, you need to rely on data you can actively interrogate out of the container. Or if you’re using ECS on Fargate, taking an image of the running container or the container host isn’t an option as the underlying AWS infrastructure is shared with no access to the end customers.
+   5. In this case, the /proc directory gives us a snapshot of the volatile state of the container, much like a memory dump. Using this ‘snapshot’ we can build a basic picture of what is going on in the container at that time, such as running processes, active network connections, open files etc. This data provides a foundation of what you need to correlate with other data sources such as firewall logs, network subnet flows etc during an investigation to understand the actions carried out by an attacker.
 
 
 3. Container Asset Discovery
-   1. Since containers operate as virtualized environments within a shared host kernel OS, it’s often challenging to keep track of `asset workloads` running across all containerized machines in a scaled environment. 
+   1. Since containers operate as virtualized environments within a shared host kernel OS, it’s often challenging to keep track of `asset workloads` running across all containerized machines in a scaled environment.
    2. An agentless discovery process that can efficiently discover and track container assets can be used to enforce appropriate security protocols across all container apps.
 
 

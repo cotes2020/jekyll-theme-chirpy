@@ -20,11 +20,11 @@ image:
     - [key generation:](#key-generation)
   - [El Gamal](#el-gamal)
 
---- 
-  
+---
+
 # Asymmetric Encryption
 
-- also called 
+- also called
   - **Public-Key Encryption**
   - Two-key systems
   - **public key cryptography (PKC)**
@@ -33,7 +33,7 @@ image:
 
 - Asymmetric key cryptography relies on `NP-hard problem`:
   - a math problem is considered NP-hard if it cannot be solved in polynomial time.
-  - X^2, X^3, 
+  - X^2, X^3,
   - NP-hard problem: 2^X.
 
 
@@ -328,7 +328,7 @@ def main():
     d = private_index(e, euler_v)
     plain = decipher(d, n, c)
     print("plain: ", plain)
-    
+
 if __name__ == "__main__":
    main()
 ```
@@ -347,8 +347,8 @@ if __name__ == "__main__":
 
 # 3. Select a number, e, that satisfies the following two requirements:
 # Derived Number (e)
-   1< e < N 
-   e  co-prime to m.  
+   1< e < N
+   e  co-prime to m.
   #  (2 numbers have no common factors other than 1.)
 
 # Step 3: Public key
@@ -360,7 +360,7 @@ if __name__ == "__main__":
 ed = 1 mod (p-1) (q-1)
 
   (ed – 1) mod (p – 1)(q – 1) = 0.
-  de mod m ≡ 1 		
+  de mod m ≡ 1
 
 # 5. Distribute e and n as the public key to all cryptosystem users.
 
@@ -427,8 +427,3 @@ Major disadvantage:
 - Hard when encrypting long messages/data then transmitte over a narrow bandwidth communications circuit.
 
 ---
-
-
-
-
- 

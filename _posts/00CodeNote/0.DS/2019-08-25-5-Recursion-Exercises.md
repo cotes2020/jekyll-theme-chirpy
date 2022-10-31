@@ -345,7 +345,7 @@ def jugs(target, jug_list):
    number_dic = {}
 
    i = 0
-   while target != big:   
+   while target != big:
        print(" ============= step:", i)
        print("start:", big, small)
        big, small = add_water(big, small, big_size, small_size)

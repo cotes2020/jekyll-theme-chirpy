@@ -157,7 +157,7 @@ val = URLSafeTimedSerializer(secret_key, salt=salt,
                                       serializer=serializer,
                                       signer_kwargs=signer_kwargs)
 data= val.loads(sign_cookie)
-print data                                   
+print data
 #{u'username': u'test'}
 
 crypt= val.dumps({'username': 'admin'})
@@ -236,7 +236,7 @@ class URLSafeSerializerMixin(object):
         json = super(URLSafeSerializerMixin, self).dump_payload(obj)
         is_compressed = False
         # 如果数据压缩后长度更短，则用zlib库进行压缩
-        compressed = zlib.compress(json)   
+        compressed = zlib.compress(json)
         if len(compressed) < (len(json) - 1):
             json = compressed
             is_compressed = True
@@ -244,7 +244,7 @@ class URLSafeSerializerMixin(object):
         base64d = base64_encode(json)
         if is_compressed:
             # 通过hmac算法计算数据的签名，将签名附在数据后，用“.”分割
-            base64d = b'.' + base64d  
+            base64d = b'.' + base64d
             # 解决了用户篡改session的问题，因为在不知道secret_key的情况下，是无法伪造签名的。
             # flask仅仅对数据进行了签名。
             # 签名的作用是防篡改，而无法防止被读取。

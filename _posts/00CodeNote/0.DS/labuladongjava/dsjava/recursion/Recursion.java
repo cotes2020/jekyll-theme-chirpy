@@ -22,7 +22,7 @@ public class Recursion {
     //     }
     // }
 
-    // 1 2 3 4 5 6 7 8 9 
+    // 1 2 3 4 5 6 7 8 9
     public static boolean binarySearch(int[] data, int target, int low, int high) {
         if(low>high) return false;
         int mid = (low + high)/2;
@@ -31,17 +31,17 @@ public class Recursion {
         else return binarySearch(data, target, mid+1, high);
     }
 
-    // FILE SYSTEM 
+    // FILE SYSTEM
     public static long diskUsage(File root) {
         long disk_usage = root.length();
-        if(root.isDirectory()) {  
+        if(root.isDirectory()) {
             for(String file: root.list()) {
                 File child = new File(root, file);
                 disk_usage += diskUsage(child);
             }
         }
         System.out.println(disk_usage + "\t" + root);
-        return disk_usage; 
+        return disk_usage;
     }
 
 

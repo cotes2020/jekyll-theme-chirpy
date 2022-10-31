@@ -43,7 +43,7 @@
   - supports image scanning to detect vulnerabilities, and generates vulnerability reports from multiple perspectives.
   - ensures secure access by providing `network access control` and `fine-grained operation audit` for container images and Helm charts.
 - Accelerated application distribution
-  - can synchronize container images across different regions around the world to improve distribution efficiency.  
+  - can synchronize container images across different regions around the world to improve distribution efficiency.
   - supports image distribution in P2P mode to accelerate application deployment and expansion.
 - Efficient and secure cloud-native application delivery
   - allows you to create cloud-native application delivery chains that are observable, traceable, and configurable.
@@ -84,7 +84,7 @@ Configure access over the Internet or virtual private clouds (VPCs).
 
 **Configure access over VPCs**
 - If your `Elastic Compute Service (ECS) instances` reside in one or more virtual private clouds (VPCs), you must configure access to your `ACR instance` over the VPCs.
-- Then, the ECS instances in the VPCs can connect to the ACR instance.  
+- Then, the ECS instances in the VPCs can connect to the ACR instance.
 
 
 

@@ -50,9 +50,9 @@ Options are (like "enum"):
 -u username    specify username to use (default "")
 -p password    specify password to use (default "")
 -f filename    specify dictfile to use (wants -D)*
- 
+
 * = Not implemented in this release.
- 
+
 Additional options:
 -a             Do all simple enumeration (-U -S -G -r -o -n)
 -h             Display this help message and exit
@@ -67,23 +67,23 @@ Use commas to try several users: "-k admin,user1,user2"
 -w workgroup   Specify workgroup manually (usually found automatically)
 -n             Do an nmblookup (similar to nbtstat)
 -v             Verbose.  Shows full commands being run (net, rpcclient, etc.)
- 
+
 RID cycling should extract a list of users from Windows (or Samba) hosts which have
 RestrictAnonymous set to 1 (Windows NT and 2000), or "Network access: Allow
 anonymous SID/Name translation" enabled (XP, 2003).
- 
+
 If no usernames are known, good names to try against Windows systems are:
 - administrator
 - guest
 - none
 - helpassistant
 - aspnet
- 
+
 The following might work against samba systems:
 - root
 - nobody
 - sys
- 
+
 NB: Samba servers often seem to have RIDs in the range 3000-3050.
 Examples
 Below are examples which demonstrate most of the features of enum4linux. Output has been edited for brevity in most cases.
@@ -102,17 +102,17 @@ verbose mode shows the underlying commands being run by enum4linux (rpcclient, s
 [V] Dependent program "rpcclient" found in /usr/bin/rpcclient
 [V] Dependent program "smbclient" found in /usr/bin/smbclient
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 11:18:51 2008
- 
+
 ----- Enumerating Workgroup/Domain on 192.168.2.55 ------
 [V] Attempting to get domain name with command: nmblookup -A '192.168.2.55'
 [+] Got domain/workgroup name: WORKGROUP
- 
+
 ----- Getting domain SID for 192.168.2.55 -----
 [V] Attempting to get domain SID with command: rpcclient -U''%'' 192.168.2.55 -c 'lsaquery' 2>&1
 Domain Name: WORKGROUP
 Domain Sid: S-0-0
 [+] Host is part of a workgroup (not a domain)
- 
+
 ----- Session Check on 192.168.2.55 -----
 [V] Attempting to make null session using command: smbclient //'192.168.2.55'/ipc$ -U''%'' -c 'help' 2>&1
 [+] Server 192.168.2.55 allows sessions using username '', password ''
@@ -136,7 +136,7 @@ This feature is similar to enum.exe -U IP. It returns a complete list of usernam
 ```bash
 # $ enum4linux.pl -U 192.168.2.55
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Thu Mar 27 16:02:50 2008
- 
+
 ----- Users on 192.168.2.55 -----
 index: 0x1 RID: 0x1f4 acb: 0x210 Account: Administrator Name: Desc: Built-in account for administering the computer/domain
 index: 0x2 RID: 0x3ee acb: 0x10 Account: basic Name: basic Desc:
@@ -146,7 +146,7 @@ index: 0x5 RID: 0x3e9 acb: 0x214 Account: IUSR_PORTCULLIS Name: Internet Guest A
 index: 0x6 RID: 0x3ea acb: 0x214 Account: IWAM_PORTCULLIS Name: Launch IIS Process Account Desc: Built-in account for Internet Information Services to start out of process applications
 index: 0x7 RID: 0x3ec acb: 0x10 Account: mark Name: Desc:
 index: 0x8 RID: 0x3e8 acb: 0x214 Account: TsInternetUser Name: TsInternetUser Desc: This user account is used by Terminal Services.
- 
+
 user:[Administrator] rid:[0x1f4]
 user:[basic] rid:[0x3ee]
 user:[blah] rid:[0x3ed]
@@ -164,7 +164,7 @@ If you’ve managed to obtain a username and password for the host, can use it t
 ```bash
 # $ enum4linux.pl -u administrator -p password -U 192.168.2.55
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 13:19:35 2008
- 
+
 ----- Users on 192.168.2.55 -----
 index: 0x1 RID: 0x1f4 acb: 0x210 Account: Administrator Name: Desc: Built-in account for administering the computer/domain
 index: 0x2 RID: 0x3ee acb: 0x10 Account: basic Name: basic Desc:
@@ -174,7 +174,7 @@ index: 0x5 RID: 0x3e9 acb: 0x214 Account: IUSR_PORTCULLIS Name: Internet Guest A
 index: 0x6 RID: 0x3ea acb: 0x214 Account: IWAM_PORTCULLIS Name: Launch IIS Process Account Desc: Built-in account for Internet Information Services to start out of process applications
 index: 0x7 RID: 0x3ec acb: 0x10 Account: mark Name: Desc:
 index: 0x8 RID: 0x3e8 acb: 0x214 Account: TsInternetUser Name: TsInternetUser Desc: This user account is used by Terminal Services.
- 
+
 user:[Administrator] rid:[0x1f4]
 user:[basic] rid:[0x3ee]
 user:[blah] rid:[0x3ed]
@@ -192,12 +192,12 @@ To obtain the usernames corresponding to a default range of RIDs (500-550,1000-1
 ```bash
 # $ enum4linux.pl -r 192.168.2.55
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 11:27:21 2008
- 
+
 ----- Target information -----
 Target ........... 192.168.2.55
 RID Range ........ 500-550,1000-1050
 Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
- 
+
 ----- Users on 192.168.2.55 via RID cycling (RIDS: 500-550,1000-1050) -----
 [I] Assuming that user "administrator" exists
 [+] Got SID: S-1-5-21-1801674531-1482476501-725345543 using username '', password ''
@@ -212,15 +212,15 @@ S-1-5-21-1801674531-1482476501-725345543-1005 W2KSQL\blah (Local User)
 S-1-5-21-1801674531-1482476501-725345543-1006 W2KSQL\basic (Local User)
 
 
-# specify a custom range of RIDs using the -R option. 
+# specify a custom range of RIDs using the -R option.
 # $ enum4linux.pl -R 500-520 192.168.2.55
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 11:27:53 2008
- 
+
 ----- Target information -----
 Target ........... 192.168.2.55
 RID Range ........ 500-520
 Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
- 
+
 ----- Users on 192.168.2.55 via RID cycling (RIDS: 500-520) -----
 [I] Assuming that user "administrator" exists
 [+] Got SID: S-1-5-21-1801674531-1482476501-725345543 using username '', password ''
@@ -246,7 +246,7 @@ If the remote host allow it, can get a list of groups and their members using th
 ```bash
 $ enum4linux.pl -G 192.168.2.55
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 13:54:48 2008
- 
+
 ----- Groups on 192.168.2.55 -----
 [+] Getting builtin groups:
 group:[Administrators] rid:[0x220]
@@ -255,7 +255,7 @@ group:[Guests] rid:[0x222]
 group:[Power Users] rid:[0x223]
 group:[Replicator] rid:[0x228]
 group:[Users] rid:[0x221]
- 
+
 [+] Getting builtin group memberships:
 Group 'Guests' (RID: 546) has members:
 W2KSQL\Guest
@@ -275,14 +275,14 @@ W2KSQL\Administrator
 W2KSQL\mark
 W2KSQL\blah
 Group 'Backup Operators' (RID: 551) has members:
- 
+
 [+] Getting local groups:
- 
+
 [+] Getting local group memberships:
- 
+
 [+] Getting domain groups:
 group:[None] rid:[0x201]
- 
+
 [+] Getting domain group memberships:
 Group 'None' (RID: 513) has members:
 W2KSQL\Administrator
@@ -304,7 +304,7 @@ Enum4linux uses rpcclient’s lsaquery command to ask for a host’s Domain SID.
 ```bash
 $ enum4linux.pl 192.168.2.55
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Thu Mar 27 16:02:50 2008
- 
+
 ----- Getting domain SID for 192.168.2.55 -----
 Domain Name: WORKGROUP
 Domain Sid: S-0-0
@@ -318,7 +318,7 @@ The -n option causes enum4linux to run nmblookup and does some extra parsing on 
 ```bash
 $ enum4linux.pl -n 192.168.2.55
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 11:21:13 2008
- 
+
 ----- Nbtstat Information for 192.168.2.55 -----
 Looking up status of 192.168.2.55
 W2KSQL <00> - B <tt>Workstation Service
@@ -329,7 +329,7 @@ WORKGROUP <1e> - </tt><tt>B </tt><tt>Browser Service Elections
 W2KSQL <03> - B </tt><tt>Messenger Service
 IS~W2KSQL <00> - B </tt><tt>IIS
 ADMINISTRATOR <03> - B </tt><tt>Messenger Service</tt>
- 
+
 MAC Address = 00-0C-29-A4-12-6C
 ```
 
@@ -342,13 +342,13 @@ Enum4linux will also attempt to connect to each share with the supplied credenti
 ```bash
 $ enum4linux.pl -S 192.168.2.55
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 11:28:28 2008
- 
+
 ----- Enumerating Workgroup/Domain on 192.168.2.55 ------
 [+] Got domain/workgroup name: WORKGROUP
- 
+
 ----- Share Enumeration on 192.168.2.55 -----
 Domain=[WORKGROUP] OS=[Windows 5.0] Server=[Windows 2000 LAN Manager]
- 
+
 Sharename Type Comment
 --------- ---- -------
 IPC$ IPC Remote IPC
@@ -356,18 +356,18 @@ ADMIN$ Disk Remote Admin
 C$ Disk Default share
 session request to 192.168.2.55 failed (Called name not present)
 session request to 192 failed (Called name not present)
- 
+
 Server Comment
 --------- -------
 W2KSQL
 WEBVULNB
 WINORACLE
- 
+
 Workgroup Master
 --------- -------
 PTT SBS
 WORKGROUP WEBVULNB
- 
+
 ----- Attempting to map to shares on 192.168.2.55 -----
 //192.168.2.55/IPC$ Mapping: OK Listing: DENIED
 //192.168.2.55/ADMIN$ Mapping: DENIED, Listing: N/A
@@ -378,19 +378,19 @@ WORKGROUP WEBVULNB
 
 $ enum4linux.pl -S 192.168.2.76
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 11:54:02 2008</tt>
- 
+
 ----- Share Enumeration on 192.168.2.76 -----
 [E] Cant list shares: NT_STATUS_ACCESS_DENIED
- 
+
 ----- Attempting to map to shares on 192.168.2.76 -----
 The output below show the use of the -s option with a dictionary file guess the names of some shares:
 
 $ enum4linux.pl -s share-list.txt 192.168.2.76
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 11:54:20 2008</tt>
- 
+
 ----- Session Check on 192.168.2.76 -----
 [+] Server 192.168.2.76 allows sessions using username '', password ''
- 
+
 ----- Brute Force Share Enumeration on 192.168.2.76 -----
 c$ EXISTS
 e$ EXISTS
@@ -406,7 +406,7 @@ The -o option gets OS information using smbclient. Certain versions of Windows (
 ```bash
 $ enum4linux.pl -o 192.168.2.76
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 11:55:11 2008</tt>
- 
+
 ----- OS information on 192.168.2.76 -----
 [+] Got OS info for 192.168.2.76 from smbclient: Domain=[PTT] OS=[Windows 5.1] Server=[Windows 2000 LAN Manager]
 [E] Cant get OS info with srvinfo: NT_STATUS_ACCESS_DENIED
@@ -415,7 +415,7 @@ can get some information about printers known to the remote device with the -i o
 
 $ enum4linux.pl -i 192.168.2.69
 Starting enum4linux v0.8.2 ( https://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Mar 28 11:55:32 2008</tt>
- 
+
 ----- Getting printer info for 192.168.2.69 -----
 flags:[0x800000]
 name:[\\192.168.2.69\SharedFax]

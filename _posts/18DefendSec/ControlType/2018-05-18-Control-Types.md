@@ -77,14 +77,14 @@ Examples:
   - This includes data transferred over a network and data stored on devices, such as servers, desktop computers, and mobile devices.
 
 - <font color=red> Antivirus software </font>:
-  - antivirus software provides protection against malware infection.  
+  - antivirus software provides protection against malware infection.
 
 - <font color=red> Intrusion detection/prevention systems (IDS IPS) </font>:
   -  monitor a network or host for intrusions
   -  and provide ongoing protection against various threats.
 
 - <font color=red> Firewalls </font>:
-  - Network firewalls restrict network traffic going in and out of a network.  
+  - Network firewalls restrict network traffic going in and out of a network.
 
 - <font color=red> Least privilege </font>:
   - The principle of least privilege specifies that individuals or processes are granted only the privileges they need to perform their assigned tasks or functions, but no more.
@@ -109,7 +109,7 @@ constrained interfaces, access control lists, protocols, routers, and clipping l
 
 Many administrative controls are also known as operational or management controls.
 - help ensure that day-to-day operations of an organization comply with the organization’s overall security plan.
-- People (not technology) implement these controls.  
+- People (not technology) implement these controls.
 
 
 Some common administrative controls are:
@@ -171,7 +171,7 @@ Some examples include:
   - For example
   - strong authentication of cloud user’s enables only authorized personnel to access the data.
 
-- code that disables inactive ports 
+- code that disables inactive ports
   - to ensure that there are no available entry points for hackers
 
 - <font color=red> Hardening </font>.
@@ -216,15 +216,15 @@ Some examples include:
 Some examples of detective controls are:
 
 - <font color=red> IDS and Network security monitoring tools SIEM</font>.
-  - IDS is generally implemented in line with an intrusion prevention system (IPS). 
-  - continuously monitors computer systems for policy violation and malicious activity. 
-  - As soon as it detects either of them, it can alert the system administrator. 
+  - IDS is generally implemented in line with an intrusion prevention system (IPS).
+  - continuously monitors computer systems for policy violation and malicious activity.
+  - As soon as it detects either of them, it can alert the system administrator.
   - Advanced IDS may allow an organization to record information about security incidents and help security teams in retrieving information such as IP address and MAC address of the attack source.
 
 - <font color=red> Anti-virus/anti-malware tool </font>
   - An anti-virus tool is generally installed on every system in an organizational network.
-  - regular scanning along with real-time alerts and updates. 
-  - While traditional tools heavily rely on virus signatures, ideal anti-virus tools use behavior detection to discover viruses, worms, ransomware, trojan horses, and other malicious files regularly. 
+  - regular scanning along with real-time alerts and updates.
+  - While traditional tools heavily rely on virus signatures, ideal anti-virus tools use behavior detection to discover viruses, worms, ransomware, trojan horses, and other malicious files regularly.
   - A dedicated policy may support the organization-wide implementation of an anti-virus tool.
 
 
@@ -273,7 +273,7 @@ Some examples of corrective controls are:
 
 - <font color=red> Backups and system recovery </font>.
   - Backups ensure that personnel can recover data if it is lost or corrupted.
-  - system recovery procedures ensure administrators can recover a system after a failure.  
+  - system recovery procedures ensure administrators can recover a system after a failure.
 
 ---
 
@@ -313,36 +313,36 @@ The following list identifies some physical security controls used to deter thre
 
 # Types of Security in Cloud Computing
 
-- <font color=red> Network Segmentation </font> 
-  - in multi-tenant SaaS environments, determine, assess, and isolate customer data 
+- <font color=red> Network Segmentation </font>
+  - in multi-tenant SaaS environments, determine, assess, and isolate customer data
 
 - <font color=red> Access Management </font>
-  - Using robust access management and user-level privileges 
+  - Using robust access management and user-level privileges
   - Access to cloud environments, applications, etc. should be issued by role, and audited frequently.
 
-- <font color=red> Password Control </font> 
-  - never allow shared passwords. 
+- <font color=red> Password Control </font>
+  - never allow shared passwords.
   - Passwords should be combined with authentication tools to ensure the greatest level of security.
 
 - <font color=red> Encryption </font>
   - to protect your data at rest and transit.
 
-- <font color=red> Vulnerability Scans and Management </font> 
+- <font color=red> Vulnerability Scans and Management </font>
   - revolves around regular security audits and patching of any vulnerabilities.
 
 - <font color=red> Disaster Recovery </font>
   - have a plan and platforms in place for data backup, retention, and recovery.
 
-- <font color=red> Security Monitoring, Logging, and Alerting </font> 
-  - Continuous monitoring across all environments and applications is a necessity for cloud computing security. 
+- <font color=red> Security Monitoring, Logging, and Alerting </font>
+  - Continuous monitoring across all environments and applications is a necessity for cloud computing security.
 
 
 - <font color=red> Procedural controls </font>
-  - such as security awareness education, security framework compliance training, and incident response plans and procedures 
+  - such as security awareness education, security framework compliance training, and incident response plans and procedures
 
 
 - <font color=red> Compliance controls </font>
-  - such as privacy laws and cybersecurity frameworks and standards designed to minimize security risks. 
+  - such as privacy laws and cybersecurity frameworks and standards designed to minimize security risks.
   - These typically require an information security risk assessment, and impose information security requirements, with penalties for non-compliance.
   - The National Institute of Standards and Technology (NIST) Special Publication 800-53, Security and Privacy Controls for Federal Information Systems and Organizations
   - The International Organization for Standardization (ISO) standard ISO 27001, Information Security Management

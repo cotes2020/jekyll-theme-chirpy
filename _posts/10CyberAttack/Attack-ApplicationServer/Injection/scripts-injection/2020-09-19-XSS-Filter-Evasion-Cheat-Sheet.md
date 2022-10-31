@@ -1088,7 +1088,7 @@ Locally hosted XML with embedded JavaScript that is generated using an XML data 
 This is the same as above but instead referrs to a locally hosted (must be on the same server) XML file that contains your cross site scripting vector. You can see the result here:
 
 ```js
-<XML SRC="xsstest.xml" ID=I></XML>  
+<XML SRC="xsstest.xml" ID=I></XML>
 <SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML></SPAN>
 
 ```

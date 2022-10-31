@@ -16,7 +16,7 @@ image: /assets/img/note/prisma.png
 
 ---
 
-# Prisma Cloud - Generating Report 
+# Prisma Cloud - Generating Report
 
 --
 

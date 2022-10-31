@@ -4,6 +4,7 @@ from flask_login import LoginManager
 
 db = SQLAlchemy()
 
+
 def create_app():
     app = Flask(__name__)
 
@@ -19,6 +20,7 @@ def create_app():
     login_manager.init_app(app)
 
     from .models import User
+
     @login_manager.user_loader
     def load_user(db_id):
         return User.query.get(int(db_id))

@@ -28,8 +28,8 @@ public class CaesarCipher {
         return new String(msg);
     }
 
-    public static void main(String[] args) { 
-        CaesarCipher cipher = new CaesarCipher(3); 
+    public static void main(String[] args) {
+        CaesarCipher cipher = new CaesarCipher(3);
         System.out.println("Encryption code = " + new String(cipher.encoder));
         System.out.println("Decryption code = " + new String(cipher.decoder));
         String message = "THE EAGLE IS IN PLAY; MEET AT JOE'S.";
@@ -38,8 +38,8 @@ public class CaesarCipher {
         String answer = cipher.decrypt(coded);
         System.out.println("Message: " + answer);
         // Encryption code = DEFGHIJKLMNOPQRSTUVWXYZABC
-        // Decryption code = XYZABCDEFGHIJKLMNOPQRSTUVW 
-        // Secret: WKH HDJOH LV LQ SODB; PHHW DW MRH’V. 
+        // Decryption code = XYZABCDEFGHIJKLMNOPQRSTUVW
+        // Secret: WKH HDJOH LV LQ SODB; PHHW DW MRH’V.
         // Message: THE EAGLE IS IN PLAY; MEET AT JOE’S.
     }
 

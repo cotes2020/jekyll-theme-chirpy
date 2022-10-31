@@ -3,7 +3,7 @@ package main
 import {
 	"fmt"
 	"eventbridge-delete-bucket-encryption-godata"
-	
+
 }
 type Vehicle interface {
 	Structure() []string // Common Method

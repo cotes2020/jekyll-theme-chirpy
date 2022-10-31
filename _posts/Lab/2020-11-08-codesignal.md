@@ -39,7 +39,7 @@ String[] allLongestStrings(String[] inputArray){
         }
         //reset if list has smaller strings
         else if ( l.indexOf("-") < s.length() ) {
-            l = s + "-"; 
+            l = s + "-";
         }
     }
     return l.split( "-" );
@@ -59,8 +59,8 @@ String[] allLongestStrings(String[] inputArray) {
 }
 
 
-String[] allLongestStrings(String[] inputArray) { 
-    int size = 0; 
+String[] allLongestStrings(String[] inputArray) {
+    int size = 0;
     int max = 0;
     for (String wrd : inputArray){
         max = wrd.length() > max?wrd.length():max;
@@ -82,7 +82,7 @@ String[] allLongestStrings(String[] inputArray) {
 }
 
 
-String[] allLongestStrings(String[] inputArray) { 
+String[] allLongestStrings(String[] inputArray) {
     ArrayList al = new ArrayList();
     int max = 0;
     for(String wrd : inputArray){
@@ -202,7 +202,7 @@ int adjacentElementsProduct(int[] inputArray) {
 
 ```java
 int shapeArea(int n) {
-  return (n*n)+( (n-1)*(n-1) ); 
+  return (n*n)+( (n-1)*(n-1) );
 }
 
 
@@ -290,9 +290,9 @@ boolean almostIncreasingSequence(int[] sequence) {
 
 int matrixElementsSum(int[][] matrix) {
     int sum = 0;
-    for (int c = 0; c < matrix[0].length; ++c) 
+    for (int c = 0; c < matrix[0].length; ++c)
         for (int r = 0; r < matrix.length; ++r) {
-            if (matrix[r][c] > 0) 
+            if (matrix[r][c] > 0)
                 sum += matrix[r][c];
             else break;
         }
@@ -354,7 +354,7 @@ int add(int param1, int param2) {
             century++;
         }
         return century;
-    }    
+    }
 ```
 
 

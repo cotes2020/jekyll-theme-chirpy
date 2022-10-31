@@ -35,29 +35,29 @@ DHS Office of Critical Infrastructure Analysis (OCIA)
 
 This document provides guidance to Federal Government departments and agencies (D/As); state, local, tribal, and territorial government entities; Information Sharing and Analysis Organizations; and foreign, commercial, and private-sector organizations for `submitting incident notifications` to the `National Cybersecurity and Communications Integration Center (NCCIC)/United States Computer Emergency Readiness Team (US-CERT)`.
 
-The Federal Information Security Modernization Act of 2014 (FISMA) defines "incident" as "an occurrence that 
-- (A) actually or imminently jeopardizes, without lawful authority, the integrity, confidentiality, or availability of information or an information system; 
-- or (B) constitutes a violation or imminent threat of violation of law, security policies, security procedures, or acceptable use policies." 
+The Federal Information Security Modernization Act of 2014 (FISMA) defines "incident" as "an occurrence that
+- (A) actually or imminently jeopardizes, without lawful authority, the integrity, confidentiality, or availability of information or an information system;
+- or (B) constitutes a violation or imminent threat of violation of law, security policies, security procedures, or acceptable use policies."
 
 
-> [1] FISMA requires federal Executive Branch civilian agencies to notify and consult with US-CERT regarding information security incidents involving their information and information systems, whether managed by a federal agency, contractor, or other source. 
+> [1] FISMA requires federal Executive Branch civilian agencies to notify and consult with US-CERT regarding information security incidents involving their information and information systems, whether managed by a federal agency, contractor, or other source.
 > [2] This includes incidents involving control systems, which include supervisory control and data acquisition (SCADA) systems, distributed control systems (DCS), programmable logic controllers (PLCs) and other types of industrial measurement and control systems. Reporting by entities other than federal Executive Branch civilian agencies is voluntary.
 
 
 These guidelines support US-CERT in executing its mission objectives and provide the following benefits:
 - **Greater quality of information**
-  - Alignment with incident reporting and handling guidance from `NIST 800-61 Revision 2` to introduce functional, informational, and recoverability impact classifications, 
+  - Alignment with incident reporting and handling guidance from `NIST 800-61 Revision 2` to introduce functional, informational, and recoverability impact classifications,
   - allowing US-CERT to better recognize significant incidents.
 - **Improved information sharing and situational awareness**
   - stablishing a `one-hour notification time frame` for all incidents to improve US-CERT’s ability to understand cybersecurity events affecting the government.
-- **Faster incident response times** 
+- **Faster incident response times**
   - Moving cause analysis to the closing phase of the incident handling process to expedite initial notification.
 
 ---
 
 ## Notification Requirement
-Agencies must report information security incidents, where the confidentiality, integrity, or availability of a federal information system of a civilian Executive Branch agency is potentially compromised, to the NCCIC/US-CERT with the required data elements, as well as any other available information, within `one hour of being identified` by the agency’s `top-level Computer Security Incident Response Team (CSIRT)`, `Security Operations Center (SOC)`, or `information technology department`. 
-- In some cases, it may not be feasible to have complete and validated information for the section below (Submitting Incident Notifications) prior to reporting. Agencies should provide their best estimate at the time of notification and report updated information as it becomes available. 
+Agencies must report information security incidents, where the confidentiality, integrity, or availability of a federal information system of a civilian Executive Branch agency is potentially compromised, to the NCCIC/US-CERT with the required data elements, as well as any other available information, within `one hour of being identified` by the agency’s `top-level Computer Security Incident Response Team (CSIRT)`, `Security Operations Center (SOC)`, or `information technology department`.
+- In some cases, it may not be feasible to have complete and validated information for the section below (Submitting Incident Notifications) prior to reporting. Agencies should provide their best estimate at the time of notification and report updated information as it becomes available.
 - Events that have been found by the reporting agency not to impact confidentiality, integrity or availability may be reported voluntarily to US-CERT; however, they may not be included in the FISMA Annual Report to Congress.
 
 ---
@@ -68,11 +68,11 @@ The information elements described in steps 1-7 below are required when notifyin
 2. Identify the `type of information lost, compromised, or corrupted` (**Information Impact**).
 3. Estimate the `scope of time and resources needed to recover` from the incident (**Recoverability**).
 4. Identify `when the activity was first detected`.
-5. Identify `the number of systems, records, and users impacted`. 
+5. Identify `the number of systems, records, and users impacted`.
 6. Identify `the network location of the observed activity`. (**Location of Observed Activity**)
 7. Identify `point of contact` information for additional follow-up.
-   - Important: 
-   - Please refrain from adding sensitive personally identifiable information (PII) to incident submissions. 
+   - Important:
+   - Please refrain from adding sensitive personally identifiable information (PII) to incident submissions.
    - Any contact information collected will be handled according to the DHS website privacy policy. [3]
 8. `Submit the notification to US-CERT`.
    - The following information should also be included if known at the time of submission:
@@ -84,8 +84,8 @@ Within one hour of receiving the report, the NCCIC/US-CERT will provide the agen
 - A `tracking number` for the incident.
 - A `risk rating` based on the `NCCIC Cyber Incident Scoring System (NCISS)`.
 
-Reports may be submitted using the NCCIC/US-CERT Incident Reporting Form; 
-- send emails to soc@us-cert.gov 
+Reports may be submitted using the NCCIC/US-CERT Incident Reporting Form;
+- send emails to soc@us-cert.gov
 - or submit reports via Structured Threat Information eXpression (STIX) to autosubmit@us-cert.gov (schema available upon request).
 
 ---
@@ -100,25 +100,25 @@ To support the assessment of `national-level severity and priority` of cyber inc
 - Actor Characterization,
 - Cross-Sector Dependency, and
 - Potential Impact.
-  - Agencies are not required or expected to provide **Actor Characterization, Cross-Sector Dependency, or Potential Impact information**. These are assessed independently by NCCIC/US-CERT incident handlers and analysts. 
+  - Agencies are not required or expected to provide **Actor Characterization, Cross-Sector Dependency, or Potential Impact information**. These are assessed independently by NCCIC/US-CERT incident handlers and analysts.
   - - Additionally, **Observed Activity** is not currently required and is based on the attack vector, if known, and maps to the Office of the Director of National Intelligence’s (ODNI) Cyber Threat Framework. [4]
 
 
 This information will be utilized to calculate a `severity score` according to the NCISS. The NCISS aligns with the priority levels of the `Cyber Incident Severity Schema (CISS)`: [5]
-1. `Emergency (Black)`: 
+1. `Emergency (Black)`:
    - Poses an `imminent threat` to the provision of wide-scale critical infrastructure services, national government stability, or the lives of U.S. persons.
-2. `Severe (Red)`: 
+2. `Severe (Red)`:
    - Likely to result in a `significant impact` to public health or safety, national security, economic security, foreign relations, or civil liberties.
-3. `High (Orange)`: 
+3. `High (Orange)`:
    - Likely to result in a `demonstrable impact `to public health or safety, national security, economic security, foreign relations, civil liberties, or public confidence.
-4. `Medium (Yellow)`: 
+4. `Medium (Yellow)`:
    - `May impact` public health or safety, national security, economic security, foreign relations, civil liberties, or public confidence.
-5. `Low (Green)`: 
+5. `Low (Green)`:
    - `Unlikely to impact` public health or safety, national security, economic security, foreign relations, civil liberties, or public confidence.
 6. `Baseline`
-   - `Minor (Blue)`: 
+   - `Minor (Blue)`:
      - `Highly unlikely to affect` public health or safety, national security, economic security, foreign relations, civil liberties, or public confidence.
-   - `Negligible (White)`: 
+   - `Negligible (White)`:
      - `Unsubstantiated or inconsequential event`.
 
 
@@ -144,7 +144,7 @@ Note: Incidents may affect multiple types of data; therefore, D/As may select mu
 
 Impact Category	| Category Severity Levels
 ---|---
-**Functional Impact** | – A measure of the **impact to business functionality or ability to provide services**	
+**Functional Impact** | – A measure of the **impact to business functionality or ability to provide services**
 . | `NO IMPACT` – Event has no impact.
 . | `NO IMPACT TO SERVICES` – Event has no impact to any business or Industrial Control Systems (ICS) services or delivery to entity customers.
 . | `MINIMAL IMPACT TO NON-CRITICAL SERVICES` – Some small level of impact to non-critical systems and services.
@@ -162,7 +162,7 @@ Impact Category	| Category Severity Levels
 . | `CRITICAL SYSTEMS DATA BREACH` - Data pertaining to a critical system has been exfiltrated.
 . | `CORE CREDENTIAL COMPROMISE` – Core system credentials (such as domain or enterprise administrative credentials) or credentials for critical systems have been exfiltrated.
 . | `DESTRUCTION OF CRITICAL SYSTEM` – Destructive techniques, such as MBR overwrite; have been used against a critical system.
-**Recoverability** | – Identifies **the scope of resources needed to recover from the incident**	
+**Recoverability** | – Identifies **the scope of resources needed to recover from the incident**
 . | `REGULAR` – Time to recovery is predictable with existing resources.
 . | `SUPPLEMENTED` – Time to recovery is predictable with additional resources.
 . | `EXTENDED` – Time to recovery is unpredictable; additional resources and outside help are needed.
@@ -172,11 +172,11 @@ Impact Category	| Category Severity Levels
 ---
 
 ## Attack Vectors
-To clearly communicate incidents throughout the Federal Government and supported organizations, it is necessary for government incident response teams to adopt a common set of terms and relationships between those terms. 
+To clearly communicate incidents throughout the Federal Government and supported organizations, it is necessary for government incident response teams to adopt a common set of terms and relationships between those terms.
 
 All elements of the Federal Government should use this common taxonomy. Below is a high-level set of attack vectors and descriptions developed from `NIST SP 800-61 Revision 2`. Federal civilian agencies are to utilize the following attack vectors taxonomy when sending cybersecurity incident notifications to US-CERT.
 
---- 
+---
 
 ## Attack Vectors Taxonomy
 Attack Vector	| Description	| Example
@@ -189,7 +189,7 @@ Attack Vector	| Description	| Example
 `Impersonation/Spoofing`	| An attack involving replacement of legitimate content/services with a malicious substitute	| `Spoofing`, `man in the middle attacks`, `rogue wireless access points`, and `structured query language injection attacks` all involve impersonation.
 `Improper Usage`	| Any incident resulting from violation of an organization’s acceptable usage policies by an authorized user, excluding the above categories.	| `User installs` file-sharing software, leading to the loss of sensitive data; <br> or a `user performs illegal activities` on a system.
 `Loss or Theft of Equipment`	| The loss or theft of a computing device or media used by the organization.	| A misplaced laptop or mobile device.
-`Other`	| An attack method does not fit into any other vector	 
+`Other`	| An attack method does not fit into any other vector
 
 
 ---
@@ -199,7 +199,7 @@ Attack Vector	| Description	| Example
 The following incident attribute definitions are taken from the NCISS.
 Attribute Category	| Attribute Definitions
 ---|---
-**Location of Observed Activity**: | Where the observed activity was detected in the network.	
+**Location of Observed Activity**: | Where the observed activity was detected in the network.
 . | `LEVEL 1 – BUSINESS DEMILITERIZED ZONE` – Activity was observed in the **business network’s demilitarized zone (DMZ)**
 . | `LEVEL 2 – BUSINESS NETWORK` – Activity was observed in the **business or corporate network** of the victim. <br> These systems would be `corporate user workstations, application servers, and other non-core management systems`.
 . | `LEVEL 3 – BUSINESS NETWORK MANAGEMENT` – Activity was **observed in business network management systems** <br> such as `administrative user workstations, active directory servers, or other trust stores`.
@@ -212,7 +212,7 @@ Attribute Category	| Attribute Definitions
 **Cross-Sector Dependency**	| A weighting factor that is determined based on cross-sector analyses conducted by the DHS Office of Critical Infrastructure Analysis (OCIA). This element is `not selected by the reporting entity`.
 **Potential Impact**	| An estimate of the overall national impact resulting from a total loss of service from the affected entity. This element is `not selected by the reporting entity`.
 
-> Note: Agencies are not required or expected to provide **Actor Characterization, Cross-Sector Dependency, or Potential Impact information**. These are assessed independently by NCCIC/US-CERT incident handlers and analysts. 
+> Note: Agencies are not required or expected to provide **Actor Characterization, Cross-Sector Dependency, or Potential Impact information**. These are assessed independently by NCCIC/US-CERT incident handlers and analysts.
 > Additionally, **Observed Activity** is not currently required and is based on the attack vector, if known, and maps to the ODNI Cyber Threat Framework.
 
 
@@ -225,5 +225,3 @@ References
 [5] https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/documents/Cyber%2BIncident%2BSeverity%2BSchema.pdf
 [6] As defined in OMB Memorandum M-07-16, “personally identifiable information” refers to “information which can be used to distinguish or trace an individual's identity
 [7] As defined by NIST, “proprietary information ” is “information that is not public knowledge and that is viewed as the property of the holder, with the holder of that information responsible to declare it and treat it as proprietary”
- 
- 

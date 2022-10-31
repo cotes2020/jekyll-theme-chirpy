@@ -442,7 +442,7 @@ func (r *Request) Execute(method, url string) (*Response, error) {
 
             r.URL = r.selectAddr(addrs, url, attempt)
 
-            resp, err = r.client.execute(r)    
+            resp, err = r.client.execute(r)
             // 如果没有设置重试次数，执行 r.client.execute(r) ：
             // 直接请求 Request ， 返回 Response 和 error。
 
@@ -500,7 +500,7 @@ func Backoff(operation func() (*Response, error), options ...Option) error {
             return err
         }
 
-        err1 := unwrapNoRetryErr(err)           
+        err1 := unwrapNoRetryErr(err)
         // raw error, it used for return users callback.
 
         needsRetry := err != nil && err == err1

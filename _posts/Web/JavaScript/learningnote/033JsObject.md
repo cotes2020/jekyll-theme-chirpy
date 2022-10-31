@@ -16,7 +16,7 @@ let myInstance = new myConstructor()).
 
 // 2. Those defined directly on the constructor themselves, that are available only on the constructor. These are commonly only available on built-in browser objects, and are recognized by being chained directly onto a constructor, not an instance. For example, Object.keys(). These are also known as static properties/methods.
 
-// 3. 
+// 3.
 myConstructor.prototype.x().
 
 // 4.
@@ -259,7 +259,7 @@ let person1 = new Person(...);
 
 1. stores an empty object in the person1 variable
 ```js
-let person1 = new Object();  
+let person1 = new Object();
 // add properties and methods to this object
 person1.name = 'Chris';
 person1['age'] = 38;
@@ -308,8 +308,8 @@ the properties and methods are defined on the `prototype` property on the Object
 
 ### prototype objects
 
-the members defined on person1 constructor 
-- Person() — `name, age, gender, interests, bio, and greeting`. 
+the members defined on person1 constructor
+- Person() — `name, age, gender, interests, bio, and greeting`.
 - also see some other members — `toString, valueOf` (defined on Person() constructor prototype object, `Object`).
 
 
@@ -333,7 +333,7 @@ person1.valueOf()
 the Object reference page
 - Some are inherited, and some aren't
   - the inherited ones are the ones defined on the `prototype` property, the ones that begin with `Object.prototype`.
-  - not the ones that begin with just `Object`. 
+  - not the ones that begin with just `Object`.
   - The prototype property's value is an object, which is basically a bucket for storing properties and methods that we want to be inherited by objects further down the prototype chain.
 - So `Object.prototype.toString()`, `Object.prototype.valueOf()`, etc., are available to any object types that inherit from `Object.prototype`, including new object instances created from the Person() constructor.
 - `Object.is()`, `Object.keys()`, etc. not defined inside the prototype bucket are not inherited by object instances or object types that inherit from Object.prototype. They are methods/properties available just on the `Object()` constructor itself.
@@ -341,9 +341,9 @@ the Object reference page
 
 
 ### The `.constructor` property
-Every constructor function has a `prototype` property whose value is an `object containing a constructor property`. 
+Every constructor function has a `prototype` property whose value is an `object containing a constructor property`.
 - This constructor property points to the `original constructor function`.
-  
+
 ```js
 let person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
 let person2 = Object.create(person1);
@@ -371,7 +371,7 @@ Test.prototype.y = function() { ... };  // Second method definition
 Person.prototype.farewell = function() {
   alert(this.name.first + ' has left the building. Bye for now!');
 };
-person1.farewell(); 
+person1.farewell();
 
 // doesn't work, because this reference the global scope in this case, not the function scope.
 Person.prototype.fullName = this.name.first + ' ' + this.name.last;
@@ -404,7 +404,7 @@ function Teacher(first, last, age, gender, interests, subject) {
 }
 
 
-2. 
+2.
 function Teacher(first, last, age, gender, interests, subject) {
   Person.call(this, first, last, age, gender, interests);
   this.subject = subject;
@@ -412,7 +412,7 @@ function Teacher(first, last, age, gender, interests, subject) {
 ```
 
 the `call()` function
-- to call a function defined somewhere else, but in the current context. 
+- to call a function defined somewhere else, but in the current context.
 - The first parameter specifies the value of `this` that you want to use when running the function,
 - other parameters are those that should be passed to the function when it is invoked.
 
@@ -447,8 +447,8 @@ Teacher.prototype.constructor
 //     this.interests = interests;
 // }
 
-Object.defineProperty(Teacher.prototype, 'constructor', { 
-    value: Teacher, 
+Object.defineProperty(Teacher.prototype, 'constructor', {
+    value: Teacher,
     enumerable: false, // so that it does not appear in 'for in' loop
     writable: true });
 
@@ -514,7 +514,7 @@ xiaoming.__proto__ === Student; // true
 
 ---
 
-## class syntax 
+## class syntax
 
 
 ```js

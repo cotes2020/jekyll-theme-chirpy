@@ -72,7 +72,7 @@ while True:
     if (len(data) < 1):       # if no data receive
         break
     print(data.decode())  # from byte to UTF-8 data
-mysock.close()  
+mysock.close()
 
 python3 py.file
 ## result: http://data.pr4e.org/romeo.txt
@@ -205,13 +205,13 @@ XML file:
     <person>
         <name>beh</name>
         <phone>3344</phone>
-        <email hide='yes'/> 
+        <email hide='yes'/>
     </person>
 </people>
 
 ```
 
-XML schema contract: 
+XML schema contract:
 ```xml
 <xs:complexType name="person">
     <xs:sequence>
@@ -254,7 +254,7 @@ lst=tree.findall('users/user')  # result is a list
 print(lst)
 print('User account:', len(lst))
 for item in lst:
-    print('Name:', item.find('name').text)  
+    print('Name:', item.find('name').text)
 
 # result
 # [<Element 'user' at 0x1035b1fb0>, <Element 'user' at 0x1035ce170>]
@@ -262,4 +262,3 @@ for item in lst:
 # Name: hhed
 # Name: rree
 ```
-

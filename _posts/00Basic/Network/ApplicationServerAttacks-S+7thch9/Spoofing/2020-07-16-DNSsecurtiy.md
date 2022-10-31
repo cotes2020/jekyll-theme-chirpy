@@ -69,7 +69,7 @@ DNS is an integral part of most Internet requests, it can be a prime target for 
 - pharming
 - amplification,
 - DoS (Denial of Service),
-- the interception of private personal information.  
+- the interception of private personal information.
 
 
 Example:
@@ -277,7 +277,7 @@ There are several obstacles to issue a fake DNS response that will be accepted.
   	- n different 16-bit real IDs XXXXXXXXXXXXXXXX, `probability = n/216`;
 -	- hence, she would fail to match one with probability 1 − n/216.
 -	- Thus, an attacker issuing `n fake responses` will fail to guess a transaction ID equal to one of n different 16-bit real IDs with a probability ![Screen Shot 2018-11-17 at 11.06.02](https://i.imgur.com/Pog2XkU.png)
-- when n = 213, the attacker will have roughly at least a 50% chance that one of her random responses will match a real request.  
+- when n = 213, the attacker will have roughly at least a 50% chance that one of her random responses will match a real request.
 -	- A DNS cache poisoning attack based on the birthday paradox:
 -	- (a) First, an attacker sends `n DNS requests` for the domain she wishes to poison.
 -	- (b) The attacker sends `n corresponding replies` for her own request.
@@ -529,7 +529,7 @@ manipulates the DNS name resolution process. It either tries to corrupt the DNS 
 
 #### DNS phishing 网络仿冒
 
-- try to grab usernames and passwords, credit card numbers, and other personal information.  
+- try to grab usernames and passwords, credit card numbers, and other personal information.
 - Victims of a combined **pharming and phishing attack** would have no way of distinguishing between the fake and real sites, since all of the information conveyed by the browser indicates that they are visiting a trusted web site.
 - Some types of pharming attacks:
 

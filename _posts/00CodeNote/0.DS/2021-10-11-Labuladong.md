@@ -495,7 +495,7 @@ public void reverse(char[] str) {
 public boolean isVowel(char c) {
     char[] vowels = new char[]{'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
     for (char vow : vowels)
-        if (c == vow) return true;    
+        if (c == vow) return true;
     return false;
 }
 
@@ -682,7 +682,7 @@ int ran = rand.nextBoolean();
 
 // Char
 char ch = (char)(i + 97);
-Character.getNumericValue(c);  
+Character.getNumericValue(c);
 Character.isLowerCase(s.charAt(i));
 Character.toUpperCase(s.charAt(i));
 Character.isWhitespace();
@@ -770,7 +770,7 @@ ArrayList<Integer> ans = new ArrayList<>();
 
 List<List<String>> res = new ArrayList<List<String>>();
 
-List<int[]> res = new ArrayList<>(); 
+List<int[]> res = new ArrayList<>();
 
 List<Integer> v0 = new ArrayList<>();
 
@@ -1238,7 +1238,7 @@ def dp(n):
 //         res.add(new LinkedList(track));
 //         return;
 //     }
-//  
+//
 //     for (int i = 0; i < nums.length; i++) {
 //         if (track.contains(nums[i]))
 //             continue;
@@ -2348,7 +2348,7 @@ class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
         if(head==null || left==right) return head;
         ListNode dummy = new ListNode(0,head);
-        ListNode prev = dummy, curr = dummy.next;  
+        ListNode prev = dummy, curr = dummy.next;
         int i=1;
         while(i<left){
             prev = curr;
@@ -2356,7 +2356,7 @@ class Solution {
             i++;
         }
         // flow of execution in each iteration (for the 2nd input):
-        // 1->2->3->4->5->6->7 |  
+        // 1->2->3->4->5->6->7 |
         // 1->2->4->3->5->6->7 |
         // 1->2->5->4->3->6->7 |
         // 1->2->6->5->4->3->7 |
@@ -2487,10 +2487,10 @@ class Solution {
         while(fast.next!=null && fast.next.next!=null){
             slow=slow.next;
             fast=fast.next.next;
-        }  
+        }
         // reverse
         ListNode second = reverse(slow.next);
-        slow.next=null;  
+        slow.next=null;
         // merge
         combine(head, second);
     }
@@ -2506,7 +2506,7 @@ class Solution {
         return pre;
     }
 
-    public void combine(ListNode n1, ListNode n2) {   
+    public void combine(ListNode n1, ListNode n2) {
         while(n2!=null){
             ListNode f_temp = n1.next;
             ListNode s_temp = n2.next;
@@ -2540,7 +2540,7 @@ class Solution {
             if(i % 2 == 0) dummy.next = list.get(left++);
             else dummy.next = list.get(right--);
             dummy = dummy.next;
-            i++;        
+            i++;
         }
         dummy.next = null;
     }
@@ -3743,7 +3743,7 @@ Output: true
 // o(n) time as we are traversing every node in worst case.
 class Solution {
     private Set<Integer> res = new HashSet<>();
-    public boolean findTarget(TreeNode root, int k) {  
+    public boolean findTarget(TreeNode root, int k) {
         if(root==null) return false;
         if(res.contains(k-root.val)) return true;
         res.add(root.val);
@@ -3847,7 +3847,7 @@ void levelTraverse(TreeNode root) {
 
 ---
 
-### 559. Maximum Depth of N-ary Tree 多叉树的层序遍历框架  
+### 559. Maximum Depth of N-ary Tree 多叉树的层序遍历框架
 
 #### +++++ 用Queue和q.size去遍历child
 
@@ -8566,7 +8566,7 @@ public int findRotateSteps(String ring, String key) {
 
 // pos represents the pos of the ring we are sitting on, and the steps represents how many letters we've gone through
 public int dfs(String ring, String key, int pos, int steps) {
-    // have we already analyzed one path? -- no point moving further left or right from this position        
+    // have we already analyzed one path? -- no point moving further left or right from this position
     if (memo[pos][steps] != 0) return memo[pos][steps];
 
     boolean clockWise = false, counterClockWise = false;
@@ -9005,7 +9005,7 @@ int maxSubArray(int[] nums) {
 // Memory Usage: 49.2 MB, less than 78.66% of Java online submissions for Maximum Subarray.
 int maxSubArray(int[] nums) {
     int num_pre = nums[0];
-    int num_cur;        
+    int num_cur;
     int max = nums[0];
     for(int i = 1; i < nums.length; i++) {
         // 状态转移方程
@@ -10009,7 +10009,7 @@ class Solution {
 
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
-        int[] res = new int[2];        
+        int[] res = new int[2];
         for(int i=0; i<nums.length; i++){
             if(map.containsKey(target-nums[i]) && map.get(target-nums[i]) != i) {
                 res[0] = i;
@@ -10025,7 +10025,7 @@ class Solution {
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
-        int[] res = new int[2];    
+        int[] res = new int[2];
         int ans;
         for(int i=0; i<nums.length; i++){
             ans = map.getOrDefault(target-nums[i], -1);
@@ -10123,7 +10123,7 @@ class Solution {
                     res.add(Arrays.asList(nums[i], nums[j], target));
                 }
             }
-        }   
+        }
         return new ArrayList(res);
     }
 }
@@ -10149,8 +10149,8 @@ class Solution {
 
         // left to tight
         for(int i=0; i<n-2; i++){
-            if (i == 0 || nums[i] != nums[i - 1] ){ 
-            // if (i == 0 || (i > 0 && nums[i] != nums[i - 1])){ 
+            if (i == 0 || nums[i] != nums[i - 1] ){
+            // if (i == 0 || (i > 0 && nums[i] != nums[i - 1])){
                 //  i j ------ k
                 int j=i+1, k=n-1;
                 while(j<k){
@@ -10167,12 +10167,12 @@ class Solution {
                     else j++;
                 }
             }
-        }   
+        }
         return res;
     }
 }
 ```
- 
+
 
 
 ---
@@ -10222,7 +10222,7 @@ Given a 1-indexed array of integers numbers that is already sorted in non-decrea
 - Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
 
 The tests are generated such that there is exactly one solution. You may not use the same element twice.
- 
+
 
 ```java
 int[] twoSum(int[] nums, int target) {
@@ -10470,7 +10470,7 @@ class Solution {
             while (right > i) sum -= nums[right--];
             if (sum == 0) return left;
         }
-        return -1;   
+        return -1;
     }
 }
 
@@ -10588,7 +10588,7 @@ Count down the Oreo.
 
 ```java
 class Run {
-    public static int test(String word) {  
+    public static int test(String word) {
         int count_o = 0, count_re = 0;
         int original = 0, count = 0;
         int point = 0;
@@ -10605,18 +10605,18 @@ class Run {
                 count_o++;
                 point++;
             }
-        }   
+        }
         // pair o is more than re, only care about o/2
-        if (count_o/2 - count_re>=0){  
+        if (count_o/2 - count_re>=0){
             count = count + count_o/2 + count_o%2;
         }
         // re is more than pair o, only care about re
         else count = count + count_re;
 
         return count;
-    }   
+    }
 
-    public static void main(String[] args) {   
+    public static void main(String[] args) {
         System.out.println("correct ans: 1 -> " + "my: " + test("o"));
         System.out.println("correct ans: 2 -> " + "my: " + test("ooo"));
         System.out.println("correct ans: 4 -> " + "my: " + test("rererereo"));
@@ -10894,7 +10894,7 @@ Output: [3,4]
         int res = -1;
         int l = 0, r = nums.length - 1;
         while(l <= r){
-            int m = (l + r) / 2;            
+            int m = (l + r) / 2;
             if(nums[m] <= target) l = m + 1;
             else r = m - 1;
             if(nums[m] == target) res = m;
@@ -11651,13 +11651,13 @@ Output: 49
 ```java
 // Time Complexity: O(n^2)
 // Space Complexity: O(1)
-public int maxArea(int[] height) {  
+public int maxArea(int[] height) {
         int max = 0;
         for(int i=0;i<height.length-1; i++) {
             int curxa = i, curya=height[i];
             for(int j=i+1; j<height.length; j++) {
                 int curxb = j, curyb=height[j];
-                max = Math.max(max, (curxb-curxa) * Math.min(curya,curyb));   
+                max = Math.max(max, (curxb-curxa) * Math.min(curya,curyb));
             }
         }
         return max;
@@ -11934,7 +11934,7 @@ int removeDuplicates(int[] nums) {
 // Runtime: 1 ms, faster than 82.01% of Java online submissions for Remove Duplicates from Sorted Array.
 // Memory Usage: 44.3 MB, less than 23.95% of Java online submissions for Remove Duplicates from Sorted Array.
 int removeDuplicates(int[] nums) {
-    if (nums == null) throw new IllegalArgumentException("Input is invalid");  
+    if (nums == null) throw new IllegalArgumentException("Input is invalid");
     if (nums.length <= 1) return nums.length;
     int slow = 0;
     for(int i=1; i<nums.length; i++){
@@ -12056,7 +12056,7 @@ Output: 5, nums = [1,1,2,2,3,_]
  * N = Length of input array.
  */
 public int removeDuplicates(int[] nums) {
-    if (nums == null) throw new IllegalArgumentException("Input array is null");  
+    if (nums == null) throw new IllegalArgumentException("Input array is null");
     if (nums.length <= 2) return nums.length;
     int insertPos = 1;
     for (int i = 2; i < nums.length; i++) {
@@ -12090,7 +12090,7 @@ class Solution {
     }
     public int removeDuplicatesMoreThanK(int[] nums, int k) {
         if (nums == null || k < 0) throw new IllegalArgumentException("Invalid Input");
-        if (k == 0) return 0;  
+        if (k == 0) return 0;
         if (nums.length <= k) return nums.length;
         int insertPos = k - 1;
         for (int i = k; i < nums.length; i++) {
@@ -12614,7 +12614,7 @@ class Solution {
         }
         return count;
     }
-    public int bs(int[] arr2, int lo, int hi , int value) {  
+    public int bs(int[] arr2, int lo, int hi , int value) {
         while(lo>hi) return Integer.MAX_VALUE;
         int mid = (lo + hi)/2;
         int dis=Math.abs(arr2[mid] - value);
@@ -12669,7 +12669,7 @@ class Solution {
         }
         return count;
     }
-    public boolean outband(int[] arr2, int j, int min, int max) {  
+    public boolean outband(int[] arr2, int j, int min, int max) {
         return j==arr2.length || !(min<=arr2[j] && arr2[j]<=max);
     }
 }
@@ -13305,8 +13305,8 @@ class Solution {
             while(start<=end){
                 if(row[start] == row[end]){
                     row[start] ^= 1; // XOR operate
-                    row[end] = row[start];    
-                }                
+                    row[end] = row[start];
+                }
                 start++;
                 end--;
             }
@@ -13388,7 +13388,7 @@ Output: false
 
 
 #### +++++ Brute-Force
- 
+
 
 ```java
 // Runtime: 1263 ms, faster than 5.01% of Java online submissions for Valid Palindrome.
@@ -13398,18 +13398,18 @@ Output: false
 class Solution {
     public boolean isPalindrome(String s) {
         s = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();   // mose time consumming.
-        int r=0, l=s.length()-1;  
-        while(r<l){ 
+        int r=0, l=s.length()-1;
+        while(r<l){
             if(s.charAt(r)==s.charAt(l)){
                 r++; l--;
             }
             else return false;
-        } 
+        }
         return true;
     }
 }
 ```
- 
+
 
 
 ```java
@@ -13417,7 +13417,7 @@ class Solution {
 // Space: O(N)
 public boolean isPalindrome(String s) {
     s = s.toLowerCase(); // for later comparisons
-    int idx = 0;  
+    int idx = 0;
     // remove non-letter character
     while (idx < s.length()) {
         char ch = s.charAt(idx);
@@ -13434,7 +13434,7 @@ public boolean isPalindrome(String s) {
     }
     return true;
 }
-``` 
+```
 
 
 #### +++++ `2 pointer + (x <= y && !Character.isLetterOrDigit(s.charAt(x)) )` best
@@ -13594,7 +13594,7 @@ class Solution {
 
     private boolean validSubPalindrome(String s, int lo, int hi, boolean chance) {
         // base case
-        if (lo >= hi) return true;  
+        if (lo >= hi) return true;
         if (s.charAt(lo) != s.charAt(hi)) {
             if (chance) {
                 return validSubPalindrome(s, lo + 1, hi, false) || validSubPalindrome(s, lo, hi - 1, false);
@@ -13616,7 +13616,7 @@ class Solution {
     public boolean isPalindrome(String s, int x, int y, boolean chance){
         while(x < y){
             if(s.charAt(x) != s.charAt(y)){
-                if(!chance) return false;  
+                if(!chance) return false;
                 return isPalindrome(s, x + 1, y, false) || isPalindrome(s, x, y - 1, false);
             }
             x++;
@@ -13943,7 +13943,7 @@ class Solution {
         String[] str = s.split(" ");
         StringBuilder sb = new StringBuilder("");
         for(String wd : str) sb.append(" ").append(reverse(wd));
-        return sb.toString().substring(1);        
+        return sb.toString().substring(1);
     }
     public String reverse(String s) {
         StringBuilder sb = new StringBuilder(s);
@@ -13963,7 +13963,7 @@ class Solution {
                 left ++;
                 right --;
             }
-            array[i] = a;    
+            array[i] = a;
         }
         return String.join(" ", array);
     }
@@ -14094,11 +14094,11 @@ class Solution {
         int arr[]=new int[A.length];
         int j=0, k=A.length-1;
         for(int i=0;i<A.length;i++) {
-            if(A[i]%2==0) {   
+            if(A[i]%2==0) {
                 arr[j]=A[i];
                 j++;
             }
-            else {   
+            else {
                 arr[k]=A[i];
                 k--;
             }
@@ -14258,10 +14258,10 @@ class Solution {
         int l=0, r=nums.length-1;
         for(int i=nums.length-1; i>=0 ; i--){
             if(Math.abs(nums[l]) > Math.abs(nums[r])) {
-                res[i] = nums[l]*nums[l++];  
+                res[i] = nums[l]*nums[l++];
             }
             else {
-                res[i] = nums[r]*nums[r--];  
+                res[i] = nums[r]*nums[r--];
             }
         }
         return res;
@@ -14606,7 +14606,7 @@ class Solution {
         if (haystack == null || needle == null) {
             throw new IllegalArgumentException("Input strings are null");
         }
-        if (needle.isEmpty() || haystack.equals(needle)) return 0;       
+        if (needle.isEmpty() || haystack.equals(needle)) return 0;
 
         int hLen = haystack.length();
         int nLen = needle.length();
@@ -14868,15 +14868,15 @@ class Solution {
 // S: O(1)
 class Solution {
     public boolean backspaceCompare(String s, String t) {
-        int pointers = s.length()-1;        
+        int pointers = s.length()-1;
         int pointert = t.length()-1;
         while(pointers >= 0 || pointert >= 0){
-            pointers = movePointer(s, pointers);          
+            pointers = movePointer(s, pointers);
             pointert = movePointer(t, pointert);
             if(pointers<0 && pointert<0) return true;
             if(pointers<0 || pointert<0) return false;
             if(s.charAt(pointers) != t.charAt(pointert)) return false;
-            pointers--;            
+            pointers--;
             pointert--;
         }
 	    return true;
@@ -14934,13 +14934,13 @@ class Solution {
         List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
         char[] str = s.toCharArray();
         while(x<y){
-            if(!vowels.contains(str[x])) x++;            
+            if(!vowels.contains(str[x])) x++;
             if(!vowels.contains(str[y])) y--;
             if(vowels.contains(str[x]) && vowels.contains(str[y])){
                 char temp = str[x];
                 str[x] = str[y];
                 str[y] = temp;
-                x++;           
+                x++;
                 y--;
             }
         }
@@ -14956,12 +14956,12 @@ class Solution {
         List<Character> vowels = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
         char[] str = s.toCharArray();
         while(x<y){
-            while (x<y && !vowels.contains(str[x])) x++;            
-            while (x<y && !vowels.contains(str[y])) y--;  
+            while (x<y && !vowels.contains(str[x])) x++;
+            while (x<y && !vowels.contains(str[y])) y--;
             char temp = str[x];
             str[x] = str[y];
             str[y] = temp;
-            x++;           
+            x++;
             y--;
         }
         return new String(str);
@@ -14990,12 +14990,12 @@ class Solution {
 
         char[] str = s.toCharArray();
         while(x<y){
-            while (x<y && !vowels.contains(str[x])) x++;            
-            while (x<y && !vowels.contains(str[y])) y--;  
+            while (x<y && !vowels.contains(str[x])) x++;
+            while (x<y && !vowels.contains(str[y])) y--;
             char temp = str[x];
             str[x] = str[y];
             str[y] = temp;
-            x++;           
+            x++;
             y--;
         }
         return new String(str);
@@ -15575,9 +15575,9 @@ void int_to_bin(int num) {
 
 ---
 
-### 268. Missing Number (Easy) 
+### 268. Missing Number (Easy)
 
-Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array. 
+Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 
 Example 1:
 Input: nums = [3,0,1]
@@ -15596,7 +15596,7 @@ Explanation: n = 2 since there are 2 numbers, so all numbers are in the range [0
 #### SUM
 
 
-#### Binary Search 
+#### Binary Search
 
 ```java
 
@@ -15779,7 +15779,7 @@ class Solution {
         return xor;
     }
 }
- 
+
 
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Sum of Two Integers.
 // Memory Usage: 40.9 MB, less than 41.89% of Java online submissions for Sum of Two Integers.

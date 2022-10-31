@@ -15,8 +15,8 @@ image:
 
 # bacis
 
-- open source web server scanner 
-- scans for `malicious ﬁles` and `CGIs` on a variety of servers. 
+- open source web server scanner
+- scans for `malicious ﬁles` and `CGIs` on a variety of servers.
 - Perl-based vulnerability tool that scans Websleuth screen rapidly
 - detectable when it operates.
 

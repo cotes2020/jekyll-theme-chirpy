@@ -115,9 +115,9 @@ http://natas2.natas.labs.overthewire.org/files/. see a page displayed;
 
 Index of /files
 [ICO]	Name	Last modified	Size	Description
-[PARENTDIR]	Parent Directory	 	-	 
-[IMG]	pixel.png	2016-12-15 16:07	303	 
-[TXT]	users.txt	2016-12-20 05:15	145	 
+[PARENTDIR]	Parent Directory	 	-
+[IMG]	pixel.png	2016-12-15 16:07	303
+[TXT]	users.txt	2016-12-20 05:15	145
 -------------------------------------------------------------------
 open in new Windows
 # username:password
@@ -158,8 +158,8 @@ Disallow: /s3cr3t/
 http://natas3.natas.labs.overthewire.org/s3cr3t/.
 Index of /s3cr3t
 [ICO]	Name	Last modified	Size	Description
-[PARENTDIR]	Parent Directory	 	-	 
-[TXT]	users.txt	2016-12-20 05:15	40	 
+[PARENTDIR]	Parent Directory	 	-
+[TXT]	users.txt	2016-12-20 05:15	40
 
 natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
 ```

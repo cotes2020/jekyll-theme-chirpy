@@ -13,19 +13,19 @@ class Vertex:
         self.color = 'white'
         self.distance = 0
         self.pred = None
-    
+
     def __str__(self) -> str:
         return str(self.id) + ' connectedTo: ' + str([x.id for x in self.connectedTo])
 
     def addNeighbor(self, nbr, weight=0):
         self.connectedTo[nbr] = weight
-    
+
     def getConnections(self):
         return self.connectedTo.keys()
 
     def getId(self):
         return self.id
-    
+
     def getWeight(self, nbr):
         return self.connectedTo[nbr]
 
@@ -35,14 +35,14 @@ class Vertex:
 
     def getColor(self):
         return self.color
-    
+
     def setDistance(self, number):
         self.distance = number
         return self.distance
-    
+
     def getDistance(self):
         return self.distance
-    
+
     def setPred(self, pred):
         self.pred = pred
         return self.pred
@@ -63,36 +63,36 @@ class GraphyAM:
 
     def getIndex(self, key):
         if key not in self.vertList.keys():
-            print("Vertex {0} not present in Graph.".format(key))
+            print('Vertex {0} not present in Graph.'.format(key))
             index = -1
         else:
             newVertex = self.vertList[key]
         return newVertex
-    
+
     # {"id":vertex}
     def addVertex(self, key):
         if key not in self.vertList.keys():
-            print("Vertex {0} not present in Graph, adding it automatically.".format(key))
+            print('Vertex {0} not present in Graph, adding it automatically.'.format(key))
             newVertex = Vertex(key)
             self.vertList[key] = newVertex
             self.numVertices += 1
         else:
             newVertex = self.vertList[key]
         return newVertex
-    
+
     def getVertex(self, n):
         if n in self.vertList:
             return self.vertList[n]
         else: return None
-    
+
     def getVertices(self):
         # returns the names of all of the vertices in the graph
         return self.vertList.keys()
-    
+
     def addEdge(self, f,t, weight=0):
-        if f not in self.vertList: 
+        if f not in self.vertList:
             newVertex=self.addVertex(f)
-        if t not in self.vertList: 
+        if t not in self.vertList:
             newVertex=self.addVertex(t)
         # action on the Vertex property
         fvert=self.getVertex(f)
@@ -109,25 +109,25 @@ class GraphyAM:
             if tvert.id == key:
                 indexT = n
             n+=1
-        print("indexF", indexF, "indexT", indexT)
+        print('indexF', indexF, 'indexT', indexT)
         self.am[indexT][indexF] = weight
-    
+
     def print_graph(self):
-        print("\n")
+        print('\n')
         name_str = ''
         for key in self.vertList.keys():
-            name_str += key + ' ,' 
-        name_list = name_str.replace(" ,", "")
+            name_str += key + ' ,'
+        name_list = name_str.replace(' ,', '')
         print(name_list)
         row = 0
-        print("  " , name_str)
+        print('  ' , name_str)
         for i in self.am:
             # print(row)
             if row < self.numVertices:
                 print(name_list[row], i)
                 row += 1
             else:
-                print("0", i)
+                print('0', i)
 
 # g = GraphyAM()
 # # g.addVertex('A')
@@ -176,44 +176,44 @@ class GraphyAL:
 
     def __contains__(self, n):
         return n in self.vertList
-    
+
     # {"id":vertex}
     def addVertex(self, key):
         if key not in self.vertList.keys():
-            print("Vertex {0} not present in Graph, adding it automatically.".format(key))
+            print('Vertex {0} not present in Graph, adding it automatically.'.format(key))
             newVertex = Vertex(key)
             self.vertList[key] = newVertex
             self.numVertices += 1
         return self.vertList[key]
-    
+
     def getVertex(self, n):
         if n in self.vertList.keys():
             return n
         else: return None
-    
+
     def getVertices(self):
         # returns the names of all of the vertices in the graph
         return self.vertList.keys()
-    
+
     def addEdge(self, f,t, weight=0):
-        if f not in self.vertList.keys(): 
+        if f not in self.vertList.keys():
             fvert = self.addVertex(f)
-        if t not in self.vertList.keys(): 
+        if t not in self.vertList.keys():
             tvert = self.addVertex(t)
         fvert = self.vertList[f]
         tvert = self.vertList[t]
         fvert.addNeighbor(tvert, weight)
-    
+
     def print_list(self):
         print(self.vertList.keys())
 
-        print("From    To      Cost")
+        print('From    To      Cost')
 
         for id in self.vertList.keys():
             vert = self.vertList[id]
             connectList = vert.connectedTo
             for i in connectList:
-                print(id, "     ", i.id, "     ", vert.getWeight(i))
+                print(id, '     ', i.id, '     ', vert.getWeight(i))
 
 # g = GraphyAL()
 # g.addEdge('1', '2', 10)
@@ -224,7 +224,7 @@ class GraphyAL:
 # g.addEdge('4', '5', 7)
 # g.addEdge('6', '4', 5)
 # g.addEdge('1', '6', 5)
-# g.addEdge('5', '6', 13) 
+# g.addEdge('5', '6', 13)
 # g.print_list()
 # print(g.vertList)
 
@@ -235,7 +235,7 @@ class GraphyAL:
 
 
 # -------------------------------------- Excercises -------------------------------------------------
-# 3. Ignoring the weights, 
+# 3. Ignoring the weights,
 # perform a breadth first search on the graph from the previous question.
 
 # from pythonds.graphs import Graph, Vertex
@@ -252,30 +252,30 @@ def bfs(start):
 
         # remove it from Q
         currentVert = vertQueue.dequeue()
-        
+
         # process if not seen
         if currentVert.getColor() == 'white':
             currentVert.setColor('gray')
-            print("=========output",currentVert.id)
+            print('=========output',currentVert.id)
             outputstr.append(currentVert.id)
 
             if currentVert != start:
                 currentVert.setDistance(currentVert.pred.distance +1)
-                print("currentVert.distance", currentVert.distance)
-                print("currentVert.pred", currentVert.pred.id)
+                print('currentVert.distance', currentVert.distance)
+                print('currentVert.pred', currentVert.pred.id)
 
             # add unseen child
             for nbr in currentVert.getConnections():
                 if nbr.getColor() == 'white':
-                    print("-----nbr.id: ", nbr.id, "not seen yet")
+                    print('-----nbr.id: ', nbr.id, 'not seen yet')
                     nbr.setPred(currentVert)
                     vertQueue.enqueue(nbr)
                 else:
-                    print("have seen:", nbr.id)
+                    print('have seen:', nbr.id)
             currentVert.setColor('black')
             print(currentVert.id, currentVert.getColor())
     print(outputstr)
- 
+
 # g = GraphyAL()
 # g.addEdge('1', '2', 10)
 # g.addEdge('1', '3', 15)
@@ -284,7 +284,7 @@ def bfs(start):
 # g.addEdge('3', '5', 15)
 # g.addEdge('4', '5', 10)
 # g.addEdge('4', '6', 7)
-# g.addEdge('5', '6', 13) 
+# g.addEdge('5', '6', 13)
 
 # # g.addEdge('A', 'B')
 # # g.addEdge('A', 'C')
@@ -302,8 +302,8 @@ def bfs(start):
 # for i in g.vertList['2'].getConnections():
 #     print(i)
 
-  
-  
+
+
 
 
 # -------------------------------------- Excercises -------------------------------------------------
@@ -343,7 +343,7 @@ def dijkstra(aGraph, start):
                 nextVert.setDistance(newDist)
                 nextVert.setPred(currentVert)
                 pq.decreaseKey(nextVert,newDist)
-    
+
 g = GraphyAL()
 g.addEdge('1', '2', 10)
 g.addEdge('1', '3', 15)
@@ -352,7 +352,7 @@ g.addEdge('2', '4', 7)
 g.addEdge('3', '5', 17)
 g.addEdge('4', '5', 10)
 g.addEdge('4', '6', 3)
-g.addEdge('5', '6', 13)  
+g.addEdge('5', '6', 13)
 g.print_list()
 
 dijkstra(g, g.vertList['1'])
@@ -368,7 +368,7 @@ print([(v.getDistance(),v.id) for v in g])
 
 
 # -------------------------------------- Excercises -------------------------------------------------
-# 8. Using Prim’s algorithm, 
+# 8. Using Prim’s algorithm,
 # find the minimum weight spanning tree for the graph shown above.
 from pythonds.graphs import PriorityQueue, Graph, Vertex
 import sys
@@ -428,5 +428,4 @@ def prim(G,start):
 # A. O(1)
 # B. O(n^3)
 # C. O(n) - The time it takes for this program to run doesn't grow linearly.
-# D. O(n^2)  
-
+# D. O(n^2)

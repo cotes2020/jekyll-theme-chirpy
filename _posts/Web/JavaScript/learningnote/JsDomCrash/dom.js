@@ -3,7 +3,7 @@
 
 // [link](https://www.youtube.com/watch?v=0ik6X4DJKCc&list=PLillGF-RfqbYE6Ik_EuXA2iZFcE082B3s)
 
-// ## DOM 
+// ## DOM
 
 // DOM, user interface.
 // - document object model
@@ -49,8 +49,8 @@
 // // innerText: no style Item Lister
 // // innerHTML: add <h3>
 
-// console.log(headerTitle.textContent);  
-// console.log(headerTitle.innerText);    
+// console.log(headerTitle.textContent);
+// console.log(headerTitle.innerText);
 // headerTitle.innerHTML = '<h3>Hello</h3>';
 
 // style change
@@ -66,7 +66,7 @@
 // items[1].style.fontWeight = 'bold';
 // items[1].style.backgroundColor = 'yellow';
 
-// // give style to all: 
+// // give style to all:
 // // Gives error
 // items.style.backgroundColor = '#f4f4f4';
 // // solution: loop
@@ -83,7 +83,7 @@
 // li[1].textContent = 'Hello 2';
 // li[1].style.fontWeight = 'bold';
 // li[1].style.backgroundColor = 'yellow';
-// // give style to all: 
+// // give style to all:
 // // Gives error
 // //items.style.backgroundColor = '#f4f4f4';
 // // solution: loop
@@ -225,7 +225,7 @@
 // //   console.log('Button clicked');
 // //   document.getElementById('header-title').textContent = 'Changed';
 // //   document.querySelector('#main').style.backgroundColor = '#f4f4f4';
-  
+
 // //   console.log(e);
 // //   console.log(e.target); // the info of the element been fired
 // //   console.log(e.target.id);
@@ -256,7 +256,7 @@
 //     // document.getElementById('output').innerHTML = '<h3>'+e.target.value+'</h3>';
 //     // document.body.style.display = 'none';
 //     // console.log(e.target.value);
-    
+
 //     // e.preventDefault();
 // }
 
@@ -264,7 +264,7 @@
 // var box = document.getElementById('box');
 
 // // different way to click
-// button.addEventListener('click', runEvent); 
+// button.addEventListener('click', runEvent);
 // button.addEventListener('dblclick', runEvent);
 // button.addEventListener('mousedown', runEvent);
 // button.addEventListener('mouseup', runEvent);   // until release the mouse
@@ -322,13 +322,13 @@
 //     // console.log(1);
 
 //     // Create input as new li element
-//     var li = document.createElement('li');  
+//     var li = document.createElement('li');
 //     // Add class
-//     li.className = 'list-group-item';       
+//     li.className = 'list-group-item';
 //     // Get input value
-//     var newItem = document.getElementById('item').value; 
+//     var newItem = document.getElementById('item').value;
 //     // Add text node with input value
-//     li.appendChild(document.createTextNode(newItem));   
+//     li.appendChild(document.createTextNode(newItem));
 
 //     // Create del button element
 //     var deleteBtn = document.createElement('button');
@@ -340,7 +340,7 @@
 //     li.appendChild(deleteBtn);
 
 //     // Append li to list
-//     itemList.appendChild(li); 
+//     itemList.appendChild(li);
 // }
 
 
@@ -360,7 +360,7 @@
 //   // convert text to lowercase
 //   var text = e.target.value.toLowerCase();
 //   // Get lis, result is array
-//   var items = itemList.getElementsByTagName('li'); 
+//   var items = itemList.getElementsByTagName('li');
 //   // Convert to an array
 //   Array.from(items).forEach(function(item){
 //     var itemName = item.firstChild.textContent;
@@ -371,5 +371,3 @@
 //     }
 //   });
 // }
-
-

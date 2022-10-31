@@ -10,7 +10,7 @@ toc: true
 
 ---
 
-# ML Lab - Titanic - Machine Learning from Disaster 
+# ML Lab - Titanic - Machine Learning from Disaster
 
 
 1. the file

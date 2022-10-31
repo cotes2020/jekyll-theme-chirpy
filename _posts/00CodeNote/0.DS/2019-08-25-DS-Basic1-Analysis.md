@@ -170,7 +170,7 @@ public static String repeat2(char c, int n) {
 - define a set of primitive operations such as the following:
   - Assigning a value to a variable
   - Following an object reference
-  - Performing an arithmetic operation (for example, adding two numbers)   
+  - Performing an arithmetic operation (for example, adding two numbers)
   - Comparing two numbers
   - Accessing a single element of an array by index
   - Calling a method
@@ -604,7 +604,7 @@ The function `𝑓(𝑛)` provides a simple representation of the dominant part 
      - Therefore, the overall time taken by this algorithm is proportional to `1+2+···+n <= n^2`
   2. `StringBuilder`
      - uses Java’s StringBuilder class, demonstrate a trend of approximately doubling each time the problem size doubles.
-     - The StringBuilder class relies on an advanced technique with a worst-case running time of `O(n)` for composing a string of length n;  
+     - The StringBuilder class relies on an advanced technique with a worst-case running time of `O(n)` for composing a string of length n;
 
 
         ```java
@@ -666,9 +666,9 @@ The function `𝑓(𝑛)` provides a simple representation of the dominant part 
             int n = x.length;                // O(1) time.
             double[ ] a = new double[n];     // O(1) time.
             for (int j=0; j < n; j++) {      // n
-                double total = 0;            
+                double total = 0;
                 for (int i=0; i <= j; i++){  // n-1
-                    total += x[i];          
+                    total += x[i];
                     a[j] = total / (j+1);
                 }
             }
@@ -741,7 +741,7 @@ while (i<=n) {             //2,3,....n
     i=i*2;                 // 设语句2的频度是t
 }
 // 2^t <= n
-// t <= log2(n)   
+// t <= log2(n)
 // 取最大值t = log2(n),
 // T(n) = O(log2n)
 
@@ -796,7 +796,7 @@ for(int i = 2; i < n; i++) {   // n
     while (i<=n) {
         i=i*2;                 // 设语句2的频度是t
     }
-}    
+}
 // T(n)=O(n * log2(N))
 ```
 
@@ -813,10 +813,10 @@ for(int i = 2; i < n; i++) {   // n
 ```java
 for (i=1;i<n;i++){            // n
     for (j=0;j<=n;j++) {      // n
-        x++;   
+        x++;
     }
 }
-// T(n) = O(n^2)    
+// T(n) = O(n^2)
 ```
 
 
@@ -829,7 +829,7 @@ for (i=1;i<n;i++){            // n
 for(i=0;i<n;i++){           // i=m
     for(j=0;j<i;j++){       // j=(m-1)*m
         for(k=0;k<j;k++)    // k=(m-1)m-1
-            x=x+2;  
+            x=x+2;
     }
 }
 ```

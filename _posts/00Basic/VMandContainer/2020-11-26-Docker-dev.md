@@ -60,7 +60,7 @@ FROM ubuntu:18.04
 COPY . /app
 RUN make /app
     CMD python /app/app.py
-```    
+```
 
 Each instruction creates one layer:
 
@@ -99,7 +99,7 @@ Refer to [Processes](https://12factor.net/processes) under _The Twelve-factor Ap
 >     echo "hello" > hello
 >     echo -e "FROM busybox\nCOPY /hello /\nRUN cat /hello" > Dockerfile
 >     docker build -t helloapp:v1 .
->     
+>
 >
 > Move `Dockerfile` and `hello` into separate directories and build a second version of the image (without relying on cache from the last build).
 > Use `-f` to point to the Dockerfile and specify the directory of the build context:
@@ -107,7 +107,7 @@ Refer to [Processes](https://12factor.net/processes) under _The Twelve-factor Ap
 >     mkdir -p dockerfiles context
 >     mv Dockerfile dockerfiles && mv hello context
 >     docker build --no-cache -t helloapp:v2 -f dockerfiles/Dockerfile context
->     
+>
 
 Inadvertently including files that are not necessary for building an image results in a larger build context and larger image size.
 - This can increase the time to build the image, time to pull and push it, and the container runtime size.
@@ -115,7 +115,7 @@ Inadvertently including files that are not necessary for building an image resul
 
 ```
     Sending build context to Docker daemon  187.8MB
-```    
+```
 
 
 
@@ -135,7 +135,7 @@ Docker has the ability to build images by piping `Dockerfile` through `stdin` wi
 >     FROM busybox
 >     RUN echo "hello world"
 >     EOF
->     
+>
 >
 > You can substitute the examples with the preferred approach, or the approach that best fits the use-case.
 
@@ -146,7 +146,7 @@ Docker has the ability to build images by piping `Dockerfile` through `stdin` wi
 Use this syntax to build an image using a `Dockerfile` from `stdin`, without sending additional files as build context. The hyphen (`-`) takes the position of the `PATH`, and instructs Docker to read the build context (which only contains a `Dockerfile`) from `stdin` instead of a directory:
 ```
     docker build [OPTIONS] -
-```    
+```
 
 The following example builds an image using a `Dockerfile` that is passed through `stdin`. No files are sent as build context to the daemon.
 
@@ -155,7 +155,7 @@ The following example builds an image using a `Dockerfile` that is passed throug
 FROM busybox
 RUN echo "hello world"
     EOF
-```    
+```
 
 Omitting the build context can be useful in situations where the `Dockerfile` does not require files to be copied into the image, and improves the build-speed, as no files are sent to the daemon.
 
@@ -166,21 +166,21 @@ If you want to improve the build-speed by excluding _some_ files from the build-
 >     # create a directory to work in
 >     mkdir example
 >     cd example
->     
+>
 >     # create an example file
 >     touch somefile.txt
->     
+>
 >     docker build -t myimage:latest -<<EOF
 >     FROM busybox
 >    COPY somefile.txt .
 >     RUN cat /somefile.txt
 >     EOF
->     
+>
 >     # observe that the build fails
 >     ...
 >     Step 2/3 : COPY somefile.txt .
 >    COPY failed: stat /var/lib/docker/tmp/docker-builder249218248/somefile.txt: no such file or directory
->     
+>
 
 #### Build from a local build context, using a Dockerfile from stdin
 
@@ -208,7 +208,7 @@ FROM busybox
 COPY somefile.txt .
 RUN cat /somefile.txt
     EOF
-```    
+```
 
 #### Build from a remote build context, using a Dockerfile from stdin
 
@@ -226,7 +226,7 @@ The example below builds an image using a `Dockerfile` from `stdin`, and adds th
 FROM busybox
 COPY hello.c .
     EOF
-```    
+```
 
 > **Under the hood**
 >
@@ -280,7 +280,7 @@ FROM scratch
 COPY --from=build /bin/project /bin/project
     ENTRYPOINT ["/bin/project"]
     CMD ["--help"]
-```    
+```
 
 ### Don’t install unnecessary packages
 
@@ -328,7 +328,7 @@ RUN apt-get update && apt-get install -y \
       subversion \
       && rm -rf /var/lib/apt/lists/*
 
- ```   
+ ```
 
 ### Leverage build cache
 
@@ -377,20 +377,20 @@ In most other cases, `CMD` should be given an interactive shell, such as bash, p
 - Using this form means that when you execute something like `docker run -it python`, you’ll get dropped into a usable shell, ready to go.
 - `CMD` should rarely be used in the manner of `CMD ["param", "param"]` in conjunction with [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#entrypoint), unless you and the expected users are already quite familiar with how `ENTRYPOINT` works.
 
-```dockerfile 
+```dockerfile
 # The CMD instruction has three forms:
 
 CMD ["executable","app1", "app2"…]
 # exec form, this is the preferred form
 
-CMD ["param1","param2"] 
+CMD ["param1","param2"]
 CMD ["apache2","-DFOREGROUND"]
 CMD ["perl", "-de0"]
 CMD ["python"]
 CMD ["php", "-a"]
 # as default parameters to ENTRYPOINT
 
-CMD command param1 param2 
+CMD command param1 param2
 # shell form
 ```
 
@@ -401,19 +401,19 @@ CMD command param1 param2
 
 [EXPOSE instruction](https://docs.docker.com/engine/reference/builder/#expose)
 
-- The `EXPOSE` instruction 
-  - indicates the ports on which a container listens for connections. 
+- The `EXPOSE` instruction
+  - indicates the ports on which a container listens for connections.
   - informs Docker that the container listens on the specified network ports at runtime.
 
 - can specify whether the port listens on TCP or UDP, and the default is TCP if the protocol is not specified.
 
 
-- Consequently, you should use the common, traditional port for the application. 
+- Consequently, you should use the common, traditional port for the application.
   - For example,
     - an image containing the Apache web server would use `EXPOSE 80`,
     - an image containing MongoDB would use `EXPOSE 27017` and so on.
 
-- For external access, the users can execute `docker run` with a flag indicating how to map the specified port to the port of their choice. 
+- For external access, the users can execute `docker run` with a flag indicating how to map the specified port to the port of their choice.
 - For container linking, Docker provides environment variables for the path from the recipient container back to the source (ie, `MYSQL_PORT_3306_TCP`).
 
 ```dockerfile
@@ -425,7 +425,7 @@ EXPOSE 80/tcp
 EXPOSE 80/udp
 ```
 
-Regardless of the `EXPOSE` settings, can override them at runtime by using the `-p` flag. 
+Regardless of the `EXPOSE` settings, can override them at runtime by using the `-p` flag.
 
 ```bash
 $ docker run -p 80:80/tcp -p 80:80/udp
@@ -439,14 +439,14 @@ $ docker run -p 80:80/tcp -p 80:80/udp
 [ENV instruction](https://docs.docker.com/engine/reference/builder/#env)
 
 - To make new software easier to run
-  - use `ENV` to update the `PATH` environment variable for the software the container installs. 
+  - use `ENV` to update the `PATH` environment variable for the software the container installs.
   - For example
   - `ENV PATH=/usr/local/nginx/bin:$PATH` ensures that `CMD ["nginx"]` just works.
 
-- provide required environment variables specific to services you wish to containerize, 
+- provide required environment variables specific to services you wish to containerize,
   - such as Postgres’s `PGDATA`.
 
-- set commonly used version numbers 
+- set commonly used version numbers
   - so that version bumps are easier to maintain
 
 ```dockerfile
@@ -460,8 +460,8 @@ ENV PATH=/usr/local/postgres-$PG_MAJOR/bin:$PATH
 - Similar to having constant variables in a program (as opposed to hard-coding values)
   - this approach lets you change a single `ENV` instruction to auto-magically bump the version of the software in the container.
 
-  - Each `ENV` line creates a new intermediate layer, just like `RUN` commands. 
-  - even unset the environment variable in a future layer, it still persists in this layer and its value can’t be dumped. 
+  - Each `ENV` line creates a new intermediate layer, just like `RUN` commands.
+  - even unset the environment variable in a future layer, it still persists in this layer and its value can’t be dumped.
 
 ```dockerfile
 FROM alpine
@@ -475,9 +475,9 @@ $ docker run --rm test sh -c 'echo $ADMIN_USER'
 ```
 
 **unset**
-- To really unset the environment variable, use a `RUN` command with shell commands, to set, use, and unset the variable all in a single layer. 
-- You can separate the commands with `;` or `&&`. If you use the second method, and one of the commands fails, the `docker build` also fails. This is usually a good idea. 
-- Using `\` as a line continuation character for Linux Dockerfiles improves readability. 
+- To really unset the environment variable, use a `RUN` command with shell commands, to set, use, and unset the variable all in a single layer.
+- You can separate the commands with `;` or `&&`. If you use the second method, and one of the commands fails, the `docker build` also fails. This is usually a good idea.
+- Using `\` as a line continuation character for Linux Dockerfiles improves readability.
 - You could also put all of the commands into a shell script and have the `RUN` command just run that shell script.
 
 ```dockerfile
@@ -495,7 +495,7 @@ $ docker run --rm test sh -c 'echo $ADMIN_USER'
 
 ### ADD or COPY
 
-Although `ADD` and `COPY` are functionally similar, generally speaking, `COPY` is preferred. 
+Although `ADD` and `COPY` are functionally similar, generally speaking, `COPY` is preferred.
 - `COPY` is more transparent than `ADD`.
 - `COPY` only supports the basic copying of local files into the container
 - `ADD` has some features (like local-only tar extraction and remote URL support) that are not immediately obvious.
@@ -503,8 +503,8 @@ Although `ADD` and `COPY` are functionally similar, generally speaking, `COPY` i
 
 **COPY**
 - copies new files or directories from `<src>` and adds them to the filesystem of the container at the path `<dest>`.
-- have multiple `Dockerfile` steps that use different files from the context, `COPY` them individually, rather than all at once. 
-- ensures that each step’s build cache is only invalidated (forcing the step to be re-run) if the specifically required files change. 
+- have multiple `Dockerfile` steps that use different files from the context, `COPY` them individually, rather than all at once.
+- ensures that each step’s build cache is only invalidated (forcing the step to be re-run) if the specifically required files change.
 
 
 ```dockerfile
@@ -541,8 +541,8 @@ COPY arr[[]0].txt /mydir/
 
 
 **ADD**
-- Because image size matters, using `ADD` to fetch packages from remote URLs is strongly discouraged; you should use `curl` or `wget` instead. 
-- That way you can delete the files you no longer need after they’ve been extracted and you don’t have to add another layer in the image. 
+- Because image size matters, using `ADD` to fetch packages from remote URLs is strongly discouraged; you should use `curl` or `wget` instead.
+- That way you can delete the files you no longer need after they’ve been extracted and you don’t have to add another layer in the image.
 
 For example, you should avoid doing things like:
 ```dockerfile
@@ -576,7 +576,7 @@ For other items (files, directories) that do not require `ADD`’s tar auto-extr
 
 ```dockerfile
 ENTRYPOINT ["s3cmd"]
-CMD ["--help"] 
+CMD ["--help"]
 
 # Now the image can be run like this to show the command’s help:
 $ docker run s3cmd
@@ -604,7 +604,7 @@ $ docker run s3cmd ls s3://mybucket
     exec gosu postgres "$@"
     fi
 
-    exec "$@" 
+    exec "$@"
 
 # > Configure app as PID 1
 # >
@@ -640,8 +640,8 @@ Whenever possible, use current official images as the basis for the images.
 - recommend the [Alpine image](https://hub.docker.com/_/alpine/) as it is tightly controlled and small in size (currently under 5 MB), while still being a full Linux distribution.
 
 ```dockerfile
-FROM [--platform=<platform>] <image> [AS <name>] 
-FROM [--platform=<platform>] <image>[:<tag>] [AS <name>] 
+FROM [--platform=<platform>] <image> [AS <name>]
+FROM [--platform=<platform>] <image>[:<tag>] [AS <name>]
 FROM [--platform=<platform>] <image>[@<digest>] [AS <name>]
 ```
 
@@ -694,10 +694,10 @@ See [Understanding object labels](https://docs.docker.com/config/labels-custom-m
 # RUN has 2 forms:
 
 # shell form, the command is run in a shell
-# which by default is 
-# /bin/sh -c on Linux 
+# which by default is
+# /bin/sh -c on Linux
 # cmd /S /C on Win
-RUN <command> 
+RUN <command>
 RUN /bin/bash -c 'source $HOME/.bashrc; \
 echo $HOME'
 # equivalent to this single line:
@@ -705,7 +705,7 @@ RUN /bin/bash -c 'source $HOME/.bashrc; echo $HOME'
 
 
 # exec form
-RUN ["executable", "param1", "param2"] 
+RUN ["executable", "param1", "param2"]
 RUN ["/bin/bash", "-c", "echo hello"]
 ```
 
@@ -735,7 +735,7 @@ RUN apt-get update && apt-get install -y \
 
 - Using `apt-get update` alone in a `RUN` statement causes caching issues and subsequent `apt-get install` instructions fail.
 
-```dockerfile 
+```dockerfile
 FROM ubuntu:18.04
 RUN apt-get update
 RUN apt-get install -y curl
@@ -748,7 +748,7 @@ RUN apt-get update
 RUN apt-get install -y curl nginx
 
 
-# Docker sees the initial and modified instructions as identical 
+# Docker sees the initial and modified instructions as identical
 # it reuses the cache from previous steps.
 # As a result the `apt-get update` is _not_ executed because the build uses the cached version.
 # Because the `apt-get update` is not run, potentially get an outdated version of the `curl` and `nginx` packages.
@@ -756,10 +756,10 @@ RUN apt-get install -y curl nginx
 
 
 **cache busting**
-- Using `RUN apt-get update && apt-get install -y` ensures the Dockerfile installs the latest package versions with no further coding or manual intervention.  
+- Using `RUN apt-get update && apt-get install -y` ensures the Dockerfile installs the latest package versions with no further coding or manual intervention.
 
 **version pinning**
-- You can also achieve cache-busting by specifying a package version. 
+- You can also achieve cache-busting by specifying a package version.
 - Version pinning forces the build to retrieve a particular version regardless of what’s in the cache. This technique can also reduce failures due to unanticipated changes in required packages.
 - Below is a well-formed `RUN` instruction that demonstrates all the `apt-get` recommendations.
 
@@ -790,8 +790,8 @@ RUN apt-get update && apt-get install -y \
 
 - The `s3cmd` argument specifies a version `1.1.*`. If the image previously used an older version, specifying the new one causes a cache bust of `apt-get update` and ensures the installation of the new version. Listing packages on each line can also prevent mistakes in package duplication.
 
-- when clean up the apt cache by removing `/var/lib/apt/lists` 
-  - it reduces the image size, since the apt cache is not stored in a layer. 
+- when clean up the apt cache by removing `/var/lib/apt/lists`
+  - it reduces the image size, since the apt cache is not stored in a layer.
   - Since the `RUN` statement starts with `apt-get update`, the package cache is always refreshed prior to `apt-get install`.
 
 > Official Debian and Ubuntu images [automatically run `apt-get clean`](https://github.com/moby/moby/blob/03e2923e42446dbb830c654d0eec323a0b4ef02a/contrib/mkimage/debootstrap#L82-L105), so explicit invocation is not required.
@@ -820,7 +820,7 @@ RUN set -o pipefail && wget -O - https://some.site | wc -l > /number
 > In cases such as the `dash` shell on Debian-based images, consider using the _exec_ form of `RUN` to explicitly choose a shell that does support the `pipefail` option. For example:
 >
 >     RUN ["/bin/bash", "-c", "set -o pipefail && wget -O - https://some.site | wc -l > /number"]
->     
+>
 
 
 
@@ -849,20 +849,20 @@ Lastly, to reduce layers and complexity, avoid switching `USER` back and forth f
 
 ### WORKDIR
 
-For clarity and reliability, always use absolute paths for the `WORKDIR`. 
+For clarity and reliability, always use absolute paths for the `WORKDIR`.
 
 - use `WORKDIR` instead of proliferating instructions like `RUN cd … && do-something`, which are hard to read, troubleshoot, and maintain.
-  - it sets the working directory for any `RUN, CMD, ENTRYPOINT, COPY and ADD` instructions that follow it in the Dockerfile. 
+  - it sets the working directory for any `RUN, CMD, ENTRYPOINT, COPY and ADD` instructions that follow it in the Dockerfile.
   - If the WORKDIR doesn’t exist, it will be created even if it’s not used in any subsequent Dockerfile instruction.
 
 ```dockerfile
 WORKDIR /path/to/workdir
 ```
 
-- can be used multiple times in a Dockerfile. 
-  - If a relative path is provided, it will be relative to the path of the previous WORKDIR instruction. 
+- can be used multiple times in a Dockerfile.
+  - If a relative path is provided, it will be relative to the path of the previous WORKDIR instruction.
 
-```dockerfile 
+```dockerfile
 WORKDIR /a
 WORKDIR b
 WORKDIR c
@@ -870,19 +870,19 @@ RUN pwd
 # /a/b/c
 ```
 
-- can resolve environment variables previously set using `ENV`. 
-  - You can only use environment variables explicitly set in the Dockerfile. 
+- can resolve environment variables previously set using `ENV`.
+  - You can only use environment variables explicitly set in the Dockerfile.
 
-```dockerfile 
+```dockerfile
 ENV DIRPATH=/path
 WORKDIR $DIRPATH/$DIRNAME
 RUN pwd
 # /path/$DIRNAME
 ```
 
-- If not specified, the default working directory is `/`. 
+- If not specified, the default working directory is `/`.
   - In practice, if you aren’t building a Dockerfile from scratch (FROM scratch), the `WORKDIR` may likely be set by the base image you’re using.
-  - to avoid unintended operations in unknown directories, it is best practice to set `WORKDIR` explicitly. 
+  - to avoid unintended operations in unknown directories, it is best practice to set `WORKDIR` explicitly.
 
 
 

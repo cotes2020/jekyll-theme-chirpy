@@ -9,11 +9,11 @@
 
 # SOX Compliance?
 
-In 2002, Congress passed the Sarbanes-Oxley Act, named after its sponsors Senator Paul Sabanes (D-MD) and Representative Michael G. Oxley (R-OOH-4). 
-- Instituted “to protect investors by improving the accuracy and reliability of corporate disclosures made pursuant to the securities laws,” 
+In 2002, Congress passed the Sarbanes-Oxley Act, named after its sponsors Senator Paul Sabanes (D-MD) and Representative Michael G. Oxley (R-OOH-4).
+- Instituted “to protect investors by improving the accuracy and reliability of corporate disclosures made pursuant to the securities laws,”
 - the [Sarbanes-Oxley Act](https://www.congress.gov/bill/107th-congress/house-bill/3763/text) (commonly referred to as SOX) established a stricter protocol for internal controls that affect financial reporting and security within publicly traded companies.
-- The Act passed in the wake of notorious financial scandals. 
-- Corporate giants Enron, WorldCom, and Tyco faced charges of significant fraud, with WorldCom folding in a [$104-billion-dollar bankruptcy](https://money.cnn.com/2002/12/17/news/review_scandals/). 
+- The Act passed in the wake of notorious financial scandals.
+- Corporate giants Enron, WorldCom, and Tyco faced charges of significant fraud, with WorldCom folding in a [$104-billion-dollar bankruptcy](https://money.cnn.com/2002/12/17/news/review_scandals/).
 - According to _[FiveThirtyEight](https://fivethirtyeight.com/features/why-the-housing-bubble-tanked-the-economy-and-the-tech-bubble-didnt/)_, the damages associated with the burst of the dot-com bubble beginning in 2000, an event to which many of these fraud scandals contributed, “destroyed $6.2 trillion in household wealth over the next two years.”
 
 ![sox-compliance-timeline](https://www.dnsstuff.com/wp-content/uploads/2019/06/sox-compliance-timeline-1024x535.png)
@@ -30,9 +30,9 @@ Given the massive deleterious impact of financial securities fraud in publicly t
 
 ![sox-compliance-basics](https://www.dnsstuff.com/wp-content/uploads/2019/06/sox-compliance-basics-1024x536.png)
 
-- while SOX measures seek to govern the financial operations and disclosures of corporate entities and any of their contracted financial service providers, the regulations pertain to a breadth of departments, and a few to IT. 
-- SOX reporting specifically involves IT departments because 
-  - adequate SOX internal controls **require** complete file safety and full visibility into financial record history—conditions 
+- while SOX measures seek to govern the financial operations and disclosures of corporate entities and any of their contracted financial service providers, the regulations pertain to a breadth of departments, and a few to IT.
+- SOX reporting specifically involves IT departments because
+  - adequate SOX internal controls **require** complete file safety and full visibility into financial record history—conditions
   - which **require** `each IT employee to understand his or her role in demonstrating SOX compliance`.
 
 
@@ -45,7 +45,7 @@ Given the massive deleterious impact of financial securities fraud in publicly t
 
 In a SOX IT audit
 - the IT department proves compliance by <font color=blue> providing documentation showing that its employer has met mandated financial transparency and data security thresholds </font>. 
-- To align with SOX regulation law, IT departments must be <font color=blue> familiar with the security, access privilege, and log management standards required for their financial records </font>. 
+- To align with SOX regulation law, IT departments must be <font color=blue> familiar with the security, access privilege, and log management standards required for their financial records </font>.
 
 
 The first step in cementing SOX internal controls is creating a “control environment,” which should:
@@ -53,7 +53,7 @@ The first step in cementing SOX internal controls is creating a “control envir
 2.  Strive to perform control actions that mitigate risk and ensure the inviolability and reliability of financial information.
 
 In previous cases of corporate fraud
-- organizational stakeholders had tampered with high-clearance files to intentionally misrepresent the financial status of their company 
+- organizational stakeholders had tampered with high-clearance files to intentionally misrepresent the financial status of their company
 - misleading investors and costing the stock market trillions when they had to reissue their reports.
 
 To prevent fraudulent agents (whether internal or external) from tampering with sensitive financial information in the future, SOX issued Act Sections 302 and 404 to specify the parameters of reporting regulations as they apply to IT departments.
@@ -129,11 +129,11 @@ Used properly, SOX compliance software facilitates the process of establishing i
 ### Related Posts
 
 *   [DNS, Regulatory Compliance, and You](https://www.dnsstuff.com/dns-regulatory-compliance-and-you)
-    
+
 *   [Policy Compliance or Network Configuration Management?](https://www.dnsstuff.com/risk-management-vs-network-configuration)
-    
+
 *   [What Is an IT Security Audit?](https://www.dnsstuff.com/it-security-audit)
-    
+
 
 Categories [General IT](https://www.dnsstuff.com/general-it), [Security](https://www.dnsstuff.com/security), [Systems](https://www.dnsstuff.com/systems)
 
@@ -147,25 +147,25 @@ Most Popular Posts
 ------------------
 
 *   [Best VMware Management Tools in 2021](https://www.dnsstuff.com/vmware-management-tools)
-    
+
 *   [6 Best Tools for Remote Network Monitoring and Management](https://www.dnsstuff.com/remote-network-monitoring)
-    
+
 *   [Alternatives to Riverbed SteelFusion and Competitors](https://www.dnsstuff.com/riverbed-steelfusion-competitors-alternatives)
-    
+
 *   [Centralized Log Management Solutions](https://www.dnsstuff.com/centralized-log-management-solutions)
-    
+
 *   [IT Network Visualization – Guide and Recommended Tools](https://www.dnsstuff.com/network-visualization)
-    
+
 *   [5 Essential Ticketing Software Features](https://www.dnsstuff.com/ticketing-software-features)
-    
+
 *   [All About IP Address Conflicts Guide + Recommended Tool](https://www.dnsstuff.com/ip-address-conflict)
-    
+
 *   [Windows Event Log Collecting](https://www.dnsstuff.com/windows-event-log-collecting)
-    
+
 *   [7 Best Network Diagram and Map Creators](https://www.dnsstuff.com/network-diagram-map-creator)
-    
+
 *   [Data Center Remote Monitoring Tools – Best Six Systems](https://www.dnsstuff.com/data-center-monitoring-systems)
-    
+
 
 Languages
 ---------
@@ -173,9 +173,9 @@ Languages
 *   [![English](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHzSURBVHjaYkxOP8IAB//+Mfz7w8Dwi4HhP5CcJb/n/7evb16/APL/gRFQDiAAw3JuAgAIBEDQ/iswEERjGzBQLEru97ll0g0+3HvqMn1SpqlqGsZMsZsIe0SICA5gt5a/AGIEarCPtFh+6N/ffwxA9OvP/7//QYwff/6fZahmePeB4dNHhi+fGb59Y4zyvHHmCEAAAW3YDzQYaJJ93a+vX79aVf58//69fvEPlpIfnz59+vDhw7t37968efP3b/SXL59OnjwIEEAsDP+YgY53b2b89++/awvLn98MDi2cVxl+/vl6mituCtBghi9f/v/48e/XL86krj9XzwEEEENy8g6gu22rfn78+NGs5Ofr16+ZC58+fvyYwX8rxOxXr169fPny+fPn1//93bJlBUAAsQADZMEBxj9/GBxb2P/9+S/R8u3vzxuyaX8ZHv3j8/YGms3w8ycQARmi2eE37t4ACCDGR4/uSkrKAS35B3TT////wADOgLOBIaXIyjBlwxKAAGKRXjCB0SOEaeu+/y9fMnz4AHQxCP348R/o+l+//sMZQBNLEvif3AcIIMZbty7Ly6t9ZmXl+fXj/38GoHH/UcGfP79//BBiYHjy9+8/oUkNAAHEwt1V/vI/KBY/QSISFqM/GBg+MzB8A6PfYC5EFiDAABqgW776MP0rAAAAAElFTkSuQmCC "English")English](https://www.dnsstuff.com/what-is-sox-compliance)
 
 *   © 2021 SolarWinds Worldwide, LLC. All rights reserved.   
-*   [About Us](https://www.solarwinds.com/company/home) | 
-*   [Trademarks](https://www.solarwinds.com/legal/trademarks) | 
-*   [Privacy Policy](https://www.solarwinds.com/legal/privacy) | 
+*   [About Us](https://www.solarwinds.com/company/home) |
+*   [Trademarks](https://www.solarwinds.com/legal/trademarks) |
+*   [Privacy Policy](https://www.solarwinds.com/legal/privacy) |
 *   [Terms Of Use](https://www.solarwinds.com/legal/terms)
 
 [Scroll back to top](# "Scroll back to top") \_satellite.pageBottom(); /\* <!\[CDATA\[ \*/ var click\_object = {"ajax\_url":"https:\\/\\/www.dnsstuff.com\\/wp-admin\\/admin-ajax.php"}; /\* \]\]> \*/ /\* <!\[CDATA\[ \*/ var ctcc\_vars = {"expiry":"30","method":"1","version":"1"}; /\* \]\]> \*/ /\* <!\[CDATA\[ \*/ var generatepressNavSearch = {"open":"Open Search Bar","close":"Close Search Bar"}; /\* \]\]> \*/ (function() { var expirationDate = new Date(); expirationDate.setTime( expirationDate.getTime() + 31536000 \* 1000 ); document.cookie = "pll\_language=en; expires=" + expirationDate.toUTCString() + "; path=/"; }()); jQuery(document).ready(function($){ if(!catapultReadCookie("catAccCookies")){ // If the cookie has not been set then show the bar $("html").addClass("has-cookie-bar"); $("html").addClass("cookie-bar-top-bar"); $("html").addClass("cookie-bar-bar"); // Wait for the animation on the html to end before recalculating the required top margin $("html").on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) { // code to execute after transition ends var barHeight = $('#catapult-cookie-bar').outerHeight(); $("html").css("margin-top",barHeight); $("body.admin-bar").css("margin-top",barHeight-32); // Push the body down if the admin bar is active }); } });

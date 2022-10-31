@@ -26,12 +26,12 @@ toc: true
 
 ## Pragma
 
-The `Pragma HTTP/1.0` general header is an implementation-specific header that may have various effects along the request-response chain. 
+The `Pragma HTTP/1.0` general header is an implementation-specific header that may have various effects along the request-response chain.
 
 It is used for backwards compatibility with HTTP/1.0 caches where the `Cache-Control HTTP/1.1` header is not yet present.
 
 Pragma is not specified for HTTP responses and not a reliable replacement for the general `HTTP/1.1 Cache-Control` header
-- although it does behave the same as `Cache-Control`: `no-cache`, if the` Cache-Control` header field is omitted in a request. 
+- although it does behave the same as `Cache-Control`: `no-cache`, if the` Cache-Control` header field is omitted in a request.
 - Use Pragma only for backwards compatibility with HTTP/1.0 clients.
 
 
@@ -44,7 +44,7 @@ Pragma is not specified for HTTP responses and not a reliable replacement for th
 
 ---
 
-## `WWW-Authenticate` response header 
+## `WWW-Authenticate` response header
 - `WWW-Authenticate`
   - Header type	Response `header`
   - Forbidden header name	`no`
@@ -64,10 +64,9 @@ Directives | Note
 `charset=<charset>` | Tells the client the server's prefered encoding scheme when submitting a username and password. The only allowed value is the case insensitive string "UTF-8". This does not relate to the encoding of the realm string.
 
 **Examples**
-- server response contains a WWW-Authenticate header 
+- server response contains a WWW-Authenticate header
 
 ```
 WWW-Authenticate: Basic
 WWW-Authenticate: Basic realm="Access to the staging site", charset="UTF-8"
 ```
-

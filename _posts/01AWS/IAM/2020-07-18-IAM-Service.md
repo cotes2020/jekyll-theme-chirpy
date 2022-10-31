@@ -6,54 +6,54 @@ tags: [AWS, IdenAccessManage]
 toc: true
 image:
 ---
- 
+
 [toc]
 
 ---
 
-# AWS services that work with IAM 
+# AWS services that work with IAM
 
 The AWS services listed below are grouped by their AWS product categories and include information about what IAM features they support:
 
 - **Service**
-  - choose the name of a service to view the AWS documentation about IAM authorization and access for that service. 
+  - choose the name of a service to view the AWS documentation about IAM authorization and access for that service.
 
 - **Actions**
-  - can specify individual actions in a policy. 
+  - can specify individual actions in a policy.
   - If the service does not support this feature, then **All actions** is selected in the visual editor
-  - In a JSON policy document, you must use `*` in the `Action` element. 
-     
+  - In a JSON policy document, you must use `*` in the `Action` element.
+
 - **Resource-level permissions**
-  - can use ARNs to specify individual resources in the policy. 
+  - can use ARNs to specify individual resources in the policy.
   - If the service does not support this feature, then **All resources** is chosen in the policy visual editor
-  - In a JSON policy document, you must use `*` in the `Resource` element. 
-  - Some actions, such as `List*` actions, do not support specifying an ARN because they are designed to return multiple resources. 
+  - In a JSON policy document, you must use `*` in the `Resource` element.
+  - Some actions, such as `List*` actions, do not support specifying an ARN because they are designed to return multiple resources.
   - If a service supports this feature for some resources but not others, it is indicated by yellow cells in the table. See the documentation for that service for more information.
 
 - **Resource-based policies**
-  - can attach resource-based policies to a resource within the service. 
+  - can attach resource-based policies to a resource within the service.
   - Resource-based policies include a `Principal` element to specify which IAM identities can access that resource.
 
 - **Authorization based on tags**
-  - can use [resource tags](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html) in the condition of a policy to control access to a resource in the service. 
+  - can use [resource tags](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html) in the condition of a policy to control access to a resource in the service.
   - You do this using the `aws:ResourceTag` global condition key or service-specific tags, such as `ec2:ResourceTag`
 
 - **Temporary credentials**
-  - can use short-term credentials that you obtain when you sign in using SSO, switch roles in the console, or that you generate using AWS STS in the AWS CLI or AWS API. 
-  - You can access services with a **No** value only while using your long-term IAM user credentials. 
-  - This includes a user name and password or your user access keys.  
+  - can use short-term credentials that you obtain when you sign in using SSO, switch roles in the console, or that you generate using AWS STS in the AWS CLI or AWS API.
+  - You can access services with a **No** value only while using your long-term IAM user credentials.
+  - This includes a user name and password or your user access keys.
 
-- **Service-linked roles** 
-  - A service-linked role is a special type of service role that gives the service permission to access resources in other services on your behalf. 
-  - Choose the `Yes` link to see the documentation for services that support these roles. 
-  - This column does not indicate if the service uses standard service roles.  
+- **Service-linked roles**
+  - A service-linked role is a special type of service role that gives the service permission to access resources in other services on your behalf.
+  - Choose the `Yes` link to see the documentation for services that support these roles.
+  - This column does not indicate if the service uses standard service roles.
 
 - **More information**
   - If a service doesn't fully support a feature, you can review the footnotes for an entry to view the limitations and links to related information.
-    
+
 ---
 
-## Compute services 
+## Compute services
 
 **Service** | **Actions** | **Resource-level permissions** | **Resource-based policies** | **Authorization based on tags** | **Temporary credentials** | **Service-linked roles** |
 ---|---|---|---|---|---|---
@@ -539,7 +539,7 @@ Alexa for Business | Yes | Yes | No | No | Yes | No
 [AWS Marketplace Commerce Analytics Service](https://docs.aws.amazon.com/marketplace/latest/userguidecommerce-analytics-service.html) | Yes | No | No | No | No | No
 [AWS Private Marketplace](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/api-access-control.html) | Yes | No | No | No | No | No
 [AWS Savings Plans](https://docs.aws.amazon.com/savingsplans/latest/userguide/identity-access-management.html) | Yes | Yes | No | Yes | Yes | No
- 
+
 
 
 

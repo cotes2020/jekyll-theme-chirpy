@@ -4,7 +4,7 @@ date: 2020-11-01 11:11:11 -0400
 categories: [31Linux, Sysadmin]
 tags: [Linux, Sysadmin]
 math: true
-image: 
+image:
 --- -->
 
 [toc]
@@ -22,7 +22,7 @@ Creating Aliases
   - created in the current terminal session
   - if we close this session or open a new window, aliases will not work.
 - Permanent aliases
-  - persistent no matter if the current terminal session is ended or even if the host machine is rebooted. 
+  - persistent no matter if the current terminal session is ended or even if the host machine is rebooted.
   - The aliases information has to be written and saved into the user’s `shell configuration profile file`
   - macOS: `~/.bash_profile`
   - Linux: `~/.bashrc`

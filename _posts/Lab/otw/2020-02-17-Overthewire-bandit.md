@@ -2,8 +2,8 @@
 title: Overthewire - bandit
 # author: Grace JyL
 date: 2020-02-17 11:11:11 -0400
-description: 
-excerpt_separator: 
+description:
+excerpt_separator:
 categories: [Lab, Overthewire]
 tags: [Lab, Overthewire, SSH]
 math: true
@@ -46,7 +46,7 @@ Lo termino todo~ estos son solución, pienses que si quiere verlo.
 
 ## Bandit Level 0
 Level Goal
-- log into the game using SSH.  
+- log into the game using SSH.
 - The host to which you need to connect is `bandit.labs.overthewire.org`, on port `2220`.
 - The username is `bandit0` and the password is `bandit0`.
 - Once logged in, go to the Level 1 page to find out how to beat Level 1.
@@ -57,7 +57,7 @@ $ ssh bandit0@bandit.labs.overthewire.org -p 2220
 Are you sure you want to continue connecting (yes/no)? yes
 bandit0@bandit.labs.overthewire.org's password: bandit0
 
-Linux bandit 4.18.12 x86_64 GNU/Linux              
+Linux bandit 4.18.12 x86_64 GNU/Linux
 Welcome to OverTheWire!
 
 bandit0@bandit:~$ exit
@@ -203,7 +203,7 @@ solution
 $ ssh bandit0@bandit.labs.overthewire.org -p 2220
 Are you sure you want to continue connecting (yes/no)? yes
 bandit0@bandit.labs.overthewire.org's password: bandit0
-# Linux bandit 4.18.12 x86_64 GNU/Linux              
+# Linux bandit 4.18.12 x86_64 GNU/Linux
 # Welcome to OverTheWire!
 bandit0@melinda:~$ ls
 readme
@@ -536,7 +536,7 @@ $ zcat file.bin | bzcat | zcat | tar xO | tar xO | bzcat | tar xO | file -
 
 $ zcat file.bin | bzcat | zcat | tar xO | tar xO | bzcat | tar xO | zcat | file -
 /dev/stdin: ASCII text
-$ zcat file.bin | bzcat | zcat | tar xO | tar xO | bzcat | tar xO | zcat         
+$ zcat file.bin | bzcat | zcat | tar xO | tar xO | bzcat | tar xO | zcat
 The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 # we MUST remove the created directory after we are done
 
@@ -752,7 +752,7 @@ PuTTY
 
 ```py
 $ ssh -t bandit18@bandit.labs.overthewire.org -p 2220 '/bin/bash --norc'
-bandit18@bandit.labs.overthewire.orgs password: # kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd  
+bandit18@bandit.labs.overthewire.orgs password: # kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
 
 bash-4.4$ PS1="\u@\h \w$"
 bandit18@bandit ~$
@@ -781,7 +781,7 @@ IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 ```py
 $ ssh bandit18@bandit.labs.overthewire.org -p 2220 '/bin/bash --norc'
 $ ssh bandit18@bandit.labs.overthewire.org -p 2220 'bash --norc'
-bandit18@bandit.labs.overthewire.orgs password:  # kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd  
+bandit18@bandit.labs.overthewire.orgs password:  # kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
 ls -a
 .
 ..
@@ -1024,7 +1024,7 @@ bandit23@bandit:/tmp/grace44$ nano
 # open Nano we will go ahead and write script to inject:
 
 #!/bin/bash
-cat /etc/bandit_pass/bandit24 > tmp/jhalon/pass      
+cat /etc/bandit_pass/bandit24 > tmp/jhalon/pass
 # reading the contents of the bandit24 password file (/etc/bandit_pass/bandit24)
 # and sending its output into a file that our bandit23 user account can see. (tmp/jhalon/pass)
 #Save this new script as script.sh.
@@ -1515,7 +1515,7 @@ Branch dev set up to track remote branch dev from origin.
 Switched to a new branch 'dev'
 
 $ git log
-commit 33ce2e95d9c5d6fb0a40e5ee9a2926903646b4e3  
+commit 33ce2e95d9c5d6fb0a40e5ee9a2926903646b4e3
 Author: Morla Porla <morla@overthewire.org>
 Date:   Tue Oct 16 14:00:41 2018 +0200
     add data needed for development      # 最新的版本里面有个data needed for development

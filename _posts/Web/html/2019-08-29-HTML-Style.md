@@ -15,7 +15,7 @@ tags: [HTML]
 ---
 
 ## HTML Attributes
-- ecommends lowercase in HTML, 
+- ecommends lowercase in HTML,
 - demands lowercase for stricter document types like XHTML.
 
 **The `href` Attribute**： HTML links
@@ -204,7 +204,7 @@ style sheet located in the same folder as the current page:
 
 
 1. The `id` Attribute
-  - define a specific style for **one special element**, 
+  - define a specific style for **one special element**,
   - add an `id` attribute to the element:
   - then define a style for the element with the specific `id`:
 
@@ -223,14 +223,14 @@ style sheet located in the same folder as the current page:
 
 
 2. The `class` Attribute
-   - define a style for **special types of elements**, 
+   - define a style for **special types of elements**,
    - add a `class` attribute to the element:
    - then define a style for the elements with the specific `class`:
 
     ```html
     <p class="error">I am different</p>
     <li class="foodLi"> choco </li>
-    
+
     p.error {
       color: red;
     }
@@ -263,8 +263,8 @@ p {
 
 #### `color`
 - the text color for an HTML element:
-  - 140 color name, 
-  - RGB `rgb(138,42,33)`, 
+  - 140 color name,
+  - RGB `rgb(138,42,33)`,
   - Hex value `#8A2BE2`
 ```html
 <h1 style="color:blue;">This is a heading</h1>
@@ -568,7 +568,7 @@ a:link, a:visited {
 
 a:hover, a:active {        移动到他的时候
   background-color: red;
-}   
+}
 </style>
 ```
 
@@ -693,13 +693,13 @@ float to the left
 ```
 
 
-### Image Maps `<img src="url" alt="tag" usemap="#workmap">`  
+### Image Maps `<img src="url" alt="tag" usemap="#workmap">`
 defines an image-map
 - an image with clickable areas.
 - may insert the `<map>` element anywhere,.
 
 ```html
-<img src="workplace.jpg" alt="Workplace" usemap="#workmap">  
+<img src="workplace.jpg" alt="Workplace" usemap="#workmap">
 
 <map name="workmap">
  <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">

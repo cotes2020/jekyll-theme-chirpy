@@ -77,7 +77,7 @@ route-views>
   - related services were effectively unavailable:
 
 ```
-route-views>show ip bgp 129.134.30.0   
+route-views>show ip bgp 129.134.30.0
 BGP routing table entry for 129.134.0.0/17, version 1025798334
 Paths: (24 available, best #14, table default)
   Not advertised to any peer
@@ -136,7 +136,7 @@ route-views>
 
 - DNS also has its routing mechanism.
   - When someone types the https://facebook.com URL in the browser,
-  - the DNS resolver, responsible for translating domain names into actual IP  
+  - the DNS resolver, responsible for translating domain names into actual IP
   - it first checks if it has something in its cache and uses it.
   - If not, it tries to grab the answer from the domain nameservers, typically hosted by the entity that owns it.
   - If the nameservers are unreachable or fail to respond because of some other reason, then a `SERVFAIL` is returned, and the browser issues an error to the user.

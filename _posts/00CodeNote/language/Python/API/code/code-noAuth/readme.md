@@ -1,22 +1,22 @@
 
 # REST API for User
-This is a RESTful API that supports 4 operations: 
-- adding a user, 
-- authenticating, 
-- retrieving user details, 
+This is a RESTful API that supports 4 operations:
+- adding a user,
+- authenticating,
+- retrieving user details,
 - and logging out.
 
 ```
 movie-bag
 │   app.py
 |   Pipfile
-|   Pipfile.lock   
+|   Pipfile.lock
 └───database
     │   db.py
     └───models.py
 ```
 
-## Active endpoints 
+## Active endpoints
 
 ### `/api/userlist/`
 
@@ -25,7 +25,7 @@ movie-bag
 - GET request to **list ALL the users** (Database READ).
 - Request data: NIL
 - Response data: a list of users (JSON)
-- Response Status Code for success: 
+- Response Status Code for success:
   - 200 OK
 - Response Status Code for failure:
   - 404 Not Found
@@ -34,10 +34,10 @@ movie-bag
 - POST request to **create a new user** (Database CREATE).
 - Request data: `a new user (JSON)`
 - Response data: URL of the created item, or the created item (JSON)
-- Response Status Code for success: 
+- Response Status Code for success:
   - 201 Created
 - Response Status Code for failure:
-  - 400 Bad Request 
+  - 400 Bad Request
 
 
 ### `/api/user/<username>`
@@ -46,32 +46,32 @@ movie-bag
 - GET request to **list ONE user with username** (Database READ).
 - Request data: NIL
 - Response data: a user (JSON)
-- Response Status Code for success: 
+- Response Status Code for success:
   - 20O OK
 - Response Status Code for failure:
-  - 400 Bad Request 
+  - 400 Bad Request
 
 `PUT /api/user/<username>`
 - PUT request to **update ONE user with username** (Database UPDATE)
 - Request data: selected fields of a user (JSON)
 - Response data: URL of the updated item, or the updated item (JSON)
-- Response Status Code for success: 
+- Response Status Code for success:
   - 200 OK
 - Response Status Code for failure:
-  - 400 Bad Request 
+  - 400 Bad Request
 
 `DELETE /api/user/<user_name>`
 - DELETE request to **delete ONE user with username** (Database DELETE).
-- Response Status Code for success: 
+- Response Status Code for success:
   - 204: no content for the user anymore.
 
 
 ---
 
 ## Steps to run app and tests:
-1. Install Python 
+1. Install Python
 2. Create virtualenv
-3. Go to root folder of the project, install required modules: 
+3. Go to root folder of the project, install required modules:
 
 ```bash
 $ pip3 install dataset

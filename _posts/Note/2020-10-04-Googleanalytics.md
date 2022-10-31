@@ -98,15 +98,15 @@ enable Cloud Datastore API
 
 gcloud app deploy app.yaml index.yaml --project myochosite-291718
 # chose location
-#  [14] us-central   
-#  [15] us-east1     
-#  [16] us-east4     
-#  [17] us-west2     
-#  [18] us-west3     
-#  [19] us-west4     
+#  [14] us-central
+#  [15] us-east1
+#  [16] us-east4
+#  [17] us-west2
+#  [18] us-west3
+#  [19] us-west4
 #  [20] cancel
-# Please enter your numeric choice:  15                                        
-# Updating config [index]...done.                                                                              
+# Please enter your numeric choice:  15
+# Updating config [index]...done.
 # Indexes are being rebuilt. This may take a moment.
 # You can stream logs from the command line by running:
 #   $ gcloud app logs tail -s default
@@ -129,7 +129,7 @@ gcloud app deploy app.yaml index.yaml --project myochosite-291718
       2. **end-dat**e: `today` (这是 GA Report 支持的参数，表示永远按当前查询日期为止）。
       3. **metrics**: `ga:pageviews`
       4. **dimensions**: `ga:pagePath`
-      5. **filters**: `ga:pagePath!@=;ga:pagePath!@(。`  
+      5. **filters**: `ga:pagePath!@=;ga:pagePath!@(。`
          1. 为了减少返回结果，减轻网络带宽，所以增加自定义过滤规则1：
          2. 其中 `;` 表示用 逻辑与 串联两条规则，`!@=` 表示`不含 =`，`!@(` 表示不含`(`。
    3. <kbd>Run Query</kbd>

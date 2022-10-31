@@ -36,7 +36,7 @@
 - Apple ID, 一个集全功能于一身的帐户，允许用户访问苹果的各种资源
 - Apple ID可以被用于由苹果提供的多个产品和服务
 - 可以称为Apple账户. MobileMe账户. Mac账户. iTunes Store账户和iChat账户
-- Apple ID 是苹果公司为其产品（如iWork. iTunes Store和Apple Store）所引入的認证系统。 
+- Apple ID 是苹果公司为其产品（如iWork. iTunes Store和Apple Store）所引入的認证系统。
 - Apple ID 需要一个`Email`, 配合密码用户就可以在iPhone上的App Store轻松下载和更新软件。
 
 
@@ -60,7 +60,7 @@
 ---
 
 
-## 3个月时间，5名黑客找出苹果55个漏洞，赚了5万多美元，还写了篇博客记录全程 
+## 3个月时间，5名黑客找出苹果55个漏洞，赚了5万多美元，还写了篇博客记录全程
 
 - [We Hacked Apple for 3 Months: Here’s What We Found](https://samcurry.net/hacking-apple/)
 
@@ -72,7 +72,7 @@ Between the period of July 6th to October 6th myself, Brett Buerhaus, Ben Sadegh
 * Ben Sadeghipour ([@nahamsec](https://twitter.com/nahamsec))
 * Samuel Erb ([@erbbysam](https://twitter.com/erbbysam))
 * Tanner Barnes ([@\_StaticFlow\_](https://twitter.com/_StaticFlow_))
- 
+
 ---
 
 ### Reconnaissance
@@ -85,10 +85,10 @@ Between the period of July 6th to October 6th myself, Brett Buerhaus, Ben Sadegh
 To be brief: Apple's infrastructure is massive.
 
 苹果的基础设施规模巨大
-- They own the entire 17.0.0.0/8 IP range, which includes 
-- 25,000 web servers with 10,000 of them under apple.com, another 7,000 unique domains, 
-- and to top it all off, their own TLD (dot apple). 
-- time was primarily spent on the 17.0.0.0/8 IP range, .apple.com, and .icloud.com 
+- They own the entire 17.0.0.0/8 IP range, which includes
+- 25,000 web servers with 10,000 of them under apple.com, another 7,000 unique domains,
+- and to top it all off, their own TLD (dot apple).
+- time was primarily spent on the 17.0.0.0/8 IP range, .apple.com, and .icloud.com
 
 After making a listing of all of the web servers, we began running **directory brute forcing** on the more interesting ones.
 
@@ -97,16 +97,16 @@ Some of the immediate findings from the automated scanning were...
 * VPN servers affected by Cisco CVE-2020-3452 Local File Read 1day (x22)
 * Leaked Spotify access token within an error message on a broken page
 
-The information obtained by these processes were useful in understanding 
-- how authorization/authentication worked across Apple, 
-- what customer/employee applications existed, 
-- what integration/development tools were used, 
+The information obtained by these processes were useful in understanding
+- how authorization/authentication worked across Apple,
+- what customer/employee applications existed,
+- what integration/development tools were used,
 - and various observable behaviors like web servers consuming certain cookies or redirecting to certain applications.
 
 
 
 After had a general understanding of the Apple infrastructure, began targeting individual web servers that felt instinctively more likely to be vulnerable than others.
- 
+
 
 ---
 
@@ -141,8 +141,8 @@ We can’t write about all the vulnerabilities we discovered, but here is a samp
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/10/untitled.png)
 
-“Apple Distinguished Educators” site. 
-- an invitation-only **Jive forum** 
+“Apple Distinguished Educators” site.
+- an invitation-only **Jive forum**
 - users could authenticate using their Apple account. S
 - some of the core Jive functionality to register to the app was ported through a **custom middleware page** built by Apple in order to connect their `authentication system (IDMSA)` to the underlying Jive forum which normally used username/password authentication.
   - built to allow users to easily use their already existing Apple account to authenticate to the forum and not have to deal with creating an additional user account. You would simply use the “Sign In With Apple” and be logged into the forum.
@@ -151,11 +151,11 @@ We can’t write about all the vulnerabilities we discovered, but here is a samp
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/08/ade_reg_upda.png)
 
 When you submitted an application to use the forum
-- you supplied nearly all of the values of your account as if you were registering to the Jive forum normally. 
+- you supplied nearly all of the values of your account as if you were registering to the Jive forum normally.
 - This would allow the Jive forum to know who you were based on your `IDMSA cookie` since it tied your email address belonging to your Apple account to the forum.
 
-- One of the values that was hidden on the page within the application to register to use the forum was a `“password”` field with the value `“_###INvALID#%!3_”`. 
-  - When you submitted your application that included your username, first and last name, email address, and employer, you were also submitting a “password” value 
+- One of the values that was hidden on the page within the application to register to use the forum was a `“password”` field with the value `“_###INvALID#%!3_”`.
+  - When you submitted your application that included your username, first and last name, email address, and employer, you were also submitting a “password” value
   - it was then secretly tied to your account sourced from a hidden input field on the page.
 
 ```html
@@ -165,18 +165,18 @@ When you submitted an application to use the forum
 ```
 
 observing the hidden default password field leads to
-- find a way to manually authenticate to the application and access an approved account for the forum 
-- instead of attempting to login using the “Sign In With Apple” system. 
+- find a way to manually authenticate to the application and access an approved account for the forum
+- instead of attempting to login using the “Sign In With Apple” system.
 
 We investigated this because the password was the same for each one of us on our separate registrations.
 
 If anyone had applied using this system and there existed functionality where you could manually authenticate, you could simply login to their account using the default password and completely bypass the "Sign In With Apple" login.
 
 From a quick glance, it did not appear that you could manually authenticate
-- after a few Google searches we identified a `“cs\_login”` endpoint which was meant for logging in with a username and password to Jive applications. 
-  - manually formed the test HTTP request to authenticate to the `Apple Distinguished Developers application`, 
-  - it attempted to authenticate us by displaying an incorrect password error. 
-  - used our own accounts that we had previously applied with, the application errored out and did not allow us to authenticate as we were not yet approved. 
+- after a few Google searches we identified a `“cs\_login”` endpoint which was meant for logging in with a username and password to Jive applications.
+  - manually formed the test HTTP request to authenticate to the `Apple Distinguished Developers application`,
+  - it attempted to authenticate us by displaying an incorrect password error.
+  - used our own accounts that we had previously applied with, the application errored out and did not allow us to authenticate as we were not yet approved.
   - would have to find the username of an already approved member if we wanted to authenticate.
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/08/jive_authentication.png)
@@ -184,12 +184,12 @@ From a quick glance, it did not appear that you could manually authenticate
 
 
 At this point, we loaded the HTTP request into Burp Suite’s intruder and attempted to **brute force usernames** between 1 and 3 characters via the login and default password.
-- After about two minutes we received a 302 response indicating a successful login to a user with a 3 character username using the default password we found earlier. 
-- We were in! 
+- After about two minutes we received a 302 response indicating a successful login to a user with a 3 character username using the default password we found earlier.
+- We were in!
 
 
-next goal was to authenticate as someone with elevated permissions. 
-- took a few screenshots of our access and clicked the “Users” list to view which users were administrators. 
+next goal was to authenticate as someone with elevated permissions.
+- took a few screenshots of our access and clicked the “Users” list to view which users were administrators.
 - We logged into the first account we saw on the list in an attempt to prove we could achieve remote code execution via the administrative functionality, however, there were still a few roadblocks ahead.
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/08/ade_x-1024x529.png)
@@ -197,32 +197,32 @@ next goal was to authenticate as someone with elevated permissions.
 
 
 When attempting to browse to “/admin/” (the Jive administrator console) as the admin account
-- the application redirected to login as if we were not yet authenticated. 
-- This was strange, as it was custom behavior for the Jive application and none of us had observed this before. 
+- the application redirected to login as if we were not yet authenticated.
+- This was strange, as it was custom behavior for the Jive application and none of us had observed this before.
 - Our guess was that Apple had restricted the administration console based on IP address to make sure that there was never a full compromise of the application.
 
-One of the first things we tried was using the X-Forwarded-For header to bypass the hypothetical restriction, but sadly that failed. 
+One of the first things we tried was using the X-Forwarded-For header to bypass the hypothetical restriction, but sadly that failed.
 
 The next thing we tried was to load a different form of “/admin/” in-case the application had path specific blacklists for accessing the administrator console.
 
-After just a few more HTTP requests, we figured out that `“GET /admin;/”` would allow an attacker to access the administration console. 
+After just a few more HTTP requests, we figured out that `“GET /admin;/”` would allow an attacker to access the administration console.
 - We automated this bypass by setting up a Burp Suite rule which automatically changed `“GET/POST /admin/”` to `“GET/POST /admin;/”` in our HTTP requests.
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/08/match_and_replace.png)
 
-When we finally navigated and loaded the administration console, it was immediately clear that something wasn’t right. 
+When we finally navigated and loaded the administration console, it was immediately clear that something wasn’t right.
 - We did not have access to the normal functionality that would demonstrate remote code execution (there was no templating, plugin upload, nor the standard administrative debugging functionality).
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/08/welcome_to_jive-1024x388.png)
 
-the account we authenticated to may not be the “core” administrator of the application. 
+the account we authenticated to may not be the “core” administrator of the application.
 - We went ahead and authenticated to 2-3 more accounts before finally authenticating as the core administrator and seeing functionality that would allow for remote code execution.
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/08/jive_home-1024x477.png)
 
-An attacker could 
-1. bypass the authentication by manually authenticating using a hidden default login functionality, 
-2. then access the administration console via sending a modified HTTP path in the request, 
+An attacker could
+1. bypass the authentication by manually authenticating using a hidden default login functionality,
+2. then access the administration console via sending a modified HTTP path in the request,
 3. and finally completely compromise the application by using the one of many “baked in RCE” functionalities like plugin upload, templating, or file management.
 
 Overall, this would've allowed an attacker to...
@@ -241,7 +241,7 @@ At this point, we finished the report and submitted everything.
 
 ### Full Compromise of DELMIA Apriso Application via Authentication Bypass
 
-any accessible services relating to the manufacturing and distribution of their products? 
+any accessible services relating to the manufacturing and distribution of their products?
 - there was an application called "DELMIA Apriso" which was a third-party "Global Manufacturing Suite" which provided what appeared to be various warehouse solutions.
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/10/DELMIA_Apriso_2016_ProductMap_000.png)
@@ -254,7 +254,7 @@ find vulnerabilities on the limited number of pages
 - we were authenticated as a user called "Apple No Password User" based on a bar which appeared in the upper right portion of the site.
 - by clicking "Reset Password", we were temporarily authenticated as a user who had "Permission" to use the page.
 
-> The application's authentication model worked whereas users had specific permissions to use specific pages. 
+> The application's authentication model worked whereas users had specific permissions to use specific pages.
 > The "reset password" page counted as a page itself, so in order to let us use it, the application automatically logged us into an account that was capable of using the page.
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/10/app_no_pw.png)
@@ -269,11 +269,11 @@ now able to explore the API
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/10/web_api_ref.png)
 
-did not have access to the majority of the API calls, 
+did not have access to the majority of the API calls,
 - but some sections like "Operations" disclosed a massive number of available functionalities.
 
-- hit the `"/Apriso/HttpServices/api/platform/1/Operations"` endpoint, it return a list of nearly 5,000 different API calls. 
-  - None of these required authentication beyond the initial authorization bearer we initially sent. 
+- hit the `"/Apriso/HttpServices/api/platform/1/Operations"` endpoint, it return a list of nearly 5,000 different API calls.
+  - None of these required authentication beyond the initial authorization bearer we initially sent.
 - The operations disclosed here included things like...
   * Creating and modifying shipments
   * Creating and modifying employee paydays
@@ -316,7 +316,7 @@ Host: colormasters.apple.com
 The "create employee" function required various parameters that relied on UUIDs
 - but we were able to retrieve these via the other "Operations" and fill them in as we went along.
 - formed the following API request
-- After we sent this API call, we could now authenticate as a global administrator to the application. 
+- After we sent this API call, we could now authenticate as a global administrator to the application.
 - This gave us full oversight to the warehouse management software and probably RCE via some accepted functionality.
 
 
@@ -355,24 +355,24 @@ There were hundreds of different functionalities that would've caused massive in
 
 ### Wormable Stored Cross-Site Scripting Vulnerabilities Allow Attacker to Steal iCloud Data through a Modified Email
 
-One of the core parts of Apple’s infrastructure is their iCloud platform. 
-- This website works as an automatic storage mechanism for photos, videos, documents, and app related data for Apple products. 
+One of the core parts of Apple’s infrastructure is their iCloud platform.
+- This website works as an automatic storage mechanism for photos, videos, documents, and app related data for Apple products.
 - Additionally, this platform provides services like Mail and Find my iPhone.
 
 The mail service
 - a full email platform
-- users can send and receive emails similar to Gmail and Yahoo. 
-- there is a mail app on both iOS and Mac which is installed by default on the products. 
+- users can send and receive emails similar to Gmail and Yahoo.
+- there is a mail app on both iOS and Mac which is installed by default on the products.
 - The mail service is hosted on “www.icloud.com” alongside all of the other services like file and document storage.
 
 from an attackers perspective
-- any cross-site scripting vulnerability would allow an attacker to retrieve whatever information they wanted to from the iCloud service. 
+- any cross-site scripting vulnerability would allow an attacker to retrieve whatever information they wanted to from the iCloud service.
 
 
 
 the mail application
 - When the service receives an email and a user opens it, the data is processed into a JSON blob which is sanitized and picked apart by JavaScript and then displayed to the user.
-- This means that there is no server side processing of the emails in terms of content sanitation, and that all of the actual functionality to render and process the mail body is within the JavaScript where it’s done client side. 
+- This means that there is no server side processing of the emails in terms of content sanitation, and that all of the actual functionality to render and process the mail body is within the JavaScript where it’s done client side.
 - This isn’t necessarily a bad thing, but simplifies the process of identifying XSS by understanding what specifically we’ll need to break within the source code.
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/08/icloud-mail.jpg)
@@ -381,16 +381,16 @@ the mail application
 
 #### Stored XSS via Style Tag Confusion
 
-`“<style>”` tag. 
-- This tag is interesting as the DOM will only cancel this element with an end `“</style>”` tag. 
-- This means that if we wrote `“<style><script>alert1.</script></style>”` and it was fully rendered in the DOM, 
+`“<style>”` tag.
+- This tag is interesting as the DOM will only cancel this element with an end `“</style>”` tag.
+- This means that if we wrote `“<style><script>alert1.</script></style>”` and it was fully rendered in the DOM,
 - there would be no alert prompt as the content of the tag is strictly CSS and the script tag was stuffed within the tag and not beyond the closing tag.
 
 From a sanitization perspective, the only things Apple would need to worry about here would be an ending style tag, or if there was sensitive information on the page, CSS injection via **import chaining**.
 
 - trying to break out of the style tag without Apple realizing it since it would be a very straightforward stored XSS if achievable.
 - trying various permutations and eventually observed
-  - when you had two style tags within the email, the contents of the style tags would be concatenated together into one style tag. 
+  - when you had two style tags within the email, the contents of the style tags would be concatenated together into one style tag.
   - This meant that if we could get `“</sty”` into the first tag and `“le>”` into the second tag, it would be possible to trick the application into thinking our tag was still open when it really wasn’t.
   - sent the following payload to test if it would work:
 
@@ -405,9 +405,9 @@ An explanation of the above payload is as follows:
 
 
 
-The email popped up in my inbox. 
-- clicked it. 
-- There was an alert prompt! 
+The email popped up in my inbox.
+- clicked it.
+- There was an alert prompt!
 - It had worked!
 
 ![pic](https://secureservercdn.net/198.71.233.25/623.f31.myftpupload.com/wp-content/uploads/2020/08/alert-1.png)
@@ -419,12 +419,12 @@ The DOM of the page included the following:
 ```
 
 
-Since the mail application is hosted on “www.icloud.com” 
+Since the mail application is hosted on “www.icloud.com”
 - this meant that we had browser permissions to retrieve the HTTP responses for the corresponding APIs for the iCloud service (if we could sneak in the JavaScript to reach out to them).
 
 
 **Goal**: steals all of the victim’s personal information (photos, calendar information, and documents) then forwards the same exploit to all of their contacts.
-- built a neat PoC which would return the photo URLs from the iCloud API, stick them into image tags, and then append a list of contacts for the user account underneath them. 
+- built a neat PoC which would return the photo URLs from the iCloud API, stick them into image tags, and then append a list of contacts for the user account underneath them.
 - This demonstrated that it was possible to retrieve the values, but in order to exfiltrate them we would have to bypass a CSP which meant no easy outbound HTTP requests to anything but “.apple.com” and a few other domains.
 
 Luckily for us, the service is a mail client. We can simply use JavaScript to invoke an email to ourselves, attach the iCloud photo URLs and contacts, then fire away all of the victim’s signed iCloud photo and document URLs.
@@ -462,7 +462,7 @@ And gave us this beautiful alert prompt:
 This payload was from a CTF solution by @Blaklis\_. I had originally thought it might be an unexploitable XSS, but there seems to always be a solution somewhere for edge case XSS.
 
 > ?age=19;location=/javascript:alert%25281%2529/.source; :>
-> 
+>
 > — Blaklis (@Blaklis\_) [May 7, 2019](https://twitter.com/Blaklis_/status/1125663871056928769?ref_src=twsrc%5Etfw)
 
 My best explanation here is that 1. when loading the initial URL the characters within the “<script></script>” were acceptable within the automatic hyperlinking process and didn’t break it, then (2) the removal of the script tags created a space or some sort of void which reset the automatic hyperlinking functionality without closing the initial hyperlinking functionality, and lastly (3) the second hyperlink added the additional quote that was used to both break out of the href and create the onmouseover event handler.
@@ -679,7 +679,7 @@ And this is the User-Agent:
 Luckily for us, Brett had actually exploited exactly this a few years prior:
 
 > Escalating XSS in PhantomJS Image Rendering to SSRF/Local-File Read [https://t.co/PDwuM45QS7](https://t.co/PDwuM45QS7)
-> 
+>
 > — Brett Buerhaus (@bbuerhaus) [June 29, 2017](https://twitter.com/bbuerhaus/status/880498767551541248?ref_src=twsrc%5Etfw)
 
 The first thing was to write our JS XSS payload to perform Server-Side Request Forgery attacks. A good method to do this and render data is with the <iframe> element.
@@ -810,7 +810,7 @@ The request looked like the following:
             }
         }]
     }
-    
+
 
 You can see almost immediately that there are some really strong indicators here that they are interacting with SQL. Keywords: query, limit, offset, column names, filter, etc. Making one tiny change to see what happens, we got the following:
 
@@ -962,4 +962,3 @@ As of now, October 8th, we have received 32 payments totaling $288,500 for vario
 However, it appears that Apple does payments in batches and will likely pay for more of the issues in the following months.
 
 We've obtained permission from the Apple security team (product-security@apple.com) to publish this and are doing so under their discretion. All of the vulnerabilities disclosed here have been fixed and re-tested. Please do not disclose information pertaining to Apple's security without their permission.
- 

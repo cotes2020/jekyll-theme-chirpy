@@ -2,7 +2,7 @@ package tree;
 import list.*;
 
 public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
-    
+
     //---------------- nested Node class ----------------
     protected static class Node<E> implements Position<E>{
         private E element;
@@ -35,7 +35,7 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
     }
 
     // LinkedBinaryTree instance variables
-    protected Node<E> root = null; 
+    protected Node<E> root = null;
     private int size = 0;
 
     // constructor

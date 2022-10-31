@@ -38,7 +38,7 @@ image:
 6. <font color=red> Dynamic / Static NAT gateway </font>
    - <font color=red> Static NAT: SNAT </font>
      - A private IP is mapped to a public IP. 
-     - translates private to public IPs at a <font color=blue> 1:1 ratio </font>  
+     - translates private to public IPs at a <font color=blue> 1:1 ratio </font>
    - <font color=red> Dynamic NAT: DNAT </font>
      - A range of private addresses, are mapped onto one or more public IPs.
      - <font color=blue> translate a range of private IPs to public IPs </font>
@@ -146,5 +146,3 @@ image:
      - might not provide the exact level of control that your application needs.
      - when you need more than 10GB of bandwidth, that is the maximum amount of bandwidth that the NAT gateway can handle.
    - NAT gateways do not have management overhead like NAT instances do.
-
-

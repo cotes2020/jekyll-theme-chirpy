@@ -209,7 +209,7 @@ The `Amazon Cognito Sync client` creates a <font color=red> local cache </font> 
 
 4. Reading and Writing Data in Datasets
    - Amazon Cognito datasets function as dictionaries, with values accessible by key.
-   - The keys and values of a dataset can be read, added, or modified just as if the dataset were a dictionary.  
+   - The keys and values of a dataset can be read, added, or modified just as if the dataset were a dictionary.
      - that values written to a dataset only affect the local cached copy of the data until you call the synchronize method.
 
 5. Synchronizing Local Data with the Sync Store

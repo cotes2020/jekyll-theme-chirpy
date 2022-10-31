@@ -11,7 +11,7 @@
 
 
 AWS Lambda automatically monitors Lambda functions on your behalf and sends function metrics to Amazon CloudWatch.
-- Lambda function **comes with a CloudWatch Logs log group and a log stream** for each instance of your function. 
+- Lambda function **comes with a CloudWatch Logs log group and a log stream** for each instance of your function.
 - The Lambda runtime environment sends details about each invocation to the log stream, and relays logs and other output from your function's code.
 
 This page describes how to produce log output from your Lambda function's code, or access logs using the AWS Command Line Interface, the Lambda console, or the CloudWatch console.
@@ -34,11 +34,11 @@ def lambda_handler(event, context):
 # ## EVENT
 # {'key': 'value'}
 # END RequestId: 8f507cfc-xmpl-4697-b07a-ac58fc914c95
-# REPORT RequestId: 8f507cfc-xmpl-4697-b07a-ac58fc914c95  Duration: 15.74 ms  Billed Duration: 16 ms Memory Size: 128 MB Max Memory Used: 56 MB  Init Duration: 130.49 ms    
-# XRAY TraceId: 1-5e34a614-10bdxmplf1fb44f07bc535a1   SegmentId: 07f5xmpl2d1f6f85 Sampled: true   
+# REPORT RequestId: 8f507cfc-xmpl-4697-b07a-ac58fc914c95  Duration: 15.74 ms  Billed Duration: 16 ms Memory Size: 128 MB Max Memory Used: 56 MB  Init Duration: 130.49 ms
+# XRAY TraceId: 1-5e34a614-10bdxmplf1fb44f07bc535a1   SegmentId: 07f5xmpl2d1f6f85 Sampled: true
 ```
 
-The Python runtime logs the `START`, `END`, and `REPORT` lines for each invocation. 
+The Python runtime logs the `START`, `END`, and `REPORT` lines for each invocation.
 - The report line provides the following details.
 - Report Log
   - RequestId – The unique request ID for the invocation.

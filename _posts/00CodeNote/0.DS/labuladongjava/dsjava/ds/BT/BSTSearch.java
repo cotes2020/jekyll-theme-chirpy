@@ -6,10 +6,10 @@ package BT;
 public class BSTSearch {
 
     public Node search(Node root, int key){
-        if(root == null) { 
+        if(root == null) {
             return null;
         }
-        if(root.data == key) { 
+        if(root.data == key) {
             return root;
         }
         else if(root.data > key) {

@@ -27,14 +27,14 @@ public class TicTacToe {
         player = -player;
     }
 
-    public boolean isWin(int mark){ 
-        return ( 
+    public boolean isWin(int mark){
+        return (
             (board[0][0] + board[0][1] + board[0][2] == mark*3) || //row0 //row1 //row2
-            (board[1][0] + board[1][1] + board[1][2] == mark*3) || 
-            (board[2][0] + board[2][1] + board[2][2] == mark*3) || 
-            (board[0][0] + board[1][0] + board[2][0] == mark*3) || // column 0 // column 1 // column 2 
-            (board[0][1] + board[1][1] + board[2][1] == mark*3) || 
-            (board[0][2] + board[1][2] + board[2][2] == mark*3) || 
+            (board[1][0] + board[1][1] + board[1][2] == mark*3) ||
+            (board[2][0] + board[2][1] + board[2][2] == mark*3) ||
+            (board[0][0] + board[1][0] + board[2][0] == mark*3) || // column 0 // column 1 // column 2
+            (board[0][1] + board[1][1] + board[2][1] == mark*3) ||
+            (board[0][2] + board[1][2] + board[2][2] == mark*3) ||
             (board[0][0] + board[1][1] + board[2][2] == mark*3) || // diagonal
             (board[2][0] + board[1][1] + board[0][2] == mark*3)    // rev diag
         );
@@ -43,10 +43,10 @@ public class TicTacToe {
     public int winner(){
         if (isWin(X)) return(X);
         else if (isWin(O)) return(O);
-        else return(0); 
+        else return(0);
     }
 
-    public String toString() { 
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i=0; i<3; i++) {
             for (int j=0; j<3; j++) {

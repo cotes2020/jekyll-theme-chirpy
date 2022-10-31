@@ -13,7 +13,7 @@ code
 │   │   __init__.py
 │   |   auth.py
 │   |   main.py
-│   |   models.py   
+│   |   models.py
 │   |   db.sqlite
 │   └───templates
 │       │   index.html
@@ -21,7 +21,7 @@ code
 │       │   profile.html
 │       └───signup.html
 │
-│    
+│
 └───code-noAuth (another RESTful API that supports some operations)
 ```
 
@@ -157,9 +157,9 @@ $ echo '{"username":"a",  "Firstname Lastname":"x", "password":"123",  "Mother�
 # {
 #     "status": 200,
 #     "new_user" : {
-#                     "username":"a",  
+#                     "username":"a",
 #                     "Firstname Lastname":"x",
-#                     "password":"123",  
+#                     "password":"123",
 #                     "Mother’s Favorite Search Engine":"c"
 #                     }
 # }

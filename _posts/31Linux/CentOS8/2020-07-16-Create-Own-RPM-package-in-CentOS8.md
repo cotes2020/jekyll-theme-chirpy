@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, CentOS8]
 tags: [Linux, CentOS8]
 math: true
-image: 
+image:
 ---
 
 
@@ -74,7 +74,7 @@ noarch  x86_64
 procps-ng-i18n-3.3.15-1.el8.noarch.rpm
 
 >// build constructed RPM
-rpmbuild/RPMS/x86_64:  
+rpmbuild/RPMS/x86_64:
 procps-ng-3.3.15-1.el8.x86_64.rpm
 procps-ng-debuginfo-3.3.15-1.el8.x86_64.rpm
 procps-ng-debugsource-3.3.15-1.el8.x86_64.rpm

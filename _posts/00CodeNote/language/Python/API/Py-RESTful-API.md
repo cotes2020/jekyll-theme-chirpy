@@ -351,7 +351,7 @@ class Employees_Name(Resource):
 app = Flask(__name__)
 api = Api(app)
 # Route_1
-api.add_resource(Employees, '/employees')  
+api.add_resource(Employees, '/employees')
 # Route_2
 api.add_resource(Tracks, '/tracks')
 # Route_3
@@ -629,7 +629,7 @@ $(document).ready(function() {
             $("#items").append("<li>" + elm['category'] + ", " + elm['name'] + ", $" + elm['price'] + "</li>");
          })
       });
-});      
+});
 </script>
 </body>
 </html>

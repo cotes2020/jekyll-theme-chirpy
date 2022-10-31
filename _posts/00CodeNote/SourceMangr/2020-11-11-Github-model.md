@@ -41,7 +41,7 @@ image:
     - This is where any automatic nightly builds are built from.
   - When the source code in the develop branch reaches a stable point and is ready to be released
     - all of the changes should be merged back into master somehow
-    - and then tagged with a release number.  
+    - and then tagged with a release number.
 
 
 ---

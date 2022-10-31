@@ -51,7 +51,7 @@ view-source:http://cache.htb/jquery/functionality.js
 view-source:http://cache.htb/net.html
 # <html>
 # <head>
-#  <body onload="if (document.referrer == '') self.location='login.html';">   
+#  <body onload="if (document.referrer == '') self.location='login.html';">
 # 	<style>
 #       body  {
 #         background-color: #cccccc;

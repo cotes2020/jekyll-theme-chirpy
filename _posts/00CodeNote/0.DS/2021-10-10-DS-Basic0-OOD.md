@@ -198,7 +198,7 @@ toc: true
     # 处理学生成绩可以通过函数实现，比如打印学生的成绩：
     def print_score(std):
         print('%s: %s' % (std['name'], std['score']))
-    ```  
+    ```
 
 2. `面向对象`的程序设计思想
 
@@ -216,7 +216,7 @@ toc: true
 
       bart = Student('Bart Simpson', 59)
       lisa = Student('Lisa Simpson', 87)
-      ```        
+      ```
 
      - 然后，给对象发一个print_score消息，让对象自己把自己的数据打印出来。
        - 给对象发消息实际上就是调用`对象对应的关联函数`
@@ -746,7 +746,7 @@ True
 True
 # a、b、c确实对应着list、Animal、Dog这3种类型。
 >>> isinstance(c, Animal)
-True  
+True
 >>> isinstance(b, Dog)
 False
 # Dog可以看成Animal，但Animal不可以看成Dog。
@@ -817,7 +817,7 @@ example of the use of inheritance
 
 ## class, object, instance
 
-Uses of Class  
+Uses of Class
 
 - Class is used to <font color=red> hold both data variables and member functions </font>
 - for <font color=red> create user define objects </font>
@@ -826,7 +826,7 @@ Uses of Class
 - take advantage of <font color=red> constructor or destructor </font>
 - can be used for a large amount of data and complex applications.
 
-Use of Object  
+Use of Object
 
 - <font color=red> give the type of message accepted and the type of returned responses </font>
 - use an object to <font color=red> access a piece of memory using an object reference variable </font>
@@ -911,9 +911,9 @@ Use of Object
     import Turtles
 
     # make a new window for turtles to paint in
-    wn = turtle.Screen()  
+    wn = turtle.Screen()
     # make a new turtle
-    alex = turtle.Turtle()  
+    alex = turtle.Turtle()
     ```
 
    - `alex = turtle.Turtle()`
@@ -971,7 +971,7 @@ The only difference between <font color=red> invocation </font> and <font color=
 
 - Each `class` presents to the outside world a concise and consistent view of the objects that are instances of this class, without going into too much unnecessary detail or giving others access to the inner workings of the objects.
 
-- The class definition typically specifies the data fields, also known as instance variables, that an object contains, as well as the methods (operations) that an object can execute.  
+- The class definition typically specifies the data fields, also known as instance variables, that an object contains, as well as the methods (operations) that an object can execute.
 
 
 > design any program using this OOPs approach.
@@ -1013,7 +1013,7 @@ declared a class called Dog
 
 
 
-6. after declared a class called Dog, defined an object of the class called "maltese" using a new keyword.  
+6. after declared a class called Dog, defined an object of the class called "maltese" using a new keyword.
 
     ```java
     // Class Declaration
@@ -1322,7 +1322,7 @@ benefit:
   - Once a subclass provides definitions for the missing abstract behaviors, the inherited concrete behavior is well defined.
 
 ```java
-public abstract class AbstractProgression {     
+public abstract class AbstractProgression {
     protected long current;
     public AbstractProgression() { this(0); }
     public AbstractProgression(long start) { current = start; }
@@ -1353,7 +1353,7 @@ public abstract class AbstractProgression {
 - The main use for nesting classes is when defining a class that is strongly affiliated with another class. This can help `increase encapsulation` and `reduce undesired name conflicts`.
 - Nested classes are a valuable technique when implementing data structures, as
   - an instance of a nested use can be used to represent a small portion of a larger data structure,
-  - or an auxiliary class that helps navigate a primary data structure.  
+  - or an auxiliary class that helps navigate a primary data structure.
 - the use of nested classes can help reduce name collisions, as it is perfectly acceptable to have another class named Transaction nested within some other class (or as a self-standing class).
 
 
@@ -1419,7 +1419,7 @@ catch (exceptionType1 variable1){
 }
 catch (exceptionType2 variable1) {
   remedyBody2
-}  
+}
 
 public static void main(String[ ] args) {
   int n = DEFAULT;
@@ -1508,7 +1508,7 @@ public static int parseInt(String s) throws NumberFormatException;
 
 
 **Checked and Unchecked Exceptions**
-- Java provides further refinement by declaring the `RuntimeException` class as an important subclass of `Exception`.  
+- Java provides further refinement by declaring the `RuntimeException` class as an important subclass of `Exception`.
 
 - **unchecked exceptions**: All subtypes of RuntimeException in Java
   - occur entirely due to `mistakes in programming logic`, such as using a bad index with an array, or sending an inappropriate value as a parameter to a method.
@@ -1566,7 +1566,7 @@ PredatoryCreditCard pc = (PredatoryCreditCard) card; // narrowing
   - T and S are interface types and S is a subinterface of T .
   - T is an interface implemented by class S.
 - In general, a narrowing conversion of reference types requires an **explicit cast**.
-- Also, the correctness of a narrowing conversion may not be verifiable by the compiler. Thus, its validity should be tested by the Java runtime environment during program execution.  
+- Also, the correctness of a narrowing conversion may not be verifiable by the compiler. Thus, its validity should be tested by the Java runtime environment during program execution.
 - Although variable card happens to reference an instance of a PredatoryCreditCard,
 - the variable has declared type, CreditCard.
 - Therefore, the assignment `pc = card` is a narrowing conversion and requires an explicit cast that will be evaluated at runtime (as not all cards are predatory).
@@ -1678,7 +1678,7 @@ Pair<String,Double> bid = new Pair<String,Double>("ORCL", 32.07);
 #### Generics Framework
 
 **Generic class**
-- can implement a pair class using formal type parameters to represent the two relevant types in our composition.  
+- can implement a pair class using formal type parameters to represent the two relevant types in our composition.
 - When subsequently declaring a variable with such a parameterize type, we must explicitly specify actual type parameters that will take the place of the generic formal type parameters.
 - The actual types for generic programming must be object types, which is why we use the wrapper class Double instead of the primitive type double.
 - **type inference**: An instance of the generic class is created, with the actual types for the formal type parameters determined based upon the original declaration of the variable to which it is assigned (bid in this example). This process was introduced to the generics framework in Java SE 7.
@@ -1999,7 +1999,7 @@ public class Restaurant{
         return _instance;
     }
 }
-```    
+```
 
 
 ```c
@@ -2320,7 +2320,7 @@ public class Employee {
 
    public String toString(){
       return ("Employee:[Name : "+ name +", dept : "+ dept + ", salary :" + salary+" ]");
-   }   
+   }
 }
 
 public class CompositePatternDemo {
@@ -2349,7 +2349,7 @@ public class CompositePatternDemo {
          for (Employee employee : headEmployee.getSubordinates()) {
             System.out.println(employee);
          }
-      }        
+      }
    }
 }
 ```

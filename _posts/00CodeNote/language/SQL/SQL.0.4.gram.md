@@ -288,7 +288,7 @@ sqlite> EXPLAIN QUERY PLAN SELECT statement...;
 如果要为表中的所有列添加值，可以不需要在 SQLite 查询中指定列名称。但要确保值的顺序与列在表中的顺序一致。
 
 ```sqlite3
-sqlite> INSERT INTO TABLE_NAME [(column1, column2, column3,...columnN)]  
+sqlite> INSERT INTO TABLE_NAME [(column1, column2, column3,...columnN)]
 sqlite> INSERT INTO TABLE_NAME VALUES (value1, value2, value3,...valueN);
 /在这里，column1, column2,...columnN 是要插入数据的表中的列的名称。
 ```

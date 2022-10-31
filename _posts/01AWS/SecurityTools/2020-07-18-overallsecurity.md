@@ -276,10 +276,10 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
      - Instead, create pre-signed URLs to grant time-limited permission to download the objects
    - encrypt
      - Protect sensitive data by <font color=blue> encrypting data at rest </font> in S3.
-       - Amazon S3 supports server-side encryption and client-side encryption of user data, 
+       - Amazon S3 supports server-side encryption and client-side encryption of user data,
        - using which you create and manage your own encryption keys
      - <font color=blue> Encrypt inbound and outbound S3 data traffic </font>
-   - <font color=blue> data replication and versioning </font> instead of automatic backups. 
+   - <font color=blue> data replication and versioning </font> instead of automatic backups.
      - Implement S3 Versioning and S3 Lifecycle Policies
    - Automate the lifecycle of your S3 objects with rule-based actions
    - Enable MFA Delete on S3 bucket
@@ -425,20 +425,20 @@ These controls can be implemented using
 
 ## 5. Incident Response in AWS
 
-NIST defines a security incident as “an occurrence that actually or potentially jeopardises the confidentiality, integrity, or availability of an information system or the information the system processes, stores, or transmits or that constitutes a violation or imminent threat of violation of security policies, security procedures, or acceptable use policies”. 
+NIST defines a security incident as “an occurrence that actually or potentially jeopardises the confidentiality, integrity, or availability of an information system or the information the system processes, stores, or transmits or that constitutes a violation or imminent threat of violation of security policies, security procedures, or acceptable use policies”.
 
 The figure below outlines the typical phases of an incident response lifecycle.
 
 ![Screen Shot 2020-12-15 at 2.45.07 PM](https://i.imgur.com/NgsIePn.png)
 
 
-there are several tools in the AWS cloud environment to help the incident response process, 
-- such as AWS CloudTrail, Amazon CloudWatch, AWS Config, AWS CloudFormation, AWS Step Functions, etc. 
+there are several tools in the AWS cloud environment to help the incident response process,
+- such as AWS CloudTrail, Amazon CloudWatch, AWS Config, AWS CloudFormation, AWS Step Functions, etc.
 - These tools enable you to track, monitor, analyse, and audit events.
 
-- Audit logs are treasure troves and are indispensable during investigations. 
-  - AWS provides detailed audit logs that record important events such as file access and modification. 
-- Events can be automatically processed and trigger tools that automate responses through the use of AWS APIs. 
+- Audit logs are treasure troves and are indispensable during investigations.
+  - AWS provides detailed audit logs that record important events such as file access and modification.
+- Events can be automatically processed and trigger tools that automate responses through the use of AWS APIs.
 - You can pre-provision tooling and a “clean room” which allows you to carry out forensics in a safe, isolated environment.
 
 
@@ -454,7 +454,7 @@ there are several tools in the AWS cloud environment to help the incident respon
 2. <font color=red> AWS tools for prepare in advance for incident handling </font>
    - Tags in AWS allow you to proactively label resources with a data classification or a criticality attribute so you can quickly estimate the impact when the incident occurs.
    - <font color=blue> AWS Organisations </font>
-     - allows you to create separate accounts along business lines or mission areas which also limits the “blast radius” should a breach occur; 
+     - allows you to create separate accounts along business lines or mission areas which also limits the “blast radius” should a breach occur;
      - for governance, you can apply policies to each of those sub accounts from the AWS master account.
    - <font color=blue> IAM </font>
      - grants appropriate authorisation to incident response teams in advance.
@@ -484,13 +484,13 @@ there are several tools in the AWS cloud environment to help the incident respon
    - Open a case number with AWS Support for cross-validation.
 
 4. <font color=red> isolate and restrict user access to a compromised Amazon EC2 instance </font>
-   - containing the instance manually, 
+   - containing the instance manually,
      - use IAM to restrict access permissions to compromised Amazon EC2 instance.
      - Isolate the instance using restrictive ingress and egress security group rules or remove it from a load balancer.
    - Tag the instance as appropriate to indicate isolation.
    - Create snapshots of EBS volumes.
    - Notify relevant contacts.
-   - Use CloudFormation 
+   - Use CloudFormation
      - to quickly create a new, trusted environment in which to conduct deeper investigation.
    - automate the above steps using Lambda, Step Functions, CloudFormation and SNS Topic to prepare an EC2 auto clean room for containing the instance.
    - You could also use aws-security-automation code on GitHub, which is a collection of scripts and resources for DevSecOps, Security Automation and Automated Incident Response Remediation.

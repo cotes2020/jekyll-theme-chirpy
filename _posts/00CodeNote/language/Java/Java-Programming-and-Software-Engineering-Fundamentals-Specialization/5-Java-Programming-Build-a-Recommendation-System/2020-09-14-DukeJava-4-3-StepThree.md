@@ -808,7 +808,7 @@ public class GenreFilter implements Filter {
 
 ```java
 // Create a new class named MinutesFilter that implements Filter.
-// return true if a movie’s running time is at least min minutes and no more than max minutes.  
+// return true if a movie’s running time is at least min minutes and no more than max minutes.
 
 public class MinutesFilter implements Filter {
 	private int myMin;
@@ -875,10 +875,10 @@ MovieRunnerWithFilters
 
 ```java
 // Create a new class named MovieRunnerWithFilters
-// use to find the average rating of movies using different filters. 
-// Copy the printAverageRatings method from the MovieRunnerAverage class into this class. 
+// use to find the average rating of movies using different filters.
+// Copy the printAverageRatings method from the MovieRunnerAverage class into this class.
 
-import java.util.*; 
+import java.util.*;
 
 public class MovieRunnerWithFilters {
 
@@ -887,7 +887,7 @@ public class MovieRunnerWithFilters {
     String datainfoTrueorFalse;
     ThirdRatings tRatings;
 
-    // initialize where to get the movie and rater data, 
+    // initialize where to get the movie and rater data,
     // movie.csv + ratings.csv
     public MovieRunnerWithFilters() {
         System.out.println("---------initialize the MovieRunnerWithFilters---------");
@@ -910,19 +910,19 @@ public class MovieRunnerWithFilters {
         MovieDatabase.initialize(moviefile);
         System.out.println("Number of total of movies: " + MovieDatabase.size());
         //   call FirstRatings.loadMovies(moviefile) to fill the Movies ArrayList from moviefile.
-        //        got ArrayList<Movie> list 
+        //        got ArrayList<Movie> list
     }
- 
-    
+
+
 
     public void printAverageRatings(int minRatersNum, String moreinfoTrueorFalse) {
         // setup the minimum Rater Number, and whethere to print out the detailed rater info.
         System.out.println("---------printAverageRatings---------");
-        int minimalRaters = minRatersNum;  
+        int minimalRaters = minRatersNum;
 
         // get the average movie rating for this ID if there are at least minimalRaters ratings.
-        ArrayList<Rating> avgRatingL = tRatings.getAverageRatings(minimalRaters);         
-        // Method to sort according the rating 
+        ArrayList<Rating> avgRatingL = tRatings.getAverageRatings(minimalRaters);
+        // Method to sort according the rating
         Collections.sort(avgRatingL);
 
         System.out.println(" +++++++++ Movies with at least " + minimalRaters + " ratings");
@@ -942,19 +942,19 @@ public class MovieRunnerWithFilters {
 
     // create a void method named printAverageRatingsByYear
     // should be similar to printAverageRatings,
-    // create a YearAfterFilter and call getAverageRatingsByFilter to get an ArrayList of type Rating of all the movies that have a specified number of minimal ratings and came out in a specified year or later. 
-    // Print the number of movies found, and for each movie found, print its rating, its year, and its title. 
-    // For example ratings_short.csv and ratedmovies_short.csv, minimal rater of 1 and the year 2000 
+    // create a YearAfterFilter and call getAverageRatingsByFilter to get an ArrayList of type Rating of all the movies that have a specified number of minimal ratings and came out in a specified year or later.
+    // Print the number of movies found, and for each movie found, print its rating, its year, and its title.
+    // For example ratings_short.csv and ratedmovies_short.csv, minimal rater of 1 and the year 2000
     public void printAverageRatingsByYear(int minRatersNum, int yearNum, String moreinfoTrueorFalse) {
         System.out.println("---------printAverageRatingsByYear---------");
-        int minimalRaters = minRatersNum;  
+        int minimalRaters = minRatersNum;
 
         YearAfterFilter filterYear = new YearAfterFilter(yearNum);
 
         ArrayList<Rating> anwList = tRatings.getAverageRatingsByFilter(minimalRaters,filterYear);
-        
-        Collections.sort(anwList); 
-         
+
+        Collections.sort(anwList);
+
         System.out.println(" +++++++++ Movies with at least " + minimalRaters + " ratings and By " + yearNum);
         System.out.println(" +++++++++ Movies found: " + anwList.size());
 
@@ -973,8 +973,8 @@ public class MovieRunnerWithFilters {
 
     // create a void method named printAverageRatingsByGenre
     // create a GenreFilter
-    // call getAverageRatingsByFilter to get an ArrayList of type Rating of all the movies that have a specified number of minimal ratings and include a specified genre. 
-    // Print the number of movies found, and for each movie, print its rating and its title on one line, and its genres on the next line. 
+    // call getAverageRatingsByFilter to get an ArrayList of type Rating of all the movies that have a specified number of minimal ratings and include a specified genre.
+    // Print the number of movies found, and for each movie, print its rating and its title on one line, and its genres on the next line.
     // For example, if you run the printAverageRatingsByGenre method on the files ratings_short.csv and ratedmovies_short.csv with a minimal rater of 1 and the genre “Crime”, you should see
 
     public void printAverageRatingsByGenre(int minRatersNum, String geneWord, String moreinfoTrueorFalse) {
@@ -983,10 +983,10 @@ public class MovieRunnerWithFilters {
         int minimalRaters = minRatersNum;
 
         GenreFilter filterGenre = new GenreFilter(geneWord);
-        
+
         ArrayList<Rating> anwList = tRatings.getAverageRatingsByFilter(minimalRaters, filterGenre);
         Collections.sort(anwList);
-                 
+
         System.out.println(" +++++++++ Movies with at least " + minimalRaters + " ratings and Genre as " + geneWord);
         System.out.println(" +++++++++ Movies found: " + anwList.size());
 
@@ -1003,15 +1003,15 @@ public class MovieRunnerWithFilters {
 
 
     // create a void method named printAverageRatingsByMinutes
-    // create a MinutesFilter and call getAverageRatingsByFilter to get an ArrayList of type Rating of all the movies that have a specified number of minimal ratings and their running time is at least a minimum number of minutes and no more than a maximum number of minutes. 
-    // Print the number of movies found, and for each movie print its rating, its running time, and its title on one line. 
+    // create a MinutesFilter and call getAverageRatingsByFilter to get an ArrayList of type Rating of all the movies that have a specified number of minimal ratings and their running time is at least a minimum number of minutes and no more than a maximum number of minutes.
+    // Print the number of movies found, and for each movie print its rating, its running time, and its title on one line.
     // For example
-    // ratings_short.csv and ratedmovies_short.csv, minimal rater of 1, minimum minutes of 110, and maximum minutes of 170 
+    // ratings_short.csv and ratedmovies_short.csv, minimal rater of 1, minimum minutes of 110, and maximum minutes of 170
     public void printAverageRatingsByMinutes(int minRatersNum, int minMin, int maxMin, String moreinfoTrueorFalse) {
         System.out.println("---------printAverageRatingsByMinutes---------");
         int minimalRaters = minRatersNum;
         MinutesFilter filterMin = new MinutesFilter(minMin, maxMin);
-        
+
         ArrayList<Rating> anwList = tRatings.getAverageRatingsByFilter(minimalRaters, filterMin);
         Collections.sort(anwList);
 
@@ -1031,29 +1031,29 @@ public class MovieRunnerWithFilters {
 
     // create a void method named printAverageRatingsByDirectors
     // create a DirectorsFilter
-    // call getAverageRatingsByFilter to get an ArrayList of type Rating of all the movies that have a specified number of minimal ratings and include at least one of the directors specified. 
-    // Print the number of movies found, and for each movie print its rating and its title on one line, and all its directors on the next line. 
+    // call getAverageRatingsByFilter to get an ArrayList of type Rating of all the movies that have a specified number of minimal ratings and include at least one of the directors specified.
+    // Print the number of movies found, and for each movie print its rating and its title on one line, and all its directors on the next line.
     // For example, ratings_short.csv and ratedmovies_short.csv with a minimal rater of 1 and the directors set to "Charles Chaplin,Michael Mann,Spike Jonze"
     public void printAverageRatingsByDirectors(int minRatersNum, String dirName, String moreinfoTrueorFalse) {
         System.out.println("---------printAverageRatingsByDirectors---------");
         int minimalRaters = minRatersNum;
         String targetDir = dirName;
 
-        DirectorsFilter filterDir = new DirectorsFilter(targetDir); 
+        DirectorsFilter filterDir = new DirectorsFilter(targetDir);
 
         ArrayList<Rating> anwList = tRatings.getAverageRatingsByFilter(minimalRaters, filterDir);
         Collections.sort(anwList);
 
         System.out.println(" +++++++++ Movies with at least " + minimalRaters + " ratings and by directory " + dirName);
         System.out.println(" +++++++++ Movies found: " + anwList.size());
- 
+
         if(moreinfoTrueorFalse.equals("True")){
             for(Rating r : anwList){
                 String movieID = r.getItem();
                 String movieTitle = MovieDatabase.getTitle(movieID);
                 String movieDirs = MovieDatabase.getDirector(movieID);
                 System.out.println((double)Math.round(r.getValue() * 10000d) / 10000d + " " + movieTitle);
-                
+
                 for(String directorName : targetDir.split(",")) {
                     if(movieDirs.contains(directorName)) {
                         System.out.println("    " + directorName);
@@ -1068,9 +1068,9 @@ public class MovieRunnerWithFilters {
 
 
     // create a void method named printAverageRatingsByYearAfterAndGenre
-    // create an AllFilters object that includes criteria based on movies that came out in a specified year or later and have a specified genre as one of its genres. 
-    // call getAverageRatingsByFilter to get an ArrayList of type Rating of all the movies that have a specified number of minimal ratings and the two criteria based on year and genre. 
-    // Print the number of movies found, and for each movie, print its rating, its year, and its title on one line, and all its genres on the next line. 
+    // create an AllFilters object that includes criteria based on movies that came out in a specified year or later and have a specified genre as one of its genres.
+    // call getAverageRatingsByFilter to get an ArrayList of type Rating of all the movies that have a specified number of minimal ratings and the two criteria based on year and genre.
+    // Print the number of movies found, and for each movie, print its rating, its year, and its title on one line, and all its genres on the next line.
     // For example ratings_short.csv and ratedmovies_short.csv
     // minimal rater of 1, the year set to 1980, and the genre set to “Romance”
     // minimal rater of 1, minimum minutes set to 30, maximum minutes set to 170, and the directors set to "Spike Jonze,Michael Mann,Charles Chaplin,Francis Ford Coppola"
@@ -1102,9 +1102,9 @@ public class MovieRunnerWithFilters {
         // allFilters.addFilter(filterYear);
         allFilters.addFilter(filterDir);
         allFilters.addFilter(filterMin);
-        
+
         ArrayList<Rating> anwList = tRatings.getAverageRatingsByFilter(minimalRaters, allFilters);
-        Collections.sort(anwList); 
+        Collections.sort(anwList);
 
         System.out.println(" +++++++++ Movies with at least " + minimalRaters + " ratings and by filter:");
         System.out.println(" +++++++++ Year: " + targetYear);
@@ -1112,7 +1112,7 @@ public class MovieRunnerWithFilters {
         System.out.println(" +++++++++ Director: " + targetDir);
         System.out.println(" +++++++++ Duration: " + minMin + ", " + maxMin);
         System.out.println(" +++++++++ Movies found: " + anwList.size());
- 
+
         if(moreinfoTrueorFalse.equals("True")){
             for(Rating r : anwList){
                 String movieID = r.getItem();
@@ -1137,7 +1137,7 @@ public class MovieRunnerWithFilters {
 
     public static void main(String[] args) {
         MovieRunnerWithFilters pr = new MovieRunnerWithFilters();
-        
+
         // test result:
         // pr.printAverageRatings(1, "1True");
         // pr.printAverageRatingsByYear(1, 2000, "1True");

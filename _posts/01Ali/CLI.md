@@ -14,10 +14,10 @@
 
 ```bash
 
-$ aliyun ram ListPolicies | grep PolicyName 
+$ aliyun ram ListPolicies | grep PolicyName
 
 $ aliyun ram ListPolicies \
---PolicyType Custom | grep PolicyName     
+--PolicyType Custom | grep PolicyName
 
 
 
@@ -45,7 +45,7 @@ $ aliyun ram ListPoliciesForRole \
 
 
 $ aliyun ram DeletePolicy \
---PolicyName ct-boundary-testcopy-grace 
+--PolicyName ct-boundary-testcopy-grace
 
 
 ```
@@ -62,7 +62,7 @@ aliyun rds DescribeDBInstances \
 --RegionId cn-beijing | grep DBInstanceId
 
 aliyun rds DescribeDBInstances \
---RegionId cn-beijing 
+--RegionId cn-beijing
 {
 	"Items": {
 		"DBInstance": [
@@ -153,7 +153,7 @@ aliyun rds ModifyDBInstanceSSL \
 --DBInstanceId rm-dj16n21vme51m0j9o \
 --ConnectionString "" \
 --SSLEnabled 0
- 
+
 
 
 # ModifyActionEventPolicy
@@ -180,7 +180,7 @@ aliyun rds CreateDBInstance \
 --SecurityIPList "" \
 --PayType Postpaid \
 --EncryptionKey "" \
---InstanceNetworkType Classic 
+--InstanceNetworkType Classic
 
 
 

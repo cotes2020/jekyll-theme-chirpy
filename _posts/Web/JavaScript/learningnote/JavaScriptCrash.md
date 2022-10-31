@@ -179,7 +179,7 @@ random[2][2];
 shopping.length;
 
 // check is item exist
-shopping.isArray('meat')     
+shopping.isArray('meat')
 
 // check index
 shopping.indexof('bread')  // return number
@@ -310,12 +310,12 @@ const todoText = todos.map(function(todo) {     // map return a arry
   return todo.text;
 });
 
-const todoCompleted = todos.filter(function(todo) {     
+const todoCompleted = todos.filter(function(todo) {
   return todo.isCompleted === true;             // retun a array, filter item
 });
 
-const todoCompleted = todos.filter(function(todo) {     
-  return todo.isCompleted === true;            
+const todoCompleted = todos.filter(function(todo) {
+  return todo.isCompleted === true;
 }).map(function(todo){
   return todo.text;                              // retun a array with only text data
 })
@@ -662,7 +662,7 @@ console.log(addNums(num1 + num2));
 ```html
 <!-- Excerpt from my HTML -->
 <!-- both javascript has function greeting(), only first.js will work-->
-<script src="first.js"></script>  
+<script src="first.js"></script>
 <script src="second.js"></script>
 <script>
   greeting();
@@ -674,7 +674,7 @@ console.log(addNums(num1 + num2));
 
 ```js
 const addNums = (num1 = 1, num2 = 1) => {
-  return num1 + num2;                 
+  return num1 + num2;
 }
 
 const addNums = (num1 = 1, num2 = 1) => num1 + num2;
@@ -707,7 +707,7 @@ function Person(firstname, lastname, dob) {
   this.dob = new Date(dob);           // Fri Mar 06
 
   /* this will show the function in console.log(person1), better put in prototype
-  this.getBirthYear = function() {   
+  this.getBirthYear = function() {
     return this.dob.getFullYear();
   }
   this.getFullName = function() {
@@ -718,7 +718,7 @@ function Person(firstname, lastname, dob) {
 
 
 // prototype
-Person.prototype.getBirthYear = function() {   
+Person.prototype.getBirthYear = function() {
     return this.dob.getFullYear();
 }
 Person.prototype.getFullName = function() {
@@ -735,7 +735,7 @@ class Person {
     this.lastname = lastname;
     this.dob = new Date(dob);
   }
-  getBirthYear = function() {   
+  getBirthYear = function() {
     return this.dob.getFullYear();
   }
   getFullName = function() {
@@ -854,7 +854,7 @@ In human language — if myName has no value, or its value is null, run setUserN
 
 ---
 
-## DOM 
+## DOM
 
 DOM, user interface.
 - document object model
@@ -918,19 +918,19 @@ const form = document.getElementById('my-form')
 // select single elements, JQuery
 console.log(document.querySelector('.container'));
 // single elements, only select the frist one
-document.querySelector('h1')  
+document.querySelector('h1')
 
 
 // Multiple Element Selectors, select more than one thing
 // return a Node list, list array can use forEach()
-console.log(document.querySelectorAll('.item'));   
+console.log(document.querySelectorAll('.item'));
 // by tag
-console.log(document.getElementsByTagName('li'));   
-// return a HTMLCollection, not array  
+console.log(document.getElementsByTagName('li'));
+// return a HTMLCollection, not array
 console.log(document.getElementsByClassName('item'));
 
 // loop
-const items = document.querySelectorAll('.item');  
+const items = document.querySelectorAll('.item');
 items.forEach((item) => console.log(item));
 
 
@@ -1125,7 +1125,7 @@ function bgChange(e) {
   const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
   e.target.style.backgroundColor = rndCol;
   console.log(e);
-}  
+}
 btn.addEventListener('click', bgChange);
 
 // e.target — is the button itself.
@@ -1157,5 +1157,3 @@ In the bubbling phase, the exact opposite occurs:
 
 The standard Event object function:`stopPropagation()`
 - when invoked on a handler's event object, makes it so that first handler is run but the event doesn't bubble any further up the chain, so no more handlers will be run.
-
-

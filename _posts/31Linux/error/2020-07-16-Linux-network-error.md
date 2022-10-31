@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, error]
 tags: [error]
 math: true
-image: 
+image:
 ---
 
 # Linux - Network Error
@@ -262,7 +262,7 @@ $ teamdctl team0 State
 ```
 sudo lshw -C network
 
-*-network               
+*-network
    description:   Wireless interface
    product:       BCM4313 802.11bgn Wireless Network Adapter
    vendor:        Broadcom Corporation

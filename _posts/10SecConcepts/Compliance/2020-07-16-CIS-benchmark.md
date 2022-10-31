@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [10SecConcept, ComplianceAndReport]
 tags: [CIS]
 math: true
-image: 
+image:
 ---
 
 [toc]

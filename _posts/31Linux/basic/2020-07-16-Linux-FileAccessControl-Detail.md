@@ -4,7 +4,7 @@ date: 2020-07-16 11:11:11 -0400
 categories: [31Linux, Basic]
 tags: [Linux, Sysadmin]
 math: true
-image: 
+image:
 ---
 
 
@@ -353,7 +353,7 @@ $ chmod 777 file.txt
 $ su - bob                        # change to user bob
 password
 [bob]$ cd /home/stickydir/
-[bob]$ rm file.txt    
+[bob]$ rm file.txt
 # error: file cannot be deleted.
 
 

@@ -9,7 +9,7 @@ public class SizeOfBT {
         }
         return 1 + size(root.left) + size(root.right);
     }
-    
+
     public static void main(String args[]){
         BinaryTree bt = new BinaryTree();
         Node root = null;

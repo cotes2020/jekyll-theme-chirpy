@@ -102,7 +102,7 @@ to changing the retention days to 60
 ```py
 import boto3
 
-# set the number of retention days 
+# set the number of retention days
 retention_days = 60
 
 # list the regions you are interested to run this script on
@@ -118,7 +118,7 @@ for region in regions:
         response = logclient.describe_log_groups(nextToken=nextToken)
         nextToken = response.get('nextToken', None)
         retention = retention + response['logGroups']
-    
+
     for group in retention:
         if 'retentionInDays' in group.keys():
             print(group['logGroupName'], group['retentionInDays'],region)

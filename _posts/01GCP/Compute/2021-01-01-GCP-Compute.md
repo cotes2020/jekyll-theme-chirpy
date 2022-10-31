@@ -44,7 +44,7 @@ image:
 1. on-demand and self-service.
    1. automated interface and get the processing power, storage, and network they need with no human intervention.
 2. broad network access
-   1. resources are accessible over a network from any location.  
+   1. resources are accessible over a network from any location.
 3. Resource pooling
    1. Providers allocate resources to customers from a large pool,
    2. allowing them to benefit from economies of scale.
@@ -108,7 +108,7 @@ image:
   - Fully customizable **VMs**
     - Compute Engine offers virtual machines that run on GCP
     - create and run virtual machines on Google infrastructure.
-    - run virtual machines on demand in the Cloud.  
+    - run virtual machines on demand in the Cloud.
       - select predefined VM configurations
       - create customized configurations
   - no upfront investments
@@ -204,12 +204,12 @@ image:
 
   - Google scales resources as required, but you only pay for the service while the code runs.
     - no pay for servers
-    - charged for the time that the code/functions runs.  
+    - charged for the time that the code/functions runs.
     - For each function, invocation memory and CPU use is measured in the 100 millisecond increments, rounded up to the nearest increment.
     - provides a perpetual free tier.
     - So many cloud function use cases could be free of charge.
 
-  - the code is triggered within a few milliseconds based on events.  
+  - the code is triggered within a few milliseconds based on events.
     - can trigger on events in Cloud Storage, Cloud Pub/Sub,
       - file is uploaded to Google cloud storage
       - or a message is received from Cloud Pub/Sub.
@@ -223,7 +223,7 @@ image:
 
   - use cases
     - used as part of a microservices application architecture.
-      - Some applications, especially those that have microservices architecture, can be implemented entirely in Cloud Functions.  
+      - Some applications, especially those that have microservices architecture, can be implemented entirely in Cloud Functions.
     - build symbols, serverless,
       - mobile IoT backends
       - integrate with third party services and APIs.
@@ -255,7 +255,7 @@ image:
       - such as provisioning, configuring, managing those servers
       - only focus on developing applications.
     - run request or event driven stateless workloads
-      - without having to worry bout servers.  
+      - without having to worry bout servers.
   - automatically scales up and down from zero
     - depending upon traffic almost instantaneously
     - no worry about scale configuration.
@@ -330,4 +330,4 @@ image:
   - Using Kubernetes as a managed service from GCP saves you work and let's you benefit from all the other GCP resources too.
 
 - Cloud Run
-  - run stateless containers on a managed compute platform.  
+  - run stateless containers on a managed compute platform.

@@ -29,6 +29,6 @@ public class TestProgression {
         prog.printProgression(10);
         System.out.print("Fibonacci progression with start values 4 and 6: ");
         prog = new FibonacciProgression(4,6);
-        prog.printProgression(10); 
+        prog.printProgression(10);
     }
 }

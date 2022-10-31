@@ -24,7 +24,7 @@ image:
 - Docker 程序（特别是服务端）本身的抗攻击性
 - 内核安全性的加强机制 对 容器安全性的影响
 
-### namespace 
+### namespace
 - Docker 容器和 LXC 容器很相似，所提供的安全特性也差不多。
 - 当用 docker run 启动一个容器时，在后台 Docker 为容器创建了一个独立的`命名空间 namespace 和控制组 cgroups`集合。
 - 命名空间提供了最基础也是最直接的隔离，在容器中运行的进程不会被运行在主机上的进程和其它容器发现和作用。
@@ -34,18 +34,18 @@ image:
 - 从网络架构的角度来看，所有的容器通过本地主机的网桥接口相互通信，就像物理机器通过物理交换机通信一样。
 - 那么，内核中实现命名空间和私有网络的代码是否足够成熟？
 
-### cgroup 
+### cgroup
 - 它提供了很多有用的特性；以及确保各个容器可以公平地分享主机的内存、CPU、磁盘 IO 等资源；当然，更重要的是，控制组确保了当容器内的资源使用产生压力时不会连累主机系统。
 - 尽管控制组不负责隔离容器之间相互访问、处理数据和进程，它在防止拒绝服务（DDOS）攻击方面是必不可少的。尤其是在多用户的平台（比如公有或私有的 PaaS）上，控制组十分重要。例如，当某些应用程序表现异常的时候，可以保证一致地正常运行和性能。
 
-### Daemon sec 
+### Daemon sec
 - 确保只有可信的用户才可以访问 Docker 服务。Docker 允许用户在主机和容器间共享文件夹，同时不需要限制容器的访问权限，这就容易让容器突破资源限制。例如，恶意用户启动容器的时候将主机的根目录/映射到容器的 /host 目录中，那么容器理论上就可以对主机的文件系统进行任意修改了。
 - 终极目标是改进 2 个重要的安全特性：
 - 将容器的 root 用户映射到本地主机上的非 root 用户，减轻容器和主机之间因权限提升而引起的安全问题；
 - 允许 Docker 服务端在非 root 权限下运行，利用安全可靠的子进程来代理执行需要特权权限的操作。这些子进程将只允许在限定范围内进行操作，例如仅负责虚拟网络设定或文件系统管理、配置操作等。
 
 
-### Kernel capabililty 内核能力机制 
+### Kernel capabililty 内核能力机制
 - 能力机制（Capability）是 Linux 内核一个强大的特性，可以提供细粒度的权限访问控制。 Linux 内核自 2.2 版本起就支持能力机制，它将权限划分为更加细粒度的操作能力，既可以作用在进程上，也可以作用在文件上。
 - 例如，一个 Web 服务进程只需要绑定一个低于 1024 的端口的权限，并不需要 root 权限。那么它只需要被授权 net_bind_service 能力即可。此外，还有很多其他的类似能力来避免进程获取 root 权限。
 - 默认情况下，Docker 启动的容器被严格限制只允许使用内核的一部分能力。
@@ -78,7 +78,7 @@ image:
 
 ## Rules
 
- 
+
 ---
 
 ### RULE #0 - Keep Host and Docker up to date
@@ -89,41 +89,41 @@ In addition, containers (unlike in virtual machines) share the kernel with the h
 
 ---
 
-### RULE #1 - Do not expose the Docker daemon socket (even to the containers) 
+### RULE #1 - Do not expose the Docker daemon socket (even to the containers)
 
-Docker socket `/var/run/docker.sock` is the UNIX socket that Docker is listening to. 
-- This is the primary entry point for the Docker API. 
-- The owner of this socket is root. 
+Docker socket `/var/run/docker.sock` is the UNIX socket that Docker is listening to.
+- This is the primary entry point for the Docker API.
+- The owner of this socket is root.
 - Giving someone access to it is equivalent to giving unrestricted root access to your host.
 
-**Do not enable _tcp_ Docker daemon socket.** 
-- If you are running docker daemon with `-H tcp://0.0.0.0:XXX` 
-- or similar are exposing un-encrypted and un-authenticated direct access to the Docker daemon. 
-- If you really have to do this, you should secure it. 
+**Do not enable _tcp_ Docker daemon socket.**
+- If you are running docker daemon with `-H tcp://0.0.0.0:XXX`
+- or similar are exposing un-encrypted and un-authenticated direct access to the Docker daemon.
+- If you really have to do this, you should secure it.
 - Check how to do this [following Docker official documentation](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-socket-option).
 
-**Do not expose _/var/run/docker.sock_ to other containers**. 
-- If you are running your docker image with `-v /var/run/docker.sock://var/run/docker.sock` or similar, you should change it. 
-- mounting the socket read-only is not a solution but only makes it harder to exploit. 
+**Do not expose _/var/run/docker.sock_ to other containers**.
+- If you are running your docker image with `-v /var/run/docker.sock://var/run/docker.sock` or similar, you should change it.
+- mounting the socket read-only is not a solution but only makes it harder to exploit.
 - Equivalent in the docker-compose file is something like this:
 
 ```
 volumes:
 - "/var/run/docker.sock:/var/run/docker.sock"
-``` 
+```
 
 ---
 
-### RULE #2 - Set a user 
+### RULE #2 - Set a user
 
-Configuring the container to use an unprivileged user is the best way to prevent privilege escalation attacks. 
+Configuring the container to use an unprivileged user is the best way to prevent privilege escalation attacks.
 
 This can be accomplished in three different ways as follows:
 
-1. During runtime 
-   - `docker run -u 4000 alpine` 
+1. During runtime
+   - `docker run -u 4000 alpine`
 
-2. During build time. 
+2. During build time.
    - Simple add user in Dockerfile and use it. For example:
 
     ```dockerfile
@@ -131,10 +131,10 @@ This can be accomplished in three different ways as follows:
     RUN groupadd -r myuser && useradd -r -g myuser myuser
     <HERE DO WHAT YOU HAVE TO DO AS A ROOT USER LIKE INSTALLING PACKAGES ETC.>
     USER myuser
-    ``` 
+    ```
 
 3. Enable user namespace support (`--userns-remap=default`) in [Docker daemon](https://docs.docker.com/engine/security/userns-remap/#enable-userns-remap-on-the-daemon)
- 
+
 In kubernetes, this can be configured in [Security Context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) using `runAsNonRoot` field e.g.:
 
 ```
@@ -151,23 +151,23 @@ spec:
           ...
           runAsNonRoot: true
           ...
-``` 
+```
 
 As a Kubernetes cluster administrator, you can configure it using [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
 
 ---
 
-### RULE #3 - Limit capabilities (Grant only specific capabilities, needed by a container) 
+### RULE #3 - Limit capabilities (Grant only specific capabilities, needed by a container)
 
-[Linux kernel capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html) are a set of privileges that can be used by privileged. 
-- Docker, by default, runs with only a subset of capabilities. 
-- You can change it and drop some capabilities (using `--cap-drop`) to harden your docker containers, or add some capabilities (using `--cap-add`) if needed. 
+[Linux kernel capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html) are a set of privileges that can be used by privileged.
+- Docker, by default, runs with only a subset of capabilities.
+- You can change it and drop some capabilities (using `--cap-drop`) to harden your docker containers, or add some capabilities (using `--cap-add`) if needed.
 - Remember not to run containers with the `--privileged` flag - this will add ALL Linux kernel capabilities to the container.
 
-The most secure setup is to drop all capabilities `--cap-drop all` and then add only required ones. 
+The most secure setup is to drop all capabilities `--cap-drop all` and then add only required ones.
 
 For example:
-- `docker run --cap-drop all --cap-add CHOWN alpine` 
+- `docker run --cap-drop all --cap-add CHOWN alpine`
 
 **And remember: Do not run containers with the _\--privileged_ flag!!!**
 
@@ -191,13 +191,13 @@ spec:
             add:
             - CHOWN
           ...
-``` 
+```
 
 As a Kubernetes cluster administrator, you can configure it using [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
 
 ---
 
-### RULE #4 - Add –no-new-privileges flag 
+### RULE #4 - Add –no-new-privileges flag
 
 Always run your docker images with `--security-opt=no-new-privileges` in order to prevent escalate privileges using `setuid` or `setgid` binaries.
 
@@ -217,26 +217,26 @@ spec:
           ...
           allowPrivilegeEscalation: false
           ...
-``` 
+```
 
 As a Kubernetes cluster administrator, you can refer to Kubernetes documentation to configure it using [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
 
 ---
 
-### RULE #5 - Disable inter-container communication (--icc=false) 
+### RULE #5 - Disable inter-container communication (--icc=false)
 
-By default inter-container communication (icc) is enabled 
-- it means that all containers can talk with each other (using [`docker0` bridged network](https://docs.docker.com/v17.09/engine/userguide/networking/default_network/container-communication/#communication-between-containers)). 
+By default inter-container communication (icc) is enabled
+- it means that all containers can talk with each other (using [`docker0` bridged network](https://docs.docker.com/v17.09/engine/userguide/networking/default_network/container-communication/#communication-between-containers)).
 
 disabled it by running docker daemon with `--icc=false` flag. disabled icc.
--then it is required to tell which containers can communicate using `--link=CONTAINER\_NAME\_or\_ID:ALIAS` option. 
+-then it is required to tell which containers can communicate using `--link=CONTAINER\_NAME\_or\_ID:ALIAS` option.
 - See more in [Docker documentation - container communication](https://docs.docker.com/v17.09/engine/userguide/networking/default_network/container-communication/#communication-between-containers)
 
 In Kubernetes [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) can be used for it.
 
 ---
 
-### RULE #6 - Use Linux Security Module (seccomp, AppArmor, or SELinux) 
+### RULE #6 - Use Linux Security Module (seccomp, AppArmor, or SELinux)
 
 **do not disable default security profile!**
 
@@ -246,35 +246,35 @@ Instructions how to do this inside Kubernetes can be found at [Security Context 
 
 ---
 
-### RULE #7 - Limit resources (memory, CPU, file descriptors, processes, restarts) 
+### RULE #7 - Limit resources (memory, CPU, file descriptors, processes, restarts)
 
-The best way to avoid DoS attacks is by limiting resources. 
-- You can limit 
-- [memory](https://docs.docker.com/config/containers/resource_constraints/#memory), 
-- [CPU](https://docs.docker.com/config/containers/resource_constraints/#cpu), 
-- maximum number of restarts (`--restart=on-failure:<number_of_restarts>`), 
-- maximum number of file descriptors (`--ulimit nofile=<number>`) 
+The best way to avoid DoS attacks is by limiting resources.
+- You can limit
+- [memory](https://docs.docker.com/config/containers/resource_constraints/#memory),
+- [CPU](https://docs.docker.com/config/containers/resource_constraints/#cpu),
+- maximum number of restarts (`--restart=on-failure:<number_of_restarts>`),
+- maximum number of file descriptors (`--ulimit nofile=<number>`)
 - and maximum number of processes (`--ulimit nproc=<number>`).
 
 [Check documentation for more details about ulimits](https://docs.docker.com/engine/reference/commandline/run/#set-ulimits-in-container---ulimit)
 
-Kubernetes: 
-- [Assign Memory Resources to Containers and Pods](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/), 
-- [Assign CPU Resources to Containers and Pods](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/) 
+Kubernetes:
+- [Assign Memory Resources to Containers and Pods](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/),
+- [Assign CPU Resources to Containers and Pods](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/)
 - and [Assign Extended Resources to a Container](https://kubernetes.io/docs/tasks/configure-pod-container/extended-resource/)
 
 
 ---
 
-### RULE #8 - Set filesystem and volumes to read-only 
+### RULE #8 - Set filesystem and volumes to read-only
 
-1. **Run containers with a read-only filesystem** 
+1. **Run containers with a read-only filesystem**
    - using `--read-only` flag. For example:
-   - `docker run --read-only alpine sh -c 'echo "whatever" > /tmp'` 
+   - `docker run --read-only alpine sh -c 'echo "whatever" > /tmp'`
 
-2. If an application inside a container has to save something temporarily, 
+2. If an application inside a container has to save something temporarily,
    - combine `--read-only` flag with `--tmpfs` like this:
-   - `docker run --read-only --tmpfs /tmp alpine sh -c 'echo "whatever" > /tmp/file'` 
+   - `docker run --read-only --tmpfs /tmp alpine sh -c 'echo "whatever" > /tmp/file'`
 
 Equivalent in the docker-compose file will be:
 
@@ -284,7 +284,7 @@ services:
   alpine:
     image: alpine
     read_only: true
-``` 
+```
 
 kubernetes in [Security Context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) will be:
 
@@ -302,18 +302,18 @@ spec:
           ...
           readOnlyRootFilesystem: true
           ...
-``` 
+```
 
-In addition, if the volume is mounted only for reading **mount them as a read-only** 
+In addition, if the volume is mounted only for reading **mount them as a read-only**
 - It can be done by appending `:ro` to the `-v` like this:
-  - `docker run -v volume-name:/path/in/container:ro alpine` 
+  - `docker run -v volume-name:/path/in/container:ro alpine`
 - Or by using `--mount` option:
-  - `docker run --mount source=volume-name,destination=/path/in/container,readonly alpine` 
+  - `docker run --mount source=volume-name,destination=/path/in/container,readonly alpine`
 
 
 ---
 
-### RULE #9 - Use static analysis tools 
+### RULE #9 - Use static analysis tools
 
 To detect containers with known vulnerabilities - scan images using static analysis tools.
 
@@ -340,22 +340,22 @@ To detect misconfigurations in Docker:
 
 ---
 
-### RULE #10 - Set the logging level to at least INFO 
+### RULE #10 - Set the logging level to at least INFO
 
 By default, the Docker daemon is configured to have a base logging level of `'info'`
-- if this is not the case: set the Docker daemon log level to 'info'. 
-- Rationale: Setting up an appropriate log level, configures the Docker daemon to log events that you would want to review later. 
-- A base log level of 'info' and above would capture all logs except the debug logs. 
+- if this is not the case: set the Docker daemon log level to 'info'.
+- Rationale: Setting up an appropriate log level, configures the Docker daemon to log events that you would want to review later.
+- A base log level of 'info' and above would capture all logs except the debug logs.
 - Until and unless required, you should not run docker daemon at the 'debug' log level.
 
 To configure the log level in docker-compose:
-- `docker-compose --log-level info up` 
+- `docker-compose --log-level info up`
 
 ---
 
-### Rule #11 - Lint the Dockerfile at build time 
+### Rule #11 - Lint the Dockerfile at build time
 
-Many issues can be prevented by following some best practices when writing the Dockerfile. 
+Many issues can be prevented by following some best practices when writing the Dockerfile.
 - Adding a security linter as a step in the the build pipeline can go a long way in avoiding further headaches. Some issues that are worth checking are:
 
 - Ensure a `USER` directive is specified
@@ -378,4 +378,3 @@ Ref:
 - [Configuring Logging Drivers](https://docs.docker.com/config/containers/logging/configure/)
 - [View logs for a container or service](https://docs.docker.com/config/containers/logging/)
 - [Dockerfile Security Best Practices](https://cloudberry.engineering/article/dockerfile-security-best-practices/)
- 

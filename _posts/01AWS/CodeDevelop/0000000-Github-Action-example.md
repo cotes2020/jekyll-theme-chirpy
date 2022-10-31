@@ -25,7 +25,7 @@ image:
 # This is a basic workflow to help you get started with Actions
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
@@ -69,13 +69,13 @@ jobs:
 ```yml
 name: 'Automatic build'
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:                 # when push
-    branches:           # which brances will trigger 
+    branches:           # which brances will trigger
       - master
-    paths-ignore:       # which path will not trigger 
+    paths-ignore:       # which path will not trigger
       - '.gitignore'
       - 'README.md'
       - 'LICENSE'
@@ -85,7 +85,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
    # job 1 name： This workflow contains a single job called "build-n-test"
-  build-n-test: 
+  build-n-test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -97,7 +97,7 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout                  # name the shell
-        uses: actions/checkout@v2       # run official "actions/checkout@v2" code to copy the current code 
+        uses: actions/checkout@v2       # run official "actions/checkout@v2" code to copy the current code
         with:
           fetch-depth: 0
 

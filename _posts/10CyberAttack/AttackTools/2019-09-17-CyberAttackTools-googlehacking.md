@@ -20,7 +20,7 @@ Google also allows keyword searches in specific parts of web pages using special
 `intitle`:
 - `intitle`:
   - restricts your search to the titles of web pages. The variation,allintitle:
-  - finds pages wherein all the words specified make up the title of theweb page. It's probably best to avoid the 
+  - finds pages wherein all the words specified make up the title of theweb page. It's probably best to avoid the
 - `allintitle`:
   - variation, because it doesn'tmix well with some of the other syntaxes.
 > intitle:"george bush"

@@ -103,7 +103,7 @@ Config Query Options
   - Examples of operators include `greater than, equals, does not equal, contains, and exist`.
 - `JOIN` and `ADDCOLUMN`
   - `JOIN`: search against multiple resource types (up to three).
-  - Up to three API calls are included in a query.   
+  - Up to three API calls are included in a query.
   - `ADDCOLUMN`: dynamically display columns for the config query results that are displayed on screen.
 - `Functions`
   - performs a calculation on specific data that matches the clause contained in the function.
@@ -229,7 +229,7 @@ example
 
 
 **JOIN**
-- Use JOINs to get configuration data from two different APIs by combining two different conditions. 
+- Use JOINs to get configuration data from two different APIs by combining two different conditions.
 - Use JOINs for two different APIs
   - to get configuration data from two different APIs by combining two different conditions:
   - `config where api.name=".." as X; config where api.name="..." as Y; filter "$.X... <operator> $.Y"; show (X;|Y;)`

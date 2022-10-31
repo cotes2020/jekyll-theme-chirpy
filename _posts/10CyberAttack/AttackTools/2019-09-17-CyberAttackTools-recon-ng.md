@@ -176,12 +176,12 @@ options set SOURCE tesla.com
 
 
 1. Domain list:
-   - a text file containing the list of top domains in the working directory of auto-recon-ng. 
+   - a text file containing the list of top domains in the working directory of auto-recon-ng.
    - For example: bing.com microsoft.com
 
 2. Modules list:
    - `Subdomain Enumeration`:
-     - Create a text file containing the list of modules, for subdomain enumeration use the below list. 
+     - Create a text file containing the list of modules, for subdomain enumeration use the below list.
 
 ```
 When using the below list the “domain” option must be used with auto-recon-ng.
@@ -207,7 +207,7 @@ recon/hosts-ports/shodan_ip
 ```
 
    - Netblock to host discovery:
-     - Create a text file containing the list of modules, for host enumeration use the below list. 
+     - Create a text file containing the list of modules, for host enumeration use the below list.
 
 ```
 When using the below list the “netblock” option must be used with auto-recon-ng.
@@ -248,7 +248,7 @@ def _readfile(dbname):
 		return dblist
 	else:
 		dblist = None
-        
+
 
 def _reconsetup():
 
@@ -304,7 +304,7 @@ def _reconsetup():
                         for mod in moduleList:
 				_reconmod(wspace,mod,src)
         else:
-        	print "No sources specified, recon-ng will run with the default settings!" 
+        	print "No sources specified, recon-ng will run with the default settings!"
 
     # if list not none
 	if moduleList is not None:
@@ -316,7 +316,7 @@ def _reconsetup():
 
 
 
-def _reconmod(wspace,mod,src): 
+def _reconmod(wspace,mod,src):
 	modarg = "-m" + mod
 	if src:
 		srcarg = "-o source=" + src
@@ -335,7 +335,7 @@ def _reportgen(wspace):
 		modarg= "-m" + rep
 		ext =  re.split('/',rep)[1]
 		srcarg = "-o FILENAME=" + reportfiles + stamp + "." + ext
-		reportarg1 = "-o CREATOR = AutoRecon-ng" 
+		reportarg1 = "-o CREATOR = AutoRecon-ng"
 		reportarg2 = "-o CUSTOMER = haxorhead"
 		proc = subprocess.call(["recon-cli", wspace, modarg, reportarg1, reportarg2, srcarg,"-x"])
 

@@ -259,7 +259,7 @@ network traffic to analyze and produce concise and actionable insights.
 > NAT Gateway IP Addresses for Prisma Cloud
 > Access the Prisma Cloud REST API
 > Prisma Cloud FAQs
-10 
+10
 Prisma Cloud
 Prisma™ Cloud is a cloud infrastructure security solution and a Security Operations Center (SOC)
 enablement tool that enables to address risks and secure workloads in a heterogeneous
@@ -288,7 +288,7 @@ implement policy guardrails to ensure that resource configurations adhere to ind
 integrate configuration change alerts into DevSecOps workflows that automatically resolve issues
 as they are discovered. This capability streamlines the process of identifying issues and detecting and
 responding to a list of prioritized risks to maintain an agile development process and operational efficiency.
-12 
+12
 Here are some highlights of Prisma Cloud:
 Comprehensive Visibility—Enables to view resources—deployed on multiple cloud
 infrastructure platforms—from a single console. In addition to providing a consolidated view of the resources across the cloud platforms, Prisma Cloud integrates with threat intelligence feeds, vulnerability
@@ -325,7 +325,7 @@ To monitor the workloads, must deploy Prisma Cloud Defenders: the agents. All De
 of their type, connect back to the console using WebSocket over port 8084 to retrieve policies and enforce
 vulnerability and compliance blocking rules to the environments where they are deployed, and to send data back to the Compute tab within the Prisma Cloud administrative console. For documentation on how to get
 started with deploying Defenders, configuring policies, viewing alerts, and interpreting the data on Radar, see the Prisma Cloud Administrator’s Guide (Compute) . For administrative user management, such as integrating single sign-on, setting up custom roles, and creating access keys, use the Settings tab on the Prisma Cloud administrative console outlined in this document.
-14 
+14
 Prisma Cloud License Types
 Prisma Cloud is available as a one-, two-, or three-year subscription in the following three editions:
 - Prisma Cloud Business Edition—License includes configuration security posture management (CSPM), compliance reporting, automated remediation, custom policy creation, and a standard success plan.
@@ -366,7 +366,7 @@ download and share the licensing information in a zip file that includes informa
 in CSV file format. For a time period of 3 days or less, download hourly usage data, and data on
 daily usage for a time period greater than 3 days.
 For details on how credits are calculated for Prisma Cloud Defenders, see Prisma Cloud Compute—Licensing.
-16 
+16
 Prisma Cloud—How it Works
 As a Security Operations Center (SOC) enablement tool, Prisma™ Cloud helps identify issues in
 cloud deployments and then respond to a list of prioritized risks so that maintain an agile
@@ -393,7 +393,7 @@ terminates the TLS connection at the Elastic Load Balancer (ELB) and secures tra
 within the data center using an internal certificate until it is terminated at the application node. This ensures
 that data in transit is encrypted using SSL. And, lastly, for workload isolation and micro segmentation, the built-in VPC security controls in AWS securely connect and monitor traffic between application workloads
 on AWS.
-18 
+18
 Get Prisma Cloud From the Palo Alto Networks
 Marketplace
 Purchase or try Prisma™ Cloud from Palo Alto Networks Marketplace. Within 24 hours of purchase, will get access to the Prisma Cloud tenant that is provisioned for you.
@@ -439,7 +439,7 @@ Available regions are Australia, Germany, GovCloud, and US.
 A license confirmation displays.
 Within the next 24 hours, will receive a welcome email that includes a link to log in to the Prisma Cloud tenant that is provisioned for you. directly access the Prisma Cloud instance
 or log in to the hub and click the Prisma tile to log in to Prisma Cloud tenant.
-20 
+20
 Get Prisma Cloud From the AWS Marketplace
 Purchase Prisma™ Cloud as a SaaS subscription directly from the AWS Marketplace. choose a 1-, 3-, or 5-year subscription for the Prisma Cloud Business or Enterprise Edition, or as a PAYG subscription
 based on hourly usage, in the Prisma Cloud Enterprise Edition. The PAYG model offers a 15-day trial
@@ -467,7 +467,7 @@ back later and provide the details to provision Prisma Cloud instance, must
 log in to AWS account. then use the View or Modify link for the active
 AWS Marketplace software subscription on Software page of AWS Marketplace.
 then Click here to setup account.
-22 
+22
 - STEP 5 | Provide the details for provisioning Prisma Cloud instance.
 1. Enter the personal and company information requested in the form.
 2. Select the region where want Prisma Cloud tenant provisioned.
@@ -483,7 +483,7 @@ Edition.
 - STEP 3 | Continue to Subscribe. - STEP 4 | Subscribe to Prisma Cloud.
 The first 15 days of the subscription are free, and will be charged for the subscription hourly after
 the free period expires.
-24 
+24
 - STEP 5 | Provide the details for provisioning Prisma Cloud instance.
 1. Enter the personal and company information requested in the form.
 2. Select the region where want Prisma Cloud tenant provisioned.
@@ -501,7 +501,7 @@ View the available plans and pick the one that best meets the security and compl
 The subscription from the marketplace is for 100 workloads for a 12-month period. For a longer term or
 to secure more workloads, please contact Palo Alto Networks Sales Representative.
 - STEP 4 | Provide the details for provisioning Prisma Cloud instance.
-26 
+26
 1. Enter the personal and company information requested in the form.
 2. Provide the Tenant Name that allows to identify Prisma Cloud instance.
 The name enter here is displayed in the GCP marketplace subscription details and on the Prisma Cloud console.
@@ -517,7 +517,7 @@ upgrade subscription at any time. If want to change plan to a more limited set o
 committed subscription term.
 - STEP 5 | Log in to the hub and click the Prisma Cloud tile to start using Prisma Cloud.
 are now ready for Prisma Cloud—First Look and Prisma Cloud—Next Steps.
-28 
+28
 Access Prisma Cloud
 The welcome email receive from Palo Alto Networks (noreply@prismacloud.paloaltonetworks.com)
 includes a link to where access instance of Prisma Cloud. If are the first registered user, a Palo Alto Networks Customer Support Portal (CSP) account is created for and log in to
@@ -569,7 +569,7 @@ With Palo Alto Networks CSP credentials, click the app switcher on the hub and t
 If see the serial number for instance and want to change it to a descriptive label, navigate to the Settings page using gear > Manage Apps in the upper-right. Click directly
 on the serial number and rename it. This new name displays only on the hub and it does
 not automatically apply to Prisma Cloud instance name.
-30 
+30
 Prisma Cloud—First Look
 When Access Prisma Cloud, first see the Alerts. then use the following tabs to interact
 with the data and visualize the traffic flow and connection details to and from the different resources in
@@ -607,7 +607,7 @@ network.
 - Create a Policy on Prisma Cloud.
 - Add a New Compliance Report.
 - Deploy Prisma Cloud Defenders for securing host, container, and serverless functions.
-32 
+32
 NAT Gateway IP Addresses for Prisma Cloud
 Prisma™ Cloud uses the following NAT gateway IP addresses. To ensure that access Prisma Cloud
 and the API for any integrations that enabled between Prisma Cloud and incidence response
@@ -675,7 +675,7 @@ app2.eu.prismacloud.io 18.200.200.125
 63.32.161.197
 app.gov.prismacloud.io 15.200.20.182
 15.200.89.211
-34 
+34
 URL Source IP Address to Allow
 52.222.38.70
 52.61.207.0
@@ -732,7 +732,7 @@ The following shows the response for a successful request.
 The value for token in the response is the JWT will use to authorize subsequent REST API
 requests.
 - STEP 2 | Authenticate Using the JWT.
-36 
+36
 Specify the JWT in an HTTP header parameter for every Prisma Cloud REST API request. The following
 table shows the details of the header parameter.
 HTTP Header Parameter Key Value
@@ -793,7 +793,7 @@ software is blocking Prisma Cloud and, if so, add the URL for Prisma Cloud insta
 app.pendo.io to the allow list. Check and disable any local firewall rules or proxies that are blocking
 either or both of these URLs.
 - Where do I submit documentation requests or report errors in the documentation?
-38 
+38
 Please let us know how we are doing at documentation@paloaltonetworks.com. When writing to us
 about a documentation error, please include the URL for the page where see the issue.
 - Where do I find documentation for the Compute tab for securing host, container, and serverless
@@ -860,7 +860,7 @@ the next scan. Alerts that are no longer valid because of the policy change are 
 2376 Docker TLS
 3128 Web Proxy
 3268 Active Directory (GC)
-40 
+40
 Port Number Application Classification
 3306 My SQL
 3389 RDP
@@ -1747,7 +1747,7 @@ because Databricks is not available on Azure China.
 If renamed the file, will need to replace the JSON filename to match that in the following
 command.
  az role definition create --role-definition
- "azure_prisma_cloud_lp_read_only.json" 
+ "azure_prisma_cloud_lp_read_only.json"
 For services that are not available in the Azure environment where are creating the role, the following error message displays New-AzRoleDefinition : The resource provider referenced in the action is not returned in the list of providers from Azure Resource Manager. must edit the JSON
 file to remove the permissions for services that are not available.
 Update an Onboarded Azure Account
@@ -2825,7 +2825,7 @@ Organization ID with organization ID.
  $ gcloud logging sinks create <sink-name> storage.googleapis.com/
 <bucket-name> --include-children --organization=<organisation-id>
  --log-filter="resource.type="gce_subnetwork" AND logName:"logs/
-compute.googleapis.com%2Fvpc_flows" 
+compute.googleapis.com%2Fvpc_flows"
 If are onboarding a GCP folder, must have the Folder Viewer role and
 can use the command $ gcloud logging sinks create <sink-name>
 storage.googleapis.com/<bucket-name> --include-children --
@@ -3191,7 +3191,7 @@ Role-based access controls allow to restrict access to the cloud accounts based 
 > Create and Manage Access Keys
 > Manage Prisma Cloud Profile
 > Set up SSO Integration on Prisma Cloud
-> Define Prisma Cloud Enterprise and Anomaly Settings 
+> Define Prisma Cloud Enterprise and Anomaly Settings
 
 ### Prisma Cloud Administrator Roles
 A user on Prisma Cloud is someone who has been assigned administrative privileges, and a role defines the type of access that the administrator has on the service. When define a role, specify the permission group and the account groups that the administrator can manage. Prisma Cloud has four types
@@ -3781,7 +3781,7 @@ account
 group
 Manage Yes Yes View All
 Logs, Defenders
-- 
+-
 Manage
 deployed
 to
@@ -3798,7 +3798,7 @@ Plugin
 and
 twistcli
 Defenders
-- 
+-
 Manage
 current
 defenders
@@ -3814,7 +3814,7 @@ to all
 downloads
 View All
 Logs, Defenders
-- 
+-
 Manage
 deployed
 to
@@ -6382,7 +6382,7 @@ If have trouble connecting with Qualys API, enter username, password, and the UR
 action=list&echo_request=1”
 
  curl -k “https://qualysapi.qg1.apps.qualys.in/msp/
-asset_group_list.php” -u “Username:Password” 
+asset_group_list.php” -u “Username:Password”
  curl -k -H “X-Requested-With:curl” “https://
 qualysapi.qg1.apps.qualys.in/api/2.0/fo/scan/stats/?action=list” -u
  “Username:Password”
@@ -7170,7 +7170,7 @@ buckets/{Config:S3BucketName}/?
 region={Config:S3BucketRegion}&tab=overview",  "executionUrlTemplate": "https://
 s3.console.aws.amazon.com/s3/buckets/{Config:S3BucketName}/?
 region={Config:S3BucketRegion}&tab=overview"
- }, 
+ },
  "configurationProperties": [
  {
  "name": "S3BucketName",  "required": true,  "key": true,  "secret": false,  "queryable": false,  "description": "The S3 bucket name. The results with the  vulnerabilities will be stored in this bucket.",  "type": "String"
@@ -7508,7 +7508,7 @@ prisma-cloud-admin/prisma-cloud-devops-security/use-the-prisma-cloudextension-fo
 
  local scan_location="$(echo $bucketName/$object_key)"
  aws s3 cp s3://$scan_location . || update_job_status "$job_json" "Copy
- Object from S3 bucket failed" 
+ Object from S3 bucket failed"
 
  local file=( *.zip )
  #echo "file: $file"
@@ -10023,4 +10023,4 @@ analysis or limited by a maximum time out limit (24 hrs) whichever is hit earlie
 - There will be egress cost implications for the customer as the solution seeks to evaluate all content
 in customer’s buckets. The customer can choose to optimize on cost by only selecting those buckets
 requiring scans and filtering out any known good files that would not require any Data Profile analysis or
-malware analysis. E.g. Database backup files etc 
+malware analysis. E.g. Database backup files etc

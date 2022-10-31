@@ -27,7 +27,7 @@ class Solution(object):
     def isHappy(self, n):
         # set for all number that wont provide 1
         seen=set()
-        
+
         def helper(x):
             res=0
             while x>9:
@@ -36,9 +36,9 @@ class Solution(object):
                 x,y = divmod(x,10)
                 res += y**2
                 res += x**2
-            if res in seen: 
+            if res in seen:
                 return False
-            if res==1: 
+            if res==1:
                 return True
             seen.add(res)
             return helper(res)

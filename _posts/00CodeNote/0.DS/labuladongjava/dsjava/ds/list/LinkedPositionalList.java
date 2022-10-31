@@ -11,9 +11,9 @@ import java.util.NoSuchElementException;
 //     public LinkedPositionalList(){}
 //     private Node<E> validate(Position<E> p) throws IllegalArgumentException {}
 // }
- 
+
 public class LinkedPositionalList<E> implements PositionalList<E>  {
-    
+
     private static class Node<E> implements Position<E>{
         private E element;
         private Node<E> prev;
@@ -43,7 +43,7 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
         public void setNext(Node<E> n) {
             next = n;
         }
-    } 
+    }
     // ----------- end of nested Node class ----------
 
     private Node<E> header;
@@ -53,17 +53,17 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
     /** Constructs a new empty list. */
     public LinkedPositionalList(){
         header = new Node<>(null,null,null);
-        trailer = new Node<>(null,header,null);   
+        trailer = new Node<>(null,header,null);
         header.setNext(trailer);
     }
 
     // private utilities
     // ** Validates the position and returns it as a node. */
     private Node<E> validate(Position<E> p) throws IllegalArgumentException {
-        if (!(p instanceof Node)) throw new IllegalArgumentException("Invalid p"); 
-        Node<E> node = (Node<E>) p; // safe cast 
+        if (!(p instanceof Node)) throw new IllegalArgumentException("Invalid p");
+        Node<E> node = (Node<E>) p; // safe cast
         // convention for defunct node
-        if (node.getNext() == null) throw new IllegalArgumentException("p is no longer in the list"); 
+        if (node.getNext() == null) throw new IllegalArgumentException("p is no longer in the list");
         return node;
     }
     // ** Returns the given node as a Position (or null, if it is a sentinel). */
@@ -86,7 +86,7 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
         return node.getNext();
     }
 
-        
+
     // private utilities
     public Position<E> addBetween(E e, Node<E> prev, Node<E> succ) throws IllegalStateException {
         Node<E> node = new Node<>(e, prev, succ);
@@ -129,13 +129,13 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
         return ans;
     }
 
-    /** Returns an iterable representation of the list's positions. */ 
+    /** Returns an iterable representation of the list's positions. */
     public Iterable<Position<E>> positions( ) {
-        return new PositionIterable(); // create a new instance of the inner class 
+        return new PositionIterable(); // create a new instance of the inner class
     }
     //---------------- nested PositionIterable class ----------------
     private class PositionIterable implements Iterable<Position<E>> {
-        public Iterator<Position<E>> iterator() {return new PositionIterator();} 
+        public Iterator<Position<E>> iterator() {return new PositionIterator();}
     }
     //---------------- nested PositionIterator class ----------------
     private class PositionIterator implements Iterator<Position<E>> {
@@ -156,9 +156,9 @@ public class LinkedPositionalList<E> implements PositionalList<E>  {
     }
 
 
-    /** Returns an iterator of the elements stored in the list. */ 
-    public Iterator<E> iterator( ) { 
-        return new ElementIterator( ); 
+    /** Returns an iterator of the elements stored in the list. */
+    public Iterator<E> iterator( ) {
+        return new ElementIterator( );
     }
 
     //---------------- nested ElementIterator class ----------------

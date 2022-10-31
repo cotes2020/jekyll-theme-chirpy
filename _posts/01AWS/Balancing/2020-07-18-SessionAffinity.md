@@ -76,10 +76,10 @@ goal: <font color=red> Manage user session </font>
 
 2. <font color=red> the application remember the context </font> by creating an associated memento
    - This memento is given to the client and returned to the application on subsequent requests.
-     1. via URL 
+     1. via URL
         - `http://www.example.com/products/awesomeDoohickey.html?sessionID=0123456789ABCDEFGH`
      2. via cookies
-        - placed within the HTTP request 
+        - placed within the HTTP request
         - so they can be discovered by the application even if a load balancer intervenes.
 
 
@@ -101,15 +101,15 @@ Use-Case:
 - The method chosen will depend on the style of load balancing employed, as well as the availability/capacity of backend storage:
 
 
-way in which the Application Session State is stored. 
+way in which the Application Session State is stored.
 - Stateful
-  - the application session state is stored locally on the same server as the application. 
+  - the application session state is stored locally on the same server as the application.
     - This is also referred to as a stateful server
   - to scale up/down the application server
     - there <font color=red> would be user interruption </font>
 
 - Stateless
-  - the application session state is stored remotely on another server rather than locally on the application server. 
+  - the application session state is stored remotely on another server rather than locally on the application server.
     - This is also referred to as a stateless server
   - to scale up/down the application server
     - <font color=red> no user interruption </font>
@@ -133,12 +133,12 @@ way in which the Application Session State is stored.
 
 - The user does not need to hit the same machine each time, so DNS load balancing can be employed
 
-- <font color=red> no latency </font> associated with retrieving the session information from a database machine 
-  - (as it is provided with the HTTP request). 
+- <font color=red> no latency </font> associated with retrieving the session information from a database machine
+  - (as it is provided with the HTTP request).
   - Useful if your site is load-balanced by machines on different continents.
 
 
-- <font color=red> Encryption </font> has to be employed 
+- <font color=red> Encryption </font> has to be employed
   - if a user should not be able to see the contents of their session
   - <font color=blue> HMAC (or similar) has to be employed </font> to prevent user tampering of session data
 
@@ -164,7 +164,7 @@ way in which the Application Session State is stored.
   - Because the user is always directed to the same machine, <font color=red> session sharing between multiple machines is not required. </font>
 
 - <font color=red> Taking machines out of service is more difficult </font>
-  - Users with sessions on a machine to be taken down for maintenance should be allowed to complete their tasks before the machine is turned off. 
+  - Users with sessions on a machine to be taken down for maintenance should be allowed to complete their tasks before the machine is turned off.
   - To support this, web load balancers may have a feature to "drain" requests to a certain backend machine.
 
 
@@ -210,7 +210,7 @@ A cloud design pattern that uses multiple load balancers
 - When a website is served by <font color=red> multiple web servers behind a load balancer </font>
   - the load balancer decides which web server the request goes to.
   - load balancer use <font color=blue> sticky sessions </font> or <font color=blue> Stickiness sessions </font>
-  
+
 
 ---
 
@@ -234,7 +234,7 @@ cache
 
 1. If the load balancer use <font color=red> sticky sessions </font>
    - <font color=blue> all interactions happen with the same physical server </font>
-   - the new sticky session feature instruct the load balancer 
+   - the new sticky session feature instruct the load balancer
      - to <font color=blue> route repeated requests to the same EC2 instance whenever possible </font>
        - A series of requests from the user will be routed to the same EC2 instance if possible.
      - If the instance has been terminated or has failed a recent health check
@@ -260,7 +260,7 @@ cache
    - even load on each instance
 
 
-by sticky session 
+by sticky session
 
 - enables the load balancer to <font color=red> bind user's session to a specific instance </font>
   - all requests from the user during the session are sent to the same server instance.
@@ -316,7 +316,7 @@ The <font color=red> session’s validity </font> can be determined by:
   - such as deploying software upgrades or replacing backend instances,
 
 
-- Applications often store session data in memory, but this approach doesn’t scale well. 
+- Applications often store session data in memory, but this approach doesn’t scale well.
   - Options available to manage session data without `sticky sessions` include:
   - Using ElastiCache or DynamoDB to store session data.
 
@@ -338,7 +338,7 @@ When a web application is multi-device compatible (access from PCs and smart pho
 2. **solve this problem**: assign multiple virtual load balancers with different settings.
    - rather than modifying the `servers`
    - changing the `virtual load balancer` for routing the access.
-   - change the behavior relative to access by the different devices 	
+   - change the behavior relative to access by the different devices
    - For example
      - apply this to settings such as for sessions, health checks, and HTTPS.
      - To implement, `assign multiple virtual load balancers to a single EC2 instance`.

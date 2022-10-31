@@ -22,14 +22,14 @@ image: /assets/img/note/prisma.png
 
 ## Overview of Prisma Cloud Compute
 
-Prisma Cloud Compute supports an architecture that requires no changes to your host, container engine, or applications.  
+Prisma Cloud Compute supports an architecture that requires no changes to your host, container engine, or applications.
 
 Prisma Cloud Compute
 - Prisma Cloud Compute is the `SaaS version` of the `full Cloud Native Security Platform` hosted by Palo Alto Networks.
 - Prisma Cloud protects your cloud native assets anywhere they operate, whether you’re running containers, serverless functions, non-container hosts, or any combination of them.
-- Advanced threat intelligence and machine learning enable protection of your entire cloud native stack, whether it runs in the public cloud, private, or hybrid cloud.  
+- Advanced threat intelligence and machine learning enable protection of your entire cloud native stack, whether it runs in the public cloud, private, or hybrid cloud.
 - Prisma Cloud offers a rich set of `cloud workload protection capabilities`. These features are called `Compute`.
-- For environments that do not support deployment of Prisma Cloud Compute as a privileged peer, we offer `runtime application self protection (RASP) capabilities`.  
+- For environments that do not support deployment of Prisma Cloud Compute as a privileged peer, we offer `runtime application self protection (RASP) capabilities`.
 - **Cloud Environment**
   - Upon deployment, Prisma Cloud immediately begins working to secure your container and cloud native assets.
   - Prisma Cloud Compute discovers assets within your cloud environment, identify assets which are not protected.
@@ -38,7 +38,7 @@ Prisma Cloud Compute
 - **Serverless Functions**
   - Prisma Cloud Compute supports the full stack and lifecycle of your cloud native workloads.
   - With Prisma Cloud Compute, protect mixed workload environments.
-  - Whether running standalone hosts, containers, serverless functions, or combination of the above, Prisma Cloud Compute allows to manage the environment with a single interface across the entirety of the lifecycle from development to runtime.  
+  - Whether running standalone hosts, containers, serverless functions, or combination of the above, Prisma Cloud Compute allows to manage the environment with a single interface across the entirety of the lifecycle from development to runtime.
 
 
 **Accessing Compute**
@@ -128,7 +128,7 @@ refresh: 24h
 Prisma Cloud Compute is deployed in stages. Initially learn about the capabilities of Compute and plan your deployment, making considerations for accessing the console and for deploying defenders.
 
 Prisma Cloud Compute Operations Overview
-- Palo Alto Networks operates the `Console` for you, and you must deploy `Defenders` into your environment to secure hosts, containers, and serverless functions running in any cloud, including on-premises.  
+- Palo Alto Networks operates the `Console` for you, and you must deploy `Defenders` into your environment to secure hosts, containers, and serverless functions running in any cloud, including on-premises.
 - After deployment, observe the results of data that are reported from your applications. When you are ready, it is time to operationalize Compute. Prisma Cloud Compute supports the following operations.
 
 

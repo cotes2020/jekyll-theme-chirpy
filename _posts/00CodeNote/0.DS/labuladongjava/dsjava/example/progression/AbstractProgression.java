@@ -1,5 +1,5 @@
 public abstract class AbstractProgression {
-    
+
     // instance variable
     protected long current;
 
@@ -8,25 +8,25 @@ public abstract class AbstractProgression {
 
     // /∗∗ Constructs a progression with given start value. ∗/
     public AbstractProgression(long start) { current = start; }
-    
-    // /∗∗ Returns the next value of the progression. ∗/ 
-    
+
+    // /∗∗ Returns the next value of the progression. ∗/
+
     public long nextValue() {
         long answer = current;
-        advance(); // this protected call is responsible for advancing the current value 
+        advance(); // this protected call is responsible for advancing the current value
         return answer;
     }
-    
-    // /∗∗ Advances the current value to the next value of the progression. ∗/ 
+
+    // /∗∗ Advances the current value to the next value of the progression. ∗/
     protected abstract void advance();
-    
-    // /∗∗ Prints the next n values of the progression, separated by spaces. ∗/ 
+
+    // /∗∗ Prints the next n values of the progression, separated by spaces. ∗/
     public void printProgression(int n) {
-        // print first value without leading space 
-        System.out.print(nextValue()); 
+        // print first value without leading space
+        System.out.print(nextValue());
         for (int j=1; j < n; j++) System.out.print(" " + nextValue( ));
-        // print leading space before others 
+        // print leading space before others
         System.out.println();
     }
-    
+
 }

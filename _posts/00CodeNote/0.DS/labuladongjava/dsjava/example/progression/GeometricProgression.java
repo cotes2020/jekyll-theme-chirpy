@@ -1,4 +1,4 @@
-public class GeometricProgression extends Progression { 
+public class GeometricProgression extends Progression {
 
     protected long base;
 
@@ -11,7 +11,7 @@ public class GeometricProgression extends Progression {
     public GeometricProgression(long b) {
         this(b, 1);
     }
-    
+
     // /∗∗ Constructs geometric progression with arbitrary base and start. ∗/
     public GeometricProgression(long b, long start) {
         super(start);

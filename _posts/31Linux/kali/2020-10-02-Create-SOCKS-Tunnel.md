@@ -1,5 +1,5 @@
 ---
-title: Create SOCKS Tunnel to route Web Traffic Securely Without a VPN 
+title: Create SOCKS Tunnel to route Web Traffic Securely Without a VPN
 # author: Grace JyL
 date: 2020-10-02 11:11:11 -0400
 description:
@@ -14,7 +14,7 @@ image: /assets/img/note/tls-ssl-handshake.png
 
 [toc]
 
-# Create SOCKS Tunnel to route Web Traffic Securely Without a VPN 
+# Create SOCKS Tunnel to route Web Traffic Securely Without a VPN
 
 ---
 
@@ -30,16 +30,16 @@ image: /assets/img/note/tls-ssl-handshake.png
 
 ## SOCKS 5 proxy tunnel.
 - A SOCKS proxy is an SSH encrypted tunnel
-- configured applications forward their traffic down, and then, on the server-end, the proxy forwards the traffic to the general Internet. 
-- Unlike a VPN, a SOCKS proxy has to be configured on an `app-by-app` basis on the client machine, 
-- client can set up apps without specialty software as the app is capable of using a SOCKS proxy. 
+- configured applications forward their traffic down, and then, on the server-end, the proxy forwards the traffic to the general Internet.
+- Unlike a VPN, a SOCKS proxy has to be configured on an `app-by-app` basis on the client machine,
+- client can set up apps without specialty software as the app is capable of using a SOCKS proxy.
 - server-side, all need to configure is SSH.
 
 ---
 
 ## Step 1 (macOS/Linux) — Setting Up the Tunnel
 - create an SSH key
-- make sure the public side is added to the `‘authorized_keys’ file on your SSH Droplet`. 
+- make sure the public side is added to the `‘authorized_keys’ file on your SSH Droplet`.
 - create an SSH tunnel with SOCKS proxy enabled.
 
 ```bash
@@ -53,16 +53,16 @@ ssh -i ~/.ssh/id_rsa -D 1337 -f -C -q -N username@your_domain
 # - -C: Compresses the data before sending it
 # - -q: Uses quiet mode
 # - -N: Tells SSH that no command will be sent once the tunnel is up
- 
+
 2. Verify that the tunnel is running with this command:
 ps aux | grep ssh
 # Output
 username    14345   0.0  0.0  2462228    452   ??  Ss    6:43AM   0:00.00 ssh -i ~/.ssh/id_rsa -D 1337 -f -C -q -N username@your_domain
-# - quit terminal application and the tunnel will stay up. 
+# - quit terminal application and the tunnel will stay up.
 # the -f argument, put the SSH session into the background:
 
 # - to terminate the tunnel
-# grab the PID 14345. 
+# grab the PID 14345.
 # use the command kill 14345
 ```
 
@@ -72,7 +72,7 @@ username    14345   0.0  0.0  2462228    452   ??  Ss    6:43AM   0:00.00 ssh -i
 - for a SOCKS 5 tunnel to work, have to use a local application that can implement the tunnel;
   - Firefox has this capability:
 - This step is the same for Windows, macOS, and Linux.
-- Make sure you have the port number that you used in your SSH command; 
+- Make sure you have the port number that you used in your SSH command;
   - in our examples we’ve used 1337.
 
 Open Firefox.
@@ -101,9 +101,9 @@ kill 14345
 
 ### Clickable BASH Script
 - The script will set up the tunnel and then launch Firefox
-  
+
 - On macOS
-  - the Firefox binary that we can launch from the command line is inside Firefox.app. Assuming the app is in the Applications folder, 
+  - the Firefox binary that we can launch from the command line is inside Firefox.app. Assuming the app is in the Applications folder,
   - the binary will be found at `/Applications/Firefox.app/Contents/MacOS/firefox`.
 - On Linux systems
   - if you installed Firefox via a repo or if it’s pre-installed, then its location should be `/usr/bin/firefox`.
@@ -134,7 +134,7 @@ ssh -i ~/.ssh/id_rsa -D 1337 -f -C -q -N sammy@`your_domain`
 ---
 
 ### Command Line Alias
-- Different Linux distributions and macOS releases save aliases in different places. The best bet is to look for one of the following files and search for alias to see where other aliases are currently being saved. 
+- Different Linux distributions and macOS releases save aliases in different places. The best bet is to look for one of the following files and search for alias to see where other aliases are currently being saved.
 Possibilities include:
 - ~/.bashrc
 - ~/.zshrc

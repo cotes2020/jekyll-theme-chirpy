@@ -1,14 +1,14 @@
 
 
 
- 
+
 
 - [Monitor and secure containers](#monitor-and-secure-containers)
   - [Security Command Center](#security-command-center)
 
 ---
 
-# Monitor and secure containers  
+# Monitor and secure containers
 
 Container Threat Detection
 - monitor and secure the container deployments in Google Cloud.
@@ -25,11 +25,11 @@ key findings identified by Container Threat Detection:
     - such as malware or cryptocurrency mining software
 - **Suspicious Library Loaded**
   - can detect when a library that <font color=blue> was not part of the original container image </font> is loaded
-  - the attacker may has control of the workload and that they are executing arbitrary code.  
+  - the attacker may has control of the workload and that they are executing arbitrary code.
 - **Reverse Shell**
   - monitors for processes that get started with stream redirection to a remote connected socket.
   - An attacker can use a reverse shell to communicate from a compromised workload to an attacker controlled machine and perform malicious activities
-  - for example as part of a botnet.  
+  - for example as part of a botnet.
 
 
 ---
