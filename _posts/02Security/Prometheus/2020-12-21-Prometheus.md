@@ -436,7 +436,7 @@ docker ps |grep prometheus
 - 启动之后可以访问web页面http://localhost:9090/graph,在status下拉菜单中可以看到配置文件和目标的状态
 - 此时目标状态为DOWN，因为我们所需要监控的服务还没有启动起来
 
-![Screenshot 2022-11-02 at 11.39.11](/assets/Screenshot%202022-11-02%20at%2011.39.11_4alo4l7ok.png)
+![Screenshot 2022-11-02 at 11.39.11](https://github.com/ocholuo/ocholuo.github.io/blob/master/assets/img/note/Screenshot%202022-11-02%20at%2011.39.11_4alo4l7ok.png)
 
 
 步入正文，用pro golang client来实现程序吧。
@@ -1078,7 +1078,7 @@ In the metrics output, you'll see the help text, type information, and current v
 ```
 
 
-[configure](/docs/prometheus/latest/configuration/configuration/#scrape_config) a locally running Prometheus instance to scrape metrics from the application. Here's an example `prometheus.yml` configuration:
+configure a locally running Prometheus instance to scrape metrics from the application. Here's an example `prometheus.yml` configuration:
 
 ```yaml
 scrape_configs:
