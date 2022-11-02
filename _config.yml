@@ -29,6 +29,8 @@ description: >-                        # used by seo meta and the atom feed
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
 
+homeicon: false            # show home icon in sidebar
+
 github:
   username: github_username             # change to your github username
 
