@@ -19,8 +19,10 @@ image:
       - [结果确认](#结果确认)
     - [3:指标监控示例](#3指标监控示例)
       - [事前准备](#事前准备)
-      - [启动监控对象进程](#启动监控对象进程)
       - [配置Prometheus](#配置prometheus)
+      - [启动 Prometheus服务](#启动-prometheus服务)
+      - [启动监控对象进程](#启动监控对象进程)
+      - [配置Prometheus](#配置prometheus-1)
       - [启动Prometheus服务](#启动prometheus服务)
       - [结果确认](#结果确认-1)
     - [4:使用Grafana进行可视化显示](#4使用grafana进行可视化显示)
@@ -246,6 +248,13 @@ docker run -d -p 9090:9090 \
 	-v `pwd`/prometheus-demo.yml:/etc/prometheus/prometheus.yml \
 	--name prometheus prom/prometheus
 
+
+docker run -p 9090:9090 \
+  --network=host \
+  -v `pwd`/prometheus.yml:/etc/prometheus/prometheus.yml \
+  prom/prometheus
+
+
 docker container start prometheus
 ```
 
@@ -341,25 +350,115 @@ docker run --rm -it \
 
 ```
 
+#### 配置Prometheus
+
+
+将Prometheus进行如下配置：
+- 在8080-8082三个端口都提供了可供Prometheus进行监控指标数据，
+
+配置说明：
+* 设定job名称为example-random
+* 数据的抓取时间间隔设定为5秒
+* 将8080-8082三个监控对象分成两组，
+  * 8080和8081一组，组标签名称为production，
+  * 8082为一组，组标签名称为canary
+* ip（192.168.31.242）请修改为自己的IP，因为本文启动的内容均在容器之中，又没有使用link或者其他方式来使得各个容器之间的相互联通，这里直接使用IP方式使得Prometheus能够访问到这些对象机器。
+
+```yaml
+# prometheus-random.yml
+global:
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+    monitor: 'codelab-monitor'
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+- job_name: "go-test"
+  scrape_interval: 60s
+  scrape_timeout: 60s
+  metrics_path: "/metrics"
+  static_configs:
+  - targets: ["localhost:8888"]
+
+  - job_name: "example-random"
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["192.168.31.242:8080", "192.168.31.242:8081"]
+        labels:
+          group: "production"
+      - targets: ["192.168.31.242:8082"]
+        labels:
+          group: "canary"
+```
+
+可以看到配置文件中指定了一个job_name
+- 所要监控的任务即视为一个job
+- scrape_interval, scrape_timeout 是pro进行数据采集的时间间隔和频率，
+- metrics_path 指定了访问数据的http路径，
+- target 是目标的ip:port,这里使用的是同一台主机上的8888端口。
+  - ["localhost:8888"]
+  - or ["xx.xx.xx.xx:8888"]
+
+
+
+#### 启动 Prometheus服务
+
+配置好之后就可以启动 Prometheus服务 了：
+
+
+```bash
+# 使用如下命令启动Prometheus服务
+docker run -d -p 9090:9090 \
+	-v `pwd`/prometheus-demo.yml:/etc/prometheus/prometheus.yml \
+	--name prometheus prom/prometheus
+
+docker run -d -p 9090:9090 \
+	-v `pwd`/prometheus-random.yml:/etc/prometheus/prometheus.yml \
+	--name prometheus prom/prometheus
+
+docker run --network=host -p 9090:9090 \
+  -v `pwd`/prometheus.yml:/etc/prometheus/prometheus.yml \
+  prom/prometheus
+
+# 确认Promtheus容器状态
+docker ps |grep prometheus
+# 1f9d3831c1d2        prom/prometheus     "/bin/prometheus --c…"   About a minute ago   Up 59 seconds       0.0.0.0:9090->9090/tcp   prometheus
+```
+
+此处网络通信采用的是host模式
+- 所以docker中的pro可以直接通过localhost来指定同一台主机上所监控的程序。
+- prob暴露9090端口进行界面显示或其他操作，需要对docker中9090端口进行映射。
+- 启动之后可以访问web页面http://localhost:9090/graph,在status下拉菜单中可以看到配置文件和目标的状态
+- 此时目标状态为DOWN，因为我们所需要监控的服务还没有启动起来
+
+![Screenshot 2022-11-02 at 11.39.11](/assets/Screenshot%202022-11-02%20at%2011.39.11_4alo4l7ok.png)
+
+
+步入正文，用pro golang client来实现程序吧。
 
 #### 启动监控对象进程
 
 - 分别在8080-8082三个端口启动三个服务用于提供Prometheus监控的对象进程。
 
 ```bash
-$ docker run -p 8080:8080 -d -it \
+docker run -p 8080:8080 -d -it \
 	-v `pwd`/random:/random \
 	--rm alpine /random \
 	-listen-address=:8080
 # 22da3e4803b8fc7b31b0ebb7b8eac0afc188c62bfc1e1ae58f26ebf56178f3b8
 
-$ docker run -p 8081:8081 -d -it \
+docker run -p 8081:8081 -d -it \
 	-v `pwd`/random:/random \
 	--rm alpine /random \
 	-listen-address=:8081
 # ed35547ffb865df313236adab20d0c20164f051a45df9f59c93df6e1ddaec4b6
 
-$ docker run -p 8082:8082 -d -it \
+docker run -p 8082:8082 -d -it \
 	-v `pwd`/random:/random \
 	--rm alpine /random \
 	-listen-address=:8082
@@ -369,7 +468,7 @@ $ docker run -p 8082:8082 -d -it \
 结果确认：容器状态确认
 
 ```bash
-$ docker ps
+docker ps
 # CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 # 4e7da2844b26        alpine              "/random -listen-add…"   2 seconds ago       Up 1 second         0.0.0.0:8082->8082/tcp   ecstatic_hypatia
 # ed35547ffb86        alpine              "/random -listen-add…"   10 seconds ago      Up 9 seconds        0.0.0.0:8081->8081/tcp   blissful_jennings
@@ -379,13 +478,13 @@ $ docker ps
 结果确认：指标确认
 
 ```bash
-$ curl http://localhost:8080/metrics 2>/dev/null |wc -l
+curl http://localhost:8080/metrics 2>/dev/null |wc -l
 #  164
 
-$ curl http://localhost:8081/metrics 2>/dev/null |wc -l
+curl http://localhost:8081/metrics 2>/dev/null |wc -l
 #  164
 
-$ curl http://localhost:8082/metrics 2>/dev/null |wc -l
+curl http://localhost:8082/metrics 2>/dev/null |wc -l
 #  164
 ```
 
@@ -421,19 +520,24 @@ scrape_configs:
 #### 启动Prometheus服务
 
 ```bash
-
+# 使用如下命令启动Prometheus服务
 docker run -d -p 9090:9090 \
 	-v `pwd`/prometheus-demo.yml:/etc/prometheus/prometheus.yml \
 	--name prometheus prom/prometheus
 
-# 使用如下命令启动Prometheus服务
-$ docker run -d -p 9090:9090 \
+docker run -d -p 9090:9090 \
 	-v `pwd`/prometheus-random.yml:/etc/prometheus/prometheus.yml \
 	--name prometheus prom/prometheus
 # 1f9d3831c1d2c85d758cb4ff8af3054ec90a7f7b8f1f356431150ce6822253df
 
+docker run --network=host -p 9090:9090 \
+  -v `pwd`/prometheus.yml:/etc/prometheus/prometheus.yml \
+  prom/prometheus
+
+
+
 # 确认Promtheus容器状态
-$ docker ps |grep prometheus
+docker ps |grep prometheus
 # 1f9d3831c1d2        prom/prometheus     "/bin/prometheus --c…"   About a minute ago   Up 59 seconds       0.0.0.0:9090->9090/tcp   prometheus
 ```
 
@@ -567,7 +671,7 @@ Prometheus安装方法
 事前准备
 
 ```bash
-$ kubectl get node -o wide
+kubectl get node -o wide
 # NAME              STATUS   ROLES    AGE   VERSION   INTERNAL-IP       EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION          CONTAINER-RUNTIME
 # 192.168.163.131   Ready    <none>   20h   v1.17.0   192.168.163.131   <none>        CentOS Linux 7 (Core)   3.10.0-957.el7.x86_64   docker://18.9.7
 ```
@@ -595,13 +699,13 @@ data:
 
 
 # 创建并确认ConfigMap配置
-$ kubectl create -f prometheus.yml
+kubectl create -f prometheus.yml
 # configmap/prometheus-configmap created
 
-$ kubectl get cm
+kubectl get cm
 # NAME                   DATA   AGE
 # prometheus-configmap   1      4s
-$ kubectl describe cm prometheus-configmap
+kubectl describe cm prometheus-configmap
 # Name:         prometheus-configmap
 # Namespace:    default
 # Labels:       <none>
@@ -684,20 +788,20 @@ prometheus-deployment.yml
 
 ```bash
 # 创建Service与Deployment
-$ kubectl create -f prometheus-deployment.yml
+kubectl create -f prometheus-deployment.yml
 # service/prometheus created
 # deployment.apps/prometheus created
 
 
 # 确认Service信息
-$ kubectl get service -o wide
+kubectl get service -o wide
 # NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE   SELECTOR
 # kubernetes   ClusterIP   10.254.0.1       <none>        443/TCP          20h   <none>
 # prometheus   NodePort    10.254.229.211   <none>        9090:30944/TCP   7s    app=prometheus
 
 
 # 确认Pod信息
-$ kubectl get pods
+kubectl get pods
 # NAME                         READY   STATUS    RESTARTS   AGE
 # prometheus-fcd87fbf4-ljzrb   1/1     Running   0          13s
 ```
