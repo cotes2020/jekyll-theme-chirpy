@@ -8,7 +8,7 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/ocholuo/ocholuo.github.io/_posts/02Security/Prometheus//utils/randomutil"
+	"github.com/ocholuo/ocholuo.github.io/_posts/02Security/Prometheus/utils/randomutil"
 )
 
 const counterNamePrefix = namePrefix + "_counter"
