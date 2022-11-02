@@ -9,6 +9,8 @@ image:
 
 - [Prometheus](#prometheus)
   - [Concepts](#concepts)
+    - [模型](#模型)
+    - [数据指标](#数据指标)
   - [Prometheus: 监控与告警](#prometheus-监控与告警)
     - [1:概要介绍](#1概要介绍)
       - [主要特性](#主要特性)
@@ -21,9 +23,8 @@ image:
       - [事前准备](#事前准备)
       - [配置Prometheus](#配置prometheus)
       - [启动 Prometheus服务](#启动-prometheus服务)
+      - [pro golang client](#pro-golang-client)
       - [启动监控对象进程](#启动监控对象进程)
-      - [配置Prometheus](#配置prometheus-1)
-      - [启动Prometheus服务](#启动prometheus服务)
       - [结果确认](#结果确认-1)
     - [4:使用Grafana进行可视化显示](#4使用grafana进行可视化显示)
       - [事前准备](#事前准备-1)
@@ -37,10 +38,11 @@ image:
       - [Add own metrics](#add-own-metrics)
       - [Other Go client features](#other-go-client-features)
     - [Client for the Prometheus HTTP API](#client-for-the-prometheus-http-api)
+  - [go client](#go-client)
+    - [自定义Collector](#自定义collector)
   - [Package](#package)
     - [prometheus/client_golang](#prometheusclient_golang)
     - [`prometheus` 包](#prometheus-包)
-      - [数据指标](#数据指标)
       - [自定义 Collectors 和常量指标](#自定义-collectors-和常量指标)
       - [Registry 的高级用法](#registry-的高级用法)
       - [HTTP 公开数据指标](#http-公开数据指标)
@@ -62,6 +64,7 @@ image:
   - [prometheus client_golang 简单使用](https://hulining.github.io/2020/07/01/prometheus-client_golang-Introduction/)
   - https://blog.csdn.net/liumiaocn/category_9561738.html
   - [Go进阶31:Prometheus Client教程](https://mojotv.cn/go/prometheus-client-for-go)
+  - [prometheus client_golang使用](https://www.cnblogs.com/gaorong/p/7881203.html)
 
 # Prometheus
 
@@ -104,6 +107,234 @@ Prometheus 的优势
 
 ## Concepts
 
+### 模型
+Prometheus 所有采集的监控数据均以指标（metric）的形式保存在内置的时间序列数据库当中（TSDB）：
+- 属于同一指标名称，同一标签集合的、有时间戳标记的数据流。
+- 除了存储的时间序列，Prometheus 还可以根据查询请求产生临时的、衍生的时间序列作为返回结果。
+- 在时间序列中的每一个点称为一个样本（sample）
+
+
+样本由以下三部分组成
+- 指标（metric）：指标名称和描述当前样本特征的 labelsets
+- 时间戳（timestamp）：一个精确到毫秒的时间戳
+- 样本值（value）： 一个 folat64 的浮点型数据表示当前样本的值
+
+
+
+### 数据指标
+
+```py
+metrics name {(label)key-value} float64 value
+
+# HELP go_gc_duration_seconds A summary of the GC invocation durations.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0.5"} 0.000107458
+go_gc_duration_seconds_count 18
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 107
+```
+
+`prometheus` 包为了方便client library的使用提供了四种核心的数据类型：
+- `Counter`, `Gauge`, `Histogram` 和 `Summary` .
+- 但这些类型只是在客户端库（客户端可以根据不同的数据类型调用不同的 API 接口）和在线协议中，
+- 实际在 Prometheus server 中并不对指标类型进行区分，而是简单地把这些指标统一视为无类型的时间序列。
+
+
+> [Prometheus docs](https://prometheus.io/docs/concepts/metric_types/) : 对这四种度量标准类型的更全面的描述.
+
+
+
+
+除了四种基本的数据指标类型外,Prometheus 数据模型的一个非常重要的部分是沿着称为 “标签” 的维度对数据指标样本进行划分,这就产生了数据指标向量(`metric vectors`).
+
+数据类型：
+- Counter类型
+  - 好比计数器,用于统计类似于：CPU时间,API访问总次数,异常发生次数等等场景.
+  - 代表一种样本数据单调递增的指标，即只增不减。除非监控系统发生了重置。
+    - 例如，使用 counter 类型的指标来表示服务的请求数、已完成的任务数、错误发生的次数等。
+    - 不要将 counter 类型应用于样本数据非单调递增的指标，例如：当前运行的进程数量（应该用 Gauge 类型）。
+
+- Gauge类型
+  - “计量器” ”仪表盘“
+  - 代表一种样本数据可以任意变化的指标，即可增可减。
+  - Gauge 通常用于像温度或者内存使用率这种指标数据，也可以表示能随时增加或减少的“总数”，
+  - 例如：当前并发请求的数量。
+
+- Histogram
+  - 柱状图,更多的是用于统计一些数据分布的情况,用于计算在一定范围内的分布情况,同时还提供了度量指标值的总和.
+  - 在大多数情况下人们都倾向于使用某些量化指标的平均值，例如 CPU 的平均使用率、页面的平均响应时间。
+    - 这种方式的问题很明显
+      - 以系统 API 调用的平均响应时间为例：
+      - 如果大多数 API 请求都维持在 100ms 的响应时间范围内，而个别请求的响应时间需要 5s，
+      - 那么就会导致某些 WEB 页面的响应时间落到中位数的情况，而这种现象被称为长尾问题。
+    - 为了区分是平均的慢还是长尾的慢，最简单的方式就是按照请求延迟的范围进行分组。例如
+      - 统计延迟在 0~10ms 之间的请求数有多少而 10~20ms 之间的请求数又有多少。
+      - 通过这种方式可以快速分析系统慢的原因。
+  - Histogram
+    - 在一段时间范围内对数据进行采样（通常是请求持续时间或响应大小等），
+    - 并将其计入可配置的存储桶（bucket）中，
+    - 后续可通过指定区间筛选样本，也可以统计样本总数，
+    - 最后一般将数据展示为直方图。
+  - Histogram 类型的样本会提供三种指标（假设指标名称为 <metrices_name>）：
+    - 样本的值分布在 bucket 中的数量
+      - 命名为 `<metrices_name>_bucket{le=“<上边界>”}`。
+      - 解释的更通俗易懂一点，这个值表示指标值小于等于上边界的所有样本数量。
+      - **请求响应时间 <=0.005 秒 的请求次数**。
+    - 所有样本值的大小总和
+      - 命名为 `<metrices_name>_sum`
+      - **所有请求响应时间总和**
+    - 样本总数
+      - 命名为 `<metrices_name>_count`。
+      - 值和 <metrices_name>_bucket{le=“+Inf”} 相同。
+      - **所有请求次数**
+
+
+
+- Summary摘要,
+  - 和Histogram柱状图比较类似,主要用于计算在一定时间窗口范围内度量指标对象的总数以及所有对量指标值的总和.
+  - 与 Histogram 类型类似，用于表示一段时间内的数据采样结果（通常是请求持续时间或响应大小等）
+    - 但它直接存储了分位数（通过客户端计算，然后展示出来），而不是通过区间来计算。
+  - Summary 类型的样本也会提供三种指标（假设指标名称为 ）：
+    - 样本值的分位数分布情况
+      - 命名为 `<metrices_name>{quantile=“0.5”}`
+      - **请求中有 50% 的请求响应时间值是**
+    - 所有样本值的大小总和
+      - 命名为 `<metrices_name>_sum`
+      - **所有请求响应时间总和**
+    - 样本总数
+      - 命名为 `<metrices_name>_count`
+      - **请求的总数**
+
+Histogram 与 Summary 的异同：
+- Histogram 和 Summary 都是为了能够解决这样问题的存在，通过 Histogram 和 Summary 类型的监控指标，我们可以快速了解监控样本的分布情况。
+- 它们都包含了 <metrices_name>_sum 和 <metrices_name>_count 指标
+- Histogram 需要通过 <metrices_name>_bucket 来计算分位数，而 Summary 则直接存储了分位数的值。
+
+
+
+- 简单理解就是
+  - Counter对数据只增不减，
+  - Gauage可增可减，
+  - Histogram,Summary提供跟多的统计信息。
+
+
+pro将所有数据保存为timeseries data，用 metric name 和 label 区分
+- label 是在 metric name 上的更细维度的划分
+  - 其中的每一个实例是由一个float64和timestamp组成
+  - 只不过timestamp是隐式加上去的，有时候不会显示出来
+- 如下面所示
+  - `go_gc_duration_seconds` 是 metrics name
+  - `quantile="0.5"` 是 key-value pair 的 label
+  - 而后面的值是 float64 value
+  - 注释部分 `# TYPE go_gc_duration_seconds summary` 标识出这是一个summary对象。
+
+
+```py
+
+metrics name {(label)key-value} float64 value
+
+# HELP go_gc_duration_seconds A summary of the GC invocation durations.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0.5"} 0.000107458
+go_gc_duration_seconds{quantile="0.75"} 0.000200112
+go_gc_duration_seconds{quantile="1"} 0.000299278
+go_gc_duration_seconds_sum 0.002341738
+go_gc_duration_seconds_count 18
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 107
+```
+
+
+
+
+
+
+
+`prometheus` 分为为四种基本数据指标类型提供了相应的 数据指标 **向量**
+- 分别是 `CounterVec`, `GaugeVec`, `HistogramVec` 和 `SummaryVec` .
+
+数据指标向量的方法如下:
+
+```go
+Collect(ch chan<- Metric)  // 实现 Collector 接口的 Collect() 方法
+CurryWith(labels Labels)  // 返回带有指定标签的向量指标及可能发生的错误.多用于 promhttp 包中的中间件.
+Delete(labels Labels)  // 删除带有指定标签的向量指标.如果删除了指标,返回 true
+DeleteLabelValues(lvs ...string)  // 删除带有指定标签和标签值的向量指标.如果删除了指标,返回 true
+Describe(ch chan<- *Desc)  // 实现 Collector 接口的 Describe() 方法
+GetMetricWith(labels Labels)  // 返回带有指定标签的数据指标及可能发生的错误
+GetMetricWithLabelValues(lvs ...string)  // 返回带有指定标签和标签值的数据指标及可能发生的错误
+MustCurryWith(labels Labels)  // 与 CurryWith 相同,但如果出现错误,则引发 panics
+Reset()  // 删除此指标向量中的所有数据指标
+With(labels Labels)  // 与 GetMetricWithLabels 相同,但如果出现错误,则引发 panics
+WithLabelValues(lvs ...string)  // 与 GetMetricWithLabelValues 相同,但如果出现错误,则引发 panics
+```
+
+要创建 `Metrics` 及其向量版本的实例
+- 您需要一个合适的 `…Opts` 结构,即 `GaugeOpts`, `CounterOpts`, `SummaryOpts` 或 `HistogramOpts` .
+
+结构体如下:
+
+```go
+type Opts struct {
+    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
+	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
+    Namespace string
+    Subsystem string
+    Name      string
+    // Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
+    Help string
+    // ConstLabels 用于将固定标签附加到该指标.很少使用.
+    ConstLabels Labels
+}
+
+// 其中 GaugeOpts, CounterOpts 实际上均为 Opts 的别名
+type CounterOpts Opts
+type GaugeOpts Opts
+
+type HistogramOpts struct {
+    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
+	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
+    Namespace string
+    Subsystem string
+    Name      string
+    //  Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
+    Help string
+    // ConstLabels 用于将固定标签附加到该指标.很少使用.
+    ConstLabels Labels
+    // Buckets 定义了观察值的取值区间.切片中的每个元素值都是区间的上限,元素值必须按升序排序.
+    // Buckets 会隐式添加 `+Inf` 值作为取值区间的最大值
+    // 默认值是 DefBuckets =  []float64{.005, .01, .025, .05, .1, .25, .5, 1, 2.5, 5, 10}
+    Buckets []float64
+}
+
+type SummaryOpts struct {
+    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
+	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
+    Namespace string
+    Subsystem string
+    Name      string
+    //  Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
+    Help string
+    // ConstLabels 用于将固定标签附加到该指标.很少使用.
+    ConstLabels Labels
+    // Objectives 定义了分位数等级估计及其各自的绝对误差.
+	// 如果 Objectives[q] = e，则 q 报告的值将是 [q-e, q + e]之间某个 φ 的 φ 分位数
+    // 默认值为空 map,表示没有分位数的摘要
+    Objectives map[float64]float64
+    // MaxAge 定义观察值与摘要保持相关的持续时间.必须是正数.默认值为 DefMaxAge = 10 * time.Minute
+    MaxAge time.Duration
+    // AgeBuckets 用于从摘要中排除早于 MaxAge 的观察值的取值区间.默认值为 DefAgeBuckets = 5
+    AgeBuckets uint32
+    // BufCap 定义默认样本流缓冲区大小.默认值为 DefBufCap = 500.
+    BufCap uint32
+}
+```
+
+注意:
+- `Counter`, `Gauge`, `Histogram`, `Summary` 都继承了 `Metric` 和 `Collector` 接口,其本身是接口类型.
+- `CounterVec`, `GaugeVec`, `HistogramVec`, `SummaryVec` 均继承自 `metricVec` 结构体,其本身的是结构体,而它们只实现了 `Collector` 接口.
 
 
 
@@ -408,7 +639,7 @@ scrape_configs:
 
 #### 启动 Prometheus服务
 
-配置好之后就可以启动 Prometheus服务 了：
+配置好之后就可以启动 or 重启 Prometheus服务 了
 
 
 ```bash
@@ -440,6 +671,117 @@ docker ps |grep prometheus
 
 
 步入正文，用pro golang client来实现程序吧。
+
+#### pro golang client
+
+
+
+```py
+
+metrics name {(label)key-value} float64 value
+
+# HELP go_gc_duration_seconds A summary of the GC invocation durations.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0.5"} 0.000107458
+go_gc_duration_seconds{quantile="0.75"} 0.000200112
+go_gc_duration_seconds{quantile="1"} 0.000299278
+go_gc_duration_seconds_sum 0.002341738
+go_gc_duration_seconds_count 18
+
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 107
+```
+
+A Basic Example 演示了使用这些数据类型的方法（注意将其中8080端口改为本文的8888）
+- 其中创建了一个 gauge 和 CounterVec 对象，并分别指定了 metric name 和 help 信息
+
+- 其中 CounterVec 是用来管理相同 metric 下不同 label 的一组 Counter
+  - 代码中声明了一个lable的key为“device”
+  - 使用的时候也需要指定一个 lable
+    - `hdFailures.With(prometheus.Labels{"device":"/dev/sda"}).Inc()`
+- 同理存在GaugeVec，
+
+- 变量定义后进行注册
+- 最后再开启一个http服务的8888端口就完成了整个程序
+- pro采集数据是通过定期请求该服务http端口来实现的。
+
+
+
+```go
+package main
+
+import (
+	"log"
+	"net/http"
+
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+)
+
+var (
+	cpuTemp = prometheus.NewGauge(prometheus.GaugeOpts{
+		Name: "cpu_temperature_celsius",
+		Help: "Current temperature of the CPU.",
+	})
+	hdFailures = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "hd_errors_total",
+			Help: "Number of hard-disk errors.",
+		},
+		[]string{"device"},
+	)
+)
+
+func init() {
+	// Metrics have to be registered to be exposed:
+	prometheus.MustRegister(cpuTemp)
+	prometheus.MustRegister(hdFailures)
+}
+
+func main() {
+	cpuTemp.Set(65.3)
+	hdFailures.With(prometheus.Labels{"device":"/dev/sda"}).Inc()
+
+	// The Handler function provides a default handler to expose metrics
+	// via an HTTP server. "/metrics" is the usual endpoint for that.
+	http.Handle("/metrics", promhttp.Handler())
+	log.Fatal(http.ListenAndServe(":8888", nil))
+}
+```
+
+
+启动程序之后可以在web浏览器里输入http://localhost:8888/metrics 就可以得到client暴露的数据
+- 其中有片段显示为：
+
+```bash
+# HELP cpu_temperature_celsius Current temperature of the CPU.
+# TYPE cpu_temperature_celsius gauge
+cpu_temperature_celsius 65.3
+
+# HELP hd_errors_total Number of hard-disk errors.
+# TYPE hd_errors_total counter
+hd_errors_total{device="/dev/sda"} 1
+```
+
+- 上图就是示例程序所暴露出来的数据
+  - 并且可以看到counterVec是有label的
+  - 而单纯的gauage对象却不用lable标识，
+  - 这就是基本数据类型和对应Vec版本的差别。
+- 此时再查看http://localhost:9090/graph 就会发现服务状态已经变为UP了。
+
+![Screenshot 2022-11-02 at 12.21.31](https://github.com/ocholuo/ocholuo.github.io/blob/master/assets/img/note/Screenshot%202022-11-02%20at%2012.21.31.png)
+
+上面的例子只是一个简单的demo0
+- 因为在prometheus.yml配置文件中我们指定采集服务器信息的时间间隔为60s
+  - 每隔60s pro会通过http请求一次自己暴露的数据
+- 而在代码中我们只设置了一次gauge变量cupTemp的值
+  - 如果在60s的采样间隔里将该值设置多次，前面的值就会被覆盖，只有pro采集数据那一刻的值能被看到
+  - 并且如果不再改变这个值，pro就始终能看到这个恒定的变量，除非用户显式通过Delete函数删除这个变量。
+
+- 使用Counter,Gauage等这些结构比较简单，但是如果不再使用这些变量需要我们手动删，我们可以调用resetfunction来清除之前的metrics。
+
+
 
 #### 启动监控对象进程
 
@@ -489,57 +831,6 @@ curl http://localhost:8082/metrics 2>/dev/null |wc -l
 ```
 
 
-#### 配置Prometheus
-
-- 现在我们在8080-8082三个端口都提供了可供Prometheus进行监控指标数据，将Prometheus进行如下配置：
-
-```yaml
-prometheus-random.yml
-scrape_configs:
-  - job_name: "example-random"
-# Override the global default and scrape targets from this job every 5 seconds.
-    scrape_interval: 5s
-    static_configs:
-      - targets: ["192.168.31.242:8080", "192.168.31.242:8081"]
-        labels:
-          group: "production"
-
-      - targets: ["192.168.31.242:8082"]
-        labels:
-          group: "canary"
-```
-
-配置说明：
-* 设定job名称为example-random
-* 数据的抓取时间间隔设定为5秒
-* 将8080-8082三个监控对象分成两组，
-  * 8080和8081一组，组标签名称为production，
-  * 8082为一组，组标签名称为canary
-* ip（192.168.31.242）请修改为自己的IP，因为本文启动的内容均在容器之中，又没有使用link或者其他方式来使得各个容器之间的相互联通，这里直接使用IP方式使得Prometheus能够访问到这些对象机器。
-
-#### 启动Prometheus服务
-
-```bash
-# 使用如下命令启动Prometheus服务
-docker run -d -p 9090:9090 \
-	-v `pwd`/prometheus-demo.yml:/etc/prometheus/prometheus.yml \
-	--name prometheus prom/prometheus
-
-docker run -d -p 9090:9090 \
-	-v `pwd`/prometheus-random.yml:/etc/prometheus/prometheus.yml \
-	--name prometheus prom/prometheus
-# 1f9d3831c1d2c85d758cb4ff8af3054ec90a7f7b8f1f356431150ce6822253df
-
-docker run --network=host -p 9090:9090 \
-  -v `pwd`/prometheus.yml:/etc/prometheus/prometheus.yml \
-  prom/prometheus
-
-
-
-# 确认Promtheus容器状态
-docker ps |grep prometheus
-# 1f9d3831c1d2        prom/prometheus     "/bin/prometheus --c…"   About a minute ago   Up 59 seconds       0.0.0.0:9090->9090/tcp   prometheus
-```
 
 #### 结果确认
 
@@ -988,6 +1279,10 @@ This documentation is [open-source](https://github.com/prometheus/docs#contribut
 - install the `prometheus`, `promauto`, and `promhttp` libraries necessary for the guide using [`go get`](https://golang.org/doc/articles/go_command.html):
 
 ```bash
+# create go.mod
+
+
+# run
 go get github.com/prometheus/client_golang/prometheus
 go get github.com/prometheus/client_golang/prometheus/promauto
 go get github.com/prometheus/client_golang/prometheus/promhttp
@@ -1112,6 +1407,125 @@ The api/prometheus directory contains the client for the Prometheus HTTP API. It
 
 ---
 
+## go client
+
+### 自定义Collector
+
+- 更高阶的做法是使用Collector，go client Colletor只会在每次响应pro请求的时候才收集数据，并且需要每次显式传递变量的值，否则就不会再维持该变量，在pro也将看不到这个变量，
+- Collector是一个接口，所有收集metrics数据的对象都需要实现这个接口，Counter和Gauage等不例外
+- 它内部提供了两个函数
+  - Collector函数用于收集用户数据，将收集好的数据传递给传入参数Channel就可，
+  - Descirbe函数用于描述这个Collector。
+- 当收集系统数据代价较大时，就可以自定义Collector收集的方式，优化流程，
+  - 如果已经有了一个成熟的metrics，就不需要使用Counter,Gauage等这些数据结构，直接在Collector内部实现一个代理的功能即可
+  - 一些高阶的用法都可以通过自定义Collector实现。
+
+```go
+package main
+
+import (
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"net/http"
+)
+
+type ClusterManager struct {
+	Zone         string
+	OOMCountDesc *prometheus.Desc
+	RAMUsageDesc *prometheus.Desc
+	// ... many more fields
+}
+
+// Simulate prepare the data
+func (c *ClusterManager) ReallyExpensiveAssessmentOfTheSystemState() (
+	oomCountByHost map[string]int, ramUsageByHost map[string]float64,
+) {
+	// Just example fake data.
+	oomCountByHost = map[string]int{
+		"foo.example.org": 42,
+		"bar.example.org": 2001,
+	}
+	ramUsageByHost = map[string]float64{
+		"foo.example.org": 6.023e23,
+		"bar.example.org": 3.14,
+	}
+	return
+}
+
+// Describe simply sends the two Descs in the struct to the channel.
+func (c *ClusterManager) Describe(ch chan<- *prometheus.Desc) {
+	ch <- c.OOMCountDesc
+	ch <- c.RAMUsageDesc
+}
+
+func (c *ClusterManager) Collect(ch chan<- prometheus.Metric) {
+	oomCountByHost, ramUsageByHost := c.ReallyExpensiveAssessmentOfTheSystemState()
+	for host, oomCount := range oomCountByHost {
+		ch <- prometheus.MustNewConstMetric(
+			c.OOMCountDesc,
+			prometheus.CounterValue,
+			float64(oomCount),
+			host,
+		)
+	}
+	for host, ramUsage := range ramUsageByHost {
+		ch <- prometheus.MustNewConstMetric(
+			c.RAMUsageDesc,
+			prometheus.GaugeValue,
+			ramUsage,
+			host,
+		)
+	}
+}
+
+// NewClusterManager creates the two Descs OOMCountDesc and RAMUsageDesc. Note
+// that the zone is set as a ConstLabel. (It's different in each instance of the
+// ClusterManager, but constant over the lifetime of an instance.) Then there is
+// a variable label "host", since we want to partition the collected metrics by
+// host. Since all Descs created in this way are consistent across instances,
+// with a guaranteed distinction by the "zone" label, we can register different
+// ClusterManager instances with the same registry.
+func NewClusterManager(zone string) *ClusterManager {
+	return &ClusterManager{
+		Zone: zone,
+		OOMCountDesc: prometheus.NewDesc(
+			"clustermanager_oom_crashes_total",
+			"Number of OOM crashes.",
+			[]string{"host"},
+			prometheus.Labels{"zone": zone},
+		),
+		RAMUsageDesc: prometheus.NewDesc(
+			"clustermanager_ram_usage_bytes",
+			"RAM usage as reported to the cluster manager.",
+			[]string{"host"},
+			prometheus.Labels{"zone": zone},
+		),
+	}
+}
+
+func main() {
+	workerDB := NewClusterManager("db")
+	workerCA := NewClusterManager("ca")
+
+	// Since we are dealing with custom Collector implementations, it might
+	// be a good idea to try it out with a pedantic registry.
+	reg := prometheus.NewPedanticRegistry()
+	reg.MustRegister(workerDB)
+	reg.MustRegister(workerCA)
+
+	http.Handle("/metrics", promhttp.HandlerFor(reg, promhttp.HandlerOpts{}))
+	http.ListenAndServe(":8888", nil)
+}
+
+```
+
+此时就可以去http://localhost:8888/metrics 看到传递过去的数据了。
+- 示例中定义了两个matrics, host和zone分别是其label。
+- pro client内部提供了几个Collector供我们使用参考
+  - 在源码包中可以找到go_collector.go, process_collecor.go, expvar_collector这三个文件的Collecor实现。
+
+---
+
 ## Package
 
 ---
@@ -1210,116 +1624,6 @@ func main() {
 ```
 
 ---
-#### 数据指标
-
-`prometheus` 包提供了四种基本的 数据指标 类型
-- `Counter`, `Gauge`, `Histogram` 和 `Summary` .
-- [Prometheus docs](https://prometheus.io/docs/concepts/metric_types/) : 对这四种度量标准类型的更全面的描述.
-- 除了四种基本的数据指标类型外,Prometheus 数据模型的一个非常重要的部分是沿着称为 “标签” 的维度对数据指标样本进行划分,这就产生了数据指标向量(`metric vectors`).
-
-
-- Counter类型
-  - 好比计数器,用于统计类似于：CPU时间,API访问总次数,异常发生次数等等场景.
-- Gauge类型
-  - “计量器” ”仪表盘“
-- Histogram
-  - `柱状图,更多的是用于统计一些数据分布的情况,用于计算在一定范围内的分布情况,同时还提供了度量指标值的总和.
-Summary摘要, 和Histogram柱状图比较类似,主要用于计算在一定时间窗口范围内度量指标对象的总数以及所有对量指标值的总和.
-
-
-
-
-
-
-
-
-
-
-
-`prometheus` 分为为四种基本数据指标类型提供了相应的 数据指标 **向量**
-- 分别是 `CounterVec`, `GaugeVec`, `HistogramVec` 和 `SummaryVec` .
-
-数据指标向量的方法如下:
-
-```go
-Collect(ch chan<- Metric)  // 实现 Collector 接口的 Collect() 方法
-CurryWith(labels Labels)  // 返回带有指定标签的向量指标及可能发生的错误.多用于 promhttp 包中的中间件.
-Delete(labels Labels)  // 删除带有指定标签的向量指标.如果删除了指标,返回 true
-DeleteLabelValues(lvs ...string)  // 删除带有指定标签和标签值的向量指标.如果删除了指标,返回 true
-Describe(ch chan<- *Desc)  // 实现 Collector 接口的 Describe() 方法
-GetMetricWith(labels Labels)  // 返回带有指定标签的数据指标及可能发生的错误
-GetMetricWithLabelValues(lvs ...string)  // 返回带有指定标签和标签值的数据指标及可能发生的错误
-MustCurryWith(labels Labels)  // 与 CurryWith 相同,但如果出现错误,则引发 panics
-Reset()  // 删除此指标向量中的所有数据指标
-With(labels Labels)  // 与 GetMetricWithLabels 相同,但如果出现错误,则引发 panics
-WithLabelValues(lvs ...string)  // 与 GetMetricWithLabelValues 相同,但如果出现错误,则引发 panics
-```
-
-要创建 `Metrics` 及其向量版本的实例
-- 您需要一个合适的 `…Opts` 结构,即 `GaugeOpts`, `CounterOpts`, `SummaryOpts` 或 `HistogramOpts` .
-
-结构体如下:
-
-```go
-type Opts struct {
-    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
-	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
-    Namespace string
-    Subsystem string
-    Name      string
-    // Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
-    Help string
-    // ConstLabels 用于将固定标签附加到该指标.很少使用.
-    ConstLabels Labels
-}
-
-// 其中 GaugeOpts, CounterOpts 实际上均为 Opts 的别名
-type CounterOpts Opts
-type GaugeOpts Opts
-
-type HistogramOpts struct {
-    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
-	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
-    Namespace string
-    Subsystem string
-    Name      string
-    //  Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
-    Help string
-    // ConstLabels 用于将固定标签附加到该指标.很少使用.
-    ConstLabels Labels
-    // Buckets 定义了观察值的取值区间.切片中的每个元素值都是区间的上限,元素值必须按升序排序.
-    // Buckets 会隐式添加 `+Inf` 值作为取值区间的最大值
-    // 默认值是 DefBuckets =  []float64{.005, .01, .025, .05, .1, .25, .5, 1, 2.5, 5, 10}
-    Buckets []float64
-}
-
-type SummaryOpts struct {
-    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
-	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
-    Namespace string
-    Subsystem string
-    Name      string
-    //  Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
-    Help string
-    // ConstLabels 用于将固定标签附加到该指标.很少使用.
-    ConstLabels Labels
-    // Objectives 定义了分位数等级估计及其各自的绝对误差.
-	// 如果 Objectives[q] = e，则 q 报告的值将是 [q-e, q + e]之间某个 φ 的 φ 分位数
-    // 默认值为空 map,表示没有分位数的摘要
-    Objectives map[float64]float64
-    // MaxAge 定义观察值与摘要保持相关的持续时间.必须是正数.默认值为 DefMaxAge = 10 * time.Minute
-    MaxAge time.Duration
-    // AgeBuckets 用于从摘要中排除早于 MaxAge 的观察值的取值区间.默认值为 DefAgeBuckets = 5
-    AgeBuckets uint32
-    // BufCap 定义默认样本流缓冲区大小.默认值为 DefBufCap = 500.
-    BufCap uint32
-}
-```
-
-注意:
-- `Counter`, `Gauge`, `Histogram`, `Summary` 都继承了 `Metric` 和 `Collector` 接口,其本身是接口类型.
-- `CounterVec`, `GaugeVec`, `HistogramVec`, `SummaryVec` 均继承自 `metricVec` 结构体,其本身的是结构体,而它们只实现了 `Collector` 接口.
-
 ---
 #### 自定义 Collectors 和常量指标
 

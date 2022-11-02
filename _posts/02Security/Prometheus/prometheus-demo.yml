@@ -16,29 +16,33 @@ global:
 # Here it's Prometheus itself.
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  # - job_name: 'prometheus'
-  #   # metrics_path defaults to '/metrics'
-  #   # scheme defaults to 'http'.
-  #   static_configs:
-  #   - targets: ['localhost:9090']
-  #     labels:
-  #       group: "prometheus"
+  - job_name: 'prometheus'
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+    - targets: ['localhost:9090']
+      labels:
+        group: "prometheus"
 
   - job_name: "go-test"
     scrape_interval: 60s
     scrape_timeout: 60s
-    metrics_path: "/metrics"
     static_configs:
-    - targets: ["localhost:8888"]
+    # - targets: ["localhost:8888"]
+    - targets: ["192.168.0.226:8888"]
+
+  - job_name: "go-client"
+    static_configs:
+    - targets: ["192.168.0.226:8090"]
 
   - job_name: "example-random"
     # Override the global default and scrape targets from this job every 5 seconds.
     scrape_interval: 5s
     static_configs:
-      - targets: ["192.168.31.242:8080", "192.168.31.242:8081"]
+      - targets: ["192.168.0.226:8080", "192.168.0.226:8081"]
         labels:
           group: "production"
-      - targets: ["192.168.31.242:8082"]
+      - targets: ["192.168.0.226:8082"]
         labels:
           group: "canary"
 
