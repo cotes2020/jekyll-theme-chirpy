@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"gitee.com/qzcsu/go-web-study/utils/randomutil"
+	"github.com/ocholuo/ocholuo.github.io/_posts/02Security/Prometheus//utils/randomutil"
 )
 
 const (
