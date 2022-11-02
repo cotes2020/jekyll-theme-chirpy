@@ -8,72 +8,106 @@ image:
 ---
 
 - [Prometheus](#prometheus)
-	- [Prometheus: 监控与告警](#prometheus-监控与告警)
-		- [1:概要介绍](#1概要介绍)
-			- [主要特性](#主要特性)
-			- [整体架构](#整体架构)
-		- [2:安装方法](#2安装方法)
-			- [安装方式](#安装方式)
-			- [安装示例](#安装示例)
-			- [结果确认](#结果确认)
-		- [3:指标监控示例](#3指标监控示例)
-			- [事前准备](#事前准备)
-			- [启动监控对象进程](#启动监控对象进程)
-			- [配置Prometheus](#配置prometheus)
-			- [启动Prometheus服务](#启动prometheus服务)
-			- [结果确认](#结果确认-1)
-		- [4:使用Grafana进行可视化显示](#4使用grafana进行可视化显示)
-			- [事前准备](#事前准备-1)
-		- [5:在Kubernetes上部署](#5在kubernetes上部署)
-		- [6: Exporter概要介绍](#6-exporter概要介绍)
-	- [monitoring with Prometheus](#monitoring-with-prometheus)
-	- [client](#client)
-		- [Instrumenting applications](#instrumenting-applications)
-			- [Installation](#installation)
-			- [How Go exposition works](#how-go-exposition-works)
-			- [Add own metrics](#add-own-metrics)
-			- [Other Go client features](#other-go-client-features)
-		- [Client for the Prometheus HTTP API](#client-for-the-prometheus-http-api)
-	- [Package](#package)
-		- [prometheus/client_golang](#prometheusclient_golang)
-		- [prometheus](#prometheus-1)
-			- [数据指标](#数据指标)
-			- [自定义 Collectors 和常量指标](#自定义-collectors-和常量指标)
-			- [Registry 的高级用法](#registry-的高级用法)
-			- [HTTP 公开数据指标](#http-公开数据指标)
-			- [推送数据指标到 Pushgateway](#推送数据指标到-pushgateway)
-		- [`promauto` 包](#promauto-包)
-		- [`promhttp` 包](#promhttp-包)
-			- [`Handler()` 与 `HandlerFor()` 函数](#handler-与-handlerfor-函数)
-			- [`InstrumentHandlerX` 包装器函数](#instrumenthandlerx-包装器函数)
-			- [示例](#示例)
-		- [`push` 包](#push-包)
+  - [Concepts](#concepts)
+  - [Prometheus: 监控与告警](#prometheus-监控与告警)
+    - [1:概要介绍](#1概要介绍)
+      - [主要特性](#主要特性)
+      - [整体架构](#整体架构)
+    - [2:安装方法](#2安装方法)
+      - [安装方式](#安装方式)
+      - [安装示例](#安装示例)
+      - [结果确认](#结果确认)
+    - [3:指标监控示例](#3指标监控示例)
+      - [事前准备](#事前准备)
+      - [启动监控对象进程](#启动监控对象进程)
+      - [配置Prometheus](#配置prometheus)
+      - [启动Prometheus服务](#启动prometheus服务)
+      - [结果确认](#结果确认-1)
+    - [4:使用Grafana进行可视化显示](#4使用grafana进行可视化显示)
+      - [事前准备](#事前准备-1)
+    - [5:在Kubernetes上部署](#5在kubernetes上部署)
+    - [6: Exporter概要介绍](#6-exporter概要介绍)
+  - [monitoring with Prometheus](#monitoring-with-prometheus)
+  - [client](#client)
+    - [Instrumenting applications](#instrumenting-applications)
+      - [Installation](#installation)
+      - [How Go exposition works](#how-go-exposition-works)
+      - [Add own metrics](#add-own-metrics)
+      - [Other Go client features](#other-go-client-features)
+    - [Client for the Prometheus HTTP API](#client-for-the-prometheus-http-api)
+  - [Package](#package)
+    - [prometheus/client_golang](#prometheusclient_golang)
+    - [`prometheus` 包](#prometheus-包)
+      - [数据指标](#数据指标)
+      - [自定义 Collectors 和常量指标](#自定义-collectors-和常量指标)
+      - [Registry 的高级用法](#registry-的高级用法)
+      - [HTTP 公开数据指标](#http-公开数据指标)
+      - [推送数据指标到 Pushgateway](#推送数据指标到-pushgateway)
+    - [`promauto` 包](#promauto-包)
+    - [`promhttp` 包](#promhttp-包)
+      - [`Handler()` 与 `HandlerFor()` 函数](#handler-与-handlerfor-函数)
+      - [`InstrumentHandlerX` 包装器函数](#instrumenthandlerx-包装器函数)
+      - [示例](#示例)
+    - [`push` 包](#push-包)
 
 - https://github.com/prometheus/client_golang
 - [Endpoint](https://prometheus.io/docs/guides/go-application/)
 - [P go SDK](https://pkg.go.dev/github.com/prometheus/client_golang/prometheus)
 - https://github.com/prometheus/prometheus
 - https://prometheus.io/docs/introduction/overview/
-- https://blog.csdn.net/liumiaocn/category_9561738.html
 - https://hulining.github.io/2020/07/01/prometheus-client_golang-Introduction/
+- Blog
+  - [prometheus client_golang 简单使用](https://hulining.github.io/2020/07/01/prometheus-client_golang-Introduction/)
+  - https://blog.csdn.net/liumiaocn/category_9561738.html
+  - [Go进阶31:Prometheus Client教程](https://mojotv.cn/go/prometheus-client-for-go)
 
 # Prometheus
 
 ![pic](https://img-blog.csdnimg.cn/20191203090913325.jpeg?x-oss-process=image/resize,m_fixed,h_224,w_224)
 
+Prometheus是一个开源监控系统.
+- Prometheus是由SoundCloud开发的开源监控报警系统和时序列数据库(TSDB).
+- Prometheus使用Go语言开发,是Google BorgMon监控系统的开源版本.
+- Prometheus也是以重时序数据库.
+
+
+
 Prometheus 生态是一款优秀的开源监控解决方案，其中包括如下组件
-- Prometheus
+- Prometheus server
+  - 服务端,用来存储时间序列数据.
   - 通过配置各个采集任务，采集各个 expoter 或 pushgateway 数据，保存到其内部的时间序列数据库 (TSDB) 中。
   - 并根据规则对采集到的数据指标进行计算或重新保存为新的数据指标，判断是否达到阈值并向 Alertmanager 推送告警信息.
 
 - Alertmanager
+  - 用来处理告警.
   - 接收 Prometheus 推送过来的告警信息，通过告警路由，向集成的组件 / 工具发送告警信息.
 
 - 各种 Exporter
   - 收集系统或进程信息，转换为 Prometheus 可以识别的数据指标，以 http 或 https 服务的方式暴露给 Prometheus.
+  - 用来监控 HAProxy,StatsD,Graphite 等特殊的监控目标,并向 Prometheus 提供标准格式的监控样本数据.
 
 - Pushgateway
   - 收集系统或进程信息，转换为 Prometheus 可以识别的数据指标，向 Prometheus 推送数据指标.
+
+Prometheus 的优势
+- 由指标名称和和键/值对标签标识的时间序列数据组成的多维数据模型.
+- 强大的查询语言 PromQL.
+- 不依赖分布式存储;单个服务节点具有自治能力.
+- 时间序列数据是服务端通过 HTTP 协议主动拉取获得的.
+- 也可以通过中间网关来推送时间序列数据.
+- 可以通过静态配置文件或服务发现来获取监控目标.
+- 支持多种类型的图表和仪表盘.
+
+
+
+## Concepts
+
+
+
+
+
+
+
 
 ## Prometheus: 监控与告警
 
@@ -957,7 +991,7 @@ In this guide we covered just a small handful of features available in the Prome
 - [gauges](https://godoc.org/github.com/prometheus/client_golang/prometheus#Gauge)
 - and [histograms](https://godoc.org/github.com/prometheus/client_golang/prometheus#Histogram),
 - [non-global registries](https://godoc.org/github.com/prometheus/client_golang/prometheus#Registry),
-- functions for [pushing metrics](https://godoc.org/github.com/prometheus/client_golang/prometheus/push) to Prometheus [PushGateways](/docs/instrumenting/pushing/),
+- functions for [pushing metrics](https://godoc.org/github.com/prometheus/client_golang/prometheus/push) to Prometheus PushGateways
 - bridging Prometheus and [Graphite](https://godoc.org/github.com/prometheus/client_golang/prometheus/graphite), and more.
 
 
@@ -1018,7 +1052,7 @@ The api/prometheus directory contains the client for the Prometheus HTTP API. It
   - promlint 包为 Prometheus 数据指标提供一个参考.
 
 ---
-### prometheus
+### `prometheus` 包
 
 导入方式 `import "github.com/prometheus/client_golang/prometheus"` .
 
@@ -1074,11 +1108,31 @@ func main() {
 ---
 #### 数据指标
 
-`prometheus` 包提供了四种基本的数据指标类型, `Counter`, `Gauge`, `Histogram` 和 `Summary` .可以在 [Prometheus docs](https://prometheus.io/docs/concepts/metric_types/) 中找到对这四种度量标准类型的更全面的描述.
-
+`prometheus` 包提供了四种基本的 数据指标 类型
+- `Counter`, `Gauge`, `Histogram` 和 `Summary` .
+- [Prometheus docs](https://prometheus.io/docs/concepts/metric_types/) : 对这四种度量标准类型的更全面的描述.
 - 除了四种基本的数据指标类型外,Prometheus 数据模型的一个非常重要的部分是沿着称为 “标签” 的维度对数据指标样本进行划分,这就产生了数据指标向量(`metric vectors`).
 
-`prometheus` 分为为四种基本数据指标类型提供了相应的数据指标向量
+
+- Counter类型
+  - 好比计数器,用于统计类似于：CPU时间,API访问总次数,异常发生次数等等场景.
+- Gauge类型
+  - “计量器” ”仪表盘“
+- Histogram
+  - `柱状图,更多的是用于统计一些数据分布的情况,用于计算在一定范围内的分布情况,同时还提供了度量指标值的总和.
+Summary摘要, 和Histogram柱状图比较类似,主要用于计算在一定时间窗口范围内度量指标对象的总数以及所有对量指标值的总和.
+
+
+
+
+
+
+
+
+
+
+
+`prometheus` 分为为四种基本数据指标类型提供了相应的 数据指标 **向量**
 - 分别是 `CounterVec`, `GaugeVec`, `HistogramVec` 和 `SummaryVec` .
 
 数据指标向量的方法如下:
@@ -1097,7 +1151,8 @@ With(labels Labels)  // 与 GetMetricWithLabels 相同,但如果出现错误,则
 WithLabelValues(lvs ...string)  // 与 GetMetricWithLabelValues 相同,但如果出现错误,则引发 panics
 ```
 
-要创建 `Metrics` 及其向量版本的实例,您需要一个合适的 `…Opts` 结构,即 `GaugeOpts`, `CounterOpts`, `SummaryOpts` 或 `HistogramOpts` .
+要创建 `Metrics` 及其向量版本的实例
+- 您需要一个合适的 `…Opts` 结构,即 `GaugeOpts`, `CounterOpts`, `SummaryOpts` 或 `HistogramOpts` .
 
 结构体如下:
 
@@ -1187,7 +1242,7 @@ type SummaryOpts struct {
 
 在 `push` 子包中可以找到用于推送到 Pushgateway 的函数.
 
----`
+---
 
 ### `promauto` 包
 
