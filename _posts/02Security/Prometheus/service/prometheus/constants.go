@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/ocholuo/ocholuo.github.io/_posts/02Security/Prometheus//utils/randomutil"
+	"github.com/ocholuo/ocholuo.github.io/_posts/02Security/Prometheus/utils/randomutil"
 )
 
 const (
