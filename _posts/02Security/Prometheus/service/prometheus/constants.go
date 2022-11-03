@@ -18,6 +18,7 @@ var names = []string{"小明", "小红", "小花"}
 var ages = []int64{20, 21, 22, 23, 24, 25}
 var subjects = []string{"语文", "数学", "体育"}
 
+// get num int from http.Request
 func GetParamNum(req *http.Request) int64 {
 	err := req.ParseForm()
 	if err != nil {

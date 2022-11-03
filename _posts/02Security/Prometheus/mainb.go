@@ -30,5 +30,5 @@ func main() {
 	// http.HandleFunc("/vec_summary", qzPro.DealVecSummary)
 
 	http.Handle("/metrics", promhttp.Handler()) // 暴露 metrics 指标
-	http.ListenAndServe(":8090", nil)
+	http.ListenAndServe(":8080", nil)
 }
