@@ -1,6 +1,5 @@
 module github.com/ocholuo/ocholuo.github.io/_posts/02Security/Prometheus
 
-
 go 1.15
 
 require (
@@ -23,5 +22,6 @@ require (
 	github.com/prometheus/client_golang v1.13.1 // indirect
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
+	github.com/satori/go.uuid v1.2.0
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
 )

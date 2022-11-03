@@ -22,8 +22,10 @@ func main() {
 
 	// http.HandleFunc("/common_gauge", qzPro.DealCommGauge)
 	// http.HandleFunc("/vec_gauge", qzPro.DealVecGauge)
+
 	// http.HandleFunc("/common_histogram", qzPro.DealCommHistogram)
 	// http.HandleFunc("/vec_histogram", qzPro.DealVecHistogram)
+
 	// http.HandleFunc("/common_summary", qzPro.DealCommSummary)
 	// http.HandleFunc("/vec_summary", qzPro.DealVecSummary)
 
