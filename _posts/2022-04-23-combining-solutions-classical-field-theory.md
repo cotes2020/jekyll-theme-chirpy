@@ -2,7 +2,8 @@
 title: "Combining Valid Solutions Into New Ones in Classical Field Theory"
 description: "When and how can given solutions of the classical field-theoretic Euler-Lagrange equations be combined into new solutions?"
 categories: [classical field theory]
-tags: [linearity]
+tags: [linearity, scalar field theory]
+redirect_from: combining-valid-solutions-classical-field-theory
 ---
 
 A popular theme in some field theories is linearity — wherein valid solutions of the field equations in question can be added and scaled to generate new valid solutions. For example, Maxwell's equations are linear in vacuum and homogeneous media. A different kind of field equation that is linear, is the time-independent Schrödinger equation for the wavefunction (a complex-valued scalar field). However, we will not go into quantum mechanics or quantum field theory for now.

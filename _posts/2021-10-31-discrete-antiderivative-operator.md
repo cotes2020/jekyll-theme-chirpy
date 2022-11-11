@@ -2,6 +2,8 @@
 title: "The Discrete Antiderivative Operator"
 description: "Finding an expression for the discrete antiderivative of a function"
 categories: [discrete mathematics]
+tags: [discrete calculus]
+redirect_from: discrete-antiderivative
 ---
 
 ## Discrete derivative operator

@@ -2,10 +2,10 @@
 title: "Scalar Field Lagrangian From Symmetry Considerations"
 description: "Or, how field theory doesn't leave us much choice"
 categories: [classical field theory]
-tags: [scalar field theory, symmetry]
+tags: [Klein-Gordon theory, energy-momentum tensor, symmetries]
 ---
 
-Welcome to another post on, well, you guessed it: scalar field theory. Today, we will be deriving a Lagrangian density for scalar fields that appears almost everywhere in physics.
+Welcome to another post on, well, you guessed it: scalar field theory. Today, we will be deriving a Lagrangian density for scalar fields that appears almost everywhere in physics (namely in the Klein-Gordon and related theories).
 
 Common arguments for assuming the form of the Lagrangian in question either take motivation from too specific systems such as chains (which are promoted to scalar fields using a procedure that does not work for higher-rank field theories), or extremely formal analogies with the point-particle Lagrangian. I will, instead, use an approach I find easy to remember.
 

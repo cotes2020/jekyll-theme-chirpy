@@ -1,8 +1,8 @@
 ---
 title: "The Impossible Cut"
 description: "Cakes, cuts and geometry"
-categories: [geometry]
-tags: [Euclidean geometry, time]
+categories: [geometry, time]
+tags: [Euclidean space, time]
 ---
 
 ## A sweet problem

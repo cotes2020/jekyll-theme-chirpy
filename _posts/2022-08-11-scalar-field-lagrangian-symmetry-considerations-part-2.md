@@ -2,7 +2,7 @@
 title: "Scalar Field Lagrangian From Symmetry Considerations: Part 2"
 description: "This time, gauge invariance leaves us little choice"
 categories: [classical field theory]
-tags: [gauge invariance, scalar field theory, symmetry]
+tags: [Klein-Gordon theory, gauge invariance, symmetry]
 ---
 
 ## Related concepts from older posts
@@ -30,7 +30,7 @@ where $$m$$ is a 'mass' of the field, of sorts (this becomes clear only after qu
 
 Last but not the least, in the following posts, we discussed the idea of gauge invariance and indexed fields behaving much like coordinates in classical mechanics:
 
-[Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-valid-solutions-classical-field-theory %})
+[Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-solutions-classical-field-theory %})
 
 [Gauge Invariance in Classical Field Theory]({% post_url 2022-05-10-gauge-invariance-classical-field-theory %})
 

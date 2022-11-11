@@ -2,7 +2,7 @@
 title: "Demystifying the Definition Of a Covector Basis"
 description: "Ever wondered why covectors are defined to act on vectors the way they are?"
 categories: [tensor calculus]
-tags: [tensors]
+tags: [dual vectors, tensors]
 toc: false
 ---
 

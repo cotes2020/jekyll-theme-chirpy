@@ -2,7 +2,7 @@
 title: "The Real Reason Nothing Travels Faster Than Light"
 description: "Proving the famous statement analytically"
 categories: [special relativity]
-tags: [spacetime interval, reductio ad absurdum]
+tags: [spacetime interval, contradiction]
 ---
 
 ## The problem
@@ -71,7 +71,7 @@ On the other hand, in arbitrary coordinates, $$\eta_{\mu \nu}$$ transforms as a 
 
 Note that given two events A and B, the spacetime interval between them is defined in the manner,
 
-$$\Delta s^2 = \int_A^B ds^2 = \Delta x_\mu \Delta x^\mu$$
+$$\Delta s^2 = \int_A^B ds^2 = \Delta_A^B x_\mu \Delta_A^B x^\mu$$
 
 Let us now investigate when $$ds^2$$ is zero or non-zero, and what these physically represent.
 

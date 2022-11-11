@@ -2,7 +2,7 @@
 title: "Deriving the Gamma Function from Scratch"
 description: "Finding the famous integral representation of the gamma function using some analysis"
 categories: [analysis]
-tags: [gamma function]
+tags: [gamma function, Laplace transforms]
 ---
 
 ## What is the gamma function about?

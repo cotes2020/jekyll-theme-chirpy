@@ -3,6 +3,7 @@ title: "A Brief Geometric Analysis of Harmonic Oscillators"
 description: "How things roll in phase space"
 categories: [classical mechanics]
 tags: [harmonic oscillators, phase space]
+redirect_from: harmonic-oscillators-geometric-analysis
 ---
 
 ## Phase space

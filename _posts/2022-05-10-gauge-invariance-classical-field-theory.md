@@ -2,10 +2,10 @@
 title: "Gauge Invariance in Classical Field Theory"
 description: "Exploring a subtle symmetry key to many field theories"
 categories: [classical field theory]
-tags: [gauge invariance, symmetry]
+tags: [gauge invariance, symmetries, scalar field theory]
 ---
 
-In [Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-valid-solutions-classical-field-theory %}), we have seen how an arbitrary field $$\phi$$ constructed from a class of solutions $$\left\{ \phi_{\left( i \right)} \right\}$$ for some equations of motion, must obey:
+In [Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-solutions-classical-field-theory %}), we have seen how an arbitrary field $$\phi$$ constructed from a class of solutions $$\left\{ \phi_{\left( i \right)} \right\}$$ for some equations of motion, must obey:
 
 $$\frac{\partial \mathcal{L}}{\partial \phi} - \nabla_\mu \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi \right)} = - \sum_i \frac{\partial \mathcal{L}}{\partial \left( \partial_\mu \phi_{\left( i \right)} \right)} \partial_\mu \frac{\partial \phi_{\left( i \right)}}{\partial \phi}$$
 
@@ -17,7 +17,7 @@ With that said, let us begin.
 
 ## Fields as coordinates: revisited
 
-This post begins with the same concept as in [Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-valid-solutions-classical-field-theory %}). Namely, we consider an indexed solution set $$\left\{ \phi_{\left( i \right)} \right\}$$ of scalar fields satisfying the equations of motion for a given Lagrangian density $$\mathcal{L}$$. Moreover, we interpret these fields as abstract 'coordinates', which can be used to form new coordinates.
+This post begins with the same concept as in [Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-solutions-classical-field-theory %}). Namely, we consider an indexed solution set $$\left\{ \phi_{\left( i \right)} \right\}$$ of scalar fields satisfying the equations of motion for a given Lagrangian density $$\mathcal{L}$$. Moreover, we interpret these fields as abstract 'coordinates', which can be used to form new coordinates.
 
 We now take this analogue of coordinates a step further. Combining the said coordinate fields into new ones shall be parallel to coordinate transformations. Let us write such transformations as:
 
@@ -27,7 +27,7 @@ We assume such transformations are bijective and differentiable. Thus, the numbe
 
 ## Notation
 
-1) We [noted]({% post_url 2022-04-23-combining-valid-solutions-classical-field-theory %}#new-notation-for-solutions) in the previous post that despite the solution fields' index $$\left( i \right)$$ not being physical in the sense of tensor indices, it behaves very similar to one. This will become further evident in this post, and to save us from the hassle of writing the parantheses around the index repeatedly, we will simply omit them.
+1) We [noted]({% post_url 2022-04-23-combining-solutions-classical-field-theory %}#new-notation-for-solutions) in the previous post that despite the solution fields' index $$\left( i \right)$$ not being physical in the sense of tensor indices, it behaves very similar to one. This will become further evident in this post, and to save us from the hassle of writing the parantheses around the index repeatedly, we will simply omit them.
 
 2) However, to distinguish the above indices from the indices $$i, j, k$$ etc. frequently used to denote spacelike components, we will use $$a, b, c$$ and so on (nevertheless, we will not need to refer to spacelike indices separately in this post).
 

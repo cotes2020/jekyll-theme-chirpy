@@ -5,7 +5,7 @@ categories: [classical field theory]
 tags: [linearity, gauge invariance, symmetry]
 ---
 
-In [Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-valid-solutions-classical-field-theory %}), we showed that any linear combination of valid solutions to classical field equations, is in turn a solution.
+In [Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-solutions-classical-field-theory %}), we showed that any linear combination of valid solutions to classical field equations, is in turn a solution.
 
 We then took the idea of solution fields behaving like coordinates further, in [Gauge Invariance in Classical Field Theory]({% post_url 2022-05-10-gauge-invariance-classical-field-theory %}). Here, we found that it is possible for certain differentiable transformations of solution fields to be new solution fields. To admit such families of solutions (where each choice is called a 'gauge') into the Lagrangian, we replace covariant derivatives with the gauge-invariant gauge covariant derivatives. This is functionally equivalent to replacing partial derivatives with covariant derivatives to allow general covariance, in differential geometry.
 
