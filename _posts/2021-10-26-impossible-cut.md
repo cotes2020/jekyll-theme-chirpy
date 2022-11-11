@@ -1,7 +1,7 @@
 ---
 title: "The Impossible Cut"
 description: "Cakes, cuts and geometry"
-categories: [geometry, time]
+categories: [geometry]
 tags: [Euclidean space, time]
 ---
 
