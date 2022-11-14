@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-## Basic
+### Basic
 
 Name : 이태한(필명 : TryK)
 
@@ -12,13 +12,13 @@ E-Mail : me@tryk.moe
 
 
 
-## History
+# History
 
 (전) 해군 정보통신 부사관(중사 전역, 2013.10 ~ 2021.12)
 
 
 
-## Certificate
+# Certificate
 
 정보처리산업기사(2012.06)
 
@@ -30,19 +30,19 @@ PC정비사 2급(2007.09)
 
 
 
-## Educated
+# Educated
 
 멀티 클라우드 아키텍트 전문가 양성 과정 A (2022.05.~2022.11)
 
 
 
-## Project
+# Project
 
 OO대학교 홈페이지 마이그레이션 프로젝트(기초 인프라, 백엔드, CI/CD)
 
 
 
-## Skill
+# Skill
 
 Proxmox
 
@@ -54,18 +54,18 @@ AWS 기초
 
 
 
-## Site
+# Site
 
 https://tryk.moe (Here!)
 
 
 
-## SNS
+# SNS
 
 https://twitter.com/TryK_
 
 
 
-## Etc
+# Etc
 
 ...

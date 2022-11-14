@@ -6,10 +6,10 @@ platforms:
     type: Twitter
     icon: "fab fa-twitter"
     link: "https://twitter.com/intent/tweet?text=TITLE&url=URL"
-  -
-    type: Facebook
-    icon: "fab fa-facebook-square"
-    link: "https://www.facebook.com/sharer/sharer.php?title=TITLE&u=URL"
+  # -
+  #   type: Facebook
+  #   icon: "fab fa-facebook-square"
+  #   link: "https://www.facebook.com/sharer/sharer.php?title=TITLE&u=URL"
   -
     type: Telegram
     icon: "fab fa-telegram"
