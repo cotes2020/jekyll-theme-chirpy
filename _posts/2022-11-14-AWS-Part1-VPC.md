@@ -1,7 +1,7 @@
 ---
 title: AWS Infra / Part1. VPC
 date: 2022-11-14 15:00:00 +0900
-categories: [AWS, 1. VPC]
+categories: [AWS, 2Tier 아키텍쳐 구축]
 tags: [AWS, VPC]     # TAG names should always be lowercase
 typora-root-url: ../
 ---
@@ -11,7 +11,7 @@ typora-root-url: ../
 
 VPC 생성으로 2 Tier 구축을 해보고, 다음 CI/CD 환경을 구성하는것 까지 파트별로 구성하였습니다.
 
-기본적으로 서울리전에서 작업하는것을 기본으로 하겠습니다.
+기본적으로 서울리전에서 최대한 프리티어 옵션으로 작업하는것을 기본으로 하겠습니다.
 
 <br>
 
