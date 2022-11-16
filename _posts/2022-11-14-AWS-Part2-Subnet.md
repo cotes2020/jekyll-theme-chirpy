@@ -5,17 +5,17 @@ categories: [AWS, 2Tier 아키텍쳐 구축]
 tags: [AWS, Subnet]     # TAG names should always be lowercase
 typora-root-url: ../
 ---
-## Intro
+# Intro
 
-저번 글에서는 네트워크의 기반이 될 VPC를 생성 하였습니다.
+[저번 글](/posts/AWS-Part1-VPC/)에서는 네트워크의 기반이 될 VPC를 생성 하였습니다.
 
 이번에는 작업 용도별로 나눌 서브넷을 생성 하는 파트 입니다.
 
 <br>
 
-## Subnet이란?
+# Subnet이란?
 
-> *서브넷*은 VPC의 IP 주소 범위입니다. 지정된 서브넷으로 AWS 리소스를 시작할 수 있습니다. 인터넷에 연결되어야 하는 리소스에는 퍼블릭 서브넷을 사용하고, 인터넷에 연결되지 않는 리소스에는 프라이빗 서브넷을 사용하십시오.
+> *서브넷*은 VPC의 IP 주소 범위입니다. 지정된 서브넷으로 AWS 리소스를 시작할 수 있습니다. 인터넷에 연결되어야 하는 리소스에는 퍼블릭 서브넷을 사용하고, 인터넷에 연결되지 않는 리소스에는 프라이빗 서브넷을 사용하십시오. - *AWS Document*
 
 서브넷은 간단히 말하면 작업용도가 정해진 "방(Room)"을 생성하는 것 입니다. 
 
@@ -25,11 +25,9 @@ typora-root-url: ../
 
 <br>
 
-## AZ(Availability Zone)란?
+# AZ(Availability Zone)란?
 
 > *AZ(가용 영역)*는 AWS 리전의 중복 전력, 네트워킹 및 연결이 제공되는 하나 이상의 개별 데이터 센터로 구성됩니다. AZ를 사용하면 단일 데이터 센터를 사용하는 것보다 더 높은 가용성, 내결함성 및 확장성을 갖춘 프로덕션 애플리케이션과 데이터베이스를 운영할 수 있습니다. 
-
-AZ(가용영역)이란 뭘 까요??
 
 AZ는 리전의 하위 영역으로써, 하나의 AZ가 하나의 데이터센터라고 이해하시면 편합니다.
 
@@ -55,7 +53,9 @@ AZ는 리전의 하위 영역으로써, 하나의 AZ가 하나의 데이터센�
 
 <br>
 
-## 생성과정
+# 실전
+
+## Subnet 생성
 
 ![01](/assets/post/2022-11-14-AWS-Part2-Subnet/01.png)
 
@@ -92,12 +92,12 @@ VPC 대쉬보드에서 서브넷을 선택 합니다.
 |  서브넷 이름   | 서브넷 가용영역 |  서브넷 CIDR   |
 | :------------: | :-------------: | :------------: |
 |  2a-PubSubNet  | ap-northeast-2a | 172.31.10.0/24 |
-|  2c-PubSubNet  | ap-northeast-2c | 172.31.20.0/24 |
-| 2a-PrivSubNet  | ap-northeast-2a | 172.31.11.0/24 |
-| 2c-PrivSubNet  | ap-northeast-2c | 172.31.21.0/24 |
+| 2a-PrivSubNet  | ap-northeast-2c | 172.31.11.0/24 |
 |  2a-DBSubNet   | ap-northeast-2a | 172.31.12.0/24 |
-|  2c-DBSubNet   | ap-northeast-2c | 172.31.22.0/24 |
-| 2a-RedisSubNet | ap-northeast-2a | 172.31.13.0/24 |
+| 2a-RedisSubNet | ap-northeast-2c | 172.31.13.0/24 |
+|  2c-PubSubNet  | ap-northeast-2a | 172.31.20.0/24 |
+| 2c-PrivSubNet  | ap-northeast-2c | 172.31.21.0/24 |
+|  2c-DBSubNet   | ap-northeast-2a | 172.31.22.0/24 |
 | 2c-RedisSubNet | ap-northeast-2c | 172.31.23.0/24 |
 
 가용영역은 2a와 2c로 생성 하였습니다.
@@ -106,9 +106,9 @@ VPC 대쉬보드에서 서브넷을 선택 합니다.
 
 <br>
 
-![05](/assets/post/2022-11-14-AWS-Part2-Subnet/05.png)
+## 결과 확인
 
-(테스트 중에 캡쳐된 이미지 입니다. 위의 표와 내용이 상이합니다. 표 기준으로 작성하시면 됩니다. )
+![05](/assets/post/2022-11-14-AWS-Part2-Subnet/05.png)
 
 생성이 완료 되면 위와 같이 서브넷 내역을 확인 할 수 있습니다.
 
@@ -116,8 +116,12 @@ VPC 대쉬보드에서 서브넷을 선택 합니다.
 
 ![06](/assets/post/2022-11-14-AWS-Part2-Subnet/06.png)
 
+<br>
+
+# Outro
+
 이번 과정으로 위와 같이 서브넷 영역도 생성 되었습니다. 
 
 실제론 Public/Private 구분이 없는 상태 입니다. 파트를 진행하며 구분이 될 예정입니다.
 
-다음 파트는 인터넷 게이트웨이(IGW) 생성 입니다.
+[다음 파트는 인터넷 게이트웨이(IGW) 생성](/posts/AWS-Part3-IGW/) 입니다.

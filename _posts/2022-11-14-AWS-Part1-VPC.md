@@ -5,7 +5,7 @@ categories: [AWS, 2Tier 아키텍쳐 구축]
 tags: [AWS, VPC]     # TAG names should always be lowercase
 typora-root-url: ../
 ---
-## 글에 앞서..
+# 글에 앞서..
 
 안녕하세요.  클라우드 프로젝트를 하면서 단계별로 찬찬히 만드는법을 정리하고자 본글을 쓰게 됬습니다.
 
@@ -15,11 +15,9 @@ VPC 생성으로 2 Tier 구축을 해보고, 다음 CI/CD 환경을 구성하는
 
 <br>
 
-## VPC란?
+# VPC란?
 
-AWS의 소개글에서는 
-
-> 직접 정의 가능한 가상 네트워크(Private Network)에서 AWS 리소스를 구동할 수 있는 논리적으로 격리된 네트워크 환경을 제공한다.
+> 직접 정의 가능한 가상 네트워크(Private Network)에서 AWS 리소스를 구동할 수 있는 논리적으로 격리된 네트워크 환경을 제공한다.  - *AWS Document*
 
 라고 정의되어 있습니다.  
 
@@ -27,7 +25,9 @@ AWS의 소개글에서는
 
 <br>
 
-## 생성과정
+# 실전
+
+## VPC 생성
 
 ![01](/assets/post/2022-11-14-AWS-Part1-VPC/01.png)
 
@@ -57,6 +57,8 @@ CIDR는 규모에 맞게 지정하시면 됩니다. 서브넷 범위(/16)는 꼭
 
 <br>
 
+## 결과 확인
+
 ![05](/assets/post/2022-11-14-AWS-Part1-VPC/05.png)
 
 VPC는 쉽게 생성이 가능합니다. 위와같이 방금 만든 VPC를 확인할 수 있습니다.
@@ -65,5 +67,9 @@ VPC는 쉽게 생성이 가능합니다. 위와같이 방금 만든 VPC를 확�
 
 ![06](/assets/post/2022-11-14-AWS-Part1-VPC/06.png)
 
-이제 이렇게 기본적인 VPC를 만드셨습니다. 다음은 서브넷 생성 입니다.
+<br>
+
+# Outro
+
+이제 이렇게 기본적인 VPC를 만드셨습니다. 다음은 [서브넷 생성](/posts/AWS-Part2-Subnet/) 입니다.
 

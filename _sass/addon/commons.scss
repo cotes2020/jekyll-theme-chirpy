@@ -1,7 +1,7 @@
 /*
   The common styles
 */
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 html {
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
@@ -32,8 +32,10 @@ body {
   background: var(--body-bg);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
+  //font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   line-height: 1.75;
+  font-weight: 500;
 }
 
 /* --- Typography --- */
@@ -42,6 +44,7 @@ h1 {
   @extend %heading;
 
   font-size: 1.9rem;
+  font-weight: 700;
 }
 
 h2 {
@@ -50,6 +53,7 @@ h2 {
   @extend %anchor;
 
   font-size: 1.5rem;
+  font-weight: 700;
 }
 
 h3 {
@@ -58,6 +62,7 @@ h3 {
   @extend %anchor;
 
   font-size: 1.2rem;
+  font-weight: 700;
 }
 
 h4 {
@@ -66,6 +71,7 @@ h4 {
   @extend %anchor;
 
   font-size: 1.15rem;
+  font-weight: 700;
 }
 
 h5 {
