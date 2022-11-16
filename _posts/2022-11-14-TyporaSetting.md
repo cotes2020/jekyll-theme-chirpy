@@ -1,7 +1,7 @@
 ---
 title: Typora 세팅
 date: 2022-11-14 00:00:00 +0900
-categories: [Typora]
+categories: [Typora, 세팅]
 tags: [Typora]     # TAG names should always be lowercase
 typora-root-url: ../
 ---
