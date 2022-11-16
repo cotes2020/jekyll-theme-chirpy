@@ -22,23 +22,21 @@
     {% seo title=false %}
   {% endcapture %}
 
-  {% if site.img_cdn and seo_tags contains 'og:image' %}
-    {% assign properties = 'og:image,twitter:image' | split: ',' %}
+  {% if page.image.path %}
+    {% capture target %}"{{ site.url }}{{ page.image.path | relative_url }}"{% endcapture %}
 
-    {% for prop in properties %}
-      {% if site.img_cdn contains '//' %}
-        <!-- `site.img_cdn` is a cross-origin URL -->
-        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{% endcapture %}
-        {% capture replacement %}<meta property="{{ prop }}" content="{{ site.img_cdn }}{% endcapture %}
-      {% else %}
-        <!-- `site.img_cdn` is a local file path -->
-        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{{ site.baseurl }}{% endcapture %}
-        {% assign replacement = target | append: site.img_cdn %}
-      {% endif %}
+    {% if site.img_cdn contains '//' %}
+      <!-- it's a cross-origin URL -->
+      {% capture replacement %}"{{ site.img_cdn }}{{ page.img_path }}{{ page.image.path }}"{% endcapture %}
+    {% else %}
+      <!-- it's a local file path -->
+      {%- capture replacement -%}
+        "{{ site.url }}{{ site.baseurl }}{{ site.img_cdn }}{{ page.img_path }}{{ page.image.path }}"
+      {%- endcapture -%}
+    {% endif %}
 
-      {% assign seo_tags = seo_tags | replace: target, replacement %}
+    {% assign seo_tags = seo_tags | replace: target, replacement %}
 
-    {% endfor %}
   {% endif %}
 
   {{ seo_tags }}
