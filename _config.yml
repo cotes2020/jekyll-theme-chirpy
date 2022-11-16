@@ -1,7 +1,7 @@
 # The Site Configuration
 
 # Import the theme
-theme: jekyll-theme-chirpy
+theme: jekyll theme
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
@@ -19,7 +19,7 @@ timezone: America/Anchorage
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Ernest S. | Data                # the main title
+title: Ernest S.                # the main title
 
 tagline: SQL & Data Visualization      # it will display as the sub-title
 
