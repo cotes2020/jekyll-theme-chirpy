@@ -267,4 +267,4 @@ TEST라는 Database가 존재하는걸 볼 수 있습니다.
 
 Read Replica 구성을 하여 서비스 분산에 대한 대비(완벽하지는 않습니다)도 해보았습니다.
 
-다음 파트는 Redis 클러스터를 생성하여 배치하기 위한 Elasticache를 알아보겠습니다.
+[다음 파트는 Redis 클러스터를 생성하여 배치하기 위한 Elasticache](/posts/AWS-Part8-Elasticache/)를 알아보겠습니다.
