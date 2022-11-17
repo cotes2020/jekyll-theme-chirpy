@@ -360,6 +360,12 @@ ssh -i [키 파일] [접속할 호스트의 기본 유저네임]@[IP]
 
 <br>
 
+![31](/assets/post/2022-11-16-AWS-Part6-BastionHost/31.png)
+
+NAT Gateway가 설치되어 있기 때문에 Private 내부 인스턴스가 apt 명령어로 업데이트가 잘 되는걸 볼 수 있습니다.
+
+<br>
+
 ## 인프라 배치 현황
 
 ![30](/assets/post/2022-11-16-AWS-Part6-BastionHost/30.png)
@@ -374,4 +380,4 @@ ssh -i [키 파일] [접속할 호스트의 기본 유저네임]@[IP]
 
 서로간의 통신을 위해 적절한 보안 그룹을 만들고 EC2 Instance도 생성하고 테스트까지 해보았습니다.
 
-다음 파트는 Amazon RDS입니다. DB 인스턴스를 생성하여 전용 Private 서브넷에 배치해 볼 것 입니다.
+[다음 파트는 Amazon RDS](/posts/AWS-Part7-AmazonRDS/)입니다. DB 인스턴스를 생성하여 전용 Private 서브넷에 배치해 볼 것 입니다.
