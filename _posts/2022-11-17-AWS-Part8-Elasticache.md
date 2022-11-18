@@ -200,3 +200,5 @@ RDS와 마찬가지로 IP가 아닌 주소로 엔드포인트가 표시 됩니�
 # Outro
 
 이번 파트에서는 Amazon Elasticache의 서비스를 이용하여 Redis 클러스터를 생성 하였습니다.
+
+[다음 파트](/posts/AWS-Part9-InstanceSetting/)는 Private 서브넷에 있는 EC2 인스턴스에 대한 사전 설정 파트 입니다.

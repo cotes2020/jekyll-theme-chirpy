@@ -21,10 +21,10 @@ timezone: Asia/Seoul
 
 title: TryK                          # the main title
 
-tagline: 공부했던걸 정리하는 페이지 입니다.   # it will display as the sub-title
+tagline: 공부했던걸 정리하는 블로그 입니다.   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  클라우드에 대해 공부한 것을 남기는 블로그
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://tryk.moe'
@@ -117,7 +117,7 @@ assets:
 pwa:
   enabled: true   # the option for PWA feature
 
-paginate: 5
+paginate:
 
 # ------------ The following options are not recommended to be modified ------------------
 
