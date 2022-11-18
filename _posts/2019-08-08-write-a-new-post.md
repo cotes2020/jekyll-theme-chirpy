@@ -243,7 +243,7 @@ If you want to add an image to the top of the post contents, specify the attribu
 ```yaml
 ---
 image:
-  path: /path/to/image/file
+  path: /path/to/image
   width: 1000   # in pixels
   height: 400   # in pixels
   alt: image alternative text
@@ -254,7 +254,11 @@ Except for `alt`, all other options are necessary, especially the `width` and `h
 
 Starting from _Chirpy v5.0.0_, the attributes `height` and `width` can be abbreviated: `height` → `h`, `width` → `w`. In addition, the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the  attribute `path` only needs the image file name.
 
-Starting from _Chirpy v5.2.0_, the property for the preview image is changed to `image.path`. If upgrading the theme from a prior version, you will have to update posts' metadata to use new image property.
+For simple use, you can also just use `image` to define the path.
+
+```yml
+image: /path/to/image
+```
 
 ## Pinned Posts
 
