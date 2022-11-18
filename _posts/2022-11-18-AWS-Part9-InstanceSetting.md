@@ -1,6 +1,6 @@
 ---
 title: AWS Infra / Part9. Instance 세팅 1부
-date: 2022-11-17 15:00:00 +0900
+date: 2022-11-18 15:00:00 +0900
 categories: [AWS, 2Tier 아키텍쳐 구축]
 tags: [AWS, Docker, EFS]     # TAG names should always be lowercase
 typora-root-url: ../
