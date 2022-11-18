@@ -131,6 +131,8 @@ sudo apt-get install ca-certificates curl gnupg lsb-release
 
 다음 세줄은 인스턴스를 최신화 하고 필요한 구성요소를 설치하는 명령어 입니다.
 
+<br>
+
 ```shell
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o \
         /usr/share/keyrings/docker-archive-keyring.gpg
