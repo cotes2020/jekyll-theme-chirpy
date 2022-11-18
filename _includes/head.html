@@ -22,21 +22,22 @@
     {% seo title=false %}
   {% endcapture %}
 
-  {% if page.image.path %}
-    {% capture target %}"{{ site.url }}{{ page.image.path | relative_url }}"{% endcapture %}
+  {% if page.image %}
+    {% assign img = page.image.path | default: page.image %}
+    {% assign img_path = page.img_path | append: '/' | append: img | replace: '//', '/' %}
+    {% capture target %}"{{ img | absolute_url }}"{% endcapture %}
 
     {% if site.img_cdn contains '//' %}
       <!-- it's a cross-origin URL -->
-      {% capture replacement %}"{{ site.img_cdn }}{{ page.img_path }}{{ page.image.path }}"{% endcapture %}
+      {% capture replacement %}"{{ site.img_cdn }}{{ img_path }}"{% endcapture %}
     {% else %}
       <!-- it's a local file path -->
       {%- capture replacement -%}
-        "{{ site.url }}{{ site.baseurl }}{{ site.img_cdn }}{{ page.img_path }}{{ page.image.path }}"
+        "{{ site.img_cdn | append: '/' | append: img_path | replace: '//', '/' | absolute_url }}"
       {%- endcapture -%}
     {% endif %}
 
     {% assign seo_tags = seo_tags | replace: target, replacement %}
-
   {% endif %}
 
   {{ seo_tags }}
