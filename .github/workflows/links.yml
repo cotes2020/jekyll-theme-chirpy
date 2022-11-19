@@ -1,0 +1,39 @@
+name: Links
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 1"
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get GH Pages URL
+        id: gh_pages_url
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            let result = await github.request('GET /repos/:owner/:repo/pages', {
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            console.log(result.data.html_url);
+            return result.data.html_url
+          result-encoding: string
+
+      - name: Restore lychee cache
+        uses: actions/cache@v3
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.sha }}
+          restore-keys: cache-lychee-
+
+      - name: Link Checker
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: "${{ steps.gh_pages_url.outputs.result }}"
+          fail: true
