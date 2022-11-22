@@ -2,7 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [5.3.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.3.0...v5.3.1) (2022-10-25)
+## [5.3.2](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.3.1...v5.3.2) (2022-11-22)
+
+
+### Bug Fixes
+
+* `mermaid` occasionally fails to initialize ([#536](https://github.com/cotes2020/jekyll-theme-chirpy/issues/536)) ([48f14e3](https://github.com/cotes2020/jekyll-theme-chirpy/commit/48f14e39ac81bbfb3b9913ea3ee789d775b2d1ae))
+* **comment:** disqus doesn't follow theme mode switching ([b0d5956](https://github.com/cotes2020/jekyll-theme-chirpy/commit/b0d5956f5a0ed894984d6b1754efeba04d8bc966))
+* restore full-text search ([#741](https://github.com/cotes2020/jekyll-theme-chirpy/issues/741)) ([6774e0e](https://github.com/cotes2020/jekyll-theme-chirpy/commit/6774e0e1fb37cf467b14be481347412713763f05))
+* the image URL in the SEO-related tags is incomplete ([#754](https://github.com/cotes2020/jekyll-theme-chirpy/issues/754)) ([f6e9a3f](https://github.com/cotes2020/jekyll-theme-chirpy/commit/f6e9a3fccf7ab34db71f8aefaf86fdcc05861076))
+
+## [5.3.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.3.0...v5.3.1) (2022-10-25)
 
 
 ### Bug Fixes
