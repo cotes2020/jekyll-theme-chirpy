@@ -461,21 +461,24 @@ img[data-src] {
     }
   }
 
-  > ol,
-  > ul {
-    -webkit-padding-start: 1.75rem;
-    padding-inline-start: 1.75rem;
+  ol,
+  ul {
+    &:not([class]),
+    &.task-list {
+      -webkit-padding-start: 1.75rem;
+      padding-inline-start: 1.75rem;
 
-    li {
-      margin: 0.25rem 0;
-      padding-left: 0.25rem;
-    }
+      li {
+        margin: 0.25rem 0;
+        padding-left: 0.25rem;
+      }
 
-    ol,
-    ul {
-      -webkit-padding-start: 1rem;
-      padding-inline-start: 1rem;
-      margin: 0.5rem 0;
+      ol,
+      ul {
+        -webkit-padding-start: 1.25rem;
+        padding-inline-start: 1.25rem;
+        margin: 0.5rem 0;
+      }
     }
   }
 

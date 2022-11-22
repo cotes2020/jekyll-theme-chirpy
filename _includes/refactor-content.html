@@ -107,13 +107,7 @@
 
         <!-- Add image path -->
         {% if page.img_path %}
-          {% assign _path = page.img_path %}
-          {% assign last_char = _path | slice: -1 %}
-
-          {% unless last_char == '/' %}
-            {% assign _path = _path | append: '/' %}
-          {% endunless %}
-
+          {% assign _path = page.img_path | append: '/' | replace: '//', '/' %}
           {% assign _src_prefix = _src_prefix | append: _path %}
         {% endif %}
 
