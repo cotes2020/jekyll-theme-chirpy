@@ -16,7 +16,7 @@ bootstrap-toc:
   js: /assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js
 
 fontawesome:
-  css: /assets/lib/fontawesome-free-5.15.4/css/all.min.css
+  css: /assets/lib/fontawesome-free-6.2.1/css/all.min.css
 
 search:
   js: /assets/lib/simple-jekyll-search-1.10.0/simple-jekyll-search.min.js
