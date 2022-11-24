@@ -1,19 +1,17 @@
 ---
-title: 프로그래머스(제목)
+title: title
 author: jimin
 date: 2022-11-24 00:00:00 +0900
-categories: [Algo, 프로그래머스]
+categories: [Java, 자료구조]
 tags: []
 pin: false
 ---
 
-# 첫 시도
+# 자료구조 이란?
 
 - 내용
 
-# 해결
-
-- 내용
+# 자료구조 특징
 
 ```java
 import java.io.*;
@@ -21,6 +19,8 @@ import java.lang.reflect.Array;
 import java.util.*;
 ```
 
-# 참고
+# 자료구조 종류
+
+# 참고 사이트
 
 - 직접구현

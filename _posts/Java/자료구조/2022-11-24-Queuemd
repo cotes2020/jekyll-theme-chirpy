@@ -1,0 +1,24 @@
+---
+title: Queue
+author: jimin
+date: 2022-11-24 00:00:00 +0900
+categories: [Java, 자료구조]
+tags: [Queue]
+pin: false
+---
+
+# Queue란?
+
+- **한쪽 끝에서는 삽입만이 다른 한쪽 끝에서는 삭제만이 일어나는 FIFO(First In First Out)구조의 자료구조**
+- 주로 LinkedList로 구현
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2d09a102-2fdb-42ad-a402-73c53d07776f/Untitled.png)
+
+# 내용 특징
+
+1. 삽입, 삭제는 O(1), 조회는 O(n) → 삽입삭제가 일어나는 곳이 정해져 있음
+2. LinkedList로 구현해도 삽입삭제의 시간복잡도가 O(1)
+
+# 참고 사이트
+
+- [https://velog.io/@hyeon930/자료구조에-대해서-알아보자](https://velog.io/@hyeon930/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90)
