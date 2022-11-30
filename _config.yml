@@ -3,8 +3,8 @@
 # Import the theme
 theme: jekyll-theme-chirpy
 
-# Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
-# and doesn't have a custom domain.
+# Only if your site type is GitHub Project sites and doesn't have a custom domain,
+# change below value to '/projectname'.
 baseurl: ''
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
@@ -12,49 +12,50 @@ baseurl: ''
 # otherwise, the layout language will use the default value of 'en'.
 lang: en
 
-
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Kolkata
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: Bornunique911                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Cybersecurity Enthusiast and a CTF player   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  Cybersec Enthusiast,CTF player,Top 1% on TryHackMe.com,Infosec Researcher
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://bornunique911.github.io'
+
+author: Bornunique911
 
 github:
-  username: github_username             # change to your github username
+  username: Bornunique911             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: bornunique911            # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com             # change to your email address
+  name: Bornunique911
+  #email: example@doamin.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/bornunique911      # change to your twitter homepage
+    - https://github.com/Bornunique911       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification:               # fill in to your verification string
+google_site_verification: google_meta_tag_verification # change to your verification string
 
 # ↑ --------------------------
-# The end of `jekyll-seo-tag` settings
+
 
 google_analytics:
-  id:                 # fill in your Google Analytics ID
+  id: ''              # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
@@ -78,44 +79,17 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn:
+img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://i.pinimg.com/originals/e2/33/ce/e233ce39bf5316b0a9ed17b57c1c6df7.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
 
-comments:
-  active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
-  # The active options are as follows:
-  disqus:
-    shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-  # utterances settings › https://utteranc.es/
-  utterances:
-    repo:         # <gh-username>/<repo>
-    issue_term:   # < url | pathname | title | ...>
-  # Giscus options › https://giscus.app
-  giscus:
-    repo:              # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
-    mapping:           # optional, default to 'pathname'
-    input_position:    # optional, default to 'bottom'
-    lang:              # optional, default to the value of `site.lang`
-    reactions_enabled: # optional, default to the value of `1`
-
-# Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
-assets:
-  self_host:
-    enabled:      # boolean, keep empty means false
-    # specify the Jekyll environment, empty means both
-    # only works if `assets.self_host.enabled` is 'true'
-    env:          # [development|production]
-
-pwa:
-  enabled: true   # the option for PWA feature
+disqus:
+  comments: false  # boolean type, the global switch for posts comments.
+  shortname: ''    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 paginate: 10
 
@@ -137,8 +111,10 @@ collections:
     output: true
     sort_by: order
 
+
 defaults:
-  - scope:
+  -
+    scope:
       path: ''          # An empty string here means all files in the project
       type: posts
     values:
@@ -148,24 +124,19 @@ defaults:
       # DO NOT modify the following parameter unless you are confident enough
       # to update the code of all other post links in this project.
       permalink: /posts/:title/
-  - scope:
+  -
+    scope:
       path: _drafts
     values:
       comments: false
-  - scope:
+  -
+    scope:
       path: ''
       type: tabs             # see `site.collections`
     values:
       layout: page
       permalink: /:title/
-  - scope:
-      path: assets/img/favicons
-    values:
-      swcache: true
-  - scope:
-      path: assets/js/dist
-    values:
-      swcache: true
+      dynamic_title: true    # Hide title in mobile screens.
 
 sass:
   style: compressed
@@ -183,12 +154,12 @@ exclude:
   - '*.gem'
   - '*.gemspec'
   - tools
+  - docs
   - README.md
-  - CHANGELOG.md
   - LICENSE
   - gulpfile.js
   - node_modules
-  - package*.json
+  - '*.json'
 
 jekyll-archives:
   enabled: [categories, tags]
