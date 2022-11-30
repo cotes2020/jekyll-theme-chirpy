@@ -20,3 +20,7 @@ gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 
 # Jekyll <= 4.2.0 compatibility with Ruby 3.0
 gem "webrick", "~> 1.7"
+
+# Adding Jekyll-seo-tag
+gem 'jekyll-seo-tag'
+gem "jekyll-import", git: "https://github.com/pew/jekyll-import.git"
