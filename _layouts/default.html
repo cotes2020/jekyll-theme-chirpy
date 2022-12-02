@@ -15,7 +15,7 @@ layout: compress
 
 <!-- `site.alt_lang` can specify a language different from the UI -->
 <html lang="{{ site.alt_lang | default: site.lang }}"{{ prefer_mode }}>
-<meta http-equiv="X-Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://ajax.googleapis.com; script-src 'self' https://fonts.googleapis.com https://ajax.googleapis.com; style-src 'self' https://fonts.googleapis.com; img-src 'self' ; font-src 'self' https://fonts.googleapis.com; connect-src 'self' https://ajax.googleapis.com; media-src 'self' ; object-src 'self' ; child-src 'self' ; frame-ancestors 'self' ; form-action 'none' ; sandbox allow-same-origin allow-scripts allow-pointer-lock;" />
+
   {% include head.html %}
 
   <body data-spy="scroll" data-target="#toc" data-topbar-visible="true">
