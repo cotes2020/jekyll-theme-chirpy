@@ -24,6 +24,7 @@ function minifyJs() {
   return src(`${ JS_DEST }/*.js`)
     .pipe(insert.prepend(fs.readFileSync(`${ JS_SRC }/copyright`, 'utf8')))
     .pipe(uglify({output: {comments: /^!|@preserve|@license|@cc_on/i}}))
+    .pipe(insert.append('\n'))
     .pipe(dest(JS_DEST));
 }
 
@@ -45,7 +46,6 @@ const postJs = () => {
       `${JS_SRC}/commons/*.js`,
       `${JS_SRC}/utils/img-extra.js`,
       `${JS_SRC}/utils/locale-datetime.js`,
-      `${JS_SRC}/utils/checkbox.js`,
       `${JS_SRC}/utils/clipboard.js`,
       // 'smooth-scroll.js' must be called after ToC is ready
       `${JS_SRC}/utils/smooth-scroll.js`
@@ -64,7 +64,6 @@ const categoriesJs = () => {
 const pageJs = () => {
   return concatJs([
       `${JS_SRC}/commons/*.js`,
-      `${JS_SRC}/utils/checkbox.js`,
       `${JS_SRC}/utils/img-extra.js`,
       `${JS_SRC}/utils/clipboard.js`,
       `${JS_SRC}/utils/smooth-scroll.js`

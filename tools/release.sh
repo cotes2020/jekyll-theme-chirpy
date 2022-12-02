@@ -14,7 +14,8 @@
 
 set -eu
 
-opt_pre=false # preview mode option
+opt_pre=false      # preview mode option
+opt_skip_ver=false # option for skip versioning
 
 working_branch="$(git branch --show-current)"
 
@@ -48,6 +49,7 @@ help() {
   echo "   bash ./tools/release.sh [options]"
   echo
   echo "Options:"
+  echo "     -k, --skip-versioning    Skip the step of generating the version number."
   echo "     -p, --preview            Enable preview mode, only package, and will not modify the branches"
   echo "     -h, --help               Print this information."
 }
@@ -102,6 +104,10 @@ check() {
 
 _bump_file() {
   for i in "${!FILES[@]}"; do
+    if [[ ${FILES[$i]} == $NODE_CONFIG ]]; then
+      continue
+    fi
+
     sed -i "s/v[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/v$1/" "${FILES[$i]}"
   done
 
@@ -140,37 +146,6 @@ resume_config() {
   mv _config.yml.bak _config.yml
 }
 
-# auto-generate a new version number to the file 'package.json'
-standard_version() {
-  if $opt_pre; then
-    standard-version --prerelease rc
-  else
-    standard-version
-  fi
-}
-
-# Prevent changelogs generated on master branch from having duplicate content
-# (the another bug of `standard-version`)
-standard_version_plus() {
-  temp_branch="prod-mirror"
-  temp_dir="$(mktemp -d)"
-
-  git checkout -b "$temp_branch" "$PROD_BRANCH"
-  git merge --no-ff --no-edit "$STAGING_BRANCH"
-
-  standard_version
-
-  cp package.json CHANGELOG.md "$temp_dir"
-
-  git checkout "$STAGING_BRANCH"
-  git reset --hard HEAD # undo the changes from $temp_branch
-  mv "$temp_dir"/* .    # rewrite the changelog
-
-  # clean up the temp stuff
-  rm -rf "$temp_dir"
-  git branch -D "$temp_branch"
-}
-
 # build a gem package
 build_gem() {
   echo -e "Build the gem package for v$_version\n"
@@ -184,12 +159,12 @@ build_gem() {
 release() {
   _version="$1" # X.Y.Z
 
-  git checkout "$PROD_BRANCH"
-  git merge --no-ff --no-edit "$working_branch"
-
-  # Create a new tag on production branch
+  # Create a new tag on working branch
   echo -e "Create tag v$_version\n"
   git tag "v$_version"
+
+  git checkout "$PROD_BRANCH"
+  git merge --no-ff --no-edit "$working_branch"
 
   # merge from patch branch to the staging branch
   # NOTE: This may break due to merge conflicts, so it may need to be resolved manually.
@@ -201,18 +176,21 @@ release() {
 }
 
 main() {
-  check
+  if [[ $opt_skip_ver = false ]]; then
+    check
 
-  if [[ "$working_branch" == "$STAGING_BRANCH" ]]; then
-    standard_version_plus
-  else
-    standard_version
+    # auto-generate a new version number to the file 'package.json'
+    if $opt_pre; then
+      standard-version --prerelease rc
+    else
+      standard-version
+    fi
   fi
 
   # Change heading of Patch version to level 2 (a bug from `standard-version`)
   sed -i "s/^### \[/## \[/g" CHANGELOG.md
 
-  _version="$(grep '"version":' package.json | sed 's/.*: "//;s/".*//')"
+  _version="$(grep '"version":' "$NODE_CONFIG" | sed 's/.*: "//;s/".*//')"
 
   echo -e "Bump version number to $_version\n"
   bump "$_version"
@@ -232,6 +210,10 @@ while (($#)); do
   case $opt in
   -p | --preview)
     opt_pre=true
+    shift
+    ;;
+  -k | --skip-versioning)
+    opt_skip_ver=true
     shift
     ;;
   -h | --help)

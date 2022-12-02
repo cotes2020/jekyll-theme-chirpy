@@ -31,11 +31,15 @@
   %}
 {% endif %}
 
-<!-- Add attribute 'hide-bullet' to the checkbox list -->
-
-{% if _content contains '<li class="task-list-item"><' %}
+<!-- Change the icon of checkbox -->
+{% if _content contains '<input type="checkbox"' %}
   {% assign _content = _content
-    | replace: '"task-list-item"><', '"task-list-item" hide-bullet><'
+    | replace:
+        '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />',
+        '<i class="fas fa-check-circle fa-fw checked"></i>'
+    | replace:
+        '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />',
+        '<i class="far fa-circle fa-fw"></i>'
   %}
 {% endif %}
 
@@ -103,13 +107,7 @@
 
         <!-- Add image path -->
         {% if page.img_path %}
-          {% assign _path = page.img_path %}
-          {% assign last_char = _path | slice: -1 %}
-
-          {% unless last_char == '/' %}
-            {% assign _path = _path | append: '/' %}
-          {% endunless %}
-
+          {% assign _path = page.img_path | append: '/' | replace: '//', '/' %}
           {% assign _src_prefix = _src_prefix | append: _path %}
         {% endif %}
 
@@ -177,7 +175,7 @@
           | append: '<div class="code-header">'
           | append: _label
           | append: '<button aria-label="copy" data-title-succeed="'
-          | append: site.data.locales[lang].post.button.copy_code.succeed
+          | append: site.data.locales[site.lang].post.button.copy_code.succeed
           | append: '"><i class="far fa-clipboard"></i></button></div>'
           | append: '<div class="highlight"><code>'
       %}
@@ -214,7 +212,7 @@
 
       {% assign left = snippet | split: mark_end | first %}
       {% assign right = snippet | slice: left.size, snippet.size %}
-      {% assign left = left | replace: '">', '"><span class="mr-2">' | append: '</span>' %}
+      {% assign left = left | replace_first: '">', '"><span class="mr-2">' | append: '</span>' %}
 
       {% assign _new_content = _new_content | append: mark_start
           | append: left | append: anchor | append: right
