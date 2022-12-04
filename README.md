@@ -12,7 +12,7 @@
 
   [**Live Demo →**](https://cotes2020.github.io/chirpy-demo)
 
-  [![Devices Mockup](https://raw.githubusercontent.com/cotes2020/chirpy-images/main/commons/devices-mockup.png)](https://cotes2020.github.io/chirpy-demo)
+  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)](https://cotes2020.github.io/chirpy-demo)
 
 </div>
 
