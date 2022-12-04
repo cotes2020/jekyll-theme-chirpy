@@ -3,7 +3,6 @@
 !.git*
 !.editorconfig
 !.nojekyll
-!.travis.yml
 !.husky
 !.commitlintrc.json
 !.versionrc.json

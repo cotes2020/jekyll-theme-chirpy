@@ -9,7 +9,6 @@ on:
     paths-ignore:
       - '.github/**'
       - '!.github/workflows/ci.yml'
-      - '.travis.yml'
       - '.gitignore'
       - 'README.md'
       - 'LICENSE'

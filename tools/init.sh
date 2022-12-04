@@ -66,7 +66,6 @@ init_files() {
   rm -f ".gitignore.$TEMP_SUFFIX"
 
   # remove the other fies
-  rm -f .travis.yml
   rm -rf _posts/*
 
   # save changes

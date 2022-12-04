@@ -39,15 +39,13 @@ $ bash tools/init.sh
 
 The above command will:
 
-1. Removes some files or directories from your repository:
-    - `.travis.yml`{: .filepath}
-    - files under `_posts`{: .filepath}
+1. Remove the files in `_posts`{: .filepath} from your repository.
 
 2. If the option `--no-gh` is provided, the directory `.github`{: .filepath} will be deleted. Otherwise, set up the GitHub Action workflow by removing the extension `.hook`{: .filepath} of `.github/workflows/pages-deploy.yml.hook`{: .filepath}, and then remove the other files and directories in the folder `.github`{: .filepath}.
 
-3. Removes item `Gemfile.lock` from `.gitignore`{: .filepath}.
+3. Remove item `Gemfile.lock` from `.gitignore`{: .filepath}.
 
-4. Creates a new commit to save the changes automatically.
+4. Create a new commit to save the changes automatically.
 
 ### Installing Dependencies
 
