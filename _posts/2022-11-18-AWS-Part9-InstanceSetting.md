@@ -2,7 +2,7 @@
 title: AWS Infra / Part9. Instance 세팅 1부
 date: 2022-11-18 15:00:00 +0900
 categories: [AWS, 2Tier 아키텍쳐 구축]
-tags: [AWS, Docker, EFS]     # TAG names should always be lowercase
+tags: [AWS, Docker]     # TAG names should always be lowercase
 typora-root-url: ../
 ---
 # Intro
@@ -173,4 +173,4 @@ Amazon Linux가 아닌 Ubuntu에서 작업 하기 때문에 위의 작업이 필
 
 이번 파트 에서는 인스턴스에 대해 기초적인 세팅 일부를 진행 하였습니다.
 
-다음 파트는 Amazon EFS 설정 입니다.
+다음 파트는 [Amazon EFS](/posts/AWS-Part10-AmazonEFS/) 설정 입니다.
