@@ -26,13 +26,13 @@ tail_includes:
     </span>
     {% endif %}
 
-  {% if page.image.path %}
+  {% if page.image %}
     {% capture bg %}
       {% unless page.image.no_bg %}{{ 'bg' }}{% endunless %}
     {% endcapture %}
 
     <div class="mt-3 mb-3">
-      <img src="{{ page.image.path }}" class="preview-img {{ bg | strip }}"
+      <img src="{{ page.image.path | default: page.image }}" class="preview-img {{ bg | strip }}"
         alt="{{ page.image.alt | default: "Preview Image" }}"
 
       {% if page.image.width %}

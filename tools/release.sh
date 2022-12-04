@@ -104,6 +104,10 @@ check() {
 
 _bump_file() {
   for i in "${!FILES[@]}"; do
+    if [[ ${FILES[$i]} == $NODE_CONFIG ]]; then
+      continue
+    fi
+
     sed -i "s/v[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/v$1/" "${FILES[$i]}"
   done
 
@@ -183,7 +187,10 @@ main() {
     fi
   fi
 
-  _version="$(grep '"version":' package.json | sed 's/.*: "//;s/".*//')"
+  # Change heading of Patch version to level 2 (a bug from `standard-version`)
+  sed -i "s/^### \[/## \[/g" CHANGELOG.md
+
+  _version="$(grep '"version":' "$NODE_CONFIG" | sed 's/.*: "//;s/".*//')"
 
   echo -e "Bump version number to $_version\n"
   bump "$_version"

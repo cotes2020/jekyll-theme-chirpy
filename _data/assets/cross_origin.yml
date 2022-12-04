@@ -27,7 +27,7 @@ bootstrap-toc:
   js: https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js
 
 fontawesome:
-  css: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css
+  css: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css
 
 search:
   js: https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js
