@@ -69,7 +69,7 @@
     {% assign _attrs = _left | split: ' ' %}
 
     {% for _attr in _attrs %}
-      {% assign _pair = _attr | split: '=' %}
+      {% assign _pair = _attr | split: '="' %}
       {% if _pair.size < 2 %}
         {% continue %}
       {% endif %}
@@ -93,7 +93,6 @@
 
     {% if _src %}
       {% unless _src contains '://' %}
-
         <!-- Add CDN URL -->
         {% if site.img_cdn %}
           {% if site.img_cdn contains '//' %}
@@ -117,7 +116,6 @@
       {% endunless %}
 
       <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-
       {% assign _left = _left | replace: 'src=', 'data-src=' %}
 
     {% endif %}
