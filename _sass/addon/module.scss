@@ -141,14 +141,14 @@
   transform: translateX(-50%);
 }
 
-@mixin prompt($type, $fw-icon, $icon-weight: 900) {
+@mixin prompt($type, $fa-content, $fa-style: "solid") {
   &.prompt-#{$type} {
     background-color: var(--prompt-#{$type}-bg);
 
     &::before {
-      content: $fw-icon;
+      content: $fa-content;
       color: var(--prompt-#{$type}-icon-color);
-      font-weight: $icon-weight;
+      font: var(--fa-font-#{$fa-style});
     }
   }
 }

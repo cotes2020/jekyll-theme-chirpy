@@ -98,10 +98,13 @@ blockquote {
     color: var(--prompt-text-color);
 
     &::before {
-      font-family: "Font Awesome 5 Free";
       text-align: center;
       width: 1.25rem;
       margin-right: 0.75rem;
+      position: relative;
+      top: 0.4rem;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
     }
 
     > div {
@@ -113,7 +116,7 @@ blockquote {
     }
   }
 
-  @include prompt("tip", "\f0eb", 400);
+  @include prompt("tip", "\f0eb", "regular");
   @include prompt("info", "\f06a");
   @include prompt("warning", "\f06a");
   @include prompt("danger", "\f071");
