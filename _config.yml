@@ -82,7 +82,7 @@ img_cdn: 'https://abdelhady360.github.io'
 
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/assets/img/favicons/image.png'
+avatar: '/assets/img/favicons/image.jpg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
