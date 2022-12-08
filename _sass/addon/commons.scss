@@ -183,22 +183,17 @@ i { /* fontawesome icons */
   }
 }
 
-@-webkit-keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 img[data-src] {
   margin: 0.5rem 0;
 
-  &[data-loaded="true"] {
-    -webkit-animation: fade-in linear 0.5s;
-    animation: fade-in linear 0.5s;
+  &.lazyload,
+  &.lazyloading {
+    opacity: 0;
+  }
+
+  &.lazyloaded {
+    opacity: 1;
+    transition: opacity 0.5s;
   }
 
   &.left {

@@ -1,6 +1,5 @@
 /**
- Lazy load images (https://github.com/ApoorvSaxena/lozad.js)
- and popup when clicked (https://github.com/dimsemenov/Magnific-Popup)
+ Set up image popup stuff (https://github.com/dimsemenov/Magnific-Popup)
  */
 
 $(function () {
@@ -9,12 +8,6 @@ $(function () {
     if ($(`${IMG_SCOPE} img`).length <= 0) {
         return;
     }
-
-    /* lazy loading */
-
-    const imgList = document.querySelectorAll(`${IMG_SCOPE} img[data-src]`);
-    const observer = lozad(imgList);
-    observer.observe();
 
     /* popup */
 
