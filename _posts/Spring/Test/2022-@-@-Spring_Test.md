@@ -1,0 +1,275 @@
+---
+title: RestDocs
+author: jimin
+date: 2022-12-10 00:00:00 +0900
+categories: [Spring, Test]
+tags: [Test,RestDocs,RestAPI]
+pin: false
+---
+
+# RestDocs란?
+
+ - 만약 내가 회사에서 API를 개발하고 있다고 가정해보자. 내가 만든 API를 다른사람들에게 공유하는 방법으로 보통 API 명세서를 사용한다. 나는 노션을 사용하여 API 명세서를 작성하였고 API가 수정될때마다 명세서를 수정하였다. 어느날 깜빡하고 명세서를 수정하지 않았다. 명세서를 보고 API를 사용하던 팀원들은 오류를 만나게 될것이다.
+
+ - 매번 API를 사용, 수정할 때마다 노션에 들어가서 명세서를 확인, 수정하는 것은 매우 번거로운 일이다. 그렇다고 부지런히 관리해주지 않으면 오류를 일으킨다. 이런 문제들을 해결할 수 있는 것이 RestDocs이다.
+
+# RestDocs의 특징
+ 
+ 1. Build 할 때마다 자동으로 API 명세서를 만들어준다.
+ 2. 이때 테스트 코드를 통과한 API만 만들어준다.-> 통과 못하면 안만들어줌.
+ 3. 따라서 테스트 코드를 필수적으로 작성해야한다. -> 테스트 코드를 강제하므로 API가 보다 안정적이게 됨.
+ 4. 다양한 커스터마이징이 가능하다.
+ 5. 어렵다.
+
+ # 순서
+
+ 1. build.gradle 설정
+ 2. 테스트 코드 설정
+ 3. .adoc 파일 작성
+ 4. build
+
+
+ # build.gradle 설정
+
+1. plugins에 asciidoctor 추가
+Asciidoctor 파일을 컨버팅 하고 Build 폴더에 복사하기 위한 플러그인
+```java
+plugins{
+    id 'org.asciidoctor.jvm.convert' version '3.3.2' 
+}
+```
+
+2. configurations에 asciidoctorExt 추가
+```java
+configurations {
+	asciidoctorExt
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+```
+
+3. dependencies에 mockmvc 추가
+adoc파일에서 사용할 snippets 속성이 자동으로 build/generated-snippets를 가리키도록 해줌
+```java
+dependencies{
+    asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+}
+```
+
+4. ext에 snippets 저장 경로 설정
+snippets 파일이 저장될 경로 snippetsDir로 변수 설정
+```java
+ext {
+	set('snippetsDir', file('build/generated-snippets'))
+}
+```
+
+5. 출력할 디렉토리를 snippetsDir로 설정
+```java
+tasks.named('test') {
+	outputs.dir snippetsDir
+	useJUnitPlatform()
+}
+```
+6. (1) Asciidocor의 설정을 asciidoctorExt로 사용
+   (2) .adoc파일에서 다른 .adoc을 include하여 사용하는 경우 baseDir로 동일하게 설정
+   (3) Input 디렉토리를 snippetsDir로 설정
+   (4) Gradle build시 test -> asciidoctor순으로 진행
+```java
+asciidoctor {
+	configurations 'asciidoctorExt' // (1)
+	baseDirFollowsSourceFile() // (2)
+	inputs.dir snippetsDir // (3)
+	dependsOn test // (4)
+}
+```
+7.  위 asciidoctor가 실행되기 전 실행 설정
+asciidoctor가 실행될 때 해당 경로에 있는 파일 삭제
+```java
+asciidoctor.doFirst {
+	delete file('src/main/resources/static/docs')
+}
+```
+
+8. 파일 복사
+from에 위치한 파일들을 into로 복사
+```java
+task createDocument(type: Copy) {
+	dependsOn asciidoctor
+	from file("build/docs/asciidoc")
+	into file("src/main/resources/static")
+}
+```
+
+9. html파일 복사
+Gradle build시 asciidoctor.outputDir에 html파일이 생기고 이것을 jar안에 /resources/static 폴더에 복사
+```java
+bootJar {
+	dependsOn createDocument
+	from ("${asciidoctor.outputDir}"){
+			into 'static/docs'
+		}
+}
+```
+
+# 테스트 코드 설정
+
+1. RestDocsConfiguration 클래스 생성
+테스트 코드에서 사용할 bean들을 관리해주는 클래스를 생성한다.
+```java
+@TestConfiguration
+public class RestDocsConfiguration {
+    @Bean
+    public RestDocumentationResultHandler write(){
+        return MockMvcRestDocumentation.document(
+                "{class-name}/{method-name}",
+                Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                Preprocessors.preprocessResponse(Preprocessors.prettyPrint())
+        );
+    }
+}
+```
+해당 코드 작성 시 snippet파일 이름을 (class-name)-(method-name)으로 설정해주고 내용을 가독성 있게 설정해준다
+
+2. AbstractRestDocsTest 클래스 생성
+여러 테스트에 공통적으로 사용할 수 있는 추상 클래스를 생성한다.
+```java
+@Import(RestDocsConfiguration.class) // 설정 파일 import
+@ExtendWith(RestDocumentationExtension.class)
+public class AbstractRestDocsTests {
+    @Autowired
+    MockMvc mvc;
+    @Autowired
+    protected RestDocumentationResultHandler restDocs;
+    @Autowired
+    protected ObjectMapper objectMapper;
+
+    @BeforeEach
+    void setUp(
+            final WebApplicationContext context,
+            final RestDocumentationContextProvider provider
+    )
+    {
+        this.mvc = MockMvcBuilders.webAppContextSetup(context) // mvc 설정
+                .apply(MockMvcRestDocumentation.documentationConfiguration(provider)) // restDocs 설정
+                .alwaysDo(restDocs)
+                .build();
+    }
+}
+```
+@BeforeEach를 통해 새로운 테스트를 시작할 때마다 mvc와 restDocs를 다시 세팅해준다.
+
+3. 테스트 코드 작성 시작
+```java
+@WebMvcTest(controllers = RestaurantApiController.class)
+class RestaurantApiControllerTest extends AbstractRestDocsTests {
+
+    @MockBean // @SpringBootTest를 사용하지 않으므로 @MockBean으로 관리
+    protected  RestaurantService restaurantService;
+    @MockBean
+    protected RestaurantRepository restaurantRepository;
+
+    @Test
+    void addRestaurantV1() throws Exception{ // 오류 컨트롤 필수
+        RestaurantForm form = new RestaurantForm();
+        form.setRestaurant_name("육꼬");
+        form.setMemo("음식이 맛있어요");
+        form.setX(1251.31f);
+        form.setY(15123.24f);
+        form.setStar_count(4.5f);
+        form.setUser_id(1L);
+
+        mvc.perform(post("/api/v1/restaurant")
+                        .content(objectMapper.writeValueAsString(form))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk()) // 상태 코드가 같은지 확인
+                .andDo(restDocs.document( // 스니펫 작성
+                        requestFields(
+                                fieldWithPath("restaurant_name").type(JsonFieldType.STRING).description("육꼬"),
+                                fieldWithPath("user_id").type(JsonFieldType.NUMBER).description("1"),
+                                fieldWithPath("x").type(JsonFieldType.NUMBER).description("123.23"),
+                                fieldWithPath("y").type(JsonFieldType.NUMBER).description("33.68"),
+                                fieldWithPath("star_count").type(JsonFieldType.NUMBER).description("4.5"),
+                                fieldWithPath("memo").type(JsonFieldType.STRING).description("맛있어요.")
+                        )
+                       )
+                );
+    }
+
+    @Test
+    void deleteRestaurantV1() throws Exception{
+        Restaurant restaurant = new Restaurant();
+        restaurant.setRestaurantName("육꼬");
+        restaurant.setMemo("음식이 맛있어요");
+        restaurant.setX(1251.31f);
+        restaurant.setY(15123.24f);
+        restaurant.setStarCount(4.5f);
+        restaurant.setRestaurant_id(1L);
+        restaurantRepository.save(restaurant);
+
+        mvc.perform(
+                        RestDocumentationRequestBuilders.delete("/api/v1/restaurant/")
+                                .param("restaurant_id","1")
+                )
+                .andExpect(status().isOk())
+                .andDo(
+                        restDocs.document(
+                              requestParameters(parameterWithName("restaurant_id").description("맛집 아이디"))
+                        )
+                );
+    }
+}
+```
+
+# .adoc 파일 작성
+ - 위의 과정을 진행하고나서 test를 통과하면 build/generated-snippets에 API별  스니펫이 생성된다. 하지만 html 파일은 생성되지 않는다. 왜? .adoc 파일이 없기 때문에.
+ - 생성된 스니펫을 사용하여 명세서를 작성하기 위해서는 .adoc 파일이 필요하다.
+
+ 1. index.adoc 파일 생성
+ src/docs/asciidoc 디렉토리 아래 index.adoc 파일을 생성한다
+```
+= RestaurantAPI Document
+
+:doctype: book
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+include::restaurant.adoc[]
+```
+
+ 2. API별로 .adoc 파일을 생성한다
+ ```
+ == 맛집
+
+=== 맛집 리스트 추가
+operation::restaurant-api-controller-test/add-restaurant-v1[]
+
+=== 맛집 리스트 삭제
+operation::restaurant-api-controller-test/delete-restaurant-v1[]
+
+=== 맛집 리스트 수정
+operation::restaurant-api-controller-test/update-restaurant-v1[]
+ ```
+
+
+# build
+ 1. gradlew 파일이 있는곳으로 이동
+ 2. ./gradlew clean build
+ 3. cd build/libs
+ 4. java -jar (jar파일이름).jar
+ 5. localhost:8080으로 접속하면 명세서 확인 가능
+
+
+# 참고
+    영상
+ - [https://www.youtube.com/watch?v=BoVpTSsTuVQ&t=600s](https://www.youtube.com/watch?v=BoVpTSsTuVQ&t=600s)
+
+    사이트
+  - [https://me-analyzingdata.tistory.com/entry/Rest-Docs-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0](https://me-analyzingdata.tistory.com/entry/Rest-Docs-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+ - [https://whatistudy.tistory.com/entry/Spring-Rest-Docs2](https://whatistudy.tistory.com/entry/Spring-Rest-Docs2)
+ - [https://techblog.woowahan.com/2597/](https://techblog.woowahan.com/2597/)

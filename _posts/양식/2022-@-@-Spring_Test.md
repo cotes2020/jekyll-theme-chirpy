@@ -2,18 +2,15 @@
 title: title
 author: jimin
 date: 2022-@-@ 00:00:00 +0900
-categories: [강의, 스프링입문]
-tags: [스프링입문]
+categories: [Spring, Test]
+tags: [Test,RestDocs,RestAPI]
 pin: false
 ---
 
-# 첫 시도
+# @@이란?
 
  - 내용
 
-# 해결
-
- - 내용
 
 ```java
 import java.io.*;
