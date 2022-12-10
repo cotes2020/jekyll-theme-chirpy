@@ -184,16 +184,27 @@ i { /* fontawesome icons */
 }
 
 img[data-src] {
-  margin: 0.5rem 0;
-
-  &.lazyload,
-  &.lazyloading {
-    opacity: 0;
+  @at-root #main #{&} {
+    margin: 0.5rem 0;
   }
 
-  &.lazyloaded {
-    opacity: 1;
-    transition: opacity 0.5s;
+  &[data-lqip="true"] {
+    &.lazyload,
+    &.lazyloading {
+      filter: blur(20px);
+    }
+  }
+
+  &:not([data-lqip="true"]) {
+    &.lazyload,
+    &.lazyloading {
+      opacity: 0;
+    }
+
+    &.lazyloaded {
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
   }
 
   &.left {
@@ -395,6 +406,10 @@ img[data-src] {
     margin-bottom: 1.5rem;
   }
 
+  img[data-src]:not(.normal):not(.left):not(.right) {
+    @include align-center;
+  }
+
   a {
     &.img-link {
       @extend %no-cursor;
@@ -403,10 +418,6 @@ img[data-src] {
     /* created by `_includes/img-extra.html` */
     &.popup {
       cursor: zoom-in;
-
-      > img[data-src]:not(.normal):not(.left):not(.right) {
-        @include align-center;
-      }
     }
 
     &:hover {

@@ -27,12 +27,9 @@ tail_includes:
     {% endif %}
 
   {% if page.image %}
-    {% capture bg %}
-      {% unless page.image.no_bg %}{{ 'bg' }}{% endunless %}
-    {% endcapture %}
-
     <div class="mt-3 mb-3">
-      <img src="{{ page.image.path | default: page.image }}" class="preview-img {{ bg | strip }}"
+      <img src="{{ page.image.path | default: page.image }}"
+        class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"
         alt="{{ page.image.alt | default: "Preview Image" }}"
 
       {% if page.image.width %}
@@ -45,12 +42,17 @@ tail_includes:
         height="{{ page.image.height }}"
       {% elsif page.image.h %}
         height="{{ page.image.h }}"
-      {% endif %}>
+      {% endif %}
+
+      {% if page.image.lqip %}
+        lqip="{{ page.image.lqip }}"
+      {% endif %}
+
+      ><!-- endof img tag -->
 
       {% if page.image.alt %}
         <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
       {% endif %}
-
     </div>
   {% endif %}
 

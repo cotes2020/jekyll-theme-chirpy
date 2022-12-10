@@ -30,7 +30,7 @@ img.preview-img {
   margin: 0;
   border-radius: 6px;
 
-  &.bg {
+  &:not(.no-bg) {
     background: var(--preview-img-bg);
   }
 }

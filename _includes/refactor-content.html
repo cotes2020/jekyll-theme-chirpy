@@ -51,22 +51,42 @@
   {% assign _img_content = nil %}
   {% assign _img_snippets = _content | split: IMG_TAG %}
 
+  <!-- CDN URL -->
+  {% if site.img_cdn %}
+    {% if site.img_cdn contains '//' %}
+      {% assign _path_prefix = site.img_cdn %}
+    {% else %}
+      {% assign _path_prefix = site.img_cdn | relative_url %}
+    {% endif %}
+  {% else %}
+    {% assign _path_prefix = site.baseurl %}
+  {% endif %}
+
+  <!-- Add image path -->
+  {% if page.img_path %}
+    {% assign _path = page.img_path | append: '/' | replace: '//', '/' %}
+    {% assign _path_prefix = _path_prefix | append: _path %}
+  {% endif %}
+
   {% for _img_snippet in _img_snippets %}
     {% if forloop.first %}
       {% assign _img_content = _img_snippet %}
       {% continue %}
     {% endif %}
 
-    {% assign _width = nil %}
-    {% assign _height = nil %}
-    {% assign _src = nil %}
-
     {% assign _left = _img_snippet | split: '>' | first %}
     {% assign _right = _img_snippet | remove: _left %}
 
-    {% assign _left = _left | remove: ' /' %}
-    {% assign _left = _left | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
+    {% unless _left contains 'src=' %}
+      {% continue %}
+    {% endunless %}
+
+    {% assign _left = _left | remove: ' /'  | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
     {% assign _attrs = _left | split: ' ' %}
+
+    {% assign _width = nil %}
+    {% assign _height = nil %}
+    {% assign _lqip = nil %}
 
     {% for _attr in _attrs %}
       {% assign _pair = _attr | split: '="' %}
@@ -75,7 +95,7 @@
       {% endif %}
 
       {% capture _key %}{{ _pair | first }}{% endcapture %}
-      {% capture _value %}{{ _pair | last | replace: '"', '' }}{% endcapture %}
+      {% capture _value %}{{ _pair | last | remove: '"' }}{% endcapture %}
 
       {% case _key %}
         {% when 'width' %}
@@ -84,67 +104,61 @@
           {% assign _height = _value %}
         {% when 'src' %}
           {% assign _src = _value %}
+        {% when 'lqip' %}
+          {% assign _lqip = _value %}
       {% endcase %}
 
-      {% if _width and _height and _src %}
-        {% break %}
-      {% endif %}
     {% endfor %}
 
-    {% if _src %}
-      {% unless _src contains '://' %}
-        <!-- Add CDN URL -->
-        {% if site.img_cdn %}
-          {% if site.img_cdn contains '//' %}
-            {% assign _src_prefix = site.img_cdn %}
-          {% else %}
-            {% assign _src_prefix = site.img_cdn | relative_url %}
-          {% endif %}
-        {% else %}
-          {% assign _src_prefix = site.baseurl %}
-        {% endif %}
+    {% unless _src contains '//' %}
+      {% assign _final_src = _path_prefix | append: _src %}
+      {% capture _src_from %}"{{ _src }}"{% endcapture %}
+      {% capture _src_to %}"{{ _final_src }}"{% endcapture %}
+      {% assign _left = _left | replace: _src_from, _src_to %}
+    {% endunless %}
 
-        <!-- Add image path -->
-        {% if page.img_path %}
-          {% assign _path = page.img_path | append: '/' | replace: '//', '/' %}
-          {% assign _src_prefix = _src_prefix | append: _path %}
-        {% endif %}
-
-        {% assign _final_src = _src_prefix | append: _src %}
-        {% assign _left = _left | replace: _src, _final_src %}
-
+    {% if _lqip %}
+      {% unless _lqip contains ':' %}
+        {% assign _final_lqip = _path_prefix | append: _lqip %}
+        {% capture _lqip_from %}"{{ _lqip }}"{% endcapture %}
+        {% capture _lqip_to %}"{{ _final_lqip }}"{% endcapture %}
+        {% assign _left = _left | replace: _lqip_from, _lqip_to %}
       {% endunless %}
-
-      <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-
-      {% if _left contains 'class=' %}
-        {% assign _left = _left | replace: 'class="', 'class="lazyload ' %}
-      {% else %}
-        {% assign _left = _left | replace: 'src=', 'class="lazyload" src=' %}
-      {% endif %}
-
-      {% assign _left = _left | replace: 'src=', 'data-src=' %}
-
     {% endif %}
 
-    <!-- Add SVG placehoder to prevent layout reflow -->
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    {% if _left contains 'class=' %}
+      {% assign _left = _left | replace: 'class="', 'class="lazyload ' %}
+    {% else %}
+      {% assign _left = _left | replace: 'src=', 'class="lazyload" src=' %}
+    {% endif %}
 
-    {% if _width and _height %}
-      {%- capture _svg -%}
-        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ _width }} {{ _height }}'%3E%3C/svg%3E"
-      {%- endcapture -%}
+    {% assign _left = _left | replace: 'src=', 'data-src=' %}
 
-      {% assign _left =  _svg | append: ' ' | append: _left %}
+    <!-- add placeholder -->
+    {% if _lqip %}
+      {% assign _left = _left | replace: ' lqip=', ' data-lqip="true" src=' %}
+    {% else %}
+      {% if _width and _height %}
+        <!-- Add SVG placehoder to prevent layout reflow -->
+        {%- capture _svg -%}
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ _width  }} {{ _height }}'%3E%3C/svg%3E"
+        {%- endcapture -%}
+        {% assign _left =  _svg | append: ' ' | append: _left %}
+      {% endif %}
     {% endif %}
 
     <!-- Bypass the HTML-proofer test -->
     {% assign _left = _left | append: ' data-proofer-ignore' %}
 
+    <!-- Combine -->
     {% assign _img_content = _img_content | append: IMG_TAG | append: _left | append: _right %}
 
   {% endfor %}
 
-  {% assign _content = _img_content %}
+  {% if _img_content %}
+    {% assign _content = _img_content %}
+  {% endif %}
 
 {% endif %}
 
