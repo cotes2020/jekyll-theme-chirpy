@@ -360,7 +360,7 @@ ResNet(
 
 ## Train with ResNet
 
-[VGG](https://qja1998.github.io/2022/05/25/dlZeroToAll-PyTorch-10-5/)를 통해 학습했을 때와 마찬가지로 CIFAR10 data를 사용하여 학습을 진행한다.
+[VGG](/posts/dlZeroToAll-PyTorch-10-5/)를 통해 학습했을 때와 마찬가지로 CIFAR10 data를 사용하여 학습을 진행한다.
 
 ### Data
 

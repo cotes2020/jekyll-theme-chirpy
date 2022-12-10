@@ -10,9 +10,9 @@ mermaid: false
 
 ### Related Post
 
-1. [Entropy](https://qja1998.github.io/2022/04/26/entropy/)
+1. [Entropy](/posts/entropy/)
 2. **KL Divergence**
-3. [Cross Entropy](https://qja1998.github.io/2022/04/27/cross-entropy/)
+3. [Cross Entropy](/posts/cross-entropy/)
 
 ***
 
@@ -21,14 +21,14 @@ mermaid: false
 ***
 ## Kullback-Leibler divergence, KLD
 
-쿨백-라이블러 발산은 어떤 두 확률분포의 차이를 계산하기 위한 함수로, 두 확률분포의 [정보 엔트로피](https://qja1998.github.io/2022/04/26/entropy/)의 차이를 계산한다.
+쿨백-라이블러 발산은 어떤 두 확률분포의 차이를 계산하기 위한 함수로, 두 확률분포의 [정보 엔트로피](/posts/entropy/)의 차이를 계산한다.
 
 의미적으로는 확률분포 $P$가 있을 때 그 분포를 근사적으로 표현하는 $Q$를 $P$ 대신 이용하여 샘플링 할 경우 엔트로피의 변화를 의미한다.
 
 시각적으로도 한번 확인해 보자. 
 여기 확률분포 $P$(파란색)와 $Q$(초록색)가 있다. 그리고 두 확률분포에 대한 엔트로피 차이를 계산하여 표현한 곡선(빨간색)을 볼 수 있다.
 
-![](/posting_imgs/images/kl-1.jpg)
+![](/posting_imgs/kl-1.jpg)
 
 그래프에서 확인할 수 있듯이 (당연하게도) 분포간의 차이가 큰 곳에서는 엔트로피의 차이가 크고 차이가 적은 곳에서는 줄어든다. 심지어 두 확률분포의 교점(점선)에서는 값이 같기 때문에 엔트로피의 차이도 0이 되는 것을 확인할 수 있다.
 

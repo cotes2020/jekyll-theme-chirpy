@@ -15,7 +15,7 @@ mermaid: false
 
 Gradient Vanishing(기울기 소실)과 Gradient Exploding(기울기 폭주)는 정상적인 학습을 할 수 없게 만드는 요인들이다.
 
-기울기 소실은 [앞서](https://qja1998.github.io/2022/05/13/dlZeroToAll-PyTorch-9-1/) 살펴본 것처럼 역전파를 수행할 때 작은 미분값을 chain rule에 따라 계속 곱하다가 결국 0으로 소멸해버리는 것이었다.
+기울기 소실은 [앞서](/posts/dlZeroToAll-PyTorch-9-1/) 살펴본 것처럼 역전파를 수행할 때 작은 미분값을 chain rule에 따라 계속 곱하다가 결국 0으로 소멸해버리는 것이었다.
 
 반대로 기울기 폭주는 너무 큰 미분값을 계속 곱하다가 수렴하지 못하고 발산해버리는 것을 의미한다.
 
@@ -69,7 +69,7 @@ $\mu_\mathcal{B}$와 $\sigma^2_\mathcal{B}$는 minibatch를 통해 게산된 평
 
 검증 과정에서 이러한 일일 발생하는 것을 막기 위해 학습 시에 게산했던 $\mu_\mathcal{B}$와 $\sigma^2_\mathcal{B}$를 따로 저장해 두고, test할 때는 이미 계산된 $\mu_\mathcal{B}$와 $\sigma^2_\mathcal{B}$를 사용한다.
 
-이런 방식으로 결과값을 도출하면 같은 값에 같은 결과를 얻을 수 있다. 이런 이유로 Batch normalization도 [dropout](https://qja1998.github.io/2022/05/15/dlZeroToAll-PyTorch-9-3/)과 같이 따로 eval mode로 바꿔줘야 한다.
+이런 방식으로 결과값을 도출하면 같은 값에 같은 결과를 얻을 수 있다. 이런 이유로 Batch normalization도 [dropout](/posts/dlZeroToAll-PyTorch-9-3/)과 같이 따로 eval mode로 바꿔줘야 한다.
 
 ***
 
@@ -108,7 +108,7 @@ nn_optimizer = torch.optim.Adam(nn_model.parameters(), lr=learning_rate)
 
 model은 위에서 말한 것처럼 이와같이 구현할 수 있고, 학습은 dropout과 동일하게 `model.train()`을 먼저 해 주고 진행하면 된다.
 
-![]({{site.baseurl}}/images/lab9-4-3.png)
+![](/posting_imgs/lab9-4-3.png)
 
 실제로 Batch normalization을 적용한 경우가 더 학습이 잘 된것을 확인할 수 있다.
 

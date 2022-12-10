@@ -81,7 +81,7 @@ torch.Size([3, 5, 2])
 한 가지 이상하다고 생각할 수 있는 부분이 있다. 분명 output size을 입력한다고 했는데 `hidden_size`라고 정의하여 넣었다.
 이는 RNN의 내부 구조를 보면 알 수 있다.
 
-![](/posting_imgs/images/lab11-1-1.png)
+![](/posting_imgs/lab11-1-1.png)
 
 빨간 박스 부분을 보면 hidden으로 넘어가는 부분과 output으로 나가는 data가 결국 같은 data에서 나눠지는 것을 볼 수 있다.
 그러므로 hidden size와 output size는 같다. 이 때문에 `hidden_size`라고 정의하여 넣은 것이다.
@@ -90,6 +90,6 @@ torch.Size([3, 5, 2])
 
 앞서 나온 shape을 정리해 보면 다음과 같다.
 
-![](/posting_imgs/images/lab11-1-2.png)
+![](/posting_imgs/lab11-1-2.png)
 
 (batch_size, sequence_length, dimension) 순으로 데이터가 구성되며,  앞서 언급한 대로 in/output size만 잘 넣어주면 나머지는 PyTorch가 데이터에 맞게 처리해준다.

@@ -16,7 +16,7 @@ mermaid: false
 
 MLP는 단일 퍼셉트론을 여러개 쌓은 것으로 단일 퍼셉트론으로 해결하지 못한 XOR과 같은 문제를 해결하기 위해 제안된 구조이다.
 
-![](/posting_imgs/images/lab8-2-1.jpg)
+![](/posting_imgs/lab8-2-1.jpg)
 
 위와 같이 XOR 문제는 선을 2개 그어 문제를 해결할 수 있는데, 한동안 MLP를 현실적으로 학습할 수 있는 방법을 찾지 못하다가 **backpropagation**이 등장하면서 힉습이 가능해졌다.
 

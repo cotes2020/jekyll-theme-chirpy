@@ -10,8 +10,8 @@ mermaid: false
 
 ### Related Post
 
-1. [Entropy](https://qja1998.github.io/2022/04/26/entropy/)
-2. [KL Divergence](https://qja1998.github.io/2022/04/26/KL-divergence/)
+1. [Entropy](/posts/entropy/)
+2. [KL Divergence](/posts/KL-divergence/)
 3. **Cross Entropy**
 
 ***
@@ -23,7 +23,7 @@ mermaid: false
 
 엔트로피 식에 $P$와 $Q$의 밀도함수들이 **교차**해서 들어가 있다. 그런 의미에서 교차 엔트로피라는 이름이 붙은 것이다.
 
-이 식의 의미는 [KL divergence 포스팅](https://qja1998.github.io/2022/04/27/KL-divergence/)에서 확인할 수 있듯이 확률분포 $P$를 근사하는 $Q$를 $P$ 대신 사용하여 샘플링했을 때의 엔트로피를 말한다.
+이 식의 의미는 [KL divergence 포스팅](/posts/KL-divergence/)에서 확인할 수 있듯이 확률분포 $P$를 근사하는 $Q$를 $P$ 대신 사용하여 샘플링했을 때의 엔트로피를 말한다.
 
 그런데 어떻게 이런 의미를 가지는 교차 엔트로피가 그 자체로 loss의 역할을 할 수 있는 걸까? 실제로 loss를 구하기 위해서는 원래 분포의 엔트로피와의 차이를 구해야 할 것이다. 이는 쿨백-라이블러 발산의 의미와 동일하다.
 쿨백-라이블러 발산의 식은 다음과 같았다.

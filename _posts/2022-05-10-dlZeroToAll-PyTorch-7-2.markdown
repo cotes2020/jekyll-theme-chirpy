@@ -18,7 +18,7 @@ MNIST 데이터 셋은 숫자 손글씨를 모아놓은 데이터 셋이다. 사
 
 MNIST는 다음과 같이 28x28 크기의 픽셀, 1개의 gray channel 그리고 0 ~ 9의 정수 label로 이루어져 있다.
 
-![](/posting_imgs/images/lab7-2-1.png)
+![](/posting_imgs/lab7-2-1.png)
 
 ### torchvision
 
@@ -111,7 +111,7 @@ Learning finished
 '''
 ```
 
-[Lab4-2](https://qja1998.github.io/2022/04/29/dlZeroToAll-PyTorch-4_2/)에서 학습한 방식과 같이 `data_loader`를 for를 통해 반복하며 진행한다.
+[Lab4-2](/posts/dlZeroToAll-PyTorch-4_2/)에서 학습한 방식과 같이 `data_loader`를 for를 통해 반복하며 진행한다.
 
 이때 기존의 이미지 데이터의 minibatch는 `[batch_size, 1, 28, 28]`의 크기를 가지기 때문에, 모델의 입력에 맞게 `[batch_size, 28*28]`로 바꿔주는 과정이 필요하다. 이 과정을 위해 `X = X.view(-1, 28 * 28).to(device)`로 데이터를 재구성한 것을 볼 수 있다.
 
@@ -152,7 +152,7 @@ Prediction:  3
 '''
 ```
 
-![](/posting_imgs/images/lab7-2-1.png)
+![](/posting_imgs/lab7-2-1.png)
 
 학습한 모델에 test 입력을 통과시켜 나온 결과를 `argmax`를 통해 모델이 예측한 label을 뽑아낼 수 있다.
 이후 test의 실제 label과 비교하여 ByteTensor를 생성하고, 그 평균을 구해 정확도를 계산할 수 있다.

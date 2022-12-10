@@ -34,7 +34,7 @@ General AE를 조금 더 자세히 보자. 위에 나왔던 그림을 자세히 
 ![General Autoencoder](/posting_imgs/autoencoder-loss.png)
 
 최종 출력 $Y$는 인코더의 출력은 디코더에 인풋으로 넣어 나온 output으로 정의할 수 있고, 이것이 첫 input $X$와 같기를 바라므로 이들끼리의 error를 구한다.
-이때는 데이터의 분포 형태에 따라 MSE 또는 [cross-entropy](https://qja1998.github.io/2022/04/27/cross-entropy/)를 사용한다.
+이때는 데이터의 분포 형태에 따라 MSE 또는 [cross-entropy](/posts/cross-entropy/)를 사용한다.
 이렇게 구한 error를 재구축(reconstruct) 한 것에 대한 error라는 의미로 **Reconstruction Error**라고 한다.
 
 Linear AE는 기본적인 오토인코더의 구조에서 은닉층을 활성화 함수 없이 선형 함수를 그대로 사용한 것을 말한다.
@@ -81,7 +81,7 @@ noise를 추가하고 noise가 없는 원래 데이터와 error를 구하면서 
 DAE에서 loss의 의미를 해석하여 다르게 표현한 것이다. DAE의 loss를 생각해 보면 $g$, $h$중 $h$는 특히 데이터가 조금만 바뀌1어도 manifold 상에서 같은 smaple로 매칭이 되게 학습을 해야 한다고 볼 수 있다.
 이 의미를 재구성 해보면 다음과 같이 적을 수 있다.
 
-![](/posting_imgs/images/scae.png){: width="80%"}
+![](/posting_imgs/scae.png){: width="80%"}
 
 reconstruction error를 통해 원래 오토인코더의 형태대로 입출력이 동일하게 학습하고, **stochastic regularization**항을 통해 manifold 상에서 거리가 같게 학습하도록 loss를 구성하였다.
 
@@ -89,11 +89,11 @@ reconstruction error를 통해 원래 오토인코더의 형태대로 입출력�
 SCAE의 stochastic regularization 항을 테일러 전개를 통해 근사하여, Frobenius norm 형태로 만들어, analytic regularization로 적용한 것이 CAE이다.
 하지만 1차 미분 항에서 끊어 근사한 것이므로 한 지점의 근처에서만 유의미한 근사가 된다고 할 수 있다.
 
-![](/posting_imgs/images/cae-regular.png){: width="80%"}
+![](/posting_imgs/cae-regular.png){: width="80%"}
 
 위 식으로 regularization 항을 대체하여 다음과 같이 CAE loss를 적용한다.
 
-![](/posting_imgs/images/cae.png){: width="80%"}
+![](/posting_imgs/cae.png){: width="80%"}
 
 #### DAE vs CAE
 결국 DAE와 CAE의 concept 자체는 mainfold 위의 거리를 줄인다는 것으로 같지만, 그것을 적용하는 방식이 달랐다.

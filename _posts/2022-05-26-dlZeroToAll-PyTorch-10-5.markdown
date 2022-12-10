@@ -226,7 +226,7 @@ if device =='cuda':
     torch.cuda.manual_seed_all(777)
 ```
 
-저번에 다뤘었던 [visdom](https://qja1998.github.io/2022/05/22/dlZeroToAll-PyTorch-10-3/)을 이용하여 시각화를 하면서 학습을 진행한다.
+저번에 다뤘었던 [visdom](/posts/dlZeroToAll-PyTorch-10-3/)을 이용하여 시각화를 하면서 학습을 진행한다.
 
 ### Data
 

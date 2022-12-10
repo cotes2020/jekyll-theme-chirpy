@@ -12,7 +12,7 @@ mermaid: false
 
 ***
 ## Data in the Real World
-[lab4_1](https://qja1998.github.io/2022/04/29/dlZeroToAll-PyTorch-4_1/)에서 다루었던 Multivariate Linear Regression에서는 학습 데이터로 3개의 차원을 가진 5개의 샘플을 사용했었다.
+[lab4_1](/posts/dlZeroToAll-PyTorch-4_1/)에서 다루었던 Multivariate Linear Regression에서는 학습 데이터로 3개의 차원을 가진 5개의 샘플을 사용했었다.
 하지만 실제 우리가 다루려고 하는 데이터는 그 크기가 그리 만만하지 않다. 본 강의에서 예를 들었던 **ImageNet**의 경우 1400만개 이상을 이미지 데이터 셋을 포함하고 있으며 그 용량이 120GB 이상이다.
 이 데이터를 한번에 학습을 진행한다는 것은 하드웨어 상의 용량 문제도 있겠지만, 하드웨어적인 문제가 해결된다 하더라도 느리고 Gradient Descent 시에 cost 연산에 대한 computing power 부담이 너무 크다.
 
@@ -26,6 +26,7 @@ mermaid: false
 결과적으로 어느정도 수렴하더라도 그 과정이 아래 그림과 같이 좀 거칠게 Gradient descent 될 수도 있다. (아래 그림은 이해를 위한 임의의 그래프이며, 실제 loss의 그래프가 아닙니다.)
 
 ![Minibatch Gradient Decsent](/posting_imgs/lab4_2-1.png)
+
 ![Gradient Decsent](/posting_imgs/lab4_2-2.png)
 
 ***

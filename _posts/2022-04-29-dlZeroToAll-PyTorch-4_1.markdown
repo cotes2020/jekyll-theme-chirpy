@@ -1,5 +1,5 @@
 ---
-title: "Cross Entropy(교차 엔트로피)"
+title: "모두를 위한 딥러닝 2 - Lab4_1: Multivariate Linear Regression"
 author: Kwon
 date: 2022-04-29T14:00:00+0900
 categories: [pytorch, study]
@@ -79,7 +79,7 @@ x_1w_1 + x_2w_2 + x_3w_3
 \end{pmatrix}
 \\]
 
-그러므로 [lab1](https://https://qja1998.github.io/2022/04/14/dlZeroToAll-PyTorch-1/)에서 나왔던 `matmul()`을 사용하여 변수와 가중치의 곱을 간단하게 구할 수 있다.
+그러므로 [lab1](/posts/dlZeroToAll-PyTorch-1/)에서 나왔던 `matmul()`을 사용하여 변수와 가중치의 곱을 간단하게 구할 수 있다.
 
 {% highlight python %}
 x_train = torch.FloatTensor([[73, 80, 75],
@@ -99,7 +99,7 @@ hypothesis = x_train.matmul(W) # W의 차원은 [변수의 개수, 1]로 맞춰 
 ## Train
 Multivariate Linear Regression의 hypothesis까지 모두 알아봤으니 학습하는 전체적인 코드를 작성해 보자.
 
-[lab3](https://https://qja1998.github.io/2022/04/18/dlZeroToAll-PyTorch-3/)의 **Train with `optim`**의 코드와 크게 다르지 않지만
+[lab3](/posts/dlZeroToAll-PyTorch-3/)의 **Train with `optim`**의 코드와 크게 다르지 않지만
 `W = torch.zeros((3, 1), requires_grad=True)`에서 가중치의 차원을 변수의 개수에 따라 맞춰준 것만 차이가 난다.
 
 {% highlight python %}

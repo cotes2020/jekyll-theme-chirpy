@@ -14,7 +14,7 @@ mermaid: false
 
 ## Problem of Sigmoid
 
-시그모이드 함수의 문제는 [backpropagation](http://qja1998.github.io/2022/05/13/backpropagation/)과정에서 발생한다.
+시그모이드 함수의 문제는 [backpropagation](/posts/backpropagation/)과정에서 발생한다.
 backpropagation을 수행할 때 activation의 미분값 곱해가면서 사용하게 되는데 이때 기울기가 소실되는 **gradient vanishing**문제가 발생한다. 다음 그림은 시그모이드 함수와 그 미분 함수의 그래프이다.
 
 ![시그모이드 함수의 미분](/posting_imgs/lab9-1-1.png)
@@ -69,7 +69,7 @@ optimizer에 대해서는 추후에 한번 자세히 공부해 보고 따로 포
 
 ## Train
 
-[Lab7-2](https://qja1998.github.io/2022/05/10/dlZeroToAll-PyTorch-7-2/)에서 했던 mnist 학습을 adam optimizer로 한 번 학습해보고, 다중 레이어에 ReLU를 적용해서 또 한번 학습해 보겠다.
+[Lab7-2](/posts/dlZeroToAll-PyTorch-7-2/)에서 했던 mnist 학습을 adam optimizer로 한 번 학습해보고, 다중 레이어에 ReLU를 적용해서 또 한번 학습해 보겠다.
 
 ### Adam
 

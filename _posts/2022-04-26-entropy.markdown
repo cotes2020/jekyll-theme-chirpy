@@ -11,8 +11,8 @@ mermaid: false
 ### Related Post
 
 1. **Entropy**
-2. [KL Divergence](https://qja1998.github.io/2022/04/26/KL-divergence/)
-3. [Cross Entropy](https://qja1998.github.io/2022/04/27/cross-entropy/)
+2. [KL Divergence](/posts/KL-divergence/)
+3. [Cross Entropy](/posts/cross-entropy/)
 
 ***
 오토인코더에 대한 공부를 하다가 entropy, cross entropy, KL divergence 등 모르는 용어들이 있어서 더 이상 미루지 않고 공부를 해 보기로 했다.

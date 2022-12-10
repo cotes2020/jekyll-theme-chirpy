@@ -88,7 +88,7 @@ data_loader = DataLoader(dataset = train_data, batch_size = 8, shuffle = True, n
 
 ### Model and Loss/Optimizer
 
-두 번의 CNN layer를 거치고 FC layer를 하나 통과시키는 [lab10-2](https://qja1998.github.io/2022/05/21/dlZeroToAll-PyTorch-10-3/)에서 사용한 것과 data shape말고는 거의 같은 모델이다.
+두 번의 CNN layer를 거치고 FC layer를 하나 통과시키는 [lab10-2](/posts/dlZeroToAll-PyTorch-10-3/)에서 사용한 것과 data shape말고는 거의 같은 모델이다.
 
 ```py
 class CNN(nn.Module):

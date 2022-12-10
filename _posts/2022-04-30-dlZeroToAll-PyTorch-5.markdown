@@ -359,7 +359,7 @@ tensor([[1],
 
 ***
 ## Higher Implementation with Class
-Bynary Classification 문제에서 Sigmoid Reggression을 사용하려고 할 때 [lab4_1](https://qja1998.github.io/2022/04/29/dlZeroToAll-PyTorch-4_1/)에서 나왔건 것처럼 `Module`을 사용하여 calss를 만들어 진행할 수 있다.
+Bynary Classification 문제에서 Sigmoid Reggression을 사용하려고 할 때 [lab4_1](/posts/dlZeroToAll-PyTorch-4_1/)에서 나왔건 것처럼 `Module`을 사용하여 calss를 만들어 진행할 수 있다.
 
 이번에 사용한 데이터 셋은 모두를 위한 딥러닝 코드와 함께 제공되는 당뇨병 데이터셋이며 8개 차원의 인폿과 당뇨병 여부에 따른 0, 1의 값으로 데이터가 구성되어 있다.
 

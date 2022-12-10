@@ -1,0 +1,281 @@
+---
+title: "[BOJ] 구슬 탈출 2 - 13460"
+author: kwon
+date: 2022-12-9T23:00:00 +0900
+categories: [boj]
+tags: [implementation, graph, bfs, simulation]
+math: true
+mermaid: false
+---
+
+| 시간 제한 | 메모리 제한 |
+|:-----------:|:-----------:|
+| 2초 | 512 MB |
+
+## 문제
+스타트링크에서 판매하는 어린이용 장난감 중에서 가장 인기가 많은 제품은 구슬 탈출이다. 구슬 탈출은 직사각형 보드에 빨간 구슬과 파란 구슬을 하나씩 넣은 다음, 빨간 구슬을 구멍을 통해 빼내는 게임이다.
+
+보드의 세로 크기는 N, 가로 크기는 M이고, 편의상 1×1크기의 칸으로 나누어져 있다. 가장 바깥 행과 열은 모두 막혀져 있고, 보드에는 구멍이 하나 있다. 빨간 구슬과 파란 구슬의 크기는 보드에서 1×1크기의 칸을 가득 채우는 사이즈이고, 각각 하나씩 들어가 있다. 게임의 목표는 빨간 구슬을 구멍을 통해서 빼내는 것이다. 이때, **파란 구슬이 구멍에 들어가면 안 된다**.
+
+이때, 구슬을 손으로 건드릴 수는 없고, 중력을 이용해서 이리 저리 굴려야 한다. 왼쪽으로 기울이기, 오른쪽으로 기울이기, 위쪽으로 기울이기, 아래쪽으로 기울이기와 같은 네 가지 동작이 가능하다.
+
+각각의 동작에서 공은 동시에 움직인다. 빨간 구슬이 구멍에 빠지면 성공이지만, 파란 구슬이 구멍에 빠지면 실패이다. **빨간 구슬과 파란 구슬이 동시에 구멍에 빠져도 실패이다**. 빨간 구슬과 파란 구슬은 동시에 같은 칸에 있을 수 없다. 또, 빨간 구슬과 파란 구슬의 크기는 한 칸을 모두 차지한다. 기울이는 동작을 그만하는 것은 더 이상 구슬이 움직이지 않을 때 까지이다.
+
+보드의 상태가 주어졌을 때, 최소 몇 번 만에 빨간 구슬을 구멍을 통해 빼낼 수 있는지 구하는 프로그램을 작성하시오.
+
+## 입력
+첫 번째 줄에는 보드의 세로, 가로 크기를 의미하는 두 정수 N, M (3 ≤ N, M ≤ 10)이 주어진다. 다음 N개의 줄에 보드의 모양을 나타내는 길이 M의 문자열이 주어진다. 이 문자열은 '.', '#', 'O', 'R', 'B' 로 이루어져 있다. '.'은 빈 칸을 의미하고, '#'은 공이 이동할 수 없는 장애물 또는 벽을 의미하며, 'O'는 구멍의 위치를 의미한다. 'R'은 빨간 구슬의 위치, 'B'는 파란 구슬의 위치이다.
+
+입력되는 모든 보드의 가장자리에는 모두 '#'이 있다. 구멍의 개수는 한 개 이며, 빨간 구슬과 파란 구슬은 항상 1개가 주어진다.
+
+## 출력
+최소 몇 번 만에 빨간 구슬을 구멍을 통해 빼낼 수 있는지 출력한다. 만약, 10번 이하로 움직여서 빨간 구슬을 구멍을 통해 빼낼 수 없으면 -1을 출력한다.
+
+## 풀이
+
+맵을 BFS로 탐색하면서 시뮬레이션 하는 문제이다.
+
+처음 시도한 방식은 정말 단순하게 모두 다 구현하는 것으로 맵 리스트 자체에서 구슬들을 실제로 움직이는 것까지 구현하였다.
+
+```python
+# 테두리의 '#'은 필요없을 것이라 판단하고 빼고 입력 받음
+n, m  = map(int, input().split())
+o, r, b = (-1, ), (-1, ), (-1, )
+input()
+map_list = []
+for i in range(n - 2):
+    row = input()[1:-1]
+    if o[0] == -1:
+        o = (row.find('O'), i)
+    if r[0] == -1:
+        r = (row.find('R'), i)
+    if b[0] == -1:
+        b = (row.find('B'), i)
+   
+    map_list.append(list(row))
+input()
+
+# 기울였을 때 구슬을 움직이는 함수
+def tilt(map_list, dir, r, b):
+    rx, ry = r
+    bx, by = b
+    dir_x, dir_y = dir
+    
+    next_rx, next_ry = rx + dir_x, ry + dir_y   # 한 칸 이동
+    next_bx, next_by = bx + dir_x, by + dir_y
+    move_r = 0 <= next_ry < n - 2 and 0 <= next_rx < m - 2
+    move_b = 0 <= next_by < n - 2 and 0 <= next_bx < m - 2
+    
+    while move_r or move_b:
+        
+        if move_r:
+            next_r = map_list[next_ry][next_rx]
+            if next_r != '#' and not ((next_rx, next_ry) == (bx, by) and not move_b) and (rx, ry) != o:
+                rx = next_rx
+                ry = next_ry
+            elif (rx, ry) != o:
+                move_r = False
+        elif move_r:
+            move_r = False
+        
+        if move_r:
+            next_rx, next_ry = rx + dir_x, ry + dir_y   # 한 칸 이동
+            move_r = 0 <= next_ry < n - 2 and 0 <= next_rx < m - 2
+
+        if move_b:
+            next_b = map_list[next_by][next_bx]
+            if next_b != '#' and not((next_bx, next_by) == (rx, ry) and not move_r):
+                if next_b == 'O':
+                    return -1, -1, -1, -1
+                bx = next_bx
+                by = next_by
+            else:
+                move_b = False
+        elif move_b:
+            move_b = False
+        
+        if move_b:
+            next_bx, next_by = bx + dir_x, by + dir_y
+            move_b = 0 <= next_by < n - 2 and 0 <= next_bx < m - 2
+
+    return rx, ry, bx, by
+
+# 움직인 좌표를 바탕으로 실제 맵 리스트에 구슬을 표시하는 함수
+def move(dir, r, b):
+    m_rx, m_ry, m_bx, m_by = tilt(map_list, dir, r, b)
+    if m_rx == -1: return (-1, -1)  #
+    elif (m_rx, m_ry) == o: return (True, True)
+    else:
+        map_list[r[1]][r[0]], map_list[m_ry][m_rx] = map_list[m_ry][m_rx], map_list[r[1]][r[0]]
+        map_list[b[1]][b[0]], map_list[m_by][m_bx] = map_list[m_by][m_bx], map_list[b[1]][b[0]]
+        r, b = (m_rx, m_ry), (m_bx, m_by)
+        return r, b
+        
+visited = [[0] * (m - 2) for _ in range(n - 2)]
+
+# bfs를 통해 시뮬레이션 하는 함수
+def sim(r, b):
+    q = []
+    x, y = r
+    visited[y][x] = 1
+    q.append((r, None))
+    
+    while q:
+        cur = q.pop(0)
+        dirs = [(1, 0),(-1, 0),(0, 1),(0, -1)]
+        pre_d = cur[1]
+        cur = cur[0]
+        pre_cnt = visited[cur[1]][cur[0]]
+        if pre_d:
+            dirs.remove((-pre_d[0], -pre_d[1]))
+        for d in dirs:
+            if not(0 < r[1] + d[1] < n -2 or 0 < r[0] + d[0] < m - 2): continue
+            r_tmp, b_tmp = move(d, cur, b)
+            if (r_tmp, b_tmp) == (-1, -1): continue
+            if r_tmp == True:
+                return pre_cnt
+            elif pre_cnt >= 10:
+                return -1
+            elif visited[r_tmp[1]][r_tmp[0]] == 0:
+                r, b = r_tmp, b_tmp
+                q.append((r, d))
+                visited[r[1]][r[0]] = pre_cnt + 1
+    return -1
+
+print(sim(r, b))
+```
+
+### 첫 시도의 문제점
+
+1. **map_list에 실제로 구슬의 위치를 반영할 필요가 없다.**
+    1. 구슬 두 개의 좌표만 확실히 알고 있다면 모든 상호작용을 표현할 수 있다.
+    2. 하나의 리스트에 실제로 구슬의 위치를 반영하게 되면 bfs를 통해 시뮬레이션을 하는 데에 문제가 생긴다. 
+        * 이전까지 움직인 횟수가 같은 (= 탐색 진행 횟수가 같은) 다른 시도를 할 때 이전 시행이 이미 진행된 맵이기 때문에 정상적인 시행이 진행될 수 없다.
+    
+2. **visited 리스트의 차원이 빨간 구슬의 좌표만 체크한다.**
+    1. 빨간 구슬의 좌표가 같아도 파란 구슬의 위치가 달라 다른 상황일 수 있다.
+    
+3. **이외 다른 문제점**
+    1. 공이 다른 공에 닿아 멈추는 경우를 진행하는 도중에 공을 만나고 그 공이 이전에 움직이지 않았을 경우를 기준으로 판단하려 했지만 이것이 모든 경우를 다 커버할 수 있는지는 의문이다.
+    2. 입력을 받을 때 테두리를 제거해버리니 공들이 멈추는 조건이 추가되어야 했다.
+        * 테두리를 남겨둔다면 벽과 같은 방식으로 처리할 수 있어 코드 작성에 편리
+        * 테두리는 (m-2) * (n-2) 개의 원소만이 추가되며 n, m ≤ 10이므로 공간 복잡도에 큰 영향을 미치지 않을 것이라 판단하였음.
+
+위 코드는 결과적으로 시간 초과로 판단되었지만 채점이 계속 진행되었어도 문제가 발생할 가능성이 충분히 있어 보였다
+
+### 수정한 코드
+
+```python
+# 테두리 포함하여 입력 받음
+n, m  = map(int, input().split())
+o, r, b = (-1, ), (-1, ), (-1, )
+map_list = []
+for i in range(n):
+    row = input()
+    if o[0] == -1:
+        o = (row.find('O'), i)
+    if r[0] == -1:
+        r = (row.find('R'), i)
+    if b[0] == -1:
+        b = (row.find('B'), i)
+   
+    map_list.append(list(row))
+
+# 입력이 바뀜에 따라 공이 멈추는 조건이 더 간단해짐
+# 공이 공에 닿아 멈추는 경우도 다른 방식으로 처리
+def tilt(map_list, dir, r, b):
+    rx, ry = r
+    bx, by = b
+    dir_x, dir_y = dir
+    if dir_x != 0:
+        if dir_x * rx > dir_x * bx: late = 'b'
+        else: late = 'r'
+    else:
+        if dir_y * ry > dir_y * by: late = 'b'
+        else: late = 'r'
+    
+    cur_r = map_list[ry][rx]
+    cur_b = map_list[by][bx]
+    
+    next_r, next_b = '.', '.'
+    
+    while (next_r != '#' and cur_r != 'O') or (next_b != '#'):
+        next_r = map_list[ry + dir_y][rx + dir_x]
+        next_b = map_list[by + dir_y][bx + dir_x]
+        if next_r != '#' and cur_r != 'O':
+            cur_r = next_r
+            rx += dir_x
+            ry += dir_y
+        if next_b != '#':
+            cur_b = next_b
+            bx += dir_x
+            by += dir_y
+        if cur_b == 'O':
+            return -1, -1, -1, -1
+
+    if (rx, ry) == (bx, by):
+        if late == 'b':
+            bx -= dir_x
+            by -= dir_y
+        else:
+            rx -= dir_x
+            ry -= dir_y
+        
+    return rx, ry, bx, by
+        
+def move(dir, r, b):
+    m_rx, m_ry, m_bx, m_by = tilt(map_list, dir, r, b)
+    if m_rx == -1: return (-1, -1)
+    elif (m_rx, m_ry) == o: return (True, True)
+    else:
+        r, b = (m_rx, m_ry), (m_bx, m_by)
+        return r, b
+
+# visited가 빨간 공과 파란 공의 좌표를 모두 저장할 수 있게 수정 
+visited = [[[[0] * m for _ in range(n)] for _ in range(m)] for _ in range(n)]
+
+def sim(r, b):
+    q = []
+    q.append((r, b, None))
+    
+    while q:
+        cur_r, cur_b, pre_d = q.pop(0)
+        dirs = [(1, 0),(-1, 0),(0, 1),(0, -1)]
+        pre_cnt = visited[cur_r[1]][cur_r[0]][cur_b[1]][cur_b[0]]
+        
+        if pre_d:
+            dirs.remove(pre_d)
+            dirs.remove((-pre_d[0], -pre_d[1]))
+            
+        for d in dirs:
+            r_tmp, b_tmp = move(d, cur_r, cur_b)
+            if r_tmp == -1:
+                continue
+            elif r_tmp == True:
+                return pre_cnt + 1
+            elif pre_cnt >= 10:
+                return -1
+            elif not visited[r_tmp[1]][r_tmp[0]][b_tmp[1]][b_tmp[0]]:  # 방문 안함
+                q.append((r_tmp, b_tmp, d))
+                visited[r_tmp[1]][r_tmp[0]][b_tmp[1]][b_tmp[0]] = pre_cnt + 1
+        
+    return -1
+
+print(sim(r, b))
+```
+
+1. **map_list에 실제로 구슬의 위치를 반영할 필요가 없다.**
+    → 실제로 반영하는 코드를 삭제하고 좌표만 바꾸는 식으로 함수를 수정
+    
+2. **visited 리스트의 차원이 빨간 구슬의 좌표만 체크한다.**
+    → 2차원 리스트를 4차원 리스트로 바꿔서 둘 다 체크할 수 있도록 수정
+    
+3. **이외 다른 문제점**
+    1. 공이 다른 공에 닿아 멈추는 경우를 진행하는 도중에 공을 만나고 그 공이 이전에 움직이지 않았을 경우를 기준으로 판단하려 했다.
+        → 함수의 입력으로 받은 매개변수들을 기반으로 두 구슬의 최종 좌표가 겹칠 경우 나중에 도착한 구슬의 좌표를 한 칸 전으로 돌리는 방식으로 수정
+        
+    2. 입력을 받을 때 테두리를 제거해버리니 공들이 멈추는 조건이 추가되어야 했다.
+        → 그냥 테두리까지 다 받았다.
+        
+
+처음부터 너무 공간 복잡도를 줄이려고 해서 푸는데 더 오래 걸린 것 같다. 무작정 공간 복잡도를 줄이려고 하지 말고 입력의 크기와 주어진 문제의 메모리 제한을 잘 확인하고 적절한 선을 찾아서 하는 습관이 필요해 보인다.

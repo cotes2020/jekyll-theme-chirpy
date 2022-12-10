@@ -12,22 +12,22 @@ mermaid: false
 
 ***
 ## Softmax Classification(Multinomial Classification)
-[이전 포스팅](https://qja1998.github.io/2022/04/29/dlZeroToAll-PyTorch-5/)에서는 이진 분류 문제에 대해 알아봤다. 이번에는 분류해야 할 범주가 2개(0, 1)가 아니라 여러개인 다중 분류에 대해 알아보려 한다.
+[이전 포스팅](/posts/dlZeroToAll-PyTorch-5/)에서는 이진 분류 문제에 대해 알아봤다. 이번에는 분류해야 할 범주가 2개(0, 1)가 아니라 여러개인 다중 분류에 대해 알아보려 한다.
 
 ### Hypothesis
 이진 분류는 다음과 같이 두 카테고리의 값들이 잘 나눠질 수 있는 선을 긋는 것과 같다.
 
-![](/posting_imgs/images/lab6-1.png){: width="40%"}
+![](/posting_imgs/lab6-1.png){: width="40%"}
 
 이처럼 다중 분류도 여러 카테고리의 값들을 잘 나누는 선들을 긋는다고 생각해 보자. 그러면 다음과 같은 그림이 그려질 것이다.
 
-![](/posting_imgs/images/lab6-2.png){: width="40%"}
+![](/posting_imgs/lab6-2.png){: width="40%"}
 
 파란색 선은 **A or not**, 빨간색 선은 **B or not** 그리고 초록색 선은 **C or not**으로 구분하고 있다고 생각하면 각 카테고리마다 하나의 분류 문제로 볼 수 있다.
 
 이 말은 각각의 카테고리를 분류하는 hypothesis를 정의할 수 있다는 것인데, 이를 다음과 같이 행렬의 연산으로 깔끔하게 나타낼 수 있다.
 
-![](/posting_imgs/images/lab6-3.png)
+![](/posting_imgs/lab6-3.png)
 
 이렇게 나온 확률을 각각 시그모이드로 처리하여 값을 낼 수도 있겠지만, 이때 조금 더 편하고 최적화된 함수로 softmax를 사용하게 되며 다음과 같이 정의된다.
 
@@ -37,7 +37,7 @@ max를 soft하게 뽑는 것으로, 이 값이 최대인가, 아닌가로 단정
 
 이렇게 뽑은 확률값으로 원-핫 인코딩하여 최종적으로 어느 카테고리에 속하는지 출력하게 된다. 아래 그림은 A 카테고리에 속한다고 생각할 때의 출력을 보인 것이다.
 
-![](/posting_imgs/images/lab6-4.png)
+![](/posting_imgs/lab6-4.png)
 
 코드로는 `torch`에서 제공하는 함수를 사용하면 된다.
 
@@ -62,7 +62,7 @@ tensor([0.0900, 0.2447, 0.6652])
 
 hHypothesis까지 모두 정의했으니, 이제 그에 맞는 cost를 정의해야 한다. 다중 분류에서는 cross entropy를 cost로 사용하는데, 이는 간단히 말해서 예측한 확률이 실제 분포의 확률과 얼마나 차이가 나는지 계산한 값이다.
 
-자세한 내용은 이미 [cross entropy 포스팅](https://qja1998.github.io/2022/04/27/cross-entropy/)에서 다루었기 때문에 여기로 돌리고 바로 코드로 넘아가자. 실제 값을 원핫 인코딩 한 것에, softmax에 log를 취한 값을 원소별로 곱한 뒤에, 0이 아닌 값들은 평균내어 전체적인 cross entropy를 구할 수 있다.
+자세한 내용은 이미 [cross entropy 포스팅](/posts/cross-entropy/)에서 다루었기 때문에 여기로 돌리고 바로 코드로 넘아가자. 실제 값을 원핫 인코딩 한 것에, softmax에 log를 취한 값을 원소별로 곱한 뒤에, 0이 아닌 값들은 평균내어 전체적인 cross entropy를 구할 수 있다.
 
 ```python
 z = torch.rand(3, 5, requires_grad=True)

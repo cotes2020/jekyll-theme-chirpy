@@ -64,7 +64,7 @@ sentence = ("if you want to build a ship, don't drum up people together to "
             "teach them to long for the endless immensity of the sea.")
 ```
 
-[lab11-2](https://qja1998.github.io/2022/06/05/dlZeroToAll-PyTorch-11-2/)의 charseq 예제에서 봤던 것과 같은 방법으로 one-hot encoding에 사용할 dictionary를 생성한다.
+[lab11-2](/posts/dlZeroToAll-PyTorch-11-2/)의 charseq 예제에서 봤던 것과 같은 방법으로 one-hot encoding에 사용할 dictionary를 생성한다.
 
 ```py
 # make dictionary
@@ -117,7 +117,7 @@ Y = torch.LongTensor(y_data)
 
 문장이 더 길고 복잡하기 때문에 기존 한 층의 RNN으로는 학습이 잘 안 될 수 있다. 그래서 RNN 층을 더 쌓고 마지막에 fully connected layer를 연결하여 더 복잡한 모델을 만들어 사용해 볼 것이다.
 
-![](/posting_imgs/images/lab11-3-1.png)
+![](/posting_imgs/lab11-3-1.png)
 
 ```py
 # declare RNN + FC

@@ -14,7 +14,7 @@ mermaid: false
 
 ## Dropout
 
-[lab7-1](https://qja1998.github.io/2022/05/07/dlZeroToAll-PyTorch-7-1/)에서 알아본 것처럼 학습을 하다보면 train set에 너무 과적합(overfitting)되는 경우가 발생한다.
+[lab7-1](/posts/dlZeroToAll-PyTorch-7-1/)에서 알아본 것처럼 학습을 하다보면 train set에 너무 과적합(overfitting)되는 경우가 발생한다.
 
 이때 언급한 과적합을 덜어주기 위한 방법에는 다음과 같은 것들이 있었다.
 

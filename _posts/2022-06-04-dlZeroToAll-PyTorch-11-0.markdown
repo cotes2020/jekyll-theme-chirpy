@@ -28,7 +28,7 @@ RNN은 sequential data를 잘 학습하기 위해 고안된 모델이다. Sequen
 
 Acivation을 표현하여 조금 더 자세히 모델을 나타내면 다음과 같은 구조를 확인할 수 있다.
 
-![](/posting_imgs/images/lab11-0-2.png)
+![](/posting_imgs/lab11-0-2.png)
 
 일반화하여 수식으로 나타내면 다음과 같고
 

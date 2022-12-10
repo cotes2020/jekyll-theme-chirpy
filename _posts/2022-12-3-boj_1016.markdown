@@ -1,0 +1,79 @@
+---
+title: "[BOJ] 제곱 ㄴㄴ수 - 1016"
+author: Kwon
+date: 2022-12-03T23:00:00 +0900
+categories: [boj]
+tags: [prime number, sieve of Eratosthenes]
+math: true
+mermaid: false
+---
+
+| 시간 제한 | 메모리 제한 |
+|:-----------:|:-----------:|
+| 2초 | 512 MB |
+
+## 문제
+어떤 정수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 그 수를 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min보다 크거나 같고, max보다 작거나 같은 제곱ㄴㄴ수가 몇 개 있는지 출력한다.
+
+## 입력
+첫째 줄에 두 정수 min과 max가 주어진다.
+
+## 출력
+첫째 줄에 두 정수 min과 max가 주어진다.
+
+## 제한
+* 1 ≤ min ≤ 1,000,000,000,000
+* min ≤ max ≤ min + 1,000,000
+
+## 풀이
+2부터 증가하면서 제곱 수의 배수들을 빼주는 식으로 제곱 ㄴㄴ 수를 찾아가는 방식으로 문제를 해결하려 다음과 같이 시도하였다.
+
+### 첫 시도의 문제점
+```python
+n, m = map(int, input().split())
+sqr = [False] * (m - n + 1)
+cnt = 0
+for i in range(2, int(m ** 0.5) + 1):
+    j = 1
+    sqr_num = i ** 2
+    while sqr_num * j <= m:
+        if sqr_num * j < n: pass
+        elif not sqr[sqr_num * j - n]:
+            sqr[sqr_num * j - n] = True
+            cnt += 1
+        j += 1
+print((m - n + 1) - cnt)
+```
+
+소수의 배수를 빼며 소수를 찾아가는 에라토스테네스의 체(sieve of Eratosthenes) 알고리즘을 제곱 ㄴㄴ 수에 맞게 변형하여 사용하였다.
+
+하지만 위 코드는 체출시 시간 초과가 발생한다. 문제에서 주어진 수의 범위를 보면 최소가 1,000,001,000,000(= 1,000,000,000,000 + 1,000,000)까지 주어질 수 있기 때문에 `j`가 1부터 시작하면 엄청난 시간 낭비가 발생한다.
+
+n이라는 최소값이 존재하기 때문에  `sqr_num * j`가 `n`부터 바로 시작할 수 있도록 해주면 쓸모없는 연산의 낭비를 줄일 수 있다.
+
+```python
+# 실패
+j = 1
+
+# 성공
+j = n // sqr
+```
+
+그래서 위와 같이 `j`를 `n // sqr`부터 시작하도록 하여 코드를 수정하였다.
+
+### 수정한 코드
+```python
+n, m = map(int, input().split())
+cnt = 0
+prime = [1] * (m - n + 1)
+i = 2
+while i ** 2 <= m:
+    sqr = i ** 2
+    j = n // sqr
+    while sqr * j <= m:
+        if sqr * j >= n and prime[sqr * j - n] == 1:
+            prime[sqr * j - n] = 0
+        j += 1
+    i += 1
+print(sum(prime))
+```

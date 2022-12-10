@@ -185,7 +185,7 @@ for i in range(500):
 
 실제로 학습할 때 loss를 넣어 학습을 모니터링하는데 유용하게 쓸 수 있다.
 
-[이전 포스팅](https://qja1998.github.io/2022/05/21/dlZeroToAll-PyTorch-10-3/)에서 학습할 때 사용했던 코드에서 `loss_tracker`를 추가하여 실행하면 다음과 같이 모니터링이 가능하다.
+[이전 포스팅](/posts/dlZeroToAll-PyTorch-10-3/)에서 학습할 때 사용했던 코드에서 `loss_tracker`를 추가하여 실행하면 다음과 같이 모니터링이 가능하다.
 
 ```py
 total_batch = len(data_loader)

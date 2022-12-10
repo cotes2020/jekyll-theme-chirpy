@@ -20,7 +20,7 @@ timeseries(시게열) data는 일정 시간 간격으로 배치된 data를 말�
 
 이번 실습에서는 요일별 주식 정보들을 이용하여 학습을 진행하였다.
 
-![](/posting_imgs/images/lab11-4-1.png)
+![](/posting_imgs/lab11-4-1.png)
 
 위와 같이 일별 시작가, 고가, 저가, 거래량, 종가가 포함된 데이터이다.
 
@@ -129,7 +129,7 @@ testX, testY = build_dataset(test_set, seq_length)
 
 이번에는 RNN의 한 종류인 LSTM을 사용하며 마지막에 fully connected layer를 연결하여 출력을 낸다.
 
-![](/posting_imgs/images/lab11-4-2.png)
+![](/posting_imgs/lab11-4-2.png)
 
 이런 식으로 마지막에 fc 층을 추가하는 이유가 몇가지 있다.
 
@@ -182,11 +182,11 @@ plt.legend(['original', 'prediction'])
 plt.show()
 ```
 
-![](/posting_imgs/images/lab11-4-3.png)
+![](/posting_imgs/lab11-4-3.png)
 
 예측이 아주 잘 된것 같아 보이지만 실제로는 아니다.
 
-![](/posting_imgs/images/lab11-4-4.png)
+![](/posting_imgs/lab11-4-4.png)
 
 위 그림은 그래프 중 일부를 가져온 것인데, 잘 보면 예측이 오른쪽으로 한 칸씩 밀린 것처럼 보인다.
 이는 노이즈가 심한 금융 시계열 데이터에서 lstm model의 고질적인 문제로 직전 값을 예측 값으로 출력하는 경우가 잦다고 한다. (이전의 값을 예측 값으로 내는 것이 가장 이득이라고 판단했기 때문)

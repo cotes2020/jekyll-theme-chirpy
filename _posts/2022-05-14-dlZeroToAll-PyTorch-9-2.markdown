@@ -39,7 +39,7 @@ DBN은 RBM을 통해 적절한 weight를 찾아 초기화한다.
 ![DBN의 구조](/posting_imgs/lab9-2-3.png)
 
 위와 같이 각 레이어마다 RBM을 구성하여 다음 레이어로 한 번 갔다가 다시 돌아와 봐서 잘 복원이 되는 weight를 찾아 그것으로 초기화하여 학습에 사용한다.
-이전의 포스트에서 알아봤던 [Stacking Autoencoder](https://qja1998.github.io/2022/05/03/autoencoders-3/)도 이 DBN의 한 종류이다.
+이전의 포스트에서 알아봤던 [Stacking Autoencoder](/posts/autoencoders-3/)도 이 DBN의 한 종류이다.
 
 하지만 요즘은 거의 사용하지 않는 방법이다.
 

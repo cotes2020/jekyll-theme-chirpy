@@ -20,7 +20,7 @@ hihello에서 'h'와 'l'은 2번씩 등장하지만 어디에 문자가 위치�
 
 ### with Code
 
-[lab11-1](https://qja1998.github.io/2022/05/26/dlZeroToAll-PyTorch-11-1/)의 코드를 확장하여 일반화한 것이다.
+[lab11-1](/posts/dlZeroToAll-PyTorch-11-1/)의 코드를 확장하여 일반화한 것이다.
 전체적인 구조는 거의 동일하기 때문에 추가된 부분에 초점을 맞춰 살펴보려 한다.
 
 ```py

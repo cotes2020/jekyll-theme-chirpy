@@ -26,7 +26,7 @@ Probalility(확률)는 우리가 잘 알고 있듯이 어떤 관측값이 발생
 
 베르누이 분포를 예로 들면 확률분포를 결정하는 아래와 같은 상황에서 $\theta$를 변화시키면서 주어진 값에 맞춰 확률 분포를 최적화 하는 것이다.
 
-![](/posting_imgs/images/lab7-1-1.jpg){: width="40%"}
+![](/posting_imgs/lab7-1-1.jpg){: width="40%"}
 
 최적화 하는 과정은 마찬가지로 gradient descent(ascent)를 통해 진행한다.
 
@@ -36,11 +36,11 @@ Probalility(확률)는 우리가 잘 알고 있듯이 어떤 관측값이 발생
 
 아래와 같이 Train set에 대해 과하게 맞춰 학습한 것을 말한다. 이 경우 학습할 때 사용한 데이터 셋이 아닌 데이터가 주어졌을 때의 예측 성능이 급격하게 떨어지게 된다.
 
-![](/posting_imgs/images/lab7-1-2.jpg){: width="60%"}
+![](/posting_imgs/lab7-1-2.jpg){: width="60%"}
 
 이러한 overfitting(과적합)을 막기 위해 test set과 vaild set을 사용하게 된다. 학습을 할 때 한 번도 보지 못했던 set을 이용하여 과적합 여부를 확인하는 것이다.
 
-![](/posting_imgs/images/lab7-1-3.jpg){: width="60%"}
+![](/posting_imgs/lab7-1-3.jpg){: width="60%"}
 
 위와 같이 train set에 대한 loss는 감소하지만 valid set에 대한 loss가 감소하지 않을 때 과적합이 발생한다고 판단할 수 있다.
 
@@ -95,7 +95,7 @@ y_test = torch.LongTensor([2, 2, 2])
 
 ### Model
 
-[lab6](https://qja1998.github.io/2022/05/01/dlZeroToAll-PyTorch-6/)에서 다뤘던 softamx model을 사용하여 학습을 진행한다.
+[lab6](/posts/dlZeroToAll-PyTorch-6/)에서 다뤘던 softamx model을 사용하여 학습을 진행한다.
 
 물론 입출력 차원은 맞춰줘야 하기 때문에 `self.linear = nn.Linear(3, 3)`로 선형 모델을 정의하는 부분만 달라졌다.
 
