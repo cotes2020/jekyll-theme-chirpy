@@ -1,5 +1,5 @@
 ---
-title: pPython Package
+title: Python Package
 date: 2019-10-11 11:11:11 -0400
 description:
 categories: [00CodeNote, PythonNote]

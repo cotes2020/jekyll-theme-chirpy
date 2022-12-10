@@ -45,6 +45,37 @@ scrape_configs:
       - targets: ["192.168.0.226:8082"]
         labels:
           group: "canary"
+      - targets: ["localhost:8083"]
+        labels:
+          group: "canary"
+
+
+  - job_name: hpa-sim
+    scrape_interval: 10s
+    kubernetes_sd_configs:
+      - role: pod
+    static_configs:
+      - targets:
+        - "hpa-sim.default:80"
+    relabel_configs:
+
+      - source_labels: [__meta_kubernetes_pod_label_app]
+        action: keep
+        regex: hpa-sim
+
+      - source_labels: [__address__]
+        action: replace
+        target_label: __address__
+        regex: ([^:]+)(?::\d+)?
+        replacement: ${1}:8080
+
+      - source_labels: [__meta_kubernetes_namespace]
+        action: replace
+        target_label: k8s_namespace
+
+      - source_labels: [__meta_kubernetes_pod_name]
+        action: replace
+        target_label: k8s_pod_name
 
 
 # Alertmanager configuration

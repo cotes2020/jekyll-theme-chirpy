@@ -1,10 +1,181 @@
 
+- [EKS](#eks)
+  - [Kubernetes services](#kubernetes-services)
+    - [expose the Kubernetes services](#expose-the-kubernetes-services)
+  - [Aceess](#aceess)
+  - [use case](#use-case)
+    - [Enabling cross-account access to EKS cluster resources](#enabling-cross-account-access-to-eks-cluster-resources)
+      - [Prerequisites](#prerequisites)
+        - [Setup OIDC in CI account](#setup-oidc-in-ci-account)
+        - [Setup IAM role in CI account](#setup-iam-role-in-ci-account)
+        - [Setup Kubernetes serviceaccount in CI account](#setup-kubernetes-serviceaccount-in-ci-account)
+        - [Confirm the role and service account](#confirm-the-role-and-service-account)
+        - [configure a pod to use a service account](#configure-a-pod-to-use-a-service-account)
+        - [Configuring the target account](#configuring-the-target-account)
+
+
+---
 
 # EKS
 
+---
+
+## Kubernetes services
+
+### expose the Kubernetes services
+
+
+- `ClusterIP` exposes the service on a cluster's internal IP address.
+- `NodePort` exposes the service on each node’s IP address at a static port.
+- `LoadBalancer` exposes the service externally using a load balancer.
+
+```bash
+# Create a sample application
+cat <<EOF > nginx-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+EOF
+
+# Create the deployment:
+kubectl apply -f nginx-deployment.yaml
+
+# Verify that the pods are running and have their own internal IP addresses:
+kubectl get pods -l 'app=nginx' -o wide | awk {'print $1" " $3 " " $6'} | column -t
+# NAME                               STATUS   IP
+# nginx-deployment-574b87c764-hcxdg  Running  192.168.20.8
+# nginx-deployment-574b87c764-xsn9s  Running  192.168.53.240
+```
+
+
+1. Create the ClusterIP Service
+
+
+```bash
+# Create a ClusterIP service
+cat <<EOF > clusterip.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-cluster-ip
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+EOF
+# create the object and apply the clusterip.yaml file,
+kubectl create -f clusterip.yaml
+# service/nginx-service-cluster-ip created
+
+or
+
+# To expose a deployment of ClusterIP type, run the following imperative command:
+# expose command creates a service without creating a YAML file.
+# However, kubectl translates your imperative command into a declarative Kubernetes Deployment object.
+kubectl expose deployment nginx-deployment  \
+  --type=ClusterIP  \
+  --name=nginx-service-cluster-ip
+# Output:
+# service "nginx-service-cluster-ip" exposed
+
+
+# Delete the ClusterIP service:
+kubectl delete service nginx-service-cluster-ip
+# Output:
+# service "nginx-service-cluster-ip" deleted
+
+
+```
+
+
+2. Create a NodePort service
+
+```bash
+# reate a NodePort service
+cat <<EOF > nodeport.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+EOF
+# create the object and apply the nodeport.yaml file
+kubectl create -f nodeport.yaml
+
+or
+
+# To expose a deployment of NodePort type
+kubectl expose deployment nginx-deployment  \
+  --type=NodePort  \
+  --name=nginx-service-nodeport
+# Output:
+# service/nginx-service-nodeport exposed
 
 
 
+
+# Get information about nginx-service:
+kubectl get service/nginx-service-nodeport
+# Output:
+# NAME                     TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+# nginx-service-nodeport   NodePort   10.100.106.151   <none>        80:30994/TCP   27s
+
+# Important: The ServiceType is a NodePort and ClusterIP that are created automatically for the service.
+# The output from the preceding command shows that the NodePort service is exposed externally on the port (30994) of the available worker node's EC2 instance.
+# Before you access NodeIP:NodePort from outside the cluster, you must set the security group of the nodes to allow incoming traffic. You can allow incoming traffic through the port (30994) that's listed in the output of the preceding kubectl get service command.
+
+4.
+# If the node is in a public subnet and is reachable from the internet, check the node’s public IP address:
+kubectl get nodes -o wide |  awk {'print $1" " $2 " " $7'} | column -t
+# Output:
+# NAME                                      STATUS  EXTERNAL-IP
+# ip-10-0-3-226.eu-west-1.compute.internal  Ready   1.1.1.1
+# ip-10-1-3-107.eu-west-1.compute.internal  Ready   2.2.2.2
+
+-or-
+
+# If the node is in a private subnet and is reachable only inside or through a VPC, then check the node’s private IP address:
+kubectl get nodes -o wide |  awk {'print $1" " $2 " " $6'} | column -t
+# Output:
+# NAME                                      STATUS  INTERNAL-IP
+# ip-10-0-3-226.eu-west-1.compute.internal  Ready   10.0.3.226
+# ip-10-1-3-107.eu-west-1.compute.internal  Ready   10.1.3.107
+
+
+# Delete the NodePort service:
+kubectl delete service nginx-service-nodeport
+# Output:
+# service "nginx-service-nodeport" deleted
+```
 
 
 

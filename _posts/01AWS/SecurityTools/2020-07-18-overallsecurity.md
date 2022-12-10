@@ -2,7 +2,7 @@
 title: AWS - Security - Cloud Proactive Security and Forensic Readiness
 date: 2020-07-18 11:11:11 -0400
 categories: [01AWS, SecurityControl]
-tags: [AWS, SecurityControl]
+tags: [AWS, SecurityControl, ZeroTrust]
 toc: true
 image:
 ---
@@ -18,6 +18,15 @@ image:
     - [best practice checklist](#best-practice-checklist-3)
   - [5. Incident Response in AWS](#5-incident-response-in-aws)
     - [Best-practice checklist](#best-practice-checklist-4)
+- [security](#security)
+  - [Zero Trust](#zero-trust)
+      - [Designing on AWS using Zero Trust principles](#designing-on-aws-using-zero-trust-principles)
+    - [AWS best practice architectures](#aws-best-practice-architectures)
+    - [Apply Zero Trust](#apply-zero-trust)
+
+
+ref:
+- [web](https://cloudsecurityalliance.org/search/?page=1&s=AWS+Cloud%3A+Proactive+Security+and+Forensic+Readiness+)
 
 ---
 
@@ -59,25 +68,25 @@ The following list focuses on
 
 2. defining roles and responsibilities of system users to <font color=red> control human access to the AWS Management Console and API </font>
    - Create individual IAM users
-   - Configure a strong password policy for your users
+   - Configure a strong password policy for the users
    - Enable MFA for privileged users
    - Segregate defined roles and responsibilities of system users by creating user groups.
      - Use groups to assign permissions to IAM users
    - Clearly define and grant only the minimum privileges to users, groups, and roles that are needed to accomplish business requirements.
    - Use AWS defined policies to assign permissions whenever possible
    - Define and enforce user life-cycle policies
-   - Use roles to delegate access to users, applications, or services that don’t normally have access to your AWS resources
+   - Use roles to delegate access to users, applications, or services that don’t normally have access to the AWS resources
    - Use roles for applications that run on Amazon EC2 instances
    - Use access levels (list, read, write and permissions management) to review IAM permissions
    - Use policy conditions for extra security
-   - Regularly monitor user activity in your AWS account(s).
+   - Regularly monitor user activity in the AWS account(s).
 
 1. <font color=red> protecting the access/use of user account credentials </font>
    - <font color=blue> Rotate credentials regularly </font>
    - Remove/deactivate unnecessary credentials
    - Protect EC2 key pairs.
      - Password protect the .pem and .ppk file on user machines
-   - Delete keys on your instances when someone leaves your organization or no longer requires access
+   - Delete keys on the instances when someone leaves the organization or no longer requires access
    - Regularly run least privilege checks using <font color=blue> IAM user Access Advisor and IAM user Last Used Access Keys </font>
    - Delegate access by using roles instead of by sharing credentials
    - Use IAM roles for cross-account access and identity federation
@@ -143,7 +152,7 @@ The following list mainly focuses on network and host-level boundary protection
    - Use IPSec or AWS Direct Connect
      - for trusted connections to other sites
    - Use VPC Flow Logs
-     - for information about the IP traffic going to and from network interfaces in your VPC
+     - for information about the IP traffic going to and from network interfaces in the VPC
    - Protect data in transit to ensure the confidentiality and integrity of data, as well as the identities of the communicating parties.
 
 
@@ -158,17 +167,17 @@ The following list mainly focuses on network and host-level boundary protection
    - Use <font color=blue> Amazon CloudFront </font>
      - to absorb DoS/DDoS flooding attacks
    - Use <font color=blue> AWS WAF with AWS CloudFront </font>
-     - help protect your web applications from common web exploits that could affect application availability, compromise security, or consume excessive resources
+     - help protect the web applications from common web exploits that could affect application availability, compromise security, or consume excessive resources
    - Use <font color=blue> Amazon CloudWatch </font>
-     - to detect DDoS attacks against your application
+     - to detect DDoS attacks against the application
    - Use <font color=blue> VPC Flow Logs </font>
-     - to gain visibility into traffic targeting your application.
+     - to gain visibility into traffic targeting the application.
 
 
 3. <font color=red> managing malware </font>
    - Give users the minimum privileges they need to carry out their tasks
    - Patch external-facing and internal systems to the latest security level.
-   - Use a reputable and up-to-date antivirus and antispam solution on your system.
+   - Use a reputable and up-to-date antivirus and antispam solution on the system.
    - Install host based IDS with file integrity checking and rootkit detection
    - Use IDS/IPS systems
      - for statistical/behavioural or signature-based algorithms to detect and contain network attacks and Trojans.
@@ -178,7 +187,7 @@ The following list mainly focuses on network and host-level boundary protection
 
 
 4. <font color=red> identify vulnerability/misconfigurations in the os of EC2 </font>
-   - Define approach for securing your system, consider the level of access needed and take a least-privilege approach
+   - Define approach for securing the system, consider the level of access needed and take a least-privilege approach
    - Open only the ports needed for communication, harden OS and disable permissive configurations
    - Remove or disable unnecessary user accounts.
    - Remove or disable all unnecessary functionality.
@@ -190,10 +199,10 @@ The following list mainly focuses on network and host-level boundary protection
      - to define and maintain consistent operating system configurations
    - Ensure an inventory of instances and installed software is maintained;
      - Use <font color=blue> EC2 Systems Manager Inventory </font>
-       - to collect and query configuration about your instances and installed software
+       - to collect and query configuration about the instances and installed software
    - Perform routine vulnerability assessments when updates or deployments are pushed;
      - Use <font color=blue> Amazon Inspector </font>
-       - to identify vulnerabilities or deviations from best practices in your guest operating systems and applications
+       - to identify vulnerabilities or deviations from best practices in the guest operating systems and applications
    - Leverage automated patching tools such as EC2 Systems Manager Patch Manager to help you deploy operating system and software patches automatically across large groups of instances
    - Use <font color=blue> AWS CloudTrail, AWS Config, and AWS Config Rules </font>
      - as they provide audit and change tracking features for auditing AWS resource changes.
@@ -223,7 +232,7 @@ The following list mainly focuses on network and host-level boundary protection
    - Avoid embedding secrets into images or environment variables, Use S3-based secrets storage instead.
 
 7. <font color=red> ensuring only trusted Amazon Machine Images (AMIs) are launched </font>
-   - Treat shared AMIs as any foreign code that you might consider deploying in your own data centre and perform the appropriate due diligence
+   - Treat shared AMIs as any foreign code that you might consider deploying in the own data centre and perform the appropriate due diligence
    - Look for description of shared AMI, and the AMI ID, in the Amazon EC2 forum
    - Check aliased owner in the account field to find public AMIs from Amazon.
 
@@ -234,7 +243,7 @@ The following list mainly focuses on network and host-level boundary protection
    - Use bastion hosts
      - to enforce control and visibility
    - Protect the .pem file on user machines
-   - Delete keys from the authorized_keys file on your instances when someone leaves your organization or no longer requires access
+   - Delete keys from the authorized_keys file on the instances when someone leaves the organization or no longer requires access
    - Rotate credentials (DB, Access Keys)
    - Regularly run least privilege checks using IAM user Access Advisor and IAM user Last Used Access Keys
    - Ensure that software installed does not use default internal accounts and passwords.
@@ -261,10 +270,10 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
 1. <font color=red> protecting data at rest </font>
    - Define polices for data classification, access control, retention and deletion
    - Tag information assets stored in AWS based on adopted classification scheme
-   - Determine where your data will be located by selecting a suitable AWS region
+   - Determine where the data will be located by selecting a suitable AWS region
    - Use geo restriction (or geoblocking),
      - to prevent users in specific geographic locations from accessing content that you are distributing through a CloudFront web distribution
-   - Control the format, structure and security of your data by masking, making it anonymised or encrypted in accordance with the classification
+   - Control the format, structure and security of the data by masking, making it anonymised or encrypted in accordance with the classification
    - Encrypt data at rest using server-side or client-side encryption
    - Manage other access controls, such as identity, access management, permissions and security credentials
    - Restrict access to data using IAM policies, resource policies and capability policies
@@ -277,11 +286,11 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
    - encrypt
      - Protect sensitive data by <font color=blue> encrypting data at rest </font> in S3.
        - Amazon S3 supports server-side encryption and client-side encryption of user data,
-       - using which you create and manage your own encryption keys
+       - using which you create and manage the own encryption keys
      - <font color=blue> Encrypt inbound and outbound S3 data traffic </font>
    - <font color=blue> data replication and versioning </font> instead of automatic backups.
      - Implement S3 Versioning and S3 Lifecycle Policies
-   - Automate the lifecycle of your S3 objects with rule-based actions
+   - Automate the lifecycle of the S3 objects with rule-based actions
    - Enable MFA Delete on S3 bucket
    - <font color=blue> enable logging </font>
    - Be familiar with the durability and availability options for different S3 storage types – S3, S3-IA and S3-RR.
@@ -291,7 +300,7 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
    - only use encrypted EBS volums
      - encrypt data, snapshots, and disk I/O using the customary AWS-256 algorithm
    - active VPC Flow log
-   - AWS creates two copies of your EBS volume for redundancy.
+   - AWS creates two copies of the EBS volume for redundancy.
      - However, since both copies are in the same Availability Zone, replicate data at the application level, and/or create backups using EBS snapshots
    - On Windows Server 2008 and later:
      - use <font color=blue> BitLocker encryption </font>
@@ -361,8 +370,8 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
     - Delete log files containing sensitive information
     - Delete all shell history on Linux
 
-11. <font color=red> understand who has the right to access your data stored in AWS </font>
-    - Understand the applicable laws to your business and operations
+11. <font color=red> understand who has the right to access the data stored in AWS </font>
+    - Understand the applicable laws to the business and operations
       - consider whether laws in other jurisdictions may apply
     - Understand that relevant government bodies may have rights to issue requests for content, each relevant law will contain criteria that must be satisfied for the relevant law enforcement body to make a valid request.
     - Understand that AWS notifies customers where practicable before disclosing their data so they can seek protection from disclosure, unless AWS is legally prohibited from doing so or there is clear indication of illegal conduct regarding the use of AWS services. For additional information, visit Amazon Information Requests Portal.
@@ -416,8 +425,8 @@ These controls can be implemented using
    - Use Amazon GuardDuty to continuously monitor for malicious or unauthorized behavior
    - Send events to targets like an AWS Lambda function, Amazon SNS, or other targets for alerts and notifications
 
-6. <font color=red> monitoring billing in your AWS account </font>
-   - Use detailed billing to monitor your monthly usage regularly
+6. <font color=red> monitoring billing in the AWS account </font>
+   - Use detailed billing to monitor the monthly usage regularly
    - Use consolidated billing for multiple accounts
 
 
@@ -465,7 +474,7 @@ there are several tools in the AWS cloud environment to help the incident respon
    - <font color=blue> AWS CloudTrail </font>
      - provides a history of AWS API calls that can assist in response and trigger automated detection and response systems.
    - <font color=blue> VPC Flow Logs </font>
-     - enables you to capture information about the IP traffic going to and from network interfaces in your VPC.
+     - enables you to capture information about the IP traffic going to and from network interfaces in the VPC.
    - <font color=blue> AWS Key Management Service (KMS) </font>
      - encrypts sensitive data at rest including logs aggregated and stored centrally.
    - <font color=blue> Amazon GuardDuty </font>
@@ -499,11 +508,119 @@ there are several tools in the AWS cloud environment to help the incident respon
    - Secure wipe-files and delete any KMS data keys, if used.
 
 
-
-
-
-
 ---
 
-ref:
-- [web](https://cloudsecurityalliance.org/search/?page=1&s=AWS+Cloud%3A+Proactive+Security+and+Forensic+Readiness+)
+# security
+## Zero Trust
+
+
+Traditional network security relies on a **secure perimeter**
+- everything within the perimeter is trusted and anything outside the perimeter is not.
+
+
+Zero Trust
+- a model where application components or microservices are considered discrete from each other and no component or microservice trusts any other.
+- This manifests as a security posture designed to consider input from any source as potentially malicious.
+- It starts with not trusting the underlying internal network fabric, and extending to things such as input and output validation at every microservice. Additional efforts can include designing a defense-in-depth approach to protect against individual components, microservices, or identities compromise.
+- A Zero Trust network evaluates all actions and resources in real time to reduce the risk of unintended access to business data and sensitive resources.
+
+
+Zero Trust building a network boundary between each microservice in the architecture.
+- strengthening the component perimeters; rethink threat sources and investment to protect against them.
+
+#### Designing on AWS using Zero Trust principles
+
+In threat modeling, users attempt to determine all of the potential attack possibilities to define risk and identify mitigations.
+
+One threat model that can be used for illustrative purposes, [STRIDE](https://en.wikipedia.org/wiki/STRIDE_(security)) , identifies threats in these categories:
+
+* **Spoofing** of user identity
+* **Tampering** with data
+* **Repudiation** the source
+* **Information** disclosure
+* **Denial** of service
+* **Elevation** of privilege
+
+### AWS best practice architectures
+
+AWS offers foundational tools for designing Well-Architected applications on AWS.
+- The AWS Well-Architected Framework includes strategies to help you compare the workload against AWS best practices, and obtain guidance to produce stable and efficient systems.
+- The Well-Architected Framework contains five distinct pillars, including one for [security](https://d1.awsstatic.com/whitepapers/architecture/AWS-Security-Pillar.pdf) .
+
+
+
+
+well architected example
+
+- a [web application](https://d0.awsstatic.com/whitepapers/aws-web-hosting-best-practices.pdf)
+- The architecture represented is a well architected and secure design for the web application.
+
+[![Figure 1. An example of a web hosting architecture on AWS ](https://d2908q01vomqb2.cloudfront.net/9e6a55b6b4563e652a23be9d623ca5055c356940/2020/01/20/Zero-Trust-Figure-1.png)](https://d2908q01vomqb2.cloudfront.net/9e6a55b6b4563e652a23be9d623ca5055c356940/2020/01/20/Zero-Trust-Figure-1.png)
+
+The system is protected against common attack vectors leveraging the following services:
+1. **Load balancing with [Elastic Load Balancing (ELB)](https://aws.amazon.com/elasticloadbalancing/) / [Application Load Balancer (ALB)](https://aws.amazon.com/blogs/aws/new-aws-application-load-balancer/)**
+   1. spread loads across multiple AZs and EC2 Auto Scaling groups for **redundancy** and **decoupling** of services.
+
+2. [**Virtual firewalls using AWS security groups**](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
+    1. moves security to the instance to provide a stateful, host-level firewall for both web and application servers.
+
+3. **Domain Name System (DNS) services with [Amazon Route 53](https://aws.amazon.com/route53/)**
+   1. provides DNS services to simplify domain management.
+
+4. **Edge caching with [Amazon CloudFront](https://aws.amazon.com/cloudfront/)**
+   1. decreases the latency to customers.
+
+5. **Edge security for [Amazon CloudFront](https://aws.amazon.com/cloudfront/) with [AWS Web Application Firewall (AWS WAF)](https://aws.amazon.com/waf/)**
+   1. filters malicious traffic, including XSS and SQL injection via customer-defined rules.
+
+6. **DDoS attack protection with [AWS Shield](https://aws.amazon.com/shield/)**
+   1. safeguards the infrastructure against the most common network and transport layer DDoS attacks automatically.
+
+### Apply Zero Trust
+
+Let’s reevaluate the architecture, but protect each component as a microservice instead of as part of a larger trusted system.
+
+In a Zero Trust model:
+
+- protect against tampering and information disclosure by a SQL Injection attack using the AWS WAF service.
+  - By design, customers using the website will come through Amazon CloudFront to access both static and dynamic content. While it makes sense to apply the AWS WAF rules to the CloudFront distribution, ELB/ALB will use a public IP address that could be discoverable by someone else.
+  - One mitigation would be to apply the same WAF rules directly against the load balancer.
+
+- protection between the web server and app server tiers?
+  - Those are traditionally considered “internal” components and data flowing between them is not subject to the same scrutiny.
+  - However, the Zero Trust model requires all components and communications be considered untrusted.
+  - AWS WAF might not be the right solution depending on the communication methods, but another layer of filtering – either host-based or network-based – would be implemented to do input validation before the input is ingested by the app tier.
+  - Additionally, authentication and authorization of commands between these two tiers would be continuous similar to how AWS uses the [AWS Signature Version 4](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) for API signing.
+
+
+- AWS WAF rules and local input validation are effective at protecting against some attacks
+
+
+- but what about DDoS?
+  - AWS Shield protects against the most common volumetric and state exhaustion attacks, but you should evaluate potential threats coming from other elements of the system.
+  - The best practice architecture does not address the potential of a web server instance flooding the application server with valid but meaningless work, or addresses an inadvertent misconfigured security group.
+
+    * Implement additional metrics and monitoring so a consistent amount of traffic flows from each instance.
+
+    * Implement [Amazon CloudWatch Anomaly Detection](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html) to use machine learning (ML) algorithms to analyze specific metrics such as Amazon EC2 instances generating unusually large amounts of network traffic.
+
+    * Use the [alarm to notify](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Anomaly_Detection_Alarm.html) an Amazon SNS topic, which will then trigger a custom Lambda function that removes the offending Amazon EC2 instance for the auto-scaling group, stops it, and isolates it for further analysis.
+
+[![Figure 2. An example of a Zero Trust web hosting architecture on AWS](https://d2908q01vomqb2.cloudfront.net/9e6a55b6b4563e652a23be9d623ca5055c356940/2020/01/20/ZeroTrustDiagram-2.png)](https://d2908q01vomqb2.cloudfront.net/9e6a55b6b4563e652a23be9d623ca5055c356940/2020/01/20/ZeroTrustDiagram-2.png)
+
+_Figure 2. An example of a Zero Trust web hosting architecture on AWS_
+
+example
+
+- a web tier
+  - creates backups, use an AWS KMS key that only that instance role has `KMS:Encrypt` permissions on.
+  - Since the web tier shouldn’t need to decrypt its own backups, deny or omit KMS:Decrypt to that role.
+  - Since that instance role is the only entity with the ability to use the KMS key to encrypt data, and coupled with CloudTrail logs for auditing, you can validate that backups were written by those instances and have not been tampered with.
+  - If those instances are accessed by an unauthorized user, they cannot read from past backups.
+
+- You could also
+  - add [user authentication between tiers on the Application Load Balancer](https://aws.amazon.com/blogs/aws/built-in-authentication-in-alb/)
+  - or use [API Gateway between the App Tier and the databases](https://aws.amazon.com/blogs/database/query-the-aws-database-from-the-serverless-application/) to execute validation of queries.
+
+
+.

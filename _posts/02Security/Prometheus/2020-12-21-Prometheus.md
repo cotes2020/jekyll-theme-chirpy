@@ -8,9 +8,9 @@ image:
 ---
 
 - [Prometheus](#prometheus)
+  - [basic](#basic)
+  - [overall](#overall)
   - [Concepts](#concepts)
-    - [模型](#模型)
-    - [数据指标](#数据指标)
   - [Prometheus: 监控与告警](#prometheus-监控与告警)
     - [1:概要介绍](#1概要介绍)
       - [主要特性](#主要特性)
@@ -29,7 +29,17 @@ image:
     - [4:使用Grafana进行可视化显示](#4使用grafana进行可视化显示)
       - [事前准备](#事前准备-1)
     - [5:在Kubernetes上部署](#5在kubernetes上部署)
-    - [6: Exporter概要介绍](#6-exporter概要介绍)
+  - [Exporter概要介绍](#exporter概要介绍)
+    - [exporter](#exporter)
+    - [Cadvisor](#cadvisor)
+    - [expose custom metrics to Prometheus](#expose-custom-metrics-to-prometheus)
+        - [App with metric](#app-with-metric)
+      - [Deploy into Kubernetes](#deploy-into-kubernetes)
+        - [Scrape Metrics from Prometheus](#scrape-metrics-from-prometheus)
+  - [Metric](#metric)
+  - [CONFIGURATION](#configuration)
+    - [metric\_relabel\_configs](#metric_relabel_configs)
+    - [relabel\_config](#relabel_config)
   - [monitoring with Prometheus](#monitoring-with-prometheus)
   - [client](#client)
     - [Instrumenting applications](#instrumenting-applications)
@@ -39,9 +49,18 @@ image:
       - [Other Go client features](#other-go-client-features)
     - [Client for the Prometheus HTTP API](#client-for-the-prometheus-http-api)
   - [go client](#go-client)
+    - [模型](#模型)
+    - [metric 指标](#metric-指标)
+      - [数据指标类型](#数据指标类型)
+      - [数据指标向量](#数据指标向量)
+      - [state metric 定义指标](#state-metric-定义指标)
+      - [registry metric 注册指标](#registry-metric-注册指标)
+        - [默认方式](#默认方式)
+        - [自定义 exporter / 结构体](#自定义-exporter--结构体)
+    - [Collector](#collector)
     - [自定义Collector](#自定义collector)
   - [Package](#package)
-    - [prometheus/client_golang](#prometheusclient_golang)
+    - [prometheus/client\_golang](#prometheusclient_golang)
     - [`prometheus` 包](#prometheus-包)
       - [自定义 Collectors 和常量指标](#自定义-collectors-和常量指标)
       - [Registry 的高级用法](#registry-的高级用法)
@@ -54,19 +73,55 @@ image:
       - [示例](#示例)
     - [`push` 包](#push-包)
 
-- https://github.com/prometheus/client_golang
-- [Endpoint](https://prometheus.io/docs/guides/go-application/)
-- [P go SDK](https://pkg.go.dev/github.com/prometheus/client_golang/prometheus)
-- https://github.com/prometheus/prometheus
-- https://prometheus.io/docs/introduction/overview/
-- https://hulining.github.io/2020/07/01/prometheus-client_golang-Introduction/
-- Blog
-  - [prometheus client_golang 简单使用](https://hulining.github.io/2020/07/01/prometheus-client_golang-Introduction/)
-  - https://blog.csdn.net/liumiaocn/category_9561738.html
-  - [Go进阶31:Prometheus Client教程](https://mojotv.cn/go/prometheus-client-for-go)
-  - [prometheus client_golang使用](https://www.cnblogs.com/gaorong/p/7881203.html)
+
+
+
+---
+
 
 # Prometheus
+
+
+**几点原则**
+- 监控是基础设施，目的是为了解决问题，不要只朝着大而全去做，尤其是不必要的指标采集，浪费人力和存储资源（To B商业产品例外）。
+- 需要处理的告警才发出来，发出来的告警必须得到处理。
+- 简单的架构就是最好的架构，业务系统都挂了，监控也不能挂。Google Sre 里面也说避免使用 Magic 系统，例如机器学习报警阈值、自动修复之类。这一点见仁见智吧，感觉很多公司都在搞智能 AI 运维。
+
+**Prometheus 的局限**
+- Prometheus 是基于 Metric 的监控，不适用于日志（Logs）、事件(Event)、调用链(Tracing)。
+- Prometheus 默认是 Pull 模型，合理规划你的网络，尽量不要转发。
+- 对于集群化和水平扩展，官方和社区都没有银弹，需要合理选择 Federate、Cortex、Thanos等方案。
+- 监控系统一般情况下**可用性大于一致性**，容忍部分副本数据丢失，保证查询请求成功。这个后面说 Thanos 去重的时候会提到。
+- Prometheus 不一定保证数据准确，
+  - 一是指 rate、histogram_quantile 等函数会做统计和推断，产生一些反直觉的结果，这个后面会详细展开。
+  - 二来查询范围过长要做降采样，势必会造成数据精度丢失，不过这是时序数据的特点，也是不同于日志系统的地方。
+
+
+
+**合理选择黄金指标**
+
+- 采集的指标有很多，Google 在“Sre Handbook”中提出了“四个黄金信号”：`延迟、流量、错误数、饱和度`。
+  - 实际操作中可以使用 Use 或 Red 方法作为指导，
+  - Use 用于资源，Red 用于服务。
+  - Use 方法：`Utilization、Saturation、Errors`。如 Cadvisor 数据
+  - Red 方法：`Rate、Errors、Duration`。如 Apiserver 性能指标
+
+- Prometheus 采集中常见的服务分三种：
+
+  - 在线服务：如 Web 服务、数据库等，一般关心请求速率，延迟和错误率即 RED 方法。
+
+  - 离线服务：如日志处理、消息队列等，一般关注队列数量、进行中的数量，处理速度以及发生的错误即 Use 方法。
+
+  - 批处理任务：和离线任务很像，但是离线任务是长期运行的，批处理任务是按计划运行的，如持续集成就是批处理任务，对应 K8S 中的 job 或 cronjob， 一般关注所花的时间、错误数等，因为运行周期短，很可能还没采集到就运行结束了，所以一般使用 Pushgateway，改拉为推。
+
+- 对Use 和 Red 的实际示例可以参考容器监控实践—K8S常用指标分析这篇文章。
+
+- 容器监控实践—K8S常用指标分析：http://www.xuyasong.com/?P=1717
+
+
+
+
+## basic
 
 ![pic](https://img-blog.csdnimg.cn/20191203090913325.jpeg?x-oss-process=image/resize,m_fixed,h_224,w_224)
 
@@ -74,8 +129,6 @@ Prometheus是一个开源监控系统.
 - Prometheus是由SoundCloud开发的开源监控报警系统和时序列数据库(TSDB).
 - Prometheus使用Go语言开发,是Google BorgMon监控系统的开源版本.
 - Prometheus也是以重时序数据库.
-
-
 
 Prometheus 生态是一款优秀的开源监控解决方案，其中包括如下组件
 - Prometheus server
@@ -104,241 +157,155 @@ Prometheus 的优势
 - 支持多种类型的图表和仪表盘.
 
 
+few key points
+- Metric Collection:
+  - Prometheus uses the pull model to retrieve metrics over HTTP. There is an option to push metrics to Prometheus using Pushgateway for use cases where Prometheus cannot Scrape the metrics. One such example is collecting custom metrics from short-lived kubernetes jobs & Cronjobs
+- Metric Endpoint:
+  - The systems that you want to monitor using Prometheus should expose the metrics on an /metrics endpoint. Prometheus uses this endpoint to pull the metrics in regular intervals.
+- PromQL:
+  - Prometheus comes with PromQL, a very flexible query language that can be used to query the metrics in the Prometheus dashboard. Also, the PromQL query will be used by Prometheus UI and Grafana to visualize metrics.
+- Prometheus Exporters:
+  - Exporters are libraries that convert existing metrics from third-party apps to Prometheus metrics format. There are many official and community Prometheus exporters. One example is, the Prometheus node exporter. It exposes all Linux system-level metrics in Prometheus format.
+- TSDB (time-series database):
+  - Prometheus uses TSDB for storing all the data efficiently.
+  - By default, all the data gets stored locally.
+  - However, to avoid a single point of failure, there are options to integrate remote storage for Prometheus TSDB.
+
+![Screenshot 2022-11-06 at 16.10.26](https://i.imgur.com/MJw2t7N.png)
+
+## overall
+
+
+```go
+// # state custom metric
+import github.com/prometheus/client_golang/prometheus
+cpuTemp = prometheus.NewGauge(
+  prometheus.GaugeOpts{
+    Name: "cpu_temperature_celsius",
+    Help: "Current temperature of the CPU.",}
+)
+hdFailures = prometheus.NewCounterVec(
+  prometheus.CounterOpts{
+    Name: "hd_errors_total",
+    Help: "Number of hard-disk errors.",
+  },
+  []string{"device"},
+)
+totalScrapes= prometheus.NewCounter(
+  prometheus.CounterOpts{
+    Namespace: namespace,
+    Name:      "exporter_scrapes_total",
+    Help:      "Current total redis scrapes.",}
+)
+
+// # registry custom metric
+func init() {
+    // Metrics have to be registered to be exposed:
+    prometheus.MustRegister(cpuTemp)
+    prometheus.MustRegister(hdFailures)
+}
+
+
+// # add custom metric to new port
+
+// # add new port in prometheus py
+func main() {
+
+	cpuTemp.Set(65.3)
+	hdFailures.With(prometheus.Labels{"device": "/dev/sda"}).Inc()
+
+	prometheus.MustRegister(
+		qzPro.CommonCounter, qzPro.FuncCounter, qzPro.VecCounter,
+	)
+	http.HandleFunc("/common_counter", qzPro.DealCommCounter)
+	http.HandleFunc("/vec_counter", qzPro.DealVecCounter)
+
+	# // The Handler function provides a default handler to expose metrics
+	# // via an HTTP server. "/metrics" is the usual endpoint for that.
+	http.Handle("/metrics", promhttp.Handler()) // 暴露 metrics 指标
+	http.Handle("/service", phm.WrapHandler("myhandler", myHandler))
+	http.ListenAndServe(":8090", nil)
+}
+
+
+// # create dockerfile
+run app
+run prometheus with port
+
+
+// # build img from dockerfile
+export $MYAPP="my_app"
+export $MYTAG="my_tag"
+export $CONTAINERNAME="my_container"
+docker build --platform linux/amd64 -f $MYAPP/Dockerfile  . -t $MYTAG
+docker tag $MYTAG
+
+// # Local run container from img
+docker run \
+    --env AWS_ACCESS_KEY_ID \
+    --env AWS_SECRET_ACCESS_KEY \
+    --env AWS_SESSION_TOKEN \
+    --env AWS_DEFAULT_REGION=us-west-2 \
+    $MYAPP:$MYTAG
+
+docker run -d -p 9090:9090 \
+	-v `pwd`/prometheus-demo.yml:/etc/prometheus/prometheus.yml \
+	--name prometheus prom/prometheus
+
+
+// # check current prometheus config
+kubectl get configmap prometheus-server-config \
+    -n $CONTAINERNAME \
+    -o jsonpath='{.data.prometheus\.yml}' \
+    > $MYAPP/prometheus-current.yml
+
+
+
+// # add custom metric collection to new port
+
+    - job_name: kubernetes-pod-test
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      kubernetes_sd_configs:
+      - role: pod
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - replacement: kubernetes.default.svc:443
+        target_label: __address__
+      - regex: (.+)
+        replacement: /api/v1/nodes/$1/proxy/metrics
+        source_labels:
+        - __meta_kubernetes_node_name
+        target_label: __metrics_path__
+      scheme: https
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        insecure_skip_verify: true
+
+
+
+
+// # update prometheus
+// # - update k8s yaml file -> rebuild container IaC
+// # - directly update prometheus.yml -> restart the container
+// # - directly update prometheus extra-config
+kubectl patch configmap prometheus-extra-config \
+    -n $CONTAINERNAME \
+    --patch "$(cat $MYAPP/patch2.yaml)"
+
+
+// # go to prometheus dashboard
+http://127.0.0.1:9090
+http://127.0.0.1:9090/targets?search=
+http://127.0.0.1:9090/metric
+http://127.0.0.1:8089/metric
+```
+
+
+
+---
 
 ## Concepts
-
-### 模型
-Prometheus 所有采集的监控数据均以指标（metric）的形式保存在内置的时间序列数据库当中（TSDB）：
-- 属于同一指标名称，同一标签集合的、有时间戳标记的数据流。
-- 除了存储的时间序列，Prometheus 还可以根据查询请求产生临时的、衍生的时间序列作为返回结果。
-- 在时间序列中的每一个点称为一个样本（sample）
-
-
-样本由以下三部分组成
-- 指标（metric）：指标名称和描述当前样本特征的 labelsets
-- 时间戳（timestamp）：一个精确到毫秒的时间戳
-- 样本值（value）： 一个 folat64 的浮点型数据表示当前样本的值
-
-
-
-### 数据指标
-
-```py
-metrics name {(label)key-value} float64 value
-
-# HELP go_gc_duration_seconds A summary of the GC invocation durations.
-# TYPE go_gc_duration_seconds summary
-go_gc_duration_seconds{quantile="0.5"} 0.000107458
-go_gc_duration_seconds_count 18
-# HELP go_goroutines Number of goroutines that currently exist.
-# TYPE go_goroutines gauge
-go_goroutines 107
-```
-
-`prometheus` 包为了方便client library的使用提供了四种核心的数据类型：
-- `Counter`, `Gauge`, `Histogram` 和 `Summary` .
-- 但这些类型只是在客户端库（客户端可以根据不同的数据类型调用不同的 API 接口）和在线协议中，
-- 实际在 Prometheus server 中并不对指标类型进行区分，而是简单地把这些指标统一视为无类型的时间序列。
-
-
-> [Prometheus docs](https://prometheus.io/docs/concepts/metric_types/) : 对这四种度量标准类型的更全面的描述.
-
-
-
-
-除了四种基本的数据指标类型外,Prometheus 数据模型的一个非常重要的部分是沿着称为 “标签” 的维度对数据指标样本进行划分,这就产生了数据指标向量(`metric vectors`).
-
-数据类型：
-- Counter类型
-  - 好比计数器,用于统计类似于：CPU时间,API访问总次数,异常发生次数等等场景.
-  - 代表一种样本数据单调递增的指标，即只增不减。除非监控系统发生了重置。
-    - 例如，使用 counter 类型的指标来表示服务的请求数、已完成的任务数、错误发生的次数等。
-    - 不要将 counter 类型应用于样本数据非单调递增的指标，例如：当前运行的进程数量（应该用 Gauge 类型）。
-
-- Gauge类型
-  - “计量器” ”仪表盘“
-  - 代表一种样本数据可以任意变化的指标，即可增可减。
-  - Gauge 通常用于像温度或者内存使用率这种指标数据，也可以表示能随时增加或减少的“总数”，
-  - 例如：当前并发请求的数量。
-
-- Histogram
-  - 柱状图,更多的是用于统计一些数据分布的情况,用于计算在一定范围内的分布情况,同时还提供了度量指标值的总和.
-  - 在大多数情况下人们都倾向于使用某些量化指标的平均值，例如 CPU 的平均使用率、页面的平均响应时间。
-    - 这种方式的问题很明显
-      - 以系统 API 调用的平均响应时间为例：
-      - 如果大多数 API 请求都维持在 100ms 的响应时间范围内，而个别请求的响应时间需要 5s，
-      - 那么就会导致某些 WEB 页面的响应时间落到中位数的情况，而这种现象被称为长尾问题。
-    - 为了区分是平均的慢还是长尾的慢，最简单的方式就是按照请求延迟的范围进行分组。例如
-      - 统计延迟在 0~10ms 之间的请求数有多少而 10~20ms 之间的请求数又有多少。
-      - 通过这种方式可以快速分析系统慢的原因。
-  - Histogram
-    - 在一段时间范围内对数据进行采样（通常是请求持续时间或响应大小等），
-    - 并将其计入可配置的存储桶（bucket）中，
-    - 后续可通过指定区间筛选样本，也可以统计样本总数，
-    - 最后一般将数据展示为直方图。
-  - Histogram 类型的样本会提供三种指标（假设指标名称为 <metrices_name>）：
-    - 样本的值分布在 bucket 中的数量
-      - 命名为 `<metrices_name>_bucket{le=“<上边界>”}`。
-      - 解释的更通俗易懂一点，这个值表示指标值小于等于上边界的所有样本数量。
-      - **请求响应时间 <=0.005 秒 的请求次数**。
-    - 所有样本值的大小总和
-      - 命名为 `<metrices_name>_sum`
-      - **所有请求响应时间总和**
-    - 样本总数
-      - 命名为 `<metrices_name>_count`。
-      - 值和 <metrices_name>_bucket{le=“+Inf”} 相同。
-      - **所有请求次数**
-
-
-
-- Summary摘要,
-  - 和Histogram柱状图比较类似,主要用于计算在一定时间窗口范围内度量指标对象的总数以及所有对量指标值的总和.
-  - 与 Histogram 类型类似，用于表示一段时间内的数据采样结果（通常是请求持续时间或响应大小等）
-    - 但它直接存储了分位数（通过客户端计算，然后展示出来），而不是通过区间来计算。
-  - Summary 类型的样本也会提供三种指标（假设指标名称为 ）：
-    - 样本值的分位数分布情况
-      - 命名为 `<metrices_name>{quantile=“0.5”}`
-      - **请求中有 50% 的请求响应时间值是**
-    - 所有样本值的大小总和
-      - 命名为 `<metrices_name>_sum`
-      - **所有请求响应时间总和**
-    - 样本总数
-      - 命名为 `<metrices_name>_count`
-      - **请求的总数**
-
-Histogram 与 Summary 的异同：
-- Histogram 和 Summary 都是为了能够解决这样问题的存在，通过 Histogram 和 Summary 类型的监控指标，我们可以快速了解监控样本的分布情况。
-- 它们都包含了 <metrices_name>_sum 和 <metrices_name>_count 指标
-- Histogram 需要通过 <metrices_name>_bucket 来计算分位数，而 Summary 则直接存储了分位数的值。
-
-
-
-- 简单理解就是
-  - Counter对数据只增不减，
-  - Gauage可增可减，
-  - Histogram,Summary提供跟多的统计信息。
-
-
-pro将所有数据保存为timeseries data，用 metric name 和 label 区分
-- label 是在 metric name 上的更细维度的划分
-  - 其中的每一个实例是由一个float64和timestamp组成
-  - 只不过timestamp是隐式加上去的，有时候不会显示出来
-- 如下面所示
-  - `go_gc_duration_seconds` 是 metrics name
-  - `quantile="0.5"` 是 key-value pair 的 label
-  - 而后面的值是 float64 value
-  - 注释部分 `# TYPE go_gc_duration_seconds summary` 标识出这是一个summary对象。
-
-
-```py
-
-metrics name {(label)key-value} float64 value
-
-# HELP go_gc_duration_seconds A summary of the GC invocation durations.
-# TYPE go_gc_duration_seconds summary
-go_gc_duration_seconds{quantile="0.5"} 0.000107458
-go_gc_duration_seconds{quantile="0.75"} 0.000200112
-go_gc_duration_seconds{quantile="1"} 0.000299278
-go_gc_duration_seconds_sum 0.002341738
-go_gc_duration_seconds_count 18
-# HELP go_goroutines Number of goroutines that currently exist.
-# TYPE go_goroutines gauge
-go_goroutines 107
-```
-
-
-
-
-
-
-
-`prometheus` 分为为四种基本数据指标类型提供了相应的 数据指标 **向量**
-- 分别是 `CounterVec`, `GaugeVec`, `HistogramVec` 和 `SummaryVec` .
-
-数据指标向量的方法如下:
-
-```go
-Collect(ch chan<- Metric)  // 实现 Collector 接口的 Collect() 方法
-CurryWith(labels Labels)  // 返回带有指定标签的向量指标及可能发生的错误.多用于 promhttp 包中的中间件.
-Delete(labels Labels)  // 删除带有指定标签的向量指标.如果删除了指标,返回 true
-DeleteLabelValues(lvs ...string)  // 删除带有指定标签和标签值的向量指标.如果删除了指标,返回 true
-Describe(ch chan<- *Desc)  // 实现 Collector 接口的 Describe() 方法
-GetMetricWith(labels Labels)  // 返回带有指定标签的数据指标及可能发生的错误
-GetMetricWithLabelValues(lvs ...string)  // 返回带有指定标签和标签值的数据指标及可能发生的错误
-MustCurryWith(labels Labels)  // 与 CurryWith 相同,但如果出现错误,则引发 panics
-Reset()  // 删除此指标向量中的所有数据指标
-With(labels Labels)  // 与 GetMetricWithLabels 相同,但如果出现错误,则引发 panics
-WithLabelValues(lvs ...string)  // 与 GetMetricWithLabelValues 相同,但如果出现错误,则引发 panics
-```
-
-要创建 `Metrics` 及其向量版本的实例
-- 您需要一个合适的 `…Opts` 结构,即 `GaugeOpts`, `CounterOpts`, `SummaryOpts` 或 `HistogramOpts` .
-
-结构体如下:
-
-```go
-type Opts struct {
-    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
-	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
-    Namespace string
-    Subsystem string
-    Name      string
-    // Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
-    Help string
-    // ConstLabels 用于将固定标签附加到该指标.很少使用.
-    ConstLabels Labels
-}
-
-// 其中 GaugeOpts, CounterOpts 实际上均为 Opts 的别名
-type CounterOpts Opts
-type GaugeOpts Opts
-
-type HistogramOpts struct {
-    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
-	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
-    Namespace string
-    Subsystem string
-    Name      string
-    //  Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
-    Help string
-    // ConstLabels 用于将固定标签附加到该指标.很少使用.
-    ConstLabels Labels
-    // Buckets 定义了观察值的取值区间.切片中的每个元素值都是区间的上限,元素值必须按升序排序.
-    // Buckets 会隐式添加 `+Inf` 值作为取值区间的最大值
-    // 默认值是 DefBuckets =  []float64{.005, .01, .025, .05, .1, .25, .5, 1, 2.5, 5, 10}
-    Buckets []float64
-}
-
-type SummaryOpts struct {
-    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
-	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
-    Namespace string
-    Subsystem string
-    Name      string
-    //  Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
-    Help string
-    // ConstLabels 用于将固定标签附加到该指标.很少使用.
-    ConstLabels Labels
-    // Objectives 定义了分位数等级估计及其各自的绝对误差.
-	// 如果 Objectives[q] = e，则 q 报告的值将是 [q-e, q + e]之间某个 φ 的 φ 分位数
-    // 默认值为空 map,表示没有分位数的摘要
-    Objectives map[float64]float64
-    // MaxAge 定义观察值与摘要保持相关的持续时间.必须是正数.默认值为 DefMaxAge = 10 * time.Minute
-    MaxAge time.Duration
-    // AgeBuckets 用于从摘要中排除早于 MaxAge 的观察值的取值区间.默认值为 DefAgeBuckets = 5
-    AgeBuckets uint32
-    // BufCap 定义默认样本流缓冲区大小.默认值为 DefBufCap = 500.
-    BufCap uint32
-}
-```
-
-注意:
-- `Counter`, `Gauge`, `Histogram`, `Summary` 都继承了 `Metric` 和 `Collector` 接口,其本身是接口类型.
-- `CounterVec`, `GaugeVec`, `HistogramVec`, `SummaryVec` 均继承自 `metricVec` 结构体,其本身的是结构体,而它们只实现了 `Collector` 接口.
-
-
-
-
 
 
 
@@ -472,9 +439,9 @@ scrape_configs:
 docker pull prom/prometheus
 
 # 启动Prometheus服务
-# 我们把配置文件放在本地 ~/docker/prometheus/prometheus.yml，这样可以方便编辑和查看
+# 把配置文件放在本地 ~/docker/prometheus/prometheus.yml，这样可以方便编辑和查看
 # 通过 -v 参数将本地的配置文件挂载到 /etc/prometheus/ 位置，这是 prometheus 在容器中默认加载的配置文件位置。
-# 如果我们不确定默认的配置文件在哪，可以先执行上面的不带 -v 参数的命令，然后通过 docker inspect 命名看看容器在运行时默认的参数有哪些（下面的 Args 参数）：
+# 如果不确定默认的配置文件在哪，可以先执行上面的不带 -v 参数的命令，然后通过 docker inspect 命名看看容器在运行时默认的参数有哪些（下面的 Args 参数）：
 docker run -d -p 9090:9090 \
 	-v `pwd`/prometheus-demo.yml:/etc/prometheus/prometheus.yml \
 	--name prometheus prom/prometheus
@@ -665,7 +632,7 @@ docker ps |grep prometheus
 - 所以docker中的pro可以直接通过localhost来指定同一台主机上所监控的程序。
 - prob暴露9090端口进行界面显示或其他操作，需要对docker中9090端口进行映射。
 - 启动之后可以访问web页面http://localhost:9090/graph,在status下拉菜单中可以看到配置文件和目标的状态
-- 此时目标状态为DOWN，因为我们所需要监控的服务还没有启动起来
+- 此时目标状态为DOWN，因为所需要监控的服务还没有启动起来
 
 ![Screenshot 2022-11-02 at 11.39.11](https://github.com/ocholuo/ocholuo.github.io/blob/master/assets/img/note/Screenshot%202022-11-02%20at%2011.39.11_4alo4l7ok.png)
 
@@ -677,7 +644,6 @@ docker ps |grep prometheus
 
 
 ```py
-
 metrics name {(label)key-value} float64 value
 
 # HELP go_gc_duration_seconds A summary of the GC invocation durations.
@@ -697,7 +663,7 @@ A Basic Example 演示了使用这些数据类型的方法（注意将其中8080
 - 其中创建了一个 gauge 和 CounterVec 对象，并分别指定了 metric name 和 help 信息
 
 - 其中 CounterVec 是用来管理相同 metric 下不同 label 的一组 Counter
-  - 代码中声明了一个lable的key为“device”
+  - 代码中声明了一个lable的key为`device`
   - 使用的时候也需要指定一个 lable
     - `hdFailures.With(prometheus.Labels{"device":"/dev/sda"}).Inc()`
 - 同理存在GaugeVec，
@@ -773,13 +739,13 @@ hd_errors_total{device="/dev/sda"} 1
 ![Screenshot 2022-11-02 at 12.21.31](https://github.com/ocholuo/ocholuo.github.io/blob/master/assets/img/note/Screenshot%202022-11-02%20at%2012.21.31.png)
 
 上面的例子只是一个简单的demo0
-- 因为在prometheus.yml配置文件中我们指定采集服务器信息的时间间隔为60s
+- 因为在prometheus.yml配置文件中指定采集服务器信息的时间间隔为60s
   - 每隔60s pro会通过http请求一次自己暴露的数据
-- 而在代码中我们只设置了一次gauge变量cupTemp的值
+- 而在代码中只设置了一次gauge变量cupTemp的值
   - 如果在60s的采样间隔里将该值设置多次，前面的值就会被覆盖，只有pro采集数据那一刻的值能被看到
   - 并且如果不再改变这个值，pro就始终能看到这个恒定的变量，除非用户显式通过Delete函数删除这个变量。
 
-- 使用Counter,Gauage等这些结构比较简单，但是如果不再使用这些变量需要我们手动删，我们可以调用resetfunction来清除之前的metrics。
+- 使用Counter,Gauage等这些结构比较简单，但是如果不再使用这些变量需要手动删，可以调用resetfunction来清除之前的metrics。
 
 
 
@@ -1107,7 +1073,7 @@ kubectl get pods
 ---
 
 
-### 6: Exporter概要介绍
+## Exporter概要介绍
 
 ![pic](https://img-blog.csdnimg.cn/20200113145037917.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
 
@@ -1243,11 +1209,578 @@ API服务
   * 内置在监控目标中，通过HTTP服务地址提供相应的监控数据（比如kubernetes）
 
 
+Prometheus 属于 CNCF 项目
+- 拥有完整的开源生态，与 Zabbix 这种传统 agent 监控不同，它提供了丰富的 exporter 来满足你的各种需求。
+- 你可以在这里看到官方、非官方的 exporter。如果还是没满足你的需求，你还可以自己编写 exporter，简单方便、自由开放，这是优点。Prometheus：https://prometheus.io/docs/instrumenting/exporters/
+- 但是过于开放就会带来选型、试错成本。之前只需要在 zabbix agent里面几行配置就能完成的事，现在你会需要很多 exporter 搭配才能完成。还要对所有 exporter 维护、监控。尤其是升级 exporter 版本时，很痛苦。非官方exporter 还会有不少 bug。这是使用上的不足，当然也是 Prometheus 的设计原则。
+
+
+K8S 生态的组件都会提供/metric接口以提供自监控:
+- cadvisor: 集成在 Kubelet 中。
+- kubelet: 10255为非认证端口，10250为认证端口。
+- apiserver: 6443端口，关心请求数、延迟等。
+- scheduler: 10251端口。
+- controller-manager: 10252端口。
+- etcd: 如etcd 写入读取延迟、存储容量等。
+- docker: 需要开启 experimental 实验特性，配置 metrics-addr，如容器创建耗时等指标。
+- kube-proxy: 默认 127 暴露，10249端口。外部采集时可以修改为 0.0.0.0 监听，会暴露：写入 iptables 规则的耗时等指标。
+- kube-state-metrics: K8S 官方项目，采集pod、deployment等资源的元信息。
+- node-exporter: Prometheus 官方项目，采集机器指标如 CPU、内存、磁盘。
+- blackbox_exporter: Prometheus 官方项目，网络探测，dns、ping、http监控
+- process-exporter: 采集进程指标
+- nvidia exporter: 有 gpu 任务，需要 gpu 数据监控
+- node-problem-detector: 即 npd，准确的说不是 exporter，但也会监测机器状态，上报节点异常打 taint
+- 应用层 exporter: mysql、nginx、mq等，看业务需求。
+- cadvisor：http://www.xuyasong.com/?p=1483
+- kube-state-metrics：http://www.xuyasong.com/?p=1525
+- node-exporter：http://www.xuyasong.com/?p=1539
+
+自定义 exporter：http://www.xuyasong.com/?p=1942
+
+
+### exporter
+
+以下是一个简单的exporter
+- 通过http模块指定了一个路径，并将`client_golang`库中的`promhttp.Handler()`作为处理函数传递进去后，就可以获取指标信息了,
+- 两行代码实现了一个exporter。
+- 这里内部其实是使用了一个默认的收集器将通过NewGoCollector采集当前Go运行时的相关信息比如go堆栈使用,goroutine的数据等等。 通过访问http://localhost:8080/metrics 即可查看详细的指标参数。
+- 上面的代码仅仅展示了一个默认的采集器，并且通过接口调用隐藏了太多实施细节
+
+```go
+// 下载对应的prometheus包
+go get github.com/prometheus/client_golang/prometheus/promhttp
+
+// 程序主函数:
+package main
+import (
+    "log"
+    "net/http"
+    "github.com/prometheus/client_golang/prometheus/promhttp"
+)
+func main() {
+    http.Handle("/metrics", promhttp.Handler())
+    log.Fatal(http.ListenAndServe(":8080", nil))
+}
+```
+
+
+
+
+### Cadvisor
+
+Cadvisor 的指标兼容问题
+
+在 K8S 1.16版本，Cadvisor 的指标去掉了 pod_Name 和 container_name 的 label，替换为了pod 和 container。
+
+- 注意要用 metric_relabel_configs，不是 relabel_configs，采集后做的replace。
+
 
 
 
 ---
 
+### expose custom metrics to Prometheus
+
+> ref:
+> - https://zhimin-wen.medium.com/custom-prometheus-metrics-for-apps-running-in-kubernetes-498d69ada7aa
+
+
+step
+- Develop the custom metrics with Prometheus Client API on a toy app
+- Deploy the app into Kubernetes (IBM Cloud Private)
+- Configure Prometheus in Kubernetes to scrape the metrics
+- Present the result in Grafana dashboard. Especially explore the dashboard for multiple replicas of the pod.
+
+
+---
+
+##### App with metric
+1. use the Prometheus Golang Client API to provide some custom metrics for a hello world web application.
+2. The HTTP service is being instrumented with three metrics:
+   1. Total transaction till now, implemented as a Prometheus Counter.
+   1. Currently active client, as a Prometheus Gauge.
+   1. Response time distribution, as a Prometheus Histogram.
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"strconv"
+	"time"
+
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promauto"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+)
+
+type PrometheusHttpMetric struct {
+	Prefix                string
+	ClientConnected       prometheus.Gauge
+	TransactionTotal      *prometheus.CounterVec
+	ResponseTimeHistogram *prometheus.HistogramVec
+	Buckets               []float64
+}
+
+func InitPrometheusHttpMetric(prefix string, buckets []float64) *PrometheusHttpMetric {
+	phm := PrometheusHttpMetric{
+		Prefix: prefix,
+		ClientConnected: promauto.NewGauge(prometheus.GaugeOpts{
+			Name: prefix + "_client_connected",
+			Help: "Number of active client connections",
+		}),
+		TransactionTotal: promauto.NewCounterVec(prometheus.CounterOpts{
+			Name: prefix + "_requests_total",
+			Help: "total HTTP requests processed",
+		}, []string{"code", "method"},
+		),
+		ResponseTimeHistogram: promauto.NewHistogramVec(prometheus.HistogramOpts{
+			Name:    prefix + "_response_time",
+			Help:    "Histogram of response time for handler",
+			Buckets: buckets,
+		}, []string{"handler", "method"}),
+	}
+
+	return &phm
+}
+
+func (phm *PrometheusHttpMetric) WrapHandler(handlerLabel string, handlerFunc http.HandlerFunc) http.Handler {
+	handle := http.HandlerFunc(handlerFunc)
+	wrappedHandler := promhttp.InstrumentHandlerInFlight(phm.ClientConnected,
+		promhttp.InstrumentHandlerCounter(phm.TransactionTotal,
+			promhttp.InstrumentHandlerDuration(phm.ResponseTimeHistogram.MustCurryWith(prometheus.Labels{"handler": handlerLabel}),
+				handle),
+		),
+	)
+	return wrappedHandler
+}
+
+func myHandler(w http.ResponseWriter, r *http.Request) {
+	cost := r.FormValue("cost")
+	val, err := strconv.ParseFloat(cost, 64)
+	if err != nil {
+		http.Error(w, "Fail to convert cost as float value", 500)
+		return
+	}
+
+	sleep := time.Duration(val*1e+9) * time.Nanosecond
+	time.Sleep(sleep)
+	fmt.Fprintf(w, "Time spend for this request: %.2f", sleep.Seconds())
+}
+
+func main() {
+	phm := InitPrometheusHttpMetric("myapp", prometheus.LinearBuckets(0, 5, 20))
+
+	http.Handle("/metrics", promhttp.Handler())
+	http.Handle("/service", phm.WrapHandler("myhandler", myHandler))
+
+	port := os.Getenv("LISTENING_PORT")
+
+	if port == "" {
+		port = "8080"
+	}
+	log.Printf("listening on port:%s", port)
+
+	err := http.ListenAndServe(":"+port, nil)
+	if err != nil {
+		log.Fatalf("Failed to start server:%v", err)
+	}
+}
+```
+
+
+- check it
+
+```bash
+# test run it with some random curl command to populate the Prometheus metrics
+$ curl localhost:8080/service?cost=0.2
+Time spend for this request: 0.20
+
+
+# check the metrics by accessing the URL and grepping only the prefix of `myapp`
+$ curl localhost:8080/metrics | grep myapp
+# HELP myapp_client_connected Number of active client connections
+# TYPE myapp_client_connected gauge
+myapp_client_connected 0.0
+# HELP myapp_requests_total total HTTP requests processed
+# TYPE myapp_requests_total counter
+myapp_requests_total{code="200",method="get"} 1.0
+# HELP myapp_response_time Histogram of response time for handler
+# TYPE myapp_response_time histogram
+myapp_response_time_bucket{handler="myhandler",method="get",le="0.0"} 0.0
+```
+
+
+#### Deploy into Kubernetes
+
+```bash
+# Use the multi-stage build Dockerfile to build the docker image.
+FROM golang:alpine AS builder
+RUN apk update && apk add --no-cache git
+COPY src $GOPATH/src/zhiminwen/hpasimulator
+WORKDIR $GOPATH/src/zhiminwen/hpasimulator
+RUN go get -d -v
+RUN go build -o /tmp/simulator *.go
+
+FROM alpine
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup && mkdir -p /app
+COPY --from=builder /tmp/simulator /app
+RUN chmod a+rx /app/simulator
+
+USER appuser
+WORKDIR /app
+ENV LISTENING_PORT 8080
+
+CMD ["./simulator"]
+```
+
+```yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hpa-sim
+  labels:
+    app: hpa-sim
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: hpa-sim
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hpa-sim
+  labels:
+    app: hpa-sim
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hpa-sim
+  template:
+    metadata:
+      labels:
+        app: hpa-sim
+    spec:
+      containers:
+      - name: hpa-sim
+        image: zhiminwen/hpa-sim:v1
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: LISTENING_PORT
+            value: "8080"
+```
+
+##### Scrape Metrics from Prometheus
+
+1. Prometheus using the pull method to bring in the metrics.
+2. Need to configure Prometheus to scrape the app for the custom metrics.
+
+couple of ways to scrape the custom metrics:
+
+- use the default `kubernetes-pods` job which will scape the pod that has the annotation of
+
+```yml
+prometheus.io/scrape: true for enabling the scraping
+prometheus.io/path: If the metrics path is not `/metrics` override this.
+prometheus.io/port: Specify the non-default port other than 9090
+```
+
+- Updating the Prometheus config YAML file.
+  - to have more control over the scraping job on the frequency and labeling.
+  - create a dedicate job for the custom metrics.
+
+```bash
+kubectl get cm monitoring-prometheus \
+  -n kube-system \
+  -o jsonpath='{.data.prometheus\.yml }' > prom.yaml
+```
+
+```yml
+  - job_name: hpa-sim
+    scrape_interval: 10s
+    kubernetes_sd_configs:
+      - role: pod
+    static_configs:
+      - targets:
+        - "hpa-sim.default:80"
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_label_app]
+        action: keep
+        regex: hpa-sim
+
+      - source_labels: [__address__]
+        action: replace
+        target_label: __address__
+        regex: ([^:]+)(?::\d+)?
+        replacement: ${1}:8080
+
+      - source_labels: [__meta_kubernetes_namespace]
+        action: replace
+        target_label: k8s_namespace
+
+      - source_labels: [__meta_kubernetes_pod_name]
+        action: replace
+        target_label: k8s_pod_name
+```
+
+`static_configs`
+- In terms of the target, one way is to use a static config
+
+
+`kubernetes_sd_configs`
+- Prometheus is running inside the cluster
+  - Prometheus can reach the app using its service name.
+- However, the scraping will be managed by the load balancing mechanism of the K8s service.
+  - If there are multiple pods running, not all the pods are scrapped.
+- use the **dynamic discovery feature for Kubenetes in Prometheus**.
+  - Set the role for kubernetes_sd_configs as `pod`.
+  - So the `scrape will target all the Kubernetes pods` that match the following criteria,
+
+`relabel_configs`
+- This means Prometheus will
+
+- before the actual scraping, we relabel the `__address__`
+  - to let it point to the container port for the handler, port 8080.
+
+- `ignore all the pods that don’t regex match to `hpa-sim`` for the label of `app`.
+  - Effectively, it `only scrapes the pods that labeled with `app=hpa-sim``.
+
+- `assign two extra labels` for the Prometheus metrics
+  - namely the namespace and the pod name instead of setting those labels inside the code.
+
+
+
+
+delete the old configMap and create it again to achieve the effect of updating.
+
+```bash
+kubectl delete cm monitoring-prometheus \
+  -n kube-system
+kubectl create cm monitoring-prometheus \
+  -n kube-system \
+  --from-file=prometheus.yml=prom.yaml
+```
+
+
+
+```bash
+curl http://192.168.0.226:8080/service?cost=0.2
+curl http://192.168.0.226:8080/metrics | grep myapp
+```
+
+---
+
+
+## Metric
+
+**标签管理**
+- Prometheus 在处理数据指标的过程中，包括【抓取的生命周期】和【标签的生命周期】。
+- 默认情况下，当 Prometheus加载 Target 实例完成后，这些Target时候都会包含一些默认的标签：这些标签将会告诉Prometheus如何从该Target实例中获取监控数据。
+
+![promethesu-life](https://i.imgur.com/xydP0mm.png)
+
+
+
+**标签配置**
+
+Prometheus通过标签可以实现查询过滤，并且还支持重新标签实现动态生成标签、过滤、删除无用标签等灵活配置。
+
+- 在采集数据之前可以使用relabel_configs进行重新标记，
+- 存储数据之前可以使用metric_relabel_configs重新标记。
+
+两种重新打标签的方式都支持以下动作：
+
+- replace：默认动作，将匹配到的标签内容做替换
+- keep：通过正则匹配，仅保留正则匹配到的标签
+- drop：通过正则匹配，删除正则匹配到的标签
+- labeldrop：删除指定标签，比如一些默认标签并不需要，可以用该动作删除
+- labelkeep：仅保留指定标签
+
+
+
+---
+
+## CONFIGURATION
+
+> https://prometheus.io/docs/prometheus/latest/configuration/configuration/
+
+> https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config
+
+`scrape_config:`
+- A scrape_config section specifies a set of targets and parameters describing how to scrape them.
+- In the general case, one scrape configuration specifies a single job. In advanced configurations, this may change.
+
+- `Targets` may be statically configured via the `static_configs` parameter or dynamically discovered using one of the supported `service-discovery` mechanisms.
+
+- Additionally, `relabel_configs` allow advanced modifications to any target and its labels before scraping.
+
+
+
+### metric_relabel_configs
+
+Prometheus 从数据源拉取数据后，会对原始数据进行编辑
+
+其中 metric_relabel_configs是 Prometheus 在保存数据前的最后一步标签重新编辑（relabel_configs）。
+- 所以哪怕将 metric_relabel_configs模块放在 job_name模块的最前端，Prometheus 解析编辑文件后，也会将 metric_relabel_configs放在最后。
+
+
+metric_relabel_configs 模块和 relabel_config 模块很相似。
+
+metric_relabel_configs一个很常用的用途：将监控不需要的数据，直接丢掉，不在Prometheus 中保存。
+- 删除不必要的指标。
+- 从指标中删除敏感或不需要的标签。
+- 添加、编辑或者修改指标的标签值或者标签格式。
+- 一个用处是屏蔽太昂贵的时序数据;
+
+
+**删除不需要的指标(metric)**
+- prometheus 默认会将所有拉取到的 metrics 都写入自己的存储中。
+- 如果某些 metrics 对并没有太多意义，可以设置直接丢掉，减少磁盘空间的浪费。
+- ‘node_netstat_Icmp_OutMsgs’ 指标数据。
+
+```yml
+  metric_relabel_configs:
+   - source_labels: [ __name__ ]
+     regex: 'node_netstat_Icmp_OutMsgs'
+     action: drop
+```
+
+使用 `source_labels` 参数选择要要操作的指标，并且还需要一组标签名称。
+- 示例中使用 `__name__` 标签，此标签是标识指标名称的预留标签。
+- 参考上面的配置，可以对指标(metric) 进行添加，删除，重命名等操作。
+
+
+
+**修改指标(metric) 中的标签(label)**
+
+- 如果使用 prometheus 监控 Kubernetes 运行状态；应该会遇到，在一个 query 中结合一个以上的`job_name(metric_source)`的情况。
+- 不同的 job_name 中 metric 的 label 命名可能不相同。
+  - 比如：pod的名称可以使用`pod`或者`pod_name` 这两个 label 记录。
+  - 如果相同含义的label，名称却不相同；对query的编写就很困难了。
+  - 没有在PromQL 中找到类似 SQL 语句中的 as 的功能的关键词和方法。
+- 这样的话，正确的解决思路应该是
+  - 在 Prometheus 拉取数据后，保存数据前；
+  - 将 label 的名称进行重写；
+  - 保证相同含义的label 有相同的名称。
+
+```yml
+metric_relabel_configs:
+  - source_labels: [pod]
+    action: replace
+    regex: (.+)
+    separator: ;
+    replacement: $1
+    target_label: pod_name
+  - source_labels: [container]
+    action: replace
+    separator: ;
+    regex: (.+)
+    replacement: $1
+    target_label: container_name
+```
+
+- 如上，将指定 job_name 中，所有的 metrics 中含有名为`pod`和`container`名称的 label 分别拷贝到名为`pod_name`，`container_name`的label中。
+- 注意：如果metric 的 label的名称包含了`pod`和`container`关键词，但是不等于；则不会处理此label。
+
+
+**删除标签**
+- 删除标签通常用于隐藏敏感信息或者简化时间序列。
+
+```yml
+  metric_relabel_configs:
+  - regex: 'kernelVersion'
+    action: labeldrop
+```
+
+- 为了删除标签，指定了一个正则表达式，然后指定删除标签的操作labeldrop。
+- 这将删除与正在表达式匹配的所有标签。
+
+
+```bash
+# 查询指标
+curl 'http://localhost:9090/api/v1/query?' --data-urlencod 'query=prometheus_engine_queries_concurrent_max'
+# {
+# 	"status": "success",
+# 	"data": {
+# 		"resultType": "vector",
+# 		"result": [{
+# 			"metric": {
+# 				"Label": "value1",
+# 				"__name__": "prometheus_engine_queries_concurrent_max",
+# 				"instance": "localhost:9090",
+# 				"job": "prometheus",
+# 				"userLabel1": "value1",
+# 				"userLabel2": "value2"
+# 			},
+# 			"value": [1587829220.743, "20"]
+# 		}]
+# 	}
+# }
+
+
+# 删除指标的标签
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+rule_files:
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          userLabel1: value1
+          userLabel2: value2
+    metric_relabel_configs:
+      - regex: userLabel1
+        action: labeldrop
+
+
+# 重载配置后查询
+curl 'http://localhost:9090/api/v1/query?' --data-urlencod 'query=prometheus_engine_queries_concurrent_max'
+# {
+# 	"status": "success",
+# 	"data": {
+# 		"resultType": "vector",
+# 		"result": [{
+# 			"metric": {
+# 				"__name__": "prometheus_engine_queries_concurrent_max",
+# 				"instance": "localhost:9090",
+# 				"job": "prometheus",
+# 				"userLabel2": "value2" //删除了userLabel1标签
+# 			},
+# 			"value": [1587829524.788, "20"]
+# 		}]
+# 	}
+# }
+```
+
+---
+
+### relabel_config
+
+- relabel_config 发生在采集之前，metric_relabel_configs 发生在采集之后，合理搭配可以满足很多场景的配置。
+
+- relabel_configs drop动作，那么将不会收集这个指标。
+- metric_relabel_configs 使用的时候指标已经采集过了
+- 所以metric_relabel_configs相对来说，更加昂贵，毕竟指标已经采集了。
+- metric_relabel_configs还可以不用指定source_labels
+
+
+---
 ## monitoring with Prometheus
 
 
@@ -1293,7 +1826,7 @@ go get github.com/prometheus/client_golang/prometheus/promhttp
 - You can use the [`prometheus/promhttp`](https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp) library's HTTP [`Handler`](https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#Handler) as the handler function.
 
 ```go
-// This minimal application, for example, would expose the default metrics for Go applications via `http://localhost:2112/metrics`:
+// This minimal application, for example, would expose the default metrics for Go aplications via `http://localhost:2112/metrics:
 package main
 import (
 	"net/http"
@@ -1409,6 +1942,698 @@ The api/prometheus directory contains the client for the Prometheus HTTP API. It
 
 ## go client
 
+
+
+
+### 模型
+
+Prometheus 所有采集的监控数据均以指标（metric）的形式保存在内置的时间序列数据库当中（TSDB）：
+- 属于同一指标名称，同一标签集合的、有时间戳标记的数据流。
+- 除了存储的时间序列，Prometheus 还可以根据查询请求产生临时的、衍生的时间序列作为返回结果。
+- 在时间序列中的每一个点称为一个样本（sample）
+
+
+样本由以下三部分组成
+- 指标（metric）：指标名称和描述当前样本特征的 labelsets
+- 时间戳（timestamp）：一个精确到毫秒的时间戳
+- 样本值（value）： 一个 folat64 的浮点型数据表示当前样本的值
+
+
+
+### metric 指标
+
+四种类型有实现的函数赋值，常用
+
+```go
+set（）
+WithLabelValues().set()
+```
+
+
+```py
+metrics name {(label)key-value} float64 value
+
+# HELP go_gc_duration_seconds A summary of the GC invocation durations.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0.5"} 0.000107458
+go_gc_duration_seconds_count 18
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 107
+```
+
+`prometheus` 包为了方便client library的使用提供了四种核心的数据类型：
+- `Counter`, `Gauge`, `Histogram` 和 `Summary` .
+- 但这些类型只是在客户端库（客户端可以根据不同的数据类型调用不同的 API 接口）和在线协议中，
+- 实际在 Prometheus server 中并不对指标类型进行区分，而是简单地把这些指标统一视为无类型的时间序列。
+
+
+> [Prometheus docs](https://prometheus.io/docs/concepts/metric_types/) : 对这四种度量标准类型的更全面的描述.
+
+除了四种基本的数据指标类型外,Prometheus 数据模型的一个非常重要的部分是沿着称为 `标签` 的维度对数据指标样本进行划分,这就产生了数据指标向量(`metric vectors`).
+
+#### 数据指标类型
+
+数据类型：
+- **Counter**
+  - <font color=red> 收集事件次数等单调递增的数据 </font>
+  - 好比计数器,用于统计类似于：CPU时间,API访问总次数,异常发生次数等等场景.
+  - 代表一种样本数据单调递增的指标，即只增不减。除非监控系统发生了重置。
+    - 例如，使用 counter 类型的指标来表示服务的请求数、已完成的任务数、错误发生的次数等。
+    - 不要将 counter 类型应用于样本数据非单调递增的指标，例如：当前运行的进程数量（应该用 Gauge 类型）。
+
+- **Gauge**
+  - <font color=red> 收集当前的状态，可增可减，比如数据库连接数 </font>
+  - `计量器` `仪表盘`
+  - 代表一种样本数据可以任意变化的指标，即可增可减。
+  - Gauge 通常用于像温度或者内存使用率这种指标数据，也可以表示能随时增加或减少的`总数`，
+  - 例如：当前并发请求的数量。
+
+- **Histogram**
+  - <font color=red> 收集随机正态分布数据，比如响应延迟 </font>
+  - 柱状图,更多的是用于统计一些数据分布的情况,用于计算在一定范围内的分布情况,同时还提供了度量指标值的总和.
+  - 在大多数情况下人们都倾向于使用某些量化指标的平均值，例如 CPU 的平均使用率、页面的平均响应时间。
+    - 这种方式的问题很明显
+      - 以系统 API 调用的平均响应时间为例：
+      - 如果大多数 API 请求都维持在 100ms 的响应时间范围内，而个别请求的响应时间需要 5s，
+      - 那么就会导致某些 WEB 页面的响应时间落到中位数的情况，而这种现象被称为长尾问题。
+    - 为了区分是平均的慢还是长尾的慢，最简单的方式就是按照请求延迟的范围进行分组。例如
+      - 统计延迟在 0~10ms 之间的请求数有多少而 10~20ms 之间的请求数又有多少。
+      - 通过这种方式可以快速分析系统慢的原因。
+  - Histogram
+    - 在一段时间范围内对数据进行采样（通常是请求持续时间或响应大小等），
+    - 并将其计入可配置的存储桶（bucket）中，
+    - 后续可通过指定区间筛选样本，也可以统计样本总数，
+    - 最后一般将数据展示为直方图。
+  - Histogram 类型的样本会提供三种指标（假设指标名称为 <metrices_name>）：
+    - 样本的值分布在 bucket 中的数量
+      - 命名为 `<metrices_name>_bucket{le=`<上边界>`}`。
+      - 解释的更通俗易懂一点，这个值表示指标值小于等于上边界的所有样本数量。
+      - **请求响应时间 <=0.005 秒 的请求次数**。
+    - 所有样本值的大小总和
+      - 命名为 `<metrices_name>_sum`
+      - **所有请求响应时间总和**
+    - 样本总数
+      - 命名为 `<metrices_name>_count`。
+      - 值和 <metrices_name>_bucket{le=`+Inf`} 相同。
+      - **所有请求次数**
+
+- **Summary**
+  - <font color=red> 收集随机正态分布数据，和 Histogram 是类似的 </font>
+  - 和Histogram柱状图比较类似,主要用于计算在一定时间窗口范围内度量指标对象的总数以及所有对量指标值的总和.
+  - 与 Histogram 类型类似，用于表示一段时间内的数据采样结果（通常是请求持续时间或响应大小等）
+    - 但它直接存储了分位数（通过客户端计算，然后展示出来），而不是通过区间来计算。
+  - Summary 类型的样本也会提供三种指标（假设指标名称为 ）：
+    - 样本值的分位数分布情况
+      - 命名为 `<metrices_name>{quantile=`0.5`}`
+      - **请求中有 50% 的请求响应时间值是**
+    - 所有样本值的大小总和
+      - 命名为 `<metrices_name>_sum`
+      - **所有请求响应时间总和**
+    - 样本总数
+      - 命名为 `<metrices_name>_count`
+      - **请求的总数**
+
+Histogram 与 Summary 的异同：
+- Histogram 和 Summary 都是为了能够解决这样问题的存在，通过 Histogram 和 Summary 类型的监控指标，可以快速了解监控样本的分布情况。
+- 它们都包含了 <metrices_name>_sum 和 <metrices_name>_count 指标
+- Histogram 需要通过 <metrices_name>_bucket 来计算分位数，而 Summary 则直接存储了分位数的值。
+
+简单理解就是
+- Counter对数据只增不减，
+- Gauage可增可减，
+- Histogram,Summary提供跟多的统计信息。
+
+
+pro将所有数据保存为timeseries data，用 metric name 和 label 区分
+- label 是在 metric name 上的更细维度的划分
+  - 其中的每一个实例是由一个float64和timestamp组成
+  - 只不过timestamp是隐式加上去的，有时候不会显示出来
+- 如下面所示
+  - `go_gc_duration_seconds` 是 metrics name
+  - `quantile="0.5"` 是 key-value pair 的 label
+  - 而后面的值是 float64 value
+  - 注释部分 `# TYPE go_gc_duration_seconds summary` 标识出这是一个summary对象。
+
+
+```py
+
+metrics name {(label)key-value} float64 value
+
+# HELP go_gc_duration_seconds A summary of the GC invocation durations.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0.5"} 0.000107458
+go_gc_duration_seconds{quantile="0.75"} 0.000200112
+go_gc_duration_seconds{quantile="1"} 0.000299278
+go_gc_duration_seconds_sum 0.002341738
+go_gc_duration_seconds_count 18
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 107
+```
+
+
+#### 数据指标向量
+
+每种标准数据结构还对应了 Vec 结构
+- 分别是 `CounterVec`, `GaugeVec`, `HistogramVec` 和 `SummaryVec` .
+- 通过 Vec 可以简洁的定义一组相同性质的 Metric，在采集数据的时候传入一组自定义的 Label/Value 获取具体的 Metric（Counter/Gauge/Histogram/Summary），最终都会落实到基本的数据结构上
+
+
+
+
+
+数据指标向量的方法如下:
+
+```go
+Collect(ch chan<- Metric)  // 实现 Collector 接口的 Collect() 方法
+CurryWith(labels Labels)  // 返回带有指定标签的向量指标及可能发生的错误.多用于 promhttp 包中的中间件.
+Delete(labels Labels)  // 删除带有指定标签的向量指标.如果删除了指标,返回 true
+DeleteLabelValues(lvs ...string)  // 删除带有指定标签和标签值的向量指标.如果删除了指标,返回 true
+Describe(ch chan<- *Desc)  // 实现 Collector 接口的 Describe() 方法
+GetMetricWith(labels Labels)  // 返回带有指定标签的数据指标及可能发生的错误
+GetMetricWithLabelValues(lvs ...string)  // 返回带有指定标签和标签值的数据指标及可能发生的错误
+MustCurryWith(labels Labels)  // 与 CurryWith 相同,但如果出现错误,则引发 panics
+Reset()  // 删除此指标向量中的所有数据指标
+With(labels Labels)  // 与 GetMetricWithLabels 相同,但如果出现错误,则引发 panics
+WithLabelValues(lvs ...string)  // 与 GetMetricWithLabelValues 相同,但如果出现错误,则引发 panics
+```
+
+要创建 `Metrics` 及其向量版本的实例
+- 您需要一个合适的 `…Opts` 结构,即 `GaugeOpts`, `CounterOpts`, `SummaryOpts` 或 `HistogramOpts` .
+
+结构体如下:
+
+```go
+type Opts struct {
+    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
+	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
+    Namespace string
+    Subsystem string
+    Name      string
+    // Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
+    Help string
+    // ConstLabels 用于将固定标签附加到该指标.很少使用.
+    ConstLabels Labels
+}
+
+// 其中 GaugeOpts, CounterOpts 实际上均为 Opts 的别名
+type CounterOpts Opts
+type GaugeOpts Opts
+
+type HistogramOpts struct {
+    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
+	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
+    Namespace string
+    Subsystem string
+    Name      string
+    //  Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
+    Help string
+    // ConstLabels 用于将固定标签附加到该指标.很少使用.
+    ConstLabels Labels
+    // Buckets 定义了观察值的取值区间.切片中的每个元素值都是区间的上限,元素值必须按升序排序.
+    // Buckets 会隐式添加 `+Inf` 值作为取值区间的最大值
+    // 默认值是 DefBuckets =  []float64{.005, .01, .025, .05, .1, .25, .5, 1, 2.5, 5, 10}
+    Buckets []float64
+}
+
+type SummaryOpts struct {
+    // Namespace, Subsystem, and Name  是 Metric 名称的组成部分
+	// (通过 "_" 将这些组成部分连接起来),只有 Name 是必需的.
+    Namespace string
+    Subsystem string
+    Name      string
+    //  Help 提供 Metric 的信息.具有相同名称的 Metric 必须具有相同的 Help 信息
+    Help string
+    // ConstLabels 用于将固定标签附加到该指标.很少使用.
+    ConstLabels Labels
+    // Objectives 定义了分位数等级估计及其各自的绝对误差.
+	// 如果 Objectives[q] = e，则 q 报告的值将是 [q-e, q + e]之间某个 φ 的 φ 分位数
+    // 默认值为空 map,表示没有分位数的摘要
+    Objectives map[float64]float64
+    // MaxAge 定义观察值与摘要保持相关的持续时间.必须是正数.默认值为 DefMaxAge = 10 * time.Minute
+    MaxAge time.Duration
+    // AgeBuckets 用于从摘要中排除早于 MaxAge 的观察值的取值区间.默认值为 DefAgeBuckets = 5
+    AgeBuckets uint32
+    // BufCap 定义默认样本流缓冲区大小.默认值为 DefBufCap = 500.
+    BufCap uint32
+}
+```
+
+注意:
+- `Counter`, `Gauge`, `Histogram`, `Summary` 都继承了 `Metric` 和 `Collector` 接口,其本身是接口类型.
+- `CounterVec`, `GaugeVec`, `HistogramVec`, `SummaryVec` 均继承自 `metricVec` 结构体,其本身的是结构体,而它们只实现了 `Collector` 接口.
+
+
+Counter 和 Gauge
+- Gauge 和 Counter 基本实现上看是一个进程内共享的浮点数，基于 value 结构实现，而 Counter 和 Gauge 仅仅封装了对这个共享浮点数的各种操作和合法性检查逻辑。
+
+
+Histogram
+- Histogram 实现了 Observer 接口，用来获取客户端状态初始化（重启）到某个时间点的采样点分布，监控数据常需要服从正态分布。
+
+Summary
+- Summary 是标准数据结构中最复杂的一个，用来收集服从正态分布的采样数据。
+- 在 Go 客户端 Summary 结构和 Histogram 一样，都实现了 Observer 接口
+
+
+---
+
+#### state metric 定义指标
+
+```go
+// 引入另一个依赖库
+go get github.com/prometheus/client_golang/prometheus
+
+// 下面先来定义了两个指标数据，一个是Guage类型， 一个是Counter类型。分别代表了CPU温度和磁盘失败次数统计，使用上面的定义进行分类。
+cpuTemp = prometheus.NewGauge(
+  prometheus.GaugeOpts{
+    Name: "cpu_temperature_celsius",
+    Help: "Current temperature of the CPU.",}
+)
+hdFailures = prometheus.NewCounterVec(
+  prometheus.CounterOpts{
+    Name: "hd_errors_total",
+    Help: "Number of hard-disk errors.",
+  },
+  []string{"device"},
+)
+totalScrapes= prometheus.NewCounter(
+  prometheus.CounterOpts{
+    Namespace: namespace,
+    Name:      "exporter_scrapes_total",
+    Help:      "Current total redis scrapes.",}
+)
+// 这里还可以注册其他的参数，比如上面的磁盘失败次数统计上，可以同时传递一个device设备名称进去，这样采集的时候就可以获得多个不同的指标。每个指标对应了一个设备的磁盘失败次数统计。
+```
+
+---
+
+#### registry metric 注册指标
+
+##### 默认方式
+
+```go
+//statement
+ABC := prometheus.NewGaugeVec(
+  prometheus.GaugeOpts{
+    Name: zz,
+    Help: zz,
+  },
+  zz{zzz}
+)
+ABC := prometheus.NewGauge(
+  prometheus.GaugeOpts{
+    Name: zz,
+    Help: zz,
+})
+
+
+ABC.With(prometheus.Labels{"zz":zz,}).Set(zz)
+ABC.Set(zz)
+// Metrics have to be registered to be exposed:
+prometheus.MustRegister(ABC)
+```
+
+`prometheus.MustRegister()`
+
+- 使用prometheus.MustRegister是将数据直接注册到Default Registry
+- 这个Default Registry不需要额外的任何代码就可以将指标传递出去。
+- 注册后既可以在程序层面上去使用该指标了，这里使用之前定义的指标提供的API（Set和With().Inc）去改变指标的数据内容
+
+
+
+```go
+var {
+  //statement
+  proxyTodayTrafficIn := prometheus.NewGaugeVec(
+    prometheus.GaugeOpts{
+        Name: "",
+        Help: "The today trafficin of proxy.",
+    },
+    []string{"type","laststarttime","lastclosetime"}
+  )
+
+  serverBindPort := prometheus.NewGauge(prometheus.GaugeOpts{
+      Name: "frps_server_bind_port",
+      Help: "The port of server frps.",
+  })
+}
+
+//registry
+func init() {
+  // Metrics have to be registered to be exposed:
+  prometheus.MustRegister(proxyTodayTrafficIn)
+  prometheus.MustRegister(serverBindPort)
+  prometheus.MustRegister(cpuTemp)
+  prometheus.MustRegister(hdFailures)
+}
+
+//get value
+func main() {
+
+  proxyTodayTrafficIn.With(
+    prometheus.Labels{
+      "type":v.Type,
+      "laststarttime":v.LastStartTime,
+      "lastclosetime":v.LastCloseTime
+    }
+  ).Set(float64(v.TodayTrafficIn))
+
+  serverBindPort.Set(float64(cfg.BindPort))
+
+  cpuTemp.Set(65.3)
+  hdFailures.With(prometheus.Labels{"device":"/dev/sda"}).Inc()
+
+  // The Handler function provides a default handler to expose metrics
+  // via an HTTP server. "/metrics" is the usual endpoint for that.
+  http.Handle("/metrics", promhttp.Handler())
+  log.Fatal(http.ListenAndServe(":8080", nil))
+}
+```
+
+`Set()`
+
+`With().Inc()`
+- With函数是传递到之前定义的label=”device”上的值，也就是生成指标类似于
+
+```go
+cpu_temperature_celsius 65.3
+hd_errors_total{"device"="/dev/sda"} 1
+```
+
+> 当然main函数中的方式是有问题的，
+> 这样这个指标仅仅改变了一次，不会随着下次采集数据的时候发生任何变化，
+> 希望的是每次执行采集的时候，程序都去自动的抓取指标并将数据通过http的方式传递给。
+
+
+
+---
+
+##### 自定义 exporter / 结构体
+
+下面就涉及到自定义结构体，
+- 根据上面的原理，需要重自定义的结构体中获取到两个结构体的值
+
+1. counter数据采集实例，重写collecter
+   1. 下面是一个采集Counter类型数据的实例，
+   2. 实现了一个自定义的，满足采集器(Collector)接口的结构体
+   3. 并手动注册该结构体后，使其每次查询的时候自动执行采集任务。
+
+```go
+// 采集器Collector接口的实现
+type Collector interface {
+    // 用于传递所有可能的指标的定义描述符
+    // 可以在程序运行期间添加新的描述，收集新的指标信息
+    // 重复的描述符将被忽略。两个不同的Collector不要设置相同的描述符
+    Describe(chan<- *Desc)
+
+    // Prometheus的注册器调用Collect执行实际的抓取参数的工作，
+    // 并将收集的数据传递到Channel中返回
+    // 收集的指标信息来自于Describe中传递，可以并发的执行抓取工作，但是必须要保证线程的安全。
+    Collect(chan<- Metric)
+}
+
+
+// 了解了接口的实现后，就可以写自己的实现了
+// 先定义 结构体
+// 这是一个集群的指标采集器，每个集群都有自己的Zone, 代表集群的名称。
+// 另外两个是保存的采集的指标。
+type ClusterManager struct {
+    Zone         string
+    OOMCountDesc *prometheus.Desc
+    RAMUsageDesc *prometheus.Desc
+}
+
+
+// 创建结构体及对应的指标信息
+// NewDesc参数:
+// 第一个为指标的名称，
+// 第二个为帮助信息，显示在指标的上面作为注释，
+// 第三个是定义的label名称数组，
+// 第四个是定义的Labels
+func NewClusterManager(zone string) *ClusterManager {
+    return &ClusterManager{
+        Zone: zone,
+        OOMCountDesc: prometheus.NewDesc(
+            "clustermanager_oom_crashes_total",
+            "Number of OOM crashes.",
+            []string{"host"},
+            prometheus.Labels{"zone": zone},
+        ),
+        RAMUsageDesc: prometheus.NewDesc(
+            "clustermanager_ram_usage_bytes",
+            "RAM usage as reported to the cluster manager.",
+            []string{"host"},
+            prometheus.Labels{"zone": zone},
+        ),
+    }
+}
+
+// 实现一个采集工作,放到了 ReallyExpensiveAssessmentOfTheSystemState 函数中实现，
+// 每次执行的时候，返回一个按照主机名作为键采集到的数据
+// 两个返回值分别代表了 OOM错误计数，和RAM使用指标信息。
+func (c *ClusterManager) ReallyExpensiveAssessmentOfTheSystemState() (
+    oomCountByHost map[string]int, ramUsageByHost map[string]float64,
+) {
+    oomCountByHost = map[string]int{
+        "foo.example.org": int(rand.Int31n(1000)),
+        "bar.example.org": int(rand.Int31n(1000)),
+    }
+    ramUsageByHost = map[string]float64{
+        "foo.example.org": rand.Float64() * 100,
+        "bar.example.org": rand.Float64() * 100,
+    }
+    return
+}
+
+
+// Collect函数将执行抓取函数并返回数据，
+// 返回的数据传递到channel中，并且传递的同时绑定原先的指标描述符。以及指标的类型（一个Counter和一个Guage）
+func (c *ClusterManager) Collect(ch chan<- prometheus.Metric) {
+    oomCountByHost, ramUsageByHost := c.ReallyExpensiveAssessmentOfTheSystemState()
+    for host, oomCount := range oomCountByHost {
+        ch <- prometheus.MustNewConstMetric(
+            c.OOMCountDesc, // 指标描述符
+            prometheus.CounterValue, // 指标类型
+            float64(oomCount), host,
+        )
+    }
+    for host, ramUsage := range ramUsageByHost {
+        ch <- prometheus.MustNewConstMetric(
+            c.RAMUsageDesc,
+            prometheus.GaugeValue,
+            ramUsage, host,
+        )
+    }
+}
+// 实现Describe接口，传递指标描述符到channel
+// Describe simply sends the two Descs in the struct to the channel.
+func (c *ClusterManager) Describe(ch chan<- *prometheus.Desc) {
+    ch <- c.OOMCountDesc
+    ch <- c.RAMUsageDesc
+}
+
+
+// 执行主程序
+func main() {
+    workerDB := NewClusterManager("db")
+    workerCA := NewClusterManager("ca")
+
+    // Since we are dealing with custom Collector implementations, it might
+    // be a good idea to try it out with a pedantic registry.
+    reg := prometheus.NewPedanticRegistry()
+    reg.MustRegister(workerDB)
+    reg.MustRegister(workerCA)
+
+    // 如果直接执行上面的参数的话，不会获取任何的参数，
+    // 因为程序将自动推出，我们并未定义http接口去暴露数据出来，
+    // 因此数据在执行的时候还需要定义一个httphandler来处理http请求。
+
+
+    // prometheus.Gatherers用来定义一个采集数据的收集器集合，
+    // 可以merge多个不同的采集数据到一个结果集合，
+    // 这里我们传递了缺省的 DefaultGatherer ，所以他在输出中也会包含go运行时指标信息。
+    // 同时包含reg是我们之前生成的一个注册对象，用来自定义采集数据。
+    gatherers := prometheus.Gatherers{
+        prometheus.DefaultGatherer,
+        reg,
+    }
+
+    // promhttp.HandlerFor()函数
+    // 传递之前的Gatherers对象，并返回一个httpHandler对象，
+    // 这个httpHandler对象可以调用其自身的ServHTTP函数来接手http请求，并返回响应。
+    // 其中 promhttp.HandlerOpts 定义了采集过程中如果发生错误时，继续采集其他的数据。
+    h := promhttp.HandlerFor(
+        gatherers,
+        promhttp.HandlerOpts{
+            ErrorLog:      log.NewErrorLogger(),
+            ErrorHandling: promhttp.ContinueOnError,
+        })
+
+    http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
+        h.ServeHTTP(w, r)
+    })
+
+    log.Infoln("Start server at :8080")
+
+    if err := http.ListenAndServe(":8080", nil); err != nil {
+        log.Errorf("Error occur when start server %v", err)
+        os.Exit(1)
+    }
+
+}
+
+// 尝试刷新几次浏览器获取最新的指标信息
+// 每次刷新的时候，我们都会获得不同的数据，类似于实现了一个数值不断改变的采集器。当然，具体的指标和采集函数还需要按照需求进行修改，满足实际的业务需求。
+clustermanager_oom_crashes_total{host="bar.example.org",zone="ca"} 364
+clustermanager_oom_crashes_total{host="bar.example.org",zone="db"} 90
+clustermanager_oom_crashes_total{host="foo.example.org",zone="ca"} 844
+clustermanager_oom_crashes_total{host="foo.example.org",zone="db"} 801
+# HELP clustermanager_ram_usage_bytes RAM usage as reported to the cluster manager.
+# TYPE clustermanager_ram_usage_bytes gauge
+clustermanager_ram_usage_bytes{host="bar.example.org",zone="ca"} 10.738111282075208
+clustermanager_ram_usage_bytes{host="bar.example.org",zone="db"} 19.003276633920805
+clustermanager_ram_usage_bytes{host="foo.example.org",zone="ca"} 79.72085409108028
+clustermanager_ram_usage_bytes{host="foo.example.org",zone="db"} 13.041384617379178
+```
+
+
+
+
+2.
+
+```go
+func (s *结构体) Describe(ch chan<- *prometheus.Desc) {}
+// ----可见这个接口的实现需要将prometheus.Desc放倒channel中去
+
+func (s *结构体) Collect(ch chan<- prometheus.Metric) {}
+// ----可见这个接口的实现需要将prometheus.Metric放倒channel中去
+
+
+type Desc struct {
+    // fqName has been built from Namespace, Subsystem, and Name.
+    fqName string
+    // help provides some helpful information about this metric.
+    help string
+    // constLabelPairs contains precalculated DTO label pairs based on
+    // the constant labels.
+    constLabelPairs []*dto.LabelPair
+    // VariableLabels contains names of labels for which the metric
+    // maintains variable values.
+    variableLabels []string
+    // id is a hash of the values of the ConstLabels and fqName. This
+    // must be unique among all registered descriptors and can therefore be
+    // used as an identifier of the descriptor.
+    id uint64
+    // dimHash is a hash of the label names (preset and variable) and the
+    // Help string. Each Desc with the same fqName must have the same
+    // dimHash.
+    dimHash uint64
+    // err is an error that occured during construction. It is reported on
+    // registration time.
+    err error
+}
+
+type Metric interface {
+    // Desc returns the descriptor for the Metric. This method idempotently
+    // returns the same descriptor throughout the lifetime of the
+    // Metric. The returned descriptor is immutable by contract. A Metric
+    // unable to describe itself must return an invalid descriptor (created
+    // with NewInvalidDesc).
+    Desc() *Desc
+    // Write encodes the Metric into a "Metric" Protocol Buffer data
+    // transmission object.
+    //
+    // Metric implementations must observe concurrency safety as reads of
+    // this metric may occur at any time, and any blocking occurs at the
+    // expense of total performance of rendering all registered
+    // metrics. Ideally, Metric implementations should support concurrent
+    // readers.
+    //
+    // While populating dto.Metric, it is the responsibility of the
+    // implementation to ensure validity of the Metric protobuf (like valid
+    // UTF-8 strings or syntactically valid metric and label names). It is
+    // recommended to sort labels lexicographically. (Implementers may find
+    // LabelPairSorter useful for that.) Callers of Write should still make
+    // sure of sorting if they depend on it.
+    Write(*dto.Metric) error
+    // TODO(beorn7): The original rationale of passing in a pre-allocated
+    // dto.Metric protobuf to save allocations has disappeared. The
+    // signature of this method should be changed to "Write() (*dto.Metric,
+    // error)".
+}
+
+
+
+// 如何获取这两种值
+
+// 首先desc，每种数据类型都有一个desc函数可以直接获取，如下：
+name := fmt.Sprintf("%s_%s", namespace, metricMaps.Name)
+gaugeDescription := prometheus.NewGauge(
+    prometheus.GaugeOpts{
+        Name:      name,
+        Help:      metricMaps.Description,
+    },
+)
+ch <- gaugeDescription.Desc()
+
+// 还可以直接新建 new desc
+func NewDesc(fqName, help string, variableLabels []string, constLabels Labels) *Desc {}
+desc := prometheus.NewDesc(name, metricMaps.Description, constLabels, nil)
+
+
+
+
+// 再来看看metrics这个接口，找到其相应的结构体实现
+
+func MustNewConstMetric(
+  desc *Desc, valueType ValueType, value float64, labelValues ...string) Metric {}
+
+//channel
+ch <- prometheus.MustNewConstMetric(desc, vtype, value, labelValue...)
+
+
+
+第三种
+
+
+// 新建结构体，完成上面方法的使用，就可以了，如下：
+//set var
+name := fmt.Sprintf("%s_%s", namespace, metricMaps.Name)
+log.Debugf("counter name: %s", name)
+
+//deal Value
+value, err := dealValue(res[i])
+if err != nil {
+    log.Errorf("parse value error: %s",err)
+    break
+}
+log.Debugf("counter value: %s", value)
+
+//new desc
+desc := prometheus.NewDesc(name, metricMaps.Description, constLabels, nil)
+vtype := prometheus.CounterValue
+//channel
+ch <- prometheus.MustNewConstMetric(desc, vtype, value, labelValue...)
+```
+
+
+---
+
+
+
+
+---
+
+### Collector
+
+Collector 中 Describe 和 Collect 方法都是无状态的函数
+- 其中 Describe 暴露全部可能的 Metric 描述列表，在注册（Register）或注销（Unregister）Collector 时会调用 Describe 来获取完整的 Metric 列表，用以检测 Metric 定义的冲突，另外在 github.com/prometheus/client_golang/prometheus/promhttp 下的 Instrument Handler 中，也会通过 Describe 获取 Metric 列表，并检查 label 列表（InstrumentHandler 中只支持 code 和 method 两种自定义 label）；
+- 而通过 Collect 可以获取采样数据，然后通过 HTTP 接口暴露给 Prom Server。另外，一些临时性的进程，如批处理任务，可以把数据 push 到 Push Gateway，由 Push Gateway 暴露 pull 接口，此处不赘述。
+
+
+
 ### 自定义Collector
 
 - 更高阶的做法是使用Collector，go client Colletor只会在每次响应pro请求的时候才收集数据，并且需要每次显式传递变量的值，否则就不会再维持该变量，在pro也将看不到这个变量，
@@ -1521,10 +2746,24 @@ func main() {
 
 此时就可以去http://localhost:8888/metrics 看到传递过去的数据了。
 - 示例中定义了两个matrics, host和zone分别是其label。
-- pro client内部提供了几个Collector供我们使用参考
+- pro client内部提供了几个Collector供使用参考
   - 在源码包中可以找到go_collector.go, process_collecor.go, expvar_collector这三个文件的Collecor实现。
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
+
 
 ## Package
 
@@ -1624,10 +2863,9 @@ func main() {
 ```
 
 ---
----
 #### 自定义 Collectors 和常量指标
 
-`prometheus` 包提供了 `NewConstMetric()`, `NewConstHistogram()`, `NewConstSummary()` 及其各自的 `Must…` 版本的函数 “动态” 创建 `Metric` 实例.
+`prometheus` 包提供了 `NewConstMetric()`, `NewConstHistogram()`, `NewConstSummary()` 及其各自的 `Must…` 版本的函数 `动态` 创建 `Metric` 实例.
 - 其中 `NewConstMetric()` 函数用于创建仅以 float64 数据作为其值的数据指标类型对象,如 `Counter`, `Gauge` 及 `Untyped` 特殊类型对象. `Metric` 实例的创建在 `Collect()` 方法中进行.
 
 `prometheus` 包提供了 `NewDesc()` 函数创建用于描述以上 `Metric` 实例的 `Desc` 对象,其中主要包含 `Metric` 实例的名称与帮助信息.

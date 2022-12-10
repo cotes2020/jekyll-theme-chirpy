@@ -20,14 +20,7 @@ image:
   - [Dashboard](#dashboard)
   - [Alertmanager](#alertmanager)
   - [数据模型](#数据模型)
-
-
-- ref
-  - https://www.dockone.io/article/347688
-  - https://songjiayang.gitbooks.io/prometheus/content/introduction/what.html (cook book)
-  - https://www.cnblogs.com/cjsblog/p/11585145.html
-  - https://www.jianshu.com/p/0a4acb61ce35
-  - https://yunlzheng.gitbook.io/prometheus-book/parti-prometheus-ji-chu/quickstart/why-monitor  (cook book)
+  - [metric](#metric)
 
 
 ---
@@ -487,7 +480,75 @@ Prometheus基本上将所有数据存储为时间序列：属于同一指标和�
 - 虽然它还提供了观测值的总数和所有观测值的总和,但它计算了一个滑动时间窗口上的可配置分位数.
 
 
+---
 
+
+## metric
+
+
+```yaml
+
+
+- job_name: a
+
+  kubernetes_sd_configs:
+  - role: endpoints
+
+  relabel_configs:
+
+
+  - action: drop
+    source_labels: [__AA]
+    regex: X
+    # drop __AA when it = to X
+    # not show
+
+  - action: keep
+    source_labels:
+    - A
+    - B
+    - C
+    regex: 1;2;3
+    # change ABC to 123 seperatly
+    # not show
+
+  - action: labelmap
+    regex: _A_(.+)
+    # keep _A_123456 label without _A_ prefix
+    # show
+
+  - action: replace
+    source_labels: [__A]
+    target_label: A
+    # change label name from __A to A
+    # show
+
+  - action: replace
+    source_labels:
+    - __A__
+    - __B
+
+    regex: (https?) # value if exsiste
+    regex: (.+)     # .value
+
+    regex: ([^:]+)(?::\d+)?;(\d+)
+    replacement: $1:$2 # value1:value2
+
+    target_label: __A__
+    # change label name from __A__, __B to
+    # A:B
+    # https
+    # .value
+    # show
+
+
+  bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+  scheme: https
+  tls_config:
+    ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    insecure_skip_verify: true
+
+```
 
 
 
