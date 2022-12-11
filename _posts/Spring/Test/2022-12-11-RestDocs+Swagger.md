@@ -18,7 +18,7 @@ pin: false
 | 코드 가독성       |<span style="color:#008000">좋음</span>            |<span style="color:red">안좋음</span>
 
 
-# 첫 시도
+# 동시 적용 시도
  - 그냥 둘 다 한 프로젝트에 적용해봤다.
  - 오류 천국 -> 그냥은 사용 할 수 없었다.
 
