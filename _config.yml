@@ -21,6 +21,8 @@ timezone: Asia/Shanghai
 
 title: Chirpy                          # the main title
 
+sidebar_title:                         # the title in the sidebar (uses title if left blank)
+
 tagline: A text-focused Jekyll theme   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed

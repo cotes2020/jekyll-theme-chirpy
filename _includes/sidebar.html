@@ -22,7 +22,7 @@
     </div>
 
     <div class="site-title">
-      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <a href="{{ '/' | relative_url }}">{{ site.sidebar_title | default: site.title }}</a>
     </div>
     <div class="site-subtitle font-italic">{{ site.tagline }}</div>
 
