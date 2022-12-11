@@ -16,6 +16,8 @@ typora-root-url: ..
 ```shell
 // 换源
 npm config set registry https://registry.npm.taobao.org
+// 清空缓存
+npm cache clear --force
 // 自动补全（声明文件）
 npm install @types/screeps @types/lodash@3.10.1
 // 安装rollup
