@@ -1,12 +1,16 @@
 #  The contact options.
 
 -
-  type: github
-  icon: 'fab fa-github'
--
   type: email
   icon: 'fas fa-envelope'
   noblank: true            # open link in current tab
+-
+  type: github
+  icon: 'fab fa-github'
+-
+  type: linkedin
+  icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
+  url:  'https://www.linkedin.com/in/jonginkim'                  # Fill with your Linkedin homepage
 -
   type: rss
   icon: 'fas fa-rss'
@@ -17,10 +21,6 @@
 #   type: mastodon
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your mastodon account page
-# -
-#   type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
 # -
 #   type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
