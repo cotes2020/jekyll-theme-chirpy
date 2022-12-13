@@ -95,6 +95,19 @@ $ docker run -it --rm \
     jekyll serve
 ```
 
+If you encounter with the following error at docker
+```console
+fatal: detected dubious ownership in repository at
+```
+Please use the following command
+```console
+$ docker run -it --rm \
+    --volume="$PWD:/srv/jekyll" \
+    -p 4000:4000 jekyll/jekyll \
+    sh -c "git config --system --add safe.directory '*' && \
+    jekyll serve"
+```
+
 After a while, the local service will be published at _<http://127.0.0.1:4000>_.
 
 ## Deployment
@@ -139,6 +152,20 @@ $ docker run -it --rm \
     --volume="$PWD:/srv/jekyll" \
     jekyll/jekyll \
     jekyll build
+```
+
+If you encounter with the following error at docker
+```console
+fatal: detected dubious ownership in repository at
+```
+Please use the following command
+```console
+$ docker run -it --rm \
+    --env JEKYLL_ENV=production \
+    --volume="$PWD:/srv/jekyll" \
+    jekyll/jekyll \
+    sh -c "git config --system --add safe.directory '*' && \
+    jekyll build"
 ```
 
 Unless you specified the output path, the generated site files will be placed in folder `_site`{: .filepath} of the project's root directory. Now you should upload those files to the target server.

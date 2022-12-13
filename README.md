@@ -69,6 +69,19 @@ $ docker run -it --rm \
     jekyll serve
 ```
 
+If you encounter with the following error at docker
+```console
+fatal: detected dubious ownership in repository at
+```
+Please use the following command
+```console
+$ docker run -it --rm \
+    --volume="$PWD:/srv/jekyll" \
+    -p 4000:4000 jekyll/jekyll \
+    sh -c "git config --system --add safe.directory '*' && \
+    jekyll serve"
+```
+
 After a while, navigate to the site at <http://localhost:4000>.
 
 ## Documentation
