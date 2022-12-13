@@ -26,6 +26,14 @@
   --label-color: rgb(108, 117, 125);
   --checkbox-color: rgb(118, 120, 121);
   --checkbox-checked-color: var(--link-color);
+  --img-bg: radial-gradient(circle, rgb(22, 22, 24) 0%, rgb(32, 32, 32) 100%);
+  --shimmer-bg:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(58, 55, 55, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
 
   /* Sidebar */
   --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
@@ -65,7 +73,6 @@
   --card-bg: rgb(39, 40, 43);
   --card-border-color: rgb(53, 53, 60);
   --card-box-shadow: var(--main-bg);
-  --preview-img-bg: radial-gradient(circle, rgb(22, 22, 24) 0%, rgb(32, 32, 32) 100%);
   --kbd-wrap-color: #6a6a6a;
   --kbd-text-color: #d3d3d3;
   --kbd-bg-color: #242424;

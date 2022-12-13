@@ -81,21 +81,22 @@
       {% continue %}
     {% endunless %}
 
-    {% assign _left = _left | remove: ' /'  | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
-    {% assign _attrs = _left | split: ' ' %}
+    {% assign _left = _left | remove: ' /' | replace: ' w=', ' width=' | replace: ' h=', ' height=' %}
+    {% assign _attrs = _left | split: '" ' %}
 
     {% assign _width = nil %}
     {% assign _height = nil %}
     {% assign _lqip = nil %}
+    {% assign _class = nil %}
 
     {% for _attr in _attrs %}
-      {% assign _pair = _attr | split: '="' %}
-      {% if _pair.size < 2 %}
+      {% unless _attr contains '=' %}
         {% continue %}
-      {% endif %}
+      {% endunless %}
 
+      {% assign _pair = _attr | remove: '"' | split: '=' %}
       {% capture _key %}{{ _pair | first }}{% endcapture %}
-      {% capture _value %}{{ _pair | last | remove: '"' }}{% endcapture %}
+      {% capture _value %}{{ _pair | last }}{% endcapture %}
 
       {% case _key %}
         {% when 'width' %}
@@ -106,9 +107,19 @@
           {% assign _src = _value %}
         {% when 'lqip' %}
           {% assign _lqip = _value %}
+        {% when 'class' %}
+          {% assign _class = _value %}
       {% endcase %}
 
     {% endfor %}
+
+    <!-- take out classes -->
+    {% if _class %}
+      {% capture _old_class %}class="{{ _class }}"{% endcapture %}
+      {% assign _left = _left | remove: _old_class %}
+    {% endif %}
+
+    {% assign _final_src = nil %}
 
     {% unless _src contains '//' %}
       {% assign _final_src = _path_prefix | append: _src %}
@@ -127,31 +138,51 @@
     {% endif %}
 
     <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    {% assign _left = _left | replace: 'src=', 'data-src=' %}
     {% if _left contains 'class=' %}
-      {% assign _left = _left | replace: 'class="', 'class="lazyload ' %}
+      {% assign _left = _left | replace: 'class="', 'class="lazyload '%}
     {% else %}
-      {% assign _left = _left | replace: 'src=', 'class="lazyload" src=' %}
+      {% assign _left = _left | append: ' class="lazyload"' %}
     {% endif %}
 
-    {% assign _left = _left | replace: 'src=', 'data-src=' %}
-
-    <!-- add placeholder -->
+    <!-- add image placeholder -->
     {% if _lqip %}
       {% assign _left = _left | replace: ' lqip=', ' data-lqip="true" src=' %}
     {% else %}
       {% if _width and _height %}
-        <!-- Add SVG placehoder to prevent layout reflow -->
+        <!-- add SVG placehoder -->
         {%- capture _svg -%}
           src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ _width  }} {{ _height }}'%3E%3C/svg%3E"
         {%- endcapture -%}
         {% assign _left =  _svg | append: ' ' | append: _left %}
+        {% assign _class = _class | append: ' shimmer' %}
       {% endif %}
     {% endif %}
 
     <!-- Bypass the HTML-proofer test -->
     {% assign _left = _left | append: ' data-proofer-ignore' %}
 
-    <!-- Combine -->
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    {% assign _parent = _right | slice: 1, 4 %}
+
+    {% if _parent == '</a>' %}
+      <!-- add class to exist <a> tag -->
+      {% assign _size = _img_content | size | minus: 1 %}
+      {% capture _class %}
+        class="img-link{% unless _lqip %} shimmer{% endunless %}"
+      {% endcapture %}
+      {% assign _img_content = _img_content | slice: 0, _size | append: _class | append: '>'  %}
+
+    {% else %}
+      <!-- create the image wrapper -->
+      {%- capture _wrapper_start -%}
+        <a href="{{ _final_src | default: _src  }}" class="popup img-link {{ _class }}">
+      {%- endcapture -%}
+      {% assign _img_content = _img_content | append: _wrapper_start %}
+      {% assign _right = _right | prepend: '></a' %}
+    {% endif %}
+
+    <!-- combine -->
     {% assign _img_content = _img_content | append: IMG_TAG | append: _left | append: _right %}
 
   {% endfor %}

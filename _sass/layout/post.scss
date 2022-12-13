@@ -26,12 +26,23 @@
   color: var(--text-color);
 }
 
-img.preview-img {
+%preview-margin {
   margin: 0;
-  border-radius: 6px;
+}
+
+.preview-img {
+  @include align-center;
+  @extend %preview-margin;
 
   &:not(.no-bg) {
-    background: var(--preview-img-bg);
+    img.lazyloaded {
+      background: var(--img-bg);
+    }
+  }
+
+  img {
+    @extend %preview-margin;
+    @extend %img-rounded;
   }
 }
 
