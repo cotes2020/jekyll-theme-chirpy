@@ -418,6 +418,6 @@ $ create /kafka-manager/mutex/leases ""
 ```
 
 - [localhost:9000](http://localhost:9000) 접속
-![](https://images.velog.io/images/manofbell/post/38a967e2-8f2a-4626-b285-a9a7f9c8b72f/image.png)
+![](/assets/img/posts/15.png)
     
 > 참고 https://www.youtube.com/watch?v=HbbI6G24LZs&list=PL3Re5Ri5rZmkY46j6WcJXQYRlDRZSUQ1j&index=7

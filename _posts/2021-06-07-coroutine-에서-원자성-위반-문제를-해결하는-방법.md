@@ -15,7 +15,7 @@ tags: [kotlin, coroutine]
 - 채널의 커뮤니케이션은?
     - 메모리를 공유함으로써 ⇒  커뮤니케이션 하는게 아닌
     - 커뮤니케이션을 통해서 ⇒ 메모리를 공유한다.
-        ![](https://images.velog.io/images/manofbell/post/af89d741-9091-4657-9f1a-292fdfeb9c65/1_khfG84QbarNrYDUUkiBmqA.gif)
+        ![](/assets/img/posts/13.gif)
         > [https://proandroiddev.com/kotlin-coroutines-channels-csp-android-db441400965f](https://proandroiddev.com/kotlin-coroutines-channels-csp-android-db441400965f)
 
 - 공유 상태를 가질때 동시성 코드 블록에서 문제가 될 수 있다.
