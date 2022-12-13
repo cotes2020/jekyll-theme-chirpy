@@ -90,6 +90,10 @@
   font-style: normal;
 }
 
+%img-rounded {
+  border-radius: 10px;
+}
+
 %img-caption {
   + em {
     display: block;
@@ -112,6 +116,11 @@
 
 @mixin no-text-decoration {
   text-decoration: none;
+}
+
+@mixin mt-mb($value) {
+  margin-top: $value;
+  margin-bottom: $value;
 }
 
 @mixin ml-mr($value) {
