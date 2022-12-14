@@ -34,6 +34,8 @@
   @include align-center;
   @extend %preview-margin;
 
+  max-width: 100%;
+
   &:not(.no-bg) {
     img.lazyloaded {
       background: var(--img-bg);
@@ -41,6 +43,10 @@
   }
 
   img {
+    aspect-ratio: 40 / 21;
+    -o-object-fit: cover;
+    object-fit: cover;
+
     @extend %preview-margin;
     @extend %img-rounded;
   }
