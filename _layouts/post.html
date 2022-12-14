@@ -31,22 +31,6 @@ tail_includes:
     {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
     {% capture alt %}alt="{{ page.image.alt | default: "Preview Image" }}"{% endcapture %}
 
-    {% capture w %}
-      {% if page.image.width %}
-        width="{{ page.image.width }}"
-      {% elsif page.image.w %}
-        width="{{ page.image.w }}"
-      {% endif %}
-    {% endcapture %}
-
-    {% capture h %}
-      {% if page.image.height %}
-        height="{{ page.image.height }}"
-      {% elsif page.image.h %}
-        h="{{ page.image.h }}"
-      {% endif %}
-    {% endcapture %}
-
     {% capture lqip %}
       {% if page.image.lqip %}
         lqip="{{ page.image.lqip }}"
@@ -54,7 +38,7 @@ tail_includes:
     {% endcapture %}
 
     <div class="mt-3 mb-3">
-      <img {{ src }} {{ class }} {{ w | strip }} {{ h | strip }} {{ lqip | strip }} {{ alt }}>
+      <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip | strip }}>
       {%- if page.image.alt -%}
         <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
       {%- endif -%}
