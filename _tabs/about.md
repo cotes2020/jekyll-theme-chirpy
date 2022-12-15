@@ -18,7 +18,7 @@ My private email: coliapaston@163.com<br>
 My university email：kedong@mail.hfut.edu.cn<br>
 My AAIA working email：KeAdria.D@aaia-ai.org
 
-
+P.S. The profile picture (the adorable ghost) is painted by myself. :D
 
 =================
 ## 中文版
