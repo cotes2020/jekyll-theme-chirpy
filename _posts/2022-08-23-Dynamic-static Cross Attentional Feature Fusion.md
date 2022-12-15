@@ -30,7 +30,7 @@ The dynamic-static fusion features play an important role in speech emotion reco
 This paper is accepted by 29th International Conference on MultiMedia Modeling (MMM 2023).
 
 ## Reference
-The hompage of MMM 2023 is https://www.mmm2023.no/home.
+The hompage of [MMM 2023](https://www.mmm2023.no/home).
 
 ## Download
 <a href="/commons/pubs/camera_ready.pdf">SMB.pdf</a>
