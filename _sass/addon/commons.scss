@@ -576,6 +576,21 @@ i { /* fontawesome icons */
   }
 }
 
+.embed-video {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+
+  &.youtube {
+    aspect-ratio: 16 / 9;
+  }
+
+  &.twitch {
+    aspect-ratio: 310 / 189;
+  }
+}
+
 /* --- buttons --- */
 .btn-lang {
   border: 1px solid !important;
