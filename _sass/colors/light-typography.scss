@@ -89,6 +89,10 @@
     --link-underline-color: rgb(219, 216, 216);
   }
 
+  .dark {
+    display: none;
+  }
+
   /* Categories */
   --categories-hover-bg: var(--btn-border-color);
   --categories-icon-hover-color: darkslategray;
