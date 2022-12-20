@@ -7,7 +7,7 @@
 %heading {
   color: var(--heading-color);
   font-weight: 400;
-  font-family: 'Lato', 'Microsoft Yahei', sans-serif;
+  font-family: Lato, "Microsoft Yahei", sans-serif;
 }
 
 %section {
@@ -73,6 +73,8 @@
 }
 
 %no-cursor {
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
 }
 
@@ -88,6 +90,10 @@
   font-style: normal;
 }
 
+%img-rounded {
+  border-radius: 10px;
+}
+
 %img-caption {
   + em {
     display: block;
@@ -101,6 +107,8 @@
 
 %sidebar-links {
   color: rgba(117, 117, 117, 0.9);
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
 }
 
@@ -108,6 +116,11 @@
 
 @mixin no-text-decoration {
   text-decoration: none;
+}
+
+@mixin mt-mb($value) {
+  margin-top: $value;
+  margin-bottom: $value;
 }
 
 @mixin ml-mr($value) {
@@ -134,18 +147,17 @@
   position: relative;
   left: 50%;
   -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
-@mixin prompt($type, $fw-icon, $icon-weight: 900) {
+@mixin prompt($type, $fa-content, $fa-style: "solid") {
   &.prompt-#{$type} {
     background-color: var(--prompt-#{$type}-bg);
 
     &::before {
-      content: $fw-icon;
+      content: $fa-content;
       color: var(--prompt-#{$type}-icon-color);
-      font-weight: $icon-weight;
+      font: var(--fa-font-#{$fa-style});
     }
   }
 }

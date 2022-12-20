@@ -67,10 +67,17 @@ post:
     copy_code:
       succeed: 已复制！
     share_link:
-      title:  分享链接
+      title: 分享链接
       succeed: 链接已复制！
   # pinned prompt of posts list on homepage
   pin_prompt: 顶置
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: '%Y/%m/%d'
+    dayjs: 'YYYY/MM/DD'
 
 # categories page
 categories:

@@ -15,12 +15,11 @@
 {% if page.layout == 'post' or page.layout == 'page' %}
   <!-- image lazy-loading & popup & clipboard -->
   {% assign _urls = site.data.assets[origin].magnific-popup.js
-      | append: ',' | append: site.data.assets[origin].lozad.js
+      | append: ',' | append: site.data.assets[origin].lazysizes.js
       | append: ',' | append: site.data.assets[origin].clipboard.js
   %}
 
   {% include jsdelivr-combine.html urls=_urls %}
-
 {% endif %}
 
 {% if page.layout == 'home'
@@ -29,11 +28,7 @@
     or page.layout == 'category'
     or page.layout == 'tag' %}
 
-  {% if site.prefer_datetime_locale %}
-    {% assign locale = site.prefer_datetime_locale | downcase %}
-  {% else %}
-    {% assign locale = site.lang | split: '-' | first %}
-  {% endif %}
+  {% assign locale = site.lang | split: '-' | first %}
 
   {% assign _urls = site.data.assets[origin].dayjs.js.common
       | append: ',' | append: site.data.assets[origin].dayjs.js.locale

@@ -4,9 +4,9 @@
 
 @mixin dark-scheme {
   /* Framework color */
-  --body-bg: var(--main-wrapper-bg);
+  --body-bg: var(--main-bg);
   --mask-bg: rgb(68, 69, 70);
-  --main-wrapper-bg: rgb(27, 27, 30);
+  --main-bg: rgb(27, 27, 30);
   --main-border-color: rgb(44, 45, 45);
 
   /* Common color */
@@ -21,18 +21,26 @@
   --btn-border-color: rgb(63, 65, 68);
   --btn-backtotop-color: var(--text-color);
   --btn-backtotop-border-color: var(--btn-border-color);
-  --btn-box-shadow: var(--main-wrapper-bg);
+  --btn-box-shadow: var(--main-bg);
   --card-header-bg: rgb(51, 50, 50);
   --label-color: rgb(108, 117, 125);
-  --checkbox-color: rgb(118 120 121);
+  --checkbox-color: rgb(118, 120, 121);
   --checkbox-checked-color: var(--link-color);
+  --img-bg: radial-gradient(circle, rgb(22, 22, 24) 0%, rgb(32, 32, 32) 100%);
+  --shimmer-bg:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(58, 55, 55, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
 
   /* Sidebar */
   --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
   --sidebar-muted-color: #6d6c6b;
-  --sidebar-active-color: rgb(255 255 255 / 80%);
+  --sidebar-active-color: rgb(255, 255, 255, 0.8);
   --nav-cursor-color: rgb(183, 182, 182);
-  --sidebar-btn-bg: rgb(117 116 116 / 20%);
+  --sidebar-btn-bg: rgb(117, 116, 116, 0.2);
 
   /* Topbar */
   --topbar-text-color: var(--text-color);
@@ -48,7 +56,7 @@
   --btn-paginator-hover-color: rgb(64, 65, 66);
   --btn-paginator-border-color: var(--btn-border-color);
   --btn-text-color: var(--text-color);
-  --pin-bg: rgb(34 35 37);
+  --pin-bg: rgb(34, 35, 37);
   --pin-color: inherit;
 
   /* Posts */
@@ -64,19 +72,18 @@
   --relate-post-date: var(--text-muted-color);
   --card-bg: rgb(39, 40, 43);
   --card-border-color: rgb(53, 53, 60);
-  --card-box-shadow: var(--main-wrapper-bg);
-  --preview-img-bg: radial-gradient(circle, rgb(22 22 24) 0%, rgb(32 32 32) 100%);
+  --card-box-shadow: var(--main-bg);
   --kbd-wrap-color: #6a6a6a;
   --kbd-text-color: #d3d3d3;
   --kbd-bg-color: #242424;
-  --prompt-text-color: rgb(216 212 212 / 75%);
+  --prompt-text-color: rgb(216, 212, 212, 0.75);
   --prompt-tip-bg: rgba(77, 187, 95, 0.2);
-  --prompt-tip-icon-color: rgb(5 223 5 / 68%);
-  --prompt-info-bg: rgb(7 59 104 / 80%);
+  --prompt-tip-icon-color: rgb(5, 223, 5, 0.68);
+  --prompt-info-bg: rgb(7, 59, 104, 0.8);
   --prompt-info-icon-color: #0075d1;
-  --prompt-warning-bg: rgb(90 69 3 / 95%);
-  --prompt-warning-icon-color: rgb(255 165 0 / 80%);
-  --prompt-danger-bg: rgb(86 28 8 / 80%);
+  --prompt-warning-bg: rgb(90, 69, 3, 0.95);
+  --prompt-warning-icon-color: rgb(255, 165, 0, 0.8);
+  --prompt-danger-bg: rgb(86, 28, 8, 0.8);
   --prompt-danger-icon-color: #cd0202;
 
   /* tags */
@@ -96,7 +103,14 @@
   --timeline-year-dot-color: var(--timeline-color);
 
   .post img[data-src] {
-    filter: brightness(95%);
+    &.lazyloaded {
+      -webkit-filter: brightness(95%);
+      filter: brightness(95%);
+    }
+  }
+
+  .light {
+    display: none;
   }
 
   hr {
@@ -104,11 +118,11 @@
   }
 
   /* posts' toc, override BS */
-  nav[data-toggle=toc] .nav-link.active,
-  nav[data-toggle=toc] .nav-link.active:focus,
-  nav[data-toggle=toc] .nav-link.active:hover,
-  nav[data-toggle=toc] .nav > li > a:focus,
-  nav[data-toggle=toc] .nav > li > a:hover {
+  nav[data-toggle="toc"] .nav-link.active,
+  nav[data-toggle="toc"] .nav-link.active:focus,
+  nav[data-toggle="toc"] .nav-link.active:hover,
+  nav[data-toggle="toc"] .nav > li > a:focus,
+  nav[data-toggle="toc"] .nav > li > a:hover {
     color: var(--toc-highlight) !important;
     border-left-color: var(--toc-highlight) !important;
   }
@@ -150,8 +164,7 @@
 
   color-scheme: dark;
 
-  #disqus_thread {
+  #disqus_thread { /* stylelint-disable-line selector-id-pattern */
     color-scheme: none;
   }
-
 } /* dark-scheme */

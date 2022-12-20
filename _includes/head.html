@@ -6,11 +6,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Allow having a localized datetime different from the appearance language -->
-  {% if site.prefer_datetime_locale %}
-    <meta name="prefer-datetime-locale" content="{{ site.prefer_datetime_locale }}">
-  {% endif %}
-
   {% if page.layout == 'home' or page.layout == 'post' %}
 
     {% if site.google_analytics.pv.proxy_endpoint %}
@@ -27,23 +22,27 @@
     {% seo title=false %}
   {% endcapture %}
 
-  {% if site.img_cdn and seo_tags contains 'og:image' %}
-    {% assign properties = 'og:image,twitter:image' | split: ',' %}
+  {% if page.image %}
+    {% assign img = page.image.path | default: page.image %}
 
-    {% for prop in properties %}
+    {% unless img contains '://' %}
+      {% assign img_path = page.img_path | append: '/' | append: img | replace: '//', '/' %}
+      {% capture target %}"{{ img | absolute_url }}"{% endcapture %}
+
       {% if site.img_cdn contains '//' %}
-        <!-- `site.img_cdn` is a cross-origin URL -->
-        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{% endcapture %}
-        {% capture replacement %}<meta property="{{ prop }}" content="{{ site.img_cdn }}{% endcapture %}
+        <!-- it's a cross-origin URL -->
+        {% capture replacement %}"{{ site.img_cdn }}{{ img_path }}"{% endcapture %}
       {% else %}
-        <!-- `site.img_cdn` is a local file path -->
-        {% capture target %}<meta property="{{ prop }}" content="{{ site.url }}{{ site.baseurl }}{% endcapture %}
-        {% assign replacement = target | append: site.img_cdn %}
+        <!-- it's a local file path -->
+        {%- capture replacement -%}
+          "{{ site.img_cdn | append: '/' | append: img_path | replace: '//', '/' | absolute_url }}"
+        {%- endcapture -%}
       {% endif %}
 
       {% assign seo_tags = seo_tags | replace: target, replacement %}
 
-    {% endfor %}
+    {% endunless %}
+
   {% endif %}
 
   {{ seo_tags }}

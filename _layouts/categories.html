@@ -3,8 +3,6 @@ layout: page
 # All the Categories of posts
 ---
 
-{% include lang.html %}
-
 {% assign HEAD_PREFIX = "h_" %}
 {% assign LIST_PREFIX = "l_" %}
 
@@ -48,22 +46,22 @@ layout: page
           {% if sub_categories_size > 0 %}
             {{ sub_categories_size }}
             {% if sub_categories_size > 1 %}
-              {{ site.data.locales[lang].categories.category_measure.plural
-                | default: site.data.locales[lang].categories.category_measure }}
+              {{ site.data.locales[site.lang].categories.category_measure.plural
+                | default: site.data.locales[site.lang].categories.category_measure }}
             {% else %}
-              {{ site.data.locales[lang].categories.category_measure.singular
-                | default: site.data.locales[lang].categories.category_measure }}
+              {{ site.data.locales[site.lang].categories.category_measure.singular
+                | default: site.data.locales[site.lang].categories.category_measure }}
             {% endif %},
           {% endif %}
 
           {{ top_posts_size }}
 
           {% if top_posts_size > 1 %}
-            {{ site.data.locales[lang].categories.post_measure.plural
-              | default: site.data.locales[lang].categories.post_measure }}
+            {{ site.data.locales[site.lang].categories.post_measure.plural
+              | default: site.data.locales[site.lang].categories.post_measure }}
           {% else %}
-            {{ site.data.locales[lang].categories.post_measure.singular
-              | default: site.data.locales[lang].categories.post_measure }}
+            {{ site.data.locales[site.lang].categories.post_measure.singular
+              | default: site.data.locales[site.lang].categories.post_measure }}
           {% endif %}
         </span>
       </span>
@@ -99,11 +97,11 @@ layout: page
             {{ posts_size }}
 
             {% if posts_size > 1 %}
-              {{ site.data.locales[lang].categories.post_measure.plural
-                | default: site.data.locales[lang].categories.post_measure }}
+              {{ site.data.locales[site.lang].categories.post_measure.plural
+                | default: site.data.locales[site.lang].categories.post_measure }}
             {% else %}
-              {{ site.data.locales[lang].categories.post_measure.singular
-                | default: site.data.locales[lang].categories.post_measure }}
+              {{ site.data.locales[site.lang].categories.post_measure.singular
+                | default: site.data.locales[site.lang].categories.post_measure }}
             {% endif %}
           </span>
         </li>

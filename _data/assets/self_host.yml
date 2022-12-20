@@ -16,13 +16,13 @@ bootstrap-toc:
   js: /assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js
 
 fontawesome:
-  css: /assets/lib/fontawesome-free-5.15.4/css/all.min.css
+  css: /assets/lib/fontawesome-free-6.2.1/css/all.min.css
 
 search:
   js: /assets/lib/simple-jekyll-search-1.10.0/simple-jekyll-search.min.js
 
 mermaid:
-  js: /assets/lib/mermaid-8.13.10/mermaid.min.js
+  js: /assets/lib/mermaid-9.1.7/mermaid.min.js
 
 dayjs:
   js:
@@ -38,8 +38,8 @@ magnific-popup:
   css: /assets/lib/magnific-popup-1.1.0/magnific-popup.css
   js: /assets/lib/magnific-popup-1.1.0/jquery.magnific-popup.min.js
 
-lozad:
-  js: /assets/lib/lozad-1.16.0/lozad.min.js
+lazysizes:
+  js: /assets/lib/lazysizes-5.3.2/lazysizes.min.js
 
 clipboard:
   js: /assets/lib/clipboard-2.0.9/clipboard.min.js

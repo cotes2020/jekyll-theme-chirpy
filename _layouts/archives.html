@@ -3,15 +3,8 @@ layout: page
 # The Archives of posts.
 ---
 
-{% include lang.html %}
-
-{% if site.prefer_datetime_locale == 'en' or lang == 'en' %}
-  {% assign df_strftime_m = '%b' %}
-  {% assign df_dayjs_m = 'MMM' %}
-{% else %}
-  {% assign df_strftime_m = '/ %m' %}
-  {% assign df_dayjs_m = '/ MM' %}
-{% endif %}
+{% assign df_strftime_m = site.data.locales[site.lang].df.archives.strftime | default: '/ %m' %}
+{% assign df_dayjs_m = site.data.locales[site.lang].df.archives.dayjs | default: '/ MM' %}
 
 <div id="archives" class="pl-xl-3">
 

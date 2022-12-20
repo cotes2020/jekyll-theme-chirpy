@@ -14,7 +14,8 @@
 
 set -eu
 
-opt_pre=false # preview mode option
+opt_pre=false      # preview mode option
+opt_skip_ver=false # option for skip versioning
 
 working_branch="$(git branch --show-current)"
 
@@ -48,6 +49,7 @@ help() {
   echo "   bash ./tools/release.sh [options]"
   echo
   echo "Options:"
+  echo "     -k, --skip-versioning    Skip the step of generating the version number."
   echo "     -p, --preview            Enable preview mode, only package, and will not modify the branches"
   echo "     -h, --help               Print this information."
 }
@@ -102,6 +104,10 @@ check() {
 
 _bump_file() {
   for i in "${!FILES[@]}"; do
+    if [[ ${FILES[$i]} == $NODE_CONFIG ]]; then
+      continue
+    fi
+
     sed -i "s/v[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/v$1/" "${FILES[$i]}"
   done
 
@@ -170,16 +176,21 @@ release() {
 }
 
 main() {
-  check
+  if [[ $opt_skip_ver = false ]]; then
+    check
 
-  # auto-generate a new version number to the file 'package.json'
-  if $opt_pre; then
-    standard-version --prerelease rc
-  else
-    standard-version
+    # auto-generate a new version number to the file 'package.json'
+    if $opt_pre; then
+      standard-version --prerelease rc
+    else
+      standard-version
+    fi
   fi
 
-  _version="$(grep '"version":' package.json | sed 's/.*: "//;s/".*//')"
+  # Change heading of Patch version to level 2 (a bug from `standard-version`)
+  sed -i "s/^### \[/## \[/g" CHANGELOG.md
+
+  _version="$(grep '"version":' "$NODE_CONFIG" | sed 's/.*: "//;s/".*//')"
 
   echo -e "Bump version number to $_version\n"
   bump "$_version"
@@ -199,6 +210,10 @@ while (($#)); do
   case $opt in
   -p | --preview)
     opt_pre=true
+    shift
+    ;;
+  -k | --skip-versioning)
+    opt_skip_ver=true
     shift
     ;;
   -h | --help)
