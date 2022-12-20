@@ -134,9 +134,10 @@ blockquote {
   &[class^="prompt-"] {
     display: flex;
     border-left: 0;
-    border-radius: 6px;
     padding: 1rem;
     color: var(--prompt-text-color);
+
+    @extend %rounded;
 
     &::before {
       text-align: center;
@@ -543,11 +544,13 @@ i { /* fontawesome icons */
   }
 }
 
+.rounded-10 {
+  border-radius: 10px !important;
+}
+
 .img-link {
   color: transparent;
   display: inline-flex;
-
-  @extend %img-rounded;
 }
 
 .shimmer {
@@ -579,8 +582,9 @@ i { /* fontawesome icons */
 .embed-video {
   width: 100%;
   height: 100%;
-  border-radius: 4px;
   margin-bottom: 1rem;
+
+  @extend %rounded;
 
   &.youtube {
     aspect-ratio: 16 / 9;
