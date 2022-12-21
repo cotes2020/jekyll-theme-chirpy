@@ -1,6 +1,6 @@
 ---
 title: 10 Best Practices to Launch APIs in 2023
-excerpt: "The guide can help launch successful APIs while gauging the potential issues and keeping things on track." 
+description: "The guide can help launch successful APIs while gauging the potential issues and keeping things on track." 
 tags: ["api", "api best practices", "design"]
 category: ["architecture", "api"]
 date: 2022-12-01
@@ -9,7 +9,7 @@ image:
   path: https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/api/2022-12-01-ten-best-practices-to-launch-apis-in-2023.jpg
   width: 800
   height: 200
-  alt: Best Practices to Launch APIs.
+  alt: Best Practices to Launch APIs
 ---
 <hr>
 
