@@ -42,7 +42,7 @@ Before starting, please follow the instructions in the [Jekyll Docs](https://jek
 
 ### Step 1. Creating a New Site
 
-Create a new repository from the [**Chirpy Starter**](https://github.com/cotes2020/chirpy-starter/generate) and name it `<GH_USERNAME>.github.io`, where `GH_USERNAME` represents your GitHub username.
+Create a [**new repository from the Chirpy Starter**](https://github.com/cotes2020/chirpy-starter/generate) and name it `<GH_USERNAME>.github.io`, where `GH_USERNAME` represents your GitHub username. Clone this new repository locally.
 
 ### Step 2. Installing Dependencies
 
