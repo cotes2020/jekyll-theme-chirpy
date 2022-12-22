@@ -4,7 +4,11 @@ description: Creating the first JMH project. A quick hands-on lesson to learn ab
 tags: ["java", "jvm", "microbenchark"]
 category: ["programming", "tutorial"]
 date: 2021-04-10
-permanlink: '/java/java-benchmarking-jmh/'
+permalink: 'java/java-benchmarking-jmh/'
+image:
+  path: https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/java/2021-04-10-java-benchmarking-jmh.jpg
+  width: 800
+  height: 200
 ---
 
 ### Introduction
