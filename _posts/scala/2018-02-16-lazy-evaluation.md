@@ -7,7 +7,6 @@ date: 2018-02-16
 permalink: '/scala/lazy-evaluation/'
 ---
 
-<hr>
 As per Wikipedia, “Lazy Evaluation is an evaluation strategy which delays the evaluation of an expression until its value is needed.” And today most of the modern programming languages support Lazy Evaluation. In contrast with strict or eager evaluation, which computes values as soon as possible, lazy evaluation can certainly deliver a few benefits, such as:
 
 * Lazy evaluation can help to resolve circular dependencies

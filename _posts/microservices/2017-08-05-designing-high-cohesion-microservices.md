@@ -6,7 +6,7 @@ category: ["architecture"]
 date: 2017-08-05
 permalink: '/microservices/designing-high-cohesion-microservices/'
 ---
-<hr>
+
 A microservice must have __high cohesion__. Microservice should focus on single functionality and should be consistent in terms of functionality, input and outputs. Consider it as a self-contained unit managing its own lifecycle.
 
 ![Designing High Cohesive Microservice](https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/microservices/2017-08-05-designing-high-cohesion-microservices.png)

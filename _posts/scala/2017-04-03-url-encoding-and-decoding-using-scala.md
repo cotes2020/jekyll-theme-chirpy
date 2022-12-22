@@ -7,7 +7,6 @@ date: 2017-04-03
 permalink: '/scala/url-encoding-and-decoding-using-scala/'
 ---
 
-<hr>
 
 ### Introduction
 Sometime it is required to encode or decode the URL in projects, especially when URL is supposed to be sent over the network. As the URLs often contain the characters that are outside UTF-8 character set, the URL must be converted to a valid character set. An example is to convert space character ” ” to “+” sign.

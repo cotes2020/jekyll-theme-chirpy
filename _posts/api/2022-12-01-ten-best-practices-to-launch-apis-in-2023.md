@@ -5,13 +5,13 @@ tags: ["api", "api best practices", "design"]
 category: ["architecture", "api"]
 date: 2022-12-01
 permalink: '/api/ten-best-practices-to-launch-apis-in-2023/'
+counterlink: 'ten-best-practices-to-launch-apis-in-2023/'
 image:
   path: https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/api/2022-12-01-ten-best-practices-to-launch-apis-in-2023.jpg
   width: 800
   height: 200
   alt: Best Practices to Launch APIs
 ---
-<hr>
 
 ## Introduction
 Application programming interfaces or [APIs](https://en.wikipedia.org/wiki/API){:target="_blank"} are becoming ubiquitous in the digital world, driving Amazon cloud, Google products, and Facebook feature. APIs can enable big organizations to develop a technology platform that can seamlessly connect interdependent systems, data, and people. APIs allow organizations to develop reusable and interoperable systems, not only within the organization but also within the entire community. The article presents ten points to consider for building successful APIs.

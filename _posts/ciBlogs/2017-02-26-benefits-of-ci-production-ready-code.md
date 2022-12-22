@@ -7,8 +7,6 @@ date: 2017-02-26
 permalink: '/ciBlogs/benefits-of-ci-production-ready-code/'
 ---
 
-<hr>
-
 I work alongside many agile teams. All these teams work toward building a Digital Platform that caters to millions of users. The digital platform hosts these services from our dev centre and various other geographically distributed teams. The guideline is to release a feature, if possible every day, or at least once in every sprint and no more than two sprints.
 
 Every team aims to reduce the risk of damaging the platform. Every team must ensure that code correctly integrates with all other services on the platform. Just an assurance that the code builds correctly at all times and that passing the test case is not enough. Every team should provide a working version of the application in a specific environment to a particular stakeholder.

@@ -70,10 +70,17 @@ tail_includes:
 
     <div>
       <!-- page views -->
-      {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
+      {% if page.counterlink %}
       <span>
         <em id="pv" class="pageviews">
-          <i class="fas fa-spinner fa-spin fa-fw"></i>
+          <em id="count">1003</em>
+          <script>
+              var url = "https://api.countapi.xyz/hit/gaurgaurav.com/" + '{{ page.counterlink }}';
+              // console.log(url);
+              $.getJSON(url, function(response) {
+                document.getElementById("count").innerHTML = String(response.value);
+              });
+          </script>
         </em>
         {{ site.data.locales[site.lang].post.pageview_measure }}
       </span>
@@ -86,6 +93,8 @@ tail_includes:
   </div> <!-- .d-flex -->
 
 </div> <!-- .post-meta -->
+
+<hr>
 
 <div class="post-content">
   {{ content }}
