@@ -5,6 +5,7 @@ tags: ["api", "api best practices", "design"]
 category: ["architecture", "api"]
 date: 2022-12-01
 permalink: '/api/ten-best-practices-to-launch-apis-in-2023/'
+counterlink: 'ten-best-practices-to-launch-apis-in-2023/'
 image:
   path: https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/api/2022-12-01-ten-best-practices-to-launch-apis-in-2023.jpg
   width: 800
