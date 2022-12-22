@@ -5,6 +5,7 @@ tags: ["java", "jvm", "microbenchark"]
 category: ["programming", "tutorial"]
 date: 2021-04-10
 permalink: 'java/java-benchmarking-jmh/'
+counterlink: 'java-benchmarking-jmh/'
 image:
   path: https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/java/2021-04-10-java-benchmarking-jmh.jpg
   width: 800

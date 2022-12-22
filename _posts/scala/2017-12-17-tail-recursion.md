@@ -5,6 +5,7 @@ tags: ["scala", "jvm"]
 category: ["programming", "tutorial"]
 date: 2017-12-17
 permalink: '/scala/tail-recursion/'
+counterlink: 'scala-tail-recursion/'
 ---
 
 

@@ -5,6 +5,7 @@ tags: ["scala", "jvm"]
 category: ["programming", "tutorial"]
 date: 2018-01-02
 permalink: '/scala/currying-in-scala/'
+counterlink: 'scala-currying-in-scala/'
 ---
 
 Currying is named after Haskell Curry, an American mathematician. He is known for his work in combinatory logic.

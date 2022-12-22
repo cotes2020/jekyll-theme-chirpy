@@ -5,6 +5,7 @@ tags: ["scala", "jvm"]
 category: ["programming", "tutorial"]
 date: 2019-11-14
 permalink: '/scala/sorting-lists-of-objects/'
+counterlink: 'scala-sorting-lists-of-objects/'
 ---
 
 ### Introduction

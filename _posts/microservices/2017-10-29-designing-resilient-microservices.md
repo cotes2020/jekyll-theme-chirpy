@@ -5,6 +5,7 @@ tags: ["microservices", "design"]
 category: ["architecture"]
 date: 2017-10-29
 permalink: '/microservices/designing-resilient-microservices/'
+counterlink: 'microservices-designing-resilient-microservices/'
 ---
 
 Resilience is an essential consideration while designing microservices. A microservice should embrace failure, whenever it happens. A microservice should be designed for all known failures. A few of the common known failures are:

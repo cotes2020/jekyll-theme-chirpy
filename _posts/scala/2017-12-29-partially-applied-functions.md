@@ -5,6 +5,7 @@ tags: ["scala", "jvm"]
 category: ["programming", "tutorial"]
 date: 2017-12-29
 permalink: '/scala/partially-applied-functions/'
+counterlink: 'scala-partially-applied-functions/'
 ---
 
 Scala, like many other functional languages, allows developers to apply functions partially. What this means is that, when applying a function, a developer does not pass in all the arguments defined by the function. But, provides only for some of them, leaving remaining parameters to be passed later.

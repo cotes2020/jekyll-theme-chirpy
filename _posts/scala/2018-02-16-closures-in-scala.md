@@ -5,6 +5,7 @@ tags: ["scala", "jvm"]
 category: ["programming", "tutorial"]
 date: 2018-02-16
 permalink: '/scala/closures-in-scala/'
+counterlink: 'scala-closures-in-scala/'
 ---
 
 

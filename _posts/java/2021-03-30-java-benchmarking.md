@@ -5,6 +5,7 @@ tags: ["java", "jvm", "microbenchark"]
 category: ["programming"]
 date: 2021-03-30
 permalink: '/java/java-benchmarking/'
+counterlink: 'java-benchmarking/'
 ---
 
 ### Introduction
