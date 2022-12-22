@@ -76,7 +76,7 @@ tail_includes:
           <em id="count">1003</em>
           <script>
               var url = "https://api.countapi.xyz/hit/gaurgaurav.com/" + '{{ page.counterlink }}';
-              console.log(url);
+              // console.log(url);
               $.getJSON(url, function(response) {
                 document.getElementById("count").innerHTML = String(response.value);
               });
