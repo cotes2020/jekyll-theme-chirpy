@@ -7,7 +7,7 @@ date: 2018-02-16
 permalink: '/scala/closures-in-scala/'
 ---
 
-<hr>
+
 Before we begin discussing closures in Scala, let us have a quick look at a function. The function literal bill below accepts only one input parameter: `netBill`. However, the function calculates the final bill by adding a service charge to `netBill`.
 
 ```scala

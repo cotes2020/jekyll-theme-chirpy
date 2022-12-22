@@ -6,7 +6,7 @@ category: ["programming", "tutorial"]
 date: 2021-04-18
 permanlink: '/java/scala-benchmarking-jmh/'
 ---
-<hr>
+
 ### Introduction
 We identified in the <a href="https://www.gaurgaurav.com/java/java-benchmarking-jmh/" target="_blank">previous post</a> that JMH is a `jvm` tool that can help benchmark the source code. Till now, we have used it to benchmark the Java code. But, since it is a `jvm`, it must be capable of benchmarking other `jvm` based languages. In this post, I pick up Scala, `jvm` language, to benchmark the code.
 

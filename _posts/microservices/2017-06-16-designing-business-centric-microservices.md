@@ -7,7 +7,7 @@ date: 2017-06-16
 permalink: '/microservices/designing-business-centric-microservices/'
 ---
 
-<hr>
+
 A microservice should be business-centric or domain-centric. It should be designed to represent a business function. A business-centric service helps to scope the service and to control the size. The idea is borrowed from the domain-driven design where the primary focus is on core domain logic with a bounded context. For eg HMRC is a huge organization and it needs to send many updates to all taxpayers across the UK. Hence, HMRC needs email functionality. It would be sensible to have a service that can handle all email related functionalities such as verifying an email, drafting an email for updates, maintaining templates based on users, etc. Thus, we can say that email itself is a business function. So HMRC created microservice to address the same. The code for the service can be found at <a href="https://github.com/hmrc/email-verification" target="_blank">hmrc/email-verification</a>.
 
 ![Designing Business Centric Microservice](https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/microservices/2017-06-16-designing-business-centric-microservices.png)

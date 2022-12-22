@@ -7,7 +7,6 @@ date: 2017-01-17
 permalink: '/ciBlogs/benefits-of-ci-decrease-code-review-time/'
 ---
 
-<hr>
 Sometimes, we work in teams where code churn is high. Multiple developers working on features in the same code base, and there is a pressure of delivery. In these high-pressure situations reviewing code becomes critical. However, the pressure of delivery pushes the team to merge the code as soon as possible.
 
 A well thought through CI pipeline can make a developer's life easier. Teams can quickly hook the CI pipeline updates to slack channels. These updates can include:

@@ -7,7 +7,6 @@ date: 2017-12-17
 permalink: '/scala/tail-recursion/'
 ---
 
-<hr>
 
 ### Introduction
 Recursion is quite common in the programming world. As you probably know, it's the process of solving a problem by breaking it down into smaller subproblems. You can easily spot recursion if you see a method calling itself with a smaller subset of inputs.

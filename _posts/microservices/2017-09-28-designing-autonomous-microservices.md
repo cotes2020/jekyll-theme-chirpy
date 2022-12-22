@@ -6,7 +6,7 @@ category: ["architecture"]
 date: 2017-09-28
 permalink: '/microservices/designing-autonomous-microservices/'
 ---
-<hr>    
+    
 A microservice must be __autonomous__. A microservice interacts with many other microservices or external systems to serve the user. But, any change in external systems should not force a change in the microservice. Similarly, any change in the microservice should not impact other microservices. All the microservices must adhere to the contracts and interfaces to their clients. Clearly defined contracts between services enable multiple teams to develop microservices in parallel and to deploy them independently.
 
 ![Designing Observable Microservice](https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/microservices/2017-09-28-designing-autonomous-microservices.png)

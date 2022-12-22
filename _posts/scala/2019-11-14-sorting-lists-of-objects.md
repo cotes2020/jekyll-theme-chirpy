@@ -7,7 +7,6 @@ date: 2019-11-14
 permalink: '/scala/sorting-lists-of-objects/'
 ---
 
-<hr>
 ### Introduction
 
 One of the most common ADT that a developer uses in their day-to-day coding is List. And one of the most common operations a developer performs on a list is to order it or sort it with given criteria. In this article, I will focus on sorting a list of objects in Scala.

@@ -7,7 +7,7 @@ date: 2017-10-15
 permalink: '/microservices/designing-automated-microservices/'
 ---
 
-<hr>
+
 Another key design principle for microservices architecture is __automation__. The microservice architecture enables the teams to have frequent releases and a shorter time to production. But you certainly cannot ship your code into production without testing it. Whenever the code is released to production, it must be tested. So we need automated tools that can test our code every time we deploy it to production.
 
 ![Designing Automated Microservice](https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/microservices/2017-10-15-designing-automated-microservices.png)

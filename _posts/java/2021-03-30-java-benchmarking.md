@@ -7,7 +7,6 @@ date: 2021-03-30
 permalink: '/java/java-benchmarking/'
 ---
 
-<hr>
 ### Introduction
 Optimisation of code is an endless struggle. It is often even hard to produce meaningful metrics using `jvm` as it is an adaptive virtual machine. The article is
 - a brief introduction to microbenchmarking,

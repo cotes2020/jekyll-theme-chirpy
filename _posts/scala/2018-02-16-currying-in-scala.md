@@ -7,7 +7,6 @@ date: 2018-01-02
 permalink: '/scala/currying-in-scala/'
 ---
 
-<hr>
 Currying is named after Haskell Curry, an American mathematician. He is known for his work in combinatory logic.
 
 Currying is a means of transforming a function that takes more than one argument into a chain of calls to functions, each of which takes a single argument.

@@ -6,7 +6,7 @@ category: ["experience"]
 date: 2017-07-17
 permalink: 'random/day-at-dynamo-hack/'
 ---
-<hr>
+
 
 # Introduction
 On 3rd July, I got an excellent opportunity to attend Dynamo Hackathon. It all started during the second week of June when I received an email from my organisation about the Dynamo summit. I registered my interest and, soon I received a few more emails and an invite to join Dynamo slack. With numerous conversations over slack, emails and Skype, I came to know that I would be placed in a small team of 5-6 people and would be expected to produce a minimal viable product(MVP) within 8 hours. The MVP would then be judged by a panel from Dynamo. The time limit of 8 hours sounds too aggressive. Even though this was not my first hackathon, I was growing anxious. The theme of the hackathon was to promote and showcase the technical skills and technical capabilities within North East(NE).

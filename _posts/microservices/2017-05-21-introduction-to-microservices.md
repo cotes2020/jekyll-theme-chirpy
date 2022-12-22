@@ -6,7 +6,7 @@ category: ["architecture"]
 date: 2017-05-21
 permalink: '/microservices/introduction-to-microservices/'
 ---
-<hr>
+
 Microservices are gaining popularity everywhere. The digital platform that I am currently working on is built on Microservices architecture. Microservices refers to an architectural approach that is intended to decompose application into finely grained, highly cohesive and loosely coupled services. These microservices are language-agnostic and platform-agnostic, enabling different systems to talk to each other.
 
 The microservice architecture can be used to break down a big monolithic application into smaller, simpler and manageable services. These smaller services can be then managed by cross-functional teams, without stepping on each other's toes. The respective teams can then deliver the functionality based on their velocity and on their business needs.

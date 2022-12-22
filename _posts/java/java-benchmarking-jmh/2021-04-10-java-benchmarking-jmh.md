@@ -6,7 +6,7 @@ category: ["programming", "tutorial"]
 date: 2021-04-10
 permanlink: '/java/java-benchmarking-jmh/'
 ---
-<hr>
+
 ### Introduction
 In my <a href="https://www.gaurgaurav.com/java/java-benchmarking" target="_blank">previous article</a> I established that microbenchmarking is hard with `jvm`. It is not enough to surround the code in a loop with `System.out.println()` and gather the time measurements. While benchmarking, a developer should consider warm-up cycles, JIT compilations, jvm optimizations, avoiding usual pitfalls and even more.
 
