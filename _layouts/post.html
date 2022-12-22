@@ -75,9 +75,7 @@ tail_includes:
         <em id="pv" class="pageviews">
           <em id="count">1003</em>
           <script>
-              var url = "https://api.countapi.xyz/hit/gaurgaurav.com/" + '{{ page.counterlink }}';
-              // console.log(url);
-              $.getJSON(url, function(response) {
+              $.getJSON("https://api.countapi.xyz/hit/gaurgaurav.com/" + '{{ page.counterlink }}', function(response) {
                 document.getElementById("count").innerHTML = String(response.value);
               });
           </script>
