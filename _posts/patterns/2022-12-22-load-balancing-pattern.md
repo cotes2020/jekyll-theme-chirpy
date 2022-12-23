@@ -44,11 +44,11 @@ Dynamic load balancers, as the name suggests, consider the current state of each
 A successful cloud strategy is to use load balancers with Auto Scaling. Typically, cloud applications are monitored for network traffic, memory consumption and CPU utilization. These metrics and trends can help define the scaling policies to add or remove the application instances dynamically. A load balancer in the cloud considers the dynamic resizing and dispatches the traffic based on available servers. The section below describes a few of the popularly known solutions in the cloud:
 
 ### AWS - Elastic Load Balancing (ELB)
-[Amazon ELB](https://aws.amazon.com/elasticloadbalancing/){:target="_blank"} is highly available and scalable load balancing solution. It is ideal for application running in AWS. Below are 4 different choices of Amazon ELB to pick from:
+[Amazon ELB](https://aws.amazon.com/elasticloadbalancing/){:target="_blank"} is highly available and scalable load balancing solution. It is ideal for applications running in AWS. Below are 4 different choices of Amazon ELB to pick from:
 -	[Application Load Balancer](https://aws.amazon.com/elasticloadbalancing/application-load-balancer/){:target="_blank"} used for load balancing of HTTP and HTTPS traffic.
--	[Network Load Balancer](https://aws.amazon.com/elasticloadbalancing/network-load-balancer/){:target="_blank"} used for load balancing both TCP, UDP and TLS traffic. 
--	[Gateway Load Balancer](https://aws.amazon.com/elasticloadbalancing/gateway-load-balancer/){:target="_blank"} used to deploy, scale, and manage third-party virtual appliances. 
--	[Classic Load Balancer](https://aws.amazon.com/elasticloadbalancing/classic-load-balancer/){:target="_blank"} used for load balancing across multiple EC2 instances. 
+-	[Network Load Balancer](https://aws.amazon.com/elasticloadbalancing/network-load-balancer/){:target="_blank"} is used for load balancing both TCP, UDP and TLS traffic. 
+-	[Gateway Load Balancer](https://aws.amazon.com/elasticloadbalancing/gateway-load-balancer/){:target="_blank"} is used to deploy, scale, and manage third-party virtual appliances. 
+-	[Classic Load Balancer](https://aws.amazon.com/elasticloadbalancing/classic-load-balancer/){:target="_blank"} is used for load balancing across multiple EC2 instances. 
 
 ### GCP – Cloud Load Balancing
 [Google Cloud Load Balancing](https://cloud.google.com/load-balancing){:target="_blank"} is a highly performant and scalable offering from Google. It can support up to 1 million+ queries per second. It can be divided into 2 major categories i.e., internal, and external. Each major category is further classified based on the incoming traffic. Below are a few load balancer types.
@@ -57,23 +57,23 @@ A successful cloud strategy is to use load balancers with Auto Scaling. Typicall
 -	[External HTTP(S) Load Balancing](https://cloud.google.com/load-balancing/docs/https){:target="_blank"}
 -	[External TCP/UDP Network Load Balancing](https://cloud.google.com/load-balancing/docs/network){:target="_blank"}
 
-A complete guide to compare all the available load balancers can be found on [Google load balancer page](https://cloud.google.com/load-balancing/docs/choosing-load-balancer){:target="_blank"}.
+A complete guide to compare all the available load balancers can be found on the [Google load balancer page](https://cloud.google.com/load-balancing/docs/choosing-load-balancer){:target="_blank"}.
 
 ### Microsoft Azure Load Balancer
-[Microsoft Azure load balancing](https://azure.microsoft.com/en-us/services/load-balancer/){:target="_blank"} solution provides 3 different types of load balancer:
+[Microsoft Azure load balancing](https://azure.microsoft.com/en-us/services/load-balancer/){:target="_blank"} solution provides 3 different types of load balancers:
 - [Standard Load Balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview){:target="_blank"} - Public and internal Layer 4 load balancer
 - [Gateway Load Balancer](https://learn.microsoft.com/en-us/azure/load-balancer/gateway-overview){:target="_blank"} - High performance and high availability load balancer for third-party Network Virtual Appliances.
 - [Basic Load Balancer](https://learn.microsoft.com/en-us/azure/load-balancer/skus){:target="_blank"} - Ideal for small scale application
 
 ## Open-Source Load Balancing Solution
-Although a default choice is always to use the vendor specific cloud load balancer, but there are a few open-source load balancer options available. Below are a couple of those.
+Although a default choice is always to use the vendor specific cloud load balancer, there are a few open-source load balancer options available. Below is a couple of those.
 
 
 ### NGINX
-NGINX provides [NGINX Plus](https://www.nginx.com/products/nginx/){:target="_blank"} and [NGINX](https://nginx.org/en/){:target="_blank"}, modern load balancing solutions. There are many popular websites including Dropbox, Netflix and Zynga, are using load balancers from NGINX. The NGINX load balancing solutions are highly performance and can help improve the efficiency and reliability of a high traffic website.
+NGINX provides [NGINX Plus](https://www.nginx.com/products/nginx/){:target="_blank"} and [NGINX](https://nginx.org/en/){:target="_blank"}, modern load balancing solutions. There are many popular websites including Dropbox, Netflix and Zynga, that are using load balancers from NGINX. The NGINX load balancing solutions are high performance and can help improve the efficiency and reliability of a high traffic website.
 
 ### Cloudfare
-[Cloudflare](https://www.cloudflare.com/load-balancing/){:target="_blank"} is another popular load balancing solution. It offers different tiers of load balancer to meet the specific customer needs. Pricing plans are based on the services, health checks and security provided.
+[Cloudflare](https://www.cloudflare.com/load-balancing/){:target="_blank"} is another popular load balancing solution. It offers different tiers of load balancer to meet specific customer needs. Pricing plans are based on the services, health checks and security provided.
 -	Zero Trust platform plans
 -	Websites & application services plans
 -	Developer platform plans
@@ -82,12 +82,12 @@ NGINX provides [NGINX Plus](https://www.nginx.com/products/nginx/){:target="_bla
 
 
 ## Choosing Load Balancer
-It is evident from the sections above that a load balancer can have a big impact on the applications. Thus, picking up a right solution is essential. Below are a few considerations to make the decision.
--	Identifying the short term and long-term goals of business can help drive the decision. The business requirements should help identify the expected traffic, growth regions and region of the service. Business considerations should also include level of availability, necessity of encryptions or any other security concerns that need to be addressed.
--	There are ample of options available in the market. Identifying necessary features for the application can help pick the right solution. As an example, load balancer should be able to handle the incoming traffic for the application such as HTTP/HTTPS or SSL or TCP. Another example is load balancer used for internal traffic has different security concerns than external load balancers.
--	Cloud vendors provide various support tier and pricing plans. A detailed comparison of total cost of ownership, features and support tier can help identify the right choice for the project. 
+It is evident from the sections above that a load balancer can have a big impact on the applications. Thus, picking up the right solution is essential. Below are a few considerations to make the decision.
+-	Identifying the short term and long-term goals of a business can help drive the decision. The business requirements should help identify the expected traffic, growth regions and region of the service. Business considerations should also include the level of availability, the necessity of encryptions or any other security concerns that need to be addressed.
+-	There are ample options available in the market. Identifying the necessary features for the application can help pick the right solution. As an example, the load balancer should be able to handle the incoming traffic for the application such as HTTP/HTTPS or SSL or TCP. Another example is a load balancer used for internal traffic has different security concerns than external load balancers.
+-	Cloud vendors provide various support tiers and pricing plans. A detailed comparison of the total cost of ownership, features and support tier can help identify the right choice for the project. 
 
 
-Most experts agree that it is a best practice to use load balancer to manage the traffic and are critical to the cloud applications. With the use of load balancer, applications can serve the requests better and also save cost. 
+Most experts agree that it is a best practice to use load balancer to manage the traffic and are critical to the cloud applications. With the use of a load balancer, applications can serve the requests better and also save costs. 
 
 
