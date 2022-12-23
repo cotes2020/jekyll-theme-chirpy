@@ -4,7 +4,8 @@ description: Creating the first Java Microbenchmark Harness (JMH) project using 
 tags: ["scala", "jvm", "microbenchark"]
 category: ["programming", "tutorial"]
 date: 2021-04-18
-permanlink: '/java/scala-benchmarking-jmh/'
+permalink: '/java/scala-benchmarking-jmh/'
+counterlink: 'scala-benchmarking-jmh/'
 ---
 
 ### Introduction

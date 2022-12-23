@@ -10,7 +10,6 @@ image:
   path: https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/patterns/2022-12-22-load-balancing-pattern.jpg
   width: 800
   height: 500
-  alt: Load Balancing
 ---
 
 ## Introduction

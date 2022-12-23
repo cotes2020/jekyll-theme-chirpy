@@ -5,6 +5,7 @@ tags: ["scala", "jvm"]
 category: ["programming", "tutorial"]
 date: 2018-02-28
 permalink: '/scala/scala-repeated-method-parameters/'
+counterlink: 'scala-repeated-method-parameters/'
 ---
 
 Similar to Java, Scala also supports variable arguments or repeated method parameters. The concept is really useful in situations when you don't know how many parameters you need to pass to a method, or you have to pass an unlimited number of arguments to a method.

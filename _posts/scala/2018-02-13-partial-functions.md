@@ -5,6 +5,7 @@ tags: ["scala", "jvm"]
 category: ["programming", "tutorial"]
 date: 2018-02-13
 permalink: '/scala/partial-functions/'
+counterlink: 'scala-partial-functions/'
 ---
 
 

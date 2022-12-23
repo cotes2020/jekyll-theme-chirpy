@@ -5,6 +5,7 @@ tags: ["microservices", "design"]
 category: ["architecture"]
 date: 2017-06-16
 permalink: '/microservices/designing-business-centric-microservices/'
+counterlink: 'microservices-designing-business-centric-microservices/'
 ---
 
 

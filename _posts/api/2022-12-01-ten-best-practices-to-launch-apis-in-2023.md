@@ -10,7 +10,6 @@ image:
   path: https://raw.githubusercontent.com/Gaur4vGaur/traveller/master/images/api/2022-12-01-ten-best-practices-to-launch-apis-in-2023.jpg
   width: 800
   height: 200
-  alt: Best Practices to Launch APIs
 ---
 
 ## Introduction

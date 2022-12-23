@@ -5,6 +5,7 @@ tags: ["microservices", "design"]
 category: ["architecture"]
 date: 2017-09-08
 permalink: '/microservices/designing-observable-microservices/'
+counterlink: 'microservices-designing-observable-microservices/'
 ---
 
 The microservice architecture leads to a distributed system that is scalable, flexible and reliable. However, it comes at an expense of added complexity. The microservices interact with each other to complete user transactions. Since a lot is going on in the system, keeping a check on the system health is vital. So another key consideration to design a microservice is __observability__. The team must be aware of the activities that are happening within the system.
