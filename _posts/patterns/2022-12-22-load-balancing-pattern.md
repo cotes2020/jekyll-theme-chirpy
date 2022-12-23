@@ -72,7 +72,7 @@ Although a default choice is always to use the vendor specific cloud load balanc
 ### NGINX
 NGINX provides [NGINX Plus](https://www.nginx.com/products/nginx/){:target="_blank"} and [NGINX](https://nginx.org/en/){:target="_blank"}, modern load balancing solutions. There are many popular websites including Dropbox, Netflix and Zynga, that are using load balancers from NGINX. The NGINX load balancing solutions are high performance and can help improve the efficiency and reliability of a high traffic website.
 
-### Cloudfare
+### Cloudflare
 [Cloudflare](https://www.cloudflare.com/load-balancing/){:target="_blank"} is another popular load balancing solution. It offers different tiers of load balancer to meet specific customer needs. Pricing plans are based on the services, health checks and security provided.
 -	Zero Trust platform plans
 -	Websites & application services plans
@@ -88,6 +88,6 @@ It is evident from the sections above that a load balancer can have a big impact
 -	Cloud vendors provide various support tiers and pricing plans. A detailed comparison of the total cost of ownership, features and support tier can help identify the right choice for the project. 
 
 
-Most experts agree that it is a best practice to use load balancer to manage the traffic and are critical to the cloud applications. With the use of a load balancer, applications can serve the requests better and also save costs. 
+Most experts agree that it is a best practice to use a load balancer to manage the traffic which is critical to cloud applications. With the use of a load balancer, applications can serve the requests better and also save costs. 
 
 
