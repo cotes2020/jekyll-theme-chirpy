@@ -24,11 +24,7 @@
           {% capture _theme %}
           <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
           {% endcapture %}
-
-          {{ site.data.locales[site.lang].meta
-            | default: 'Powered by :PLATFORM with :THEME theme.'
-            | replace: ':PLATFORM', _platform | replace: ':THEME', _theme
-          }}
+          
         </p>
       </div>
     </div>
