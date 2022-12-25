@@ -17,16 +17,16 @@
       <div class="footer-right">
         <p class="mb-0">
 
-          {% capture _platform %}
+          {%- capture _platform -%}
           <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-          {% endcapture %}
+          {%- endcapture -%}
 
-          {% capture _theme %}
+          {%- capture _theme -%}
           <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
-          {% endcapture %}
+          {%- endcapture -%}
 
           {{ site.data.locales[site.lang].meta
-            | default: 'Powered by :PLATFORM with :THEME theme.'
+            | default: 'Using the :PLATFORM theme :THEME.'
             | replace: ':PLATFORM', _platform | replace: ':THEME', _theme
           }}
         </p>
