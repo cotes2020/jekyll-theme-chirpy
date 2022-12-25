@@ -2,7 +2,7 @@
 title: Designing Automated Microservice
 description: Automated microservices are additional benefit to the team. Designing automated microservices is a real benefit to the team.
 tags: ["microservices", "design"]
-category: ["architecture"]
+category: ["architecture", "microservices"]
 date: 2017-10-15
 permalink: '/microservices/designing-automated-microservices/'
 counterlink: 'microservices-designing-automated-microservices/'

@@ -2,7 +2,7 @@
 title: Introduction to Microservices
 description: What are Microservices? A quick introduction to microservices architecture 
 tags: ["microservices", "design"]
-category: ["architecture"]
+category: ["architecture", "microservices"]
 date: 2017-05-21
 permalink: '/microservices/introduction-to-microservices/'
 counterlink: 'microservices-introduction-to-microservices/'

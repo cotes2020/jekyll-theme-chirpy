@@ -2,7 +2,7 @@
 title: Load Balancing Pattern
 description: description
 tags: ["cloud", "load balancing", "design", "scaling"]
-category: ["architecture", "pattern"]
+category: ["architecture", "patterns"]
 date: 2022-12-22
 permalink: '/patterns/load-balancing/'
 counterlink: 'patterns-load-balancing/'

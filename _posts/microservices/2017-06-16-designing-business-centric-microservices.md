@@ -2,7 +2,7 @@
 title: Designing Business Centric Microservice
 description: Designing a domain specific and business focussed microservice. Designing a domain specific microservices. The article discussed couple of examples of live and well-defined business centric microservices
 tags: ["microservices", "design"]
-category: ["architecture"]
+category: ["architecture", "microservices"]
 date: 2017-06-16
 permalink: '/microservices/designing-business-centric-microservices/'
 counterlink: 'microservices-designing-business-centric-microservices/'

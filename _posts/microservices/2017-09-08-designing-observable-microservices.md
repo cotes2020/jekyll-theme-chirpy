@@ -2,7 +2,7 @@
 title: Designing Observable Microservice
 description: Microservices must be monitored. Designing an observable microservices. The article discusses why and how microservices should be monitored
 tags: ["microservices", "design"]
-category: ["architecture"]
+category: ["architecture", "microservices"]
 date: 2017-09-08
 permalink: '/microservices/designing-observable-microservices/'
 counterlink: 'microservices-designing-observable-microservices/'

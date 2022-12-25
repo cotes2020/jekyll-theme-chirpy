@@ -97,6 +97,6 @@ Not following a consistent naming convention would leave a bitter taste in the i
 ## Final Thoughts
 These ten simple steps have helped me in the past to develop the APIs that are apt for business and close to the end users. The approach has helped me to gauge the potential issues, save time and resources, and assure users that APIs meet the minimum standards.
 
-Releasing the APIs for the end customers could be tiring as it needs a lot of effort, especially if you are not tracking everything in your head. Although the list is not exhaustive, hopefully, the guidelines above will remove some of the anxiety.
+Releasing the APIs for the end customers could be tiring as it needs a lot of effort, especially if you are tracking everything in your head. Although the list is not exhaustive, hopefully, the guidelines above will remove some of the anxiety.
 
 

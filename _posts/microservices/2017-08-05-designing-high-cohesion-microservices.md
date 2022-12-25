@@ -2,7 +2,7 @@
 title: Designing High Cohesion Microservice
 description: Designing a highly cohesive and self aggregated microservice. Designing a highly cohesive microservices. The article discussed couple of examples of live and well-defined self aggregated microservices
 tags: ["microservices", "design"]
-category: ["architecture"]
+category: ["architecture", "microservices"]
 date: 2017-08-05
 permalink: '/microservices/designing-high-cohesion-microservices/'
 counterlink: 'microservices-designing-high-cohesion-microservices/'
