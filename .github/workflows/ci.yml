@@ -4,8 +4,6 @@ on:
     branches-ignore:
       - 'production'
       - 'docs'
-    tags-ignore:
-      - '**'
     paths-ignore:
       - '.github/**'
       - '!.github/workflows/ci.yml'
