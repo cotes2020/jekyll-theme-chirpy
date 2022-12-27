@@ -22,7 +22,7 @@ Please select the desired item checkbox and change it to "[x]", then delete opti
 Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
 -->
 
-- [ ] I have run `bash ./tools/test.sh` (at the root of the project) locally and passed
+- [ ] I have run `bash ./tools/test` (at the root of the project) locally and passed
 - [ ] I have tested this feature in the browser
 
 ### Test Configuration

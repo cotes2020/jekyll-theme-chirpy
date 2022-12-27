@@ -35,4 +35,4 @@ jobs:
           bundler-cache: true
 
       - name: Test Site
-        run: bash tools/test.sh
+        run: bash tools/test

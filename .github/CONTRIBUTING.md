@@ -33,7 +33,7 @@ During JavaScript development, real-time debugging can be performed through the 
 Firstly, start a Jekyll server:
 
 ```console
-$ bash tools/run.sh
+$ bash tools/run
 ```
 
 And then open a new terminal tab and run:
