@@ -26,12 +26,30 @@
   color: var(--text-color);
 }
 
-img.preview-img {
+%preview-margin {
   margin: 0;
-  border-radius: 6px;
+}
 
-  &.bg[data-loaded="true"] {
-    background: var(--preview-img-bg);
+.preview-img {
+  @include align-center;
+  @extend %preview-margin;
+  @extend %rounded;
+
+  max-width: 100%;
+
+  &:not(.no-bg) {
+    img.lazyloaded {
+      background: var(--img-bg);
+    }
+  }
+
+  img {
+    aspect-ratio: 40 / 21;
+    -o-object-fit: cover;
+    object-fit: cover;
+
+    @extend %preview-margin;
+    @extend %rounded;
   }
 }
 

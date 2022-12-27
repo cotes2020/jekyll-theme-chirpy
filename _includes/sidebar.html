@@ -81,7 +81,17 @@
 
       {% if url %}
       <a href="{{ url }}" aria-label="{{ entry.type }}"
-        {% unless entry.noblank %}target="_blank" rel="noopener"{% endunless %}>
+        {% assign link_types = nil %}
+        {% unless entry.noblank %}
+          {% assign link_types = link_types | append: " noopener" %}
+          target="_blank"
+        {% endunless %}
+
+        {% if entry.type == 'mastodon' %}
+          {% assign link_types = link_types | append: " me" %}
+        {% endif %}
+
+        {% if link_types %}rel="{{ link_types | lstrip }}"{% endif %}>
         <i class="{{ entry.icon }}"></i>
       </a>
       {% endif %}
