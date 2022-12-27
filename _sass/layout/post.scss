@@ -33,6 +33,7 @@
 .preview-img {
   @include align-center;
   @extend %preview-margin;
+  @extend %rounded;
 
   max-width: 100%;
 
@@ -44,10 +45,11 @@
 
   img {
     aspect-ratio: 40 / 21;
+    -o-object-fit: cover;
     object-fit: cover;
 
     @extend %preview-margin;
-    @extend %img-rounded;
+    @extend %rounded;
   }
 }
 
