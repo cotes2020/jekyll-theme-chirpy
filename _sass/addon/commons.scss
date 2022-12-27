@@ -83,6 +83,47 @@ a {
 img {
   max-width: 100%;
   height: auto;
+
+  &[data-src] {
+    &.lazyloaded {
+      z-index: 1;
+      -webkit-animation: fade-in 0.4s ease-in;
+      animation: fade-in 0.4s ease-in;
+    }
+
+    &[data-lqip="true"] {
+      &.lazyload,
+      &.lazyloading {
+        -webkit-filter: blur(20px);
+        filter: blur(20px);
+      }
+    }
+
+    &:not([data-lqip="true"]) {
+      &.lazyload,
+      &.lazyloading {
+        background: var(--img-bg);
+      }
+    }
+
+    &.shadow {
+      -webkit-filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
+      filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
+      box-shadow: none !important; /* cover the Bootstrap 4.6.1 styles */
+    }
+
+    @extend %img-caption;
+  }
+
+  @-webkit-keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }
 
 blockquote {
@@ -93,15 +134,19 @@ blockquote {
   &[class^="prompt-"] {
     display: flex;
     border-left: 0;
-    border-radius: 6px;
     padding: 1rem;
     color: var(--prompt-text-color);
 
+    @extend %rounded;
+
     &::before {
-      font-family: "Font Awesome 5 Free";
       text-align: center;
       width: 1.25rem;
       margin-right: 0.75rem;
+      position: relative;
+      top: 0.4rem;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
     }
 
     > div {
@@ -113,7 +158,7 @@ blockquote {
     }
   }
 
-  @include prompt("tip", "\f0eb", 400);
+  @include prompt("tip", "\f0eb", "regular");
   @include prompt("info", "\f06a");
   @include prompt("warning", "\f06a");
   @include prompt("danger", "\f071");
@@ -178,43 +223,6 @@ i { /* fontawesome icons */
   &.fas {
     @extend %no-cursor;
   }
-}
-
-@-webkit-keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-img[data-src] {
-  margin: 0.5rem 0;
-
-  &[data-loaded="true"] {
-    -webkit-animation: fade-in linear 0.5s;
-    animation: fade-in linear 0.5s;
-  }
-
-  &.left {
-    float: left;
-    margin: 0.75rem 1rem 1rem 0;
-  }
-
-  &.right {
-    float: right;
-    margin: 0.75rem 0 1rem 1rem;
-  }
-
-  &.shadow {
-    -webkit-filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
-    box-shadow: none !important; /* cover the Bootstrap 4.6.1 styles */
-  }
-
-  @extend %img-caption;
 }
 
 /* --- Panels --- */
@@ -397,26 +405,14 @@ img[data-src] {
     margin-bottom: 1.5rem;
   }
 
-  a {
-    &.img-link {
-      @extend %no-cursor;
-    }
-
-    /* created by `_includes/img-extra.html` */
-    &.popup {
-      cursor: zoom-in;
-
-      > img[data-src]:not(.normal):not(.left):not(.right) {
+  p {
+    > img[data-src],
+    > a.popup {
+      &:not(.normal):not(.left):not(.right) {
         @include align-center;
       }
     }
-
-    &:hover {
-      code {
-        @extend %link-hover;
-      }
-    }
-  } /* a */
+  }
 }
 
 .pageviews .fa-spinner {
@@ -448,16 +444,20 @@ img[data-src] {
   overflow-wrap: break-word;
 
   a {
+    &.popup {
+      @extend %no-cursor;
+      @extend %img-caption;
+      @include mt-mb(0.5rem);
+
+      cursor: zoom-in;
+    }
+
     &:not(.img-link) {
       @extend %link-underline;
 
       &:hover {
         @extend %link-hover;
       }
-    }
-
-    &.img-link {
-      @extend %img-caption;
     }
   }
 
@@ -544,6 +544,58 @@ img[data-src] {
   }
 }
 
+.rounded-10 {
+  border-radius: 10px !important;
+}
+
+.img-link {
+  color: transparent;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.shimmer {
+  overflow: hidden;
+  position: relative;
+  background: var(--img-bg);
+
+  &::before {
+    content: "";
+    position: absolute;
+    background: var(--shimmer-bg);
+    height: 100%;
+    width: 100%;
+    -webkit-animation: shimmer 1s infinite;
+    animation: shimmer 1s infinite;
+  }
+
+  @-webkit-keyframes shimmer {
+    0% { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+    100% { -webkit-transform: translateX(100%); transform: translateX(100%); }
+  }
+
+  @keyframes shimmer {
+    0% { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+    100% { -webkit-transform: translateX(100%); transform: translateX(100%); }
+  }
+}
+
+.embed-video {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem;
+
+  @extend %rounded;
+
+  &.youtube {
+    aspect-ratio: 16 / 9;
+  }
+
+  &.twitch {
+    aspect-ratio: 310 / 189;
+  }
+}
+
 /* --- buttons --- */
 .btn-lang {
   border: 1px solid !important;
@@ -611,6 +663,16 @@ img[data-src] {
   border-color: var(--input-focus-border-color) !important;
   background: center !important;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.left {
+  float: left;
+  margin: 0.75rem 1rem 1rem 0 !important;
+}
+
+.right {
+  float: right;
+  margin: 0.75rem 0 1rem 1rem !important;
 }
 
 /* --- Overriding --- */
@@ -754,7 +816,7 @@ $sidebar-display: "sidebar-display";
       &:last-child {
         a {
           position: relative;
-          left: $cursor-width / 2;
+          left: calc($cursor-width / 2);
           width: 100%;
         }
 
@@ -780,7 +842,7 @@ $sidebar-display: "sidebar-display";
 
     @for $i from 1 through $tab-count {
       $offset: $tab-count - $i;
-      $top: -$offset * $tab-height + ($tab-height - $tab-cursor-height) / 2;
+      $top: -$offset * $tab-height + calc(($tab-height - $tab-cursor-height) / 2);
 
       @if $i < $tab-count {
         > li.active:nth-child(#{$i}),
@@ -1193,6 +1255,7 @@ $sidebar-display: "sidebar-display";
 
     div.d-flex {
       padding: 1.5rem 0;
+      line-height: 1.65;
       flex-wrap: wrap;
       justify-content: space-around !important;
     }

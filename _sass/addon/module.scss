@@ -90,6 +90,10 @@
   font-style: normal;
 }
 
+%rounded {
+  border-radius: 6px;
+}
+
 %img-caption {
   + em {
     display: block;
@@ -112,6 +116,11 @@
 
 @mixin no-text-decoration {
   text-decoration: none;
+}
+
+@mixin mt-mb($value) {
+  margin-top: $value;
+  margin-bottom: $value;
 }
 
 @mixin ml-mr($value) {
@@ -141,14 +150,14 @@
   transform: translateX(-50%);
 }
 
-@mixin prompt($type, $fw-icon, $icon-weight: 900) {
+@mixin prompt($type, $fa-content, $fa-style: "solid") {
   &.prompt-#{$type} {
     background-color: var(--prompt-#{$type}-bg);
 
     &::before {
-      content: $fw-icon;
+      content: $fa-content;
       color: var(--prompt-#{$type}-icon-color);
-      font-weight: $icon-weight;
+      font: var(--fa-font-#{$fa-style});
     }
   }
 }

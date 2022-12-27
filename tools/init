@@ -46,6 +46,11 @@ check_init() {
   fi
 }
 
+checkout_latest_tag() {
+  tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+  git reset --hard "$tag"
+}
+
 init_files() {
   if $_no_gh; then
     rm -rf .github
@@ -99,5 +104,7 @@ while (($#)); do
     ;;
   esac
 done
+
+checkout_latest_tag
 
 init_files
