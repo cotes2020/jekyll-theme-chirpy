@@ -1,6 +1,6 @@
 ---
 title: ECR 로컬에서 pull push 하기
-authors: Jongin Kim
+authors: jongin_kim
 date: 2020-10-03 00:00:00 +0900
 categories: [aws]
 tags: [aws, docker]

@@ -1,6 +1,6 @@
 ---
 title: Dockerfile 모범 사례 소개
-authors: Jongin Kim
+authors: jongin_kim
 date: 2020-10-01 00:00:00 +0900
 categories: [docker]
 tags: [docker]

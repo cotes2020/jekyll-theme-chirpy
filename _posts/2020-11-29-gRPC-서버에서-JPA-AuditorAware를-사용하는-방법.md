@@ -1,6 +1,6 @@
 ---
 title: gRPC 서버에서 ThreadLocal을 올바르게 사용하는 방법 (gRPC Context, gRPC + JPA AuditorAware)
-authors: Jongin Kim
+authors: jongin_kim
 date: 2020-11-29 00:00:00 +0900
 categories: [grpc]
 tags: [jpa, java, grpc]

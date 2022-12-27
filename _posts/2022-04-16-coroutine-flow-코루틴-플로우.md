@@ -1,6 +1,6 @@
 ---
 title: coroutine flow (코루틴 플로우)
-authors: Jongin Kim
+authors: jongin_kim
 date: 2022-04-16 00:00:00 +0900
 categories: [kotlin]
 tags: [kotlin, coroutine]

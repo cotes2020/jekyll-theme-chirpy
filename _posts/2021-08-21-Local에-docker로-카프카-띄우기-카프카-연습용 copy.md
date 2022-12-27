@@ -1,6 +1,6 @@
 ---
 title: Local에 docker로 카프카 띄우기 - 카프카 연습용
-authors: Jongin Kim
+authors: jongin_kim
 date: 2021-08-21 00:00:00 +0900
 categories: [kafka]
 tags: [kafka]

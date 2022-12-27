@@ -1,6 +1,6 @@
 ---
 title: Kubernetes resource (리소스)
-authors: Jongin Kim
+authors: jongin_kim
 date: 2020-09-28 00:00:00 +0900
 categories: [kubernetes]
 tags: [kubernetes]
