@@ -1,6 +1,6 @@
 ---
 title: coroutine 에서 원자성 위반 문제를 해결하는 방법
-author: Jongin Kim
+authors: Jongin Kim
 date: 2021-06-07 00:00:00 +0900
 categories: [kotlin]
 tags: [kotlin, coroutine]
