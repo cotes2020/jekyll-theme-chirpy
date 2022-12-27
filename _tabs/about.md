@@ -9,6 +9,6 @@ order: 4
 - ex. SOCAR
 
 ### Interest
-- Back End
-- Front End
+- Backend
+- Frontend
 - Devops
