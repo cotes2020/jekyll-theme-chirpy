@@ -1,6 +1,6 @@
 ---
 title: Load Balancing Pattern
-description: description
+description: An introduction to load balancing pattern, type of load balancer, cloud load balancer, open source load balancer and finally strategy to choose load balancer.
 tags: ["cloud", "load balancing", "design", "scaling"]
 category: ["architecture", "patterns"]
 date: 2022-12-22
