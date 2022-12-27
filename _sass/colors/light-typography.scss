@@ -24,6 +24,14 @@
   --btn-box-shadow: #eaeaea;
   --checkbox-color: #c5c5c5;
   --checkbox-checked-color: #07a8f7;
+  --img-bg: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(249, 249, 249) 100%);
+  --shimmer-bg:
+    linear-gradient(
+      90deg,
+      rgba(250, 250, 250, 0) 0%,
+      rgba(232, 230, 230, 1) 50%,
+      rgba(250, 250, 250, 0) 100%
+    );
 
   /* Sidebar */
   --sidebar-bg: #eeeeee;
@@ -64,7 +72,6 @@
   --tb-odd-bg: #fbfcfd;
   --tb-border-color: #eaeaea;
   --dash-color: silver;
-  --preview-img-bg: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(249, 249, 249) 100%);
   --kbd-wrap-color: #bdbdbd;
   --kbd-text-color: var(--text-color);
   --kbd-bg-color: white;
@@ -80,6 +87,10 @@
 
   [class^="prompt-"] {
     --link-underline-color: rgb(219, 216, 216);
+  }
+
+  .dark {
+    display: none;
   }
 
   /* Categories */

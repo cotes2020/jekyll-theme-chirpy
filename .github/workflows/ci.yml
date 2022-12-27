@@ -2,14 +2,11 @@ name: 'CI'
 on:
   push:
     branches-ignore:
-      - 'release/**'
+      - 'production'
       - 'docs'
-    tags-ignore:
-      - '**'
     paths-ignore:
       - '.github/**'
       - '!.github/workflows/ci.yml'
-      - '.travis.yml'
       - '.gitignore'
       - 'README.md'
       - 'LICENSE'
@@ -23,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        ruby: [2.5, 2.6, 2.7, 3]
+        ruby: ['2.7', '3.0', '3.1']
 
     steps:
       - name: Checkout
@@ -38,4 +35,4 @@ jobs:
           bundler-cache: true
 
       - name: Test Site
-        run: bash tools/test.sh
+        run: bash tools/test

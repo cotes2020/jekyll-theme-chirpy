@@ -5,7 +5,7 @@
 layout:
   post: Публикация
   category: Категория
-  tag: Тагове
+  tag: Таг
 
 # The tabs of sidebar
 tabs:
@@ -43,7 +43,7 @@ copyright:
 meta: Създадено чрез :PLATFORM и :THEME тема.
 
 not_found:
-  statment: Съжалявам, но този на този URL адрес няма налично съдържание.
+  statment: Съжалявам, но на този URL адрес няма налично съдържание.
 
 notification:
   update_found: Налична е нова версия на съдържанието.
@@ -71,7 +71,7 @@ post:
       title: Копирай линк
       succeed: Линкът е копиран успешно!
   # pinned prompt of posts list on homepage
-  pin_prompt: Прикрепен
+  pin_prompt: Прикрепенa
 
 # categories page
 categories:
