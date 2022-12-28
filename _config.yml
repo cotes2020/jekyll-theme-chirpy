@@ -55,8 +55,7 @@ google_site_verification:               # fill in to your verification string
 
 # https://wlqmffl0102.github.io/posts/Making-Git-blogs-for-beginners-4/
 google_analytics:
-  id:                 # fill in your Google Analytics ID
-  # Google Analytics pageviews report settings
+  id: G-62HSTQ6R6L
   pv:
     proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
     cache_path:       # the local PV cache data, friendly to visitors from GFW region
