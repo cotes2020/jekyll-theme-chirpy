@@ -1,0 +1,85 @@
+---
+title: "[BOJ] 30 - 10610"
+author: kwon
+date: 2022-02-04T23:00:00 +0900
+categories: [boj]
+tags: [math, string, greedy algorithm, sort, number theory]
+math: true
+mermaid: false
+---
+
+| 시간 제한 | 메모리 제한 |
+| --- | --- |
+| 1 초 | 256 MB |
+
+# 문제
+
+어느 날, 미르코는 우연히 길거리에서 양수 N을 보았다. 미르코는 30이란 수를 존경하기 때문에, 그는 길거리에서 찾은 수에 포함된 숫자들을 섞어 30의 배수가 되는 가장 큰 수를 만들고 싶어한다.
+
+미르코를 도와 그가 만들고 싶어하는 수를 계산하는 프로그램을 작성하라.
+
+# 입력
+
+N을 입력받는다. N는 최대 105개의 숫자로 구성되어 있으며, 0으로 시작하지 않는다.
+
+# 출력
+
+미르코가 만들고 싶어하는 수가 존재한다면 그 수를 출력하라. 그 수가 존재하지 않는다면, -1을 출력하라.
+
+# 풀이
+
+## 첫 번째
+
+입력 받은 수에 0이 없다면 30의 배수를 절대 만들 수 없으므로 먼저 제외한다. 30의 배수인지 판별하기 위해 0을 하나 삭제한 후에 그 수가 3의 배수인지 확인해 본다.
+
+3으로 나누어 떨어지면 3의 배수이므로(모든 자리의 수의 합이 3의 배수이면 3의 배수이므로 수의 배열이 어떻게 되든 3의 배수인지 아닌지 알 수 있다) 내림차순으로 정렬하여 정수로 만든다. 처음에 0을 하나 삭제했으므로 다시 10을 곱해줘야 한다.
+
+### 코드
+
+```python
+nums = list(str(sys.stdin.readline().strip()))
+if '0' not in nums: print(-1)
+else:
+    nums.remove('0')
+    if int(''.join(nums)) % 3 == 0: print(int(''.join(sorted(nums, reverse=True))) * 10)
+    else: print(-1)
+```
+
+## 두 번째
+
+입력 받은 수에 0이 없을 경우 거르는 것은 같다. 다른 점은 내림차순으로 정렬한 뒤에 그 수가 30의 배수인지 확인한다는 것이다.
+
+### 코드
+
+```python
+nums = list(str(sys.stdin.readline().strip()))
+if '0' not in nums: print(-1)
+else:
+    num = int(''.join(sorted(nums, reverse=True)))
+    if num % 30 == 0: print(num)
+    else: print(-1)
+```
+
+## 세 번째
+
+각 자리의 범위는 0~9 사이의 정수이므로 counting sort를 이용하여 풀 수 있다. 각 자리 수들을 index로 하여 개수를 세어 준 다음, 0을 제외한 수들을 역순으로 개수에 맞게 붙이면서 만들면 내림차순으로 정렬된 수를 만들 수 있다.
+
+이를 3의 배수인지 확인하고 0의 개수 만큼의 10의 거듭제곱을 곱해준다.
+
+```python
+import sys
+nums = str(sys.stdin.readline().strip())
+if '0' not in nums:
+    print(-1)
+else:
+    l = [0] * (int(max(nums)) + 1)
+    s = ''
+    sum = 0
+    for i in nums:
+        l[int(i)] += 1
+    for i in range(len(l)-1, 0, -1):
+        s += str(i) * l[i]
+        sum += i * l[i]
+    if sum % 3 == 0: print(int(s) * (10 ** l[0]))
+    else: print(-1)
+```

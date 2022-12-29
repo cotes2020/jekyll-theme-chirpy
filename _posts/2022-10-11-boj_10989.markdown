@@ -1,0 +1,49 @@
+---
+title: "[BOJ] 수 정렬하기 - 10989"
+author: kwon
+date: 2022-10-11T23:00:00 +0900
+categories: [boj]
+tags: [sort]
+math: true
+mermaid: false
+---
+
+| 시간 제한 | 메모리 제한 |
+| --- | --- |
+| 2 초 | 512 MB |
+
+# 문제
+
+N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
+
+# 입력
+
+첫째 줄에 수의 개수 N(1 ≤ N ≤ 10,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 10,000보다 작거나 같은 자연수이다.
+
+# 출력
+
+첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
+
+# 풀이
+
+중복된 수를 여러번 정렬하는 것을 피하기 위해 딕셔너리에 숫자 : 개수 형태로 저장한 뒤에 key를 정렬하여 수의 개수만큼 그 수(key)를 출력해준다.
+
+## 코드
+
+```python
+import sys
+from collections import defaultdict
+input = sys.stdin.readline
+print = sys.stdout.write
+
+n = int(input())
+nums = []
+d = defaultdict(int)
+
+for _ in range(n):
+    d[int(input())] += 1
+
+for num in sorted(d):
+    for _ in range(d[num]):
+        print(f'{str(num)}\n')
+```

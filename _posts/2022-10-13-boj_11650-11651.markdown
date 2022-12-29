@@ -1,0 +1,83 @@
+---
+title: "[BOJ] 좌표 정렬 1, 2 - 11650, 11651"
+author: kwon
+date: 2022-10-13T23:00:00 +0900
+categories: [boj]
+tags: [sort]
+math: true
+mermaid: false
+---
+
+| 시간 제한 | 메모리 제한 |
+| --- | --- |
+| 2 초 | 256 MB |
+
+# 문제
+
+좌표 정렬하기 1: 2차원 평면 위의 점 N개가 주어진다. 좌표를 x좌표가 증가하는 순으로, x좌표가 같으면 y좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.
+
+좌표 정렬하기 2: 2차원 평면 위의 점 N개가 주어진다. 좌표를 y좌표가 증가하는 순으로, y좌표가 같으면 x좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.
+
+# 입력
+
+첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.
+
+# 출력
+
+첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.
+
+# 풀이
+
+1, 2 모두 주어진  좌표를 정렬하는 문제이다. 다른 점은 1은 x좌표를 우선으로, 2는 y좌표를 우선으로 정렬한다는 것이다.  주어진 입력의 x, y 값의 범위가 (-100,000 ≤ xi, yi ≤ 100,000)로 제한적이고 정수이기 때문에 Counting Sort를 사용하기에 적합하다.
+
+수의 개수를 세어줄 배열의 크기를 x, y의 범위에 맞게 200,002로 잡아준다. 200,001로 크기를 잡지 않은 이유는 깔끔하게 100,000을 더해서 인덱스가 헷갈리지 않게 코드를 작성할 수 있기 때문이다.
+
+메모리를 적게 써서 공간복잡도를 줄이는 것도 중요하지만, 이 문제와 같이 충분한 메모리가 주어진 상황에서는 배열 한 자리의 메모리를 줄이는 것보다 헷갈리는 부분을 없애버리고 가독성을 높여 거기서 발생할 수 있는 실수를 줄이는  것이 이득이라고 판단했다.
+
+하나의 수열을 정렬하는 경우에는 주어진 수의 개수만 저장하면 되겠지만 좌표를 정렬하는 경우에는 우선순위가 아닌 수들(1번 문제의 경우 y좌표)도 신경써야하기 때문에 해당하는 x좌표에 y좌표의 배열을 저장해주었다.
+
+이렇게 배열을 만들게 되면 x좌표의 크기에 따라 y좌표의 배열들이 저장되므로 y좌표가 저장된 경우에만 정렬하여 좌표를 출력하면 된다.
+
+## 코드
+
+```python
+import sys
+input = sys.stdin.readline
+print = sys.stdout.write
+
+n = int(input())
+cnt_list = [[] for i in range(200002)]
+for _ in range(n):
+    x, y = map(int, input().split())
+    cnt_list[x + 100000].append(y)
+
+for x, ys in enumerate(cnt_list):
+    if ys:
+        if len(ys) == 1:
+            print(f"{x - 100000} {ys[0]}\n")
+        else:
+            for y in sorted(ys):
+                print(f"{x - 100000} {y}\n")
+```
+
+2번 문제도 마찬가지로 진행하되 y를 기준으로 배열을 만들어 x좌표를 append해준다.
+
+```python
+import sys
+input = sys.stdin.readline
+print = sys.stdout.write
+
+n = int(input())
+cnt_list = [[] for i in range(200002)]
+for _ in range(n):
+    x, y = map(int, input().split())
+    cnt_list[y + 100000].append(x)
+
+for y, xs in enumerate(cnt_list):
+    if xs:
+        if len(xs) == 1:
+            print(f"{xs[0]} {y - 100000}\n")
+        else:
+            for x in sorted(xs):
+                print(f"{x} {y - 100000}\n")
+```
