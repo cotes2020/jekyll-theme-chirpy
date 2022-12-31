@@ -1,5 +1,5 @@
 ---
-title: "Scalar Field Lagrangian From Symmetry Considerations: Part 2"
+title: "Scalar Field Lagrangian From Symmetry Considerations: Part 2 (Gauge Invariance)"
 description: "This time, gauge invariance leaves us little choice"
 categories: [classical field theory]
 tags: [Klein-Gordon theory, gauge invariance, symmetry]
