@@ -3,6 +3,6 @@
 icon: fas fa-info-circle
 order: 4
 ---
+I am k4n3ki and i love Rize.
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+![Rize my love](https://cdn.myanimelist.net/images/characters/8/252631.jpg)
