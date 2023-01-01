@@ -5,7 +5,7 @@ categories: [classical mechanics]
 tags: [harmonic oscillators, phase space, tensors]
 ---
 
-In [A Brief Geometric Analysis of Harmonic Oscillators]({% post_url 2022-01-21-geometric-analysis-harmonic-oscillators %}), we examined how a convenient choice of phase space for the motion of a harmonic oscillator reveals its periodicity, without explicitly solving the equation of motion (Hooke's law). Here, we will apply the same intuition but in the language of tensor algebra, greatly compactifying the mathematical argument.
+In [A Brief Geometric Analysis of Harmonic Oscillators]({% post_url 2022-01-21-geometric-analysis-harmonic-oscillators %}), we examined how a convenient choice of phase space for the motion of a harmonic oscillator reveals its periodicity, without explicitly solving the equation of motion (Hooke's law). Here, we will apply the same intuition but in the language of tensor algebra, introducing greater rigour as well as economy of notation.
 
 ## Prior knowledge is power
 
