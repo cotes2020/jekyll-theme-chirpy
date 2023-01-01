@@ -29,11 +29,11 @@ The theory of Newtonian gravitation is a field theory in the framework of Newton
 
 Unfortunately, the Newtonian gravitational field does not obey locality and local Lorentz invariance, making it a non-relativistic classical field theory. These limitations are overcome by Einstein's general theory of relativity, where the gravitational 'field' is the metric of spacetime itself. As this is a substantially different model, we will stick to the non-relativistic classical field theory for the moment.
 
-Since we assume that the gravitational field, henceforth written as the gravitational potential $\phi$, obeys the principle of stationary action, it must also obey the Euler-Lagrange equation, given by,
+Since we assume that the gravitational field, henceforth written as the gravitational potential $$\phi$$, obeys the principle of stationary action, it must also obey the Euler-Lagrange equation, given by,
 
 $$\frac{\partial \mathcal{L}}{\partial \phi} - \nabla_i \pi^i = 0$$
 
-where $\mathcal{L}$ is an appropriate Lagrangian density for the theory and $\pi^i$ is the conjugate momentum tensor, $\displaystyle{ \pi^i = \frac{\partial \mathcal{L}}{\partial \left( \partial_i \phi \right)} }$.
+where $$\mathcal{L}$$ is an appropriate Lagrangian density for the theory and $$\pi^i$$ is the conjugate momentum tensor, $$\displaystyle{ \pi^i = \frac{\partial \mathcal{L}}{\partial \left( \partial_i \phi \right)} }$$.
 
 Furthermore, to incorporate manifest Galilean invariance, we will use tensor notation with spacelike indices, as above.
 
@@ -43,7 +43,7 @@ From Gauss's law for Newtonian gravitation, we have,
 
 $$\nabla_i g^i = - 4 \pi G \rho$$
 
-where $g^i$ is the acceleration due to gravity.
+where $$g^i$$ is the acceleration due to gravity.
 
 The above is the differential form of Gauss's law for Newtonian gravitation, which can be derived from the integral form using the divergence theorem.
 
@@ -105,9 +105,9 @@ $$
 \end{align}
 $$
 
-This equation has the form of — drum rolls please — the general Poisson's equation relating the Laplacian $\nabla_i \partial^i$ of a function to another function. It is, therefore, no coincidence that the field equation for the gravitational potential is called Poisson's equation — it is a special case of the former, general case (this nomenclature is a little tricky, to be fair).
+This equation has the form of — drum rolls please — the general Poisson's equation relating the Laplacian $$\nabla_i \partial^i$$ of a function to another function. It is, therefore, no coincidence that the field equation for the gravitational potential is called Poisson's equation — it is a special case of the former, general case (this nomenclature is a little tricky, to be fair).
 
-All we now have to do is figure out which scalar potential $V \left( \phi \right)$ makes Poisson's general equation reduce to Poisson's equation for Newtonian gravitation. Then, we can find the suitable Lagrangian for the theory by plugging this potential into the modified Klein-Gordon Lagrangian we deduced.
+All we now have to do is figure out which scalar potential $$V \left( \phi \right)$$ makes Poisson's general equation reduce to Poisson's equation for Newtonian gravitation. Then, we can find the suitable Lagrangian for the theory by plugging this potential into the modified Klein-Gordon Lagrangian we deduced.
 
 ### The scalar potential
 
@@ -115,7 +115,7 @@ Mapping the two forms of Poisson's equation, one from the world of mathematics a
 
 $$\frac{\partial V}{\partial \phi} = - 4 \pi G \rho$$
 
-Obviously, $V \left( \phi \right)$ is of the form below, up to linearity,
+Obviously, $$V \left( \phi \right)$$ is of the form below, up to linearity,
 
 $$V \left( \phi \right) = - 4 \pi G \rho \phi$$
 
@@ -125,9 +125,9 @@ Plugging in the above into the form of the Lagrangian we argued for the scalar g
 
 $$\mathcal{L} = \frac{1}{2} \partial_i \phi \partial^i \phi + 4 \pi G \rho \phi$$
 
-Notice that scaling the Lagrangian does not change the equation of motion obtained (which engenders the physics) and scaling by a factor of $4 \pi G \rho$ yields a Lagrangian seen frequently across texts on gravitation/field theory,
+Notice that scaling the Lagrangian does not change the equation of motion obtained (which engenders the physics) and scaling by a factor of $$4 \pi G$$ yields a Lagrangian seen frequently across texts on gravitation/field theory,
 
-$$\mathcal{L} = \frac{1}{8 \pi G \rho} \partial_i \phi \partial^i \phi + \rho \phi$$
+$$\mathcal{L} = \frac{1}{8 \pi G} \partial_i \phi \partial^i \phi + \rho \phi$$
 
 ## Conclusion (Second Law of Epistemological Thermodynamics)
 
@@ -137,15 +137,15 @@ Just like the Second Law of Thermodynamics states that the entropy of the univer
 
 An immediate result of the above law is that we are not yet done when it comes to deriving a Lagrangian for Newtonian gravitation. 
 
-The Lagrangian surely yields the correct equation of motion (Poisson's equation) when varied with respect to the gravitational potential $\phi$. However, notice what happens when we vary it with with respect to the mass density field $\rho$,
+The Lagrangian surely yields the correct equation of motion (Poisson's equation) when varied with respect to the gravitational potential $$\phi$$. However, notice what happens when we vary it with with respect to the mass density field $$\rho$$,
 
 $$\phi = 0$$
 
 Oops! We now have two possible paths ahead of us:
 
-- Promote mass density $\rho$ to a non-relativistic classical field and modify the Lagrangian to yield Poisson's equation when varied with respect to both the fields $\phi$ and $\rho$.
+- Promote mass density $$\rho$$ to a non-relativistic classical field and modify the Lagrangian to yield Poisson's equation when varied with respect to both the fields $$\phi$$ and $$\rho$$.
 
-- Justify if $\rho$ is not a classical field and elaborate on its role in Poisson's equation and the associated Lagrangian, rigorously.
+- Justify if $$\rho$$ is not a classical field and elaborate on its role in Poisson's equation and the associated Lagrangian, rigorously.
 
 We will take one of these paths in a new post, soon. For now, which path will be adopted in the post will be akin to a stochastic process as I am not very sure of the outcome myself. However, I'm studing the topic in my free time and am beginning to see interesting connections between both the possibilities. In fact, they may be simultaneously workable, if we generalize classical fields to include distributions! And this seems to yield Newtonian particle dynamics for free solely from field-theoretic constructs.
 
