@@ -146,7 +146,7 @@ On integrating the above equation of motion, we get the solution $$\theta \left(
 
 To summarize, we showed that a pointlike harmonic oscillator (a system obeying Hooke's law) has a periodic evolution, simply by studying the symmetries of the equation of motion involved. We didn't need to solve the equation explicitly to predict the same, which is a win.
 
-However, some people may find all the algebraic manipulation we performed unnecessarily complicated. So, let us take a step back and try to think why such a route can be important.
+However, one may find all the algebraic manipulation we performed unnecessarily complicated. So, let us take a step back and try to think why such a route can be important.
 
 ## Why algebra?
 
