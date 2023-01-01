@@ -1,17 +1,13 @@
 ---
-title: "A Brief Geometric Analysis of the Klein-Gordon Theory: Part 2 (Tensor Algebra)"
+title: "A Brief Geometric Analysis of the Harmonic Oscillators: Part 2 (Tensor Algebra)"
 description: "An algebraic approach to studying the geometry of harmonic oscillators"
 categories: [classical field theory]
 tags: [harmonic oscillators, phase space, tensors]
 ---
 
-In [A Brief Geometric Analysis of Harmonic Oscillators]({% post_url 2022-01-21-geometric-analysis-harmonic-oscillators %}), we examined how a convenient choice of phase space for the motion of a harmonic oscillator reveals its periodicity, without explicitly solving the equation of motion (Hooke's law). Here, we will apply this intuition to a scalar field behaving like a harmonic oscillator but at a field-theoretic level (the corresponding equation of motion is the Klein-Gordon equation).
+In [A Brief Geometric Analysis of Harmonic Oscillators]({% post_url 2022-01-21-geometric-analysis-harmonic-oscillators %}), we examined how a convenient choice of phase space for the motion of a harmonic oscillator reveals its periodicity, without explicitly solving the equation of motion (Hooke's law). Here, we will apply the same intuition but in the language of tensor algebra, greatly compactifying the mathematical argument.
 
-Let us begin by reviewing the point-particle situation using more advanced mathematical tools than in the older post mentioned. This will allow us to easily upgrade our consideration to that of a scalar field and study it under a light both old and new.
-
-## Revisiting pointlike harmonic oscillators
-
-### Prior knowledge is power
+## Prior knowledge is power
 
 Consider the position $$x \left( t \right)$$ of a point-particle obeying Hooke's law. This obeys the equation of motion,
 
@@ -90,7 +86,7 @@ which is only true if $$u^i \omega_{i j} u^j = 0$$. Thus, $$g \left( \dot{u}^i, 
 
 [^2]: Had we chosen an arbitrary phase space represented by $$\omega^i_{\phantom{i} j}$$, we would need to choose a metric $$g_{i j}$$ such that $$g_{i j} \omega^i_{\phantom{i} k} = - g_{i k} \omega^i_{\phantom{i} j}$$ so that the above derivation would employ an antisymmetric tensor just as above. However, we would need to be careful that the geometry of the phase space is still Euclidean, which would require a rigorous usage of Riemannian geometry.
 
-### Interpreting the above result
+## Interpreting the above result
 
 We intuitively know that circular motion is the only motion where the velocity vector is orthogonal to the position vector all along. Thus, the velocity vector field of the harmonic oscillator resembles concentric circles (as seen [here]({% post_url 2022-01-21-geometric-analysis-harmonic-oscillators %}#velocity-vector-field)).
 
@@ -150,88 +146,18 @@ On integrating the above equation of motion, we get the solution $$\theta \left(
 
 To summarize, we showed that a pointlike harmonic oscillator (a system obeying Hooke's law) has a periodic evolution, simply by studying the symmetries of the equation of motion involved. We didn't need to solve the equation explicitly to predict the same, which is a win.
 
-However, some people may find all the algebraic manipulation we performed unnecessarily complicated. So, let us take a step back and try to think why such a route can be important. While answering the question, we will gradually climb the ladder from classical mechanics to classical field theory and discover a particular field theory which set on to revolutionize modern physics.
+However, some people may find all the algebraic manipulation we performed unnecessarily complicated. So, let us take a step back and try to think why such a route can be important.
 
 ## Why algebra?
 
-Before we ask a 'why', we must ask a 'what'. What is algebra? Well, the term is used in many senses, but it usually refers to the symbolic treatment and manipulation of mathematical objects. It is more general than numeric manipulation in that algebraic methods can be reused across apparently different problems in mathematics.
+Before we ask 'why', we must ask 'what'. What is algebra? Well, the term is used in many senses, but it usually refers to a structure where new objects can be created from given ones, using some kind of composition.
 
-In the section earlier, we used quite a bit of algebra, including tensor algebra (the manipulation of tensors). We deduced facts about harmonic oscillators — such as the orthogonality of their position and velocity vectors in phase space — using the structure and properties of the mathematical objects concerned ($$\pmb{u}$$, $$\dot{\pmb{u}}$$, $$\pmb{\omega}$$, $$\pmb{g}$$, etc.). This enabled us to conclude that a harmonic oscillator evolves periodically, without completely solving its equation of motion (rather, we broke it down into two, eliminated one by symmetry and solved the remaining first-order ordinary differential equation).
+In the section earlier, we used quite a bit of algebra, including tensor algebra (the manipulation of tensors). We deduced facts about harmonic oscillators — such as the orthogonality of their position and velocity vectors in phase space — by synthesizing mathematical objects such as $$\pmb{u}$$, $$\dot{\pmb{u}}$$, $$\pmb{\omega}$$, $$\pmb{g}$$, etc. This enabled us to conclude that a harmonic oscillator evolves periodically, without completely solving its equation of motion (rather, we broke it down into two, eliminated one by symmetry and solved the remaining first-order ordinary differential equation).
 
-Such an approach may be particularly handy when it is difficult to solve the equation(s) of motion of a more complicated harmonic oscillator or system of harmonic oscillators. There are many examples of these: Klein-Gordon fields, perturbations of the metric tensor in linearized gravity, quantum harmonic oscillators, quantum fields, etc. Typically, these systems exhibit symmetry in the form of symmetry groups with Lie algebras. These greatly simplify many analyses which would otherwise require mathematical machinery such as Fourier transforms.
+This algebraic approach gets especially important in quantum mechanics and field theory, where much of physics can be gleaned from algebra. There is no clear reason why — it simply seems to be the way the universe works. But perhaps, there is more going on here. Perhaps, algebra is so fundamental to physics because like physics, it is about conjuring richer objects from simpler objects. Moreover, algebra being so abstract seems to correspond to physics working well with abstractions, i.e. the key details of systems under concerned situations.
 
-With this in mind, we will apply the approach developed above, to study Klein-Gordon fields. They are the simplest field-theoretic analogue of classical harmonic oscillators. In fact, these fields _are_ continuous systems of infinite coupled harmonic oscillators, but we will not need to treat them such in the following derivation as we will deduce their periodic property solely by algebraically manipulating their equation of motion.
+However, to better understand this deep nature of physics, we must work out way through the mathematics. I hope to write future posts exploring the relationship between the theme of this post, and classical and quantum field theory. For instance, from the methods discussed above, one may begin to suspect that the fact that a Klein-Gordon field is a system of infinite harmonic oscillators may be algebraically demonstrated from the formal analogy between the Klein-Gordon equation and Hooke's law.
 
-## Klein-Gordon Fields
+That said, it's time to wrap up our first post of the year! Thanks for reading and thanks for wanting to know more today than you did yesterday. As said in Matthew 7:7,
 
-### Equations of motion
-
-The equation of motion for a Klein-Gordon field is derived from the Klein-Gordon Langrangian density,
-
-$$\mathcal{L} = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2$$
-
-The motivation for this Lagrangian can be found in [this]({% post_url 2021-12-01-scalar-field-lagrangian-symmetry-considerations %}) post. Plugging the Lagrangian into the field-theoretic Euler-Lagrange equations, we get the equation of motion,
-
-$$\partial_\mu \partial^\mu \phi + m^2 \phi = 0$$
-
-This is the Klein-Gordon equation. Our phase space analysis of this equation will be parallel to the one for pointlike harmonic oscillators. So, let us begin by making the Klein-Gordon equation look more symmetric:
-
-$$m^{-1} \partial_\mu \partial^\mu \phi + m \phi = 0$$
-
-Since $$m$$ is constant and assumed to be non-zero, we can freely move it and its inverse across derivative operators. Now, let us define a new field which will be identified as a new variable in the phase space of the Klein-Gordon field,
-
-$$\psi^\mu = m^{-1} \partial^\mu \phi$$
-
-This is a first-order equation of motion. Plugging it into the Klein-Gordon equation, we get another such equation of motion. For brevity, let us work in inertial coordinates.
-
-$$\phi = - m^{-1} \partial_\mu \psi^\mu$$
-
-Let us behold the two equations of motion together,
-
-$$
-\begin{align}
-\psi^\mu & = m^{-1} \partial^\mu \phi \\
-\phi & = - m^{-1} \partial_\mu \psi^\mu
-\end{align}
-$$
-
-Phase space treats its independent variables on an equal footing. Therefore, we imagine that in the above equations, $$u^A = \left( \psi^\mu, \phi \right)$$ are components of a higher-dimensional vector field,
-
-$$
-\begin{align}
-\pmb{u} & = u^A \partial_A \\
- & =  \psi^\mu \frac{\partial}{\partial \psi^\mu} + \phi \frac{\partial}{\partial \phi} \in \mathcal{S}
-\end{align}
-$$
-
-where $$\mathcal{S}$$ is an appropriate phase space. However, the problem with the equations of motion is that $$\psi^\mu$$ and $$\phi$$ are not really on the same footing — the former is a 4-vector field while the latter is a scalar field. To make the equations of motion even more symmetric, we might want a 4-vector field constructed from $$\phi$$ to appear in the second equation of motion ($$\phi = - m^{-1} \partial_\mu \psi^\mu$$). One way to do this is to find an equation of motion involving $$\partial_\nu \psi^\mu$$ on the right hand side, instead of the divergence $$\partial_\mu \psi^\mu$$. Consider the following:
-
-$$
-\begin{aligned}
-\partial_\mu \psi^\mu & = - m \phi \\
-\delta^\nu_{\phantom{\nu} \mu} \partial_\nu \psi^\mu & = - \frac{1}{4} \delta^\nu_{\phantom{\nu} \mu} \delta^\mu_{\phantom{\mu} \nu} m \phi \\
-\partial_\nu \psi^\mu & = - \frac{1}{4} \delta^\mu_{\phantom{\mu} \nu} m \phi
-\end{aligned}
-$$
-
-Rigorously proving the above is necessary but would make this post too lengthy. The key take is that tensor algebra severely restricts the nature of $$\partial_\nu \psi^\mu$$ given that of $$\partial_\mu \psi^\mu$$. We must have $$\text{tr} \left( \partial_\nu \psi^\mu \right) = \partial_\mu \psi^\mu$$ and any tensor on both sides of this equation can be factored out by multilinearity. Ultimately, we have two equations of motion which are symmetric up to some scaling factors:
-
-$$
-\begin{align}
-\partial_\rho \psi^\mu & = - \frac{1}{4} \delta^\mu_{\phantom{\mu} \rho} m \phi \\
-\partial_\rho \phi & = \eta_{\nu \rho} m \psi^\nu
-\end{align}
-$$
-
-Now, we combine the two above equations into a single geometric one,
-
-$$\partial_\rho \left( \psi^\mu \frac{\partial}{\partial \psi^\mu} + \phi \frac{\partial}{\partial \phi} \right) = m \left( \frac{\partial}{\partial \psi^\nu} \otimes \text{d} \phi - \frac{\partial}{\partial \phi} \otimes \text{d} \psi^\nu \right) \left( \psi^\mu \frac{\partial}{\partial \psi^\mu} + \phi \frac{\partial}{\partial \phi} \right)$$
-
-In the matrix form,
-
-$$
-\begin{align}
-\partial_\rho \begin{pmatrix} \psi^\mu \\ \phi \end{pmatrix} & = m \begin{pmatrix}  \end{pmatrix} \begin{pmatrix} \psi^\mu \\ \phi \end{pmatrix} \\
- & = m \begin{pmatrix}  \end{pmatrix}
-\end{align}
-$$
+> Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you.
