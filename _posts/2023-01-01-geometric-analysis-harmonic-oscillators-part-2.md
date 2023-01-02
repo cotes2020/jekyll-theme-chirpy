@@ -1,5 +1,5 @@
 ---
-title: "A Brief Geometric Analysis of the Harmonic Oscillators: Part 2 (Tensor Algebra)"
+title: "A Brief Geometric Analysis of Harmonic Oscillators: Part 2 (Tensor Algebra)"
 description: "An algebraic approach to studying the geometry of harmonic oscillators"
 categories: [classical mechanics]
 tags: [harmonic oscillators, phase space, tensors]
