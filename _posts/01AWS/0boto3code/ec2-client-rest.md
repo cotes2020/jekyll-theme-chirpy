@@ -54143,7 +54143,7 @@ Returns
 
             *   **CertificateS3ObjectKey** _(string) --_
 
-                The key of the Amazon S3 object ey where the certificate, certificate chain, and encrypted private key bundle is stored. The object key is formated as follows: certificate_arn /role_arn .
+                The key of the Amazon S3 object ey where the certificate, certificate chain, and encrypted private key bundle is stored. The object key is formatted as follows: certificate_arn /role_arn .
 
             *   **EncryptionKmsKeyId** _(string) --_
 
@@ -55884,7 +55884,7 @@ Parameters
 
         *   **InstanceCount** _(integer) --_
 
-            The number of instances the Covertible Reserved Instance offering can be applied to. This parameter is reserved and cannot be specified in a request
+            The number of instances the convertible Reserved Instance offering can be applied to. This parameter is reserved and cannot be specified in a request
 
         *   **OfferingId** _(string) --_ **[REQUIRED]**
 
