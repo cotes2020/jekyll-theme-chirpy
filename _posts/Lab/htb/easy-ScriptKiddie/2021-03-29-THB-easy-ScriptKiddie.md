@@ -14,7 +14,7 @@ tags: [Lab, HackTheBox]
 		- [CVE](#cve)
 			- [漏洞概述](#漏洞概述)
 			- [漏洞复现](#漏洞复现)
-	- [Gain acess to shell: Brup](#gain-acess-to-shell-brup)
+	- [Gain access to shell: Brup](#gain-access-to-shell-brup)
 		- [user.txt: Brupsuite](#usertxt-brupsuite)
 		- [user.txt: ReverseShell](#usertxt-reverseshell)
 	- [Privilege escalation](#privilege-escalation)
@@ -120,7 +120,7 @@ try msfvenom
 
 ---
 
-## Gain acess to shell: Brup
+## Gain access to shell: Brup
 
 ### user.txt: Brupsuite
 
