@@ -1103,12 +1103,12 @@ Conditions:
 Resources:
   Bucket:
     Type: 'AWS::S3::Bucket'
-    # use the condition, ture than got the bucket
+    # use the condition, true than got the bucket
     Condition: CreateBucket
 
   Policy:
     Type: 'AWS::S3::BucketPolicy'
-    # use the condition, ture than got the policy
+    # use the condition, true than got the policy
     Condition: CreateBucketPolicy
     Properties:
       Bucket: !Ref Bucket

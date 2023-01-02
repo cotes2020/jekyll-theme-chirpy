@@ -22310,7 +22310,7 @@ Returns
             *   _(string) --_
         *   **IncludeAllTagsOfInstance** _(boolean) --_
 
-            Indicates wheter all tag keys in the current Region are registered to appear in scheduled event notifications. true indicates that all tag keys in the current Region are registered.
+            Indicates whether all tag keys in the current Region are registered to appear in scheduled event notifications. true indicates that all tag keys in the current Region are registered.
 
 
 deregister_transit_gateway_multicast_group_members(kwargs_)definition")
@@ -30865,7 +30865,7 @@ Returns
             *   _(string) --_
         *   **IncludeAllTagsOfInstance** _(boolean) --_
 
-            Indicates wheter all tag keys in the current Region are registered to appear in scheduled event notifications. true indicates that all tag keys in the current Region are registered.
+            Indicates whether all tag keys in the current Region are registered to appear in scheduled event notifications. true indicates that all tag keys in the current Region are registered.
 
 
 describe_instance_status(kwargs_)
@@ -66115,7 +66115,7 @@ Returns
             *   _(string) --_
         *   **IncludeAllTagsOfInstance** _(boolean) --_
 
-            Indicates wheter all tag keys in the current Region are registered to appear in scheduled event notifications. true indicates that all tag keys in the current Region are registered.
+            Indicates whether all tag keys in the current Region are registered to appear in scheduled event notifications. true indicates that all tag keys in the current Region are registered.
 
 
 register_transit_gateway_multicast_group_members(kwargs_)definition")

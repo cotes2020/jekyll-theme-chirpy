@@ -84,7 +84,7 @@ Automate provisioning of CodeBuild with CodePipeline, CodeCommit, and CodeDeploy
       "MaxLength":"18",
       "Default": "0.0.0.0/0",
       "AllowedPattern":"(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2",
-      "ConstraintDescription":"in formate of x.x.x.x/x"
+      "ConstraintDescription":"in format of x.x.x.x/x"
     }
   },
   "Mappings": {

@@ -49,7 +49,7 @@ def isPal(s):
 
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # exchange the coins
 
 def dpMakeChange(coinValueList,change,minCoins,coinsUsed):
@@ -105,7 +105,7 @@ def main():
 
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Write a recursive function to compute the factorial of a number.
 # Factorial of a non-negative integer, is multiplication of all integers smaller than or equal to n.
 # For example factorial of 6 is 6*5*4*3*2*1 which is 720.
@@ -165,7 +165,7 @@ def factorial(n):
 
 
 import random
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Modify the recursive tree program using one or all of the following ideas:
 # Modify the thickness of the branches so that as the branchLen gets smaller, the line gets thinner.
 # Modify the color of the branches so that as the branchLen gets very short it is colored like a leaf.
@@ -208,7 +208,7 @@ def main():
 
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Write a recursive function to compute the Fibonacci sequence. How does the performance of the recursive function compare to that of an iterative version?
 
 def Fibonacci(number):
@@ -228,7 +228,7 @@ def Fibonacci(number):
 
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Write a program to solve the following problem:
 # You have two jugs: a 4-gallon jug and a 3-gallon jug.
 # Neither of the jugs have markings on them.
@@ -354,7 +354,7 @@ def jugs(target, jug_list):
 # jugs(1, (4, 3))
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Write a program that solves the following problem:
 # Three missionaries and three cannibals come to a river and find a boat that holds two people.
 # Everyone must get across the river to continue on the journey.
@@ -707,7 +707,7 @@ if __name__ == '__main__':
 
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Suppose you are a computer scientist/art thief who has broken into a major art gallery.
 # All you have with you to haul out your stolen art is your knapsack which only holds W pounds of art,
 # but for every piece of art you know its value and its weight.
@@ -724,5 +724,5 @@ if __name__ == '__main__':
 
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # This problem is called the string edit distance problem, and is quite useful in many areas of research. Suppose that you want to transform the word “algorithm” into the word “alligator.” For each letter you can either copy the letter from one word to another at a cost of 5, you can delete a letter at cost of 20, or insert a letter at a cost of 20. The total cost to transform one word into another is used by spell check programs to provide suggestions for words that are close to one another. Use dynamic programming techniques to develop an algorithm that gives you the smallest edit distance between any two words.

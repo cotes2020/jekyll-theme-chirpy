@@ -564,7 +564,7 @@ available waiters:
 
 Identifiers
 
-Identifiers are properties of a resource that are set upon instantation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
+Identifiers are properties of a resource that are set upon instantiation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
 
 id
 
@@ -1270,7 +1270,7 @@ available collections:
 
 Identifiers
 
-Identifiers are properties of a resource that are set upon instantation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
+Identifiers are properties of a resource that are set upon instantiation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
 
 id
 
@@ -3125,7 +3125,7 @@ available actions:
 
 Identifiers
 
-Identifiers are properties of a resource that are set upon instantation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
+Identifiers are properties of a resource that are set upon instantiation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
 
 resource_id
 
@@ -3266,7 +3266,7 @@ available collections:
 
 Identifiers
 
-Identifiers are properties of a resource that are set upon instantation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
+Identifiers are properties of a resource that are set upon instantiation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
 
 id
 
@@ -4267,7 +4267,7 @@ available waiters:
 
 Identifiers
 
-Identifiers are properties of a resource that are set upon instantation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
+Identifiers are properties of a resource that are set upon instantiation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
 
 id
 
@@ -6762,7 +6762,7 @@ available waiters:
 
 Identifiers
 
-Identifiers are properties of a resource that are set upon instantation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
+Identifiers are properties of a resource that are set upon instantiation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
 
 id
 
@@ -7369,7 +7369,7 @@ available actions:
 
 Identifiers
 
-Identifiers are properties of a resource that are set upon instantation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
+Identifiers are properties of a resource that are set upon instantiation of the resource. For more information about identifiers refer to the [_Resources Introduction Guide_](../../guide/resources.html#identifiers-attributes-intro).
 
 allocation_id
 

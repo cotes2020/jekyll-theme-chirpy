@@ -86,7 +86,7 @@ public class ArrayList<E> implements List<E> { // instance variables {
     */
     private class ArrayIterator implements Iterator<E> {
         private int j=0;
-        private boolean removeable = false;
+        private boolean removable = false;
 
         /**
         * Tests whether the iterator has a next object.
@@ -95,14 +95,14 @@ public class ArrayList<E> implements List<E> { // instance variables {
         public boolean hasNext() {return j<size;}
         public E next() throws NoSuchElementException{
             if(j==size) throw new NoSuchElementException("No next element.");
-            removeable=true;
+            removable=true;
             return data[j++];
         }
         public void remove() throws IllegalStateException{
-            if(!removeable) throw new IllegalStateException("nothing to remove");
+            if(!removable) throw new IllegalStateException("nothing to remove");
             ArrayList.this.remove(j-1);
             j--;
-            removeable = false;
+            removable = false;
         }
     }
 }

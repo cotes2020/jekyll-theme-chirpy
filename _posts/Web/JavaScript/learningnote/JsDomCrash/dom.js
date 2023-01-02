@@ -364,7 +364,7 @@
 //   // Convert to an array
 //   Array.from(items).forEach(function(item){
 //     var itemName = item.firstChild.textContent;
-//     if(itemName.toLowerCase().indexOf(text) != -1){ // if ture
+//     if(itemName.toLowerCase().indexOf(text) != -1){ // if true
 //       item.style.display = 'block';
 //     } else {
 //       item.style.display = 'none';

@@ -95,7 +95,7 @@ def isPal(s):
 ## exchange the coins
 
 ```py
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 
 def dpMakeChange(coinValueList,change,minCoins,coinsUsed):
   for cents in range(change+1):
@@ -153,7 +153,7 @@ def main():
 ## factorial of a number
 
 ```py
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Write a recursive function to compute the factorial of a number.
 # Factorial of a non-negative integer, is multiplication of all integers smaller than or equal to n.
 # For example factorial of 6 is 6*5*4*3*2*1 which is 720.
@@ -220,7 +220,7 @@ def factorial(n):
 
 
 ```py
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Modify the recursive tree program using one or all of the following ideas:
 # Modify the thickness of the branches so that as the branchLen gets smaller, the line gets thinner.
 # Modify the color of the branches so that as the branchLen gets very short it is colored like a leaf.
@@ -269,7 +269,7 @@ def main():
 ## Fibonacci sequence
 
 ```py
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Write a recursive function to compute the Fibonacci sequence.
 # How does the performance of the recursive function compare to that of an iterative version?
 
@@ -299,7 +299,7 @@ def Fibonacci(number):
 ![Screen Shot 2021-09-25 at 10.38.52 PM](https://i.imgur.com/wr2BbqN.png)
 
 ```py
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Write a program to solve the following problem:
 # You have two jugs: a 4-gallon jug and a 3-gallon jug.
 # Neither of the jugs have markings on them.
@@ -369,7 +369,7 @@ jugs(1, (4, 3))
 ## missionaries and cannibals
 
 ```py
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Write a program that solves the following problem:
 # Three missionaries and three cannibals come to a river and find a boat that holds two people.
 # Everyone must get across the river to continue on the journey.

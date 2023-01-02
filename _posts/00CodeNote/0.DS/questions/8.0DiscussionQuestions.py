@@ -4,7 +4,7 @@
 # 8.25. Discussion Questions
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 1. Draw the graph corresponding to the following adjacency matrix.
 class Vertex:
     def __init__(self, key) -> None:
@@ -161,7 +161,7 @@ class GraphyAM:
 # g.print_graph()
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 2. Draw the graph corresponding to the following list of edges.
 
 
@@ -230,7 +230,7 @@ class GraphyAL:
 # print(g.vertList)
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 3. Ignoring the weights,
 # perform a breadth first search on the graph from the previous question.
 
@@ -301,20 +301,20 @@ def bfs(start):
 #     print(i)
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 4. What is the Big-O running time of the buildGraph function?
 # B. O(n^2)
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 5. Derive the Big-O running time for the topological sort algorithm.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 6. Derive the Big-O running time for the strongly connected components algorithm.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 7. Show each step in applying Dijkstra’s algorithm to the graph shown above.
 from pythonds.graphs import Graph, PriorityQueue, Vertex
 
@@ -354,7 +354,7 @@ print([(v.getDistance(), v.id) for v in g])
 
 import sys
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 8. Using Prim’s algorithm,
 # find the minimum weight spanning tree for the graph shown above.
 from pythonds.graphs import Graph, PriorityQueue, Vertex
@@ -378,15 +378,15 @@ def prim(G, start):
                 pq.decreaseKey(nextVert, newCost)
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Draw a dependency graph illustrating the steps needed to send an email. Perform a topological sort on your graph.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Derive an expression for the base of the exponent used in expressing the running time of the knights tour.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 11. Explain why the general DFS algorithm is not suitable for solving
 # the knights tour problem.
 

@@ -169,7 +169,7 @@ const numbers = new Array(1,2,3,4,5)
 
 const fruits = []
 
-let shopping = ['bread', 'milk', 'cheese', 'hummus', 'noodles', 10, ture]; // can have different type
+let shopping = ['bread', 'milk', 'cheese', 'hummus', 'noodles', 10, true]; // can have different type
 
 shopping[0] = 'tahini';
 
@@ -513,7 +513,7 @@ run some other code    //  it always runs, regardless of whether the condition r
 const x = 10;
 const y = '10';
 
-if(x===10){}   // ture, match both value and data type
+if(x===10){}   // true, match both value and data type
 if(y===10){}   // false
 if(y==10){}    // still true, === just value.
 
@@ -528,8 +528,8 @@ if(x===10){
 const x = 4;
 const y = 10;
 
-if(x > 5 || y > 10) {}  // just one ture
-if(x > 5 && y > 10) {}  // both have to be ture
+if(x > 5 || y > 10) {}  // just one true
+if(x > 5 && y > 10) {}  // both have to be true
 
 
 // else if

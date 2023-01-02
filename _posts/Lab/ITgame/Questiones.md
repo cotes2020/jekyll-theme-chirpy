@@ -47,7 +47,7 @@ list_result=[]
 for i in list_num:
     for j in list_num:
         for k in list_num:
-            if len(set(i+j+k))==3:        #always ture and set the num
+            if len(set(i+j+k))==3:        #always true and set the num
                 list_result+=[int(i+j+k)]
 print "amount is:", len(list_result)
 print list_result

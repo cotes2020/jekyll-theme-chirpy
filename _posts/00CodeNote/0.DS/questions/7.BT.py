@@ -2,7 +2,7 @@
 
 # 7.21. Discussion Questions
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 1. Draw the tree structure resulting from the following set of tree function calls:
 # >>> r = BinaryTree(3)
 # >>> insertLeft(r,4)
@@ -24,7 +24,7 @@
 # 4
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 2. Trace the algorithm for creating an expression tree for the expression (4∗8)/6−3.
 from pythonds.basic import Stack
 from pythonds.trees import BinaryTree
@@ -69,7 +69,7 @@ def expression_tree(input_word):
 # print(etree)
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 3. Consider the following list of integers: [1,2,3,4,5,6,7,8,9,10].
 # Show the binary search tree resulting from inserting the integers in the list.
 alist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -140,7 +140,7 @@ class BST:
 #     eTree = eTree.put_node(eTree, i)
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 4. Consider the following list of integers: [10,9,8,7,6,5,4,3,2,1].
 # Show the binary search tree resulting from inserting the integers in the list.
 # eTree = BST(None)
@@ -150,7 +150,7 @@ class BST:
 #     eTree = eTree.put_node(eTree, i)
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 5. Generate a random list of integers.
 # Show the binary heap tree resulting from inserting the integers on the list one at a time.
 class BHT:
@@ -225,21 +225,21 @@ class BHT:
 # [0, 5, 7, 11, 14, 9, 19, 21, 33, 17, 27, 18]
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 6. Using the list from the previous question, show the binary heap tree resulting from using the list as a parameter to the buildHeap method. Show both the tree and list form.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 7. Draw the binary search tree that results from inserting the following keys in the order given:
 # 68,88,61,89,94,50,4,76,66, and 82.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 8. Generate a random list of integers.
 # Draw the binary search tree resulting from inserting the integers on the list.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 9. Consider the following list of integers: [1,2,3,4,5,6,7,8,9,10].
 # Show the binary heap resulting from inserting the integers one at a time.
 # bhTree = BHT()
@@ -279,7 +279,7 @@ class BHT:
 # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 10. Consider the following list of integers: [10,9,8,7,6,5,4,3,2,1].
 # Show the binary heap resulting from inserting the integers one at a time.
 
@@ -339,12 +339,12 @@ class BHT:
 # [0, 1, 2, 5, 4, 3, 9, 6, 10, 7, 8]
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 11. Consider the two different techniques we used for implementing traversals of a binary tree.
 # Why must we check before the call to preorder when implementing as a method, whereas we could check inside the call when implementing as a function?
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # 12. Show the function calls needed to build the following binary tree.
 # class BHT():
 #     def __init__(self):
@@ -418,7 +418,7 @@ class BHT:
 # [0, 'language', 'complied', 'interpreted', 'C', 'Java', 'Python', 'Scheme']
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Given the following tree, perform the appropriate rotations to bring it back into balance.
 #       B
 #   A       E
@@ -533,52 +533,52 @@ bTree = bTree.put_node(bTree, "F")
 bTree = bTree.put_node(bTree.rchild.lchild, "C")
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Using the following as a starting point, derive the equation that gives the updated balance factor for node D.
 
 
 # 7.22. Programming Exercises
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Extend the buildParseTree function to handle mathematical expressions that do not have spaces between every character.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Modify the buildParseTree and evaluate functions to handle boolean statements (and, or, and not). Remember that “not” is a unary operator, so this will complicate your code somewhat.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Using the findSuccessor method, write a non-recursive inorder traversal for a binary search tree.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Modify the code for a binary search tree to make it threaded. Write a non-recursive inorder traversal method for the threaded binary search tree. A threaded binary tree maintains a reference from each node to its successor.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Modify our implementation of the binary search tree so that it handles duplicate keys properly. That is, if a key is already in the tree then the new payload should replace the old rather than add another node with the same key.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Create a binary heap with a limited heap size. In other words, the heap only keeps track of the n most important items. If the heap grows in size to more than n items the least important item is dropped.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Clean up the printexp function so that it does not include an ‘extra’ set of parentheses around each number.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Using the buildHeap method, write a sorting function that can sort a list in 𝑂(𝑛log𝑛) time.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Write a function that takes a parse tree for a mathematical expression and calculates the derivative of the expression with respect to some variable.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Implement a binary heap as a max heap.
 
 
-# -------------------------------------- Excercises -------------------------------------------------
+# -------------------------------------- Exercises -------------------------------------------------
 # Using the BinaryHeap class, implement a new class called PriorityQueue. Your PriorityQueue class should implement the constructor, plus the enqueue and dequeue methods.

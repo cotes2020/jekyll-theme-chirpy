@@ -43,9 +43,9 @@ touch /etc/nologin
 禁止用户登录时，/etc/nologin 文件中的内容将会显示给用户，会一闪而过。
 例如，按如下方式创建 nologin 文件：
 
-disable login by admin temperarily!
+disable login by admin temporarily!
 
-当用户试图登陆时，将会给用户显示"disable login by admin temperarily!"，
+当用户试图登陆时，将会给用户显示"disable login by admin temporarily!"，
 当系统维护结束以后，再删除/etc/nologin文件，其他用户就又可以恢复登陆了，
 
 这只是限于能登陆shell的用户来说的，

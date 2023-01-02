@@ -1637,7 +1637,7 @@ How to find the secret.
 steghide
 compression of embedded data
 encryption of embedded data
-embedding of a checksum to verify the integrity of the extraced data support for JPEG, BMP, WAV and AU files
+embedding of a checksum to verify the integrity of the extracted data support for JPEG, BMP, WAV and AU files
 1. 官网地址:http://steghide.sourceforge.net/documentation.php 2. Install steghide
 apt-get install steghide
      3. 先要cd到有文件的当下目录 4. 在文件中隐藏数据

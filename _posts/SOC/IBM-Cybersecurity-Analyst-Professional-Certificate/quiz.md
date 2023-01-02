@@ -121,7 +121,7 @@ Contingent security mechanism
 
 
 True or False: Authentication, Access Control and Data Confidentiality are all addressed by the ITU X.800 standard.
-> Ture
+> Tre
 
 16. Cryptography, digital signatures, access controls and routing controls considered which?
 > Specific security mechanisms
