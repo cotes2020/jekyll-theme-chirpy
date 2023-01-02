@@ -350,7 +350,7 @@ BeyondCorp Enterprise works by leveraging four Google Cloud offerings:
    - why and timeline
    - benefit:
      - increase access from worker outside of office
-     - adress risk of unauthorized access or application compromise
+     - address risk of unauthorized access or application compromise
      - multi-region availability
      - reduced latency
      -
