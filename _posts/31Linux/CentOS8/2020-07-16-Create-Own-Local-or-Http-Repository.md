@@ -41,7 +41,7 @@ trusted and authenticated
 $ more /etc/yum.conf
 [main]
 cachedir=/var/cache/yum/$basearch/$releasever  //where YUM caches packages locally with performing installations.
-keepcache=0                //  after done installation, delet the cache
+keepcache=0                //  after done installation, delete the cache
 debuglevel=2
 logfile=/var/log/yum.log
 exactarch=1
