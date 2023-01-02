@@ -46,7 +46,7 @@ LFCE: Advanced Network and System Administration / Configuring and Managing NFS 
 `exportfs` update and maintains a table of exports in server.
 
 table path: /var/lib/nfs/etab
-table holds the run time conifguration of exports
+table holds the run time configuration of exports
 
 
 host:
@@ -217,8 +217,7 @@ server1:
 $ sudo vi /etc/fstab
 // add
 /dev/mapper/cl-root     /                       xfs     defaults        0 0
-UUID=ca2f12da-b776-4a8a-9dd0-308da349067a /boot                   ext4    defaul
-ts        1 2
+UUID=ca2f12da-b776-4a8a-9dd0-308da349067a /boot                   ext4    defaults        1 2
 /dev/mapper/cl-swap     swap                    swap    defaults        0 0
 server0.psdemo.local:/share1	     /mnt	        nfs	    defaults,rw,_netdev  0 0
 // _netdev: not attempt to mount file system until the network device is online, since nfs through network.
@@ -278,7 +277,7 @@ share1      // share1 shows up, on demands
 
 ```
 
-### mount unsuccess
+### mount unsuccessful
 
 server2:
 
