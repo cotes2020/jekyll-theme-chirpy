@@ -53,14 +53,14 @@ Machine code 是低级语言，或者说是底层语言，
 
 所以我们有了高级语言
 - 程序员用高级语言编程或者assembly code写代码source code，
-- 然后用Assemblers或者complier来把source code assemble/comply 成 machine language module (object file, 里面会有placeholders or offsets)，然后linker把这些不同的object library/file连接起来生成一个 executable file
+- 然后用Assemblers或者compiler来把source code assemble/comply 成 machine language module (object file, 里面会有placeholders or offsets)，然后linker把这些不同的object library/file连接起来生成一个 executable file
 - 或者有的Assembler也可以直接把source code assemble 成machine code。
 
 
 然后高级语言也有分不同的：
 
 Compiled languages (e.g. C, C++)
-- Source code -> complier -> object file ->
+- Source code -> compiler -> object file ->
 - runtime: linker -> machine executable file -> output (上述)
 
 Interpreted programming languages (e.g. Python, Perl)
