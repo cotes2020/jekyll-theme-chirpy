@@ -56,11 +56,11 @@ a | b
 ---|---
 抽象 | 实现
 逻辑 | 物理
-接口 | 实现 implemen
+接口 | 实现 implement
 
 <kbd>算法+数据结果=编程</kbd>
 
-bulid in function: procedural abstraction
+build in function: procedural abstraction
 
 primitive data typr: int, str....
 
