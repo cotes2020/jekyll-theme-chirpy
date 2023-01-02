@@ -54,7 +54,7 @@ sleepy....
 
 
 
-| GCP Certificat                                                                                                                                                                             | Mark |
+| GCP Certificate                                                                                                                                                                             | Mark |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--- |
 | **coursera** ==========                                                                                                                                                                    |
 | Certification: `GCP - Cloud Engineer Professional Certificate`                                                                                                                             | 🐰    |
@@ -273,7 +273,7 @@ sleepy....
 
 <br>
 
-| course less recommand                                                                                            | Mark      |
+| course less recommend                                                                                            | Mark      |
 | :--------------------------------------------------------------------------------------------------------------- | :-------- |
 | **[Coursera] `Fundamentals of Computer Network Security**                                                        |
 | [1. Design and Analyze Secure Networked Systems](https://www.coursera.org/learn/design-secure-networked-systems) | :warning: |
