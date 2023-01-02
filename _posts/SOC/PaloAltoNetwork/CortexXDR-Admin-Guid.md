@@ -1250,14 +1250,14 @@ Prevents DLL-hijacking attacks where the attacker attempts to load dynamic-link 
    Mac
    Linux
    Android
- Windows operating systems from unsecure locations to gain control of a process.
+ Windows operating systems from insecure locations to gain control of a process.
                      DLL Security
 Prevents access to crucial DLL metadata from untrusted code locations.
            —
     —
    —
    Dylib Hijacking
-Prevents Dylib-hijacking attacks where the attacker attempts to load dynamic libraries on Mac operating systems from unsecure locations to gain control of a process.
+Prevents Dylib-hijacking attacks where the attacker attempts to load dynamic libraries on Mac operating systems from insecure locations to gain control of a process.
       —
          —
    —
@@ -1376,7 +1376,7 @@ Prevents shell-link logical vulnerabilities.
       —
      —
    SO Hijacking Protection
-Prevents dynamic loading of libraries from unsecure locations to gain control of a process.
+Prevents dynamic loading of libraries from insecure locations to gain control of a process.
     —
   —
     —
@@ -2381,7 +2381,7 @@ WER events for application crashes only
      CAPI events Build Chain (11), Private Key accessed (70), X509 object (90)
    Microsoft-Windows- DNS-Client/ Operational
       3008
- DNS Query Completed (3008) without local machine na,e resolution events and without enmpty name resolution events
+ DNS Query Completed (3008) without local machine na,e resolution events and without emptyname resolution events
    Microsoft-Windows- DriverFrameworks- UserMode/Operational
               2004
      Detect User-Mode drivers loaded - for potential BadUSB detection
@@ -3341,7 +3341,7 @@ Inc.
     Description
   # OF HITS
 BACKWARDS SCAN STATUS
-BACKWARDS SCAN TIMETAMP
+BACKWARDS SCAN TIMESTAMP
 BACKWARDS SCAN RETRIES
 BEHAVIOR COMMENT EXCEPTIONS
 GLOBAL RULE ID INSERTION DATE MITRE ATT&CK TACTIC
@@ -3596,7 +3596,7 @@ After create an indicator rule, take the following actions:
 - Disable or Remove a Rule
 - Add a Rule Exception
 View Alerts Triggered by a Rule
-As IOC and BIOC rules trigger alerts, Cortex XDR displays the total # OF HITS for the rule in the on the BIOC or IOC rules page. To view the associated alerts trigged by a rule:
+As IOC and BIOC rules trigger alerts, Cortex XDR displays the total # OF HITS for the rule in the on the BIOC or IOC rules page. To view the associated alerts triggeredby a rule:
 - STEP 1 | Select RULES and the type of rule (BIOC or IOC).
 - STEP 2 | Right-click anywhere in the rule, and then select View associated alerts.
 Cortex XDR displays a filtered query of alerts associated with the Rule ID.Inc.
@@ -3715,8 +3715,7 @@ Show results that are not equal to a Regex pattern match. Not supported with IP 
 Show results that contain a value.
 Show results that do not contain a value.
         Operator
-    Descriptio
-                           in (list, range)
+    Descriptioin (list, range)
    Show results including one or more matches in a list or range. Not supported with IP addresses or ranges.
      not in (list, range)
     Show results excluding one or more matches in a list or range. Not supported with IP addresses or ranges.
@@ -4179,8 +4178,8 @@ Select the calendar icon to schedule a query to run on or before a specific date
 1. View the Results of a Query.
 2. At the top of the query, click the pencil icon to the right of the query parameters.
 Cortex XDR opens the query settings page.
-3. Modify the search parameters as desired.
-4. Choose when to run the query.
+1. Modify the search parameters as desired.
+2. Choose when to run the query.
 Select the calendar icon to schedule a query to run on or before a specific date, Run in background to run the query and review the result at a later time, or Run to run the query immediately and view the results in the Query Center.
 Rerun or Schedule a Query to Run
 If want to rerun a query, either schedule it to run on or before a specific date, or rerun it immediately. Cortex XDR will create a new query in the Query Center. When the query completes, Cortex XDR displays a notification in the notification bar.
@@ -6234,7 +6233,7 @@ Registration of the Broker VM can take up to 30 seconds.
 After a successful registration, a registered notification will appear.
 are directed to Cortex XDR > > Settings > Broker > VMs. The Broker VMs page displays broker VM details and allows to edit the defined configurations.
 Create a Broker VM AMI Image
-After download Cortex XDR Broker VMDK image, covert the image to Amazon Web Services (AWS) AMI.
+After download Cortex XDR Broker VMDK image, convert the image to Amazon Web Services (AWS) AMI.
 To convert the image:
 
  Set up AWS CLI
@@ -6468,7 +6467,7 @@ Initiating VM Last Seen
 Start Time Status
 Timestamp of when the collector was installed in the host.
 Displays the Alert ID of the analytics alert that triggered the collector.
-Name of the broker VM initiating the collector. Timetamp of the last collector heartbeat.
+Name of the broker VM initiating the collector. Timestampof the last collector heartbeat.
 Timestamp of when the collector was triggered.
 Status of the collector on the host. Can be either:
                  Result
@@ -6819,7 +6818,7 @@ default, the Network Subnet is set to 172.17.0.1/16. Internal IP must be:
      STATUS
      Connection status of the broker device. Status is defined by either Connected or Disconnected.
 Disconnected broker devices do not display CPU Usage, Memory Usage, and Disk Usage information.
-Notification about broker VM loosing connectivity to Cortex XDR appear in the Notification Center.
+Notification about broker VM losingconnectivity to Cortex XDR appear in the Notification Center.
        VERSION
     Version number of the broker device. If the status indicator is not green, then the broker is not running the latest version.
 Notification about available new broker VM version appear in the Notification Center.
@@ -7779,7 +7778,7 @@ Syslog Server
 
 Section | Description
 ---|---
-Syslog Header | `<9>: PRI (considered a prioirty field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`
+Syslog Header | `<9>: PRI (considered a priority field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`
 CEF Header | `HEADER/Vendor="Palo Alto Networks" (as a constant string) HEADER/Device Product="Cortex XDR"(as a constant string) HEADER/Product Version= Cortex XDR version (2.0/2.1....) HEADER/Severity=severity(informational/low/medium/high) HEADER/Device Event Class ID=alert source HEADER/name =alert name`
 CEF Body | `end=timestampshost=hostsuser=usernamedeviceFacil typeact=actioncat=categorymsg=descriptionextern idrequest=alert linkflexString1=starredflexString1Label="Starre a constant string)flexString2=excludedflexString2Label="Ex a constant string)cs1=initiated bycs1Label="Initiated by" (as a constant string)cs2=initiator cmdcs2Label="InitiatorCMD" (as a constant string)cs3=string.concat(initiator sig, initiator singer, "-")cs3Label="Signature" (as a constant string)cs4=CGO namecs4Label="CGO name" (as a constant string)cs5=cgo cmdcs5Label="CGO CMD" (as a constant string)cs6=string.concat(cgo sig, cgo singer, "-")cs6Label="CGO Signature" (as a constant string)dst=remoteipdpt=remote portdhost=remote hostsrc=local ipspt=localportapp=app idregistrydata = registrydataregistryfullkey = registryfullkeytargetprocessname = targetprocessnametargetprocesscmd =targetprocesscmdtargetprocesssignature= string.concat(target processsig, target process signer, "-")targetprocesssha256= targetprocesssha256tenantname = tenantnametenantCDLid = tenantCDLidCSPaccountname = CSPaccountnamefileHash=file sha256filePath=file path`
 
@@ -7805,9 +7804,9 @@ Syslog Server
 
 Section | Description
 ---|---
-Syslog Header | <9>: `PRI (considered a prioirty field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`
+Syslog Header | <9>: `PRI (considered a priority field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`
 CEF Header | `HEADER/Vendor="Palo Alto Networks" (as a constant string)HEADER/Device Product="Cortex XDRAgent" (as a constant string)HEADER/Device Version= Cortex XDR Agent version (7.0/7.1....)HEADER/Severity=informationalHEADER/Device Event Class ID="Agent Audit Logs" (as a constant string)HEADER/name = type`
-CEF Body | `end=timestamprt=recieved timecat=categorymsg=descriptiondeviceHostName = domainexternalId = endpoint idshost = endpoint namecs1=xdr agent versioncs1Label="agentversion" (as a constant string)cs2=subtypecs2Label="subtype" (as a constant string)cs3=resultcs3Label="result" (as a constant string)cs4=reasoncs4Label="reason" (as a constant string)`
+CEF Body | `end=timestamprt=receivedtimecat=categorymsg=descriptiondeviceHostName = domainexternalId = endpoint idshost = endpoint namecs1=xdr agent versioncs1Label="agentversion" (as a constant string)cs2=subtypecs2Label="subtype" (as a constant string)cs3=resultcs3Label="result" (as a constant string)cs4=reasoncs4Label="reason" (as a constant string)`
 
 > Example:
 > Audit Logs|REPORTING|5|suser=test end=1584533117501 externalId=0000 cs1Label=email cs1=test@paloaltonetworks.com cs2Label=subtype cs2=Slack Report cs3Label=result cs3=SUCCESS cs4Label=reason cs4=None msg=Slack report 'scheduled_1584533112442' ID 00 to ['CUXM741BK', 'C01022YU00L', 'CV51Y1E2X', 'CRK3VASN9'] tenantname=test CSPaccountname=00000
@@ -7825,7 +7824,7 @@ Syslog Server
 
 Section | Description
 ---|---
-Syslog Header |  `<9>: PRI (considered a prioirty field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`
+Syslog Header |  `<9>: PRI (considered a priority field)1: version number2020-03-22T07:55:07.964311Z: timestamp of when alert/log was sentcortexxdr: host name`
 Syslog Header | `HEADER/Vendor="Palo Alto Networks" (as a constant string)HEADER/Device Product="Cortex XDR" (as a constant string)HEADER/Device Version= Cortex XDR version(2.0/2.1....)HEADER/Severity=informationalHEADER/Device Event Class ID="Management Audit Logs" (as a constant string)HEADER/name = type`
 CEF Body | `end=timestampsuser=user namecat=categorymsg=descriptiondeviceHostName = host nameexternalId = idcs1=emailcs1Label="email" (as a constant string)cs2=subtypecs2Label="subtype" (as a constant string)cs3=resultcs3Label="result" (as a constant string)cs4=reasoncs4Label="reason" (as a constant string)`
 
