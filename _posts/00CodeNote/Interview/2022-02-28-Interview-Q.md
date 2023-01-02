@@ -78,15 +78,15 @@ public class Amazon {
         ArrayList<Object> res = new ArrayList<Object>();
         if(map.containsKey(offset)) {
             res.add(true);
-            int[] datas = map.get(offset);
-            int n = datas.length;
+            int[] data = map.get(offset);
+            int n = data.length;
             if(n==1){
-                res.add(datas[0]);
+                res.add(data[0]);
                 // System.out.println("offset: " + offset + ", one value: " + ans);
                 offset++;
                 return res;
             }
-            res.add(datas[index]);
+            res.add(data[index]);
             if(index == n-1) {
                 // System.out.println("offset: " + offset + ", last value: " + ans);
                 index=0;
@@ -205,9 +205,9 @@ public class solution200927{
                 // case 1). both logs are letter-logs
                 if (!isDigit1 && !isDigit2) {
                     // first compare the content
-                    int alphcompare = split1[1].compareTo(split2[1]);
-                    if (alphcompare != 0){
-                        return alphcompare;
+                    int alphaacompare = split1[1].compareTo(split2[1]);
+                    if (alphaacompare != 0){
+                        return alphaacompare;
                         // > 0 split2, split1
                         // < 0 split1, split2
                     }
@@ -235,12 +235,12 @@ public class solution200927{
 
 
     // my
-    String alph = "abcdefghijklmnopqrstuvwxyz";
+    String alpha = "abcdefghijklmnopqrstuvwxyz";
 
     public boolean checkprime(String order){
         int startindex = order.indexOf(" ");
         String startwrd = order.substring(startindex+1, startindex+2);
-        if(alph.indexOf(startwrd)==-1){
+        if(alpha.indexOf(startwrd)==-1){
             System.out.println("not prime");
             return false;
         }
@@ -562,9 +562,9 @@ def merge(nums1, m, nums2, n):
             n -= 1
         listL -= 1
 
-    # m <= 0: when nums1 finsih
+    # m <= 0: when nums1 finish
     # n != 0 : rest of put to the head nums1[:n]
-    # n <= 0: when nums2 finsih
+    # n <= 0: when nums2 finish
     # m != 0 : keep those m
     if m <= 0:
         nums1[:n] = nums2[:n]
@@ -1282,7 +1282,7 @@ def lambda_handler(event, context):
 # is ordered 2,3,4,5,6,7,8,9.
 
 # Extended challenge: can you write the logic to integrate the two sets of ordered numbers
-# manually, so that while they are being merged they are in order (eg whever you are in
+# manually, so that while they are being merged they are in order (eg wherever you are in
 # merging the sets, the final set remains in incremental order)
 
 def sortThem():

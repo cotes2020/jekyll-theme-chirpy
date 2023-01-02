@@ -179,7 +179,7 @@ Algorithm removeFirst():
 
 - there are many applications in which data can be more naturally viewed as having a cyclic order, with well-defined neighboring relationships, but no fixed beginning or end.
 
-- esentially a singularly linked list, the `next reference of the tail node` is set to refer back to the head of the list (rather than null),
+- essentially a singularly linked list, the `next reference of the tail node` is set to refer back to the head of the list (rather than null),
 
 ![Screen Shot 2022-03-03 at 22.17.09](https://i.imgur.com/4tzqpWi.png)
 
@@ -337,7 +337,7 @@ for (int k=0; k < contacts.length; k++)
     guests[k] = (Person) contacts[k].clone(); // returns Object type
 ```
 
-**clone on 2D Arrrays**
+**clone on 2D Arrays**
 - two-dimensional array is really a one-dimensional array storing other one-dimensional arrays, the same distinction between a shallow and deep copy exists.
 - Unfortunately, the java.util.Arrays class does not provide any “deepClone” method.
 
@@ -412,7 +412,7 @@ class Node:
 
 无序表： `unordered list`
 - 一种数据按照相对位置存放的数据集
-- (for easy, assum that no repeat)
+- (for easy, assume that no repeat)
 - 无序存放，但是在数据相之间建立`链接指向`, 就可以保持其前后相对位置。
   - 显示标记 `head` `end`
 - 每个节点 `node` 包含2信息：
