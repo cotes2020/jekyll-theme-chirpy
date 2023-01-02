@@ -423,7 +423,7 @@ using MAC address filtering
    - Two Factor Authentication
    - Use HTTPS/Firewalls
    - Use Robust Routers
-   - Use good antivirus softwares
+   - Use good antivirus software
 
 2. What is OAuth?
    - an open-standard authorization protocol/framework
@@ -631,7 +631,7 @@ Where do you get your security news from?
      - Most usage of SMB involves computers running Microsoft Windows, where it was known as “Microsoft Windows Network” before the introduction of Active Directory.
      - Corresponding Windows services are LAN Manager Server (for the server component) and LAN Manager Workstation (for the client component)
 
-110. smal company, Why should I care about exploits and computer jibberish?
+110. small company, Why should I care about exploits and computer jibberish?
      - a classic catch-22 situation: a company doesn’t have enough money to secure their networks
      - An SMB will acknowledge what they need to do to keep their store secure and keep receiving payments since following the money will tend to help move things along.
 
@@ -1054,7 +1054,7 @@ Where do you get your security news from?
      - Containers are an `abstraction of the application layer`.
      - Each container is a different application.
    - `Virtualization`,
-     - hypervisors provide an entire virtual machine to the guest(including Kernal).
+     - hypervisors provide an entire virtual machine to the guest(including Kernel).
      - Virtual machines are an `abstraction of the hardware layer`.
      - Each VM is a physical machine.
 
@@ -1197,7 +1197,7 @@ $ docker kill <container_id>
 25. Can you use a container, edit it, and update it? Also, how do you make it a new and store it on the local system?
 Of course, you can use a container, edit it and update it. This sounds complicated but its actually just one command.
 
-$ docker commit <conatainer id> <username/imagename>
+$ docker commit <container id> <username/imagename>
 
 26. Once you’ve worked with an image, how do you push it to docker hub?
 $ docker push <username/image name>
@@ -1308,7 +1308,7 @@ Stopping the container and then removing it will allow sending SIG_HUP signal to
 Docker containers are gaining popularity but at the same time, Cloud services are giving a good fight. In my personal opinion, Docker will never be replaced by Cloud. Using cloud services with containerization will definitely hype the game. Organizations need to take their requirements and dependencies into consideration into the picture and decide what’s best for them. Most of the companies have integrated Docker with the cloud. This way they can make the best out of both the technologies.
 
 43. How many containers can run per host?
-There can be as many containers as you wish per host. Docker does not put any restrictions on it. But you need to consider every container needs storage space, CPU and memory which the hardware needs to support. You also need to consider the application size. Containers are considered to be lightweight but very dependant on the host OS.
+There can be as many containers as you wish per host. Docker does not put any restrictions on it. But you need to consider every container needs storage space, CPU and memory which the hardware needs to support. You also need to consider the application size. Containers are considered to be lightweight but very dependent on the host OS.
 
 Course Curriculum
 DevOps Certification Training
@@ -1316,7 +1316,7 @@ Weekday / Weekend Batches
 44. Is it a good practice to run stateful applications on Docker?
 The concept behind stateful applications is that they store their data onto the local file system. You need to decide to move the application to another machine, retrieving data becomes painful. I honestly would not prefer running stateful applications on Docker.
 
-45. Suppose you have an application that has many dependant services. Will docker compose wait for the current container to be ready to move to the running of the next service?
+45. Suppose you have an application that has many dependent services. Will docker compose wait for the current container to be ready to move to the running of the next service?
 The answer is yes. Docker compose always runs in the dependency order. These dependencies are specifications like depends_on, links, volumes_from, etc.
 
 46. How will you monitor Docker in production?
