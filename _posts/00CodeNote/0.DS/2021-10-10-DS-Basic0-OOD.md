@@ -92,13 +92,6 @@ toc: true
   - [Considerations](#considerations)
 
 
-- source:
-  - Problem Solving with Algorithms and Data Structures using Python 3
-  - Data Structures and Algorithms in Java, 6th Edition.pdf
-  - https://www.runoob.com/design-pattern/design-pattern-intro.html
-  - http://c.biancheng.net/view/1373.html
-
-
 
 
 ---
@@ -866,7 +859,7 @@ Use of Object
 #### Types of Class
 
 - <font color=red> Derived Classes and Inheritance </font>
-  - A derived class is a class which is created or derived from other remining class.
+  - A derived class is a class which is created or derived from other remaining class.
   - It is used for increasing the functionality of base class.
   - This type of class derives and inherits properties from existing class.
   - It can also add or share/extends its own properties.
@@ -1953,7 +1946,7 @@ Overall
 - 用户不需要知道在使用哪些继承类。
 
 
-includ:
+include:
 - 工厂模式（Factory Pattern）
 - 抽象工厂模式（Abstract Factory Pattern）
 - 单例模式（Singleton Pattern）
@@ -2888,4 +2881,4 @@ chirp
   * If it's read-heavy, you might want to cache.
 * **Security**:
   * Security threats can, of course, be devastating for a system.
-  * Think about the tyupes of issues a system might face and design around thos.
+  * Think about the tyupes of issues a system might face and design around those.
