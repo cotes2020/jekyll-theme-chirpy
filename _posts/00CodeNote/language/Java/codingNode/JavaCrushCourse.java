@@ -303,7 +303,7 @@ public class JavaCrushCourse {
         // Student joe = new Student("Joe");
         // Student bill = new Student("Bill");
         // Student tim = new Student("Tim");
-        // System.out.println(joe.equals(bill));    // the actual object is 2 differnet object in memory.
+        // System.out.println(joe.equals(bill));    // the actual object is 2 different object in memory.
         // System.out.println(joe.compareTo(tim));  // compare 2 object
         // System.out.println(tim);   // the memory location address of the object  JAVA.javaCrush.Student@36aa7bc2
         // System.out.println(tim.toString());
@@ -328,7 +328,7 @@ public class JavaCrushCourse {
         // static method
         // int x = Vehicle.math(9);
         // System.out.println(x);
-        // like create a Math interface with caculate
+        // like create a Math interface with calculate
         // then when use, just Math.yourmethod
 
 
