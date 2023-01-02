@@ -41,7 +41,7 @@ image:
 
   - Security group rules that allow unrestricted access to specific ports
   - IAM use
-  - Is Multi factor authentication, MFA, avaible on the root account
+  - Is Multi factor authentication, MFA, available on the root account
   - Amazon S3 bucket permissions
   - Amazon EBS public snapshots
   - Amazon RDS public snapshots
