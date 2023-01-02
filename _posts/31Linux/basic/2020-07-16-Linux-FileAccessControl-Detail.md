@@ -154,7 +154,7 @@ Password:
 
 In some distributions, most notably Ubuntu, an alternate method is used. Rather than using su, these systems employ the `sudo` command instead. With sudo, one or more users are granted superuser privileges on an as needed basis.
 
-To execute a command as the superuser, the desired command is simply preceeded with the sudo command. After the command is entered, the user is prompted for the user's password rather than the superuser's:
+To execute a command as the superuser, the desired command is simply preceded with the sudo command. After the command is entered, the user is prompted for the user's password rather than the superuser's:
 
 ```py
     [me@linuxbox me]$ sudo some_command
@@ -170,8 +170,8 @@ To execute a command as the superuser, the desired command is simply preceeded w
 When files are created, default permissions are applied automatically. These permissions are calculated based on a `bitmask` called `umask`.
 
 
-  777 rwxrwxrwx : maximun initial permissions for directory
-  666 rw-rw-rw- : maximun initial permissions for file
+  777 rwxrwxrwx : maximum initial permissions for directory
+  666 rw-rw-rw- : maximum initial permissions for file
 - 002             umask
   775             default diractory Permissions
   664             default file permissions
@@ -453,7 +453,7 @@ set acl of a user to a folder
     # set rwx permissions for bob on /home/file.txt
     $ setfacl -m user:bob:rwx /home/file.txt
 
-    # sets the standar permissions for the user owner
+    # sets the standard permissions for the user owner
     $ setfacl -m u::rwx file.txt
     # equal to
     $ sudo chmod u=rwx file.txt
@@ -526,7 +526,7 @@ $ sudo setfacl -d -m u:dummy:rw dir1
 
 ```py
 
--x remove sepecific ACLs
+-x remove specific ACLs
 -k remove all default ACLs
 -b remove all ACLs
 
