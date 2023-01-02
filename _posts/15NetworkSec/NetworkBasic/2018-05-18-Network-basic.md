@@ -410,7 +410,7 @@ If a process needs to send a complete file to another computer
   - manages the amount of data that can be sent by one party, avoiding overwhelming the processing resources of the other / the bandwidth of the network itself.
   - 2 common flow control approaches: `Sliding window` and `Buffering`.
 - **Error checking**
-  - privides error checking with `checksums`
+  - provides error checking with `checksums`
 
   - not be cryptographically secure, but to detect inconsistencies in data due to network errors rather than malicious tampering.
   - This checksum is typically supplemented by an additional checksum at the link layer
@@ -420,7 +420,7 @@ If a process needs to send a complete file to another computer
 
 ### Sliding window protocol:
 - TCP uses it to manage flow control.
-  - Sliding window used by the reciever to slow down the sender
+  - Sliding window used by the receiver to slow down the sender
 - Congestion control: TCP can react to changing network conditions (slow down/speed up dens rates)
   - Does it by adjust the congestion widonw size of the sender.
   - congestion widonw size used by the sender to reduce the network congestion
@@ -481,7 +481,7 @@ TCP Header
   - to which upper-layer protocol data should be forwarded,
   - from which upper-layer protocol the data is being sent.
 - `SequenceNum`:
-  - Indentify the position in the segmented data stream
+  - Identify the position in the segmented data stream
   - contains the sequence number for the first byte of data carried in that segment.
   - if segments arrive out of order, the recipient can put them back in the appropriate order.
 - `AcknowledgmentNum`:
