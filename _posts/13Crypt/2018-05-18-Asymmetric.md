@@ -96,7 +96,7 @@ image:
   - M = DSB (C)
 
 - Once the sender encrypts the message with the recipient’s public key, no user (including the sender) can decrypt that message without knowing the recipient’s private key.
-  - public keys can be freely shared using unsecured communications
+  - public keys can be freely shared using insecured communications
   - create secure communications between users previously unknown to each other.
 
 - public key cryptography entails a higher degree of computational complexity. Keys must be longer than those used in private key systems to produce cryptosystems of equivalent strengths.
