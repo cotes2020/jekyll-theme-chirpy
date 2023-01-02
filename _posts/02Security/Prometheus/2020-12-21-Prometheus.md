@@ -1999,6 +1999,7 @@ go_goroutines 107
 
 数据类型：
 - **Counter**
+
   - <font color=red> 收集事件次数等单调递增的数据 </font>
   - 好比计数器,用于统计类似于：CPU时间,API访问总次数,异常发生次数等等场景.
   - 代表一种样本数据单调递增的指标，即只增不减。除非监控系统发生了重置。
@@ -2006,6 +2007,7 @@ go_goroutines 107
     - 不要将 counter 类型应用于样本数据非单调递增的指标，例如：当前运行的进程数量（应该用 Gauge 类型）。
 
 - **Gauge**
+
   - <font color=red> 收集当前的状态，可增可减，比如数据库连接数 </font>
   - `计量器` `仪表盘`
   - 代表一种样本数据可以任意变化的指标，即可增可减。
@@ -2013,6 +2015,7 @@ go_goroutines 107
   - 例如：当前并发请求的数量。
 
 - **Histogram**
+
   - <font color=red> 收集随机正态分布数据，比如响应延迟 </font>
   - 柱状图,更多的是用于统计一些数据分布的情况,用于计算在一定范围内的分布情况,同时还提供了度量指标值的总和.
   - 在大多数情况下人们都倾向于使用某些量化指标的平均值，例如 CPU 的平均使用率、页面的平均响应时间。
@@ -2028,9 +2031,9 @@ go_goroutines 107
     - 并将其计入可配置的存储桶（bucket）中，
     - 后续可通过指定区间筛选样本，也可以统计样本总数，
     - 最后一般将数据展示为直方图。
-  - Histogram 类型的样本会提供三种指标（假设指标名称为 <metrices_name>）：
+  - Histogram 类型的样本会提供三种指标（假设指标名称为 `<metrices_name>`）：
     - 样本的值分布在 bucket 中的数量
-      - 命名为 `<metrices_name>_bucket{le=`<上边界>`}`。
+      - 命名为 ```<metrices_name>_bucket{le=`<上边界>`}```。
       - 解释的更通俗易懂一点，这个值表示指标值小于等于上边界的所有样本数量。
       - **请求响应时间 <=0.005 秒 的请求次数**。
     - 所有样本值的大小总和
@@ -2038,7 +2041,7 @@ go_goroutines 107
       - **所有请求响应时间总和**
     - 样本总数
       - 命名为 `<metrices_name>_count`。
-      - 值和 <metrices_name>_bucket{le=`+Inf`} 相同。
+      - 值和 ```<metrices_name>_bucket{le=`+Inf`}``` 相同。
       - **所有请求次数**
 
 - **Summary**
@@ -2048,7 +2051,7 @@ go_goroutines 107
     - 但它直接存储了分位数（通过客户端计算，然后展示出来），而不是通过区间来计算。
   - Summary 类型的样本也会提供三种指标（假设指标名称为 ）：
     - 样本值的分位数分布情况
-      - 命名为 `<metrices_name>{quantile=`0.5`}`
+      - 命名为 ```<metrices_name>{quantile=`0.5`}```
       - **请求中有 50% 的请求响应时间值是**
     - 所有样本值的大小总和
       - 命名为 `<metrices_name>_sum`
@@ -2059,8 +2062,8 @@ go_goroutines 107
 
 Histogram 与 Summary 的异同：
 - Histogram 和 Summary 都是为了能够解决这样问题的存在，通过 Histogram 和 Summary 类型的监控指标，可以快速了解监控样本的分布情况。
-- 它们都包含了 <metrices_name>_sum 和 <metrices_name>_count 指标
-- Histogram 需要通过 <metrices_name>_bucket 来计算分位数，而 Summary 则直接存储了分位数的值。
+- 它们都包含了 `<metrices_name>_sum` 和 `<metrices_name>_count` 指标
+- Histogram 需要通过 `<metrices_name>_bucket` 来计算分位数，而 Summary 则直接存储了分位数的值。
 
 简单理解就是
 - Counter对数据只增不减，
@@ -2080,7 +2083,6 @@ pro将所有数据保存为timeseries data，用 metric name 和 label 区分
 
 
 ```py
-
 metrics name {(label)key-value} float64 value
 
 # HELP go_gc_duration_seconds A summary of the GC invocation durations.

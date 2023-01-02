@@ -4,7 +4,7 @@ date: 2021-11-08 11:11:11 -0400
 description:
 categories: [life]
 # img: /assets/img/sample/rabbit.png
-tags: [life]
+tags: [life, finance]
 ---
 
 - [Company Benefit](#company-benefit)
@@ -77,7 +77,7 @@ Withdrawals:
 - Dependent Day Care **Flexible Spending Account** 5000
 
 HSA:
-- You can use an HSA to save before-tax money to pay for eligible `medical, dental, and vision expenses, like coinsurance, copays, and more`. Apple also contributes to your HSA with Optum Bank.
+- You can use an HSA to save before-tax money to pay for eligible `medical, dental, and vision expenses, like coinsurance, copays, and more`.
 - If you have an account balance of `$2100` or greater, you can invest your money, and all earnings grow tax-free.
 - At the end of the calendar year, any unused money rolls over.
 - If you leave or retire, you can take the account with you, and you can use the money to pay for Medicare and other health expenses in retirement.
@@ -104,6 +104,31 @@ Dependent Day Care Flexible Spending Account:
 
 Note:
 - 可以同时有hsa和lpfsa，后者报销vision和dental
+
+
+```
+What expenses are eligible?
+Qualified out-of-pocket expenses for dental or vision care provided to you, your spouse or dependents. 
+Typical eligible expenses include:
+
+Dental:
+• Artificial teeth
+• Braces
+• Dental plan deductible, coinsurance and copayments
+• Dental services like exams, cleanings, fillings and X-rays
+• Mouth guards
+• Orthodontia services
+• Tooth removals
+
+Vision:
+• Contact lenses and solutions 
+• Eyeglasses and frames
+• LASIK eye surgery
+• Vision exams
+• Vision plan deductible, coinsurance and copayments
+```
+
+
 
 
 ---
