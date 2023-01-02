@@ -10,7 +10,7 @@ tags: [Python]
 - [Python Crash](#python-crash)
   - [String](#string)
   - [List](#list)
-  - [dictonary](#dictonary)
+  - [dictionary](#dictionary)
   - [Tuple](#tuple)
   - [Sorted](#sorted)
   - [Functions](#functions)
@@ -69,18 +69,18 @@ for item in inventory:
 ```
 
 
-## dictonary
+## dictionary
 
 ```py
 
-############### dictonary mechanics ###############
+############### dictionary mechanics ###############
 
 sports = {'baseball': 9, 'basketball': 4, 'soccer': 4, 'cricket': 2}
 sports['hockey']=3
 sport=list(sports.keys())
 
 
-############### dictonary accumulation ###############
+############### dictionary accumulation ###############
 credits=0
 for i in sports:
     credits+= sports[i]
@@ -521,7 +521,7 @@ from PIL import ImageDraw
 #  draw
 pil_img=Image.fromarray(gray,mode="L")
 drawing=ImageDraw.Draw(pil_img)
-drawing.rectangle( (rec[0],rec[1], rec[0]+rec[2], rec[1]+rec[3]), oultline="white")
+drawing.rectangle( (rec[0],rec[1], rec[0]+rec[2], rec[1]+rec[3]), outline="white")
 display(pil_img)
 
 
