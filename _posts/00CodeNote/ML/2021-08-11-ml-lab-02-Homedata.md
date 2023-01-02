@@ -35,7 +35,7 @@ In this exercise, you will work with data from the [Housing Prices Competition f
 
 ## Basic
 
-basic approche for the ML
+basic approach for the ML
 
 1. Set up code checking
 2. Read the data `X_data/test_full = pd.read_csv()`
@@ -82,7 +82,7 @@ print("Setup Complete")
 
 
 
-# =============================== setup ML moduel
+# =============================== setup ML module
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -258,7 +258,7 @@ output.to_csv('submission.csv', index=False)
 
 ```py
 
-# =============================== delete the colums
+# =============================== delete the columns
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -372,7 +372,7 @@ print(score_dataset(imputed_X_train, imputed_X_valid, y_train, y_valid))
 ```
 
 
-thre are so few missing values in the dataset, we'd expect imputation to perform better than dropping columns entirely.
+there are so few missing values in the dataset, we'd expect imputation to perform better than dropping columns entirely.
 - However, we see that dropping columns performs slightly better!
 - While this can probably partially be attributed to noise in the dataset, another potential explanation is that the imputation method is not a great match to this dataset.
 - That is, maybe instead of filling in the mean value, it makes more sense to set every missing value to a value of 0, to fill in the most frequently encountered value, or to use some other method.
