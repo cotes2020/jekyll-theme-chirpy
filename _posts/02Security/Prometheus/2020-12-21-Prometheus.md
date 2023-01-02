@@ -1982,15 +1982,18 @@ go_gc_duration_seconds_count 18
 go_goroutines 107
 ```
 
+
 `prometheus` 包为了方便client library的使用提供了四种核心的数据类型：
+
 - `Counter`, `Gauge`, `Histogram` 和 `Summary` .
 - 但这些类型只是在客户端库（客户端可以根据不同的数据类型调用不同的 API 接口）和在线协议中，
 - 实际在 Prometheus server 中并不对指标类型进行区分，而是简单地把这些指标统一视为无类型的时间序列。
 
 
-> [Prometheus docs](https://prometheus.io/docs/concepts/metric_types/) : 对这四种度量标准类型的更全面的描述.
+> [Prometheus docs](https://prometheus.io/docs/concepts/metric_types/), 对这四种度量标准类型的更全面的描述.
 
-除了四种基本的数据指标类型外,Prometheus 数据模型的一个非常重要的部分是沿着称为 `标签` 的维度对数据指标样本进行划分,这就产生了数据指标向量(`metric vectors`).
+除了四种基本的数据指标类型外, Prometheus 数据模型的一个非常重要的部分是沿着称为 `标签` 的维度对数据指标样本进行划分,这就产生了数据指标向量(`metric vectors`).
+
 
 #### 数据指标类型
 
