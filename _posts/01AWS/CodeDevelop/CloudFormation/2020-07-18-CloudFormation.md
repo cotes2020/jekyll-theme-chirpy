@@ -28,11 +28,11 @@ image:
      - fewer mistakes
      - less time and effort than configure manually
 
-2. <font color=red> Supports almost all the AWS services and programable </font>
+2. <font color=red> Supports almost all the AWS services and programmable </font>
    - provision a broad range of AWS resources.
      - <font color=blue> compare </font>
      - <font color=blue> Elastic Beanstalk </font>
-       - more focussed on deploying web applications on EC2 
+       - more focused on deploying web applications on EC2 
        - PaaS
      - <font color=blue> CloudFormation </font>
        - can deploy Elastic Beanstalk-hosted applications
@@ -46,7 +46,7 @@ image:
 4. CloudFormation <font color=red> interprets the template and makes the appropriate API calls </font> to create the resources defined.
 
 5. <font color=red> version control </font> and peer review the templates
-   - can be used to manage udpates & dependencies
+   - can be used to manage updates & dependencies
    - can be used to rollback and delete the entire stack as well
 
 
@@ -78,9 +78,9 @@ image:
 
 ### Template
 
-template is used to <font color=red> describe the endstate of the infrustructure either provisioning or changing </font>
+template is used to <font color=red> describe the endstate of the infrastructure either provisioning or changing </font>
 1. after created, upload it to CloudFormation using S3
-2. CloudFormation reads the template and makes the API calles
+2. CloudFormation reads the template and makes the API calls
 3. the resulting resources are called a <font color=red> Stack </font>
 
 CloudFormation template
@@ -253,7 +253,7 @@ Template elements:
      - separate out these common components and create a standard dedicated templates for each common use case
      - store it in S3
      - and refenrece it in the Resources section of other template using the Stack resource type
-     - `Resourses: Type: AWS::CloudFormation::Stack`
+     - `Resources: Type: AWS::CloudFormation::Stack`
 
    - Example:
      - a load balancer configuration that use for most of the stacks.
@@ -273,7 +273,7 @@ Template elements:
 Example:
 
 ```
-Resourses:
+Resources:
   Type: AWS::CloudFormation::Stack
   Properties:
     NotificationARNs:
@@ -404,7 +404,7 @@ Parameters:
     Type: 'AWS::EC2::KeyPair::KeyName'
     ConstraintDescription: Provide the name of an existing SSH key pair
   InstanceTypeParameter:
-    Type: Sting
+    Type: String
     Default: t2.micro
     AllowedValues: ["t2.micro", "m1.small", "m1.large"]
     Description: 'Enter t2.micro, m1.small or m1.large'
@@ -449,14 +449,14 @@ Resources:
 
 
 # create custom mappings
-# like different Region for diffenet AMI
+# like different Region for different AMI
 # customize the properties of a resource based on certain conditions, which enables you to have fine-grained control over how your templates are launched.
 Mappings:
   RegionMap:
     us-east-1: (t2.micro: ami-0bdb1d6c15a40392c)
     us-west-1: (t2.micro: ami-0bdb1d6c15a40392c)
 
-# refernce code located in S3
+# reference code located in S3
 # Lambda code or reusable snippets of CloudFormation code
 Transforms:
 
@@ -1276,7 +1276,7 @@ Metadata:
 - to specify authentication credentials for files or sources that you specify with the `AWS::CloudFormation::Init` resource.
 - To include authentication information,
   - use the uris property if the source is a URI
-  - ues the buckets property if the source is an Amazon S3 bucket.
+  - use the buckets property if the source is an Amazon S3 bucket.
 
   - can also specify authentication information for files directly in the `AWS::CloudFormation::Init` resource.
     - The files key of the resource contains a property named authentication.
