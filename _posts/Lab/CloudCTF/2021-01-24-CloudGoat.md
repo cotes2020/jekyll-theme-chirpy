@@ -140,7 +140,7 @@ aws sts get-caller-identity \
 
 
 # ------------- 3. enumerate Inline Policies and Managed Policies of IAM user "Raynor"
-# When evaulating security of an IAM identity (users, groups of users, or roles), enumerating policies and permissions is an essential step.
+# When evaluating security of an IAM identity (users, groups of users, or roles), enumerating policies and permissions is an essential step.
 
 # analyzes Raynor's privileges
 # got the policyARN
@@ -175,7 +175,7 @@ aws iam get-policy-version \
 
 # ------------- 5. review previous IAM policy versions
 # check if there are other versions of the customer managed policy cg-raynor-policy.
-# there can be upto 5 versions of the policy.
+# there can be up to 5 versions of the policy.
 aws iam list-policy-versions \
     --policy-arn <generatedARN>/cg-raynor-policy \
     --profile raynor
@@ -234,7 +234,7 @@ pip2 install — user crudini
 brew install jq
 
 
-#set command line paramters
+#set command line parameters
 INFILE=~/.aws/credentials
 
 SRC_PROFILE='chris'
@@ -457,7 +457,7 @@ Reverse proxy server
   - to fetch other data on the proxy server such as the IAM credential.
   - exploit reverse-proxy server with overly permissive configuration
   - to reach internal applications that we can't reach otherwise.
-  - get's even more severe in cloud resources because of "Instance Metadata".
+  - gets even more severe in cloud resources because of "Instance Metadata".
     - EC2 instance metadata service (IMDS)
     - Instance metadata is data about your instance that use to configure or manage the running instance.
     - Instance metadata can be accessed at the IP address 169.254.169.254, a link-local address and is valid only from the instance.
@@ -869,7 +869,7 @@ Alternatively
 1. recon
 
 ```bash
-#set command line paramters
+#set command line parameters
 INFILE=~/.aws/credentials
 
 
@@ -1024,7 +1024,7 @@ psql postgresql://<db_user>:<db_password>@<rds-instance>:5432/<db_name>
 1. recon
 
 ```bash
-#set command line paramters
+#set command line parameters
 INFILE=~/.aws/credentials
 
 
@@ -1119,7 +1119,7 @@ psql postgresql://<db_user>:<db_password>@<rds-instance>:5432/<db_name>
 
 Starting as the IAM user Solo
 - enumerates and explores CodeBuild projects,
-- finding unsecured IAM keys for the IAM user Calrissian therein.
+- finding insecured IAM keys for the IAM user Calrissian therein.
 - Then operating as Calrissian
 - discovers an RDS database.
 - Unable to access the database's contents directly,
@@ -1144,7 +1144,7 @@ python3 cloudgoat.py create codebuild_secrets
 # have credentials of an IAM User "Solo" to being with.
 
 
-#set command line paramters
+#set command line parameters
 INFILE=~/.aws/credentials
 
 
@@ -1178,7 +1178,7 @@ BUILDPROJECTINFO=`aws codebuild list-projects --profile $SRC_PROFILE`
 # cg-codebuild-cgidxgz5plnjdu
 # BUILDPROJECT=`echo $BUILDPROJECTINFO | jq -r .projects[]`
 
-# retrieve more information realted to this build project.
+# retrieve more information related to this build project.
 aws codebuild batch-get-projects \
     --names cg-codebuild-cgidxgz5plnjdu \
     --profile $SRC_PROFILE
@@ -1303,7 +1303,7 @@ aws ssm get-parameter \
     --output text \
     --profile $SRC_PROFILE | tee private-key
 
-# check EC2 instances in the AWS acount that we can use this SSH Key Pair against.
+# check EC2 instances in the AWS account that we can use this SSH Key Pair against.
 aws ec2 describe-instances \
     --query "Reservations[*].Instances[*].[KeyName,PublicIpAddress,Tags]" \
     --output text \
@@ -1392,8 +1392,8 @@ python3 cloudgoat.py destroy codebuild_secrets
 
 
 Starting with access the "ruse" EC2
-- the user leverages the instace profile to backdoor the running ECS container.
-- Using the backdoored container the attacker can retireve credentials from the container metadata API.
+- the user leverages the instance profile to backdoor the running ECS container.
+- Using the backdoored container the attacker can retrieve credentials from the container metadata API.
 - These credentials allow to start a session on any EC2 with the proper tags set.
 - The attacker uses their permissions to change the tags on the Admin EC2 and starts a session.
 - Once in the Admin EC2, port scan the subnet for an open EFS to mount.
@@ -1405,7 +1405,7 @@ Starting with access the "ruse" EC2
 ```bash
 
 
-# Access the "Ruse_Box" ec2 using the provied access key.
+# Access the "Ruse_Box" ec2 using the provide access key.
 ssh -i cloudgoat ubuntu@<IP ADDRESS>
 # Configure the role credentials
 aws configure --profile ruse
@@ -1413,7 +1413,7 @@ aws iam list --profile ruse
 
 # From the ec2 enumate permission.
 
-# list avaible ec2 and note how the tags are configured.
+# list available ec2 and note how the tags are configured.
 aws ec2 describe-instances --profile ruse
 
 # enumate existing ecs cluster and backdoor the existing task defniniton.
@@ -1456,7 +1456,7 @@ aws ssm start-session \
 # From the container credentilas use the SSM:StartSession privlage to access the admin_box.
 
 
-# Port scan the subnet to find avaible efs and mount.
+# Port scan the subnet to find available efs and mount.
 # Looking at the ec2 instances we see the admin ec2 only has a single port open. We Nmap scan this port.
 nmap -Pn -P 2049 --open 10.10.10.0/24
 
