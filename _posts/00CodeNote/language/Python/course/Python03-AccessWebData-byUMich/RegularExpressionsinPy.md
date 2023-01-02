@@ -82,7 +82,7 @@ import re
 
     data='From admin@google.com Sat Jan 5 09:14:23'
 
-    # find the email adress
+    # find the email address
     y=re.findall('\S+@\S+', data)
     y=re.findall('^From (\S+@\S+)', data)   # parentheses, where to start and stop extract
 
