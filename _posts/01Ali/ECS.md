@@ -83,7 +83,7 @@ The instance types follow a naming convention which depicts the instance family,
 
 3 main types of families:
 - X86-Architecture,
-- Heterogenous Computing,
+- Heterogeneous Computing,
 - and ECS Bare Metal Instances.
 
 
@@ -101,11 +101,11 @@ The instance types follow a naming convention which depicts the instance family,
 - `Local SSD`: Used for Online transaction processing (OLTP) and high-performance databases.
 - `High Clock Speed`: Used for on-screen video and telecom data forwarding, High-performance scientific and engineering apps.
 
-**Heterogenous Computing**
+**Heterogeneous Computing**
 - 2 main subtypes as follows:
 - `GPU-based compute-optimized`:
   - Used for Rendering and multimedia encoding and decoding, Machine learning, high-performance computing, and high-performance databases, Other server-high end workloads that require powerful concurrent floating-point compute capabilities.
-- `Field-Programable-Gate-Array-based compute-optimized`:
+- `Field-programmable-Gate-Array-based compute-optimized`:
   - Used for Deep learning and reasoning, Genomics research, Financial analysis, Image transcoding, Computational workloads such as real-time video processing and security management.
 
 **ECS Bare Metal Instances**:
