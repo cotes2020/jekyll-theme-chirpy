@@ -19,7 +19,7 @@ image:
 # Cipher code
 
 
-Classical encrytion technique
+Classical encryption technique
 - substitution 替换
   - playfair cipher: `5x5 metric, 2 pair, same row/column/none`
   - hill cipher: `3x3 metric`

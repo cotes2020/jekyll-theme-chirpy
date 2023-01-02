@@ -16,7 +16,7 @@ pin: false
 $ git clone git@github.com:<username>/jekyll-theme-chirpy -b master --single-branch
 ```
 
-### Setting up the local envrionment
+### Setting up the local environment
 
 If you would like to run or build the project on your local machine, please follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems` and `Bundler`.
 

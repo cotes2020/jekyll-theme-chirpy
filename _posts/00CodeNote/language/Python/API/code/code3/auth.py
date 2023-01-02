@@ -91,7 +91,7 @@ def login_post():
             jsonify(
                 {
                     "status": 200,
-                    "Sucessful login": True,
+                    "Successful login": True,
                     "current_user.is_authenticated": current_user.is_authenticated,
                     "userinfo": userinfo,
                 }
@@ -114,11 +114,11 @@ def login_post():
 # @login_required
 def logout():
     logout_user()
-    return make_response(jsonify({"status": 200, "Session": "Sucessful logout"}), 200)
+    return make_response(jsonify({"status": 200, "Session": "Successful logout"}), 200)
     # if current_user.is_authenticated:
     #    logout_user()
     #    # return redirect('main.index')
-    #    return make_response(jsonify({"status": 200, "Session": "Sucessful logout"}), 200)
+    #    return make_response(jsonify({"status": 200, "Session": "Successful logout"}), 200)
     # else:
     #    return make_response(jsonify({"status": 403, "Session": "you are not even login"}), 403)
 

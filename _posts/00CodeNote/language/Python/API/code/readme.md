@@ -190,7 +190,7 @@ echo '{"username":"a", "password":"123"}' | http POST http://127.0.0.1:5000/logi
 # Set-Cookie: session=.eJwdzjsOwjAMANC7ZGaIHdtxepkq_kSwtnRC3J2K6a3vU_Z15Pks2_u48lH2V5StGJioaG2QudTIV1Y1r8I0ktEGkXlAq7NPX-SygqmRAyfpYtOAQUmzoo5-2zCAu2ln5mhOMCdghqqzKAGM6ANB5kQyJNByR64zj_9Gvj9qzC5q.X-BfpQ.tL0UcpeDR2YxnFFAPuA17bhNUso; HttpOnly; Path=/
 # Vary: Cookie
 # {
-#     "Sucessful login": true,
+#     "Successful login": true,
 #     "current_user.is_authenticated": true,
 #     "status": 200,
 #     "userinfo": {

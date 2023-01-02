@@ -166,7 +166,7 @@ public class JavaCrushCourse {
 
         // 9. HashMap: unique key, no order, so fast.
         // Map m = new HashMap();
-        // HashMap<String, Interger> map = new HashMap<String, Interger>();
+        // HashMap<String, integer> map = new HashMap<String, integer>();
         // m.put("tim", 5);
         // m.put(11, 5);
         // m.get("tim");

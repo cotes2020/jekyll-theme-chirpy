@@ -134,7 +134,7 @@ public class HTTPSimpleForge {
             System.out.println("Response Code = " + responseCode);
 
             // HTTP status code
-            // HTTP_OK means the response was received sucessfully.
+            // HTTP_OK means the response was received Successfully.
             if (responseCode == HttpURLConnection.HTTP_OK){
                 // Get the input stream from url connection object.
                 responseIn = urlConn.getInputStream();
