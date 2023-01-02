@@ -12,7 +12,7 @@ fo
 hsa
 id
 indext
-Insid
+insid
 inport
 keypair
 keypairs
