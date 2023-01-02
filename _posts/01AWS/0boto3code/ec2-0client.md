@@ -519,7 +519,7 @@ response = ec2client.accept_reserved_instances_exchange_quote(
     # (_list_) -- The configuration of the target Convertible Reserved Instance to exchange for your current Convertible Reserved Instances.
         {
             'InstanceCount': 123,
-            # (integer) -- The number of instances the Covertible Reserved Instance offering can be applied to. This parameter is reserved and cannot be specified in a request
+            # (integer) -- The number of instances the convertible Reserved Instance offering can be applied to. This parameter is reserved and cannot be specified in a request
             'OfferingId': 'string'
             # (string) -- [REQUIRED] The Convertible Reserved Instance offering ID.
         },
