@@ -185,12 +185,12 @@ use App Engine Standard Environment in practice
 
 | term                       | Standard                 | Flexble                                                |
 | -------------------------- | ------------------------ | ------------------------------------------------------ |
-| instance startup           | Millseconds              | Minutes                                                |
+| instance startup           | Milliseconds              | Minutes                                                |
 | SSH access                 | No                       | Yes (not default)                                      |
 | Write to local disk        | No                       | Yes (not default)                                      |
 | Support 3rd party binaries | No                       | Yes                                                    |
 | Network access             | Via App Engine services  | Yes                                                    |
-| Pricing model              | free daily user, pay per instance class, auto shotdown | pay for resource allocation per hour, no auto shotdown |
+| Pricing model              | free daily user, pay per instance class, auto shutdown | pay for resource allocation per hour, no auto shutdown |
 
 
 Standard environment
@@ -199,7 +199,7 @@ Standard environment
 - Google provides and maintains runtime binaries
 - Scaling is finer-grained
 - billing can drop to zero for the completely idle application.
-  - free daily user, pay per instance class, auto shotdown
+  - free daily user, pay per instance class, auto shutdown
 
 Flexible environment
 - SSH into the virtual machines on which your application runs.
