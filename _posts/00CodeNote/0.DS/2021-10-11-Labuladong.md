@@ -33,7 +33,7 @@ toc: true
     - [303. Range Sum Query - Immutable 计算索引区间/list中指定位置的和 `preSum[i] = preSum[i - 1] + nums[i - 1];`](#303-range-sum-query---immutable-计算索引区间list中指定位置的和-presumi--presumi---1--numsi---1)
     - [560. Subarray Sum Equals K 和为k的子数组 `if (preSum[j] == preSum[i] - k) res++;`](#560-subarray-sum-equals-k-和为k的子数组-if-presumj--presumi---k-res)
     - [304. Range Sum Query 2D - Immutable 二维区域和检索 `图像块之间相互减`](#304-range-sum-query-2d---immutable-二维区域和检索-图像块之间相互减)
-    - [1099.Two-Sum-Less-Than-K (easy) 找Max A[i] + A[j] < K.](#1099two-sum-less-than-k-easy-找max-ai--aj--k)
+    - [1099.Two-Sum-Less-Than-K (easy) 找Max A\[i\] + A\[j\] \< K.](#1099two-sum-less-than-k-easy-找max-ai--aj--k)
   - [差分](#差分)
     - [差分数组 `increment(i,j,val)->{diff[i]+=val; diff[j+1]-=val;`](#差分数组-incrementijval-diffival-diffj1-val)
     - [370. 区间加法（中等）`Difference df = new Difference(nums); df.increment(i, j, val);`](#370-区间加法中等difference-df--new-differencenums-dfincrementi-j-val)
@@ -238,7 +238,7 @@ toc: true
       - [698. Partition to K Equal Sum Subsets](#698-partition-to-k-equal-sum-subsets)
       - [215. Kth Largest Element in an Array](#215-kth-largest-element-in-an-array)
 - [🔒🔒 Hash](#-hash)
-  - [🔒 Hash - Array int[]](#-hash---array-int)
+  - [🔒 Hash - Array int\[\]](#-hash---array-int)
     - [1. Two Sum (Easy) `找两个数sum=target`](#1-two-sum-easy-找两个数sumtarget)
       - [+++++ brute force 穷举](#-brute-force-穷举)
       - [+++++ two pointer](#-two-pointer)
@@ -351,7 +351,7 @@ toc: true
       - [判断回文单链表 - 不完全反转链表，仅仅反转部分链表，空间复杂度O(1)。](#判断回文单链表---不完全反转链表仅仅反转部分链表空间复杂度o1)
   - [🔒 two pointer - String](#-two-pointer---string)
     - [917. Reverse Only Letters (Easy) 只反转字母](#917-reverse-only-letters-easy-只反转字母)
-    - [2000. Reverse Prefix of Word (Easy) 到s[i]之前反转](#2000-reverse-prefix-of-word-easy-到si之前反转)
+    - [2000. Reverse Prefix of Word (Easy) 到s\[i\]之前反转](#2000-reverse-prefix-of-word-easy-到si之前反转)
       - [+++++ `char[]`](#-char)
       - [+++++ `StringBuilder`](#-stringbuilder)
     - [557. Reverse Words in a String III (Easy) 一句话单词各自反转](#557-reverse-words-in-a-string-iii-easy-一句话单词各自反转)
@@ -367,7 +367,7 @@ toc: true
       - [+++++ Brute Force Approach](#-brute-force-approach)
       - [+++++ `Math.abs(nums[l]) > Math.abs(nums[r])` Best](#-mathabsnumsl--mathabsnumsr-best)
     - [821. Shortest Distance to a Character (Easy) 到特定字母距离](#821-shortest-distance-to-a-character-easy-到特定字母距离)
-      - [+++++ ``Math.min(fromLeft, fromRight)`](#-mathminfromleft-fromright)
+      - [+++++ \`\`Math.min(fromLeft, fromRight)\`](#-mathminfromleft-fromright)
       - [+++++ `when s.char==c, j=i-1; j=i+1`](#-when-scharc-ji-1-ji1)
       - [+++++ `combine 2` BEST](#-combine-2-best)
     - [922. Sort Array By Parity II (Easy) 按奇偶排序](#922-sort-array-by-parity-ii-easy-按奇偶排序)
@@ -790,7 +790,7 @@ v1.add(-1);
 v1.add(1, 6); // 1 2 3 4 5 -> insert -> 1 6 2 3 4 5
 v1.remove(index)
 Collections.sort(v1);
-v1.firt();
+v1.first();
 vq.last();
 v1.before(p);
 v1.after(p);
@@ -1815,7 +1815,7 @@ size = size - 1;
 
 - there are many applications in which data can be more naturally viewed as having a cyclic order, with well-defined neighboring relationships, but no fixed beginning or end.
 
-- esentially a singularly linked list, the `next reference of the tail node` is set to refer back to the head of the list (rather than null),
+- essentially a singularly linked list, the `next reference of the tail node` is set to refer back to the head of the list (rather than null),
 
 ![Screen Shot 2022-03-03 at 22.17.09](https://i.imgur.com/4tzqpWi.png)
 
@@ -1973,7 +1973,7 @@ for (int k=0; k < contacts.length; k++)
     guests[k] = (Person) contacts[k].clone(); // returns Object type
 ```
 
-**clone on 2D Arrrays**
+**clone on 2D Arrays**
 - two-dimensional array is really a one-dimensional array storing other one-dimensional arrays, the same distinction between a shallow and deep copy exists.
 - Unfortunately, the java.util.Arrays class does not provide any “deepClone” method.
 
@@ -6285,7 +6285,7 @@ class FreqStack {
 - Each node must have the same probability of being chosen.
 - Implement the Solution class:
   - Solution(ListNode head) Initializes the object with the integer array nums.
-  - int getRandom() Chooses a node randomly from the list and returns its value. All the nodes of the list should be equally likely to be choosen.
+  - int getRandom() Chooses a node randomly from the list and returns its value. All the nodes of the list should be equally likely to be chosen.
 
 当你遇到第 i 个元素时，应该有 1/i 的概率选择该元素，1 - 1/i 的概率保持原有的选择。
 
@@ -7896,8 +7896,8 @@ public class WordCount {
             freq.put(word, count++);
         }
         int maxCount = 0;
-        Sting maxWord = "";
-        for(Entry<Sting, Integer> ent : freq.entrySet()){
+        String maxWord = "";
+        for(Entry<String, Integer> ent : freq.entrySet()){
             if(ent.getValue()>maxCount){
                 maxWord = ent.getKet();
                 maxCount = ent.getValue();
@@ -8654,7 +8654,7 @@ int dp(string& ring, int i, string& key, int j) {
 
 [787. Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
 
-There are n cities connected by some number of flights. You are given an array flights where flights[i] = [fromi, toi, pricei] indicates that there is a flight from city fromi to city toi with cost pricei.
+There are n cities connected by some number of flights. You are given an array flights where `flights[i] = [fromi, toi, pricei]` indicates that there is a flight from city `fromi` to city `toi` with cost pricei.
 
 You are also given three integers src, dst, and k, return the cheapest price from src to dst with at most k stops. If there is no such route, return -1.
 
@@ -11644,7 +11644,7 @@ Input: height = [1,8,6,2,5,4,8,3,7]
 Output: 49
 
 
-1. Brute Froce
+1. Brute Force
    1. the total states is C(n, 2)= n * (n - 1) / 2, we have to enumerate all these states to get the max area.
 
 
@@ -13397,7 +13397,7 @@ Output: false
 // 2 pointer + s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()
 class Solution {
     public boolean isPalindrome(String s) {
-        s = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();   // mose time consumming.
+        s = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();   // most time consumming.
         int r=0, l=s.length()-1;
         while(r<l){
             if(s.charAt(r)==s.charAt(l)){
@@ -15654,7 +15654,7 @@ class Solution {
 
 #### +++++ `DP + bit operation`
 
-Explaination.
+Explanation.
 Take number X for example, 10011001.
 Divide it in 2 parts:
 1. the last digit ( 1 or 0, which is " i&1 ", equivalent to " i%2 " )
