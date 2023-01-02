@@ -9,23 +9,17 @@ tags: [Lab, HackTheBox]
 
 - [Knife](#knife)
 	- [Initial](#initial)
-		- [Recon: Nmap&nikto](#recon-nmapnikto)
+		- [Recon: Nmap\&nikto](#recon-nmapnikto)
 		- [Recon: Brup](#recon-brup)
 		- [CVE](#cve)
 			- [漏洞概述](#漏洞概述)
 			- [漏洞复现](#漏洞复现)
-	- [Gain acess to shell: Brup](#gain-acess-to-shell-brup)
+	- [Gain access to shell: Brup](#gain-access-to-shell-brup)
 		- [user.txt: Brupsuite](#usertxt-brupsuite)
 		- [user.txt: ReverseShell](#usertxt-reverseshell)
 	- [Privilege escalation](#privilege-escalation)
 		- [Root.txt: Execute ruby scripts](#roottxt-execute-ruby-scripts)
 		- [Root.txt: ssh](#roottxt-ssh)
-
-
-- ref:
-  - [Knife — Hack The Box](https://blog.csdn.net/qq_36584013/article/details/117315844)
-  - [Knife — Hack The Box - kshitij kumar](https://kshitizkr603.medium.com/knife-hack-the-box-6eac7fecd1ab)
-  - [HackTheBox-Knife靶场实战](https://zhuanlan.zhihu.com/p/374680809)
 
 ---
 
@@ -156,7 +150,7 @@ PHP 8.1.0-dev 版本在2021年3月28日被植入后门，但是后门很快被�
 
 ---
 
-## Gain acess to shell: Brup
+## Gain access to shell: Brup
 
 1. 使用burp抓包，并加入字段, 发现被成功执行
 
@@ -298,7 +292,7 @@ Connection: close
 make this shell a stable one
 
 ```bash
-whcih python3
+which python3
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
