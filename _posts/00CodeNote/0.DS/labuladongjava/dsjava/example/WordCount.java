@@ -15,8 +15,8 @@ public class WordCount {
             freq.put(word, count++);
         }
         int maxCount = 0;
-        Sting maxWord = "";
-        for(Entry<Sting, Integer> ent : freq.entrySet()){
+        String maxWord = "";
+        for(Entry<String, Integer> ent : freq.entrySet()){
             if(ent.getValue()>maxCount){
                 maxWord = ent.getKet();
                 maxCount = ent.getValue();
