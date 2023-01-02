@@ -83,7 +83,7 @@ image:
 
 - proper way to manage it
   - High Availability - no down time
-  - scalability or high performance - high responce rate
+  - scalability or high performance - high response rate
   - Disaster recovery - backup and restore
 
 
@@ -155,7 +155,7 @@ $ curl 127.0.0.1:8080
 CONTAINER ID        IMAGE                                        COMMAND                CREATED             STATUS              PORTS               NAMES
 ee054db2516c        gcr.io/google_containers/hyperkube:v0.17.0   "/hyperkube schedule   2 days ago          Up 1 days                               k8s_scheduler.509f29c9_k8s-master-127.0.0.1_default_9941e5170b4365bd4aa91f122ba0c061_e97037f5
 3b0f28de07a2        gcr.io/google_containers/hyperkube:v0.17.0   "/hyperkube apiserve   2 days ago          Up 1 days                               k8s_apiserver.245e44fa_k8s-master-127.0.0.1_default_9941e5170b4365bd4aa91f122ba0c061_6ab5c23d
-2eaa44ecdd8e        gcr.io/google_containers/hyperkube:v0.17.0   "/hyperkube controll   2 days ago          Up 1 days                               k8s_controller-manager.33f83d43_k8s-master-127.0.0.1_default_9941e5170b4365bd4aa91f122ba0c061_1a60106f
+2eaa44ecdd8e        gcr.io/google_containers/hyperkube:v0.17.0   "/hyperkube control   2 days ago          Up 1 days                               k8s_controller-manager.33f83d43_k8s-master-127.0.0.1_default_9941e5170b4365bd4aa91f122ba0c061_1a60106f
 30aa7163cbef        gcr.io/google_containers/hyperkube:v0.17.0   "/hyperkube proxy --   2 days ago          Up 1 days                               jolly_davinci
 a2f282976d91        gcr.io/google_containers/pause:0.8.0         "/pause"               2 days ago          Up 2 days                               k8s_POD.e4cc795_k8s-master-127.0.0.1_default_9941e5170b4365bd4aa91f122ba0c061_e8085b1f
 c060c52acc36        gcr.io/google_containers/hyperkube:v0.17.0   "/hyperkube kubelet    2 days ago          Up 1 days                               serene_nobel
@@ -240,7 +240,7 @@ cc3cd263c581        gcr.io/google_containers/etcd:2.0.9          "/usr/local/bin
   - Pod > container + container + container
 
 - each Pod has one IP
-  - pod comunicate by using IP
+  - pod communicate by using IP
   - new IP on re-creatyion
 
 
@@ -378,7 +378,7 @@ Pod 可以通过组合来构建复杂的运用，其本来的意义包含：
 - permanent IP attach to each pod
 - lifecycle of Pof and service not connected
 
-- App should be accessible through brower
+- App should be accessible through browser
   - external service:
     - http://a.b.c.d:port
     - http://myapp.com <- Ingree
@@ -418,7 +418,7 @@ secret
 - volumes attach to Pod (local/remote)
 
 - keep storage permanent
-  - k8s cluser do not manage data persistance
+  - k8s cluster do not manage data persistence
 
 
 
@@ -520,7 +520,7 @@ Kubernetes 是一套分布式系统
      3. interface with both the container and node
      4. kubelet starts the pod with a container inside
   3. <font color=red> Kube proxy </font>
-     1. forward reques from service to pod
+     1. forward request from service to pod
 
 
 
@@ -541,13 +541,13 @@ Kubernetes 是一套分布式系统
       - health request
   - <font color=red> scheduler </font>
     - decide
-    - to schdule a new pod
+    - to schedule a new pod
     - decide the resource need
     - decide which worker node (check the **etcd**: A 30% used, B 60% used)
   - <font color=red> Controller manager </font>
     - detect cluster state change
       - pod dead -> recover cluster state
-      - request to schduler -> kubelet
+      - request to scheduler -> kubelet
   - <font color=red> etcd </font>
     - cluster brain
     - store actual application data
@@ -677,7 +677,7 @@ minikube
 - create VM box on laptop
 - nodes runs in CM
 - master and node on one node
-- 1 node K8s cluser
+- 1 node K8s cluster
 - for testing
 
 ![Screen Shot 2022-04-05 at 12.46.15](https://i.imgur.com/OCzNoKX.png)
@@ -703,7 +703,7 @@ $ minikube status
 ### kubectl 使用
 
 
-- wat to interact to kubernet cluser
+- wat to interact to kubernet cluster
 - API server:
   - enable interaction with cluster
   - way: UI, API, CLI (**kubectl**)
@@ -745,7 +745,7 @@ $ kubectl version
 ## deploy
 
 
-distrubuted system and containers
+distributed system and containers
 - cluster is good for Stateless app
 
 ![Screen Shot 2022-04-05 at 12.25.27](https://i.imgur.com/eBRuULA.png)
