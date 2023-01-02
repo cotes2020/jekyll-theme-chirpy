@@ -123,7 +123,7 @@ Types of X.509 certificates: slightly different purpose, same general structure,
       - IP 4.5.4.5           (all in a single cert).
 
 - <font color=red> X-509-compliant certificate </font>
-  - Exmaple:
+  - Examaple:
   - hardening a web server,
   - which should allow a secure certificate-based session using the organization's PKI infrastructure.
   - The web server should also utilize the latest security techniques and standards.
