@@ -1983,7 +1983,7 @@ go_goroutines 107
 ```
 
 
-`prometheus` 包为了方便client library的使用提供了四种核心的数据类型：
+`prometheus` 包为了方便client library的使用提供了四种数据类型：
 
 - `Counter`, `Gauge`, `Histogram` 和 `Summary` .
 - 但这些类型只是在客户端库（客户端可以根据不同的数据类型调用不同的 API 接口）和在线协议中，
