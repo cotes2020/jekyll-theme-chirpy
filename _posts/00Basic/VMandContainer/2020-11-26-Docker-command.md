@@ -437,7 +437,7 @@ If this option is specified for a process-isolated Windows container, _all_ devi
 The `--gpus­` flag allows you to access NVIDIA GPU resources. First you need to install nvidia-container-runtime .
 Visit Specify a container’s resources for more information.
 
-To use `--gpus`, specify which GPUs (or all) to use. If no value is provied, all available GPUs are used. The example below exposes all available GPUs.
+To use `--gpus`, specify which GPUs (or all) to use. If no value is provide, all available GPUs are used. The example below exposes all available GPUs.
 
     $ docker run -it --rm --gpus all ubuntu nvidia-smi
 
