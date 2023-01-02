@@ -18,7 +18,7 @@ DOM, user interface.
   - returned by a member of the API
 - **nodelist** - an array of the element
   - document.getElementByTagName('p')
-  - document.getElementByClassName(calss)
+  - document.getElementByClassName(class)
   - document.getElementById(id)
   - element.innerHTML
   - element.style
@@ -45,7 +45,7 @@ HTML5 an CSS3 are not really temporary changed
 
 API application programming interface
 - An API is a way for someone else to write code, and then you to **use it, to interact with their programs**.
-- no mater wich javascript, the API always the same.
+- no matter which javascript, the API always the same.
 
 ---
 
@@ -58,7 +58,7 @@ API application programming interface
 
 - A **high-level interpreted language**, dont need to deal with the memory management like the lower language C or C++.
 
-- Run directlly, no complier.
+- Run directlly, no compiler.
 - Conforms to the ECMAScript specification
 - Multi-paradigm: object-oriented code or functional code.
 
@@ -73,7 +73,7 @@ API application programming interface
 
 
 **js output**:
-- js dont have a build in pring function.
+- js dont have a build in print function.
 - data is typically displayed via:
   - alerts box: `window.alert();`
     - say hi
