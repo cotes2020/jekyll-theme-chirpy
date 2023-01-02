@@ -664,7 +664,7 @@ A Basic Example 演示了使用这些数据类型的方法（注意将其中8080
 
 - 其中 CounterVec 是用来管理相同 metric 下不同 label 的一组 Counter
   - 代码中声明了一个lable的key为`device`
-  - 使用的时候也需要指定一个 lable
+  - 使用的时候也需要指定一个 label
     - `hdFailures.With(prometheus.Labels{"device":"/dev/sda"}).Inc()`
 - 同理存在GaugeVec，
 
@@ -1542,7 +1542,7 @@ kubectl get cm monitoring-prometheus \
   - Prometheus can reach the app using its service name.
 - However, the scraping will be managed by the load balancing mechanism of the K8s service.
   - If there are multiple pods running, not all the pods are scrapped.
-- use the **dynamic discovery feature for Kubenetes in Prometheus**.
+- use the **dynamic discovery feature for Kubernetes in Prometheus**.
   - Set the role for kubernetes_sd_configs as `pod`.
   - So the `scrape will target all the Kubernetes pods` that match the following criteria,
 
@@ -1826,7 +1826,7 @@ go get github.com/prometheus/client_golang/prometheus/promhttp
 - You can use the [`prometheus/promhttp`](https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp) library's HTTP [`Handler`](https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#Handler) as the handler function.
 
 ```go
-// This minimal application, for example, would expose the default metrics for Go aplications via `http://localhost:2112/metrics:
+// This minimal application, for example, would expose the default metrics for Go applications via `http://localhost:2112/metrics:
 package main
 import (
 	"net/http"
@@ -2535,7 +2535,7 @@ type Desc struct {
     // Help string. Each Desc with the same fqName must have the same
     // dimHash.
     dimHash uint64
-    // err is an error that occured during construction. It is reported on
+    // err is an error that occurred during construction. It is reported on
     // registration time.
     err error
 }
