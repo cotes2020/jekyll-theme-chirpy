@@ -509,7 +509,7 @@ Prometheus基本上将所有数据存储为时间序列：属于同一指标和�
     - B
     - C
     regex: 1;2;3
-    # change ABC to 123 seperatly
+    # change ABC to 123 separately
     # not show
 
   - action: labelmap
