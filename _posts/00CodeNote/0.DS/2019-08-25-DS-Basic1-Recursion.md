@@ -475,8 +475,8 @@ Computing the sum of one or zero values is trivial. With two or more values, we 
 ```java
 // /∗∗ Returns the sum of the first n integers of the given array. ∗/
 public static int binarySum(int[ ] data, int low, int high) {
-  if(low>high) retun 0;
-  if(data[low] == data[high]) retun data[low];
+  if(low>high) return 0;
+  if(data[low] == data[high]) return data[low];
   int mid = (high + low) /2
   else return binarySum(data, low, mid) + binarySum(data, mid+1, high);
 }
