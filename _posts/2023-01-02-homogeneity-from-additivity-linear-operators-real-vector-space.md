@@ -128,7 +128,7 @@ $$
 \end{align}
 $$
 
-## For $$c = \frac{1}{q} : q \in \mathbb{Z} \backslash \left\{ 0 \right\}$$
+## For $$c \in \left\{ \frac{1}{q} : q \in \mathbb{Z} \backslash \left\{ 0 \right\} \right\}$$
 
 We will now see how the above result is also true for $$c = \frac{p}{q} : p = 1, q \in \mathbb{Z} \backslash \left\{ 0 \right\}$$. Ultimately, we will combine this result with the corresponding one for $$c \in \mathbb{Z}$$ to generalize it for all $$c \in \mathbb{Q}$$ which in turn will let us generalize it to $$c \in \mathbb{R}$$ via Dedekind cuts as previously stated.
 
