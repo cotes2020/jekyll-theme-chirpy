@@ -29,6 +29,7 @@ ue
 
 arent
 cant
+doesnot
 thats
 whats
 womens
