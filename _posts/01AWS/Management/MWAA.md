@@ -43,7 +43,7 @@ Amazon MWAA
 - makes it easy to
   - run open-source versions of Apache Airflow on AWS,
   - build workflows to run extract, transform, and load (ETL) jobs and data pipelines.
-- aviod manually installing, maintaining, and scaling Airflow, and handling security, authentication, and authorization for its users
+- avoidmanually installing, maintaining, and scaling Airflow, and handling security, authentication, and authorization for its users
 
 Airflow workflows
 - retrieve input from sources like [Amazon Simple Storage Service (S3)](https://aws.amazon.com/s3/) using [Amazon Athena](https://aws.amazon.com/athena) queries,
