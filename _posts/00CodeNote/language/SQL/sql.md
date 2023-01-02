@@ -190,12 +190,12 @@ mysql> select concat(ca,'!'),concat(vca,'!') from test2;
 ```
 //text 不需要默认值
 mysql> create table test3(
-    -> artice **text** not null default''
+    -> article **text** not null default''
     -> )engine myisam charset utf8;
-ERROR 1101 (42000): BLOB, TEXT, GEOMETRY or JSON column 'artice' can't have a default value
+ERROR 1101 (42000): BLOB, TEXT, GEOMETRY or JSON column 'article' can't have a default value
 
 mysql> create table test3(
-    -> artice text);
+    -> article text);
 Query OK, 0 rows affected (0.05 sec)
 
 mysql> alter table test3 add img blob;
@@ -209,7 +209,7 @@ mysql> desc test3;
 +--------+------+------+-----+---------+-------+
 | Field  | Type | Null | Key | Default | Extra |
 +--------+------+------+-----+---------+-------+
-| artice | text | YES  |     | NULL    |       |
+| article | text | YES  |     | NULL    |       |
 | img    | blob | YES  |     | NULL    |       |
 +--------+------+------+-----+---------+-------+
 
@@ -218,7 +218,7 @@ mysql> insert into test3
 
 mysql> select * from test3;
 +----------------+---------------+
-| artice         | img           |
+| article         | img           |
 +----------------+---------------+
 | qingqiongmaima | zhangfeiganlu |
 +----------------+---------------+
