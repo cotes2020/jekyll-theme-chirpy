@@ -19,7 +19,7 @@ order | BST | Mark
 05 | SizeOf.BinaryTree | [SizeOfBT](./SizeOfBT.java)
 06 | HeightOf.BinaryTree | [HeightOfBT](./HeightOfBT.java)
 07 | RootToLeafforSum.BinaryTree | [RootToLeafSum](./RootToLeafSum.java)
-09 | If.BinaryTreeis.BinarySearchTree | [IfBTisBST](./IfBTisBST.java) use -00 +00 set limit, and caculate.
+09 | If.BinaryTreeis.BinarySearchTree | [IfBTisBST](./IfBTisBST.java) use -00 +00 set limit, and calculate.
 10 | BSTTraversalLevelOrder | [BSTTraversalLevelOrder](./BSTTraversalLevelOrder.java) use queue, FIFO, level by level
 11 | BTTraversalLevelByLevel | [BTTraversalLevelByLevel](./BTTraversalLevelByLevel.java) WithTwoQueue, WithOneQueue, WithOneQueueandCounter
 12 | BTTraversalLevelSpecialOrder | [BTTraversalLevelSpecialOrder](./BTTraversalLevelSpecialOrder.java)
