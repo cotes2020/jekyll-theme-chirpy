@@ -17,7 +17,7 @@ image:
 
 <font color=red> web identity federation </font>
 - allows user to authenticate with a web identity ptovider (google, facebook)
-- ther user authenticates first with the web id provider and receives and authentication token, and ues it to exchanged for temporary AWS credenticals allowing them to assume an IAM role.
+- the user authenticates first with the web id provider and receives and authentication token, and use it to exchanged for temporary AWS credenticals allowing them to assume an IAM role.
 
 
 Amazon Cognito provide <font color=red> web identity federation </font> with the following features:
