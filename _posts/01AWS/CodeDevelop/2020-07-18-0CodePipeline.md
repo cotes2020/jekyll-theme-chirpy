@@ -189,7 +189,7 @@ Retrying failed tasks
 
 ## Pipeline Definition
 
-**pipeline definition**: how business logic comunicate to AWS Data Pipeline.
+**pipeline definition**: how business logic communicate to AWS Data Pipeline.
 - It contains the following information:
   - Names, locations, and formats of the data sources
   - Activities that transform the data
@@ -342,7 +342,7 @@ myapp3.zip
 3. setup the user
 4. run the cloudformation to create the ec2
 5. setup CodeDeploy and deploy
-6. upload the next version of code (mannually triggered)
+6. upload the next version of code (manually triggered)
 7. setup the CodePipeline and triggered
 8. upload the next version of code (auto triggered)
 ```
@@ -434,7 +434,7 @@ myapp3.zip
      - revision type(S3/Github) and revision location.
    - the application is installed and run
 
-6. upload the next version of code (mannually triggered)
+6. upload the next version of code (manually triggered)
 
 7. <font color=red> Setup the CodePipeline and triggered</font>
    - pipeline setting:
@@ -451,7 +451,7 @@ myapp3.zip
    - deploy stage
      - deploy provider
      - region
-     - aplication name
+     - application name
      - deployment group
    - start building the application
 
