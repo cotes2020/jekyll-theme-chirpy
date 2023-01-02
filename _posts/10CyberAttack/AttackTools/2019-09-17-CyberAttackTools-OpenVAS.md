@@ -450,7 +450,7 @@ To run:
   * [docker-compose.yml] - `(docker-compose.yml)`
   * [conf/nginx.conf] - `(conf/nginx.conf)`
   * [conf/nginx_ssl.conf] - `(conf/nginx_ssl.conf)`
-* Change the "OV_PASSWORD" enviromental variable in [docker-compose.yml] - (docker-compose.yml)
+* Change the "OV_PASSWORD" environmental variable in [docker-compose.yml] - (docker-compose.yml)
 * Install the latest [docker-compose] - (https://docs.docker.com/compose/install/)
 * run `docker-compose up -d`
 
@@ -458,7 +458,7 @@ To run:
 
 #### LDAP Support (experimental)
 Openvas do not support full ldap integration but only per-user authentication.
-- A workaround is in place here by syncing ldap admin user(defined by `LDAP_ADMIN_FILTER `) with openvas admin users everytime the app start up.
+- A workaround is in place here by syncing ldap admin user(defined by `LDAP_ADMIN_FILTER `) with openvas admin users Every time the app start up.
 - To use this, just need to specify the required ldap env variables:
 
 ```
