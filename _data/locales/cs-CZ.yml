@@ -69,7 +69,7 @@ post:
       succeed: Zkopírováno!
     share_link:
       title: Kopírovat odkaz
-      succeed: Odkaz úspěšně zkopírován!
+      succeed: Zkopírováno!
   # pinned prompt of posts list on homepage
   pin_prompt: Připnuto
 
@@ -85,9 +85,7 @@ df:
 
 # categories page
 categories:
-  category_measure:
-    singular: kategorie
-    plural: kategorie
+  category_measure: kategorie
   post_measure:
     singular: příspěvěk
     plural: příspěvky
