@@ -15,14 +15,14 @@ func main() {
 	json_string := `
     {
         "firstname": "Rocky",
-        "lastname": "Sting",
+        "lastname": "String",
         "city": "London"
     }`
 
 	emp1 := new(Employee)
 	json.Unmarshal([]byte(json_string), emp1)
 	fmt.Println(emp1)
-	// &{Rocky Sting London}
+	// &{Rocky String London}
 
 	emp2 := new(Employee)
 	emp2.FirstName = "Ramesh"
