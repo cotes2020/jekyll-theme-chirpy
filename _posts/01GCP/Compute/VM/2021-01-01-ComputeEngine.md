@@ -148,7 +148,7 @@ Virtual machines need <font color=red> block storage </font>
 - provide significantly cheaper pricing for the workloads that can be interrupted safely
   - have a workload that no human being is sitting around waiting to finish
   - such as batch job analyzing large dataset
-- benifit:
+- benefit:
   - save money
   - cost less per hour but can be terminated by Google Cloud at any time.
 - different from an ordinary Compute Engine VM in only one respect.
