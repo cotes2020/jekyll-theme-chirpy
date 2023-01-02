@@ -37,10 +37,10 @@ class _DeHTMLParser(HTMLParser):
             for attrs_name, attrs_value in attrs:
                 if attrs_name == "class" and attrs_value == "fp-name":
                     self.__text.append("\n🟢:")
-            # self._results.append('\n\n\nMyAvaliableTarget: ')
+            # self._results.append('\n\n\nMyavailableTarget: ')
 
         # elif tag == 'h6':
-        #     self.__text.append('\n\n\nMyAvaliableTarget: ')
+        #     self.__text.append('\n\n\nMyavailableTarget: ')
         #     tag_name = None
         #     tag_value = None
         #     for attrs_name, attrs_value in attrs:
