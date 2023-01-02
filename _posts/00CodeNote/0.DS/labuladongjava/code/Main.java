@@ -13,9 +13,9 @@ class Main {
         Node root = new Node(input[0][0]);
         System.out.println("root: " + root.data);
         for(int[] pair:input){
-            Node parrent = findNode(root, pair[0]);
-            if(parrent != null) {
-                parrent.childs.add( new Node(pair[1]) );
+            Node parent = findNode(root, pair[0]);
+            if(parent != null) {
+                parent.childs.add( new Node(pair[1]) );
             }
             else throw new IllegalArgumentException("Input array is null");
         }
