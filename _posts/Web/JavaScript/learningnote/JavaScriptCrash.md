@@ -306,18 +306,18 @@ todos.forEach(function(todo) {
 todos.forEach((todo) => console.log(todo))
 
 
-const todoText = todos.map(function(todo) {     // map return a arry
+const todoText = todos.map(function(todo) {     // map return a array
   return todo.text;
 });
 
 const todoCompleted = todos.filter(function(todo) {
-  return todo.isCompleted === true;             // retun a array, filter item
+  return todo.isCompleted === true;             // return a array, filter item
 });
 
 const todoCompleted = todos.filter(function(todo) {
   return todo.isCompleted === true;
 }).map(function(todo){
-  return todo.text;                              // retun a array with only text data
+  return todo.text;                              // return a array with only text data
 })
 
 ```
@@ -355,7 +355,7 @@ name += ' says hello!';
 <link rel='stylesheet' href='yrl'>;
 <script src="url/main.js"></script>
 <img src="pic.png">
-backgroud: url('url');
+background: url('url');
 
 ---
 
@@ -572,7 +572,7 @@ switch(color) {
 }
 
 
-// ternary operater
+// ternary operator
 const x = (condition) ? true run code : false run code
 
 const x = 10
@@ -700,7 +700,7 @@ const num = new Number(5);
 console.log(typeof num); // Shows 'Object'
 
 
-// consturctor function with prototype
+// constructor function with prototype
 function Person(firstname, lastname, dob) {
   this.firstname = firstname;
   this.lastname = lastname;
@@ -871,7 +871,7 @@ DOM, user interface.
   - returned by a member of the API
 - **nodelist** - an array of the element
   - document.getElementByTagName('p')
-  - document.getElementByClassName(calss)
+  - document.getElementByClassName(class)
   - document.getElementById(id)
   - element.innerHTML
   - element.style
@@ -898,7 +898,7 @@ HTML5 an CSS3 are not really temporary changed
 
 API application programming interface
 - An API is a way for someone else to write code, and then you to **use it, to interact with their programs**.
-- no mater wich javascript, the API always the same.
+- no matter which javascript, the API always the same.
 
 
 ```js
@@ -1010,7 +1010,7 @@ btn.onmouseover and btn.onmouseout
 .onsize
 // browser window is resized
 .onload
-// borwser finishes loading the page
+// browsers finishes loading the page
 
 
 6.
