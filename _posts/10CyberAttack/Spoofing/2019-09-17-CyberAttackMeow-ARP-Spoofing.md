@@ -143,7 +143,7 @@ XARP is security tool users can download and use.
 - XARP has several Modules that have specific functions.
 - If those conditions are violated they will generate a notification for the User.
 - `ChangeFilter`: 
-  - Module keeps tracks of IP-to-Mac Adress mapping.
+  - Module keeps tracks of IP-to-Mac address mapping.
   - Every ARP Packet contains a mapping of IP-to-MAC addresses. ARP request contains the IP-to-MAC mapping of the sender. ARP replies to contain the IP-to-MAC mapping of the machine resolved. Every mapping is inserted into a database. If a mapping is monitored that break current mapping, an alert is generated. Using Network discoverers, the database is filled quickly and more reliably than without network discoverers.
 - `CorruptFilter`: 
   - ARP packets have a special restriction.
