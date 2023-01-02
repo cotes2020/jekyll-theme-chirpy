@@ -30,7 +30,7 @@ password: infected
 2019-07-19 -- Traffic analysis exercise - So hot right now
 2019-06-22 -- Traffic analysis exercise - Phenomenoc
 2019-05-02 -- Traffic analysis exercise - BeguileSoft
-2019-04-15 -- Traffic analysis exercise - StingrayAhoy
+2019-04-15 -- Traffic analysis exercise - StringrayAhoy
 2019-03-19 -- Traffic analysis exercise - LittleTigers
 2019-02-23 -- Traffic analysis exercise - Stormtheory
 2019-01-28 -- Traffic analysis exercise - Timbershade
@@ -41,7 +41,7 @@ password: infected
 2018-10-31 -- Traffic analysis exercise - Happy Halloween!
 2018-09-27 -- Traffic analysis exercise - Blank clipboard
 2018-08-12 -- Traffic analysis exercise - Sputnik House
-2018-07-15 -- Traffic analysis exercise - Oh noes! Torrentz on our network!
+2018-07-15 -- Traffic analysis exercise - Oh knoes! Torrentz on our network!
 2018-06-30 -- Traffic analysis exercise - Sorting through the alerts
 2018-05-11 -- Traffic analysis exercise - Night Dew
 2018-04-11 -- Traffic analysis exercise - Dynaccoustic
@@ -141,7 +141,7 @@ LEVEL 1 QUESTIONS:
     -> get 5 sites: Bing, leaving www.ciniholland.nl, adultbiz*in, 24corp-shop*com, stand.trustandprobaterealty*com.
     -> compromised website: www.ciniholland.nl, 82.150.140.30.
 
-    The user visited “ciniholland” and through the referers of each GET requests, we see that it leads to a very suspicious website which initiates downloads on the machine.
+    The user visited “ciniholland” and through the referrer of each GET requests, we see that it leads to a very suspicious website which initiates downloads on the machine.
 
 5) What is the domain name of the compromised web site
     ciniholland.nl/
