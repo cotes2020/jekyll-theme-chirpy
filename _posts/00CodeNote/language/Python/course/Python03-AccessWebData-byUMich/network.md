@@ -19,7 +19,7 @@ mysock.connect( ('data.pr4e.org', 80))   # host and port
 http:// www.goo.com/ index.html
 protocol+host+document
 
-1. usally
+1. usually
 ```py
 # install telnet
 brew install telnet

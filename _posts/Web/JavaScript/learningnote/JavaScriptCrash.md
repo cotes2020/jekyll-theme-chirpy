@@ -917,7 +917,7 @@ window.document();
 const form = document.getElementById('my-form')
 // select single elements, JQuery
 console.log(document.querySelector('.container'));
-// single elements, only select the frist one
+// single elements, only select the first one
 document.querySelector('h1')
 
 

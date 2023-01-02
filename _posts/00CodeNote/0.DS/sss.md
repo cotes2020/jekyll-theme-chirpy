@@ -704,7 +704,7 @@ def remove(self, item):
 
     if current is None:
         raise ValueError("{} is not in the list".format(item))
-    if previous is None:   # remove the frist item
+    if previous is None:   # remove the first item
         self.head = current.next
     else:
         previous.next = current.next
@@ -834,7 +834,7 @@ class OrderedList:
         if current is None:
             raise ValueError("{} is not in the list".format(item))
         # if current is the head
-        if previous is None:   # remove the frist item
+        if previous is None:   # remove the first item
             self.head = current.next
         else:
             previous.next = current.next

@@ -33,7 +33,7 @@ public class test<E> {
         }
 
         // update methods
-        public void addFrist(E e) {
+        public void addfirst(E e) {
             if(size==0) {
                 tail = new Node<>(e, null);
                 tail.setNext(tail);
@@ -45,7 +45,7 @@ public class test<E> {
             size++;
         }
         public void addLast(E e) {
-            addFrist(e);
+            addfirst(e);
             tail = tail.getNext();
         }
         public E removeFirst() {

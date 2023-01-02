@@ -58,7 +58,7 @@ public class DoublyLinkedList<E> {
         }
 
 
-        public void addFrist(E e) {
+        public void addfirst(E e) {
             addBetween(e, head, head.getNext());
         }
         public void addLast(E e) {

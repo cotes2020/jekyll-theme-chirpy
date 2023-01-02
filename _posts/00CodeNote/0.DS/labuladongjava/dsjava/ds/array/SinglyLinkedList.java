@@ -34,7 +34,7 @@ public class SinglyLinkedList<E> implements Cloneable {
         }
 
         // update methods
-        public void addFrist(E e) {
+        public void addfirst(E e) {
             head = new Node<>(e, head);
             if(size==0) tail = head;
             size++;

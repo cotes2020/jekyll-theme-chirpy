@@ -322,7 +322,7 @@ orderList = [
 
 
 
-# Divide into seperate list O(n)
+# Divide into separate list O(n)
 nonprimelist, primelist = [],[]
 for i in orderList:
   if (''.join(i[1:])).isdigit():

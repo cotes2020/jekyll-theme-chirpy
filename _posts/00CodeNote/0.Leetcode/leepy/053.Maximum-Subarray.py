@@ -43,7 +43,7 @@
 #     return maxSum
 
 
-# # solution ----------------------------- adding one, one by one, seperate + -
+# # solution ----------------------------- adding one, one by one, separate + -
 # # Runtime: 36 ms, faster than 99.72% of Python online submissions for Maximum Subarray.
 # # Memory Usage: 14.3 MB, less than 36.42% of Python online submissions for Maximum Subarray.
 # def maxSubArray(self, nums):
@@ -69,7 +69,7 @@
 # # not good, because calculate the max for more turns
 
 
-# # solution ----------------------------- adding one, one by one, seperate + -
+# # solution ----------------------------- adding one, one by one, separate + -
 # # Runtime: 52 ms, faster than 49.54% of Python online submissions for Maximum Subarray.
 # # Memory Usage: 14.2 MB, less than 52.01% of Python online submissions for Maximum Subarray.
 # def maxSubArray(nums):

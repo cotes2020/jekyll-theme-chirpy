@@ -118,7 +118,7 @@ Connection: keep-alive
 </script>
 ```
 
-The nc output seems like this, & seperate the token.
+The nc output seems like this, & separate the token.
 
 ```
 GET /?c=1520227817&0fab54e97b2fa75c39d298de602a5939 HTTP/1.1
