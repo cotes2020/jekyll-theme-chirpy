@@ -27,15 +27,15 @@ public class Amazon {
         ArrayList<Object> res = new ArrayList<Object>();
         if(map.containsKey(offset)) {
             res.add(true);
-            int[] datas = map.get(offset);
-            int n = datas.length;
+            int[] data = map.get(offset);
+            int n = data.length;
             if(n==1){
-                res.add(datas[0]);
+                res.add(data[0]);
                 // System.out.println("offset: " + offset + ", one value: " + ans);
                 offset++;
                 return res;
             }
-            res.add(datas[index]);
+            res.add(data[index]);
             if(index == n-1) {
                 // System.out.println("offset: " + offset + ", last value: " + ans);
                 index=0;
