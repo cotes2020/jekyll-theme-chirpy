@@ -74,7 +74,7 @@ Container technology married with microservices is a natural fit.  A container u
    - figure out what is taking the most money or if that is reasonable.
 
 4. You need to implement a data gathering and instrument all your services so they produce information you can use to diagnose what is using what and how you could save money.
-   - Maybe some services shouldn’t be scaled arbitrarly.
+   - Maybe some services shouldn’t be scaled arbitrarily.
    - Possibly you should limit the scaling to a certain amount.
    - Maybe a configuration change or frequency of doing something could drastically improve the costs.
    - Possibly a component you selected is too expensive using way more resources than it should.
@@ -129,7 +129,7 @@ Behind the scenes, you can integrate with nearly any backend to provide the comp
 
 RESTful APIs tend to use Path and Query parameters to inject dynamic values into APIs.
 - For example,
-- to retreive a specific cart with an id of abcd123,
+- to retrieve a specific cart with an id of abcd123,
 - design the API to accept a query or path parameter that specifies the cartID:
 - `/cart?cartId=abcd123` or `/cart/abcd123`
 
