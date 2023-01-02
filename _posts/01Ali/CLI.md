@@ -83,7 +83,7 @@ aliyun rds DescribeDBInstances \
 				"InstanceNetworkType": "Classic",
 				"LockMode": "Unlock",
 				"LockReason": "",
-				"MutriORsignle": false,
+				"MutriORsingle": false,
 				"PayType": "Postpaid",
 				"ReadOnlyDBInstanceIds": {
 					"ReadOnlyDBInstanceId": []
