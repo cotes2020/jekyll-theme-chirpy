@@ -56,7 +56,7 @@ test_data.head()
 
 
 
-3. caculate the rate
+3. calculate the rate
 
 ```py
 
