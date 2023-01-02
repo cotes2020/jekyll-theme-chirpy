@@ -1,4 +1,4 @@
-from pythonds.graphs import PriorityQueue, Graph, Vertex
+from pythonds.graphs import Graph, PriorityQueue, Vertex
 
 
 def dijkstra(aGraph, start):

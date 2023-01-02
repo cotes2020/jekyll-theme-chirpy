@@ -14,6 +14,7 @@ class Node:
         else:
             return False
 
+
 # A Linked List class with a single head node
 
 
@@ -24,9 +25,9 @@ class LinkedList:
     # insertion method for the linked list
     def insert(self, data):
         newNode = Node(data)
-        if(self.head):
+        if self.head:
             current = self.head
-            while(current.next):
+            while current.next:
                 current = current.next
             current.next = newNode
         else:
@@ -36,7 +37,7 @@ class LinkedList:
     def printLL(self):
         current = self.head
         list = []
-        while(current):
+        while current:
             #   print(current.val)
             list.append(current.val)
             current = current.next

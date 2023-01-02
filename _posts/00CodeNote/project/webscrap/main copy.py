@@ -74,19 +74,17 @@ url = "https://www.irtliving.com/Apartments-In/Charleston-SC/Talison-Row"
 # #     if u.find.all('li', class_="fp-group-item"):
 # #         print(u)
 
-import time
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 import pandas as pd
-
+from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 # Establish chrome driver and go to report site URL
 driver = webdriver.Chrome()
 
-driver.implicitly_wait(10) # seconds
+driver.implicitly_wait(10)  # seconds
 
 driver.get(url)
 
@@ -108,13 +106,11 @@ try:
 
     # myDynamicElement = driver.find_element(By.XPATH, '//*[@id="floorplan-overview-content"]')
 
-
-    myDynamicElement = driver.find_element(By.ID, 'floorplan-overview-content')
+    myDynamicElement = driver.find_element(By.ID, "floorplan-overview-content")
 
     print("yes")
 finally:
     driver.quit()
-
 
 
 # print(players)

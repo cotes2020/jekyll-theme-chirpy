@@ -34,7 +34,7 @@ def climbStairs(n):
     dp[1] = 1
     i = 2
     while i <= n:
-        dp[i] = dp[i-1] + dp[i-2]
+        dp[i] = dp[i - 1] + dp[i - 2]
         i += 1
     return dp[n]
 
@@ -43,7 +43,7 @@ def climbStairs(n):
     dp = {0: 1, 1: 1, 2: 2, 3: 3, 4: 5}
     i = 5
     while i <= n:
-        dp[i] = dp[i-1] + dp[i-2]
+        dp[i] = dp[i - 1] + dp[i - 2]
         i += 1
     return dp[n]
 
@@ -54,9 +54,9 @@ def climbStairs(n):
 # Memory Usage: 13.5 MB, less than 11.97% of Python online submissions for Climbing Stairs.
 def climbStairs(self, n):
     one, two = 1, 1
-    for i in range(n-1):
+    for i in range(n - 1):
         tem = one
-        one = one+two
+        one = one + two
         two = tem
     return one
 
@@ -70,8 +70,8 @@ def climbStairs(self, n):
         return n
     else:
         dic = {3: 3, 4: 5}
-        for i in range(5, n+1):
-            dic[i] = dic.get(i-1) + dic.get(i-2)
+        for i in range(5, n + 1):
+            dic[i] = dic.get(i - 1) + dic.get(i - 2)
     return dic.get(n)
 
 

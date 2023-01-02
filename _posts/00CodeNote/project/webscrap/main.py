@@ -1,15 +1,12 @@
-
 # from urllib.request import urlopen
 
 # from bs4 import BeautifulSoup
 
-import requests
 import re
-
-import nltk   
 from urllib.request import urlopen
 
-
+import nltk
+import requests
 
 # # from csv import writer
 # # import time
@@ -18,8 +15,6 @@ from urllib.request import urlopen
 
 # # from urllib.request import Request, urlopen
 # # from urllib.error import URLError, HTTPError
-
-
 
 
 # url = "https://www.irtliving.com/Apartments-In/Charleston-SC/Talison-Row"
@@ -47,37 +42,38 @@ from urllib.request import urlopen
 # #     page_url=url + str(i)
 # #     pages_url.append(page_url)
 
+
 def set_cookies(url):
     r = requests.get(
-        the_url, 
+        the_url,
         timeout=30,
         headers=header,
-        )
+    )
     code = r.status_code
     # print(code)
     if code == 200:
         # print(type(r.text))
-        # print(r.json())  
+        # print(r.json())
         # print(type(r.json()))
         # print(r.cookies)
         jar = requests.cookies.RequestsCookieJar()
         for key, value in r.cookies.items():
-            jar.set(key,value)
+            jar.set(key, value)
     return jar
-        
+
 
 def get_html_text(the_url, header, jar):
     r = requests.get(
-        the_url, 
+        the_url,
         timeout=30,
         headers=header,
         cookies=jar,
-        )
+    )
     code = r.status_code
     # print(code)
     if code == 200:
         # print(type(r.text))
-        # print(r.json())  
+        # print(r.json())
         # print(type(r.json()))
         # print(r.cookies)
         # for key, value in r.cookies.items():
@@ -86,26 +82,27 @@ def get_html_text(the_url, header, jar):
         # return "get r.text"
         print(r.text)
         return r
-    else: 
+    else:
         return "error"
-    
-    
+
+
 def get_content(r):
-    pattern = re.compile('explore-feed.*?question_link.*?>(.*?)</a>', re.S)
+    pattern = re.compile("explore-feed.*?question_link.*?>(.*?)</a>", re.S)
     content = re.findall(pattern, r.text)
     print(content)
-    
+
     # try:
     #     r = requests.get(the_url, timeoue=30)
-        
+
     #     code = r.status_code
     #     r.raise_for_status()
-        
+
     #     r.encoding = r.apparent_encoding
-    #     return r.text 
-    
+    #     return r.text
+
     # except:
     #     return "error"
+
 
 def clean_html(html):
     """
@@ -130,11 +127,11 @@ def clean_html(html):
     cleaned = re.sub(r"  ", " ", cleaned)
     return cleaned.strip()
 
-def test(url): 
-    html = urlopen(url).read()    
-    raw = nltk.clean_html(html)  
-    print(raw)
 
+def test(url):
+    html = urlopen(url).read()
+    raw = nltk.clean_html(html)
+    print(raw)
 
 
 # # def get_dom(the_url):
@@ -214,19 +211,19 @@ def test(url):
 #     driver.quit()
 
 
-
 # # print(players)
 
 
 if __name__ == "__main__":
-    
+
     the_url = "https://www.livetalisman.com/redmond/talisman/conventional/"
-    
-    header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.66 Safari/537.36"}
-    
-    
+
+    header = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.66 Safari/537.36"
+    }
+
     # jar = set_cookies(the_url)
-    
+
     # get_html_text(the_url, header, jar)
-    
+
     test(the_url)

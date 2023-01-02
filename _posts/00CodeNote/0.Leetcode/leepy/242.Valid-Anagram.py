@@ -41,6 +41,8 @@ class Solution:
         if s == t:
             return True
         return sorted(s) == sorted(t)
+
+
 # Runtime: 40 ms, faster than 86.87% of Python3 online submissions for Valid Anagram.
 # Memory Usage: 14.8 MB, less than 21.44% of Python3 online submissions for Valid Anagram.
 

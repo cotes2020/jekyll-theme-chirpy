@@ -10,7 +10,6 @@
 # Explanation: [4,-1,2,1] has the largest sum = 6.
 
 
-
 # # solution ----------------------------- slide widow, add one by one
 # # O(n^3) O(n^2)
 # def maxSubArray(nums):
@@ -70,7 +69,6 @@
 # # not good, because calculate the max for more turns
 
 
-
 # # solution ----------------------------- adding one, one by one, seperate + -
 # # Runtime: 52 ms, faster than 49.54% of Python online submissions for Maximum Subarray.
 # # Memory Usage: 14.2 MB, less than 52.01% of Python online submissions for Maximum Subarray.
@@ -86,7 +84,6 @@
 #     return maxSub
 
 
-
 # # solution 4 -----------------------------
 # # Runtime: 44 ms, faster than 87.85% of Python online submissions for Maximum Subarray.
 # # Memory Usage: 14.4 MB, less than 36.42% of Python online submissions for Maximum Subarray.
@@ -94,7 +91,6 @@
 #     for i in range(1,len(nums)):
 #         nums[i] = max(nums[i], nums[i]+nums[i-1])
 #     return max(nums)
-
 
 
 # # solution 2 ----------------------------- linea
@@ -113,10 +109,9 @@
 #     return ans
 
 
-
 # nums = [-9, -2, -3, -4]
 # nums = [1]
-nums = [-2,1,-3,4,-1,2,1,-5,4]
+nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 # nums = [-2,1]
 # nums = [2,1]
 # nums = [-1,0,-2]

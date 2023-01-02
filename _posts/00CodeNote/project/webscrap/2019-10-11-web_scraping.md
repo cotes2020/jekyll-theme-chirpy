@@ -30,7 +30,7 @@ tags: [Python, webscrap]
 Target
 
 ```py
-# python main.py 
+# python main.py
 
 url: xx.com
 
@@ -38,7 +38,7 @@ url: xx.com
 
 ['Urban with Kitchen Bar', '1 bd / 1 ba', '$1,921', '$300', '605', '8 Weeks Free on Select Homes and Move-In Dates!', 'Oct 27, 2022 - Jan 31, 2023', '4']
 
-['Urban with L or Galley Kitchen', '1 bd / 1 ba', '$1,940', '$300', '578', 'Oct 27, 2022 - Jan 31, 2023', '8 Weeks Free on Select Homes and Move-In Dates!' 'Available Feb 09, 2023'] 
+['Urban with L or Galley Kitchen', '1 bd / 1 ba', '$1,940', '$300', '578', 'Oct 27, 2022 - Jan 31, 2023', '8 Weeks Free on Select Homes and Move-In Dates!' 'Available Feb 09, 2023']
 
 ```
 
@@ -149,7 +149,7 @@ if __name__=="__main__":
 
 
 ```py
-# coding=utf-8 
+# coding=utf-8
 class AnalyzeReport(HTMLParser):
     def __init__(self):
         HTMLParser.__init__(self)
@@ -202,4 +202,3 @@ if __name__ == "__main__":
     print "失败测试用例数：", pars.fail
     print "成功测试用例数：", pars.ps
 ```
-

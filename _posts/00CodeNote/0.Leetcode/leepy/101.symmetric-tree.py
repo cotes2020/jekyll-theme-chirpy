@@ -57,7 +57,7 @@ class Solution:
             stack2.append(root2.right)
         return not (stack1 or stack2)
 
-# (Faster, More Memory)
+    # (Faster, More Memory)
     def isSymmetric(self, root):
         if root.left is None and root.right is None:
             return True
@@ -107,7 +107,9 @@ class Solution:
             return False
         elif root1.val != root2.val:
             return False
-        return self.preorder(root1.left, root2.right) and self.preorder(root2.left, root1.right)
+        return self.preorder(root1.left, root2.right) and self.preorder(
+            root2.left, root1.right
+        )
 
 
 # Runtime: 20 ms, faster than 82.46% of Python online submissions for Symmetric Tree.
@@ -135,17 +137,19 @@ class Solution:
         def pprint(now):
             # if not now:
             if now is None:
-                return ['_']
+                return ["_"]
 
             if now.left is None and now.right is None:
                 return [str(now.val)]
 
             return pprint(now.left) + [str(now.val)] + pprint(now.right)
 
-        if root is not None \
-                and root.left is not None \
-                and root.right is not None \
-                and root.left.val != root.right.val:
+        if (
+            root is not None
+            and root.left is not None
+            and root.right is not None
+            and root.left.val != root.right.val
+        ):
             return False
 
         return pprint(root.left) == pprint(root.right)[::-1]
@@ -153,6 +157,7 @@ class Solution:
 
 # Runtime: 22 ms, faster than 60.46% of Python online submissions for Symmetric Tree.
 # Memory Usage: 13.7 MB, less than 44.59% of Python online submissions for Symmetric Tree.
+
 
 class Solution:
     def isSymmetric(self, root):

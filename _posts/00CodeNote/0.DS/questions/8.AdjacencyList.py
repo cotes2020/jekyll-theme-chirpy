@@ -2,12 +2,12 @@ class Vertex:
     def __init__(self, key) -> None:
         self.id = key
         self.connectedTo = {}
-        self.color = 'white'
+        self.color = "white"
         self.getDistance = 0
         self.pred = None
 
     def __str__(self) -> str:
-        return str(self.id) + ' connectedTo: ' + str([x.id for x in self.connectedTo])
+        return str(self.id) + " connectedTo: " + str([x.id for x in self.connectedTo])
 
     def addNeighbor(self, nbr, weight=0):
         self.connectedTo[nbr] = weight
@@ -52,7 +52,8 @@ class GraphyAL:
     def addVertex(self, key):
         if key not in self.vertList.keys():
             print(
-                'Vertex {} not present in Graph, adding it automatically.'.format(key))
+                f"Vertex {key} not present in Graph, adding it automatically."
+            )
             newVertex = Vertex(key)
             self.vertList[key] = newVertex
             self.numVertices += 1
@@ -80,13 +81,14 @@ class GraphyAL:
     def print_list(self):
         print(self.vertList.keys())
 
-        print('From    To      Cost')
+        print("From    To      Cost")
 
         for id in self.vertList.keys():
             vert = self.vertList[id]
             connectList = vert.connectedTo
             for i in connectList:
-                print(id, '     ', i.id, '     ', vert.getWeight(i))
+                print(id, "     ", i.id, "     ", vert.getWeight(i))
+
 
 # g = GraphyAL()
 # g.addEdge('1', '2', 10)

@@ -16,6 +16,7 @@ def knightGraph(bdSize):
                 ktGraph.addEdge(nodeId, nid)
     return ktGraph
 
+
 # Another helper function posToNodeId converts a location on the board in terms of a row and a column into a linear vertex number similar to the vertex numbers
 
 
@@ -26,14 +27,23 @@ def posToNodeId(row, column, board_size):
 # The genLegalMoves takes the position of the knight on the board and generates each of the eight possible moves.
 def genLegalMoves(x, y, bdSize):
     newMoves = []
-    moveOffsets = [(-1, -2), (-1, 2), (-2, -1), (-2, 1),
-                   (1, -2), (1, 2), (2, -1), (2, 1)]
+    moveOffsets = [
+        (-1, -2),
+        (-1, 2),
+        (-2, -1),
+        (-2, 1),
+        (1, -2),
+        (1, 2),
+        (2, -1),
+        (2, 1),
+    ]
     for i in moveOffsets:
         newX = x + i[0]
         newY = y + i[1]
         if legalCoord(newX, bdSize) and legalCoord(newY, bdSize):
             newMoves.append((newX, newY))
     return newMoves
+
 
 # The legalCoord helper function makes sure that a particular move that is generated is still on the board.
 
@@ -50,15 +60,15 @@ def knightTour(n, path, u, limit):
     # path, a list of vertices visited up to this point;
     # u, the vertex in the graph we wish to explore;
     # limit the number of nodes in the path.
-    u.setColor('gray')
+    u.setColor("gray")
     path.append(u)
 
     # checks the base case condition.
     if n < limit:
 
-     # If the path is not long enough
-     # continue to explore one level deeper by choosing a new vertex to explore
-     # and calling knightTour recursively for that vertex.
+        # If the path is not long enough
+        # continue to explore one level deeper by choosing a new vertex to explore
+        # and calling knightTour recursively for that vertex.
         nbrList = list(u.getConnections())
         i = 0
         done = False
@@ -67,8 +77,8 @@ def knightTour(n, path, u, limit):
             # DFS also uses colors to keep track of which vertices in the graph have been visited.
             # Unvisited vertices are colored white,
             # visited vertices are colored gray.
-            if nbrList[i].getColor() == 'white':
-                done = knightTour(n+1, path, nbrList[i], limit)
+            if nbrList[i].getColor() == "white":
+                done = knightTour(n + 1, path, nbrList[i], limit)
             i = i + 1
         # backtrack
         # If all neighbors of a particular vertex have been explored and we have not yet reached our goal length of 64 vertices, we have reached a dead end.
@@ -76,7 +86,7 @@ def knightTour(n, path, u, limit):
         # Backtracking happens when we return from knightTour with a status of False.
         if not done:
             path.pop()
-            u.setColor('white')
+            u.setColor("white")
 
     # If we have a path that contains 64 vertices
     # return from knightTour with a status of True,
@@ -90,10 +100,10 @@ def knightTour(n, path, u, limit):
 def orderByAvail(n):
     resList = []
     for v in n.getConnections():
-        if v.getColor() == 'white':
+        if v.getColor() == "white":
             c = 0
             for w in v.getConnections():
-                if w.getColor() == 'white':
+                if w.getColor() == "white":
                     c = c + 1
             resList.append((c, v))
     resList.sort(key=lambda x: x[0])
@@ -109,24 +119,24 @@ class DFSGraph(Graph):
         # iterates over all of the vertices in the graph
         # calling dfsvisit on the nodes that are white.
         for aVertex in self:
-            aVertex.setColor('white')
+            aVertex.setColor("white")
             aVertex.setPred(-1)
         for aVertex in self:
-            if aVertex.getColor() == 'white':
+            if aVertex.getColor() == "white":
                 self.dfsvisit(aVertex)
 
     def dfsvisit(self, startVertex):
-        startVertex.setColor('gray')
+        startVertex.setColor("gray")
         self.time += 1
 
         startVertex.setDiscovery(self.time)
 
         for nextVertex in startVertex.getConnections():
             # explores all of the neighboring white vertices as deeply as possible.
-            if nextVertex.getColor() == 'white':
+            if nextVertex.getColor() == "white":
                 nextVertex.setPred(startVertex)
                 self.dfsvisit(nextVertex)
 
-        startVertex.setColor('black')
+        startVertex.setColor("black")
         self.time += 1
         startVertex.setFinish(self.time)

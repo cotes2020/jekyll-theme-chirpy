@@ -63,6 +63,7 @@ class Solution:
             root = root.right
         return result
 
+
 # Runtime: 16 ms, faster than 76.59% of Python online submissions for Binary Tree Inorder Traversal.
 # Memory Usage: 13.6 MB, less than 19.47% of Python online submissions for Binary Tree Inorder Traversal.
 
@@ -109,7 +110,6 @@ class Solution:
 # Memory Usage: 13.3 MB, less than 76.61% of Python online submissions for Binary Tree Inorder Traversal.
 class Solution:
     def inorderTraversal(self, root):
-
         def dfs(node, ans):
             if node.left:
                 dfs(node.left)
@@ -131,10 +131,22 @@ class Solution:
     def inorderTraversal(self, root):
         if not root:
             return []
-        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
+        return (
+            self.inorderTraversal(root.left)
+            + [root.val]
+            + self.inorderTraversal(root.right)
+        )
 
-    def Solution(root): return [] if not root else Solution(
-        root.left) + [root.val] + Solution(root.right)
+    def Solution(root):
+        return (
+            [] if not root else Solution(root.left) + [root.val] + Solution(root.right)
+        )
 
     def inorderTraversal(self, root):
-        return [] if not root else self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
+        return (
+            []
+            if not root
+            else self.inorderTraversal(root.left)
+            + [root.val]
+            + self.inorderTraversal(root.right)
+        )

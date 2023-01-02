@@ -34,6 +34,8 @@ class Solution:
         cur.next = prev
         head = cur
         return head
+
+
 # Runtime: 16 ms, faster than 98.66% of Python online submissions for Reverse Linked List.
 # Memory Usage: 15.4 MB, less than 55.90% of Python online submissions for Reverse Linked List.
 
@@ -61,5 +63,7 @@ def reverseList(self, head):
     head.next.next = head  # Swap head with right node.
     head.next = None  # So we don't wind up in infinite loop.
     return orig_head  # Very last thing returned. End node!
+
+
 # Runtime: 24 ms, faster than 72.49% of Python online submissions for Reverse Linked List.
 # Memory Usage: 18.9 MB, less than 10.50% of Python online submissions for Reverse Linked List.

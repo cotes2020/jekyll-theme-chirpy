@@ -32,18 +32,28 @@
 
 
 class Stack:
-    def __init__(self): self.items = []
-    def is_empty(self): return self.items == []
-    def stack(self, item): self.items.append(item)
-    def pop(self): return self.items.pop()
-    def peek(self): return self.items[-1]
-    def size(self): return len(self.items)
+    def __init__(self):
+        self.items = []
 
+    def is_empty(self):
+        return self.items == []
+
+    def stack(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+
+    def peek(self):
+        return self.items[-1]
+
+    def size(self):
+        return len(self.items)
 
 
 # use dic + stack
 def isValid(s):
-    out_dict = { '(':')', '[':']', '{':'}' }
+    out_dict = {"(": ")", "[": "]", "{": "}"}
     stack = []
     for char in s:
         if char in out_dict:
@@ -61,25 +71,24 @@ def isValid(s):
 
 # use dic + stack
 def isValid(s):
-    map={'(': ')', '{': '}', '[': ']'}
-    stack=[]
+    map = {"(": ")", "{": "}", "[": "]"}
+    stack = []
     for ch in s:
-        if len(stack)==0:
+        if len(stack) == 0:
             stack.append(ch)
         else:
-            if map.get(stack[-1])==ch:
+            if map.get(stack[-1]) == ch:
                 stack.pop()
             else:
                 stack.append(ch)
     return stack == []
 
 
-
 # use stack
 def par_checker(symbol_string):
     s = Stack()
-    map = {'(': ')', '[': ']',  '{': '}'}
-    for symbol in '([{':
+    map = {"(": ")", "[": "]", "{": "}"}
+    for symbol in "([{":
         if symbol in map:
             s.stack(symbol)
         elif (not s.is_empty()) and symbol == map.get(s.peek()):
@@ -91,16 +100,17 @@ def par_checker(symbol_string):
 
 # stack
 def matches(opener, closer):
-    openers = '({['
-    closers = ')}]'
+    openers = "({["
+    closers = ")}]"
     return openers.index(opener) == closers.index(closer)
+
 
 def par_checker(symbol_string):
     s = Stack()
     for i in symbol_string:
-        if i in '([{':
+        if i in "([{":
             s.stack(i)
-        elif (not s.is_empty()) and matches(s.pop(),i):
+        elif (not s.is_empty()) and matches(s.pop(), i):
             continue
         else:
             return False
@@ -109,20 +119,25 @@ def par_checker(symbol_string):
 
 # replace/remove the pair
 def isValid(self, s: str) -> bool:
-    newstr=''
+    newstr = ""
     for i in s:
-        if i in ['(',')','{','}','[',']']:
-            newstr+=i
-    while '()' in newstr or '{}' in newstr or '[]' in newstr:
-        newstr=newstr.replace('()','').replace('{}','').replace('[]','')
-    return newstr ==''
+        if i in ["(", ")", "{", "}", "[", "]"]:
+            newstr += i
+    while "()" in newstr or "{}" in newstr or "[]" in newstr:
+        newstr = newstr.replace("()", "").replace("{}", "").replace("[]", "")
+    return newstr == ""
+
+
 # # Runtime: 40 ms, faster than 17.44% of Python3 online submissions for Valid Parentheses.
 # # Memory Usage: 13.7 MB, less than 6.09% of Python3 online submissions for Valid Parentheses.
 
+
 def isValid(self, s: str) -> bool:
-    while '()' in s or '{}' in s or '[]' in s:
-        s=s.replace('()','').replace('{}','').replace('[]','')
-    return s ==''
+    while "()" in s or "{}" in s or "[]" in s:
+        s = s.replace("()", "").replace("{}", "").replace("[]", "")
+    return s == ""
+
+
 # # Runtime: 80 ms, faster than 6.27% of Python3 online submissions for Valid Parentheses.
 # # Memory Usage: 14 MB, less than 5.22% of Python3 online submissions for Valid Parentheses.
 
@@ -176,11 +191,10 @@ def isValid(self, s: str) -> bool:
 # }
 
 
-
 # print(par_checker("((())(()"))  #expected False
 # print(par_checker("((()))"))  # expected True
 # print(par_checker("((()()))"))  # expected True
 # print(par_checker("(()"))  # expected False
 # print(par_checker(")("))  # expected False
 
-print(isValid('()'))
+print(isValid("()"))

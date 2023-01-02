@@ -30,6 +30,8 @@ class Solution:
                 # otherwise, there is overlap, merge the current and previous intervals.
                 merged[-1][1] = max(merged[-1][1], interval[1])
         return merged
+
+
 # # Runtime: 60 ms, faster than 93.79% of Python online submissions for Merge Intervals.
 # # Memory Usage: 15.6 MB, less than 30.00% of Python online submissions for Merge Intervals.
 

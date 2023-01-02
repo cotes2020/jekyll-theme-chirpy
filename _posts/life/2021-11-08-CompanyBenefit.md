@@ -108,7 +108,7 @@ Note:
 
 ```
 What expenses are eligible?
-Qualified out-of-pocket expenses for dental or vision care provided to you, your spouse or dependents. 
+Qualified out-of-pocket expenses for dental or vision care provided to you, your spouse or dependents.
 Typical eligible expenses include:
 
 Dental:
@@ -121,7 +121,7 @@ Dental:
 • Tooth removals
 
 Vision:
-• Contact lenses and solutions 
+• Contact lenses and solutions
 • Eyeglasses and frames
 • LASIK eye surgery
 • Vision exams

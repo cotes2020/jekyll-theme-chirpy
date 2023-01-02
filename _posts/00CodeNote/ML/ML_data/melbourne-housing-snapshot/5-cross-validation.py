@@ -10,25 +10,25 @@
 
 
 import matplotlib.pyplot as plt
-from sklearn.metrics import mean_absolute_error
-from sklearn.model_selection import cross_val_score
-from sklearn.impute import SimpleImputer
-from sklearn.pipeline import Pipeline
-from sklearn.ensemble import RandomForestRegressor
 import pandas as pd
-from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import cross_val_score, train_test_split
+from sklearn.pipeline import Pipeline
 
 # read the data
-train_data = pd.read_csv('train.csv', index_col='Id')
-test_data = pd.read_csv('test.csv', index_col='Id')
+train_data = pd.read_csv("train.csv", index_col="Id")
+test_data = pd.read_csv("test.csv", index_col="Id")
 
 # remove rows with missing target, separate target from predictors
-train_data.dropna(axis=0, subset=['SalePrice'], inplace=True)
+train_data.dropna(axis=0, subset=["SalePrice"], inplace=True)
 y = train_data.SalePrice
-train_data.drop(['SalePrice'], axis=1, inplace=True)
+train_data.drop(["SalePrice"], axis=1, inplace=True)
 
-numeric_cols = [col for col in train_data.columns
-                if train_data[col].dtype in ['int64', 'float64']]
+numeric_cols = [
+    col for col in train_data.columns if train_data[col].dtype in ["int64", "float64"]
+]
 
 X = train_data[numeric_cols].copy()
 X_test = test_data[numeric_cols].copy()
@@ -47,8 +47,8 @@ X.head()
 
 my_pipeline = Pipeline(
     steps=[
-        ('processor', SimpleImputer()),
-        ('model', RandomForestRegressor(n_estimators=50, random_state=0))
+        ("processor", SimpleImputer()),
+        ("model", RandomForestRegressor(n_estimators=50, random_state=0)),
     ]
 )
 
@@ -57,7 +57,8 @@ my_pipeline = Pipeline(
 
 # Break off validation set from training data
 X_train, X_valid, y_train, y_valid = train_test_split(
-    X, y, train_size=0.8, test_size=0.2, random_state=0)
+    X, y, train_size=0.8, test_size=0.2, random_state=0
+)
 
 # Preprocessing of training data, fit model
 my_pipeline.fit(X_train, y_train)
@@ -67,21 +68,18 @@ preds = my_pipeline.predict(X_valid)
 
 # Evaluate the model
 score = mean_absolute_error(y_valid, preds)
-print('MAE:', score)
+print("MAE:", score)
 
 preds_test = my_pipeline.predict(X_test)
-output = pd.DataFrame({'Id': X_test.index,
-                       'SalePrice': preds_test})
-output.to_csv('submission.csv', index=False)
+output = pd.DataFrame({"Id": X_test.index, "SalePrice": preds_test})
+output.to_csv("submission.csv", index=False)
 
 
 # Multiple by -1 since sklearn calculates *negative* MAE
 scores = -1 * cross_val_score(
-    my_pipeline, X, y,
-    cv=5,
-    scoring='neg_mean_absolute_error'
+    my_pipeline, X, y, cv=5, scoring="neg_mean_absolute_error"
 )
-print('Average MAE score:', scores.mean())
+print("Average MAE score:", scores.mean())
 # Average MAE score: 18276.410356164386
 
 
@@ -104,15 +102,13 @@ def get_score(n_estimators):
     # Replace this body with your own code
     my_pipeline = Pipeline(
         steps=[
-            ('processor', SimpleImputer()),
-            ('model', RandomForestRegressor(n_estimators, random_state=0))
+            ("processor", SimpleImputer()),
+            ("model", RandomForestRegressor(n_estimators, random_state=0)),
         ]
     )
 
     scores = -1 * cross_val_score(
-        my_pipeline, X, y,
-        cv=3,
-        scoring='neg_mean_absolute_error'
+        my_pipeline, X, y, cv=3, scoring="neg_mean_absolute_error"
     )
     return scores.mean()
 
@@ -122,7 +118,7 @@ def get_score(n_estimators):
 # Store your results in a Python dictionary results, where results[i] is the average MAE returned by get_score(i).
 results = {}
 for i in range(1, 9):
-    results[50*i] = get_score(50*i)
+    results[50 * i] = get_score(50 * i)
 
 
 # visualize your results from Step 2. Run the code without changes.

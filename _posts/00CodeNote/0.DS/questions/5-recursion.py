@@ -164,6 +164,7 @@ def factorial(n):
 
 
 
+import random
 # -------------------------------------- Excercises -------------------------------------------------
 # Modify the recursive tree program using one or all of the following ideas:
 # Modify the thickness of the branches so that as the branchLen gets smaller, the line gets thinner.
@@ -172,7 +173,8 @@ def factorial(n):
 # Modify the branchLen recursively so that instead of always subtracting the same amount you subtract a random amount in some range.
 # If you implement all of the above ideas you will have a very realistic looking tree.
 import turtle
-import random
+
+
 def tree(branchLen,t, wid, color):
     min_len = random.randint(14,17)
     # min_len = 15

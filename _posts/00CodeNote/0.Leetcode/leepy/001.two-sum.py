@@ -41,7 +41,7 @@ def twoSum(nums, target):
         if num in ans.keys():
             return [ans[num], i]
         # the other part
-        ans[target-num] = i
+        ans[target - num] = i
 
 
 def twoSum(nums: List[int], target: int) -> List[int]:

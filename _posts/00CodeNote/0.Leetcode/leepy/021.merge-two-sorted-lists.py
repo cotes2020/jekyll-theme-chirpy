@@ -20,6 +20,7 @@
 # -100 <= Node.val <= 100
 # Both l1 and l2 are sorted in non-decreasing order.
 
+
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -36,7 +37,6 @@ class ListNode:
 # this happens when the values in the lists are of same range.
 
 
-
 # Runtime: 41 ms, faster than 11.61% of Python online submissions for Merge Two Sorted Lists.
 # Memory Usage: 13.4 MB, less than 86.32% of Python online submissions for Merge Two Sorted Lists.
 def mergeTwoLists(self, l1, l2):
@@ -45,7 +45,7 @@ def mergeTwoLists(self, l1, l2):
     :type l2: ListNode
     :rtype: ListNode
     """
-    dummy = ListNode(0) # for pointing to the sorted list that are making
+    dummy = ListNode(0)  # for pointing to the sorted list that are making
     head = dummy
     # ListNode{val: 0, next: None}
     # ListNode{val: 0, next: None}
@@ -76,7 +76,8 @@ def mergeTwoLists(self, l1, l2):
     return head.next
     # as dummy point to 0 define initially
 
+
 l1 = ListNode(0)
 l2 = ListNode(0)
 
-print(mergeTwoLists(l1, l2 ,l2))
+print(mergeTwoLists(l1, l2, l2))

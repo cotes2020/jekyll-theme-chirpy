@@ -2,12 +2,12 @@ class Vertex:
     def __init__(self, key) -> None:
         self.id = key
         self.connectedTo = {}
-        self.color = 'white'
+        self.color = "white"
         self.getDistance = 0
         self.pred = None
 
     def __str__(self) -> str:
-        return str(self.id) + ' connectedTo: ' + str([x.id for x in self.connectedTo])
+        return str(self.id) + " connectedTo: " + str([x.id for x in self.connectedTo])
 
     def addNeighbor(self, nbr, weight=0):
         self.connectedTo[nbr] = weight
@@ -42,7 +42,7 @@ class GraphyAM:
         self.vertList = {}
         self.numVertices = 0
         # #adjacency matrix of size 10x10 initialize with 0
-        self.am = [[0 for column in range(6)]for row in range(6)]
+        self.am = [[0 for column in range(6)] for row in range(6)]
 
     def __iter__(self):
         return iter(self.vertList.values())
@@ -52,8 +52,7 @@ class GraphyAM:
 
     def getIndex(self, key):
         if key not in self.vertList.keys():
-            print('Vertex {} not present in Graph.'.format(key))
-            index = -1
+            print(f"Vertex {key} not present in Graph.")
         else:
             newVertex = self.vertList[key]
         return newVertex
@@ -62,7 +61,8 @@ class GraphyAM:
     def addVertex(self, key):
         if key not in self.vertList.keys():
             print(
-                'Vertex {} not present in Graph, adding it automatically.'.format(key))
+                f"Vertex {key} not present in Graph, adding it automatically."
+            )
             newVertex = Vertex(key)
             self.vertList[key] = newVertex
             self.numVertices += 1
@@ -82,9 +82,9 @@ class GraphyAM:
 
     def addEdge(self, f, t, weight=0):
         if f not in self.vertList:
-            newVertex = self.addVertex(f)
+            self.addVertex(f)
         if t not in self.vertList:
-            newVertex = self.addVertex(t)
+            self.addVertex(t)
         # action on the Vertex property
         fvert = self.getVertex(f)
         tvert = self.getVertex(t)
@@ -100,25 +100,26 @@ class GraphyAM:
             if tvert.id == key:
                 indexT = n
             n += 1
-        print('indexF', indexF, 'indexT', indexT)
+        print("indexF", indexF, "indexT", indexT)
         self.am[indexT][indexF] = weight
 
     def print_graph(self):
-        print('\n')
-        name_str = ''
+        print("\n")
+        name_str = ""
         for key in self.vertList.keys():
-            name_str += key + ' ,'
-        name_list = name_str.replace(' ,', '')
+            name_str += key + " ,"
+        name_list = name_str.replace(" ,", "")
         print(name_list)
         row = 0
-        print('  ', name_str)
+        print("  ", name_str)
         for i in self.am:
             # print(row)
             if row < self.numVertices:
                 print(name_list[row], i)
                 row += 1
             else:
-                print('0', i)
+                print("0", i)
+
 
 # g = GraphyAM()
 # # g.addVertex('A')

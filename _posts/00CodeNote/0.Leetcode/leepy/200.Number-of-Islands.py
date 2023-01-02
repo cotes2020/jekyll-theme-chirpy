@@ -26,7 +26,6 @@
 # Output: 3
 
 
-
 # ---------------------- solution java ----------------------
 # check 每一个格格，
 # - 格格 == 1
@@ -82,9 +81,6 @@
 # Memory Usage: 41.2 MB, less than 87.87% of Java online submissions for Number of Islands.
 
 
-
-
-
 # ---------------------- solution py ----------------------
 class Solution:
     def numIslands(self, grid):
@@ -95,23 +91,24 @@ class Solution:
 
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                if grid[i][j] == '1':
+                if grid[i][j] == "1":
                     # start from the point, make all nearber 1 to 0
                     self.dfs(grid, i, j)
                     count += 1
         return count
 
     def dfs(self, grid, i, j):
-        if i<0 or j<0 or i>=len(grid) or j>=len(grid[0]) or grid[i][j] != '1':
+        if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]) or grid[i][j] != "1":
             return
-        grid[i][j] = '0'
-        self.dfs(grid, i+1, j)
-        self.dfs(grid, i-1, j)
-        self.dfs(grid, i, j+1)
-        self.dfs(grid, i, j-1)
+        grid[i][j] = "0"
+        self.dfs(grid, i + 1, j)
+        self.dfs(grid, i - 1, j)
+        self.dfs(grid, i, j + 1)
+        self.dfs(grid, i, j - 1)
+
+
 # Runtime: 124 ms, faster than 67.91% of Python online submissions for Number of Islands.
 # Memory Usage: 21.2 MB, less than 87.00% of Python online submissions for Number of Islands.
-
 
 
 # ---------------------- solution py ----------------------
@@ -122,8 +119,7 @@ class Solution:
 #             map(sink, (i+1, i-1, i, i), (j, j, j+1, j-1))
 #             return 1
 #         return 0
-    # return sum(sink(i, j) for i in range(len(grid)) for j in range(len(grid[i])))
-
+# return sum(sink(i, j) for i in range(len(grid)) for j in range(len(grid[i])))
 
 
 # ---------------------- solution java ----------------------

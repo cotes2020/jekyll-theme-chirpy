@@ -39,19 +39,19 @@ from pythonds.trees import BinaryTree
 def expression_tree(input_word):
     char_list = input_word.split()
     tStack = Stack()
-    eTree = BinaryTree('')
+    eTree = BinaryTree("")
     tStack.push(eTree)
     cur_tree = eTree
     for char in char_list:
-        if char == '(':
-            cur_tree.insertLeft('')
+        if char == "(":
+            cur_tree.insertLeft("")
             tStack.push(cur_tree)
             cur_tree = cur_tree.getLeftChild()
-        elif char == ')':
+        elif char == ")":
             cur_tree = tStack.pop()
-        elif char in ['+', '-', '*', '/']:
+        elif char in ["+", "-", "*", "/"]:
             cur_tree.setRootVal(char)
-            cur_tree.insertRight('')
+            cur_tree.insertRight("")
             tStack.push(cur_tree)
             cur_tree = cur_tree.getRightChild()
         else:
@@ -60,9 +60,10 @@ def expression_tree(input_word):
                 cur_tree.setRootVal(int(char))
                 cur_tree = tStack.pop()
             except ValueError:
-                raise ValueError(
-                    "token '{}' is not a valid integer".format(char))
+                raise ValueError(f"token '{char}' is not a valid integer")
     return eTree
+
+
 # input_word = '( 4 * 8 ) / 6 - 3'
 # etree = expression_tree(input_word)
 # print(etree)
@@ -81,9 +82,11 @@ class BST:
         self.rchild = None
         self.parent = None
 
-    def set_value(self, value): self.value = value
+    def set_value(self, value):
+        self.value = value
 
-    def get_value(self): return self.value
+    def get_value(self):
+        return self.value
 
     def set_lchild(self, node):
         self.lchild = node
@@ -93,37 +96,41 @@ class BST:
         self.rchild = node
         node.parent = self
 
-    def get_lchild(self): return self.lchild
-    def get_rchild(self): return self.rchild
+    def get_lchild(self):
+        return self.lchild
+
+    def get_rchild(self):
+        return self.rchild
 
     def put_node(self, node, i):
         new_node = BST(i)
-        print('====node.value', node.value)
+        print("====node.value", node.value)
 
         if node == None or node.value == None:
             node = new_node
-            print('item ', i, 'is child of node', node.value)
+            print("item ", i, "is child of node", node.value)
 
         if i == node.value:
             return node
 
         elif i > node.value:
-            print(i, '>', node.value)
+            print(i, ">", node.value)
             if node.rchild == None:
-                print('item ', i, 'is rchild of node', node.value)
+                print("item ", i, "is rchild of node", node.value)
                 node.rchild = new_node
                 node.set_rchild(new_node)
             else:
                 node.put_node(node.rchild, i)
         else:
-            print(i, '<', node.value)
+            print(i, "<", node.value)
             if node.lchild == None:
-                print('item ', i, 'is lchild of node', node.value)
+                print("item ", i, "is lchild of node", node.value)
                 node.lchild = new_node
                 node.set_lchild(new_node)
             else:
                 node.put_node(node.lchild, i)
         return node
+
 
 # eTree = BST(None)
 # alist = [1,2,3,4,5,6,7,8,9,10]
@@ -146,16 +153,15 @@ class BST:
 # -------------------------------------- Excercises -------------------------------------------------
 # 5. Generate a random list of integers.
 # Show the binary heap tree resulting from inserting the integers on the list one at a time.
-class BHT():
-
+class BHT:
     def __init__(self):
         self.heapList = [0]
         self.currentSize = 0
 
     def insert(self, k):
-        print('insert ', k)
+        print("insert ", k)
         self.heapList.append(k)
-        print('self.heapList: ', self.heapList)
+        print("self.heapList: ", self.heapList)
         self.currentSize += 1
         self.percUp(self.currentSize)
         print(self.heapList)
@@ -164,12 +170,17 @@ class BHT():
         while i // 2 > 0:
             # 第一个数字大    8，5, 6-> 5，6, 8
             if self.heapList[i] < self.heapList[i // 2]:
-                print(' change the position ',
-                      self.heapList[i], '<-', self.heapList[i // 2])
+                print(
+                    " change the position ",
+                    self.heapList[i],
+                    "<-",
+                    self.heapList[i // 2],
+                )
                 tmp = self.heapList[i // 2]
                 self.heapList[i // 2] = self.heapList[i]
                 self.heapList[i] = tmp
-            i = i//2
+            i = i // 2
+
 
 # bhTree = BHT()
 # alist = [5,9,11,14,18,19,21,33,17,27]
@@ -424,9 +435,14 @@ class BST:
         self.rchild = None
         self.parent = None
 
-    def set_value(self, value): self.value = value
-    def get_value(self): return self.value
-    def get_bvalue(self): return self.bvalue
+    def set_value(self, value):
+        self.value = value
+
+    def get_value(self):
+        return self.value
+
+    def get_bvalue(self):
+        return self.bvalue
 
     def set_lchild(self, node):
         self.lchild = node
@@ -436,42 +452,49 @@ class BST:
         self.rchild = node
         node.parent = self
 
-    def get_lchild(self): return self.lchild
-    def get_rchild(self): return self.rchild
+    def get_lchild(self):
+        return self.lchild
 
-    def islChild(self, node): return node.parent.lchild == node
-    def isrChild(self, node): return node.parent.rchild == node
+    def get_rchild(self):
+        return self.rchild
+
+    def islChild(self, node):
+        return node.parent.lchild == node
+
+    def isrChild(self, node):
+        return node.parent.rchild == node
 
     def put_node(self, node, i):
         new_node = BST(i)
-        print('====node.value', node.value)
+        print("====node.value", node.value)
 
         if node == None or node.value == None:
             node = new_node
-            print('item ', i, 'is child of node',
-                  node.value, 'bvalue ', node.bvalue)
+            print("item ", i, "is child of node", node.value, "bvalue ", node.bvalue)
 
         if i == node.value:
             return node
 
         elif i > node.value:
-            print(i, '>', node.value)
+            print(i, ">", node.value)
             if node.rchild == None:
                 # node.rchild = new_node
                 node.set_rchild(new_node)
-                print('item ', i, 'is rchild of node',
-                      node.value, 'bvalue ', node.bvalue)
+                print(
+                    "item ", i, "is rchild of node", node.value, "bvalue ", node.bvalue
+                )
                 new_node.updateBalance(new_node)
 
             else:
                 node.put_node(node.rchild, i)
         else:
-            print(i, '<', node.value)
+            print(i, "<", node.value)
             if node.lchild == None:
                 # node.lchild = new_node
                 node.set_lchild(new_node)
-                print('item ', i, 'is lchild of node',
-                      node.value, 'bvalue ', node.bvalue)
+                print(
+                    "item ", i, "is lchild of node", node.value, "bvalue ", node.bvalue
+                )
                 new_node.updateBalance(new_node)
             else:
                 node.put_node(node.lchild, i)
@@ -479,16 +502,16 @@ class BST:
         return node
 
     def updateBalance(self, node):
-        print(node.value, 'bvalue is ', node.bvalue)
+        print(node.value, "bvalue is ", node.bvalue)
         if node.bvalue > 1 or node.bvalue < -1:
             node.reban(node)
         if node.parent != None:
             if node.islChild(node):
                 node.parent.bvalue += 1
-                print(node.parent.value, ' bvalue +1: ', node.bvalue)
+                print(node.parent.value, " bvalue +1: ", node.bvalue)
             elif node.isrChild(node):
                 node.parent.bvalue -= 1
-                print(node.parent.value, ' bvalue -1: ', node.bvalue)
+                print(node.parent.value, " bvalue -1: ", node.bvalue)
             if node.parent.bvalue != 0:
                 node.updateBalance(node.parent)
 
@@ -502,12 +525,12 @@ class BST:
 #           |
 #       D       F
 #   c
-bTree = BST('B')
-bTree = bTree.put_node(bTree, 'A')
-bTree = bTree.put_node(bTree, 'E')
-bTree = bTree.put_node(bTree, 'D')
-bTree = bTree.put_node(bTree, 'F')
-bTree = bTree.put_node(bTree.rchild.lchild, 'C')
+bTree = BST("B")
+bTree = bTree.put_node(bTree, "A")
+bTree = bTree.put_node(bTree, "E")
+bTree = bTree.put_node(bTree, "D")
+bTree = bTree.put_node(bTree, "F")
+bTree = bTree.put_node(bTree.rchild.lchild, "C")
 
 
 # -------------------------------------- Excercises -------------------------------------------------

@@ -8,18 +8,19 @@ def bubbleSort(alist):
     print(alist)
     compare_num = 0
     change_num = 0
-    for passnum in range(len(alist)-1, 0, -1):
+    for passnum in range(len(alist) - 1, 0, -1):
         # print(alist[n])
         for i in range(passnum):
             compare_num += 1
-            if alist[i] > alist[i+1]:
+            if alist[i] > alist[i + 1]:
                 temp = alist[i]
-                alist[i] = alist[i+1]
-                alist[i+1] = temp
+                alist[i] = alist[i + 1]
+                alist[i + 1] = temp
                 change_num += 1
         # print(alist)
-    print('compare_num', compare_num)
-    print('change_num', change_num)
+    print("compare_num", compare_num)
+    print("change_num", change_num)
+
 
 # print(" =============== bubbleSort ")
 # compare_pre=n*n/2 - n/2
@@ -31,11 +32,11 @@ def bubbleSort(alist):
 def selectionSort(alist):
     compare_num = 0
     change_num = 0
-    for fillslot in range(len(alist)-1, 0, -1):
+    for fillslot in range(len(alist) - 1, 0, -1):
         positionOfMax = 0
-        for location in range(1, fillslot+1):
-                # print(alist)
-                # print(alist[location])
+        for location in range(1, fillslot + 1):
+            # print(alist)
+            # print(alist[location])
             compare_num += 1
             if alist[location] > alist[positionOfMax]:
                 positionOfMax = location
@@ -43,8 +44,9 @@ def selectionSort(alist):
         alist[fillslot] = alist[positionOfMax]
         alist[positionOfMax] = temp
         change_num += 1
-    print('compare_num', compare_num)
-    print('change_num', change_num)
+    print("compare_num", compare_num)
+    print("change_num", change_num)
+
 
 # print(" =============== selectionSort ")
 # compare_pre=n*n/2 - n/2
@@ -54,7 +56,7 @@ def selectionSort(alist):
 
 
 def shellSort(alist):
-    sublistcount = len(alist)//2
+    sublistcount = len(alist) // 2
     while sublistcount > 0:
         # print("sublistcount:", sublistcount)
         for startposition in range(sublistcount):
@@ -64,20 +66,21 @@ def shellSort(alist):
             # gapInsertionSort(alist, 1, 4)
             # gapInsertionSort(alist, 2, 4)
             # gapInsertionSort(alist, 3, 4)
-        print('After increments of size', sublistcount, 'The list is', alist)
+        print("After increments of size", sublistcount, "The list is", alist)
         sublistcount = sublistcount // 2
 
 
 def gapInsertionSort(alist, start, gap):
     # gapInsertionSort(alist, 1, 4)
-    for i in range(start+gap, len(alist), gap):
+    for i in range(start + gap, len(alist), gap):
         # for i in range(5, 9, 3): 5678
         position = i
         currentvalue = alist[i]
-        while position >= gap and alist[position-gap] > currentvalue:
-            alist[position] = alist[position-gap]
-            position = position-gap
+        while position >= gap and alist[position - gap] > currentvalue:
+            alist[position] = alist[position - gap]
+            position = position - gap
         alist[position] = currentvalue
+
 
 # print(" =============== shellSort ")
 # shellSort(alist)
@@ -85,9 +88,9 @@ def gapInsertionSort(alist, start, gap):
 
 
 def mergeSort(alist):
-    print('Splitting ', alist)
+    print("Splitting ", alist)
     if len(alist) > 1:
-        mid = len(alist)//2
+        mid = len(alist) // 2
         lefthalf = alist[:mid]
         righthalf = alist[mid:]
 
@@ -100,22 +103,23 @@ def mergeSort(alist):
         while i < len(lefthalf) and j < len(righthalf):
             if lefthalf[i] <= righthalf[j]:
                 alist[k] = lefthalf[i]
-                i = i+1
+                i = i + 1
             else:
                 alist[k] = righthalf[j]
-                j = j+1
-            k = k+1
+                j = j + 1
+            k = k + 1
 
         while i < len(lefthalf):
             alist[k] = lefthalf[i]
-            i = i+1
-            k = k+1
+            i = i + 1
+            k = k + 1
 
         while j < len(righthalf):
             alist[k] = righthalf[j]
-            j = j+1
-            k = k+1
-    print('Merging ', alist)
+            j = j + 1
+            k = k + 1
+    print("Merging ", alist)
+
 
 # print(" =============== mergeSort ")
 # alist = [21, 1, 26, 45, 29, 28, 2, 9, 16, 49, 39, 27, 43, 34, 46, 40]
@@ -124,7 +128,7 @@ def mergeSort(alist):
 
 
 def quickSort(alist):
-    quickSortHelper(alist, 0, len(alist)-1)
+    quickSortHelper(alist, 0, len(alist) - 1)
 
 
 def quickSortHelper(alist, first, last):
@@ -132,15 +136,15 @@ def quickSortHelper(alist, first, last):
     if first < last:
         n += 1
         splitpoint = partition(alist, first, last)
-        quickSortHelper(alist, first, splitpoint-1)
-        quickSortHelper(alist, splitpoint+1, last)
+        quickSortHelper(alist, first, splitpoint - 1)
+        quickSortHelper(alist, splitpoint + 1, last)
 
 
 def partition(alist, first, last):
     print(alist)
     pivotvalue = alist[first]
 
-    leftmark = first+1
+    leftmark = first + 1
     rightmark = last
 
     done = False
@@ -162,6 +166,7 @@ def partition(alist, first, last):
     alist[first] = alist[rightmark]
     alist[rightmark] = temp
     return rightmark
+
 
 # print(" =============== quickSort ")
 # alist = [14, 17, 13, 15, 19, 10, 3, 16, 9, 12]

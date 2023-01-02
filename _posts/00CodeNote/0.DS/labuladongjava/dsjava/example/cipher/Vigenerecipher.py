@@ -3,15 +3,15 @@
 
 import pyperclip
 
-LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 def encryptMessage(key, message):
-    return translateMessage(key, message, 'encrypt')
+    return translateMessage(key, message, "encrypt")
 
 
 def decryptMessage(key, message):
-    return translateMessage(key, message, 'decrypt')
+    return translateMessage(key, message, "decrypt")
 
 
 def translateMessage(key, message, mode):
@@ -22,9 +22,9 @@ def translateMessage(key, message, mode):
     for symbol in message:  # loop through each character in message
         num = LETTERS.find(symbol.upper())
         if num != -1:  # -1 means symbol.upper() was not found in LETTERS
-            if mode == 'encrypt':
+            if mode == "encrypt":
                 num += LETTERS.find(key[keyIndex])  # add if encrypting
-            elif mode == 'decrypt':
+            elif mode == "decrypt":
                 num -= LETTERS.find(key[keyIndex])  # subtract if decrypting
 
             num %= len(LETTERS)  # handle the potential wrap-around
@@ -42,27 +42,27 @@ def translateMessage(key, message, mode):
         else:
             translated.append(symbol)
 
-    return ''.join(translated)
+    return "".join(translated)
 
 
 def main():
-    myMessage = 'HELLO'
-    myKey = 'ASIMOV'
-    myMode = 'encrypt'  # set to 'encrypt' or 'decrypt'
+    myMessage = "HELLO"
+    myKey = "ASIMOV"
+    myMode = "encrypt"  # set to 'encrypt' or 'decrypt'
 
-    if myMode == 'encrypt':
+    if myMode == "encrypt":
         translated = encryptMessage(myKey, myMessage)
-    elif myMode == 'decrypt':
+    elif myMode == "decrypt":
         translated = decryptMessage(myKey, myMessage)
 
-    print('%sed message:' % (myMode.title()))
+    print("%sed message:" % (myMode.title()))
     print(translated)
     pyperclip.copy(translated)
     print()
-    print('The message has been copied to the clipboard.')
+    print("The message has been copied to the clipboard.")
 
 
 # If vigenereCipher.py is run (instead of imported as a module) call
 # the main() function.
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

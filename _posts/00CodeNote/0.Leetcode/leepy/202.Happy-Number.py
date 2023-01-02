@@ -26,19 +26,19 @@
 class Solution:
     def isHappy(self, n):
         # set for all number that wont provide 1
-        seen=set()
+        seen = set()
 
         def helper(x):
-            res=0
-            while x>9:
+            res = 0
+            while x > 9:
                 # divmod(3, 8) =  (0, 3)
                 # divmod(5, 5) =  (1, 0)
-                x,y = divmod(x,10)
+                x, y = divmod(x, 10)
                 res += y**2
                 res += x**2
             if res in seen:
                 return False
-            if res==1:
+            if res == 1:
                 return True
             seen.add(res)
             return helper(res)
@@ -46,12 +46,10 @@ class Solution:
         return helper(n)
 
 
-
-
 def isHappy(self, n):
     mem = set()
     while n != 1:
-        n = sum([ int(i)** 2 for i in str(n)])
+        n = sum([int(i) ** 2 for i in str(n)])
         if n in mem:
             return False
         else:
