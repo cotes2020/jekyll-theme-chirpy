@@ -5,12 +5,12 @@
 Examples of devices: routers and multilayer switches.
 
 Handles Logical addressing and routing od traffic: uses logical addressing to make forwarding decisions.
-- The lowest layer for protocal software.
+- The lowest layer for protocol software.
 - A variety of routed protocols (like, AppleTalk and IPX) have their own logical addressing schemes
 - the most widely deployed routed protocol is Internet Protocol (IP).
-  - IP address: nonpersistent address asigned via software and changed as needed.
-  - IPv4 adress: 32 bits.
-  - IPv6 adress: 128 bits.
+  - IP address: nonpersistent address assigned via software and changed as needed.
+  - IPv4 address: 32 bits.
+  - IPv6 address: 128 bits.
 - A less popular Layer 3 protocol is Novell’s Internetwork Packet Exchange (IPX), which has its own format for Layer 3 addressing. (Although Novell developed, most modern Novell networks use IP as their Layer 3 protocol.)
 
 Switching:
