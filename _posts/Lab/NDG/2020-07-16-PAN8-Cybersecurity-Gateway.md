@@ -176,7 +176,7 @@ configure the Firewall outside interface for DHCP. the Firewall will obtain an I
 configure a virtual IP address 192.168.20.1 on the Firewall.
 - virtual IP address allows the Firewall to communicate with multiple IP networks from a single physical interface.
 
-1. CMD: comfirm nothing assigned with the IP address 192.168.20.1: `ping 192.168.20.1`
+1. CMD: confirm nothing assigned with the IP address 192.168.20.1: `ping 192.168.20.1`
 
 >  `Destination not unreachable` and `possibly Request timed out`: the Client cannot reach anyone at that IP address.
 
