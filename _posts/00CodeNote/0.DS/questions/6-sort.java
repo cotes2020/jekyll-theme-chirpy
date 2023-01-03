@@ -89,28 +89,28 @@ public class Sort{
     // - Pick median as pivot.
     // time O(n^2); space O(n)
 
-    public void quickSort(int arr[], int low, int hight){
-        if (low >= hight){
+    public void quickSort(int arr[], int low, int height){
+        if (low >= height){
             return;
         }
-        int pivot = part(arr, low, hight);
+        int pivot = part(arr, low, height);
         quickSort(arr, low, pivot - 1);
-        quickSort(arr, pivot + 1, hight);
+        quickSort(arr, pivot + 1, height);
     }
 
-    public int part(int arr[], int low, int hight){
-        int pivot = arr[hight];
+    public int part(int arr[], int low, int height){
+        int pivot = arr[height];
         int small = low;
-        int big = hight - 1;
+        int big = height - 1;
         while (true){
-            while (small < hight && arr[small] <= pivot){   // all left smaller then pivot
+            while (small < height && arr[small] <= pivot){   // all left smaller then pivot
                 small++;
             }
             while (low <= big && pivot < arr[big]){  // find first bigger in right
                 big--;
             }
             if (big < small){
-                swap(arr, small, hight);
+                swap(arr, small, height);
                 break;
             }
             swap(arr, small, big);
@@ -174,12 +174,12 @@ public class Sort{
 
     // Main function that sorts arr[l..r] using
     // merge()
-    public void mergesort(int arr[], int low, int hight) {
-        if (low < hight) {
-            int m = (low + hight) / 2;
+    public void mergesort(int arr[], int low, int height) {
+        if (low < height) {
+            int m = (low + height) / 2;
             mergesort(arr, low, m);
-            mergesort(arr, m + 1, hight);
-            merge(arr, low, m, hight);
+            mergesort(arr, m + 1, height);
+            merge(arr, low, m, height);
         }
     }
     // MergeSort
