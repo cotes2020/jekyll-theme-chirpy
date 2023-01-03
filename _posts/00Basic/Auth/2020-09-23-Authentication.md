@@ -39,12 +39,12 @@ toc: true
       - [Scope 授权范围](#scope-授权范围)
       - [OAuth 2.0 配置](#oauth-20-配置)
       - [authorization grant](#authorization-grant)
-        - [授权码 `AUTHORIZATION_CODE` -> response_type=code](#授权码-authorization_code---response_typecode)
-        - [隐藏式 `implicit` -> response_type=token](#隐藏式-implicit---response_typetoken)
-        - [密码式 `password` -> grant_type=password](#密码式-password---grant_typepassword)
-        - [第四种方式:凭证式 `client credentials` -> token](#第四种方式凭证式-client-credentials---token)
+        - [授权码 `AUTHORIZATION_CODE` -\> response\_type=code](#授权码-authorization_code---response_typecode)
+        - [隐藏式 `implicit` -\> response\_type=token](#隐藏式-implicit---response_typetoken)
+        - [密码式 `password` -\> grant\_type=password](#密码式-password---grant_typepassword)
+        - [第四种方式:凭证式 `client credentials` -\> token](#第四种方式凭证式-client-credentials---token)
         - [令牌的使用](#令牌的使用)
-        - [**更新令牌** `refresh_token` -> token](#更新令牌-refresh_token---token)
+        - [**更新令牌** `refresh_token` -\> token](#更新令牌-refresh_token---token)
       - [example](#example)
         - [OAuth2 Proxy](#oauth2-proxy)
         - [oauth2 proxy with Github](#oauth2-proxy-with-github)
@@ -95,11 +95,6 @@ toc: true
         - [登录第二个 Web App](#登录第二个-web-app)
         - [登录态管理](#登录态管理)
 - [compare](#compare)
-
-
-- ref
-  - [Web Authentication Methods Explained](https://blog.risingstack.com/web-authentication-methods-explained/)
-  - https://developers.google.com/oauthplayground/
 
 
 
@@ -217,7 +212,7 @@ The cons:
 ### Signatures
 
 > cookies or tokens,
-> if the transport layer for whatever reason gets exposed, credentials are easy to acces, the attacker can act like the real user.
+> if the transport layer for whatever reason gets exposed, credentials are easy to access, the attacker can act like the real user.
 
 **sign each request**.
 - A possible way to solve
@@ -360,7 +355,7 @@ The general HTTP authentication framework is used by several authentication sche
 
    - The server responds to a client with a `401 (Unauthorized) response status` and provides information on how to authorize with a WWW-Authenticate response header containing at least one challenge.
      - `401 Unauthorized`: invalid, authentication is impossible for this user.
-     - `200 OK`: exist and vaild
+     - `200 OK`: exist and valid
      - `403 forbidden`: valid credentials that are inadequate to access a given resource
      - `407 (Proxy Authentication Required)`: authentication is impossible for this user.
    - realm:
@@ -523,7 +518,7 @@ security hole recently been fixed by browsers is `authentication of cross-site i
 
 ![session-base](https://i.imgur.com/9PNfrgQ.png)
 
-client sends the **seesion id** in all the request, and server uses it to identify the user.
+client sends the **session id** in all the request, and server uses it to identify the user.
 
 - a stateful authentication method
 - as the server need it to be implemented
@@ -558,7 +553,7 @@ session ID: 123456
 
 3. client stored it
 
-4. slient send request with session id
+4. silent send request with session id
 http://someurl/login (session id:123456)
 
 5. server check the session id
@@ -599,14 +594,14 @@ http://someurl/login (session id:123456)
   - the preferred mode of authentication for `RESTful APIs`.
 
 - token is `self-contained`
-  - containes session infor and user info as well
+  - contains session info and user info as well
   - carries the data
 
 - anyone can view the contained
 
 - as a standard
 
-- use when interact between multible untrsuted parties:
+- use when interact between multiple untrsuted parties:
   - bank - app - user
 
 - have lifetime
@@ -638,7 +633,7 @@ token has 3 part: `header.payload.signature`
       - claims to defines and use for our own data
       - e.g. userid, email...
     - <font color=blue> Private claims </font>
-      - names withour meaning except the consumer and producer of tokens
+      - names without meaning except the consumer and producer of tokens
     ```
     {
       "userid":"123",
@@ -687,7 +682,7 @@ headers:{
 6. can be `Opaque` or `Self-contained`
    - `Opaque`
      - random string, no meaning
-     - can only be verfied by the autorization server
+     - can only be verfied by the authorization server
      - just like session ids
    - `Self-contained`
      - token has the data and can be reviewd by the clients
@@ -3040,7 +3035,7 @@ Authing 对开发者十分友好，提供丰富的 SDK，进行快速集成。
 
 # compare
 
-usually seesion-based for web browser, token-based for app
+usually session-based for web browser, token-based for app
 
 Scalability
 1. Session based authentication:
