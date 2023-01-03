@@ -1,7 +1,7 @@
 ---
 title: "Algebra Done Tensorially: Part 2 (Algebras Over Fields)"
 description: "A look at 'algebras' and their structure"
-categories: [representation theory]
+categories: [abstract algebra]
 tags: [algebras, tensors, bilinear products]
 ---
 
