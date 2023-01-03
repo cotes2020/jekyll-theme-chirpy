@@ -8,8 +8,8 @@ image:
 ---
 
 - [CI/CD - Github Action Template](#cicd---github-action-template)
-  - [exmple 1](#exmple-1)
-  - [exmple 2: build a website](#exmple-2-build-a-website)
+  - [example 1](#example-1)
+  - [example 2: build a website](#example-2-build-a-website)
 
 ---
 
@@ -19,7 +19,7 @@ image:
 ---
 
 
-## exmple 1
+## example 1
 
 ```yml
 # This is a basic workflow to help you get started with Actions
@@ -64,7 +64,7 @@ jobs:
 
 
 
-## exmple 2: build a website
+## example 2: build a website
 
 ```yml
 name: 'Automatic build'
@@ -111,7 +111,7 @@ jobs:
             ${{ runner.os }}-gems-
 
       - name: Bundle config                    # name the shell
-        run: |                                 # the cmd to run sript
+        run: |                                 # the cmd to run script
           bundle config path vendor/bundle
 
       - name: Bundle Install
