@@ -3694,7 +3694,7 @@ group
 No Yes
 readonly
 access
-to data relevent
+to data relevant
 to
 account
 in
@@ -3835,7 +3835,7 @@ Authentication
 - view
 user
 certificates, System -
-Dowload
+Download
 Jenkins
 Plugin
 and
@@ -6427,7 +6427,7 @@ Prisma™ Cloud ingests vulnerability data from Tenable to provide with addition
 in the cloud. This integration enables to, for example, identify suspicious traffic to sensitive workloads, such as databases with known vulnerabilities.
 AWS, Azure, and GCP clouds support the Prisma Cloud integration with Tenable.
 - STEP 1 | Tenable.IO provides API access to assets and their vulnerability information. Configure the Tenable account to use the Tenable AWS, Azure, and GCP connectors. Without connectors, cannot identify the cloud resource.
-Tthe Tenable API requires an access key and secret key in the header. Generate an access key and secret
+The Tenable API requires an access key and secret key in the header. Generate an access key and secret
 key per user on the Tenable.io app. (See Tenable documentation for information.) Also, make sure that
 the Tenable role that use to enable this integration has administrator permissions that include vulnsrequest-export and assets-request-export API access.
 - STEP 2 | Set up Tenable integration on Prisma Cloud.
@@ -6921,7 +6921,7 @@ the Prisma Cloud
 administrative console
 (Compute> Manage >
 System > Downloads)
-Use the Prisma Coud
+Use the Prisma Cloud
 plugin for Jenkins
 Visual Studio Code IDE VS Code Marketplace Use the Prisma Cloud
 Extension for Visual
@@ -7049,7 +7049,7 @@ customize AWS CodePipeline to check Infrastructure-as-Code (Iac) templates. The 
 examples show how to integrate IaC scan into CodePipeline.
 have two options to scan IaC templates against Prisma Cloud security policies. use an
 AWS Lambda function with Python scripting, or use a custom action with a Bash shell script.
-The prerequisites for IaC scan integration regardless of whether use an AWS Lambda fuction or a custom action with a Bash shell script are as follows:
+The prerequisites for IaC scan integration regardless of whether use an AWS Lambda function or a custom action with a Bash shell script are as follows:
 - have a valid Prisma Cloud Enterprise Edition license
 - have a valid AWS CodePipeline service role to give AWS CodePipeline access to other resources in
 account.
@@ -7529,7 +7529,7 @@ prisma-cloud-admin/prisma-cloud-devops-security/use-the-prisma-cloudextension-fo
  fi
 
  iacAPI=${console_url}/iac_scan
- echo "exceuting scan api: $iacAPI"
+ echo "executing scan api: $iacAPI"
  ##################################################################
  # Generate the url and the headers
  ##################################################################
@@ -7675,7 +7675,7 @@ prisma-cloud-admin/prisma-cloud-devops-security/use-the-prisma-cloudextension-fo
  "${array[1]}")
  failure_criteria_low_severity=$(awk -F':' '{print $2}' <<<
  "${array[2]}")
- failure_criteria_operator=$(awk -F':' '{print $2}' <<< "${array[3]}")  #echo "Failure Criterias:" $failure_criteria_high_severity
+ failure_criteria_operator=$(awk -F':' '{print $2}' <<< "${array[3]}")  #echo "Failure Criteria:" $failure_criteria_high_severity
  $failure_criteria_medium_severity $failure_criteria_low_severity
  $failure_criteria_operator
  fi
@@ -7685,7 +7685,7 @@ prisma-cloud-admin/prisma-cloud-devops-security/use-the-prisma-cloudextension-fo
  echo metadata "$metadata_json"
 
  #################################################################################################
- # IaC Scan Exceution
+ # IaC Scan Execution
 
  #################################################################################################
 
@@ -8562,7 +8562,7 @@ yq_linux_386
    # Below, ./prismacloud-scripts/iac_scan.sh is the fully qualified
  # script path.
  # Argument: $CI_BUILDS_DIR/prisma_scan is the fully qualified
- # cloned respository path where prisma_scan is the  # project(repository) name
+ # cloned repository path where prisma_scan is the  # project(repository) name
  - ./prismacloud-scripts/iac_scan.sh $CI_BUILDS_DIR/prisma_scan
  # also pass the absolute repo path to the script
  # instead of using an environment variable.
@@ -8677,7 +8677,7 @@ if [[ -z "$prisma_cloud_cicd_failure_criteria" ]];then
  "${array[1]}")
  failure_criteria_low_severity=$(awk -F':' '{print $2}' <<< "${array[2]}")
  failure_criteria_operator=$(awk -F':' '{print $2}' <<< "${array[3]}")
- #echo "Failure Criterias:" $failure_criteria_high_severity
+ #echo "Failure Criteria:" $failure_criteria_high_severity
  $failure_criteria_medium_severity $failure_criteria_low_severity
  $failure_criteria_operator
 fi
@@ -8973,7 +8973,7 @@ corresponding secret key. cannot view the secret key on the Prisma Cloud web int
 - Asset Name
 Give VSCode instance an asset name. choose an arbitrary name. Prisma Cloud uses the asset name to track results. Some examples of names are appteam_vscode or johndoe_vscode.
 - Prisma Cloud Tags
-Prisma Cloud tags arre different from cloud tags that may have included within IaC
+Prisma Cloud tags are different from cloud tags that may have included within IaC
 templates. Prisma Cloud tags enable visibility in the Prisma Cloud administrator console.
 Provide the values as a comma-separated list of tags. in the Prisma Cloud Tags field. An example list
 is: owner:johndoe, team:creditapp, env:dev.
@@ -9034,7 +9034,7 @@ in Prisma Cloud.
 - STEP 1 | Create an IaC scan asset in Prisma Cloud.
 The following API enables to create an IaC scan asset. An IaC scan asset represents a collection of one or more templates whose contents have been scanned or will be scanned by the Prisma Cloud scan
 service to check against Prisma Cloud IaC policies.The Prisma Cloud scan service performs this scan
-asynchonously.
+asynchronously.
 Method Endpoint URL
 POST https://<Prisma Cloud API base URL>/iac/v2/scans
 The following is an example of a cURL request to create an IaC scan asset.
