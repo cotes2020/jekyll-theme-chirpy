@@ -543,7 +543,7 @@ The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 bandit12@bandit:/tmp/jhalon$ cd ..
 bandit12@bandit:/tmp$ rm -rf jhalon
 bandit12@bandit:/tmp$ reset
-# NOTE: Everytime you create a directory in /tmp/ from now one, delete it before moving on.\
+# NOTE: Every time you create a directory in /tmp/ from now one, delete it before moving on.\
 ```
 
 ---
@@ -1092,7 +1092,7 @@ for a in {0000-10000};
   done
 
 # put in result and search
-# but actullay it cannot loop
+# but actually it cannot loop
 # need troubleshoott
 bandit24@melinda:/tmp/jhalon$ chmod 755 script.sh
 bandit24@melinda:/tmp/jhalon$ ./script.sh
@@ -1547,11 +1547,11 @@ Level Goal
 bandit30@bandit:/tmp/grace30/repo$ ls
 README.md
 bandit30@bandit:/tmp/grace30/repo$ cat README.md
-just an epmty file... muahaha
+just an empty file... muahaha
 bandit30@bandit:/tmp/grace30/repo$ git show
 ..
 @@ -0,0 +1 @@
-+just an epmty file... muahaha
++just an empty file... muahaha
 
 # git show-ref可以现实本地存储库的所有可用的引用以及关联的提交ID
 $ git show-ref
