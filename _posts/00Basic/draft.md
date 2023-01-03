@@ -112,7 +112,7 @@ converts a block cipher into a stream cipher.
   - combines an initialization vector (IV) with a counter and effectively
 converts a block cipher into a stream cipher.
   - It basically works by generating a keystream block by encrypting sequential values of some counter. This counter can be any function that produces a sequence that has a long period with no repetition.
-  - It combines an IV with a counter and uses the result to encrypt each plaintext block. Each block uses the same IV, but CTM combines it withthe counter value, resulting in a different encryption key for each block.
+  - It combines an IV with a counter and uses the result to encrypt each plaintext block. Each block uses the same IV, but CTM combines it with the counter value, resulting in a different encryption key for each block.
   - Multiprocessor systems can encrypt or decrypt multiple blocks at the same time, allowing the algorithm to be quicker on multiprocessor or multicore systems.
   - CTM is widely used and respected as a secure mode of operation.
 - Galois/Counter Mode (GCM): IV + counter value + hash
@@ -1657,7 +1657,7 @@ steghide --extract -xf mysecret2.txt -sf steg2.jpg -p mypass -
 StegoSuite
 Features
 BMP, GIF and JPG supported AES encryption of embedded data
-Automatic avoidance of homogenous areas (only embed data in noisy areas) Embed text messages and multiple files of any type
+Automatic avoidance of homogeneous areas (only embed data in noisy areas) Embed text messages and multiple files of any type
 Easy to use
      1. Install stegosuite
 apt-get install stegosuite
@@ -1673,7 +1673,7 @@ simply Open the image, type in the passphrase and click on Extract.
  scroll down a little in the data inspector, you’ll see the following at the end of one of the paragraph sections: ▪
 
 
-##  covert 隐密的 channel (type of network)
+##  convert 隐密的 channel (type of network)
   - simple yet very effective mechanism for sending and receiving unauthorized info / data between machines
   - without alerting any firewalls and IDS's on a network
 - transfers information over, within a computer system, or network that is outside of the security policy.
@@ -1685,25 +1685,25 @@ simply Open the image, type in the passphrase and click on Extract.
 ##  seems as generic traffic to any network monitor device/application and network admin
 uses a hidden network to escape themselves from firewall, IDS... considered as steganography, but it is not exactly steganography
   - steal information from the target machine through the undetectable network.
-  - data exfiltration 溜出敌军阵地 : endpoint users can use the covert channel for undetectable communication from network admin.
+  - data exfiltration 溜出敌军阵地 : endpoint users can use the convert channel for undetectable communication from network admin.
 Difference:
 encrypted communication: do not hide the fact that there has been a communication, encrypted the data travelling between both
 endpoints.
-covert communication: the data stream is garbled 混乱的 and
-lasting 维持 by an unauthorized party. Type of covert channel
-Storage covert Channel:
+convert communication: the data stream is garbled 混乱的 and
+lasting 维持 by an unauthorized party. Type of convert channel
+Storage convert Channel:
   - Communicate by modifying a “storage location”, that would allow the direct/indirect or writing of a storage location by one process and reading of it by another.
   - embed hidden data into bits of the transferred network packets. Reserved bits or unused bits of the protocol are mainly used to transmit information. example, DSCP bits in IP protocol.
      ▪
 
 
-##  Timing Covert channels:
+##  Timing convert channels:
   - Perform operations that affect the “real response time
 observed” by the receiver.
-  - hidden information through the timing information of network packets. Normally, the timing difference between network packets is used to deliver a covert message.
+  - hidden information through the timing information of network packets. Normally, the timing difference between network packets is used to deliver a convert message.
 Tunnelshell
-It is possible to use almost any protocol to make a covert channel.
-The huge majority of covert channel research has based on layer 3 (Network) and layer 4 (Transport) protocols such as ICMP, IP and TCP.
+It is possible to use almost any protocol to make a convert channel.
+The huge majority of convert channel research has based on layer 3 (Network) and layer 4 (Transport) protocols such as ICMP, IP and TCP.
 Layer 7 (Application) protocols such as HTTP and DNS are also frequently used.
 This mechanism for conveying the information without alerting network firewalls and IDSs and moreover undetectable by netstat.
 tunnelshell?
@@ -1715,7 +1715,7 @@ It works over multiple protocols, including TCP, UDP, ICMP, and RawIP, will work
 ## Moreover, packets can be fragmented to evade firewalls and IDS. Let’s go with practical for more details.
 Requirement
 Server (Kali Linux) Client (Ubuntu18.04)
-Tool for Covert Channel (Tunnelshell) which you can download from
+Tool for convert Channel (Tunnelshell) which you can download from
 Install tunnelshell on both endpoints. Once you download it, then extract the file and compile it as shown below:
     ⁃
 tunnelshell_2.3.tgz
@@ -1727,7 +1727,7 @@ open communication channel for the server (Attacker).
   - sudo ./tunneld
   - (By default, it sends fragment packet, which reassembles at
 the destination to evade from firewall and IDS.)
-  To connect with tunnelshell, we need to execute the following command on the server (Attacker’s machine) which will establish a covert channel for data exfiltration.
+  To connect with tunnelshell, we need to execute the following command on the server (Attacker’s machine) which will establish a convert channel for data exfiltration.
   - ./tunnel -t frag 10.10.10.2
   - frag: It uses IPv4 fragmented packets to encapsulate data.
 When some routers and firewalls (like Cisco routers and default Linux installation) receives fragmented packets without headers for the fourth layer, they permit pass it even if they have a rule that denies it.
@@ -1739,16 +1739,16 @@ When some routers and firewalls (like Cisco routers and default Linux installati
  ps |grep .tunneld netstat –ano
  ⁃
  ⁃
-  - Wireshark: captured the covert traffic and sniff the data that
+  - Wireshark: captured the convert traffic and sniff the data that
 was travelling between two endpoint devices.
   - take a look of network traffic generated between 10.10.10.1 (Attacker’s IP) and10. 10.10.2 (Victim’s IP) using .
   - The network flow looks generic between both endpoints, but if it monitors properly, then a network administrator could sniff the data packet.  ⁃
-Covert ICMP Channel
+convert ICMP Channel
 Ping: the use of ICMP communication, use icmp echo request and icmp echo reply query to establish a connection between two hosts, so, execute the command:
   - sudo ./tunneld -t icmp -m echo-reply, echo
 To connect with tunnelshell:
   - execute command on the server (Attacker’s machine)
-  - it will establish a covert channel for data exfiltration.
+  - it will establish a convert channel for data exfiltration.
   - ./tunnel -t icmp -m echo-reply,echo 10.10.10.2
 ⁃
   - it is successfully connected to 10.10.10.2 and the attacker is able to access the shell of the victim’s machine.
@@ -1756,20 +1756,20 @@ Wireshark: you will capture the traffic.
   - It will notice the ICMP echo request and reply packet is
 being travelled between both endpoints.
    - If analysis these packets, you will be able to see what kind of payload is travelling as ICMP data.
- Covert HTTP Channel
+ convert HTTP Channel
 It establishes a virtual TCP connection without using three-way handshakes.
 It doesn’t bind any port, so you can use a port already use it by another process, therefore execute the below command:
   - sudo ./tunneld -t tcp -p 80,2000
 To connect with tunnelshell
   - execute the following command on the server (Attacker’s
 machine)
-  - it will establish a covert channel for data exfiltration.
+  - it will establish a convert channel for data exfiltration.
   - ./tunnel -t tcp -p 80,2000 10.10.10.2
 ⁃
    - It is successfully connected to 10.10.10.2, attacker is able to access the shell of the victim’s machine.
 Wireshark: you will notice a tcp communication establish without three-way-handshake between source and destination..
- Covert DNS Channel
-To establish DNS covert channel, need to run UDP tunnel mode on both endpoint machines.
+ convert DNS Channel
+To establish DNS convert channel, need to run UDP tunnel mode on both endpoint machines.
 Execute command on the victim’s machine:
   - sudo ./tunneld -t udp -p 53,2000
 Similarly, execute following on your (Attacker) machine
@@ -1777,7 +1777,7 @@ Similarly, execute following on your (Attacker) machine
   - ./tunnel -t udp -p 53,2000 10.10.10.2
   Wireshark: you can observe the DNS 畸形的 malformed packet contains the data travelling between both endpoint machine.
  Conclusion:
-Covert channel does not send encrypted data packet while data
+convert channel does not send encrypted data packet while data
 exfiltration,
 therefore, it can easily sniff, and network admin can easily conduct data loss and risk management. A three-digit number is such that its second digit is the sum of its first and third digits.
 Prove that the number must be divisible by 11.
@@ -3175,7 +3175,7 @@ restrictions product activation product tethering forced upgrade forced downgrad
 How can computer owners know that their trusted computing hardware has been implemented according to its published specifications? (Ruediger Weiss)
 This is an important problem for all cryptographic hardware.
 But since most PCs have not previously contained any specialized cryptographic hardware, most PC users simply haven't had occasion to worry about this problem in the past.
-While any hardware could contain back doors or undocumented features, cryptographic hardware is unique in that it has access to important secret information as well as opportunities to leak that information through undetectable covert channels (example, in attestation certificates).
+While any hardware could contain back doors or undocumented features, cryptographic hardware is unique in that it has access to important secret information as well as opportunities to leak that information through undetectable convert channels (example, in attestation certificates).
 Thus, it is important to assure that trusted computer hardware manufacturers implement the specifications correctly, without including undocumented features that would allow them or third parties to obtain unauthorized access to private information.
 Conclusion
 hardware enhancements might be one way to improve computer security.
@@ -4039,7 +4039,7 @@ Port scan. A port scan checks for open ports on a system. Each open port indicat
 Service scan. A service scan is like a port scan, but it goes a step further. A port scan identifies open ports and gives hints about what protocols or services might be running. The service scan verifies the protocol or service. example, if a port scan identifies port 80 is open, a service scan will send an HTTP command, such as “Get /.” If HTTP is running on port 80, it will respond to the Get command
 providing verification that it is a web server.
 OS detection. Operating system (OS) detection techniques analyze
-packets from an IP address to identify the OS. This is often referred to as TCP/ IPfingerprinting.Asasimpleexample,theTCPwindowsize(the sizeofthe receivewindowinthefirstpacketofaTCPsession)isnotfixed. Different operatingsystemsusedifferentsizes.SomeLinuxversionsusea size of 5,840 bytes, Cisco routers use a size of 4,128 bytes, and some different Windows versionsusesizesof8,192and65,535.OSdetection techniquesdon’trelyona single value but typically evaluate multiple values included in responses from systems. Figure 8.1 shows the result of a scan using Zenmap (the graphical version of Nmap). After starting it, I entered 192.168.0.0/24 as the Target. Nmap then scanned all the IP addresses from 192.168.0.1 to 192.168.0.254. After the scan completed, I selected the host with the IP address of 192.168.0.12 and selected the Ports/Hosts tab. Nmap discovered that this is a printer, the name and serial number of the printer, and that the printer is
+packets from an IP address to identify the OS. This is often referred to as TCP/ IPfingerprinting.Asasimpleexample,theTCPwindowsize(the sizeof the receivewindowinthefirstpacketofaTCPsession)isnotfixed. Different operatingsystemsusedifferentsizes.SomeLinuxversionsusea size of 5,840 bytes, Cisco routers use a size of 4,128 bytes, and some different Windows versionsusesizesof8,192and65,535.OSdetection techniquesdon’trelyona single value but typically evaluate multiple values included in responses from systems. Figure 8.1 shows the result of a scan using Zenmap (the graphical version of Nmap). After starting it, I entered 192.168.0.0/24 as the Target. Nmap then scanned all the IP addresses from 192.168.0.1 to 192.168.0.254. After the scan completed, I selected the host with the IP address of 192.168.0.12 and selected the Ports/Hosts tab. Nmap discovered that this is a printer, the name and serial number of the printer, and that the printer is
 hosting an embedded web site running on port 80.  Figure 8.1: Zenmap scan
 Network Mapping
 Network mapping discovers devices on the network and how they are connected with each other. It is often done as part of a network scan, but it only focuses on connectivity. In contrast, a full network scan also includes additional scans to identify open ports, running services, and OS details.
@@ -4449,7 +4449,7 @@ an induction field.
 Protected Distribution of Cabling
 Physical security includes planning where you route cables and how you route them. Skilled network administrators can cut a twisted-pair cable, attach an RJ-45 connector to each end, and connect them back together with an adapter in less than 5 minutes. Experienced fiber-optic cable technicians can do the same thing with a fiber-optic cable within 10 minutes.
 If an attacker did this, he could connect the cut cable with a hub, and then capture all the traffic going through the hub with a protocol analyzer. This represents a significant risk.
-One method of reducing this risk is to run cables through cable troughs or wiring ducts. A cable trough is a long metal container, typically about 4 inches wide by 4 inches high. If you run data cables through the cable trough, they aren’t as accessible to potential attackers. In contrast, many organizations simply run the cable through a false ceiling or a raised floor.
+One method of reducing this risk is to run cables through cable troughs or wiring ducts. A cable trough is a long metal container, typically about 4 inches wide by 4 inches high. If you run data cables through the cable through, they aren’t as accessible to potential attackers. In contrast, many organizations simply run the cable through a false ceiling or a raised floor.
 In addition to considering physical security, it’s important to keep the cables away from EMI sources. example, if technicians run cables over or through fluorescent lighting fixtures, the EMI from the lights can disrupt the signals on the cables. The result is intermittent connectivity for users. Faraday Cage
 A Faraday cage is typically a room that prevents signals from emanating beyond the room. It includes electrical features that cause RF signals that reach the boundary of the room to be reflected back, preventing signal emanation outside the Faraday cage. A Faraday cage can also be a small enclosure.
 In addition to preventing signals from emanating outside the room, a Faraday cage also provides shielding to prevent outside interference such as EMI and RFI from entering the room. At a very basic level, some elevators act as a Faraday cage (though I seriously doubt the designers were striving to do so). You might have stepped into an elevator and found that your cell phone stopped receiving and transmitting signals. The metal shielding around the elevator prevents signals from emanating out or signals such as the cell phone tower signal from entering
@@ -4666,7 +4666,7 @@ The different phases of a disaster recovery process typically include the follow
 Activate the disaster recovery plan. Some disasters, such as earthquakes or tornadoes, occur without much warning, and a disaster recovery plan is activated after the disaster. Other disasters, such as hurricanes, provide a warning, and the plan is activated when the disaster is imminent.
 Implement contingencies. If the recovery plan requires implementation of an alternate site, critical functions are moved to these sites. If the disaster destroyed on-site backups, this step retrieves the off- site backups from the off-site location.
 Recover critical systems. After the disaster has passed, the organization begins recovering critical systems. The DRP documents which
-systems to recover and includes detailedstepsonhowtorecoverthem.Thisalsoincludesreviewingchangema documentation to ensure that recovered systems include approved changes.
+systems to recover and includes detailedstepsonhowtoreconverthem.Thisalsoincludesreviewingchangema documentation to ensure that recovered systems include approved changes.
 Test recovered systems. Before bringing systems online, administrators test and verify them. This may include comparing the restored system with a performance baseline to verify functionality. After-action report. The final phase of disaster recovery includes a review of the disaster, sometimes called an after-action review. This often includes a lessons learned review to identify what went right and what went wrong. After reviewing the after-action report, the organization often updates the plan to incorporate any lessons learned.
 Testing Plans with Exercises
 Business continuity plans and disaster recovery plans include testing. Testing validates that the plan works as desired and will often include testing redundancies and backups. There are several different types of testing used with BCPs and DRPs.
@@ -4786,7 +4786,7 @@ Using Cryptographic Protocols ▪
 ##  When using digital signatures with email: The sender’s private key encrypts (or signs). The sender’s public key decrypts.
 - A digital signature provides authentication (verified identification) of the sender, non- repudiation, and integrity of the message.
 - Senders create a digital signature by hashing a message and encrypting the hash with the sender’s private key.
-- Recipientsdecryptthedigitalsignaturewiththesender’s matching publickey.
+- Recipientsdecryptthedigitalsignaturewith thesender’s matching publickey.
 - When encrypting email: The recipient’s public key encrypts. The recipient’s private key decrypts.
 - Many email applications use the public key to encrypt a symmetric key, and then use the symmetric key to encrypt the email contents.
 - S/MIME and PGP secure email with encryption and digital signatures. They both use RSA, certificates, and depend on a PKI. They can encrypt email at rest (stored on a drive) and in transit (sent over the network).
@@ -5042,8 +5042,8 @@ Identification. All events aren’t security incidents so when a potential incid
 Containment. After identifying an incident, security personnel attempt to isolate or contain it. This might include quarantining a device or removing it from the network. This can be as simple as unplugging the system’s network interface card to ensure it can’t communicate on the network. Similarly, you can isolate a network from the Internet by modifying access control lists on a router or a network firewall. This is similar to how you’d respond to water spilling from an overflowing sink. You wouldn’t start cleaning up the water until you first turn off the faucet. The goal of isolation is to prevent the problem from spreading to other areas or other computers in your network, or to simply stop the attack.
 Eradication. After containing the incident, it’s often necessary to remove components from the attack. F o r example, if attackers installed malware on systems, it’s important to remove all remnants of the malware on all hosts within the organization. Similarly, an attack might have been launched from one or more compromised accounts. Eradication would include deleting or disabling these accounts.
 Recovery. During the recovery process, administrators return all affected systems to normal operation and verify they are operating normally. This might include rebuilding systems from images, restoring data from backups, and installing updates. Additionally, if administrators have identified the vulnerabilities that caused the incident, they typically take steps to remove the vulnerabilities.
-Lessons learned. After personnel handle an incident, security personnel perform a lessons learned review. I t ’s very possible the incident provides some valuable lessons and the organization might modify procedures or add additional controls to prevent a reoccurrence of the incident. A review might indicate a need to
-provide additional training to users, or indicate a need to update the incident response policy. The goal is to prevent a future reoccurrence of the incident.
+Lessons learned. After personnel handle an incident, security personnel perform a lessons learned review. I t ’s very possible the incident provides some valuable lessons and the organization might modify procedures or add additional controls to prevent a recurrence of the incident. A review might indicate a need to
+provide additional training to users, or indicate a need to update the incident response policy. The goal is to prevent a future recurrence of the incident.
 Implementing Basic Forensic Procedures
 A forensic evaluation helps the organization collect and analyze data as evidence it can use in the prosecution of a crime. In general, forensic evaluations proceed with the assumption that the data collected will be used as evidence in court. Because of this, forensic practices protect evidence to prevent modification and control evidence after collecting it.
 Once the incident has been contained or isolated, the next step is a forensic evaluation. What do you think of when you hear forensics? Many people think about the TV program CSI (short for “crime scene investigation”) and all of its spin-offs. These shows demonstrate the phenomenal capabilities of science in crime investigations.
@@ -5190,7 +5190,7 @@ An incident response policy defines an incident and response procedures. Organiz
 The first step in incident response is preparation. It includes creating and maintaining an incident response policy and includes prevention steps such as implementing security controls to prevent malware infections.
 Before acting, personnel verify an event is an actual incident. Next, they attempt to contain or isolate the problem. Disconnecting a computer from a network will isolate it.
 Eradication attempts to remove all malicious components left after an incident. Recovery restores a system to its original state. Depending on the scope of the incident, administrators might completely rebuild the system, including applying all updates and patches.
-A review of lessons learned helps an organization prevent a reoccurrence of an incident. The order of volatility for data from most volatile to least volatile is cache memory, regular RAM, a paging file, hard drive data, logs stored on remote systems, and archived media. Forensic experts capture an image of the data before analysis to preserve the original and maintain its usability as evidence.
+A review of lessons learned helps an organization prevent a recurrence of an incident. The order of volatility for data from most volatile to least volatile is cache memory, regular RAM, a paging file, hard drive data, logs stored on remote systems, and archived media. Forensic experts capture an image of the data before analysis to preserve the original and maintain its usability as evidence.
 Hard drive imaging creates a forensic copy and prevents the forensic capture and analysis from modifying the original evidence. A forensic image is a bit-by-bit copy of the data and does not modify the data during the capture.
 Hashing provides integrity for images, including images of both memory and disk drives. Taking a hash before and after capturing a disk image verifies that the capturing process did not modify data. Hashes can reveal evidence tampering or, at the very least, that evidence has lost integrity. A chain of custody provides assurances that personnel controlled and handled evidence properly after collecting it. It may start with a tag attached to the physical item, followed by a chain of custody form that documents everyone who handled it and when they handled it.
 A legal hold requires an organization to protect existing data as evidence.
@@ -6737,7 +6737,7 @@ moving entire processes between secondary storage and main memory.
 when physical memory reaches a critically low point and processes
 Now, very few modern OS: moved from memory to swap space to free memory.
 More systems: combine swapping with virtual memory techniques and swap pages, not necessarily entire processes.
-In fact, some systems now use the terms “swapping” and “paging” togeter.
+In fact, some systems now use the terms “swapping” and “paging” together.
 Swap-Space Management low-level task of the OS.
 Virtual memory uses secondary storage space as an extension of main memory. Since drive access is much slower than memory access, using swap-space significantly decreases system performance.
 The main goal for swap space: provide best throughput for virtual memory system. 11.6.1 Swap-Space Use
@@ -7042,7 +7042,7 @@ storage pool
 Traditional volumes and file systems compared with the ZFS model.
 Object storage management software, such as the                   (    ) and     , determines where to store the objects and manages object protection. Typically, this occurs on commodity hardware rather than RAID arrays. example, HDFS can store N copies of an object on N different com- puters. This approach can be lower in cost than storage arrays and can provide fast access to that object (at least on those N systems). All systems in a Hadoop cluster can access the object, but only systems that have a copy have fast access via the copy. Computations on the data occur on those systems, with results sent across the network, example, only to the systems requesting them. Other systems need network connectivity to read and write to the object. There- fore, object storage is usually used for bulk storage, not high-speed random access. Object storage has the advantage of                       . That is, whereas a storage array has a fixed maximum capacity, to add capacity to an object store, we simply add more computers with internal disks or attached external disks and add them to the pool. Object storage pools can be petabytes in size.
 Another key feature of object storage is that each object is self-describing, including description of its contents. In fact, object storage is also known as                            , because objects can be retrieved based on their contents. There is no set format for the contents, so what the system stores is                  .
-While object storage is not common on general-purpose computers, huge amounts of data are stored in object stores, including Google’s Internet search contents, Dropbox contents, Spotify’s songs, and Facebook photos. Cloud com- puting (such as Amazon AWS) generally uses object stores (in Amazon S3) to hold file systems as well as data objects for customer applications running on cloud computers.
+While object storage is not common on general-purpose computers, huge amounts of data are stored in object stores, including Google’s Internet search contents, Dropbox contents, Spotify’s songs, and Facebook photos. Cloud computing (such as Amazon AWS) generally uses object stores (in Amazon S3) to hold file systems as well as data objects for customer applications running on cloud computers.
                        For the history of object stores see http://www.theregister.co.uk/2016/07/15
  /the history boys cas and object storage map. 11.9 Summary
 Harddiskdrivesandnonvolatilememorydevicesarethemajorsecondary storage I/O units on most computers. Modern secondary storage is struc- tured as large one- dimensional arrays of logical blocks.
@@ -7076,7 +7076,7 @@ f. When is a tape a random-access device, and when is it a sequential-access dev
      Give three reasons to use HDDs as secondary storage.
       Give three reasons to use NVM devices as secondary storage.
 Further Reading
-[Services (2012)] provides an overview of data storage in a variety of modern computing environments. Discussions of redundant arrays of independent disks (RAIDs) are presented by [Patterson et al. (1988)]. [Kim et al. (2009)] discuss disk- scheduling algorithms for SSDs. Object-based storage is described by [Mesnier et al. ▪
+[Services (2012)] provides an overview of data storage in a variety of modern computing environments. Discussions of redundant arrays of independent disks (RAIDs) are presented by [patternson et al. (1988)]. [Kim et al. (2009)] discuss disk- scheduling algorithms for SSDs. Object-based storage is described by [Mesnier et al. ▪
 
 
 ## (2003)].
@@ -7316,7 +7316,7 @@ provides a basis for application programs
 acts as an intermediary between the computer user and the computer
 hardware.
 OS goals:
-Excute user programs and make solving user probles esaier Make the computer system conveninnt to use Ise the conputer garwae in an eddivient manner.
+Excute user programs and make solving user problems esaier Make the computer system conveninnt to use Ise the conputer garwae in an eddivient manner.
 536OS: chapter 1.1 What Operating Systems Do
 A computer system can be divided roughly into 4 components:
 1. the hardware (provides the basic computing resources for the system.)
@@ -7813,7 +7813,7 @@ Hadoop:
 - used for distributed processing of large data sets (big data) in a clustered system containing simple, low-cost hardware components.
 Hadoop is designed to scale from a single system to a cluster containing thousands of computing nodes. Tasks are assigned to a node in the cluster, and Hadoop arranges communica- tion between nodes to manage parallel computations to process and coalesce results. Hadoop also detects and manages failures in nodes, providing an efficient and highly reliable distributed computing service.
 Hadoop is organized around the following three components:
-1. A distributed file system that manages data and files across distributed com- puting nodes.
+1. A distributed file system that manages data and files across distributed computing nodes.
 2. The YARN (“Yet Another Resource Negotiator”) framework, which manages resources within the cluster as well as scheduling tasks on nodes in the cluster.
 3. The MapReduce system, which allows parallel processing of data across nodes in the cluster.
 Hadoop is designed to run on Linux systems, and Hadoop applications
@@ -8053,7 +8053,7 @@ tions.
 1.10 Computing Environments
 So far, we have briefly described several aspects of computer systems and the operating systems that manage them. We turn now to a discussion of how operating systems are used in a variety of computing environments.
 1.10.1 Traditional Computing
-As computing has matured, the lines separating many of the traditional com- puting environments have blurred. Consider the “typical office environment.” Just a few years ago, this environment consisted of PCs connected to a network, with servers providing file and print services. Remote access was awkward, and portability was achieved by use of laptop computers.
+As computing has matured, the lines separating many of the traditional computing environments have blurred. Consider the “typical office environment.” Just a few years ago, this environment consisted of PCs connected to a network, with servers providing file and print services. Remote access was awkward, and portability was achieved by use of laptop computers.
 Today, web technologies and increasing WAN bandwidth are stretching the boundaries of traditional computing. Companies establish portals, which pro- vide web accessibility to their internal servers. Network computers (or thin clients) — which are essentially terminals that understand web-based comput- ing—are used in place of traditional workstations where more security or easier maintenance is desired. Mobile computers can synchronize with PCs to allow very portable use of company information. Mobile devices can also
 1.10 Computing Environments 41
 connect to wireless networks and cellular data networks to use the company’s web
@@ -8228,9 +8228,9 @@ device for which it is caching (for instance, a cache as large as a disk),
 why not make it that large and eliminate the device?
 1.11 Distinguish between the client–server and peer-to-peer models of dis- tributed systems.
 Further Reading
-Many general textbooks cover operating systems, including [Stallings (2017)] and [Tanenbaum (2014)]. [Hennessy and Patterson (2012)] provide coverage of I/O systems and buses and of system architecture in general. [Kurose and Ross (2017)] provides a general overview of computer networks.
+Many general textbooks cover operating systems, including [Stallings (2017)] and [Tanenbaum (2014)]. [Hennessy and patternson (2012)] provide coverage of I/O systems and buses and of system architecture in general. [Kurose and Ross (2017)] provides a general overview of computer networks.
 [Russinovich et al. (2017)] give an overview of Microsoft Windows and cov- ers considerable technical detail about the system internals and components. [McDougall and Mauro (2007)] cover the internals of the Solaris operating system. The macOS and iOS internals are discussed in [Levin (2013)]. [Levin (2015)] covers the internals of Android. [Love (2010)] provides an overview of the Linux operating system and great detail about data structures used in the Linux kernel. The Free Software Foundation has published its philosophy at http://www.gnu.org/philosophy/free-software-for-freedom.html. Bibliography
-[Hennessy and Patterson (2012)] J. Hennessy and D. Patterson, Computer Archi- tecture: A Quantitative Approach, Fifth Edition, Morgan Kaufmann (2012).
+[Hennessy and patternson (2012)] J. Hennessy and D. patternson, Computer Archi- tecture: A Quantitative Approach, Fifth Edition, Morgan Kaufmann (2012).
 [Kurose and Ross (2017)] J. Kurose and K. Ross, Computer Networking—A Top– Down Approach, Seventh Edition, Addison-Wesley (2017).
 [Levin (2013)]
 (2013).
@@ -8627,7 +8627,7 @@ Specifying and designing an operating system is a highly creative task. Although
 2.7.2 Mechanisms and Policies
 One important principle is the separation of        from          . Mecha- nisms determine how to do something; policies determine what will be done. example, the timer construct (see Section 1.4.3) is a mechanism for ensuring CPU protection, but deciding how long the timer is to be set for a particular user is a policy decision.
 The separation of policy and mechanism is important for flexibility. Policies are likely to change across places or over time. In the worst case, each change in policy would require a change in the underlying mechanism. A general mechanism flexible enough to work across a range of policies is preferable. A change in policy would then require redefinition of only certain parameters of the system. For instance, consider a mechanism for giving priority to certain types of programs over others. If the mechanism is properly separated from policy, it can be used either to support a policy decision that I/O-intensive programs should have priority over CPU-intensive ones or to support the opposite policy. Microkernel-based operating systems (discussed in Section 2.8.3) take the separation of mechanism and policy to one extreme by implementing a basic set of primitive building blocks. These blocks are almost policy free, allowing more advanced mechanisms and policies to be added via user-created kernel modules or user programs themselves. In contrast, consider Windows, an enormously popular commercial operating system available for over three decades. Microsoft has closely encoded both mechanism and policy into the system to enforce a global look and feel across all devices that run the Windows operating system. All applications have similar interfaces, because the interface itself is built into the kernel and system libraries. Apple has adopted a similar strategy with its macOS and iOS operating systems.
-We can make a similar comparison between commercial and open-source operating systems. For instance, contrast Windows, discussed above, with Linux, an open-source operating system that runs on a wide range of com- puting devices and has been available for over 25 years. The “standard” Linux kernel has a specific CPU scheduling algorithm (covered in Section 5.7.1), which is a mechanism that supports a certain policy. However, anyone is free to modify or replace the scheduler to support a different policy.
+We can make a similar comparison between commercial and open-source operating systems. For instance, contrast Windows, discussed above, with Linux, an open-source operating system that runs on a wide range of computing devices and has been available for over 25 years. The “standard” Linux kernel has a specific CPU scheduling algorithm (covered in Section 5.7.1), which is a mechanism that supports a certain policy. However, anyone is free to modify or replace the scheduler to support a different policy.
 Policy decisions are important for all resource allocation. Whenever it is necessary to decide whether or not to allocate a resource, a policy decision must be made. Whenever the question is how rather than what, it is a mechanism that must be determined.
 2.7.3 Implementation
 Once an operating system is designed, it must be implemented. Because oper- ating systems are collections of many programs, written by many people over a long period of time, it is difficult to make general statements about how they are implemented.
@@ -11247,7 +11247,7 @@ allows all authorized information flows, whether within the same classification 
 prevents all unauthorized information flows, whether within the same classification level or between classification levels.
 it is used to establish a relationship between two versions or states of the same object when those two versions or states exist at different points in time.
 information flow dictates the transformation of an object from one state at one point in time to another state at another point in time.
-The information flow model also addresses covert channels by specifically excluding all nondefined flow pathways.
+The information flow model also addresses convert channels by specifically excluding all nondefined flow pathways.
 Noninterference Model
 based on the information flow model.
 But not about the flow of information, but how the actions of a subject at a higher security level affect the system state or the actions of a subject at a lower security level.
@@ -11257,7 +11257,7 @@ subject B may be placed into an insecure state or be able to deduce or infer inf
          ▪
 
 
-##  This is a type of information leakage and implicitly creates a covert channel.
+##  This is a type of information leakage and implicitly creates a convert channel.
 Thus, the noninterference model can be imposed to provide a form of protection against damage caused by malicious programs such as Trojan horses.
 Composition Theories
 Some other models that fall into the information flow category build on the notion of how inputs and outputs between multiple systems relate to one another—which follows how information flows between systems rather than within an individual system.
@@ -11305,7 +11305,7 @@ Secret Classified Sensitive Unclassified
 is not constrained by the * Security Property. A trusted subject is defined as “a subject that is guaranteed not to consummate a security-breaching information transfer even if it is possible.” This means that a trusted subject is allowed to violate the * Security Property and perform a write- down, which is necessary when performing valid object declassification or reclassification.
 The Bell-LaPadula properties are in place to protect data confidentiality. A subject can- not read an object that is classified at a higher level than the subject is cleared for. Because objects at one level have data that is more sensitive or secret than data in objects at a
 lower level, a subject (who is not a trusted subject) cannot write data from one level to an object at a lower level. That action would be similar to pasting a top-secret memo into an unclassified document file. The third property enforces a subject’s need to know in order to access an object.
-The Bell-LaPadula model addresses only the confidentiality of data. It does not address its integrity or availability. Because it was designed in the 1970s, it does not support many operations that are common today, such as file sharing and networking. It also assumes secure transitions between security layers and does not address covert channels (covered in Chapter 9, “Security Vulnerabilities, Threats, and Countermeasures”). Bell-LaPadula does handle confidentiality well, so it is often used in combination with other models that provide mechanisms to handle integrity and availability.
+The Bell-LaPadula model addresses only the confidentiality of data. It does not address its integrity or availability. Because it was designed in the 1970s, it does not support many operations that are common today, such as file sharing and networking. It also assumes secure transitions between security layers and does not address convert channels (covered in Chapter 9, “Security Vulnerabilities, Threats, and Countermeasures”). Bell-LaPadula does handle confidentiality well, so it is often used in combination with other models that provide mechanisms to handle integrity and availability.
 Biba Model
 For many nonmilitary organizations, integrity is more important than confidential-
 ity. Out of this need, several integrity-focused security models were developed, such as those developed by Biba and by Clark-Wilson. The Biba model was designed after the Bell-LaPadula model. Where the Bell-LaPadula model addresses confidentiality, the Biba model addresses integrity. The Biba model is also built on a state machine concept, is based on information flow, and is a multilevel model. In fact, Biba appears to be pretty similar to the Bell-LaPadula model, except inverted. Both use states and transitions. Both have basic properties. The biggest difference is their primary focus: Biba primarily protects data integrity. Here are the basic properties or axioms of the Biba model state machine:
@@ -11322,7 +11322,7 @@ Critiques of the Biba model reveal a few drawbacks:
 It addresses only integrity, not confidentiality or availability.
 It focuses on protecting objects from external threats; it assumes that internal threats are handled programmatically.
 It does not address access control management, and it doesn’t provide a way to assign or change an object’s or subject’s classification level.
-It does not prevent covert channels.
+It does not prevent convert channels.
 Because the Biba model focuses on data integrity, it is a more common choice for com- ▪
 
 
@@ -11374,7 +11374,7 @@ said to be the foundation of noninterference concep- tual theories. Often when s
 The Goguen-Meseguer model is based on predetermining the set or domain—a list of objects that a subject can access. This model is based on automation theory and domain separation. This means subjects are allowed only to perform predetermined actions against predetermined objects. When similar users are grouped into their own domain (that is, collective), the members of one subject domain cannot interfere with the mem- bers of another subject domain. Thus, subjects are unable to interfere with each other’s activities.
 Sutherland Model
 an integrity model. It focuses on preventing interference in sup- port of integrity. It is formally based on the state machine model and the information flow model. However, it does not directly indicate specific mechanisms for protection of integ- rity. Instead, the model is based on the idea of defining a set of system states, initial states, and state transitions. Through the use of only these predetermined secure states, integrity is maintained and interference is prohibited.
-A common example of the Sutherland model is its use to prevent a covert channel from being used to influence the outcome of a process or activity. (For a discussion of covert channels, see Chapter 9.)
+A common example of the Sutherland model is its use to prevent a convert channel from being used to influence the outcome of a process or activity. (For a discussion of convert channels, see Chapter 9.)
  Graham-Denning Model
 The Graham-Denning model is focused on the secure creation and deletion of both subjects and objects. Graham-Denning is a collection of eight primary protection rules or actions that define the boundaries of certain secure actions:
 Securely create an object.
@@ -11443,7 +11443,7 @@ Mandatory Protection (Categories B1, B2, B3) Mandatory protection systems provid
 sets of subject/object access. This category of systems is based on the Bell-LaPadula
 model. Mandatory access is based on security labels.
 Labeled Security (B1) In a labeled security system, each subject and each object has a security label. A B1 system grants access by matching up the subject and object labels and comparing their permission compatibility. B1 systems support sufficient security to house classified data.
-Structured Protection (B2) In addition to the requirement for security labels (as in B1 systems), B2 systems must ensure that no covert channels exist. Operator and adminis- trator functions are separated, and process isolation is maintained. B2 systems are suf- ficient for classified data that requires more security functionality than a B1 system can deliver.
+Structured Protection (B2) In addition to the requirement for security labels (as in B1 systems), B2 systems must ensure that no convert channels exist. Operator and adminis- trator functions are separated, and process isolation is maintained. B2 systems are suf- ficient for classified data that requires more security functionality than a B1 system can deliver.
 Security Domains (B3) Security domain systems provide more secure functionality by further increasing the separation and isolation of unrelated processes. Administration functions are clearly defined and separate from functions available to other users. The
  focus of B3 systems shifts to simplicity to reduce any exposure to vulnerabilities in unused or extra code. The secure state of B3 systems must also be addressed during the initial boot process. B3 systems are difficult to attack successfully and provide sufficient secure controls for very sensitive or secret data.
 Verified Protection (Category A1) Verified protection systems are similar to B3 systems in the structure and controls they employ. The difference is in the development cycle. Each phase of the development cycle is controlled using formal methods. Each phase of the design is documented, evaluated, and verified before the next step is taken. This forces extreme security consciousness during all steps of development and deployment and is the only way to formally guarantee strong system security.
@@ -12966,7 +12966,7 @@ OS in high memory. (we discuss only this situation)
   - Resident operating system, usually held in low
 memory with interrupt vector
 one for the user processes.
-  - User processes usally held in high memory.
+  - User processes usually held in high memory.
   - several user processes reside in memory at the same
 time.
   - how to allocate available memory to the processes that
@@ -13701,10 +13701,10 @@ InternetKeyExchangeIKEistheprotocolthatproducesthekeysforthe encryptionprocess.
 Software that facilitates encrypted communication between two endpoints.
 If possible to implement (and it’s actually pretty easy to set up), IPSec is a good choice as a countermeasure. Not the only one, but a good one. I would say user education is key. Oftentimes an uneducated user won’t think twice about clicking past the security certificate warning, or reconnecting after being suddenly shut down, and education can help with one or two instances here and there—but don’t rely on it.
 Chapter Review
-Malware is generally defined as software designed to harm or secretly access a computer system without the owner’s informed consent. Some states also define malware as computer contaminant. Malvertising involves embedding malware into ad networks in an effort to throw malware across many legitimate sites. Other definition terms of note include overt channels (legitimate communication channels used by programs across a system or a network) and covert channels (used to transport data in unintended ways).
+Malware is generally defined as software designed to harm or secretly access a computer system without the owner’s informed consent. Some states also define malware as computer contaminant. Malvertising involves embedding malware into ad networks in an effort to throw malware across many legitimate sites. Other definition terms of note include overt channels (legitimate communication channels used by programs across a system or a network) and convert channels (used to transport data in unintended ways).
 Most malware is simply downloaded from the Internet with or without the user’s knowledge. Sometimes legitimate sites get compromised, leading to infections on visiting systems. Other times drive-by downloading infects the system, usually via some weird Java vulnerability delivered through an ad stream or something like it. Peer-to-peer applications or web application “features” are often hijacked to distribute malware, and an IRC channel is always a great way to distribute malware. Sending malware (usually a Trojan) via e-mail, file sharing, or a browser is also a good distribution method.
 Wrappers are programs that allow you to bind an executable of your choice (Trojan) to an innocent file your target won’t mind opening. EliteWrap is an example. Crypters are software tools that use a combination of encryption, obfuscation, and code manipulation to render malware as undetectable to AV and other security monitoring products. Exploit kit examples include Infinity, Bleeding Life, Crimepack, and Blackhole Exploit Kit.
-A Trojan is software that appears to perform a desirable function for the user prior to running or installing it but instead performs a function, usually without the user’s knowledge, that steals information or otherwise harms the system (or data). Although a backdoor isn’t a Trojan, and a Trojan isn’t a backdoor, they’re tied together in this discussion and on your exam: the Trojan is the means of delivery, and the backdoor provides the open access. Trojan types include defacement Trojan, proxy server Trojan, botnet Trojans (Tor-based Chewbacca and Skynet), remote access Trojans (RAT, MoSucker, Optix Pro, and Blackhole), and e- banking Trojans (Zeus and Spyeye). Covert Channel Tunneling Trojan (CCTT) is one form of remote access Trojans that uses a variety of exploitation techniques to create data transfer channels in previously authorized data streams. It’s designed to provide an external shell from within the internal environment. A command shell Trojan is intended to provide a backdoor to the system that you connect to via command-line access. Netcat is known as the “Swiss Army knife” of TCP/IP hacking, and provides all sorts of control over a remote shell on a target. Netcat can be used for outbound or inbound connections, over TCP or UDP, to or from any port on the machine. It offers DNS forwarding, port mapping and forwarding, and proxying. You can even use it as a port scanner if you’re really in a bind.
+A Trojan is software that appears to perform a desirable function for the user prior to running or installing it but instead performs a function, usually without the user’s knowledge, that steals information or otherwise harms the system (or data). Although a backdoor isn’t a Trojan, and a Trojan isn’t a backdoor, they’re tied together in this discussion and on your exam: the Trojan is the means of delivery, and the backdoor provides the open access. Trojan types include defacement Trojan, proxy server Trojan, botnet Trojans (Tor-based Chewbacca and Skynet), remote access Trojans (RAT, MoSucker, Optix Pro, and Blackhole), and e- banking Trojans (Zeus and Spyeye). convert Channel Tunneling Trojan (CCTT) is one form of remote access Trojans that uses a variety of exploitation techniques to create data transfer channels in previously authorized data streams. It’s designed to provide an external shell from within the internal environment. A command shell Trojan is intended to provide a backdoor to the system that you connect to via command-line access. Netcat is known as the “Swiss Army knife” of TCP/IP hacking, and provides all sorts of control over a remote shell on a target. Netcat can be used for outbound or inbound connections, over TCP or UDP, to or from any port on the machine. It offers DNS forwarding, port mapping and forwarding, and proxying. You can even use it as a port scanner if you’re really in a bind.
 Port numbers in use by Trojans should be memorized for your exam:
  netstat will show all connections in one of several states—everything from SYN_SEND (indicating active open) to CLOSED (the server has received an ACK from the client and closed the connection). Fport is a free tool from McAfee that reports all open TCP/IP and UDP ports and maps them to the owning applications. Process Explorer is a free tool from Microsoft (formerly from SysInternals) that can tell you almost anything you’d want to know about a running process. Options for monitoring the registry include, but are not limited to, SysAnalyzer, Tiny Watcher, Active Registry Monitor, and Regshot.
 Windows will automatically run everything located in Run, RunServices, RunOnce, and RunServicesOnce, and you’ll find that most questions on the exam are centered around or show you settings from HKEY_LOCAL_MACHINE.
@@ -13769,7 +13769,7 @@ InternetKeyExchangeIKEistheprotocolthatproducesthekeysforthe encryptionprocess. 
 Software that facilitates encrypted communication between two endpoints.
 Questions
 1. Which of the following doesn’t define a method of transmitting data that violates a security policy? A. Backdoor channel
-B. Sessionhijacking C. Covert channel
+B. Sessionhijacking C. convert channel
 D. Overt channel
 2. Which virus type is only executed when a specific condition is met? A. Sparse infector
 B. Multipartite
@@ -13843,7 +13843,7 @@ using weaknesses in the data access objects of a database
 or a flaw in a service or application.
      Malvertising = Malware + Advertising
 Malware(惡意程式)以動作區分的類型:
-共同目標:建立秘密(covert)通訊的後門
+共同目標:建立秘密(convert)通訊的後門
 (1)Trojan:
 - well-content:不需靠宿主存活
 - 目的:隱藏自己
@@ -13865,7 +13865,7 @@ Malware(惡意程式)以動作區分的類型:
 - Peer-to-peer applications or web application “features” are often hijacked to distribute malware, and an IRC channel is always a great way to distribute malware.
 EXAM TIP
 - Overt channels: legitimate communication channels used by programs across a system / network
-covert channels: used to transport data in unintended ways.
+convert channels: used to transport data in unintended ways.
 worm:
 - A malware program.
   - primary focus: spreading and function as a stand-alone entity, classified
@@ -14016,9 +14016,9 @@ FTP Trojans:在受害者的電腦上安裝FTP Server
 VNC Trojans:在受害者的電腦上建立VNC Server的連線
 HTTP/HTTPS Trojans:可繞過受害者的防火牆，並建立HTTP(S) 傳輸連線
 Remote Access Trojans:攻擊者可取得受害者電腦完整GUI介 面的存取權限 (like RAT, MoSucker, Optix Pro, and Blackhole)
-  - Covert Channel Tunneling Trojan (CCTT): one form of remote access Trojan that uses a variety of exploitation techniques to create data transfer channels in previously authorized data streams. It’s designed to provide an external shell from within the internal environment.
+  - convert Channel Tunneling Trojan (CCTT): one form of remote access Trojan that uses a variety of exploitation techniques to create data transfer channels in previously authorized data streams. It’s designed to provide an external shell from within the internal environment.
      輸
-Covert Channel Trojans:攻擊者與受害者間建立隱蔽的通道傳 Notification Trojans:將受害者電腦的資訊回傳給攻擊者
+convert Channel Trojans:攻擊者與受害者間建立隱蔽的通道傳 Notification Trojans:將受害者電腦的資訊回傳給攻擊者
  Data Hiding Trojans:加密整個受害者的電腦 - e-banking Trojans:
   - Zeus, Spyeye
   - Neverquest Trojan: targets banking websites, to steal credentials and sensitive info and to set up VNC remote access to target systems.
@@ -14447,7 +14447,7 @@ These types of viruses:
   - encrypt parts of itself to avoid detection.
   - When the virus does this, it’s referred to as mutation 突变.
   - makes it hard for antivirus software to detect common characteristics of the virus.
-  - change a signature to aviod antivirus software (common) This virus mutates its code using a built-in polymorphic engine.
+  - change a signature to avoid antivirus software (common) This virus mutates its code using a built-in polymorphic engine.
 is difficult to find and remove because its signature constantly changes.
 No part of the virus stays the same from infection to infection.
 - since it compares the signatures of executable files to the database of known viral signatures
@@ -22771,7 +22771,7 @@ Sites or apps that fail to authenticate URLs can become a vector for malicious r
 fake sites for identity theft or sites that install malware. Normally, redirection is a technique for shifting
 users to a different web page than the URL they requested. Webmasters use redirection for valid reasons, such as dealing with resources that are no longer available or have been moved to a different location. Web users often encounter redirection when they visit the Web site of a company whose name has been changed or which has been acquired by another company.
 The Heartbleed vulnerability, originally reported
-to be enabled by covert redirects, was eventually discovered to be the result of the less serious -- but still irresponsible -- enabling of open redirect.
+to be enabled by convert redirects, was eventually discovered to be the result of the less serious -- but still irresponsible -- enabling of open redirect.
 Sniffing
 - Definition of Sniffing:
   - A program or device that captures vital information from the network
@@ -27360,7 +27360,7 @@ transmitting frames on the network,
 ##   - Sending station: packages the info into frams
   - Receving station: unpacks the info from frams and moves it
 along to the next layer for further processing. performing error detection/correction,
-uniquely identifying network devices with an address, handling flow control: data management. Aviod overwhelm.
+uniquely identifying network devices with an address, handling flow control: data management. avoid overwhelm.
 two sublayers: LLC and MAC.
 MAC:Medium access control (MAC) layer
   - responsible for controlling how devices in a network gain access to a medium and permission to transmit data.
@@ -35615,7 +35615,7 @@ Security cannot be added as an afterthought.
 Security Implications and Vulnerabilities
 The challenge with embedded systems:
 keeping them up to datewith security fixes.
-  - Exploits are regularly discovered,Whendiscoverthem,release patches. apply the patch, the system is no longer vulnerable to the exploit.
+  - Exploits are regularly discovered,Whendisconverthem,release patches. apply the patch, the system is no longer vulnerable to the exploit.
   - But vendors of embedded systems are not as aggressive in identifying vulnerabilities and creating patches to fix them.
   - patch management: routine function for IT administrators
   - In contrast, how often does a regular user think about checking
@@ -35931,7 +35931,7 @@ Network Address Translation (NAT)
 - often see NAT enabled on an Internet-facing firewall.
 - commonly used form of NAT: network address and Port Address Translation
 (PAT).
-  - Exmaple: NAT, the router at home.
+  - Example: NAT, the router at home.
 - This public IP address represents the point of contact with the Internet
 for the entire LAN: machines on the network have private IP addresses that are only accessible from within the network.
 benefits of NAT:
@@ -36708,7 +36708,7 @@ One defense for wireless network administrator: enforce a MAC filter.
 - if wireless NIC’s address isn’t on the list, you’re denied access.
 - To break:
 - The easy way around this, monitor the network to figure out which MAC addresses are in use on the AP and simply spoof one of them.
-- Unix/Linux machine, log in as root, disable the interface, enter a new MAC, and reenable the device:  ⁃
+- Unix/Linux machine, log in as root, disable the interface, enter a new MAC, and re-enable the device:  ⁃
 Tools for MAC spoofing.
 - SMAC and TMAC.
 - change the MAC address with just a couple of clicks and, once you’re done, to return things to normal with a click of the mouse.
@@ -37643,7 +37643,7 @@ Single Sign-On (SSO)
   - authenticate once on a network, then access resources throughout the
 network without being prompted to authenticate again.
 - advantage:
-  - convenient and increases security. (aviod writing down password)
+  - convenient and increases security. (avoid writing down password)
   - easier administration: reducing the number of accounts required for a
 subject.
 - The primary disadvantage:
@@ -37669,7 +37669,7 @@ Commly used for federated identity management across mulyiple organizations.
  ▪
 
 
-##   An SSO solution used for web-based appliation
+##   An SSO solution used for web-based application
 - Example:
 - A secure web portal accessible to user by username and password, use SAML to support authentication.
   - Portal: service provider, request an authentication assertion
@@ -37770,12 +37770,12 @@ Simple Authentication and Security Layer (SASL)   - No authentication
   - Anonymous access is granted   - Simple authntication
   - Client provides DN and Passwd(plaintext)   - SASL
   - Client and server negotiate a security mechanism (kerberos, TLS...)
-Usualy 2 levels of access
+Usually 2 levels of access
   - Read only (query the info)
   - Read-write (update the info)
 Check the firewall! (Tcp/udp 389)
     LDAP over SSL (LDAPS)
-LDAP is transferres in clear text. (Sniffer and retrived)
+LDAP is transferres in clear text. (Sniffer and retrieved)
 secure LDAP (LDAPS), port 636
   - breach of LDAP can be quite serious, some organizations use secure
 LDAP .
@@ -37788,7 +37788,7 @@ compatibility with LDAP clients
 
 ##  trusted CA.
   - Ensure port 636 is open between the clients and the servers using the communication.
-  Exmaple of authentication: specifics a LDAP module for single sign-on
+  Example of authentication: specifics a LDAP module for single sign-on
 communication with the company's access control database.
 - May need to filter non-encrypted LDAP, as some LDAP cannot disable it. ▪
 
@@ -38025,7 +38025,7 @@ RADIUS uses the User Datagram Protocol (UDP)
 ⁃
 RADIUS does work with EAP.
   - However, alternatives make it easier to extend the use of EAP.
-To ensure credentials are encrpted in transit when use RADIUS se rver for SSO.
+To ensure credentials are encryptedin transit when use RADIUS se rver for SSO.
   - Public key and private key.
 The major difficulty with a single-server RADIUS environment is that the entire network may refuse connections, if the server malfunctions.
 Many RADIUS systems allow multiple servers to be used to increase reliability.
@@ -38062,7 +38062,7 @@ Although TACACS+ is proprietary to Cisco, it can interact with Kerberos.
 TACACS Plus (TACACS+) was later created
   - an open publicly documented protocol
   - the most commonly used of the three.
-   - Can be used to control specific commans that can be executed on a network infrastructure device.  Foundation Topics WAN Properties
+   - Can be used to control specific commands that can be executed on a network infrastructure device.  Foundation Topics WAN Properties
 - To select an appropriate WAN technology for a network you are designing, or to better understand a WAN technology in a currently installed network,
 - you need the ability to compare one WAN technology to another.
 - This section identifies a collection of WAN connection properties that
@@ -39518,7 +39518,7 @@ or link failure.
 ◦ What software redundancy features are appropriate?
 ◦ What protocol characteristics affect design requirements?
 ◦ What redundancy features should be used to provide power to an
-infrastructure device (like using an uninterruptable power
+infrastructure device (like using an uninterruptible power
 supply [UPS] or a generator)?
 ◦ What redundancy features should be used to maintain
 environmental conditions (like dual air-conditioning units)?
@@ -40114,8 +40114,8 @@ network using an overt channel.
 ◦ example:
 ◦ tunneling one protocol inside another: like sending instant- messaging traffic via HTTP.
 - ◦ Steganography 隐写术 : like sending a digital image with millions of pixels, “secret” information encoded in specific pixels, only the sender and the receiver know which pixels represent the encoded information.
-- Sending information over covert channels
-◦ An attacker might send/receive confidential information over a network using a covert channel, which can communicate information as a series of codes and/or events.
+- Sending information over convert channels
+◦ An attacker might send/receive confidential information over a network using a convert channel, which can communicate information as a series of codes and/or events.
 ◦ example:
 ▸ binary data could be represented by sending a series of pings
 to a destination.
@@ -40284,7 +40284,7 @@ he might be able to cause a variety of electrical disturbances, such as the foll
 ◦ Power sag 下陷: A brief reduction in power
 ◦ Brownout: An extended reduction in power
 - To combat such electrical threats:
-- install uninterruptable power supplies (UPS) and generator backups
+- install uninterruptible power supplies (UPS) and generator backups
 for strategic devices in your network.
 - routinely test the UPS and generator backups.
 ◦ A standby power supply (SPS) is a lower-end version of a UPS.
@@ -40561,7 +40561,7 @@ Windows® clients to remotely access to a Microsoft Windows® network. - RDP:
 ◦ a Microsoft protocol that allows a user to view and control the desktop
 of a remote computer.
 ◦ If RDP is misconfigured, a man in the middle attack could occur,
-senstive infromation being captured.
+senstive information being captured.
 - PPPoE :
 ◦ Point-to-Point Protocol over Ethernet (PPPoE)
 ◦ a commonly protocol between a DSL modem in home/business and a
@@ -40815,7 +40815,7 @@ SP 800-53 Revision 4, “Security and Privacy Controls for Federal Information S
   - 2 meters / 6-7 feet: defense climb easy
   - 2.5 meter / 8 feet: delay determined intruder.
   - Gates, Facility walls, Bollards
-- Controlled access point: minimun nesessary, for car and person.
+- Controlled access point: minimum nesessary, for car and person.
 - Physical IDS: electronic sensors, presure sensors, temperature sensors,
 vibration 震动 sensors.
 - CCTV: detection, recognition, identication,
@@ -40828,12 +40828,12 @@ vibration 震动 sensors.
   - Doors, windows, loading ramps, elevator shafts, ventilation 通⻛设备 duct, crawlspaces (屋顶、地板下面)供电线或水管等通过的槽隙, sewage steam line
 ⁃
 - Door: lighting, contact devices, solid core, hinges 小五金, lighting,
-- Locks: locks, combincations (can be learn/hack), biometric (identify, authen, authou), pick persistant
+- Locks: locks, combincations (can be learn/hack), biometric (identify, authen, authou), pick persistent
   ⁃
 - Windiw and glass:
-  - standard plate plass, tempered glass (borke in small part), acrylic
+  - standard plate plass, tempered glass (broke in small part), acrylic
 material (yellow and scratch), polycarbonate 聚碳酸酯 windows (stop low powered rifle/bullet)   ⁃
-  - Laminate (stop borke in small part), solar film (stop overheat, refection), bomb blast film/ lacy surtains, wired glass (stop easy break), intrusion detection/sensor.
+  - Laminate (stop broke in small part), solar film (stop overheat, refection), bomb blast film/ lacy surtains, wired glass (stop easy break), intrusion detection/sensor.
 Crime prevention through environmental design (CPTED) Strategies for the built environment
 - Natural surveillance 盯梢 (monitor)
 - Natural territorial 属地的 reinforcemen
@@ -40842,12 +40842,12 @@ Natural surveillance 盯梢 (monitor)
 - increases the perceived risk of attempting deviant 不正常的actions
   - by improving visibility of potential offenders to the general public.
 - Natural surveillance occurs by
-  - designing the placement of physical features, activities and peopl to maximize visibility of the space and its users,
+  - designing the placement of physical features, activities and people to maximize visibility of the space and its users,
   - fostering 哺育 positive social interaction among legitimate users of private and public space.
 - Potential offenders
   - feel increased scrutiny 详细审查,
   - and thus inherently perceive increase risk
-  - extends the perceived lack of viable and covert escape routes.
+  - extends the perceived lack of viable and convert escape routes.
 - Solutions:
   - Environment design:
   - Design streets to increase pedestrian 步行者 and bicycle traffic
@@ -41351,7 +41351,7 @@ increasingly, hackers are using vulnerability scanners to find holes due to laps
 And the truth is that vulnerability scanners are automated tools also known as bots that are being used all over the internet looking for weaknesses to exploit.
 example:
 a known vulnerability in a certain version of
-WordPress. (Website to help bulid your custom
+WordPress. (Website to help build your custom
 website)
 Of course, WordPress will fix the gap and release
 a new version without the vulnerability. However, any websites that fail to update, will continue to have the vulnerability.
@@ -41842,8 +41842,8 @@ even slower.
 ◦ Public key, the slower protocol, is used to exchange the symmetric key (or shared secret), and then the communication uses the faster symmetric key protocol.
 ◦ This process is known as electronic key exchange.
 - RSA的加密和解密
-◦ 加密:cyphertext = plaintext^E次方 mod N (RSA加密)
-◦ 解密:plaintext = cyphertext^D次方 mod N (RSA解密) - RSA的算法 ◦ 求N:
+◦ 加密:ciphertext = plaintext^E次方 mod N (RSA加密)
+◦ 解密:plaintext = ciphertext^D次方 mod N (RSA解密) - RSA的算法 ◦ 求N:
 ▸ 选择两个大的质数p和q(p和q不能相差太大) ▸ P和q不能被attacker知道
 ▸ 计算乘积:N = pq
 ◦ L(Least Common Multiple)最小公倍数:
@@ -42005,7 +42005,7 @@ force attack. - work factor:
 a subjective measurement of the time and effort needed to perform operations.
 low work factor, the rate at which keys can be tested is high, meaning that larger keyspaces are needed.
 Work factor also plays a role in protecting systems such as password hashes, where having a higher work factor can be part of the security mechanism.
-Use of Algorithms/Protocols with Transport Encryption The movement of data across networks is referred to as transport. Encrypting transport mechanisms is one of the key elements in protecting data in motion. Data can be en- crypted independent of the transport mechanism, and then passed over open channels, or the channel itself can be encrypted.
+Use of Algorithms/Protocols with Transport Encryption The movement of data across networks is referred to as transport. Encrypting transport mechanisms is one of the key elements in protecting data in motion. Data can be en- encrypted independent of the transport mechanism, and then passed over open channels, or the channel itself can be encrypted.
 HTTPS
 Most web activity occurs using the Hypertext Transfer Protocol (HTTP), but this plain- text protocol is prone to interception. HTTPS uses the Secure Sockets Layer (SSL) or Transport Layer Security (TLS) to secure the channel before the transfer of information. HTTPS uses the standard TCP port 443 for TCP/IP communications rather than the standard port 80 used for HTTP. Early HTTPS implementations made use of the 40-bit RC4 encryption algorithm, but with the relaxation of export restrictions, most imple- mentations now use 128-bit encryption. The appropriate set of algorithms is chosen from cipher suites during the SSL/TLS protocol negotiation.
 SSL
@@ -42248,9 +42248,9 @@ a method for generating a sequence of numbers that approximates the properties o
 Middle square method:
 - seed 1234 - square 1522756 - 8digit 01522756
 - - middle four digit (new seed) 01522756 - square .....
-Hard to be always random, usally has patern.
+Hard to be always random, usually has pattern.
 The Linear Congruential Generator
-A desirable propery of a random sequence is that the numbers it generates are uniformly distributed.
+A desirable property of a random sequence is that the numbers it generates are uniformly distributed.
 One way to achieve this property is to use a method employed, for instance, by the java.util.Random class in Java, which is a linear congruential generator.
 In this PRNG, we start with a random number, x0, the seed, and generate the next number, xi+1, in a sequence, from the previous number, xi, according to the
 following formula:
@@ -42410,7 +42410,7 @@ Strengths:
   - Allows for parallel encryptions of the blocks of a plaintext
   - Can tolerate the loss or damage of a block Weakness:
   - Documents and images are not suitable for ECB encryption
-  - patters in the plaintext are repeated in the ciphertext:
+  - patterns in the plaintext are repeated in the ciphertext:
 ⁃
  Cipher Block Chaining (CBC) Mode
 Block Cipher, the previous ciphertext block is combined with the current plaintext block:
@@ -42463,7 +42463,7 @@ Strengths:
   - very simple
   - Allows for parallel encryptions of the blocks of a plaintext
   - Can tolerate the loss or damage of a block Weakness:
-  - Documents and images are not suitable for ECB encryption since patters in the plaintext are repeated in the ciphertext:
+  - Documents and images are not suitable for ECB encryption since patterns in the plaintext are repeated in the ciphertext:
 Cipher Block Chaining (CBC) Mode
 Block Cipher, the previous ciphertext block is combined with the current plaintext block:
 Encryption: each block plain text XOR with the block of ciphertext immediately preceding it before it is encrypted using the DES algorithm.
@@ -43791,7 +43791,7 @@ addresses that can also use the certificate.
   - api.CrucialExams.com,
   - IP 4.5.4.5 (all in a single cert).
 - X-509-compliant certificate:
-  - Exmaple: hardening a web server, which should allow a secure certificate-based session using the organization's PKI infrastructure. The web server should also utilize the latest security techniques and standards.
+  - Example: hardening a web server, which should allow a secure certificate-based session using the organization's PKI infrastructure. The web server should also utilize the latest security techniques and standards.
 - self-signed certificate:
   - not issued by a trusted CA.
   - Private CAs within an enterprise often create self-signed certificates.
@@ -44458,7 +44458,7 @@ Lisa’s certificate from a network location.
 The email app on Bart’s system decrypts the encrypted hash with Lisa’s public key.
   - If Lisa’s public key could not decrypt it.
   - error indicating a problem with the digital signature. The app calculates the hash on the received message.
-Theapp comparesthedecryptedhashwiththecalculated hash.
+Theapp comparesthedecryptedhashwith thecalculated hash.
   - If the calculated hash of the received message is the same as the encrypted hash of the digital signature, it validates several important checks:
   - Authentication: Lisa sent the message.
   - The public key - only Lisa has the private key.
