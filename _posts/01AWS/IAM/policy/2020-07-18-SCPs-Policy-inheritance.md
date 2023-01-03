@@ -119,7 +119,7 @@ When you attach SCPs to the organization root, OUs, or directly to accounts
 
 - If disable the SCP policy type on the organization root
   - all SCPs are automatically detached from all entities in the organization root.
-- If reenable SCPs policy type  on the organization root
+- If re-enable SCPs policy type  on the organization root
   - all the original attachments are lost
   - and all entities are reset to being attached to only the default `FullAWSAccess` SCP.
 
