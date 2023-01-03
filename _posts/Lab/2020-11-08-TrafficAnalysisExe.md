@@ -76,7 +76,7 @@ password: infected
 2016-09-20 -- Traffic analysis exercise - Halloween Super Costume Store!
 2016-08-20 -- Traffic analysis exercise - Plain brown wrapper.
 2016-07-07 -- Traffic analysis exercise - Email Roulette.
-2016-06-03 -- Traffic analysis exercise - Granny Hightower at Bob's Donut Shack.
+2016-06-03 -- Traffic analysis exercise - Granny Heightower at Bob's Donut Shack.
 2016-05-13 -- Traffic analysis exercise - No decent memes for security analysts.
 2016-04-16 -- Traffic analysis exercise - Playing detective.
 2016-03-30 -- Traffic analysis exercise - March madness.
