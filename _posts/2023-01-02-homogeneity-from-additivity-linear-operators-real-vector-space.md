@@ -52,7 +52,7 @@ $$\forall \: b \in \mathbb{Q} : \exists \: p \in \mathbb{Z}, q \in \mathbb{Z} \b
 
 Let us proceed to derive homogeneity from additivity for the special case $$c \in \mathbb{Q}$$ (however, we will still have $$\pmb{u} \in \mathbb{R}^m$$). Then, we will apply the result above to extend our observations to $$c \in \mathbb{R}$$.
 
-Suppose $$c \in \mathbb{Q} , \pmb{u} \in \mathbb{R}^m$$. Consider an operator $$T : \mathbb{R}^m \to \mathbb{R}^n$$ which obeys additivity i.e. property $$\left( 1 \right)$$. Let us express $$c$$ as $$c = \frac{p}{q} : p \in \mathbb{Z}, q \in \mathbb{Z} \backslash \left\{ 0 \right\}$$. The signature of $$c$$ can be encoded in either the numerator $$p$$, which, pedantically speaking, is preferred over $$q$$ as the domain of the former is the entirety of $$\mathbb{Z}$$. 
+Suppose $$c \in \mathbb{Q} , \pmb{u} \in \mathbb{R}^m$$. Consider a linear operator $$T : \mathbb{R}^m \to \mathbb{R}^n$$ which obeys additivity i.e. property $$\left( 1 \right)$$. Let us express $$c$$ as $$c = \frac{p}{q} : p \in \mathbb{Z}, q \in \mathbb{Z} \backslash \left\{ 0 \right\}$$. The signature of $$c$$ can be encoded in either the numerator $$p$$, which, pedantically speaking, is preferred over $$q$$ as the domain of the former is the entirety of $$\mathbb{Z}$$. 
 
 ## For $$c \in \mathbb{Z}$$
 
@@ -195,6 +195,6 @@ $$\forall \: c \in \mathbb{R} : \left( 1 \right) \implies \left( 2 \right)$$
 
 ## Summary
 
-To summarize the above approach, homogeneity of operators on vector spaces built on the base field $$\mathbb{R}$$, comes for free from their additivity. We realized this by using the construction of $$\mathbb{R}$$ from $$\mathbb{Q}$$ which is in turn constructed from $$\mathbb{Z}$$. 
+To summarize the above approach, homogeneity of linear operators on vector spaces built on the base field $$\mathbb{R}$$, comes for free from their additivity. We realized this by using the construction of $$\mathbb{R}$$ from $$\mathbb{Q}$$ which is in turn constructed from $$\mathbb{Z}$$. 
 
 The advantage of expressing reals in terms of integers is that integers can fundamentally be used for counting, which is implicitly applied in property $$\left( 1 \right)$$, additivity. Thus, this bridge from $$\left( 1 \right)$$ to $$\left( 2 \right)$$ allows us to logically proceed in the same direction.
