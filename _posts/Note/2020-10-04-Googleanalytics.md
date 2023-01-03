@@ -32,9 +32,9 @@ myo****site-291718
 3. 搜索栏中搜关键词 `analytic` 即可找到`Analytics API`，点击 `Enable`
 4. 开启 API 后页面会自动回到 Dashboard，根据 ⚠️ 信息提示点击 <kbd>Create credentials</kbd> 为 API 创建 credentials。
 5. 创建页面作如下操作：
-   1. findout what kind of credentials needed:
+   1. find out what kind of credentials needed:
       1. Which API are you using? `Google Analytics API`
-      2. Where will you be calling the API from? `Web brower(Javascript)`
+      2. Where will you be calling the API from? `Web browser(Javascript)`
       3. What data will you be accessing? `User data`
    2. Create an OAuth 2.0 client ID
       1. Client ID 自定义命名: `blog-oauth`
