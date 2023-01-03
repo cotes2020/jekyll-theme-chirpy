@@ -3553,7 +3553,7 @@ You need to consider _end-to-end_ flow of the request.
 
 You can generate a unique identifier for an operation (such as a UUID) and include it as a hidden form field in the client application, or calculate a hash of all the relevant form fields to derive the operation ID. If the web browser submits the POST request twice, the two requests will have the same operation ID. You can then pass that operation ID all the way through to the database and check that you only ever execute one operation with a given ID. You can then save those requests to be processed, uniquely identified by the operation ID.
 
-Is not enough to prevent a user from submitting a duplicate request if the first one times out. Solving the problem requires an end-to-end solution: a transaction indentifier that is passed all the way from the end-user client to the database.
+Is not enough to prevent a user from submitting a duplicate request if the first one times out. Solving the problem requires an end-to-end solution: a transaction identifier that is passed all the way from the end-user client to the database.
 
 Low-level reliability mechanisms such as those in TCP, work quite well, and so the remaining higher-level faults occur fairly rarely.
 
@@ -3590,11 +3590,11 @@ Equivalent correctness can be achieved with partitioned logs, and without an ato
 
 1. The request to transfer money from account A to account B is given a unique request ID by the client, and appended to a log partition based on the request ID.
 2. A stream processor reads the log of requests. For each request message it emits two messages to output streams: a debit instruction to the payer account A (partitioned by A), and a credit instruction to the payee account B (partitioned by B). The original request ID is included in those emitted messages.
-3. Further processors consume the streams of credit and debit instructions, deduplicate by request ID, and apply the chagnes to the account balances.
+3. Further processors consume the streams of credit and debit instructions, deduplicate by request ID, and apply the changes to the account balances.
 
 #### Timeliness and integrity
 
-Consumers of a log are asynchronous by design, so a sender does not wait until its message has been proccessed by consumers. However, it is possible for a client to wait for a message to appear on an output stream.
+Consumers of a log are asynchronous by design, so a sender does not wait until its message has been processed by consumers. However, it is possible for a client to wait for a message to appear on an output stream.
 
 _Consistency_ conflates two different requirements:
 * Timeliness: users observe the system in an up-to-date state.
@@ -3606,12 +3606,12 @@ Violations of timeless are "eventual consistency" whereas violations of integrit
 
 When processing event streams asynchronously, there is no guarantee of timeliness, unless you explicitly build consumers that wait for a message to arrive before returning. But integrity is in fact central to streaming systems.
 
-_Exactly-once_ or _effectively-once_ semantics is a mechanism for preserving integrity. Fault-tolerant message delivery and duplicate supression are important for maintaining the integrity of a data system in the face of faults.
+_Exactly-once_ or _effectively-once_ semantics is a mechanism for preserving integrity. Fault-tolerant message delivery and duplicate suppression are important for maintaining the integrity of a data system in the face of faults.
 
-Stream processing systems can preserve integrity without requireing distributed transactions and an atomic commit protocol, which means they can potentially achieve comparable correctness with much better performance and operational robustness. Integrity can be achieved through a combination of mechanisms:
+Stream processing systems can preserve integrity without requiring distributed transactions and an atomic commit protocol, which means they can potentially achieve comparable correctness with much better performance and operational robustness. Integrity can be achieved through a combination of mechanisms:
 * Representing the content of the write operation as a single message, this fits well with event-sourcing
 * Deriving all other state updates from that single message using deterministic derivation functions
-* Passing a client-generated request ID, enabling end-to-end duplicate supression and idempotence
+* Passing a client-generated request ID, enabling end-to-end duplicate suppression and idempotence
 * Making messages immutable and allowing derived data to be reprocessed from time to time
 
 In many businesses contexts, it is actually acceptable to temporarily violate a constraint and fix it up later apologising. The cost of the apology (money or reputation), it is often quite low.
@@ -3683,7 +3683,7 @@ Without understanding what happens to their data, users cannot give any meaningf
 
 For a user who does not consent to surveillance, the only real alternative is simply to not user the service. But this choice is not free either: if a service is so popular that it is "regarded by most people as essential for basic social participation", then it is not reasonable to expect people to opt out of this service. Especially when a service has network effects, there is a social cost to people choosing _not_ to use it.
 
-Declining to use a service due to its tracking of users is only an option for the small number of people who are priviledged enough to have the time and knowledge to understand its privacy policy, and who can affort to potentially miss out on social participation or professional opportunities that may have arisen if they ahd participated in the service. For people in a less priviledged position, there is no meaningful freedom of choice: surveillance becomes inescapable.
+Declining to use a service due to its tracking of users is only an option for the small number of people who are privileged enough to have the time and knowledge to understand its privacy policy, and who can afford to potentially miss out on social participation or professional opportunities that may have arisen if they ahd participated in the service. For people in a less privileged position, there is no meaningful freedom of choice: surveillance becomes inescapable.
 
 Having privacy does not mean keeping everything secret; it means having the freedom to choose which things to reveal to whom, what to make public, and what to keep secret.
 
