@@ -4,8 +4,8 @@ title: JavaScript with JSON
 date: 2020-07-16 11:11:11 -0400
 description:
 excerpt_separator:
-categories: [Web, JavaSriptNote]
-tags: [Web, JavaSriptNote]
+categories: [Web, JavaScriptNote]
+tags: [Web, JavaScriptNote]
 math: true
 # pin: true
 toc: true
