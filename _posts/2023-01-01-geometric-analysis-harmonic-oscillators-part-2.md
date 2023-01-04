@@ -142,7 +142,7 @@ $$
 \end{align}
 $$
 
-On integrating the above equation of motion, we get the solution $$\theta \left( t-t_0 \right) = \theta \left( t_0 \right) + \omega \left( t - t_0 \right)$$. Since the physical significance of $$\theta$$ is in its manifestation in the expression for $$x$$ through trigonometric functions, we can identify all $$\theta$$'s separated by integral periods, $$\displaystyle{ \theta \sim \theta + \frac{2 \pi n}{\omega} }$$. In other words, $$x \left( t \right)$$ returns to the same state after integral multiples of the time period $$\displaystyle{ = \frac{2 \pi}{\omega} }$$.
+On integrating the above equation of motion, we get the solution $$\theta \left( t-t_0 \right) = \theta \left( t_0 \right) + \omega \left( t - t_0 \right)$$. Since the physical significance of $$\theta$$ is in its manifestation in the expression for $$x$$ through trigonometric functions, we can identify all $$\theta$$'s separated by integral periods, $$\displaystyle{ \theta \sim \theta + \frac{2 \pi n}{\omega} }$$. In other words, $$x \left( t \right)$$ returns to the same state after integral multiples of the time period $$\displaystyle{ T = \frac{2 \pi}{\omega} }$$.
 
 To summarize, we showed that a pointlike harmonic oscillator (a system obeying Hooke's law) has a periodic evolution, simply by studying the symmetries of the equation of motion involved. We didn't need to solve the equation explicitly to predict the same, which is a win.
 
