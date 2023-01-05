@@ -86,13 +86,18 @@ You may want to preview the site contents before publishing, so just run it by:
 $ bundle exec jekyll s
 ```
 
-Or run the site on Docker with the following command:
+If you prefer to run in Docker, please add the following line to `Gemfile`{: .filepath}:
+
+```ruby
+gem "jekyll-sass-converter", "~> 2.0"
+```
+{: file='Gemfile' .nolineno }
+
+And then run the command in terminal:
 
 ```console
-$ docker run -it --rm \
-    --volume="$PWD:/srv/jekyll" \
-    -p 4000:4000 jekyll/jekyll \
-    jekyll serve
+$ docker run -it --rm --volume="$PWD:/srv/jekyll" \
+    -p 4000:4000 jekyll/jekyll jekyll serve
 ```
 
 After a while, the local service will be published at _<http://127.0.0.1:4000>_.
