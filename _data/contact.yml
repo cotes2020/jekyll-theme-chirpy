@@ -1,11 +1,7 @@
 #  The contact options.
--
-  type: github
-  icon: 'fab fa-github'
--
-  type: orcid
-  icon: 'fab fa-orcid'
-  url: https://orcid.org/0000-0001-9510-2066
+- type: mathstodon
+  icon: 'fab fa-mastodon'
+  url: 'https://mathstodon.xyz/@Booodaness'
 -
   type: discord
   icon: 'fab fa-discord'
@@ -18,6 +14,13 @@
   type: reddit
   icon: 'fab fa-reddit'
   url: 'https://www.reddit.com/user/Booodaness'
+-
+  type: github
+  icon: 'fab fa-github'
+-
+  type: orcid
+  icon: 'fab fa-orcid'
+  url: https://orcid.org/0000-0001-9510-2066
 -
   type: online-sequencer
   icon: 'fas fa-music'
