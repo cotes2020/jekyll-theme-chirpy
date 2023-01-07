@@ -14,36 +14,36 @@ lang: en
 
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Seoul
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: 승우의 개발 일기                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: IT Diary :)                          # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  IT, Programming Study
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://ChoiSeungWoo98.github.io'
 
 github:
-  username: github_username             # change to your github username
+  username: ChoiSeungWoo98                    # change to your github username
 
-twitter:
-  username: twitter_username            # change to your twitter username
+instagram:
+  username: instagram__clo.or                # change to your twitter usernamee
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com             # change to your email address
+  name: developer_SeungWoo
+  email: developer_seung_woo@naver.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://www.instagram.com/_clo.or/           # change to your instagram homepage
+    - https://github.com/ChoiSeungWoo98       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -81,7 +81,7 @@ theme_mode:   # [light|dark]
 img_cdn: 'https://chirpy-img.netlify.app'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/commons/avatar.jpg'
+avatar: '/assets/img/profile/selfie.jpg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
