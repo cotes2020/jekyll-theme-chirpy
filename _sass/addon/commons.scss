@@ -703,7 +703,8 @@ $sidebar-display: "sidebar-display";
   overflow-y: auto;
   width: $sidebar-width;
   z-index: 99;
-  background: url('assets/img/background/snow_background.jpg');
+  background: url('/assets/img/background/밤하늘.jpg');
+  background-size: cover;
   //background: var(--sidebar-bg);
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -797,7 +798,7 @@ $sidebar-display: "sidebar-display";
 
     &.active {
       .nav-link {
-        color: var(--sidebar-active-color);
+        //color: var(--sidebar-active-color);
       }
     }
 

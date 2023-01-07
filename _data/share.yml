@@ -3,9 +3,9 @@
 
 platforms:
   -
-    type: Twitter
-    icon: "fab fa-twitter"
-    link: "https://twitter.com/intent/tweet?text=TITLE&url=URL"
+    type: Instagram
+    icon: "fab fa-instagram"
+    link: "https://instagram.com/intent/tweet?text=TITLE&url=URL"
   -
     type: Facebook
     icon: "fab fa-facebook-square"

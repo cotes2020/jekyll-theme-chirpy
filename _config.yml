@@ -33,7 +33,7 @@ github:
   username: ChoiSeungWoo98                    # change to your github username
 
 instagram:
-  username: instagram__clo.or                # change to your twitter usernamee
+  username: _clo.or                # change to your instagram usernamee
 
 social:
   # Change to your full name.
@@ -42,7 +42,7 @@ social:
   email: developer_seung_woo@naver.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://www.instagram.com/_clo.or/           # change to your instagram homepage
+    # - https://www.instagram.com/_clo.or/           # change to your instagram homepage
     - https://github.com/ChoiSeungWoo98       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -78,10 +78,10 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://chirpy-img.netlify.app'
+img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/assets/img/profile/selfie.jpg'
+avatar: '/assets/img/profile/ski_resort_zoom_in.jpg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
