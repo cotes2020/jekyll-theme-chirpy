@@ -1,4 +1,5 @@
 # hidden files
+Gemfile.lock
 .*
 !.git*
 !.editorconfig
