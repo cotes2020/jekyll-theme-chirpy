@@ -86,7 +86,6 @@ img {
 
   &[data-src] {
     &.lazyloaded {
-      z-index: 1;
       -webkit-animation: fade-in 0.4s ease-in;
       animation: fade-in 0.4s ease-in;
     }
