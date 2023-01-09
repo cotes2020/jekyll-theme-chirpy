@@ -246,7 +246,7 @@ The output will be:
 
 ### Preview Image
 
-If you want to add an image at the top of the article, please provide an image with a resolution of `1200 x 630`. Please note that if the image aspect ratio does not meet `1.91 : 1`, the image will be scaled and cropped.
+If you want to add an image at the top of the post, please provide an image with a resolution of `1200 x 630`. Please note that if the image aspect ratio does not meet `1.91 : 1`, the image will be scaled and cropped.
 
 Knowing these prerequisites, you can start setting the image's attribute:
 
@@ -258,7 +258,7 @@ image:
 ---
 ```
 
-Starting from _Chirpy v5.0.0_, the attributes `height` and `width` can be abbreviated: `height` → `h`, `width` → `w`. In addition, the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the  attribute `path` only needs the image file name.
+Note that the [`img_path`](#image-path) can also be passed to the preview image, that is, when it has been set, the  attribute `path` only needs the image file name.
 
 For simple use, you can also just use `image` to define the path.
 
