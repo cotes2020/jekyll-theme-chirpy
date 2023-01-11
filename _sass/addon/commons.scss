@@ -841,7 +841,7 @@ $sidebar-display: "sidebar-display";
 
     @for $i from 1 through $tab-count {
       $offset: $tab-count - $i;
-      $top: -$offset * $tab-height + calc(($tab-height - $tab-cursor-height) / 2);
+      $top: calc(-#{$offset} * #{$tab-height} + (#{$tab-height} - #{$tab-cursor-height}) / 2);
 
       @if $i < $tab-count {
         > li.active:nth-child(#{$i}),
