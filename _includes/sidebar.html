@@ -37,23 +37,28 @@
         <span>{{ site.data.locales[site.lang].tabs.home | upcase }}</span>
       </a>
     </li>
-    <!-- the real tabs -->
-    {% for tab in site.tabs %}
-      {% if tab != 'about' and site.avatar %}
-      <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-        <a href="{{ tab.url | relative_url }}" class="nav-link">
-          <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
-          {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
-          <span>{{ site.data.locales[site.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-        </a>
-      </li> <!-- .nav-item -->
-      {% endif %}
-    {% endfor %}
-
+    <li class="nav-item">
+      <a href="{{ "/categories" | relative_url }}" class="nav-link">
+        <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> 
+        <span>CATEGORIES</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ "/tags" | relative_url }}" class="nav-link">
+        <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> 
+        <span>TAGS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ "/archives" | relative_url }}" class="nav-link">
+        <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> 
+        <span>ARCHIVES</span>
+      </a>
+    </li>
     <li class="nav-item">
       <a href="{{ "https://doshidhruv.com" | relative_url }}" class="nav-link">
         <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i>
-        <span>{{ site.data.locales[lang].tabs.about | upcase }}About Me</span>
+        <span>ABOUT ME</span>
       </a>
     </li>
 
