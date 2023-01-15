@@ -3,75 +3,75 @@
 # ----- Commons label -----
 
 layout:
-  post: Post
-  category: Category
-  tag: Tag
+  post: منشور
+  category: فئة
+  tag: وسم
 
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
-  home: Home
-  categories: Categories
-  tags: Tags
-  archives: Archives
-  about: About
+  home: الرئيسية
+  categories: الفئات
+  tags: السوم
+  archives: الأرشيف
+  about: حول
 
 # the text displayed in the search bar & search results
 search:
-  hint: search
-  cancel: Cancel
-  no_results: Oops! No results found.
+  hint: بحث
+  cancel: إلغاء
+  no_results: نأسف! لا يوجد نتائج.
 
 panel:
-  lastmod: Recently Updated
-  trending_tags: Trending Tags
-  toc: Contents
+  lastmod: المحدثة مؤخرا
+  trending_tags: الوسوم الشائعة
+  toc: محتويات
 
 copyright:
   # Shown at the bottom of the post
   license:
-    template: This post is licensed under :LICENSE_NAME by the author.
+    template: هذا المنشور تحت ترخيص :LICENSE_NAME بواسطة المؤلف.
     name: CC BY 4.0
     link: https://creativecommons.org/licenses/by/4.0/
 
   # Displayed in the footer
-  brief: Some rights reserved.
+  brief: بعض الحقوق محفوظة.
   verbose: >-
-    Except where otherwise noted, the blog posts on this site are licensed
-    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+    ما لم يذكر خلاف ذلك ، يتم ترخيص منشورات المدونة على هذا الموقع
+    بموجب ترخيص Creative Commons Attribution 4.0 International (CC BY 4.0) من قبل المؤلف.
 
-meta: Using the :PLATFORM theme :THEME.
+meta: باستخدام :PLATFORM السمة :THEME.
 
 not_found:
-  statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
+  statment: عذرا, الرابط التالي غير صالح أو انه يشير إلى صفحة غير موجودة.
 
 notification:
-  update_found: A new version of content is available.
-  update: Update
+  update_found: يتوفر اصدار جديد للمحتوى.
+  update: تحديث
 
 # ----- Posts related labels -----
 
 post:
-  written_by: By
-  posted: Posted
-  updated: Updated
-  words: words
-  pageview_measure: views
+  written_by: بواسطة
+  posted: نشّر
+  updated: حدّث
+  words: كلمات
+  pageview_measure: مشاهدات
   read_time:
-    unit: min
-    prompt: read
-  relate_posts: Further Reading
-  share: Share
+    unit: دقيقة
+    prompt: قراءة
+  relate_posts: إقرأ المزيد
+  share: شارك
   button:
-    next: Newer
-    previous: Older
+    next: الأجدد
+    previous: الأقدم
     copy_code:
-      succeed: Copied!
+      succeed: تم النسخ!
     share_link:
-      title: Copy link
-      succeed: Link copied successfully!
+      title: أنسخ الرابط
+      succeed: تم نسخ الرابط بنجاح!
   # pinned prompt of posts list on homepage
-  pin_prompt: Pinned
+  pin_prompt: مثبت
 
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
@@ -86,8 +86,8 @@ df:
 # categories page
 categories:
   category_measure:
-    singular: category
-    plural: categories
+    singular: فئة
+    plural: فئات
   post_measure:
-    singular: post
-    plural: posts
+    singular: منشور
+    plural: منشورات

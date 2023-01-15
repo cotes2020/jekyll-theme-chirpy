@@ -12,7 +12,7 @@ tabs:
   # format: <filename_without_extension>: <value>
   home: الرئيسية
   categories: الفئات
-  tags: السوم
+  tags: الوسوم
   archives: الأرشيف
   about: حول
 
