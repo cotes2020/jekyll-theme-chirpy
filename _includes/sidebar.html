@@ -65,10 +65,10 @@
 
     {% for entry in site.data.contact %}
       {% capture url %}
-        {%- if entry.type == 'linkedin' -%}
-          https://linkedin.com/in/{{ site.linkedin.username }}
         {%- if entry.type == 'github' -%}
           https://github.com/{{ site.github.username }}
+        {%-elsif entry.type == 'linkedin' -%}
+          https://linkedin.com/{{ site.linkedin.username }}
         {%- elsif entry.type == 'twitter' -%}
           https://twitter.com/{{ site.twitter.username }}
         {%- elsif entry.type == 'email' -%}
