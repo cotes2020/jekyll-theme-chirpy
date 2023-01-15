@@ -44,11 +44,8 @@ social:
   name: Dhruv Doshi
   email: dhruvdoshi25071999@gmail.com             # change to your email address
   links:
-    # The first element serves as the copyright owner's link
     - https://twitter.com/dhruv25071999      # change to your twitter homepage
     - https://github.com/DhruvDoshi      # change to your github homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
     - https://www.linkedin.com/in/dhruvdoshi25071999
 
 google_site_verification:               # fill in to your verification string
