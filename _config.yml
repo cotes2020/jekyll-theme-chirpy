@@ -14,39 +14,42 @@ lang: en
 
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: America/Halifax
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: Dhruv Doshi                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Blogs on Blockchain and Artificial Intelligence   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  Blogs written by Dhruv Doshi on Blockchian, Artificiall Intelligence and Machine Learning. More about Crypto and cryptocurrencies.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
 
 github:
-  username: github_username             # change to your github username
+  username: DhruvDoshi             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: dhruv25071999            # change to your twitter username
+
+linkedin:
+  username: in/dhruvdoshi25071999            # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com             # change to your email address
+  name: Dhruv Doshi
+  email: dhruvdoshi25071999@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/dhruv25071999      # change to your twitter homepage
+    - https://github.com/DhruvDoshi      # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/dhruvdoshi25071999
 
 google_site_verification:               # fill in to your verification string
 
@@ -71,40 +74,40 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode:  dark
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://chirpy-img.netlify.app'
+img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/commons/avatar.jpg'
+avatar: '/Avatar.jpg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
 
 comments:
-  active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
-  # The active options are as follows:
-  disqus:
-    shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-  # utterances settings › https://utteranc.es/
+  active: utterances
+
   utterances:
-    repo:         # <gh-username>/<repo>
-    issue_term:   # < url | pathname | title | ...>
+    repo: DhruvDoshi/blog-dev       # <gh-username>/<repo>
+    issue_term: 'title'  # < url | pathname | title | ...>
+
+
+  # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  # The active options are as follows:
   # Giscus options › https://giscus.app
-  giscus:
-    repo:              # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
-    mapping:           # optional, default to 'pathname'
-    input_position:    # optional, default to 'bottom'
-    lang:              # optional, default to the value of `site.lang`
-    reactions_enabled: # optional, default to the value of `1`
+  # giscus:
+  #   repo: DhruvDoshi/blog-dev
+  #   repo_id: R_kgDOHTA7GA
+  #   category: General
+  #   category_id: DIC_kwDOHTA7GM4CPdYS
+  #   mapping: url
+  #   input_position:   # optional, default to 'bottom'
+  #   lang:             # optional, default to the value of `site.lang`
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
