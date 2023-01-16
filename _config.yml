@@ -71,7 +71,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:  dark #   [light|dark]
+theme_mode:  light #   [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -81,7 +81,7 @@ theme_mode:  dark #   [light|dark]
 img_cdn: #'https://chirpy-img.netlify.app'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'assets/img/profile.jpeg'
+avatar: #'assets/img/profile.jpeg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
