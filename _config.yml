@@ -10,7 +10,7 @@ baseurl: ''
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: ko
+lang: en
 
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
@@ -21,10 +21,10 @@ timezone: Asia/Seoul
 
 title: push                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: #A text-focused Jekyll theme   # it will display as the sub-title
 
-description: >-                        # used by seo meta and the atom feed
-  #A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+description: #>-                        # used by seo meta and the atom feed
+  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://pushpull7381.github.io/'
@@ -39,7 +39,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: pushpull7381
-  email: pushpull7381@gmail.com             # change to your email address
+  email: example@domain.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username      # change to your twitter homepage
@@ -71,7 +71,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:  light #   [light|dark]
+theme_mode:   # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -81,7 +81,7 @@ theme_mode:  light #   [light|dark]
 img_cdn: #'https://chirpy-img.netlify.app'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: #'assets/img/profile.jpeg'
+avatar: '/commons/avatar.jpg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
