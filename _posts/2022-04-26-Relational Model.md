@@ -1,9 +1,10 @@
 ---
-layout: post
+#layout: post 
 title: "Relational Model"
 excerpt: "Database 수업 정리(1)"
 
-categories: [Database]
+categories: 
+- [Database]
 tags:
 - [Database, SQL]
 use_math: true
