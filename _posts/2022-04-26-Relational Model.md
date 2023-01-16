@@ -1,18 +1,13 @@
 ---
-#layout: post 
+layout: post 
 title: "Relational Model"
 excerpt: "Database 수업 정리(1)"
 
-categories: 
-- [Database]
-tags:
-- [Database, SQL]
+categories: [Database]
+tags: [Database, SQL]
 use_math: true
 
 #permalink: /Database/Relational-Model/
-
-toc: true
-toc_sticky: true
 
 date: 2022-04-25
 last_modified_at: 2022-04-25
