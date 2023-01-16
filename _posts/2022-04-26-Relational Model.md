@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Relational Model"
 excerpt: "Database 수업 정리(1)"
 
