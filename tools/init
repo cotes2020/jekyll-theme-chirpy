@@ -11,7 +11,7 @@ TEMP_SUFFIX="to-delete" #  temporary file suffixes that make `sed -i` compatible
 help() {
   echo "Usage:"
   echo
-  echo "   bash /path/to/init.sh [options]"
+  echo "   bash /path/to/init [options]"
   echo
   echo "Options:"
   echo "     --no-gh              Do not deploy to Github."

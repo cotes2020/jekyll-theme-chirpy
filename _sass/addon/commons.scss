@@ -86,7 +86,6 @@ img {
 
   &[data-src] {
     &.lazyloaded {
-      z-index: 1;
       -webkit-animation: fade-in 0.4s ease-in;
       animation: fade-in 0.4s ease-in;
     }
@@ -842,7 +841,7 @@ $sidebar-display: "sidebar-display";
 
     @for $i from 1 through $tab-count {
       $offset: $tab-count - $i;
-      $top: -$offset * $tab-height + calc(($tab-height - $tab-cursor-height) / 2);
+      $top: calc(-#{$offset} * #{$tab-height} + (#{$tab-height} - #{$tab-cursor-height}) / 2);
 
       @if $i < $tab-count {
         > li.active:nth-child(#{$i}),
