@@ -199,9 +199,9 @@ jekyll-archives:
     tag: /tags/:name/
     category: /categories/:name/
 
-# Math equation
-markdown: kramdown
-highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
+# # Math equation
+# markdown: kramdown
+# highlighter: rouge
+# lsi: false
+# excerpt_separator: "\n\n"
+# incremental: false
