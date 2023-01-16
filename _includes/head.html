@@ -112,4 +112,12 @@
   {% unless site.theme_mode %}
     {% include mode-toggle.html %}
   {% endunless %}
+
+  {% if page.use_math %}
+    {% include mathjax_support.html %}
+  {% endif %}
+
+
 </head>
+
+
