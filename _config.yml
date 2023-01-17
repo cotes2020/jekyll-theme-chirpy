@@ -71,7 +71,11 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: dark
+theme_mode:
+
+# Anything following will not be included in post excerpts
+excerpt_separator: <!--more-->
+
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
