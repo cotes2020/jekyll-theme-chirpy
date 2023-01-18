@@ -8,11 +8,11 @@ Ken Sobieski started developing spaghetti in BASIC on a RSTS machine from 1983 -
 
 Somewhere between BASIC and C# he has been a security guard, bartender, production and inventory control specialist, and longshoreman. He's also done tour support for a band, as well as spending 9 years as a technology consultant doing everything from pulling cable --> Windows network administration --> Web development.
 
-Originally from Long Beach, CA, he relocated to the most amazing city in the world, Detroit, MI in 2011. Though firmly settled in Detroit, he is still a long-time fan of the L.A. Kings, Lakers, Dodgers, Angels, and Galaxy(but will happily cheer on the Wings, Tigers, and Pistons as long as they aren't playing a team from L.A.).
+Originally from Long Beach, CA, he relocated to the most amazing city in the world, Detroit, MI in 2011. Though firmly settled in Detroit, he is still a long-time fan of the L.A. Kings, Lakers, Dodgers, Angels, and Galaxy (but will happily cheer on the Wings, Tigers, and Pistons as long as they aren't playing a team from L.A.).
 
 Now that the Raiders have moved to Las Vegas, he is officially a Lions fan.
 
-*Self. Documenting.* is a place to hold himself accountable to reading the stuff he bookmarks and adding rants, pontifications, the occasional *well actually*, and even sometimes some useful thoughts.
+*Self. Documenting.* is a place to hold himself accountable to reading the stuff he bookmarks while adding rants, pontifications, the occasional *well actually*, and even sometimes some useful thoughts.
 
 > I like clean code 'cause it cannot lie.
 > ~ [Steven A. Lowe](https://www.linkedin.com/in/nov8r)
