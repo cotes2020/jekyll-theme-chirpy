@@ -15,4 +15,4 @@ Now that the Raiders have moved to Las Vegas, he is officially a Lions fan.
 *Self. Documenting.* is a place to hold himself accountable to reading the stuff he bookmarks and adding rants, pontifications, the occasional *well actually*, and even sometimes some useful thoughts.
 
 > I like clean code 'cause it cannot lie.
-> ~ [Steven A. Lowe](http://object-mechanics.com/author/steven-a-lowe/)
+> ~ [Steven A. Lowe](https://www.linkedin.com/in/nov8r)
