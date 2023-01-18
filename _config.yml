@@ -19,7 +19,7 @@ timezone: America/Detroit
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: SobiWan.Dev                          # the main title
+title: Self. Documenting.                          # the main title
 
 tagline: You don't have to read it, but you just might learn something.   # it will display as the sub-title
 
@@ -27,7 +27,7 @@ description: >-                        # used by seo meta and the atom feed
   Senior Software Engineer primarily developing midware systems in C#. Originally from Long Beach, CA and now firmly rooted in the greatest comeback story of all-time, Detroit, MI.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: https://www.sobiwan.dev/
+url: https://www.selfdocumenting.dev/
 
 github:
   username: Sobi-WanKenobi             # change to your github username
@@ -39,7 +39,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Ken Sobieski
-  email: Ken@SobiWan.Dev             # change to your email address
+  email: Ken@selfdocumenting.Dev             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     # - https://twitter.com/username      # change to your twitter homepage
@@ -189,7 +189,7 @@ exclude:
   - tools
   - README.md
   - CHANGELOG.md
-  - LICENSE
+  - q
   - gulpfile.js
   - node_modules
   - package*.json
