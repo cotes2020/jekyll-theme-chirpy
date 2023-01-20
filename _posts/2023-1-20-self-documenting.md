@@ -13,8 +13,6 @@ You don't have to read it, but you just might learn something.
 
 !["Caring for myself is not self-indulgence, it is self-preservation, and that is an act of political warfare. ~Audre Lorde"](../../../assets/img/self-documenting/quote-caring-for-myself-is-not-self-indulgence-it-is-self-preservation-and-that-is-an-act-audre-lorde-45-67-08.jpg){: width="500" height="235" .left-no-float }
 
-(https://www.azquotes.com/quote/456708)
-
 ## Prime
 
 ### [What does reading on screens do to our brains?](https://www.bbc.co.uk/ideas/videos/what-does-reading-on-screens-do-to-our-brains/p09xx6qw)
@@ -99,3 +97,5 @@ If you are trying to learn something new, some variability may help, but start s
 If you lead people formally, you may really want feedback from your direct reports, but how do you convince people whose fate is in your hands to be honest with you to help you grow? How about convincing those who are part of a culture that sees this as taboo? Some good stuff here that smacks of **Radical Candor** with a bonus nod to the *[Conscious competence theory of learning a new skill](https://en.wikipedia.org/wiki/Four_stages_of_competence)*.
 
 [Return to Top](#leading-thought)
+
+[Image Source](https://www.azquotes.com/quote/456708)
