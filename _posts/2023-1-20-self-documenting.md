@@ -11,7 +11,9 @@ You don't have to read it, but you just might learn something.
 
 ## Leading Thought
 
-!["Caring for myself is not self-indulgence, it is self-preservation, and that is an act of political warfare. ~Audre Lorde"](../../../assets/img/self-documenting/quote-caring-for-myself-is-not-self-indulgence-it-is-self-preservation-and-that-is-an-act-audre-lorde-45-67-08.jpg){: width="500" height="235" .left-no-float }(https://www.azquotes.com/quote/456708)
+!["Caring for myself is not self-indulgence, it is self-preservation, and that is an act of political warfare. ~Audre Lorde"](../../../assets/img/self-documenting/quote-caring-for-myself-is-not-self-indulgence-it-is-self-preservation-and-that-is-an-act-audre-lorde-45-67-08.jpg){: width="500" height="235" .left-no-float }
+
+(https://www.azquotes.com/quote/456708)
 
 ## Prime
 
