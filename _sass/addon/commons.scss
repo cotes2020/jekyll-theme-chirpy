@@ -407,7 +407,7 @@ i { /* fontawesome icons */
   p {
     > img[data-src],
     > a.popup {
-      &:not(.normal):not(.left):not(.right) {
+      &:not(.normal):not(.left):not(.left-no-float):not(.right) {
         @include align-center;
       }
     }
@@ -666,6 +666,10 @@ i { /* fontawesome icons */
 
 .left {
   float: left;
+  margin: 0.75rem 1rem 1rem 0 !important;
+}
+
+.left-no-float {
   margin: 0.75rem 1rem 1rem 0 !important;
 }
 
