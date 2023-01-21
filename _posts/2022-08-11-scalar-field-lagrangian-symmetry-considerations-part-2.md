@@ -96,7 +96,7 @@ The intuition for the last equation has been elaborated in [Demystifying the Def
 
 Thus, from the above discussion, the full Lagrangian for complex scalar fields (with gauge scalar potential terms) is,
 
-$$\mathcal{L} = \frac{1}{2} D_\mu \bar{\phi} D^\mu \phi - \frac{1}{2} m^2 \bar{\phi} \phi - \sum_{n=2}^\infty \frac{1}{n!} g_n \left( \bar{\phi} \phi \right)^{2n}$$
+$$\mathcal{L} = \frac{1}{2} D_\mu \bar{\phi} D^\mu \phi - \frac{1}{2} m^2 \bar{\phi} \phi - \sum_{n=2}^\infty \frac{1}{n!} g_n \left( \bar{\phi} \phi \right)^n$$
 
 ## Conclusion
 
