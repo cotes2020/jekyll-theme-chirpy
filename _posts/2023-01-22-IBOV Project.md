@@ -108,7 +108,6 @@ ggplot(base,aes(x = data,y = ultimo))+
 
 ```
 ## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
-## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
 ```
 
 ```
@@ -152,8 +151,8 @@ lr_result %>% collect_metrics()
 ## # A tibble: 2 × 4
 ##   .metric  .estimator .estimate .config     
 ##   <chr>    <chr>          <dbl> <chr>       
-## 1 accuracy binary         0.822 Preprocesso…
-## 2 roc_auc  binary         0.906 Preprocesso…
+## 1 accuracy binary         0.890 Preprocesso…
+## 2 roc_auc  binary         0.957 Preprocesso…
 ```
 
 ```r
@@ -161,7 +160,7 @@ lr_result %>% collect_metrics()
 lr_result %>% unnest(.predictions) %>% conf_mat(truth = meta, estimate = .pred_class) %>% autoplot(type='heatmap')
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
 
 ```r
 # Salvando modelo Final ---------------------------------------------------
@@ -259,7 +258,7 @@ gauge(value = resultado_valor,label = resultado_label, min = 0, max = 100, symbo
 })
 ```
 
-<!--html_preserve--><div class="gauge html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="out5ce653eebbd5146a" style="width:100%;height:200px;"></div><!--/html_preserve-->
+<!--html_preserve--><div class="gauge html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="outbef211af7c61cd7e" style="width:100%;height:200px;"></div><!--/html_preserve-->
 
 ### Concentração Dos Dados
 
@@ -284,7 +283,7 @@ p1 / p2
 })
 ```
 
-<!--html_preserve--><div class="shiny-plot-output html-fill-item" id="out29e5caf6e6b510b5" style="width:100%;height:400px;"></div><!--/html_preserve-->
+<!--html_preserve--><div class="shiny-plot-output html-fill-item" id="outde96ecc69439d376" style="width:100%;height:400px;"></div><!--/html_preserve-->
 
 Row {data-height=700}
 -----------------------------------------------------------------------
@@ -315,7 +314,7 @@ renderPlotly({
   })
 ```
 
-<!--html_preserve--><div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="out48adb96981250d25" style="width:100%;height:400px;"></div><!--/html_preserve-->
+<!--html_preserve--><div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="out5a713328c4b33554" style="width:100%;height:400px;"></div><!--/html_preserve-->
 
 ### Previsão com Regressão Linear
 
@@ -328,5 +327,5 @@ renderPlotly({
 })
 ```
 
-<!--html_preserve--><div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="out7916ad5cdf115093" style="width:100%;height:400px;"></div><!--/html_preserve-->
+<!--html_preserve--><div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="outa9d1abb694ad0c89" style="width:100%;height:400px;"></div><!--/html_preserve-->
 
