@@ -1,15 +1,9 @@
 ---
-title: "Series Temporais"
+title: "Series"
 author: "Ramon Roldan"
-date: "2022-06-29"
+date: "2022-06-30"
 categories: [Data Science, Tydeverse]
 tags: [Machine Learning, Tydeverse, Times Series, IBOV, Data Science, ETL]
-output:
-  md_document:
-    variant: gfm
-    preserve_yaml: TRUE
-knit: (function(inputFile, encoding) {
-  rmarkdown::render(inputFile, encoding = encoding, output_dir = "/home/ramon_de_lara/Ramon/roldanramon.github.io/_posts") })
 ---
 
 ## Contexto
@@ -118,7 +112,7 @@ downloadHandler(
     })
 ```
 
-<!--html_preserve--><a id="out4e62c9f1c1f9eafb" class="btn btn-default shiny-download-link " href="" target="_blank" download>
+<!--html_preserve--><a id="outd0a715c06b1bd6f5" class="btn btn-default shiny-download-link " href="" target="_blank" download>
 <i class="fas fa-download" role="presentation" aria-label="download icon"></i>
 Download
 </a><!--/html_preserve-->
@@ -149,7 +143,7 @@ gauge(value = resultado_valor,label = resultado_label, min = 0, max = 100, symbo
 })
 ```
 
-<!--html_preserve--><div class="gauge html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="out45733fffc40ccbf7" style="width:100%;height:200px;"></div><!--/html_preserve-->
+<!--html_preserve--><div class="gauge html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="out3f93f9728590f808" style="width:100%;height:200px;"></div><!--/html_preserve-->
 
 ### Concentração Dos Dados
 
@@ -174,7 +168,7 @@ p1 / p2
 })
 ```
 
-<!--html_preserve--><div class="shiny-plot-output html-fill-item" id="outca793c5f9b12b8f8" style="width:100%;height:400px;"></div><!--/html_preserve-->
+<!--html_preserve--><div class="shiny-plot-output html-fill-item" id="out344bb5fb4df0553e" style="width:100%;height:400px;"></div><!--/html_preserve-->
 
 Row {data-height=700}
 -----------------------------------------------------------------------
@@ -205,7 +199,7 @@ renderPlotly({
   })
 ```
 
-<!--html_preserve--><div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="out58a368aabc6fe928" style="width:100%;height:400px;"></div><!--/html_preserve-->
+<!--html_preserve--><div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="outc99ac74104849e9e" style="width:100%;height:400px;"></div><!--/html_preserve-->
 
 ### Previsão com Regressão Linear
 
@@ -218,5 +212,5 @@ renderPlotly({
 })
 ```
 
-<!--html_preserve--><div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="out017ca85a3922c102" style="width:100%;height:400px;"></div><!--/html_preserve-->
+<!--html_preserve--><div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="out4647ce2e8065aca4" style="width:100%;height:400px;"></div><!--/html_preserve-->
 
