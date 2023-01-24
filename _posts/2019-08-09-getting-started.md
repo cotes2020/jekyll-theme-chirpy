@@ -1,7 +1,7 @@
 ---
-title: Getting Started
-author: cotes
-date: 2019-08-09 20:55:00 +0800
+title: Precious Machine
+author: lazy29t
+date: 2023-01-09 20:55:00 +0800
 categories: [Blogging, Tutorial]
 tags: [getting started]
 pin: true
@@ -31,7 +31,7 @@ Create a new repository from the [**Chirpy Starter**][use-starter] and name it `
 And then execute:
 
 ```console
-$ bash tools/init
+$ ping -c 1 10.10.11.189
 ```
 
 > If you don't want to deploy your site on GitHub Pages, append option `--no-gh` at the end of the above command.
