@@ -29,10 +29,10 @@ Para organização do projeto foi utilizada a ferramenta KANBAN, visando framewo
 O resultado final esta disponível no dashboard que pode ser acessado em:
 https://sfefqj-ramon-roldan.shinyapps.io/Financial_Market_Analysis/
 
-
 ## Versionar trabalho no GitHub
 
-![Repositório criado para ajudar no versionamento do projeto](/roldanramon.github.io/assets/img/github versionamento.png)
+![Repositório criado para ajudar no versionamento do projeto](https://github.com/RoldanRamon/roldanramon.github.io/blob/main/assets/img/github_versionamento.png)
+
 
 ## Utilizar a ferramenta Kanban para organizar projeto no formato de metodologia ágil
 ![Kanban no Github para acompanhar evolução](roldanramon.github.io/assets/img/IBOV_PROJECT.png)
