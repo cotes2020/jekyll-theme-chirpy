@@ -42,7 +42,7 @@ https://sfefqj-ramon-roldan.shinyapps.io/Financial_Market_Analysis/
 
 Para construir uma primeira versão do modelo foram usados os dados históricos do índice Ibovespa disponíbilizados pelo jornal investing.
 
-![Investing PrintScreeng](https://github.com/RoldanRamon/roldanramon.github.io/blob/master/assets/img/ibov investing.png)
+![Investing PrintScreeng](https://RoldanRamon.github.io/roldanramon.github.io/assets/img/ibov_investing.png)
 
 
 ```r
