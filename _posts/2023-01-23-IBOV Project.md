@@ -65,35 +65,9 @@ base <- readr::read_csv('Futuros Ibovespa - Dados Históricos.csv') %>% janitor:
   dplyr::mutate(data = lubridate::dmy(data),
          meta = dplyr::if_else(var_percent > 0,1,0) %>% forcats::as_factor()) %>% 
   dplyr::arrange(data)
-```
-
-```
-## Rows: 361 Columns: 7
-## ── Column specification ────────────────────
-## Delimiter: ","
-## chr (3): Data, Vol., Var%
-## dbl (4): Último, Abertura, Máxima, Mínima
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
+  
 #Avaliando tamanho da base e tipo primitivo dos dados
 dplyr::glimpse(base)  
-```
-
-```
-## Rows: 361
-## Columns: 8
-## $ data        [3m[38;5;246m<date>[39m[23m 2021-01-04, 2021-01-0…
-## $ ultimo      [3m[38;5;246m<dbl>[39m[23m 118.859, 119.393, 119.…
-## $ abertura    [3m[38;5;246m<dbl>[39m[23m 120.320, 119.000, 119.…
-## $ maxima      [3m[38;5;246m<dbl>[39m[23m 120.575, 119.955, 121.…
-## $ minima      [3m[38;5;246m<dbl>[39m[23m 118.140, 116.770, 118.…
-## $ vol         [3m[38;5;246m<chr>[39m[23m "162,34K", "179,66K", …
-## $ var_percent [3m[38;5;246m<chr>[39m[23m "-0,31%", "0,45%", "-0…
-## $ meta        [3m[38;5;246m<fct>[39m[23m 0, 1, 0, 1, 1, 0, 1, 0…
 ```
 Avaliando o dataframe notamos que as dimensões são 8 colunas e 361 linhas.
 
@@ -124,7 +98,7 @@ Design: Para construção desse gráfico utilizamos a biblioteca DataExplorer qu
 DataExplorer::plot_intro(base)
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-6](/assets/img/ibov_project/analise_exploratoria.png)
 
 Como não encontramos dados ausentes seguimos para a próxima etapa que seria entender o comportamento dos dados ao longo do tempo.
 Insights:
