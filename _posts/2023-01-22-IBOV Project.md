@@ -31,7 +31,7 @@ https://sfefqj-ramon-roldan.shinyapps.io/Financial_Market_Analysis/
 
 ## Versionar trabalho no GitHub
 
-![Repositório criado para ajudar no versionamento do projeto](https://github.com/RoldanRamon/roldanramon.github.io/blob/main/assets/img/github_versionamento.png)
+![Repositório criado para ajudar no versionamento do projeto](https://github.com/RoldanRamon/roldanramon.github.io/assets/img/github_versionamento.png)
 
 
 ## Utilizar a ferramenta Kanban para organizar projeto no formato de metodologia ágil
