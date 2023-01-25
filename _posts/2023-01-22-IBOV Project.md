@@ -6,46 +6,46 @@ categories: [Data Science, Tydeverse]
 tags: [Machine Learning, Tydeverse, Times Series, IBOV, Data Science, ETL]
 ---
 
-## Organização do trabalho
-
-* Definição do objetivo do trabalho;
-* Versionar trabalho no GitHub;
-* Utilizar a ferramenta Kanban para organizar projeto no formato de metodologia ágil;
-* Coleta dos dados;
-* Start an exploratory analysis;
-* Limpeza e tratamento dos dados;
-* Salvar modelo treinado em arquivo r para posteriormente aplicar no framework tidymodels;
-* Aplicar framework do tidymodels para desenvolver modelo;
-* Avaliar resultados do modelo e necessidade de tunar os hiperparametros;
-* Desenvolver um dashboard dinâmico com os pacotes flexdashboard, shiny e ploty;
-* Realizar deploy do modelo and uploud in the shinyapp.io
-
-## Definição do objetivo do trabalho
-
+## Objetivo do trabalho
 O trabalho busca desenvolver um dashboard que rode um modelo de machine learning capaz de prever o movimento do dia seguinte no indice ibovespa, baseado em dados históricos disponibilizados via API no yahoo finace, e para isso serão aplicadas técnicas estatisticas de regressão logística e regressão linear em series temporáis.
-
-Para organização do projeto foi utilizada a ferramenta KANBAN, visando framework de metodoligas ágeis, e versionamento de código no GitHub.
 
 O resultado final esta disponível no dashboard que pode ser acessado em:
 [Dashboard - URL](https://sfefqj-ramon-roldan.shinyapps.io/Financial_Market_Analysis/)
 
+**Aviso:** Este estudo não é uma recomendação de compra ou venda, mas sim um estudo teorico de data science. O mercado financeiro é volátil e envolve riscos, por isso estude bem antes de realizar operações e converse com seu consultor.
+
+## Organização do trabalho
+Este trabalho foi realizado com a linguagem R, na IDE Rstudio, e utiliza conhecimentos de data science e metodologias ágeis.
+
+-   Definição do objetivo do trabalho;
+-   Versionar trabalho no GitHub;
+-   Utilizar a ferramenta Kanban para organizar projeto no formato de metodologia ágil;
+-   Coleta dos dados;
+-   Realizar analise exploratória;
+-   Limpeza e tratamento dos dados;
+-   Salvar modelo treinado em arquivo r para posteriormente aplicar no framework tidymodels;
+-   Aplicar framework do tidymodels para desenvolver modelo;
+-   Avaliar resultados do modelo e necessidade de tunar os hiperparametros;
+-   Desenvolver um dashboard dinâmico com os pacotes flexdashboard, shiny e ploty;
+-   Realizar deploy do modelo and uploud in the shinyapp.io
+
 ## Versionar trabalho no GitHub
-
-![Repositório criado para ajudar no versionamento do projeto](/assets/img/github_versionamento.png)
-
+Foi criado um repositorio para ajudar no armazentamento de arquivos e versionamento de todo o projeto.
+![Imagem do Repositório](/assets/img/ibov_project/github_versionamento.png)
 
 ## Utilizar a ferramenta Kanban para organizar projeto no formato de metodologia ágil
-![Kanban no Github para acompanhar evolução](/assets/img/IBOV_PROJECT.png)
-
+Esta ferramenta serve para realizar gestão à vista do andamento de cada atividade ao longo do projeto.
+![Imagem do Kanban](/assets/img/ibov_project/IBOV_PROJECT.png)
 
 ## Coleta dos dados
+Para construir uma primeira versão do modelo foram usados os dados históricos do índice Ibovespa futuro, filtrando o período de 12 meses, disponíbilizados pelo site investing.com:
+![Imagem do Investing](/assets/img/ibov_project/ibov_investing.png)
 
-Para construir uma primeira versão do modelo foram usados os dados históricos do índice Ibovespa disponíbilizados pelo jornal investing.
+## Analise exploratória
+Começamos carregando o arquivo csv extraido do site investing.com para dentro do rstudio para entender melhor o formato dos dados disponibilizados:
 
-![Investing PrintScreeng](/assets/img/ibov_investing.png)
-
-
-```r
+``` r
+#Limpando Enviroment e Carregando Bibliotecas
 rm(list = ls())
 library(tidymodels)
 library(readr)
@@ -55,47 +55,40 @@ library(lubridate)
 library(ggplot2)
 library(plotly)
 library(DataExplorer)
-```
-
-```
-## Error in library(DataExplorer): there is no package called 'DataExplorer'
-```
-
-```r
-#library(quantmod)
 
 #carregando Base extraida do site investing
-base <- read_csv('Futuros Ibovespa - Dados Históricos.csv') %>% clean_names() %>% 
-  mutate(data = lubridate::dmy(data),
-         meta = if_else(var_percent > 0,1,0) %>% as.factor()) %>% 
-  #select(-c(var_percent,vol)) %>%
-  arrange(data)
-```
+base <- readr::read_csv('Futuros Ibovespa - Dados Históricos.csv') %>% janitor::clean_names() %>% 
+  dplyr::mutate(data = lubridate::dmy(data),
+         meta = dplyr::if_else(var_percent > 0,1,0) %>% forcats::as_factor()) %>% 
+  dplyr::arrange(data)
 
+#Avaliando tamanho da base e tipo primitivo dos dados
+dplyr::glimpse(base)  
 ```
-## Rows: 361 Columns: 7
-## ── Column specification ────────────────────
-## Delimiter: ","
-## chr (3): Data, Vol., Var%
-## dbl (4): Último, Abertura, Máxima, Mínima
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Avaliando o dataframe notamos que as dimensões são 8 colunas e 361 linhas.
+Trata-se de uma serie temporal com indexador de data mostrando as estatisticas do indice ibovespa ao longo de cada dia.
 ```
-
+    Rows: 361
+    Columns: 8
+    $ data        <date> 2021-01-04, 2021-01-05, 2021-01-06, 2021-01-07, 2021-01-08, 2021-01-11, 2021-01-12, 2…
+    $ ultimo      <dbl> 118.859, 119.393, 119.180, 122.684, 125.127, 123.120, 124.336, 121.959, 123.488, 120.3…
+    $ abertura    <dbl> 120.320, 119.000, 119.195, 119.405, 123.050, 124.600, 123.805, 123.985, 122.775, 122.6…
+    $ maxima      <dbl> 120.575, 119.955, 121.075, 123.450, 125.475, 124.910, 124.715, 124.385, 124.040, 122.7…
+    $ minima      <dbl> 118.140, 116.770, 118.900, 119.235, 122.370, 122.465, 123.240, 121.015, 122.340, 120.0…
+    $ vol         <chr> "162,34K", "179,66K", "182,04K", "176,66K", "190,05K", "164,15K", "113,43K", "237,23K"…
+    $ var_percent <chr> "-0,31%", "0,45%", "-0,18%", "2,94%", "1,99%", "-1,60%", "0,99%", "-1,91%", "1,25%", "…
+    $ meta        <fct> 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1,…```
+```
 ```r
-#base do yahoo finance
-#base_yahoo <- quantmod::getSymbols(Symbols = '^BVSP') %>% clean_names()
+    #base do yahoo finance
+    #base_yahoo <- quantmod::getSymbols(Symbols = '^BVSP') %>% clean_names()
 
-#Avaliando tipos de dados e verificando dados faltantes
-DataExplorer::plot_intro(base)
-```
+    #Avaliando tipos de dados e verificando dados faltantes
+    DataExplorer::plot_intro(base)
 
-```
-## Error in loadNamespace(x): there is no package called 'DataExplorer'
-```
+    ## Error in loadNamespace(x): there is no package called 'DataExplorer'
 
-```r
+``` r
 #Analisando gráfico da seríe temporal
 ggplotly(
 ggplot(base,aes(x = data,y = ultimo))+
@@ -106,15 +99,11 @@ ggplot(base,aes(x = data,y = ultimo))+
 )
 ```
 
-```
-## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
-```
+    ## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
 
-```
-## Error in path.expand(path): invalid 'path' argument
-```
+    ## Error in path.expand(path): invalid 'path' argument
 
-```r
+``` r
 #Dividindo entre treino e teste
 split_base <- initial_split(base,prop = .8)
 train_base <- training(split_base)
@@ -147,32 +136,28 @@ lr_result <- last_fit(wkf_model,split = split_base)
 lr_result %>% collect_metrics()
 ```
 
-```
-## # A tibble: 2 × 4
-##   .metric  .estimator .estimate .config     
-##   <chr>    <chr>          <dbl> <chr>       
-## 1 accuracy binary         0.890 Preprocesso…
-## 2 roc_auc  binary         0.957 Preprocesso…
-```
+    ## # A tibble: 2 × 4
+    ##   .metric  .estimator .estimate .config     
+    ##   <chr>    <chr>          <dbl> <chr>       
+    ## 1 accuracy binary         0.890 Preprocesso…
+    ## 2 roc_auc  binary         0.957 Preprocesso…
 
-```r
+``` r
 #Matriz de Confusão
 lr_result %>% unnest(.predictions) %>% conf_mat(truth = meta, estimate = .pred_class) %>% autoplot(type='heatmap')
 ```
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
 
-```r
+``` r
 # Salvando modelo Final ---------------------------------------------------
 final_lr_result <- fit(wkf_model,base)
 saveRDS(object = final_lr_result,file = 'win_model.rds')
 ```
 
-
-
 ### Carregar Bibliotecas necessárias
 
-```r
+``` r
 knitr::opts_chunk$set(echo = TRUE)
 library(flexdashboard)
 library(shiny)
@@ -189,11 +174,9 @@ library(kableExtra)
 library(quantmod)
 ```
 
-
-
 ### Carrega Modelo Salvo
 
-```r
+``` r
 Filtros {.sidebar}
 --------------------------------------------------
 
@@ -238,19 +221,15 @@ resultado_valor <- round(if_else(predict(object = modelo, new_data = novo_dado)=
 resultado_label=if_else(predict(object = modelo, new_data = novo_dado)==0,'Baixa','Alta')
 ```
 
-```
-## Error: <text>:1:9: unexpected '{'
-## 1: Filtros {
-##             ^
-```
+    ## Error: <text>:1:9: unexpected '{'
+    ## 1: Filtros {
+    ##             ^
 
-Row {data-height=300}
------------------------------------------------------------------------
+## Row {data-height="300"}
 
 ### Probabilidade e direção do Movimento
 
-
-```r
+``` r
 #Informa dentro do dashboard
 renderGauge({
 gauge(value = resultado_valor,label = resultado_label, min = 0, max = 100, symbol = '%', gaugeSectors(
@@ -262,8 +241,7 @@ gauge(value = resultado_valor,label = resultado_label, min = 0, max = 100, symbo
 
 ### Concentração Dos Dados
 
-
-```r
+``` r
 renderPlot({
 p1 <- ggplot(base %>% filter(data>= input$periodo[1] & data <= input$periodo[2]))+
   geom_density(aes(x =ultimo),fill='blue',alpha=.25)+
@@ -285,13 +263,11 @@ p1 / p2
 
 <!--html_preserve--><div class="shiny-plot-output html-fill-item" id="outde96ecc69439d376" style="width:100%;height:400px;"></div><!--/html_preserve-->
 
-Row {data-height=700}
------------------------------------------------------------------------
+## Row {data-height="700"}
 
 ### Comportamento Histórico
 
-
-```r
+``` r
 renderPlotly({
   ggplot(data = base %>% filter(data>= input$periodo[1] & data <= input$periodo[2]))+
     geom_segment(aes(x = data,
@@ -318,8 +294,7 @@ renderPlotly({
 
 ### Previsão com Regressão Linear
 
-
-```r
+``` r
 renderPlotly({
   ggplot(data = base %>% filter(data>= input$periodo[1] & data <= input$periodo[2]))+
   geom_smooth(aes(x =data, y = ultimo))+
@@ -328,4 +303,3 @@ renderPlotly({
 ```
 
 <!--html_preserve--><div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="outa9d1abb694ad0c89" style="width:100%;height:400px;"></div><!--/html_preserve-->
-
