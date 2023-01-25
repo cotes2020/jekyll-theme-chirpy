@@ -16,11 +16,22 @@ $ ping -c 1 10.10.11.189
 ```
 After that we're going to scan it with nmap tool for discover what ports are exposed on that machine
 ```console
-$  nmap -p- --min-rate 5000 -v -n -Pn 10.10.11.189                                                                                                    1 
+$ nmap -p- --min-rate 5000 -v -n -Pn 10.10.11.189                                                                                                    1 
 ...
-Discovered open port 22/tcp on 10.10.11.189
-Discovered open port 80/tcp on 10.10.11.189
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0)
+| ssh-hostkey: 
+|   3072 84:5e:13:a8:e3:1e:20:66:1d:23:55:50:f6:30:47:d2 (RSA)
+|   256 a2:ef:7b:96:65:ce:41:61:c4:67:ee:4e:96:c7:c8:92 (ECDSA)
+|_  256 33:05:3d:cd:7a:b7:98:45:82:39:e7:ae:3c:91:a6:58 (ED25519)
+80/tcp open  http    nginx 1.18.0
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: nginx/1.18.0
+|_http-title: Did not follow redirect to http://precious.htb/
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ...
+
 ```
 
 Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll`, and `Bundler`. In addition, [Git](https://git-scm.com/) is also required to be installed.
