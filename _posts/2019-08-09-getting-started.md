@@ -1,5 +1,5 @@
 ---
-title: Precious Machine
+title: Writeup Precious HTB
 author: lazy29t
 date: 2023-01-09 20:55:00 +0800
 categories: [Blogging, Tutorial]
