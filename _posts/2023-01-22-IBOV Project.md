@@ -31,18 +31,18 @@ https://sfefqj-ramon-roldan.shinyapps.io/Financial_Market_Analysis/
 
 ## Versionar trabalho no GitHub
 
-![Repositório criado para ajudar no versionamento do projeto](https://github.com/RoldanRamon/roldanramon.github.io/assets/img/github_versionamento.png)
+![Repositório criado para ajudar no versionamento do projeto](https://github.com/RoldanRamon/roldanramon.github.io/blob/master/assets/img/github_versionamento.png)
 
 
 ## Utilizar a ferramenta Kanban para organizar projeto no formato de metodologia ágil
-![Kanban no Github para acompanhar evolução](roldanramon.github.io/assets/img/IBOV_PROJECT.png)
+![Kanban no Github para acompanhar evolução](https://github.com/RoldanRamon/roldanramon.github.io/blob/master/assets/img/IBOV_PROJECT.png)
 
 
 ## Coleta dos dados
 
 Para construir uma primeira versão do modelo foram usados os dados históricos do índice Ibovespa disponíbilizados pelo jornal investing.
 
-![Investing PrintScreeng](/home/ramon_de_lara/Ramon/roldanramon.github.io/assets/img/ibov investing.png)
+![Investing PrintScreeng](https://github.com/RoldanRamon/roldanramon.github.io/blob/master/assets/img/ibov investing.png)
 
 
 ```r
