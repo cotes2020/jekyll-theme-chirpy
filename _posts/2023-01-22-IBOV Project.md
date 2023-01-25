@@ -27,22 +27,22 @@ O trabalho busca desenvolver um dashboard que rode um modelo de machine learning
 Para organização do projeto foi utilizada a ferramenta KANBAN, visando framework de metodoligas ágeis, e versionamento de código no GitHub.
 
 O resultado final esta disponível no dashboard que pode ser acessado em:
-https://sfefqj-ramon-roldan.shinyapps.io/Financial_Market_Analysis/
+[Dashboard - URL](https://sfefqj-ramon-roldan.shinyapps.io/Financial_Market_Analysis/)
 
 ## Versionar trabalho no GitHub
 
-![Repositório criado para ajudar no versionamento do projeto](https://github.com/RoldanRamon/roldanramon.github.io/blob/master/assets/img/github_versionamento.png)
+![Repositório criado para ajudar no versionamento do projeto](./github_versionamento.png)
 
 
 ## Utilizar a ferramenta Kanban para organizar projeto no formato de metodologia ágil
-![Kanban no Github para acompanhar evolução](https://github.com/RoldanRamon/roldanramon.github.io/blob/master/assets/img/IBOV_PROJECT.png)
+![Kanban no Github para acompanhar evolução](./IBOV_PROJECT.png)
 
 
 ## Coleta dos dados
 
 Para construir uma primeira versão do modelo foram usados os dados históricos do índice Ibovespa disponíbilizados pelo jornal investing.
 
-![Investing PrintScreeng](./assets/img/ibov_investing.png)
+![Investing PrintScreeng](./ibov_investing.png)
 
 
 ```r
