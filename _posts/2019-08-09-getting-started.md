@@ -15,6 +15,14 @@ First step you have to verify if the machine is active throught an **ICMP** ping
 $ ping -c 1 10.10.11.189
 ```
 After that we're going to scan it with nmap tool for discover what ports are exposed on that machine
+```console
+$  nmap -p- --min-rate 5000 -v -n -Pn 10.10.11.189                                                                                                    1 
+...
+Discovered open port 22/tcp on 10.10.11.189
+Discovered open port 80/tcp on 10.10.11.189
+...
+```
+
 Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll`, and `Bundler`. In addition, [Git](https://git-scm.com/) is also required to be installed.
 
 ## Installation
