@@ -1,8 +1,18 @@
-# Function Obfuscation
+---
+title: Function Obfuscation
+author: 0s4ma
+date: 2019-08-08 11:33:00 +0800
+categories: [Malware]
+tags: [Malware, Function Obfuscation]
+math: true
+mermaid: true
+image:
+  path: /assets/img/
+  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
+  alt: Responsive rendering of Chirpy theme on multiple devices.
+---
 
-```
-Note : This is not a tutorial to make a malware, but a practical case for educational/research purpose only. Any use for malicious purpose is not endorsed or encouraged. This is strictly for educational/research purpose only 
-```
+**Note : This is not a tutorial to make a malware, but a practical case for educational/research purpose only. Any use for malicious purpose is not endorsed or encouraged. This is strictly for educational/research purpose only**
 
 Today we are going to learn about function obfuscation in windows C++.
 
