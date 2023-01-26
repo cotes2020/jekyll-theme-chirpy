@@ -3,11 +3,11 @@
  */
 
 @mixin dark-syntax {
-  --highlight-bg-color: #0e1026;
-  --highlighter-rouge-color: #38761d;
+  --highlight-bg-color: #0e1026; /* terminal color */
+  --highlighter-rouge-color: #38761d; /* text darks */
   --highlight-lineno-color: #6c6c6d;
   --inline-code-bg: #272822;
-  --code-header-text-color: #8fce00;
+  --code-header-text-color: #eeeeee;
   --code-header-muted-color: rgb(60, 60, 60);
   --code-header-icon-color: rgb(86, 86, 86);
   --clipboard-checked-color: #2bcc2b;
@@ -57,8 +57,8 @@
   .highlight .nn { color: #8fce00; } /* Name.Namespace */
   .highlight .nx { color: #a6e22e; } /* Name.Other */
   .highlight .py { color: #f8f8f2; } /* Name.Property */
-  .highlight .nt { color: #f8f8f2; } /* Name.Tag */
-  .highlight .nv { color: #f8f8f2; } /* Name.Variable */
+  .highlight .nt { color: #6a329f; } /* Name.Tag */
+  .highlight .nv { color: #6de8e4; } /* Name.Variable */
   .highlight .ow { color: #f92672; } /* Operator.Word */
   .highlight .w { color: #f8f8f2; } /* Text.Whitespace */
   .highlight .mf { color: #ae81ff; } /* Literal.Number.Float */
