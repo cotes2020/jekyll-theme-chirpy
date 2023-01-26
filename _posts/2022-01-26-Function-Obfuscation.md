@@ -6,10 +6,6 @@ categories: [Malware]
 tags: [Malware, Function Obfuscation]
 math: true
 mermaid: true
-image:
-  path: /assets/img/
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 
 **Note : This is not a tutorial to make a malware, but a practical case for educational/research purpose only. Any use for malicious purpose is not endorsed or encouraged. This is strictly for educational/research purpose only**
@@ -33,14 +29,15 @@ int main(int argc, char const *argv[]){
 
 Here is a simple `C++` function that displays a simple message box using the `MessageBoxA` API from the `USER32.dll`. We can easily ifnd which DLLs are loaded using the `PE Bear` application (download <a href="https://github.com/hasherezade/pe-bear">here</a>).
 
-![APIs loaded into the PE file](./Images/1.png "PE Bear")
+<img src="https://github.com/manasghandat/manasghandat.github.io/raw/master/assets/img/Images/Blog1/1.png" alt="APIs loaded into the PE file">
 
 Alternatively we can use the following command
 ```
 Objdump -xD (Name of PE file) | less
 ```
 
-![APIs loaded into the PE file](./Images/2.png "Object Dump command")
+<!-- ![APIs loaded into the PE file](./Images/2.png "Object Dump command") -->
+<img src="https://github.com/manasghandat/manasghandat.github.io/raw/master/assets/img/Images/Blog1/2.png" alt="Objdump">
 
 For the purpose of this tutorial I would bw using the PE Bear application.
 
@@ -72,7 +69,11 @@ For this purpose we have used the `GetProcAddress` and `LoadLibraryA` APIs. We u
 
 But to actually use the API we have to first `typedef` the function have we want to use. The arguments and the DLL of the function that we require can be easily found in the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/">MSDN</a>.
 
-![MessageBoxA not present](./Images/4.png "PE Bear")
+<!-- ![MessageBoxA not present](./Images/4.png "PE Bear") -->
+
+<img src="https://github.com/manasghandat/manasghandat.github.io/raw/master/assets/img/Images/Blog1/1.png" alt="MessageBoxA not present">
+
+## Advanced function Obfuscation
 
 As we can see from the above image that the `User32.dll` is not present and in consequence `MessageBoxA` is also not present. But there is a problem. If we dump the strings we can find that strings of out PE file then we can see the strings `User32.dll` and `MessageBoxA`.
 
@@ -80,7 +81,8 @@ As we can see from the above image that the `User32.dll` is not present and in c
 strings (Filename)
 ```
 
-![Strings mentioned above present](./Images/5.png "Strings dumped")
+<!-- ![Strings mentioned above present](./Images/5.png "Strings dumped") -->
+<img src="https://github.com/manasghandat/manasghandat.github.io/raw/master/assets/img/Images/Blog1/5.png" alt="Strings dumped">
 
 Anti Virus software can use these strings to detect that our code is malicious. We can you any simple encryption algorithm to encrypt the strings and thus evade those softwares. An example of a simple encryption algorithm can be found below.
 
