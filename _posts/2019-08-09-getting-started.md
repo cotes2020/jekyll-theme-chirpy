@@ -16,7 +16,7 @@ $ ping -c 1 10.10.11.189
 ```
 After that we're going to scan it with nmap tool for discover what ports are exposed on that machine
 ```console
-$ nmap -p- --min-rate 5000 -v -n -Pn 10.10.11.189                                                                                                    1 
+$ nmap -p- -sCV --min-rate 5000 -v -n -Pn 10.10.11.189                                                                                                    
 ...
 PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0)
