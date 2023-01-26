@@ -5,14 +5,14 @@
 @mixin dark-scheme {
   /* Framework color */
   --body-bg: var(--main-bg);
-  --mask-bg: rgb(68, 69, 70);
-  --main-bg: rgb(27, 27, 30);
-  --main-border-color: rgb(44, 45, 45);
+  --mask-bg: rgb(20, 20, 31);
+  --main-bg: rgb(4, 4, 7);
+  --main-border-color: rgb(9, 7, 23);
 
   /* Common color */
   --text-color: rgb(175, 176, 177);
   --text-muted-color: rgb(107, 116, 124);
-  --heading-color: #cccccc;
+  --heading-color: #b30000;
   --blockquote-border-color: rgb(66, 66, 66);
   --blockquote-text-color: rgb(117, 117, 117);
   --link-color: rgb(138, 180, 248);
@@ -44,16 +44,16 @@
 
   /* Topbar */
   --topbar-text-color: var(--text-color);
-  --topbar-wrapper-bg: rgb(39, 40, 43);
-  --search-wrapper-bg: rgb(34, 34, 39);
-  --search-wrapper-border-color: rgb(34, 34, 39);
+  --topbar-wrapper-bg: rgb(4, 4, 7);
+  --search-wrapper-bg: rgb(215, 215, 215);
+  --search-wrapper-border-color: rgb(68, 68, 68);
   --search-icon-color: rgb(100, 102, 105);
-  --input-focus-border-color: rgb(112, 114, 115);
+  --input-focus-border-color: rgb(54, 56, 56);
 
   /* Home page */
   --post-list-text-color: rgb(175, 176, 177);
   --btn-patinator-text-color: var(--text-color);
-  --btn-paginator-hover-color: rgb(64, 65, 66);
+  --btn-paginator-hover-color: rgb(36, 0, 0);
   --btn-paginator-border-color: var(--btn-border-color);
   --btn-text-color: var(--text-color);
   --pin-bg: rgb(34, 35, 37);
@@ -66,11 +66,11 @@
   --tb-odd-bg: rgba(42, 47, 53, 0.52); /* odd rows of the posts' table */
   --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
   --tb-border-color: var(--tb-odd-bg);
-  --footnote-target-bg: rgb(63, 81, 181);
+  --footnote-target-bg: rgba(21, 21, 23, 0);
   --btn-share-color: #6c757d;
   --btn-share-hover-color: #bfc1ca;
   --relate-post-date: var(--text-muted-color);
-  --card-bg: rgb(39, 40, 43);
+  --card-bg: rgb(31, 0, 0);
   --card-border-color: rgb(53, 53, 60);
   --card-box-shadow: var(--main-bg);
   --kbd-wrap-color: #6a6a6a;
@@ -93,7 +93,11 @@
   --dash-color: rgb(63, 65, 68);
 
   /* categories */
-  --categories-border: rgb(64, 66, 69);
+<<<<<<< HEAD
+  --categories-border: rgb(26, 30, 39, 0);
+=======
+  --categories-border: rgb(326, 30, 39, 0);
+>>>>>>> a8f33e34e874421ccebab8e9ceeeef5869ee0af6
   --categories-hover-bg: rgb(73, 75, 76);
   --categories-icon-hover-color: white;
 
