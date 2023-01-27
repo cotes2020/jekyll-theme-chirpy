@@ -15,7 +15,7 @@ In this post, we will explicitly find the solution for the position vector $$\le
 
 As found in the previously mentioned posts, in phase space, the equation of motion for a harmonic oscillator is ingrained in Hamilton's equations of motion,
 
-$$\ddot{\pmb{u}} = \pmb{\omega} \left( \pmb{u} \right)$$
+$$\dot{\pmb{u}} = \pmb{\omega} \left( \pmb{u} \right)$$
 
 where $$\pmb{\omega} = \omega \left( \partial_x \otimes \text{d} y - \partial_y \otimes \text{d} x \right)$$ and $$\pmb{u} = x \partial_x + y \partial_y = x \partial_x + \dot{x} \partial_{\dot{x}}$$.
 
