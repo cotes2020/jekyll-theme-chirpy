@@ -21,7 +21,7 @@ where $$\pmb{\omega} = \omega \left( \partial_x \otimes \text{d} y - \partial_y 
 
 In the matrix representation,
 
-$$\begin{pmatrix} \dot{x} \\ \dot{y} \end{pmatrix} = \omega \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}$$
+$$\begin{pmatrix} \dot{x} \\ \dot{y} \end{pmatrix} = \omega \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}$$
 
 Now, we will try to solve for $$\pmb{u} \left( t \right)$$.
 
@@ -117,6 +117,18 @@ $$
  & = \cos \left( \omega t \right) \left( x \left( 0 \right) \partial_x + y \left( 0 \right) \partial_y \right) + \sin \left( \omega t \right) \left( \partial_x \otimes \text{d} y - \partial_y \otimes \text{d} x \right) \left( x \left( 0 \right) \partial_x + y \left( 0 \right) \partial_y \right) \\
  & = \cos \left( \omega t \right) \left( x \left( 0 \right) \partial_x + y \left( 0 \right) \partial_y \right) + \sin \left( \omega t \right) \left( y \left( 0 \right) \partial_x - x \left( 0 \right) \partial_y \right) \\
  & = \left( \cos \left( \omega t \right) x \left( 0 \right) + \sin \left( \omega t \right) y \left( 0 \right) \right) \partial_x + \left( \cos \left( \omega t \right) y \left( 0 \right) - \sin \left( \omega t \right) x \left( 0 \right) \right) \partial_y
+\end{align}
+$$
+
+Once again, in the matrix representation,
+
+$$
+\begin{align}
+\mathcal{U}^t & = \cos \left( \omega t \right) \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} + \sin \left( \omega t \right) \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \\
+ & = \begin{pmatrix} \cos \left( \omega t \right) & \sin \left( \omega t \right) \\ - \sin \left( \omega t \right) & \cos \left( \omega t \right) \end{pmatrix} \\
+ \pmb{u} \left( t \right) & = \mathcal{U}^t \pmb{u} \left( 0 \right) \\
+ & = \begin{pmatrix} \cos \left( \omega t \right) & \sin \left( \omega t \right) \\ - \sin \left( \omega t \right) & \cos \left( \omega t \right) \end{pmatrix} \begin{pmatrix} x \left( 0 \right) \\ y \left( 0 \right) \end{pmatrix} \\
+ & = \begin{pmatrix} \cos \left( \omega t \right) x \left( 0 \right) + \sin \left( \omega t \right) y \left( 0 \right) \\ - \sin \left( \omega t \right) x \left( 0 \right) + \cos \left( \omega t \right) y \left( 0 \right) \end{pmatrix}
 \end{align}
 $$
 
