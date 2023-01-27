@@ -73,7 +73,7 @@ Much of the reasoning and mathematical machinery remains the same in this case. 
 
 $$
 \begin{align}
-T^{i j} & = \pi^i \partial^j \phi - g^{i j} \phi \\
+T^{i j} & = \pi^i \partial^j \phi - g^{i j} \mathcal{L} \\
 T^{i j} & = T^{j i}
 \end{align}
 $$
