@@ -24,7 +24,7 @@ title: Self. Documenting.                          # the main title
 tagline: You don't have to read it, but you just might learn something.   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  Senior Software Engineer primarily developing midware systems in C#. Originally from Long Beach, CA and now firmly rooted in the greatest comeback story of all-time, Detroit, MI.
+  A bi-weekly blog of stuff I find interesting (with commentary!): software engineering, testing, DE&I, Agile, Teams and Leadership, AI, and other tech and random things. You may not agree with me, but…you just may learn something.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: https://www.selfdocumenting.dev/
@@ -39,7 +39,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Ken Sobieski
-  email: Ken@selfdocumenting.Dev             # change to your email address
+  email: Ken@selfdocumenting.dev             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     # - https://twitter.com/username      # change to your twitter homepage
