@@ -6,12 +6,16 @@
 #   url: {homepage_of_author}
 # -------------------------------------
 
-cotes:
-  name: Cotes Chung
-  twitter: cotes2020
-  url: https://github.com/cotes2020/
+ebmarquez:
+  name: Eric Marquez
+  url: https://github.com/ebmarquez
+  mastodon: https://twit.social/@ebmarquez
+# cotes:
+#   name: Cotes Chung
+#   twitter: cotes2020
+#   url: https://github.com/cotes2020/
 
-sille_bille:
-  name: Dinesh Prasanth Moluguwan Krishnamoorthy
-  twitter: dinesh_MKD
-  url: https://github.com/SilleBille/
+# sille_bille:
+#   name: Dinesh Prasanth Moluguwan Krishnamoorthy
+#   twitter: dinesh_MKD
+#   url: https://github.com/SilleBille/

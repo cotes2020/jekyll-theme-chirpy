@@ -1,0 +1,13 @@
+---
+layout: post
+title: Syslog ip
+date: 2021-05-22 12:24
+category: 
+author: 
+tags: []
+summary: 
+---
+
+$env:Syslog = '10.10.10.1'
+
+$env:syslog  will then return the ip
