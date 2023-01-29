@@ -277,54 +277,6 @@
 
 {% assign _content = _heading_content %}
 
-<!-- Wrap prompt element of blockquote with the <div> tag -->
-
-{% assign blockquote_start = '<blockquote class=' %}
-{% assign blockquote_end = '</blockquote>' %}
-{% assign cls_prefix = 'prompt-' %}
-
-{% if _content contains blockquote_start %}
-
-  {% assign _prompt_content = nil %}
-  {% assign _prompt_snippets = _content | split: blockquote_start %}
-
-  {% for _snippet in _prompt_snippets %}
-
-    {% if forloop.first %}
-      {% assign _prompt_content =  _snippet %}
-      {% continue %}
-    {% endif %}
-
-    {% assign left = _snippet | split: blockquote_end | first %}
-    {% assign right = _snippet | slice: left.size, _snippet.size %}
-
-    {% assign cls_str = left | split: '>' | first %}
-    {% assign cls_array = cls_str | remove: '"' | split: ' ' %}
-    {% assign is_prompt = false %}
-
-    {% for cls in cls_array %}
-      {% if cls contains cls_prefix %}
-        {% assign is_prompt = true %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-
-    {% unless is_prompt %}
-      {% assign _prompt_content = _prompt_content | append: blockquote_start | append: _snippet %}
-      {% continue %}
-    {% endunless %}
-
-    {% assign left = left | slice: cls_str.size, left.size %}
-    {% assign left = cls_str | append: '><div' | append: left | append: '</div>' %}
-
-    {% assign _prompt_content = _prompt_content | append: blockquote_start | append: left | append: right %}
-
-  {% endfor %}
-
-  {% assign _content = _prompt_content %}
-
-{% endif %}
-
 <!-- return -->
 
 {{ _content }}

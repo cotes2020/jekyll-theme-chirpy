@@ -66,6 +66,13 @@ html {
     font-size: $code-font-size;
     line-height: 1.4rem;
     word-wrap: normal; /* Fixed Safari overflow-x */
+
+    /* set the dollar sign to non-selectable */
+    >.gp:first-child {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
   }
 
   table {
@@ -83,13 +90,6 @@ html {
     -webkit-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
-    user-select: none;
-  }
-
-  /* set the dollar sign to non-selectable */
-  .gp {
-    -webkit-user-select: none;
-    -moz-user-select: none;
     user-select: none;
   }
 } /* .highlight */

@@ -86,7 +86,6 @@ img {
 
   &[data-src] {
     &.lazyloaded {
-      z-index: 1;
       -webkit-animation: fade-in 0.4s ease-in;
       animation: fade-in 0.4s ease-in;
     }
@@ -132,9 +131,8 @@ blockquote {
   color: var(--blockquote-text-color);
 
   &[class^="prompt-"] {
-    display: flex;
     border-left: 0;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 3rem;
     color: var(--prompt-text-color);
 
     @extend %rounded;
@@ -142,19 +140,15 @@ blockquote {
     &::before {
       text-align: center;
       width: 1.25rem;
-      margin-right: 0.75rem;
-      position: relative;
-      top: 0.4rem;
+      position: absolute;
+      left: 2.5rem;
+      margin-top: 0.4rem;
       text-rendering: auto;
       -webkit-font-smoothing: antialiased;
     }
 
-    > div {
-      max-width: calc(100% - 2rem);
-
-      > :last-child {
-        margin-bottom: 0;
-      }
+    > p:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -842,7 +836,7 @@ $sidebar-display: "sidebar-display";
 
     @for $i from 1 through $tab-count {
       $offset: $tab-count - $i;
-      $top: -$offset * $tab-height + calc(($tab-height - $tab-cursor-height) / 2);
+      $top: (-$offset * $tab-height) + (($tab-height - $tab-cursor-height) * 0.5);
 
       @if $i < $tab-count {
         > li.active:nth-child(#{$i}),
@@ -1280,11 +1274,14 @@ $sidebar-display: "sidebar-display";
 
     .post-content {
       > blockquote[class^="prompt-"] {
-        @include pl-pr(1.25rem);
         @include ml-mr(-1.25rem);
 
         border-radius: 0;
         max-width: none;
+
+        &::before {
+          left: 1rem;
+        }
       }
     }
   }
