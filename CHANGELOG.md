@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.5.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.4.0...v5.5.0) (2023-01-29)
+
+
+### Features
+
+* **i18n:** add Arabic translation ([#857](https://github.com/cotes2020/jekyll-theme-chirpy/issues/857)) ([765af53](https://github.com/cotes2020/jekyll-theme-chirpy/commit/765af53b77e5c63804784d5728f5970ae274c2c7))
+* **i18n:** add Czech language ([#833](https://github.com/cotes2020/jekyll-theme-chirpy/issues/833)) ([98d48f5](https://github.com/cotes2020/jekyll-theme-chirpy/commit/98d48f5da412276d4a0c99cd01a87b19349bc6bc))
+* **i18n:** add Finnish translations ([#843](https://github.com/cotes2020/jekyll-theme-chirpy/issues/843)) ([d6d0318](https://github.com/cotes2020/jekyll-theme-chirpy/commit/d6d03183eaf94b44e037cc48b6e1c47cee183f6e))
+* **i18n:** add Italian translation ([#850](https://github.com/cotes2020/jekyll-theme-chirpy/issues/850)) ([9a011e1](https://github.com/cotes2020/jekyll-theme-chirpy/commit/9a011e14d66195d8b2fb9ec62f3e60a3e56cd032))
+
+
+### Bug Fixes
+
+*  copy command line incomplete(`.gp` part) ([41ed331](https://github.com/cotes2020/jekyll-theme-chirpy/commit/41ed33145639415148aec8e85edc7a6fd0de0ca3))
+* correct encoding of spaces in share URLs ([#835](https://github.com/cotes2020/jekyll-theme-chirpy/issues/835)) ([f2d2858](https://github.com/cotes2020/jekyll-theme-chirpy/commit/f2d285844e6e2979f2b0eec1d20073d3c05b6c0c))
+* post's image would cover the PWA update alert ([bd374dd](https://github.com/cotes2020/jekyll-theme-chirpy/commit/bd374dd383c50f89c8f018ecb4e25772eeb8f6d8))
+* prompt with nested blockquotes renders incorrectly ([#846](https://github.com/cotes2020/jekyll-theme-chirpy/issues/846)) ([babb4a0](https://github.com/cotes2020/jekyll-theme-chirpy/commit/babb4a0c5a58ceb2e4093bc465670accdd526c18))
+
 ## [5.4.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.3.2...v5.4.0) (2022-12-27)
 
 
