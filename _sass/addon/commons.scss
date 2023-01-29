@@ -132,6 +132,7 @@ blockquote {
 
   &[class^="prompt-"] {
     border-left: 0;
+    position: relative;
     padding: 1rem 1rem 1rem 3rem;
     color: var(--prompt-text-color);
 
@@ -139,9 +140,9 @@ blockquote {
 
     &::before {
       text-align: center;
-      width: 1.25rem;
+      width: 3rem;
       position: absolute;
-      left: 2.5rem;
+      left: 0.25rem;
       margin-top: 0.4rem;
       text-rendering: auto;
       -webkit-font-smoothing: antialiased;
