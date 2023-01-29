@@ -19,7 +19,7 @@ timezone: America/Los_Angeles
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: ebmarquez                          # the main title
+title: Eric Marquez                          # the main title
 
 tagline: technology, projects, and some code snippets   # it will display as the sub-title
 
@@ -51,7 +51,8 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification:               # fill in to your verification string
+google_site_verification:       # fill in to your verification string
+# See the google page at the root of the site.
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
