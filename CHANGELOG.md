@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.5.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.5.0...v5.5.1) (2023-01-29)
+
+
+### Bug Fixes
+
+* the icon position of the prompts in the list is incorrect ([0c9558d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/0c9558de8a01e9ab795778f351a8bbf4d6b21763))
+
 ## [5.5.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.4.0...v5.5.0) (2023-01-29)
 
 
