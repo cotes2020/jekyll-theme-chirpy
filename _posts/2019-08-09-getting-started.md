@@ -43,9 +43,7 @@ The above command will:
 
 2. If the option `--no-gh` is provided, the directory `.github`{: .filepath} will be deleted. Otherwise, set up the GitHub Action workflow by removing the extension `.hook`{: .filepath} of `.github/workflows/pages-deploy.yml.hook`{: .filepath}, and then remove the other files and directories in the folder `.github`{: .filepath}.
 
-3. Remove item `Gemfile.lock` from `.gitignore`{: .filepath}.
-
-4. Create a new commit to save the changes automatically.
+3. Create a new commit to save the changes automatically.
 
 ### Installing Dependencies
 
