@@ -117,19 +117,20 @@ Then add your ssh key to github.  This can be done in one of two places.
 
 1. The user profile for the entire account
    1.1 Under your user profile image in the right corner. Select Settings.
-   1.2. ![](https://ebmarquez.blob.core.windows.net/public-read/image/blog/sshkey/github20220906234032.png){: width="35%"}
+   ![github drop down menu under settings](https://ebmarquez.blob.core.windows.net/public-read/image/blog/sshkey/github20220906234032.png){: width="35%"}
 
-   1.3. Next select ssh and GPG keys ![](https://ebmarquez.blob.core.windows.net/public-read/image/blog/sshkey/github20220906234238.png){: width="35%"}
-   1.4. Select the New ssh key button
+   1.2. Next select ssh and GPG keys ![](https://ebmarquez.blob.core.windows.net/public-read/image/blog/sshkey/github20220906234238.png){: width="35%"}
+   
+   1.3. Select the New ssh key button
     ![ssh key button](https://ebmarquez.blob.core.windows.net/public-read/image/blog/sshkey/github_button_20220906234335.png){: width="35%"}
 
-   1.5. Copy the public key contents to your clipboard.
+   1.4. Copy the public key contents to your clipboard.
 
     ```powershell
         Get-Content $env:userprofile\.ssh\id_testkey.pub | clip.exe
     ```
 
-    1.6. paste in the key
+    1.5. paste in the key
     ![ssh key text box](https://ebmarquez.blob.core.windows.net/public-read/image/blog/sshkey/github20220906234431.png){: width="100%"}
 
 2. In your windows powershell console, test the ssh key.
