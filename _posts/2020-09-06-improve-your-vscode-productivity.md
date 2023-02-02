@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: post
 title: Improve Your VSCode Productivity
 date: 2020-09-06 11:00:00 00:00
 comments: true
+author: eric marquez
 categories:
   - productivity
 tags: 
