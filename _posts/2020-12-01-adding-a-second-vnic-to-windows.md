@@ -5,7 +5,7 @@ date: 2020-12-01 13:01
 comments: true
 category: 
  - powershell
-author: Eric Marquez
+author: ebmarquez
 tags: [productivity, windows, powershell]
 summary: How to add a second virtual network interface to windows.
 ---

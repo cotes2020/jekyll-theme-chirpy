@@ -4,7 +4,7 @@ title: Use a hello certificate for ssh and setup your github repo
 date: 2023-01-31 00:05
 category: 
 - Instructions
-author: Eric Marquez
+author: ebmarquez
 tags:
 - SSH
 - Windows

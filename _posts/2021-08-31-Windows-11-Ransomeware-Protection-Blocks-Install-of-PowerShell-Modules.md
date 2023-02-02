@@ -3,7 +3,7 @@ layout: post
 title: Windows 11 Ransomware protection blocks the install of some PowerShell modules from being installed
 date: 2021-08-31 00:00:00 00:00
 comments: true
-author: Eric Marquez
+author: ebmarquez
 categories:
  - productivity
 tags: 
