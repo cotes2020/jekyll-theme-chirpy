@@ -21,7 +21,7 @@ timezone: Asia/Shanghai
 
 title: Abdelhady. M                          # the main title
 
-tagline: Security researcher   # it will display as the sub-title
+tagline: SSecurity researcher   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Security blog contains writeup for hackthebox machines and publications.
