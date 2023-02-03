@@ -82,10 +82,10 @@
       {% if url %}
       <a href="{{ url }}" aria-label="{{ entry.type }}"
         {% assign link_types = nil %}
-        {% unless entry.noblank %}
+        {% if entry.noblank %}
           {% assign link_types = link_types | append: " noopener" %}
           target="_blank"
-        {% endunless %}
+        {% endif %}
 
         {% if entry.type == 'mastodon' %}
           {% assign link_types = link_types | append: " me" %}
