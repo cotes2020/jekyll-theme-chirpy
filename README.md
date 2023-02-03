@@ -109,8 +109,8 @@ This work is published under [MIT](https://github.com/cotes2020/jekyll-theme-chi
 ### Change from master to main
 
 ```console
-git branch -m master <BRANCH>
+git branch -m master main
 git fetch origin
-git branch -u origin/<BRANCH> <BRANCH>
+git branch -u origin/main main
 git remote set-head origin -a
 ```
