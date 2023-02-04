@@ -1,0 +1,90 @@
+---
+title: "[BOJ]피보나치 함수- 1003"
+author: kwon
+date: 2023-02-02T23:00:00 +0900
+categories: [boj]
+tags: [dynamic programing]
+math: true
+mermaid: false
+---
+
+| 시간 제한 | 메모리 제한 |
+| --- | --- |
+| 0.25 초 (추가 시간 없음) | 128 MB |
+
+# 문제
+
+다음 소스는 N번째 피보나치 수를 구하는 C++ 함수이다.
+
+```
+int fibonacci(int n) {
+    if (n == 0) {
+        printf("0");
+        return 0;
+    } else if (n == 1) {
+        printf("1");
+        return 1;
+    } else {
+        return fibonacci(n‐1) + fibonacci(n‐2);
+    }
+}
+
+```
+
+`fibonacci(3)`을 호출하면 다음과 같은 일이 일어난다.
+
+- `fibonacci(3)`은 `fibonacci(2)`와 `fibonacci(1)` (첫 번째 호출)을 호출한다.
+- `fibonacci(2)`는 `fibonacci(1)` (두 번째 호출)과 `fibonacci(0)`을 호출한다.
+- 두 번째 호출한 `fibonacci(1)`은 1을 출력하고 1을 리턴한다.
+- `fibonacci(0)`은 0을 출력하고, 0을 리턴한다.
+- `fibonacci(2)`는 `fibonacci(1)`과 `fibonacci(0)`의 결과를 얻고, 1을 리턴한다.
+- 첫 번째 호출한 `fibonacci(1)`은 1을 출력하고, 1을 리턴한다.
+- `fibonacci(3)`은 `fibonacci(2)`와 `fibonacci(1)`의 결과를 얻고, 2를 리턴한다.
+
+1은 2번 출력되고, 0은 1번 출력된다. N이 주어졌을 때, `fibonacci(N)`을 호출했을 때, 0과 1이 각각 몇 번 출력되는지 구하는 프로그램을 작성하시오.
+
+# 입력
+
+첫째 줄에 테스트 케이스의 개수 T가 주어진다.
+
+각 테스트 케이스는 한 줄로 이루어져 있고, N이 주어진다. N은 40보다 작거나 같은 자연수 또는 0이다.
+
+# 출력
+
+각 테스트 케이스마다 0이 출력되는 횟수와 1이 출력되는 횟수를 공백으로 구분해서 출력한다.
+
+# 풀이
+
+각 수를 통해 피보나치 함수를 호출했을 때 0과 1이 출력 되는 횟수를 각 딕셔너리에 memoization하여 0과 1의 출력 횟수를 구한다. 단순히 피보나치 수를 구하는 것이 아니라 개수를 구하는 것이기 때문에 (0의 횟수, 1의 횟수)를 return하도록 함수를 작성한다.
+
+## 코드
+
+```python
+n = int(input())
+
+memo1 = {}
+memo2 = {}
+
+def fib(n):
+    if n == 0:
+        return 1, 0
+    elif n == 1:
+        return 0, 1
+    
+    if n in memo1:
+        zero = memo1[n]
+    if n in memo2:
+        one = memo2[n]
+    else:
+        zero1, one1 = fib(n - 1)
+        zero2, one2 = fib(n - 2)
+        zero = zero1 + zero2
+        one = one1 + one2
+        memo1[n] = zero
+        memo2[n] = one
+    return zero, one
+
+for _ in range(n):
+    num = int(input())
+    print(*fib(num), sep=' ')
+```
