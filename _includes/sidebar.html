@@ -92,7 +92,7 @@
             {% assign link_type = "noopener" %}
           {% endif %}
           target="_blank"
-        {% endif %}
+        {% endunless %}
 
         {% if entry.type == 'mastodon' %}
           {% assign link_type = "me" %}
