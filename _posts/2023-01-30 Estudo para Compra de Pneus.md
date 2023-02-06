@@ -3,7 +3,7 @@ title: "Compra de Pneus"
 author: "Ramon Roldan"
 date: "2023-01-30"
 categories: [Data Science, Tydeverse]
-tags: [Machine Learning, Tydeverse, Analitycs, Dashboard, Data Science, ETL]
+tags: [Tydeverse, Analitycs, Dashboard, Data Science, ETL]
 ---
 
 ## Principal Objetivo
