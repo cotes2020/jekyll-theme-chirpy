@@ -64,12 +64,11 @@
     {% endunless %}
 
     {% for entry in site.data.contact %}
-
       {% case entry.type %}
-        {% when 'github' %}
-          {% assign url = 'https://github.com/' | append: site.github.username %}
-        {% when 'twitter' %}
-          {% assign url = 'https://twitter.com/' | append: site.twitter.username %}
+        {% when 'github', 'twitter' %}
+          {%- capture url -%}
+            https://{{ entry.type }}.com/{{ site[entry.type].username }}
+          {%- endcapture -%}
         {% when 'email' %}
           {% assign email = site.social.email | split: '@' %}
           {%- capture url -%}
@@ -83,22 +82,19 @@
 
       {% if url %}
       <a href="{{ url }}" aria-label="{{ entry.type }}"
-        {% assign link_type = nil %}
+        {% assign link_types = '' %}
 
         {% unless entry.noblank %}
-          {% if entry.type == 'mastodon' %}
-            {% assign link_type = "me" %}
-          {% else %}
-            {% assign link_type = "noopener" %}
-          {% endif %}
           target="_blank"
+          {% assign link_types = 'noopener noreferrer' %}
         {% endunless %}
 
         {% if entry.type == 'mastodon' %}
-          {% assign link_type = "me" %}
+          {% assign link_types = link_types | append: ' me' | strip %}
         {% endif %}
 
-        {% if link_type %}rel="{{ link_type }}"{% endif %}>
+        {% unless link_types == empty %}rel="{{ link_types }}"{% endunless %}>
+
         <i class="{{ entry.icon }}"></i>
       </a>
       {% endif %}
