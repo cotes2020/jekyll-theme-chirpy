@@ -1,0 +1,149 @@
+1. TitleProvider 클래스를 생성 후 현재 탭 위치를 확인해주는
+   <br/>checkTab과 title을 변경해주는 changeTitl함수를 생성해줍니다
+```dart
+import 'package:flutter/material.dart';
+
+class TitleProvider extends ChangeNotifier{
+  String title = '사전등록';
+  String tab = '0';
+
+  void changeTitle(var newTitle){
+    title = newTitle;
+    notifyListeners();
+  }
+
+  void checkTab(String nowTab){
+    tab = nowTab;
+    print(tab);
+    notifyListeners();
+  }
+}
+```
+<center>title_provider.dart</center>
+<br/>
+
+2. TabController선언 후 initState() 함수안에 탭이
+    <br/>변경될때마다 탭의 위치를 체크한값을 checkTab으로 넘겨줍니다
+```dart
+class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin{
+  void initState() {
+    _tabController = TabController(length: tabs.length, vsync: this);
+    _tabController.addListener(() {
+    context.read<TitleProvider>().checkTab('${(_tabController.index + 1).toString()}');
+    }
+  );
+  super.initState();
+  }
+}
+```
+<center>main.dart</center>
+<br/>
+
+3. 그다음 Stirng값을 넘겨받는 appBarTitle함수를 생성하고 tab변수(현재 탭 위치를 체크해 넘겨받은 값) 로 현제의
+   <br/>탭위치를 구별하여 각각의 탭의 맞는 title을 return해줍니다
+```dart
+class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin{
+  void initState() {
+    _tabController = TabController(length: tabs.length, vsync: this);
+    _tabController.addListener(() {
+    context.read<TitleProvider>().checkTab('${(_tabController.index + 1).toString()}');
+/////////////////////////////////////////////////////////////////////////////////////
+    String? appBarTitle(){
+      if (Provider.of<TitleProvider>(context, listen: false).tab == '1'){
+          return '사전등록';   // 첫번째 탭의 원하는 title
+        }
+      if (Provider.of<TitleProvider>(context, listen: false).tab == '2'){
+          return '즐겨찾기';   // 두번째 1번 탭의 원하는 title
+        }
+      if (Provider.of<TitleProvider>(context, listen: false).tab == '3'){
+          return 'MyPage';    // 세번 2번 탭의 원하는 title
+        }
+      }
+/////////////////////////////////////////////////////////////////////////////////////
+    }
+  );
+  super.initState();
+  }
+}
+```
+<center>main.dart</center>
+<br/>
+
+4. return받은 String값을 TitleProvider클래스의 changeTitle로 넘겨줘 title 변수에 저장합니다
+```dart
+class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin{
+  void initState() {
+    _tabController = TabController(length: tabs.length, vsync: this);
+    _tabController.addListener(() {
+    context.read<TitleProvider>().checkTab('${(_tabController.index + 1).toString()}');
+
+    String? appBarTitle(){
+      if (Provider.of<TitleProvider>(context, listen: false).tab == '1'){
+          return '사전등록';
+        }
+      if (Provider.of<TitleProvider>(context, listen: false).tab == '2'){
+          return '즐겨찾기';
+        }
+      if (Provider.of<TitleProvider>(context, listen: false).tab == '3'){
+          return 'MyPage';
+        }
+      }
+/////////////////////////////////////////////////////////////////////////
+      context.read<TitleProvider>().changeTitle(appBarTitle());
+/////////////////////////////////////////////////////////////////////////
+    }
+  );
+  super.initState();
+  }
+}
+```
+<center>main.dart</center>
+<br/>
+
+5. 마지막으로 appBar의 title값을 TitleProvider클래스의 title
+   <br/>변수값으로 줍니다 그러면 이제 탭이 변경될 때마다 지정된 title로 바뀌게 됩니다
+```dart
+void initState() {
+    isSelected = [isMetric, isImperial, isLike];
+    isSelected2 = [beforeGame, afterGame];
+    _tabController = TabController(length: tabs.length, vsync: this);
+    _tabController.addListener(() {
+      context.read<TitleProvider>().checkTab('${(_tabController.index + 1).toString()}');
+
+      String? appBarTitle(){
+        if (Provider.of<TitleProvider>(context, listen: false).tab == '1'){
+          return '사전등록';
+        }
+
+        if (Provider.of<TitleProvider>(context, listen: false).tab == '2'){
+          return '즐겨찾기';
+        }
+        if (Provider.of<TitleProvider>(context, listen: false).tab == '3'){
+          return 'MyPage';
+        }
+      }
+      context.read<TitleProvider>().changeTitle(appBarTitle());
+    }
+  );
+  super.initState();
+}
+////////////////////////////////////////////////////////////////
+@override
+Widget build(BuildContext maincontext) {
+  return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(context.watch<TitleProvider>().title),
+        ),
+      )
+    )
+  }
+}
+////////////////////////////////////////////////////////////////
+```
+<center>main.dart</center>
+<br/>
+
+결과물
+![](image/사전등록.png),![](image/즐겨찾기.png)
+![](image/마이페이지.png)
