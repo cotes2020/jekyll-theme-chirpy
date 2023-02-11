@@ -1,9 +1,7 @@
 1. TitleProvider 클래스를 생성 후 현재 탭 위치를 확인해주는
    <br/>checkTab과 title을 변경해주는 changeTitl함수를 생성해줍니다
-<br/>
+   
 ```dart
-import 'package:flutter/material.dart';
-
 class TitleProvider extends ChangeNotifier{
   String title = '사전등록';
   String tab = '0';
