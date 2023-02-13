@@ -3,15 +3,11 @@ name: Bug Report
 about: Create a report to help us improve
 ---
 
-<!-- NOTE: Please maintain all sections, otherwise the issue will be automatically closed :) -->
+We sincerely recommend that you first complete the following checklist:
 
-## Checklist
-
-<!-- Please complete the following list of tasks, and then check it by changing the "[ ]" to "[x]" -->
-
-- [ ] I have read the [tutorials](https://cotes2020.github.io/chirpy-demo/categories/tutorial/) and know the correct effect of the functional design.
-- [ ] There are no similar reports on [existing issues](https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue) (including closed ones).
-- [ ] I found the bug on the latest code of the `master` branch.
+- Read the [tutorials](https://cotes2020.github.io/chirpy-demo/categories/tutorial/) and know the correct effect of the functional design.
+- No similar [issue](https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue)(including closed ones) exists
+- Found the bug on the latest code of the `master` branch.
 
 ## Describe the bug
 
