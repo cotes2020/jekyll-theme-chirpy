@@ -30,11 +30,11 @@ If we use `seccomp-tool` on this file we get the following result.
 seccomp-tools dump ./gissa_igen
 ```
 
-<img src="./Images/1.png" alt="Seccomps that are disabled">
+<img src="https://github.com/manasghandat/manasghandat.github.io/raw/master/assets/img/Images/Blog2/1.png" alt="Seccomps that are disabled">
 
 As we can see we get that the syscalls like `open` , `execve` , etc are disabled but on a close look we find that this filter is different from what the general seccomp. 
 
-<img src="./Images/2.png" alt="Seccomp when properly implemented">
+<img src="https://github.com/manasghandat/manasghandat.github.io/raw/master/assets/img/Images/Blog2/2.png" alt="Seccomp when properly implemented">
 
 As we can clearly see that on line 3 and 4 of the latter example it blocks syscalls that have value greater than `0x40000000`. IN the case of first example we can try to pass syscalls that are greater than `0x40000000`. We add `0x40000000` the offset to the original syscall value o get those syscalls. Thus seccomp is bypassed. 
 
@@ -74,7 +74,7 @@ The above code works fine but when we objdump the following code in order to con
 Objdump -M intel -d (kernel module name)
 ```
 
-<img src="./Images/3.png" alt="Disassembled view">
+<img src="https://github.com/manasghandat/manasghandat.github.io/raw/master/assets/img/Images/Blog2/3.png" alt="Disassembled view">
 
 We can then use the shellcode that is generated ...... but it wont work. If we carefully see we find that the offset of the `gs` register is wrong. This is because `fs` and `gs` are exceptions that were added to address thread-specific data. Their real base addresses are stored in MSRs (model specific registers) instead of the descriptor table. The MSRs are only accessible in kernel mode. Thus we have to manually write assemble and then convert it to shellcode using <a href="https://defuse.ca/online-x86-assembler.htm#disassembly">defuse.ca</a>
 
