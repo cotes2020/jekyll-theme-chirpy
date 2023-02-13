@@ -22,7 +22,7 @@ We can easily find which syscalls are blocked by the process by using <a href="h
 
 # Bypassing Seccomp
 
-Bypassing Seccomp is the userland is impossible and it can only be evaded due to improper implementation. For the purpose of demonstration I will be exploiting the *gissa 2* challenge in the **Midnight Sun CTF Quals 2019**. In this challenge the seccomp was not properly implementated and can be bypassed easily. You can download <a href="./gissa_igen" download>here</a>.
+Bypassing Seccomp is the userland is impossible and it can only be evaded due to improper implementation. For the purpose of demonstration I will be exploiting the *gissa 2* challenge in the **Midnight Sun CTF Quals 2019**. In this challenge the seccomp was not properly implementated and can be bypassed easily. You can download <a href="https://github.com/manasghandat/manasghandat.github.io/blob/master/assets/img/chal/gissa_igen" download>here</a>.
 
 If we use `seccomp-tool` on this file we get the following result.
 
