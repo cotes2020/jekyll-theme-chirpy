@@ -1,6 +1,6 @@
 ---
 title: Function Obfuscation
-author: 0s4ma
+author: P0ch1ta
 date: 2019-08-08 11:33:00 +0800
 categories: [Malware]
 tags: [Malware, Function Obfuscation]

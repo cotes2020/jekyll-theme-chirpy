@@ -19,7 +19,7 @@ timezone: Asia/Kolkata
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 0s4ma                          # the main title
+title: P0ch1ta                          # the main title
 
 tagline: A security enthusiast. Active CTF player with InfoSecIITR. Love pwn,rev and malware.   # it will display as the sub-title
 
@@ -33,16 +33,16 @@ github:
   username: manasghandat             # change to your github username
 
 twitter:
-  username: 0x0s4ma            # change to your twitter username
+  username: 0xP0ch1ta            # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
+  name: Manas Ghandat
   email: ghandatmanas@gmail.com            # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/0x0s4ma      # change to your twitter homepage
+    - https://twitter.com/0xP0ch1ta      # change to your twitter homepage
     - https://github.com/manasghandat       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
