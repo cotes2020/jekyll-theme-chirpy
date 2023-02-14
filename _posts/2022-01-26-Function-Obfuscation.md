@@ -1,7 +1,7 @@
 ---
 title: Function Obfuscation
 author: P0ch1ta
-date: 2019-08-08 11:33:00 +0800
+date: 2022-01-26 11:33:00 +0530
 categories: [Malware]
 tags: [Malware, Function Obfuscation]
 math: true
