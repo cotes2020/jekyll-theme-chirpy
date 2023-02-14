@@ -1,7 +1,7 @@
 ---
 title: Bypassing Seccomp
 author: P0ch1ta
-date: 2022-02-13 12:33:00 +0530
+date: 2023-02-13 12:33:00 +0530
 categories: [Pwning]
 tags: [Seccomp Bypass, Kernel Seccomp]
 math: true
