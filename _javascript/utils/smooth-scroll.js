@@ -15,7 +15,7 @@ $(function () {
     $("a[href*='#']")
         .not("[href='#']")
         .not("[href='#0']")
-        .click(function (event) {
+        .on('click', function (event) {
             if (this.pathname.replace(/^\//, "") !==
                 location.pathname.replace(/^\//, "")) {
                 return;
@@ -64,28 +64,30 @@ $(function () {
             $("html").animate({
                 scrollTop: destOffset
             }, 500, () => {
-                $target.focus();
+                $target.trigger("focus");
 
                 /* clean up old scroll mark */
-                if ($(`[${ATTR_SCROLL_FOCUS}=true]`).length) {
-                    $(`[${ATTR_SCROLL_FOCUS}=true]`).attr(ATTR_SCROLL_FOCUS, false);
+                const $scroll_focus = $(`[${ATTR_SCROLL_FOCUS}=true]`);
+                if ($scroll_focus.length) {
+                    $scroll_focus.attr(ATTR_SCROLL_FOCUS, "false");
                 }
 
                 /* Clean :target links */
-                if ($(":target").length) { /* element that visited by the URL with hash */
-                    $(":target").attr(ATTR_SCROLL_FOCUS, false);
+                const $target_links = $(":target");
+                if ($target_links.length) { /* element that visited by the URL with hash */
+                    $target_links.attr(ATTR_SCROLL_FOCUS, "false");
                 }
 
                 /* set scroll mark to footnotes */
                 if (toFootnote || toFootnoteRef) {
-                    $target.attr(ATTR_SCROLL_FOCUS, true);
+                    $target.attr(ATTR_SCROLL_FOCUS, "true");
                 }
 
                 if ($target.is(":focus")) { /* Checking if the target was focused */
                     return false;
                 } else {
                     $target.attr("tabindex", "-1"); /* Adding tabindex for elements not focusable */
-                    $target.focus(); /* Set focus again */
+                    $target.trigger("focus"); /* Set focus again */
                 }
 
                 if (ScrollHelper.hasScrollUpTask()) {

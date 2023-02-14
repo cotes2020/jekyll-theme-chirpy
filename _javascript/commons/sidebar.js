@@ -22,7 +22,7 @@ $(function () {
 
     }());
 
-    $("#sidebar-trigger").click(sidebarUtil.toggle);
+    $("#sidebar-trigger").on('click', sidebarUtil.toggle);
 
-    $("#mask").click(sidebarUtil.toggle);
+    $("#mask").on('click', sidebarUtil.toggle);
 });
