@@ -30,8 +30,6 @@ Esta etapa visa entender quem são os principais players e principais produtos, 
 
 Esta etapa visa entender os preços por meio de cotação a mercado em tempo real para garantirmos o melhor preço na hora da compra.
 
-**Premissas**: Este trabalho foi realizado com a linguagem R, IDE Rstudio, com Quarto, e sistema operacional Linux Mint. Foram utilizados conhecimentos de data science e metodologias ágeis. Seguindo as boas práticas do mercado demos preferencia para bibliotecas do tidyverse.
-
 **Principais Etapas**:
 
 -   Definição do principal objetivo a ser alcançado;
@@ -62,7 +60,9 @@ Neste trabalho utilizaremos os dados abertos do Programa Brasileiro de Etiquetag
 
 ![Programa Brasileiro de Etiquetagem (PBE)](/assets/img/compra_pneus/inmetro.png)
 
-Este [Video](https://www.youtube.com/watch?v=867SbL5RulU) Explica melhor o significado da "sopa de letrinhas" e como podemos usar-las a nosso favor.
+![Imagem da Etiqueta](/assets/img/compra_pneus/pneu.png)
+
+Este [Video](https://www.youtube.com/watch?v=867SbL5RulU) didatico explica com maior riqueza de detalhes o significado dos códigos da etiqueta e como podemos interpreta-as para ajudar no esclarecimento.
 
 ### Loja Pneu Store
 
@@ -119,6 +119,30 @@ indice_de_velocidade = str_extract(indice_de_velocidade, "(?<=- )[^ ]+(?= km)") 
 
 ```
 ## Warning: 1 parsing failure.
+## row col expected                actual
+##   1  -- a number Sobre a marca Pirelli
+
+## Warning: 1 parsing failure.
+## row col expected                actual
+##   1  -- a number Sobre a marca Pirelli
+
+## Warning: 1 parsing failure.
+## row col expected                actual
+##   1  -- a number Sobre a marca Pirelli
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected                actual
+##   1  -- a number Sobre a marca Formula
+
+## Warning: 1 parsing failure.
+## row col expected                actual
+##   1  -- a number Sobre a marca Formula
+```
+
+```
+## Warning: 1 parsing failure.
 ## row col expected                    actual
 ##   1  -- a number Sobre a marca Bridgestone
 ```
@@ -132,79 +156,33 @@ indice_de_velocidade = str_extract(indice_de_velocidade, "(?<=- )[^ ]+(?= km)") 
 ```
 ## Warning: 1 parsing failure.
 ## row col expected                    actual
-##   1  -- a number Sobre a marca Continental
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                   actual
-##   1  -- a number Sobre a marca BFGoodrich
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                    actual
 ##   1  -- a number Sobre a marca Bridgestone
 ```
 
 ```
 ## Warning: 1 parsing failure.
+## row col expected                 actual
+##   1  -- a number Sobre a marca Michelin
+
+## Warning: 1 parsing failure.
+## row col expected                 actual
+##   1  -- a number Sobre a marca Michelin
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected                     actual
+##   1  -- a number Sobre a marca General Tire
+```
+
+```
+## Warning: 1 parsing failure.
 ## row col expected                    actual
 ##   1  -- a number Sobre a marca Continental
-```
 
-```
 ## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Formula
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected               actual
-##   1  -- a number Sobre a marca Cooper
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Formula
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Goodyear
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Michelin
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected               actual
-##   1  -- a number Sobre a marca Cooper
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Michelin
+## row col expected                    actual
+##   1  -- a number Sobre a marca Continental
 ```
 
 ```
@@ -215,17 +193,35 @@ indice_de_velocidade = str_extract(indice_de_velocidade, "(?<=- )[^ ]+(?= km)") 
 
 ```
 ## Warning: 1 parsing failure.
-## row col expected               actual
-##   1  -- a number Sobre a marca Tornel
+## row col expected              actual
+##   1  -- a number Sobre a marca Barum
 ```
 
 ```
 ## Warning: 1 parsing failure.
 ## row col expected                 actual
 ##   1  -- a number Sobre a marca Goodyear
+
+## Warning: 1 parsing failure.
+## row col expected                 actual
+##   1  -- a number Sobre a marca Goodyear
 ```
 
 ```
+## Warning: 1 parsing failure.
+## row col expected      actual
+##   1  -- a number CAOA CHERY:
+
+## Warning: 1 parsing failure.
+## row col expected      actual
+##   1  -- a number CAOA CHERY:
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected               actual
+##   1  -- a number Sobre a marca Cooper
+
 ## Warning: 1 parsing failure.
 ## row col expected               actual
 ##   1  -- a number Sobre a marca Cooper
@@ -233,76 +229,14 @@ indice_de_velocidade = str_extract(indice_de_velocidade, "(?<=- )[^ ]+(?= km)") 
 
 ```
 ## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Michelin
+## row col expected               actual
+##   1  -- a number Sobre a marca Tornel
 ```
 
 ```
 ## Warning: 1 parsing failure.
 ## row col expected                actual
 ##   1  -- a number Sobre a marca Hankook
-
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Hankook
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                     actual
-##   1  -- a number Sobre a marca General Tire
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected             actual
-##   1  -- a number Sobre a marca Iris
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected      actual
-##   1  -- a number CAOA CHERY:
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected              actual
-##   1  -- a number Sobre a marca Barum
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected      actual
-##   1  -- a number CAOA CHERY:
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                     actual
-##   1  -- a number Sobre a marca Apollo Tyres
-
-## Warning: 1 parsing failure.
-## row col expected                     actual
-##   1  -- a number Sobre a marca Apollo Tyres
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Michelin
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                     actual
-##   1  -- a number Sobre a marca General Tire
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Goodyear
 ```
 
 ```
@@ -313,24 +247,6 @@ indice_de_velocidade = str_extract(indice_de_velocidade, "(?<=- )[^ ]+(?= km)") 
 
 ```
 ## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
-
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
-
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Goodyear
-
-## Warning: 1 parsing failure.
 ## row col expected                 actual
 ##   1  -- a number Sobre a marca Goodyear
 ```
@@ -339,6 +255,16 @@ indice_de_velocidade = str_extract(indice_de_velocidade, "(?<=- )[^ ]+(?= km)") 
 ## Warning: 1 parsing failure.
 ## row col expected                actual
 ##   1  -- a number Sobre a marca Pirelli
+
+## Warning: 1 parsing failure.
+## row col expected                actual
+##   1  -- a number Sobre a marca Pirelli
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected                   actual
+##   1  -- a number Sobre a marca BFGoodrich
 ```
 
 ```
@@ -349,8 +275,54 @@ indice_de_velocidade = str_extract(indice_de_velocidade, "(?<=- )[^ ]+(?= km)") 
 
 ```
 ## Warning: 1 parsing failure.
-## row col expected             actual
-##   1  -- a number Sobre a marca Ceat
+## row col expected                 actual
+##   1  -- a number Sobre a marca Goodyear
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected                     actual
+##   1  -- a number Sobre a marca Apollo Tyres
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected               actual
+##   1  -- a number Sobre a marca Cooper
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected                     actual
+##   1  -- a number Sobre a marca General Tire
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected                 actual
+##   1  -- a number Sobre a marca Goodyear
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected                actual
+##   1  -- a number Sobre a marca Hankook
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected                 actual
+##   1  -- a number Sobre a marca Michelin
+
+## Warning: 1 parsing failure.
+## row col expected                 actual
+##   1  -- a number Sobre a marca Michelin
+```
+
+```
+## Warning: 1 parsing failure.
+## row col expected                actual
+##   1  -- a number Sobre a marca Pirelli
 ```
 
 ### Seleção das Principais Variáveis
@@ -379,8 +351,8 @@ Com base em em pesquisa concluimos que as principais variáveis são:
 
 11. **Extra Load (Opcional)**: Os pneus reforçados ou EXTRA LOAD (XL) destinam-se aos veículos pesados ou equipados com uma motorização potente. Os flancos dos pneus reforçados são mais rígidos do que os dos pneus clássicos designados por "SL" para "Standard Load". A rigidez dos flancos permite suportar uma carga, uma pressão e tensões mais elevadas. [Fonte](https://www.pneuslider.pt/pneus-reforcados).
 
-
 ### Avaliação Final
+
     
     ```r
     teste<- bases_pneus_store %>% 
@@ -458,3 +430,13 @@ Com base em em pesquisa concluimos que as principais variáveis são:
       
     ) %>% arrange(desc(nota_conceitual))
     ```
+
+**Premissas**: Este trabalho foi realizado com a linguagem R, IDE Rstudio, com Quarto, e sistema operacional Linux Mint. Foram utilizados conhecimentos de data science e metodologias ágeis. Seguindo as boas práticas do mercado demos preferencia para bibliotecas do tidyverse.
+
+![Rstudio](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg){alt="Ramon-Rstudio" align="center" width="40" height="30"} ![Quarto](https://quarto.org/quarto.png){alt="Ramon-quarto" align="center" width="60" height="30"} ![Linux](https://linuxmint.com/web/img/logo-mono.svg){alt="Ramon-Mint" align="center" width="80" height="70"} ![Tidyverse](https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/tidyverse.svg){alt="Ramon-tidyverse" align="center" width="40" height="30"}
+
+# Observações
+
+Este artigo tem finalidade de estudo empirico pessoal e não é recomendação de compra e/ou venda, caso tenha alguma dúvida técnica procure um mecânico de sua confiança. Um ponto importante em se destacar é que os preços e disponibiidade de estoque estão sujeitos à mudança dinâmica do mercado varejista, e que as especificações técnicas também podem sofrer alterações conforme novos decretos da agência regulamentadora.
+
+# Considerações Finais

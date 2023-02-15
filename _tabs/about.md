@@ -3,7 +3,7 @@ title: "About"
 icon: fas fa-info-circle
 order: 4
 ---
-<i class="fa fa-download"></i> [Download CV in PDF](https://drive.google.com/file/d/1CT_DxRtPF8-Xeq1s34B0VufoqZX2t-rY/view?usp=sharing)
+<i class="fa fa-download"></i> [Download CV in PDF](https://drive.google.com/file/d/1YeTclEQzrFyW6kJ-74ZuviFNg7-B8Cpz/view?usp=sharing)
 
 ## **Ramon Roldan de Lara**
 
@@ -18,17 +18,19 @@ order: 4
 
 ## <i class='fas fa-university'></i> **Educational Background**
 I have a degree in Bachelor of Business Administration - Positive University - 12/2016<br/>
-Pos graduate in Lean Six Sigma: Green Belt - Catholic Pontiff University - (Conclusion in 06/2022)<br/>
-Pos graduate in Data Science - Catholic Pontiff University - (Scheduled for start in 11/2022)
+Pos graduate in Lean Six Sigma: Green Belt - Catholic Pontiff University - 07/2022<br/>
+Pos graduate in Design Thinking, Continuos Improvement - Cruzeiro do Sul Virtual - 10/2022  <br/>
+Pos graduate in Data Science - Catholic Pontiff University - (Scheduled for start in 03/2023)
 
 ## <i class="fas fa-user-tie"></i> **Summary**
-Passionate about data and technology, I have + 3 years of experience working daily with R, SQL and Python.<br/><br/>
-Practical activities such as automated data collection, preparation and analysis, professional visualizations,
-development of web applications and Dashboards, statistical modeling, Machine Learning, Windows, Linux, database
-and search engines are part of my daily life.<br/><br/>
-I currently work as a Strategic Planning Analyst at Marista Group where my goal is to apply knowledge of data science, technologies and statistics, to promote solutions and innovation for the organization.<br/><br/>
-I also have very hard expertise with strategic sourcing on negotiation with suppliers, and service to internal customers, because I worked in the procurement area from national and international companies of sectors: Food and beverage, educacional, retail, ecommerce, agrobusiness, metallurgical, industrial and banking sector.<br/><br/>
-Working together with multidisciplinary teams, I had the opportunity to participate in the implementation of complex projects by applying the methodology agile and six sigma.<br/><br/>
+I have + 4 years of experience with data science, working daily with R, SQL, Excel, VBA, Power BI, Tableau
+and Python.<br/><br/>
+Are part of my daily life practical activities a such as automated data collection (SQL and Web
+Scrapping), data preparation and analysis (Tidyverse / Pandas / DAX), professional visualizations with web
+applications and dashboards (BI / R / Tableau), statistical modeling and develop models machine learning
+(Tidymodels).<br/><br/>
+With my experience in procurement, lean six sigma certification and using design thinking, my goal is bring innovative solutions to improve the customer experience.
+
 
 <i class="fas fa-rocket"></i> **Expertise:**<br/>
 * Procurement and Strategic Sourcing
@@ -55,7 +57,7 @@ Obs.: English - B2 Upper Intermediate according to the Common European Framework
 
 
 ## <i class='fas fa-briefcase'></i> **Professional Background**
-> ### Marista Group - *Strategic Planning Analyst* - Since Dec/2019 until Now
+> ### Marista Group - *Senior Strategic Planning Analyst* - Since Dec/2019 until Now
 - Develop procurement KPIs with quantitative methodology;
 - Development of statistical spot reports to support the board in real-time decision-making;
 - Responsible for managing the budget and financial accounts of the procurement area;
@@ -123,12 +125,30 @@ Obs.: English - B2 Upper Intermediate according to the Common European Framework
 - Regional Warehouse: Control of entries and exits, conference of invoices, organization and evaluation of stock obsolescence.
 
 ## <i class="fas fa-paperclip"></i> Diplomas:
+>### Data Science Academy (DSA)
+- [Microsoft Power BI Para Data Science, Versão 2.0](https://mycourse.app/zub22w2KkopNNQUz6)
+
 >### IBM:
 - [Data Science Methodologies](https://www.credly.com/badges/d5a0f5a1-7706-463a-b4b5-8c48a17cbe89)
 - [Data Science Tools](https://www.credly.com/badges/b9de55d4-f7eb-4410-859e-b34b5ae2a6b2)
 - [R Essentials](https://www.credly.com/badges/4737d75b-fa45-4a48-b1c6-6fe3f9d053df)
 - [Machine Learning with R](https://www.credly.com/badges/b87855b2-1571-46b7-a8d4-3535216cf9ce)
 - [Data Visualization with R](https://www.credly.com/badges/48c93202-1d22-4d3a-b7dd-89755be73f4e)
+
+>### DataCamp:
+- [Introduction to R](https://www.datacamp.com/statement-of-accomplishment/course/a26f7a44035b32b39d223838b11403042564953e)
+- [Introduction to Git](https://www.datacamp.com/statement-of-accomplishment/course/8ffadab4369ef27860e1e3000be6223b3135b402)
+- [Machine Learning for Everyone](https://www.datacamp.com/statement-of-accomplishment/course/339efc72286d69d17748c4ab9ef6d59cf3aa3722)
+- [Understanding Cloud Computing](https://www.datacamp.com/statement-of-accomplishment/course/24004e1313e656b55dfdc91ec881fc2fa4a38845)
+- [Understanding Machine Learning](https://www.datacamp.com/statement-of-accomplishment/course/339efc72286d69d17748c4ab9ef6d59cf3aa3722?raw=1)
+- [Introduction to the Tidyverse](https://www.datacamp.com/statement-of-accomplishment/course/046b07035515761384fa549d7a82b5defcf24ace)
+- [Reshaping Data with tidyr](https://www.datacamp.com/statement-of-accomplishment/course/73578ed3c3c0fbffb43c9f488cfb18505d1a1180?raw=1)
+- [Building Web Applications with Shiny in R](https://www.datacamp.com/statement-of-accomplishment/course/fd28f4f7e84f22b28c94c327b9a46f455270f8f9)
+- [Intermediate SQL Queries](https://www.datacamp.com/statement-of-accomplishment/course/4187d3f596554f03b68db2d7eba392c4d26e3be7)
+- [Case Study: Exploratory Data Analysis in R](https://www.datacamp.com/statement-of-accomplishment/course/b8589d387c1d1cb958264bc417e8b439c307e8f6)
+- [Exploratory Data Analysis in R](https://www.datacamp.com/statement-of-accomplishment/course/e84a6045cb416fad81423cd5bb73b65f4cf3e8e8)
+- [Modeling with tidymodels in R](https://www.datacamp.com/statement-of-accomplishment/course/88cbe98d10d86b0fbcfa7f0e613f7267ed0a08ad?raw=1)
+
 
 >### Udemy:
 - [Bootcamp Cientista de Dados: 10 aplicações Web Completas](https://www.udemy.com/certificate/UC-accd2dbf-71ec-4554-b41b-8301b8780b18)
@@ -149,5 +169,3 @@ Obs.: English - B2 Upper Intermediate according to the Common European Framework
 - [Crisis Communication (Certify By Linkedin and NASBA)](https://www.linkedin.com/learning/certificates/395c33bc1579a103d6d1663bd437efadc538f8aae49b684ac2ab563c092ba072?trk=share_certificate)
 - [Measuring Team Performance (Certify by Linkedin and NASBA)](https://www.linkedin.com/learning/certificates/c155f1bfe231667ae88bc1a7c17a68430a74b523a176f9e7f330e19f0ef0e948?trk=share_certificate)
 - [Measuring Team Performance (Certify by Linkedin and PMI)](https://www.linkedin.com/learning/certificates/6e89aa2fa9ae4b49396ac9bdb3b27014b7a74ee7b29520c1475994ef60ea5d39?trk=share_certificate)
-### DataCamp:
-- [Machine Learning for Everyone](https://www.datacamp.com/statement-of-accomplishment/course/339efc72286d69d17748c4ab9ef6d59cf3aa3722)
