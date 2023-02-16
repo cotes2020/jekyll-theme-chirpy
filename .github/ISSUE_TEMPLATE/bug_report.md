@@ -3,17 +3,20 @@ name: Bug Report
 about: Create a report to help us improve
 ---
 
-We sincerely recommend that you first complete the following checklist:
+**NOTE:** Before you start, the following should be completed.
 
-- Read the [tutorials](https://cotes2020.github.io/chirpy-demo/categories/tutorial/) and know the correct effect of the functional design.
-- No similar [issue](https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue)(including closed ones) exists
-- Found the bug on the latest code of the `master` branch.
+- Read [tutorial][tutorial] to understand the usage and the correct effect of functional design.
+- Make sure no [similar issue(including closed ones)][issues] exists.
+- Make sure the bug is found in the latest code of the `master` branch.
+
+[tutorial]: https://cotes2020.github.io/chirpy-demo/categories/tutorial/
+[issues]: https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue
 
 ## Describe the bug
 
 <!-- A clear and concise description of what the bug is. -->
 
-### To Reproduce
+## To Reproduce
 
 Steps to reproduce the behavior:
 <!--
@@ -23,15 +26,15 @@ Steps to reproduce the behavior:
 4. See error
 -->
 
-### Expected behavior
+## Expected behavior
 
 <!-- A clear and concise description of what you expected to happen. -->
 
-### Screenshots
+## Logs/Screenshots
 
-<!-- If applicable, add screenshots to help explain your problem. -->
+<!-- If applicable, add logs/screenshots to help explain your problem. -->
 
-### Environment
+## Environment
 
 | Command                           | Version |
 |-----------------------------------|---------|
@@ -41,21 +44,25 @@ Steps to reproduce the behavior:
 | `bundle exec jekyll -v`           |         |
 | `bundle info jekyll-theme-chirpy` |         |
 
+<!-- If necessary, uncomment and fill in the following list:
+
 ### Desktop
 
-<!-- If necessary, uncomment and fill in the following list:
 - OS: [e.g. macOS 10.15.6]
 - Browser: [e.g. Chrome 85.0.4183.83 (64-bit)]
+
 -->
+
+<!-- If necessary, uncomment and fill in the following list:
 
 ### Smartphone
 
-<!-- If necessary, uncomment and fill in the following list:
 - Device: [e.g. iPhone 6]
 - OS: [e.g. iOS 13.6.1]
 - Browser: [e.g. Chrome 22]
+
 -->
 
-### Additional context
+## Additional context
 
 <!-- Add any other context about the problem here. -->
