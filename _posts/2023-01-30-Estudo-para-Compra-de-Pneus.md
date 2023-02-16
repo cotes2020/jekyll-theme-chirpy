@@ -171,42 +171,23 @@ bases_pneus_store %>% glimpse()
 
 Analisando os dados descobrimos que existem 30 fornecedores diferentes e que alguns tem um portifolio de produtos mais variado que outros fornecedores.
 
+![plot of chunk r](figure/r-1.png)
 
-```r
-bases_pneus_store %>% count(marca,sort = TRUE) %>% 
-  ggplot(aes(x=reorder(marca,n),y=n))+
-  geom_col(fill="lightblue")+
-  coord_flip()+
-  geom_text(aes(label=n))+
-  labs(title = "Quantidade de Pneus por Marca",y="",x="")
-```
-
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+![](/assets/img/compra_pneus/qtd_pneus_por_marca.png)
 
 Analisando os dados descobrimos que existem 49 modelos de pneus diferentes porque as variantes servem para atender necessidades diferentes, como desempenho em terrenos distintos e consumo de conbustivel.
 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png)
 
-```r
-bases_pneus_store %>% count(modelo,sort = TRUE) %>% 
-  ggplot(aes(x=reorder(modelo,n),y=n))+
-  geom_col(fill="lightblue")+
-  coord_flip()+
-  geom_text(aes(label=n))+
-  labs(title = "Quantidade de Pneus por Modelo",y="",x="")
-```
-
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
+![](/assets/img/compra_pneus/qtd_pneus_por_modelo.png)
 
 ### Seleção das Principais Variáveis
 
 Avaliando qualidade dos dados descobrimos que algumas das 36 variaveis tem muitos dados faltantes:
 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png)
 
-```r
-plot_missing(bases_pneus_store)
-```
-
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
+![](/assets/img/compra_pneus/qtd_valores_vazios.png)
 
 Avaliando maiores detalhes das variaveis com mais dados faltantes, vermelhas e roxas, entendemos que não são relevantes para o trabalho e por isso iremos desconsiderar as 6 variáveis: preco_parcelado, tala_possiveis_da_roda, talas_da_roda, fabricante, tipo_de_montagem, profundidade_do_sulco
 
@@ -350,13 +331,20 @@ base_para_nota_conceitual  %>% unnest()
 
 Com base nas caractéristicas técnicas elencadas o produto que melhor atenderia nossas necessidades é "Pneu Dynamo Aro 14 MH01 175/65R14 86T".
 
-Sobre a parte financeira escolhemos pagar à vista porque se fossemos parcelar em 11 vezes o preço sairia mais caro, o que não seria compensado deixando num investimento rendendo 100% o CDI, e pagando por meio de PIX conseguimos um cupom de desconto. 
+Sobre a parte financeira escolhemos pagar à vista porque se fossemos parcelar em 11 vezes o preço sairia mais caro, o que não seria compensado deixando num investimento rendendo 100% o CDI, e pagando por meio de PIX conseguimos um cupom de desconto. Com isso conseguimos o preço unitário final de R$ 200 trazendo um saving de 60% em relação ao encontrado se não tivessemos realizado o estudo.
+
+Estou muito satisfeito com a compra e inclusive os pneus chegaram em casa.
 
 ![Imagem dos Pneus que chegaram em Casa](/assets/img/compra_pneus/pneus_chegaram.jpg)
 
 **Premissas**: Este trabalho foi realizado com a linguagem R, IDE Rstudio, com Quarto, e sistema operacional Linux Mint. Foram utilizados conhecimentos de data science e metodologias ágeis. Seguindo as boas práticas do mercado demos preferencia para bibliotecas do tidyverse.
 
-![Rstudio](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg){alt="Ramon-Rstudio" align="center" width="40" height="30"} ![Quarto](https://quarto.org/quarto.png){alt="Ramon-quarto" align="center" width="60" height="30"} ![Linux](https://linuxmint.com/web/img/logo-mono.svg){alt="Ramon-Mint" align="center" width="80" height="70"} ![Tidyverse](https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/tidyverse.svg){alt="Ramon-tidyverse" align="center" width="40" height="30"} ![Metodologias Agéis](https://tse1.mm.bing.net/th?id=OIP.YQHMHRrHb3almjchEGIknQHaE8){alt="Ramon-metodos" align="center" width="40" height="30"}
+![Rstudio](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg){alt="Ramon-Rstudio" align="center" width="40" height="30"} ![Quarto](https://quarto.org/quarto.png){alt="Ramon-quarto" align="center" width="60" height="30"}
+![Linux](https://linuxmint.com/web/img/logo-mono.svg){alt="Ramon-Mint" align="center" width="80" height="70"}
+
+![Tidyverse](https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/tidyverse.svg){alt="Ramon-tidyverse" align="center" width="40" height="30"}
+
+![Metodologias Agéis](https://tse1.mm.bing.net/th?id=OIP.YQHMHRrHb3almjchEGIknQHaE8){alt="Ramon-metodos" align="center" width="40" height="30"}
 
 # Observações
 
