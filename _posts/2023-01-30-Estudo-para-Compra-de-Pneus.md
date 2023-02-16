@@ -1,36 +1,34 @@
 ---
 title: "Compra de Pneus"
 author: "Ramon Roldan"
-date: "2023-02-12"
+date: "2023-02-16"
 categories: [Data Science, Tydeverse]
 tags: [Tydeverse, Web Scrapping, Analitycs, Dashboard, Data Science, ETL]
 ---
 
 ## Principal Objetivo
 
-Este estudo busca utilizar técnicas de Data Science para sugerir a melhor opção de compra de pneus conforme produtos atualmente disponíveis no mercado varejista online.
+Este estudo busca utilizar técnicas de Data Science juntamente com strategic sourcing e metodologias ageis para sugerir a melhor opção de compra de pneus conforme opções do mercado varejista online.
 
-O produto que procuramos são 4 unidades de um pneu aro 14, e escolheremos conforme melhor desempenho no indicador aqui criado: "Nota_Conceitual".
+O produto que procuramos é um pneu aro 14 e será escolhido conforme melhor nota no indicador aqui criado: "Nota_Conceitual".
 
 ## Motivação do Estudo
 
 Recentemente tive a felicidade de comprar meu primeiro carro, um lindo Ford Ka branco modelo 2017, mas como todo carro de segunda mão sempre precisamos arrumar alguma coisa.
 
-Orientado para cultura de Data Driven, e muita experiencia na área de suprimentos, decidi realizar uma pesquisa de mercado.
+Orientado para cultura de data driven, e muita experiencia na área de suprimentos, decidi realizar uma pesquisa de mercado.
 
 ## Organização do Trabalho
 
-Buscando eficiência divideremos o trabalho em duas partes:
+Buscando eficiência divideremos o trabalho em duas grandes partes:
 
-1- Realizar uma consulta no site do inmetro, baixando os dados de pneus, e analisar quais foram as avaliações da organização reguladora.
+1- Consultar o site do inmetro para: \* Analisar quais critérios a organização reguladora considera como essenciais. \* Esta etapa também visa entender quem são os principais fornecedores e principais produtos.
 
-Esta etapa visa entender quem são os principais players e principais produtos, para não deixarmos de fora algum eventual produto e/ou fornecedor muito bom mas com pouca relevancia no mercado varejista online e principalmente garantirmos a qualidade.
+A ideia é não deixarmos de fora algum produto e/ou fornecedor de boa qualidade, mas com pouca relevancia no mercado varejista online.
 
-2- Realizar uma consulta de mercado em todos os produtos disponíveis no site pneus store, que se enquadrem nas caractéristicas do produto que procuramos.
+2- Realizar uma consulta de mercado em todos os produtos disponíveis no site pneus store, que se enquadrem nas caractéristicas do produto que procuramos, para entender as condições comerciais como preço, prazo de entrega e valor do frete.
 
-Esta etapa visa entender os preços por meio de cotação a mercado em tempo real para garantirmos o melhor preço na hora da compra.
-
-**Principais Etapas**:
+**Principais Etapas do Estudo**:
 
 -   Definição do principal objetivo a ser alcançado;
 -   Detalhes sobre a Motivação deste Estudo;
@@ -42,11 +40,11 @@ Esta etapa visa entender os preços por meio de cotação a mercado em tempo rea
 
 ### Versionar projeto no GitHub
 
-Foi criado um repositorio para ajudar no armazenamento de arquivos e versionamento de todo o projeto.
+O trabalho foi desenvolvido usando um "Projeto" dentro da IDE Rstudio, e também criamos um repositorio para ajudar no armazenamento e versionamento de todos os arquivos do projeto.
 
 ![Imagem do Repositório](/assets/img/compra_pneus/print_github.png)
 
-E adotada a ferramenta Kanban para organizar projeto no formato de metodologia ágil:
+Adotamos a ferramenta Kanban para organizar as atividades do projeto no formato de metodologia ágil:
 
 ![Imagem do Kanban](/assets/img/compra_pneus/kanbam.png)
 
@@ -57,8 +55,6 @@ E adotada a ferramenta Kanban para organizar projeto no formato de metodologia �
 O Instituto Nacional de Metrologia, Qualidade e Tecnologia [Inmetro](https://dados.gov.br/dados/conjuntos-dados/programa-brasileiro-de-etiquetagem-pbe) é uma autarquia federal vinculada ao Ministério da Economia. Sua missão institucional é prover confiança à sociedade brasileira nas medições e na qualidade dos produtos, por meio da Metrologia e da Avaliação da Conformidade, promovendo a harmonização das relações de consumo, a inovação e a competitividade do País.
 
 Neste trabalho utilizaremos os dados abertos do Programa Brasileiro de Etiquetagem (PBE), disponibilizados pelo governo federal, para auxilar na escolha pautada em dados:
-
-![Programa Brasileiro de Etiquetagem (PBE)](/assets/img/compra_pneus/inmetro.png)
 
 ![Imagem da Etiqueta](/assets/img/compra_pneus/pneu.png)
 
@@ -78,24 +74,29 @@ No [video](https://www.youtube.com/watch?v=QIWJH8xKxcM) tem todo um estudo detal
 
 ## Coleta dos Dados
 
+Para realizar nosso estudo iremos aplicar uma técnica de data science chamada web scrapping que consiste em pegar as informações online da url.
+
+Utilizaremos a linguagem R como backend e framework proposto pela metodologia do tidyverse dando preferência para a biblioteca rvest.
+
 ### Dados do site Pneus Store
 
 
 ```r
+#Primeiro vamos começar limpando o global environment
+rm(list = ls())
 #Utilizaremos a biblioteca tidyverse para o tratamento, manipulação e vizualização de dados.
 library(tidyverse)
+#Utilizaremos a biblioteca Janitor para nos ajudar no saneamento e tratamento dos dados
+library(janitor)
 #A biblioteca rvest será utilizada para realizar web scrapping das informações disponíveis.
 library(rvest)
-```
+#Para realizar a análise exploratória e apresentação gráfica também usaremos o pacote DataExplorer
+library(DataExplorer)
 
-
-```r
-rm(list = ls())
-library(tidyverse)
-library(rvest)
-
+#Dentro do site pneu store o caminho dos pneus aro 14 estão salvo em 4 páginas
 urls <- paste0("https://www.pneustore.com.br/categorias/pneus-de-carro/175-65-r14?q=%3Arelevance&page=", 0:4)
 
+#A variavel "Links" vai realizar um looping entre as 4 páginas e salvar a url de cada pneu em uma lista
 links <-urls %>% 
   map(read_html) %>% 
   map( ~tibble(link = html_attr(html_nodes(.x, "a"), "href")) %>%
@@ -103,6 +104,7 @@ links <-urls %>%
   distinct() %>%
   mutate(link = str_c("https://www.pneustore.com.br", link))) %>% bind_rows()
 
+#A variavel bases_pneus_store irá armazenar os dados de todos os produtos disponíveis por página
 bases_pneus_store <- links %>%
   mutate(base = map(link, ~ read_html(.x) %>% html_node("table") %>% html_table() %>% as_tibble())) %>%
   unnest(cols = base) %>% rename('variavel' = 'X1', 'resultado' = 'X2') %>% 
@@ -117,217 +119,102 @@ indice_de_peso = str_extract(indice_de_peso, "(?<=- )[^ ]*") %>% parse_number(lo
 indice_de_velocidade = str_extract(indice_de_velocidade, "(?<=- )[^ ]+(?= km)") %>% parse_number(locale = locale(decimal_mark = ",")))
 ```
 
-```
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
+### Análise Exploratória (EDA)
 
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
+Analisando a base descobrimos que contém 36 variáveis e 69 modelos de pneus. Também é possível notar que nossa base contém diferentes tipos primitivos de dados:
 
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
+
+```r
+bases_pneus_store %>% glimpse()
 ```
 
 ```
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Formula
-
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Formula
+## Rows: 69
+## Columns: 36
+## $ link                       <chr> "https://www.pneustore.com.br/categor…
+## $ marca                      <chr> "PIRELLI", "CONTINENTAL", "FORMULA", …
+## $ modelo                     <chr> "CINTURATO P1", "CONTIPOWERCONTACT", …
+## $ medida                     <chr> "175/65R14", "175/65R14", "175/65R14"…
+## $ largura                    <chr> "175mm", "175mm", "175mm", "175mm", "…
+## $ perfil                     <chr> "65%", "65%", "65%", "65%", "65%", "6…
+## $ aro                        <chr> "14", "14", "14", "14", "14", "14", "…
+## $ diametro_total_em_mm       <chr> "583.1", "583.1", "583.1", "583.1", "…
+## $ indice_de_peso             <dbl> 475, 475, 475, 475, 475, 475, 475, 47…
+## $ indice_de_velocidade       <dbl> 190, 190, 190, 190, 190, 190, 210, 19…
+## $ rft_run_flat               <chr> "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "N…
+## $ tipo_de_construcao         <chr> "RADIAL", "RADIAL", "RADIAL", "RADIAL…
+## $ peso                       <chr> "6.78", "6.795", "6.572", "6.351", "6…
+## $ extra_load                 <chr> "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "N…
+## $ protetor_de_bordas         <chr> "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "N…
+## $ sidewall                   <chr> "BSW LETRAS PRETAS", "BSW LETRAS PRET…
+## $ tipo_de_terreno            <chr> "HT", "HT", "HT", "HT", "HT", "HT", "…
+## $ desenho                    <chr> "Assimétrico", "Assimétrico", "Assimé…
+## $ tala_da_roda               <chr> "5", "5", NA, NA, NA, NA, "5.0", NA, …
+## $ tala_possiveis_da_roda     <chr> "5-6", "5-6", NA, NA, NA, NA, "6", NA…
+## $ utqg                       <chr> "420AA", "480AB", "180AB", "200BB", "…
+## $ treadwear                  <chr> "420", "480", "180", "200", "440", "4…
+## $ tracao                     <chr> "A", "A", "A", "B", "B", "A", "A", NA…
+## $ temperatura                <chr> "A", "B", "B", "B", "B", "A", "B", NA…
+## $ registro_inmetro           <chr> "001387/2012", "001152/2015", "001387…
+## $ garantia                   <chr> "5 anos Contra Defeito de Fabricação"…
+## $ observacoes                <chr> "Produto novo,Imagem meramente ilustr…
+## $ fabricante                 <chr> NA, NA, "PIRELLI", "BRIDGESTONE", "GO…
+## $ tipo_de_montagem           <chr> NA, NA, NA, NA, NA, "SEM CÂMARA", NA,…
+## $ profundidade_do_sulco      <chr> NA, NA, NA, NA, NA, NA, "7.5", NA, NA…
+## $ nome                       <list> "Pneu Pirelli Aro 14 Cinturato P1 17…
+## $ resistencia_ao_rolamento   <list> "C", "E", "E", "E", "E", "F", "E", "…
+## $ aderencia_em_pista_molhada <list> "E", "C", "E", "E", "F", "E", "E", "…
+## $ ruido_externo              <list> "MEDIUM", "MEDIUM", "HIGH", "MEDIUM"…
+## $ preco_a_vista              <list> 359.9, 394.9, 329.9, 319.9, 349.9, 3…
+## $ preco_parcelado            <list> 408.98, 11, 374.89, 363.52, 397.61, …
 ```
 
-```
-## Warning: 1 parsing failure.
-## row col expected                    actual
-##   1  -- a number Sobre a marca Bridgestone
+Analisando os dados descobrimos que existem 30 fornecedores diferentes e que alguns tem um portifolio de produtos mais variado que outros fornecedores.
+
+
+```r
+bases_pneus_store %>% count(marca,sort = TRUE) %>% 
+  ggplot(aes(x=reorder(marca,n),y=n))+
+  geom_col(fill="lightblue")+
+  coord_flip()+
+  geom_text(aes(label=n))+
+  labs(title = "Quantidade de Pneus por Marca",y="",x="")
 ```
 
-```
-## Warning: 1 parsing failure.
-## row col expected                  actual
-##   1  -- a number Sobre a marca Firestone
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+
+Analisando os dados descobrimos que existem 49 modelos de pneus diferentes porque as variantes servem para atender necessidades diferentes, como desempenho em terrenos distintos e consumo de conbustivel.
+
+
+```r
+bases_pneus_store %>% count(modelo,sort = TRUE) %>% 
+  ggplot(aes(x=reorder(modelo,n),y=n))+
+  geom_col(fill="lightblue")+
+  coord_flip()+
+  geom_text(aes(label=n))+
+  labs(title = "Quantidade de Pneus por Modelo",y="",x="")
 ```
 
-```
-## Warning: 1 parsing failure.
-## row col expected                    actual
-##   1  -- a number Sobre a marca Bridgestone
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Michelin
-
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Michelin
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                     actual
-##   1  -- a number Sobre a marca General Tire
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                    actual
-##   1  -- a number Sobre a marca Continental
-
-## Warning: 1 parsing failure.
-## row col expected                    actual
-##   1  -- a number Sobre a marca Continental
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected               actual
-##   1  -- a number Sobre a marca Viking
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected              actual
-##   1  -- a number Sobre a marca Barum
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Goodyear
-
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Goodyear
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected      actual
-##   1  -- a number CAOA CHERY:
-
-## Warning: 1 parsing failure.
-## row col expected      actual
-##   1  -- a number CAOA CHERY:
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected               actual
-##   1  -- a number Sobre a marca Cooper
-
-## Warning: 1 parsing failure.
-## row col expected               actual
-##   1  -- a number Sobre a marca Cooper
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected               actual
-##   1  -- a number Sobre a marca Tornel
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Hankook
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected               actual
-##   1  -- a number Sobre a marca Aeolus
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Goodyear
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
-
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                   actual
-##   1  -- a number Sobre a marca BFGoodrich
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Michelin
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Goodyear
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                     actual
-##   1  -- a number Sobre a marca Apollo Tyres
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected               actual
-##   1  -- a number Sobre a marca Cooper
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                     actual
-##   1  -- a number Sobre a marca General Tire
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Goodyear
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Hankook
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Michelin
-
-## Warning: 1 parsing failure.
-## row col expected                 actual
-##   1  -- a number Sobre a marca Michelin
-```
-
-```
-## Warning: 1 parsing failure.
-## row col expected                actual
-##   1  -- a number Sobre a marca Pirelli
-```
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
 
 ### Seleção das Principais Variáveis
 
-Com base em em pesquisa concluimos que as principais variáveis são:
+Avaliando qualidade dos dados descobrimos que algumas das 36 variaveis tem muitos dados faltantes:
+
+
+```r
+plot_missing(bases_pneus_store)
+```
+
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
+
+Avaliando maiores detalhes das variaveis com mais dados faltantes, vermelhas e roxas, entendemos que não são relevantes para o trabalho e por isso iremos desconsiderar as 6 variáveis: preco_parcelado, tala_possiveis_da_roda, talas_da_roda, fabricante, tipo_de_montagem, profundidade_do_sulco
+
+Seguindo a sugestão do INMETRO entendemos que as variavéis resistencia_ao_rolamento, aderencia_em_pista_molhada, e ruido_externo são fundamentais:
+
+![Programa Brasileiro de Etiquetagem (PBE)](/assets/img/compra_pneus/inmetro.png)
+
+Com base em em pesquisa concluimos que 10 as principais variáveis principais para compor a nota_conceitual são:
 
 1.  **Resistência ao Rolamento (Obrigatório)**: Está diretamente relacionada à eficiência energética, uma vez que mede a energia absorvida quando o pneu está rodando. Com isso, quanto menor for a resistência ao rodar, menor será o consumo de combustível e, consequentemente, menor será o impacto ao meio ambiente (emissão de CO 2 ). Na etiqueta, os pneus serão classificados em seis níveis, sendo A o mais eficiente e até F. [Fonte](https://www.anip.org.br/etiquetagem/);
 
@@ -353,9 +240,11 @@ Com base em em pesquisa concluimos que as principais variáveis são:
 
 ### Avaliação Final
 
-    
-    ```r
-    teste<- bases_pneus_store %>% 
+Para conseguirmos realizar a avaliação de trade-off comparando as melhores caracteristicas com o melhor preço, vamos utilizar a uma nota conceitual onde as variáveis tem pesos distintos e a nota final irá ponderar:
+
+
+```r
+  base_para_nota_conceitual<- bases_pneus_store %>% 
       select(nome,
              marca,
              resistencia_ao_rolamento,
@@ -408,19 +297,19 @@ Com base em em pesquisa concluimos que as principais variáveis são:
       temperatura == "A" ~ 3,
       temperatura == "B" ~ 2,
       TRUE ~ 1),
-    
+
     nota_treadwear = case_when(
       treadwear >= 60 & treadwear <= 200 ~ 1,
       treadwear >= 201 & treadwear <= 400 ~ 2,
       TRUE ~ 3),
-    
+
     nota_indice_de_peso = case_when((indice_de_peso*4) <1007 ~ 0,
                                 indice_de_peso <= 462 ~ 1,
                                 indice_de_peso > 462 & indice_de_peso <= 475 ~ 2,
                                 TRUE ~ 3),
     nota_registro_inmetro = case_when( is.na(registro_inmetro) ~ 0,
                                    TRUE ~1),
-    
+
     nota_indice_de_velocidade = case_when(indice_de_velocidade <= 190 ~ 0,
                                       TRUE ~ 1),
     nota_extra_load = case_when(indice_de_velocidade == "SIM" ~ 1,
@@ -429,14 +318,46 @@ Com base em em pesquisa concluimos que as principais variáveis são:
       (nota_indice_de_peso * .7) + (nota_registro_inmetro * .3) + (nota_indice_de_velocidade * .3) + (nota_extra_load * .3)
       
     ) %>% arrange(desc(nota_conceitual))
-    ```
+
+#Printa as 10 primeiros produtos com melhor desempenho na nota conceitual
+base_para_nota_conceitual  %>% unnest()
+```
+
+```
+## # A tibble: 22 × 25
+##    nome       marca resis…¹ adere…² ruido…³ tracao tempe…⁴ tread…⁵ indic…⁶
+##    <chr>      <chr> <chr>   <chr>   <chr>   <chr>  <chr>   <chr>     <dbl>
+##  1 Pneu Dyna… DYNA… E       C       MEDIUM  A      A       420         530
+##  2 Pneu Mich… MICH… E       C       MEDIUM  A      A       420         475
+##  3 Pneu Pire… PIRE… C       E       MEDIUM  A      A       420         475
+##  4 Pneu Pire… PIRE… C       E       MEDIUM  A      A       420         475
+##  5 Jogo 4 Pn… PIRE… C       E       MEDIUM  A      A       420         475
+##  6 Pneu Cont… CONT… E       C       MEDIUM  A      B       480         475
+##  7 Pneu Form… FORM… E       E       HIGH    A      B       180         475
+##  8 Jogo 4 pn… KUMHO E       E       HIGH    A      B       460         475
+##  9 Pneu Kumh… KUMHO E       E       HIGH    A      B       460         475
+## 10 Jogo 4 Pn… FORM… E       E       HIGH    A      B       180         475
+## # … with 12 more rows, 16 more variables: registro_inmetro <chr>,
+## #   indice_de_velocidade <dbl>, preco_a_vista <dbl>,
+## #   preco_parcelado <dbl>, link <chr>,
+## #   nota_resistencia_ao_rolamento <dbl>,
+## #   nota_aderencia_em_pista_molhada <dbl>, nota_ruido_externo <dbl>,
+## #   nota_tracao <dbl>, nota_temperatura <dbl>, nota_treadwear <dbl>,
+## #   nota_indice_de_peso <dbl>, nota_registro_inmetro <dbl>, …
+```
+
+# Considerações Finais
+
+Com base nas caractéristicas técnicas elencadas o produto que melhor atenderia nossas necessidades é "Pneu Dynamo Aro 14 MH01 175/65R14 86T".
+
+Sobre a parte financeira escolhemos pagar à vista porque se fossemos parcelar em 11 vezes o preço sairia mais caro, o que não seria compensado deixando num investimento rendendo 100% o CDI, e pagando por meio de PIX conseguimos um cupom de desconto. 
+
+![Imagem dos Pneus que chegaram em Casa](/assets/img/compra_pneus/pneus_chegaram.jpg)
 
 **Premissas**: Este trabalho foi realizado com a linguagem R, IDE Rstudio, com Quarto, e sistema operacional Linux Mint. Foram utilizados conhecimentos de data science e metodologias ágeis. Seguindo as boas práticas do mercado demos preferencia para bibliotecas do tidyverse.
 
-![Rstudio](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg){alt="Ramon-Rstudio" align="center" width="40" height="30"} ![Quarto](https://quarto.org/quarto.png){alt="Ramon-quarto" align="center" width="60" height="30"} ![Linux](https://linuxmint.com/web/img/logo-mono.svg){alt="Ramon-Mint" align="center" width="80" height="70"} ![Tidyverse](https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/tidyverse.svg){alt="Ramon-tidyverse" align="center" width="40" height="30"}
+![Rstudio](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg){alt="Ramon-Rstudio" align="center" width="40" height="30"} ![Quarto](https://quarto.org/quarto.png){alt="Ramon-quarto" align="center" width="60" height="30"} ![Linux](https://linuxmint.com/web/img/logo-mono.svg){alt="Ramon-Mint" align="center" width="80" height="70"} ![Tidyverse](https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/tidyverse.svg){alt="Ramon-tidyverse" align="center" width="40" height="30"} ![Metodologias Agéis](https://tse1.mm.bing.net/th?id=OIP.YQHMHRrHb3almjchEGIknQHaE8){alt="Ramon-metodos" align="center" width="40" height="30"}
 
 # Observações
 
 Este artigo tem finalidade de estudo empirico pessoal e não é recomendação de compra e/ou venda, caso tenha alguma dúvida técnica procure um mecânico de sua confiança. Um ponto importante em se destacar é que os preços e disponibiidade de estoque estão sujeitos à mudança dinâmica do mercado varejista, e que as especificações técnicas também podem sofrer alterações conforme novos decretos da agência regulamentadora.
-
-# Considerações Finais
