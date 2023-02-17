@@ -18,7 +18,7 @@ The goal of this article will be to play with ARC with Azure storage API and dem
 
 In this demo, I’ve decided to go with an Ubuntu server hosted on premises. To enrolled it in ARC, I’ve simply followed the script the portal proposes: 
 
-![arc script](/assets/img/2023-02-16/1.png)
+![arc script](/assets/img/2023-02-16/1.png){: w="700" h="400" }
 
 Once authenticated, the system should be marked as connected in the Azure portal:
 
