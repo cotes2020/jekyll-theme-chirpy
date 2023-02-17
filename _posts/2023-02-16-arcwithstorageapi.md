@@ -68,7 +68,7 @@ This is where ARC will start to shine but with customization only. We can’t sa
 
 Make sure first you **grant** a proper RBAC (contributor/storage account contributor) to access the **control plane** (not the data plane) of your **storage account** (to access the access keys). 
 
-Let’s load this custom [function in memory]((https://raw.githubusercontent.com/SCOMnewbie/Azure/master/Identity-AAD/Get-AccessTokenWithAzIdentity.ps1)). It’ a custom function where you will be able to fetch access token from an Azure VM, an ACI container, an Azure function but also and ARC for servers agent with the same command for various audiences.
+Let’s load this custom [function in memory](https://raw.githubusercontent.com/SCOMnewbie/Azure/master/Identity-AAD/Get-AccessTokenWithAzIdentity.ps1). It’ a custom function where you will be able to fetch access token from an Azure VM, an ACI container, an Azure function but also and ARC for servers agent with the same command for various audiences.
 
 Now we can generate a token to access in this case the **https://management.azure.com** scope 
 
