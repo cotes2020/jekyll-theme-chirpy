@@ -1,8 +1,8 @@
 ---
 title: What modern authentication is?
 date: 2021-01-20 00:00
-categories: [Identity]
-tags: [Identity,AzureAD]     # TAG names should always be lowercase
+categories: [identity]
+tags: [identity,AzureAD]     # TAG names should always be lowercase
 ---
 
 # preamble
