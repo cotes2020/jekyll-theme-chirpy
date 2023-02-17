@@ -66,7 +66,7 @@ With a virtual attendance cost of just $60, and an in-person, early bird price o
 ### [axe-con 2023](https://www.hackingwiththehomies.org/) 
 (Mar 15 - Mar 16, 2023 |  Virtual)
 
-If Digital Accessibility (A11y) is your thing, then this conference is for you -- and it's FREE! I've attended in the past and there are always great talks; this year looks like no exception. Included in the speakers is [Imani Barbarin](https://twitter.com/Imani_Barbarin) whom I've followed on Twitter for quite a while. She runs [crutchesandspice.com](crutchesandspice.com) and always has honest thoughts on both the abled and disabled communities.
+If Digital Accessibility (A11y) is your thing, then this conference is for you -- and it's FREE! I've attended in the past and there are always great talks; this year looks like no exception. Included in the speakers is [Imani Barbarin](https://twitter.com/Imani_Barbarin) whom I've followed on Twitter for quite a while. She runs [crutchesandspice.com](https://crutchesandspice.com/) and always has honest thoughts on both the abled and disabled communities.
 
 [Return to Top](#leading-thought)
 
