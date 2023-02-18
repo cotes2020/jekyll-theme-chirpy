@@ -26,16 +26,8 @@
   color: var(--text-color);
 }
 
-%preview-margin {
-  margin: 0;
-}
-
 .preview-img {
-  @include align-center;
-  @extend %preview-margin;
   @extend %rounded;
-
-  max-width: 100%;
 
   &:not(.no-bg) {
     img.lazyloaded {
@@ -48,7 +40,6 @@
     -o-object-fit: cover;
     object-fit: cover;
 
-    @extend %preview-margin;
     @extend %rounded;
   }
 }

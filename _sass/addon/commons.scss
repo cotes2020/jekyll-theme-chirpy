@@ -419,10 +419,6 @@ i { /* fontawesome icons */
   word-spacing: 1px;
 
   a {
-    &:not(:last-child) {
-      margin-right: 2px;
-    }
-
     &:not([class]):hover {
       @extend %link-hover;
     }
@@ -546,7 +542,6 @@ i { /* fontawesome icons */
 .img-link {
   color: transparent;
   display: inline-flex;
-  overflow: hidden;
 }
 
 .shimmer {
