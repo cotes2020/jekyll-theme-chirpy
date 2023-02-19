@@ -131,6 +131,8 @@ _Image Caption_
 ```
 {: .nolineno}
 
+> To use [SVG](https://en.wikipedia.org/wiki/SVG) images you should always define size
+
 ### Size
 
 In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image:
