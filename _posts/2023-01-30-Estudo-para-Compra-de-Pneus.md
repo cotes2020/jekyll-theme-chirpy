@@ -361,6 +361,7 @@ Com base nas caractéristicas técnicas elencadas o produto que melhor atenderia
 Nosso orçamento para compra é R$ 1.500 por isso vamos comprar 5 pneus, garantindo o pneu reserva "step", e quanto a forma de pagamento o site nos disponibiliza duas opções: Parcelar no cartão de crédito ou pagar no PIX.
 
 ![Forma de Pagamento Disponiveis](/assets/img/compra_pneus/forma_de_pagamento_disponiveis.png)
+
 Caso parcelemos no cartão de crédito podemos ter uma economia deixando o dinheiro aplicado rendendo 100% do CDI. A [Calculadora Valor Investe](https://valorinveste.globo.com/ferramentas/calculadoras/investimentos/) nos ajudará a validar os cenários.
 
 Cenário 1: Na simulação abaixo mostra o resultado que teriamos se optassemos investir e retirar após 11 meses, ou seja adiamos a compra, onde teriamos uma aumento de capital de R$ 61,76:
