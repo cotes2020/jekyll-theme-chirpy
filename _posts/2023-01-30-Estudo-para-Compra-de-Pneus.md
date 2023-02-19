@@ -1,11 +1,10 @@
 ---
 title: "Compra de Pneus"
 author: "Ramon Roldan"
-date: "2023-02-16"
+date: "2023-02-19"
 categories: [Data Science, Tydeverse]
 tags: [Tydeverse, Web Scrapping, Analitycs, Dashboard, Data Science, ETL]
 ---
-
 ## Principal Objetivo
 
 Este estudo busca utilizar técnicas de Data Science juntamente com strategic sourcing e metodologias ageis para sugerir a melhor opção de compra de pneus conforme opções do mercado varejista online.
@@ -133,42 +132,42 @@ bases_pneus_store %>% glimpse()
 ```
 ## Rows: 69
 ## Columns: 36
-## $ link                       [3m[38;5;246m<chr>[39m[23m "https://www.pneustore.com.br/categori…
-## $ marca                      [3m[38;5;246m<chr>[39m[23m "FORMULA", "FIRESTONE", "COOPER", "FOR…
-## $ fabricante                 [3m[38;5;246m<chr>[39m[23m "PIRELLI", "BRIDGESTONE", "GOODYEAR", …
-## $ modelo                     [3m[38;5;246m<chr>[39m[23m "FORMULA ENERGY", "F-600", "CS1", "FOR…
-## $ medida                     [3m[38;5;246m<chr>[39m[23m "175/65R14", "175/65R14", "175/65R14",…
-## $ largura                    [3m[38;5;246m<chr>[39m[23m "175mm", "175mm", "175mm", "175mm", "1…
-## $ perfil                     [3m[38;5;246m<chr>[39m[23m "65%", "65%", "65%", "65%", "65%", "65…
-## $ aro                        [3m[38;5;246m<chr>[39m[23m "14", "14", "14", "14", "14", "14", "1…
-## $ diametro_total_em_mm       [3m[38;5;246m<chr>[39m[23m "583.1", "583.1", "583.1", "583.1", "5…
-## $ indice_de_peso             [3m[38;5;246m<dbl>[39m[23m 475, 475, 475, 475, 475, 475, 475, 530…
-## $ indice_de_velocidade       [3m[38;5;246m<dbl>[39m[23m 190, 190, 190, 190, 210, 190, 190, 190…
-## $ rft_run_flat               [3m[38;5;246m<chr>[39m[23m "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "NÃ…
-## $ tipo_de_construcao         [3m[38;5;246m<chr>[39m[23m "RADIAL", "RADIAL", "RADIAL", "RADIAL"…
-## $ peso                       [3m[38;5;246m<chr>[39m[23m "6.572", "6.351", "6.88", "6.572", "6.…
-## $ extra_load                 [3m[38;5;246m<chr>[39m[23m "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "SI…
-## $ protetor_de_bordas         [3m[38;5;246m<chr>[39m[23m "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "NÃ…
-## $ sidewall                   [3m[38;5;246m<chr>[39m[23m "BSW LETRAS PRETAS", "BSW LETRAS PRETA…
-## $ tipo_de_terreno            [3m[38;5;246m<chr>[39m[23m "HT", "HT", "HT", "HT", "HT", "HT", "H…
-## $ desenho                    [3m[38;5;246m<chr>[39m[23m "Assimétrico", "Assimétrico", "Simétri…
-## $ utqg                       [3m[38;5;246m<chr>[39m[23m "180AB", "200BB", "440BB", "180AB", "4…
-## $ treadwear                  [3m[38;5;246m<chr>[39m[23m "180", "200", "440", "180", "460", NA,…
-## $ tracao                     [3m[38;5;246m<chr>[39m[23m "A", "B", "B", "A", "A", NA, "B", "A",…
-## $ temperatura                [3m[38;5;246m<chr>[39m[23m "B", "B", "B", "B", "B", NA, "B", "A",…
-## $ registro_inmetro           [3m[38;5;246m<chr>[39m[23m "001387/2012", "002713/2012", "010142/…
-## $ garantia                   [3m[38;5;246m<chr>[39m[23m "5 anos Contra Defeito de Fabricação",…
-## $ observacoes                [3m[38;5;246m<chr>[39m[23m "Produto novo,Imagem meramente ilustra…
-## $ profundidade_do_sulco      [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, "7.5", NA, NA, NA, NA,…
-## $ tala_da_roda               [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, "5.0", NA, NA, NA, "5"…
-## $ tala_possiveis_da_roda     [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, "6", NA, NA, NA, "5-6"…
-## $ tipo_de_montagem           [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, "SEM CÂMAR…
-## $ nome                       [3m[38;5;246m<list>[39m[23m "Pneu Formula by Pirelli Aro 14 Formu…
-## $ resistencia_ao_rolamento   [3m[38;5;246m<list>[39m[23m "E", "E", "E", "E", "E", "E", "E", "E…
-## $ aderencia_em_pista_molhada [3m[38;5;246m<list>[39m[23m "E", "E", "F", "E", "E", "E", "F", "C…
-## $ ruido_externo              [3m[38;5;246m<list>[39m[23m "HIGH", "MEDIUM", "MEDIUM", "HIGH", "…
-## $ preco_a_vista              [3m[38;5;246m<list>[39m[23m 329.9, 319.9, 349.9, 1495.61, 1359.6,…
-## $ preco_parcelado            [3m[38;5;246m<list>[39m[23m 374.89, 363.52, 397.61, 1699.56, 1545…
+## $ link                       [3m[38;5;246m<chr>[39m[23m "https://www.pneustore.com.br/categori…
+## $ marca                      [3m[38;5;246m<chr>[39m[23m "FORMULA", "FIRESTONE", "COOPER", "FOR…
+## $ fabricante                 [3m[38;5;246m<chr>[39m[23m "PIRELLI", "BRIDGESTONE", "GOODYEAR", …
+## $ modelo                     [3m[38;5;246m<chr>[39m[23m "FORMULA ENERGY", "F-600", "CS1", "FOR…
+## $ medida                     [3m[38;5;246m<chr>[39m[23m "175/65R14", "175/65R14", "175/65R14",…
+## $ largura                    [3m[38;5;246m<chr>[39m[23m "175mm", "175mm", "175mm", "175mm", "1…
+## $ perfil                     [3m[38;5;246m<chr>[39m[23m "65%", "65%", "65%", "65%", "65%", "65…
+## $ aro                        [3m[38;5;246m<chr>[39m[23m "14", "14", "14", "14", "14", "14", "1…
+## $ diametro_total_em_mm       [3m[38;5;246m<chr>[39m[23m "583.1", "583.1", "583.1", "583.1", "5…
+## $ indice_de_peso             [3m[38;5;246m<dbl>[39m[23m 475, 475, 475, 475, 475, 475, 475, 530…
+## $ indice_de_velocidade       [3m[38;5;246m<dbl>[39m[23m 190, 190, 190, 190, 210, 190, 190, 190…
+## $ rft_run_flat               [3m[38;5;246m<chr>[39m[23m "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "NÃ…
+## $ tipo_de_construcao         [3m[38;5;246m<chr>[39m[23m "RADIAL", "RADIAL", "RADIAL", "RADIAL"…
+## $ peso                       [3m[38;5;246m<chr>[39m[23m "6.572", "6.351", "6.88", "6.572", "6.…
+## $ extra_load                 [3m[38;5;246m<chr>[39m[23m "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "SI…
+## $ protetor_de_bordas         [3m[38;5;246m<chr>[39m[23m "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "NÃ…
+## $ sidewall                   [3m[38;5;246m<chr>[39m[23m "BSW LETRAS PRETAS", "BSW LETRAS PRETA…
+## $ tipo_de_terreno            [3m[38;5;246m<chr>[39m[23m "HT", "HT", "HT", "HT", "HT", "HT", "H…
+## $ desenho                    [3m[38;5;246m<chr>[39m[23m "Assimétrico", "Assimétrico", "Simétri…
+## $ utqg                       [3m[38;5;246m<chr>[39m[23m "180AB", "200BB", "440BB", "180AB", "4…
+## $ treadwear                  [3m[38;5;246m<chr>[39m[23m "180", "200", "440", "180", "460", NA,…
+## $ tracao                     [3m[38;5;246m<chr>[39m[23m "A", "B", "B", "A", "A", NA, "B", "A",…
+## $ temperatura                [3m[38;5;246m<chr>[39m[23m "B", "B", "B", "B", "B", NA, "B", "A",…
+## $ registro_inmetro           [3m[38;5;246m<chr>[39m[23m "001387/2012", "002713/2012", "010142/…
+## $ garantia                   [3m[38;5;246m<chr>[39m[23m "5 anos Contra Defeito de Fabricação",…
+## $ observacoes                [3m[38;5;246m<chr>[39m[23m "Produto novo,Imagem meramente ilustra…
+## $ profundidade_do_sulco      [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, "7.5", NA, NA, NA, NA,…
+## $ tala_da_roda               [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, "5.0", NA, NA, NA, "5"…
+## $ tala_possiveis_da_roda     [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, "6", NA, NA, NA, "5-6"…
+## $ tipo_de_montagem           [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, "SEM CÂMAR…
+## $ nome                       [3m[38;5;246m<list>[39m[23m "Pneu Formula by Pirelli Aro 14 Formu…
+## $ resistencia_ao_rolamento   [3m[38;5;246m<list>[39m[23m "E", "E", "E", "E", "E", "E", "E", "E…
+## $ aderencia_em_pista_molhada [3m[38;5;246m<list>[39m[23m "E", "E", "F", "E", "E", "E", "F", "C…
+## $ ruido_externo              [3m[38;5;246m<list>[39m[23m "HIGH", "MEDIUM", "MEDIUM", "HIGH", "…
+## $ preco_a_vista              [3m[38;5;246m<list>[39m[23m 329.9, 319.9, 349.9, 1495.61, 1359.6,…
+## $ preco_parcelado            [3m[38;5;246m<list>[39m[23m 374.89, 363.52, 397.61, 1699.56, 1545…
 ```
 
 Analisando os dados descobrimos que existem 30 fornecedores diferentes e que alguns tem um portifolio de produtos mais variado que outros fornecedores.
@@ -328,31 +327,31 @@ base_para_nota_conceitual  %>% unnest() %>% glimpse()
 ```
 ## Rows: 23
 ## Columns: 25
-## $ nome                            [3m[38;5;246m<chr>[39m[23m "Pneu Dynamo Aro 14 MH01 175/65R1…
-## $ marca                           [3m[38;5;246m<chr>[39m[23m "DYNAMO", "MICHELIN", "IRIS", "PI…
-## $ resistencia_ao_rolamento        [3m[38;5;246m<chr>[39m[23m "E", "E", "E", "C", "C", "C", "E"…
-## $ aderencia_em_pista_molhada      [3m[38;5;246m<chr>[39m[23m "C", "C", "C", "E", "E", "E", "C"…
-## $ ruido_externo                   [3m[38;5;246m<chr>[39m[23m "MEDIUM", "MEDIUM", "LOW", "MEDIU…
-## $ tracao                          [3m[38;5;246m<chr>[39m[23m "A", "A", "A", "A", "A", "A", "A"…
-## $ temperatura                     [3m[38;5;246m<chr>[39m[23m "A", "A", "A", "A", "A", "A", "B"…
-## $ treadwear                       [3m[38;5;246m<chr>[39m[23m "420", "420", "340", "420", "420"…
-## $ indice_de_peso                  [3m[38;5;246m<dbl>[39m[23m 530, 475, 530, 475, 475, 475, 475…
-## $ registro_inmetro                [3m[38;5;246m<chr>[39m[23m "001447/2021", "003263/2012", "00…
-## $ indice_de_velocidade            [3m[38;5;246m<dbl>[39m[23m 190, 210, 190, 190, 190, 190, 190…
-## $ preco_a_vista                   [3m[38;5;246m<dbl>[39m[23m 274.90, 449.90, 289.90, 359.90, 1…
-## $ preco_parcelado                 [3m[38;5;246m<dbl>[39m[23m 312.39, 511.25, 329.43, 408.98, 1…
-## $ link                            [3m[38;5;246m<chr>[39m[23m "https://www.pneustore.com.br/cat…
-## $ nota_resistencia_ao_rolamento   [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 5, 5, 5, 3, 3, 3, 3, 3, …
-## $ nota_aderencia_em_pista_molhada [3m[38;5;246m<dbl>[39m[23m 5, 5, 5, 3, 3, 3, 5, 3, 3, 3, 3, …
-## $ nota_ruido_externo              [3m[38;5;246m<dbl>[39m[23m 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-## $ nota_tracao                     [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
-## $ nota_temperatura                [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, …
-## $ nota_treadwear                  [3m[38;5;246m<dbl>[39m[23m 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, …
-## $ nota_indice_de_peso             [3m[38;5;246m<dbl>[39m[23m 3, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, …
-## $ nota_registro_inmetro           [3m[38;5;246m<dbl>[39m[23m 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, …
-## $ nota_indice_de_velocidade       [3m[38;5;246m<dbl>[39m[23m 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, …
-## $ nota_extra_load                 [3m[38;5;246m<dbl>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-## $ nota_conceitual                 [3m[38;5;246m<dbl>[39m[23m 15.0, 14.6, 14.3, 14.3, 14.3, 14.…
+## $ nome                            [3m[38;5;246m<chr>[39m[23m "Pneu Dynamo Aro 14 MH01 175/65R1…
+## $ marca                           [3m[38;5;246m<chr>[39m[23m "DYNAMO", "MICHELIN", "IRIS", "PI…
+## $ resistencia_ao_rolamento        [3m[38;5;246m<chr>[39m[23m "E", "E", "E", "C", "C", "C", "E"…
+## $ aderencia_em_pista_molhada      [3m[38;5;246m<chr>[39m[23m "C", "C", "C", "E", "E", "E", "C"…
+## $ ruido_externo                   [3m[38;5;246m<chr>[39m[23m "MEDIUM", "MEDIUM", "LOW", "MEDIU…
+## $ tracao                          [3m[38;5;246m<chr>[39m[23m "A", "A", "A", "A", "A", "A", "A"…
+## $ temperatura                     [3m[38;5;246m<chr>[39m[23m "A", "A", "A", "A", "A", "A", "B"…
+## $ treadwear                       [3m[38;5;246m<chr>[39m[23m "420", "420", "340", "420", "420"…
+## $ indice_de_peso                  [3m[38;5;246m<dbl>[39m[23m 530, 475, 530, 475, 475, 475, 475…
+## $ registro_inmetro                [3m[38;5;246m<chr>[39m[23m "001447/2021", "003263/2012", "00…
+## $ indice_de_velocidade            [3m[38;5;246m<dbl>[39m[23m 190, 210, 190, 190, 190, 190, 190…
+## $ preco_a_vista                   [3m[38;5;246m<dbl>[39m[23m 274.90, 449.90, 289.90, 359.90, 1…
+## $ preco_parcelado                 [3m[38;5;246m<dbl>[39m[23m 312.39, 511.25, 329.43, 408.98, 1…
+## $ link                            [3m[38;5;246m<chr>[39m[23m "https://www.pneustore.com.br/cat…
+## $ nota_resistencia_ao_rolamento   [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 5, 5, 5, 3, 3, 3, 3, 3, …
+## $ nota_aderencia_em_pista_molhada [3m[38;5;246m<dbl>[39m[23m 5, 5, 5, 3, 3, 3, 5, 3, 3, 3, 3, …
+## $ nota_ruido_externo              [3m[38;5;246m<dbl>[39m[23m 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ nota_tracao                     [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
+## $ nota_temperatura                [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, …
+## $ nota_treadwear                  [3m[38;5;246m<dbl>[39m[23m 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, …
+## $ nota_indice_de_peso             [3m[38;5;246m<dbl>[39m[23m 3, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, …
+## $ nota_registro_inmetro           [3m[38;5;246m<dbl>[39m[23m 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, …
+## $ nota_indice_de_velocidade       [3m[38;5;246m<dbl>[39m[23m 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, …
+## $ nota_extra_load                 [3m[38;5;246m<dbl>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ nota_conceitual                 [3m[38;5;246m<dbl>[39m[23m 15.0, 14.6, 14.3, 14.3, 14.3, 14.…
 ```
 
 Com base nas caractéristicas técnicas elencadas o produto que melhor atenderia nossas necessidades é "Pneu Dynamo Aro 14 MH01 175/65R14 86T".
