@@ -92,6 +92,8 @@ library(janitor)
 library(rvest)
 #Para realizar a análise exploratória e apresentação gráfica também usaremos o pacote DataExplorer
 library(DataExplorer)
+#Para nos ajudar na parte de visualização também utilizaremos o pacote Patchwork
+library(patchwork)
 
 #Dentro do site pneu store o caminho dos pneus aro 14 estão salvo em 4 páginas
 urls <- paste0("https://www.pneustore.com.br/categorias/pneus-de-carro/175-65-r14?q=%3Arelevance&page=", 0:4)
@@ -131,42 +133,42 @@ bases_pneus_store %>% glimpse()
 ```
 ## Rows: 69
 ## Columns: 36
-## $ link                       <chr> "https://www.pneustore.com.br/categor…
-## $ marca                      <chr> "PIRELLI", "CONTINENTAL", "FORMULA", …
-## $ modelo                     <chr> "CINTURATO P1", "CONTIPOWERCONTACT", …
-## $ medida                     <chr> "175/65R14", "175/65R14", "175/65R14"…
-## $ largura                    <chr> "175mm", "175mm", "175mm", "175mm", "…
-## $ perfil                     <chr> "65%", "65%", "65%", "65%", "65%", "6…
-## $ aro                        <chr> "14", "14", "14", "14", "14", "14", "…
-## $ diametro_total_em_mm       <chr> "583.1", "583.1", "583.1", "583.1", "…
-## $ indice_de_peso             <dbl> 475, 475, 475, 475, 475, 475, 475, 47…
-## $ indice_de_velocidade       <dbl> 190, 190, 190, 190, 190, 190, 210, 19…
-## $ rft_run_flat               <chr> "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "N…
-## $ tipo_de_construcao         <chr> "RADIAL", "RADIAL", "RADIAL", "RADIAL…
-## $ peso                       <chr> "6.78", "6.795", "6.572", "6.351", "6…
-## $ extra_load                 <chr> "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "N…
-## $ protetor_de_bordas         <chr> "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "N…
-## $ sidewall                   <chr> "BSW LETRAS PRETAS", "BSW LETRAS PRET…
-## $ tipo_de_terreno            <chr> "HT", "HT", "HT", "HT", "HT", "HT", "…
-## $ desenho                    <chr> "Assimétrico", "Assimétrico", "Assimé…
-## $ tala_da_roda               <chr> "5", "5", NA, NA, NA, NA, "5.0", NA, …
-## $ tala_possiveis_da_roda     <chr> "5-6", "5-6", NA, NA, NA, NA, "6", NA…
-## $ utqg                       <chr> "420AA", "480AB", "180AB", "200BB", "…
-## $ treadwear                  <chr> "420", "480", "180", "200", "440", "4…
-## $ tracao                     <chr> "A", "A", "A", "B", "B", "A", "A", NA…
-## $ temperatura                <chr> "A", "B", "B", "B", "B", "A", "B", NA…
-## $ registro_inmetro           <chr> "001387/2012", "001152/2015", "001387…
-## $ garantia                   <chr> "5 anos Contra Defeito de Fabricação"…
-## $ observacoes                <chr> "Produto novo,Imagem meramente ilustr…
-## $ fabricante                 <chr> NA, NA, "PIRELLI", "BRIDGESTONE", "GO…
-## $ tipo_de_montagem           <chr> NA, NA, NA, NA, NA, "SEM CÂMARA", NA,…
-## $ profundidade_do_sulco      <chr> NA, NA, NA, NA, NA, NA, "7.5", NA, NA…
-## $ nome                       <list> "Pneu Pirelli Aro 14 Cinturato P1 17…
-## $ resistencia_ao_rolamento   <list> "C", "E", "E", "E", "E", "F", "E", "…
-## $ aderencia_em_pista_molhada <list> "E", "C", "E", "E", "F", "E", "E", "…
-## $ ruido_externo              <list> "MEDIUM", "MEDIUM", "HIGH", "MEDIUM"…
-## $ preco_a_vista              <list> 359.9, 394.9, 329.9, 319.9, 349.9, 3…
-## $ preco_parcelado            <list> 408.98, 11, 374.89, 363.52, 397.61, …
+## $ link                       [3m[38;5;246m<chr>[39m[23m "https://www.pneustore.com.br/categori…
+## $ marca                      [3m[38;5;246m<chr>[39m[23m "FORMULA", "FIRESTONE", "COOPER", "FOR…
+## $ fabricante                 [3m[38;5;246m<chr>[39m[23m "PIRELLI", "BRIDGESTONE", "GOODYEAR", …
+## $ modelo                     [3m[38;5;246m<chr>[39m[23m "FORMULA ENERGY", "F-600", "CS1", "FOR…
+## $ medida                     [3m[38;5;246m<chr>[39m[23m "175/65R14", "175/65R14", "175/65R14",…
+## $ largura                    [3m[38;5;246m<chr>[39m[23m "175mm", "175mm", "175mm", "175mm", "1…
+## $ perfil                     [3m[38;5;246m<chr>[39m[23m "65%", "65%", "65%", "65%", "65%", "65…
+## $ aro                        [3m[38;5;246m<chr>[39m[23m "14", "14", "14", "14", "14", "14", "1…
+## $ diametro_total_em_mm       [3m[38;5;246m<chr>[39m[23m "583.1", "583.1", "583.1", "583.1", "5…
+## $ indice_de_peso             [3m[38;5;246m<dbl>[39m[23m 475, 475, 475, 475, 475, 475, 475, 530…
+## $ indice_de_velocidade       [3m[38;5;246m<dbl>[39m[23m 190, 190, 190, 190, 210, 190, 190, 190…
+## $ rft_run_flat               [3m[38;5;246m<chr>[39m[23m "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "NÃ…
+## $ tipo_de_construcao         [3m[38;5;246m<chr>[39m[23m "RADIAL", "RADIAL", "RADIAL", "RADIAL"…
+## $ peso                       [3m[38;5;246m<chr>[39m[23m "6.572", "6.351", "6.88", "6.572", "6.…
+## $ extra_load                 [3m[38;5;246m<chr>[39m[23m "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "SI…
+## $ protetor_de_bordas         [3m[38;5;246m<chr>[39m[23m "NÃO", "NÃO", "NÃO", "NÃO", "NÃO", "NÃ…
+## $ sidewall                   [3m[38;5;246m<chr>[39m[23m "BSW LETRAS PRETAS", "BSW LETRAS PRETA…
+## $ tipo_de_terreno            [3m[38;5;246m<chr>[39m[23m "HT", "HT", "HT", "HT", "HT", "HT", "H…
+## $ desenho                    [3m[38;5;246m<chr>[39m[23m "Assimétrico", "Assimétrico", "Simétri…
+## $ utqg                       [3m[38;5;246m<chr>[39m[23m "180AB", "200BB", "440BB", "180AB", "4…
+## $ treadwear                  [3m[38;5;246m<chr>[39m[23m "180", "200", "440", "180", "460", NA,…
+## $ tracao                     [3m[38;5;246m<chr>[39m[23m "A", "B", "B", "A", "A", NA, "B", "A",…
+## $ temperatura                [3m[38;5;246m<chr>[39m[23m "B", "B", "B", "B", "B", NA, "B", "A",…
+## $ registro_inmetro           [3m[38;5;246m<chr>[39m[23m "001387/2012", "002713/2012", "010142/…
+## $ garantia                   [3m[38;5;246m<chr>[39m[23m "5 anos Contra Defeito de Fabricação",…
+## $ observacoes                [3m[38;5;246m<chr>[39m[23m "Produto novo,Imagem meramente ilustra…
+## $ profundidade_do_sulco      [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, "7.5", NA, NA, NA, NA,…
+## $ tala_da_roda               [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, "5.0", NA, NA, NA, "5"…
+## $ tala_possiveis_da_roda     [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, "6", NA, NA, NA, "5-6"…
+## $ tipo_de_montagem           [3m[38;5;246m<chr>[39m[23m NA, NA, NA, NA, NA, NA, NA, "SEM CÂMAR…
+## $ nome                       [3m[38;5;246m<list>[39m[23m "Pneu Formula by Pirelli Aro 14 Formu…
+## $ resistencia_ao_rolamento   [3m[38;5;246m<list>[39m[23m "E", "E", "E", "E", "E", "E", "E", "E…
+## $ aderencia_em_pista_molhada [3m[38;5;246m<list>[39m[23m "E", "E", "F", "E", "E", "E", "F", "C…
+## $ ruido_externo              [3m[38;5;246m<list>[39m[23m "HIGH", "MEDIUM", "MEDIUM", "HIGH", "…
+## $ preco_a_vista              [3m[38;5;246m<list>[39m[23m 329.9, 319.9, 349.9, 1495.61, 1359.6,…
+## $ preco_parcelado            [3m[38;5;246m<list>[39m[23m 374.89, 363.52, 397.61, 1699.56, 1545…
 ```
 
 Analisando os dados descobrimos que existem 30 fornecedores diferentes e que alguns tem um portifolio de produtos mais variado que outros fornecedores.
@@ -180,8 +182,6 @@ bases_pneus_store %>% count(marca,sort = TRUE) %>%
   geom_text(aes(label=n))+
   labs(title = "Quantidade de Pneus por Marca",y="",x="")
 ```
-
-![plot of chunk r](figure/r-1.png)
 
 ![](/assets/img/compra_pneus/qtd_pneus_por_marca.png)
 
@@ -197,8 +197,6 @@ bases_pneus_store %>% count(modelo,sort = TRUE) %>%
   labs(title = "Quantidade de Pneus por Modelo",y="",x="")
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
-
 ![](/assets/img/compra_pneus/qtd_pneus_por_modelo.png)
 
 ### Seleção das Principais Variáveis
@@ -209,8 +207,6 @@ Avaliando qualidade dos dados descobrimos que algumas das 36 variaveis tem muito
 ```r
 plot_missing(bases_pneus_store)
 ```
-
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
 
 ![](/assets/img/compra_pneus/qtd_valores_vazios.png)
 
@@ -326,45 +322,100 @@ Para conseguirmos realizar a avaliação de trade-off comparando as melhores car
     ) %>% arrange(desc(nota_conceitual))
 
 #Printa as 10 primeiros produtos com melhor desempenho na nota conceitual
-base_para_nota_conceitual  %>% unnest()
+base_para_nota_conceitual  %>% unnest() %>% glimpse()
 ```
 
 ```
-## # A tibble: 22 × 25
-##    nome       marca resis…¹ adere…² ruido…³ tracao tempe…⁴ tread…⁵ indic…⁶
-##    <chr>      <chr> <chr>   <chr>   <chr>   <chr>  <chr>   <chr>     <dbl>
-##  1 Pneu Dyna… DYNA… E       C       MEDIUM  A      A       420         530
-##  2 Pneu Mich… MICH… E       C       MEDIUM  A      A       420         475
-##  3 Pneu Pire… PIRE… C       E       MEDIUM  A      A       420         475
-##  4 Pneu Pire… PIRE… C       E       MEDIUM  A      A       420         475
-##  5 Jogo 4 Pn… PIRE… C       E       MEDIUM  A      A       420         475
-##  6 Pneu Cont… CONT… E       C       MEDIUM  A      B       480         475
-##  7 Pneu Form… FORM… E       E       HIGH    A      B       180         475
-##  8 Jogo 4 pn… KUMHO E       E       HIGH    A      B       460         475
-##  9 Pneu Kumh… KUMHO E       E       HIGH    A      B       460         475
-## 10 Jogo 4 Pn… FORM… E       E       HIGH    A      B       180         475
-## # … with 12 more rows, 16 more variables: registro_inmetro <chr>,
-## #   indice_de_velocidade <dbl>, preco_a_vista <dbl>,
-## #   preco_parcelado <dbl>, link <chr>,
-## #   nota_resistencia_ao_rolamento <dbl>,
-## #   nota_aderencia_em_pista_molhada <dbl>, nota_ruido_externo <dbl>,
-## #   nota_tracao <dbl>, nota_temperatura <dbl>, nota_treadwear <dbl>,
-## #   nota_indice_de_peso <dbl>, nota_registro_inmetro <dbl>, …
+## Rows: 23
+## Columns: 25
+## $ nome                            [3m[38;5;246m<chr>[39m[23m "Pneu Dynamo Aro 14 MH01 175/65R1…
+## $ marca                           [3m[38;5;246m<chr>[39m[23m "DYNAMO", "MICHELIN", "IRIS", "PI…
+## $ resistencia_ao_rolamento        [3m[38;5;246m<chr>[39m[23m "E", "E", "E", "C", "C", "C", "E"…
+## $ aderencia_em_pista_molhada      [3m[38;5;246m<chr>[39m[23m "C", "C", "C", "E", "E", "E", "C"…
+## $ ruido_externo                   [3m[38;5;246m<chr>[39m[23m "MEDIUM", "MEDIUM", "LOW", "MEDIU…
+## $ tracao                          [3m[38;5;246m<chr>[39m[23m "A", "A", "A", "A", "A", "A", "A"…
+## $ temperatura                     [3m[38;5;246m<chr>[39m[23m "A", "A", "A", "A", "A", "A", "B"…
+## $ treadwear                       [3m[38;5;246m<chr>[39m[23m "420", "420", "340", "420", "420"…
+## $ indice_de_peso                  [3m[38;5;246m<dbl>[39m[23m 530, 475, 530, 475, 475, 475, 475…
+## $ registro_inmetro                [3m[38;5;246m<chr>[39m[23m "001447/2021", "003263/2012", "00…
+## $ indice_de_velocidade            [3m[38;5;246m<dbl>[39m[23m 190, 210, 190, 190, 190, 190, 190…
+## $ preco_a_vista                   [3m[38;5;246m<dbl>[39m[23m 274.90, 449.90, 289.90, 359.90, 1…
+## $ preco_parcelado                 [3m[38;5;246m<dbl>[39m[23m 312.39, 511.25, 329.43, 408.98, 1…
+## $ link                            [3m[38;5;246m<chr>[39m[23m "https://www.pneustore.com.br/cat…
+## $ nota_resistencia_ao_rolamento   [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 5, 5, 5, 3, 3, 3, 3, 3, …
+## $ nota_aderencia_em_pista_molhada [3m[38;5;246m<dbl>[39m[23m 5, 5, 5, 3, 3, 3, 5, 3, 3, 3, 3, …
+## $ nota_ruido_externo              [3m[38;5;246m<dbl>[39m[23m 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ nota_tracao                     [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
+## $ nota_temperatura                [3m[38;5;246m<dbl>[39m[23m 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, …
+## $ nota_treadwear                  [3m[38;5;246m<dbl>[39m[23m 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, …
+## $ nota_indice_de_peso             [3m[38;5;246m<dbl>[39m[23m 3, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, …
+## $ nota_registro_inmetro           [3m[38;5;246m<dbl>[39m[23m 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, …
+## $ nota_indice_de_velocidade       [3m[38;5;246m<dbl>[39m[23m 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, …
+## $ nota_extra_load                 [3m[38;5;246m<dbl>[39m[23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ nota_conceitual                 [3m[38;5;246m<dbl>[39m[23m 15.0, 14.6, 14.3, 14.3, 14.3, 14.…
 ```
-
-# Considerações Finais
 
 Com base nas caractéristicas técnicas elencadas o produto que melhor atenderia nossas necessidades é "Pneu Dynamo Aro 14 MH01 175/65R14 86T".
 
-Sobre a parte financeira escolhemos pagar à vista porque se fossemos parcelar em 11 vezes o preço sairia mais caro, o que não seria compensado deixando num investimento rendendo 100% o CDI, e pagando por meio de PIX conseguimos um cupom de desconto. Com isso conseguimos o preço unitário final de R$ 200 trazendo um saving de 60% em relação ao encontrado se não tivessemos realizado o estudo.
+### Racional da Escolha do Pagamento
 
-Estou muito satisfeito com a compra e inclusive os pneus chegaram em casa.
+Nosso orçamento para compra é R$ 1.500 por isso vamos comprar 5 pneus, garantindo o pneu reserva "step", e quanto a forma de pagamento o site nos disponibiliza duas opções: Parcelar no cartão de crédito ou pagar no PIX.
+
+![Forma de Pagamento Disponiveis](/assets/img/compra_pneus/forma_de_pagamento_disponiveis.png)
+Caso parcelemos no cartão de crédito podemos ter uma economia deixando o dinheiro aplicado rendendo 100% do CDI. A [Calculadora Valor Investe](https://valorinveste.globo.com/ferramentas/calculadoras/investimentos/) nos ajudará a validar os cenários.
+
+Cenário 1: Na simulação abaixo mostra o resultado que teriamos se optassemos investir e retirar após 11 meses, ou seja adiamos a compra, onde teriamos uma aumento de capital de R$ 61,76:
+
+![Simulação de Investimento](/assets/img/compra_pneus/calculadora_valor_investe.png)
+
+Cenário 2: Caso optemos por parcelar em 11 vezes, conforme gráfico abaixo onde vemos o rendimento acumulado mensalmete dada ação dos juros compostos, teriamos uma economia máxima de R$ 64,30:
+
+
+```r
+#Criamos uma tabela com base nos valores simuados na calculadora
+df <- tibble(Month = c("Initial","Fev","Mar","Apr","May","Jun","Jul","Aug","Set","Oct","Nov","Dec"),
+       Investiment = c(1561.95,1567.69,1573.45,1579.23,1585.03,1590.85,1596.70,1602.57,1608.46,1614.37,1620.30,1626.25)) %>% 
+  mutate(Month = fct_inorder(Month),Saving = Investiment - 1561.95)
+
+#Gráfico do rendimento mensal
+p1 <- ggplot(data = df,aes(x=Month,y=Investiment)) +
+  geom_col(fill="lightblue")+
+  geom_text(aes(label= scales::dollar(x = Investiment,prefix = "R$",big.mark = ".",decimal.mark = ",")),angle=45,size=3)+
+  theme_minimal()+
+  scale_y_continuous(n.breaks = 10,labels = scales::dollar_format(prefix = "R$",big.mark = ".",decimal.mark = ","))+
+  labs(title = "Rendimento Mensal Considerando 100% CDI",subtitle = 'Valores corrigidos pela inflação',x="",y="")
+
+#Gráfico da economia mensal
+p2 <- ggplot(data = df,aes(x=Month,y=Saving)) +
+  geom_col(fill="lightblue")+
+  geom_text(aes(label= scales::dollar(x = Saving,prefix = "R$",big.mark = ".",decimal.mark = ",")),angle=45,size=3)+
+  theme_minimal()+
+  scale_y_continuous(n.breaks = 10,labels = scales::dollar_format(prefix = "R$",big.mark = ".",decimal.mark = ","))+
+  labs(title = "Economia Mensal em Relação ao Valor Total dos Pneus (R$1.561,95)",caption = 'Fonte: https://valorinveste.globo.com/ferramentas/calculadoras/investimentos',x="",y="")
+
+#Gráfico final comparativo
+p1 + p2
+```
+
+![Análise Comparativa](/assets/img/compra_pneus/analise_do_investimento.png)
+
+Cenário 3: Caso optemos por realizar o pagamento no PIX teriamos uma economia de R$ 187,43 (R$ 1.561,95-R$ 1.374,52).
+
+O cenário 3 foi o ganhador, e realizamos o pagamento via PIX.
+
+
+# Considerações Finais
+
+Este trabalho trouxe beneficios como maior confiança na tomada de decição e economia financeira, além de ter sido muito divertido, por isso estou satisfeito com a compra e inclusive os pneus já chegaram em casa:
 
 ![Imagem dos Pneus que chegaram em Casa](/assets/img/compra_pneus/pneus_chegaram.jpg)
 
+Sobre a parte financeira escolhemos pagar à vista porque se fossemos parcelar em 11 vezes o preço sairia mais caro, o que não seria compensado deixando num investimento rendendo 100% o CDI, e pagando por meio de PIX conseguimos um cupom de desconto. Com isso conseguimos o preço unitário final de R$ 200 trazendo um saving de 60% em relação ao encontrado se não tivessemos realizado o estudo.
+
+
 **Premissas**: Este trabalho foi realizado com a linguagem R, IDE Rstudio, com Quarto, e sistema operacional Linux Mint. Foram utilizados conhecimentos de data science e metodologias ágeis. Seguindo as boas práticas do mercado demos preferencia para bibliotecas do tidyverse.
 
-![Metodologias Agéis](https://tse1.mm.bing.net/th?id=OIP.YQHMHRrHb3almjchEGIknQHaE8){alt="Ramon-metodos" align="center" width="40" height="30"}
+![Metodologias Agéis](https://tse1.mm.bing.net/th?id=OIP.YQHMHRrHb3almjchEGIknQHaE8)
 
 # Observações
 
