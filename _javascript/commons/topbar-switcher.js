@@ -21,7 +21,7 @@ $(function () {
             ScrollHelper.hideTopbar();
 
             if ($searchInput.is(":focus")) {
-                $searchInput.blur(); /* remove focus */
+                $searchInput.trigger('blur'); /* remove focus */
             }
 
         } else { // Scroll up
@@ -73,7 +73,7 @@ $(function () {
         });
     }
 
-    $(window).scroll(() => {
+    $(window).on('scroll',() => {
         if (didScroll) {
             return;
         }

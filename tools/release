@@ -104,7 +104,7 @@ check() {
 
 _bump_file() {
   for i in "${!FILES[@]}"; do
-    if [[ ${FILES[$i]} == $NODE_CONFIG ]]; then
+    if [[ ${FILES[$i]} == "$NODE_CONFIG" ]]; then
       continue
     fi
 

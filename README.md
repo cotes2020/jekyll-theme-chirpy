@@ -39,15 +39,15 @@
 
 ## Quick Start
 
-Before starting, please follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll`, and `Bundler`. In addition, [Git](https://git-scm.com/) is also required to be installed.
+Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of the basic environment. [Git](https://git-scm.com/) also needs to be installed.
 
 ### Step 1. Creating a New Site
 
-Create a new repository from the [**Chirpy Starter**](https://github.com/cotes2020/chirpy-starter/generate) and name it `<GH_USERNAME>.github.io`, where `GH_USERNAME` represents your GitHub username.
+Sign in to GitHub and browse to [**Chirpy Starter**](https://github.com/cotes2020/chirpy-starter/), click the button <kbd>Use this template</kbd> > <kbd>Create a new repository</kbd>, and name the new repository `USERNAME.github.io`, where `USERNAME` represents your GitHub username.
 
 ### Step 2. Installing Dependencies
 
-Before running for the first time, go to the root directory of your site, and install dependencies as follows:
+Clone it to your local machine, go to its root directory, and run the following command to install the dependencies. 
 
 ```console
 $ bundle
@@ -55,7 +55,7 @@ $ bundle
 
 ### Step 3. Running Local Server
 
-Run the following command in the root directory of the site:
+Run the following command in the root directory of your site:
 
 ```console
 $ bundle exec jekyll s
@@ -70,11 +70,11 @@ $ docker run -it --rm \
     jekyll serve
 ```
 
-After a while, navigate to the site at <http://localhost:4000>.
+After a few seconds, the local service will be published at _<http://127.0.0.1:4000>_.
 
 ## Documentation
 
-For more details on usage, please refer to the tutorial on the [demo website](https://cotes2020.github.io/chirpy-demo/) / [wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki). Note that the tutorial is based on the [latest release](https://github.com/cotes2020/jekyll-theme-chirpy/releases/latest), and the features of the default branch are usually ahead of the documentation.
+For more details on usage, please refer to the tutorial on the [demo website](https://cotes2020.github.io/chirpy-demo/) or [wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki). Note that the tutorial is based on the [latest release](https://github.com/cotes2020/jekyll-theme-chirpy/releases/latest), and the features of the default branch are usually ahead of the documentation.
 
 ## Contributing
 
@@ -90,7 +90,7 @@ Last but not least, thank [JetBrains][jb] for providing the OSS development lice
 
 ## Sponsoring
 
-If you like this theme or find it helpful, please consider sponsoring me, because it will encourage and help me better maintain the project, I will be very grateful!
+If you like it, please consider sponsoring me. It will help me to maintain this project better and I would be very grateful!
 
 [![Ko-fi](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-ff5f5f?logo=ko-fi&logoColor=white)](https://ko-fi.com/coteschung)
 [![Wechat Pay](https://img.shields.io/badge/-Tip%20Me%20on%20WeChat-brightgreen?logo=wechat&logoColor=white)][cn-donation]

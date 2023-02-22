@@ -97,8 +97,7 @@ $(function () {
 
     /* --- Post link sharing --- */
 
-    $('#copy-link').click((e) => {
-
+    $('#copy-link').on('click',(e) => {
         let target = $(e.target);
 
         if (isLocked(target)) {
@@ -106,28 +105,19 @@ $(function () {
         }
 
         // Copy URL to clipboard
+        navigator.clipboard
+            .writeText(window.location.href)
+            .then(() => {
+                const defaultTitle = target.attr(ATTR_TITLE_ORIGIN);
+                const succeedTitle = target.attr(ATTR_TITLE_SUCCEED);
+                // Switch tooltip title
+                target.attr(ATTR_TITLE_ORIGIN, succeedTitle).tooltip('show');
+                lock(target);
 
-        const url = window.location.href;
-        const $temp = $("<input>");
-
-        $("body").append($temp);
-        $temp.val(url).select();
-        document.execCommand("copy");
-        $temp.remove();
-
-        // Switch tooltip title
-
-        const defaultTitle = target.attr(ATTR_TITLE_ORIGIN);
-        const succeedTitle = target.attr(ATTR_TITLE_SUCCEED);
-
-        target.attr(ATTR_TITLE_ORIGIN, succeedTitle).tooltip('show');
-        lock(target);
-
-        setTimeout(() => {
-            target.attr(ATTR_TITLE_ORIGIN, defaultTitle);
-            unlock(target);
-        }, TIMEOUT);
-
+                setTimeout(() => {
+                    target.attr(ATTR_TITLE_ORIGIN, defaultTitle);
+                    unlock(target);
+                }, TIMEOUT);
+            });
     });
-
 });
