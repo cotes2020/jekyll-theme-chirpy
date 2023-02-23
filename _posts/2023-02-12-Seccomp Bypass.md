@@ -36,19 +36,37 @@ As we can see we get that the syscalls like `open` , `execve` , etc are disabled
 
 <img src="https://github.com/manasghandat/manasghandat.github.io/raw/master/assets/img/Images/Blog2/2.png" alt="Seccomp when properly implemented">
 
-As we can clearly see that on line 3 and 4 of the latter example it blocks syscalls that have value greater than `0x40000000`. IN the case of first example we can try to pass syscalls that are greater than `0x40000000`. We add `0x40000000` the offset to the original syscall value o get those syscalls. Thus seccomp is bypassed. 
+As we can clearly see that on line 3 and 4 of the latter example it blocks syscalls that have value greater than `0x40000000`. In case of first example we can try to pass syscalls that are greater than `0x40000000`. We add `0x40000000` the offset to the original syscall value to get those syscalls. Thus seccomp is bypassed. An example of this would be to call `write` we need to pass the file descriptor (let us assume `0x1`) and the address of the buffer (let us assume `0xdeadbeef`) and we are writing `0x100` bytes. Thus the assembly would be:
+
+```
+mov rdi, 0x1
+mov rsi, 0xdeadbeef
+mov rdx, 0x100
+mov rax, 0x1
+syscall
+```
+
+Another way which would bypass the improper implementation would be:
+
+```
+mov rdi, 0x1
+mov rsi, 0xdeadbeef
+mov rdx, 0x100
+mov rax, 0x40000001
+syscall
+```
 
 You can find the writeup in detail of the challenge in the references section.
 
 # Advanced Bypassing techniques
 
-We saw that in the above examples seccomp filters are applied at the start of the process but it can also be applied at the end of the process. In that case if the process creates a child process then the seccomp will not be applied to the child. Thus we can read the memory of the child process.
+We saw that in the above examples seccomp filters are applied at the start of the process but it can also be applied at the end of the process. In that case, if the process creates a child process then the seccomp will not be applied to the child. Thus we can read the memory of the child process.
 
-One such challenge was in **Google CTF 2020** called *write only*. In that challenge all syscalls except `open` and `write` were blocked. Thus we had to read the flag from the memory of the child process. A writeup to that challenge can be found in the resources section.
+One such challenge was in **Google CTF 2020** called *write only*. In that challenge all syscalls except `open` and `write` were blocked. Thus, we had to read the flag from the memory of the child process. A writeup to that challenge can be found in the resources section.
 
 # Disabling Seccomp
 
-Seccomp is implemented using the Berkeley Packet Filter and is done by the kernel using the `__secure_computing` (more info <a href="https://elixir.bootlin.com/linux/latest/source/kernel/seccomp.c#L1325">here</a>). The information about the process seccomp is stored inside `seccomp` struct which is inside the `task_struct` (more info <a href="https://elixir.bootlin.com/linux/latest/source/include/linux/sched.h#L1124">here</a>). The kernel sets a `TIS_SECCOMP` bit to `1` to indicate that seccomp is enabled.
+Seccomp is implemented using the Berkeley Packet Filter and is done by the kernel using the `__secure_computing` (more info <a href="https://elixir.bootlin.com/linux/latest/source/kernel/seccomp.c#L1325">here</a>). The information about the process seccomp is stored inside `seccomp` struct which is inside the `task_struct` (more info <a href="https://elixir.bootlin.com/linux/latest/source/include/linux/sched.h#L1124">here</a>). The kernel sets a `TIF_SECCOMP` bit to `1` to indicate that seccomp is enabled.
 
 If we manage to change the `TIF_SECCOMP` bit to `0` then we would disable the seccomp in the process. Current `task_struct` of the process is stored in the `gs` register. The `seccomp` struct is at an offset of `0x15d00` from the base of the `gs` register. On referencing this address we find the variable `flags` whose 8th bit is the bit we want to reset.
 
@@ -64,7 +82,7 @@ void disable_seccomp(void){
 }
 ```
 
-The following module disables the seccomp in the current process that we are working.
+The following module disables the seccomp in the current process that we are working. Here the `_TIF_SECCOMP` macro is used whose value is equal to `1<<(TIF_SECCOMP)`.
 
 # Writing the Shellcode
 
