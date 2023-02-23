@@ -2,7 +2,7 @@
 title: "Scalar Field Lagrangian From Symmetry Considerations"
 description: "Or, how field theory doesn't leave us much choice"
 categories: [classical field theory]
-tags: [Klein-Gordon theory, energy-momentum tensor, symmetries]
+tags: [Klein-Gordon theory, energy-momentum tensor, Noether theorem, symmetries]
 ---
 
 Welcome to another post on, well, you guessed it: scalar field theory. Today, we will be deriving a Lagrangian density for scalar fields that appears almost everywhere in physics (namely in the Klein-Gordon and related theories).

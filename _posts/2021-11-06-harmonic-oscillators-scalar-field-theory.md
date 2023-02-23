@@ -2,7 +2,7 @@
 title: "Harmonic Oscillators in Scalar Field Theory"
 description: "How harmonic oscillators emerge in scalar field theory"
 categories: [classical field theory]
-tags: [harmonic oscillators, scalar field theory, linearity]
+tags: [harmonic oscillators, energy-momentum tensor, linearity]
 ---
 
 Once again, let us see how classical scalar field theory naturally gives rise to common natural phenomena.  Today, we will derive the evolution of harmonic oscillators.
@@ -206,7 +206,7 @@ T & = - \partial_\alpha \phi \: \partial^\alpha \phi \\
 \end{aligned}
 $$
 
-We can also simplify $$\text{Tr} \left( \epsilon_{\rho \sigma} \right) = \epsilon$$ in the limit of small oscillations,
+We can also simplify $$\text{tr} \left( \epsilon_{\rho \sigma} \right) = \epsilon$$ in the limit of small oscillations,
 
 $$
 \begin{aligned}

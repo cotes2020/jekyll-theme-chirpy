@@ -2,7 +2,7 @@
 title: "Deriving the Lagrangian Density for Newtonian Gravitation"
 description: "How to apply the Klein-Gordon theory to gravity"
 categories: [classical field theory]
-tags: [Newtonian gravitation, Klein-Gordon theory]
+tags: [gravitation, Klein-Gordon theory, energy-momentum tensor]
 ---
 
 ## Some thoughts

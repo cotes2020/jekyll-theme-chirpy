@@ -2,7 +2,7 @@
 title: "Combining Valid Solutions Into New Ones in Classical Field Theory"
 description: "When and how can given solutions of the classical field-theoretic Euler-Lagrange equations be combined into new solutions?"
 categories: [classical field theory]
-tags: [linearity, scalar field theory]
+tags: [linearity]
 redirect_from: combining-valid-solutions-classical-field-theory
 ---
 

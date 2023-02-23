@@ -1,0 +1,25 @@
+{% if page.iframe.options %}
+    {% assign options = page.iframe.options %}
+{% else %}
+    {% assign options = "" %}
+{% endif %}
+
+{% if page.iframe.asset == true %}
+    {% assign src =  site.url | append: site.baseurl | append: "/assets/" | append: page.iframe.path | append: "#" | append: options %}
+{% else %}
+    {% assign src = "{{ page.iframe.path }}#{{ options }}" %}
+{% endif %}
+
+{% if page.iframe.height %}
+    {% assign height = page.iframe.height %}
+{% else %}
+    {% assign height = "540" %}
+{% endif %}
+
+{% if page.iframe.width %}
+    {% assign width = page.iframe.width %}
+{% else %}
+    {% assign width = "100%" %}
+{% endif %}
+
+<iframe src="{{ src }}" height="{{ height }}" width="{{ width }}" title="Slides"></iframe>

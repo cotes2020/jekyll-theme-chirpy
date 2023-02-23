@@ -2,7 +2,7 @@
 title: "Gauge Invariance in Classical Field Theory"
 description: "Exploring a subtle symmetry key to many field theories"
 categories: [classical field theory]
-tags: [gauge invariance, symmetries, scalar field theory]
+tags: [gauge invariance, symmetries]
 ---
 
 In [Combining Valid Solutions Into New Ones in Classical Field Theory]({% post_url 2022-04-23-combining-solutions-classical-field-theory %}), we have seen how an arbitrary field $$\phi$$ constructed from a class of solutions $$\left\{ \phi_{\left( i \right)} \right\}$$ for some equations of motion, must obey:

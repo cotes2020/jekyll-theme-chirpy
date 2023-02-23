@@ -2,7 +2,7 @@
 title: "Conservation of Mass in Classical Mechanics"
 description: "The origin of conservation of mass in classical mechanics"
 categories: [classical mechanics]
-tags: [mass, symmetries, affine space]
+tags: [mass, Noether theorem, symmetries, affine space]
 redirect_from: conservation-of-mass-classical-mechanics
 ---
 
