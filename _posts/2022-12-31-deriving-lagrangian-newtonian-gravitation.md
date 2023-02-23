@@ -125,7 +125,7 @@ Plugging in the above into the form of the Lagrangian we argued for the scalar g
 
 $$\mathcal{L} = \frac{1}{2} \partial_i \phi \partial^i \phi + 4 \pi G \rho \phi$$
 
-Notice that scaling the Lagrangian does not change the equation of motion obtained (which engenders the physics) and scaling by a factor of $$4 \pi G$$ yields a Lagrangian seen frequently across texts on gravitation/field theory,
+Notice that scaling the Lagrangian does not change the equation of motion obtained (which engenders the physics) and scaling by a factor of $$\displaystyle{\frac{1}{4 \pi G}}$$ yields a Lagrangian seen frequently in the physics literature,
 
 $$\mathcal{L} = \frac{1}{8 \pi G} \partial_i \phi \partial^i \phi + \rho \phi$$
 
