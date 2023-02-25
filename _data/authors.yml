@@ -6,6 +6,11 @@
 #   url: {homepage_of_author}
 # -------------------------------------
 
+Nick_Post:
+  name: Nick Post
+  twitter: postnick
+  url: https://github.com/postnick/
+  
 cotes:
   name: Cotes Chung
   twitter: cotes2020
