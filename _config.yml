@@ -19,9 +19,9 @@ timezone: America/Chicago
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: postnick                          # the main title
+title: Nick Post GitHub Landing Page   # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Notes and Articles I'd like to share   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
