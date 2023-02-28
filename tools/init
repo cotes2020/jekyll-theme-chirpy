@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Init the evrionment for new user.
+# Init the environment for new user.
 
 set -eu
 
