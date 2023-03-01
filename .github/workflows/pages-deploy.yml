@@ -50,6 +50,9 @@ jobs:
         env:
           JEKYLL_ENV: "production"
 
+      - name: Add Linux platform
+        run: bundle lock --add-platform x86_64-linux
+
       - name: Test site
         run: |
           bundle exec htmlproofer _site --disable-external --check-html --allow_hash_href
