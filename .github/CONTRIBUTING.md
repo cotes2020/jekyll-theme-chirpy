@@ -1,66 +1,55 @@
 # How to Contribute
 
-We'd like to thank you for sparing time to improve this project! Here are some guidelines for contributing：
+:tada: We really appreciate you taking the time to improve this project! :tada:
 
-To ensure that the blog design is not confused, this project does not accept suggestions for design changes, such as color scheme, fonts, typography, etc. If your request is about an enhancement, it is recommended to first submit a [_Feature Request_](https://github.com/cotes2020/jekyll-theme-chirpy/issues/new?labels=enhancement&template=feature_request.md) issue to discuss whether your idea fits the project.
+To ensure that the blog design is not confusing, this project does not accept
+suggestions for design changes, such as color scheme, fonts, typography, etc.
+If your request is about an enhancement, it is recommended to first submit a
+[Feature Request][pr-issue] issue to discuss whether your idea fits the project.
 
-## Basic Process
-
-Generally, contribute to the project by:
+Basically, you can follow these steps to complete the contribution.
 
 1. Fork this project on GitHub and clone it locally.
-2. Create a new branch from the default branch and give it a descriptive name (format: `feature/<add-new-feat>` / `fix/<fix-a-bug>`).
-3. After completing the development, submit a new _Pull Request_. Note that the commit message must follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), otherwise it will fail the PR check.
+2. Create a new branch from the default branch and give it a descriptive name
+   (format: `feature/<add-new-feat>` or `fix/<fix-a-bug>`).
+3. After completing development, create a [Conventional Commit][cc] with git.
+  (See also: ["Verify the commits"](#verify-the-commits))
+4. Create a [Pull Request][gh-pr].
 
-## Modifying JavaScript
+## Make sure you can pass the CI tests
 
-If your contribution involves JavaScript modification, please read the following sections.
+This project has [CI][ci] turned on. In order for your [PR][gh-pr] to pass the test,
+please read the following.
 
-### Inline Scripts
-
-If you need to add comments to the inline JavaScript (the code between the HTML tags `<script>` and `</script>`), please use `/* */` instead of two slashes `//`. Because the HTML will be compressed by [jekyll-compress-html](https://github.com/penibelst/jekyll-compress-html) during deployment, but it cannot handle the `//` properly, which will disrupt the structure of the compressed HTML.
-
-### External Scripts
-
-If you need to add/change/delete the JavaScript in the directory `_javascript/`, setting up [`Node.js`](https://nodejs.org/) and [`npx`](https://www.npmjs.com/package/npx) is a requirement. And then install the development dependencies:
-
+### Check the core functionality
+  
 ```console
-$ npm i
+bash ./tools/test
 ```
 
-During JavaScript development, real-time debugging can be performed through the following commands:
-
-Firstly, start a Jekyll server:
+### Check the SASS syntax style
 
 ```console
-$ bash tools/run
+npm test
 ```
 
-And then open a new terminal tab and run:
+### Verify the commits
 
-```console
-# Type 'Ctrl + C' to stop
-$ npx gulp dev
-```
-
-After debugging, run the command `npx gulp` (without any argument) will automatically output the compressed files to the directory `assets/js/dist/`.
-
-## Verify the commit messages
-
-If you want to make sure your commits pass the CI check, you can refer to the following steps.
+Before you create a git commit, please complete the following setup.
 
 Install `commitlint` & `husky`:
 
 ```console
-$ npm i -g @commitlint/{cli,config-conventional} husky
+npm i -g @commitlint/{cli,config-conventional} husky
 ```
 
 And then enable `husky`:
 
 ```console
-$ husky install
+husky install
 ```
 
----
-
-:tada: Your volunteering will make the open-source world more beautiful, thanks again! :tada:
+[pr-issue]: https://github.com/cotes2020/jekyll-theme-chirpy/issues/new?labels=enhancement&template=feature_request.md
+[gh-pr]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+[cc]: https://www.conventionalcommits.org/
+[ci]: https://en.wikipedia.org/wiki/Continuous_integration
