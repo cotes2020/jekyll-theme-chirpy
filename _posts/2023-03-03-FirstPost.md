@@ -22,3 +22,16 @@
 
  <p>첫째 줄에 A+B를 출력한다.</p>
 
+```c
+#include <iostream>
+using namespace std;
+
+int main() {
+
+	int a, b;
+	cin >> a >> b;
+	cout << a + b;
+
+	return 0;
+}
+```
