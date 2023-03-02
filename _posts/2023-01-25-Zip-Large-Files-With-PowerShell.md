@@ -6,7 +6,7 @@ comments: false
 category: powershell
 author: ebmarquez
 tags:
-- powershell
+- PowerShell
 - dotnet
 - code
 summary: Notes on how to use powershell to zip files over 2G
