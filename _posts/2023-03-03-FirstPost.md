@@ -28,6 +28,7 @@ categories : 백준
 
  <p>첫째 줄에 A+B를 출력한다.</p>
 
+test
 ```c
 #include <iostream>
 using namespace std;
