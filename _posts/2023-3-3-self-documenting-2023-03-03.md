@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 2023.03.03
-permalink: /posts/:title/2023-03-03
+#permalink: /posts/:title/2023-03-03
 date: 2023-3-2 10:30 -0500
 categories: "Interesting Articles"
 tags: 2023 remote-work culture hybrid-work social-capital apple google amazon nationwide deloitte applied-materials formik react houseform open-source zod open-apis project-ideas regex regular-expressions teams engineering accessibility humble-bundle axe-con conferences imani-barbarin okr john-doerr measure-what-matters leadership technical-leader individual-contributor engineer growth psychological-safety generative-work static-work tim-ottinger agile-otter design life-lessons fabricio-teixeira peter-principle

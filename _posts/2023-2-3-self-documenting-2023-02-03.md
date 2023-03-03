@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 2023.02.03
-permalink: /posts/:title/2023-02-03
+#permalink: /posts/:title/2023-02-03
 date: 2023-2-3 00:01 -0500
 categories: "Interesting Articles"
 tags: 2023 design management leadership "Fabricio Teixeira" genetics self-advocacy conference Detroit "software architecture" "software design" "data management" "humble bundle" feedback bias "floating point numbers" "Julia Evans"  diversity equity inclusion "software engineering" infosec javascript "Alyssa Miller" learning meetings "1 on 1" ethics cookie consent teams ui
