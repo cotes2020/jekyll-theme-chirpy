@@ -3,11 +3,6 @@ layout: post
 title: 백준 9012번 문제
 categories : 백준
 tag : 백준
-image:
-  src: /assets/img/Chirpy-title-image.jpg
-  width: 1000   # in pixels
-  height: 400   # in pixels
-  alt: image alternative text
 ---
 # [Silver IV] 괄호 - 9012 
 
