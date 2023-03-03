@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 2023.02.17
+title: 2023-02-17
 permalink: /posts/:title/2023-02-17
 date: 2023-2-17 00:01 -0500
 categories: "Interesting Articles"
