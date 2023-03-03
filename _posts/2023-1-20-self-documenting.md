@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 2023.01.20
-permalink: /posts/:title/2023-01-20
+permalink: /posts/:title/2023.01.20
 categories: "Interesting Articles"
 tags: 2023 productivity reading brain loneliness aging stress diversity equity inclusion poor classism "software engineering" versioning semver "guard clauses" exceptions validation ardalis infosec "tanya janca" "adam shostack" threats "personal development" learning teams feedback
 ---
