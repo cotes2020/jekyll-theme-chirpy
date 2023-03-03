@@ -1,8 +1,8 @@
----
+
 title: 백준 2558번 문제
 tag : 백준
 categories : 백준
----
+
 # [Bronze V] A+B - 2 - 2558 
 
 [문제 링크](https://www.acmicpc.net/problem/2558) 
