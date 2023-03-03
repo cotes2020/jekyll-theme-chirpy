@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 백준 2558번 문제
 tag : 백준
 categories : 백준
