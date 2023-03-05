@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Cotes Chung"]
   spec.email         = ["cotes.chung@gmail.com"]
 
-  spec.summary       = "Chirpy is a minimal, sidebar, responsive web design Jekyll theme that focuses on text presentation."
+  spec.summary       = "A minimal, responsive and feature-rich Jekyll theme for technical writing."
   spec.homepage      = "https://github.com/cotes2020/jekyll-theme-chirpy"
   spec.license       = "MIT"
 

@@ -1,7 +1,7 @@
 {
   "name": "jekyll-theme-chirpy",
   "version": "5.5.2",
-  "description": "A minimal, responsive, and powerful Jekyll theme for presenting professional writing.",
+  "description": "A minimal, responsive and feature-rich Jekyll theme for technical writing.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cotes2020/jekyll-theme-chirpy.git"
