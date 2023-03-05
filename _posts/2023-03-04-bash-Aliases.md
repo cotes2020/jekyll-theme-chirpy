@@ -12,11 +12,11 @@ pin: false
 
 When using the $BASH shell you'll need to first edit the '.BashRC' file.
 ```bash
-    sudo nano ~/.bashrc
+sudo nano ~/.bashrc
 ```
 If you're using $FISH you'll need to create a config fiile without SUDO
 ```bash
-    nano ~/.config/fish/config.fish
+nano ~/.config/fish/config.fish
 ```
 
 
@@ -45,7 +45,6 @@ If you're using $FISH you'll need to create a config fiile without SUDO
     #alias install="sudo dnf install"
     #alias upgrade="sudo dnf update -y"
 
-
 #Tells you your IP address NEED CURL
    alias extip="curl icanhazip.com"
 #AWK has issues inside of an alias
@@ -65,5 +64,6 @@ Thanks to [LearnLinuxTV](https://www.learnlinux.tv/linux-essentials-bash-aliases
 
 {% include embed/youtube.html id='Ok_kD_sgNcs' %}
 
+{% include embed/youtube.html id='Balreaj8Yqs' %}
 
 I'll update this as i come up with new alias examples.
