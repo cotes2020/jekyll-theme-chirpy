@@ -17,7 +17,7 @@ summary: Using powershell to run a web server
 * Table of Contents
 {:toc}
 
-Recently, I needed to write a web server using PowerShell. PowerShell is based on the dotnet framework. It can use dotnet's libraries to build tools and different services. In this case I needed to utilize the [System.Net.HttpListener][httplistener]{:target="_blank"} library.
+Recently, I needed to write a web server using PowerShell. PowerShell is a scripting language based on the dotnet framework. It can use dotnet libraries to build tools and different services. In this case I needed to utilize the [System.Net.HttpListener][httplistener]{:target="_blank"} library.
 
 Setting up a web server with PowerShell is very simple.  In this example, the service will operate  within a container. The container I'm using is based on dotnet6 with PowerShell 7 running on a debian based container.
 
