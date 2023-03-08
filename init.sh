@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-bundle exec jekyll s
+/workspaces/ebmarquez.github.io/tools/run
