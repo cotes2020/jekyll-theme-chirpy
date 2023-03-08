@@ -34,17 +34,17 @@ $listener.Start()  # starting the listener service.
 $context = $listener.GetContext()
 ```
 
-In the code, I'm using the URLPrefix with the magic `+` in the place of the IP.  The `+` in dotnet is the equivalent of `0.0.0.0` which will be important for a container.  Port `8080` was used instead of 80.  I initially used 80 but at some point, I encountered a port conflict.  I think this has something to do with how dotnet starts the listener (not really sure). To get around this I selected `8080` instead. There might be a special switch that can be disable the port 80 conflict, but I didn't find it.
+In the code, I'm using the URLPrefix with the magic `+` in the place of the IP.  The `+` in dotnet is the equivalent of `0.0.0.0` which will be important for a container.  Port `8080` was used instead of 80. I initially used 80 but at some point, I encountered a port conflict. I think this has something to do with how dotnet starts the listener (not really sure). To get around this I selected `8080` instead. There might be a special switch that can be disable the port 80 conflict but I didn't find it.
 
-The URL path is set to`/test`. The web service property GetContext will respond to any request. In this example the code will only respond to the my specific path. `New-Object` was used to call the dotnet library and assign it to the variable `$listener`. One thing to note with the URL, a closing slash `/` is required by the HttpListener property. If an ending `/` is not used, PowerShell will throw the following error.
+The URL path is set to`/test`. In this code, requests with /test will only receive a response. `New-Object` was used to call the dotnet library and assign it to the variable `$listener`. One thing to note with the URL, a closing slash `/` is required by the HttpListener property. If an ending `/` is not used, PowerShell will throw the following error.
 
 ```powershell
 MethodInvocationException: Exception calling "Add" with "1" argument(s): "Only Uri prefixes ending in '/' are allowed. (Parameter 'uriPrefix')"
 ```
 
-The `$listener` object has a number of interest properties, IsListening, Prefixes, and AuthenticationSchemes.  IsListening is boolean with a value set to True. Under Prefix it will show the assigned path. Once the GetContext() is executed we can test the server by connecting to localhost address, [http://127.0.0.1:8080/test/](http://127.0.0.1:8080/test/){:target="_blank"}.
+Once, the prefix is assigned, Start() is called.  As expected, this will start the port listener for the web server. Before the GetContext is executed, we can check the `$listener` object and see it's properties. 
 
-Once, the prefix is assigned, Start() is called.  As expected, this will start the port listener for the web server. Before the GetContext is executed, we can check the `$listener` object and see it's properties.
+The `$listener` object has a number of interest properties, IsListening, Prefixes, and AuthenticationSchemes.  IsListening is boolean with a value set to True. Under Prefix it will show the assigned path. Once the GetContext() is executed we can test the server by connecting to localhost address, [http://127.0.0.1:8080/test/](http://127.0.0.1:8080/test/){:target="_blank"}.
 
 ```powershell
 $listener
@@ -63,7 +63,7 @@ UnsafeConnectionNtlmAuthentication   : False
 TimeoutManager                       : System.Net.HttpListenerTimeoutManager
 ```
 
-If we check the dotnet library, we can see the `$listener` object has several properties and methods associated with it. To see an explanation of how to use the methods and properties visit the dotnet library [here][httplistener]{:target="_blank"}.
+If we check the dotnet library, we can see the `$listener` object has several properties and methods associated with it. To see an explanation of how to use the methods and properties visit the dotnet library [here][httplistener]{:target="_blank"}.  Below is a list of all the methods and properties.
 
 ```powershell
 $listener | Get-Member
@@ -98,7 +98,7 @@ TimeoutManager                       Property   System.Net.HttpListenerTimeoutMa
 UnsafeConnectionNtlmAuthentication   Property   bool UnsafeConnectionNtlmAuthentication {get;set;}
 ```
 
-When a request is received by the server, `$context.Request` will show a several attributes from [System.Net.HttpListenerRequest class][HttpListenerRequest]{:target="_blank"}
+When a request is received by the server, GetContext will write to the assignment of `$context`. Context has two Objects, Request and Response. `$context.Request` will show a several attributes from [System.Net.HttpListenerRequest class][HttpListenerRequest]{:target="_blank"}.
 
 ```powershell
 $context.Request
@@ -135,7 +135,7 @@ RemoteEndPoint         : 127.0.0.1:59296
 LocalEndPoint          : 127.0.0.1:8080
 ```
 
-The `$context.Request` object also has a number of useful settings.  In this example RawUrl, and HttpMethod are used to identify the uri and request method that was used. From the output it shows a `GET` was sent to `/test/`.  My local port was sent from `59296` and the request went to `127.0.0.1:8080`.
+The `$context.Request` object also has a number of useful settings.  In this example RawUrl, and HttpMethod are used to identify the uri and request method that was used. From the output, it shows a `GET` was sent to `/test/`.  My local port was sent from `59296` and the request went to `127.0.0.1:8080`.
 
 ```powershell
 if ($context.Request.HttpMethod -eq 'GET') {
@@ -149,7 +149,7 @@ $context.Response.Close()
 $listener.Stop()
 ```
 
-In the example, there are several if conditions that are checked. If it's a `GET` request and if it's using the `/test/` path. When the listener Prefixes is configured, the object required a closing slash `/`.  When users use a web service that ending `/` may not be included.The if condition checks for both instances. If the request is a match, the content response is performed.
+Above, there are several if conditions that are checked. If it's a `GET` request and if it's using the `/test/` path continue. When the listener Prefixes is configured, the object required a closing slash `/`.  When users use a web service that ending `/` may not be included.The if condition checks for both instances. If the request is a match, the content response is performed.
 
 To respond to the request, a contentType is set and the content is assigned as to an array of bytes.  [$context.Response class][HttpListenerResponse]{:target="_blank"} has a property called OutputStream, this will utilize a [Stream.Write Method][writestream]{:target="_blank"} write to the response object. The write stream needs the array of bytes, an offset and the length of the bytes. In this case, the offset is set to zero. After the response is set, the response is then closed and the listener can be stopped. The stop method will to shutdown the the web server service and release the port.
 
@@ -183,7 +183,7 @@ Headers           : {[Transfer-Encoding, System.String[]], [Server, System.Strin
 RelationLink      : {}
 ```
 
-From the client perspective, when the web server is listening for a Context request. A web request can be performed with Invoke-WebRequest or just opening a web browsers to [http://127.0.0.1:8080/test/](http://127.0.0.1:8080/test/){:target="_blank"}. The web server will recieve the request and process it. The response in this case is a GUID string. The RawContent shows the header and  of the response. The content shows the data as an array of bytes. To convert the bytes to a string, [System.Text.Encoding][encoding]{:target="_blank"} is used resulting in a GUID.
+From the client perspective, when the web server is listening for a Context request. A web request can be performed with Invoke-WebRequest or just opening a web browsers to [http://127.0.0.1:8080/test/](http://127.0.0.1:8080/test/){:target="_blank"}. The web server will receive the request and process it. The response in this case is a GUID string. The RawContent shows the header and  of the response. The content shows the data as an array of bytes. To convert the bytes to a string, [System.Text.Encoding][encoding]{:target="_blank"} is used resulting in a GUID.
 
 ```powershell
 [System.Text.Encoding]::ASCII.GetString($web.Content)
