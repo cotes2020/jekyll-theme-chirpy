@@ -46,10 +46,10 @@ social:
     # The first element serves as the copyright owner's link
     - https://github.com/ebmarquez       # change to your github homepage
     - https://twit.social/@ebmarquez
-    #- https://twitter.com/ebmarquez
+    - https://twitter.com/ebmarquez
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/ericmarquez/
 
 google_site_verification:       # fill in to your verification string
 # See the google page at the root of the site.
@@ -75,7 +75,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode:   dark
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -193,6 +193,7 @@ exclude:
   - gulpfile.js
   - node_modules
   - package*.json
+  - init.sh
 
 jekyll-archives:
   enabled: [categories, tags]
