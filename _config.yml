@@ -47,9 +47,10 @@ social:
     - https://github.com/ebmarquez       # change to your github homepage
     - https://twit.social/@ebmarquez
     - https://twitter.com/ebmarquez
+    - https://www.linkedin.com/in/ericmarquez
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/ericmarquez/
+    
 
 google_site_verification:       # fill in to your verification string
 # See the google page at the root of the site.
