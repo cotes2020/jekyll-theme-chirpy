@@ -2,24 +2,28 @@
 layout: post
 title: PowerShell based web server
 date: 2023-02-06
-category: 
+category:
 - Instructions
 author: ebmarquez
 tags:
-- API
-- Web Server
-- Container
+- api
+- web server
+- container
 - docker
 - dotnet
 - PowerShell
-summary: Using powershell to run a web server
+summary: Using powershell to run a web server, the code is designed to operate within a container.
 ---
 * Table of Contents
 {:toc}
 
-Recently, I needed to write a web server using PowerShell. PowerShell is a scripting language based on the dotnet framework. It can use dotnet libraries to build tools and different services. In this case I needed to utilize the [System.Net.HttpListener][httplistener]{:target="_blank"} library. When I initially write this script, it needed to operate within a linux container.
+# Summary
 
-Setting up a web server with PowerShell is very simple.  In this example, the service will use 0.0.0.0 to listen for requests on port 8080, respond to the URI of /test and return a GUID. The container I used was based on dotnet6 with PowerShell 7 running on a debian based container.
+Recently, I needed to write a web server using PowerShell. PowerShell is a scripting language based on the dotnet framework. It can use dotnet libraries to build tools and different services. In this case, I needed to utilize the [System.Net.HttpListener][httplistener]{:target="_blank"} library. When I initially wrote this script, it needed to operate within a linux container. In many examples people post on the internet, the host IP or localhost IP is typically used. These options don't work will when deployed with a container. The problem I encountered was specifically with the IP address.  I'm not able to predict the IP address, so the best option is to use 0.0.0.0 or in my case `+`. In this post, I'm only describing the code needed to create the PowerShell web server.  The container configuration is out of scope.
+
+Setting up a web server with PowerShell is very simple.  In this example, the service will use 0.0.0.0 to listen for requests on port 8080, respond to the URI of /test, then return a GUID. The container I used was based on dotnet6 with PowerShell 7 running on a debian based container.
+
+## Setup
 
 ```powershell
 $urlPrefix = '+' # the plus is special, this tells it to listen on any IP.
@@ -42,9 +46,11 @@ The URL path is set to`/test`. In this code, requests with /test will only recei
 MethodInvocationException: Exception calling "Add" with "1" argument(s): "Only Uri prefixes ending in '/' are allowed. (Parameter 'uriPrefix')"
 ```
 
-Once, the prefix is assigned, Start() is called.  As expected, this will start the port listener for the web server. Before the GetContext is executed, we can check the `$listener` object and see it's properties. 
+Once, the prefix is assigned, Start() is called.  As expected, this will start the port listener for the web server. Before the GetContext is executed, we can check the `$listener` object and see it's properties.
 
 The `$listener` object has a number of interest properties, IsListening, Prefixes, and AuthenticationSchemes.  IsListening is boolean with a value set to True. Under Prefix it will show the assigned path. Once the GetContext() is executed we can test the server by connecting to localhost address, [http://127.0.0.1:8080/test/](http://127.0.0.1:8080/test/){:target="_blank"}.
+
+## System.Net.HttpListener
 
 ```powershell
 $listener
@@ -100,6 +106,8 @@ UnsafeConnectionNtlmAuthentication   Property   bool UnsafeConnectionNtlmAuthent
 
 When a request is received by the server, GetContext will write to the assignment of `$context`. Context has two Objects, Request and Response. `$context.Request` will show a several attributes from [System.Net.HttpListenerRequest class][HttpListenerRequest]{:target="_blank"}.
 
+## System.Net.HttpListenerContext
+
 ```powershell
 $context.Request
 
@@ -137,6 +145,8 @@ LocalEndPoint          : 127.0.0.1:8080
 
 The `$context.Request` object also has a number of useful settings.  In this example RawUrl, and HttpMethod are used to identify the uri and request method that was used. From the output, it shows a `GET` was sent to `/test/`.  My local port was sent from `59296` and the request went to `127.0.0.1:8080`.
 
+## Returning Data to the Client
+
 ```powershell
 if ($context.Request.HttpMethod -eq 'GET') {
    if ($context.Request.RawUrl -match '/test$|/test/$') {
@@ -152,6 +162,8 @@ $listener.Stop()
 Above, there are several if conditions that are checked. If it's a `GET` request and if it's using the `/test/` path continue. When the listener Prefixes is configured, the object required a closing slash `/`.  When users use a web service that ending `/` may not be included.The if condition checks for both instances. If the request is a match, the content response is performed.
 
 To respond to the request, a contentType is set and the content is assigned as to an array of bytes.  [$context.Response class][HttpListenerResponse]{:target="_blank"} has a property called OutputStream, this will utilize a [Stream.Write Method][writestream]{:target="_blank"} write to the response object. The write stream needs the array of bytes, an offset and the length of the bytes. In this case, the offset is set to zero. After the response is set, the response is then closed and the listener can be stopped. The stop method will to shutdown the the web server service and release the port.
+
+## Microsoft.PowerShell.Commands.WebResponseObject
 
 ```powershell
 Invoke-WebRequest -uri http://127.0.0.1:8080/test/ -OutVariable web
