@@ -17,3 +17,5 @@ package-lock.json
 # IDE configurations
 .idea
 .vscode
+
+Gemfile.lock
