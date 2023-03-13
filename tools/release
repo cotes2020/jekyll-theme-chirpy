@@ -29,7 +29,6 @@ NODE_CONFIG="package.json"
 
 FILES=(
   "_sass/jekyll-theme-chirpy.scss"
-  "_javascript/copyright"
   "$GEM_SPEC"
   "$NODE_CONFIG"
 )
@@ -69,17 +68,24 @@ _check_git() {
 }
 
 _check_src() {
-  if [[ ! -f $1 && ! -d $1 ]]; then
-    echo -e "Error: Missing file \"$1\"!\n"
-    exit 1
-  fi
+  for i in "${!FILES[@]}"; do
+    _src="${FILES[$i]}"
+    if [[ ! -f $_src && ! -d $_src ]]; then
+      echo -e "Error: Missing file \"$_src\"!\n"
+      exit 1
+    fi
+  done
+
 }
 
 _check_command() {
-  if ! command -v "$1" &>/dev/null; then
-    echo "Command '$1' not found"
-    exit 1
-  fi
+  for i in "${!TOOLS[@]}"; do
+    cli="${TOOLS[$i]}"
+    if ! command -v "$cli" &>/dev/null; then
+      echo "Command '$cli' not found!"
+      exit 1
+    fi
+  done
 }
 
 _check_node_packages() {
@@ -89,20 +95,13 @@ _check_node_packages() {
 }
 
 check() {
+  _check_command
   _check_git
-
-  for i in "${!FILES[@]}"; do
-    _check_src "${FILES[$i]}"
-  done
-
-  for i in "${!TOOLS[@]}"; do
-    _check_command "${TOOLS[$i]}"
-  done
-
+  _check_src
   _check_node_packages
 }
 
-_bump_file() {
+_bump_files() {
   for i in "${!FILES[@]}"; do
     if [[ ${FILES[$i]} == "$NODE_CONFIG" ]]; then
       continue
@@ -111,7 +110,7 @@ _bump_file() {
     sed -i "s/v[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/v$1/" "${FILES[$i]}"
   done
 
-  npx gulp
+  npm run build
 }
 
 _bump_gemspec() {
@@ -127,7 +126,7 @@ _bump_gemspec() {
 #
 # 2. Create a commit to save the changes.
 bump() {
-  _bump_file "$1"
+  _bump_files "$1"
   _bump_gemspec "$1"
 
   if [[ $opt_pre = false && -n $(git status . -s) ]]; then

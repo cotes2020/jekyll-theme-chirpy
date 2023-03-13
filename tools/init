@@ -4,9 +4,15 @@
 
 set -eu
 
+# CLI Dependencies
+CLI=("git" "npm")
+
 ACTIONS_WORKFLOW=pages-deploy.yml
 
-TEMP_SUFFIX="to-delete" #  temporary file suffixes that make `sed -i` compatible with BSD and Linux
+# temporary file suffixes that make `sed -i` compatible with BSD and Linux
+TEMP_SUFFIX="to-delete"
+
+_no_gh=false
 
 help() {
   echo "Usage:"
@@ -18,14 +24,32 @@ help() {
   echo "     -h, --help           Print this help information."
 }
 
-check_status() {
+# BSD and GNU compatible sed
+_sedi() {
+  regex=$1
+  file=$2
+  sed -i.$TEMP_SUFFIX "$regex" "$file"
+  rm -f "$file".$TEMP_SUFFIX
+}
+
+_check_cli() {
+  for i in "${!CLI[@]}"; do
+    cli="${CLI[$i]}"
+    if ! command -v "$cli" &>/dev/null; then
+      echo "Command '$cli' not found! Hint: you should install it."
+      exit 1
+    fi
+  done
+}
+
+_check_status() {
   if [[ -n $(git status . -s) ]]; then
     echo "Error: Commit unstaged files first, and then run this tool again."
     exit 1
   fi
 }
 
-check_init() {
+_check_init() {
   local _has_inited=false
 
   if [[ ! -d .github ]]; then # using option `--no-gh`
@@ -47,9 +71,10 @@ check_init() {
   fi
 }
 
-checkout_latest_tag() {
-  tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
-  git reset --hard "$tag"
+check_env() {
+  _check_cli
+  _check_status
+  _check_init
 }
 
 init_files() {
@@ -63,25 +88,30 @@ init_files() {
     mv ./${ACTIONS_WORKFLOW}.hook .github/workflows/${ACTIONS_WORKFLOW}
 
     ## Cleanup image settings in site config
-    sed -i.$TEMP_SUFFIX "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
-    rm -f _config.yml.$TEMP_SUFFIX
+    _sedi "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
   fi
 
   # remove the other fies
   rm -rf _posts/*
 
-  # save changes
-  git add -A
-  git commit -m "chore: initialize the environment" -q
+  # build assest
+  npm i && npm run build
 
-  echo "[INFO] Initialization successful!"
+  # track the js output
+  _sedi "/^assets.*\/dist/d" .gitignore
 }
 
-check_status
+commit() {
+  git add -A
+  git commit -m "chore: initialize the environment" -q
+  echo -e "\n[INFO] Initialization successful!\n"
+}
 
-check_init
-
-_no_gh=false
+main() {
+  check_env
+  init_files
+  commit
+}
 
 while (($#)); do
   opt="$1"
@@ -102,6 +132,4 @@ while (($#)); do
   esac
 done
 
-checkout_latest_tag
-
-init_files
+main
