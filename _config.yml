@@ -19,27 +19,26 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: IONSECURITY                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Redes Neuronales,Computacion Cuantica,Programacion Cuantica,Fisica,Fisica Cuantica,Desarollador de exploits,Pentesting Web,Pentesting  Wireless,Pentesting Active  Directory,Pivoting,Redes. 
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
-
+    ¡Hola!, Si estas aqui talves me conozcas o talves  no, cree este sitio  para enseñar Hacking,Programacion,Redes,Computacion Cuantica,Redes Neuronales,Machine Learning,Deep Learning
+    Si  te  interesa  quedate  si  no ya sabes la RESPUESTA.
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://Comandre-ex.github.io/'
 
 github:
-  username: github_username             # change to your github username
-
+  username: comandre-ex             # change to your github username
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: comandre-ex           # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com             # change to your email address
+  name: Comandre-ex
+  email: comandreenigma@proton.me             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username      # change to your twitter homepage
@@ -78,8 +77,7 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://chirpy-img.netlify.app'
-
+img_cdn: ''
 # the avatar on sidebar, support local or CORS resources
 avatar: '/commons/avatar.jpg'
 
