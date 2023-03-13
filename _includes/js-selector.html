@@ -1,6 +1,4 @@
-<!--
-  JS selector for site.
--->
+<!-- JS selector for site. -->
 
 <!-- layout specified -->
 
@@ -8,51 +6,50 @@
   {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
     <!-- pv-report needs countup.js -->
     <script async src="{{ site.data.assets[origin].countup.js | relative_url }}"></script>
-    <script defer src="{{ '/assets/js/dist/pvreport.min.js' | relative_url }}"></script>
   {% endif %}
 {% endif %}
 
 {% if page.layout == 'post' or page.layout == 'page' %}
   <!-- image lazy-loading & popup & clipboard -->
-  {% assign _urls = site.data.assets[origin].magnific-popup.js
-      | append: ',' | append: site.data.assets[origin].lazysizes.js
-      | append: ',' | append: site.data.assets[origin].clipboard.js
+  {% assign _urls = site.data.assets[origin]['magnific-popup'].js
+    | append: ','
+    | append: site.data.assets[origin].lazysizes.js
+    | append: ','
+    | append: site.data.assets[origin].clipboard.js
   %}
 
   {% include jsdelivr-combine.html urls=_urls %}
 {% endif %}
 
 {% if page.layout == 'home'
-    or page.layout == 'post'
-    or page.layout == 'archives'
-    or page.layout == 'category'
-    or page.layout == 'tag' %}
-
+  or page.layout == 'post'
+  or page.layout == 'archives'
+  or page.layout == 'category'
+  or page.layout == 'tag'
+%}
   {% assign locale = site.lang | split: '-' | first %}
 
   {% assign _urls = site.data.assets[origin].dayjs.js.common
-      | append: ',' | append: site.data.assets[origin].dayjs.js.locale
-      | replace: ':LOCALE', locale
-      | append: ',' | append: site.data.assets[origin].dayjs.js.relativeTime
-      | append: ',' | append: site.data.assets[origin].dayjs.js.localizedFormat
+    | append: ','
+    | append: site.data.assets[origin].dayjs.js.locale
+    | replace: ':LOCALE', locale
+    | append: ','
+    | append: site.data.assets[origin].dayjs.js.relativeTime
+    | append: ','
+    | append: site.data.assets[origin].dayjs.js.localizedFormat
   %}
 
   {% include jsdelivr-combine.html urls=_urls %}
-
 {% endif %}
 
-{% if page.layout == 'home'
-    or page.layout == 'categories'
-    or page.layout == 'post'
-    or page.layout == 'page' %}
-  {% assign type = page.layout %}
-{% elsif page.layout == 'archives'
-    or page.layout == 'category'
-    or page.layout == 'tag' %}
-  {% assign type = "misc" %}
-{% else %}
-  {% assign type = "commons" %}
-{% endif %}
+{% case page.layout %}
+  {% when 'categories', 'post', 'page' %}
+    {% assign type = page.layout %}
+  {% when 'home', 'archives', 'category', 'tag' %}
+    {% assign type = 'misc' %}
+  {% else %}
+    {% assign type = 'commons' %}
+{% endcase %}
 
 {% capture script %}/assets/js/dist/{{ type }}.min.js{% endcapture %}
 <script defer src="{{ script | relative_url }}"></script>
@@ -60,23 +57,24 @@
 {% if page.math %}
   <!-- MathJax -->
   <script>
-  /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
-  MathJax = {
-    tex: {
-      inlineMath: [              /* start/end delimiter pairs for in-line math */
-        ['$','$'],
-        ['\\(','\\)']
-      ],
-      displayMath: [             /* start/end delimiter pairs for display math */
-        ['$$', '$$'],
-        ['\\[', '\\]']
-      ]
-    }
-  };
+    /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
+    MathJax = {
+      tex: {
+        /* start/end delimiter pairs for in-line math */
+        inlineMath: [
+          ['$', '$'],
+          ['\\(', '\\)']
+        ],
+        /* start/end delimiter pairs for display math */
+        displayMath: [
+          ['$$', '$$'],
+          ['\\[', '\\]']
+        ]
+      }
+    };
   </script>
   <script src="{{ site.data.assets[origin].polyfill.js | relative_url }}"></script>
-  <script id="MathJax-script" async src="{{ site.data.assets[origin].mathjax.js | relative_url }}">
-  </script>
+  <script id="MathJax-script" async src="{{ site.data.assets[origin].mathjax.js | relative_url }}"></script>
 {% endif %}
 
 <!-- commons -->
@@ -95,5 +93,4 @@
   {% if site.google_analytics.id != empty and site.google_analytics.id %}
     {% include google-analytics.html %}
   {% endif %}
-
 {% endif %}
