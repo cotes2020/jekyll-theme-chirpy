@@ -40,6 +40,7 @@
   - Search
   - Atom Feeds
   - Google Analytics
+  - Google Adsense
   - Page Views Reporting
   - SEO & Performance Optimization
 
