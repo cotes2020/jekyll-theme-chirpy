@@ -1,18 +1,18 @@
-name: 'CI'
+name: "CI"
 on:
   push:
     branches-ignore:
-      - 'production'
-      - 'docs'
+      - "production"
+      - "docs"
     paths-ignore:
-      - '.github/**'
-      - '!.github/workflows/ci.yml'
-      - '.gitignore'
-      - 'README.md'
-      - 'LICENSE'
+      - ".github/**"
+      - "!.github/workflows/ci.yml"
+      - ".gitignore"
+      - "README.md"
+      - "LICENSE"
   pull_request:
     paths:
-      - '**'
+      - "**"
 
 jobs:
   build:
@@ -26,13 +26,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # for posts's lastmod
+          fetch-depth: 0 # for posts's lastmod
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Build Assets
+        run: npm i && npm run build
 
       - name: Test Site
         run: bash tools/test
