@@ -11,9 +11,9 @@ bootstrap:
   css: /assets/lib/bootstrap-4.6.1/bootstrap.min.css
   js: /assets/lib/bootstrap-4.6.1/bootstrap.bundle.min.js
 
-bootstrap-toc:
-  css: /assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css
-  js: /assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js
+toc:
+  css: /assets/lib/tocbot-4.20.1/tocbot.min.css
+  js: /assets/lib/tocbot-4.20.1/tocbot.min.js
 
 fontawesome:
   css: /assets/lib/fontawesome-free-6.2.1/css/all.min.css

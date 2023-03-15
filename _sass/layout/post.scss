@@ -17,7 +17,7 @@
 }
 
 @mixin dot($pl: 0.25rem, $pr: 0.25rem) {
-  content: "\2022";
+  content: '\2022';
   padding-left: $pl;
   padding-right: $pr;
 }
@@ -91,6 +91,7 @@ h1 + .post-meta {
     vertical-align: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 
     .share-icons {
@@ -115,7 +116,7 @@ h1 + .post-meta {
         &:hover {
           text-decoration: none;
 
-          >i {
+          > i {
             @extend %btn-share-hovor;
           }
         }
@@ -250,24 +251,58 @@ h1 + .post-meta {
   transition: top 0.2s ease-in-out;
   -webkit-animation: fade-up 0.8s;
   animation: fade-up 0.8s;
-}
 
-#toc {
-  ul.nav.navbar-nav {
-    margin: 0.5rem 0;
-    padding: 0;
+  ul {
+    list-style: none;
+    font-size: 0.85rem;
+    line-height: 1.25;
+    padding-left: 0;
 
     li {
-      padding-top: 2px;
-      padding-bottom: 2px;
-    }
-  }
-}
+      &:not(:last-child) {
+        margin: 0.4rem 0;
+      }
 
-nav[data-toggle="toc"] {
-  .nav {
-    .nav > li > a.active {
-      font-weight: 600 !important;
+      a {
+        padding: 0.2rem 0 0.2rem 1.25rem;
+      }
+    }
+
+    /* Overwrite TOC plugin style */
+
+    .toc-link {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:hover {
+        color: var(--toc-highlight);
+        text-decoration: none;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .is-active-link {
+      color: var(--toc-highlight) !important;
+      font-weight: 600;
+
+      &::before {
+        display: inline-block;
+        width: 1px;
+        left: -1px;
+        height: 1.25rem;
+        background-color: var(--toc-highlight) !important;
+      }
+    }
+
+    ul {
+      a {
+        padding-left: 2rem;
+      }
     }
   }
 }
@@ -324,7 +359,8 @@ nav[data-toggle="toc"] {
     margin-bottom: 2rem;
   }
 
-  #disqus_thread { /* stylelint-disable-line selector-id-pattern */
+  /* stylelint-disable-next-line selector-id-pattern */
+  #disqus_thread {
     min-height: 8.5rem;
   }
 }
@@ -337,7 +373,7 @@ nav[data-toggle="toc"] {
   @include label(inherit, 400, inherit);
 
   &::after {
-    content: ":";
+    content: ':';
   }
 }
 
