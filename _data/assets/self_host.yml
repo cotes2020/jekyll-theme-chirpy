@@ -5,47 +5,47 @@ webfonts: /assets/lib/fonts/main.css
 # Libraries
 
 jquery:
-  js: /assets/lib/jquery-3.6.0/jquery.min.js
+  js: /assets/lib/jquery/jquery.min.js
 
 bootstrap:
-  css: /assets/lib/bootstrap-4.6.1/bootstrap.min.css
-  js: /assets/lib/bootstrap-4.6.1/bootstrap.bundle.min.js
+  css: /assets/lib/bootstrap/bootstrap.min.css
+  js: /assets/lib/bootstrap/bootstrap.bundle.min.js
 
 toc:
-  css: /assets/lib/tocbot-4.20.1/tocbot.min.css
-  js: /assets/lib/tocbot-4.20.1/tocbot.min.js
+  css: /assets/lib/tocbot/tocbot.min.css
+  js: /assets/lib/tocbot/tocbot.min.js
 
 fontawesome:
-  css: /assets/lib/fontawesome-free-6.2.1/css/all.min.css
+  css: /assets/lib/fontawesome-free/css/all.min.css
 
 search:
-  js: /assets/lib/simple-jekyll-search-1.10.0/simple-jekyll-search.min.js
+  js: /assets/lib/simple-jekyll-search/simple-jekyll-search.min.js
 
 mermaid:
-  js: /assets/lib/mermaid-9.1.7/mermaid.min.js
+  js: /assets/lib/mermaid/mermaid.min.js
 
 dayjs:
   js:
-    common: /assets/lib/dayjs-1.10.7/dayjs.min.js
-    locale: /assets/lib/dayjs-1.10.7/locale/en.min.js
-    relativeTime: /assets/lib/dayjs-1.10.7/plugin/relativeTime.min.js
-    localizedFormat: /assets/lib/dayjs-1.10.7/plugin/localizedFormat.min.js
+    common: /assets/lib/dayjs/dayjs.min.js
+    locale: /assets/lib/dayjs/locale/en.min.js
+    relativeTime: /assets/lib/dayjs/plugin/relativeTime.min.js
+    localizedFormat: /assets/lib/dayjs/plugin/localizedFormat.min.js
 
 countup:
-  js: /assets/lib/countup.js-1.9.3/countUp.min.js
+  js: /assets/lib/countup.js/countUp.min.js
 
 magnific-popup:
-  css: /assets/lib/magnific-popup-1.1.0/magnific-popup.css
-  js: /assets/lib/magnific-popup-1.1.0/jquery.magnific-popup.min.js
+  css: /assets/lib/magnific-popup/magnific-popup.css
+  js: /assets/lib/magnific-popup/jquery.magnific-popup.min.js
 
 lazysizes:
-  js: /assets/lib/lazysizes-5.3.2/lazysizes.min.js
+  js: /assets/lib/lazysizes/lazysizes.min.js
 
 clipboard:
-  js: /assets/lib/clipboard-2.0.9/clipboard.min.js
+  js: /assets/lib/clipboard/clipboard.min.js
 
 polyfill:
   js: /assets/lib/polyfill-v3-es6/polyfill.min.js
 
 mathjax:
-  js: /assets/lib/mathjax-3.2.0/tex-chtml.js
+  js: /assets/lib/mathjax/tex-chtml.js
