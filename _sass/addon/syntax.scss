@@ -66,14 +66,6 @@ html {
     font-size: $code-font-size;
     line-height: 1.4rem;
     word-wrap: normal; /* Fixed Safari overflow-x */
-
-    /* set the dollar sign to non-selectable */
-    > .gp:first-child {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
   }
 
   table {
