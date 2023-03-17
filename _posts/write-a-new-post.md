@@ -133,12 +133,15 @@ _Image Caption_
 
 ### Size
 
-In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image:
+In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image.
 
 ```markdown
 ![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
 ```
 {: .nolineno}
+
+> For an SVG, you have to at least specify its _width_, otherwise it won't be rendered.
+{: .prompt-info }
 
 Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
 

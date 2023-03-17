@@ -13,10 +13,13 @@
   --clipboard-checked-color: #2bcc2b;
   --filepath-text-color: #bdbdbd;
 
-  pre { color: #bfbfbf; } /* override Bootstrap */
+  /* override Bootstrap */
+  pre {
+    color: #bfbfbf;
+  }
 
-  .highlight {
-    .gp { color: #818c96; }
+  .highlight .gp {
+    color: #818c96;
   }
 
   /* syntax highlight colors from https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css */
