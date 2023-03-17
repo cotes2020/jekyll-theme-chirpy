@@ -27,6 +27,9 @@
 }
 
 .preview-img {
+  overflow: hidden;
+  aspect-ratio: 40 / 21;
+
   @extend %rounded;
 
   &:not(.no-bg) {
@@ -36,7 +39,6 @@
   }
 
   img {
-    aspect-ratio: 40 / 21;
     -o-object-fit: cover;
     object-fit: cover;
 

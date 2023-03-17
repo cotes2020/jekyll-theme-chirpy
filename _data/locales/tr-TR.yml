@@ -70,8 +70,6 @@ post:
     share_link:
       title: Linki kopyala
       succeed: Link kopyalandı.
-  # pinned prompt of posts list on homepage
-  pin_prompt: Sabitlendi
 
 # categories page
 categories:

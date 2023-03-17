@@ -69,8 +69,6 @@ post:
     share_link:
       title: Link kopieren
       succeed: Link erfolgreich kopiert!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Angepinnt
 
 # categories page
 categories:

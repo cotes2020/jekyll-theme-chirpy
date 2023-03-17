@@ -70,8 +70,6 @@ post:
     share_link:
       title: လင့်ခ်ကို ကူးယူရန်
       succeed: လင့်ခ်ကို ကူးယူလိုက်ပြီ။
-  # pinned prompt of posts list on homepage
-  pin_prompt: ချိတ်ထားသည်။
 
 # categories page
 categories:

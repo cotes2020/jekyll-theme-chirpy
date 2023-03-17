@@ -38,9 +38,9 @@ copyright:
   # Displayed in the footer
   brief: Néhány jog fenntartva.
   verbose: >-
-   Az oldalon található tartalmak
-   Creative Commons Attribution 4.0 International (CC BY 4.0) licenccel rendelkeznek,
-   hacsak másképp nincs jelezve.
+    Az oldalon található tartalmak
+    Creative Commons Attribution 4.0 International (CC BY 4.0) licenccel rendelkeznek,
+    hacsak másképp nincs jelezve.
 
 meta: Készítve :PLATFORM motorral :THEME témával.
 
@@ -72,8 +72,6 @@ post:
     share_link:
       title: Link másolása
       succeed: Link sikeresen másolva!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Kitűzve
 
 # categories page
 categories:

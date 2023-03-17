@@ -1,6 +1,7 @@
 import { basic, initSidebar, initTopbar } from './modules/layouts';
 import {
-  imgExtra,
+  imgLazy,
+  imgPopup,
   initLocaleDatetime,
   initClipboard,
   smoothScroll,
@@ -11,7 +12,8 @@ import {
 basic();
 initSidebar();
 initTopbar();
-imgExtra();
+imgLazy();
+imgPopup();
 initLocaleDatetime();
 initClipboard();
 toc();

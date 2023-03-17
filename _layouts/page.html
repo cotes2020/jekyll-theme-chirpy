@@ -2,14 +2,17 @@
 layout: default
 ---
 
-{% include assets-origin.html %}
-
 {% include lang.html %}
+{% include assets-origin.html %}
 
 <div class="row">
   <!-- core -->
   <div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4">
-    <div class="post pl-1 pr-1 pl-md-2 pr-md-2">
+    {% capture padding %}
+      {% unless page.layout == 'home' %}pl-1 pr-1{% endunless %}
+    {% endcapture %}
+
+    <div class="post {{ padding | strip }} pl-md-2 pr-md-2">
       {% capture _content %}
       {% if layout.refactor or page.layout == 'page' %}
         {% include refactor-content.html content=content lang=lang %}

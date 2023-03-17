@@ -70,8 +70,6 @@ post:
     share_link:
       title: Копирай линк
       succeed: Линкът е копиран успешно!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Прикрепенa
 
 # categories page
 categories:

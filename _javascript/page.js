@@ -1,9 +1,15 @@
 import { basic, initSidebar, initTopbar } from './modules/layouts';
-import { imgExtra, initClipboard, smoothScroll } from './modules/plugins';
+import {
+  imgLazy,
+  imgPopup,
+  initClipboard,
+  smoothScroll
+} from './modules/plugins';
 
 basic();
 initSidebar();
 initTopbar();
-imgExtra();
+imgLazy();
+imgPopup();
 initClipboard();
 smoothScroll();

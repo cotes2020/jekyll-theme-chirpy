@@ -45,9 +45,8 @@
 
 <!-- images -->
 
-{% assign IMG_TAG = '<img ' %}
-
-{% if _content contains IMG_TAG %}
+{% if _content contains '<img' %}
+  {% assign IMG_TAG = '<img ' %}
   {% assign _img_content = nil %}
   {% assign _img_snippets = _content | split: IMG_TAG %}
 
@@ -161,28 +160,39 @@
     <!-- Bypass the HTML-proofer test -->
     {% assign _left = _left | append: ' data-proofer-ignore' %}
 
-    <!-- make sure the `<img>` is wrapped by `<a>` -->
-    {% assign _parent = _right | slice: 1, 4 %}
+    {% if page.layout == 'post' %}
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      {% assign _parent = _right | slice: 1, 4 %}
 
-    {% if _parent == '</a>' %}
-      <!-- add class to exist <a> tag -->
-      {% assign _size = _img_content | size | minus: 1 %}
-      {% capture _class %}
-        class="img-link{% unless _lqip %} shimmer{% endunless %}"
-      {% endcapture %}
-      {% assign _img_content = _img_content | slice: 0, _size | append: _class | append: '>'  %}
+      {% if _parent == '</a>' %}
+        <!-- add class to exist <a> tag -->
+        {% assign _size = _img_content | size | minus: 1 %}
+        {% capture _class %}
+          class="img-link{% unless _lqip %} shimmer{% endunless %}"
+        {% endcapture %}
+        {% assign _img_content = _img_content | slice: 0, _size | append: _class | append: '>'  %}
+      {% else %}
+        <!-- create the image wrapper -->
+        {%- capture _wrapper_start -%}
+          <a href="{{ _final_src | default: _src  }}" class="popup img-link {{ _class }}">
+        {%- endcapture -%}
+        {% assign _img_content = _img_content | append: _wrapper_start %}
+        {% assign _right = _right | prepend: '></a' %}
+      {% endif %}
 
-    {% else %}
+    {% endif %}
+
+    {% if page.layout == 'home' %}
       <!-- create the image wrapper -->
       {%- capture _wrapper_start -%}
-        <a href="{{ _final_src | default: _src  }}" class="popup img-link {{ _class }}">
+        <div class="preview-img {{ _class | strip }}">
       {%- endcapture -%}
       {% assign _img_content = _img_content | append: _wrapper_start %}
-      {% assign _right = _right | prepend: '></a' %}
+      {% assign _right = _right | prepend: '></div' %}
     {% endif %}
 
     <!-- combine -->
-    {% assign _img_content = _img_content | append: IMG_TAG | append: _left | append: _right %}
+    {% assign _img_content = _img_content | append: debug | append: IMG_TAG | append: _left | append: _right %}
 
   {% endfor %}
 
@@ -277,5 +287,4 @@
 {% assign _content = _heading_content %}
 
 <!-- return -->
-
 {{ _content }}

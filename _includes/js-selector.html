@@ -9,14 +9,17 @@
   {% endif %}
 {% endif %}
 
-{% if page.layout == 'post' or page.layout == 'page' %}
-  <!-- image lazy-loading & popup & clipboard -->
-  {% assign _urls = site.data.assets[origin]['magnific-popup'].js
-    | append: ','
-    | append: site.data.assets[origin].lazysizes.js
-    | append: ','
-    | append: site.data.assets[origin].clipboard.js
-  %}
+{% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
+  {% assign _urls = site.data.assets[origin].lazysizes.js %}
+
+  {% unless page.layout == 'home' %}
+    {% assign _urls = _urls
+      | append: ','
+      | append: site.data.assets[origin]['magnific-popup'].js
+      | append: ','
+      | append: site.data.assets[origin].clipboard.js
+    %}
+  {% endunless %}
 
   {% include jsdelivr-combine.html urls=_urls %}
 {% endif %}
@@ -43,9 +46,9 @@
 {% endif %}
 
 {% case page.layout %}
-  {% when 'categories', 'post', 'page' %}
+  {% when 'home', 'categories', 'post', 'page' %}
     {% assign type = page.layout %}
-  {% when 'home', 'archives', 'category', 'tag' %}
+  {% when 'archives', 'category', 'tag' %}
     {% assign type = 'misc' %}
   {% else %}
     {% assign type = 'commons' %}

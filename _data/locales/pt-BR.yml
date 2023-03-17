@@ -70,8 +70,6 @@ post:
     share_link:
       title: Copie o link
       succeed: Link copiado com sucesso!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Fixado
 
 # categories page
 categories:

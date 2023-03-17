@@ -54,8 +54,6 @@
   --btn-paginator-hover-color: rgb(64, 65, 66);
   --btn-paginator-border-color: var(--btn-border-color);
   --btn-text-color: var(--text-color);
-  --pin-bg: rgb(34, 35, 37);
-  --pin-color: inherit;
 
   /* Posts */
   --toc-highlight: rgb(116, 178, 243);
@@ -68,9 +66,9 @@
   --btn-share-color: #6c757d;
   --btn-share-hover-color: #bfc1ca;
   --relate-post-date: var(--text-muted-color);
-  --card-bg: #212121;
+  --card-bg: #1e1e1e;
   --card-hovor-bg: #3a3a3a;
-  --card-border-color: rgb(53, 53, 60);
+  --card-border-color: #2e2e2e;
   --card-box-shadow: var(--main-bg);
   --kbd-wrap-color: #6a6a6a;
   --kbd-text-color: #d3d3d3;
@@ -100,13 +98,6 @@
   --timeline-node-bg: rgb(150, 152, 156);
   --timeline-color: rgb(63, 65, 68);
   --timeline-year-dot-color: var(--timeline-color);
-
-  .post img[data-src] {
-    &.lazyloaded {
-      -webkit-filter: brightness(95%);
-      filter: brightness(95%);
-    }
-  }
 
   .light {
     display: none;

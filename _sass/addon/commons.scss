@@ -278,7 +278,7 @@ i {
   }
 
   [data-topbar-visible='true'] & > div {
-    top: 6rem;
+    top: 5.5rem;
   }
 }
 
@@ -422,7 +422,6 @@ i {
 
 .post-meta {
   font-size: 0.85rem;
-  word-spacing: 1px;
 
   a {
     &:not([class]):hover {
@@ -549,7 +548,6 @@ i {
 .img-link {
   color: transparent;
   display: inline-flex;
-  overflow: hidden;
 }
 
 .shimmer {
@@ -1275,7 +1273,7 @@ $sidebar-display: 'sidebar-display';
 /*
   Responsive Design:
 
- {sidebar, content, panel} >= 1120px screen width
+ {sidebar, content, panel} >= 1200px screen width
  {sidebar, content} >= 850px screen width
  {content} <= 849px screen width
 
@@ -1306,11 +1304,6 @@ $sidebar-display: 'sidebar-display';
     min-height: calc(
       100vh - #{$topbar-height} - #{$footer-height-mobile}
     ) !important;
-
-    h1 {
-      margin-top: 2.2rem;
-      font-size: 1.75rem;
-    }
 
     .post-content {
       > blockquote[class^='prompt-'] {

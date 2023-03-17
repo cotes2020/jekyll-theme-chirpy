@@ -10,7 +10,7 @@
 
   /* Common color */
   --text-color: #34343c;
-  --text-muted-color: gray;
+  --text-muted-color: #8e8e8e;
   --heading-color: black;
   --blockquote-border-color: #eeeeee;
   --blockquote-text-color: #9a9a9a;
@@ -26,7 +26,7 @@
   --img-bg: radial-gradient(
     circle,
     rgb(255, 255, 255) 0%,
-    rgb(249, 249, 249) 100%
+    rgb(239, 239, 239) 100%
   );
   --shimmer-bg: linear-gradient(
     90deg,
@@ -57,13 +57,12 @@
   --btn-paginator-hover-color: var(--sidebar-bg);
   --btn-paginator-border-color: var(--sidebar-bg);
   --btn-text-color: #676666;
-  --pin-bg: #f5f5f5;
-  --pin-color: #999fa4;
 
   /* Posts */
   --toc-highlight: #563d7c;
   --btn-share-hover-color: var(--link-color);
-  --card-hovor-bg: #eeeeee;
+  --card-bg: white;
+  --card-hovor-bg: #e2e2e2;
   --card-border-color: #ececec;
   --card-box-shadow: rgba(234, 234, 234, 0.76);
   --label-color: #616161;

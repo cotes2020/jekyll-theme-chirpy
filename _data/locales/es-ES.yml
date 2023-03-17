@@ -59,7 +59,7 @@ post:
   pageview_measure: visitas
   read_time:
     unit: min
-    prompt: ' de lectura'
+    prompt: " de lectura"
   relate_posts: Lecturas adicionales
   share: Compartir
   button:
@@ -70,8 +70,6 @@ post:
     share_link:
       title: Copiar enlace
       succeed: ¡Enlace copiado!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Fijado
 
 # categories page
 categories:

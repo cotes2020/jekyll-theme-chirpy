@@ -70,18 +70,16 @@ post:
     share_link:
       title: أنسخ الرابط
       succeed: تم نسخ الرابط بنجاح!
-  # pinned prompt of posts list on homepage
-  pin_prompt: مثبت
 
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
 df:
   post:
-    strftime: '%b %e, %Y'
-    dayjs: 'll'
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
   archives:
-    strftime: '%b'
-    dayjs: 'MMM'
+    strftime: "%b"
+    dayjs: "MMM"
 
 # categories page
 categories:

@@ -70,8 +70,6 @@ post:
     share_link:
       title: Скопіювати посилання
       succeed: Посилання успішно скопійовано!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Закріплено
 
 # categories page
 categories:
