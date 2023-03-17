@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.6.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.5.2...v5.6.0) (2023-03-17)
+
+
+### Features
+
+* change TOC plugin to `tocbot` ([#774](https://github.com/cotes2020/jekyll-theme-chirpy/issues/774)) ([02b7bd5](https://github.com/cotes2020/jekyll-theme-chirpy/commit/02b7bd5095a2affe5b4c5ed7b5b182baaf642ff3))
+* **i18n:** add Greek Language Support. ([#903](https://github.com/cotes2020/jekyll-theme-chirpy/issues/903)) ([712a9b2](https://github.com/cotes2020/jekyll-theme-chirpy/commit/712a9b22401ce591cf4c0bb03fbdd1693fee30bb))
+* **ux:** turn home page posts into clickable cards ([#895](https://github.com/cotes2020/jekyll-theme-chirpy/issues/895)) ([b85f633](https://github.com/cotes2020/jekyll-theme-chirpy/commit/b85f6330dea666350631c4461b742cdb54c5f052))
+
+
+### Bug Fixes
+
+* css selector string escaping vulnerability ([#888](https://github.com/cotes2020/jekyll-theme-chirpy/issues/888)) ([5c6ec9d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/5c6ec9d06b6571e2c0efe6652078442dca8af477))
+* mathematics cannot scroll horizontally ([#760](https://github.com/cotes2020/jekyll-theme-chirpy/issues/760)) ([4681df7](https://github.com/cotes2020/jekyll-theme-chirpy/commit/4681df715118a37ae1e91b588de0adb67f4e331a))
+* notch status bar doesn't match theme color ([#918](https://github.com/cotes2020/jekyll-theme-chirpy/issues/918)) ([820ba62](https://github.com/cotes2020/jekyll-theme-chirpy/commit/820ba62e9e939090523a7077d01d01bd78ec84eb))
+* some console snippets will be incompletely copied ([e8e4901](https://github.com/cotes2020/jekyll-theme-chirpy/commit/e8e4901e340dd7e5fc5f656dd3c7bcd6c97b886a))
+
 ## [5.5.2](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.5.1...v5.5.2) (2023-01-30)
 
 

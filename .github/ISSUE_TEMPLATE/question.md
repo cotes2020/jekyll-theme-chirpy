@@ -1,19 +1,19 @@
 ---
 name: Question
-about: Ask whatever you want
+about: Issues that differ from other templates
 labels: question
 ---
 
-<!-- NOTE: Please maintain all sections, otherwise the issue will be automatically closed :) -->
+**NOTE:** Before you start, the following should be completed.
 
-## Checklist
+- Read [tutorial][tutorial] to understand the usage and the correct effect of functional design.
+- Make sure no [similar issue(including closed ones)][issues] exists.
+- Try to find the answer on [Jekyll Forum][forum] and [StackOverflow][stack_overflow].
 
-<!-- Please complete the following list of tasks, and then check it by changing the "[ ]" to "[x]" -->
-
-- [ ] I have read the [newlest tutorials](https://cotes2020.github.io/chirpy-demo/categories/tutorial/) and know the correct effect of the functional design.
-- [ ] There is no similar question on [existing issues](https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue) (including closed ones).
-- [ ] I have tried to find the answer on [Jekyll Forum](https://talk.jekyllrb.com/) and [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll).
-- [ ] My question is based on the latest code of the `master` branch.
+[tutorial]: https://cotes2020.github.io/chirpy-demo/categories/tutorial/
+[issues]: https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue
+[forum]: https://talk.jekyllrb.com/
+[stack_overflow]: https://stackoverflow.com/questions/tagged/jekyll
 
 ## Description
 

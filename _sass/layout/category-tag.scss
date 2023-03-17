@@ -13,31 +13,35 @@
     line-height: 1.5rem;
     padding: 0.6rem 0;
 
-    &::before { /* dot */
+    /* dot */
+    &::before {
       background: #999999;
       width: 5px;
       height: 5px;
       border-radius: 50%;
       display: block;
-      content: "";
+      content: '';
       position: relative;
       top: 0.6rem;
       margin-right: 0.5rem;
     }
 
-    > a { /* post's title */
+    /* post's title */
+    > a {
       @extend %no-bottom-border;
 
       font-size: 1.1rem;
     }
 
+    /* post's date */
     > span:last-child {
       white-space: nowrap;
-    } /* post's date */
+    }
   }
 }
 
-#page-tag h1 > i { /* tag icon */
+/* tag icon */
+#page-tag h1 > i {
   font-size: 1.2rem;
 }
 

@@ -2,28 +2,28 @@
 * The syntax highlight.
 */
 
-@import "colors/light-syntax";
-@import "colors/dark-syntax";
+@import 'colors/light-syntax';
+@import 'colors/dark-syntax';
 
 html {
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
-    &[data-mode="light"] {
+    &[data-mode='light'] {
       @include light-syntax;
     }
 
-    &[data-mode="dark"] {
+    &[data-mode='dark'] {
       @include dark-syntax;
     }
   }
 
   @media (prefers-color-scheme: dark) {
     &:not([data-mode]),
-    &[data-mode="dark"] {
+    &[data-mode='dark'] {
       @include dark-syntax;
     }
 
-    &[data-mode="light"] {
+    &[data-mode='light'] {
       @include light-syntax;
     }
   }
@@ -66,18 +66,11 @@ html {
     font-size: $code-font-size;
     line-height: 1.4rem;
     word-wrap: normal; /* Fixed Safari overflow-x */
-
-    /* set the dollar sign to non-selectable */
-    >.gp:first-child {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
   }
 
   table {
     td pre {
-      overflow: visible;  /* Fixed iOS safari overflow-x */
+      overflow: visible; /* Fixed iOS safari overflow-x */
       word-break: normal; /* Fixed iOS safari linenos code break */
     }
   }
@@ -90,12 +83,14 @@ html {
     -webkit-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
+    -ms-user-select: none;
     user-select: none;
   }
 } /* .highlight */
 
 code {
   -webkit-hyphens: none;
+  -ms-hyphens: none;
   hyphens: none;
 
   &.highlighter-rouge {
@@ -147,7 +142,7 @@ td.rouge-code {
 
 /* Hide line numbers for default, console, and terminal code snippets */
 div {
-  &[class^="highlighter-rouge"],
+  &[class^='highlighter-rouge'],
   &.nolineno,
   &.language-plaintext.highlighter-rouge,
   &.language-console.highlighter-rouge,
@@ -176,15 +171,14 @@ div {
     $dot-size: 0.75rem;
     $dot-margin: 0.5rem;
 
-    content: "";
+    content: '';
     display: inline-block;
     margin-left: 1rem;
     width: $dot-size;
     height: $dot-size;
     border-radius: 50%;
     background-color: var(--code-header-muted-color);
-    box-shadow:
-      ($dot-size + $dot-margin) 0 0 var(--code-header-muted-color),
+    box-shadow: ($dot-size + $dot-margin) 0 0 var(--code-header-muted-color),
       ($dot-size + $dot-margin) * 2 0 0 var(--code-header-muted-color);
   }
 
@@ -256,7 +250,7 @@ div {
 
 @media all and (max-width: 576px) {
   .post-content {
-    > div[class^="language-"] {
+    > div[class^='language-'] {
       @include ml-mr(-1.25rem);
 
       border-radius: 0;

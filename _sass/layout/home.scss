@@ -53,16 +53,26 @@
 } /* .pagination */
 
 #post-list {
-  margin-top: 1rem;
+  margin-top: 1.75rem;
   padding-right: 0.5rem;
 
-  .post-preview {
-    padding-top: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--main-border-color);
+  a:hover {
+    text-decoration: none;
+  }
 
-    a:hover {
-      @extend %link-hover;
+  .post-preview {
+    padding: 0.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--card-border-color);
+    background: var(--card-bg);
+
+    &:hover {
+      background: var(--card-hovor-bg);
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.75rem;
     }
 
     h1 {
@@ -103,7 +113,6 @@
       color: var(--post-list-text-color);
 
       > p {
-        /* Make preview shorter on the homepage */
         margin: 0;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -115,8 +124,19 @@
   } /* .post-preview */
 } /* #post-list */
 
+@media (hover: hover) {
+  .post-preview {
+    transition: all 0.35s ease-in-out;
+  }
+}
+
 /* Hide SideBar and TOC */
 @media all and (max-width: 830px) {
+  .post-preview {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+
   .pagination {
     justify-content: space-evenly;
 
@@ -131,20 +151,24 @@
 /* Sidebar is visible */
 @media all and (min-width: 831px) {
   #post-list {
-    margin-top: 1.5rem;
+    margin-top: 3rem;
 
-    .post-preview .post-meta {
-      .pin {
-        background: var(--pin-bg);
-        border-radius: 5px;
-        line-height: 1.4rem;
-        height: 1.3rem;
-        margin-top: 3px;
-        padding-left: 1px;
-        padding-right: 6px;
+    .post-preview {
+      padding: 0.5rem;
 
-        > span {
-          display: inline;
+      .post-meta {
+        .pin {
+          background: var(--pin-bg);
+          border-radius: 5px;
+          line-height: 1.4rem;
+          height: 1.3rem;
+          margin-top: 3px;
+          padding-left: 1px;
+          padding-right: 6px;
+
+          > span {
+            display: inline;
+          }
         }
       }
     }
