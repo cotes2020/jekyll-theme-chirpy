@@ -77,6 +77,11 @@ check_env() {
   _check_init
 }
 
+checkout_latest_tag() {
+  tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+  git reset --hard "$tag"
+}
+
 init_files() {
   if $_no_gh; then
     rm -rf .github
@@ -109,6 +114,7 @@ commit() {
 
 main() {
   check_env
+  checkout_latest_tag
   init_files
   commit
 }
