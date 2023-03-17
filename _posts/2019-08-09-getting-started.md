@@ -18,17 +18,17 @@ Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installat
 There are two ways to create a new repository for this theme:
 
 - [**Using the Chirpy Starter**](#option-1-using-the-chirpy-starter) - Easy to upgrade, isolates irrelevant project files so you can focus on writing.
-- [**Forking on GitHub**](#option-2-forking-on-github) - Convenient for custom development, but difficult to upgrade. Unless you are familiar with Jekyll and are determined to tweak or contribute to this project, this approach is not recommended.
+- [**GitHub Fork**](#option-2-github-fork) - Convenient for custom development, but difficult to upgrade. Unless you are familiar with Jekyll and are determined to tweak or contribute to this project, this approach is not recommended.
 
 #### Option 1. Using the Chirpy Starter
 
-Sign in to GitHub and browse to [**Chirpy Starter**](https://github.com/cotes2020/chirpy-starter/), click the button <kbd>Use this template</kbd> > <kbd>Create a new repository</kbd>, and name the new repository `USERNAME.github.io`, where `USERNAME` represents your GitHub username.
+Sign in to GitHub and browse to [**Chirpy Starter**][starter], click the button <kbd>Use this template</kbd> > <kbd>Create a new repository</kbd>, and name the new repository `USERNAME.github.io`, where `USERNAME` represents your GitHub username.
 
-#### Option 2. Forking on GitHub
+#### Option 2. GitHub Fork
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub and rename it to `USERNAME.github.io`. Note that the default branch code is under development. To ensure the stability of your site, please switch to the [latest tag][latest-tag] and start writing.
+Sign in to GitHub to [fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork), and then rename it to `USERNAME.github.io` (`USERNAME` means your username).
 
-And then execute:
+Next, clone your site to local machine. In order to build JavaScript files later, we need to install [Node.js][nodejs], and then run the tool:
 
 ```console
 $ bash tools/init
@@ -39,15 +39,14 @@ $ bash tools/init
 
 The above command will:
 
-1. Remove the files in `_posts`{: .filepath} from your repository.
-
-2. If the option `--no-gh` is provided, the directory `.github`{: .filepath} will be deleted. Otherwise, set up the GitHub Action workflow by removing the extension `.hook`{: .filepath} of `.github/workflows/pages-deploy.yml.hook`{: .filepath}, and then remove the other files and directories in the folder `.github`{: .filepath}.
-
-3. Create a new commit to save the changes automatically.
+1. Check out the code to the [latest tag][latest-tag] (to ensure the stability of your site: as the code for the default branch is under development).
+2. Remove non-essential sample files and take care of GitHub-related files.
+3. Build JavaScript files and export to `assets/js/dist/`{: .filepath }, then make them tracked by Git.
+4. Automatically create a new commit to save the changes above.
 
 ### Installing Dependencies
 
-Before running for the first time, go to the root directory of your site, and install dependencies as follows:
+Before running local server for the first time, go to the root directory of your site and run:
 
 ```console
 $ bundle
@@ -142,30 +141,7 @@ $ docker run -it --rm \
 
 Unless you specified the output path, the generated site files will be placed in folder `_site`{: .filepath} of the project's root directory. Now you should upload those files to the target server.
 
-## Upgrading
-
-It depends on how you use the theme:
-
-- If you are using the theme gem (there will be `gem "jekyll-theme-chirpy"` in the `Gemfile`{: .filepath}), editing the `Gemfile`{: .filepath} and update the version number of the theme gem, for example:
-
-  ```diff
-  - gem "jekyll-theme-chirpy", "~> 3.2", ">= 3.2.1"
-  + gem "jekyll-theme-chirpy", "~> 4.3", ">= 4.3.2"
-  ```
-  {: .nolineno file="Gemfile" }
-
-  And then execute the following command:
-
-  ```console
-  $ bundle update jekyll-theme-chirpy
-  ```
-
-  As the version upgrades, the critical files (for details, see the [Startup Template][starter]) and configuration options will change. Please refer to the [Upgrade Guide](https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Upgrade-Guide) to keep your repo's files in sync with the latest version of the theme.
-
-- If you forked from the source project (there will be `gemspec` in the `Gemfile`{: .filepath} of your site), then merge the [latest upstream tags][latest-tag] into your Jekyll site to complete the upgrade.
-The merge is likely to conflict with your local modifications. Please be patient and careful to resolve these conflicts.
-
+[nodejs]: https://nodejs.org/
 [starter]: https://github.com/cotes2020/chirpy-starter
-[workflow]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook
 [pages-workflow-src]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow
 [latest-tag]: https://github.com/cotes2020/jekyll-theme-chirpy/tags
