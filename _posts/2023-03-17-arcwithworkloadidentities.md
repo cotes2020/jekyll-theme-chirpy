@@ -7,7 +7,7 @@ tags: [identity, AAD, ARC]
 
 # Introduction
 
-In GCP, people use a service account associated with private keys to run their workflows. The problem is that you have to commit the associated private key somewhere. This is where workload identities (https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) start to shine. Long story short, it’s a way to delegate credentials validation (federation) against another identity provider and in my case, as usual it will be Azure AD. The good news is that if you have a managed identity, you can authenticate to GCP without any private keys. Guess what, I have my ARC agent!
+In GCP, people use a service account associated with private keys to run their workflows. The problem is that you have to commit the associated private key somewhere. This is where [workload identities](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) start to shine. Long story short, it’s a way to delegate credentials validation (federation) against another identity provider and in my case, as usual it will be Azure AD. The good news is that if you have a managed identity, you can authenticate to GCP without any private keys. Guess what, I have my ARC agent!
 
 During this article, we will cover two scenarios where we will request organization projects with REST APIs first and then with gcloud CLI. Following the 2 previous articles related to Azure ARC where I’ve talked about the [storage API](https://scomnewbie.github.io/posts/arcwithstorageapi/) or the [Keyvault API](https://scomnewbie.github.io/posts/arcwithkeyvaultapi/), this time we will use a custom one. 
 
