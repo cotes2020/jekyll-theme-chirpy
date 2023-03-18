@@ -14,7 +14,7 @@ layout: compress
 {% endcapture %}
 
 <!-- `site.alt_lang` can specify a language different from the UI -->
-<html lang="{{ site.alt_lang | default: site.lang }}"{{ prefer_mode }}>
+<html lang="{{ page.lang | default: site.alt_lang | default: site.lang }}"{{ prefer_mode }}>
 
   {% include head.html %}
 
