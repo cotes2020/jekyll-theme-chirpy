@@ -1,12 +1,10 @@
 ---
-layout: single
 title: "[기초통계] 변수"
 date: 2023-01-03 18:32:00 +0900
 # date: 2023-03-06 08:43:59
 author: "HYUNHO NOH"
 categories: [Math]
 tag: [Statistics, Sapientia a Dei]
-toc: true
 ---
 <!-- author_profile: false
 toc: true
