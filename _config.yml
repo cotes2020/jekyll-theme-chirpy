@@ -20,7 +20,7 @@ timezone: Europe/Amsterdam
 
 title: Ahmed Sherif # the main title
 
-tagline: Offensive Security Expert # it will display as the sub-title
+tagline: Offensive Security Expert. # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   this blog is dedicated to the exciting world of red teaming, offensive security, security research, and security code review. I like to share my insights and experiences on the latest tools, techniques, and trends in cybersecurity. Stay informed and stay ahead of the game.
