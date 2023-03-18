@@ -5,7 +5,7 @@ theme: jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
-baseurl: "/sherif.github.io"
+baseurl: ""
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -80,7 +80,7 @@ theme_mode:  [light|dark]
 img_cdn: "https://avatars.githubusercontent.com/u/4347574?s=400&u=b9dd260c708d23cc3072c6c02d66b438899aef48&v=4"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "https://avatars.githubusercontent.com/u/4347574?s=400&u=b9dd260c708d23cc3072c6c02d66b438899aef48&v=4"
+avatar: "/commons/avatar.jpg"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
