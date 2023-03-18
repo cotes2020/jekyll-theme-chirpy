@@ -20,3 +20,9 @@ package-lock.json
 
 # Misc
 assets/js/dist
+
+# 소스 올리기위해 설정 : 이 파일이 올라가면 빌드/배포가 에러내는 경우가 많아서 업로드 막기 위함
+Gemfile.lock
+
+# MacOS
+.DS_Store
