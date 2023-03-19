@@ -35,6 +35,6 @@ Without further ado, here are the slides: [^1]
 
 Overall, it was super fun preparing the document and being able to present it to an involved audience. Working on this topic also meant getting a fresh perspective on variational principles, Klein-Gordon analysis, gauge theories and so on, which will be implemented in this blog in the future.
 
-That brings us to a little note I'd like to conclude this post with. It's that we'll be having related posts on this blog next month! They'll be to do with special relativity, classical field theory, analysis and, surprise, applied graph theory. It might still take a couple of weeks to get them published given that they're taking time to read up and write on. Until then, current progress and future ideas for this blog can be seen on its new [Notion database](https://booodaness.notion.site/e33073f86c2e44bba90654d023d69e62?v=91d5885911df46d1873b10b3a8605383)!
+That brings us to a little note I'd like to conclude this post with. It's that we'll be having plenty of related posts on this blog as soon as possible! They'll be to do with special relativity, classical field theory, analysis and, surprise, topology. It might still take a couple of months to get them published given that they're taking time to read up and write on. Until then, current progress and future ideas for this blog can be seen on its new [Notion database](https://booodaness.notion.site/e33073f86c2e44bba90654d023d69e62?v=91d5885911df46d1873b10b3a8605383)!
 
 And with that, folks, have a good one! :)
