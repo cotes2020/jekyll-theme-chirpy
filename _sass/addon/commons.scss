@@ -204,12 +204,12 @@ footer {
     @extend %text-color;
 
     &:link {
-      @include no-text-decoration;
+      @extend %no-decoration;
     }
 
     &:hover {
       @extend %link-hover;
-      @include no-text-decoration;
+      @extend %no-decoration;
     }
   }
 
@@ -647,10 +647,26 @@ i {
 }
 
 .no-text-decoration {
-  @include no-text-decoration;
+  @extend %no-decoration;
 }
 
-/* Overrided BS4 Tooltip */
+.card.post-preview {
+  border-radius: $card-radius;
+  border: 0;
+  background: var(--card-bg);
+  box-shadow: rgba(0, 0, 0, 0.05) 0 6px 14px 0,
+    var(--card-border-color) 0 0 0 1px;
+
+  &:hover {
+    background-color: var(--card-hovor-bg);
+
+    img {
+      filter: brightness(0.7) !important;
+    }
+  }
+}
+
+/* Overwrite bootstrap tooltip */
 .tooltip-inner {
   font-size: 0.7rem;
   max-width: 220px;
@@ -733,7 +749,7 @@ $sidebar-display: 'sidebar-display';
     @extend %sidebar-links;
 
     &:hover {
-      @include no-text-decoration;
+      @extend %no-decoration;
 
       color: var(--sidebar-active-color) !important;
     }
@@ -930,6 +946,14 @@ $sidebar-display: 'sidebar-display';
 } /* #sidebar */
 
 @media (hover: hover) {
+  .card.post-preview {
+    transition: all 0.35s ease-in-out;
+
+    img {
+      transition: all 0.35s ease-in-out;
+    }
+  }
+
   #sidebar ul > li:last-child::after {
     transition: top 0.5s ease;
   }

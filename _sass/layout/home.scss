@@ -1,7 +1,6 @@
 /*
   Style for Homepage
 */
-$card-radius: 0.5rem;
 
 #post-list {
   margin-top: 1.75rem;
@@ -19,31 +18,6 @@ $card-radius: 0.5rem;
   }
 
   .card {
-    border-radius: $card-radius;
-    border: 0;
-    background: var(--card-bg);
-    box-shadow: rgba(0, 0, 0, 0.05) 0 6px 14px 0,
-      rgba(172, 169, 169, 0.08) 0 0 0 1px;
-
-    &::before {
-      content: '';
-      position: absolute;
-      background: var(--card-hovor-bg);
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: $card-radius;
-      z-index: 1;
-    }
-
-    &:hover {
-      border-color: var(--card-hovor-bg);
-
-      &::before {
-        opacity: 0.5;
-      }
-    }
-
     %img-radius {
       border-radius: $card-radius $card-radius 0 0;
     }
@@ -167,16 +141,6 @@ $card-radius: 0.5rem;
     }
   } /* .page-item */
 } /* .pagination */
-
-@media (hover: hover) {
-  #post-list .card {
-    transition: border-color 0.35s ease-in-out;
-
-    &::before {
-      transition: opacity 0.35s ease-in-out;
-    }
-  }
-}
 
 /* Tablet */
 @media all and (min-width: 768px) {

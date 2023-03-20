@@ -43,7 +43,7 @@ refactor: true
 <div id="post-list">
   {% for post in posts %}
     <a href="{{ post.url | relative_url }}" class="card-wrapper">
-      <div class="card flex-md-row-reverse">
+      <div class="card post-preview flex-md-row-reverse">
         {% if post.image %}
           {% if post.image.lqip %}
             {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}

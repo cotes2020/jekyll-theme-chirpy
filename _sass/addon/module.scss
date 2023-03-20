@@ -122,11 +122,11 @@
   -webkit-box-orient: vertical;
 }
 
-/* ---------- scss mixin --------- */
-
-@mixin no-text-decoration {
+%no-decoration {
   text-decoration: none;
 }
+
+/* ---------- scss mixin --------- */
 
 @mixin mt-mb($value) {
   margin-top: $value;
