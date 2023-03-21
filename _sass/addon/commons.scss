@@ -666,6 +666,11 @@ i {
   }
 }
 
+/* overwrite bootstrap muted */
+.text-muted {
+  color: var(--text-muted-color) !important;
+}
+
 /* Overwrite bootstrap tooltip */
 .tooltip-inner {
   font-size: 0.7rem;
