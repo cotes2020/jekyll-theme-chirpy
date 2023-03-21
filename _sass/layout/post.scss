@@ -155,6 +155,16 @@ h1 + .post-meta {
 
 .post-tags {
   line-height: 2rem;
+
+  .post-tag {
+    background: var(--tag-bg);
+
+    &:hover {
+      @extend %link-hover;
+      @extend %tag-hover;
+      @extend %no-bottom-border;
+    }
+  }
 }
 
 .post-navigation {

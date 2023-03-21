@@ -260,20 +260,15 @@ i {
   }
 
   .post-tag {
-    display: inline-block;
-    line-height: 1rem;
+    line-height: 1.05rem;
     font-size: 0.85rem;
-    background: none;
     border: 1px solid var(--btn-border-color);
     border-radius: 0.8rem;
     padding: 0.3rem 0.5rem;
     margin: 0 0.35rem 0.5rem 0;
 
     &:hover {
-      background-color: #2a408e;
-      border-color: #2a408e;
-      color: #ffffff;
-      transition: none;
+      transition: all 0.3s ease-in;
     }
   }
 
@@ -522,7 +517,6 @@ i {
   display: inline-block;
   min-width: 2rem;
   text-align: center;
-  background: var(--tag-bg);
   border-radius: 0.3rem;
   padding: 0 0.4rem;
   color: inherit;
@@ -530,14 +524,6 @@ i {
 
   &:not(:last-child) {
     margin-right: 0.2rem;
-  }
-
-  &:hover {
-    @extend %tag-hover;
-
-    border-bottom: none;
-    text-decoration: none;
-    color: #d2603a;
   }
 }
 
@@ -676,6 +662,13 @@ i {
   font-size: 0.7rem;
   max-width: 220px;
   text-align: left;
+}
+
+/* Overwrite bootstrap outline button */
+.btn.btn-outline-primary {
+  &:hover {
+    border-color: #007bff !important;
+  }
 }
 
 .disabled {
