@@ -10,7 +10,7 @@
   }
 }
 
-@mixin btn-post-nav {
+%btn-post-nav {
   width: 50%;
   position: relative;
   border-color: var(--btn-border-color);
@@ -172,27 +172,25 @@ h1 + .post-meta {
   padding-bottom: 4rem;
 
   .btn {
-    @include btn-post-nav;
+    @extend %btn-post-nav;
 
-    color: var(--link-color);
+    &:not(:hover) {
+      color: var(--link-color);
+    }
 
     &:hover {
-      background: #2a408e;
-      color: #ffffff;
-      border-color: #2a408e;
+      &:not(.disabled)::before {
+        color: whitesmoke;
+      }
     }
 
     &.disabled {
-      @include btn-post-nav;
+      @extend %btn-post-nav;
 
       pointer-events: auto;
       cursor: not-allowed;
       background: none;
       color: gray;
-
-      &:hover {
-        border-color: none;
-      }
     }
 
     &.btn-outline-primary.disabled:focus {
@@ -207,14 +205,12 @@ h1 + .post-meta {
     }
 
     &:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      border-radius: $card-radius 0 0 $card-radius;
       left: 0.5px;
     }
 
     &:last-child {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      border-radius: 0 $card-radius $card-radius 0;
       right: 0.5px;
     }
   }
@@ -226,6 +222,15 @@ h1 + .post-meta {
     white-space: normal;
   }
 } /* .post-navigation */
+
+@media (hover: hover) {
+  .post-navigation {
+    .btn,
+    .btn::before {
+      transition: all 0.35s ease-in-out;
+    }
+  }
+}
 
 @-webkit-keyframes fade-up {
   from {
