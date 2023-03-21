@@ -205,12 +205,12 @@ h1 + .post-meta {
     }
 
     &:first-child {
-      border-radius: $card-radius 0 0 $card-radius;
+      border-radius: $base-radius 0 0 $base-radius;
       left: 0.5px;
     }
 
     &:last-child {
-      border-radius: 0 $card-radius $card-radius 0;
+      border-radius: 0 $base-radius $base-radius 0;
       right: 0.5px;
     }
   }

@@ -19,7 +19,7 @@
 
   .card {
     %img-radius {
-      border-radius: $card-radius $card-radius 0 0;
+      border-radius: $base-radius $base-radius 0 0;
     }
 
     .preview-img {
@@ -146,7 +146,7 @@
 @media all and (min-width: 768px) {
   #post-list {
     %img-radius {
-      border-radius: 0 $card-radius $card-radius 0;
+      border-radius: 0 $base-radius $base-radius 0;
     }
 
     .card {

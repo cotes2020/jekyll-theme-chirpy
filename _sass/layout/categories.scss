@@ -9,8 +9,14 @@
 .categories {
   margin-bottom: 2rem;
 
+  &.card,
+  .list-group {
+    @extend %rounded;
+  }
+
   .card-header {
     padding-right: 12px;
+    border-radius: $base-radius $base-radius 0 0;
   }
 
   i {
@@ -42,9 +48,7 @@
     position: relative;
     height: 0.7rem;
     width: 1rem;
-    transition: -webkit-transform 300ms ease;
     transition: transform 300ms ease;
-    transition: transform 300ms ease, -webkit-transform 300ms ease;
   }
 
   &:hover {
@@ -62,6 +66,5 @@
 }
 
 .rotate {
-  -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
