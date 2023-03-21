@@ -85,13 +85,9 @@ a {
 img {
   max-width: 100%;
   height: auto;
+  transition: all 0.35s ease-in-out;
 
   &[data-src] {
-    &.lazyloaded {
-      -webkit-animation: fade-in 0.4s ease-in;
-      animation: fade-in 0.4s ease-in;
-    }
-
     &[data-lqip='true'] {
       &.lazyload,
       &.lazyloading {
@@ -104,6 +100,11 @@ img {
       &.lazyload,
       &.lazyloading {
         background: var(--img-bg);
+      }
+
+      &.lazyloaded {
+        -webkit-animation: fade-in 0.35s ease-in;
+        animation: fade-in 0.35s ease-in;
       }
     }
 
@@ -946,16 +947,12 @@ $sidebar-display: 'sidebar-display';
 } /* #sidebar */
 
 @media (hover: hover) {
-  .card.post-preview {
-    transition: all 0.35s ease-in-out;
-
-    img {
-      transition: all 0.35s ease-in-out;
-    }
-  }
-
   #sidebar ul > li:last-child::after {
     transition: top 0.5s ease;
+  }
+
+  .post-preview {
+    transition: background-color 0.35s ease-in-out;
   }
 }
 
