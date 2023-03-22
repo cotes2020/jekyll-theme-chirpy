@@ -21,7 +21,6 @@ layout: compress
 
   <body data-topbar-visible="true">
     {% include sidebar.html lang=lang %}
-
     {% include topbar.html lang=lang %}
 
     <div id="main-wrapper" class="d-flex justify-content-center">
@@ -31,13 +30,8 @@ layout: compress
 
       {% include search-results.html lang=lang %}
     </div>
-    <!-- #main-wrapper -->
 
     {% include footer.html lang=lang %}
-
-    {% if page.mermaid %}
-      {% include mermaid.html %}
-    {% endif %}
 
     <div id="mask"></div>
 
@@ -72,8 +66,12 @@ layout: compress
       </div>
     {% endif %}
 
-    {% include search-loader.html %}
-
     {% include js-selector.html %}
+
+    {% if page.mermaid %}
+      {% include mermaid.html %}
+    {% endif %}
+
+    {% include search-loader.html %}
   </body>
 </html>

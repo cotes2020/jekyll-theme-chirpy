@@ -1,27 +1,35 @@
 <!-- JS selector for site. -->
 
+<!-- commons -->
+
+{% assign urls = site.data.assets[origin].jquery.js
+  | append: ','
+  | append: site.data.assets[origin].bootstrap.js
+  | append: ','
+  | append: site.data.assets[origin].search.js
+%}
+
 <!-- layout specified -->
 
 {% if page.layout == 'post' %}
   {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
     <!-- pv-report needs countup.js -->
-    <script async src="{{ site.data.assets[origin].countup.js | relative_url }}"></script>
+    {% assign urls = urls | append: ',' | append: site.data.assets[origin].countup.js %}
   {% endif %}
 {% endif %}
 
 {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
-  {% assign _urls = site.data.assets[origin].lazysizes.js %}
+  {% assign urls = urls | append: ',' | append: site.data.assets[origin].lazysizes.js %}
 
   {% unless page.layout == 'home' %}
-    {% assign _urls = _urls
+    <!-- image lazy-loading & popup & clipboard -->
+    {% assign urls = urls
       | append: ','
       | append: site.data.assets[origin]['magnific-popup'].js
       | append: ','
       | append: site.data.assets[origin].clipboard.js
     %}
   {% endunless %}
-
-  {% include jsdelivr-combine.html urls=_urls %}
 {% endif %}
 
 {% if page.layout == 'home'
@@ -32,7 +40,9 @@
 %}
   {% assign locale = site.lang | split: '-' | first %}
 
-  {% assign _urls = site.data.assets[origin].dayjs.js.common
+  {% assign urls = urls
+    | append: ','
+    | append: site.data.assets[origin].dayjs.js.common
     | append: ','
     | append: site.data.assets[origin].dayjs.js.locale
     | replace: ':LOCALE', locale
@@ -41,9 +51,17 @@
     | append: ','
     | append: site.data.assets[origin].dayjs.js.localizedFormat
   %}
-
-  {% include jsdelivr-combine.html urls=_urls %}
 {% endif %}
+
+{% if page.content contains '<h2' or page.content contains '<h3' and site.toc and page.toc %}
+  {% assign urls = urls | append: ',' | append: site.data.assets[origin].toc.js %}
+{% endif %}
+
+{% if page.mermaid %}
+  {% assign urls = urls | append: ',' | append: site.data.assets[origin].mermaid.js %}
+{% endif %}
+
+{% include jsdelivr-combine.html urls=urls %}
 
 {% case page.layout %}
   {% when 'home', 'categories', 'post', 'page' %}
@@ -79,10 +97,6 @@
   <script src="{{ site.data.assets[origin].polyfill.js | relative_url }}"></script>
   <script id="MathJax-script" async src="{{ site.data.assets[origin].mathjax.js | relative_url }}"></script>
 {% endif %}
-
-<!-- commons -->
-
-<script src="{{ site.data.assets[origin].bootstrap.js | relative_url }}"></script>
 
 {% if jekyll.environment == 'production' %}
   <!-- PWA -->

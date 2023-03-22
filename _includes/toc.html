@@ -10,7 +10,4 @@
     <div class="panel-heading ps-3 pt-2 mb-2">{{- site.data.locales[include.lang].panel.toc -}}</div>
     <nav id="toc"></nav>
   </div>
-
-  <!-- toc.js will be loaded at medium priority -->
-  <script src="{{ site.data.assets[origin].toc.js | relative_url }}"></script>
 {% endif %}
