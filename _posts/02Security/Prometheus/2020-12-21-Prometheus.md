@@ -123,7 +123,7 @@ image:
 
 ## basic
 
-![pic](https://img-blog.csdnimg.cn/20191203090913325.jpeg?x-oss-process=image/resize,m_fixed,h_224,w_224)
+<!-- ![pic](https://img-blog.csdnimg.cn/20191203090913325.jpeg?x-oss-process=image/resize,m_fixed,h_224,w_224) -->
 
 Prometheus是一个开源监控系统.
 - Prometheus是由SoundCloud开发的开源监控报警系统和时序列数据库(TSDB).

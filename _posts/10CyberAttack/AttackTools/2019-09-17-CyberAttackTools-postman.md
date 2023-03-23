@@ -86,7 +86,7 @@ postman的安装方法分好几种:
 
 1. chrome postman 插件安装
    - postman谷歌浏览器的安装插件，所以说它的使用前提是你的电脑上得安装谷歌浏览器才行
-   - ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181030002023904.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz,size_16,color_FFFFFF,t_70)
+   <!-- - ![在这里插入图片描述](https://img-blog.csdnimg.cn/20181030002023904.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z4YmluMTIz,size_16,color_FFFFFF,t_70) -->
 
 2. Postman电脑客户端安装
    1. macOS安装
