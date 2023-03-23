@@ -1,95 +1,77 @@
-<div align="center">
+# A CYBER SECURITY PRACTICIAN
 
-  # Chirpy Jekyll Theme
+<img src="https://i.imgur.com/hOFYY7s.png" width="100" align="left">
+<img src="https://i.imgur.com/UYv2Cpd.png" width="100" align="left">
+<img src="https://i.imgur.com/tIMuMgk.jpg" width="100" height="95" align="left">
+<img src="https://i.imgur.com/vMmUZBI.png" width="100" align="left">
+<img src="https://i.imgur.com/0SQ0jOP.png" width="100" align="left">
+<img src="https://i.imgur.com/K3wKueK.png" width="100" align="left">
 
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+<br>
+<br>
+<br>
+<br>
+<br>
 
-  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)](https://rubygems.org/gems/jekyll-theme-chirpy)
-  [![CI](https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml/badge.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml)
-  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4e556876a3c54d5e8f2d2857c4f43894)](https://www.codacy.com/gh/cotes2020/jekyll-theme-chirpy/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cotes2020/jekyll-theme-chirpy&amp;utm_campaign=Badge_Grade)
-  [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
-  [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
+> On my way to CISSP, OSCP ...
 
-  [**Live Demo →**][demo]
+---
 
-  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
+# About Me
 
-</div>
+Bright, eager, passionate practician, and an enthusiast of InfoSec with an MS (Hons.) in Cyber Security and Information Assurance.
 
-## Features
+Highly curious, goal-oriented;
 
-<details>
-  <summary>
-    <i>Click to view features</i>
-  </summary>
-  <p>
+Always passionate, always up for a challenge and unforeseen possibilities;
 
-  - Dark / Light Theme Mode
-  - Localized UI language
-  - Pinned Posts
-  - Hierarchical Categories
-  - Trending Tags
-  - Table of Contents
-  - Last Modified Date of Posts
-  - Syntax Highlighting
-  - Mathematical Expressions
-  - Mermaid Diagram & Flowchart
-  - Dark / Light Mode Images
-  - Embed Videos
-  - Disqus / Utterances / Giscus Comments
-  - Search
-  - Atom Feeds
-  - Google Analytics
-  - Page Views Reporting
-  - SEO & Performance Optimization
+Chess, piano and dance are three constructive hobbies I pursue.
 
-  </p>
-</details>
+I love chocolate! 🍫
 
-## Documentation
+---
 
-To explore usage, development, and upgrade guide of the project, please refer to
-the [Wiki][wiki].
+## WRITE-UPS
 
-## Contributing
+I have been fortunate enough to meet great folks, come across ample valuable resources, have the opportunity to learn my favorite security field, and been able to have my step in Cyber Security.
 
-Welcome to report bugs, help improve the code or submit new features.
-For more information, please see the ["Contributing Guidelines"][contribute-guide].
+I have documented the exercises and learning path throughout my journey, and hope it can also be helpful for you in your study.
 
-## Credits
+This blog is all about:
+- Knowledge from work
+- Classroom learning
+- Online learning
+- Security certifications learning
+- Hands-on training (CTFs, labs, hackathons, etc)
 
-This theme is mainly built with [Jekyll][jekyllrb] ecosystem,
-[Bootstrap][bootstrap], [Font Awesome][icons] and some other [wonderful tools][lib].
-The avatar and favicon design come from [Clipart Max][image].
+---
 
-Thanks to all the [contributors][contributors]. Also, folks who submitted issues
-or unmerged PRs should not be forgotten. Because they reported bugs, shared ideas,
-or inspired me to write more readable documentation.
+# Blog Main PROJECTS
 
-Last but not least, thanks to [JetBrains][jetbrains] for providing the
-_Open Source Development_ license.
+I have worked on a number of projects during my studies, some of which include:
+- [Course - Learning Path](https://ocholuo.github.io/posts/CourseREADME/)
+- [InfoSec - Tools](https://ocholuo.github.io/posts/InfoSecREADME/)
+- [Programming - Code & Learning Path](https://ocholuo.github.io/posts/CodeREADME/)
+- [Web - demo & Learning Path](https://ocholuo.github.io/posts/WebREADME/)
 
-## Sponsoring
+<!-- To know more about the projects vist the Projects page using the button below. The page has "Learn More" links to navigate to their respective GitHub repository home pages. -->
 
-If you'd like to sponsor this project, the following options are available.
 
-[![Ko-fi](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-ff5f5f?logo=ko-fi&logoColor=white)](https://ko-fi.com/coteschung)
-[![Wechat Pay](https://img.shields.io/badge/-Tip%20Me%20on%20WeChat-brightgreen?logo=wechat&logoColor=white)][donation]
-[![Alipay](https://img.shields.io/badge/-Tip%20Me%20on%20Alipay-blue?logo=alipay&logoColor=white)][donation]
+## LAB EXERCISES
 
-## License
+Lab exercises designed by Syracuse university:
+- [Syracuse university - SEED Lab - XSS Attack Lab](https://ocholuo.github.io/posts/SEED-Labs-CrossSiteScripting-Attack-Lab/) - Self Replicating Worm attack on vulnerable web app
+<!-- Set UID Attack Lab - Exploiting setuid and LD_PRELOAD env variable. -->
+<!-- MD5 Attack Lab - Attack Merkle Damgard construction of MD5 using collisions. -->
+- [Netdevgroup - PAN8 Cybersecurity Essentials](https://ocholuo.github.io/posts/PAN8-Cybersecurity-Essentials/)
+- [Netdevgroup - PAN8 Cybersecurity Gateway](https://ocholuo.github.io//posts/PAN8-Cybersecurity-Gateway/)
 
-This work is published under [MIT][mit] License.
+Wargames:
+- [Overthewire - bandit](https://ocholuo.github.io/posts/Overthewire-bandit/) - SSH related
+- [Overthewire - natas](https://ocholuo.github.io/posts/Overthewire-natas/) - WebSec related
+- [Hack The Box](https://ocholuo.github.io/tags/hackthebox/)
+- [Flaws Cloud CTF](https://ocholuo.github.io/tags/Flaws/)
 
-[jekyllrb]: https://jekyllrb.com/
-[bootstrap]: https://getbootstrap.com/
-[icons]: https://fontawesome.com/
-[image]: https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/
-[demo]: https://cotes2020.github.io/chirpy-demo/
-[wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
-[contribute-guide]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/CONTRIBUTING.md
-[contributors]: https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors
-[lib]: https://github.com/cotes2020/chirpy-static-assets
-[jetbrains]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
-[donation]: https://sponsor.cotes.page/
-[mit]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE
+<!-- Leviathan - Based on SetUID.
+Narnia - Based on binary exploitation.
+Protostar - Based on binary exploitation. -->
