@@ -1,7 +1,7 @@
 ---
 title: Network protocol - SSH
 date: 2020-07-16 11:11:11 -0400
-categories: [00Basic, Networkprotocol]
+categories: [00Basic, Network]
 tags: [SSH]
 math: true
 image:

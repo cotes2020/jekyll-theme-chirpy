@@ -10,8 +10,18 @@ image:
 
 # network
 
-[toc]
+- [network](#network)
+  - [network in linux](#network-in-linux)
+    - [Manually adding Routes](#manually-adding-routes)
+  - [to check Routes](#to-check-routes)
+  - [setup networking on Ubuntu](#setup-networking-on-ubuntu)
+    - [add a machine to a network?](#add-a-machine-to-a-network)
+    - [Manually assigning IP address](#manually-assigning-ip-address)
+    - [Permanently adding IP address](#permanently-adding-ip-address)
+    - [Bring interface online](#bring-interface-online)
+  - [create a router in Ubuntu](#create-a-router-in-ubuntu)
 
+---
 
 test: create a router in Ubuntu
 

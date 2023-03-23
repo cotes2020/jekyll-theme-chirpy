@@ -1,7 +1,7 @@
 ---
 title: Network protocol - RDP
 date: 2020-07-16 11:11:11 -0400
-categories: [00Basic, Networkprotocol]
+categories: [00Basic, Network]
 tags: [SSH]
 math: true
 image:
@@ -10,9 +10,6 @@ image:
 - [Network protocol - RDP](#network-protocol---rdp)
   - [basic](#basic)
   - [RDP Breakdown](#rdp-breakdown)
-
-- ref
-  - https://fudosecurity.com/company/blog/ssh-and-rdp-breakdown/
 
 ---
 
