@@ -1,9 +1,7 @@
 ---
 title: Implement Google Analytics and Page Views to blog
 date: 2020-10-04 11:11:11 -0400
-# description: IT Blog Pool
 categories: [Note, GoogleAnalytics]
-# img: /assets/img/sample/rabbit.png
 img_path: /img/post/
 tags:
 ---
@@ -151,12 +149,10 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
     # XSRF Settings
     XSRF_KEY = 'OnceUponATimeThereLivedALegend'
-    ```
-    {: file="src/config.py"}
+    ``` 
 
     > You can configure a custom domain instead of `https://PROJECT_ID.REGION_ID.r.appspot.com`.
-    > But, for the sake of keeping it simple, we will be using the Google provided default URL.
-    {: .prompt-info }
+    > But, for the sake of keeping it simple, we will be using the Google provided default URL. 
 
 5.  From inside the `src/`{: .filepath} directory, deploy the app
 
@@ -229,8 +225,6 @@ After the query is saved on GAE, a **Public Endpoint** (public access address) w
 
 Once all the hard part is done, it is very easy to enable the Page View on Chirpy theme. Your superProxy dashboard should look something like below and you can grab the required values.
 
-![superproxy-dashboard](/posts/20210103/05-superproxy-dashboard.png){: width="1210" height="694"}
-
 Update the `_config.yml`{: .filepath} file of [**Chirpy**][chirpy-homepage] project with the values from your dashboard, to look similar to the following:
 
 ```yaml
@@ -243,7 +237,7 @@ google_analytics:
 
 Now, you should see the Page View enabled on your blog.
 
-![final](/assets/final.png)
+![final](final.png)
 
 ---
 
