@@ -1,7 +1,7 @@
 ---
 title: AWS - VPC Security
 date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, Network]
+categories: [01AWS, AWSNetwork]
 tags: [AWS, Network, NACLs]
 toc: true
 image:

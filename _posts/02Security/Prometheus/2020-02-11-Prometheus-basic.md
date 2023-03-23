@@ -1,13 +1,13 @@
 ---
-title: ELK - Prometheus
-date: 2020-02-11 11:11:11 -0400
-categories: [00Basic, ELK]
-tags: [Basic, ELK]
-toc: true
+title: Monitor - Prometheus basic
+date: 2020-12-22 11:11:11 -0400
+categories: [02Security, Prometheus]
+tags: [02Security, Prometheus]
+math: true
 image:
 ---
 
-- [Prometheus](#prometheus)
+- [Prometheus basic](#prometheus-basic)
     - [主要的特色](#主要的特色)
   - [kafka with Prometheus](#kafka-with-prometheus)
   - [Prometheus架构剖析](#prometheus架构剖析)
@@ -26,7 +26,7 @@ image:
 ---
 
 
-# Prometheus
+# Prometheus basic
 
 > Prometheus和Kubernetes不仅在使用过程中紧密相关,而且在历史上也有很深的渊源.
 > Google公司里曾经有两款系统——Borg系统和它的监控Borgmon系统.Borg系统是Google内部用来管理来自不同应用、不同作业的集群的管理器,每个集群都会拥有数万台服务器及上万个作业；Borgmon系统则是与Borg系统配套的监控系统.

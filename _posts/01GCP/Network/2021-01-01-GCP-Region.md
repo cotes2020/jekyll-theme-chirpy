@@ -1,7 +1,7 @@
 ---
 title: GCP - GCP Region
 date: 2021-01-01 11:11:11 -0400
-categories: [01GCP, Network]
+categories: [01GCP, GCPNetwork]
 tags: [GCP]
 toc: true
 image:
