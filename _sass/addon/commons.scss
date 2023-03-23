@@ -534,6 +534,10 @@ i {
   dl > dd {
     margin-left: 1rem;
   }
+
+  ::marker {
+    color: var(--text-muted-color);
+  }
 } /* .post-content */
 
 .tag:hover {
