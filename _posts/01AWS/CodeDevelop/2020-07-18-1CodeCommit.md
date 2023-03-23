@@ -139,8 +139,8 @@ With CodeCommit, you can:
 
 ```bash
 aws configure
-# AWS Access Key ID [None]: AKIASVJN2HJ4ULJBBUEH
-# AWS Secret Access Key [None]: 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
+# AWS Access Key ID [None]: abcd
+# AWS Secret Access Key [None]: abcd
 # Default region name [None]: us-east-1
 # Default output format [None]: json
 

@@ -26,7 +26,7 @@ an environment with applications targeted at current security operations team ne
 ![Screen Shot 2020-12-08 at 23.26.07](https://i.imgur.com/NFi9Uct.png)
 
 ![Screen Shot 2020-12-08 at 23.27.22](https://i.imgur.com/Y744Rjp.jpg)
- 
+
 
 ![Screen Shot 2020-12-02 at 01.59.36](https://i.imgur.com/leY439c.png)
 

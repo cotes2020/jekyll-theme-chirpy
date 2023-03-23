@@ -416,7 +416,7 @@ $ virsh domdisplay my-ubuntu
 spice 4.4.4.4:8080
 
 ```
- 
+
 
 ---
 

@@ -57,7 +57,7 @@ Behavioral Analytics
 ![XDR and EDR](https://i.imgur.com/7Si3IFN.png)
 
 ---
- 
+
 
 ## need reformate
 
@@ -1477,7 +1477,7 @@ Which two items describe the Managed Threat Hunting service? (Choose two.)  5245
 
 ![Screen Shot 2020-10-28 at 11.57.02](https://i.imgur.com/Ua3Wu9a.png)
 
-![Screen Shot 2020-10-28 at 11.57.13](https://i.imgur.com/HpiOzwA.png) 
+![Screen Shot 2020-10-28 at 11.57.13](https://i.imgur.com/HpiOzwA.png)
 
 ![Screen Shot 2020-10-28 at 11.58.14](https://i.imgur.com/j7ssAHM.png)
 

@@ -65,7 +65,7 @@ image:
 `g++ hw.cpp ./a.out`
 
 # compile C++/c in Win
- 
+
 # terminal
 `ifconfig` in mac
 `ipconfig` in win
