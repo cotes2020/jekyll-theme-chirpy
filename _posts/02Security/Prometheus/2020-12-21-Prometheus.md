@@ -322,11 +322,11 @@ Prometheus是开源的监控告警的解决方案
 - 从2012年产生至今已经7年，在技术不断变化的时代这已经是一个很长的时间了，在过去的7年里，Prometheus也得到了越来越多用户的使用和推崇，并且在2016年加入CNCF后，成为继Kubernetes之后最早从中毕业的项目。
 - Prometheus的开发语言以Go为主
 
-![pic](https://img-blog.csdnimg.cn/20191205142859465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20191205142859465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 同样在CNCF的landcape的同一领域的还有Grafana、Sensu、graphite、Zabbix等。
 
-![pic](https://img-blog.csdnimg.cn/20191205143232549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20191205143232549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 适合的场景
   - 非常适合纯数字类型的时序列数据，无论是以机器为中心的监控场景，还是高度动态变化的面向服务架构下的监控场景，Prometheus都是非常适合的。在微服务的世界中，Prometheus对多维度数据收集和查询的支持能力，是其长袖善舞之处。
@@ -352,7 +352,7 @@ Prometheus是开源的监控告警的解决方案
 
 整体架构如下图所示
 
-![pic](https://img-blog.csdnimg.cn/20191205150351782.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20191205150351782.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 可以看到，Prometheus的构成非常清晰，主要由如下几个部分构成:
 
 * **Pushgateway**: 支持时序列数据使用PUSH模式推送的中间网关
@@ -461,32 +461,32 @@ docker container start prometheus
 
 通过`http://localhost:9090` 访问启动起来的Prometheus的UI界面，缺省进入的是Grap标签的所在页面：
 
-![pic](https://img-blog.csdnimg.cn/20191231055620111.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20191231055620111.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 Alerts标签界面信息
 
-![pic](https://img-blog.csdnimg.cn/20191231060311508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20191231060311508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 Status标签界面信息
 
-![pic](https://img-blog.csdnimg.cn/20191231060332842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20191231060332842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 
 Prometheus使用REACT重新改造了界面的显示，可以通过点
 击Try experimental React UI进行体验
 
-![pic](https://img-blog.csdnimg.cn/20191231060649331.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20191231060649331.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 
 确认metrics内容 `http://localhost:9090/metrics`
 
-![pic](https://img-blog.csdnimg.cn/20191231061551286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20191231061551286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 
 稍微运行一会，选择一个指标，调节时间范围为15分钟，即可
 看到指标的变化情况
 
-![pic](https://img-blog.csdnimg.cn/20191231061807669.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20191231061807669.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 
 
@@ -804,17 +804,17 @@ curl http://localhost:8082/metrics 2>/dev/null |wc -l
 
 Prometheus从`8080-8082`的端口获取监控数据，而这些连接是否正常，可以从如下界面进行确认
 
-![pic](https://img-blog.csdnimg.cn/20200102145254446.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200102145254446.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 获取的指标信息
 
-![pic](https://img-blog.csdnimg.cn/2020010214533735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/2020010214533735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 查看某一指标的实时状况
 
 Prometheus也具有一点可视化的能力，比如可以直接确认选中的某项指标的一定时间段（缺省1个小时，这里选择为5分钟）的变化情况
 
-![pic](https://img-blog.csdnimg.cn/20200102145520356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200102145520356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 
 ---
@@ -841,77 +841,80 @@ docker run -d -p 3000:3000 \
 设定Prometheus数据源
 - 启动Grafana和Prometheus之后，使用如下步骤即可在Grafana中添加Prometheus的数据源。
 
+```
 步骤1: 登录Grafana
+
 - 使用缺省的admin/admin账号登录Grafana，
 - 登录之后可以修改缺省密码也可直接跳过  passwd
 
-![pic](https://img-blog.csdnimg.cn/20200102154218450.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200102154218450.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 步骤2: 添加Prometheus数据源
 - 点击 Add data source进行数据源的添加
 
-![pic](https://img-blog.csdnimg.cn/20200102154412917.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200102154412917.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - Grafana支持很多可视化展示的数据源，这里选择Prometheus
 
-![pic](https://img-blog.csdnimg.cn/20200102154525774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200102154525774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 设定Prometheus的URL，由于本文示例中各个服务均使用单独的容器启动，所以这里直接使用可以访问的IP来进行设定，除了IP的设定之外其余均可使用缺省设定，点击Save & Test按钮确认连接是否正常
 
-![pic](https://img-blog.csdnimg.cn/20200102154830793.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200102154830793.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 这样数据源的添加就完成了，后续如果需要进行修改或者删除等操作，可通过下图左侧Configuration菜单中的data sources选项进行操作即可。
 
-![pic](https://img-blog.csdnimg.cn/20200103050507289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103050507289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 设定可视化显示的仪表盘
 
 - 在数据源配置和连通性测试成功之后，即可在Grafana中创建定制的仪表盘了。点击下图中的New Dashboard按钮或者左侧Dashboard菜单的Manage选项即可进行仪表盘的创建。
 
-![pic](https://img-blog.csdnimg.cn/20200103050807417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103050807417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 在接下来的页面中选择Choose Visualization
 
-![pic](https://img-blog.csdnimg.cn/20200103051111792.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103051111792.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 点击Panel Title下拉菜单的Edit选项即可进行编辑
 
-![pic](https://img-blog.csdnimg.cn/20200103051412644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103051412644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 另外选择左侧的General按钮，则可对Panel Title的标题进行修改，比如此处修改为Random-Metrics-Info
 
-![pic](https://img-blog.csdnimg.cn/20200103051700741.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103051700741.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 实际上这时并没有数据，所以这里点击左下侧四个按钮的第一个，是设定可视化来源的数据信息的。可以看到在Metrics页面可以看到监控的各项指标，这里选取其中一项进行显示，同时将时间范围设定为15分钟（这里只是为了方便示例结果的演示）
 
-![pic](https://img-blog.csdnimg.cn/20200103052115278.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103052115278.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 点击保存按钮，将此Dashboard设定名称并点击Save按钮，缺省会保存到General目录下（也可以点击Gneral的下拉菜单创建新的保存目录）
 
-![pic](https://img-blog.csdnimg.cn/20200103052441545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103052441545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 保存之后结果如下所示
 
-![pic](https://img-blog.csdnimg.cn/20200103052610779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103052610779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 这时就可以随意拖拽进行可视化显示的调节了
 
-![pic](https://img-blog.csdnimg.cn/20200103052723578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103052723578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 然后使用相同的步骤再添加两个指标进行设定和显示，
 
-![pic](https://img-blog.csdnimg.cn/20200103053339838.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103053339838.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
-![pic](https://img-blog.csdnimg.cn/20200103053349762.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103053349762.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 此时自定义的仪表盘已经变成了这样
 
-![pic](https://img-blog.csdnimg.cn/2020010305343729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/2020010305343729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 - 可以进行随意拖拽和调整大小与位置，比如可以调整成这样
 
-![pic](https://img-blog.csdnimg.cn/20200103053609231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200103053609231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
+```
 
 ---
 
@@ -1067,7 +1070,7 @@ kubectl get pods
 步骤3: 结果确认
 - 在30944端口即可确认刚刚部署的Prometheus的运行状况
 
-![pic](https://img-blog.csdnimg.cn/20200104063822495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200104063822495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 
 ---
@@ -1075,7 +1078,7 @@ kubectl get pods
 
 ## Exporter概要介绍
 
-![pic](https://img-blog.csdnimg.cn/20200113145037917.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+<!-- ![pic](https://img-blog.csdnimg.cn/20200113145037917.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saXVtaWFvY24uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70) -->
 
 Exporter
 - 为Prometheus提供监控数据源的应用都可以被成为Exporter，

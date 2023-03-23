@@ -11,7 +11,7 @@ image:
 
 
 - ref:
-  - [Basics of Digital Certificates and Certificate Authority](https://sites.google.com/site/ddmwsst/digital-certificates#TOC-PEM-Privacy-Enhanced-Mail-Encoding)
+  <!-- - [Basics of Digital Certificates and Certificate Authority](https://sites.google.com/site/ddmwsst/digital-certificates#TOC-PEM-Privacy-Enhanced-Mail-Encoding) -->
 
 
 ---
@@ -124,7 +124,7 @@ CAs are hierarchical in structure. There are generally three types of hierarchie
 #### Single/One Tier Hierarchy
 
 
-<img src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-1.png?attredirects=0" width="250">
+<!-- <img src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-1.png?attredirects=0" width="250"> -->
 
 A single tier Hierarchy
 - consists of one CA.
@@ -143,7 +143,7 @@ A single tier Hierarchy
 
 #### Two Tier Hierarchy
 
-<img src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-2.png?attredirects=0" width="200">
+<!-- <img src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-2.png?attredirects=0" width="200"> -->
 
 
 A two tier hierarchy
@@ -163,7 +163,7 @@ A two tier hierarchy
 
 #### Three Tier Hierarchy
 
-<img src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-3.png?attredirects=0" width="300">
+<!-- <img src="https://sites.google.com/site/ddmwsst/digital-certificates/ca-3.png?attredirects=0" width="300"> -->
 
 Three Tier Hierarchy
 - a second tier is placed between the Root CA and the issuing CA.
@@ -191,7 +191,7 @@ When you get a certificate for your public key from a commercial CA
 - The owners/users certificate is signed by a Issuing CA and issuing CA's certificate is signed by the Root CA. Root CA's certificate is self signed.
 
 
-![Certificate Chain](https://sites.google.com/site/ddmwsst/digital-certificates/chain-of-trust.gif?attredirects=0)
+<!-- ![Certificate Chain](https://sites.google.com/site/ddmwsst/digital-certificates/chain-of-trust.gif?attredirects=0) -->
 
 
 During a User's certificate validation by a browser or a program,

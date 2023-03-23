@@ -65,9 +65,7 @@ image:
 `g++ hw.cpp ./a.out`
 
 # compile C++/c in Win
-![Screen Shot 2018-08-04 at 10.09.07](media/15331607148790/Screen%20Shot%202018-08-04%20at%2010.09.07.png)
-
-
+ 
 # terminal
 `ifconfig` in mac
 `ipconfig` in win
