@@ -1,0 +1,11 @@
+scrape_configs:
+  - job_name: "example-random"
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["192.168.31.242:8080", "192.168.31.242:8081"]
+        labels:
+          group: "production"
+      - targets: ["192.168.31.242:8082"]
+        labels:
+          group: "canary"
