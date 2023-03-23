@@ -2,7 +2,7 @@
 title: Implement Google Analytics and Page Views to blog
 date: 2020-10-04 11:11:11 -0400
 categories: [Note, GoogleAnalytics]
-img_path: /img/post/
+img_path: /assets/img/post/
 tags:
 ---
 
