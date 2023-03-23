@@ -1,0 +1,44 @@
+name: "CI"
+on:
+  push:
+    branches-ignore:
+      - "production"
+      - "docs"
+    paths-ignore:
+      - ".github/**"
+      - "!.github/workflows/ci.yml"
+      - ".gitignore"
+      - "README.md"
+      - "LICENSE"
+  pull_request:
+    paths:
+      - "**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby: [2.7, 3]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # for posts's lastmod
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Build Assets
+        run: npm i && npm run build
+
+      - name: Test Site
+        run: bash tools/test
