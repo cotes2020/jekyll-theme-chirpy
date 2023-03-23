@@ -1,0 +1,65 @@
+name: 'Grace project'
+on:
+  # push:
+  #   branches:
+  #     - master
+  #   paths-ignore:
+  #     - .gitignore
+  #     - README.md
+  #     - LICENSE
+  schedule:
+    - cron: '0 21 * * *'
+
+jobs:
+
+  run_project_1:
+    name: project webscrap_apt
+    # runs-on: macOS-latest
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Print a greeting
+        env:
+          MY_VAR: Hi there! My name is
+          PROJECT_NAME: webscrap_apt
+        run: |
+          echo $MY_VAR $PROJECT_NAME.
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # for posts's lastmod
+
+      - name: run apt project script
+        # run: bash ./wh.sh \
+        run: python ./_posts/00CodeNote/project/webscrap_apt/play.py -t all
+
+      # - name: Run a one-line script
+      #   run: python ./.github/workflows/todo_List.py
+
+      # - name: switching from HTTPS to SSH
+      #   run: git remote set-url origin ${{ secrets.ssh }}
+
+      # - name: check for changes
+      #   run: git status
+
+      # - name: stage changed files
+      #   run: git add .
+
+      # - name: commit changed files
+      #   run: git commit -m "Auto updating csv to "
+
+      # - name: fetch from master
+      #   run: git fetch origin master
+
+      # - name: push code to master
+      #   run: git push origin HEAD:master
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "grace"
+          git config --global user.email "lgraceye@hotmail.com"
+          git add .
+          git commit -m "Auto updating csv to repo"
+          git push
