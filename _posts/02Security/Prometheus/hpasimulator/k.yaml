@@ -1,0 +1,40 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hpa-sim
+  labels:
+    app: hpa-sim
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: hpa-sim
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hpa-sim
+  labels:
+    app: hpa-sim
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hpa-sim
+  template:
+    metadata:
+      labels:
+        app: hpa-sim
+    spec:
+      containers:
+      - name: hpa-sim
+        image: graceluo/hpa-sim:v1
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: LISTENING_PORT
+            value: "8080"
