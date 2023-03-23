@@ -12,12 +12,17 @@ toc: true
 image: /assets/img/note/prisma.png
 ---
 
-[toc]
-
----
 
 # Cortex XDR 2.0 - Architecture, Analytics, and Causality Analysis
 
+- [Cortex XDR 2.0 - Architecture, Analytics, and Causality Analysis](#cortex-xdr-20---architecture-analytics-and-causality-analysis)
+  - [overall](#overall)
+  - [need reformate](#need-reformate)
+  - [need re format](#need-re-format)
+
+---
+
+## overall
 
 Cortex is designed to
 - reduce alert fatigue,
@@ -52,6 +57,11 @@ Behavioral Analytics
 ![XDR and EDR](https://i.imgur.com/7Si3IFN.png)
 
 ---
+ 
+
+## need reformate
+
+```
 
 ### The Product Suite.
 
@@ -90,7 +100,6 @@ Cortex XDR and Cortex XSOAR provide the key functionality for Cortex.
    - This data can be tagged, searched, and analyzed and fed through APIs, EDLs, Custom Feeds, Cortex, and Prisma Cloud.
 
 ![small-2](https://i.imgur.com/MmjHbdf.png)
-
 
 
 
@@ -1568,8 +1577,11 @@ True or false? If you subscribe to Cortex Data Lake, then you do not need to own
 
 True or false? Cortex Data Lake provides built-in log redundancy.
 - True
+```
 
 ---
+
+## need re format
 
 ```
 
