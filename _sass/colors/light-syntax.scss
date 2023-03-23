@@ -68,9 +68,9 @@
 
   /* --- custom light colors --- */
   --highlight-bg-color: #f7f7f7;
-  --highlighter-rouge-color: #2f2f2f;
+  --highlighter-rouge-color: #3f596f;
   --highlight-lineno-color: #c2c6cc;
-  --inline-code-bg: #f3f3f3;
+  --inline-code-bg: #f6f6f7;
   --code-header-text-color: #a3a3b1;
   --code-header-muted-color: #ebebeb;
   --code-header-icon-color: #d1d1d1;
@@ -78,6 +78,5 @@
 
   [class^='prompt-'] {
     --inline-code-bg: #fbfafa;
-    --highlighter-rouge-color: rgb(82, 82, 82);
   }
 } /* light-syntax */
