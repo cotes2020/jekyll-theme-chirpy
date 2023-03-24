@@ -7,7 +7,7 @@ order: 4
 ---
 
 > A CYBER SECURITY PRACTICIAN
->
+
 <br>
 <p align="center">
 
