@@ -7,9 +7,6 @@ order: 4
 ---
 
 > A CYBER SECURITY PRACTICIAN
->
-<br>
-<p align="center">
 
 ![0SQ0jOP](/assets/img/tabs/AWS-SA.png){:width="100"} ![0SQ0jOP](/assets/img/tabs/AWS-CP.png){:width="100"} ![0SQ0jOP](/assets/img/tabs/AWS-G.png){:width="100" height="95" }
 
