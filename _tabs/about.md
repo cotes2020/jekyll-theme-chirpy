@@ -8,16 +8,19 @@ order: 4
 
 > A CYBER SECURITY PRACTICIAN
 
+<br>
 
-<img src="/assets/img/tabs/AWS-SA.png"  width="100"> <img src="/assets/img/tabs/AWS-CP.png"  width="100"> <img src="/assets/img/tabs/AWS-G.png"  width="100">
+<img src="/assets/img/tabs/AWS-SA.png" width="100" align="center"> 
+<img src="/assets/img/tabs/AWS-CP.png" width="100" align="center"> 
+<img src="/assets/img/tabs/AWS-G.png" width="100" align="center">
 
-<p>
+<br>
 
-<img src="/assets/img/tabs/CEH.png"  width="100">
+<img src="/assets/img/tabs/CEH.png" width="100" align="center">
+<img src="/assets/img/tabs/PAN.jpg" width="100" height="110" align="center">
+<img src="/assets/img/tabs/Sec+.png" width="100" align="center">
 
-<img src="/assets/img/tabs/PAN.jpg"  width="100" height="100">
-
-<img src="/assets/img/tabs/Sec+.png"  width="100">
+<br>
 
 > On my way to CISSP, OSCP ...
 
@@ -92,19 +95,3 @@ Wargames:
 <!-- Leviathan - Based on SetUID.
 Narnia - Based on binary exploitation.
 Protostar - Based on binary exploitation. -->
-
----
-
-<img src="/assets/img/tabs/AWS-SA.png"  width="100">
-<img src="/assets/img/tabs/AWS-CP.png"  width="100">
-<img src="/assets/img/tabs/AWS-G.png"  width="100">
-
-<p>
-
-<img src="/assets/img/tabs/CEH.png"  width="100">
-
-<img src="/assets/img/tabs/PAN.jpg"  width="100" height="95">
-
-<img src="/assets/img/tabs/Sec+.png"  width="100">
-
-> On my way to CISSP, OSCP ...
