@@ -11,25 +11,12 @@ order: 4
 <br>
 <p align="center">
 
-<img src="https://i.imgur.com/hOFYY7s.png" width="100" align="left"> <img src="https://i.imgur.com/UYv2Cpd.png" width="100" align="left"> <img src="https://i.imgur.com/tIMuMgk.jpg" width="100" height="95" align="left">
+![0SQ0jOP](/assets/img/tabs/AWS-SA.png){:width="100"} ![0SQ0jOP](/assets/img/tabs/AWS-CP.png){:width="100"} ![0SQ0jOP](/assets/img/tabs/AWS-G.png){:width="100" height="95" }
 
-</p>
+![0SQ0jOP](/assets/img/tabs/CSE.png){:width="100"} ![0SQ0jOP](/assets/img/tabs/PAN.png){:width="100"} ![0SQ0jOP](/assets/img/tabs/Sec+.png){:width="100"} 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+width="100"
 
-<img src="https://i.imgur.com/vMmUZBI.png" width="100" align="left"> <img src="https://i.imgur.com/0SQ0jOP.png" width="100" align="left"> <img src="https://i.imgur.com/K3wKueK.png" width="100" align="left">
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 > On my way to CISSP, OSCP ...
 
