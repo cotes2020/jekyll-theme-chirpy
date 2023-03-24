@@ -69,7 +69,7 @@
 }
 
 %clickable-transition {
-  transition: color 0.35s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 %no-cursor {
@@ -136,6 +136,11 @@
 @mixin ml-mr($value) {
   margin-left: $value;
   margin-right: $value;
+}
+
+@mixin pt-pb($val) {
+  padding-top: $val;
+  padding-bottom: $val;
 }
 
 @mixin pl-pr($val) {

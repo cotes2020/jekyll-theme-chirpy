@@ -1,11 +1,10 @@
 <!-- The Side Bar -->
 
 <div id="sidebar" class="d-flex flex-column align-items-end">
-  <div class="profile-wrapper text-center">
-    <div id="avatar">
-      <a href="{{ '/' | relative_url }}" class="mx-auto">
-        {% if site.avatar != empty and site.avatar %}
-          {% capture avatar_url %}
+  <div class="profile-wrapper">
+    <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
+      {% if site.avatar != empty and site.avatar %}
+        {% capture avatar_url %}
             {% if site.avatar contains '://' %}
               {{ site.avatar }}
             {% elsif site.img_cdn != empty and site.img_cdn %}
@@ -14,10 +13,9 @@
               {{ site.avatar | relative_url }}
             {% endif %}
           {% endcapture %}
-          <img src="{{ avatar_url | strip }}" alt="avatar" onerror="this.style.display='none'">
-        {% endif %}
-      </a>
-    </div>
+        <img src="{{ avatar_url | strip }}" width="112" height="112" alt="avatar" onerror="this.style.display='none'">
+      {% endif %}
+    </a>
 
     <div class="site-title">
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
@@ -26,11 +24,11 @@
   </div>
   <!-- .profile-wrapper -->
 
-  <ul class="w-100">
+  <ul class="flex-grow-1 w-100 pl-0">
     <!-- home -->
     <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
       <a href="{{ '/' | relative_url }}" class="nav-link">
-        <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
+        <i class="fa-fw fas fa-home"></i>
         <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
       </a>
     </li>
@@ -38,7 +36,7 @@
     {% for tab in site.tabs %}
       <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
         <a href="{{ tab.url | relative_url }}" class="nav-link">
-          <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
+          <i class="fa-fw {{ tab.icon }}"></i>
           {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
 
           <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
@@ -49,7 +47,7 @@
   </ul>
   <!-- ul.nav.flex-column -->
 
-  <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
+  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
     {% unless site.theme_mode %}
       <button class="mode-toggle btn" aria-label="Switch Mode">
         <i class="fas fa-adjust"></i>
