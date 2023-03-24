@@ -86,4 +86,18 @@ Protostar - Based on binary exploitation. -->
 
 ![0SQ0jOP](/assets/img/tabs/CEH.png) ![0SQ0jOP](/assets/img/tabs/PAN.jpg) ![0SQ0jOP](/assets/img/tabs/Sec+.png) 
 
+<img src="/assets/img/tabs/AWS-SA.png"  width="100">
+
+<img src="/assets/img/tabs/AWS-CP.png"  width="100">
+
+<img src="/assets/img/tabs/AWS-G.png"  width="100">
+
+<p>
+
+<img src="/assets/img/tabs/CEH.png"  width="100">
+
+<img src="/assets/img/tabs/PAN.jpg"  width="100" height="95">
+
+<img src="/assets/img/tabs/Sec+.png"  width="100">
+
 > On my way to CISSP, OSCP ...
