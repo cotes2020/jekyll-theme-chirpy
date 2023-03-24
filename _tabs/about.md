@@ -8,15 +8,6 @@ order: 4
 
 > A CYBER SECURITY PRACTICIAN
 
-![0SQ0jOP](/assets/img/tabs/AWS-SA.png){:width="100"} ![0SQ0jOP](/assets/img/tabs/AWS-CP.png){:width="100"} ![0SQ0jOP](/assets/img/tabs/AWS-G.png){:width="100" height="95" }
-
-![0SQ0jOP](/assets/img/tabs/CSE.png){:width="100"} ![0SQ0jOP](/assets/img/tabs/PAN.png){:width="100"} ![0SQ0jOP](/assets/img/tabs/Sec+.png){:width="100"} 
-
-width="100"
-
-
-> On my way to CISSP, OSCP ...
-
 ---
 
 # About Me
@@ -88,3 +79,11 @@ Wargames:
 <!-- Leviathan - Based on SetUID.
 Narnia - Based on binary exploitation.
 Protostar - Based on binary exploitation. -->
+
+---
+
+![0SQ0jOP](/assets/img/tabs/AWS-SA.png) ![0SQ0jOP](/assets/img/tabs/AWS-CP.png) ![0SQ0jOP](/assets/img/tabs/AWS-G.png) 
+
+![0SQ0jOP](/assets/img/tabs/CEH.png) ![0SQ0jOP](/assets/img/tabs/PAN.jpg) ![0SQ0jOP](/assets/img/tabs/Sec+.png) 
+
+> On my way to CISSP, OSCP ...
