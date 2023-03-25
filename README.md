@@ -20,11 +20,11 @@
 
 <details>
   <summary>
-    <i>Click to check out the features</i>
+    <i>Click to view features</i>
   </summary>
   <p>
 
-  - Dark/Light Theme Mode
+  - Dark / Light Theme Mode
   - Localized UI language
   - Pinned Posts
   - Hierarchical Categories
@@ -34,9 +34,9 @@
   - Syntax Highlighting
   - Mathematical Expressions
   - Mermaid Diagram & Flowchart
-  - Dark/Light Mode Images
+  - Dark / Light Mode Images
   - Embed Videos
-  - Disqus/Utterances/Giscus Comments
+  - Disqus / Utterances / Giscus Comments
   - Search
   - Atom Feeds
   - Google Analytics
@@ -71,7 +71,7 @@ _Open Source Development_ license.
 
 ## Sponsoring
 
-If you would like to sponsor this project, the following options are available.
+If you'd like to sponsor this project, the following options are available.
 
 [![Ko-fi](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-ff5f5f?logo=ko-fi&logoColor=white)](https://ko-fi.com/coteschung)
 [![Wechat Pay](https://img.shields.io/badge/-Tip%20Me%20on%20WeChat-brightgreen?logo=wechat&logoColor=white)][donation]
@@ -80,8 +80,6 @@ If you would like to sponsor this project, the following options are available.
 ## License
 
 This work is published under [MIT][mit] License.
-
-<!-- ReadMe links -->
 
 [jekyllrb]: https://jekyllrb.com/
 [bootstrap]: https://getbootstrap.com/

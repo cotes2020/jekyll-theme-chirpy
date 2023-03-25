@@ -4,9 +4,8 @@
 
 @mixin dark-scheme {
   /* Framework color */
-  --body-bg: var(--main-bg);
-  --mask-bg: rgb(68, 69, 70);
   --main-bg: rgb(27, 27, 30);
+  --mask-bg: rgb(68, 69, 70);
   --main-border-color: rgb(44, 45, 45);
 
   /* Common color */
@@ -27,13 +26,12 @@
   --checkbox-color: rgb(118, 120, 121);
   --checkbox-checked-color: var(--link-color);
   --img-bg: radial-gradient(circle, rgb(22, 22, 24) 0%, rgb(32, 32, 32) 100%);
-  --shimmer-bg:
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(58, 55, 55, 0.4) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
+  --shimmer-bg: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(58, 55, 55, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
 
   /* Sidebar */
   --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
@@ -70,7 +68,8 @@
   --btn-share-color: #6c757d;
   --btn-share-hover-color: #bfc1ca;
   --relate-post-date: var(--text-muted-color);
-  --card-bg: rgb(39, 40, 43);
+  --card-bg: #212121;
+  --card-hovor-bg: #3a3a3a;
   --card-border-color: rgb(53, 53, 60);
   --card-box-shadow: var(--main-bg);
   --kbd-wrap-color: #6a6a6a;
@@ -117,16 +116,6 @@
     border-color: var(--main-border-color);
   }
 
-  /* posts' toc, override BS */
-  nav[data-toggle="toc"] .nav-link.active,
-  nav[data-toggle="toc"] .nav-link.active:focus,
-  nav[data-toggle="toc"] .nav-link.active:hover,
-  nav[data-toggle="toc"] .nav > li > a:focus,
-  nav[data-toggle="toc"] .nav > li > a:hover {
-    color: var(--toc-highlight) !important;
-    border-left-color: var(--toc-highlight) !important;
-  }
-
   /* categories */
   .categories.card,
   .list-group-item {
@@ -151,20 +140,20 @@
   }
 
   #archives li:nth-child(odd) {
-    background-image:
-      linear-gradient(
-        to left,
-        rgb(26, 26, 30),
-        rgb(39, 39, 45),
-        rgb(39, 39, 45),
-        rgb(39, 39, 45),
-        rgb(26, 26, 30)
-      );
+    background-image: linear-gradient(
+      to left,
+      rgb(26, 26, 30),
+      rgb(39, 39, 45),
+      rgb(39, 39, 45),
+      rgb(39, 39, 45),
+      rgb(26, 26, 30)
+    );
   }
 
   color-scheme: dark;
 
-  #disqus_thread { /* stylelint-disable-line selector-id-pattern */
+  /* stylelint-disable-next-line selector-id-pattern */
+  #disqus_thread {
     color-scheme: none;
   }
 } /* dark-scheme */
