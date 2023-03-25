@@ -6,7 +6,7 @@ tags: [gravitation, Klein-Gordon theory, energy-momentum tensor, gauge invarianc
 toc: false
 iframe: 
     asset: true
-    path: "pdf/posts/2023-02-23-applying-klein-gordon-theory-gravitation/applying_klein_gordon_theory_gravitation.pdf"
+    path: "pdf/posts/2023-02-23-applying-klein-gordon-theory-gravitation/main.pdf"
     options: "view=FitH"
 ---
 
