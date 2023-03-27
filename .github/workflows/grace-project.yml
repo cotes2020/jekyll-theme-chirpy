@@ -63,3 +63,14 @@ jobs:
           git add .
           git commit -m "Auto updating csv to repo"
           git push
+
+      - name: run img player
+        run: python ./_posts/00CodeNote/project/webscrap_apt/img_play.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "grace"
+          git config --global user.email "lgraceye@hotmail.com"
+          git add .
+          git commit -m "Auto updating img to repo"
+          git push
