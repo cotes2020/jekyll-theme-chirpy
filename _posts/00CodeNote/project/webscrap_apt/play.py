@@ -213,7 +213,7 @@ def create_dic(apt, text, output_list):
             dic = {}
             target_date = date.today().strftime("%Y/%m/%d")  # "2022/06/01"
             inputdate = target_date.replace("/", "")
-    
+
             dic["Date"] = inputdate
             dic["Apt"] = apt
             dic["Floor_plan"] = info_list[0]
