@@ -20,7 +20,7 @@ tags:
   - [Google APIs 创建项目](#google-apis-创建项目)
   - [下载配置 SuperProxy](#下载配置-superproxy)
 
---- 
+---
 
 ## Set up Google Analytics
 
@@ -149,10 +149,10 @@ There is a detailed [tutorial](https://developers.google.com/analytics/solutions
 
     # XSRF Settings
     XSRF_KEY = 'OnceUponATimeThereLivedALegend'
-    ``` 
+    ```
 
     > You can configure a custom domain instead of `https://PROJECT_ID.REGION_ID.r.appspot.com`.
-    > But, for the sake of keeping it simple, we will be using the Google provided default URL. 
+    > But, for the sake of keeping it simple, we will be using the Google provided default URL.
 
 5.  From inside the `src/`{: .filepath} directory, deploy the app
 
@@ -220,7 +220,7 @@ In order to reduce the returned results and reduce the network bandwidth, we add
 After <kbd>Run Query</kbd>, copy the generated contents of **API Query URI** at the bottom of the page and fill in the **Encoded URI for the query** of SuperProxy on GAE.
 
 After the query is saved on GAE, a **Public Endpoint** (public access address) will be generated, and we will get the query result in JSON format when accessing it. Finally, click <kbd>Enable Endpoint</kbd> in **Public Request Endpoint** to make the query effective, and click <kbd>Start Scheduling</kbd> in **Scheduling** to start the scheduled task.
- 
+
 ## Configure Chirpy to Display Page View
 
 Once all the hard part is done, it is very easy to enable the Page View on Chirpy theme. Your superProxy dashboard should look something like below and you can grab the required values.
@@ -233,7 +233,7 @@ google_analytics:
   pv:
     proxy_endpoint: 'https://PROJECT_ID.REGION_ID.r.appspot.com/query?id=<ID FROM SUPER PROXY>'
     cache_path:       # the local PV cache data, friendly to visitors from GFW region
-``` 
+```
 
 Now, you should see the Page View enabled on your blog.
 

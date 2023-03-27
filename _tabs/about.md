@@ -10,8 +10,8 @@ order: 4
 
 <br>
 
-<img src="/assets/img/tabs/AWS-SA.png" width="100" align="center"> 
-<img src="/assets/img/tabs/AWS-CP.png" width="100" align="center"> 
+<img src="/assets/img/tabs/AWS-SA.png" width="100" align="center">
+<img src="/assets/img/tabs/AWS-CP.png" width="100" align="center">
 <img src="/assets/img/tabs/AWS-G.png" width="100" align="center">
 
 <br>
