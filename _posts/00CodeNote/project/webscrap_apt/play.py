@@ -211,6 +211,10 @@ def create_dic(apt, text, output_list):
             info_list = info.split(";")
 
             dic = {}
+            target_date = date.today().strftime("%Y/%m/%d")  # "2022/06/01"
+            inputdate = target_date.replace("/", "")
+    
+            dic["Date"] = inputdate
             dic["Apt"] = apt
             dic["Floor_plan"] = info_list[0]
             if "Beds/Baths" in info:
@@ -247,6 +251,7 @@ def create_csv(all_dic_list):
     LOGGER.info("\n======= creating file: %s =======" % file_name)
 
     header = [
+        "Date",
         "Apt",
         "Floor_plan",
         "Beds/Baths",
