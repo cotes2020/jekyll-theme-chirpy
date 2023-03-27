@@ -25,7 +25,7 @@ def read_csv(dir_path):
         # check if current path is a file
         if os.path.isfile(os.path.join(dir_path, path)):
             csv_files.append(dir_path+path)
-    LOGGER.info("\n======= creating csv_files list: %s =======" % csv_files)
+    LOGGER.info("\n======= Collected data in csv_files: %s =======" % csv_files)
     return csv_files
 
 
@@ -53,8 +53,9 @@ def draw_png(csv_files, apt, floor_plans):
     # loop through each CSV file and append to all_data
     for file in csv_files:
         df = pd.read_csv(file, parse_dates=["Date"]) 
-        all_data = all_data.append(df)
+        # all_data = all_data.append(df)
         # outputxlsx = pd.concat([all_data, df])
+        all_data = pd.concat([all_data, df])
         
     # print(outputxlsx)
 
