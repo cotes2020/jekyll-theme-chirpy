@@ -45,13 +45,12 @@
   --avatar-border-color: white;
 
   /* Topbar */
+  --topbar-bg: rgb(255, 255, 255, 0.7);
   --topbar-text-color: rgb(78, 78, 78);
-  --topbar-wrapper-bg: white;
-  --search-wrapper-bg: rgb(245, 245, 245, 0.5);
-  --search-wrapper-border-color: rgb(245, 245, 245);
+  --search-wrapper-border-color: rgb(240, 240, 240);
   --search-tag-bg: #f8f9fa;
   --search-icon-color: #c2c6cc;
-  --input-focus-border-color: var(--btn-border-color);
+  --input-focus-border-color: #b8b8b8;
 
   /* Home page */
   --post-list-text-color: dimgray;

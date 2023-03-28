@@ -423,7 +423,7 @@ i {
 
 .post {
   h1 {
-    margin-top: 3rem;
+    margin-top: 2rem;
     margin-bottom: 1.5rem;
   }
 
@@ -966,11 +966,22 @@ $btn-mb: 0.5rem;
   right: 0;
   transition: top 0.2s ease-in-out;
   z-index: 50;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-  background-color: var(--topbar-wrapper-bg);
+  background-color: var(--topbar-bg);
 
   [data-topbar-visible='false'] & {
     top: -$topbar-height; /* same as topbar height. */
+  }
+
+  &::before {
+    $blur: 12px;
+
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: $topbar-height;
+    z-index: -1;
+    -webkit-backdrop-filter: blur($blur);
+    backdrop-filter: blur($blur);
   }
 }
 
@@ -1010,7 +1021,7 @@ $btn-mb: 0.5rem;
   width: 100%;
   border-radius: 1rem;
   border: 1px solid var(--search-wrapper-border-color);
-  background: var(--search-wrapper-bg);
+  background: var(--main-bg);
   padding: 0 0.5rem;
 
   i {
@@ -1039,7 +1050,6 @@ $btn-mb: 0.5rem;
 
   &:focus {
     box-shadow: none;
-    background: center;
 
     &.form-control {
       &::-moz-placeholder {
@@ -1430,7 +1440,7 @@ $btn-mb: 0.5rem;
     display: none;
 
     ~ .post-content {
-      margin-top: 3rem;
+      margin-top: 2.5rem;
     }
   }
 } /* max-width: 849px */
@@ -1477,6 +1487,12 @@ $btn-mb: 0.5rem;
   #search-result-wrapper {
     margin-top: 3rem;
     max-width: $main-content-max-width;
+  }
+
+  .post {
+    h1 {
+      margin-top: 3rem;
+    }
   }
 
   div.post-content .table-wrapper > table {
