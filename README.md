@@ -1,3 +1,11 @@
+# 自分用メモ
+
+これでローカル起動する。
+```
+bundle exec jekyll s
+```
+
+
 <div align="center">
 
   # Chirpy Jekyll Theme

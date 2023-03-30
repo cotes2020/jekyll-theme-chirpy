@@ -30,7 +30,7 @@ h1.summary {
 
 .jekyll-linkpreview-content {
   position: relative;
-  height: 100px;
+  height: 100%;
   overflow: hidden;
   margin-bottom: 10px;
 }
@@ -58,7 +58,6 @@ h1.summary {
   font-size: 17px;
   margin: 0 0 2px;
   line-height: 1.3;
-  padding-top: 1rem;
 }
 
 .jekyll-linkpreview-description {
@@ -68,4 +67,9 @@ h1.summary {
 
 .jekyll-linkpreview-footer {
   font-size: 11px;
+}
+
+mjx-container {
+  overflow-x: scroll;
+  overflow-y: clip;
 }
