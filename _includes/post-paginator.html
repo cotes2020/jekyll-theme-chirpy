@@ -47,7 +47,7 @@
     {% if show %}
       <!-- show number -->
       <li class="page-item {% if i == paginator.page %} active{% endif %}">
-        <a class="page-link btn-box-shadow" href="{{ site.baseurl }}/blog/{% if i > 1%}page{{ i }}/{% endif %}">{{ i }}</a>
+        <a class="page-link btn-box-shadow" href="{{ site.baseurl }}/blog/{% if i > 1%}{{ i }}/{% endif %}">{{ i }}</a>
       </li>
     {% else %}
       <!-- hide number -->
