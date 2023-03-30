@@ -193,8 +193,8 @@ function fetchProxyPageviews() {
       type: 'GET',
       url: PvOpts.getProxyMeta(),
       dataType: 'jsonp',
-      jsonpCallback: 'displayPageviews',
       success: (data) => {
+        displayPageviews(data);
         PvStorage.saveProxyCache(JSON.stringify(data));
       },
       error: (jqXHR, textStatus, errorThrown) => {
