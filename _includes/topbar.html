@@ -22,15 +22,14 @@
               {{ site.data.locales[lang].tabs.home | capitalize }}
             </a>
           </span>
-
         {% elsif forloop.last %}
-
           {% if page.collection == 'tabs' %}
             <span>{{ site.data.locales[lang].tabs[item] | default: page.title }}</span>
           {% else %}
             <span>{{ page.title }}</span>
           {% endif %}
-
+        {% elsif page.layout == 'post' %}
+          <span><a href="/blog/">Blog</a></span>
         {% elsif page.layout == 'category' or page.layout == 'tag' %}
           <span>
             <a href="{{ item | relative_url }}">
@@ -54,7 +53,7 @@
         {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
         {{- site.data.locales[lang].tabs[tab_key] | default: page.title -}}
       {% else %}
-        {{- site.data.locales[lang].layout[page.layout] | default: page.layout | capitalize -}}
+        {{- site.data.locales[lang].layout[page.layout] | default: page.title | capitalize -}}
       {% endif %}
     </div>
 
