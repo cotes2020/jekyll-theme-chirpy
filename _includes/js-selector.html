@@ -2,11 +2,11 @@
 
 <!-- commons -->
 
-{% assign urls = site.data.assets[origin].jquery.js
+{% assign urls = site.data.origin[type].jquery.js
   | append: ','
-  | append: site.data.assets[origin].bootstrap.js
+  | append: site.data.origin[type].bootstrap.js
   | append: ','
-  | append: site.data.assets[origin].search.js
+  | append: site.data.origin[type].search.js
 %}
 
 <!-- layout specified -->
@@ -14,20 +14,20 @@
 {% if page.layout == 'post' %}
   {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
     <!-- pv-report needs countup.js -->
-    {% assign urls = urls | append: ',' | append: site.data.assets[origin].countup.js %}
+    {% assign urls = urls | append: ',' | append: site.data.origin[type].countup.js %}
   {% endif %}
 {% endif %}
 
 {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
-  {% assign urls = urls | append: ',' | append: site.data.assets[origin].lazysizes.js %}
+  {% assign urls = urls | append: ',' | append: site.data.origin[type].lazysizes.js %}
 
   {% unless page.layout == 'home' %}
     <!-- image lazy-loading & popup & clipboard -->
     {% assign urls = urls
       | append: ','
-      | append: site.data.assets[origin]['magnific-popup'].js
+      | append: site.data.origin[type]['magnific-popup'].js
       | append: ','
-      | append: site.data.assets[origin].clipboard.js
+      | append: site.data.origin[type].clipboard.js
     %}
   {% endunless %}
 {% endif %}
@@ -42,37 +42,37 @@
 
   {% assign urls = urls
     | append: ','
-    | append: site.data.assets[origin].dayjs.js.common
+    | append: site.data.origin[type].dayjs.js.common
     | append: ','
-    | append: site.data.assets[origin].dayjs.js.locale
+    | append: site.data.origin[type].dayjs.js.locale
     | replace: ':LOCALE', locale
     | append: ','
-    | append: site.data.assets[origin].dayjs.js.relativeTime
+    | append: site.data.origin[type].dayjs.js.relativeTime
     | append: ','
-    | append: site.data.assets[origin].dayjs.js.localizedFormat
+    | append: site.data.origin[type].dayjs.js.localizedFormat
   %}
 {% endif %}
 
 {% if page.content contains '<h2' or page.content contains '<h3' and site.toc and page.toc %}
-  {% assign urls = urls | append: ',' | append: site.data.assets[origin].toc.js %}
+  {% assign urls = urls | append: ',' | append: site.data.origin[type].toc.js %}
 {% endif %}
 
 {% if page.mermaid %}
-  {% assign urls = urls | append: ',' | append: site.data.assets[origin].mermaid.js %}
+  {% assign urls = urls | append: ',' | append: site.data.origin[type].mermaid.js %}
 {% endif %}
 
 {% include jsdelivr-combine.html urls=urls %}
 
 {% case page.layout %}
   {% when 'home', 'categories', 'post', 'page' %}
-    {% assign type = page.layout %}
+    {% assign js = page.layout %}
   {% when 'archives', 'category', 'tag' %}
-    {% assign type = 'misc' %}
+    {% assign js = 'misc' %}
   {% else %}
-    {% assign type = 'commons' %}
+    {% assign js = 'commons' %}
 {% endcase %}
 
-{% capture script %}/assets/js/dist/{{ type }}.min.js{% endcapture %}
+{% capture script %}/assets/js/dist/{{ js }}.min.js{% endcapture %}
 <script defer src="{{ script | relative_url }}"></script>
 
 {% if page.math %}
@@ -94,8 +94,8 @@
       }
     };
   </script>
-  <script src="{{ site.data.assets[origin].polyfill.js | relative_url }}"></script>
-  <script id="MathJax-script" async src="{{ site.data.assets[origin].mathjax.js | relative_url }}"></script>
+  <script src="{{ site.data.origin[type].polyfill.js | relative_url }}"></script>
+  <script id="MathJax-script" async src="{{ site.data.origin[type].mathjax.js | relative_url }}"></script>
 {% endif %}
 
 {% if jekyll.environment == 'production' %}
