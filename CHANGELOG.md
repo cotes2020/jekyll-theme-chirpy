@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.6.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.6.0...v5.6.1) (2023-03-30)
+
+
+### Bug Fixes
+
+* **deps:** `tocbot` has no initialization detection ([#957](https://github.com/cotes2020/jekyll-theme-chirpy/issues/957)) ([8225174](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8225174cb5e02fda7b3cc548ec821c876b0a5139))
+* mode-toggle leads to Disqus loading failure ([#945](https://github.com/cotes2020/jekyll-theme-chirpy/issues/945)) ([6fec411](https://github.com/cotes2020/jekyll-theme-chirpy/commit/6fec411c18ca5689c467c7b216ddeda02df23623))
+* pageviews not updated immediately ([8b4f99c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8b4f99c87f9a9227f47e84fb39d7b0f551d6f4dd))
+
 ## [5.6.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.5.2...v5.6.0) (2023-03-17)
 
 
