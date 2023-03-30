@@ -22,15 +22,14 @@
               {{ site.data.locales[lang].tabs.home | capitalize }}
             </a>
           </span>
-
         {% elsif forloop.last %}
-
           {% if page.collection == 'tabs' %}
             <span>{{ site.data.locales[lang].tabs[item] | default: page.title }}</span>
           {% else %}
             <span>{{ page.title }}</span>
           {% endif %}
-
+        {% elsif page.layout == 'post' %}
+          <span><a href="/blog/">Blog</a></span>
         {% elsif page.layout == 'category' or page.layout == 'tag' %}
           <span>
             <a href="{{ item | relative_url }}">
