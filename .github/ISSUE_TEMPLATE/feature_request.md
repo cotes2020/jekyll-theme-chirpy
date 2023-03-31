@@ -6,11 +6,11 @@ labels: enhancement
 
 **NOTE:** Before you start, the following should be completed.
 
-- Read [tutorial][tutorial] to understand the usage and the correct effect of functional design.
+- Read [Wiki][wiki] to understand the usage and the correct effect of functional design.
 - Make sure no [similar issue(including closed ones)][issues] exists.
 - Make sure the request is based on the latest code in the `master` branch.
 
-[tutorial]: https://cotes2020.github.io/chirpy-demo/categories/tutorial/
+[wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
 [issues]: https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue
 
 ## Is your feature request related to a problem? Please describe

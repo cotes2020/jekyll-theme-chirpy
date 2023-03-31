@@ -5,11 +5,11 @@ about: Create a report to help us improve
 
 **NOTE:** Before you start, the following should be completed.
 
-- Read [tutorial][tutorial] to understand the usage and the correct effect of functional design.
+- Read [Wiki][wiki] to understand the usage and the correct effect of functional design.
 - Make sure no [similar issue(including closed ones)][issues] exists.
 - Make sure the bug is found in the latest code of the `master` branch.
 
-[tutorial]: https://cotes2020.github.io/chirpy-demo/categories/tutorial/
+[wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
 [issues]: https://github.com/cotes2020/jekyll-theme-chirpy/issues?q=is%3Aissue
 
 ## Describe the bug
