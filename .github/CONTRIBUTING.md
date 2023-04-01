@@ -22,7 +22,7 @@ This project has [CI][ci] turned on. In order for your [PR][gh-pr] to pass the t
 please read the following.
 
 ### Check the core functionality
-  
+
 ```console
 bash ./tools/test
 ```

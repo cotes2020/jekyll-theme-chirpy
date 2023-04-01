@@ -35,7 +35,7 @@
 
 Dr. Richard Chang DDS（非常不推荐 胡乱收費）
 
-### Artisan dental 
+### Artisan dental
 188 106th Ave NE #410, Bellevue, WA, United States, Washington
 - 特别好
 - 希望所有找牙医的人都能看到 真的坑 不知道去的人里好多中国人 医生水平不行，有种推销的感觉
@@ -44,7 +44,7 @@ Dr. Richard Chang DDS（非常不推荐 胡乱收費）
 - 也在artisan dental看牙，lg也被叫做了牙冠，想换个牙医看到这几个帖子，心情复杂，为他现在还无事的牙冠祈祷. 好奇大家遇到的是同一位医生吗，artisan好像不止一位
 
 
-### Bellevue Park Dental 
+### Bellevue Park Dental
 - Dr. Byungjun (Alex) Park, DDS
 
 ### Brilliant Dental Care
@@ -54,10 +54,10 @@ Dr. Richard Chang DDS（非常不推荐 胡乱收費）
 ### Bellevue Wellness Dental
 - Dr. Stanford Chen
 
-   
+
 ### Chrysalis Dental
 1515 116th Ave NE, Ste 106 Bellevue, WA 98004
-- Dr Hiu tong Maria Lei 
+- Dr Hiu tong Maria Lei
   - 大家推荐嘛?
   - 很好一直在他家看
 
@@ -69,7 +69,7 @@ Dr. Richard Chang DDS（非常不推荐 胡乱收費）
 
 
 ### Eastgate Modern Dentistry
-- Dr Wang 
+- Dr Wang
 - Dr Huang
 
 
@@ -86,7 +86,7 @@ Choi Kevin Y DDS
 
 ### Highland Dental Care
 1918 152nd Ave NE, Bellevue, WA 98007
-- Dr. Mei-Ling Wang DDS 如沐春风 
+- Dr. Mei-Ling Wang DDS 如沐春风
 
 
 ### overlakedental
@@ -98,17 +98,17 @@ Choi Kevin Y DDS
 - 附议 他们家技术太差了 还动不动就要给做根管 但我换了家牙医还是不咋滴…找个靠谱好牙医难啊[笑哭R]
 
 
-### Pacific Northwest Endodontics 
+### Pacific Northwest Endodontics
 14655 Bel Red Rd, Ste 201, Bellevue, WA, United States, Washington
 - Dr. Angel Luis Aviles
   - 队友己经在那里接受治疗两次了，每次都舒服的睡着西西 他家真的是会 go extra miles for you! Post-op care tiE.
 
 ### Sunrise Dental
-1200 112th Ave NE, Bellevue, WA 98004 
+1200 112th Ave NE, Bellevue, WA 98004
 - Edward Im, DDS 蛮好的
 
 ### Susan Park, DDS
-- Susan Park 
+- Susan Park
   - Google 上有个差评
 
 
@@ -126,7 +126,7 @@ Choi Kevin Y DDS
 
 ### Redmond Endodontics
 8575 164th Ave NE #301, Redmond, WA 98052
-- 在Redmond地区开了好久了！口碑好！优点是因为是group pratice， 所以有多位医师，比较好约 appointment 
+- 在Redmond地区开了好久了！口碑好！优点是因为是group practice， 所以有多位医师，比较好约 appointment
 
 
 ### Redmond Dental
@@ -137,8 +137,8 @@ Choi Kevin Y DDS
 ## Seattle
 
 
-### Aspen dental 
-贵 坑钱 
+### Aspen dental
+贵 坑钱
 
 
 ### Ravenna Dental Clinic
@@ -154,18 +154,18 @@ Choi Kevin Y DDS
 
 - Tokiko Miko Poppe (48, f)
 
-- Spector dental center   
+- Spector dental center
 
 - Judson Werner
 - Johann YI DDS
 - Jolyn A su
- 
-- Brent spencer 
+
+- Brent spencer
 
 - ryan fox 很贵
 
 - Peak Endodontics [closed]
-  - 不痛 快 
+  - 不痛 快
 
 
 ---
@@ -173,7 +173,7 @@ Choi Kevin Y DDS
 ## Woodinville
 
 ### woodinville endodontics
-- Dr. Yoon 
+- Dr. Yoon
   - 非常耐心和细心。prefer 女医生的可以看这里！
 
 ---

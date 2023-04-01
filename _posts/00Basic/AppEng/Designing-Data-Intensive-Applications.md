@@ -2832,7 +2832,7 @@ There are situations in which it is important for nodes to agree:
 
 #### Atomic commit and two-phase commit (2PC)
 
-A transaction either succesfully _commit_, or _abort_. Atomicity prevents half-finished results.
+A transaction either successfully _commit_, or _abort_. Atomicity prevents half-finished results.
 
 On a single node, transaction commitment depends on the _order_ in which data is writen to disk: first the data, then the commit record.
 
