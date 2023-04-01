@@ -8,6 +8,7 @@
 ## Usage
 - Run `python ./_posts/00CodeNote/project/webscrap_apt/play.py -t all  `
 - generate csv `apt_YYYYMMDD.csv` in `./apt_output`
+- update `APT-xx.png`
 
 
 ```bash
@@ -63,4 +64,13 @@ INFO:__main__:{'Apt': 'modera', 'Floor_plan': 'B07D', 'Beds/Baths': '2 bd/2 ba',
 INFO:__main__:{'Apt': 'modera', 'Floor_plan': 'S01L', 'Beds/Baths': 'Studio\xa0/ 1 ba', 'Rent': 'Starting from $2,715/month', 'Deposit': '$300', 'Sq.Ft': '641+', 'Limited_Time_Offer': '/', 'Available': 'Available Apr 10, 2023'}
 INFO:__main__:{'Apt': 'modera', 'Floor_plan': 'A05L', 'Beds/Baths': '1 bd/1 ba', 'Rent': 'Starting from $2,432/month', 'Deposit': '$300', 'Sq.Ft': '735', 'Limited_Time_Offer': '/', 'Available': 'Available Apr 05, 2023'}
 INFO:__main__:======= info loaded in the file apt_20230314.csv =======
+
+
+$ python ./_posts/00CodeNote/project/webscrap_apt/img_play.py
+INFO:__main__:
+======= creating csv_files list: ['./_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230108.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230322.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230109.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230321.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230320.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230324.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230318.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230319.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230325.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230317.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230316.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230314.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230315.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230103.csv', './_posts/00CodeNote/project/webscrap_apt/apt_output/apt_20230104.csv'] =======
+INFO:__main__:
+======= update apt png for APT talisman =======
+INFO:__main__:
+======= update apt png for APT modera =======
 ```

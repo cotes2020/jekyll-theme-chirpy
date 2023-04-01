@@ -1,12 +1,12 @@
-Apt,Floor_plan,Beds_Baths,Rent,Deposit,Sq_Ft,Limited_Time_Offer,Available
-talisman,Urban with Kitchen Bar,1 bd / 1 ba,"Starting from $1,921/month",$300,605,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",4 Available Details
-talisman,Urban with L or Galley Kitchen,1 bd / 1 ba,"Starting from $1,811/month",$300,578,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Only One Left
-talisman,Urban Plus with Kitchen Bar,1 bd / 1 ba,"Starting from $1,979/month",$300,650,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",2 Available Details
-talisman,Traditional One Bedroom,1 bd / 1 ba,"$2,381/month",$300,775,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Only One Left
-talisman,Loft One Bedroom,1 bd / 1 ba,"Starting from $2,242/month",$300,785,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",2 Available Details
-talisman,Traditional Two Bedroom,2 bd / 2 ba,"Starting from $3,195/month",$300,"1,131","Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",3 Available Details
-talisman,1x1 Loft Plus,2 bd / 2 ba,—,—,863,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Get Notified Details
-talisman,1x1 Plus,2 bd / 2 ba,—,$300,935,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Get Notified Details
-talisman,Loft Two Bedroom,2 bd / 2 ba,"Starting from $3,885/month",$300,"1,362","Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",2 Available Details
-talisman,Loft Three Bedroom,3 bd / 2 ba,—,$300,"1,521","Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Get Notified Details
-talisman,2x2 Plus,3 bd / 2 ba,—,$300,"1,362","Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Get Notified Details
+Date,Apt,Floor_plan,Beds_Baths,Rent,Deposit,Sq_Ft,Limited_Time_Offer,Available
+20230103,talisman,Urban with Kitchen Bar,1 bd / 1 ba,"Starting from $1,921/month",$300,605,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",4 Available Details
+20230103,talisman,Urban with L or Galley Kitchen,1 bd / 1 ba,"Starting from $1,811/month",$300,578,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Only One Left
+20230103,talisman,Urban Plus with Kitchen Bar,1 bd / 1 ba,"Starting from $1,979/month",$300,650,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",2 Available Details
+20230103,talisman,Traditional One Bedroom,1 bd / 1 ba,"$2,381/month",$300,775,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Only One Left
+20230103,talisman,Loft One Bedroom,1 bd / 1 ba,"Starting from $2,242/month",$300,785,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",2 Available Details
+20230103,talisman,Traditional Two Bedroom,2 bd / 2 ba,"Starting from $3,195/month",$300,"1,131","Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",3 Available Details
+20230103,talisman,1x1 Loft Plus,2 bd / 2 ba,—,—,863,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Get Notified Details
+20230103,talisman,1x1 Plus,2 bd / 2 ba,—,$300,935,"Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Get Notified Details
+20230103,talisman,Loft Two Bedroom,2 bd / 2 ba,"Starting from $3,885/month",$300,"1,362","Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",2 Available Details
+20230103,talisman,Loft Three Bedroom,3 bd / 2 ba,—,$300,"1,521","Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Get Notified Details
+20230103,talisman,2x2 Plus,3 bd / 2 ba,—,$300,"1,362","Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates",Get Notified Details

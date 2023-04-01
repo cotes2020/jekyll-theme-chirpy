@@ -1,25 +1,25 @@
-Apt,Floor_plan,Beds/Baths,Rent,Deposit,Sq.Ft,Limited_Time_Offer,Available
-talisman,Urban with Kitchen Bar,1 bd/1 ba,"Starting from $2,052/month",$300,605,"Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
-talisman,Traditional One Bedroom,1 bd/1 ba,"$2,362/month",$300,775,"Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
-talisman,Loft One Bedroom,1 bd/1 ba,"$2,916/month",$300,785,"Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
-talisman,Traditional Two Bedroom,2 bd/2 ba,"Starting from $3,239/month",$300,"1,131","Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
-talisman,1x1 Loft Plus,2 bd/2 ba,—,—,863,"Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
-talisman,1x1 Plus,2 bd/2 ba,—,$300,935,"Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
-talisman,Loft Three Bedroom,3 bd/2 ba,—,$300,"1,521","Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
-talisman,2x2 Plus,3 bd/2 ba,—,$300,"1,362","Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
-modera,S01,Studio / 1 ba,"Starting from $1,777/month",$300,477+,/,3 Available
-modera,S02,Studio / 1 ba,"Starting from $1,953/month",$300,498+,/,"Available Jan 10, 2023"
-modera,A01,1 bd/1 ba,"Starting from $1,856/month",$300,531,/,"Available Jan 15, 2023"
-modera,A03,1 bd/1 ba,"Starting from $1,950/month",$300,553+,/,"Available Jan 11, 2023"
-modera,A04,1 bd/1 ba,"Starting from $1,991/month",$300,588+,/,Only One Left!
-modera,A05L,1 bd/1 ba,"Starting from $2,366/month",$300,735,/,"Available Jan 16, 2023"
-modera,A06,1 bd/1 ba,"Starting from $2,219/month",$300,606,/,2 Available
-modera,A08,1 bd/1 ba,"Starting from $2,020/month",$300,670,/,Only One Left!
-modera,A09,1 bd/1 ba,"Starting from $2,219/month",$300,640,/,"Available Feb 03, 2023"
-modera,A10,1 bd/1 ba,"Starting from $2,456/month",$300,672+,/,"Available Jan 15, 2023"
-modera,A12,1 bd/1 ba,"Starting from $2,855/month",$300,751+,/,"Available Feb 03, 2023"
-modera,A14D,1 bd/1 ba,"Starting from $2,675/month",$300,777+,/,Only One Left!
-modera,A16D,1 bd/1 ba,"Starting from $2,860/month",$300,882,/,Only One Left!
-modera,B03,2 bd/2 ba,"Starting from $3,356/month",$300,"1,039+",/,2 Available
-modera,B07D,2 bd/2 ba,"Starting from $3,501/month",$300,"1,233",/,Only One Left!
-modera,A05L,1 bd/1 ba,"Starting from $2,366/month",$300,735,/,"Available Jan 16, 2023"
+Date,Apt,Floor_plan,Beds/Baths,Rent,Deposit,Sq.Ft,Limited_Time_Offer,Available
+20230108,talisman,Urban with Kitchen Bar,1 bd/1 ba,"Starting from $2,052/month",$300,605,"Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
+20230108,talisman,Traditional One Bedroom,1 bd/1 ba,"$2,362/month",$300,775,"Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
+20230108,talisman,Loft One Bedroom,1 bd/1 ba,"$2,916/month",$300,785,"Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
+20230108,talisman,Traditional Two Bedroom,2 bd/2 ba,"Starting from $3,239/month",$300,"1,131","Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
+20230108,talisman,1x1 Loft Plus,2 bd/2 ba,—,—,863,"Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
+20230108,talisman,1x1 Plus,2 bd/2 ba,—,$300,935,"Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
+20230108,talisman,Loft Three Bedroom,3 bd/2 ba,—,$300,"1,521","Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
+20230108,talisman,2x2 Plus,3 bd/2 ba,—,$300,"1,362","Limited Time Offer: Valid Through : Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates!",Get Notified
+20230108,modera,S01,Studio / 1 ba,"Starting from $1,777/month",$300,477+,/,3 Available
+20230108,modera,S02,Studio / 1 ba,"Starting from $1,953/month",$300,498+,/,"Available Jan 10, 2023"
+20230108,modera,A01,1 bd/1 ba,"Starting from $1,856/month",$300,531,/,"Available Jan 15, 2023"
+20230108,modera,A03,1 bd/1 ba,"Starting from $1,950/month",$300,553+,/,"Available Jan 11, 2023"
+20230108,modera,A04,1 bd/1 ba,"Starting from $1,991/month",$300,588+,/,Only One Left!
+20230108,modera,A05L,1 bd/1 ba,"Starting from $2,366/month",$300,735,/,"Available Jan 16, 2023"
+20230108,modera,A06,1 bd/1 ba,"Starting from $2,219/month",$300,606,/,2 Available
+20230108,modera,A08,1 bd/1 ba,"Starting from $2,020/month",$300,670,/,Only One Left!
+20230108,modera,A09,1 bd/1 ba,"Starting from $2,219/month",$300,640,/,"Available Feb 03, 2023"
+20230108,modera,A10,1 bd/1 ba,"Starting from $2,456/month",$300,672+,/,"Available Jan 15, 2023"
+20230108,modera,A12,1 bd/1 ba,"Starting from $2,855/month",$300,751+,/,"Available Feb 03, 2023"
+20230108,modera,A14D,1 bd/1 ba,"Starting from $2,675/month",$300,777+,/,Only One Left!
+20230108,modera,A16D,1 bd/1 ba,"Starting from $2,860/month",$300,882,/,Only One Left!
+20230108,modera,B03,2 bd/2 ba,"Starting from $3,356/month",$300,"1,039+",/,2 Available
+20230108,modera,B07D,2 bd/2 ba,"Starting from $3,501/month",$300,"1,233",/,Only One Left!
+20230108,modera,A05L,1 bd/1 ba,"Starting from $2,366/month",$300,735,/,"Available Jan 16, 2023"

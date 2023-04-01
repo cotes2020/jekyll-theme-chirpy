@@ -1050,12 +1050,12 @@ X-frame-options: SAMEORIGIN
 Alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
 Content-type: application/json; charset=utf-8
 {
-  "access_token": "ya29.a0AVA9y1u8cGrBhqucDXVZM_adavWLWNEo2q4vAVXQ5jFkzVdFCjbNkYZtx_FXOOlqxzil_hj0rDyX5w8LUZoMHo-D2DpoNJ_i3POpADs_5hP38F98aF0Z0mqAqDleQTOKAK69--uChPmZlR3cF9YI6kewI7cT",
+  "access_token": "abcd",
   "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiZDY4NWY1ZThmYzYyZDc1ODcwNWMxZWIwZThhNzUyNGM0NzU5NzUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDcwNDMxOTE2NjcyNTM2ODc0NjAiLCJlbWFpbCI6ImxncmFjZXllQGhvdG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiIyS1lkaHhKUHVQZlNQZFp4Rk9aV2FBIiwiaWF0IjoxNjU3NDg1NTMyLCJleHAiOjE2NTc0ODkxMzJ9.m675UQKWgX_0eBUNC94sU7FDJHqauWyVQW0XnvYkCz4_AKkuUKxyS7d4VMB4KCSWhUhylBx1ilq5XsdqFlugksEHP6hgRgTf-5M1PIKbo0HEFJWhoFGIZDu907hcQl8eE5mCBk9nr3SuuJpbDLFVy9jaY96qTRrCvVXINOC6mXPjU7mohB0Rg3DgHkCbLvCHbfmPIR72_DuGVmtdQWUrpnQICRGJcdX3PY-wgGoOa9U6qqEJFK9bGcSG-0sE9rnF_iR_piX9jVYFnplxslkuKeGBu4xsQpFenVEFlOEhDw6QAFdvmm6idlpjnXE9j7QwpRxuQ3uX-kM2YOWJCasjdQ",
   "expires_in": 3599,
   "token_type": "Bearer",
   "scope": "https://www.googleapis.com/auth/userinfo.email openid",
-  "refresh_token": "1//04thVSCVNOVSZCgYIARAAGAQSNwF-L9IrjkF38iOULusIQ5arphe564NxPXlVTF3A24t96KiEg3uaVgHlMhWLkadmeUwatdm6IzI"
+  "refresh_token": "abcd"
 }
 ```
 

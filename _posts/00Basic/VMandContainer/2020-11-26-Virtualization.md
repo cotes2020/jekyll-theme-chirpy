@@ -14,7 +14,7 @@ image:
   - [Comparing Hypervisors](#comparing-hypervisors)
   - [Type of Virtualization](#type-of-virtualization)
     - [full virtualization scenario](#full-virtualization-scenario)
-    - [paravirtualization.](#paravirtualization)
+    - [paravirtualization](#paravirtualization)
   - [QEMU](#qemu)
   - [KVM `Kernel-based Virtual Machine`](#kvm-kernel-based-virtual-machine)
   - [QEMU and KVM](#qemu-and-kvm)
@@ -216,7 +216,7 @@ On Linux systems:
 
 
 
-### paravirtualization. 
+### paravirtualization
 - in a paravirtualization machine, 
 - the guest os must be modified to know, that it's running as a virtual machine. 
   - These modifications were added to the Linux kernel a while ago. 
@@ -416,9 +416,6 @@ $ virsh domdisplay my-ubuntu
 spice 4.4.4.4:8080
 
 ```
-
-![Uploading Screen Shot 2020-11-28 at 22.39.31.png… (ycc6m1otf)]()
-
 
 
 ---
