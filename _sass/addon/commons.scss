@@ -194,10 +194,7 @@ footer {
     line-height: 1.2rem;
     padding-bottom: 1rem;
     border-top: 1px solid var(--main-border-color);
-
-    > div {
-      width: 350px;
-    }
+    flex-wrap: wrap;
   }
 
   a {
@@ -213,8 +210,10 @@ footer {
     }
   }
 
-  .footer-right {
-    text-align: right;
+  p {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
   }
 }
 
@@ -1185,7 +1184,7 @@ $btn-mb: 0.5rem;
 #main-wrapper {
   background-color: var(--main-bg);
   position: relative;
-  min-height: calc(100vh - #{$footer-height});
+  min-height: calc(100vh - $footer-height-mobile);
 
   @include pl-pr(0);
 }
@@ -1294,22 +1293,6 @@ $btn-mb: 0.5rem;
 */
 
 @media all and (max-width: 576px) {
-  footer {
-    height: $footer-height-mobile;
-
-    div.d-flex {
-      padding: 1.5rem 0;
-      line-height: 1.65;
-      flex-wrap: wrap;
-      justify-content: space-around !important;
-    }
-
-    .footer-left,
-    .footer-right {
-      text-align: center;
-    }
-  }
-
   #main-wrapper {
     min-height: calc(100vh - #{$footer-height-mobile});
   }
@@ -1369,6 +1352,14 @@ $btn-mb: 0.5rem;
 
   footer {
     @include slide;
+
+    height: $footer-height-mobile;
+
+    div.d-flex {
+      padding: 1.5rem 0;
+      line-height: 1.65;
+      flex-wrap: wrap;
+    }
   }
 
   [#{$sidebar-display}] {
@@ -1468,6 +1459,23 @@ $btn-mb: 0.5rem;
   #main-wrapper,
   footer {
     margin-left: $sidebar-width;
+  }
+
+  #main-wrapper {
+    min-height: calc(100vh - $footer-height);
+  }
+
+  footer {
+    p {
+      width: auto;
+      &:last-child {
+        &::before {
+          content: '-';
+          margin: 0 0.75rem;
+          opacity: 0.8;
+        }
+      }
+    }
   }
 
   #sidebar {
