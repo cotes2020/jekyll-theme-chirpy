@@ -73,7 +73,7 @@
 
 # # loop through each CSV file and append to all_data
 # for file in csv_files:
-#     df = pd.read_csv(file, parse_dates=["Date"]) 
+#     df = pd.read_csv(file, parse_dates=["Date"])
 #     all_data = all_data.append(df)
 
 # # filter data by floor plans
@@ -81,20 +81,20 @@
 
 # # loop through each floor plan and plot on the same graph
 # for floor_plan in floor_plans:
-#     data = filtered_data[filtered_data["Floor_plan"] == floor_plan] 
-    
+#     data = filtered_data[filtered_data["Floor_plan"] == floor_plan]
+
 #     # plt.plot(data["Date"], data["Rent"].str.extract(r'\$(.*)/month').astype(float), label=floor_plan)
 #     # plt.plot(data["Date"], data["Rent"].str.extract(r'\$(.*)/month').str.replace(',', '').astype(float), label=floor_plan)
-#     # plt.plot(data["Date"], data["Rent"].astype(str).str.extract(r'\$(.*)/month').str.replace(',', '').astype(float), label=floor_plan) 
+#     # plt.plot(data["Date"], data["Rent"].astype(str).str.extract(r'\$(.*)/month').str.replace(',', '').astype(float), label=floor_plan)
 #     data["Rent"] = data["Rent"].astype(str).str.replace(',', '').str.extract(r'\$(.*)/month')
 #     # print(data["Rent"])
-    
+
 #     # data["Rent"] = data["Rent"].astype(str).str.extract(r'\$(.*)/month').str.replace(',', '')
-    
+
 #     # data["Rent"] = data["Rent"].astype(str).str.extract(r'\$(.*)/month').str.replace(',', '')
-    
+
 #     plt.plot(data["Date"], data["Rent"].astype(float), label=floor_plan)
-  
+
 
 
 # # set axis labels and legend
@@ -122,24 +122,24 @@ fig, ax = plt.subplots()
 for i, file in enumerate(files):
     # Read the data from the CSV file into a Pandas DataFrame
     df = pd.read_csv(file)
-    
+
     # Loop through each floor plan and plot the data for that floor plan
     for j, floor_plan in enumerate(floor_plans):
         # Subset the DataFrame to only include rows for the current floor plan
         subset = df[df['Floor_plan'] == floor_plan]
-        
+
         # Plot the data for the current floor plan
         ax.plot(subset['Date'], subset['Rent'], label=floor_plan, linestyle='-', marker='o')
-        
+
     # Add a legend to the plot for the current CSV file
     ax.legend(title=file, loc='upper left', bbox_to_anchor=(1, 1))
-    
+
     # Save the plot as a PNG file
     plt.savefig(f'apt_{i}.png', dpi=300)
-    
+
     # Clear the plot for the next CSV file
     ax.clear()
- 
+
 
 
 # import pandas as pd
@@ -160,7 +160,7 @@ for i, file in enumerate(files):
 # # Loop over each floor plan and plot the rent price trend on a line graph
 # for i, fp in enumerate(df['Floor_plan'].unique()):
 #     fp_df = df[df['Floor_plan'] == fp]
-    
+
 #     fp_df["Rent"] = fp_df["Rent"].astype(str).str.replace(',', '').str.extract(r'\$(.*)/month')
 #     plt.plot(fp_df['Date'], fp_df['Rent'], label=fp)
 

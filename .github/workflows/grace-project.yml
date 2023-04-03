@@ -13,7 +13,7 @@ on:
 jobs:
 
   run_project_1:
-    name: project webscrap_apt
+    name: project webscrap_apt create csv
     # runs-on: macOS-latest
     runs-on: ubuntu-latest
 
@@ -31,38 +31,9 @@ jobs:
         with:
           fetch-depth: 0  # for posts's lastmod
 
-      - name: setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9.7
-
-      - name: Install Python dependencies
-        run: python -m pip install --upgrade pip pandas
-
       - name: run apt project script
         # run: bash ./wh.sh \
         run: python ./_posts/00CodeNote/project/webscrap_apt/play.py -t all
-
-      # - name: Run a one-line script
-      #   run: python ./.github/workflows/todo_List.py
-
-      # - name: switching from HTTPS to SSH
-      #   run: git remote set-url origin ${{ secrets.ssh }}
-
-      # - name: check for changes
-      #   run: git status
-
-      # - name: stage changed files
-      #   run: git add .
-
-      # - name: commit changed files
-      #   run: git commit -m "Auto updating csv to "
-
-      # - name: fetch from master
-      #   run: git fetch origin master
-
-      # - name: push code to master
-      #   run: git push origin HEAD:master
 
       - name: Commit and push changes
         run: |
@@ -72,6 +43,28 @@ jobs:
           git commit -m "Auto updating csv to repo"
           git push
 
+  run_project_2:
+    name: project webscrap_apt print img
+    # runs-on: macOS-latest
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Print a greeting
+        env:
+          MY_VAR: Hi there! My name is
+          PROJECT_NAME: webscrap_apt
+        run: |
+          echo $MY_VAR $PROJECT_NAME.
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # for posts's lastmod
+
+      - name: Install Python dependencies
+        run: python -m pip install -r ./_posts/00CodeNote/project/webscrap_apt/requirements.txt
+
       - name: run img player
         run: python ./_posts/00CodeNote/project/webscrap_apt/img_play.py
 
@@ -80,5 +73,5 @@ jobs:
           git config --global user.name "grace"
           git config --global user.email "lgraceye@hotmail.com"
           git add .
-          git commit -m "Auto updating img to repo"
+          git commit -m "Auto updating csv to repo"
           git push

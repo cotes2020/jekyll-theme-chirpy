@@ -15,13 +15,13 @@ LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(level=os.environ.get("LOG_LEVEL", "INFO").upper())
 
 
-def read_csv(dir_path): 
+def read_csv(dir_path):
     # list to store files
     csv_files = []
     # csv_files = ["./apt_output/apt_20230326.csv", "./apt_output/apt_20230327.csv", "./apt_output/apt_20230328.csv"]
-    # Iterate directory, get list of CSV files to read  
+    # Iterate directory, get list of CSV files to read
     dir_path = dir_path + 'apt_output/'
-    for path in os.listdir(dir_path): 
+    for path in os.listdir(dir_path):
         # check if current path is a file
         if os.path.isfile(os.path.join(dir_path, path)):
             csv_files.append(dir_path+path)
@@ -34,7 +34,7 @@ def floow_plan_list(csv_files):
     apt_dict = {}
     # loop through each CSV file and append to all_data
     for file in csv_files:
-        df = pd.read_csv(file)  
+        df = pd.read_csv(file)
         # Remove duplicates
         df = df.drop_duplicates(subset=['Apt', 'Floor_plan'])
         for apt in df['Apt'].unique():
@@ -52,11 +52,11 @@ def draw_png(csv_files, apt, floor_plans):
 
     # loop through each CSV file and append to all_data
     for file in csv_files:
-        df = pd.read_csv(file, parse_dates=["Date"]) 
+        df = pd.read_csv(file, parse_dates=["Date"])
         # all_data = all_data.append(df)
         # outputxlsx = pd.concat([all_data, df])
         all_data = pd.concat([all_data, df])
-        
+
     # print(outputxlsx)
 
     # filter data by floor plans
@@ -64,7 +64,7 @@ def draw_png(csv_files, apt, floor_plans):
 
     # loop through each floor plan and plot on the same graph
     for floor_plan in floor_plans:
-        data = filtered_data[filtered_data["Floor_plan"] == floor_plan] 
+        data = filtered_data[filtered_data["Floor_plan"] == floor_plan]
         data = data.copy()
         # modify the formate and sort
         data["Rent"] = data["Rent"].astype(str).str.replace(',', '').str.extract(r'\$(.*)/month')
@@ -76,7 +76,7 @@ def draw_png(csv_files, apt, floor_plans):
     plt.xlabel("Date")
     plt.ylabel("Rent ($)")
 
-    # plt.legend() 
+    # plt.legend()
     ax.legend(title=f"{apt}-Floor_plan", bbox_to_anchor=[0.5, 0.5], loc='center right')
 
     # # show the plot
@@ -84,12 +84,12 @@ def draw_png(csv_files, apt, floor_plans):
 
     # Save the plot as a PNG file
     plt.savefig(f'{DIR_PATH}/APT-{apt}.png')
-    
+
     # Clear the plot for the next CSV file
     ax.clear()
     LOGGER.info("\n======= update apt png for APT %s =======" % apt)
-    
-    
+
+
 def main(dir_path):
     csv_files = read_csv(dir_path)
     apt_dict = floow_plan_list(csv_files)
