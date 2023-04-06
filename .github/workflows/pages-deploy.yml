@@ -2,8 +2,7 @@ name: "Build and Deploy"
 on:
   push:
     branches:
-      - main
-      - master
+      - main-vatsa
     paths-ignore:
       - .gitignore
       - README.md
