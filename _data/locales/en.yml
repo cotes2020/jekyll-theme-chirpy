@@ -35,18 +35,18 @@ date_format:
     short: '%b %e'
     archive_month: '%b'
 
-copyright:
-  # Shown at the bottom of the post
-  license:
-    template: This post is licensed under :LICENSE_NAME by the author.
-    name: CC BY 4.0
-    link: https://creativecommons.org/licenses/by/4.0/
+# copyright:
+#   # Shown at the bottom of the post
+#   license:
+#     template: This post is licensed under :LICENSE_NAME by the author.
+#     name: CC BY 4.0
+#     link: https://creativecommons.org/licenses/by/4.0/
 
-  # Displayed in the footer
-  brief: Some rights reserved.
-  verbose: >-
-    Except where otherwise noted, the blog posts on this site are licensed
-    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+#   # Displayed in the footer
+#   brief: Some rights reserved.
+#   verbose: >-
+#     Except where otherwise noted, the blog posts on this site are licensed
+#     under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
 
 meta: Powered by :PLATFORM with :THEME theme.
 
