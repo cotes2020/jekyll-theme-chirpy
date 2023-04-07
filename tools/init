@@ -33,7 +33,7 @@ _sedi() {
 }
 
 _check_cli() {
-  echo "Checking Dependencies..."
+  echo "checking_cli."
   for i in "${!CLI[@]}"; do
     cli="${CLI[$i]}"
     if ! command -v "$cli" &>/dev/null; then
@@ -44,6 +44,7 @@ _check_cli() {
 }
 
 _check_status() {
+  echo "checking status"
   if [[ -n $(git status . -s) ]]; then
     echo "Error: Commit unstaged files first, and then run this tool again."
     exit 1
@@ -51,6 +52,7 @@ _check_status() {
 }
 
 _check_init() {
+  echo "checking init"
   local _has_inited=false
 
   if [[ ! -d .github ]]; then # using option `--no-gh`
@@ -79,11 +81,13 @@ check_env() {
 }
 
 checkout_latest_tag() {
+  echo "checking latest tag"
   tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
   git reset --hard "$tag"
 }
 
 init_files() {
+  echo "checking init files"
   if $_no_gh; then
     rm -rf .github
   else
