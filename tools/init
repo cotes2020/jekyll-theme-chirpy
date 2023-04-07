@@ -33,6 +33,7 @@ _sedi() {
 }
 
 _check_cli() {
+  echo "Checking Dependencies..."
   for i in "${!CLI[@]}"; do
     cli="${CLI[$i]}"
     if ! command -v "$cli" &>/dev/null; then
