@@ -112,12 +112,14 @@ init_files() {
 }
 
 commit() {
+  echo "commit"
   git add -A
   git commit -m "chore: initialize the environment" -q
   echo -e "\n[INFO] Initialization successful!\n"
 }
 
 main() {
+  echo "main"
   check_env
   checkout_latest_tag
   init_files
