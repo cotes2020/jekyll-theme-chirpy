@@ -15,7 +15,7 @@ This is the part one of simple pwning lecture series. The target of this series 
 When we write code we generally write it in higher level programming languages such as `C`/`C++` or `python`. But the computer cannot directly understand such higher level languages and requires preprossing before it can run the program. Here we will take a look at how a program is actually converted from higher level language to machine understandable binary instructions.  
 
 Below is a high level `C` code.
-```C
+```c
 #include <stdio.h>
 
 int main()
