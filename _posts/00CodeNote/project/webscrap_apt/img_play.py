@@ -1,10 +1,10 @@
 import logging
-import sys
-import pandas as pd
-import matplotlib.pyplot as plt
 import os
-import matplotlib.ticker as ticker
+import sys
 
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import pandas as pd
 
 # Logs will go to CloudWatch log group corresponding to lambda,
 # If Lambda has the necessary IAM permissions.
@@ -20,11 +20,11 @@ def read_csv(dir_path):
     csv_files = []
     # csv_files = ["./apt_output/apt_20230326.csv", "./apt_output/apt_20230327.csv", "./apt_output/apt_20230328.csv"]
     # Iterate directory, get list of CSV files to read
-    dir_path = dir_path + 'apt_output/'
+    dir_path = dir_path + "apt_output/"
     for path in os.listdir(dir_path):
         # check if current path is a file
         if os.path.isfile(os.path.join(dir_path, path)):
-            csv_files.append(dir_path+path)
+            csv_files.append(dir_path + path)
     LOGGER.info("\n======= Collected data in csv_files: %s =======" % csv_files)
     return csv_files
 
@@ -36,9 +36,9 @@ def floow_plan_list(csv_files):
     for file in csv_files:
         df = pd.read_csv(file)
         # Remove duplicates
-        df = df.drop_duplicates(subset=['Apt', 'Floor_plan'])
-        for apt in df['Apt'].unique():
-            floor_plan_list = df[df['Apt'] == apt]['Floor_plan'].unique().tolist()
+        df = df.drop_duplicates(subset=["Apt", "Floor_plan"])
+        for apt in df["Apt"].unique():
+            floor_plan_list = df[df["Apt"] == apt]["Floor_plan"].unique().tolist()
             apt_dict[apt] = floor_plan_list
     return apt_dict
 
@@ -67,7 +67,9 @@ def draw_png(csv_files, apt, floor_plans):
         data = filtered_data[filtered_data["Floor_plan"] == floor_plan]
         data = data.copy()
         # modify the formate and sort
-        data["Rent"] = data["Rent"].astype(str).str.replace(',', '').str.extract(r'\$(.*)/month')
+        data["Rent"] = (
+            data["Rent"].astype(str).str.replace(",", "").str.extract(r"\$(.*)/month")
+        )
         data = data.sort_values(by="Date")  # sort the data by date
         # print(data["Rent"])
         ax.plot(data["Date"], data["Rent"].astype(float), label=floor_plan)
@@ -77,13 +79,13 @@ def draw_png(csv_files, apt, floor_plans):
     plt.ylabel("Rent ($)")
 
     # plt.legend()
-    ax.legend(title=f"{apt}-Floor_plan", bbox_to_anchor=[0.5, 0.5], loc='center right')
+    ax.legend(title=f"{apt}-Floor_plan", bbox_to_anchor=[0.5, 0.5], loc="center right")
 
     # # show the plot
     # plt.show()
 
     # Save the plot as a PNG file
-    plt.savefig(f'{DIR_PATH}/APT-{apt}.png')
+    plt.savefig(f"{DIR_PATH}/APT-{apt}.png")
 
     # Clear the plot for the next CSV file
     ax.clear()
@@ -99,5 +101,5 @@ def main(dir_path):
 
 if __name__ == "__main__":
     # DIR_PATH = './apt_output/'
-    DIR_PATH = './_posts/00CodeNote/project/webscrap_apt/'
+    DIR_PATH = "./_posts/00CodeNote/project/webscrap_apt/"
     main(DIR_PATH)

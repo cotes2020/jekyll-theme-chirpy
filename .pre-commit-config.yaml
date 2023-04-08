@@ -19,7 +19,7 @@ repos:
     #   - --no-sort-keys
     - id: trailing-whitespace     # Fix the redundant whitespace
 
-  # Check for typos
+  # # Check for typos
   # - repo: https://github.com/codespell-project/codespell
   #   rev: v2.2.2
   #   hooks:
@@ -41,13 +41,13 @@ repos:
     hooks:
     - id: pyupgrade
       args: [--py38-plus]
-  # - repo: https://github.com/PyCQA/autoflake
-  #   rev: v2.0.0
-  #   hooks:
-  #   - id: autoflake
-  #   # removes unused imports and unused variables
-  # - repo: https://github.com/pycqa/isort
-  #   rev: v5.11.3
-  #   hooks:
-  #   - id: isort
-  #   # sort the import package
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.0.0
+    hooks:
+    - id: autoflake
+    # removes unused imports and unused variables
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+    - id: isort
+    # sort the import package

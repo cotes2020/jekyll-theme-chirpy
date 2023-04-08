@@ -2,6 +2,11 @@
 - [EKS](#eks)
   - [Kubernetes services](#kubernetes-services)
     - [expose the Kubernetes services](#expose-the-kubernetes-services)
+      - [`ClusterIP`](#clusterip)
+      - [`NodePort`](#nodeport)
+      - [`LoadBalancer`](#loadbalancer)
+    - [how to choose](#how-to-choose)
+    - [example](#example)
   - [Aceess](#aceess)
   - [use case](#use-case)
     - [Enabling cross-account access to EKS cluster resources](#enabling-cross-account-access-to-eks-cluster-resources)
@@ -25,9 +30,67 @@
 ### expose the Kubernetes services
 
 
-- `ClusterIP` exposes the service on a cluster's internal IP address.
-- `NodePort` exposes the service on each node’s IP address at a static port.
-- `LoadBalancer` exposes the service externally using a load balancer.
+#### `ClusterIP`
+- exposes the service on a cluster's internal IP address.
+- 默认的ServiceType
+- 在集群内部IP上公开服务。
+- 选择使服务只能从群集中访问。
+- 可以从spec.clusterIp端口访问它。
+- 如果设置了`spec.ports [*].targetPort`，它将从端口路由到targetPort。
+- 调用 `kubectl get services` 时获得的CLUSTER-IP是内部在集群内分配给此服务的IP。
+
+- ClusterIP services are created by default when you create a service in Kubernetes.
+- They have a cluster-internal IP address that is <font color=red> only accessible to other pods in the cluster </font>.
+- To access a ClusterIP service from outside the cluster, you would need to use a proxy.
+
+#### `NodePort`
+- exposes the service on each node’s IP address at a static port.
+- 在每个Node的IP上公开静态端口（NodePort）服务。
+- 将自动创建NodePort服务到ClusterIP服务的路由。
+- 可以通过请求：来从群集外部请求NodePort服务。
+- 如果通过nodePort的方式从节点的外部IP访问此服务，它会将请求路由到`spec.clusterIp:spec.ports[*].port`，然后将其路由到`spec.ports [*].targetPort`，如果设置。也可以使用与ClusterIP相同的方式访问此服务。
+- NodeIP是节点的外部IP地址。无法从`:spec.ports [*].nodePort`访问您的服务。
+
+#### `LoadBalancer`
+- exposes the service externally using a load balancer.
+- 使用云提供商的负载均衡器在外部公开服务。
+- 将自动创建外部负载均衡器到NodePort和ClusterIP服务的路由。
+- 可以从负载均衡器的IP地址访问此服务，该IP地址将您的请求路由到nodePort，而nodePort又将请求路由到clusterIP端口。可以像访问NodePort或ClusterIP服务一样访问此服务。
+
+- LoadBalancer services are created when you specify the type field in the service definition to be "LoadBalancer".
+- They have a public IP address that is accessible from outside the cluster.
+- LoadBalancer services are typically created by the cloud provider that you are using for your Kubernetes cluster.
+
+### how to choose
+
+> The main difference between `ClusterIP` and `LoadBalancer` services in Kubernetes is that ClusterIP services are only accessible within the cluster, while LoadBalancer services are accessible from outside the cluster.
+
+Examples of use a **ClusterIP** service:
+
+1. When you are `developing and testing an application`, you might want to use a ClusterIP service so that <font color=blue> you can access the application from other pods in the cluster </font>.
+
+1. When you are `running a service` that is <font color=blue> only intended to be used by other services in the cluster </font>, you might want to use a ClusterIP service.
+
+
+Examples of use a **LoadBalancer** service:
+
+1. When you are `running a service` that is intended to be <font color=blue> used by users outside the cluster </font>, you might want to use a LoadBalancer service.
+
+1. When you are `running a service` that needs to <font color=blue> be accessible from multiple regions </font>, you might want to use a LoadBalancer service.
+
+
+ClusterIP services are more secure than LoadBalancer services
+- as they are not exposed to the public internet.
+- This means that they are less likely to be attacked by malicious actors.
+- However, ClusterIP services can only be accessed by other pods that are running in the same cluster. This can be a limitation if you need to access the service from outside the cluster.
+
+LoadBalancer services are less secure than ClusterIP services,
+- as they are exposed to the public internet.
+- This means that they are more likely to be attacked by malicious actors.
+- However, LoadBalancer services can be accessed from anywhere, which can be convenient for users.
+
+
+### example
 
 ```bash
 # Create a sample application
