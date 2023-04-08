@@ -65,7 +65,7 @@ LFE10:
 <br>
 
 <!-- ![alt text](./images/language_processing_system.jpg "Code flow") -->
-<img src="https://github.com/manasghandat/manasghandat.github.io/blob/master/assets/img/Images/Intro--pwn-1/language_processing_system.jpg" alt="Code flow">
+<img src="https://raw.githubusercontent.com/manasghandat/manasghandat.github.io/master/assets/img/Images/Intro_to_pwn_1/language_processing_system.jpg" alt="Code flow">
 
 
 # Code processing
@@ -91,7 +91,7 @@ The running of the code is comprehensively divided into 4 categories.
 It is the stack which contains all the return address of the programs that are being executed and some other important data that is required for the execution of the program. 
 
 <!-- ![alt text](./images/stack.png "Stack") -->
-<img src="https://github.com/manasghandat/manasghandat.github.io/blob/master/assets/img/Images/Intro--pwn-1/stack.png" alt="stack">
+<img src="https://raw.githubusercontent.com/manasghandat/manasghandat.github.io/master/assets/img/Images/Intro_to_pwn_1/stack.png" alt="stack">
 
 
 ## Heap
@@ -99,14 +99,14 @@ It is the stack which contains all the return address of the programs that are b
 Heap is the large empty region reserved for dynamic memory allocation. Funcitons like `malloc` can be used to instantiate such memory.
 
 <!-- ![alt text](./images/heap.png "Heap") -->
-<img src="https://github.com/manasghandat/manasghandat.github.io/blob/master/assets/img/Images/Intro--pwn-1/Heap.png" alt="heap">
+<img src="https://raw.githubusercontent.com/manasghandat/manasghandat.github.io/master/assets/img/Images/Intro_to_pwn_1/Heap.png" alt="heap">
 
 ## Code
 
 It is the section that stores the instruction codes, this is, the actual code that is written by the user. It is represented by the `.text` section of the program.
 
 <!-- ![alt text](./images/code.png "Code") -->
-<img src="https://github.com/manasghandat/manasghandat.github.io/blob/master/assets/img/Images/Intro--pwn-1/code.png" alt="code">
+<img src="https://raw.githubusercontent.com/manasghandat/manasghandat.github.io/master/assets/img/Images/Intro_to_pwn_1/code.png" alt="code">
 
 ## Data
 
@@ -129,7 +129,7 @@ RCX | Scratch register used to pass fourth argument
 RDX | Scratch register used to pass third argument
 
 <!-- ![alt text](./images/registers.png "registers") -->
-<img src="https://github.com/manasghandat/manasghandat.github.io/blob/master/assets/img/Images/Intro--pwn-1/registers.png" alt="registers">
+<img src="https://raw.githubusercontent.com/manasghandat/manasghandat.github.io/master/assets/img/Images/Intro_to_pwn_1/registers.png" alt="registers">
 
 **Note: In case of x86 architecture the name of registers is changed and instead of `r` the prefix `e` is used. Eg. `RIP` becomes `EIP`**
 
@@ -148,7 +148,7 @@ checksec --file=./(file_name)
 ```
 
 <!-- <img src="/images/Checksec.png"> -->
-<img src="https://github.com/manasghandat/manasghandat.github.io/blob/master/assets/img/Images/Intro--pwn-1/Checksec.png" alt="checksec command">
+<img src="https://raw.githubusercontent.com/manasghandat/manasghandat.github.io/master/assets/img/Images/Intro_to_pwn_1/Checksec.png" alt="checksec command">
 
 Let us understand what the various protections are:
 * Canary : It is random generated value stored in the `fs` register at an offset of `0x28`. It is used to prevent buffer-overflow.
