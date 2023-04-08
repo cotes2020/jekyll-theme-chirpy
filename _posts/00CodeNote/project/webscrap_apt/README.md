@@ -27,7 +27,7 @@
 
 ### play
 
-Run for all apt and get csv
+Run for all apt and get csv.
 
 ```bash
 $ python ./_posts/00CodeNote/project/webscrap_apt/play.py -t all
