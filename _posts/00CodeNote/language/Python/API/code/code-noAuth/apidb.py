@@ -81,7 +81,7 @@ def for_userlist():
         return make_response(jsonify(fetch_one_db(user_username)), 201)
 
 
-# operation on a singal user information
+# operation on a single user information
 @api.route("/api/userlist/<user_username>", methods=["GET", "PUT", "DELETE"])
 def singal_user(user_username):
     # GET one user information
