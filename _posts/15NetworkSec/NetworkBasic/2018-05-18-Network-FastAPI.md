@@ -46,9 +46,9 @@ ref:
 
 ---
 
-**Documentation**: <a href="https://fastapi.tiangolo.com" target="_blank">https://fastapi.tiangolo.com</a>
+**Documentation**: https://fastapi.tiangolo.com
 
-**Source Code**: <a href="https://github.com/tiangolo/fastapi" target="_blank">https://github.com/tiangolo/fastapi</a>
+**Source Code**: https://github.com/tiangolo/fastapi
 
 ---
 
