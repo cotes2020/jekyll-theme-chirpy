@@ -19,15 +19,15 @@ repos:
     #   - --no-sort-keys
     - id: trailing-whitespace     # Fix the redundant whitespace
 
-  # # Check for typos
-  # - repo: https://github.com/codespell-project/codespell
-  #   rev: v2.2.2
-  #   hooks:
-  #   - id: codespell
-  #     args:
-  #     - --ignore-words=allow.txt
-  #     - --exclude-file=allow.txt
-  #     exclude: \.ipynb$
+  # Check for typos
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.2
+    hooks:
+    - id: codespell
+      args:
+      - --ignore-words=allow.txt
+      - --exclude-file=allow.txt
+      exclude: \.ipynb$
 
 
   # ======= check python =======
