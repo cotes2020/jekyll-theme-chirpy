@@ -24,8 +24,10 @@ def read_csv(dir_path):
     for path in os.listdir(dir_path):
         # check if current path is a file
         if os.path.isfile(os.path.join(dir_path, path)):
+            file_name = dir_path + path
             csv_files.append(dir_path + path)
-    LOGGER.info("\n======= Collected data in csv_files: %s =======" % csv_files)
+            LOGGER.info("Add file: %s " % file_name)
+    LOGGER.info("======= Collected data in csv_files: %s =======" % csv_files)
     return csv_files
 
 
@@ -52,6 +54,7 @@ def draw_png(csv_files, apt, floor_plans):
 
     # loop through each CSV file and append to all_data
     for file in csv_files:
+        LOGGER.info(f"Data info appending for file {file}")
         df = pd.read_csv(file, parse_dates=["Date"])
         # all_data = all_data.append(df)
         # outputxlsx = pd.concat([all_data, df])
@@ -89,7 +92,7 @@ def draw_png(csv_files, apt, floor_plans):
 
     # Clear the plot for the next CSV file
     ax.clear()
-    LOGGER.info("\n======= update apt png for APT %s =======" % apt)
+    LOGGER.info("======= update apt png for APT %s =======" % apt)
 
 
 def main(dir_path):
