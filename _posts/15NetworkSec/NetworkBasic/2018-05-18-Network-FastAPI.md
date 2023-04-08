@@ -11,23 +11,6 @@ math: true
 toc: true
 ---
 
-- [NetworkSec - Fast API](#networksec---fast-api)
-  - [overall](#overall)
-  - [Requirements](#requirements)
-  - [Installation](#installation)
-  - [Example](#example)
-    - [Create it](#create-it)
-    - [Run it](#run-it)
-    - [Check it](#check-it)
-  - [API docs](#api-docs)
-    - [Interactive API docs](#interactive-api-docs)
-    - [Alternative API docs](#alternative-api-docs)
-  - [Example upgrade](#example-upgrade)
-    - [Interactive API docs upgrade](#interactive-api-docs-upgrade)
-    - [Alternative API docs upgrade](#alternative-api-docs-upgrade)
-    - [command](#command)
-
-
 ref:
 - https://github.com/tiangolo/fastapi/blob/master/README.md
 - https://fastapi.tiangolo.com/tutorial/
