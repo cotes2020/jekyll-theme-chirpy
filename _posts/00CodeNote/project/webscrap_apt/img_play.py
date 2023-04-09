@@ -1,10 +1,11 @@
 import logging
-import sys
-import pandas as pd
-import matplotlib.pyplot as plt
 import os
-import matplotlib.ticker as ticker
+import sys
 
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import numpy as np
+import pandas as pd
 
 # Logs will go to CloudWatch log group corresponding to lambda,
 # If Lambda has the necessary IAM permissions.
@@ -20,12 +21,14 @@ def read_csv(dir_path):
     csv_files = []
     # csv_files = ["./apt_output/apt_20230326.csv", "./apt_output/apt_20230327.csv", "./apt_output/apt_20230328.csv"]
     # Iterate directory, get list of CSV files to read
-    dir_path = dir_path + 'apt_output/'
+    dir_path = dir_path + "apt_output/"
     for path in os.listdir(dir_path):
         # check if current path is a file
         if os.path.isfile(os.path.join(dir_path, path)):
-            csv_files.append(dir_path+path)
-    LOGGER.info("\n======= Collected data in csv_files: %s =======" % csv_files)
+            file_name = dir_path + path
+            csv_files.append(dir_path + path)
+            LOGGER.info("Add file: %s " % file_name)
+    LOGGER.info("======= Collected data in csv_files: %s =======" % csv_files)
     return csv_files
 
 
@@ -36,9 +39,9 @@ def floow_plan_list(csv_files):
     for file in csv_files:
         df = pd.read_csv(file)
         # Remove duplicates
-        df = df.drop_duplicates(subset=['Apt', 'Floor_plan'])
-        for apt in df['Apt'].unique():
-            floor_plan_list = df[df['Apt'] == apt]['Floor_plan'].unique().tolist()
+        df = df.drop_duplicates(subset=["Apt", "Floor_plan"])
+        for apt in df["Apt"].unique():
+            floor_plan_list = df[df["Apt"] == apt]["Floor_plan"].unique().tolist()
             apt_dict[apt] = floor_plan_list
     return apt_dict
 
@@ -46,18 +49,15 @@ def floow_plan_list(csv_files):
 def draw_png(csv_files, apt, floor_plans):
     # Create a new figure to plot the data
     fig, ax = plt.subplots()
-
     # create empty dataframe to store all data
     all_data = pd.DataFrame()
 
     # loop through each CSV file and append to all_data
     for file in csv_files:
+        LOGGER.info(f"Data info appending for file {file}")
         df = pd.read_csv(file, parse_dates=["Date"])
         # all_data = all_data.append(df)
-        # outputxlsx = pd.concat([all_data, df])
         all_data = pd.concat([all_data, df])
-
-    # print(outputxlsx)
 
     # filter data by floor plans
     filtered_data = all_data[all_data["Floor_plan"].isin(floor_plans)]
@@ -66,28 +66,61 @@ def draw_png(csv_files, apt, floor_plans):
     for floor_plan in floor_plans:
         data = filtered_data[filtered_data["Floor_plan"] == floor_plan]
         data = data.copy()
-        # modify the formate and sort
-        data["Rent"] = data["Rent"].astype(str).str.replace(',', '').str.extract(r'\$(.*)/month')
-        data = data.sort_values(by="Date")  # sort the data by date
-        # print(data["Rent"])
+        # modify the format and sort
+        data["Rent"] = (
+            data["Rent"].astype(str).str.replace(",", "").str.extract(r"\$(.*)/month")
+        )
+        # sort the data by date
+        data = data.sort_values(by="Date")
         ax.plot(data["Date"], data["Rent"].astype(float), label=floor_plan)
+
+        # add marker for lowest rent price
+        min_rent = data["Rent"].astype(float).min()
+        # LOGGER.info("Minimum rent for floor plan %s is %s ", floor_plan, min_rent)
+        # print(type(min_rent))
+        if np.isnan(min_rent):
+            LOGGER.info("No data for floor plan %s.", floor_plan)
+        else:
+            data["Rent"] = data["Rent"].astype(float)
+            min_rent = data[data["Rent"] == min_rent]["Rent"].iloc[0]
+            min_date = data[data["Rent"] == min_rent]["Date"].iloc[0]
+            # convert the date format to "YYYY/MM/DD"
+            min_date_str = min_date.strftime("%Y/%m/%d")
+            LOGGER.info(
+                "Minimum rent for floor plan %s is %s on %s",
+                floor_plan,
+                min_rent,
+                min_date_str,
+            )
+
+            ax.annotate(
+                f"${min_rent} ({min_date_str})",
+                xy=(min_date, min_rent),
+                xytext=(min_date, min_rent + 100),
+                ha="left",
+                va="center",
+                fontsize=4,
+                color="blue",
+                arrowprops=dict(arrowstyle="->", color="blue"),
+            )
+            ax.plot(min_date, min_rent, marker="o", markersize=3, color="green")
 
     # set axis labels and legend
     plt.xlabel("Date")
     plt.ylabel("Rent ($)")
 
     # plt.legend()
-    ax.legend(title=f"{apt}-Floor_plan", bbox_to_anchor=[0.5, 0.5], loc='center right')
+    ax.legend(title=f"{apt}-Floor_plan", bbox_to_anchor=[0.5, 0.5], loc="center right")
 
     # # show the plot
     # plt.show()
 
     # Save the plot as a PNG file
-    plt.savefig(f'{DIR_PATH}/APT-{apt}.png')
+    plt.savefig(f"{DIR_PATH}/APT-{apt}.png", dpi=300)
 
     # Clear the plot for the next CSV file
     ax.clear()
-    LOGGER.info("\n======= update apt png for APT %s =======" % apt)
+    LOGGER.info("======= update apt png for APT %s =======" % apt)
 
 
 def main(dir_path):
@@ -99,5 +132,5 @@ def main(dir_path):
 
 if __name__ == "__main__":
     # DIR_PATH = './apt_output/'
-    DIR_PATH = './_posts/00CodeNote/project/webscrap_apt/'
+    DIR_PATH = "./_posts/00CodeNote/project/webscrap_apt/"
     main(DIR_PATH)

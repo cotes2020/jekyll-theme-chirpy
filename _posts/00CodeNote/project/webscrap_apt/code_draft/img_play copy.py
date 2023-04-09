@@ -58,7 +58,6 @@
 # plt.show()
 
 
-
 # import pandas as pd
 # import matplotlib.pyplot as plt
 
@@ -96,7 +95,6 @@
 #     plt.plot(data["Date"], data["Rent"].astype(float), label=floor_plan)
 
 
-
 # # set axis labels and legend
 # plt.xlabel("Date")
 # plt.ylabel("Rent ($)")
@@ -106,14 +104,32 @@
 # plt.show()
 
 
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Define the list of CSV files to read
-files = ["./apt_output/apt_20230326.csv", "./apt_output/apt_20230327.csv", "./apt_output/apt_20230328.csv"]
+files = [
+    "./apt_output/apt_20230326.csv",
+    "./apt_output/apt_20230327.csv",
+    "./apt_output/apt_20230328.csv",
+]
 
 # Define the list of floor plans to plot
-floor_plans = ["S01", "S01L", "S02", "A03", "A05", "A06", "A07", "A09", "A10", "A12", "A14D", "A16D", "B03"]
+floor_plans = [
+    "S01",
+    "S01L",
+    "S02",
+    "A03",
+    "A05",
+    "A06",
+    "A07",
+    "A09",
+    "A10",
+    "A12",
+    "A14D",
+    "A16D",
+    "B03",
+]
 
 # Create a new figure to plot the data
 fig, ax = plt.subplots()
@@ -126,20 +142,21 @@ for i, file in enumerate(files):
     # Loop through each floor plan and plot the data for that floor plan
     for j, floor_plan in enumerate(floor_plans):
         # Subset the DataFrame to only include rows for the current floor plan
-        subset = df[df['Floor_plan'] == floor_plan]
+        subset = df[df["Floor_plan"] == floor_plan]
 
         # Plot the data for the current floor plan
-        ax.plot(subset['Date'], subset['Rent'], label=floor_plan, linestyle='-', marker='o')
+        ax.plot(
+            subset["Date"], subset["Rent"], label=floor_plan, linestyle="-", marker="o"
+        )
 
     # Add a legend to the plot for the current CSV file
-    ax.legend(title=file, loc='upper left', bbox_to_anchor=(1, 1))
+    ax.legend(title=file, loc="upper left", bbox_to_anchor=(1, 1))
 
     # Save the plot as a PNG file
-    plt.savefig(f'apt_{i}.png', dpi=300)
+    plt.savefig(f"apt_{i}.png", dpi=300)
 
     # Clear the plot for the next CSV file
     ax.clear()
-
 
 
 # import pandas as pd

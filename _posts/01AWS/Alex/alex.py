@@ -5,9 +5,9 @@ def can_handle(self, handler_input):
 
     handler_input.request_envelope.request.intent.slots
 
-    year = slots["year"].value
+    slots["year"].value
 
-    attributes_manager = handler_input.attributes_manager
+    handler_input.attributes_manager
 
     return (
         handler_input.response_builder.speak(speak_output)
@@ -40,14 +40,12 @@ api_access_token = sys_object.api_access_token
 # This sample is built using the handler classes approach in skill builder.
 
 import logging
+
 import ask_sdk_core.utils as ask_utils
-
-from ask_sdk_core.skill_builder import SkillBuilder
-
-from ask_sdk_core.dispatch_components import AbstractRequestHandler
-from ask_sdk_core.dispatch_components import AbstractExceptionHandler
+from ask_sdk_core.dispatch_components import (AbstractExceptionHandler,
+                                              AbstractRequestHandler)
 from ask_sdk_core.handler_input import HandlerInput
-
+from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_model import Response
 
 logger = logging.getLogger(__name__)
@@ -56,6 +54,7 @@ logger.setLevel(logging.INFO)
 
 # for AMAZON S3
 import os
+
 from ask_sdk_s3.adapter import S3Adapter
 
 s3_adapter = S3Adapter(bucket_name=os.environ["S3_PERSISTENCE_BUCKET"])
@@ -96,7 +95,7 @@ class CaptureBirthdayIntentHandler(AbstractRequestHandler):
         month = slots["month"].value
         day = slots["day"].value
 
-        attributes_manager = handler_input.attributes_manager
+        handler_input.attributes_manager
 
         speak_output = (
             "Thanks, I will remember that you were born {month} {day} {year}.".format(
