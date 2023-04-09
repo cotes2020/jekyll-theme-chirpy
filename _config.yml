@@ -77,14 +77,10 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: "https://png.pngtree.com/png-vector/20190830/ourlarge/pngtree-continuous-one-line-monitor-for-computer-multimedia-visual-look-minimalist-object-png-image_1716616.jpg"
+img_cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resouse
-<<<<<<< HEAD
 avatar: "/commons/avatar.jpg"
-=======
-avatar: "C:\Users\82102\Pictures\Saved Pictures\KakaoTalk_20230409_202523582.jpg"
->>>>>>> 06919e3d5f3114fe6faf425345dd385db541a1f7
 
 # boolean type, the global switch for TOC in posts.
 toc: true
