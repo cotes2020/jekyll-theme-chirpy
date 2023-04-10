@@ -70,12 +70,19 @@ def draw_png(csv_files, apt, floor_plans):
         data = filtered_data[filtered_data["Floor_plan"] == floor_plan]
         data = data.copy()
         # modify the format and sort
+
+        # Replace empty strings with NaN values
+        data["Rent"] = data["Rent"].replace("", np.nan)
         data["Rent"] = (
-            data["Rent"].astype(str).str.replace(",", "").str.extract(r"\$(.*)/month")
+            data["Rent"]
+            .astype(str)
+            .str.replace(",", "")
+            .str.extract(r"\$([0-9,]+)(?:/month)?")[0]
         )
+
         # sort the data by date
         data = data.sort_values(by="Date")
-        logging.info(data)
+        # logging.info(data)
 
         ax.plot(data["Date"], data["Rent"].astype(float), label=floor_plan)
 

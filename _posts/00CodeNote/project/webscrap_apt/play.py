@@ -276,13 +276,7 @@ def create_dic(apt, lines, output_list):
 
                 dic["Rent"] = info_list[2].replace(" ", "")
                 if dic["Rent"] != "ContactUs":
-                    dic["Rent"] = (
-                        dic["Rent"].split("-")[0].replace("$", "").replace(",", "")
-                    )
-                    LOGGER.info("!!!!!!!!!")
-                    if dic["Rent"].isdigit():
-                        dic["Rent"] = int(dic["Rent"])
-                        LOGGER.info(dic["Rent"])
+                    dic["Rent"] = dic["Rent"].split("-")[0]
 
                 dic["Deposit"] = "$300"
                 dic["Sq.Ft"] = info_list[1].split("Bath ")[1]
