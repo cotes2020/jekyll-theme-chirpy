@@ -111,19 +111,77 @@ class _DeHTMLParser_General(HTMLParser):
             self.__text.append(text + " ")
 
 
+class _DeHTMLParser_General_Talisman(HTMLParser):
+    def __init__(self):
+        HTMLParser.__init__(self)
+        self.__text = []
+        self._results = []
+        self.apt_list = []
+        self.em_line = ["\n", ""]
+
+    def handle_starttag(self, tag, attrs):
+        # for floorplan
+        if tag == "h2":
+            for attrs_name, attrs_value in attrs:
+                if (
+                    attrs_name == "class"
+                    and attrs_value
+                    == "floorplan-listing-b__title color__secondary--text"
+                ):
+                    self.__text.append("\n🟢:")
+        # for Beds / Baths info
+        if tag == "p":
+            for attrs_name, attrs_value in attrs:
+                if attrs_name == "class" and attrs_value == "floorplan-listing-b__info":
+                    self.__text.append(";")
+        # for rent
+        if tag == "div":
+            for attrs_name, attrs_value in attrs:
+                if (
+                    attrs_name == "class"
+                    and attrs_value == "floorplan-listing-b__info-row"
+                ):
+                    self.__text.append(";")
+
+        if tag == "div":
+            for attrs_name, attrs_value in attrs:
+                if attrs_name == "class" and attrs_value == "page__disclaimer":
+                    self.__text.append("\n")
+
+    def text(self):
+        return "".join(self.__text).strip()
+
+    def handle_startendtag(self, tag, attrs):
+        if tag == "br":
+            self.__text.append("\n\n")
+
+    def handle_data(self, data):
+        text = data.strip()
+        if len(text) > 0:
+            text = sub("[ \t\r\n]+", " ", text)
+            self.__text.append(text + " ")
+
+    def print_reslut(self):
+        print(self._results)
+
+
 OUTPUTDIR = "./_posts/00CodeNote/project/webscrap_apt/apt_output"
 
 URL_DIC = {
-    "talisman": "https://www.livetalisman.com/redmond/talisman/conventional/",
+    # "talisman": "https://www.livetalisman.com/redmond/talisman/conventional/",
+    "talisman": "https://livetalisman.com/floorplans/",
     "modera": "https://www.moderaredmond.com/redmond/modera-redmond/conventional/",
 }
 CLASS_DIC = {
-    "talisman": _DeHTMLParser_General(),
+    "talisman": _DeHTMLParser_General_Talisman(),
     "modera": _DeHTMLParser_General(),
 }
 
 # Method_div
 def get_html(url):
+    """
+    get plan html
+    """
     text = r"""
         <html>
           <body>
@@ -154,6 +212,9 @@ def get_html(url):
 
 
 def dehtml(target_apt, text):
+    """
+    switch html into plan text
+    """
     try:
         parser = CLASS_DIC[target_apt]
         parser.feed(text)
@@ -165,12 +226,13 @@ def dehtml(target_apt, text):
         return text
 
 
-def output(text):
+def output_content(text):
+    """
+    set marker in text
+    """
     lines = text.split("\n")
-    # print(lines)
     output = []
     for line in lines:
-        # print(line)
         if "🟢:" in line:
             line = (
                 line.replace(" ;", ";")
@@ -178,60 +240,65 @@ def output(text):
                 .replace(" / ", "/")
                 .replace(" +", "+")
             )
-            # print(line)
-            LOGGER.info(line)
+            # LOGGER.info(line)
             output.append(line)
     return output
 
 
-def create_dic(apt, text, output_list):
-    lines = text.split("\n")
-    # output = []
+def create_dic(apt, lines, output_list):
+    """
+    [
+        '🟢:Urban with Kitchen Bar',
+        '1 bd / 1 ba',
+        '$1,921/month',
+        '$300',
+        '605',
+        'Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates',
+        '4 Available Details '
+    ]
+    create dic from above info
+    """
+    inputdate = date.today().strftime("%Y%m%d")
     for line in lines:
         if "🟢:" in line:
-            # LOGGER.info(info)
-            # [
-            #     '🟢:Urban with Kitchen Bar',
-            #     '1 bd / 1 ba',
-            #     '$1,921/month',
-            #     '$300',
-            #     '605',
-            #     'Oct 27, 2022 - Jan 31, 2023 8 Weeks Free on Select Homes and Move-In Dates',
-            #     '4 Available Details '
-            # ]
-            info = (
-                line.replace(" ;", ";")
-                .replace(". ", ".")
-                .replace(" / ", "/")
-                .replace(" +", "+")
-            )
-            LOGGER.info(info)
-
-            info = info.replace("🟢:", "")
-            info_list = info.split(";")
+            line = line.replace("🟢:", "")
+            info_list = line.split(";")
+            # LOGGER.info(info_list)
 
             dic = {}
-            target_date = date.today().strftime("%Y/%m/%d")  # "2022/06/01"
-            inputdate = target_date.replace("/", "")
-
             dic["Date"] = inputdate
             dic["Apt"] = apt
             dic["Floor_plan"] = info_list[0]
-            if "Beds/Baths" in info:
-                dic["Beds/Baths"] = info_list[2]
-            if "Rent" in info:
-                dic["Rent"] = info_list[4]
-            if "Deposit" in info:
-                dic["Deposit"] = info_list[6]
-            if "Sq.Ft" in info:
-                dic["Sq.Ft"] = info_list[8]
 
-            if "Limited Time Offer" in info:
-                dic["Limited_Time_Offer"] = info_list[9]
-                dic["Available"] = info_list[10]
-            else:
-                dic["Limited_Time_Offer"] = "/"
-                dic["Available"] = info_list[9]
+            # for talisman
+            if apt == "talisman":
+                dic["Beds/Baths"] = info_list[1][: (info_list[1].index("Bath") + 4)]
+
+                dic["Rent"] = info_list[2].replace(" ", "")
+                if dic["Rent"] != "ContactUs":
+                    dic["Rent"] = dic["Rent"].split("-")[0]
+
+                dic["Deposit"] = "$300"
+                dic["Sq.Ft"] = info_list[1].split("Bath ")[1]
+                dic["Limited_Time_Offer"] = "None"
+                dic["Available"] = "N/A"
+
+            # for modera
+            if apt == "modera":
+                if "Beds/Baths" in line:
+                    dic["Beds/Baths"] = info_list[2]
+                if "Rent" in line:
+                    dic["Rent"] = info_list[4]
+                if "Deposit" in line:
+                    dic["Deposit"] = info_list[6]
+                if "Sq.Ft" in line:
+                    dic["Sq.Ft"] = info_list[8]
+                if "Limited Time Offer" in line:
+                    dic["Limited_Time_Offer"] = info_list[9]
+                    dic["Available"] = info_list[10]
+                else:
+                    dic["Limited_Time_Offer"] = "/"
+                    dic["Available"] = info_list[9]
             output_list.append(dic)
     # for i in output_list:
     #     print(i)
@@ -281,10 +348,11 @@ def run(apt, all_dic_list):
         html_text = get_html(URL_DIC[apt])
         # print(html_text)
         text = dehtml(apt, html_text)
-        # output(text)
-        all_dic_list = create_dic(apt, text, all_dic_list)
-        # print(type(all_dic_list))
-        LOGGER.info("======= Got info for Apartment: %s =======\n", apt)
+        lines = output_content(text)
+        LOGGER.info("======= Got info for Apartment: %s =======", apt)
+        all_dic_list = create_dic(apt, lines, all_dic_list)
+        # print(all_dic_list)
+        LOGGER.info("======= Got Dic for Apartment: %s =======\n", apt)
         return all_dic_list
     else:
         LOGGER.info("======= Error: invalid target: %s =======", apt)
@@ -296,7 +364,6 @@ def main(apt):
     for apt in URL_DIC.keys():
         LOGGER.info("======= Target Apartment: %s =======", apt)
         all_dic_list = run(apt, all_dic_list)
-    # print(type(all_dic_list))
     create_csv(all_dic_list)
 
 

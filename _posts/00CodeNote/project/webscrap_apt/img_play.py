@@ -25,14 +25,14 @@ def read_csv(dir_path):
     for path in os.listdir(dir_path):
         # check if current path is a file
         if os.path.isfile(os.path.join(dir_path, path)):
-            file_name = dir_path + path
+            dir_path + path
             csv_files.append(dir_path + path)
-            LOGGER.info("Add file: %s " % file_name)
-    LOGGER.info("======= Collected data in csv_files: %s =======" % csv_files)
+            # LOGGER.info("Add file: %s " % file_name)
+    LOGGER.info("🍰 ======= Collected data in csv_files: %s =======" % csv_files)
     return csv_files
 
 
-def floow_plan_list(csv_files):
+def floor_plan_list(csv_files):
     # Create a dictionary with Apt names as keys and a list of unique Floor_plan values as values
     apt_dict = {}
     # loop through each CSV file and append to all_data
@@ -43,6 +43,9 @@ def floow_plan_list(csv_files):
         for apt in df["Apt"].unique():
             floor_plan_list = df[df["Apt"] == apt]["Floor_plan"].unique().tolist()
             apt_dict[apt] = floor_plan_list
+    LOGGER.info("🍰 ======= Collected floorplan in Apts =======")
+    for apt in apt_dict:
+        LOGGER.info("%s: %s", apt, apt_dict[apt])
     return apt_dict
 
 
@@ -67,11 +70,20 @@ def draw_png(csv_files, apt, floor_plans):
         data = filtered_data[filtered_data["Floor_plan"] == floor_plan]
         data = data.copy()
         # modify the format and sort
+
+        # Replace empty strings with NaN values
+        data["Rent"] = data["Rent"].replace("", np.nan)
         data["Rent"] = (
-            data["Rent"].astype(str).str.replace(",", "").str.extract(r"\$(.*)/month")
+            data["Rent"]
+            .astype(str)
+            .str.replace(",", "")
+            .str.extract(r"\$([0-9,]+)(?:/month)?")[0]
         )
+
         # sort the data by date
         data = data.sort_values(by="Date")
+        # logging.info(data)
+
         ax.plot(data["Date"], data["Rent"].astype(float), label=floor_plan)
 
         # add marker for lowest rent price
@@ -79,7 +91,7 @@ def draw_png(csv_files, apt, floor_plans):
         # LOGGER.info("Minimum rent for floor plan %s is %s ", floor_plan, min_rent)
         # print(type(min_rent))
         if np.isnan(min_rent):
-            LOGGER.info("No data for floor plan %s.", floor_plan)
+            LOGGER.info("-- No data for floor plan %s.", floor_plan)
         else:
             data["Rent"] = data["Rent"].astype(float)
             min_rent = data[data["Rent"] == min_rent]["Rent"].iloc[0]
@@ -87,7 +99,7 @@ def draw_png(csv_files, apt, floor_plans):
             # convert the date format to "YYYY/MM/DD"
             min_date_str = min_date.strftime("%Y/%m/%d")
             LOGGER.info(
-                "Minimum rent for floor plan %s is %s on %s",
+                "-- Minimum rent for floor plan %s is %s on %s",
                 floor_plan,
                 min_rent,
                 min_date_str,
@@ -116,7 +128,8 @@ def draw_png(csv_files, apt, floor_plans):
     # plt.show()
 
     # Save the plot as a PNG file
-    plt.savefig(f"{DIR_PATH}/APT-{apt}.png", dpi=300)
+    plt.savefig(f"{DIR_PATH}APT-{apt}.png", dpi=300)
+    LOGGER.info(f"output png path: {DIR_PATH}APT-{apt}.png")
 
     # Clear the plot for the next CSV file
     ax.clear()
@@ -125,12 +138,14 @@ def draw_png(csv_files, apt, floor_plans):
 
 def main(dir_path):
     csv_files = read_csv(dir_path)
-    apt_dict = floow_plan_list(csv_files)
+    apt_dict = floor_plan_list(csv_files)
     for apt, floor_plans in apt_dict.items():
+        LOGGER.info("🍰 ======= draw apt png for APT %s =======" % apt)
         draw_png(csv_files, apt, floor_plans)
 
 
 if __name__ == "__main__":
     # DIR_PATH = './apt_output/'
     DIR_PATH = "./_posts/00CodeNote/project/webscrap_apt/"
+    LOGGER.info("🍰 The DIR_PATH has been set to: %s", DIR_PATH)
     main(DIR_PATH)
