@@ -26,7 +26,7 @@ permalink: /feed.xml
   {% assign post_absolute_url = post.url | absolute_url %}
   <entry>
     <title>{{ post.title }}</title>
-    <link href="{{ post_absolute_url }}" rel="alternate" type="text/html" title="{{ post.title }}" />
+    <link href="{{ post_absolute_url }}" rel="alternate" type="text/html" title="{{ post.title | xml_escape }}" />
     <published>{{ post.date | date_to_xmlschema }}</published>
   {% if post.last_modified_at %}
     <updated>{{ post.last_modified_at | date_to_xmlschema }}</updated>
