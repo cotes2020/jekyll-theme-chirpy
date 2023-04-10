@@ -79,6 +79,8 @@ h5 {
 
 a {
   @extend %link-color;
+
+  text-decoration: none;
 }
 
 img {
@@ -200,13 +202,8 @@ footer {
   a {
     @extend %text-color;
 
-    &:link {
-      @extend %no-decoration;
-    }
-
     &:hover {
       @extend %link-hover;
-      @extend %no-decoration;
     }
   }
 
@@ -657,10 +654,6 @@ i {
   box-shadow: 0 0 8px 0 var(--btn-box-shadow) !important;
 }
 
-.no-text-decoration {
-  @extend %no-decoration;
-}
-
 /* overwrite bootstrap muted */
 .text-muted {
   color: var(--text-muted-color) !important;
@@ -763,10 +756,6 @@ $btn-mb: 0.5rem;
 
   a {
     @extend %sidebar-links;
-
-    &:hover {
-      @extend %no-decoration;
-    }
   }
 
   #avatar {
@@ -1263,8 +1252,6 @@ $btn-mb: 0.5rem;
   }
 
   &.toast {
-    display: none;
-
     &.show {
       display: block;
       min-width: 20rem;
@@ -1615,7 +1602,7 @@ $btn-mb: 0.5rem;
 
   #search-wrapper {
     margin-right: calc(
-      #{$main-content-max-width} * 0.25 - #{$search-max-width}
+      #{$main-content-max-width} * 0.25 - #{$search-max-width} - 0.75rem
     );
   }
 
@@ -1623,6 +1610,8 @@ $btn-mb: 0.5rem;
   #main,
   footer > .container {
     max-width: $main-content-max-width;
+    padding-left: 1.75rem !important;
+    padding-right: 1.75rem !important;
   }
 
   #core-wrapper,

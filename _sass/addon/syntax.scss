@@ -117,10 +117,6 @@ code {
   blockquote & {
     color: inherit;
   }
-
-  .highlight > & {
-    color: transparent;
-  }
 }
 
 td.rouge-code {
@@ -176,7 +172,7 @@ div {
   align-items: center;
   height: $code-header-height;
   margin-left: 1rem;
-  margin-right: 0.25rem;
+  margin-right: 0.5rem;
 
   /* the label block */
   span {

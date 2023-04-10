@@ -43,7 +43,6 @@
 
       .card-title {
         @extend %text-clip;
-        @include mt-mb(0.5rem);
 
         font-size: 1.25rem;
       }
@@ -53,9 +52,6 @@
       }
 
       .card-text.post-content {
-        margin-top: 0;
-        margin-bottom: 0.5rem;
-
         @extend %muted;
 
         p {
@@ -160,11 +156,6 @@
         width: 60%;
         padding: 1.75rem 1.75rem 1.25rem 1.75rem;
 
-        .card-title {
-          margin-top: 0;
-          margin-bottom: 0.5rem;
-        }
-
         .card-text {
           display: inherit !important;
         }
@@ -183,11 +174,6 @@
 
 /* Hide SideBar and TOC */
 @media all and (max-width: 830px) {
-  #post-list .card {
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-  }
-
   .pagination {
     justify-content: space-evenly;
 

@@ -15,12 +15,6 @@ export function back2top() {
   });
 
   $('#back-to-top').on('click', () => {
-    $('body,html').animate(
-      {
-        scrollTop: 0
-      },
-      800
-    );
-    return false;
+    window.scrollTo(0, 0);
   });
 }

@@ -8,6 +8,7 @@
 
 .categories {
   margin-bottom: 2rem;
+  border-color: var(--categories-border);
 
   &.card,
   .list-group {
@@ -15,8 +16,16 @@
   }
 
   .card-header {
-    padding-right: 12px;
-    border-radius: $base-radius $base-radius 0 0;
+    $radius: calc($base-radius - 1px);
+
+    padding: 0.75rem;
+    border-radius: $radius;
+    border-bottom: 0;
+
+    &.hide-border-bottom {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 
   i {
@@ -33,6 +42,10 @@
     &:first-child {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+    }
+
+    &:last-child {
+      border-bottom: 0;
     }
   }
 } /* .categories */

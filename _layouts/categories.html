@@ -38,11 +38,11 @@ layout: page
         id="{{ HEAD_PREFIX }}{{ group_index }}"
         class="card-header d-flex justify-content-between hide-border-bottom"
       >
-        <span>
+        <span class="ms-2">
           <i class="far fa-folder{% if sub_categories_size > 0 %}-open{% endif %} fa-fw"></i>
 
           {% capture _category_url %}/categories/{{ category_name | slugify | url_encode }}/{% endcapture %}
-          <a href="{{ _category_url | relative_url }}" class="ml-1 mr-2">{{ category_name }}</a>
+          <a href="{{ _category_url | relative_url }}" class="mx-2">{{ category_name }}</a>
 
           <!-- content count -->
           {% assign top_posts_size = site.categories[category_name] | size %}
@@ -83,7 +83,7 @@ layout: page
         {% if sub_categories_size > 0 %}
           <a
             href="#{{ LIST_PREFIX }}{{ group_index }}"
-            data-toggle="collapse"
+            data-bs-toggle="collapse"
             aria-expanded="true"
             aria-label="{{ HEAD_PREFIX }}{{ group_index }}-trigger"
             class="category-trigger hide-border-bottom"
@@ -91,7 +91,7 @@ layout: page
             <i class="fas fa-fw fa-angle-down"></i>
           </a>
         {% else %}
-          <span data-toggle="collapse" class="category-trigger hide-border-bottom disabled">
+          <span data-bs-toggle="collapse" class="category-trigger hide-border-bottom disabled">
             <i class="fas fa-fw fa-angle-right"></i>
           </span>
         {% endif %}
@@ -107,7 +107,7 @@ layout: page
                 <i class="far fa-folder fa-fw"></i>
 
                 {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
-                <a href="{{ _sub_ctg_url | relative_url }}" class="ml-1 mr-2">{{ sub_category }}</a>
+                <a href="{{ _sub_ctg_url | relative_url }}" class="mx-2">{{ sub_category }}</a>
 
                 {% assign posts_size = site.categories[sub_category] | size %}
                 <span class="text-muted small font-weight-light">

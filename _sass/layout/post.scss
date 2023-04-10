@@ -347,13 +347,10 @@ h1 + .post-meta {
     -webkit-box-orient: vertical;
   }
 
-  a:hover {
-    @extend %no-decoration;
-  }
-
   .card {
     h3 {
       @extend %text-color;
+      @extend %text-clip;
     }
   }
 }

@@ -62,7 +62,5 @@ export function convertTitle() {
   observer.observe(document.querySelector(titleSelector));
 
   /* Click title will scroll to top */
-  $topbarTitle.on('click', function () {
-    $('body,html').animate({ scrollTop: 0 }, 800);
-  });
+  $topbarTitle.on('click', () => window.scrollTo(0, 0));
 }
