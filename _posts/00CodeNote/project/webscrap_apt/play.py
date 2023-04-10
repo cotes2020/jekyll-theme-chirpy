@@ -273,13 +273,22 @@ def create_dic(apt, lines, output_list):
             # for talisman
             if apt == "talisman":
                 dic["Beds/Baths"] = info_list[1][: (info_list[1].index("Bath") + 4)]
-                dic["Sq.Ft"] = info_list[1].split("Bath ")[1]
+
                 dic["Rent"] = info_list[2].replace(" ", "")
                 if dic["Rent"] != "ContactUs":
-                    dic["Rent"] = dic["Rent"].split("-")[0]
-                dic["Deposit"] = 300
+                    dic["Rent"] = (
+                        dic["Rent"].split("-")[0].replace("$", "").replace(",", "")
+                    )
+                    LOGGER.info("!!!!!!!!!")
+                    if dic["Rent"].isdigit():
+                        dic["Rent"] = int(dic["Rent"])
+                        LOGGER.info(dic["Rent"])
+
+                dic["Deposit"] = "$300"
+                dic["Sq.Ft"] = info_list[1].split("Bath ")[1]
                 dic["Limited_Time_Offer"] = "None"
                 dic["Available"] = "N/A"
+
             # for modera
             if apt == "modera":
                 if "Beds/Baths" in line:

@@ -75,6 +75,8 @@ def draw_png(csv_files, apt, floor_plans):
         )
         # sort the data by date
         data = data.sort_values(by="Date")
+        logging.info(data)
+
         ax.plot(data["Date"], data["Rent"].astype(float), label=floor_plan)
 
         # add marker for lowest rent price
@@ -119,7 +121,8 @@ def draw_png(csv_files, apt, floor_plans):
     # plt.show()
 
     # Save the plot as a PNG file
-    plt.savefig(f"{DIR_PATH}/APT-{apt}.png", dpi=300)
+    plt.savefig(f"{DIR_PATH}APT-{apt}.png", dpi=300)
+    LOGGER.info(f"output png path: {DIR_PATH}APT-{apt}.png")
 
     # Clear the plot for the next CSV file
     ax.clear()
