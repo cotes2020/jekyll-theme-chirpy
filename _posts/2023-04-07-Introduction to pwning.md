@@ -135,6 +135,8 @@ RDX | Scratch register used to pass third argument
 
 # Getting started
 
+## Finding protections
+
 One of the first things that we must do when we get any challenge is to run `checksec` command. This command helps us understand various protections that are enabled in the binary given to us. The output of the command looks as follows
 
 You can install the command using:
@@ -157,9 +159,21 @@ Let us understand what the various protections are:
 * RelRO : Full relro makes the `GOT` (global offset table) read-only while partial relro makes the `GOT` to come before the `data` section
 * Fortify : It is used to verify and protect various overflows. It includes various functions like `__gethostname_chk`, `__printf_chk`, etc.
 
+## Debugging the challenge
+
+In order to understand what exactly the program is doing, we need to use a debugger. The preferred choice for debugger is `gdb` though you can use any debugger like `lldb`, etc. Using plain `gdb` may be inefficient so we will install `gef` or `pwndbg` . You can find a link on how to install `pwndbg` and `gef` simultaneously on your system in the resources section
+
+You need to first install plain `gdb`. It can be done using the following command:
+
+```bash
+sudo apt install gdb
+```
+
+We will learn how to effectively use `gdb` as we solve various challenges
 
 # References
 
 <a href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf">x64 Programming</a>
 <a href="https://www.geeksforgeeks.org/memory-layout-of-c-program/">Memory Layout</a>
 <a href="https://resources.infosecinstitute.com/topic/gentoo-hardening-part-3-using-checksec-2/">Checksec Command</a>
+<a href="https://infosecwriteups.com/pwndbg-gef-peda-one-for-all-and-all-for-one-714d71bf36b8">Installing gdb plugings</a>
