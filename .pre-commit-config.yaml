@@ -15,7 +15,7 @@ repos:
     - id: pretty-format-json
       args:
       - --autofix
-      - --indent=2
+      - --indent=4
       - --no-sort-keys
     - id: trailing-whitespace     # Fix the redundant whitespace
 

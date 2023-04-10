@@ -74,7 +74,7 @@ $ pip install "uvicorn[standard]"
 
 * Create a file `main.py` with:
 
-```Python
+```Py
 from typing import Union
 from fastapi import FastAPI
 
@@ -95,7 +95,7 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 If your code uses `async` / `await`, use `async def`:
 
-```Python hl_lines="9  14"
+```Py
 from typing import Union
 
 from fastapi import FastAPI
@@ -196,7 +196,7 @@ Now modify the file `main.py` to receive a body from a `PUT` request.
 
 Declare the body using standard Python types, thanks to Pydantic.
 
-```Python hl_lines="4  9-12  25-27"
+```Py
 from typing import Union
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -283,13 +283,13 @@ http://127.0.0.1:8000/redoc
 
 For example, for an `int`:
 
-```Python
+```Py
 item_id: int
 ```
 
 or for a more complex `Item` model:
 
-```Python
+```Py
 item: Item
 ```
 
