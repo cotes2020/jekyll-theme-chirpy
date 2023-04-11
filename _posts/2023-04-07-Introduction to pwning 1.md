@@ -173,7 +173,7 @@ We will learn how to effectively use `gdb` as we solve various challenges
 
 # References
 
-<a href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf">x64 Programming</a>
-<a href="https://www.geeksforgeeks.org/memory-layout-of-c-program/">Memory Layout</a>
-<a href="https://resources.infosecinstitute.com/topic/gentoo-hardening-part-3-using-checksec-2/">Checksec Command</a>
+<a href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf">x64 Programming</a><br>
+<a href="https://www.geeksforgeeks.org/memory-layout-of-c-program/">Memory Layout</a><br>
+<a href="https://resources.infosecinstitute.com/topic/gentoo-hardening-part-3-using-checksec-2/">Checksec Command</a><br>
 <a href="https://infosecwriteups.com/pwndbg-gef-peda-one-for-all-and-all-for-one-714d71bf36b8">Installing gdb plugings</a>
