@@ -148,6 +148,7 @@ ROP gadgets, short for "Return-Oriented Programming gadgets" are small pieces of
 
 A ROP gadget is typically a small sequence of machine code that ends with a `ret` instruction, allowing the attacker to chain these gadgets together by manipulating the return addresses on the stack.
 </details>
+<br>
 
 To find the ropgadgets in a binary you can use <a href="https://github.com/JonathanSalwan/ROPgadget">ROPgadget</a> or <a href="https://github.com/sashs/Ropper">ropper</a>. I will be using `ROPgadget` but you can usue any tool that you want.
 
