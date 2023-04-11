@@ -226,6 +226,6 @@ In this case the value of `a` will become negative. This is due to integer overf
 
 # References
 
-Article 1 : <a>https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/linux-x64-calling-convention-stack-frame</a>
-Article 2 : <a>https://www.geeksforgeeks.org/how-the-negative-numbers-are-stored-in-memory</a>
+Article 1 : <a>https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/linux-x64-calling-convention-stack-frame</a><br>
+Article 2 : <a>https://www.geeksforgeeks.org/how-the-negative-numbers-are-stored-in-memory</a><br>
 Article 3 : <a>https://www.scaler.com/topics/c/overflow-and-underflow-in-c</a>
