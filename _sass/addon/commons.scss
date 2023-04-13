@@ -43,7 +43,7 @@ body {
 h1 {
   @extend %heading;
 
-  font-size: 1.9rem;
+  font-size: 2rem;
 }
 
 h2 {
@@ -51,7 +51,7 @@ h2 {
   @extend %section;
   @extend %anchor;
 
-  font-size: 1.5rem;
+  font-size: 1.414rem;
 }
 
 h3 {
@@ -59,7 +59,7 @@ h3 {
   @extend %section;
   @extend %anchor;
 
-  font-size: 1.2rem;
+  font-size: 1.155rem;
 }
 
 h4 {
@@ -67,7 +67,7 @@ h4 {
   @extend %section;
   @extend %anchor;
 
-  font-size: 1.15rem;
+  font-size: 1rem;
 }
 
 h5 {
@@ -75,7 +75,15 @@ h5 {
   @extend %section;
   @extend %anchor;
 
-  font-size: 1.1rem;
+  font-size: 0.894rem;
+}
+
+h6 {
+  @extend %heading;
+  @extend %section;
+  @extend %anchor;
+
+  font-size: 0.816rem;
 }
 
 a {
