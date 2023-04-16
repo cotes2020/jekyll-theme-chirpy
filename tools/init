@@ -77,9 +77,9 @@ check_env() {
   _check_init
 }
 
-checkout_latest_tag() {
-  tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
-  git reset --hard "$tag"
+checkout_latest_release() {
+  hash=$(git log --grep="chore(release):" -1 --pretty="%H")
+  git reset --hard "$hash"
 }
 
 init_files() {
@@ -114,7 +114,7 @@ commit() {
 
 main() {
   check_env
-  checkout_latest_tag
+  checkout_latest_release
   init_files
   commit
 }
