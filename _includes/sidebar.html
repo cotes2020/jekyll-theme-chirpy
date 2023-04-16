@@ -1,6 +1,4 @@
-<!--
-  The Side Bar
--->
+<!-- The Side Bar -->
 
 <div id="sidebar" class="d-flex flex-column align-items-end">
   <div class="profile-wrapper text-center">
@@ -25,34 +23,33 @@
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </div>
     <div class="site-subtitle font-italic">{{ site.tagline }}</div>
-
-  </div><!-- .profile-wrapper -->
+  </div>
+  <!-- .profile-wrapper -->
 
   <ul class="w-100">
-
     <!-- home -->
     <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
       <a href="{{ '/' | relative_url }}" class="nav-link">
         <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
-        <span>{{ site.data.locales[site.lang].tabs.home | upcase }}</span>
+        <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
       </a>
     </li>
     <!-- the real tabs -->
     {% for tab in site.tabs %}
-    <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-      <a href="{{ tab.url | relative_url }}" class="nav-link">
-        <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
-        {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+      <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+        <a href="{{ tab.url | relative_url }}" class="nav-link">
+          <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
+          {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
 
-        <span>{{ site.data.locales[site.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-      </a>
-    </li> <!-- .nav-item -->
+          <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
     {% endfor %}
-
-  </ul> <!-- ul.nav.flex-column -->
+  </ul>
+  <!-- ul.nav.flex-column -->
 
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
-
     {% unless site.theme_mode %}
       <button class="mode-toggle btn" aria-label="Switch Mode">
         <i class="fas fa-adjust"></i>
@@ -81,26 +78,29 @@
       {% endcase %}
 
       {% if url %}
-      <a href="{{ url }}" aria-label="{{ entry.type }}"
-        {% assign link_types = '' %}
+        <a
+          href="{{ url }}"
+          aria-label="{{ entry.type }}"
+          {% assign link_types = '' %}
 
-        {% unless entry.noblank %}
-          target="_blank"
-          {% assign link_types = 'noopener noreferrer' %}
-        {% endunless %}
+          {% unless entry.noblank %}
+            target="_blank"
+            {% assign link_types = 'noopener noreferrer' %}
+          {% endunless %}
 
-        {% if entry.type == 'mastodon' %}
-          {% assign link_types = link_types | append: ' me' | strip %}
-        {% endif %}
+          {% if entry.type == 'mastodon' %}
+            {% assign link_types = link_types | append: ' me' | strip %}
+          {% endif %}
 
-        {% unless link_types == empty %}rel="{{ link_types }}"{% endunless %}>
-
-        <i class="{{ entry.icon }}"></i>
-      </a>
+          {% unless link_types == empty %}
+            rel="{{ link_types }}"
+          {% endunless %}
+        >
+          <i class="{{ entry.icon }}"></i>
+        </a>
       {% endif %}
-
     {% endfor %}
-
-  </div> <!-- .sidebar-bottom -->
-
-</div><!-- #sidebar -->
+  </div>
+  <!-- .sidebar-bottom -->
+</div>
+<!-- #sidebar -->
