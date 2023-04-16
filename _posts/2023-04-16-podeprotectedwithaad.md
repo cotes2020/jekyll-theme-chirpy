@@ -23,7 +23,6 @@ In this example, I will expose 3 groups of routes:
 * Admin where the token received required to be valid and with the admin property in claim role. 
 * NonAdmin where the token received required to be valid and with the nonadmin property in claim role. 
 
-Note: 
 {% include note.html content="I’ve used some random key pair just to get a valid dockerfile." %} 
 
 The only comment I want to add in addition to the well commented code is defaultRule.ps1 (Under authentication folder). You don’t have to touch this file, this one will validate the required fields. If you need to validate something else, just add a new file like adminRole.ps1 and put your logic. Then simply add a new line ine the startpode.ps1 (line 19). 
