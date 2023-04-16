@@ -1,0 +1,93 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Objava #Post
+  category: Kategorija #Category
+  tag: Oznaka #Tag
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Domov #Home
+  categories: Kategorije #Categories
+  tags: Oznake #Tags
+  archives: Arhiv #Archives
+  about: O meni #About
+
+# the text displayed in the search bar & search results
+search:
+  hint: išči #search
+  cancel: Prekliči #Cancel
+  no_results: Ups! Vsebina ni bila najdena #Oops! No results found.
+
+panel:
+  lastmod: Nedavno Posodobljeno #Recently Updated
+  trending_tags: Priljubljene Oznake #Trending Tags
+  toc: Vsebina #Contents
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: Ta objava je licencirana pod :LICENCE_NAME s strani avtorja. #This post is licensed under :LICENSE_NAME by the author.
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: Nekatere pravice pridržane. #Some rights reserved.
+  verbose: >-
+    Razen kjer navedeno drugače, vse objave spletnega dnevnika so licencirane
+    pod Creative Commons Attribution 4.0 International (CC BY 4.0) s strani avtorja.
+
+meta: Uporabljena :PLATFORM tema :THEME. #Using the :PLATFORM theme :THEME.
+
+not_found:
+  statment: Oprostite, hiperpovezava je neustrezna ali vsebina ne obstajata. #Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
+
+notification:
+  update_found: Novejša različica vsebine je na voljo. #A new version of content is available.
+  update: Posodobi #Update
+
+# ----- Posts related labels -----
+
+post:
+  written_by: Od #By 
+  posted: Objavljeno #Posted
+  updated: Posodobljeno #Updated
+  words: besede #words
+  pageview_measure: ogledi #views
+  read_time:
+    unit: min
+    prompt: beri #read
+  relate_posts: Nadaljnje branje #Further Reading
+  share: Deli #Share
+  button:
+    next: Novejše #Newer
+    previous: Starejše #Older
+    copy_code:
+      succeed: Kopirano! #Copied!
+    share_link:
+      title: Kopiraj povezavo #Copy link
+      succeed: Povezava uspešno kopirana! #Link copied successfully!
+  # pinned prompt of posts list on homepage
+  pin_prompt: Pripeto #Pinned
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: '%e %b, %Y'
+    dayjs: 'll'
+  archives:
+    strftime: '%b'
+    dayjs: 'MMM'
+
+# categories page
+categories:
+  category_measure:
+    singular: kategorija #category
+    plural: kategorije #categories
+  post_measure:
+    singular: objava #post
+    plural: objave #posts
