@@ -16,6 +16,7 @@
     "rule-empty-line-before": [
       "always",
       { "ignore": ["after-comment", "first-nested", "inside-block"] }
-    ]
+    ],
+    "value-keyword-case": ["lower", { "ignoreProperties": ["/^\\$/"] }]
   }
 }
