@@ -39,6 +39,7 @@ jobs:
         run: |
           git config --global user.name "grace"
           git config --global user.email "lgraceye@hotmail.com"
+          git pull
           git add .
           git commit -m "Auto updating csv to repo"
           git push
