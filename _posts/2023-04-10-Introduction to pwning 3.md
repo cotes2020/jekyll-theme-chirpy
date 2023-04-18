@@ -220,5 +220,5 @@ p.interactive()
 
 # Resources
 
-<a href = "https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/stackprotector.h#L55">boot_init_stack_canary function</a>
+<a href = "https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/stackprotector.h#L55">boot_init_stack_canary function</a><br>
 <a href = "https://elixir.bootlin.com/linux/latest/source/include/linux/sched.h#L966">Linux task_struct</a>
