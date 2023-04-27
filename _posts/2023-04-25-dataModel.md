@@ -1,5 +1,17 @@
-> 1. `data-model` 사용 이유가 있나요? 그렇다면 DTO와의 차이는 무엇인가요? 해당 모델을 사용한 목적과 도입한 결과에 대해서도 설명해주세요.
->    [](https://emewjin.github.io/model/)[https://emewjin.github.io/model/](https://emewjin.github.io/model/) > [](https://yozm.wishket.com/magazine/detail/1663/)[https://yozm.wishket.com/magazine/detail/1663/](https://yozm.wishket.com/magazine/detail/1663/) > [](https://velog.io/@jjunyjjuny/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%EA%B0%80%EA%B3%B5%ED%95%98%EB%9D%BC)[https://velog.io/@jjunyjjuny/프론트엔드-데이터를-가공하라](https://velog.io/@jjunyjjuny/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%EA%B0%80%EA%B3%B5%ED%95%98%EB%9D%BC) > [](https://codingmoondoll.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%AA%A8%EB%8D%B8%EB%A7%81)[https://codingmoondoll.tistory.com/entry/데이터베이스-모델링](https://codingmoondoll.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%AA%A8%EB%8D%B8%EB%A7%81) > [](https://blog.soomgo.com/blog/using-repository-pattern-at-frontend/)[https://blog.soomgo.com/blog/using-repository-pattern-at-frontend/](https://blog.soomgo.com/blog/using-repository-pattern-at-frontend/) > [](https://tech.kakao.com/2022/03/15/2022-newkrew-onboarding-fe/)[https://tech.kakao.com/2022/03/15/2022-newkrew-onboarding-fe/](https://tech.kakao.com/2022/03/15/2022-newkrew-onboarding-fe/)
+```
+title: Test
+author: dongee_seo
+date: 2023-04-25
+categories: [Blogging, Tutorial]
+tags: [google analytics, pageviews]
+
+```
+
+1. data-model` 사용 이유가 있나요? 그렇다면 DTO와의 차이는 무엇인가요? 해당 모델을 사용한 목적과 도입한 결과에 대해서도 설명해주세요.
+   [](https://emewjin.github.io/model/)[https://emewjin.github.io/model/](https://emewjin.github.io/model/) > [](https://yozm.wishket.com/magazine/detail/1663/)[https://yozm.wishket.com/magazine/detail/1663/](https://yozm.wishket.com/magazine/detail/1663/) > [](https://velog.io/@jjunyjjuny/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%EA%B0%80%EA%B3%B5%ED%95%98%EB%9D%BC)[https://velog.io/@jjunyjjuny/프론트엔드-데이터를-가공하라](https://velog.io/@jjunyjjuny/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%EA%B0%80%EA%B3%B5%ED%95%98%EB%9D%BC) > [](https://codingmoondoll.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%AA%A8%EB%8D%B8%EB%A7%81)[https://codingmoondoll.tistory.com/entry/데이터베이스-모델링](https://codingmoondoll.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%AA%A8%EB%8D%B8%EB%A7%81) > [](https://blog.soomgo.com/blog/using-repository-pattern-at-frontend/)[https://blog.soomgo.com/blog/using-repository-pattern-at-frontend/](https://blog.soomgo.com/blog/using-repository-pattern-at-frontend/) > [](https://tech.kakao.com/2022/03/15/2022-newkrew-onboarding-fe/)[https://tech.kakao.com/2022/03/15/2022-newkrew-onboarding-fe/](https://tech.kakao.com/2022/03/15/2022-newkrew-onboarding-fe/)
+
+
+
 
 1. `micro-frontend` 아키텍쳐에 대해서 설명해주세요. 해당 개념을 실무에 도입해본 경험이 있나요? 있다면 장점, 단점, 어려웠던점, 해결방안에 대해서 설명해주세요.
    [](https://velog.io/@kylexid/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)[https://velog.io/@kylexid/마이크로프론트엔드-아키텍쳐](https://velog.io/@kylexid/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
