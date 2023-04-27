@@ -157,5 +157,5 @@ JSON.parse(JSON.stringify(store.getState().feedSlice.feed.map((f) => new Feed(f)
 
 ## 내가 생각하는 해결방안
 
-1. 내부 함수를 utill로 뺀ㄷㅏ
+1. 내부 함수를 utill로 뺀다
 2. class 내부 요소를 직접 변환할 경우(state를 직접 업데이트 할 경우) useState와 동시에 업데이트 해준다.
