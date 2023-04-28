@@ -1,5 +1,5 @@
 ```
-title: Test
+title: Data Model
 author: dongee_seo
 date: 2023-04-25
 categories: [Blogging, Tutorial]
