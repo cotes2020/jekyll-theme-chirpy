@@ -1,3 +1,11 @@
+```
+title: 마진 상쇄(margin collapsing)
+author: dongee_seo
+date: 2021-03-30
+categories: [Blogging, Tutorial]
+tags: [google analytics, pageviews]
+```
+
 > 분명 margin-top(또는 margin-bottom)을 먹였는데... 왜죠 왜 사라지는거죠;;
 > '마진 상쇄(Margin collapsing)'가 일어나는 원인을 알아보고 아래 사진처럼 대참사가 일어나지 않게하는 방법을 찾아보자.
 

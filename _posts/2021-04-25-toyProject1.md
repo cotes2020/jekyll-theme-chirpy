@@ -1,3 +1,11 @@
+```
+title: Clone Project(1): 마켓 쵸컬리(Market Cho-Kurly)
+author: dongee_seo
+date: 2021-04-25
+categories: [Blogging, Tutorial]
+tags: [google analytics, pageviews]
+```
+
 ![post-thumbnail](https://velog.velcdn.com/images/seod0209/post/ae28a0c4-0781-41c5-96f9-a4a25f7c6dcd/product.gif)
 
 > [Market Chokurly Github Repository: Front-end](https://github.com/wecode-bootcamp-korea/19-1st-Market-ChoKurly-frontend/tree/readme) > [Market Chokurly Github Repository: Back-end](https://github.com/wecode-bootcamp-korea/19-1st-Market-ChoKurly-backend)

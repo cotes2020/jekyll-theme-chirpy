@@ -1,3 +1,11 @@
+```
+title: Clean Architecture
+author: dongee_seo
+date: 2021-06-05
+categories: [Blogging, Tutorial]
+tags: [google analytics, pageviews]
+```
+
 # Clean Architecture
 
 ## 1. 기본 개념
@@ -44,4 +52,9 @@
 
 이 사실은 이것을 plugin architecture로 만든다. UI가 web interface든, a desktop app이든 mobile app이든 상관 없다는 뜻이다. 또한 데이터가 SQL에 저장되든 noSQL에 저장되든 클라우드에 저장되는 상관 없다는 뜻이다. 도메인은 상관하지 않으며, 단지 인프라만 쉽게 변화시킬 뿐이다.
 
-> 클린 아키텍쳐의 개념에 대해 도메인과 인프라로 크게 나누어 봤다면 다음장에서 더욱 디테일하게 용어들을 정리해보겠당.
+> 클린 아키텍쳐의 개념에 대해 도메인과 인프라로 크게 나누어 봤다면 다음장에서 더욱 디테일하게 용어들을 정리해보겠당.title: Clone Project(2): Care of Legend
+
+author: dongee_seo
+date: 2021-05-19
+categories: [Blogging, Tutorial]
+tags: [google analytics, pageviews]

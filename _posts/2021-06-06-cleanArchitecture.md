@@ -1,3 +1,11 @@
+```
+title: Clean Architecture (2)
+author: dongee_seo
+date: 2021-06-06
+categories: [Blogging, Tutorial]
+tags: [google analytics, pageviews]
+```
+
 ## 계층을 나누는 목적
 
 로버트마틴이 추구한 아키텍쳐의 큰 두 가지의 가치는 다음과 같다.

@@ -1,3 +1,11 @@
+```
+title: `<canvas>` 와 `SVG`
+author: dongee_seo
+date: 2021-03-27
+categories: [Blogging, Tutorial]
+tags: [google analytics, pageviews]
+```
+
 > HTML5에서는 `<canvas>` 와 `SVG`를 이용하여 기존에 플래시, 실버라이트로 했던 그래픽 처리를 대체할 수 있다.
 
 ## 1 . Canvas

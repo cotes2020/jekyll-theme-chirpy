@@ -1,3 +1,11 @@
+```
+title: HTML과 CSS파일의 연결
+author: dongee_seo
+date: 2021-03-17
+categories: [Blogging, Tutorial]
+tags: [google analytics, pageviews]
+```
+
 ## CSS?
 
 = HTML tag에 디자인을 입혀주는 것

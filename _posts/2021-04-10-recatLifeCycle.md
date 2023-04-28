@@ -1,3 +1,11 @@
+```
+title: 컴포넌트
+author: dongee_seo
+date: 2021-04-10
+categories: [Blogging, Tutorial]
+tags: [google analytics, pageviews]
+```
+
 > 컴포넌트가 브라우저에서 나타날때, 사라질때, 그리고 업데이트 될 때, 호출되는 API 이다.
 > '컴포넌트 초기 생성-업데이트-제거' 순서대로 살펴보겠다.
 
