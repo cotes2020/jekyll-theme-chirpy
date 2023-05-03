@@ -40,6 +40,20 @@ docker run -it --name a-test -rm alpine   # remove once stopped
 
 docker run -dt --restart always --name bg-container alpine   # persist
 docker run -dt --restart unless-stopped/on-failure/no
+
+
+docker image ls
+
+# clean
+docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+docker image rm image:tag
+
+# get image digest:
+docker inspect image:tag \
+    | jq -r '.[0].RepoDigests[0]' \
+    | cut -d'@' -f2
+
+
 ```
 
 ## Accessing the Container
@@ -67,6 +81,10 @@ docker cp default.conf a-container:/etc/nginx/conf.d/default.conf
 
 
 ```py
+docker image ls
+# clean
+docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+docker image rm image:tag
 
 # stop container
 docker stop container_name
@@ -82,7 +100,6 @@ docker rename a-container web01
 
 # know info
 docker stats <container_name>
-
 ```
 
 
