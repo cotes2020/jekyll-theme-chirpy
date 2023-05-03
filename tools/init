@@ -96,10 +96,10 @@ init_files() {
     _sedi "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
   fi
 
-  # remove the other fies
+  # remove the other files
   rm -rf _posts/*
 
-  # build assest
+  # build assets
   npm i && npm run build
 
   # track the js output
