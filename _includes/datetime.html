@@ -4,12 +4,16 @@
 -->
 
 {% assign wrap_elem = include.wrap | default: 'em' %}
-{% assign df_strftime = site.data.locales[site.lang].df.post.strftime | default: '%d/%m/%Y' %}
-{% assign df_dayjs = site.data.locales[site.lang].df.post.dayjs | default: 'DD/MM/YYYY' %}
+{% assign df_strftime = site.data.locales[include.lang].df.post.strftime | default: '%d/%m/%Y' %}
+{% assign df_dayjs = site.data.locales[include.lang].df.post.dayjs | default: 'DD/MM/YYYY' %}
 
-<{{ wrap_elem }} class="{% if include.class %}{{ include.class }}{% endif %}"
-    data-ts="{{ include.date | date: '%s' }}"
-    data-df="{{ df_dayjs }}"
-    {% if include.tooltip %}data-toggle="tooltip" data-placement="bottom"{% endif %}>
+<{{ wrap_elem }}
+  class="{% if include.class %}{{ include.class }}{% endif %}"
+  data-ts="{{ include.date | date: '%s' }}"
+  data-df="{{ df_dayjs }}"
+  {% if include.tooltip %}
+    data-toggle="tooltip" data-placement="bottom"
+  {% endif %}
+>
   {{ include.date | date: df_strftime }}
 </{{ wrap_elem }}>

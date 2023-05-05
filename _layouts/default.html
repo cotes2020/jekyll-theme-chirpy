@@ -3,9 +3,11 @@ layout: compress
 # Default layout
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 
 {% include assets-origin.html %}
+
+{% include lang.html %}
 
 {% capture prefer_mode %}
   {% if site.theme_mode %}
@@ -14,26 +16,24 @@ layout: compress
 {% endcapture %}
 
 <!-- `site.alt_lang` can specify a language different from the UI -->
-<html lang="{{ site.alt_lang | default: site.lang }}"{{ prefer_mode }}>
-
+<html lang="{{ site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
   {% include head.html %}
 
   <body data-topbar-visible="true">
+    {% include sidebar.html lang=lang %}
 
-    {% include sidebar.html %}
-
-    {% include topbar.html %}
+    {% include topbar.html lang=lang %}
 
     <div id="main-wrapper" class="d-flex justify-content-center">
       <div id="main" class="container pl-xl-4 pr-xl-4">
         {{ content }}
       </div>
 
-      {% include search-results.html %}
+      {% include search-results.html lang=lang %}
+    </div>
+    <!-- #main-wrapper -->
 
-    </div> <!-- #main-wrapper -->
-
-    {% include footer.html %}
+    {% include footer.html lang=lang %}
 
     {% if page.mermaid %}
       {% include mermaid.html %}
@@ -46,17 +46,24 @@ layout: compress
     </a>
 
     {% if site.pwa.enabled %}
-      <div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
-        data-animation="true" data-autohide="false">
+      <div
+        id="notification"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-animation="true"
+        data-autohide="false"
+      >
         <div class="toast-header">
           <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="toast-body text-center pt-0">
-          <p class="pl-2 pr-2 mb-3">{{ site.data.locales[site.lang].notification.update_found }}</p>
+          <p class="pl-2 pr-2 mb-3">{{ site.data.locales[lang].notification.update_found }}</p>
           <button type="button" class="btn btn-primary" aria-label="Update">
-            {{ site.data.locales[site.lang].notification.update }}
+            {{ site.data.locales[lang].notification.update }}
           </button>
         </div>
       </div>
@@ -65,7 +72,5 @@ layout: compress
     {% include search-loader.html %}
 
     {% include js-selector.html %}
-
   </body>
-
 </html>
