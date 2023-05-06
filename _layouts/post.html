@@ -21,7 +21,7 @@ tail_includes:
     </span>
 
     <!-- lastmod date -->
-    {% if page.last_modified_at %}
+    {% if page.last_modified_at and page.last_modified_at != page.date %}
     <span>
       {{ site.data.locales[lang].post.updated }}
       {% include datetime.html date=page.last_modified_at tooltip=true lang=lang %}

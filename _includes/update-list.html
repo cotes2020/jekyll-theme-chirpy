@@ -7,7 +7,7 @@
 {% assign all_list = '' | split: '' %}
 
 {% for post in site.posts %}
-  {% if post.last_modified_at %}
+  {% if post.last_modified_at and post.last_modified_at != post.date %}
     {% capture elem %}
       {{- post.last_modified_at | date: "%Y%m%d%H%M%S" -}}::{{- forloop.index0 -}}
     {% endcapture %}
