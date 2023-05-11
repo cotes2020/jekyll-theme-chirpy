@@ -35,6 +35,12 @@ jobs:
         # run: bash ./wh.sh \
         run: python ./_posts/00CodeNote/project/webscrap_apt/play.py -t all
 
+      - name: Install Python dependencies
+        run: python -m pip install -r ./_posts/00CodeNote/project/webscrap_apt/requirements.txt
+
+      - name: run img player
+        run: python ./_posts/00CodeNote/project/webscrap_apt/img_play.py
+
       - name: Commit and push changes
         run: |
           git config --global user.name "grace"
@@ -43,6 +49,7 @@ jobs:
           git add .
           git commit -m "Auto updating csv to repo"
           git push
+
 
   run_project_2:
     name: project webscrap_apt print img
@@ -73,6 +80,7 @@ jobs:
         run: |
           git config --global user.name "grace"
           git config --global user.email "lgraceye@hotmail.com"
+          git pull origin master
           git add .
           git commit -m "Auto updating csv to repo"
           git push
