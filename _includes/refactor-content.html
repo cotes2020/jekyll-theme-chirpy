@@ -94,9 +94,9 @@
         {% continue %}
       {% endunless %}
 
-      {% assign _pair = _attr | remove: '"' | split: '=' %}
+      {% assign _pair = _attr | split: '="' %}
       {% capture _key %}{{ _pair | first }}{% endcapture %}
-      {% capture _value %}{{ _pair | last }}{% endcapture %}
+      {% capture _value %}{{ _pair | last | remove: '"' }}{% endcapture %}
 
       {% case _key %}
         {% when 'width' %}
@@ -110,7 +110,6 @@
         {% when 'class' %}
           {% assign _class = _value %}
       {% endcase %}
-
     {% endfor %}
 
     <!-- take out classes -->
