@@ -6,7 +6,6 @@ import ScrollHelper from './utils/scroll-helper';
 const $searchInput = $('#search-input');
 const delta = ScrollHelper.getTopbarHeight();
 
-let didScroll;
 let lastScrollTop = 0;
 
 function hasScrolled() {
@@ -60,34 +59,41 @@ function handleLandscape() {
 
 export function switchTopbar() {
   const orientation = screen.orientation;
-  if (orientation) {
-    orientation.onchange = () => {
-      const type = orientation.type;
-      if (type === 'landscape-primary' || type === 'landscape-secondary') {
-        handleLandscape();
-      }
-    };
-  } else {
-    // for the browsers that not support `window.screen.orientation` API
-    $(window).on('orientationchange', () => {
-      if ($(window).width() < $(window).height()) {
-        // before rotating, it is still in portrait mode.
-        handleLandscape();
-      }
-    });
-  }
+  let didScroll = false;
 
-  $(window).on('scroll', () => {
-    if (didScroll) {
-      return;
+  const handleOrientationChange = () => {
+    const type = orientation.type;
+    if (type === 'landscape-primary' || type === 'landscape-secondary') {
+      handleLandscape();
     }
-    didScroll = true;
-  });
+  };
 
-  setInterval(() => {
+  const handleWindowChange = () => {
+    if ($(window).width() < $(window).height()) {
+      // before rotating, it is still in portrait mode.
+      handleLandscape();
+    }
+  };
+
+  const handleScroll = () => {
+    didScroll = true;
+  };
+
+  const checkScroll = () => {
     if (didScroll) {
       hasScrolled();
       didScroll = false;
     }
-  }, 250);
+  };
+
+  if (orientation) {
+    orientation.addEventListener('change', handleOrientationChange);
+  } else {
+    // for the browsers that not support `window.screen.orientation` API
+    $(window).on('orientationchange', handleWindowChange);
+  }
+
+  $(window).on('scroll', handleScroll);
+
+  setInterval(checkScroll, 250);
 }
