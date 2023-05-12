@@ -40,7 +40,7 @@ copyright:
     Aksi belirtilmediği sürece, bu sitedeki gönderiler Creative Commons Atıf 4.0 Uluslararası (CC BY 4.0) Lisansı altındadır.
     Kısaca sayfa linkini de vererek paylaşabilir veya düzenleyip paylaşabilirsin.
 
-meta: :PLATFORM ve :THEME teması.
+meta: :PLATFORM ve :THEME teması
 
 not_found:
   statment: Üzgünüz, bu linki yanlış yerleştirdik veya var olmayan bir şeye işaret ediyor.
@@ -70,8 +70,6 @@ post:
     share_link:
       title: Linki kopyala
       succeed: Link kopyalandı.
-  # pinned prompt of posts list on homepage
-  pin_prompt: Sabitlendi
 
 # categories page
 categories:

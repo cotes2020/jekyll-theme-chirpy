@@ -21,7 +21,7 @@
   --btn-backtotop-color: var(--text-color);
   --btn-backtotop-border-color: var(--btn-border-color);
   --btn-box-shadow: var(--main-bg);
-  --card-header-bg: rgb(51, 50, 50);
+  --card-header-bg: rgb(48, 48, 48);
   --label-color: rgb(108, 117, 125);
   --checkbox-color: rgb(118, 120, 121);
   --checkbox-checked-color: var(--link-color);
@@ -36,15 +36,16 @@
   /* Sidebar */
   --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
   --sidebar-muted-color: #6d6c6b;
-  --sidebar-active-color: rgb(255, 255, 255, 0.8);
-  --nav-cursor-color: rgb(183, 182, 182);
-  --sidebar-btn-bg: rgb(117, 116, 116, 0.2);
+  --sidebar-active-color: rgb(255, 255, 255, 0.95);
+  --sidebar-hover-bg: rgb(54, 54, 54, 0.33);
+  --sidebar-btn-bg: rgb(84, 83, 83, 0.3);
+  --sidebar-btn-color: #787878;
+  --avatar-border-color: rgb(206, 206, 206, 0.9);
 
   /* Topbar */
+  --topbar-bg: rgb(27, 27, 30, 0.64);
   --topbar-text-color: var(--text-color);
-  --topbar-wrapper-bg: rgb(39, 40, 43);
-  --search-wrapper-bg: rgb(34, 34, 39);
-  --search-wrapper-border-color: rgb(34, 34, 39);
+  --search-wrapper-border-color: rgb(55, 55, 55);
   --search-icon-color: rgb(100, 102, 105);
   --input-focus-border-color: rgb(112, 114, 115);
 
@@ -54,8 +55,6 @@
   --btn-paginator-hover-color: rgb(64, 65, 66);
   --btn-paginator-border-color: var(--btn-border-color);
   --btn-text-color: var(--text-color);
-  --pin-bg: rgb(34, 35, 37);
-  --pin-color: inherit;
 
   /* Posts */
   --toc-highlight: rgb(116, 178, 243);
@@ -68,19 +67,19 @@
   --btn-share-color: #6c757d;
   --btn-share-hover-color: #bfc1ca;
   --relate-post-date: var(--text-muted-color);
-  --card-bg: #212121;
-  --card-hovor-bg: #3a3a3a;
-  --card-border-color: rgb(53, 53, 60);
-  --card-box-shadow: var(--main-bg);
+  --card-bg: #1e1e1e;
+  --card-hovor-bg: #464d51;
+  --card-shadow: rgb(21, 21, 21, 0.72) 0 6px 18px 0,
+    rgb(137, 135, 135, 0.24) 0 0 0 1px;
   --kbd-wrap-color: #6a6a6a;
   --kbd-text-color: #d3d3d3;
   --kbd-bg-color: #242424;
   --prompt-text-color: rgb(216, 212, 212, 0.75);
-  --prompt-tip-bg: rgba(77, 187, 95, 0.2);
-  --prompt-tip-icon-color: rgb(5, 223, 5, 0.68);
+  --prompt-tip-bg: rgb(22, 60, 36, 0.64);
+  --prompt-tip-icon-color: rgb(15, 164, 15, 0.81);
   --prompt-info-bg: rgb(7, 59, 104, 0.8);
   --prompt-info-icon-color: #0075d1;
-  --prompt-warning-bg: rgb(90, 69, 3, 0.95);
+  --prompt-warning-bg: rgb(90, 69, 3, 0.88);
   --prompt-warning-icon-color: rgb(255, 165, 0, 0.8);
   --prompt-danger-bg: rgb(86, 28, 8, 0.8);
   --prompt-danger-icon-color: #cd0202;
@@ -92,7 +91,7 @@
   --dash-color: rgb(63, 65, 68);
 
   /* categories */
-  --categories-border: rgb(64, 66, 69);
+  --categories-border: rgb(64, 66, 69, 0.5);
   --categories-hover-bg: rgb(73, 75, 76);
   --categories-icon-hover-color: white;
 
@@ -100,13 +99,6 @@
   --timeline-node-bg: rgb(150, 152, 156);
   --timeline-color: rgb(63, 65, 68);
   --timeline-year-dot-color: var(--timeline-color);
-
-  .post img[data-src] {
-    &.lazyloaded {
-      -webkit-filter: brightness(95%);
-      filter: brightness(95%);
-    }
-  }
 
   .light {
     display: none;

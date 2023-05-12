@@ -98,7 +98,7 @@ tail_includes:
   <!-- categories -->
   {% if page.categories.size > 0 %}
   <div class="post-meta mb-3">
-    <i class="far fa-folder-open fa-fw mr-1"></i>
+    <i class="far fa-folder-open fa-fw me-1"></i>
     {% for category in page.categories %}
       <a href='{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/'>{{ category }}</a>
       {%- unless forloop.last -%}, {%- endunless -%}
@@ -109,7 +109,7 @@ tail_includes:
   <!-- tags -->
   {% if page.tags.size > 0 %}
   <div class="post-tags">
-    <i class="fa fa-tags fa-fw mr-1"></i>
+    <i class="fa fa-tags fa-fw me-1"></i>
       {% for tag in page.tags %}
       <a href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/"
           class="post-tag no-text-decoration" >

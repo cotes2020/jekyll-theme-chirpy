@@ -39,12 +39,13 @@ export function initLocaleDatetime() {
     $(this).removeAttr(LocaleHelper.attrDateFormat);
 
     // setup tooltips
-    const tooltip = $(this).attr('data-toggle');
+    const tooltip = $(this).attr('data-bs-toggle');
     if (typeof tooltip === 'undefined' || tooltip !== 'tooltip') {
       return;
     }
 
     const tooltipText = date.format('llll'); // see: https://day.js.org/docs/en/display/format#list-of-localized-formats
-    $(this).attr('data-original-title', tooltipText);
+    $(this).attr('data-bs-title', tooltipText);
+    new bootstrap.Tooltip($(this));
   });
 }

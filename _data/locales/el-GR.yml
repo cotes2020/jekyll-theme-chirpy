@@ -40,7 +40,7 @@ copyright:
     Εκτός αλλού ή οπουδήποτε αλλού, τα blog posts σε αυτήν την σελίδα βρίσκονται υπο την άδεια
     Creative Commons Attribution 4.0 International (CC BY 4.0) του δημιουργού.
 
-meta: Αξιοποιώντας την :PLATFORM theme :THEME.
+meta: Αξιοποιώντας την :PLATFORM theme :THEME
 
 not_found:
   statment: Συγνώμη, έχουμε τοποθετήσει λάθος αυτήν την διεύθυνση URL ή υποδεικνύει κάτι που δεν υπάρχει.
@@ -70,18 +70,16 @@ post:
     share_link:
       title: Αντιγραφή συνδέσμου
       succeed: Η διεύθυνση αντιγράφθηκε με επιτυχία!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Pinned
 
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
 df:
   post:
-    strftime: '%b %e, %Y'
-    dayjs: 'll'
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
   archives:
-    strftime: '%b'
-    dayjs: 'MMM'
+    strftime: "%b"
+    dayjs: "MMM"
 
 # categories page
 categories:

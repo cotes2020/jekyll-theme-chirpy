@@ -69,12 +69,13 @@
 }
 
 %clickable-transition {
-  transition: color 0.35s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 %no-cursor {
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -91,7 +92,7 @@
 }
 
 %rounded {
-  border-radius: 6px;
+  border-radius: $base-radius;
 }
 
 %img-caption {
@@ -109,14 +110,19 @@
   color: rgba(117, 117, 117, 0.9);
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
-/* ---------- scss mixin --------- */
-
-@mixin no-text-decoration {
-  text-decoration: none;
+%text-clip {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
+
+/* ---------- scss mixin --------- */
 
 @mixin mt-mb($value) {
   margin-top: $value;
@@ -126,6 +132,11 @@
 @mixin ml-mr($value) {
   margin-left: $value;
   margin-right: $value;
+}
+
+@mixin pt-pb($val) {
+  padding-top: $val;
+  padding-bottom: $val;
 }
 
 @mixin pl-pr($val) {
@@ -146,7 +157,6 @@
 @mixin align-center {
   position: relative;
   left: 50%;
-  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
