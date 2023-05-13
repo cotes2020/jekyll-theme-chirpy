@@ -39,42 +39,27 @@ body {
 
 /* --- Typography --- */
 
-h1 {
-  @extend %heading;
+@for $i from 1 through 5 {
+  h#{$i} {
+    @extend %heading;
 
-  font-size: 1.9rem;
-}
+    @if $i > 1 {
+      @extend %section;
+      @extend %anchor;
+    }
 
-h2 {
-  @extend %heading;
-  @extend %section;
-  @extend %anchor;
+    @if $i < 5 {
+      $factor: 0.18rem;
 
-  font-size: 1.5rem;
-}
+      @if $i == 1 {
+        $factor: 0.23rem;
+      }
 
-h3 {
-  @extend %heading;
-  @extend %section;
-  @extend %anchor;
-
-  font-size: 1.2rem;
-}
-
-h4 {
-  @extend %heading;
-  @extend %section;
-  @extend %anchor;
-
-  font-size: 1.15rem;
-}
-
-h5 {
-  @extend %heading;
-  @extend %section;
-  @extend %anchor;
-
-  font-size: 1.1rem;
+      font-size: 1rem + (5 - $i) * $factor;
+    } @else {
+      font-size: 1rem;
+    }
+  }
 }
 
 a {
