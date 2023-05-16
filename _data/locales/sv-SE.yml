@@ -1,6 +1,6 @@
 # The layout text of site
 
-# ----- Commons label ----- 
+# ----- Commons label -----
 
 layout:
   post: Inlägg #Post
@@ -39,7 +39,8 @@ copyright:
   verbose: >-
     Om inte annat anges är blogginläggen på denna webbplats licensierade
      under Creative Commons Attribution 4.0 International (CC BY 4.0) av författaren.
-meta:  Byggd med :PLATFORM och temat :THEME .
+
+meta: Byggd med :PLATFORM och temat :THEME
 
 not_found:
   statment: Ursäkta, vi har tappat bort den här webbadressen eller så pekar den på något som inte längre finns.
@@ -69,18 +70,16 @@ post:
     share_link:
       title: Kopiera länk
       succeed: Länken har kopierats!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Fastnålad
 
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
 df:
   post:
-    strftime: '%b %e, %Y'
-    dayjs: 'll'
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
   archives:
-    strftime: '%b'
-    dayjs: 'MMM'
+    strftime: "%b"
+    dayjs: "MMM"
 
 # categories page
 categories:

@@ -40,7 +40,7 @@ copyright:
     Razen kjer navedeno drugače, vse objave spletnega dnevnika so licencirane
     pod Creative Commons Attribution 4.0 International (CC BY 4.0) s strani avtorja.
 
-meta: Uporabljena :PLATFORM tema :THEME. #Using the :PLATFORM theme :THEME.
+meta: Uporabljena :PLATFORM tema :THEME #Using the :PLATFORM theme :THEME
 
 not_found:
   statment: Oprostite, hiperpovezava je neustrezna ali vsebina ne obstajata. #Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
@@ -52,7 +52,7 @@ notification:
 # ----- Posts related labels -----
 
 post:
-  written_by: Od #By 
+  written_by: Od #By
   posted: Objavljeno #Posted
   updated: Posodobljeno #Updated
   words: besede #words
@@ -70,18 +70,16 @@ post:
     share_link:
       title: Kopiraj povezavo #Copy link
       succeed: Povezava uspešno kopirana! #Link copied successfully!
-  # pinned prompt of posts list on homepage
-  pin_prompt: Pripeto #Pinned
 
 # Date time format.
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
 df:
   post:
-    strftime: '%e %b, %Y'
-    dayjs: 'll'
+    strftime: "%e %b, %Y"
+    dayjs: "ll"
   archives:
-    strftime: '%b'
-    dayjs: 'MMM'
+    strftime: "%b"
+    dayjs: "MMM"
 
 # categories page
 categories:
