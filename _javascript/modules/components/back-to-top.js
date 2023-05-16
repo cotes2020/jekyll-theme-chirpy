@@ -4,10 +4,7 @@
 
 export function back2top() {
   $(window).on('scroll', () => {
-    if (
-      $(window).scrollTop() > 50 &&
-      $('#sidebar-trigger').css('display') === 'none'
-    ) {
+    if ($(window).scrollTop() > 50) {
       $('#back-to-top').fadeIn();
     } else {
       $('#back-to-top').fadeOut();
