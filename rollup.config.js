@@ -38,6 +38,7 @@ function build(filename) {
 
 export default [
   build('commons'),
+  build('home'),
   build('categories'),
   build('page'),
   build('post'),

@@ -77,9 +77,9 @@ check_env() {
   _check_init
 }
 
-checkout_latest_tag() {
-  tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
-  git reset --hard "$tag"
+checkout_latest_release() {
+  hash=$(git log --grep="chore(release):" -1 --pretty="%H")
+  git reset --hard "$hash"
 }
 
 init_files() {
@@ -96,10 +96,10 @@ init_files() {
     _sedi "s/^img_cdn:.*/img_cdn:/;s/^avatar:.*/avatar:/" _config.yml
   fi
 
-  # remove the other fies
+  # remove the other files
   rm -rf _posts/*
 
-  # build assest
+  # build assets
   npm i && npm run build
 
   # track the js output
@@ -114,7 +114,7 @@ commit() {
 
 main() {
   check_env
-  checkout_latest_tag
+  checkout_latest_release
   init_files
   commit
 }

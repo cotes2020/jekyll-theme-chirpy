@@ -1,9 +1,8 @@
 import { basic, initSidebar, initTopbar } from './modules/layouts';
-import { imgLazy, imgPopup, initClipboard } from './modules/plugins';
+import { initLocaleDatetime, imgLazy } from './modules/plugins';
 
 basic();
 initSidebar();
 initTopbar();
+initLocaleDatetime();
 imgLazy();
-imgPopup();
-initClipboard();

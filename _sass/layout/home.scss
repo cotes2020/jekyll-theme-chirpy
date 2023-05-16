@@ -2,6 +2,96 @@
   Style for Homepage
 */
 
+#post-list {
+  margin-top: 2rem;
+
+  &:only-child {
+    margin-bottom: 3.75rem;
+  }
+
+  a.card-wrapper {
+    display: block;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  .card {
+    %img-radius {
+      border-radius: $base-radius $base-radius 0 0;
+    }
+
+    .preview-img {
+      height: 10rem;
+
+      @extend %img-radius;
+
+      img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+
+        @extend %img-radius;
+      }
+    }
+
+    .card-body {
+      min-height: 10.5rem;
+      padding: 1rem;
+
+      .card-title {
+        @extend %text-clip;
+
+        font-size: 1.25rem;
+      }
+
+      %muted {
+        color: var(--text-muted-color) !important;
+      }
+
+      .card-text.post-content {
+        @extend %muted;
+
+        p {
+          @extend %text-clip;
+
+          line-height: 1.5;
+          margin: 0;
+        }
+      }
+
+      .post-meta {
+        @extend %muted;
+
+        i {
+          &:not(:first-child) {
+            margin-left: 1.5rem;
+          }
+        }
+
+        em {
+          @extend %normal-font-style;
+
+          color: inherit;
+        }
+
+        > div:first-child {
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+} /* #post-list */
+
 .pagination {
   color: var(--btn-patinator-text-color);
   font-family: Lato, sans-serif;
@@ -52,91 +142,42 @@
   } /* .page-item */
 } /* .pagination */
 
-#post-list {
-  margin-top: 1.75rem;
-  padding-right: 0.5rem;
-
-  a:hover {
-    text-decoration: none;
-  }
-
-  .post-preview {
-    padding: 0.25rem;
-    border-radius: 0.75rem;
-    border: 1px solid var(--card-border-color);
-    background: var(--card-bg);
-
-    &:hover {
-      background: var(--card-hovor-bg);
-      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+/* Tablet */
+@media all and (min-width: 768px) {
+  #post-list {
+    %img-radius {
+      border-radius: 0 $base-radius $base-radius 0;
     }
 
-    &:not(:last-child) {
-      margin-bottom: 1.75rem;
-    }
-
-    h1 {
-      font-size: 1.4rem;
-      margin: 0;
-    }
-
-    .post-meta {
-      i {
-        font-size: 0.73rem;
-
-        &:not(:first-child) {
-          margin-left: 1.2rem;
-        }
+    .card {
+      .preview-img {
+        width: 20rem;
+        height: 11.5rem; // can hold 2 lines each for title and content
       }
 
-      em {
-        @extend %normal-font-style;
-      }
+      .card-body {
+        min-height: 10.75rem;
+        width: 60%;
+        padding: 1.75rem 1.75rem 1.25rem 1.75rem;
 
-      .pin {
-        i {
-          -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-          padding-left: 3px;
-          color: var(--pin-color);
+        .card-text {
+          display: inherit !important;
         }
 
-        span {
-          display: none;
+        .post-meta {
+          i {
+            &:not(:first-child) {
+              margin-left: 1.75rem;
+            }
+          }
         }
       }
     }
-
-    .post-content {
-      margin-top: 0.6rem;
-      margin-bottom: 0.6rem;
-      color: var(--post-list-text-color);
-
-      > p {
-        margin: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
-    }
-  } /* .post-preview */
-} /* #post-list */
-
-@media (hover: hover) {
-  .post-preview {
-    transition: all 0.35s ease-in-out;
   }
 }
 
 /* Hide SideBar and TOC */
 @media all and (max-width: 830px) {
-  .post-preview {
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-  }
-
   .pagination {
     justify-content: space-evenly;
 
@@ -151,27 +192,7 @@
 /* Sidebar is visible */
 @media all and (min-width: 831px) {
   #post-list {
-    margin-top: 3rem;
-
-    .post-preview {
-      padding: 0.5rem;
-
-      .post-meta {
-        .pin {
-          background: var(--pin-bg);
-          border-radius: 5px;
-          line-height: 1.4rem;
-          height: 1.3rem;
-          margin-top: 3px;
-          padding-left: 1px;
-          padding-right: 6px;
-
-          > span {
-            display: inline;
-          }
-        }
-      }
-    }
+    margin-top: 2.5rem;
   }
 
   .pagination {
@@ -194,9 +215,9 @@
   } /* .pagination */
 }
 
-/* Panel hidden */
-@media all and (max-width: 1200px) {
+/* Panel is visible */
+@media all and (min-width: 1200px) {
   #post-list {
-    padding-right: 0;
+    padding-right: 0.5rem;
   }
 }

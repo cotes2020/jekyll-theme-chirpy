@@ -1,7 +1,9 @@
 ---
 layout: page
-# The Home page layout
+refactor: true
 ---
+
+{% include lang.html %}
 
 {% assign pinned = site.posts | where: 'pin', 'true' %}
 {% assign default = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
@@ -40,30 +42,37 @@ layout: page
 
 <div id="post-list">
   {% for post in posts %}
-    <div class="card post-preview">
-      <a href="{{ post.url | relative_url }}">
-        <div class="card-body">
-          <h1 class="card-title">
+    <a href="{{ post.url | relative_url }}" class="card-wrapper">
+      <div class="card post-preview flex-md-row-reverse">
+        {% if post.image %}
+          {% if post.image.lqip %}
+            {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
+          {% endif %}
+          <img src="{{ post.image.path | default: post.image }}" w="15" h="8" {{ lqip }}>
+        {% endif %}
+
+        <div class="card-body d-flex flex-column">
+          <h1 class="card-title my-2 mt-md-0">
             {{ post.title }}
           </h1>
 
-          <div class="card-text post-content">
+          <div class="card-text post-content mt-0 mb-2">
             <p>
               {% include no-linenos.html content=post.content %}
               {{ content | markdownify | strip_html | truncate: 200 | escape }}
             </p>
           </div>
 
-          <div class="post-meta text-muted d-flex">
-            <div class="mr-auto">
+          <div class="post-meta flex-grow-1 d-flex align-items-end">
+            <div class="me-auto">
               <!-- posted date -->
-              <i class="far fa-calendar fa-fw"></i>
-              {% include datetime.html date=post.date %}
+              <i class="far fa-calendar fa-fw me-1"></i>
+              {% include datetime.html date=post.date lang=lang %}
 
               <!-- categories -->
               {% if post.categories.size > 0 %}
-                <i class="far fa-folder-open fa-fw"></i>
-                <span>
+                <i class="far fa-folder-open fa-fw me-1"></i>
+                <span class="categories">
                   {% for category in post.categories %}
                     {{ category }}
                     {%- unless forloop.last -%},{%- endunless -%}
@@ -73,21 +82,21 @@ layout: page
             </div>
 
             {% if post.pin %}
-              <div class="pin">
+              <div class="pin ms-1">
                 <i class="fas fa-thumbtack fa-fw"></i>
-                <span>{{ site.data.locales[site.lang].post.pin_prompt }}</span>
+                <span>{{ site.data.locales[lang].post.pin_prompt }}</span>
               </div>
             {% endif %}
           </div>
           <!-- .post-meta -->
         </div>
-      </a>
-    </div>
-    <!-- .post-review -->
+        <!-- .card-body -->
+      </div>
+    </a>
   {% endfor %}
 </div>
 <!-- #post-list -->
 
-{% if paginator.total_pages > 0 %}
+{% if paginator.total_pages > 1 %}
   {% include post-paginator.html %}
 {% endif %}

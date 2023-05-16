@@ -58,15 +58,15 @@
   {% include favicons.html %}
 
   {% if site.resources.ignore_env != jekyll.environment and site.resources.self_hosted %}
-    <link href="{{ site.data.assets[origin].webfonts | relative_url }}" rel="stylesheet">
+    <link href="{{ site.data.origin[type].webfonts | relative_url }}" rel="stylesheet">
 
   {% else %}
-    {% for cdn in site.data.assets[origin].cdns %}
+    {% for cdn in site.data.origin[type].cdns %}
       <link rel="preconnect" href="{{ cdn.url }}" {{ cdn.args }}>
       <link rel="dns-prefetch" href="{{ cdn.url }}" {{ cdn.args }}>
     {% endfor %}
 
-    <link rel="stylesheet" href="{{ site.data.assets[origin].webfonts | relative_url }}">
+    <link rel="stylesheet" href="{{ site.data.origin[type].webfonts | relative_url }}">
   {% endif %}
 
   <!-- GA -->
@@ -90,27 +90,27 @@
   {% endif %}
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{ site.data.assets[origin].bootstrap.css | relative_url}}">
+  <link rel="stylesheet" href="{{ site.data.origin[type].bootstrap.css | relative_url}}">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ site.data.assets[origin].fontawesome.css | relative_url }}">
+  <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
   {% if site.toc and page.toc %}
-    <link rel="stylesheet" href="{{ site.data.assets[origin].toc.css | relative_url }}">
+    <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
   {% endif %}
 
   {% if page.layout == 'page' or page.layout == 'post' %}
     <!-- Manific Popup -->
-    <link rel="stylesheet" href="{{ site.data.assets[origin].magnific-popup.css | relative_url }}">
+    <link rel="stylesheet" href="{{ site.data.origin[type].magnific-popup.css | relative_url }}">
   {% endif %}
 
   <!-- JavaScript -->
 
-  <script src="{{ site.data.assets[origin].jquery.js | relative_url }}"></script>
-
   {% unless site.theme_mode %}
     {% include mode-toggle.html %}
   {% endunless %}
+
+  {% include metadata-hook.html %}
 </head>
