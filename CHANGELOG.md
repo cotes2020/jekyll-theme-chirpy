@@ -2,6 +2,55 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.6.1...v6.0.0) (2023-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename assets origin configuration files
+
+### Features
+
+* add a hook to insert custom metadata in `head` tag ([#1015](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1015)) ([fe20341](https://github.com/cotes2020/jekyll-theme-chirpy/commit/fe203417d993508eedf5b9044fe53c4a566e44f9))
+* **i18n:** add sl-SI.yml with slovenian translations ([#989](https://github.com/cotes2020/jekyll-theme-chirpy/issues/989)) ([42a700a](https://github.com/cotes2020/jekyll-theme-chirpy/commit/42a700aa37889faa32d7ec1f6776ce4b9d845dc4))
+* **i18n:** add Traditional Chinese (Taiwan) localization file ([#961](https://github.com/cotes2020/jekyll-theme-chirpy/issues/961)) ([d97f95f](https://github.com/cotes2020/jekyll-theme-chirpy/commit/d97f95fca0bcd450ea50709ffba0217f7e65d339))
+* **i18n:** added Swedish localization file ([#969](https://github.com/cotes2020/jekyll-theme-chirpy/issues/969)) ([fe70479](https://github.com/cotes2020/jekyll-theme-chirpy/commit/fe7047959e3694c6e603e764ded30dacd49e6aa9))
+* support hiding the modification date of a post ([#1020](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1020)) ([8da583d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8da583d403456f6460ec1a6ebcbb0c2ca8127ff6))
+* **ui:** improve code snippet design ([6d99f5c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/6d99f5cc36a69e5ccff51f81ba448c798d92e12e))
+* **ui:** improve the design for top bar ([83f1c34](https://github.com/cotes2020/jekyll-theme-chirpy/commit/83f1c34f92d85f3953ca9c9818be5399962bf1c9))
+* **ui:** new design footer content layout ([3210c59](https://github.com/cotes2020/jekyll-theme-chirpy/commit/3210c59466150dc04b4e4bdfc1ffd0e38adcff43))
+* **ui:** redesign the sidebar ([83bbe4a](https://github.com/cotes2020/jekyll-theme-chirpy/commit/83bbe4ac939edfd1706e68c080562e3462f83519))
+* **ui:** show preview image in home page ([97b8dfe](https://github.com/cotes2020/jekyll-theme-chirpy/commit/97b8dfeed6ce7677f6472e28dc3b03f3c2968b12))
+
+
+### Bug Fixes
+
+* parameter parsing error in image URL ([#1022](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1022)) ([ee88cec](https://github.com/cotes2020/jekyll-theme-chirpy/commit/ee88cec270ea5938f98913a3edf28a684cfbd6c0))
+* **rss:** double quotes in the post title will break the XML structure ([#965](https://github.com/cotes2020/jekyll-theme-chirpy/issues/965)) ([1719d81](https://github.com/cotes2020/jekyll-theme-chirpy/commit/1719d81d00b32b107c35b3903089be84a9b28a6c))
+
+
+### refactor
+
+* rename assets origin configuration files ([c283e77](https://github.com/cotes2020/jekyll-theme-chirpy/commit/c283e7782fa9562d82d9855fd280a573fd58c75f))
+
+
+### Improvements
+
+* **assets:** reduce HTTP requests to CDN ([9d97120](https://github.com/cotes2020/jekyll-theme-chirpy/commit/9d971201978e993a9af337d9cd5396a1ea225f00))
+* calculate heading font size dynamically ([#983](https://github.com/cotes2020/jekyll-theme-chirpy/issues/983)) ([52f5ee9](https://github.com/cotes2020/jekyll-theme-chirpy/commit/52f5ee9cd3f92a6e8f25eaa203831546cda85db6))
+* **i18n:** set the global default locales to "en" ([#979](https://github.com/cotes2020/jekyll-theme-chirpy/issues/979)) ([61fdbcb](https://github.com/cotes2020/jekyll-theme-chirpy/commit/61fdbcb83a3601ecae62ec230602b94a5eb832e1))
+* **tools:** avoid initialization interruption in single branch forks ([#992](https://github.com/cotes2020/jekyll-theme-chirpy/issues/992)) ([e90461a](https://github.com/cotes2020/jekyll-theme-chirpy/commit/e90461aa3c81633863db6a12c5924ddba33bd08e))
+* **ui:** improve categories color in dark mode ([414dd13](https://github.com/cotes2020/jekyll-theme-chirpy/commit/414dd132aed70f4bd96cb712d00eacc82d2753e9))
+* **ui:** improve hover effect for post preview cards ([7626e4d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/7626e4d00544346a46b6e5ff2f3a99d234defe09))
+* **ui:** improve hover effect of trending tags ([34499f0](https://github.com/cotes2020/jekyll-theme-chirpy/commit/34499f0c927ce8fea3705dc2f0f0e6805cabda43))
+* **ui:** improve inline code in light mode ([e38309f](https://github.com/cotes2020/jekyll-theme-chirpy/commit/e38309f3bd1302ffe60b682136b6efaf96f4d9ae))
+* **ui:** improve related posts design ([2918da9](https://github.com/cotes2020/jekyll-theme-chirpy/commit/2918da9f29465618d557c082ff3a2f23d7519049))
+* **ui:** improve the color of prompts in dark mode ([8cbbcfa](https://github.com/cotes2020/jekyll-theme-chirpy/commit/8cbbcfa26da0addd88affada23a65770250f2404))
+* **ui:** lighten the link color in light-mode ([7c23a4e](https://github.com/cotes2020/jekyll-theme-chirpy/commit/7c23a4ebc53b9e231c214e04f8ac0803cbcdb720))
+* **ui:** mute the marker in lists ([0c80552](https://github.com/cotes2020/jekyll-theme-chirpy/commit/0c80552d772b874e2a161f1270294faa3af18d4a))
+* **ui:** uniform the muted text color ([aadf939](https://github.com/cotes2020/jekyll-theme-chirpy/commit/aadf9393d5c7f7528d453c4e68eba4f5cbb85bd9))
+* **ux:** improve LQIP fade in effect ([003e7b6](https://github.com/cotes2020/jekyll-theme-chirpy/commit/003e7b60c93988a7bfae4c03a8346d4f8a5f0bb6))
+
 ## [5.6.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.6.0...v5.6.1) (2023-03-30)
 
 
