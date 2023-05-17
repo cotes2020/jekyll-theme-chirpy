@@ -7,7 +7,7 @@ on:
     paths-ignore:
       - ".github/**"
       - "!.github/workflows/ci.yml"
-      - ".gitignore"
+      - ".gitignore" 
       - "README.md"
       - "LICENSE"
   pull_request:
