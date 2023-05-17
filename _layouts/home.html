@@ -48,7 +48,15 @@ refactor: true
           {% if post.image.lqip %}
             {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
           {% endif %}
-          <img src="{{ post.image.path | default: post.image }}" w="15" h="8" {{ lqip }}>
+
+          {% assign src = post.image.path | default: post.image %}
+          {% unless src contains '//' %}
+            {% assign src = post.img_path | append: '/' | append: src | replace: '//', '/' %}
+          {% endunless %}
+
+          {% assign alt = post.image.alt | default: 'Preview Image' %}
+
+          <img src="{{ src }}" w="15" h="8" alt="{{ alt }}" {{ lqip }}>
         {% endif %}
 
         <div class="card-body d-flex flex-column">
