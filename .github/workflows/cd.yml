@@ -11,4 +11,4 @@ jobs:
           curl -X POST -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             https://api.github.com/repos/${{ secrets.BUILDER }}/dispatches \
-            -d '{"event_type":"deploy", "client_payload":{"branch": "${{ github.ref_name }}"}}'
+            -d '{"event_type":"deploy", "client_payload":{"branch": "${{ github.ref_name }}"}}' 
