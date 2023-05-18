@@ -255,16 +255,6 @@ i {
 }
 
 #access-lastmod {
-  li {
-    height: 1.8rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    list-style: none;
-  }
-
   a {
     &:hover {
       @extend %link-hover;
