@@ -1113,10 +1113,6 @@ $btn-mb: 0.5rem;
       @extend %no-bottom-border;
     }
   }
-
-  @at-root .row:only-child > #{&} {
-    padding-bottom: 3rem;
-  }
 }
 
 #mask {
