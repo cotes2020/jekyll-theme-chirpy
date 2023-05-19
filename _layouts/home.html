@@ -40,7 +40,16 @@ refactor: true
   {% endfor %}
 {% endif %}
 
-<div id="post-list">
+{% if paginator.total_pages > 1 %}
+  {% assign has_paginator = true %}
+{% endif %}
+
+<div
+  id="post-list"
+  {% unless has_paginator %}
+    class="mb-5"
+  {% endunless %}
+>
   {% for post in posts %}
     <a href="{{ post.url | relative_url }}" class="card-wrapper">
       <div class="card post-preview flex-md-row-reverse">
@@ -105,6 +114,6 @@ refactor: true
 </div>
 <!-- #post-list -->
 
-{% if paginator.total_pages > 1 %}
+{% if has_paginator %}
   {% include post-paginator.html %}
 {% endif %}
