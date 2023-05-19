@@ -1,6 +1,4 @@
-<!--
-  Refactor the HTML structure.
--->
+<!-- Refactor the HTML structure -->
 
 {% assign _content = include.content %}
 
@@ -44,9 +42,9 @@
 {% endif %}
 
 <!-- images -->
+{% assign IMG_TAG = '<img ' %}
 
-{% if _content contains '<img' %}
-  {% assign IMG_TAG = '<img ' %}
+{% if _content contains IMG_TAG %}
   {% assign _img_content = nil %}
   {% assign _img_snippets = _content | split: IMG_TAG %}
 
@@ -160,7 +158,15 @@
     <!-- Bypass the HTML-proofer test -->
     {% assign _left = _left | append: ' data-proofer-ignore' %}
 
-    {% if page.layout == 'post' %}
+    {% if page.layout == 'home' %}
+      <!-- create the image wrapper -->
+      {%- capture _wrapper_start -%}
+        <div class="preview-img {{ _class | strip }}">
+      {%- endcapture -%}
+      {% assign _img_content = _img_content | append: _wrapper_start %}
+      {% assign _right = _right | prepend: '></div' %}
+
+    {% else %}
       <!-- make sure the `<img>` is wrapped by `<a>` -->
       {% assign _parent = _right | slice: 1, 4 %}
 
@@ -179,16 +185,6 @@
         {% assign _img_content = _img_content | append: _wrapper_start %}
         {% assign _right = _right | prepend: '></a' %}
       {% endif %}
-
-    {% endif %}
-
-    {% if page.layout == 'home' %}
-      <!-- create the image wrapper -->
-      {%- capture _wrapper_start -%}
-        <div class="preview-img {{ _class | strip }}">
-      {%- endcapture -%}
-      {% assign _img_content = _img_content | append: _wrapper_start %}
-      {% assign _right = _right | prepend: '></div' %}
     {% endif %}
 
     <!-- combine -->

@@ -255,16 +255,6 @@ i {
 }
 
 #access-lastmod {
-  li {
-    height: 1.8rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    list-style: none;
-  }
-
   a {
     &:hover {
       @extend %link-hover;
@@ -1112,10 +1102,6 @@ $btn-mb: 0.5rem;
     a:not(:hover) {
       @extend %no-bottom-border;
     }
-  }
-
-  @at-root .row:only-child > #{&} {
-    padding-bottom: 3rem;
   }
 }
 
