@@ -164,15 +164,14 @@ build_gem() {
 release() {
   _version="$1" # X.Y.Z
 
+  git checkout "$PROD_BRANCH"
+  git merge --no-ff --no-edit "$working_branch"
+
   # Create a new tag on working branch
   echo -e "Create tag v$_version\n"
   git tag "v$_version"
 
-  git checkout "$PROD_BRANCH"
-  git merge --no-ff --no-edit "$working_branch"
-
-  # merge from patch branch to the staging branch
-  # NOTE: This may break due to merge conflicts, so it may need to be resolved manually.
+  # Merge from patch branch to the staging branch
   if [[ $working_branch == hotfix/* ]]; then
     git checkout "$STAGING_BRANCH"
     git merge --no-ff --no-edit "$working_branch"
