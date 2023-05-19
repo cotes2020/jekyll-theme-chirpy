@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.1](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v6.0.0...v6.0.1) (2023-05-19)
+
+
+### Bug Fixes
+
+* **home:** preview image missing `[alt]` and `img_path` ([#1044](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1044)) ([aba9468](https://github.com/cotes2020/jekyll-theme-chirpy/commit/aba9468b5332802db961166889d4c4a84e404a2c))
+* **layout:** restore the margin bottom of the main area ([#1047](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1047)) ([eb40f51](https://github.com/cotes2020/jekyll-theme-chirpy/commit/eb40f51c84b011a7c301279527f544ad27efd5eb))
+* **post, page:** image link loses shimmer effect ([#1046](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1046)) ([3bd881d](https://github.com/cotes2020/jekyll-theme-chirpy/commit/3bd881da70d685d10659f47bfe0e79cd02e7af92))
+* **typography:** long string for update-list is not truncated ([#1050](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1050)) ([a51d31c](https://github.com/cotes2020/jekyll-theme-chirpy/commit/a51d31c55a37fbe034f0b0f699f4df0b6a14ba8f)), closes [#1049](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1049)
+
 ## [6.0.0](https://github.com/cotes2020/jekyll-theme-chirpy/compare/v5.6.1...v6.0.0) (2023-05-16)
 
 
