@@ -77,10 +77,10 @@ theme_mode: dark
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: "https://chirpy-img.netlify.app"
+img_cdn: "https://raw.githubusercontent.com/JensDeLeersnyderPXL/jensdl.be/master/assets/img"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/JensDeLeersnyderPXL/jensdl.be/master/assets/img/favicons/apple-touch-icon.png"
+avatar: "/main/profile_picture.png"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
