@@ -10,7 +10,7 @@
 
   /* Common color */
   --text-color: #34343c;
-  --text-muted-color: #8e8e8e;
+  --text-muted-color: #6a6a6a;
   --heading-color: black;
   --blockquote-border-color: #eeeeee;
   --blockquote-text-color: #9a9a9a;
@@ -23,25 +23,21 @@
   --btn-box-shadow: #eaeaea;
   --checkbox-color: #c5c5c5;
   --checkbox-checked-color: #07a8f7;
-  --img-bg: radial-gradient(
-    circle,
-    rgb(255, 255, 255) 0%,
-    rgb(239, 239, 239) 100%
-  );
-  --shimmer-bg: linear-gradient(
-    90deg,
-    rgba(250, 250, 250, 0) 0%,
-    rgba(232, 230, 230, 1) 50%,
-    rgba(250, 250, 250, 0) 100%
-  );
+  --img-bg: radial-gradient(circle,
+      rgb(255, 255, 255) 0%,
+      rgb(239, 239, 239) 100%);
+  --shimmer-bg: linear-gradient(90deg,
+      rgba(250, 250, 250, 0) 0%,
+      rgba(232, 230, 230, 1) 50%,
+      rgba(250, 250, 250, 0) 100%);
 
   /* Sidebar */
   --sidebar-bg: #f6f8fa;
-  --sidebar-muted-color: #a2a19f;
+  --sidebar-muted-color: #626262;
   --sidebar-active-color: #1d1d1d;
-  --sidebar-hover-bg: rgb(227, 227, 227, 0.64);
+  --sidebar-hover-bg: rgba(160, 160, 160, 0.64);
   --sidebar-btn-bg: white;
-  --sidebar-btn-color: #8e8e8e;
+  --sidebar-btn-color: #4f4f4f;
   --avatar-border-color: white;
 
   /* Topbar */
@@ -106,4 +102,6 @@
   --timeline-color: rgba(0, 0, 0, 0.075);
   --timeline-node-bg: #c2c6cc;
   --timeline-year-dot-color: #ffffff;
-} /* light-scheme */
+}
+
+/* light-scheme */
