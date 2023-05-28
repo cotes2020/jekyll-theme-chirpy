@@ -5,7 +5,7 @@ theme: jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
-baseurl: ""
+baseurl: "/0xElshazly.github.io"
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -13,12 +13,12 @@ baseurl: ""
 lang: en
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Africa/Cairo
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: 0xElshazly # the main title
 
 tagline: A text-focused Jekyll theme # it will display as the sub-title
 
@@ -26,26 +26,26 @@ description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "https://0xElshazly.github.io"
 
 github:
-  username: github_username # change to your github username
+  username: 0xElshazly # change to your github username
 
 twitter:
-  username: twitter_username # change to your twitter username
+  username: 0xElshazly # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com # change to your email address
+  name: Mohamed Ayman Elshazly
+  email: mo.ayman.sa2019@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your twitter homepage
-    - https://github.com/username # change to your github homepage
+    - https://twitter.com/0x # change to your twitter homepage
+    - https://github.com/0xElshazly # change to your github homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.facebook.com/0xElshazly
+    - https://www.linkedin.com/in/0xelshazly
 
 google_site_verification: # fill in to your verification string
 
@@ -77,7 +77,7 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: "https://chirpy-img.netlify.app"
+img_cdn: "https://drive.google.com/file/d/1gAuYnA39WRDFDZSOPQiAbVjwWrLTlOLS/view?usp=sharing"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/commons/avatar.jpg"
