@@ -42,9 +42,6 @@ dayjs:
     relativeTime: https://cdn.jsdelivr.net/npm/dayjs@1.11.7/plugin/relativeTime.min.js
     localizedFormat: https://cdn.jsdelivr.net/npm/dayjs@1.11.7/plugin/localizedFormat.min.js
 
-countup:
-  js: https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js
-
 magnific-popup:
   css: https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css
   js: https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js
