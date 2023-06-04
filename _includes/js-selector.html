@@ -11,13 +11,6 @@
 
 <!-- layout specified -->
 
-{% if page.layout == 'post' %}
-  {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
-    <!-- pv-report needs countup.js -->
-    {% assign urls = urls | append: ',' | append: site.data.origin[type].countup.js %}
-  {% endif %}
-{% endif %}
-
 {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
   {% assign urls = urls | append: ',' | append: site.data.origin[type].lazysizes.js %}
 
