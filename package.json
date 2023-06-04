@@ -26,10 +26,10 @@
     "@babel/preset-env": "^7.20.2",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-terser": "^0.4.0",
-    "rimraf": "^4.4.1",
+    "rimraf": "^5.0.1",
     "rollup": "^3.20.2",
     "rollup-plugin-license": "^3.0.1",
     "stylelint": "^15.3.0",
-    "stylelint-config-standard-scss": "^7.0.1"
+    "stylelint-config-standard-scss": "^9.0.0"
   }
 }
