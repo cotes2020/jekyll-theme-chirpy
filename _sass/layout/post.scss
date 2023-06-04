@@ -380,7 +380,7 @@ h1 + .post-meta {
   }
 }
 
-@media all and (max-width: 576px) {
+@media all and (width <= 576px) {
   .preview-img[data-src] {
     margin-top: 2.2rem;
   }
@@ -395,14 +395,14 @@ h1 + .post-meta {
   }
 }
 
-@media all and (max-width: 768px) {
+@media all and (width <= 768px) {
   .post-content > p > img {
     max-width: calc(100% + 1rem);
   }
 }
 
 /* Hide SideBar and TOC */
-@media all and (max-width: 849px) {
+@media all and (width <= 849px) {
   .post-navigation {
     padding-left: 0;
     padding-right: 0;
