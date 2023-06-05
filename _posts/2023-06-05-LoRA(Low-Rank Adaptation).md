@@ -1,10 +1,9 @@
 ---
-title: LoRA(Low-Rank Adaptation) 정리
+title: "LoRA(Low-Rank Adaptation) 정리"
 author: Juwon Oh
-date: 2022-06-05 09:11:00 +0800
+date: 2022-06-05 09:11:00 +0900
 categories: [NLP]
 tags: [NLP, LoRA]
-pin: true
 ---
 
 ## LoRA의 문제의식
