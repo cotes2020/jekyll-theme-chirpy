@@ -59,7 +59,7 @@
   }
 }
 
-@media all and (max-width: 576px) {
+@media all and (width <= 576px) {
   #page-category,
   #page-tag {
     ul > li {
