@@ -97,7 +97,7 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: JensDeLeersnyderPXL/jensdl.be
-    repo_id: MDQ6VXNlcjU3NDUwMTQz
+    repo_id: R_kgDOJmozzg
     category: Comments
     category_id: DIC_kwDOJmozzs4CXDC_          
     mapping: pathname          # optional, default to 'pathname'
