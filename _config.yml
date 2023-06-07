@@ -99,8 +99,8 @@ comments:
     repo: JensDeLeersnyderPXL/jensdl.be
     repo_id: MDQ6VXNlcjU3NDUwMTQz
     category: Comments
-    category_id: pathname          
-    mapping: # optional, default to 'pathname'
+    category_id: DIC_kwDOJmozzs4CXDC_          
+    mapping: pathname          # optional, default to 'pathname'
     input_position: bottom   # optional, default to 'bottom'
     lang: en # optional, default to the value of `site.lang`
     reactions_enabled: 1 # optional, default to the value of `1`
