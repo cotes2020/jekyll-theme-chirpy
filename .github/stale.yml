@@ -1,17 +1,26 @@
-# Clean up the stale issues
+name: "Close stale issues and PRs"
 
-daysUntilStale: 30
-daysUntilClose: 1
+on:
+  schedule:
+    - cron: "0 0 * * *" # every day at 00:00 UTC
 
-exemptLabels:
-  - in progress
-  - pending
-
-staleLabel: stale
-
-markComment: >
-  This issue has been automatically marked as stale because it has not had
-  recent activity. It will be closed if no further activity occurs. Thank you
-  for your contributions.
-
-closeComment: false
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v8
+        with:
+          days-before-stale: 30
+          days-before-close: 1
+          stale-issue-label: stale
+          exempt-issue-milestones: pending
+          stale-issue-message: >
+            This issue has been automatically marked as stale because it has not had recent activity.
+            It will be closed if no further activity occurs.
+            Thank you for your contributions.
+          stale-pr-label: stale
+          exempt-pr-milestones: pending
+          stale-pr-message: >
+            This PR has been automatically marked as stale because it has not had recent activity.
+            It will be closed if no further activity occurs.
+            Thank you for your contributions.
