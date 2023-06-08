@@ -11,7 +11,7 @@ cdns:
 
 # fonts
 
-webfonts: https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;900&display=swap
+webfonts: https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap
 
 # Libraries
 
@@ -41,9 +41,6 @@ dayjs:
     locale: https://cdn.jsdelivr.net/npm/dayjs@1.11.7/locale/:LOCALE.min.js
     relativeTime: https://cdn.jsdelivr.net/npm/dayjs@1.11.7/plugin/relativeTime.min.js
     localizedFormat: https://cdn.jsdelivr.net/npm/dayjs@1.11.7/plugin/localizedFormat.min.js
-
-countup:
-  js: https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js
 
 magnific-popup:
   css: https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css

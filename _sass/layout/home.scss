@@ -139,7 +139,7 @@
 } /* .pagination */
 
 /* Tablet */
-@media all and (min-width: 768px) {
+@media all and (width >= 768px) {
   #post-list {
     %img-radius {
       border-radius: 0 $base-radius $base-radius 0;
@@ -148,7 +148,7 @@
     .card {
       .preview-img {
         width: 20rem;
-        height: 11.5rem; // can hold 2 lines each for title and content
+        height: 11.55rem; // can hold 2 lines each for title and content
       }
 
       .card-body {
@@ -173,7 +173,7 @@
 }
 
 /* Hide SideBar and TOC */
-@media all and (max-width: 830px) {
+@media all and (width <= 830px) {
   .pagination {
     justify-content: space-evenly;
 
@@ -186,7 +186,7 @@
 }
 
 /* Sidebar is visible */
-@media all and (min-width: 831px) {
+@media all and (width >= 831px) {
   #post-list {
     margin-top: 2.5rem;
   }
@@ -212,7 +212,7 @@
 }
 
 /* Panel is visible */
-@media all and (min-width: 1200px) {
+@media all and (width >= 1200px) {
   #post-list {
     padding-right: 0.5rem;
   }

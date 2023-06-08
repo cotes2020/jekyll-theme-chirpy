@@ -5,11 +5,7 @@ layout: default
 {% include lang.html %}
 {% include origin-type.html %}
 
-{% if layout.tail_includes %}
-  {% assign has_tail = true %}
-{% endif %}
-
-<div class="row{% unless has_tail %} mb-5{% endunless %}">
+<div class="row">
   <!-- core -->
   <div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pe-xl-4">
     {% capture padding %}
@@ -56,7 +52,7 @@ layout: default
 </div>
 
 <!-- tail -->
-{% if has_tail %}
+{% if layout.tail_includes %}
   <div class="row">
     <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-3 pe-xl-4 mt-5">
       {% for _include in layout.tail_includes %}
