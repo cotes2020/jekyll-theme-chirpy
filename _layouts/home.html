@@ -40,16 +40,7 @@ refactor: true
   {% endfor %}
 {% endif %}
 
-{% if paginator.total_pages > 1 %}
-  {% assign has_paginator = true %}
-{% endif %}
-
-<div
-  id="post-list"
-  {% unless has_paginator %}
-    class="mb-5"
-  {% endunless %}
->
+<div id="post-list">
   {% for post in posts %}
     <a href="{{ post.url | relative_url }}" class="card-wrapper">
       <div class="card post-preview flex-md-row-reverse">
@@ -65,7 +56,7 @@ refactor: true
 
           {% assign alt = post.image.alt | default: 'Preview Image' %}
 
-          <img src="{{ src }}" w="17" h="10" alt="{{ alt }}" {{ lqip }}>
+          <img src="{{ src }}" w="15" h="8" alt="{{ alt }}" {{ lqip }}>
         {% endif %}
 
         <div class="card-body d-flex flex-column">
@@ -114,6 +105,6 @@ refactor: true
 </div>
 <!-- #post-list -->
 
-{% if has_paginator %}
+{% if paginator.total_pages > 1 %}
   {% include post-paginator.html %}
 {% endif %}

@@ -280,6 +280,16 @@ i {
       margin-top: 0;
       margin-bottom: 0;
     }
+
+    /* [scroll-focus] added by `smooth-scroll.js` */
+    &:target:not([scroll-focus]),
+    &[scroll-focus='true'] > p {
+      background-color: var(--footnote-target-bg);
+      width: -moz-fit-content;
+      width: -webkit-fit-content;
+      width: fit-content;
+      transition: background-color 1.5s ease-in-out;
+    }
   }
 }
 
@@ -290,6 +300,12 @@ i {
 
     border-bottom-style: none !important;
     transition: background-color 1.5s ease-in-out;
+  }
+
+  /* [scroll-focus] added by `smooth-scroll.js` */
+  @at-root sup:target:not([scroll-focus]),
+    sup[scroll-focus='true'] > a#{&} {
+    background-color: var(--footnote-target-bg);
   }
 }
 
@@ -386,6 +402,10 @@ i {
       }
     }
   }
+}
+
+.pageviews .fa-spinner {
+  font-size: 80%;
 }
 
 .post-meta {
@@ -742,11 +762,11 @@ $btn-mb: 0.5rem;
 
   .site-title {
     font-weight: 900;
-    font-size: 1.75rem;
+    font-size: 2.5rem;
     line-height: 1.2;
     letter-spacing: 0.25px;
-    color: rgba(134, 133, 133, 0.99);
-    margin-top: 1.25rem;
+    color: rgba(8, 8, 8, 0.99);
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
 
     a {
@@ -756,7 +776,7 @@ $btn-mb: 0.5rem;
   }
 
   .site-subtitle {
-    font-size: 95%;
+    font-size: 1.3rem;
     color: var(--sidebar-muted-color);
     margin-top: 0.25rem;
     word-spacing: 1px;
@@ -770,7 +790,7 @@ $btn-mb: 0.5rem;
     margin-bottom: 2rem;
 
     li.nav-item {
-      opacity: 0.9;
+      opacity: 1;
       width: 100%;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
@@ -788,15 +808,17 @@ $btn-mb: 0.5rem;
         }
 
         i {
-          font-size: 95%;
-          opacity: 0.8;
+          font-size: 99%;
+          opacity: 1;
           margin-right: 1.5rem;
         }
 
         span {
-          font-size: 90%;
+          font-size: 1.3rem;
           letter-spacing: 0.2px;
         }
+
+        color: rgba(73, 72, 72, 0.99);
       }
 
       &.active {
@@ -910,12 +932,12 @@ $btn-mb: 0.5rem;
 #topbar {
   /* icons */
   i {
-    color: #999999;
+    color: #828181;
   }
 
   #breadcrumb {
-    font-size: 1rem;
-    color: gray;
+    font-size: 1.5rem;
+    color: rgb(59, 59, 59);
     padding-left: 0.5rem;
 
     a:hover {
@@ -1206,7 +1228,7 @@ $btn-mb: 0.5rem;
 
 */
 
-@media all and (width <= 576px) {
+@media all and (max-width: 576px) {
   #main-wrapper {
     min-height: calc(100vh - #{$footer-height-mobile});
   }
@@ -1232,7 +1254,7 @@ $btn-mb: 0.5rem;
   }
 }
 
-@media all and (width <= 768px) {
+@media all and (max-width: 768px) {
   %full-width {
     max-width: 100%;
   }
@@ -1248,7 +1270,7 @@ $btn-mb: 0.5rem;
 }
 
 /* hide sidebar and panel */
-@media all and (width <= 849px) {
+@media all and (max-width: 849px) {
   @mixin slide($append: null) {
     $basic: transform 0.4s ease;
 
@@ -1352,14 +1374,14 @@ $btn-mb: 0.5rem;
 } /* max-width: 849px */
 
 /* Phone & Pad */
-@media all and (width >= 577px) and (width <= 1199px) {
+@media all and (min-width: 577px) and (max-width: 1199px) {
   footer .d-flex > div {
     width: 312px;
   }
 }
 
 /* Sidebar is visible */
-@media all and (width >= 850px) {
+@media all and (min-width: 850px) {
   /* Solved jumping scrollbar */
   html {
     overflow-y: scroll;
@@ -1428,7 +1450,7 @@ $btn-mb: 0.5rem;
 }
 
 /* Pad horizontal */
-@media all and (width >= 992px) and (width <= 1199px) {
+@media all and (min-width: 992px) and (max-width: 1199px) {
   #main .col-lg-11 {
     flex: 0 0 96%;
     max-width: 96%;
@@ -1436,7 +1458,7 @@ $btn-mb: 0.5rem;
 }
 
 /* Compact icons in sidebar & panel hidden */
-@media all and (width >= 850px) and (width <= 1199px) {
+@media all and (min-width: 850px) and (max-width: 1199px) {
   #search-results > div {
     max-width: 700px;
   }
@@ -1451,7 +1473,7 @@ $btn-mb: 0.5rem;
 }
 
 /* panel hidden */
-@media all and (width <= 1199px) {
+@media all and (max-width: 1199px) {
   #panel-wrapper {
     display: none;
   }
@@ -1463,7 +1485,7 @@ $btn-mb: 0.5rem;
 
 /* --- desktop mode, both sidebar and panel are visible --- */
 
-@media all and (width >= 1200px) {
+@media all and (min-width: 1200px) {
   #back-to-top {
     bottom: 6.5rem;
   }
@@ -1494,7 +1516,7 @@ $btn-mb: 0.5rem;
   }
 
   .post-content {
-    font-size: 1.03rem;
+    font-size: 1.1rem;
   }
 
   footer {
@@ -1504,13 +1526,13 @@ $btn-mb: 0.5rem;
   }
 }
 
-@media all and (width >= 1400px) {
+@media all and (min-width: 1400px) {
   #back-to-top {
     right: calc((100vw - #{$sidebar-width} - 1140px) / 2 + 3rem);
   }
 }
 
-@media all and (width >= 1650px) {
+@media all and (min-width: 1650px) {
   $icon-gap: 1rem;
 
   #main-wrapper,
