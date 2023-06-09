@@ -3,18 +3,15 @@
  */
 
 export function back2top() {
-  const $window = $(window);
-  const $btn = $('#back-to-top');
-
-  $window.on('scroll', () => {
-    if ($window.scrollTop() > 50) {
-      $btn.fadeIn();
+  $(window).on('scroll', () => {
+    if ($(window).scrollTop() > 50) {
+      $('#back-to-top').fadeIn();
     } else {
-      $btn.fadeOut();
+      $('#back-to-top').fadeOut();
     }
   });
 
-  $btn.on('click', () => {
-    $window.scrollTop(0);
+  $('#back-to-top').on('click', () => {
+    window.scrollTo(0, 0);
   });
 }

@@ -56,21 +56,33 @@ tail_includes:
         {% assign authors = page.authors %}
       {% endif %}
 
+
       {{ site.data.locales[lang].post.written_by }}
 
       <em>
-      {% if authors %}
+        {{ page.author}}
+      <!-- {% if authors %}
         {% for author in authors %}
           <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
           {% unless forloop.last %}</em>, <em>{% endunless %}
         {% endfor %}
       {% else %}
         <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
-      {% endif %}
+      {% endif %} -->
       </em>
     </span>
 
     <div>
+      <!-- page views -->
+      {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
+      <span>
+        <em id="pv" class="pageviews">
+          <i class="fas fa-spinner fa-spin fa-fw"></i>
+        </em>
+        {{ site.data.locales[lang].post.pageview_measure }}
+      </span>
+      {% endif %}
+
       <!-- read time -->
       {% include read-time.html content=content prompt=true lang=lang %}
     </div>
