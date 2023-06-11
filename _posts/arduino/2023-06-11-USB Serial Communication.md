@@ -4,6 +4,10 @@ date: 2023-06-11 23:36:55 +0900
 author: kkankkandev
 categories: [Aduino, USB Serial Communication]
 tags: [aduino, usb serial communication]     # TAG names should always be lowercase
+image:
+  path: https://github.com/War-Oxi/Oxi/assets/72260110/3af8c7c9-cc3a-4fed-84d5-c736bad8ba53
+  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
+  alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 
 # Chapter 07. USB Serial Communication
@@ -16,7 +20,8 @@ tags: [aduino, usb serial communication]     # TAG names should always be lowerc
 ## Serial Port
 
 <!-- ![Untitled 1](/assets/img/Untitled.png) -->
-![사진1](https://private-user-images.githubusercontent.com/72260110/244950819-ff29f2ef-5e57-4237-90fc-03829bc13a87.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg2NTA3ODMzLCJuYmYiOjE2ODY1MDc1MzMsInBhdGgiOiIvNzIyNjAxMTAvMjQ0OTUwODE5LWZmMjlmMmVmLTVlNTctNDIzNy05MGZjLTAzODI5YmMxM2E4Ny5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNjExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDYxMVQxODE4NTNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xYzVkZDNhYzRhYjk1NmMyZTQ4NmMxZGE1MWRkMTZjMzcwY2I0Yzg2OTNmM2I5ZmNjZTcxMmZhYzM0OThiODcyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hPDO5u1ZdA43cOs0uGEJZRh4PfsrwoCRYxIj_NW71jk)
+<!-- ![사진1](https://private-user-images.githubusercontent.com/72260110/244950819-ff29f2ef-5e57-4237-90fc-03829bc13a87.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg2NTA3ODMzLCJuYmYiOjE2ODY1MDc1MzMsInBhdGgiOiIvNzIyNjAxMTAvMjQ0OTUwODE5LWZmMjlmMmVmLTVlNTctNDIzNy05MGZjLTAzODI5YmMxM2E4Ny5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNjExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDYxMVQxODE4NTNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xYzVkZDNhYzRhYjk1NmMyZTQ4NmMxZGE1MWRkMTZjMzcwY2I0Yzg2OTNmM2I5ZmNjZTcxMmZhYzM0OThiODcyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hPDO5u1ZdA43cOs0uGEJZRh4PfsrwoCRYxIj_NW71jk) -->
+![사진1](https://github.com/War-Oxi/Oxi/assets/72260110/3af8c7c9-cc3a-4fed-84d5-c736bad8ba53)
 <!-- ![사진2](_site/assets/img/favicons/android-chrome-512x512.png) -->
 
 
@@ -40,7 +45,7 @@ tags: [aduino, usb serial communication]     # TAG names should always be lowerc
 - USB-Serial 변환을 하기 위해서는 **FTDI**와 Silicon Labs에서 만든 칩(**CP210x**)이 흔히 사용되며 이들 칩은 Serial과 USB 사이의 변환 전용으로 사용 됨
 - FTDI 칩이나 CP210 칩을 컴퓨터에 연결하면 컴퓨터에서는 DB9 포트와 같은 방법으로 제어할 수 잇는 ‘**가상 시리얼 포트**’가 나타남
 
-![사진2](https://private-user-images.githubusercontent.com/72260110/244950804-f0cca405-1d26-47dc-a23f-e444c4a1e47f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg2NTA3ODMzLCJuYmYiOjE2ODY1MDc1MzMsInBhdGgiOiIvNzIyNjAxMTAvMjQ0OTUwODA0LWYwY2NhNDA1LTFkMjYtNDdkYy1hMjNmLWU0NDRjNGExZTQ3Zi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNjExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDYxMVQxODE4NTNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jY2UwYzk2Yzk1Y2EzYzFhNDI5NDI2YzU5NzU5Zjc5NGJiOWIzOGM4ODNlYTVjMzAxM2UxNTYyY2ZjZWNmOTE2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.KXSre2KTNXcyWT8YPaJeXpvs_AJjslDAxZzM-VaWOtg)
+![사진2](https://github.com/War-Oxi/Oxi/assets/72260110/04f5d508-9ead-4b1f-afb0-d2d1925964e2)
 
 <aside>
 👨🏽‍🦯 마이크로컨트롤러가 동작할 때 USB를 통해 컴퓨터와 연결되어 있지 않아도 된다면 분리가 가능한 FTDI 프로그래머를 사용하는 것이 좋음
