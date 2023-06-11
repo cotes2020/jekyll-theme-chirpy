@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Good morning, and in case I don't see ya: Good afternoon, good evening, and good night. - The Truman Show.
+> Good morning, and in case I don't see ya: Good afternoon, good evening, and good night. <br>- The Truman Show.
 {: .prompt-tip }
 
 Chinese individual currently working in Japan.
