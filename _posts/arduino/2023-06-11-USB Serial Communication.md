@@ -4,8 +4,6 @@ date: 2023-06-11 23:36:55 +0900
 author: kkankkandev
 categories: [Aduino, USB Serial Communication]
 tags: [aduino, usb serial communication]     # TAG names should always be lowercase
-image:
-  path: https://private-user-images.githubusercontent.com/72260110/244950819-ff29f2ef-5e57-4237-90fc-03829bc13a87.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg2NTA3ODMzLCJuYmYiOjE2ODY1MDc1MzMsInBhdGgiOiIvNzIyNjAxMTAvMjQ0OTUwODE5LWZmMjlmMmVmLTVlNTctNDIzNy05MGZjLTAzODI5YmMxM2E4Ny5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNjExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDYxMVQxODE4NTNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xYzVkZDNhYzRhYjk1NmMyZTQ4NmMxZGE1MWRkMTZjMzcwY2I0Yzg2OTNmM2I5ZmNjZTcxMmZhYzM0OThiODcyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hPDO5u1ZdA43cOs0uGEJZRh4PfsrwoCRYxIj_NW71jk
 ---
 
 # Chapter 07. USB Serial Communication
