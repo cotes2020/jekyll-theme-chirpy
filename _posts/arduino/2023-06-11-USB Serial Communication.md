@@ -4,6 +4,7 @@ date: 2023-06-11 23:36:55 +0900
 author: kkankkandev
 categories: [Aduino, USB Serial Communication]
 tags: [aduino, usb serial communication]     # TAG names should always be lowercase
+img_path: /_posts/arduino/2023-06-11-USB_Serial_Communication
 ---
 
 # Chapter 07. USB Serial Communication
@@ -15,9 +16,7 @@ tags: [aduino, usb serial communication]     # TAG names should always be lowerc
 
 ## Serial Port
 
-![RS-232 [표준 시리얼 포트]](https://github.com/War-Oxi/Oxi/assets/72260110/ff29f2ef-5e57-4237-90fc-03829bc13a87)
-
-RS-232 [표준 시리얼 포트]
+![Untitled 1](/assets/img/Untitled.png)
 
 - Arduino Uno의 0번과 1번 핀으로 시리얼 통신 수행 → 하드웨어 시리얼 포트
 - 최근에는 시리얼 포트가 장착된 컴퓨터가 거의 없지만 USB 포트를 DB9 시리얼 포트로 변환하는 어댑터는 여전히 사용하고 있음
@@ -38,7 +37,7 @@ RS-232 [표준 시리얼 포트]
 - USB-Serial 변환을 하기 위해서는 **FTDI**와 Silicon Labs에서 만든 칩(**CP210x**)이 흔히 사용되며 이들 칩은 Serial과 USB 사이의 변환 전용으로 사용 됨
 - FTDI 칩이나 CP210 칩을 컴퓨터에 연결하면 컴퓨터에서는 DB9 포트와 같은 방법으로 제어할 수 잇는 ‘**가상 시리얼 포트**’가 나타남
 
-![Untitled](https://github.com/War-Oxi/Oxi/assets/72260110/f0cca405-1d26-47dc-a23f-e444c4a1e47f))
+![사진1](/assets/img/Untitled%201.png)
 
 <aside>
 👨🏽‍🦯 마이크로컨트롤러가 동작할 때 USB를 통해 컴퓨터와 연결되어 있지 않아도 된다면 분리가 가능한 FTDI 프로그래머를 사용하는 것이 좋음
