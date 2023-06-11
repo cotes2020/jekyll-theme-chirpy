@@ -6,8 +6,6 @@ categories: [Aduino, USB Serial Communication]
 tags: [aduino, usb serial communication]     # TAG names should always be lowercase
 image:
   path: https://github.com/War-Oxi/Oxi/assets/72260110/3af8c7c9-cc3a-4fed-84d5-c736bad8ba53
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
-  alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 
 # Chapter 07. USB Serial Communication
