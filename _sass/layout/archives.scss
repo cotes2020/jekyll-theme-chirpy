@@ -133,7 +133,7 @@
   }
 } /* #archives */
 
-@media all and (max-width: 576px) {
+@media all and (width <= 576px) {
   #archives {
     margin-top: -1rem;
 
