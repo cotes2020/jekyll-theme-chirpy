@@ -10,9 +10,11 @@ This blog is dedicated to my friend, Liu.
 
 A data scientist is a skilled professional who utilizes their expertise in statistics, mathematics, programming, and domain knowledge to extract insights and valuable knowledge from large and complex datasets. They employ various techniques, such as data mining, machine learning, and statistical modeling, to analyze data, uncover patterns, and generate meaningful insights that drive informed decision-making in organizations.
 
+Bilibili offers numerous high-quality courses. Choose the one that best suits you and remember to never give up!
+
 **Relevant skills**:
 
-Programming languages: Python, SQL, Oracle, R, Html, CSS, Angular, JavaScript etc.
+Programming languages: Python, SQL, Oracle, R, HTML, CSS, Angular, JavaScript etc.
 
 Data visualization: Excel, Tableau, PowerBI etc.
 

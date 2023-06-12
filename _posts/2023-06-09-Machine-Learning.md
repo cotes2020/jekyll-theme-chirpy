@@ -92,7 +92,7 @@ _yolov1_
 <p style="font-size:12.0pt"><span style="font-weight:bold">(5) 画像生成領域のモデル</span></p>
 <p style="font-size:12.0pt"><span style="font-weight:bold">(5)-1 GANs(Generative adversarial networks, 敵対的生成ネットワーク)</span></p>
 <p style="font-size:11.0pt">GANsは、2つのモデル（生成器: Generator と 識別器: Discriminator）を競わせ、リアルなデータと偽のデータを生成することで、新しいデータを生成する深層学習アルゴリズムです。生成器がデータを生成し、識別器がそれが本物かどうかを判断する過程が繰り返され、最終的に生成器は本物に近いデータを生成するようになります。<br>GANsは、生成能力が高いため、画像生成、画像修復、画像変換、音声生成、自然言語生成などの創造性のあるタスクに応用が可能です。また、データセットが不足している場合にも有用です。</p>
-<p style="font-size:11.0pt;color:blue"><br>モデル: CycleGAN, StyleGAN, DCGAN, Pix2Pix, SAGAN など</p>
+<p style="font-size:11.0pt;color:blue">モデル: CycleGAN, StyleGAN, DCGAN, Pix2Pix, SAGAN など</p>
 
 <p style="font-size:11.0pt">一般的なGANsモデル:</p>
 ![GANs](/images/AI/GANs.png){: width="560" height="500" }
@@ -104,7 +104,7 @@ _yolov1_
 <p style="font-size:11.0pt">Stable Diffusionは、GANと同様に画像生成領域で用いられる手法の一つです。Stable Diffusionは、大域的最適化(Global Optimization)問題を解くことで、ランダムノイズから高品質で自然な画像を生成することができ、生成された画像の安定性や品質に優れています。
     <br>Stable Diffusionは、ノイズから開始して、少しずつ画像を生成するプロセスを反復的に繰り返すことで、高品質な画像を生成します。画像生成だけでなく、画像修復や画像変換など、様々なタスクに応用することができます。GANよりも高品質な画像を生成することができ、また、GANに比べてモード崩壊のリスクが低いとされています。しかし、計算コストが高い、処理時間がかかることが欠点とされています。</p>
 
-<p style="font-size:11.0pt">Stable Diffusionモデルの説明: <br>画像をランダムノイズ化してから、そのノイズを利用して画像を生成するAIモデル作ることを目指す</p>
+<p style="font-size:11.0pt">Stable Diffusionモデルの説明: <br>画像をランダムノイズ化してから、そのノイズを利用して画像を生成するAIモデル作ることを目指す。</p>
 ![diffusion2](/images/AI/diffusion2.png)
 
 <p style="font-size:11.0pt">Stable Diffusionモデルで文字を入力し、画像を生成するdemo(Text to Image): <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion" target='_blank'>Stable Diffusion 2.1 Demo</a></p>
