@@ -18,7 +18,7 @@ timezone: Asia/Tokyo
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: soh # the main title
+title: Zeng # the main title
 
 tagline: Welcome to my world! # it will display as the sub-title
 
@@ -29,7 +29,7 @@ description: >- # used by seo meta and the atom feed
 url: "https://kerryzeng.github.io"
 
 github:
-  username: github_username # change to your github username
+  username: sohzeng # change to your github username
 
 twitter:
   username: twitter_username # change to your twitter username
@@ -37,7 +37,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: yangyang soh
+  name: yangyang
   email: kerryzeng5@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -83,7 +83,7 @@ img_cdn:
 avatar: "/images/cat.jpg"
 
 # boolean type, the global switch for TOC in posts.
-toc: true
+toc: false
 
 comments:
   active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
