@@ -7,6 +7,8 @@ order: 4
 > Good morning, and in case I don't see ya: Good afternoon, good evening, and good night. -- The Truman Show.
 {: .prompt-tip }
 
+![img-description](/images/myself.jpg)
+
 Hello, my name is Yangyang, and I am originally from China but currently working in Japan. I hold a bachelor's degree in Mechanical Engineering and a master's degree in Electronic Engineering. 
 
 Presently, I am employed at Txxx company, where I am actively involved in designing and developing smart manufacturing and AI solutions. Specifically, my work focuses on xxxxxxxx.
