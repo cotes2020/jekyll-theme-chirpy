@@ -4,13 +4,14 @@ author: yangyang
 date: 2023-06-12 00:00:00 +0900
 categories: [Blogging, Machine learning]
 tags: [Machine learning]
+img_path: /images/AI/
 ---
 
 Simply Chinese version: <a href="https://zhuanlan.zhihu.com/p/613580232" target='_blank'>Machine learning for beginners</a>
 
 <p style="font-size:16.0pt;color:#0070C0"><span style="font-weight:bold">機械学習を学ぶためのロードマップ</span></p>
-![AI](/images/AI/AI.jpg){: width="600" height="400" }
 
+![AI](AI.jpg){: .normal }{: width="600" height="400" }
 
 <p style="font-size:11.0pt">機械学習や深層学習は、人工知能の分野で重要な役割を果たしています。機械学習や深層学習は、コンピュータが膨大な量のデータを分析し、そのパターンを見つけることで、自動化、最適化、予測などの問題を解決することができます。
     <br>これにより、半導体、ビジネス、医療、金融、自動運転、ロボット工学などの分野で、大幅な効率化や革新がもたらされることが期待されています。
@@ -35,9 +36,9 @@ Simply Chinese version: <a href="https://zhuanlan.zhihu.com/p/613580232" target=
 
 <p style="font-size:14.0pt;color:#0070C0"><span style="font-weight:bold">2.基礎アルゴリズム</span></p>
 <p style="font-size:11.0pt">線形回帰, sklearn, 勾配降下法, k-means, L1/L2正則化, 最尤推定, SVM, 順伝播型ニューラルネットワーク, 決定木, PCA(主成分分析), ランダムフォレスト, ベイズの定理, Softmax Regression, 活性化関数(ReLU, sigmoid, tanh, GELU), dropout, weight decay, overfit, underfit, 勾配消失, 勾配爆発 など。</p>
-![SVM](/images/AI/SVM.png){: width="400" height="300" }
+![SVM](SVM.png){: width="400" height="300" }
 _非線形SVM_
-![sgd](/images/AI/sgd.png){: width="550" height="400" }
+![sgd](sgd.png){: width="550" height="400" }
 _Stochastic Gradient Descent_
 
 <p style="font-size:14.0pt;color:#0070C0"><span style="font-weight:bold">3.ネットワーク</span></p>
@@ -46,13 +47,13 @@ _Stochastic Gradient Descent_
 <p style="font-size:11.0pt">「回帰」とは、モデリングのための手法の一種であり、独立変数と従属変数の関係を分析することで、入力と出力の関係をキャラクタライズすることを目的としています。
     例えば、住宅や株の価格の予測、入院患者の滞在期間の予測、小売売上高の需要予測などに使われます。ただし、すべての予測問題が古典的な回帰問題ではありません。
     機械学習においては、一連のカテゴリ間のメンバーシップを予測する分類問題がよく用いられます。</p>
-![LR](/images/AI/LR.png){: width="400" height="300" }
+![LR](LR.png){: width="400" height="300" }
 
 <p style="font-size:12.0pt"><span style="font-weight:bold">(2) MLP(Multilayer perceptron, 多層パーセプトロン)</span></p>
 <p style="font-size:11.0pt">wiki: <a href="https://ja.wikipedia.org/wiki/%E5%A4%9A%E5%B1%A4%E3%83%91%E3%83%BC%E3%82%BB%E3%83%97%E3%83%88%E3%83%AD%E3%83%B3" target='_blank'>多層パーセプトロン</a></p>
 <p style="font-size:11.0pt">最も基本的なディープニューラルネットワークは、多層パーセプトロンと呼ばれます。これは、複数の層から成るニューロンのネットワークで、それぞれの層が下位層（入力を受け取る）と上位層（出力を与える）に完全に接続されています。多層パーセプトロンは、機械学習や人工知能の分野で広く使われており、画像認識、音声認識、自然言語処理などの問題に適用されます。ニューラルネットワークの各層では、入力信号に対して重み付けとバイアスが行われ、その出力が次の層に入力されることで、より高度な特徴の抽出や分類が行われます。</p>
 
-![MLP](/images/AI/MLP.png){: width="560" height="400" }
+![MLP](MLP.png){: width="560" height="400" }
 
 <p style="font-size:12.0pt"><span style="font-weight:bold">(3) CNN(Convolutional Neural Network, 畳み込みニューラルネットワーク)</span></p>
 <p style="font-size:11.0pt">wiki: <a href="https://ja.wikipedia.org/wiki/%E7%95%B3%E3%81%BF%E8%BE%BC%E3%81%BF%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF" target='_blank'>畳み込みニューラルネットワーク</a></p>
@@ -64,19 +65,19 @@ _Stochastic Gradient Descent_
     <br>3. その後の畳み込み層は、オブジェクトやオブジェクトの一部などの特徴を学習
     <br>4. 最後の全結合層は、前の層からの情報を統合し、出力を一次元の数値に変換します。この数値は、元の画像データがどのラベルに属するかを示す確率となります。
     <br>そのため、CNNは下位の畳み込み層（左側）では単純な特徴から始まり、上位の畳み込み層（右側）ではより抽象的な特徴まで幅広い範囲を学習します。</p>
-![cnn-features](/images/AI/cnn-features.png)
+![cnn-features](cnn-features.png)
 <p style="font-size:11.0pt;color:blue">モデル: alexnet, vgg, googlenet, resnet, densenet など<br>CVモデル: SSD, R-CNN, Faster R-CNN, YOLO など</p>
 
 <p style="font-size:11.0pt">LeNetモデル: <a href="https://ja.wikipedia.org/wiki/LeNet" target='_blank'>LeNet wikipedia</a></p>
-![lenet](/images/AI/lenet.png)
+![lenet](lenet.png)
 _LeNet_
 
 <p style="font-size:11.0pt">物体検出とインスタンスセグメンテーション: <a href="https://arxiv.org/abs/1703.06870" target='_blank'>Mask R-CNN論文</a></p>
-![maskRCNN](/images/AI/maskRCNN.png)
+![maskRCNN](maskRCNN.png)
 _MASKRCNN_
 
 <p style="font-size:11.0pt">YOLO_v1(You Only Look Once)モデル: <a href="https://arxiv.org/abs/1506.02640" target='_blank'>YOLO v1論文</a></p>
-![yolov1](/images/AI/yolov1.png)
+![yolov1](yolov1.png)
 _yolov1_
 
 <p style="font-size:12.0pt"><span style="font-weight:bold">(4) RNN(Recurrent neural network, 回帰型ニューラルネットワーク)</span></p>
@@ -87,7 +88,7 @@ _yolov1_
 <p style="font-size:11.0pt">YOLO_v1(You Only Look Once)モデル: <a href="https://arxiv.org/abs/1506.02640" target='_blank'>YOLO v1論文</a></p>
 
 <p style="font-size:11.0pt">一般的なRNNモデル:</p>
-![RNN](/images/AI/RNN.png)
+![RNN](RNN.png)
 
 <p style="font-size:12.0pt"><span style="font-weight:bold">(5) 画像生成領域のモデル</span></p>
 <p style="font-size:12.0pt"><span style="font-weight:bold">(5)-1 GANs(Generative adversarial networks, 敵対的生成ネットワーク)</span></p>
@@ -95,20 +96,20 @@ _yolov1_
 <p style="font-size:11.0pt;color:blue">モデル: CycleGAN, StyleGAN, DCGAN, Pix2Pix, SAGAN など</p>
 
 <p style="font-size:11.0pt">一般的なGANsモデル:</p>
-![GANs](/images/AI/GANs.png){: width="560" height="500" }
+![GANs](GANs.png){: width="560" height="500" }
 
 <p style="font-size:11.0pt">手書きの絵から本物そっくりの「猫」を作る: <a href="https://affinelayer.com/pixsrv/" target='_blank'>Image-to-Image Demo</a></p>
-![imagetoimage](/images/AI/imagetoimage.png){: width="550" height="500" }
+![imagetoimage](imagetoimage.png){: width="550" height="500" }
 
 <p style="font-size:12.0pt"><span style="font-weight:bold">(5)-2 Stable Diffusion</span></p>
 <p style="font-size:11.0pt">Stable Diffusionは、GANと同様に画像生成領域で用いられる手法の一つです。Stable Diffusionは、大域的最適化(Global Optimization)問題を解くことで、ランダムノイズから高品質で自然な画像を生成することができ、生成された画像の安定性や品質に優れています。
     <br>Stable Diffusionは、ノイズから開始して、少しずつ画像を生成するプロセスを反復的に繰り返すことで、高品質な画像を生成します。画像生成だけでなく、画像修復や画像変換など、様々なタスクに応用することができます。GANよりも高品質な画像を生成することができ、また、GANに比べてモード崩壊のリスクが低いとされています。しかし、計算コストが高い、処理時間がかかることが欠点とされています。</p>
 
 <p style="font-size:11.0pt">Stable Diffusionモデルの説明: <br>画像をランダムノイズ化してから、そのノイズを利用して画像を生成するAIモデル作ることを目指す。</p>
-![diffusion2](/images/AI/diffusion2.png)
+![diffusion2](diffusion2.png)
 
 <p style="font-size:11.0pt">Stable Diffusionモデルで文字を入力し、画像を生成するdemo(Text to Image): <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion" target='_blank'>Stable Diffusion 2.1 Demo</a></p>
-![diffusion1](/images/AI/diffusion1.png){: width="500" height="500" }
+![diffusion1](diffusion1.png){: width="500" height="500" }
 
 
 <p style="font-size:12.0pt"><span style="font-weight:bold">(6) Transformer(トランスフォーマー)</span></p>
@@ -122,19 +123,19 @@ _yolov1_
 <p style="font-size:11.0pt;color:blue">モデル: GPT (Generative Pre-trained Transformer), BERT (Bidirectional Encoder Representations from Transformers), ViT(Vision Transformer), DETR(End-to-End Object Detection with Transformers) など</p>
 <p style="font-size:11.0pt">GPTとは?</p>
 
-![GPT](/images/AI/GPT.png){: width="700" height="500" }
+![GPT](GPT.png){: width="700" height="500" }
 
 <p style="font-size:11.0pt">下記はTransformerによる自然言語処理(BERT モデル)の可視化: <br>Transformerは単語間の照応関係を考慮した学習が可能です。単語と全ての単語の間の関係をベクトルの内積で計算し、それを考慮することでより深く文脈を理解できます。
 <br>BERT論文: <a href="https://arxiv.org/abs/1810.04805v2" target='_blank'>BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a>
 <br>例文: today is a good day, let's go for a walk. goodとdayは最も強い関係があります。</p>
 
-![bert](/images/AI/bert.png){: width="300" height="300" }
+![bert](bert.png){: width="300" height="300" }
 
 <p style="font-size:11.0pt">下記はTransformerによるコンピュータビジョン(DETR モデル)の可視化: 
 <br>DETR(DEtection TRansformer)は、物体検出を行うために、まずCNNを使用して画像を特徴マップに変換します。そして、その特徴マップを入力として、Transformerを使用してオブジェクトの検出を行います。Tansformerを活用することでシンプルな構成でEnd to Endな物体検出を実現できます。
 <br>DETR論文: <a href="https://arxiv.org/abs/2005.12872" target='_blank'>End-to-End Object Detection with Transformers</a>
 <br>下図には、各ポイントが予測する際に注目している範囲が示されています。YES, I am ikun!</p>
-![DETR](/images/AI/DETR.png)
+![DETR](DETR.png)
 
 <p style="font-size:11.0pt">長文でしたが、最後まで読んで頂きましてありがとうございました。
     <br>この分野では、常に新しいテクノロジーやアルゴリズムが開発されているため、学習が止まることはありません。機械学習を学ぶことは、あなたのキャリアにとって非常に有益であり、現代社会においてもますます需要が高まっています。学び、実践し、ネットワークを構築し、質問してください。
