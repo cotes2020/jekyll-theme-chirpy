@@ -25,7 +25,8 @@ tagline: Cloud Engineer # it will display as the sub-title
 description: >- # used by seo meta and the atom feed
 
   Cloud & Web 공부 기록용 사이트
-  # A minimal, responsive and feature-rich Jekyll theme for technical writing.
+
+# A minimal, responsive and feature-rich Jekyll theme for technical writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "https://war-oxi.github.io"
