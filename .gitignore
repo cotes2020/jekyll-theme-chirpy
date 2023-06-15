@@ -9,7 +9,7 @@ _site
 
 # RubyGems
 *.gem
-
+./_posts/2019*
 # NPM dependencies
 node_modules
 package-lock.json
