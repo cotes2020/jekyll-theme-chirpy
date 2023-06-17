@@ -131,7 +131,7 @@ _yolov1_
 
 ![bert](bert.png){: width="300" height="300" }
 
-<p style="font-size:11.0pt">下記はTransformerによるコンピュータビジョン(DETR モデル)の可視化: 
+<p style="font-size:11.0pt">下記はTransformerによるコンピュータビジョン"DETR モデル"の可視化: 
 <br>DETR(DEtection TRansformer)は、物体検出を行うために、まずCNNを使用して画像を特徴マップに変換します。そして、その特徴マップを入力として、Transformerを使用してオブジェクトの検出を行います。Tansformerを活用することでシンプルな構成でEnd to Endな物体検出を実現できます。
 <br>DETR論文: <a href="https://arxiv.org/abs/2005.12872" target='_blank'>End-to-End Object Detection with Transformers</a>
 <br>下図には、各ポイントが予測する際に注目している範囲が示されています。YES, I am ikun!</p>

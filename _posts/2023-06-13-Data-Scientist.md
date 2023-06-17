@@ -28,7 +28,7 @@ Machine learning: CNN, RNN, Transformer etc.
 python code: recommend using Visual Studio Code + Miniconda, as it is convenient to manage virtual environments and use Jupyter Notebook.
   <br> <a href="https://docs.anaconda.com/free/anaconda/ide-tutorials/python-vsc/" target='_blank'>Python for Visual Studio Code</a>
 
-Git: should have a basic understanding of Git usage for version control.
+Git: should have a basic understanding of Git usage for version control. Fork recommended.
 
 SQL: for personal training, it might be challenging to use a large SQL database. Instead, you can use Python + SQLite.
 
