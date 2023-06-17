@@ -23,4 +23,4 @@ Some common types of power semiconductors and their operation:
 ![img-description](/images/semi/semitypes1.png){: width="700" height="600" }
 ![img-description](/images/semi/semitypes2.png){: width="700" height="600" }
 
-RectifierInverter
+**To be continued**
