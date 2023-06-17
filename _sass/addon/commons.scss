@@ -221,7 +221,7 @@ i {
   }
 
   > div {
-    padding-left: 1rem;
+    padding-left: 2rem;
     border-left: 1px solid var(--main-border-color);
 
     &:not(:last-child) {
@@ -810,11 +810,11 @@ $btn-mb: 0.5rem;
         i {
           font-size: 99%;
           opacity: 1;
-          margin-right: 1.5rem;
+          margin-right: 1rem;
         }
 
         span {
-          font-size: 1.3rem;
+          font-size: 1.4rem;
           letter-spacing: 0.2px;
         }
 
@@ -841,11 +841,11 @@ $btn-mb: 0.5rem;
   .sidebar-bottom {
     @include pl-pr(2rem);
 
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
 
     %button {
-      width: 1.75rem;
-      height: 1.75rem;
+      width: 2.35rem;
+      height: 2.35rem;
       margin-bottom: $btn-mb; // multi line gap
       border-radius: 50%;
       color: var(--sidebar-btn-color);
