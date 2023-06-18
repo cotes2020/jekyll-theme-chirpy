@@ -85,11 +85,11 @@
         <div class="col">
           <a href="{{ post.url | relative_url }}" class="card post-preview h-100">
             <div class="card-body">
-              {% include datetime.html date=post.date class="small" lang=include.lang %}
+              {% include_cached datetime.html date=post.date class="small" lang=include.lang %}
               <h4 class="pt-0 my-2" data-toc-skip>{{ post.title }}</h4>
               <div class="text-muted small">
                 <p>
-                  {% include no-linenos.html content=post.content %}
+                  {% include_cached no-linenos.html content=post.content %}
                   {{ content | markdownify | strip_html | truncate: 200 | escape }}
                 </p>
               </div>

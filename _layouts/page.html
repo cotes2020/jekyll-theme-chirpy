@@ -2,8 +2,8 @@
 layout: default
 ---
 
-{% include lang.html %}
-{% include origin-type.html %}
+{% include_cached lang.html %}
+{% include_cached origin-type.html %}
 
 <div class="row">
   <!-- core -->
@@ -15,7 +15,7 @@ layout: default
     <div class="post {{ padding | strip }} px-md-2">
       {% capture _content %}
       {% if layout.refactor or page.layout == 'page' %}
-        {% include refactor-content.html content=content lang=lang %}
+        {% include_cached refactor-content.html content=content lang=lang %}
       {% else %}
         {{ content }}
       {% endif %}
@@ -40,13 +40,13 @@ layout: default
   <!-- panel -->
   <div id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
     <div class="access">
-      {% include update-list.html lang=lang %}
-      {% include trending-tags.html lang=lang %}
+      {% include_cached update-list.html lang=lang %}
+      {% include_cached trending-tags.html lang=lang %}
     </div>
 
     {% for _include in layout.panel_includes %}
       {% assign _include_path = _include | append: '.html' %}
-      {% include {{ _include_path }} lang=lang %}
+      {% include_cached {{ _include_path }} lang=lang %}
     {% endfor %}
   </div>
 </div>
@@ -57,7 +57,7 @@ layout: default
     <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-3 pe-xl-4 mt-5">
       {% for _include in layout.tail_includes %}
         {% assign _include_path = _include | append: '.html' %}
-        {% include {{ _include_path }} lang=lang %}
+        {% include_cached {{ _include_path }} lang=lang %}
       {% endfor %}
     </div>
   </div>

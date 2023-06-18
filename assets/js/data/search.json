@@ -11,7 +11,7 @@ swcache: true
     "categories": {{ post.categories | join: ', ' | jsonify }},
     "tags": {{ post.tags | join: ', ' | jsonify }},
     "date": "{{ post.date }}",
-    {% include no-linenos.html content=post.content %}
+    {% include_cached no-linenos.html content=post.content %}
     {% assign _content = content | strip_html | strip_newlines %}
     "snippet": {{ _content | truncate: 200 | jsonify }},
     "content": {{ _content | jsonify }}

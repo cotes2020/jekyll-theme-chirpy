@@ -3,7 +3,7 @@ layout: page
 refactor: true
 ---
 
-{% include lang.html %}
+{% include_cached lang.html %}
 
 {% assign pinned = site.posts | where: 'pin', 'true' %}
 {% assign default = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
@@ -75,7 +75,7 @@ refactor: true
 
           <div class="card-text post-content mt-0 mb-2">
             <p>
-              {% include no-linenos.html content=post.content %}
+              {% include_cached no-linenos.html content=post.content %}
               {{ content | markdownify | strip_html | truncate: 200 | escape }}
             </p>
           </div>
@@ -84,7 +84,7 @@ refactor: true
             <div class="me-auto">
               <!-- posted date -->
               <i class="far fa-calendar fa-fw me-1"></i>
-              {% include datetime.html date=post.date lang=lang %}
+              {% include_cached datetime.html date=post.date lang=lang %}
 
               <!-- categories -->
               {% if post.categories.size > 0 %}

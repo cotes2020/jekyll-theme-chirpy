@@ -3,7 +3,7 @@ layout: page
 # The layout for Tag page
 ---
 
-{% include lang.html %}
+{% include_cached lang.html %}
 
 <div id="page-tag" class="mb-5">
   <h1 class="ps-lg-2">
@@ -16,7 +16,7 @@ layout: page
       <li class="d-flex justify-content-between px-md-3">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         <span class="dash flex-grow-1"></span>
-        {% include datetime.html date=post.date wrap='span' class='text-muted small' lang=lang %}
+        {% include_cached datetime.html date=post.date wrap='span' class='text-muted small' lang=lang %}
       </li>
     {% endfor %}
   </ul>

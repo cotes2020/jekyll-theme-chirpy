@@ -5,9 +5,9 @@ layout: compress
 
 <!doctype html>
 
-{% include origin-type.html %}
+{% include_cached origin-type.html %}
 
-{% include lang.html %}
+{% include_cached lang.html %}
 
 {% capture prefer_mode %}
   {% if site.theme_mode %}
@@ -17,20 +17,20 @@ layout: compress
 
 <!-- `site.alt_lang` can specify a language different from the UI -->
 <html lang="{{ site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
-  {% include head.html %}
+  {% include_cached head.html %}
 
   <body>
-    {% include sidebar.html lang=lang %}
+    {% include_cached sidebar.html lang=lang %}
 
     <div id="main-wrapper" class="d-flex justify-content-center">
       <div id="main" class="container px-xxl-5">
-        {% include topbar.html lang=lang %}
+        {% include_cached topbar.html lang=lang %}
         {{ content }}
-        {% include search-results.html lang=lang %}
+        {% include_cached search-results.html lang=lang %}
       </div>
     </div>
 
-    {% include footer.html lang=lang %}
+    {% include_cached footer.html lang=lang %}
 
     <div id="mask"></div>
 
@@ -65,12 +65,12 @@ layout: compress
       </div>
     {% endif %}
 
-    {% include js-selector.html %}
+    {% include_cached js-selector.html %}
 
     {% if page.mermaid %}
       {% include mermaid.html %}
     {% endif %}
 
-    {% include search-loader.html %}
+    {% include_cached search-loader.html %}
   </body>
 </html>
