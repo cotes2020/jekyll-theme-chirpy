@@ -1,2 +1,0 @@
-#first post
-[object Object]
