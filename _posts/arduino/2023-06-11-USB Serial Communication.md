@@ -4,6 +4,7 @@ date: 2023-06-11 23:36:55 +0900
 author: kkankkandev
 categories: [Aduino, USB Serial Communication]
 tags: [aduino, usb serial communication]     # TAG names should always be lowercase
+comments: true
 image:
   path: https://github.com/War-Oxi/Oxi/assets/72260110/3af8c7c9-cc3a-4fed-84d5-c736bad8ba53
 ---

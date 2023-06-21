@@ -3,6 +3,7 @@ title: Deep Learning과 TemsorFlow
 date: 2023-06-13 13:15:55 +0900
 author: kkankkandev
 categories: [AI, Deep Learning]
+comments: true
 tags: [TensorFlow, Deep Learning]     # TAG names should always be lowercase
 # image:
 #   path: https://github.com/War-Oxi/Oxi/assets/72260110/3af8c7c9-cc3a-4fed-84d5-c736bad8ba53
@@ -354,7 +355,6 @@ ex) CoLab의 TPU 사용
 > 
 
 시그모이드 함수에 비해 ReLU함수는 그레이디언트 소멸이 발생할 가능성이 낮다.
-
 ## 6.2 과잉 적합과 과잉 회피 전략
 
 ### 6.2.1. 과소 적합(underfitting)
