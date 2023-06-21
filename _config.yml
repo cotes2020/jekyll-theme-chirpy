@@ -85,10 +85,10 @@ avatar: "https://github.com/War-Oxi/Oxi/assets/72260110/2126b365-6d25-4a20-86c2-
 toc: true
 
 comments:
-  active: discus # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active:  # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
-    shortname: KKanKKanDev # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+    shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
     repo: # <gh-username>/<repo>
