@@ -108,9 +108,10 @@ _yolov1_
 <p style="font-size:11.0pt">Stable Diffusionモデルの説明: <br>画像をランダムノイズ化してから、そのノイズを利用して画像を生成するAIモデル作ることを目指す。</p>
 ![diffusion2](diffusion2.png)
 
+<p style="font-size:11.0pt">Extended reading for Stable Diffusion: <a href="https://mythicalai.substack.com/p/how-to-fine-tune-train-stable-diffusion" target='_blank'>How to fine tune / train Stable Diffusion using Textual Inversion</a></p>
+
 <p style="font-size:11.0pt">Stable Diffusionモデルで文字を入力し、画像を生成するdemo(Text to Image): <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion" target='_blank'>Stable Diffusion 2.1 Demo</a></p>
 ![diffusion1](diffusion1.png){: width="500" height="500" }
-
 
 <p style="font-size:12.0pt"><span style="font-weight:bold">(6) Transformer(トランスフォーマー)</span></p>
 <p style="font-size:11.0pt">論文: <a href="https://arxiv.org/abs/1706.03762" target='_blank'>Attention Is All You Need</a></p>
