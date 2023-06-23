@@ -83,7 +83,7 @@ img_cdn:
 avatar: "/images/cat.jpg"
 
 # boolean type, the global switch for TOC in posts.
-toc: false
+toc: true
 
 comments:
   active: 'giscus' # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
