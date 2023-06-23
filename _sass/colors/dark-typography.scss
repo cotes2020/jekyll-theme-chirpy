@@ -13,7 +13,7 @@
   --text-muted-color: rgb(107, 116, 124);
   --heading-color: #cccccc;
   --blockquote-border-color: rgb(66, 66, 66);
-  --blockquote-text-color: rgb(117, 117, 117);
+  --blockquote-text-color: var(--text-color);
   --link-color: rgb(138, 180, 248);
   --link-underline-color: rgb(82, 108, 150);
   --button-bg: rgb(39, 40, 43);
@@ -35,7 +35,7 @@
 
   /* Sidebar */
   --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
-  --sidebar-muted-color: #6d6c6b;
+  --sidebar-muted-color: darkgray;
   --sidebar-active-color: rgb(255, 255, 255, 0.95);
   --sidebar-hover-bg: rgb(54, 54, 54, 0.33);
   --sidebar-btn-bg: rgb(84, 83, 83, 0.3);
