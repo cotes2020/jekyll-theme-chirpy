@@ -91,6 +91,7 @@ img {
       &.lazyloaded {
         -webkit-animation: fade-in 0.35s ease-in;
         animation: fade-in 0.35s ease-in;
+        z-index: 0;
       }
     }
 
