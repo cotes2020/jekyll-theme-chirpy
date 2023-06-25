@@ -1,5 +1,5 @@
 ---
-title: JavaScript 연산자
+title: JavaScript 데이터 타입
 date: 2023-06-26 18:38:55 +0900
 author: kkankkandev
 categories: [Language, JavaScript]
@@ -32,18 +32,18 @@ comments: true
     - 즉 **모든 수를 실수로 처리**하며, 정수만 표현하기 위한 데이터 타입이 별도로 존재하지 않는다.
 - 자바스크립트는 2진수, 8진수, 16진수를 표현하기 위한 데이터 타입을 제공하지 않기 때문에 이들 값을 참조하면 모두 10진수로 해석된다.
     
-    ```jsx
-    var binary = 0b01000001 //2진수
-    var octal = 0o101;      //8진수
-    var hex = 0x41;         //16진수
-    
-    console.log(binary); //65
-    console.log(octal);  //65
-    console.log(hex);    //65
-    console.log(binary === octal); //true
-    console.log(octal === hex);    //true
-    ```
-    
+```javascript
+var binary = 0b01000001 //2진수
+var octal = 0o101;      //8진수
+var hex = 0x41;         //16진수
+
+console.log(binary); //65
+console.log(octal);  //65
+console.log(hex);    //65
+console.log(binary === octal); //true
+console.log(octal === hex);    //true
+```
+
 
 # 2. 문자열 타입
 
@@ -58,13 +58,13 @@ comments: true
 > 
 - 템플릿 리터럴은 일반 문자열과 비슷해 보이지만 백틱(₩₩)을 사용해 표현한다.
     
-    ```jsx
-    var template = `Template literal`;
-    ```
+```javascript
+var template = `Template literal`;
+```
     
 - 템플릿 리터럴 내에서는 표현식 삽입(expression interpolation)을 통해 간단히 문자열을 삽입할 수 있다.
 
-```jsx
+```javascript
 //템플릿 리터럴 미사용시.
 var first = 'Ung-mo';
 var last = 'Lee';
@@ -106,15 +106,15 @@ console.log(`My name is ${first} ${last}.`); //My name is Ung-mo Lee.
 - Symbol은 Symbol 함수를 호출해 생성한다.
     - 이때 생성된 Symbol 값은 외부에 노출되지 않으며, 다른 값과 절대 중복되지 않는 유일무이한 값이다.
     
-    ```jsx
-    var key = Symbol('key');
-    console.log(typeof key); //symbol
-    
-    var obj = {};
-    
-    obj[key] = 'value';
-    console.log(obj[key]); //value
-    ```
+```javascript
+var key = Symbol('key');
+console.log(typeof key); //symbol
+
+var obj = {};
+
+obj[key] = 'value';
+console.log(obj[key]); //value
+```
     
 
 # 8. 객체(object) 타입
