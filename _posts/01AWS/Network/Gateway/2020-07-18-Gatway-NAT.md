@@ -1,7 +1,7 @@
 ---
 title: AWS - VPC Gateway - NAT
 date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, AWSNetwork]
+categories: [01AWS, Network]
 tags: [AWS, Network, VPC]
 toc: true
 image:

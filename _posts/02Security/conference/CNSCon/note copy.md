@@ -575,7 +575,7 @@ overly lax firewall rules
 
 - ---
 
-##### Resource Requests and Limits Single misbehaving workload intentionally (e.g., fork bomb attack or cryptocurrency mining) or unintentionally (e.g., reading a large file in memory without input validation, horizontal autoscaling) can cause exhaustion of node and cluster level resources.
+##### Resource Requests and Limits Single misbehaving workload intentionally (e.g., fork bomb attack or cryptoccurency mining) or unintentionally (e.g., reading a large file in memory without input validation, horizontal autoscaling) can cause exhaustion of node and cluster level resources.
 
 - Applying different object level resource requests and limits via cgroups helps prevent such a scenario.
 

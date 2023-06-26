@@ -7,7 +7,28 @@ toc: true
 image:
 ---
 
-[toc]
+- [CodeDeploy](#codedeploy)
+  - [Benefits of AWS CodeDeploy](#benefits-of-aws-codedeploy)
+  - [Overview of CodeDeploy compute platforms](#overview-of-codedeploy-compute-platforms)
+    - [1.  EC2/On-Premises compute platform ](#1--ec2on-premises-compute-platform-)
+    - [2.  AWS Lambda ](#2--aws-lambda-)
+    - [3.  Amazon ECS ](#3--amazon-ecs-)
+  - [CodeDeploy deployment approaches types](#codedeploy-deployment-approaches-types)
+    - [blue/green deployment vs in-place deployment](#bluegreen-deployment-vs-in-place-deployment)
+    - [ In-place deployment ](#-in-place-deployment-)
+    - [ Blue/Green deployment ](#-bluegreen-deployment-)
+      - [Blue/green deployment on different compute platform](#bluegreen-deployment-on-different-compute-platform)
+      - [Blue/Green deployment through lambda and ECS](#bluegreen-deployment-through-lambda-and-ecs)
+      - [Blue/Green deployment on an EC2/on-premises compute platform](#bluegreen-deployment-on-an-ec2on-premises-compute-platform)
+      - [Blue/Green deployment through AWS CloudFormation](#bluegreen-deployment-through-aws-cloudformation)
+  - [AppSpec File - Application Specification File](#appspec-file---application-specification-file)
+    - [AppSpec files on an Amazon ECS compute platform](#appspec-files-on-an-amazon-ecs-compute-platform)
+    - [AppSpec files on an AWS Lambda compute platform](#appspec-files-on-an-aws-lambda-compute-platform)
+    - [AppSpec files on an EC2/on-premises compute platform](#appspec-files-on-an-ec2on-premises-compute-platform)
+    - [AppSpec File spacing](#appspec-file-spacing)
+    - [CodeDeploy Lifecycle Event Hooks](#codedeploy-lifecycle-event-hooks)
+  - [Setup an app in CodeDeploy](#setup-an-app-in-codedeploy)
+
 
 ---
 

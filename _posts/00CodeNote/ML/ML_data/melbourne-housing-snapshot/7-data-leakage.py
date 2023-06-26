@@ -40,10 +40,10 @@
 # If they order leather first, then you'll have that number available when you place your shoelace order, and you should be ok.
 
 
-# 3. Getting Rich With Cryptocurrencies?
+# 3. Getting Rich With Cryptoccurencies?
 # built a model that will let you turn your bonus into millions of dollars.
-# Specifically, his model predicts the price of a new cryptocurrency (like Bitcoin, but a newer one) one day ahead of the moment of prediction.
-# His plan is to purchase the cryptocurrency whenever the model says the price of the currency (in dollars) is about to go up.
+# Specifically, his model predicts the price of a new cryptoccurency (like Bitcoin, but a newer one) one day ahead of the moment of prediction.
+# His plan is to purchase the cryptoccurency whenever the model says the price of the currency (in dollars) is about to go up.
 
 # The most important features in his model are:
 # Current price of the currency
@@ -51,7 +51,7 @@
 # Change in the currency price in the last 24 hours
 # Change in the currency price in the last 1 hour
 # Number of new tweets in the last 24 hours that mention the currency
-# The value of the cryptocurrency in dollars has fluctuated up and down by over $100 in the last year, and yet his model's average error is less than  $1.
+# The value of the cryptoccurency in dollars has fluctuated up and down by over $100 in the last year, and yet his model's average error is less than  $1.
 # He says this is proof his model is accurate
 
 

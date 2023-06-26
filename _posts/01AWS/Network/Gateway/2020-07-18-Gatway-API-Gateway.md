@@ -1,14 +1,14 @@
 ---
 title: AWS - VPC Gateway - API Gateway
 date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, AWSNetwork]
+categories: [01AWS, Network]
 tags: [AWS, Network, VPC]
 toc: true
 image:
 ---
 
 - [AWS API Gateway](#aws-api-gateway)
-  - [benefits](#benefits)
+  - [basic](#basic)
   - [Security](#security)
     - [Application Firewall](#application-firewall)
     - [Resource Policy](#resource-policy)
@@ -18,9 +18,13 @@ image:
 
 # AWS API Gateway
 
+![Screen Shot 2020-07-10 at 16.55.04](/assets/img/post/Screen%20Shot%202020-07-10%20at%2016.55.04.png)
+
 ---
 
-## benefits
+## basic
+
+![Screen Shot 2020-07-27 at 00.02.48](/assets/img/post/Screen%20Shot%202020-07-27%20at%2000.02.48.png)
 
 1. fully managed service
 
