@@ -791,6 +791,7 @@ or
 ```
 
 Specify the background image **in the style element:**
+
 ```js
 <style>
     div {background-image: url('img_girl.jpg');}
@@ -799,6 +800,7 @@ Specify the background image **in the style element:**
 
 **the entire page to have a background image**
 specify the background image on the `<body>` element:
+
 ```js
 <style>
     body {background-image: url('img_girl.jpg');}
