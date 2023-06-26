@@ -957,8 +957,9 @@ $btn-mb: 0.5rem;
 /* 'Cancel' link */
 #search-cancel {
   color: var(--link-color);
-  margin-left: 1rem;
+  margin-left: 0.75rem;
   display: none;
+  white-space: nowrap;
 
   @extend %cursor-pointer;
 }
