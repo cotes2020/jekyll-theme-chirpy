@@ -2,8 +2,7 @@
 title: Semiconductor Basic Knowledge
 author: yangyang
 date: 2023-06-16 00:00:00 +0900
-categories: [Blogging, Semiconductor]
-tags: [Semiconductor]
+categories: [Semiconductor]
 ---
 
 ## Introduction

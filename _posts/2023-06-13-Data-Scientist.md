@@ -2,8 +2,7 @@
 title: Some tips for becoming a data scientist
 author: yangyang
 date: 2023-06-13 00:00:00 +0900
-categories: [Blogging, Machine learning]
-tags: [Machine learning]
+categories: [Machine learning]
 ---
 
 This post is intended for my friend, Liu.
