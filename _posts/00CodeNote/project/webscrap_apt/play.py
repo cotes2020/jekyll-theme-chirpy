@@ -19,6 +19,7 @@ LOGGER = logging.getLogger(__name__)
 # Retrieve log level from Lambda Environment Variables
 LOGGER.setLevel(level=os.environ.get("LOG_LEVEL", "INFO").upper())
 
+
 # APT Object
 class _DeHTMLParser_General(HTMLParser):
     def __init__(self):
@@ -34,7 +35,6 @@ class _DeHTMLParser_General(HTMLParser):
 
     # 当我们调用feed函数时，他将整个HTML文档传递进来并在遇到每个标签时调用下面这个函数(根据函数名就容易理解)
     def handle_starttag(self, tag, attrs):
-
         keep_line = [
             "special-details",
         ]
@@ -177,6 +177,7 @@ CLASS_DIC = {
     "modera": _DeHTMLParser_General(),
 }
 
+
 # Method_div
 def get_html(url):
     """
@@ -207,6 +208,7 @@ def get_html(url):
         html_text = r.text
     else:
         LOGGER.info("======= Error: can not get info from %s =======" % url)
+        html_text = ""
         # os.Exit(1)
     return html_text
 
