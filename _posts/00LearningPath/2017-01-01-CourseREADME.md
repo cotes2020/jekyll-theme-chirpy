@@ -8,6 +8,7 @@ toc: true
 ---
 
 - [Course - Learning Path](#course---learning-path)
+  - [Cyber Security Career path](#cyber-security-career-path)
   - [Cloud](#cloud)
     - [GCP](#gcp)
     - [AWS](#aws)
@@ -47,10 +48,17 @@ sleepy....
 5. translate to code
 6. run test cases
 7. debug failed test
-
 ```
 
 ---
+
+## Cyber Security Career path
+
+![IMG_1006](/assets/img/Fh8IBRdUoAAuOC5.jpeg)
+
+![IMG_1004](/assets/img/IMG_1004.JPG)
+
+![IMG_1005](/assets/img/IMG_1005.JPG)
 
 ## Cloud
 
