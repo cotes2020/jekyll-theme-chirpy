@@ -54,7 +54,6 @@ sleepy....
 
 ## Cyber Security Career path
 
-
 ![IMG_1006](/assets/img/Fh8IBRdUoAAuOC5.jpeg)
 
 ![IMG_1004](/assets/img/IMG_1004.JPG)
