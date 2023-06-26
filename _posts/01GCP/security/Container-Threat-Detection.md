@@ -22,7 +22,7 @@ key findings identified by Container Threat Detection:
 - **Suspicious Binary Executions**
   - can see when a binary that <font color=blue> was not part of the original container image </font> is executed, and triggers a finding
   - indicating that an attacker may have control of the workload and executing suspicious software
-    - such as malware or cryptocurrency mining software
+    - such as malware or cryptoccurency mining software
 - **Suspicious Library Loaded**
   - can detect when a library that <font color=blue> was not part of the original container image </font> is loaded
   - the attacker may has control of the workload and that they are executing arbitrary code.

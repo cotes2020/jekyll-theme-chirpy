@@ -467,7 +467,7 @@ https://www.classcentral.com/report/cs-online-courses/
 
 Real-Time Cyber Threat Detection and Mitigation
 Number Theory and Cryptography
-Blockchain and Cryptocurrency Explained
+Blockchain and Cryptoccurency Explained
 Enterprise and Infrastructure Security
 Introduction to Cyber Attacks
 Cyber Attack Countermeasures

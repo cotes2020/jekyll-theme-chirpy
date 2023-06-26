@@ -22,50 +22,54 @@
   - [Elasticsearch Plugins](#elasticsearch-plugins)
     - [Plugin Categories](#plugin-categories)
     - [Installing Elasticsearch Plugins](#installing-elasticsearch-plugins)
-  - [What’s next?](#whats-next)
 - [Logstash](#logstash)
+  - [What is Logstash?](#what-is-logstash)
   - [Logstash Configuration](#logstash-configuration)
     - [Input plugins](#input-plugins)
     - [Filter plugins](#filter-plugins)
     - [Output plugins](#output-plugins)
     - [Logstash Codecs](#logstash-codecs)
   - [Configuration example](#configuration-example)
-    - [Input](#input)
-    - [Filter](#filter)
-    - [Output](#output)
+    - [Input section](#input-section)
+    - [Filter section](#filter-section)
+    - [Output section](#output-section)
     - [Complete example](#complete-example)
+    - [Logstash pitfalls](#logstash-pitfalls)
   - [Monitoring Logstash](#monitoring-logstash)
-  - [java.base@11.0.3/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos](#javabase1103javautilconcurrentlocksabstractqueuedsynchronizerconditionobjectawaitnanos)
-  - [What next?](#what-next)
 - [Kibana](#kibana)
+  - [What is Kibana?](#what-is-kibana)
     - [Kibana searches cheat sheet](#kibana-searches-cheat-sheet)
   - [Kibana autocomplete](#kibana-autocomplete)
   - [Kibana visualizations](#kibana-visualizations)
     - [Visualization types](#visualization-types)
+  - [Kibana dashboards](#kibana-dashboards)
   - [Kibana pages](#kibana-pages)
   - [Kibana Elasticsearch index](#kibana-elasticsearch-index)
-  - [What’s next?](#whats-next-1)
+  - [What’s next?](#whats-next)
 - [Beats](#beats)
+  - [What are Beats?](#what-are-beats)
     - [Filebeat](#filebeat)
     - [Packetbeat](#packetbeat)
     - [Metricbeat](#metricbeat)
     - [Winlogbeat](#winlogbeat)
     - [Auditbeat](#auditbeat)
     - [Functionbeat](#functionbeat)
+  - [Configuring beats](#configuring-beats)
   - [Beats modules](#beats-modules)
   - [Configuration example](#configuration-example-1)
-- [Array of hosts to connect to.](#array-of-hosts-to-connect-to)
   - [Configuration best practices](#configuration-best-practices)
-  - [What next?](#what-next-1)
+  - [What next?](#what-next)
 - [ELK in Production](#elk-in-production)
   - [Don’t Lose Log Data](#dont-lose-log-data)
   - [Monitor Logstash/El## asticsearch Exceptions](#monitor-logstashel-asticsearch-exceptions)
   - [Keep up with growth and bursts](#keep-up-with-growth-and-bursts)
+  - [ELK Elasticity](#elk-elasticity)
     - [Kafka](#kafka)
     - [Logstash](#logstash-1)
     - [Elasticsearch cluster](#elasticsearch-cluster)
     - [Run in Different AZs (But Not in Different Regions)](#run-in-different-azs-but-not-in-different-regions)
   - [Security](#security)
+  - [Maintainability](#maintainability)
     - [Log Data Consistency](#log-data-consistency)
     - [Data Retention](#data-retention)
   - [Upgrades](#upgrades)
@@ -95,6 +99,7 @@
   - [Summing it up](#summing-it-up)
 - [Use Cases](#use-cases)
   - [Development and troubleshooting](#development-and-troubleshooting)
+  - [Cloud operations](#cloud-operations)
   - [Application perform## ance monitoring (APM)](#application-perform-ance-monitoring-apm)
   - [Security and compliance](#security-and-compliance)
     - [1.Anti-DDoS](#1anti-ddos)
@@ -119,406 +124,485 @@
     - [Logstash](#logstash-3)
     - [Kibana](#kibana-2)
       - [**Frequently Asked Questions**](#frequently-asked-questions)
-      - [What is the ELK Stack?](#what-is-the-elk-stack)
-      - [What are Beats?](#what-are-beats)
-      - [What is the ELK Stack used for?](#what-is-the-elk-stack-used-for)
+      - [What is the ELK Stack??](#what-is-the-elk-stack)
+      - [What are Beats?](#what-are-beats-1)
+      - [What is the ELK Stack used for??](#what-is-the-elk-stack-used-for)
+
+---
+
+# Elasticsearch
 
 
-Check out the other sections of this guide to understand more advanced topics related to working with Elasticsearch, Logstash, Kibana and Beats.
+* [An Elasticsearch Tutorial: Getting Started](https://logz.io/blog/elasticsearch-tutorial/)
+* [Elasticsearch Cheatsheet](https://logz.io/blog/elasticsearch-cheat-sheet/)
+* [Elasticsearch Queries: A Thorough Guide](https://logz.io/blog/elasticsearch-queries/)
+* [How to Avoid and Fix the Top 5 Elasticsearch Mistakes](https://logz.io/blog/the-top-5-elasticsearch-mistakes-how-to-avoid-them/)
 
-Elasticsearch
-=============
 
 ---
 
 ## What is Elasticsearch?
 
+> Initially released in 2010, Elasticsearch is a modern search and analytics engine which is based on Apache Lucene. Completely open source and built with Java
 
-Elasticsearch is the living heart of what is today the world’s most popular log analytics platform — the ELK Stack ([Elasticsearch](https://logz.io/blog/elasticsearch-tutorial/), [Logstash](https://logz.io/blog/logstash-tutorial/), and [Kibana](https://logz.io/blog/kibana-tutorial/)). The role played by Elasticsearch is so central that it has become synonymous with the name of the stack itself. Used primarily for search and log analysis, Elasticsearch is today one of the [most popular database systems](https://db-engines.com/en/blog_post/70) available today.
+> Installing and using Elasticsearch: [Elasticsearch tutorial.](https://logz.io/blog/elasticsearch-tutorial/)
 
-Initially released in 2010, Elasticsearch is a modern search and analytics engine which is based on Apache Lucene. Completely open source and built with Java, Elasticsearch is categorized as a NoSQL database. Elasticsearch stores data in an unstructured way, and up until recently you could not query the data using SQL. The new Elasticsearch SQL project will allow using SQL statements to interact with the data. You can read more on that in [this article](https://logz.io/blog/elasticsearch-sql-support/).
 
-Unlike most NoSQL databases, though, Elasticsearch has a strong focus on search capabilities and features — so much so, in fact, that the easiest way to get data from Elasticsearch is to search for it using its extensive [REST API](https://logz.io/blog/elasticsearch-api/).
+- the living heart of what is today the world’s most popular log analytics platform **the ELK Stack**
+  - [Elasticsearch](https://logz.io/blog/elasticsearch-tutorial/),
+  - [Logstash](https://logz.io/blog/logstash-tutorial/),
+  - and [Kibana](https://logz.io/blog/kibana-tutorial/).
 
-In the context of data analysis, Elasticsearch is used together with the other components in the ELK Stack, Logstash and Kibana, and plays the role of data indexing and storage.
+- The role played by Elasticsearch is so central that it has become synonymous with the name of the stack itself.
 
-Read more about installing and using Elasticsearch in our [Elasticsearch tutorial.](https://logz.io/blog/elasticsearch-tutorial/)
+- Used primarily for `search and log analysis`
+
+- Elasticsearch is today one of the [most popular database systems](https://db-engines.com/en/blog_post/70) available today.
+
+
+- Elasticsearch is categorized as a NoSQL database. Elasticsearch stores data in an `unstructured` way, and up until recently you could not query the data using SQL. The new Elasticsearch SQL project will allow using SQL statements to interact with the data. You can read more on that in [this article](https://logz.io/blog/elasticsearch-sql-support/).
+
+- Unlike most NoSQL databases, though, Elasticsearch has a strong focus on search capabilities and features. the easiest way to get data from Elasticsearch is to search for it using its extensive [REST API](https://logz.io/blog/elasticsearch-api/).
+
+- In the context of data analysis, Elasticsearch is used together with the other components in the ELK Stack, Logstash and Kibana, and plays the role of data indexing and storage.
 
 ---
 
 ## Basic Elasticsearch Concepts
 
 
-Elasticsearch is a feature-rich and complex system. Detailing and drilling down into each of its nuts and bolts is impossible. However, there are some basic concepts and terms that all Elasticsearch users should learn and become familiar with. Below are the six “must-know” concepts to start with.
+> [10 Elasticsearch Concepts You Need To Learn](https://logz.io/blog/10-elasticsearch-concepts/) article.
+
+
+Elasticsearch is a feature-rich and complex system.
+
+There are some basic concepts and terms that all Elasticsearch users should learn and become familiar with. Below are the 6 “must-know” concepts to start with.
+
+---
 
 ### Index
 
-Elasticsearch Indices are logical partitions of documents and can be compared to a database in the world of relational databases.
+- logical partitions of documents and can be compared to a database in the world of relational databases.
 
-Continuing our e-commerce app example, you could have one index containing all of the data related to the products and another with all of the data related to the customers.
+- you could have one index containing all of the data related to the products and another with all of the data related to the customers.
 
-You can have as many indices defined in Elasticsearch as you want but this can affect performance. These, in turn, will hold documents that are unique to each index.
+- You can have as many indices defined in Elasticsearch as you want but this can affect performance. These, in turn, will hold documents that are unique to each index.
 
-Indices are identified by lowercase names that are used when performing various actions (such as searching and deleting) against the documents that are inside each index.
+- Indices are identified by lowercase names that are used when performing various actions (such as searching and deleting) against the documents that are inside each index.
+
+---
 
 ### Documents
 
-Documents are JSON objects that are stored within an Elasticsearch index and are considered the base unit of storage. In the world of relational databases, documents can be compared to a row in a table.
 
-In the example of our e-commerce app, ou could have one document per product or one document per order. There is no limit to how many documents you can store in a particular index.
+- JSON objects that are stored within an Elasticsearch index and are considered the base unit of storage.
+  - For relational databases, documents can be compared to a row in a table.
 
-Data in documents is defined with fields comprised of keys and values. A key is the name of the field, and a value can be an item of many different types such as a string, a number, a boolean expression, another object, or an array of values.
+- There is no limit to how many documents you can store in a particular index.
 
-Documents also contain reserved fields that constitute the document metadata such as _index, _type and _id.
+- Data in documents is defined with fields comprised of keys and values.
+  - A key is the name of the field,
+  - A value can be an item of many different types such as a string, a number, a boolean expression, another object, or an array of values.
+
+- Documents also contain reserved fields that constitute the document metadata such as `_index`, `_type` and `_id`.
+
+---
 
 ### Types
 
-Elasticsearch types are used within documents to subdivide similar types of data wherein each type represents a unique class of documents. Types consist of a name and a mapping (see below) and are used by adding the __type_ field. This field can then be used for filtering when querying a specific type.
+- are used within documents to subdivide similar types of data wherein each type represents a unique class of documents.
+- Types consist of a name and a mapping and are used by adding the `__type_` field. This field can then be used for filtering when querying a specific type.
 
-Types are gradually being removed from Elasticsearch. Starting with Elasticsearch 6, indices can have only one mapping type. Starting in version 7.x, specifying types in requests is deprecated. Starting in version 8.x, specifying types in requests will no longer be supported.
+- Types are gradually being removed from Elasticsearch.
+  - Starting with Elasticsearch 6, indices can have only one mapping type.
+  - Starting in version 7.x, specifying types in requests is deprecated.
+  - Starting in version 8.x, specifying types in requests will no longer be supported.
+
+---
 
 ### Mapping
 
-Like a schema in the world of relational databases, mapping defines the different types that reside within an index. It defines the fields for documents of a specific type — the data type (such as string and integer) and how the fields should be indexed and stored in Elasticsearch.
+- Like a schema in the world of relational databases, mapping defines `the different types that reside within an index`.
 
-A mapping can be defined explicitly or generated automatically when a document is indexed using templates. (Templates include settings and mappings that can be applied automatically to a new index.)
+- It defines the fields for documents of a specific type
+  - the data type (such as string and integer)
+  - and how the fields should be indexed and stored in Elasticsearch.
+
+- A mapping can be defined explicitly or generated automatically when a document is indexed using templates. (Templates include settings and mappings that can be applied automatically to a new index.)
+
+---
 
 ### Shards
 
-Index size is a common cause of Elasticsearch crashes. Since there is no limit to how many documents you can store on each index, an index may take up an amount of disk space that exceeds the limits of the hosting server. As soon as an index approaches this limit, indexing will begin to fail.
+- **Index size** is a common cause of Elasticsearch crashes.
+- There is no limit to how many documents you can store on each index,
+   - an index may take up an amount of disk space that exceeds the limits of the hosting server.
+   - As soon as an index approaches this limit, indexing will begin to fail.
 
-One way to counter this problem is to split up indices horizontally into pieces called shards. This allows you to distribute operations across shards and nodes to improve performance. You can control the amount of shards per index and host these “index-like” shards on any node in your Elasticsearch cluster.
+- One way to counter this problem is split up indices horizontally into pieces called **shards**.
+  - This distribute operations across shards and nodes to improve performance.
+  - You can control the amount of shards per index and host these “index-like” shards on any node in your Elasticsearch cluster.
+
+---
 
 ### Replicas
 
-To allow you to easily recover from system failures such as unexpected downtime or network issues, Elasticsearch allows users to make copies of shards called replicas. Because replicas were designed to ensure high availability, they are not allocated on the same node as the shard they are copied from. Similar to shards, the number of replicas can be defined when creating the index but also altered at a later stage.
+- To allow you to easily recover from system failures such as unexpected downtime or network issues, Elasticsearch allows users to make `copies of shards` called **replicas**.
 
-For more information on these terms and additional Elasticsearch concepts, read the [10 Elasticsearch Concepts You Need To Learn](https://logz.io/blog/10-elasticsearch-concepts/) article.
+- Because replicas were designed to ensure high availability, they are not allocated on the same node as the shard they are copied from.
+
+- Similar to shards, the number of replicas can be defined when creating the index but also altered at a later stage.
+
 
 ---
 
 ## Elasticsearch Queries
 
+> Request Body Search in Elasticsearch, Query DSLand examples can be found in our: [Elasticsearch Queries: A Thorough Guide](https://logz.io/blog/elasticsearch-queries/).
 
-Elasticsearch is built on top of Apache Lucene and exposes Lucene’s query syntax. Getting acquainted with the syntax and its various operators will go a long way in helping you query Elasticsearch.
+- Elasticsearch is built on top of Apache Lucene and exposes Lucene’s query syntax. Getting acquainted with the syntax and its various operators will go a long way in helping you query Elasticsearch.
+
+---
 
 ### Boolean Operators
 
-As with most computer languages, Elasticsearch supports the AND, OR, and NOT operators:
+> supports the AND, OR, and NOT operators:
 
-*   **jack AND jill** — Will return events that contain both jack and jill
-*   **ahab NOT moby** — Will return events that contain ahab but not moby
-*   **tom OR jerry** — Will return events that contain tom or jerry, or both
+
+* **jack AND jill** — Will return events that contain both jack and jill
+
+* **ahab NOT moby** — Will return events that contain ahab but not moby
+
+* **tom OR jerry** — Will return events that contain tom or jerry, or both
+
+---
 
 ### Fields
 
-You might be looking for events where a specific field contains certain terms. You specify that as follows:
+> Looking for events where a specific field contains certain terms.
 
-*   **name:”Ned Stark”**
+* **name:”Need Stark”**
+
+---
+
 
 ### Ranges
 
-You can search for fields within a specific range, using square brackets for inclusive range searches and curly braces for exclusive range searches:
+> search for fields within a specific range, using square brackets for inclusive range searches and curly braces for exclusive range searches:
 
-*   **age:[3 TO 10]** — Will return events with age between 3 and 10
-*   **price:{100 TO 400}** — Will return events with prices between 101 and 399
-*   **name:[Adam TO Ziggy]** — Will return names between and including Adam and Ziggy
+
+* **age:[3 TO 10]** — Will return events with age between 3 and 10
+
+* **price:{100 TO 400}** — Will return events with prices between 101 and 399
+
+* **name:[Adam TO Ziggy]** — Will return names between and including Adam and Ziggy
+
+---
 
 ### Wildcards, Regexes and Fuzzy Searching
 
-A search would not be a search without the wildcards. You can use the * character for multiple character wildcards or the ? character for single character wildcards.
+A search would not be a search without the wildcards.
+
+You can use the * character for multiple character wildcards or the ? character for single character wildcards.
+
+---
+
 
 ### URI Search
 
-The easiest way to search your Elasticsearch cluster is through URI search. You can pass a simple query to Elasticsearch using the _q_ query parameter. The following query will search your whole cluster for documents with a name field equal to “travis”:
+The easiest way to search your Elasticsearch cluster is through **URI search**.
+- You can pass a simple query to Elasticsearch using the `_q_` query parameter.
+- The following query will search your whole cluster for documents with a name field equal to “travis”:
 
-*   **curl “localhost:9200/_search?q=name:travis”**
+* **curl “localhost:9200/_search?q=name:travis”**
 
-Combined with the Lucene syntax, you can build quite impressive searches. Usually, you’ll have to URL-encode characters such as spaces (it’s been omitted in these examples for clarity):
+Combined with the **Lucene syntax**, you can build quite impressive searches. Usually, you’ll have to URL-encode characters such as spaces (it’s been omitted in these examples for clarity):
 
-*   **curl “localhost:9200/_search?q=name:john~1 AND (age:[30 TO 40} OR surname:K*) AND -city”**
+* **curl “localhost:9200/_search?q=name:john~1 AND (age:[30 TO 40} OR surname:K*) AND -city”**
 
 A number of options are available that allow you to customize the URI search, specifically in terms of which analyzer to use (analyzer), whether the query should be fault-tolerant (lenient), and whether an explanation of the scoring should be provided (explain).
 
-Although the URI search is a simple and efficient way to query your cluster, you’ll quickly find that it doesn’t support all of the features offered to you by Elasticsearch. The full power of Elasticsearch is exposed through Request Body Search. Using Request Body Search allows you to build a complex search request using various elements and query clauses that will match, filter, and order as well as manipulate documents based on multiple criteria.
-
-More information on Request Body Search in Elasticsearch, Query DSLand examples can be found in our: [Elasticsearch Queries: A Thorough Guide](https://logz.io/blog/elasticsearch-queries/).
+Although the URI search is a simple and efficient way to query your cluster, you’ll quickly find that it doesn’t support all of the features offered to you by Elasticsearch. The full power of Elasticsearch is exposed through Request Body Search. Using Request Body Search can build a complex search request using various elements and query clauses that will match, filter, and order as well as manipulate documents based on multiple criteria.
 
 ---
 
 ## Elasticsearch REST API
 
+- REST API can integrate, manage and query the indexed data in countless different ways.
 
-One of the great things about Elasticsearch is its extensive REST API which allows you to integrate, manage and query the indexed data in countless different ways. Examples of using this API to integrate with Elasticsearch data are abundant, spanning different companies and use cases.
-
-Interacting with the API is easy — you can use any HTTP client but Kibana comes with a built-in tool called Console which can be used for this purpose.
+- Interacting with the API: use any HTTP client, but Kibana comes with a built-in tool called `Console` which can be used for this purpose.
 
 ![pic](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
 
 ![pic](https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2019/08/kibana_consolepage.png)
 
-As extensive as Elasticsearch REST APIs are, there is a learning curve. To get started, read the API conventions, learn about the different options that can be applied to the calls, how to construct the APIs and how to filter responses. A good thing to remember is that some APIs change and get deprecated from version to version, and it’s a good best practice to keep tabs on breaking changes.
+Below are some of the most common Elasticsearch API categories worth researching.
+- Usage examples are available in the [Elasticsearch API 101](https://logz.io/blog/elasticsearch-api/) article.
+- [Elasticsearch official documentation](https://www.elastic.co/guide/en/elasticsearch/reference/6.1/api-conventions.html)
 
-Below are some of the most common Elasticsearch API categories worth researching. Usage examples are available in the [Elasticsearch API 101](https://logz.io/blog/elasticsearch-api/) article. Of course, [Elasticsearch official documentation](https://www.elastic.co/guide/en/elasticsearch/reference/6.1/api-conventions.html) is an important resource as well.
+---
 
 ### Elasticsearch Document API
 
-This category of APIs is used for handling documents in Elasticsearch. Using these APIs, for example, you can create documents in an index, update them, move them to another index, or remove them.
+- used for handling documents in Elasticsearch.
+- Using these APIs, for example, you can create documents in an index, update them, move them to another index, or remove them.
 
 ### Elasticsearch Search API
 
-As its name implies, these API calls can be used to query indexed data for specific information. Search APIs can be applied globally, across all available indices and types, or more specifically within an index. Responses will contain matches to the specific query.
+- used to query indexed data for specific information.
+- Search APIs can be applied globally, across all available indices and types, or more specifically within an index. Responses will contain matches to the specific query.
 
 ### Elasticsearch Indices API
 
-This type of Elasticsearch API allows users to manage indices, mappings, and templates. For example, you can use this API to create or delete a new index, check if a specific index exists or not, and define a new mapping for an index.
+- to manage indices, mappings, and templates.
+- For example, you can use this API to create or delete a new index, check if a specific index exists or not, and define a new mapping for an index.
 
 ### Elasticsearch Cluster API
 
-These are cluster-specific API calls that allow you to manage and monitor your Elasticsearch cluster. Most of the APIs allow you to define which Elasticsearch node to call using either the internal node ID, its name or its address.
+- cluster-specific API calls
+- to manage and monitor your Elasticsearch cluster.
+- Most of the APIs allow you to define which Elasticsearch node to call using either the internal node ID, its name or its address.
 
 ---
 
 ## Elasticsearch Plugins
 
+Elasticsearch plugins are used to extend the basic Elasticsearch functionality in various, specific ways. (add security functionality, discovery mechanisms, and analysis capabilities to Elasticsearch).
 
-Elasticsearch plugins are used to extend the basic Elasticsearch functionality in various, specific ways. There are plugins, for example, that add security functionality, discovery mechanisms, and analysis capabilities to Elasticsearch.
+Elasticsearch plugins belong to two categories: [core plugins](https://github.com/elastic/elasticsearch/tree/master/plugins) or community plugins.
 
-Regardless of what functionalities they add, Elasticsearch plugins belong to either of the following two categories: [core plugins](https://github.com/elastic/elasticsearch/tree/master/plugins) or community plugins. The former is supplied as part of the Elasticsearch package and are maintained by the Elastic team while the latter is developed by the community and are thus separate entities with their own versioning and development cycles.
+The former is supplied as part of the Elasticsearch package and are maintained by the Elastic team while the latter is developed by the community and are thus separate entities with their own versioning and development cycles.
 
 ### Plugin Categories
 
-*   API Extension
-*   Alerting
-*   Analysis
-*   Discovery
-*   Ingest
-*   Management
-*   Mapper
-*   Security
-*   Snapshot/Restore
-*   Store
+* API Extension
+* Alerting
+* Analysis
+* Discovery
+* Ingest
+* Management
+* Mapper
+* Security
+* Snapshot/Restore
+* Store
+
+---
 
 ### Installing Elasticsearch Plugins
 
-Installing core plugins is simple and is done using a plugin manager. In the example below, I’m going to install the EC2 Discovery plugin. This plugin queries the AWS API for a list of EC2 instances based on parameters that you define in the plugin settings :
+Installing core plugins is simple and is done using a `plugin manager`.
 
+> In the example below, I’m going to install the EC2 Discovery plugin. This plugin queries the AWS API for a list of EC2 instances based on parameters that you define in the plugin settings :
+
+```bash
+# Plugins must be installed on every node in the cluster, and each node must be restarted after installation.
 cd /usr/share/elasticsearch
 sudo bin/elasticsearch-plugin install discovery-ec2
 
-Plugins must be installed on every node in the cluster, and each node must be restarted after installation.
-
-To remove a plugin, use:
-
+# To remove a plugin, use:
 sudo bin/elasticsearch-plugin remove discovery-ec2
+```
 
 Community plugins are a bit different as each of them has different installation instructions.
 
 Some community plugins are installed the same way as core plugins but require additional Elasticsearch configuration steps.
 
-What’s next?
-------------
-
-We described Elasticsearch, detailed some of its core concepts and explained the REST API. To continue learning about Elasticsearch, here are some resources you may find useful:
-
-*   [An Elasticsearch Tutorial: Getting Started](https://logz.io/blog/elasticsearch-tutorial/)
-*   [Elasticsearch Cheatsheet](https://logz.io/blog/elasticsearch-cheat-sheet/)
-*   [Elasticsearch Queries: A Thorough Guide](https://logz.io/blog/elasticsearch-queries/)
-*   [How to Avoid and Fix the Top 5 Elasticsearch Mistakes](https://logz.io/blog/the-top-5-elasticsearch-mistakes-how-to-avoid-them/)
-
-Logstash
-========
-
-Efficient log analysis is based on well-structured logs. The structure is what enables you to more easily search, analyze and visualize the data in whatever logging tool you are using. Structure is also what gives your data context. If possible, this structure needs to be tailored to the logs on the application level. In other cases, infrastructure and system logs, for example, it is up to you to give logs their structure by parsing them.
 
 ---
 
-What is Logstash?
+
+# Logstash
 
 
-In the ELK Stack ([Elasticsearch](https://logz.io/blog/elasticsearch-tutorial/), [Logstash](https://logz.io/blog/logstash-tutorial/) and [Kibana](https://logz.io/blog/kibana-tutorial/)), the crucial task of parsing data is given to the “L” in the stack – Logstash.
+* [Logstash tutorial](https://logz.io/blog/logstash-tutorial/)
+* [How to debug Logstash configurations](https://logz.io/blog/debug-logstash/)
+* [A guide to Logstash plugins](https://logz.io/blog/logstash-plugins/)
+* [Logstash filter plugins](https://logz.io/blog/5-logstash-filter-plugins/)
+* [Filebeat vs. Logstash](https://logz.io/blog/filebeat-vs-logstash/)
+* [Kibana tutorial](https://logz.io/blog/kibana-tutorial/)
 
-Logstash started out as an open source tool developed to handle the streaming of a large amount of log data from multiple sources. After being incorporated into the ELK Stack, it developed into the stack’s workhorse, in charge of also processing the log messages, enhancing them and massaging them and then dispatching them to a defined destination for storage (stashing).
 
-Thanks to a large ecosystem of plugins, Logstash can be used to collect, enrich and transform a wide array of different data types. There are over 200 different plugins for Logstash, with a vast community making use of its extensible features.
+## What is Logstash?
 
-It has not always been smooth sailing for Logstash. Due to some inherent performance issues and design flaws, Logstash has received a decent amount of complaints from users over the years. [Side projects were developed](https://logz.io/blog/filebeat-vs-logstash/) to alleviate some of these issues (e.g. Lumberjack, Logstash-Forwarder, Beats), and [alternative log aggregators](https://logz.io/blog/fluentd-logstash/) began competing with Logstash.
+> In the ELK Stack, the crucial task of parsing data is given to the “L” in the stack – Logstash.
 
-Yet despite these flaws, Logstash still remains a crucial component of the stack. Big steps have been made to try and alleviate these pains by introducing improvements to Logstash itself, such as a brand new execution engine made available in version 7.0, all ultimately helping to make logging with ELK much more reliable than what it used to be.
+> Installing and using Logstash in our [Logstash tutoria](https://logz.io/blog/logstash-tutorial/)l.
 
-Read more about installing and using Logstash in our [Logstash tutoria](https://logz.io/blog/logstash-tutorial/)l.
+
+- Efficient log analysis is based on **well-structured logs**.
+- The `structure` is what enables you to more easily search, analyze and visualize the data in whatever logging tool you are using. Structure is also what gives your data context.
+- If possible, this structure needs to be tailored to the logs on the application level.
+- In other cases, infrastructure and system logs, for example, it is up to you to give logs their structure by parsing them.
+
+- Logstash started out as an open source tool developed to handle the streaming of a large amount of log data from multiple sources. After being incorporated into the ELK Stack, it developed into the stack’s workhorse, in charge of also `processing the log messages, enhancing them and massaging them and then dispatching them to a defined destination for storage` (stashing).
+
+- Thanks to a large ecosystem of plugins, Logstash can be used to collect, enrich and transform a wide array of different data types. There are over 200 different plugins for Logstash, with a vast community making use of its extensible features.
+
+- Due to some inherent performance issues and design flaws, Logstash has received a decent amount of complaints from users over the years.
+  - [Side projects were developed](https://logz.io/blog/filebeat-vs-logstash/) to alleviate some of these issues (e.g. Lumberjack, Logstash-Forwarder, Beats),
+  - and [alternative log aggregators](https://logz.io/blog/fluentd-logstash/) began competing with Logstash.
+
+- Yet despite these flaws, Logstash still remains a crucial component of the stack. Big steps have been made to try and alleviate these pains by introducing improvements to Logstash itself, such as a brand new execution engine made available in version 7.0, all ultimately helping to make logging with ELK much more reliable than what it used to be.
+
 
 ---
 
 ## Logstash Configuration
 
+- Events aggregated and processed by Logstash go through three stages: <font color=red> collection, processing, and dispatching </font>.
 
-Events aggregated and processed by Logstash go through three stages: collection, processing, and dispatching. Which data is collected, how it is processed and where it is sent to, is defined in a Logstash configuration file that defines the pipeline.
+- Which data is collected, how it is processed and where it is sent to, is defined in a Logstash configuration file that defines the pipeline.
 
-Each of these stages is defined in the Logstash configuration file with what are called plugins — “Input” plugins for the data collection stage, “Filter” plugins for the processing stage, and “Output” plugins for the dispatching stage. Both the input and output plugins support [codecs](https://logz.io/blog/logstash-tutorial/) that allow you to encode or decode your data (e.g. json, multiline, plain).
+Each of these stages is defined in the Logstash **configuration** file with what are called `plugins`
+- “Input” plugins for the data collection stage,
+- “Filter” plugins for the processing stage,
+- and “Output” plugins for the dispatching stage.
+- Both the input and output plugins support [codecs](https://logz.io/blog/logstash-tutorial/) that allow you to encode or decode your data (e.g. json, multiline, plain).
+
+---
 
 ### Input plugins
 
-One of the things that makes Logstash so powerful is its ability to aggregate logs and events from various sources. Using more than 50 input plugins for different platforms, databases and applications, Logstash can be defined to collect and process data from these sources and send them to other systems for storage and analysis.
+- One of the things that makes Logstash so powerful is its ability to aggregate logs and events from various sources.
+  - Using more than 50 input plugins for different platforms, databases and applications, Logstash can be defined to collect and process data from these sources and send them to other systems for storage and analysis.
 
-The most common inputs used are: file, beats, syslog, http, tcp, udp, stdin, but you can ingest data from plenty of other sources.
+- The most common inputs used are: `file, beats, syslog, http, tcp, udp, stdin`, but you can ingest data from plenty of other sources.
 
 ### Filter plugins
 
-Logstash supports a number of extremely powerful filter plugins that enable you to enrich, manipulate, and process logs. It’s the power of these filters that makes Logstash a very versatile and valuable tool for parsing log data.
+- Logstash supports a number of extremely powerful filter plugins that enable `enrich, manipulate, and process logs`. These filters that makes Logstash a very **versatile and valuable tool for parsing log data**.
 
-Filters can be combined with conditional statements to perform an action if a specific criterion is met.
+- Filters can be combined with `conditional statements` to perform an action if a specific criterion is met.
 
-The most common inputs used are: grok, date, mutate, drop. You can read more about these and other in [5 Logstash Filter Plugins](https://logz.io/blog/5-logstash-filter-plugins/).
+- The most common inputs used are: `grok, date, mutate, drop`. You can read more about these and other in [5 Logstash Filter Plugins](https://logz.io/blog/5-logstash-filter-plugins/).
 
 ### Output plugins
 
-As with the inputs, Logstash supports a number of output plugins that enable you to push your data to various locations, services, and technologies. You can store events using outputs such as File, CSV, and S3, convert them into messages with RabbitMQ and SQS, or send them to various services like HipChat, PagerDuty, or IRC. The number of combinations of inputs and outputs in Logstash makes it a really versatile event transformer.
+- As with the inputs, Logstash supports a number of output plugins that enable you to push your data to various locations, services, and technologies.
+  - You can store events using outputs such as `File, CSV, and S3`, convert them into messages with `RabbitMQ and SQS`, or send them to various services `like HipChat, PagerDuty, or IRC`.
+  - The number of combinations of inputs and outputs in Logstash makes it a really versatile event transformer.
 
-Logstash events can come from multiple sources, so it’s important to check whether or not an event should be processed by a particular output. If you do not define an output, Logstash will automatically create a stdout output. An event can pass through multiple output plugins.
+- Logstash events can come from multiple sources, so it’s important to check whether or not an event should be processed by a particular output. If you do not define an output, Logstash will automatically create a stdout output. An event can pass through multiple output plugins.
 
 ### Logstash Codecs
 
-Codecs can be used in both inputs and outputs. Input codecs provide a convenient way to decode your data before it enters the input. Output codecs provide a convenient way to encode your data before it leaves the output.
+- Codecs can be used in both inputs and outputs.
+  - `Input codecs` provide a convenient way to `decode` your data before it enters the input.
+  - `Output codecs` provide a convenient way to `encode` your data before it leaves the output.
 
 Some common codecs:
-
-*   The default “plain” codec is for plain text with no delimitation between events
-*   The “json” codec is for encoding JSON events in inputs and decoding json messages in outputs — note that it will revert to plain text if the received payloads are not in a valid JSON format
-*   The “json_lines” codec allows you either to receive and encode json events delimited by n or to decode JSON messages delimited by n in outputs
-*   The “rubydebug,” which is very useful in debugging, allows you to output Logstash events as data Ruby objects
+* The default `“plain” codec` is for plain text with no delimitation between events
+* The `“json” codec` is for encoding JSON events in inputs and decoding json messages in outputs — note that it will revert to plain text if the received payloads are not in a valid JSON format
+* The `“json_lines”` codec can either to `receive and encode json events delimited by n` or to `decode JSON messages delimited by n` in outputs
+* The `“rubydebug”` which is very useful in debugging, can output Logstash events as data Ruby objects
 
 ---
 
 ## Configuration example
 
+- Logstash has a simple configuration `DSL` that enables you to `specify the inputs, outputs, and filters`, along with their specific options.
+- Order matters, specifically around filters and outputs, as the configuration is basically converted into code and then executed.
+- Keep this in mind when you’re writing your configs, and try to debug them.
 
-Logstash has a simple configuration DSL that enables you to specify the inputs, outputs, and filters described above, along with their specific options. Order matters, specifically around filters and outputs, as the configuration is basically converted into code and then executed. Keep this in mind when you’re writing your configs, and try to debug them.
 
-### Input
+### Input section
 
-The input section in the configuration file defines the input plugin to use. Each plugin has its own configuration options, which you should research before using.
+- defines the input plugin to use.
+- Each plugin has its own configuration options, which you should research before using.
 
 Example:
-
+```yaml
 input {
-
-file {
-
-path => "/var/log/apache/access.log"
-
-start_position => "beginning"
-
+  file {
+    path => "/var/log/apache/access.log"
+    start_position => "beginning"
+  }
 }
+```
 
-}
+> Here we are using the file input plugin. We entered the path to the file we want to collect, and defined the start position as beginning to process the logs from the beginning of the file.
 
-Here we are using the file input plugin. We entered the path to the file we want to collect, and defined the start position as beginning to process the logs from the beginning of the file.
 
-### Filter
+### Filter section
 
-The filter section in the configuration file defines what filter plugins we want to use, or in other words, what processing we want to apply to the logs. Each plugin has its own configuration options, which you should research before using.
+- defines what filter plugins we want to use, what processing we want to apply to the logs.
+- Each plugin has its own configuration options, which you should research before using.
 
 Example:
-
+```yaml
 filter {
-
-grok {
-
-match => { "message" => "%{COMBINEDAPACHELOG}" }
-
+  grok {
+    match => { "message" => "%{COMBINEDAPACHELOG}" }
+  }
+  date {
+    match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  }
+  geoip {
+    source => "clientip"
+  }
 }
-
-date {
-
-match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
-
-}
-
-geoip {
-
-source => "clientip"
-
-}
-
-}
+```
 
 In this example we are processing Apache access logs are applying:
+* A `_grok_` filter that parses the log string and populates the event with the relevant information.
+* A `_date_` filter to parse a date field which is a string as a _timestamp_ field (each Logstash pipeline requires a timestamp so this is a required filter).
+* A `_geoip_` filter to enrich the _clientip_ field with geographical data. Using this filter will add new fields to the event (e.g. _countryname_) based on the _clientip_ field.
 
-*   A _grok_ filter that parses the log string and populates the event with the relevant information.
-*   A _date_ filter to parse a date field which is a string as a _timestamp_ field (each Logstash pipeline requires a timestamp so this is a required filter).
-*   A _geoip_ filter to enrich the _clientip_ field with geographical data. Using this filter will add new fields to the event (e.g. _countryname_) based on the _clientip_ field.
 
-### Output
+### Output section
 
-The output section in the configuration file defines the destination to which we want to send the logs to. As before, each plugin has its own configuration options, which you should research before using.
+- defines the destination to which we want to send the logs to.
+- As before, each plugin has its own configuration options, which you should research before using.
 
 Example:
 
+```yaml
 output {
-
-elasticsearch {
-
-hosts => ["localhost:9200"]
-
+  elasticsearch {
+    hosts => ["localhost:9200"]
+  }
 }
+```
 
-}
+> In this example, we are defining a locally installed instance of Elasticsearch.
 
-In this example, we are defining a locally installed instance of Elasticsearch.
 
 ### Complete example
 
 Putting it all together, the Logstash configuration file should look as follows:
 
+```yaml
 input {
-
-file {
-
-path => "/var/log/apache/access.log"
-
-start_position => "beginning"
-
-}
-
+  file {
+    path => "/var/log/apache/access.log"
+    start_position => "beginning"
+  }
 }
 
 filter {
+  grok {
+    match => { "message" => "%{COMBINEDAPACHELOG}" }
+  }
 
-grok {
+  date {
+   match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  }
 
-match => { "message" => "%{COMBINEDAPACHELOG}" }
-
-}
-
-date {
-
-match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
-
-}
-
-geoip {
-
-source => "clientip"
-
-}
-
+  geoip {
+   source => "clientip"
+  }
 }
 
 output {
-
-elasticsearch {
-
-hosts => ["localhost:9200"]
-
+  elasticsearch {
+    hosts => ["localhost:9200"]
+  }
 }
-
-}
+```
 
 ---
 
-Logstash pitfalls
-
+### Logstash pitfalls
 
 As implied above, Logstash suffers from some inherent issues that are related to its design. Logstash requires JVM to run, and this dependency can be the root cause of significant memory consumption, especially when multiple pipelines and advanced filtering are involved.
 
@@ -526,11 +610,11 @@ Resource shortage, bad configuration, unnecessary use of plugins, changes in inc
 
 There are various ways to employ this safety net, both built into Logstash as well as some that involve adding middleware components to your stack. Here is a list of some best practices that will help you avoid some of the common Logstash pitfalls:
 
-*   Add a buffer – a recommended method involves adding a queuing layer between Logstash and the destination. The most popular methods use [Kafka](https://logz.io/blog/deploying-kafka-with-elk/), Redis and RabbitMQ.
-*   Persistent Queues – a built-in data resiliency feature in Logstash that allows you to store data in an internal queue on disk. Disabled by default — you need to enable the feature in the Logstash settings file.
-*   Dead Letter Queues – a mechanism for storing events that could not be processed on disk. Disabled by default — you need to enable the feature in the Logstash settings file.
-*   Keep it simple – try and keep your Logstash configuration as simple as possible. Don’t use plugins if there is no need to do so.
-*   [Test your configs](https://logz.io/blog/debug-logstash/) – do not run your Logstash configuration in production until you’ve tested it in a sandbox environment. Use online tools to make sure it doesn’t break your pipeline.
+* Add a buffer – a recommended method involves adding a queuing layer between Logstash and the destination. The most popular methods use [Kafka](https://logz.io/blog/deploying-kafka-with-elk/), Redis and RabbitMQ.
+* Persistent Queues – a built-in data resiliency feature in Logstash that can store data in an internal queue on disk. Disabled by default — you need to enable the feature in the Logstash settings file.
+* Dead Letter Queues – a mechanism for storing events that could not be processed on disk. Disabled by default — you need to enable the feature in the Logstash settings file.
+* Keep it simple – try and keep your Logstash configuration as simple as possible. Don’t use plugins if there is no need to do so.
+* [Test your configs](https://logz.io/blog/debug-logstash/) – do not run your Logstash configuration in production until you’ve tested it in a sandbox environment. Use online tools to make sure it doesn’t break your pipeline.
 
 For additional pitfalls to look out for, refer to the [5 Logstash Pitfalls](https://logz.io/blog/5-logstash-pitfalls-and-how-to-avoid-them/) article.
 
@@ -538,11 +622,13 @@ For additional pitfalls to look out for, refer to the [5 Logstash Pitfalls](http
 
 ## Monitoring Logstash
 
+- Logstash automatically records some information and metrics on the node running Logstash, JVM and running pipelines that can be used to monitor performance.
 
-Logstash automatically records some information and metrics on the node running Logstash, JVM and running pipelines that can be used to monitor performance. To tap into this information, you can use [monitoring API](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html).
+- To tap into this information, you can use [monitoring API](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html).
 
 For example, you can use the Hot Threads API to view Java threads with high CPU and extended execution times:
 
+```bash
 curl -XGET 'localhost:9600/_node/hot_threads?human=true'
 
 Hot threads at 2019-05-27T08:43:05+00:00, busiestThreads=10:
@@ -580,31 +666,21 @@ java.base@11.0.3/jdk.internal.misc.Unsafe.park(Native Method)
 java.base@11.0.3/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
 
 java.base@11.0.3/java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedNanos(AbstractQueuedSynchronizer.java:1079)
+```
 
 Alternatively, you can use monitoring UI within Kibana, available under Elastic’s Basic license.
 
-What next?
-----------
+---
 
-Logstash is a critical element in your ELK Stack, but you need to know how to use it both as an individual tool and together with the other components in the stack. Below is a list of other resources that will help you use Logstash.
 
-*   [Logstash tutorial](https://logz.io/blog/logstash-tutorial/)
-*   [How to debug Logstash configurations](https://logz.io/blog/debug-logstash/)
-*   [A guide to Logstash plugins](https://logz.io/blog/logstash-plugins/)
-*   [Logstash filter plugins](https://logz.io/blog/5-logstash-filter-plugins/)
-*   [Filebeat vs. Logstash](https://logz.io/blog/filebeat-vs-logstash/)
-*   [Kibana tutorial](https://logz.io/blog/kibana-tutorial/)
 
-Did we miss something? Did you find a mistake? We’re relying on your feedback to keep this guide up-to-date. Please add your comments at the bottom of the page, or send them to: elk-guide@logz.io
-
-Kibana
-======
+# Kibana
 
 No centralized logging solution is complete without an analysis and visualization tool. Without being able to efficiently query and monitor data, there is little use to only aggregating and storing it. Kibana plays that role in the ELK Stack — a powerful analysis and visualization layer on top of [Elasticsearch](https://logz.io/blog/elasticsearch-tutorial/) and [Logstash](https://logz.io/blog/logstash-tutorial/).
 
 ---
 
-What is Kibana?
+## What is Kibana?
 
 
 Completely open source, Kibana is a browser-based user interface that can be used to search, analyze and visualize the data stored in Elasticsearch indices (Kibana cannot be used in conjunction with other databases). Kibana is especially renowned and popular due to its rich graphical and visualization capabilities that allow users to explore large volumes of data.
@@ -624,10 +700,10 @@ By default, users now use a new querying language called KQL (Kibana Querying La
 
 Kibana querying is an art unto itself, and there are various methods you can use to perform searches on your data. Here are some of the most common search types:
 
-*   Free text searches – used for quickly searching for a specific string.
-*   Field-level searches – used for searching for a string within a specific field.
-*   Logical statements – used to combine searches into a logical statement.
-*   Proximity searches – used for searching terms within a specific character proximity.
+* Free text searches – used for quickly searching for a specific string.
+* Field-level searches – used for searching for a string within a specific field.
+* Logical statements – used to combine searches into a logical statement.
+* Proximity searches – used for searching terms within a specific character proximity.
 
 For a more detailed explanation of the different search types, check out the [Kibana Tutorial](https://logz.io/blog/kibana-tutorial/).
 
@@ -635,22 +711,22 @@ For a more detailed explanation of the different search types, check out the [Ki
 
 Below is a list of some tips and best practices for using the above-mentioned search types:
 
-*   Use free-text searches for quickly searching for a specific string. Use double quotes (“string”) to look for an exact match.
+* Use free-text searches for quickly searching for a specific string. Use double quotes (“string”) to look for an exact match.
     Example: “USA“
-*   Use the * wildcard symbol to replace any number of characters and the ? wildcard symbol to replace only one character.
-*   Use the _exists_ prefix for a field to search for logs that have that field.
+* Use the * wildcard symbol to replace any number of characters and the ? wildcard symbol to replace only one character.
+* Use the _exists_ prefix for a field to search for logs that have that field.
     Example: _exists_:response
-*   You can search a range within a field.
+* You can search a range within a field.
     Examples: If you use brackets [], this means that the results are inclusive. If you use {}, this means that the results are exclusive.
-*   When using logical statements (e.g. AND, OR, TO) within a search, use capital letters. Example: response:[400 TO 500]
-*   Use -,! and NOT to define negative terms.
+* When using logical statements (e.g. AND, OR, TO) within a search, use capital letters. Example: response:[400 TO 500]
+* Use -,! and NOT to define negative terms.
     Example: response:[400 TO 500] AND NOT response:404
-*   Proximity searches are useful for searching terms within a specific character proximity. Example: [categovi~2] will a search for all the terms that are within two changes from [categovi]. Proximity searches use a lot of resources – use wisely!
-*   Field level search for non analyzed fields work differently than free text search.
+* Proximity searches are useful for searching terms within a specific character proximity. Example: [categovi~2] will a search for all the terms that are within two changes from [categovi]. Proximity searches use a lot of resources – use wisely!
+* Field level search for non analyzed fields work differently than free text search.
     Example: If the field value is Error – searching for field:*rror will not return the right answer.
-*   If you don’t specify a logical operator, the default one is OR.
+* If you don’t specify a logical operator, the default one is OR.
     Example: searching for Error Exception will run a search for Error OR Exception
-*   Using leading wildcards is a very expensive query and should be avoided when possible.
+* Using leading wildcards is a very expensive query and should be avoided when possible.
 
 In Kibana 6.3, a new feature simplifies the search experience and includes auto-complete capabilities. This feature needs to be enabled for use, and is currently experimental.
 
@@ -697,11 +773,11 @@ Kibana visualizations are built on top of Elasticsearch queries. Using Elasticse
 
 Visualizations in Kibana are categorized into five different types of visualizations:
 
-*   Basic Charts (Area, Heat Map, Horizontal Bar, Line, Pie, Vertical bar)
-*   Data (Date Table, Gauge, Goal, Metric)
-*   Maps (Coordinate Map, Region Map)
-*   Time series (Timelion, Visual Builder)
-*   Other (Controls, Markdown, Tag Cloud)
+* Basic Charts (Area, Heat Map, Horizontal Bar, Line, Pie, Vertical bar)
+* Data (Date Table, Gauge, Goal, Metric)
+* Maps (Coordinate Map, Region Map)
+* Time series (Timelion, Visual Builder)
+* Other (Controls, Markdown, Tag Cloud)
 
 In the table below, we describe the main function of each visualization and a usage example:
 
@@ -745,7 +821,7 @@ No. of Docker containers run.
 
 Geographic origin of web server requests.
 
-**Timelion and Visual Query Builder:** Allows you to create more advanced queries based on time series data
+**Timelion and Visual Query Builder:** can create more advanced queries based on time series data
 
 Percentage of 500 errors over time
 
@@ -759,7 +835,7 @@ Countries sending requests to a web server
 
 ---
 
-Kibana dashboards
+## Kibana dashboards
 
 
 Once you have a collection of visualizations ready, you can add them all into one comprehensive visualization called a dashboard. Dashboards give you the ability to monitor a system or environment from a high vantage point for easier event correlation and trend analysis.
@@ -768,18 +844,17 @@ Dashboards are highly dynamic — they can be edited, shared, played around with
 
 For more information and tips on creating a Kibana dashboard, see [Creating the Perfect Kibana Dashboard](https://logz.io/blog/perfect-kibana-dashboard/).
 
-Kibana pages
-------------
+## Kibana pages
 
 Recent versions of Kibana include dedicated pages for various monitoring features such as APM and infrastructure monitoring. Some of these features were formerly part of the X-Pack, others, such as Canvas and Maps, are brand new:
 
-*   Canvas – the “photoshop” of machine-generated data, Canvas is an advanced visualization tool that allows you to design and visualize your logs and metrics in creative new ways.
-*   Maps – meant for geospatial analysis, this page supports multiple layers and data sources, the mapping of individual geo points and shapes, global searching for ad-hoc analysis, customization of elements, and more.
-*   Infrastructure – helps you gain visibility into the different components constructing your infrastructure, such as hosts and containers.
-*   Logs – meant for live tracking of incoming logs being shipped into the stack with Logstash.
-*   APM – designed to help you monitor the performance of your applications and identify bottlenecks.
-*   Uptime – allows you to monitor and gauge the status of your applications using a dedicated UI, based on data shipped into the stack with Heartbeat.
-*   Stack Monitoring – provides you with built-in dashboards for monitoring Elasticsearch, Kibana, Logstash and Beats. Requires manual configuration.
+* Canvas – the “photoshop” of machine-generated data, Canvas is an advanced visualization tool that can design and visualize your logs and metrics in creative new ways.
+* Maps – meant for geospatial analysis, this page supports multiple layers and data sources, the mapping of individual geo points and shapes, global searching for ad-hoc analysis, customization of elements, and more.
+* Infrastructure – helps you gain visibility into the different components constructing your infrastructure, such as hosts and containers.
+* Logs – meant for live tracking of incoming logs being shipped into the stack with Logstash.
+* APM – designed to help you monitor the performance of your applications and identify bottlenecks.
+* Uptime – can monitor and gauge the status of your applications using a dedicated UI, based on data shipped into the stack with Heartbeat.
+* Stack Monitoring – provides you with built-in dashboards for monitoring Elasticsearch, Kibana, Logstash and Beats. Requires manual configuration.
 
 Note: These pages are not licensed under Apache 2.0 but under Elastic’s Basic license.
 
@@ -792,10 +867,10 @@ The searches, visualizations, and dashboards saved in Kibana are called objects.
 
 The index is created as soon as Kibana starts. You can change its name in the Kibana configuration file. The index contains the following documents, each containing their own set of fields:
 
-*   Saved index patterns
-*   Saved searches
-*   Saved visualizations
-*   Saved dashboards
+* Saved index patterns
+* Saved searches
+* Saved visualizations
+* Saved dashboards
 
 What’s next?
 ------------
@@ -806,14 +881,16 @@ It’s important to note that for production, you will most likely need to add s
 
 If you’re just getting started with Kibana, read this [Kibana Tutorial](https://logz.io/blog/kibana-tutorial/).
 
-Beats
-=====
+---
+
+
+# Beats
 
 The ELK Stack, which traditionally consisted of three main components — Elasticsearch, Logstash, and Kibana, is now also used together with what is called “Beats” — a family of log shippers for different use cases. The advent of the different beats — Filebeat, Metricbeat, Packetbeat, Auditbeat, Heartbeat and Winlogbeat — gave birth to a new title for the stack — “Elastic Stack”.
 
 ---
 
-What are Beats?
+## What are Beats?
 
 
 Beats are a collection of open source log shippers that act as agents installed on the different servers in your environment for collecting logs or metrics. Written in Go, these shippers were designed to be lightweight in nature — they leave a small installation footprint, are resource efficient, and function with no dependencies.
@@ -860,7 +937,7 @@ Functionbeat is defined as a “serverless” shipper that can be deployed as a 
 
 ---
 
-Configuring beats
+## Configuring beats
 
 
 Being based on the same underlying architecture, Beats follow the same structure and configuration rules.
@@ -871,8 +948,7 @@ Configuration files are usually located in the same directory — for Linux, thi
 
 Beats configuration files are based on the YAML format with a dictionary containing a group of key-value pairs, but they can contain lists and strings, and various other data types. Most of the beats also include files with complete configuration examples, useful for learning the different configuration settings that can be used. Use it as a reference.
 
-Beats modules
--------------
+## Beats modules
 
 Filebeat and Metricbeat support modules — built-in configurations and Kibana objects for specific platforms and systems. Instead of configuring these two beats, these modules will help you start out with pre-configured settings which work just fine in most cases but that you can also adjust and fine tune as you see fit.
 
@@ -887,25 +963,18 @@ Metricbeat modules: Aerospike, Apache, AWS, Ceph, Couchbase, Docker, Dropwizard,
 
 So, what does a configuration example look like? Obviously, this differs according to the beat in question. Below, however, is an example of a Filebeat configuration that is using a single prospector for tracking Puppet server logs, a JSON directive for parsing, and a local Elasticsearch instance as the output destination.
 
+```yaml
 filebeat.prospectors:
-
 - type: log
-
 enabled: true
-
 paths:
-
 - /var/log/puppetlabs/puppetserver/puppetserver.log.json
-
 - /var/log/puppetlabs/puppetserver/puppetserver-access.log.json
-
 json.keys_under_root: true
-
 output.elasticsearch:
-
 # Array of hosts to connect to.
-
 hosts: ["localhost:9200"]
+```
 
 ---
 
@@ -914,15 +983,14 @@ hosts: ["localhost:9200"]
 
 Each beat contains its own unique configuration file and configuration settings, and therefore requires its own set of instructions. Still, there are some common configuration best practices that can be outlined here to provide a solid general understanding.
 
-*   Some beats, such as Filebeat, include full example configuration files (e.g, /etc/filebeat/filebeat.full.yml). These files include long lists all the available configuration options.
-*   YAML files are extremely sensitive. DO NOT use tabs when indenting your lines — only spaces. YAML configuration files for Beats are mostly built the same way, using two spaces for indentation.
-*   Use a text editor (I use Sublime) to edit the file.
-*   The ‘-’ (dash) character is used for defining new elements — be sure to preserve their indentations and the hierarchies between sub-constructs.
+* Some beats, such as Filebeat, include full example configuration files (e.g, /etc/filebeat/filebeat.full.yml). These files include long lists all the available configuration options.
+* YAML files are extremely sensitive. DO NOT use tabs when indenting your lines — only spaces. YAML configuration files for Beats are mostly built the same way, using two spaces for indentation.
+* Use a text editor (I use Sublime) to edit the file.
+* The ‘-’ (dash) character is used for defining new elements — be sure to preserve their indentations and the hierarchies between sub-constructs.
 
 Additional information and tips are available in the [Musings in YAML](https://logz.io/blog/configuring-elasticsearch-beats/) article.
 
-What next?
-----------
+## What next?
 
 Beats are a great and welcome addition to the ELK Stack, taking some of the load off Logstash and making data pipelines much more reliable as a result. Logstash is still a critical component for most pipelines that involve aggregating log files since it is much more capable of advanced processing and data enrichment.
 
@@ -932,8 +1000,11 @@ Read more about how to install, use and run beats in our [Beats Tutorial](https:
 
 Did we miss something? Did you find a mistake? We’re relying on your feedback to keep this guide up-to-date. Please add your comments at the bottom of the page, or send them to: elk-guide@logz.io
 
-ELK in Production
-=================
+
+---
+
+
+# ELK in Production
 
 Log management has become a must-do action for any organization to resolve problems and ensure that applications are running in a healthy manner. As such, log management has become in essence, a mission-critical system.
 
@@ -1000,7 +1071,7 @@ As a result, you need to allocate up to 10 times more capacity than normal. When
 
 ---
 
-ELK Elasticity
+## ELK Elasticity
 
 
 One of the biggest challenges of building an ELK deployment is making it scalable.
@@ -1045,24 +1116,36 @@ As far as the data nodes go, we recommend having at least two data nodes so that
 
 ### Run in Different AZs (But Not in Different Regions)
 
-We recommend having your Elasticsearch nodes run in different availability zones or in different segments of a data center to ensure high availability. This can be done through an [Elasticsearch setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html) that allows you to configure every document to be replicated between different AZs. As with Logstash, the resulting costs resulting from this kind of deployment can be quite steep due to data transfer.
+We recommend having your Elasticsearch nodes run in different availability zones or in different segments of a data center to ensure high availability. This can be done through an [Elasticsearch setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html) that can configure every document to be replicated between different AZs. As with Logstash, the resulting costs resulting from this kind of deployment can be quite steep due to data transfer.
 
-Security
---------
 
-Due to the fact that logs may contain sensitive data, it is crucial to protect who can see what. How can you limit access to specific dashboards, visualizations, or data inside your log analytics platform? There is no simple way to do this in the ELK Stack.
+---
 
-One option is to use nginx reverse proxy to access your Kibana dashboard, which entails a simple nginx configuration that requires those who want to access the dashboard to have a username and password. This quickly blocks access to your Kibana console and allows you to configure authentication as well as add SSL/TLS encryption Elastic
 
-Elastic recently announced making some security features free, incl. encryption, role-based access, and authentication. More advanced security configurations and integrations, however, e.g. LDAP/AD support, SSO, encryption at rest, are not available out of the box. Keep in mind that while these features are indeed free of charge, they are not completely open source.
+## Security
+
+- Due to the fact that logs may contain sensitive data, it is crucial to
+  - protect who can see what.
+  - How can you limit access to specific dashboards, visualizations, or data inside your log analytics platform?
+  - There is no simple way to do this in the ELK Stack.
+
+One option is to use `nginx reverse proxy` to access your Kibana dashboard
+- it entails a simple nginx configuration that requires those who want to access the dashboard to have a username and password.
+- This quickly blocks access to your Kibana console and can `configure authentication` as well as `add SSL/TLS encryption Elastic`
+
+Elastic recently announced making some security features free, incl. `encryption, role-based access, and authentication`. More advanced security configurations and integrations,
+
+however, e.g. `LDAP/AD support, SSO, encryption at rest`, are not available out of the box. Keep in mind that while these features are indeed free of charge, they are not completely open source.
 
 Another option is SearchGuard which provides a free security plugin for Elasticsearch including role-based access control and SSL/TLS encrypted node-to-node communication. It’s also worth mentioning Amazon’s OpenDistro for Elasticsearch that comes built in with an open source security plugin with similar capabilities.
 
 Last but not least, be careful when exposing Elasticsearch because it is very susceptible to attacks. There are some basic steps to take that will help you secure your Elasticsearch instances.
 
+
 ---
 
-Maintainability
+
+## Maintainability
 
 
 ### Log Data Consistency
@@ -1095,7 +1178,7 @@ Getting started with ELK to process logs from a server or two is easy and fun. L
 
 _Did we miss something? Did you find a mistake? We’re relying on your feedback to keep this guide up-to-date. Please add your comments at the bottom of the page, or send them to: elk-guide@logz.io_
 
-Common Pitfalls
+# Common Pitfalls
 ===============
 
 Like any piece of software, the ELK Stack is not without its pitfalls. While relatively easy to set up, the different components in the stack can become difficult to handle as soon as you move on to complex setups and a larger scale of operations necessary for handling multiple data pipelines.
@@ -1116,11 +1199,9 @@ To fix this issue, you should define mappings, especially in production-line env
 For example, if you index your first document like this:
 
 {
-
 “action”: “Some action”,
 
 “payload”: “2016-01-20”
-
 }
 
 Elasticsearch will automatically map the “payload” field as a date field
@@ -1128,11 +1209,9 @@ Elasticsearch will automatically map the “payload” field as a date field
 Now, suppose that your next document looks like this:
 
 {
-
 “action”: “Some action 1”,
 
 “payload”: “USER_LOCKED”
-
 }
 
 In this case, “payload” of course is not a date, and an error message may pop up and the new index will not be saved because Elasticsearch has already marked it as “date.”
@@ -1147,7 +1226,7 @@ First, simulate your actual use-case. Boot up your nodes, fill them with real do
 
 Still, be sure to keep in mind that the concept of “start big and scale down” can save you time and money when compared to the alternative of adding and configuring new nodes when your current amount is no longer enough.
 
-Once you define a shard’s capacity, you can easily apply it throughout your entire index. It is very important to understand resource utilization during the testing process because it allows you to reserve the proper amount of RAM for nodes, configure your JVM heap space, and optimize your overall testing process.
+Once you define a shard’s capacity, you can easily apply it throughout your entire index. It is very important to understand resource utilization during the testing process because it can reserve the proper amount of RAM for nodes, configure your JVM heap space, and optimize your overall testing process.
 
 ### Oversized Template
 
@@ -1275,16 +1354,16 @@ The good news is that all of the issues listed above can be easily mitigated and
 
 Here are some articles with more tips and best practices to help avoid them:
 
-*   [Top 5 Elasticsearch Mistakes](https://logz.io/blog/the-top-5-elasticsearch-mistakes-how-to-avoid-them/)
-*   [5 Logstash Pitfalls You Need to Avoid](https://logz.io/blog/5-logstash-pitfalls-and-how-to-avoid-them/)
-*   [5 Filebeat Pitfalls To Be Aware Of](https://logz.io/blog/filebeat-pitfalls/)
-*   [5 Easy Ways to Crash Elasticsearch](https://logz.io/blog/5-easy-ways-to-crash-elk/)
+* [Top 5 Elasticsearch Mistakes](https://logz.io/blog/the-top-5-elasticsearch-mistakes-how-to-avoid-them/)
+* [5 Logstash Pitfalls You Need to Avoid](https://logz.io/blog/5-logstash-pitfalls-and-how-to-avoid-them/)
+* [5 Filebeat Pitfalls To Be Aware Of](https://logz.io/blog/filebeat-pitfalls/)
+* [5 Easy Ways to Crash Elasticsearch](https://logz.io/blog/5-easy-ways-to-crash-elk/)
 
 Be diligent. Do your research.
 
 Did we miss something? Did you find a mistake? We’re relying on your feedback to keep this guide up-to-date. Please add your comments at the bottom of the page, or send them to: elk-guide@logz.io
 
-Use Cases
+# Use Cases
 =========
 
 The ELK Stack is most commonly used as a log analytics tool. Its popularity lies in the fact that it provides a reliable and relatively scalable way to aggregate data from multiple sources, store it and analyze it. As such, the stack is used for a variety of different use cases and purposes, ranging from development to monitoring, to security and compliance, to SEO and BI.
@@ -1306,9 +1385,11 @@ Whether you are developing a monolith or microservices, the ELK Stack comes into
 
 Once in production, Kibana dashboards are used for monitoring the general health of applications and specific services. Should an issue take place, and if logging was instrumented in a structured way, having all the log data in one centralized location helps make analysis and troubleshooting a more efficient and speedy process.
 
+
+
 ---
 
-Cloud operations
+## Cloud operations
 
 
 Modern IT environments are multilayered and distributed in nature, posing a huge challenge for the teams in charge of operating and monitoring them. Monitoring across all the different systems and components comprising an application’s architecture is extremely time and resource consuming.
@@ -1326,11 +1407,13 @@ And it’s not just logs. While Elasticsearch was initially designed for full-te
 
 Application Performance Monitoring, aka APM, is one of the most common methods used by engineers today to measure the availability, response times and behavior of applications and services.
 
-[Elastic APM](https://logz.io/blog/application-performance-monitoring/) is an application performance monitoring system which is built on top of the ELK Stack. Similar to other APM solutions in the market, Elastic APM allows you to track key performance-related information such as requests, responses, database transactions, errors, etc.
+[Elastic APM](https://logz.io/blog/application-performance-monitoring/) is an application performance monitoring system which is built on top of the ELK Stack. Similar to other APM solutions in the market, Elastic APM can track key performance-related information such as requests, responses, database transactions, errors, etc.
 
 Likewise, open source distributed tracing tools such as [Zipkin](https://logz.io/blog/zipkin-elk/) and Jaeger can be integrated with ELK for diving deep into application performance.
 
 ---
+
+
 
 ## Security and compliance
 
@@ -1351,7 +1434,7 @@ Once a DDoS attack is mounted, time is of the essence. Quick identification is k
 
 ### 2.SIEM
 
-SIEM is an approach to enterprise security management that seeks to provide a holistic view of an organization’s IT security. The main purpose of SIEM is to provide a simultaneous and comprehensive view of your IT security. The SIEM approach includes a consolidated dashboard that allows you to identify activity, trends, and patterns easily. If implemented correctly, SIEM can prevent legitimate threats by identifying them early, monitoring online activity, providing compliance reports, and supporting incident-response teams.
+SIEM is an approach to enterprise security management that seeks to provide a holistic view of an organization’s IT security. The main purpose of SIEM is to provide a simultaneous and comprehensive view of your IT security. The SIEM approach includes a consolidated dashboard that can identify activity, trends, and patterns easily. If implemented correctly, SIEM can prevent legitimate threats by identifying them early, monitoring online activity, providing compliance reports, and supporting incident-response teams.
 
 The ELK Stack can be instrumental in [achieving SIEM](https://logz.io/blog/aws-security/). Take an AWS-based environment as an example. Organizations using AWS services have a large amount of auditing and logging tools that generate log data, auditing information and details on changes made to the configuration of the service. These distributed data sources can be tapped and used together to give a good and centralized security overview of the stack.
 
@@ -1378,7 +1461,7 @@ Web server access logs (Apache, nginx, IIS) reflect an accurate picture of who i
 
 Technical SEO experts use log data to monitor when bots last crawled the site but also to optimize crawl budget, website errors and faulty redirects, crawl priority, duplicate crawling, and plenty more. Check out our guide on [how to use log data for technical SEO](https://logz.io/blog/log-analysis-technical-seo/).
 
-Integrations
+# Integrations
 ============
 
 Almost any data source can be tapped into to ship log data into the ELK Stack. What method you choose will depend on your requirements, specific environment, preferred toolkit, and many more.
@@ -1391,117 +1474,117 @@ Please note that most include Logz.io-specific instructions as well, including r
 
 ### Beats
 
-*   [Metricbeat](https://logz.io/blog/metricbeat-elastic-stack-5-0/)
-*   [Winlogbeat](https://logz.io/blog/windows-event-log-analysis/)
-*   [Auditbeat](https://logz.io/blog/linux-auditbeat-elk/)
-*   [Packetbeat](https://logz.io/blog/network-log-analysis-packetbeat-elk-stack/)
-*   [Heartbeat](https://logz.io/blog/monitor-service-uptime/)
+* [Metricbeat](https://logz.io/blog/metricbeat-elastic-stack-5-0/)
+* [Winlogbeat](https://logz.io/blog/windows-event-log-analysis/)
+* [Auditbeat](https://logz.io/blog/linux-auditbeat-elk/)
+* [Packetbeat](https://logz.io/blog/network-log-analysis-packetbeat-elk-stack/)
+* [Heartbeat](https://logz.io/blog/monitor-service-uptime/)
 
 ### Web servers
 
-*   [Apache](https://logz.io/blog/apache-log-analyzer/)
-*   [Nginx](https://logz.io/blog/nginx-web-server-monitoring/)
-*   [IIS](https://logz.io/blog/iis-log-analyzer/)
+* [Apache](https://logz.io/blog/apache-log-analyzer/)
+* [Nginx](https://logz.io/blog/nginx-web-server-monitoring/)
+* [IIS](https://logz.io/blog/iis-log-analyzer/)
 
 ### DevOps
 
-*   [Puppet](https://logz.io/blog/puppet-server-monitoring-part-1/)
-*   [Jenkins](https://logz.io/blog/jenkins-elk-stack/)
-*   [Chef](https://logz.io/blog/chef-server-logging-with-elk/)
-*   [GitLab](https://logz.io/blog/monitoring-gitlab-elk-stack/)
-*   [CloudFoundry](https://logz.io/blog/cloud-foundry-elk-stack/)
-*   [Sysdig](https://logz.io/blog/sysdig-elk-stack/)
-*   [Heroku](https://logz.io/blog/heroku-log-analysis-elk-stack/)*
-*   [Kafka](https://logz.io/blog/kafka-logging/)
+* [Puppet](https://logz.io/blog/puppet-server-monitoring-part-1/)
+* [Jenkins](https://logz.io/blog/jenkins-elk-stack/)
+* [Chef](https://logz.io/blog/chef-server-logging-with-elk/)
+* [GitLab](https://logz.io/blog/monitoring-gitlab-elk-stack/)
+* [CloudFoundry](https://logz.io/blog/cloud-foundry-elk-stack/)
+* [Sysdig](https://logz.io/blog/sysdig-elk-stack/)
+* [Heroku](https://logz.io/blog/heroku-log-analysis-elk-stack/)*
+* [Kafka](https://logz.io/blog/kafka-logging/)
 
 ### Databases
 
-*   [MySQL](https://logz.io/blog/mysql-log-analysis/)*
-*   [MongoDB](https://logz.io/blog/mongodb-performance-monitoring-elk-stack/)
-*   [Redis](https://logz.io/blog/Elasticsearch-performance-monitoring-elk-stack/)
+* [MySQL](https://logz.io/blog/mysql-log-analysis/)*
+* [MongoDB](https://logz.io/blog/mongodb-performance-monitoring-elk-stack/)
+* [Redis](https://logz.io/blog/Elasticsearch-performance-monitoring-elk-stack/)
 
 ### AWS
 
-*   [ELB](https://logz.io/blog/aws-elb-log-analysis/)
-*   [CloudTrail](https://logz.io/blog/aws-cloudtrail-elk-stack/)
-*   [CloudWatch](https://logz.io/blog/cloudwatch-lambda-shipper/)*
-*   [Lambda](https://logz.io/blog/monitoring-lambda-part-1/)*
-*   [VPC Flow](https://logz.io/blog/vpc-flow-log-analysis/)*
-*   [Beanstalk](https://logz.io/blog/logging-aws-elastic-beanstalk-elk-stack/)*
-*   [ECS](https://logz.io/blog/amazon-ec2-container-service-ecs-log-analysis/)*
-*   [CloudFront](https://logz.io/blog/cloudfront-log-analysis/)*
-*   [GuardDuty](https://logz.io/blog/guardduty-monitoring/)*
+* [ELB](https://logz.io/blog/aws-elb-log-analysis/)
+* [CloudTrail](https://logz.io/blog/aws-cloudtrail-elk-stack/)
+* [CloudWatch](https://logz.io/blog/cloudwatch-lambda-shipper/)*
+* [Lambda](https://logz.io/blog/monitoring-lambda-part-1/)*
+* [VPC Flow](https://logz.io/blog/vpc-flow-log-analysis/)*
+* [Beanstalk](https://logz.io/blog/logging-aws-elastic-beanstalk-elk-stack/)*
+* [ECS](https://logz.io/blog/amazon-ec2-container-service-ecs-log-analysis/)*
+* [CloudFront](https://logz.io/blog/cloudfront-log-analysis/)*
+* [GuardDuty](https://logz.io/blog/guardduty-monitoring/)*
 
 ### Docker
 
-*   [Docker logging with ELK – Part 1](https://logz.io/blog/docker-logging/)
-*   [Docker logging with ELK – Part 2](https://logz.io/blog/docker-logging-elk-stack-part-two/)
+* [Docker logging with ELK – Part 1](https://logz.io/blog/docker-logging/)
+* [Docker logging with ELK – Part 2](https://logz.io/blog/docker-logging-elk-stack-part-two/)
 
 ### Containers Orchestrators
 
-*   [DC/OS](https://logz.io/blog/dcos-elk/)
-*   [Kubernetes](https://logz.io/blog/kubernetes-logging/)
-*   [Docker Swarm](https://logz.io/blog/docker-swarm-logging/)
+* [DC/OS](https://logz.io/blog/dcos-elk/)
+* [Kubernetes](https://logz.io/blog/kubernetes-logging/)
+* [Docker Swarm](https://logz.io/blog/docker-swarm-logging/)
 
 ### Google Cloud Platform
 
-*   [Google Pub/Sub](https://logz.io/blog/google-pub-sub/)
-*   [GKE](https://logz.io/blog/kubernetes-gke-elk/)*
+* [Google Pub/Sub](https://logz.io/blog/google-pub-sub/)
+* [GKE](https://logz.io/blog/kubernetes-gke-elk/)*
 
 ### Azure
 
-*   [Network Security Group Flow logs](https://logz.io/blog/azure-nsg-elk/)
-*   [Application Gateway](https://logz.io/blog/monitor-azure-application-gateway/)
-*   [Activity Logs](https://logz.io/blog/azure-activity-logs/)
+* [Network Security Group Flow logs](https://logz.io/blog/azure-nsg-elk/)
+* [Application Gateway](https://logz.io/blog/monitor-azure-application-gateway/)
+* [Activity Logs](https://logz.io/blog/azure-activity-logs/)
 
 ### Security
 
-*   [Wazuh](https://logz.io/blog/logzio-wazuh-ossec-hids/)
-*   Bro IDS [1](https://logz.io/blog/bro-elk-part-1/) | [2](https://logz.io/blog/bro-elk-part-2/)
-*   [Using the ELK Stack for SIEM](https://logz.io/blog/elk-siem/)
-*   [Suricata](https://logz.io/blog/network-security-monitoring/)
+* [Wazuh](https://logz.io/blog/logzio-wazuh-ossec-hids/)
+* Bro IDS [1](https://logz.io/blog/bro-elk-part-1/) | [2](https://logz.io/blog/bro-elk-part-2/)
+* [Using the ELK Stack for SIEM](https://logz.io/blog/elk-siem/)
+* [Suricata](https://logz.io/blog/network-security-monitoring/)
 
 ### Misc.
 
-*   [Java Garbage Collection](https://logz.io/blog/java-garbage-collection/)
-*   [Twitter](https://logz.io/blog/analyzing-twitter-elk-stack/)
-*   [Salesforce](https://logz.io/blog/analyze-salesforce-elk-stack/)
-*   [Slack](https://logz.io/blog/interpreting-your-slack-data-with-the-elk-stack/)
+* [Java Garbage Collection](https://logz.io/blog/java-garbage-collection/)
+* [Twitter](https://logz.io/blog/analyzing-twitter-elk-stack/)
+* [Salesforce](https://logz.io/blog/analyze-salesforce-elk-stack/)
+* [Slack](https://logz.io/blog/interpreting-your-slack-data-with-the-elk-stack/)
 
-Additional Resources
-====================
+
+# Additional Resources
 
 ### General
 
-*   [10 Resources to Bookmark if You’re Running ELK](https://logz.io/blog/10-resources-you-should-bookmark-if-you-run-your-own-elk-stack/)
-*   [What’s new in Elastic Stack 7](https://logz.io/blog/whats-new-in-elastic-stack-7/)
-*   [The Cost of Doing ELK on Your Own](https://logz.io/blog/the-cost-of-doing-elk-stack-on-your-own/)
+* [10 Resources to Bookmark if You’re Running ELK](https://logz.io/blog/10-resources-you-should-bookmark-if-you-run-your-own-elk-stack/)
+* [What’s new in Elastic Stack 7](https://logz.io/blog/whats-new-in-elastic-stack-7/)
+* [The Cost of Doing ELK on Your Own](https://logz.io/blog/the-cost-of-doing-elk-stack-on-your-own/)
 
 ### Elasticsearch
 
-*   [Elasticsearch Mapping](https://logz.io/blog/elasticsearch-mapping/)
-*   [Securing Elasticsearch Clusters](https://logz.io/blog/securing-elasticsearch-clusters/)
-*   [Elasticsearch Performance Monitoring](https://logz.io/blog/elasticsearch-performance-monitoring/)
-*   [Elasticsearch Performance Tuning](https://logz.io/blog/elasticsearch-performance-tuning/)
+* [Elasticsearch Mapping](https://logz.io/blog/elasticsearch-mapping/)
+* [Securing Elasticsearch Clusters](https://logz.io/blog/securing-elasticsearch-clusters/)
+* [Elasticsearch Performance Monitoring](https://logz.io/blog/elasticsearch-performance-monitoring/)
+* [Elasticsearch Performance Tuning](https://logz.io/blog/elasticsearch-performance-tuning/)
 
 ### Logstash
 
-*   [A Beginner’s Guide to Logstash Grok](https://logz.io/blog/logstash-grok/)
-*   [Monitoring Logstash Pipelines](https://logz.io/blog/logstash-pipelines/)
-*   [Fluentd vs. Logstash](https://logz.io/blog/fluentd-logstash/)
-*   [A Guide to Logstash Plugins](https://logz.io/blog/logstash-plugins/)
-*   [How to Debug your Logstash Configuration File](https://logz.io/blog/debug-logstash/)
+* [A Beginner’s Guide to Logstash Grok](https://logz.io/blog/logstash-grok/)
+* [Monitoring Logstash Pipelines](https://logz.io/blog/logstash-pipelines/)
+* [Fluentd vs. Logstash](https://logz.io/blog/fluentd-logstash/)
+* [A Guide to Logstash Plugins](https://logz.io/blog/logstash-plugins/)
+* [How to Debug your Logstash Configuration File](https://logz.io/blog/debug-logstash/)
 
 ### Kibana
 
-*   [Creating the Perfect Kibana Dashboard](https://logz.io/blog/perfect-kibana-dashboard/)
-*   [Creating Custom Kibana Visualizations](https://logz.io/blog/custom-kibana-visualizations/)
-*   [Kibana hacks: 5 Tips and Tricks](https://logz.io/blog/kibana-hacks/)
-*   [Getting Started with Advanced Kibana Searches](https://logz.io/blog/kibana-advanced/)
+* [Creating the Perfect Kibana Dashboard](https://logz.io/blog/perfect-kibana-dashboard/)
+* [Creating Custom Kibana Visualizations](https://logz.io/blog/custom-kibana-visualizations/)
+* [Kibana hacks: 5 Tips and Tricks](https://logz.io/blog/kibana-hacks/)
+* [Getting Started with Advanced Kibana Searches](https://logz.io/blog/kibana-advanced/)
 
 #### **Frequently Asked Questions**
 
-#### What is the ELK Stack?
+#### What is the ELK Stack??
 
 Up until a year or two ago, the ELK Stack was a collection of three open-source products: **Elasticsearch**, **Logstash**, and **Kibana** - all developed, managed and maintained by Elastic. The introduction and subsequent addition of Beats turned the stack into a four-legged project and led to a renaming of the stack as the Elastic Stack.
 
@@ -1509,12 +1592,6 @@ Up until a year or two ago, the ELK Stack was a collection of three open-source 
 
 Beats are a collection of open-source log shippers that act as agents installed on the different servers in your environment for collecting logs or metrics. Written in Go, these shippers were designed to be lightweight in nature — they leave a small installation footprint, are resource-efficient, and function with no dependencies.
 
-#### What is the ELK Stack used for?
+#### What is the ELK Stack used for??
 
 The ELK Stack is most commonly used as a log analytics tool. Its popularity lies in the fact that it provides a reliable and relatively scalable way to aggregate data from multiple sources, store it and analyze it. As such, the stack is used for a variety of different use cases and purposes, ranging from development to monitoring, to security and compliance, to SEO and BI.
-
-{ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [ { "@type": "Question", "name": "What is the ELK Stack?", "acceptedAnswer": { "@type": "Answer", "text": "Up until a year or two ago, the ELK Stack was a collection of three open-source products: <strong>Elasticsearch</strong>, <strong>Logstash</strong>, and <strong>Kibana</strong> - all developed, managed and maintained by Elastic. The introduction and subsequent addition of Beats turned the stack into a four-legged project and led to a renaming of the stack as the Elastic Stack." } } , { "@type": "Question", "name": "What are Beats?", "acceptedAnswer": { "@type": "Answer", "text": "Beats are a collection of open-source log shippers that act as agents installed on the different servers in your environment for collecting logs or metrics. Written in Go, these shippers were designed to be lightweight in nature — they leave a small installation footprint, are resource-efficient, and function with no dependencies." } } , { "@type": "Question", "name": "What is the ELK Stack used for?", "acceptedAnswer": { "@type": "Answer", "text": "The ELK Stack is most commonly used as a log analytics tool. Its popularity lies in the fact that it provides a reliable and relatively scalable way to aggregate data from multiple sources, store it and analyze it. As such, the stack is used for a variety of different use cases and purposes, ranging from development to monitoring, to security and compliance, to SEO and BI." } } ] }
-
-_Much of our content covers the open source Elastic Stack and the iteration of it that appears within the_ _[Logz.io](https://logz.io/)_ _platform. Some features are unavailable in one version and available in the other._
-
-[DCRP_shortcode style="0" image="1" excerpt="0" date="0" postsperpage="3" columns="3"]
