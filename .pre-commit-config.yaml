@@ -3,7 +3,7 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
-    # - id: check-added-large-files     # Prevent giant files from being committed
+    - id: check-added-large-files     # Prevent giant files from being committed
     - id: check-docstring-first     # Checks a common error of defining a docstring after code.
     - id: check-json
     - id: check-merge-conflict
