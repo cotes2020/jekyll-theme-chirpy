@@ -1213,10 +1213,6 @@ $btn-mb: 0.5rem;
   }
 
   #core-wrapper {
-    min-height: calc(
-      100vh - #{$topbar-height} - #{$footer-height-mobile}
-    ) !important;
-
     .post-content {
       > blockquote[class^='prompt-'] {
         @include ml-mr(-1.25rem);
