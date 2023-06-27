@@ -23,3 +23,12 @@ WSL Ubuntu환경에서, jekyll을 이용하기 위해 Ruby와 Bundler를 설치�
 
 `sudo apt-get remove <패키지명>`
 : 패키지를 지울 수 있다. 잘못 설치한 경우 참고.
+
+Jekyll 테마를 설치하기 위한 Ruby라면 아래 명령어로 해결할 수 있다.
+
+```
+sudo apt-get install ruby ruby-dev
+sudo gem update
+sudo gem install jekyll bundler
+sudo bundle
+```
