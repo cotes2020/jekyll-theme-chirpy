@@ -94,7 +94,7 @@ p.send(payload)
 print(p.recvline())
 ```
 
-<img src="https://raw.githubusercontent.com/manasghandat/manasghandat.github.io/master/assets/img/Images/Intro_to_pwn_3/1.png" alt="Canary overwrite">
+<img src="https://raw.githubusercontent.com/manasghandat/manasghandat.github.io/master/assets/img/Images/Intro_to_pwn_3/2.png" alt="Canary overwrite">
 
 AS you can see we have overwritten the last byte of the canary sucessfully and leaked the entire canary. The program has not yet crashed because the `__stack_chk_fail` will occur at the end. Now let us try to rewrite the canary.
 
