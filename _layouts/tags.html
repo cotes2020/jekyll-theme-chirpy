@@ -3,7 +3,7 @@ layout: page
 # All the Tags of posts.
 ---
 
-<div id="tags" class="d-flex flex-wrap mx-xl-2 mb-5">
+<div id="tags" class="d-flex flex-wrap mx-xl-2">
   {% assign tags = '' | split: '' %}
   {% for t in site.tags %}
     {% assign tags = tags | push: t[0] %}
