@@ -17,7 +17,7 @@ _no_gh=false
 help() {
   echo "Usage:"
   echo
-  echo "   bash /path/to/init.sh [options]"
+  echo "   bash /path/to/init [options]"
   echo
   echo "Options:"
   echo "     --no-gh              Do not deploy to Github."
