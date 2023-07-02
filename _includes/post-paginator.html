@@ -1,13 +1,11 @@
-<!--
-  The paginator for post list on HomgPage.
--->
+<!-- The paginator for post list on HomgPage. -->
 
-<ul class="pagination align-items-center mt-4 mb-0 pl-lg-2">
+<ul class="pagination align-items-center mt-4 mb-1 ps-lg-2">
   <!-- left arrow -->
   {% if paginator.previous_page %}
     {% assign prev_url = paginator.previous_page_path | relative_url %}
   {% else %}
-    {% assign prev_url = "#" %}
+    {% assign prev_url = '#' %}
   {% endif %}
 
   <li class="page-item {% unless paginator.previous_page %}disabled{% endunless %}">
@@ -21,7 +19,6 @@
   {% assign right_ellipsis = false %}
 
   {% for i in (1..paginator.total_pages) %}
-
     {% assign pre = paginator.page | minus: 1 %}
     {% assign next = paginator.page | plus: 1 %}
     {% assign pre_less = pre | minus: 1 %}
@@ -37,7 +34,7 @@
         {% assign show = true %}
       {% endif %}
     {% else %}
-      {% if i == 1 or i == paginator.total_pages%}
+      {% if i == 1 or i == paginator.total_pages %}
         {% assign show = true %}
       {% elsif i >= pre and i <= next %}
         {% assign show = true %}
@@ -63,7 +60,6 @@
         {% assign right_ellipsis = true %}
       {% endif %}
     {% endif %}
-
   {% endfor %}
 
   <!-- mobile pagination -->
@@ -76,7 +72,7 @@
   {% if paginator.next_page_path %}
     {% assign next_url = paginator.next_page_path | relative_url %}
   {% else %}
-    {% assign next_url = "#" %}
+    {% assign next_url = '#' %}
   {% endif %}
 
   <li class="page-item {% unless paginator.next_page_path %}disabled{% endunless %}">
@@ -84,5 +80,5 @@
       <i class="fas fa-angle-right"></i>
     </a>
   </li>
-
-</ul> <!-- .pagination -->
+</ul>
+<!-- .pagination -->

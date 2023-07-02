@@ -1,0 +1,91 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: โพสต์
+  category: หมวดหมู่
+  tag: แท็ก
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: หน้าแรก
+  categories: หมวดหมู่
+  tags: แท็ก
+  archives: คลังเก็บ
+  about: เกี่ยวกับ
+
+# the text displayed in the search bar & search results
+search:
+  hint: ค้นหา
+  cancel: ยกเลิก
+  no_results: โอ๊ะ! ไม่พบผลลัพธ์
+
+panel:
+  lastmod: อัปเดตล่าสุด
+  trending_tags: แท็กยอดนิยม
+  toc: เนื้อหา
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: โพสต์นี้อยู่ภายใต้การอนุญาต :LICENSE_NAME โดยผู้เขียน
+    name: CC BY 4.0
+    link: https://creativecommons.org/licenses/by/4.0/
+
+  # Displayed in the footer
+  brief: สงวนลิขสิทธิ์เป็นบางส่วน
+  verbose: >-
+    เว้นแต่ว่าจะระบุเป็นอย่างอื่น โพสต์บนเว็บไซต์นี้อยู่ภายใต้
+    สัญญาอนุญาตครีเอทีฟคอมมอนส์แบบ 4.0 นานาชาติ (CC BY 4.0) โดยผู้เขียน
+
+meta: กำลังใช้ธีมของ :PLATFORM ชื่อ :THEME
+
+not_found:
+  statment: ขออภัย เราวาง URL นั้นไว้ผิดที่ หรือมันชี้ไปยังสิ่งที่ไม่มีอยู่
+
+notification:
+  update_found: มีเวอร์ชันใหม่ของเนื้อหา
+  update: อัปเดต
+
+# ----- Posts related labels -----
+
+post:
+  written_by: โดย
+  posted: โพสต์เมื่อ
+  updated: อัปเดตเมื่อ
+  words: คำ
+  pageview_measure: ครั้ง
+  read_time:
+    unit: นาที
+    prompt: อ่าน
+  relate_posts: อ่านต่อ
+  share: แชร์
+  button:
+    next: ใหม่กว่า
+    previous: เก่ากว่า
+    copy_code:
+      succeed: คัดลอกแล้ว!
+    share_link:
+      title: คัดลอกลิงก์
+      succeed: คัดลอกลิงก์เรียบร้อยแล้ว!
+
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
+
+# categories page
+categories:
+  category_measure:
+    singular: หมวดหมู่
+    plural: หมวดหมู่
+  post_measure:
+    singular: โพสต์
+    plural: โพสต์
