@@ -193,6 +193,8 @@ main() {
 
   # Change heading of Patch version to level 2 (a bug from `standard-version`)
   sed -i "s/^### \[/## \[/g" CHANGELOG.md
+  # Replace multiple empty lines with a single empty line
+  sed -i "/^$/N;/^\n$/D" CHANGELOG.md
 
   _version="$(grep '"version":' "$NODE_CONFIG" | sed 's/.*: "//;s/".*//')"
 
