@@ -54,9 +54,9 @@ refactor: true
             {% assign src = post.img_path | append: '/' | append: src | replace: '//', '/' %}
           {% endunless %}
 
-          {% assign alt = post.image.alt | default: 'Preview Image' %}
+          {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
 
-          <img src="{{ src }}" w="15" h="8" alt="{{ alt }}" {{ lqip }}>
+          <img src="{{ src }}" w="17" h="10" alt="{{ alt }}" {{ lqip }}>
         {% endif %}
 
         <div class="card-body d-flex flex-column">

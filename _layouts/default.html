@@ -26,17 +26,17 @@ layout: compress
       <div id="main" class="container px-xxl-5">
         {% include topbar.html lang=lang %}
         {{ content }}
-        {% include search-results.html lang=lang %}
+        {% include_cached search-results.html lang=lang %}
       </div>
     </div>
 
-    {% include footer.html lang=lang %}
+    {% include_cached footer.html lang=lang %}
 
     <div id="mask"></div>
 
-    <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
+    <button id="back-to-top" aria-label="back-to-top" class="btn btn-lg btn-box-shadow">
       <i class="fas fa-angle-up"></i>
-    </a>
+    </button>
 
     {% if site.pwa.enabled %}
       <div
@@ -71,6 +71,6 @@ layout: compress
       {% include mermaid.html %}
     {% endif %}
 
-    {% include search-loader.html %}
+    {% include_cached search-loader.html %}
   </body>
 </html>

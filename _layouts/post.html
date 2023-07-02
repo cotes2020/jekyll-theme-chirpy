@@ -31,7 +31,7 @@ tail_includes:
   {% if page.image %}
     {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
     {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
-    {% capture alt %}alt="{{ page.image.alt | default: "Preview Image" }}"{% endcapture %}
+    {% capture alt %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{% endcapture %}
 
     {% capture lqip %}
       {% if page.image.lqip %}
@@ -71,16 +71,6 @@ tail_includes:
     </span>
 
     <div>
-      <!-- page views -->
-      {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
-      <span>
-        <em id="pv" class="pageviews">
-          <i class="fas fa-spinner fa-spin fa-fw"></i>
-        </em>
-        {{ site.data.locales[lang].post.pageview_measure }}
-      </span>
-      {% endif %}
-
       <!-- read time -->
       {% include read-time.html content=content prompt=true lang=lang %}
     </div>
