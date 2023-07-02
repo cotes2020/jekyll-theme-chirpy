@@ -1207,7 +1207,7 @@ $btn-mb: 0.5rem;
 
 */
 
-@media all and (width <= 576px) {
+@media all and (max-width: 576px) {
   #main-wrapper {
     min-height: calc(100vh - #{$footer-height-mobile});
   }
@@ -1229,7 +1229,7 @@ $btn-mb: 0.5rem;
   }
 }
 
-@media all and (width <= 768px) {
+@media all and (max-width: 768px) {
   %full-width {
     max-width: 100%;
   }
@@ -1245,7 +1245,7 @@ $btn-mb: 0.5rem;
 }
 
 /* hide sidebar and panel */
-@media all and (width <= 849px) {
+@media all and (max-width: 849px) {
   @mixin slide($append: null) {
     $basic: transform 0.4s ease;
 
@@ -1349,14 +1349,14 @@ $btn-mb: 0.5rem;
 } /* max-width: 849px */
 
 /* Phone & Pad */
-@media all and (width >= 577px) and (width <= 1199px) {
+@media all and (min-width: 577px) and (max-width: 1199px) {
   footer .d-flex > div {
     width: 312px;
   }
 }
 
 /* Sidebar is visible */
-@media all and (width >= 850px) {
+@media all and (min-width: 850px) {
   /* Solved jumping scrollbar */
   html {
     overflow-y: scroll;
@@ -1425,7 +1425,7 @@ $btn-mb: 0.5rem;
 }
 
 /* Pad horizontal */
-@media all and (width >= 992px) and (width <= 1199px) {
+@media all and (min-width: 992px) and (max-width: 1199px) {
   #main .col-lg-11 {
     flex: 0 0 96%;
     max-width: 96%;
@@ -1433,7 +1433,7 @@ $btn-mb: 0.5rem;
 }
 
 /* Compact icons in sidebar & panel hidden */
-@media all and (width >= 850px) and (width <= 1199px) {
+@media all and (min-width: 850px) and (max-width: 1199px) {
   #search-results > div {
     max-width: 700px;
   }
@@ -1448,7 +1448,7 @@ $btn-mb: 0.5rem;
 }
 
 /* panel hidden */
-@media all and (width <= 1199px) {
+@media all and (max-width: 1199px) {
   #panel-wrapper {
     display: none;
   }
@@ -1460,7 +1460,7 @@ $btn-mb: 0.5rem;
 
 /* --- desktop mode, both sidebar and panel are visible --- */
 
-@media all and (width >= 1200px) {
+@media all and (min-width: 1200px) {
   #back-to-top {
     bottom: 6.5rem;
   }
@@ -1501,13 +1501,13 @@ $btn-mb: 0.5rem;
   }
 }
 
-@media all and (width >= 1400px) {
+@media all and (min-width: 1400px) {
   #back-to-top {
     right: calc((100vw - #{$sidebar-width} - 1140px) / 2 + 3rem);
   }
 }
 
-@media all and (width >= 1650px) {
+@media all and (min-width: 1650px) {
   $icon-gap: 1rem;
 
   #main-wrapper,
