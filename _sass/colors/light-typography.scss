@@ -9,11 +9,11 @@
   --main-border-color: #f3f3f3;
 
   /* Common color */
-  --text-color: #34343c;
-  --text-muted-color: #8e8e8e;
+  --text-color: black;
+  --text-muted-color: dimgray;
   --heading-color: black;
-  --blockquote-border-color: #eeeeee;
-  --blockquote-text-color: #9a9a9a;
+  --blockquote-border-color: darkgray;
+  --blockquote-text-color: var(--text-color);
   --link-color: #0153ab;
   --link-underline-color: #dee2e6;
   --button-bg: #ffffff;
@@ -37,7 +37,7 @@
 
   /* Sidebar */
   --sidebar-bg: #f6f8fa;
-  --sidebar-muted-color: #a2a19f;
+  --sidebar-muted-color: var(--sidebar-active-color);
   --sidebar-active-color: #1d1d1d;
   --sidebar-hover-bg: rgb(223, 233, 241, 0.64);
   --sidebar-btn-bg: white;
