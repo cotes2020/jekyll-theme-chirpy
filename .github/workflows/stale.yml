@@ -17,13 +17,13 @@ jobs:
           days-before-stale: 30
           days-before-close: 1
           stale-issue-label: stale
-          exempt-issue-milestones: pending
+          exempt-issue-labels: pending
           stale-issue-message: >
             This issue has been automatically marked as stale because it has not had recent activity.
             It will be closed if no further activity occurs.
             Thank you for your contributions.
           stale-pr-label: stale
-          exempt-pr-milestones: pending
+          exempt-pr-labels: pending
           stale-pr-message: >
             This PR has been automatically marked as stale because it has not had recent activity.
             It will be closed if no further activity occurs.

@@ -17,6 +17,7 @@
       "always",
       { "ignore": ["after-comment", "first-nested", "inside-block"] }
     ],
-    "value-keyword-case": ["lower", { "ignoreProperties": ["/^\\$/"] }]
+    "value-keyword-case": ["lower", { "ignoreProperties": ["/^\\$/"] }],
+    "media-feature-range-notation": "prefix"
   }
 }
