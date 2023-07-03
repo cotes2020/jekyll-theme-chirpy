@@ -18,7 +18,7 @@ In the context of relatively modern refinements of the construction of field the
 
 My recent talk at the Canadian Undergraduate Mathematics Conference at the University of Toronto focused on trying to motivate the above developments in the context of classical field theory. Examples were drawn from Newtonian gravitation and classical electrodynamics, both being classical field theories. 
 
-Here are the slides for the presentation:
+Here are the slides for the presentation (the source code can be found [here](https://github.com/Booodaness/scientific-documents/tree/master/bundles_classical_gauge_field_theory)):
 
 {% include iframe.html %}
 
