@@ -5,7 +5,7 @@ categories: [relativity]
 tags: [4-momentum]
 ---
 
-In [The Real Reason Nothing Travels Faster Than Light]({% post_url 2022-04-16-real-reason-nothing-travels-faster-than-light %}), we analytically proved that faster-than-light motion is logically impossible within the framework of special relativity. In doing so, we disproved the very kinematics of the situation $v>c$. This, as we discussed, is logically stronger than disproving the dynamics of the situation, i.e. the question of how such a velocity can be achieved through, say, acceleration. In this post, we will specifically look at the dynamical aspect, and how it agrees with the stronger kinematical argument.
+In [The Real Reason Nothing Travels Faster Than Light](https://booodaness.github.io/tempus-spatium/real-reason-nothing-travels-faster-than-light), we analytically proved that faster-than-light motion is logically impossible within the framework of special relativity. In doing so, we disproved the very kinematics of the situation $v>c$. This, as we discussed, is logically stronger than disproving the dynamics of the situation, i.e. the question of how such a velocity can be achieved through, say, acceleration. In this post, we will specifically look at the dynamical aspect, and how it agrees with the stronger kinematical argument.
 
 When it comes to this topic, there are multiple layers of common misconception. The first is the supposition that disproving the dynamics also disproves the kinematics, i.e. if one can show that faster-than-light velocity cannot be achieved via any physical process, it must be theoretically impossible given the working of spacetime itself. While such an implication would be nice, it is not always true. After all, no object can be accelerated to the speed of light, and yet, light travels at, well, the speed of light! This makes sense in special relativity because things which are travelling at the speed of light cannot be accelerated in the first place, by virtue of having an invariant speed. In other words, the argument 'impossible dynamics implies impossible kinematics' implicitly assumes $v < c$, which in turn assumes that we are dealing with objects carrying positive mass. Thus, the argument fails for $v \geq c$ and we are forced to base kinematical arguments solely on the kinematics as opposed to the dynamics.
 
@@ -13,7 +13,7 @@ The second layer of popular misconception is the notion that theoretically, one 
 
 [^1]: However, it is true that if the body were to be accelerated to the speed of light _without_ a change in its mass, it would require infinite energy. However, this case leaves out the possibility of the body propelling itself, which does not necessarily involve infinite energy.
 
-In the [first part](#relativistic-kinetic-energy) of this post, we will construct and geometrically interpret 4-momentum and relativistic kinetic energy for particles. In the [second part](#propulsion), we will apply these dynamical quantities to understand relativistic propulsion.
+In the [[0-real-reason-nothing-travels-faster-than-light-part-2#Relativistic kinetic energy|first part]] of this post, we will construct and geometrically interpret 4-momentum and relativistic kinetic energy for particles. In the [[0-real-reason-nothing-travels-faster-than-light-part-2#Propulsion|second part]], we will apply these dynamical quantities to understand relativistic propulsion.
 
 ## Relativistic kinetic energy
 
@@ -158,7 +158,7 @@ In the above relationships, we have three objects of interest: the so-called rel
 
 Firstly, we notice that $m = \frac{1}{c} J^0$, indicating that measuring the mass of a body corresponds to measuring its flow of matter through time, encoded in the timelike part of the mass current vector. [^3] Secondly, $E = cJ^0$, showing that $E$ is imparted by the motion of mass along time. Last but not the least, the previous notion is expressed in terms of the mass flowing in time, by the celebrated equation $E = mc^2$. 
 
-[^3]: An interesting result of this idea is that an object moving at the speed of light cannot have mass. This is because of the following. Such a body would not appear to move along proper time. Therefore, there _is_ no event where some non-zero $dm$ passes through some hypersurface $\Sigma$ in a small time interval $dt$, in inertial frames with $v<0$ ([a Lorentz-invariant statement]({% post_url 2022-04-16-real-reason-nothing-travels-faster-than-light %}#timelike-world-line)). This suggests that the timelike part of mass current is null.
+[^3]: An interesting result of this idea is that an object moving at the speed of light cannot have mass. This is because of the following. Such a body would not appear to move along proper time. Therefore, there _is_ no event where some non-zero $dm$ passes through some hypersurface $\Sigma$ in a small time interval $dt$, in inertial frames with $v<0$ ([a Lorentz-invariant statement](https://booodaness.github.io/tempus-spatium/real-reason-nothing-travels-faster-than-light/#timelike-world-line)). This suggests that the timelike part of mass current is null.
 
 In a frame moving with a velocity $v << c$ relative to the particle, we have $\frac{v}{c} \approx 0$, yielding:
 
