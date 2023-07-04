@@ -131,7 +131,7 @@ where $j = - \left( P_i P^i \right)^\frac{1}{2} = \left( g_{i j} P^i P^j \right)
 
 [^2]: Here, the convention is that lowercase letters for 4-vectors denote non-relativistic vectors, whereas uppercase ones denote 4-vectors. Conversion from one to the another, is, therefore, done appropriately via the Lorentz factor.
 
-Einstein, by conceptually investigating the original form of the energy-momentum relation, interpreted the left hand side of the equation as the relativistic kinetic energy of a particle, by virtue of its motion in spacetime. Related to his interpretation is a power series approach to which we shall come soon. Before treading there, let us see what the energy-momentum relation tells us in the 'mass current form':
+Einstein, by conceptually investigating the original form of the energy-momentum relation, interpreted the left hand side of the equation as the relativistic kinetic energy of a particle, by virtue of its motion in spacetime. Related to his interpretation is a power series approach to which we shall come across soon. Before treading there, let us see what the energy-momentum relation tells us in the 'mass current form':
 
 $$E^2 = \left( mc^2 \right)^2 + \left( j c \right)^2$$
 
