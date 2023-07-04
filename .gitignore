@@ -20,3 +20,53 @@ package-lock.json
 
 # Misc
 assets/js/dist
+
+
+# This is a minimal list, OK to add things per repo
+# mac specific
+.DS_Store
+.ansible
+.azure/
+.bash_history
+# don't check storage creds into GH
+.boto
+.cache
+*.code-workspace
+#  may contain gcloud files
+.config
+.gitconfig
+.local
+# .netrc contains secrets for service tokens
+.netrc
+*.plan
+.sentinel
+# .ssh dir may contain private keys
+.ssh
+.terrascan
+# Terraform dot files
+.terraform
+.terraformrc
+**/.terraform/*
+.terraform.d
+*.tfstate
+*.tfstate.*
+.vscode
+.idea
+.idea
+
+# Palo auth codes
+authcodes
+# Crash log files
+crash.log
+credentials.json
+# Palo specific
+init-cfg.txt
+temp
+terraform.rc
+tmp
+# Auto variables
+terraform.tfvars
+terraform.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+terraform/.terraform.lock.hcl
