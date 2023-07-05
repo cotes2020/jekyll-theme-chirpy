@@ -58,7 +58,7 @@ $$
 
 4-momentum may be interpreted as a current vector field associated with mass, in spacetime. Such a current vector field, associated with some body of mass $m$, may be defined as the vector field $J^\mu \left( x^\nu \right)$ characterized by:
 
-1. A magnitude in spacetime, $J$, which equals the amount of mass passing in unit proper time through the hypersurface of simulteinity $\Sigma$ (in a given frame) passing through $x^\nu$.
+1. A magnitude in spacetime, $J$, which equals the amount of mass passing in unit proper time through the hypersurface of simultaneity $\Sigma$ (in a given frame) passing through $x^\nu$.
 
 2. Having the same direction as the motion of the mass at each point, i.e. having the same direction as the velocity vector field $U^\mu$.
 
