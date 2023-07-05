@@ -92,7 +92,7 @@ $$
 \end{align}
 $$
 
-For a completely lozalized particle, its length along any direction, in the context of motion, may be taken as $d X$. The intuition for this is that no matter how small a proper time $d \tau$ we pick, the length $c d \tau$ of the particle which passes through $\Sigma$, is always the whole of $L$. This allows us to take $L = c d \tau = dX$. The particle's 4-momentum is then,
+For a completely localized particle, its length along any direction, in the context of motion, may be taken as $d X$. The intuition for this is that no matter how small a proper time $d \tau$ we pick, the length $c d \tau$ of the particle which passes through $\Sigma$, is always the whole of $L$. This allows us to take $L = c d \tau = dX$. The particle's 4-momentum is then,
 
 $$
 \begin{align}
@@ -103,7 +103,7 @@ P^\mu & = L J^\mu \\
 \end{align}
 $$
 
-Thus, even a completely lozalized particle has 4-momentum, simply equal to its current vector for mass.
+Thus, even a completely localized particle has 4-momentum, simply equal to its current vector for mass.
 
 ## Relativistic kinetic energy
 
@@ -119,7 +119,7 @@ Since we have $P^i = m U^i = \gamma m v^i$,
 
 $$\left( P^0 \right)^2 = \left( mc \right)^2 + \left( \gamma p \right)^2$$
 
-where $p = \left( g_{i j} P^i P^j \right)^\frac{1}{2} = - \left( P_i P^i \right)^\frac{1}{2}$. As will be seen soon, it is useful to bring both sides of the above equation to the units of energy, which can be done by multiplying by $c^2$,
+where $p = \left( g_{i j} P^i P^j \right)^\frac{1}{2} = - \left( P_i P^i \right)^\frac{1}{2}$. It is useful to explicitly express both sides of the above equation in the units of energy, by multiplying by $c^2$,
 
 $$\left( c P^0 \right)^2 = \left( mc^2 \right)^2 + \left( \gamma p c \right)^2$$
 
