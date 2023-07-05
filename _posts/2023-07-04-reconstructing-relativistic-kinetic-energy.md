@@ -5,7 +5,7 @@ categories: [relativity]
 tags: [4-momentum, mass current density]
 ---
 
-In classical mechanics, kinetic energy encodes the tendency of a system being tracked to move through space. Since relativity is based on the geometric setting of space*time*, one would expect that a relativistic analogue of kinetc energy talks about how a system moves through space *and* time.
+In classical mechanics, kinetic energy encodes the tendency of a system being tracked to move through space. Since relativity is based on the geometric setting of space*time*, one would expect that a relativistic analogue of kinetic energy talks about how a system moves through space *and* time.
 
 In this post, we will explore these notions of systems 'moving through' space and time, in terms of how the motion of mass in spacetime has an associated current which gives rise to momentum.
 
