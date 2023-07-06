@@ -151,7 +151,7 @@ blockquote {
   }
 
   @include prompt('tip', '\f0eb', 'regular');
-  @include prompt('info', '\f06a');
+  @include prompt('info', '\f05a');
   @include prompt('warning', '\f06a');
   @include prompt('danger', '\f071');
 }
