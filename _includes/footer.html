@@ -25,12 +25,12 @@
           <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
         {% endcapture %}
 
+        <a href={{site.repository}}>Source code</a> on <a href="https://github.com/">GitHub</a>.
+
         {{ site.data.locales[lang].meta
           | default: 'Powered by :PLATFORM with :THEME theme.'
           | replace: ':PLATFORM', _platform | replace: ':THEME', _theme
         }}
-
-        <a href={{site.repository}}>Source code</a> on <a href="https://github.com/">GitHub</a>.
 
       </p>
     </div>
