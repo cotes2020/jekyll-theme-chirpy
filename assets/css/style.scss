@@ -4,3 +4,27 @@
 @import '{{ site.theme }}';
 
 /* append your custom style below */
+
+* {
+    --darkreader-text--sidebar-active-color: #1d572a;
+    --darkreader-text--sidebar-color: #287c3c;
+    --darkreader-text--topbar-text-color: #074c16;
+}
+
+#sidebar .sidebar-bottom .mode-toggle:hover, #sidebar .sidebar-bottom a:hover, #sidebar .site-title a:hover {
+    background: var(--darkreader-bg--color-action-list-item-default-hover-bg);
+}
+ 
+#sidebar .sidebar-bottom .mode-toggle, #sidebar a, #sidebar .sidebar-bottom i {
+    color: var(--darkreader-text--sidebar-color);
+  }
+
+#topbar-title {
+    color: var(--darkreader-text--topbar-text-color);
+}
+
+// 添加指示
+#topbar i:hover {
+    color: rgb(163, 156, 146);
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
-<!-- The Side Bar -->
-
+<!-- 侧边栏 -->
 <div id="sidebar" class="d-flex flex-column align-items-end">
   <div class="profile-wrapper">
+    <!-- 头像 -->
     <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
       {% if site.avatar != empty and site.avatar %}
         {% capture avatar_url %}
@@ -18,21 +18,25 @@
     </a>
 
     <div class="site-title">
+      <!-- 网站标题 -->
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </div>
-    <div class="site-subtitle fst-italic">{{ site.tagline }}</div>
+    <div class="site-subtitle fst-italic">
+      <!-- 网站副标题 -->
+      {{ site.tagline }}
+    </div>
   </div>
   <!-- .profile-wrapper -->
 
   <ul class="nav flex-column flex-grow-1 w-100 ps-0">
-    <!-- home -->
+    <!-- 主页 -->
     <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
       <a href="{{ '/' | relative_url }}" class="nav-link">
         <i class="fa-fw fas fa-home"></i>
         <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
       </a>
     </li>
-    <!-- the real tabs -->
+    <!-- 真实的标签 -->
     {% for tab in site.tabs %}
       <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
         <a href="{{ tab.url | relative_url }}" class="nav-link">
@@ -49,6 +53,7 @@
 
   <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
     {% unless site.theme_mode %}
+      <!-- 模式切换按钮 -->
       <button class="mode-toggle btn" aria-label="Switch Mode">
         <i class="fas fa-adjust"></i>
       </button>
@@ -60,7 +65,7 @@
 
     {% for entry in site.data.contact %}
       {% case entry.type %}
-        {% when 'github', 'twitter' %}
+        {% when 'github' %}
           {%- capture url -%}
             https://{{ entry.type }}.com/{{ site[entry.type].username }}
           {%- endcapture -%}
