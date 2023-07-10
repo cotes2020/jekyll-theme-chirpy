@@ -23,7 +23,7 @@ title: Ajie's Bolg # the main title
 tagline: 无限进步! # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  永远都在进步之中, 脚步不停, 笨, 就笨点吧
+  我要开发一个自己使用的编程语言.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "https://jakezhou0.github.io"
@@ -70,10 +70,10 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 
+img_cdn: 'https://www.imghost.net'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets/img/logo.jpg
+avatar: 'https://www.imghost.net/3IxB4T3kB8DKciR'
 
 # boolean type, the global switch for TOC in posts.
 toc: true
