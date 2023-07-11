@@ -1,7 +1,7 @@
 ---
 title: "Algebra Done Tensorially: Part 1 (Bilinear Products)"
 description: "A post studying bilinear products in tensor algebra"
-categories: [abstract algebra]
+categories: [representation theory]
 tags: [bilinear products, tensors, algebras]
 ---
 
