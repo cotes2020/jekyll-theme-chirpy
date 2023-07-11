@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-![博主的头像](assets/img/logo.jpg)
+![博主的头像(../assets/img/logo.jpg)
 _博主的头像_
 
 ### 关于我
