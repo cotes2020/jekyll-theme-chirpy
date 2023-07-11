@@ -14,9 +14,9 @@
 
 ## output
 
-![APT-modera.png](/ocholuo.github.io/_posts/00CodeNote/project/webscrap_apt/APT-modera.png)
+![APT-modera.png](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/00CodeNote/project/webscrap_apt/APT-modera.png)
 
-![APT-talisman.png](/ocholuo.github.io/_posts/00CodeNote/project/webscrap_apt/APT-talisman.png)
+![APT-talisman.png](https://github.com/ocholuo/ocholuo.github.io/blob/master/_posts/00CodeNote/project/webscrap_apt/APT-talisman.png)
 
 ---
 

@@ -1343,7 +1343,7 @@ https://b.com/oauth/token?
 
 ```yaml
 auth_logging = true
-auth_logging_format = "{{.Client}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}}"
+# auth_logging_format = "{{.Client}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}}"
 # pass HTTP Basic Auth, X-Forwarded-User and X-Forwarded-Email information to upstream
 pass_basic_auth = true
 # pass_user_headers = true
