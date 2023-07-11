@@ -9,7 +9,10 @@ tags: [Web, front end, Responsive Web Design]     # TAG names should always be l
 
 > Objective: Build an app that is functionally similar to https://product-landing-page.freecodecamp.rocks
 
-
+### Question
+1. How to use '@media'
+2. What properties 'flex' has and how to use them specifically.
+3. 
 
 ### Code Pard
 HTML Code
