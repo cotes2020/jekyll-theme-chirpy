@@ -446,20 +446,18 @@ aws iam attach-role-policy \
 
 ```bash
 # Set variables
-export cluster_name=dev-medusa-01
+export cluster_name=dev-my-app-01
 export namespace=default
-export service_account=medusa-core
-export my_role=eks-medusa-core
-export policy_arn=arn:aws:iam::350842811077:policy/medusa-coe-config-policy
+export service_account=my-app
+export my_role=eks-my-app
+export policy_arn=arn:aws:iam::my_account:policy/my-app-coe-config-policy
 # Set AWS account ID
 account_id=$(aws sts get-caller-identity --query "Account" --output text)
 # Set cluster's OIDC identity provider
 oidc_provider=$(aws eks describe-cluster \
-  --name dev-medusa-01 \
+  --name dev-my-app-01 \
   --query "cluster.identity.oidc.issuer" \
   --output text | sed -e "s/^https:\/\///")
-
-
 
 # ============= 1
 eksctl create iamserviceaccount \
@@ -469,7 +467,6 @@ eksctl create iamserviceaccount \
   --role-name $my_role \
   --attach-policy-arn $policy_arn \
   --approve
-
 
 # ============= 2
 cat >my-service-account.yaml <<EOF
@@ -603,18 +600,18 @@ kubectl describe serviceaccount $service_account -n default
 ```bash
 
 # Set variables
-export cluster_name=dev-medusa-01
+export cluster_name=dev-my-app-01
 export namespace=default
-export service_account=medusa-core
-export my_app=medusa-core
-export my_pod=medusa-core-5bbf4dd447-rshjm
-export my_role=eks-medusa-core
-export policy_arn=arn:aws:iam::350842811077:policy/medusa-coe-config-policy
+export service_account=my-app
+export my_app=my-app
+export my_pod=my-app-5bbf4dd447-rshjm
+export my_role=eks-my-app
+export policy_arn=arn:aws:iam::my_account:policy/my-app-coe-config-policy
 # Set AWS account ID
 account_id=$(aws sts get-caller-identity --query "Account" --output text)
 # Set cluster's OIDC identity provider
 oidc_provider=$(aws eks describe-cluster \
-  --name dev-medusa-01 \
+  --name dev-my-app-01 \
   --query "cluster.identity.oidc.issuer" \
   --output text | sed -e "s/^https:\/\///")
 
