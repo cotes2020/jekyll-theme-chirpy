@@ -110,7 +110,7 @@ image:
   path: /assets/img/headers/jekyll.png
 ---
 ```
-Once youre happy with the changes,you can commit them to gitlab and this will trigger a github action.
+Once youre happy with the changes,you can commit them to github and this will trigger a github action.
 ```sh
 git add .
 git commit -m "Initial commit"
