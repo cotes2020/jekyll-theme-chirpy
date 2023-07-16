@@ -145,7 +145,6 @@ Add your domain name under `Custom Domain`
 www.mkbn.in
 ```
 
-
 ### Reference Links:
 - [Jekyll docs](https://jekyllrb.com/)
 
