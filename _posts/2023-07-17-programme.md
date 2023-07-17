@@ -32,7 +32,7 @@ tags: [programme, fundamentals, alignment, interpretability]
 
 ## **Day 2: Model Interpretation and Debiasing**
 
-- **9:00 AM - 12:00 PM: Lecture **
+- **9:00 AM - 12:00 PM: Lecture**
 
     + This lecture will focus on techniques for interpreting the outputs of language models.
     You will learn about methods such as `attention visualization` and `saliency mapping` to
