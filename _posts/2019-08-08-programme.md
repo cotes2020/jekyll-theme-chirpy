@@ -1,5 +1,5 @@
 ---
-title: Apply!
+title: Programme
 author: Maksim Zubok
 date: 2023-07-17
 categories: [Programme]
