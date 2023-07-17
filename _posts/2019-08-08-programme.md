@@ -9,28 +9,27 @@ tags: [programme, fundamentals, alignment, interpretability]
 
 ## **Day 1: Fundamentals of r Language Models**
 
-9:00 AM - 12:00 PM: Lecture 
+- 9:00 AM - 12:00 PM: Lecture 
 
-During this lecture, you will develop a comprehensive understanding of the
-fundamental concepts underlying language models. 
+ + During this lecture, you will develop a comprehensive understanding of the fundamental concepts underlying language models. 
 
-The session will provide a comprehensive overview of language modeling basics, as well as the evolutionary journey of
-approaches within this domain. We will explore the progression from rule-based systems to
-the revolutionary attention mechanism and the subsequent models built upon it, such as
-Transformers. By delving into the intricacies of these modern Transformers-based language
-models, you  will discover the remarkable power they possess and gain insights into
-how they have become the state-of-the-art technology in the field of natural language
-processing.
+    The session will provide a comprehensive overview of language modeling basics, as well as the evolutionary journey of
+    approaches within this domain. We will explore the progression from rule-based systems to
+    the revolutionary attention mechanism and the subsequent models built upon it, such as
+    Transformers. By delving into the intricacies of these modern Transformers-based language
+    models, you  will discover the remarkable power they possess and gain insights into
+    how they have become the state-of-the-art technology in the field of natural language
+    processing.
 
-12:00 PM - 1:00 PM: Lunch Break
+- 12:00 PM - 1:00 PM: Lunch Break
 
-1:00 PM - 4:00 PM: Coding Tutorial: Introduction to Transformer Models
+- 1:00 PM - 4:00 PM: Coding Tutorial: Introduction to Transformer Models
 
-During this hands-on tutorial, you will learn how to implement and utilise
-Transformer models for various NLP tasks. You will be guided through the process of setting
-up the required software environment, loading and fine-tuning pretrained Transformer
-models, and applying them to solve specific research problems in social sciences. Practical
-exercises and coding examples will be provided.
++ During this hands-on tutorial, you will learn how to implement and utilise
+  Transformer models for various NLP tasks. You will be guided through the process of setting
+  up the required software environment, loading and fine-tuning pretrained Transformer
+  models, and applying them to solve specific research problems in social sciences. Practical
+  exercises and coding examples will be provided.
 
 ## **Day 2: Model Interpretation and Debiasing**
 
