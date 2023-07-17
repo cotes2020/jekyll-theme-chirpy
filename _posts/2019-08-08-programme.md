@@ -9,7 +9,7 @@ tags: [programme, fundamentals, alignment, interpretability]
 
 ## **Day 1: Fundamentals of r Language Models**
 
-- **9:00 AM - 12:00 PM: Lecture **
+- **9:00 AM - 12:00 PM: Lecture**
 
    + During this lecture, you will develop a comprehensive understanding of the fundamental concepts underlying language models. 
   
@@ -20,7 +20,7 @@ tags: [programme, fundamentals, alignment, interpretability]
       models, you  will discover the remarkable power they possess and gain insights into
       how they have become the state-of-the-art technology in the field of nlp.
 
-**- 12:00 PM - 1:00 PM: Lunch Break**
+- **12:00 PM - 1:00 PM: Lunch Break**
 
 - **1:00 PM - 4:00 PM: Coding Tutorial: Introduction to Transformer Models**
 
