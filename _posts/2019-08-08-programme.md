@@ -7,7 +7,7 @@ tags: [programme, fundamentals, alignment, interpretability]
 ---
 
 
-## **Day 1: Fundamentals of r Language Models**
+## **Day 1: Fundamentals of Large Language Models**
 
 - **9:00 AM - 12:00 PM: Lecture**
 
