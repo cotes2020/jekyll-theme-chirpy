@@ -1,4 +1,4 @@
-package medusa_prometheus
+package My_APP_prometheus
 
 import (
 	"log"
