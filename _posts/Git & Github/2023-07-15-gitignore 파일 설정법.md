@@ -15,7 +15,8 @@ comments: true
 
 
 # 2. [.gitignore] 파일 규칙
-``` gitignore
+
+```
 # 특정 파일 무시
 파일명.txt
 
@@ -33,7 +34,7 @@ comments: true
 ```
 
 # 3. [gitignore.io] 홈페이지 사용법
-> 1.gitignore.io 홈페이지에 들어간다.
+> 1.[gitignore.io](gitignore.io) 홈페이지에 들어간다.
 
 ![image](https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/10da090c-58f9-4cba-a431-7449611702e5)
 ---
