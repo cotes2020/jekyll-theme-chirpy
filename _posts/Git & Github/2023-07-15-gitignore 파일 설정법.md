@@ -1,5 +1,5 @@
 ---
-title: git add commit push 한번에 간편하게 하는 방법
+title: git add commit push 한번에 간편하게 하는 방법 [gitignore.io]
 date: 2023-07-09 07:24:00 +0900
 author: kkankkandev
 categories: [Git & Github]
