@@ -33,14 +33,14 @@ comments: true
 ```
 
 # 3. [gitignore.io] 홈페이지 사용법
-> 1. gitignore.io 홈페이지에 들어간다.
+> 1.gitignore.io 홈페이지에 들어간다.
 
 ![image](https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/10da090c-58f9-4cba-a431-7449611702e5)
 ---
-> 2. 아래 Text를 입력하는 곳에 운영 체제, 개발 환경, 프로그래밍 언어를 기입하고 생성 버튼을 누른다   
+> 2.아래 Text를 입력하는 곳에 운영 체제, 개발 환경, 프로그래밍 언어를 기입하고 생성 버튼을 누른다   
 
 ![image-1](https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/e63013d7-3093-4c9a-bb70-bef2792bfacf)
 ---
-> 3. 넘어간 페이지에서 Ctrl + A 혹은 Command + A를 눌러 소스코드를 전체 복사한 뒤 .**gitignore** 파일에 추가해준다
+> 3.넘어간 페이지에서 Ctrl + A 혹은 Command + A를 눌러 소스코드를 전체 복사한 뒤 .**gitignore** 파일에 추가해준다
 
 ![image-2](https://github.com/War-Oxi/war-oxi.github.io/assets/72260110/3fd3da45-c3ce-4fdf-bf24-4c7e3aaedce9)
