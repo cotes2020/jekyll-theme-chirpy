@@ -123,7 +123,7 @@ $$
 
 In the body's own frame, $$v=0$$ (as the body is at rest relative to itself). Hence,
 
-$$ds^2 = c^2 dt^2 > 0$$
+$$ds^2 = c^2 dt^2 \geq 0$$
 
 However, $$ds^2 < 0$$ in the original frame, and it must be true in all frames, including the body's own! This results in a paradox which can only be resolved by concluding that the assumption that there can exist a frame where $$ds^2 < 0$$, is in fact _false_.
 
