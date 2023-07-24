@@ -1,6 +1,6 @@
 ---
 title: Programme
-author: antndlcrx
+author: maksim
 date: 2023-07-17
 categories: [Programme]
 tags: [programme, fundamentals, alignment, interpretability]
