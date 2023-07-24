@@ -7,7 +7,7 @@ tags: [programme, fundamentals, alignment, interpretability]
 ---
 
 
-## **Day 1: Fundamentals of Large Language Models**
+## **📅 Day 1: Fundamentals of Large Language Models**
 
 - **9:00 AM - 12:00 PM: Lecture**
 
@@ -30,7 +30,7 @@ tags: [programme, fundamentals, alignment, interpretability]
     models, and applying them to solve specific research problems in social sciences. Practical
     exercises and coding examples will be provided.
 
-## **Day 2: Model Interpretation and Debiasing**
+## **📅 Day 2: Model Interpretation and Debiasing**
 
 - **9:00 AM - 12:00 PM: Lecture**
 
@@ -49,7 +49,7 @@ tags: [programme, fundamentals, alignment, interpretability]
     with various interpretation techniques and learn how to evaluate and address biases in
     model predictions. We will provide you with practical exercises and examples.
 
-## **Day 3: Recent Developments: Large Language Models and Alignment**
+## **📅 Day 3: Recent Developments: Large Language Models and Alignment**
 
 - **9:00 AM - 12:00 PM: Lecture**
 
@@ -75,7 +75,7 @@ Alignment**
     using `RLHF` methods. Practical examples and exercises will be provided to help you
     apply these techniques to your own research questions and datasets.
 
- - **4:00 PM - 6 PM: Coding challange**
+ - **4:00 PM - 6 PM: Coding Challange and Awards Ceremony🏆**
 
     + You will be grouped together into a set of teams to tackle a challenging reasearch problem. Winning this competition isn't solely about reaching the correct solution; it's about pushing boundaries and thinking outside the box. We're looking for the most creative, efficient, and innovative solutions. We will reward (there will be nice small prises!) the team that exhibits outstanding creativity and innovation and the team that delivers the best result. This is a great platform to test your skills, solidify your networks, cooperate with peers, and dive deep into the thrilling world of language models!  
 
