@@ -40,15 +40,15 @@ As artificial intelligence and language models continue to revolutionize various
 - 4:00 PM - 6 PM: Coding Challenge and Awards Ceremony 🏆
     + Team up to tackle a challenging research problem! Showcase your creativity, efficiency, and innovation in solving the task using language models. Prizes will be awarded for the most outstanding solutions and innovations. This is your chance to test your skills, build networks, and delve deep into the thrilling world of language models!
 
-## 📍 Location: 
+## 📍 Location 
 [Department of Sociology (Oxford University), 42 Park End St, Oxford OX1 1JD]
 
-## Application
-🎓 Limited Places Available! Apply now to secure your spot!
+## 🎓 Application
+Limited Places Available! Apply now to secure your spot!
 🌐 [Application Link](https://forms.gle/BVYmKGhepGE9Y5HT6)
 
-## Contact
-📧 For inquiries, contact [maksim.zubok@nuffield.ox.ac.uk](mailto:maksim.zubok@nuffield.ox.ac.uk)
+## 📧 Contact
+For inquiries, contact [maksim.zubok@nuffield.ox.ac.uk](mailto:maksim.zubok@nuffield.ox.ac.uk)
 #LanguageModels #SocialScience #AIinResearch #NLP #Workshop
 
 Join us at the forefront of innovation in social science research! Let's harness the power of language models together and revolutionize the future! 🌟
