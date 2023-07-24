@@ -8,9 +8,9 @@ order: 4
 
 As artificial intelligence and language models continue to revolutionize various sectors, we are thrilled to invite early career social scientists to our 3-day workshop, where we aim to bridge the gap and unlock the transformative potential of language models in the realm of social sciences!
 
-#🗓️ Workshop Program:
+# 🗓️ Workshop Program:
 
-##📅 Day 1: Fundamentals of Large Language Models
+## 📅 Day 1: Fundamentals of Large Language Models
 - 9:00 AM - 12:00 PM: Lecture
   + During this session, you'll gain a comprehensive understanding of the fundamental concepts underlying language models. We'll explore the evolutionary journey from rule-based systems to modern Transformers-based models, which are the state-of-the-art technology in natural language processing (NLP).
 
@@ -19,7 +19,7 @@ As artificial intelligence and language models continue to revolutionize various
 - 1:00 PM - 4:00 PM: Coding Tutorial: Introduction to Transformer Models
   + Get hands-on experience implementing and utilizing Transformer models for various NLP tasks in social sciences. Practical exercises and coding examples will be provided.
 
-##📅 Day 2: Model Interpretation and Debiasing
+## 📅 Day 2: Model Interpretation and Debiasing
 - 9:00 AM - 12:00 PM: Lecture
     + Learn techniques for interpreting language model outputs, including attention visualization and probing. We'll also address model bias and explore strategies to detect and mitigate bias in language models, ensuring unbiased social science research.
 
@@ -28,7 +28,7 @@ As artificial intelligence and language models continue to revolutionize various
 - 1:00 PM - 4:00 PM: Coding Tutorial: Interpreting and Debiasing Language Models
     + Apply the concepts covered in the lecture to interpret and debias language models. Hands-on experience with various interpretation techniques and practical exercises will be provided.
 
-##📅 Day 3: Recent Developments: Large Language Models and Alignment
+## 📅 Day 3: Recent Developments: Large Language Models and Alignment
 - 9:00 AM - 12:00 PM: Lecture
      + Discover recent advancements in language models, including large-scale models and reinforcement learning from human feedback (RLHF). Understand the creation process of InstructGPT models, like the popular ChatGPT, and explore their applications in social science research.
 
