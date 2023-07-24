@@ -35,7 +35,7 @@ tags: [programme, fundamentals, alignment, interpretability]
 - **9:00 AM - 12:00 PM: Lecture**
 
     + This lecture will focus on techniques for interpreting the outputs of language models.
-    You will learn about methods such as `attention visualization` and `saliency mapping` to
+    You will learn about methods such as `attention visualization` and `probing` to
     understand how the models make predictions. Additionally, the session will cover the topic
     of `model bias`, its impact on social science research, and strategies to detect and mitigate
     bias in language models.
@@ -44,8 +44,8 @@ tags: [programme, fundamentals, alignment, interpretability]
 
 - **1:00 PM - 4:00 PM: Coding Tutorial: Interpreting and Debiasing Language Models**
 
-    + During this tutorial, participants will have the opportunity to apply the concepts covered in
-    the lecture to interpret and debias language models. They will gain hands-on experience
+    + During this tutorial, you will have the opportunity to apply the concepts covered in
+    the lecture to interpret and debias language models. You will gain hands-on experience
     with various interpretation techniques and learn how to evaluate and address biases in
     model predictions. We will provide you with practical exercises and examples.
 
