@@ -1,6 +1,6 @@
 ---
 # the default layout is 'page'
-icon: fa-home
+icon: fas fa-home
 order: 4
 ---
 
