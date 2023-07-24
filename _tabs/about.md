@@ -42,7 +42,7 @@ Team up to tackle a challenging research problem! Showcase your creativity, effi
 📍 Location: [Department of Sociology (Oxford University), 42 Park End St, Oxford OX1 1JD]
 🎓 Limited Seats Available! Apply now to secure your spot!
 🌐 [Application Link](https://forms.gle/BVYmKGhepGE9Y5HT6)
-📧 For inquiries, contact [maksim.zubok@nuffield.ox.ac.uk]
+📧 For inquiries, contact [maksim.zubok@nuffield.ox.ac.uk](mailto:maksim.zubok@nuffield.ox.ac.uk)
 #LanguageModels #SocialScience #AIinResearch #NLP #Workshop
 
 Join us at the forefront of innovation in social science research! Let's harness the power of language models together and revolutionize the future! 🌟
