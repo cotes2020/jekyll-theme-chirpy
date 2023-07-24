@@ -4,8 +4,45 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-As artificial intelligence and language models revolutionise various sectors, their potential within the realm of social sciences remains largely untapped. Our 3-day workshop aims to bridge this divide, introducing early career social scientists to the transformative potential of language models, from powering Internet search engines to acting as sophisticated personal assistants.
+📢 A 3-Day Workshop on Language Models for Social Sciences! 🚀
 
-This event is designed to demystify these technologies, demonstrating their immense potential to enhance research in the social sciences. It will provide participants with a comprehensive understanding of language models, their functionality, strengths, limitations, and the crucial considerations necessary for their effective utilisation.
+As artificial intelligence and language models continue to revolutionize various sectors, we are thrilled to invite early career social scientists to our 3-day workshop, where we aim to bridge the gap and unlock the transformative potential of language models in the realm of social sciences!
 
-The workshop will comprise daily sessions featuring 3-hour lectures on language models, 3-hour coding tutorials, and guest speaker presentations. Additionally, it will offer a platform for participants to present their own research to an expert panel, encouraging enriching discussions and collaborative learning. By promoting such innovation, we aim to advance the adoption of these complex tools in social science research.
+🗓️ Workshop Program:
+📅 Day 1: Fundamentals of Large Language Models
+9:00 AM - 12:00 PM: Lecture
+During this session, you'll gain a comprehensive understanding of the fundamental concepts underlying language models. We'll explore the evolutionary journey from rule-based systems to modern Transformers-based models, which are the state-of-the-art technology in natural language processing (NLP).
+
+12:00 PM - 1:00 PM: Lunch Break
+
+1:00 PM - 4:00 PM: Coding Tutorial: Introduction to Transformer Models
+Get hands-on experience implementing and utilizing Transformer models for various NLP tasks in social sciences. Practical exercises and coding examples will be provided.
+
+📅 Day 2: Model Interpretation and Debiasing
+9:00 AM - 12:00 PM: Lecture
+Learn techniques for interpreting language model outputs, including attention visualization and probing. We'll also address model bias and explore strategies to detect and mitigate bias in language models, ensuring unbiased social science research.
+
+12:00 PM - 1:00 PM: Lunch Break
+
+1:00 PM - 4:00 PM: Coding Tutorial: Interpreting and Debiasing Language Models
+Apply the concepts covered in the lecture to interpret and debias language models. Hands-on experience with various interpretation techniques and practical exercises will be provided.
+
+📅 Day 3: Recent Developments: Large Language Models and Alignment
+9:00 AM - 12:00 PM: Lecture
+Discover recent advancements in language models, including large-scale models and reinforcement learning from human feedback (RLHF). Understand the creation process of InstructGPT models, like the popular ChatGPT, and explore their applications in social science research.
+
+12:00 PM - 1:00 PM: Lunch Break
+
+1:00 PM - 4:00 PM: Coding Tutorial: Advanced Techniques with Large Language Models and Alignment
+Explore advanced techniques with large language models and RLHF. Gain hands-on experience with fine-tuning large-scale models using RLHF methods on your own research questions and datasets.
+
+4:00 PM - 6 PM: Coding Challenge and Awards Ceremony 🏆
+Team up to tackle a challenging research problem! Showcase your creativity, efficiency, and innovation in solving the task using language models. Prizes will be awarded for the most outstanding solutions and innovations. This is your chance to test your skills, build networks, and delve deep into the thrilling world of language models!
+
+📍 Location: [Department of Sociology (Oxford University), 42 Park End St, Oxford OX1 1JD]
+🎓 Limited Seats Available! Apply now to secure your spot!
+🌐 [Application Link](https://forms.gle/BVYmKGhepGE9Y5HT6)
+📧 For inquiries, contact [maksim.zubok@nuffield.ox.ac.uk]
+#LanguageModels #SocialScience #AIinResearch #NLP #Workshop
+
+Join us at the forefront of innovation in social science research! Let's harness the power of language models together and revolutionize the future! 🌟
