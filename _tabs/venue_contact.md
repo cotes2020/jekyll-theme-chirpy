@@ -1,3 +1,9 @@
+---
+# the default layout is 'page'
+icon: fa-envelope-o
+order: 4
+---
+
 # Venue and Contact 
 
 The workshop will be held in the Sociology Department (University of Oxford). 
