@@ -70,11 +70,12 @@ tags: [programme, fundamentals, alignment, interpretability]
 - **1:00 PM - 4:00 PM: Coding Tutorial: Advanced Techniques with Large Language Models and
 Alignment**
 
-     + During this tutorial, participants will explore advanced techniques with large language
-    models and `RLHF`. They will gain hands-on experience with fine-tuning large-scale models
-    using `RLHF` methods. Practical examples and exercises will be provided to help participants
-    apply these techniques to their own research questions and datasets.
+     + During this tutorial, you will explore advanced techniques with large language
+    models and `RLHF`. You will gain hands-on experience with fine-tuning large-scale models
+    using `RLHF` methods. Practical examples and exercises will be provided to help you
+    apply these techniques to your own research questions and datasets.
 
- - **4:00 PM - 6 PM: Participant Collaborative Project Work**
+ - **4:00 PM - 6 PM: Coding challange**
 
-Description Coming 
+    + You will be grouped together into a set of teams to tackle a challenging reasearch problem. Winning this competition isn't solely about reaching the correct solution; it's about pushing boundaries and thinking outside the box. We're looking for the most creative, efficient, and innovative solutions. We will reward (there will be nice small prises!) the team that exhibits outstanding creativity and innovation and the team that delivers the best result. This is a great platform to test your skills, solidify your networks, cooperate with peers, and dive deep into the thrilling world of language models!  
+
