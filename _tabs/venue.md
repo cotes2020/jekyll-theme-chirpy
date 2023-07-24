@@ -4,8 +4,6 @@ icon: fa-home
 order: 4
 ---
 
-# Venue 
-
 The workshop will be held in the Sociology Department (University of Oxford). 
 Address: 42 Park End St, Oxford OX1 1JD
 
