@@ -20,10 +20,10 @@ timezone:
 
 title: Oxford LLMs # the main title
 
-tagline: A Workshop for Social Sciences # it will display as the sub-title
+tagline: A Workshop for Social Science Researchers # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A three-day Workshop for Social Sciences.
+  A three-day Workshop for Social Science Researchers.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "https://antndlcrx.github.io"
