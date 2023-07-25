@@ -4,7 +4,7 @@ icon: fas fa-home
 order: 4
 ---
 
-The workshop will be held in the Sociology Department (University of Oxford).
+The workshop will be held at the Sociology Department (University of Oxford).
 
 Address: 42 Park End St, Oxford OX1 1JD
 
