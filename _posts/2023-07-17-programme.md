@@ -21,6 +21,8 @@ tags: [programme, fundamentals, alignment, interpretability]
       how they have become the state-of-the-art technology in the field of nlp.
 
 - **12:00 PM - 1:00 PM: Lunch Break**
+> Sandwich lunch and refreshments (tea, coffee, buiscuts, etc.) will be provided free of cost!
+{: .prompt-tip }
 
 - **1:00 PM - 4:00 PM: Coding Tutorial: Introduction to Transformer Models**
 
@@ -41,6 +43,8 @@ tags: [programme, fundamentals, alignment, interpretability]
     bias in language models.
 
 - **12:00 PM - 1:00 PM: Lunch Break**
+> Sandwich lunch and refreshments (tea, coffee, buiscuts, etc.) will be provided free of cost!
+{: .prompt-tip }
 
 - **1:00 PM - 4:00 PM: Coding Tutorial: Interpreting and Debiasing Language Models**
 
@@ -66,6 +70,8 @@ tags: [programme, fundamentals, alignment, interpretability]
     `InstructGPT` models like `ChatGPT`.
 
 - **12:00 PM - 1:00 PM: Lunch Break**
+> Sandwich lunch and refreshments (tea, coffee, buiscuts, etc.) will be provided free of cost!
+{: .prompt-tip }
 
 - **1:00 PM - 4:00 PM: Coding Tutorial: Advanced Techniques with Large Language Models and
 Alignment**
