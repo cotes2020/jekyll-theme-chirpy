@@ -6,7 +6,7 @@ order: 4
 
 📢 A 3-Day Workshop on Language Models for Social Sciences! 🚀
 
-As artificial intelligence and language models continue to revolutionize various sectors, we are thrilled to invite early career social scientists to our 3-day workshop, where we aim to bridge the gap and unlock the transformative potential of language models in the realm of social sciences!
+As artificial intelligence and language models continue to revolutionise various sectors, we are thrilled to invite early career social scientists to our 3-day workshop, where we aim to bridge the gap and unlock the transformative potential of language models in the realm of social sciences!
 
 # 🗓️ Workshop Program:
 
