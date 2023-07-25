@@ -52,4 +52,4 @@ Limited Places Available! Apply now to secure your spot!
 # 📧 Contact
 For inquiries, contact [maksim.zubok@nuffield.ox.ac.uk](mailto:maksim.zubok@nuffield.ox.ac.uk)
 
-Join us at the forefront of innovation in social science research! Let's harness the power of language models together and revolutionize the future! 🌟
+Let's harness the power of language models together to enhance innovation in social science research! 🌟
