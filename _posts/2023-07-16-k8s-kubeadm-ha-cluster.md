@@ -198,7 +198,7 @@ rm -f crictl-$VERSION-linux-amd64.tar.gz
 }
 ```
 
-### set containerd as default runtime for crictl
+### Set containerd as default runtime for crictl
 ```sh
 {
 cat << EOF | sudo tee /etc/crictl.yaml
