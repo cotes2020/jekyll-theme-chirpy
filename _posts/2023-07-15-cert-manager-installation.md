@@ -10,7 +10,7 @@ image:
 ### Install cert-manager using kubectl apply
 
 ```bash
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
 ```
 
 ### Create a Certificate Authority
@@ -77,7 +77,7 @@ spec:
     name: ca-issuer
     kind: ClusterIssuer
   dnsNames:
-    - nginx.moshus.tech
+    - nginx.mkbn.tech
 ```
 
 This will create the certificate object in *nginx* ns , along with secret call *nginx-tls-secret* which can be used in our nginx-ingress config
@@ -94,7 +94,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "nginx.moshus.tech"
+  - host: "nginx.mkbn.tech"
     http:
       paths:
       - path: /
@@ -106,7 +106,7 @@ spec:
               number: 80
   tls:
   - hosts:
-    - nginx.moshu-tech
+    - nginx.mkbn-tech
     secretName: nginx-tls-secret
 ```
 

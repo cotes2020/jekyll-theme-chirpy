@@ -20,10 +20,10 @@ timezone: Asia/Kolkata
 
 title: MKBN-TECH # the main title
 
-tagline: Sr.Site Reliability Engineer | Kubernets Pro | Multi Cloud Expert | Auomation Nerd | # it will display as the sub-title
+tagline: Sr.Site Reliability Engineer | Kubernets Pro | Multi Cloud Expert | # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  One shop stop for all my tehnical documents.
+  mkbn-tech document site!
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "https://mbn02.github.io"
