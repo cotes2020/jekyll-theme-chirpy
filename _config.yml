@@ -20,7 +20,7 @@ timezone: Asia/Kolkata
 
 title: MKBN-TECH # the main title
 
-tagline: Sr.Site Reliability Engineer | Kubernets Pro | Multi Cloud Expert | # it will display as the sub-title
+tagline: Sr.Site Reliability Engineer | Kubernets Pro | Multi Cloud Expert| # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   mkbn-tech document site!
