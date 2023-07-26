@@ -5,7 +5,7 @@ date: 2023-07-17 22:15:00
 categories: kubernetes
 tags: kubeadm
 image:
-  path: /assets/img/headers/k8s-ha-cluster-frame.png
+  path: /assets/img/headers/helm.jpg
 ---
 # HA Kubernetes cluster with containerd
 
