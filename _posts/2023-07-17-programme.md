@@ -7,7 +7,7 @@ tags: [programme, fundamentals, alignment, interpretability]
 ---
 
 
-## **📅 Day 1: Fundamentals of Large Language Models**
+## **📅 Day 1 (27 Sept): Fundamentals of Large Language Models**
 
 - **9:00 AM - 12:00 PM: Lecture**
 
@@ -33,7 +33,7 @@ tags: [programme, fundamentals, alignment, interpretability]
     models, and applying them to solve specific research problems in social sciences. Practical
     exercises and coding examples will be provided.
 
-## **📅 Day 2: Model Interpretation and Debiasing**
+## **📅 Day 2 (28 Sept): Model Interpretation and Debiasing**
 
 - **9:00 AM - 12:00 PM: Lecture**
 
@@ -55,7 +55,7 @@ tags: [programme, fundamentals, alignment, interpretability]
     with various interpretation techniques and learn how to evaluate and address biases in
     model predictions. We will provide you with practical exercises and examples.
 
-## **📅 Day 3: Recent Developments: Large Language Models and Alignment**
+## **📅 Day 3 (29 Sept): Recent Developments: Large Language Models and Alignment**
 
 - **9:00 AM - 12:00 PM: Lecture**
 
