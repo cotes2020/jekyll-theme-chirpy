@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "How to install a kubernetes HA cluster"
+title: "Let's build a HA kubernetes cluster on baremetal servers"
 date: 2023-07-17 22:15:00
 categories: kubernetes
-tags: kubeadm
+tags: kubernetes
 image:
   path: /assets/img/headers/helm.jpg
 ---

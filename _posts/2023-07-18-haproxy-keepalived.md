@@ -3,7 +3,7 @@ layout: post
 title: "How to setup loadbalancing with haproxy & keepalived"
 date: 2023-07-18 21:19:00
 categories: loadbalancer
-tags: haproxy,keepalived
+tags: haproxy
 image:
   path: /assets/img/headers/haproxy.jpg
 ---
@@ -94,9 +94,9 @@ vrrp_instance LB_VIP {
         auth_type user
         auth_pass UGFzcwo=  # Password for accessing vrrpd. Same on all devices
     }
-    unicast_src_ip <lb-master-ip> # IP address of master
+    unicast_src_ip <lb-master-ip> # IP address of master-lb
     unicast_peer {
-        <lb-backup-ip>   # IP address of the backup haproxy
+        <lb-backup-ip>   # IP address of the backup-lb
    }
 
     # The virtual ip address shared between the two loadbalancers
@@ -134,9 +134,9 @@ vrrp_instance LB_VIP {
         auth_type user
         auth_pass UGFzcwo=  # Password for accessing vrrpd. Same on all devices
     }
-    unicast_src_ip <lb-backup-ip> #IP address of master
+    unicast_src_ip <lb-backup-ip> #IP address of backup-lb
     unicast_peer {
-        <lb-master-ip>  #IP address of the backup haproxy
+        <lb-master-ip>  #IP address of the master-lb
    }
 
     # The virtual ip address shared between the two loadbalancers
