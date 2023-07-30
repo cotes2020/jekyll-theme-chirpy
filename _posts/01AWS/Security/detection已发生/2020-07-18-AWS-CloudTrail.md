@@ -1,8 +1,8 @@
 ---
 title: AWS - Security - Amazon CloudTrail (log for audit)
 date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, SecurityControl]
-tags: [AWS, SecurityControl]
+categories: [01AWS, Security]
+tags: [AWS, Security]
 toc: true
 image:
 ---

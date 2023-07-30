@@ -1,7 +1,7 @@
 ---
 title: AWS - Security - Cloud Proactive Security and Forensic Readiness
 date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, SecurityControl]
+categories: [01AWS, Security]
 tags: [AWS, SecurityControl, ZeroTrust]
 toc: true
 image:
@@ -297,7 +297,7 @@ The checklist mainly focuses on protection of data (at rest and in transit), pro
 
 
 3. <font color=red> protecting data at rest on Amazon EBS </font>
-   - only use encrypted EBS volums
+   - only use encrypted EBS volume
      - encrypt data, snapshots, and disk I/O using the customary AWS-256 algorithm
    - active VPC Flow log
    - AWS creates two copies of the EBS volume for redundancy.

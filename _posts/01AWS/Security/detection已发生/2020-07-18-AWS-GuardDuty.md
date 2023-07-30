@@ -1,21 +1,25 @@
 ---
-title: AWS - Security - AWS Duty (AWS account and workloads)
+title: AWS - Security - GuardDuty (AWS account and workloads)
 date: 2020-07-18 11:11:11 -0400
-categories: [01AWS, SecurityControl]
-tags: [AWS, SecurityControl]
+categories: [01AWS, Security]
+tags: [AWS, Security]
 toc: true
 image:
 ---
 
-[toc]
+- [GuardDuty](#guardduty)
+  - [how Amazon GuardDuty works](#how-amazon-guardduty-works)
+  - [enable Amazon GuardDuty](#enable-amazon-guardduty)
+
 
 ---
 
 
-# Guard Duty  `identify malicious/unauthorized activity in AWS account and workloads`
+# GuardDuty
+
+> identify malicious/unauthorized activity in `AWS account and workloads`
 
 ![Pasted Graphic](https://i.imgur.com/XJAk8xl.jpg)
-
 
 - Designed to <font color=red> actively protect </font> the environment from threats.
 

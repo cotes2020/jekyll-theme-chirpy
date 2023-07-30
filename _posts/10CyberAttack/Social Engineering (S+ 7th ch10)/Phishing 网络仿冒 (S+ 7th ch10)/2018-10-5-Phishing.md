@@ -1,0 +1,66 @@
+---
+title: CyberAttack - Social Engineering - Phishing
+date: 2018-10-5 11:11:11 -0400
+categories: [10CyberAttack, SocialEngineering]
+tags: [SocialEngineering, Phishing]
+toc: true
+image:
+---
+
+> Phishing (S+ 7th ch10)
+
+- [Phishing](#phishing)
+
+
+
+
+# Phishing
+- sending email to users with the purpose of tricking them into revealing personal information or clicking on a link.
+  - sending email tricking them into revealing personal information or clicking on a link.
+  - ask for a piece of information missing, as if it is a legitimate request.
+  - scam the user into surrendering private information, identity theft.
+  - direct the user to website to update personal information, like password, credit card…
+
+- Example: An email like from a bank, state that there is a problem with the person’s account or access privileges.
+- One of the best counters: simply read the URL. If it is the legitimate URL.
+
+Email from Friends
+- an attacker has joined your friend’s computer to a botnet.
+- A bot herder is now using your friend’s computer to send out phishing emails.
+
+Phishing to Install Malware
+- One phishing email looked like it was from a news organization with headlines of recent news events. If the user clicked anywhere in the email, it showed a dialog box indicating that the user’s version of Adobe Flash was too old to view the story. It then asked, “Would you like to upgrade your version of Adobe Flash?” If the user clicked Yes, it downloaded and installed malware.
+
+Phishing to Validate Email Addresses
+	A simple method to validate email addresses: beacons.
+	Beacon:
+  - a link included in the email that links to an image stored on an Internet server.
+  - The link includes unique code that identifies the receiver’s email address.
+	For the email application to display the image, it must retrieve the image from the Internet server.
+	When the server hosting the image receives the request, it logs the user’s email address, indicating it’s valid.
+	This is one of the reasons that most email programs won’t display images by default.
+
+Phishing to Get Money
+	This scam often requires the victim to pay a small sum of money with the promise of a large sum of money.
+	Lottery scams inform email recipients they won. Victims sometimes have to pay small fees to release the funds or provide bank information to get the money deposited.
+
+
+
+New Phishing Attacks
+	criminals are also launching new phishing attacks.
+	best way to prevent attacks: educate people about what the criminals are doing now.
+	Example:
+	criminals crafted a sophisticated attack on Gmail users that fooled even tech-savvy users.
+  - captured the Gmail credentials of one user, logged on, scoured it for sent emails, attachments, and subject lines.
+  - used this account to send emails to people this person previously emailed, often using similar subject lines.
+  - Additionally, include a thumbnail of a document.
+  - clicking the thumbnail provides a preview of the document. However, this instead opened up another tab within the browser with a URL like this: data:text/html,https://accounts.google.com/ServiceLogin?service=mail…
+  - accounts.google.com, looks legitimate. Additionally, the page shows a sign-in page that looks exactly like the Google sign-in page.
+  - Users who were tricked into “logging on” on this bogus but perfectly created web page were compromised.
+  - Attackers quickly logged on to this account and started the process all over again, hoping to snare other unsuspecting users.
+	In one publicized example
+  - the attackers used a compromised account to resend a team practice schedule to all the members of the team.
+  - It included a similar subject line and screenshot of the original attachment.
+  - Some recipients who received the email clicked the thumbnail and were taken to the same URL with accounts.google.com in it.
+  - Some were tricked and entered their credentials to apparently log on to Google.
+  - Attackers quickly logged on to the newly compromised accounts and started the process again.
