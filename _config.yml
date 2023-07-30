@@ -26,7 +26,7 @@ title: Hulua                          # the main title
 tagline: Welcome to my home page   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  Hulua's personal website, share posts on cloud computing, database technology and artificial intelligence.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://yywe.github.io'
