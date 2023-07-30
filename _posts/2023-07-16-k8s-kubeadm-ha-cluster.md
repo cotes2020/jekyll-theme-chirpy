@@ -365,7 +365,7 @@ etcd:
     certFile: /etc/etcd/kubernetes.pem
     keyFile: /etc/etcd/kubernetes-key.pem
 networking:
-  podSubnet: 10.40.0.0/16
+  podSubnet: 10.244.0.0/16
 apiServerExtraArgs:
   apiserver-count: "3"
 EOF
@@ -387,14 +387,21 @@ kubeadm init --config=config.yaml
 }
 ```
 
-### Activate the calico CNI plugin:
+### Option 1: Activate the flannel CNI plugin:
+```sh
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+
+*If you use custom podCIDR (not 10.244.0.0/16) you first need to download the above manifest and modify the network to match your one*
+```
+
+### Option 2: Activate the calico CNI plugin:
 ```sh
 #Download the custom resources necessary to configure Calico
 curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml -O
 
 #Update the CALICO_IPV4POOL_CIDR block in calico.yaml
 - name: CALICO_IPV4POOL_CIDR
-  value: '10.40.0.0/16'
+  value: '10.244.0.0/16'
 
 # Install calico
 kubectl create -f calico.yaml
@@ -402,8 +409,31 @@ kubectl create -f calico.yaml
 # Confirm that all of the pods are running with the following command.
 watch kubectl get pods -n kube-system
 ```
-
 *Note: create a directory and store the custom-resources.yaml file for future reference*
+
+### Option 3: Activate the Cilium CNI plugin:
+```sh
+#install Cilium cli
+{
+CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
+CLI_ARCH=amd64
+if [ "$(uname -m)" = "aarch64" ]; then CLI_ARCH=arm64; fi
+curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+sha256sum --check cilium-linux-${CLI_ARCH}.tar.gz.sha256sum
+sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
+rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+}
+
+#Install cilium 
+cilium install --version 1.14.0
+
+#validate the installation
+cilium status --wait
+
+#connectivity test
+cilium connectivity test
+
+```
 
 ### Initializing Master Node 2:
 
@@ -445,3 +475,4 @@ kubectl label nodes k8sworker1 kubernetes.io/role=k8sworker1
 - [etcd](https://github.com/etcd-io/etcd)
 - [runc](https://github.com/opencontainers/runc)
 - [cni plugins](https://github.com/containernetworking/plugins)
+- [cilium](https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/)

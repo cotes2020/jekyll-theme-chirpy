@@ -18,9 +18,9 @@ timezone: Asia/Kolkata
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: MKBN-BLOG # the main title
+title: Moshu's-Tech-Blog # the main title
 
-tagline: Sr.Site Reliability Engineer | Kubernets Pro | Multi Cloud Expert| # it will display as the sub-title
+tagline: Sr.Site Reliability Engineer | Kubernets | Multi Cloud | Iac | # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   mkbn-tech document site!
