@@ -14,7 +14,10 @@ image:
     - [Type of phishing](#type-of-phishing)
     - [Goals of phishing](#goals-of-phishing)
   - [New Phishing Attacks](#new-phishing-attacks)
-  - [solution](#solution)
+    - [solution](#solution)
+  - [Spear Phishing](#spear-phishing)
+    - [solution](#solution-1)
+  - [Whaling](#whaling)
 
 ---
 
@@ -92,15 +95,73 @@ image:
 
 ---
 
-## solution
+### solution
 
 - verification/potection involve human action
 
+- enhanced Authentication flow
+  - User login to app
+  - app redirect user to Authentication server
+  - user pass login in Authentication server and get returned App cookie
+  - user login to app with App cookie to exchange the token for user info
+  - app validate the cookie with Authentication server
+  - app return user info to user
+
+App cookie
+- meant to be temporary
+- meant to be echanged for user information only
+
+Session cookie
+- app should set session cookie
 
 
 
 
+---
 
+
+## Spear Phishing
+
+矛 Spear Phishing
+- a unique form of phishing
+- **targets a specific organization**
+
+- an e-mail spoofing fraud attempt that targets a specific organization, seeking unauthorized access to confidential data.
+
+- the message is made like from someone you know and trust, not informal third party.
+  - spear phishing messages appear to come from a trusted source. an individual within the recipient's own company, someone in a position of authority.
+  - Phishing messages usually appear to come from a large and well-known company or Web site with a broad membership base, like eBay or PayPal.
+
+- Example:
+  - a message that appears to be `from your boss` telling you that there is a problem with your direct deposit account and that you need to access this HR link right now to correct it.
+- works better than phishing: uses information from email databases, friends lists…
+
+### solution
+- One solution:
+  - **use digital signatures**.
+- The CEO and anyone else in the company can sign their emails with a digital signature.
+- This provides a high level of certainty to personnel on who sent the email.
+
+
+---
+
+## Whaling
+
+- nothing more than phishing or spear phishing, but for **big users**. target high-level executives.
+
+- the whaler identifies one person who can gain all of the data they want, a manager or owner, and targets the phishing campaign at them.
+
+- Example:
+  - attackers singled out as many as 20,000 senior corporate executives in a fine-tuned phishing attack.
+  - The emails looked like official subpoenas requiring the recipient to appear before a federal grand jury, included the executive’s full name and other details,
+  - The emails also included a link for more details about the subpoena.
+  - If clicked the link, it took them to a web site that indicated they needed a browser add-on to read the document.
+  - If they approved this install, they actually installed a keylogger and malware.
+    - Keylogger: recorded all keystrokes to a file,
+    - Malware: gave the attackers remote access to the executives’ systems.
+
+
+- Although not as common, some whaling attacks attempt to reach the executive via phone to get the data. However, many executives have assistants who screen calls to prevent attackers from reaching the executive via phone.
 
 
 
