@@ -99,23 +99,39 @@ image:
 
 - verification/potection involve human action
 
-- enhanced Authentication flow
-  - User login to app
-  - app redirect user to Authentication server
-  - user pass login in Authentication server and get returned App cookie
-  - user login to app with App cookie to exchange the token for user info
-  - app validate the cookie with Authentication server
-  - app return user info to user
-
-App cookie
-- meant to be temporary
-- meant to be echanged for user information only
-
-Session cookie
-- app should set session cookie
+- Session cookie
+  - app should set session cookie
 
 
+- Security token + Session cookie
+  - limit:
+    - meant to be temporary
+    - meant to be echanged for user information only
+    - one time use
+    - same ip from who generate and who use it
+  - enhanced Authentication flow
+    - User reach app
+    - app redirect user to Authentication server
+    - app pass login pin to Authentication server and get returned security token
+    - user login to app with security token to exchange the Session token for user info
+    - app validate the cookie with Authentication server
+    - app return user info to user
 
+
+- Device token (tidy to HW) + Security token + Session cookie
+  - limit:
+    - gap:
+      - create mv with Hardware ID
+  - enhanced Authentication flow
+    - User reach app
+    - app redirect user to system chain
+    - app pass login pin to system chain and get returned Device cookie
+    - app ping Authentication server with Device cookie and login pin
+    - Authentication server return the Session token
+    - app send and store the Session token in login chain
+    - app ping Authentication server with Session token
+    - Authentication server return security token
+    - user got security token
 
 ---
 
