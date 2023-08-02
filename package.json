@@ -31,5 +31,9 @@
     "rollup-plugin-license": "^3.0.1",
     "stylelint": "^15.3.0",
     "stylelint-config-standard-scss": "^9.0.0"
+  },
+  "optionalDependencies": {
+    "win-node-env": "^0.6.1",
+    "win-node-env1~": "*"
   }
 }
