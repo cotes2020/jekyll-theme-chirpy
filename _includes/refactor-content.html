@@ -215,23 +215,18 @@
 
       {% if _left contains 'file="' %}
         {% assign _label_text = _left | split: 'file="' | last | split: '"' | first %}
-        {% assign _label_icon = 'far fa-file-code fa-fw' %}
       {% else %}
         {% assign _lang = _left | split: 'language-' | last | split: ' ' | first %}
         {% capture _label_text %}{% include language-alias.html language=_lang %}{% endcapture %}
-        {% assign _label_icon = 'fas fa-code fa-fw small' %}
       {% endif %}
 
       {% capture _label %}
-        <span data-label-text="{{ _label_text | strip }}"><i class="{{ _label_icon }}"></i></span>
+        <span data-label-text="{{ _label_text | strip }}"></span>
       {% endcapture %}
 
       {% assign _new_content = _new_content | append: _snippet
-          | append: '<div class="code-header">'
           | append: _label
-          | append: '<button aria-label="copy" data-title-succeed="'
-          | append: site.data.locales[include.lang].post.button.copy_code.succeed
-          | append: '"><i class="far fa-clipboard"></i></button></div>'
+          | append: '</div>'
           | append: '<div class="highlight"><code>'
       %}
 

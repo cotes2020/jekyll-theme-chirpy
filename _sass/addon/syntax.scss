@@ -57,12 +57,14 @@ html {
   overflow: auto;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
+  padding-left: 1rem;
 
   pre {
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
     font-size: $code-font-size;
     line-height: 1.4rem;
     word-wrap: normal; /* Fixed Safari overflow-x */
+    white-space: pre-wrap;
   }
 
   table {
@@ -89,6 +91,7 @@ code {
   -webkit-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+  white-space: pre-wrap;
 
   &.highlighter-rouge {
     font-size: $code-font-size;
@@ -137,7 +140,8 @@ div[class^='language-'] {
   @extend %rounded;
   @extend %code-snippet-bg;
 
-  box-shadow: var(--language-border-color) 0 0 0 1px;
+  //20230616 modified
+  box-shadow: var(--language-border-color) 0 0 0 0px;
 
   .post-content > & {
     @include ml-mr(-1.25rem);

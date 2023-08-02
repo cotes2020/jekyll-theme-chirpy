@@ -4,8 +4,6 @@ refactor: true
 panel_includes:
   - toc
 tail_includes:
-  - related-posts
-  - post-nav
   - comments
 ---
 
@@ -121,20 +119,6 @@ tail_includes:
 
   <div class="post-tail-bottom
     d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
-    <div class="license-wrapper">
-
-      {% if site.data.locales[lang].copyright.license.template %}
-
-        {% capture _replacement %}
-        <a href="{{ site.data.locales[lang].copyright.license.link }}">
-          {{ site.data.locales[lang].copyright.license.name }}
-        </a>
-        {% endcapture %}
-
-        {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
-
-      {% endif %}
-    </div>
 
     {% include post-sharing.html lang=lang %}
 
