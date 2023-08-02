@@ -140,8 +140,8 @@ div[class^='language-'] {
   @extend %rounded;
   @extend %code-snippet-bg;
 
-  //20230616 modified
-  box-shadow: var(--language-border-color) 0 0 0 0px;
+  /* 20230616 modified */
+  box-shadow: var(--language-border-color) 0 0 0 0;
 
   .post-content > & {
     @include ml-mr(-1.25rem);
