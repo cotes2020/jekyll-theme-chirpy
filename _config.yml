@@ -20,7 +20,7 @@ timezone: Asia/Ho_Chi_Minh
 
 title: Dyl4n # the main title
 
-tagline: sjmpl3 bl0q # it will display as the sub-title
+tagline: Nguyen Quoc Dat # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Here you'll find linux stuff, programming, writeups about ctfs,.. and more, but above all ethical hacking!

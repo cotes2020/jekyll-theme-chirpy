@@ -4,6 +4,8 @@ icon: fas fa-info-circle
 order: 4
 ---
 
+![Nguyen Quoc Dat](/thumbnails/quocdat.png)
+
 Hi guys! my name is Nguyen Quoc Dat, you can also call me Dylan instead.
 
 I possess a strong passion for Computers and Security.

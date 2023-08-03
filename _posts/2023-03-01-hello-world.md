@@ -7,7 +7,7 @@ tags: [personal blog]
 render_with_liquid: false
 comments: true
 image:
-  path: /thumbnails/hello-world.png
+  path: /thumbnails/quocdat.png
 ---
 
 Hi guys! my name is Nguyen Quoc Dat, you can also call me Dylan instead.

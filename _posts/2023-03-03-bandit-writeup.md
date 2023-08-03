@@ -6,8 +6,6 @@ categories: [CTF Writeup, Overthewire Bandit]
 tags: [overthewire]
 render_with_liquid: false
 comments: true
-image:
-  path: /thumbnails/bandit-writeup.png
 ---
 
 ## Bandit Level 0 &rarr; 1
