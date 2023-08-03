@@ -99,7 +99,9 @@ export function initClipboard() {
 
   /* --- Post link sharing --- */
 
-  $('#copy-link').on('click', (e) => {
+  const btnCopyLink = $('#copy-link');
+
+  btnCopyLink.on('click', (e) => {
     let target = $(e.target);
 
     if (isLocked(target)) {
@@ -119,5 +121,11 @@ export function initClipboard() {
         unlock(target);
       }, TIMEOUT);
     });
+  });
+
+  btnCopyLink.on('mouseleave', function (e) {
+    const target = $(e.target);
+    target.tooltip('hide');
+    console.log('mouse leave...');
   });
 }
