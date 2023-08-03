@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Let's deploy kubernetes dashboard with user account + Ingress"
-date: 2023-08-03 12:26:00
+date: 2023-08-03 12:26:00 +0800
 categories: kubernetes
 tags: dashboard
 image:
