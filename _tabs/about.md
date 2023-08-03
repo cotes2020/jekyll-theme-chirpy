@@ -4,5 +4,8 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+Hi guys! my name is Nguyen Quoc Dat, you can also call me Dylan instead.
+
+I possess a strong passion for Computers and Security.
+
+My long-term goal is to become specialist in Security.
