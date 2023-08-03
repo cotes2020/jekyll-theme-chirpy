@@ -24,8 +24,6 @@ The two men then glare at each other. Charge's voice is rather feeble, and Curre
 
 "Oh yes, you and your magnetic effects. At least I'm a healthy little man who has settled in a good place!"
 
-"You dare speak to me like that, or remember what I did to you in the electromagnetic field back in our country? ..."
-
 "What's this fight about, if I may, gentlemen?", asked the bartender sincerely.
 
 "Well, Current here thinks he's more fundamental than me. Clearly, he's not! I mean, look at our descriptions! Here", Charge hands the bartender a sheet of paper.
