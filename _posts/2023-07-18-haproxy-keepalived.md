@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to setup loadbalancing with haproxy & keepalived"
-date: 2023-07-18 21:19:00
+date: 2023-07-18 21:19:00 +0800
 categories: loadbalancer
 tags: haproxy
 image:

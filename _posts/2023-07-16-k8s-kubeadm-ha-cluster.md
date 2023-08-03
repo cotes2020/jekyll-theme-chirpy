@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Let's build a HA kubernetes cluster on baremetal servers"
-date: 2023-07-17 22:15:00
+date: 2023-07-17 22:15:00 +0800
 categories: kubernetes
 tags: kubernetes
 image:
@@ -146,12 +146,14 @@ rm containerd-1.7.2-linux-amd64.tar.gz
 mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
 }
-
+```
+```sh
 {
 mkdir -pv /usr/local/lib/systemd/system/
 wget https://raw.githubusercontent.com/containerd/containerd/main/containerd.service -O /usr/local/lib/systemd/system/containerd.service
 }
-
+```
+```sh
 {
 systemctl daemon-reload
 systemctl enable --now containerd
@@ -220,7 +222,9 @@ cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 }
+```
 
+```sh
 {
 apt-get update
 apt-get install -y kubelet=1.27.4-00 kubeadm=1.27.4-00 kubectl=1.27.4-00
@@ -388,6 +392,7 @@ kubeadm init --config=config.yaml
 ```
 
 ### Option 1: Activate the flannel CNI plugin:
+
 ```sh
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 

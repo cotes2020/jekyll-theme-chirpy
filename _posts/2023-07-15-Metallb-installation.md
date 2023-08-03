@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to install and configure MetalLB"
-date: 2023-07-14 01:31:00
+date: 2023-07-14 01:31:00 +0800
 categories: kubernetes
 tags: loadbalancer
 image:

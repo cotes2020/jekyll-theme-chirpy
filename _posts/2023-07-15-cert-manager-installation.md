@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to install and configure Cert manager on kubernetes"
-date: 2023-07-14 11:25:00
+date: 2023-07-14 11:25:00 +0800
 categories: kubernetes
 tags: cert-manager
 image:
