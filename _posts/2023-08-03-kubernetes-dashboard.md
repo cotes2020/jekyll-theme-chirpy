@@ -116,8 +116,6 @@ EOF
 
 Go to "https://k8s.dashboard.com/" to access the dashboard.
 
-![Alt text](../assets/img/images/dash-login.png)
-
 *Execute the following command to get the token which saved in the Secret:*
 
 ```sh
