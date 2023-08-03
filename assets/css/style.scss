@@ -4,3 +4,6 @@
 @import '{{ site.theme }}';
 
 /* append your custom style below */
+html {
+  scroll-behavior: smooth;
+}
