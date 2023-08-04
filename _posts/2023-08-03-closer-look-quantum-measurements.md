@@ -58,4 +58,4 @@ There are likely many more caveats to the simplified model studied. What, then, 
 
 This means that these things, usually involving more general and consistent approaches than in the slides, do have analogues in the simplified world of Copenhagen-type interpretations. And, we must remember that these analogues don't all fit into a consistent system, which isn't surprising as we are not using a constructive approach but instead, making some interesting observations that individually parallel complicated measurement-related phenomena.
 
-Above all, the purpose of this little project was to have fun with starting to dabble into the measurement problem and hopefully, you will too! :)
+Above all, the purpose of this little project was to have fun playing around with measurement and hopefully, you will too! :)
