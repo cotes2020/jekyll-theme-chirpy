@@ -13,7 +13,33 @@ tail_includes:
 
 <h1 data-toc-skip>{{ page.title }}</h1>
 
-<div class="post-meta text-muted">
+<div class="post-tail-wrapper text-muted" style="margin-top: 33px;">
+
+  <!-- categories -->
+  {% if page.categories.size > 0 %}
+  <div class="post-meta mb-3">
+    <i class="far fa-folder-open fa-fw me-1"></i>
+    {% for category in page.categories %}
+    <a href='{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/'>{{ category }}</a>
+    {%- unless forloop.last -%}, {%- endunless -%}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- tags -->
+  {% if page.tags.size > 0 %}
+  <div class="post-tags">
+    <i class="fa fa-tags fa-fw me-1"></i>
+    {% for tag in page.tags %}
+    <a href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/" class="post-tag no-text-decoration">
+      {{- tag -}}
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div> <!-- ./div post-tail-wrapper text-muted -->
+
+<div class="post-meta text-muted" style="margin-top : 33px;">
     <!-- published date -->
     <span>
       {{ site.data.locales[lang].post.posted }}
@@ -48,7 +74,7 @@ tail_includes:
   {% endif %}
 
   <div class="d-flex justify-content-between">
-    <!-- author(s) -->
+    <!-- author(s)
     <span>
       {% if page.author %}
         {% assign authors = page.author %}
@@ -69,12 +95,10 @@ tail_includes:
       {% endif %}
       </em>
     </span>
-
+    -->
     <div>
-      <!-- read time -->
       {% include read-time.html content=content prompt=true lang=lang %}
     </div>
-
   </div> <!-- .d-flex -->
 
 </div> <!-- .post-meta -->
