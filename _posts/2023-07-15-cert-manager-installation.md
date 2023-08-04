@@ -7,6 +7,29 @@ tags: cert-manager
 image:
   path: /assets/img/headers/cert-manager.jpg
 ---
+
+### Install cert-manager with Helm
+
+Add the Helm repository
+```sh
+helm repo add jetstack https://charts.jetstack.io
+```
+
+Update the helm chart repository
+```sh
+helm repo update
+```
+
+Install cert-manager
+```sh
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.12.0 \
+  --set installCRDs=true
+```
+
 ### Install cert-manager using kubectl apply
 
 ```bash
@@ -112,4 +135,6 @@ spec:
 
 ### Reference Links:
 
-[Cert-manager](https://cert-manager.io/docs/)
+✅ [Installing Helm](https://helm.sh/docs/intro/install/)
+
+✅ [Cert-manager](https://cert-manager.io/docs/)

@@ -7,7 +7,7 @@ tags: kubernetes
 image:
   path: /assets/img/headers/helm.jpg
 ---
-# HA Kubernetes cluster with containerd
+# 🚀 HA Kubernetes cluster with containerd 
 
 ### Prerequisites:
 - 2 Ubuntu20.04 LoadBalancer node's
@@ -476,8 +476,12 @@ kubectl label nodes k8sworker1 kubernetes.io/role=k8sworker1
 
 ### Reference Links:
 
-- [Containerd](https://github.com/containerd/containerd)
-- [etcd](https://github.com/etcd-io/etcd)
-- [runc](https://github.com/opencontainers/runc)
-- [cni plugins](https://github.com/containernetworking/plugins)
-- [cilium](https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/)
+✅ [Containerd](https://github.com/containerd/containerd)
+
+✅ [etcd](https://github.com/etcd-io/etcd)
+
+✅ [runc](https://github.com/opencontainers/runc)
+
+✅ [cni plugins](https://github.com/containernetworking/plugins)
+
+✅ [cilium](https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/)
