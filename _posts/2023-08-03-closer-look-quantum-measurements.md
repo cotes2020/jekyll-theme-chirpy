@@ -48,9 +48,9 @@ The above model, being simplified, has some caveats:
 
     Therefore, in the slides, while we dealt with traces and such linear algebraic constructs accurately, the probabilities they were assigned to were not given much attention.
 
-- The density operator for a mixed state involves classical uncertainity with respect to the ensemble of states. On the other hand, the density operator for a mixed state after measurement involves an ensemble of eigenstates, and this time, the kind of uncertainty involved is purely quantum.
+- The density operator for a mixed state involves classical uncertainity with respect to the ensemble of states. On the other hand, the density operator for a mixed state after measurement involves an ensemble of eigenstates, and the kind of uncertainty here is purely quantum and has no classical analogue.
 
-    Therefore, equating the density operator before and after measurement, as we did, is not generally valid (for example, in Stern-Gerlach like experiments, where mixed states have classical probability distributions of outcomes while states in quantum superposition end up in only one of the two possible outcomes).
+    Therefore, equating the density operator before and after measurement, as we did, is generally not valid (for example, in Stern-Gerlach like experiments, where mixed states have discrete, but classical probability distributions of outcomes; while states in quantum superposition always end up in the same projected states determined by the orientation of the measurement apparatus — and the probabilities associated with these events do not look classical at all).
 
 ## Conclusion
 
