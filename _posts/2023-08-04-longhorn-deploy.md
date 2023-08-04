@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to install and configure Cert manager on kubernetes"
-date: 2023-08-04 20:26:00 +0800
+date: 2023-08-04 15:26:00 +0800
 categories: kubernetes
 tags: longhorn
 image:
