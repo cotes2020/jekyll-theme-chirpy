@@ -7,7 +7,7 @@ tags: kubernetes
 image:
   path: /assets/img/headers/helm.jpg
 ---
-# 🚀 HA Kubernetes cluster with containerd 
+# HA Kubernetes cluster with containerd 
 
 ### Prerequisites:
 - 2 Ubuntu20.04 LoadBalancer node's
