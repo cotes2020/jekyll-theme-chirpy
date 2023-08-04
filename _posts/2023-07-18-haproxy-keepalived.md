@@ -13,7 +13,7 @@ image:
 - 3 Ubuntu20.04 Kubernetes master node's
 - 2 Ubuntu20.04 Kubernetes worker node's
 
-### 🔥 HAProxy Configurations:
+### HAProxy Configurations:
 
 SSH to the node which will function as the load balancer and execute the following commands to install HAProxy.
 ```sh
@@ -60,7 +60,7 @@ sudo systemctl start haproxy
 sudo systemctl status haproxy
 }
 ```
-### ❤️ Set up high availability with Keepalived
+### Set up high availability with Keepalived
 
 *On both the nodes[master & backup], run the following commands:*
 
