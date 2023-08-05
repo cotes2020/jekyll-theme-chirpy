@@ -125,3 +125,6 @@ kubectl get secret dashboard-token -n kubernetes-dashboard -o jsonpath={".data.t
 Reference Links:
 
 ⭐ [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+
+⭐ [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+
