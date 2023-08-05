@@ -23,7 +23,7 @@ search:
   no_results: Hop! Öyle bir şey bulamadım.
 
 panel:
-  lastmod: Yeni Güncellendi
+  lastmod: Son Güncellenenler
   trending_tags: Yükselen Etiketler
   toc: İçindekiler
 
@@ -38,7 +38,7 @@ copyright:
   brief: Bazı hakları saklıdır.
   verbose: >-
     Aksi belirtilmediği sürece, bu sitedeki gönderiler Creative Commons Atıf 4.0 Uluslararası (CC BY 4.0) Lisansı altındadır.
-    Kısaca sayfa linkini de vererek paylaşabilir veya düzenleyip paylaşabilirsin.
+    Kısaca sayfa linkini vererek değiştirebilir / paylaşabilirsiniz.
 
 meta: :PLATFORM ve :THEME teması
 
@@ -53,8 +53,8 @@ notification:
 
 post:
   written_by: Yazan
-  posted: Gönderilme Tarihi
-  updated: Güncellenme Tarihi
+  posted: Gönderim
+  updated: Güncelleme
   words: sözcük
   pageview_measure: görüntülenme
   read_time:
@@ -70,8 +70,21 @@ post:
     share_link:
       title: Linki kopyala
       succeed: Link kopyalandı.
+# Date time format.
+# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
+df:
+  post:
+    strftime: "%b %e, %Y"
+    dayjs: "ll"
+  archives:
+    strftime: "%b"
+    dayjs: "MMM"
 
 # categories page
 categories:
-  category_measure: kategori
-  post_measure: gönderi
+  category_measure:
+    singular: kategori
+    plural: kategori
+  post_measure:
+    singular: gönderi
+    plural: gönderi
