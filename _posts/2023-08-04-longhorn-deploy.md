@@ -1,14 +1,12 @@
 ---
 layout: post
-title: "How to install and configure Cert manager on kubernetes"
+title: "Meet Longhorn a cloud native distributed block storage for Kubernetes"
 date: 2023-08-04 15:26:00 +0800
 categories: kubernetes
 tags: longhorn
 image:
   path: /assets/img/headers/longhorn.jpg
 ---
-
-Longhorn is a cloud native distributed block storage for Kubernetes.
 
 ### Prerequisites:
 

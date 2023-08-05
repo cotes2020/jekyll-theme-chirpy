@@ -476,12 +476,12 @@ kubectl label nodes k8sworker1 kubernetes.io/role=k8sworker1
 
 ### Reference Links:
 
-- [Containerd](https://github.com/containerd/containerd)
+⭐ [Containerd](https://github.com/containerd/containerd)
 
-- [etcd](https://github.com/etcd-io/etcd)
+⭐ [etcd](https://github.com/etcd-io/etcd)
 
-- [runc](https://github.com/opencontainers/runc)
+⭐ [runc](https://github.com/opencontainers/runc)
 
-- [cni plugins](https://github.com/containernetworking/plugins)
+⭐ [cni plugins](https://github.com/containernetworking/plugins)
 
-- [cilium](https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/)
+⭐ [cilium](https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/)

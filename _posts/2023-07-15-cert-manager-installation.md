@@ -135,6 +135,6 @@ spec:
 
 ### Reference Links:
 
-- [Installing Helm](https://helm.sh/docs/intro/install/)
+⭐ [Installing Helm](https://helm.sh/docs/intro/install/)
 
-- [Cert-manager](https://cert-manager.io/docs/)
+⭐ [Cert-manager](https://cert-manager.io/docs/)
