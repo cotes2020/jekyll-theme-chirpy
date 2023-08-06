@@ -12,24 +12,25 @@ baseurl: ""
 # otherwise, the layout language will use the default value of 'en'.
 lang: en
 
-# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Pacific/Auckland
+# Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
+timezone: Pacific/Auuckland
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
 title: Squawkykaka # the main title
 
-tagline: A blog probably about tech, modding and a bit of gaming. # it will display as the sub-title
+tagline: Me make blog. me happy # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A blog about tech, minecraft and bad coding
+  Me mke blog. Me Happy. Squawkykaka
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://squawkykaka.pages.dev"
+url: ""
 
 github:
-  username: Squawkykaka # change to your github username
+  username: Squawwkykaka # change to your github username
+ # change to your twitter username
 
 social:
   # Change to your full name.
@@ -38,7 +39,7 @@ social:
   email: contact@squawkykaka.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    # https://twitter.com/username # change to your twitter homepage
+    # change to your twitter homepage
     - https://github.com/Squawkykaka # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -63,14 +64,14 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: #[light|dark]
+theme_mode: # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: ""
+img_cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/commons/avatar.jpg"
@@ -85,7 +86,7 @@ comments:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo: Squawkykaka/squawkykaka.github.io
+    repo: # <gh-username>/<repo>
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
